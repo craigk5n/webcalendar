@@ -51,22 +51,26 @@ $INC = array ( 'js/visible.php' );
 
 print_header ( $INC );
 ?>
-
 <table>
-<tr><td style="vertical-align:top; width:50%;">
-<?php
-echo '<h2>' . translate ( 'Delete Events' );
+  <tr>
+    <td style="vertical-align:top; width:50%;">
+      <h2><?php etranslate ( 'Delete Events' );
+
 if ( $preview )
-  echo '[ ' . $previewStr . ']';
-echo "</h2>\n";
-echo display_admin_link();
+  echo "[$previewStr]";
+
+echo "</h2>\n"
+  . display_admin_link();
 
 if ( $do_purge ) {
-  if ( $preview )
-    echo '<h2> [' . $previewStr . '] ' . $purgingStr . " $username...</h2>\n";
-  else
-    echo '<h2>' . $purgingStr . ": $username</h2>\n";
+  echo '<h2>';
 
+  if ( $preview )
+    echo "[$previewStr] $purgingStr $username...";
+  else
+    echo "$purgingStr: $username";
+
+  echo "</h2>\n";
   $end_date = sprintf ( "%04d%02d%02d", $end_year, $end_month, $end_day );
   $ids = $tail = '';
   if ( $purge_deleted == 'Y' )
@@ -106,17 +110,16 @@ if ( $do_purge ) {
   echo '<h2>...' . translate ( 'Finished' ) . ".</h2>\n";
 ?>
   <form><input class="btn btn-primary" type="button" value="<?php etranslate ( 'Back' )?>"
-onclick="history.back()" /></form
+onclick="history.back()"></form
 ><?php
   if ( $purgeDebug ) {
-    echo '<div style="border: 1px solid #000;background-color: #ffffff;"><tt>' .
-  $sqlLog . '</tt></div>' ."\n";
+    echo '<div style="border: 1px solid #000;background-color: #FFF;"><tt>'
+      . "$sqlLog</tt></div>\n";
   }
 } else {
 ?>
-
-<form action="purge.php" method="post" name="purgeform" id="purgeform">
-<?php echo csrf_form_key(); ?>
+<form id="purgeform" action="purge.php" method="post" name="purgeform">
+ <?php echo csrf_form_key(); ?>
 <table>
  <tr><td><label for="user" class="colon">
   <?php echo translate ( 'User' );?></label></td>
@@ -130,7 +133,7 @@ onclick="history.back()" /></form
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     echo '<option value="' . $userlist[$i]['cal_login'] . '"';
     if ( $login == $userlist[$i]['cal_login'] )
-      echo ' selected="selected"';
+      echo ' selected';
     echo '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
 ?>
@@ -140,7 +143,7 @@ onclick="history.back()" /></form
  <tr><td><label for="purge_all" class="colon">
   <?php etranslate ( 'Check box to delete ALL events for a user' )?></label></td>
   <td class="alignbottom">
-  <input class="form-control-sm" type="checkbox" name="purge_all" value="Y" id="purge_all" onclick="toggle_datefields( 'dateArea', this );" />
+  <input class="form-control-sm" type="checkbox" name="purge_all" value="Y" id="purge_all" onclick="toggle_datefields( 'dateArea', this );">
  </td></tr>
  <tr id="dateArea"><td><label class="colon">
   <?php etranslate ( 'Delete all events before' );?></label></td><td>
@@ -149,22 +152,21 @@ onclick="history.back()" /></form
  <tr><td><label for="purge_deleted" class="colon">
   <?php etranslate ( 'Purge deleted only' )?></label></td>
   <td class="alignbottom">
-  <input class="form-control-sm" type="checkbox" name="purge_deleted" value="Y" />
+  <input class="form-control-sm" type="checkbox" name="purge_deleted" value="Y">
  </td></tr>
  <tr><td><label for="preview" class="colon">
   <?php etranslate ( 'Preview delete' )?></label></td>
   <td class="alignbottom">
-  <input class="form-control-sm" type="checkbox" name="preview" value="Y" checked="checked" />
+  <input class="form-control-sm" type="checkbox" name="preview" value="Y" checked>
  </td></tr>
  <tr><td colspan="2">
-  <input class="btn btn-primary" type="submit" name="delete" value="<?php
+   <input class="btn btn-primary" type="submit" name="delete" value="<?php
     echo $deleteStr?>" onclick="return confirm( '<?php
     etranslate ( 'Are you sure you want to delete events for', true);
-    ?> ' + document.forms[0].username.value + '?' )" />
+    ?> ' + document.forms[0].username.value + '?' )">
  </td></tr>
 </table>
 </form>
-
 <?php } ?>
 </td></tr></table>
 
@@ -173,8 +175,8 @@ onclick="history.back()" /></form
  * purge_events (needs description)
  */
 function purge_events ( $ids ) {
-  global $preview, $previewStr, $c; // db connection
-  global $sqlLog, $allStr;
+  global $allStr, $c, // db connection
+  $preview, $previewStr, $sqlLog;
 
   $tables = [
     ['webcal_entry_user', 'cal_id'],
@@ -204,7 +206,7 @@ function purge_events ( $ids ) {
           ") FROM {$tables[$i][0]}" . $clause;
 
         $res = dbi_execute ( $sql );
-        $sqlLog .= $sql . "<br />\n";
+        $sqlLog .= $sql . "<br>\n";
         if ( $res ) {
           if ( $row = dbi_fetch_row ( $res ) )
             $num[$i] += $row[0];
@@ -212,7 +214,7 @@ function purge_events ( $ids ) {
         }
       } else {
         $sql = "DELETE FROM {$tables[$i][0]}" . $clause;
-        $sqlLog .= $sql . "<br />\n";
+        $sqlLog .= $sql . "<br>\n";
         $res = dbi_execute ( $sql );
         if ( $cal_id == 'ALL' )
           $num[$i] = $allStr;
@@ -226,7 +228,7 @@ function purge_events ( $ids ) {
     $table = $tables[$i][0];
     echo '[' . $previewStr . '] ' .
       str_replace( 'XXX', " $table: {$num[$i]}" , $xxxStr ) .
-      "<br />\n";
+      "<br>\n";
   }
 }
 /**
@@ -236,7 +238,7 @@ function get_ids ( $sql, $ALL = '' ) {
   global $sqlLog;
 
   $ids = [];
-  $sqlLog .= $sql . "<br />\n";
+  $sqlLog .= $sql . "<br>\n";
   $res = dbi_execute ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {

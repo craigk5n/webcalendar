@@ -134,7 +134,7 @@ exit;
  * Generate the activity log.
 */
 function rss_activity_log ( $sys, $entries ) {
-  global $SERVER_URL, $ALLOW_HTML_DESCRIPTION, $login;
+  global $ALLOW_HTML_DESCRIPTION, $login, $SERVER_URL;
 
   $sql_params = array();
 
@@ -182,7 +182,7 @@ function rss_activity_log ( $sys, $entries ) {
       $l_id = $row[8];
       $l_etype = $row[9];
       $l_description = $row[10];
-      // convert lines to <br /> if no HTML formatting found
+      // convert lines to<br> if no HTML formatting found
       if ( strpos ( $l_description, "</" ) == false ) {
         $l_description = nl2br ( $l_description );
       }

@@ -32,9 +32,9 @@ if ( empty ( $ret ) ) {
         <tr>
           <td class="aligncenter">
             <input type="submit" value="' . translate ( 'Approve and Send' )
-   . '" />&nbsp;&nbsp;&nbsp;
+   . '">&nbsp;&nbsp;&nbsp;
             <input type="submit" id="cancel" name="cancel" value="'
-   . translate( 'Approve and Exit' ) . '" />
+   . translate( 'Approve and Exit' ) . '">
           </td>
         </tr>
         <tr>

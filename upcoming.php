@@ -149,9 +149,9 @@ $WebCalendar->setLanguage();
  * declared twice in case of this file being included twice or more within the same doc.
  */
 function print_upcoming_event ( $e, $date ) {
-  global $display_link, $link_target, $SERVER_URL, $charset, $login,
-    $display_tzid, $showTime, $showPopups, $eventinfo, $username,
-    $hcalendar_output, $UPCOMING_DISPLAY_CAT_ICONS;
+  global $charset, $display_link, $display_tzid, $eventinfo,
+  $hcalendar_output, $link_target, $login, $SERVER_URL,
+  $showPopups, $showTime, $UPCOMING_DISPLAY_CAT_ICONS, $username;
 
   $popupid = 'pop' . $e->getId() . '-' . $date;
 
@@ -473,26 +473,31 @@ echo send_doctype ( generate_application_name() );
 body {
   background-color: #ffffff;
 }
+
 dt {
-  font-family: arial,helvetica;
+  font-family: arial, helvetica;
   font-weight: bold;
   font-size: 12px;
   color: #000000;
 }
+
 dd {
-  font-family: arial,helvetica;
+  font-family: arial, helvetica;
   color: #3030a0;
   font-size: 12px;
 }
+
 a {
-  font-family: arial,helvetica;
+  font-family: arial, helvetica;
   color: #3030a0;
 }
+
 a:hover {
-  font-family: arial,helvetica;
+  font-family: arial, helvetica;
   color: #ffffff;
   background-color: #3030a0;
 }
+
 .popup {
   color: #ffffff;
   background-color: #3030a0;
@@ -505,10 +510,12 @@ a:hover {
   border: 1px solid #000000;
   padding: 3px;
 }
+
 .popup dl {
   margin: 0px;
   padding: 0px;
 }
+
 .popup dt {
   font-size: 10px;
   font-weight: bold;
@@ -516,11 +523,13 @@ a:hover {
   padding: 0px;
   color: #ffffff;
 }
+
 .popup dd {
   font-size: 10px;
   margin-left: 20px;
   color: #ffffff;
 }
+
 .dtstart,
 .dtend,
 .description,
@@ -528,19 +537,15 @@ a:hover {
 .categories,
 .url,
 .rrule {
-  visibility:hidden;
+  visibility: hidden;
 }
-</style>
-
-<?php
+</style> <?php
 if ( ! empty ( $showPopups ) && empty ( $error ) ) {
   echo '<script src="includes/js/util.js"></script>
     <script src="includes/js/popups.js"></script>';
 }
-?>
-</head>
-<body>
-<?php } //end test for direct call
+?> </head>
+<body> <?php } //end test for direct call
 
 if ( ! empty ( $error ) ) {
   echo print_error ( $error );
@@ -553,10 +558,7 @@ if ( ! empty ( $error ) ) {
 }
 
 if ($showTitle) echo '<h3 class="cal_upcoming_title">'. translate ($upcoming_title) . '</h3>';
-?>
-
-<div class="vcalendar">
-<?php
+?> <div class="vcalendar"> <?php
 echo "<dl>\n";
 
 echo "<!-- \nstartTime: $startDate (" . date('Ymd H:i:s', $startDate ) . ")\n" .
@@ -600,9 +602,7 @@ echo "</dl>\n";
 
 if ( $showMore ) echo '<center><i><a href="'. $title_more_url . '"> . . . ' .
    translate ( 'more' ) . '</a></i></center>';
-?>
-</div>
-<?php
+?> </div> <?php
 echo $eventinfo;
 if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) {
   echo "</body>\n</html>";

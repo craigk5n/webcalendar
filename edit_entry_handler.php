@@ -155,7 +155,7 @@ $timetype      = getPostValue( 'timetype' );
 $weekdays_only = getPostValue( 'weekdays_only' );
 $wkst          = getPostValue( 'wkst' );
 
-$description = ( strlen( $description ) == 0 || $description == '<br />'
+$description = ( strlen( $description ) == 0 || $description == '<br>'
   ? $name : $description );
 
 // For public events, we don't EVER allow HTML tags.  There is just too
@@ -908,7 +908,7 @@ if( empty( $error ) ) {
        . implode( ',', $names ) . ' ) VALUES ( ?'
        . str_repeat( ',?', count( $values ) - 1 ) . ' )';
       dbi_execute( $sql, $values );
-      $msg .= '<span class="bold">SQL:</span> ' . $sql . '<br /><br />';
+      $msg .= '<span class="bold">SQL:</span> ' . $sql . '<br><br>';
     } //end add repeating info
 
     // We manually created exceptions. This can be done without repeats.
@@ -1279,11 +1279,11 @@ if( ! empty( $conflicts ) ) {
       $xkey .= "[]";
       foreach ($xval as $ykey => $yval) {
         echo '
-      <input type="hidden" name="' . $xkey . '" value="' . $yval . '" />';
+      <input type="hidden" name="' . $xkey . '" value="' . $yval . '">';
       }
     } else {
       echo '
-      <input type="hidden" name="' . $xkey . '" value="' . $xval . '" />';
+      <input type="hidden" name="' . $xkey . '" value="' . $xval . '">';
     }
   }
 
@@ -1291,9 +1291,9 @@ if( ! empty( $conflicts ) ) {
   // Allow them to override a conflict if server settings allow it.
    ( ! empty( $ALLOW_CONFLICT_OVERRIDE ) && $ALLOW_CONFLICT_OVERRIDE == 'Y' ? '
       <input type="submit" name="confirm_conflicts" value="'
-     . translate( 'Save' ) . '" />' : '' ) . '
+     . translate( 'Save' ) . '">' : '' ) . '
       <input type="button" value="' . translate( 'Cancel' )
-   . '" onclick="history.back()" />
+   . '" onclick="history.back()">
     </form>';
 
 } else

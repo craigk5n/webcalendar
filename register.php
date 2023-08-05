@@ -260,8 +260,8 @@ echo "<script>\n";
   xlate['noBlankEmail'] = '<?php etranslate('Email cannot be blank.', true);?>';
   xlate['passwordsNoMatch'] = '<?php etranslate('The passwords were not identical.', true);?>';
 </script>
-<link href="css_cacher.php?login=__public__" rel="stylesheet" />
-<link href="includes/css/styles.css" rel="stylesheet" />
+<link href="css_cacher.php?login=__public__" rel="stylesheet">
+<link href="includes/css/styles.css" rel="stylesheet">
 
 <?php
  // Print custom header (since we do not call print_header function)
@@ -294,7 +294,7 @@ echo "<script>\n";
 <?php } else { ?>
   <form action="register.php" method="post" onSubmit="return valid_form()"
     name="selfreg">
-    <input type="hidden" name="control" value="<?php echo $form_control;?>" />
+    <input type="hidden" name="control" value="<?php echo $form_control;?>">
     <div class="form-group row">
       <label for="login" class="text-info"><?php etranslate('Username')?>:</label><br>
       <input type="text" name="user" id="user" class="form-control" value="<?php echo htmlspecialchars($user);?>"
@@ -344,9 +344,9 @@ echo "<script>\n";
     </form>
 <?php } ?>
 
-<br />
-<span class="cookies"><?php etranslate('cookies-note');?></span><br />
-<hr />
+<br>
+<span class="cookies"><?php etranslate('cookies-note');?></span><br>
+<hr>
 <a href="<?php echo $PROGRAM_URL;?>" id="programname"><?php echo $PROGRAM_NAME;?></a>
 
 <?php

@@ -337,7 +337,7 @@ function get_installed_version ( $postinstall = false ) {
   $_SESSION['blank_database'] = '';
   // We will append the db_type to come up te proper filename.
   $_SESSION['install_file'] = 'tables';
-  //echo "Set install_files in get_installed_version <br>";
+  //echo "Set install_files in get_installed_version<br>";
   //echo "install_file = " . $_SESSION['install_file'] . "<br>";
   $_SESSION['old_program_version'] = ( $postinstall
     ? $PROGRAM_VERSION : 'new_install' );
@@ -348,10 +348,10 @@ function get_installed_version ( $postinstall = false ) {
   // This data is read from file upgrade_matrix.php.
   for ( $i = 0, $dbCntStr = count ( $database_upgrade_matrix ); $i < $dbCntStr; $i++ ) {
     $sql = $database_upgrade_matrix[$i][0];
-    //echo "SQL: $sql <br>\n";
+    //echo "SQL: $sql<br>\n";
 
     if (empty($sql)) {
-      // We reached the end of database_upgrade_matrix[] with no errors, which 
+      // We reached the end of database_upgrade_matrix[] with no errors, which
       // means the database is structurally up-to-date.
     } else {
       try{
@@ -374,7 +374,7 @@ function get_installed_version ( $postinstall = false ) {
           dbi_execute ( $sql, [], false, $show_all_errors );
       } else {
         //echo "Failure on " . $database_upgrade_matrix[$i][2] . "<br>";
-        //echo "Failure SQL: $sql <br>";
+        //echo "Failure SQL: $sql<br>";
       }
     }
   }
@@ -534,7 +534,7 @@ function db_populate ( $install_filename, $display_sql ) {
   for ( $i = 0, $sqlCntStr = count ( $parsed_sql ); $i < $sqlCntStr; $i++ ) {
     if ( empty ( $display_sql ) ) {
       if ( $show_all_errors == true )
-        echo $parsed_sql[$i] . '<br />';
+        echo $parsed_sql[$i] . '<br>';
 
       dbi_execute( $parsed_sql[$i], [], false, $show_all_errors );
     } else

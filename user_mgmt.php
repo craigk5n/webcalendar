@@ -68,10 +68,10 @@ print_header(
     </thead>
 </table>
 
-<br />
+<br>
 <?php if ($is_admin && $admin_can_delete_user && access_can_access_function(ACCESS_USER_MANAGEMENT)) { ?>
 <div class="userButtons">
-    <input class="btn btn-primary" type="button" value="<?php etranslate('Add User'); ?>..." onclick="return edit_user('')" />
+    <input class="btn btn-primary" type="button" value="<?php etranslate('Add User'); ?>..." onclick="return edit_user('')">
 </div>
 <?php } ?>
 
@@ -92,31 +92,31 @@ print_header(
                     <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
                 </div>
                 <form name="editUserForm" id="editUserForm">
-                    <input type="hidden" name="editUserDelete" id="editUserDelete" value="0" />
-                    <input type="hidden" name="editUserAdd" id="editUserAdd" value="0" />
+                    <input type="hidden" name="editUserDelete" id="editUserDelete" value="0">
+                    <input type="hidden" name="editUserAdd" id="editUserAdd" value="0">
                     <div class="form-inline" is="divEditUsername">
                         <label class="col-5" for="editUsername"><?php etranslate('Username') ?>: </label>
-                        <input type="text" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New username') . ' (' . translate('required') . ')'; ?>" MAXLENGTH="25" />
+                        <input type="text" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New username') . ' (' . translate('required') . ')'; ?>" MAXLENGTH="25">
                     </div>
                     <div class="form-inline mt-1" id="div-editFirstname">
                         <label class="col-5 for=" editFirstname"><?php etranslate('First Name') ?>: </label>
-                        <input type="text" class="col-7 form-control" id="editFirstname" name="editFirstname" MAXLENGTH="25" />
+                        <input type="text" class="col-7 form-control" id="editFirstname" name="editFirstname" MAXLENGTH="25">
                     </div>
                     <div class="form-inline mt-1" id="div-editLastname">
                         <label class="col-5 for=" editLastname"><?php etranslate('Last Name') ?>: </label>
-                        <input type="text" class="col-7 form-control" id="editLastname" name="editLastname" MAXLENGTH="25" />
+                        <input type="text" class="col-7 form-control" id="editLastname" name="editLastname" MAXLENGTH="25">
                     </div>
                     <div class="form-inline mt-1" id="div-editEmail">
                         <label class="col-5 for=" editEmail"><?php etranslate('Email') ?>: </label>
-                        <input type="email" class="col-7 form-control" id="editEmail" name="editEmail" MAXLENGTH="75" />
+                        <input type="email" class="col-7 form-control" id="editEmail" name="editEmail" MAXLENGTH="75">
                     </div>
                     <div class="form-inline mt-1" id="div-editPassword1">
                         <label class="col-5 for=" editPassword1"><?php etranslate('Password') ?>: </label>
-                        <input type="password" class="col-7 form-control" id="editPassword1" name="editPassword1" />
+                        <input type="password" class="col-7 form-control" id="editPassword1" name="editPassword1">
                     </div>
                     <div class="form-inline mt-1" id="div-editPassword2">
                         <label class="col-5 for=" editPassword2"><?php etranslate('Password (again)'); ?>: </label>
-                        <input type="password" class="col-7 form-control" id="editPassword2" name="editPassword2" />
+                        <input type="password" class="col-7 form-control" id="editPassword2" name="editPassword2">
                     </div>
                     <div class="form-inline mt-1 mb-2" id="div-editEnabled">
                         <label class="col-5 for=" editEnabled"><?php etranslate('Enabled') ?>: </label>
@@ -128,8 +128,8 @@ print_header(
                     </div>
 
                     <div class="modal-footer">
-                        <input class="btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                        <input class="btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
+                        <input class="btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
+                        <input class="btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="save_handler();">
                     </div>
                 </form>
             </div>
@@ -156,20 +156,20 @@ print_header(
                 <form name="editPasswordForm" id="editPasswordForm">
                     <div class="form-inline" id="divEditPasswordUsername">
                         <label class="col-5" for="editPasswordUsername"><?php etranslate('Username') ?>: </label>
-                        <input disabled="true" type="text" class="col-7 form-control" id="editPasswordUsername" name="editPasswordUsername" />
+                        <input disabled type="text" class="col-7 form-control" id="editPasswordUsername" name="editPasswordUsername">
                     </div>
                     <div class="form-inline mt-1" id="div-setPassword1">
                         <label class="col-5 for=" setPassword1"><?php etranslate('Password') ?>: </label>
-                        <input type="password" class="col-7 form-control" id="setPassword1" name="setPassword1" />
+                        <input type="password" class="col-7 form-control" id="setPassword1" name="setPassword1">
                     </div>
                     <div class="form-inline mt-1" id="div-setPassword2">
                         <label class="col-5 for=" setPassword2"><?php etranslate('Password (again)'); ?>: </label>
-                        <input type="password" class="col-7 form-control" id="setPassword2" name="setPassword2" />
+                        <input type="password" class="col-7 form-control" id="setPassword2" name="setPassword2">
                     </div>
 
                     <div class="modal-footer">
-                        <input class="form-control btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                        <input class="form-control btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Set Password"); ?>" onclick="change_password_handler();" />
+                        <input class="form-control btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
+                        <input class="form-control btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Set Password"); ?>" onclick="change_password_handler();">
                     </div>
                 </form>
             </div>
@@ -194,13 +194,13 @@ print_header(
                     <form name="deleteUserForm" id="deleteUserForm">
                         <div class="form-inline" is="divdeleteUsername">
                             <label class="col-5" for="deleteUsername"><?php etranslate('Username') ?>: </label>
-                            <input disabled="true" type="text" class="col-7 form-control" id="deleteUsername" name="deleteUsername" />
+                            <input disabled type="text" class="col-7 form-control" id="deleteUsername" name="deleteUsername">
                         </div>
                     </form>
                     <br>
                     <div class="modal-footer">
-                        <input class="form-control btn btn-secondary" onclick="$('#delete-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                        <input class="form-control btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();" />
+                        <input class="form-control btn btn-secondary" onclick="$('#delete-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
+                        <input class="form-control btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();">
                     </div>
                 </div>
             </div>
@@ -275,7 +275,7 @@ print_header(
                     tbody += '<tr><td>' + u.login + '</td><td>' + (u.firstname == null ? '' : u.firstname) +
                         '</td><td>' + (u.lastname == null ? '' : u.lastname) + '</td><td>' + (u.email == null ? '' : u.email) +
                         '</td><td>' +
-                        (u.is_admin == 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg" />' : '') +
+                        (u.is_admin == 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg">' : '') +
                         '</td><td>' + user_menu(u.login) + '</td></tr>\n';
                     <?php if (!$is_admin) { ?>
                         }

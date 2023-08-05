@@ -29,7 +29,7 @@ else {
         </tr>
         <tr>
           <td class="aligncenter"><input type="submit" value="'
-   . translate ( 'Continue' ) . '" /></td>
+   . translate ( 'Continue' ) . '"></td>
         </tr>
         <tr>
           <td>'

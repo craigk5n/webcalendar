@@ -70,9 +70,9 @@ print_header(
     </thead>
 </table>
 
-<br />
+<br>
 <div class="userButtons">
-    <input class="btn btn-primary" type="button" value="<?php etranslate('Add Resource Calendar'); ?>..." onclick="return edit_user('')" />
+    <input class="btn btn-primary" type="button" value="<?php etranslate('Add Resource Calendar'); ?>..." onclick="return edit_user('')">
 </div>
 
 <!-- add/edit user modal dialog -->
@@ -92,17 +92,17 @@ print_header(
                     <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
                 </div>
                 <form class="needs-validation" novalidate name="editUserForm" id="editUserForm">
-                    <input type="hidden" name="editUserAdd" id="editUserAdd" value="0" />
+                    <input type="hidden" name="editUserAdd" id="editUserAdd" value="0">
                     <div class="form-inline" id="divEditUsername">
                         <label class="col-5" for="editUsername" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Unique Calendar ID for resource calendar') ?>"><?php etranslate('Calendar ID') ?>: </label>
-                        <input required type="text" pattern="[A-Za-z0-9_]+" title="<?php etranslate('word characters only'); ?>" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New ID') . ' (' . translate('required') . ')'; ?>" />
+                        <input required type="text" pattern="[A-Za-z0-9_]+" title="<?php etranslate('word characters only'); ?>" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New ID') . ' (' . translate('required') . ')'; ?>">
                         <div id="invalid-id-error" class="invalid-feedback text-right">
                             <?php echo $invalidIDError; ?>
                         </div>
                     </div>
                     <div class="form-inline mt-1" id="div-Name">
                         <label class="col-5 for="editName"><?php etranslate('Name') ?>: </label>
-                        <input required type="text" class="col-7 form-control" id="editName" name="editName" />
+                        <input required type="text" class="col-7 form-control" id="editName" name="editName">
                         <div id="invalid-name-error" class="invalid-feedback text-right">
                             <?php echo $noNameError; ?>
                         </div>
@@ -129,8 +129,8 @@ print_header(
                     <?php } ?>
 
                     <div class="modal-footer mt-2">
-                        <input class="btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                        <input class="btn btn-primary" data-dismiss="modal" type="buton" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
+                        <input class="btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
+                        <input class="btn btn-primary" data-dismiss="modal" type="buton" value="<?php etranslate("Save"); ?>" onclick="save_handler();">
                     </div>
                 </form>
             </div>
@@ -154,13 +154,13 @@ print_header(
                 <form name="deleteUserForm" id="deleteUserForm">
                     <div class="form-inline" id="divdeleteUsername">
                         <label class="col-5" for="deleteUsername"><?php etranslate('Username') ?>: </label>
-                        <input disabled="true" type="text" class="col-7 form-control" id="deleteUsername" name="deleteUsername" />
+                        <input disabled type="text" class="col-7 form-control" id="deleteUsername" name="deleteUsername">
                     </div>
                 </form>
                 <br>
                 <div class="modal-footer mt-2">
-                    <input class="btn btn-secondary" onclick="$('#delete-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                    <input class="btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();" />
+                    <input class="btn btn-secondary" onclick="$('#delete-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
+                    <input class="btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();">
                 </div>
             </div>
         </div>
@@ -193,7 +193,7 @@ print_header(
 
     // Remove any PHP warnings/errors at the beginning of our response.
     // Example:
-    // <b>Warning</b>:  Cannot modify header information - headers already sent in <b>/var/www/html/includes/ajax.php</b> on line <b>78</b><br />
+    // <b>Warning</b>: Cannot modify header information - headers already sent in <b>/var/www/html/includes/ajax.php</b> on line <b>78</b><br>
     // {"error":0,"status":"OK","message":"35 events added, 0 events deleted"}
     function trim_json(str) {
         console.log("Trimming JSON string: " + str);
@@ -254,7 +254,7 @@ print_header(
                     var id = u.login.substring(0, 5) == '<?php echo $NONUSER_PREFIX; ?>' ? u.login.substring(5) : u.login;
                     tbody += '<tr><td>' + id +
                         '</td><td>' + (u.fullname == null ? '' : u.fullname) + '</td><td>' + (u.admin == null ? '' : u.admin) +
-                        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg" />' : '') +
+                        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg">' : '') +
                         <?php } ?> '</td><td>' + u.eventcount + '</td><td>' +
                         user_menu(u.login) + '</td></tr>\n';
                 }

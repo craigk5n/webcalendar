@@ -256,10 +256,10 @@ function print_issue($description, $isOk, $help)
 {
 
   if ($isOk) {
-    $img = '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg" />';
+    $img = '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg">';
     $help = '&nbsp;';
   } else {
-    $img = '<img class="button-icon-inverse" src="images/bootstrap-icons/exclamation-triangle-fill.svg" />';
+    $img = '<img class="button-icon-inverse" src="images/bootstrap-icons/exclamation-triangle-fill.svg">';
   }
 
   echo '<tr><td>' . $description . '</td>' .

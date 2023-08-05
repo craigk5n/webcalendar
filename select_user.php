@@ -41,11 +41,11 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
 
   echo '
       </select>
-      <input class="btn btn-primary" type="submit" value="' . translate ( 'Go' ) . '" />
+      <input class="btn btn-primary" type="submit" value="' . translate ( 'Go' ) . '">
     </form>';
 }
 
-echo '<br /><br />
+echo '<br><br>
     ' . print_trailer();
 
 ?>

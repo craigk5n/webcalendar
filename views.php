@@ -28,8 +28,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 echo '</ul><div><br><a title="' . translate ( 'Add New View' )
   . '" class="btn btn-primary active" role="button" aria-pressed="true" href="views_edit.php">' . translate ( 'Add New View' ) . '</a></div>';
 
-echo ( $global_found ? '<br />
-        *&nbsp;' . translate ( 'Global' ) : '' ) . '<br />
+echo ( $global_found ? '<br>
+        *&nbsp;' . translate ( 'Global' ) : '' ) . '<br>
       </div>
     </div>
     ' . print_trailer();
