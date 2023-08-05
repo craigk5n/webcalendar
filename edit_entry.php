@@ -610,9 +610,9 @@ $tabI = 0;
           <select class="form-control" name="access" id="entry_access" value="<?php echo htmlspecialchars($name); ?>">
             <option value="P" <?php echo ($access == 'P' || !strlen($access) ? $selected : ''); ?>>
               <?php etranslate('Public'); ?></option>
-            <option value="R" <?php echo ($access == 'R' || !strlen($access) ? $selected : ''); ?>>
+            <option value="R" <?php echo ( $access == 'R' ) ? $selected : ''); ?>>
               <?php etranslate('Private'); ?></option>
-            <option value="C" <?php echo ($access == 'C' || !strlen($access) ? $selected : ''); ?>>
+            <option value="C" <?php echo ( $access == 'C' ) ? $selected : ''); ?>>
               <?php etranslate('Confidential'); ?></option>
           </select>
         <?php } ?>
