@@ -10,7 +10,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @package WebCalendar
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 $error = '';
 

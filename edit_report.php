@@ -23,7 +23,7 @@
  * can edit/delete report.
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 load_user_categories();
 
 $adding_report = false;

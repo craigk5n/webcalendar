@@ -32,7 +32,7 @@
  * Public user cannot edit/list reports.
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 /**
  * Replaces all site_extras placeholders in a template with the actual data.

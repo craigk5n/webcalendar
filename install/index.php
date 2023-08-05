@@ -53,14 +53,14 @@ $show_all_errors = false;
 // Change this path as needed.
 $firebird_path = 'c&#58;/program files/firebird/firebird_1_5/examples/employee.fdb';
 
-include_once '../includes/translate.php';
-include_once '../includes/dbi4php.php';
-include_once '../includes/config.php';
-include_once '../includes/formvars.php';
-include_once '../includes/load_assets.php';
-include_once 'default_config.php';
-include_once 'install_functions.php';
-include_once 'sql/upgrade_matrix.php';
+require_once '../includes/config.php';
+require_once '../includes/dbi4php.php';
+require_once '../includes/formvars.php';
+require_once '../includes/load_assets.php';
+require_once '../includes/translate.php';
+require_once 'default_config.php';
+require_once 'install_functions.php';
+require_once 'sql/upgrade_matrix.php';
 
 define( '__WC_BASEDIR', '../' );
 $fileDir = __WC_BASEDIR . 'includes';
@@ -246,7 +246,7 @@ if( file_exists( $file ) && $forcePassword && ! empty( $pwd1 ) ) {
     exit;
   }
   fwrite( $fd, '<?php' . "\r\n" . 'install_password: ' . md5( $pwd1 )
-     . "\r\n?>\r\n" );
+     . "\r\n?\>\r\n" );
   fclose( $fd );
 
   echo '
@@ -254,7 +254,7 @@ if( file_exists( $file ) && $forcePassword && ! empty( $pwd1 ) ) {
   <head>
     <title>' . translate( 'Password Updated' ) . '</title>
     <meta http-equiv="refresh" content="0; index.php">
-    <?php echo $jquery_install; ?>
+    ' . $jquery_install . '
   </head>
   <body onLoad="alert( \''
    . translate( 'Password has been set', true ) . '\' );">
@@ -276,7 +276,7 @@ if( ! empty( $fd ) ) {
 
     if( preg_match( '/^#|\/\*/', $buffer ) // comments
         || preg_match( '/^<\?/', $buffer ) // start php code
-        || preg_match( '/^\?>/', $buffer ) // end php code
+        || preg_match( '/^\?\>/', $buffer ) // end php code
       ) {
         continue;
     }
@@ -287,7 +287,7 @@ if( ! empty( $fd ) ) {
 
   if( isset( $settings['config_inc'] ) ) {
     # Load 3rd party configs from external app
-    require get_full_include_path( $settings['config_inc'] );
+    require_once get_full_include_path ( $settings['config_inc'] );
     $settings = do_external_configs( $settings );
   }
 }
@@ -368,12 +368,12 @@ if( ! empty( $action ) && $action == 'install' ) {
         $install_filename .= 'postgres.sql';
         break;
       case 'sqlite':
-        include_once 'sql/tables-sqlite.php';
+        require_once 'sql/tables-sqlite.php';
         populate_sqlite_db( $real_db, $c );
         $install_filename = '';
         break;
       case 'sqlite3':
-        include_once 'sql/tables-sqlite3.php';
+        require_once 'sql/tables-sqlite3.php';
         populate_sqlite_db( $real_db, $c );
         $install_filename = '';
         break;
@@ -767,7 +767,7 @@ if( ! empty( $x ) || ! empty( $y ) ) {
       if( $v != '<br>' && $v != '' )
         fwrite( $fd, $k . ': ' . $v . "\r\n" );
     }
-    fwrite( $fd, '# end settings.php */' . "\r\n?>\r\n" );
+    fwrite ( $fd, "# end settings.php */\r\n?\>\r\n" );
     fclose( $fd );
 
     if( $post_action != $testSettingsStr && $post_action2 != $createNewStr )

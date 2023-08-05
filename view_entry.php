@@ -11,13 +11,14 @@
 * log    - show activity log (any non-empty value)
 * (*) required field
 */
-include_once 'includes/init.php';
-include 'includes/xcal.php'; // only to display recurrance info
+require_once 'includes/init.php';
+require_once 'includes/xcal.php'; // Only to display recurrance info.
+
 // Load Doc classes for attachments and comments
-include 'includes/classes/Doc.php';
-include 'includes/classes/DocList.php';
-include 'includes/classes/AttachmentList.php';
-include 'includes/classes/CommentList.php';
+require_once 'includes/classes/AttachmentList.php';
+require_once 'includes/classes/CommentList.php';
+require_once 'includes/classes/Doc.php';
+require_once 'includes/classes/DocList.php';
 
 // Make sure this user is allowed to look at this calendar.
 $can_approve = $can_edit = $can_view = false;

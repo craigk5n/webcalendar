@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 // Is this user allowed to search the calendars of other users?
 $show_others = false; // show "Advanced Search"
 

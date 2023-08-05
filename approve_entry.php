@@ -1,6 +1,6 @@
 <?php
-include_once 'includes/init.php';
-require ( 'includes/classes/WebCalMailer.php' );
+require_once 'includes/init.php';
+require_once 'includes/classes/WebCalMailer.php';
 
 $error = '';
 

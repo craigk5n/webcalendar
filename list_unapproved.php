@@ -15,7 +15,7 @@
  * @package WebCalendar
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 send_no_cache_header();
 
 if ( empty ( $user ) )

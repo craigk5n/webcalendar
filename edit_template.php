@@ -12,7 +12,7 @@
  * Security:
  * Admin permissions are checked by the WebCalendar class.
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 $cur = $error = '';
 $found = $foundOld = false;

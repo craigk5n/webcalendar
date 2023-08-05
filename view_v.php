@@ -20,8 +20,8 @@
  * user_sees_only_his_groups is enabled, then we remove users not in this user's
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
-include_once 'includes/views.php';
+require_once 'includes/init.php';
+require_once 'includes/views.php';
 
 $DAYS_PER_TABLE = 7;
 $error = '';
@@ -74,7 +74,7 @@ if ( $viewusercnt == 0 )
   // this user is not a member of any group assigned to this view.
   $error = translate( 'No users for this view.' );
 
-if ( ! empty( $error ) ) {
+if ( ! empty ( $error ) ) {
   echo print_error( $error ) . print_trailer();
   exit;
 }

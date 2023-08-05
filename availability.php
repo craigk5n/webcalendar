@@ -14,7 +14,7 @@
  *   System Settings unless the user is an admin user ($is_admin).
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 // Don't allow users to use this feature if "allow view others" is disabled.
 if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin )
   // not allowed...

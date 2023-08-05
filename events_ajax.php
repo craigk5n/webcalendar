@@ -11,30 +11,30 @@
  *
  * TODO: hide private events of other users.
  */
-include_once 'includes/translate.php';
+require_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.php';
 require_once 'includes/classes/Event.php';
 require_once 'includes/classes/RptEvent.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
+require_once 'includes/config.php';
+require_once 'includes/dbi4php.php';
+require_once 'includes/formvars.php';
+require_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
-include 'includes/' . $user_inc;
-include 'includes/access.php';
-include 'includes/validate.php';
-include 'includes/ajax.php';
+require_once "includes/$user_inc";
+require_once 'includes/access.php';
+require_once 'includes/ajax.php';
+require_once 'includes/validate.php';
 
 // Load Doc classes for attachments and comments
-include 'includes/classes/Doc.php';
-include 'includes/classes/DocList.php';
-include 'includes/classes/AttachmentList.php';
-include 'includes/classes/CommentList.php';
+require_once 'includes/classes/AttachmentList.php';
+require_once 'includes/classes/CommentList.php';
+require_once 'includes/classes/Doc.php';
+require_once 'includes/classes/DocList.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -133,7 +133,7 @@ if ( $action == 'get' ) {
   if ( ! empty ( $id ) )
     load_category_ids ( $ids );
 
-  // TODO:  We need to be able to start a week on ANY day.
+  // TODO: We need to be able to start a week on ANY day.
   $monthend = date ( 'Ymd',
     mktime ( 0, 0, 0, $startmonth + 1, 0, $startyear ) );
   for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthend; $i += 604800 ) {

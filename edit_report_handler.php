@@ -31,7 +31,7 @@
  * Can only delete/edit an event if you are the creator of the event
  * or you are an admin user.
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 load_user_categories();
 
 $error = ( empty( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y'

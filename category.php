@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 // Load user and global cats.
 load_user_categories();
 

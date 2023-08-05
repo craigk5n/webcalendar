@@ -6,7 +6,7 @@
  * of code copied from there.
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 // Verify access to this page is allowed.
 if (empty($login) || $login == '__public__') {

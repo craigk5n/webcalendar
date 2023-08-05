@@ -54,10 +54,10 @@
 
 // We don't really need it if calling gradients.php standalone.
 if ( file_exists ( 'includes/formvars.php' ) )
-  include_once 'includes/formvars.php';
+  require_once 'includes/formvars.php';
 //we may be calling gradients directly, so the path will be different
 if ( file_exists ( 'formvars.php' ) )
-  include_once 'formvars.php';
+  require_once 'formvars.php';
 
 $MIN_COLORS = 4;
 $MAX_COLORS = 256;

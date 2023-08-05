@@ -1,8 +1,8 @@
 <?php
-include_once 'includes/init.php';
-include_once 'includes/date_formats.php';
+require_once 'includes/init.php';
+require_once 'includes/date_formats.php';
 if ( file_exists ( 'install/default_config.php' ) )
-  include_once 'install/default_config.php';
+  require_once 'install/default_config.php';
 
 // Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
 // admin.php will not use this cached CSS, but we want to make sure it's flushed.

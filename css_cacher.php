@@ -1,17 +1,17 @@
 <?php
 define( '_ISVALID', true );
 
-include 'includes/translate.php';
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
+require_once 'includes/translate.php';
+require_once 'includes/config.php';
+require_once 'includes/dbi4php.php';
+require_once 'includes/formvars.php';
+require_once 'includes/functions.php';
 
 do_config( 'includes/settings.php' );
-include 'includes/' . $user_inc;
-include_once 'includes/access.php';
-include_once 'includes/validate.php';
-include_once 'includes/gradient.php';
+require_once "includes/$user_inc";
+require_once 'includes/access.php';
+require_once 'includes/gradient.php';
+require_once 'includes/validate.php';
 
 load_global_settings();
 @session_start();
@@ -44,6 +44,6 @@ header( 'Pragma: Public' );
 
 send_no_cache_header();
 
-include_once 'includes/css/styles.php';
+require_once 'includes/css/styles.php';
 
 ?>

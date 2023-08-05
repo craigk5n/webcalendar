@@ -4,23 +4,23 @@
  *   Handler for AJAX requests from users_mgmt.php, nonuser_mgmt.php
  *   and remotecal_mgmt.php.
  */
-include_once 'includes/translate.php';
+require_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar(__FILE__);
 
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
+require_once 'includes/config.php';
+require_once 'includes/dbi4php.php';
+require_once 'includes/formvars.php';
+require_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
-include 'includes/' . $user_inc;
-include 'includes/access.php';
-include 'includes/validate.php';
-include 'includes/ajax.php';
-include 'includes/xcal.php';
+require_once "includes/$user_inc";
+require_once 'includes/access.php';
+require_once 'includes/ajax.php';
+require_once 'includes/validate.php';
+require_once 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 

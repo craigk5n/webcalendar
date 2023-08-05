@@ -91,7 +91,7 @@ chdir(dirname(__FILE__));
     'site_extras',
     'translate',
   ) as $i ) {
-  include_once 'includes/' . $i . '.php';
+  require_once 'includes/' . $i . '.php';
 }
 foreach( array(
     'WebCalendar',
@@ -103,7 +103,7 @@ foreach( array(
 $WebCalendar = new WebCalendar( __FILE__ );
 $WebCalendar->initializeFirstPhase();
 
-include 'includes/' . $user_inc;
+require_once "includes/$user_inc";
 
 //set default hCalendar but allow it to be overridden
 //this will include hidden values that can gleaned by hCalendar
@@ -114,7 +114,7 @@ if ( empty ( $hcalendar_output ) )
 
 //added to support hCalendar
 if ( $hcalendar_output )
- include 'includes/xcal.php';
+ require_once 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 //This must contain the file name that this file is saved under. It is

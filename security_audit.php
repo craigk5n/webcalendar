@@ -12,7 +12,7 @@
  *  AND, if user access control is enabled, they must have access to
  *  'Security Audit'.
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 if (!$is_admin || (access_is_enabled()
   && !access_can_access_function(ACCESS_SECURITY_AUDIT))) {

@@ -17,8 +17,8 @@
  * user_sees_only_his_groups is enabled, then we remove users not in this user's
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
-include_once 'includes/views.php';
+require_once 'includes/init.php';
+require_once 'includes/views.php';
 
 $error = '';
 $USERS_PER_TABLE = 6;

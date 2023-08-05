@@ -15,7 +15,7 @@
 // already saved under preferences.
 
 // Craig. If the above comment is true,
-// why not just include 'install/default_config.php' here?
+// why not just require_once 'install/default_config.php' here?
 // Then we wouldn't need to keep both places up to date.
 $webcal_theme = [
   'ADD_LINK_IN_VIEWS'                => 'N',
@@ -135,6 +135,6 @@ $webcal_theme = [
   'WORK_DAY_END_HOUR'                => '17',
   'WORK_DAY_START_HOUR'              => '8'];
 
-include 'theme_inc.php';
+require_once 'theme_inc.php';
 
 ?>

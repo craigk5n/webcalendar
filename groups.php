@@ -3,7 +3,7 @@
  * Group Management.
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 if (
     empty($login) || $login == '__public__' ||

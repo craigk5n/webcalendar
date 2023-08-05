@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 send_no_cache_header();
 
 load_user_layers ( $user != $login && $is_nonuser_admin ? $user : '' );

@@ -1,6 +1,6 @@
 <?php
-include_once 'includes/init.php';
-include_once 'includes/help_list.php';
+require_once 'includes/init.php';
+require_once 'includes/help_list.php';
 
 if ( empty ( $SERVER_SOFTWARE ) )
   $SERVER_SOFTWARE = $_SERVER['SERVER_SOFTWARE'];

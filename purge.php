@@ -12,7 +12,7 @@
  * user. Events where the user was a participant (but not did not
  * create) will remain unchanged.
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 // Set this to true do show the SQL at the bottom of the page
 $purgeDebug = false;

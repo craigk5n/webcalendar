@@ -4,6 +4,7 @@
  */
 defined('_ISVALID') or die('You cannot access this file directly!');
 
+
 global $ALLOW_VIEW_OTHER, $BodyX, $CATEGORIES_ENABLED, $DISPLAY_TASKS_IN_GRID,
 $DISPLAY_TASKS, $fullname, $GROUPS_ENABLED, $has_boss, $HOME_LINK,
 $is_admin, $is_assistant, $is_nonuser_admin, $is_nonuser, $login_return_path,

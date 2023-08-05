@@ -1,6 +1,6 @@
 <?php
-include_once 'includes/init.php';
-require 'includes/classes/WebCalMailer.php';
+require_once 'includes/init.php';
+require_once 'includes/classes/WebCalMailer.php';
 $mail = new WebCalMailer;
 
 load_user_categories();
@@ -417,7 +417,7 @@ if( file_exists( 'includes/classes/captcha/captcha.php' )
     && $login == '__public__'
     && ! empty( $ENABLE_CAPTCHA ) && $ENABLE_CAPTCHA == 'Y' ) {
   if( function_exists( 'imagecreatetruecolor' ) ) {
-    include_once 'includes/classes/captcha/captcha.php';
+    require_once 'includes/classes/captcha/captcha.php';
     $res = captcha::check();
 
     if( ! $res )

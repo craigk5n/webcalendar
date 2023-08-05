@@ -8,7 +8,7 @@
  * If no login info is passed, we check for the last login used.
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 load_global_settings();
 
