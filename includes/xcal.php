@@ -663,8 +663,9 @@ function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
 }
 
 function export_get_event_entry( $id = 'all', $attachment = false ) {
-  global $cat_filter, $DISPLAY_UNAPPROVED, $enddate, $include_layers, $layers,
-  $login, $moddate, $startdate, $type, $user, $USER_REMOTE_ACCESS, $use_all_dates;
+  global $cat_filter, $DISPLAY_UNAPPROVED, $enddate,
+  $include_layers, $layers, $login, $moddate, $startdate,
+  $type, $user, $USER_REMOTE_ACCESS, $use_all_dates;
 
   $sql_params = [];
   $sql = 'SELECT we.cal_id, we.cal_name, we.cal_priority, we.cal_date,
@@ -924,8 +925,8 @@ function export_vcal ( $id ) {
 } //end function
 
 function export_ical ( $id = 'all', $attachment = false ) {
-  global $cal_type, $cat_filter, $login, $publish_fullname,
-  $use_vtimezone, $vtimezone_data;
+  global $cal_type, $cat_filter, $login,
+  $publish_fullname, $use_vtimezone, $vtimezone_data;
 
   $exportId = -1;
   $ret = $Vret = $vtimezone_data = $use_vtimezone = '';
@@ -1219,9 +1220,9 @@ $Entry[Repeat][Count]      =  Number of occurances, may be used instead of UNTIL
 */
 
 function import_data ( $data, $overwrite, $type, $silent=false ) {
-  global $ALLOW_CONFLICTS, $ALLOW_CONFLICT_OVERRIDE, $calUser, $count_con,
-  $count_suc, $errormsg, $error_num, $H2COLOR, $importcat, $ImportType,
-  $login, $numDeleted, $single_user, $single_user_login, $sqlLog, $importMd5;
+  global $ALLOW_CONFLICT_OVERRIDE, $ALLOW_CONFLICTS, $calUser, $count_con,
+  $count_suc, $error_num, $errormsg, $H2COLOR, $importcat, $importMd5,
+  $ImportType, $login, $numDeleted, $single_user_login, $single_user, $sqlLog;
 
   $oldUIDs =
   $oldIds = [];
@@ -1959,7 +1960,7 @@ function curl_download($url) {
  * It did work correctly with PHP 5.0.2.
  */
 function parse_ical ( $cal_file, $source = 'file' ) {
-  global $errormsg, $tz, $importMd5;
+  global $errormsg, $importMd5, $tz;
 
   $importMd5 = '';
   $ical_data = [];

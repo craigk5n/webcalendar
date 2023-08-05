@@ -4,15 +4,14 @@
  */
 defined('_ISVALID') or die('You cannot access this file directly!');
 
-global $ALLOW_VIEW_OTHER, $BodyX, $CATEGORIES_ENABLED, $DISPLAY_TASKS,
-  $DISPLAY_TASKS_IN_GRID, $fullname, $has_boss, $HOME_LINK, $is_admin,
-  $is_assistant, $is_nonuser, $is_nonuser_admin, $login, $login_return_path,
-  $MENU_DATE_TOP, $NONUSER_ENABLED, $PUBLIC_ACCESS,
-  $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL, $PUBLIC_ACCESS_CAN_ADD,
-  $PUBLIC_ACCESS_OTHERS, $readonly, $REMOTES_ENABLED, $REPORTS_ENABLED,
-  $REQUIRE_APPROVALS, $show_printer, $single_user, $START_VIEW, $thisday,
-  $thismonth, $thisyear, $use_http_auth, $user, $user_fullname, $views,
-  $OVERRIDE_PUBLIC, $GROUPS_ENABLED;
+global $ALLOW_VIEW_OTHER, $BodyX, $CATEGORIES_ENABLED, $DISPLAY_TASKS_IN_GRID,
+$DISPLAY_TASKS, $fullname, $GROUPS_ENABLED, $has_boss, $HOME_LINK,
+$is_admin, $is_assistant, $is_nonuser_admin, $is_nonuser, $login_return_path,
+$login, $MENU_DATE_TOP, $NONUSER_ENABLED, $OVERRIDE_PUBLIC,
+$PUBLIC_ACCESS_ADD_NEEDS_APPROVAL, $PUBLIC_ACCESS_CAN_ADD,
+$PUBLIC_ACCESS_OTHERS, $PUBLIC_ACCESS, $readonly, $REMOTES_ENABLED,
+$REPORTS_ENABLED, $REQUIRE_APPROVALS, $show_printer, $single_user, $START_VIEW,
+$thisday, $thismonth, $thisyear, $use_http_auth, $user_fullname, $user, $views;
 
 /* -----------------------------------------------------------------------------
          First figure out what options are on and privileges we have
@@ -714,20 +713,20 @@ if (empty($thisday))
 
 function print_year_menu_item($name, $date)
 {
-  global $user, $login;
+  global $login, $user;
   echo '<a class="dropdown-item" href="year.php?date=' . $date .
     ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a>\n";
 }
 
 function print_month_menu_item($name, $date)
 {
-  global $user, $login;
+  global $login, $user;
   echo '<li><a class="dropdown-item" href="month.php?date=' . $date . ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
 }
 
 function print_week_menu_item($name, $date)
 {
-  global $user, $login;
+  global $login, $user;
   echo '<li><a class="dropdown-item" href="week.php?date=' . $date . ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
 }
 

@@ -396,7 +396,7 @@ function setCategories ( $eventList )
 // Get all categories for each event.
 function load_category_ids ( $ids )
 {
-  global $eventCats, $user, $debug;
+  global $debug, $eventCats, $user;
   //$ids = array_unique ( sort ( $ids, SORT_NUMERIC ) );
   $idList = implode ( ",", $ids );
   if ( $debug )

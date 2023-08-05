@@ -135,7 +135,7 @@ exit;
  * Generate the activity log.
 */
 function rss_activity_log ( $sys, $entries ) {
-  global $SERVER_URL, $ALLOW_HTML_DESCRIPTION, $login;
+  global $ALLOW_HTML_DESCRIPTION, $login, $SERVER_URL;
 
   $sql_params = array();
 

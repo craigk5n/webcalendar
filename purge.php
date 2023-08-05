@@ -51,22 +51,26 @@ $INC = array ( 'js/visible.php' );
 
 print_header ( $INC );
 ?>
-
 <table>
-<tr><td style="vertical-align:top; width:50%;">
-<?php
-echo '<h2>' . translate ( 'Delete Events' );
+  <tr>
+    <td style="vertical-align:top; width:50%;">
+      <h2><?php etranslate ( 'Delete Events' );
+
 if ( $preview )
-  echo '[ ' . $previewStr . ']';
-echo "</h2>\n";
-echo display_admin_link();
+  echo "[$previewStr]";
+
+echo "</h2>\n"
+  . display_admin_link();
 
 if ( $do_purge ) {
-  if ( $preview )
-    echo '<h2> [' . $previewStr . '] ' . $purgingStr . " $username...</h2>\n";
-  else
-    echo '<h2>' . $purgingStr . ": $username</h2>\n";
+  echo '<h2>';
 
+  if ( $preview )
+    echo "[$previewStr] $purgingStr $username...";
+  else
+    echo "$purgingStr: $username";
+
+  echo "</h2>\n";
   $end_date = sprintf ( "%04d%02d%02d", $end_year, $end_month, $end_day );
   $ids = $tail = '';
   if ( $purge_deleted == 'Y' )
@@ -109,14 +113,13 @@ if ( $do_purge ) {
 onclick="history.back()"></form
 ><?php
   if ( $purgeDebug ) {
-    echo '<div style="border: 1px solid #000;background-color: #ffffff;"><tt>' .
-  $sqlLog . '</tt></div>' ."\n";
+    echo '<div style="border: 1px solid #000;background-color: #FFF;"><tt>'
+      . "$sqlLog</tt></div>\n";
   }
 } else {
 ?>
-
-<form action="purge.php" method="post" name="purgeform" id="purgeform">
-<?php echo csrf_form_key(); ?>
+<form id="purgeform" action="purge.php" method="post" name="purgeform">
+ <?php echo csrf_form_key(); ?>
 <table>
  <tr><td><label for="user" class="colon">
   <?php echo translate ( 'User' );?></label></td>
@@ -157,14 +160,13 @@ onclick="history.back()"></form
   <input class="form-control-sm" type="checkbox" name="preview" value="Y" checked>
  </td></tr>
  <tr><td colspan="2">
-  <input class="btn btn-primary" type="submit" name="delete" value="<?php
+   <input class="btn btn-primary" type="submit" name="delete" value="<?php
     echo $deleteStr?>" onclick="return confirm( '<?php
     etranslate ( 'Are you sure you want to delete events for', true);
     ?> ' + document.forms[0].username.value + '?' )">
  </td></tr>
 </table>
 </form>
-
 <?php } ?>
 </td></tr></table>
 
@@ -173,8 +175,8 @@ onclick="history.back()"></form
  * purge_events (needs description)
  */
 function purge_events ( $ids ) {
-  global $preview, $previewStr, $c; // db connection
-  global $sqlLog, $allStr;
+  global $allStr, $c, // db connection
+  $preview, $previewStr, $sqlLog;
 
   $tables = [
     ['webcal_entry_user', 'cal_id'],

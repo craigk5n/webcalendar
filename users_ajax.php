@@ -378,7 +378,7 @@ function strip_tags_content($text) {
 // for updating passwords.
 function save_user($add, $user, $lastname, $firstname, $is_admin, $enabled, $email, $password)
 {
-  global $error, $blankUserStr, $login;
+  global $blankUserStr, $error, $login;
 
   if (addslashes($user) != $user || strip_tags_content($user) != $user) {
     $error = 'Invalid characters in login.';
@@ -452,7 +452,7 @@ function save_remote_calendar($isAdd, $username, $lastname, $firstname, $url, $i
     return translate('Calendar ID') . ' ' . translate('word characters only') . '.';
   }
 
-  // Might want to move this into user.php instead of having SQL here... 
+  // Might want to move this into user.php instead of having SQL here...
   if (empty($error) && !$isAdd) {
     // Updating
     $query_params = [];
@@ -573,7 +573,7 @@ function save_group($isAdd, $id, $name, $users) {
   $dateYmd = date('Ymd');
   $msg = 'None';
 
-  // Might want to move this into user.php instead of having SQL here... 
+  // Might want to move this into user.php instead of having SQL here...
   if (!$isAdd) {
     // Updating
     $query_params = [];
