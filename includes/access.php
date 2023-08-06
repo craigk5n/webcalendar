@@ -478,8 +478,9 @@ function get_default_function_access( $page_id, $user ) {
 
 function access_user_calendar( $cal_can_xxx, $other_user, $cur_user = '',
   $type = '', $access = '' ) {
-  global $access_other_cals, $access_users, $ADMIN_OVERRIDE_UAC,
-  $ALLOW_VIEW_OTHER, $is_admin, $login;
+
+  global $access_other_cals, $access_users,
+  $ADMIN_OVERRIDE_UAC, $ALLOW_VIEW_OTHER, $is_admin, $login;
 
   $admin_override = ( $is_admin && ! empty( $ADMIN_OVERRIDE_UAC )
     && $ADMIN_OVERRIDE_UAC == 'Y' );
@@ -556,10 +557,10 @@ function access_user_calendar( $cal_can_xxx, $other_user, $cur_user = '',
       $type_wt = TASK_WT;
 
     $total_wt = $type_wt & $access_wt;
-     
+
     if( !is_numeric($ret) )
     	$ret = 0;
-     
+
     $ret = ( $ret &$total_wt ? $ret : 0 );
   }
 

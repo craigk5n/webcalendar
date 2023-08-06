@@ -7,8 +7,8 @@
  * Input Parameters:
  *  blid - The unique identifier for this blob (required)
  */
-include_once 'includes/init.php';
-include_once 'includes/classes/Doc.php';
+require_once 'includes/init.php';
+require_once 'includes/classes/Doc.php';
 
 $blid = getValue ( 'blid', '-?[0-9]+', true );
 $error = $res = '';

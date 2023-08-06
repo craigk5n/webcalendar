@@ -31,7 +31,8 @@ $admin_can_delete_user = false;
 //   $password - user password
 // returns: true or false
 function user_valid_login ( $login, $password ) {
-  global $error,$user_external_group,$user_external_email;
+  global $error, $user_external_email, $user_external_group;
+
   $ret = false;
 
   $data = @yp_match (yp_get_default_domain (), 'passwd.byname', $login);
@@ -122,7 +123,8 @@ function user_valid_crypt ( $login, $crypt_password ) {
  * @return bool True on success
  */
 function user_load_variables ( $login, $prefix ) {
-  global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX, $cached_user_var;
+  global $cached_user_var, $NONUSER_PREFIX, $PUBLIC_ACCESS_FULLNAME;
+
   $ret = false;
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )

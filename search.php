@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 // Is this user allowed to search the calendars of other users?
 $show_others = false; // show "Advanced Search"
 
@@ -33,7 +33,7 @@ if (
   $show_advanced = false;
 
 load_user_categories();
-$selected = ' selected="selected" ';
+$selected = ' selected ';
 
 $advSearchStr = translate('Advanced Search');
 $searchStr    = translate('Search');
@@ -54,11 +54,11 @@ print_header($INC, '', 'onload="toggleDateRange();"' );
 
 <form action="search_handler.php" method="GET" id="searchformentry" name="searchformentry" style="margin-left: 13px;">
 
-  <input type="hidden" name="advanced" value="' . $show_advanced . '" />
+  <input type="hidden" name="advanced" value="' . $show_advanced . '">
   <table class="table table-responsive">
     <tr>
       <td><label for="keywordsadv"><?php etranslate('Keywords');?>:&nbsp;</label></td>
-      <td><input class="form-control basicAutoComplete" id="querytext" autocomplete="off" type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
+      <td><input class="form-control basicAutoComplete" id="querytext" autocomplete="off" type="text" name="keywords" id="keywordsadv" size="30">&nbsp;
         <?php etranslate( 'Enter % for all entries' );?></td>
   </tr>
 
@@ -86,9 +86,9 @@ if (count($site_extras) > 0) {
   echo '<tr id="extrafilter" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
           <td><label for="extra_filter" class="colon">'
-   . translate( 'Include' ) . '<br />' . translate( 'Site Extras' )
+   . translate( 'Include' ) . '<br>' . translate( 'Site Extras' )
    . '</label></td>
-          <td><input type="checkbox" name="extra_filter" value="Y" />
+          <td><input type="checkbox" name="extra_filter" value="Y">
           </td></tr>';
 }
 if ($show_advanced) {
@@ -150,26 +150,26 @@ if ($show_others) {
    . translate( 'Users' ) . ':&nbsp;</label></td>
           <td>
             <select class="form-control" name="users[]" id="usersadv" size="' . $size
-   . '" multiple="multiple">';
+   . '" multiple>';
 
   for( $i = 0; $i < $cnt; $i++ ) {
     echo '
               <option value="' . $users[$i]['cal_login'] . '"'
-     . ( $users[$i]['cal_login'] == $login ? ' selected="selected"' : '' )
+     . ( $users[$i]['cal_login'] == $login ? ' selected' : '' )
      . '>' . $users[$i]['cal_fullname'] . '</option>';
   }
 
   echo '</select>'
    . ( $GROUPS_ENABLED == 'Y'
     ? '<input type="button" onclick="selectUsers()" value="'
-     . translate( 'Select' ) . '..." />' : '' ) . '
+     . translate( 'Select' ) . '...">' : '' ) . '
           </td>
         </tr>';
 }
-echo '</table><input class="btn btn-primary" type="submit" value="' . $searchStr . '" /></form>';
+echo '</table><input class="btn btn-primary" type="submit" value="' . $searchStr . '"></form>';
 ?>
 
-<script language="JavaScript">
+<script>
 // Custom handler since our AJAX query does not match the format expected by
 // the autocomplate handler.
 $('#querytext').autoComplete({

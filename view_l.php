@@ -21,8 +21,8 @@
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
 
-include_once 'includes/init.php';
-include_once 'includes/views.php';
+require_once 'includes/init.php';
+require_once 'includes/views.php';
 
 view_init ( $id );
 
@@ -34,7 +34,7 @@ if ( empty ( $friendly ) ) {
 }
 set_today ( $date );
 print_header( array( 'js/popups.js/true' ),
-  '<script type="text/javascript" src="includes/js/weekHover.js?'
+  '<script src="includes/js/weekHover.js?'
  . filemtime( 'includes/js/weekHover.js' ) . '"></script>' );
 $trailerStr = print_trailer();
 
@@ -124,9 +124,9 @@ echo <<<EOT
      {$prevMonth}{$nextMonth}
     </div>
     {$navStr}
-    <span class="viewname"><br />{$view_name}</span>
+    <span class="viewname"><br>{$view_name}</span>
   </div>
-  <br />
+  <br>
   {$monthStr}
   {$eventinfo}
   {$unapprovedStr}

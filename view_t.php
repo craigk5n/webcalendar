@@ -19,8 +19,8 @@
  * then we remove users not in this user's groups
  * (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
-include_once 'includes/views.php';
+require_once 'includes/init.php';
+require_once 'includes/views.php';
 
 $error = '';
 $USERS_PER_TABLE = 6;
@@ -299,17 +299,17 @@ echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_t.php?id=' . $id .
   '&amp;date=' . $prevdate
- . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '" /></a>
+ . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '"></a>
       <a title="' . $nextStr . '" class="next" href="view_t.php?id=' . $id .
   '&amp;date=' . $nextdate
- . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '" /></a>
+ . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '"></a>
       <div class="title">
         <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '', false )
  . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
- . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br />
+ . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br>
         <span class="viewname">' . $view_name . '</span>
       </div>
-    </div><br /><br />';
+    </div><br><br>';
 
 // The table has names across the top and dates for rows. Since we need to
 // spit out an entire row before we can move to the next date, we'll save up all
@@ -360,6 +360,6 @@ $user = ''; // reset
 
 echo '
     </table>'
- . ( empty( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
+ . ( empty ( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
 
 ?>

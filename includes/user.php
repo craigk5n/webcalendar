@@ -19,7 +19,7 @@
  */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
-include_once 'auth-settings.php';
+require_once 'auth-settings.php';
 
 // Set some global config variables about your system.
 $admin_can_disable_user = true;
@@ -151,7 +151,8 @@ function user_valid_crypt ( $login, $crypt_password ) {
  * @return bool True on success
  */
 function user_load_variables ( $login, $prefix ) {
-  global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX, $cached_user_var, $SCRIPT;
+  global $cached_user_var, $NONUSER_PREFIX, $PUBLIC_ACCESS_FULLNAME, $SCRIPT;
+
   $ret = false;
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )
@@ -467,8 +468,7 @@ function user_delete_user ( $user ) {
  * @return array Array of user info
  */
 function user_get_users ( $publicOnly=false ) {
-  global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME,
-  $USER_SORT_ORDER;
+  global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $USER_SORT_ORDER;
 
   $count = 0;
   $ret = [];

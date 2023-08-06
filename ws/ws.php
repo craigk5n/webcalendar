@@ -11,8 +11,7 @@
  * Initialize web service. This will take care of user validation.
  */
 function ws_init() {
-  global $admin_can_add_user, $admin_can_delete_user,
-  $site_extras, $user_inc;
+  global $admin_can_add_user, $admin_can_delete_user, $site_extras, $user_inc;
 
   // Load include files.
   define( '__WC_BASEDIR', '../' ); // Points to the base WebCalendar directory
@@ -65,8 +64,8 @@ function ws_escape_xml ( $str ) {
  */
 function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   global $ALLOW_EXTERNAL_USERS, $DISABLE_PARTICIPANTS_FIELD,
-  $DISABLE_PRIORITY_FIELD, $EXTERNAL_REMINDERS, $SERVER_URL, $single_user,
-  $single_user_login, $site_extras, $WS_DEBUG;
+  $DISABLE_PRIORITY_FIELD, $EXTERNAL_REMINDERS, $SERVER_URL,
+  $single_user, $single_user_login, $site_extras, $WS_DEBUG;
 
   // Get participants first...
   $res = dbi_execute ( 'SELECT cal_login, cal_status FROM webcal_entry_user
