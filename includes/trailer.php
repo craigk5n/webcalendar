@@ -185,7 +185,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   }
   $views_linkcnt = count ( $views_link );
   if ( $views_linkcnt > 0 ) {
-    $tret .= '<br /><span class="prefix">' . translate ( 'Views' )
+    $tret .= '<br><span class="prefix">' . translate ( 'Views' )
      . ':</span>&nbsp;' . "\n";
     for ( $i = 0; $i < $views_linkcnt; $i++ ) {
       $tret .= ( $i > 0 ? ' | ' : '' ) . $views_link[$i];
@@ -212,7 +212,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     }
     $reports_linkcnt = count ( $reports_link );
     if ( $reports_linkcnt > 0 ) {
-      $tret .= '<br /><span class="prefix">' . translate ( 'Reports' )
+      $tret .= '<br><span class="prefix">' . translate ( 'Reports' )
        . ':</span>&nbsp;' . "\n";
       for ( $i = 0; $i < $reports_linkcnt; $i++ ) {
         $tret .= ( $i > 0 ? ' | ' : '' ) . $reports_link[$i] . "\n";
@@ -234,6 +234,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     // Should we use another application's login/logout pages?
     if ( substr ( $GLOBALS['user_inc'], 0, 9 ) == 'user-app-' ) {
       global $app_login_page, $app_logout_page;
+
       $logout_url = $app_logout_page;
       $login_url = 'login-app.php'
        . ( $login_return_path != '' && $app_login_page['return'] != ''
@@ -241,7 +242,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     }
 
     if ( $readonly != 'Y' )
-      $tret .= '<br /><span class="prefix">' . $currentUserStr . ':</span>&nbsp;'
+      $tret .= '<br><span class="prefix">' . $currentUserStr . ':</span>&nbsp;'
        . ( strlen ( $login ) && $login != '__public__'
         ? $fullname . '&nbsp;(<a title="' . $logoutStr . '" href="'
          . $logout_url . '">' . $logoutStr
@@ -300,12 +301,12 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
        . '<a title="' . "$f\" href=\"$xurl\">$f".'</a>';
     }
     if ( ! empty ( $groups ) )
-      $tret .= '<br /><span class="prefix">'
+      $tret .= '<br><span class="prefix">'
        . translate ( 'Manage calendar of' ) . ':</span>&nbsp;' . $groups;
   }
 
   // WebCalendar Info...
-  $tret .= '<br /><br />
+  $tret .= '<br><br>
 <a title="' . $GLOBALS['PROGRAM_NAME'] . '" id="programname" href="'
    . $GLOBALS['PROGRAM_URL'] . '" target="_blank">' . $GLOBALS['PROGRAM_NAME']
    . "</a>\n" . '</div></div>
@@ -317,7 +318,7 @@ if( dbi_get_debug() ) {
   $tret .= '<blockquote style="border:1px solid #ccc; background:#eee;">
 <b>Executed queries:' . dbi_num_queries()
    . '&nbsp;&nbsp; <b>Cached queries:</b>' . dbi_num_cached_queries()
-   . "<br /><ol>\n";
+   . "<br><ol>\n";
   $log = $GLOBALS['SQLLOG'];
   // $log=0;
   $logcnt = count ( $log );

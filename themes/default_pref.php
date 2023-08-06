@@ -35,6 +35,6 @@ $webcal_theme = [
   'TODAYCELLBG'           => '#FFFF33',
   'WEEKENDBG'             => '#D0D0D0'];
 
-include 'theme_inc.php';
+require_once 'theme_inc.php';
 
 ?>

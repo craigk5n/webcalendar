@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 // load user and global cats
 load_user_categories();
@@ -60,9 +60,9 @@ if ( ! empty ( $categories ) ) {
 echo '
         </td>
         <td class="alignmiddle"><input type="button" value=">>" onclick="selAdd()"'
- . ' /></td>
+ . '></td>
         <td class="aligncenter aligntop">
-          <select name="eventcats[]" size="9"  multiple="multiple">
+          <select name="eventcats[]" size="9" multiple>
             <option disabled>' . $entryCatStr . '</option>';
 
 if ( strlen ( $cats ) ) {
@@ -82,15 +82,15 @@ if ( strlen ( $cats ) ) {
 echo '
           </select>
           <input type="button" value="' . translate ( 'Remove' )
- . '" onclick="selRemove()" />
+ . '" onclick="selRemove()">
         </td>
       </tr>
       <tr>
         <td class="aligntop alignright">*' . translate ( 'Global Category' )
  . '&nbsp;&nbsp;&nbsp;<input type="button" value="' . translate ( 'OK' )
- . '" onclick="sendCats()" /></td>
+ . '" onclick="sendCats()"></td>
         <td colspan="2" class="alignleft">&nbsp;&nbsp;<input type="button" value="'
- . translate ( 'Cancel' ) . '" onclick="window.close()" /></td>
+ . translate ( 'Cancel' ) . '" onclick="window.close()"></td>
       </tr>
       </form>
     </table>

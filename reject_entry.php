@@ -1,6 +1,6 @@
 <?php
-include_once 'includes/init.php';
-require ( 'includes/classes/WebCalMailer.php' );
+require_once 'includes/init.php';
+require_once 'includes/classes/WebCalMailer.php';
 $mail = new WebCalMailer;
 
 $error = '';
@@ -29,7 +29,7 @@ else {
         </tr>
         <tr>
           <td class="aligncenter"><input type="submit" value="'
-   . translate ( 'Continue' ) . '" /></td>
+   . translate ( 'Continue' ) . '"></td>
         </tr>
         <tr>
           <td>'

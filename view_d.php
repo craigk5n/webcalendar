@@ -20,8 +20,8 @@
  * (except for nonuser calendars... which we allow regardless of group).
  */
 // $start = microtime();
-include_once 'includes/init.php';
-include_once 'includes/views.php';
+require_once 'includes/init.php';
+require_once 'includes/views.php';
 
 $error = '';
 
@@ -66,13 +66,13 @@ echo <<<EOT
       <a title="{$previousStr}" class="prev"
         href="view_d.php?id={$id}&amp;date={$prevdate}">
         <img src="images/bootstrap-icons/arrow-left-circle.svg" class="prev"
-          alt="{$previousStr}" /></a>
+          alt="{$previousStr}"></a>
       <a title="{$nextStr}" class="next"
         href="view_d.php?id={$id}&amp;date={$nextdate}">
         <img src="images/bootstrap-icons/arrow-right-circle.svg" class="next"
-          alt="{$nextStr}" /></a>
+          alt="{$nextStr}"></a>
       <div class="title">
-        <span class="date">{$nowStr}</span><br />
+        <span class="date">{$nowStr}</span><br>
         <span class="viewname">{$view_name}</span>
       </div>
     </div>
@@ -82,10 +82,10 @@ echo <<<EOT
     <form action="edit_entry.php" method="post" name="schedule">
       ${formKey}
       <input type="hidden" name="date"
-        value="{$thisyear}{$thismonth}{$thisday}" />
-      <input type="hidden" name="defusers" value="{$partStr}" />
-      <input type="hidden" name="hour" value="" />
-      <input type="hidden" name="minute" value="" />
+        value="{$thisyear}{$thismonth}{$thisday}">
+      <input type="hidden" name="defusers" value="{$partStr}">
+      <input type="hidden" name="hour" value="">
+      <input type="hidden" name="minute" value="">
     </form>
 
     {$printerStr}

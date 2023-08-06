@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 //check UAC
 if( ! access_can_access_function( ACCESS_DAY )

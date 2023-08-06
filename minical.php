@@ -22,7 +22,7 @@
  * Security:
  * $PUBLISH_ENABLED must be set true
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 load_global_settings();
 

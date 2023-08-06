@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 // Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
 $webcalendar_csscache = 1;
@@ -26,7 +26,7 @@ function save_pref( $prefs, $src) {
       $setting = $key;
       $prefix = 'pref_';
     }
-    //echo "Setting = $setting, key = $key, prefix = $prefix<br />\n";
+    //echo "Setting = $setting, key = $key, prefix = $prefix<br>\n";
     if ( strlen ( $setting ) > 0 && $prefix == 'pref_' ) {
       $sql = 'DELETE FROM webcal_user_pref WHERE cal_login = ? ' .
         'AND cal_setting = ?';
@@ -38,7 +38,7 @@ function save_pref( $prefs, $src) {
           '( ?, ?, ? )';
         if ( ! dbi_execute ( $sql, [$prefuser, $setting, $value] ) ) {
           $error = 'Unable to update preference: ' . dbi_error() .
-   '<br /><br /><span class="bold colon">SQL</span>' . $sql;
+   '<br><br><span class="bold colon">SQL</span>' . $sql;
           break;
         }
       }
@@ -122,7 +122,7 @@ if ( $res ) {
 $translation_loaded = false;
 
 //move this include here to allow proper translation
-include 'includes/date_formats.php';
+require_once 'includes/date_formats.php';
 
 // Make sure global values passed to styles.php are for this user.
 // Makes the demo calendar accurate.
@@ -164,7 +164,7 @@ foreach ($colors as $k => $v) {
 //determine if we can set timezones, if not don't display any options
 $can_set_timezone = set_env ( 'TZ', $prefarray['TIMEZONE'] );
 $dateYmd = date ( 'Ymd' );
-$selected = ' selected="selected" ';
+$selected = ' selected ';
 
 $minutesStr = translate ( 'minutes' );
 
@@ -190,7 +190,7 @@ $qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] ) ? '?' . $_SERVER['QUERY_STRING'
 $formaction = substr ($self, strrpos($self, '/') + 1) . $qryStr;
 $formaction = preg_replace('/action=reset/', 'action=save', $formaction);
 
-?>&nbsp;<img src="images/bootstrap-icons/question-circle-fill.svg" alt="<?php etranslate ( 'Help' )?>" class="help" onclick="window.open( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" /></h2>
+?>&nbsp;<img src="images/bootstrap-icons/question-circle-fill.svg" alt="<?php etranslate ( 'Help' )?>" class="help" onclick="window.open( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );"></h2>
 
 <!-- Message -->
 <div id="main-dialog-message" class="alert alert-info" style="<?php echo (empty($message) ? "display: none" : "display: block");?>"">
@@ -202,20 +202,20 @@ $formaction = preg_replace('/action=reset/', 'action=save', $formaction);
 <?php
 print_form_key();
 if ($user)
-  echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
+  echo "<input type=\"hidden\" name=\"user\" value=\"$user\">\n";
 
 echo display_admin_link();
 $resetConfirm = translate('Are you sure you want to reset preferences for XXX?');
 $resetConfirm = str_replace("XXX", $user, $resetConfirm);
 ?>
 <div class="form-row">
-<input class="btn btn-primary mr-2" type="submit" value="<?php etranslate ( 'Save Preferences' )?>" name="" />
-<input type="hidden" name="action" value="save"/>
+<input class="btn btn-primary mr-2" type="submit" value="<?php etranslate ( 'Save Preferences' )?>" name="">
+<input type="hidden" name="action" value="save">
 <a class="btn btn-secondary mr-2" href="pref.php?action=reset&user=<?php echo $user;?>&csrf_form_key=<?php echo getFormKey();?>"
   onclick="return confirm('<?php echo $resetConfirm;?>')"><?php etranslate("Reset Preferences");?></a>
 
 <?php if ( $updating_public ) { ?>
- <input type="hidden" name="public" value="1" />
+ <input type="hidden" name="public" value="1">
 <?php } /*if ( $updating_public )*/
 
 
@@ -261,7 +261,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 ?>
 </div>
 
-<br /><br />
+<br><br>
 
 <!-- TABS -->
 <ul class="nav nav-tabs">
@@ -311,7 +311,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
  }
 ?>
  </select>
- <br />
+ <br>
 <?php echo str_replace( 'XXX', translate( get_browser_language( true ) ),
     translate( 'Your browser default language is XXX.' ) ); ?>
 </td></tr>
@@ -345,7 +345,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
   ?>
 </select>&nbsp;<?php echo date_to_str ( $dateYmd,
     $DATE_FORMAT, false, false );?>
-<br />
+<br>
 <select class="form-control" name="pref_DATE_FORMAT_MY">
 <?php
   for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i += 2 ) {
@@ -357,7 +357,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 ?>
 </select>&nbsp;<?php echo date_to_str ( $dateYmd,
     $DATE_FORMAT_MY, false, false );?>
-<br />
+<br>
 <select class="form-control" name="pref_DATE_FORMAT_MD">
 <?php
   for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i += 2 ) {
@@ -369,7 +369,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 ?>
 </select>&nbsp;<?php echo date_to_str ( $dateYmd,
     $DATE_FORMAT_MD, false, false );?>
-<br />
+<br>
 <select class="form-control" name="pref_DATE_FORMAT_TASK">
 <?php
   for ( $i = 0, $cnt = count ( $datestyles_task ); $i < $cnt; $i += 2 ) {
@@ -493,7 +493,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("fonts-help");?>">
  <label for="pref_font"><?php etranslate ( 'Fonts')?></label></td><td>
- <input class="form-control" type="text" size="40" name="pref_FONTS" id="pref_font" value="<?php echo htmlspecialchars ( $prefarray['FONTS'] );?>" />
+ <input class="form-control" type="text" size="40" name="pref_FONTS" id="pref_font" value="<?php echo htmlspecialchars ( $prefarray['FONTS'] );?>">
 </td></tr>
 
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("display-sm_month-help");?>">
@@ -629,7 +629,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("auto-refresh-time-help");?>">
  &nbsp;&nbsp;&nbsp;&nbsp;<label for="pref_AUTO_REFRESH_TIME"><?php etranslate ( 'Auto-refresh time' )?>:</label></td><td class="form-inline mt-1">
- <nobr><input class="form-control" type="text" name="pref_AUTO_REFRESH_TIME" size="3" value="<?php echo ( empty ( $prefarray['AUTO_REFRESH_TIME'] ) ? 0 : $prefarray['AUTO_REFRESH_TIME'] ); ?>" /> <?php etranslate ( 'minutes' )?></nobr>
+ <nobr><input class="form-control" type="text" name="pref_AUTO_REFRESH_TIME" size="3" value="<?php echo ( empty ( $prefarray['AUTO_REFRESH_TIME'] ) ? 0 : $prefarray['AUTO_REFRESH_TIME'] ); ?>"> <?php etranslate ( 'minutes' )?></nobr>
 </td></tr>
 </table>
 </fieldset>
@@ -742,7 +742,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
   <?php
     echo htmlspecialchars ( $SERVER_URL ) .
       'publish.php/' . ( $updating_public ? '__public__' : $user ) . '.ics';
-    echo "<br />\n";
+    echo "<br>\n";
     echo htmlspecialchars ( $SERVER_URL ) .
       'publish.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
@@ -797,7 +797,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
   <?php
     echo htmlspecialchars ( $SERVER_URL ) .
       'freebusy.php/' . ( $updating_public ? '__public__' : $user ) . '.ifb';
-    echo "<br />\n";
+    echo "<br>\n";
     echo htmlspecialchars ( $SERVER_URL ) .
       'freebusy.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
@@ -814,7 +814,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
  <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("custom-script-help");?>">
   <label><?php etranslate ( 'Custom script/stylesheet' )?>:</label></td><td>
   <input class="form-control btn bth-secondary" type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
-    printf ( $openStr, 'S',$prefuser ) ?> name="" />
+    printf ( $openStr, 'S',$prefuser ) ?> name="">
  </td></tr>
 <?php }
 
@@ -822,7 +822,7 @@ if ( $CUSTOM_HEADER == 'Y' ) { ?>
  <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("custom-header-help");?>">
   <label><?php etranslate ( 'Custom header' )?>:</label></td><td>
   <input class="form-control btn btn-secondary" type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
-    printf ( $openStr, 'H',$prefuser ) ?> name="" />
+    printf ( $openStr, 'H',$prefuser ) ?> name="">
  </td></tr>
 <?php }
 
@@ -830,7 +830,7 @@ if ( $CUSTOM_TRAILER == 'Y' ) { ?>
  <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("custom-trailer-help");?>">
   <label><?php etranslate ( 'Custom trailer' )?>:</label></td><td>
   <input class="form-control btn btn-secondary" type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
-    printf ( $openStr, 'T',$prefuser ) ?> name="" />
+    printf ( $openStr, 'T',$prefuser ) ?> name="">
  </td></tr>
 <?php } ?>
 </table>
@@ -849,7 +849,7 @@ if ( $CUSTOM_TRAILER == 'Y' ) { ?>
 
 
 </td><td class="aligncenter aligntop" width="50%">
-<br />
+<br>
 <!-- BEGIN EXAMPLE MONTH -->
 <p class="bold" style="text-align:center; color: var(--h2color)">
 <?php
@@ -865,10 +865,10 @@ if ( $CUSTOM_TRAILER == 'Y' ) { ?>
 </div>
 
 <!-- END TABS -->
-<br /><br />
+<br><br>
 <div>
-<input class="btn btn-primary" type="submit" value="<?php etranslate ( 'Save Preferences' )?>" name="" />
-<br /><br />
+<input class="btn btn-primary" type="submit" value="<?php etranslate ( 'Save Preferences' )?>" name="">
+<br><br>
 </div>
 </form>
 
@@ -899,4 +899,3 @@ $(document).ready(function(){
 </script>
 
 <?php echo print_trailer(); ?>
-

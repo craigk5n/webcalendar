@@ -11,30 +11,30 @@
  *
  * TODO: hide private events of other users.
  */
-include_once 'includes/translate.php';
+require_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.php';
 require_once 'includes/classes/Event.php';
 require_once 'includes/classes/RptEvent.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
+require_once 'includes/config.php';
+require_once 'includes/dbi4php.php';
+require_once 'includes/formvars.php';
+require_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
-include 'includes/' . $user_inc;
-include 'includes/access.php';
-include 'includes/validate.php';
-include 'includes/ajax.php';
+require_once "includes/$user_inc";
+require_once 'includes/access.php';
+require_once 'includes/ajax.php';
+require_once 'includes/validate.php';
 
 // Load Doc classes for attachments and comments
-include 'includes/classes/Doc.php';
-include 'includes/classes/DocList.php';
-include 'includes/classes/AttachmentList.php';
-include 'includes/classes/CommentList.php';
+require_once 'includes/classes/AttachmentList.php';
+require_once 'includes/classes/CommentList.php';
+require_once 'includes/classes/Doc.php';
+require_once 'includes/classes/DocList.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -109,7 +109,7 @@ if ( $action == 'get' ) {
   $wkstart = get_weekday_before ( $startyear, $startmonth );
   $startTime = $wkstart;
   if ( $debug )
-    echo "startdate: $startdate <br />enddate: $enddate<br />startTime: $startTime<br />";
+    echo "startdate: $startdate<br>enddate: $enddate<br>startTime: $startTime<br>";
   $repeated_events = read_repeated_events ( $user, $startTime, $endTime );
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( $user, $startTime, $endTime );
@@ -133,7 +133,7 @@ if ( $action == 'get' ) {
   if ( ! empty ( $id ) )
     load_category_ids ( $ids );
 
-  // TODO:  We need to be able to start a week on ANY day.
+  // TODO: We need to be able to start a week on ANY day.
   $monthend = date ( 'Ymd',
     mktime ( 0, 0, 0, $startmonth + 1, 0, $startyear ) );
   for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthend; $i += 604800 ) {
@@ -396,11 +396,11 @@ function setCategories ( $eventList )
 // Get all categories for each event.
 function load_category_ids ( $ids )
 {
-  global $eventCats, $user, $debug;
+  global $debug, $eventCats, $user;
   //$ids = array_unique ( sort ( $ids, SORT_NUMERIC ) );
   $idList = implode ( ",", $ids );
   if ( $debug )
-    echo "load_category_ids: $idList <br />\n\n";
+    echo "load_category_ids: $idList<br>\n\n";
   $sql = 'SELECT cal_id, cat_id
   FROM webcal_entry_categories
   WHERE cal_id IN ( ' . $idList . ' )
@@ -408,7 +408,7 @@ function load_category_ids ( $ids )
       OR cat_owner IS NULL )
   ORDER BY cat_order';
   if ( $debug )
-    echo "SQL: $sql <br />";
+    echo "SQL: $sql<br>";
   $res = dbi_execute ( $sql, [] );
   $eventCats = [];
   if ( $res ) {

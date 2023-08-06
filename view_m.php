@@ -17,8 +17,8 @@
  * user_sees_only_his_groups is enabled, then we remove users not in this user's
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
-include_once 'includes/views.php';
+require_once 'includes/init.php';
+require_once 'includes/views.php';
 
 $error = '';
 $USERS_PER_TABLE = 6;
@@ -51,17 +51,17 @@ echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_m.php?id=' . $id
  . '&amp;date=' . $prevdate . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="'
- . $prevStr . '" /></a>
+ . $prevStr . '"></a>
       <a title="' . $nextStr . '" class="next" href="view_m.php?id=' . $id
  . '&amp;date=' . $nextdate . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="'
- . $nextStr . '" /></a>
+ . $nextStr . '"></a>
       <div class="title">
         <span class="date">';
 printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
-echo '</span><br />
+echo '</span><br>
         <span class="viewname">' . $view_name . '</span>
       </div>
-    </div><br />';
+    </div><br>';
 
 // The table has names across the top and dates for rows. Since we need to spit
 // out an entire row before we can move to the next date, we'll save up all the
@@ -108,7 +108,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     : 5 );
 
   echo '
-    <br /><br />
+    <br><br>
     <table class="main"';
   if ( $can_add )
     echo ' title="' .
@@ -137,7 +137,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     $DSTtest = date("H",$d);
     if ($DSTtest == "23") {
       $d = $date + 3600;
-    } 
+    }
     if ($DSTtest == "01" ) {
       $d = $date - 3600;
     }

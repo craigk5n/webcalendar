@@ -14,24 +14,24 @@
  *   - tools/send_reminders.php
  *
  * How to use:
- *   1. call include_once 'includes/init.php'; at the top of your script.
+ *   1. call include_once 'includes/init.php' at the top of your script.
  *   2. call any other functions or includes not in this file that you need
  *   3. call the print_header function with proper arguments
  *
  * What gets called:
- *   - include_once 'includes/translate.php';
- *   - require_once 'includes/classes/WebCalendar.php';
+ *   - require_once "includes/$user_inc";
+ *   - require_once 'includes/access.php';
+ *   - require_once 'includes/assert.php';
  *   - require_once 'includes/classes/Event.php';
  *   - require_once 'includes/classes/RptEvent.php';
- *   - include_once 'includes/assert.php';
- *   - include_once 'includes/config.php';
- *   - include_once 'includes/dbi4php.php';
- *   - include_once 'includes/formvars.php';
- *   - include_once 'includes/functions.php';
- *   - include_once "includes/$user_inc";
- *   - include_once 'includes/validate.php';
- *   - include_once 'includes/site_extras.php';
- *   - include_once 'includes/access.php';
+ *   - require_once 'includes/classes/WebCalendar.php';
+ *   - require_once 'includes/config.php';
+ *   - require_once 'includes/dbi4php.php';
+ *   - require_once 'includes/formvars.php';
+ *   - require_once 'includes/functions.php';
+ *   - require_once 'includes/site_extras.php';
+ *   - require_once 'includes/translate.php';
+ *   - require_once 'includes/validate.php';
  *
  * Also, for month.php, day.php, week.php, week_details.php:
  *   - {@link send_no_cache_header()};
@@ -48,26 +48,26 @@
   die( 'You cannot access this file directly!' );
  }
 
-include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.php';
+require_once 'includes/translate.php';
 require_once 'includes/classes/Event.php';
 require_once 'includes/classes/RptEvent.php';
+require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
-include_once 'includes/assert.php';
-include_once 'includes/config.php';
-include_once 'includes/dbi4php.php';
-include_once 'includes/formvars.php';
-include_once 'includes/functions.php';
+require_once 'includes/assert.php';
+require_once 'includes/config.php';
+require_once 'includes/dbi4php.php';
+require_once 'includes/formvars.php';
+require_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
-include_once 'includes/' . $user_inc;
-include_once 'includes/validate.php';
-include_once 'includes/site_extras.php';
-include_once 'includes/access.php';
-include_once 'includes/gradient.php';
+require_once "includes/$user_inc";
+require_once 'includes/access.php';
+require_once 'includes/gradient.php';
+require_once 'includes/site_extras.php';
+require_once 'includes/validate.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -185,7 +185,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     "      top.location = self.location;\n" .
     "  }\n" .
     "</script>\n";
- 
+
 
   $ret .= $ASSETS;
 
@@ -211,7 +211,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
         // Not added to $cs_ar because I think we want these,
         // even if $disableStyle.
         $cs_ret .= '
-    <link href="' . $i . '" rel="stylesheet" />';
+    <link href="' . $i . '" rel="stylesheet">';
       } elseif( substr( $inc, 0, 12 ) == 'js/popups.js'
           && ! empty( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
         // Don't load popups.js if DISABLE_POPUPS.
@@ -256,15 +256,15 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     // the current user has permissions to approve for, but I'm thinking
     // that's too many db requests to repeat on every page.
 
-    $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . $tmp . $login . '" />'
+    $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . $tmp . $login . '">'
      . ( $is_admin && $PUBLIC_ACCESS == 'Y' ? $tmp_l . $tmp_f . '?user=public&'
      . filemtime( $tmp_f ) . $tmp . translate( $PUBLIC_ACCESS_FULLNAME )
-     . '" />' : '' );
+     . '">' : '' );
   }
   if( $is_admin ) {
     $tmp_f = 'rss_activity_log.php';
     $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . '" rel="alternate"'
-     . ' title="' . $appStr . ' - ' . translate('Activity Log') . '" />';
+     . ' title="' . $appStr . ' - ' . translate('Activity Log') . '">';
   }
   if( ! $disableStyle ) {
     // Check the CSS version for cache clearing if needed.
@@ -278,13 +278,13 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     <link href="css_cacher.php?login='
      . ( empty( $_SESSION['webcal_tmp_login'] )
        ? $login : $_SESSION['webcal_tmp_login'] )
-     . '&amp;css_cache=' . $webcalendar_csscache . '" rel="stylesheet" />';
+     . '&amp;css_cache=' . $webcalendar_csscache . '" rel="stylesheet">';
     foreach( $cs_ar as $c ) {
       $i = 'includes/' . $c;
       $ret .= '
     <link href="' . $i . '" rel="stylesheet"'
        . ( $c == 'css/print_styles.css' && empty( $friendly )
-         ? ' media="print"' : '' ) . ' />' . "\n";
+         ? ' media="print"' : '' ) . '>' . "\n";
     }
   }
   echo $ret . $cs_ret
@@ -298,13 +298,13 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     $tmp_l . 'rss.php?' . filemtime( 'rss.php' )
       /* TODO: single-user mode, etc. */
      . ( $login != '__public__' ? '&user=' . $login : '' )
-     . '" rel="alternate" title="' . $appStr . ' [RSS 2.0]" />' : '' )
+     . '" rel="alternate" title="' . $appStr . ' [RSS 2.0]">' : '' )
   // Do we need anything else inside the header tag?
   // $HeadX moved here because linked CSS may override standard styles.
    . ( $HeadX ? '
      ' . $HeadX : '' ) . '
     <link type="image/x-icon" href="favicon.ico?'
-   . filemtime( 'favicon.ico' ) . '" rel="shortcut icon" />
+   . filemtime( 'favicon.ico' ) . '" rel="shortcut icon">
   </head>
   <body'
   // Determine the page direction (left-to-right or right-to-left).
@@ -318,7 +318,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     ? load_template( $login, 'H' ) : '' );
   // HTML includes needed for the top menu.
   if( $MENU_ENABLED == 'Y' ) {
-    include "menu.php";
+    require_once 'menu.php';
   }
   // TODO convert this to return value.
   echo '<div class="container-fluid">';
@@ -354,7 +354,7 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
   }
   if( $include_nav_links && ! $friendly ) {
     if( $MENU_ENABLED == 'N' )
-      include_once 'includes/trailer.php';
+      require_once 'includes/trailer.php';
   }
 
   $ret .= ( empty( $tret ) ? '' : $tret ) // Data from trailer.
@@ -390,7 +390,7 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
     ( $DEMO_MODE == 'Y' ? '
     <p><a href="http://validator.w3.org/check?uri=referer">'
      . '<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" '
-     . 'class="valid" /></a></p>' : '' )/* Close HTML page properly. */ . '
+     . 'class="valid"></a></p>' : '' )/* Close HTML page properly. */ . '
     </div>
     </body>
   </html>';

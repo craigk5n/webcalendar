@@ -18,6 +18,6 @@ $webcal_theme = [
   'DISPLAY_TASKS_IN_GRID' => 'N',
   'DISPLAY_WEEKENDS'      => 'N'];
 
-include 'theme_inc.php';
+require_once 'theme_inc.php';
 
 ?>

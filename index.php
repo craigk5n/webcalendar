@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 // If not yet logged in, you will be redirected to login.php before
 // we get to this point (by init.php included above).

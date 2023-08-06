@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 send_no_cache_header();
 
 //check UAC
@@ -111,24 +111,22 @@ print_header();
 echo <<<EOT
     <div class="title">
       <a title="{$prevStr}" class="prev" href="year.php?year={$prevYear}{$userStr}">
-        <img src="images/bootstrap-icons/arrow-left-circle.svg" alt="{$prevStr}" /></a>
+        <img src="images/bootstrap-icons/arrow-left-circle.svg" alt="{$prevStr}"></a>
       <a title="{$nextStr}" class="next" href="year.php?year={$nextYear}{$userStr}">
-        <img src="images/bootstrap-icons/arrow-right-circle.svg" alt="{$nextStr}" /></a>
-      <span class="date">{$thisyear}</span><br />
-      <span class="user">{$fullnameStr}</span><br />
+        <img src="images/bootstrap-icons/arrow-right-circle.svg" alt="{$nextStr}"></a>
+      <span class="date">{$thisyear}</span><br>
+      <span class="user">{$fullnameStr}</span><br>
       {$asstModeStr}
       {$catSelectStr}
-    </div><br />
+    </div><br>
     <div class="aligncenter">
       <table id="monthgrid">
         {$gridOmonths}
       </table>
-    </div><br />
-    {$unapprovedStr}<br />
+    </div><br>
+    {$unapprovedStr}<br>
     {$printerStr}
     {$trailerStr}
 EOT;
 
 ?>
-
-

@@ -12,7 +12,7 @@
  * Security:
  * Admin permissions are checked by the WebCalendar class.
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 $cur = $error = '';
 $found = $foundOld = false;
@@ -103,9 +103,9 @@ if ( $REQUEST_METHOD == 'POST' ) {
 
 print_header ( '', '', '', true );
 /*
-echo 'report_id: ' . $report_id . '<br />
-report_name: ' . $report_name . '<br />
-report_user: ' . $report_user . '<br />
+echo 'report_id: ' . $report_id . '<br>
+report_name: ' . $report_name . '<br>
+report_user: ' . $report_user . '<br>
 ';
 */
 echo '
@@ -125,19 +125,19 @@ if ( $user != '__system__' ) {
 echo '</h2>' . ( ! empty ( $error ) ? print_error ( $error ) : '
     <form action="edit_template.php" method="post" name="reportform">'
    . csrf_form_key() . '
-      <input type="hidden" name="type" value="' . $type . '" />'
+      <input type="hidden" name="type" value="' . $type . '">'
    . ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' && !
     empty ( $user ) && $user != '__system__' ? '
-      <input type="hidden" name="user" value="' . $user . '" />' : '' ) . '
+      <input type="hidden" name="user" value="' . $user . '">' : '' ) . '
       <textarea rows="15" cols="60" name="template">' . htmlspecialchars ( $cur )
-   . '</textarea><br />
+   . '</textarea><br>
       <input type="button" value="' . translate ( 'Cancel' )
-   . '" onclick="window.close();" />
-      <input name="action" type="submit" value="' . translate ( 'Save' ) . '" />'
+   . '" onclick="window.close();">
+      <input name="action" type="submit" value="' . translate ( 'Save' ) . '">'
    . ( ! empty ( $user ) ? '
       <input name="delete" type="submit" value="' . translate ( 'Delete' )
      . '" onclick="return confirm( \''
-     . translate( 'Are you sure you want to delete this entry?' ) . '\');" />'
+     . translate( 'Are you sure you want to delete this entry?' ) . '\');">'
     : '' ) . '
     </form>' ) . "\n" . print_trailer ( false, true, true );
 

@@ -1,6 +1,6 @@
 <?php
-include_once 'includes/init.php';
-include_once 'includes/help_list.php';
+require_once 'includes/init.php';
+require_once 'includes/help_list.php';
 
 $descStr =
 translate ( 'Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.' );

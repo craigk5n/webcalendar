@@ -14,11 +14,11 @@
 $inc_path = ( defined( '__WC_INCLUDEDIR' ) ? __WC_INCLUDEDIR : 'includes' );
 
 if( file_exists( $inc_path . '/xcal.php' ) )
-  include_once $inc_path . '/xcal.php'; // Used for ics attachments.
+  require_once "$inc_path/xcal.php"; // Used for ics attachments.
 
-require 'phpmailer/PHPMailer.php';
-require 'phpmailer/SMTP.php';
-require 'phpmailer/Exception.php';
+require_once 'phpmailer/Exception.php';
+require_once 'phpmailer/PHPMailer.php';
+require_once 'phpmailer/SMTP.php';
 
 use phpmailer\PHPMailer;
 
@@ -29,8 +29,8 @@ class WebCalMailer {
    * Constructor
    */
   function __construct() {
-    global $EMAIL_MAILER, $mailerError,
-    $SMTP_AUTH, $SMTP_HOST, $SMTP_PORT, $SMTP_PASSWORD, $SMTP_USERNAME;
+    global $EMAIL_MAILER, $mailerError, $SMTP_AUTH,
+    $SMTP_HOST, $SMTP_PORT, $SMTP_PASSWORD, $SMTP_USERNAME;
 
     $this->mail = new PHPMailer\PHPMailer(false);
     $mailerError = '';
@@ -100,7 +100,7 @@ class WebCalMailer {
     $this->error_count++;
     // $this->ErrorInfo = $msg;
     // die_miserable_death( $msg );
-    $mailerError .= $msg . '<br />';
+    $mailerError .= $msg . '<br>';
   }
 
   /**

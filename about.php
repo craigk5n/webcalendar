@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 $credits = getPostValue( 'Credits' );
 static $data;
@@ -16,24 +16,24 @@ if ( empty( $data ) ) {
   $replacements[1] = "";
   $data = preg_replace ( $patterns, $replacements, $data );
 }
-print_header ( [], '<link href="includes/css/about.css" rel="stylesheet" />',
+print_header ( [], '<link href="includes/css/about.css" rel="stylesheet">',
   '', true, false, true );
 echo '    <div id="creds">' . ( empty( $credits ) ? '
       <a title="' . $PROGRAM_NAME . '" href="' . $PROGRAM_URL
     . '" target="_blank">
       <h2>' . translate( 'Title' ) . '</h2>
       <p>' . str_replace( 'XXX', $PROGRAM_VERSION,
-        translate( 'version XXX' ) ) . '<br />' . $PROGRAM_DATE . '</p></a>
-      <br />
+        translate( 'version XXX' ) ) . '<br>' . $PROGRAM_DATE . '</p></a>
+      <br>
       <p>' . translate( 'WebCalendar is a PHP application used...' ) . '</p>' : '' ) . '
     </div>
     <form action="about.php" name="aboutform" id="aboutform" method="post">';
 print_form_key();
 echo '<input type="submit" name="' . ( empty( $credits )
   ? 'Credits" value="' . translate( 'Credits' )
-  : 'About" value="' . translate( 'About' ) ) . '" />
+  : 'About" value="' . translate( 'About' ) ) . '">
       <input type="button" id="ok" name="ok" value="' . translate( 'OK' )
- . '" onclick="window.close()" />
+ . '" onclick="window.close()">
     </form>' . ( empty ( $credits ) ? '' : "
     <script>
       function start() {
