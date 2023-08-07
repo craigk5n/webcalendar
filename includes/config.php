@@ -9,7 +9,6 @@
  * To update the WebCalendar version (in order to make a new release or to
  * mark a db change), see the comments in install/index.php.
  *
- *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
@@ -19,7 +18,7 @@
 // Pull in Bootstrap ajd JQuery from load_assets.php.
 // $ASSETS will contain a string of the HTML to load them.
 // See composer.json for version.
-include "load_assets.php";
+require_once 'load_assets.php';
 
 /**
  * Prints a fatal error message to the user along with a link to the
@@ -56,7 +55,7 @@ function die_miserable_death( $error, $anchor='' ) {
   <head><title>{$appStr}: Fatal Error</title></head>
   <body>
     <h2>{$appStr} Error</h2>
-    <p>{$error}</p><hr />
+    <p>{$error}</p><hr>
     <p><a href="{$url}" target="_blank">Troubleshooting Help</a></p>
   </body>
 </html>
@@ -69,7 +68,7 @@ function db_error( $doExit = false, $sql = '' ) {
 
   $ret = str_replace( 'XXX', dbi_error(), translate( 'Database error XXX.' ) )
    . ( ! empty( $settings['mode'] ) && $settings['mode'] == 'dev'
-    && ! empty( $sql ) ? '<br />SQL:<br />' . $sql : '' );
+    && ! empty( $sql ) ? '<br>SQL:<br>' . $sql : '' );
 
   if( $doExit ) {
     echo $ret;
@@ -155,7 +154,7 @@ function do_config( $fileLoc ) {
 
     if( preg_match( '/^#|\/\*/', $buffer ) // comments
         || preg_match( '/^<\?/', $buffer ) // start PHP code
-        || preg_match( '/^\?>/', $buffer ) // end PHP code
+        || preg_match ( '/^\?\>/', $buffer ) // end PHP code
       ) {
       continue;
     }
@@ -168,7 +167,7 @@ function do_config( $fileLoc ) {
 
   if( isset( $settings['config_inc'] ) ) {
     # Load 3rd party configs from external app
-    require get_full_include_path( $settings['config_inc'] );
+    require_once get_full_include_path ( $settings['config_inc'] );
     $settings = do_external_configs( $settings );
   }
 

@@ -44,8 +44,8 @@
  * enabled, then we remove users not in this user's groups
  * (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
-include_once 'includes/views.php';
+require_once 'includes/init.php';
+require_once 'includes/views.php';
 
 $error = '';
 $can_add = true; // include '+' add icons in this view?
@@ -147,7 +147,7 @@ if ( $is_day_view ) {
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = ( $wkstart + 86400 * $i ) + 43200;
   $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS );
-  $header[$i] = $weekdays[$i] . '<br />' .
+  $header[$i] = $weekdays[$i] . '<br>' .
      month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) .
      ' ' . date ( 'd', $days[$i] );
   if ( empty ( $first_date ) )
@@ -187,7 +187,7 @@ if ( ! $fit_to_window ) {
   $table_width = ( $col_pixels * $viewusercnt ) *
     ( $end_ind - $start_ind + 1 ) + 100;
 }
-//echo "table_width=$table_width<br />\n";
+//echo "table_width=$table_width<br>\n";
 
 // tdw is the cell width for each day
 if ( ! $fit_to_window )
@@ -223,7 +223,7 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
   user_load_variables ( $viewusers[$i], 'temp' );
   $uheader .= "<th class=\"small\" width=\"$uwf\" style=\"width:$uwf;\">" .
     $tempfullname . "</th>\n";
-  //echo "$viewusers[$i]: loaded " . count ( $events ) . " events<br />\n";
+  //echo "$viewusers[$i]: loaded " . count ( $events ) . " events<br>\n";
 }
 $num_users = $viewusercnt;
 
@@ -237,9 +237,9 @@ $last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
 ?>
 
 <div style="width:99%;">
-<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>" class="prev"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="<?php etranslate ( 'Previous' )?>" /></a>
+<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>" class="prev"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="<?php etranslate ( 'Previous' )?>"></a>
 
-<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>" class="next"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="<?php etranslate ( 'Next' )?>" /></a>
+<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>" class="next"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="<?php etranslate ( 'Next' )?>"></a>
 <div class="title">
 <span class="date"><?php
   if ( $is_day_view ) {
@@ -248,15 +248,15 @@ $last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
     echo $first_date . "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
       $last_date;
   }
-?></span><br />
+?></span><br>
 <span class="viewname"><?php echo $view_name; ?></span>
 <?php
   if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
-    echo "<br />\n<span class=\"titleweek\">(" .
+    echo "<br>\n<span class=\"titleweek\">(" .
       translate( 'Week' ) . ' ' . date( 'W', $wkstart + 86400 ) . ')</span>';
   }
 ?>
-</div></div><br />
+</div></div><br>
 
 <?php
 $help = ( $can_add ? 'title="' .
@@ -393,7 +393,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
         if( $ev[$i]->getDuration() == 1440 )
           $all_day[$d] = 1;
         html_for_event_week_at_a_glance ( $ev[$i], $dateYmd, 'small', $show_time );
-        //echo "Found event date=$dateYmd name='$viewname'<br />\n";
+        //echo "Found event date=$dateYmd name='$viewname'<br>\n";
         //print_r ( $rowspan_arr );
       }
     }
@@ -425,7 +425,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
           $start_time = $i;
           $diff_start_time = $start_time - $last_row;
           for ( $x = $diff_start_time; $x > 0; $x-- )
-            $hour_arr[$last_row] .= "<br />\n";
+            $hour_arr[$last_row] .= "<br>\n";
           $hour_arr[$last_row] .= $hour_arr[$i];
           $hour_arr[$i] = '';
           $rowspan_arr[$i] = 0;
@@ -581,4 +581,3 @@ if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
 echo $printerStr;
 echo print_trailer(); ?>
-

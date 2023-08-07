@@ -34,7 +34,8 @@ $ldap_admin_group_type = strtolower($ldap_admin_group_type);
 //   $dn - complete dn for the user
 //   TRUE if the user is found, FALSE in other case
 function user_search_dn ( $login ) {
-  global $error, $ds, $ldap_base_dn, $ldap_login_attr, $ldap_user_attr, $ldap_user_filter;
+  global $ds, $error, $ldap_base_dn, $ldap_login_attr,
+  $ldap_user_attr, $ldap_user_filter;
 
   $ret = false;
   if ($r = connect_and_bind ()) {
@@ -64,8 +65,9 @@ function user_search_dn ( $login ) {
 //   $password - user password
 // returns: true or false
 function user_valid_login ( $login, $password ) {
-  global $error, $ldap_server, $ldap_port, $ldap_base_dn, $ldap_login_attr;
-  global $ldap_admin_dn, $ldap_admin_pwd, $ldap_start_tls, $set_ldap_version, $ldap_version;
+  global $error, $ldap_admin_dn, $ldap_admin_pwd,
+  $ldap_base_dn, $ldap_login_attr, $ldap_port, $ldap_server,
+  $ldap_start_tls, $ldap_version, $set_ldap_version;
 
   if ( ! function_exists ( "ldap_connect" ) ) {
     die_miserable_death ( "Your installation of PHP does not support LDAP" );
@@ -119,8 +121,8 @@ function user_valid_crypt ( $login, $crypt_password ) {
 //   $user - user login
 //   $prefix - variable prefix to use
 function user_load_variables ( $login, $prefix ) {
-  global $ds, $error, $ldap_base_dn, $ldap_login_attr, $ldap_user_attr,
-  $ldap_user_filter, $NONUSER_PREFIX, $PUBLIC_ACCESS_FULLNAME, $cached_user_var;
+  global $cached_user_var, $ds, $error, $ldap_base_dn, $ldap_login_attr,
+  $ldap_user_attr, $ldap_user_filter, $NONUSER_PREFIX, $PUBLIC_ACCESS_FULLNAME;
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )
     return  $cached_user_var[$login][$prefix];
@@ -345,8 +347,8 @@ function user_delete_user ( $user ) {
 // Get a list of users and return info in an array.
 // returns: array of users
 function user_get_users ( $publicOnly=false ) {
-  global $error, $ds, $ldap_base_dn, $ldap_user_attr, $ldap_user_filter;
-  global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME;
+  global $ds, $error, $ldap_base_dn, $ldap_user_attr,
+  $ldap_user_filter, $PUBLIC_ACCESS_FULLNAM, $PUBLIC_ACCESS;
 
   $Admins = get_admins ();
   $count = 0;
@@ -404,8 +406,8 @@ function user_is_admin ($values,$Admins) {
 // Do this search only once per request.
 // returns: array of admins
 function get_admins () {
-  global $error, $ds, $cached_admins;
-  global $ldap_admin_group_name,$ldap_admin_group_attr,$ldap_admin_group_type;
+  global $cached_admins, $ds, $error, $ldap_admin_group_attr,
+  $ldap_admin_group_name, $ldap_admin_group_type;
 
   if ( ! empty ( $cached_admins ) ) return $cached_admins;
   $cached_admins = [];
@@ -447,8 +449,8 @@ function stripdn( $dn ) {
 // Tries to connect as $ldap_admin_dn if we set it.
 //  returns: bind result or false
 function connect_and_bind () {
-  global $ds, $error, $ldap_server, $ldap_port, $ldap_version;
-  global $ldap_admin_dn, $ldap_admin_pwd, $ldap_start_tls, $set_ldap_version;
+  global $ds, $error, $ldap_admin_dn, $ldap_admin_pwd, $ldap_port,
+  $ldap_server, $ldap_start_tls, $ldap_version, $set_ldap_version;
 
   if ( ! function_exists ( 'ldap_connect' ) ) {
     die_miserable_death ( 'Your installation of PHP does not support LDAP' );

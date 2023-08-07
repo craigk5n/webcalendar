@@ -20,8 +20,8 @@
  * user_sees_only_his_groups is enabled, then we remove users not in this user's
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
-include_once 'includes/views.php';
+require_once 'includes/init.php';
+require_once 'includes/views.php';
 
 $DAYS_PER_TABLE = 7;
 $error = '';
@@ -48,17 +48,17 @@ echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_v.php?id=' . $id
  . '&amp;date=' . $prevdate . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="'
- . $prevStr . '" /></a>
+ . $prevStr . '"></a>
       <a title="' . $nextStr . '" class="next" href="view_v.php?id=' . $id
  . '&amp;date=' . $nextdate . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="'
- . $nextStr . '" /></a>
+ . $nextStr . '"></a>
       <div class="title">
         <span class="date">' . date_to_str ( $thisdate, '', false )
  . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
- . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br />
+ . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br>
         <span class="viewname">' . $view_name . '</span>
       </div>
-    </div><br />';
+    </div><br>';
 
 // The table has names across the top and dates for rows. Since we need to spit
 // out an entire row before we can move to the next date, we'll save up all the
@@ -74,7 +74,7 @@ if ( $viewusercnt == 0 )
   // this user is not a member of any group assigned to this view.
   $error = translate( 'No users for this view.' );
 
-if ( ! empty( $error ) ) {
+if ( ! empty ( $error ) ) {
   echo print_error( $error ) . print_trailer();
   exit;
 }

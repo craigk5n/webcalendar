@@ -12,8 +12,8 @@
  * Add support for categories for other than ical
  *
  *********************************************************************/
-include_once 'includes/init.php';
-include_once 'includes/xcal.php';
+require_once 'includes/init.php';
+require_once 'includes/xcal.php';
 
 $user = getPostValue ( 'user' );
 if ( empty ( $user ) || $user == $login )
@@ -271,7 +271,7 @@ if ( substr ( $format, 0, 4 ) == 'ical' ) {
   echo '
     <h2>' . translate ( 'Export' ) . ' ' . $errorStr . '</h2>
     <span class="bold">' . $errorStr . ':</span> '
-   . translate( 'export format not defined or incorrect.' ) . '<br />
+   . translate( 'export format not defined or incorrect.' ) . '<br>
     ' . print_trailer();
 } //end if ($format == "ical")
 

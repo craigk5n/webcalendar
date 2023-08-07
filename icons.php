@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 $icon_path = 'wc-icons/';
 
 $can_edit = (is_dir($icon_path) &&
@@ -45,7 +45,7 @@ if ($d = dir($icon_path)) {
     echo '
         <td><a href="#" onclick="sendURL(\'' . $icon_path . $icons[$i]
       . '\');" ><img src="' . $icon_path . $icons[$i] . '" title="'
-      . $title_str . '" alt="' . $title_str . '" /></a></td>'
+      . $title_str . '" alt="' . $title_str . '"></a></td>'
       . ($i > 0 && $i % 8 == 0 ? '
       </tr>
       <tr>' : '');

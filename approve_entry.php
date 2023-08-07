@@ -1,6 +1,6 @@
 <?php
-include_once 'includes/init.php';
-require ( 'includes/classes/WebCalMailer.php' );
+require_once 'includes/init.php';
+require_once 'includes/classes/WebCalMailer.php';
 
 $error = '';
 
@@ -32,9 +32,9 @@ if ( empty ( $ret ) ) {
         <tr>
           <td class="aligncenter">
             <input type="submit" value="' . translate ( 'Approve and Send' )
-   . '" />&nbsp;&nbsp;&nbsp;
+   . '">&nbsp;&nbsp;&nbsp;
             <input type="submit" id="cancel" name="cancel" value="'
-   . translate( 'Approve and Exit' ) . '" />
+   . translate( 'Approve and Exit' ) . '">
           </td>
         </tr>
         <tr>

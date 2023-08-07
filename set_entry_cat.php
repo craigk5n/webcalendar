@@ -6,7 +6,7 @@
  * for that user. Global categories will be visible by all participants,
  * but can only be added/removed by the owner or an admin in the edit-entry form.
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 load_user_categories();
 
 $error = '';
@@ -121,8 +121,8 @@ else {
     <h2>{$setCatStr}</h2>
     <form action="set_entry_cat.php" method="post" name="selectcategory">
       ${formKey}
-      <input type="hidden" name="date" value="{$date}" />
-      <input type="hidden" name="id" value="{$id}" />
+      <input type="hidden" name="date" value="{$date}">
+      <input type="hidden" name="id" value="{$id}">
       <table cellpadding="5">
         <tr class="aligntop">
           <td class="bold colon">{$briefStr}</td>
@@ -130,19 +130,19 @@ else {
         </tr>
         <tr>
           <td class="tooltip aligntop" title="{$catHelpStr}">
-            <label for="entry_categories" class="colon">{$catStr}<br /></label>
-            <input type="button" value="{$editStr}" onclick="editCats( event )" />
+            <label for="entry_categories" class="colon">{$catStr}<br></label>
+            <input type="button" value="{$editStr}" onclick="editCats( event )">
           </td>
           <td class="aligntop">
-            <input readonly="readonly" type="text" name="catnames"
-              value="{$catNames}" size="75" onclick="editCats( event )" /><br />
+            <input readonly type="text" name="catnames"
+              value="{$catNames}" size="75" onclick="editCats( event )"><br>
             {$globalNoteStr}
             <input type="hidden" name="cat_id" id="entry_categories"
-              value="{$catList}" />
+              value="{$catList}">
           </td>
         </tr>
         <tr class="aligntop">
-          <td colspan="2"><br /><input type="submit" value="{$saveStr}" /></td>
+          <td colspan="2"><br><input type="submit" value="{$saveStr}"></td>
         </tr>
       </table>
     </form>

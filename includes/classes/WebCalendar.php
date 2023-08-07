@@ -100,8 +100,8 @@ class WebCalendar {
    * @access private
    */
   function _initInitFirstPhase() {
-    global $DMW, $HTTP_GET_VARS, $HTTP_POST_VARS, $PHP_SELF, $SCRIPT, $self,
-    $special, $user_inc;
+    global $DMW, $HTTP_GET_VARS, $HTTP_POST_VARS,
+    $PHP_SELF, $SCRIPT, $self, $special, $user_inc;
 
     // Make sure another app in the same domain doesn't have a 'user' cookie.
     if ( empty ( $HTTP_GET_VARS ) )
@@ -156,13 +156,12 @@ class WebCalendar {
    */
   function _initInitSecondPhase() {
     global $ALLOW_VIEW_OTHER, $can_add, $cat_id, $CATEGORIES_ENABLED,
-    $CATEGORY_VIEW, $caturl, $date, $DMW, $friendly, $ignore_user_case,
-    $override, $fullname, $GROUPS_ENABLED,
-    $hour, $id, $is_admin, $is_assistant, $is_nonuser, $is_nonuser_admin,
-    $login, $minute, $month,
-    $NONUSER_ENABLED, $nonusers, $ovrd, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD,
-    $PUBLIC_ACCESS_FULLNAME, $PUBLIC_ACCESS_OTHERS, $readonly, $u_url, $user,
-    $user_fullname, $USER_SEES_ONLY_HIS_GROUPS, $userlist, $valid_user, $year;
+    $CATEGORY_VIEW, $caturl, $date, $DMW, $friendly, $fullname, $GROUPS_ENABLED,
+    $hour, $id, $ignore_user_case, $is_admin, $is_assistant, $is_nonuser_admin,
+    $is_nonuser, $login, $minute, $month, $NONUSER_ENABLED, $nonusers,
+    $override, $ovrd, $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_FULLNAME,
+    $PUBLIC_ACCESS_OTHERS, $PUBLIC_ACCESS, $readonly, $u_url, $user_fullname,
+    $USER_SEES_ONLY_HIS_GROUPS, $user, $userlist, $valid_user, $year;
 
     load_global_settings();
 
@@ -311,8 +310,8 @@ class WebCalendar {
    * @access private
    */
   function _initFunctions() {
-    global $byday_names, $byday_values, $days_per_month, $db_login, $db_password,
-    $ldays_per_month,
+    global $byday_names, $byday_values, $days_per_month,
+    $db_login, $db_password, $ldays_per_month,
     $offsets, $PHP_SELF, $settings, $weekday_names;
 
     /**#@+
@@ -623,8 +622,8 @@ class WebCalendar {
     $login_email, $login_firstname, $login_fullname, $login_is_admin,
     $login_lastname, $login_login, $login_url, $not_auth, $PHP_AUTH_USER,
     $PHP_SELF, $PROGRAM_VERSION, $pub_acc_enabled, $PUBLIC_ACCESS_CAN_ADD,
-    $readonly, $SCRIPT, $session_not_found, $single_user, $single_user_login,
-    $use_http_auth, $user_email, $user_inc;
+    $readonly, $SCRIPT, $session_not_found, $single_user,
+    $single_user_login, $use_http_auth, $user_email, $user_inc;
 
     // db settings are in config.php.
 
@@ -680,7 +679,7 @@ class WebCalendar {
           [$single_user_login, md5 ( $single_user_login ), 'Y'] ) )
           die_miserable_death ( 'User <tt>' . $single_user_login
              . '</tt> does not exist in <tt>webcal_user</tt> table and we were '
-             . 'not able to add it for you:<br /><blockquote>' . dbi_error()
+             . 'not able to add it for you:<br><blockquote>' . dbi_error()
              . '</blockquote>' );
 
         // User was added... should we tell them?
@@ -899,8 +898,8 @@ class WebCalendar {
    * @access private
    */
   function _initTranslate() {
-    global $lang, $lang_file, $LANGUAGE, $PUBLIC_ACCESS_FULLNAME,
-    $translation_loaded, $enable_mbstring;
+    global $enable_mbstring, $lang_file, $lang,
+    $LANGUAGE, $PUBLIC_ACCESS_FULLNAME, $translation_loaded;
 
     if ( empty ( $LANGUAGE ) )
       $LANGUAGE = 'English-US'; // Default

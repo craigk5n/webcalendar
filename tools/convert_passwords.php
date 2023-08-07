@@ -19,8 +19,8 @@ require_once __WC_INCLUDEDIR . '/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
-include __WC_INCLUDEDIR . '/config.php';
-include __WC_INCLUDEDIR . '/dbi4php.php';
+require_once __WC_INCLUDEDIR . '/config.php';
+require_once __WC_INCLUDEDIR . '/dbi4php.php';
 
 $WebCalendar->initializeFirstPhase();
 $WebCalendar->initializeSecondPhase();
@@ -49,7 +49,7 @@ if ( $res ) {
 }
 
 if ( $doneBefore ) {
-  echo "Passwords were already converted to md5!\n<br />\n";
+  echo "Passwords were already converted to md5!\n<br>\n";
   exit;
 }
 
@@ -66,7 +66,7 @@ while ( $row = dbi_fetch_row ( $res ) ) {
       $res = dbi_execute ( $sql );
       if ($res) {
         echo "Table webcal_user altered to allow 32 character passwords.\n" .
-          "<br />Converting passwords...\n<br /><br />\n";
+          "<br>Converting passwords...\n<br><br>\n";
       }
     }
   }
@@ -81,11 +81,11 @@ if ( $res ) {
     $sql2 = "UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?";
     $res2 = dbi_execute ( $sql2, [md5 ( $row[1] ), $row[0]] );
     if ($res2)
-      echo "Password updated for: ".$row[0]."<br />\n";
+      echo "Password updated for: ".$row[0]."<br>\n";
   }
   dbi_free_result ( $res );
-  echo "Finished converting passwords\n<br />\n";
-  echo "<br /><br />\n<h1>DO NOT Run this script again!!!</h1>\n<br />\n";
+  echo "Finished converting passwords\n<br>\n";
+  echo "<br><br>\n<h1>DO NOT Run this script again!!!</h1>\n<br>\n";
   echo '<h1>Delete this script if it ran successfully!!!</h1>';
 }
 ?>

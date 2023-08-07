@@ -15,7 +15,7 @@
  * @package WebCalendar
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 send_no_cache_header();
 
 if ( empty ( $user ) )
@@ -60,7 +60,7 @@ function list_unapproved ( $user ) {
 
   $rssLink = '<a href="rss_unapproved.php?user=' .
     htmlspecialchars ( $user ) . '"><img class="button-icon-inverse" src="images/bootstrap-icons/rss-fill.svg" alt="RSS 2.0 - ' .
-    htmlspecialchars ( $temp_fullname ) . '" /></a>';
+    htmlspecialchars ( $temp_fullname ) . '"></a>';
 
   $count = 0;
   $ret = '';
@@ -121,23 +121,23 @@ function list_unapproved ( $user ) {
       </tr>' : '' ) . '
       <tr ' . ( $count % 2 == 0 ? '' : 'class="odd"' ) . '>
         <td width="5%" class="alignright"><input type="checkbox" name="'
-       . $entryID . '" value="' . $user . '" /></td>
+       . $entryID . '" value="' . $user . '"></td>
         <td><a title="' . $viewStr . '" class="entry" id="' . $linkid
        . '" href="' . $view_link . '.php?id=' . $id . '&amp;user=' . $cal_user
        . '">' . htmlspecialchars ( $name ) . '</a> (' . $eventdate . '):</td>'
       /* approve */ . '
         <td class="aligncenter"><input type="image" src="images/bootstrap-icons/check-circle.svg" title="'
        . $appConStr . '" onclick="return do_confirm( \'approve\', \''
-       . $cal_user . '\', \'' . $entryID . '\' );" /></td>'
+       . $cal_user . '\', \'' . $entryID . '\' );"></td>'
       /* reject */ . '
         <td class="aligncenter"><input type="image" src="images/bootstrap-icons/dash-circle.svg" title="'
        . $rejectStr . '" onclick="return do_confirm( \'reject\', \''
-       . $cal_user . '\', \'' . $entryID . '\' );" /></td>'
+       . $cal_user . '\', \'' . $entryID . '\' );"></td>'
       /* delete */
        . ( ! access_is_enabled() || access_user_calendar ( 'edit', $user ) ? '
         <td class="aligncenter"><input type="image" src="images/bootstrap-icons/trash.svg" title="'
          . $deleteStr . '" onclick="return do_confirm( \'delete\', \''
-         . $cal_user . '\', \'' . $entryID . '\' );\" /></td>' : '' ) . '
+         . $cal_user . '\', \'' . $entryID . '\' );\"></td>' : '' ) . '
       </tr>';
 
       $eventinfo .= build_entry_popup ( 'eventinfo-' . $linkid, $cal_user,
@@ -147,18 +147,18 @@ function list_unapproved ( $user ) {
     if ( $count > 1 )
       $ret .= '
       <tr>
-        <td colspan="5" nowrap="nowrap">&nbsp;
-          <img src="images/bootstrap-icons/arrow-90deg-up.svg" alt="" />
+        <td colspan="5" nowrap>&nbsp;
+          <img src="images/bootstrap-icons/arrow-90deg-up.svg" alt="">
           <label><a title="' . $checkAllStr . '" onclick="check_all( \''
        . $user . '\' );">' . $checkAllStr . '</a> / <a title="' . $uncheckAllStr
        . '" onclick="uncheck_all( \'' . $user . '\' );">' . $uncheckAllStr
        . '</a></label>&nbsp;&nbsp;&nbsp;
           <input type="image" src="images/bootstrap-icons/check-circle.svg" title="' . $appSelStr
        . '" onclick="return do_confirm( \'approveSelected\', \'' . $cal_user
-       . '\' );" />&nbsp;&nbsp;&nbsp;
+       . '\' );">&nbsp;&nbsp;&nbsp;
           <input type="image" src="images/bootstrap-icons/dash-circle.svg" title="' . $rejectSelStr
        . '" onclick="return do_confirm( \'rejectSelected\', \'' . $cal_user
-       . '\' );" />&nbsp;&nbsp;&nbsp;( ' . $emailStr . ' )
+       . '\' );">&nbsp;&nbsp;&nbsp;( ' . $emailStr . ' )
         </td>
       </tr>';
   }
@@ -244,8 +244,8 @@ echo '
         </tr>' // List users with no events.
 . $noret . '
       </table>
-      <input type="hidden" name="process_action" value="" />
-      <input type="hidden" name="process_user" value="" />
+      <input type="hidden" name="process_action" value="">
+      <input type="hidden" name="process_user" value="">
     </form>' . ( ! empty ( $eventinfo ) ? $eventinfo : '' ) . '
     <script>
 <!-- <![CDATA[
