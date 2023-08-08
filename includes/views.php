@@ -4,7 +4,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  */
 
@@ -51,7 +51,7 @@ function view_init ( $view_id )
   * Remove any users from the view list who this user is not
   * allowed to view.
   * @param int $view_id id of the view
-  * @return the array of valid users
+  * @return array of valid users
   */
 function view_get_user_list ( $view_id ) {
   global $error, $is_admin, $login, $NONUSER_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;

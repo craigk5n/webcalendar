@@ -83,7 +83,7 @@ load_user_preferences();
 
 user_load_variables ( $login, 'minical_' );
 
-if ( $user != '__public__' && ! nonuser_load_variables ( $login, 'minica_' ) )
+if ( $user !== '__public__' && ! nonuser_load_variables ( $login, 'minical_' ) )
   die_miserable_death (
     str_replace ( 'XXX', $login,
       translate ( 'No such nonuser calendar XXX.' ) ) );

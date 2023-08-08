@@ -13,7 +13,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  * @subpackage Authentication
  */
@@ -31,7 +31,7 @@ $admin_can_disable_user = true;
  *
  * @param string $login    User login
  * @param string $password User password
- * @param bool $#silent  if truem do not return any $error
+ * @param bool $#silent  if true do not return any $error
  *
  * @return bool True on success
  *
@@ -104,7 +104,7 @@ function user_valid_login ( $login, $password, $silent=false ) {
 }
 
 /**
- * Check to see if a given login/crypted password is valid.
+ * Check to see if a given login/encrypted password is valid.
  *
  * If invalid, the error message will be placed in $error.
  *

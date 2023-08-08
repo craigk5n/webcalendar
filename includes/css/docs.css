@@ -155,7 +155,7 @@ table {
   margin: 0 auto;
 }
 #styling div.example p {
-  margin: 0px;
+  margin: 0;
   font-style: italic;
   font-size: small;
   text-align: center;

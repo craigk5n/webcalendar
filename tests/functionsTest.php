@@ -82,7 +82,7 @@ final class FunctionsTest extends TestCase
     $this->assertEquals ( '2016', date('Y', $jan1_ts) );
 
     // params for bump_local_timestamp:
-    //   current_unixtime, hourchange, minchange, secchage,
+    //   current_unixtime, hourchange, minchange, secchange,
     //   monthchange, daychange, yearchange
 
     // Add 1 hour
@@ -102,7 +102,7 @@ final class FunctionsTest extends TestCase
     //echo "Time: " . date('r', $newtime ) . "\n";
     $this->assertEquals ( '02', date('d', $newtime) );
 
-    // Daylight savings 2016 was March 13, aneded on November 6
+    // Daylight savings 2016 was March 13, amended on November 6
 
     // Add day for about a week around the change and make sure
     // the hour stays at 12PM.
@@ -114,7 +114,7 @@ final class FunctionsTest extends TestCase
       $this->assertEquals ( '12', date('H', $newtime) );
       $this->assertEquals ( $expDay, date('d', $newtime) );
     }
-  
+
     // Do the same for DST ending
     $start = mktime ( 12, 0, 0, 11, 1, 2016 ); // Nov 1
     for ( $i = 0; $i < 14; $i++ ) {
@@ -191,6 +191,6 @@ final class FunctionsTest extends TestCase
     $this->assertEquals ('#c0c0c0', rgb2html (192, 192, 192));
     $this->assertEquals ('#ff0000', rgb2html (255, 0, 0));
   }
-  
+
 
 }

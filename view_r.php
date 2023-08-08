@@ -168,7 +168,7 @@ $viewusercnt = count ( $viewusers );
 // If this is a global view, we may have removed all the users if
 // the current user does not have permission to view any of the
 // users in the view.
-// In theory, we whould always at least have ourselves in the view, right?
+// In theory, we should always at least have ourselves in the view, right?
 if ( $viewusercnt == 0 ) {
   // I don't think we need to translate this.
   $error = 'No users for this view.';
@@ -213,7 +213,7 @@ else
   $uwf = sprintf ( "%0.2f", $tdw / $viewusercnt ) . '%';
 $uheader = '';
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
-  /* Pre-Load the repeated events for quckier access */
+  /* Pre-Load the repeated events for quicker access */
   $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
   $re_save[$i] = $repeated_events;
   /* Pre-load the non-repeating events for quicker access

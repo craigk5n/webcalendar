@@ -3,7 +3,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  */
 
@@ -287,7 +287,7 @@ function calc_time_slot ( $time, $round_down = false ) {
  * @param int    $id            Current event id (this keeps overlaps from
  *                              wrongly checking an event against itself)
  *
- * @return  Empty string for no conflicts or return the HTML of the
+ * @return  string Empty string for no conflicts or return the HTML of the
  *          conflicts when one or more are found.
  */
 function check_for_conflicts ( $dates, $duration, $eventstart,
@@ -583,7 +583,7 @@ EOT;
 
   // Build a master array containing all events for $participants.
   for ( $i = 0; $i < $cnt; $i++ ) {
-    /* Pre-Load the repeated events for quckier access. */
+    /* Pre-Load the repeated events for quicker access. */
     $repeated_events = read_repeated_events ( $participants[$i], $dateTS,
       $dateTS, '' );
     /* Pre-load the non-repeating events for quicker access. */
@@ -923,7 +923,7 @@ function decode_string ( $instr ) {
  * Display a text for a single activity log entry.
  *
  * @param string $cal_type  the log entry type
- * @param string $cal_text  addiitonal text to display
+ * @param string $cal_text  additional text to display
  *
  * @return string  HTML for one log entry.
  */
@@ -1583,7 +1583,7 @@ function display_time ( $time = '', $control = 0, $timestamp = '',
 }
 
 /**
- * Checks for any unnaproved events.
+ * Checks for any unapproved events.
  *
  * If any are found, display a link to the unapproved events
  * (where they can be approved).
@@ -1844,7 +1844,7 @@ Subject: ' . $subj . '<br>
 /**
  * Generate activity log
  *
- *  @paran  int   $id       Event id if called from view_entry.php
+ *  @param  int   $id       Event id if called from view_entry.php
  *  @param  bool  $sys      Display System Log ro Event Log
  *  @param  int   $startid  Event number to start off list
  *
@@ -1992,7 +1992,7 @@ EOT;
 /**
  * Generate Refresh Meta Tag.
  *
- * @return  HTML for Meta Tag.
+ * @return string HTML for Meta Tag.
  */
 function generate_refresh_meta() {
   global $AUTO_REFRESH, $AUTO_REFRESH_TIME, $REQUEST_URI;
@@ -2501,7 +2501,7 @@ function get_categories_by_id ( $id, $user, $asterisk = false ) {
 /**
  * Gets all the events for a specific date.
  *
- * Events are retreived from the array of pre-loaded events
+ * Events are retrieved from the array of pre-loaded events
  * (which was loaded all at once to improve performance).
  *
  * The returned events will be sorted by time of day.
@@ -3041,11 +3041,11 @@ function get_plugin_list ( $include_disabled = false ) {
  *
  * @param string $user     User login we are getting preference for
  * @param string $setting  Name of the setting
- * @param stirng $defaultSetting    Value to return if no value foun
+ * @param string $defaultSetting    Value to return if no value found
  *            in the database
  *
  * @return string  The value found in the webcal_user_pref table for the
- *                 specified setting or the sytem default if no user settings
+ *                 specified setting or the system default if no user settings
  *                 was found.
  */
 function get_pref_setting ( $user, $setting, $defaultValue='' ) {
@@ -3149,7 +3149,7 @@ function get_preferred_view ( $indate = '', $args = '' ) {
  *                true/false on insert or delete queries.
  *
  * @global array  Array of {@link RepeatingEvent}s
- *                retreived using {@link read_repeated_events()}
+ *                retrieved using {@link read_repeated_events()}
  */
 function get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
   global $repeated_events;
@@ -3167,7 +3167,7 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
 /**
  * Gets all the tasks for a specific date.
  *
- * Events are retreived from the array of pre-loaded tasks
+ * Events are retrieved from the array of pre-loaded tasks
  * (which was loaded all at once to improve performance).
  *
  * The returned tasks will be sorted by time of day.
@@ -4101,7 +4101,7 @@ function load_nonuser_preferences ( $nonuser ) {
  * If the global variable $ALLOW_EXTERNAL_HEADER is set to 'Y',
  * then we load an external file using include.
  * This can have serious security issues since a
- * malicous user could open up /etc/passwd.
+ * malicious user could open up /etc/passwd.
  *
  * @param string $login  Current user login
  * @param string $type   type of template
@@ -4676,7 +4676,7 @@ function print_date_entries ( $date, $user, $ssi = false,
       . '" alt="' . $moon_title . '">' ) . "<br>\n";
     $cnt++;
   }
-  // Get, combime and sort the events for this date.
+  // Get, combine and sort the events for this date.
   $ev = combine_and_sort_events (
     // Get all the non-repeating events.
     get_entries ( $date, $get_unapproved ),
@@ -5156,7 +5156,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
  *
  * Includes layers and possibly public access if enabled.
  * NOTE: The values for the global variables $thisyear and $thismonth
- * MUST be set!  (This will determine how far in the future to caclulate
+ * MUST be set! (This will determine how far in the future to calculate
  * repeating event dates.)
  *
  * @param string $user           Username
@@ -5726,7 +5726,7 @@ function set_today ( $date = '' ) {
  *
  * <b>Note:</b> This is a user-defined comparison function for usort().
  *
- * @params passed automatically by usort, don't pass them in your call
+ * params passed automatically by usort, don't pass them in your call
  */
 function sort_events ( $a, $b ) {
   // Handle untimed events first.
@@ -5747,7 +5747,7 @@ function sort_events ( $a, $b ) {
  *
  * <b>Note:</b> This is a user-defined comparison function for usort().
  *
- * @params passed automatically by usort, don't pass them in your call.
+ * params passed automatically by usort, don't pass them in your call.
  */
 function sort_events_insensitive ( $a, $b ) {
   $retval = strnatcmp (
@@ -5765,7 +5765,7 @@ function sort_events_insensitive ( $a, $b ) {
  * that will be called from user-xxx.php.
  * @TODO:  Move to user.php along with migration to user.class.
  *
- * @params passed automatically by usort, don't pass them in your call.
+ * params passed automatically by usort, don't pass them in your call.
  */
 function sort_users ( $a, $b ) {
   global $USER_SORT_ORDER;

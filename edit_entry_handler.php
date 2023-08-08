@@ -1222,7 +1222,7 @@ if( empty( $error ) ) {
                     ), $eventstart ), $timeStr ) : '' )
             // Add Site Extra Date if permitted.
             . $extra_email_data;
-            // Don't send HTML to external adresses.
+            // Don't send HTML to external addresses.
             // Always attach iCalendar file to external users
             $mail->WC_Send( $login_fullname, $ext_emails[$i],
               $ext_names[$i], $name, $msg, 'N', $from, $id );

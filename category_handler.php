@@ -47,7 +47,7 @@ else {
 if (!empty($_FILES['FileName']))
   $file = $_FILES['FileName'];
 
-// Make sure we clear $file if no file was upoaded.
+// Make sure we clear $file if no file was uploaded.
 if (!empty($file['tmp_name']) && $file['tmp_name'] == 'none')
   $file = '';
 

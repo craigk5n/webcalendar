@@ -14,7 +14,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  */
 
@@ -23,7 +23,7 @@
  * Borrowed from http://us2.php.net/manual/en/function.html-entity-decode.php
  *
  * @param string $string Text to convert
- * @paran bool   $ignore Ignore the charset when decoding
+ * @param bool   $ignore Ignore the charset when decoding
  *
  * #return string The converted text string
  */
@@ -312,13 +312,13 @@ function translation_exists ( $str )
  * (with {@link load_translation_text() }).
  *
  * @param string   $str     Text to translate
- * @param string   $decode  Do we want to envoke html_entity_decode?
+ * @param string   $decode  Do we want to invoke html_entity_decode?
  *                          We currently only use this with javascript alerts.
  * @param string   $type    ('' = alphabetic, A = alphanumeric,
  *                          D = date, N = numeric)
  *
  * @return string The translated text, if available. If no translation is
- *                avalailable, then the original untranslated text is returned.
+ *                available, then the original untranslated text is returned.
  */
 function translate ( $str, $decode = '', $type = '' ) {
   global $LANGUAGE, $translation_loaded, $translations;
@@ -385,7 +385,7 @@ function translate ( $str, $decode = '', $type = '' ) {
  * <code>echo translate ( $str )</code>
  *
  * @param string   $str     Text to translate and print
- * @param string   $decode  Do we want to envoke html_entity_decode
+ * @param string   $decode  Do we want to invoke html_entity_decode
  * @param string   $type    (A = alphabetic, D = date, N = numeric)
  * @param integer  $date    Default date()
  *

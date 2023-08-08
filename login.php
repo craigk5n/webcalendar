@@ -262,7 +262,7 @@ if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
 // TODO use variable from init.php for these version numbers
 ?>
 <!--
-<script src="vendor/twbs/bootstrap/dist/js/ootstrap.min.js"></script>
+<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="vendor/twbs/bootstrap/js/dist/index.js"></script>
 -->
 </body>

@@ -520,7 +520,7 @@ if( ! empty( $post_action2 ) && $post_action2 == $createNewStr && !
   $sql = 'CREATE DATABASE ' . $db_database;
 
   // We don't use the normal dbi_execute because we need to know
-  // the difference between no conection and no database.
+  // the difference between no connection and no database.
   if( $db_type == 'ibase' )
     $response_msg = $failure . $manualStr . '</blockquote>' . "\n";
   elseif( $db_type == 'mssql' ) {
@@ -593,7 +593,7 @@ if( ! empty( $action ) && $action == 'tz_convert' && !
   $db_persistent= false;
   $db_type      = $settings['db_type'];
 
-  // Avoid false visibilty of single user login.
+  // Avoid false visibility of single user login.
   $onload = 'auth_handler();';
   $real_db=( $db_type == 'sqlite' || $db_type == 'sqlite3'
     ? get_full_include_path( $db_database ) : $db_database );

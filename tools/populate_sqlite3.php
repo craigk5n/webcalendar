@@ -8,7 +8,7 @@
  * php populate_sqlite3.php
  */
 
-$outputFile = "webcalendar.salite";
+$outputFile = "webcalendar.sqlite";
 $createAdminAccount = true;
 $adminUsername = 'admin';
 $adminPassword = 'admin';

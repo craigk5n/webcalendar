@@ -26,7 +26,7 @@
  *       repeats=0 do not output repeating events (default)
  *       repeats=1 outputs repeating events
  *       repeats=2 outputs repeating events but suppresses display of
- *                 2nd & subsequent occurences of daily events
+ *                 2nd & subsequent occurrences of daily events
  *   - user: login name of calendar to display (instead of public user).
  *       You must have the following System Settings configured for this:
  *         Allow viewing other user's calendars: Yes
@@ -126,7 +126,7 @@ $cat_id = '';
 // Can override with "rss.php?repeats=1".
 $allow_repeats = false;
 
-// Load show only first occurence within the given time span of daily repeating events.
+// Load show only first occurrence within the given time span of daily repeating events.
 // Can override with "rss.php?repeats=2".
 $show_daily_events_only_once = false;
 
@@ -304,7 +304,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
     }
     for ( $j = 0; $j < $rentrycnt && $numEvents < $maxEvents; $j++ ) {
       // To allow repeated daily entries to be suppressed. Step below is
-      // necessary because 1st occurence of repeating events shows up in
+      // necessary because 1st occurrence of repeating events shows up in
       // $entries AND $rentries & we suppress display of it in $rentries.
       if ( in_array ( $rentries[$j]->getID(),
             $eventIds ) && $rentries[$j]->getrepeatType() == 'daily' )

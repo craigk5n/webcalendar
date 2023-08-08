@@ -29,7 +29,7 @@
  * (Strange, since it did display a PHP compile error message...)
  *
  * Usage Requirements:
- * For this work, at least on some Apache intallations,
+ * For this work, at least on some Apache installations,
  * the following may need to be added to the httpd.conf file:
  *  <Directory "/var/www/html/webcalendar">
  *    Script PUT /icalclient.php
@@ -142,9 +142,9 @@ if ( empty( $_SERVER['PHP_AUTH_USER'] ) && ! empty( $_ENV['REMOTE_USER'] ) ) {
 if ( ( empty( $_SERVER['PHP_AUTH_USER'] )
     or empty( $_SERVER['PHP_AUTH_PW'] ) )
     and isset( $_REQUEST['BAD_HOSTING'] )
-    and preg_match( '/Basic\s+(.*)$/i', $_REQUEST['BAD_HOSTING'], $matc ) )
+    and preg_match( '/Basic\s+(.*)$/i', $_REQUEST['BAD_HOSTING'], $match ) )
   list( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) =
-    explode( ':', base64_decode( $matc[1] ) );
+    explode( ':', base64_decode( $match[1] ) );
 
 unset( $_ENV['REMOTE_USER'] );
 

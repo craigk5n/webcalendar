@@ -299,7 +299,7 @@ CREATE TABLE webcal_reminders (
   cal_before CHAR(1) NOT NULL default 'Y',
   /* timestamp of last sent reminder */
   cal_last_sent INT NOT NULL default '0',
-  /* number of times to repeat in addition to original occurance */
+  /* number of times to repeat in addition to original occurrence */
   cal_repeats INT NOT NULL default '0',
   /* time in ISO 8601 format that specifies time between repeated reminders */
   cal_duration INT NOT NULL default '0',
@@ -430,7 +430,7 @@ CREATE TABLE webcal_categories (
 );
 
 /**
- * Define assitant/boss relationship.
+ * Define assistant/boss relationship.
  */
 CREATE TABLE webcal_asst (
   /* user login of boss */

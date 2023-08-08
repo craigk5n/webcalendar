@@ -89,7 +89,7 @@ function time_selection($prefix, $time = '', $trigger = false)
 
 $daysStr = translate('days');
 $hoursStr = translate('hours');
-$minutStr = translate('minutes');
+$minuteStr = translate('minutes');
 $saveStr = translate('Save');
 
 load_user_categories();
@@ -759,7 +759,7 @@ $tabI = 0;
               <input class="form-control" type="text" name="duration_m" id="duration_m" size="2" maxlength="2" value="<?php if ($allday != 'Y') {
                                                                                                     printf("%02d", $duration - ($dur_h * 60));
                                                                                                   } ?>">
-              &nbsp;(<label for="duration_h"><?php echo $hoursStr; ?></label>: <label for="duration_m"><?php echo $minutStr; ?></label>)
+              &nbsp;(<label for="duration_h"><?php echo $hoursStr; ?></label>: <label for="duration_m"><?php echo $minuteStr; ?></label>)
             </div>
           <?php } else { ?>
             <div id="timeentryend"><label data-toggle="tooltip" data-placement="top" title="<?php etooltip('end-time-help'); ?>">
@@ -790,7 +790,7 @@ $tabI = 0;
 
         $site_extracnt = count($site_extras);
         if ($site_extracnt && !empty($site_extras[0]['FIELDSET'])) {
-          echo "<div><fieldset><legend>" . translate("Site Extas") . "</legend>\n<table>\n";
+          echo "<div><fieldset><legend>" . translate("Site Extras") . "</legend>\n<table>\n";
         }
 
         for ($i = 0; $i < $site_extracnt; $i++) {
@@ -1325,7 +1325,7 @@ $tabI = 0;
         <td colspan="4"></td>
       </tr>
       <tr id="rptbymonthdayextended" style="visibility:hidden;">
-        <td class="xtooltip" id="ByMonthDaylabel">
+        <td class="tooltip" id="ByMonthDaylabel">
         <label for="entry_freq" data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-bymonthdayextended-help') . '">'  . translate('ByMonthDay')
           . ':&nbsp;</td>
         <td colspan="2" class="boxall">'
@@ -1392,7 +1392,7 @@ $tabI = 0;
       </tr>
       <tr id="rptbyyearday" style="visibility:hidden;" title="'
           . tooltip('repeat-byyearday-help') . '">
-        <td class="xtooltip">' . translate('ByYearDay') . ':</td>
+        <td class="tooltip">' . translate('ByYearDay') . ':</td>
         <td colspan="2"><input type="text" name="byyearday" id="byyearday" '
           . 'size="50" maxlength="100" value="' . $byyearday . '"></td>
       </tr>
@@ -1465,7 +1465,7 @@ $tabI = 0;
       <table cellpadding="3">
         <thead>
           <tr>
-            <td class="xtooltip"><label>' . translate('Send Reminder')
+            <td class="tooltip"><label>' . translate('Send Reminder')
           . ':</label></td>
             <td colspan="3">
               <input type="hidden" name="rem_action" value="'
@@ -1488,7 +1488,7 @@ $tabI = 0;
         </thead>
         <tbody id="reminder_when">
           <tr>
-            <td class="xtooltip" rowspan="6"><label>' . translate('When')
+            <td class="tooltip" rowspan="6"><label>' . translate('When')
           . ':</label></td>
             <td class="boxtop boxleft" width="20%"><label><input type="radio" '
           . 'name="rem_when" id="rem_when_date" value="Y" '
@@ -1518,7 +1518,7 @@ $tabI = 0;
               <label><input type="text" size="2" name="rem_hours" '
           . 'value="' . $rem_hours . '">' . $hoursStr . '</label>&nbsp;
               <label><input type="text" size="2" name="rem_minutes" value="'
-          . $rem_minutes . '">' . $minutStr . '</label>
+          . "$rem_minutes\">$minuteStr" . '</label>
             </td>
           </tr>
           <tr>
@@ -1548,7 +1548,7 @@ $tabI = 0;
         </tbody>
         <tbody id="reminder_repeat">
           <tr>
-            <td class="xtooltip" rowspan="2"><label>' . translate('Repeat')
+            <td class="tooltip" rowspan="2"><label>' . translate ( 'Repeat' )
           . ':</label></td>
             <td class="boxtop boxleft">&nbsp;&nbsp;&nbsp;<label>'
           . translate('Times') . '</label></td>
@@ -1565,7 +1565,7 @@ $tabI = 0;
               <input type="text" size="2" name="rem_rep_hours" value="'
           . $rem_rep_hours . '"><label>' . $hoursStr . '</label>&nbsp;
               <input type="text" size="2" name="rem_rep_minutes" value="'
-          . $rem_rep_minutes . '"><label>' . $minutStr . '</label>
+          . "$rem_rep_minutes\"><label>$minuteStr" . '</label>
             </td>
           </tr>
         </tbody>

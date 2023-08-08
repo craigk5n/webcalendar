@@ -498,7 +498,7 @@ function save_remote_calendar($isAdd, $username, $lastname, $firstname, $url, $i
       [$username, $firstname, $lastname, $owner, $ispublic, $url], false, false
     )) {
       $error = dbi_error();
-      if(stripos($error, "uplicate")>0) {
+      if(stripos($error, "duplicate")>0) {
         $error = translate('Calendar ID already in use');
       } else {
         $error = db_error();

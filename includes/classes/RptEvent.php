@@ -4,7 +4,7 @@
  *
  * @author Adam Roben <adam.roben@gmail.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  * @subpackage Events
  */
@@ -149,7 +149,7 @@ class RepeatingEvent extends Event {
    * @param string $rpt_byweekno   Weeks that events occur
    * @param string $rpt_byyearday  Days of the year that events occur
    * @param string $rpt_wkst       Start day of week for ByDay events
-   * @param string $rpt_count      Number of repeat occurances (including orginal date)
+   * @param string $rpt_count      Number of repeat occurrences (including original date)
    * @param array  $exceptions     Dates on which the event should not occur
    * @param array  $inclusions     Additional dates on which the event should occur
    * @param array  $rpt_all_dates  All dates on which the event should occur

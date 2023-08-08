@@ -26,7 +26,7 @@ sub td {
 
 sub print_table {
   $out{ $name } = '
-    <h3><a name="' . $name . '">' . $name . '</a></h3>
+    <h3><a id="' . "$name\">$name" . '</a></h3>
     <blockquote>';
   $out{ $name } .= '
       ' . $description . '<br><br>'

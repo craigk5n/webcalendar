@@ -36,7 +36,7 @@ $enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 
 $printerStr = $unapprovedStr = '';
 
-/* Pre-Load the repeated events for quckier access */
+/* Pre-Load the repeated events for quicker access */
 $repeated_events = read_repeated_events ( empty ( $user )
   ? $login : $user, $startdate, $enddate, $cat_id );
 

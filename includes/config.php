@@ -11,7 +11,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  */
 
@@ -28,7 +28,7 @@ require_once 'load_assets.php';
  *
  * @param string  $error  The error message to display
  * @param string  $anchor The section in WebCalendar-SysAdmin.html to
- *		display (should be marked with <a name="XXX">
+ *		display (should be marked with <a id="XXX">
  * @internal We don't normally put functions in this file. But, since this
  *           file is included before some of the others, this function either
  *           goes here or we repeat this code in multiple files.

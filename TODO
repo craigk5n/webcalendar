@@ -27,7 +27,7 @@ te?
     Remove the public calendar and transition users to a public
     nonuser calendar as part of the upgrade process.
 [ ] Always have "User Access Control" enabled.  We might need to work
-    on help docs or the UI so newbiews can understand this.
+    on help docs or the UI so newbies can understand this.
 [ ] Update upcoming.php to support linking to an event on a nonuser
     public calendar.  URLs need to go through nulogin.php first and
     use return_path to specify the event URL.
@@ -56,4 +56,3 @@ Here are some other ideas for the next or perhaps later releases:
     Details on how to developer ActiveSync Service Providers:
       http://msdn.microsoft.com/library/default.asp?url=/library/en-us/wceactsy/html/ceconunderstandingserviceproviders.asp
       http://msdn.microsoft.com/library/default.asp?url=/library/en-us/wceactsy/html/cecondesignguidelinesforactivesyncsynchronizationserviceproviders.asp
-

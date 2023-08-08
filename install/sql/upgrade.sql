@@ -255,11 +255,11 @@ CREATE TABLE webcal_timezones (
   PRIMARY KEY (tzid)
 );
 /*upgrade_v1.2.8*/
-ALTER TABLE webcal_access_function ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_access_function">''</a>Specifies what WebCalendar functions a user can access. Each function has a corresponding numeric value (specified in the file includes/access.php). For example, view event is 0, so the very first character in the cal_permissions column is either a "Y" if this user can view events or a "N" if they cannot.';
+ALTER TABLE webcal_access_function ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_access_function">''</a>Specifies what WebCalendar functions a user can access. Each function has a corresponding numeric value (specified in the file includes/access.php). For example, view event is 0, so the very first character in the cal_permissions column is either a "Y" if this user can view events or a "N" if they cannot.';
 ALTER TABLE webcal_access_function MODIFY cal_login varchar(25) NOT NULL COMMENT 'User login. From <a href="#webcal_user">webcal_user</a> table.' FIRST;
 ALTER TABLE webcal_access_function MODIFY cal_permissions varchar(64) NOT NULL COMMENT 'A string of "Y"s and/or "N"s for the various functions.';
 
-ALTER TABLE webcal_access_user ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_access_user">''</a>Specifies which users can access another user''s calendar.';
+ALTER TABLE webcal_access_user ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_access_user">''</a>Specifies which users can access another user''s calendar.';
 ALTER TABLE webcal_access_user MODIFY cal_see_time_only ENUM('N','Y') NOT NULL DEFAULT 'N' COMMENT 'Can current user can only see time blocks of other user?';
 ALTER TABLE webcal_access_user MODIFY cal_can_view smallint UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Can current user view events on the other user''s calendar?' FIRST;
 ALTER TABLE webcal_access_user MODIFY cal_can_invite ENUM('N','Y') NOT NULL DEFAULT 'Y' COMMENT 'Can current user see other user in Participant lists?' FIRST;
@@ -269,11 +269,11 @@ ALTER TABLE webcal_access_user MODIFY cal_can_approve smallint UNSIGNED NOT NULL
 ALTER TABLE webcal_access_user MODIFY cal_other_user varchar(25) NOT NULL COMMENT 'The login of the other user whose calendar the current user wants to access. Also, from <a href="#webcal_user">webcal_user</a> table.' FIRST;
 ALTER TABLE webcal_access_user MODIFY cal_login varchar(25) NOT NULL COMMENT 'The current user who is attempting to look at another user''s calendar. From <a href="#webcal_user">webcal_user</a> table.' FIRST;
 
-ALTER TABLE webcal_asst ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_asst">''</a>Define assistant/boss relationship.';
+ALTER TABLE webcal_asst ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_asst">''</a>Define assistant/boss relationship.';
 ALTER TABLE webcal_asst MODIFY cal_assistant varchar(25) NOT NULL COMMENT 'Assistant login. Also from <a href="#webcal_user">webcal_user</a> table.';
 ALTER TABLE webcal_asst MODIFY cal_boss varchar(25) NOT NULL COMMENT 'Boss login. From <a href="#webcal_user">webcal_user</a> table.' FIRST;
 
-ALTER TABLE webcal_blob ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_blob">''</a>This table stores event attachments and comments.';
+ALTER TABLE webcal_blob ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_blob">''</a>This table stores event attachments and comments.';
 ALTER TABLE webcal_blob MODIFY cal_type ENUM('A','C') NOT NULL DEFAULT 'C' COMMENT 'Type of object: C=Comment, A=Attachment.' FIRST;
 ALTER TABLE webcal_blob MODIFY cal_size int UNSIGNED DEFAULT NULL COMMENT 'Size of object (not used for comments).' FIRST;
 ALTER TABLE webcal_blob MODIFY cal_name varchar(30) DEFAULT NULL COMMENT 'Filename of object (not used for comments).' FIRST;
@@ -288,17 +288,17 @@ ALTER TABLE webcal_blob MODIFY cal_blob_id int UNSIGNED NOT NULL AUTO_INCREMENT 
 ALTER TABLE webcal_blob MODIFY cal_blob longblob COMMENT 'Binary data for object.';
 ALTER TABLE webcal_blob ADD UNIQUE KEY wb_cl_cd (cal_login,cal_description);
 
-ALTER TABLE webcal_categories ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_categories">''</a>Defines user categories. Categories can be specific to a user or global. When a category is global, the cat_owner field will be NULL. (Only an admin user can create a global category.)';
+ALTER TABLE webcal_categories ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_categories">''</a>Defines user categories. Categories can be specific to a user or global. When a category is global, the cat_owner field will be NULL. (Only an admin user can create a global category.)';
 ALTER TABLE webcal_categories MODIFY cat_name varchar(80) NOT NULL COMMENT 'Category name.' FIRST;
 ALTER TABLE webcal_categories MODIFY cat_color varchar(7) DEFAULT NULL COMMENT 'RGB color for category.' FIRST;
 ALTER TABLE webcal_categories MODIFY cat_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique category id.' FIRST;
 ALTER TABLE webcal_categories MODIFY cat_owner varchar(25) DEFAULT NULL COMMENT 'User login of category owner. From <a href="#webcal_user">webcal_user</a> table, if applicable. If this is NULL, then it is a global category.';
 
-ALTER TABLE webcal_config ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_config">''</a>System settings (set by the admin interface in admin.php).';
+ALTER TABLE webcal_config ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_config">''</a>System settings (set by the admin interface in admin.php).';
 ALTER TABLE webcal_config MODIFY cal_setting varchar(50) NOT NULL COMMENT 'System setting.' FIRST;
 ALTER TABLE webcal_config MODIFY cal_value varchar(100) NULL COMMENT 'System setting value.';
 
-ALTER TABLE webcal_entry ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_entry">''</a>Defines a calendar event. Each event in the system has one entry in this table unless the event starts before midnight and ends after midnight. In that case a secondary event will be created with cal_ext_for_id set to the cal_id of the original entry. The following tables contain additional information about each event:<ul><li><a href="#webcal_entry_user">webcal_entry_user</a> table - lists participants in the event and specifies the status (accepted, rejected) and category of each participant.</li><li><a href="#webcal_entry_repeats">webcal_entry_repeats</a> table - contains information if the event repeats.</li><li><a href="#webcal_entry_repeats_not">webcal_entry_repeats_not</a> table - specifies which dates the repeating event does not repeat (because they were deleted or modified for just that date by the user.)</li><li><a href="#webcal_entry_log">webcal_entry_log</a> table - provides a history of changes to this event.</li><li><a href="#webcal_site_extras">webcal_site_extras</a> table - stores event data as defined in site_extras.php (such as reminders and other custom event fields).</li></ul>';
+ALTER TABLE webcal_entry ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_entry">''</a>Defines a calendar event. Each event in the system has one entry in this table unless the event starts before midnight and ends after midnight. In that case a secondary event will be created with cal_ext_for_id set to the cal_id of the original entry. The following tables contain additional information about each event:<ul><li><a href="#webcal_entry_user">webcal_entry_user</a> table - lists participants in the event and specifies the status (accepted, rejected) and category of each participant.</li><li><a href="#webcal_entry_repeats">webcal_entry_repeats</a> table - contains information if the event repeats.</li><li><a href="#webcal_entry_repeats_not">webcal_entry_repeats_not</a> table - specifies which dates the repeating event does not repeat (because they were deleted or modified for just that date by the user.)</li><li><a href="#webcal_entry_log">webcal_entry_log</a> table - provides a history of changes to this event.</li><li><a href="#webcal_site_extras">webcal_site_extras</a> table - stores event data as defined in site_extras.php (such as reminders and other custom event fields).</li></ul>';
 ALTER TABLE webcal_entry MODIFY cal_url varchar(100) DEFAULT NULL COMMENT 'URL of event.';
 ALTER TABLE webcal_entry MODIFY cal_type ENUM('E','M','T') DEFAULT 'E' COMMENT '"E" = Event, "M" = Repeating event, "T" = Task.' FIRST;
 ALTER TABLE webcal_entry MODIFY cal_time time DEFAULT NULL COMMENT 'Event start time.' FIRST;
@@ -324,18 +324,18 @@ ALTER TABLE webcal_entry MODIFY cal_id int UNSIGNED NOT NULL AUTO_INCREMENT COMM
 UPDATE webcal_entry SET cal_datetime = CONCAT(cal_date,cal_time);
 UPDATE webcal_entry SET cal_due = CONCAT(cal_due_date,cal_due_time);
 
-ALTER TABLE webcal_entry_categories ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_entry_categories">''</a>Contains category foreign keys to enable multiple categories for each event or task.';
+ALTER TABLE webcal_entry_categories ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_entry_categories">''</a>Contains category foreign keys to enable multiple categories for each event or task.';
 ALTER TABLE webcal_entry_categories MODIFY cat_owner varchar(25) DEFAULT NULL COMMENT 'User that owns this record. Global categories will be NULL. From <a href="#webcal_user">webcal_user</a> table.' FIRST;
 ALTER TABLE webcal_entry_categories MODIFY cat_order int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Order that user requests their categories appear. Globals are always last.';
 ALTER TABLE webcal_entry_categories MODIFY cat_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Id of category from <a href="#webcal_categories">webcal_categories</a> table.' FIRST;
 ALTER TABLE webcal_entry_categories MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Id of event from <a href="#webcal_entry">webcal_entry</a> table.' FIRST;
 
-ALTER TABLE webcal_entry_ext_user ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_entry_ext_user">''</a>External user (no login) for an event.';
+ALTER TABLE webcal_entry_ext_user ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_entry_ext_user">''</a>External user (no login) for an event.';
 ALTER TABLE webcal_entry_ext_user MODIFY cal_fullname varchar(50) NOT NULL COMMENT 'external user full name';
 ALTER TABLE webcal_entry_ext_user MODIFY cal_email varchar(75) NULL COMMENT 'external user email (for sending a reminder)' FIRST;
 ALTER TABLE webcal_entry_ext_user MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'From <a href="#webcal_entry">webcal_entry</a> table.' FIRST;
 
-ALTER TABLE webcal_entry_log ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_entry_log">''</a>Activity log for an event.';
+ALTER TABLE webcal_entry_log ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_entry_log">''</a>Activity log for an event.';
 ALTER TABLE webcal_entry_log MODIFY cal_user_cal varchar(25) DEFAULT NULL COMMENT 'User of calendar affected. Also from <a href="#webcal_user">webcal_user</a> table.' FIRST;
 ALTER TABLE webcal_entry_log MODIFY cal_type ENUM('A','C','E','M','R','U') NOT NULL DEFAULT 'C' COMMENT 'Log types:<ul><li>C: Created</li><li>A: Approved/Confirmed by user</li><li>R: Rejected by user</li><li>U: Updated by user</li><li>M: Mail Notification sent</li><li>E: Reminder sent</li></ul>' FIRST;
 ALTER TABLE webcal_entry_log MODIFY cal_time time DEFAULT NULL FIRST;
@@ -346,7 +346,7 @@ ALTER TABLE webcal_entry_log MODIFY cal_entry_id int UNSIGNED NOT NULL COMMENT '
 ALTER TABLE webcal_entry_log MODIFY cal_date date NOT NULL FIRST;
 ALTER TABLE webcal_entry_log MODIFY cal_log_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique id of this log entry.' FIRST;
 
-ALTER TABLE webcal_entry_repeats ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_entry_repeats">''</a>Defines repeating info about an event. The event is defined in <a href="#webcal_entry">webcal_entry</a> table.';
+ALTER TABLE webcal_entry_repeats ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_entry_repeats">''</a>Defines repeating info about an event. The event is defined in <a href="#webcal_entry">webcal_entry</a> table.';
 ALTER TABLE webcal_entry_repeats MODIFY cal_wkst ENUM('MO','TU','WE','TH','FR','SA','SU') DEFAULT 'MO' COMMENT 'Week starts on...';
 ALTER TABLE webcal_entry_repeats MODIFY cal_days ENUM('N','Y') DEFAULT NULL COMMENT 'NO LONGER USED. We''ll leave it in for now.' FIRST;
 ALTER TABLE webcal_entry_repeats MODIFY cal_count int UNSIGNED DEFAULT NULL FIRST;
@@ -364,43 +364,43 @@ ALTER TABLE webcal_entry_repeats MODIFY cal_end date DEFAULT NULL COMMENT 'End d
 ALTER TABLE webcal_entry_repeats MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Event id. From <a href="#webcal_entry">webcal_entry</a> table.' FIRST;
 UPDATE webcal_entry_repeats SET cal_enddt = CONCAT(cal_end,cal_endtime);
 
-ALTER TABLE webcal_entry_repeats_not ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_entry_repeats_not">''</a>This table specifies which dates in a repeating event have either been deleted, included, or replaced with another event for that day. When replaced, the cal_group_id (I know... not the best name, but it was not being used) column will be set to the original event. That way the user can delete the original event and (at the same time) delete any exception events.';
+ALTER TABLE webcal_entry_repeats_not ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_entry_repeats_not">''</a>This table specifies which dates in a repeating event have either been deleted, included, or replaced with another event for that day. When replaced, the cal_group_id (I know... not the best name, but it was not being used) column will be set to the original event. That way the user can delete the original event and (at the same time) delete any exception events.';
 ALTER TABLE webcal_entry_repeats_not MODIFY cal_date DATE NOT NULL COMMENT 'Date event should not repeat.' FIRST;
 ALTER TABLE webcal_entry_repeats_not MODIFY cal_id int UNSIGNED NOT NULL COMMENT 'Event id of repeating event. From <a href="#webcal_entry">webcal_entry</a> table.' FIRST;
 ALTER TABLE webcal_entry_repeats_not MODIFY cal_exdate tinyint UNSIGNED NOT NULL DEFAULT '1' COMMENT 'Indicates whether this record is an exclusion1) or inclusion0).';
 
-ALTER TABLE webcal_entry_user ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_entry_user">''</a>This table associates one or more users with an event by the event id. The event can be found in <a href="#webcal_entry">webcal_entry</a> table.';
+ALTER TABLE webcal_entry_user ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_entry_user">''</a>This table associates one or more users with an event by the event id. The event can be found in <a href="#webcal_entry">webcal_entry</a> table.';
 ALTER TABLE webcal_entry_user MODIFY cal_status ENUM('A','C','D','P','R','W') DEFAULT 'A' COMMENT 'Status of event for this user:<ul><li>A=Accepted</li><li>C=Completed</li><li>D=Deleted</li><li>P=In-Progress</li><li>R=Rejected/Declined</li><li>W=Waiting</li></ul>';
 ALTER TABLE webcal_entry_user MODIFY cal_percent tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Task percentage of completion for this user''s task.' FIRST;
 ALTER TABLE webcal_entry_user MODIFY cal_category int UNSIGNED DEFAULT NULL COMMENT 'Category of the event for this user.' FIRST;
 ALTER TABLE webcal_entry_user MODIFY cal_login varchar(25) NOT NULL COMMENT 'Participant in the event. From <a href="#webcal_user">webcal_user</a> table.' FIRST;
 ALTER TABLE webcal_entry_user MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Event id. From <a href="#webcal_entry">webcal_entry</a> table.' FIRST;
 
-ALTER TABLE webcal_group ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_group">''</a>Define a group. Group members can be found in <a href="#webcal_group_user">webcal_group_user</a> table.';
+ALTER TABLE webcal_group ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_group">''</a>Define a group. Group members can be found in <a href="#webcal_group_user">webcal_group_user</a> table.';
 ALTER TABLE webcal_group MODIFY cal_owner varchar(25) DEFAULT NULL COMMENT 'User login of user that created this group. From <a href="#webcal_user">webcal_user</a> table.';
 ALTER TABLE webcal_group MODIFY cal_name varchar(50) NOT NULL COMMENT 'Name of the group.' FIRST;
 ALTER TABLE webcal_group MODIFY cal_last_update TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date last updated.' FIRST;
 ALTER TABLE webcal_group MODIFY cal_group_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique group id.' FIRST;
 
-ALTER TABLE webcal_group_user ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_group_user">''</a>Group members.';
+ALTER TABLE webcal_group_user ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_group_user">''</a>Group members.';
 ALTER TABLE webcal_group_user MODIFY cal_login varchar(25) NOT NULL COMMENT 'From <a href="#webcal_user">webcal_user</a>';
 ALTER TABLE webcal_group_user MODIFY cal_group_id int UNSIGNED NOT NULL COMMENT 'From <a href="#webcal_group">webcal_group</a>' FIRST;
 
-ALTER TABLE webcal_import ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_import">''</a>Used to track import data (one row per import).';
+ALTER TABLE webcal_import ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_import">''</a>Used to track import data (one row per import).';
 ALTER TABLE webcal_import MODIFY cal_type varchar(10) NOT NULL COMMENT 'Type of import (ical, vcal, palm, outlookcsv).';
 ALTER TABLE webcal_import MODIFY cal_name varchar(50) DEFAULT NULL COMMENT 'Name of import (optional).' FIRST;
 ALTER TABLE webcal_import MODIFY cal_login varchar(25) DEFAULT NULL COMMENT 'User who performed the import.' FIRST;
 ALTER TABLE webcal_import MODIFY cal_date TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Datetime of import.' FIRST;
 ALTER TABLE webcal_import MODIFY cal_import_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique id for import.' FIRST;
 
-ALTER TABLE webcal_import_data ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_import_data">''</a>Used to track import data (one row per event).';
+ALTER TABLE webcal_import_data ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_import_data">''</a>Used to track import data (one row per event).';
 ALTER TABLE webcal_import_data MODIFY cal_import_type varchar(15) NOT NULL COMMENT 'Type of import: "palm", "vcal", "ical" or "outlookcsv".';
 ALTER TABLE webcal_import_data MODIFY cal_import_id int UNSIGNED NOT NULL COMMENT 'Import id (From <a href="#webcal_import">webcal_import</a> table.' FIRST;
 ALTER TABLE webcal_import_data MODIFY cal_external_id varchar(200) DEFAULT NULL COMMENT 'External id used in external calendar system (for example, UID in iCal).' FIRST;
 ALTER TABLE webcal_import_data MODIFY cal_login varchar(25) NOT NULL COMMENT 'User login. From <a href="#webcal_user">webcal_user</a> table.' FIRST;
 ALTER TABLE webcal_import_data MODIFY cal_id int UNSIGNED NOT NULL COMMENT 'Event id in WebCalendar. From <a href="#webcal_entry">webcal_entry</a> table.' FIRST;
 
-ALTER TABLE webcal_nonuser_cals ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_nonuser_cals">''</a>Defines non-user calendars.';
+ALTER TABLE webcal_nonuser_cals ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_nonuser_cals">''</a>Defines non-user calendars.';
 ALTER TABLE webcal_nonuser_cals MODIFY cal_url varchar(255) DEFAULT NULL COMMENT 'URL of the remote calendar.';
 ALTER TABLE webcal_nonuser_cals MODIFY cal_lastname varchar(25) DEFAULT NULL COMMENT 'Calendar''s last name.' FIRST;
 ALTER TABLE webcal_nonuser_cals MODIFY cal_is_public ENUM('N','Y') NOT NULL DEFAULT 'N' COMMENT 'Can this nonuser calendar be a public calendar (no login required)?' FIRST;
@@ -410,7 +410,7 @@ ALTER TABLE webcal_nonuser_cals MODIFY cal_admin varchar(25) NOT NULL COMMENT 'T
 ALTER TABLE webcal_nonuser_cals MODIFY cal_login varchar(25) NOT NULL COMMENT 'Unique id for the calendar.' FIRST;
 UPDATE webcal_nonuser_cals SET cal_displayname = CONCAT_WS(' ',cal_firstname,cal_lastname);
 
-ALTER TABLE webcal_reminders ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_reminders">''</a>Stores information about reminders.';
+ALTER TABLE webcal_reminders ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_reminders">''</a>Stores information about reminders.';
 ALTER TABLE webcal_reminders MODIFY cal_times_sent int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Number of times this reminder has been sent.';
 ALTER TABLE webcal_reminders MODIFY cal_repeats int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Number of times to repeat in addition to original occurrence.' FIRST;
 ALTER TABLE webcal_reminders MODIFY cal_related ENUM('E','S') NOT NULL DEFAULT 'S' COMMENT 'S=Start, E=End. Specifies which edge of entry this reminder applies to.' FIRST;
@@ -422,7 +422,7 @@ ALTER TABLE webcal_reminders MODIFY cal_before ENUM('N','Y') NOT NULL DEFAULT 'Y
 ALTER TABLE webcal_reminders MODIFY cal_action varchar(12) NOT NULL DEFAULT 'EMAIL' COMMENT 'Action as imported, may be used in the future.' FIRST;
 ALTER TABLE webcal_reminders MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'From <a href="#webcal_entry">webcal_entry</a>' FIRST;
 
-ALTER TABLE webcal_report ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_report">''</a>Defines a custom report created by a user.';
+ALTER TABLE webcal_report ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_report">''</a>Defines a custom report created by a user.';
 ALTER TABLE webcal_report MODIFY cal_user varchar(25) DEFAULT NULL COMMENT 'User calendar to display (NULL indicates current user).';
 ALTER TABLE webcal_report MODIFY cal_update_date date NOT NULL COMMENT 'Date created or last updated.' FIRST;
 ALTER TABLE webcal_report MODIFY cal_time_range int UNSIGNED NOT NULL COMMENT 'Time range for report:<ul><li>0 = tomorrow</li><li>1 = today</li><li>2 = yesterday</li><li>3 = day before yesterday</li><li>10 = next week</li><li>11 = current week</li><li>12 = last week</li><li>13 = week before last</li><li>20 = next week and week after</li><li>21 = current week and next week</li><li>22 = last week and this week</li><li>23 = last two weeks</li><li>30 = next month</li><li>31 = current month</li><li>32 = last month</li><li>33 = month before last</li><li>40 = next year</li><li>41 = current year</li><li>42 = last year</li><li>43 = year before last</li></ul>' FIRST;
@@ -438,12 +438,12 @@ ALTER TABLE webcal_report MODIFY cal_cat_id int UNSIGNED DEFAULT NULL COMMENT 'C
 ALTER TABLE webcal_report MODIFY cal_allow_nav ENUM('N','Y') DEFAULT 'Y' COMMENT 'Allow user to navigate to different dates with next/previous? ("Y" or "N")' FIRST;
 ALTER TABLE webcal_report MODIFY cal_report_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique id of this report.' FIRST;
 
-ALTER TABLE webcal_report_template ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_report_template">''</a>Defines one of the templates used for a report. Each report has three templates: <ol><li>Page template - Defines the entire page (except for header and footer). The following variables can be defined:<ul><li>${days}<sup>*</sup> - the HTML of all dates (generated from the Date template)</li></ul></li><li>Date template - Defines events for one day. If the report is for a week or month, then the results of each day will be concatenated and used as the ${days} variable in the Page template. The following variables can be defined:<ul><li>${events}<sup>*</sup> - the HTML of all events for the data (generated from the Event template)</li><li>${date} - the date</li><li>${fulldate} - date (includes weekday)</li></ul></li><li>Event template - Defines a single event. The following variables can be defined: <ul><li>${name}<sup>*</sup> - Brief Description of event</li><li>${description} - Full Description of event</li><li>${date} - Date of event</li><li>${fulldate} - Date of event (includes weekday)</li><li>${time} - Time of event (4:00pm - 4:30pm)</li><li>${starttime} - Start time of event</li><li>${endtime} - End time of event</li><li>${duration} - Duration of event (in minutes)</li><li>${priority} - Priority of event</li><li>${href} - URL to view event details</li></ul></li></ol><sup>*</sup> denotes a required template variable.';
+ALTER TABLE webcal_report_template ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_report_template">''</a>Defines one of the templates used for a report. Each report has three templates: <ol><li>Page template - Defines the entire page (except for header and footer). The following variables can be defined:<ul><li>${days}<sup>*</sup> - the HTML of all dates (generated from the Date template)</li></ul></li><li>Date template - Defines events for one day. If the report is for a week or month, then the results of each day will be concatenated and used as the ${days} variable in the Page template. The following variables can be defined:<ul><li>${events}<sup>*</sup> - the HTML of all events for the data (generated from the Event template)</li><li>${date} - the date</li><li>${fulldate} - date (includes weekday)</li></ul></li><li>Event template - Defines a single event. The following variables can be defined: <ul><li>${name}<sup>*</sup> - Brief Description of event</li><li>${description} - Full Description of event</li><li>${date} - Date of event</li><li>${fulldate} - Date of event (includes weekday)</li><li>${time} - Time of event (4:00pm - 4:30pm)</li><li>${starttime} - Start time of event</li><li>${endtime} - End time of event</li><li>${duration} - Duration of event (in minutes)</li><li>${priority} - Priority of event</li><li>${href} - URL to view event details</li></ul></li></ol><sup>*</sup> denotes a required template variable.';
 ALTER TABLE webcal_report_template MODIFY cal_template_type ENUM('D','E','P') NOT NULL DEFAULT "P" COMMENT 'Type of template:<ul><li>"P": page template represents entire document</li><li>"D": date template represents a single day of events</li><li>"E": event template represents a single event</li></ul>' FIRST;
 ALTER TABLE webcal_report_template MODIFY cal_template_text text COMMENT 'Text of template.';
 ALTER TABLE webcal_report_template MODIFY cal_report_id int UNSIGNED NOT NULL COMMENT 'Report id from <a href="#webcal_report table">webcal_report</a> table.' FIRST;
 
-ALTER TABLE webcal_site_extras ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_site_extras">''</a>This table holds data for site extra fields (customized in site_extra.php).';
+ALTER TABLE webcal_site_extras ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_site_extras">''</a>This table holds data for site extra fields (customized in site_extra.php).';
 ALTER TABLE webcal_site_extras MODIFY cal_type int UNSIGNED NOT NULL COMMENT 'EXTRA_URL, EXTRA_DATE, etc.' FIRST;
 ALTER TABLE webcal_site_extras MODIFY cal_remind int UNSIGNED DEFAULT '0' COMMENT 'How many minutes before event should a reminder be sent.' FIRST;
 ALTER TABLE webcal_site_extras MODIFY cal_name varchar(25) NOT NULL COMMENT 'The brief name of this type (first field in $site_extra array).' FIRST;
@@ -451,7 +451,7 @@ ALTER TABLE webcal_site_extras MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' C
 ALTER TABLE webcal_site_extras MODIFY cal_date DATE NULL DEFAULT NULL COMMENT 'Only used for EXTRA_DATE type fields.' FIRST;
 ALTER TABLE webcal_site_extras MODIFY cal_data text COMMENT 'Used to store text data.';
 
-ALTER TABLE webcal_timezones ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_timezones">''</a>This table stores timezones of the world.';
+ALTER TABLE webcal_timezones ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_timezones">''</a>This table stores timezones of the world.';
 ALTER TABLE webcal_timezones MODIFY vtimezone text COMMENT 'Complete VTIMEZONE text gleaned from imported ics files.';
 ALTER TABLE webcal_timezones MODIFY tzid varchar(100) NOT NULL DEFAULT '' COMMENT 'Unique name of timezone, try to use Olsen naming conventions.' FIRST;
 ALTER TABLE webcal_timezones MODIFY dtstart varchar(16) DEFAULT NULL COMMENT 'Earliest date this timezone represents in YYYYMMDDTHHMMSSZ format.' FIRST;
@@ -521,9 +521,9 @@ CREATE TABLE IF NOT EXISTS webcal_translations (
  Welsh varchar(300) NOT NULL,
  PRIMARY KEY (phrase),
  KEY wt_op (on_page)
-) ENGINE MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='<a name="webcal_translations">''</a>Various language translations.';
+) ENGINE MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='<a id="webcal_translations">''</a>Various language translations.';
 
-ALTER TABLE webcal_user ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_user">''</a>Defines a WebCalendar user.';
+ALTER TABLE webcal_user ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_user">''</a>Defines a WebCalendar user.';
 ALTER TABLE webcal_user ADD cal_type ENUM('A','N','S','U') DEFAULT 'U' COMMENT 'Is this an A)dmin, N)on_user, S)ystem, or ordinary U)ser? Will evevtually replace is_admin.';
 ALTER TABLE webcal_user MODIFY cal_passwd varchar(32) DEFAULT NULL COMMENT 'The user''s password (not used for http.)' FIRST;
 ALTER TABLE webcal_user MODIFY cal_last_login TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date user last logged in.' FIRST;
@@ -533,7 +533,7 @@ ALTER TABLE webcal_user MODIFY cal_login varchar(25) NOT NULL COMMENT 'Unique us
 UPDATE webcal_user SET cal_type = 'U' WHERE cal_is_admin = 'N';
 UPDATE webcal_user SET cal_type = 'A' WHERE cal_is_admin = 'Y';
 
-ALTER TABLE webcal_user_layers ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_user_layers">''</a>Define layers for a user.';
+ALTER TABLE webcal_user_layers ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_user_layers">''</a>Define layers for a user.';
 ALTER TABLE webcal_user_layers MODIFY cal_layerid int UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE COMMENT 'Unique layer id.' FIRST;
 ALTER TABLE webcal_user_layers MODIFY cal_dups ENUM('N','Y') DEFAULT 'N' COMMENT 'Show duplicates? (Y or N)';
 ALTER TABLE webcal_user_layers MODIFY cal_color varchar(25) DEFAULT NULL COMMENT 'Color (preferably in hex) of this layer.' FIRST;
@@ -545,7 +545,7 @@ DELETE FROM webcal_config WHERE cal_value IS NULL;
 DELETE FROM webcal_user_pref WHERE cal_value IS NULL;
 
 ALTER TABLE webcal_user_pref DROP PRIMARY KEY;
-ALTER TABLE webcal_user_pref ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_user_pref">''</a>Specify preferences for a user. Most preferences are set via pref.php. Values in this table are loaded after system settings found in <a href="#webcal_config">webcal_config</a> table.';
+ALTER TABLE webcal_user_pref ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_user_pref">''</a>Specify preferences for a user. Most preferences are set via pref.php. Values in this table are loaded after system settings found in <a href="#webcal_config">webcal_config</a> table.';
 ALTER TABLE webcal_user_pref MODIFY cal_value varchar(100) NOT NULL COMMENT 'Value of setting.';
 ALTER TABLE webcal_user_pref ADD PRIMARY KEY (cal_login,cal_setting,cal_value);
 
@@ -592,19 +592,19 @@ INSERT INTO webcal_user_pref (cal_login, cal_value) SELECT cal_login, cal_view_i
 ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) NOT NULL COMMENT 'Setting name.';
 
 UPDATE webcal_user_template SET cal_login = '__webcal__sys__' WHERE cal_login = '__system_';
-ALTER TABLE webcal_user_template ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_user_template">''</a>This table stores the custom header/stylesheet/trailer. If configured properly, each user (or nonuser cal) can have their own custom header/trailer.';
+ALTER TABLE webcal_user_template ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_user_template">''</a>This table stores the custom header/stylesheet/trailer. If configured properly, each user (or nonuser cal) can have their own custom header/trailer.';
 ALTER TABLE webcal_user_template MODIFY cal_type ENUM('H','S','T') NOT NULL COMMENT 'H)eader, S)tylesheet/script, T)railer.' FIRST;
 ALTER TABLE webcal_user_template MODIFY cal_template_text text COMMENT 'Text of template.';
 ALTER TABLE webcal_user_template MODIFY cal_login varchar(25) NOT NULL COMMENT 'User login (or nonuser cal name), the default for all users is stored with the username "__webcal__sys__".' FIRST;
 
-ALTER TABLE webcal_view ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_view">''</a>A "view" allows a user to put the calendars of multiple users all on one page. A "view" is valid only for the owner (cal_owner) of the view. Users for the view are in <a href="#webcal_view_user">webcal_view_user</a> table.';
+ALTER TABLE webcal_view ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_view">''</a>A "view" allows a user to put the calendars of multiple users all on one page. A "view" is valid only for the owner (cal_owner) of the view. Users for the view are in <a href="#webcal_view_user">webcal_view_user</a> table.';
 ALTER TABLE webcal_view MODIFY cal_view_type ENUM('D','M','W') DEFAULT NULL COMMENT '"W" for week view, "D" for day view, "M" for month view.';
 ALTER TABLE webcal_view MODIFY cal_owner varchar(25) NOT NULL COMMENT 'Login name of owner of this view. From <a href="#webcal_user">webcal_user</a> table.' FIRST;
 ALTER TABLE webcal_view MODIFY cal_name varchar(50) NOT NULL COMMENT 'Name of view.' FIRST;
 ALTER TABLE webcal_view MODIFY cal_is_global ENUM('N','Y') NOT NULL DEFAULT 'N' COMMENT 'Is this a global view? (can it be accessed by other users - "Y" or "N")' FIRST;
 ALTER TABLE webcal_view MODIFY cal_view_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique view id.' FIRST;
 
-ALTER TABLE webcal_view_user ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_view_user">''</a>Specify users in a view.';
+ALTER TABLE webcal_view_user ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a id="webcal_view_user">''</a>Specify users in a view.';
 ALTER TABLE webcal_view_user MODIFY cal_login varchar(25) NOT NULL COMMENT 'A user in the view. From <a href="#webcal_user">webcal_user</a> table.';
 ALTER TABLE webcal_view_user MODIFY cal_view_id int UNSIGNED NOT NULL COMMENT 'view id from <a href="#webcal_view">webcal_view</a> table.' FIRST;
 /*upgrade_v1.9.0*/

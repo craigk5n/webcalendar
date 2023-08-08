@@ -187,7 +187,7 @@ function addGroup() {
 }
 <?php }
 // This function is called when the event type combo box
- // is changed. If the user selectes "untimed event" or "all day event",
+ // is changed. If the user selects "untimed event" or "all day event",
  // the times & duration fields are hidden.
  // If they change their mind & switch it back, the original
  // values are restored for them

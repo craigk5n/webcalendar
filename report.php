@@ -15,7 +15,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  * @subpackage Reports
  */
@@ -37,7 +37,7 @@ require_once 'includes/init.php';
 /**
  * Replaces all site_extras placeholders in a template with the actual data.
  *
- * All occurences of '${extra:ExtraName}' (where 'ExtraName' is the unique name
+ * All occurrences of '${extra:ExtraName}' (where 'ExtraName' is the unique name
  * of a site_extra) will be replaced with that extra's data.
  *
  * @param string $template The template

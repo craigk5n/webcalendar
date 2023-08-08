@@ -4,7 +4,7 @@
 *
 * @author Craig Knudsen <cknudsen@cknudsen.com>
 * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
-* @license http://www.gnu.org/licenses/gpl.html GNU GPL
+* @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
 * @package WebCalendar
 */
 
@@ -62,7 +62,7 @@ function mb_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
   mb_internal_encoding('UTF-8');
 
   $line = mb_strcut($string, 0, $limit);    // multibyte operation
-  $string = substr($string, strlen($line)); // siglebyte(bytestream) operation
+  $string = substr ( $string, strlen ( $line ) ); // singlebyte (bytestream) operation
   $res[] = $line;
 
   while (0 < mb_strlen($string)) {
@@ -759,7 +759,7 @@ function save_uid_for_event ( $importId, $id, $uid ) {
   global $error, $login;
   // Note: We can get a duplicate key error here if this event was
   // created by an import from another calendar. Say someone invites you
-  // to an event and sends along an ics attachement via email. You use
+  // to an event and sends along an ics attachment via email. You use
   // that to import the event. Now, who is the definitive source of the
   // event?  If the original author sends an update or if the ical client
   // tries to update it?  I'm not really sure, but we will assume that
@@ -1201,7 +1201,7 @@ $Entry[Due]                =  UTC datetime when VTODO is due
 $Entry[Completed]          =  Datetime when VTODO was completed
 $Entry[Percent]            =  Percentage of VTODO complete 0-100
 $Entry[AlarmSet]           =  1 = true  0 = false
-$Entry[Alarm]              =  String containg VALARM TRIGGERS
+$Entry[Alarm]              =  String containing VALARM TRIGGERS
 $Entry[Repeat]             =  Array containing repeat information (if repeat)
 $Entry[Repeat][Frequency]  =  1=daily,2=weekly,3=MonthlyByDay,4=MonthlyByDate,
                               5=MonthBySetPos,6=Yearly,7=manual
@@ -1216,7 +1216,7 @@ $Entry[Repeat][BySetPos]   =  Position in other ByXxxx that events occur
 $Entry[Repeat][ByYearDay]  =  Days in year that event occurs
 $Entry[Repeat][ByWeekNo]   =  Week that a yearly event repeats
 $Entry[Repeat][WkSt]       =  Day that week starts on (default MO)
-$Entry[Repeat][Count]      =  Number of occurances, may be used instead of UNTIL
+$Entry[Repeat][Count]      =  Number of occurrences, may be used instead of UNTIL
 */
 
 function import_data ( $data, $overwrite, $type, $silent=false ) {
@@ -2063,7 +2063,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   $data = preg_replace ( "/[\r\n]+/", "\n", $data );
   // echo "Data:<br><pre>$data</pre><p>";
   // reflect the section where we are in the file:
-  // VEVENT, VTODO, VJORNAL, VFREEBUSY, VTIMEZONE
+  // VEVENT, VTODO, VJOURNAL, VFREEBUSY, VTIMEZONE
   $state = 'NONE';
   $substate = 'none'; // reflect the sub section
   $subsubstate = ''; // reflect the sub-sub section
@@ -2194,7 +2194,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
         $event[$substate] = $match[1];
       } elseif ( preg_match ( '/^EXDATE.*:(.+)$/i', $buff, $match ) ) {
         $substate = 'exdate';
-        // allows multiple ocurrances of EXDATE to be processed
+        // allows multiple occurrences of EXDATE to be processed
         if ( isset ( $event[$substate] ) )
           $event[$substate] .= ',' . $match[1];
          else
@@ -2202,7 +2202,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
 
       } elseif ( preg_match ( '/^RDATE.*:(.+)$/i', $buff, $match ) ) {
         $substate = 'rdate';
-        // allows multiple ocurrances of RDATE to be processed
+        // allows multiple occurrences of RDATE to be processed
         if ( isset ( $event[$substate] ) )
           $event[$substate] .= ',' . $match[1];
          else
@@ -2210,7 +2210,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
 
       } elseif ( preg_match ( '/^CATEGORIES.*:(.+)$/i', $buff, $match ) ) {
         $substate = 'categories';
-        // allows multiple ocurrances of CATEGORIES to be processed
+        // allows multiple occurrences of CATEGORIES to be processed
         if ( isset ( $event[$substate] ) )
           $event[$substate] .= ',' . $match[1];
          else
@@ -2312,9 +2312,9 @@ function parse_ical ( $cal_file, $source = 'file' ) {
  # Let's save the FREEBUSY data as an event. While not a perfect solution, it's better
  # than nothing and allows Outlook users to store Free/Busy times in WebCalendar
  #
- # If not provided, UID is auto-generaated in an attempt to use WebCalendar's duplicate
+ # If not provided, UID is auto-generated in an attempt to use WebCalendar's duplicate
  # prevention feature. There could be left-over events if the number of free/busy
- # entries decreases, but those entries will hopefullly be in the past so it won't matter.
+ # entries decreases, but those entries will hopefully be in the past so it won't matter.
  # Not a great solution, but I suspect it will work well.
  #
          if ( $tmp_data = format_ical ( $event ) ) $ical_data[] = $tmp_data;
@@ -2415,7 +2415,7 @@ function parse_hcal ( $hcal_array ) {
         $event[$substate] = $value;
       } elseif ( $key == 'EXDATE' ) {
         $substate = 'exdate';
-        // allows multiple ocurrances of EXDATE to be processed
+        // allows multiple occurrences of EXDATE to be processed
         if ( isset ( $event[$substate] ) )
           $event[$substate] .= ',' . $value;
          else
@@ -2423,7 +2423,7 @@ function parse_hcal ( $hcal_array ) {
 
       } elseif ( $key == 'RDATE' ) {
         $substate = 'rdate';
-        // allows multiple ocurrances of RDATE to be processed
+        // allows multiple occurrences of RDATE to be processed
         if ( isset ( $event[$substate] ) )
           $event[$substate] .= ',' . $value;
          else
@@ -2431,7 +2431,7 @@ function parse_hcal ( $hcal_array ) {
 
       } elseif ( $key == 'CATEGORIES' ) {
         $substate = 'categories';
-        // allows multiple ocurrances of CATEGORIES to be processed
+        // allows multiple occurrences of CATEGORIES to be processed
         if ( isset ( $event[$substate] ) )
           $event[$substate] .= ',' . $value;
          else
@@ -2819,7 +2819,7 @@ function format_ical ( $event ) {
 /**
  * Figure out days of week for BYDAY values
  * If value has no numeric offset, then set it's corresponding
- * day value to  f. This selection is arbritary but gives
+ * day value to  f. This selection is arbitrary but gives
  * plenty of room on either side to adjust because we need
  * to allow values from -5 to +5
  * For example  MO = f, -1MO = e, -2MO = d, +2MO - g, +3MO =h
@@ -3172,7 +3172,7 @@ function fb_export_time ( $date, $duration, $time, $texport ) {
 }
 /**
  * Generate export select.
- * NOTE: this function is being depracated since everyone seems to have
+ * NOTE: this function is being deprecated since everyone seems to have
  * settled on iCalendar for import/export.
  */
 function generate_export_select ( $jsaction = '', $name = 'exformat' ) {
@@ -3235,7 +3235,7 @@ function parse_tzid ( $tzid ) {
     $tzAr = explode ( '/', $tzid );
     $tzArCnt = count ( $tzAr );
     $tzid = $tzAr[3];
-    // we may recieve a 2 word tzid
+    // we may receive a 2 word tzid
     if ( $tzArCnt == 5 ) $tzid .= '/' . $tzAr[4];
     // and even maybe a 3 word tzid
     if ( $tzArCnt == 6 ) $tzid .= '/' . $tzAr[4] . '/' . $tzAr[5];

@@ -3,7 +3,7 @@
  *
  * @author Adam Roben <adam.roben@gmail.com>
  * @copyright Craig Knudsen, <craig@k5n.us>, http://www.k5n.us/
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  */
 

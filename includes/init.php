@@ -38,7 +38,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  */
 
@@ -126,7 +126,7 @@ function send_http_headers () {
  *                             script, etc)
  * @param string $BodyX        Data to be printed inside the Body tag (onload
  *                             for example)
- * @param bool   $disbleCustom Do not include custom header? (useful for small
+ * @param bool   $disableCustom Do not include custom header? (useful for small
  *                             popup windows, such as color selection)
  * @param bool   $disableStyle Do not include the standard css?
  * @param bool   $disableRSS   Do not include the RSS link
