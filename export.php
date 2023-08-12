@@ -25,9 +25,9 @@ $selected = ' selected ';
 
 print_header('', '', 'onload="updateDateFields();"' );
 echo '<h2>' . translate ( 'Export' ) . '</h2>
-    <form action="export_handler.php" method="post" name="exportform" id="exportform">
-      ' . print_form_key() . '
-      <table class="table">
+    <form action="export_handler.php" method="post" name="exportform" id="exportform">';
+echo csrf_form_key();
+echo '<table class="table">
         <tr>
           <td><label for="exformat">' . translate ( 'Export format' )
  . ':</label></td>
