@@ -159,39 +159,44 @@ if( 'logout' == getGetValue( 'action' ) ) {
   exit;
 }
 
+$use_env = getenv('WEBCALENDAR_USE_ENV');
+$envpwd = '';
+
 // If password already exists, check for valid session.
-if( file_exists( $file ) && ! empty( $password ) &&
-    ( empty( $_SESSION['validuser'] ) || $_SESSION['validuser'] != $password ) )
+if (
+  ((file_exists($file) && !empty($password)) || (!empty($use_env) && !empty($password))) &&
+  (empty($_SESSION['validuser']) || $_SESSION['validuser'] != $password)
+)
   // Make user login.
   $doLogin = true;
 
-$pwd = getPostValue( 'password' );
+if (!empty($use_env) && $use_env == 'true') {
+  $envpwd = getenv('WEBCALENDAR_INSTALL_PASSWORD');
+}
+$pwd = getPostValue('password');
 
-if( file_exists( $file ) && ! empty( $pwd ) ) {
+if ((file_exists($file) || $use_env) && !empty($pwd)) {
   $_SESSION['validuser'] = '';
   echo '
 <html>
   <head>
     <title>';
 
-  if( md5( $pwd ) == $password ) {
+  if (md5($pwd) == $password || md5($pwd) == $envpwd) {
     $_SESSION['validuser'] = $password;
     echo translate( 'Password Accepted' ) . '</title>
     <meta http-equiv="refresh" content="0; index.php">
   </head>
   <body onLoad="alert( \'' . translate( 'Successful Login', true ) . '\' );">';
-  } else
+  } else {
+    echo '</head><body onLoad="alert( \'' . translate( 'Invalid Login', true )
+    . '\' ); document.go(-1)">';
     // Invalid password.
-    echo translate( 'Password Incorrect' ) . '</title>
-    <meta http-equiv="refresh" content="0; index.php">
-  </head>
-  <body onLoad="alert( \'' . translate( 'Invalid Login', true )
-     . '\' ); document.go(-1)">';
-
-  echo '
-  </body>
-</html>';
-  exit;
+    echo '<br>' . translate( 'Password Incorrect' ) . '</title></head><body>' . translate( 'Password Incorrect' );
+    echo "Password: '$pwd' <br> md5 = " . md5($pwd) . "<br>envpwd = " . $envpwd;
+    echo '</body></html>';
+    exit;
+  }
 }
 
 // [0]Display Text [1]ini_get name [2]required value [3]ini_get string search value
@@ -670,55 +675,62 @@ if( empty( $x ) ) {
     ? $settings['user_inc'] : 'user.php' );
 }
 $y = getPostValue( 'app_settings' );
-if( ! empty( $y ) ) {
-  $formUserStr                   = getPostValue( 'form_user_inc' );
-  $settings['mode']              = getPostValue( 'form_mode' );
-  $settings['readonly']          = getPostValue( 'form_readonly' );
-  $settings['single_user']       = $settings['use_http_auth']= 'false';
-  $settings['single_user_login'] = getPostValue( 'form_single_user_login' );
+if (!empty($y)) {
+  $formUserStr                   = getPostValue('form_user_inc');
+  $settings['mode']              = getPostValue('form_mode');
+  $settings['readonly']          = getPostValue('form_readonly');
+  $settings['single_user']       = $settings['use_http_auth'] = 'false';
+  $settings['single_user_login'] = getPostValue('form_single_user_login');
   $settings['user_inc']          = 'user.php';
 
-  if( $formUserStr == 'http' )
+  if ($formUserStr == 'http')
     $settings['use_http_auth'] = 'true';
-  elseif( $formUserStr == 'none' )
+  elseif ($formUserStr == 'none')
     $settings['single_user'] = 'true';
   else
     $settings['user_inc'] = $formUserStr;
 
   // Save Application Name and Server URL.
-  $_SESSION['application_name'] = getPostValue( 'form_application_name' );
-  $_SESSION['server_url']       = getPostValue( 'form_server_url' );
+  $_SESSION['application_name'] = getPostValue('form_application_name');
+  $_SESSION['server_url']       = getPostValue('form_server_url');
   $db_persistent = false;
   $db_type = $settings['db_type'];
 
-  $db_database = ( $db_type == 'sqlite' || $db_type == 'sqlite3'
-    ? get_full_include_path( $settings['db_database'] )
-    : $settings['db_database'] );
+  $db_database = ($db_type == 'sqlite' || $db_type == 'sqlite3'
+    ? get_full_include_path($settings['db_database'])
+    : $settings['db_database']);
 
-  if( empty( $settings['db_password'] ) )
+  if (empty($settings['db_password']))
     $settings['db_password'] = '';
 
-  $c = dbi_connect( $settings['db_host'], $settings['db_login'],
-    $settings['db_password'], $db_database, false );
+  $c = dbi_connect(
+    $settings['db_host'],
+    $settings['db_login'],
+    $settings['db_password'],
+    $db_database,
+    false
+  );
 
-  if( $c ) {
-    if( isset( $_SESSION['application_name'] ) ) {
-      dbi_execute( 'DELETE FROM webcal_config
-        WHERE cal_setting = \'APPLICATION_NAME\'' );
-      dbi_execute( 'INSERT INTO webcal_config ( cal_setting, cal_value )
+  if ($c) {
+    if (isset($_SESSION['application_name'])) {
+      dbi_execute('DELETE FROM webcal_config
+        WHERE cal_setting = \'APPLICATION_NAME\'');
+      dbi_execute(
+        'INSERT INTO webcal_config ( cal_setting, cal_value )
         VALUES ( \'APPLICATION_NAME\', ? )',
-        array( $_SESSION['application_name'] ) );
+        array($_SESSION['application_name'])
+      );
     }
-    if( isset( $_SESSION['server_url'] ) ) {
-      dbi_execute( 'DELETE FROM webcal_config
-        WHERE cal_setting = \'SERVER_URL\'' );
-      dbi_execute( 'INSERT INTO webcal_config ( cal_setting, cal_value )
-      VALUES ( \'SERVER_URL\', ? )', array( $_SESSION['server_url'] ) );
+    if (isset($_SESSION['server_url'])) {
+      dbi_execute('DELETE FROM webcal_config
+        WHERE cal_setting = \'SERVER_URL\'');
+      dbi_execute('INSERT INTO webcal_config ( cal_setting, cal_value )
+      VALUES ( \'SERVER_URL\', ? )', array($_SESSION['server_url']));
     }
   }
-  $do_load_admin = getPostValue( 'load_admin' );
+  $do_load_admin = getPostValue('load_admin');
 
-  if( ! empty( $do_load_admin ) ) {
+  if (!empty($do_load_admin)) {
     // Add default admin user if not exists.
     db_load_admin();
     // Check if an Admin account exists.
@@ -727,40 +739,48 @@ if( ! empty( $y ) ) {
   $setup_complete = true;
 }
 // Save settings to file now.
-if( ! empty( $x ) || ! empty( $y ) ) {
-  if ( $doLogin ) {
-    // Hack attempt :-)
-    echo "Bugger off.<br>"; exit;
-  }
-  $fd = @fopen( $file, 'w+b', false );
-
-  if( empty( $fd ) )
-    $onload = 'alert( \'' . str_replace( 'XXX', $file,
-      translate( 'Error Unable to write to file XXX.', true ) ) . "\\n"
-     . ( file_exists( $file )
-      ? translate( 'Please change the file permissions of this file.', true )
-      : translate( 'Please change includes dir permission', true ) ) . '\' );';
-  else {
-    if ( function_exists ( "date_default_timezone_set" ) )
-      date_default_timezone_set ( "America/New_York");
-    fwrite( $fd, '<?php' . "\r\n" . '/* updated via install/index.php on '
-       . date( 'r' ) . "\r\n" );
-    foreach( $settings as $k => $v ) {
-      if( $v != '<br>' && $v != '' )
-        fwrite( $fd, $k . ': ' . $v . "\r\n" );
+if (!empty($x) || !empty($y)) {
+  if ($use_env) {
+    // do nothing here since we don't use settings.php when using env vars...
+  } else {
+    if ($doLogin) {
+      // Hack attempt :-)
+      echo "Bugger off.<br>";
+      exit;
     }
-    fwrite ( $fd, "# end settings.php */\r\n?\>\r\n" );
-    fclose( $fd );
+    $fd = @fopen($file, 'w+b', false);
 
-    if( $post_action != $testSettingsStr && $post_action2 != $createNewStr )
-      $onload .= 'alert( \''
-       . translate( 'Your settings have been saved.', true ) . "\\n\\n' );";
+    if (empty($fd))
+      $onload = 'alert( \'' . str_replace(
+        'XXX',
+        $file,
+        translate('Error Unable to write to file XXX.', true)
+      ) . "\\n"
+        . (file_exists($file)
+          ? translate('Please change the file permissions of this file.', true)
+          : translate('Please change includes dir permission', true)) . '\' );';
+    else {
+      if (function_exists("date_default_timezone_set"))
+        date_default_timezone_set("America/New_York");
+      fwrite($fd, '<?php' . "\r\n" . '/* updated via install/index.php on '
+        . date('r') . "\r\n");
+      foreach ($settings as $k => $v) {
+        if ($v != '<br>' && $v != '')
+          fwrite($fd, $k . ': ' . $v . "\r\n");
+      }
+      fwrite($fd, "# end settings.php */\r\n?\>\r\n");
+      fclose($fd);
 
-    // Change to read/write by us only (only applies if we created file)
-    // and read-only by all others. Would be nice to make it 600,
-    // but the "send_reminders.php" script is usually run under a different
-    // user than the web server.
-    @chmod( $file, 0644 );
+      if ($post_action != $testSettingsStr && $post_action2 != $createNewStr)
+        $onload .= 'alert( \''
+          . translate('Your settings have been saved.', true) . "\\n\\n' );";
+
+      // Change to read/write by us only (only applies if we created file)
+      // and read-only by all others. Would be nice to make it 600,
+      // but the "send_reminders.php" script is usually run under a different
+      // user than the web server.
+      @chmod($file, 0644);
+    }
   }
 }
 $noStr  = translate( 'No' );
@@ -1221,13 +1241,21 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   if( class_exists( 'SQLite3' ) )
     $supported['sqlite3'] = 'SQLite3';
 
+  $sel_type = $use_env ? getenv('WEBCALENDAR_DB_TYPE') :  $settings['db_type'];
   foreach( $supported as $key => $value ) {
     echo '
                     <option value="' . $key . '" '
-     . ( $settings['db_type'] == $key ? $selected : '' )
+     . ( $sel_type == $key ? $selected : '' )
      . '>' . $value . '</option>';
   }
   $supported = array();
+
+  $sel_host = $use_env ? getenv('WEBCALENDAR_DB_HOST') : $settings['db_host'];
+  $sel_login = $use_env ? getenv('WEBCALENDAR_DB_LOGIN') : $settings['db_login'];
+  $sel_dbpwd = $use_env ? getenv('WEBCALENDAR_DB_PASSWORD') : $settings['db_password'];
+  $sel_db = $use_env ? getenv('WEBCALENDAR_DB_DATABASE') : $settings['db_database'];
+  $sel_pers = $use_env ? getenv('WEBCALENDAR_DB_PERSISTENT') : $settings['db_persistent'];
+  $sel_cachedir = $use_env ? getenv('WEBCALENDAR_DB_CACHEDIR') : $settings['db_cachedir'];
 
   echo '
                   </select>
@@ -1237,50 +1265,50 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                 <td class="prompt"><label for="server">'
    . translate( 'Server' ) . ':</label></td>
                 <td colspan="2"><input class="form-control" name="form_db_host" id="server" '
-   . 'size="20" value="' . ( empty($settings['db_host']) ? '' : $settings['db_host']) . '"></td>
+   . 'size="20" value="' . (empty($sel_host) ? '' : $sel_host) . '"></td>
               </tr>
               <tr>
                 <td class="prompt"><label for="login">'
    . $loginStr . ':</label></td>
                 <td colspan="2"><input class="form-control" name="form_db_login" id="login" '
-   . 'size="20" value="' . ( empty($settings['db_login']) ? '' : $settings['db_login']) . '"></td>
+   . 'size="20" value="' . ( empty($sel_login) ? '' : $sel_login) . '"></td>
               </tr>
               <tr>
                 <td class="prompt"><label for="pass">'
    . $passwordStr . ':</label></td>
                 <td colspan="2"><input class="form-control" name="form_db_password" id="pass" '
-   . 'size="20" value="' . (empty($settings['db_password']) ? '' : $settings['db_password']) . '"></td>
+   . 'size="20" value="' . (empty($sel_dbpwd) ? '' : $sel_dbpwd) . '"></td>
               </tr>
               <tr>
                 <td class="prompt" id="db_name"><label for="database">'
    . $databaseNameStr . ':</label></td>
                 <td colspan="2"><input class="form-control" name="form_db_database" id="database" '
-   . 'size="20" value="' . $settings['db_database'] . '"></td>
+   . 'size="20" value="' . $sel_db . '"></td>
               </tr>'
   /* This a workaround for postgresql. The db_type should be 'pgsql'
      but 'postgresql' is used in a lot of places...
      so this is easier for now :( */
    . ( substr( php_sapi_name(), 0, 3 ) <> 'cgi' &&
-    ini_get( ( $settings['db_type'] == 'postgresql'
-        ? 'pgsql' : $settings['db_type'] ) . '.allow_persistent' ) ? '
+    ini_get( ( $sel_db == 'postgresql'
+        ? 'pgsql' : $sel_db ) . '.allow_persistent' ) ? '
               <tr>
                 <td class="prompt"><label for="conn_pers">'
      . translate( 'Connection Persistence' ) . ':</label></td>
                 <td colspan="2">
                   <label><input class="form-control" name="form_db_persistent" value="true" '
-     . 'type="radio"' . ( $settings['db_persistent'] == 'true'
+     . 'type="radio"' . ( $sel_pers == 'true'
       ? $checked : '' ) . '>'
      . translate( 'Enabled' ) . '</label>&nbsp;&nbsp;&nbsp;&nbsp;
                   <label><input class="form-control" name="form_db_persistent" value="false" '
-     . 'type="radio"' . ( $settings['db_persistent'] != 'true'
+     . 'type="radio"' . ( $sel_pers != 'true'
       ? $checked : '' ) . '>' . translate( 'Disabled' ) . '</label>
                 </td>
               </tr>' :/* Need to set a default value. */ '
               <input class="form-control" name="form_db_persistent" value="false" type="hidden">' );
 
   if( function_exists( 'file_get_contents' ) ) {
-    if( empty( $settings['db_cachedir'] ) )
-      $settings['db_cachedir'] = '';
+    if( empty( $sel_cachedir ) )
+      $sel_cachedir= $settings['db_cachedir'] = '';
 
     echo '
               <tr>
@@ -1608,8 +1636,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               <input name="action" class="btn btn-primary" type="button" value="'
      . translate( 'Save Settings' ) . '" onClick="return validate();">'
      . ( ! empty( $_SESSION['old_program_version'] ) &&
-      ( $_SESSION['old_program_version'] == $PROGRAM_VERSION ) && !
-      empty( $setup_complete ) ? '
+      ( $_SESSION['old_program_version'] == $PROGRAM_VERSION ) && 
+      !empty( $setup_complete )? '
               <input class="btn btn-secondary" type="button" name="action2" value="'
        . translate( 'Launch WebCalendar' )
        . '" onClick="window.open( \'../index.php\', \'webcalendar\' );">'
