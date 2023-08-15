@@ -60,6 +60,7 @@ function preventHacking ( $name, $instr ) {
   if (empty($instr))
     return;
   if ( is_array ( $instr ) ) {
+    $fail = '';
     for ( $j = 0; $j < count ( $instr ); $j++ ) {
       // First, replace any escape characters like '\x3c'
       $teststr = preg_replace_callback("#(\\\x[0-9A-F]{2})#i",
@@ -67,13 +68,14 @@ function preventHacking ( $name, $instr ) {
       for ( $i = 0; $i < count ( $bannedTags ) && ! $failed; $i++ ) {
         if ( preg_match ( "/<\s*$bannedTags[$i]/i", $teststr ) ) {
           $failed = true;
+          $fail = $instr[$j];
         }
       }
     }
     if ( $failed ) {
       die_miserable_death ( translate ( 'Fatal Error' ) . ': '
          . translate ( 'Invalid data format for' ) . '&nbsp;' . $name .
-         '<br>Value: ' . htmlspecialchars($instr));
+         '<br>Value: ' . htmlspecialchars($fail));
     }
   } else {
     // Not an array
