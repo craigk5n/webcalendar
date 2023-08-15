@@ -18,7 +18,7 @@
  *   - Update the $PROGRAM_VERSION and $PROGRAM_DATE variables defined
  *     in includes/config.php. The $PROGRAM_VERSION needs to be the
  *     same value (e.g. "v1.0.0") that was defined above.
- *   - Update the version/date in ChangeLog and NEWS files.
+ *   - Update the docker image tag version in .github/workflows/docker.yml
  *   - Update UPGRADING.html documentation.
  *   - Update the version in composer.json.
  *
@@ -111,12 +111,6 @@ $setting_wrong_img = '<img src="../images/bootstrap-icons/exclamation-triangle-f
 
 // First pass at settings.php.
 // We need to read it first in order to get the md5 password.
-if( function_exists( 'set_magic_quotes_runtime' ) ) {
-  $magic = @get_magic_quotes_runtime();
-  @set_magic_quotes_runtime( 0 );
-} else
-  unset( $magic );
-
 $fd = @fopen( $file, 'rb', true );
 $settings = array();
 $password = '';
@@ -137,9 +131,6 @@ if( ! empty( $fd ) ) {
   if( empty( $password ) )
     $forcePassword = true;
 }
-
-if( isset( $magic ) )
-  @set_magic_quotes_runtime( $magic );
 
 session_start();
 $doLogin = false;
@@ -263,12 +254,6 @@ if( file_exists( $file ) && $forcePassword && ! empty( $pwd1 ) ) {
   exit;
 }
 
-if( function_exists( 'set_magic_quotes_runtime' ) ) {
-  $magic = @get_magic_quotes_runtime();
-  @set_magic_quotes_runtime( 0 );
-} else
-  unset( $magic );
-
 $fd = @fopen( $file, 'rb', false );
 if( ! empty( $fd ) ) {
   while( ! feof( $fd ) ) {
@@ -291,9 +276,6 @@ if( ! empty( $fd ) ) {
     $settings = do_external_configs( $settings );
   }
 }
-
-if( isset( $magic ) )
-  @set_magic_quotes_runtime( $magic );
 
 $action = getGetValue( 'action' );
 // We were sent here because of a mismatch of $PROGRAM_VERSION.

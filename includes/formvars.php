@@ -22,8 +22,8 @@ function preventHacking_helper($matches) {
   return chr(hexdec($matches[1]));
 }
 function preventHacking ( $name, $instr ) {
-  global $PHP_SELF;
-  $script = basename($PHP_SELF);
+  $phpSelf = $_SERVER['PHP_SELF'];
+  $script = basename($phpSelf);
 
   $bannedTags = [
     'APPLET', 'BODY', 'EMBED', 'FORM', 'HEAD',
@@ -57,6 +57,8 @@ function preventHacking ( $name, $instr ) {
   //print_r ( $_SERVER );
   //echo "NO ERROR <br>\n"; exit;
 
+  if (empty($instr))
+    return;
   if ( is_array ( $instr ) ) {
     for ( $j = 0; $j < count ( $instr ); $j++ ) {
       // First, replace any escape characters like '\x3c'
@@ -146,7 +148,7 @@ function getPostValue($name, $defVal = NULL, $chkXSS = false)
 
   $cleanXSS = $chkXSS ? chkXSS($postName) : true;
   preventHacking($name, $postName);
-  return $cleanXSS ? $postName : NULL;
+  return $cleanXSS ? $postName : '';
 }
 
 /**
@@ -250,15 +252,16 @@ function getIntValue($name, $fatal = false) {
  */
 function chkXSS($name) {
   global $login;
+  if(empty($name))
+    return '';
   $cleanXSS = true;
-    //add more array elements as needed
-    foreach (array( 'Ajax.Request', 'onerror') as $i) {
-      if (preg_match("/$i/i", $name)) {
-        activity_log(0, $login, $login, SECURITY_VIOLATION,
-                'Hijack attempt:' . $i);
-        $cleanXSS = false;
-      }
+  //add more array elements as needed
+  foreach (array( 'Ajax.Request', 'onerror') as $i) {
+    if (preg_match("/$i/i", $name)) {
+      activity_log(0, $login, $login, SECURITY_VIOLATION, 'Hijack attempt:' . $i);
+      $cleanXSS = false;
     }
+  }
 
   return $cleanXSS;
 }

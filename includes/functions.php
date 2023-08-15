@@ -868,7 +868,9 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
   $y = intval ( $indate / 10000 );
   $m = intval ( $indate / 100 ) % 100;
   $d = $indate % 100;
-  $wday = strftime ( "%w", mktime ( 0, 0, 0, $m, $d, $y ) );
+  $dateTime = new DateTime(); 
+  $dateTime->setDate($y, $m, $d);
+  $wday = $dateTime->format('w');
   if ( $short_months ) {
     $month = month_name ( $m - 1, 'M' );
     $weekday = weekday_name ( $wday, 'D' );
@@ -886,7 +888,7 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
   $ret = str_replace ( '__yy__', sprintf ( "%02d", $y % 100 ), $ret );
 
   return ( $show_weekday
-    ? weekday_name ( strftime ( '%w', mktime ( 0, 0, 0, $m, $d, $y ) ),
+    ? weekday_name ( date('w', mktime(0, 0, 0, $m, $d, $y)),
       ( $short_months ? 'D' : '' ) ) . ', '
     : '' ) . str_replace ( '__yyyy__', $y, $ret );
 }
@@ -1549,7 +1551,7 @@ function display_time ( $time = '', $control = 0, $timestamp = '',
     }
   }
   $hour = intval ( $time / 10000 );
-  $min = abs ( ( $time / 100 ) % 100 );
+  $min = abs ( intval( $time / 100 ) % 100 );
 
   // Prevent goofy times like 8:00 9:30 9:00 10:30 10:00.
   if ( $time < 0 && $min > 0 )
@@ -3954,14 +3956,19 @@ function is_weekend ( $date ) {
  *
  * @ignore
  */
-function isLeapYear ( $year = '' ) {
-  if ( empty ( $year ) )
-    $year = strftime( '%Y', time() );
+function isLeapYear(int $year = null): bool {
+  // If no year is provided, use the current year
+  if ($year === null) {
+      $year = (int) date('Y');
+  }
 
-  if ( strlen ( $year ) != 4 || preg_match ( '/\D/', $year ) )
-    return false;
+  // Check if the year is 4 characters and numeric
+  if (strlen((string) $year) != 4 || !is_numeric($year)) {
+      return false;
+  }
 
-  return ( ( $year % 4 == 0 && $year % 100 != 0 ) || $year % 400 == 0 );
+  // Leap year check
+  return ($year % 4 == 0 && $year % 100 != 0) || $year % 400 == 0;
 }
 
 /**

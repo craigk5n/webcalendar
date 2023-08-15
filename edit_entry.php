@@ -225,7 +225,7 @@ else if (!empty($id) && $id > 0) {
         access_user_calendar('edit', $create_by, $login, $type, $access);
 
     $day = $cal_date % 100;
-    $month = ($cal_date / 100) % 100;
+    $month = intval($cal_date / 100) % 100;
     $year = intval($cal_date / 10000);
 
     $time = $row[2];

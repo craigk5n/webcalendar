@@ -1,0 +1,139 @@
+#!/bin/bash
+
+# Function to bump version number
+bump_version() {
+    local version="$1"
+    local major minor patch
+    IFS='.' read -ra ADDR <<< "${version#v}"
+    major=${ADDR[0]}
+    minor=${ADDR[1]}
+    patch=${ADDR[2]}
+    patch=$((patch + 1))
+    echo "v$major.$minor.$patch"
+}
+
+# Function to update version in install/default_config.php
+update_default_config_version() {
+    local new_version="$1"
+    sed -i -E "s/('WEBCAL_PROGRAM_VERSION' => ')[^']*(')/\1$new_version\2/" install/default_config.php
+}
+
+update_sql_version() {
+    local file_path="$1"
+    local new_version="$2"
+    
+    # Get the last line of the file
+    local last_line=$(tail -n 1 "$file_path")
+    
+    # Check if the last line contains a version string.
+    if [[ $last_line == *upgrade* ]]; then
+        # If it does, replace the version in the last line.
+        sed -i "$ s/.*/\/\*upgrade_${new_version}\*\//g" "$file_path"
+    else
+        # If it doesn't, append a new line with the version.
+        echo "/*upgrade_${new_version}*/" >> "$file_path"
+    fi
+
+    echo "Updated $file_path to version $new_version"
+}
+
+
+# SQL files to update
+declare -a sql_files=(
+    "install/sql/upgrade-db2.sql"
+    "install/sql/upgrade-ibase.sql"
+    "install/sql/upgrade-mssql.sql"
+    "install/sql/upgrade-mysql.sql"
+    "install/sql/upgrade-oracle.sql"
+    "install/sql/upgrade-postgres.sql"
+    "install/sql/upgrade.sql"
+)
+
+# Function to update version and date in includes/config.php
+update_config_php() {
+    local file_path="includes/config.php"
+    local new_version="$1"
+    local new_date=$(date +"%d %b %Y")
+    
+    # Update version
+    sed -i "/^ *\$PROGRAM_VERSION\s*=\s*/s/'[^']*'/'$new_version'/" "$file_path"
+    
+    # Update date
+    sed -i "/^ *\$PROGRAM_DATE =\s*/s/'[^']*'/'$new_date'/" "$file_path"
+    
+    echo "Updated $file_path to version $new_version and date $new_date"
+}
+
+
+
+# Function to update version in .github/workflows/docker.yml
+update_docker_yml() {
+    local file_path=".github/workflows/docker.yml"
+    local new_version="$1"
+    
+    # Get the line number containing the version tag
+    local line_num=$(grep -nE 'tags: \${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:[^ ]*-dev-php8' "$file_path" | cut -d: -f1)
+    
+    # If we found the line, update the version on that line
+    if [[ -n "$line_num" ]]; then
+        sed -i "${line_num}s|webcalendar:[^ ]*-dev-php8|webcalendar:${new_version}-dev-php8|" "$file_path"
+    fi
+
+    echo "Updated $file_path to version $new_version"
+}
+
+# Function to update version in UPGRADING.html
+update_upgrading_html() {
+    local file_path="UPGRADING.html"
+    local new_version="$1"
+    local version_without_v="${new_version#v}" # removes 'v' prefix for versions like v1.9.1
+
+    # Get the line number containing the version
+    local line_num=$(grep -nE '<th>WebCalendar Version:</th>' "$file_path" | cut -d: -f1)
+    # Add 1 to the line number to target the next line
+    ((line_num++))
+
+    # If we found the line, update the version on that line
+    if [[ -n "$line_num" ]]; then
+        sed -i "${line_num}s|<td>[^<]*</td>|<td>$version_without_v</td>|" "$file_path"
+    fi
+
+    echo "Updated $file_path to version $new_version"
+}
+
+# Function to update version in composer.json
+update_composer_json() {
+    local file_path="composer.json"
+    local new_version="$1"
+    local version_without_v="${new_version#v}" # removes 'v' prefix for versions like v1.9.1
+
+    # Use jq to update the version key in the JSON file
+    jq ".version = \"$version_without_v\"" "$file_path" > "$file_path.tmp" && mv "$file_path.tmp" "$file_path"
+
+    echo "Updated $file_path to version $new_version"
+}
+
+# Main logic
+if [ "$#" -eq 0 ]; then
+    # No arguments provided, bump the version
+    current_version=$(grep 'WEBCAL_PROGRAM_VERSION' install/default_config.php | sed -E "s/.*'WEBCAL_PROGRAM_VERSION' => '([^']*)'.*/\1/")
+    new_version=$(bump_version "$current_version")
+else
+    # Argument provided, use it as the new version
+    new_version="$1"
+fi
+
+#update_default_config_version "$new_version"
+
+#for file in "${sql_files[@]}"; do
+#    update_sql_version "$file" "$new_version"
+#    echo "Updated $file to version $new_version"
+#done
+
+update_config_php "$new_version"
+update_docker_yml "$new_version"
+update_upgrading_html "$new_version"
+#update_composer_json "$new_version"
+
+echo "Updated to version $new_version"
+

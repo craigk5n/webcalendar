@@ -337,7 +337,7 @@ exit;
 }
 // save date so the trailer links are for the same time period
 $thisyear = intval ( $orig_date / 10000 );
-$thismonth = ( $orig_date / 100 ) % 100;
+$thismonth = intval( $orig_date / 100 ) % 100;
 $thisday = $orig_date % 100;
 // $subject is used for mailto URLs.
 $subject = generate_application_name() . ': ' . $name;
