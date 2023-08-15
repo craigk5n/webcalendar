@@ -33,23 +33,22 @@
  *  </IfModule>
  */
 
-include_once 'includes/translate.php';
+require_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
-include 'includes/access.php';
+require_once 'includes/access.php';
+require_once 'includes/config.php';
+require_once 'includes/dbi4php.php';
+require_once 'includes/formvars.php';
+require_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
-include 'includes/' . $user_inc;
-
-include_once 'includes/validate.php';
-include 'includes/site_extras.php';
+require_once "includes/$user_inc";
+require_once 'includes/site_extras.php';
+require_once 'includes/validate.php';
 
 // This next step will send a redirect to login.php, which we don't want.
 $WebCalendar->initializeSecondPhase();
@@ -135,7 +134,7 @@ exit;
  * Generate the activity log.
 */
 function rss_activity_log ( $sys, $entries ) {
-  global $SERVER_URL, $ALLOW_HTML_DESCRIPTION, $login;
+  global $ALLOW_HTML_DESCRIPTION, $login, $SERVER_URL;
 
   $sql_params = array();
 
@@ -183,7 +182,7 @@ function rss_activity_log ( $sys, $entries ) {
       $l_id = $row[8];
       $l_etype = $row[9];
       $l_description = $row[10];
-      // convert lines to <br /> if no HTML formatting found
+      // convert lines to<br> if no HTML formatting found
       if ( strpos ( $l_description, "</" ) == false ) {
         $l_description = nl2br ( $l_description );
       }

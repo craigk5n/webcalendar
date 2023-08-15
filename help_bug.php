@@ -1,6 +1,6 @@
 <?php
-include_once 'includes/init.php';
-include_once 'includes/help_list.php';
+require_once 'includes/init.php';
+require_once 'includes/help_list.php';
 
 if ( empty ( $SERVER_SOFTWARE ) )
   $SERVER_SOFTWARE = $_SERVER['SERVER_SOFTWARE'];
@@ -18,7 +18,7 @@ if ( empty ( $HTTP_USER_AGENT ) )
      . str_replace ('XXX', translate ( get_browser_language ( true ) ),
      translate ( 'Also, please use English rather than XXX.' ) ) : '' ) . '</p>
     <form action="https://github.com/craigk5n/webcalendar/issues" target="_new">
-      <input type="submit" value="' . translate ( 'Report Bug' ) . '" />
+      <input type="submit" value="' . translate ( 'Report Bug' ) . '">
     </form>
     <h3>' . translate ( 'System Settings' ) . '</h3>
     <div>';

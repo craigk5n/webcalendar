@@ -1,6 +1,6 @@
 <?php
-include_once 'includes/init.php';
-include_once 'includes/xcal.php';
+require_once 'includes/init.php';
+require_once 'includes/xcal.php';
 
 // Only available in php 5.x Used for hCalendar parsing.
 if ( function_exists ( 'simplexml_load_string' ) )
@@ -127,7 +127,7 @@ if ( ! empty ( $reload ) ) {
     $data = parse_hcal ( $result, $type );
   }
 
-  $errorStr = '<br /><br />
+  $errorStr = '<br><br>
     <b>' . translate ( 'Error' ) . ':</b> ';
 
   print_header ( '', '', '', true, false, true );
@@ -137,9 +137,9 @@ if ( ! empty ( $reload ) ) {
     // Import new events.
     import_data ( $data, $overwrite, $type );
     echo '
-    <p>' . translate ( 'Import Results' ) . '</p><br /><br />
+    <p>' . translate ( 'Import Results' ) . '</p><br><br>
     ' . translate ( 'Events successfully imported' ) . ': ' . $count_suc
-     . '<br />';
+     . '<br>';
     if ( $layer_found == false ) { // We may have just added layer.
       load_user_layers();
       foreach ( $layers as $layer ) {
@@ -152,12 +152,12 @@ if ( ! empty ( $reload ) ) {
     <p>' . translate( 'Create a new layer to view this calendar.' ) . '</p>';
   } elseif ( ! empty ( $errormsg ) ) {
     echo '
-    ' . translate ( 'Errors' ) . ': ' . $error_num . '<br /><br />
-    ' . $errorStr . $errormsg . '<br />';
+    ' . translate ( 'Errors' ) . ': ' . $error_num . '<br><br>
+    ' . $errorStr . $errormsg . '<br>';
   } else {
     echo $errorStr .
     translate( 'There was an error parsing the import file or no events were returned.' )
-     . '<br />';
+     . '<br>';
   }
   echo print_trailer ( false, true, true );
 }

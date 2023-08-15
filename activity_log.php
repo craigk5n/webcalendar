@@ -15,7 +15,7 @@
  *  activity logs. (This is because users may see event details
  *  for other groups that they are not supposed to have access to.)
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 if ( ! $is_admin || ( access_is_enabled()
     && ! access_can_access_function( ACCESS_ACTIVITY_LOG ) ) )
@@ -50,7 +50,7 @@ if ( ! empty ( $startid ) ) {
         . '" class="next" href="activity_log.php' . ( $row[0] <= $previd
           ? ( $sys ? '?system=1' : '' )
           : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) ) . '">'
-        . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr . '</a><br />';
+        . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr . '</a><br>';
 
     dbi_free_result ( $res );
   }

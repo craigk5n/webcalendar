@@ -42,7 +42,7 @@ function preventHacking ( $name, $instr ) {
     ($script == 'del_entry.php' ||
     $script == 'add_entry.php' || $script == 'docdel.php' ||
     endsWith($script, "_handler.php")))) {
-//echo "KEY CHECK <br>\n";
+//echo "KEY CHECK<br>\n";
     $formKey = $_REQUEST['csrf_form_key'];
     if ($formKey == $_SESSION['csrf_form_key'] && !empty($_SESSION['csrf_form_key'])) {
       // Okay to proceed
@@ -55,7 +55,7 @@ function preventHacking ( $name, $instr ) {
   //echo "METHOD " . $_SERVER['REQUEST_METHOD'] . "<br>";
   //echo "PHP_SELF " . $script . "<br>";
   //print_r ( $_SERVER );
-  //echo "NO ERROR <br>\n"; exit;
+  //echo "NO ERROR<br>\n"; exit;
 
   if (empty($instr))
     return;
@@ -93,7 +93,7 @@ function preventHacking ( $name, $instr ) {
   }
 }
 
-// Function to check the string is ends 
+// Function to check the string is ends
 // with given substring or not
 function endsWith($string, $endString)
 {
@@ -119,7 +119,7 @@ function getFormKey() {
 
 function csrf_form_key() {
   return '<input type="hidden" name="csrf_form_key" value="' .
-    getFormKey() . '" />' .  "\n";
+    getFormKey() . '">' .  "\n";
 }
 function print_form_key() {
   echo csrf_form_key ();

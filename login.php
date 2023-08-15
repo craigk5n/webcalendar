@@ -13,21 +13,21 @@ if ( ! empty ( $dummy ) ) {
 unset ( $_SESSION['webcal_login'] );
 unset ( $_SESSION['webcalendar_session'] );
 
-include_once 'includes/translate.php';
+require_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
+require_once 'includes/config.php';
+require_once 'includes/dbi4php.php';
+require_once 'includes/formvars.php';
+require_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
-include 'includes/' . $user_inc;
-include_once 'includes/access.php';
-include 'includes/gradient.php';
+require_once "includes/$user_inc";
+require_once 'includes/access.php';
+require_once 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -212,7 +212,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
     <div class="form-group row justify-content-md-center">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-                
+
     <div id="public-calendar-list">
     <?php // Non-user calendars
       $nulist = get_nonuser_cals();
@@ -233,7 +233,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
         // We can limit what domain is allowed to self register.
         // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
         $valid_ip = validate_domain();
-      
+
         if ( ! empty ( $valid_ip ) ) {
           echo '<div id="register-link" class="form-group row"><a href="register.php">'
            . translate ( 'Not yet registered? Register here!' ) . '</a></div>';

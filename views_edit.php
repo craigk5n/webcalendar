@@ -11,7 +11,7 @@
  * Security:
  * Must be owner of the viewto edit
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 $error = '';
 
@@ -29,8 +29,8 @@ print_form_key();
 $newview = true;
 $viewname = $viewtype = '';
 $viewisglobal = 'N';
-$checked = ' checked="checked"';
-$selected = ' selected="selected"';
+$checked = ' checked';
+$selected = ' selected';
 
 $unnameViewStr = translate ( 'Unnamed View' );
 
@@ -73,7 +73,7 @@ if ( ! $newview ) {
 
 }
 
-if ( ! empty( $error ) ) {
+if ( ! empty ( $error ) ) {
   echo print_error( $error ) . print_trailer();
   exit;
 }
@@ -81,10 +81,10 @@ if ( ! empty( $error ) ) {
 if ( $newview ) {
   $v = [];
   echo '<h2>' . translate ( 'Add View' ) . "</h2>\n";
-  echo '<input type="hidden" name="add" value="1" />' . "\n";
+  echo '<input type="hidden" name="add" value="1">' . "\n";
 } else {
   echo '<h2>' . translate ( 'Edit View' ) . "</h2>\n";
-  echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
+  echo "<input type=\"hidden\" name=\"id\" value=\"$id\">\n";
 }
 ?>
 
@@ -137,7 +137,7 @@ echo '<div class="form-inline"><label class="col-sm-2 col-form-label" for="viewu
 
 <div class="form-inline" id="viewuserlist">
   <label class="col-sm-2 col-form-label" for="is_global">&nbsp;</label>
-  <select class="form-control" name="users[]" id="viewusers" size="10" multiple="multiple">
+  <select class="form-control" name="users[]" id="viewusers" size="10" multiple>
 <?php
   // get list of all users
   $users = get_my_users ( '', 'view' );
@@ -158,21 +158,20 @@ echo '<div class="form-inline"><label class="col-sm-2 col-form-label" for="viewu
 </select>
 
 <?php if ( $GROUPS_ENABLED == 'Y' ) { ?>
-  <input class="btn" type="button" onclick="selectUsers()" value="<?php etranslate ( 'Select' );?>..." />
+  <input class="btn" type="button" onclick="selectUsers()" value="<?php etranslate ( 'Select' );?>...">
 <?php } ?>
 </div>
 
 <br>
 <div class="form-group">
-<input class="btn btn-primary" type="submit" name="action" value="<?php if ( $newview ) etranslate ( 'Add' ); else etranslate ( 'Save' ); ?>" />
+<input class="btn btn-primary" type="submit" name="action" value="<?php if ( $newview ) etranslate ( 'Add' ); else etranslate ( 'Save' ); ?>">
 <a href="views.php" class="btn btn-secondary active">Cancel</a>
 <?php if ( ! $newview ) { ?>
  <input class="btn btn-danger" type="submit" name="delete" value="<?php etranslate( 'Delete' )?>"
-   onclick="return confirm('<?php etranslate( "Are you sure you want to delete this entry?" ); ?>' )" />
+   onclick="return confirm('<?php etranslate( "Are you sure you want to delete this entry?" ); ?>' )">
 <?php } ?>
 </div>
 
 </form>
 
 <?php echo print_trailer(); ?>
-

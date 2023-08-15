@@ -12,7 +12,7 @@
  *  AND, if user access control is enabled, they must have access to
  *  'Security Audit'.
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 if (!$is_admin || (access_is_enabled()
   && !access_can_access_function(ACCESS_SECURITY_AUDIT))) {
@@ -256,10 +256,10 @@ function print_issue($description, $isOk, $help)
 {
 
   if ($isOk) {
-    $img = '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg" />';
+    $img = '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg">';
     $help = '&nbsp;';
   } else {
-    $img = '<img class="button-icon-inverse" src="images/bootstrap-icons/exclamation-triangle-fill.svg" />';
+    $img = '<img class="button-icon-inverse" src="images/bootstrap-icons/exclamation-triangle-fill.svg">';
   }
 
   echo '<tr><td>' . $description . '</td>' .

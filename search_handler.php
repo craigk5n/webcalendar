@@ -10,7 +10,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @package WebCalendar
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 $error = '';
 
@@ -79,9 +79,9 @@ if ( $search_others ) {
     for ( $i = 0; $i < count ( $users ); $i++ ) {
       if ( access_user_calendar ( 'view', $users[$i] ) ) {
         $newlist[] = $users[$i];
-        //echo "can access $users[$i] <br />";
+        //echo "can access $users[$i]<br>";
       } else {
-        //echo "cannot access $users[$i] <br />";
+        //echo "cannot access $users[$i]<br>";
       }
     }
     $users = $newlist;
@@ -271,7 +271,7 @@ echo '<form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
         . '"  style="margin-left: 13px;" method="post">';
 print_form_key ();
 echo '<br><input class="btn btn-primary" type="submit" value="'
-        . translate ( 'New Search' ) . '" /></form>
+        . translate ( 'New Search' ) . '"></form>
     ' . print_trailer ();
 
 ?>

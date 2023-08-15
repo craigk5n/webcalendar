@@ -51,7 +51,9 @@ function quoteIMAP($str)
  * @global string Error message
  */
 function user_valid_login ( $login, $password ) {
-  global $error,$auth, $imap_host, $imap_port, $allow_auto_create, $PHP_SELF;
+  global $allow_auto_create, $auth,
+  $error, $imap_host, $imap_port, $PHP_SELF;
+
   $ret = false;
 //  do_debug ("in imap/user_valid_login...<br />\nl=$login p=$password<br />\n");
 
@@ -190,7 +192,8 @@ function user_valid_crypt ( $login, $crypt_password ) {
  * @return bool True on success
  */
 function user_load_variables ( $login, $prefix ) {
-  global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX, $cached_user_var;
+  global $cached_user_var, $NONUSER_PREFIX, $PUBLIC_ACCESS_FULLNAME;
+
   $ret = false;
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )

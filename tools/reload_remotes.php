@@ -46,20 +46,20 @@ $old_path = ini_get('include_path');
 $delim = (strstr($old_path, ';') ? ';' : ':');
 ini_set('include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim);
 
-include_once __WC_INCLUDEDIR . 'translate.php';
+require_once __WC_INCLUDEDIR . 'translate.php';
 require_once __WC_CLASSDIR . 'WebCalendar.php';
 
 $WebCalendar = new WebCalendar(__FILE__);
 
-include __WC_INCLUDEDIR . 'config.php';
-include __WC_INCLUDEDIR . 'dbi4php.php';
-include __WC_INCLUDEDIR . 'formvars.php';
-include __WC_INCLUDEDIR . 'functions.php';
+require_once __WC_INCLUDEDIR . 'config.php';
+require_once __WC_INCLUDEDIR . 'dbi4php.php';
+require_once __WC_INCLUDEDIR . 'formvars.php';
+require_once __WC_INCLUDEDIR . 'functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
-include __WC_INCLUDEDIR . $user_inc;
-include __WC_INCLUDEDIR . 'xcal.php';
+require_once __WC_INCLUDEDIR . $user_inc;
+require_once __WC_INCLUDEDIR . 'xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 // Used for hCal parsing.
@@ -78,8 +78,8 @@ load_global_settings();
 $WebCalendar->setLanguage();
 
 if ($debug)
-  echo "<br />\n" . translate('Include Path')
-    . ' =' . ini_get('include_path') . "<br />\n";
+  echo "<br>\n" . translate('Include Path')
+    . ' =' . ini_get('include_path') . "<br>\n";
 
 if ($REMOTES_ENABLED == 'Y') {
   $res = dbi_execute('SELECT cal_login, cal_url, cal_admin ' .
@@ -128,9 +128,9 @@ if ($REMOTES_ENABLED == 'Y') {
     dbi_free_result($res);
   }
   if ($cnt == 0)
-    echo "<br />\n" . translate('No Remote Calendars found');
+    echo "<br>\n" . translate('No Remote Calendars found');
 } else {
-  echo "<br />\n" . translate('Remote Calendars not enabled');
+  echo "<br>\n" . translate('Remote Calendars not enabled');
 }
 
 ?>

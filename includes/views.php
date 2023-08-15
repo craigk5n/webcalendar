@@ -14,9 +14,8 @@
   */
 function view_init ( $view_id )
 {
-  global $views, $error, $login;
-  global $ALLOW_VIEW_OTHER, $is_admin;
-  global $view_name, $view_type, $custom_view;
+  global $ALLOW_VIEW_OTHER, $custom_view, $error,
+  $is_admin, $login, $view_name, $view_type, $views;
 
   //set this to prove we in are inside a custom view page
   $custom_view = true;
@@ -55,7 +54,7 @@ function view_init ( $view_id )
   * @return the array of valid users
   */
 function view_get_user_list ( $view_id ) {
-  global $error, $login, $is_admin, $NONUSER_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
+  global $error, $is_admin, $login, $NONUSER_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
 
   // get users in this view
   $res = dbi_execute (

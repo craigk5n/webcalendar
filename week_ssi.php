@@ -8,7 +8,7 @@
  * If no login info is passed, we check for the last login used.
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 load_global_settings();
 
@@ -75,7 +75,7 @@ for ( $i = 0; $i < 7; $i++ ) {
    . ( date ( 'Ymd', $days[$i] ) == date ( 'Ymd', $today )
     ? $TODAYCELLBG : $THBG )
    . ';">' . weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS )
-   . '<br />' . month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) . ' '
+   . '<br>' . month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) . ' '
    . date ( 'd', $days[$i] ) . '</th>';
 
   $tmpOut2 .= '

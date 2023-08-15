@@ -14,7 +14,7 @@
  *   System Settings unless the user is an admin user ($is_admin).
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 // Don't allow users to use this feature if "allow view others" is disabled.
 if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin )
   // not allowed...
@@ -68,17 +68,17 @@ echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="' . $prev_url
  . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" class="prev" alt="'
- . $prevStr . '" /></a>
+ . $prevStr . '"></a>
       <a title="' . $nextStr . '" class="next" href="' . $next_url
  . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" class="next" alt="'
- . $nextStr . '" /></a>
+ . $nextStr . '"></a>
       <div class="title">
         <span class="date">';
 printf ( "%s, %s %d, %d", weekday_name ( strftime ( "%w", $time ) ),
   month_name ( $month - 1 ), $day, $year );
-echo '</span><br />
+echo '</span><br>
       </div>
-    </div><br />
+    </div><br>
     <form action="availability.php" method="post">
       ' . csrf_form_key() . daily_matrix ( $date, $users ) . '
     </form>

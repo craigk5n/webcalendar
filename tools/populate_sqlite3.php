@@ -26,17 +26,17 @@ $old_path = ini_get ( 'include_path' );
 $delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
 ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
 
-include __WC_INCLUDEDIR . 'translate.php';
-include __WC_INCLUDEDIR . 'config.php';
-include __WC_INCLUDEDIR . 'dbi4php.php';
-include __WC_INCLUDEDIR . 'formvars.php';
-include __WC_INCLUDEDIR . 'functions.php';
+require_once __WC_INCLUDEDIR . 'translate.php';
+require_once __WC_INCLUDEDIR . 'config.php';
+require_once __WC_INCLUDEDIR . 'dbi4php.php';
+require_once __WC_INCLUDEDIR . 'formvars.php';
+require_once __WC_INCLUDEDIR . 'functions.php';
 
 $debug = false;// Set to true to print debug info...
 $only_testing = false; // Just pretend to send -- for debugging.
 
-include __WC_INCLUDEDIR . '../install/sql/tables-sqlite3.php';
-include __WC_INCLUDEDIR . '../install/default_config.php';
+require_once __WC_INCLUDEDIR . '../install/sql/tables-sqlite3.php';
+require_once __WC_INCLUDEDIR . '../install/default_config.php';
 
 function fatal($msg) {
   print "Error: $msg\n";
@@ -45,7 +45,7 @@ function fatal($msg) {
 
 for ($i = 1; $i < count($argv); $i++) {
   if ($argv[$i] == "-file" || $argv[$i] == "-f") {
-    if (count($argv) > $i + 1) { 
+    if (count($argv) > $i + 1) {
       $outputFile = $argv[$i+1];
       $i++;
     } else {
