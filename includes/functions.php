@@ -292,7 +292,7 @@ function calc_time_slot ( $time, $round_down = false ) {
  */
 function check_for_conflicts ( $dates, $duration, $eventstart,
   $participants, $login, $id ) {
-  global $jumpdate, $LIMIT_APPTS_NUMBER, $LIMIT_APPTS,
+  global $is_assistant, $is_nonuser_admin, $jumpdate, $LIMIT_APPTS_NUMBER, $LIMIT_APPTS,
   $repeated_events, $single_user_login, $single_user;
 
   $datecnt = count ( $dates );
