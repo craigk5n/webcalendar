@@ -123,12 +123,12 @@ else
     new_version="$1"
 fi
 
-#update_default_config_version "$new_version"
+update_default_config_version "$new_version"
 
-#for file in "${sql_files[@]}"; do
-#    update_sql_version "$file" "$new_version"
-#    echo "Updated $file to version $new_version"
-#done
+for file in "${sql_files[@]}"; do
+    update_sql_version "$file" "$new_version"
+    echo "Updated $file to version $new_version"
+done
 
 update_config_php "$new_version"
 update_docker_yml "$new_version"

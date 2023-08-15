@@ -313,4 +313,4 @@ ALTER TABLE webcal_import ADD cal_md5 VARCHAR(32) NULL DEFAULT NULL;
 CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type);
 CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
 ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);
-/*upgrade_v1.9.2*/
+/*upgrade_v1.9.3*/

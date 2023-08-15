@@ -163,7 +163,7 @@ function do_config()
   ];
 
   // When changing PROGRAM VERSION, also change it in install/default_config.php
-  $PROGRAM_VERSION = 'v1.9.2';
+  $PROGRAM_VERSION = 'v1.9.3';
   // Update PROGRAM_DATE with official release data
   $PROGRAM_DATE = '15 Aug 2023';
 
