@@ -33,7 +33,7 @@ include_once 'includes/dbi4php.php';
 include_once 'includes/formvars.php';
 include_once 'includes/functions.php';
 
-do_config( 'includes/settings.php' );
+do_config();
 include_once 'includes/' . $user_inc;
 include_once 'includes/access.php';
 include_once 'includes/validate.php';

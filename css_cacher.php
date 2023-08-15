@@ -7,7 +7,7 @@ include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
 
-do_config( 'includes/settings.php' );
+do_config();
 include 'includes/' . $user_inc;
 include_once 'includes/access.php';
 include_once 'includes/validate.php';

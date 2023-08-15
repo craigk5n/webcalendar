@@ -287,7 +287,7 @@ class WebCalendar {
    * @access private
    */
   function _initConfig() {
-    do_config ( $this->absolutePath ( 'includes/settings.php' ) );
+    do_config ();
   }
 
   /**
