@@ -702,6 +702,15 @@ if (!empty($y)) {
 
   if (empty($settings['db_password']))
     $settings['db_password'] = '';
+  
+  // Use ENV values, not what the user put in the form.
+  $use_env = getenv('WEBCALENDAR_USE_ENV');
+  if ($use_env && strtolower($use_env) === "true") {
+    $settings['db_host'] = getenv('WEBCALENDAR_DB_HOST');
+    $settings['db_login'] = getenv('WEBCALENDAR_DB_LOGIN');
+    $settings['db_password'] = getenv('WEBCALENDAR_DB_PASSWORD');
+    $db_database = $settings['db_database'] = getenv('WEBCALENDAR_DB_DATABASE');
+  }
 
   $c = dbi_connect(
     $settings['db_host'],
