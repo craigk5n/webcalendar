@@ -34,19 +34,19 @@ $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 $todayYmd = date ( 'Ymd', $today );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
-$wkend = $wkstart + ( 86400 * ( $DISPLAY_WEEKENDS == 'N' ? 5 : 7 ) );
+$wkend = $wkstart + ( 86400 * ( $DISPLAY_WEEKENDS === 'N' ? 5 : 7 ) );
 
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
-$can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
+$can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS !== 'N' );
 
 print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 
 // Get users in this view.
 $viewusers = view_get_user_list ( $id );
 $viewusercnt = count ( $viewusers );
-if ( $viewusercnt == 0 )
+if ( $viewusercnt === 0 )
   // This could happen if user_sees_only_his_groups = Y and
   // this user is not a member of any group assigned to this view.
   $error = translate( 'No users for this view.' );
@@ -127,10 +127,10 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   for ( $date = $wkstart; $date < $wkend; $date += 86400 ) {
     $dateYmd = date ( 'Ymd', $date );
     $is_weekend = is_weekend ( $date );
-    if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
+    if ( $is_weekend && $DISPLAY_WEEKENDS === 'N' )
       continue;
 
-    $class = 'class="' . ( $dateYmd == $todayYmd
+    $class = 'class="' . ( $dateYmd === $todayYmd
       ? 'today"' : ( $is_weekend ? 'weekend"' : 'weekday"' ) );
 
     echo '
@@ -144,11 +144,11 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       $repeated_events = $re_save[$i];
       $entryStr = print_date_entries ( $dateYmd, $user, true );
       // Unset class from above if needed.
-      if ( $class == 'class="row"' ||  $class == 'class="hasevents"' )
+      if ( $class === 'class="row"' ||  $class === 'class="hasevents"' )
         $class = '';
-      if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' )
+      if ( ! empty ( $entryStr ) && $entryStr !== '&nbsp;' )
         $class = 'class="hasevents"';
-      else if ( $dateYmd == $todayYmd )
+      else if ( $dateYmd === $todayYmd )
         $class = 'class="today"';
       else if ( $is_weekend )
         $class = 'class="weekend"';

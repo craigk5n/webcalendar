@@ -81,7 +81,7 @@ $show_untimed_row_always = true;
 view_init ( $id );
 
 // view type 'E' = Day by Time, 'R' = Week by Time
-$is_day_view = ( $view_type == 'E' );
+$is_day_view = ( $view_type === 'E' );
 $col_pixels = ( $is_day_view ? $col_pixels_day : $col_pixels_week );
 $fit_to_window = ( $is_day_view ? $fit_to_window_day : $fit_to_window_week );
 $show_time = ( $is_day_view ? $show_time_day : $show_time_week );
@@ -128,8 +128,8 @@ if ( $is_day_view ) {
   $thistime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
   $start_ind = $end_ind = ( date ( 'w', $thistime ) - $WEEK_START + 7 ) % 7;
 } else {
-  if ( $DISPLAY_WEEKENDS == 'N' ) {
-    if ( $WEEK_START == 1 ) {
+  if ( $DISPLAY_WEEKENDS === 'N' ) {
+    if ( $WEEK_START === 1 ) {
       $start_ind = 0;
       $end_ind = 4;
     } else {
@@ -169,7 +169,7 @@ $viewusercnt = count ( $viewusers );
 // the current user does not have permission to view any of the
 // users in the view.
 // In theory, we whould always at least have ourselves in the view, right?
-if ( $viewusercnt == 0 ) {
+if ( $viewusercnt === 0 ) {
   // I don't think we need to translate this.
   $error = 'No users for this view.';
 }
@@ -198,9 +198,9 @@ else
   $tdw = floor ( ( 100 - (int)$time_w ) / ( $end_ind - $start_ind + 1 ) );
 
 $untimed_found = false;
-$get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
+$get_unapproved = ( $DISPLAY_UNAPPROVED === 'Y' );
 // public access events cannot override $DISPLAY_UNAPPROVED
-if ( $user == '__public__' && $PUBLIC_ACCESS_VIEW_UNAPPROVED != 'Y' )
+if ( $user === '__public__' && $PUBLIC_ACCESS_VIEW_UNAPPROVED !== 'Y' )
   $get_unapproved = false;
 
 // Step through each user and load events for that user.
@@ -251,7 +251,7 @@ $last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
 ?></span><br>
 <span class="viewname"><?php echo $view_name; ?></span>
 <?php
-  if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
+  if ( $DISPLAY_WEEKNUMBER === 'Y' ) {
     echo "<br>\n<span class=\"titleweek\">(" .
       translate( 'Week' ) . ' ' . date( 'W', $wkstart + 86400 ) . ')</span>';
   }
@@ -279,8 +279,8 @@ if ( ! $fit_to_window ) { ?>
     $tdwf = sprintf ( "%0.2f", $tdw ) . "%";
   $todayYmd = date ( 'Ymd', $today );
   for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
-    if ( is_weekend ( $days[$i] ) && $DISPLAY_WEEKENDS == 'N' ) continue;
-    if ( $todayYmd == date ( 'Ymd', $days[$i] ) )
+    if ( is_weekend ( $days[$i] ) && $DISPLAY_WEEKENDS === 'N' ) continue;
+    if ( $todayYmd === date ( 'Ymd', $days[$i] ) )
       $class = 'class="today"';
     else if ( is_weekend ( $days[$i] ) )
       $class = 'class="weekend"';
@@ -335,8 +335,8 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
         $am_part[$rep[$j]->getID()] =
           user_is_participant( $rep[$j]->getID(), $login );
       }
-      if( $get_unapproved || $rep[$j]->getStatus() == 'A' ) {
-        if ( $rep[$j]->getDuration() > 0 && $rep[$j]->getDuration() != 1440 ) {
+      if( $get_unapproved || $rep[$j]->getStatus() === 'A' ) {
+        if ( $rep[$j]->getDuration() > 0 && $rep[$j]->getDuration() !== 1440 ) {
           $slot = calc_time_slot( $rep[$j]->getTime(), false );
           if ( $slot < $first_slot ) {
             $first_slot = $slot;
@@ -351,7 +351,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
         $am_part[$ev[$j]->getID()] =
           user_is_participant( $ev[$j]->getID(), $login );
       }
-      if( $ev[$j]->getDuration() > 0 && $ev[$j]->getDuration() != 1440 ) {
+      if( $ev[$j]->getDuration() > 0 && $ev[$j]->getDuration() !== 1440 ) {
         $slot = calc_time_slot( $ev[$j]->getTime(), false );
         if ( $slot < $first_slot ) {
           $first_slot = $slot;
@@ -382,15 +382,15 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
       // print out any repeating events that are before this one...
       while ( $cur_rep < $repcnt &&
         $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
-        if( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-          if( $rep[$cur_rep]->getDuration() == 1440 )
+        if( $get_unapproved || $rep[$cur_rep]->getStatus() === 'A' ) {
+          if( $rep[$cur_rep]->getDuration() === 1440 )
             $all_day[$d] = 1;
           html_for_event_week_at_a_glance ( $rep[$cur_rep], $dateYmd, 'small', $show_time );
         }
         $cur_rep++;
       }
-      if( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
-        if( $ev[$i]->getDuration() == 1440 )
+      if( $get_unapproved || $ev[$i]->getStatus() === 'A' ) {
+        if( $ev[$i]->getDuration() === 1440 )
           $all_day[$d] = 1;
         html_for_event_week_at_a_glance ( $ev[$i], $dateYmd, 'small', $show_time );
         //echo "Found event date=$dateYmd name='$viewname'<br>\n";
@@ -399,8 +399,8 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     }
     // print out any remaining repeating events
     while ( $cur_rep < $repcnt ) {
-      if( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
-        if( $rep[$cur_rep]->getDuration() == 1440 )
+      if( $get_unapproved || $rep[$cur_rep]->getStatus() === 'A' ) {
+        if( $rep[$cur_rep]->getDuration() === 1440 )
           $all_day[$d] = 1;
         html_for_event_week_at_a_glance ( $rep[$cur_rep], $dateYmd, 'small', $show_time );
       }
@@ -455,8 +455,8 @@ if ( $untimed_found || $show_untimed_row_always ) {
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $dateYmd = date ( 'Ymd', $days[$d] );
     $is_weekend = is_weekend ( $days[$d] );
-    if ( $is_weekend  && $DISPLAY_WEEKENDS == 'N' ) continue;
-    if ( $dateYmd == $todayYmd )
+    if ( $is_weekend  && $DISPLAY_WEEKENDS === 'N' ) continue;
+    if ( $dateYmd === $todayYmd )
       $class .= 'class="today"';
     else if ( $is_weekend )
       $class .= 'class="weekend"';
@@ -506,7 +506,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
       $hour_arr = $save_hour_arr[$u][$d];
       $rowspan_arr = $save_rowspan_arr[$u][$d];
       $is_weekend = is_weekend ( $days[$d] );
-      if ( $dateYmd == $todayYmd )
+      if ( $dateYmd === $todayYmd )
         $class .= 'class="today"';
       else if ( $is_weekend )
         $class .= 'class="weekend"';

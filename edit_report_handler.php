@@ -34,7 +34,7 @@
 require_once 'includes/init.php';
 load_user_categories();
 
-$error = ( empty( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y'
+$error = ( empty( $REPORTS_ENABLED ) || $REPORTS_ENABLED !== 'Y'
   ? print_not_auth() : '' );
 $allow_nav      = getPostValue( 'allow_nav' );
 $cat_id         = getValue ( 'cat_id', '-?[0-9]*', true );
@@ -52,9 +52,9 @@ $report_user    = getPostValue( 'report_user' );
 $show_in_trailer= getPostValue( 'show_in_trailer' );
 $time_range     = getPostValue( 'time_range' );
 
-$updating_public = ( $is_admin && ! empty( $public ) && $PUBLIC_ACCESS == 'Y' );
+$updating_public = ( $is_admin && ! empty( $public ) && $PUBLIC_ACCESS === 'Y' );
 
-if ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y' )
+if ( $single_user === 'Y' || $DISABLE_PARTICIPANTS_FIELD === 'Y' )
   $report_user = '';
 
 if ( ! $is_admin )
@@ -64,13 +64,13 @@ $adding_report = ( empty ( $report_id ) || $report_id <= 0 );
 
 // Check permissions.
 // Can only edit/delete if you created the event or you are an admin.
-if ( empty ( $error ) && $single_user != 'N' && !
+if ( empty ( $error ) && $single_user !== 'N' && !
     empty ( $report_id ) && $report_id > 0 && ! $is_admin ) {
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_report WHERE report_id = ?',
     [$report_id] );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
-      if ( $row[0] != $login )
+      if ( $row[0] !== $login )
         $error = print_not_auth();
     } else
       $error = str_replace ( 'XXX', $report_id,
@@ -116,7 +116,7 @@ if ( empty ( $error ) && ! empty ( $report_id ) && ! empty ( $delete ) ) {
 }
 
 if ( empty ( $error ) ) {
-  if ( empty ( $report_name ) || trim ( $report_name ) == '' )
+  if ( empty ( $report_name ) || trim ( $report_name ) === '' )
     $report_name = translate ( 'Unnamed Report' );
 
   $names = ['cal_login', 'cal_update_date', 'cal_report_type',
@@ -130,13 +130,13 @@ if ( empty ( $error ) ) {
     'html',
     $report_name,
     ( ! $is_admin || empty ( $report_user ) ? null : $report_user ),
-    ( empty ( $include_header ) || $include_header != 'Y' ? 'N' : 'Y' ),
+    ( empty ( $include_header ) || $include_header !== 'Y' ? 'N' : 'Y' ),
     ( isset ( $time_range ) ? $time_range : 11 ),
     ( empty ( $cat_id ) ? null : $cat_id ),
-    ( empty ( $allow_nav ) || $allow_nav != 'Y' ? 'N' : 'Y' ),
-    ( empty ( $include_empty ) || $include_empty != 'Y' ? 'N' : 'Y' ),
-    ( empty ( $is_global ) || $is_global != 'Y' ? 'N' : 'Y' ),
-    ( empty ( $show_in_trailer ) || $show_in_trailer != 'Y' ? 'N' : 'Y' )];
+    ( empty ( $allow_nav ) || $allow_nav !== 'Y' ? 'N' : 'Y' ),
+    ( empty ( $include_empty ) || $include_empty !== 'Y' ? 'N' : 'Y' ),
+    ( empty ( $is_global ) || $is_global !== 'Y' ? 'N' : 'Y' ),
+    ( empty ( $show_in_trailer ) || $show_in_trailer !== 'Y' ? 'N' : 'Y' )];
 
   if ( $adding_report ) {
     $newid = 1;

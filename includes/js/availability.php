@@ -13,7 +13,7 @@ function schedule_event(hours, minutes) {
   var day =<?php echo $day ?>;
   if (confirm("<?php etranslate ( 'Change the date and time of this entry?', true)?>")) {
     var parentForm = $('#<?php echo $parent_form;?>', window.parent.document);
-    if ('<?php echo $parent_form ?>' == 'editentryform') {
+    if ('<?php echo $parent_form ?>' === 'editentryform') {
       var tt = window.opener.$("#timetype");
       // Change to "Timed Event".
       // Calling change() will also invoke the change handler and make certain
@@ -34,7 +34,7 @@ function schedule_event(hours, minutes) {
         window.opener.$('#entry_ampmP').prop("checked", true);
       }
     } else {
-      if (hours == 12 && window.opener.$('#entry_ampmP')) {
+      if (hours === 12 && window.opener.$('#entry_ampmP')) {
         window.opener.$('#entry_ampmP').prop("checked", true);
       } else {
         if (window.opener.$('#entry_ampmA')) {

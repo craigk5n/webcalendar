@@ -1,7 +1,7 @@
 <?php
-/* This script can be used to update the database headlessly rather than using the 
+/* This script can be used to update the database headlessly rather than using the
  * installation script.
- * 
+ *
  * You must copy the settings.php file from your original installation, or create it
  * yourself in the case of a new install. This script will not prompt you for any of
  * your settings; and requires settings.php to be present and complete.
@@ -25,7 +25,7 @@ $file    = $fileDir . '/settings.php';
 chdir(__WC_BASEDIR);
 
 // We need the $_SESSION superglobal to pass data to and from some of the update
-// functions. Sessions are basically useless in CLI mode, but technically the 
+// functions. Sessions are basically useless in CLI mode, but technically the
 // session functions *do* work.
 session_start();
 
@@ -56,7 +56,7 @@ $db_password = ( empty( $settings['db_password'] )
     ? '' : $settings['db_password'] );
 $db_persistent = false;
 $db_type       = $settings['db_type'];
-$real_db       = ( $db_type== 'sqlite' || $db_type == 'sqlite3'
+$real_db       = ( $db_type === 'sqlite' || $db_type === 'sqlite3'
     ? get_full_include_path( $db_database ) : $db_database );
 
 
@@ -66,7 +66,7 @@ $c = dbi_connect( $db_host, $db_login, $db_password, $real_db, false );
     get_installed_version();
 if( $c && ! empty( $_SESSION['install_file'] ) ) {
     $sess_install = $_SESSION['install_file'];
-    $install_filename = ( $sess_install == 'tables' ? 'tables-' : 'upgrade-' );
+    $install_filename = ( $sess_install === 'tables' ? 'tables-' : 'upgrade-' );
     switch( $db_type ) {
     case 'ibase':
     case 'mssql':
@@ -112,7 +112,7 @@ dbi_free_result( $res );
 
 // If new install, run 0 GMT offset
 // just to set webcal_config.WEBCAL_TZ_CONVERSION.
-if( $_SESSION['old_program_version'] == 'new_install' )
+if( $_SESSION['old_program_version'] === 'new_install' )
 convert_server_to_GMT();
 
 // For upgrade to v1.1b

@@ -12,7 +12,7 @@ if( empty( $inc ) && ! empty( $_REQUEST['inc'] ) )
 $arinc = explode( '/', $inc );
 
 // We only allow includes if they exist in our js or HTMLarea directories.
-if( $arinc[0] != 'js' && $arinc[0] != 'htmlarea' )
+if( $arinc[0] !== 'js' && $arinc[0] !== 'htmlarea' )
   return false;
 
 if( is_dir( 'includes' ) )
@@ -54,7 +54,7 @@ $login = ( empty( $_SESSION['webcal_login'] )
 load_user_preferences();
 
 foreach( $arinc as $a ) {
-  if( $a == 'true' || $a == 'false' )
+  if( $a === 'true' || $a === 'false' )
     break;
 
   $newinc .= '/' . $a;

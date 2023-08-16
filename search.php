@@ -3,7 +3,7 @@ require_once 'includes/init.php';
 // Is this user allowed to search the calendars of other users?
 $show_others = false; // show "Advanced Search"
 
-if ($single_user == 'Y') {
+if ($single_user === 'Y') {
   $show_others = false;
 }
 
@@ -12,19 +12,19 @@ if ($is_admin) {
 } else if (access_is_enabled()) {
   $show_others = access_can_access_function(ACCESS_ADVANCED_SEARCH);
 } else if (
-  $login != '__public__' && !$is_nonuser && !empty($ALLOW_VIEW_OTHER)
-  && $ALLOW_VIEW_OTHER == 'Y'
+  $login !== '__public__' && !$is_nonuser && !empty($ALLOW_VIEW_OTHER)
+  && $ALLOW_VIEW_OTHER === 'Y'
 ) {
   $show_others = true;
 } else if (
-  $login == '__public__' && !empty($PUBLIC_ACCESS_OTHERS)
-  && $PUBLIC_ACCESS_OTHERS == 'Y'
+  $login === '__public__' && !empty($PUBLIC_ACCESS_OTHERS)
+  && $PUBLIC_ACCESS_OTHERS === 'Y'
 ) {
   $show_others = true;
 }
 
 $show_advanced = getValue('adv', '[01]');
-$show_advanced = $show_advanced == '1' ? '1' : '0';
+$show_advanced = $show_advanced === '1' ? '1' : '0';
 $avdStyle = array('hidden', 'visible');
 if (
   access_is_enabled()
@@ -125,9 +125,9 @@ if ($show_advanced) {
 if ($show_others) {
   $users = get_my_users('', 'view');
   // Get non-user calendars (if enabled)
-  if (!empty($NONUSER_ENABLED) && $NONUSER_ENABLED == 'Y') {
+  if (!empty($NONUSER_ENABLED) && $NONUSER_ENABLED === 'Y') {
     $nonusers = get_my_nonusers($login, true, 'view');
-    $users = (!empty($NONUSER_AT_TOP) && $NONUSER_AT_TOP == 'Y'
+    $users = (!empty($NONUSER_AT_TOP) && $NONUSER_AT_TOP === 'Y'
     ? array_merge($nonusers, $users)
       : array_merge($users, $nonusers));
   }
@@ -155,12 +155,12 @@ if ($show_others) {
   for( $i = 0; $i < $cnt; $i++ ) {
     echo '
               <option value="' . $users[$i]['cal_login'] . '"'
-     . ( $users[$i]['cal_login'] == $login ? ' selected' : '' )
+     . ( $users[$i]['cal_login'] === $login ? ' selected' : '' )
      . '>' . $users[$i]['cal_fullname'] . '</option>';
   }
 
   echo '</select>'
-   . ( $GROUPS_ENABLED == 'Y'
+   . ( $GROUPS_ENABLED === 'Y'
     ? '<input type="button" onclick="selectUsers()" value="'
      . translate( 'Select' ) . '...">' : '' ) . '
           </td>

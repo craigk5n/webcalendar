@@ -76,7 +76,7 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
 
   while ( ! feof ( $fp ) ) {
     $buffer = trim ( fgets ( $fp, 4096 ) );
-    if ( strlen ( $buffer ) == 0 )
+    if ( strlen ( $buffer ) === 0 )
       continue;
 
     if ( function_exists( 'get_magic_quotes_runtime' )
@@ -88,9 +88,9 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
     str_replace ( ['"', "'"], ['&quot;', '&#39;'], $buffer );
 
     // Skip comments.
-    if ( substr ( $buffer, 0, 1 ) == '#' ) {
-      if ( substr ( $buffer, 0, 7 ) == '# Page:' )
-        $inInstallTrans = ( substr ( $buffer, 9, 7 ) == 'install' );
+    if ( substr ( $buffer, 0, 1 ) === '#' ) {
+      if ( substr ( $buffer, 0, 7 ) === '# Page:' )
+        $inInstallTrans = ( substr ( $buffer, 9, 7 ) === 'install' );
 
       continue;
     }
@@ -142,17 +142,17 @@ function reset_language ( $new_language ) {
   global $fullname, $lang, $lang_file,
   $PUBLIC_ACCESS_FULLNAME, $translation_loaded, $translations;
 
-  if ( $new_language == 'none' || $new_language == 'Browser-defined' )
+  if ( $new_language === 'none' || $new_language === 'Browser-defined' )
     $new_language = get_browser_language();
 
-  if ( $new_language != $lang || ! $translation_loaded ) {
+  if ( $new_language !== $lang || ! $translation_loaded ) {
     $lang = $new_language;
     $lang_file = 'translations/' . $lang . '.txt';
     $translation_loaded = false;
     load_translation_text();
   }
   $PUBLIC_ACCESS_FULLNAME = translate ( 'Public Access' );
-  if ( $fullname == 'Public Access' )
+  if ( $fullname === 'Public Access' )
     $fullname = $PUBLIC_ACCESS_FULLNAME;
 }
 
@@ -292,7 +292,7 @@ function get_browser_language ( $pref = false ) {
         return $browser_languages[$l];
     }
   }
-  return ( strlen ( $HTTP_ACCEPT_LANGUAGE ) && $pref == true
+  return ( strlen ( $HTTP_ACCEPT_LANGUAGE ) && $pref === true
     ? $HTTP_ACCEPT_LANGUAGE . ' ' . translate ( '(not supported)' )
     : 'English-US' );
 }
@@ -326,7 +326,7 @@ function translate ( $str, $decode = '', $type = '' ) {
   if ( ! $translation_loaded )
     load_translation_text();
 
-  if ( $type == '' || $type == 'A' ) {
+  if ( $type === '' || $type === 'A' ) {
     // Translate these because even English may be abbreviated.
     $str = trim ( $str );
 
@@ -341,34 +341,34 @@ function translate ( $str, $decode = '', $type = '' ) {
   }
   if ( strpos ( strtolower ( $LANGUAGE ), 'english' ) === false ) {
     // Only translate if not English.
-    if ( $type == 'D' ) {
+    if ( $type === 'D' ) {
       for ( $i = 0; $i < 12; $i++ ) {
         // Translate month names. Full then abbreviation.
         $tmp = date ( 'F', mktime ( 0, 0, 0, $i + 1 ) );
-        if ( $tmp != $translations[$tmp] )
+        if ( $tmp !== $translations[$tmp] )
           $str = str_replace ( $tmp, $translations[$tmp], $str );
 
         $tmp = date ( 'M', mktime ( 0, 0, 0, $i + 1 ) );
-        if ( $tmp != $translations[$tmp] )
+        if ( $tmp !== $translations[$tmp] )
           $str = str_replace ( $tmp, $translations[$tmp], $str );
 
         if ( $i < 7 ) {
           // Might as well translate day names while we're here.
           $tmp = date ( 'l', mktime ( 0, 0, 0, 1, $i + 1 ) );
-          if ( $tmp != $translations[$tmp] )
+          if ( $tmp !== $translations[$tmp] )
             $str = str_replace ( $tmp, $translations[$tmp], $str );
 
           $tmp = date ( 'D', mktime ( 0, 0, 0, 1, $i + 1 ) );
-          if ( $tmp != $translations[$tmp] )
+          if ( $tmp !== $translations[$tmp] )
             $str = str_replace ( $tmp, $translations[$tmp], $str );
         }
       }
     }
-    if ( $type != '' ) {
+    if ( $type !== '' ) {
       // Translate number symbols.
       for ( $i = 0; $i < 10; $i++ ) {
         $tmp = $i . '';
-        if ( $tmp != $translations[$tmp] )
+        if ( $tmp !== $translations[$tmp] )
           $str = str_replace ( $tmp, $translations[$tmp], $str );
       }
     }
@@ -512,7 +512,7 @@ function languageToAbbrev ( $name ) {
   global $browser_languages;
 
   foreach ( $browser_languages as $abbrev => $langname ) {
-    if ( $langname == $name )
+    if ( $langname === $name )
       return $abbrev;
   }
   return false;

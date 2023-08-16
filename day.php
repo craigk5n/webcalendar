@@ -6,7 +6,7 @@ if( ! access_can_access_function( ACCESS_DAY )
     || ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
   send_to_preferred_view();
 
-load_user_layers ( $user != $login && $is_nonuser_admin ? $user : '' );
+load_user_layers ( $user !== $login && $is_nonuser_admin ? $user : '' );
 
 load_user_categories();
 
@@ -29,7 +29,7 @@ $prevYmd = date ( 'Ymd', $prev );
 if ( empty ( $TIME_SLOTS ) )
   $TIME_SLOTS = 24;
 
-$boldDays = ( $BOLD_DAYS_IN_YEAR == 'Y' );
+$boldDays = ( $BOLD_DAYS_IN_YEAR === 'Y' );
 
 $startdate = mktime ( 0, 0, 0, $thismonth, 0, $thisyear );
 $enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
@@ -44,12 +44,12 @@ $repeated_events = read_repeated_events ( empty ( $user )
 $events = read_events ( empty ( $user )
   ? $login : $user, $startdate, $enddate, $cat_id );
 
-if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
+if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID === 'Y' )
   /* Pre-load tasks for quicker access */
   $tasks = read_tasks ( ! empty ( $user ) && strlen ( $user ) && $is_assistant
     ? $user : $login, $now, $cat_id );
 
-$smallTasks = ( $DISPLAY_TASKS == 'Y' ? '<div id="minitask">
+$smallTasks = ( $DISPLAY_TASKS === 'Y' ? '<div id="minitask">
            ' . display_small_tasks ( $cat_id ) . '
           </div>' : '' );
 $dayStr = print_day_at_a_glance ( $nowYmd, ( empty ( $user )

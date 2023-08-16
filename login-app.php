@@ -26,7 +26,7 @@ $WebCalendar->setLanguage();
 $action = getGetValue ( 'action' );
 $logout = false;
 
-if ( ! empty ( $action ) && $action == 'logout' ) {
+if ( ! empty ( $action ) && $action === 'logout' ) {
   $logout = true;
   $return_path = '';
   sendCookie ( 'webcalendar_last_view', '', 0 );
@@ -49,7 +49,7 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
 
     // Error check login/password.
       function valid_form ( form ) {
-        if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
+        if ( form.login.value.length === 0 || form.password.value.length === 0 ) {
           alert ( \''
    . translate ( 'You must enter a login and password.', true ) . '\' );
           return false;
@@ -67,12 +67,12 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
     <link href="includes/css/styles.css" rel="stylesheet">'
 
 // Print custom header (since we do not call print_header function).
- . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
+ . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT === 'Y'
   ? load_template ( $login, 'S' ) : '' ) . '
   </head>
   <body onload="myOnLoad();">'
 // Print custom header (since we do not call print_header function).
- . ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y'
+ . ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER === 'Y'
   ? load_template ( $login, 'H' ) : '' ) . '
     <h2>' . $appStr . '</h2>' . ( empty ( $error ) ? '' : '
     <span style="color:#F00;" class="bold">' . translate ( 'Error' )
@@ -99,7 +99,7 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
           <td colspan="3" style="font-size: 10px;">
             <input type="checkbox" name="' . $app_login_page['remember']
    . '" id="remember" tabindex="3" value="yes" '
-   . ( ! empty ( $remember ) && $remember == 'yes' ? 'checked' : '' )
+   . ( ! empty ( $remember ) && $remember === 'yes' ? 'checked' : '' )
    . '>
             <label for="remember">&nbsp;'
    . translate ( 'Save login via cookies so I dont have to login next time.' )
@@ -122,7 +122,7 @@ echo '
           </td>
         </tr>
       </table>
-    </form>' . ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y'
+    </form>' . ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS === 'Y'
   ? '<br><br>
     <a class="nav" href="index.php">' . str_replace ( 'XXX',
     translate ( 'public' ), translate ( 'Access XXX calendar' ) )
@@ -130,14 +130,14 @@ echo '
 
 $nulist = get_nonuser_cals();
 for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
-  if ( $nulist[$i]['cal_is_public'] == 'Y' )
+  if ( $nulist[$i]['cal_is_public'] === 'Y' )
     echo '
     <a class="nav" href="nulogin.php?login=' . $nulist[$i]['cal_login'] . '">'
      . str_replace ( 'XXX', $nulist[$i]['cal_fullname'],
       translate ( 'Access XXX calendar' ) ) . '</a><br>';
 }
 
-echo ( $DEMO_MODE == 'Y'
+echo ( $DEMO_MODE === 'Y'
   // This is used on the SourceForge demo page.
   ? 'Demo login: user = "demo", password = "demo"<br>' : '' ) . '<br><br>
     <span class="cookies">' . translate ( 'cookies-note' ) . '</span><br>
@@ -146,7 +146,7 @@ echo ( $DEMO_MODE == 'Y'
     <a href="' . $PROGRAM_URL . '" id="programname">' . $PROGRAM_NAME . '</a>'
 
 // Print custom trailer (since we do not call print_trailer function).
- . ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y'
+ . ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER === 'Y'
   ? load_template ( $login, 'T' ) : '' );
 
 ?>

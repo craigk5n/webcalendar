@@ -30,13 +30,13 @@ $adding_report = false;
 $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
 $checked = ' checked';
 $error =
- ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' || $login == '__public__'
+ ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED !== 'Y' || $login === '__public__'
    ? print_not_auth() : '' );
 $report_id = getValue ( 'report_id', '-?[0-9]+', true );
 $selected = ' selected';
-$show_participants = ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y'
+$show_participants = ( $single_user === 'Y' || $DISABLE_PARTICIPANTS_FIELD === 'Y'
   ? false : true );
-$updating_public = ( $is_admin && ! empty( $public ) && $PUBLIC_ACCESS == 'Y' );
+$updating_public = ( $is_admin && ! empty( $public ) && $PUBLIC_ACCESS === 'Y' );
 
 $report_user = ( $updating_public ? '__public__' : '');
 
@@ -79,10 +79,10 @@ $ranges = [
 // Get list of users visible to the current user.
 if ( empty ( $error ) && $show_participants ) {
   $userlist = get_my_users ( '', 'view' );
-  if ( $NONUSER_ENABLED == 'Y' ) {
+  if ( $NONUSER_ENABLED === 'Y' ) {
     // Restrict NUC list if groups are enabled.
     $nonusers = get_my_nonusers ( $login, true, 'view' );
-    $userlist = ( $NONUSER_AT_TOP == 'Y'
+    $userlist = ( $NONUSER_AT_TOP === 'Y'
       ? array_merge ( $nonusers, $userlist )
       : array_merge ( $userlist, $nonusers ) );
   }
@@ -147,18 +147,18 @@ if ( empty ( $error ) && $report_id >= 0 ) {
       if ( $show_participants && ! empty ( $report_user ) ) {
         $user_is_in_list = false;
         for ( $i = 0; $i < $userlistcnt; $i++ ) {
-          if ( $report_user == $userlist[$i]['cal_login'] )
+          if ( $report_user === $userlist[$i]['cal_login'] )
             $user_is_in_list = true;
         }
-        if ( ! $user_is_in_list && $report_login != $login && ! $is_admin )
+        if ( ! $user_is_in_list && $report_login !== $login && ! $is_admin )
           $error = print_not_auth();
       }
-      if ( ! $is_admin && $login != $report_login )
+      if ( ! $is_admin && $login !== $report_login )
         // Only creator or an admin can edit/delete the event.
         $error = print_not_auth();
 
       // If we are editing a public user report we need to set $updating_public.
-      if ( $is_admin && $report_login == '__public__' )
+      if ( $is_admin && $report_login === '__public__' )
         $updating_public = true;
     } else
       $error = str_replace ( 'XXX', $report_id,
@@ -173,11 +173,11 @@ if ( empty ( $error ) && $report_id >= 0 ) {
   WHERE cal_report_id = ?', [$report_id] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( $row[0] == 'D' )
+      if ( $row[0] === 'D' )
         $day_template = $row[1];
-      elseif ( $row[0] == 'E' )
+      elseif ( $row[0] === 'E' )
         $event_template = $row[1];
-      elseif ( $row[0] == 'P' )
+      elseif ( $row[0] === 'P' )
         $page_template = $row[1];
     }
     dbi_free_result ( $res );
@@ -228,7 +228,7 @@ if ( $show_participants ) {
   for ( $i = 0; $i < $userlistcnt; $i++ ) {
     echo '
               <option value="' . $userlist[$i]['cal_login'] . '"'
-     . ( ! empty ( $report_user ) && $report_user == $userlist[$i]['cal_login']
+     . ( ! empty ( $report_user ) && $report_user === $userlist[$i]['cal_login']
       ? $selected : '' ) . '>' . $userlist[$i]['cal_fullname'] . '</option>';
   }
 
@@ -238,7 +238,7 @@ if ( $show_participants ) {
 echo ( $is_admin ? '<div class="form-inline">
     <label class="col-sm-2 col-form-label" for="is_global">' . translate ('Global') . '</label>' .
     print_radio( 'is_global', '', '',
-    ( ! empty( $report_is_global ) && $report_is_global == 'Y'
+    ( ! empty( $report_is_global ) && $report_is_global === 'Y'
       ? 'Y' : 'N' ) ) . '</div>'
 
   // The report will always be shown in the menu for the creator of the report.
@@ -247,23 +247,23 @@ echo ( $is_admin ? '<div class="form-inline">
  . '<div class="form-inline">
     <label class="col-sm-2 col-form-label" for="show_in_trailer">' . translate ('Include link in menu') . '</label>'
      . print_radio('show_in_trailer', '', '',
-      (! empty($report_show_in_menu) && $report_show_in_menu == 'Y' ? 'Y' : 'N')) . '' : '') . '</div>
+      (! empty($report_show_in_menu) && $report_show_in_menu === 'Y' ? 'Y' : 'N')) . '' : '') . '</div>
     <div class="form-inline">
       <label class="col-sm-2 col-form-label" for="include_header">' . translate ('Include standard header/trailer') . '</label>' .
       print_radio( 'include_header', '', '',
-      (! empty( $report_include_header ) && $report_include_header == 'Y'
+      (! empty( $report_include_header ) && $report_include_header === 'Y'
       ? 'Y' : 'N' ) ) . '</div>
 
     <div class="form-inline">
     <label class="col-sm-2 col-form-label" for="allow_nav">' . translate ('Include previous/next links') . '</label>' .
     print_radio( 'allow_nav', '', '',
-    ( ! empty( $report_allow_nav ) && $report_allow_nav == 'Y'
+    ( ! empty( $report_allow_nav ) && $report_allow_nav === 'Y'
       ? 'Y' : 'N' ) ) . '</div>
 
     <div class="form-inline">
     <label class="col-sm-2 col-form-label" for="include_empty">' . translate ('Include empty dates') . '</label>' .
     print_radio( 'include_empty', '', '',
-    ( ! empty( $report_include_empty ) && $report_include_empty == 'Y'
+    ( ! empty( $report_include_empty ) && $report_include_empty === 'Y'
       ? 'Y' : 'N' ) ) . '</div>
 
     <div class="form-inline">
@@ -273,21 +273,21 @@ echo ( $is_admin ? '<div class="form-inline">
 foreach ($ranges as $num => $descr) {
   echo '
               <option value="' . $num . '"'
-   . ( $report_time_range == $num ? $selected : '' )
+   . ( $report_time_range === $num ? $selected : '' )
    . '>' . $descr . '</option>';
 }
 
 echo '</select></div>';
 
 
-if ( $CATEGORIES_ENABLED == 'Y' ) {
+if ( $CATEGORIES_ENABLED === 'Y' ) {
   echo '<div class="form-inline">
     <label class="col-sm-2 col-form-label" for="cat_id">' . translate ('Category') . '</label>
     <select class="form-control" name="cat_id" id="rpt_cat_id">
     <option value="">' . translate ( 'None' ) . '</option>';
 
   foreach ($categories as $K => $V) {
-    echo '<option value="' . $K . '"' . ( $report_cat_id == $K ? $selected : '' )
+    echo '<option value="' . $K . '"' . ( $report_cat_id === $K ? $selected : '' )
      . '>' . htmlentities ( $V['cat_name'] ) . '</option>';
   }
 
@@ -362,7 +362,7 @@ function show_template_vars($areaname, $vars) {
           sel.text = myValue;
         }
         // MOZILLA/NETSCAPE support.
-        else if ( textarea.selectionStart || textarea.selectionStart == '0' ) {
+        else if ( textarea.selectionStart || textarea.selectionStart === '0' ) {
           var
             startPos = textarea.selectionStart,
             endPos = textarea.selectionEnd;

@@ -45,10 +45,10 @@ function user_valid_login ( $login, $password, $silent=false ) {
   $res = dbi_execute ( $sql, [$login] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row && $row[0] != '' ) {
+    if ( $row && $row[0] !== '' ) {
       // Check the password
       $expected_hash = $row[2];
-      if ( strlen ( $expected_hash ) == 32 && ctype_xdigit ( $expected_hash ) ) {
+      if ( strlen ( $expected_hash ) === 32 && ctype_xdigit ( $expected_hash ) ) {
         // Old-Style MD5 password
         $supplied_hash = md5 ( $password );
         $okay = hash_equals ( $supplied_hash, $expected_hash );
@@ -64,9 +64,9 @@ function user_valid_login ( $login, $password, $silent=false ) {
         $sql = 'UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?';
         dbi_execute ( $sql, [$new_hash, $login] );
       }
-      $enabled = ( $row[1] == 'Y' ? true : false );
+      $enabled = ( $row[1] === 'Y' ? true : false );
       // MySQL seems to do case insensitive matching, so double-check the login.
-      if ( $okay && $row[0] == $login )
+      if ( $okay && $row[0] === $login )
         $ret = true; // found login/password
       else if ( ! $silent )
         $error = translate ( 'Invalid login', true ) . ': ' .
@@ -92,7 +92,7 @@ function user_valid_login ( $login, $password, $silent=false ) {
       }
     }
     dbi_free_result ( $res );
-    if ( ! $enabled && $error == '' ) {
+    if ( ! $enabled && $error === '' ) {
       $ret = false;
       $error = ( ! $silent ? translate('Account disabled', true) : '' );
     }
@@ -123,11 +123,11 @@ function user_valid_crypt ( $login, $crypt_password ) {
   $res = dbi_execute ( $sql, [$login] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row && $row[0] != '' ) {
+    if ( $row && $row[0] !== '' ) {
       // MySQL seems to do case insensitive matching, so double-check
       // the login.
       // also check if password matches
-      if ( ($row[0] == $login) && ( (crypt($row[1], $crypt_password) == $crypt_password) ) )
+      if ( ($row[0] === $login) && ( (crypt($row[1], $crypt_password) === $crypt_password) ) )
         $ret = true; // found login/password
       else
         $error = 'Invalid login';
@@ -161,17 +161,17 @@ function user_load_variables ( $login, $prefix ) {
 
   //help prevent spoofed username attempts from disclosing fullpath
   $GLOBALS[$prefix . 'fullname'] = '';
-  if ($NONUSER_PREFIX && substr ($login, 0, strlen ($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
+  if ($NONUSER_PREFIX && substr ($login, 0, strlen ($NONUSER_PREFIX) ) === $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }
-  if ( $login == '__public__' || $login == '__default__' ) {
+  if ( $login === '__public__' || $login === '__default__' ) {
     $GLOBALS[$prefix . 'login'] = $login;
     $GLOBALS[$prefix . 'firstname'] = '';
     $GLOBALS[$prefix . 'lastname'] = '';
     $GLOBALS[$prefix . 'is_admin'] = 'N';
     $GLOBALS[$prefix . 'email'] = '';
-    $GLOBALS[$prefix . 'fullname'] = ( $login == '__public__'?
+    $GLOBALS[$prefix . 'fullname'] = ( $login === '__public__'?
       $PUBLIC_ACCESS_FULLNAME : translate ( 'DEFAULT CONFIGURATION' ) );
     $GLOBALS[$prefix . 'password'] = '';
     $GLOBALS[$prefix . 'enabled'] = 'Y';
@@ -222,7 +222,7 @@ function user_add_user ( $user, $password, $firstname,
   $lastname, $email, $admin, $enabled='Y' ) {
   global $error;
 
-  if ( $user == '__public__' ) {
+  if ( $user === '__public__' ) {
     $error = translate ( 'Invalid user login', true);
     return false;
   }
@@ -243,7 +243,7 @@ function user_add_user ( $user, $password, $firstname,
     $upassword = password_hash ( $password, PASSWORD_DEFAULT );
   else
     $upassword = NULL;
-  if ( $admin != 'Y' )
+  if ( $admin !== 'Y' )
     $admin = 'N';
   $sql = 'INSERT INTO webcal_user ' .
     '( cal_login, cal_lastname, cal_firstname, ' .
@@ -274,7 +274,7 @@ function user_add_user ( $user, $password, $firstname,
 function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabled='Y' ) {
   global $error;
 
-  if ( $user == '__public__' ) {
+  if ( $user === '__public__' ) {
     $error = translate ( 'Invalid user login' );
     return false;
   }
@@ -290,10 +290,10 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabl
     $ulastname = $lastname;
   else
     $ulastname = NULL;
-  if ( $admin != 'Y' )
+  if ( $admin !== 'Y' )
     $admin = 'N';
 
-  if ( $enabled != 'Y' )
+  if ( $enabled !== 'Y' )
     $enabled = 'N';
 
   $sql = 'UPDATE webcal_user SET cal_lastname = ?, ' .
@@ -351,7 +351,7 @@ function user_delete_user ( $user ) {
   WHERE cal_id = ?', [$events[$i]] );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
-        if ( $row[0] == 1 )
+        if ( $row[0] === 1 )
           $delete_em[] = $events[$i];
       }
       dbi_free_result ( $res );
@@ -472,7 +472,7 @@ function user_get_users ( $publicOnly=false ) {
 
   $count = 0;
   $ret = [];
-  if ( $PUBLIC_ACCESS == 'Y' )
+  if ( $PUBLIC_ACCESS === 'Y' )
     $ret[$count++] = [
        'cal_login' => '__public__',
        'cal_lastname' => '',
@@ -522,7 +522,7 @@ function user_delete_events($username)
       'WHERE cal_id = ?', [$events[$i]]);
     if ($res) {
       $row = dbi_fetch_row($res);
-      if (!empty($row) && $row[0] == 1)
+      if (!empty($row) && $row[0] === 1)
         $delete_em[] = $events[$i];
       dbi_free_result($res);
     }

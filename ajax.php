@@ -30,38 +30,38 @@ $name = getValue ( 'name' );
 $page = getValue ( 'page' );
 
 // We're processing edit_remotes Calendar ID field.
-if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
+if ( $page === 'edit_remotes' || $page === 'edit_nonuser' ) {
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_nonuser_cals
   WHERE cal_login = ?', [$NONUSER_PREFIX . $name] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     // Presuming we are using '_NUC_' as $NONUSER_PREFIX.
-    if ( $name == substr ( $row[0], strlen ( $NONUSER_PREFIX ) ) )
+    if ( $name === substr ( $row[0], strlen ( $NONUSER_PREFIX ) ) )
       echo str_replace ( 'XXX', $name, translate ( 'Duplicate Name XXX', true ) );
   }
-} elseif ( $page == 'register' || $page == 'edit_user' ) {
+} elseif ( $page === 'register' || $page === 'edit_user' ) {
   // We're processing username field.
   $res = dbi_execute ( 'SELECT cal_login
   FROM webcal_user
   WHERE cal_login = ?', [$name] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row && $row[0] == $name )
+    if ( $row && $row[0] === $name )
       echo str_replace ( 'XXX', $name,
         translate ( 'Username XXX already exists.', true ) );
   }
-} elseif ( $page == 'email' ) {
+} elseif ( $page === 'email' ) {
   // We're processing email field from any page.
   $res = dbi_execute ( 'SELECT cal_email
   FROM webcal_user
   WHERE cal_email = ?', [$name] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row[0] == $name )
+    if ( $row[0] === $name )
       echo str_replace ( 'XXX', $name,
         translate ( 'Email address XXX already exists.', true ) );
   }
-} elseif ( $page == 'minitask' ) {
+} elseif ( $page === 'minitask' ) {
   $name = ( empty ( $name ) ? 0 : $name );
   require_once 'includes/classes/Event.class';
   require_once 'includes/classes/RptEvent.class';

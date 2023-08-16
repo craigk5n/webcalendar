@@ -19,7 +19,7 @@
 require_once 'includes/init.php';
 
 $allow_view_other =
-  ( ! empty( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' );
+  ( ! empty( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER === 'Y' );
 
 if( ! access_is_enabled() ) {
   echo print_not_auth();
@@ -40,11 +40,11 @@ $saved = '';
 // Are we handling the access form?
 // If so, do that, then redirect.
 // Handle function access first.
-if( getPostValue( 'auser' ) != '' && getPostValue( 'submit' ) == $saveStr ) {
+if( getPostValue( 'auser' ) !== '' && getPostValue( 'submit' ) === $saveStr ) {
   $auser = getPostValue( 'auser' );
   $perm = '';
   for( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ) {
-    $perm .= ( getPostValue( 'access_' . $i ) == 'Y' ? 'Y' : 'N' );
+    $perm .= ( getPostValue( 'access_' . $i ) === 'Y' ? 'Y' : 'N' );
   }
 
   dbi_execute( 'DELETE FROM webcal_access_function
@@ -58,7 +58,7 @@ if( getPostValue( 'auser' ) != '' && getPostValue( 'submit' ) == $saveStr ) {
 }
 
 // Are we handling the other user form? If so, do that, then redirect.
-if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) {
+if( getPostValue( 'otheruser' ) !== '' && getPostValue( 'submit' ) === $saveStr ) {
   $puser = getPostValue( 'guser' );
   $pouser = getPostValue( 'otheruser' );
 
@@ -92,8 +92,8 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
           $puser,
           $pouser,
           ( $view_total > 0 ? $view_total : 0 ),
-          ( $edit_total > 0 && $puser != '__public__' ? $edit_total : 0 ),
-          ( $approve_total > 0 && $puser != '__public__' ? $approve_total : 0 ),
+          ( $edit_total > 0 && $puser !== '__public__' ? $edit_total : 0 ),
+          ( $approve_total > 0 && $puser !== '__public__' ? $approve_total : 0 ),
           ( strlen( $invite ) ? $invite : 'N' ),
           ( strlen( $email ) ? $email : 'N' ),
           ( strlen( $time ) ? $time : 'N' )] ) )
@@ -106,16 +106,16 @@ $checked = ' checked';
 $guser = getPostValue( 'guser' );
 $selected = ' selected';
 
-if( $guser == '__default__' ) {
+if( $guser === '__default__' ) {
   $otheruser = $guser;
   $user_fullname = $defConfigStr;
 } else
   $otheruser = getPostValue( 'otheruser' );
 
-if( $otheruser == '__default__' ) {
+if( $otheruser === '__default__' ) {
   $otheruser_fullname = $defConfigStr;
   $otheruser_login = '__default__';
-} elseif( $otheruser == '__public__' ) {
+} elseif( $otheruser === '__public__' ) {
   $otheruser_fullname = translate( 'Public Access' );
   $otheruser_login = '__public__';
 }
@@ -155,7 +155,7 @@ print_header( '',
  . filemtime( 'includes/js/access.js' ) . '"></script>
     <link href="includes/css/access.css?'
  . filemtime( 'includes/css/access.css' ) . '" rel="stylesheet">',
-  ( ! empty( $op['time'] ) && $op['time'] == 'Y'
+  ( ! empty( $op['time'] ) && $op['time'] === 'Y'
     ? 'onload="enableAll( true );"' : '' ) );
 
 echo print_success( $saved );
@@ -178,20 +178,20 @@ if( $is_admin ) {
   // Add a DEFAULT CONFIGURATION to be used as a mask.
   . '
         <option value="__default__"'
-   . ( $guser == '__default__' ? $selected : '' )
+   . ( $guser === '__default__' ? $selected : '' )
    . '>' . $defConfigStr . '</option>';
   for( $i = 0, $cnt = count( $userlist ); $i < $cnt; $i++ ) {
     echo '
         <option value="' . $userlist[$i]['cal_login'] . '"'
-     . ( $guser == $userlist[$i]['cal_login'] ? $selected : '' )
+     . ( $guser === $userlist[$i]['cal_login'] ? $selected : '' )
      . '>' . $userlist[$i]['cal_fullname'] . '</option>';
   }
   for( $i = 0, $cnt = count( $nonuserlist ); $i < $cnt; $i++ ) {
     echo '
         <option value="' . $nonuserlist[$i]['cal_login'] . '"'
-     . ( $guser == $nonuserlist[$i]['cal_login'] ? $selected : '' )
+     . ( $guser === $nonuserlist[$i]['cal_login'] ? $selected : '' )
      . '>' . $nonuserlist[$i]['cal_fullname'] . ' '
-     . ( $nonuserlist[$i]['cal_is_public'] == 'Y' ? '*' : '' ) . '</option>';
+     . ( $nonuserlist[$i]['cal_is_public'] === 'Y' ? '*' : '' ) . '</option>';
   }
 
   echo $goStr;
@@ -209,7 +209,7 @@ if( ! empty( $guser ) || ! $is_admin ) {
       15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
     // Make sure that we have defined all the types of access
     // defined in access.php.
-    assert( count( $order ) == ACCESS_NUMBER_FUNCTIONS );
+    assert( count( $order ) === ACCESS_NUMBER_FUNCTIONS );
 
     echo '<form action="access.php" method="post" id="accessform" name="accessform">';
     print_form_key();
@@ -225,8 +225,8 @@ if( ! empty( $guser ) || ! $is_admin ) {
       // Public access and NUCs can never use some of these functions.
       $show = true;
 
-      if( $guser == '__public__'
-          || substr( $guser, 0, 5 ) == $NONUSER_PREFIX ) {
+      if( $guser === '__public__'
+          || substr( $guser, 0, 5 ) === $NONUSER_PREFIX ) {
         switch( $order[$i] ) {
           case ACCESS_ACCESS_MANAGEMENT:
           case ACCESS_ACCOUNT_INFO:
@@ -248,7 +248,7 @@ if( ! empty( $guser ) || ! $is_admin ) {
             access_get_function_description( $order[$i] ),
             substr( $access, $order[$i], 1 )], 'dito' ) . '<br>';
 
-      if( ( $i + 1 ) % $div == 0 )
+      if( ( $i + 1 ) % $div === 0 )
         echo '
             </td>
             <td>';
@@ -267,12 +267,12 @@ if( ! empty( $guser ) || ! $is_admin ) {
   } else {
     // Get list of users that this user can see (may depend on group settings)
     // along with all nonuser calendars.
-    // if( $guser != '__default__' ) {
+    // if( $guser !== '__default__' ) {
     $guser = $login;
     $pagetitle = translate( 'Grant This User Access to My Calendar' );
   }
 
-  if( $guser == '__default__' ) {
+  if( $guser === '__default__' ) {
     $userlist = ['__default__'];
     $otheruser = $otheruser_login = '__default__';
     $otheruser_fullname = $defConfigStr;
@@ -289,14 +289,14 @@ if( ! empty( $guser ) || ! $is_admin ) {
     // Add a DEFAULT CONFIGURATION to be used as a mask.
     . '
         <option value="__default__"'
-     . ( $otheruser == '__default__' ? $selected : '' )
+     . ( $otheruser === '__default__' ? $selected : '' )
      . '>' . $defConfigStr . '</option>';
 
     for( $i = 0, $cnt = count( $userlist ); $i < $cnt; $i++ ) {
-      if( $userlist[$i]['cal_login'] != $guser )
+      if( $userlist[$i]['cal_login'] !== $guser )
         echo '
         <option value="' . $userlist[$i]['cal_login'] . '"'
-         . ( ! empty( $otheruser ) && $otheruser == $userlist[$i]['cal_login']
+         . ( ! empty( $otheruser ) && $otheruser === $userlist[$i]['cal_login']
           ? $selected : '' )
          . '>' . $userlist[$i]['cal_fullname'] . '</option>';
     }
@@ -341,23 +341,23 @@ if( ! empty( $otheruser ) ) {
 
     for( $j = 1; $j < 5; $j++ ) {
       $bottomedge = '';
-      if( $j == 3 )
+      if( $j === 3 )
         continue;
       echo '
           <tr>
             <td class="boxleft leftpadded' . ( $j > 3 ? ' boxbottom' : '' )
        . '"><input class="form-control-sm" type="checkbox" value="Y" name=';
-      if( $j == 1 )
+      if( $j === 1 )
         echo '"invite"'
-         . ( ! empty( $op['invite'] ) && $op['invite'] == 'N' ? '' : $checked )
+         . ( ! empty( $op['invite'] ) && $op['invite'] === 'N' ? '' : $checked )
          . '>' . translate( 'Can Invite' );
-      elseif( $j == 2 )
+      elseif( $j === 2 )
         echo '"email"'
-         . ( ! empty( $op['email'] ) && $op['email'] == 'N' ? '' : $checked )
+         . ( ! empty( $op['email'] ) && $op['email'] === 'N' ? '' : $checked )
          . '>' . translate( 'Can Email' );
       else {
         echo '"time"'
-         . ( ! empty( $op['time'] ) && $op['time'] == 'Y' ? $checked : '' )
+         . ( ! empty( $op['time'] ) && $op['time'] === 'Y' ? $checked : '' )
          . ' onclick="enableAll( this.checked );">'
          . translate( 'Can See Time Only' );
         $bottomedge = 'boxbottom';
@@ -377,7 +377,7 @@ if( ! empty( $otheruser ) ) {
        . $j * 64 . '" name="v_' . $j * 64 . '"'
        . ( ! empty( $op['view'] ) && ( $op['view'] & ( $j * 64 ) )
         ? $checked : '' ) . '></td>'
-       . ( $guser != '__public__' ? '
+       . ( $guser !== '__public__' ? '
             <td class="aligncenter boxleft pub ' . $bottomedge . '"><input '
          . 'class="form-control-sm" type="checkbox" value="' . $j . '" name="e_' . $j . '"'
          . ( ! empty( $op['edit'] ) && ( $op['edit'] & $j ) ? $checked : '' )
@@ -408,7 +408,7 @@ if( ! empty( $otheruser ) ) {
     echo '
           <tr>
             <td colspan="2" class="boxleft alignright">'
-     . ( $otheruser != '__default__' && $otheruser != '__public__' ? '
+     . ( $otheruser !== '__default__' && $otheruser !== '__public__' ? '
               <input class="btn btn-secondary" type="button" value="' . translate( 'Assistant' )
        . '" onclick="selectAll(63);">&nbsp;&nbsp;' : '' ) . '
               <input class="btn btn-secondary" type="button" value="' . translate( 'Select All' )

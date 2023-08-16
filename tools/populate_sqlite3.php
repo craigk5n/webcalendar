@@ -44,14 +44,14 @@ function fatal($msg) {
 }
 
 for ($i = 1; $i < count($argv); $i++) {
-  if ($argv[$i] == "-file" || $argv[$i] == "-f") {
+  if ($argv[$i] === "-file" || $argv[$i] === "-f") {
     if (count($argv) > $i + 1) {
       $outputFile = $argv[$i+1];
       $i++;
     } else {
       fatal("Error: -f param requires a file.");
     }
-  } else if ($argv[$i] == '-noadmin') {
+  } else if ($argv[$i] === '-noadmin') {
     $createAdminAccount = false;
   } else {
     fatal("Error: unrecognized parameter $argv[$i]");

@@ -9,7 +9,7 @@
 require_once 'includes/init.php';
 require_once 'includes/xcal.php';
 
-if ( empty ( $login ) || $login == '__public__' ) {
+if ( empty ( $login ) || $login === '__public__' ) {
   // do not allow public access
   do_redirect ( empty ( $STARTVIEW ) ? 'month.php' : "$STARTVIEW" );
   exit;
@@ -58,7 +58,7 @@ if ( is_array ( $categories ) ) {
 }
 // Only include layers if they are enabled.
 $dateYmd = date ( 'Ymd' );
-echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
+echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS === 'Y' ? '
         <tr>
           <td>&nbsp;</td>
           <td>
@@ -127,7 +127,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
   }
 
   function toggel_catfilter() {
-    if ( $('#exformat option:selected').index() == 0 ) {
+    if ( $('#exformat option:selected').index() === 0 ) {
       // ICalendar
       $('#catfilter').show();
     } else {

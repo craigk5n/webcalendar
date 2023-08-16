@@ -153,7 +153,7 @@ if ( empty ( $login ) ) {
       user_valid_login ( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'], true ) )
     $login = $_SERVER['PHP_AUTH_USER'];
 
-  if ( empty ( $login ) || $login != $_SERVER['PHP_AUTH_USER'] ) {
+  if ( empty ( $login ) || $login !== $_SERVER['PHP_AUTH_USER'] ) {
     $_SERVER['PHP_AUTH_PW'] = $_SERVER['PHP_AUTH_USER'] = '';
     unset ( $_SERVER['PHP_AUTH_USER'] );
     unset ( $_SERVER['PHP_AUTH_PW'] );
@@ -168,7 +168,7 @@ load_user_preferences();
 
 $WebCalendar->setLanguage();
 
-if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
+if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED !== 'Y' ) {
   header ( 'Content-Type: text/plain' );
   // Mozilla Calendar does not bother showing errors, so they won't see this
   // error message anyhow... Not sure about Apple iCal or other clients.
@@ -176,7 +176,7 @@ if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   exit;
 }
 
-if ( empty ( $USER_PUBLISH_RW_ENABLED ) || $USER_PUBLISH_RW_ENABLED != 'Y' ) {
+if ( empty ( $USER_PUBLISH_RW_ENABLED ) || $USER_PUBLISH_RW_ENABLED !== 'Y' ) {
   header ( 'Content-Type: text/plain' );
   etranslate ( 'Publishing Disabled (User)' );
   exit;

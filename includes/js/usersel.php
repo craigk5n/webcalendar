@@ -38,7 +38,7 @@ echo $form . '.elements[' . $listid?>],
 
   // Select/deselect users on parent form.
     for ( i = 0; i < parentlist.length; i++ ) {
-      parentlist.options[i].selected = ( tmp[i] != undefined );
+      parentlist.options[i].selected = ( tmp[i] !== undefined );
     }
   window.close();
 }
@@ -59,7 +59,7 @@ function selectByLogin( login, state ) {
 
   for ( var i = 0; i < list.options.length; i++ ) {
     // alert( 'text: ' + list.options[i].text );
-    if ( list.options[i].value == login ) {
+    if ( list.options[i].value === login ) {
       list.options[i].selected = state;
       return;
     }
@@ -73,7 +73,7 @@ function toggleGroup( state ) {
 <?php
 for ( $i = 0; $i < count( $groups ); $i++ ) {
   echo '
-  if ( selNum == ' . $i . ' ) {';
+  if ( selNum === ' . $i . ' ) {';
   $res = dbi_execute( 'SELECT cal_login from webcal_group_user
     WHERE cal_group_id = ?', array( $groups[$i]['cal_group_id'] ) );
 

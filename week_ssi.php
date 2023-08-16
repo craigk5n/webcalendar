@@ -16,8 +16,8 @@ $WebCalendar->setLanguage();
 
 $user = '__none__'; // Don't let user specify in URL.
 
-if ( strlen ( $login ) == 0 ) {
-  if ( $single_user == 'Y' )
+if ( strlen ( $login ) === 0 ) {
+  if ( $single_user === 'Y' )
     $login = $user = $single_user_login;
   else
   if ( strlen ( $webcalendar_login ) > 0 )
@@ -39,10 +39,10 @@ if ( ! empty ( $date ) && ! empty ( $date ) ) {
   $thismonth = substr ( $date, 4, 2 );
   $thisday = substr ( $date, 6, 2 );
 } else {
-  $thisday = ( empty ( $day ) || $day == 0 ? date ( 'd', $today ) : $day );
-  $thismonth = ( empty ( $month ) || $month == 0
+  $thisday = ( empty ( $day ) || $day === 0 ? date ( 'd', $today ) : $day );
+  $thismonth = ( empty ( $month ) || $month === 0
     ? date ( 'm', $today ) : $month );
-  $thisyear = ( empty ( $year ) || $year == 0 ? date ( 'Y', $today ) : $year );
+  $thisyear = ( empty ( $year ) || $year === 0 ? date ( 'Y', $today ) : $year );
 }
 
 $next = mktime( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
@@ -72,7 +72,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 
   $tmpOut1 .= '
               <th style="width: 13%; background: '
-   . ( date ( 'Ymd', $days[$i] ) == date ( 'Ymd', $today )
+   . ( date ( 'Ymd', $days[$i] ) === date ( 'Ymd', $today )
     ? $TODAYCELLBG : $THBG )
    . ';">' . weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS )
    . '<br>' . month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) . ' '
@@ -80,7 +80,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 
   $tmpOut2 .= '
               <td style="vertical-align: top; width: 75px; height: 75px; '
-   . 'background: ' . ( $date == date ( 'Ymd' ) ? $TODAYCELLBG : $CELLBG )
+   . 'background: ' . ( $date === date ( 'Ymd' ) ? $TODAYCELLBG : $CELLBG )
    . print_date_entries ( $date, $login, true, true ) . '&nbsp;</td>';
 }
 

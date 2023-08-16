@@ -53,7 +53,7 @@ $sendPlainText = false;
 $format = getValue('format');
 if (
   !empty($format) &&
-  ($format == 'text' || $format == 'plain')
+  ($format === 'text' || $format === 'plain')
 );
 $sendPlainText = true;
 if ($sendPlainText) {
@@ -65,7 +65,7 @@ if ($sendPlainText) {
 $error = '';
 $matches = 0;
 
-if ($action == 'search') {
+if ($action === 'search') {
   // remove double quotes
   $query = str_replace('"', '', $query);
   $words = explode(' ', $query);
@@ -89,7 +89,7 @@ if ($action == 'search') {
     // This workaround seems to fix it up ROJ
     // but, will only search the first 1kb of the description.
     $sql .= 'AND ( UPPER( we.cal_name ) LIKE UPPER( ? ) OR UPPER( '
-    . (strcmp($GLOBALS['db_type'], 'mssql') == 0
+    . (strcmp($GLOBALS['db_type'], 'mssql') === 0
       ? 'CAST ( we.cal_description AS varchar (1024) )'
       : 'we.cal_description')
     . ' ) LIKE UPPER( ? ) ) ';

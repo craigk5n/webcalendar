@@ -1,9 +1,9 @@
 function selectAll( limit ) {
-  if( limit == 0 )
+  if( limit === 0 )
     document.EditOther.time.checked = false;
 
-  document.EditOther.email.checked = ( limit != 0 );
-  document.EditOther.invite.checked = ( limit != 0 );
+  document.EditOther.email.checked = ( limit !== 0 );
+  document.EditOther.invite.checked = ( limit !== 0 );
 
   for( i = 1; i <= 256; ) {
     var

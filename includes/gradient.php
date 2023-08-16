@@ -111,11 +111,11 @@ if ( ! empty ( $_GET ) && ! empty ( $PHP_SELF ) &&
  *   ['red' => $red_val, 'green' => $green_val, 'blue' => $blue_val]
  */
 function colorToRGB ( $color ) {
-  if ( strlen ( $color ) == 6 ) {
+  if ( strlen ( $color ) === 6 ) {
     $red = hexdec ( substr ( $color, 0, 2 ) );
     $green = hexdec ( substr ( $color, 2, 2 ) );
     $blue = hexdec ( substr ( $color, 4, 2 ) );
-  } elseif ( strlen ( $color ) == 3 ) {
+  } elseif ( strlen ( $color ) === 3 ) {
     $red_hex = substr ( $color, 0, 1 );
     $red = hexdec ( $red_hex . $red_hex );
 
@@ -135,7 +135,7 @@ function colorToRGB ( $color ) {
  */
 function can_write_to_dir ($path)
 {
-  if ($path[strlen($path) - 1] == '/') //Start function again with tmp file...
+  if ($path[strlen($path) - 1] === '/') //Start function again with tmp file...
     return can_write_to_dir ( $path.uniqid ( mt_rand() ) . '.tmp');
   else if ( preg_match( '/\.tmp$/', $path ) ) { //Check tmp file for read/write capabilities
     if ( ! ( $f = @fopen ( $path, 'w+' ) ) )
@@ -162,16 +162,16 @@ function background_css ( $base, $height = '', $percent = '' ) {
     $type = '.gif';
 
   $ret = 'background';
-  if ( $type != '' && $ENABLE_GRADIENTS == 'Y' ) {
+  if ( $type !== '' && $ENABLE_GRADIENTS === 'Y' ) {
     $ret .= ': ' . $base . ' url( ';
     if ( ! file_exists ( 'images/cache' ) || ! can_write_to_dir ( 'images/cache/' ) )
       $ret .= 'includes/gradient.php?base=' . substr ( $base, 1 )
-       . ( $height != '' ? '&height=' . $height : '' )
-       . ( $percent != '' ? '&percent=' . $percent : '' );
+       . ( $height !== '' ? '&height=' . $height : '' )
+       . ( $percent !== '' ? '&percent=' . $percent : '' );
     else {
       $file_name = 'images/cache/' . substr ( $base, 1, 6 )
-       . ( $height != '' ? '-' . $height : '' )
-       . ( $percent != ''? '-' . $percent : '' ) . $type;
+       . ( $height !== '' ? '-' . $height : '' )
+       . ( $percent !== ''? '-' . $percent : '' ) . $type;
       if ( ! file_exists ( $file_name ) )
         $tmp = create_image ( $file_name, $base, $height, $percent );
 
@@ -190,16 +190,16 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
   $width = '', $direction = '', $numcolors = '', $color1 = '', $color2 = '' ) {
   global $DEFAULTS, $MAX_COLORS, $MAX_HEIGHT, $MAX_WIDTH, $MIN_COLORS;
 
-  if ( $base != '' )
+  if ( $base !== '' )
     $color1 = $color2 = $base;
 
-  $color1 = ( $color1 == ''
+  $color1 = ( $color1 === ''
     ? colorToRGB ( $DEFAULTS['color1'] )
     : ( preg_match ( "/^#?([0-9a-fA-F]{3,6})/", $color1, $matches )
       ? colorToRGB ( $matches[1] )
       : colorToRGB ( $DEFAULTS['color1'] ) ) );
 
-  $color2 = ( $color2 == ''
+  $color2 = ( $color2 === ''
     ? colorToRGB ( $DEFAULTS['color2'] )
     : ( preg_match ( "/^#?([0-9a-fA-F]{3,6})/", $color2, $matches )
       ? colorToRGB ( $matches[1] )
@@ -211,7 +211,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
   if ( $height > $MAX_HEIGHT )
     $height = $MAX_HEIGHT;
 
-  if ( $direction == '' || ( $direction % 90 ) != 0 )
+  if ( $direction === '' || ( $direction % 90 ) !== 0 )
     $direction = $DEFAULTS['direction'];
   else {
     while ( $direction > 360 ) {
@@ -219,7 +219,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
     }
   }
 
-  if ( $direction == 90 || $direction == 270 ) {
+  if ( $direction === 90 || $direction === 270 ) {
     // Vertical gradient
     if ( empty ( $height ) )
       $height = $DEFAULTS['height'];
@@ -252,7 +252,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
       $numcolors = $DEFAULTS['colors'];
   }
 
-  if ( $percent == '' || $percent < 0 || $percent > 100 )
+  if ( $percent === '' || $percent < 0 || $percent > 100 )
     $percent = $DEFAULTS['percent'];
 
   $percent *= 2.55;
@@ -337,13 +337,13 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
   }
 
   if ( function_exists ( 'imagepng' ) ) {
-    if ( $file_name == '' ) {
+    if ( $file_name === '' ) {
       header ( 'Content-type: image/png' );
       imagepng ( $image );
     } else
       imagepng ( $image, $file_name );
   } elseif ( function_exists ( 'imagegif' ) ) {
-    if ( $file_name == '' ) {
+    if ( $file_name === '' ) {
       header ( 'Content-type: image/gif' );
       imagegif ( $image );
     } else
@@ -359,7 +359,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
  * General purpose functions to convert RGB to HSL and HSL to RBG
  */
 function  rgb2hsl ( $rgb ) {
-  if ( substr ($rgb, 0,1 ) == '#' )
+  if ( substr ($rgb, 0,1 ) === '#' )
      $rgb = substr ( $rgb,1,6);
 
   $R = ( hexdec (substr ( $rgb,0,2) ) / 255 );
@@ -371,7 +371,7 @@ function  rgb2hsl ( $rgb ) {
   $deltaMax = $Max - $Min;     //Delta RGB value
   $L = ( $Max + $Min ) / 2;
 
-  if ( $deltaMax == 0 )      //This is a gray, no chroma...
+  if ( $deltaMax === 0 )      //This is a gray, no chroma...
   {
      $H = 0;                  //HSL results = 0 ≈ 1
      $S = 0;
@@ -387,11 +387,11 @@ function  rgb2hsl ( $rgb ) {
      $deltaG = ( ( ( $Max - $G ) / 6 ) + ( $deltaMax / 2 ) ) / $deltaMax;
      $deltaB = ( ( ( $Max - $B ) / 6 ) + ( $deltaMax / 2 ) ) / $deltaMax;
 
-     if ( $R == $Max )
+     if ( $R === $Max )
        $H = $deltaB - $deltaG;
-     else if ( $G == $Max )
+     else if ( $G === $Max )
        $H = ( 1 / 3 ) + $deltaR - $deltaB;
-     else if ( $B == $Max )
+     else if ( $B === $Max )
       $H = ( 2 / 3 ) + $deltaG - $deltaR;
 
      if ( $H < 0 ) $H += 1;
@@ -401,7 +401,7 @@ function  rgb2hsl ( $rgb ) {
 }
 
 function hsl2rgb( $hsl ) {
-  if ( $hsl[1] == 0 )
+  if ( $hsl[1] === 0 )
   {
      $R = $hsl[2] * 255;
      $G = $hsl[2] * 255;

@@ -13,22 +13,22 @@ $tmp_arr = [
   translate ( 'Date' ) => translate ( 'date-help' ),
   translate ( 'Time' ) => translate ( 'time-help' )];
 
-if ( $TIMED_EVT_LEN != 'E' )
+if ( $TIMED_EVT_LEN !== 'E' )
   $tmp_arr[ translate ( 'Duration' ) ] = translate ( 'duration-help' );
 else
   $tmp_arr[ translate ( 'End Time' ) ] = translate ( 'end-time-help' );
 
-if ( $DISABLE_PRIORITY_FIELD != 'Y' )
+if ( $DISABLE_PRIORITY_FIELD !== 'Y' )
   $tmp_arr[ translate ( 'Priority' ) ] = translate ( 'priority-help' );
 
-if ( $DISABLE_ACCESS_FIELD != 'Y' )
+if ( $DISABLE_ACCESS_FIELD !== 'Y' )
   $tmp_arr[ translate ( 'Access' ) ] = translate ( 'access-help' );
 
-if ( $single_user == 'N' &&
-  ( $is_admin || $DISABLE_PARTICIPANTS_FIELD != 'Y' ) )
+if ( $single_user === 'N' &&
+  ( $is_admin || $DISABLE_PARTICIPANTS_FIELD !== 'Y' ) )
   $tmp_arr[ translate ( 'Participants' ) ] = translate ( 'participants-help' );
 
-if ( $DISABLE_REPEATING_FIELD != 'Y' ) {
+if ( $DISABLE_REPEATING_FIELD !== 'Y' ) {
   $tmp_arr[ translate ( 'Repeat Type' )  ] = translate ( 'repeat-type-help' );
   list_help ( $tmp_arr );
   echo '

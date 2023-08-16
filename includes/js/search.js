@@ -7,7 +7,7 @@ function selectUsers() {
     url;
 
   for( i = 0, j = dse.length - 1; i < j; i++ ) {
-    if( dse[i].name == "users[]" )
+    if( dse[i].name === "users[]" )
       listid = i;
       break; // Should only be one.
   }
@@ -26,7 +26,7 @@ function selectUsers() {
 }
 
 function toggleDateRange() {
-  if ($('#date_filter option:selected').index() == 3) {
+  if ($('#date_filter option:selected').index() === 3) {
     $('#startDate').show();
     $('#endDate').show();
   } else {

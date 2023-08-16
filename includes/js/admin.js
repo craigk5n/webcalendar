@@ -14,13 +14,13 @@ function init_admin() {
 function valid_form( form ) {
   var err = '';
 
-  if ( form.admin_SERVER_URL.value == '' ) {
+  if ( form.admin_SERVER_URL.value === '' ) {
     err = xlate['reqServerURL'];
     form.admin_SERVER_URL.select();
     form.admin_SERVER_URL.focus();
   }
   else if ( form.admin_SERVER_URL.value.charAt(
-    form.admin_SERVER_URL.value.length - 1 ) != '/' ) {
+    form.admin_SERVER_URL.value.length - 1 ) !== '/' ) {
       err = xlate['endServerURL'];
       form.admin_SERVER_URL.select();
       form.admin_SERVER_URL.focus();
@@ -33,7 +33,7 @@ function valid_form( form ) {
       form.admin_WORK_DAY_START_HOUR.focus();
   }
 
-  if ( err != '' ) {
+  if ( err !== '' ) {
     alert( xlate['error'] + err );
     return false;
   }
@@ -167,7 +167,7 @@ function email_handler() {
   if ($('#admin_SEND_EMAIL_Y').is(':checked')) {
     // Email enabled
     $('#em').show();
-    if ( document.prefform.admin_EMAIL_MAILER.selectedIndex == 0 ) {
+    if ( document.prefform.admin_EMAIL_MAILER.selectedIndex === 0 ) {
       $('#em_smtp').show();
       if ( document.prefform.admin_SMTP_AUTH[0].checked ) {
         $('#em_auth').show();
@@ -185,11 +185,10 @@ function email_handler() {
 function showPreview() {
   var theme = document.forms['prefform'].admin_THEME.value.toLowerCase();
 
-  if ( theme == 'none' ) {
+  if ( theme === 'none' ) {
     return false;
   }
   var previewWindow =
     window.open( 'themes/' + theme  + '.php',
       'Preview','resizable=yes,scrollbars=yes' );
 }
-

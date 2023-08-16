@@ -4,7 +4,7 @@ require_once 'includes/classes/WebCalMailer.php';
 
 $error = '';
 
-if ( $readonly == 'Y' )
+if ( $readonly === 'Y' )
   $error = print_not_auth();
 // Give user a chance to add comments to approval email.
 if ( getPostValue( 'comments' ) !== null ) {
@@ -54,11 +54,11 @@ $type = getValue ( 'type' );
 $id = getValue ( 'id' );
 
 // Allow administrators to approve public events.
-$app_user = ( $PUBLIC_ACCESS == 'Y' && ! empty ( $public ) && $is_admin
+$app_user = ( $PUBLIC_ACCESS === 'Y' && ! empty ( $public ) && $is_admin
   ? '__public__' : ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 // If User Access Control is enabled, we check to see if they are
 // allowed to approve for the specified user.
-if ( access_is_enabled() && ! empty ( $user ) && $user != $login &&
+if ( access_is_enabled() && ! empty ( $user ) && $user !== $login &&
     access_user_calendar ( 'approve', $user ) )
   $app_user = $user;
 
@@ -93,8 +93,8 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   $user_TIMEZONE = get_pref_setting ( $creator, 'TIMEZONE' );
   set_env ( 'TZ', $user_TIMEZONE );
   $user_language = get_pref_setting ( $creator, 'LANGUAGE' );
-  if ( $send_user_mail == 'Y' && strlen ( $tempemail ) && $SEND_EMAIL != 'N' ) {
-    reset_language ( empty ( $user_language ) || ( $user_language == 'none' )
+  if ( $send_user_mail === 'Y' && strlen ( $tempemail ) && $SEND_EMAIL !== 'N' ) {
+    reset_language ( empty ( $user_language ) || ( $user_language === 'none' )
       ? $LANGUAGE : $user_language );
 
     $msg = str_replace ( 'XXX', $tempfullname, translate ( 'Hello, XXX.' ) )
@@ -113,7 +113,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
     if ( ! empty ( $SERVER_URL ) ) {
       // DON'T change & to &amp; here. email will handle it
       $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
-      if ( $htmlmail == 'Y' )
+      if ( $htmlmail === 'Y' )
         $url = activate_urls ( $url );
 
       $msg .= "\n" . $url;
@@ -134,9 +134,9 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
 // Return to login TIMEZONE.
 set_env ( 'TZ', $TIMEZONE );
 if ( empty ( $error ) && empty ( $mailerError ) ) {
-  do_redirect ( ! empty ( $ret ) && $ret == 'listall'
+  do_redirect ( ! empty ( $ret ) && $ret === 'listall'
     ? 'list_unapproved.php'
-    : ( ( ! empty ( $ret ) && $ret == 'list'
+    : ( ( ! empty ( $ret ) && $ret === 'list'
         ? 'list_unapproved.php?'
         : 'view_entry.php?id=' . $id . '&amp;' ) . 'user=' . $app_user ) );
   exit;

@@ -95,7 +95,7 @@ class Doc {
   public static function attachmentsEnabled() {
     global $ALLOW_ATTACH;
 
-    return ( ! empty ( $ALLOW_ATTACH ) && $ALLOW_ATTACH == 'Y' );
+    return ( ! empty ( $ALLOW_ATTACH ) && $ALLOW_ATTACH === 'Y' );
   }
 
   /**
@@ -104,7 +104,7 @@ class Doc {
   public static function commentsEnabled() {
     global $ALLOW_COMMENTS;
 
-    return ( ! empty ( $ALLOW_COMMENTS ) && $ALLOW_COMMENTS == 'Y' );
+    return ( ! empty ( $ALLOW_COMMENTS ) && $ALLOW_COMMENTS === 'Y' );
   }
 
   /**

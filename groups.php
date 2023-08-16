@@ -6,8 +6,8 @@
 require_once 'includes/init.php';
 
 if (
-    empty($login) || $login == '__public__' ||
-    empty($GROUPS_ENABLED) || $GROUPS_ENABLED != 'Y'
+    empty($login) || $login === '__public__' ||
+    empty($GROUPS_ENABLED) || $GROUPS_ENABLED !== 'Y'
 ) {
     // Do not allow public access.
     do_redirect(empty($STARTVIEW) ? 'month.php' : $STARTVIEW);
@@ -94,10 +94,10 @@ print_header(
                         <label class="col-5" for="editUsers"><?php etranslate('Users') ?>: </label>
                         <select multiple size="10" class="col-7 form-control" id="editUsers" name="editUsers">
                         <?php
-                            if (empty($NONUSER_ENABLED) || $NONUSER_ENABLED != 'Y') {
+                            if (empty($NONUSER_ENABLED) || $NONUSER_ENABLED !== 'Y') {
                                 $users = get_my_users();
                             } else {
-                                if (!empty($NONUSER_AT_TOP) && $NONUSER_AT_TOP == 'Y') {
+                                if (!empty($NONUSER_AT_TOP) && $NONUSER_AT_TOP === 'Y') {
                                     $users = array_merge(get_nonuser_cals($login), get_my_users());
                                 } else {
                                     $users = array_merge(get_my_users(), get_nonuser_cals($login));
@@ -227,7 +227,7 @@ print_header(
         var group = null;
         var found = false;
         for (var i = 0; i < groups.length; i++) {
-            if (id == groups[i]['id']) {
+            if (id === groups[i]['id']) {
                 found = true;
                 group = groups[i];
             }
@@ -237,7 +237,7 @@ print_header(
         for (var i = 0; found && id > 0 && i < group.users.length; i++ ) {
             selectedUsers[cnt++] = group.users[i]['cal_login'];
         }
-        if (id == 0) {
+        if (id === 0) {
             // Add group
             $('#edit-group-title').html('<?php etranslate('Add Group'); ?>');
             $('#editGroupId').prop("value", "0");
@@ -268,7 +268,7 @@ print_header(
         $('#invalid-name-error').hide();
 
         var selectedUsers = $('#editUsers').val();
-        if (! selectedUsers || selectedUsers.length == 0) {
+        if (! selectedUsers || selectedUsers.length === 0) {
             $('#errorMessage').html('<?php echo  $noUsersSelectedError; ?>');
             $('#edit-group-dialog-alert').show();
             return;
@@ -278,7 +278,7 @@ print_header(
 
         var foundError = false;
         // Name required
-        if ($('#editName').val() == "") {
+        if ($('#editName').val() === "") {
             $('#invalid-name-error').show();
             foundError = true;
         }
@@ -315,7 +315,7 @@ print_header(
                         //alert('<?php etranslate('Error'); ?>: ' + response.message);
                         return;
                     }
-                    if (error == '') {
+                    if (error === '') {
                         // Close window
                         $('#edit-user-dialog').hide();
                         // Reload users
@@ -324,8 +324,8 @@ print_header(
                 },
                 'json')
             .done(function() {
-                if (error.length == 0) {
-                    if (add == 1) {
+                if (error.length === 0) {
+                    if (add === 1) {
                         $('#infoMessage').html('<?php echo translate('Group successfully added.') ?>');
                     } else {
                         $('#infoMessage').html('<?php etranslate('Group successfully updated.') ?>');
@@ -380,7 +380,7 @@ print_header(
                     }
                 })
             .done(function() {
-                if (error.length == 0) {
+                if (error.length === 0) {
                     // Close window
                     $('#delete-group-dialog').hide();
                     // Reload users

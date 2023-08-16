@@ -17,17 +17,17 @@ $thisday, $thismonth, $thisyear, $use_http_auth, $user_fullname, $user, $views;
 /* -----------------------------------------------------------------------------
          First figure out what options are on and privileges we have
 ----------------------------------------------------------------------------- */
-$can_add = (!empty($readonly) && $readonly != 'Y');
+$can_add = (!empty($readonly) && $readonly !== 'Y');
 if (access_is_enabled())
   $can_add = access_can_access_function(ACCESS_EVENT_EDIT, $user);
 
-if ($login == '__public__')
-  $can_add = (access_is_enabled() ? $can_add : $PUBLIC_ACCESS_CAN_ADD == 'Y');
+if ($login === '__public__')
+  $can_add = (access_is_enabled() ? $can_add : $PUBLIC_ACCESS_CAN_ADD === 'Y');
 
 if (!$is_admin && !$is_assistant && !$is_nonuser_admin) {
   if ($is_nonuser)
     $can_add = false;
-  else if (!empty($user) && $user != $login && $user != '__public__')
+  else if (!empty($user) && $user !== $login && $user !== '__public__')
     $can_add = false;
 }
 
@@ -51,14 +51,14 @@ if ($can_add) {
     $new_entry_url .= "?$good_date";
   }
   // Add new task.
-  if ($DISPLAY_TASKS_IN_GRID == 'Y' || $DISPLAY_TASKS == 'Y')
+  if ($DISPLAY_TASKS_IN_GRID === 'Y' || $DISPLAY_TASKS === 'Y')
     $new_task_url = 'edit_entry.php?eType=task'
       . (empty($thisyear) ? '' : "&$good_date");
 }
 
-if ($single_user != 'Y') {
+if ($single_user !== 'Y') {
   // Today
-  if (!empty($user) && $user != $login) {
+  if (!empty($user) && $user !== $login) {
     if (!empty($new_entry_url))
       $new_entry_url .= (strpos($new_entry_url, '?') !== FALSE ? '&' : '?') . 'user=' . $user;
 
@@ -67,19 +67,19 @@ if ($single_user != 'Y') {
   }
   // List Unapproved.
   if (
-    $login != '__public__' && !$is_nonuser && $readonly == 'N' &&
-    ($REQUIRE_APPROVALS == 'Y' || $PUBLIC_ACCESS == 'Y')
+    $login !== '__public__' && !$is_nonuser && $readonly === 'N' &&
+    ($REQUIRE_APPROVALS === 'Y' || $PUBLIC_ACCESS === 'Y')
   )
     $unapproved_url = 'list_unapproved.php'
       . ($is_nonuser_admin ? '?user=' . getValue('user') : '');
 
   // Another User's Calendar.
-  if (($login == '__public__' && $PUBLIC_ACCESS_OTHERS != 'Y') ||
+  if (($login === '__public__' && $PUBLIC_ACCESS_OTHERS !== 'Y') ||
     ($is_nonuser && !access_is_enabled())
   ) {
     // Don't allow them to see other people's calendar.
   } else
-  if ($ALLOW_VIEW_OTHER == 'Y' || $is_admin) {
+  if ($ALLOW_VIEW_OTHER === 'Y' || $is_admin) {
     // Also, make sure they able to access either day/week/month/year view.
     // If not, the only way to view another user's calendar is a custom view.
     if (
@@ -103,17 +103,17 @@ if ($single_user != 'Y') {
   }
 }
 // Only display some links if we're viewing our own calendar.
-if ((empty($user) || $user == $login) || (!empty($user) && access_is_enabled() &&
+if ((empty($user) || $user === $login) || (!empty($user) && access_is_enabled() &&
   access_user_calendar('view', $user))) {
   // Search
   if (access_can_access_function(ACCESS_SEARCH, $user))
     $search_url = 'search.php';
 }
-if (empty($user) || $user == $login) {
+if (empty($user) || $user === $login) {
   // Import/Export
-  if (access_is_enabled() || ($login != '__public__' && !$is_nonuser)) {
+  if (access_is_enabled() || ($login !== '__public__' && !$is_nonuser)) {
     if (
-      $readonly != 'Y' &&
+      $readonly !== 'Y' &&
       access_can_access_function(ACCESS_IMPORT, $user)
     )
       $import_url = 'import.php';
@@ -125,12 +125,12 @@ if (empty($user) || $user == $login) {
 // Help
 $showHelp = (access_is_enabled()
   ? access_can_access_function(ACCESS_HELP, $user)
-  : ($login != '__public__' && !$is_nonuser));
+  : ($login !== '__public__' && !$is_nonuser));
 // Views
 $view_cnt = count($views);
 
 $views_link = [];
-if ((access_can_access_function(ACCESS_VIEW, $user) && $ALLOW_VIEW_OTHER != 'N') && $view_cnt > 0) {
+if ((access_can_access_function(ACCESS_VIEW, $user) && $ALLOW_VIEW_OTHER !== 'N') && $view_cnt > 0) {
   //echo "<pre>"; print_r($views); echo "</pre>"; exit;
 
   for ($i = 0; $i < $view_cnt; $i++) {
@@ -147,11 +147,11 @@ if ((access_can_access_function(ACCESS_VIEW, $user) && $ALLOW_VIEW_OTHER != 'N')
 // Reports
 $reports_linkcnt = 0;
 if (
-  !empty($REPORTS_ENABLED) && $REPORTS_ENABLED == 'Y' &&
+  !empty($REPORTS_ENABLED) && $REPORTS_ENABLED === 'Y' &&
   access_can_access_function(ACCESS_REPORT, $user)
 ) {
   $reports_link = [];
-  $u_url = (!empty($user) && $user != $login ? '&user=' . $user : '');
+  $u_url = (!empty($user) && $user !== $login ? '&user=' . $user : '');
   $rows = dbi_get_cached_rows(
     'SELECT cal_report_name, cal_report_id
     FROM webcal_report WHERE cal_login = ? OR ( cal_is_global = \'Y\'
@@ -171,7 +171,7 @@ if (
   $tmp = '';
 }
 // Logout/Login URL
-if (!$use_http_auth && $single_user != 'Y') {
+if (!$use_http_auth && $single_user !== 'Y') {
   $login_url = 'login.php';
 
   if (empty($login_return_path))
@@ -182,17 +182,17 @@ if (!$use_http_auth && $single_user != 'Y') {
   }
   $logout_url .= 'action=logout';
   // Should we use another application's login/logout pages?
-  if (substr($GLOBALS['user_inc'], 0, 9) == 'user-app-') {
+  if (substr($GLOBALS['user_inc'], 0, 9) === 'user-app-') {
     global $app_login_page, $app_logout_page;
 
     $login_url = 'login-app.php'
-      . ($login_return_path != '' && $app_login_page['return'] != ''
+      . ($login_return_path !== '' && $app_login_page['return'] !== ''
         ? '?return_path=' . $login_return_path : '');
     $logout_url = $app_logout_page;
   }
 }
 // Manage Calendar links.
-if (!empty($NONUSER_ENABLED) && $NONUSER_ENABLED == 'Y')
+if (!empty($NONUSER_ENABLED) && $NONUSER_ENABLED === 'Y')
   $admincals = get_nonuser_cals($login);
 // Make sure they have access to either month/week/day view. If they do not,
 // then we cannot create a URL that shows just the boss' events. So, we would
@@ -208,7 +208,7 @@ if ($have_boss_url && ($has_boss || !empty($admincals[0]) ||
   if (!empty($admincals[0]))
     $grouplist = array_merge($admincals, $grouplist);
 
-  if ($is_admin && $PUBLIC_ACCESS == 'Y') {
+  if ($is_admin && $PUBLIC_ACCESS === 'Y') {
     $public = [
       'cal_login' => '__public__',
       'cal_fullname' => translate('Public Access')
@@ -222,7 +222,7 @@ if ($have_boss_url && ($has_boss || !empty($admincals[0]) ||
     $l = $grouplist[$i]['cal_login'];
     $f = $grouplist[$i]['cal_fullname'];
     // Don't display current $user in group list.
-    if (!empty($user) && $user == $l)
+    if (!empty($user) && $user === $l)
       continue;
     // Do not show duplicate entries.
     if (isset($gdone[$l]))
@@ -304,7 +304,7 @@ if (empty($thisday))
           <?php if (!empty($new_task_url)) { ?>
             <a class="dropdown-item" href="<?php echo $new_task_url; ?>"><?php etranslate('Add New Task'); ?></a>
           <?php } ?>
-          <?php if ($is_admin && $readonly != 'Y') { ?>
+          <?php if ($is_admin && $readonly !== 'Y') { ?>
             <a class="dropdown-item" href="purge.php"><?php etranslate('Delete Entries'); ?></a>
           <?php } ?>
           <?php if (!empty($unapproved_url)) { ?>
@@ -327,7 +327,7 @@ if (empty($thisday))
           <?php if (!empty($select_user_url)) { ?>
             <a class="dropdown-item" href="<?php echo $select_user_url; ?>"><?php etranslate('Another Users Calendar'); ?></a>
             <?php }
-          if ($login != '__public__') {
+          if ($login !== '__public__') {
             if (!empty($views_link) && $views_linkcnt > 0) { ?>
               <h6 class="dropdown-header"><?php etranslate('My Views'); ?></h6>
               <?php
@@ -351,7 +351,7 @@ if (empty($thisday))
             }
             ?><div class="dropdown-divider"></div><?php
                                                   if (!$is_nonuser && (!access_is_enabled() ||
-                                                    access_can_access_function(ACCESS_VIEW_MANAGEMENT, $user)) && $readonly != 'Y') { ?>
+                                                    access_can_access_function(ACCESS_VIEW_MANAGEMENT, $user)) && $readonly !== 'Y') { ?>
               <a class="dropdown-item" href="views.php"><?php etranslate('Manage Views') ?></a>
           <?php
                                                   }
@@ -377,7 +377,7 @@ if (empty($thisday))
             access_can_access_function(ACCESS_ACTIVITY_LOG, $user))) { ?>
             <a class="dropdown-item" href="activity_log.php?system=1"><?php etranslate('System Log'); ?></a>
           <?php } ?>
-          <?php if ($REPORTS_ENABLED == 'Y') { ?>
+          <?php if ($REPORTS_ENABLED === 'Y') { ?>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header"><?php etranslate('My Reports'); ?></h6>
             <?php for ($i = 0; $i < $reports_linkcnt; $i++) { ?>
@@ -385,7 +385,7 @@ if (empty($thisday))
             <?php } ?>
           <?php } ?>
           <?php if (
-            $login != '__public__' && !$is_nonuser && $REPORTS_ENABLED == 'Y' && $readonly != 'Y' &&
+            $login !== '__public__' && !$is_nonuser && $REPORTS_ENABLED === 'Y' && $readonly !== 'Y' &&
             (!access_is_enabled() || access_can_access_function(ACCESS_REPORT, $user))
           ) { ?>
             <div class="dropdown-divider"></div>
@@ -394,7 +394,7 @@ if (empty($thisday))
         </div>
       </li>
 
-      <?php if ($login != '__public__' && !$is_nonuser && $readonly != 'Y') { ?>
+      <?php if ($login !== '__public__' && !$is_nonuser && $readonly !== 'Y') { ?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?php etranslate('Settings'); ?>
@@ -407,13 +407,13 @@ if (empty($thisday))
               print_menu_item(translate('My Profile'), 'user_mgmt.php');
 
             if (
-              $single_user != 'Y' &&
+              $single_user !== 'Y' &&
               (!access_is_enabled() ||
                 access_can_access_function(ACCESS_ASSISTANTS, $user))
             )
               print_menu_item(translate('Assistants'), 'assistant_edit.php');
 
-            if ($CATEGORIES_ENABLED == 'Y' && (!access_is_enabled() ||
+            if ($CATEGORIES_ENABLED === 'Y' && (!access_is_enabled() ||
               access_can_access_function(ACCESS_CATEGORY_MANAGEMENT, $user)))
               print_menu_item(translate('Categories'), 'category.php');
 
@@ -429,11 +429,11 @@ if (empty($thisday))
             )
               print_menu_item(translate('Preferences'), 'pref.php');
 
-            if ($NONUSER_ENABLED == 'Y' || (access_is_enabled()
+            if ($NONUSER_ENABLED === 'Y' || (access_is_enabled()
               && access_can_access_function(ACCESS_IMPORT))) {
               print_menu_item(translate('Resource Calendars'), 'resourcecal_mgmt.php');
             }
-            if ($REMOTES_ENABLED == 'Y' && (!access_is_enabled() ||
+            if ($REMOTES_ENABLED === 'Y' && (!access_is_enabled() ||
               access_can_access_function(ACCESS_IMPORT))) {
               print_menu_item(translate('Remote Calendars'), 'remotecal_mgmt.php');
             }
@@ -448,7 +448,7 @@ if (empty($thisday))
                 access_can_access_function(ACCESS_SYSTEM_SETTINGS, $user))
                 print_menu_item(translate('User Access Control'), 'access.php');
               print_menu_item(translate('Users'), 'user_mgmt.php');
-              if (!empty($GROUPS_ENABLED) && $GROUPS_ENABLED == 'Y') {
+              if (!empty($GROUPS_ENABLED) && $GROUPS_ENABLED === 'Y') {
                 print_menu_item(translate('Groups'), 'groups.php');
               }
             }
@@ -457,7 +457,7 @@ if (empty($thisday))
             if ($is_nonuser_admin) {
               echo '<div class="dropdown-divider"></div>';
               echo '<h6 class="dropdown-header">' . translate('Settings for') . ' ' . $user_fullname . '</h6>';
-              if ($single_user != 'Y' && $readonly != 'Y') {
+              if ($single_user !== 'Y' && $readonly !== 'Y') {
                 if (
                   !access_is_enabled() ||
                   access_can_access_function(ACCESS_ASSISTANTS, $user)
@@ -471,12 +471,12 @@ if (empty($thisday))
                 print_menu_item(translate('Preferences'), 'pref.php?user=' . $user);
             }
 
-            if ($is_admin && !empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') {
+            if ($is_admin && !empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS === 'Y') {
             ?><div class="dropdown-divider"></div>
               <h6 class="dropdown-header"><?php etranslate('Public Calendar'); ?></h6><?php
                                                                                       print_menu_item(translate('Preferences'), 'pref.php?public=1');
 
-                                                                                      if ($PUBLIC_ACCESS_CAN_ADD == 'Y' && $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'Y')
+                                                                                      if ($PUBLIC_ACCESS_CAN_ADD === 'Y' && $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL === 'Y')
                                                                                         print_menu_item(translate('Unapproved Events'), 'list_unapproved.php?user=__public__');
                                                                                     }
                                                                                       ?>
@@ -484,7 +484,7 @@ if (empty($thisday))
         </li>
       <?php } ?>
 
-      <?php if ($search_url != '' && ($login != '__public__' || $OVERRIDE_PUBLIC != 'Y')) { ?>
+      <?php if ($search_url !== '' && ($login !== '__public__' || $OVERRIDE_PUBLIC !== 'Y')) { ?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?php etranslate('Search'); ?>
@@ -498,7 +498,7 @@ if (empty($thisday))
             // Use UAC if enabled...
             if (access_is_enabled() && access_can_access_function(ACCESS_ADVANCED_SEARCH)) {
               $doAdv = true;
-            } else if (!access_is_enabled() && !$is_nonuser && $login != '__public__') {
+            } else if (!access_is_enabled() && !$is_nonuser && $login !== '__public__') {
               $doAdv = true;
             }
             if ($doAdv) {
@@ -523,7 +523,7 @@ if (empty($thisday))
       <?php
       // Unapproved Icon if any exist.
       $unapprovedStr = display_unapproved_events($is_assistant || $is_nonuser_admin ? $user : $login);
-      if (!empty($unapprovedStr) && $unapproved_url != '') { ?>
+      if (!empty($unapprovedStr) && $unapproved_url !== '') { ?>
         <li class="nav-item active">
           <a class="nav-link" href="<?php echo $unapproved_url; ?>"><?php etranslate('Unapproved Events'); ?></a>
         </li>
@@ -592,7 +592,7 @@ if (empty($thisday))
           <?php for ($i = 1; $i <= 12; $i++) {
             $date = sprintf("%04d%02d01", $thisyear, $i);
             $name = month_name($i - 1);
-            if ($i == $thismonth)
+            if ($i === $thismonth)
               $name = '<b>' . $name . '</b>';
             print_month_menu_item($name, $date);
           } ?>
@@ -649,7 +649,7 @@ if (empty($thisday))
           $d = (empty($thisday) ? date('d') : $thisday);
           $m = (empty($thismonth) ? date('m') : $thismonth);
           $y = (empty($thisyear) ? date('Y') : $thisyear);
-          $lastDay = ($DISPLAY_WEEKENDS == 'N' ? 4 : 6);
+          $lastDay = ($DISPLAY_WEEKENDS === 'N' ? 4 : 6);
           $thisdate = date('Ymd', mktime(0, 0, 0, $m, $d, $y));
           $thisweek = date('W', mktime(0, 0, 0, $m, $d, $y));
           $wkstart = get_weekday_before($y, $m, $d);
@@ -662,7 +662,7 @@ if (empty($thisday))
             $dateW = date('W', $twkstart + 86400);
             if ($twkstart > 0 && $twkend < 2146021200) {
               $name = (!empty($GLOBALS['PULLDOWN_WEEKNUMBER'])
-                && $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y'
+                && $GLOBALS['PULLDOWN_WEEKNUMBER'] === 'Y'
                 ? '(' . $dateW . ')&nbsp;&nbsp;' : '') .
                 sprintf(
                   '%s - %s',
@@ -687,7 +687,7 @@ if (empty($thisday))
           <?php for ($i = -5; $i <= 5; $i++) {
             $date = sprintf("%04d%02d01", $thisyear + $i, 1, 1);
             $name = ($thisyear + $i);
-            if ($i == 0)
+            if ($i === 0)
               $name = '<b>' . $name . '</b>';
             print_year_menu_item($name, $date);
           } ?>
@@ -697,7 +697,7 @@ if (empty($thisday))
     </ul>
   </div>
 
-  <?php if (!$use_http_auth && $single_user != 'Y') { ?>
+  <?php if (!$use_http_auth && $single_user !== 'Y') { ?>
     <div class="navbar-collapse collapse w-20 order-3 dual-collapse2">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown-menu-right">
@@ -716,19 +716,19 @@ function print_year_menu_item($name, $date)
 {
   global $login, $user;
   echo '<a class="dropdown-item" href="year.php?date=' . $date .
-    ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a>\n";
+    ((empty($user) || $user !== $login) ? "&user=$user" : "") . '">' . $name . "</a>\n";
 }
 
 function print_month_menu_item($name, $date)
 {
   global $login, $user;
-  echo '<li><a class="dropdown-item" href="month.php?date=' . $date . ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
+  echo '<li><a class="dropdown-item" href="month.php?date=' . $date . ((empty($user) || $user !== $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
 }
 
 function print_week_menu_item($name, $date)
 {
   global $login, $user;
-  echo '<li><a class="dropdown-item" href="week.php?date=' . $date . ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
+  echo '<li><a class="dropdown-item" href="week.php?date=' . $date . ((empty($user) || $user !== $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
 }
 
 function print_menu_item($name, $url, $testCondition = true, $target = '')

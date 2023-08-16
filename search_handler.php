@@ -15,8 +15,8 @@ require_once 'includes/init.php';
 $error = '';
 
 // Disable if public access and OVERRIDE_PUBLIC in use
-if ( $login == '__public__' && ! empty ( $OVERRIDE_PUBLIC ) &&
-  $OVERRIDE_PUBLIC == 'Y' ) {
+if ( $login === '__public__' && ! empty ( $OVERRIDE_PUBLIC ) &&
+  $OVERRIDE_PUBLIC === 'Y' ) {
   print_header();
   echo print_not_auth();
   echo print_trailer();
@@ -27,13 +27,13 @@ $keywords = getValue ( 'keywords' );
 $origKeywords = str_replace("\\", "", $keywords);
 $advanced = getValue ( 'advanced' );
 
-if ( strlen ( $keywords ) == 0 )
+if ( strlen ( $keywords ) === 0 )
   $error = translate( 'You must enter one or more search keywords.' );
 
 $matches = 0;
 // Determine if this user is allowed to search the calendar of other users
 $search_others = false; // show "Advanced Search"
-if ( $single_user == 'Y' )
+if ( $single_user === 'Y' )
   $search_others = false;
 
 if ( $is_admin )
@@ -42,12 +42,12 @@ else
 if ( access_is_enabled() )
   $search_others = access_can_access_function ( ACCESS_ADVANCED_SEARCH );
 else
-if ( $login != '__public__' && ! empty ( $ALLOW_VIEW_OTHER ) &&
-    $ALLOW_VIEW_OTHER == 'Y' )
+if ( $login !== '__public__' && ! empty ( $ALLOW_VIEW_OTHER ) &&
+    $ALLOW_VIEW_OTHER === 'Y' )
   $search_others = true;
 else
-if ( $login == '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
-    $PUBLIC_ACCESS_OTHERS == 'Y' )
+if ( $login === '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
+    $PUBLIC_ACCESS_OTHERS === 'Y' )
   $search_others = true;
 
 $users = getValue ( 'users' );
@@ -58,8 +58,8 @@ if ( empty ( $users ) || empty ( $users[0] ) )
 if ( $search_others ) {
   // If user can only see users in his group, then remove users not in his group.
   if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
-      $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! empty ( $GROUPS_ENABLED ) &&
-      $GROUPS_ENABLED == 'Y' ) {
+      $USER_SEES_ONLY_HIS_GROUPS === 'Y' && ! empty ( $GROUPS_ENABLED ) &&
+      $GROUPS_ENABLED === 'Y' ) {
     $myusers = get_my_users ( '', 'view' );
     $userlookup = [];
     for ( $i = 0, $cnt = count ( $myusers ); $i < $cnt; $i++ ) {
@@ -120,7 +120,7 @@ if ( empty ( $end_YMD ) ) {
     $end_year = 1970;
 }
 
-if ( $date_filter == 3 ) {//Use Date Range
+if ( $date_filter === 3 ) {//Use Date Range
   $startDate = gmdate( 'Ymd', gmmktime( 0, 0, 0,
     $start_month, $start_day, $start_year ) );
   $endDate = gmdate( 'Ymd', gmmktime( 23, 59, 59,
@@ -147,8 +147,8 @@ $klen = strlen ( $keywords );
 $phrasedelim = "\\\"";
 $plen = strlen ( $phrasedelim );
 
-if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
-    substr ( $keywords, $klen - $plen ) == $phrasedelim ) {
+if ( substr ( $keywords, 0, $plen ) === $phrasedelim &&
+    substr ( $keywords, $klen - $plen ) === $phrasedelim ) {
   $phrase = substr ( $keywords, $plen, $klen - ( $plen * 2 ) );
   $words = [$phrase];
 } else
@@ -183,7 +183,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     if ( $search_others ) {
       // Don't search confidential entries of other users.
       $sql .= 'AND ( weu.cal_login = ?
-        OR ( weu.cal_login != ? AND we.cal_access = \'P\' ) ) ';
+        OR ( weu.cal_login !== ? AND we.cal_access = \'P\' ) ) ';
       $sql_params[] = $login;
       $sql_params[] = $login;
     }
@@ -191,7 +191,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     // This workaround seems to fix it up ROJ
     // but, will only search the first 1kb of the description.
     $sql .= 'AND ( UPPER( we.cal_name ) LIKE UPPER( ? ) OR UPPER( '
-     . ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0
+     . ( strcmp ( $GLOBALS['db_type'], 'mssql' ) === 0
       ? 'CAST ( we.cal_description AS varchar (1024) )'
       : 'we.cal_description' )
      . ' ) LIKE UPPER( ? ) ';
@@ -212,16 +212,16 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     if ( ! empty ( $extra_filter ) )
       $sql .= ' AND we.cal_id = wse.cal_id ';
     if ( ! empty ( $date_filter ) ) {
-      if ( $date_filter == 1 ) { //Past entries
+      if ( $date_filter === 1 ) { //Past entries
         $sql .= 'AND we.cal_date < ? ';
         $sql_params[] = date ( 'Ymd' );
       }
-      if ( $date_filter == 2 ) {//Upcoming entries
+      if ( $date_filter === 2 ) {//Upcoming entries
         $sql .= 'AND we.cal_date >= ? ';
         $sql_params[] = date ( 'Ymd' );
         $order = 'ASC';
       }
-      if ( $date_filter == 3 ) {//Use Date Range
+      if ( $date_filter === 3 ) {//Use Date Range
         $sql .= 'AND ( we.cal_date >= ? AND we.cal_date <= ? )';
         $sql_params[] = $startDate;
         $sql_params[] = $endDate;
@@ -249,7 +249,7 @@ if ( $matches > 0 ) {
   // translate ( 'match found' ) translate ( 'matches found' )
   echo $matches . ' '
    . translate ( // line break to bypass update_translation.pl here.
-    'match' . ( $matches == 1 ? '' : 'es' ) . ' found' );
+    'match' . ( $matches === 1 ? '' : 'es' ) . ' found' );
 } else
   echo translate ( 'No matches found' );
 

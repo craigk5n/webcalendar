@@ -67,7 +67,7 @@ function db_error( $doExit = false, $sql = '' ) {
   global $settings;
 
   $ret = str_replace( 'XXX', dbi_error(), translate( 'Database error XXX.' ) )
-   . ( ! empty( $settings['mode'] ) && $settings['mode'] == 'dev'
+   . ( ! empty( $settings['mode'] ) && $settings['mode'] === 'dev'
     && ! empty( $sql ) ? '<br>SQL:<br>' . $sql : '' );
 
   if( $doExit ) {
@@ -124,7 +124,7 @@ function do_config( $fileLoc ) {
     if( $fd )
       $fileLoc = $testName;
   }
-  if( empty( $fd ) || filesize( $fileLoc ) == 0 ) {
+  if( empty( $fd ) || filesize( $fileLoc ) === 0 ) {
     // There is no settings.php file.
     // Redirect user to install page if it exists.
     if( file_exists( 'install/index.php' ) ) {
@@ -210,8 +210,8 @@ function do_config( $fileLoc ) {
 
   // Allow special settings of 'none' in some settings[] values.
   // This can be used for db servers not using TCP port for connection.
-  $db_host = ( $db_host == 'none' ? '' : $db_host );
-  $db_password = ( empty( $db_password ) || $db_password == 'none'
+  $db_host = ( $db_host === 'none' ? '' : $db_host );
+  $db_password = ( empty( $db_password ) || $db_password === 'none'
     ? '' : $db_password );
 
   $readonly = preg_match( '/(1|yes|true|on)/i',
@@ -221,14 +221,14 @@ function do_config( $fileLoc ) {
     $settings['mode'] = 'prod';
 
   $run_mode = ( preg_match( '/(dev)/i', $settings['mode'] ) ? 'dev' : 'prod' );
-  $phpdbiVerbose = ( $run_mode == 'dev' );
+  $phpdbiVerbose = ( $run_mode === 'dev' );
   $single_user = preg_match( '/(1|yes|true|on)/i',
     $settings['single_user'] ) ? 'Y' : 'N';
 
-  if( $single_user == 'Y' )
+  if( $single_user === 'Y' )
     $single_user_login = $settings['single_user_login'];
 
-  if( $single_user == 'Y' && empty( $single_user_login ) )
+  if( $single_user === 'Y' && empty( $single_user_login ) )
     die_miserable_death( str_replace( 'XXX', 'single_user_login',
         translate( 'You must define XXX in' ) ) );
 
@@ -239,8 +239,8 @@ function do_config( $fileLoc ) {
   $user_inc = $settings['user_inc'];
 
   // If SQLite, the db file is in the includes directory.
-  if( $db_type == 'sqlite' || $db_type == 'sqlite3' ) {
-    if ( substr ( $db_database, 0, 1 ) != '/' && ! file_exists ( $db_database ) )
+  if( $db_type === 'sqlite' || $db_type === 'sqlite3' ) {
+    if ( substr ( $db_database, 0, 1 ) !== '/' && ! file_exists ( $db_database ) )
       $db_database = get_full_include_path( $db_database );
   }
 
@@ -263,7 +263,7 @@ function do_config( $fileLoc ) {
     } else {
       $row = $rows[0];
 
-      if( empty( $row ) || $row[0] != $PROGRAM_VERSION ) {
+      if( empty( $row ) || $row[0] !== $PROGRAM_VERSION ) {
         header( $locateStr . '' . ( empty( $row ) ? 'UNKNOWN' : $row[0] ) );
         exit;
       }
@@ -281,7 +281,7 @@ function do_config( $fileLoc ) {
   // a maximum of 5 characters and should NOT change once set!
   $NONUSER_PREFIX = '_NUC_';
 
-  if( $single_user != 'Y' )
+  if( $single_user !== 'Y' )
     $single_user_login = '';
 }
 

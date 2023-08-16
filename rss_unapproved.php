@@ -63,12 +63,12 @@ if ( empty ( $_SERVER['PHP_AUTH_USER'] ) && ! empty ( $_ENV['REMOTE_USER'] ) ) {
 }
 
 unset ( $_ENV['REMOTE_USER'] );
-if ( empty ( $login ) || $login == '__public__' ) {
+if ( empty ( $login ) || $login === '__public__' ) {
   if ( isset ( $_SERVER['PHP_AUTH_USER'] ) &&
       user_valid_login ( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'], true ) )
     $login = $_SERVER['PHP_AUTH_USER'];
 
-  if ( empty ( $login ) || $login != $_SERVER['PHP_AUTH_USER'] ) {
+  if ( empty ( $login ) || $login !== $_SERVER['PHP_AUTH_USER'] ) {
     $_SERVER['PHP_AUTH_PW'] = $_SERVER['PHP_AUTH_USER'] = '';
     unset ( $_SERVER['PHP_AUTH_USER'] );
     unset ( $_SERVER['PHP_AUTH_PW'] );
@@ -89,32 +89,32 @@ user_load_variables ( $login, '' );
 // See if a user login was specified in the URL
 $user = getGetValue ( 'user' );
 // translate 'public' to be '__public__'
-if ( $user == 'public' )
+if ( $user === 'public' )
   $user = '__public__';
 // Make sure the current user has proper permissions to see unapproved
 // events for the specified user. We're not checking to see if
-if ( $user != '' ) {
+if ( $user !== '' ) {
   if ( access_is_enabled() ) {
      if ( ! access_user_calendar ( 'approve', $user ) ) {
        // not allowed
        $user = login;
      }
-  } else if ( ! $is_admin && $user != $login && ! $is_assistant &&
+  } else if ( ! $is_admin && $user !== $login && ! $is_assistant &&
     ! access_is_enabled() ) {
     $user = $login;
   }
 }
 
 // If not, user current user's login
-if ( $user == '' )
+if ( $user === '' )
   $user = $login;
 
 
 $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
 // This should work ok with RSS, may need to hardcode fallback value.
-$lang = languageToAbbrev ( $LANGUAGE == 'Browser-defined' || $LANGUAGE == 'none'
+$lang = languageToAbbrev ( $LANGUAGE === 'Browser-defined' || $LANGUAGE === 'none'
   ? $lang : $LANGUAGE );
-if ( $lang == 'en' )
+if ( $lang === 'en' )
   $lang = 'en-us'; //the RSS 2.0 default.
 
 user_load_variables ( $user, 'temp_' );
@@ -195,7 +195,7 @@ function list_unapproved ( $user ) {
       $unixtime = date_to_epoch ( $date . $time );
 
       $timestr = '';
-      if ( $time > 0 || ( $time == 0 && $duration != 1440 ) ) {
+      if ( $time > 0 || ( $time === 0 && $duration !== 1440 ) ) {
         $eventstart = date_to_epoch ( $date . $time );
         $eventstop = $eventstart + $duration;
         $eventdate = date_to_str ( date ( 'Ymd', $eventstart ) );
@@ -205,7 +205,7 @@ function list_unapproved ( $user ) {
         // Don't shift date if All Day or Untimed.
         $eventdate = date_to_str ( $date );
         // If All Day display in popup.
-        if ( $time == 0 && $duration == 1440 )
+        if ( $time === 0 && $duration === 1440 )
           $timestr = $allDayStr;
       }
 

@@ -32,19 +32,19 @@ $public = getValue ( 'public' );
 $sendPlainText = false;
 $format = getValue ( 'format' );
 if ( ! empty ( $format ) &&
- ( $format == 'text' || $format == 'plain' ) );
+ ( $format === 'text' || $format === 'plain' ) );
 $sendPlainText = true;
 
 $error = '';
 
-if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS === 'Y' ) {
   $updating_public = true;
   $layer_user = '__public__';
 } else {
   $layer_user = $login;
 }
 
-if ( $action == 'enable' || $action == 'disable' ) {
+if ( $action === 'enable' || $action === 'disable' ) {
   // Toggle LAYER_STATUS in the user's preferences between N and Y.
   dbi_execute( 'DELETE FROM webcal_user_pref WHERE cal_login = ?
     AND cal_setting = "LAYERS_STATUS"',  [$layer_user] );
@@ -57,7 +57,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
     // Success
     ajax_send_success();
   }
-} else if ( $action == 'list' ) {
+} else if ( $action === 'list' ) {
   // Use JSON to encode our list of layers.
   load_user_layers ( $layer_user, 1 );
   $ret_layers = [];
@@ -70,25 +70,25 @@ if ( $action == 'enable' || $action == 'disable' ) {
       'fullname' => $layerfullname];
   }
   ajax_send_object ( 'layers', $ret_layers, $sendPlainText );
-} else if ( $action == 'save' ) {
+} else if ( $action === 'save' ) {
   // TODO: we should do some additional checking here to make
   // sure someone isn't asking for a layer they are not authorized to view.
-  if ( $ALLOW_VIEW_OTHER != 'Y' ) {
+  if ( $ALLOW_VIEW_OTHER !== 'Y' ) {
     $error = print_not_auth (7);
   } else {
     save_layer ( getPostValue('layeruser'),
       getPostValue('source'), getPostValue('color'),
-      getPostValue('dups') == 'Y' ? 'Y' : 'N',
+      getPostValue('dups') === 'Y' ? 'Y' : 'N',
       getPostValue('id') );
   }
-  if ( $error == '' )
+  if ( $error === '' )
     ajax_send_success();
   else
     ajax_send_error ( $error );
-} else if ( $action == 'delete' ) {
+} else if ( $action === 'delete' ) {
   // TODO: we should so some additional checking here to make
   // sure someone isn't asking for a layer they are not authorized to view.
-  if ( $ALLOW_VIEW_OTHER != 'Y' ) {
+  if ( $ALLOW_VIEW_OTHER !== 'Y' ) {
     $error = print_not_auth (7);
   } else {
     $id = getPostValue ( 'id' );
@@ -98,7 +98,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
       delete_layer ( getPostValue('layeruser'), $id );
     }
   }
-  if ( $error == '' )
+  if ( $error === '' )
     ajax_send_success();
   else
     ajax_send_error ( $error );
@@ -121,12 +121,12 @@ function delete_layer ( $user, $id ) {
 function save_layer ( $user, $source, $layercolor, $dups, $id ) {
   global $error, $layers;
 
-  if ( $user == $source )
+  if ( $user === $source )
     $error = translate ( 'You cannot create a layer for yourself.' );
 
   load_user_layers ( $user, 1 );
 
-  if ( ! empty ( $source ) && $error == '' ) {
+  if ( ! empty ( $source ) && $error === '' ) {
     // Existing layer entry.
     if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) {
       // Update existing layer entry for this user.
@@ -148,7 +148,7 @@ function save_layer ( $user, $source, $layercolor, $dups, $id ) {
 
         dbi_free_result ( $res );
       }
-      if ( $error == '' ) {
+      if ( $error === '' ) {
         $res = dbi_execute ( 'SELECT MAX( cal_layerid ) FROM webcal_user_layers' );
         if ( $res ) {
           $row = dbi_fetch_row ( $res );

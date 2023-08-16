@@ -29,7 +29,7 @@ $error = $sqlLog = '';
 print_header();
 
 $overwrite = getValue ( 'overwrite' );
-$doOverwrite = ( empty ( $overwrite ) || $overwrite != 'Y' ) ? false : true;
+$doOverwrite = ( empty ( $overwrite ) || $overwrite !== 'Y' ) ? false : true;
 $numDeleted = 0;
 
 if ( ! empty ( $_FILES['FileName'] ) )
@@ -41,7 +41,7 @@ if ( empty ( $file ) )
 // Handle user
 $calUser = getValue ( 'calUser' );
 if ( ! empty ( $calUser ) ) {
-  if ( $single_user == 'N' && ! $is_admin )
+  if ( $single_user === 'N' && ! $is_admin )
     $calUser = $login;
 } else
   $calUser = $login;
@@ -51,7 +51,7 @@ $importcat = getValue( 'importcat' );
 $ImportType = getValue( 'ImportType' );
 $overwrite = getValue( 'overwrite' );
 
-if ( $importcat == '__import' ) {
+if ( $importcat === '__import' ) {
   $importcat = '';
 }
 
@@ -69,7 +69,7 @@ if ( $file['size'] > 0 ) {
 
     case 'PALMDESKTOP':
       require_once 'import_palmdesktop.php';
-      if ( delete_palm_events ( $login ) != 1 )
+      if ( delete_palm_events ( $login ) !== 1 )
         $errormsg = translate ( 'Error deleting palm events from webcalendar.' );
       $data = parse_palmdesktop ( $file['tmp_name'], $exc_private );
       $type = 'palm';

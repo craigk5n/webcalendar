@@ -35,13 +35,13 @@ $prevdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear 
 
 $wkstart = get_weekday_before( $thisyear, $thismonth, $thisday + 1 );
 $wkend = bump_local_timestamp( $wkstart, 0, 0, 0, 0,
-  ( $DISPLAY_WEEKENDS == 'N' ? 5 : 7 ), 0 ) - 1;
+  ( $DISPLAY_WEEKENDS === 'N' ? 5 : 7 ), 0 ) - 1;
 $thisdate = date( 'Ymd', $wkstart );
 
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
-$can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
+$can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS !== 'N' );
 
 print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 echo '
@@ -69,7 +69,7 @@ echo '
 // Get users in this view.
 $viewusers = view_get_user_list ( $id );
 $viewusercnt = count ( $viewusers );
-if ( $viewusercnt == 0 )
+if ( $viewusercnt === 0 )
   // This could happen if user_sees_only_his_groups = Y and
   // this user is not a member of any group assigned to this view.
   $error = translate( 'No users for this view.' );
@@ -116,20 +116,20 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
      $date = bump_local_timestamp( $date, 0, 0, 0, 0, 1, 0 ) ) {
       $is_weekend = is_weekend( $date );
 
-      if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
+      if ( $is_weekend && $DISPLAY_WEEKENDS === 'N' )
         continue;
 
       $dateYmd = date ( 'Ymd', $date );
       $entryStr = print_date_entries ( $dateYmd, $user, true );
-      $class = ( $dateYmd == $todayYmd
+      $class = ( $dateYmd === $todayYmd
         ? ' class="today"'
-        : ( ! empty ( $entryStr ) && $entryStr != '&nbsp;'
+        : ( ! empty ( $entryStr ) && $entryStr !== '&nbsp;'
           ? ' class="hasevents"'
           : ( $is_weekend ? ' class="weekend"' : '' ) ) )
        . ' style="width:' . $tdw . '%;"';
 
       // Build header row.
-      if ( $i == 0 ) {
+      if ( $i === 0 ) {
         $header .= '<th' . $class . '>'
          . weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS ) . ' '
          . date ( 'd', $date ) . '</th>';

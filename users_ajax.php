@@ -34,7 +34,7 @@ $sendPlainText = false;
 $format = getValue('format');
 if (
   !empty($format) &&
-  ($format == 'text' || $format == 'plain')
+  ($format === 'text' || $format === 'plain')
 ) {
   $sendPlainText = true;
 }
@@ -55,13 +55,13 @@ if (!empty($_SERVER['HTTP_REFERER'])) {
 }
 $error = '';
 
-if ($action == 'userlist') {
+if ($action === 'userlist') {
   // Use JSON to encode our list of users.
   $userlist = user_get_users();
   $ret_users = [];
   foreach ($userlist as $user) {
     // Skip public user
-    if ($user['cal_login'] != '__public__') {
+    if ($user['cal_login'] !== '__public__') {
       $ret_users[] =  [
         'login' => $user['cal_login'],
         'lastname' => $user['cal_lastname'],
@@ -75,7 +75,7 @@ if ($action == 'userlist') {
     }
   }
   ajax_send_object('users', $ret_users, $sendPlainText);
-} else if ($action == 'save' && ($is_admin || getPostValue('login') == $login)) {
+} else if ($action === 'save' && ($is_admin || getPostValue('login') === $login)) {
   // Only admin user can add/edit other users
   if (!$is_admin) {
     if (!access_can_access_function(ACCESS_USER_MANAGEMENT))
@@ -85,29 +85,29 @@ if ($action == 'userlist') {
   }
   $post_firstname = getPostValue('firstname');
   $post_lastname = getPostValue('lastname');
-  if (addslashes($post_firstname) != $post_firstname || strip_tags_content($post_firstname) != $post_firstname) {
+  if (addslashes($post_firstname) !== $post_firstname || strip_tags_content($post_firstname) !== $post_firstname) {
     $error = $invalidFirstName;
   }
-  if (addslashes($post_lastname) != $post_lastname || strip_tags_content($post_lastname) != $post_lastname) {
+  if (addslashes($post_lastname) !== $post_lastname || strip_tags_content($post_lastname) !== $post_lastname) {
     $error = $invalidLastName;
   }
   if (empty($error)) {
     save_user(
-      getPostValue('add') == '1' ? true : false,
+      getPostValue('add') === '1' ? true : false,
       getPostValue('login'),
       getPostValue('lastname'),
       getPostValue('firstname'),
-      getPostValue('is_admin') == 'Y' ? 'Y' : 'N',
-      getPostValue('enabled') == 'Y' ? 'Y' : 'N',
+      getPostValue('is_admin') === 'Y' ? 'Y' : 'N',
+      getPostValue('enabled') === 'Y' ? 'Y' : 'N',
       getPostValue('email'),
       getPostValue('password')
     );
   }
-  if ($error == '')
+  if ($error === '')
     ajax_send_success();
   else
     ajax_send_error($error);
-} else if ($action == 'set-password') {
+} else if ($action === 'set-password') {
   $password = getPostValue('password');
   $user = getPostValue('login');
 
@@ -129,11 +129,11 @@ if ($action == 'userlist') {
       translate('Set Password')
     );
   }
-  if ($error == '')
+  if ($error === '')
     ajax_send_success();
   else
     ajax_send_error($error);
-} else if ($action == 'delete') {
+} else if ($action === 'delete') {
   $user = getPostValue('login');
   // Only admin user can add/edit other users
   if (!$is_admin) {
@@ -143,7 +143,7 @@ if ($action == 'userlist') {
     $error = translate('Unsupported action');
   } else if (empty($user)) {
     $error = translate('Unsupported action') . ': ' . $blankUserStr;
-  } else if ($user == $login) {
+  } else if ($user === $login) {
     // Cannot delete yourself
     $error = translate('Unsupported action');
   }
@@ -152,11 +152,11 @@ if ($action == 'userlist') {
     user_delete_user($user); // Will also delete user's events.
     activity_log(0, $login, $user, LOG_USER_DELETE, '');
   }
-  if ($error == '')
+  if ($error === '')
     ajax_send_success();
   else
     ajax_send_error($error);
-} else if ($action == 'remote-cal-list') {
+} else if ($action === 'remote-cal-list') {
   // Get layers for this user so we can see if the remote calendars are being used as a layer.
   load_user_layers($login, 1);
   $active_layers = [];
@@ -169,7 +169,7 @@ if ($action == 'userlist') {
   $ret_users = [];
   foreach ($userlist as $user) {
     // Skip public user
-    if ($user['cal_login'] != '__public__') {
+    if ($user['cal_login'] !== '__public__') {
       $cnt = empty($active_layers[$user['cal_login']]) ? 0 : 1;
       $event_cnt = get_event_count_for_user($user['cal_login']);
       $last_upd = get_remote_calendar_last_update($user['cal_login']);
@@ -191,20 +191,20 @@ if ($action == 'userlist') {
     }
   }
   ajax_send_object('users', $ret_users, $sendPlainText);
-} else if ($action == 'save-remote-cal') {
+} else if ($action === 'save-remote-cal') {
   // Verify access to this page is allowed.
-  if ($REMOTES_ENABLED != 'Y' || (access_is_enabled() && !access_can_access_function(ACCESS_IMPORT))) {
+  if ($REMOTES_ENABLED !== 'Y' || (access_is_enabled() && !access_can_access_function(ACCESS_IMPORT))) {
     $error = $notAuthStr;
   }
-  if (addslashes($firstname) != $firstname || strip_tags_content($firstname) != $firstname) {
+  if (addslashes($firstname) !== $firstname || strip_tags_content($firstname) !== $firstname) {
     $error = $invalidFirstName;
   }
-  if (addslashes($lastname) != $lastname || strip_tags_content($lastname) != $lastname) {
+  if (addslashes($lastname) !== $lastname || strip_tags_content($lastname) !== $lastname) {
     $error = $invalidLastName;
   }
   if (empty($error)) {
     $error = save_remote_calendar(
-      getPostValue('add') == '1' ? true : false,
+      getPostValue('add') === '1' ? true : false,
       getPostValue('login'),
       getPostValue('lastname'),
       getPostValue('firstname'),
@@ -212,22 +212,22 @@ if ($action == 'userlist') {
       getPostValue('public')
     );
   }
-  if ($error == '')
+  if ($error === '')
     ajax_send_success();
   else
     ajax_send_error($error);
-} else if ($action == 'delete-remote-cal') {
+} else if ($action === 'delete-remote-cal') {
   $username = getPostValue('login');
   // Make sure the current user is the admin of this remote calendar.
 
   // Delete events from this remote calendar.
   $error = delete_remote_calendar($username);
 
-  if ($error == '')
+  if ($error === '')
     ajax_send_success();
   else
     ajax_send_error($error);
-} else if ($action == 'reload-remote-cal') {
+} else if ($action === 'reload-remote-cal') {
   // import_data may output stuff, so catch it and discard.
   ob_start ();
   if (!ini_get('allow_url_fopen')) {
@@ -239,7 +239,7 @@ if ($action == 'userlist') {
     $url = '';
     $found = 0;
     for ($i = 0; $i < count($cals); $i++) {
-      if ($cals[$i]['cal_login'] == $username) {
+      if ($cals[$i]['cal_login'] === $username) {
         $url = $cals[$i]['cal_url'];
         $found = 1;
       }
@@ -266,20 +266,20 @@ if ($action == 'userlist') {
     }
   }
   ob_end_clean();
-  if ($error == '') {
+  if ($error === '') {
     //echo "SUCCESS: $message\n";
     ajax_send_success(false, $message);
   } else {
     ajax_send_error($error);
   }
-} else if ($action == 'resource-cal-list') {
+} else if ($action === 'resource-cal-list') {
   // Use JSON to encode our list of resource calendars (aka "nonuser" calendars).
   $userlist = get_nonuser_cals();
   //echo "<pre>"; print_r($userlist); echo "</pre>"; exit;
   $ret_users = [];
   foreach ($userlist as $user) {
     // Skip public user && and ignore those with URL (remote calendars)
-    if ($user['cal_login'] != '__public__' && empty($user['cal_url'])) {
+    if ($user['cal_login'] !== '__public__' && empty($user['cal_url'])) {
       $event_cnt = get_event_count_for_user($user['cal_login']);
       $ret_users[] =  [
         'login' => $user['cal_login'],
@@ -295,20 +295,20 @@ if ($action == 'userlist') {
     }
   }
   ajax_send_object('users', $ret_users, $sendPlainText);
-} else if ($action == 'save-resource-cal') {
+} else if ($action === 'save-resource-cal') {
   // Verify access to this page is allowed.
   if (! $is_admin) {
     $error = $notAuthStr;
   }
-  if (addslashes($firstname) != $firstname || strip_tags_content($firstname) != $firstname) {
+  if (addslashes($firstname) !== $firstname || strip_tags_content($firstname) !== $firstname) {
     $error = $invalidFirstName;
   }
-  if (addslashes($lastname) != $lastname || strip_tags_content($lastname) != $lastname) {
+  if (addslashes($lastname) !== $lastname || strip_tags_content($lastname) !== $lastname) {
     $error = $invalidLastName;
   }
   if (empty($error)) {
     $error = save_resource_calendar(
-      getPostValue('add') == '1' ? true : false,
+      getPostValue('add') === '1' ? true : false,
       getPostValue('login'),
       getPostValue('lastname'),
       getPostValue('firstname'),
@@ -316,11 +316,11 @@ if ($action == 'userlist') {
       getPostValue('admin')
     );
   }
-  if ($error == '')
+  if ($error === '')
     ajax_send_success();
   else
     ajax_send_error($error);
-} else if ($action == 'group-list') {
+} else if ($action === 'group-list') {
   // Use JSON to encode our list of groups.
   $groups = get_groups($login, true);
   $ret_groups = [];
@@ -334,20 +334,20 @@ if ($action == 'userlist') {
     ];
   }
   ajax_send_object('groups', $ret_groups, $sendPlainText);
-} else if ($action == 'save-group') {
+} else if ($action === 'save-group') {
   $ret = save_group(
-    getPostValue('add') == '1' ? true : false,
+    getPostValue('add') === '1' ? true : false,
     getPostValue('id'),
     getPostValue('name'),
     getPostValue('users')
   );
   $error = $ret[0];
   $msg = $ret[1];
-  if ($error == '')
+  if ($error === '')
     ajax_send_success(false, $msg);
   else
     ajax_send_error($error);
-} else if ($action == 'delete-group') {
+} else if ($action === 'delete-group') {
   $id = getPostValue('id');
   if (empty($id)) {
     $error = "Missing Group Id from delete request";
@@ -358,7 +358,7 @@ if ($action == 'userlist') {
     dbi_execute ( 'DELETE FROM webcal_group_user WHERE cal_group_id = ? ',
      [$id] );
   }
-  if ($error == '')
+  if ($error === '')
     ajax_send_success();
   else
     ajax_send_error($error);
@@ -380,16 +380,16 @@ function save_user($add, $user, $lastname, $firstname, $is_admin, $enabled, $ema
 {
   global $blankUserStr, $error, $login;
 
-  if (addslashes($user) != $user || strip_tags_content($user) != $user) {
+  if (addslashes($user) !== $user || strip_tags_content($user) !== $user) {
     $error = 'Invalid characters in login.';
   } else if ($add && empty($user)) {
     $error = $blankUserStr;
   }
 
-  if (addslashes($firstname) != $firstname || strip_tags_content($firstname) != $firstname) {
+  if (addslashes($firstname) !== $firstname || strip_tags_content($firstname) !== $firstname) {
     $error = $invalidFirstName;
   }
-  if (addslashes($lastname) != $lastname || strip_tags_content($lastname) != $lastname) {
+  if (addslashes($lastname) !== $lastname || strip_tags_content($lastname) !== $lastname) {
     $error = $invalidLastName;
   }
 
@@ -441,9 +441,9 @@ function save_remote_calendar($isAdd, $username, $lastname, $firstname, $url, $i
 
   // This calendar cannot be used as a public calendar if Public Access is
   // not enabled in settings.
-  if (empty($PUBLIC_ACCESS) || $PUBLIC_ACCESS != 'Y') {
+  if (empty($PUBLIC_ACCESS) || $PUBLIC_ACCESS !== 'Y') {
     $ispublic = 'N';
-  } else if (empty($ispublic) || $ispublic != 'Y') {
+  } else if (empty($ispublic) || $ispublic !== 'Y') {
     $ispublic = 'N';
   }
 
@@ -522,7 +522,7 @@ function delete_remote_calendar($username)
   global $login, $notAuthStr;
   // Make sure the current user is the admin of this remote calendar.
   nonuser_load_variables($username, "TESTLOAD");
-  if (empty($GLOBALS["TESTLOADadmin"]) || $GLOBALS["TESTLOADadmin"] != $login) {
+  if (empty($GLOBALS["TESTLOADadmin"]) || $GLOBALS["TESTLOADadmin"] !== $login) {
     return $notAuthStr;
   }
 

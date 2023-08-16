@@ -170,7 +170,7 @@ defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 // TODO: I think these two, among others, may be too specific.
 // Do they really need "#month"?
 // And, instead of IDs "#nextmonth" and "#prevmonth", would classes ".next" and ".prev" work?
-if ( $DISPLAY_TASKS != 'Y' ) { ?>
+if ( $DISPLAY_TASKS !== 'Y' ) { ?>
 #month #nextmonth {
   float: right;
 }
@@ -184,7 +184,7 @@ if ( $DISPLAY_TASKS != 'Y' ) { ?>
   ? '10em' : $GLOBALS['MINICALWIDTH']; ?>;
 }
 
-<?php if (  $MENU_ENABLED == 'N' ) { ?>
+<?php if (  $MENU_ENABLED === 'N' ) { ?>
 #dateselector form {
   border-top: 0.0625em solid <?php echo $GLOBALS['TABLEBG'];?>;
 }
@@ -209,7 +209,7 @@ body {
 .main td.weekend {
   <?php echo background_css( $GLOBALS['WEEKENDBG'], 100 ); ?>
 }
-<?php if  ( $GLOBALS['HASEVENTSBG'] != $GLOBALS['CELLBG'] ) { ?>
+<?php if  ( $GLOBALS['HASEVENTSBG'] !== $GLOBALS['CELLBG'] ) { ?>
 .main td.hasevents {
   <?php echo background_css( $GLOBALS['HASEVENTSBG'], 100 ); ?>
 }
@@ -248,7 +248,7 @@ body {
   font-size: <?php echo ( empty( $GLOBALS['MINICALFONT'] )
   ? '0.6875em' : $GLOBALS['MINICALFONT'] ); ?>;
 }
-<?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
+<?php if ( $DISPLAY_WEEKENDS === 'N' ) { ?>
 #viewt .main tr.weekend,
 .main th.weekend,
 .main td.weekend,
@@ -268,7 +268,7 @@ if ( $CATEGORIES_ENABLED === 'Y' ) {
   // Default color is $MYEVENTS.  Add a bogus array 'none' element for it.
   $categories['none'] = ['cat_color' => $MYEVENTS];
   foreach ( $categories as $catId => $cat ) {
-    if ( $catId == 0 || $catId == -1 )
+    if ( $catId === 0 || $catId === -1 )
       continue;
 
     $color = $cat['cat_color'];

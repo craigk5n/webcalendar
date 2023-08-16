@@ -20,7 +20,7 @@ if (!$is_admin || (access_is_enabled()
 }
 
 $phpinfo = getGetValue('phpinfo');
-if ($phpinfo == '1') {
+if ($phpinfo === '1') {
   print_header('', '', '', true);
   phpinfo();
   print_trailer(false, true, true);
@@ -53,7 +53,7 @@ print_header();
   // Make sure they aren't still using the default admin username/password.
   print_issue(
     translate('Default admin user password'),
-    (user_valid_login('admin', 'admin') == false),
+    (user_valid_login('admin', 'admin') === false),
     translate('You should change the password of the default admin user.')
   );
 
@@ -101,7 +101,7 @@ print_header();
 
   // If email or reminders are not enabled, tell them to remove the file.
   $isOk = (!file_exists('tools/send_reminders.php'));
-  if ($SEND_EMAIL != 'Y') {
+  if ($SEND_EMAIL !== 'Y') {
     // Reminders are disabled!
     print_issue(
       str_replace(
@@ -139,14 +139,14 @@ print_header();
   );
 
   // If Public Access enabled, make sure approvals are on
-  if ($PUBLIC_ACCESS == 'Y') {
+  if ($PUBLIC_ACCESS === 'Y') {
     print_issue(
       str_replace(
         'XXX',
         translate('Public access new events require approval'),
         $sysSettingsXXX
       ),
-      ($PUBLIC_ACCESS_CAN_ADD != 'Y' || $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'Y'),
+      ($PUBLIC_ACCESS_CAN_ADD !== 'Y' || $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL === 'Y'),
       translate('recommend approving new public events')
     );
 
@@ -156,18 +156,18 @@ print_header();
         translate('Require CAPTCHA validation for public access new events'),
         $sysSettingsXXX
       ),
-      ($ENABLE_CAPTCHA == 'Y'),
+      ($ENABLE_CAPTCHA === 'Y'),
       translate('recommend using CAPTCHA')
     );
   }
 
   // Is db cache directory a subdirectory of WebCalendar?
   $isOk = true;
-  if (!empty($settings['db_cachedir']) && $wcDir != '.') {
+  if (!empty($settings['db_cachedir']) && $wcDir !== '.') {
     $cache = str_replace('\\', '/', $settings['db_cachedir']);
     $wcDir = str_replace('\\', '/', $wcDir);
     if (
-      strncmp($cache, $wcDir, strlen($wcDir)) == 0
+      strncmp($cache, $wcDir, strlen($wcDir)) === 0
       && strlen($wcDir) < strlen($cache)
     ) {
       // Using a webcalendar subdirectory for db cache.
@@ -187,14 +187,14 @@ print_header();
   // Check for expose_php.
   print_issue(
     str_replace('XXX', 'expose_php', $phpSettingsXXX),
-    (ini_get('expose_php') == 0),
+    (ini_get('expose_php') === 0),
     str_replace('XXX', 'expose_php', $recommendXXXOff)
   );
 
   // Check for register globals.
   print_issue(
     str_replace('XXX', 'register_globals', $phpSettingsXXX),
-    (ini_get('register_globals') == 0),
+    (ini_get('register_globals') === 0),
     str_replace('XXX', 'register_globals', $recommendXXXOff)
   );
 
@@ -202,14 +202,14 @@ print_header();
   // Recommended setting is off when remote calendars are not enabled.
   print_issue(
     str_replace('XXX', 'allow_url_fopen', $phpSettingsXXX),
-    (ini_get('allow_url_fopen') == 0 || $REMOTES_ENABLED == 'Y'),
+    (ini_get('allow_url_fopen') === 0 || $REMOTES_ENABLED === 'Y'),
     translate('recommend setting allow_url_fopen Off')
   );
 
   // Check for allow_url_include.
   print_issue(
     str_replace('XXX', 'allow_url_include', $phpSettingsXXX),
-    (ini_get('allow_url_include') == 0),
+    (ini_get('allow_url_include') === 0),
     str_replace('XXX', 'allow_url_include', $recommendXXXOff)
   );
 
@@ -217,26 +217,26 @@ print_header();
   // (But this is okay for developer settings...)
   print_issue(
     str_replace('XXX', 'display_errors', $phpSettingsXXX),
-    (ini_get('display_errors') == 0),
+    (ini_get('display_errors') === 0),
     str_replace('XXX', 'display_errors', $recommendXXXOff)
   );
 
   // PHP errors/warnings should be logged.
   print_issue(
     str_replace('XXX', 'log_errors', $phpSettingsXXX),
-    (ini_get('log_errors') == 1),
+    (ini_get('log_errors') === 1),
     str_replace('XXX', 'log_errors', $recommendXXXOn)
   );
 
   // PHP session security.
   print_issue(
     str_replace('XXX', 'session.use_strict_mode', $phpSettingsXXX),
-    (ini_get('session.use_strict_mode') == 1),
+    (ini_get('session.use_strict_mode') === 1),
     str_replace('XXX', 'session.use_strict_mode', $recommendXXXOn)
   );
   print_issue(
     str_replace('XXX', 'session.cookie_httponly', $phpSettingsXXX),
-    (ini_get('session.cookie_httponly') == 1),
+    (ini_get('session.cookie_httponly') === 1),
     str_replace('XXX', 'session.cookie_httponly', $recommendXXXOn)
   );
 
@@ -288,7 +288,7 @@ function is__writable($path)
   //see http://bugs.php.net/bug.php?id=27609
   //see http://bugs.php.net/bug.php?id=30931
 
-  if ($path[strlen($path) - 1] == '/') // recursively return a temporary file path
+  if ($path[strlen($path) - 1] === '/') // recursively return a temporary file path
     return is__writable($path . uniqid(mt_rand()) . '.tmp');
   else if (@is_dir($path))
     return is__writable($path . '/' . uniqid(mt_rand()) . '.tmp');

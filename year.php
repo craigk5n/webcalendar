@@ -7,7 +7,7 @@ if( ! access_can_access_function( ACCESS_YEAR )
     || ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
   send_to_preferred_view();
 
-if ( ( $user != $login ) && $is_nonuser_admin )
+if ( ( $user !== $login ) && $is_nonuser_admin )
   load_user_layers ( $user );
 else
   load_user_layers();
@@ -23,7 +23,7 @@ if ( empty ( $year ) ) {
 }
 
 $thisyear = $year;
-if ( $year != date ( 'Y' ) )
+if ( $year !== date ( 'Y' ) )
   $thismonth = 1;
 
 // Set up global $today value for highlighting current date.
@@ -35,12 +35,12 @@ $prevYear = $year - ( $year > '1903' ? 1 : 0 );
 $startdate = mktime ( 0, 0, 0, 1, 1, $year );
 $enddate = mktime ( 23, 59, 59, 12, 31, $year );
 
-if ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin )
+if ( $ALLOW_VIEW_OTHER !== 'Y' && ! $is_admin )
   $user = '';
 
 $boldDays = false;
 $catSelectStr = '';
-if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
+if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR === 'Y' ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events (
     ( ! empty ( $user ) && strlen ( $user ) ? $user : $login ),
@@ -62,13 +62,13 @@ $DISPLAY_ALL_DAYS_IN_MONTH = 'N';
 $SHOW_EMPTY_WEEKENDS = true;
 
 // Include unapproved events?
-$get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
+$get_unapproved = ( $DISPLAY_UNAPPROVED === 'Y' );
 
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 $userStr = ( empty ( $user ) ? '' : '&amp;user=' . $user );
 
-if ( $single_user == 'N' ) {
+if ( $single_user === 'N' ) {
   if ( ! empty ( $user ) ) {
     user_load_variables ( $user, 'user_' );
     $fullnameStr = $user_fullname;

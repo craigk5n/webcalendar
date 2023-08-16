@@ -26,17 +26,17 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   $currentUserStr = translate ( 'Current User' );
   $helpStr = translate ( 'Help' );
   $publicStr = $PUBLIC_ACCESS_FULLNAME;
-  if ( empty ( $readonly ) || $readonly != 'Y' )
+  if ( empty ( $readonly ) || $readonly !== 'Y' )
     $readonly = 'N';
   // Go To links.
   $can_add = true;
-  if ( $readonly == 'Y' )
+  if ( $readonly === 'Y' )
     $can_add = false;
   elseif( access_is_enabled() )
     $can_add = access_can_access_function ( ACCESS_EVENT_EDIT );
   else {
-    if ( $login == '__public__' )
-      $can_add = ( $GLOBALS['PUBLIC_ACCESS_CAN_ADD'] == 'Y' );
+    if ( $login === '__public__' )
+      $can_add = ( $GLOBALS['PUBLIC_ACCESS_CAN_ADD'] === 'Y' );
 
     if ( $is_nonuser )
       $can_add = false;
@@ -69,20 +69,20 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   if ( ! access_can_view_page ( $todayURL ) )
     $todayURL = '';
 
-  if ( $single_user != 'Y' ) {
+  if ( $single_user !== 'Y' ) {
     $goto_link[] = '<a title="' . $myCalStr . '" class="bold" href="'
-     . "$mycal\">" . ( ! empty ( $user ) && $user != $login
+     . "$mycal\">" . ( ! empty ( $user ) && $user !== $login
       ? translate ( 'Back to My Calendar' ) : $myCalStr ) . '</a>';
 
     if ( ! empty ( $todayURL ) ) {
-      if ( ! empty ( $user ) && $user != $login )
+      if ( ! empty ( $user ) && $user !== $login )
         $todayURL .= '?user=' . $user;
 
       $goto_link[] = '<a title="' . $todayStr . '" class="bold" href="'
        . "$todayURL\">$todayStr" . '</a>';
     }
-    if ( $login != '__public__' ) {
-      if ( ! $is_nonuser && $readonly == 'N' ) {
+    if ( $login !== '__public__' ) {
+      if ( ! $is_nonuser && $readonly === 'N' ) {
         if( ( ! access_is_enabled()
             || access_can_access_function( ACCESS_ADMIN_HOME )
             || access_can_access_function( ACCESS_PREFERENCES ) ) )
@@ -91,16 +91,16 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
            . ( $is_nonuser_admin ? '?user=' . $user : '' )
            . "\">$adminStr" . '</a>';
 
-        if ( $REQUIRE_APPROVALS == 'Y' || $PUBLIC_ACCESS == 'Y' )
+        if ( $REQUIRE_APPROVALS === 'Y' || $PUBLIC_ACCESS === 'Y' )
           $goto_link[] = '<a title="' . $unapprovedStr
            . '" href="list_unapproved.php'
            . ( $is_nonuser_admin ? '?user=' . getValue ( 'user' ) : '' )
            . "\">$unapprovedStr" . '</a>';
       }
-    } elseif( $PUBLIC_ACCESS_OTHERS != 'Y'
+    } elseif( $PUBLIC_ACCESS_OTHERS !== 'Y'
         || ( $is_nonuser && ! access_is_enabled() ) ) {
       // Don't allow them to see other people's calendar.
-    } elseif ( ( $ALLOW_VIEW_OTHER == 'Y' || $is_admin )
+    } elseif ( ( $ALLOW_VIEW_OTHER === 'Y' || $is_admin )
         // Also, make sure they able to access either day/week/month/year view.
         // If not, the only way to view another user's calendar is a custom view.
         && ( ! access_is_enabled()
@@ -119,17 +119,17 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     $goto_link[] = '<a title="' . $todayStr . '" class="bold" href="'
      . "$todayURL\">$todayStr" . '</a>';
 
-    if ( $readonly == 'N' )
+    if ( $readonly === 'N' )
       $goto_link[] = '<a title="' . $adminStr
        . '" class="bold" href="adminhome.php">' . $adminStr . '</a>';
   }
   // Only display some links if we're viewing our own calendar.
-  if ( empty ( $user ) || $user == $login ) {
+  if ( empty ( $user ) || $user === $login ) {
     if ( access_can_access_function ( ACCESS_SEARCH ) )
       $goto_link[] = '<a title="' . $searchStr . '" href="search.php">'
        . $searchStr . '</a>';
 
-    if ( $login != '__public__' && ! $is_nonuser && $readonly != 'Y' ) {
+    if ( $login !== '__public__' && ! $is_nonuser && $readonly !== 'Y' ) {
       if ( access_can_access_function ( ACCESS_IMPORT ) )
         $goto_link[] = '<a title="' . $importStr . '" href="import.php">'
          . $importStr . '</a>';
@@ -148,7 +148,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
        . ( ! empty ( $thisyear ) ? '?' . $tmpYrStr : '' )
        . '">' . $addNewEntryStr . '</a>';
 
-      if ( $DISPLAY_TASKS_IN_GRID == 'Y' || $DISPLAY_TASKS == 'Y' )
+      if ( $DISPLAY_TASKS_IN_GRID === 'Y' || $DISPLAY_TASKS === 'Y' )
         $goto_link[] = '<a title="' . $addNewTaskStr
          . '" href="edit_entry.php?eType=task'
          . ( ! empty ( $thisyear ) ? '&amp;' . $tmpYrStr : '' )
@@ -157,7 +157,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   }
   $showHelp = ( access_is_enabled()
     ? access_can_access_function ( ACCESS_HELP )
-    : ( $login != '__public__' && ! $is_nonuser ) );
+    : ( $login !== '__public__' && ! $is_nonuser ) );
 
   if ( $showHelp )
     $goto_link[] = '<a title="' . $helpStr
@@ -175,7 +175,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   $tret .= '<!-- VIEWS -->' . "\n";
 
   $viewcnt = count ( $views );
-  if ( ( access_can_access_function ( ACCESS_VIEW ) && $ALLOW_VIEW_OTHER != 'N' ) && $viewcnt > 0 ) {
+  if ( ( access_can_access_function ( ACCESS_VIEW ) && $ALLOW_VIEW_OTHER !== 'N' ) && $viewcnt > 0 ) {
     for ( $i = 0; $i < $viewcnt; $i++ ) {
       $views_link[] = '<a title="' . htmlspecialchars ( $views[$i]['cal_name'] )
        . '" href="' . $views[$i]['url']
@@ -194,7 +194,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
 
   $tret .= '<!-- REPORTS -->' . "\n";
 
-  if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
+  if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED === 'Y' &&
       access_can_access_function ( ACCESS_REPORT ) ) {
     $reports_link = [];
     $rows = dbi_get_cached_rows ( 'SELECT cal_report_name, cal_report_id
@@ -206,7 +206,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
         $row = $rows[$i];
         $reports_link[] = '<a title="' . htmlspecialchars ( $row[0] )
          . '" href="report.php?report_id=' . $row[1]
-         . ( ! empty ( $user ) && $user != $login ? '&amp;user=' . $user : '' )
+         . ( ! empty ( $user ) && $user !== $login ? '&amp;user=' . $user : '' )
          . '">' . htmlspecialchars ( $row[0] ) . '</a>';
       }
     }
@@ -232,18 +232,18 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     }
 
     // Should we use another application's login/logout pages?
-    if ( substr ( $GLOBALS['user_inc'], 0, 9 ) == 'user-app-' ) {
+    if ( substr ( $GLOBALS['user_inc'], 0, 9 ) === 'user-app-' ) {
       global $app_login_page, $app_logout_page;
 
       $logout_url = $app_logout_page;
       $login_url = 'login-app.php'
-       . ( $login_return_path != '' && $app_login_page['return'] != ''
+       . ( $login_return_path !== '' && $app_login_page['return'] !== ''
         ? '?return_path=' . $login_return_path : '' );
     }
 
-    if ( $readonly != 'Y' )
+    if ( $readonly !== 'Y' )
       $tret .= '<br><span class="prefix">' . $currentUserStr . ':</span>&nbsp;'
-       . ( strlen ( $login ) && $login != '__public__'
+       . ( strlen ( $login ) && $login !== '__public__'
         ? $fullname . '&nbsp;(<a title="' . $logoutStr . '" href="'
          . $logout_url . '">' . $logoutStr
         : // For public user (who did not actually login).
@@ -252,7 +252,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   }
 
   // Manage Calendar links.
-  if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' )
+  if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED === 'Y' )
     $admincals = get_nonuser_cals ( $login );
   // Make sure they have access to either month/week/day view. If they do not,
   // then we cannot create a URL that shows just the boss' events. So, we
@@ -268,7 +268,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     if ( ! empty ( $admincals[0] ) )
       $grouplist = array_merge ( $admincals, $grouplist );
 
-    if ( $is_admin && $PUBLIC_ACCESS == 'Y' ) {
+    if ( $is_admin && $PUBLIC_ACCESS === 'Y' ) {
       $public = [
         'cal_login' => '__public__',
         'cal_fullname' => $publicStr];
@@ -279,7 +279,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
       $l = $grouplist[$i]['cal_login'];
       $f = $grouplist[$i]['cal_fullname'];
       // don't display current $user in group list
-      if ( ! empty ( $user ) && $user == $l )
+      if ( ! empty ( $user ) && $user === $l )
         continue;
 
       // Use the preferred view if it is day/week/month/year.php. Try not to
@@ -297,7 +297,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
           $xurl = 'day.php?user=' . $l;
         // Year does not show events, so you cannot manage someone's cal.
       }
-      $groups .= ( $i > 0 && $groups != '' ? ", \n" : '' )
+      $groups .= ( $i > 0 && $groups !== '' ? ", \n" : '' )
        . '<a title="' . "$f\" href=\"$xurl\">$f".'</a>';
     }
     if ( ! empty ( $groups ) )

@@ -6,7 +6,7 @@ if( ! access_can_access_function( ACCESS_WEEK )
     || ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
   send_to_preferred_view();
 
-load_user_layers ( ( $user != $login ) && $is_nonuser_admin ? $user : '' );
+load_user_layers ( ( $user !== $login ) && $is_nonuser_admin ? $user : '' );
 load_user_categories();
 
 $nextYmd =
@@ -14,17 +14,17 @@ date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear ) );
 $prevYmd =
 date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
 
-$boldDays = ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' );
+$boldDays = ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR === 'Y' );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
-$wkend = $wkstart + ( 86400 * ( $DISPLAY_WEEKENDS == 'N' ? 5 : 7 ) );
+$wkend = $wkstart + ( 86400 * ( $DISPLAY_WEEKENDS === 'N' ? 5 : 7 ) );
 
 $startdate = date ( 'Ymd', $wkstart );
 $enddate = date ( 'Ymd', $wkend );
 
 $start_ind = 0;
 
-if ( $DISPLAY_WEEKENDS == 'N' ) {
+if ( $DISPLAY_WEEKENDS === 'N' ) {
   $end_ind = 4;
   $WEEK_START = 1; //Set to Monday.
 } else
@@ -39,10 +39,10 @@ $first_slot = intval ( ( $WORK_DAY_START_HOUR * 60 ) / $interval );
 $last_slot = intval ( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
 
 $untimed_found = false;
-$get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
+$get_unapproved = ( $DISPLAY_UNAPPROVED === 'Y' );
 
 // Make sure all days with events are bold if mini cal is displayed.
-if ( $DISPLAY_SM_MONTH == 'Y' && $BOLD_DAYS_IN_YEAR == 'Y' ) {
+if ( $DISPLAY_SM_MONTH === 'Y' && $BOLD_DAYS_IN_YEAR === 'Y' ) {
   $evStart = get_weekday_before ( $thisyear, $thismonth );
   $evEnd = mktime ( 23, 59, 59, $thismonth + 2, 0, $thisyear );
 } else {
@@ -58,7 +58,7 @@ $repeated_events = read_repeated_events ( ( strlen ( $user )
 $events = read_events ( ( strlen ( $user )
     ? $user : $login ), $evStart - 604800, $evEnd, $cat_id );
 
-if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
+if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID === 'Y' )
   /* Pre-load tasks for quicker access. */
   $tasks = read_tasks ( ! empty ( $user ) && strlen ( $user ) && $is_assistant
     ? $user : $login, $wkend, $cat_id );
@@ -81,7 +81,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
    . date_to_str ( $dateYmd, $DATE_FORMAT_MD, false, true );
 
   // Generate header row.
-  $class = ( $dateYmd == date ( 'Ymd', $today )
+  $class = ( $dateYmd === date ( 'Ymd', $today )
     ? ' class="today"'
     : ( is_weekend ( $days[$i] ) ? ' class="weekend"' : '' ) );
 
@@ -106,7 +106,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
       ? get_tasks ( $date, $get_unapproved ) : $tk ) );
 
   for ( $j = 0, $cnt = count ( $ev ); $j < $cnt; $j++ ) {
-    if ( $get_unapproved || $ev[$j]->getStatus() == 'A' )
+    if ( $get_unapproved || $ev[$j]->getStatus() === 'A' )
       html_for_event_week_at_a_glance ( $ev[$j], $date );
   }
 
@@ -181,7 +181,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     // So, no need to list them all.
     $class = ( ! empty ( $save_hour_arr[$d][$i] ) && strlen ( $save_hour_arr[$d][$i] )
       ? ' class="hasevents"'
-      : ( $dateYmd == date ( 'Ymd', $today )
+      : ( $dateYmd === date ( 'Ymd', $today )
         ? ' class="today"'
         : ( is_weekend ( $days[$d] ) ? ' class="weekend"' : '' ) ) );
 
@@ -228,13 +228,13 @@ if ( empty ( $friendly ) ) {
 }
 
 $trailerStr = print_trailer();
-if ( $DISPLAY_TASKS == 'Y' ) {
+if ( $DISPLAY_TASKS === 'Y' ) {
   $tableWidth = '80%';
   $filler = '<td></td>';
   $minical_tasks .= '
         <td id="minicolumn" rowspan="2" class="aligntop">
 <!-- START MINICAL -->
-          <div class="minicontainer">' . ( $DISPLAY_SM_MONTH == 'Y' ? '
+          <div class="minicontainer">' . ( $DISPLAY_SM_MONTH === 'Y' ? '
             <div class="minicalcontainer">'
      . display_small_month ( $thismonth, $thisyear, true ) . '</div>' : '' ) . '
             <div id="minitask">' . display_small_tasks ( $cat_id ) . '</div>

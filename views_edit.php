@@ -39,7 +39,7 @@ if ( empty ( $id ) ) {
 } else {
   // search for view by id
   for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
-    if ( $views[$i]['cal_view_id'] == $id ) {
+    if ( $views[$i]['cal_view_id'] === $id ) {
       $newview = false;
       $viewname = $views[$i]['cal_name'];
       if ( empty ( $viewname ) )
@@ -64,7 +64,7 @@ if ( ! $newview ) {
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $viewuser[$row[0]] = 1;
-        if ( $row[0] == '__all__' )
+        if ( $row[0] === '__all__' )
           $all_users = true;
       }
       dbi_free_result ( $res );
@@ -96,37 +96,37 @@ if ( $newview ) {
 <div class="form-inline">
   <label class="col-sm-2 col-form-label" for="viewtype"><?php etranslate ( 'View Type' )?></label>
   <select name="viewtype" id="viewtype" class="form-control">
-  <option value="D" <?php if ( $viewtype == 'D' )
+  <option value="D" <?php if ( $viewtype === 'D' )
   echo $selected;?>><?php etranslate ( 'Day' ); ?></option>
-  <option value="E" <?php if ( $viewtype == 'E' )
+  <option value="E" <?php if ( $viewtype === 'E' )
   echo $selected;?>><?php etranslate ( 'Day by Time' ); ?></option>
-  <option value="W" <?php if ( $viewtype == 'W' )
+  <option value="W" <?php if ( $viewtype === 'W' )
   echo $selected;?>><?php etranslate ( 'Week (Users horizontal)' ); ?></option>
-  <option value="R" <?php if ( $viewtype == 'R' )
+  <option value="R" <?php if ( $viewtype === 'R' )
   echo $selected;?>><?php etranslate ( 'Week by Time' ); ?></option>
-  <option value="V" <?php if ( $viewtype == 'V' )
+  <option value="V" <?php if ( $viewtype === 'V' )
   echo $selected;?>><?php etranslate ( 'Week (Users vertical)' ); ?></option>
-  <option value="S" <?php if ( $viewtype == 'S' )
+  <option value="S" <?php if ( $viewtype === 'S' )
   echo $selected;?>><?php etranslate ( 'Week (Timebar)' ); ?></option>
-  <option value="T" <?php if ( $viewtype == 'T' )
+  <option value="T" <?php if ( $viewtype === 'T' )
   echo $selected;?>><?php etranslate ( 'Month (Timebar)' ); ?></option>
-  <option value="M" <?php if ( $viewtype == 'M' )
+  <option value="M" <?php if ( $viewtype === 'M' )
   echo $selected;?>><?php etranslate ( 'Month (side by side)' ); ?></option>
-  <option value="L" <?php if ( $viewtype == 'L' )
+  <option value="L" <?php if ( $viewtype === 'L' )
   echo $selected;?>><?php etranslate ( 'Month (on same calendar)' ); ?></option>
   </select>
 </div>
 
 
 <?php if ( $is_admin ) {
-  $defIdx = ( ! empty ( $viewisglobal ) && $viewisglobal == 'Y' ? 'Y' : 'N' );
+  $defIdx = ( ! empty ( $viewisglobal ) && $viewisglobal === 'Y' ? 'Y' : 'N' );
   echo '<div class="form-inline"><label class="col-sm-2 col-form-label" for="is_global">'
   . translate ( 'Global' ) . "</label>"
   . print_radio ( 'is_global', '', '', $defIdx, '' )
   . "</div>\n";
  }
 
-$defIdx = ( ! empty ( $all_users ) && $all_users == true ? 'Y' : 'N' );
+$defIdx = ( ! empty ( $all_users ) && $all_users === true ? 'Y' : 'N' );
 echo '<div class="form-inline"><label class="col-sm-2 col-form-label" for="viewuserall">'
   . translate ( 'Users' ) . "</label>"
   . print_radio ( 'viewuserall', ['N'=>'Selected', 'Y'=>'All'],
@@ -141,9 +141,9 @@ echo '<div class="form-inline"><label class="col-sm-2 col-form-label" for="viewu
 <?php
   // get list of all users
   $users = get_my_users ( '', 'view' );
-  if ($NONUSER_ENABLED == 'Y' ) {
+  if ($NONUSER_ENABLED === 'Y' ) {
     $nonusers = get_my_nonusers ( $user, true, 'view' );
-    $users = ( $NONUSER_AT_TOP == 'Y'
+    $users = ( $NONUSER_AT_TOP === 'Y'
      ? array_merge ( $nonusers, $users ) : array_merge ( $users, $nonusers ) );
   }
   for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
@@ -157,7 +157,7 @@ echo '<div class="form-inline"><label class="col-sm-2 col-form-label" for="viewu
 ?>
 </select>
 
-<?php if ( $GROUPS_ENABLED == 'Y' ) { ?>
+<?php if ( $GROUPS_ENABLED === 'Y' ) { ?>
   <input class="btn" type="button" onclick="selectUsers()" value="<?php etranslate ( 'Select' );?>...">
 <?php } ?>
 </div>

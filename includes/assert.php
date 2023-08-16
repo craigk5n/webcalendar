@@ -13,9 +13,9 @@
  */
 
 /*
- * Setup callback function only if $settings.php mode == dev
+ * Setup callback function only if $settings.php mode === dev
  */
-if ( ! empty ( $run_mode ) && $run_mode == 'dev' )
+if ( ! empty ( $run_mode ) && $run_mode === 'dev' )
   assert_options( ASSERT_CALLBACK, 'assert_handler');
 
 /**
@@ -29,7 +29,7 @@ function assert_backtrace() {
   global $settings;
 
   if ( empty ( $settings ) ||
-      empty ( $settings['mode'] ) || $settings['mode'] == 'prod' )
+      empty ( $settings['mode'] ) || $settings['mode'] === 'prod' )
     return 'No stack trace [production mode]';
 
   if ( ! function_exists ( 'debug_backtrace' ) )

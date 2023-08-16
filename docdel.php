@@ -36,7 +36,7 @@ else {
     $name = $doc->getName();
     $owner = $doc->getLogin();
     $type = $doc->getType();
-    if ( $owner == $login || user_is_assistant ( $login, $owner ) )
+    if ( $owner === $login || user_is_assistant ( $login, $owner ) )
       $can_delete = true;
   } else
     // document not found
@@ -53,7 +53,7 @@ if ( empty ( $error ) && ! $can_delete && $event_id > 0 ) {
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $event_owner = $row[0];
-      if ( $event_owner == $login || user_is_assistant ( $login, $event_owner ) )
+      if ( $event_owner === $login || user_is_assistant ( $login, $event_owner ) )
         $can_delete = true;
     }
     dbi_free_result ( $res );
@@ -70,10 +70,10 @@ if ( empty ( $error ) && $can_delete ) {
   else {
     if ( $event_id > 0 ) {
       $removeStr = translate ( 'Removed' );
-      if ( $type == 'A' )
+      if ( $type === 'A' )
         activity_log ( $event_id, $login, $login, LOG_ATTACHMENT, $removeStr
          . ': ' . $name );
-      elseif ( $type == 'C' )
+      elseif ( $type === 'C' )
         activity_log ( $event_id, $login, $login, LOG_COMMENT, $removeStr );
     }
     if ( $event_id > 0 )

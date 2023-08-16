@@ -62,7 +62,7 @@ function parse_outlookcsv ( $cal_file ) {
       $tmp_data['Description'] = $description; // Full Description (string)
       $tmp_data['Location'] = $location; // Location (string)
       $tmp_data['AllDay'] = $all_day_event; // 1 = true  0 = false
-      $tmp_data['Class'] = ( $class == 1 ? 'R': 'P' );
+      $tmp_data['Class'] = ( $class === 1 ? 'R': 'P' );
       $tmp_data['Categories'] = get_categories_id_byname ( $categories );
       $tmp_data['AlarmSet'] = $remind_on_off; // 1 = true  0 = false
       $tmp_data['ADate'] = $reminder; // Date/Time of Alarm
@@ -95,7 +95,7 @@ function dateDifference ( $start_timestamp, $end_timestamp, $unit = 0 ) {
       break;
     default: // Seconds
       return $difference_seconds . ' Second'
-       . ( $difference_seconds != 1 ? 's' : '' );
+       . ( $difference_seconds !== 1 ? 's' : '' );
   }
 }
 

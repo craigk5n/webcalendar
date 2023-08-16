@@ -2,7 +2,7 @@
 require_once 'includes/init.php';
 send_no_cache_header();
 
-load_user_layers ( $user != $login && $is_nonuser_admin ? $user : '' );
+load_user_layers ( $user !== $login && $is_nonuser_admin ? $user : '' );
 load_user_categories();
 
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
@@ -12,10 +12,10 @@ $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
 
 $start_ind = 0;
 $thisdate = date ( 'Ymd', $wkstart );
-$wkend = $wkstart + ( 86400 * ( $DISPLAY_WEEKENDS == 'N' ? 5 : 7 ) );
+$wkend = $wkstart + ( 86400 * ( $DISPLAY_WEEKENDS === 'N' ? 5 : 7 ) );
 
-if ( $DISPLAY_WEEKENDS == 'N' ) {
-  if ( $WEEK_START == 1 )
+if ( $DISPLAY_WEEKENDS === 'N' ) {
+  if ( $WEEK_START === 1 )
     $end_ind = 4;
   else {
     $start_ind = 1;
@@ -34,7 +34,7 @@ $repeated_events = read_repeated_events ( ( strlen ( $user )
 $events = read_events ( ( strlen ( $user )
   ? $user : $login ), $wkstart, $wkend, $cat_id );
 
-if ( $WEEK_START == 0 && $DISPLAY_WEEKENDS == 'N' )
+if ( $WEEK_START === 0 && $DISPLAY_WEEKENDS === 'N' )
   $wkstart = $wkstart - 86400;
 
 for ( $i = 0; $i < 7; $i++ ) {
@@ -60,14 +60,14 @@ echo '
       <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '', false )
  . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
  . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span>'
- . ( $DISPLAY_WEEKNUMBER == 'Y' ? '<br>
+ . ( $DISPLAY_WEEKNUMBER === 'Y' ? '<br>
       <span class="titleweek">(' . translate ( 'Week' ) . ' '
    . date ( 'W', $wkstart + 86400 ) . ')</span>' : '' ) . '
-      <span class="user">' . ( $single_user == 'N' ? '<br>
+      <span class="user">' . ( $single_user === 'N' ? '<br>
       ' . $user_fullname : '' ) . ( $is_nonuser_admin ? '<br>-- '
    . translate ( 'Admin mode' ) . ' --' : '' ) . ( $is_assistant ? '<br>-- '
    . translate ( 'Assistant mode' ) . ' --' : '' ) . '</span>'
- . ( $CATEGORIES_ENABLED == 'Y' ? '<br><br>'
+ . ( $CATEGORIES_ENABLED === 'Y' ? '<br><br>'
    . print_category_menu( 'week', sprintf ( "%04d%02d%02d", $thisyear,
       $thismonth, $thisday ), $cat_id ) : '' ) . '
     </div><br>
@@ -78,11 +78,11 @@ $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
   $date = date ( 'Ymd', $days[$d] );
   $thiswday = date ( 'w', $days[$d] );
-  $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-  if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
+  $is_weekend = ( $thiswday === 0 || $thiswday === 6 );
+  if ( $is_weekend && $DISPLAY_WEEKENDS === 'N' )
     continue;
 
-  $class = ( $date == date ( 'Ymd', $today )
+  $class = ( $date === date ( 'Ymd', $today )
     ? ' class="today">'
     : ( $is_weekend ? ' class="weekend">' : '>' ) );
   echo '
@@ -126,10 +126,10 @@ function print_detailed_entry ( $event, $date ) {
   $loginStr = $event->getLogin();
   $name = $event->getName();
 
-  $class = ( $login != $loginStr && strlen ( $loginStr )
-    ? 'layer' : ( $event->getStatus() == 'W' ? 'unapproved' : '' ) ) . 'entry';
+  $class = ( $login !== $loginStr && strlen ( $loginStr )
+    ? 'layer' : ( $event->getStatus() === 'W' ? 'unapproved' : '' ) ) . 'entry';
 
-  if ( $getExtStr != '' ) {
+  if ( $getExtStr !== '' ) {
     $id = $getExtStr;
     $name .= ' (' . translate ( 'cont.' ) . ')';
   } else
@@ -147,14 +147,14 @@ function print_detailed_entry ( $event, $date ) {
   if ( strlen ( $user ) > 0 )
     echo '&amp;user=' . $user;
   else
-  if ( $class == 'layerentry' )
+  if ( $class === 'layerentry' )
     echo '&amp;user=' . $loginStr;
 
   echo '<img src="images/bootstrap-icons/circle-fill.svg" class="bullet" alt="view icon">';
-  if ( $login != $loginStr && strlen ( $loginStr ) ) {
+  if ( $login !== $loginStr && strlen ( $loginStr ) ) {
     if ( $layers ) {
       foreach ( $layers as $layer ) {
-        if ( $layer['cal_layeruser'] == $loginStr ) {
+        if ( $layer['cal_layeruser'] === $loginStr ) {
           $in_span = true;
           echo '
               <span style="color:#' . $layer['cal_color'] . ';">';
@@ -175,12 +175,12 @@ function print_detailed_entry ( $event, $date ) {
     echo $timestr . '&raquo;&nbsp;';
   }
 
-  if ( $login != $user && $evAccessStr == 'R' && strlen ( $user ) )
+  if ( $login !== $user && $evAccessStr === 'R' && strlen ( $user ) )
     $PN = $PD = '(' . translate ( 'Private' ) . ')';
-  elseif ( $login != $loginStr && $evAccessStr == 'R' &&
+  elseif ( $login !== $loginStr && $evAccessStr === 'R' &&
     strlen ( $loginStr ) )
     $PN = $PD = '(' . translate ( 'Private' ) . ')';
-  elseif ( $login != $loginStr && strlen ( $loginStr ) ) {
+  elseif ( $login !== $loginStr && strlen ( $loginStr ) ) {
     $PN = htmlspecialchars ( $name );
     $PD = activate_urls ( htmlspecialchars ( $descStr ) );
   } else {
@@ -193,7 +193,7 @@ function print_detailed_entry ( $event, $date ) {
   echo $PN . '</a>' . ( $evPri ? '
             </strong>' : '' )
   # Only display description if it is different than the event name.
-  . ( $PN != $PD ? ' - ' . $PD : '' ) . '<br>';
+  . ( $PN !== $PD ? ' - ' . $PD : '' ) . '<br>';
 
   $eventinfo .= build_entry_popup ( 'eventinfo-' . $linkid, $loginStr,
     $descStr, $timestr, site_extras_for_popup ( $id ) );
@@ -218,8 +218,8 @@ function print_det_date_entries ( $date, $user, $ssi ) {
   $ev = combine_and_sort_events ( get_entries ( $date ),
     get_repeating_entries ( $user, $date ) );
   for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
-    if ( ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED != 'N' ) ||
-      $ev[$i]->getStatus() == 'A' )
+    if ( ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED !== 'N' ) ||
+      $ev[$i]->getStatus() === 'A' )
       print_detailed_entry ( $ev[$i], $date );
   }
 }

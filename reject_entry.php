@@ -5,7 +5,7 @@ $mail = new WebCalMailer;
 
 $error = '';
 
-if ( $readonly == 'Y' )
+if ( $readonly === 'Y' )
   $error = print_not_auth();
 
 // Give user a chance to add comments to rejection email.
@@ -46,12 +46,12 @@ $user = getValue ( 'user' );
 $id = getValue ( 'id' );
 
 // Allow administrators to approve public events.
-$app_user = ( $PUBLIC_ACCESS == 'Y' && ! empty ( $public ) && $is_admin
+$app_user = ( $PUBLIC_ACCESS === 'Y' && ! empty ( $public ) && $is_admin
   ? '__public__' : ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 
 // If User Access Control is enabled,
 // we check to see if they are allowed to approve for the specified user.
-if ( access_is_enabled() && ! empty ( $user ) && $user != $login ) {
+if ( access_is_enabled() && ! empty ( $user ) && $user !== $login ) {
   if ( access_user_calendar ( 'approve', $user ) )
     $app_user = $user;
 }
@@ -100,9 +100,9 @@ if ( empty ( $error ) && $id > 0 ) {
     $user_TIMEZONE = get_pref_setting ( $partlogin[$i], 'TIMEZONE' );
     set_env ( 'TZ', $user_TIMEZONE );
     $user_language = get_pref_setting ( $partlogin[$i], 'LANGUAGE' );
-    if ( $send_user_mail == 'Y' &&
-      strlen ( $tempemail ) && $SEND_EMAIL != 'N' && $can_mail == 'Y' ) {
-      reset_language ( empty ( $user_language ) || $user_language == 'none'
+    if ( $send_user_mail === 'Y' &&
+      strlen ( $tempemail ) && $SEND_EMAIL !== 'N' && $can_mail === 'Y' ) {
+      reset_language ( empty ( $user_language ) || $user_language === 'none'
         ? $LANGUAGE : $user_language );
 
       $msg =
@@ -125,7 +125,7 @@ if ( empty ( $error ) && $id > 0 ) {
         $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
         $msg .= '
 
-' . ( $htmlmail == 'Y' ? activate_urls ( $url ) : $url );
+' . ( $htmlmail === 'Y' ? activate_urls ( $url ) : $url );
       }
       if ( strlen ( $comments ) )
         $msg .= '
@@ -148,10 +148,10 @@ if ( empty ( $error ) && $id > 0 ) {
 // Return to login TIMEZONE.
 set_env ( 'TZ', $TIMEZONE );
 if ( empty ( $error ) && empty ( $mailerError ) ) {
-  if ( ! empty ( $ret ) && $ret == 'listall' )
+  if ( ! empty ( $ret ) && $ret === 'listall' )
     do_redirect ( 'list_unapproved.php' );
   else
-    do_redirect ( ( ! empty ( $ret ) && $ret == 'list'
+    do_redirect ( ( ! empty ( $ret ) && $ret === 'list'
         ? 'list_unapproved.php?' : 'view_entry.php?id=' . $id . '&amp;' )
        . 'user=' . $app_user );
 

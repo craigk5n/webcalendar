@@ -12,7 +12,7 @@ function dbtable_get_field_index ( $tablear, $fieldname ) {
   global $error;
 
   for ( $j = 0, $cnt = count ( $tablear ); $j < $cnt; $j++ ) {
-    if ( $tablear[$j]['name'] == $fieldname )
+    if ( $tablear[$j]['name'] === $fieldname )
       return $j;
   }
   $error = 'dbtable_get_field_index: Invalid fieldname "' . $fieldname . '".';
@@ -69,7 +69,7 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
     if ( ! empty ( $action ) && ! empty ( $tablear[$i]['calculated'] ) )
       continue;
 
-    if ( $tablear[$i]['type'] == 'dbdate' ) {
+    if ( $tablear[$i]['type'] === 'dbdate' ) {
       // '2007-12-31'
       $y = substr ( $valuesar[$i], 0, 4 );
       $m = substr ( $valuesar[$i], 5, 2 );
@@ -95,17 +95,17 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
          . ( empty ( $valuesar[$i] ) ? '' : ' value="'
            . htmlspecialchars ( $valuesar[$i] ) . '"' )
          . '>';
-      elseif ( $tablear[$i]['type'] == 'boolean' )
+      elseif ( $tablear[$i]['type'] === 'boolean' )
         $ret .= '
                         <input type="radio" value="Y" name="'
-         . $tablear[$i]['name'] . '"' . ( $valuesar[$i] == 'Y' ? $checked : '' )
+         . $tablear[$i]['name'] . '"' . ( $valuesar[$i] === 'Y' ? $checked : '' )
          . '>' . $yesStr . '&nbsp;&nbsp;&nbsp;
                         <input type="radio" value="N" name="'
-         . $tablear[$i]['name'] . '"' . ( $valuesar[$i] != 'Y' ? $checked : '' )
+         . $tablear[$i]['name'] . '"' . ( $valuesar[$i] !== 'Y' ? $checked : '' )
          . '>' . $noStr;
-      elseif ( $tablear[$i]['type'] == 'date' )
+      elseif ( $tablear[$i]['type'] === 'date' )
         $ret .= date_selection ( $tablear[$i]['name'], $valuesar[$i] );
-      elseif ( $tablear[$i]['type'] == 'dbdate' )
+      elseif ( $tablear[$i]['type'] === 'dbdate' )
         $ret .= date_selection ( $tablear[$i]['name'],
           sprintf ( "%04d%02d%02d", $y, $m, $d ) );
       else
@@ -114,12 +114,12 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
       if ( ! empty ( $valuesar[$i] ) ) {
         if ( in_array ( $tablear[$i]['type'], ['float', 'int', 'text'] ) )
           $ret .= htmlentities ( $valuesar[$i] );
-        elseif ( $tablear[$i]['type'] == 'boolean' )
-          $ret .= ( empty ( $valuesar[$i] ) || $valuesar[$i] == 'Y'
+        elseif ( $tablear[$i]['type'] === 'boolean' )
+          $ret .= ( empty ( $valuesar[$i] ) || $valuesar[$i] === 'Y'
             ? $yesStr : $noStr );
-        elseif ( $tablear[$i]['type'] == 'date' )
+        elseif ( $tablear[$i]['type'] === 'date' )
           $ret .= date_to_str ( $valuesar[$i] );
-        elseif ( $tablear[$i]['type'] == 'dbdate' )
+        elseif ( $tablear[$i]['type'] === 'dbdate' )
           $ret .= date_to_str ( sprintf ( "%04d%02d%02d", $y, $m, $d ) );
         else
           $ret .= '(type ' . $tablear[$i]['type'] . ' not supported)';
@@ -238,9 +238,9 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
           $ret .= '
                     <td style="background-color:' . $CELLBG
            . '; vertical-align:top;">';
-          if ( $tablear[$ind]['type'] == 'date' )
+          if ( $tablear[$ind]['type'] === 'date' )
             $val = date_to_str ( $row[$i], '', 1, 1 );
-          elseif ( $tablear[$ind]['type'] == 'dbdate' )
+          elseif ( $tablear[$ind]['type'] === 'dbdate' )
             $val = date_to_str ( sprintf ( "%04d%02d%02d",
                 substr ( $row[$i], 0, 4 ),
                 substr ( $row[$i], 5, 2 ),

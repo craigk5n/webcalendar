@@ -26,7 +26,7 @@ if ( ! empty ( $_POST ) ) {
   $process_user = getPostValue ( 'process_user' );
   if ( ! empty ( $process_action ) ) {
     foreach ( $_POST as $tid => $app_user ) {
-      if ( substr ( $tid, 0, 5 ) == 'entry' ) {
+      if ( substr ( $tid, 0, 5 ) === 'entry' ) {
         $type = substr ( $tid, 5, 1 );
         $id = substr ( $tid, 6 );
         if ( empty ( $error ) && $id > 0 )
@@ -37,7 +37,7 @@ if ( ! empty ( $_POST ) ) {
 }
 
 // Only admin user or assistant can specify a username other than his own.
-if ( ! $is_admin && $user != $login && ! $is_assistant && ! access_is_enabled() )
+if ( ! $is_admin && $user !== $login && ! $is_assistant && ! access_is_enabled() )
   $user = $login;
 // Make sure we return after editing an event via this page.
 remember_this_view();
@@ -101,7 +101,7 @@ function list_unapproved ( $user ) {
 
       $linkid = "pop$id-$key";
       $timestr = '';
-      if ( $time > 0 || ( $time == 0 && $duration != 1440 ) ) {
+      if ( $time > 0 || ( $time === 0 && $duration !== 1440 ) ) {
         $eventstart = date_to_epoch ( $date . $time );
         $eventstop = $eventstart + $duration;
         $eventdate = date_to_str ( date ( 'Ymd', $eventstart ) );
@@ -111,15 +111,15 @@ function list_unapproved ( $user ) {
         // Don't shift date if All Day or Untimed.
         $eventdate = date_to_str ( $date );
         // If All Day display in popup.
-        if ( $time == 0 && $duration == 1440 )
+        if ( $time === 0 && $duration === 1440 )
           $timestr = $allDayStr;
       }
 
-      $ret .= ( $count == 0 ? '
+      $ret .= ( $count === 0 ? '
       <tr>
         <td colspan="5"><h3>' . $temp_fullname . '&nbsp;' . $rssLink . '</h3></td>
       </tr>' : '' ) . '
-      <tr ' . ( $count % 2 == 0 ? '' : 'class="odd"' ) . '>
+      <tr ' . ( $count % 2 === 0 ? '' : 'class="odd"' ) . '>
         <td width="5%" class="alignright"><input type="checkbox" name="'
        . $entryID . '" value="' . $user . '"></td>
         <td><a title="' . $viewStr . '" class="entry" id="' . $linkid
@@ -162,7 +162,7 @@ function list_unapproved ( $user ) {
         </td>
       </tr>';
   }
-  if ( $count == 0 )
+  if ( $count === 0 )
     $noret .= '
       <tr>
         <td colspan="5" class="nounapproved">'
@@ -186,7 +186,7 @@ foreach ( $non_users as $nonuser ) {
 
 // If a user is specified, we list just that user.
 if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
-    access_is_enabled() ) && ! empty ( $user ) && $user != $login ) {
+    access_is_enabled() ) && ! empty ( $user ) && $user !== $login ) {
   if ( ! access_is_enabled() ||
       access_user_calendar ( 'approve', $user ) ) {
     $app_user_hash[$user] = 1;
@@ -199,7 +199,7 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
   $app_user_hash[$login] = 1;
   $app_users[] = $login;
   if ( access_is_enabled() ) {
-    $all = ( $NONUSER_ENABLED == 'Y'
+    $all = ( $NONUSER_ENABLED === 'Y'
       ? array_merge ( get_my_users(), $my_non_users )
       : get_my_users() );
 
@@ -212,8 +212,8 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
       }
     }
   } else {
-    if ( $is_admin && $PUBLIC_ACCESS == 'Y' &&
-      ( empty ( $user ) || $user != '__public__' ) ) {
+    if ( $is_admin && $PUBLIC_ACCESS === 'Y' &&
+      ( empty ( $user ) || $user !== '__public__' ) ) {
       $app_users_hash['__public__'] = 1;
       $app_users[] = '__public__';
     }
@@ -255,7 +255,7 @@ echo '
           z;
 
         for ( z = 0; z < theForm.length; z++ ) {
-          if ( theForm[z].type == \'checkbox\' && theForm[z].value == user )
+          if ( theForm[z].type === \'checkbox\' && theForm[z].value === user )
             theForm[z].checked = true;
         }
       }
@@ -265,7 +265,7 @@ echo '
           z;
 
         for ( z = 0; z < theForm.length; z++ ) {
-          if ( theForm[z].type == \'checkbox\' && theForm[z].value == user )
+          if ( theForm[z].type === \'checkbox\' && theForm[z].value === user )
             theForm[z].checked = false;
         }
       }

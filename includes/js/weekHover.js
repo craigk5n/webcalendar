@@ -1,26 +1,26 @@
 function highlightAncestor(ele, ancestorTag) {
   var ancestor = ele.parentNode;
-  while (ancestor.tagName.toLowerCase() != ancestorTag.toLowerCase()) {
+  while (ancestor.tagName.toLowerCase() !== ancestorTag.toLowerCase()) {
     ancestor = ancestor.parentNode;
   }
-  if (ancestor.className.search(/\bhighlight\b/) == -1) {
+  if (ancestor.className.search(/\bhighlight\b/) === -1) {
     ancestor.className += " highlight";
   }
 }
 
 function unhighlightAncestor(ele, ancestorTag) {
   var ancestor = ele.parentNode;
-  while (ancestor.tagName.toLowerCase() != ancestorTag.toLowerCase()) {
+  while (ancestor.tagName.toLowerCase() !== ancestorTag.toLowerCase()) {
     ancestor = ancestor.parentNode;
   }
-  while (ancestor.className.search(/\bhighlight\b/) != -1) {
+  while (ancestor.className.search(/\bhighlight\b/) !== -1) {
     ancestor.className = ancestor.className.replace(/\bhighlight\b/, "");
   }
 }
 
 function addLoadEvent(func) {
   var oldonload = window.onload;
-  if (typeof window.onload != 'function') {
+  if (typeof window.onload !== 'function') {
     window.onload = func;
   } else {
     window.onload = function() {
@@ -36,7 +36,7 @@ function setupHovers() {
 
   for (var i = 0; i < links.length; i++) {
     if (weeknum.test(links[i].className)) {
-      if (typeof links[i].onmouseover != 'function') {
+      if (typeof links[i].onmouseover !== 'function') {
         links[i].onmouseover = function() { highlightAncestor(this, 'TR'); };
       } else {
         var mouseover = links[i].onmouseover;
@@ -46,7 +46,7 @@ function setupHovers() {
         }
       }
 
-      if (typeof links[i].onmouseout != 'function') {
+      if (typeof links[i].onmouseout !== 'function') {
         links[i].onmouseout = function() { unhighlightAncestor(this, 'TR'); };
       } else {
         var mouseout = links[i].onmouseout;

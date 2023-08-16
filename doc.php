@@ -76,18 +76,18 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       dbi_free_result ( $res );
     }
 
-    if ( ($login != '__public__') && ($PUBLIC_ACCESS_OTHERS == 'Y') ) {
+    if ( ($login !== '__public__') && ($PUBLIC_ACCESS_OTHERS === 'Y') ) {
       $can_view = true;
     }
     if ( ! $can_view ) {
       $check_group = false;
       // if not a participant in the event, must be allowed to look at
       // other user's calendar.
-      if ( $login == '__public__' ) {
-        if ( $PUBLIC_ACCESS_OTHERS == 'Y' )
+      if ( $login === '__public__' ) {
+        if ( $PUBLIC_ACCESS_OTHERS === 'Y' )
           $check_group = true;
       } else {
-        if ( $ALLOW_VIEW_OTHER == 'Y' )
+        if ( $ALLOW_VIEW_OTHER === 'Y' )
           $check_group = true;
       }
       // If $check_group is true now, it means this user can look at the
@@ -125,13 +125,13 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
         $can_view = false;
     }
   }
-  $hide_details = ( $login == '__public__' &&
-    ! empty ( $OVERRIDE_PUBLIC ) && $OVERRIDE_PUBLIC == 'Y' );
+  $hide_details = ( $login === '__public__' &&
+    ! empty ( $OVERRIDE_PUBLIC ) && $OVERRIDE_PUBLIC === 'Y' );
 
   // If they still cannot view, make sure they are not looking at a nonuser
   // calendar event where the nonuser is the _only_ participant.
   if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
-    $NONUSER_ENABLED == 'Y' ) {
+    $NONUSER_ENABLED === 'Y' ) {
     $nonusers = get_nonuser_cals();
     $nonuser_lookup = [];
     for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {
@@ -166,7 +166,7 @@ if ( ! empty ( $error ) ) {
   exit;
 }
 
-$disp = ( $type == 'A' ? 'attachment' : 'inline' );
+$disp = ( $type === 'A' ? 'attachment' : 'inline' );
 
 // Print out data now.
 Header ( 'Content-Length: ' . $size );

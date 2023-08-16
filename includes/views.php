@@ -20,7 +20,7 @@ function view_init ( $view_id )
   //set this to prove we in are inside a custom view page
   $custom_view = true;
 
-  if ( ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'N' )
+  if ( ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER === 'N' )
     && ! $is_admin ) {
     // not allowed...
     send_to_preferred_view();
@@ -34,7 +34,7 @@ function view_init ( $view_id )
   $view_type = '';
   $viewcnt = count ( $views );
   for ( $i = 0; $i < $viewcnt; $i++ ) {
-    if ( $views[$i]['cal_view_id'] == $view_id ) {
+    if ( $views[$i]['cal_view_id'] === $view_id ) {
       $view_name = htmlspecialchars ( $views[$i]['cal_name'] );
       $view_type = $views[$i]['cal_view_type'];
     }
@@ -64,7 +64,7 @@ function view_get_user_list ( $view_id ) {
   if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
       $ret[] = $row[0];
-      if ( $row[0] == '__all__' )
+      if ( $row[0] === '__all__' )
         $all_users = true;
     }
     dbi_free_result ( $res );
@@ -81,14 +81,14 @@ function view_get_user_list ( $view_id ) {
   } else {
     $myusers = get_my_users ( '', 'view' );
 
-    if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
+    if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED === 'Y' ) {
       $myusers = array_merge ( $myusers, get_my_nonusers ( $login, true, 'view' ) );
     }
     // Make sure this user is allowed to see all users in this view
     // If this is a global view, it may include users that this user
     // is not allowed to see.
     if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
-      $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
+      $USER_SEES_ONLY_HIS_GROUPS === 'Y' ) {
       $userlookup = [];
       $myusercnt = count ( $myusers );
       for ( $i = 0; $i < $myusercnt; $i++ ) {
@@ -109,7 +109,7 @@ function view_get_user_list ( $view_id ) {
     $retcnt = count ( $ret );
     for ( $i = 0; $i < $myusercnt; $i++ ) {
       for ( $j = 0; $j < $retcnt; $j++ ) {
-        if ( $myusers[$i]['cal_login'] == $ret[$j] ) {
+        if ( $myusers[$i]['cal_login'] === $ret[$j] ) {
           $sortlist[] = $ret[$j];
           break;
         }

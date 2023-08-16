@@ -69,7 +69,7 @@ if ( empty ( $login ) ) {
       user_valid_login ( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'], true ) )
     $login = $_SERVER['PHP_AUTH_USER'];
 
-  if ( empty ( $login ) || $login != $_SERVER['PHP_AUTH_USER'] ) {
+  if ( empty ( $login ) || $login !== $_SERVER['PHP_AUTH_USER'] ) {
     $_SERVER['PHP_AUTH_PW'] = $_SERVER['PHP_AUTH_USER'] = '';
     unset ( $_SERVER['PHP_AUTH_USER'] );
     unset ( $_SERVER['PHP_AUTH_PW'] );
@@ -94,9 +94,9 @@ if ( ! $is_admin || ( access_is_enabled() && !
 
 $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
 // This should work ok with RSS, may need to hardcode fallback value.
-$lang = languageToAbbrev ( $LANGUAGE == 'Browser-defined' || $LANGUAGE == 'none'
+$lang = languageToAbbrev ( $LANGUAGE === 'Browser-defined' || $LANGUAGE === 'none'
   ? $lang : $LANGUAGE );
-if ( $lang == 'en' )
+if ( $lang === 'en' )
   $lang = 'en-us'; //the RSS 2.0 default.
 
 $appStr = generate_application_name();
@@ -183,7 +183,7 @@ function rss_activity_log ( $sys, $entries ) {
       $l_etype = $row[9];
       $l_description = $row[10];
       // convert lines to<br> if no HTML formatting found
-      if ( strpos ( $l_description, "</" ) == false ) {
+      if ( strpos ( $l_description, "</" ) === false ) {
         $l_description = nl2br ( $l_description );
       }
     }
@@ -195,7 +195,7 @@ function rss_activity_log ( $sys, $entries ) {
       . htmlspecialchars( $l_ename ) . ']]></title>' . "\n  <link>"
       . $SERVER_URL . 'view_entry.php?id=' . $l_eid . "</link>\n"
       . '  <description>';
-    if ( $ALLOW_HTML_DESCRIPTION == 'Y' ) {
+    if ( $ALLOW_HTML_DESCRIPTION === 'Y' ) {
       $x = str_replace ( '&', '&amp;', $l_description );
       $x = str_replace ( '&amp;amp;', '&amp;', $x );
       $ret .= $x;

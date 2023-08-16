@@ -28,15 +28,15 @@ function sort_byday( $a, $b ) {
   $val_a = $byday_values[substr( $a, -2 )];
   $val_b = $byday_values[substr( $b, -2 )];
 
-  if( $len_a != $len_b )
+  if( $len_a !== $len_b )
     return ( $len_a < $len_b ? -1 : 1 );
-  elseif( $len_a == 2 )
+  elseif( $len_a === 2 )
     return strcmp( $val_a, $val_b );
   else { // They start with numeric offsets.
     $offset_a = substr( $a, 0, $len_a - 2 );
     $offset_b = substr( $b, 0, $len_b - 2 );
 
-    if( $offset_a == $offset_b )
+    if( $offset_a === $offset_b )
       return strcmp( $val_a, $val_b );
     else // Add weight to weekday value to help sort.
       return strcmp( abs( $offset_a ) + $val_a * 10,
@@ -155,7 +155,7 @@ $timetype      = getPostValue( 'timetype' );
 $weekdays_only = getPostValue( 'weekdays_only' );
 $wkst          = getPostValue( 'wkst' );
 
-$description = ( strlen( $description ) == 0 || $description == '<br>'
+$description = ( strlen( $description ) === 0 || $description === '<br>'
   ? $name : $description );
 
 // For public events, we don't EVER allow HTML tags.  There is just too
@@ -164,7 +164,7 @@ $description = ( strlen( $description ) == 0 || $description == '<br>'
 // webcalendar:
 //   https://www.upsploit.com/index.php/advisories/download/UPS-2010-0011
 // This same technique could be used to delete all events and other bad stuff.
-if ( $login == '__public__' ) {
+if ( $login === '__public__' ) {
   $name = strip_tags ( $name );
   $description = strip_tags ( $description );
   $location = strip_tags ( $location );
@@ -253,15 +253,15 @@ if( empty( $reminder_minute ) )
   $reminder_minute = 0;
 
 // Timed event.
-if( $timetype == 'T' ) {
+if( $timetype === 'T' ) {
   $entry_hour += $entry_ampm;
 
-  if( $eType == 'task' )
+  if( $eType === 'task' )
     $due_hour += $due_ampm;
 }
 
 // Use end times
-if( $TIMED_EVT_LEN == 'E' && $eType != 'task' )
+if( $TIMED_EVT_LEN === 'E' && $eType !== 'task' )
   $end_hour += $end_ampm;
 else
   $end_hour   =
@@ -276,11 +276,11 @@ else
 // same manner.
 
 // All Day Event.
-if( $timetype == 'A' )
+if( $timetype === 'A' )
   $duration_h = 24;
 
 // Untimed Event
-if( $timetype == 'U' )
+if( $timetype === 'U' )
   $duration_h = 0;
 
 if( strpos( 'AU', $timetype ) !== false ) {
@@ -291,11 +291,11 @@ if( strpos( 'AU', $timetype ) !== false ) {
   $entry_minute = 0;
 }
 // Combine all values to create event start date/time.
-$eventstart = ( $timetype != 'T'
+$eventstart = ( $timetype !== 'T'
   ? gmmktime( $entry_hour, $entry_minute, 0, $month, $day, $year )
   : mktime( $entry_hour, $entry_minute, 0, $month, $day, $year ) );
 
-if( $eType == 'task' ) {
+if( $eType === 'task' ) {
   // Combine all values to create event due date/time - User Time.
   $eventdue =
     mktime( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
@@ -309,10 +309,10 @@ if( $eType == 'task' ) {
 
 // Create event stop from event duration/end values.
 // Note: for any given event, either end times or durations are 0
-if( $TIMED_EVT_LEN == 'E' ) {
+if( $TIMED_EVT_LEN === 'E' ) {
   // User might have entered midnight as an end time
   // if so, we need to jump to next day
-  if( $end_hour === 0 && $end_ampm == 0 )
+  if( $end_hour === 0 && $end_ampm === 0 )
     $day++;
 
   $eventstophour = $end_hour + $duration_h;
@@ -324,15 +324,15 @@ if( $TIMED_EVT_LEN == 'E' ) {
 
 $duration = 0;
 
-if( $eType != 'task' ) {
-  $eventstop = ( $timetype != 'T'
+if( $eType !== 'task' ) {
+  $eventstop = ( $timetype !== 'T'
     ? gmmktime( $eventstophour, $eventstopmin, 0, $month, $day, $year )
     : mktime( $eventstophour, $eventstopmin, 0, $month, $day, $year ) );
 
   // Calculate event duration.
-  if( $timetype == 'A' )
+  if( $timetype === 'A' )
     $duration = 1440;
-  elseif( $timetype == 'T' ) {
+  elseif( $timetype === 'T' ) {
     $duration = ( $eventstop - $eventstart ) / 60;
 
     if( $duration < 0 )
@@ -355,18 +355,18 @@ $old_create_by = ( empty( $user ) ? '' : $user );
 
 if( empty( $id ) ) {
   // New event...
-  $can_edit = (!empty($readonly) && $readonly != 'Y');
+  $can_edit = (!empty($readonly) && $readonly !== 'Y');
 
   if (access_is_enabled())
     $can_edit = access_can_access_function(ACCESS_EVENT_EDIT, $user);
 
-  if ($login == '__public__')
-    $can_edit = access_is_enabled()? $can_edit: $PUBLIC_ACCESS_CAN_ADD == 'Y';
+  if ($login === '__public__')
+    $can_edit = access_is_enabled()? $can_edit: $PUBLIC_ACCESS_CAN_ADD === 'Y';
 
   if (!$is_admin && !$is_assistant && !$is_nonuser_admin) {
     if ($is_nonuser)
       $can_edit = false;
-    else if (!empty($user) && $user != $login && $user != '__public__')
+    else if (!empty($user) && $user !== $login && $user !== '__public__')
       $can_edit = false;
   }
 } else {
@@ -379,7 +379,7 @@ if( empty( $id ) ) {
     // Value may be needed later for recreating event.
     $old_create_by = $row[0];
 
-    if( ( $row[0] == $login ) || ( ( $user == $row[0] )
+    if( ( $row[0] === $login ) || ( ( $user === $row[0] )
         && ( $is_assistant || $is_nonuser_admin ) ) )
       $can_edit = true;
     dbi_free_result( $res );
@@ -414,8 +414,8 @@ if( ! $can_edit && empty( $error ) )
 
 // CAPTCHA
 if( file_exists( 'includes/classes/captcha/captcha.php' )
-    && $login == '__public__'
-    && ! empty( $ENABLE_CAPTCHA ) && $ENABLE_CAPTCHA == 'Y' ) {
+    && $login === '__public__'
+    && ! empty( $ENABLE_CAPTCHA ) && $ENABLE_CAPTCHA === 'Y' ) {
   if( function_exists( 'imagecreatetruecolor' ) ) {
     require_once 'includes/classes/captcha/captcha.php';
     $res = captcha::check();
@@ -438,13 +438,13 @@ if( empty( $participants[0] ) ) {
   // There might be a better way to do this,
   // but if Admin sets this value, WebCalendar should respect it.
   if( ! empty( $PUBLIC_ACCESS_DEFAULT_SELECTED )
-      && $PUBLIC_ACCESS_DEFAULT_SELECTED == 'Y' )
+      && $PUBLIC_ACCESS_DEFAULT_SELECTED === 'Y' )
     $participants[1] = '__public__';
 }
 
-if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
+if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD === 'N' ) {
   // Process only if Expert Mode or Weekly.
-  if( $rpt_type == 'weekly' || ! empty( $rptmode ) ) {
+  if( $rpt_type === 'weekly' || ! empty( $rptmode ) ) {
     $bydayAr = explode( ',', $bydayList );
 
     if( ! empty( $bydayAr ) ) {
@@ -461,17 +461,17 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
       $byday = implode( ',', $bydayAll );
 
       // Strip off leading comma if present.
-      if( substr( $byday, 0, 1 ) == ',' )
+      if( substr( $byday, 0, 1 ) === ',' )
         $byday = substr( $byday, 1 );
     }
   }
 
   // This allows users to select on weekdays if daily.
-  if( $rpt_type == 'daily' && ! empty( $weekdays_only ) )
+  if( $rpt_type === 'daily' && ! empty( $weekdays_only ) )
     $byday = 'MO,TU,WE,TH,FR';
 
   // Process only if expert mode and MonthbyDate or Yearly.
-  if( ( $rpt_type == 'monthlyByDate' || $rpt_type == 'yearly' )
+  if( ( $rpt_type === 'monthlyByDate' || $rpt_type === 'yearly' )
       && ! empty( $rptmode ) ) {
     $bymonthdayAr = explode( ',', $bymonthdayList );
 
@@ -481,11 +481,11 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
       $bymonthday   = implode( ',', $bymonthdayAr );
     }
     // Strip off leading comma if present.
-    if( substr( $bymonthday, 0, 1 ) == ',' )
+    if( substr( $bymonthday, 0, 1 ) === ',' )
       $bymonthday = substr( $bymonthday, 1 );
   }
 
-  if( $rpt_type == 'monthlyBySetPos' ) {
+  if( $rpt_type === 'monthlyBySetPos' ) {
     $bysetposAr = explode( ',', $bysetposList );
 
     if( ! empty( $bysetposAr ) ) {
@@ -494,13 +494,13 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
       $bysetpos   = implode( ',', $bysetposAr );
     }
     // Strip off leading comma if present.
-    if( substr( $bysetpos, 0, 1 ) == ',' )
+    if( substr( $bysetpos, 0, 1 ) === ',' )
       $bysetpos = substr( $bysetpos, 1 );
   }
 
   // If expert mode not selected,
   // we need to set the basic value for monthlyByDay events.
-  if( $rpt_type == 'monthlyByDay' && empty( $rptmode ) && empty( $byday ) )
+  if( $rpt_type === 'monthlyByDay' && empty( $rptmode ) && empty( $byday ) )
     $byday = ceil( $day / 7 ) . $byday_names[ date( 'w', $eventstart ) ];
 
   $bymonth = ( empty( $bymonth ) ? '' : implode( ',', $bymonth ) );
@@ -518,7 +518,7 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
     $exceptions = array();
   else {
     foreach( $exceptions as $i ) {
-      if( substr( $i, 0, 1 ) == '+' )
+      if( substr( $i, 0, 1 ) === '+' )
         $inclusion_list[] = substr( $i, 1, 8 );
       else
         $exception_list[] = substr( $i, 1, 8 );
@@ -558,11 +558,11 @@ if( empty( $wkst ) )
   $wkst = 'MO';
 
 // First check for any schedule conflicts.
-if( empty( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != 'Y' )
+if( empty( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE !== 'Y' )
   $confirm_conflicts = ''; // Security precaution.
 
-if( $ALLOW_CONFLICTS != 'Y' && empty( $confirm_conflicts )
-    && strlen( $entry_hour ) > 0 && $timetype != 'U' && $eType != 'task' ) {
+if( $ALLOW_CONFLICTS !== 'Y' && empty( $confirm_conflicts )
+    && strlen( $entry_hour ) > 0 && $timetype !== 'U' && $eType !== 'task' ) {
   $conf_until = ( empty( $rpt_until ) ? '' : $rpt_until );
   $conf_count = ( empty( $rpt_count ) ? 999 : $rpt_count );
   $dates = get_all_dates( $eventstart, $rpt_type, $rpt_freq,
@@ -642,7 +642,7 @@ if( empty( $error ) ) {
 
   $query_params[] = ( empty( $old_create_by ) ? $login : $old_create_by );
   $query_params[] = gmdate( 'Ymd', $eventstart );
-  $query_params[] = ( ( strlen( $entry_hour ) > 0 && $timetype != 'U' )
+  $query_params[] = ( ( strlen( $entry_hour ) > 0 && $timetype !== 'U' )
     ? gmdate( 'His', $eventstart ) : '-1' );
 
   if( ! empty( $eventcomplete ) )
@@ -659,16 +659,16 @@ if( empty( $error ) ) {
   $query_params[] = ( empty( $priority ) ? '5' : sprintf( "%d", $priority ) );
   $query_params[] = ( empty( $access ) ? 'P' : $access );
 
-  $tmpRpt = ( ! empty( $rpt_type ) && $rpt_type != 'none' );
+  $tmpRpt = ( ! empty( $rpt_type ) && $rpt_type !== 'none' );
 
-  if( $eType == 'event' )
+  if( $eType === 'event' )
     $query_params[] = ( $tmpRpt ? 'M' : 'E' );
-  elseif( $eType == 'journal' )
+  elseif( $eType === 'journal' )
     $query_params[] = ( $tmpRpt ? 'O' : 'J' );
-  elseif( $eType == 'task' )
+  elseif( $eType === 'task' )
     $query_params[] = ( $tmpRpt ? 'N' : 'T' );
 
-  $query_params[] = ( strlen( $name ) == 0 ? 'Unnamed Event' : $name );
+  $query_params[] = ( strlen( $name ) === 0 ? 'Unnamed Event' : $name );
   $query_params[] = $description;
 
   if( ! empty( $location ) )
@@ -689,10 +689,10 @@ if( empty( $error ) ) {
     $error = $dberror . dbi_error();
 
   // Log add/update.
-  if( $eType == 'task' ) {
+  if( $eType === 'task' ) {
     $log_c = LOG_CREATE_T;
     $log_u = LOG_UPDATE_T;
-  } elseif( $eType == 'journal' ) {
+  } elseif( $eType === 'journal' ) {
     $log_c = LOG_CREATE_J;
     $log_u = LOG_UPDATE_J;
   } else {
@@ -702,7 +702,7 @@ if( empty( $error ) ) {
   activity_log( $id, $login, ( $is_assistant || $is_nonuser_admin
     ? $user : $login ), $newevent ? $log_c : $log_u, '' );
 
-  if( $single_user == 'Y' )
+  if( $single_user === 'Y' )
     $participants[0] = $single_user_login;
 
   // Add categories.
@@ -747,7 +747,7 @@ if( empty( $error ) ) {
     if( ! empty( $error ) )
       break;
 
-    if( $i == 'FIELDSET' )
+    if( $i === 'FIELDSET' )
       continue;
 
     $extra_name = $i[0];
@@ -763,17 +763,17 @@ if( empty( $error ) ) {
     $sql = '';
     $query_params = array();
 
-    if( strlen( $extra_name ) || $extra_type == EXTRA_DATE ) {
-      if( $extra_type == EXTRA_CHECKBOX
-          || $extra_type == EXTRA_EMAIL
-          || $extra_type == EXTRA_MULTILINETEXT
-          || $extra_type == EXTRA_RADIO
-          || $extra_type == EXTRA_SELECTLIST
-          || $extra_type == EXTRA_TEXT
-          || $extra_type == EXTRA_URL
-          || $extra_type == EXTRA_USER ) {
+    if( strlen( $extra_name ) || $extra_type === EXTRA_DATE ) {
+      if( $extra_type === EXTRA_CHECKBOX
+          || $extra_type === EXTRA_EMAIL
+          || $extra_type === EXTRA_MULTILINETEXT
+          || $extra_type === EXTRA_RADIO
+          || $extra_type === EXTRA_SELECTLIST
+          || $extra_type === EXTRA_TEXT
+          || $extra_type === EXTRA_URL
+          || $extra_type === EXTRA_USER ) {
         // We were passed an array instead of a string.
-        if( $extra_type == EXTRA_SELECTLIST && $extra_arg2 > 0 )
+        if( $extra_type === EXTRA_SELECTLIST && $extra_arg2 > 0 )
           $value = implode( ',', $value );
 
         $sql = 'INSERT INTO webcal_site_extras ( cal_id, cal_name, cal_type,
@@ -782,10 +782,10 @@ if( empty( $error ) ) {
 
         if( ! empty( $extra_email ) ) {
           $value =
-            ( $extra_type == EXTRA_RADIO ? $extra_arg1[$value] : $value );
+            ( $extra_type === EXTRA_RADIO ? $extra_arg1[$value] : $value );
           $extra_email_data .= $extra_name . ': ' . $value . "\n";
         }
-      } elseif( $extra_type == EXTRA_DATE ) {
+      } elseif( $extra_type === EXTRA_DATE ) {
         $edate = sprintf( "%04d%02d%02d",
           getPostValue( $extra_name . 'year' ),
           getPostValue( $extra_name . 'month' ),
@@ -809,7 +809,7 @@ if( empty( $error ) ) {
       array( $id ) ) )
     $error = $dberror . dbi_error();
 
-  if( $DISABLE_REMINDER_FIELD != 'Y' && $reminder == true ) {
+  if( $DISABLE_REMINDER_FIELD !== 'Y' && $reminder === true ) {
     if( empty( $rem_before ) )
       $rem_before = 'Y';
 
@@ -830,7 +830,7 @@ if( empty( $error ) ) {
     $reminder_offset   =
     $reminder_repeats  = 0;
 
-    if( $rem_when == 'Y' ) { // Use date.
+    if( $rem_when === 'Y' ) { // Use date.
       $reminder_hour += $reminder_ampm;
       $reminder_date = mktime( $reminder_hour, $reminder_minute, 0,
         $reminder_month, $reminder_day, $reminder_year );
@@ -862,7 +862,7 @@ if( empty( $error ) ) {
         $error .= $dberror . dbi_error();
     }
     // Add repeating info.
-    if( ! empty( $rpt_type ) && strlen( $rpt_type ) && $rpt_type != 'none' ) {
+    if( ! empty( $rpt_type ) && strlen( $rpt_type ) && $rpt_type !== 'none' ) {
       $names  = array( 'cal_id', 'cal_type', 'cal_frequency' );
       $values = array( $id, $rpt_type, ( $rpt_freq ? $rpt_freq : 1 ) );
 
@@ -898,7 +898,7 @@ if( empty( $error ) ) {
         $names[]  = 'cal_count';
         $values[] = $rpt_count;
       }
-      if( ! empty ( $rpt_end_use ) && $rpt_end_use == 'u' && ! empty( $rpt_until ) ) {
+      if( ! empty ( $rpt_end_use ) && $rpt_end_use === 'u' && ! empty( $rpt_until ) ) {
         $names[] = 'cal_end';
         $values[] = gmdate( 'Ymd', $rpt_until );
         $names[] = 'cal_endtime';
@@ -917,7 +917,7 @@ if( empty( $error ) ) {
         if( ! dbi_execute( 'INSERT INTO webcal_entry_repeats_not
             ( cal_id, cal_date, cal_exdate ) VALUES ( ?, ?, ? )',
             array( $id, substr( $i, 1, 8 ),
-              ( ( substr( $i, 0, 1 ) == '+' ) ? 0 : 1 ) ) ) )
+              ( ( substr( $i, 0, 1 ) === '+' ) ? 0 : 1 ) ) ) )
           $error = $dberror . dbi_error();
       }
     } //end exceptions
@@ -933,7 +933,7 @@ if( empty( $error ) ) {
     foreach ($old_status as $old_participant => $dummy) {
       $found_flag = false;
       foreach( $participants as $i ) {
-        if( $i == $old_participant ) {
+        if( $i === $old_participant ) {
           $found_flag = true;
           break;
         }
@@ -948,7 +948,7 @@ if( empty( $error ) ) {
       $is_nonuser_admin = user_is_nonuser_admin( $login, $old_participant );
 
       // Don't send mail if editing a non-user calendar and we are the admin.
-      if( ! $found_flag && ! $is_nonuser_admin && $can_email == 'Y' ) {
+      if( ! $found_flag && ! $is_nonuser_admin && $can_email === 'Y' ) {
         // Only send mail if their email address is filled in.
         $do_send =
           get_pref_setting( $old_participant, 'EMAIL_EVENT_DELETED' );
@@ -960,12 +960,12 @@ if( empty( $error ) ) {
         set_env( 'TZ', $user_TIMEZONE );
         user_load_variables( $old_participant, 'temp' );
 
-        if( $old_participant != $login && ! empty( $tempemail )
-            && $do_send == 'Y' && $SEND_EMAIL != 'N' ) {
-          reset_language( empty( $user_language ) || $user_language == 'none'
+        if( $old_participant !== $login && ! empty( $tempemail )
+            && $do_send === 'Y' && $SEND_EMAIL !== 'N' ) {
+          reset_language( empty( $user_language ) || $user_language === 'none'
             ? $LANGUAGE : $user_language );
 
-          $fmtdate = ( $timetype == 'T'
+          $fmtdate = ( $timetype === 'T'
             ? date( 'Ymd', $eventstart ) : gmdate( 'Ymd', $eventstart ) );
           $msg = str_replace( 'XXX', $tempfullname, $helloStr ) . "\n\n"
            . str_replace( 'XXX', $login_fullname,
@@ -974,7 +974,7 @@ if( empty( $error ) ) {
            . str_replace( 'XXX', $description, $descStr ) . "\n"
            . str_replace( 'XXX', date_to_str( $fmtdate ), $dateStr ) . "\n"
            // Apply user's GMT offset and display their TZID.
-           . ( $timetype != 'T' ? '' : str_replace( 'XXX',
+           . ( $timetype !== 'T' ? '' : str_replace( 'XXX',
              display_time( '', 2, $eventstart, $t_format ),
              $timeStr . "\n\n\n" ) );
 
@@ -983,7 +983,7 @@ if( empty( $error ) ) {
             // DON'T change & to &amp; here. Email will handle it.
             $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
 
-            if( $htmlmail == 'Y' )
+            if( $htmlmail === 'Y' )
               $url = activate_urls( $url );
 
             $msg .= $url . "\n\n";
@@ -991,7 +991,7 @@ if( empty( $error ) ) {
           $mail->WC_Send( $login_fullname, $tempemail,
             $tempfullname, $name, $msg, $htmlmail, $from,
             ( get_pref_setting( $old_participant,
-              'EMAIL_ATTACH_ICS', 'N' ) == 'Y' ? $id : '' ) );
+              'EMAIL_ATTACH_ICS', 'N' ) === 'Y' ? $id : '' ) );
           activity_log( $id, $login, $old_participant, LOG_NOTIFICATION,
             translate( 'User removed from participants list.' ) );
         }
@@ -1006,9 +1006,9 @@ if( empty( $error ) ) {
 
     // If public access, require approval unless
     // $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL is set to 'N'
-    if( $login == '__public__' ) {
+    if( $login === '__public__' ) {
       $status = ( ! empty( $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL )
-          && $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'N'
+          && $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL === 'N'
         ? 'A' // No approval needed.
         : 'W' // Approval required.
         );
@@ -1019,32 +1019,32 @@ if( empty( $error ) ) {
       $send_user_mail = ( empty( $old_status[$i] ) || $entry_changed );
       $tmp_status = ( ! empty( $old_status[$i] ) && ! $send_user_mail
         ? $old_status[$i] : 'W' );
-      $status = ( $i != $login && boss_must_approve_event( $login, $i )
-        && $REQUIRE_APPROVALS == 'Y'
+      $status = ( $i !== $login && boss_must_approve_event( $login, $i )
+        && $REQUIRE_APPROVALS === 'Y'
         && ! $is_nonuser_admin ? $tmp_status : 'A' );
 
       // Set percentage to old_percent if not owner.
       $tmp_percent = ( empty( $old_percent[$i] ) ? 0 : $old_percent[$i] );
 
       // TODO: This logic needs work.
-      $new_percent = ( $i != $login ? $tmp_percent : $percent );
+      $new_percent = ( $i !== $login ? $tmp_percent : $percent );
       // If user is admin and this event was previously approved for public,
       // keep it as approved even though date/time may have changed.
       // This goes against stricter security, but it confuses users to have
       // to re-approve events they already approved.
-      if( $i == '__public__' && $is_admin
+      if( $i === '__public__' && $is_admin
           && ( empty( $old_status['__public__'] )
-            || $old_status['__public__'] == 'A' ) )
+            || $old_status['__public__'] === 'A' ) )
         $status = 'A';
     } else { // New Event.
       $send_user_mail = true;
-      $status = ( $i != $login
-        && boss_must_approve_event( $login, $i ) && $REQUIRE_APPROVALS == 'Y'
+      $status = ( $i !== $login
+        && boss_must_approve_event( $login, $i ) && $REQUIRE_APPROVALS === 'Y'
         && ! $is_nonuser_admin ? 'W' : 'A' );
-      $new_percent = ( $i != $login ? 0 : $percent );
+      $new_percent = ( $i !== $login ? 0 : $percent );
 
       // If admin, no need to approve Public Access Events.
-      if( $i == '__public__' && $is_admin )
+      if( $i === '__public__' && $is_admin )
         $status = 'A';
     } //end new/old event
 
@@ -1067,7 +1067,7 @@ if( empty( $error ) ) {
         $can_email = access_user_calendar( 'email', $i, $login );
 
       // Don't send mail if we are editing a non-user calendar and are the admin.
-      if( ! $is_nonuser_admin && $can_email == 'Y' ) {
+      if( ! $is_nonuser_admin && $can_email === 'Y' ) {
         // Only send mail if their email address is filled in.
         $do_send = get_pref_setting( $i, $newevent
           ? 'EMAIL_EVENT_ADDED' : 'EMAIL_EVENT_UPDATED' );
@@ -1080,14 +1080,14 @@ if( empty( $error ) ) {
         user_load_variables( $i, 'temp' );
 
         if( boss_must_be_notified( $login, $i ) && ! empty( $tempemail )
-            && $do_send == 'Y' && $send_user_mail && $SEND_EMAIL != 'N' ) {
+            && $do_send === 'Y' && $send_user_mail && $SEND_EMAIL !== 'N' ) {
           // We send to creator if they want it.
-          if( $send_own != 'Y' && ( $i == $login ) )
+          if( $send_own !== 'Y' && ( $i === $login ) )
             continue;
 
-          reset_language( empty( $user_language ) || $user_language == 'none'
+          reset_language( empty( $user_language ) || $user_language === 'none'
             ? $LANGUAGE : $user_language );
-          $fmtdate = ( $timetype == 'T'
+          $fmtdate = ( $timetype === 'T'
             ? date( 'Ymd', $eventstart ) : gmdate( 'Ymd', $eventstart ) );
           $msg = str_replace( 'XXX', $tempfullname, $helloStr ) . "\n\n"
            . str_replace( 'XXX', $login_fullname,
@@ -1097,12 +1097,12 @@ if( empty( $error ) ) {
            . str_replace( 'XXX', $description, $descStr ) . "\n"
            . str_replace( 'XXX', date_to_str( $fmtdate ), $dateStr ) . "\n"
            // Apply user's GMT offset and display their TZID.
-           . ( $timetype != 'T' ? ''
+           . ( $timetype !== 'T' ? ''
             : str_replace( 'XXX', display_time( '', 2, $eventstart, $t_format ),
               $timeStr ) . "\n" )
           // Add Site Extra Date if permitted.
           . $extra_email_data . str_replace( 'XXX', generate_application_name(),
-            ( $REQUIRE_APPROVALS == 'Y'
+            ( $REQUIRE_APPROVALS === 'Y'
               ? translate( 'Please look on XXX to accept or reject this appointment.' )
               : translate( 'Please look on XXX to view this appointment.' ) ) );
 
@@ -1111,7 +1111,7 @@ if( empty( $error ) ) {
             // DON'T change & to &amp; here. Email will handle it.
             $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
 
-            if( $htmlmail == 'Y' )
+            if( $htmlmail === 'Y' )
               $url = activate_urls( $url );
 
             $msg .= "\n\n" . $url;
@@ -1119,7 +1119,7 @@ if( empty( $error ) ) {
           // Use WebCalMailer class.
           $mail->WC_Send( $login_fullname, $tempemail,
             $tempfullname, $name, $msg, $htmlmail, $from,
-            ( get_pref_setting( $i, 'EMAIL_ATTACH_ICS', 'N' ) == 'Y'
+            ( get_pref_setting( $i, 'EMAIL_ATTACH_ICS', 'N' ) === 'Y'
               ? $id : '' ) );
           activity_log( $id, $login, $i, LOG_NOTIFICATION, '' );
         }
@@ -1134,8 +1134,8 @@ if( empty( $error ) ) {
   $ext_count = 0;
   $externalparticipants = getPostValue( 'externalparticipants' );
 
-  if( $single_user == 'N' && ! empty( $ALLOW_EXTERNAL_USERS )
-      && $ALLOW_EXTERNAL_USERS == 'Y'
+  if( $single_user === 'N' && ! empty( $ALLOW_EXTERNAL_USERS )
+      && $ALLOW_EXTERNAL_USERS === 'Y'
       && ! empty( $externalparticipants ) ) {
     $lines = explode( "\n", $externalparticipants );
 
@@ -1172,7 +1172,7 @@ if( empty( $error ) ) {
           // Test for duplicate Names.
           if( $i > 0 ) {
             for( $k = $i - 1; $k > 0; $k-- ) {
-              if( $ext_names[$i] == $ext_names[$k] )
+              if( $ext_names[$i] === $ext_names[$k] )
                 $ext_names[$i] .= "[$k]";
             }
           }
@@ -1199,11 +1199,11 @@ if( empty( $error ) ) {
 
         // Send mail notification if enabled.
         // TODO: Move this code into a function...
-        if( $EXTERNAL_NOTIFICATIONS == 'Y' && $SEND_EMAIL != 'N'
+        if( $EXTERNAL_NOTIFICATIONS === 'Y' && $SEND_EMAIL !== 'N'
             && strlen( $ext_emails[$i] ) > 0 ) {
           if( ( ! $newevent && isset( $EXTERNAL_UPDATES )
-              && $EXTERNAL_UPDATES == 'Y' ) || $newevent ) {
-            $fmtdate = ( $timetype == 'T'
+              && $EXTERNAL_UPDATES === 'Y' ) || $newevent ) {
+            $fmtdate = ( $timetype === 'T'
               ? date( 'Ymd', $eventstart ) : gmdate( 'Ymd', $eventstart ) );
             // Strip [\d] from duplicate Names before emailing.
             $ext_names[$i] =
@@ -1214,9 +1214,9 @@ if( empty( $error ) ) {
              . str_replace( 'XXX', $name, $subjStr ) . "\n\n"
              . str_replace( 'XXX', $description, $descStr ) . "\n\n"
              . str_replace( 'XXX', date_to_str( $fmtdate ), $dateStr ) . "\n"
-             . ( $timetype == 'T' ? str_replace( 'XXX',
+             . ( $timetype === 'T' ? str_replace( 'XXX',
                 display_time( '',
-                  ( ! empty( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y'
+                  ( ! empty( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT === 'Y'
                     ? 3 // Do not apply TZ offset & display TZID, which is GMT.
                     : 6 // Display time in server's timezone.
                     ), $eventstart ), $timeStr ) : '' )
@@ -1256,7 +1256,7 @@ if( ! empty( $conflicts ) ) {
     ' . translate( 'Your suggested time of' ) . '
     <span class="bold">';
 
-  if( $timetype == 'A' )
+  if( $timetype === 'A' )
     echo translate( 'All day event' );
   else {
     $time = sprintf( "%d%02d00", $entry_hour, $entry_minute );
@@ -1289,7 +1289,7 @@ if( ! empty( $conflicts ) ) {
 
   echo
   // Allow them to override a conflict if server settings allow it.
-   ( ! empty( $ALLOW_CONFLICT_OVERRIDE ) && $ALLOW_CONFLICT_OVERRIDE == 'Y' ? '
+   ( ! empty( $ALLOW_CONFLICT_OVERRIDE ) && $ALLOW_CONFLICT_OVERRIDE === 'Y' ? '
       <input type="submit" name="confirm_conflicts" value="'
      . translate( 'Save' ) . '">' : '' ) . '
       <input type="button" value="' . translate( 'Cancel' )

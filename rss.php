@@ -79,7 +79,7 @@ load_global_settings();
 
 $WebCalendar->setLanguage();
 
-if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
+if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED !== 'Y' ) {
   header ( 'Content-Type: text/plain' );
   echo print_not_auth();
   exit;
@@ -93,7 +93,7 @@ if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
 $date_in_title = false; //Can override with "rss.php?showdate=1|true".
 $showdate = getValue ( 'showdate' );
 if ( ! empty ( $showdate ) )
-  $date_in_title = ( $showdate == 'true' || $showdate == 1 ? true : false );
+  $date_in_title = ( $showdate === 'true' || $showdate === 1 ? true : false );
 
 $date_format = 'M jS'; //Aug 10th, 8/10
 $time_format = 'g:ia'; //4:30pm, 16:30
@@ -138,7 +138,7 @@ $login = $username;
 if ( $allow_user_override ) {
   $u = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]+', true );
   if ( ! empty ( $u ) ) {
-    if ( $u == 'public' )
+    if ( $u === 'public' )
       $u = '__public__';
     // We also set $login since some functions assume that it is set..
     $login = $username = $u;
@@ -153,25 +153,25 @@ load_user_preferences();
 // .
 // Determine what remote access has been set up by user.
 // This will only be used if $username is not __public__.
-if ( isset ( $USER_REMOTE_ACCESS ) && $username != '__public__' ) {
+if ( isset ( $USER_REMOTE_ACCESS ) && $username !== '__public__' ) {
   if ( $USER_REMOTE_ACCESS > 0 ) // plus confidential
     $allow_access[] = 'C';
 
-  if ( $USER_REMOTE_ACCESS == 2 ) // plus private
+  if ( $USER_REMOTE_ACCESS === 2 ) // plus private
     $allow_access[] = 'R';
 }
 user_load_variables ( $login, 'rss_' );
-$creator = ( $username == '__public__' ) ? 'Public' : $rss_fullname;
+$creator = ( $username === '__public__' ) ? 'Public' : $rss_fullname;
 
-if ( $username != '__public__' &&
-  ( empty ( $USER_RSS_ENABLED ) || $USER_RSS_ENABLED != 'Y' ) ) {
+if ( $username !== '__public__' &&
+  ( empty ( $USER_RSS_ENABLED ) || $USER_RSS_ENABLED !== 'Y' ) ) {
   header ( 'Content-Type: text/plain' );
   echo print_not_auth();
   exit;
 }
 
 $cat_id = '';
-if ( $CATEGORIES_ENABLED == 'Y' ) {
+if ( $CATEGORIES_ENABLED === 'Y' ) {
   $x = getValue ( 'cat_id', '-?[0-9]+', true );
   if ( ! empty ( $x ) ) {
     load_user_categories();
@@ -185,7 +185,7 @@ if ( $load_layers )
 
 // Calculate date range.
 $date = getValue ( 'date', '-?[0-9]+', true );
-if ( empty ( $date ) || strlen ( $date ) != 8 )
+if ( empty ( $date ) || strlen ( $date ) !== 8 )
   // If no date specified, start with today.
   $date = date ( 'Ymd' );
 
@@ -214,7 +214,7 @@ if ( $maxEvents > 100 )
 $x = getValue ( 'repeats', '-?[0-9]+', true );
 if ( ! empty ( $x ) ) {
   $allow_repeats = $x;
-  if ( $x == 2 )
+  if ( $x === 2 )
     $show_daily_events_only_once = true;
 }
 
@@ -222,7 +222,7 @@ $endTime = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays -1, $thisyear );
 $endDate = date ( 'Ymd', $endTime );
 
 /* Pre-Load the repeated events for quicker access */
-if ( $allow_repeats == true )
+if ( $allow_repeats === true )
   $repeated_events = read_repeated_events ( $username, $startTime, $endTime, $cat_id );
 
 /* Pre-load the non-repeating events for quicker access */
@@ -230,9 +230,9 @@ $events = read_events ( $username, $startTime, $endTime, $cat_id );
 
 $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
 // This should work ok with RSS, may need to hardcode fallback value.
-$lang = languageToAbbrev ( $LANGUAGE == 'Browser-defined' || $LANGUAGE == 'none'
+$lang = languageToAbbrev ( $LANGUAGE === 'Browser-defined' || $LANGUAGE === 'none'
   ? $lang : $LANGUAGE );
-if ( $lang == 'en' )
+if ( $lang === 'en' )
   $lang = 'en-us'; //the RSS 2.0 default.
 
 $appStr = generate_application_name();
@@ -271,7 +271,7 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd && $numEvents < $maxEve
   if ( $debug )
     echo '
 
-countentries==' . $entrycnt . ' ' . $rentrycnt . '
+countentries === ' . $entrycnt . ' ' . $rentrycnt . '
 
 ';
 
@@ -307,7 +307,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
       // necessary because 1st occurence of repeating events shows up in
       // $entries AND $rentries & we suppress display of it in $rentries.
       if ( in_array ( $rentries[$j]->getID(),
-            $eventIds ) && $rentries[$j]->getrepeatType() == 'daily' )
+            $eventIds ) && $rentries[$j]->getrepeatType() === 'daily' )
         $reventIds[] = $rentries[$j]->getID();
 
       // Prevent non-Public events from feeding.
@@ -320,7 +320,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
           && ( in_array( $rentries[$j]->getAccess(), $allow_access ) ) ) {
 
         // Show repeating events only once.
-        if ( $rentries[$j]->getrepeatType() == 'daily' )
+        if ( $rentries[$j]->getrepeatType() === 'daily' )
           $reventIds[] = $rentries[$j]->getID();
 
         echo '

@@ -50,7 +50,7 @@ $prevmonth = date ( 'm', $prev );
 $prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
 $prevYmd = date ( 'Ymd', $prev );
 
-if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
+if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR === 'Y' ) {
   $boldDays = true;
   $startdate = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
   $enddate = mktime ( 23, 59, 59, $thismonth + 2, 0, $thisyear );
@@ -64,7 +64,7 @@ $thisdate = date ( 'Ymd', $startdate );
 
 // Get users in this view.
 $viewusers = view_get_user_list ( $id );
-if ( count ( $viewusers ) == 0 )
+if ( count ( $viewusers ) === 0 )
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view.
   $error = translate( 'No users for this view.' );
@@ -88,7 +88,7 @@ $events = $repeated_events = array();
 for ( $i = 0, $cnt = count ( $e_save ); $i < $cnt; $i++ ) {
   $should_add = 1;
   for ( $j = 0, $cnt_j = count ( $events ); $j < $cnt_j && $should_add; $j++ ) {
-    if ( ! $e_save[$i]->getClone() && $e_save[$i]->getID() == $events[$j]->getID() )
+    if ( ! $e_save[$i]->getClone() && $e_save[$i]->getID() === $events[$j]->getID() )
       $should_add = 0;
   }
   if ( $should_add )
@@ -99,14 +99,14 @@ for ( $i = 0, $cnt = count ( $re_save ); $i < $cnt; $i++ ) {
   $should_add = 1;
   for ( $j = 0, $cnt_j = count ( $repeated_events ); $j < $cnt_j && $should_add; $j++ ) {
     if( ! $re_save[$i]->getClone()
-        && $re_save[$i]->getID() == $repeated_events[$j]->getID() )
+        && $re_save[$i]->getID() === $repeated_events[$j]->getID() )
       $should_add = 0;
   }
   if ( $should_add )
     array_push ( $repeated_events, $re_save[$i] );
 }
 
-if ( $DISPLAY_SM_MONTH != 'N' ) {
+if ( $DISPLAY_SM_MONTH !== 'N' ) {
   $prevMonth = display_small_month ( $prevmonth, $prevyear, true, true,
     'prevmonth', 'view_l.php?id=' . $id . '&amp;' );
   $nextMonth = display_small_month ( $nextmonth, $nextyear, true, true,

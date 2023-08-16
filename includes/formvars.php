@@ -34,17 +34,17 @@ function preventHacking ( $name, $instr ) {
   // If this is a POST, require a form key to prevent CSRF
   // Assume all database db changes make use of POST or else
   // they end in "_handler.php" or are one of a handful of known URLs.
-  if ($script == "login.php" || $script=="register.php" ||
-    $script == "search_handler.php") {
+  if ($script === "login.php" || $script === "register.php" ||
+    $script === "search_handler.php") {
     // No form token needed
   } else if ($_SERVER['REQUEST_METHOD'] === 'POST' ||
     ($_SERVER['REQUEST_METHOD'] === 'GET' &&
-    ($script == 'del_entry.php' ||
-    $script == 'add_entry.php' || $script == 'docdel.php' ||
+    ($script === 'del_entry.php' ||
+    $script === 'add_entry.php' || $script === 'docdel.php' ||
     endsWith($script, "_handler.php")))) {
 //echo "KEY CHECK<br>\n";
     $formKey = $_REQUEST['csrf_form_key'];
-    if ($formKey == $_SESSION['csrf_form_key'] && !empty($_SESSION['csrf_form_key'])) {
+    if ($formKey === $_SESSION['csrf_form_key'] && !empty($_SESSION['csrf_form_key'])) {
       // Okay to proceed
 //echo "FORM KEY: $formKey \n"; exit;
     } else {
@@ -96,7 +96,7 @@ function preventHacking ( $name, $instr ) {
 function endsWith($string, $endString)
 {
   $len = strlen($endString);
-  if ($len == 0) {
+  if ($len === 0) {
     return true;
   }
   return (substr($string, -$len) === $endString);

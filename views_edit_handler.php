@@ -9,7 +9,7 @@ $viewtype = getPostValue ( 'viewtype' );
 $users = getPostValue ( 'users' );
 $delete = getPostValue ( 'delete' );
 
-if ( ! $is_admin || $viewisglobal != 'Y' )
+if ( ! $is_admin || $viewisglobal !== 'Y' )
   $viewisglobal = 'N'; // Only admin can create global view.
   //.
 if ( ! empty ( $delete ) )
@@ -44,11 +44,11 @@ else {
       $error = db_error();
   }
   # update user list
-  if ( $error == '' ) {
+  if ( $error === '' ) {
     dbi_execute ( 'DELETE FROM webcal_view_user WHERE cal_view_id = ?',
       [$id] );
     // If selected "All", then just put "__all__" in for username.
-    if ( getPostValue ( 'viewuserall' ) == 'Y' )
+    if ( getPostValue ( 'viewuserall' ) === 'Y' )
       $users = ['__all__'];
 
     $cnt = empty($users) ? 0 : count($users);

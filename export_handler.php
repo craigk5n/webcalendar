@@ -16,7 +16,7 @@ require_once 'includes/init.php';
 require_once 'includes/xcal.php';
 
 $user = getPostValue ( 'user' );
-if ( empty ( $user ) || $user == $login )
+if ( empty ( $user ) || $user === $login )
   load_user_layers();
 
 // Convert time in ("hhmmss") format, plus duration (as a number of minutes),
@@ -100,7 +100,7 @@ function export_pilot_csv( $id ) {
        32 = 0x20 : Busy
        16 = 0x10 : Secret/Private
      */
-     . ( $row[7] == 'C' || $row[7] == 'R' ? '16,' : '0,' )
+     . ( $row[7] === 'C' || $row[7] === 'R' ? '16,' : '0,' )
     // category (int: 0=Unfiled)
     . '0,';
     // untimed (int: 0=Appointment, 1=Untimed)
@@ -212,25 +212,25 @@ function transmit_header( $mime, $file ) {
 /* ********************************** */
 
 $format = getValue ( 'format' );
-if ( $format != 'ical' && $format != 'vcal' && $format != 'pilot-csv' &&
-  $format != 'pilot-text' )
+if ( $format !== 'ical' && $format !== 'vcal' && $format !== 'pilot-csv' &&
+  $format !== 'pilot-text' )
   die_miserable_death ( 'Invalid format "' . htmlspecialchars($format) . '"' );
 $id = getValue ( 'id', '-?[0-9]+', true );
 
 $use_all_dates = getPostValue ( 'use_all_dates' );
-if ( strtolower ( $use_all_dates ) != 'y' )
+if ( strtolower ( $use_all_dates ) !== 'y' )
   $use_all_dates = '';
 
 $include_layers = getPostValue ( 'include_layers' );
-if ( strtolower ( $include_layers ) != 'y' )
+if ( strtolower ( $include_layers ) !== 'y' )
   $include_layers = '';
 
 $include_deleted = getPostValue ( 'include_deleted' );
-if ( strtolower ( $include_deleted ) != 'y' )
+if ( strtolower ( $include_deleted ) !== 'y' )
   $include_deleted = '';
 
 $cat_filter = getPostValue ( 'cat_filter' );
-if ( $cat_filter == 0 )
+if ( $cat_filter === 0 )
   $cat_filter = '';
 
 $endday = getValue ( 'endday', '-?[0-9]+', true );
@@ -253,16 +253,16 @@ if ( empty ( $id ) )
   $id = 'all';
 
 $outputName = 'webcalendar-' . "$login-$id";
-if ( substr ( $format, 0, 4 ) == 'ical' ) {
+if ( substr ( $format, 0, 4 ) === 'ical' ) {
   transmit_header ( 'text/calendar', $outputName . '.ics' );
   export_ical ( $id );
-} elseif ( $format == 'vcal' ) {
+} elseif ( $format === 'vcal' ) {
   transmit_header ( 'text/x-vCalendar', $outputName . '.vcs' );
   export_vcal ( $id );
-} elseif ( $format == 'pilot-csv' ) {
+} elseif ( $format === 'pilot-csv' ) {
   transmit_header ( 'text/csv', $outputName . '.csv' );
   export_pilot_csv ( $id );
-} elseif ( $format == 'pilot-text' ) {
+} elseif ( $format === 'pilot-text' ) {
   transmit_header ( 'text/plain', $outputName . '.txt' );
   export_install_datebook ( $id );
 } else {
@@ -273,6 +273,6 @@ if ( substr ( $format, 0, 4 ) == 'ical' ) {
     <span class="bold">' . $errorStr . ':</span> '
    . translate( 'export format not defined or incorrect.' ) . '<br>
     ' . print_trailer();
-} //end if ($format == "ical")
+} //end if ($format === "ical")
 
 ?>

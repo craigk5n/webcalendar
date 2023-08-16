@@ -138,7 +138,7 @@ $GLOBALS['page_lookup'] = array(
 function access_is_enabled() {
   global $UAC_ENABLED;
 
-  return ( ! empty( $UAC_ENABLED ) && $UAC_ENABLED == 'Y' );
+  return ( ! empty( $UAC_ENABLED ) && $UAC_ENABLED === 'Y' );
 }
 
 /**
@@ -224,19 +224,19 @@ function access_load_user_permissions( $useCache = true ) {
   global $access_other_cals, $ADMIN_OVERRIDE_UAC, $is_admin;
 
   // Don't run this query twice.
-  if( ! empty( $access_other_cals ) && $useCache == true )
+  if( ! empty( $access_other_cals ) && $useCache === true )
     return $access_other_cals;
 
   $admin_override = ( $is_admin && ! empty( $ADMIN_OVERRIDE_UAC )
-      && $ADMIN_OVERRIDE_UAC == 'Y' );
+      && $ADMIN_OVERRIDE_UAC === 'Y' );
   $res = dbi_execute( 'SELECT cal_login, cal_other_user, cal_can_view,
     cal_can_edit, cal_can_approve, cal_can_email, cal_can_invite,
     cal_see_time_only FROM webcal_access_user' );
   while( $res && $row = dbi_fetch_row( $res ) ) {
     // TODO should we set admin_override here to apply to
     // DEFAULT CONFIGURATION only?
-    // $admin_override = ( $row[1] == '__default__' && $is_admin
-    //   && ! empty( $ADMIN_OVERRIDE_UAC ) && $ADMIN_OVERRIDE_UAC == 'Y' );
+    // $admin_override = ( $row[1] === '__default__' && $is_admin
+    //   && ! empty( $ADMIN_OVERRIDE_UAC ) && $ADMIN_OVERRIDE_UAC === 'Y' );
     $key = $row[0] . '.' . $row[1];
     $access_other_cals[$key] = array(
       'cal_login' => $row[0],
@@ -384,7 +384,7 @@ function access_can_access_function( $function, $user = '' ) {
 
   assert( ! empty( $yesno ) );
 
-  return ( $yesno == 'Y' );
+  return ( $yesno === 'Y' );
 }
 
 /**
@@ -423,10 +423,10 @@ function access_can_view_page( $page = '', $user = '' ) {
   $page = basename( $page );
 
   // Handle special cases for publish.php and freebusy.php.
-  if( substr( $page, -3 ) == 'ics' )
+  if( substr( $page, -3 ) === 'ics' )
     $page = 'publish.php';
 
-  if( substr( $page, -3 ) == 'ifb' )
+  if( substr( $page, -3 ) === 'ifb' )
     $page = 'freebusy.php';
 
   // First, check list of exceptions to our rules.
@@ -440,7 +440,7 @@ function access_can_view_page( $page = '', $user = '' ) {
 
   // If the specified user is the currently logged in user, then we have already
   // loaded this user's access, stored in the global variable $access_user.
-  $access = ( ! empty( $login ) && $user == $login && ! empty( $access_user )
+  $access = ( ! empty( $login ) && $user === $login && ! empty( $access_user )
     ? $access_user
     : // User is not logged in. Need to load info from db now.
     access_load_user_functions( $user ) );
@@ -456,7 +456,7 @@ function access_can_view_page( $page = '', $user = '' ) {
     $yesno = get_default_function_access( $page_id, $user );
 
   assert( ! empty( $yesno ) );
-  return ( $yesno == 'Y' );
+  return ( $yesno === 'Y' );
 }
 
 function get_default_function_access( $page_id, $user ) {
@@ -470,7 +470,7 @@ function get_default_function_access( $page_id, $user ) {
     case ACCESS_ADMIN_HOME:
     case ACCESS_SYSTEM_SETTINGS:
     case ACCESS_USER_MANAGEMENT:
-      return( ! empty( $user_is_admin ) && $user_is_admin == 'Y' ? 'Y' : 'N' );
+      return( ! empty( $user_is_admin ) && $user_is_admin === 'Y' ? 'Y' : 'N' );
     default:
       return 'Y';
   }
@@ -483,10 +483,10 @@ function access_user_calendar( $cal_can_xxx, $other_user, $cur_user = '',
   $ADMIN_OVERRIDE_UAC, $ALLOW_VIEW_OTHER, $is_admin, $login;
 
   $admin_override = ( $is_admin && ! empty( $ADMIN_OVERRIDE_UAC )
-    && $ADMIN_OVERRIDE_UAC == 'Y' );
+    && $ADMIN_OVERRIDE_UAC === 'Y' );
 
   if( $admin_override )
-    return( $cal_can_xxx == 'email' || $cal_can_xxx == 'invite'
+    return( $cal_can_xxx === 'email' || $cal_can_xxx === 'invite'
       ? 'Y' : CAN_DOALL );
 
   $access_wt = $ret = $type_wt = 0;
@@ -497,11 +497,11 @@ function access_user_calendar( $cal_can_xxx, $other_user, $cur_user = '',
   if( empty( $cur_user ) && ! empty( $login ) )
     $cur_user = $login;
 
-  if( $cur_user == $other_user ) {
-    if( $login  == '__public__' && $cal_can_xxx == 'approve' )
+  if( $cur_user === $other_user ) {
+    if( $login === '__public__' && $cal_can_xxx === 'approve' )
       return 'N';
 
-    return ( $cal_can_xxx == 'email' || $cal_can_xxx == 'invite'
+    return ( $cal_can_xxx === 'email' || $cal_can_xxx === 'invite'
       ? 'Y' : CAN_DOALL );
   }
 
@@ -509,8 +509,8 @@ function access_user_calendar( $cal_can_xxx, $other_user, $cur_user = '',
   assert( ! empty( $cur_user ) );
 
   if( ! access_is_enabled() ) {
-    if( ! empty( $ALLOW_VIEW_OTHER ) && $cur_user != '__public__'
-        && $cal_can_xxx == 'view' && $ALLOW_VIEW_OTHER == 'Y' )
+    if( ! empty( $ALLOW_VIEW_OTHER ) && $cur_user !== '__public__'
+        && $cal_can_xxx === 'view' && $ALLOW_VIEW_OTHER === 'Y' )
       return 'Y';
 
     return 'N';
@@ -538,22 +538,22 @@ function access_user_calendar( $cal_can_xxx, $other_user, $cur_user = '',
 
   // Check type and access levels.
   if( ! empty( $access ) && ! empty( $type ) ) {
-    if( $access == 'C' )
+    if( $access === 'C' )
       $access_wt = CONF_WT;
 
-    if( $access == 'P' )
+    if( $access === 'P' )
       $access_wt = PUBLIC_WT;
 
-    if( $access == 'R' )
+    if( $access === 'R' )
       $access_wt = PRIVATE_WT;
 
-    if( $type == 'E' || $type == 'M' )
+    if( $type === 'E' || $type === 'M' )
       $type_wt = EVENT_WT;
 
-    if( $type == 'J' || $type == 'O' )
+    if( $type === 'J' || $type === 'O' )
       $type_wt = JOURNAL_WT;
 
-    if( $type == 'T' || $type == 'N' )
+    if( $type === 'T' || $type === 'N' )
       $type_wt = TASK_WT;
 
     $total_wt = $type_wt & $access_wt;

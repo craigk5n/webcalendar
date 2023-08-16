@@ -14,7 +14,7 @@ $error = '';
 if ( empty ( $id ) )
   $error = translate ( 'Invalid entry id.' );
 else
-if ( $CATEGORIES_ENABLED != 'Y' )
+if ( $CATEGORIES_ENABLED !== 'Y' )
   $error = print_not_auth();
 else
 if ( empty ( $categories ) )
@@ -26,7 +26,7 @@ $res = dbi_execute ( 'SELECT cal_status FROM webcal_entry_user
     AND cal_login = ?', [$id, $login] );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
-    if ( $row[0] == 'D' ) // User deleted themself.
+    if ( $row[0] === 'D' ) // User deleted themself.
       $error = print_not_auth();
   } else
     // Not a participant for this event.

@@ -28,7 +28,7 @@ function parse_gitlog ( $cal_file ) {
     $commitId = $author = $date = $message = '';
     $inMessage = false;
     $matches = [];
-    while ( ( $line = fgets ( $fd ) ) != false ) {
+    while ( ( $line = fgets ( $fd ) ) !== false ) {
       $line = rtrim ( $line );
       if ( preg_match ( "/^commit\s+(\S+)/", $line, $matches ) ) {
         if ( $inMessage ) {

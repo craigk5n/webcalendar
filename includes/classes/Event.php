@@ -262,9 +262,9 @@ class Event {
 
     // If public access override event name/description is enabled, then
     // hide the event name and description
-    if ( $GLOBALS['login'] == '__public__' &&
+    if ( $GLOBALS['login'] === '__public__' &&
       ! empty ( $GLOBALS['override_public'] ) &&
-      $GLOBALS['override_public'] == 'Y' ) {
+      $GLOBALS['override_public'] === 'Y' ) {
       $this->_name = $GLOBALS['override_public_text'];
       $this->_description = $GLOBALS['override_public_text'];
     }
@@ -557,11 +557,11 @@ class Event {
   function getCalTypeName() {
     if ( isset ( $this->_calTypeName ) )
       return $this->_calTypeName;
-    if ( $this->_calType == 'E' || $this->_calType == 'M' )
+    if ( $this->_calType === 'E' || $this->_calType === 'M' )
       $this->_calTypeName = 'event';
-    if ( $this->_calType == 'T' || $this->_calType == 'N' )
+    if ( $this->_calType === 'T' || $this->_calType === 'N' )
       $this->_calTypeName = 'task';
-    if ( $this->_calType == 'J' || $this->_calType == 'O' )
+    if ( $this->_calType === 'J' || $this->_calType === 'O' )
       $this->_calTypeName = 'journal';
     return $this->_calTypeName;
   }
@@ -693,7 +693,7 @@ class Event {
    * @access public
    */
   function isAllDay() {
-   $this->_allDay = ( $this->_time == 0 && $this->_duration == 1440? true : false);
+   $this->_allDay = ( $this->_time === 0 && $this->_duration === 1440? true : false);
     return $this->_allDay;
   }
 
@@ -705,8 +705,8 @@ class Event {
    * @access public
    */
   function isTimed() {
-   $this->_timed = ( $this->_time > 0 || ( $this->_time == 0
-     && $this->_duration != 1440 )? true : false);
+   $this->_timed = ( $this->_time > 0 || ( $this->_time === 0
+     && $this->_duration !== 1440 )? true : false);
     return $this->_timed;
   }
 
@@ -718,7 +718,7 @@ class Event {
    * @access public
    */
   function isUntimed() {
-   $this->_untimed = ( $this->_time == -1 && $this->_duration == 0? true : false);
+   $this->_untimed = ( $this->_time === -1 && $this->_duration === 0? true : false);
     return $this->_untimed;
   }
 

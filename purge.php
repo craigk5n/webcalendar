@@ -73,18 +73,18 @@ if ( $do_purge ) {
   echo "</h2>\n";
   $end_date = sprintf ( "%04d%02d%02d", $end_year, $end_month, $end_day );
   $ids = $tail = '';
-  if ( $purge_deleted == 'Y' )
+  if ( $purge_deleted === 'Y' )
     $tail = " AND weu.cal_status = 'D' ";
 
-  if ( $purge_all == 'Y' ) {
-    if ( $username == 'ALL' ) {
+  if ( $purge_all === 'Y' ) {
+    if ( $username === 'ALL' ) {
       $ids =  ['ALL'];
     } else {
       $ids = get_ids ( 'SELECT cal_id FROM webcal_entry '
         . " WHERE cal_create_by = '$username' $tail" );
     }
   } elseif ( $end_date ) {
-    if ( $username != 'ALL' ) {
+    if ( $username !== 'ALL' ) {
       $tail = " AND we.cal_create_by = '$username' $tail";
     } else {
       $tail = '';
@@ -126,13 +126,13 @@ onclick="history.back()"></form
  <td><select class="form-control" name="username">
 <?php
   $userlist = get_my_users();
-  if ($NONUSER_ENABLED == 'Y' ) {
+  if ($NONUSER_ENABLED === 'Y' ) {
     $nonusers = get_nonuser_cals();
-    $userlist = ($NONUSER_AT_TOP == 'Y' ? array_merge ($nonusers, $userlist) : array_merge ($userlist, $nonusers));
+    $userlist = ($NONUSER_AT_TOP === 'Y' ? array_merge ($nonusers, $userlist) : array_merge ($userlist, $nonusers));
   }
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     echo '<option value="' . $userlist[$i]['cal_login'] . '"';
-    if ( $login == $userlist[$i]['cal_login'] )
+    if ( $login === $userlist[$i]['cal_login'] )
       echo ' selected';
     echo '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
@@ -199,7 +199,7 @@ function purge_events ( $ids ) {
   }
   foreach ( $ids as $cal_id ) {
     for ( $i = 0; $i < $cnt; $i++ ) {
-      $clause = ( $cal_id == 'ALL' ? '' :
+      $clause = ( $cal_id === 'ALL' ? '' :
         " WHERE {$tables[$i][1]} = $cal_id" );
       if ( $preview ) {
         $sql = 'SELECT COUNT(' . $tables[$i][1] .
@@ -216,7 +216,7 @@ function purge_events ( $ids ) {
         $sql = "DELETE FROM {$tables[$i][0]}" . $clause;
         $sqlLog .= $sql . "<br>\n";
         $res = dbi_execute ( $sql );
-        if ( $cal_id == 'ALL' )
+        if ( $cal_id === 'ALL' )
           $num[$i] = $allStr;
         else
           $num[$i] += dbi_affected_rows ( $c, $res );
@@ -242,7 +242,7 @@ function get_ids ( $sql, $ALL = '' ) {
   $res = dbi_execute ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ($ALL == 1)
+      if ($ALL === 1)
         $ids[] = $row[0];
       else {
         //ONLY Delete event if no other participants.
@@ -251,7 +251,7 @@ function get_ids ( $sql, $ALL = '' ) {
   WHERE cal_id = ?', [$ID] );
         if ( $res2 ) {
           if ( $row2 = dbi_fetch_row ( $res2 ) ) {
-            if ( $row2[0] == 1 )
+            if ( $row2[0] === 1 )
              $ids[] = $ID;
           }
           dbi_free_result ( $res2 );

@@ -7,7 +7,7 @@ function selectUsers() {
     listid = 0;
 
   for ( i = 0; i < dae.length; i++ ) {
-    if ( dae[i].name == "users[]" ) {
+    if ( dae[i].name === "users[]" ) {
       listid = i;
     }
   }

@@ -29,7 +29,7 @@ if ( $is_nonuser_admin ) {
     $links[] = 'pref.php?user=' . $user;
   }
 
-  if ( $single_user != 'Y' ) {
+  if ( $single_user !== 'Y' ) {
     if ( ! $accessEnabled || access_can_access_function( ACCESS_ASSISTANTS ) ) {
       $names[] = $assistStr;
       $links[] = 'assistant_edit.php?user=' . $user;
@@ -51,19 +51,19 @@ if ( $is_nonuser_admin ) {
   $names[] = ( $is_admin ? translate ( 'Users' ) : translate ( 'Account' ) );
   $links[] = 'user_mgmt.php';
 
-  if ($GROUPS_ENABLED == 'Y' && $is_admin) {
+  if ($GROUPS_ENABLED === 'Y' && $is_admin) {
     $names[] = translate ( 'Groups' );
     $links[] = 'groups.php';
   }
 
-  if ( $REMOTES_ENABLED == 'Y' && (( $is_admin && ! $accessEnabled )
+  if ( $REMOTES_ENABLED === 'Y' && (( $is_admin && ! $accessEnabled )
       || ( $accessEnabled
       && access_can_access_function(ACCESS_IMPORT)))) {
     $names[] = translate ( 'Remote Calendars' );
     $links[] = 'remotecal_mgmt.php';
   }
 
-  if ( $NONUSER_ENABLED == 'Y' && (( $is_admin && ! $accessEnabled )
+  if ( $NONUSER_ENABLED === 'Y' && (( $is_admin && ! $accessEnabled )
       || ( $accessEnabled
       && access_can_access_function(ACCESS_USER_MANAGEMENT)))) {
     $names[] = translate ( 'Resource Calendars' );
@@ -76,14 +76,14 @@ if ( $is_nonuser_admin ) {
     $links[] = 'access.php';
   }
 
-  if ( $single_user != 'Y' ) {
+  if ( $single_user !== 'Y' ) {
     if ( ! $accessEnabled || access_can_access_function( ACCESS_ASSISTANTS ) ) {
       $names[] = $assistStr;
       $links[] = 'assistant_edit.php';
     }
   }
 
-  if ( $CATEGORIES_ENABLED == 'Y' ) {
+  if ( $CATEGORIES_ENABLED === 'Y' ) {
     if ( ! $accessEnabled
         || access_can_access_function( ACCESS_CATEGORY_MANAGEMENT ) ) {
       $names[] = translate ( 'Categories' );
@@ -102,7 +102,7 @@ if ( $is_nonuser_admin ) {
     $links[] = 'layers.php';
   }
 
-  if ( $REPORTS_ENABLED == 'Y'
+  if ( $REPORTS_ENABLED === 'Y'
       && ( ! $accessEnabled || access_can_access_function( ACCESS_REPORT ) ) ) {
     $names[] = translate ( 'Reports' );
     $links[] = 'report.php';
@@ -134,14 +134,14 @@ if ( $is_nonuser_admin ) {
     $links[] = 'security_audit.php';
   }
 
-  if ( $is_admin && ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) {
+  if ( $is_admin && ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS === 'Y' ) {
     $names[] = translate ( 'Public Preferences' );
     $links[] = 'pref.php?public=1';
   }
 
-  if ( $is_admin && ! empty( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y'
-      && $PUBLIC_ACCESS_CAN_ADD == 'Y'
-      && $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'Y' ) {
+  if ( $is_admin && ! empty( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS === 'Y'
+      && $PUBLIC_ACCESS_CAN_ADD === 'Y'
+      && $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL === 'Y' ) {
     $names[] = translate ( 'Unapproved Public Events' );
     $links[] = 'list_unapproved.php?user=__public__';
   }
@@ -169,15 +169,15 @@ echo '
 
 for ( $i = 0, $cnt = count( $names ); $i < $cnt; $i++ ) {
   $empLink = empty( $links[$i] );
-  echo ( $i % COLUMNS == 0 ? '
+  echo ( $i % COLUMNS === 0 ? '
       <tr>' : '' ) . '
         <td>' . ( $empLink ? '' : '<a href="' . $links[$i] . '">' )
    . $names[$i] . ( $empLink ? '' : '</a>' ) . '</td>'
-   . ( $i % COLUMNS == COLUMNS - 1 ? '
+   . ( $i % COLUMNS === COLUMNS - 1 ? '
       </tr>' : '' );
 }
 
-while ( $i % COLUMNS != 0 ) {
+while ( $i % COLUMNS !== 0 ) {
   echo '
       <td>&nbsp;</td>';
   $i++;

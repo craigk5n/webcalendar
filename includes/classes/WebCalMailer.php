@@ -40,8 +40,8 @@ class WebCalMailer {
     $this->mail->isSMTP ();
     $this->mail->CharSet = translate( 'charset' );
     // Turn on SMTP authentication.
-    $this->mail->SMTPAuth = ( $SMTP_AUTH == 'Y' );
-    $this->mail->SMTPSecure = ( isset($SMTP_STARTTLS) && $SMTP_STARTTLS == 'Y' ) ? "tls" : "";
+    $this->mail->SMTPAuth = ( $SMTP_AUTH === 'Y' );
+    $this->mail->SMTPSecure = ( isset($SMTP_STARTTLS) && $SMTP_STARTTLS === 'Y' ) ? "tls" : "";
     $this->mail->SMTPDebug = 0;
     $this->mail->Username = $SMTP_USERNAME; // SMTP username.
     $this->mail->Password = $SMTP_PASSWORD; // SMTP password.
@@ -65,7 +65,7 @@ class WebCalMailer {
       #$this->mail->From = $from_name;
     }
 
-    $this->mail->IsHTML( $html == 'Y' );
+    $this->mail->IsHTML( $html === 'Y' );
     $this->mail->AddAddress( $to_email, unhtmlentities( $to_name, true ) );
     $this->WCSubject( $subject );
     $this->Body( $msg );
@@ -116,7 +116,7 @@ class WebCalMailer {
    */
   function Body( $msg ) {
     $msg = stripslashes( $msg );
-    $this->mail->Body = ( $this->mail->ContentType == 'text/html'
+    $this->mail->Body = ( $this->mail->ContentType === 'text/html'
       ? nl2br( $msg ) : unhtmlentities( $msg ) );
   }
 

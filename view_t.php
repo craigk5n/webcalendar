@@ -27,7 +27,7 @@ $USERS_PER_TABLE = 6;
 
 view_init ( $id );
 
-$can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
+$can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS !== 'N' );
 
 
 $entrySlots = ( $ENTRY_SLOTS > 144 ? 144 : $ENTRY_SLOTS );
@@ -54,15 +54,15 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
   $PUBLIC_ACCESS_CAN_ADD, $readonly, $totalSlots;
   $ret = '';
   $cnt = 0;
-  $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
+  $get_unapproved = ( $DISPLAY_UNAPPROVED === 'Y' );
 
   $year = substr ( $date, 0, 4 );
   $month = substr ( $date, 4, 2 );
   $day = substr ( $date, 6, 2 );
 
-  $can_add = ( $readonly == 'N' || $is_admin );
-  if ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD != 'Y' &&
-      $GLOBALS['login'] == '__public__' )
+  $can_add = ( $readonly === 'N' || $is_admin );
+  if ( $PUBLIC_ACCESS === 'Y' && $PUBLIC_ACCESS_CAN_ADD !== 'Y' &&
+      $GLOBALS['login'] === '__public__' )
     $can_add = false;
 
   $cur_rep = 0;
@@ -73,12 +73,12 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
     get_repeating_entries ( $user, $date ) );
   $evcnt = count ( $ev );
   for ( $i = 0; $i < $evcnt; $i++ ) {
-    if( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
+    if( $get_unapproved || $ev[$i]->getStatus() === 'A' ) {
       $ret .= print_entry_timebar ( $ev[$i], $date );
       $cnt++;
     }
   }
-  return $ret . ( $cnt == 0 ? '
+  return $ret . ( $cnt === 0 ? '
             <tr>
               <td colspan="' . $totalSlots . '">&nbsp;</td>
             </tr>' // So the table cell has at least something.
@@ -183,7 +183,7 @@ function print_entry_timebar ( $event, $date ) {
   user_load_variables ( $event->getLogin (), 'temp' );
   return $ret . ( $tempPri ? '<strong>' : '' )
   // Make sure clones have parents URL date.
-  . ( $can_access != 0 && $time_only != 'Y' ? '
+  . ( $can_access !== 0 && $time_only !== 'Y' ? '
           <a class="entry" id="' . $linkid . '" href="view_entry.php?id='
      . $id . '&amp;date=' . ( $tempClone ? $tempClone: $date )
      . ( strlen ( $user ) > 0 ? '&amp;user=' . $user : '' ) . '">' : '' ) . '['
@@ -221,8 +221,8 @@ function print_header_timebar() {
           <table class="timebar">
             <tr>';
   for ( $i = $WORK_DAY_START_HOUR; $i < $WORK_DAY_END_HOUR; $i++ ) {
-    $hour = ( $i < 13 || $TIME_FORMAT == 24 ? $i : $i % 12 );
-    if ( $hour == 0 )
+    $hour = ( $i < 13 || $TIME_FORMAT === 24 ? $i : $i % 12 );
+    if ( $hour === 0 )
       $hour = 12;
     $ret .= '
               <td colspan="' . "$yardSlots\">$hour" . '</td>';
@@ -246,13 +246,13 @@ function print_header_timebar() {
 
 $date = ( empty ( $date ) ? date ( 'Ymd' ) : $date );
 // Initialize date to first of current month.
-if ($view_type != 'S')
+if ($view_type !== 'S')
   $date = substr ( $date, 0, 6 ) . '01';
 
 set_today ( $date );
 
 // Week timebar.
-if ($view_type == 'S') {
+if ($view_type === 'S') {
   $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
   $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
   $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
@@ -278,7 +278,7 @@ $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 // Get users in this view.
 $viewusers = view_get_user_list ( $id );
 $viewusercnt = count ( $viewusers );
-if ( $viewusercnt == 0 )
+if ( $viewusercnt === 0 )
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view.
   $error = translate( 'No users for this view.' );
@@ -337,10 +337,10 @@ echo '
 for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
   $dateYmd = date ( 'Ymd', $date );
   $is_weekend = is_weekend ( $date );
-  if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
+  if ( $is_weekend && $DISPLAY_WEEKENDS === 'N' )
     continue;
 
-  echo '<tr' . ( $dateYmd == date ( 'Ymd', $today ) ? '>
+  echo '<tr' . ( $dateYmd === date ( 'Ymd', $today ) ? '>
       <th class="today"' :
       ( $is_weekend ? ' class="weekend"><th class="weekend"' :
       '><th class="weekday"' ) );

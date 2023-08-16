@@ -56,17 +56,17 @@ if ( empty ( $user ) ) {
   $user = preg_replace ( "/\.[iI][cC][sS]$/", '', $user );
 }
 
-if ( $user == 'publish.php' )
+if ( $user === 'publish.php' )
   $user = '';
 
-if ( $user == 'public' )
+if ( $user === 'public' )
   $user = '__public__';
 
 load_global_settings();
 
 $WebCalendar->setLanguage();
 
-if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
+if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED !== 'Y' ) {
   header ( 'Content-Type: text/plain' );
   echo print_not_auth();
   exit;
@@ -93,7 +93,7 @@ EOT;
 $login = $user;
 load_user_preferences();
 
-if ( empty ( $USER_PUBLISH_ENABLED ) || $USER_PUBLISH_ENABLED != 'Y' ) {
+if ( empty ( $USER_PUBLISH_ENABLED ) || $USER_PUBLISH_ENABLED !== 'Y' ) {
   header ( 'Content-Type: text/plain' );
   echo print_not_auth();
   exit;

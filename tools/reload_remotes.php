@@ -81,7 +81,7 @@ if ($debug)
   echo "<br>\n" . translate('Include Path')
     . ' =' . ini_get('include_path') . "<br>\n";
 
-if ($REMOTES_ENABLED == 'Y') {
+if ($REMOTES_ENABLED === 'Y') {
   $res = dbi_execute('SELECT cal_login, cal_url, cal_admin ' .
     'FROM webcal_nonuser_cals WHERE cal_url IS NOT NULL');
   $cnt = 0;
@@ -98,7 +98,7 @@ if ($REMOTES_ENABLED == 'Y') {
 /*
       $data = parse_ical($cal_url, $type);
       // we may be processing an hCalendar
-      if (empty($data) == 0 && function_exists('simplexml_load_string')) {
+      if (empty($data) === 0 && function_exists('simplexml_load_string')) {
         if ($debug) echo "  No data found.  Trying hcal...\n";
         $h = new hKit;
         $h->tidy_mode = 'proxy';
@@ -127,7 +127,7 @@ if ($REMOTES_ENABLED == 'Y') {
     }
     dbi_free_result($res);
   }
-  if ($cnt == 0)
+  if ($cnt === 0)
     echo "<br>\n" . translate('No Remote Calendars found');
 } else {
   echo "<br>\n" . translate('Remote Calendars not enabled');

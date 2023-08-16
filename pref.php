@@ -11,10 +11,10 @@ sendCookie ( 'webcalendar_csscache', $webcalendar_csscache );
 function save_pref( $prefs, $src) {
   global $prefuser;
   foreach ($prefs as $key => $value) {
-    if ( $src == 'post' ) {
+    if ( $src === 'post' ) {
       $setting = substr ( $key, 5 );
       $prefix = substr ( $key, 0, 5 );
-      if ( $prefix != 'pref_')
+      if ( $prefix !== 'pref_')
         continue;
       // Validate key name. Should start with "pref_" and not include
       // any unusual characters that might be an SQL injection attack.
@@ -27,7 +27,7 @@ function save_pref( $prefs, $src) {
       $prefix = 'pref_';
     }
     //echo "Setting = $setting, key = $key, prefix = $prefix<br>\n";
-    if ( strlen ( $setting ) > 0 && $prefix == 'pref_' ) {
+    if ( strlen ( $setting ) > 0 && $prefix === 'pref_' ) {
       $sql = 'DELETE FROM webcal_user_pref WHERE cal_login = ? ' .
         'AND cal_setting = ?';
       dbi_execute ( $sql, [$prefuser, $setting] );
@@ -50,9 +50,9 @@ $message = '';
 
 // Handle "Reset Preferences" button
 $action = getValue('action');
-if ($action == "reset" && empty($error)) {
+if ($action === "reset" && empty($error)) {
   $user = getValue('user');
-  if ($user != $login && ! $is_admin) {
+  if ($user !== $login && ! $is_admin) {
     // Make sure this person is either an admin or the owner/admin of the nonuser cal.
     if (!user_is_nonuser_admin($login, $user)) {
       // This user not authorized.
@@ -70,11 +70,11 @@ $user = getGetValue ('user');
 $updating_public = false;
   load_global_settings();
 
-if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS === 'Y' ) {
   $updating_public = true;
   load_user_preferences ( '__public__' );
   $prefuser = '__public__';
-} elseif ( ! empty ( $user ) && $user != $login && ($is_admin || $is_nonuser_admin)) {
+} elseif ( ! empty ( $user ) && $user !== $login && ($is_admin || $is_nonuser_admin)) {
   $prefuser = $user;
     load_user_preferences ( $user );
 } else {
@@ -91,11 +91,11 @@ if ( ! empty ( $_POST ) && empty ( $error )) {
 }
 
 
-if ($user != $login)
+if ($user !== $login)
   $user = (($is_admin || $is_nonuser_admin) && $user) ? $user : $login;
 
 // Load categories only if editing our own calendar
-//if (!$user || $user == $login) load_user_categories();
+//if (!$user || $user === $login) load_user_categories();
 load_user_categories();
 // Reload preferences into $prefarray[].
 // Get system settings first.
@@ -182,7 +182,7 @@ print_header($INC, '', '');
  if ( $updating_public )
   echo translate ($PUBLIC_ACCESS_FULLNAME) . '&nbsp;';
  etranslate ( 'Preferences' );
- if ( $is_nonuser_admin || ( $is_admin && substr ( $prefuser, 0, 5 ) == '_NUC_' ) ) {
+ if ( $is_nonuser_admin || ( $is_admin && substr ( $prefuser, 0, 5 ) === '_NUC_' ) ) {
   nonuser_load_variables ( $user, 'nonuser' );
   echo ': ' . $nonuserfullname . "\n";
  }
@@ -224,14 +224,14 @@ $resetConfirm = str_replace("XXX", $user, $resetConfirm);
 // the current user to modify prefs for that nonuser cal
 if ( $is_admin && ! $updating_public ) {
   if ( empty ( $public ) && ! empty ( $PUBLIC_ACCESS ) &&
-    $PUBLIC_ACCESS == 'Y' ) {
+    $PUBLIC_ACCESS === 'Y' ) {
       $public_option = '<a class="dropdown-item" href="pref.php?public=1">'
         . translate( 'Public Access calendar' ) . "</a>\n";
   }
 }
 
-if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
-  if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
+if ( $NONUSER_ENABLED === 'Y' || $PUBLIC_ACCESS === 'Y' ) {
+  if ( ( empty ( $user ) || $user === $login ) && ! $updating_public ) {
     $nulist = get_my_nonusers ( $login );
     if (!empty($nulist)) {
     ?>
@@ -266,18 +266,18 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 <!-- TABS -->
 <ul class="nav nav-tabs">
 <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#settings"><?php etranslate('Settings');?></a></li>
-<?php if ( $SEND_EMAIL == 'Y' ) { ?>
+<?php if ( $SEND_EMAIL === 'Y' ) { ?>
   <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#email"><?php etranslate('Email');?></a></li>
 <?php } ?>
 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#boss"><?php etranslate('When I am the boss');?></a></li>
-<?php if ( $PUBLISH_ENABLED == 'Y'  || $RSS_ENABLED == 'Y' ) { ?>
+<?php if ( $PUBLISH_ENABLED === 'Y'  || $RSS_ENABLED === 'Y' ) { ?>
   <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#subscribe"><?php etranslate('Subscribe/Publish');?></a></li>
 <?php } ?>
-<?php if ( $ALLOW_USER_HEADER == 'Y' && ( $CUSTOM_SCRIPT == 'Y' || $CUSTOM_HEADER == 'Y' ||
-   $CUSTOM_TRAILER == 'Y' ) ) { ?>
+<?php if ( $ALLOW_USER_HEADER === 'Y' && ( $CUSTOM_SCRIPT === 'Y' || $CUSTOM_HEADER === 'Y' ||
+   $CUSTOM_TRAILER === 'Y' ) ) { ?>
   <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#header"><?php etranslate('Custom Scripts');?></a></li>
 <?php } ?>
-<?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
+<?php if ( $ALLOW_COLOR_CUSTOMIZATION === 'Y' ) { ?>
   <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#colors"><?php etranslate('Colors');?></a></li>
 <?php } ?>
 
@@ -302,10 +302,10 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
    // a language so that when we send reminders (done without the benefit
    // of a browser-preferred language), we'll know which language to use.
    // DO let them select browser-defined for the public user or NUC.
-   if ( $key != 'Browser-defined' || $updating_public || $is_admin ||
+   if ( $key !== 'Browser-defined' || $updating_public || $is_admin ||
               $is_nonuser_admin ) {
      echo '<option value="' . $val . '"';
-     if ( $val == $prefarray['LANGUAGE'] ) echo $selected;
+     if ( $val === $prefarray['LANGUAGE'] ) echo $selected;
      echo '>' . $key . "</option>\n";
    }
  }
@@ -320,7 +320,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 <fieldset class="border p-2">
  <legend><?php etranslate ('Date and Time')?></legend>
 <table cellspacing="1" cellpadding="2">
-<?php if ( $can_set_timezone == true ) { ?>
+<?php if ( $can_set_timezone === true ) { ?>
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("tz-help");?>" valign="top">
   <label for="pref_TIMEZONE" class="colon"><?php etranslate ('Timezone Selection')?>:</label></td><td>
   <?php
@@ -338,7 +338,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
   <?php
   for ( $i = 0, $cnt = count ( $datestyles ); $i < $cnt; $i += 2 ) {
     echo '<option value="' . $datestyles[$i] . '"';
-    if ( $prefarray['DATE_FORMAT'] == $datestyles[$i] )
+    if ( $prefarray['DATE_FORMAT'] === $datestyles[$i] )
       echo $selected;
     echo '>' . $datestyles[$i + 1] . "</option>\n";
   }
@@ -350,7 +350,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 <?php
   for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i += 2 ) {
     echo '<option value="' . $datestyles_my[$i] . '"';
-    if ( $prefarray['DATE_FORMAT_MY'] == $datestyles_my[$i] )
+    if ( $prefarray['DATE_FORMAT_MY'] === $datestyles_my[$i] )
       echo $selected;
     echo '>' . $datestyles_my[$i + 1] . "</option>\n";
   }
@@ -362,7 +362,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 <?php
   for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i += 2 ) {
     echo '<option value="' . $datestyles_md[$i] . '"';
-    if ( $prefarray['DATE_FORMAT_MD'] == $datestyles_md[$i] )
+    if ( $prefarray['DATE_FORMAT_MD'] === $datestyles_md[$i] )
       echo $selected;
     echo '>' . $datestyles_md[$i + 1] . "</option>\n";
   }
@@ -374,7 +374,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 <?php
   for ( $i = 0, $cnt = count ( $datestyles_task ); $i < $cnt; $i += 2 ) {
     echo '<option value="' . $datestyles_task[$i] . '"';
-    if ( $prefarray['DATE_FORMAT_TASK'] == $datestyles_task[$i] )
+    if ( $prefarray['DATE_FORMAT_TASK'] === $datestyles_task[$i] )
       echo $selected;
     echo '>' . $datestyles_task[$i + 1] . "</option>\n";
   }
@@ -396,7 +396,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 <?php
  for ( $i = 0; $i < 7; $i++ ) {
   echo "<option value=\"$i\"" .
-   ( $i == $prefarray['WEEK_START'] ? $selected : '' ) .
+   ( $i === $prefarray['WEEK_START'] ? $selected : '' ) .
    '>' . weekday_name ( $i ) . "</option>\n";
  }
 ?>
@@ -407,9 +407,9 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
  <select class="form-control" name="pref_WEEKEND_START" id="pref_WEEKEND_START">
 <?php
  for ( $i = -1; $i < 6; $i++ ) {
-  $j = ( $i == -1 ? 6 : $i ); //make sure start with Saturday
+  $j = ( $i === -1 ? 6 : $i ); //make sure start with Saturday
   echo "<option value=\"$j\"" .
-   ( $j == $prefarray['WEEKEND_START'] ? $selected : '' ) .
+   ( $j === $prefarray['WEEKEND_START'] ? $selected : '' ) .
    '>' . weekday_name ( $j ) . "</option>\n";
  }
 ?>
@@ -422,7 +422,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 <?php
   for ( $i = 0; $i < 24; $i++ ) {
     echo "<option value=\"$i\"" .
-      ( $i == $prefarray['WORK_DAY_START_HOUR'] ? $selected :'' ) .
+      ( $i === $prefarray['WORK_DAY_START_HOUR'] ? $selected :'' ) .
       ">" . display_time ( $i * 10000, 1 ) . "</option>\n";
   }
 ?>
@@ -432,7 +432,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 <?php
  for ( $i = 0; $i < 24; $i++ ) {
   echo "<option value=\"$i\"" .
-   ( $i == $prefarray['WORK_DAY_END_HOUR'] ? $selected : '' ) .
+   ( $i === $prefarray['WORK_DAY_END_HOUR'] ? $selected : '' ) .
    ">" . display_time ( $i * 10000, 1 ) . "</option>\n";
  }
 ?>
@@ -449,8 +449,8 @@ etranslate ('Preferred view')?>:</label></td><td>
 <select class="form-control" name="pref_STARTVIEW" id="pref_STARTVIEW">
 <?php
 // For backwards compatibility. We used to store without the .php extension
-if ( $prefarray['STARTVIEW'] == 'month' || $prefarray['STARTVIEW'] == 'day' ||
-  $prefarray['STARTVIEW'] == 'week' || $prefarray['STARTVIEW'] == 'year' )
+if ( $prefarray['STARTVIEW'] === 'month' || $prefarray['STARTVIEW'] === 'day' ||
+  $prefarray['STARTVIEW'] === 'week' || $prefarray['STARTVIEW'] === 'year' )
   $prefarray['STARTVIEW'] .= '.php';
 $choices = $choices_text = [];
 if ( access_can_access_function ( ACCESS_DAY, $user ) ) {
@@ -471,19 +471,19 @@ if ( access_can_access_function ( ACCESS_YEAR, $user ) ) {
 }
 for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
   echo '<option value="' . $choices[$i] . '" ';
-  if ( $prefarray['STARTVIEW'] == $choices[$i] )
+  if ( $prefarray['STARTVIEW'] === $choices[$i] )
     echo $selected;
   echo ' >' . htmlspecialchars ( $choices_text[$i] ) . "</option>\n";
 }
 // Allow user to select a view also
 for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
-  if ( $views[$i]['cal_owner'] != $user && $views[$i]['cal_is_global'] != 'Y' )
+  if ( $views[$i]['cal_owner'] !== $user && $views[$i]['cal_is_global'] !== 'Y' )
     continue;
   $xurl = $views[$i]['url'];
   echo '<option value="';
   echo $xurl . '" ';
   $xurl_strip = str_replace ( '&amp;', '&', $xurl );
-  if ( $prefarray['STARTVIEW'] == $xurl_strip )
+  if ( $prefarray['STARTVIEW'] === $xurl_strip )
     echo $selected;
   echo '>' . htmlspecialchars ( $views[$i]['cal_name'] ) . "</option>\n";
 }
@@ -565,7 +565,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   foreach ( $categories as $K => $V ) {
    echo "<option value=\"$K\"";
    if ( ! empty ( $prefarray['CATEGORY_VIEW'] ) &&
-    $prefarray['CATEGORY_VIEW'] == $K ) echo $selected;
+    $prefarray['CATEGORY_VIEW'] === $K ) echo $selected;
    echo ">" . htmlentities ( $V['cat_name'] ) . "</option>\n";
   }
  }
@@ -585,34 +585,34 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("entry-interval-help");?>">
  <label for="pref_ENTRY_SLOTS"><?php etranslate ( 'Entry interval' )?>:</label></td><td>
  <select class="form-control" name="pref_ENTRY_SLOTS">
-  <option value="24" <?php if ( $prefarray['ENTRY_SLOTS'] == "24" )
+  <option value="24" <?php if ( $prefarray['ENTRY_SLOTS'] === "24" )
     echo $selected?>>1 <?php etranslate ( 'hour' )?></option>
-  <option value="48" <?php if ( $prefarray['ENTRY_SLOTS'] == "48" )
+  <option value="48" <?php if ( $prefarray['ENTRY_SLOTS'] === "48" )
     echo $selected?>>30 <?php echo $minutesStr ?></option>
-  <option value="72" <?php if ( $prefarray['ENTRY_SLOTS'] == "72" )
+  <option value="72" <?php if ( $prefarray['ENTRY_SLOTS'] === "72" )
     echo $selected?>>20 <?php echo $minutesStr ?></option>
-  <option value="96" <?php if ( $prefarray['ENTRY_SLOTS'] == "96" )
+  <option value="96" <?php if ( $prefarray['ENTRY_SLOTS'] === "96" )
     echo $selected?>>15 <?php echo $minutesStr ?></option>
-  <option value="144" <?php if ( $prefarray['ENTRY_SLOTS'] == "144" )
+  <option value="144" <?php if ( $prefarray['ENTRY_SLOTS'] === "144" )
     echo $selected?>>10 <?php echo $minutesStr ?></option>
-  <option value="288" <?php if ( $prefarray['ENTRY_SLOTS'] == "288" )
+  <option value="288" <?php if ( $prefarray['ENTRY_SLOTS'] === "288" )
     echo $selected?>>5 <?php echo $minutesStr ?></option>
-  <option value="1440" <?php if ( $prefarray['ENTRY_SLOTS'] == "1440" )
+  <option value="1440" <?php if ( $prefarray['ENTRY_SLOTS'] === "1440" )
     echo $selected?>>1 <?php etranslate ( 'minute' )?></option>
  </select>
 </td></tr>
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("time-interval-help");?>">
  <label for="pref_TIME_SLOTS"><?php etranslate ( 'Time interval' )?>:</label></td><td>
  <select class="form-control" name="pref_TIME_SLOTS">
-  <option value="24" <?php if ( $prefarray['TIME_SLOTS'] == "24" )
+  <option value="24" <?php if ( $prefarray['TIME_SLOTS'] === "24" )
   echo $selected?>>1 <?php etranslate ( 'hour' )?></option>
-  <option value="48" <?php if ( $prefarray['TIME_SLOTS'] == "48" )
+  <option value="48" <?php if ( $prefarray['TIME_SLOTS'] === "48" )
   echo $selected?>>30 <?php echo $minutesStr ?></option>
-  <option value="72" <?php if ( $prefarray['TIME_SLOTS'] == "72" )
+  <option value="72" <?php if ( $prefarray['TIME_SLOTS'] === "72" )
   echo $selected?>>20 <?php echo $minutesStr ?></option>
-  <option value="96" <?php if ( $prefarray['TIME_SLOTS'] == "96" )
+  <option value="96" <?php if ( $prefarray['TIME_SLOTS'] === "96" )
   echo $selected?>>15 <?php echo $minutesStr ?></option>
-  <option value="144" <?php if ( $prefarray['TIME_SLOTS'] == "144" )
+  <option value="144" <?php if ( $prefarray['TIME_SLOTS'] === "144" )
   echo $selected?>>10 <?php echo $minutesStr ?></option>
  </select>
 </td></tr>
@@ -639,7 +639,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <?php
 if ( ! $updating_public ) {
-if ( $SEND_EMAIL == 'Y' ) { ?>
+if ( $SEND_EMAIL === 'Y' ) { ?>
 <div class="tab-pane container fade" id="email"><div class="form-group">
 <table cellspacing="1" cellpadding="2">
 <tr><td class="xtooltip">
@@ -690,7 +690,7 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 
 <div class="tab-pane container fade" id="boss"><div class="form-group">
 <table cellspacing="1" cellpadding="2">
-<?php if ( $SEND_EMAIL == 'Y' ) { ?>
+<?php if ( $SEND_EMAIL === 'Y' ) { ?>
 <tr><td><label for="pref_EMAIL_ASSISTANT_EVENTS"><?php etranslate ( 'Email me event notification' )?>:</label></td><td class="form-inline mt-1">
  <?php echo print_radio ( 'EMAIL_ASSISTANT_EVENTS' ) ?>
 </td></tr>
@@ -711,26 +711,26 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 <?php } /* if ( ! $updating_public ) */ ?>
 <div class="tab-pane container fade" id="subscribe"><div class="form-group">
 <table cellspacing="1" cellpadding="2">
-<?php if ( $PUBLISH_ENABLED == 'Y' || $RSS_ENABLED == 'Y') { ?>
+<?php if ( $PUBLISH_ENABLED === 'Y' || $RSS_ENABLED === 'Y') { ?>
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("allow-view-subscriptions-help");?>">
 <label for="pref_USER_REMOTE_ACCESS"><?php etranslate ( 'Allow remote viewing of' );
 $publish_access = ( empty( $prefarray['USER_REMOTE_ACCESS'] )
    ? 0 : $prefarray['USER_REMOTE_ACCESS'] );
 ?>:</label></td><td>
   <select class="form-control" name="pref_USER_REMOTE_ACCESS" id="pref_USER_REMOTE_ACCESS">
-   <option value="0" <?php echo ( $publish_access == '0' ?
+   <option value="0" <?php echo ( $publish_access === '0' ?
      $selected : '' ) . ' >' . translate ( 'Public' ) . ' ' .
      translate ( 'entries' )?></option>
-   <option value="1" <?php echo ( $publish_access == '1' ?
+   <option value="1" <?php echo ( $publish_access === '1' ?
      $selected : '' ) . ' >' . translate ( 'Public' ) . ' &amp; ' .
       translate ( 'Confidential' ) . ' ' . translate ( 'entries' )?></option>
-   <option value="2" <?php echo ( $publish_access == '2' ?
+   <option value="2" <?php echo ( $publish_access === '2' ?
      $selected : '' ) . ' >' . translate ( 'All' ) . ' ' .
      translate ( 'entries' )?></option>
   </select>
   </td></tr>
 <?php }
-if ( $PUBLISH_ENABLED == 'Y' ) { ?>
+if ( $PUBLISH_ENABLED === 'Y' ) { ?>
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("allow-remote-subscriptions-help");?>">
   <label for="USER_PUBLISH_ENABLED"><?php etranslate ( 'Allow remote subscriptions' )?>:</label></td><td class="form-inline mt-1">
   <?php echo print_radio ( 'USER_PUBLISH_ENABLED' ) ?>
@@ -767,7 +767,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
 
 } /* $PUBLISH_ENABLED */
 
-if ( $RSS_ENABLED == 'Y' ) { ?>
+if ( $RSS_ENABLED === 'Y' ) { ?>
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("rss-enabled-help");?>">
 <label for="pref_USER_RSS_ENABLED"><?php etranslate ( 'Enable RSS feed' )?>:</label></td>
   <td class="form-inline mt-1">
@@ -807,10 +807,10 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
 </div></div>
 <!-- END SUBSCRIBE -->
 
-<?php if ( $ALLOW_USER_HEADER == 'Y' ) { ?>
+<?php if ( $ALLOW_USER_HEADER === 'Y' ) { ?>
   <div class="tab-pane container fade" id="header"><div class="form-group">
 <table cellspacing="1" cellpadding="2">
-<?php if ( $CUSTOM_SCRIPT == 'Y' ) { ?>
+<?php if ( $CUSTOM_SCRIPT === 'Y' ) { ?>
  <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("custom-script-help");?>">
   <label><?php etranslate ( 'Custom script/stylesheet' )?>:</label></td><td>
   <input class="form-control btn bth-secondary" type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
@@ -818,7 +818,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
  </td></tr>
 <?php }
 
-if ( $CUSTOM_HEADER == 'Y' ) { ?>
+if ( $CUSTOM_HEADER === 'Y' ) { ?>
  <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("custom-header-help");?>">
   <label><?php etranslate ( 'Custom header' )?>:</label></td><td>
   <input class="form-control btn btn-secondary" type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
@@ -826,7 +826,7 @@ if ( $CUSTOM_HEADER == 'Y' ) { ?>
  </td></tr>
 <?php }
 
-if ( $CUSTOM_TRAILER == 'Y' ) { ?>
+if ( $CUSTOM_TRAILER === 'Y' ) { ?>
  <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("custom-trailer-help");?>">
   <label><?php etranslate ( 'Custom trailer' )?>:</label></td><td>
   <input class="form-control btn btn-secondary" type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
@@ -840,7 +840,7 @@ if ( $CUSTOM_TRAILER == 'Y' ) { ?>
 
 <!-- BEGIN COLORS -->
 
-<?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
+<?php if ( $ALLOW_COLOR_CUSTOMIZATION === 'Y' ) { ?>
   <div class="tab-pane container fade" id="colors"><div class="form-group">
 <table>
 <tr class="ignore"><td class="aligntop" width="50%">

@@ -11,7 +11,7 @@ $public = getValue('public');
 $u_url = '';
 $updating_public = false;
 
-if ($is_admin && !empty($public) && $PUBLIC_ACCESS == 'Y') {
+if ($is_admin && !empty($public) && $PUBLIC_ACCESS === 'Y') {
   $layer_user = '__public__';
   $u_url = '&amp;public=1';
   $updating_public = true;
@@ -26,7 +26,7 @@ $res = dbi_execute('SELECT cal_value FROM webcal_user_pref
 
 if ($res) {
   $row = dbi_fetch_row($res);
-  $layers_enabled = ($row && !empty($row) && $row[0] == 'Y' ? 1 : 0);
+  $layers_enabled = ($row && !empty($row) && $row[0] === 'Y' ? 1 : 0);
   dbi_free_result($res);
 }
 
@@ -57,13 +57,13 @@ $headExtras = '';
 
 print_header(array('js/translate.js.php'), $headExtras, 'onload="load_layers();"');
 
-if ($ALLOW_VIEW_OTHER != 'Y')
+if ($ALLOW_VIEW_OTHER !== 'Y')
   echo print_not_auth();
 else {
   if (empty($PUBLIC_ACCESS))
     $PUBLIC_ACCESS = 'N';
 
-  if ($is_admin && empty($public) && $PUBLIC_ACCESS == 'Y') {
+  if ($is_admin && empty($public) && $PUBLIC_ACCESS === 'Y') {
 ?>
     <div class="rightsidetip">
       <a href="layers.php?public=1"><?php echo $public_link; ?></a>
@@ -107,18 +107,18 @@ else {
 
 // Create list of users for edit layer dialog.
 $userlist = [];
-if ($single_user == 'N') {
+if ($single_user === 'N') {
   $otherlist = $userlist = get_my_users('', 'view');
-  if ($NONUSER_ENABLED == 'Y') {
+  if ($NONUSER_ENABLED === 'Y') {
     // Restrict NUC list if groups are enabled.
     $nonusers = get_my_nonusers($login, true, 'view');
-    $userlist = ($NONUSER_AT_TOP == 'Y'
+    $userlist = ($NONUSER_AT_TOP === 'Y'
       ? array_merge($nonusers, $userlist)
       : array_merge($userlist, $nonusers));
   }
-  if ($REMOTES_ENABLED == 'Y') {
+  if ($REMOTES_ENABLED === 'Y') {
     $remotes = get_nonuser_cals($login, true);
-    $userlist = ($NONUSER_AT_TOP == 'Y'
+    $userlist = ($NONUSER_AT_TOP === 'Y'
       ? array_merge($remotes, $userlist)
       : array_merge($userlist, $remotes));
   }
@@ -127,14 +127,14 @@ if ($single_user == 'N') {
   $others = $users = '';
 
   for ($i = 0, $cnt = count($userlist); $i < $cnt; $i++) {
-    if ($userlist[$i]['cal_login'] != $layer_user) {
+    if ($userlist[$i]['cal_login'] !== $layer_user) {
       $users .= '<option value="' . $userlist[$i]['cal_login'] . '"' .
         '>' . $userlist[$i]['cal_fullname'] . '</option>';
     }
   }
 
   for ($i = 0, $cnt = count($otherlist); $i < $cnt; $i++) {
-    if ($otherlist[$i]['cal_login'] != $layer_user) {
+    if ($otherlist[$i]['cal_login'] !== $layer_user) {
       $osize++;
       $others .= '<option value="' . $otherlist[$i]['cal_login'] . '">'
         . $otherlist[$i]['cal_fullname'] . '</option>';
@@ -282,7 +282,7 @@ if ($single_user == 'N') {
             '<td>' + l.fullname + '</td><td>' + l.color +
             '<span class="colorsample" style="background-color: ' + l.color +
             '">&nbsp;</span></td><td>' +
-            (l.dups == 'Y' ? '<?php echo $yesStr; ?>' : '<?php echo $noStr; ?>') +
+            (l.dups === 'Y' ? '<?php echo $yesStr; ?>' : '<?php echo $noStr; ?>') +
             '</td></tr>\n';
         }
         x += '</table>\n';
@@ -355,7 +355,7 @@ if ($single_user == 'N') {
       var n = layers[id]['source'];
       for (var i = 0; i < optionValues.length; i++) {
         console.log("Compare " + optionValues[i] + " vs " + n);
-        if (optionValues[i] == n) {
+        if (optionValues[i] === n) {
           o.val(n);
           console.log('Selecting index ' + i + ", value=" + n);
           found = true;
@@ -373,7 +373,7 @@ if ($single_user == 'N') {
     //  ( id < 0 ? '#000000' : layers[id]['color'] );
     if (id < 0)
       $('#editLayerDups').prop("checked", false);
-    else if (layers[id]['dups'] == 'Y')
+    else if (layers[id]['dups'] === 'Y')
       $('#editLayerDups').prop("checked", true);
     else
       $('#editLayerDups').prop("checked", false);

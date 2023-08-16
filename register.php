@@ -54,14 +54,14 @@ Generate passwords and send to new users ($SELF_REGISTRATION_FULL = Y):
 $appStr  = generate_application_name();
 $notauth = print_not_auth();
 
-$error = (empty($ALLOW_SELF_REGISTRATION) || $ALLOW_SELF_REGISTRATION != 'Y'
+$error = (empty($ALLOW_SELF_REGISTRATION) || $ALLOW_SELF_REGISTRATION !== 'Y'
   ? $notauth : '');
 
-if (empty($SELF_REGISTRATION_FULL) || $SELF_REGISTRATION_FULL != 'Y')
+if (empty($SELF_REGISTRATION_FULL) || $SELF_REGISTRATION_FULL !== 'Y')
   $SELF_REGISTRATION_FULL = 'N';
 
 // Do email the user their password?  Or do we allow them to set it here?
-$form_control = ($SELF_REGISTRATION_FULL == 'Y' ? 'email' : 'full');
+$form_control = ($SELF_REGISTRATION_FULL === 'Y' ? 'email' : 'full');
 
 /**
  * See if username and email are unique.
@@ -76,7 +76,7 @@ function checks($isWhat, $isWher)
   global $control, $error;
 
   if (!strlen($isWhat)) {
-    $error = ($isWher == 'login'
+    $error = ($isWher === 'login'
       ? translate('Username cannot be blank.')
       : translate('Email address cannot be blank.'));
     return false;
@@ -87,9 +87,9 @@ function checks($isWhat, $isWher)
   if ($res) {
     $row = dbi_fetch_row($res);
 
-    if ($row[0] == $isWhat) {
+    if ($row[0] === $isWhat) {
       $control = '';
-      $error = ($isWher == 'login'
+      $error = ($isWher === 'login'
         ? translate('Username already exists.')
         : translate('Email address already exists.'));
       return false;
@@ -140,7 +140,7 @@ if (empty($error) && !empty($control)) {
   $ulastname  = getPostValue('ulastname');
   $user       = trim(getPostValue('user'));
 
-  if ($user != addslashes($user))
+  if ($user !== addslashes($user))
     $error = str_replace('XXX', htmlentities($user), $illegalCharStr);
 
   // Check to make sure user doesn't already exist.
@@ -151,7 +151,7 @@ if (empty($error) && !empty($control)) {
 }
 
 if (empty($error) && !empty($control)) {
-  if ($control == 'full') {
+  if ($control === 'full') {
     // Process full account addition.
     $upassword1 = getPostValue('upassword1');
     $upassword2 = getPostValue('upassword2');
@@ -160,9 +160,9 @@ if (empty($error) && !empty($control)) {
     if (!empty($user) && !empty($upassword1)) {
       $user = trim($user);
 
-      if ($user != addslashes($user))
+      if ($user !== addslashes($user))
         $error = str_replace('XXX', htmlentities($user), $illegalCharStr);
-    } elseif ($upassword1 != $upassword2) {
+    } elseif ($upassword1 !== $upassword2) {
       $control = '';
       $error = translate('The passwords were not identical.');
     }
@@ -188,7 +188,7 @@ if (empty($error) && !empty($control)) {
         $error = dbi_error();
       }
     }
-  } elseif ($control == 'email') {
+  } elseif ($control === 'email') {
     // Process account info for email submission.
     // Need to generate unique passwords and email them to the new user.
     $new_pass = generate_password();
@@ -225,7 +225,7 @@ if (empty($error) && !empty($control)) {
     if (!empty($SERVER_URL)) {
       $url = $SERVER_URL . 'login.php';
 
-      if ($htmlmail == 'Y')
+      if ($htmlmail === 'Y')
         $url = activate_urls($url);
 
       $msg .= "\n\n" . $url;
@@ -265,7 +265,7 @@ echo "<script>\n";
 
 <?php
  // Print custom header (since we do not call print_header function)
- if (!empty($CUSTOM_SCRIPT) && $CUSTOM_SCRIPT == 'Y') {
+ if (!empty($CUSTOM_SCRIPT) && $CUSTOM_SCRIPT === 'Y') {
    load_template($login, 'S');
  }
 ?>
@@ -285,7 +285,7 @@ echo "<script>\n";
   <div class="row">
     <div><?php etranslate('Welcome to WebCalendar');?></div>
   </div>
-  <?php if ($SELF_REGISTRATION_FULL == 'Y') { ?>
+  <?php if ($SELF_REGISTRATION_FULL === 'Y') { ?>
     <div class="row">
       <div><?php etranslate('Your email should arrive shortly.');?><br>
       <a href="login.php"><?php etranslate('Return to Login screen');?></a></div>
@@ -319,7 +319,7 @@ echo "<script>\n";
         size="40" maxlength="75" onchange="valid_form();">
     </div>
 
-    <?php if ($SELF_REGISTRATION_FULL != 'Y') { ?>
+    <?php if ($SELF_REGISTRATION_FULL !== 'Y') { ?>
       <div class="form-group row">
         <label for="login" class="text-info"><?php etranslate('Password')?>:</label><br>
         <input type="password" name="upassword1" id="upassword1" class="form-control" value="<?php echo htmlspecialchars($upassword1);?>"
@@ -351,7 +351,7 @@ echo "<script>\n";
 
 <?php
 // Print custom trailer (since we do not call print_trailer function).
-if (!empty($CUSTOM_TRAILER) && $CUSTOM_TRAILER == 'Y') {
+if (!empty($CUSTOM_TRAILER) && $CUSTOM_TRAILER === 'Y') {
   $res = dbi_execute('SELECT cal_template_text FROM webcal_report_template
     WHERE cal_template_type = \'T\' and cal_report_id = 0');
   if ($res) {
@@ -372,27 +372,27 @@ if (!empty($CUSTOM_TRAILER) && $CUSTOM_TRAILER == 'Y') {
     validform = true;
 
     $(':input[type="submit"]').prop('disabled', false);
-    if ($('#upassword1').length && $('#upassword1').val().length == 0) {
+    if ($('#upassword1').length && $('#upassword1').val().length === 0) {
       $('#infoMessage').html(xlate['inputPassword']);
       $('#main-dialog-alert').show();
       validform = false;
     }
-    if ($('#upassword1').length && $('#upassword1').val().length == 0) {
+    if ($('#upassword1').length && $('#upassword1').val().length === 0) {
       $('#infoMessage').html(xlate['inputPassword']);
       $('#main-dialog-alert').show();
       validform = false;
     }
-    if ($('#user').val().length == 0) {
+    if ($('#user').val().length === 0) {
       $('#infoMessage').html(xlate['noBlankUsername']);
       $('#main-dialog-alert').show();
       validform = false;
     }
-    if ($('#uemail').val().length == 0) {
+    if ($('#uemail').val().length === 0) {
       $('#infoMessage').html(xlate['noBlankEmail']);
       $('#main-dialog-alert').show();
       validform = false;
     }
-    if ($('#upassword1').length && $('#upassword1').val() != $('#upassword2').val()) {
+    if ($('#upassword1').length && $('#upassword1').val() !== $('#upassword2').val()) {
       $('#infoMessage').html(xlate['passwordsNoMatch']);
       $('#main-dialog-alert').show();
       validform = false;

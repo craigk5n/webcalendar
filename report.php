@@ -104,21 +104,21 @@ function event_to_text ( $event, $date ) {
   $tempExtForID = $event->getExtForID();
   $tempLog = $event->getLogin();
 
-  if ( $tempExtForID != '' ) {
+  if ( $tempExtForID !== '' ) {
     $id = $tempExtForID;
     $name .= ' ' . translate ( '(cont.)' );
   } else
     $id = $event->getID();
 
-  if ( $tempAcc == 'R' ) {
-    if ( ( $login != $user && strlen ( $user ) ) ||
-        ( $login != $tempLog && strlen ( $tempLog ) ) ) {
+  if ( $tempAcc === 'R' ) {
+    if ( ( $login !== $user && strlen ( $user ) ) ||
+        ( $login !== $tempLog && strlen ( $tempLog ) ) ) {
       $description_str = $confStr;
       $name_str = $privStr;
     }
   } else {
     $name_str = htmlspecialchars ( $name );
-    if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
+    if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION === 'Y' ) {
       $str = str_replace ( '&', '&amp;', $tempDesc );
       //fix any broken special characters
       $str = preg_replace( "/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", $str );
@@ -146,13 +146,13 @@ function event_to_text ( $event, $date ) {
       ? translate ( 'High' ) : translate ( 'Medium' ) ) );
 
   $temp = $event->getStatus();
-  if ( $temp == 'A' )
+  if ( $temp === 'A' )
     $status_str = translate ( 'Approved' );
-  elseif ( $temp == 'D' )
+  elseif ( $temp === 'D' )
     $status_str = translate ( 'Deleted' );
-  elseif ( $temp == 'R' )
+  elseif ( $temp === 'R' )
     $status_str = translate ( 'Rejected' );
-  elseif ( $temp == 'W' )
+  elseif ( $temp === 'W' )
     $status_str = translate ( 'Waiting for approval' );
   else
     $status_str = translate ( 'Unknown' );
@@ -184,17 +184,17 @@ function event_to_text ( $event, $date ) {
 $error = $list =/* List of reports when no id specified. */
 $u_url = '';
 
-if ( ! empty ( $user ) && $user != $login &&
-    ( ( ! empty ( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' ) || $is_admin ) ) {
+if ( ! empty ( $user ) && $user !== $login &&
+    ( ( ! empty ( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER === 'Y' ) || $is_admin ) ) {
   $report_user = $user;
   $u_url = '&amp;user=' . $user;
 }
 
-if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' )
+if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED !== 'Y' )
   $error = print_not_auth();
 
 $updating_public = false;
-if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS === 'Y' ) {
   $report_user = '__public__';
   $updating_public = true;
 }
@@ -206,7 +206,7 @@ if ( empty ( $offset ) )
 $report_id = getValue ( 'report_id', '-?[0-9]+', true );
 // If no report id is specified,
 // then generate a list of reports from which the user may choose.
-if ( empty ( $error ) && empty ( $report_id ) && $login == '__public__' )
+if ( empty ( $error ) && empty ( $report_id ) && $login === '__public__' )
   $error = print_not_auth();
 
 $invalidID = translate ( 'Invalid report id.' );
@@ -216,7 +216,7 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
   $sql_params = [];
   if ( $is_admin ) {
     if ( ! $updating_public ) {
-      if ( $PUBLIC_ACCESS == 'Y' ) {
+      if ( $PUBLIC_ACCESS === 'Y' ) {
         $clickStr =
         translate ( 'Click here to manage reports for the Public Access calendar.' );
         $list .= '<p><a title="' . $clickStr . '" href="report.php?public=1">'
@@ -264,7 +264,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
   WHERE cal_report_id = ?', [$report_id] );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
-      if ( $row[2] != 'Y' && $login != $row[0] )
+      if ( $row[2] !== 'Y' && $login !== $row[0] )
         $error = print_not_auth();
       else {
         $i = 0;
@@ -313,11 +313,11 @@ if ( empty ( $error ) && empty ( $list ) ) {
   WHERE cal_report_id = ?', [$report_id] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( $row[0] == 'D' )
+      if ( $row[0] === 'D' )
         $day_template = $row[1];
-      elseif ( $row[0] == 'E' )
+      elseif ( $row[0] === 'E' )
         $event_template = $row[1];
-      elseif ( $row[0] == 'P' )
+      elseif ( $row[0] === 'P' )
         $page_template = $row[1];
       else {
         // This shouldn't happen under normal circumstances, so no need translate.
@@ -331,7 +331,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
 }
 
 $include_header =
-( ! empty ( $report_include_header ) && $report_include_header == 'Y' );
+( ! empty ( $report_include_header ) && $report_include_header === 'Y' );
 
 if ( $include_header || ! empty ( $list ) || ! empty ( $error ) ) {
   $printerStr = ( empty ( $report_id )
@@ -339,7 +339,7 @@ if ( $include_header || ! empty ( $list ) || ! empty ( $error ) ) {
   print_header();
 }
 
-if ( empty ( $offset ) || empty ( $report_allow_nav ) || $report_allow_nav != 'Y' )
+if ( empty ( $offset ) || empty ( $report_allow_nav ) || $report_allow_nav !== 'Y' )
   $offset = 0;
 
 // Set time range based on cal_time_range field.
@@ -428,7 +428,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
     $end_date, $cat_id );
   $events = read_events ( $report_user, $start_date, $end_date, $cat_id );
 
-  $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
+  $get_unapproved = ( $DISPLAY_UNAPPROVED === 'Y' );
   // Loop through each day.
   // Get events for each day (both normal and repeating).
   // (Most of this code was copied from week.php.)
@@ -439,11 +439,11 @@ if ( empty ( $error ) && empty ( $list ) ) {
       get_entries ( $dateYmd ),
       get_repeating_entries ( $report_user, $dateYmd ) );
     for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
-      if ( $get_unapproved || $ev[$i]->getStatus() == 'A' )
+      if ( $get_unapproved || $ev[$i]->getStatus() === 'A' )
         $event_str .= event_to_text ( $ev[$i], $dateYmd );
     }
 
-    if ( ! empty ( $event_str ) || $report_include_empty == 'Y' || $report_time_range < 10 ) {
+    if ( ! empty ( $event_str ) || $report_include_empty === 'Y' || $report_time_range < 10 ) {
       $date_str = date_to_str ( $dateYmd, '', false );
       $date_full_str = date_to_str ( $dateYmd );
 
@@ -465,7 +465,7 @@ $prevStr = translate ( 'Previous' );
 $reportNameStr = ( $include_header ? '
     <h2>' . $report_name . '</h2>' : '' );
 
-if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
+if ( ! empty ( $report_allow_nav ) && $report_allow_nav === 'Y' ) {
   $temp = '" href="report.php?report_id=' . $report_id . $u_url . '&amp;offset=';
 
   $nextLinkStr = $prevLinkStr = '

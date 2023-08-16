@@ -10,13 +10,13 @@ $help_list = array();
 $help_list['Index'] = 'help_index.php';
 
 $can_add = true;
-if ( $readonly == 'Y' )
+if ( $readonly === 'Y' )
   $can_add = false;
 elseif( access_is_enabled() )
   $can_add = access_can_access_function ( ACCESS_EVENT_EDIT );
 else {
-  if ( $login == '__public__' )
-    $can_add = ( $GLOBALS['PUBLIC_ACCESS_CAN_ADD'] == 'Y' );
+  if ( $login === '__public__' )
+    $can_add = ( $GLOBALS['PUBLIC_ACCESS_CAN_ADD'] === 'Y' );
 
   if ( $is_nonuser )
     $can_add = false;
@@ -24,18 +24,18 @@ else {
 if ( $can_add )
   $help_list['Adding/Editing Calendar Entries'] = 'help_edit_entry.php';
 
-if( ! access_is_enabled() && $login != '__public__'
+if( ! access_is_enabled() && $login !== '__public__'
     || access_can_access_function( ACCESS_LAYERS ) )
   $help_list['Layers'] = 'help_layers.php';
-if( ( ! access_is_enabled() && $login != '__public__' )
+if( ( ! access_is_enabled() && $login !== '__public__' )
     || access_can_access_function( ACCESS_IMPORT ) )
   $help_list['Import'] = 'help_import.php';
 
-if( ( ! access_is_enabled() && $login != '__public__' )
+if( ( ! access_is_enabled() && $login !== '__public__' )
     || access_can_access_function( ACCESS_PREFERENCES ) )
   $help_list['Preferences'] = 'help_pref.php';
 
-if( access_is_enabled() && $login != '__public__' )
+if( access_is_enabled() && $login !== '__public__' )
   $help_list['User Access Control'] = 'help_uac.php';
 
 if( ( $is_admin && ! access_is_enabled() )
@@ -54,7 +54,7 @@ if ( empty ( $thispage ) )
 foreach ( $help_list as $key => $val ) {
   $page++;
   $helpListStr .= '
-      <a' . ( $page == $thispage ? ' class="current"' : '' ) . ' title="'
+      <a' . ( $page === $thispage ? ' class="current"' : '' ) . ' title="'
    . translate ( $key ) . '" href="' . $val . '?thispage=' . $page . '">'
    . $page . '</a>';
 }
@@ -70,7 +70,7 @@ function list_help ( $help_array ) {
   foreach ( $help_array as $lab => $val ) {
     echo '
         <p><label>' . $lab . ':</label> '
-     . ( $val == '0' ? '0' : ( empty ( $val ) ? '&nbsp;' : $val ) ) . '</p>';
+     . ( $val === '0' ? '0' : ( empty ( $val ) ? '&nbsp;' : $val ) ) . '</p>';
   }
 }
 

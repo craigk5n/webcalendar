@@ -63,16 +63,16 @@ function showTab( name ) {
     tab = document.getElementById( 'tab_' + tname );
     // We might call without parameter, if so display tabfor div.
     if ( tab && !name ) {
-      if ( tab.className == 'tabfor' ) {
+      if ( tab.className === 'tabfor' ) {
         name = tname;
       }
     }
     else if ( tab ) {
-      tab.className = ( tname == name ? 'tabfor' : 'tabbak' );
+      tab.className = ( tname === name ? 'tabfor' : 'tabbak' );
     }
     div = document.getElementById( 'tabscontent_' + tname );
     if ( div ) {
-      div.style.display = ( tname == name ? 'block' : 'none' );
+      div.style.display = ( tname === name ? 'block' : 'none' );
     }
   }
 
@@ -88,7 +88,7 @@ function visByClass( classname, state ) {
     var str = alltags[i].className;
 
     if ( str && str.match( classname ) ) {
-      alltags[i].style.display = ( state == 'hide' ? 'none' : '' );
+      alltags[i].style.display = ( state === 'hide' ? 'none' : '' );
     }
   }
 }
@@ -96,20 +96,20 @@ function visByClass( classname, state ) {
 function getScrollingPosition() {
   var position = [0, 0];
 
-  if ( typeof window.pageYOffset != 'undefined' ) {
+  if ( typeof window.pageYOffset !== 'undefined' ) {
     position = [
       window.pageXOffset,
       window.pageYOffset
     ];
   }
-  else if ( typeof document.documentElement.scrollTop != 'undefined'
+  else if ( typeof document.documentElement.scrollTop !== 'undefined'
     && document.documentElement.scrollTop > 0 ) {
     position = [
       document.documentElement.scrollLeft,
       document.documentElement.scrollTop
     ];
   }
-  else if ( typeof document.body.scrollTop != 'undefined' ) {
+  else if ( typeof document.body.scrollTop !== 'undefined' ) {
     position = [
       document.body.scrollLeft,
       document.body.scrollTop

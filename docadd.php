@@ -72,19 +72,19 @@ if ( empty ( $error ) && ! empty ( $id ) ) {
   }
 }
 
-if ( $type == 'A' ) {
-  if ( empty ( $ALLOW_ATTACH ) || $ALLOW_ATTACH != 'Y' )
+if ( $type === 'A' ) {
+  if ( empty ( $ALLOW_ATTACH ) || $ALLOW_ATTACH !== 'Y' )
     $error = print_not_auth();
-  else if ( empty ( $error ) && $ALLOW_ATTACH_PART == 'Y' && $is_my_event )
+  else if ( empty ( $error ) && $ALLOW_ATTACH_PART === 'Y' && $is_my_event )
     $can_add = true;
-  else if ( $ALLOW_ATTACH_ANY == 'Y' )
+  else if ( $ALLOW_ATTACH_ANY === 'Y' )
     $can_add = true;
-} else if ( $type == 'C' ) {
-  if ( empty ( $ALLOW_COMMENTS ) || $ALLOW_COMMENTS != 'Y' )
+} else if ( $type === 'C' ) {
+  if ( empty ( $ALLOW_COMMENTS ) || $ALLOW_COMMENTS !== 'Y' )
     $error = print_not_auth();
-  else if ( empty ( $error ) && $ALLOW_COMMENTS_PART == 'Y' && $is_my_event )
+  else if ( empty ( $error ) && $ALLOW_COMMENTS_PART === 'Y' && $is_my_event )
     $can_add = true;
-  else if ( $ALLOW_COMMENTS_ANY == 'Y' )
+  else if ( $ALLOW_COMMENTS_ANY === 'Y' )
     $can_add = true;
 }
 //check UAC
@@ -105,7 +105,7 @@ if ( ! empty ( $error ) ) {
 // Handle possible POST first
 if ( empty ( $REQUEST_METHOD ) )
   $REQUEST_METHOD = $_SERVER['REQUEST_METHOD'];
-if ( $REQUEST_METHOD == 'POST' ) {
+if ( $REQUEST_METHOD === 'POST' ) {
 
   // get next id first
   $res = dbi_execute ( 'SELECT MAX( cal_blob_id ) FROM webcal_blob' );
@@ -116,7 +116,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   $nextid = ( ! empty ( $row ) ? $row[0] + 1 :  1 );
   dbi_free_result ( $res );
 
-  if ( $type == 'C' ) {
+  if ( $type === 'C' ) {
     // Comment
     $description = getValue ( 'description' );
     $comment = getValue ( 'comment' );
@@ -137,7 +137,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
         do_redirect ( "view_entry.php?id=$id" );
       }
     }
-  } else if ( $type == 'A' ) {
+  } else if ( $type === 'A' ) {
     // Attachment
     $description = getValue ( 'description' );
     if ( ! empty ( $_FILES['FileName'] ) )
@@ -198,7 +198,7 @@ print_header();
 ?>
 <h2><?php echo $title;?></h2>
 
-<?php if ( $type == 'C' ) {
+<?php if ( $type === 'C' ) {
   // Comment
 ?>
 <form action="docadd.php" method="post" name="docform">
@@ -220,7 +220,7 @@ print_header();
 </table>
 </form>
 
-<?php } else if ( $type == 'A' ) {
+<?php } else if ( $type === 'A' ) {
   // Attachment
 ?>
 <form action="docadd.php" method="post" name="docform" enctype="multipart/form-data">

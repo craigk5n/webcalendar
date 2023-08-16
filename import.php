@@ -25,11 +25,11 @@ function print_user_list() {
   global $is_admin, $is_assistant, $is_nonuser_admin,
   $login, $NONUSER_AT_TOP, $NONUSER_ENABLED, $single_user;
 
-  if ( $single_user == 'N' && $is_admin ) {
+  if ( $single_user === 'N' && $is_admin ) {
     $userlist = user_get_users();
-    if ( $NONUSER_ENABLED == 'Y' ) {
+    if ( $NONUSER_ENABLED === 'Y' ) {
       $nonusers = get_nonuser_cals();
-      $userlist = ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP == 'Y' )
+      $userlist = ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP === 'Y' )
       ? array_merge ( $nonusers, $userlist ) : array_merge ( $userlist, $nonusers );
     }
     $num_users = $size = 0;
@@ -39,7 +39,7 @@ function print_user_list() {
       $size++;
       $users .= '
               <option value="' . $l . '"'
-       . ( $l == $login && ! $is_assistant && ! $is_nonuser_admin
+       . ( $l === $login && ! $is_assistant && ! $is_nonuser_admin
         ? ' selected' : '' )
        . '>' . $userlist[$i]['cal_fullname'] . '</option>';
     }
@@ -73,7 +73,7 @@ function print_categories() {
 
     $size = 0;
     foreach ( $categories as $i => $value ) {
-      if ( $i != 0 ) {
+      if ( $i !== 0 ) {
         $l = $categories[$i]['cat_name'];
         $size++;
         $cat_options .= '

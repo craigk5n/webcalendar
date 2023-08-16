@@ -5,7 +5,7 @@ $user = getPostValue ( 'user' );
 $users = getPostValue ( 'users' );
 
 $error = '';
-if ( $user != $login )
+if ( $user !== $login )
   $user = ( ( $is_admin || $is_nonuser_admin ) && $user ) ? $user : $login;
 # update user list
 dbi_execute ( 'DELETE FROM webcal_asst
@@ -19,7 +19,7 @@ if ( ! empty ( $users ) ) {
 }
 
 echo error_check ( 'assistant_edit.php'
-   . ( ( $is_admin || $is_nonuser_admin ) && $login != $user
+   . ( ( $is_admin || $is_nonuser_admin ) && $login !== $user
     ? '?user=' . $user : '' ) );
 
 ?>

@@ -19,11 +19,11 @@ var byday_names = [
 
 // do a little form verifying
 function validate_and_submit() {
-  if ( form.name.value == "" ) {
+  if ( form.name.value === "" ) {
     form.name.select();
 <?php
     if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
-      $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
+      $GLOBALS['EVENT_EDIT_TABS'] === 'Y' ) { ?>
     showTab( 'details' );
 <?php } ?>
     form.name.focus();
@@ -31,13 +31,13 @@ function validate_and_submit() {
     return false;
   }
   if ( form.timetype &&
-    form.timetype.selectedIndex == 1 ) {
+    form.timetype.selectedIndex === 1 ) {
     h = parseInt (isNumeric( form.entry_hour.value ));
     m = parseInt (isNumeric( form.entry_minute.value ));
 
     // Ask for confirmation for time of day if it is before the user's
     // preference for work hours.
-    <?php if ($GLOBALS['TIME_FORMAT'] == "24") {
+    <?php if ($GLOBALS['TIME_FORMAT'] === "24") {
       echo "if ( h < $WORK_DAY_START_HOUR  ) {";
     }  else {
       echo "if ( h < $WORK_DAY_START_HOUR && form.entry_ampmA.checked ) {";
@@ -55,21 +55,21 @@ function validate_and_submit() {
     switch ( field.type ) {
       case "radio":
       case "checkbox":
-        if ( field.checked != field.defaultChecked )
+        if ( field.checked !== field.defaultChecked )
           changed = true;
         break;
       case "text":
       case "textarea":
-        if ( field.value != field.defaultValue )
+        if ( field.value !== field.defaultValue )
           changed = true;
         break;
       case "select-one":
  //Don't register a percentage change
-      if ( form.elements[i].name == "percent")
+      if ( form.elements[i].name === "percent")
         break;
 //      case "select-multiple":
         for( j = 0; j < field.length; j++ ) {
-          if ( field.options[j].selected != field.options[j].defaultSelected )
+          if ( field.options[j].selected !== field.options[j].defaultSelected )
             changed = true;
         }
         break;
@@ -80,7 +80,7 @@ function validate_and_submit() {
   }
 
 //Add code to make HTMLArea code stick in TEXTAREA
- if (typeof editor != "undefined") editor._textArea.value = editor.getHTML();
+ if (typeof editor !== "undefined") editor._textArea.value = editor.getHTML();
 
  //Check if Event date is valid
   var d = $('#_YMD');
@@ -102,7 +102,7 @@ function validate_and_submit() {
  //set byxxxList values for submission
  var bydayStr = '';
  for ( bydayKey in bydayAr ) {
-   if ( bydayKey == isNumeric ( bydayKey ) )
+   if ( bydayKey === isNumeric ( bydayKey ) )
      bydayStr = bydayStr + ',' + bydayAr[bydayKey];
  }
  if ( bydayStr.length > 0 )
@@ -110,7 +110,7 @@ function validate_and_submit() {
  //set bymonthday values for submission
  var bymonthdayStr = '';
  for ( bymonthdayKey in bymonthdayAr ) {
-   if ( bymonthdayKey == isNumeric ( bymonthdayKey ) )
+   if ( bymonthdayKey === isNumeric ( bymonthdayKey ) )
      bymonthdayStr = bymonthdayStr + ',' + bymonthdayAr[bymonthdayKey];
  }
  if ( bymonthdayStr.length > 0 )
@@ -119,7 +119,7 @@ function validate_and_submit() {
  //set bysetpos values for submission
  var bysetposStr = '';
  for ( bysetposKey in bysetposAr ) {
-   if ( bysetposKey == isNumeric ( bysetposKey ) )
+   if ( bysetposKey === isNumeric ( bysetposKey ) )
      bysetposStr = bysetposStr + ',' + bysetposAr[bysetposKey];
  }
  if ( bysetposStr.length > 0 )
@@ -137,7 +137,7 @@ function validate_and_submit() {
  return true;
 }
 
-<?php if ( $GROUPS_ENABLED == 'Y' ) {
+<?php if ( $GROUPS_ENABLED === 'Y' ) {
 ?>
 
 // Set the state (selected or unselected) if a single user in the list of users.
@@ -147,7 +147,7 @@ function selectByLogin ( login ) {
   var list = document.editentryform.entry_part;
   var listlen = list.options.length;
   for ( var i = 0; i < listlen; i++ ) {
-    if ( list.options[i].value == login ) {
+    if ( list.options[i].value === login ) {
       list.options[i].selected = true;
       return true;
     }
@@ -156,7 +156,7 @@ function selectByLogin ( login ) {
   var list = document.editentryform.res_part;
   var listlen = list.options.length;
   for ( var i = 0; i < listlen; i++ ) {
-    if ( list.options[i].value == login ) {
+    if ( list.options[i].value === login ) {
       list.options[i].selected = true;
       return true;
     }
@@ -171,7 +171,7 @@ function addGroup() {
 <?php
   $groups = get_groups ( $user );
   for ( $i = 0; is_array($groups) && $i < count($groups)  ; $i++ ) {
-    echo "\n    if ( selNum == $i ) {\n";
+    echo "\n    if ( selNum === $i ) {\n";
     $res = dbi_execute (
       'SELECT cal_login FROM webcal_group_user WHERE cal_group_id = ?',
       [$groups[$i]['cal_group_id']] );
@@ -196,7 +196,7 @@ function addGroup() {
    return true;
   var i = form.timetype.selectedIndex;
   var val = form.timetype.options[i].text;
-  if ( i != 1 ) {
+  if ( i !== 1 ) {
     // Untimed/All Day
     makeInvisible ( "timeentrystart" );
     if ( form.timezonenotice ) {
@@ -237,12 +237,12 @@ function rpttype_handler() {
   var i = form.rpttype.selectedIndex;
   var val = form.rpttype.options[i].text;
   //alert ( "val " + i + " = " + val );
-  //i == 0 none
-  //i == 1 daily
-  //i == 2 weekly
-  //i == 3,4,5 monthlyByDay, monthlyByDate, monthlyBySetPos
-  //i == 6 yearly
-  //i == 7 manual  Use only Exclusions/Inclusions
+  //i === 0 none
+  //i === 1 daily
+  //i === 2 weekly
+  //i === 3,4,5 monthlyByDay, monthlyByDate, monthlyBySetPos
+  //i === 6 yearly
+  //i === 7 manual  Use only Exclusions/Inclusions
  //Turn all off initially
   makeInvisible ( "rpt_mode" );
   makeInvisible ( "rptenddate1", true );
@@ -274,17 +274,17 @@ function rpttype_handler() {
     makeVisible ( "rptexceptions", true);
     makeVisible ( "rpt_mode" );
 
-    if ( i == 1 ) { //daily
+    if ( i === 1 ) { //daily
       makeVisible ( "weekdays_only" );
     }
 
-    if ( i == 2 ) { //weekly
+    if ( i === 2 ) { //weekly
       makeVisible ( "rptbydayextended", true );
       if (expert ) {
         makeVisible ( "rptwkst" );
       }
     }
-   if ( i == 3 ) { //monthly (by day)
+   if ( i === 3 ) { //monthly (by day)
      if (expert ) {
         makeVisible ( "rptwkst" );
         makeVisible ( "rptbydayln", true );
@@ -295,18 +295,18 @@ function rpttype_handler() {
      }
    }
 
-   if ( i == 4 ) { //monthly (by date)
+   if ( i === 4 ) { //monthly (by date)
      if (expert ) {
        makeVisible ( "rptbydayextended", true );
        makeVisible ( "rptbymonthdayextended", true );
      }
    }
 
-   if ( i == 5 ) { //monthly (by position)
+   if ( i === 5 ) { //monthly (by position)
       makeVisible ( "rptbysetpos", true );
    }
 
-  if ( i == 6 ) {  //yearly
+  if ( i === 6 ) {  //yearly
     if (expert ) {
         makeVisible ( "rptwkst" );
         makeVisible ( "rptbymonthdayextended", true );
@@ -325,7 +325,7 @@ function rpttype_handler() {
     makeVisible ( "rptbymonth", true );
   }
   }
-  if ( i == 7 ) {
+  if ( i === 7 ) {
     makeVisible ( "rptexceptions", true);
   }
 }
@@ -333,7 +333,7 @@ function rpttype_handler() {
 function rpttype_weekly() {
   var i = form.rpttype.selectedIndex;
   var val = form.rpttype.options[i].text;
- if ( val == "Weekly" ) {
+ if ( val === "Weekly" ) {
    //Get Event Date values
    var d = form.day.selectedIndex;
    var vald = form.day.options[d].value;
@@ -368,7 +368,7 @@ function showSchedule() {
     delim = ',';
     h += 18;
   }
-  if (users == '') {
+  if (users === '') {
     alert("<?php etranslate ( 'Please add a participant', true)?>" );
     return false;
   }
@@ -393,7 +393,7 @@ function showSchedule() {
            '&day='   + date.getDate();
   console.log("URL: " + url);
 
-  if (sch_win != null && !sch_win.closed) {
+  if (sch_win !== null && !sch_win.closed) {
      h = h + 30;
      sch_win.location.replace( url );
      sch_win.resizeTo(w,h);
@@ -406,8 +406,8 @@ function yyyymmdd(x) {
   var y = x.getFullYear().toString();
   var m = (x.getMonth() + 1).toString();
   var d = x.getDate().toString();
-  (d.length == 1) && (d = '0' + d);
-  (m.length == 1) && (m = '0' + m);
+  (d.length === 1) && (d = '0' + d);
+  (m.length === 1) && (m = '0' + m);
   var yyyymmdd = y + m + d;
   return yyyymmdd;
 }
@@ -433,7 +433,7 @@ function add_exception (which) {
       {
          for (i = 0; i < length; i++)
          {
-            if ( options[i].text == "-" + exceptDate || options[i].text == "+" + exceptDate ) {
+            if ( options[i].text === "-" + exceptDate || options[i].text === "+" + exceptDate ) {
             isUnique = false;
          }
      }
@@ -474,11 +474,11 @@ function toggle_byday( ele ) {
     //blank
     ele.value = ele.id.substr(1,1) + bydaytext;
     tmp = ele.id.substr(1,1) + bydayVal;
-  } else if (ele.value == ele.id.substr(1,1) + bydaytext) {
+  } else if (ele.value === ele.id.substr(1,1) + bydaytext) {
     //positive value
     ele.value = ( parseInt( ele.id.substr( 1,1 ) ) -6 ) + bydaytext;
     tmp = ( parseInt( ele.id.substr( 1,1 ) ) -6 ) + bydayVal;
-  } else if ( ele.value == ( parseInt( ele.id.substr( 1,1 ) ) -6 ) + bydaytext ) {
+  } else if ( ele.value === ( parseInt( ele.id.substr( 1,1 ) ) -6 ) + bydaytext ) {
     //negative value
   ele.value = "        ";
   tmp = '';
@@ -491,10 +491,10 @@ function toggle_bymonthday( ele ) {
   if (ele.value .length > 3) {
     //blank
   ele.value = tmp = ele.id.substr(10);
-  } else if (ele.value == ele.id.substr(10)) {
+  } else if (ele.value === ele.id.substr(10)) {
     //positive value
   ele.value = tmp = parseInt( ele.id.substr( 10 ) ) -32;
-  } else if ( ele.value == ( parseInt( ele.id.substr( 10 ) ) -32 ) ) {
+  } else if ( ele.value === ( parseInt( ele.id.substr( 10 ) ) -32 ) ) {
     //negative value
   ele.value = "     ";
   tmp = '';
@@ -508,10 +508,10 @@ function toggle_bysetpos( ele ) {
     //blank
   ele.value = tmp = ele.id.substr(8);
 
-  } else if (ele.value == ele.id.substr(8)) {
+  } else if (ele.value === ele.id.substr(8)) {
     //positive value
   ele.value = tmp = parseInt( ele.id.substr( 8 ) ) -32;
-  } else if ( ele.value == ( parseInt( ele.id.substr( 8 ) ) -32 ) ) {
+  } else if ( ele.value === ( parseInt( ele.id.substr( 8 ) ) -32 ) ) {
     //negative value
   ele.value = "    ";
   tmp = '';
@@ -526,11 +526,11 @@ function toggle_until() {
   }
   //use date
   elements['rpt__YMD'].disabled = elements['rpt_hour'].disabled = elements['rpt_minute'].disabled =
-    (form.rpt_untilu.checked != true);
+    (form.rpt_untilu.checked !== true);
 
  //use count
  elements['rpt_count'].disabled =
-  ( form.rpt_untilc.checked != true );
+  ( form.rpt_untilc.checked !== true );
  if ( elements['rpt_ampmA'] ) {
    if ( form.rpt_untilu.checked ) { //use until date
      document.getElementById('rpt_ampmA').disabled = false;
@@ -548,7 +548,7 @@ function toggle_rem_when() {
     return;
   }
  if ( elements['reminder_ampmA'] ) {
-   if ( elements['rem_when_date'].checked == true ) {
+   if ( elements['rem_when_date'].checked === true ) {
    document.getElementById('reminder_ampmA').disabled = false;
    document.getElementById('reminder_ampmP').disabled = false;
   } else {
@@ -569,7 +569,7 @@ function toggle_rem_when() {
  elements['reminder__YMD'].disabled =
    elements['reminder_hour'].disabled =
    elements['reminder_minute'].disabled =
-  ( elements['rem_when_date'].checked != true );
+  ( elements['rem_when_date'].checked !== true );
 }
 
 function toggle_reminders() {
@@ -580,7 +580,7 @@ function toggle_reminders() {
   toggle_rem_when();
   makeInvisible ( "reminder_when",true );
   makeInvisible ( "reminder_repeat", true );
-  if ( elements['reminderYes'].checked == true ) {
+  if ( elements['reminderYes'].checked === true ) {
    makeVisible ( "reminder_when", true );
    makeVisible ( "reminder_repeat", true );
   }
@@ -590,7 +590,7 @@ function toggle_rem_rep() {
  elements['rem_rep_days'].disabled =
  elements['rem_rep_hours'].disabled =
  elements['rem_rep_minutes'].disabled =
- ( elements['rem_rep_count'].value == 0 );
+ ( elements['rem_rep_count'].value === 0 );
 }
 
 function editCats ( evt ) {
@@ -604,7 +604,7 @@ function editCats ( evt ) {
 <?php
   load_user_categories();
   foreach ( $categories as $catid => $cat ) {
-    if ( $catid == 0 || $catid == -1 )
+    if ( $catid === 0 || $catid === -1 )
       continue; // Ignore these special cases (0=All, -1=None)
     ?>
     var checkboxId = 'cat_<?php echo $catid;?>';
@@ -613,7 +613,7 @@ function editCats ( evt ) {
       // Is this selected??
       var sel = false;
       for ( i = 0; i < selected_ids.length; i++ ) {
-        if ( selected_ids[i] == <?php echo $catid;?> )
+        if ( selected_ids[i] === <?php echo $catid;?> )
           sel = true;
       }
       obj.checked = sel;
@@ -632,7 +632,7 @@ function catOkHandler () {
   var catIds = '', catNames = '';
 <?php
   foreach ( $categories as $catid => $cat ) {
-    if ( $catid == 0 || $catid == -1 )
+    if ( $catid === 0 || $catid === -1 )
       continue; // Ignore these special cases (0=All, -1=None)
     ?>
   var checkboxId = 'cat_<?php echo $catid;?>';
@@ -659,7 +659,7 @@ function catOkHandler () {
   }
 ?>
   var cats = $('#entry_categories');
-  if (catNames.length == 0) {
+  if (catNames.length === 0) {
     catNames = "<?php etranslate("None") ?>";
   }
   cats.val(catNames);
@@ -680,14 +680,14 @@ function displayInValid(myvar)
 function isNumeric(sText)
 {
    //allow blank values. these will become 0
-   if ( sText.length == 0 )
+   if ( sText.length === 0 )
      return sText;
    var validChars = "0123456789";
    var Char;
-   for (i = 0; i < sText.length && sText != 99; i++)
+   for (i = 0; i < sText.length && sText !== 99; i++)
    {
       Char = sText.charAt(i);
-      if (validChars.indexOf(Char) == -1)
+      if (validChars.indexOf(Char) === -1)
       {
         sText = 99;
       }
@@ -701,7 +701,7 @@ function completed_handler() {
     elements['completed_year'].disabled =
     elements['completed_month'].disabled =
     elements['completed_day'].disabled =
-      ( form.percent.selectedIndex != 10 || form.others_complete.value != 'yes' );
+      ( form.percent.selectedIndex !== 10 || form.others_complete.value !== 'yes' );
   }
 }
 
@@ -719,7 +719,7 @@ function onLoad() {
     if ( bydayList.search( /,/ ) > -1 ) {
       bydayList = bydayList.split ( ',' );
       for ( key in bydayList ) {
-        if ( key == isNumeric ( key ) )
+        if ( key === isNumeric ( key ) )
         bydayAr[bydayList[key]] = bydayList[key];
       }
     } else if ( bydayList.length > 0 ) {
@@ -732,7 +732,7 @@ function onLoad() {
     if ( bymonthdayList.search( /,/ ) > -1 ) {
       bymonthdayList = bymonthdayList.split ( ',' );
       for ( key in bymonthdayList ) {
-        if ( key == isNumeric ( key ) )
+        if ( key === isNumeric ( key ) )
           bymonthdayAr[bymonthdayList[key]] = bymonthdayList[key];
       }
     } else if ( bymonthdayList.length > 0 ) {
@@ -745,7 +745,7 @@ function onLoad() {
     if ( bysetposList.search( /,/ ) > -1 ) {
       bysetposList = bysetposList.split ( ',' );
       for ( key in bysetposList ) {
-        if ( key == isNumeric ( key ) )
+        if ( key === isNumeric ( key ) )
           bysetposAr[bysetposList[key]] = bysetposList[key];
       }
     } else if ( bysetposList.length > 0 ) {
@@ -786,7 +786,7 @@ function is_unique ( val ) {
    unique = true;
    var sel = form.sel_part;
    for ( j = 0; j < sel.length; j++ ) {
-     if ( sel.options[j].value == val )
+     if ( sel.options[j].value === val )
        unique = false;
    }
    return unique;
@@ -838,7 +838,7 @@ function lookupName() {
   //check userlist
   for ( i = 0; i < form.entry_part.length; i++ ) {
     str = form.entry_part.options[i].text;
-    if ( stringToLowercase( str.substring( 0,x ) ) == lower ) {
+    if ( stringToLowercase( str.substring( 0,x ) ) === lower ) {
       selectid = i;
     i = form.entry_part.length;
    }
@@ -850,7 +850,7 @@ function lookupName() {
   //check resource list
   for ( i = 0; i < form.res_part.length; i++ ) {
     str = form.res_part.options[i].text;
-    if ( stringToLowercase( str.substring( 0,x ) ) == lower ) {
+    if ( stringToLowercase( str.substring( 0,x ) ) === lower ) {
       selectid = i;
     i = form.res_part.length;
    }
@@ -863,7 +863,7 @@ function lookupName() {
   if ( form.groups ) {
     for ( i = 0; i < form.groups.length; i++ ) {
       str = form.groups.options[i].text;
-      if ( stringToLowercase( str.substring( 0,x ) ) == lower ) {
+      if ( stringToLowercase( str.substring( 0,x ) ) === lower ) {
         selectid = i;
       i = form.groups.length;
      }

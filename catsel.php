@@ -6,7 +6,7 @@ load_user_categories();
 
 $catList = $catNames = $error = '';
 
-if ( $CATEGORIES_ENABLED == 'N' )
+if ( $CATEGORIES_ENABLED === 'N' )
   exit;
 
 $cats = getGetValue ( 'cats' );
@@ -44,8 +44,8 @@ if ( ! empty ( $categories ) ) {
 
   foreach ( $categories as $K => $V ) {
     // None is index -1 and needs to be ignored
-    if ( $K > 0 && ( $V['cat_owner'] == $login || $is_admin ||
-        substr ( $form, 0, 4 ) == 'edit' ) ) {
+    if ( $K > 0 && ( $V['cat_owner'] === $login || $is_admin ||
+        substr ( $form, 0, 4 ) === 'edit' ) ) {
       $tmpStr = $K .
         '" name="' . htmlentities ( $V['cat_name'] ) .
         '">' . htmlentities ( $V['cat_name'] );
@@ -70,7 +70,7 @@ if ( strlen ( $cats ) ) {
     // disable if not creator and category is Global
     $show_ast = '';
     $disabled = ( empty ( $categories[abs ( $K )]['cat_owner'] ) &&
-      substr ( $form, 0, 4 ) != 'edit' ? 'disabled' : '' );
+      substr ( $form, 0, 4 ) !== 'edit' ? 'disabled' : '' );
     if ( empty ( $categories[abs ( $K )]['cat_owner'] ) ) {
       $show_ast = '*';
     }

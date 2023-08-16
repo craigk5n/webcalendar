@@ -7,7 +7,7 @@ function sendCats( cats ) {
     woda     = window.opener.document.arinctri;
 
   for ( i = 0; i < dfe.length; i++ ) {
-    if ( dfe[i].name == "eventcats[]" )
+    if ( dfe[i].name === "eventcats[]" )
       eventid = i;
   }
   for ( i = 1; i < dfe[eventid].length; i++ ) {
@@ -36,10 +36,10 @@ function selAdd( btn ) {
     dfe   = document.forms[0].elements;
 
   for ( i = 0; i < dfe.length; i++ ) {
-    if ( dfe[i].name == "cats[]" ) {
+    if ( dfe[i].name === "cats[]" ) {
       catid = i;
     }
-    if ( dfe[i].name == "eventcats[]" ) {
+    if ( dfe[i].name === "eventcats[]" ) {
       eventid = i;
     }
   }
@@ -53,7 +53,7 @@ function selAdd( btn ) {
         if ( options[i].selected ) {
           with ( options[i] ) {
             for ( j = 0; j < evlist.length; j++ ) {
-              if ( evlist.options[j].value == value ) {
+              if ( evlist.options[j].value === value ) {
                 isUnique = false;
               }
             }
@@ -75,7 +75,7 @@ function selRemove( btn ) {
     eventid = 0;
 
   for ( i = 0; i < dfe.length; i++ ) {
-    if ( dfe[i].name == "eventcats[]" ) {
+    if ( dfe[i].name === "eventcats[]" ) {
       eventid = i;
     }
   }

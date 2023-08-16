@@ -16,7 +16,7 @@
 
 require_once 'includes/init.php';
 // Don't allow users to use this feature if "allow view others" is disabled.
-if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin )
+if ( $ALLOW_VIEW_OTHER === 'N' && ! $is_admin )
   // not allowed...
   exit;
 
@@ -27,7 +27,7 @@ $year = getGetValue ( 'year' );
 $month = getGetValue ( 'month' );
 $day = getGetValue ( 'day' );
 
-if ($users != htmlentities($users)) {
+if ($users !== htmlentities($users)) {
   echo str_replace ( 'XXX', 'users', $noXStr );
   exit;
 }

@@ -5,7 +5,7 @@ foreach ( $_SESSION as $key => $value ) {
 }
 if ( ! empty ( $dummy ) ) {
   foreach ( $dummy as $key => $value ) {
-    if ( substr ( $key, 0, 6 ) == 'webcal' )
+    if ( substr ( $key, 0, 6 ) === 'webcal' )
       unset ( $_SESSION[$key] );
   }
 }
@@ -43,7 +43,7 @@ if ( ! empty ( $last_login ) )
 if ( empty ( $webcalendar_login ) )
   $webcalendar_login = '';
 
-if ( $REMEMBER_LAST_LOGIN == 'Y' && empty ( $login ) )
+if ( $REMEMBER_LAST_LOGIN === 'Y' && empty ( $login ) )
   $last_login = $login = $webcalendar_login;
 
 load_user_preferences ( 'guest' );
@@ -53,7 +53,7 @@ $WebCalendar->setLanguage();
 // Look for action=logout.
 $logout = false;
 $action = getGetValue('action');
-if (!empty($action) && $action == 'logout') {
+if (!empty($action) && $action === 'logout') {
   $logout = true;
   $return_path = '';
   sendCookie('webcalendar_login', '', 0);
@@ -86,7 +86,7 @@ if (empty($PHP_SELF)) {
 
 $cookie_path = str_replace('login.php', '', $PHP_SELF);
 
-if ($single_user == 'Y' || $use_http_auth) {
+if ($single_user === 'Y' || $use_http_auth) {
   // No login for single-user mode or when using HTTP authorization.
   do_redirect('index.php');
 } else {
@@ -94,7 +94,7 @@ if ($single_user == 'Y' || $use_http_auth) {
     $login = trim($login);
     $badLoginStr = translate('Illegal characters in login XXX.');
 
-    if ($login != addslashes($login))
+    if ($login !== addslashes($login))
       die_miserable_death(
         str_replace('XXX', htmlentities($login), $badLoginStr)
       );
@@ -112,7 +112,7 @@ if ($single_user == 'Y' || $use_http_auth) {
         . chr(rand(ord('A'), ord('z')));
       $encoded_login = encode_string($login . '|' . crypt($password, $salt));
       // If $remember, set login to expire in 365 days.
-      $timeStr = (!empty($remember) && $remember == 'yes'
+      $timeStr = (!empty($remember) && $remember === 'yes'
         ? time() + 31536000 : 0);
       sendCookie('webcalendar_session', $encoded_login, $timeStr, $cookie_path);
 
@@ -159,7 +159,7 @@ if ($single_user == 'Y' || $use_http_auth) {
   // thinks "path/" and "path" are different, so the line above does not
   // delete the "old" cookie. This prohibits the login. So we also delete the
   // cookie with the trailing slash removed.
-  if (substr($cookie_path, -1) == '/') {
+  if (substr($cookie_path, -1) === '/') {
     sendCookie('webcalendar_session', '', 0, substr($cookie_path, 0, -1));
   }
 }
@@ -168,7 +168,7 @@ echo send_doctype($appStr);
 echo $ASSETS;
 
 // Print custom header (since we do not call print_header function).
-if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
+if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT === 'Y' ) {
   echo load_template ( $login, 'S' );
 }
 ?>
@@ -177,7 +177,7 @@ if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
 <div class="container">
 <?php
 // Print custom header (since we do not call print_header function).
-if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
+if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER === 'Y' ) {
   echo load_template ( $login, 'H' );
 }
 ?>
@@ -220,7 +220,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
       $cals = array_merge($nulist, $remotelist);
       $accessStr = translate ( 'Access XXX calendar' );
       for ( $i = 0, $cnt = count ( $cals ); $i < $cnt; $i++ ) {
-        if ( $cals[$i]['cal_is_public'] == 'Y' ) {
+        if ( $cals[$i]['cal_is_public'] === 'Y' ) {
           echo '<li id="form_' . $cals[$i]['cal_login'] . '" class="form-group row">' .
             '<a class="nav" href="nulogin.php?login=' . $cals[$i]['cal_login'] . '">'
             . str_replace ( 'XXX', $cals[$i]['cal_fullname'], $accessStr )
@@ -229,7 +229,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
       }
       echo "</div>\n";
       // Self registration
-      if ( ! empty ( $ALLOW_SELF_REGISTRATION ) && $ALLOW_SELF_REGISTRATION == 'Y' ) {
+      if ( ! empty ( $ALLOW_SELF_REGISTRATION ) && $ALLOW_SELF_REGISTRATION === 'Y' ) {
         // We can limit what domain is allowed to self register.
         // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
         $valid_ip = validate_domain();
@@ -252,7 +252,7 @@ echo '<div id="webcalendarVersion"><a href="' . $PROGRAM_URL . '" target="_blank
     . $PROGRAM_NAME . '</a></div>';
 
 // Print custom trailer (since we do not call print_trailer function).
-if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
+if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER === 'Y' ) {
   echo load_template ( $login, 'T' );
 }
 ?>

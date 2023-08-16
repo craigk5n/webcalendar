@@ -66,7 +66,7 @@ $get_unapproved = true;
 $sendPlainText = false;
 $format = getValue ( 'format' );
 if ( ! empty ( $format ) &&
- ( $format == 'text' || $format == 'plain' ) );
+ ( $format === 'text' || $format === 'plain' ) );
 $sendPlainText = true;
 
 $startdate = getIntValue ( 'startdate' );
@@ -88,13 +88,13 @@ $endTime = mktime ( 3, 0, 0, $endmonth, $endday, $endyear );
 $error = '';
 
 $can_edit = false;
-if ( $readonly == 'Y' || $is_nonuser ) {
+if ( $readonly === 'Y' || $is_nonuser ) {
   $can_edit = false;
 } else if ( $is_admin ) {
   $can_edit = true;
-} else if ( $login == '__public__' ) {
+} else if ( $login === '__public__' ) {
   // Is public allowed to add events?
-  if ( $PUBLIC_ACCESS_CAN_ADD == 'Y' )
+  if ( $PUBLIC_ACCESS_CAN_ADD === 'Y' )
     $can_edit = true;
 }
 // Allow user access control to override permissions
@@ -103,7 +103,7 @@ if ( $can_edit && access_is_enabled () ) {
     $can_edit = false;
 }
 
-if ( $action == 'get' ) {
+if ( $action === 'get' ) {
   $dates = $eventCats = $ids = $tasks = [];
   /* Pre-Load the repeated events for quicker access */
   $wkstart = get_weekday_before ( $startyear, $startmonth );
@@ -113,7 +113,7 @@ if ( $action == 'get' ) {
   $repeated_events = read_repeated_events ( $user, $startTime, $endTime );
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( $user, $startTime, $endTime );
-  if ( $DISPLAY_TASKS_IN_GRID == 'Y' )
+  if ( $DISPLAY_TASKS_IN_GRID === 'Y' )
     $tasks = read_tasks ( $user, $enddate );
   // Gather the category IDs for each
   for ( $i = 0; $i < count ( $events ); $i++ ) {
@@ -156,7 +156,7 @@ if ( $action == 'get' ) {
     echo "<pre>"; print_r ( $objects ); echo "</pre>\n";
   }
   ajax_send_objects ( $objects, $sendPlainText );
-} else if ( $action == 'gett' ) { // Get Tasks
+} else if ( $action === 'gett' ) { // Get Tasks
   $eventCats = $ids = $tasks = [];
   $thisyear = date ( 'Y' );
   $thismonth = date ( 'm' );
@@ -168,7 +168,7 @@ if ( $action == 'get' ) {
     if ( access_is_enabled() ) {
       $can_access = access_user_calendar ( 'view', $task_owner, '',
         $E->getCalType(), $E->getAccess() );
-      if ( $can_access == 0 )
+      if ( $can_access === 0 )
         continue;
     }
     $tasks[] = $E;
@@ -187,7 +187,7 @@ if ( $action == 'get' ) {
     echo "<h2>Return</h2><pre>"; print_r ( $objects ); echo "</pre>\n";
   }
   ajax_send_objects ( $objects, $sendPlainText );
-} else if ( $action == 'eventinfo' ) {
+} else if ( $action === 'eventinfo' ) {
   // TODO: enforce user access control here...
   $id = getIntValue ( 'id' );
   $res = dbi_execute ( 'SELECT cal_login, cal_status
@@ -239,7 +239,7 @@ if ( $action == 'get' ) {
   } else {
     ajax_send_error ( translate('Unknown error.') );
   }
-} else if ( $action == 'addevent' ) {
+} else if ( $action === 'addevent' ) {
   // This is a simple add event function. It will be added as
   // an untimed event, so we don't need to check for conflicts.
   if ( ! $can_edit ) {
@@ -250,7 +250,7 @@ if ( $action == 'get' ) {
   $cat_id = getPostValue ( 'category' );
   $name = getPostValue ( 'name' );
   $description = getPostValue ( 'description' );
-  if ( $description == '' )
+  if ( $description === '' )
     $description = $name;
   $participants = getPostValue ( 'participants' );
   if ( empty ( $participants ) )
@@ -289,9 +289,9 @@ if ( $action == 'get' ) {
   $userList = explode ( ',', $participants );
   for ( $i = 0; $i < count ( $userList ); $i++ ) {
     $user = $userList[$i];
-    $status = ( $user != $login &&
+    $status = ( $user !== $login &&
       boss_must_approve_event ( $login, $user ) &&
-      $REQUIRE_APPROVALS == 'Y' &&
+      $REQUIRE_APPROVALS === 'Y' &&
       ! $is_nonuser_admin ) ? 'W' : 'A';
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
         cal_status ) VALUES ( ?, ?, ? )',
@@ -302,7 +302,7 @@ if ( $action == 'get' ) {
     // TODO: send email notification!
   }
   ajax_send_success();
-} else if ( $action == 'addtask' ) {
+} else if ( $action === 'addtask' ) {
   // This is a simple add task function. It will be added as
   // an untimed task, so we don't need to check for conflicts.
   if ( ! $can_edit ) {
@@ -314,7 +314,7 @@ if ( $action == 'get' ) {
   $cat_id = getPostValue ( 'category' );
   $name = getPostValue ( 'name' );
   $description = getPostValue ( 'description' );
-  if ( $description == '' )
+  if ( $description === '' )
     $description = $name;
   $user = $login;
   // Get new ID

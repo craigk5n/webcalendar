@@ -79,7 +79,7 @@ if ( ! empty ( $delete ) ) {
         . translate( 'word characters only' );
 
     // Add new layer if requested.
-    if ( ! empty ( $nlayer ) && $nlayer == 'Y' ) {
+    if ( ! empty ( $nlayer ) && $nlayer === 'Y' ) {
       $res = dbi_execute ( 'SELECT MAX( cal_layerid ) FROM webcal_user_layers' );
       $layerid = 1;
       if ( $res ) {
@@ -113,12 +113,12 @@ if ( ! empty ( $reload ) ) {
   // We will check ics first.
   $data = parse_ical ( $nurl, $type );
   // TODO it may be a vcs file.
-  // if ( count ( $data ) == 0 ) {
+  // if ( count ( $data ) === 0 ) {
   // $data = parse_vcal ( $nurl );
   // }
   // We may be processing an hCalendar.
   // $data sometimes has a count of 1 but is not a valid array.
-  if ( ( count ( $data ) == 0 || ! isset ( $data[0] ) ) &&
+  if ( ( count ( $data ) === 0 || ! isset ( $data[0] ) ) &&
       function_exists ( 'simplexml_load_string' ) ) {
     $h = new hKit;
     $h->tidy_mode = 'proxy';
@@ -140,14 +140,14 @@ if ( ! empty ( $reload ) ) {
     <p>' . translate ( 'Import Results' ) . '</p><br><br>
     ' . translate ( 'Events successfully imported' ) . ': ' . $count_suc
      . '<br>';
-    if ( $layer_found == false ) { // We may have just added layer.
+    if ( $layer_found === false ) { // We may have just added layer.
       load_user_layers();
       foreach ( $layers as $layer ) {
-        if ( $layer['cal_layeruser'] == $nid )
+        if ( $layer['cal_layeruser'] === $nid )
           $layer_found = true;
       }
     }
-    if ( $layer_found == false )
+    if ( $layer_found === false )
       echo '
     <p>' . translate( 'Create a new layer to view this calendar.' ) . '</p>';
   } elseif ( ! empty ( $errormsg ) ) {
@@ -174,7 +174,7 @@ function delete_events ( $nid ) {
   WHERE cal_id = ?', [$events[$i]] );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
-      if ( ! empty ( $row ) && $row[0] == 1 )
+      if ( ! empty ( $row ) && $row[0] === 1 )
         $delete_em[] = $events[$i];
 
       dbi_free_result ( $res );

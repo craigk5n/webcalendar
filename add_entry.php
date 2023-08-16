@@ -12,7 +12,7 @@ if ( $id > 0 ) {
     AND cal_id = ?', [$login, $id] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row[0] == $id ) {
+    if ( $row[0] === $id ) {
       $is_my_event = true;
       echo str_replace ( 'XXX', $id,
         translate ( 'Event XXX is already on your calendar.' ) );
@@ -33,20 +33,20 @@ if ( $id > 0 ) {
   $row = dbi_fetch_row ( $res );
 
   if ( ! $is_my_event ) {
-    if ( $row[0] == 'C' && ! $is_assistant && ! $is_nonuser_admin ) {
+    if ( $row[0] === 'C' && ! $is_assistant && ! $is_nonuser_admin ) {
       // Assistants are allowed to see confidential stuff.
       $is_private = true;
       echo str_replace ( 'XXX', translate ( 'confidential' ), $mayNotAddStr );
       exit;
     } else
-    if ( $row[0] == 'R' ) {
+    if ( $row[0] === 'R' ) {
       $is_private = true;
       echo str_replace ( 'XXX', translate ( 'private' ), $mayNotAddStr );
       exit;
     }
   }
   // Add the event.
-  if ( $readonly == 'N' && ! $is_my_event && ! $is_private ) {
+  if ( $readonly === 'N' && ! $is_my_event && ! $is_private ) {
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login, cal_status ) VALUES
 ( ?, ?, ? )', [$id, $login, 'A'] ) )
       $error = str_replace ( 'XXX', dbi_error(),

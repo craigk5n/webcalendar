@@ -36,7 +36,7 @@ else {
   if ($res) {
     $row = dbi_fetch_row($res);
 
-    $is_my_event = ($row[0] == $id && $row[1] == $login ||
+    $is_my_event = ($row[0] === $id && $row[1] === $login ||
       (empty($row[1]) && $is_admin));
 
     dbi_free_result($res);
@@ -48,7 +48,7 @@ if (!empty($_FILES['FileName']))
   $file = $_FILES['FileName'];
 
 // Make sure we clear $file if no file was upoaded.
-if (!empty($file['tmp_name']) && $file['tmp_name'] == 'none')
+if (!empty($file['tmp_name']) && $file['tmp_name'] === 'none')
   $file = '';
 
 if (!$is_my_event)
@@ -88,7 +88,7 @@ if (empty($error) && !empty($delete)) {
     ))
       $error = db_error();
 
-    if (!empty($delIcon) && $delIcon == 'Y')
+    if (!empty($delIcon) && $delIcon === 'Y')
       renameIcon($id);
   } else {
     // Add new category.
@@ -99,7 +99,7 @@ if (empty($error) && !empty($delete)) {
       $id = $row[0] + 1;
       dbi_free_result($res);
       // Set catowner to NULL for global category
-      $catowner = ($is_admin ? ($isglobal == 'Y' ? null : $login) : $login);
+      $catowner = ($is_admin ? ($isglobal === 'Y' ? null : $login) : $login);
       if (!dbi_execute(
         'INSERT INTO webcal_categories ( cat_id, cat_owner,
         cat_name, cat_color ) VALUES ( ?, ?, ?, ? )',
@@ -109,11 +109,11 @@ if (empty($error) && !empty($delete)) {
     } else
       $error = db_error();
   }
-  if (empty($delIcon) && is_dir($icon_path) && (!empty($ENABLE_ICON_UPLOADS) && $ENABLE_ICON_UPLOADS == 'Y' ||
+  if (empty($delIcon) && is_dir($icon_path) && (!empty($ENABLE_ICON_UPLOADS) && $ENABLE_ICON_UPLOADS === 'Y' ||
     $is_admin)) {
     // Save icon if uploaded.
     if (!empty($file['tmp_name'])) {
-      if (($file['type'] == 'image/gif' || $file['type'] == 'image/png')
+      if (($file['type'] === 'image/gif' || $file['type'] === 'image/png')
         && $file['size'] <= $icon_max_size
       ) {
         // $icon_props = getimagesize( $file['tmp_name'] );
@@ -121,7 +121,7 @@ if (empty($error) && !empty($delete)) {
         $path_parts = pathinfo($_SERVER['SCRIPT_FILENAME']);
         $fullIcon = $path_parts['dirname'] . '/'
           . $icon_path . 'cat-' . $id;
-        if ($file['type'] == 'image/gif')
+        if ($file['type'] === 'image/gif')
           $fullIcon .= '.gif';
         else
           $fullIcon .= '.png';
@@ -131,8 +131,8 @@ if (empty($error) && !empty($delete)) {
       } else if ($file['size'] > $icon_max_size) {
         $error = translate('File size exceeds maximum.');
       } else if (
-        $file['type'] != 'image/gif' &&
-        $file['type'] != 'image/png'
+        $file['type'] !== 'image/gif' &&
+        $file['type'] !== 'image/png'
       ) {
         $error = translate('File is not a GIF or PNG image') . ': '
           . $file['type'];

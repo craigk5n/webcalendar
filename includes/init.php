@@ -203,7 +203,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   if( is_array( $includes ) ) {
     foreach( $includes as $inc ) {
       //$cs_ret .= '<!-- inc "' . $inc . '" INCLUDED -->' . "\n";
-      if ( $inc == 'JQUERY' ) {
+      if ( $inc === 'JQUERY' ) {
         // Ignore since we handled it above
         //$cs_ret .= '<!-- JQUERY INCLUDED -->' . "\n";
       } if( stristr( $inc, '.css' ) ) {
@@ -212,8 +212,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
         // even if $disableStyle.
         $cs_ret .= '
     <link href="' . $i . '" rel="stylesheet">';
-      } elseif( substr( $inc, 0, 12 ) == 'js/popups.js'
-          && ! empty( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
+      } elseif( substr( $inc, 0, 12 ) === 'js/popups.js'
+          && ! empty( $DISABLE_POPUPS ) && $DISABLE_POPUPS === 'Y' ) {
         // Don't load popups.js if DISABLE_POPUPS.
       } else {
         $arinc = explode( '/', $inc );
@@ -223,7 +223,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
         if( stristr( $inc, '/true' ) ) {
           $i = 'includes';
           foreach( $arinc as $a ) {
-            if( $a == 'true' )
+            if( $a === 'true' )
               break;
 
             $i .= '/' . $a;
@@ -243,8 +243,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     <link type="application/rss+xml" href="';
 
   // Add RSS feed for unapproved events if approvals are required
-  if( $GLOBALS['REQUIRE_APPROVALS'] == 'Y'
-       && $login != '__public__' && $is_admin ) {
+  if( $GLOBALS['REQUIRE_APPROVALS'] === 'Y'
+       && $login !== '__public__' && $is_admin ) {
     // Prh .. fix theme change for auth_http which does not set webcal*login
     //        variables.
     //
@@ -257,7 +257,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     // that's too many db requests to repeat on every page.
 
     $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . $tmp . $login . '">'
-     . ( $is_admin && $PUBLIC_ACCESS == 'Y' ? $tmp_l . $tmp_f . '?user=public&'
+     . ( $is_admin && $PUBLIC_ACCESS === 'Y' ? $tmp_l . $tmp_f . '?user=public&'
      . filemtime( $tmp_f ) . $tmp . translate( $PUBLIC_ACCESS_FULLNAME )
      . '">' : '' );
   }
@@ -283,21 +283,21 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
       $i = 'includes/' . $c;
       $ret .= '
     <link href="' . $i . '" rel="stylesheet"'
-       . ( $c == 'css/print_styles.css' && empty( $friendly )
+       . ( $c === 'css/print_styles.css' && empty( $friendly )
          ? ' media="print"' : '' ) . '>' . "\n";
     }
   }
   echo $ret . $cs_ret
   // Add custom script/stylesheet if enabled.
-   . ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom
+   . ( $CUSTOM_SCRIPT === 'Y' && ! $disableCustom
      ? load_template( $login, 'S' ) : '' )
   // Add RSS feed if publishing is enabled.
-   . ( ! empty( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] == 'Y'
-       && $login == '__public__' || ( ! empty( $GLOBALS['USER_RSS_ENABLED'] )
-       && $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) && ! $disableRSS ?
+   . ( ! empty( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] === 'Y'
+       && $login === '__public__' || ( ! empty( $GLOBALS['USER_RSS_ENABLED'] )
+       && $GLOBALS['USER_RSS_ENABLED'] === 'Y' ) && ! $disableRSS ?
     $tmp_l . 'rss.php?' . filemtime( 'rss.php' )
       /* TODO: single-user mode, etc. */
-     . ( $login != '__public__' ? '&user=' . $login : '' )
+     . ( $login !== '__public__' ? '&user=' . $login : '' )
      . '" rel="alternate" title="' . $appStr . ' [RSS 2.0]">' : '' )
   // Do we need anything else inside the header tag?
   // $HeadX moved here because linked CSS may override standard styles.
@@ -308,16 +308,16 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   </head>
   <body'
   // Determine the page direction (left-to-right or right-to-left).
-  . ( translate( 'direction' ) == 'rtl' ? ' dir="rtl"' : '' )
+  . ( translate( 'direction' ) === 'rtl' ? ' dir="rtl"' : '' )
   /* Add <body> id. */ . ' id="' . preg_replace( '/(_|.php)/', '',
     substr( $self, strrpos( $self, '/' ) + 1 ) ) . '"'
   // Add any extra parts to the <body> tag.
   . ( empty( $BodyX ) ? '' : " $BodyX" ) . '>' . "\n"
   // Add custom header if enabled.
-  . ( $CUSTOM_HEADER == 'Y' && ! $disableCustom
+  . ( $CUSTOM_HEADER === 'Y' && ! $disableCustom
     ? load_template( $login, 'H' ) : '' );
   // HTML includes needed for the top menu.
-  if( $MENU_ENABLED == 'Y' ) {
+  if( $MENU_ENABLED === 'Y' ) {
     require_once 'menu.php';
   }
   // TODO convert this to return value.
@@ -349,17 +349,17 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
 
   // If menu enabled, include JS for Bootstrap v4 submenu.
   // TODO: Get the submenu working to allow for more dates in the menu.
-  if ($MENU_ENABLED != 'N') {
+  if ($MENU_ENABLED !== 'N') {
     $ret .= '<script src="./includes/js/menu.js"></script>' . "\n";
   }
   if( $include_nav_links && ! $friendly ) {
-    if( $MENU_ENABLED == 'N' )
+    if( $MENU_ENABLED === 'N' )
       require_once 'includes/trailer.php';
   }
 
   $ret .= ( empty( $tret ) ? '' : $tret ) // Data from trailer.
   // Add custom trailer if enabled.
-  . ( $CUSTOM_TRAILER == 'Y' && ! $disableCustom && isset( $c )
+  . ( $CUSTOM_TRAILER === 'Y' && ! $disableCustom && isset( $c )
     ? load_template( $login, 'T' ) : '' );
 
   if( $closeDb ) {
@@ -373,7 +373,7 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
   // text and HTML will cause issues.
   $pagesWithFullEditor = [ 'edit_entry.php', 'docadd.php' ];
   $includeCkeditor = ( ! empty ( $GLOBALS['ALLOW_HTML_DESCRIPTION'] ) ) &&
-    $GLOBALS['ALLOW_HTML_DESCRIPTION'] == 'Y' &&
+    $GLOBALS['ALLOW_HTML_DESCRIPTION'] === 'Y' &&
     in_array ( $GLOBALS['SCRIPT'], $pagesWithFullEditor );
 
   return $ret .
@@ -387,7 +387,7 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
     </script>' : '' ) .
 
     // Adds an easy link to validate the pages.
-    ( $DEMO_MODE == 'Y' ? '
+    ( $DEMO_MODE === 'Y' ? '
     <p><a href="http://validator.w3.org/check?uri=referer">'
      . '<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" '
      . 'class="valid"></a></p>' : '' )/* Close HTML page properly. */ . '

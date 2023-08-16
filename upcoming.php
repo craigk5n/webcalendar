@@ -136,7 +136,7 @@ load_global_settings();
 $error = '';
 
 // Make sure 'Upcoming Events' is enabled in System Settings.
-if ( empty ( $UPCOMING_EVENTS ) || $UPCOMING_EVENTS != 'Y' ) {
+if ( empty ( $UPCOMING_EVENTS ) || $UPCOMING_EVENTS !== 'Y' ) {
   $error = print_not_auth();
 }
 
@@ -157,11 +157,11 @@ function print_upcoming_event ( $e, $date ) {
 
   $private = $confidential = false;
   // Access: P=Public, R=Private, C=Confidential
-  if ( $e->getAccess() == 'R' ) {
+  if ( $e->getAccess() === 'R' ) {
     // not a public event, so we will just display "Private"
     $private = true;
   }
-  else if ( $e->getAccess() == 'C' ) {
+  else if ( $e->getAccess() === 'C' ) {
     // not a public event, so we will just display "Confidential"
     $confidential = true;
   }
@@ -189,7 +189,7 @@ function print_upcoming_event ( $e, $date ) {
       $e->getID() . "&amp;date=$date&amp;user=" . $e->getLogin()
        . ( empty( $link_target ) ? '>' : "\" target=\"$link_target\">" );
     if ( empty ( $UPCOMING_DISPLAY_CAT_ICONS ) ||
-      $UPCOMING_DISPLAY_CAT_ICONS != 'N' ) {
+      $UPCOMING_DISPLAY_CAT_ICONS !== 'N' ) {
       $catNum = abs ( $e->getCategory() );
       if ( $catNum > 0 ) {
         $catIcon = 'wc-icons/cat-' . $catNum . '.gif';
@@ -237,7 +237,7 @@ function print_upcoming_event ( $e, $date ) {
   if ( $showTime ) {  //show event time if requested (default=don't show)
     if ( $e->isAllDay() ) {
       echo ' (' . translate ( 'All day event' ) . ")\n";
-    } else if ( $e->getTime() != -1 ) {
+    } else if ( $e->getTime() !== -1 ) {
       echo ' (' . display_time ( $e->getDateTime(), $display_tzid ) . ")\n";
     }
   }
@@ -265,7 +265,7 @@ $public_must_be_enabled = false;
 // Do we include a link to view the event?  If so, what target
 // should we use.
 $display_link = ( empty ( $UPCOMING_DISPLAY_LINKS ) ||
-  $UPCOMING_DISPLAY_LINKS == 'Y' );
+  $UPCOMING_DISPLAY_LINKS === 'Y' );
 $link_target = '_top';
 
 // Default time window of events to load
@@ -275,7 +275,7 @@ $link_target = '_top';
 //(you can't pass ?days=60 type parameters when you use include)
 $numDays = getIntValue ( 'numDays' );
 if (empty ($numDays))  $numDays = 30;
-$showTitle = ( getGetValue ( 'showTitle', "[01]", true ) == '1' );
+$showTitle = ( getGetValue ( 'showTitle', "[01]", true ) === '1' );
 $showTitle = ( ! empty ( $showTitle ) && $showTitle !== false ? true : false );
 $showMore = getGetValue ( 'showMore', "[01]", true );
 $showMore = ( ! empty ( $showMore ) && $showMore !== false ? true : false );
@@ -309,19 +309,19 @@ if ( empty ( $showTasks ) ) $showTasks = false;
 
 // Show event popups
 $showPopups = ( empty ( $UPCOMING_DISPLAY_POPUPS ) ||
-  $UPCOMING_DISPLAY_POPUPS == 'Y' );
-if ( getGetValue ( 'showPopups' ) != '' ) {
-  $showPopups = ( getGetValue ( 'showPopups', "[01]", true ) != '0' );
+  $UPCOMING_DISPLAY_POPUPS === 'Y' );
+if ( getGetValue ( 'showPopups' ) !== '' ) {
+  $showPopups = ( getGetValue ( 'showPopups', "[01]", true ) !== '0' );
 }
 
 // Allow the URL to override the user setting such as
 // "upcoming.php?user=craig"
 $allow_user_override = ( ! empty ( $UPCOMING_ALLOW_OVR ) &&
-  $UPCOMING_ALLOW_OVR == 'Y' );
+  $UPCOMING_ALLOW_OVR === 'Y' );
 
 // Load layers
 $load_layers = ( ! empty ( $UPCOMING_DISPLAY_LAYERS ) &&
-  $UPCOMING_DISPLAY_LAYERS == 'Y' );
+  $UPCOMING_DISPLAY_LAYERS === 'Y' );
 
 // Load just a specified category (by its id)
 // Leave blank to not filter on category (unless specified in URL)
@@ -343,7 +343,7 @@ if ( $allow_user_override ) {
   $username = getValue ( 'user' );
   if (empty ($username)) $username = '__public__';
 } else {
-  if ( getValue ( 'user' ) != '' ) {
+  if ( getValue ( 'user' ) !== '' ) {
     $error = print_not_auth();
   }
 }
@@ -354,11 +354,11 @@ $login = $username;
 // Load user preferences for DISPLAY_UNAPPROVED
 load_user_preferences();
 
-if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' ) {
+if ( $public_must_be_enabled && $PUBLIC_ACCESS !== 'Y' ) {
   $error = print_not_auth();
 }
 
-if ( $error == '' ) {
+if ( $error === '' ) {
   if ( $allow_user_override ) {
     $u = getValue ( 'user', "[A-Za-z0-9_\.=@,\-]+", true );
     if ( ! empty ( $u ) ) {
@@ -372,9 +372,9 @@ if ( $error == '' ) {
     }
   }
 
-  $get_unapproved = ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED == 'Y' );
+  $get_unapproved = ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED === 'Y' );
 
-  if ( $CATEGORIES_ENABLED == 'Y' ) {
+  if ( $CATEGORIES_ENABLED === 'Y' ) {
     $x = getValue ( 'cat_id', '-?[0-9]+', true );
     if ( ! empty ( $x ) ) {
       $cat_id = $x;
@@ -409,7 +409,7 @@ if ( $error == '' ) {
 
   // Calculate date range
   $date = getValue ( 'date', '-?[0-9]+', true );
-  if ( empty ( $date ) || strlen ( $date ) != 8 ) {
+  if ( empty ( $date ) || strlen ( $date ) !== 8 ) {
     // If no date specified, start with today
     $date = date ( 'Ymd' );
   }
@@ -432,7 +432,7 @@ if ( $error == '' ) {
 
   // If 'showEvents=0' is in URL, then just include tasks in list
   $show_events = getGetValue ( 'showEvents', "[01]", true );
-  $tasks_only = ( $show_events == '0' );
+  $tasks_only = ( $show_events === '0' );
 
   if ( $tasks_only ) {
     $repeated_events = $events = array();
@@ -446,7 +446,7 @@ if ( $error == '' ) {
   }
 
   // Pre-load tasks for quicker access */
-  if ( ( ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' ) )
+  if ( ( ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID === 'Y' ) )
     || $showTasks ) {
     /* Pre-load tasks for quicker access */
     $tasks = read_tasks ( $username, $endDate, $cat_id );

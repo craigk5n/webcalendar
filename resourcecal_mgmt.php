@@ -9,12 +9,12 @@
 require_once 'includes/init.php';
 
 // Verify access to this page is allowed.
-if (empty($login) || $login == '__public__') {
+if (empty($login) || $login === '__public__') {
     // Do not allow public access.
     do_redirect(empty($STARTVIEW) ? 'month.php' : $STARTVIEW);
     exit;
 }
-if ($NONUSER_ENABLED != 'Y' || (access_is_enabled() && !access_can_access_function(ACCESS_USER_MANAGEMENT))) {
+if ($NONUSER_ENABLED !== 'Y' || (access_is_enabled() && !access_can_access_function(ACCESS_USER_MANAGEMENT))) {
     do_redirect(empty($STARTVIEW) ? 'month.php' : $STARTVIEW);
 }
 
@@ -53,7 +53,7 @@ print_header(
             <th scope="col">
                 <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Admin of this resource calendar') ?>"><?php etranslate('Admin') ?></div>
             </th>
-            <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
+            <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS === 'Y') { ?>
                 <th scope="col">
                     <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Enabling allows this resource calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?></div>
                 </th>
@@ -113,7 +113,7 @@ print_header(
                         <?php
                             $userlist = user_get_users();
                             for ( $i = 0, $cnt = count ($userlist); $i < $cnt; $i++ ) {
-                                if ($userlist[$i]['cal_login'] != '__public__' ) {
+                                if ($userlist[$i]['cal_login'] !== '__public__' ) {
                                     echo '<option value="' . $userlist[$i]['cal_login'] . '">' . $userlist[$i]['cal_fullname']
                                     . '</option>';
                                 }
@@ -121,7 +121,7 @@ print_header(
                         ?>
                         </select>
                     </div>
-                    <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
+                    <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS === 'Y') { ?>
                         <div class="form-inline mt-1" id="div-editPublic">
                             <label class="col-5 for=" editPublic" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Enabling allows this resource calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?>: </label>
                             <?php echo print_radio('editPublic'); ?>
@@ -181,7 +181,7 @@ print_header(
         // Delete User
         <?php if ($is_admin && $admin_can_delete_user && access_can_access_function(ACCESS_USER_MANAGEMENT)) { ?>
             // Cannot delete yourself
-            if (myLogin != login) {
+            if (myLogin !== login) {
                 ret += '<div class="dropdown-divider"></div>';
                 ret += "<a class='clickable dropdown-item' onclick=\"return delete_user('" + login +
                     "');\"><?php etranslate('Delete'); ?></a>";
@@ -208,7 +208,7 @@ print_header(
                 // Ignore
                 console.log("Ignoring HTML in response: " + lines[i]);
             } else {
-                if (ret.length == 0)
+                if (ret.length === 0)
                     ret = lines[i];
                 else
                     ret += lines[i];
@@ -251,10 +251,10 @@ print_header(
                         fullname: u.fullname,
                         eventcount: u.eventcount
                     };
-                    var id = u.login.substring(0, 5) == '<?php echo $NONUSER_PREFIX; ?>' ? u.login.substring(5) : u.login;
+                    var id = u.login.substring(0, 5) === '<?php echo $NONUSER_PREFIX; ?>' ? u.login.substring(5) : u.login;
                     tbody += '<tr><td>' + id +
-                        '</td><td>' + (u.fullname == null ? '' : u.fullname) + '</td><td>' + (u.admin == null ? '' : u.admin) +
-                        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg">' : '') +
+                        '</td><td>' + (u.fullname === null ? '' : u.fullname) + '</td><td>' + (u.admin === null ? '' : u.admin) +
+                        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS === 'Y') { ?> '</td><td>' + (u.public === 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg">' : '') +
                         <?php } ?> '</td><td>' + u.eventcount + '</td><td>' +
                         user_menu(u.login) + '</td></tr>\n';
                 }
@@ -293,12 +293,12 @@ print_header(
         // Find correct user in our user list
         var user = null;
         for (var i = 0; i < users.length; i++) {
-            if (login == users[i]['login']) {
+            if (login === users[i]['login']) {
                 found = true;
                 user = users[i];
             }
         }
-        if (login == "") {
+        if (login === "") {
             // Add user
             $('#edit-user-title').html('<?php etranslate('Add Resource Calendar'); ?>');
             $('#editUserAdd').prop("value", "1");
@@ -307,7 +307,7 @@ print_header(
             $('#editName').prop("value", "");
             // Select first admin in list by default
             $("#editAdmin option:first").prop('selected', true);
-            <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
+            <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS === 'Y') { ?>
                 $('#editPublic_N').prop("checked", true);
             <?php } ?>
         } else {
@@ -320,8 +320,8 @@ print_header(
             $('#editName').prop("value", user['fullname']);
             // Set Admin in select list
             $("#editAdmin").val(user['admin']).attr("selected", "selected");
-            <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
-                if (user['public'] == 'Y')
+            <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS === 'Y') { ?>
+                if (user['public'] === 'Y')
                     $('#editPublic_Y').prop("checked", true);
                 else
                     $('#editPublic_N').prop("checked", true);
@@ -334,7 +334,7 @@ print_header(
         var login = '<?php echo $NONUSER_PREFIX; ?>' + $('#editUsername').val();
         var lastname = $('#editName').val();
         var firstname = '';
-        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
+        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS === 'Y') { ?>
             console.log('editPublic_Y: ' + $('#editPublic_Y').is(':checked'));
             var public = $('#editPublic_Y').is(':checked') ? 'Y' : 'N';
         <?php } else { ?>
@@ -346,8 +346,8 @@ print_header(
         $('#invalid-name-error').hide();
 
         var add = $('#editUserAdd').val();
-        if (add == "1") {
-            if (login.length == 0) {
+        if (add === "1") {
+            if (login.length === 0) {
                 $('#errorMessage').html('<?php echo  $noLoginError; ?>');
                 $('#edit-user-dialog-alert').show();
                 return;
@@ -356,7 +356,7 @@ print_header(
 
         var foundError = false;
         // Name required
-        if ($('#editName').val() == "") {
+        if ($('#editName').val() === "") {
             $('#invalid-name-error').show();
             foundError = true;
         }
@@ -405,7 +405,7 @@ print_header(
                         //alert('<?php etranslate('Error'); ?>: ' + response.message);
                         return;
                     }
-                    if (error == '') {
+                    if (error === '') {
                         // Close window
                         $('#edit-user-dialog').hide();
                         // Reload users
@@ -414,8 +414,8 @@ print_header(
                 },
                 'json')
             .done(function() {
-                if (error.length == 0) {
-                    if (add == 1) {
+                if (error.length === 0) {
+                    if (add === 1) {
                         $('#infoMessage').html('<?php echo translate('Resource Calendar successfully added.') ?>');
                     } else {
                         $('#infoMessage').html('<?php etranslate('Resource Calendar successfully updated.') ?>');
@@ -467,7 +467,7 @@ print_header(
                     }
                 })
             .done(function() {
-                if (error.length == 0) {
+                if (error.length === 0) {
                     // Close window
                     $('#delete-user-dialog').hide();
                     // Reload users

@@ -9,7 +9,7 @@
 
 require_once 'includes/init.php';
 
-if (empty($login) || $login == '__public__') {
+if (empty($login) || $login === '__public__') {
     // Do not allow public access.
     do_redirect(empty($STARTVIEW) ? 'month.php' : $STARTVIEW);
     exit;
@@ -225,7 +225,7 @@ print_header(
         // Delete User
         <?php if ($is_admin && $admin_can_delete_user && access_can_access_function(ACCESS_USER_MANAGEMENT)) { ?>
             // Cannot delete yourself
-            if (myLogin != login) {
+            if (myLogin !== login) {
                 ret += '<div class="dropdown-divider"></div>';
                 ret += "<a class='clickable dropdown-item' onclick=\"return delete_user('" + login +
                     "');\"><?php etranslate('Delete User'); ?></a>";
@@ -270,12 +270,12 @@ print_header(
                     };
                     // Show users only to admins and self
 		            <?php if (!$is_admin) { ?>
-			            if (myLogin == u.login) {
+			            if (myLogin === u.login) {
 		            <?php } ?>
-                    tbody += '<tr><td>' + u.login + '</td><td>' + (u.firstname == null ? '' : u.firstname) +
-                        '</td><td>' + (u.lastname == null ? '' : u.lastname) + '</td><td>' + (u.email == null ? '' : u.email) +
+                    tbody += '<tr><td>' + u.login + '</td><td>' + (u.firstname === null ? '' : u.firstname) +
+                        '</td><td>' + (u.lastname === null ? '' : u.lastname) + '</td><td>' + (u.email === null ? '' : u.email) +
                         '</td><td>' +
-                        (u.is_admin == 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg">' : '') +
+                        (u.is_admin === 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg">' : '') +
                         '</td><td>' + user_menu(u.login) + '</td></tr>\n';
                     <?php if (!$is_admin) { ?>
                         }
@@ -293,7 +293,7 @@ print_header(
         var basicEmailRegex = /^[^\s@]+@[^\s@]+$/;
         var elem = $("#editEmail").val();
         // Allow empty
-        if (elem.length == 0)
+        if (elem.length === 0)
             return true;
         if (elem.match(basicEmailRegex))
             return true;
@@ -306,7 +306,7 @@ print_header(
         var firstNameRegex = /^[^<>]+$/;
         var elem = $("#editFirstname").val();
         // Allow empty
-        if (elem.length == 0)
+        if (elem.length === 0)
             return true;
         if (elem.match(firstNameRegex))
             return true;
@@ -319,7 +319,7 @@ print_header(
         var lastNameRegex = /^[^<>]+$/;
         var elem = $("#editLastname").val();
         // Allow empty
-        if (elem.length == 0)
+        if (elem.length === 0)
             return true;
         if (elem.match(lastNameRegex))
             return true;
@@ -330,7 +330,7 @@ print_header(
     function edit_user(login) {
         console.log('edit_user(' + login + ')');
         $('#edit-user-dialog-alert').hide();
-        if (login == "") {
+        if (login === "") {
             $('#editUserDeleteButton').prop('disabled', true);
         } else {
             $('#editUserDeleteButton').prop('disabled', false);
@@ -339,12 +339,12 @@ print_header(
         // Find correct user in our user list
         var user = null;
         for (var i = 0; i < users.length; i++) {
-            if (login == users[i]['login']) {
+            if (login === users[i]['login']) {
                 found = true;
                 user = users[i];
             }
         }
-        if (login == "") {
+        if (login === "") {
             // Add user
             $('#edit-user-title').html('<?php etranslate('Add User'); ?>');
             $('#editUserAdd').prop("value", "1");
@@ -374,11 +374,11 @@ print_header(
             $('#div-editPassword1').hide();
             $('#div-editPassword2').hide();
             console.log('user enabled: ' + user['enabled']);
-            if (user['enabled'] == 'Y')
+            if (user['enabled'] === 'Y')
                 $('#editEnabled_Y').prop("checked", true);
             else
                 $('#editEnabled_N').prop("checked", true);
-            if (user['is_admin'] == 'Y')
+            if (user['is_admin'] === 'Y')
                 $('#editIsAdmin_Y').prop("checked", true);
             else
                 $('#editIsAdmin_N').prop("checked", true);
@@ -400,19 +400,19 @@ print_header(
         var isAdd = 0;
 
         var add = $('#editUserAdd').val();
-        if (add == "1") {
+        if (add === "1") {
             isAdd = 1;
-            if (login.length == 0) {
+            if (login.length === 0) {
                 $('#errorMessage').html('<?php echo  $noLoginError; ?>');
                 $('#edit-user-dialog-alert').show();
                 return;
             }
-            if (password1.length == 0) {
+            if (password1.length === 0) {
                 $('#errorMessage').html('<?php echo  $noPasswordError; ?>');
                 $('#edit-user-dialog-alert').show();
                 return;
             }
-            if (password1 != password2) {
+            if (password1 !== password2) {
                 $('#errorMessage').html('<?php echo $passwordsMismatchError; ?>');
                 $('#edit-user-dialog-alert').show();
                 return;
@@ -473,7 +473,7 @@ print_header(
                     retStatus = 0;
                 },
                 'json').done(function() {
-                if (retStatus == 0) {
+                if (retStatus === 0) {
                     if (isAdd) {
                         $('#infoMessage').html('<?php etranslate('User successfully added.') ?>');
                     } else {
@@ -503,12 +503,12 @@ print_header(
 
         var password1 = $('#setPassword1').val();
         var password2 = $('#setPassword2').val();
-        if (password1.length == 0) {
+        if (password1.length === 0) {
             $('#changePasswordErrorMessage').html('<?php echo  $noPasswordError; ?>');
             $('#edit-password-dialog-alert').show();
             return;
         }
-        if (password1 != password2) {
+        if (password1 !== password2) {
             $('#changePasswordErrorMessage').html('<?php echo $passwordsMismatchError; ?>');
             $('#edit-password-dialog-alert').show();
             return;
@@ -539,7 +539,7 @@ print_header(
                     }
                 })
             .done(function() {
-                if (error.length == 0) {
+                if (error.length === 0) {
                     console.log("change password success");
                     // Close window
                     $('#edit-password-dialog').hide();
@@ -593,7 +593,7 @@ print_header(
                         }
                     })
                 .done(function() {
-                    if (error.length == 0) {
+                    if (error.length === 0) {
                         // Close window
                         $('#delete-user-dialog').hide();
                         // Reload layers

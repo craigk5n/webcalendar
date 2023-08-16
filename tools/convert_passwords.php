@@ -57,7 +57,7 @@ if ( $doneBefore ) {
 $sql = "DESC webcal_user";
 $res = dbi_execute ( $sql );
 while ( $row = dbi_fetch_row ( $res ) ) {
-  if ($row[Field] == 'cal_passwd') {
+  if ($row[Field] === 'cal_passwd') {
     preg_match ( "/([0-9]+)/", $row[Type], $match );
     if ($match[1] < 32) {
       $sql = "ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(32) NULL";

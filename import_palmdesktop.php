@@ -74,7 +74,7 @@ function ParseLine ( $line ) {
     ) = explode ( '|', $line );
 
   // Adjust times to users Timezone if not Untimed.
-  if ( isset ( $Entry['Untimed'] ) && $Entry['Untimed'] == 0 ) {
+  if ( isset ( $Entry['Untimed'] ) && $Entry['Untimed'] === 0 ) {
     $Entry['StartTime'] -= date ( 'Z', $Entry['StartTime'] );
     $Entry['EndTime'] -= date ( 'Z', $Entry['EndTime'] );
   }
@@ -82,7 +82,7 @@ function ParseLine ( $line ) {
   if ( $Exceptions )
     $Entry['Repeat']['Exceptions'] = explode ( ': ', $Exceptions );
 
-  if ( ( $WeekNum == '5' ) && ( $Entry['Repeat']['Interval'] == '3' ) )
+  if ( ( $WeekNum === '5' ) && ( $Entry['Repeat']['Interval'] === '3' ) )
     $Entry['Repeat']['Interval'] = '6';
 
   return $Entry;

@@ -3,7 +3,7 @@ require_once 'includes/init.php';
 // Load user and global cats.
 load_user_categories();
 
-if ( $CATEGORIES_ENABLED == 'N' ) {
+if ( $CATEGORIES_ENABLED === 'N' ) {
   send_to_preferred_view();
   exit;
 }
@@ -11,7 +11,7 @@ if ( $CATEGORIES_ENABLED == 'N' ) {
 // Verify that permissions allow writing to the "wc-icons" directory.
 $canWrite = false;
 $permError = false;
-if ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) {
+if ( $ENABLE_ICON_UPLOADS === 'Y' || $is_admin ) {
   $testFile = "wc-icons/testWrite.txt";
   $testFd = @fopen ( $testFile, "w+b", false );
   @fclose ( $testFd );
@@ -62,7 +62,7 @@ $add = getGetValue ( 'add' );
 if ( empty ( $add ) )
   $add = 0;
 // Adding/Editing category.
-if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
+if ( ( ( $add === '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   echo '
     <form action="category_handler.php" method="post" name="catform" '
     . 'enctype="multipart/form-data">' . csrf_form_key() . $idStr . '
@@ -93,7 +93,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
     <div class="form-inline">
     <label class="col-sm-3 col-form-label" for="FileName">'
     . ( is_dir ( $icon_path ) &&
-    ( ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) && $canWrite )
+    ( ( $ENABLE_ICON_UPLOADS === 'Y' || $is_admin ) && $canWrite )
     ? translate ( 'Add Icon to Category' ) . ':</label>
       <input class="form-control" type="file" name="FileName" id="fileupload" size="45" '
      . 'maxlength="50" value="">
@@ -109,7 +109,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
      </div>' : '' ) // end test of ENABLE_ICON_UPLOADS
   . '<div class="form-inline">
   <input class="form-control btn btn-primary" type="submit" name="action" value="'
-   . ( $add == '1' ? translate ('Add') : translate ('Save') ) . '">'
+   . ( $add === '1' ? translate ('Add') : translate ('Save') ) . '">'
    . '<a href="category.php" class="form-control btn btn-secondary ml-1">Cancel</a> '
    . ( ! empty ( $id ) ? '
       <input class="form-control btn btn-danger ml-1" type="submit" name="delete" value="'
@@ -136,7 +136,7 @@ if ( empty ( $error ) ) {
        . ( ! empty ( $V['cat_color'] ) ? $V['cat_color'] : '#000000' )
        . ';">' . htmlentities ( $V['cat_name'] ) . '</span>';
       echo '
-      <li>' . ( $V['cat_owner'] == $login || $is_admin
+      <li>' . ( $V['cat_owner'] === $login || $is_admin
         ? '<a href="category.php?id=' . $K . '">' . $catStr . '</a>' : $catStr );
 
       if ( empty ( $V['cat_owner'] ) ) {

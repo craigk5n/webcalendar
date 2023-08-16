@@ -9,7 +9,7 @@ $other_user = '';
 // First, check to see if this user should be able to delete this event.
 if ( $id > 0 ) {
   // Then see who has access to edit this entry.
-  $can_edit = ( $is_admin || $readonly != 'Y' );
+  $can_edit = ( $is_admin || $readonly !== 'Y' );
 
   // If assistant is doing this, then we need to switch login to user in the SQL.
   $query_params = [];
@@ -48,7 +48,7 @@ if ( $res ) {
   $owner = $row[0];
   dbi_free_result ( $res );
 
-  if ( $owner == $login || $is_assistant && $user == $owner || $is_nonuser_admin )
+  if ( $owner === $login || $is_assistant && $user === $owner || $is_nonuser_admin )
     $can_edit = $my_event = true;
 
   // Check UAC.
@@ -60,10 +60,10 @@ if ( $res ) {
 // allow them to delete the event from another user's calendar.
 // It's essentially the same thing as editing the event and removing the
 // user from the participants list.
-if ( $my_event && ! empty ( $user ) && $user != $login && ! $is_assistant )
+if ( $my_event && ! empty ( $user ) && $user !== $login && ! $is_assistant )
   $other_user = $user;
 
-if ( $readonly == 'Y' )
+if ( $readonly === 'Y' )
   $can_edit = false;
 
 // If User Access Control is enabled, check to see if the current
@@ -142,15 +142,15 @@ if ( $id > 0 && empty ( $error ) ) {
         ? access_user_calendar ( 'email', $partlogin[$i], $login ) : false );
 
       // Don't email the logged in user.
-      if ( $can_email && $partlogin[$i] != $login ) {
+      if ( $can_email && $partlogin[$i] !== $login ) {
         set_env ( 'TZ', get_pref_setting ( $partlogin[$i], 'TIMEZONE' ) );
         $user_language = get_pref_setting ( $partlogin[$i], 'LANGUAGE' );
         user_load_variables ( $partlogin[$i], 'temp' );
-        if ( ! $is_nonuser_admin && $partlogin[$i] != $login &&
-          get_pref_setting ( $partlogin[$i], 'EMAIL_EVENT_DELETED' ) == 'Y' &&
+        if ( ! $is_nonuser_admin && $partlogin[$i] !== $login &&
+          get_pref_setting ( $partlogin[$i], 'EMAIL_EVENT_DELETED' ) === 'Y' &&
             boss_must_be_notified ( $login, $partlogin[$i] ) && !
-            empty ( $tempemail ) && $SEND_EMAIL != 'N' ) {
-          reset_language ( empty ( $user_language ) || $user_language == 'none'
+            empty ( $tempemail ) && $SEND_EMAIL !== 'N' ) {
+          reset_language ( empty ( $user_language ) || $user_language === 'none'
             ? $LANGUAGE : $user_language );
           // Use WebCalMailer class.
           $mail->WC_Send ( $login_fullname, $tempemail, $tempfullname, $name,
@@ -160,7 +160,7 @@ if ( $id > 0 && empty ( $error ) ) {
              . str_replace ( 'XXX', $name, translate ( 'Subject XXX' ) ) . "\"\n"
              . str_replace ( 'XXX', date_to_str ( $thisdate ),
               translate ( 'Date XXX' ) ) . "\n"
-             . ( ! empty ( $eventtime ) && $eventtime != '-1'
+             . ( ! empty ( $eventtime ) && $eventtime !== '-1'
               ? str_replace ( 'XXX', display_time ( '', 2, $eventstart,
                   get_pref_setting ( $partlogin[$i], 'TIME_FORMAT' ) ),
                 translate ( 'Time XXX' ) ) : '' ) . "\n\n",
@@ -220,7 +220,7 @@ if ( $id > 0 && empty ( $error ) ) {
     // Not the owner of the event, but participant or noncal_admin.
     // Just  set the status to 'D' instead of deleting.
     $del_user = ( ! empty ( $other_user ) ? $other_user : $login );
-    if ( ! empty ( $user ) && $user != $login ) {
+    if ( ! empty ( $user ) && $user !== $login ) {
       if ( $is_admin || $my_event || ( $can_edit && $is_assistant ) ||
           ( access_is_enabled() &&
             access_user_calendar ( 'edit', $user ) ) ) {
@@ -249,10 +249,10 @@ $ret = getValue ( 'ret' );
 $return_view = get_last_view();
 
 if ( ! empty ( $ret ) ) {
-  if ( $ret == 'listall' )
+  if ( $ret === 'listall' )
     $url = 'list_unapproved.php';
   else
-  if ( $ret == 'list' )
+  if ( $ret === 'list' )
     $url = 'list_unapproved.php' . ( empty ( $user ) ? '' : '?user=' . $user );
 } else
 if ( ! empty ( $return_view ) )

@@ -16,13 +16,13 @@ function save_pref ( $prefs, $src ) {
   global $error;
 
   foreach ($prefs as $key => $value) {
-    if ( $src == 'post' ) {
+    if ( $src === 'post' ) {
       $prefix = substr ( $key, 0, 6 );
       $setting = substr ( $key, 6 );
 
       // Validate key name. Should start with "admin_" and not include
       // any unusual characters that might be an SQL injection attack.
-      if ( $key == 'csrf_form_key' ) {
+      if ( $key === 'csrf_form_key' ) {
         // Ignore this for validation...
       } else if ( ! preg_match ( '/admin_[A-Za-z0-9_]+$/', $key ) ) {
         die_miserable_death ( str_replace ( 'XXX', $key,
@@ -32,7 +32,7 @@ function save_pref ( $prefs, $src ) {
       $prefix = 'admin_';
       $setting = $key;
     }
-    if ( strlen ( $setting ) > 0 && $prefix == 'admin_' ) {
+    if ( strlen ( $setting ) > 0 && $prefix === 'admin_' ) {
       $setting = strtoupper ( $setting );
       $sql = 'DELETE FROM webcal_config WHERE cal_setting = ?';
 
@@ -146,67 +146,67 @@ if ( ! $error ) {
   $tabs = '<ul class="nav nav-tabs">';
   for ($i = 0, $cnt = count($tabs_ar); $i < $cnt; $i += 2) {
     $tabs .= '<li class="nav-item"><a class="nav-link ' .
-    ($i == 0 ? ' active' : '') . '" data-toggle="tab" href="#' . $tabs_ar[$i] . '">' . $tabs_ar[$i + 1] . '</a></li>';
+    ($i === 0 ? ' active' : '') . '" data-toggle="tab" href="#' . $tabs_ar[$i] . '">' . $tabs_ar[$i + 1] . '</a></li>';
   }
   $tabs .= "</ul>\n";
   // Move the loops here and combine a few.
   foreach ($languages as $key => $val) {
     $lang_list .= $option . $val . '"'
-     . ( $val == $s['LANGUAGE'] ? $selected : '' )
+     . ( $val === $s['LANGUAGE'] ? $selected : '' )
      . '>' . $key . '</option>';
   }
   for ( $i = 0, $cnt = count ( $datestyles ); $i < $cnt; $i += 2 ) {
     $datestyle_ymd .= $option . $datestyles[$i] . '"'
-     . ( $s['DATE_FORMAT'] == $datestyles[$i] ? $selected : '' )
+     . ( $s['DATE_FORMAT'] === $datestyles[$i] ? $selected : '' )
      . '>' . $datestyles[$i + 1] . '</option>';
   }
   for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i += 2 ) {
     $datestyle_my .= $option . $datestyles_my[$i] . '"'
-     . ( $s['DATE_FORMAT_MY'] == $datestyles_my[$i] ? $selected : '' )
+     . ( $s['DATE_FORMAT_MY'] === $datestyles_my[$i] ? $selected : '' )
      . '>' . $datestyles_my[$i + 1] . '</option>';
   }
   for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i += 2 ) {
     $datestyle_md .= $option . $datestyles_md[$i] . '"'
-     . ( $s['DATE_FORMAT_MD'] == $datestyles_md[$i] ? $selected : '' )
+     . ( $s['DATE_FORMAT_MD'] === $datestyles_md[$i] ? $selected : '' )
      . '>' . $datestyles_md[$i + 1] . '</option>';
   }
   for ( $i = 0, $cnt = count ( $datestyles_task ); $i < $cnt; $i += 2 ) {
     $datestyle_tk .= $option . $datestyles_task[$i] . '"'
-     . ( $s['DATE_FORMAT_TASK'] == $datestyles_task[$i] ? $selected : '' )
+     . ( $s['DATE_FORMAT_TASK'] === $datestyles_task[$i] ? $selected : '' )
      . '>' . $datestyles_task[$i + 1] . '</option>';
   }
   for ( $i = 0; $i < 7; $i++ ) {
     $start_wk_on .= $option . "$i\""
-     . ( $i == $s['WEEK_START'] ? $selected : '' )
+     . ( $i === $s['WEEK_START'] ? $selected : '' )
      . '>' . weekday_name ( $i ) . '</option>';
-    $j = ( $i == 0 ? 6 : $i - 1 ); // Make sure to start with Saturday.
+    $j = ( $i === 0 ? 6 : $i - 1 ); // Make sure to start with Saturday.
     $start_wkend_on .= $option . "$j\""
-     . ( $j == $s['WEEKEND_START'] ? $selected : '' )
+     . ( $j === $s['WEEKEND_START'] ? $selected : '' )
      . '>' . weekday_name ( $j ) . '</option>';
   }
   for ( $i = 0; $i < 24; $i++ ) {
     $tmp = display_time ( $i * 10000, 1 );
     $work_hr_start .= $option . "$i\""
-     . ( $i == $s['WORK_DAY_START_HOUR'] ? $selected : '' )
+     . ( $i === $s['WORK_DAY_START_HOUR'] ? $selected : '' )
      . '>' . $tmp . '</option>';
     $work_hr_end .= $option . "$i\""
-     . ( $i == $s['WORK_DAY_END_HOUR'] ? $selected : '' )
+     . ( $i === $s['WORK_DAY_END_HOUR'] ? $selected : '' )
      . '>' . $tmp . '</option>';
   }
   for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
     $prefer_vu .= $option . $choices[$i] . '"'
-     . ( $s['STARTVIEW'] == $choices[$i] ? $selected : '' )
+     . ( $s['STARTVIEW'] === $choices[$i] ? $selected : '' )
      . '>' . $choices_text[$i] . '</option>';
   }
   // Allow user to select a view also.
   for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
-    if ( $views[$i]['cal_is_global'] != 'Y' )
+    if ( $views[$i]['cal_is_global'] !== 'Y' )
       continue;
 
     $xurl = $views[$i]['url'];
     $xurl_strip = str_replace ( '&amp;', '&', $xurl );
     $user_vu .= $option . $xurl . '"'
-     . ( $s['STARTVIEW'] == $xurl_strip ? $selected : '' )
+     . ( $s['STARTVIEW'] === $xurl_strip ? $selected : '' )
      . '>' . $views[$i]['cal_name'] . '</option>';
   }
   $colors = [
@@ -259,7 +259,7 @@ if ( ! $error ) {
               <input type="text" size="40" name="admin_APPLICATION_NAME" '
    . 'id="admin_APPLICATION_NAME" value="'
    . htmlspecialchars ( $s['APPLICATION_NAME'] ) . '">'
-   . ( $s['APPLICATION_NAME'] == 'Title'
+   . ( $s['APPLICATION_NAME'] === 'Title'
     ? str_replace ( 'XXX', translate ( 'Title' ),
       translate ( 'Translated Name (XXX)' ) ) : '' ) . '</div>
             <div class="form-inline mt-1 mb-2"><label for="admin_SERVER_URL" title="'
@@ -501,10 +501,10 @@ if ( ! $error ) {
    . ':</label>
               <select name="admin_USER_SORT_ORDER" id="admin_USER_SORT_ORDER">'
    . $option . 'cal_lastname, cal_firstname" '
-   . ( $s['USER_SORT_ORDER'] == 'cal_lastname, cal_firstname' ? $selected : '' )
+   . ( $s['USER_SORT_ORDER'] === 'cal_lastname, cal_firstname' ? $selected : '' )
    . '>' . translate ( 'Lastname, Firstname' ) . '</option>' . $option
    . 'cal_firstname, cal_lastname" '
-   . ( $s['USER_SORT_ORDER'] == 'cal_firstname, cal_lastname' ? $selected : '' )
+   . ( $s['USER_SORT_ORDER'] === 'cal_firstname, cal_lastname' ? $selected : '' )
    . '>' . translate ( 'Firstname, Lastname' ) . '</option>
               </select></div>
           </fieldset>
@@ -713,11 +713,11 @@ if ( ! $error ) {
             <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-mailer' ) . '">'
    . translate ( 'Email Mailer' ) . ':</label>
               <select name="admin_EMAIL_MAILER" onchange="email_handler()">'
-   . $option . 'smtp" ' . ( $s['EMAIL_MAILER'] == 'smtp' ? $selected : '' )
+   . $option . 'smtp" ' . ( $s['EMAIL_MAILER'] === 'smtp' ? $selected : '' )
    . '>SMTP</option>' . $option . 'mail" '
-   . ( $s['EMAIL_MAILER'] == 'mail' ? $selected : '' ) . '>PHP mail</option>'
+   . ( $s['EMAIL_MAILER'] === 'mail' ? $selected : '' ) . '>PHP mail</option>'
    . $option . 'sendmail" '
-   . ( $s['EMAIL_MAILER'] == 'sendmail' ? $selected : '' ) . '>sendmail</option>
+   . ( $s['EMAIL_MAILER'] === 'sendmail' ? $selected : '' ) . '>sendmail</option>
               </select></div>
             <div id="em_smtp">
               <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-smtp-host' ) . '">'

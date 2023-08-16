@@ -55,7 +55,7 @@ class DocList {
     $this->_type = $type;
     $this->_arr = array();
 
-    if ( $type != 'A' && $type != 'C' )
+    if ( $type !== 'A' && $type !== 'C' )
       die_miserable_death ( "Invalid DocList type '$type'" );
 
     $sql = Doc::getSQL ( $event_id, $type );

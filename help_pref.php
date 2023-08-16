@@ -70,7 +70,7 @@ list_help ( $tmp_arr );
 echo '
       </div>';
 
-if ( $PUBLISH_ENABLED == 'Y' ) {
+if ( $PUBLISH_ENABLED === 'Y' ) {
   echo '
       <h3>' . translate ( 'Subscribe/Publish' ) . '</h3>
       <div>';
@@ -94,7 +94,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) {
       </div';
 }
 
-if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' )
+if ( $ALLOW_COLOR_CUSTOMIZATION === 'Y' )
   echo '
       <h3>' . translate ( 'Colors' ) . '</h3>
       <p>' . translate ( 'colors-help' ) . '</p>';

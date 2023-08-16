@@ -207,33 +207,33 @@ class WebCalendar {
       // Tell the browser not to cache.
       // send_no_cache_header();
 
-      if ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin && ! $is_assistant )
+      if ( $ALLOW_VIEW_OTHER !== 'Y' && ! $is_admin && ! $is_assistant )
         $user = '';
 
-      $can_add = ( $readonly == 'N' || $is_admin == 'Y' );
-      if ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' ) {
-        if ( $PUBLIC_ACCESS_CAN_ADD != 'Y' )
+      $can_add = ( $readonly === 'N' || $is_admin === 'Y' );
+      if ( $PUBLIC_ACCESS === 'Y' && $login === '__public__' ) {
+        if ( $PUBLIC_ACCESS_CAN_ADD !== 'Y' )
           $can_add = false;
 
-        if ( $PUBLIC_ACCESS_OTHERS != 'Y' )
+        if ( $PUBLIC_ACCESS_OTHERS !== 'Y' )
           $user = ''; // Security precaution.
       }
       if (!$is_admin && !$is_assistant && !$is_nonuser_admin) {
 	if ($is_nonuser)
           $can_add = false;
-	else if (!empty($user) && $user != $login && $user != '__public__')
+	else if (!empty($user) && $user !== $login && $user !== '__public__')
 	  $can_add = false;
       }
 
-      if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! $is_admin ) {
+      if ( $GROUPS_ENABLED === 'Y' && $USER_SEES_ONLY_HIS_GROUPS === 'Y' && ! $is_admin ) {
         $userlist = get_my_users();
         $valid_user = false;
-        if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
+        if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED === 'Y' ) {
           $nonusers = get_my_nonusers ( $login, true );
           $userlist = array_merge ( $nonusers, $userlist );
         }
         for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-          if ( $user == $userlist[$i]['cal_login'] )
+          if ( $user === $userlist[$i]['cal_login'] )
             $valid_user = true;
         }
         if ( ! $valid_user )
@@ -244,11 +244,11 @@ class WebCalendar {
         $u_url = 'user=' . $user . '&amp;';
         if (!user_load_variables ( $user, 'user_' ))
           nonuser_load_variables($user, 'user_');
-        if ( $user == '__public__' )
+        if ( $user === '__public__' )
           $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
       } else {
         $u_url = '';
-        $user_fullname = ( $login == '__public__'
+        $user_fullname = ( $login === '__public__'
           ? translate ( $PUBLIC_ACCESS_FULLNAME ) : $fullname );
       }
 
@@ -256,7 +256,7 @@ class WebCalendar {
 
       remember_this_view();
 
-      if ( $CATEGORIES_ENABLED == 'Y' ) {
+      if ( $CATEGORIES_ENABLED === 'Y' ) {
         if ( ! empty ( $cat_id ) ) {
         } elseif ( ! empty ( $CATEGORY_VIEW ) && ! isset ( $_GET['cat_id'] ) )
           $cat_id = $CATEGORY_VIEW;
@@ -468,12 +468,12 @@ class WebCalendar {
      * web-based login. Publish.php does need to validate if not http_auth.
      */
     if ( ! $use_http_auth &&
-      ( $this->_filename == 'css_cacher.php' ||
-        $this->_filename == 'icalclient.php' ||
-        $this->_filename == 'rss_unapproved.php' ||
-        $this->_filename == 'rss_activity_log.php' ||
-        $this->_filename == 'js_cacher.php' ||
-        $this->_filename == 'publish.php' ) ) {
+      ( $this->_filename === 'css_cacher.php' ||
+        $this->_filename === 'icalclient.php' ||
+        $this->_filename === 'rss_unapproved.php' ||
+        $this->_filename === 'rss_activity_log.php' ||
+        $this->_filename === 'js_cacher.php' ||
+        $this->_filename === 'publish.php' ) ) {
       return;
     }
 
@@ -515,7 +515,7 @@ class WebCalendar {
       }
     }
 
-    if ( $single_user == 'Y' )
+    if ( $single_user === 'Y' )
       $login = $single_user_login;
     else {
       if ( $use_http_auth ) {
@@ -525,7 +525,7 @@ class WebCalendar {
         else
           $login = $PHP_AUTH_USER;
       } else
-      if ( substr ( $user_inc, 0, 9 ) == 'user-app-' ) {
+      if ( substr ( $user_inc, 0, 9 ) === 'user-app-' ) {
         // Make sure we are connected to the database for session check.
         $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
         if ( ! $c )
@@ -572,7 +572,7 @@ class WebCalendar {
             // they may be able to affect the database.
             // NOTE: we also changed the cookie encoding from WebCalendar 1.0.X
             // to WebCalendar 1.1.X+, so this causes a bad cookie error.
-            if ( ! empty ( $login ) && $login != addslashes ( $login ) ) {
+            if ( ! empty ( $login ) && $login !== addslashes ( $login ) ) {
               // The following deletes the bad cookie.
               // So, the user just needs to reload.
               sendCookie ( 'webcalendar_session', '', 0 );
@@ -588,13 +588,13 @@ class WebCalendar {
                  . dbi_error() . '</blockquote>' );
 
             doDbSanityCheck();
-            if ( $cryptpw == 'nonuser' ) {
+            if ( $cryptpw === 'nonuser' ) {
               if ( ! nonuser_load_variables ( $login, 'nutemp_' ) )
                 // No such nonuser cal.
                 die_miserable_death ( 'Invalid nonuser calendar.' );
 
               if ( empty ( $GLOBALS['nutemp_is_public'] ) ||
-                $GLOBALS['nutemp_is_public'] != 'Y' )
+                $GLOBALS['nutemp_is_public'] !== 'Y' )
                 die_miserable_death ( 'Nonuser calendar is not public.' );
 
               $is_nonuser = true;
@@ -649,7 +649,7 @@ class WebCalendar {
          WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
       if ( $rows ) {
               $row = $rows[0];
-        if ( $row[0] != $PROGRAM_VERSION ) {
+        if ( $row[0] !== $PROGRAM_VERSION ) {
           // &amp; does not work here...leave it as &
           header ( 'Location: install/index.php?action=mismatch&version='
                       . $row[0] );
@@ -660,7 +660,7 @@ class WebCalendar {
 
     // If we are in single user mode,
     // make sure that the login selected is a valid login.
-    if ( $single_user == 'Y' ) {
+    if ( $single_user === 'Y' ) {
       if ( empty ( $single_user_login ) )
         die_miserable_death ( 'You have not defined <tt>single_user_login</tt> '
            . 'in <tt>includes/settings.php</tt>.' );
@@ -672,7 +672,7 @@ class WebCalendar {
         exit;
       }
       $row = dbi_fetch_row ( $res );
-      if ( $row[0] == 0 ) {
+      if ( $row[0] === 0 ) {
         // User specified as single_user_login does not exist.
         if ( ! dbi_execute ( 'INSERT INTO webcal_user ( cal_login, cal_passwd,
           cal_is_admin ) VALUES ( ?, ?, ? )',
@@ -692,12 +692,12 @@ class WebCalendar {
         if ( $rows )
           $row = $rows[0];
 
-    $pub_acc_enabled = ( ! empty ( $row ) && $row[0] == 'Y' );
+    $pub_acc_enabled = ( ! empty ( $row ) && $row[0] === 'Y' );
 
     if ( $pub_acc_enabled ) {
       $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
         WHERE cal_setting = \'PUBLIC_ACCESS_CAN_ADD\'' );
-      if ( $rows && $row == $rows[0] )
+      if ( $rows && $row === $rows[0] )
         $PUBLIC_ACCESS_CAN_ADD = $row[0];
     }
 
@@ -731,7 +731,7 @@ class WebCalendar {
     } else
     if ( $view_via_email || ( ! $pub_acc_enabled && $session_not_found
           && ! $use_http_auth ) ) {
-      if ( substr ( $user_inc, 0, 9 ) == 'user-app-' )
+      if ( substr ( $user_inc, 0, 9 ) === 'user-app-' )
         app_login_screen ( clean_whitespace ( $SCRIPT ) );
       else {
         do_redirect ( $login_url );
@@ -752,7 +752,7 @@ class WebCalendar {
       if ( strstr ( $PHP_SELF, 'login.php' ) ) {
         // Ignore since login.php will redirect to index.php.
       } else
-      if ( $login == '__public__' ) {
+      if ( $login === '__public__' ) {
         $firstname = $lastname = $user_email = '';
         $fullname = 'Public Access';
         $is_admin = false;
@@ -762,7 +762,7 @@ class WebCalendar {
           $firstname = $login_firstname;
           $lastname = $login_lastname;
           $fullname = $login_fullname;
-          $is_admin = ( $login_is_admin == 'Y' );
+          $is_admin = ( $login_is_admin === 'Y' );
           $is_nonuser = ( ! empty ( $GLOBALS['login_is_nonuser'] )
               && $GLOBALS['login_is_nonuser'] );
           $user_email = $login_email;
@@ -787,7 +787,7 @@ class WebCalendar {
     // If they are accessing using the public login,
     // Restrict them from using certain pages.
     $not_auth = false;
-    if ( ! empty ( $login ) && $login == '__public__' || $is_nonuser ) {
+    if ( ! empty ( $login ) && $login === '__public__' || $is_nonuser ) {
       if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
         strstr ( $PHP_SELF, 'admin.php' ) ||
         strstr ( $PHP_SELF, 'admin_handler.php' ) ||
@@ -827,7 +827,7 @@ class WebCalendar {
     }
 
     // Restrict access if calendar is read-only.
-    if ( $readonly == 'Y' ) {
+    if ( $readonly === 'Y' ) {
       if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
         strstr ( $PHP_SELF, 'admin.php' ) ||
         strstr ( $PHP_SELF, 'adminhome.php' ) ||
@@ -907,12 +907,12 @@ class WebCalendar {
     // If set to use browser settings,
     // use the user's language preferences from their browser.
     $lang = $LANGUAGE;
-    if ( $LANGUAGE == 'Browser-defined' || $LANGUAGE == 'none' ) {
+    if ( $LANGUAGE === 'Browser-defined' || $LANGUAGE === 'none' ) {
       $lang = get_browser_language();
-      if ( $lang == 'none' )
+      if ( $lang === 'none' )
         $lang = '';
     }
-    if ( strlen ( $lang ) == 0 || $lang == 'none' )
+    if ( strlen ( $lang ) === 0 || $lang === 'none' )
       $lang = 'English-US'; // Default
 
     $lang_file = 'translations/' . $lang . '.txt';

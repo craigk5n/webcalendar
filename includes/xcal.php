@@ -36,7 +36,7 @@ function export_quoted_printable_encode( $car ) {
 
   if ( ( ord ( $car ) >= 33 && ord ( $car ) <= 60 ) ||
     ( ord ( $car ) >= 62 && ord ( $car ) <= 126 ) ||
-      ord ( $car ) == 9 || ord ( $car ) == 32 )
+      ord ( $car ) === 9 || ord ( $car ) === 32 )
     $res = $car;
   else
     $res = sprintf ( "=%02X", ord ( $car ) );
@@ -83,40 +83,40 @@ function wc_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
   $lwsp = 0; // position of the last linear whitespace (where to fold)
   $res_ind = 0; // row index
   $start_encode = 0; // we start encoding only after the ': ' character is encountered
-  if ( strcmp( $encoding, 'quotedprintable' ) == 0 )
+  if ( strcmp( $encoding, 'quotedprintable' ) === 0 )
     $fold--; // must take into account the soft line break
  for ( $i = 0; $i < $len; $i++ ) {
     $enc = $string[$i];
 
     if ( $start_encode ) {
-      if ( strcmp( $encoding, 'quotedprintable' ) == 0 )
+      if ( strcmp( $encoding, 'quotedprintable' ) === 0 )
         $enc = export_quoted_printable_encode( $string[$i] );
-      else if ( strcmp( $encoding, 'utf8' ) == 0 )
+      else if ( strcmp( $encoding, 'utf8' ) === 0 )
         $enc = utf8_encode ( $string[$i] );
     }
-    if ( $string[$i] == ':' )
+    if ( $string[$i] === ':' )
       $start_encode = 1;
 
     if ( ( strlen ( $row ) + strlen ( $enc ) ) > $fold ) {
       $delta = 0;
 
-      if ( $lwsp == 0 )
+      if ( $lwsp === 0 )
         $lwsp = $fold - 1; // the folding will occur in the middle of a word
-      if ( $row[$lwsp] == ' ' || $row[$lwsp] == "\t" )
+      if ( $row[$lwsp] === ' ' || $row[$lwsp] === "\t" )
         $delta = -1;
 
       $res[$res_ind] = substr ( $row, 0, $lwsp + 1 + $delta );
 
-      if ( strcmp( $encoding, 'quotedprintable' ) == 0 )
+      if ( strcmp( $encoding, 'quotedprintable' ) === 0 )
         $res[$res_ind] .= '='; // soft line break;
       $row = substr ( $row, $lwsp + 1 );
 
       $row = ' ' . $row;
 
-      if ( $delta == -1 && strcmp( $encoding, 'utf8' ) == 0 )
+      if ( $delta === -1 && strcmp( $encoding, 'utf8' ) === 0 )
         $row = ' ' . $row;
 
-      if ( $res_ind == 0 )
+      if ( $res_ind === 0 )
         $fold--; //reduce row length of 1 to take into account the whitespace
       // at the beginning of lines
       $res_ind++; // next line
@@ -124,11 +124,11 @@ function wc_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
     } //end if ((strlen ($row) + strlen ($enc)) > $fold)
     $row .= $enc;
 
-    if ( $string[$i] == ' ' || $string[$i] == "\t" || $string[$i] == ';' ||
-      $string[$i] == ',' )
+    if ( $string[$i] === ' ' || $string[$i] === "\t" || $string[$i] === ';' ||
+      $string[$i] === ',' )
       $lwsp = strlen ( $row ) - 1;
 
-    if ( $string[$i] == ':' && ( strcmp( $encoding, 'quotedprintable' ) == 0 ) )
+    if ( $string[$i] === ':' && ( strcmp( $encoding, 'quotedprintable' ) === 0 ) )
       $lwsp = strlen ( $row ) - 1; // We cut at ':' only for quoted printable.
   } //end for ($i = 0; $i < $len; $i++)
   $res[$res_ind] = $row; // Add last row (or first if no folding is necessary)
@@ -137,7 +137,7 @@ function wc_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
 
 function search_users( $arrInArray, $varSearchValue ) {
   foreach ( $arrInArray as $key => $row ) {
-    if ($row['cal_login'] == $varSearchValue) {
+    if ($row['cal_login'] === $varSearchValue) {
       return $key;
     }
   }
@@ -172,17 +172,17 @@ function export_get_attendee( $id, $export ) {
   foreach ($entry_array as $key => $row) {
     // $user[0] = cal_firstname, cal_lastname, cal_email, cal_login
     $userPos = search_users($userlist, $row[0]);
-    if ($userPos == -1) {
+    if ($userPos === -1) {
       continue;
     } else {
       $user = $userlist[$userPos];
       $attendee[$count] = 'ATTENDEE;ROLE=';
-      if ( strcmp( $export, 'vcal' ) == 0 )
-      $attendee[$count] .= ( $row[0] == $row[2] ) ? 'OWNER;': 'ATTENDEE;';
+      if ( strcmp( $export, 'vcal' ) === 0 )
+      $attendee[$count] .= ( $row[0] === $row[2] ) ? 'OWNER;': 'ATTENDEE;';
       else
         $attendee[$count] .=
-          ( $row[0] == $row[2] ) ? 'CHAIR;' : 'REQ-PARTICIPANT;';
-      if ( strcmp( $export, 'vcal' ) == 0 )
+          ( $row[0] === $row[2] ) ? 'CHAIR;' : 'REQ-PARTICIPANT;';
+      if ( strcmp( $export, 'vcal' ) === 0 )
         $attendee[$count] .= 'STATUS=';
       else
       $attendee[$count] .= 'PARTSTAT=';
@@ -207,7 +207,7 @@ function export_get_attendee( $id, $export ) {
           $attendee[$count] .= 'TENTATIVE';
           break;
       } //end switch
-      if ( strcmp( $export, 'vcal' ) == 0 ) {
+      if ( strcmp( $export, 'vcal' ) === 0 ) {
         $attendee[$count] .= ';ENCODING=QUOTED-PRINTABLE:';
         if ( empty ( $user['cal_firstname'] ) && empty ( $user['cal_lastname'] ) )
           $attendee[$count] .= $user['cal_login'] .'"';
@@ -244,7 +244,7 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
   $ret = $vtimezone_exists = '';
   $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ), $time>0 );
   $eventend = $eventstart + ( $duration * 60 );
-  if ( $time == 0 && $duration == 1440 && strcmp( $texport, 'ical' ) == 0 ) {
+  if ( $time === 0 && $duration === 1440 && strcmp( $texport, 'ical' ) === 0 ) {
     // all day.
     $dtstart = $date . 'T000000';
     if ( $use_vtimezone && ( $vtimezone_data = get_vtimezone ( $TIMEZONE, $dtstart ) ) ) {
@@ -252,7 +252,7 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
       $ret .= 'DTSTART;TZID=' . $TIMEZONE . ':' . $dtstart. "\r\n";
      }else
       $ret .= "DTSTART;VALUE=DATE:$date\r\n";
-  } else if ( $time == -1 ) {
+  } else if ( $time === -1 ) {
     // untimed event: this is the same regardless of timezone. For example,
     // New Year's Day starts at 12am localtime regardless of timezone.
     $ret .= "DTSTART;VALUE=DATE:$date\r\n";
@@ -267,12 +267,12 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
       $ret .= "DTSTART:$utc_start\r\n";
     }
   }
-  if ( strcmp( $texport, 'ical' ) == 0 ) {
+  if ( strcmp( $texport, 'ical' ) === 0 ) {
     $utc_dtstamp = export_ts_utc_date( time() );
     $ret .= "DTSTAMP:$utc_dtstamp\r\n";
     // We don' want DTEND for VTODOs
-    if ( $vtype == 'T' || $vtype == 'N' ) return $ret;
-    if ( $time == 0 && $duration == 1440 ) {
+    if ( $vtype === 'T' || $vtype === 'N' ) return $ret;
+    if ( $time === 0 && $duration === 1440 ) {
       // all day event: better to use end date than duration since
       // duration will be 23hr and 25hrs on DST switch-over days.
       if ( $vtimezone_exists ) {
@@ -280,7 +280,7 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
       }else
         $ret .= 'DTEND;VALUE=DATE:' . gmdate ( 'Ymd', $eventend ) . "\r\n";
       }
-    else  if ( $time == -1 )
+    else  if ( $time === -1 )
     // untimed event
      $ret .= "DTEND;VALUE=DATE:$date\r\n";
     else if ( $time > 0 ) {
@@ -292,7 +292,7 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
         $ret .= "DTEND:$utc_end\r\n";
       }
     }
-  } elseif ( strcmp( $texport, 'vcal' ) == 0 ) {
+  } elseif ( strcmp( $texport, 'vcal' ) === 0 ) {
       $utc_end = export_ts_utc_date ( $eventend );
       $ret .= "DTEND:$utc_end\r\n";
   } else {
@@ -315,7 +315,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
   if ( $res ) {
     $exdate = $rdate = [];
     while ( $row = dbi_fetch_row( $res ) ) {
-      if ( $row[1] == 1 )
+      if ( $row[1] === 1 )
         $exdate[] = $row[0];
       else
         $rdate[] = $row[0];
@@ -413,7 +413,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
         $rrule .= $sep . ( $simple ? translate ( 'Position' ) : 'BYSETPOS' )
          . "=$bysetpos";
 
-      if ( ! empty ( $wkst ) && $wkst2 != 'MO' )
+      if ( ! empty ( $wkst ) && $wkst2 !== 'MO' )
         $rrule .= $sep . ( $simple ? translate ( 'Week Start' ) : 'WKST' )
          . "=$wkst";
 
@@ -426,7 +426,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
          : export_get_utc_date ( $end, $endtime ) );
         $rrule .= $utc;
       } else
-      if ( ! empty ( $cal_count ) && $cal_count != 999 )
+      if ( ! empty ( $cal_count ) && $cal_count !== 999 )
         $rrule .= $sep . ( $simple ? translate ( 'Count' ) : 'COUNT' )
          . "=$cal_count";
       //.
@@ -436,7 +436,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
         $recurrance .= "$value\r\n";
       }
       // If type = manual, undo what we just did and process RDATE && EXDATE.
-      if ( $type == 'manual' )
+      if ( $type === 'manual' )
        $recurrance = '';
 
       if ( count ( $rdate ) > 0 ) {
@@ -482,7 +482,7 @@ function export_recurrence_vcal( $id, $date ) {
     $exdate =
     $rdate = [];
     while ( $row = dbi_fetch_row( $res ) ) {
-      if ( $row[1] == 1 ) {
+      if ( $row[1] === 1 ) {
         $exdate[] = $row[0];
       } else {
         $rdate[] = $row[0];
@@ -556,7 +556,7 @@ function export_recurrence_vcal( $id, $date ) {
 
       if ( ! empty ( $count ) && $count > 0 ) {
         echo '#' . $count . ' ';
-      } else if ( ! empty ( $count ) && $count == 0 && empty ( $end ) ) {
+      } else if ( ! empty ( $count ) && $count === 0 && empty ( $end ) ) {
         echo '#' . $count . ' ';
       }
       // End Date - For all types
@@ -619,7 +619,7 @@ function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
   $reminder = [];
   // Don't send reminder for event in the past
   // unless this is a task that may be overdue
-  if ( $date < date ( 'Ymd' ) && $task_complete == true )
+  if ( $date < date ( 'Ymd' ) && $task_complete === true )
     return;
   // get reminders
   $reminder = getReminders ( $id );
@@ -636,12 +636,12 @@ function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
        . $reminder['time'] . "Z\r\n";
     }
     // related to entry end/due date/time
-    if ( $reminder['related'] == 'E' ) {
+    if ( $reminder['related'] === 'E' ) {
       $ret .= ';RELATED=END';
     }
     if ( empty ( $reminder['date'] ) ) { // offset may be zero
       // before edge needs a '-'
-      $sign = ( $reminder['before'] == 'Y' ? '-' : '' );
+      $sign = ( $reminder['before'] === 'Y' ? '-' : '' );
       $ret .= ':' . $sign . 'PT' . $reminder['offset'] . "M\r\n";
     }
 
@@ -675,10 +675,10 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
     we.cal_mod_time
     FROM webcal_entry we, webcal_entry_user weu ';
 
-  if ( $id == 'all' ) {
+  if ( $id === 'all' ) {
     $sql .= 'WHERE we.cal_id = weu.cal_id AND ( weu.cal_login = ?';
     $sql_params[] = $login;
-    if ( $user && $user != $login ) {
+    if ( $user && $user !== $login ) {
       $sql .= ' OR weu.cal_login = ?';
       $sql_params[] = $user;
     } else if ( $include_layers && $layers ) {
@@ -706,9 +706,9 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
     // calendars, particularly non-user calendars.
     // "webcal_entry_user.cal_id = '$id'";
     // there may be a better to do this
-    if ( $attachment == true && empty ( $login ) ) {
+    if ( $attachment === true && empty ( $login ) ) {
       $sql .= ' OR weu.cal_login = we.cal_create_by';
-    } else if ( ! empty ( $user ) && $user != $login ) {
+    } else if ( ! empty ( $user ) && $user !== $login ) {
       $sql .= ' OR weu.cal_login = ?';
       $sql_params[] = $user;
     } else if ( $include_layers && $layers ) {
@@ -719,16 +719,16 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
     }
     $sql .= ' ) ';
   } //end if $id=all
-  if ( $DISPLAY_UNAPPROVED == 'N' ) {
+  if ( $DISPLAY_UNAPPROVED === 'N' ) {
     $sql .= " AND weu.cal_status = 'A'";
   } else {
     $sql .= " AND weu.cal_status IN ('W','A')";
   }
 
   if ( ! empty ( $type ) && $type = 'publish' ) {
-    if ( $USER_REMOTE_ACCESS == 0 ) {
+    if ( $USER_REMOTE_ACCESS === 0 ) {
       $sql .= " AND we.cal_access = 'P'";
-    } else if ( $USER_REMOTE_ACCESS == 1 ) {
+    } else if ( $USER_REMOTE_ACCESS === 1 ) {
       $sql .= " AND we.cal_access IN ('P', 'C' )";
     }
   }
@@ -849,9 +849,9 @@ function export_vcal ( $id ) {
     // Figure out Categories
     $categories = get_categories_by_id ( $id, $login );
     /* Start of event/task */
-    if ( $cal_type == 'E' || $cal_type == 'M' )
+    if ( $cal_type === 'E' || $cal_type === 'M' )
       echo "BEGIN:VEVENT\r\n";
-    elseif ( $cal_type == 'T' || $cal_type == 'N' )
+    elseif ( $cal_type === 'T' || $cal_type === 'N' )
       echo "BEGIN:VTODO\r\n";
     else
       // VJOURNALS are not allowed in VCS files.
@@ -874,13 +874,13 @@ function export_vcal ( $id ) {
       echo "$value\r\n";
 
     /* DESCRIPTION if any (folded to 76 char) */
-    if ( $description != '' ) {
+    if ( $description !== '' ) {
       $description = preg_replace( "/\\\\/", "\\\\\\", $description ); // ??
       $description = 'DESCRIPTION;ENCODING=QUOTED-PRINTABLE:' . $description;
       $array = export_fold_lines ( $description, 'quotedprintable' );
       foreach ($array as $key => $value)
         echo "$value\r\n";
-    } //end if ($description != '')
+    } //end if ($description !== '')
 
     /* CATEGORIES if any (folded to 76 char) */
     if ( isset ( $categories ) && count ( $categories ) ) {
@@ -891,9 +891,9 @@ function export_vcal ( $id ) {
     }
 
     /* CLASS either "PRIVATE", "CONFIDENTIAL, or "PUBLIC" (the default) */
-    if ( $access == 'R' ) {
+    if ( $access === 'R' ) {
       echo "CLASS:PRIVATE\r\n";
-    } else if ( $access == 'C' ) {
+    } else if ( $access === 'C' ) {
       echo "CLASS:CONFIDENTIAL\r\n";
     } else {
       echo "CLASS:PUBLIC\r\n";
@@ -914,7 +914,7 @@ function export_vcal ( $id ) {
     export_alarm_vcal( $id, $date );
 
     /* Goodbye event/task */
-    if ( $cal_type == 'E' || $cal_type == 'M' ) {
+    if ( $cal_type === 'E' || $cal_type === 'M' ) {
       echo "END:VEVENT\r\n";
     } else {
       echo "END:VTODO\r\n";
@@ -939,7 +939,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
   }
   dbi_free_result ( $res );
   //abort if no records to output
-  if ( $count == 0 )
+  if ( $count === 0 )
     return;
   // Always output something, even if no records come back
   // This prevents errors on the iCal client
@@ -1004,7 +1004,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
           // do that.
           $exportId = create_import_instance();
         }
-        if ( $attachment == false )
+        if ( $attachment === false )
           save_uid_for_event ( $exportId, $id, $event_uid );
       }
       dbi_free_result ( $res );
@@ -1029,20 +1029,20 @@ function export_ical ( $id = 'all', $attachment = false ) {
     // if Categories were selected as an export filter, then abort this
     // event if it does not contain that category
     if ( ! empty ( $cat_filter ) ) {
-      if ( count ( $categories ) == 0 ||
+      if ( count ( $categories ) === 0 ||
         ! array_key_exists ( $cat_filter, $categories ) )
         continue;
     }
 
-    if ( $cal_type == 'E' || $cal_type == 'M' ) {
+    if ( $cal_type === 'E' || $cal_type === 'M' ) {
       $exporting_event = true;
       /* Start of event */
       $Vret .= "BEGIN:VEVENT\r\n";
-    } else if ( $cal_type == 'T' || $cal_type == 'N' ) {
+    } else if ( $cal_type === 'T' || $cal_type === 'N' ) {
       $exporting_event = false;
       /* Start of VTODO */
       $Vret .= "BEGIN:VTODO\r\n";
-    } else if ( $cal_type == 'J' || $cal_type == 'O' ) {
+    } else if ( $cal_type === 'J' || $cal_type === 'O' ) {
       $exporting_event = false;
       /* Start of VJOURNAL */
       $Vret .= "BEGIN:VJOURNAL\r\n";
@@ -1070,7 +1070,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
       $Vret .= "$value\r\n";
 
     /* DESCRIPTION if any (folded to 76 char) */
-    if ( $description != '' ) {
+    if ( $description !== '' ) {
       $description = 'DESCRIPTION:' . $description;
       $array = export_fold_lines ( $description, 'utf8' );
       foreach ($array as $key => $value)
@@ -1078,7 +1078,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     }
 
     /* LOCATION if any (folded to 76 char) */
-    if ( $location != '' ) {
+    if ( $location !== '' ) {
       $location = 'LOCATION:' . $location;
       $array = export_fold_lines ( $location, 'utf8' );
       foreach ($array as $key => $value)
@@ -1086,7 +1086,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     }
 
     /* URL if any (folded to 76 char) */
-    if ( $url != '' ) {
+    if ( $url !== '' ) {
       $url = 'URL:' . $url;
       $array = export_fold_lines ( $url, 'utf8' );
       foreach ($array as $key => $value)
@@ -1102,31 +1102,31 @@ function export_ical ( $id = 'all', $attachment = false ) {
     }
 
     /* CLASS either "PRIVATE", "CONFIDENTIAL", or "PUBLIC" (the default) */
-    if ( $access == 'R' ) {
+    if ( $access === 'R' ) {
       $Vret .= "CLASS:PRIVATE\r\n";
-    } else if ( $access == 'C' ) {
+    } else if ( $access === 'C' ) {
       $Vret .= "CLASS:CONFIDENTIAL\r\n";
     } else {
       $Vret .= "CLASS:PUBLIC\r\n";
     }
 
     /* STATUS */
-    if ( $cal_type == 'E' || $cal_type == 'M' ) {
-      if ( $status == 'A' ) {
+    if ( $cal_type === 'E' || $cal_type === 'M' ) {
+      if ( $status === 'A' ) {
         $Vret .= "STATUS:CONFIRMED\r\n";
-      } else if ( $status == 'W' ) {
+      } else if ( $status === 'W' ) {
         $Vret .= "STATUS:TENTATIVE\r\n";
-      } else if ( $status == 'D' ) {
+      } else if ( $status === 'D' ) {
         $Vret .= "STATUS:CANCELLED\r\n";
       }
-    } else if ( $cal_type == 'T' || $cal_type == 'N' ) {
-      if ( $status == 'A' && empty ( $completed ) ) {
+    } else if ( $cal_type === 'T' || $cal_type === 'N' ) {
+      if ( $status === 'A' && empty ( $completed ) ) {
         $Vret .= "STATUS:IN-PROCESS\r\n";
-      } else if ( $status == 'A' ) {
+      } else if ( $status === 'A' ) {
         $Vret .= "STATUS:COMPLETED\r\n";
-      } else if ( $status == 'W' ) {
+      } else if ( $status === 'W' ) {
         $Vret .= "STATUS:NEEDS-ACTION\r\n";
-      } else if ( $status == 'D' ) {
+      } else if ( $status === 'D' ) {
         $Vret .= "STATUS:CANCELLED\r\n";
       }
     }
@@ -1142,7 +1142,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     $Vret .= export_time ( $date, $duration, $time, 'ical', $cal_type );
     // VTODO specific items
     $task_complete = false;
-    if ( $cal_type == 'T' || $cal_type == 'N' ) {
+    if ( $cal_type === 'T' || $cal_type === 'N' ) {
       $Vret .= 'DUE:' . $due_date . 'T'
        . sprintf ( "%06d", $due_time ) . "Z\r\n";
       if ( ! empty ( $completed ) ) {
@@ -1158,13 +1158,13 @@ function export_ical ( $id = 'all', $attachment = false ) {
     /* handle alarms */
     $Vret .= export_alarm_ical( $id, $date, $description, $task_complete );
 
-    if ( $cal_type == 'E' || $cal_type == 'M' ) {
+    if ( $cal_type === 'E' || $cal_type === 'M' ) {
       /* End of event */
       $Vret .= "END:VEVENT\r\n";
-    } else if ( $cal_type == 'T' || $cal_type == 'N' ) {
+    } else if ( $cal_type === 'T' || $cal_type === 'N' ) {
       /* Start of VTODO */
       $Vret .= "END:VTODO\r\n";
-    } else if ( $cal_type == 'J' || $cal_type == 'O' ) {
+    } else if ( $cal_type === 'J' || $cal_type === 'O' ) {
       /* Start of VJOURNAL */
       $Vret .= "END:VJOURNAL\r\n";
     }
@@ -1230,11 +1230,11 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
   // $importId = -1;
   $importId = 1;
   $subType = '';
-  if ( $type == 'icalclient' ) {
+  if ( $type === 'icalclient' ) {
     $ImportType = 'ICAL';
     $type = 'ical';
     $subType = 'icalclient';
-  } else if ( $type == 'remoteics' || $type == 'hcal' ) {
+  } else if ( $type === 'remoteics' || $type === 'hcal' ) {
     $ImportType = 'RMTICS';
     $type = 'rmtics';
     $subType = 'remoteics';
@@ -1274,11 +1274,11 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
       }
     }
     // Check for untimed
-    if ( ! empty ( $Entry['Untimed'] ) && $Entry['Untimed'] == 1 ) {
+    if ( ! empty ( $Entry['Untimed'] ) && $Entry['Untimed'] === 1 ) {
       $Entry['start_time'] = 0;
     }
     // Check for all day
-    if ( ! empty ( $Entry['AllDay'] ) && $Entry['AllDay'] == 1 ) {
+    if ( ! empty ( $Entry['AllDay'] ) && $Entry['AllDay'] === 1 ) {
       $Entry['start_time'] = 0;
       $Entry['end_time'] = 0;
       $Entry['Duration'] = '1440';
@@ -1321,10 +1321,10 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
       }
     }
 
-    if ( ! $updateMode && $subType != 'icalclient' && $subType != 'remoteics' ) {
+    if ( ! $updateMode && $subType !== 'icalclient' && $subType !== 'remoteics' ) {
       // first check for any schedule conflicts
-      if ( ( $ALLOW_CONFLICT_OVERRIDE == 'N' && $ALLOW_CONFLICTS == 'N' ) &&
-          ( $Entry['Duration'] != 0 ) ) {
+      if ( ( $ALLOW_CONFLICT_OVERRIDE === 'N' && $ALLOW_CONFLICTS === 'N' ) &&
+          ( $Entry['Duration'] !== 0 ) ) {
         $ex_days = [];
         if ( ! empty ( $Entry['Repeat']['Exceptions'] ) ) {
           foreach ( $Entry['Repeat']['Exceptions'] as $ex_date ) {
@@ -1374,7 +1374,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
         $overlap = check_for_conflicts ( $dates, $Entry['Duration'],
           $Entry['StartTime'], $participants, $login, 0 );
       }
-    } //end  $subType != 'icalclient' && != 'remoteics'
+    } //end  $subType !== 'icalclient' && !== 'remoteics'
     if ( empty ( $error ) ) {
       if ( ! $updateMode ) {
         // Add the Event
@@ -1388,7 +1388,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
         }
       }
       // not in icalclient
-      if ( $firstEventId == 0 )
+      if ( $firstEventId === 0 )
         $firstEventId = $id;
 
       $names =
@@ -1397,12 +1397,12 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
       $values[] = $id;
       if ( ! $updateMode ) {
         $names[] = 'cal_create_by';
-        $values[] = ( $ImportType == 'RMTICS' ? $calUser : $login );
+        $values[] = ( $ImportType === 'RMTICS' ? $calUser : $login );
       }
       $names[] = 'cal_date';
       $values[] = $Entry['start_date'];
       $names[] = 'cal_time';
-      $values[] = ( ! empty ( $Entry['Untimed'] ) && $Entry['Untimed'] == 1 )
+      $values[] = ( ! empty ( $Entry['Untimed'] ) && $Entry['Untimed'] === 1 )
       ? '-1' : $Entry['start_time'];
       $names[] = 'cal_mod_date';
       $values[] = gmdate ( 'Ymd' );
@@ -1445,13 +1445,13 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
       }
       if ( ! empty ( $Entry['CalendarType'] ) ) {
         $names[] = 'cal_type';
-        if ( $Entry['CalendarType'] == 'VEVENT' || $Entry['CalendarType'] == 'VFREEBUSY' ) {
+        if ( $Entry['CalendarType'] === 'VEVENT' || $Entry['CalendarType'] === 'VFREEBUSY' ) {
           $values[] = ( ! empty ( $Entry['Repeat'] ) )? 'M': 'E';
-        } else if ( $Entry['CalendarType'] == 'VTODO' ) {
+        } else if ( $Entry['CalendarType'] === 'VTODO' ) {
           $values[] = ( ! empty ( $Entry['Repeat'] ) )? 'N': 'T';
         }
       }
-      if ( strlen ( $Entry['Summary'] ) == 0 )
+      if ( strlen ( $Entry['Summary'] ) === 0 )
         $Entry['Summary'] = translate ( 'Unnamed Event' );
       if ( empty ( $Entry['Description'] ) )
         $Entry['Description'] = $Entry['Summary'];
@@ -1477,7 +1477,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
       // This will only be practical for mysql and MSSQL/Postgres as
       // these do not have limits on the table definition
       // TODO Add this option to preferences
-      if ( empty ( $LIMIT_DESCRIPTION_SIZE ) || $LIMIT_DESCRIPTION_SIZE == 'Y' ) {
+      if ( empty ( $LIMIT_DESCRIPTION_SIZE ) || $LIMIT_DESCRIPTION_SIZE === 'Y' ) {
         // limit length to 1024 chars since we setup tables that way
         if ( strlen ( $Entry['Description'] ) >= 1024 ) {
           $Entry['Description'] = substr ( $Entry['Description'], 0, 1019 )
@@ -1520,12 +1520,12 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
           $error .= db_error();
           // do_debug ( $error );
           break;
-        } else if ( $ImportType == 'RMTICS' ) {
+        } else if ( $ImportType === 'RMTICS' ) {
           $count_suc++;
         }
       }
       // log add/update
-      if ( $Entry['CalendarType'] == 'VTODO' ) {
+      if ( $Entry['CalendarType'] === 'VTODO' ) {
         activity_log ( $id, $login, $calUser,
           $updateMode ? LOG_UPDATE_T : LOG_CREATE_T, 'Import from '
            . $ImportType );
@@ -1534,7 +1534,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
           $updateMode ? LOG_UPDATE : LOG_CREATE, 'Import from ' . $ImportType );
       }
       // not in icalclient
-      if ( $single_user == 'Y' ) {
+      if ( $single_user === 'Y' ) {
         $participants[0] = $single_user_login;
       }
       // Now add to webcal_import_data
@@ -1547,7 +1547,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
           $importId = create_import_instance($calUser);
         }
 
-        if ( $ImportType == 'PALMDESKTOP' ) {
+        if ( $ImportType === 'PALMDESKTOP' ) {
           $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
             cal_login, cal_import_type, cal_external_id )
             VALUES ( ?, ?, ?, ?, ? )';
@@ -1557,7 +1557,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
             $error = db_error();
             break;
           }
-        } else if ( $ImportType == 'VCAL' ) {
+        } else if ( $ImportType === 'VCAL' ) {
           $uid = empty ( $Entry['UID'] ) ? null : $Entry['UID'];
           if ( strlen ( $uid ) > 200 )
             $uid = null;
@@ -1569,7 +1569,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
             $error = db_error();
             break;
           }
-        } else if ( $ImportType == 'ICAL' ) {
+        } else if ( $ImportType === 'ICAL' ) {
           $uid = empty ( $Entry['UID'] ) ? null : $Entry['UID'];
           // This may cause problems
           if ( strlen ( $uid ) > 200 )
@@ -1582,7 +1582,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
             $error = db_error();
             break;
           }
-        } else if ( $ImportType == 'GITLOG' ) {
+        } else if ( $ImportType === 'GITLOG' ) {
           $uid = empty ( $Entry['UID'] ) ? null : $Entry['UID'];
           // This may cause problems
           if ( strlen ( $uid ) > 200 )
@@ -1620,7 +1620,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
           break;
         }
         // update percentage only if set
-        if ( $percent != '' ) {
+        if ( $percent !== '' ) {
           $sql = 'UPDATE webcal_entry_user SET cal_percent = ?
             WHERE cal_id = ?';
           if ( ! dbi_execute ( $sql, [$percent, $id] ) ) {
@@ -1633,8 +1633,8 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
           [$id] );
       }
       // update Categories
-      if ( ! empty( $Entry['Categories'] ) || $importcat != '') {
-        $cat_ids = ( $importcat != ''
+      if ( ! empty( $Entry['Categories'] ) || $importcat !== '') {
+        $cat_ids = ( $importcat !== ''
           ? get_categories_id_byname( function_exists("utf8_decode") ? utf8_decode( $importcat ) : $importcat )
           : $Entry['Categories'] );
 
@@ -1715,7 +1715,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
           }
           $names[] = 'cal_end';
           $values[] = gmdate ( 'Ymd', $Entry['Repeat']['Until'] );
-          // if ( $RENDTIME != '000000' ) {
+          // if ( $RENDTIME !== '000000' ) {
           $names[] = 'cal_endtime';
           $values[] = $RENDTIME;
           // }
@@ -1776,7 +1776,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
         dbi_execute ( 'DELETE FROM webcal_reminders WHERE  cal_id = ?',
          [$id] );
 
-      if ( ! empty ( $Entry['AlarmSet'] ) && $Entry['AlarmSet'] == 1 ) {
+      if ( ! empty ( $Entry['AlarmSet'] ) && $Entry['AlarmSet'] === 1 ) {
         $names =
         $values = [];
 
@@ -1831,7 +1831,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
     }
     // here to end not in icalclient
     $time = '';
-    if ( $subType != 'icalclient' && $subType != 'remoteics' ) {
+    if ( $subType !== 'icalclient' && $subType !== 'remoteics' ) {
       if ( ! empty ( $error ) && empty ( $overlap ) ) {
         $error_num++;
         if ($silent) {
@@ -1863,7 +1863,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
         echo ":<ul>\n" . $overlap . "</ul>\n";
       } else {
         // No Conflict
-        if ( $count_suc == 0 && ! $silent ) {
+        if ( $count_suc === 0 && ! $silent ) {
           echo '<b><h2>' .
           translate ( 'Event Imported' ) . ":</h2></b><br>\n";
         }
@@ -1878,7 +1878,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
           echo htmlspecialchars ( $Entry['Summary'] ). '</a> (' .
             date_to_str ( $dd );
 
-          if ( isset ( $Entry['AllDay'] )  && $Entry['AllDay'] == 1)
+          if ( isset ( $Entry['AllDay'] )  && $Entry['AllDay'] === 1)
             echo '&nbsp; ' . translate ( 'All day event' );
           else if ( ! empty ( $time ) )
             echo '&nbsp; ' . $time;
@@ -1965,7 +1965,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   $importMd5 = '';
   $ical_data = [];
   do_debug ( "in parse_ical, file=$cal_file, source=$source" );
-  if ( $source == 'file' || $source == 'remoteics' ) {
+  if ( $source === 'file' || $source === 'remoteics' ) {
     $fd = '';
     try {
       $fd = @fopen($cal_file, 'r');
@@ -1974,7 +1974,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       $errormsg .= "Cannot read file: $e";
       return [];
     }
-    if (!$fd && stripos($cal_file, "http") == 0) {
+    if (!$fd && stripos($cal_file, "http") === 0) {
       // Try curl instead so we can ignore cert errors
       $data = curl_download($cal_file);
       if (empty($data)) {
@@ -1997,7 +1997,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       }
       fclose ( $fd );
     }
-  } else if ( $source == 'icalclient' ) {
+  } else if ( $source === 'icalclient' ) {
     do_debug ( "before fopen on stdin..." );
     $stdin = fopen ( 'php://input', 'r' );
     //$tmp = fopen ( "/tmp/data.ics", "w+" );
@@ -2014,7 +2014,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       do_debug ( "read: " . $line );
       do_debug ( "cnt = " . ( $cnt ) );
       $data .= $line;
-      if ( $cnt > 10 && strlen ( $data ) == 0 ) {
+      if ( $cnt > 10 && strlen ( $data ) === 0 ) {
         do_debug ( "Read $cnt lines of data, but got no data :-(" );
         do_debug( "Informing user of PHP server bug (PHP v" . phpversion() . ")" );
         // Note: Mozilla Calendar does not display this error for some reason.
@@ -2074,7 +2074,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   $linecnt = count ( $lines );
   for ( $n = 0; $n < $linecnt && ! $error; $n++ ) {
     $line++;
-    if ( $line > 5 && $line < 10 && $state == 'NONE' ) {
+    if ( $line > 5 && $line < 10 && $state === 'NONE' ) {
       // we are probably not reading an ics file
       return false;
     }
@@ -2093,13 +2093,13 @@ function parse_ical ( $cal_file, $source = 'file' ) {
     // echo "substate = $substate<br>";
     // echo "subsubstate = $subsubstate<br>";
     // echo "buff = " . htmlspecialchars ( $buff ) . "<br><br>\n";
-    if ( $state == 'VEVENT' || $state == 'VTODO' ) {
+    if ( $state === 'VEVENT' || $state === 'VTODO' ) {
       if ( ! empty ( $subsubstate ) ) {
         if ( preg_match ( '/^END.*:(.+)$/i', $buff, $match ) ) {
-          if ( $match[1] == $subsubstate )
+          if ( $match[1] === $subsubstate )
             $subsubstate = '';
 
-        } else if ( $subsubstate == 'VALARM' ) {
+        } else if ( $subsubstate === 'VALARM' ) {
           if ( preg_match ( "/TRIGGER(.+)$/i", $buff, $match ) ) {
             // Example: TRIGGER;VALUE=DATE-TIME:19970317T133000Z
             $substate = 'alarm_trigger';
@@ -2237,7 +2237,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
         $event = [ ];
         // folded lines?, this shouldn't happen
       } elseif ( preg_match ( '/^\s(\S.*)$/', $buff, $match ) ) {
-        if ( $substate != 'none' ) {
+        if ( $substate !== 'none' ) {
           $event[$substate] .= $match[1];
         } else {
           $errormsg .= "iCal parse error on line $line:<br>$buff\n";
@@ -2247,7 +2247,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       } else {
         $substate = 'none';
       }
-    } elseif ( $state == 'VCALENDAR' ) {
+    } elseif ( $state === 'VCALENDAR' ) {
       if ( preg_match ( "/^BEGIN:VEVENT/i", $buff ) ) {
         $state = 'VEVENT';
       } elseif ( preg_match ( "/^END:VCALENDAR/i", $buff ) ) {
@@ -2263,7 +2263,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
          $event['organizer'] = 'unknown_organizer';
       }
       $event['state'] = $state;
-    } elseif ( $state == 'VTIMEZONE' ) {
+    } elseif ( $state === 'VTIMEZONE' ) {
       // We don't do much with timezone info yet...
       if ( preg_match ( '/^TZID.*:(.+)$/i', $buff, $match ) ) {
         $substate = 'tzid';
@@ -2289,7 +2289,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
         save_vtimezone ( $event );
         $state = 'VCALENDAR';
       }
-     }elseif ( $state == 'VFREEBUSY' ) {
+     }elseif ( $state === 'VFREEBUSY' ) {
        if ( preg_match ( '/^END:VFREEBUSY$/i', $buff, $match ) ) {
          $state = 'VCALENDAR';
          $substate = 'none';
@@ -2324,7 +2324,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
        } else {
          $substate = 'none';
        }
-    } elseif ( $state == 'NONE' ) {
+    } elseif ( $state === 'NONE' ) {
       if ( preg_match ( '/^BEGIN:VCALENDAR$/i', $buff ) )
         $state = 'VCALENDAR';
     }
@@ -2351,31 +2351,31 @@ function parse_hcal ( $hcal_array ) {
       $event['uid'] = generate_uid ( 1 );
       // parser debugging code...
       // echo "buff = " . htmlspecialchars ( $buff ) . "<br><br>\n";
-      if ( $key == 'SUMMARY' ) {
+      if ( $key === 'SUMMARY' ) {
         $substate = 'summary';
         $event[$substate] = $value;
-      } elseif ( $key == 'DESCRIPTION' ) {
+      } elseif ( $key === 'DESCRIPTION' ) {
         $substate = 'description';
         $event[$substate] = $value;
-      } elseif ( $key == 'CLASS' ) {
+      } elseif ( $key === 'CLASS' ) {
         $substate = 'class';
         $event[$substate] = $value;
-      } elseif ( $key == 'LOCATION' ) {
+      } elseif ( $key === 'LOCATION' ) {
         $substate = 'location';
         $event[$substate] = $value;
-      } elseif ( $key == 'URL' ) {
+      } elseif ( $key === 'URL' ) {
         $substate = 'url';
         $event[$substate] = $value;
-      } elseif ( $key == 'TRANSP' ) {
+      } elseif ( $key === 'TRANSP' ) {
         $substate = 'transparency';
         $event[$substate] = $value;
-      } elseif ( $key == 'STATUS' ) {
+      } elseif ( $key === 'STATUS' ) {
         $substate = 'status';
         $event[$substate] = $value;
-      } elseif ( $key == 'PRIORITY' ) {
+      } elseif ( $key === 'PRIORITY' ) {
         $substate = 'priority';
         $event[$substate] = $value;
-      } elseif ( $key == 'DTSTART' ) {
+      } elseif ( $key === 'DTSTART' ) {
         $substate = 'dtstart';
         $event[$substate] = $value;
         if ( strlen ( $value ) > 8 ) {
@@ -2385,7 +2385,7 @@ function parse_hcal ( $hcal_array ) {
           $substate = 'dtstartDATE';
           $event[$substate] = true;
         }
-      } elseif ( $key == 'DTEND' ) {
+      } elseif ( $key === 'DTEND' ) {
         $substate = 'dtend';
         $event[$substate] = $value;
         if ( strlen ( $value ) > 8 ) {
@@ -2395,25 +2395,25 @@ function parse_hcal ( $hcal_array ) {
           $substate = 'dtendDATE';
           $event[$substate] = true;
         }
-      } elseif ( $key == 'TZ' ) {
+      } elseif ( $key === 'TZ' ) {
         $substate = 'tzid';
         $event[$substate] = $value;
-      } elseif ( $key == 'DUE' ) {
+      } elseif ( $key === 'DUE' ) {
         $substate = 'due';
         $event[$substate] = $value;
-      } elseif ( $key == 'COMPLETED' ) {
+      } elseif ( $key === 'COMPLETED' ) {
         $substate = 'completed';
         $event[$substate] = $value;
-      } elseif ( $key == 'PERCENT-COMPLETE' ) {
+      } elseif ( $key === 'PERCENT-COMPLETE' ) {
         $substate = 'percent';
         $event[$substate] = $value;
-      } elseif ( $key == 'DURATION' ) {
+      } elseif ( $key === 'DURATION' ) {
         $substate = 'duration';
         $event[$substate] = parse_ISO8601_duration ( $value );
-      } elseif ( $key == 'RRULE' ) {
+      } elseif ( $key === 'RRULE' ) {
         $substate = 'rrule';
         $event[$substate] = $value;
-      } elseif ( $key == 'EXDATE' ) {
+      } elseif ( $key === 'EXDATE' ) {
         $substate = 'exdate';
         // allows multiple ocurrances of EXDATE to be processed
         if ( isset ( $event[$substate] ) )
@@ -2421,7 +2421,7 @@ function parse_hcal ( $hcal_array ) {
          else
           $event[$substate] = $value;
 
-      } elseif ( $key == 'RDATE' ) {
+      } elseif ( $key === 'RDATE' ) {
         $substate = 'rdate';
         // allows multiple ocurrances of RDATE to be processed
         if ( isset ( $event[$substate] ) )
@@ -2429,7 +2429,7 @@ function parse_hcal ( $hcal_array ) {
          else
           $event[$substate] = $value;
 
-      } elseif ( $key == 'CATEGORIES' ) {
+      } elseif ( $key === 'CATEGORIES' ) {
         $substate = 'categories';
         // allows multiple ocurrances of CATEGORIES to be processed
         if ( isset ( $event[$substate] ) )
@@ -2437,7 +2437,7 @@ function parse_hcal ( $hcal_array ) {
          else
           $event[$substate] = $value;
 
-      } elseif ( $key == 'UID' ) {
+      } elseif ( $key === 'UID' ) {
         $substate = 'uid';
         $event[$substate] = $value;
       }
@@ -2557,7 +2557,7 @@ function format_ical ( $event ) {
   if ( isset ( $event['dtend'] ) ) {
     $dtendTzid = ( ! empty ( $event['dtendTzid'] )?$event['dtendTzid'] : '' );
     $fevent['EndTime'] = icaldate_to_timestamp ( $event['dtend'], $dtendTzid );
-    if ( $fevent['StartTime'] == $fevent['EndTime'] ) {
+    if ( $fevent['StartTime'] === $fevent['EndTime'] ) {
       $fevent['Untimed'] = 1;
       $fevent['Duration'] = 0;
     } else {
@@ -2585,14 +2585,14 @@ function format_ical ( $event ) {
   } else if ( isset ( $event['dtstartDATE'] ) && isset ( $event['dtendDATE'] ) ) {
     $fevent['StartTime'] = icaldate_to_timestamp ( $event['dtstart'], 'GMT' );
     // This is an untimed event
-    if ( $event['dtstart']  == $event['dtend'] ) {
+    if ( $event['dtstart'] === $event['dtend'] ) {
       $fevent['EndTime'] = $fevent['StartTime'];
       $fevent['Untimed'] = 1;
       $fevent['Duration'] = 0;
     } else {
       $fevent['EndTime'] = icaldate_to_timestamp ( $event['dtend'], 'GMT' );
       $fevent['Duration'] = ( $fevent['EndTime'] - $fevent['StartTime'] ) / 60;
-      if ( $fevent['Duration'] == 1440 ) $fevent['AllDay'] = 1;
+      if ( $fevent['Duration'] === 1440 ) $fevent['AllDay'] = 1;
     }
   }
   // catch 22
@@ -2645,7 +2645,7 @@ function format_ical ( $event ) {
       $fevent['ADuration'] = abs ( parse_ISO8601_duration ( $event['alarm_duration'] ) );
     }
     if ( ! empty ( $event['alarm_related'] ) ) {
-      $fevent['ARelated'] = ( $event['alarm_related'] == 'END'? 'E':'S' );
+      $fevent['ARelated'] = ( $event['alarm_related'] === 'END'? 'E':'S' );
     }
   }
 
@@ -2694,7 +2694,7 @@ function format_ical ( $event ) {
 
   if ( ! empty ( $event['transparency'] ) ) {
     if ( preg_match ( '/TRANSPARENT/i', $event['transparency'] )
-        OR $event['transparency'] == 1 ) {
+        OR $event['transparency'] === 1 ) {
       $fevent['Transparency'] = 1;
     } else {
       $fevent['Transparency'] = 0;
@@ -2766,7 +2766,7 @@ function format_ical ( $event ) {
         } else {
           // not supported :-(
           // but don't overwrite Manual setting from above
-          if ( $fevent['Repeat']['Frequency'] != 7 )
+          if ( $fevent['Repeat']['Frequency'] !== 7 )
             $fevent['Repeat']['Frequency'] = 0;
           echo "Unsupported iCal FREQ value \"$match[1]\"<br>\n";
           // Abort this import
@@ -2801,7 +2801,7 @@ function format_ical ( $event ) {
         // $fevent['Repeat']['Frequency'] = 3; //MonthlyByDay
       } else if ( preg_match ( "/^BYSETPOS=(.+)$/i", $RR[$i], $match ) ) {
         // if not already Yearly, mark as MonthlyBySetPos
-        if ( $fevent['Repeat']['Frequency'] != 6 )
+        if ( $fevent['Repeat']['Frequency'] !== 6 )
           $fevent['Repeat']['Frequency'] = 5;
         $fevent['Repeat']['BySetPos'] = $match[1];
       } else if ( preg_match ( "/^BYWEEKNO=(.+)$/i", $RR[$i], $match ) ) {
@@ -2855,7 +2855,7 @@ function parse_ISO8601_duration ( $duration ) {
       $ret += ( $result[$i] * $const[$result[$i + 1]] );
     }
   }
-  if ( $result[0] == '-' ) $ret = - $ret;
+  if ( $result[0] === '-' ) $ret = - $ret;
   return $ret;
 }
 
@@ -2883,19 +2883,19 @@ function parse_vcal( $cal_file ) {
 
     while ( !feof( $fd ) && !$error ) {
       $line++;
-      if ( $line > 5 && $line < 10 && $state == 'NONE' ) {
+      if ( $line > 5 && $line < 10 && $state === 'NONE' ) {
         // we are probably not reading a vcs file
         return false;
       }
       $buff = fgets( $fd, 4096 );
       $buff = chop( $buff );
-      if ( $state == 'VEVENT' ) {
+      if ( $state === 'VEVENT' ) {
         if ( ! empty ( $subsubstate ) ) {
           if ( preg_match ( '/^END:(.+)$/i', $buff, $match ) ) {
-            if ( $match[1] == $subsubstate ) {
+            if ( $match[1] === $subsubstate ) {
               $subsubstate = '';
             }
-          } else if ( $subsubstate == 'VALARM' &&
+          } else if ( $subsubstate === 'VALARM' &&
             preg_match ( "/TRIGGER:(.+)$/i", $buff, $match ) ) {
           }
         } else if ( preg_match ( '/^BEGIN:(.+)$/i', $buff, $match ) ) {
@@ -2947,7 +2947,7 @@ function parse_vcal( $cal_file ) {
           // TODO: QUOTED-PRINTABLE descriptions
           // folded lines
         } elseif ( preg_match ( '/^[ ]{1}(.+)$/', $buff, $match ) ) {
-          if ( $substate != 'none' ) {
+          if ( $substate !== 'none' ) {
             $event[$substate] .= $match[1];
           } else {
             $errormsg .= "Error in file $cal_file line $line:<br>$buff\n";
@@ -2957,7 +2957,7 @@ function parse_vcal( $cal_file ) {
         } else {
           $substate = 'none';
         }
-      } elseif ( $state == 'VCALENDAR' ) {
+      } elseif ( $state === 'VCALENDAR' ) {
         if ( preg_match ( '/^TZ.*:(.+)$/i', $buff, $match ) ) {
           $event['tz'] = $match[1];
         } elseif ( preg_match ( '/^DAYLIGHT.*:(.+)$/i', $buff, $match ) ) {
@@ -2967,7 +2967,7 @@ function parse_vcal( $cal_file ) {
         } elseif ( preg_match ( '/^END:VCALENDAR$/i', $buff ) ) {
           $state = 'NONE';
         }
-      } elseif ( $state == 'NONE' ) {
+      } elseif ( $state === 'NONE' ) {
         if ( preg_match ( '/^BEGIN:VCALENDAR$/i', $buff ) )
           $state = 'VCALENDAR';
         else if ( preg_match ( '/^BEGIN:ALARM$/i', $buff ) )
@@ -2991,7 +2991,7 @@ function vcaldate_to_timestamp( $vdate, $plus_d = '0', $plus_m = '0', $plus_y = 
   $M = substr ( $vdate, 11, 2 );
   $S = substr ( $vdate, 13, 2 );
   $Z = substr ( $vdate, 15, 1 );
-  if ( $Z == 'Z' ) {
+  if ( $Z === 'Z' ) {
     $TS = gmmktime ( $H, $M, $S, $m, $d, $y );
   } else {
     // Problem here if server in different timezone
@@ -3012,16 +3012,16 @@ function format_vcal( $event ) {
   $fevent['Untimed'] = $fevent['AllDay'] = 0;
 
   $fevent['StartTime'] = vcaldate_to_timestamp( $event['dtstart'] );
-  if ( $fevent['StartTime'] == '-1' ) return false;
+  if ( $fevent['StartTime'] === '-1' ) return false;
   $fevent['EndTime'] = vcaldate_to_timestamp( $event['dtend'] );
 
-  if ( $fevent['StartTime'] == $fevent['EndTime'] ) {
+  if ( $fevent['StartTime'] === $fevent['EndTime'] ) {
     $fevent['Untimed'] = 1;
     $fevent['Duration'] = 0;
   } else {
   // Calculate duration in minutes
   $fevent['Duration'] = ( $fevent['EndTime'] - $fevent['StartTime'] ) / 60;
-    if ( $fevent['Duration'] == '1440' && date ( 'His', $fevent['StartTime'] ) == 0 )
+    if ( $fevent['Duration'] === '1440' && date ( 'His', $fevent['StartTime'] ) === 0 )
       $fevent['AllDay'] = 1;
   }
   if ( ! empty ( $event['summary'] ) ) $fevent['Summary'] = $event['summary'];
@@ -3065,7 +3065,7 @@ function format_vcal( $event ) {
     } elseif ( preg_match ( '/^MP(.+)$/i', $RR[0], $match ) ) {
       $fevent['Repeat']['Frequency'] = '3';
       $fevent['Repeat']['Interval'] = $match[1];
-      if ( $RR[1] == '5+' ) {
+      if ( $RR[1] === '5+' ) {
         $fevent['Repeat']['Frequency'] = '3';
       }
     } elseif ( preg_match ( '/^MD(.+)$/i', $RR[0], $match ) ) {
@@ -3081,7 +3081,7 @@ function format_vcal( $event ) {
 
     $end = end( $RR );
     // No end in Palm is 12-31-2031
-    if ( ( $end != '20311231' ) && ( $end != '#0' ) )
+    if ( ( $end !== '20311231' ) && ( $end !== '#0' ) )
       if ( preg_match ( '/^\#(.+)$/i', $end, $match ) )
         $fevent['Repeat']['Count'] = $match[1];
     //.
@@ -3113,7 +3113,7 @@ function get_categories_id_byname ( $cat_names ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         $ret[] = $row[0];
         dbi_free_result ( $res );
-      } else if ( ! empty ( $IMPORT_CATEGORIES ) && $IMPORT_CATEGORIES == 'Y' ) {
+      } else if ( ! empty ( $IMPORT_CATEGORIES ) && $IMPORT_CATEGORIES === 'Y' ) {
         // Need to insert new Category
         $res = dbi_execute ( 'SELECT MAX(cat_id) FROM webcal_categories' );
         if ( $res ) {
@@ -3145,7 +3145,7 @@ function get_categories_id_byname ( $cat_names ) {
 function fb_export_time ( $date, $duration, $time, $texport ) {
   $ret = '';
   $time = sprintf ( "%06d", $time );
-  $allday = ( $time == -1 || $duration == 1440 );
+  $allday = ( $time === -1 || $duration === 1440 );
   $year = ( int ) substr ( $date, 0, -4 );
   $month = ( int ) substr ( $date, - 4, 2 );
   $day = ( int ) substr ( $date, -2, 2 );
@@ -3236,9 +3236,9 @@ function parse_tzid ( $tzid ) {
     $tzArCnt = count ( $tzAr );
     $tzid = $tzAr[3];
     // we may recieve a 2 word tzid
-    if ( $tzArCnt == 5 ) $tzid .= '/' . $tzAr[4];
+    if ( $tzArCnt === 5 ) $tzid .= '/' . $tzAr[4];
     // and even maybe a 3 word tzid
-    if ( $tzArCnt == 6 ) $tzid .= '/' . $tzAr[4] . '/' . $tzAr[5];
+    if ( $tzArCnt === 6 ) $tzid .= '/' . $tzAr[4] . '/' . $tzAr[5];
   }
   return $tzid;
 }

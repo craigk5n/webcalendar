@@ -73,7 +73,7 @@ document.getElementsBySelector = function(selector) {
       var tagName = bits[0];
       var id = bits[1];
       var element = document.getElementById(id);
-      if (tagName && element.nodeName.toLowerCase() != tagName) {
+      if (tagName && element.nodeName.toLowerCase() !== tagName) {
         // tag with that ID not found, return false
         return new Array();
       }
@@ -94,7 +94,7 @@ document.getElementsBySelector = function(selector) {
       var foundCount = 0;
       for (var h = 0; h < currentContext.length; h++) {
         var elements;
-        if (tagName == '*') {
+        if (tagName === '*') {
             elements = getAllChildren(currentContext[h]);
         } else {
             elements = currentContext[h].getElementsByTagName(tagName);
@@ -126,7 +126,7 @@ document.getElementsBySelector = function(selector) {
       var foundCount = 0;
       for (var h = 0; h < currentContext.length; h++) {
         var elements;
-        if (tagName == '*') {
+        if (tagName === '*') {
             elements = getAllChildren(currentContext[h]);
         } else {
             elements = currentContext[h].getElementsByTagName(tagName);
@@ -140,7 +140,7 @@ document.getElementsBySelector = function(selector) {
       var checkFunction; // This function will be used to filter the elements
       switch (attrOperator) {
         case '=': // Equality
-          checkFunction = function(e) { return (e.getAttribute(attrName) == attrValue); };
+          checkFunction = function(e) { return (e.getAttribute(attrName) === attrValue); };
           break;
         case '~': // Match one of space separated words
           checkFunction = function(e) { return (e.getAttribute(attrName).match(new RegExp('\\b'+attrValue+'\\b'))); };
@@ -149,10 +149,10 @@ document.getElementsBySelector = function(selector) {
           checkFunction = function(e) { return (e.getAttribute(attrName).match(new RegExp('^'+attrValue+'-?'))); };
           break;
         case '^': // Match starts with value
-          checkFunction = function(e) { return (e.getAttribute(attrName).indexOf(attrValue) == 0); };
+          checkFunction = function(e) { return (e.getAttribute(attrName).indexOf(attrValue) === 0); };
           break;
         case '$': // Match ends with value - fails with "Warning" in Opera 7
-          checkFunction = function(e) { return (e.getAttribute(attrName).lastIndexOf(attrValue) == e.getAttribute(attrName).length - attrValue.length); };
+          checkFunction = function(e) { return (e.getAttribute(attrName).lastIndexOf(attrValue) === e.getAttribute(attrName).length - attrValue.length); };
           break;
         case '*': // Match ends with value
           checkFunction = function(e) { return (e.getAttribute(attrName).indexOf(attrValue) > -1); };
@@ -218,5 +218,3 @@ function showResponse(originalRequest) {
   }
   document.body.style.cursor = 'default';
 }
-
-

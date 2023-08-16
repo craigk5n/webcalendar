@@ -1,16 +1,16 @@
 <?php
 require_once 'includes/init.php';
 
-if ( empty ( $login ) || $login == '__public__' ) {
+if ( empty ( $login ) || $login === '__public__' ) {
   // Do not allow public access.
   do_redirect ( empty ( $STARTVIEW ) ? 'month.php' : "$STARTVIEW" );
   exit;
 }
 
-if ( $user != $login )
+if ( $user !== $login )
   $user = ( ( $is_admin || $is_nonuser_admin ) && $user ) ? $user : $login;
 
-print_header( '', ! $GROUPS_ENABLED == 'Y' ? '' :
+print_header( '', ! $GROUPS_ENABLED === 'Y' ? '' :
   '<script src="includes/js/assistant_edit.js"></script>' );
 echo '
     <form action="assistant_edit_handler.php" method="post" '
@@ -46,7 +46,7 @@ if ( $res ) {
 
 for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
   $u = $users[$i]['cal_login'];
-  if ( $u == $login || $u == '__public__' )
+  if ( $u === $login || $u === '__public__' )
     continue;
   echo '
               <option value="' . $u . '"'
@@ -56,7 +56,7 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
 
 echo "</select>\n";
 
-if ( $GROUPS_ENABLED == 'Y' ) {
+if ( $GROUPS_ENABLED === 'Y' ) {
   echo '<input class="btn btn-primary" type="button" onclick="selectUsers()" value="'
    . translate ( 'Select' ) . '...">';
 }

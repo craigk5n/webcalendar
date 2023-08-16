@@ -71,7 +71,7 @@ echo '</span><br>
 
 // Get users in this view.
 $viewusers = view_get_user_list ( $id );
-if ( count ( $viewusers ) == 0 )
+if ( count ( $viewusers ) === 0 )
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view.
   $error = translate( 'No users for this view.' );
@@ -80,7 +80,7 @@ if ( ! empty ( $error ) ) {
   echo print_error ( $error ) . print_trailer();
   exit;
 }
-$can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
+$can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS !== 'N' );
 
 $e_save = $re_save = array();
 $viewusercnt = count ( $viewusers );
@@ -135,21 +135,21 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     //date should always be 00 hours entering DST turns this into 01 (end of March)
     //leaving DST turns into 23 (end of October)
     $DSTtest = date("H",$d);
-    if ($DSTtest == "23") {
+    if ($DSTtest === "23") {
       $d = $date + 3600;
     }
-    if ($DSTtest == "01" ) {
+    if ($DSTtest === "01" ) {
       $d = $date - 3600;
     }
     $dateYmd = date ( 'Ymd', $d );
     $dateYmd = date ( 'Ymd', $d );
     $todayYmd = date ( 'Ymd', $today );
     $is_weekend = is_weekend ( $d );
-    if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
+    if ( $is_weekend && $DISPLAY_WEEKENDS === 'N' )
       continue;
 
     $weekday = weekday_name ( date ( 'w', $d ), $DISPLAY_LONG_DAYS );
-    $class = 'class="' . ( $dateYmd == $todayYmd
+    $class = 'class="' . ( $dateYmd === $todayYmd
       ? 'today"'
       : ( $is_weekend ? 'weekend"' : 'weekday"' ) );
 
@@ -164,12 +164,12 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       $user = $viewusers[$i];
       $entryStr = print_date_entries ( $dateYmd, $user, true );
       // Unset class from above if needed.
-      if ( $class == 'class="row"' ||  $class == 'class="hasevents"' )
+      if ( $class === 'class="row"' ||  $class === 'class="hasevents"' )
         $class = '';
-      if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' )
+      if ( ! empty ( $entryStr ) && $entryStr !== '&nbsp;' )
         $class = 'class="hasevents"';
       else
-      if ( $dateYmd == $todayYmd )
+      if ( $dateYmd === $todayYmd )
         $class = 'class="today"';
       else
       if ( $is_weekend )

@@ -27,7 +27,7 @@ $prevStr = translate ( 'Previous' );
 
 $PAGE_SIZE = 25; // Number of entries to show at once.
 $startid = getValue ( 'startid', '-?[0-9]+', true );
-$sys = ( $is_admin && getGetValue ( 'system' ) != '' );
+$sys = ( $is_admin && getGetValue ( 'system' ) !== '' );
 
 print_header();
 echo generate_activity_log( '', $sys, $startid ) . '

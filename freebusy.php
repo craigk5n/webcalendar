@@ -73,7 +73,7 @@ if ( empty ( $user ) ) {
   $user = preg_replace ( '/\.[iI][fF][bB]$/', '', $user );
 }
 
-if ( $user == 'public' )
+if ( $user === 'public' )
   $user = '__public__';
 
 load_global_settings();
@@ -88,7 +88,7 @@ $WebCalendar->setLanguage();
 // Load user name, etc.
 user_load_variables ( $user, 'publish_' );
 
-if ( empty ( $FREEBUSY_ENABLED ) || $FREEBUSY_ENABLED != 'Y' ) {
+if ( empty ( $FREEBUSY_ENABLED ) || $FREEBUSY_ENABLED !== 'Y' ) {
   header ( 'Content-Type: text/plain' );
   echo 'user=' . $user . "\n" . print_not_auth();
   exit;

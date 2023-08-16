@@ -31,7 +31,7 @@ $DISPLAY_WEEKENDS = true;
 $MINICALFONT = '11px';
 $MINICALWIDTH = '160px';
 
-if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
+if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED !== 'Y' ) {
   header ( 'Content-Type: text/plain' );
   echo print_not_auth();
   exit;
@@ -69,7 +69,7 @@ $cat_id = ( empty ( $cat_id ) ? '' : $cat_id );
 // Set for use elsewhere as a global.
 $login = $user;
 
-if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' )
+if ( $public_must_be_enabled && $PUBLIC_ACCESS !== 'Y' )
   $error = print_not_auth();
 
 if ( $allow_user_override ) {
@@ -83,13 +83,13 @@ load_user_preferences();
 
 user_load_variables ( $login, 'minical_' );
 
-if ( $user != '__public__' && ! nonuser_load_variables ( $login, 'minica_' ) )
+if ( $user !== '__public__' && ! nonuser_load_variables ( $login, 'minica_' ) )
   die_miserable_death (
     str_replace ( 'XXX', $login,
       translate ( 'No such nonuser calendar XXX.' ) ) );
 
-if ( $user != '__public__' &&
-  ( empty ( $minical_is_public ) || $minical_is_public != 'Y' ) )
+if ( $user !== '__public__' &&
+  ( empty ( $minical_is_public ) || $minical_is_public !== 'Y' ) )
   die_miserable_death ( translate ( 'This Calendar is not Public.' ) );
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );

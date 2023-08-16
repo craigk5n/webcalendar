@@ -32,7 +32,7 @@ function valid_form2 ( form ) {
  . translate ( 'You have not entered a password.', true )?>" );
     return false;
   }
-  if ( pass1 != pass2 ) {
+  if ( pass1 !== pass2 ) {
     alert ( "<?php echo $errStr
  . translate ( 'The passwords were not identical.', true )?>" );
     return false;
@@ -63,10 +63,10 @@ function showResponse ( originalRequest ) {
     text = originalRequest.responseText;
     // This causes javascript errors in Firefox, but these can be ignored.
     alert ( text );
-    if ( formfield == 'user' )
+    if ( formfield === 'user' )
       document.edituser.user.focus();
 
-    if ( formfield == 'uemail' )
+    if ( formfield === 'uemail' )
       document.edituser.uemail.focus();
 
     validform = false;

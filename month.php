@@ -6,7 +6,7 @@ if( ! access_can_access_function( ACCESS_MONTH )
     || ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
   send_to_preferred_view();
 
-if ( ( $user != $login ) && $is_nonuser_admin )
+if ( ( $user !== $login ) && $is_nonuser_admin )
   load_user_layers ( $user );
 else
 if ( empty ( $user ) )
@@ -25,7 +25,7 @@ $prevYmd = date ( 'Ymd', $prev );
 $prevyear = substr ( $prevYmd, 0, 4 );
 $prevmonth = substr ( $prevYmd, 4, 2 );
 
-if ( $BOLD_DAYS_IN_YEAR == 'Y' ) {
+if ( $BOLD_DAYS_IN_YEAR === 'Y' ) {
   $boldDays = true;
   $startdate = mktime ( 0, 0, 0, $prevmonth, 0, $prevyear );
   $enddate = mktime ( 23, 59, 59, $nextmonth + 1, 0, $nextyear );
@@ -44,7 +44,7 @@ $repeated_events = read_repeated_events (
 $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
   ? $user : $login, $startdate, $enddate, $cat_id );
 
-if ( $DISPLAY_TASKS_IN_GRID == 'Y' )
+if ( $DISPLAY_TASKS_IN_GRID === 'Y' )
   /* Pre-load tasks for quicker access */
   $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) &&
     $is_assistant )
@@ -55,16 +55,16 @@ $monthURL = 'month.php?' . ( ! empty ( $cat_id )
   ? 'cat_id=' . $cat_id . '&amp;' : '' );
 $nextMonth1 = $nextMonth2 = $prevMonth1 = $prevMonth2 = '';
 $printerStr = $smallTasks = $unapprovedStr = '';
-if ( empty ( $DISPLAY_TASKS ) || $DISPLAY_TASKS == 'N' &&
-  $DISPLAY_SM_MONTH != 'N' ) {
+if ( empty ( $DISPLAY_TASKS ) || $DISPLAY_TASKS === 'N' &&
+  $DISPLAY_SM_MONTH !== 'N' ) {
   $nextMonth1 = display_small_month ( $nextmonth, $nextyear, true, true,
     'nextmonth', $monthURL );
   $prevMonth1 = display_small_month ( $prevmonth, $prevyear, true, true,
     'prevmonth', $monthURL );
 }
 
-if ( $DISPLAY_TASKS == 'Y' && $friendly != 1 ) {
-  if ( $DISPLAY_SM_MONTH != 'N' ) {
+if ( $DISPLAY_TASKS === 'Y' && $friendly !== 1 ) {
+  if ( $DISPLAY_SM_MONTH !== 'N' ) {
     $nextMonth2 = display_small_month ( $nextmonth, $nextyear, true, false,
       'nextmonth', $monthURL ) . '<br>';
     $prevMonth2 = display_small_month ( $prevmonth, $prevyear, true, false,

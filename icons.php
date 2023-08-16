@@ -3,7 +3,7 @@ require_once 'includes/init.php';
 $icon_path = 'wc-icons/';
 
 $can_edit = (is_dir($icon_path) &&
-  ($ENABLE_ICON_UPLOADS == 'Y' || $is_admin));
+  ($ENABLE_ICON_UPLOADS === 'Y' || $is_admin));
 
 if (!$can_edit)
   do_redirect('category.php');
@@ -46,7 +46,7 @@ if ($d = dir($icon_path)) {
         <td><a href="#" onclick="sendURL(\'' . $icon_path . $icons[$i]
       . '\');" ><img src="' . $icon_path . $icons[$i] . '" title="'
       . $title_str . '" alt="' . $title_str . '"></a></td>'
-      . ($i > 0 && $i % 8 == 0 ? '
+      . ($i > 0 && $i % 8 === 0 ? '
       </tr>
       <tr>' : '');
   }
