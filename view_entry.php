@@ -15,10 +15,10 @@ require_once 'includes/init.php';
 require_once 'includes/xcal.php'; // Only to display recurrance info.
 
 // Load Doc classes for attachments and comments
-require_once 'includes/classes/AttachmentList.php';
-require_once 'includes/classes/CommentList.php';
 require_once 'includes/classes/Doc.php';
 require_once 'includes/classes/DocList.php';
+require_once 'includes/classes/CommentList.php';
+require_once 'includes/classes/AttachmentList.php';
 
 // Make sure this user is allowed to look at this calendar.
 $can_approve = $can_edit = $can_view = false;

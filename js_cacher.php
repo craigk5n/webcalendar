@@ -33,20 +33,12 @@ require_once 'includes/dbi4php.php';
 require_once 'includes/formvars.php';
 require_once 'includes/functions.php';
 
-<<<<<<< HEAD
 do_config();
-include_once 'includes/' . $user_inc;
-include_once 'includes/access.php';
-include_once 'includes/validate.php';
-include_once 'includes/gradient.php';
-=======
-do_config( 'includes/settings.php' );
 
 require_once "includes/$user_inc";
 require_once 'includes/access.php';
 require_once 'includes/gradient.php';
 require_once 'includes/validate.php';
->>>>>>> master
 
 header( 'Content-type: text/javascript' );
 header( 'Cache-Control: Public' );

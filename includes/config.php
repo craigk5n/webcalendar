@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file loads configuration settings from the data file settings.php and
  * sets up some needed variables.
@@ -153,13 +152,12 @@ function do_config()
     'db_password'      => 'string',
     'db_persistent'    => 'boolean',
     'db_type'          => 'string',
-    'readonly'         => 'boolean',
-    'single_user'      => 'string',
+    'readonly'         => 'string', # "Y" or "N"
+    'single_user'      => 'string', # "Y" or "N"
     'use_http_auth'    => 'boolean',
     'user_inc'         => 'string',
     'config_inc'       => 'string',
-    'mode'             => 'string',
-
+    'mode'             => 'string'  # "dev" or "prod"
   ];
 
   // When changing PROGRAM VERSION, also change it in install/default_config.php
@@ -183,6 +181,10 @@ function do_config()
 
       if ($env_value !== false) {
         $settings[$key] = ($type === 'boolean') ? filter_var($env_value, FILTER_VALIDATE_BOOLEAN) : $env_value;
+      } else {
+        if ($type === 'boolean') {
+          $settings[$key] = false;
+        }
       }
     }
   } else {
@@ -203,14 +205,18 @@ function do_config()
       if (preg_match('/' . $key . ':\s*(.*)/', $settings_content, $matches)) {
         $value = trim($matches[1]);
         $settings[$key] = ($type === 'boolean') ? filter_var($value, FILTER_VALIDATE_BOOLEAN) : $value;
+      } else {
+        if ($type === 'boolean') {
+          $settings[$key] = false;
+        }
       }
     }
   }
 
   if (isset($settings['config_inc'])) {
     # Load 3rd party configs from external app
-    require get_full_include_path( $settings['config_inc'] );
-    $settings = do_external_configs( $settings );
+    require get_full_include_path($settings['config_inc']);
+    $settings = do_external_configs($settings);
   }
 
   // Extract db settings into global vars.
@@ -263,6 +269,12 @@ function do_config()
   $db_password = (empty($db_password) || $db_password == 'none'
     ? '' : $db_password);
 
+  if (empty($settings['readonly']))
+    $settings['readonly'] = 'N';
+  $readonly = preg_match(
+    '/(1|yes|true|on|y)/i',
+    $settings['readonly']
+  ) ? 'Y' : 'N';
   if (empty($settings['mode']))
     $settings['mode'] = 'prod';
 
