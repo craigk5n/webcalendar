@@ -13,11 +13,11 @@
     }
   ],
   "require": {
-    "phpmailer/phpmailer": "6.5.4",
+    "phpmailer/phpmailer": "6.8.*",
     "components/jquery": "3.5.*",
-    "ckeditor/ckeditor": "4.18.*",
-    "twbs/bootstrap": "4.6.2",
-    "twbs/bootstrap-icons": "1.8.3",
+    "ckeditor/ckeditor": "4.22.*",
+    "twbs/bootstrap": "4.6.*",
+    "twbs/bootstrap-icons": "1.8.*",
     "phpunit/phpunit": "9.*"
   },
   "license": "GPL-2.0-only"
