@@ -113,6 +113,15 @@ update_composer_json() {
     echo "Updated $file_path to version $new_version"
 }
 
+function update_upgrade_matrix() {
+    local NEW_VERSION="$1"
+    local file_path="install/sql/upgrade_matrix.php"
+
+    # Using sed to replace the version
+    sed -i "3s/\$PROGRAM_VERSION = '.*';/\$PROGRAM_VERSION = '$NEW_VERSION';/" "$file_path"
+    echo "Updated $file_path to version $new_version"
+}
+
 # Main logic
 if [ "$#" -eq 0 ]; then
     # No arguments provided, bump the version
@@ -133,7 +142,9 @@ done
 update_config_php "$new_version"
 update_docker_yml "$new_version"
 update_upgrading_html "$new_version"
-#update_composer_json "$new_version"
+update_composer_json "$new_version"
+update_upgrade_matrix "$new_version"
 
-echo "Updated to version $new_version"
+echo ""
+echo "Files updated to version $new_version"
 
