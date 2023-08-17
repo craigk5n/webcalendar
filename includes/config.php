@@ -161,9 +161,9 @@ function do_config()
   ];
 
   // When changing PROGRAM VERSION, also change it in install/default_config.php
-  $PROGRAM_VERSION = 'v1.9.3';
+  $PROGRAM_VERSION = 'v1.9.5';
   // Update PROGRAM_DATE with official release data
-  $PROGRAM_DATE = '15 Aug 2023';
+  $PROGRAM_DATE = '17 Aug 2023';
 
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://k5n.us/wp/webcalendar/';
@@ -307,28 +307,39 @@ function do_config()
 
   // Check the current installation version.
   // Redirect user to install page if it is different from stored value.
-  // This will prevent running WebCalendar until UPGRADING.html has been
-  // read and required upgrade actions completed.
+  // This will prevent running WebCalendar the database is updated
+  // (typically through the web-based install pages).
   $c = @dbi_connect($db_host, $db_login, $db_password, $db_database, false);
 
   if ($c) {
     $rows = dbi_get_cached_rows('SELECT cal_value FROM webcal_config
       WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'');
 
-    if (!$rows) {
-      header($locateStr . 'UNKNOWN');
+    //echo "<pre>"; print_r($rows); echo "</pre>"; exit;
+    if (!$rows || empty($rows) || empty($rows[0])) {
+      header($locateStr . 'UNKNOWN&reason=missing');
       exit;
     } else {
-      $row = $rows[0];
-
-      if (empty($row) || $row[0] != $PROGRAM_VERSION) {
-        header($locateStr . '' . (empty($row) ? 'UNKNOWN' : $row[0]));
-        exit;
+      $versionInDb = $rows[0][0];
+      if ($versionInDb != $PROGRAM_VERSION) {
+        // New version has been installed on filesystem but db says it is an
+        // older version.  See if we can just bump up the version in the db
+        // (only an option when there are no database schema changes between
+        // the version and the new version.)
+        if (upgrade_requires_db_changes($db_type, $versionInDb, $PROGRAM_VERSION)) {
+          header($locateStr . $versionInDb);
+          exit;
+        } else {
+          // We can just update the version in the database and move on.
+          if (!update_webcalendar_version_in_db($versionInDb, $PROGRAM_VERSION)) {
+            die_miserable_death("Unable to update version in database");
+          }
+        }
       }
     }
     dbi_close($c);
   } else {
-    // Must mean we don't have a settings.php file.
+    // Must mean we don't have a settings.php file or env variables.
     header($locateStr . 'UNKNOWN');
     exit;
   }

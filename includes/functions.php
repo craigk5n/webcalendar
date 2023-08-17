@@ -59,9 +59,9 @@ function activate_urls( $text ) {
  *
  * The information will be saved to the webcal_entry_log table.
  *
- * @param int    $event_id  Event ID
- * @param string $user      Username of user doing this
- * @param string $user_cal  Username of user whose calendar is affected
+ * @param int    $event_id  Event ID or 0 if not related to an event
+ * @param string $user      Username of user doing this (or 'system' if not done by a user)
+ * @param string $user_cal  Username of user whose calendar is affected (or blank)
  * @param string $type      Type of activity we are logging:
  *   - LOG_APPROVE
  *   - LOG_APPROVE_T
@@ -83,6 +83,8 @@ function activate_urls( $text ) {
  *   - LOG_USER_ADD
  *   - LOG_USER_DELETE
  *   - LOG_USER_UPDATE
+ *   - SECURITY_VIOLATION
+ *   - LOG_SYSTEM
  * @param string $text     Text comment to add with activity log entry
  */
 function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
@@ -980,6 +982,8 @@ function display_activity_log( $cal_type, $cal_text = '', $break = '<br>&nbsp;' 
     $ret = translate ( 'Delete User' );
   elseif ( $cal_type == LOG_USER_UPDATE )
     $ret = translate ( 'Edit User' );
+  elseif ( $cal_type == LOG_SYSTEM )
+    $ret = translate ( 'System Message' );
   else
     $ret = '???';
   //fix any broken special characters
@@ -6469,4 +6473,66 @@ function sendCookie($name, $value, $expiration=0, $path='', $sensitive=true) {
   SetCookie ( $name, $value, $expiration, $path, $domain, $secure, $httpOnly);
 }
 
+function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
+  // File path
+  if ($db_type == 'mysqli')
+    $db_type = 'mysql';
+  $file_path = __DIR__ . "/../install/sql/upgrade-$db_type.sql";
+  if (!file_exists($file_path)) {
+    // For example, we don't have one for SQLite yet.  Check the mysql file as a fallback.
+    $file_path = __DIR__ . "/../install/sql/upgrade-mysql.sql";
+  }
+
+  // Check if the file exists
+  if (!file_exists($file_path)) {
+    throw new Exception("The SQL file for $db_type does not exist.");
+  }
+
+  // Get the file content
+  $content = file_get_contents($file_path);
+
+  // Extract all versions from the file
+  preg_match_all('/\/\*upgrade_(v[\d\.]+)\*\//', $content, $matches);
+  $versions = $matches[1] ?? [];
+
+  $check = false; // Flag to start checking for SQL commands
+  foreach ($versions as $version) {
+    if ($version === $old_version) {
+      $check = true; // Start checking from the next version
+      continue;
+    }
+    if ($check) {
+      // Get the SQL content between this version and the next
+      $start_pos = strpos($content, "/*upgrade_$version*/");
+      $next_version_key = array_search($version, $versions) + 1;
+      $end_pos = isset($versions[$next_version_key]) ? strpos($content, "/*upgrade_" . $versions[$next_version_key] . "*/") : strlen($content);
+      $sql_content = trim(substr($content, $start_pos, $end_pos - $start_pos));
+
+      // Check if there's more than just the comment (meaning there are SQL commands)
+      if (strlen($sql_content) > strlen("/*upgrade_$version*/")) {
+        return true; // Found SQL changes
+      }
+
+      // If we reached the new_version, stop checking
+      if ($version === $new_version) {
+        break;
+      }
+    }
+  }
+  return false; // No SQL changes found
+}
+
+function update_webcalendar_version_in_db($old_version, $new_version) {
+  global $user;
+  if (!dbi_execute('UPDATE webcal_config SET cal_value = ? WHERE cal_setting = ?',
+    [$new_version, 'WEBCAL_PROGRAM_VERSION'])) {
+    return false;
+  } else {
+    // Also log it in the db
+    $type = defined('LOG_SYSTEM') ? LOG_SYSTEM : 'Y';
+    activity_log(0, 'system', $user, $type, "WebCalendar has been updated from " . $old_version .
+      " to " . $new_version);
+    return true;
+  }
+}
 ?>

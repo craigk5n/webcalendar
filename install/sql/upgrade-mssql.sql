@@ -298,4 +298,4 @@ CREATE INDEX
 CREATE INDEX
   webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
 ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);
-/*upgrade_v1.9.3*/
+/*upgrade_v1.9.5*/

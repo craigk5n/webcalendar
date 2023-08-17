@@ -1,10 +1,8 @@
 <?php
 
-
 use PHPUnit\Framework\TestCase;
 
-include "includes/functions.php";
-
+require_once __DIR__ . "/../includes/functions.php";
 
 /**
  * Unit tests for includes/functions.php
@@ -191,6 +189,10 @@ final class FunctionsTest extends TestCase
     $this->assertEquals ('#c0c0c0', rgb2html (192, 192, 192));
     $this->assertEquals ('#ff0000', rgb2html (255, 0, 0));
   }
-  
+
+  function test_upgrade_requires_db_changes() {
+    $this->assertTrue(upgrade_requires_db_changes('mysql', 'v1.3.0', 'v1.9.1'));
+    $this->assertFalse(upgrade_requires_db_changes('mysql', 'v1.9.0', 'v1.9.3'));
+  }  
 
 }
