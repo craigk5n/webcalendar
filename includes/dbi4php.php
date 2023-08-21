@@ -929,5 +929,3 @@ function dbi_clear_cache() {
 
   return $cnt;
 }
-
-?>

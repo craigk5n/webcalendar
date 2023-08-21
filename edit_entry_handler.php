@@ -69,9 +69,10 @@ $user     = getPostValue( 'user' );
 $parent = getPostValue( 'parent' );
 $old_id = ( empty( $parent ) ? $old_id : $parent );
 
-// Not sure which of these to keep.
-$participants = getPostValue( 'participants' );
 $participants = getPostValue( 'selectedPart' );
+if (!is_array($participants)) {
+  $participants = [];
+}
 
 $byday          = getPostValue( 'byday' );
 $bydayAll       = getPostValue( 'bydayAll' );
@@ -443,6 +444,8 @@ if( empty( $participants[0] ) ) {
 }
 
 if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
+  if (empty($bydayAll) || ! is_array($bydayAll))
+    $bydayAll = [];
   // Process only if Expert Mode or Weekly.
   if( $rpt_type == 'weekly' || ! empty( $rptmode ) ) {
     $bydayAr = explode( ',', $bydayList );
@@ -503,7 +506,9 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
   if( $rpt_type == 'monthlyByDay' && empty( $rptmode ) && empty( $byday ) )
     $byday = ceil( $day / 7 ) . $byday_names[ date( 'w', $eventstart ) ];
 
-  $bymonth = ( empty( $bymonth ) ? '' : implode( ',', $bymonth ) );
+  if (empty($bymonth) || ! is_array($bymonth))
+    $bymonth = [];
+  $bymonth = (empty($bymonth) ? '' : implode(',', $bymonth));
 
   if( ! empty( $rpt_end_use ) ) {
     $rpt_hour += $rpt_ampm;
@@ -514,7 +519,7 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
   $exception_list =
   $inclusion_list = array();
 
-  if( empty( $exceptions ) )
+  if(empty( $exceptions ) || !is_array($exceptions))
     $exceptions = array();
   else {
     foreach( $exceptions as $i ) {
@@ -773,8 +778,10 @@ if( empty( $error ) ) {
           || $extra_type == EXTRA_URL
           || $extra_type == EXTRA_USER ) {
         // We were passed an array instead of a string.
-        if( $extra_type == EXTRA_SELECTLIST && $extra_arg2 > 0 )
+        if( $extra_type == EXTRA_SELECTLIST && $extra_arg2 > 0 && is_array($value))
           $value = implode( ',', $value );
+        else
+          $value = '';
 
         $sql = 'INSERT INTO webcal_site_extras ( cal_id, cal_name, cal_type,
           cal_data ) VALUES ( ?, ?, ?, ? )';

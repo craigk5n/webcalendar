@@ -904,7 +904,6 @@ echo '
 // So, we will include it here instead.
 ?>
 <script>
-<!-- <![CDATA[
 function showComments() {
 var x = document.getElementById ( "comtext" )
 if ( x ) {
@@ -934,7 +933,6 @@ x.style.display = "none";
 }
 }
 hideComments();
-//]]> -->
 </script>
 <?php
 }

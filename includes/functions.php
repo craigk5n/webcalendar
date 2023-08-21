@@ -3403,7 +3403,7 @@ if( version_compare( phpversion(), '5.0' ) < 0 ) {
  * @param bool $display  if true, will create a displayable string
  *
  * @return string $str       string to display Reminder value.
- * @return array  $reminder
+ * @return array/string  $reminder
  */
 function getReminders ( $id, $display = false ) {
   $reminder = [];

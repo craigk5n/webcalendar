@@ -332,9 +332,9 @@ else if (!empty($id) && $id > 0) {
 
   // Get reminders.
   $reminder = getReminders($id);
-  $reminder_offset = (empty($reminder) ? 0 : $reminder['offset']);
+  $reminder_offset = empty($reminder) ? 0 : $reminder['offset'];
 
-  $rem_status = (count($reminder));
+  $rem_status = is_array($reminder) ? (count($reminder)) : 0;
   $rem_use_date = (!empty($reminder['date']));
 
   // Get participants.

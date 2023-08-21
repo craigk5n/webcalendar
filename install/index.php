@@ -961,7 +961,7 @@ echo '<!DOCTYPE html>
   '<div class="container-fluid">';
 
 if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
-  $class = ( version_compare( phpversion(), '7.1.0', '>=' ) ? '' : 'not' )
+  $class = ( version_compare( phpversion(), '7.4.0', '>=' ) ? '' : 'not' )
    . 'recommended';
   echo '
     <table border="1" width="100%" class="aligncenter">
@@ -995,7 +995,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       </tr>
       <tr>
         <td>'
-   . translate( 'Check to see if PHP 7.1.0 or greater is installed.' ) . '</td>
+   . translate( 'Check to see if PHP 7.4.0 or greater is installed.' ) . '</td>
         <td class="' . $class . '">' . ( $class == 'recommended'
     ? $setting_correct_img : $setting_wrong_img ) . '&nbsp;'
    . translate( 'PHP version' ) . ' ' . phpversion() . '</td>
