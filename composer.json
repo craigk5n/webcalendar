@@ -16,7 +16,7 @@
     "phpmailer/phpmailer": "6.8.*",
     "components/jquery": "3.5.*",
     "ckeditor/ckeditor": "4.22.*",
-    "twbs/bootstrap": "4.6.*",
+    "twbs/bootstrap": "5.3.*",
     "twbs/bootstrap-icons": "1.8.*",
     "phpunit/phpunit": "9.3"
   },
