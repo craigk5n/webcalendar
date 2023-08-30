@@ -1,6 +1,6 @@
 <?php
 //Program Version for this release
-$PROGRAM_VERSION = 'v1.9.1';
+$PROGRAM_VERSION = 'v1.9.6';
 
 //array element[0] = sql insertion testy
 //array element[1] = sql delete to clean up
@@ -83,6 +83,12 @@ $database_upgrade_matrix = [
   // Upgrade from 1.3.0 -> 1.9.0
   ['INSERT INTO webcal_import (cal_import_id, cal_md5, cal_date, cal_type) VALUES (999999, "XXX", 1, "X")',
    'DELETE FROM webcal_import WHERE cal_import_id = 999999',
+   'v1.3.0', 'upgrade_v1.9.0'],
+  // Upgrade from 1.9.0 -> 1.9.6
+  // Check to see if we can set cat_owner to NULL in webcal_entry_categories
+  // Should get MySQL error: Column 'cat_owner' cannot be null
+  ['INSERT INTO webcal_entry_categories (cal_id, cat_id, cat_order, cat_owner) VALUES (999999, 1, -1, NULL)',
+   'DELETE FROM webcal_entry_categories WHERE cal_id = 999999 AND cat_order = -1',
    'v1.3.0', 'upgrade_v1.9.0'],
 //don't change this array element
   ['','', $PROGRAM_VERSION, '']

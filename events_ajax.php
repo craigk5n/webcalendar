@@ -31,10 +31,10 @@ require_once 'includes/ajax.php';
 require_once 'includes/validate.php';
 
 // Load Doc classes for attachments and comments
-require_once 'includes/classes/AttachmentList.php';
-require_once 'includes/classes/CommentList.php';
 require_once 'includes/classes/Doc.php';
 require_once 'includes/classes/DocList.php';
+require_once 'includes/classes/CommentList.php';
+require_once 'includes/classes/AttachmentList.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -405,7 +405,7 @@ function load_category_ids ( $ids )
   FROM webcal_entry_categories
   WHERE cal_id IN ( ' . $idList . ' )
     AND ( cat_owner = "' . $user . '"
-      OR cat_owner IS NULL )
+      OR cat_owner = "" )
   ORDER BY cat_order';
   if ( $debug )
     echo "SQL: $sql<br>";

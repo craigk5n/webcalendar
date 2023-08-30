@@ -190,7 +190,7 @@ function print_upcoming_event ( $e, $date ) {
        . ( empty( $link_target ) ? '>' : "\" target=\"$link_target\">" );
     if ( empty ( $UPCOMING_DISPLAY_CAT_ICONS ) ||
       $UPCOMING_DISPLAY_CAT_ICONS != 'N' ) {
-      $catNum = abs ( $e->getCategory() );
+      $catNum = abs (intval($e->getCategory()));
       if ( $catNum > 0 ) {
         $catIcon = 'wc-icons/cat-' . $catNum . '.gif';
         if ( ! file_exists ( $catIcon ) )
