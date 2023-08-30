@@ -6491,34 +6491,17 @@ function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
   // Get the file content
   $content = file_get_contents($file_path);
 
-  // Extract all versions from the file
-  preg_match_all('/\/\*upgrade_(v[\d\.]+)\*\//', $content, $matches);
-  $versions = $matches[1] ?? [];
+  // Get the SQL content between this version and the next
+  $start_token = "/*upgrade_$old_version*/";
+  $start_pos = strpos($content, "$start_token") + strlen($start_token);
+  $end_token = "/*upgrade_$new_version*/";
+  $end_pos = strpos($content, "$end_token");
+  $sql_content = trim(substr($content, $start_pos, $end_pos - $start_pos));
 
-  $check = false; // Flag to start checking for SQL commands
-  foreach ($versions as $version) {
-    if ($version === $old_version) {
-      $check = true; // Start checking from the next version
-      continue;
-    }
-    if ($check) {
-      // Get the SQL content between this version and the next
-      $start_pos = strpos($content, "/*upgrade_$version*/");
-      $next_version_key = array_search($version, $versions) + 1;
-      $end_pos = isset($versions[$next_version_key]) ? strpos($content, "/*upgrade_" . $versions[$next_version_key] . "*/") : strlen($content);
-      $sql_content = trim(substr($content, $start_pos, $end_pos - $start_pos));
-
-      // Check if there's more than just the comment (meaning there are SQL commands)
-      if (strlen($sql_content) > strlen("/*upgrade_$version*/")) {
-        return true; // Found SQL changes
-      }
-
-      // If we reached the new_version, stop checking
-      if ($version === $new_version) {
-        break;
-      }
-    }
-  }
+  // Check if there's more than just the comment (meaning there are SQL commands)
+  if (strlen($sql_content) > 10) {
+    return true; // Found SQL changes
+  };
   return false; // No SQL changes found
 }
 
