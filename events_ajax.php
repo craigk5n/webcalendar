@@ -405,7 +405,7 @@ function load_category_ids ( $ids )
   FROM webcal_entry_categories
   WHERE cal_id IN ( ' . $idList . ' )
     AND ( cat_owner = "' . $user . '"
-      OR cat_owner IS NULL )
+      OR cat_owner = "" )
   ORDER BY cat_order';
   if ( $debug )
     echo "SQL: $sql<br>";

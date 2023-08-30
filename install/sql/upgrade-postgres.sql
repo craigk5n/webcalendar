@@ -314,3 +314,6 @@ CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type);
 CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
 ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);
 /*upgrade_v1.9.5*/
+update webcal_entry_categories SET cat_owner = '' WHERE cat_owner IS NULL;
+ALTER TABLE webcal_entry_categories ADD PRIMARY KEY (cal_id, cat_id, cat_order, cat_owner);
+/*upgrade_v1.9.6*/

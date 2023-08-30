@@ -714,7 +714,7 @@ if( empty( $error ) ) {
   $cat_owner = ( ( ! empty( $user ) && strlen( $user ) )
       && ( $is_assistant || $is_admin ) ? $user : $login );
   dbi_execute( 'DELETE FROM webcal_entry_categories WHERE cal_id = ?
-    AND ( cat_owner = ? OR cat_owner IS NULL )', array( $id, $cat_owner ) );
+    AND ( cat_owner = ? OR cat_owner = "" )', array( $id, $cat_owner ) );
 
   if( ! empty( $cat_id ) ) {
     $categories = explode( ',', $cat_id );
@@ -725,14 +725,9 @@ if( empty( $error ) ) {
       $names  = array( 'cal_id', 'cat_id' );
       $values = array( $id, abs( $i ) );
 
-      // We set cat_id negative in form if global.
-      if( $i > 0 ) {
-        $names[]  = 'cat_owner';
-        $values[] = $cat_owner;
-
-        $values[] = $j;
-      } else
-        $values[] = 99; // Force global categories to the end of lists.
+      $names[]  = 'cat_owner';
+      $values[] = $cat_owner;
+      $values[] = $j;
 
       $names[] = 'cat_order';
 
