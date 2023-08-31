@@ -53,7 +53,7 @@ function view_init ( $view_id )
   * @param int $view_id id of the view
   * @return the array of valid users
   */
-function view_get_user_list ( $view_id ) {
+function view_get_user_list ( $view_id ): array {
   global $error, $is_admin, $login, $NONUSER_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
 
   // get users in this view

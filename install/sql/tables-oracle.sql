@@ -240,7 +240,8 @@ CREATE TABLE webcal_entry_categories (
   cal_id INT DEFAULT 0 NOT NULL,
   cat_id INT DEFAULT 0 NOT NULL,
   cat_order INT DEFAULT 0 NOT NULL,
-  cat_owner VARCHAR2(25) NULL
+  cat_owner VARCHAR2(25) NOT NULL,
+  PRIMARY KEY ( cal_id, cat_id, cat_order, cat_owner )
 );
 CREATE TABLE webcal_blob (
   cal_blob_id INT NOT NULL,

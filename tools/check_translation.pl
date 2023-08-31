@@ -1,5 +1,4 @@
 #!/usr/bin/perl
-/**
 # This tool helps with the translation into other languages by indicating
 # whether all text specified in translate() and tooltip() within the application
 # has a corresponding entry in the translation data file.

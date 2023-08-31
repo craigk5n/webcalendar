@@ -5,6 +5,14 @@ ple     Description
 te?
 --- -------------------------------------
 
+[ ] Allow support for multiple containers running WebCalendar:
+  [ ] Move category icons off the file system and into the database
+  [ ] Add command line installer
+  [ ] Add support for Redis instead of local file caching
+[ ] Automate creation in AWS
+  [ ] Add terraform for running in ECS/Fargate
+  [ ] Add ALB
+  [ ] Add CloudFront
 [ ] JavaScript code scanning on Github.
     CodeQL support javascript:
     https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning

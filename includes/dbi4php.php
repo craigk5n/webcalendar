@@ -152,6 +152,7 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
     } else
       return false;
   } elseif( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
+    #mysqli_report(MYSQLI_REPORT_ALL);
     $c  = new mysqli( $host, $login, $password, $database );
 
     if( $c ) {
@@ -379,7 +380,14 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
     $res = mysql_query( $sql, $db_connection_info['connection'] );
   } elseif( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
     $found_db_type = true;
-    $res = $GLOBALS['db_connection']->query( $sql );
+    try {
+      $res = $GLOBALS['db_connection']->query( $sql );
+    } catch (Exception $e) {
+      $res = false;
+      // Log error
+      //echo "Error: " . $e->getMessage() . "<br>";
+      //error_log($e->getMessage());
+    }
   } elseif( strcmp( $GLOBALS['db_type'], 'odbc' ) == 0 ) {
     return odbc_exec( $GLOBALS['odbc_connection'], $sql );
   } elseif( strcmp( $GLOBALS['db_type'], 'oracle' ) == 0 ) {
@@ -921,5 +929,3 @@ function dbi_clear_cache() {
 
   return $cnt;
 }
-
-?>
