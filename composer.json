@@ -18,7 +18,7 @@
     "ckeditor/ckeditor": "4.22.*",
     "twbs/bootstrap": "4.6.*",
     "twbs/bootstrap-icons": "1.8.*",
-    "phpunit/phpunit": "9.3"
+    "phpunit/phpunit": "9.6.11"
   },
   "license": "GPL-2.0-only"
 }
