@@ -69,9 +69,10 @@ $user     = getPostValue( 'user' );
 $parent = getPostValue( 'parent' );
 $old_id = ( empty( $parent ) ? $old_id : $parent );
 
-// Not sure which of these to keep.
-$participants = getPostValue( 'participants' );
 $participants = getPostValue( 'selectedPart' );
+if (!is_array($participants)) {
+  $participants = [];
+}
 
 $byday          = getPostValue( 'byday' );
 $bydayAll       = getPostValue( 'bydayAll' );
@@ -87,7 +88,7 @@ $byyearday      = getPostValue( 'byyearday' );
 $cat_id           = getValue ( 'cat_id', '-?[0-9,\-]*', true );
 $completed_hour   = getPostValue( 'completed_hour' );
 $completed_minute = getPostValue( 'completed_minute' );
-$ymd = getPostValue('completed_YMD');
+$ymd = getPostValue('completed_YMD', '');
 $parsed = date_parse($ymd);
 $completed_day   = $parsed['day'];
 $completed_month = $parsed['month'];
@@ -97,7 +98,7 @@ $description      = getPostValue( 'description', '', 'XSS' );
 $due_ampm   = getPostValue( 'due_ampm' );
 $due_hour   = getPostValue( 'due_hour' );
 $due_minute = getPostValue( 'due_minute' );
-$ymd = getPostValue('due__YMD');
+$ymd = getPostValue('due__YMD', '');
 $parsed = date_parse($ymd);
 $due_day   = $parsed['day'];
 $due_month = $parsed['month'];
@@ -131,7 +132,7 @@ $reminder_ampm   = getPostValue( 'reminder_ampm' );
 $reminder_hour   = getPostValue( 'reminder_hour' );
 $reminder_minute = getPostValue( 'reminder_minute' );
 $reminder_type   = getPostValue( 'reminder_type' );
-$ymd = getPostValue('reminder__YMD');
+$ymd = getPostValue('reminder__YMD', '');
 $parsed = date_parse($ymd);
 $reminder_day   = $parsed['day'];
 $reminder_month = $parsed['month'];
@@ -145,7 +146,7 @@ $rpt_hour    = getPostValue( 'rpt_hour' );
 $rpt_minute  = getPostValue( 'rpt_minute' );
 $rpt_type    = getPostValue( 'rpt_type' );
 $rptmode     = getPostValue( 'rptmode' );
-$ymd = getPostValue('rpt__YMD');
+$ymd = getPostValue('rpt__YMD', '');
 $parsed = date_parse($ymd);
 $rpt_day   = $parsed['day'];
 $rpt_month = $parsed['month'];
@@ -443,6 +444,8 @@ if( empty( $participants[0] ) ) {
 }
 
 if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
+  if (empty($bydayAll) || ! is_array($bydayAll))
+    $bydayAll = [];
   // Process only if Expert Mode or Weekly.
   if( $rpt_type == 'weekly' || ! empty( $rptmode ) ) {
     $bydayAr = explode( ',', $bydayList );
@@ -503,7 +506,9 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
   if( $rpt_type == 'monthlyByDay' && empty( $rptmode ) && empty( $byday ) )
     $byday = ceil( $day / 7 ) . $byday_names[ date( 'w', $eventstart ) ];
 
-  $bymonth = ( empty( $bymonth ) ? '' : implode( ',', $bymonth ) );
+  if (empty($bymonth) || ! is_array($bymonth))
+    $bymonth = [];
+  $bymonth = (empty($bymonth) ? '' : implode(',', $bymonth));
 
   if( ! empty( $rpt_end_use ) ) {
     $rpt_hour += $rpt_ampm;
@@ -514,7 +519,7 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
   $exception_list =
   $inclusion_list = array();
 
-  if( empty( $exceptions ) )
+  if(empty( $exceptions ) || !is_array($exceptions))
     $exceptions = array();
   else {
     foreach( $exceptions as $i ) {
@@ -709,7 +714,7 @@ if( empty( $error ) ) {
   $cat_owner = ( ( ! empty( $user ) && strlen( $user ) )
       && ( $is_assistant || $is_admin ) ? $user : $login );
   dbi_execute( 'DELETE FROM webcal_entry_categories WHERE cal_id = ?
-    AND ( cat_owner = ? OR cat_owner IS NULL )', array( $id, $cat_owner ) );
+    AND ( cat_owner = ? OR cat_owner = "" )', array( $id, $cat_owner ) );
 
   if( ! empty( $cat_id ) ) {
     $categories = explode( ',', $cat_id );
@@ -720,14 +725,9 @@ if( empty( $error ) ) {
       $names  = array( 'cal_id', 'cat_id' );
       $values = array( $id, abs( $i ) );
 
-      // We set cat_id negative in form if global.
-      if( $i > 0 ) {
-        $names[]  = 'cat_owner';
-        $values[] = $cat_owner;
-
-        $values[] = $j;
-      } else
-        $values[] = 99; // Force global categories to the end of lists.
+      $names[]  = 'cat_owner';
+      $values[] = $cat_owner;
+      $values[] = $j;
 
       $names[] = 'cat_order';
 
@@ -773,8 +773,10 @@ if( empty( $error ) ) {
           || $extra_type == EXTRA_URL
           || $extra_type == EXTRA_USER ) {
         // We were passed an array instead of a string.
-        if( $extra_type == EXTRA_SELECTLIST && $extra_arg2 > 0 )
+        if( $extra_type == EXTRA_SELECTLIST && $extra_arg2 > 0 && is_array($value))
           $value = implode( ',', $value );
+        else
+          $value = '';
 
         $sql = 'INSERT INTO webcal_site_extras ( cal_id, cal_name, cal_type,
           cal_data ) VALUES ( ?, ?, ?, ? )';

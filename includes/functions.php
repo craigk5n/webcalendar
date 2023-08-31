@@ -59,9 +59,9 @@ function activate_urls( $text ) {
  *
  * The information will be saved to the webcal_entry_log table.
  *
- * @param int    $event_id  Event ID
- * @param string $user      Username of user doing this
- * @param string $user_cal  Username of user whose calendar is affected
+ * @param int    $event_id  Event ID or 0 if not related to an event
+ * @param string $user      Username of user doing this (or 'system' if not done by a user)
+ * @param string $user_cal  Username of user whose calendar is affected (or blank)
  * @param string $type      Type of activity we are logging:
  *   - LOG_APPROVE
  *   - LOG_APPROVE_T
@@ -83,6 +83,8 @@ function activate_urls( $text ) {
  *   - LOG_USER_ADD
  *   - LOG_USER_DELETE
  *   - LOG_USER_UPDATE
+ *   - SECURITY_VIOLATION
+ *   - LOG_SYSTEM
  * @param string $text     Text comment to add with activity log entry
  */
 function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
@@ -292,7 +294,7 @@ function calc_time_slot ( $time, $round_down = false ) {
  */
 function check_for_conflicts ( $dates, $duration, $eventstart,
   $participants, $login, $id ) {
-  global $jumpdate, $LIMIT_APPTS_NUMBER, $LIMIT_APPTS,
+  global $is_assistant, $is_nonuser_admin, $jumpdate, $LIMIT_APPTS_NUMBER, $LIMIT_APPTS,
   $repeated_events, $single_user_login, $single_user;
 
   $datecnt = count ( $dates );
@@ -868,7 +870,9 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
   $y = intval ( $indate / 10000 );
   $m = intval ( $indate / 100 ) % 100;
   $d = $indate % 100;
-  $wday = strftime ( "%w", mktime ( 0, 0, 0, $m, $d, $y ) );
+  $dateTime = new DateTime(); 
+  $dateTime->setDate($y, $m, $d);
+  $wday = $dateTime->format('w');
   if ( $short_months ) {
     $month = month_name ( $m - 1, 'M' );
     $weekday = weekday_name ( $wday, 'D' );
@@ -886,7 +890,7 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
   $ret = str_replace ( '__yy__', sprintf ( "%02d", $y % 100 ), $ret );
 
   return ( $show_weekday
-    ? weekday_name ( strftime ( '%w', mktime ( 0, 0, 0, $m, $d, $y ) ),
+    ? weekday_name ( date('w', mktime(0, 0, 0, $m, $d, $y)),
       ( $short_months ? 'D' : '' ) ) . ', '
     : '' ) . str_replace ( '__yyyy__', $y, $ret );
 }
@@ -978,6 +982,8 @@ function display_activity_log( $cal_type, $cal_text = '', $break = '<br>&nbsp;' 
     $ret = translate ( 'Delete User' );
   elseif ( $cal_type == LOG_USER_UPDATE )
     $ret = translate ( 'Edit User' );
+  elseif ( $cal_type == LOG_SYSTEM )
+    $ret = translate ( 'System Message' );
   else
     $ret = '???';
   //fix any broken special characters
@@ -1549,7 +1555,7 @@ function display_time ( $time = '', $control = 0, $timestamp = '',
     }
   }
   $hour = intval ( $time / 10000 );
-  $min = abs ( ( $time / 100 ) % 100 );
+  $min = abs ( intval( $time / 100 ) % 100 );
 
   // Prevent goofy times like 8:00 9:30 9:00 10:30 10:00.
   if ( $time < 0 && $min > 0 )
@@ -3397,7 +3403,7 @@ if( version_compare( phpversion(), '5.0' ) < 0 ) {
  * @param bool $display  if true, will create a displayable string
  *
  * @return string $str       string to display Reminder value.
- * @return array  $reminder
+ * @return array/string  $reminder
  */
 function getReminders ( $id, $display = false ) {
   $reminder = [];
@@ -3956,14 +3962,19 @@ function is_weekend ( $date ) {
  *
  * @ignore
  */
-function isLeapYear ( $year = '' ) {
-  if ( empty ( $year ) )
-    $year = strftime( '%Y', time() );
+function isLeapYear(int $year = null): bool {
+  // If no year is provided, use the current year
+  if ($year === null) {
+      $year = (int) date('Y');
+  }
 
-  if ( strlen ( $year ) != 4 || preg_match ( '/\D/', $year ) )
-    return false;
+  // Check if the year is 4 characters and numeric
+  if (strlen((string) $year) != 4 || !is_numeric($year)) {
+      return false;
+  }
 
-  return ( ( $year % 4 == 0 && $year % 100 != 0 ) || $year % 400 == 0 );
+  // Leap year check
+  return ($year % 4 == 0 && $year % 100 != 0) || $year % 400 == 0;
 }
 
 /**
@@ -6462,4 +6473,49 @@ function sendCookie($name, $value, $expiration=0, $path='', $sensitive=true) {
   SetCookie ( $name, $value, $expiration, $path, $domain, $secure, $httpOnly);
 }
 
+function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
+  // File path
+  if ($db_type == 'mysqli')
+    $db_type = 'mysql';
+  $file_path = __DIR__ . "/../install/sql/upgrade-$db_type.sql";
+  if (!file_exists($file_path)) {
+    // For example, we don't have one for SQLite yet.  Check the mysql file as a fallback.
+    $file_path = __DIR__ . "/../install/sql/upgrade-mysql.sql";
+  }
+
+  // Check if the file exists
+  if (!file_exists($file_path)) {
+    throw new Exception("The SQL file for $db_type does not exist.");
+  }
+
+  // Get the file content
+  $content = file_get_contents($file_path);
+
+  // Get the SQL content between this version and the next
+  $start_token = "/*upgrade_$old_version*/";
+  $start_pos = strpos($content, "$start_token") + strlen($start_token);
+  $end_token = "/*upgrade_$new_version*/";
+  $end_pos = strpos($content, "$end_token");
+  $sql_content = trim(substr($content, $start_pos, $end_pos - $start_pos));
+
+  // Check if there's more than just the comment (meaning there are SQL commands)
+  if (strlen($sql_content) > 10) {
+    return true; // Found SQL changes
+  };
+  return false; // No SQL changes found
+}
+
+function update_webcalendar_version_in_db($old_version, $new_version) {
+  global $user;
+  if (!dbi_execute('UPDATE webcal_config SET cal_value = ? WHERE cal_setting = ?',
+    [$new_version, 'WEBCAL_PROGRAM_VERSION'])) {
+    return false;
+  } else {
+    // Also log it in the db
+    $type = defined('LOG_SYSTEM') ? LOG_SYSTEM : 'Y';
+    activity_log(0, 'system', $user, $type, "WebCalendar has been updated from " . $old_version .
+      " to " . $new_version);
+    return true;
+  }
+}
 ?>

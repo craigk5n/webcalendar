@@ -54,44 +54,49 @@ function unhtmlentities ( $string ) {
  *                          It may cause problems with Japanese translations.
  */
 
-function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
+function read_trans_file ( $in_file, $out_file = '', $strip = true ): array {
   global $can_save, $new_install, $translations;
 
   // Prevent directory traversal attack CWE-23
   $basename = basename($in_file);
   // Now let's see if the file really exists
-  $path_to_folder = dirname(__FILE__) . '/../translations/';
-  $files_in_folder = @scandir($path_to_folder);
+  $path_to_folder = __DIR__ . '/../translations/';
+  $files_in_folder = scandir($path_to_folder);
   if (!in_array($basename, $files_in_folder)) {
     die_miserable_death('Invalid Request');
   }
 
-  $f = dirname(__FILE__) . "/../translations/" . $basename;
-  $fp = fopen ($f, 'r', false);
+  // Open translations file
+  $fp = fopen($path_to_folder . $basename, 'r');
   if ( ! $fp )
     die_miserable_death ( 'Could not open language file: ' . $f );
 
+  $translations = [];
   $inInstallTrans = false;
   $installationTranslations = [];
 
-  while ( ! feof ( $fp ) ) {
-    $buffer = trim ( fgets ( $fp, 4096 ) );
-    if ( strlen ( $buffer ) == 0 )
-      continue;
+  while (!feof($fp)) {
+    $line = fgets($fp);
+    $line = trim($line);
 
-    if ( function_exists( 'get_magic_quotes_runtime' )
-        && @get_magic_quotes_runtime() && $strip )
-      $buffer = stripslashes ( $buffer );
+    if (empty($line)) {
+      continue;
+    }
+
+    if ($strip) {
+      $line = stripslashes($line); 
+    }
 
     // Convert quotes to entities.
-    $buffer =
-    str_replace ( ['"', "'"], ['&quot;', '&#39;'], $buffer );
+    $line = str_replace ( ['"', "'"], ['&quot;', '&#39;'], $line );
 
-    // Skip comments.
-    if ( substr ( $buffer, 0, 1 ) == '#' ) {
-      if ( substr ( $buffer, 0, 7 ) == '# Page:' )
-        $inInstallTrans = ( substr ( $buffer, 9, 7 ) == 'install' );
-
+    // Skip comments
+    if (substr($line, 0, 1) === '#') {
+      // Check if it's a # Page: comment
+     if (substr($line, 0, 7) === '# Page:') {
+        // Set $inInstallTrans based on whether it's install page
+        $inInstallTrans = stristr(substr($line, 8), 'install') !== false;
+      }
       continue;
     }
 
@@ -99,9 +104,9 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
     if ( $inInstallTrans && ! $new_install )
       continue;
 
-    $pos = strpos ( $buffer, ':' );
-    $abbrev = trim ( substr ( $buffer, 0, $pos ) );
-    $temp = trim ( substr ( $buffer, $pos + 1 ) );
+    $pos = strpos ( $line, ':' );
+    $abbrev = trim ( substr ( $line, 0, $pos ) );
+    $temp = trim ( substr ( $line, $pos + 1 ) );
 
     // If the translation is the same as the English text,
     // tools/update_translation.pl should signify this with an "=" sign
@@ -130,6 +135,7 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
   // but, we still need them in the array if we ARE installing.
   if ( $new_install )
     $translations = array_merge ( $translations, $installationTranslations );
+  return $translations;
 }
 
 /**
@@ -322,7 +328,8 @@ function translation_exists ( $str )
  */
 function translate ( $str, $decode = '', $type = '' ) {
   global $LANGUAGE, $translation_loaded, $translations;
-
+  if (empty($LANGUAGE))
+    return $str;
   if ( ! $translation_loaded )
     load_translation_text();
 

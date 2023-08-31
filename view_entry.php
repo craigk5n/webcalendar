@@ -15,10 +15,10 @@ require_once 'includes/init.php';
 require_once 'includes/xcal.php'; // Only to display recurrance info.
 
 // Load Doc classes for attachments and comments
-require_once 'includes/classes/AttachmentList.php';
-require_once 'includes/classes/CommentList.php';
 require_once 'includes/classes/Doc.php';
 require_once 'includes/classes/DocList.php';
+require_once 'includes/classes/CommentList.php';
+require_once 'includes/classes/AttachmentList.php';
 
 // Make sure this user is allowed to look at this calendar.
 $can_approve = $can_edit = $can_view = false;
@@ -338,7 +338,7 @@ exit;
 }
 // save date so the trailer links are for the same time period
 $thisyear = intval ( $orig_date / 10000 );
-$thismonth = ( $orig_date / 100 ) % 100;
+$thismonth = intval( $orig_date / 100 ) % 100;
 $thisday = $orig_date % 100;
 // $subject is used for mailto URLs.
 $subject = generate_application_name() . ': ' . $name;
@@ -904,7 +904,6 @@ echo '
 // So, we will include it here instead.
 ?>
 <script>
-<!-- <![CDATA[
 function showComments() {
 var x = document.getElementById ( "comtext" )
 if ( x ) {
@@ -934,7 +933,6 @@ x.style.display = "none";
 }
 }
 hideComments();
-//]]> -->
 </script>
 <?php
 }

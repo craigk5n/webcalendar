@@ -286,7 +286,7 @@ class WebCalendar {
    * @access private
    */
   function _initConfig() {
-    do_config ( $this->absolutePath ( 'includes/settings.php' ) );
+    do_config ();
   }
 
   /**
@@ -343,6 +343,7 @@ class WebCalendar {
     define ( 'LOG_USER_DELETE',   'd' );
     define ( 'LOG_USER_UPDATE',   'u' );
     define ( 'SECURITY_VIOLATION','Z' );
+    define ( 'LOG_SYSTEM',        'Y' );
     /**#@-*/
 
     /**

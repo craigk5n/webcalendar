@@ -150,7 +150,7 @@ CREATE TABLE webcal_entry_log (
 );
 CREATE TABLE webcal_categories (
   cat_id INT NOT NULL,
-  cat_owner VARCHAR(25),
+  cat_owner VARCHAR(25) NULL,
   cat_name VARCHAR(80) NOT NULL,
   cat_color VARCHAR(8),
   PRIMARY KEY ( cat_id )
@@ -237,7 +237,8 @@ CREATE TABLE webcal_entry_categories (
   cal_id INT DEFAULT 0 NOT NULL,
   cat_id INT DEFAULT 0 NOT NULL,
   cat_order INT DEFAULT 0 NOT NULL,
-  cat_owner varchar(25)
+  cat_owner varchar(25) DEFAULT '' NOT NULL,
+  PRIMARY KEY ( cal_id, cat_id, cat_order, cat_owner )
 );
 CREATE TABLE webcal_blob (
   cal_blob_id INT NOT NULL,
