@@ -69,7 +69,7 @@ if (empty($error) && !empty($delete)) {
   if (!dbi_execute(
     'DELETE FROM webcal_entry_categories
     WHERE cat_id = ? AND ( cat_owner = ?'
-      . ($is_admin ? ' OR cat_owner IS NULL )' : ' )'),
+      . ($is_admin ? ' OR cat_owner = "" )' : ' )'),
     [$id, $login]
   )) {
     $error = db_error();

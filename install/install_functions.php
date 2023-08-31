@@ -491,11 +491,6 @@ function db_populate ( $install_filename, $display_sql ) {
   $current_pointer = false;
   $full_sql = '';
 
-  if ( function_exists( 'set_magic_quotes_runtime' ) ) {
-    $magic = @get_magic_quotes_runtime();
-    @set_magic_quotes_runtime( 0 );
-  }
-
   $fd = @fopen ( 'sql/' . $install_filename, 'r', true );
 
   // Discard everything up to the required point in the upgrade file.
@@ -522,9 +517,6 @@ function db_populate ( $install_filename, $display_sql ) {
     } else
       $full_sql .= $data;
   }
-
-  if ( isset( $magic ) )
-    @set_magic_quotes_runtime( $magic );
 
   fclose ( $fd );
   $parsed_sql = parse_sql ( $full_sql );

@@ -7,7 +7,7 @@ require_once 'includes/dbi4php.php';
 require_once 'includes/formvars.php';
 require_once 'includes/functions.php';
 
-do_config( 'includes/settings.php' );
+do_config();
 require_once "includes/$user_inc";
 require_once 'includes/access.php';
 require_once 'includes/gradient.php';

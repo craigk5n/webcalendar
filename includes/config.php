@@ -9,9 +9,9 @@
  * To update the WebCalendar version (in order to make a new release or to
  * mark a db change), see the comments in install/index.php.
  *
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @author Craig Knudsen <craig@k5n.us>
+ * @copyright Craig Knudsen, <craig@k5n.us>, https://www.k5n.us/
+ * @license GNU GPL
  * @package WebCalendar
  */
 
@@ -38,14 +38,15 @@ require_once 'load_assets.php';
  * NOTE: Don't call translate from here.
  *       This function is often called before translation stuff is initialized!
  */
-function die_miserable_death( $error, $anchor='' ) {
+function die_miserable_death($error, $anchor = '')
+{
   global $APPLICATION_NAME, $LANGUAGE, $login, $TROUBLE_URL;
 
   // Make sure app name is set.
-  $appStr = ( empty( $APPLICATION_NAME ) ? 'WebCalendar' : $APPLICATION_NAME );
+  $appStr = (empty($APPLICATION_NAME) ? 'WebCalendar' : $APPLICATION_NAME);
   $url = $TROUBLE_URL;
-  if ( ! empty ( $anchor ) ) {
-    $args = explode ( '#', $TROUBLE_URL );
+  if (!empty($anchor)) {
+    $args = explode('#', $TROUBLE_URL);
     $url = $args[0] . '#' . $anchor;
   }
 
@@ -63,14 +64,15 @@ EOT;
   exit;
 }
 
-function db_error( $doExit = false, $sql = '' ) {
+function db_error($doExit = false, $sql = '')
+{
   global $settings;
 
-  $ret = str_replace( 'XXX', dbi_error(), translate( 'Database error XXX.' ) )
-   . ( ! empty( $settings['mode'] ) && $settings['mode'] == 'dev'
-    && ! empty( $sql ) ? '<br>SQL:<br>' . $sql : '' );
+  $ret = str_replace('XXX', dbi_error(), translate('Database error XXX.'))
+    . (!empty($settings['mode']) && $settings['mode'] == 'dev'
+      && !empty($sql) ? '<br />SQL:<br />' . $sql : '');
 
-  if( $doExit ) {
+  if ($doExit) {
     echo $ret;
     exit;
   } else
@@ -80,168 +82,224 @@ function db_error( $doExit = false, $sql = '' ) {
 /**
  * Get the full path to a file located in the webcalendar includes directory.
  */
-function get_full_include_path( $filename ) {
-  if( preg_match( '/(.*)config.php/', __FILE__, $matches ) ) {
+function get_full_include_path($filename)
+{
+  if (preg_match('/(.*)config.php/', __FILE__, $matches)) {
     $fileLoc = $matches[1] . $filename;
     return $fileLoc;
   } else
     // Oops. This file is not named config.php!
-    die_miserable_death( 'Crap! Someone renamed config.php' );
+    die_miserable_death('Crap! Someone renamed config.php');
 }
 
-function do_config( $fileLoc ) {
+/**
+ * Initializes application configurations.
+ * 
+ * The function fetches configuration settings either from environment variables
+ * (when WEBCALENDAR_USE_ENV is set to true) or the settings.php file. It sets up
+ * the database connection based on the obtained settings and ensures the application
+ * is running on the correct version by comparing with the stored database version.
+ * If there's a mismatch, it redirects the user to the installation page. Additionally,
+ * the function also initializes nonuser calendar prefixes and handles single user mode settings.
+ *
+ * Global variables affected:
+ * - $db_database
+ * - $db_host
+ * - $db_login
+ * - $db_password
+ * - $db_persistent
+ * - $db_type
+ * - $phpdbiVerbose
+ * - $run_mode
+ * - $settings
+ * - $single_user
+ * - $single_user_login
+ * - $TROUBLE_URL
+ * - $user_inc
+ * 
+ * @return array An array of settings after all the necessary initialization.
+ *
+ * @global string $db_database         The name of the database.
+ * @global string $db_host             The hostname of the database server.
+ * @global string $db_login            Database user's login name.
+ * @global string $db_password         Password for the database user.
+ * @global string $db_persistent       Specifies if persistent database connections should be used.
+ * @global string $db_type             The type of database server.
+ * @global string $phpdbiVerbose      Determines the verbosity of the PHP database interface.
+ * @global string $run_mode            The mode in which the application is running (dev/prod).
+ * @global array  $settings            An array holding various settings for the application.
+ * @global string $single_user         Specifies if the application is in single user mode.
+ * @global string $single_user_login   If in single user mode, this specifies the login name.
+ * @global string $TROUBLE_URL         URL pointing to the Troubleshooting section.
+ * @global string $user_inc            Indicates the type of user authentication.
+ */
+
+function do_config()
+{
   global $db_database, $db_host, $db_login, $db_password, $db_persistent,
-  $db_type, $ignore_user_case, $NONUSER_PREFIX, $phpdbiVerbose, $PROGRAM_DATE,
-  $PROGRAM_NAME, $PROGRAM_URL, $PROGRAM_VERSION, $readonly, $run_mode, $settings,
-  $single_user, $single_user_login, $TROUBLE_URL, $user_inc, $use_http_auth;
+    $db_type, $ignore_user_case, $NONUSER_PREFIX, $phpdbiVerbose, $PROGRAM_DATE,
+    $PROGRAM_NAME, $PROGRAM_URL, $PROGRAM_VERSION, $readonly, $run_mode, $settings,
+    $single_user, $single_user_login, $TROUBLE_URL, $user_inc, $use_http_auth;
+
+  // Define possible app settings and their types
+  $possible_settings = [
+    'install_password' => 'string',
+    'db_cachedir'      => 'string',
+    'db_database'      => 'string',
+    'db_debug'         => 'boolean',
+    'db_host'          => 'string',
+    'db_login'         => 'string',
+    'db_password'      => 'string',
+    'db_persistent'    => 'boolean',
+    'db_type'          => 'string',
+    'readonly'         => 'string', # "Y" or "N"
+    'single_user'      => 'string', # "Y" or "N"
+    'use_http_auth'    => 'boolean',
+    'user_inc'         => 'string',
+    'config_inc'       => 'string',
+    'mode'             => 'string'  # "dev" or "prod"
+  ];
 
   // When changing PROGRAM VERSION, also change it in install/default_config.php
-  $PROGRAM_VERSION = 'v1.9.1';
+  $PROGRAM_VERSION = 'v1.9.6';
   // Update PROGRAM_DATE with official release data
-  $PROGRAM_DATE = '(08 Mar 2022)';
+  $PROGRAM_DATE = '30 Aug 2023';
 
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://k5n.us/wp/webcalendar/';
   $TROUBLE_URL = 'docs/WebCalendar-SysAdmin.html#trouble';
 
-  // Open settings file to read.
-  $settings = array();
+  $settings = [];
 
-  if( file_exists( $fileLoc ) )
-    $fd = @fopen( $fileLoc, 'rb', true );
+  // Decide the source based on the WEBCALENDAR_USE_ENV env variable
+  $use_env = getenv('WEBCALENDAR_USE_ENV');
+  if ($use_env && strtolower($use_env) === "true") {
+    // Load from environment variables
+    foreach ($possible_settings as $key => $type) {
+      $env_key = 'WEBCALENDAR_' . strtoupper($key);
+      $env_value = getenv($env_key);
 
-  if( empty( $fd ) && defined( '__WC_INCLUDEDIR' ) ) {
-    $fd = @fopen( __WC_INCLUDEDIR . '/settings.php', 'rb', true );
-
-    if( $fd )
-      $fileLoc = __WC_INCLUDEDIR . '/settings.php';
-  }
-  // If still empty.... use __FILE__.
-  if( empty( $fd ) ) {
-    $testName = get_full_include_path( 'settings.php' );
-    $fd = @fopen( $fileLoc, 'rb', true );
-
-    if( $fd )
-      $fileLoc = $testName;
-  }
-  if( empty( $fd ) || filesize( $fileLoc ) == 0 ) {
-    // There is no settings.php file.
-    // Redirect user to install page if it exists.
-    if( file_exists( 'install/index.php' ) ) {
-      header( 'Location: install/index.php' );
-      exit;
-    } else
-      die_miserable_death( translate( 'Could not find settings.php file...' ) );
-  }
-
-  // We don't use fgets() since it seems to have problems with Mac-formatted
-  // text files. Instead, we read in the entire file, and split the lines manually.
-  $data = '';
-  while( ! feof( $fd ) ) {
-    $data .= fgets( $fd, 4096 );
-  }
-  fclose( $fd );
-
-  // Replace any combination of carriage return (\r) and new line (\n)
-  // with a single new line.
-  $data = preg_replace( "/[\r\n]+/", "\n", $data );
-
-  // Split the data into lines.
-  $configLines = explode( "\n", $data );
-
-  for( $n = 0, $cnt = count( $configLines ); $n < $cnt; $n++ ) {
-    $buffer = trim( $configLines[$n] );
-
-    if( preg_match( '/^#|\/\*/', $buffer ) // comments
-        || preg_match( '/^<\?/', $buffer ) // start PHP code
-        || preg_match ( '/^\?\>/', $buffer ) // end PHP code
-      ) {
-      continue;
+      if ($env_value !== false) {
+        $settings[$key] = ($type === 'boolean') ? filter_var($env_value, FILTER_VALIDATE_BOOLEAN) : $env_value;
+      } else {
+        if ($type === 'boolean') {
+          $settings[$key] = false;
+        }
+      }
+    }
+  } else {
+    // Load from settings.php file
+    $settings_content = file_get_contents(__DIR__ . '/settings.php');
+    if (empty($settings_content)) {
+      // There is no settings.php file.
+      // Redirect user to install page if it exists.
+      if (file_exists('install/index.php')) {
+        header('Location: install/index.php');
+        exit;
+      } else {
+        die_miserable_death(translate('Could not find settings.php file...'));
+      }
     }
 
-    if( preg_match( '/(\S+):\s*(\S+)/', $buffer, $matches ) )
-      $settings[$matches[1]] = $matches[2];
+    foreach ($possible_settings as $key => $type) {
+      if (preg_match('/' . $key . ':\s*(.*)/', $settings_content, $matches)) {
+        $value = trim($matches[1]);
+        $settings[$key] = ($type === 'boolean') ? filter_var($value, FILTER_VALIDATE_BOOLEAN) : $value;
+      } else {
+        if ($type === 'boolean') {
+          $settings[$key] = false;
+        }
+      }
+    }
   }
-  $configLines =
-  $data = '';
 
-  if( isset( $settings['config_inc'] ) ) {
+  if (isset($settings['config_inc'])) {
     # Load 3rd party configs from external app
-    require_once get_full_include_path ( $settings['config_inc'] );
-    $settings = do_external_configs( $settings );
+    require get_full_include_path($settings['config_inc']);
+    $settings = do_external_configs($settings);
   }
 
   // Extract db settings into global vars.
   $db_database = $settings['db_database'];
   $db_host     = $settings['db_host'];
   $db_login    = $settings['db_login'];
-  $db_password = ( empty( $settings['db_password'] )
-    ? '' : $settings['db_password'] );
-  $db_persistent = ( preg_match( '/(1|yes|true|on)/i',
-    $settings['db_persistent'] ) ? '1' : '0' );
+  $db_password = (empty($settings['db_password'])
+    ? '' : $settings['db_password']);
+  $db_persistent = (preg_match(
+    '/(1|yes|true|on)/i',
+    $settings['db_persistent']
+  ) ? '1' : '0');
   $db_type = $settings['db_type'];
 
   // If no db settings, then user has likely started install but not yet
   // completed. So, send them back to the install script.
-  if( empty( $db_type ) ) {
-    if( file_exists( 'install/index.php' ) ) {
-      header( 'Location: install/index.php' );
+  if (empty($db_type)) {
+    if (file_exists('install/index.php')) {
+      header('Location: install/index.php?reason=no_dbtype');
       exit;
     } else
-      die_miserable_death( translate( 'Incomplete settings.php file...' ) );
+      die_miserable_death(translate('Incomplete settings.php file...'));
   }
 
   // Use 'db_cachedir' if found, otherwise look for 'cachedir'.
-  if( ! empty( $settings['db_cachedir'] ) )
-    dbi_init_cache( $settings['db_cachedir'] );
+  if (!empty($settings['db_cachedir']))
+    dbi_init_cache($settings['db_cachedir']);
   else
-  if( ! empty( $settings['cachedir'] ) )
-    dbi_init_cache( $settings['cachedir'] );
+  if (!empty($settings['cachedir']))
+    dbi_init_cache($settings['cachedir']);
 
-  if( ! empty( $settings['db_debug'] )
-      && preg_match( '/(1|true|yes|enable|on)/i', $settings['db_debug'] ) )
-    dbi_set_debug( true );
+  if (
+    !empty($settings['db_debug'])
+    && preg_match('/(1|true|yes|enable|on)/i', $settings['db_debug'])
+  )
+    dbi_set_debug(true);
 
-  foreach( array( 'db_type', 'db_host', 'db_login' ) as $s ) {
-    if( empty( $settings[$s] ) )
-      die_miserable_death( str_replace( 'XXX', $s,
-          translate( 'Could not find XXX defined in...' ) ) );
+  foreach (array('db_type', 'db_host', 'db_login') as $s) {
+    if (empty($settings[$s]))
+      die_miserable_death(str_replace(
+        'XXX',
+        $s,
+        translate('Could not find XXX defined in...')
+      ));
   }
 
   // Allow special settings of 'none' in some settings[] values.
   // This can be used for db servers not using TCP port for connection.
-  $db_host = ( $db_host == 'none' ? '' : $db_host );
-  $db_password = ( empty( $db_password ) || $db_password == 'none'
-    ? '' : $db_password );
+  $db_host = ($db_host == 'none' ? '' : $db_host);
+  $db_password = (empty($db_password) || $db_password == 'none'
+    ? '' : $db_password);
 
-  $readonly = preg_match( '/(1|yes|true|on)/i',
-    $settings['readonly'] ) ? 'Y' : 'N';
-
-  if( empty( $settings['mode'] ) )
+  if (empty($settings['readonly']))
+    $settings['readonly'] = 'N';
+  $readonly = preg_match(
+    '/(1|yes|true|on|y)/i',
+    $settings['readonly']
+  ) ? 'Y' : 'N';
+  if (empty($settings['mode']))
     $settings['mode'] = 'prod';
 
-  $run_mode = ( preg_match( '/(dev)/i', $settings['mode'] ) ? 'dev' : 'prod' );
-  $phpdbiVerbose = ( $run_mode == 'dev' );
-  $single_user = preg_match( '/(1|yes|true|on)/i',
-    $settings['single_user'] ) ? 'Y' : 'N';
-
-  if( $single_user == 'Y' )
+  $run_mode = (preg_match('/(dev)/i', $settings['mode']) ? 'dev' : 'prod');
+  $phpdbiVerbose = ($run_mode == 'dev');
+  if (isset($single_user) && $single_user == 'Y') {
     $single_user_login = $settings['single_user_login'];
-
-  if( $single_user == 'Y' && empty( $single_user_login ) )
-    die_miserable_death( str_replace( 'XXX', 'single_user_login',
-        translate( 'You must define XXX in' ) ) );
-
-  $use_http_auth = ( preg_match( '/(1|yes|true|on)/i',
-      $settings['use_http_auth'] ) ? true : false );
+    if (empty($single_user_login))
+      die_miserable_death(str_replace(
+        'XXX',
+        'single_user_login',
+        translate('You must define XXX in')
+      ));
+  } else {
+    $single_user = 'N';
+    $single_user_login = '';
+  }
 
   // Type of user authentication.
   $user_inc = $settings['user_inc'];
 
   // If SQLite, the db file is in the includes directory.
-  if( $db_type == 'sqlite' || $db_type == 'sqlite3' ) {
-    if ( substr ( $db_database, 0, 1 ) != '/' && ! file_exists ( $db_database ) )
-      $db_database = get_full_include_path( $db_database );
+  if ($db_type == 'sqlite' || $db_type == 'sqlite3') {
+    if (substr($db_database, 0, 1) != '/' && !file_exists($db_database))
+      $db_database = get_full_include_path($db_database);
   }
 
   // &amp; does not work here...leave it as &.
@@ -249,29 +307,40 @@ function do_config( $fileLoc ) {
 
   // Check the current installation version.
   // Redirect user to install page if it is different from stored value.
-  // This will prevent running WebCalendar until UPGRADING.html has been
-  // read and required upgrade actions completed.
-  $c = @dbi_connect( $db_host, $db_login, $db_password, $db_database, false );
+  // This will prevent running WebCalendar the database is updated
+  // (typically through the web-based install pages).
+  $c = @dbi_connect($db_host, $db_login, $db_password, $db_database, false);
 
-  if( $c ) {
-    $rows = dbi_get_cached_rows( 'SELECT cal_value FROM webcal_config
-      WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
+  if ($c) {
+    $rows = dbi_get_cached_rows('SELECT cal_value FROM webcal_config
+      WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'');
 
-    if( ! $rows ) {
-      header( $locateStr . 'UNKNOWN' );
+    //echo "<pre>"; print_r($rows); echo "</pre>"; exit;
+    if (!$rows || empty($rows) || empty($rows[0])) {
+      header($locateStr . 'UNKNOWN&reason=missing');
       exit;
     } else {
-      $row = $rows[0];
-
-      if( empty( $row ) || $row[0] != $PROGRAM_VERSION ) {
-        header( $locateStr . '' . ( empty( $row ) ? 'UNKNOWN' : $row[0] ) );
-        exit;
+      $versionInDb = $rows[0][0];
+      if ($versionInDb != $PROGRAM_VERSION) {
+        // New version has been installed on filesystem but db says it is an
+        // older version.  See if we can just bump up the version in the db
+        // (only an option when there are no database schema changes between
+        // the version and the new version.)
+        if (upgrade_requires_db_changes($db_type, $versionInDb, $PROGRAM_VERSION)) {
+          header($locateStr . $versionInDb);
+          exit;
+        } else {
+          // We can just update the version in the database and move on.
+          if (!update_webcalendar_version_in_db($versionInDb, $PROGRAM_VERSION)) {
+            die_miserable_death("Unable to update version in database");
+          }
+        }
       }
     }
-    dbi_close( $c );
+    dbi_close($c);
   } else {
-    // Must mean we don't have a settings.php file.
-    header( $locateStr . 'UNKNOWN' );
+    // Must mean we don't have a settings.php file or env variables.
+    header($locateStr . 'UNKNOWN');
     exit;
   }
 
@@ -281,8 +350,8 @@ function do_config( $fileLoc ) {
   // a maximum of 5 characters and should NOT change once set!
   $NONUSER_PREFIX = '_NUC_';
 
-  if( $single_user != 'Y' )
+  if ($single_user != 'Y')
     $single_user_login = '';
-}
 
-?>
+  return $settings;
+}

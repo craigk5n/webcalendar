@@ -71,7 +71,7 @@ echo '</span><br>
 
 // Get users in this view.
 $viewusers = view_get_user_list ( $id );
-if ( count ( $viewusers ) == 0 )
+if (!is_array($viewusers) || count ($viewusers) == 0)
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view.
   $error = translate( 'No users for this view.' );
@@ -83,7 +83,7 @@ if ( ! empty ( $error ) ) {
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
 $e_save = $re_save = array();
-$viewusercnt = count ( $viewusers );
+$viewusercnt = is_array($viewusers) ? count ($viewusers) : 0;
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events ( $viewusers[$i], $startdate, $enddate, '' );
@@ -98,7 +98,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   // around for users by changing what $events points to.
 
   // Calculate width of columns in this table.
-  $num_left = count ( $viewusers ) - $j;
+  $num_left = $viewusercnt - $j;
   if ( $num_left > $USERS_PER_TABLE )
     $num_left = $USERS_PER_TABLE;
 
