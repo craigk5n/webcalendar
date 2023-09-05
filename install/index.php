@@ -318,15 +318,14 @@ if( ! empty( $action ) && $action == 'switch' ) {
 
 // We're doing a database installation yea ha!
 if( ! empty( $action ) && $action == 'install' ) {
-  // We'll grab database settings from settings.php.
-  $db_database = $settings['db_database'];
-  $db_host     = $settings['db_host'];
-  $db_login    = $settings['db_login'];
-  $db_password = ( empty( $settings['db_password'] )
-    ? '' : $settings['db_password'] );
+  // We'll grab database settings from settings.php or from env vars
+  $db_database = $use_env ? getenv('WEBCALENDAR_DB_DATABASE') : $settings['db_database'];
+  $db_host = $use_env ? getenv('WEBCALENDAR_DB_HOST') : $settings['db_host'];
+  $db_login = $use_env ? getenv('WEBCALENDAR_DB_LOGIN') : $settings['db_login'];
+  $db_password = $use_env ? getenv('WEBCALENDAR_DB_PASSWORD') : $settings['db_password'];
   $db_persistent = false;
-  $db_type       = $settings['db_type'];
-  $real_db       = ( $db_type== 'sqlite' || $db_type == 'sqlite3'
+  $db_type = $use_env ? getenv('WEBCALENDAR_DB_TYPE') : $settings['db_type'];
+  $real_db = ( $db_type== 'sqlite' || $db_type == 'sqlite3'
     ? get_full_include_path( $db_database ) : $db_database );
 
   // We might be displaying SQL only.
