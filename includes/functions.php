@@ -987,8 +987,9 @@ function display_activity_log( $cal_type, $cal_text = '', $break = '<br>&nbsp;' 
   else
     $ret = '???';
   //fix any broken special characters
-  $cal_text = preg_replace( "/&amp;(#[0-9]+|[a-z]+);/i", "&$1;",
-    htmlentities( $cal_text ) );
+  if (!empty($cal_text)) {
+    $cal_text = preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", htmlentities($cal_text));
+  }
   return $ret
    . ( empty ( $cal_text ) ? '' : $break . $cal_text );
 }
