@@ -10,7 +10,8 @@ load_user_layers ( $user != $login && $is_nonuser_admin ? $user : '' );
 
 load_user_categories();
 
-$wday = strftime ( '%w', mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
+$thisdate = new DateTime("$thisyear-$thismonth-$thisday");
+$wday = $thisdate->format('w');
 $now = mktime ( 23, 59, 59, $thismonth, $thisday, $thisyear );
 $nowYmd = date ( 'Ymd', $now );
 
