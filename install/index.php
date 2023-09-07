@@ -193,7 +193,6 @@ if ((file_exists($file) || $use_env) && !empty($pwd)) {
     . '\' ); document.go(-1)">';
     // Invalid password.
     echo '<br>' . translate( 'Password Incorrect' ) . '</title></head><body>' . translate( 'Password Incorrect' );
-    echo "Password: '$pwd' <br> md5 = " . md5($pwd) . "<br>envpwd = " . $envpwd;
     echo '</body></html>';
     exit;
   }
