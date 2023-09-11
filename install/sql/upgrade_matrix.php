@@ -89,7 +89,7 @@ $database_upgrade_matrix = [
   // Should get MySQL error: Column 'cat_owner' cannot be null
   ['INSERT INTO webcal_entry_categories (cal_id, cat_id, cat_order, cat_owner) VALUES (999999, 1, -1, NULL)',
    'DELETE FROM webcal_entry_categories WHERE cal_id = 999999 AND cat_order = -1',
-   'v1.3.0', 'upgrade_v1.9.0'],
+   'v1.3.0', 'upgrade_v1.9.6'],
 //don't change this array element
   ['','', $PROGRAM_VERSION, '']
 ];

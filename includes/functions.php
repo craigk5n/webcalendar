@@ -6474,6 +6474,53 @@ function sendCookie($name, $value, $expiration=0, $path='', $sensitive=true) {
   SetCookie ( $name, $value, $expiration, $path, $domain, $secure, $httpOnly);
 }
 
+/**
+ * Finds the next version greater than the specified version from a given file content.
+ * 
+ * The function scans the provided file content to detect version patterns like "upgrade_v1.9.5".
+ * It then compares the found versions to the provided version and returns the immediate next version
+ * greater than the provided one.
+ *
+ * @param string $fileContent  The content of the file containing version upgrade markers.
+ * @param string $version      The version to be compared against.
+ * 
+ * @return string              The next version greater than the provided version, or an empty string if not found.
+ */
+function findNextVersion($fileContent, $version) {
+  // Extract all versions from the file content
+  preg_match_all('/\/\*upgrade_(v\d+\.\d+\.\d+)\*\//', $fileContent, $matches);
+  $versions = $matches[1];
+
+  // Removing the "v" prefix from versions
+  $version_trimmed = ltrim($version, "v");
+
+  for ($i = 0; $i < count($versions); $i++) {
+    $version2 = ltrim($versions[$i], "v");
+    if (version_compare($version_trimmed, $version2, '<')) {
+      return "v$version2";
+    }
+  }
+  return ''; // Not found
+}
+
+/**
+ * Determines if a software upgrade requires database changes based on the database type and version range.
+ * 
+ * The function inspects the SQL upgrade file associated with the specified database type to find SQL changes 
+ * between the provided old and new version. If there's any significant SQL content between these version
+ * markers, it indicates that database changes are required.
+ * 
+ * For some database types where the SQL upgrade file might not exist, it falls back to checking the MySQL 
+ * upgrade file as a general reference.
+ *
+ * @param string $db_type      The type of the database (e.g., 'mysql', 'mysqli', 'postgres').
+ * @param string $old_version  The starting version to check for changes from (e.g., 'v1.9.0').
+ * @param string $new_version  The ending version to check for changes up to (e.g., 'v1.9.5').
+ * 
+ * @return bool                True if SQL changes are found between the versions, false otherwise.
+ * 
+ * @throws Exception           Throws an exception if the SQL file for the specified database type doesn't exist.
+ */
 function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
   // File path
   if ($db_type == 'mysqli')
@@ -6494,18 +6541,48 @@ function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
 
   // Get the SQL content between this version and the next
   $start_token = "/*upgrade_$old_version*/";
-  $start_pos = strpos($content, "$start_token") + strlen($start_token);
+  $start_pos = strpos($content, "$start_token");
+  if ($start_pos) {
+    $start_pos += strlen($start_token);;
+  } else {
+    // Not found.  Find the next version up.
+    $next_version = findNextVersion($content, $old_version);
+    if (empty($next_version)) { // shouldn't happen unless file is messed up
+      return true;
+    }
+    $start_token = "/*upgrade_$next_version*/";
+    $start_pos = strpos($content, "$start_token");
+    if (!$start_pos) {
+      return true;
+    }
+    $start_pos += strlen($start_token);
+  }
   $end_token = "/*upgrade_$new_version*/";
   $end_pos = strpos($content, "$end_token");
   $sql_content = trim(substr($content, $start_pos, $end_pos - $start_pos));
+  $no_comments = preg_replace('/\/\*upgrade_v\d+\.\d+\.\d+\*\/\n?/', '', $sql_content);
 
   // Check if there's more than just the comment (meaning there are SQL commands)
-  if (strlen($sql_content) > 10) {
+  if (strlen($no_comments) > 10) {
     return true; // Found SQL changes
   };
   return false; // No SQL changes found
 }
 
+/**
+ * Updates the WebCalendar version in the database and logs the update activity.
+ * 
+ * This function modifies the 'webcal_config' table to set the new WebCalendar version.
+ * Additionally, an activity log is created to keep track of the update and which user 
+ * performed the update.
+ *
+ * @param string $old_version  The current version before the update (e.g., 'v1.9.0').
+ * @param string $new_version  The desired new version after the update (e.g., 'v1.9.5').
+ * 
+ * @global object $user        The global user object representing the current logged-in user.
+ * 
+ * @return bool                True if the version update is successful, false otherwise.
+ */
 function update_webcalendar_version_in_db($old_version, $new_version) {
   global $user;
   if (!dbi_execute('UPDATE webcal_config SET cal_value = ? WHERE cal_setting = ?',
