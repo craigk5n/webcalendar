@@ -230,6 +230,7 @@ if ( ! $error ) {
     $handler = 'color_change_handler_' . $k;
     $color_sets .= print_color_input_html ( $k, $v, '', '', 'p', '', $handler );
   }
+  $csp = empty($s['CSP']) ? 'none' : $s['CSP'];
 
   set_today ( date ( 'Ymd' ) );
 
@@ -279,9 +280,25 @@ if ( ! $error ) {
               <select name="admin_LANGUAGE" id="admin_LANGUAGE">' . $lang_list . '
               </select>'
    . str_replace( 'XXX', translate( get_browser_language( true ) ),
-    translate( 'Your browser default language is XXX.' ) ) . '</div>
-            </fieldset>
-          <fieldset class="border p-2">
+    translate( 'Your browser default language is XXX.' ) ) . '</div>'
+   . '</fieldset>';
+
+  echo '<fieldset class="border p-2"><legend>' . translate ( 'Site security' ) . '</legend>'
+    . '<div class="form-inline mt-1 mb-2"><label for="admin_CSP">'
+    . translate('Content Security Policy') . ':</label>'
+    . '<select name="admin_CSP">'
+    . '<option value="none"' . ($csp == 'none' ? ' selected' : '') . '>' . translate('No site can frame the content')
+    . '<option value="same"' . ($csp == 'same' ? ' selected' : '') . '>' . translate('The same site can frame the content')
+    . '<option value="any"' . ($csp == 'any' ? ' selected' : '') . '>' . translate('Any site can frame the content')
+    . '</select>';
+  echo '<a class="ml-2" style="cursor: help" title="' . translate('View explanation at OWASP') . '" href="https://owasp.org/www-community/controls/Content_Security_Policy" target="_blank"><img src="images/bootstrap-icons/info-circle-fill.svg"></a></div>';
+  echo '<div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'enable-external-header-help' ) . '">'
+    . translate ( 'Use Cross-Site Request Forgery Protection' ) . ':</label>'
+    . print_radio ( 'CSRF_PROTECTION' );
+  echo '<a class="ml-2" style="cursor: help" title="' . translate('View explanation at OWASP') . '" href="https://owasp.org/www-community/attacks/csrf" target="_blank"><img src="images/bootstrap-icons/info-circle-fill.svg"></a></div>';
+  echo "</fieldset>\n";
+
+  echo '<fieldset class="border p-2">
             <legend>' . translate ( 'Site customization' ) . '</legend>
             <div class="form-inline mt-1 mb-2">
             <label for="admin_CUSTOM_SCRIPT" title="' . tooltip ( 'custom-script-help' ) . '">'

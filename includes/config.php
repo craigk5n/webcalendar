@@ -161,9 +161,9 @@ function do_config()
   ];
 
   // When changing PROGRAM VERSION, also change it in install/default_config.php
-  $PROGRAM_VERSION = 'v1.9.7';
+  $PROGRAM_VERSION = 'v1.9.8';
   // Update PROGRAM_DATE with official release data
-  $PROGRAM_DATE = '07 Sep 2023';
+  $PROGRAM_DATE = '11 Sep 2023';
 
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://k5n.us/wp/webcalendar/';

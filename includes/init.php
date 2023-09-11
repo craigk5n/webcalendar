@@ -91,15 +91,30 @@ function get_server_top_url () {
   * in the admin System Settings.
   */
 function send_http_headers () {
-  // TODO: Allow a (future) admin settings override some of these cookie settings
+  global $CSP, $PROGRAM_DATE, $PROGRAM_VERSION;
+
+  $csp = empty($CSP) || in_array($CSP, ['none', 'same', 'any']) ? $CSP : 'none';
 
   // Prevent click-jacking by including a "frame-breaker" script in each page that should not be framed.
+  // Admin can override CSP setting (default is 'none') in Admin Settings
   // Source: https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html
-  Header("Content-Security-Policy: frame-ancestors 'self'");
+  Header('X-CSP-Value: ' . $csp);
+  if ($csp == 'none') {
+    Header("Content-Security-Policy: frame-ancestors 'none'");
+    // WebCalendar cannot be loaded in a frame
+    // Options for this cookie: deny, sameorigin, allow-from
+    Header("X-Frame-Options: deny");
+  } else if ($csp == 'same') {
+    Header("Content-Security-Policy: frame-ancestors 'self'");
+    Header("X-Frame-Options: sameorigin");
+  } else if ($csp == 'any') {
+    // No restrictions
+    Header("Content-Security-Policy: frame-ancestors *");
+  }
 
-  // WebCalendar cannot be loaded in a frame
-  // Options for this cookie: deny, sameorigin, allow-from
-  Header("X-Frame-Options: sameorigin");
+  // Include WebCalendar version in HTTP header
+  Header('WebCalendar-Version: ' . ltrim($PROGRAM_VERSION, 'v'));
+  Header('WebCalendar-Date: ' . $PROGRAM_DATE);
 
   // Marker used by the server to indicate that the MIME types advertised in the
   // Content-Type headers should be followed and not be changed.

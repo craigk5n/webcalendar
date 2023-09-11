@@ -22,20 +22,21 @@ update_sql_version() {
     local file_path="$1"
     local new_version="$2"
     
-    # Get the last line of the file
-    local last_line=$(tail -n 1 "$file_path")
+    # Get the last two lines of the file
+    local last_two_lines=$(tail -n 2 "$file_path")
     
-    # Check if the last line contains a version string.
-    if [[ $last_line == *upgrade* ]]; then
-        # If it does, replace the version in the last line.
+    # Check if the last two lines contain version strings.
+    if [[ $(echo "$last_two_lines" | head -n 1) == *upgrade* && $(echo "$last_two_lines" | tail -n 1) == *upgrade* ]]; then
+        # If both lines are versions, replace the version in the last line.
         sed -i "$ s/.*/\/\*upgrade_${new_version}\*\//g" "$file_path"
     else
-        # If it doesn't, append a new line with the version.
+        # If not, append a new line with the version.
         echo "/*upgrade_${new_version}*/" >> "$file_path"
     fi
 
     echo "Updated $file_path to version $new_version"
 }
+
 
 
 # SQL files to update
@@ -122,8 +123,19 @@ function update_upgrade_matrix() {
     echo "Updated $file_path to version $new_version"
 }
 
+# Function to print current version
+print_version() {
+    local version
+    version=$(grep 'WEBCAL_PROGRAM_VERSION' install/default_config.php | sed -E "s/.*'WEBCAL_PROGRAM_VERSION' => '([^']*)'.*/\1/")
+    echo "$version" | tr -d v
+}
+
 # Main logic
-if [ "$#" -eq 0 ]; then
+if [ "$1" == "-p" ]; then
+    # If the -p argument is provided, just print the current version and exit
+    print_version
+    exit 0
+elif [ "$#" -eq 0 ]; then
     # No arguments provided, bump the version
     current_version=$(grep 'WEBCAL_PROGRAM_VERSION' install/default_config.php | sed -E "s/.*'WEBCAL_PROGRAM_VERSION' => '([^']*)'.*/\1/")
     new_version=$(bump_version "$current_version")
