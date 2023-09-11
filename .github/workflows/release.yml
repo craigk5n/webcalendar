@@ -1,0 +1,59 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2.1.2
+
+    - name: Get release version
+      run: echo "RELEASE_VERSION=$(./bump_version.sh -p)" >> $GITHUB_ENV
+
+    - name: Create release directory
+      run: mkdir release-dir
+
+    - name: Copy files to release directory
+      run: |
+        while IFS= read -r file; do
+            cp --parents "$file" release-dir/
+        done < release-files
+
+    - name: Zip the release
+      run: zip -r WebCalendar-${{ env.RELEASE_VERSION }}.zip release-dir/
+
+    - name: Create GitHub Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ env.RELEASE_VERSION }}
+        release_name: WebCalendar v${{ env.RELEASE_VERSION }}
+        body: Release of WebCalendar v${{ env.RELEASE_VERSION }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} 
+        asset_path: ./WebCalendar-${{ env.RELEASE_VERSION }}.zip
+        asset_name: WebCalendar-${{ env.RELEASE_VERSION }}.zip
+        asset_content_type: application/zip
+
+    - name: Tag the Release Branch
+      run: |
+        git tag v${{ env.RELEASE_VERSION }}
+        git push origin v${{ env.RELEASE_VERSION }}
+
