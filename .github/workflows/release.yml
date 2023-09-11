@@ -26,7 +26,9 @@ jobs:
       run: |
         while IFS= read -r file; do
           echo "Copying $file"
-          cp --parents "$file" WebCalendar-${{ env.RELEASE_VERSION }}/
+          # Ensure that the target directory structure exists
+          mkdir -p WebCalendar-1.9.8/$(dirname "$file")
+          cp "$file" WebCalendar-1.9.8/"$file"
         done < release-files
 
     - name: Zip the release
