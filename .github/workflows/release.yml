@@ -25,6 +25,7 @@ jobs:
     - name: Copy files to release directory
       run: |
         while IFS= read -r file; do
+            echo "Copying $file"
             cp --parents "$file" release-dir/
         done < release-files
 
