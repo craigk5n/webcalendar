@@ -25,12 +25,12 @@ jobs:
     - name: Copy files to release directory
       run: |
         while IFS= read -r file; do
-            echo "Copying $file"
-            cp --parents "$file" release-dir/
+          echo "Copying $file"
+          cp --parents "$file" WebCalendar-${{ env.RELEASE_VERSION }}/
         done < release-files
 
     - name: Zip the release
-      run: zip -r WebCalendar-${{ env.RELEASE_VERSION }}.zip release-dir/
+      run: zip -r WebCalendar-${{ env.RELEASE_VERSION }}.zip WebCalendar-${{ env.RELEASE_VERSION }}/
 
     - name: Create GitHub Release
       id: create_release
