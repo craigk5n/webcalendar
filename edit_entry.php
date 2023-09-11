@@ -653,14 +653,14 @@ $tabI = 0;
           <br>
           <table>
             <tr id="completed">
-              <td class="tooltip" title="<?php etooltip('completed-help'); ?>">
-                <label for="task_percent"><?php etranslate('Date Completed'); ?>:&nbsp;</label>
+              <td>
+                <label for="task_percent" data-toggle="tooltip" data-placement="top" title="<?php etooltip('completed-help'); ?>"><?php etranslate('Date Completed'); ?>:&nbsp;</label>
               </td>
               <td><?php echo date_selection('completed_', $completed); ?></td>
             </tr>
             <tr>
-              <td class="tooltip" title="<?php etooltip('percent-help'); ?>">
-                <label for="task_percent"><?php etranslate('Percent Complete'); ?>:&nbsp;</label>
+              <td>
+                <label for="task_percent" data-toggle="tooltip" data-placement="top" title="<?php etooltip('percent-help'); ?>"><?php etranslate('Percent Complete'); ?>:&nbsp;</label>
               </td>
               <td>
                 <select name="percent" id="task_percent" onchange="completed_handler()">
@@ -1325,9 +1325,9 @@ $tabI = 0;
         <td colspan="4"></td>
       </tr>
       <tr id="rptbymonthdayextended" style="visibility:hidden;">
-        <td class="xtooltip" id="ByMonthDaylabel">
-        <label for="entry_freq" data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-bymonthdayextended-help') . '">'  . translate('ByMonthDay')
-          . ':&nbsp;</td>
+        <td id="ByMonthDaylabel">
+        <label data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-bymonthdayextended-help') . '">'  . translate('ByMonthDay')
+          . ':&nbsp;</label></td>
         <td colspan="2" class="boxall">'
           /* Display bymonthday extended selection. */ . '
           <table class="byxxx" cellpadding="2" '
@@ -1390,9 +1390,9 @@ $tabI = 0;
         <td colspan="2"><input type="text" name="byweekno" id="byweekno" '
           . 'size="50" maxlength="100" value="' . $byweekno . '"></td>
       </tr>
-      <tr id="rptbyyearday" style="visibility:hidden;" title="'
-          . tooltip('repeat-byyearday-help') . '">
-        <td class="xtooltip">' . translate('ByYearDay') . ':</td>
+      <tr id="rptbyyearday" style="visibility:hidden;" >
+        <td><label data-toggle="tooltip" data-placement="top" title="' .
+        tooltip('repeat-byyearday-help') . '">' . translate('ByYearDay') . ':</label></td>
         <td colspan="2"><input type="text" name="byyearday" id="byyearday" '
           . 'size="50" maxlength="100" value="' . $byyearday . '"></td>
       </tr>
@@ -1465,8 +1465,9 @@ $tabI = 0;
       <table cellpadding="3">
         <thead>
           <tr>
-            <td class="xtooltip"><label>' . translate('Send Reminder')
-          . ':</label></td>
+          <td><label data-toggle="tooltip" data-placement="top" title="' .
+          tooltip('email-event-reminders-help') . '">' .
+          translate('Send Reminder') . ':</label></td>
             <td colspan="3">
               <input type="hidden" name="rem_action" value="'
           . (empty($reminder['action']) ? 'EMAIL' : $reminder['action']) . '">
@@ -1488,7 +1489,7 @@ $tabI = 0;
         </thead>
         <tbody id="reminder_when">
           <tr>
-            <td class="xtooltip" rowspan="6"><label>' . translate('When')
+            <td rowspan="6"><label>' . translate('When')
           . ':</label></td>
             <td class="boxtop boxleft" width="20%"><label><input type="radio" '
           . 'name="rem_when" id="rem_when_date" value="Y" '
@@ -1548,8 +1549,8 @@ $tabI = 0;
         </tbody>
         <tbody id="reminder_repeat">
           <tr>
-            <td class="xtooltip" rowspan="2"><label>' . translate('Repeat')
-          . ':</label></td>
+            <td rowspan="2">'  . translate('Repeat')
+          . '</td>
             <td class="boxtop boxleft">&nbsp;&nbsp;&nbsp;<label>'
           . translate('Times') . '</label></td>
             <td class="boxtop boxright" colspan="2"><input type="text" '

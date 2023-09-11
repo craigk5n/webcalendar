@@ -1,6 +1,6 @@
 <?php
 //Program Version for this release
-$PROGRAM_VERSION = 'v1.9.7';
+$PROGRAM_VERSION = 'v1.9.8';
 
 //array element[0] = sql insertion testy
 //array element[1] = sql delete to clean up

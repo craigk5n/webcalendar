@@ -60,7 +60,8 @@ _ICONS: \
 	$(BOOTSTRAP_ICON_DIR)/dash-circle.svg \
 	$(BOOTSTRAP_ICON_DIR)/check-circle.svg \
 	$(BOOTSTRAP_ICON_DIR)/trash.svg \
-	$(BOOTSTRAP_ICON_DIR)/key-fill.svg
+	$(BOOTSTRAP_ICON_DIR)/key-fill.svg \
+	$(BOOTSTRAP_ICON_DIR)/info-circle-fill.svg
 
 $(BOOTSTRAP_ICON_DIR)/printer.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/printer.svg
 	cp $< $@
@@ -108,6 +109,9 @@ $(BOOTSTRAP_ICON_DIR)/trash.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/trash.svg
 	cp $< $@
 
 $(BOOTSTRAP_ICON_DIR)/key-fill.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/key-fill.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/info-circle-fill.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/info-circle-fill.svg
 	cp $< $@
 
 includes/load_assets.php: \
