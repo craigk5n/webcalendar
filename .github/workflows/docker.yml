@@ -32,4 +32,4 @@ jobs:
           context: .
           file: ./docker/Dockerfile-php8
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:v1.9.7-dev-php8
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:v1.9.8-dev-php8

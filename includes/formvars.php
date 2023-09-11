@@ -22,6 +22,7 @@ function preventHacking_helper($matches) {
   return chr(hexdec($matches[1]));
 }
 function preventHacking ( $name, $instr ) {
+  global $CSRF_PROTECTION;
   $phpSelf = $_SERVER['PHP_SELF'];
   $script = basename($phpSelf);
 
@@ -42,14 +43,17 @@ function preventHacking ( $name, $instr ) {
     ($script == 'del_entry.php' ||
     $script == 'add_entry.php' || $script == 'docdel.php' ||
     endsWith($script, "_handler.php")))) {
-//echo "KEY CHECK<br>\n";
-    $formKey = $_REQUEST['csrf_form_key'];
-    if ($formKey == $_SESSION['csrf_form_key'] && !empty($_SESSION['csrf_form_key'])) {
-      // Okay to proceed
-//echo "FORM KEY: $formKey \n"; exit;
-    } else {
-      die_miserable_death ( translate ( 'Fatal Error' ) . ': '
-         . translate ( 'Invalid form request' ) );
+    // CSRF protection can be disabled in Admin Settings, but
+    // the tokens are still added to forms.
+    if (empty($CSRF_PROTECTION) || $CSRF_PROTECTION != 'N') {
+      $formKey = $_REQUEST['csrf_form_key'];
+      if ($formKey == $_SESSION['csrf_form_key'] && !empty($_SESSION['csrf_form_key'])) {
+        // Okay to proceed
+  //echo "FORM KEY: $formKey \n"; exit;
+      } else {
+        die_miserable_death ( translate ( 'Fatal Error' ) . ': '
+           . translate ( 'Invalid form request' ) );
+      }
     }
   }
   //echo "METHOD " . $_SERVER['REQUEST_METHOD'] . "<br>";
