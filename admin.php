@@ -281,12 +281,10 @@ if ( ! $error ) {
               </select>'
    . str_replace( 'XXX', translate( get_browser_language( true ) ),
     translate( 'Your browser default language is XXX.' ) ) . '</div>'
-   . '<div class="form-inline mt-1 mb-2">'
-   . '</div></fieldset>';
+   . '</fieldset>';
 
-  echo '<fieldset class="border p-2"><legend>' . translate ( 'Site security' )
-    . '</legend><div class="form-inline mt-1 mb-2">'
-    . '<label for="admin_CSP">'
+  echo '<fieldset class="border p-2"><legend>' . translate ( 'Site security' ) . '</legend>'
+    . '<div class="form-inline mt-1 mb-2"><label for="admin_CSP">'
     . translate('Content Security Policy') . ':</label>'
     . '<select name="admin_CSP">'
     . '<option value="none"' . ($csp == 'none' ? ' selected' : '') . '>' . translate('No site can frame the content')
@@ -298,7 +296,7 @@ if ( ! $error ) {
     . translate ( 'Use Cross-Site Request Forgery Protection' ) . ':</label>'
     . print_radio ( 'CSRF_PROTECTION' );
   echo '<a class="ml-2" style="cursor: help" title="' . translate('View explanation at OWASP') . '" href="https://owasp.org/www-community/attacks/csrf" target="_blank"><img src="images/bootstrap-icons/info-circle-fill.svg"></a></div>';
-  echo "</div>\n</fieldset>\n";
+  echo "</fieldset>\n";
 
   echo '<fieldset class="border p-2">
             <legend>' . translate ( 'Site customization' ) . '</legend>
