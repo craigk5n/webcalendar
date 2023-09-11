@@ -112,6 +112,7 @@ includes/css/access.css
 includes/css/docs.css
 includes/css/print_styles.css
 includes/css/punctuation.css
+includes/css/rss-style.css
 includes/css/styles.css
 includes/css/styles.php
 includes/date_formats.php
@@ -159,7 +160,6 @@ includes/site_extras.php
 includes/trailer.php
 includes/translate.php
 includes/user-app-joomla.php
-includes/user-app-postnuke.php
 includes/user-imap.php
 includes/user-ldap.php
 includes/user-nis.php
@@ -328,7 +328,6 @@ report.php
 resourcecal_mgmt.php
 rss_activity_log.php
 rss.php
-rss-style.css
 rss_unapproved.php
 search_handler.php
 search.php
