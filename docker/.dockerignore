@@ -1,0 +1,11 @@
+**/*.md
+docs/**
+includes/settings.php
+LICENSE
+Makefile
+node?modules/**
+TODO
+
+!docs/newwin.gif
+!docs/WebCalendar-SysAdmin.html
+!GPL.html
