@@ -30,6 +30,15 @@ jobs:
     - name: Zip the release
       run: zip -r WebCalendar-${{ env.RELEASE_VERSION }}.zip WebCalendar-${{ env.RELEASE_VERSION }}/
 
+    - name: Check and Delete Existing Tag
+      run: |
+        # Check if the tag exists
+        if git rev-parse "v${{ env.RELEASE_VERSION }}" >/dev/null 2>&1; then
+          echo "Tag exists, deleting..."
+          git tag -d "v${{ env.RELEASE_VERSION }}"
+          git push --delete origin "v${{ env.RELEASE_VERSION }}"
+        fi
+
     - name: Create GitHub Release
       id: create_release
       uses: actions/create-release@v1
