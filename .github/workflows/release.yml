@@ -13,9 +13,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v2.1.2
-
     - name: Get release version
       run: echo "RELEASE_VERSION=$(./bump_version.sh -p)" >> $GITHUB_ENV
 
@@ -26,7 +23,6 @@ jobs:
       run: |
         while IFS= read -r file; do
           echo "Copying $file"
-          # Ensure that the target directory structure exists
           mkdir -p WebCalendar-1.9.8/$(dirname "$file")
           cp "$file" WebCalendar-1.9.8/"$file"
         done < release-files
@@ -58,6 +54,12 @@ jobs:
 
     - name: Tag the Release Branch
       run: |
+        # Check if the tag exists
+        if git rev-parse "v${{ env.RELEASE_VERSION }}" >/dev/null 2>&1; then
+          echo "Tag exists, deleting..."
+          git tag -d "v${{ env.RELEASE_VERSION }}"
+          git push --delete origin "v${{ env.RELEASE_VERSION }}"
+        fi
+        # Create and push the tag
         git tag v${{ env.RELEASE_VERSION }}
         git push origin v${{ env.RELEASE_VERSION }}
-
