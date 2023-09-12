@@ -24,16 +24,13 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Extract metadata (like version) from the repository
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar
-
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
           context: .
           file: ./docker/Dockerfile-php8
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:${{ steps.extract_version.outputs.version }}-php8-apache
+          tags: |
+            ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:${{ steps.extract_version.outputs.version }}-php8-apache
+            ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:latest-php8-apache
+            ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:latest
