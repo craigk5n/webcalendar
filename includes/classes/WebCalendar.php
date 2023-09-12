@@ -71,7 +71,23 @@ class WebCalendar {
     [
       ['InitFirstPhase', 'Config', 'PHPDBI', 'Functions'],
       ['User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'InitSecondPhase']]];
-
+    // Provide translation of translation file (trimming the ".txt" to the proper value for mb_language)
+    private $mb_language_map = array(
+      'Arabic_utf8' => 'Arabic',
+      'Chinese-Big5' => 'Chinese',
+      'Chinese-GB2312' => 'Chinese',
+      'German' => 'German',
+      'German_utf8' => 'German',
+      'Hebrew_utf8' => 'Hebrew',
+      'Japanese-eucjp' => 'Japanese',
+      'Japanese-sjis' => 'Japanese',
+      'Japanese' => 'Japanese',
+      'Korean' => 'Korean',
+      'Russian' => 'Russian',
+      'Russian_utf8' => 'Russian',
+      'Spanish' => 'Spanish',
+      );
+  
   /**
    * WebCalendar constructor.
    *
@@ -920,12 +936,14 @@ class WebCalendar {
 
     if (extension_loaded('mbstring')) {
       $mb_lang = strtok($lang, '-');
-      if (@mb_language($mb_lang) && mb_internal_encoding(translate('charset'))) {
-        $enable_mbstring = true;
+      // Check the language against the map, default to 'neutral' if not found
+      $mapped_lang = isset($this->mb_language_map[$mb_lang]) ? $this->mb_language_map[$mb_lang] : 'neutral';
+      if (@mb_language($mapped_lang) && mb_internal_encoding(translate('charset'))) {
+          $enable_mbstring = true;
       } else {
-        $enable_mbstring = false;
+          $enable_mbstring = false;
       }
-    }
+  }
 
     $translation_loaded = false;
 

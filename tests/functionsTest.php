@@ -192,11 +192,13 @@ final class FunctionsTest extends TestCase
 
   function test_upgrade_requires_db_changes() {
     $this->assertTrue(upgrade_requires_db_changes('mysql', 'v1.3.0', 'v1.9.1'));
+    $this->assertTrue(upgrade_requires_db_changes('mysql', 'v1.3.0', 'v1.9.8'));
+    $this->assertTrue(upgrade_requires_db_changes('mysql', 'v1.3.0', 'v1.9.9'));
     $this->assertFalse(upgrade_requires_db_changes('mysql', 'v1.9.1', 'v1.9.2'));
     $this->assertFalse(upgrade_requires_db_changes('mysql', 'v1.9.2', 'v1.9.5'));
-    $this->assertTrue(upgrade_requires_db_changes('mysql', 'v1.9.5', 'v1.9.8'));
+    $this->assertFalse(upgrade_requires_db_changes('mysql', 'v1.9.3', 'v1.9.5'));
+    $this->assertTrue(upgrade_requires_db_changes('mysql', 'v1.9.5', 'v1.9.6'));
     $this->assertFalse(upgrade_requires_db_changes('mysql', 'v1.9.7', 'v1.9.8'));
-    $this->assertTrue(upgrade_requires_db_changes('mysql', 'v1.3.0', 'v1.9.8'));
   }  
 
 }

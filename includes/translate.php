@@ -374,8 +374,8 @@ function translate ( $str, $decode = '', $type = '' ) {
     if ( $type != '' ) {
       // Translate number symbols.
       for ( $i = 0; $i < 10; $i++ ) {
-        $tmp = $i . '';
-        if ( $tmp != $translations[$tmp] )
+        $tmp = (string) $i;
+        if (! empty($translations[$tmp]) && $tmp != $translations[$tmp])
           $str = str_replace ( $tmp, $translations[$tmp], $str );
       }
     }

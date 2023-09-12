@@ -6543,7 +6543,7 @@ function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
   $start_token = "/*upgrade_$old_version*/";
   $start_pos = strpos($content, "$start_token");
   if ($start_pos) {
-    $start_pos += strlen($start_token);;
+    $start_pos += strlen($start_token);
   } else {
     // Not found.  Find the next version up.
     $next_version = findNextVersion($content, $old_version);
@@ -6559,11 +6559,27 @@ function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
   }
   $end_token = "/*upgrade_$new_version*/";
   $end_pos = strpos($content, "$end_token");
+  if ($end_pos)
+    $end_pos += strlen($end_token);
+  else {
+    // Not found.  Find the next version up.  This is not likely to
+    // happen except from the unit tests.
+    $next_version = findNextVersion($content, $new_version);
+    if (empty($next_version)) { // shouldn't happen unless file is messed up
+      return true;
+    }
+    $end_token = "/*upgrade_$next_version*/";
+    $end_pos = strpos($content, "$end_token");
+    if (!$end_pos) {
+      return true;
+    }
+    $end_pos += strlen($end_token);
+  }
   $sql_content = trim(substr($content, $start_pos, $end_pos - $start_pos));
   $no_comments = preg_replace('/\/\*upgrade_v\d+\.\d+\.\d+\*\/\n?/', '', $sql_content);
 
-  // Check if there's more than just the comment (meaning there are SQL commands)
-  if (strlen($no_comments) > 10) {
+  // Check if for ';' which will indicate a SQL command
+  if (strpos($no_comments, ';')) {
     return true; // Found SQL changes
   };
   return false; // No SQL changes found
