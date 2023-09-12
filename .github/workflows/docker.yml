@@ -2,7 +2,7 @@ name: Publish Docker image
 
 on:
   push:
-    branches: [ master ]
+    branches: [ release ]
   release:
     types: [ published ]
 
@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
+
+      - name: Extract WebCalendar Version
+        id: extract_version
+        run: echo "::set-output name=version::$(./bump_version.sh -p)"
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2 
@@ -32,4 +36,4 @@ jobs:
           context: .
           file: ./docker/Dockerfile-php8
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:v1.9.8-dev-php8
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:${{ steps.extract_version.outputs.version }}-php8-apache

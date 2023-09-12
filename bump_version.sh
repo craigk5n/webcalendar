@@ -67,22 +67,6 @@ update_config_php() {
 
 
 
-# Function to update version in .github/workflows/docker.yml
-update_docker_yml() {
-    local file_path=".github/workflows/docker.yml"
-    local new_version="$1"
-    
-    # Get the line number containing the version tag
-    local line_num=$(grep -nE 'tags: \${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:[^ ]*-dev-php8' "$file_path" | cut -d: -f1)
-    
-    # If we found the line, update the version on that line
-    if [[ -n "$line_num" ]]; then
-        sed -i "${line_num}s|webcalendar:[^ ]*-dev-php8|webcalendar:${new_version}-dev-php8|" "$file_path"
-    fi
-
-    echo "Updated $file_path to version $new_version"
-}
-
 # Function to update version in UPGRADING.html
 update_upgrading_html() {
     local file_path="UPGRADING.html"
@@ -152,7 +136,6 @@ for file in "${sql_files[@]}"; do
 done
 
 update_config_php "$new_version"
-update_docker_yml "$new_version"
 update_upgrading_html "$new_version"
 update_composer_json "$new_version"
 update_upgrade_matrix "$new_version"
