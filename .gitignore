@@ -8,4 +8,7 @@ vendor
 *.orig
 *.save
 *.class
+*.log
 *.jar
+*.old
+__pycache__
