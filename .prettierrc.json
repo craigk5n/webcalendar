@@ -1,0 +1,14 @@
+{
+  "overrides": [
+    {
+      "files": ".prettierrc.json",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ],
+  "editorconfig": true,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5"
+}
