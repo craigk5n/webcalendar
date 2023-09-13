@@ -69,7 +69,7 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ): array {
   // Open translations file
   $fp = fopen($path_to_folder . $basename, 'r');
   if ( ! $fp )
-    die_miserable_death ( 'Could not open language file: ' . $f );
+    die_miserable_death ( 'Could not open language file: ' . $path_to_folder . $basename );
 
   $translations = [];
   $inInstallTrans = false;
