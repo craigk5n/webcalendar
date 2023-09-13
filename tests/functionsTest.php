@@ -15,13 +15,17 @@ final class FunctionsTest extends TestCase
     $res = activate_urls ( $text );
     $this->assertEquals ( $text, $res );
 
-    $text = 'Sample Text http://cnn.com';
+    $text = 'Sample Text http://k5n.us';
     $res = activate_urls ( $text );
-    $this->assertEquals ( 'Sample Text <a href="http://cnn.com">CNN</a>', $res );
+    $this->assertEquals ( 'Sample Text <a href="http://k5n.us">http://k5n.us</a>', $res );
 
-    $text = 'Sample Text https://cnn.com';
+    $text = 'Sample Text https://www.k5n.us';
     $res = activate_urls ( $text );
-    $this->assertEquals ( 'Sample Text <a href="https://cnn.com">CNN</a>', $res );
+    $this->assertEquals ( 'Sample Text <a href="https://www.k5n.us">https://www.k5n.us</a>', $res );
+
+    $text = 'Sample Text https://www.k5n.us/webcalendar';
+    $res = activate_urls ( $text );
+    $this->assertEquals ( 'Sample Text <a href="https://www.k5n.us/webcalendar">https://www.k5n.us/webcalendar</a>', $res );
   }
 
   public function test_add_dstfree_time() {
