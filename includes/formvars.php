@@ -46,6 +46,10 @@ function preventHacking ( $name, $instr ) {
     // CSRF protection can be disabled in Admin Settings, but
     // the tokens are still added to forms.
     if (empty($CSRF_PROTECTION) || $CSRF_PROTECTION != 'N') {
+      if (empty($_REQUEST['csrf_form_key'])) {
+        die_miserable_death (translate('Fatal Error') . ': '
+           . translate('Invalid form request'));
+      }
       $formKey = $_REQUEST['csrf_form_key'];
       if ($formKey == $_SESSION['csrf_form_key'] && !empty($_SESSION['csrf_form_key'])) {
         // Okay to proceed
