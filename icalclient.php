@@ -29,7 +29,7 @@
  * (Strange, since it did display a PHP compile error message...)
  *
  * Usage Requirements:
- * For this work, at least on some Apache intallations,
+ * For this work, at least on some Apache installations,
  * the following may need to be added to the httpd.conf file:
  *  <Directory "/var/www/html/webcalendar">
  *    Script PUT /icalclient.php

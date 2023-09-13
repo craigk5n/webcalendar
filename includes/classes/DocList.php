@@ -3,8 +3,8 @@
  * The Doc class represents a list of Doc objects.
  *
  * @author Craig Knudsen
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  * @subpackage Doc
  */
@@ -44,8 +44,8 @@ class DocList {
    * will be for either attachments ($type='A') or
    * comments ($type='C').
    *
-   * @parm  int    $event_id  The event id
-   * @parm  int    $type  The type of Doc objects ('A' or 'C')
+   * @param int    $event_id  The event id
+   * @param int    $type  The type of Doc objects ('A' or 'C')
    * @return DocList The new DocList object
    * @access public
    */

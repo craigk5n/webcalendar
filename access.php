@@ -6,7 +6,7 @@
  * - list users to manage (no parameters)
  * - manage a single user's rights (just "user" parameter)
  *   this will include which functions the user can access and
- *   (if $ALLOW_VIEW_OTHER is 'Y') which calendars thay can view/edit/approve
+ *   (if $ALLOW_VIEW_OTHER is 'Y') which calendars they can view/edit/approve
  * - update the database (form handler)
  *
  * Input Parameters:

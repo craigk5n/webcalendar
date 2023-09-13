@@ -3,8 +3,8 @@
  * Declares the RepeatingEvent class.
  *
  * @author Adam Roben <adam.roben@gmail.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  * @subpackage Events
  */
@@ -71,7 +71,7 @@ class RepeatingEvent extends Event {
    */
   var $_repeatByDay;
   /**
-   * Specified the nth occurance within the existing event date set
+   * Specified the nth occurrence within the existing event date set
    * @var string in the format (1,2,3,4...366,-366,-365...-1 )
    * @access private
    */
@@ -145,11 +145,11 @@ class RepeatingEvent extends Event {
    * @param string $rpt_bymonth    Months that events occur
    * @param string $rpt_bymonthday Days of month that events occur
    * @param string $rpt_byday      Days on which the event falls (replaces $days)
-   * @param string $rpt_bysetpos   Nth occurance within existing event set
+   * @param string $rpt_bysetpos   Nth occurrence within existing event set
    * @param string $rpt_byweekno   Weeks that events occur
    * @param string $rpt_byyearday  Days of the year that events occur
    * @param string $rpt_wkst       Start day of week for ByDay events
-   * @param string $rpt_count      Number of repeat occurances (including orginal date)
+   * @param string $rpt_count      Number of repeat occurrences (including original date)
    * @param array  $exceptions     Dates on which the event should not occur
    * @param array  $inclusions     Additional dates on which the event should occur
    * @param array  $rpt_all_dates  All dates on which the event should occur
@@ -326,9 +326,9 @@ class RepeatingEvent extends Event {
     return $this->_repeatByDay;
   }
   /**
-   * Gets the Nth occurance of the event set.
+   * Gets the Nth occurrence of the event set.
    *
-   * @return string The Nth occurance of the  event set
+   * @return string The Nth occurrence of the  event set
    *
    * @access public
    */

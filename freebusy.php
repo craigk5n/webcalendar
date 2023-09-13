@@ -16,7 +16,7 @@
  * Rather arbitrary, eh???
  *
  * To read the iCal specification:
- *   http://www.ietf.org/rfc/rfc2445.txt
+ *   http://ietf.org/rfc/rfc2445.txt
  *
  * WebCalendar does not use freebusy info for scheduling right now.
  * But, this may change in the future.

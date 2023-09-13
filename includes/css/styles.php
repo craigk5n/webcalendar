@@ -3,8 +3,8 @@
  * Dynamic CSS styles used in WebCalendar.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  *
  *                         HOW TO READ THIS DOCUMENT
@@ -126,7 +126,7 @@ defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 
 /* CSS Variables (Custom Properties) are currently available in all modern browsers. Even IE > 9!
 
-  See http://www.caniuse.com/#search=css%20variables
+  See http://caniuse.com/#search=css%20variables
   and https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables
 
   So, as long as this file, "styles.php" with PHP variables, gets called before

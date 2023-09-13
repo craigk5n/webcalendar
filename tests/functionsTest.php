@@ -15,13 +15,13 @@ final class FunctionsTest extends TestCase
     $res = activate_urls ( $text );
     $this->assertEquals ( $text, $res );
 
-    $text = 'Sample Text http://www.cnn.com';
+    $text = 'Sample Text http://cnn.com';
     $res = activate_urls ( $text );
-    $this->assertEquals ( 'Sample Text <a href="http://www.cnn.com">http://www.cnn.com</a>', $res );
+    $this->assertEquals ( 'Sample Text <a href="http://cnn.com">CNN</a>', $res );
 
-    $text = 'Sample Text https://www.cnn.com';
+    $text = 'Sample Text https://cnn.com';
     $res = activate_urls ( $text );
-    $this->assertEquals ( 'Sample Text <a href="https://www.cnn.com">https://www.cnn.com</a>', $res );
+    $this->assertEquals ( 'Sample Text <a href="https://cnn.com">CNN</a>', $res );
   }
 
   public function test_add_dstfree_time() {
@@ -35,7 +35,7 @@ final class FunctionsTest extends TestCase
     $hours = $diff / 3600;
     $this->assertEquals ( 23, $hours );
     // add another day and we should get 24 hours
-    $time += 3600 * 24;
+    $time += 86400;
     $res = add_dstfree_time ( $time, 86400 );
     $diff = $res - $time;
     $hours = $diff / 3600;
@@ -61,12 +61,12 @@ final class FunctionsTest extends TestCase
 
     // Longer event that crosses midnight
     $hourIn = 160000; // 4PM
-    $res = add_duration ( $hourIn, 60 * 24 ); // Add 24 hours
+    $res = add_duration ( $hourIn, 1440 ); // Add 24 hours
     $this->assertEquals ( '160000', $res );
 
     // Multi-day duration
     $hourIn = 160000; // 4PM
-    $res = add_duration ( $hourIn, 60 * 24 * 7 ); // Add 7 days
+    $res = add_duration ( $hourIn, 10080 ); // Add 7 days
     $this->assertEquals ( '160000', $res );
   }
 
@@ -80,7 +80,7 @@ final class FunctionsTest extends TestCase
     $this->assertEquals ( '2016', date('Y', $jan1_ts) );
 
     // params for bump_local_timestamp:
-    //   current_unixtime, hourchange, minchange, secchage,
+    //   current_unixtime, hourchange, minchange, secchange,
     //   monthchange, daychange, yearchange
 
     // Add 1 hour
@@ -100,7 +100,7 @@ final class FunctionsTest extends TestCase
     //echo "Time: " . date('r', $newtime ) . "\n";
     $this->assertEquals ( '02', date('d', $newtime) );
 
-    // Daylight savings 2016 was March 13, aneded on November 6
+    // Daylight savings 2016 was March 13, amended on November 6
 
     // Add day for about a week around the change and make sure
     // the hour stays at 12PM.
@@ -112,7 +112,7 @@ final class FunctionsTest extends TestCase
       $this->assertEquals ( '12', date('H', $newtime) );
       $this->assertEquals ( $expDay, date('d', $newtime) );
     }
-  
+
     // Do the same for DST ending
     $start = mktime ( 12, 0, 0, 11, 1, 2016 ); // Nov 1
     for ( $i = 0; $i < 14; $i++ ) {
@@ -199,6 +199,6 @@ final class FunctionsTest extends TestCase
     $this->assertFalse(upgrade_requires_db_changes('mysql', 'v1.9.3', 'v1.9.5'));
     $this->assertTrue(upgrade_requires_db_changes('mysql', 'v1.9.5', 'v1.9.6'));
     $this->assertFalse(upgrade_requires_db_changes('mysql', 'v1.9.7', 'v1.9.8'));
-  }  
+  }
 
 }

@@ -23,7 +23,7 @@
 #   - update_translation.pl
 #       will parse the program files to find all translate ( 'phrase' ) and
 #       tooltip ( 'phrase' ). It will arrange the phrases according to the page
-#       (file) that contains the first occurance. Optionally, it can tag the
+#       (file) that contains the first occurrence. Optionally, it can tag the
 #       phrases that are not yet translated by putting
 #       << MISSING >>
 #       on the line above the phrase. And, if the phrase is an abbreviation,
@@ -144,7 +144,7 @@ end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time
 Due Date: Due Date
 Due Time: Due Time
-Site Extas: Site Extas
+Site Extras: Site Extras
 Find Name: Find Name
 Resources: Resources
 participants-help: Lists the participants of this entry.
@@ -968,7 +968,7 @@ consider enabling UAC: You may want to consider enabling User Access Control to 
 recommend approving new public events: We recommend that all public event submissions be approved.
 recommend using CAPTCHA: CAPTCHA is recommended to guard againt automated event submissions.
 Database cache directory location: Database cache directory location
-db cache should be inaccessable: The database cache should be in a directory that cannot be accessed with a URL.
+db cache should be inaccessible: The database cache should be in a directory that cannot be accessed with a URL.
 PHP Settings XXX: PHP Settings: "XXX"
 recommend setting XXX Off: The recommended setting for "XXX" is Off.
 recommend setting XXX On: recommend setting XXX On
@@ -1353,7 +1353,7 @@ could not find event id XXX in database.: could not find event id XXX in databas
 task: task
 event: event
 This is a reminder for the XXX detailed below.: This is a reminder for the XXX detailed below.
-Pecentage Complete: Pecentage Complete
+Percentage Complete: Percentage Complete
 Reminder: Reminder
 
 ########################################

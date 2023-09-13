@@ -2,12 +2,13 @@
 /**
  * Calculate the moonphases for a given year and month.
  *
- * Code borrowed from http://www.zend.com/codex.php?id=830&single=1
+ * [bad links]
+ * Code borrowed from http://zend.com/codex.php?id=830&single=1
  * Modified to accept month parameter and return 1 month of moon phases
  * and return array in Ymd format.
  * Converted from Basic by Roger W. Sinnot, Sky & Telescope, March 1985.
  * Converted from javascript by Are Pedersen 2002
- * Javascript found at http://www.stellafane.com/moon_phase/moon_phase.htm
+ * Javascript found at http://stellafane.com/moon_phase/moon_phase.htm
  *
  * Required gif images to be present in the images folder.
  * newmoon.gif, fullmoon.gif, firstmoon.gif, lastmoon.gif
@@ -25,7 +26,7 @@ function calculateMoonPhases ( $year, $month = 1 ) {
   $R1 = 3.14159265 / 180;
   $T = ( $year - 1899.5 ) / 100;
   $T2 = $T * $T;
-  $T3 = $T * $T * $T;
+  $T3 = $T2 * $T;
 
   $J0 = 2415020 + 29 * $K0;
 

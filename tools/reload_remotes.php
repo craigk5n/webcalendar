@@ -94,7 +94,7 @@ if ($REMOTES_ENABLED == 'Y') {
       $login = $row[2];
       $type = 'remoteics';
       if ($debug) echo "Checking calendar: $cal_url\n";
-      // TODO: Handle hcal data.  Is that still used by anyeone???
+      // TODO: Handle hcal data. Is that still used by anyone???
 /*
       $data = parse_ical($cal_url, $type);
       // we may be processing an hCalendar

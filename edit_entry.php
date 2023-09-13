@@ -7,7 +7,7 @@
  * A SysAdmin can enable HTML for event full descriptions. If one of the
  * supported HTML edit widgets is also installed, users can use WYSIWYG editing.
  * See the WebCalendar page at
- * http://www.k5n.us/webcalendar.php?topic=Add-Ons
+ * http://k5n.us/webcalendar.php?topic=Add-Ons
  * for download and install instructions for these packages.
  */
 require_once 'includes/init.php';
@@ -89,7 +89,7 @@ function time_selection($prefix, $time = '', $trigger = false)
 
 $daysStr = translate('days');
 $hoursStr = translate('hours');
-$minutStr = translate('minutes');
+$minuteStr = translate('minutes');
 $saveStr = translate('Save');
 
 load_user_categories();
@@ -759,7 +759,7 @@ $tabI = 0;
               <input class="form-control" type="text" name="duration_m" id="duration_m" size="2" maxlength="2" value="<?php if ($allday != 'Y') {
                                                                                                     printf("%02d", $duration - ($dur_h * 60));
                                                                                                   } ?>">
-              &nbsp;(<label for="duration_h"><?php echo $hoursStr; ?></label>: <label for="duration_m"><?php echo $minutStr; ?></label>)
+              &nbsp;(<label for="duration_h"><?php echo $hoursStr; ?></label>: <label for="duration_m"><?php echo $minuteStr; ?></label>)
             </div>
           <?php } else { ?>
             <div id="timeentryend"><label data-toggle="tooltip" data-placement="top" title="<?php etooltip('end-time-help'); ?>">
@@ -790,7 +790,7 @@ $tabI = 0;
 
         $site_extracnt = count($site_extras);
         if ($site_extracnt && !empty($site_extras[0]['FIELDSET'])) {
-          echo "<div><fieldset><legend>" . translate("Site Extas") . "</legend>\n<table>\n";
+          echo "<div><fieldset><legend>" . translate("Site Extras") . "</legend>\n<table>\n";
         }
 
         for ($i = 0; $i < $site_extracnt; $i++) {
@@ -1519,7 +1519,7 @@ $tabI = 0;
               <label><input type="text" size="2" name="rem_hours" '
           . 'value="' . $rem_hours . '">' . $hoursStr . '</label>&nbsp;
               <label><input type="text" size="2" name="rem_minutes" value="'
-          . $rem_minutes . '">' . $minutStr . '</label>
+          . $rem_minutes . '">' . $minuteStr . '</label>
             </td>
           </tr>
           <tr>
@@ -1566,7 +1566,7 @@ $tabI = 0;
               <input type="text" size="2" name="rem_rep_hours" value="'
           . $rem_rep_hours . '"><label>' . $hoursStr . '</label>&nbsp;
               <input type="text" size="2" name="rem_rep_minutes" value="'
-          . $rem_rep_minutes . '"><label>' . $minutStr . '</label>
+          . $rem_rep_minutes . '"><label>' . $minuteStr . '</label>
             </td>
           </tr>
         </tbody>

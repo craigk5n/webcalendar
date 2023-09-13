@@ -25,8 +25,8 @@
 <a name="intro"></a>
 <h2>Introduction</h2>
 
-<p>WebCalendar is written in PHP. A minimum of PHP 4.0.1 is
-required to run WebCalendar due to the use of classes and sessions.
+<p>WebCalendar is written in PHP. A minimum of PHP 7.4 is
+required to run WebCalendar.
 </p>
 
 <div class="top"><a href="#" target="_top">top</a></div>
@@ -38,18 +38,18 @@ required to run WebCalendar due to the use of classes and sessions.
 </p>
 
 <dl>
-  <dt><a href="http://www.perl.org">perl</a></dt>
+  <dt><a href="http://perl.org">perl</a></dt>
   <dd>Perl is used to check translation files to see what translations are
   missing. If you are using Windows, perl is included as part of the <a
-    href="http://www.cygwin.com">Cygwin</a> package.</dd>
+    href="http://cygwin.com">Cygwin</a> package.</dd>
 
   <dt>make</dt>
   <dd>The "make" command is used when generating WebCalendar documentation in
   the <tt>docs</tt> directory. The "make" command is standard on Linux if you
   install certain development packages. If you are using Windows, make is
-  included as part of the <a href="http://www.cygwin.com">Cygwin</a> package.</dd>
+  included as part of the <a href="http://cygwin.com">Cygwin</a> package.</dd>
 
-  <dt><a href="http://www.gnu.org/software/patch/patch.html">patch</a></dt>
+  <dt><a href="http://gnu.org/software/patch/patch.html">patch</a></dt>
   <dd>The "patch" command is used to apply patches posted on the SourceForge
   patches area.</dd>
 
@@ -57,8 +57,11 @@ required to run WebCalendar due to the use of classes and sessions.
   <dd>The "diff" command is used to create patches posted on the SourceForge
   patches area.</dd>
 
-  <dt><a href="https://www.cvshome.org/">CVS</a></dt>
+      <!--
+      [bad link]
+  <dt><a href="https://cvshome.org/">CVS</a></dt>
   <dd>Configuration management is accomplished using CVS.</dd>
+ -->
 
   <dt>Internet Explorer, Mozilla/Firefox, and Apple Safari</dt>
   <dd>We try to test on all three of these platforms whenever we make any HTML
@@ -67,7 +70,7 @@ required to run WebCalendar due to the use of classes and sessions.
 </dl>
 
 <p><span class="tip">TIP</span> If you are developing on a
-Windows system, the <a href="http://www.cygwin.com">Cygwin package</a>
+Windows system, the <a href="http://cygwin.com">Cygwin package</a>
 will provide command line tools that
 include perl, make, patch, diff and cvs.
 </p>
@@ -80,7 +83,7 @@ include perl, make, patch, diff and cvs.
 
 <p>You should always be using the latest code from git:</p>
 
-<a href="https://github.com/craigk5n/webcalendar">https://github.com/craigk5n/webcalendar</a>
+    <a href="https://github.com/craigk5n/webcalendar">WebCalendar</a>
 
 <p>To obtain the code from your command line using the git command:</p>
 
@@ -180,19 +183,26 @@ they have not been 100% implemented).</p>
 
   <dt>PHP file comments</dt>
   <dd>Each file should have a file header.
+
+        <!--
+    [bad link]
     <br>
     See <a
       href="http://webcalendar.cvs.sourceforge.net/webcalendar/webcalendar/report.php?revision=1.56&amp;view=markup"><tt>report.php</tt></a>
     as an example.</dd>
+ -->
 
   <dt>PHP function comments</dt>
-  <dd>Function documentation is generated using <a href="http://www.phpdoc.org/"
+  <dd>Function documentation is generated using <a href="http://phpdoc.org/"
     title="phpDocumentor">phpDocumentor</a>. Each function should be preceded
-  by a DocBlock. See the phpDocumentor website for <a
+  by a DocBlock. See the phpDocumentor website for information about <a
     href="http://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_phpDocumentor.howto.pkg.html#basics.docblock"
-    title="DocBlocks">information about DocBlocks and DocBlock syntax</a>, and
+    >DocBlocks</a> and DocBlock syntax.
+        <!--
+        [bad link]
+    , and
   see <a href="http://webcalendar.cvs.sourceforge.net/webcalendar/webcalendar/includes/functions.php?revision=1.389&amp;view=markup"><tt>includes/functions.php</tt></a> for examples.</dd>
-
+ -->
   <dt>XHTML</dt>
   <dd>All XHTML should conform to XHTML 1.0 Transitional. Use double quotes around HTML attributes.</dd>
 
@@ -336,10 +346,10 @@ quickly and efficiently.</p>
   <br><br>
   Others are patch files, which usually have a <tt>.diff</tt> or
   <tt>.patch</tt> file extension. In order to use one of these files, you need
-  the <a href="http://www.gnu.org/software/patch/patch.html">GNU patch</a>
+  the <a href="http://gnu.org/software/patch/patch.html">GNU patch</a>
   program. (This should be installed on all Linux systems and you can get a
   version for Windows. I use the patch program that comes with <a
-    href="http://www.cygwin.com">Cygwin</a> on windows.) I would recommend
+    href="http://cygwin.com">Cygwin</a> on windows.) I would recommend
   testing the patch on your install first using the <tt>--dry-run</tt> option.
   <br><br>
   For example, if the patch file is called <tt>calmods.diff</tt>, then you
@@ -365,6 +375,8 @@ quickly and efficiently.</p>
 <p>The following resources may be helpful:</p>
 
 <ul>
+      <!--
+      [bad links]
   <li>The <a href="http://webcalendar.cvs.sourceforge.net/webcalendar/webcalendar/TODO?revision=1.13&amp;view=markup">TODO</a>
   file in CVS contains ideas for future enhancements.</li>
   <li>The <a href="http://sourceforge.net/forum/forum.php?forum_id=11587">Open
@@ -374,6 +386,7 @@ quickly and efficiently.</p>
   SourceForge.</li>
   <li><a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">Patches</a> on
   SourceForge.</li>
+ -->
   <li><a href="WebCalendar-Functions.html">WebCalendar Function Documentation</a></li>
   <li><a
     href="WebCalendar-Database.html">WebCalendar-Database.html</a>

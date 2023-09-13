@@ -363,7 +363,7 @@ $end_str = ( $event_time >= 0 && $duration > 0
 . add_duration ( $event_time, $duration % 1440 ), 2 )
 : '' );
 
-// get the email adress of the creator of the entry
+// get the email address of the creator of the entry
 user_load_variables ( $create_by, 'createby_' );
 $email_addr = empty ( $createby_email ) ? '' : $createby_email;
 

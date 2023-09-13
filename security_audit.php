@@ -177,7 +177,7 @@ print_header();
   print_issue(
     translate('Database cache directory location'),
     $isOk,
-    translate('db cache should be inaccessable')
+    translate('db cache should be inaccessible')
   );
 
   $phpSettingsXXX  = translate('PHP Settings XXX');

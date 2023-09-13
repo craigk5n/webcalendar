@@ -1,6 +1,6 @@
 // The following code is used to support the small popups that give the full
 // description of an event when the user moves the mouse over it.
-// Thanks to Klaus Knopper (www.knoppix.com) for this script.
+// Thanks to Klaus Knopper (knoppix.com) for this script.
 // It has been modified to work with the existing WebCalendar
 // architecture on 02/25/2005.
 //
@@ -43,7 +43,7 @@ if( typeof document.getElementsBySelector == 'undefined' ) {
        contained inside the 'div' element which has id="main".
 
      New in version 0.4: Support for CSS2 and CSS3 attribute selectors:
-     See http://www.w3.org/TR/css3-selectors/#attribute-selectors
+     See http://w3.org/TR/css3-selectors/#attribute-selectors
 
      Version 0.4 - Simon Willison, March 25th 2003
      -- Works in Phoenix 0.5, Mozilla 1.3, Opera 7, Internet Explorer 6,
