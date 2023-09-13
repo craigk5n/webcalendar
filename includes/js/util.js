@@ -45,7 +45,7 @@ function addLoadHandler(handler)
      contained inside the 'div' element which has id="main"
 
    New in version 0.4: Support for CSS2 and CSS3 attribute selectors:
-   See http://www.w3.org/TR/css3-selectors/#attribute-selectors
+   See http://w3.org/TR/css3-selectors/#attribute-selectors
 
    Version 0.4 - Simon Willison, March 25th 2003
    -- Works in Phoenix 0.5, Mozilla 1.3, Opera 7, Internet Explorer 6, Internet Explorer 5 on Windows
@@ -218,5 +218,3 @@ function showResponse(originalRequest) {
   }
   document.body.style.cursor = 'default';
 }
-
-

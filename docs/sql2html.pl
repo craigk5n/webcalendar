@@ -230,8 +230,8 @@ print<<EOF;
     <h2>WebCalendar Database Documentation</h2>
     <div id="DB_Doc">
       <p><label>Home Page:</label>
-        <a href="http://www.k5n.us/webcalendar.php">http://www.k5n.us/webcalendar.php</a></p>
-      <p><label>Author:</label><a href="http://www.k5n.us">Craig Knudsen</a>,
+        <a href="http://k5n.us/webcalendar.php">http://k5n.us/webcalendar.php</a></p>
+      <p><label>Author:</label><a href="http://k5n.us">Craig Knudsen</a>,
         <a href="mailto:&#109;&#097;&#105;&#108;&#116;&#111;&#058;&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;">&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;</a></p>
       <p></p><label>Version:</label>$v</p>
     </div>

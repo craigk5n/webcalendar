@@ -8,7 +8,7 @@
 #     /bin/mariadb -p
 #     (enter the MYSQL_ROOT_PASSWORD below)
 #   Execute the following three db commands:
-#     GRANT ALL PRIVILEGES ON *.* TO webcalendar@localhost IDENTIFIED BY 'Webcalendar.1'  WITH GRANT OPTION;
+#     GRANT ALL PRIVILEGES ON *.* TO webcalendar@localhost IDENTIFIED BY 'Webcalendar.1' WITH GRANT OPTION;
 #     FLUSH PRIVILEGES;
 #     QUIT
 #

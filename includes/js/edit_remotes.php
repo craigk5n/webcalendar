@@ -44,7 +44,7 @@ function check_name() {
 function showResponse(originalRequest) {
   if (originalRequest.responseText) {
     text = originalRequest.responseText;
-    //this causes jacascript errors in Firefox, but these can be ignored
+    //this causes javascript errors in Firefox, but these can be ignored
     alert (text);
     document.prefform.nid.focus();
     validform = false;

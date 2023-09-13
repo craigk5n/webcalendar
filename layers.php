@@ -174,7 +174,7 @@ if ($single_user == 'N') {
               </tr>
               <tr>
                 <td data-toggle="tooltip" data-placement="top" title="<?php etranslate('If checked, events that are duplicates of your events will be shown.'); ?>"><label><?php echo $duplicatesStr; ?>:</label></td>
-                <td><input xclass="form-control" type="checkbox" name="editLayerDups" id="editLayerDups">
+                <td><input class="form-control" type="checkbox" name="editLayerDups" id="editLayerDups">
                 </td>
               </tr>
             </table>

@@ -2,8 +2,8 @@
 /* Declares the WebCalendar class.
  *
  * @author Adam Roben <adam.roben@gmail.com>
- * @copyright Craig Knudsen, <craig@k5n.us>, http://www.k5n.us/
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @copyright Craig Knudsen, <craig@k5n.us>, http://k5n.us/
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  */
 
@@ -142,14 +142,14 @@ class WebCalendar {
     // a URL in any way.  This includes the directory names as well.
     if ( preg_match ( '/\s*script/i', $_SERVER['QUERY_STRING'] . $self ) ) {
       // No need to have a graceful exit for this since it should only
-      // happen to malicioius crapweasels.
+      // happen to malicious crapweasels.
       echo "<html><body><h2>User Error</h2><p>Bite me.</p></html>\n";
       exit;
     }
     // Don't allow "img src" to be in the URL either.
     if ( preg_match ( '/\s*img.*src/i', $_SERVER['QUERY_STRING'] . $self ) ) {
       // No need to have a graceful exit for this since it should only
-      // happen to malicioius crapweasels.
+      // happen to malicious crapweasels.
       echo "<html><body><h2>User Error</h2><p>Bite me.</p></html>\n";
       exit;
     }

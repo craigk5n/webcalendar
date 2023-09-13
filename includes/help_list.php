@@ -64,7 +64,7 @@ $helpListStr .= '
 /**
  * Just to print out the help pages.
  *
- * @params $help_array   The array of things to print.
+ * @param $help_array   The array of things to print.
  */
 function list_help ( $help_array ) {
   foreach ( $help_array as $lab => $val ) {

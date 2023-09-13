@@ -2,8 +2,8 @@
 /* Most of WebCalendar's functions.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  */
 
@@ -585,7 +585,7 @@ EOT;
 
   // Build a master array containing all events for $participants.
   for ( $i = 0; $i < $cnt; $i++ ) {
-    /* Pre-Load the repeated events for quckier access. */
+    /* Pre-Load the repeated events for quicker access. */
     $repeated_events = read_repeated_events ( $participants[$i], $dateTS,
       $dateTS, '' );
     /* Pre-load the non-repeating events for quicker access. */
@@ -870,7 +870,7 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
   $y = intval ( $indate / 10000 );
   $m = intval ( $indate / 100 ) % 100;
   $d = $indate % 100;
-  $dateTime = new DateTime(); 
+  $dateTime = new DateTime();
   $dateTime->setDate($y, $m, $d);
   $wday = $dateTime->format('w');
   if ( $short_months ) {
@@ -927,7 +927,7 @@ function decode_string ( $instr ) {
  * Display a text for a single activity log entry.
  *
  * @param string $cal_type  the log entry type
- * @param string $cal_text  addiitonal text to display
+ * @param string $cal_text  additional text to display
  *
  * @return string  HTML for one log entry.
  */
@@ -1590,7 +1590,7 @@ function display_time ( $time = '', $control = 0, $timestamp = '',
 }
 
 /**
- * Checks for any unnaproved events.
+ * Checks for any unapproved events.
  *
  * If any are found, display a link to the unapproved events
  * (where they can be approved).
@@ -1699,8 +1699,9 @@ function full_url($s, $use_forwarded_host = false)
  * <b>Note:</b>  MS IIS/PWS has a bug that does not allow sending a cookie and a
  * redirect in the same HTTP header. When we detect that the web server is IIS,
  * we accomplish the redirect using meta-refresh.
+ * [bad link]
  * See the following for more info on the IIS bug:
- * {@link http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4}
+ * {@link http://faqts.com/knowledge_base/view.phtml/aid/9316/fid/4}
  *
  * @param string $url  The page to redirect to. In theory, this should be an
  *                     absolute URL, but all browsers accept relative URLs
@@ -1851,7 +1852,7 @@ Subject: ' . $subj . '<br>
 /**
  * Generate activity log
  *
- *  @paran  int   $id       Event id if called from view_entry.php
+ *  @param  int   $id       Event id if called from view_entry.php
  *  @param  bool  $sys      Display System Log ro Event Log
  *  @param  int   $startid  Event number to start off list
  *
@@ -2300,7 +2301,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
           $bydayvalues = get_byday ( $byday, $cdate, 'year', $date );
           if ( ! empty ( $bydayvalues ) )
             $yret = array_merge ( $yret, $bydayvalues );
-        } else // No Byxx rules apply.
+        } else // No Byxxx rules apply.
           $ret[] = $cdate;
 
         // Must wait till all other BYxx are processed.
@@ -2508,7 +2509,7 @@ function get_categories_by_id ( $id, $user, $asterisk = false ) {
 /**
  * Gets all the events for a specific date.
  *
- * Events are retreived from the array of pre-loaded events
+ * Events are retrieved from the array of pre-loaded events
  * (which was loaded all at once to improve performance).
  *
  * The returned events will be sorted by time of day.
@@ -3048,11 +3049,11 @@ function get_plugin_list ( $include_disabled = false ) {
  *
  * @param string $user     User login we are getting preference for
  * @param string $setting  Name of the setting
- * @param stirng $defaultSetting    Value to return if no value foun
+ * @param string $defaultSetting    Value to return if no value found
  *            in the database
  *
  * @return string  The value found in the webcal_user_pref table for the
- *                 specified setting or the sytem default if no user settings
+ *                 specified setting or the system default if no user settings
  *                 was found.
  */
 function get_pref_setting ( $user, $setting, $defaultValue='' ) {
@@ -3156,7 +3157,7 @@ function get_preferred_view ( $indate = '', $args = '' ) {
  *                true/false on insert or delete queries.
  *
  * @global array  Array of {@link RepeatingEvent}s
- *                retreived using {@link read_repeated_events()}
+ *                retrieved using {@link read_repeated_events()}
  */
 function get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
   global $repeated_events;
@@ -3174,7 +3175,7 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
 /**
  * Gets all the tasks for a specific date.
  *
- * Events are retreived from the array of pre-loaded tasks
+ * Events are retrieved from the array of pre-loaded tasks
  * (which was loaded all at once to improve performance).
  *
  * The returned tasks will be sorted by time of day.
@@ -3457,7 +3458,7 @@ translate ( 'minutes' )
  */
         $str .= $d . ' ' . translate ( 'day'
            . ( $d == 1 ? '' : 's' ) ) . ' ' . $h . ' ' . translate ( 'hour'
-           . ( $h = 1 ? '' : 's' ) ) . ' ' . $minutes . ' ' . translate ( 'minute'
+           . ( $h === 1 ? '' : 's' ) ) . ' ' . $minutes . ' ' . translate ( 'minute'
            . ( $minutes == 1 ? '' : 's' ) ) . ' '
          . translate ( $reminder['before'] == 'Y'
           ? 'before' : 'after' ) . ' ' . translate ( $reminder['related'] == 'S'
@@ -4113,7 +4114,7 @@ function load_nonuser_preferences ( $nonuser ) {
  * If the global variable $ALLOW_EXTERNAL_HEADER is set to 'Y',
  * then we load an external file using include.
  * This can have serious security issues since a
- * malicous user could open up /etc/passwd.
+ * malicious user could open up /etc/passwd.
  *
  * @param string $login  Current user login
  * @param string $type   type of template
@@ -4688,7 +4689,7 @@ function print_date_entries ( $date, $user, $ssi = false,
       . '" alt="' . $moon_title . '">' ) . "<br>\n";
     $cnt++;
   }
-  // Get, combime and sort the events for this date.
+  // Get, combine and sort the events for this date.
   $ev = combine_and_sort_events (
     // Get all the non-repeating events.
     get_entries ( $date, $get_unapproved ),
@@ -5168,7 +5169,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
  *
  * Includes layers and possibly public access if enabled.
  * NOTE: The values for the global variables $thisyear and $thismonth
- * MUST be set!  (This will determine how far in the future to caclulate
+ * MUST be set! (This will determine how far in the future to calculate
  * repeating event dates.)
  *
  * @param string $user           Username
@@ -6476,14 +6477,14 @@ function sendCookie($name, $value, $expiration=0, $path='', $sensitive=true) {
 
 /**
  * Finds the next version greater than the specified version from a given file content.
- * 
+ *
  * The function scans the provided file content to detect version patterns like "upgrade_v1.9.5".
  * It then compares the found versions to the provided version and returns the immediate next version
  * greater than the provided one.
  *
  * @param string $fileContent  The content of the file containing version upgrade markers.
  * @param string $version      The version to be compared against.
- * 
+ *
  * @return string              The next version greater than the provided version, or an empty string if not found.
  */
 function findNextVersion($fileContent, $version) {
@@ -6505,20 +6506,20 @@ function findNextVersion($fileContent, $version) {
 
 /**
  * Determines if a software upgrade requires database changes based on the database type and version range.
- * 
- * The function inspects the SQL upgrade file associated with the specified database type to find SQL changes 
+ *
+ * The function inspects the SQL upgrade file associated with the specified database type to find SQL changes
  * between the provided old and new version. If there's any significant SQL content between these version
  * markers, it indicates that database changes are required.
- * 
- * For some database types where the SQL upgrade file might not exist, it falls back to checking the MySQL 
+ *
+ * For some database types where the SQL upgrade file might not exist, it falls back to checking the MySQL
  * upgrade file as a general reference.
  *
  * @param string $db_type      The type of the database (e.g., 'mysql', 'mysqli', 'postgres').
  * @param string $old_version  The starting version to check for changes from (e.g., 'v1.9.0').
  * @param string $new_version  The ending version to check for changes up to (e.g., 'v1.9.5').
- * 
+ *
  * @return bool                True if SQL changes are found between the versions, false otherwise.
- * 
+ *
  * @throws Exception           Throws an exception if the SQL file for the specified database type doesn't exist.
  */
 function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
@@ -6587,16 +6588,16 @@ function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
 
 /**
  * Updates the WebCalendar version in the database and logs the update activity.
- * 
+ *
  * This function modifies the 'webcal_config' table to set the new WebCalendar version.
- * Additionally, an activity log is created to keep track of the update and which user 
+ * Additionally, an activity log is created to keep track of the update and which user
  * performed the update.
  *
  * @param string $old_version  The current version before the update (e.g., 'v1.9.0').
  * @param string $new_version  The desired new version after the update (e.g., 'v1.9.5').
- * 
+ *
  * @global object $user        The global user object representing the current logged-in user.
- * 
+ *
  * @return bool                True if the version update is successful, false otherwise.
  */
 function update_webcalendar_version_in_db($old_version, $new_version) {

@@ -96,7 +96,7 @@ function app_active_session ($sid) {
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
 
   // get login and last access time
-  $sql = "SELECT username, time FROM $app_session_table  WHERE session_id = '$sid' ".
+  $sql = "SELECT username, time FROM $app_session_table WHERE session_id = '$sid' ".
   "AND guest = 0 AND userid > 0 ";
 
   $res = dbi_query ( $sql );

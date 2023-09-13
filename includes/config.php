@@ -10,12 +10,12 @@
  * mark a db change), see the comments in install/index.php.
  *
  * @author Craig Knudsen <craig@k5n.us>
- * @copyright Craig Knudsen, <craig@k5n.us>, https://www.k5n.us/
- * @license GNU GPL
+ * @copyright Craig Knudsen, <craig@k5n.us>, https://k5n.us/
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  */
 
-// Pull in Bootstrap ajd JQuery from load_assets.php.
+// Pull in Bootstrap and JQuery from load_assets.php.
 // $ASSETS will contain a string of the HTML to load them.
 // See composer.json for version.
 require_once 'load_assets.php';
@@ -94,7 +94,7 @@ function get_full_include_path($filename)
 
 /**
  * Initializes application configurations.
- * 
+ *
  * The function fetches configuration settings either from environment variables
  * (when WEBCALENDAR_USE_ENV is set to true) or the settings.php file. It sets up
  * the database connection based on the obtained settings and ensures the application
@@ -116,7 +116,7 @@ function get_full_include_path($filename)
  * - $single_user_login
  * - $TROUBLE_URL
  * - $user_inc
- * 
+ *
  * @return array An array of settings after all the necessary initialization.
  *
  * @global string $db_database         The name of the database.

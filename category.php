@@ -156,7 +156,7 @@ if ( empty ( $error ) ) {
 }
 ?>
 
-<!-- Icon selectoin modal -->
+<!-- Icon selection modal -->
 <div class="modal fade" id="iconmodal" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->

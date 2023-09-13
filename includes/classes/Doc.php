@@ -5,8 +5,8 @@
  * caller needing to know about the underlying database schema.
  *
  * @author Craig Knudsen
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  * @subpackage Doc
  */
@@ -165,7 +165,7 @@ class Doc {
    *      <li> Description  </li>
    *      <li> Size of object (attachments)  </li>
    *      <li> MIME type of object  </li>
-   *      <li> Type of objecgt ('A' or 'C')  </li>
+   *      <li> Type of object ('A' or 'C')  </li>
    *      <li> Modification date (YYYYMMDD)  </li>
    *      <li> Modification time (YYYYMMDD)  </li>
    *      </ul>

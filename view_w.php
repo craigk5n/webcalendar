@@ -81,7 +81,7 @@ echo '
 
 $e_save = $re_save = array();
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
-  /* Pre-Load the repeated events for quckier access. */
+  /* Pre-Load the repeated events for quicker access. */
   $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
   $re_save[$i] = $repeated_events;
   /* Pre-load the non-repeating events for quicker access
