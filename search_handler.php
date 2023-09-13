@@ -6,8 +6,8 @@
  * We do a number of security checks to make sure this is allowed.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  */
 require_once 'includes/init.php';
@@ -258,7 +258,7 @@ echo ": " . htmlentities ($origKeywords, ENT_NOQUOTES) . '</strong></p>';
 
 // now sort by number of hits
 if ( empty ( $error ) && empty ( $info ) ) {
-  // no mtaches
+  // no matches
 } else if ( empty ( $error ) ) {
   echo '<ul>';
   foreach ( $info as $result ) {

@@ -299,7 +299,7 @@ $maxEvents = getIntValue ( 'maxEvents' );
 if (empty ($maxEvents)) $maxEvents = 10;
 
 // Should we include tasks?
-// (Only relavant if tasks are enabled in system settings AND enabled for
+// (Only relevant if tasks are enabled in system settings AND enabled for
 // display in calendar view for this user. So, this is really
 // a way to disable tasks from showing up. It will not display
 // them if specified user has not enabled "Display tasks in Calendars"
@@ -438,7 +438,7 @@ if ( $error == '' ) {
     $repeated_events = $events = array();
   } else {
 
-    /* Pre-Load the repeated events for quckier access */
+    /* Pre-Load the repeated events for quicker access */
     $repeated_events = read_repeated_events ( $username, $startDate, $endDate, $cat_id );
 
     /* Pre-load the non-repeating events for quicker access */

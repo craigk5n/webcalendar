@@ -2,7 +2,7 @@
 /**
  * Parse the datebook file.
  *
- * @return the data hash.
+ * @return array the data hash.
  */
 function parse_palmdesktop ( $file, $exc_private = 1 ) {
   $file = EscapeShellArg ( $file );

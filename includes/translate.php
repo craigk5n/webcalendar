@@ -13,8 +13,8 @@
  * translate function since it is simpler to work with.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  */
 
@@ -23,7 +23,7 @@
  * Borrowed from http://us2.php.net/manual/en/function.html-entity-decode.php
  *
  * @param string $string Text to convert
- * @paran bool   $ignore Ignore the charset when decoding
+ * @param bool   $ignore Ignore the charset when decoding
  *
  * #return string The converted text string
  */
@@ -84,7 +84,7 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ): array {
     }
 
     if ($strip) {
-      $line = stripslashes($line); 
+      $line = stripslashes($line);
     }
 
     // Convert quotes to entities.
@@ -318,13 +318,13 @@ function translation_exists ( $str )
  * (with {@link load_translation_text() }).
  *
  * @param string   $str     Text to translate
- * @param string   $decode  Do we want to envoke html_entity_decode?
+ * @param string   $decode  Do we want to invoke html_entity_decode?
  *                          We currently only use this with javascript alerts.
  * @param string   $type    ('' = alphabetic, A = alphanumeric,
  *                          D = date, N = numeric)
  *
  * @return string The translated text, if available. If no translation is
- *                avalailable, then the original untranslated text is returned.
+ *                available, then the original untranslated text is returned.
  */
 function translate ( $str, $decode = '', $type = '' ) {
   global $LANGUAGE, $translation_loaded, $translations;
@@ -392,7 +392,7 @@ function translate ( $str, $decode = '', $type = '' ) {
  * <code>echo translate ( $str )</code>
  *
  * @param string   $str     Text to translate and print
- * @param string   $decode  Do we want to envoke html_entity_decode
+ * @param string   $decode  Do we want to invoke html_entity_decode
  * @param string   $type    (A = alphabetic, D = date, N = numeric)
  * @param integer  $date    Default date()
  *
@@ -531,7 +531,7 @@ function languageToAbbrev ( $name ) {
  * maps browser language abbreviations into our available language files.
  * NOTE:  These should all be lowercase on the left side even though the proper
  * listing is like "en-US"!  Not sure what the abbreviation is?  Check out:
- * http://www.metamodpro.com/browser-language-codes
+ * https://w3schools.com/tags/ref_language_codes.asp
  */
 // Craig. Why not just have the translation/*.txt files named 'de-at.txt' or whatever?
 // Would eliminate this whole array. And the function that calls it.

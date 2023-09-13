@@ -26,7 +26,7 @@ if ( $DISPLAY_WEEKENDS == 'N' ) {
 
 $printerStr = generate_printer_friendly ( 'week_details.php' );
 
-/* Pre-Load the repeated events for quckier access. */
+/* Pre-Load the repeated events for quicker access. */
 $repeated_events = read_repeated_events ( ( strlen ( $user )
   ? $user : $login ), $wkstart, $wkend, $cat_id );
 

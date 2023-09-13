@@ -137,7 +137,7 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>
     <image>
       <title><![CDATA[' . $appStr . ']]></title>
       <link>' . $SERVER_URL . '</link>
-      <url>http://www.k5n.us/k5n_small.gif</url>
+      <url>http://k5n.us/k5n_small.gif</url>
     </image>' . "\n";
 
 echo list_unapproved ( $user );

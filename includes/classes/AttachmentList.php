@@ -3,8 +3,8 @@
  * Represents a list of Doc attachment objects.
  *
  * @author Craig Knudsen
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  * @subpackage Doc
  */
@@ -17,7 +17,7 @@ class AttachmentList extends DocList {
   /**
    * Creates a new attachment list for the specified event.
    *
-   * @parm  int    $event_id  The event id
+   * @param int    $event_id  The event id
    * @return AttachmentList The new AttachmentList object
    * @access public
    */

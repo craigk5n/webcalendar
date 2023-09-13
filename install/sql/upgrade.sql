@@ -460,7 +460,7 @@ ALTER TABLE webcal_timezones MODIFY dtend varchar(16) DEFAULT NULL COMMENT 'Last
 DROP TABLE IF EXISTS webcal_translations;
 CREATE TABLE IF NOT EXISTS webcal_translations (
  phrase varchar(300) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL COMMENT 'The translate / tooltip (phrases) from the code. And the __phrase__ from version 2.0.0. ("latin1" is currently the only choice that is case sensitive.)',
- on_page varchar(50) NOT NULL COMMENT 'which code page (sorted alphabetically) has the first occurance of the above phrase.',
+ on_page varchar(50) NOT NULL COMMENT 'which code page (sorted alphabetically) has the first occurrence of the above phrase.',
  English_US varchar(300) NOT NULL COMMENT 'The full English text.',
  Afrikaans varchar(300) NOT NULL,
  Albanian varchar(300) NOT NULL,

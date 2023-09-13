@@ -54,7 +54,7 @@ $wkend = $wkstart + 518400;
 $startdate = date ( 'Ymd', $wkstart );
 $enddate = date ( 'Ymd', $wkend );
 
-/* Pre-Load the repeated events for quckier access */
+/* Pre-Load the repeated events for quicker access */
 $repeated_events = read_repeated_events ( $login, $startdate, $enddate, '' );
 
 /* Pre-load the non-repeating events for quicker access */

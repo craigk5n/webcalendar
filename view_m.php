@@ -85,7 +85,7 @@ $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 $e_save = $re_save = array();
 $viewusercnt = is_array($viewusers) ? count ($viewusers) : 0;
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
-  /* Pre-Load the repeated events for quckier access */
+  /* Pre-Load the repeated events for quicker access */
   $repeated_events = read_repeated_events ( $viewusers[$i], $startdate, $enddate, '' );
   $re_save[$i] = $repeated_events;
   /* Pre-load the non-repeating events for quicker access */

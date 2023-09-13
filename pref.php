@@ -118,7 +118,7 @@ if ( $res ) {
 }
 
 //this will force $LANGUAGE to to the current value and eliminate having
-//to double click the 'SAVE' buton
+//to double click the 'SAVE' button
 $translation_loaded = false;
 
 //move this include here to allow proper translation
@@ -642,7 +642,7 @@ if ( ! $updating_public ) {
 if ( $SEND_EMAIL == 'Y' ) { ?>
 <div class="tab-pane container fade" id="email"><div class="form-group">
 <table cellspacing="1" cellpadding="2">
-<tr><td class="xtooltip">
+<tr><td class="tooltip">
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("email-format");?>">
  <label for="pref_EMAIL_HTML"><?php etranslate ( 'Email format preference' )?>:</label></td><td class="form-inline mt-1">
  <?php echo print_radio ( 'EMAIL_HTML',

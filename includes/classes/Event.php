@@ -3,8 +3,8 @@
  * Declares the Event class.
  *
  * @author Adam Roben <adam.roben@gmail.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  * @subpackage Events
  */
@@ -210,7 +210,7 @@ class Event {
    * @param string $description Event's description
    * @param string $date        Event's date (in YYYYMMDD format)
    * @param string $time        Event's time (in HHMMSS format)
-   * @parm  string $moddate     Event's mod date (in YYYYMMDD format)
+   * @param string $moddate     Event's mod date (in YYYYMMDD format)
    * @param string $modtime     Event's mod time (in HHMMSS format)
    * @param int    $id          Event's ID
    * @param mixed  $extForID    Event's extension ID (or '' for none)
@@ -223,9 +223,9 @@ class Event {
    * @param string $calType     Event's type
    * @param string $location    Event's location
    * @param string $url         Event's url
-   * @parm  int    $dueDate     Task's due date (in YYYYMMDD format)
-   * @parm  int    $dueTime     Task's due time (in HHMMSS format)
-   * @parm  int    $percent     Task's percentage of completion
+   * @param int    $dueDate     Task's due date (in YYYYMMDD format)
+   * @param int    $dueTime     Task's due time (in HHMMSS format)
+   * @param int    $percent     Task's percentage of completion
    *
    * @return Event The new Event
    *

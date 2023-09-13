@@ -37,8 +37,8 @@ function parse_outlookcsv ( $cal_file ) {
       $reminder = icaldate_to_timestamp ( date ( 'Ymd\THis', strtotime ( $data[7]
              . ' ' . $data[8] ) ) );
       $meeting_organizer = $data[9];
-      $required_attendies = $data[10];
-      $optional_attendies = $data[11];
+      $required_attendees = $data[10];
+      $optional_attendees = $data[11];
       $meeting_resources = $data[12];
       $billing_information = $data[13];
       $categories = addslashes ( str_replace ( ';', ',', $data[14] ) );

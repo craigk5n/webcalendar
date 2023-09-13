@@ -26,7 +26,7 @@ faqs.html
   typing "make" should generate this file.  This file is not a complete
   HTML file.  It is intended to be inserted into the body of another
   HTML page.  You can see it in use at:
-    http://www.k5n.us/webcalendar.php?topic=FAQ
+    http://k5n.us/webcalendar.php?topic=FAQ
 
 
 Tools
@@ -49,5 +49,3 @@ extractfaqs.pl
 Makefile
   Used by the 'make' command to create files that are generated from
   other files.
-
-

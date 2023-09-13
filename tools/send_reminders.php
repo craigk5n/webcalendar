@@ -412,7 +412,7 @@ function send_reminder ( $id, $event_date ) {
        . "\n" . translate ( 'Due Time' ) . ': ' . display_time ( $row[12],
          $display_tzid, '', $userTformat ) . "\n" : '' ) )
      . ( $is_task && isset ( $percentage[$user] )
-      ? translate ( 'Pecentage Complete' ) . ': ' . $percentage[$user] . "%\n" : '' )
+      ? translate ( 'Percentage Complete' ) . ': ' . $percentage[$user] . "%\n" : '' )
      . ( empty ( $DISABLE_PRIORITY_FIELD ) || $DISABLE_PRIORITY_FIELD != 'Y'
       ? translate ( 'Priority' ) . ': ' . $row[6] . '-'
        . $pri[ceil( $row[6] / 3 )] . "\n" : '' );

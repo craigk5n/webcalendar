@@ -163,7 +163,8 @@ $description = ( strlen( $description ) == 0 || $description == '<br>'
 // many bad things a malicious user can do.
 // See this for an example of how someone could create an admin account in
 // webcalendar:
-//   https://www.upsploit.com/index.php/advisories/download/UPS-2010-0011
+// [bad link]
+//   https://upsploit.com/index.php/advisories/download/UPS-2010-0011
 // This same technique could be used to delete all events and other bad stuff.
 if ( $login == '__public__' ) {
   $name = strip_tags ( $name );
@@ -1224,7 +1225,7 @@ if( empty( $error ) ) {
                     ), $eventstart ), $timeStr ) : '' )
             // Add Site Extra Date if permitted.
             . $extra_email_data;
-            // Don't send HTML to external adresses.
+            // Don't send HTML to external addresses.
             // Always attach iCalendar file to external users
             $mail->WC_Send( $login_fullname, $ext_emails[$i],
               $ext_names[$i], $name, $msg, 'N', $from, $id );

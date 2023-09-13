@@ -20,7 +20,7 @@ echo $helpListStr . '
       <li><a href="docs/WebCalendar-Styling.html">WebCalendar Styling HOWTO</a></li>
       <li><a href="docs/WebCalendar-Database.html">WebCalendar Database Documentation</a></li>
       <li><a href="docs/WebCalendar-Functions.html">WebCalendar Function Documentation</a></li>
-      <li><a href="http://www.k5n.us/wiki/">WebCalendar Wiki</a></li>
+      <li><a href="http://k5n.us/wiki/">WebCalendar Wiki</a></li>
     </ul>';
 
 echo print_trailer ( false, true, true );

@@ -505,7 +505,7 @@ if( ! empty( $post_action2 ) && $post_action2 == $createNewStr && !
   $sql = 'CREATE DATABASE ' . $db_database;
 
   // We don't use the normal dbi_execute because we need to know
-  // the difference between no conection and no database.
+  // the difference between no connection and no database.
   if( $db_type == 'ibase' )
     $response_msg = $failure . $manualStr . '</blockquote>' . "\n";
   elseif( $db_type == 'mssql' ) {
@@ -578,7 +578,7 @@ if( ! empty( $action ) && $action == 'tz_convert' && !
   $db_persistent= false;
   $db_type      = $settings['db_type'];
 
-  // Avoid false visibilty of single user login.
+  // Avoid false visibility of single user login.
   $onload = 'auth_handler();';
   $real_db=( $db_type == 'sqlite' || $db_type == 'sqlite3'
     ? get_full_include_path( $db_database ) : $db_database );
@@ -700,7 +700,7 @@ if (!empty($y)) {
 
   if (empty($settings['db_password']))
     $settings['db_password'] = '';
-  
+
   // Use ENV values, not what the user put in the form.
   $use_env = getenv('WEBCALENDAR_USE_ENV');
   if ($use_env && strtolower($use_env) === "true") {
@@ -1643,7 +1643,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               <input name="action" class="btn btn-primary" type="button" value="'
      . translate( 'Save Settings' ) . '" onClick="return validate();">'
      . ( ! empty( $_SESSION['old_program_version'] ) &&
-      ( $_SESSION['old_program_version'] == $PROGRAM_VERSION ) && 
+      ( $_SESSION['old_program_version'] == $PROGRAM_VERSION ) &&
       !empty( $setup_complete )? '
               <input class="btn btn-secondary" type="button" name="action2" value="'
        . translate( 'Launch WebCalendar' )

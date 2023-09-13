@@ -1,8 +1,8 @@
 WebCalendar README
 ------------------
 
-Project Home Page: https://www.k5n.us/webcalendar/  
-Project Owner: Craig Knudsen, &#99;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;  
+Project Home Page: https://k5n.us/webcalendar/
+Project Owner: Craig Knudsen, &#99;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;
 Documentation:
 - [System Administrator's Guide](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-SysAdmin.html) (Installation instructions, FAQ)
 - [Upgrading Instructions](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/UPGRADING.html)
@@ -52,7 +52,7 @@ and MariaDb running that is setup with the `docker-compose` command.
   build the containers in step above).
 - Run the following db commands:
   ```
-  GRANT ALL PRIVILEGES ON *.* TO webcalendar_php8@localhost IDENTIFIED BY 'Webcalendar.1'  WITH GRANT OPTION; 
+  GRANT ALL PRIVILEGES ON *.* TO webcalendar_php8@localhost IDENTIFIED BY 'Webcalendar.1' WITH GRANT OPTION;
   FLUSH PRIVILEGES;
   QUIT
   ```
@@ -84,7 +84,7 @@ files in the container.
   build the containers in step above).
 - Run the following db commands:
   ```
-  GRANT ALL PRIVILEGES ON *.* TO webcalendar_php8@localhost IDENTIFIED BY 'Webcalendar.1'  WITH GRANT OPTION; 
+  GRANT ALL PRIVILEGES ON *.* TO webcalendar_php8@localhost IDENTIFIED BY 'Webcalendar.1' WITH GRANT OPTION;
   FLUSH PRIVILEGES;
   QUIT
   ```
@@ -111,7 +111,7 @@ steps.
   build the containers in step above).
 - Run the following db commands:
   ```
-  GRANT ALL PRIVILEGES ON *.* TO webcalendar@localhost IDENTIFIED BY 'Webcalendar.1'  WITH GRANT OPTION; 
+  GRANT ALL PRIVILEGES ON *.* TO webcalendar@localhost IDENTIFIED BY 'Webcalendar.1' WITH GRANT OPTION;
   FLUSH PRIVILEGES;
   QUIT
   ```
