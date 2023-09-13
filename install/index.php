@@ -755,6 +755,13 @@ if (!empty($x) || !empty($y)) {
       echo "Bugger off.<br>";
       exit;
     }
+    foreach ($settings as $k => $v) {
+      // Don't allow someone to put start/end PHP tags in settings.php
+      if (preg_match('/<\?(php)?|(\?>)/', $v)) {
+        echo "Bugger off.<br>";
+        exit;
+      }
+    }
     $fd = @fopen($file, 'w+b', false);
 
     if (empty($fd))
@@ -775,7 +782,7 @@ if (!empty($x) || !empty($y)) {
         if ($v != '<br>' && $v != '')
           fwrite($fd, $k . ': ' . $v . "\r\n");
       }
-      fwrite($fd, "# end settings.php */\r\n?\>\r\n");
+      fwrite($fd, "# end settings.php */\r\n?>\r\n");
       fclose($fd);
 
       if ($post_action != $testSettingsStr && $post_action2 != $createNewStr)
