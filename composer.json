@@ -3,22 +3,24 @@
   "type": "project",
   "description": "Multi-user web-based calendar app",
   "version": "1.9.9",
-  "homepage": "https://www.k5n.us/webcalendar/",
+  "homepage": "https://k5n.us/webcalendar/",
   "authors": [
     {
       "name": "Craig Knudsen",
       "email": "craig@k5n.us",
-      "homepage": "https://www.k5n.us",
+      "homepage": "https://k5n.us",
       "role": "Project Maintainer / Developer"
     }
   ],
   "require": {
-    "phpmailer/phpmailer": "6.8.*",
-    "components/jquery": "3.5.*",
-    "ckeditor/ckeditor": "4.22.*",
-    "twbs/bootstrap": "4.6.*",
-    "twbs/bootstrap-icons": "1.8.*",
-    "phpunit/phpunit": "9.6.*"
+    "ckeditor/ckeditor": "4.22.1",
+    "components/font-awesome": "^6.4.2",
+    "components/jquery": "3.6.0",
+    "components/normalize.css": "^3.0.3",
+    "phpmailer/phpmailer": "v6.8.1",
+    "phpunit/phpunit": "10.3.3",
+    "twbs/bootstrap-icons": "v1.10.5",
+    "twbs/bootstrap": "v5.3.1"
   },
   "license": "GPL-2.0-only"
 }
