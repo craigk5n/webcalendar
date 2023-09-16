@@ -35,11 +35,11 @@ echo '<input type="submit" name="' . ( empty( $credits )
       <input type="button" id="ok" name="ok" value="' . translate( 'OK' )
  . '" onclick="window.close()">
     </form>' . ( empty ( $credits ) ? '' : "
+    <script src=\"includes/js/v_h_scrolls.js\"></script>
     <script>
       function start() {
         startScroll('creds', '$data');
       }
     </script>
-    <script src=\"includes/js/v_h_scrolls.js\"></script>
 " ) . print_trailer ( false,true,true );
 ?>
