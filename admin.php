@@ -360,9 +360,30 @@ if ( ! $error ) {
    . translate ( 'Weekend starts on' ) . ':</label>
               <select name="admin_WEEKEND_START" id="admin_WEEKEND_START">'
    . $start_wkend_on . '
-              </select></div>
-              <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'time-format-help' ) . '">'
-   . translate ( 'Time format' ) . ':</label>' . print_radio ( 'TIME_FORMAT',
+              </select></div>';
+
+  echo '<div class="form-inline mt-1 mb-2" id="default_visibility_div"><label title="' . tooltip("preferred-event-visibility")
+    . '">' . translate('Default Visibility') . ':</label>';
+  echo '<select name="admin_DEFAULT_VISIBILITY" id="pref_DEFAULT_VISIBILITY"><option value="P"';
+  if (isset($prefarray['DEFAULT_VISIBILITY']) &&
+    $prefarray['DEFAULT_VISIBILITY'] == 'P') {
+    echo " selected ";
+  }
+  echo ">" . translate('Public') . "</option>\n";
+  echo '<option value="R"';
+  if (empty($prefarray['DEFAULT_VISIBILITY'] ) || $prefarray['DEFAULT_VISIBILITY'] == 'R') {
+    echo " selected ";
+  }
+  echo  ">" . translate('Private') . "</option>\n";
+  echo '<option value="C"';
+  if (isset($prefarray['DEFAULT_VISIBILITY']) && $prefarray['DEFAULT_VISIBILITY'] == 'C') {
+    echo " selected ";
+  }
+  echo ">" . translate('Confidential') . "</option>\n";
+  echo '</select></div>';
+
+  echo '<div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'time-format-help' ) . '">' .
+    translate ( 'Time format' ) . ':</label>' . print_radio ( 'TIME_FORMAT',
     ['12' => translate ( '12 hour' ), '24' => translate ( '24 hour' )] )
    . '</div>
       <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'timed-evt-len-help' ) . '">'
@@ -479,7 +500,7 @@ if ( ! $error ) {
    . print_radio ( 'DISABLE_PRIORITY_FIELD' ) . '</div>
     <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'disable-access-field-help' ) . '">'
    . translate ( 'Disable Access field' ) . ':</label>'
-   . print_radio ( 'DISABLE_ACCESS_FIELD' ) . '</div>
+   . print_radio ( 'DISABLE_ACCESS_FIELD', '', "disable_access_handler" ) . '</div>
     <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'disable-participants-field-help' )
    . '">' . translate ( 'Disable Participants field' ) . ':</label>'
    . print_radio ( 'DISABLE_PARTICIPANTS_FIELD' ) . '</div>
