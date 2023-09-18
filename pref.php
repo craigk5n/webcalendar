@@ -385,6 +385,33 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 
 <tr><td height="0.5 em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
 
+<tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("preferred-event-visibility");?>"><label for="pref_DEFAULT_VISIBILITY"><?php
+etranslate ('Default Visibility')?>:</label></td><td>
+<select class="form-control" name="pref_DEFAULT_VISIBILITY" id="pref_DEFAULT_VISIBILITY">
+  <option value="P"
+   <?php if (isset($prefarray['DEFAULT_VISIBILITY']) &&
+      $prefarray['DEFAULT_VISIBILITY'] == 'P') {
+         echo " selected ";
+       }
+      echo ">" . translate('Public');
+    ?> </option>
+  <option value="R"
+   <?php if (empty($prefarray['DEFAULT_VISIBILITY'] ) ||
+       $prefarray['DEFAULT_VISIBILITY'] == 'R') {
+         echo " selected ";
+       }
+      echo  ">" . translate('Private');
+    ?> </option>
+  <option value="C"
+   <?php if (isset($prefarray['DEFAULT_VISIBILITY']) &&
+        $prefarray['DEFAULT_VISIBILITY'] == 'C') {
+         echo " selected ";
+       }
+      echo ">" . translate('Confidential');
+    ?> </option>
+</select>
+</td></tr>
+
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("time-format-help");?>">
  <label for="pref_TIME_FORMAT"><?php etranslate ('Time format')?>:</label></td><td class="form-inline mt-1 mb-2">
  <?php echo print_radio ( 'TIME_FORMAT',
