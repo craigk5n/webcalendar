@@ -777,7 +777,7 @@ $tabI = 0;
 
           <label for="due_YMD" data-toggle="tooltip" data-placement="top" data-html="true" title="<?php etooltip('date-help'); ?>">
             <?php etranslate('Due Date'); ?>:</label>
-          <?php echo time_selection('due_', $due_date); ?>
+          <?php echo date_selection('due_', $due_date); ?>
 
           <label for="due_hour" data-toggle="tooltip" data-placement="top" data-html="true" title="<?php etooltip('date-help'); ?>">
             <?php etranslate('Due Time'); ?>:</label>
