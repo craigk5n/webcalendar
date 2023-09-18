@@ -7,6 +7,7 @@ function init_admin() {
   popup_handler();
   public_handler();
   sr_handler();
+  disable_access_handler();
 
   return true;
 }
@@ -181,6 +182,16 @@ function email_handler() {
     $('#em').hide();
   }
 }
+
+// Gets called when the user changes the selection from "Disable Access"
+function disable_access_handler () {
+  if ($('#admin_DISABLE_ACCESS_FIELD_N').is(':checked')) {
+    $('#default_visibility_div').show();
+  } else {
+    $('#default_visibility_div').hide();
+  }
+}
+
 
 function showPreview() {
   var theme = document.forms['prefform'].admin_THEME.value.toLowerCase();
