@@ -431,7 +431,9 @@ else if (isset($hour) && is_numeric($hour) && $hour >= 0) {
 }
 $cal_time = ($hour * 10000) + (isset($minute) ? $minute * 100 : 0);
 
-if (empty($access))
+if (empty($access) && isset($DEFAULT_VISIBILITY))
+  $access = $DEFAULT_VISIBILITY;
+else if (empty($access))
   $access = '';
 
 if (empty($cal_url))
