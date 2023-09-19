@@ -3,11 +3,11 @@
  * This page is used to manage user access rights.
  *
  * It has three different modes:
- * - list users to manage (no parameters)
- * - manage a single user's rights (just "user" parameter)
- *   this will include which functions the user can access and
- *   (if $ALLOW_VIEW_OTHER is 'Y') which calendars they can view/edit/approve
- * - update the database (form handler)
+ *  - list users to manage (no parameters)
+ *  - manage a single user's rights (just "user" parameter)
+ *    this will include which functions the user can access and
+ *    (if $ALLOW_VIEW_OTHER is 'Y') which calendars they can view/edit/approve
+ *  - update the database (form handler)
  *
  * Input Parameters:
  *  user - specifies which user to manage, a form will be presented
@@ -15,6 +15,11 @@
  *
  *  access_N - where N is 0 to ACCESS_NUMBER_FUNCTIONS as defined in
  *             includes/access.php. Each should be either 'Y' or 'N'.
+ *
+ * @package WebCalendar
+ */
+/**
+ * Include the basics.
  */
 require_once 'includes/init.php';
 
@@ -443,7 +448,14 @@ if( ! empty( $otheruser ) ) {
 echo print_trailer();
 
 /**
- * Get the list of users that the specified user can see.
+ * get_list_of_users
+ *
+ * @param  string $user
+ *
+ * @global string $is_admin
+ * @global string $is_nonuser_admin
+ *
+ * @return array of users that the specified user can see.
  */
 function get_list_of_users( $user ) {
   global $is_admin, $is_nonuser_admin;
