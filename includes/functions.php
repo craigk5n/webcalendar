@@ -932,60 +932,36 @@ function decode_string ( $instr ) {
  * @return string  HTML for one log entry.
  */
 function display_activity_log( $cal_type, $cal_text = '', $break = '<br>&nbsp;' ) {
-  if ( $cal_type == LOG_APPROVE )
-    $ret = translate ( 'Event approved' );
-  elseif ( $cal_type == LOG_APPROVE_J )
-    $ret = translate ( 'Journal approved' );
-  elseif ( $cal_type == LOG_APPROVE_T )
-    $ret = translate ( 'Task approved' );
-  elseif ( $cal_type == LOG_ATTACHMENT )
-    $ret = translate ( 'Attachment' );
-  elseif ( $cal_type == LOG_COMMENT )
-    $ret = translate ( 'Comment' );
-  elseif ( $cal_type == LOG_CREATE )
-    $ret = translate ( 'Event created' );
-  elseif ( $cal_type == LOG_CREATE_J )
-    $ret = translate ( 'Journal created' );
-  elseif ( $cal_type == LOG_CREATE_T )
-    $ret = translate ( 'Task created' );
-  elseif ( $cal_type == LOG_DELETE )
-    $ret = translate ( 'Event deleted' );
-  elseif ( $cal_type == LOG_DELETE_J )
-    $ret = translate ( 'Journal deleted' );
-  elseif ( $cal_type == LOG_DELETE_T )
-    $ret = translate ( 'Task deleted' );
-  elseif ( $cal_type == LOG_LOGIN_FAILURE )
-    $ret = translate ( 'Invalid login' );
-  elseif ( $cal_type == LOG_NEWUSER_EMAIL )
-    $ret = translate ( 'New user via email (self registration)' );
-  elseif ( $cal_type == LOG_NEWUSER_FULL )
-    $ret = translate ( 'New user (self registration)' );
-  elseif ( $cal_type == LOG_NOTIFICATION )
-    $ret = translate ( 'Notification sent' );
-  elseif ( $cal_type == LOG_REJECT )
-    $ret = translate ( 'Event rejected' );
-  elseif ( $cal_type == LOG_REJECT_J )
-    $ret = translate ( 'Journal rejected' );
-  elseif ( $cal_type == LOG_REJECT_T )
-    $ret = translate ( 'Task rejected' );
-  elseif ( $cal_type == LOG_REMINDER )
-    $ret = translate ( 'Reminder sent' );
-  elseif ( $cal_type == LOG_UPDATE )
-    $ret = translate ( 'Event updated' );
-  elseif ( $cal_type == LOG_UPDATE_J )
-    $ret = translate ( 'Journal updated' );
-  elseif ( $cal_type == LOG_UPDATE_T )
-    $ret = translate ( 'Task updated' );
-  elseif ( $cal_type == LOG_USER_ADD )
-    $ret = translate ( 'Add User' );
-  elseif ( $cal_type == LOG_USER_DELETE )
-    $ret = translate ( 'Delete User' );
-  elseif ( $cal_type == LOG_USER_UPDATE )
-    $ret = translate ( 'Edit User' );
-  elseif ( $cal_type == LOG_SYSTEM )
-    $ret = translate ( 'System Message' );
-  else
-    $ret = '???';
+  $ret = match ( $cal_type ) {
+    LOG_APPROVE => translate ( 'Event approved' ),
+    LOG_APPROVE_J => translate ( 'Journal approved' ),
+    LOG_APPROVE_T => translate ( 'Task approved' ),
+    LOG_ATTACHMENT => translate ( 'Attachment' ),
+    LOG_COMMENT => translate ( 'Comment' ),
+    LOG_CREATE => translate ( 'Event created' ),
+    LOG_CREATE_J => translate ( 'Journal created' ),
+    LOG_CREATE_T => translate ( 'Task created' ),
+    LOG_DELETE => translate ( 'Event deleted' ),
+    LOG_DELETE_J => translate ( 'Journal deleted' ),
+    LOG_DELETE_T => translate ( 'Task deleted' ),
+    LOG_LOGIN_FAILURE => translate ( 'Invalid login' ),
+    LOG_NEWUSER_EMAIL => translate ( 'New user via email (self registration)' ),
+    LOG_NEWUSER_FULL => translate ( 'New user (self registration)' ),
+    LOG_NOTIFICATION => translate ( 'Notification sent' ),
+    LOG_REJECT => translate ( 'Event rejected' ),
+    LOG_REJECT_J => translate ( 'Journal rejected' ),
+    LOG_REJECT_T => translate ( 'Task rejected' ),
+    LOG_REMINDER => translate ( 'Reminder sent' ),
+    LOG_SYSTEM => translate ( 'System Message' ),
+    LOG_UPDATE => translate ( 'Event updated' ),
+    LOG_UPDATE_J => translate ( 'Journal updated' ),
+    LOG_UPDATE_T => translate ( 'Task updated' ),
+    LOG_USER_ADD => translate ( 'Add User' ),
+    LOG_USER_DELETE => translate ( 'Delete User' ),
+    LOG_USER_UPDATE => translate ( 'Edit User' ),
+    default => '???'
+  };
+
   //fix any broken special characters
   if (!empty($cal_text)) {
     $cal_text = preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", htmlentities($cal_text));
