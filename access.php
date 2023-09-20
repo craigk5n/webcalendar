@@ -3,11 +3,11 @@
  * This page is used to manage user access rights.
  *
  * It has three different modes:
- * - list users to manage (no parameters)
- * - manage a single user's rights (just "user" parameter)
- *   this will include which functions the user can access and
- *   (if $ALLOW_VIEW_OTHER is 'Y') which calendars they can view/edit/approve
- * - update the database (form handler)
+ *  - list users to manage (no parameters)
+ *  - manage a single user's rights (just "user" parameter)
+ *    this will include which functions the user can access and
+ *    (if $ALLOW_VIEW_OTHER is 'Y') which calendars they can view/edit/approve
+ *  - update the database (form handler)
  *
  * Input Parameters:
  *  user - specifies which user to manage, a form will be presented
@@ -15,6 +15,11 @@
  *
  *  access_N - where N is 0 to ACCESS_NUMBER_FUNCTIONS as defined in
  *             includes/access.php. Each should be either 'Y' or 'N'.
+ *
+ * @package WebCalendar
+ */
+/**
+ * Include the basics.
  */
 require_once 'includes/init.php';
 
@@ -206,9 +211,7 @@ if( ! empty( $guser ) || ! $is_admin ) {
     $div = ceil( ACCESS_NUMBER_FUNCTIONS / 4 );
 
     // We can reorder the display of user rights here.
-    $order = [
-      1, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 27,
-      15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
+    $order = array_merge ( [1, 0], range ( 2, 14 ), [27], range ( 15, 26 ) );
     // Make sure that we have defined all the types of access
     // defined in access.php.
     assert ( count ( $order ) === ACCESS_NUMBER_FUNCTIONS );
@@ -346,6 +349,10 @@ if( ! empty( $otheruser ) ) {
       $bottomedge = '';
       if ( $j === 3 )
         continue;
+
+      $j8 = $j * 8;
+      $j64 = $j * 64;
+
       echo '
           <tr>
             <td class="boxleft leftpadded' . ( $j > 3 ? ' boxbottom' : '' )
@@ -373,12 +380,12 @@ if( ! empty( $otheruser ) ) {
        . ( ! empty( $op['view'] ) && ( $op['view'] & $j ) ? $checked : '' )
        . '></td>
             <td class="conf ' . $bottomedge . '"><input class="form-control-sm" type="checkbox" value="'
-       . $j * 8 . '" name="v_' . $j * 8 . '"'
-       . ( ! empty( $op['view'] ) && ( $op['view'] & ( $j * 8 ) )
+       . $j8 . '" name="v_' . $j8 . '"'
+       . ( ! empty( $op['view'] ) && ( $op['view'] & $j8 )
         ? $checked : '' ) . '></td>
             <td class="priv ' . $bottomedge . '"><input class="form-control-sm" type="checkbox" value="'
-       . $j * 64 . '" name="v_' . $j * 64 . '"'
-       . ( ! empty( $op['view'] ) && ( $op['view'] & ( $j * 64 ) )
+       . $j64 . '" name="v_' . $j64 . '"'
+       . ( ! empty( $op['view'] ) && ( $op['view'] & $j64 )
         ? $checked : '' ) . '></td>'
        . ( $guser !== '__public__' ? '
             <td class="aligncenter boxleft pub ' . $bottomedge . '"><input '
@@ -386,24 +393,24 @@ if( ! empty( $otheruser ) ) {
          . ( ! empty( $op['edit'] ) && ( $op['edit'] & $j ) ? $checked : '' )
          . '></td>
             <td class="conf ' . $bottomedge . '"><input class="form-control-sm" type="checkbox" value="'
-         . $j * 8 . '" name="e_' . $j * 8 . '"'
-         . ( ! empty( $op['edit'] ) && ( $op['edit'] & ( $j * 8 ) )
+         . $j8 . '" name="e_' . $j8 . '"'
+         . ( ! empty( $op['edit'] ) && ( $op['edit'] & $j8 )
           ? $checked : '' ) . '></td>
             <td class="priv ' . $bottomedge . '"><input class="form-control-sm" type="checkbox" value="'
-         . $j * 64 . '" name="e_' . $j * 64 . '"'
-         . ( ! empty( $op['edit'] ) && ( $op['edit'] & ( $j * 64 ) )
+         . $j64 . '" name="e_' . $j64 . '"'
+         . ( ! empty( $op['edit'] ) && ( $op['edit'] & $j64 )
           ? $checked : '' ) . '></td>
             <td class="aligncenter boxleft pub ' . $bottomedge . '"><input '
          . 'class="form-control-sm" type="checkbox" value="' . $j . '" name="a_' . $j . '"'
          . ( ! empty( $op['approve'] ) && ( $op['approve'] & $j )
           ? $checked : '' ) . '></td>
             <td class="conf ' . $bottomedge . '"><input class="form-control-sm" type="checkbox" value="'
-         . $j * 8 . '" name="a_' . $j * 8 . '"'
-         . ( ! empty( $op['approve'] ) && ( $op['approve'] & ( $j * 8 ) )
+         . $j8 . '" name="a_' . $j8 . '"'
+         . ( ! empty( $op['approve'] ) && ( $op['approve'] & $j8 )
           ? $checked : '' ) . '></td>
             <td class="boxright priv ' . $bottomedge
-         . '"><input class="form-control-sm" type="checkbox" value="' . $j * 64 . '" name="a_' . $j * 64
-         . '"' . ( ! empty( $op['approve'] ) && ( $op['approve'] & ( $j * 64 ) )
+         . '"><input class="form-control-sm" type="checkbox" value="' . $j64 . '" name="a_' . $j64
+         . '"' . ( ! empty( $op['approve'] ) && ( $op['approve'] & $j64 )
           ? $checked : '' ) . '></td>'
         : '' ) . '
           </tr>';
@@ -446,7 +453,14 @@ if( ! empty( $otheruser ) ) {
 echo print_trailer();
 
 /**
- * Get the list of users that the specified user can see.
+ * get_list_of_users
+ *
+ * @param  string $user
+ *
+ * @global string $is_admin
+ * @global string $is_nonuser_admin
+ *
+ * @return array of users that the specified user can see.
  */
 function get_list_of_users( $user ) {
   global $is_admin, $is_nonuser_admin;
