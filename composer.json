@@ -12,15 +12,17 @@
       "role": "Project Maintainer / Developer"
     }
   ],
+  "license": "GPL-2.0-only",
   "require": {
-    "ckeditor/ckeditor": "4.22.1",
+    "ckeditor/ckeditor": "^4.22.1",
     "components/font-awesome": "^6.4.2",
-    "components/jquery": "3.6.0",
+    "components/jquery": "^3.6",
     "components/normalize.css": "^3.0.3",
-    "phpmailer/phpmailer": "v6.8.1",
-    "phpunit/phpunit": "10.3.3",
-    "twbs/bootstrap-icons": "v1.10.5",
-    "twbs/bootstrap": "v5.3.1"
+    "phpmailer/phpmailer": "^v6.8.1",
+    "twbs/bootstrap-icons": "^1.11",
+    "twbs/bootstrap": "^v5.3.2"
   },
-  "license": "GPL-2.0-only"
+  "require-dev": {
+    "phpunit/phpunit": "^10.3.4"
+  }
 }
