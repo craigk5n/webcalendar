@@ -151,7 +151,7 @@ function send_http_headers () {
 function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $disableCustom = false, $disableStyle = false, $disableRSS = false,
   $IGNORED = false, $disableUTIL = false ) {
-  global $BGCOLOR, $browser, $charset, $CUSTOM_HEADER, $CUSTOM_SCRIPT,
+  global $BGCOLOR, $browser, $charset, $CSP, $CUSTOM_HEADER, $CUSTOM_SCRIPT,
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
   $is_admin, $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG,
   $POPUP_FG, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $REQUEST_URI, $SCRIPT,
@@ -191,15 +191,17 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 
   send_http_headers ();
 
-  $ret .= "\n<style id=\"antiClickjack\">\n  body{display:none !important;}\n</style>\n" .
-    "<script type=\"text/javascript\">\n" .
-    "  if (self.location.hostname === top.location.hostname) {\n" .
-    "      var antiClickjack = document.getElementById(\"antiClickjack\");\n" .
-    "      antiClickjack.parentNode.removeChild(antiClickjack);\n" .
-    "  } else {\n" .
-    "      top.location = self.location;\n" .
-    "  }\n" .
-    "</script>\n";
+  if (empty($CSP) || $CSP == 'none') {
+    $ret .= "\n<style id=\"antiClickjack\">\n  body{display:none !important;}\n</style>\n" .
+      "<script type=\"text/javascript\">\n" .
+      "  if (self.location.hostname === top.location.hostname) {\n" .
+      "      var antiClickjack = document.getElementById(\"antiClickjack\");\n" .
+      "      antiClickjack.parentNode.removeChild(antiClickjack);\n" .
+      "  } else {\n" .
+      "      top.location = self.location;\n" .
+      "  }\n" .
+      "</script>\n";
+    }
 
 
   $ret .= $ASSETS;

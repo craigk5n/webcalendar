@@ -230,7 +230,7 @@ if ( ! $error ) {
     $handler = 'color_change_handler_' . $k;
     $color_sets .= print_color_input_html ( $k, $v, '', '', 'p', '', $handler );
   }
-  $csp = empty($s['CSP']) ? 'none' : $s['CSP'];
+  $csp = ( $s['CSP'] ?: 'none' );
 
   set_today ( date ( 'Ymd' ) );
 
@@ -776,11 +776,13 @@ if ( ! $error ) {
                 <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-smtp-username' ) . '">'
    . translate ( 'SMTP Username' )
    . ':</label><input type="text" size="30" name="admin_SMTP_USERNAME" value="'
-   . ( empty ( $s['SMTP_USERNAME'] ) ? '' : $s['SMTP_USERNAME'] ) . '"></div>
+   . ( $s['SMTP_USERNAME'] ?: '' )
+   . '"></div>
                 <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-smtp-password' ) . '">'
    . translate ( 'SMTP Password' )
    . ':</label><input type="text" size="30" name="admin_SMTP_PASSWORD" value="'
-   . ( empty ( $s['SMTP_PASSWORD'] ) ? '' : $s['SMTP_PASSWORD'] ) . '"></div>
+   . ( $s['SMTP_PASSWORD'] ?: '' )
+   . '"></div>
               </div>
             </div>
             <p class="bold">' . translate ( 'Default user settings' ) . ':</p>'
@@ -845,7 +847,8 @@ if ( ! $error ) {
             <p class="form-inline mt-1 mb-2"><label for="admin_BGREPEAT" title="' . tooltip ( 'bgrepeat-help' )
    . '">' . translate ( 'Background Repeat' )
    . ':</label><input type="text" size="30" name="admin_BGREPEAT" id="admin_BGREPEAT" value="'
-   . ( empty ( $s['BGREPEAT'] ) ? '' : $s['BGREPEAT'] ) . '"></p>
+   . ( $s['BGREPEAT'] ?: '' )
+   . '"></p>
           </fieldset>
         </div>
       </div>
