@@ -1,0 +1,13 @@
+bump_version.sh
+docker
+docs
+*.git
+*.gitignore
+includes/settings.php
+java
+Makefile
+release-files
+tests
+TODO
+vendor
+ws
