@@ -1,247 +1,328 @@
-body {
-  background-color: #FFFFFF;
-  color: #000000;
-  font:16px/1.15 Arial, Helvetica, sans-serif;
+:root {
+  --blk: rgb(0, 0, 0);
+  --wht: rgb(255, 255, 255);
+
+  --red: rgb(255, 0, 0);
+  --grn: rgb(0, 255, 0);
+  --blu: rgb(0, 0, 255);
 }
+
+html,
+body {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--wht);
+  color: var(--blk);
+  font: 16px/1.15 Arial, Helvetica, sans-serif;
+}
+
+* + * {
+  margin-block-start: 0;
+}
+
 a {
   text-decoration: none;
 }
+
+a[target="_top"],
+#upgrading th {
+  margin-inline-start: 95%;
+}
+
+b,
+dt,
+.note,
+.tip,
+#styling code,
+#funcs .prompt,
+#wc_db table th {
+  font-weight: bold;
+}
+
 dl,
 ul {
-  margin-left: 10px;
+  margin-inline-start: 10px;
 }
+
 dt {
-  margin-top: 10px;
-  font-weight: bold;
+  margin-block-start: 10px;
 }
+
 h2 {
-  background-color: #191970;
-  color: #FFFFFF;
+  background-color: rgb(25, 25, 112);
+  color: var(--wht);
 }
+
 h2,
-h3 {
-  padding: 5px;
-}
-hr {
-  margin-bottom: 7px;
-}
-img {
-  border: 0;
-}
-p {
-  margin: 10px;
-}
-pre {
-  background-color: #EEEEFF;
-  margin-right: 25px;
-  margin-left: 25px;
-  border: 1px solid #0000FF;
-  padding: 4px;
-  font: 0.875rem courier, monospace;
-}
-table {
-  border: 0;
-}
-.colorheader {
-  background-color: #000000;
-  color: #FFFFFF;
-  margin-right: 3px;
-  margin-left: 3px;
-  padding: 2px;
-}
-.hide {
-  display: none;
-}
-.newwin {
-  border: 0;
-}
-.note {
-  background-color: #87CEFA;
-  padding: 2px;
-  border: 1px solid #000000;
-  font-weight: bold;
-}
-.nowrap {
-  white-space: nowrap;
-}
-.ptip {
-  background: #DDDDDD;
-  border: 1px solid #AAAAAA;
-  padding: 5px;
-}
-.tip {
-  background-color: #FFFF00;
-  padding: 2px;
-  font-weight: bold;
-}
-.top {
-  text-align: right;
-}
-.tt {
-  font: .85rem monospace;
-}
-.vbottom {
-  vertical-align: bottom;
-}
-.vtop {
-  vertical-align: top;
-}
-#funcs blockquote {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-#funcs h3 {
-  background-color: #191970;
-  color: #FFFFFF;
-  padding: 5px;
-}
-#funcs p {
-  margin-top: 2px;
-}
-#funcs ul {
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-#funcs .note {
-  background-color: #CCCCCC;
-  color: #000000;
-  padding: 1px;
-}
-#funcs .prompt {
-  font-weight: bold;
-}
-#funcs .tip {
-  margin-right: 10px;
-  border: 1px solid #000000;
-  padding: 1px 5px;
-}
-#guide dt {
-  margin-left: 25px;
-}
+h3,
+.ptip,
+#funcs h3,
 #guide h2 {
   padding: 5px;
 }
+
+hr {
+  margin-block-end: 7px;
+}
+
+img,
+table {
+  border: 0;
+}
+
+p {
+  margin: 10px;
+}
+
+pre {
+  background-color: rgb(238, 238, 255);
+  margin-inline-start: 25px;
+  border: 1px solid var(--blu);
+  padding: 4px;
+  font: 0.875rem courier, monospace;
+}
+
+ol,
+ul {
+  margin-block-end: 1rem;
+}
+
+.colorheader {
+  background-color: var(--blk);
+  color: var(--wht);
+  margin-inline-end: 3px;
+}
+
+.colorheader,
+.note,
+.tip {
+  padding: 2px;
+}
+
+.hide {
+  display: none;
+}
+
+.note {
+  background-color: rgb(135, 206, 250);
+  border: 1px solid var(--blk);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.ptip {
+  background: rgb(221, 221, 221);
+  border: 1px solid rgb(170, 170, 170);
+}
+
+.tip {
+  background-color: rgb(255, 255, 0);
+}
+
+.tt {
+  font: 0.85rem monospace;
+}
+
+.vtop {
+  vertical-align: top;
+}
+
+.vbottom {
+  vertical-align: bottom;
+}
+
+#funcs blockquote {
+  margin-block: 5px;
+}
+
+#funcs h3 {
+  background-color: rgb(25, 25, 112);
+  color: var(--wht);
+}
+
+#funcs p {
+  margin-block-start: 2px;
+}
+
+#funcs ul {
+  margin-block: 2px;
+}
+
+#funcs .note {
+  background-color: rgb(204, 204, 204);
+  color: var(--blk);
+  padding: 1px;
+}
+
+#funcs .tip {
+  margin-inline-end: 10px;
+  border: 1px solid var(--blk);
+  padding: 1px 5px;
+}
+
+:where(#guide, #sysadmin) .note {
+  background-color: var(--blu);
+  color: var(--wht);
+}
+
+#guide dt {
+  margin-inline-start: 25px;
+}
+
 #guide tr {
-  background-color: #606080;
-  color: #F0F0F0;
+  background-color: rgb(96, 96, 128);
+  color: rgb(240, 240, 240);
 }
+
 #guide th {
-  background-color: #000000;
+  background-color: var(--blk);
 }
+
 #guide td {
   vertical-align: top;
 }
-#guide .note,
-#sysadmin .note {
-  background-color: blue;
-  color: #FFFFFF;
-}
+
 #guide .tip {
-  margin-right: 10px;
-  border: 1px solid #000000;
+  margin-inline-end: 10px;
+  border: 1px solid var(--blk);
   padding: 1px 5px;
 }
-#rpt_matrix td {
+
+#manual h3 + dl dt {
+  padding-inline-start: 20px;
+}
+
+#rpt_matrix {
+  margin-block-start: 1rem;
+}
+
+#rpt_matrix tr:nth-of-type(2) {
+  margin-inline: auto;
+}
+
+#rpt_matrix :where(th, td) {
+  inline-size: 100%;
+  margin: 1px;
+  border: 1px;
+  padding: 3px;
   text-align: center;
 }
+
+#rpt_matrix td:last-of-type {
+  text-align: start;
+}
+
 #styling body {
   padding: 0 40px;
 }
-#styling code {
-  font-weight: bold;
-}
-#styling div.example {
-  width: 350px;
-  margin: 0 auto;
-}
-#styling div.example p {
-  margin: 0px;
-  font-style: italic;
-  font-size: small;
-  text-align: center;
-}
-#styling div.example pre {
-  background-color: #EEEEFF;
-  margin: 0;
-  border: 1px solid blue;
-  padding: 5px;
-}
+
 #styling dt {
   font-family: monospace;
 }
-#styling h1,
-#styling h2 {
-  margin-left: -20px;
+
+#styling :where(h1, h2) {
+  margin-inline-start: -20px;
 }
+
 #styling p {
   text-indent: 3ex;
 }
+
 #styling table {
   margin: 0 auto;
   border-collapse: collapse;
 }
-#styling td {
-  background-color: #DDDDDD;
-  color: #000000;
-  border: 1px solid #BBBBBB;
-  vertical-align: top;
-}
-#styling th,
-#styling td {
-  border: 1px solid gray;
+
+#styling :where(th, td) {
+  border: 1px solid rgb(128, 128, 128);
   padding: 3px;
 }
+
 #styling td {
+  background-color: rgb(221, 221, 221);
+  color: var(--blk);
+  border-color: rgb(187, 187, 187);
   font-family: monospace;
+  vertical-align: top;
 }
+
+#styling div.example {
+  inline-size: 350px;
+  margin: 0 auto;
+}
+
+#styling div.example p {
+  margin: 0;
+  font-style: italic;
+  font-size: small;
+  text-align: center;
+}
+
+#styling div.example pre {
+  background-color: rgb(238, 238, 255);
+  margin: 0;
+  border: 1px solid var(--blu);
+  padding: 5px;
+}
+
 #sysadmin dt {
-  margin-top: 20px;
-  margin-left: 25px;
+  margin-block-start: 20px;
+  margin-inline-start: 25px;
 }
+
 #sysadmin th {
-  background-color: #EEEEEE;
-  color: #000000;
-  border: 1px solid #CCCCCC;
+  background-color: rgb(238, 238, 238);
+  color: var(--blk);
+  border: 1px solid rgb(204, 204, 204);
 }
+
 #sysadmin .tip {
-  margin-right: 10px;
-  border: 1px solid #000000;
+  margin-inline-end: 10px;
+  border: 1px solid var(--blk);
   padding: 1px 5px;
 }
-#upgrading table {
-  margin-left: 50px;
-}
-#upgrading th {
-  text-align: right;
-}
+
 #upgrading p:first-of-type {
-   margin-bottom: 0;
+  margin-block-end: 0;
 }
+
+#upgrading table {
+  margin-inline-start: 50px;
+}
+
 #upgrading tr {
-  background-color: #606080;
-  color: #F0F0F0;
+  background-color: rgb(96, 96, 128);
+  color: rgb(240, 240, 240);
 }
+
 #upgrading td {
   vertical-align: top;
 }
+
 #upgrading ul:first-of-type {
-  margin-top: 0;
+  margin-block-start: 0;
 }
+
 #wc_db table {
-  width: 100%;
+  inline-size: 100%;
   border-collapse: collapse;
   border-spacing: 0;
 }
-#wc_db table table,
-#wc_db table th,
-#wc_db table td {
-  border: .1rem solid #000000;
-}
+
 #wc_db table th {
-  background-color: #E5E5E5;
-  font-weight: bold;
+  background-color: rgb(229, 229, 229);
 }
-#wc_db table th,
-#wc_db table td {
+
+#wc_db table :where(table, th, td) {
+  border: 0.1rem solid var(--blk);
+}
+
+#wc_db table :where(th, td) {
   padding: 0.2rem;
 }
