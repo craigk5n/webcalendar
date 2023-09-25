@@ -4,149 +4,64 @@
     <meta charset="utf-8">
     <title>WebCalendar Upgrading Notes</title>
     <link href="includes/css/docs.css" rel="stylesheet">
+    <style>
+      a[target="_blank"]::after {
+        content: url(docs/newwin.gif);
+      }
+    </style>
   </head>
   <body id="upgrading">
     <h1>WebCalendar Upgrading Notes</h1>
-
     <table>
       <tr>
         <th>WebCalendar Version:</th>
         <td>1.9.9</td>
       </tr>
     </table>
-
-    <p><span class="note">Important News:</span> A major
-    improvement beginning with Version 1.1 is the addition of an automated
-    installation script. This script will guide you through the installation
-    process and help identify any problem areas that might prevent successful
-    installation or operation of WebCalendar.</p>
-
-    <ul>
-      <li>If upgrading, the script will attempt to
-      determine your current installation version and bring your database up to
-      date.</li>
-
-      <li>If this is a new installation, the
-      installation script will create your database and setup the required
-      tables for you. It can then create a default Administrator account and
-      add the basic configuration data to get you up and running.</li>
-    </ul>
-
-    <p>This installation script was tested primarily using MySQL and Apache on a
-    dedicated server. If using an ISP or a CPANEL installer, your mileage may
-    vary. If problems arise, you can always follow the instruction below as in
-    previous versions and setup your database manually. As with any upgrade,
-    it's always a good idea to <span style="color: #F00">backup your data prior
-    to installation</span>.</p>
-
-    <p>Another major upgrade to WebCalendar for v1.1 is the implementation of
-    full timezone support. In olders versions, all date/time data was stored
-    based on server time and users set their 'time offset' relative to server
-    time. Now, all date/time data will be stored in the database as
-    Greenwich Mean Time (GMT) and users will be able to select a timezone based
-    on their geographical location.</p>
-
-    <p>Having true timezone information available within WebCalendar enables the
-    system to correct for Daylight Savings Time (DST) even if users are in
-    different timezones. The database houses timezone information from 1970 to
-    2038 and can calculate the appropriate GMT offset required to allow users to
-    see events in their true 'local time'.</p>
-
-    <p>The installation script will perform the initial import of the timezone
-    data and guide you through the one-time conversion required to get your
-    existing data converted to GMT.</p>
-
-    <p><a href="install/index.php">Launch the Automatic Installation Script</a></p>
-
-    <h2>Upgrading Steps</h2>
-
-    <p>With the install wizard, you will no longer be troubled
-    with uploading SQL files to phpMyAdmin or executing SQL commands yourself. (For the most part. There are one or two database types that have not been fully implemented, as yet. If you are able to set them up, we'd appreciate the help.)
-    Your database will be upgraded automatically from your current
-    WebCalendar installation.  Follow the steps below to upgrade to WebCalendar
-    1.3.0 from an older version of WebCalendar.
-
-    </p><p><b>NOTE:</b> You should use the <a href="install/index.php">Launch the Automatic Installation Script</a>
-    instead of doing this manually, but the information below is provided
-    as documentation for those who are interested...
-    All users (including those using the Automatic Installation Script)
-    should create a backup of their database before performing the upgrade.
+    <p><span class="note">Important News:</span> A major improvement beginning with Version 1.1 is the addition of an automated installation script. This script will guide you through the installation process and help identify any problem areas that might prevent successful installation or operation of WebCalendar.
+      <ul>
+        <li>If upgrading, the script will attempt to determine your current installation version and bring your database up to date.</li>
+        <li>If this is a new installation, the installation script will create your database and setup the required tables for you. It can then create a default Administrator account and add the basic configuration data to get you up and running.</li>
+      </ul>
     </p>
-
-    <ol>
-       <li>Make a backup of your current WebCalendar database.  This can be done
-       a couple of different ways.
-         <ul>
-           <li>If you have access to phpMyAdmin, you can use the export function:
-             <ul>
-               <li>Startup phpMyAdmin </li>
-               <li>Select the database from the pulldown on the left under the
-                   label "Databases".  (This will be the same database name
-                   used in your <span class="tt">includes/settings.php</span> file in your current WebCalendar installation.)</li>
-               <li>Click on the "Export" tab.</li>
-               <li>Select the radio button for "Custom - display all possible options"</li>
-               <li>It's best to use "SQL" for the "Format:" so it can be easily imported again.</li>
-               <li>Under "Tables:" Make sure all the tables are checked as well as both the "structure" and "data" checkboxes for all of them.</li>
-               <li>Under "Output:" Select "Save output to a file".</li>
-               <li>Under "Data creation options" you'll want at least "Function to use when dumping data: INSERT" and "both of the above" radio button.</li>
-               <li>Experiment with the other options to find out what works best for your situation.</li>
-               <li>Click on the "Go" button at the bottom of the page and save the file to your computer. Preferably somewhere you can find it again; like the desktop.</li>
-
-             </ul> </li>
-          <li>If you have access to a MySQL command line (typically via shell access on a
-              Linux server), you can use the mysqldump command:<br>
-             &nbsp;&nbsp;<span class="tt">mysqldump -u<b>USERNAME</b> -p<b>PASSWORD DATABASE</b> > dumpfile.sql</span>
-             <br>Of course, replace USERNAME, PASSWORD and DATABASE from the values in
-            your <span class="tt">includes/settings.php</span> file from your current WebCalendar installation.
-         </li>
-         </ul></li>
-       </li>
-
-    <li>Make a backup of your current WebCalendar files on the server.  You would typically
-        do this with an FTP client
-        (like <a href="https://filezilla-project.org/">FileZilla</a>).
-    </li>
-
-    <li>Install the new WebCalendar files in a <b>new</b> directory on your server.
-        How you do this will depend on what type of access you have to your server.
-        It is best to not overwrite your old WebCalendar install.  The unpacked/unzipped
-        files will create a directory with the current WebCalendar version name in it.
-    </li>
-    <li><b>Optional:</b>
-        If you prefer to use a simple name (like "webcalendar" rather than "WebCalendar-1.2.7"),
-        then you can rename the directory after you've installed the files.
-        A good way to do this might be to rename your old webcalendar install to
-        something like "webcalendar-oldinstall" and rename the new install to be
-        the same name as your old one.
-        <br><b>Note:</b> If you are planning on renaming the directory, it is best to do
-        this <i>before</i> you proceed to the automated install.
-    </li>
-
-    <li>Change the permissions of the <span class="tt">includes</span> directory.
-        If you are doing this from FTP, change directories to the new webcalendar directory
-        and use the following command:<br>
-        &nbsp;&nbsp;<span class="tt">chmod 777 includes</span>
-    <li>Change the permissions of the <span class="tt">icons</span> directory.
-        If you are doing this from FTP, change directories to the new webcalendar directory
-        and use the following command:<br>
-        &nbsp;&nbsp;<span class="tt">chmod 777 icons</span>
-
-    <li>Download a copy of your old <span class="tt">includes/settings.php</span> file from your current
-        WebCalendar install and have it handy so you can enter the same values in your
-        upgrade process. </li>
-    <li>Download all files in your old <span class="tt">icons</span> directory from your old
-        WebCalendar and copy the files into the <span class="tt">icons</span> directory in
-        the new install directory. </li>
-
-   <li>You're now ready to start the install/upgrade wizard.  Point your browser to the
-       web server where you have installed the files.   You only need to specify
-       the webcalendar directory to get to the wizard. Since there is no
-       <span class="tt">includes/settings.php</span> file in the new install, you will be redirected
-       to the install/upgrade wizard.</li>
-
-   <li>Once the wizard is complete, it's a good idea to change your <span class="tt">includes</span>
-       permissions back to what they were originally for better security. </li>
-    </ol>
-
+    <p>This installation script was tested primarily using MySQL and Apache on a dedicated server. If using an ISP or a CPANEL installer, your mileage may vary. If problems arise, you can always follow the instruction below as in previous versions and setup your database manually. As with any upgrade, it's always a good idea to <span style="color: rgb(255, 0, 0);">BACKUP YOUR DATA prior to installation</span>.</p>
+    <p>Another major upgrade to WebCalendar for v1.1 is the implementation of full timezone support. In olders versions, all date/time data was stored based on server time and users set their 'time offset' relative to server time. Now, all date/time data will be stored in the database as Greenwich Mean Time (GMT) and users will be able to select a timezone based on their geographical location.</p>
+    <p>Having true timezone information available within WebCalendar enables the system to correct for Daylight Savings Time (DST) even if users are in different timezones. The database houses timezone information from 1970 to 2038 and can calculate the appropriate GMT offset required to allow users to see events in their true 'local time'.</p>
+    <p>The installation script will perform the initial import of the timezone data and guide you through the one-time conversion required to get your existing data converted to GMT.</p>
+    <p><a href="install/index.php">Launch the Automatic Installation Script</a></p>
+    <h2>Upgrading Steps</h2>
+    <p>With the install wizard, you will no longer be troubled with uploading SQL files to phpMyAdmin or executing SQL commands yourself. (For the most part. There are one or two database types that have not been fully implemented, as yet. If you are able to set them up, we'd appreciate the help.) Your database will be upgraded automatically from your current WebCalendar installation. Follow the steps below to upgrade to WebCalendar 1.3.0 from an older version of WebCalendar.</p>
+    <p><b>NOTE:</b> You should use the <a href="install/index.php">Launch the Automatic Installation Script</a> instead of doing this manually, but the information below is provided as documentation for those who are interested... All users (including those using the Automatic Installation Script) should create a backup of their database before performing the upgrade.
+      <ol>
+        <li>Make a backup of your current WebCalendar database. This can be done a couple of different ways.
+          <ul>
+            <li>If you have access to phpMyAdmin, you can use the export function:
+              <ul>
+                <li>Startup phpMyAdmin</li>
+                <li>Select the database from the pulldown on the left under the label "Databases". (This will be the same database name used in your <span class="tt">includes/settings.php</span> file in your current WebCalendar installation.)</li>
+                <li>Click on the "Export" tab.</li>
+                <li>Select the radio button for "Custom - display all possible options"</li>
+                <li>It's best to use "SQL" for the "Format:" so it can be easily imported again.</li>
+                <li>Under "Tables:" Make sure all the tables are checked as well as both the "structure" and "data" checkboxes for all of them.</li>
+                <li>Under "Output:" Select "Save output to a file".</li>
+                <li>Under "Data creation options" you'll want at least "Function to use when dumping data: INSERT" and "both of the above" radio button.</li>
+                <li>Experiment with the other options to find out what works best for your situation.</li>
+                <li>Click on the "Go" button at the bottom of the page and save the file to your computer. Preferably somewhere you can find it again; like the desktop.</li>
+              </ul>
+            </li>
+            <li>If you have access to a MySQL command line (typically via shell access on a Linux server), you can use the mysqldump command:<br>&nbsp;&nbsp;<span class="tt">mysqldump -u<b>USERNAME</b> -p<b>PASSWORD DATABASE</b> > dumpfile.sql</span><br>Of course, replace USERNAME, PASSWORD and DATABASE from the values in your <span class="tt">includes/settings.php</span> file from your current WebCalendar installation.</li>
+          </ul>
+        </li>
+        <li>Make a backup of your current WebCalendar files on the server. You would typically do this with an FTP client (like <a href="https://filezilla-project.org/" target="_blank">FileZilla</a>).</li>
+        <li>Install the new WebCalendar files in a <b>new</b> directory on your server. How you do this will depend on what type of access you have to your server. It is best to not overwrite your old WebCalendar install. The unpacked/unzipped files will create a directory with the current WebCalendar version name in it.</li>
+        <li><b>Optional:</b> If you prefer to use a simple name (like "webcalendar" rather than "WebCalendar-1.2.7"), then you can rename the directory after you've installed the files. A good way to do this might be to rename your old webcalendar install to something like "webcalendar-oldinstall" and rename the new install to be the same name as your old one.<br><b>Note:</b> If you are planning on renaming the directory, it is best to do this <i>before</i> you proceed to the automated install.</li>
+        <li>Change the permissions of the <span class="tt">includes</span> directory. If you are doing this from FTP, change directories to the new webcalendar directory and use the following command:<br>&nbsp;&nbsp;<span class="tt">chmod 777 includes</span></li>
+        <li>Change the permissions of the <span class="tt">icons</span> directory. If you are doing this from FTP, change directories to the new webcalendar directory and use the following command:<br>&nbsp;&nbsp;<span class="tt">chmod 777 icons</span></li>
+        <li>Download a copy of your old <span class="tt">includes/settings.php</span> file from your current WebCalendar install and have it handy so you can enter the same values in your upgrade process.</li>
+        <li>Download all files in your old <span class="tt">icons</span> directory from your old WebCalendar and copy the files into the <span class="tt">icons</span> directory in the new install directory.</li>
+        <li>You're now ready to start the install/upgrade wizard. Point your browser to the web server where you have installed the files. You only need to specify the webcalendar directory to get to the wizard. Since there is no <span class="tt">includes/settings.php</span> file in the new install, you will be redirected to the install/upgrade wizard.</li>
+        <li>Once the wizard is complete, it's a good idea to change your <span class="tt">includes</span> permissions back to what they were originally for better security.</li>
+      </ol>
+    </p>
   </body>
 </html>
