@@ -37,3 +37,26 @@ jobs:
             ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:dev-php8-apache
             ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:dev
 
+      - name: Cleanup Old Images
+        env:
+          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          DOCKER_HUB_REPO: user/app
+          KEEP_LAST_N_IMAGES: 5
+        run: |
+          # Get list of tags
+          TAGS=$(curl -s -u $DOCKER_HUB_USERNAME:$DOCKER_HUB_PASSWORD https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/?page_size=100 | jq -r '.results[].name')
+
+          # Sort tags and delete all except for the most recent N
+          COUNTER=0
+          for TAG in $(echo $TAGS | tr " " "\n" | sort -V)
+          do
+              if [ $COUNTER -ge $KEEP_LAST_N_IMAGES ]
+              then
+                  echo "Deleting tag $TAG"
+                  curl -X DELETE -u $DOCKER_HUB_USERNAME:$DOCKER_HUB_PASSWORD https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/$TAG/
+              else
+                  echo "Keeping tag $TAG"
+              fi
+              COUNTER=$((COUNTER + 1))
+          done
