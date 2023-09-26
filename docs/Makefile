@@ -2,11 +2,11 @@
 # If you have phpdoc installed, you can use that to
 # generate additional documentation.
 
-
 all: WebCalendar-Database.html faqs.html
 
 # List include files that will be searched for function documentation
 INCLUDES = \
+ ../about.php \
  ../access.php \
  ../admin.php \
  ../category_handler.php \
@@ -15,9 +15,12 @@ INCLUDES = \
  ../edit_layer_handler.php \
  ../edit_remotes_handler.php \
  ../edit_report.php \
+ ../events_ajax.php \
+ ../export.php \
  ../export_handler.php \
  ../icalclient.php \
  ../import.php \
+ ../import_gitlog.php \
  ../import_outlookcsv.php \
  ../import_palmdesktop.php \
  ../includes/access.php \
@@ -27,7 +30,6 @@ INCLUDES = \
  ../includes/classes/Doc.php \
  ../includes/classes/DocList.php \
  ../includes/classes/Event.php \
- ../includes/classes/hkit/hcal.profile.php \
  ../includes/classes/RptEvent.php \
  ../includes/classes/WebCalendar.php \
  ../includes/classes/WebCalMailer.php \
@@ -48,12 +50,19 @@ INCLUDES = \
  ../includes/xcal.php \
  ../install/default_config.php \
  ../install/install_functions.php \
+ ../layers_ajax.php \
  ../list_unapproved.php \
+ ../login-app.php \
+ ../pref.php \
  ../purge.php \
  ../register.php \
  ../report.php \
+ ../rss_activity_log.php \
+ ../rss_unapproved.php \
+ ../security_audit.php \
  ../tools/send_reminders.php \
  ../upcoming.php \
+ ../users_ajax.php \
  ../view_entry.php \
  ../view_r.php \
  ../view_t.php \

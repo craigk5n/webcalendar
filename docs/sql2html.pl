@@ -3,12 +3,12 @@
 # sql2html.pl
 #
 # Description:
-#	Create HTML documentation from a sql file.
+#	Create HTML documentation from an SQL file.
 #
 # Usage:
 #	perl sql2html.pl < ../install/sql/tables-mysql.sql > WebCalendar-Database.html
 #
-#######################################################################
+################################################################################
 
 $verbose = 0;
 
@@ -26,11 +26,10 @@ sub td {
 
 sub print_table {
   $out{ $name } = '
-    <h3><a name="' . $name . '">' . $name . '</a></h3>
+    <h3><a name="' . "$name\">$name" . '</a></h3>
     <blockquote>';
   $out{ $name } .= '
-      ' . $description . '<br><br>'
-    if ( defined ( $description ) );
+      ' . $description . '<br><br>' if ( defined ( $description ) );
   $out{ $name } .= '
       <table summary="Schema for table ' . $name . '">
         <tr>'
@@ -64,8 +63,7 @@ sub print_table {
 }
 
 # first, get WebCalendar version
-open ( F, '../includes/config.php' )
-  || die 'Error reading config.php:' . "$!\n";
+open ( F, '../includes/config.php' ) || die "Error reading config.php: $!\n";
 while ( <F> ) {
   if ( /PROGRAM_VERSION =/ ) {
     if ( /'/ ) {
@@ -192,56 +190,59 @@ print<<EOF;
   <head>
     <title>WebCalendar Database Documentation</title>
     <link href="../includes/css/docs.css" rel="stylesheet">
-    <style> <!--
-      #DB_Doc blockquote {
-        left-margin:15px;
-      }
-      #DB_Doc p {
-        margin:0;
-        padding:0;
-      }
-      #DB_Doc label {
-        clear:left;
-        float:left;
-        width:13%;
-        font-weight:bold;
-        line-height:120%;
-      }
-      table {
-        border:0;
-        padding:1px;
-      }
-      th {
-        vertical-align:top;
-        background-color:#C0C0C0;
-      }
-      td {
-        vertical-align:top;
-        padding:2px;
-        background-color:#E0E0E0;
-      }
+    <style>
       span {
-        font-weight:bold;
-        color:#A00000;
-      } -->
+        color: rgb(160, 0, 0);
+        font-weight: bold;
+      }
+
+      table {
+        padding: 1px;
+      }
+
+      th {
+        background-color: rgb(192, 192, 192);
+      }
+
+      td {
+        background-color: rgb(224, 224, 224);
+        padding: 2px;
+      }
+
+      th,
+      td {
+        vertical-align: top;
+      }
+
+      #DB_Doc blockquote {
+        margin-inline-start: 15px;
+      }
+
+      #DB_Doc label {
+        clear: left;
+        float: left;
+        inline-size: 13%;
+        font-weight: bold;
+        line-height: 120%;
+      }
+
+      #DB_Doc p {
+        margin: 0;
+        padding: 0;
+      }
+
     </style>
   </head>
   <body>
     <h2>WebCalendar Database Documentation</h2>
     <div id="DB_Doc">
-      <p><label>Home Page:</label>
-        <a href="http://k5n.us/webcalendar.php">http://k5n.us/webcalendar.php</a></p>
-      <p><label>Author:</label><a href="http://k5n.us">Craig Knudsen</a>,
-        <a href="mailto:&#109;&#097;&#105;&#108;&#116;&#111;&#058;&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;">&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;</a></p>
-      <p></p><label>Version:</label>$v</p>
+      <p><label>Home Page:</label> <a href="http://k5n.us/webcalendar" target="_blank">http://k5n.us/webcalendar</a></p>
+      <p><label>Author:</label><a href="http://k5n.us" target="_blank">Craig Knudsen</a>,<a href="mailto:&#109;&#097;&#105;&#108;&#116;&#111;&#058;&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;">&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;</a></p>
+      <p><label>Version:</label>$v</p>
     </div>
     <blockquote>
-      <p>This file is generated from <tt>tables-mysql.sql</tt>. Below are the
-      definitions of all WebCalendar tables, along with some descriptions of how
-      each table is used. Column names shown in red are the primary keys for
-      that table.</p>
-      <p>If you update the SQL for WebCalendar, use the sql2html.pl script to
-      regenerate this file.</p>
+      <p>This file is generated from <span class="tt">tables-mysql.sql</span>. Below are the definitions of all WebCalendar tables, along with some descriptions of how each table is used. Column names shown in red are the primary keys for that table.</p>
+      <p>If you update the SQL for WebCalendar, use the sql2html.pl script to regenerate this file.</p>
     </blockquote>
     <br><br>
     <h2>List of Tables</h2>

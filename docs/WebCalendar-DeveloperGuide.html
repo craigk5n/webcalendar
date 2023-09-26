@@ -4,398 +4,304 @@
     <meta charset="utf-8">
     <title>WebCalendar Developer Guide</title>
     <link href="../includes/css/docs.css" rel="stylesheet">
-</head>
-<body id="guide">
-<h1>WebCalendar Developer Guide</h1>
-
-<h2>Table of Contents</h2>
-<ul>
-  <li><a href="#intro">Introduction</a></li>
-  <li><a href="#requirements">System Requirements</a></li>
-  <li><a href="#getcode">Getting The Code</a></li>
-  <li><a href="#conventions">Naming Conventions</a></li>
-  <li><a href="#standards">Coding Standards</a></li>
-  <li><a href="#patch">Submitting Changes</a></li>
-  <li><a href="#translations">Translations and Languages</a></li>
-  <li><a href="#faq">FAQ</a></li>
-  <li><a href="#resources">Resources</a></li>
-</ul>
-<hr>
-
-<a name="intro"></a>
-<h2>Introduction</h2>
-
-<p>WebCalendar is written in PHP. A minimum of PHP 7.4 is
-required to run WebCalendar.
-</p>
-
-<div class="top"><a href="#" target="_top">top</a></div>
-<hr>
-
-<a name="Tools"></a>
-<h2>Tools</h2>
-<p>The following tools will be helpful in WebCalendar development:
-</p>
-
-<dl>
-  <dt><a href="http://perl.org">perl</a></dt>
-  <dd>Perl is used to check translation files to see what translations are
-  missing. If you are using Windows, perl is included as part of the <a
-    href="http://cygwin.com">Cygwin</a> package.</dd>
-
-  <dt>make</dt>
-  <dd>The "make" command is used when generating WebCalendar documentation in
-  the <tt>docs</tt> directory. The "make" command is standard on Linux if you
-  install certain development packages. If you are using Windows, make is
-  included as part of the <a href="http://cygwin.com">Cygwin</a> package.</dd>
-
-  <dt><a href="http://gnu.org/software/patch/patch.html">patch</a></dt>
-  <dd>The "patch" command is used to apply patches posted on the SourceForge
-  patches area.</dd>
-
-  <dt>diff</dt>
-  <dd>The "diff" command is used to create patches posted on the SourceForge
-  patches area.</dd>
-
-      <!--
+  </head>
+  <body id="guide">
+    <h1>WebCalendar Developer Guide</h1>
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#requirements">System Requirements</a></li>
+      <li><a href="#getcode">Getting The Code</a></li>
+      <li><a href="#conventions">Naming Conventions</a></li>
+      <li><a href="#standards">Coding Standards</a></li>
+      <li><a href="#patch">Submitting Changes</a></li>
+      <li><a href="#translations">Translations and Languages</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#resources">Resources</a></li>
+    </ul>
+    <hr>
+    <a id="intro"></a>
+    <h2>Introduction</h2>
+    <p>WebCalendar is written in PHP. A minimum of PHP 7.4 is required.</p>
+    <a href="#" target="_top">↑&nbsp;top</a>
+    <hr>
+    <a id="Tools"></a>
+    <h2>Tools</h2>
+    <p>The following tools will be helpful in WebCalendar development:</p>
+    <dl>
+      <dt><a href="http://perl.org" target="_blank">perl</a></dt>
+      <dd>Perl is used to check translation files to see what translations are missing. If you are using Windows, perl is included as part of the <a href="http://cygwin.com" target="_blank">Cygwin</a> package.</dd>
+      <dt>make</dt>
+      <dd>The "make" command is used when generating WebCalendar documentation in the <span class="tt">docs</span> directory. The "make" command is standard on Linux if you install certain development packages. If you are using Windows, make is included as part of the <a href="http://cygwin.com" target="_blank">Cygwin</a> package.</dd>
+      <dt><a href="http://gnu.org/software/patch/patch.html" target="_blank">patch</a></dt>
+<!--
+      <dd>The "patch" command is used to apply patches posted on the SourceForge patches area.</dd>
+      <dt>diff</dt>
+      <dd>The "diff" command is used to create patches posted on the SourceForge patches area.</dd>
       [bad link]
-  <dt><a href="https://cvshome.org/">CVS</a></dt>
-  <dd>Configuration management is accomplished using CVS.</dd>
+      <dt><a href="https://cvshome.org/" target="_blank">CVS</a></dt>
+      <dd>Configuration management is accomplished using CVS.</dd>
  -->
-
-  <dt>Internet Explorer, Mozilla/Firefox, and Apple Safari</dt>
-  <dd>We try to test on all three of these platforms whenever we make any HTML
-  or JavaScript changes. If you do not have access to all these, please test
-  your changes on as many of these browsers as you have access to.</dd>
-</dl>
-
-<p><span class="tip">TIP</span> If you are developing on a
-Windows system, the <a href="http://cygwin.com">Cygwin package</a>
-will provide command line tools that
-include perl, make, patch, diff and cvs.
-</p>
-
-<div class="top"><a href="#" target="_top">top</a></div>
-<hr>
-
-<a name="getcode"></a>
-<h2>Getting The Code</h2>
-
-<p>You should always be using the latest code from git:</p>
-
-    <a href="https://github.com/craigk5n/webcalendar">WebCalendar</a>
-
-<p>To obtain the code from your command line using the git command:</p>
-
-<pre>git clone https://github.com/craigk5n/webcalendar.git</pre>
-
-<div class="top"><a href="#" target="_top">top</a></div>
-<a name="conventions"></a>
-<h2>Naming Conventions</h2>
-
-<p>The following conventions have been adopted by WebCalendar (although they
-have not been 100% enforced, so you will see exceptions):</p>
-
-<dl>
-  <dt>Class Names</dt>
-  <dd>Classes should be named using descriptive, full words. Abbreviations
-  should be avoided except in cases of standard acronyms such as HTML, HTTP,
-  etc. Names should be in UpperCamelCaps. Examples:
-    <ul class="example">
-      <li>RepeatingEvent</li>
-      <li>WebCalendarSettings</li>
+      <dt>Internet Explorer, Mozilla/Firefox, and Apple Safari</dt>
+      <dd>We try to test on all three of these platforms whenever we make any HTML or JavaScript changes. If you do not have access to all these, please test your changes on as many of these browsers as you can.</dd>
+    </dl>
+    <p><span class="tip">TIP</span> If you are developing on a Windows system, the <a href="http://cygwin.com" target="_blank">Cygwin package</a> will provide command line tools that include perl, make, patch, diff and cvs.</p>
+    <a href="#" target="_top">↑&nbsp;top</a>
+    <hr>
+    <a id="requirements"></a>
+    <h2>System Requirements</h2>
+    <ul>
+      <li>PHP 7.4 or later: PHP 7.0-7.3 and 5.X are no longer supported since they have reach <a href="https://php.net/supported-versions.php" target="_blank">end-of-life status</a>. Expect only PHP 8 support sometime soon.</li>
+      <li>Database (see <a href="#database">below</a>)</li>
+      <li>CSS-enabled browser:
+        <ul>
+          <li>Mozilla Firefox</li>
+          <li>Opera</li>
+          <li>Microsoft Internet Explorer</li>
+          <li>Microsoft Edge</li>
+          <li>Apple Safari</li>
+        </ul>
+      </li>
+      <li>JavaScript-enabled browser</li>
+      <li>If not using HTTP-based authentication, then browser cookies are required</li>
     </ul>
+    <p>You must have one of the following <a id="database">databases</a> installed:
+      <ul>
+        <li>MySQL/MariaDB</li>
+        <li>IBM DB2</li>
+        <li>Interbase</li>
+        <li>MS SQL Server</li>
+        <li>ODBC</li>
+        <li>Oracle 8+</li>
+        <li>PostgreSQL</li>
+        <li>SQLite</li>
+      </ul>
+    </p>
+    <p class="ptip"><span class="tip">TIP</span> PHP comes bundled with SQLite support. SQLite is an embedded file-based database. If your hosting service supports PHP, you should be able to create as many SQLite databases as you like (since each database is just a file).</p>
+    <p>For the database you choose, you must have its drivers built into PHP. For example, to use MySQL, PHP must be compiled with MySQL support (which is the default setting when installing PHP). See the PHP pages (<a href="http://php.net" title="Open in new window" target="_blank">php.net</a>) for more information on setting up PHP.</p>
+    <p class="ptip"><span class="tip">TIP</span> If you want to use gradient background images, PHP must be compiled with the GD library.</p>
+    <p>You can run PHP either as a CGI or an Apache module. You'll get better performance with PHP setup as a module. Not only will you not have to deal with the CGI performance hit, but you'll be able to use PHP's database connection pooling. Additionally, this application can use a form/cookie-based authentication or traditional HTTP authentication. For traditional HTTP authentication, PHP must be built as an Apache module.</p>
+    <p>If you are planning on using email reminders, you will need to build PHP as a CGI in order to run the <span class="tt">send_reminders.php</span> script. It is recommended to have a module-based PHP for your web server and then a second PHP build to create the CGI version.</p>
+    <p class="ptip"><span class="tip">TIP</span> Some Linux distributions come with both a module-based PHP with Apache and a standalone PHP binary. Check for <span class="tt">/usr/bin/php</span> to see if you already have the PHP standalone executable. If it's there, you can use the following command to see what version of PHP you have:<br><br><span class="tt" style="margin-inline-start: 50px;">/usr/bin/php -v</span></p>
+    <a href="#" target="_top">↑&nbsp;top</a>
+    <hr>
+    <a id="getcode"></a>
+    <h2>Getting The Code</h2>
+    <p>You should always be using the latest code from git: <a href="https://github.com/craigk5n/webcalendar" target="_blank">WebCalendar</a></p>
+    <p>To obtain the code from your command line using the git command:<pre>git clone https://github.com/craigk5n/webcalendar.git</pre></p>
+    <a href="#" target="_top">↑&nbsp;top</a>
+    <a id="conventions"></a>
+    <h2>Naming Conventions</h2>
+    <p>The following conventions have been adopted by WebCalendar (although they have not been 100% enforced, so you will see exceptions):</p>
+    <dl>
+      <dt>Class Names</dt>
+      <dd>Classes should be named using descriptive, full words. Abbreviations should be avoided except in cases of standard acronyms such as HTML, HTTP, etc. Names should be in UpperCamelCaps. Examples:
+        <ul class="example">
+          <li>RepeatingEvent</li>
+          <li>WebCalendarSettings</li>
+        </ul>
+        Classes should be defined in files contained in <span class="tt">includes/classes/</span>. Filenames should be of the form ClassName.php. There should only be one class defined per file.<br>If incorporating a class from another project (i.e. phpMailer ), it is acceptable to use the original naming conventions and filenames. This will allow for easy upgrading and help avoid any GNU license issues.
+      </dd>
+      <dt>Method/Function Names</dt>
+      <dd>Methods and functions should be named with short verb phrases. Methods/functions which return a boolean should begin with a verb which implies a yes/no answer (e.g. 'is' or 'has'). Names should be in lowerCamelCaps. Examples:
+        <ul class="example">
+          <li>getPostValue()</li>
+          <li>saveEvent()</li>
+          <li>isAllDay()</li>
+        </ul>
+      </dd>
+      <dt>Variable Names</dt>
+      <dd>Variable names should be descriptive noun phrases. Counter variables should be single letters (commonly 'i', 'j', or 'k'). Names should be in lowerCamelCaps. Examples:
+        <ul class="example">
+          <li>$passwordHash</li>
+          <li>$monthName</li>
+          <li>$i</li>
+        </ul>
+      </dd>
+      <dt>Constant Names</dt>
+      <dd>Constants (declared with <span class="tt">define()</span>) should be named with descriptive noun phrases. Names should be in uppercase with WORDS_SEPARATED_BY_UNDERSCORES. Examples:
+        <ul class="example">
+          <li>ONE_DAY</li>
+          <li>EXTRA_REMINDER</li>
+        </ul>
+      </dd>
+      <dt>Database Table Names</dt>
+      <dd>Database table names should be prefixed with 'webcal_'. Names should be in lowercase with words_separated_by_underscores. Examples:
+        <ul class="example">
+          <li>webcal_user_pref</li>
+          <li>webcal_entry</li>
+        </ul>
+      </dd>
+      <dt>Preference Value Names</dt>
+      <dd>These are variables stored in webcal_config and webcal_user_pref tables. Names should be in uppercase with words_separated_by_underscores. Examples:
+        <ul class="example">
+          <li>ALLOW_HTML_DESCRIPTION</li>
+          <li>DISABLE_ACCESS_FIELD</li>
+        </ul>
+        Administrators can find the defaults in <span class="tt">install/default_config.php</span>.
+      </dd>
+    </dl>
+    <a href="#" target="_top">↑&nbsp;top</a>
+    <a id="standards"></a>
+    <h2>Coding Standards</h2>
+    <p>The following coding standards have been adopted by WebCalendar (although they have not been 100% implemented).</p>
+    <dl>
+      <dt>Indenting</dt>
+      <dd>Two spaces (ASCII 0x20) for each level. Wrapped lines should also be indented 2 spaces if these spaces will not affect output. Tabs (ASCII 0x09) will not be used. Replace all occurrences with ASCII 0x20. This may affect indenting, so please double check before committing to git or posting.</dd>
+      <dt>File Format</dt>
+      <dd>Unix format only (LF ASCII 0x0A), no Windows or Mac format files.</dd>
+      <dt>PHP file comments</dt>
+      <dd>Each file, at least the major ones,  should have a comment header in the format:
+        <pre>
+/**
+ * short description (3 lines max)
+ * (ends with a period or a blank line).
+ *
+ * long description (whatever it takes).
+ *
+ * @tags
+ * @package should be one of them
+ */
+/**
+ * short description for the next
+ * $variable, define(), constant, function(), etc.
+ * to positively indicate that the page header is finished.
+ *
+ * long description if needed.
+ */
+        </pre>
+      </dd>
+      <dt>PHP function comments</dt>
+      <dd>Function documentation is generated using <a href="http://phpdoc.org/" title="phpDocumentor" target="_blank">phpDocumentor</a>. Each class and function, at least, should be preceded by a DocBlock. Constants, define()s and $variables may also benefit from DocBlocks. See the phpDocumentor website for information about <a href="http://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_phpDocumentor.howto.pkg.html#basics.docblock" target="_blank">DocBlocks</a> syntax.</dd>
+      <dt>XHTML</dt>
+      <dd>All XHTML should conform to XHTML 1.0 Transitional. Use double quotes around HTML attributes.</dd>
+      <dt>If/Else</dt>
+      <dd>Use the ternary operator (?:) whenever possible. Curly brackets, {}, are only required around multi-statement blocks. However, please use them around all statements to reduce errors when we start to minify the code. Any of the following is acceptable based on logic complexity:
+        <pre><b>normal if/else</b>
+if ( $foo === 1 ) {
+  $pro = true;
+} else {
+  $con = true;
+}
 
-    Classes should be defined in files contained in <tt>includes/classes/</tt>.
-    Filenames should be of the form ClassName.class. There should only be one
-    class defined per file.<br>
-    If incorporating a class from another project (i.e. phpMailer ), it is
-    acceptable to use the original naming conventions and filenames. This will
-    allow for easy upgrading and help avoid any GNU license issues.
-  </dd>
-
-  <dt>Method/Function Names</dt>
-  <dd>Methods and functions should be named with short verb phrases.
-  Methods/functions which return a boolean should begin with a verb which
-  implies a yes/no answer (e.g. 'is' or 'has'). Names should be in
-  lowerCamelCaps. Examples:
-    <ul class="example">
-      <li>getPostValue ()</li>
-      <li>saveEvent ()</li>
-      <li>isAllDay ()</li>
-    </ul>
-  </dd>
-
-  <dt>Variable Names</dt>
-  <dd>Variable names should be descriptive noun phrases. Counter variables
-  should be single letters (commonly 'i', 'j', or 'k'). Names should be in
-  lowerCamelCaps. Examples:
-    <ul class="example">
-      <li>$passwordHash</li>
-      <li>$monthName</li>
-      <li>$i</li>
-    </ul>
-  </dd>
-
-  <dt>Constant Names</dt>
-  <dd>Constants (declared with <tt>define ()</tt>) should be named with descriptive noun phrases. Names should be in uppercase with WORDS_SEPARATED_BY_UNDERSCORES. Examples:
-    <ul class="example">
-      <li>ONE_DAY</li>
-      <li>EXTRA_REMINDER</li>
-    </ul>
-  </dd>
-
-  <dt>Database Table Names</dt>
-  <dd>Database table names should be prefixed with 'webcal_'. Names should be
-  in lowercase with words_separated_by_underscores. Examples:
-    <ul class="example">
-      <li>webcal_user_pref</li>
-      <li>webcal_entry</li>
-    </ul>
-  </dd>
-
-  <dt>Preference Value Names</dt>
-  <dd>These are variables stored in webcal_config and webcal_user_pref tables.
-  Names should be in uppercase with words_separated_by_underscores. Examples:
-    <ul class="example">
-      <li>ALLOW_HTML_DESCRIPTION</li>
-      <li>DISABLE_ACCESS_FIELD</li>
-    </ul>
-  </dd>
-</dl>
-
-<div class="top"><a href="#" target="_top">top</a></div>
-<a name="standards"></a>
-<h2>Coding Standards</h2>
-
-<p>The following coding standards have been adopted by WebCalendar (although
-they have not been 100% implemented).</p>
-
-<dl>
-  <dt>Indenting</dt>
-  <dd>Two spaces (ASCII 0x20) for each level. Wrapped lines should also be
-  indented 2 spaces if these spaces will not affect output. Tabs (ASCII 0x09)
-  will not be used. Replace all occurrences with ASCII 0x20. This may affect
-  indenting, so please double check before committing to git or posting.</dd>
-
-  <dt>File Format</dt>
-  <dd>Unix format only (LF ASCII 0x0A), no Windows or Mac format files.</dd>
-
-  <dt>PHP file comments</dt>
-  <dd>Each file should have a file header.
-
-        <!--
-    [bad link]
-    <br>
-    See <a
-      href="http://webcalendar.cvs.sourceforge.net/webcalendar/webcalendar/report.php?revision=1.56&amp;view=markup"><tt>report.php</tt></a>
-    as an example.</dd>
- -->
-
-  <dt>PHP function comments</dt>
-  <dd>Function documentation is generated using <a href="http://phpdoc.org/"
-    title="phpDocumentor">phpDocumentor</a>. Each function should be preceded
-  by a DocBlock. See the phpDocumentor website for information about <a
-    href="http://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_phpDocumentor.howto.pkg.html#basics.docblock"
-    >DocBlocks</a> and DocBlock syntax.
-        <!--
-        [bad link]
-    , and
-  see <a href="http://webcalendar.cvs.sourceforge.net/webcalendar/webcalendar/includes/functions.php?revision=1.389&amp;view=markup"><tt>includes/functions.php</tt></a> for examples.</dd>
- -->
-  <dt>XHTML</dt>
-  <dd>All XHTML should conform to XHTML 1.0 Transitional. Use double quotes around HTML attributes.</dd>
-
-  <dt>If/Else</dt>
-  <dd>Use the ternary operator (?:) whenever possible.
-   Curly brackets, {}, need only be used around multi-statement blocks.
-   Any of the following is acceptable based on logic complexity:
-
-    <pre>bar = ( foo == 1 ? true : false );
-
- <b>or</b>
-
-if ( $foo == 1 )
-   $pro = true;
- else
-   $con = true;
-
- <b>or</b>
-
+<b>or, nested</b>
 if ( $bar &gt; 0 ) {
-   $drink++;
-   $glass = 'full';
- } else {
-   $fun--;
-   if ( $fun &lt; 1)
-     echo 'Party is over!';
- }</pre>
-  </dd>
-  <dt>Function Calls/Declarations</dt>
-  <dd>Use one space both inside and outside of parenthesis ()
+  $drink++;
+  $glass = 'full';
+} else {
+  $fun--;
 
-    <pre>Declaration: function getGetValue ( $name ) {
-Call: bar = getGetValue ( $name );</pre>
-  </dd>
-   <dt>Single quotes vs double quotes</dt>
-   <dd>With the exception of XHTML attributes, use single quotes where possible.
+  if ( $fun &lt; 1 ) {
+    echo 'Party is over!';
+  }
+}
 
- <pre> echo 'This is an example of single quoting. ';
- echo 'But, sometimes it\'s not possible without escaping. ';
- echo "Also it's not possible with $embedded variables. ";
- echo 'Control characters such as linefeed "\n" and tab "\t" don\'t work either. ';
- echo 'However, it\'s preferable to concatenate' . $variables . 'like this, anyway. '
- echo '"Nested quotes", she said, "are also acceptable where needed.
-   Just try to use single quotes as the outer set."'</pre>
-   </dd>
+<b>the ternary operator</b>
+If $foo is not undefined.
+$a = ( $foo === 1 ? true : false );
+<b>or, since 'true' is the default here:</b>
+$a = ( $foo === 1 );
 
-   <dt>Use of the dot connector. Also called concatenation.</dt>
-   <dd>The above example is faster if written this way:
+<b>or, the 'elvis' short version</b>
+$b = ( $a ?: $c ); // $a if isset($a) && ! empty($a) else $c
 
- <pre>echo 'This is an example of single quoting. '
+        </pre>
+        See <a href="https://stackoverflow.com/questions/34571330/php-short-ternary-elvis-operator-vs-null-coalescing-operator" target="_blank">PHP short ternary (elvis) vs null coalescing</a> operator.
+        <pre>
+
+<b>the null coalescing operator</b>
+$b = ( $a ?? 'Y' ); // $a is set and not null then $a else 'Y'
+
+<b>and the null coalescing assignment operator</b>
+$a ??= 1; // if $a is set and not null then $a else 1
+
+        </pre>
+        Elvis and null coalescing operators can be combined as needed.<br>
+        See <a href="https://www.phptutorial.net/php-tutorial/php-null-coalescing-operator/" target="_blank">PHP null coalescing operator</a> for more information.
+      </dd>
+      <dt>Function Calls/Declarations</dt>
+      <dd>Use one space both inside and outside of parenthesis '()'
+        <pre>Declaration: function getGetValue ( $name ) {
+Call: $bar = getGetValue ( $name );
+        </pre>
+      </dd>
+      <dt>Single quotes vs double quotes</dt>
+      <dd>With the exception of HTML and XHTML attributes, use single quotes where possible.
+        <pre>echo 'This is an example of single quoting. ';
+echo 'But, sometimes it\'s not possible without escaping. ';
+echo "Also it's not possible with $embedded variables. ";
+echo 'Control characters such as linefeed "\n" and tab "\t" don\'t work either. ';
+echo 'We used to prefer to concatenate' . $variables . 'like this. '
+echo 'However, PHP has gotten faster in the last few years. ';
+echo "Now interpolating $variables, inside double quotes, is faster than concatenating. ";
+echo 'As long as the line is still readable. ';
+echo '"Nested quotes", she said, "are also acceptable where needed.
+     Just try to use single quotes as the outer set."';
+        </pre>
+      </dd>
+      <dt>Use of the dot connector. Also called concatenation.</dt>
+      <dd>The above example is faster if written this way:
+        <pre>echo 'This is an example of single quoting. '
  . 'But, sometimes it\'s not possible without escaping. '
  . "Also it's not possible with $embedded variables. "
  . 'Control characters such as "\n" (linefeed) and "\t" (tab) don\'t work either. '
- . 'However, it\'s preferable to concatenate' . $variables . 'like this, anyway. '
+ . 'We used to prefer to concatenate' . $variables . 'like this. '
+ . 'However, PHP has gotten faster in the last few years. '
+ . "Now interpolating $variables, inside double quotes, is faster than concatenating. "
+ . 'As long as the line is still readable. '
  . '"Nested quotes", she said, "are also acceptable where needed.
- Just try to use single quotes as the outer set."'</pre>
-
- </dd>
-
-</dl>
-
-<div class="top"><a href="#" target="_top">top</a></div>
-<a name="patch"></a>
-<h2>Submitting Changes</h2>
-
-<p>Please use github's pull request feature to contribute
-changes to WebCalendar.
-</p>
-
-<div class="top"><a href="#" target="_top">top</a></div>
-<a name="translations"></a>
-<h2>Translations and Languages</h2>
-
-<p>When adding or modifying WebCalendar code, all displayed text should be
-translatable. The following tips will ensure new text can be translated
-quickly and efficiently.</p>
-
-<dl>
-  <dt>Translate</dt>
-  <dd>All displayable text should be sent to the <em>translate ()</em>
-  function, which returns the text translated in the user's language of choice.
-  A variation of this function is <em>etranslate ()</em>, which includes and
-  echo command. When translating text within javascript, always set the <em>decode</em>
-  flag to true. This will allow proper decoding of htmlentities.</dd>
-
-  <dt>Htmlentities</dt>
-  <dd>When used, this function tag should include the current charset when
-  displaying database results. This will be most important when dealing with
-  languages such as Japanese that tend to contain characters that would
-  otherwise be non-displayable. Although this is not the perfect solution, it
-  seems to suffice for our purposes. Possibly, a  better technique would be to
-  use the charset of the original creator of the data, but this is beyond
-  current capabilities.
-  <br>
-  For reference see: <a
-    href="http://us3.php.net/manual/en/function.htmlentities.php">
-  http://us3.php.net/manual/en/function.htmlentities.php</a></dd>
-
-  <dt>Updating Language Files</dt>
-  <dd>When text is added or updated, requiring new translations, the <tt>
-  translations/English-US.txt</tt> file
-  should be updated as a minimum. This file will be used as the basis for updating
-  the other language files and needs to be up to date. From within the <tt>tools</tt> directory,
-  the  following command will search through the WebCalendar source files and
-  update the language file specified.
-
-  Language files should always be committed to CVS in Unix format to save space.
-  <pre>perl update_translation.pl English-US.txt</pre>
-</dd>
-</dl>
-
-<div class="top"><a href="#" target="_top">top</a></div>
-<a name="faq"></a>
-<h2>Frequently Asked Questions</h2>
-<dl>
+    Just try to use single quotes as the outer set."'
+        </pre>
+      </dd>
+    </dl>
+    <a href="#" target="_top">↑&nbsp;top</a>
+    <a id="patch"></a>
+    <h2>Submitting Changes</h2>
+    <p>Please use github's pull request feature to contribute changes to WebCalendar. You'll need to make an account on github and fork the repository you want to 'patch'.</p>
+    <a href="#" target="_top">↑&nbsp;top</a>
+    <a id="translations"></a>
+    <h2>Translations and Languages</h2>
+    <p>When adding or modifying WebCalendar code, all displayed text should be translatable. The following tips will ensure new text can be translated quickly and efficiently.</p>
+    <dl>
+      <dt>Translate</dt>
+      <dd>All displayable text should be sent to the <em>translate()</em> function, which returns the text translated in the user's language of choice. A variation of this function is <em>etranslate()</em>, which includes and echo command. When translating text within javascript, always set the <em>decode</em> flag to true. This will allow proper decoding of htmlentities.</dd>
+      <dt>Htmlentities</dt>
+      <dd>When used, this function tag should include the current charset when displaying database results. This will be most important when dealing with languages such as Japanese that tend to contain characters that would otherwise be non-displayable. Although this is not the perfect solution, it seems to suffice for our purposes. Possibly, a better technique would be to use the charset of the original creator of the data, but this is beyond current capabilities.<br>For reference see: <a href="http://us3.php.net/manual/en/function.htmlentities.php" target="_blank">http://us3.php.net/manual/en/function.htmlentities.php</a></dd>
+      <dt>Updating Language Files</dt>
+      <dd>When text is added or updated, requiring new translations, the <span class="tt"> translations/English-US.txt</span> file should be updated as a minimum. This file will be used as the basis for updating the other language files and needs to be up to date. From within the <span class="tt">tools</span> directory, the following command will search through the WebCalendar source files and update the language file specified. Language files should always be committed to CVS in Unix format to save space.<pre>perl update_translation.pl English-US.txt</pre></dd>
+    </dl>
+    <a href="#" target="_top">↑&nbsp;top</a>
+    <a id="faq"></a>
+    <h2>Frequently Asked Questions</h2>
+    <dl>
 <!-- START FAQ: Developing -->
-  <dt>Why aren't you using PHP sessions?</dt>
-  <dd>We are still considering using PHP4 sessions. In fact, the
-  <tt>install/index.php</tt> page <em>does</em> use PHP sessions. The
-  cookie-based solution that WebCalendar uses is simple, and it will work with
-  all versions of PHP.</dd>
-
-  <dt>Why aren't you using ADODB for database access?</dt>
-  <dd>Again, this would be overkill for what we need. ADODB is a fairly large
-  project, so I'm partial to my leaner dbi4php.php solution.</dd>
-
-  <dt>Why aren't you using the PEAR database functions?</dt>
-  <dd>WebCalendar pre-dates the PEAR database functions. There does not seem
-  to be sufficient reason to switch from our existing code at this point.</dd>
-
-  <dt>Why aren't you using a template engine like smarty?</dt>
-  <dd>WebCalendar pre-dates most of the template engines out there. We are
-  currently evaluating some of the templating options and may consider moving
-  to one of the template systems in the future.</dd>
-
-  <dt>How do I install a patch?</dt>
-  <dd>Different patches are applied differently. Some patches just contain an
-  updated file. In that case, you should be able to just replace the old file
-  with the new (assuming the new file and your install are based on the same
-  version of WebCalendar).
-  <br><br>
-  Others are patch files, which usually have a <tt>.diff</tt> or
-  <tt>.patch</tt> file extension. In order to use one of these files, you need
-  the <a href="http://gnu.org/software/patch/patch.html">GNU patch</a>
-  program. (This should be installed on all Linux systems and you can get a
-  version for Windows. I use the patch program that comes with <a
-    href="http://cygwin.com">Cygwin</a> on windows.) I would recommend
-  testing the patch on your install first using the <tt>--dry-run</tt> option.
-  <br><br>
-  For example, if the patch file is called <tt>calmods.diff</tt>, then you
-  would use:
-  <pre>patch --dry-run &lt; calmods.diff</pre>
-  If the program says it cannot determine which file to patch, try adding -p1:
-  <pre>patch --dry-run -p1 &lt; calmods.diff</pre>
-  <br><br>
-  If it goes through all the changes successfully, do the same command without
-  the <tt>--dry-run</tt> option to install the patch. If it says "hunk
-  failed", then the patch cannot be applied without hand-merging files. This
-  essentially means that the patch was based on a version of WebCalendar that
-  is too different than the version that you have installed, so it was unable
-  to determine how to apply some of the changes in the patch file.</dd>
-
+      <dt>Why aren't you using PHP sessions?</dt>
+      <dd>The <span class="tt">install/index.php</span> page <em>does</em> use PHP sessions. The cookie-based solution that WebCalendar uses is simple, and it will work with all versions of PHP.</dd>
+      <dt>Why aren't you using ADODB for database access?</dt>
+      <dd>Again, this would be overkill for what we need. ADODB is a fairly large project, so I'm partial to my leaner dbi4php.php solution.</dd>
+      <dt>Why aren't you using the PEAR database functions?</dt>
+      <dd>WebCalendar pre-dates the PEAR database functions. There does not seem to be sufficient reason to switch from our existing code at this point.</dd>
+      <dt>Why aren't you using a template engine like smarty?</dt>
+      <dd>WebCalendar pre-dates most of the template engines out there. We are currently evaluating some of the templating options and may consider moving to one of the template systems in the future.</dd>
+      <dt>How do I install a patch?</dt>
+      <dd>Different patches are applied differently. Some patches just contain an updated file. In that case, you should be able to just replace the old file with the new (assuming the new file and your install are based on the same version of WebCalendar).<br><br>Others are patch files, which usually have a <span class="tt">.diff</span> or <span class="tt">.patch</span> file extension. In order to use one of these files, you need the <a href="http://gnu.org/software/patch/patch.html" target="_blank">GNU patch</a> program. (This should be installed on all Linux systems and you can get a version for Windows. I use the patch program that comes with <a href="http://cygwin.com" target="_blank">Cygwin</a> on windows.) I would recommend testing the patch on your install first using the <span class="tt">--dry-run</span> option.<br><br>For example, if the patch file is called <span class="tt">calmods.diff</span>, then you would use: <pre>patch --dry-run &lt; calmods.diff</pre> If the program says it cannot determine which file to patch, try adding -p1: <pre>patch --dry-run -p1 &lt; calmods.diff</pre><br><br>If it goes through all the changes successfully, do the same command without the <span class="tt">--dry-run</span> option to install the patch. If it says "hunk failed", then the patch cannot be applied without hand-merging files. This essentially means that the patch was based on a version of WebCalendar that is too different than the version that you have installed, so it was unable to determine how to apply some of the changes in the patch file.</dd>
 <!-- END FAQ -->
-</dl>
-
-<div class="top"><a href="#" target="_top">top</a></div>
-<a name="resources"></a>
-<h2>Resources</h2>
-
-<p>The following resources may be helpful:</p>
-
-<ul>
-      <!--
-      [bad links]
-  <li>The <a href="http://webcalendar.cvs.sourceforge.net/webcalendar/webcalendar/TODO?revision=1.13&amp;view=markup">TODO</a>
-  file in CVS contains ideas for future enhancements.</li>
-  <li>The <a href="http://sourceforge.net/forum/forum.php?forum_id=11587">Open
-    Discussion</a> forum on SourceForge is a good place to ask questions about
-  WebCalendar development.</li>
-  <li><a href="http://sourceforge.net/bugs/?group_id=3870">Bug Reports</a> on
-  SourceForge.</li>
-  <li><a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">Patches</a> on
-  SourceForge.</li>
+    </dl>
+    <a href="#" target="_top">↑&nbsp;top</a>
+    <a id="resources"></a>
+    <h2>Resources</h2>
+    <p>The following resources may be helpful:</p>
+    <ul>
+<!-- [bad links]
+      <li>The <a href="http://webcalendar.cvs.sourceforge.net/webcalendar/webcalendar/TODO?revision=1.13&amp;view=markup" target="_blank">TODO</a> file in CVS contains ideas for future enhancements.</li>
+      <li>The <a href="http://sourceforge.net/forum/forum.php?forum_id=11587" target="_blank">Open Discussion</a> forum on SourceForge is a good place to ask questions about WebCalendar development.</li>
+      <li><a href="http://sourceforge.net/bugs/?group_id=3870" target="_blank">Bug Reports</a> on SourceForge.</li>
+      <li><a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" target="_blank">Patches</a> on SourceForge.</li>
  -->
-  <li><a href="WebCalendar-Functions.html">WebCalendar Function Documentation</a></li>
-  <li><a
-    href="WebCalendar-Database.html">WebCalendar-Database.html</a>
-  describes the WebCalendar database schema</li>
-  <li><a
-    href="WebCalendar-Styling.html">WebCalendar-Styling.html</a>
-  describes how WebCalendar uses CSS</li>
-</ul>
-
-<div class="top"><a href="#" target="_top">top</a></div>
-</body>
+      <li><a href="WebCalendar-Functions.html">WebCalendar Function Documentation</a></li>
+      <li><a href="WebCalendar-Database.html">WebCalendar-Database.html</a> describes the WebCalendar database schema</li>
+      <li><a href="WebCalendar-Styling.html">WebCalendar-Styling.html</a> describes how WebCalendar uses CSS</li>
+    </ul>
+    <a href="#" target="_top">↑&nbsp;top</a>
+  </body>
 </html>
