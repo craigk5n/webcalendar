@@ -41,7 +41,7 @@ jobs:
         env:
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
           DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
-          DOCKER_HUB_REPO: user/app
+          DOCKER_HUB_REPO: ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar
           KEEP_LAST_N_IMAGES: 5
         run: |
           # Get list of tags
