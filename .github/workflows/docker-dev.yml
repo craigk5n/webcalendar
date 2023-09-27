@@ -45,11 +45,24 @@ jobs:
           KEEP_LAST_N_IMAGES: 5
         run: |
           # Get list of tags
-          TAGS=$(curl -s -u $DOCKER_HUB_USERNAME:$DOCKER_HUB_PASSWORD https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/?page_size=100 | jq -r '.results[].name')
+          RESPONSE=$(curl -s -u $DOCKER_HUB_USERNAME:$DOCKER_HUB_PASSWORD -o /tmp/response.json -w "%{http_code}" https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/?page_size=100)
+
+          # Check HTTP Status Code
+          if [ "$RESPONSE" -ne 200 ]; then
+              echo "Failed to fetch tags, HTTP Response code is $RESPONSE"
+              cat /tmp/response.json
+              exit 1
+          fi
+
+          # Check for null JSON Response and Extract Tags
+          TAGS=$(jq -r '.results? | if type=="array" then .[].name else empty end' /tmp/response.json)
+
+          # Filter tags with "dev"
+          DEV_TAGS=$(echo "$TAGS" | grep dev)
 
           # Sort tags and delete all except for the most recent N
           COUNTER=0
-          for TAG in $(echo $TAGS | tr " " "\n" | sort -V)
+          for TAG in $(echo $DEV_TAGS | tr " " "\n" | sort -V)
           do
               if [ $COUNTER -ge $KEEP_LAST_N_IMAGES ]
               then

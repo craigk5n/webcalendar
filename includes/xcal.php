@@ -1962,6 +1962,10 @@ function curl_download($url) {
 function parse_ical ( $cal_file, $source = 'file' ) {
   global $errormsg, $importMd5, $tz;
 
+  // Replace instances of 'webcal://' with 'http://' since PHP's curl does not
+  // support it.
+  $cal_file = str_ireplace('webcal://', 'http://', $cal_file);
+
   $importMd5 = '';
   $ical_data = [];
   do_debug ( "in parse_ical, file=$cal_file, source=$source" );
