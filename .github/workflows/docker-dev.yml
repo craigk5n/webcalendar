@@ -68,7 +68,7 @@ jobs:
               then
                   echo "Deleting tag $TAG"
                   AUTH_HEADER="Authorization: Basic $(echo -n $DOCKER_HUB_USERNAME:$DOCKER_HUB_ACCESS_TOKEN | base64)"
-                  curl -X DELETE -H "$AUTH_HEADER" https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/$TAG/
+                  curl -i -X DELETE -u -H "$AUTH_HEADER" https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/$TAG/
                   #curl -X DELETE -u $DOCKER_HUB_USERNAME:$DOCKER_HUB_ACCESS_TOKEN https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/$TAG/
               else
                   echo "Keeping tag $TAG"
