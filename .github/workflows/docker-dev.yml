@@ -40,12 +40,12 @@ jobs:
       - name: Cleanup Old Images
         env:
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
           DOCKER_HUB_REPO: ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar
+          DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} # Updated line
           KEEP_LAST_N_IMAGES: 5
         run: |
           # Get list of tags
-          RESPONSE=$(curl -s -u $DOCKER_HUB_USERNAME:$DOCKER_HUB_PASSWORD -o /tmp/response.json -w "%{http_code}" https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/?page_size=100)
+          RESPONSE=$(curl -s -u $DOCKER_HUB_USERNAME:$DOCKER_HUB_ACCESS_TOKEN -o /tmp/response.json -w "%{http_code}" https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/?page_size=100)
 
           # Check HTTP Status Code
           if [ "$RESPONSE" -ne 200 ]; then
@@ -67,7 +67,7 @@ jobs:
               if [ $COUNTER -ge $KEEP_LAST_N_IMAGES ]
               then
                   echo "Deleting tag $TAG"
-                  curl -X DELETE -u $DOCKER_HUB_USERNAME:$DOCKER_HUB_PASSWORD https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/$TAG/
+                  curl -X DELETE -u $DOCKER_HUB_USERNAME:$DOCKER_HUB_ACCESS_TOKEN https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/$TAG/
               else
                   echo "Keeping tag $TAG"
               fi
