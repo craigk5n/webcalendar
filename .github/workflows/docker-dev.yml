@@ -67,7 +67,9 @@ jobs:
               if [ $COUNTER -ge $KEEP_LAST_N_IMAGES ]
               then
                   echo "Deleting tag $TAG"
-                  curl -X DELETE -u $DOCKER_HUB_USERNAME:$DOCKER_HUB_ACCESS_TOKEN https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/$TAG/
+                  AUTH_HEADER="Authorization: Basic $(echo -n $DOCKER_HUB_USERNAME:$DOCKER_HUB_ACCESS_TOKEN | base64)"
+                  curl -X DELETE -H "$AUTH_HEADER" https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/$TAG/
+                  #curl -X DELETE -u $DOCKER_HUB_USERNAME:$DOCKER_HUB_ACCESS_TOKEN https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/$TAG/
               else
                   echo "Keeping tag $TAG"
               fi
