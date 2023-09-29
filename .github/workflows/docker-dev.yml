@@ -41,7 +41,8 @@ jobs:
         env:
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
           DOCKER_HUB_REPO: ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar
-          DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} # Updated line
+          DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
           KEEP_LAST_N_IMAGES: 5
         run: |
           # Get list of tags
@@ -67,9 +68,7 @@ jobs:
               if [ $COUNTER -ge $KEEP_LAST_N_IMAGES ]
               then
                   echo "Deleting tag $TAG"
-                  AUTH_HEADER="Authorization: Basic $(echo -n $DOCKER_HUB_USERNAME:$DOCKER_HUB_ACCESS_TOKEN | base64)"
-                  curl -i -X DELETE -u -H "$AUTH_HEADER" https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/$TAG/
-                  #curl -X DELETE -u $DOCKER_HUB_USERNAME:$DOCKER_HUB_ACCESS_TOKEN https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/$TAG/
+                  curl -i -X DELETE -u $DOCKER_HUB_USERNAME:$DOCKER_HUB_PASSWORD https://hub.docker.com/v2/repositories/$DOCKER_HUB_REPO/tags/$TAG/
               else
                   echo "Keeping tag $TAG"
               fi
