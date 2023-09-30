@@ -254,7 +254,7 @@ function do_config()
   )
     dbi_set_debug(true);
 
-  foreach (array('db_type', 'db_host', 'db_login') as $s) {
+  foreach ( ['db_type', 'db_host', 'db_login'] as $s) {
     if (empty($settings[$s]))
       die_miserable_death(str_replace(
         'XXX',

@@ -78,7 +78,7 @@ define( 'ACCESS_NUMBER_FUNCTIONS', 28 ); // How many function did we define?
 // an admin. If the user is not an admin, it updates account info. Register is
 // just for new users. Most of the pages have dual uses, so we will have access
 // checks within these files.
-$GLOBALS['page_lookup_ex'] = array(
+$GLOBALS['page_lookup_ex'] = [
   'about.php' => 1,
   'css_cacher.php' => 1,
   'edit_template.php' => 1,
@@ -87,7 +87,7 @@ $GLOBALS['page_lookup_ex'] = array(
   'js_cacher.php' => 1,
   'nulogin.php' => 1,
   'register.php' => 1
-  );
+];
 
 /* The following array provides a way to convert a page filename into a numeric
  * $ACCESS_XXX number. The array key is a regular expression. If the page
@@ -98,7 +98,7 @@ $GLOBALS['page_lookup_ex'] = array(
  * @global array $GLOBAL['page_lookup']
  * @name $page_lookup
  */
-$GLOBALS['page_lookup'] = array(
+$GLOBALS['page_lookup'] = [
   ACCESS_EVENT_VIEW =>'(view_entry.php|select_user.php|purge.php|category*php|doc.php)',
   ACCESS_EVENT_EDIT =>'(add_entry|approve_entry|del_entry|edit_entry|edit_entry_handler|help_edit_entry|reject_entry|set_entry_cat|list_unapproved|usersel|availability|datesel|catsel|docadd|docdel)',
   ACCESS_DAY => 'day.php',
@@ -128,7 +128,7 @@ $GLOBALS['page_lookup'] = array(
   ACCESS_ANOTHER_CALENDAR => 'select_user_.*php',
   ACCESS_SECURITY_AUDIT => 'security_audit.*php',
   ACCESS_NUMBER_FUNCTIONS => ''
-  );
+];
 
 /**
  * Is user access control enabled?
@@ -238,7 +238,7 @@ function access_load_user_permissions( $useCache = true ) {
     // $admin_override = ( $row[1] == '__default__' && $is_admin
     //   && ! empty( $ADMIN_OVERRIDE_UAC ) && $ADMIN_OVERRIDE_UAC == 'Y' );
     $key = $row[0] . '.' . $row[1];
-    $access_other_cals[$key] = array(
+    $access_other_cals[$key] = [
       'cal_login' => $row[0],
       'cal_other_user' => $row[1],
       'view' => ( $admin_override ? CAN_DOALL : $row[2] ),
@@ -247,7 +247,7 @@ function access_load_user_permissions( $useCache = true ) {
       'email' => ( $admin_override ? 'Y' : $row[5] ),
       'invite' => ( $admin_override ? 'Y' : $row[6] ),
       'time' => ( $admin_override ? 'N' : $row[7] )
-      );
+    ];
   }
   dbi_free_result( $res );
   return $access_other_cals;
@@ -264,7 +264,7 @@ function access_load_user_permissions( $useCache = true ) {
 function access_get_viewable_users( $user ) {
   global $access_other_cals, $login;
 
-  $ret = array();
+  $ret = [];
 
   if( empty( $user ) )
     $user = $login;
@@ -300,12 +300,12 @@ function access_load_user_functions( $user ) {
     return $permissions[$user];
 
   $ret = '';
-  $rets = array();
-  $users = array( $user, '__default__' );
+  $rets = [];
+  $users = [$user, '__default__'];
 
   for( $i = 0, $cnt = count( $users ); $i < $cnt && empty( $ret ); $i++ ) {
     $res = dbi_execute( 'SELECT cal_permissions FROM webcal_access_function
-      WHERE cal_login = ?', array( $users[$i] ) );
+      WHERE cal_login = ?', [$users[$i]] );
     if ( $res ) {
       if( $row = dbi_fetch_row( $res ) )
         $rets[$users[$i]] = $row[0];

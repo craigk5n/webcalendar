@@ -83,7 +83,7 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
   $db_query_count = 0;
 
   if( ! isset( $db_connection_info ) )
-    $db_connection_info = array();
+    $db_connection_info = [];
 
   $db_connection_info['connected']  = false;
   $db_connection_info['connection'] = 0;
@@ -331,7 +331,7 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
   global $c, $db_connection_info, $db_query_count, $phpdbiVerbose, $SQLLOG;
 
   if( ! isset( $SQLLOG ) && ! empty( $db_connection_info['debug'] ) )
-    $SQLLOG = array();
+    $SQLLOG = [];
 
   if( ! empty( $db_connection_info['debug'] ) )
     $SQLLOG[] = $sql;
@@ -518,8 +518,8 @@ function dbi_affected_rows( $conn, $res ) {
 function dbi_update_blob( $table, $column, $key, $data ) {
   global $unavail_DBI_Update_blob, $db_connection_info;
 
-  $unavail_DBI_Update_blob = str_replace( array( 'XXX', 'YYY' ),
-    array( '"dbi_update_blob"', $GLOBALS['db_type'] ),
+  $unavail_DBI_Update_blob = str_replace ( ['XXX', 'YYY'],
+    ['dbi_update_blob', $GLOBALS['db_type']],
     translate( 'Unfortunately, XXX is not implemented for YYY' ) );
 
   assert( ! empty( $table ) );
@@ -773,7 +773,7 @@ function dbi_escape_string( $string ) {
  *                to the {@link dbi_fetch_row()} function to obtain the
  *                results), or true/false on insert or delete queries.
  */
-function dbi_execute( $sql, $params = array(), $fatalOnError = true,
+function dbi_execute ( $sql, $params = [], $fatalOnError = true,
   $showError = true ) {
 
   if( count( $params ) == 0 )
@@ -801,7 +801,7 @@ function dbi_execute( $sql, $params = array(), $fatalOnError = true,
  * Anything other than that will clear out the entire cache
  * (until we add more intelligent caching logic).
  */
-function dbi_get_cached_rows( $sql, $params = array(),
+function dbi_get_cached_rows ( $sql, $params = [],
   $fatalOnError = true, $showError = true ) {
   global $db_cache_count, $db_connection_info;
   $file = '';
@@ -824,7 +824,7 @@ function dbi_get_cached_rows( $sql, $params = array(),
   $res = dbi_execute( $sql, $params, $fatalOnError, $showError );
 
   if( $res ) {
-    $rows = array();
+    $rows = [];
     while( $row = dbi_fetch_row( $res ) ) {
       $rows[] = $row;
     }
@@ -856,7 +856,7 @@ function dbi_init_cache( $dir ) {
   global $db_connection_info;
 
   if( ! isset( $db_connection_info ) )
-    $db_connection_info = array();
+    $db_connection_info = [];
 
   $db_connection_info['cachedir'] = $dir;
 }
@@ -869,7 +869,7 @@ function dbi_set_debug( $status = false ) {
   global $db_connection_info;
 
   if( ! isset( $db_connection_info ) )
-    $db_connection_info = array();
+    $db_connection_info = [];
 
   $db_connection_info['debug'] = $status;
 }
@@ -913,8 +913,8 @@ function dbi_clear_cache() {
 
       if( ! @unlink( $fullpath ) ) {
          $errcnt++;
-         $errstr .= '<!-- ' . str_replace( array( 'XXX', 'YYY' ),
-           array( translate( 'delete' ), $file ),
+         $errstr .= '<!-- ' . str_replace ( ['XXX', 'YYY'],
+           [translate ( 'delete' ), $file],
            translate( 'Cache error Could not XXX file YYY.' ) ) . " -->\n";
         // TODO: log this somewhere???
       }
