@@ -83,21 +83,21 @@ if ( empty ($upcoming_initialized)) {
 $save_current_working_dir= getcwd();
 chdir(dirname(__FILE__));
 
- foreach( array(
+ foreach ( [
     'config',
     'dbi4php',
     'formvars',
     'functions',
     'site_extras',
     'translate',
-  ) as $i ) {
+  ] as $i ) {
   require_once 'includes/' . $i . '.php';
 }
-foreach( array(
+foreach ( [
     'WebCalendar',
     'Event',
     'RptEvent',
-  ) as $i ) {
+  ] as $i ) {
   require_once 'includes/classes/' . $i . '.php';
 }
 $WebCalendar = new WebCalendar( __FILE__ );
@@ -435,7 +435,7 @@ if ( $error == '' ) {
   $tasks_only = ( $show_events == '0' );
 
   if ( $tasks_only ) {
-    $repeated_events = $events = array();
+    $repeated_events = $events = [];
   } else {
 
     /* Pre-Load the repeated events for quicker access */

@@ -91,7 +91,7 @@ $HeadX = generate_refresh_meta()
   . filemtime( 'includes/js/weekHover.js' ) . '"></script>';
 
 print_header(
-  array( 'js/popups.js/true', 'js/visible.php', 'js/dblclick_add.js/true' ),
+  ['js/popups.js/true', 'js/visible.php', 'js/dblclick_add.js/true'],
   $HeadX, '', false, false, false, false );
 
 echo <<<EOT

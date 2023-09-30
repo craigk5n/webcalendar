@@ -111,7 +111,7 @@ $globalNoteStr = ( $globals_found
   ? translate ( 'Global Categories cannot be changed.' ) : '' );
 $saveStr = translate ( 'Save' );
 
-print_header ( array ( 'js/set_entry_cat.php/true' ) );
+print_header ( ['js/set_entry_cat.php/true'] );
 
 $formKey = csrf_form_key();
 if ( ! empty ( $error ) )

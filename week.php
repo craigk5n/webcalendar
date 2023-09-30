@@ -94,7 +94,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
     $header[$i] . '</a></p></th>';
 
   $date = date ( 'Ymd', $days[$i] );
-  $hour_arr = $rowspan_arr = $tk = array();
+  $hour_arr = $rowspan_arr = $tk = [];
 
   // Get, combine and sort, static and repeating events for this date.
   $ev = combine_and_sort_events ( get_entries ( $date, $get_unapproved ),
@@ -243,7 +243,7 @@ if ( $DISPLAY_TASKS == 'Y' ) {
 }
 
 print_header(
-  array( 'js/popups.js/true', 'js/dblclick_add.js/true' ),
+  ['js/popups.js/true', 'js/dblclick_add.js/true'],
   generate_refresh_meta(), '', false, false, false, false );
 
 echo <<<EOT

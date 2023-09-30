@@ -3,7 +3,7 @@
  * The file contains a listing of all the current WebCalendar config settings
  * and their default values.
  */
-$webcalConfig = array(
+$webcalConfig = [
   'ADD_LINK_IN_VIEWS' => 'N',
   'ADMIN_OVERRIDE_UAC' => 'Y',
   'ALLOW_ATTACH' => 'N',
@@ -160,7 +160,7 @@ $webcalConfig = array(
   'WEEKNUMBER' => '#f06030',
   'WORK_DAY_END_HOUR' => '17',
   'WORK_DAY_START_HOUR' => '8'
-  );
+];
 
 /**
  * db_load_config (needs description)
@@ -176,14 +176,14 @@ function db_load_config() {
 
   foreach ($webcalConfig as $key => $val) {
     $res = dbi_execute( 'SELECT cal_value FROM webcal_config
-      WHERE cal_setting = ?', array( $key ), false, false );
+      WHERE cal_setting = ?', [$key], false, false );
     if( ! $res ) {
-      dbi_execute( $sql, array( $key, $val ) );
+      dbi_execute( $sql, [$key, $val] );
     }
     else { // SQLite returns $res always.
       $row = dbi_fetch_row( $res );
       if( ! isset( $row[0] ) )
-        dbi_execute( $sql, array( $key, $val ) );
+        dbi_execute( $sql, [$key, $val] );
 
       dbi_free_result( $res );
     }

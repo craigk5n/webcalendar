@@ -285,7 +285,7 @@ if ( $viewusercnt == 0 )
 
 $printerStr = generate_printer_friendly ( 'view_t.php' );
 
-print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
+print_header ( ['js/popups.js/true', 'js/dblclick_add.js/true'] );
 
 if ( ! empty ( $error ) ) {
   echo print_error( $error ) . print_trailer();
@@ -317,7 +317,7 @@ echo '
 // Additionally, we only want to put at most 6 users in one table since
 // any more than that doesn't really fit in the page.
 
-$e_save = $re_save = array();
+$e_save = $re_save = [];
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quicker access */
   $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );

@@ -131,7 +131,7 @@ if (empty($date) && empty($month)) {
 }
 
 $BodyX = 'onload="onLoad();"';
-$INC = array('js/translate.js.php', 'js/edit_entry.php/false/' . $user, 'js/visible.php');
+$INC = ['js/translate.js.php', 'js/edit_entry.php/false/' . $user, 'js/visible.php'];
 $textareasize = ($ALLOW_HTML_DESCRIPTION === 'Y' ? '20' : '15');
 
 // Add Modal Dialog javascript/CSS
@@ -394,7 +394,7 @@ else if (!empty($id) && $id > 0) {
     $hour = $time = -1;
 
   $defusers = getGetValue('defusers');
-  $defusers_ar = array();
+  $defusers_ar = [];
   if (!empty($defusers)) {
     $defusers_ar = explode(',', $defusers);
     for ($i = 0, $cnt = count($defusers_ar); $i < $cnt; $i++) {

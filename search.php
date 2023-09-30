@@ -25,7 +25,7 @@ if ($is_admin) {
 
 $show_advanced = getValue('adv', '[01]');
 $show_advanced = $show_advanced == '1' ? '1' : '0';
-$avdStyle = array('hidden', 'visible');
+$avdStyle = ['hidden', 'visible'];
 if (
   access_is_enabled()
   && !access_can_access_function(ACCESS_ADVANCED_SEARCH)
@@ -37,7 +37,7 @@ $selected = ' selected ';
 
 $advSearchStr = translate('Advanced Search');
 $searchStr    = translate('Search');
-$INC = array();
+$INC = [];
 
 $INC[] = 'js/bootstrap-autocomplete.js';
 

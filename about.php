@@ -7,8 +7,7 @@ static $data;
 if ( empty( $data ) ) {
   //  Read in and format AUTHORS file.
   $data = file_get_contents ( 'AUTHORS' );
-  $patterns = array ();
-  $replacements = array ();
+  $patterns = $replacements = [];
   $patterns[0] = "/\r\n|\n/";
   $replacements[0] = "<br>";
   // Strip email addresses out

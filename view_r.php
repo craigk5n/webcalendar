@@ -89,7 +89,7 @@ $show_time = ( $is_day_view ? $show_time_day : $show_time_week );
 $printerStr = generate_printer_friendly ( 'view_r.php' );
 set_today ( $date );
 
-print_header( array( 'js/popups.js/true' ) );
+print_header ( ['js/popups.js/true'] );
 
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 
@@ -205,8 +205,8 @@ if ( $user == '__public__' && $PUBLIC_ACCESS_VIEW_UNAPPROVED != 'Y' )
 
 // Step through each user and load events for that user.
 // Store in $e_save[] (normal events) and $re_save[] (repeating events).
-$e_save = array();
-$re_save = array();
+$e_save = $re_save = [];
+
 if ( ! $fit_to_window )
   $uwf = $col_pixels . 'px';
 else
@@ -307,7 +307,7 @@ if ( ! $fit_to_window ) { ?>
 // We need to store all the events and where they go before we begin
 // printing any output.
 
-$all_day = array();
+$all_day = [];
 
 //<long-winded-explanation>
 // We loop through the events once checking for the start time. If we
@@ -319,10 +319,10 @@ $all_day = array();
 // would change the first_slot value. There is then a gap above the all-day
 // event.
 //</long-winded-explanation>
-$am_part = array(); // am I a participant array
+$am_part = []; // am I a participant array
 for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   for ( $u = 0; $u < $viewusercnt; $u++ ) {
-    $untimed = array();
+    $untimed = [];
     $user = $viewusers[$u];
     $events = $e_save[$u];
     $repeated_events = $re_save[$u];
@@ -363,7 +363,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 
 for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   for ( $u = 0; $u < $viewusercnt; $u++ ) {
-    $untimed = array();
+    $untimed = [];
     $user = $viewusers[$u];
     $events = $e_save[$u];
     $repeated_events = $re_save[$u];
@@ -374,8 +374,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 
     // Get static non-repeating events
     $ev = get_entries ( $dateYmd, $get_unapproved, 1, 1 );
-    $hour_arr = array();
-    $rowspan_arr = array();
+    $hour_arr = $rowspan_arr = [];
     $evcnt = count ( $ev );
     $repcnt = count ( $rep );
     for ( $i = 0; $i < $evcnt; $i++ ) {
@@ -487,7 +486,7 @@ if ( $untimed_found || $show_untimed_row_always ) {
   echo "</tr>\n";
 }
 
-$rowspan_day = array();
+$rowspan_day = [];
 for ( $u = 0; $u < $viewusercnt; $u++ ) {
   for ( $d = $start_ind; $d <= $end_ind; $d++ )
     $rowspan_day[$u][$d] = 0;

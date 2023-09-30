@@ -55,7 +55,7 @@ $public_link = str_replace(
 
 $headExtras = '';
 
-print_header(array('js/translate.js.php'), $headExtras, 'onload="load_layers();"');
+print_header ( ['js/translate.js.php'], $headExtras, 'onload="load_layers();"');
 
 if ($ALLOW_VIEW_OTHER != 'Y')
   echo print_not_auth();

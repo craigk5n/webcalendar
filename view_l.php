@@ -33,7 +33,7 @@ if ( empty ( $friendly ) ) {
   $printerStr = generate_printer_friendly ( 'month.php' );
 }
 set_today ( $date );
-print_header( array( 'js/popups.js/true' ),
+print_header ( ['js/popups.js/true'],
   '<script src="includes/js/weekHover.js?'
  . filemtime( 'includes/js/weekHover.js' ) . '"></script>' );
 $trailerStr = print_trailer();
@@ -74,7 +74,7 @@ if ( ! empty ( $error ) ) {
   exit;
 }
 
-$e_save = $re_save = array();
+$e_save = $re_save = [];
 for ( $i = 0, $cnt = count ( $viewusers ); $i < $cnt; $i++ ) {
   /* Pre-Load the repeated events for quicker access */
   $repeated_events = read_repeated_events ( $viewusers[$i], $startdate, $enddate, '' );
@@ -83,7 +83,7 @@ for ( $i = 0, $cnt = count ( $viewusers ); $i < $cnt; $i++ ) {
   $events = read_events ( $viewusers[$i], $startdate, $enddate );
   $e_save = array_merge ( $e_save, $events );
 }
-$events = $repeated_events = array();
+$events = $repeated_events = [];
 
 for ( $i = 0, $cnt = count ( $e_save ); $i < $cnt; $i++ ) {
   $should_add = 1;
