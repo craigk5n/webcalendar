@@ -23,8 +23,8 @@ jobs:
       run: |
         while IFS= read -r file; do
           echo "Copying $file"
-          mkdir -p WebCalendar-1.9.8/$(dirname "$file")
-          cp "$file" WebCalendar-1.9.8/"$file"
+          mkdir -p WebCalendar-${{ env.RELEASE_VERSION }}/$(dirname "$file")
+          cp "$file" WebCalendar-${{ env.RELEASE_VERSION }}/"$file"
         done < release-files
 
     - name: Zip the release
