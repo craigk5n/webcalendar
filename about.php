@@ -4,7 +4,7 @@
  *
  * Acknowledge contributors.
  *
- * @package WebFCalendar
+ * @package WebCalendar
  */
 /**
  * Include the basics.
