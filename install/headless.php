@@ -1,7 +1,7 @@
 <?php
-/* This script can be used to update the database headlessly rather than using the 
+/* This script can be used to update the database headlessly rather than using the
  * installation script.
- * 
+ *
  * You must copy the settings.php file from your original installation, or create it
  * yourself in the case of a new install. This script will not prompt you for any of
  * your settings; and requires settings.php to be present and complete.
@@ -25,7 +25,7 @@ $file    = $fileDir . '/settings.php';
 chdir(__WC_BASEDIR);
 
 // We need the $_SESSION superglobal to pass data to and from some of the update
-// functions. Sessions are basically useless in CLI mode, but technically the 
+// functions. Sessions are basically useless in CLI mode, but technically the
 // session functions *do* work.
 session_start();
 
@@ -100,12 +100,12 @@ if( $c && ! empty( $_SESSION['install_file'] ) ) {
 
 // Convert passwords to secure hashes if needed.
 $res = dbi_execute( 'SELECT cal_login, cal_passwd FROM webcal_user',
-array(), false, $show_all_errors );
+[], false, $show_all_errors );
 if( $res ) {
 while( $row = dbi_fetch_row( $res ) ) {
     if( strlen( $row[1] ) < 30 )
     dbi_execute( 'UPDATE webcal_user SET cal_passwd = ?
-        WHERE cal_login = ?', array( password_hash( $row[1], PASSWORD_DEFAULT ), $row[0] ) );
+        WHERE cal_login = ?', [password_hash ( $row[1], PASSWORD_DEFAULT ), $row[0]] );
 }
 dbi_free_result( $res );
 }

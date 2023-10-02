@@ -6,7 +6,7 @@ global $GROUPS_ENABLED, $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR;
 $tmp1 =
 $tmp2 = '';
 
-foreach( array( 'SU','MO','TU','WE','TH','FR','SA' ) as $b ) {
+foreach ( ['SU','MO','TU','WE','TH','FR','SA'] as $b ) {
   $tmp1 .= '\'' . $b . '\',';
   $tmp2 .= '\'' . translate( $b ) . '\',';
 }

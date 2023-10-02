@@ -266,7 +266,7 @@ function chkXSS($name) {
     return '';
   $cleanXSS = true;
   //add more array elements as needed
-  foreach (array( 'Ajax.Request', 'onerror') as $i) {
+  foreach ( ['Ajax.Request', 'onerror'] as $i) {
     if (preg_match("/$i/i", $name)) {
       activity_log(0, $login, $login, SECURITY_VIOLATION, 'Hijack attempt:' . $i);
       $cleanXSS = false;

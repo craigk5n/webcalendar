@@ -161,7 +161,7 @@ if (
   if ($rows) {
     for ($i = 0, $cnt = count($rows); $i < $cnt; $i++) {
       $row = $rows[$i];
-      $tmp = array();
+      $tmp = [];
       $tmp['name'] = htmlspecialchars($row[0], ENT_QUOTES);
       $tmp['url'] = 'report.php?report_id=' . $row[1] . $u_url;
       $reports_link[] = $tmp;
@@ -249,7 +249,7 @@ view any of the standard D/M/W/Y pages, that will force us to use the view.
       // Year does not show events, so you cannot manage someone's cal.
     }
     $xurl = str_replace('&amp;', '&', $xurl);
-    $tmp = array();
+    $tmp = [];
     $tmp['name'] = $f;
     $tmp['url'] = $xurl;
     $groups[] = $tmp;

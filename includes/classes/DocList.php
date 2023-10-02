@@ -53,7 +53,7 @@ class DocList {
   {
     $this->_event_id = $event_id;
     $this->_type = $type;
-    $this->_arr = array();
+    $this->_arr = [];
 
     if ( $type != 'A' && $type != 'C' )
       die_miserable_death ( "Invalid DocList type '$type'" );

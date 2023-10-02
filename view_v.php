@@ -43,7 +43,7 @@ $prevStr = translate ( 'Previous' );
 
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
-print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
+print_header ( ['js/popups.js/true', 'js/dblclick_add.js/true'] );
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_v.php?id=' . $id
@@ -79,7 +79,7 @@ if ( ! empty ( $error ) ) {
   exit;
 }
 
-$e_save = $re_save = array();
+$e_save = $re_save = [];
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quicker access */
   $re_save[$i] = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );

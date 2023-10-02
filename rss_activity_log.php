@@ -136,7 +136,7 @@ exit;
 function rss_activity_log ( $sys, $entries ) {
   global $ALLOW_HTML_DESCRIPTION, $login, $SERVER_URL;
 
-  $sql_params = array();
+  $sql_params = [];
 
   $limit = $where = '';
   switch ( $GLOBALS['db_type'] ) {

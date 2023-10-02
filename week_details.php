@@ -48,7 +48,7 @@ $nextStr = translate ( 'Next' );
 $newEntryStr = translate ( 'New Entry' );
 $prevStr = translate ( 'Previous' );
 
-print_header( array( 'js/popups.js/true' ), generate_refresh_meta() );
+print_header ( ['js/popups.js/true'], generate_refresh_meta() );
 echo '
     <div class="title">
       <a title="' . $prevStr . '" class="prev" href="week_details.php?' . $u_url

@@ -47,7 +47,7 @@ if ( ! empty ( $id ) ) {
 $showIconStyle = ( ! empty ( $catIcon ) && file_exists ( $catIcon )
   ? '' : 'display: none;' );
 
-print_header ( array ( 'js/visible.php' ) );
+print_header ( ['js/visible.php'] );
 echo '
     <h2>' . translate ( 'Categories' ) . '</h2>
     ' . display_admin_link( false );

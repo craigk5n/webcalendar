@@ -103,7 +103,7 @@ $upload = ini_get ( 'file_uploads' );
 $upload_enabled = ( ! empty( $upload )
    && preg_match( '/(On|1|true|yes)/i', $upload ) );
 
-print_header (array('js/import.php'), '', 'onload="toggle_import();"' );
+print_header ( ['js/import.php'], '', 'onload="toggle_import();"' );
 echo '<h2>' . translate ( 'Import' ) . '&nbsp;<img src="images/bootstrap-icons/question-circle-fill.svg" alt="'
  . translate ( 'Help' ) . '" class="help" onclick="window.open( '
  . "'help_import.php', 'cal_help', '"

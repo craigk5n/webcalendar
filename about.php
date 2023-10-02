@@ -1,40 +1,56 @@
 <?php
+/**
+ * About WebCalendar
+ *
+ * Acknowledge contributors.
+ *
+ * @package WebCalendar
+ */
+/**
+ * Include the basics.
+ *
+ * // Required to end the page docBlock without getting errors..
+ */
 require_once 'includes/init.php';
 
-$credits = getPostValue( 'Credits' );
+$credits = getPostValue ( 'Credits' );
 static $data;
 
-if ( empty( $data ) ) {
-  //  Read in and format AUTHORS file.
+if ( empty ( $data ) ) {
+  // Read in and format AUTHORS file.
   $data = file_get_contents ( 'AUTHORS' );
-  $patterns = array ();
-  $replacements = array ();
-  $patterns[0] = "/\r\n|\n/";
-  $replacements[0] = "<br>";
+  $patterns = $replacements = [];
+  $patterns[] = "/\r\n|\n/";
+  $replacements[] = '<br>';
   // Strip email addresses out
-  $patterns[1] = "<\S*@\S*>";
-  $replacements[1] = "";
+  $patterns[] = "<\S*@\S*>";
+  $replacements[] = '';
   $data = preg_replace ( $patterns, $replacements, $data );
 }
 print_header ( [], '<link href="includes/css/about.css" rel="stylesheet">',
   '', true, false, true );
-echo '    <div id="creds">' . ( empty( $credits ) ? '
-      <a title="' . $PROGRAM_NAME . '" href="' . $PROGRAM_URL
-    . '" target="_blank">
-      <h2>' . translate( 'Title' ) . '</h2>
-      <p>' . str_replace( 'XXX', $PROGRAM_VERSION,
-        translate( 'version XXX' ) ) . '<br>' . $PROGRAM_DATE . '</p></a>
+echo '    <div id="creds">'
+  . ( empty ( $credits ) ? '
+      <a href="' . $PROGRAM_URL
+    . '" target="_blank" title="' . $PROGRAM_NAME . '">
+      <h2>' . translate ( 'Title' ) . '</h2>
+      <p>' . str_replace ( 'XXX', $PROGRAM_VERSION,
+        translate ( 'version XXX' ) ) . '<br>' . $PROGRAM_DATE . '</p></a>
       <br>
-      <p>' . translate( 'WebCalendar is a PHP application used...' ) . '</p>' : '' ) . '
+      <p>' . translate ( 'WebCalendar is a PHP application used...' ) . '</p>' : '' ) . '
     </div>
-    <form action="about.php" name="aboutform" id="aboutform" method="post">';
+    <form id="aboutform" name="aboutform" action="about.php" method="post">';
 print_form_key();
-echo '<input type="submit" name="' . ( empty( $credits )
-  ? 'Credits" value="' . translate( 'Credits' )
-  : 'About" value="' . translate( 'About' ) ) . '">
-      <input type="button" id="ok" name="ok" value="' . translate( 'OK' )
- . '" onclick="window.close()">
-    </form>' . ( empty ( $credits ) ? '' : "
+echo '
+      <button type="submit" name="'
+  . ( empty ( $credits )
+    ? 'Credits">' . translate ( 'Credits' )
+    : 'About">' . translate ( 'About' ) )
+  . '</button>
+      <button id="ok" name="ok" type="button" onclick="window.close()">'
+  . translate ( 'OK' ) . '</button>
+    </form>'
+  . ( empty ( $credits ) ? '' : "
     <script src=\"includes/js/v_h_scrolls.js\"></script>
     <script>
       function start() {
