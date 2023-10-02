@@ -230,6 +230,9 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
       $login_url .= '?return_path=' . $login_return_path;
       $logout_url .= $login_url . '&action=logout';
     }
+    if (empty($CSRF_PROTECTION) || $CSRF_PROTECTION != 'N') {
+      $logout_url .= '&amp;csrf_form_key=' . getFormKey();
+    }
 
     // Should we use another application's login/logout pages?
     if ( substr ( $GLOBALS['user_inc'], 0, 9 ) == 'user-app-' ) {

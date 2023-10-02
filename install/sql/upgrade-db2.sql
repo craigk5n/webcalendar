@@ -301,4 +301,4 @@ ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);
 update webcal_entry_categories SET cat_owner = '' WHERE cat_owner IS NULL;
 ALTER TABLE webcal_entry_categories ADD PRIMARY KEY (cal_id, cat_id, cat_order, cat_owner);
 /*upgrade_v1.9.7*/
-/*upgrade_v1.9.9*/
+/*upgrade_v1.9.10*/
