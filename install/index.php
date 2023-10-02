@@ -112,7 +112,7 @@ $setting_wrong_img = '<img src="../images/bootstrap-icons/exclamation-triangle-f
 // First pass at settings.php.
 // We need to read it first in order to get the md5 password.
 $fd = @fopen( $file, 'rb', true );
-$settings = array();
+$settings = [];
 $password = '';
 $forcePassword = false;
 
@@ -200,31 +200,30 @@ if ((file_exists($file) || $use_env) && !empty($pwd)) {
 
 // [0]Display Text [1]ini_get name [2]required value [3]ini_get string search value
 //DO NOT TRANSLATE OFF/ON in this section
-$php_settings = array(
-  //array( translate( 'Display Errors' ), 'display_errors', 'ON', false ),
-  array( translate( 'File Uploads' ), 'file_uploads', 'ON', false ),
-  array( translate( 'Allow URL fopen' ), 'allow_url_fopen', 'ON', false ),
-  array( translate( 'Safe Mode' ), 'safe_mode', 'OFF', false )
-  );
+$php_settings = [
+  //[translate ( 'Display Errors' ), 'display_errors', 'ON', false],
+  [translate ( 'File Uploads' ), 'file_uploads', 'ON', false],
+  [translate ( 'Allow URL fopen' ), 'allow_url_fopen', 'ON', false],
+  [translate ( 'Safe Mode' ), 'safe_mode', 'OFF', false]
+];
 
 //Add 'Safe Mode Allowed Vars' if 'Safe Mode' is enabled
 if( get_php_setting( 'safe_mode' ) == 'ON' )
-  $php_settings[] = array(
+  $php_settings[] = [
     translate('Safe Mode Allowed Vars'),
-      'safe_mode_allowed_env_vars', 'TZ', 'TZ');
+      'safe_mode_allowed_env_vars', 'TZ', 'TZ'];
 
 // Set up array to test for some constants
 // (display name, constant name, preferred value )
-$php_constants = array(
-  // array(' CRYPT_STD_DES', CRYPT_STD_DES, 1)
+$php_constants = [
   // future expansion
-  // array('CRYPT_STD_DES',CRYPT_STD_DES, 1)
-  // array('CRYPT_MD5',CRYPT_MD5, 1)
-  // array('CRYPT_BLOWFISH',CRYPT_BLOWFISH, 1)
-  );
-$php_modules = array(
-  array( translate( 'GD' ), 'imagepng', 'ON' ),
-  );
+  // ['CRYPT_BLOWFISH',CRYPT_BLOWFISH, 1]
+  // ['CRYPT_MD5',CRYPT_MD5, 1]
+  // ['CRYPT_STD_DES',CRYPT_STD_DES, 1]
+];
+$php_modules = [
+  [translate ( 'GD' ), 'imagepng', 'ON'],
+];
 
 $pwd1 = getPostValue( 'password1' );
 $pwd2 = getPostValue( 'password2' );
@@ -370,12 +369,12 @@ if( ! empty( $action ) && $action == 'install' ) {
   if( empty( $display_sql ) ) {
     // Convert passwords to secure hashes if needed.
     $res = dbi_execute( 'SELECT cal_login, cal_passwd FROM webcal_user',
-      array(), false, $show_all_errors );
+      [], false, $show_all_errors );
     if( $res ) {
       while( $row = dbi_fetch_row( $res ) ) {
         if( strlen( $row[1] ) < 30 )
           dbi_execute( 'UPDATE webcal_user SET cal_passwd = ?
-            WHERE cal_login = ?', array( password_hash( $row[1], PASSWORD_DEFAULT ), $row[0] ) );
+            WHERE cal_login = ?', [password_hash ( $row[1], PASSWORD_DEFAULT ), $row[0]] );
       }
       dbi_free_result( $res );
     }
@@ -511,7 +510,7 @@ if( ! empty( $post_action2 ) && $post_action2 == $createNewStr && !
   elseif( $db_type == 'mssql' ) {
     $c = dbi_connect( $db_host, $db_login, $db_password, 'master', false );
     if( $c ) {
-      dbi_execute( $sql . ';', array(), false, $show_all_errors );
+      dbi_execute ( $sql . ';', [], false, $show_all_errors );
       if( ! @mssql_select_db( $db_database ) ) {
         $response_msg = $failure . dbi_error() . '</blockquote>' . "\n";
       } else {
@@ -523,7 +522,7 @@ if( ! empty( $post_action2 ) && $post_action2 == $createNewStr && !
   } elseif( $db_type == 'mysql' ) {
     $c = dbi_connect( $db_host, $db_login, $db_password, 'mysql', false );
     if( $c ) {
-      dbi_execute( $sql . ';', array(), false, $show_all_errors );
+      dbi_execute ( $sql . ';', [], false, $show_all_errors );
       if( ! @mysql_select_db( $db_database ) )
         $response_msg = $failure . dbi_error() . '</blockquote>' . "\n";
       else {
@@ -535,7 +534,7 @@ if( ! empty( $post_action2 ) && $post_action2 == $createNewStr && !
   } elseif( $db_type == 'mysqli' ) {
     $c = dbi_connect( $db_host, $db_login, $db_password, '', false );
     if( $c ) {
-      dbi_execute( $sql . ';', array(), false, $show_all_errors );
+      dbi_execute ( $sql . ';', [], false, $show_all_errors );
       if( ! $c->select_db($db_database ) )
         $response_msg = $failure . dbi_error() . '</blockquote>' . "\n";
       else {
@@ -547,7 +546,7 @@ if( ! empty( $post_action2 ) && $post_action2 == $createNewStr && !
   } elseif( $db_type == 'postgresql' ) {
     $c = dbi_connect( $db_host, $db_login, $db_password, 'template1', false );
     if( $c ) {
-      dbi_execute( $sql, array(), false, $show_all_errors );
+      dbi_execute( $sql, [], false, $show_all_errors );
       $_SESSION['db_noexist'] = false;
     } else
       $response_msg = $failure . dbi_error() . '</blockquote>' . "\n";
@@ -725,14 +724,14 @@ if (!empty($y)) {
       dbi_execute(
         'INSERT INTO webcal_config ( cal_setting, cal_value )
         VALUES ( \'APPLICATION_NAME\', ? )',
-        array($_SESSION['application_name'])
+        [$_SESSION['application_name']]
       );
     }
     if (isset($_SESSION['server_url'])) {
       dbi_execute('DELETE FROM webcal_config
         WHERE cal_setting = \'SERVER_URL\'');
       dbi_execute('INSERT INTO webcal_config ( cal_setting, cal_value )
-      VALUES ( \'SERVER_URL\', ? )', array($_SESSION['server_url']));
+      VALUES ( "SERVER_URL", ? )', [$_SESSION['server_url']] );
     }
   }
   $do_load_admin = getPostValue('load_admin');
@@ -1224,7 +1223,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                   <select class="form-control" name="form_db_type" id="db_type" '
    . 'onChange="db_type_handler();">';
 
-  $supported = array();
+  $supported = [];
   if( function_exists( 'db2_pconnect' ) )
     $supported['ibm_db2'] = 'IBM DB2 Universal Database';
 
@@ -1262,7 +1261,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
      . ( $sel_type == $key ? $selected : '' )
      . '>' . $value . '</option>';
   }
-  $supported = array();
+  $supported = [];
 
   $sel_host = $use_env ? getenv('WEBCALENDAR_DB_HOST') : $settings['db_host'];
   $sel_login = $use_env ? getenv('WEBCALENDAR_DB_LOGIN') : $settings['db_login'];
@@ -1383,8 +1382,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     $response_msg = ( $_SESSION['old_program_version'] == 'new_install'
       ? translate( 'This appears to be a new installation...' )
       : ( empty( $_SESSION['blank_database'] )
-        ? str_replace( array('XXX', 'YYY'),
-          array( $_SESSION['old_program_version'], $PROGRAM_VERSION ),
+        ? str_replace ( ['XXX', 'YYY'],
+          [$_SESSION['old_program_version'], $PROGRAM_VERSION],
           translate( 'This appears to be an upgrade...' ) )
         : translate( 'The database requires some data input...' ) ) );
 

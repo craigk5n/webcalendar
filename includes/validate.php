@@ -13,7 +13,7 @@ Have you created the database tables as specified in the
 <a href="docs/WebCalendar-SysAdmin.html" '
    . '  target="other">WebCalendar System Administrator\'s Guide</a>?';
   $res = @dbi_execute ( 'SELECT COUNT( cal_value ) FROM webcal_config',
-    array(), false, false );
+    [], false, false );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) )
       // Found database. All is peachy.

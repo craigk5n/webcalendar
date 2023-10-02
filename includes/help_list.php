@@ -6,7 +6,7 @@
 */
 defined ( '_ISVALID' ) or ( 'You cannot access this file directly!' );
 // DO NOT DELETE translate ( 'Index' ) translate ( 'Documentation' )
-$help_list = array();
+$help_list = [];
 $help_list['Index'] = 'help_index.php';
 
 $can_add = true;
