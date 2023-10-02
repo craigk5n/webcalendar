@@ -45,7 +45,7 @@ $thisdate = date ( 'Ymd', $startdate );
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
-print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
+print_header ( ['js/popups.js/true', 'js/dblclick_add.js/true'] );
 
 echo '
     <div style="width:99%;">
@@ -82,7 +82,7 @@ if ( ! empty ( $error ) ) {
 }
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
-$e_save = $re_save = array();
+$e_save = $re_save = [];
 $viewusercnt = is_array($viewusers) ? count ($viewusers) : 0;
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quicker access */

@@ -8,7 +8,7 @@ $can_edit = (is_dir($icon_path) &&
 if (!$can_edit)
   do_redirect('category.php');
 
-print_header(array('js/visible.php', 'js/icons.js'), '', '', true);
+print_header ( ['js/visible.php', 'js/icons.js'], '', '', true );
 
 $icons = [];
 

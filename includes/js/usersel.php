@@ -29,7 +29,7 @@ function OkButton() {
 echo $form . '.elements[' . $listid?>],
     thislist = document.userselform.elements[0],
     // Store current selections.
-    tmp = new Array();
+    tmp = [];
 
   for ( i = 0; i < thislist.length; i++ ) {
     if ( thislist.options[i].selected )
@@ -75,7 +75,7 @@ for ( $i = 0; $i < count( $groups ); $i++ ) {
   echo '
   if ( selNum == ' . $i . ' ) {';
   $res = dbi_execute( 'SELECT cal_login from webcal_group_user
-    WHERE cal_group_id = ?', array( $groups[$i]['cal_group_id'] ) );
+    WHERE cal_group_id = ?', [$groups[$i]['cal_group_id']] );
 
   if ( $res ) {
     while ( $row = dbi_fetch_row( $res ) ) {

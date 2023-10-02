@@ -8,23 +8,19 @@
  * @package WebCalendar
  * @subpackage Doc
  */
-
 /**
  * A list of Doc comment objects.
  */
 class CommentList extends DocList {
-
   /**
-   * Creates a new attachment list for the specified event.
+   * __construct
    *
-   * @param int    $event_id  The event id
-   * @return AttachmentList The new AttachmentList object
+   * @param  int    $event_id
+   * @return CommentList The new object for the specified event.
    * @access public
    */
-  function __construct ( $event_id )
-  {
+  function __construct ( $event_id ) {
     parent::__construct ( $event_id, 'C' );
   }
-
 }
 ?>
