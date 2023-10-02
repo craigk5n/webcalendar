@@ -82,7 +82,7 @@ function checks($isWhat, $isWher)
     return false;
   }
   $res = dbi_execute('SELECT cal_' . $isWher . ' FROM webcal_user
-    WHERE cal_' . $isWher . ' = ?', array($isWhat));
+    WHERE cal_' . $isWher . ' = ?', [$isWhat]);
 
   if ($res) {
     $row = dbi_fetch_row($res);

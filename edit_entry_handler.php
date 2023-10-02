@@ -56,7 +56,7 @@ if( ! empty( $override ) && ! empty( $override_date ) ) {
   $old_id = $id;
 }
 
-$old_status = array();
+$old_status = [];
 
 // Pass all string values through getPostValue.
 $access   = getPostValue( 'access' );
@@ -177,7 +177,7 @@ if ( $login == '__public__' ) {
 // site (possibly a malware site). This could be from a public submission
 // on an event calendar, and the admin gets sent to the malware site when
 // viewing the event to approve/reject it.
-foreach( array(
+foreach ( [
     'APPLET',
     'BODY',
     'HEAD',
@@ -186,7 +186,7 @@ foreach( array(
     'META',
     'OBJECT',
     'SCRIPT',
-    'TITLE' ) as $i ) {
+    'TITLE'] as $i ) {
   if( preg_match( "/<\s*$i/i", $description ) ) {
     $error = translate( 'Security violation!' );
     activity_log( 0, $login, $login, SECURITY_VIOLATION, 'Hijack attempt:edit_entry' );
@@ -374,7 +374,7 @@ if( empty( $id ) ) {
 } else {
   // Event owner or assistant?
   $res = dbi_execute( 'SELECT cal_create_by FROM webcal_entry WHERE cal_id = ?',
-    array( $id ) );
+    [$id] );
 
   if( $res ) {
     $row = dbi_fetch_row( $res );
@@ -398,7 +398,7 @@ if( empty( $error ) && ! $can_edit ) {
   // Is user a participant of the event?
   $res = dbi_execute( 'SELECT cal_id FROM webcal_entry_user WHERE cal_id = ?
     AND cal_login = ? AND cal_status IN( \'W\', \'A\' )',
-    array( $id, $login ) );
+    [$id, $login] );
 
   if( $res ) {
     $row = dbi_fetch_row( $res );
@@ -517,11 +517,10 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
       mktime( $rpt_hour, $rpt_minute, 0, $rpt_month, $rpt_day, $rpt_year );
   }
 
-  $exception_list =
-  $inclusion_list = array();
+  $exception_list = $inclusion_list = [];
 
   if(empty( $exceptions ) || !is_array($exceptions))
-    $exceptions = array();
+    $exceptions = [];
   else {
     foreach( $exceptions as $i ) {
       if( substr( $i, 0, 1 ) == '+' )
@@ -609,7 +608,7 @@ if( empty( $error ) ) {
     $newevent = false;
     // Save old values of participants.
     $res = dbi_execute( 'SELECT cal_login, cal_status, cal_percent
-      FROM webcal_entry_user WHERE cal_id = ? ', array( $id ) );
+      FROM webcal_entry_user WHERE cal_id = ? ', [$id] );
 
     if( $res ) {
       for( $i = 0; $tmprow = dbi_fetch_row( $res ); $i++ ) {
@@ -621,14 +620,14 @@ if( empty( $error ) ) {
       $error = $dberror . dbi_error();
 
     if( empty( $error ) ) {
-      foreach( array(
+      foreach ( [
           'entry',
           'entry_ext_user',
           'entry_repeats',
           'entry_user',
-          'site_extras' ) as $d ) {
+          'site_extras'] as $d ) {
         dbi_execute( 'DELETE FROM webcal_' . $d . ' WHERE cal_id = ?',
-          array( $id ) );
+          [$id] );
       }
     }
     $newevent = false;
@@ -637,11 +636,11 @@ if( empty( $error ) ) {
   if( $do_override ) {
     if( ! dbi_execute( 'INSERT INTO webcal_entry_repeats_not
       ( cal_id, cal_date, cal_exdate ) VALUES ( ?, ?, ? )',
-        array( $old_id, $override_date, 1 ) ) )
+        [$old_id, $override_date, 1] ) )
       $error = $dberror . dbi_error();
   }
 
-  $query_params = array( $id );
+  $query_params = [$id];
 
   if( $old_id > 0 )
     $query_params[] = $old_id;
@@ -715,7 +714,7 @@ if( empty( $error ) ) {
   $cat_owner = ( ( ! empty( $user ) && strlen( $user ) )
       && ( $is_assistant || $is_admin ) ? $user : $login );
   dbi_execute( 'DELETE FROM webcal_entry_categories WHERE cal_id = ?
-    AND ( cat_owner = ? OR cat_owner = "" )', array( $id, $cat_owner ) );
+    AND ( cat_owner = ? OR cat_owner = "" )', [$id, $cat_owner] );
 
   if( ! empty( $cat_id ) ) {
     $categories = explode( ',', $cat_id );
@@ -723,8 +722,8 @@ if( empty( $error ) ) {
     foreach( $categories as $i ) {
       $j++;
 
-      $names  = array( 'cal_id', 'cat_id' );
-      $values = array( $id, abs( $i ) );
+      $names  = ['cal_id', 'cat_id'];
+      $values = [$id, abs( $i )];
 
       $names[]  = 'cat_owner';
       $values[] = $cat_owner;
@@ -762,7 +761,7 @@ if( empty( $error ) ) {
     //$value = $$extra_name;
     $value = getPostValue( $extra_name );
     $sql = '';
-    $query_params = array();
+    $query_params = [];
 
     if( strlen( $extra_name ) || $extra_type == EXTRA_DATE ) {
       if( $extra_type == EXTRA_CHECKBOX
@@ -781,7 +780,7 @@ if( empty( $error ) ) {
 
         $sql = 'INSERT INTO webcal_site_extras ( cal_id, cal_name, cal_type,
           cal_data ) VALUES ( ?, ?, ?, ? )';
-        $query_params = array( $id, $extra_name, $extra_type, $value );
+        $query_params = [$id, $extra_name, $extra_type, $value];
 
         if( ! empty( $extra_email ) ) {
           $value =
@@ -795,7 +794,7 @@ if( empty( $error ) ) {
           getPostValue( $extra_name . 'day' ) );
         $sql = 'INSERT INTO webcal_site_extras ( cal_id, cal_name, cal_type,
           cal_date ) VALUES ( ?, ?, ?, ? )';
-        $query_params = array( $id, $extra_name, $extra_type, $edate );
+        $query_params = [$id, $extra_name, $extra_type, $edate];
 
         if( ! empty( $extra_email ) )
           $extra_email_data .= $extra_name . ': ' . $edate . "\n";
@@ -809,7 +808,7 @@ if( empty( $error ) ) {
 
   // Process reminder.
   if( ! dbi_execute( 'DELETE FROM webcal_reminders WHERE cal_id = ?',
-      array( $id ) ) )
+      [$id] ) )
     $error = $dberror . dbi_error();
 
   if( $DISABLE_REMINDER_FIELD != 'Y' && $reminder == true ) {
@@ -849,25 +848,25 @@ if( empty( $error ) ) {
     if( ! dbi_execute( 'INSERT INTO webcal_reminders ( cal_id, cal_date,
       cal_offset, cal_related, cal_before, cal_repeats, cal_duration, cal_action,
       cal_last_sent, cal_times_sent ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )',
-        array( $id, $reminder_date, $reminder_offset, $rem_related, $rem_before,
+        [$id, $reminder_date, $reminder_offset, $rem_related, $rem_before,
           $reminder_repeats, $reminder_duration, $rem_action, $rem_last_sent,
-          $rem_times_sent ) ) )
+          $rem_times_sent] ) )
       $error = $dberror . dbi_error();
   }
 
   if( empty( $error ) ) {
     // Clearly, we want to delete the old repeats, before inserting new...
-    foreach( array(
+    foreach ( [
         'repeats',
-        'repeats_not' ) as $d ) {
+        'repeats_not'] as $d ) {
       if( ! dbi_execute( 'DELETE FROM webcal_entry_' . $d
-       . ' WHERE cal_id = ?', array( $id ) ) )
+       . ' WHERE cal_id = ?', [$id] ) )
         $error .= $dberror . dbi_error();
     }
     // Add repeating info.
     if( ! empty( $rpt_type ) && strlen( $rpt_type ) && $rpt_type != 'none' ) {
-      $names  = array( 'cal_id', 'cal_type', 'cal_frequency' );
-      $values = array( $id, $rpt_type, ( $rpt_freq ? $rpt_freq : 1 ) );
+      $names  = ['cal_id', 'cal_type', 'cal_frequency'];
+      $values = [$id, $rpt_type, ( $rpt_freq ? $rpt_freq : 1 )];
 
       if( ! empty( $bymonth ) ) {
         $names[]  = 'cal_bymonth';
@@ -919,8 +918,8 @@ if( empty( $error ) ) {
       foreach( $exceptions as $i ) {
         if( ! dbi_execute( 'INSERT INTO webcal_entry_repeats_not
             ( cal_id, cal_date, cal_exdate ) VALUES ( ?, ?, ? )',
-            array( $id, substr( $i, 1, 8 ),
-              ( ( substr( $i, 0, 1 ) == '+' ) ? 0 : 1 ) ) ) )
+            [$id, substr ( $i, 1, 8 ),
+              ( ( substr ( $i, 0, 1 ) == '+' ) ? 0 : 1 )] ) )
           $error = $dberror . dbi_error();
       }
     } //end exceptions
@@ -1055,11 +1054,11 @@ if( empty( $error ) ) {
     // on the following add... As a safety measure, delete any
     // existing entry with the id. Ignore the result.
     dbi_execute( 'DELETE FROM webcal_entry_user
-      WHERE cal_id = ? AND cal_login = ?', array( $id, $i ) );
+      WHERE cal_id = ? AND cal_login = ?', [$id, $i] );
 
     if( ! dbi_execute( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
         cal_status, cal_percent ) VALUES ( ?, ?, ?, ? )',
-        array( $id, $i, $status, $new_percent ) ) ) {
+        [$id, $i, $status, $new_percent] ) ) {
       $error = $dberror . dbi_error();
       break;
     } else {
@@ -1131,9 +1130,7 @@ if( empty( $error ) ) {
   } //end for loop participants
 
   // Add external participants.
-  $ext_emails =
-  $ext_names  =
-  $matches    = array();
+  $ext_emails = $ext_names = $matches = [];
   $ext_count = 0;
   $externalparticipants = getPostValue( 'externalparticipants' );
 
@@ -1143,7 +1140,7 @@ if( empty( $error ) ) {
     $lines = explode( "\n", $externalparticipants );
 
     if( ! is_array( $lines ) )
-      $lines = array( $externalparticipants );
+      $lines = [$externalparticipants];
 
     if( is_array( $lines ) ) {
       $linecnt = count( $lines );
@@ -1151,7 +1148,7 @@ if( empty( $error ) ) {
         $ext_words = explode( ' ', $lines[$i] );
 
         if( ! is_array( $ext_words ) )
-          $ext_words = array( $lines[$i] );
+          $ext_words = [$lines[$i]];
 
         if( is_array( $ext_words ) ) {
           $ext_emails[$ext_count] =
@@ -1196,8 +1193,8 @@ if( empty( $error ) ) {
       if( strlen( $ext_names[$i] ) ) {
         if( ! dbi_execute( 'INSERT INTO webcal_entry_ext_user
           ( cal_id, cal_fullname, cal_email ) VALUES ( ?, ?, ? )',
-          array( $id, $ext_names[$i],
-            ( strlen( $ext_emails[$i] ) ? $ext_emails[$i] : null ) ) ) )
+          [$id, $ext_names[$i],
+            ( strlen ( $ext_emails[$i] ) ? $ext_emails[$i] : null )] ) )
           $error = $dberror . dbi_error();
 
         // Send mail notification if enabled.

@@ -72,7 +72,7 @@ class WebCalendar {
       ['InitFirstPhase', 'Config', 'PHPDBI', 'Functions'],
       ['User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'InitSecondPhase']]];
     // Provide translation of translation file (trimming the ".txt" to the proper value for mb_language)
-    private $mb_language_map = array(
+    private $mb_language_map = [
       'Arabic_utf8' => 'Arabic',
       'Chinese-Big5' => 'Chinese',
       'Chinese-GB2312' => 'Chinese',
@@ -86,8 +86,8 @@ class WebCalendar {
       'Russian' => 'Russian',
       'Russian_utf8' => 'Russian',
       'Spanish' => 'Spanish',
-      );
-  
+    ];
+
   /**
    * WebCalendar constructor.
    *

@@ -30,7 +30,7 @@ view_init ( $id );
 $printerStr = generate_printer_friendly ( 'view_d.php' );
 set_today ( $date );
 
-print_header ( array ( 'js/view_d.php/true' ) );
+print_header ( ['js/view_d.php/true'] );
 
 // get users in this view
 $participants = view_get_user_list ( $id );

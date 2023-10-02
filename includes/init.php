@@ -182,8 +182,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   // non-empty, including this as a normal stylesheet so they can see how it
   // will look when printed. This maintains backwards-compatibility for browsers
   // that don't support media="print" stylesheets.
-  $cs_ar = array( 'css/styles.css', 'css/print_styles.css' );
-  $js_ar = array();
+  $cs_ar = ['css/styles.css', 'css/print_styles.css'];
+  $js_ar = [];
 
   $ret = send_doctype( $appStr );
 // Use "punctuation.css" to start getting punctuation out of the code to where the translators can get at it.

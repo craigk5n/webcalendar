@@ -59,12 +59,12 @@ if( typeof document.getElementsBySelector == 'undefined' ) {
   document.getElementsBySelector = function( selector ) {
     // Attempt to fail gracefully in lesser browsers.
     if( ! document.getElementsByTagName )
-      return new Array();
+      return [];
 
     // Split selector in to tokens.
     var
       tokens = selector.split( ' ' ),
-      currentContext = new Array( document );
+      currentContext = [document];
 
     for( var i = 0; i < tokens.length; i++ ) {
       token = tokens[i].replace( /^\s+/,'' ).replace( /\s+$/,'' );
@@ -79,10 +79,10 @@ if( typeof document.getElementsBySelector == 'undefined' ) {
 
         if( tagName && element.nodeName.toLowerCase() != tagName ) {
           // Tag with that ID not found, return false.
-          return new Array();
+          return [];
         }
         // Set currentContext to contain just this element.
-        currentContext = new Array( element );
+        currentContext = [element];
         continue; // Skip to next token.
       }
       if( token.indexOf( '.' ) > -1 ) {
