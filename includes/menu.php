@@ -181,6 +181,9 @@ if (!$use_http_auth && $single_user != 'Y') {
     $logout_url = $login_url . '&';
   }
   $logout_url .= 'action=logout';
+  if (empty($CSRF_PROTECTION) || $CSRF_PROTECTION != 'N') {
+    $logout_url .= '&amp;csrf_form_key=' . getFormKey();
+  }
   // Should we use another application's login/logout pages?
   if (substr($GLOBALS['user_inc'], 0, 9) == 'user-app-') {
     global $app_login_page, $app_logout_page;
