@@ -23,7 +23,7 @@
  */
 require_once 'includes/init.php';
 
-$allow_view_other = ( $ALLOW_VIEW_OTHER === 'Y' );
+$allow_view_other = ( ( $ALLOW_VIEW_OTHER ??= 'Y' ) === 'Y' );
 
 if( ! access_is_enabled() ) {
   echo print_not_auth();
