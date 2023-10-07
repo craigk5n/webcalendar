@@ -44,7 +44,6 @@
  * enabled, then we remove users not in this user's groups
  * (except for nonuser calendars... which we allow regardless of group).
  */
-require_once 'includes/init.php';
 require_once 'includes/views.php';
 
 $error = '';
