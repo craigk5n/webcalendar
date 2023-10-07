@@ -519,22 +519,13 @@ function access_user_calendar( $cal_can_xxx, $other_user, $cur_user = '',
   if( empty( $access_other_cals ) )
     access_load_user_permissions();
 
-  $key1 = $cur_user . '.' . $other_user;
-  $key2 = $cur_user . '.__default__';
-  $key3 = '__default__.' . $other_user;
-  $key4 = '__default__.__default__';
-
-  if( isset( $access_other_cals[$key1][$cal_can_xxx] ) )
-    $ret = $access_other_cals[$key1][$cal_can_xxx];
-  else
-  if( isset( $access_other_cals[$key2][$cal_can_xxx] ) )
-    $ret = $access_other_cals[$key2][$cal_can_xxx];
-  else
-  if( isset( $access_other_cals[$key3][$cal_can_xxx] ) )
-    $ret = $access_other_cals[$key3][$cal_can_xxx];
-  else
-  if( isset( $access_other_cals[$key4][$cal_can_xxx] ) )
-    $ret = $access_other_cals[$key4][$cal_can_xxx];
+    $ret = (
+      $access_other_cals["$cur_user.$other_user"][$cal_can_xxx] ?:
+      $access_other_cals["$cur_user.__default__"][$cal_can_xxx] ?:
+      $access_other_cals["__default__.$other_user"][$cal_can_xxx] ?:
+      $access_other_cals['__default__.__default__'][$cal_can_xxx] ?:
+      ''
+    );
 
   // Check type and access levels.
   if( ! empty( $access ) && ! empty( $type ) ) {
