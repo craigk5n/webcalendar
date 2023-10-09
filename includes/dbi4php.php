@@ -281,7 +281,7 @@ function dbi_close( $conn ) {
   elseif( strcmp( $GLOBALS['db_type'], 'odbc' ) == 0 )
     return odbc_close( $GLOBALS['odbc_connection'] );
   elseif( strcmp( $GLOBALS['db_type'], 'oracle' ) == 0 )
-    return OCILogOff( $conn );
+    return oci_close ( $conn );
   elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
     return pg_close( $GLOBALS['postgresql_connection'] );
   elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 )
@@ -392,14 +392,14 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
     return odbc_exec( $GLOBALS['odbc_connection'], $sql );
   } elseif( strcmp( $GLOBALS['db_type'], 'oracle' ) == 0 ) {
     if( false === $GLOBALS['oracle_statement'] =
-        OCIParse( $GLOBALS['oracle_connection'], $sql ) )
+        oci_parse ( $GLOBALS['oracle_connection'], $sql ) )
       dbi_fatal_error( translate( 'Error executing query.' )
        . $phpdbiVerbose ? ( dbi_error() . "\n\n<br>\n" . $sql ) : ''
        . '', $fatalOnError, $showError );
       return OCIExecute( $GLOBALS['oracle_statement'], OCI_COMMIT_ON_SUCCESS );
   } elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 ) {
     $found_db_type = true;
-    $res = pg_exec( $GLOBALS['postgresql_connection'], $sql );
+    $res = pg_execute ( $GLOBALS['postgresql_connection'], $sql );
   } elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 ) {
     $found_db_type = true;
     $res = sqlite_query( $GLOBALS['sqlite_c'], $sql, SQLITE_NUM );
@@ -490,7 +490,7 @@ function dbi_affected_rows( $conn, $res ) {
     return odbc_num_rows( $res );
   elseif( strcmp( $GLOBALS['db_type'], 'oracle' ) == 0 )
     return ( $GLOBALS['oracle_statement'] >= 0
-      ? OCIRowCount( $GLOBALS['oracle_statement'] ) : -1 );
+      ? oci_num_rows ( $GLOBALS['oracle_statement'] ) : -1 );
   elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
     return pg_affected_rows( $res );
   elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 )
@@ -633,11 +633,11 @@ function dbi_free_result( $res ) {
   elseif( strcmp( $GLOBALS['db_type'], 'oracle' ) == 0 ) {
     // Not supported. Ingore.
     if( $GLOBALS['oracle_statement'] >= 0 ) {
-      OCIFreeStatement( $GLOBALS['oracle_statement'] );
+      oci_free_statement ( $GLOBALS['oracle_statement'] );
       $GLOBALS['oracle_statement'] = -1;
     }
   } elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
-    return pg_freeresult( $res );
+    return pg_free_result ( $res );
   elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 ) {
     // Not supported
   }
@@ -673,7 +673,7 @@ function dbi_error() {
     // No way to get error from ODBC API.
     $ret = translate( 'Unknown ODBC error.' );
   elseif( strcmp( $GLOBALS['db_type'], 'oracle' ) == 0 ) {
-    $e = OCIError( $GLOBALS['oracle_connection']
+    $e = oci_error ( $GLOBALS['oracle_connection']
       ? $GLOBALS['oracle_connection'] : '' );
     $ret = htmlentities( $e['message'] );
   } elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )

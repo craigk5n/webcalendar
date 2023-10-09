@@ -92,7 +92,7 @@ function wc_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
       if ( strcmp( $encoding, 'quotedprintable' ) == 0 )
         $enc = export_quoted_printable_encode( $string[$i] );
       else if ( strcmp( $encoding, 'utf8' ) == 0 )
-        $enc = utf8_encode ( $string[$i] );
+        $enc = mb_convert_encoding ( $string[$i] );
     }
     if ( $string[$i] == ':' )
       $start_encode = 1;
@@ -221,9 +221,10 @@ function export_get_attendee( $id, $export ) {
         $attendee[$count] .= ';CN="'
          . ( empty( $user['cal_firstname'] ) && empty( $user['cal_lastname'] )
            ? $user['cal_login']
-           : utf8_encode( $user['cal_firstname'] ) . ' '
-             . utf8_encode( $user['cal_lastname'] ) ) . '"'
-         . ':MAILTO:' . ( empty( $user['cal_email'] )
+           : mb_convert_encoding ( $user['cal_firstname'] ) . ' '
+             . mb_convert_encoding ( $user['cal_lastname'] ) )
+         . '":MAILTO:'
+         . ( empty ( $user['cal_email'] )
            ? $EMAIL_FALLBACK_FROM : $user['cal_email'] );
       }
       $count++;
@@ -944,7 +945,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
   // Always output something, even if no records come back
   // This prevents errors on the iCal client
   $ret = "BEGIN:VCALENDAR\r\n";
-  $title = utf8_encode ( 'X-WR-CALNAME;VALUE=TEXT:' .
+  $title = mb_convert_encoding ( 'X-WR-CALNAME;VALUE=TEXT:' .
   ( empty ( $publish_fullname ) ? $login : translate ( $publish_fullname ) ) );
   $title = str_replace ( ',', "\\,", $title );
   $ret .= "$title\r\n";
