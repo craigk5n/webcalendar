@@ -5555,22 +5555,28 @@ function remember_this_view ( $view = false ) {
 /**
  * This just sends the DOCTYPE used in a lot of places in the code.
  *
- * @param string  lang
+ * @param string $doc_title
+ *
+ * @global string charset  Usually 'utc-8'.
+ * @global string lang     User's browser language preference.
+ * @global string LANGUAGE What we think the user wants.
+ *
+ * @return string HTML snippet
  */
 function send_doctype ( $doc_title = '' ) {
   global $charset, $lang, $LANGUAGE;
 
-  $lang = ( empty ( $LANGUAGE ) ? '' : languageToAbbrev ( $LANGUAGE ) );
-  if ( empty ( $lang ) )
-    $lang = 'en';
-
-  $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
+  $charset = ( translate ( 'charset' ) ?: 'utc-8' );
+  $lang = ( languageToAbbrev ( $LANGUAGE ) ?: $_COOKIE['lang'] ?: 'en' );
 
   return "<!DOCTYPE html>
   <html lang=\"$lang\">
     <head>
       <meta charset=\"$charset\">"
-    . ( empty ( $doc_title ) ? '' : "
+      // 'viewport' makes things fit on whatever screen size.
+    . '
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">'
+    . ( ! $doc_title ? '' : "
       <title>$doc_title</title>" );
 }
 
