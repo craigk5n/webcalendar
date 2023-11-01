@@ -5557,7 +5557,7 @@ function remember_this_view ( $view = false ) {
  *
  * @param string $doc_title
  *
- * @global string charset  Usually 'utc-8'.
+ * @global string charset  Usually 'utf-8'.
  * @global string lang     User's browser language preference.
  * @global string LANGUAGE What we think the user wants.
  *
@@ -5566,7 +5566,7 @@ function remember_this_view ( $view = false ) {
 function send_doctype ( $doc_title = '' ) {
   global $charset, $lang, $LANGUAGE;
 
-  $charset = ( translate ( 'charset' ) ?: 'utc-8' );
+  $charset = ( translate ( 'charset' ) ?: 'utf-8' );
   $lang = ( languageToAbbrev ( $LANGUAGE ) ?: $_COOKIE['lang'] ?: 'en' );
 
   return "<!DOCTYPE html>
