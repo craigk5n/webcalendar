@@ -110,10 +110,10 @@ if ( ! $error ) {
   @session_start();
   $_SESSION['webcal_tmp_login'] = 'blahblahblah';
 
-  $editStr = '<input type="button" value="' . translate ( 'Edit' )
-   . "...\" onclick=\"window.open( 'edit_template.php?type=%s','cal_template','"
-   . 'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,'
-   . 'outerWidth=520\' );" name="">';
+  $editStr = '<button name="" type="button" '
+    . "onclick=\"window.open('edit_template.php?type=%s','cal_template','"
+    . 'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,'
+    . 'outerWidth=520\');">' . translate ( 'Edit' ) . '...</button>';
   $choices = ['day.php', 'week.php', 'month.php', 'year.php'];
   $choices_text = [translate ( 'Day' ), translate ( 'Week' ),
     translate ( 'Month' ), translate ( 'Year' )];
@@ -243,8 +243,8 @@ if ( ! $error ) {
     <form action="admin.php" method="post" onsubmit="return valid_form( this );"'
    . ' name="prefform">' . csrf_form_key()
    . display_admin_link() . '
-      <input class="btn btn-primary" type="submit" value="' . $saveStr
-   . '" name=""><br><br>
+      <button class="btn btn-primary" name="" type="submit">'
+    . $saveStr . '</button><br><br>
 
 <!-- TABS -->' . $tabs . '
 <!-- TABS BODY -->
@@ -854,7 +854,8 @@ if ( ! $error ) {
       </div>
       </div>
       <div style="clear:both;">
-        <input class="btn btn-primary" type="submit" value="' . $saveStr . '" name="">
+        <button class="btn btn-primary" name="" type="submit">'
+    . $saveStr . '</button>
       </div>
     </form>
   </div>

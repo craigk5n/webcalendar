@@ -106,8 +106,8 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
           </td>
         </tr>
         <tr>
-          <td colspan="2"><input class="btn btn-primary" type="submit" value="'
- . translate ( 'Export' ) . '"></td>
+          <td colspan="2"><button class="btn btn-primary" type="submit">'
+  . translate ( 'Export' ) . '</button></td>
         </tr>
       </table>
     </form>';
