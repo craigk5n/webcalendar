@@ -36,6 +36,7 @@ export_handler.php
 export.php
 favicon.ico
 freebusy.php
+getIcon.php
 GPL.html
 groups.php
 help_admin.php
