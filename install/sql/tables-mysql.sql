@@ -106,7 +106,7 @@ CREATE TABLE webcal_entry (
   /* location of event */
   cal_location varchar(100) DEFAULT NULL,
   /* URL of event */
-  cal_url varchar(100) DEFAULT NULL,
+  cal_url varchar(255) DEFAULT NULL,
   /* date task completed */
   cal_completed INT DEFAULT NULL,
   /* full description of event */
@@ -426,7 +426,13 @@ CREATE TABLE webcal_categories (
   cat_name VARCHAR(80) NOT NULL,
   /* RGB color for category */
   cat_color VARCHAR(8) NULL,
-  PRIMARY KEY ( cat_id )
+  /* Status of the category (A = Active, I = Inactive, D = Deleted) */
+  cat_status CHAR DEFAULT 'A',
+  /* category icon mime type (e.g. "image/png")  */
+  cat_icon_mime VARCHAR(32) DEFAULT NULL,
+  /* category icon image blob */
+  cat_icon_blob LONGBLOB DEFAULT NULL,
+  PRIMARY KEY ( cal_id, cat_id, cat_order, cat_owner )
 );
 
 /**

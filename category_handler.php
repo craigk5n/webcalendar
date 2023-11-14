@@ -4,19 +4,21 @@ require_once 'includes/init.php';
 $icon_max_size = '6000';
 $icon_path = 'wc-icons/';
 
-/**
- * Rename any icons associated with this cat_id.
- */
-function renameIcon($id)
-{
-  global $icon_path;
-  $bakIcon = $catIcon = $icon_path . 'cat-';
-  $bakIcon .= date('YmdHis') . '.gif';
-  $catIcon .= $id . '.gif';
-  if (!file_exists($catIcon))
-    $catIcon = $icon_path . '/cat-' . $id . '.png';
-  if (file_exists($catIcon))
-    rename($catIcon, $bakIcon);
+
+function updateIconBlob($catId, $iconData, $iconMimeType) {
+  // Update the icon binary data in the database.
+  dbi_update_blob(
+      'webcal_categories',
+      'cat_icon_blob',
+      "cat_id = $catId",
+      $iconData
+  );
+
+  // Update the MIME type of the icon in the database.
+  dbi_execute(
+      'UPDATE webcal_categories SET cat_icon_mime = ? WHERE cat_id = ?',
+      [$iconMimeType, $catId]
+  );
 }
 
 // Does the category belong to the user?
@@ -74,8 +76,6 @@ if (empty($error) && !empty($delete)) {
   )) {
     $error = db_error();
   }
-  // Rename any icons associated with this cat_id.
-  renameIcon($id);
 } else if (empty($error) && empty($catname)) {
   $error = translate('Category name is required');
 } else if (empty($error)) {
@@ -87,9 +87,6 @@ if (empty($error) && !empty($delete)) {
       [$catname, $catcolor, $id]
     ))
       $error = db_error();
-
-    if (!empty($delIcon) && $delIcon == 'Y')
-      renameIcon($id);
   } else {
     // Add new category.
     // Get new id.
@@ -109,42 +106,34 @@ if (empty($error) && !empty($delete)) {
     } else
       $error = db_error();
   }
-  if (empty($delIcon) && is_dir($icon_path) && (!empty($ENABLE_ICON_UPLOADS) && $ENABLE_ICON_UPLOADS == 'Y' ||
-    $is_admin)) {
+  if (empty($delIcon) && (!empty($ENABLE_ICON_UPLOADS) && $ENABLE_ICON_UPLOADS == 'Y' || $is_admin)) {
     // Save icon if uploaded.
     if (!empty($file['tmp_name'])) {
-      if (($file['type'] == 'image/gif' || $file['type'] == 'image/png')
-        && $file['size'] <= $icon_max_size
-      ) {
-        // $icon_props = getimagesize( $file['tmp_name'] );
-        // print_r ($icon_props );
-        $path_parts = pathinfo($_SERVER['SCRIPT_FILENAME']);
-        $fullIcon = $path_parts['dirname'] . '/'
-          . $icon_path . 'cat-' . $id;
-        if ($file['type'] == 'image/gif')
-          $fullIcon .= '.gif';
-        else
-          $fullIcon .= '.png';
-        renameIcon($id);
-        $file_result = move_uploaded_file($file['tmp_name'], $fullIcon);
-        // echo "Upload Result:" . $file_result;
-      } else if ($file['size'] > $icon_max_size) {
-        $error = translate('File size exceeds maximum.');
-      } else if (
-        $file['type'] != 'image/gif' &&
-        $file['type'] != 'image/png'
-      ) {
-        $error = translate('File is not a GIF or PNG image') . ': '
-          . $file['type'];
-      }
+        if (($file['type'] == 'image/gif' || $file['type'] == 'image/png')
+            && $file['size'] <= $icon_max_size) {
+            // Get binary data of the icon.
+            $iconData = file_get_contents($file['tmp_name']);
+            // Update the icon data and MIME type in the database.
+            updateIconBlob($id, $iconData, $file['type']);
+        } else if ($file['size'] > $icon_max_size) {
+            $error = translate('File size exceeds maximum.');
+        } else if (
+            $file['type'] != 'image/gif' &&
+            $file['type'] != 'image/png'
+        ) {
+            $error = translate('File is not a GIF or PNG image') . ': '
+                . $file['type'];
+        }
     }
     // Copy icon if local file specified.
     $urlname = getPostvalue('urlname');
     if (!empty($urlname) && file_exists($icon_path . $urlname)) {
-      if (preg_match('/.(gif|GIF)$/', $urlname))
-        copy($icon_path . $urlname, $icon_path . 'cat-' . $id . '.gif');
-      else
-        copy($icon_path . $urlname, $icon_path . 'cat-' . $id . '.png');
+        // Get binary data of the icon.
+        $iconData = file_get_contents($icon_path . $urlname);
+        // Determine the MIME type based on the file extension.
+        $iconMimeType = (preg_match('/.(gif|GIF)$/', $urlname)) ? 'image/gif' : 'image/png';
+        // Update the icon data and MIME type in the database.
+        updateIconBlob($id, $iconData, $iconMimeType);
     }
   }
 }

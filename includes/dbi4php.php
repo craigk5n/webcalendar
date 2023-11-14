@@ -151,20 +151,25 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
       return $c;
     } else
       return false;
-  } elseif( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
-    #mysqli_report(MYSQLI_REPORT_ALL);
-    $c  = new mysqli( $host, $login, $password, $database );
-
-    if( $c ) {
-      if( mysqli_connect_errno() && ! empty( $database ) )
+  } elseif (strcmp($GLOBALS['db_type'], 'mysqli') == 0) {
+    // mysqli_report(MYSQLI_REPORT_ALL);
+    $c = null;
+    $errorString = "";
+    try {
+      $c = new mysqli($host, $login, $password, $database);
+      if ($c->connect_error) {
+        $db_connection_info['last_error'] = $c->connect_error;
         return false;
+      }
 
-      $db_connection_info['connected']  = true;
-      $db_connection_info['connection'] =
-      $GLOBALS['db_connection']         = $c;
+      $db_connection_info['connected'] = true;
+      $db_connection_info['connection'] = $GLOBALS['db_connection'] = $c;
+      $db_connection_info['last_error'] = '';
       return $c;
-    } else
+    } catch (Exception $e) {
+      $db_connection_info['last_error'] = $e->getMessage();
       return false;
+    }
   } elseif( strcmp( $GLOBALS['db_type'], 'odbc' ) == 0 ) {
     $c = ( $GLOBALS['db_persistent']
       ? odbc_pconnect( $database, $login, $password )
@@ -216,15 +221,16 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
     $GLOBALS['sqlite_c']              = $c;
     return $c;
   } elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
-    $c = new SQLite3 ( $database );
-
-    if( ! $c ) {
-      echo str_replace( 'XXX', $db_sqlite_error_str,
-        translate( 'Error connecting to database XXX' ) ) . "\n";
-      exit;
+    try {
+      $c = new SQLite3($database);
+      $db_connection_info['connected']  = true;
+      $db_connection_info['connection'] = $GLOBALS['sqlite3_c'] = $c;
+      $db_connection_info['last_error'] = '';
+      return $c;
+    } catch (Exception $e) {
+      $GLOBALS['db_sqlite_error_str'] = $db_connection_info['last_error'] = $e->getMessage();
+      return false;
     }
-    $db_connection_info['connected']  = true;
-    $db_connection_info['connection'] = $GLOBALS['sqlite3_c'] = $c;
     return $c;
   } else
     dbi_fatal_error( 'dbi_connect(): '
@@ -409,11 +415,12 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
   }
 
   if( $found_db_type ) {
-    if( ! $res )
+    if( ! $res ) {
+      //echo "<b>Db error: " . dbi_error() . "</b><br>\n";
       dbi_fatal_error( translate( 'Error executing query.' )
        . ( $phpdbiVerbose ? ( dbi_error() . "\n\n<br>\n" . $sql ) : '' ),
          $fatalOnError, $showError );
-
+    }
     return $res;
   } else
     dbi_fatal_error( 'dbi_query(): ' . translate( 'db_type not defined.' ) );
@@ -667,9 +674,13 @@ function dbi_error() {
     $ret = mssql_get_last_message();
   elseif( strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 )
     $ret = mysql_error();
-  elseif( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 )
-    $ret = $GLOBALS['db_connection']->error;
-  elseif( strcmp( $GLOBALS['db_type'], 'odbc' ) == 0 )
+  elseif (strcmp($GLOBALS['db_type'], 'mysqli') == 0) {
+    if (!empty($GLOBALS['db_connection_info']['last_error'])) {
+      $ret = $GLOBALS['db_connection_info']['last_error'];
+    } else {
+      $ret = $GLOBALS['db_connection']->error;
+    }
+  } elseif( strcmp( $GLOBALS['db_type'], 'odbc' ) == 0 )
     // No way to get error from ODBC API.
     $ret = translate( 'Unknown ODBC error.' );
   elseif( strcmp( $GLOBALS['db_type'], 'oracle' ) == 0 ) {
@@ -686,7 +697,16 @@ function dbi_error() {
       $GLOBALS['db_sqlite_error_str'] = '';
     }
   } elseif ( strcmp ( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
-    $ret = $GLOBALS['sqlite3_c']->lastErrorMsg ();
+    try {
+      if ( empty($$GLOBALS['sqlite3_c']) || !empty($GLOBALS['db_sqlite_error_str'])) {
+        $ret = $GLOBALS['db_sqlite_error_str'];
+      } else {
+        $ret = $GLOBALS['sqlite3_c']->lastErrorMsg ();
+      }
+    } catch ( Exception $e) {
+      $GLOBALS['db_sqlite_error_str'] = $e->getMessage();
+      $ret = $e->getMessage();
+    }
   } else
     $ret = 'dbi_error(): ' . translate( 'db_type not defined.' );
 
@@ -776,6 +796,7 @@ function dbi_escape_string( $string ) {
 function dbi_execute ( $sql, $params = [], $fatalOnError = true,
   $showError = true ) {
 
+  //echo "SQL: $sql <br>\n";
   if( count( $params ) == 0 )
     return dbi_query( $sql, $fatalOnError, $showError );
 
