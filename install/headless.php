@@ -95,7 +95,7 @@ if( $c && ! empty( $_SESSION['install_file'] ) ) {
     default:
         $install_filename .= 'mysql.sql';
     }
-    db_populate( $install_filename, $display_sql );
+    executeSqlFromFile($install_filename);
 }
 
 // Convert passwords to secure hashes if needed.

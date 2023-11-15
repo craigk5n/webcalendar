@@ -1,0 +1,26 @@
+.titlecontainer {
+    display: flex;           /* Use flexbox layout */
+    align-items: center;     /* Center items vertically */
+}
+
+.titlecontainer img {
+    display: block;         /* Remove any default spacing below the image */
+    margin-right: 20px;     /* Space between image and text */
+}
+
+.heading {
+    margin: 0;              /* Remove default margins from h1 */
+    /* Additional styles for your h1 if needed */
+}
+
+li {
+    display: flex;           /* Use flexbox layout */
+    align-items: center;     /* Center items vertically */
+    margin-bottom: 0.3em;
+}
+
+li img {
+    display: block;         /* Remove any default spacing below the image */
+    margin-right: 10px;      /* Space between text and image */
+}
+

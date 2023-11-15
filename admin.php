@@ -678,9 +678,7 @@ if ( ! $error ) {
    . print_radio ( 'CATEGORIES_ENABLED' ) . '</div>
           <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'icon_upload-enabled-help' ) . '">'
    . translate ( 'Category Icon Upload enabled' ) . ':</label>'
-   . print_radio ( 'ENABLE_ICON_UPLOADS' ) . '' . ( ! is_dir ( 'wc-icons/' )
-    ? str_replace ( 'XXX', 'wc-icons',
-      translate ( '(Requires XXX folder to exist.)' ) ) : '' ) . '</div>
+   . print_radio ( 'ENABLE_ICON_UPLOADS' ) . '</div>
 
 <!-- DISPLAY TASK PREFERENCES -->
           <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'display-tasks-help' ) . '">'

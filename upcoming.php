@@ -149,7 +149,7 @@ $WebCalendar->setLanguage();
  * declared twice in case of this file being included twice or more within the same doc.
  */
 function print_upcoming_event ( $e, $date ) {
-  global $charset, $display_link, $display_tzid, $eventinfo,
+  global $categories, $charset, $display_link, $display_tzid, $eventinfo,
   $hcalendar_output, $link_target, $login, $SERVER_URL,
   $showPopups, $showTime, $UPCOMING_DISPLAY_CAT_ICONS, $username;
 
@@ -188,16 +188,11 @@ function print_upcoming_event ( $e, $date ) {
       $SERVER_URL . 'view_entry.php?id=' .
       $e->getID() . "&amp;date=$date&amp;user=" . $e->getLogin()
        . ( empty( $link_target ) ? '>' : "\" target=\"$link_target\">" );
-    if ( empty ( $UPCOMING_DISPLAY_CAT_ICONS ) ||
-      $UPCOMING_DISPLAY_CAT_ICONS != 'N' ) {
-      $catNum = abs (intval($e->getCategory()));
-      if ( $catNum > 0 ) {
-        $catIcon = 'wc-icons/cat-' . $catNum . '.gif';
-        if ( ! file_exists ( $catIcon ) )
-          $catIcon = 'wc-icons/cat-' . $catNum . '.png';
-        if ( file_exists ( $catIcon ) )
-          echo $link .
-            '<img src="' . $catIcon . '" alt="category icon"></a>';
+    if (empty($UPCOMING_DISPLAY_CAT_ICONS) || $UPCOMING_DISPLAY_CAT_ICONS != 'N') {
+      $catNum = abs(intval($e->getCategory()));
+      if ($catNum > 0 &&  !empty($categories[$catNum]['cat_icon_mime'])) {
+        $catIcon = "getIcon.php?cat_id=" . $catNum;
+        $link .= '<img src="' . $catIcon . '" alt="category icon"></a>';
       }
     }
     echo $link;
@@ -398,14 +393,14 @@ if ( $error == '' ) {
 
     $x = getGetValue ( 'showTitle', true );
     if ( strlen( $x ) > 0 ) {
-      $showTitle = $x;
+      $showTitle = $x; 
     }
 
   if ( $load_layers ) {
     load_user_layers ( $username );
   }
 
-  //load_user_categories();
+  load_user_categories(); // required to determine if cat icon exists
 
   // Calculate date range
   $date = getValue ( 'date', '-?[0-9]+', true );
