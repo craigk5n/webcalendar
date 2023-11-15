@@ -47,6 +47,7 @@ $(PHPMAILER_DIR)/SMTP.php: $(PHPMAILER_VENDOR_DIR)/SMTP.php
 _ICONS: \
 	$(BOOTSTRAP_ICON_DIR)/printer.svg \
 	$(BOOTSTRAP_ICON_DIR)/search.svg \
+	$(BOOTSTRAP_ICON_DIR)/arrow-left.svg \
 	$(BOOTSTRAP_ICON_DIR)/arrow-right-circle.svg \
 	$(BOOTSTRAP_ICON_DIR)/arrow-left-circle.svg \
 	$(BOOTSTRAP_ICON_DIR)/arrow-up-short.svg \
@@ -61,7 +62,8 @@ _ICONS: \
 	$(BOOTSTRAP_ICON_DIR)/check-circle.svg \
 	$(BOOTSTRAP_ICON_DIR)/trash.svg \
 	$(BOOTSTRAP_ICON_DIR)/key-fill.svg \
-	$(BOOTSTRAP_ICON_DIR)/info-circle-fill.svg
+	$(BOOTSTRAP_ICON_DIR)/info-circle-fill.svg \
+	$(BOOTSTRAP_ICON_DIR)/circle.svg
 
 $(BOOTSTRAP_ICON_DIR)/printer.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/printer.svg
 	cp $< $@
@@ -70,6 +72,9 @@ $(BOOTSTRAP_ICON_DIR)/search.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/search.svg
 	cp $< $@
 
 $(BOOTSTRAP_ICON_DIR)/arrow-right-circle.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/arrow-right-circle.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/arrow-left.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/arrow-left.svg
 	cp $< $@
 
 $(BOOTSTRAP_ICON_DIR)/arrow-left-circle.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/arrow-left-circle.svg
@@ -112,6 +117,9 @@ $(BOOTSTRAP_ICON_DIR)/key-fill.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/key-fill.svg
 	cp $< $@
 
 $(BOOTSTRAP_ICON_DIR)/info-circle-fill.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/info-circle-fill.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/circle.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/circle.svg
 	cp $< $@
 
 includes/load_assets.php: \

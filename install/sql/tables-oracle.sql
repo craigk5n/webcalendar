@@ -35,7 +35,7 @@ CREATE TABLE webcal_entry (
   cal_priority INT DEFAULT 5,
   cal_time INT NULL,
   cal_type CHAR(1) DEFAULT 'E',
-  cal_url VARCHAR2(100) NULL,
+  cal_url VARCHAR2(255) NULL,
   PRIMARY KEY ( cal_id )
 );
 CREATE TABLE webcal_entry_repeats (
@@ -156,7 +156,10 @@ CREATE TABLE webcal_categories (
   cat_color VARCHAR2(8) NULL,
   cat_name VARCHAR2(80) NOT NULL,
   cat_owner VARCHAR2(25),
-  PRIMARY KEY ( cat_id )
+  cat_status CHAR DEFAULT 'A',
+  cat_icon_mime VARCHAR(32) DEFAULT NULL,
+  cat_icon_blob BLOB DEFAULT NULL,
+  PRIMARY KEY ( cal_id, cat_id, cat_order, cat_owner )
 );
 CREATE TABLE webcal_asst (
   cal_boss VARCHAR2(25) NOT NULL,

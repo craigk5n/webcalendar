@@ -17,6 +17,7 @@ docs/WebCalendar-UserManual.html
 includes/settings.php
 java
 Makefile
+sqlite-data
 release-files
 tests
 TODO

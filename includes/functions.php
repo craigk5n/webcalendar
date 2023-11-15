@@ -3110,7 +3110,7 @@ function get_preferred_view ( $indate = '', $args = '' ) {
   $xdate = ( empty ( $indate ) ? $thisdate : $indate );
 
   $url .= ( empty ( $xdate ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' )
-     . 'date=' . $xdate );
+     . 'date=' . ( $xdate instanceof DateTime ? $xdate->format('Ymd') : $xdate ) );
   $url .= ( empty ( $args ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' )
      . $args );
 
@@ -3602,9 +3602,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   $time_only = 'N';
   $view_text = translate ( 'View this event' );
 
-  $catIcon = 'wc-icons/cat-' . $getCat . '.gif';
-  if ( ! file_exists ( $catIcon ) )
-    $catIcon = 'wc-icons/cat-' . $getCat . '.png';
+  $catIcon = get_category_icon_url($getCat);
   $key++;
 
   if( access_is_enabled() ) {
@@ -3758,9 +3756,7 @@ function html_for_event_week_at_a_glance ( $event, $date,
   $time_only = 'N';
   $title = '<a title="';
 
-  $catIcon = 'wc-icons/cat-' . $getCat . '.gif';
-  if ( ! file_exists ( $catIcon ) )
-    $catIcon = 'wc-icons/cat-' . $getCat . '.png';
+  $catIcon = get_category_icon_url($getCat);
   $key++;
 
   if( access_is_enabled() ) {
@@ -4174,7 +4170,7 @@ function load_user_categories ( $ex_global = '' ) {
     $query_params = [];
     $query_params[] = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
       ( $is_assistant || $is_admin ) ? $user : $login );
-    $rows = dbi_get_cached_rows ( 'SELECT cat_id, cat_name, cat_owner, cat_color
+    $rows = dbi_get_cached_rows ( 'SELECT cat_id, cat_name, cat_owner, cat_color, cat_icon_mime
       FROM webcal_categories WHERE ( cat_owner = ? ) ' . ( $ex_global == ''
         ? 'OR ( cat_owner IS NULL ) ORDER BY cat_owner,' : 'ORDER BY' )
        . ' cat_name', $query_params );
@@ -4185,7 +4181,8 @@ function load_user_categories ( $ex_global = '' ) {
           'cat_name' => $row[1],
           'cat_owner' => $row[2],
           'cat_global' => empty ( $row[2] ) ? 1 : 0,
-          'cat_color' => ( empty ( $row[3] ) ? '#000000' : $row[3] )];
+          'cat_color' => ( empty ( $row[3] ) ? '#000000' : $row[3] ),
+          'cat_icon_mime' => $row[4]];
       }
     }
   }
@@ -4818,6 +4815,19 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
 }
 
 /**
+ * Get the HTML for the category icons.
+ * Caller must have already loaded categories by calling load_user_categories.
+ */
+function get_category_icon_url($cat_id) {
+  global $categories;
+
+  if ($cat_id > 0 &&  !empty($categories[$cat_id]['cat_icon_mime'])) {
+    return 'getIcon.php?cat_id=' . $cat_id;
+  }
+  return '';
+}
+
+/**
  * Prints the HTML for one event in the month view.
  *
  * @param Event  $event  The event
@@ -4899,11 +4909,7 @@ function print_entry ( $event, $date ) {
   $catNum = empty($event->getCategory()) ? 0 : abs($event->getCategory());
   $icon = "bootstrap-icons/circle-fill.svg";
   if ( $catNum > 0 ) {
-    $catIcon = 'wc-icons/cat-' . $catNum . '.gif';
-    if ( ! file_exists ( $catIcon ) )
-      $catIcon = 'wc-icons/cat-' . $catNum . '.png';
-    if ( ! file_exists ( $catIcon ) )
-      $catIcon = '';
+    $catIcon = get_category_icon_url($catNum);
   }
 
   if ( empty ( $catIcon ) )
