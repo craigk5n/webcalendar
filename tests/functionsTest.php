@@ -3,6 +3,7 @@
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . "/../includes/functions.php";
+require_once __DIR__ . "/../install/sql/upgrade_matrix.php";
 
 /**
  * Unit tests for includes/functions.php
@@ -204,5 +205,4 @@ final class FunctionsTest extends TestCase
     $this->assertTrue(upgrade_requires_db_changes('mysql', 'v1.9.5', 'v1.9.6'));
     $this->assertFalse(upgrade_requires_db_changes('mysql', 'v1.9.7', 'v1.9.8'));
   }
-
 }

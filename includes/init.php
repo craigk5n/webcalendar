@@ -360,7 +360,7 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
   $MENU_DATE_TOP, $MENU_ENABLED, $NONUSER_ENABLED, $PUBLIC_ACCESS,
   $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_FULLNAME, $PUBLIC_ACCESS_OTHERS,
   $readonly, $REPORTS_ENABLED, $REQUIRE_APPROVALS, $single_user, $STARTVIEW,
-  $thisday, $thismonth, $thisyear, $use_http_auth, $user, $views, $WEEK_START;
+  $SQLLOG, $thisday, $thismonth, $thisyear, $use_http_auth, $user, $views, $WEEK_START;
 
   $ret = '';
 
@@ -393,6 +393,19 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
     $GLOBALS['ALLOW_HTML_DESCRIPTION'] == 'Y' &&
     in_array ( $GLOBALS['SCRIPT'], $pagesWithFullEditor );
 
+  $debug = '';
+  if (dbi_get_debug()) {
+    $debug = '<blockquote style="border:1px solid #ccc; background:#eee;">'
+      . '<b>Executed queries:' . dbi_num_queries()
+      . '&nbsp;&nbsp; <b>Cached queries:</b>' . dbi_num_cached_queries()
+      . "<br><ol>\n";
+    $log = $GLOBALS['SQLLOG'];
+    $logcnt = count ( $log );
+    for ( $i = 0; $i < $logcnt; $i++ ) {
+      $debug .= '<li>' . $log[$i] . '</li>';
+    }
+    $debug .= "</ol>\n</blockquote>\n";
+  }
   return $ret .
     '<!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->' .
     ( $includeCkeditor ?
@@ -408,8 +421,8 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
     <p><a href="http://validator.w3.org/check?uri=referer">'
      . '<img src="http://w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" '
      . 'class="valid"></a></p>' : '' )/* Close HTML page properly. */ . '
-    </div>
-    </body>
+    </div>' . $debug .
+    '</body>
   </html>';
 }
 
