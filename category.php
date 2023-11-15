@@ -8,58 +8,29 @@ if ($CATEGORIES_ENABLED == 'N') {
   exit;
 }
 
-// Verify that permissions allow writing to the "wc-icons" directory.
-$canWrite = false;
-$permError = false;
-if ($ENABLE_ICON_UPLOADS == 'Y' || $is_admin) {
-  $testFile = "wc-icons/testWrite.txt";
-  $testFd = @fopen($testFile, "w+b", false);
-  if ($testFd !== false) {
-    fclose($testFd);
-  }
-  $canWrite = file_exists($testFile);
-  if (!$canWrite) {
-    $permError = true;
-  } else {
-    @unlink($testFile);
-  }
-}
-
 $catIcon = $catname = $error = $idStr = '';
 $catIconStr = translate('Category Icon');
 $globalStr = translate('Global');
-$icon_path = 'wc-icons/';
 // If editing, make sure they are editing their own (or they are an admin user).
 if (!empty($id)) {
   if (empty($categories[$id]))
     $error =
       str_replace('XXX', $id, translate('Invalid entry id XXX.'));
-
   $catcolor = $categories[$id]['cat_color'];
   $catname = $categories[$id]['cat_name'];
   $catowner = $categories[$id]['cat_owner'];
-  $catIcon = $icon_path . 'cat-' . $id . '.gif';
-  // Try PNG if GIF not found
-  if (!file_exists($catIcon))
-    $catIcon = $icon_path . 'cat-' . $id . '.png';
+  $catmime = $categories[$id]['cat_icon_mime'];
+  $catIcon = empty($catmime) ? '' : 'getIcon.php?cat_id=' . $id;
   $idStr = '<input name="id" type="hidden" value="' . $id . '">';
 } else
   $catcolor = '#000000';
 
-$showIconStyle = (!empty($catIcon) && file_exists($catIcon)
-  ? '' : 'display: none;');
+$showIconStyle = (!empty($catmime) ? '' : 'display: none;');
 
 print_header(['js/visible.php']);
 echo '
     <h2>' . translate('Categories') . '</h2>
     ' . display_admin_link(false);
-
-// Display permission error if found above.
-if ($permError && $is_admin) {
-  print_error_box(
-    translate('The permissions for the icons directory are set to read-only')
-  );
-}
 
 $add = getGetValue('add');
 if (empty($add))
@@ -95,8 +66,7 @@ if ((($add == '1') || (!empty($id))) && empty($error)) {
     <input type="checkbox" name="delIcon" value="Y"></div>
     <div class="form-inline">
     <label class="col-sm-3 col-form-label" for="FileName">'
-    . (is_dir($icon_path) &&
-      ( $ENABLE_ICON_UPLOADS === 'Y' || $is_admin ) && $canWrite
+    . (($ENABLE_ICON_UPLOADS === 'Y' || $is_admin)
       ? translate('Add Icon to Category') . ':</label>
       <input class="form-control" type="file" name="FileName" id="fileupload" size="45" '
       . 'maxlength="50" value="">
@@ -132,9 +102,6 @@ if (empty($error)) {
     foreach ($categories as $K => $V) {
       if ($K < 1)
         continue;
-      $catIcon = $icon_path . 'cat-' . $K . '.gif';
-      if (!file_exists($catIcon))
-        $catIcon = $icon_path . 'cat-' . $K . '.png';
       $catStr = '<span style="color: '
         . (!empty($V['cat_color']) ? $V['cat_color'] : '#000000')
         . ';">' . htmlentities($V['cat_name']) . '</span>';
@@ -147,8 +114,11 @@ if (empty($error)) {
         $global_found = true;
       }
 
-      echo (file_exists($catIcon) ? '<img src="' . $catIcon . '" alt="'
-        . $catIconStr . '" title="' . $catIconStr . '">' : '') . '</li>';
+      if (!empty($V['cat_icon_mime'])) {
+        echo '<img src="getIcon.php?cat_id=' . $K . '" alt="'
+        . $catIconStr . '" title="' . $catIconStr . '">';
+      }
+      echo '</li>';
     }
     echo '
     </ul>';

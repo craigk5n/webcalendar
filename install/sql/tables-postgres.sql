@@ -32,7 +32,7 @@ CREATE TABLE webcal_entry (
   cal_access CHAR(1) DEFAULT 'P',
   cal_name VARCHAR(80) NOT NULL,
   cal_location VARCHAR(100) DEFAULT NULL,
-   cal_url VARCHAR(100) DEFAULT NULL,
+  cal_url VARCHAR(255) DEFAULT NULL,
   cal_completed INT DEFAULT NULL,
   cal_description TEXT,
   PRIMARY KEY ( cal_id )
@@ -155,7 +155,10 @@ CREATE TABLE webcal_categories (
   cat_owner VARCHAR(25),
   cat_name VARCHAR(80) NOT NULL,
   cat_color VARCHAR(8) DEFAULT NULL,
-  PRIMARY KEY ( cat_id )
+  cat_status CHAR DEFAULT 'A',
+  cat_icon_mime VARCHAR(32) DEFAULT NULL,
+  cat_icon_blob BYTEA DEFAULT NULL,
+  PRIMARY KEY ( cal_id, cat_id, cat_order, cat_owner )
 );
 CREATE TABLE webcal_asst (
   cal_boss VARCHAR(25) NOT NULL,
