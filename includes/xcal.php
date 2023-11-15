@@ -2627,7 +2627,7 @@ function format_ical ( $event ) {
     }
   }
 
-  $fevent['UID'] = $event['uid'];
+  $fevent['UID'] = $event['uid'] ?? null;
   // Process VALARM stuff
   if ( ! empty ( $event['alarm_trigger'] ) ) {
     $fevent['AlarmSet'] = 1;

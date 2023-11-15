@@ -315,6 +315,15 @@ CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
 ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);
 /*upgrade_v1.9.5*/
 update webcal_entry_categories SET cat_owner = '' WHERE cat_owner IS NULL;
+ALTER TABLE webcal_entry_categories DROP PRIMARY KEY;
 ALTER TABLE webcal_entry_categories ADD PRIMARY KEY (cal_id, cat_id, cat_order, cat_owner);
-/*upgrade_v1.9.7*/
+/*upgrade_v1.9.6*/
 /*upgrade_v1.9.10*/
+ALTER TABLE webcal_categories ADD cat_status CHAR DEFAULT 'A';
+ALTER TABLE webcal_categories ADD cat_icon_mime VARCHAR(32) DEFAULT NULL;
+ALTER TABLE webcal_categories ADD cat_icon_blob LONGBLOB DEFAULT NULL;
+ALTER TABLE webcal_categories MODIFY cat_owner VARCHAR(25) DEFAULT '' NOT NULL;
+/*upgrade_v1.9.11*/
+ALTER TABLE webcal_nonuser_cals MODIFY COLUMN cal_url varchar(255);
+ALTER TABLE webcal_entry MODIFY COLUMN cal_url varchar(255);
+/*upgrade_v1.9.12*/

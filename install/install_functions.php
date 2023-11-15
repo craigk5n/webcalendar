@@ -5,7 +5,7 @@
 /**
  * Developer debug log (
  */
-function do_debug ( $msg ) {
+function X_do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
   // error_log ( date ( "Y-m-d H:i:s" ) . "> $msg\n",
   // 3, "d:\php\logs\debug.txt" );
@@ -201,17 +201,86 @@ function do_v11e_updates() {
   }
 }
 
+/**
+  * Migrate category icons from the file system into the webcal_categories table as
+  * part of the updates for v1.9.11.  Storing everything in the database will eventually
+  * allow multiple instances of WebCalendar to run against the same database and make
+  * database backups a complete site backup.
+  */
+function do_v1_9_11_updates() {
+  $icon_path =  __DIR__ . "/../wc-icons/";
+  // Get all icon files from the wc-icons directory
+  $iconFiles = glob($icon_path . 'cat-*.gif');
+  $iconFilesPng = glob($icon_path . 'cat-*.png');
+  $iconFiles = array_merge($iconFiles, $iconFilesPng);
+  foreach ($iconFiles as $iconFile) {
+    // Extract the category ID from the filename
+    preg_match('/cat-(\d+)\.(gif|png)/', $iconFile, $matches);
+    $catId = $matches[1];
+    $fileType = $matches[2];
+    $iconData = '';
+    $fd = @fopen($iconFile, 'r');
+    if (!$fd)
+      die_miserable_death("Error reading temp file: $iconFile");
+    while (!feof($fd)) {
+      $iconData .= fgets($fd, 4096);
+    }
+    fclose($fd);
+    // Get MIME type of the icon
+    $iconMime = 'image/' . $fileType;
+    // Update the database
+    $res = dbi_execute(
+      'UPDATE webcal_categories SET cat_icon_mime = ? WHERE cat_id = ?',
+      [$iconMime, $catId]
+    );
+    if (!$res) {
+      echo "Failed to update icon for category ID $catId: " . dbi_error();
+      continue;
+    } else {
+      if (!dbi_update_blob(
+        'webcal_categories',
+        'cat_icon_blob',
+        "cat_id = $catId",
+        $iconData
+      )) {
+        echo "Failed to update icon for category ID $catId: " . dbi_error();
+      } else {
+        // Encode the binary data to Base64.
+        $base64Data = base64_encode($iconData);
+        // Create a data URL.
+        $dataUrl = 'data:image/png;base64,' . $base64Data;
+        echo '<img src="' . $dataUrl . '" alt="Embedded Image"> <br>';
+        echo "cat $catId done <br>\n";
+        // Delete the files so we don't repeat this later
+        //if (!unlink($iconFile)) {
+        //  echo "Failed to delete icon file $iconFile";
+        //}
+      }
+    }
+  }
+}
+
 /* Functions moved from index.php script */
 
 /**
- * get_php_setting (needs description)
+ * Retrieves the value of a specified PHP configuration directive (from php.ini).
+ *
+ * This function will return either 'ON' or 'OFF' for boolean settings,
+ * or check if a specific string value exists within the directive's value.
+ *
+ * @param string $val     The configuration directive (php.ini setting) to retrieve.
+ * @param string|bool $string Optional. If specified, checks if this value exists within the directive's value.
+ *                            If not specified or set to false, the function will return 'ON' or 'OFF' for the directive.
+ *
+ * @return string|bool    Returns 'ON' or 'OFF' for boolean settings. If $string is specified, it returns the string
+ *                        if found within the directive's value, otherwise false.
  */
-function get_php_setting ( $val, $string = false ) {
-  $setting = ini_get ( $val );
-  return ( $string == false
-    ? ( $setting == '1' || $setting == 'ON' ? 'ON' : 'OFF' )
+function get_php_setting($val, $string = false) {
+  $setting = ini_get($val);
+  return ($string == false
+    ? ($setting == '1' || $setting == 'ON' ? 'ON' : 'OFF')
     : // Test for $string in ini value.
-    ( in_array ( $string, explode ( ',', $setting ) ) ? $string : false ) );
+    (in_array($string, explode(',', $setting)) ? $string : false));
 }
 /**
  * get_php_modules (needs description)
@@ -326,69 +395,76 @@ function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
 
   return $error;
 }
-/**
- * get_installed_version (needs description)
- */
-function get_installed_version ( $postinstall = false ) {
-  global $database_upgrade_matrix, $PROGRAM_VERSION, $settings, $show_all_errors;
 
-  // Set this as the default value.
-  $_SESSION['application_name'] = 'Title';
-  $_SESSION['blank_database'] = '';
-  // We will append the db_type to come up te proper filename.
-  $_SESSION['install_file'] = 'tables';
-  //echo "Set install_files in get_installed_version<br>";
-  //echo "install_file = " . $_SESSION['install_file'] . "<br>";
-  $_SESSION['old_program_version'] = ( $postinstall
-    ? $PROGRAM_VERSION : 'new_install' );
+/**
+ * Examine the database to determine what version of WebCalendar the database was last used with.
+ * This involves trying various SQL to see what fails and what succeeds.
+ */
+function getDatabaseVersionFromSchema($silent = true)
+{
+  global $database_upgrade_matrix, $PROGRAM_VERSION, $settings, $show_all_errors;
+  $dbVersion = null;
+  $success = true;
+  //$silent = false;
 
   // Suppress errors based on $show_all_errors.
-  if ( ! $show_all_errors )
-    show_errors ( false );
+  if (!$show_all_errors)
+    show_errors(false);
   // This data is read from file upgrade_matrix.php.
-  for ( $i = 0, $dbCntStr = count ( $database_upgrade_matrix ); $i < $dbCntStr; $i++ ) {
+  for ($i = 0; $i < count($database_upgrade_matrix); $i++) {
     $sql = $database_upgrade_matrix[$i][0];
-    //echo "SQL: $sql<br>\n";
+    if (!$silent) {
+      echo "SQL: $sql<br>\n";
+    }
 
     if (empty($sql)) {
-      // We reached the end of database_upgrade_matrix[] with no errors, which
-      // means the database is structurally up-to-date.
-    } else {
-      try{
-        $res = dbi_execute ( $sql, [], false, $show_all_errors );
+      if ($success) {
+        // We reached the end of database_upgrade_matrix[] with no errors, which
+        // means the database is structurally up-to-date.
+        $dbVersion = $PROGRAM_VERSION;
       }
-      catch (Exception $e){
+    } else {
+      try {
+        $res = dbi_execute($sql, [], false, $show_all_errors);
+      } catch (Exception $e) {
         // Suppress any exceptions; this is only used for testing what version
         // we are on, so when it fails we know it's before the version that SQL
         // could have worked on.
         $res = false;
+        $success = false;
       }
-      if ( $res ) {
-        //echo "Success on " . $database_upgrade_matrix[$i][2] . "<br>";
-        $_SESSION['old_program_version'] = $database_upgrade_matrix[$i + 1][2];
-        $_SESSION['install_file'] = $database_upgrade_matrix[$i + 1][3];
-        //echo "install_file = " . $_SESSION['install_file'] . "<br>";
-        $res = '';
+      if ($res) {
+        if (!$silent) {
+          echo "Success on " . $database_upgrade_matrix[$i][2] . "<br>";
+        }
+        $dbVersion = $database_upgrade_matrix[$i][2];
+        $res = null;
+        // Clean up our test 
         $sql = $database_upgrade_matrix[$i][1];
-        if ( $sql != '' )
-          dbi_execute ( $sql, [], false, $show_all_errors );
+        if ($sql != '')
+          dbi_execute($sql, [], false, $show_all_errors);
       } else {
-        //echo "Failure on " . $database_upgrade_matrix[$i][2] . "<br>";
+        if (!$silent) {
+          echo "Failure on " . $database_upgrade_matrix[$i][2] . "<br>";
+          echo "Error: " . dbi_error() . "<br>\n";
+        }
+        $success = false;
         //echo "Failure SQL: $sql<br>";
       }
     }
   }
-  $response_msg = ( $_SESSION['old_program_version'] == 'pre-v0.9.07'
-    ? translate ( 'Perl script required' )
-    : translate ( 'previous version requires updating several tables' ) );
 
   // We need to determine if this is a blank database.
   // This may be due to a manual table setup.
-  $res = dbi_execute ( 'SELECT COUNT( cal_value ) FROM webcal_config',
-    [], false, $show_all_errors );
-  if ( $res ) {
-    $row = dbi_fetch_row ( $res );
-    if ( isset ( $row[0] ) && $row[0] == 0 ) {
+  $res = dbi_execute(
+    'SELECT COUNT( cal_value ) FROM webcal_config',
+    [],
+    false,
+    $show_all_errors
+  );
+  if ($res) {
+    $row = dbi_fetch_row($res);
+    if (isset($row[0]) && $row[0] == 0) {
       $_SESSION['blank_database'] = true;
     } else {
       // Make sure all existing values in config and pref tables are UPPERCASE.
@@ -396,71 +472,30 @@ function get_installed_version ( $postinstall = false ) {
 
       // Clear db_cache. This will prevent looping when launching WebCalendar
       // if upgrading and WEBCAL_PROGRAM_VERSION is cached.
-      if ( ! empty ( $settings['db_cachedir'] ) )
-        dbi_init_cache ( $settings['db_cachedir'] );
+      if (!empty($settings['db_cachedir']))
+        dbi_init_cache($settings['db_cachedir']);
       else
-      if ( ! empty ( $settings['cachedir'] ) )
-        dbi_init_cache ( $settings['cachedir'] );
+      if (!empty($settings['cachedir']))
+        dbi_init_cache($settings['cachedir']);
 
       // Delete existing WEBCAL_PROGRAM_VERSION number.
-      dbi_execute ( 'DELETE FROM webcal_config
-        WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
+      dbi_execute('DELETE FROM webcal_config
+        WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'');
     }
-    dbi_free_result ( $res );
+    dbi_free_result($res);
     // Insert webcal_config values only if blank.
     db_load_config();
-    // Check if an Admin account exists.
-    $_SESSION['admin_exists'] = db_check_admin();
   }
-  // Determine if old data has been converted to GMT.
-  // This seems lke a good place to put this.
-  $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
-    WHERE cal_setting = \'WEBCAL_TZ_CONVERSION\'',
-    [], false, $show_all_errors );
-  if ( $res ) {
-    $row = dbi_fetch_row ( $res );
-    dbi_free_result ( $res );
-    // If not 'Y', prompt user to do conversion from server time to GMT time.
-    if ( ! empty ( $row[0] ) ) {
-      $_SESSION['tz_conversion'] = $row[0];
-    } else { // We'll test if any events even exist.
-      $res = dbi_execute ( 'SELECT COUNT( cal_id ) FROM webcal_entry ',
-        [], false, $show_all_errors );
-      if ( $res ) {
-        $row = dbi_fetch_row ( $res );
-        dbi_free_result ( $res );
-      }
-      $_SESSION['tz_conversion'] = ( $row[0] > 0 ? 'NEEDED' : 'Y' );
-    }
-  }
-  // Don't show TZ conversion if blank database.
-  if ( $_SESSION['blank_database'] == true )
-    $_SESSION['tz_conversion'] = 'Y';
-  // Get existing server URL.
-  // We could use the self-discvery value, but this may be a custom value.
-  $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
-    WHERE cal_setting = "SERVER_URL"', [], false, $show_all_errors );
-  if ( $res ) {
-    $row = dbi_fetch_row ( $res );
-    if ( ! empty ( $row[0] ) && strlen ( $row[0] ) )
-      $_SESSION['server_url'] = $row[0];
-
-    dbi_free_result ( $res );
-  }
+  // Note: We don't do TZ conversion anymore since that changes was 15+ years ago.
   // Get existing application name.
-  $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
-    WHERE cal_setting = \'APPLICATION_NAME\'',
-    [], false, $show_all_errors );
-  if ( $res ) {
-    $row = dbi_fetch_row ( $res );
-    if ( ! empty ( $row[0] ) )
-      $_SESSION['application_name'] = $row[0];
-
-    dbi_free_result ( $res );
-  }
   // Enable warnings.
-  show_errors ( true );
-} // end get_installed_version
+  show_errors(true);
+  if (!$silent) {
+    echo "Db structure is version: " . $dbVersion . "<br>\n";
+  }
+  return $dbVersion;
+}
+
 /**
  * parse_sql (needs description)
  */
@@ -480,61 +515,142 @@ function parse_sql ( $sql ) {
   return ( $ret );
 }
 /**
- * db_populate (needs description)
+ * Extracts SQL statements from a specified file.
+ *
+ * This function reads the content of the provided SQL file, strips out
+ * any comments (single line starting with # or --, and multiline enclosed
+ * in /* and *\/), and then returns each SQL statement as an array.
+ *
+ * @param string $filename The path to the SQL file.
+ *
+ * @throws Exception If the specified file is not found.
+ *
+ * @return array An array of SQL statements.
  */
-function db_populate ( $install_filename, $display_sql ) {
-  global $show_all_errors, $str_parsed_sql;
-
-  if ( $install_filename == '' )
-    return;
-
-  $current_pointer = false;
-  $full_sql = '';
-
-  $fd = @fopen ( 'sql/' . $install_filename, 'r', true );
-
-  // Discard everything up to the required point in the upgrade file.
-  while ( ! feof ( $fd ) && empty ( $current_pointer ) ) {
-    $data = trim ( fgets ( $fd, 4096 ), "\r\n " );
-    if ( strpos ( strtoupper ( $data ),
-          strtoupper ( $_SESSION['install_file'] ) ) ||
-        substr ( $_SESSION['install_file'], 0, 6 ) == 'tables' )
-      $current_pointer = true;
-  }
-  // We already have a $data item from above.
-  if ( substr ( $data, 0, 2 ) == "/*" &&
-      substr ( $_SESSION['install_file'], 0, 6 ) != 'tables' ) {
-    // Do nothing...We skip over comments in upgrade files.
-  } else
-    $full_sql .= $data;
-
-  // We need to strip out the comments from upgrade files.
-  while ( ! feof ( $fd ) ) {
-    $data = trim ( fgets ( $fd, 4096 ), "\r\n " );
-    if ( substr ( $data, 0, 2 ) == '/*' &&
-        substr ( $_SESSION['install_file'], 0, 6 ) != 'tables' ) {
-      // Do nothing...We skip over comments in upgrade files.
-    } else
-      $full_sql .= $data;
+function extractSqlCommandsFromFile($filename) {
+  // Check if file exists
+  if (!file_exists($filename)) {
+      throw new Exception("File not found: $filename");
   }
 
-  fclose ( $fd );
-  $parsed_sql = parse_sql ( $full_sql );
+  // Read the file contents
+  $content = file_get_contents($filename);
 
-  // String version of parsed_sql that is used if displaying SQL only.
-  $str_parsed_sql = '';
-  for ( $i = 0, $sqlCntStr = count ( $parsed_sql ); $i < $sqlCntStr; $i++ ) {
-    if ( empty ( $display_sql ) ) {
-      if ( $show_all_errors == true )
-        echo $parsed_sql[$i] . '<br>';
+  // Strip out all comments
+  $contentWithoutComments = preg_replace('/(--[^\r\n]*)|(\#[^\r\n]*)|\/\*.*?\*\//s', '', $content);
 
-      dbi_execute( $parsed_sql[$i], [], false, $show_all_errors );
-    } else
-      $str_parsed_sql .= $parsed_sql[$i] . "\n\n";
+  // Split the content into individual SQL statements
+  return array_filter(array_map('trim', explode(";\n", $contentWithoutComments)));
+}
+
+/**
+* Executes SQL statements from a specified file.
+*
+* This function reads the content of the provided SQL file using 
+* extractSqlCommandsFromFile() and then executes each SQL statement.
+*
+* @param string $filename The path to the SQL file.
+*
+* @throws Exception If there are issues executing the SQL or if the file is not found.
+*
+* @return void
+*/
+function executeSqlFromFile($filename) {
+  $sqlStatements = extractSqlCommandsFromFile($filename);
+
+  foreach ($sqlStatements as $statement) {
+      if (!empty($statement)) {
+          // Assuming dbi_execute() is a function that takes a SQL statement and executes it
+          dbi_execute($statement);
+      }
+  }
+}
+
+function getSqlFile($dbType, $isUpgrade=false) {
+  $file_base = __DIR__ . '/sql/' . ($isUpgrade ? 'upgrade' : 'tables');
+  $install_filename = $file_base . '-';
+  switch ($dbType) {
+    case 'ibase':
+    case 'mssql':
+    case 'oracle':
+      $install_filename .= $dbType . '.sql';
+      break;
+    case 'ibm_db2':
+      $install_filename .= 'db2.sql';
+      break;
+      // Need to add more form fields to capture odbc db type...
+    case 'odbc':
+      // Not yet supported in installer :-(
+      $install_filename .= $_SESSION['odbc_db'] . '.sql';
+      break;
+    case 'postgresql':
+      $install_filename .= 'postgres.sql';
+      break;
+    case 'sqlite3':
+      require_once 'sql/tables-sqlite3.php';
+      populate_sqlite_db($real_db, $c);
+      $install_filename = '';
+      break;
+    default:
+      $install_filename .= 'mysql.sql';
+  }
+  return $install_filename;
+}
+
+/**
+ * Extracts SQL commands for upgrading from the specified version to the latest version.
+ *
+ * @param string $filename The path to the SQL file containing upgrade commands.
+ * @param string $version The starting version for the upgrade.
+ *
+ * @throws Exception If the specified file is not found.
+ *
+ * @return array An array of SQL statements for the upgrade.
+ */
+function extractUpgradeSqlCommands($filename, $version) {
+  if (!file_exists($filename)) {
+      throw new Exception("File not found: $filename");
+  }
+  $content = file_get_contents($filename);
+  // Split content into chunks based on the upgrade version comments
+  //preg_match_all('/\/\*upgrade_(v[\d\.]+)\*\/(.*?)(?=\/\*upgrade_|$)/sm', $content, $matches, PREG_SET_ORDER);
+  preg_match_all('/\/\*upgrade_(v[\d\.]+)\*\/(.*?)(?=\/\*upgrade_|$)/sm', $content, $matches, PREG_SET_ORDER);
+
+
+  $commands = [];
+  $record = false;
+  echo "<pre>"; print_r($matches); echo "</pre>";
+  foreach ($matches as $match) {
+    echo "match: \"$match[1]\" <br>";
+    if ($match[1] === $version) {
+      $record = true; // Start recording commands from the provided version
+    }
+    if ($record) {
+      echo "MATCH: " . $match[2] . "<br>";
+      echo "NEXT: " . $match[3] . "<br>";
+      $sqls = array_map('trim', explode(';', $match[2]));
+      foreach ($sqls as $sql) {
+        if (!empty($sql)) {
+          $commands[] = $sql;
+        }
+      }
+    }
   }
 
-  // Enable warnings.
-  show_errors ( true );
-} // end db_populate
+  return $commands;
+}
+
+function removeWhitespaceOnlyLines($inputStr) {
+  // Split the string by newlines
+  $lines = explode("\n", $inputStr);
+  
+  // Filter out lines that only contain whitespace
+  $filteredLines = array_filter($lines, function($line) {
+      return trim($line) !== '';
+  });
+  
+  // Join the lines back together
+  return implode("\n", $filteredLines);
+}
 
 ?>
