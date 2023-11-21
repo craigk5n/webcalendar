@@ -68,45 +68,6 @@ function tryDbConnect()
     return !empty($c);
 }
 
-function isEmptyDatabase()
-{
-    global $debugInstaller;
-    try {
-        // If we have 1 or more users in webcal_user, the db is not empty
-        $res = dbi_execute('SELECT COUNT(*) FROM webcal_config', [], false, false);
-        if ($res) {
-            $row = dbi_fetch_row($res);
-            dbi_free_result($res);
-            return $row[0] == 0;
-        }
-    } catch (Exception $e) {
-        if ($debugInstaller) {
-            echo "Error: " . $e->getMessage() . "<br>";
-        }
-        // Error connecting to db
-    }
-    return true;
-}
-
-function getDbVersion()
-{
-    $dbVersion = 'Unknown';
-    $sql = 'SELECT cal_value FROM webcal_config WHERE cal_setting = ?';
-    $res = dbi_execute(
-        $sql,
-        ['WEBCAL_PROGRAM_VERSION'],
-        false,
-        false
-    );
-    if ($res) {
-        $row = dbi_fetch_row($res);
-        if ($row) {
-            $dbVersion = $row[0];
-        }
-    }
-    return $dbVersion;
-}
-
 function getAdminUserCount()
 {
     $count = 0;
