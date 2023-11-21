@@ -57,14 +57,15 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
 echo "</select>\n";
 
 if ( $GROUPS_ENABLED == 'Y' ) {
-  echo '<input class="btn btn-primary" type="button" onclick="selectUsers()" value="'
-   . translate ( 'Select' ) . '...">';
+  echo '<button class="btn btn-primary" type="button" onclick="selectUsers()">'
+    . translate ( 'Select' ) . '...</button>';
 }
  echo "</div>\n";
 
 ?>
 <div class="form-inline col-4 pt-2">
-<input class="btn btn-primary" type="submit" name="action" value="<?php etranslate ( 'Save' );?>">
+  <button class="btn btn-primary" name="action" type="submit">'<?php
+etranslate ( 'Save' );?></button>
 </div>
 
 </form>

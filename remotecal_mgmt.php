@@ -96,7 +96,8 @@ if (!ini_get('allow_url_fopen')) { ?>
 
 <br>
 <div class="userButtons">
-    <input class="btn btn-primary" type="button" value="<?php etranslate('Add Remote Calendar'); ?>..." onclick="return edit_user('')">
+  <button class="btn btn-primary" type="button" onclick="return edit_user('')">
+ <?php etranslate ( 'Add Remote Calendar' ); ?>...</button>
 </div>
 
 <!-- add/edit user modal dialog -->
@@ -147,8 +148,11 @@ if (!ini_get('allow_url_fopen')) { ?>
                     </div>
 
                     <div class="modal-footer mt-2">
-                        <input class="btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
-                        <input class="btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="save_handler();">
+                        <button class="btn btn-secondary" data-dismiss="modal"
+ type="button" onclick="$('#edit-user-dialog').hide();"><?php
+ etranslate ( 'Cancel' ); ?></button>
+                        <button class="btn btn-primary" data-dismiss="modal"
+ type="button" onclick="save_handler();"><?php etranslate ( 'Save' ) ?></button>
                     </div>
                 </form>
             </div>
@@ -178,8 +182,12 @@ if (!ini_get('allow_url_fopen')) { ?>
                 </form>
                 <br>
                 <div class="modal-footer">
-                    <input class="form-control btn btn-secondary" onclick="$('#delete-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
-                    <input class="form-control btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();">
+                  <button class="form-control btn btn-secondary"
+ data-dismiss="modal" type="button" onclick="$('#delete-user-dialog').hide();">
+ <?php etranslate ( 'Cancel' ); ?></button>
+                  <button class="form-control btn btn-danger" name="delete"
+ type="submit" onclick="delete_handler ();"><?php
+ etranslate ( 'Delete' ) ?></button>
                 </div>
             </div>
         </div>
@@ -211,8 +219,12 @@ if (!ini_get('allow_url_fopen')) { ?>
                         </tr>
                     </table>
                     <div class="modal-footer">
-                        <input class="form-control btn btn-secondary" onclick="$('#edit-layer-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
-                        <input class="form-control btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="edit_layer_window_closed(); $('#edit-layer-dialog').hide();">
+                      <button class="form-control btn btn-secondary"
+ data-dismiss="modal" type="button" onclick="$('#edit-layer-dialog').hide();">
+<?php etranslate ( 'Cancel' ); ?></button>
+                      <button class="form-control btn btn-primary"
+ data-dismiss="modal" type="button" onclick="edit_layer_window_closed();
+ $('#edit-layer-dialog').hide();"><?php etranslate ( 'Save' ); ?></button>
                     </div>
                 </form>
             </div>

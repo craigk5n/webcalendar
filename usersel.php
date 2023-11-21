@@ -45,11 +45,11 @@ echo '
               <b>' . translate ( 'Users' ) . '</b><br>
               <select name="users" size="15" multiple>
               </select><br>
-              <input type="button" value="' . translate ( 'All' )
- . '" onclick="selectAll( true )">
-              <input type="button" value="' . translate ( 'None' )
- . '" onclick="selectAll( false )">
-              <input type="reset" value="' . translate ( 'Reset' ) . '">
+              <button type="button" onclick="selectAll(true)">'
+  . translate ( 'All' ) . '</button>
+              <button type="button" onclick="selectAll(false)">'
+  . translate ( 'None' ) . '</button>
+              <button type="reset">' . translate ( 'Reset' ) . '</button>
             </td>
             <td class="aligntop">
               <b class="colon">' . translate ( 'Groups' ) . '</b><br>
@@ -63,18 +63,18 @@ for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
 
 echo '
               </select><br>
-              <input type="button" value="' . translate ( 'Add' )
- . '" onclick="toggleGroup( true );">
-              <input type="button" value="' . translate ( 'Remove' )
- . '" onclick="toggleGroup( false );">
+              <button type="button" onclick="toggleGroup(true);">'
+  . translate ( 'Add' ) . '</button>
+              <button type="button" onclick="toggleGroup(false);">'
+  . translate ( 'Remove' ) . '</button>
             </td>
           </tr>
           <tr>
             <td style="text-align:center;" colspan="2"><br><br>
-              <input type="button" value="' . translate ( 'OK' )
- . '" onclick="OkButton()">
-              <input type="button" value="' . translate ( 'Cancel' )
- . '" onclick="window.close()">
+              <button type="button" onclick="OkButton()">'
+  . translate ( 'OK' ) . '</button>
+              <button type="button" onclick="window.close()">'
+  . translate ( 'Cancel' ) . '</button>
             </td>
           </tr>
         </table>
