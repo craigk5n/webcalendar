@@ -1,6 +1,5 @@
 FROM php:8.0-apache
-MAINTAINER craigk5n <craig@k5n.us>
-
+LABEL org.opencontainers.image.authors="craig@k5n.us"
 RUN docker-php-ext-install mysqli
 
 #COPY docker/cron-hourly /tmp/cron.hourly
@@ -11,4 +10,3 @@ RUN docker-php-ext-install mysqli
 #TODO: setup cron
 
 #RUN chown -R www-data:www-data /var/www
-
