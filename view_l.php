@@ -21,7 +21,6 @@
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
 
-require_once 'includes/init.php';
 require_once 'includes/views.php';
 
 view_init ( $id );
