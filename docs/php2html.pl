@@ -6,8 +6,7 @@
 #
 # Description:
 #  Create HTML documentation from a PHP include file.
-#  The PHP file must use a specific syntax for documenting
-#  functions.
+#  The PHP file must use a specific syntax for documenting functions.
 #
 # History:
 #  21-Jan-2005  Craig Knudsen <cknudsen@cknudsen.com>
@@ -15,17 +14,17 @@
 #  30-Nov-2002  Craig Knudsen <cknudsen@cknudsen.com>
 #      Created
 #
-#######################################################################
+################################################################################
 
 $TITLE = 'WebCalendar Function Documentation';
 
 sub add_links {
   my ( $in ) = @_;
 
-  $in =~ s/(webcal_[a-z_]+)\s+table/<a href="WebCalendar-Database.html#$1"><tt>$1<\/tt><\/a> table/g;
+  $in =~ s/(webcal_[a-z_]+)\s+table/<a href="WebCalendar-Database.html#$1"><span class="tt">$1<\/span><\/a> table/g;
 
   foreach $funcName ( keys ( %funcNames ) ) {
-    $in =~ s/($funcName)\s+function/<a href="#$1"><tt>$1<\/tt><\/a> function/ig;
+    $in =~ s/($funcName)\s+function/<a href="#$1"><span class="tt">$1<\/span><\/a> function/ig;
   }
 
   $in =~ s/&/&amp;/g;
@@ -39,11 +38,11 @@ sub add_links {
 sub print_function {
   my ( $loc ) = @_;
   $out{$name} = "<h3><a name=\"$name\">$name</a></h3>\n";
-  $out{$name} .= "<tt>$name ( " . '$' . join ( ', $', @params ) .
-    " )</tt><br><br>\n";
+  $out{$name} .= "<span class=\"tt\">$name ( "
+    . '$' . join ( ', $', @params ) . " )</span><br><br>\n";
   if ( defined ( $description ) ) {
-    $out{$name} .= "<span class=\"prompt\">Description:</span>" .
-      "<blockquote>";
+    $out{$name} .= "<span class=\"prompt\">Description:</span>"
+      . "<blockquote>";
     $out{$name} .= add_links ( $description ) . "</blockquote>\n";
   }
   $out{$name} .= "<span class=\"prompt\">Parameters:</span><br>\n<ul>\n";
@@ -51,16 +50,17 @@ sub print_function {
     $out{$name} .= "<li>None</li>\n";
   }
   foreach $p ( @params ) {
-    $out{$name} .= "<li><tt>\$$p</tt>";
+    $out{$name} .= "<li><span class=\"tt\">\$$p</span>";
     $out{$name} .= " - " . add_links ( $paramDescr{$p} )
       if ( defined ( $paramDescr{$p} ) );
     $out{$name} .= "</li>\n";
   }
   $out{$name} .= "</ul>\n";
-  $out{$name} .= "<span class=\"prompt\">Returns:</span><blockquote>" .
-    ( $returns eq '' ? "Nothing" : add_links ( $returns ) ) . "</blockquote>\n";
-  $out{$name} .= "<span class=\"prompt\">Location:</span>" .
-    "<blockquote>$loc</blockquote>\n";
+  $out{$name} .= "<span class=\"prompt\">Returns:</span><blockquote>"
+    . ( $returns eq '' ? "Nothing" : add_links ( $returns ) )
+    . "</blockquote>\n";
+  $out{$name} .= "<span class=\"prompt\">Location:</span>"
+    . "<blockquote>$loc</blockquote>\n";
   $out{$name} .= "<br><br>\n";
 }
 
@@ -174,108 +174,90 @@ while ( <F> ) {
 }
 close ( F );
 
-print<<EOF;
+print <<EOF;
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>$TITLE</title>
-<style>
-body {
-  background-color: #FFFFFF;
-  font-family: Arial, Helvetica, sans-serif;
-}
-a {
-  text-decoration: none;
-}
-p {
-  margin-top: 2px;
-}
-ul {
-  margin-bottom: 2px;
-  margin-top: 2px;
-}
-tt {
-  font-family: courier, monospace;
-  font-size: 14px;
-}
-pre {
-  font-family: courier, monospace;
-  font-size: 14px;
-  border: 1px solid #0000FF;
-  background-color: #EEEEFF;
-  padding: 4px;
-  margin-left: 25px;
-  margin-right: 25px;
-}
-blockquote {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-.prompt {
-  font-weight: bold;
-}
-.tip {
-  font-weight: bold;
-  background-color: #FFFF00;
-  border: 1px solid #000000;
-  padding: 1px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-right: 10px;
-}
-.note {
-  font-weight: bold;
-  background-color: #CCCCCC;
-  color: #000000;
-  border: 1px solid #000000;
-  padding: 1px;
-}
-hr {
-  margin-bottom: 7px;
-}
-h3 {
-  background-color: #191970;
-  color: #FFFFFF;
-  padding: 5px;
-}
-.top {
-  text-align: right;
-}
-</style>
-</head>
-<body style="background-color:#FFFFFF;">
-<h2>$TITLE</h2>
-<blockquote>
-$info
-</blockquote>
-<table style="border-width:0px;">
-<tr><td>Home Page:</td>
-  <td><a href="$url">$url</a></td></tr>
-<tr><td>WebCalendar Version:</td><td>$version ($date)</td></tr>
-<tr><td>Last updated:</td><td>$now</td></tr>
-</table>
-<h2>List of Functions</h2>
-<ul>
+  <head>
+    <title>$TITLE</title>
+    <link href="../includes/css/docs.css" rel="stylesheet">
+    <style>
+      blockquote {
+        margin-block-start: 5px;
+      }
+
+      h3 {
+        background-color: rgb(25, 25, 112);
+        color: var(--wht);
+      }
+
+      p {
+        margin-block-start: 2px;
+      }
+
+      pre {
+        margin-inline: 25px;
+      }
+
+      ul {
+        margin-block: 2px;
+      }
+
+      .note {
+        background-color: rgb(204, 204, 204);
+        color: var(--blk);
+        border: 1px solid var(--blk);
+        padding: 1px;
+      }
+
+      .prompt {
+        font-weight: bold;
+      }
+
+      .tip {
+        background-color: rgb(255, 255, 0);
+        margin-inline-end: 10px;
+        border: 1px solid var(--blk);
+        padding: 1px 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>$TITLE</h2>
+    <blockquote>
+      $info
+    </blockquote>
+    <table>
+      <tr>
+        <td>Home Page:</td>
+        <td><a href="$url">$url</a></td>
+      </tr>
+      <tr>
+        <td>WebCalendar Version:</td>
+        <td>$version ($date)</td>
+      </tr>
+      <tr>
+        <td>Last updated:</td>
+        <td>$now</td>
+      </tr>
+    </table>
+    <h2>List of Functions</h2>
+    <ul>
 EOF
 
 foreach $name ( sort keys ( %out ) ) {
-  print "<li><a href=\"#$name\">$name</a></li>\n";
+  print "\n      <li><a href=\"#$name\">$name</a></li>";
 }
 
-print "</ul>\n<hr>\n";
+print "\n    </ul>\n    <hr>";
 
 foreach $name ( sort keys ( %out ) ) {
-  print "<br><br>\n" . $out{$name};
+  print "\n    <br><br>\n    " . $out{$name};
 }
 
-print<<EOF;
-<hr>
-<p>
-      <a href="http://validator.w3.org/check?uri=referer"><img
-          src="http://w3.org/Icons/valid-xhtml10" border="0"
-          alt="Valid XHTML 1.0!" height="31" width="88"></a>
-</p>
-</body>
+print <<EOF;
+    <hr>
+    <p><a href="http://validator.w3.org/check?uri=referer" target="_blank">Validate></a></p>
+  </body>
 </html>
 EOF
 

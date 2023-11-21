@@ -15,13 +15,13 @@
 #  02-Feb-2005  Craig Knudsen <cknudsen@cknudsen.com>
 #      Updated to group into categories.
 #
-#######################################################################
+################################################################################
 
+my @answers = ( );
+my @cat = ( );
+my @file = ( );
 my @files = ( );
 my @questions = ( );
-my @answers = ( );
-my @file = ( );
-my @cat = ( );
 
 for ( $i = 0; $i < @ARGV; $i++ ) {
   if ( -f $ARGV[$i] ) {
@@ -152,4 +152,3 @@ sub process_file {
     }
   }
 }
-

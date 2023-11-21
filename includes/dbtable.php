@@ -132,8 +132,8 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
 
   return $ret . ( empty ( $actionlabel ) ? '' : '
                     <tr>
-                      <td colspan="2" style="text-align:center;"><input '
-     . 'type="submit" value="' . htmlspecialchars ( $actionlabel ) . '"></td>
+                      <td colspan="2" style="text-align:center;"><button '
+      . 'type="submit">' . htmlspecialchars ( $actionlabel ) . '</button></td>
                     </tr>
                   </form>' ) . '
                 </table>
