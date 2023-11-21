@@ -38,7 +38,6 @@ $disabledStr     = translate('Disabled');
 $duplicatesStr   = translate('Duplicates');
 $editLayerStr    = translate('Edit layer');
 $editStr         = translate('Edit');
-$enableLayersStr = translate('Enable layers');
 $layerStr        = translate('Layer');
 $LAYERS_DISABLED = translate('Layers are currently disabled.');
 $LAYERS_ENABLED  = translate('Layers are currently enabled.');
@@ -87,8 +86,14 @@ else {
       </span>
       &nbsp;&nbsp;
       &nbsp;&nbsp;
-      <input class="btn btn-primary" type="button" onclick="return set_layer_status(true);" value=<?php echo $enableLayersStr; ?>" id="enablebutton" <?php echo $layers_enabled ? 'disabled' : ''; ?>>
-      <input class="btn btn-secondary" type="button" onclick="return set_layer_status(false);" value=<?php etranslate("Disable Layers"); ?>" <?php echo $layers_enabled ? '' : 'disabled'; ?> id="disablebutton">
+      <button class="btn btn-primary" id="enablebutton" type="button"<?php
+ echo $layers_enabled ? ' disabled' : ''; ?>
+ onclick="return set_layer_status(true);"><?php
+ etranslate ( 'Enable layers' ) ?></button>
+      <button class="btn btn-secondary" id="disablebutton" type="button" <?php
+ echo $layers_enabled ? '' : ' disabled'; ?>
+ onclick="return set_layer_status(false);"><?php
+ etranslate ( 'Disable Layers' ); ?></button>
     </div>
 
     <br><br>
@@ -98,7 +103,8 @@ else {
     <br>
 
     <div class="layerButtons" style="margin-left: 25px;">
-      <input class="btn btn-primary" type="button" value="<?php etranslate('Add layer'); ?>..." onclick="return edit_layer(-1)">
+      <button class="btn btn-primary" type="button"
+ onclick="return edit_layer(-1)"><?php etranslate ( 'Add layer' ) ?>...</button>
     </div>
     <br>
 
@@ -179,13 +185,16 @@ if ($single_user == 'N') {
               </tr>
             </table>
             <div class="modal-footer">
-              <input class="btn btn-secondary" onclick="$('#edit-layer-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
-              <input class="btn btn-danger" id="editLayerDeleteButton" type="button" value="<?php etranslate("Delete"); ?>" onclick="if ( confirm ( '<?php echo $areYouSureStr; ?>' ) ) {
-            $('#editLayerDelete').prop ('value', '1');
-            edit_window_closed ();
-            $('#edit-layer-dialog').hide();
-            }">
-              <input class="btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="edit_window_closed(); $('#edit-layer-dialog').hide();">
+              <button class="btn btn-secondary" data-dismiss="modal"
+ type="button" onclick="$('#edit-layer-dialog').hide();"><?php
+ etranslate ( 'Cancel' ); ?></button>
+              <button class="btn btn-danger" id="editLayerDeleteButton"
+ type="button" onclick="if ( confirm ( '<?php echo $areYouSureStr; ?>' ) ) {
+ $('#editLayerDelete').prop ('value', '1'); edit_window_closed();
+ $('#edit-layer-dialog').hide(); }"><?php etranslate ( 'Delete' ); ?></button>
+              <button class="btn btn-primary" data-dismiss="modal" type="button"
+ onclick="edit_window_closed(); $('#edit-layer-dialog').hide();"><?php
+ etranslate ( 'Save' ) ?></button>
             </div>
           </form>
         </div>

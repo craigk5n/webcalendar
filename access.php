@@ -34,8 +34,8 @@ $dbErrStr = translate( 'Database error XXX.' );
 $defConfigStr = translate( 'DEFAULT CONFIGURATION' );
 $goStr = '
       </select>
-      <input class="btn btn-primary" type="submit" value="'
-  . translate ( 'Go' ) . '">
+      <button class="btn btn-primary" type="submit">'
+  . translate ( 'Go' ) . '</button>
     </form>';
 $saveStr = translate( 'Save' );
 $undoStr = translate( 'Undo' );
@@ -264,9 +264,9 @@ if( ! empty( $guser ) || ! $is_admin ) {
           </tr>
         </tbody>
       </table>
-      <input class="btn btn-secondary" type="submit" value="' . $undoStr . '">
-      <input class="btn btn-primary" type="submit" name="submit" value="'
-      . $saveStr . '">
+      <button class="btn btn-secondary" type="submit">' . $undoStr . '</button>
+      <button class="btn btn-primary" name="submit" type="submit">'
+      . $saveStr . '</button>
     </form>';
 
     $pagetitle = translate( 'Allow Access to Other Users Calendar' );
@@ -418,13 +418,15 @@ if( ! empty( $otheruser ) ) {
     echo '
           <tr>
             <td colspan="2" class="boxleft alignright">'
-     . ( $otheruser !== '__default__' && $otheruser !== '__public__' ? '
-              <input class="btn btn-secondary" type="button" value="' . translate( 'Assistant' )
-       . '" onclick="selectAll(63);">&nbsp;&nbsp;' : '' ) . '
-              <input class="btn btn-secondary" type="button" value="' . translate( 'Select All' )
-     . '" onclick="selectAll(256);">&nbsp;&nbsp;
-              <input class="btn btn-secondary" type="button" value="' . translate( 'Clear All' )
-     . '" onclick="selectAll(0);">
+      . ( $otheruser !== '__default__' && $otheruser !== '__public__' ? '
+              <button class="btn btn-secondary" type="button" '
+          . 'onclick="selectAll(63);">'
+          . translate ( 'Assistant' ) . '</button>'
+        : '' ) . '
+              <button class="btn btn-secondary" type="button" '
+      . 'onclick="selectAll(256);">' . translate ( 'Select All' ) . '</button>
+              <button class="btn btn-secondary" type="button" '
+      . 'onclick="selectAll(0);">' . translate ( 'Clear All' ) . '</button>
             </td>
             <td colspan="9" class="boxright">
               <table class="aligncenter" cellpadding="5" cellspacing="2">
@@ -441,8 +443,10 @@ if( ! empty( $otheruser ) ) {
   echo '
           <tr>
             <td colspan="11" class="boxleft boxbottom boxright">
-              <input class="btn btn-secondary" type="submit" value="' . $undoStr . '">
-              <input class="btn btn-primary" type="submit" name="submit" value="' . $saveStr . '">
+              <button class="btn btn-secondary" type="submit">'
+    . $undoStr . '</button>
+              <button class="btn btn-primary" name="submit" type="submit">'
+    . $saveStr . '</button>
             </td>
           </tr>
         </tbody>

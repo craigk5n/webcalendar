@@ -371,7 +371,7 @@ if (!empty($CUSTOM_TRAILER) && $CUSTOM_TRAILER == 'Y') {
   function valid_form() {
     validform = true;
 
-    $(':input[type="submit"]').prop('disabled', false);
+    document.querySelector(':button[type="submit"]').prop('disabled', false);
     if ($('#upassword1').length && $('#upassword1').val().length == 0) {
       $('#infoMessage').html(xlate['inputPassword']);
       $('#main-dialog-alert').show();
@@ -404,7 +404,7 @@ if (!empty($CUSTOM_TRAILER) && $CUSTOM_TRAILER == 'Y') {
       checkers('uemail', 'email');
     }
 
-    $(':input[type="submit"]').prop('disabled', !validform);
+    document.querySelector(':button[type="submit"]').prop('disabled', !validform);
 
     return validform;
   }
@@ -430,14 +430,14 @@ if (!empty($CUSTOM_TRAILER) && $CUSTOM_TRAILER == 'Y') {
           $('#main-dialog-alert').show();
           validform = false;
           if(!validform) {
-            $(':input[type="submit"]').prop('disabled', true);
+            document.querySelector(':button[type="submit"]').prop('disabled', true);
           }
           return;
         }
         if(!validform) {
-          $(':input[type="submit"]').prop('disabled', true);
+          document.querySelector(':button[type="submit"]').prop('disabled', true);
         } else {
-          $('#main-dialog-alert').hide();
+          document.querySelector('#main-dialog-alert').hide();
         }
       });
   }
