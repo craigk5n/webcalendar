@@ -8,8 +8,6 @@
  * should be defined somewhere to one of the following:
  *  - ibase (Interbase)
  *  - ibm_db2
- *  - mssql
- *  - mysql
  *  - mysqli
  *  - odbc
  *  - oracle (This uses the Oracle8 OCI API, so Oracle 8 libs are required)
@@ -26,8 +24,8 @@
  *   normal arrays are used with xxx_fetch_row(). (Some db APIs don't support
  *   xxx_fetch_array().)
  *
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
+ * @author Craig Knudsen <craig@k5n.us>
+ * @copyright Craig Knudsen, <craig@k5n.us>, http://k5n.us/webcalendar
  * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU LGPL
  * @package WebCalendar
  *
@@ -35,7 +33,7 @@
  *  See ChangeLog
  *
  * License:
- *   Copyright (C) 2006  Craig Knudsen
+ *   Copyright (C) 2006-2023 Craig Knudsen
  *   This library is free software; you can redistribute it and/or modify it
  *   under the terms of the GNU Lesser General Public License as published by
  *   the Free Software Foundation; either version 2.1 of the License,
@@ -117,40 +115,6 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
     $db_connection_info['connection'] =
     $GLOBALS['ibm_db2_connection']    = $c;
     return $c;
-  } elseif( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0 ) {
-    static $old_textlimit, $old_textsize;
-
-    $old_textlimit = ini_get( 'mssql.textlimit' );
-    $old_textsize  = ini_get( 'mssql.textsize' );
-    ini_set( 'mssql.textlimit', '2147483647' );
-    ini_set( 'mssql.textsize', '2147483647' );
-    $c = ( $GLOBALS['db_persistent']
-      ? mssql_pconnect( $host, $login, $password )
-      : mssql_connect( $host, $login, $password ) );
-
-    if( $c ) {
-      if( ! mssql_select_db( $database ) )
-        return false;
-
-      $db_connection_info['connected'] = true;
-      $db_connection_info['connection'] = $c;
-      return $c;
-    } else
-      return false;
-  } elseif( strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 ) {
-    $c = ( $GLOBALS['db_persistent']
-      ? mysql_pconnect( $host, $login, $password )
-      : mysql_connect( $host, $login, $password ) );
-
-    if( $c ) {
-      if( ! mysql_select_db( $database ) )
-        return false;
-
-      $db_connection_info['connected']  = true;
-      $db_connection_info['connection'] = $c;
-      return $c;
-    } else
-      return false;
   } elseif (strcmp($GLOBALS['db_type'], 'mysqli') == 0) {
     // mysqli_report(MYSQLI_REPORT_ALL);
     $c = null;
@@ -274,14 +238,6 @@ function dbi_close( $conn ) {
     return ibase_close( $conn );
   elseif( strcmp( $GLOBALS['db_type'], 'ibm_db2' ) == 0 )
     return db2_close( $GLOBALS['ibm_db2_connection'] );
-  elseif( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0 ) {
-    if( ! empty( $old_textlimit ) ) {
-      ini_set( 'mssql.textlimit', $old_textlimit );
-      ini_set( 'mssql.textsize', $old_textsize );
-    }
-    return mssql_close( $conn );
-  } elseif( strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 )
-    return mysql_close( $conn );
   elseif( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 )
     return $conn->close();
   elseif( strcmp( $GLOBALS['db_type'], 'odbc' ) == 0 )
@@ -378,12 +334,6 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
   } elseif( strcmp( $GLOBALS['db_type'], 'ibm_db2' ) == 0 ) {
     $found_db_type = true;
     $res = db2_exec( $GLOBALS['ibm_db2_connection'], $sql );
-  } elseif( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0 ) {
-    $found_db_type = true;
-    $res = mssql_query( $sql );
-  } elseif( strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 ) {
-    $found_db_type = true;
-    $res = mysql_query( $sql, $db_connection_info['connection'] );
   } elseif( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
     $found_db_type = true;
     try {
@@ -446,10 +396,6 @@ function dbi_fetch_row( $res ) {
     return ibase_fetch_row( $res );
   elseif( strcmp( $GLOBALS['db_type'], 'ibm_db2' ) == 0 )
     return db2_fetch_array( $res );
-  elseif( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0 )
-    return mssql_fetch_array( $res );
-  elseif( strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 )
-    return mysql_fetch_array( $res, MYSQL_NUM );
   elseif( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 )
     return $res->fetch_array( MYSQLI_NUM );
   elseif( strcmp( $GLOBALS['db_type'], 'odbc' ) == 0 )
@@ -487,10 +433,6 @@ function dbi_affected_rows( $conn, $res ) {
     return ibase_affected_rows( $conn );
   elseif( strcmp( $GLOBALS['db_type'], 'ibm_db2' ) == 0 )
     return db2_num_rows( $res );
-  elseif( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0 )
-    return mssql_rows_affected ( $conn );
-  elseif( strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 )
-    return mysql_affected_rows( $conn );
   elseif( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 )
     return $conn->affected_rows;
   elseif( strcmp( $GLOBALS['db_type'], 'odbc' ) == 0 )
@@ -523,9 +465,9 @@ function dbi_affected_rows( $conn, $res ) {
  * @return bool True on success
  */
 function dbi_update_blob( $table, $column, $key, $data ) {
-  global $unavail_DBI_Update_blob, $db_connection_info;
+  global $db_connection_info;
 
-  $unavail_DBI_Update_blob = str_replace ( ['XXX', 'YYY'],
+  $notAvailable = str_replace ( ['XXX', 'YYY'],
     ['dbi_update_blob', $GLOBALS['db_type']],
     translate( 'Unfortunately, XXX is not implemented for YYY' ) );
 
@@ -536,19 +478,24 @@ function dbi_update_blob( $table, $column, $key, $data ) {
 
   $sql = 'UPDATE ' . $table . ' SET ' . $column;
 
-  if( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0 )
-    return dbi_execute( $sql . ' = 0x' . bin2hex( $data ) . ' WHERE ' . $key );
-  elseif ( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
-    return dbi_execute( $sql . ' = \''
-     . ( function_exists( 'mysqli_real_escape_string' )
-       ? $db_connection_info['connection']->real_escape_string( $data ) : addslashes( $data ) )
-     . '\' WHERE ' . $key );
-  } elseif ( strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 ) {
-    return dbi_execute( $sql . ' = \''
-     . ( function_exists( 'mysql_real_escape_string' )
-       ? mysql_real_escape_string( $data ) : addslashes( $data ) )
-     . '\' WHERE ' . $key );
-   } elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
+  if (strcmp($GLOBALS['db_type'], 'mysqli') == 0) {
+    // Prepare the SQL statement
+    $stmt = $GLOBALS['db_connection']->prepare($sql . " = ? WHERE " . $key);
+    if ($stmt === false) {
+      dbi_fatal_error("Prepare failed: " . $GLOBALS['db_connection']->error);
+    }
+    // Bind the BLOB data parameter
+    $null = NULL; // This is required for binding BLOB data
+    $stmt->bind_param('b', $null);
+    $stmt->send_long_data(0, $data);
+    // Execute the statement
+    if (!$stmt->execute()) {
+      dbi_fatal_error("Execute failed: " . $stmt->error);
+    }
+    $stmt->close();
+    return true;
+}
+elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
      return dbi_execute( $sql . ' = \''
       . pg_escape_bytea( $data ) . '\' WHERE ' . $key );
   elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 )
@@ -566,7 +513,7 @@ function dbi_update_blob( $table, $column, $key, $data ) {
     return ( $ret == FALSE ? FALSE : TRUE );
   } else
     // TODO!
-    die_miserable_death( $unavail_DBI_Update_blob );
+    die_miserable_death( $notAvailable );
 }
 
 /**
@@ -579,7 +526,11 @@ function dbi_update_blob( $table, $column, $key, $data ) {
  * @return bool True on success
  */
 function dbi_get_blob( $table, $column, $key ) {
-  global $unavail_DBI_Update_blob, $db_connection_info;
+  global $db_connection_info;
+
+  $notAvailable = str_replace ( ['XXX', 'YYY'],
+    ['dbi_get_blob', $GLOBALS['db_type']],
+    translate( 'Unfortunately, XXX is not implemented for YYY' ) );
 
   assert( ! empty( $table ) );
   assert( ! empty( $column ) );
@@ -595,19 +546,18 @@ function dbi_get_blob( $table, $column, $key ) {
   $ret = '';
 
   if( $row = dbi_fetch_row( $res ) ) {
-    if( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0
-        || strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 ||
-        strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
+    if (strcmp( $GLOBALS['db_type'], 'mysqli')==0)
       $ret = $row[0];
-    } elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
+    elseif ( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
       $ret = pg_unescape_bytea ( $row[0] );
     elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 )
       $ret = sqlite_udf_decode_binary( $row[0] );
     elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
       $ret = $row[0];
-    } else
+    } else {
       // TODO!
-      die_miserable_death( $unavail_DBI_Update_blob );
+      die_miserable_death( $notAvailable );
+    }
   }
   dbi_free_result( $res );
   return $ret;
@@ -629,10 +579,6 @@ function dbi_free_result( $res ) {
     return ibase_free_result( $res );
   elseif( strcmp( $GLOBALS['db_type'], 'ibm_db2' ) == 0 )
     return db2_free_result( $res );
-  elseif( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0 )
-    return mssql_free_result( $res );
-  elseif( strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 )
-    return mysql_free_result( $res );
   elseif( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 )
     return mysqli_free_result( $res );
   elseif( strcmp( $GLOBALS['db_type'], 'odbc' ) == 0 )
@@ -669,12 +615,7 @@ function dbi_error() {
 
     if( $ret == '' )
       $ret = db2_stmt_errormsg();
-  } elseif( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0 )
-    // No real mssql_error function. This is as good as it gets.
-    $ret = mssql_get_last_message();
-  elseif( strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 )
-    $ret = mysql_error();
-  elseif (strcmp($GLOBALS['db_type'], 'mysqli') == 0) {
+  } elseif (strcmp($GLOBALS['db_type'], 'mysqli') == 0) {
     if (!empty($GLOBALS['db_connection_info']['last_error'])) {
       $ret = $GLOBALS['db_connection_info']['last_error'];
     } else {
@@ -745,16 +686,8 @@ function dbi_escape_string( $string ) {
   $string = stripslashes( $string );
   switch( $GLOBALS['db_type'] ) {
     case 'ibase':
-    case 'mssql':
     case 'oracle':
       return str_replace( "'", "''", $string );
-    case 'mysql':
-      // MySQL requires an active connection.
-      return ( empty( $db_connection_info['connected'] )
-        ? addslashes( $string )
-        : ( version_compare( phpversion(), '4.3.0' ) >= 0
-          ? mysql_real_escape_string( $string, $db_connection_info['connection'] )
-          : mysql_escape_string( $string ) ) );
     case 'mysqli':
       return ( empty( $db_connection_info['connected'] )
         ? addslashes( $string )
