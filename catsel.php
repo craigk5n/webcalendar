@@ -59,8 +59,8 @@ if ( ! empty ( $categories ) ) {
 }
 echo '
         </td>
-        <td class="alignmiddle"><input type="button" value=">>" onclick="selAdd()"'
- . '></td>
+        <td class="AlignMiddle"><button type="button" onclick="selAdd()">>>'
+  . '</button></td>
         <td class="aligncenter aligntop">
           <select name="eventcats[]" size="9" multiple>
             <option disabled>' . $entryCatStr . '</option>';
@@ -81,16 +81,16 @@ if ( strlen ( $cats ) ) {
 }
 echo '
           </select>
-          <input type="button" value="' . translate ( 'Remove' )
- . '" onclick="selRemove()">
+          <button type="button" onclick="selRemove()">'
+  . translate ( 'Remove' ) . '</button>
         </td>
       </tr>
       <tr>
         <td class="aligntop alignright">*' . translate ( 'Global Category' )
- . '&nbsp;&nbsp;&nbsp;<input type="button" value="' . translate ( 'OK' )
- . '" onclick="sendCats()"></td>
-        <td colspan="2" class="alignleft">&nbsp;&nbsp;<input type="button" value="'
- . translate ( 'Cancel' ) . '" onclick="window.close()"></td>
+  . '&nbsp;&nbsp;&nbsp;<button type="button" onclick="sendCats()">'
+  . translate ( 'OK' ) . '</button></td>
+        <td class="AlignLeft" colspan="2"><button type="button" '
+  . 'onclick="window.close()">' . translate ( 'Cancel' ) . '</button></td>
       </tr>
       </form>
     </table>

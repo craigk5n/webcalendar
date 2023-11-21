@@ -160,13 +160,14 @@ if ($show_others) {
   }
 
   echo '</select>'
-   . ( $GROUPS_ENABLED == 'Y'
-    ? '<input type="button" onclick="selectUsers()" value="'
-     . translate( 'Select' ) . '...">' : '' ) . '
+    . ( $GROUPS_ENABLED === 'Y'
+      ? '<button type="button" onclick="selectUsers()">'
+        . translate ( 'Select' ) . '...</button>' : '' ) . '
           </td>
         </tr>';
 }
-echo '</table><input class="btn btn-primary" type="submit" value="' . $searchStr . '"></form>';
+echo '</table><button class="btn btn-primary" type="submit">'
+  . $searchStr . '</button></form>';
 ?>
 
 <script>

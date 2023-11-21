@@ -18,7 +18,7 @@ if ( empty ( $HTTP_USER_AGENT ) )
      . str_replace ('XXX', translate ( get_browser_language ( true ) ),
      translate ( 'Also, please use English rather than XXX.' ) ) : '' ) . '</p>
     <form action="https://github.com/craigk5n/webcalendar/issues" target="_blank">
-      <input type="submit" value="' . translate ( 'Report Bug' ) . '">
+      <button type="submit">' . translate ( 'Report Bug' ) . '</button>
     </form>
     <h3>' . translate ( 'System Settings' ) . '</h3>
     <div>';

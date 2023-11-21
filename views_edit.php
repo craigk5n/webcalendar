@@ -158,17 +158,20 @@ echo '<div class="form-inline"><label class="col-sm-2 col-form-label" for="viewu
 </select>
 
 <?php if ( $GROUPS_ENABLED == 'Y' ) { ?>
-  <input class="btn" type="button" onclick="selectUsers()" value="<?php etranslate ( 'Select' );?>...">
+  <button class="btn" type="button" onclick="selectUsers()"><?php
+    etranslate ( 'Select' );?>...</button>
 <?php } ?>
 </div>
 
 <br>
 <div class="form-group">
-<input class="btn btn-primary" type="submit" name="action" value="<?php if ( $newview ) etranslate ( 'Add' ); else etranslate ( 'Save' ); ?>">
+<button class="btn btn-primary" name="action" type="submit"><?php
+if ( $newview ) etranslate ( 'Add' ); else etranslate ( 'Save' ); ?></button>
 <a href="views.php" class="btn btn-secondary active">Cancel</a>
 <?php if ( ! $newview ) { ?>
- <input class="btn btn-danger" type="submit" name="delete" value="<?php etranslate( 'Delete' )?>"
-   onclick="return confirm('<?php etranslate( "Are you sure you want to delete this entry?" ); ?>' )">
+ <button class="btn btn-danger" name="delete" type="submit" onclick="return
+ confirm('<?php etranslate ( 'Are you sure you want to delete this entry?' )
+ ?>')"><?php etranslate ( 'Delete' )?></button>
 <?php } ?>
 </div>
 

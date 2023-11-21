@@ -131,7 +131,7 @@ else {
         <tr>
           <td class="tooltip aligntop" title="{$catHelpStr}">
             <label for="entry_categories" class="colon">{$catStr}<br></label>
-            <input type="button" value="{$editStr}" onclick="editCats( event )">
+            <button type="button" onclick="editCats(event)">{$editStr}</button>
           </td>
           <td class="aligntop">
             <input readonly type="text" name="catnames"
@@ -142,7 +142,7 @@ else {
           </td>
         </tr>
         <tr class="aligntop">
-          <td colspan="2"><br><input type="submit" value="{$saveStr}"></td>
+          <td colspan="2"><br><button type="submit">{$saveStr}</button></td>
         </tr>
       </table>
     </form>

@@ -28,8 +28,8 @@ else {
    . '</textarea></td>
         </tr>
         <tr>
-          <td class="aligncenter"><input type="submit" value="'
-   . translate ( 'Continue' ) . '"></td>
+          <td class="AlignCenter"><button type="submit">'
+   . translate ( 'Continue' ) . '</button></td>
         </tr>
         <tr>
           <td>'

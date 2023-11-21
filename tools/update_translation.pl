@@ -1,11 +1,11 @@
 #!/usr/bin/perl
 #
 # This tool will update a translation file by doing the following:
-# - Phrases are organized by the page on which they first appear.
-# - When a missing translation is found, the phrase can optionally have
-#   << MISSING >>
-#   right above it. And, when the "phrase" is an abbreviation of the
-#   full English text, show the English text (in a comment) below.
+#  - Phrases are organized by the page on which they first appear.
+#  - When a missing translation is found, the phrase can optionally have
+#    << MISSING >>
+#    right above it. And, when the "phrase" is an abbreviation of the
+#    English text, show the full English text (in a comment) below.
 #
 # Example:
 #   << MISSING >>
@@ -38,16 +38,16 @@
 #  perltidy -i=2 update_translation.pl
 #  (which will create update_translation.pl.tdy, the new version)
 #
-####################################################################
+################################################################################
 use File::Copy;
 use File::Find;
 
 sub find_pgm_files {
 # Skipping non WebCalendar plugins,
-# if the filename ends in .class or .php, add it to @files.
+# if the filename ends in .php, add it to @files.
   push( @files, "$File::Find::name" )
     if ( $_ =~ /\.(class|php)$/i
-    && $File::Find::dir !~ /(fckeditor|htmlarea|phpmailer)/i );
+    && $File::Find::dir !~ /(captcha|ckeditor|hkit|htmlarea|phpmailer|pub|vendor)/i );
 }
 
 $base_dir  = '..';
@@ -56,7 +56,7 @@ $trans_dir = '../translations';
 $base_trans_file = "$trans_dir/English-US.txt";
 $plugin          = '';
 
-$save_backup  = 0; # set to 1 to create backups
+$save_backup  = 1; # set to 1 to create backups
 $show_dups    = 0; # set to 0 to minimize translation file.
 $show_missing = 1; # set to 0 to minimize translation file.
 $verbose      = 0;
@@ -131,9 +131,9 @@ if ( $plugin ne '' ) {
     if ( $verbose );
   open( F, $p_base_trans_file ) || die "Error opening $p_base_trans_file";
   while ( <F> ) {
-    chop;
-    s/\r*$//g; # remove annoying CR
     next if ( /^#/ );
+    chomp;
+    s/\r*$//g; # remove annoying CR
     if ( /\s*:\s*/ ) {
       $abbrev = $`;
       $base_trans{ $abbrev } = $' if ( $abbrev ne 'charset' );
@@ -147,9 +147,9 @@ if ( $plugin ne '' ) {
 open( F, $base_trans_file ) || die "Error opening $base_trans_file";
 print "Reading base translation file: $base_trans_file\n" if ( $verbose );
 while ( <F> ) {
-  chop;
-  s/\r*$//g; # remove annoying CR
   next if ( /^#/ );
+  chomp;
+  s/\r*$//g; # remove annoying CR
   if ( /\s*:\s*/ ) {
     $abbrev = $`;
     $base_trans{ $abbrev } = $';
@@ -165,7 +165,7 @@ if ( -f $infile ) {
   open( F, $infile ) || die "Error opening $infile";
   $in_header = 1;
   while ( <F> ) {
-    chop;
+    chomp;
     s/\r*$//g; # remove annoying CR
     if ( $in_header && /^#/ ) {
       if ( /Translation last (pagified|updated)/ ) {
@@ -187,16 +187,16 @@ if ( -f $infile ) {
   }
 }
 
-$trans{ 'charset' }   = '=' if ( !defined( $trans{ 'charset' } ) );
-$trans{ 'direction' } = '=' if ( !defined( $trans{ 'direction' } ) );
-$trans{ '__mm__/__dd__/__yyyy__' } = '='
-  if ( !defined( $trans{ '__mm__/__dd__/__yyyy__' } ) );
-$trans{ '__month__ __dd__' } = '='
-  if ( !defined( $trans{ '__month__ __dd__' } ) );
-$trans{ '__month__ __dd__, __yyyy__' } = '='
-  if ( !defined( $trans{ '__month__ __dd__, __yyyy__' } ) );
-$trans{ '__month__ __yyyy__' } = '='
-  if ( !defined( $trans{ '__month__ __yyyy__' } ) );
+# $trans{ 'charset' }   = '=' if ( !defined( $trans{ 'charset' } ) );
+# $trans{ 'direction' } = '=' if ( !defined( $trans{ 'direction' } ) );
+# $trans{ '__mm__/__dd__/__yyyy__' } = '='
+#   if ( !defined( $trans{ '__mm__/__dd__/__yyyy__' } ) );
+# $trans{ '__month__ __dd__' } = '='
+#   if ( !defined( $trans{ '__month__ __dd__' } ) );
+# $trans{ '__month__ __dd__, __yyyy__' } = '='
+#   if ( !defined( $trans{ '__month__ __dd__, __yyyy__' } ) );
+# $trans{ '__month__ __yyyy__' } = '='
+#   if ( !defined( $trans{ '__month__ __yyyy__' } ) );
 
 if ( $plugin ne '' ) {
   print "Reading current WebCalendar translations from $b_infile\n"
@@ -204,7 +204,7 @@ if ( $plugin ne '' ) {
   open( F, $b_infile ) || die "Error opening $b_infile";
   $in_header = 1;
   while ( <F> ) {
-    chop;
+    chomp;
     s/\r*$//g; # remove annoying CR
     if ( /\s*:\s*/ ) {
       $abbrev = $`;
@@ -218,7 +218,7 @@ $header .=
   '# Translation last updated on '
   . sprintf( "%02d-%02d-%04d", $mon + 1, $day, $year + 1900 ) . "\n";
 
-print "\nFinding WebCalendar class and php files.\n\n" if ( $verbose );
+print "\nFinding WebCalendar php files.\n\n" if ( $verbose );
 find \&find_pgm_files, $base_dir;
 
 #
@@ -331,7 +331,7 @@ foreach $f ( @files ) {
 
 print STDERR (
   !$notfound
-  ? "All text was found in $infile.  Good job :-)\n"
+  ? "All text was found in $infile. Good job :-)\n"
   : "$notfound translation(s) missing.\n"
 );
 
