@@ -794,7 +794,7 @@ echo '
 }
 echo '
     </select>&nbsp;
-    <input type="submit" value="' . translate ( 'Update' ) . '">
+    <button type="submit">' . translate ( 'Update' ) . '</button>
   </form>';
 echo '</div><div class="w-100"></div></div>' . "\n";
 }
@@ -893,10 +893,10 @@ echo translate ( 'None' ) . '<br>';
 else {
 echo '
   ' . $num_comment . ' ' . translate ( 'comments' ) . '
-  <input class="btn" id="showbutton" type="button" value="' . translate ( 'Show' )
-. '" onclick="showComments();">
-  <input class="btn" id="hidebutton" type="button" value="' . translate ( 'Hide' )
-. '" onclick="hideComments();"><br>
+  <button class="btn" id="showbutton" type="button" onclick="showComments();">'
+  . translate ( 'Show' ) '</button>
+  <button class="btn" id="hidebutton" type="button" onclick="hideComments();">'
+  . translate ( 'Hide' ). '</button><br>
   <div id="comtext">' . $comment_text . '</div>';
 // We could put the following JS in includes/js/view_entry.php,
 // but we won't need it in many cases and we don't know whether

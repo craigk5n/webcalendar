@@ -209,7 +209,8 @@ $resetConfirm = translate('Are you sure you want to reset preferences for XXX?')
 $resetConfirm = str_replace("XXX", $user, $resetConfirm);
 ?>
 <div class="form-row">
-<input class="btn btn-primary mr-2" type="submit" value="<?php etranslate ( 'Save Preferences' )?>" name="">
+  <button class="btn btn-primary mr-2" name="" type="submit"><?php
+etranslate ( 'Save Preferences' )?></button>
 <input type="hidden" name="action" value="save">
 <a class="btn btn-secondary mr-2" href="pref.php?action=reset&user=<?php echo $user;?>&csrf_form_key=<?php echo getFormKey();?>"
   onclick="return confirm('<?php echo $resetConfirm;?>')"><?php etranslate("Reset Preferences");?></a>
@@ -840,24 +841,27 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
 <?php if ( $CUSTOM_SCRIPT == 'Y' ) { ?>
  <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("custom-script-help");?>">
   <label><?php etranslate ( 'Custom script/stylesheet' )?>:</label></td><td>
-  <input class="form-control btn bth-secondary" type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
-    printf ( $openStr, 'S',$prefuser ) ?> name="">
+  <button class="form-control btn bth-secondary" name="" type="button"
+  onclick=<?php printf ( $openStr, 'S', $prefuser ) ?>><?php
+  etranslate ( 'Edit' );?>...</button>
  </td></tr>
 <?php }
 
 if ( $CUSTOM_HEADER == 'Y' ) { ?>
  <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("custom-header-help");?>">
   <label><?php etranslate ( 'Custom header' )?>:</label></td><td>
-  <input class="form-control btn btn-secondary" type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
-    printf ( $openStr, 'H',$prefuser ) ?> name="">
+  <button class="form-control btn btn-secondary" name="" type="button"
+ onclick="<?php printf ( $openStr, 'H', $prefuser ) ?>"><?php
+ etranslate ( 'Edit' );?>...</button>
  </td></tr>
 <?php }
 
 if ( $CUSTOM_TRAILER == 'Y' ) { ?>
  <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("custom-trailer-help");?>">
   <label><?php etranslate ( 'Custom trailer' )?>:</label></td><td>
-  <input class="form-control btn btn-secondary" type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
-    printf ( $openStr, 'T',$prefuser ) ?> name="">
+  <button class="form-control btn btn-secondary" name="" type="button"
+  onclick=<?php printf ( $openStr, 'T', $prefuser ) ?>><?php
+  etranslate ( 'Edit' );?>...</button>
  </td></tr>
 <?php } ?>
 </table>
@@ -894,7 +898,8 @@ if ( $CUSTOM_TRAILER == 'Y' ) { ?>
 <!-- END TABS -->
 <br><br>
 <div>
-<input class="btn btn-primary" type="submit" value="<?php etranslate ( 'Save Preferences' )?>" name="">
+<button class="btn btn-primary" name="" type="submit"><?php
+etranslate ( 'Save Preferences' )?></button>
 <br><br>
 </div>
 </form>

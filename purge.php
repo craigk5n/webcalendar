@@ -109,9 +109,8 @@ if ( $do_purge ) {
   }
   echo '<h2>...' . translate ( 'Finished' ) . ".</h2>\n";
 ?>
-  <form><input class="btn btn-primary" type="button" value="<?php etranslate ( 'Back' )?>"
-onclick="history.back()"></form
-><?php
+  <form><button class="btn btn-primary" type="button" onclick="history.back()">
+ <?php etranslate ( 'Back' )?></button></form><?php
   if ( $purgeDebug ) {
     echo '<div style="border: 1px solid #000;background-color: #FFF;"><tt>'
       . "$sqlLog</tt></div>\n";
@@ -160,10 +159,10 @@ onclick="history.back()"></form
   <input class="form-control-sm" type="checkbox" name="preview" value="Y" checked>
  </td></tr>
  <tr><td colspan="2">
-   <input class="btn btn-primary" type="submit" name="delete" value="<?php
-    echo $deleteStr?>" onclick="return confirm( '<?php
-    etranslate ( 'Are you sure you want to delete events for', true);
-    ?> ' + document.forms[0].username.value + '?' )">
+   <button class="btn btn-primary" name="delete" type="submit" onclick="return
+ confirm('<?php
+ etranslate ( 'Are you sure you want to delete events for', true ) ?> ' +
+ document.forms[0].username.value + '?')"><?php echo $deleteStr?></button>
  </td></tr>
 </table>
 </form>

@@ -216,7 +216,7 @@ print_header();
   <?php etranslate ( 'Comment' )?>:</label></td>
   <td><textarea name="comment" rows="15" cols="60" wrap="auto"></textarea></td></tr>
 <tr><td colspan="2">
-<input type="submit" value="<?php etranslate ( 'Add Comment' )?>"></td></tr>
+<button type="submit"><?php etranslate ( 'Add Comment' )?></button></td></tr>
 </table>
 </form>
 
@@ -236,7 +236,7 @@ print_header();
   <td><input type="text" name="description" size="50" maxlength="127"></td></tr>
 
 <tr><td colspan="2">
-<input type="submit" value="<?php etranslate ( 'Add Attachment' )?>"></td></tr>
+<button type="submit"><?php etranslate ( 'Add Attachment' )?></button></td></tr>
 
 </table>
 </form>

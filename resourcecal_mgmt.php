@@ -72,7 +72,8 @@ print_header(
 
 <br>
 <div class="userButtons">
-    <input class="btn btn-primary" type="button" value="<?php etranslate('Add Resource Calendar'); ?>..." onclick="return edit_user('')">
+  <button class="btn btn-primary" type="button" onclick="return edit_user('')">
+ <?php etranslate ( 'Add Resource Calendar' ); ?>...</button>
 </div>
 
 <!-- add/edit user modal dialog -->
@@ -129,8 +130,11 @@ print_header(
                     <?php } ?>
 
                     <div class="modal-footer mt-2">
-                        <input class="btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
-                        <input class="btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="save_handler();">
+                      <button class="btn btn-secondary" data-dismiss="modal"
+ type="button" onclick="$('#edit-user-dialog').hide();"><?php
+ etranslate ( 'Cancel' ); ?></button>
+                      <button class="btn btn-primary" data-dismiss="modal"
+ type="button" onclick="save_handler();"><?php etranslate ( 'Save' ) ?></button>
                     </div>
                 </form>
             </div>
@@ -159,8 +163,11 @@ print_header(
                 </form>
                 <br>
                 <div class="modal-footer mt-2">
-                    <input class="btn btn-secondary" onclick="$('#delete-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
-                    <input class="btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();">
+                  <button class="btn btn-secondary" data-dismiss="modal"
+ type="button" onclick="$('#delete-user-dialog').hide();"><?php
+ etranslate ( 'Cancel' ); ?></button>
+                  <button class="btn btn-danger" name="delete" type="submit"
+ onclick="delete_handler();"><?php etranslate ( 'Delete' ) ?></button>
                 </div>
             </div>
         </div>
