@@ -223,7 +223,8 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
       <label class="form-check-label" for="exampleCheck1">Remember me</label>
     </div>
     <div class="form-group row justify-content-md-center">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button class="btn btn-primary" type="submit"><?php
+ etranslate ( 'Submit' )?></button>
     </div>
 
     <div id="public-calendar-list">

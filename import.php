@@ -173,7 +173,8 @@ else {
   print_categories();
   echo '
       </table><br>
-      <input class="btn btn-primary" type="submit" value="' . translate ( 'Import' ) . '">
+      <button class="btn btn-primary" type="submit">'
+    . translate ( 'Import' ) . '</button>
     </form>';
 }
 echo print_trailer();

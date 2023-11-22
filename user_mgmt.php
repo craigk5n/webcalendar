@@ -71,7 +71,8 @@ print_header(
 <br>
 <?php if ($is_admin && $admin_can_delete_user && access_can_access_function(ACCESS_USER_MANAGEMENT)) { ?>
 <div class="userButtons">
-    <input class="btn btn-primary" type="button" value="<?php etranslate('Add User'); ?>..." onclick="return edit_user('')">
+  <button class="btn btn-primary" type="button" onclick="return edit_user('')">
+<?php etranslate ( 'Add User' ); ?>...</button>
 </div>
 <?php } ?>
 
@@ -128,8 +129,11 @@ print_header(
                     </div>
 
                     <div class="modal-footer">
-                        <input class="btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
-                        <input class="btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="save_handler();">
+                      <button class="btn btn-secondary" data-dismiss="modal"
+ type="button" onclick="$('#edit-user-dialog').hide();"><?php
+ etranslate ( 'Cancel' ); ?></button>
+                      <button class="btn btn-primary" data-dismiss="modal"
+ type="button" onclick="save_handler();"><?php etranslate ( 'Save' ) ?></button>
                     </div>
                 </form>
             </div>
@@ -168,8 +172,13 @@ print_header(
                     </div>
 
                     <div class="modal-footer">
-                        <input class="form-control btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
-                        <input class="form-control btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Set Password"); ?>" onclick="change_password_handler();">
+                      <button class="form-control btn btn-secondary"
+ data-dismiss="modal" type="button"
+ onclick="$('#edit-user-dialog').hide();"><?php
+ etranslate ( 'Cancel' ) ?></button>
+                      <button class="form-control btn btn-primary"
+ data-dismiss="modal" type="button" onclick="change_password_handler();"><?php
+ etranslate ( 'Set Password' ); ?></button>
                     </div>
                 </form>
             </div>
@@ -199,8 +208,12 @@ print_header(
                     </form>
                     <br>
                     <div class="modal-footer">
-                        <input class="form-control btn btn-secondary" onclick="$('#delete-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
-                        <input class="form-control btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();">
+                      <button class="form-control btn btn-secondary"
+ data-dismiss="modal" type="button" onclick="$('#delete-user-dialog').hide();">
+<?php etranslate ( 'Cancel' ); ?></button>
+                      <button class="form-control btn btn-danger" name="delete"
+ type="submit" onclick="delete_handler();"><?php
+ etranslate ( 'Delete' ) ?></button>
                     </div>
                 </div>
             </div>

@@ -325,13 +325,15 @@ echo "</div>\n";
 //}
 
 echo '<div class="form-inline mt-1">
-  <input class="btn btn-primary m-1" type="submit" value="' . translate ( 'Save' ) . '">'
- . ( $adding_report ? '' : '
-            <a href="report.php" class="btn btn-secondary m-1">' . translate('Cancel') . '</a>
-            <input class="btn btn-danger m-1" type="submit" name="delete" value="'
-   . translate ( 'Delete' ) . '" onclick="return confirm( \''
-   . translate( 'Are you sure you want to delete this report?' )
-   . '\');">' );
+  <button class="btn btn-primary m-1" type="submit">'
+  . translate ( 'Save' ) . '</button>'
+  . ( $adding_report ? '' : '
+  <a href="report.php" class="btn btn-secondary m-1">'
+    . translate ( 'Cancel' ) . '</a>
+  <button class="btn btn-danger m-1" name="delete" type="submit"'
+    . '" onclick="return confirm(\''
+    . translate ( 'Are you sure you want to delete this report?' ) . '\');">'
+    . translate ( 'Delete' ) . '</button>' );
 
 ?>
 </div>
