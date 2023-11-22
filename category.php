@@ -66,7 +66,7 @@ if ((($add == '1') || (!empty($id))) && empty($error)) {
     <input type="checkbox" name="delIcon" value="Y"></div>
     <div class="form-inline">
     <label class="col-sm-3 col-form-label" for="FileName">'
-    . (($ENABLE_ICON_UPLOADS == 'Y' || $is_admin)
+    . (($ENABLE_ICON_UPLOADS === 'Y' || $is_admin)
       ? translate('Add Icon to Category') . ':</label>
       <input class="form-control" type="file" name="FileName" id="fileupload" size="45" '
       . 'maxlength="50" value="">
@@ -76,19 +76,19 @@ if ((($add == '1') || (!empty($id))) && empty($error)) {
 
     <div class="form-inline p-1">
     <input type="hidden" id="urlname" name="urlname" size="50">&nbsp;&nbsp;&nbsp;
-    <input class="btn btn-secondary openBtn" type="button" value="'
-      . translate('Search for existing icons...')
-      . '">
-     </div>' : '') // end test of ENABLE_ICON_UPLOADS
-    . '<div class="form-inline">
-  <input class="form-control btn btn-primary" type="submit" name="action" value="'
-    . ($add == '1' ? translate('Add') : translate('Save')) . '">'
+      <button class="btn btn-secondary openBtn" type="button">'
+    . translate ( 'Search for existing icons...' ) . '</button>
+    </div>' : '' ) . '
+    <div class="form-inline">
+      <button class="form-control btn btn-primary" name="action" type="submit">'
+    . ( $add === '1' ? translate ( 'Add' ) : translate ( 'Save' ) )
+    . '</button>'
     . '<a href="category.php" class="form-control btn btn-secondary ml-1">Cancel</a> '
     . (!empty($id) ? '
-      <input class="form-control btn btn-danger ml-1" type="submit" name="delete" value="'
-      . translate('Delete') . '" onclick="return confirm( '
-      . translate('Are you sure you want to delete this entry?', true)
-      . '\' )">' : '') . '
+      <button class="form-control btn btn-danger ml-1" name="delete" '
+      . 'type="submit" onclick="return confirm('
+      . translate ( 'Are you sure you want to delete this entry?', true )
+      . '\')">' . translate ( 'Delete' ) . '</button>' : '' ) . '
           </div>
     </form>';
 } else
@@ -141,7 +141,8 @@ if (empty($error)) {
 
       </div>
       <div class="modal-footer">
-        <button id="modalclosebtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-default" id="modalclosebtn" data-dismiss="modal"'
+    . ' type="button">' . translate ( 'Close' ) . '</button>
       </div>
     </div>
   </div>

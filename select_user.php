@@ -41,7 +41,8 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
 
   echo '
       </select>
-      <input class="btn btn-primary" type="submit" value="' . translate ( 'Go' ) . '">
+      <button class="btn btn-primary" type="submit">'
+    . translate ( 'Go' ) . '</button>
     </form>';
 }
 

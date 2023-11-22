@@ -41,7 +41,8 @@ print_header(
 <!-- Error Alert -->
 <div id="main-dialog-alert" class="alert alert-info" style="display: none">
     <span id="infoMessage"></span>
-    <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
+  <button type="button" class="close"
+ onclick="document.querySelector('.alert').hide()">&times;</button>
 </div>
 <!-- Users loaded via AJAX -->
 <table class="table table-striped" id="group-table">
@@ -61,7 +62,9 @@ print_header(
 </table>
 
 <div class="userButtons">
-    <input class="btn btn-primary" type="button" value="<?php etranslate('Add Group'); ?>..." onclick="return edit_group(0,'')">
+  <button class="btn btn-primary" type="button"
+ onclick="return edit_group(0,'')"><?php
+ etranslate ( 'Add Group' )?>...</button>
 </div>
 
 <!-- add/edit group modal dialog -->
@@ -111,8 +114,13 @@ print_header(
                     </div>
 
                     <div class="modal-footer">
-                        <input class="form-control btn btn-secondary" onclick="$('#edit-group-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
-                        <input class="form-control btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="save_handler();">
+                      <button class="form-control btn btn-secondary"
+ data-dismiss="modal" type="button"
+ onclick="document.querySelector('#edit-group-dialog').hide();"><?php
+ etranslate ( 'Cancel' ); ?></button>
+                      <button class="form-control btn btn-primary"
+ data-dismiss="modal" type="button" onclick="save_handler();"><?php
+ etranslate ( 'Save' ); ?></button>
                     </div>
                 </form>
             </div>
@@ -142,8 +150,13 @@ print_header(
                 </form>
                 <br>
                 <div class="modal-footer">
-                    <input class="form-control btn btn-secondary" onclick="$('#delete-group-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
-                    <input class="form-control btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();">
+                  <button class="form-control btn btn-secondary"
+ data-dismiss="modal" type="button"
+ onclick="document.querySelector('#delete-group-dialog').hide();"><?php
+ etranslate ( 'Cancel' ); ?></button>
+                  <button class="form-control btn btn-danger" name="delete"
+ type="submit" onclick="delete_handler();"><?php
+ etranslate ( 'Delete' ) ?></button>
                 </div>
             </div>
         </div>

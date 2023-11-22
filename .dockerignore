@@ -1,24 +1,19 @@
+.git
+.gitignore
 bump_version.sh
 docker
-docs/event_status.gif
-docs/extractfaqs.pl
-docs/faqs.html
-docs/Makefile
-docs/php2html.pl
-docs/README
-docs/sql2html.pl
-docs/WebCalendar-Database.html
-docs/WebCalendar-DeveloperGuide.html
-docs/WebCalendar-Functions.html
-docs/WebCalendar-Styling.html
-docs/WebCalendar-UserManual.html
-*.git
-*.gitignore
+
+# ignore all docs/
+docs
+# except these 2
+!docs/newwin.gif
+!docs/WebCalendar-SysAdmin.html
+
 includes/settings.php
 java
 Makefile
-sqlite-data
 release-files
+sqlite-data
 tests
 TODO
 vendor

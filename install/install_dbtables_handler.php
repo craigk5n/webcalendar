@@ -79,6 +79,7 @@ try {
   $error = $e->getMessage();
 }
 if (empty($error)) {
+  updateVersionInDatabase ();
   $msg = translate('Database successfully migrated from XXX to YYY');
   $msg = str_replace('XXX', $detectedDbVersion, $msg);
   $msg = str_replace('YYY', $PROGRAM_VERSION, $msg);

@@ -1016,7 +1016,8 @@ $tabI = 0;
                 <legend class="w-auto px-2"><?php etranslate('Users'); ?></legend>
                 <select class="form-control m-1" name="participants[]" id="entry_part" size="<?php echo $size; ?>" multiple><?php echo $users; ?>
                 </select>
-                <input class="btn btn-secondary m-1" name="movert" type="button" value="<?php echo $addStr; ?>" onclick=" selAdd(this);">
+                <button class="btn btn-secondary m-1" name="movert"
+ type="button" onclick="selAdd(this);"><?php echo $addStr ?></button>
               </fieldset>
             </td>
             <?php if (!empty($nonusers)) { ?>
@@ -1026,7 +1027,8 @@ $tabI = 0;
                   <select class="form-control m-1" name="nonuserPart[]" id="res_part" size="<?php echo $size; ?>" multiple>
                     <?php echo $nonusers; ?>
                   </select>
-                  <input class="btn btn-secondary m-1" name="movert" type="button" value="<?php echo $addStr; ?>" onclick="selResource(this);">
+                  <button class="btn btn-secondary m-1" name="movert"
+ type="button" onclick="selResource(this);"><?php echo $addStr ?></button>
                 </fieldset>
               </td>
             <?php } ?>
@@ -1037,7 +1039,8 @@ $tabI = 0;
                 <select class="form-control m-1" name="groups" id="groups" size="<?php echo $size; ?>" onclick="addGroup()">
                   <?php echo $grouplist; ?>
                 </select>
-                <input class="btn btn-secondary m-1" name="movert" type="button" value="<?php echo $addStr; ?>" onclick="selAdd(this);">
+                <button class="btn btn-secondary m-1" name="movert"
+ type="button" onclick="selAdd(this);"><?php echo $addStr ?></button>
               </fieldset>
             </td>
             <?php } ?>
@@ -1052,8 +1055,10 @@ $tabI = 0;
                 <select class="form-control" name="selectedPart[]" id="sel_part" size="7" multiple>'
                   <?php echo $myusers; ?>
                 </select>
-                <input class="btn btn-secondary m-1" name="movelt" type="button" value="<?php etranslate('Remove'); ?>" onclick="selRemove( this );">
-            <input class="btn btn-secondary m-1" type="button" onclick="showSchedule()" value="<?php etranslate('Availability'); ?>...">
+                <button class="btn btn-secondary m-1" name="movelt" type="button"
+ onclick="selRemove(this);"><?php etranslate ( 'Remove' ); ?></button>
+                <button class="btn btn-secondary m-1" type="button"
+ onclick="showSchedule()"><?php etranslate ( 'Availability' )?>...</button>
               </fieldset>
             </td>
           </tr>
@@ -1067,9 +1072,7 @@ $tabI = 0;
           <?php } ?>
         </table>
       </div>
-      <?php /* // End Participants */ ?>
-
-      <?php
+      <?php /* // End Participants */
 
       if ($DISABLE_REPEATING_FIELD != 'Y') {
         echo "\n" . '<!-- REPEAT -->
@@ -1237,9 +1240,9 @@ $tabI = 0;
                 . translate($byday_names[$rpt_byday_mod]) : '        '));
 
             echo '
-                <td><input type="button" name="byday" id="_' . $loop_ctr
-              . $rpt_byday_mod . '" value="' . $buttonvalue
-              . '" onclick="toggle_byday( this )"></td>';
+                <td><button id="_' . $loop_ctr . $rpt_byday_mod
+              . '" name="byday" type="button" onclick="toggle_byday(this)">'
+              . "$buttonvalue</button></td>";
           }
           echo '
               </tr>';
@@ -1311,9 +1314,9 @@ $tabI = 0;
                 <th><label>' . $loop_ctr . '-' . ($loop_ctr + 9)
             . '</label></th>' : '') . ($loop_ctr == 31 ? '
                 <th><label>31</label></th>' : '') . '
-                <td><input type="button" name="bysetpos" id="bysetpos'
-            . $loop_ctr . '" value="' . $buttonvalue
-            . '" onclick="toggle_bysetpos( this )"></td>'
+                <td><button id="bysetpos' . $loop_ctr
+            . '" name="bysetpos" type="button" onclick="toggle_bysetpos(this)">'
+            . "$buttonvalue</button></td>"
             . ($loop_ctr % 10 == 0 ? '
               </tr>
             <tr>' : '');
@@ -1357,9 +1360,10 @@ $tabI = 0;
             . '</label></th>' : '')
             . ($loop_ctr == 31 ? '
             <th><label>31</label></th>' : '') . '
-            <td><input type="button" name="bymonthday" id="bymonthday'
-            . $loop_ctr . '" value="' . $buttonvalue
-            . '" onclick="toggle_bymonthday( this )"></td>'
+            <td><button id="bymonthday' . $loop_ctr
+            . '" name="bymonthday" type="button" '
+            . 'onclick="toggle_bymonthday(this)">'
+            . "$buttonvalue</button></td>"
             . ($loop_ctr % 10 == 0 ? '
           </tr>
           <tr>' : '');
@@ -1420,12 +1424,15 @@ $tabI = 0;
                 </select>
               </td>
               <td class="aligntop">
-                <input class="alignleft btn" type="button" name="addException" value="'
-          . translate('Add Exception') . '..." onclick="add_exception(0)"><br>
-                <input class="alignleft btn" type="button" name="addInclusion" value="'
-          . translate('Add Inclusion') . '..." onclick="add_exception(1)"><br>
-                <input class="alignleft btn" type="button" name="delSelected" value="'
-          . translate('Delete Selected') . '" onclick="del_selected()">
+                <button class="AlignLeft btn" name="addException" type="button"'
+          . ' onclick="add_exception(0)">'
+          . translate ( 'Add Exception' ) . '...</button><br>
+                <button class="AlignLeft btn" name="addInclusion" type="button"'
+          . ' onclick="add_exception(1)">'
+          . translate ( 'Add Inclusion' ) . '...</button><br>
+                <button class="AlignLeft btn" name="delSelected" type="button"'
+          . ' onclick="del_selected()">'
+          . translate ( 'Delete Selected' ) . '</button>
               </td>
             </tr>
           </table>
@@ -1592,7 +1599,8 @@ $tabI = 0;
       ?>
       <div class="container">
         <div class="col-auto">
-          <input type="button" class="form-check btn btn-primary" value="<?php echo $saveStr; ?>" onclick="validate_and_submit()">
+          <button class="form-check btn btn-primary" type="button"
+ onclick="validate_and_submit()"><?php echo $saveStr ?></button>
           <?php if ($id > 0 && ($login == $create_by || $single_user == 'Y' || $is_admin)) { ?>
             <a class="btn btn-danger" href="del_entry.php?id=<?php echo $id; ?>&csrf_form_key=<?php echo getFormKey();?>" onclick="return confirm('<?php etranslate('Are you sure you want to delete this entry?'); ?>');">
               <?php etranslate('Delete entry'); ?></a><br>

@@ -117,8 +117,8 @@ if ( ! empty ( $app_login_page['hidden'] ) ) {
 }
 
 echo '
-            <input type="submit" name="' . $app_login_page['submit']
- . '" value="' . translate ( 'Login' ) . '" tabindex="4">
+            <button name="' . $app_login_page['submit']
+  . '" tabindex="4" type="submit">' . translate ( 'Login' ) . '</button>
           </td>
         </tr>
       </table>

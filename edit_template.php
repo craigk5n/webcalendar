@@ -131,14 +131,13 @@ echo '</h2>' . ( ! empty ( $error ) ? print_error ( $error ) : '
       <input type="hidden" name="user" value="' . $user . '">' : '' ) . '
       <textarea rows="15" cols="60" name="template">' . htmlspecialchars ( $cur )
    . '</textarea><br>
-      <input type="button" value="' . translate ( 'Cancel' )
-   . '" onclick="window.close();">
-      <input name="action" type="submit" value="' . translate ( 'Save' ) . '">'
+      <button type="button" onclick="window.close();">' . translate ( 'Cancel' )
+  . '</button>
+      <button name="action" type="submit">' . translate ( 'Save' ) . '</button>'
    . ( ! empty ( $user ) ? '
-      <input name="delete" type="submit" value="' . translate ( 'Delete' )
-     . '" onclick="return confirm( \''
-     . translate( 'Are you sure you want to delete this entry?' ) . '\');">'
-    : '' ) . '
+      <button name="delete" type="submit" onclick="return confirm(\''
+      . translate ( 'Are you sure you want to delete this entry?' ) . '\');">'
+      . translate ( 'Delete' ) . '</button>' : '' ) . '
     </form>' ) . "\n" . print_trailer ( false, true, true );
 
 ?>
