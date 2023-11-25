@@ -1,6 +1,6 @@
 # EditorConfig is awesome: https://EditorConfig.org
 
-# Stop the editor from looking for ".editorconfig" files in the parent directories.
+# Stop editor looking for ".editorconfig" in parent directories.
 root = true
 
 [*]
@@ -9,7 +9,7 @@ root = true
 charset = utf-8
 
 insert_final_newline = true
-# Caveat: Prettier won’t trim trailing whitespace inside template strings,
+# Caveat: Prettier won’t trim whitespace inside template strings,
 #         but your editor might.
 trim_trailing_whitespace = true
 
