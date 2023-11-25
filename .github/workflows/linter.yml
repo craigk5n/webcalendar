@@ -8,7 +8,8 @@ name: Lint Code Base
 
 #
 # Documentation:
-# https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions
+# https://docs.github.com/en/actions/learn-github-actions/
+#   workflow-syntax-for-github-actions
 #
 
 #############################
@@ -63,4 +64,3 @@ jobs:
           # Change to 'master' if your main branch differs
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
