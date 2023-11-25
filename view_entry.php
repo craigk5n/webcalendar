@@ -891,12 +891,12 @@ $comment_text .= "</div>\n";
 if ( $num_comment == 0 )
 echo translate ( 'None' ) . '<br>';
 else {
-echo '
-  ' . $num_comment . ' ' . translate ( 'comments' ) . '
+    echo '
+  ' . $num_comment . ' ' . translate('comments') . '
   <button class="btn" id="showbutton" type="button" onclick="showComments();">'
-  . translate ( 'Show' ) '</button>
-  <button class="btn" id="hidebutton" type="button" onclick="hideComments();">'
-  . translate ( 'Hide' ). '</button><br>
+    . translate('Show') . '</button>'
+    . '<button class="btn" id="hidebutton" type="button" onclick="hideComments();">'
+    . translate('Hide') . '</button><br>
   <div id="comtext">' . $comment_text . '</div>';
 // We could put the following JS in includes/js/view_entry.php,
 // but we won't need it in many cases and we don't know whether
