@@ -107,6 +107,11 @@ function update_upgrade_matrix() {
     echo "Updated $file_path to version $new_version"
 }
 
+update_npmrc_version() {
+    local new_version="$1"
+    sed -i -E "s/(init-version = )[^ ]+/\1$new_version/" .npmrc
+}
+
 # Function to print current version
 print_version() {
     local version
@@ -139,6 +144,7 @@ update_config_php "$new_version"
 update_upgrading_html "$new_version"
 update_composer_json "$new_version"
 update_upgrade_matrix "$new_version"
+update_npmrc_version "$new_version"
 
 echo ""
 echo "Files updated to version $new_version"

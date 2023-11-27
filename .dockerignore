@@ -1,14 +1,15 @@
 .git
 .gitignore
+.github
 bump_version.sh
 docker
-
+composer.json
+composer.lock
 # ignore all docs/
 docs
 # except these 2
 !docs/newwin.gif
 !docs/WebCalendar-SysAdmin.html
-
 includes/settings.php
 java
 Makefile
@@ -18,3 +19,8 @@ tests
 TODO
 vendor
 ws
+wc-icons
+terraform
+.pytest_cache
+*.old
+.dockerignore

@@ -226,7 +226,9 @@ month.php
 nulogin.php
 pref.php
 pub/bootstrap.bundle.min.js
+pub/bootstrap.bundle.min.js.sha
 pub/bootstrap.min.css
+pub/bootstrap.min.css.sha
 pub/ckeditor/bender-runner.config.json
 pub/ckeditor/CHANGES.md
 pub/ckeditor/ckeditor.js
@@ -341,6 +343,7 @@ pub/ckeditor/skins/moono-lisa/images/spinner.gif
 pub/ckeditor/skins/moono-lisa/readme.md
 pub/ckeditor/styles.js
 pub/jquery.min.js
+pub/jquery.min.js.sha
 publish.php
 purge.php
 README.md
@@ -358,21 +361,8 @@ security_audit.php
 SECURITY.md
 select_user.php
 set_entry_cat.php
-themes/autumn_pref.gif
-themes/autumn_pref.php
-themes/basic_admin.gif
-themes/basic_admin.php
-themes/default_admin.php
-themes/default_pref.gif
-themes/default_pref.php
-themes/spring_pref.gif
-themes/spring_pref.php
-themes/theme_inc.php
-themes/touch_of_grey_pref.gif
-themes/touch_of_grey_pref.php
 tools/check_translation.pl
 tools/convert_passwords.php
-tools/palm_datebook.pl
 tools/populate_sqlite3.php
 tools/reload_remotes.php
 tools/send_reminders.php
@@ -380,7 +370,6 @@ tools/summary.txt
 tools/translation_summary.pl
 tools/update_all.pl
 tools/update_translation.pl
-tools/upgrade_to_0.9.7.pl
 translations/Afrikaans.txt
 translations/Albanian.txt
 translations/Arabic_utf8.txt
