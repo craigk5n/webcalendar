@@ -1,0 +1,21 @@
+name: PHP Syntax Checker
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - release
+
+jobs:
+  php-lint:
+    name: Check PHP syntax
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Check PHP syntax
+        run: |
+          find . -name '*.php' -not -path './vendor/*' -exec php -l {} \;

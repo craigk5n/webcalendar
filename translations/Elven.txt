@@ -11,7 +11,7 @@
 #
 # Note:  Elven folk do not use abbreviations much.
 #
-# Translation last updated on 10-15-2008
+# Translation last updated on 11-27-2023
 
 
 ################################################################################
@@ -48,31 +48,44 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: activity_log.php
+# Page: usersel.php
+#
+All: Ilya
+
+########################################
+# Page: edit_entry.php
+#
+High: Taurn
+Medium: Ened
+Low: N'taurn
+Time: Luume'
+Yes: Um
+No: N'uma
+
+########################################
+# Page: report.php
 #
 Next: Ento
 Previous: Yana
 
 ########################################
+# Page: view_entry.php
+#
+by: ed'
+boss: kano
+
+########################################
+# Page: pref.php
+#
+to: a'
+Week: Enquie
+
+########################################
 # Page: admin.php
 #
-Week: Enquie
 Bottom: Sundo
 Top: Telmello
 Anyone: Ai'er
-to: a'
-Yes: Um
-No: N'uma
-
-########################################
-# Page: adminhome.php
-#
-Account: Quentale
-
-########################################
-# Page: approve_entry.php
-#
-Time: Luume'
 
 ########################################
 # Page: availability.php
@@ -82,12 +95,19 @@ month: asta
 day: re
 
 ########################################
-# Page: edit_entry.php
+# Page: adminhome.php
 #
-High: Taurn
-Medium: Ened
-Low: N'taurn
-All: Ilya
+Account: Quentale
+
+########################################
+# Page: upcoming.php
+#
+more: ner
+
+########################################
+# Page: register.php
+#
+Welcome: Creoso
 
 ########################################
 # Page: edit_report.php
@@ -97,36 +117,21 @@ Today: A're
 Yesterday: Tella're
 
 ########################################
-# Page: edit_user.php
+# Page: includes/xcal.php
 #
-again: au'
-
-########################################
-# Page: register.php
-#
-Welcome: Creoso
-
-########################################
-# Page: upcoming.php
-#
-more: ner
-
-########################################
-# Page: view_entry.php
-#
-by: ed'
-boss: kano
+MO: Elenya
+TU: Anarya
+WE: Isilya
+TH: Alduya
+FR: Menelya
+SA: Valany
+SU: Tárion
 
 ########################################
 # Page: includes/date_formats.php
 #
 December: Ringáre
 Dec: Ringáre
-
-########################################
-# Page: includes/dbi4php.php
-#
-write: tengw
 
 ########################################
 # Page: includes/functions.php
@@ -174,27 +179,11 @@ Fri: Menelya
 Sat: Valany
 
 ########################################
-# Page: includes/trailer.php
-#
-Home: Eska
-
-########################################
 # Page: includes/translate.php
 #
 Elven: Eldalie
 
 ########################################
-# Page: includes/xcal.php
+# Page: includes/trailer.php
 #
-MO: Elenya
-TU: Anarya
-WE: Isilya
-TH: Alduya
-FR: Menelya
-SA: Valany
-SU: Tárion
-
-########################################
-# Page: install/index.php
-#
-NOT: IL
+Home: Eska
