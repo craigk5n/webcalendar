@@ -21,7 +21,7 @@ sub find_pgm_files {
 # if the filename ends in .class or .php, add it to @files.
   push( @files, "$File::Find::name" )
     if ( $_ =~ /\.(class|php)$/i
-    && $File::Find::dir !~ /(fckeditor|htmlarea|phpmailer)/i );
+    && $File::Find::dir !~ /(captcha|ckeditor|hkit|htmlarea|phpmailer|pub|vendor)/i );
 }
 
 $trans_dir = '../translations';
@@ -95,10 +95,10 @@ while (<F>) {
 $notfound = $total = 0;
 foreach $text ( sort { uc($a) cmp uc($b) } keys(%text) ) {
   if ( !defined( $trans{$text} ) ) {
-#    if ( !$notfound ) {
-#      print "The following text did not have a translation in $infile:\n\n";
-#    }
-#    print "$text\n";
+    #if ( !$notfound ) {
+    #  print "The following text did not have a translation in $infile:\n\n";
+    #}
+    #print "$text\n";
     $notfound++;
   }
   $total++;
