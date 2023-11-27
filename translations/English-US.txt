@@ -36,7 +36,7 @@
 #        Translate "May_" to the full month name and "May" to the,
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
-# Translation last updated on 08-28-2023
+# Translation last updated on 11-27-2023
 
 charset: iso-8859-1
 direction: ltr
@@ -192,6 +192,7 @@ Inclusions: Inclusions
 Add Exception: Add Exception
 Add Inclusion: Add Inclusion
 Delete Selected: Delete Selected
+email-event-reminders-help: Specifies whether or not to send event reminders.
 Send Reminder: Send Reminder
 Yes: Yes
 No: No
@@ -230,7 +231,6 @@ Global Categories cannot be changed.: Global Categories cannot be changed.
 
 ########################################
 # Page: remotecal_mgmt.php
-#
 #
 You PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.: You PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.
 Are you sure you want to delete this remote calendar?: Are you sure you want to delete this remote calendar?
@@ -307,7 +307,6 @@ Category Icon: Category Icon
 Global: Global
 Invalid entry id XXX.: Invalid entry id: "XXX".
 Categories: Categories
-The permissions for the icons directory are set to read-only: The permissions for the icons directory are set to read-only
 Category Name: Category Name:
 Remove Icon: Remove Icon:
 Add Icon to Category: Add Icon to Category
@@ -315,6 +314,7 @@ GIF or PNG 6kb max: GIF or PNG 6kb max
 Search for existing icons...: Search for existing icons...
 Make New Category: Make New Category
 Current Icons: Current Icons
+Close: Close
 
 ########################################
 # Page: events_ajax.php
@@ -391,12 +391,12 @@ Are you sure you want to delete this layer?: Are you sure you want to delete thi
 Delete layer: Delete layer
 Disabled: Disabled
 Edit layer: Edit layer
-Enable layers: Enable layers
 Layer: Layer
 Layers are currently disabled.: Layers are currently <strong>disabled</strong>.
 Layers are currently enabled.: Layers are currently <strong>enabled</strong>.
 Click to modify layers settings for XXX: Click here to modify the layers settings for the XXX calendar.
 Layers: Layers
+Enable layers: Enable layers
 Disable Layers: Disable Layers
 Add layer: Add layer
 Specifies the user that you would like to see displayed in your calendar.: Specifies the user that you would like to see displayed in your calendar.
@@ -457,7 +457,6 @@ No users for this view.: No users for this view.
 
 ########################################
 # Page: groups.php
-#
 #
 Are you sure you want to delete this group?: Are you sure you want to delete this group?
 Group Name cannot be blank.: Group Name cannot be blank.
@@ -520,11 +519,14 @@ Upload file: Upload file
 ########################################
 # Page: login.php
 #
+Fatal Error: Fatal Error
+Invalid form request: Invalid form request
 You have been logged out.: You have been logged out.
 Illegal characters in login XXX.: Illegal characters in login <tt>XXX</tt>.
 You must provide a password.: You must provide a password.
 Invalid login: Invalid login
 Activity login failure: Username: "XXX", IP: "YYY".
+Submit: Submit
 Access XXX calendar: Access XXX calendar
 Not yet registered? Register here!: Not yet registered? Register here!
 
@@ -569,6 +571,8 @@ Timezone Selection: Timezone Selection
 date-format-help: Specifies the preferred date format.
 Date format: Date format
 Small Task Date: Small Task Date
+preferred-event-visibility: Default visibility for new events
+Default Visibility: Default Visibility
 time-format-help: Specifies which time format to use:<br /><em>12 hour:</em> Display times as 3am, 8:30pm, etc.<br /><em>24 hour:</em> Display times as 300, 2030, etc.
 Time format: Time format
 12 hour: 12 hour
@@ -637,7 +641,6 @@ HTML: HTML
 Plain Text: Plain Text
 email-include-ics: Include an iCalendar ICS file to email message
 Include iCalendar attachments: Include iCalendar attachments
-email-event-reminders-help: Specifies whether or not to send event reminders.
 Event reminders: Event reminders
 email-event-added: Specifies whether or not to send email notifications when an event is added to your calendar.
 Events added to my calendar: Events added to my calendar
@@ -739,11 +742,8 @@ User sees only his groups: User sees only his groups
 user-sees-his-group-help: If enabled, users will not see calendar users that are not in at least one of their groups.
 Nonuser: Resource Calendars
 Nonuser enabled: Resource Calendars Enabled
-# << MISSING >>
-# nonuser-enabled-help:
-#
-# << MISSING >>
-# Nonuser list:
+nonuser-enabled-help: If enabled, admins will have the option to add nonuser calendars
+Nonuser list: Display in participants list at
 nonuser-list-help: Where to display the resource calendars in the participant list
 Other: Other
 Allow external users: Allow external users
@@ -790,8 +790,15 @@ Resource Calendars: Resource Calendars
 System options: System options
 Title: WebCalendar
 Translated Name (XXX): Translated Name (XXX)
-Site customization: Site customization
+Site security: Site security
+Content Security Policy: Content Security Policy
+No site can frame the content: No site can frame the content
+The same site can frame the content: The same site can frame the content
+Any site can frame the content: Any site can frame the content
+View explanation at OWASP: View explanation at OWASP
 enable-external-header-help: Allows the custom trailer to be loaded from an external file
+Use Cross-Site Request Forgery Protection: Use Cross-Site Request Forgery Protection
+Site customization: Site customization
 Allow external file for header/script/trailer: Allow external file for header/script/trailer
 Allow user to override header/trailer: Allow user to override header/trailer
 server-tz-help: Specifies how many hours to adjust the time from UTC to server time.
@@ -828,9 +835,7 @@ uac-enabled-help: Enables user-level access control
 User Access Control enabled: User Access Control enabled
 resource-enabled-help: If enabled, admins will have the option to add resource calendars
 Resource Calendars enabled: Resource Calendars enabled
-#
-# << MISSING >>
-# resource-list-help:
+resource-list-help: Where to display the resource calendars in the participant list
 Display in participants list at: Display in participants list at
 Upcoming Events: Upcoming Events
 upcoming-events-help: Enable upcoming.php
@@ -849,7 +854,6 @@ remotes-enabled-help: Allows users to load remote ics files using URL
 Allow remote calendars: Allow remote calendars
 icon_upload-enabled-help: If enabled, users can upload category icons
 Category Icon Upload enabled: Category Icon Upload enabled
-(Requires XXX folder to exist.): (Requires XXX folder to exist.)
 allow-self-registration-help: Permit new users to register themselves
 Allow self-registration: Allow self-registration
 use-blacklist-help: Limit access to WebCalendar functions based on IP address
@@ -868,12 +872,8 @@ email-smtp-host: Hostname(s) of SMTP server(s) separated by commas
 SMTP Host name(s): SMTP Host name(s)
 email-smtp-port: SMTP Port Number (normally 25)
 SMTP Port Number: SMTP Port Number
-#
-# << MISSING >>
-# email-smtp-tls:
-#
-# << MISSING >>
-# Use STARTTLS:
+email-smtp-tls: Use TLS to secure the SMTP connection
+Use STARTTLS: Should STARTTLS be enabled for SMTP to switch over to an encrypted connection
 email-smtp-auth: Use SMTP Authentication
 SMTP Authentication: SMTP Authentication
 email-smtp-username: SMTP Username if using Authentication
@@ -1010,7 +1010,6 @@ Administrative Tools: Administrative Tools
 ########################################
 # Page: resourcecal_mgmt.php
 #
-#
 Are you sure you want to delete this resource calendar?: Are you sure you want to delete this resource calendar?
 This will remove all events for this resource calendar.: This will remove all events for this resource calendar.
 Unique Calendar ID for resource calendar: Unique Calendar ID for resource calendar
@@ -1021,7 +1020,7 @@ Add Resource Calendar: Add Resource Calendar
 Delete Resource Calendar: Delete Resource Calendar
 Resource Calendar successfully added.: Resource Calendar successfully added.
 Resource Calendar successfully updated.: Resource Calendar successfully updated.
-# Resource calendar successfully deleted.: # Resource calendar successfully deleted.
+Resource calendar successfully deleted.: Resource calendar successfully deleted.
 
 ########################################
 # Page: upcoming.php
@@ -1144,7 +1143,6 @@ Search: Search
 Keywords: Keywords
 Enter % for all entries: Enter % for all entries
 Include: Include
-Site Extras: Site Extras
 Filter by Date: Filter by Date
 All Dates: All Dates
 Past: Past
@@ -1169,7 +1167,6 @@ Administrator: Administrator
 Welcome: Welcome
 New user via email.: New user via email.
 You have not entered a password.: You have not entered a password.
-#
 Email cannot be blank.: Email cannot be blank.
 Registration: Registration
 Welcome to WebCalendar: Welcome to WebCalendar
@@ -1180,7 +1177,6 @@ Last Name: Last Name
 E-mail address: E-mail address
 Password (again): Password (again):
 Your account information will be emailed to you.: Your account information will be emailed to you.
-Submit: Submit
 
 ########################################
 # Page: about.php
@@ -1233,7 +1229,7 @@ export format not defined or incorrect.: export format not defined or incorrect.
 # Page: users_ajax.php
 #
 Deleting users not supported.: Deleting users not supported.
-Invalid first name.:Invalid first name.:
+Invalid first name.: Invalid first name.:
 Invalid last name.: Invalid last name.
 Set Password: Set Password
 events added: events added
@@ -1353,7 +1349,6 @@ could not find event id XXX in database.: could not find event id XXX in databas
 task: task
 event: event
 This is a reminder for the XXX detailed below.: This is a reminder for the XXX detailed below.
-Percentage Complete: Percentage Complete
 Reminder: Reminder
 
 ########################################
@@ -1443,9 +1438,6 @@ LANGUAGE DEFINED: LANGUAGE DEFINED
 ########################################
 # Page: includes/formvars.php
 #
-Fatal Error: Fatal Error
-#
-Invalid form request: Invalid form request
 Invalid data format for: Invalid data format for
 
 ########################################
@@ -1511,10 +1503,10 @@ Event rejected: Event rejected
 Journal rejected: Journal rejected
 Task rejected: Task rejected
 Reminder sent: Reminder sent
+System Message: System Message
 Event updated: Event updated
 Journal updated: Journal updated
 Task updated: Task updated
-System Message: System Message
 WK: WK
 TASKS: TASKS
 Task_Title: Title
@@ -1588,6 +1580,7 @@ Thu: Thu
 Fri: Fri
 Sat: Sat
 unknown-weekday: unknown-weekday
+The permissions for the icons directory are set to read-only: The permissions for the icons directory are set to read-only
 
 ########################################
 # Page: includes/user.php
@@ -1779,20 +1772,7 @@ provide_address: You must provide at least one recipient email address.
 recipients_failed: SMTP Error: The following recipients failed:
 
 ########################################
-# Page: includes/classes/captcha/captcha.php
-#
-Enter Characters Seen in Graphic: Enter Characters Seen in Graphic
-Enter the correct letters and numbers...: Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read
-Challenge/Response: Challenge/Response
-
-########################################
-# Page: themes/theme_inc.php
-#
-NO PREVIEW AVAILABLE: NO PREVIEW AVAILABLE
-
-########################################
 # Page: install2/install_page1.php
-#
 #
 WebCalendar Installation Wizard Step 1: WebCalendar Installation Wizard Step 1
 This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation.<br />For help and troubleshooting see:<br />
@@ -1801,111 +1781,163 @@ Check PHP 7.1.0 or greater: Check PHP 7.1.0 or greater
 PHP version: PHP version
 
 ########################################
+# Page: install/install_adminuser.php
+#
+Your have XXX admin accounts.: Your have XXX admin accounts.
+Create Default Admin User: Create Default Admin User
+
+########################################
 # Page: install/index.php
 #
-Database Cache Directory: Database Cache Directory
-Create New: Create New
-Failure Reason: <b>Failure Reason: </b>
-You must manually create database: You must manually create database.
-Single-User: Single-User
-Test Settings: Test Settings
-Timezone Conversion Successful: Timezone Conversion Successful
-WebCalendar Installation Wizard Step XXX: WebCalendar Installation Wizard Step XXX
-Password Accepted: Password Accepted
-Successful Login: Successful Login
-Invalid Login: Invalid Login
-Password Incorrect: Password Incorrect
-Display Errors: Display Errors
-File Uploads: File Uploads
+PHP Version: PHP Version
+GD Module: GD Module
+Installed: Installed
+Not found: Not found
+GD module required for gradient background colors: GD module required for gradient background colors
+Allow File Uploads: Allow File Uploads
+File uploads are required to upload category icons: File uploads are required to upload category icons
 Allow URL fopen: Allow URL fopen (required only if Remote Calendars are used)
+Remote URL fopen is required to load remote calendars: Remote URL fopen is required to load remote calendars
 Safe Mode: Safe Mode
-Safe Mode Allowed Vars: Safe Mode Allowed Vars (TZ required only if Safe Mode is On)
-GD: GD (needed for Gradient Image Backgrounds)
-Passwords do not match!: Passwords do not match!
-Unable to write password to settings.php file: Unable to write password to "settings.php" file.
-Password Updated: Password Updated
-Password has been set: Password has been set.
-Connection Successful...: <b>Connection Successful</b> Please go to next page to continue installation.
-Correct your entries or click the Create New...: Correct your entries or click the <b>Create New</b> button to continue installation.
-Correct your entries and try again.: Correct your entries and try again.
-XXX does not exist: XXX does not exist
-XXX is not writable: XXX is not writable
-Error Converting Timezone: Error Converting Timezone
-Error Unable to write to file XXX.: Error Unable to write to file XXX.
-Please change the file permissions of this file.: Please change the file permissions of this file.
-Please change includes dir permission: Please change the file permissions of your "includes" directory to allow writing by other users.
-Your settings have been saved.: Your settings have been saved.
-OFF: OFF
-ON: ON
-WebCalendar Setup Wizard: WebCalendar Setup Wizard
-System Administrators Guide: System Administrator's Guide
-Frequently Asked Questions: Frequently Asked Questions
-FAQ: FAQ
-Troubleshooting: Troubleshooting
-Getting Help: Getting Help
-Upgrading Guide: Upgrading Guide
-User Supported Wiki: User Supported Wiki
-Check to see if PHP 7.4.0 or greater is installed.: Check to see if PHP 7.4.0 or greater is installed.
-PHP Settings: PHP Settings
-Detailed PHP Info: Detailed PHP Info
-settings.php Status: "settings.php" Status
-Session Check: Session Check
-To test the proper operation of sessions...: To test the proper operation of sessions, reload this page. You should see the session counter increment each time.
-SESSION COUNTER: SESSION COUNTER
-The file permissions of settings.php are set...: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue
-The file permissions of the includes directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue
-Your settings.php file appears to be valid.: Your <b>settings.php</b> file appears to be valid.
-Configuration Wizard Password: Configuration Wizard Password
-Create Settings File Password: Create Settings File Password
-db setup directions...: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
-Database Status: Database Status
-Supported databases for your PHP installation: Supported databases for your PHP installation
-Your current database settings are able to access the database.: Your current database settings are able to access the database.
-Please Test Settings: Please Test Settings
-Your current database settings are not able...: Your current database settings are <b>not</b> able to access the database or have not yet been tested.
-Database Settings: Database Settings
-Database Type: Database Type
-Server: Server
-Connection Persistence: Connection Persistence
-All your database tables appear to be up...: All your database tables appear to be up to date. You may proceed to the next page and complete your WebCalendar setup.
-This appears to be a new installation...: This appears to be a new installation. If this is not correct, please go back to the previous page and correct your settings.
-This appears to be an upgrade...: This appears to be an upgrade from version&nbsp;XXX&nbsp;to&nbsp;YYY.
-The database requires some data input...: The database requires some data input Click <b>Update Database</b> to complete the upgrade.
-In this section we will perform...: In this section we will perform the changes to bring your database up to the required level. If you are using a fully supported database, this step will be performed automatically for you. If not, the required SQL can be displayed and you should be able to cut and paste it into your database server query window.
-No database actions are required.: No database actions are required.
-The following database actions are required: The following database actions are required
-ODBC Underlying Database: <b>ODBC Underlying Database: </b>
-Automatic installation not supported: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the SQL supplied. Please click <b>Display SQL</b> to continue. Cut and Paste into your database query window.
-This may take several minutes to complete: This may take several minutes to complete.
-Install Database: Install Database
-Update Database: Update Database
-Display Required SQL: Display Required SQL
-Return to previous page after processing SQL.: After manually processing this SQL, you will need to return to the previous page and retest your database so that the script can detect the changes.
-This is the final step in setting up your WebCalendar Installation.: This is the final step in setting up your WebCalendar Installation.
-Timezone Conversion: Timezone Conversion
-It appears that you have NOT converted...: It appears that you have NOT converted your existing WebCalendar event data to GMT. If you have, you may ignore this notice and not proceed with the conversion. If this is a new installation, you may also ignore this notice.
-Convert Data to GMT: Convert Data to GMT
-Application Settings: Application Settings
-HTTP-based authentication was not detected...: HTTP-based authentication was not detected. You will need to reconfigure your web server if you wish to select 'Web Server' from the 'User Authentication' choices below.
-HTTP-based authentication was detected...: HTTP-based authentication was detected. User authentication is being handled by your web server. You should select 'Web Server' from the list of 'User Authentication' choices below.
-Create Default Admin Account: Create Default Admin Account
-(Admin Account Not Found): (Admin Account Not Found)
+Safe Mode needs to be disabled to allow setting env variables to specify the timezone: Safe Mode needs to be disabled to allow setting env variables to specify the timezone
+Your form post was either missing a required session token or timed out.: Your form post was either missing a required session token or timed out.
+Environment variables: Environment variables
+Info: Info
+
+########################################
+# Page: install/install_dbtables.php
+#
+Your XXX database named 'YYY' is up to date.  You may go on to the next step.: Your XXX database named 'YYY' is up to date.  You may go on to the next step.
+Your XXX database named 'YYY' is empty and needs tables created.: Your XXX database named 'YYY' is empty and needs tables created.
+Your XXX database named 'YYY' needs upgrading from version ZZZ.: Your XXX database named 'YYY' needs upgrading from version ZZZ.
+Display SQL: Display SQL
+Upgrade Database: Upgrade Database
+Upgrade SQL Commands: Upgrade SQL Commands
+Copy: Copy
+SQL content copied to clipboard: SQL content copied to clipboard
+
+########################################
+# Page: install/headless.php
+#
+Unable to determine current database version.: Unable to determine current database version.
+Database successfully migrated from XXX to YYY: Database successfully migrated from XXX to YYY
+
+########################################
+# Page: install/install_appsettings.php
+#
+When choosing XXX, changes will need to be made to the file auth-settings.php before user authentication will work properly.: When choosing XXX, changes will need to be made to the file auth-settings.php before user authentication will work properly.
+You are using environment variables for your settings and must make changes externally.: You are using environment variables for your settings and must make changes externally.
+You cannot continue until you set the proper environment variables.: You cannot continue until you set the proper environment variables.
+Specify how users will be prompted for username and password.: Specify how users will be prompted for username and password.
 User Authentication: User Authentication
 Web-based via WebCalendar (default): Web-based via WebCalendar (default)
 Web Server (not detected): Web Server (not detected)
 Web Server (detected): Web Server (detected)
-None (Single-User): None (Single-User)
+Single-User Mode: Single-User Mode
+Specify where the user login and password will be verified against.  If an option is disabled, the required PHP module was not found.: Specify where the user login and password will be verified against.  If an option is disabled, the required PHP module was not found.
+User Database: User Database
+WebCalendar User Database (default): WebCalendar User Database (default)
+Enter login for single user mode.: Enter login for single user mode.
+Single User Login: Single User Login
+Set calendar to readonly mode. Default is false.: Set calendar to readonly mode. Default is false.
 Read-Only: Read-Only
-Environment: Environment
-Production: Production
-Development: Development
-Save Settings: Save Settings
+Mode selection (Production or Development). Default is Production. Development mode will enable verbose errors in the browser.: Mode selection (Production or Development). Default is Production. Development mode will enable verbose errors in the browser.
+Run Environment: Run Environment
+
+########################################
+# Page: install/install_auth.php
+#
+If your installation is accessible to anyone untrusted, you should secure the installation pages by restricting access. The easiest way to do this is by providing a passphrase.: If your installation is accessible to anyone untrusted, you should secure the installation pages by restricting access. The easiest way to do this is by providing a passphrase.
+Once the installation is complete, you will need not this passphrase again until you want to upgrade your installation. Please take note of your password because there is no way to recover it.: Once the installation is complete, you will need not this passphrase again until you want to upgrade your installation. Please take note of your password because there is no way to recover it.
+This password hint will be provided when the you login at a later time.: This password hint will be provided when the you login at a later time.
+Enter a hint to remember your password: Enter a hint to remember your password
+This passphrase was provided during the initial installation.: This passphrase was provided during the initial installation.
+Enter your passphrase: Enter your passphrase
+Enter your passphrase again: Enter your passphrase again
+This password hint was provided when the password was set.: This password hint was provided when the password was set.
+Password hint: Password hint
+Installation passphrase: Installation passphrase
+
+########################################
+# Page: install/install_dbload.php
+#
+Your XXX database named 'YYY' is empty and requires loading of default data.: Your XXX database named 'YYY' is empty and requires loading of default data.
+Your XXX database named 'YYY' has already been loaded with default data.: Your XXX database named 'YYY' has already been loaded with default data.
+Load Defaults: Load Defaults
+
+########################################
+# Page: install/install_finish.php
+#
+Install/Upgrade process is now complete.: Install/Upgrade process is now complete.
 Launch WebCalendar: Launch WebCalendar
+
+########################################
+# Page: install/install_createdb.php
+#
+Your XXX database named 'YYY' exists.  You may go on to the next step.: Your XXX database named 'YYY' exists.  You may go on to the next step.
+Your XXX database named 'YYY' does not exist yet.: Your XXX database named 'YYY' does not exist yet.
+Create Database: Create Database
+
+########################################
+# Page: install/install_auth_handler.php
+#
+Your passwords must match.: Your passwords must match.
+Successful login: Successful login
+Invalid passphrase.: Invalid passphrase.
+
+########################################
+# Page: install/install_dbsettings.php
+#
+Because environment variables are being used to configure WebCalendar, you cannot alter the settings on this page.  You must do this externally.: Because environment variables are being used to configure WebCalendar, you cannot alter the settings on this page.  You must do this externally.
+Database Server: Database Server
+Database Login: Database Login
+Database Password: Database Password
+Database Cache Directory (Optional): Database Cache Directory (Optional)
+Database Debugging: Database Debugging
+Disabled (recommended): Disabled (recommended)
+Test Connection: Test Connection
+Save Settings: Save Settings
+Successful database connection: Successful database connection
+Failed to connect to the database. Please check your settings.: Failed to connect to the database. Please check your settings.
+SQLite3 File Path: SQLite3 File Path
+
+########################################
+# Page: install/install_adminuser_handler.php
+#
+Default admin account created with login "admin" and password "admin".: Default admin account created with login "admin" and password "admin".
+
+########################################
+# Page: install/install_appsettings_handler.php
+#
+Unknown error: Unknown error
+Invalid Application Settings: Invalid Application Settings
 
 ########################################
 # Page: install/install_functions.php
 #
 Error updating table XXX: Error updating table "XXX": YYY.
 Conversion Successful: <b>Conversion Successful</b>
-Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
-previous version requires updating several tables: Your previous version of WebCalendar requires updating several database tables.
+
+########################################
+# Page: install/install_welcome.php
+#
+Your WebCalendar database is configured and current with the installed version of WebCalendar.: Your WebCalendar database is configured and current with the installed version of WebCalendar.
+You can use these pages to change your settings and to re-add the default admin user.: You can use these pages to change your settings and to re-add the default admin user.
+You can re-add the default admin user.: You can re-add the default admin user.
+This wizard will guide you through the XXX process.: This wizard will guide you through the XXX process.
+
+########################################
+# Page: install/install_phpsettings.php
+#
+Setting Description: Setting Description
+Required Setting: Required Setting
+Current Setting: Current Setting
+Correct: Correct
+Incorrect: Incorrect
+Some WebCalendar function may be limited.  Are you sure?: Some WebCalendar function may be limited.  Are you sure?
+Acknowledge: Acknowledge
+
+########################################
+# Page: install/install_ajax.php
+#
+Invalid test connection request: Invalid test connection request

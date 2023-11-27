@@ -5,7 +5,7 @@
 # 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# Translation last updated on 10-14-2008
+# Translation last updated on 11-27-2023
 
 
 ################################################################################
@@ -42,14 +42,14 @@ __month__ __yyyy__: =
 
 
 ########################################
+# Page: edit_entry.php
+#
+Date: dĂˇtum
+
+########################################
 # Page: access.php
 #
 Calendar: kalendĂˇri
-
-########################################
-# Page: approve_entry.php
-#
-Date: dĂˇtum
 
 ########################################
 # Page: edit_report.php
