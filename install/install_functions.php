@@ -313,12 +313,12 @@ function do_v1_9_11_updates()
         $base64Data = base64_encode($iconData);
         // Create a data URL.
         $dataUrl = 'data:image/png;base64,' . $base64Data;
-        echo '<img src="' . $dataUrl . '" alt="Embedded Image"> <br>';
-        echo "cat $catId done <br>\n";
+        //echo '<img src="' . $dataUrl . '" alt="Embedded Image"> <br>';
+        //echo "cat $catId done <br>\n";
         // Delete the files so we don't repeat this later
-        //if (!unlink($iconFile)) {
-        //  echo "Failed to delete icon file $iconFile";
-        //}
+        if (!unlink($iconFile)) {
+          echo "Failed to delete icon file $iconFile";
+        }
       }
     }
   }

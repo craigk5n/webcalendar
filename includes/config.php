@@ -346,7 +346,7 @@ function do_config($callingFromInstall=false)
         // (only an option when there are no database schema changes between
         // the version and the new version.)
         if (upgrade_requires_db_changes($db_type, $versionInDb, $PROGRAM_VERSION)) {
-          header($locateStr . $versionInDb);
+          header($locateStr);
           exit;
         } else {
           // We can just update the version in the database and move on.
