@@ -571,88 +571,102 @@ function dbi_get_blob( $table, $column, $key ) {
  *
  * @return bool True on success
  */
-function dbi_free_result( $res ) {
-  if( $res === true ) // Not needed for UPDATE, DELETE, etc
-    return;
-
-  if( strcmp( $GLOBALS['db_type'], 'ibase' ) == 0 )
-    return ibase_free_result( $res );
-  elseif( strcmp( $GLOBALS['db_type'], 'ibm_db2' ) == 0 )
-    return db2_free_result( $res );
-  elseif( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 )
-    return mysqli_free_result( $res );
-  elseif( strcmp( $GLOBALS['db_type'], 'odbc' ) == 0 )
-    return odbc_free_result( $res );
-  elseif( strcmp( $GLOBALS['db_type'], 'oracle' ) == 0 ) {
-    // Not supported. Ingore.
-    if( $GLOBALS['oracle_statement'] >= 0 ) {
-      OCIFreeStatement( $GLOBALS['oracle_statement'] );
-      $GLOBALS['oracle_statement'] = -1;
-    }
-  } elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
-    return pg_freeresult( $res );
-  elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 ) {
-    // Not supported
+function dbi_free_result($res)
+{
+  if ($res === true) { // Not needed for UPDATE, DELETE, etc.
+    return true;
   }
-  elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
-    // Not needed
-  } else
-    dbi_fatal_error( 'dbi_free_result(): '
-       . translate( 'db_type not defined.' ) );
-}
 
-/**
- * Gets the latest database error message.
- *
- * @return string The text of the last database error. (The type of information
- *                varies depending on which type of database is being used.)
- */
-function dbi_error() {
-  if( strcmp( $GLOBALS['db_type'], 'ibase' ) == 0 )
-    $ret = ibase_errmsg();
-  elseif( strcmp( $GLOBALS['db_type'], 'ibm_db2' ) == 0 ) {
-    $ret = db2_conn_errormsg();
-
-    if( $ret == '' )
-      $ret = db2_stmt_errormsg();
-  } elseif (strcmp($GLOBALS['db_type'], 'mysqli') == 0) {
-    if (!empty($GLOBALS['db_connection_info']['last_error'])) {
-      $ret = $GLOBALS['db_connection_info']['last_error'];
-    } else {
-      $ret = $GLOBALS['db_connection']->error;
-    }
-  } elseif( strcmp( $GLOBALS['db_type'], 'odbc' ) == 0 )
-    // No way to get error from ODBC API.
-    $ret = translate( 'Unknown ODBC error.' );
-  elseif( strcmp( $GLOBALS['db_type'], 'oracle' ) == 0 ) {
-    $e = OCIError( $GLOBALS['oracle_connection']
-      ? $GLOBALS['oracle_connection'] : '' );
-    $ret = htmlentities( $e['message'] );
-  } elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
-    $ret = pg_errormessage( $GLOBALS['postgresql_connection'] );
-  elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 ) {
-    if( empty( $GLOBALS['db_sqlite_error_str'] ) ) {
-      $ret = sqlite_last_error( $GLOBALS['sqlite_c'] );
-    } else {
-      $ret = $GLOBALS['db_sqlite_error_str'];
-      $GLOBALS['db_sqlite_error_str'] = '';
-    }
-  } elseif ( strcmp ( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
-    try {
-      if ( empty($$GLOBALS['sqlite3_c']) || !empty($GLOBALS['db_sqlite_error_str'])) {
-        $ret = $GLOBALS['db_sqlite_error_str'];
-      } else {
-        $ret = $GLOBALS['sqlite3_c']->lastErrorMsg ();
+  $dbType = $GLOBALS['db_type'] ?? 'undefined';
+  switch ($dbType) {
+    case 'ibase':
+      return ibase_free_result($res);
+    case 'ibm_db2':
+      return db2_free_result($res);
+    case 'mysqli':
+      return mysqli_free_result($res);
+    case 'odbc':
+      return odbc_free_result($res);
+    case 'oracle':
+      if ($GLOBALS['oracle_statement'] >= 0) {
+        OCIFreeStatement($GLOBALS['oracle_statement']);
+        $GLOBALS['oracle_statement'] = -1;
       }
-    } catch ( Exception $e) {
-      $GLOBALS['db_sqlite_error_str'] = $e->getMessage();
-      $ret = $e->getMessage();
-    }
-  } else
-    $ret = 'dbi_error(): ' . translate( 'db_type not defined.' );
-
-  return ( strlen( $ret ) ? $ret : translate( 'Unknown error.' ) );
+      return true; // Assuming a successful operation as it's not directly supported.
+    case 'postgresql':
+      return pg_freeresult($res);
+    case 'sqlite':
+      // Not supported for SQLite, just return true.
+      return true;
+    case 'sqlite3':
+      // Not needed for SQLite3, just return true.
+      return true;
+    case 'undefined':
+      dbi_fatal_error('dbi_free_result(): ' . translate('db_type not defined.'));
+      break;
+    default:
+      dbi_fatal_error('dbi_free_result(): ' . translate('Unsupported db_type.') . ' (' . htmlentities($dbType) . ')');
+      break;
+  }
 }
+
+
+function dbi_error()
+{
+  $dbType = $GLOBALS['db_type'] ?? 'undefined';
+
+  switch ($dbType) {
+    case 'ibase':
+      return ibase_errmsg();
+
+    case 'ibm_db2':
+      $ret = db2_conn_errormsg();
+      return ($ret == '') ? db2_stmt_errormsg() : $ret;
+
+    case 'mysqli':
+      if (!empty($GLOBALS['db_connection_info']['last_error'])) {
+        return $GLOBALS['db_connection_info']['last_error'];
+      } else {
+        return $GLOBALS['db_connection']->error;
+      }
+
+    case 'odbc':
+      return translate('Unknown ODBC error.');
+
+    case 'oracle':
+      $e = OCIError($GLOBALS['oracle_connection'] ? $GLOBALS['oracle_connection'] : '');
+      return htmlentities($e['message']);
+
+    case 'postgresql':
+      return pg_errormessage($GLOBALS['postgresql_connection']);
+
+    case 'sqlite':
+      if (empty($GLOBALS['db_sqlite_error_str'])) {
+        return sqlite_last_error($GLOBALS['sqlite_c']);
+      } else {
+        return $GLOBALS['db_sqlite_error_str'];
+      }
+
+    case 'sqlite3':
+      try {
+        if (empty($GLOBALS['sqlite3_c']) || !empty($GLOBALS['db_sqlite_error_str'])) {
+          return $GLOBALS['db_sqlite_error_str'];
+        } else {
+          return $GLOBALS['sqlite3_c']->lastErrorMsg();
+        }
+      } catch (Exception $e) {
+        $GLOBALS['db_sqlite_error_str'] = $e->getMessage();
+        return $e->getMessage();
+      }
+
+    case 'undefined':
+      return 'dbi_error(): ' . translate('db_type not defined.');
+
+    default:
+      return 'dbi_error(): ' . translate('Unsupported db_type.') . ' (' . htmlentities($dbType) . ')';
+  }
+}
+
 
 /**
  * Displays a fatal database error and aborts execution.

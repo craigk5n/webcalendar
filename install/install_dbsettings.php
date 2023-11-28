@@ -43,7 +43,7 @@ if ($usingEnv) {
                     list($checkType, $checkValue) = explode(':', $value);
                     $isSupported = ($checkType === 'function') ? @function_exists($checkValue) : @class_exists($checkValue);
                     ?>
-                    <option value="<?= $type; ?>" <?= ($type == $_SESSION['db_type']) ? 'selected' : ''; ?> <?= (!$isSupported) ? 'disabled' : ''; ?> title="<?= (!$isSupported) ? 'Required PHP module not available' : ''; ?>">
+                    <option value="<?= $type; ?>" <?= (isset($_SESSION['db_type']) && $type == $_SESSION['db_type']) ? 'selected' : ''; ?> <?= (!$isSupported) ? 'disabled' : ''; ?> title="<?= (!$isSupported) ? 'Required PHP module not available' : ''; ?>">
                         <?= ucfirst($type); ?>
                     </option>
                 <?php endforeach; ?>

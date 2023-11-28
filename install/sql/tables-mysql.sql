@@ -432,7 +432,7 @@ CREATE TABLE webcal_categories (
   cat_icon_mime VARCHAR(32) DEFAULT NULL,
   /* category icon image blob */
   cat_icon_blob LONGBLOB DEFAULT NULL,
-  PRIMARY KEY ( cal_id, cat_id, cat_order, cat_owner )
+  PRIMARY KEY ( cat_id, cat_owner )
 );
 
 /**

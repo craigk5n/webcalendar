@@ -487,7 +487,7 @@ function getDatabaseVersionFromSchema($silent = true)
   global $database_upgrade_matrix, $PROGRAM_VERSION, $settings, $show_all_errors;
   $dbVersion = null;
   $success = true;
-  //$silent = false;
+  $silent = true;
 
   // Suppress errors based on $show_all_errors.
   if (!$show_all_errors)
@@ -514,6 +514,9 @@ function getDatabaseVersionFromSchema($silent = true)
         // could have worked on.
         $res = false;
         $success = false;
+        if (!$silent) {
+          echo "Failed at: $sql <br>";
+        }
       }
       if ($res) {
         if (!$silent) {
@@ -627,6 +630,7 @@ function executeSqlFromFile($filename)
   foreach ($sqlStatements as $statement) {
     if (!empty($statement)) {
       // Assuming dbi_execute() is a function that takes a SQL statement and executes it
+      echo "Statement: $statement <br>";
       dbi_execute($statement);
     }
   }
