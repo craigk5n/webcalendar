@@ -110,8 +110,6 @@ function createDB2Database($hostname, $login, $password, $databaseName): bool
   return true;
 }
 
-
-
 try {
   switch ($_SESSION['db_type']) {
     case 'mysqli':

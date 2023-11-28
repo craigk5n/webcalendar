@@ -1,9 +1,10 @@
+# Run docker-compose from the top-level WebCalendar directory and not from this "docker" subdirectory.
 # The first time you run this, you will need to grant permission
 # for the webcalendar user to access mariadb (after you have run
 # docker-compose up).  You only need to do this once.
 #
 #   Start a shell on the mariadb container:
-#     docker-compose -f docker-compose-php8.yml exec db /bin/sh
+#     docker-compose -f docker/docker-compose-php8-dev.yml exec db /bin/sh
 #   Start the mariadb client:
 #     /bin/mariadb -p
 #     (enter the MYSQL_ROOT_PASSWORD below)
@@ -14,7 +15,7 @@
 #
 #   If you need shell access on the webserver container running WebCalendar, you can use
 #   the following command:
-#     docker-compose -f docker-compose-php8.yml exec webcalendar-php8 /bin/sh
+#     docker-compose -f docker/docker-compose-php8-dev.yml exec webcalendar-php8 /bin/sh
 
 version: '3.1'
 
@@ -42,7 +43,7 @@ services:
     ports:
       - 8080:80
     volumes:
-      - .:/var/www/html/
+      - ..:/var/www/html/
 
 volumes:
   mysql-data:

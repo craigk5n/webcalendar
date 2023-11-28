@@ -39,7 +39,7 @@ if (empty($error)) {
 try {
   $success = true;
   if (empty($error)) {
-    if ($emptyDb) {
+    if ($emptyDatabase) {
       executeSqlFromFile($install_filename);
     } else {
       if (empty($detectedDbVersion) || $detectedDbVersion == 'Unknown') {

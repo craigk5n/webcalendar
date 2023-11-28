@@ -17,192 +17,141 @@
 class Event {
   /**
    * The event's name.
-   * @var string
-   * @access private
    */
-  var $_name;
+  private string $_name;
   /**
    * The event's description.
-   * @var string
-   * @access private
    */
-  var $_description;
+  private string $_description;
   /**
    * The event's date (in YYYYMMDD format).
-   * @var string
-   * @access private
    */
-  var $_date;
+  private string $_date;
   /**
    * The event's date in the local user's timezone
    */
-  var $_localDate;
+  private $_localDate;
   /**
    * The event's time (in HHMMSS format).
-   * @var string
-   * @access private
    */
-  var $_time;
+  private string $_time;
   /**
    * The event's time in local timezone (in HHMM format)
    */
-  var $_localTime;
+  private string $_localTime;
   /**
    * The event's modified date (in YYYYMMDD format).
-   * @var string
-   * @access private
    */
-  var $_moddate;
+  private string $_moddate;
   /**
    * The event's modified time (in HHMMSS format).
-   * @var string
-   * @access private
    */
-  var $_modtime;
+  private string $_modtime;
   /**
    * The event's ID.
-   * @var int
-   * @access private
    */
-  var $_id;
+  private int $_id;
   /**
    * Extension ID.
    *
    * If this event is an extension of an event that carried over into the
    * current date, <var>$_extForID</var> will hold the original event's date.
-   *
-   * @var mixed
-   * @access private
    */
-  var $_extForID;
+  private $_extForID;
   /**
    * The event's priority.
-   * @var int
-   * @access private
    */
-  var $_priority;
+  private int $_priority;
   /**
    * The event's access level.
-   * @var string
-   * @access private
    */
-  var $_access;
+  private string $_access;
   /**
    * The event's duration in minutes.
-   * @var int
-   * @access private
    */
-  var $_duration;
+  private int $_duration;
   /**
    * The event's status.
-   * @var string
-   * @access private
    */
-  var $_status;
+  private string $_status;
   /**
    * The event's owner.
-   * @var string
-   * @access private
    */
-  var $_owner;
+  private string $_owner;
   /**
    * The event's category ID.
-   * @var int
-   * @access private
    */
-  var $_category;
+  private string $_category;
   /**
-   *   Array of categories... not set by default.
+   * Array of categories... not set by default.
    * Must be set with setCategories first.
    */
-  var $_categories;
+  private $_categories;
   /**
    * The event's owner.
-   * @var mixed
-   * @access private
    */
-  var $_login;
+  private string $_login;
 
  /**
    * The event's type.
-   * @var mixed
-   * @access private
    */
-  var $_calType;
+  private $_calType;
  /**
    * The event's type name.
-   * @var mixed
-   * @access private
    */
-  var $_calTypeName;
+  private $_calTypeName;
  /**
    * The event's location.
    * @var mixed
    * @access private
    */
-  var $_location;
+  private $_location;
  /**
    * The event's url.
-   * @var mixed
-   * @access private
    */
-  var $_url;
+  private mixed $_url;
  /**
    * The event's dueDate.
-   * @var mixed
-   * @access private
    */
-  var $_dueDate;
+  private string $_dueDate;
  /**
    * The event's dueTime.
-   * @var mixed
-   * @access private
    */
-  var $_dueTime;
+  private $_dueTime;
+   /**
+   * The event's due date and time.
+   */
+  private string $_due;
  /**
    * The event's percent.
-   * @var mixed
-   * @access private
    */
-  var $_percent;
+  private $_percent;
 
   /**
    * The event's end time .
-   * @var mixed
-   * @access private
    */
-  var $_endTime;
+  private $_endTime;
  /**
    * The event's end datetime .
-   * @var mixed
-   * @access private
    */
-  var $_endDateTime;
+  private $_endDateTime;
  /**
    * Is this an All Day event?
-   * @var bool
-   * @access private
    */
-  var $_allDay;
+  private $_allDay;
  /**
    * Is this an Timed event?
-   * @var bool
-   * @access private
    */
-  var $_timed;
+  private $_timed;
  /**
    * Is this an Untimed event?
-   * @var bool
-   * @access private
    */
-  var $_untimed;
-
+  private $_untimed;
  /**
    * Flag to record a cloned event
-   * @var int
-   * @access private
    */
-  var $_clone;
+  private $_clone;
+
   /**
    * Creates a new Event.
    *
@@ -235,7 +184,6 @@ class Event {
   function __construct ( $name, $description, $date, $time, $id, $extForID,
           $priority, $access, $duration, $status, $owner, $category, $login,
           $calType, $location, $url, $dueDate, $dueTime, $percent, $moddate, $modtime ) {
-
     $this->_name = $name;
     $this->_description = $description;
     $this->_date = $date;
@@ -303,19 +251,21 @@ class Event {
     return $this->_date;
   }
 
-  function getDateTimeAdjusted() {
-    $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 );
-    $day = substr ( $this->_date, 6, 2 );
-  if ( $this->isTimed() ) {
-    $h = (int) ( $this->_time / 10000 );
-    $m = ( $this->_time / 100 ) % 100;
-    $this->_Date = date ( 'Ymd', gmmktime ( $h, $m, 0, $month, $day, $year ) );
-  } else {
-   $h = $m = 0;
-   $this->_Date = date ( 'Ymd', mktime ( $h, $m, 0, $month, $day, $year ) );
-  }
-    return $this->_Date;
+  function getDateTimeAdjusted()
+  {
+    $year = substr($this->_date, 0, 4);
+    $month = substr($this->_date, 4, 2);
+    $day = substr($this->_date, 6, 2);
+    $ret = null;
+    if ($this->isTimed()) {
+      $h = (int) ($this->_time / 10000);
+      $m = ($this->_time / 100) % 100;
+      $ret = date('Ymd', gmmktime($h, $m, 0, $month, $day, $year));
+    } else {
+      $h = $m = 0;
+      $ret = date('Ymd', mktime($h, $m, 0, $month, $day, $year));
+    }
+    return $ret;
   }
   /**
    * Gets the event's time
@@ -402,8 +352,7 @@ class Event {
    */
   function getDateTime() {
     $time = ($this->_time > 0? $this->_time: 0);
-    $this->_DateTime = $this->_date . sprintf ( "%06d", $time );
-    return $this->_DateTime;
+    return $this->_date . sprintf ( "%06d", $time );
   }
 
     /**
@@ -413,19 +362,21 @@ class Event {
    *
    * @access public
    */
-  function getDateTimeTS() {
-    $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 );
-    $day = substr ( $this->_date, 6, 2 );
-  if ( $this->isTimed() ) {
-    $h = (int) ( $this->_time / 10000 );
-    $m = ( $this->_time / 100 ) % 100;
-    $this->_DateTime = gmmktime ( $h, $m, 0, $month, $day, $year );
-  } else {
-   $h = $m = 0;
-   $this->_DateTime = mktime ( $h, $m, 0, $month, $day, $year );
-  }
-    return $this->_DateTime;
+  function getDateTimeTS()
+  {
+    $ret = null;
+    $year = substr($this->_date, 0, 4);
+    $month = substr($this->_date, 4, 2);
+    $day = substr($this->_date, 6, 2);
+    if ($this->isTimed()) {
+      $h = (int) ($this->_time / 10000);
+      $m = ($this->_time / 100) % 100;
+      $ret = gmmktime($h, $m, 0, $month, $day, $year);
+    } else {
+      $h = $m = 0;
+      $ret = mktime($h, $m, 0, $month, $day, $year);
+    }
+    return $ret;
   }
 
   /**
