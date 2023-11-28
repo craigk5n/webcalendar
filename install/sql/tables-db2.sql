@@ -156,7 +156,7 @@ CREATE TABLE webcal_categories (
   cat_status CHAR DEFAULT 'A',
   cat_icon_mime VARCHAR(32) DEFAULT NULL,
   cat_icon_blob BLOB DEFAULT NULL,
-  PRIMARY KEY (cal_id, cat_id, cat_order, cat_owner)
+  PRIMARY KEY (cat_id, cat_order, cat_owner)
 );
 CREATE TABLE webcal_asst (
   cal_boss VARCHAR(25) NOT NULL,

@@ -202,6 +202,6 @@ if ($usingEnv) {
         printNextPageButton($action);
     }
 } else {
-    printSubmitButton($action, $html, $buttonLabel);
+    printSubmitButton($action, $html ?? null, $buttonLabel ?? null);
 }
 ?>

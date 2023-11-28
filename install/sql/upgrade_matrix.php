@@ -36,7 +36,7 @@ $database_upgrade_matrix = [
   ['INSERT INTO webcal_nonuser_cals ( cal_login, cal_admin, cal_url ) VALUES ( "zzz", "zzz", "zzz" )',
    'DELETE FROM webcal_nonuser_cals WHERE cal_login = "zzz"',
    'v1.1.0e-CVS', 'upgrade_v1.1.1'],
-  ['INSERT INTO webcal_categories ( cat_id, cat_name, cat_color ) VALUES ( "999", "zzz", "#FFFFFF" )',
+  ['INSERT INTO webcal_categories ( cat_id, cat_name, cat_color, cat_owner ) VALUES ( "999", "zzz", "#FFFFFF", "nobody" )',
    'DELETE FROM webcal_categories WHERE cat_id = 999',
    'v1.1.1', 'upgrade_v1.1.2'],
   // Upgrade from 1.1.2 -> 1.3.0

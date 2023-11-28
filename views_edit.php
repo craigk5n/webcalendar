@@ -158,7 +158,7 @@ echo '<div class="form-inline"><label class="col-sm-2 col-form-label" for="viewu
 </select>
 
 <?php if ( $GROUPS_ENABLED == 'Y' ) { ?>
-  <button class="btn" type="button" onclick="selectUsers()"><?php
+  <button class="btn btn-secondary" type="button" onclick="selectUsers()"><?php
     etranslate ( 'Select' );?>...</button>
 <?php } ?>
 </div>
