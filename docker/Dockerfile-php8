@@ -1,11 +1,9 @@
-#escape=`
-# To run on Windows, where \ is the path separator.
+# Use the official PHP image with Apache
+FROM php:8-apache
+LABEL maintainer="craig@k5n.us"
+LABEL vendor="k5n.us"
 
-FROM php:8.0-apache
-# MAINTAINER deprecated in favor of LABEL.
-LABEL craigk5n <craig@k5n.us>
-LABEL vendor "k5n.us"
-
+# Install mysqli extension
 RUN docker-php-ext-install mysqli
 
 # Copy all files except those in .dockerignore
@@ -15,3 +13,9 @@ COPY . /var/www/html/
 # to allow the web-based installer to update it.
 RUN touch /var/www/html/includes/settings.php
 RUN chmod 777 /var/www/html/includes/settings.php
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Start Apache server in the foreground
+CMD ["apache2-foreground"]

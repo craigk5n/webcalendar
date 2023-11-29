@@ -1,12 +1,21 @@
-FROM php:8.0-apache
-LABEL org.opencontainers.image.authors="craig@k5n.us"
+# Use the official PHP image with Apache
+FROM php:8-apache
+LABEL maintainer="craig@k5n.us"
+LABEL vendor="k5n.us"
+
+# Install mysqli extension
 RUN docker-php-ext-install mysqli
 
-#COPY docker/cron-hourly /tmp/cron.hourly
-#RUN crontab /tmp/cron.hourly
+# Install GD extension and its dependencies
+RUN apt-get update && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd
 
-# Run the cron every hour
-#RUN echo '0 * * * * php /var/www/html/tools/send_reminders.php' > /etc/crontabs/root
-#TODO: setup cron
+# Set working directory
+WORKDIR /var/www/html
 
-#RUN chown -R www-data:www-data /var/www
+# Start Apache server in the foreground
+CMD ["apache2-foreground"]

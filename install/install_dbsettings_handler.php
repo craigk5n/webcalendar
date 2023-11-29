@@ -27,6 +27,7 @@ foreach ($config_possible_settings as $key => $type) {
     }
     if (!empty($value)) {
         $fileContent .= "$key: $value\n";
+        $_SESSION[$key] = $value;
     }
 }
 

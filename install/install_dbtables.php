@@ -5,6 +5,7 @@
   //$detectedDbVersion = "v1.1.2";
   //$databaseCurrent = false;
   $sql = '';
+  $buttonLabel = translate('Upgrade Database');
   if ($databaseCurrent) {
     $msg = translate("Your XXX database named 'YYY' is up to date.  You may go on to the next step.");
     $msg = str_replace('XXX', $_SESSION['db_type'], $msg);
@@ -17,6 +18,7 @@
       $msg = str_replace('YYY', $_SESSION['db_database'], $msg);
       $sqlFile = getSqlFile($_SESSION['db_type'], false);
       $sql = extractSqlCommandsFromFile($sqlFile);
+      $buttonLabel = translate('Create Database');
     } else {
       $msg = translate("Your XXX database named 'YYY' needs upgrading from version ZZZ.");
       $msg = str_replace('XXX', $_SESSION['db_type'], $msg);
@@ -40,7 +42,7 @@ if ($databaseCurrent) {
 ?>
   <button type="button" id="displaySqlBtn" class="btn btn-info" data-toggle="modal" data-target="#sqlModal"><?php etranslate('Display SQL'); ?></button>
 <?php
-  printSubmitButton($action, null, translate('Upgrade Database'));
+  printSubmitButton($action, null, $buttonLabel);
 }
 ?>
 

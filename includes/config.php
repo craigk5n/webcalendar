@@ -191,9 +191,17 @@ function do_config($callingFromInstall=false)
         }
       }
     }
+  } else if (!file_exists(__DIR__ . '/settings.php') && !$callingFromInstall) {
+    // Redirect to installer
+    if (file_exists(__DIR__ . '/../install/index.php')) {
+      header('Location: install/index.php');
+      exit;
+    } else {
+      die_miserable_death(translate('Could not find settings.php file...'));
+    }
   } else {
     // Load from settings.php file
-    $settings_content = file_get_contents(__DIR__ . '/settings.php');
+    $settings_content = @file_get_contents(__DIR__ . '/settings.php');
     if (empty($settings_content)) {
       if ($callingFromInstall) {
         return; // not an error during install
@@ -228,11 +236,10 @@ function do_config($callingFromInstall=false)
   }
 
   // Extract db settings into global vars.
-  $db_database = $settings['db_database'];
-  $db_host     = $settings['db_host'];
-  $db_login    = $settings['db_login'];
-  $db_password = (empty($settings['db_password'])
-    ? '' : $settings['db_password']);
+  $db_database = $settings['db_database'] ?? '';
+  $db_host     = $settings['db_host'] ?? '';
+  $db_login    = $settings['db_login'] ?? '';
+  $db_password = $settings['db_password'] ?? '';
   $db_persistent = (preg_match(
     '/(1|yes|true|on)/i',
     $settings['db_persistent']
@@ -241,7 +248,7 @@ function do_config($callingFromInstall=false)
     '/(1|yes|true|on)/i',
     $settings['db_debug']
   ) ? true : false);
-  $db_type = $settings['db_type'];
+  $db_type = $settings['db_type'] ?? '';
 
   // If no db settings, then user has likely started install but not yet
   // completed. So, send them back to the install script.
@@ -346,7 +353,7 @@ function do_config($callingFromInstall=false)
         // (only an option when there are no database schema changes between
         // the version and the new version.)
         if (upgrade_requires_db_changes($db_type, $versionInDb, $PROGRAM_VERSION)) {
-          header($locateStr . $versionInDb);
+          header($locateStr);
           exit;
         } else {
           // We can just update the version in the database and move on.

@@ -230,6 +230,7 @@ $adminUserCount = 0;
 $databaseExists = false;
 $databaseCurrent = false;
 $settingsSaved = true; // True if a valid settings.php found unless user changes settings
+$detectedDbVersion = 'Unknown';
 if ($canConnectDb) {
     $reportedDbVersion = getDbVersion();
     $detectedDbVersion = getDatabaseVersionFromSchema();
@@ -381,7 +382,11 @@ if ($debugInstaller) {
         <?php
         // Get status for each step
         $settingsStorage = getenv('WEBCALENDAR_USE_ENV') ? translate("Environment variables") : "includes/settings.php";
-        $dbConnectionStatus = $canConnectDb ? "Can connect" : ("Cannot connect" . (empty($connectError) ? "" : ": " . $connectError));
+        if (empty($_SESSION['db_type'])) {
+            $dbConnectionStatus = translate('Unknown');
+        } else {
+            $dbConnectionStatus = $canConnectDb ? "Can connect" : ("Cannot connect" . (empty($connectError) ? "" : ": " . $connectError));
+        }
         $setupVersion = $PROGRAM_VERSION;
         $phpVersionStatus = (version_compare(phpversion(), '8.0', '>=')) ? "Supported" : "Not supported";
         ?>
