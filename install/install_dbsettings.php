@@ -73,7 +73,7 @@ if ($usingEnv) {
     <tr>
         <td><label for="db_debug"><?php etranslate('Database Debugging'); ?>:</label></td>
         <td><select class="form-control" id="db_debug" name="db_debug" <?php echo $readonlyForm; ?>>
-                <option value="N" <?php if (!empty($_SESSION['db_debug']) || in_array($_SESSION['db_debug'], ['N', 0, '0', 'false'])) echo ' selected '; ?>><?php etranslate('Disabled (recommended)'); ?></option>
+                <option value="N" <?php if (empty($_SESSION['db_debug']) || in_array($_SESSION['db_debug'], ['N', 0, '0', 'false'])) echo ' selected '; ?>><?php etranslate('Disabled (recommended)'); ?></option>
                 <option value="Y" <?php if (!empty($_SESSION['db_debug']) && in_array($_SESSION['db_debug'], ['Y', 1, '1', 'true'])) echo ' selected '; ?>><?php etranslate('Enabled'); ?></option>
             </select></td>
     </tr>

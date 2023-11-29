@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Main page for install/config of db settings.
  * This page is used to create/update includes/settings.php and it also supports
@@ -10,7 +11,7 @@
  *   - Make sure the last entry in all the upgrade-*.sql files reference
  *     this same version. For example, for "v1.0.0", there should be a
  *     comment of the format:    /*upgrade_v1.0.0 */
-       /* ( Don't remove this line as it leads to nested C-Style comments )
+/* ( Don't remove this line as it leads to nested C-Style comments )
  *     If there are NO db changes, then you should just modify the
  *     the last comment to be the new version number. If there are
  *     db changes, you should create a new entry in the *.sql files
@@ -37,7 +38,14 @@ require_once 'default_config.php';
 require_once 'install_functions.php';
 require_once 'sql/upgrade_matrix.php';
 
-$debugInstaller = false; // Set to true to get more details on the installer pages
+$debugInstaller = false; // Set to true to get more details on the installer pages (but breaks redirects)
+$includeLogoutButton = false; // Can be helpful testing installer
+
+if ($debugInstaller && isset($_GET['action']) && $_GET['action'] == 'logout') {
+    session_name('WebCalendar-Install-' . __DIR__);
+    session_start();
+    session_destroy();
+}
 
 do_config(true);
 ini_set('session.cookie_lifetime', 3600);  // 3600 seconds = 1 hour
@@ -55,16 +63,29 @@ $phpSettingsAcked = (isset($_SESSION['phpSettingsAcked']) && !empty($_SESSION['p
 function tryDbConnect()
 {
     global $settings, $db_database;
-    if (!isset($_SESSION['db_host']) || !isset($_SESSION['db_login']) || !isset($_SESSION['db_database'])) {
+    if (!isset($settings['db_type']) || !isset($_SESSION['db_host']) || !isset($_SESSION['db_login']) || !isset($_SESSION['db_database'])) {
         return false;
     }
-    $c = @dbi_connect(
-        $_SESSION['db_host'],
-        $_SESSION['db_login'],
-        $_SESSION['db_password'],
-        $_SESSION['db_database'],
-        false
-    );
+    try {
+        // Don't require database to exist in mysqli
+        if ($_SESSION['db_type'] == 'mysqli') {
+            $mysqli = new mysqli($_SESSION['db_host'], $_SESSION['db_login'], $_SESSION['db_password']);
+            if ($mysqli->connect_error) {
+                return false;
+            }
+            return true;
+        } else {
+            $c = @dbi_connect(
+                $_SESSION['db_host'],
+                $_SESSION['db_login'],
+                $_SESSION['db_password'],
+                $_SESSION['db_database'],
+                false
+            );
+        }
+    } catch (Exception $e) {
+        return false;
+    }
     return !empty($c);
 }
 
@@ -210,7 +231,14 @@ $php_settings = [
         translate('Safe Mode needs to be disabled to allow setting env variables to specify the timezone')
     ]
 ];
-//echo "<pre>"; print_r($php_settings); echo "</pre>";
+if ($debugInstaller) {
+    echo "<h2>PHP Settings</h2><pre>";
+    print_r($php_settings);
+    echo "</pre>";
+    echo "<h2>settings.php</h2><pre>";
+    print_r($settings);
+    echo "</pre>";
+}
 // Has the user modified the App Settings so they are different than settings.php
 if (empty($_SESSION['appSettingsModified'])) {
     $appSettingsModified = false;
@@ -221,8 +249,13 @@ if (empty($_SESSION['appSettingsModified'])) {
 // Can we connect?
 $connectError = '';
 $canConnectDb = tryDbConnect();
-if (!$canConnectDb)
-  $connectError = dbi_error ();
+if (!$canConnectDb) {
+    if (empty($settings['db_type'])) {
+        $connectError = translate('Connection not yet configured');
+    } else {
+        $connectError = dbi_error();
+    }
+}
 $emptyDatabase = $canConnectDb ?  isEmptyDatabase() : true;
 $unsavedDbSettings = !empty($_SESSION['unsavedDbSettings']); // Keep track if Db settings were modified by not yet saved
 $reportedDbVersion = 'Unknown';
@@ -231,7 +264,7 @@ $databaseExists = false;
 $databaseCurrent = false;
 $settingsSaved = true; // True if a valid settings.php found unless user changes settings
 $detectedDbVersion = 'Unknown';
-if ($canConnectDb) {
+if ($canConnectDb && !empty($db_connection)) {
     $reportedDbVersion = getDbVersion();
     $detectedDbVersion = getDatabaseVersionFromSchema();
     if ($debugInstaller) {
@@ -283,7 +316,6 @@ $steps = [
     ["step" => "dbsettings", "name" => "Database Configuration", "complete" => $canConnectDb && !$unsavedDbSettings],
     ["step" => "createdb", "name" => "Create Database", "complete" => $databaseExists && !$unsavedDbSettings],
     ["step" => "dbtables", "name" => "Create/Update Tables", "complete" => $databaseCurrent && !$unsavedDbSettings],
-    ["step" => "dbload", "name" => "Load Defaults", "complete" => !$emptyDatabase],
     ["step" => "adminuser", "name" => "Create Admin User", "complete" => $adminUserCount > 0 && !$unsavedDbSettings],
     ["step" => "finish", "name" => "Completion", "complete" => false]
 ];
@@ -291,8 +323,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? 'welcome';
     // Make sure we received the CSRF token
     if (empty($_POST['csrf_form_key'])) {
-      $_SESSION['alert'] = translate('Your form post was either missing a required session token or timed out.');
-      redirectToAction($action);
+        $_SESSION['alert'] = translate('Your form post was either missing a required session token or timed out.');
+        redirectToAction($action);
     }
 } else {
     $action = $_GET['action'] ?? 'welcome';
@@ -457,7 +489,7 @@ if ($debugInstaller) {
             <h3><?php echo $step['name']; ?></h3>
             <form id="<?php echo htmlentities($action); ?>_form" method="POST" action="<?php echo basename($_SERVER['PHP_SELF']); ?>">
                 <?php
-                echo csrf_form_key ();
+                echo csrf_form_key();
                 if ($error) {
                     echo "<div class='alert alert-danger'>" . htmlentities($error) . "</div>";
                 }
@@ -517,6 +549,14 @@ if ($debugInstaller) {
     </script>
 
     <br>
+    <?php
+    // Include Logout link if debugging
+    if ($includeLogoutButton && isset($_SESSION["validUser"])) {
+    ?>
+        <br><a href="index.php?action=logout">Logout</a>
+    <?php
+    }
+    ?>
 </body>
 
 </html>

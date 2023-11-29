@@ -18,7 +18,7 @@
       $msg = str_replace('YYY', $_SESSION['db_database'], $msg);
       $sqlFile = getSqlFile($_SESSION['db_type'], false);
       $sql = extractSqlCommandsFromFile($sqlFile);
-      $buttonLabel = translate('Create Database');
+      $buttonLabel = translate('Create Database Tables');
     } else {
       $msg = translate("Your XXX database named 'YYY' needs upgrading from version ZZZ.");
       $msg = str_replace('XXX', $_SESSION['db_type'], $msg);

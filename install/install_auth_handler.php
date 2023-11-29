@@ -37,22 +37,22 @@ function write_password_in_new_settings($file, $password, $hint)
 {
   $date = new DateTime();
   $formattedDate = $date->format('D, d M Y H:i:s O');
-  $content = "<?php\n/* updated via install\/index.php on " . $formattedDate . "\n" .
-    "install_password: $password\ninstall_password_hint: $hint\n# end settings.php *\n/?>\n";
+  $content = "<?php\n/* updated via install/index.php on " . $formattedDate . "\n" .
+    "install_password: $password\ninstall_password_hint: $hint\n# end settings.php */\n?>\n";
   return file_put_contents($file, $content);
 }
 
 // Handle form submission on Auth page (both setting and checking password)
-$passwordSet = !empty($_SESSION['install_password']);
+$passwordSet = !empty($settings['install_password']);
 
 if (!$passwordSet) {
   // No password set.  New instsall. Set password now.
-  $password = $_POST['password'];
-  $password2 = $_POST['password2'];
+  $password = $_POST['password'] ?? '';
+  $password2 = $_POST['password2'] ?? '';
   if ($password != $password2) {
     $error = translate('Your passwords must match.');
   }
-  $hint = $_POST['hint'];
+  $hint = $_POST['hint'] ?? '';
   $settingsFile = __DIR__ . '/../includes/settings.php';
   if (file_exists($settingsFile) && strlen(file_get_contents($settingsFile) > 10)) {
     $ret = update_password_in_settings($settingsFile, md5($password), $hint);
@@ -62,6 +62,7 @@ if (!$passwordSet) {
   if (!$ret) {
     $error = 'Error writing ' . $settingsFile . ' file.';
   } else {
+    $_SESSION['alert'] = translate('Install password saved.  Login with password to continue.');
     redirectToNextAction();
   }
 } else {

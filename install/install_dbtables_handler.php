@@ -79,10 +79,14 @@ try {
   $error = $e->getMessage();
 }
 if (empty($error)) {
-  updateVersionInDatabase ();
-  $msg = translate('Database successfully migrated from XXX to YYY');
-  $msg = str_replace('XXX', $detectedDbVersion, $msg);
-  $msg = str_replace('YYY', $PROGRAM_VERSION, $msg);
+  updateVersionInDatabase();
+  if ($emptyDatabase) {
+    $msg = translate('Database tables successfully created');
+  } else {
+    $msg = translate('Database successfully migrated from XXX to YYY');
+    $msg = str_replace('XXX', $detectedDbVersion, $msg);
+    $msg = str_replace('YYY', $PROGRAM_VERSION, $msg);
+  }
   $_SESSION['alert'] = $msg;
   redirectToNextAction();
 }
