@@ -1,5 +1,5 @@
 <?php
-$passwordSet = !empty($_SESSION['install_password']);
+$passwordSet = !empty($settings['install_password']);
 if (!$passwordSet) {
   // Not yet set
 ?> <p>

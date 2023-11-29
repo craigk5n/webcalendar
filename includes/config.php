@@ -343,7 +343,7 @@ function do_config($callingFromInstall=false)
 
     //echo "<pre>"; print_r($rows); echo "</pre>"; exit;
     if (!$rows || empty($rows) || empty($rows[0])) {
-      header($locateStr . 'UNKNOWN&reason=missing');
+      header($locateStr);
       exit;
     } else {
       $versionInDb = $rows[0][0];
@@ -367,7 +367,7 @@ function do_config($callingFromInstall=false)
   } else {
     if (!$callingFromInstall) {
       // Must mean we don't have a settings.php file or env variables.
-      header($locateStr . 'UNKNOWN');
+      header($locateStr);
       exit;
     }
   }

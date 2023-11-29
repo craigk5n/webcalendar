@@ -15,7 +15,10 @@ function X_do_debug($msg)
 
 function isEmptyDatabase()
 {
-  global $debugInstaller;
+  global $db_connection, $debugInstaller;
+  if (empty($db_connection)) {
+    return true;
+  }
   try {
     // If we have 1 or more users in webcal_user, the db is not empty
     $res = dbi_execute('SELECT COUNT(*) FROM webcal_config', [], false, false);
@@ -550,7 +553,7 @@ function getDatabaseVersionFromSchema($silent = true)
   if ($res) {
     $row = dbi_fetch_row($res);
     if (isset($row[0]) && $row[0] == 0) {
-      $_SESSION['blank_database'] = true;
+      // Database is not empty
     } else {
       // Make sure all existing values in config and pref tables are UPPERCASE.
       make_uppercase();
@@ -625,12 +628,15 @@ function extractSqlCommandsFromFile($filename)
  */
 function executeSqlFromFile($filename)
 {
+  global $debugInstaller;
   $sqlStatements = extractSqlCommandsFromFile($filename);
 
   foreach ($sqlStatements as $statement) {
     if (!empty($statement)) {
       // Assuming dbi_execute() is a function that takes a SQL statement and executes it
-      echo "Statement: $statement <br>";
+      if ($debugInstaller) {
+        echo "Statement: $statement <br>";
+      }
       dbi_execute($statement);
     }
   }
