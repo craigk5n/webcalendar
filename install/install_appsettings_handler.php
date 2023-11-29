@@ -6,13 +6,13 @@ if ($usingEnv) {
   $error = translate('Unknown error');
 } else {
   // Save settings to session
-  $_SESSION['use_http_auth'] == 'N'; // default
+  $_SESSION['use_http_auth'] = 'N'; // default
   $_SESSION['user_inc'] = $_POST['user_inc'];
   if ($_SESSION['user_inc'] == 'http') {
-    $_SESSION['user_inc'] == 'user.php';
+    $_SESSION['user_inc'] = 'user.php';
     $_SESSION['use_http_auth'] == 'Y';
   } else if ($_SESSION['user_inc'] == 'none') {
-    $_SESSION['user_inc'] == 'user.php'; // single-user
+    $_SESSION['user_inc'] = 'user.php'; // single-user
   }
   $_SESSION['single_user'] = $_POST['user_inc'] == 'none' ? 'Y' : 'N';
   if (empty($_POST['readonly']))

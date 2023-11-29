@@ -22,7 +22,7 @@ function testDbConnection($host, $login, $password, $database)
 
   try {
     if ($_POST['dbType'] == 'mysqli') {
-      $c = new mysqli($host, $login, $password, $database); // don't specify db
+      $c = new mysqli($host, $login, $password); // don't specify db
       $ret = ($c->connect_errno == 0);
       $error_msg = $c->connect_error . ", login=$login, password=$password, host=$host";
       $c->close();

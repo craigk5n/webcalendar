@@ -36,7 +36,7 @@
 #        Translate "May_" to the full month name and "May" to the,
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
-# Translation last updated on 11-27-2023
+# Translation last updated on 11-29-2023
 
 charset: iso-8859-1
 direction: ltr
@@ -1330,13 +1330,9 @@ email-boss-notifications-help: Specifies if bosses receive emails as event notif
 boss-approve-event-help: Specifies whether the boss will be required to approve events added by assistants.
 
 ########################################
-# Page: tools/send_test_email.php
-#
-Error connecting to database: Error connecting to database
-
-########################################
 # Page: tools/reload_remotes.php
 #
+Error connecting to database: Error connecting to database
 Include Path: Include Path
 No Remote Calendars found: No Remote Calendars found
 Remote Calendars not enabled: Remote Calendars not enabled
@@ -1463,6 +1459,7 @@ invalid db_type XXX: invalid db_type XXX
 Cache cleared from previous SQL!: Cache cleared from previous SQL!
 Error executing query.: Error executing query.
 Unfortunately, XXX is not implemented for YYY: Unfortunately, "XXX" is not implemented for (YYY).
+Unsupported db_type.: Unsupported db_type.
 Unknown ODBC error.: Unknown ODBC error.
 Error opening cache dir XXX.: Error opening cache dir "XXX".
 delete: delete
@@ -1772,15 +1769,6 @@ provide_address: You must provide at least one recipient email address.
 recipients_failed: SMTP Error: The following recipients failed:
 
 ########################################
-# Page: install2/install_page1.php
-#
-WebCalendar Installation Wizard Step 1: WebCalendar Installation Wizard Step 1
-This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation.<br />For help and troubleshooting see:<br />
-PHP Version Check: PHP Version Check
-Check PHP 7.1.0 or greater: Check PHP 7.1.0 or greater
-PHP version: PHP version
-
-########################################
 # Page: install/install_adminuser.php
 #
 Your have XXX admin accounts.: Your have XXX admin accounts.
@@ -1800,6 +1788,7 @@ Allow URL fopen: Allow URL fopen (required only if Remote Calendars are used)
 Remote URL fopen is required to load remote calendars: Remote URL fopen is required to load remote calendars
 Safe Mode: Safe Mode
 Safe Mode needs to be disabled to allow setting env variables to specify the timezone: Safe Mode needs to be disabled to allow setting env variables to specify the timezone
+Connection not yet configured: Connection not yet configured
 Your form post was either missing a required session token or timed out.: Your form post was either missing a required session token or timed out.
 Environment variables: Environment variables
 Info: Info
@@ -1807,11 +1796,12 @@ Info: Info
 ########################################
 # Page: install/install_dbtables.php
 #
+Upgrade Database: Upgrade Database
 Your XXX database named 'YYY' is up to date.  You may go on to the next step.: Your XXX database named 'YYY' is up to date.  You may go on to the next step.
 Your XXX database named 'YYY' is empty and needs tables created.: Your XXX database named 'YYY' is empty and needs tables created.
+Create Database Tables: Create Database Tables
 Your XXX database named 'YYY' needs upgrading from version ZZZ.: Your XXX database named 'YYY' needs upgrading from version ZZZ.
 Display SQL: Display SQL
-Upgrade Database: Upgrade Database
 Upgrade SQL Commands: Upgrade SQL Commands
 Copy: Copy
 SQL content copied to clipboard: SQL content copied to clipboard
@@ -1859,13 +1849,6 @@ Password hint: Password hint
 Installation passphrase: Installation passphrase
 
 ########################################
-# Page: install/install_dbload.php
-#
-Your XXX database named 'YYY' is empty and requires loading of default data.: Your XXX database named 'YYY' is empty and requires loading of default data.
-Your XXX database named 'YYY' has already been loaded with default data.: Your XXX database named 'YYY' has already been loaded with default data.
-Load Defaults: Load Defaults
-
-########################################
 # Page: install/install_finish.php
 #
 Install/Upgrade process is now complete.: Install/Upgrade process is now complete.
@@ -1882,6 +1865,7 @@ Create Database: Create Database
 # Page: install/install_auth_handler.php
 #
 Your passwords must match.: Your passwords must match.
+Install password saved.  Login with password to continue.: Install password saved.  Login with password to continue.
 Successful login: Successful login
 Invalid passphrase.: Invalid passphrase.
 
@@ -1936,6 +1920,11 @@ Correct: Correct
 Incorrect: Incorrect
 Some WebCalendar function may be limited.  Are you sure?: Some WebCalendar function may be limited.  Are you sure?
 Acknowledge: Acknowledge
+
+########################################
+# Page: install/install_dbtables_handler.php
+#
+Database tables successfully created: Database tables successfully created
 
 ########################################
 # Page: install/install_ajax.php
