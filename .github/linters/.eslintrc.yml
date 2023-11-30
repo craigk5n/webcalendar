@@ -41,7 +41,7 @@ plugins:
 #########
 # Rules #
 #########
-rules: { 
+rules: {
   eqeqeq: ["error", "smart"]
 }
 
