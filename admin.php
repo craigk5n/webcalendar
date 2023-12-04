@@ -107,7 +107,6 @@ if ( ! $error ) {
   $select = translate ( 'Select' ) . '...';
 
   // Allow css_cache of webcal_config values.
-  @session_start();
   $_SESSION['webcal_tmp_login'] = 'blahblahblah';
 
   $editStr = '<button name="" type="button" '

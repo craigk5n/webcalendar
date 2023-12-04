@@ -169,7 +169,6 @@ $selected = ' selected ';
 $minutesStr = translate ( 'minutes' );
 
 //allow css_cache to display public or NUC values
-@session_start();
 $_SESSION['webcal_tmp_login'] = $prefuser;
 //Prh ... add user to edit_template to get/set correct template
 $openStr ="\"window.open( 'edit_template.php?type=%s&user=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520' );\"";

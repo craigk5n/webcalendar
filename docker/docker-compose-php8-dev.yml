@@ -44,6 +44,22 @@ services:
       - 8080:80
     volumes:
       - ..:/var/www/html/
+    # You can use env vars instead of putting the details in includes/settings.php.  If WebCalendar
+    # sees WEBCALENDAR_USE_ENV is set to true, it will use these env vars and ignore settings.php.
+    # The install password below is "Webcalendar.1" (and you should change it).
+    # Use the following to generate your password hash (replace "Webcalendar.1" with your password):
+    # php -r "echo md5('Webcalendar.1');"
+    environment:
+      - WEBCALENDAR_USE_ENV=true
+      - WEBCALENDAR_INSTALL_PASSWORD=da1437a2c74ee0b35eed71e27d00c618
+      - WEBCALENDAR_DB_TYPE=mysqli
+      - WEBCALENDAR_DB_DATABASE=webcalendar_php8
+      - WEBCALENDAR_DB_LOGIN=webcalendar
+      - WEBCALENDAR_DB_PASSWORD=Webcalendar.1
+      - WEBCALENDAR_DB_HOST=db
+      - WEBCALENDAR_DB_PERSISTENT=true
+      - WEBCALENDAR_USER_INC=user.php
+      - WEBCALENDAR_MODE=dev
 
 volumes:
   mysql-data:
