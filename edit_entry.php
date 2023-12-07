@@ -188,14 +188,14 @@ else if (!empty($id) && $id > 0) {
       $cal_date = date('Ymd', $calTS);
       $cal_time = date('His', $calTS);
     }
-    $hour = floor($cal_time / 10000);
-    $minute = ($cal_time / 100) % 100;
+    $hour = intval(floor($cal_time / 10000));
+    $minute = intval(($cal_time / 100)) % 100;
 
     $dueTS = date_to_epoch($due_date . $due_time);
     $due_date = date('Ymd', $dueTS);
     $due_time = date('His', $dueTS);
-    $due_hour = floor($due_time / 10000);
-    $due_minute = ($due_time / 100) % 100;
+    $due_hour = intval(floor($due_time / 10000));
+    $due_minute = intval(($due_time / 100)) % 100;
 
     $priority = $row[6];
     $type = $row[7];
