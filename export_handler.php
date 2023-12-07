@@ -217,19 +217,19 @@ if ( $format != 'ical' && $format != 'vcal' && $format != 'pilot-csv' &&
   die_miserable_death ( 'Invalid format "' . htmlspecialchars($format) . '"' );
 $id = getValue ( 'id', '-?[0-9]+', true );
 
-$use_all_dates = getPostValue ( 'use_all_dates' );
+$use_all_dates = getPostValue ( 'use_all_dates', '' );
 if ( strtolower ( $use_all_dates ) != 'y' )
   $use_all_dates = '';
 
-$include_layers = getPostValue ( 'include_layers' );
+$include_layers = getPostValue ( 'include_layers', '' );
 if ( strtolower ( $include_layers ) != 'y' )
   $include_layers = '';
 
-$include_deleted = getPostValue ( 'include_deleted' );
+$include_deleted = getPostValue ( 'include_deleted', '' );
 if ( strtolower ( $include_deleted ) != 'y' )
   $include_deleted = '';
 
-$cat_filter = getPostValue ( 'cat_filter' );
+$cat_filter = getPostValue ( 'cat_filter', '' );
 if ( $cat_filter == 0 )
   $cat_filter = '';
 
@@ -247,10 +247,12 @@ $startdate = sprintf ( "%04d%02d%02d", $fromyear, $frommonth, $fromday );
 $enddate = sprintf ( "%04d%02d%02d", $endyear, $endmonth, $endday );
 $moddate = sprintf ( "%04d%02d%02d", $modyear, $modmonth, $modday );
 
-mt_srand ( ( float ) microtime() * 1000000 );
+mt_srand(time());
 
 if ( empty ( $id ) )
   $id = 'all';
+
+load_global_settings(); // Need server URL
 
 $outputName = 'webcalendar-' . "$login-$id";
 if ( substr ( $format, 0, 4 ) == 'ical' ) {

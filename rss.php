@@ -244,14 +244,14 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>
 <rss version="2.0" xml:lang="' . $lang . '">
   <channel>
     <title><![CDATA[' . $appStr . ']]></title>
-    <link>' . $SERVER_URL . '</link>
+    <link>' . getServerUrl() . '</link>
     <description><![CDATA[' . $appStr . ']]></description>
     <language>' . $lang . '</language>
     <generator>:"http://k5n.us/webcalendar.php?v=' . $PROGRAM_VERSION
  . '"</generator>
     <image>
       <title><![CDATA[' . $appStr . ']]></title>
-      <link>' . $SERVER_URL . '</link>
+      <link>' . getServerUrl() . '</link>
       <url>http://k5n.us/k5n_small.gif</url>
     </image>';
 
@@ -288,7 +288,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
         echo '
     <item>
       <title><![CDATA[' . $dateinfo . $entries[$j]->getName() . ']]></title>
-      <link>' . $SERVER_URL . 'view_entry.php?id=' . $entries[$j]->getID()
+      <link>' . getServerUrl() . 'view_entry.php?id=' . $entries[$j]->getID()
          . '&amp;friendly=1&amp;rssuser=' . $login . '&amp;date=' . $d . '</link>
       <description><![CDATA[' . $entries[$j]->getDescription() . ']]></description>'
          . ( empty ( $category ) ? '' : '
@@ -296,7 +296,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
         // . '<creator><![CDATA[' . $creator . ']]></creator>'
         /* RSS 2.0 date format Wed, 02 Oct 2002 13:00:00 GMT */. '
       <pubDate>' . gmdate ( 'D, d M Y H:i:s', $unixtime ) . ' GMT</pubDate>
-      <guid>' . $SERVER_URL . 'view_entry.php?id=' . $entries[$j]->getID()
+      <guid>' . getServerUrl() . 'view_entry.php?id=' . $entries[$j]->getID()
          . '&amp;friendly=1&amp;rssuser=' . $login . '&amp;date=' . $d . '</guid>
     </item>';
         $numEvents++;
@@ -337,7 +337,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
 
         echo '
       <title><![CDATA[' . $dateinfo . $rentries[$j]->getName() . ']]></title>
-      <link>' . $SERVER_URL . "view_entry.php?id=" . $rentries[$j]->getID()
+      <link>' . getServerUrl() . "view_entry.php?id=" . $rentries[$j]->getID()
          . '&amp;friendly=1&amp;rssuser=' . $login . '&amp;date=' . $d . '</link>
       <description><![CDATA[' . $rentries[$j]->getDescription() . ']]></description>'
          . ( empty ( $category ) ? '' : '
@@ -345,7 +345,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
         // . '<creator><![CDATA[' . $creator . ']]></creator>'
         . '
       <pubDate>' . gmdate ( 'D, d M Y H:i:s', $unixtime ) . ' GMT</pubDate>
-      <guid>' . $SERVER_URL . 'view_entry.php?id=' . $rentries[$j]->getID()
+      <guid>' . getServerUrl() . 'view_entry.php?id=' . $rentries[$j]->getID()
          . '&amp;friendly=1&amp;rssuser=' . $login . '&amp;date=' . $d . '</guid>
     </item>';
         $numEvents++;

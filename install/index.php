@@ -257,6 +257,10 @@ if (!$canConnectDb) {
         $connectError = dbi_error();
     }
 }
+if (!empty($_GET['action']) && $_GET['action'] == "phpinfo") {
+    phpinfo ();
+    exit;
+}
 $emptyDatabase = $canConnectDb ?  isEmptyDatabase() : true;
 $unsavedDbSettings = !empty($_SESSION['unsavedDbSettings']); // Keep track if Db settings were modified by not yet saved
 $reportedDbVersion = 'Unknown';

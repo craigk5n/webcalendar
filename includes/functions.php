@@ -3951,6 +3951,37 @@ function isLeapYear(int $year = null): bool {
   return ($year % 4 == 0 && $year % 100 != 0) || $year % 400 == 0;
 }
 
+
+function getServerUrl($checkDatabase = true): string
+{
+  global $SERVER_URL, $HTTP_HOST, $REQUEST_URI;
+  $ret = null;
+
+  if (false&&$checkDatabase) {
+    $rows = dbi_get_cached_rows('SELECT cal_value FROM webcal_config WHERE cal_setting = ?', ['SERVER_URL']);
+    if (!empty($rows) && !empty($rows[0]) && !empty($rows[0][0])) {
+      $ret = $rows[0][0];
+    }
+  }
+  // Calculate it.
+  if (empty($ret))
+    $ret = determineServerUrl();
+  $ret = rtrim($ret, '/');
+  return $ret . '/';
+}
+
+function determineServerUrl(): string
+{
+  $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
+  $host = $_SERVER['HTTP_HOST'];
+  $port = $_SERVER['SERVER_PORT'];
+  $folder = dirname($_SERVER['SCRIPT_NAME']);
+  $url = $protocol . '://'. $host . '/';
+  if ($folder != '/')
+     $url .= $folder;
+  return $url;
+}
+
 /**
  * Loads default system settings (which can be updated via admin.php).
  *

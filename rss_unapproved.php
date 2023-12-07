@@ -129,14 +129,14 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>
 <rss version="2.0" xml:lang="' . $lang . '">
   <channel>
     <title><![CDATA[' . $appStr . ']]></title>
-    <link>' . $SERVER_URL . '</link>
+    <link>' . getServerUrl() . '</link>
     <description><![CDATA[' . $descr . ']]></description>
     <language>' . $lang . '</language>
     <generator>WebCalendar ' . $PROGRAM_VERSION
  . '</generator>
     <image>
       <title><![CDATA[' . $appStr . ']]></title>
-      <link>' . $SERVER_URL . '</link>
+      <link>' . getServerUrl() . '</link>
       <url>http://k5n.us/k5n_small.gif</url>
     </image>' . "\n";
 
@@ -155,7 +155,7 @@ exit;
  * Just the format (RSS vs HTML) is different.
 */
 function list_unapproved ( $user ) {
-  global $login, $SERVER_URL;
+  global $login;
 
   $count = 0;
   $ret = '';
@@ -212,7 +212,7 @@ function list_unapproved ( $user ) {
       $ret .=
         "<item>\n" .
         '  <title><![CDATA[' . htmlspecialchars ( $name ) . ']]></title>' .
-        "\n  <link>" . $SERVER_URL .
+        "\n  <link>" . getServerUrl() .
         $view_link . '.php?id=' . $id .
         '&amp;user=' . $cal_user . "</link>\n" .
         '  <description><![CDATA[' . $description  . ']]></description>' . "\n";
@@ -221,7 +221,7 @@ function list_unapproved ( $user ) {
         /* RSS 2.0 date format Wed, 02 Oct 2002 13:00:00 GMT */
       $ret .= '<pubDate>' .
         gmdate ( 'D, d M Y H:i:s', $unixtime ) . ' GMT</pubDate>' . "\n" .
-        '  <guid>' . $SERVER_URL . 'view_entry.php?id=' . $id .
+        '  <guid>' . getServerUrl() . 'view_entry.php?id=' . $id .
         '&amp;friendly=1&amp;rssuser=' . $login .
        '&amp;date=' . $d . "</guid>\n";
       $ret .= "</item>\n\n";

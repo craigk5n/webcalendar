@@ -762,35 +762,32 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
   <label for="USER_PUBLISH_ENABLED"><?php etranslate ( 'Allow remote subscriptions' )?>:</label></td><td class="form-inline mt-1">
   <?php echo print_radio ( 'USER_PUBLISH_ENABLED' ) ?>
 </td></tr>
-<?php if ( ! empty ( $SERVER_URL ) ) { ?>
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("remote-subscriptions-url-help");?>">&nbsp;&nbsp;&nbsp;&nbsp;
   <label><?php etranslate ( 'URL' )?>:</label></td>
   <td>
   <?php
-    echo htmlspecialchars ( $SERVER_URL ) .
+    echo htmlspecialchars ( getServerUrl() ) .
       'publish.php/' . ( $updating_public ? '__public__' : $user ) . '.ics';
     echo "<br>\n";
-    echo htmlspecialchars ( $SERVER_URL ) .
+    echo htmlspecialchars ( getServerUrl() ) .
       'publish.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
   <tr><td height="0.5 em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
-<?php } /* $SERVER_URL */ ?>
 
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("allow-remote-publishing-help");?>">
   <label for="pref_USER_PUBLISH_RW_ENABLED"><?php etranslate ( 'Allow remote publishing' )?>:</label></td>
   <td class="form-inline mt-1">
   <?php echo print_radio ( 'USER_PUBLISH_RW_ENABLED' ) ?>
 </td></tr>
-<?php if ( ! empty ( $SERVER_URL ) ) { ?>
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("remote-publishing-url-help");?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<label><?php etranslate ( 'URL' )?>:</label></td>
   <td>
   <?php
-    echo htmlspecialchars ( $SERVER_URL ) .
+    echo htmlspecialchars ( getServerUrl() ) .
       'icalclient.php';
   ?></td></tr>
   <tr><td height="0.5 em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
-<?php } /* $SERVER_URL */
+<?php
 
 } /* $PUBLISH_ENABLED */
 
@@ -800,16 +797,15 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
   <td class="form-inline mt-1">
   <?php echo print_radio ( 'USER_RSS_ENABLED' ) ?>
 </td></tr>
-<?php if ( ! empty ( $SERVER_URL ) ) { ?>
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("rss-feed-url-help");?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<label><?php etranslate ( 'URL' )?>:</label></td>
   <td>
   <?php
-    echo htmlspecialchars ( $SERVER_URL ) .
+    echo htmlspecialchars ( getServerUrl() ) .
       'rss.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
   <tr><td height="0.5 em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
-<?php } /* $SERVER_URL */
+<?php 
 } /* $RSS_ENABLED */ ?>
 
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("freebusy-enabled-help");?>">
@@ -817,19 +813,17 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
   <td class="form-inline mt-1">
   <?php echo print_radio ( 'FREEBUSY_ENABLED' ) ?>
 </td></tr>
-<?php if ( ! empty ( $SERVER_URL ) ) { ?>
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("freebusy-url-help");?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<label><?php etranslate ( 'URL' )?>:</label></td>
   <td>
   <?php
-    echo htmlspecialchars ( $SERVER_URL ) .
+    echo htmlspecialchars ( getServerUrl() ) .
       'freebusy.php/' . ( $updating_public ? '__public__' : $user ) . '.ifb';
     echo "<br>\n";
-    echo htmlspecialchars ( $SERVER_URL ) .
+    echo htmlspecialchars ( getServerUrl() ) .
       'freebusy.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
   <tr><td height="0.5 em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
-<?php } /* $SERVER_URL */ ?>
 </table>
 </div></div>
 <!-- END SUBSCRIBE -->
