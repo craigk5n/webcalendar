@@ -36,7 +36,7 @@
 #        Translate "May_" to the full month name and "May" to the,
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
-# Translation last updated on 11-29-2023
+# Translation last updated on 12-08-2023
 
 charset: iso-8859-1
 direction: ltr
@@ -232,7 +232,7 @@ Global Categories cannot be changed.: Global Categories cannot be changed.
 ########################################
 # Page: remotecal_mgmt.php
 #
-You PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.: You PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.
+Your PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.: Your PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.
 Are you sure you want to delete this remote calendar?: Are you sure you want to delete this remote calendar?
 This will remove all events for this remote calendar.: This will remove all events for this remote calendar.
 This action cannot be undone.: This action cannot be undone.
@@ -1918,8 +1918,10 @@ Required Setting: Required Setting
 Current Setting: Current Setting
 Correct: Correct
 Incorrect: Incorrect
+Detailed PHP Info: Detailed PHP Info
 Some WebCalendar function may be limited.  Are you sure?: Some WebCalendar function may be limited.  Are you sure?
 Acknowledge: Acknowledge
+PHP Info: PHP Info
 
 ########################################
 # Page: install/install_dbtables_handler.php

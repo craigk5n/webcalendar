@@ -1,11 +1,11 @@
-# Translation last updated on 11-27-2023
+# Translation last updated on 12-11-2023
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
 
-# A lone equal sign "=" to the right of the colon, such as "Ok: =",
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
 
 # Specify a charset (will be sent within meta tag for each page).
@@ -124,6 +124,7 @@ time-help: Gibt die Uhrzeit des Termines an. Kann leer gelassen werden.
 Type: Art
 Untimed event: Termin OHNE Zeitangabe
 Timed event: Termin MIT Zeitangabe
+Time entered here is based on your Timezone: Die hier eingegebene Zeit basiert auf Ihrer Zeitzone.
 Timezone Offset: Zeitzonenausgleich
 Time: Uhrzeit
 duration-help: Gibt die Dauer des Termines in Minuten an. Kann leer gelassen werden.
@@ -136,6 +137,7 @@ Site Extras: Extrafelder
 Find Name: Suche Namen
 Resources: Quellen
 participants-help: Gibt die Benutzer des Termines an.
+Selected Participants: Ausgewählte Teilnehmer
 Availability: Verf&uuml;gbarkeit
 external-participants-help: Spezifiziert eine Teilnehmerliste f&uuml;r Benutzer die keinen eigenen Webkalenderzugang haben. Die Benutzer sollten pro Zeile aufgef&uuml;hrt werden und k&ouml;nnen auch Emailadressen miteinschlie&szlig;en bzw. enthalten.  Wenn ein Emailadresse eingetragen wurde, ist der Benutzer in der Lage, Benachrichtigungen und Erinnerungen zu empfangen.
 External Participants: Externe Benutzer
@@ -195,6 +197,7 @@ Every: Jeden
 CAPTCHA Warning: <b>Warnung:</b> CAPTCHA ben&ouml;tigt die PHP-Erweiterung &#39;GD&#39;!<br />
 Are you sure you want to delete this entry?: Sind Sie sicher, da&szlig; Sie diesen Eintrag l&ouml;schen wollen?
 Delete entry: Eintrag l&ouml;schen
+Edit Categories: Kategorien bearbeiten
 
 ########################################
 # Page: icalclient.php
@@ -218,22 +221,49 @@ Global Categories cannot be changed.: Globale Kategorien k&ouml;nnen nicht ge&au
 ########################################
 # Page: remotecal_mgmt.php
 #
+Your PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.: Ihre PHP-Einstellung für allow_url_fopen wird keinen entfernten Kalender laden lassen.
+Are you sure you want to delete this remote calendar?: Sind Sie sicher, dass Sie diesen entfernten Kalender löschen möchten?
+This will remove all events for this remote calendar.: Dies wird alle Ereignisse für diesen Remote-Kalender entfernen.
+This action cannot be undone.: Diese Aktion kann nicht rückgängig gemacht werden.
 Username cannot be blank.: Benutzername darf nicht leer sein.
+Name is required: Name erforderlich
+The ID is limited to letters, numbers and underscore only.: Die ID ist auf Buchstaben, Zahlen und Unterstrich beschränkt.
+You have not entered a URL.: Sie haben keine URL eingegeben.
+This remote calendar does not have a layer.  Add a layer for this calendar to view it in your calendar.: Dieser Remote-Kalender hat keine Ebene. Fügen Sie eine Ebene für diesen Kalender hinzu, um ihn in Ihrem Kalender anzuzeigen.
 Source: Quelle
 Color: Farbe
 Duplicates: Duplikate
 Remote Calendars: Externe Kalender (Remote)
+Unique Calendar ID for remote calendar: Eindeutige Kalender-ID für Remote-Kalender
 Calendar ID: Kalender ID
+Name: =
+Calendar user who created this remote calendar: Kalenderbenutzer, der diesen Remote-Kalender erstellt hat
+Created By: Erstellt von
+Enabling allows this remote calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.: „Das Aktivieren ermöglicht die Verwendung dieses externen Kalenders als öffentlichen Kalender und ein direkter Link dazu wird auf der Login-Seite angezeigt.“ 
 Public Access: &Ouml;ffentlicher Zugang
+Number of events currently in the remote calendar: „Anzahl der Ereignisse im externen Kalender“
 Events: Termine
+Date the remote calendar was last updated: „Datum, an dem der externe Kalender zuletzt aktualisiert wurde“ 
+Last Updated: „Zuletzt aktualisiert“
+Date the remote calendar was last checked for an update.  The update may have been skipped if it the remote calendar had not changes since the last update.: „Datum, an dem der externe Kalender zuletzt auf ein Update überprüft wurde. Das Update wurde möglicherweise übersprungen, wenn sich der externe Kalender seit dem letzten Update nicht geändert hat.”
+Last Checked: Letzter Check
+URL for the ICS file used to import events for this remote calendar: URL der ICS-Datei zum Importieren von Ereignissen für diesen externen Kalender
+Calendar URL: Kalender-URL
 Add Remote Calendar: Externen Kalender hinzuf&uuml;gen
 word characters only: K&ouml;nnen nur Buchstaben und Ziffern sein (a-zA-Z_0-9)
+New ID: Neue ID
+required: erforderlich
+Delete Remote Calendar: Entferne Remote-Kalender
 Username: Benutzername
 Add Layer: Layer hinzuf&uuml;gen
 The text color of the new layer that will be displayed in your calendar.: Die Farbe Ihres neuen Layers wird in Ihrem Kalender angezeigt.
 If checked, events that are duplicates of your events will be shown.: Wenn aktiviert, werden Ihre etwaigen doppelten Termine angezeigt.
 Reload: Neuladen
 JSON error: JSON Fehler
+Remote Calendar successfully reloaded: Remote-Kalender erfolgreich neu geladen
+Remote Calendar successfully added. You must add a new layer to your calendar to view the events from this remote calendar on your calendar.: Remote-Kalender erfolgreich hinzugefügt. Um die Ereignisse dieses Remote-Kalenders in Ihrem Kalender anzuzeigen, müssen Sie eine neue Ebene zu Ihrem Kalender hinzufügen.
+Remote Calendar successfully updated.: Remote-Kalender erfolgreich aktualisiert.
+Remote calendar successfully deleted.: Remote-Kalender erfolgreich gelöscht.
 
 ########################################
 # Page: views_edit_handler.php
@@ -269,7 +299,11 @@ Categories: Kategorien
 Category Name: Name der Kategorie
 Remove Icon: Icon entfernen
 Add Icon to Category: Icon f&uuml;r Kategorie hinzuf&uuml;gen
+GIF or PNG 6kb max: GIF oder PNG max. 6KB
+Search for existing icons...: Suche nach vorhandenen Symbolen...
 Make New Category: Neue Kategorie erstellen
+Current Icons: Aktuelle Symbole
+Close: Schließen
 
 ########################################
 # Page: events_ajax.php
@@ -282,6 +316,7 @@ Unknown error.: Unbekannter Fehler
 # Page: layers_ajax.php
 #
 Unable to update preference: Aktualisierung der Voreinstellung nicht m&ouml;glich
+Unsupported action: Nicht unterstützte Aktion
 You cannot create a layer for yourself.: Sie k&ouml;nnen sich selbst NICHT als Layer hinzuf&uuml;gen.
 You can only create one layer for each user.: Sie k&ouml;nnen nur jeweils EINEN Benutzer pro Layer hinzuf&uuml;gen.
 
@@ -412,9 +447,17 @@ No users for this view.: Keine g&uuml;ltigen Benutzer f&uuml;r diese Ansicht
 ########################################
 # Page: groups.php
 #
+Are you sure you want to delete this group?: Sind Sie sicher, dass Sie diese Gruppe löschen möchten?
+Group Name cannot be blank.: Gruppenname darf nicht leer sein.
+You must selected one or more users.: Sie müssen eine oder mehrere Benutzer auswählen.
 Group name: Benutzergruppenname
 Add Group: Benutzergruppe hinzuf&uuml;gen
+New group name: Neuer Gruppenname
+Delete Group: Gruppe löschen
 Edit Group: Benutzergruppe &auml;ndern
+Group successfully added.: Gruppe erfolgreich hinzugefügt.
+Group successfully updated.: Gruppe erfolgreich aktualisiert.
+Group successfully deleted.: Gruppe erfolgreich gelöscht.
 
 ########################################
 # Page: help_layers.php
@@ -466,8 +509,10 @@ Upload file: Upload Datei
 # Page: login.php
 #
 Fatal Error: Fataler Fehler
+Invalid form request: Ungültige Formularanfrage
 You have been logged out.: Sie haben sich abgemeldet.
 Illegal characters in login XXX.: Ung&uuml;ltige Zeichen im Login XXX.
+You must provide a password.: Sie müssen ein Passwort angeben.
 Invalid login: Benutzername oder Kennwort falsch
 Activity login failure: Benutzername: &#34;XXX&#34;, IP: &#34;YYY&#34;.
 Submit: Senden
@@ -478,6 +523,7 @@ Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie
 # Page: pref.php
 #
 Invalid setting name XXX.: Ung&uuml;ltiger Einstellungsname XXX.
+Preferences reset to system defaults.: Voreinstellungen auf Systemstandard zurückgesetzt.
 Document background: Hintergrund
 Document title: Titel
 Document text: Textfarbe der Webkalenderseiten
@@ -494,8 +540,11 @@ Week number color: Farbe f&uuml;r Wochennummer
 Event popup background: Hintergrundfarbe Termin-PopUp
 Event popup text: Textfarbe Termin-PopUp
 Preferences: Voreinstellungen
+Are you sure you want to reset preferences for XXX?: Möchten Sie wirklich die Voreinstellungen für XXX zurücksetzen?
 Save Preferences: Voreinstellungen speichern
+Reset Preferences: Voreinstellungen zurücksetzen
 Public Access calendar: &Ouml;ffentlicher Kalender
+Manage Preferences for Resource, Remote and Public Calendars: Voreinstellungen für Ressourcen, remote und öffentliche Kalender verwalten
 Return to My Preferences: Zur&uuml;ck zu meinen Einstellungen
 Settings: Einstellungen
 Email: =
@@ -511,6 +560,8 @@ Timezone Selection: Auswahl der Zeitzone
 date-format-help: Legt ein spezielles Datumsformat fest.
 Date format: Datumsformat
 Small Task Date: Kleines Datumsformat f&uuml;r Aufgaben
+preferred-event-visibility: Standardvisibilität für neue Ereignisse
+Default Visibility: Standard-Sichtbarkeit
 time-format-help: Gibt an welches Zeit-Format benutzt wird - 12-st&uuml;ndiges - Zeigt Zeiten als 3am, 8:30pm, etc. 24-st&uuml;ndiges - Zeigt Zeiten als 3:00, 20:30, etc.
 Time format: Zeit-Format
 12 hour: 12-st&uuml;ndig
@@ -615,6 +666,7 @@ custom-header-help: Erm&ouml;glicht benutzerdefinierte HTML-Abschnitte am ANFANG
 Custom header: Benutzerdefinierte Kopfzeile
 custom-trailer-help: Erm&ouml;glicht benutzerdefinierte HTML-Abschnitte am ENDE jeder Seite.
 Custom trailer: Benutzerdefinierte Fu&szlig;zeile
+Reset Colors: 'Farben zurücksetzen' 
 
 ########################################
 # Page: help_admin.php
@@ -723,10 +775,18 @@ Bottom: Unten
 Top: Oben
 Anyone: Jeder
 Participant: Benutzer
+Resource Calendars: Ressourcen-Kalender
 System options: Systemeinstellungen
 Title: Webkalender
 Translated Name (XXX): &Uuml;bersetzter Name (XXX)
+Site security: Sitesicherheit
+Content Security Policy: Inhalts Sicherheits Politik
+No site can frame the content: Keine Seite kann den Inhalt einrahmen.
+The same site can frame the content: Die gleiche Seite kann den Inhalt einrahmen.
+Any site can frame the content: Jede Seite kann den Inhalt einrahmen.
+View explanation at OWASP: Erklärung auf OWASP ansehen.
 enable-external-header-help: Erlaubt das hochladen von einer externen Datei f&uuml;r eine benutzerdefinierte Fu&szlig;zeile
+Use Cross-Site Request Forgery Protection: Cross-Site Request Forgery Schutz nutzen.
 Site customization: Benutzerdefinierte Seiteneinstellungen
 Allow external file for header/script/trailer: Externe Datei f&uuml;r Kopfzeile&#47;Script&#47;Fu&szlig;zeile
 Allow user to override header/trailer: Benutzer d&uuml;rfen Kopf- und Fu&szlig;zeilen &uuml;berschreiben
@@ -762,6 +822,10 @@ public-access-captcha-help: Falls aktiv, erfordern neue Termine des &ouml;ffentl
 Require CAPTCHA validation for public access new events: CAPTCHA-&Uuml;berpr&uuml;fung f&uuml;r neue Termine des &ouml;ffentlichen Kalenders aktivieren
 uac-enabled-help: Aktiviert die Zugriffskontrolle f&uuml;r den Benutzer
 User Access Control enabled: Zugriffskontrolle f&uuml;r Benutzer aktivieren
+resource-enabled-help: Sofern aktiviert, haben Administratoren die Option, Ressourcenkalender hinzuzufügen
+Resource Calendars enabled: Ressourcenkalender aktiviert
+resource-list-help: Wo sollen die Ressourcenkalender in der Teilnehmerliste angezeigt werden?
+Display in participants list at: Angezeigt in Teilnehmerliste bei
 Upcoming Events: Demn&auml;chst anstehende Termine
 upcoming-events-help: Aktiviere upcoming.php
 Enabled: Aktiv
@@ -797,6 +861,8 @@ email-smtp-host: Hostname(n) des(r) SMTP-Server(s) getrennt durch Kommas
 SMTP Host name(s): SMTP Hostname(n)
 email-smtp-port: SMTP Portnummer (normal 25)
 SMTP Port Number: SMTP Portnummer
+email-smtp-tls: TLS verwenden, um die SMTP-Verbindung zu sichern
+Use STARTTLS: Sollte STARTTLS für SMTP zum Wechsel zu einer verschlüsselten Verbindung aktiviert werden?
 email-smtp-auth: SMTP Authentisierung verwenden
 SMTP Authentication: SMTP Authentisierung
 email-smtp-username: SMTP Benutzername (wenn Authentisierung verwendet wird)
@@ -824,6 +890,7 @@ About WebCalendar: &Uuml;ber Webkalender
 #
 Report Bug: Fehlermeldung
 Please include all the information below when reporting a bug.: Wenn Sie einen Fehler melden wollen, f&uuml;gen Sie die unten aufgef&uuml;hrten Informationen bei.
+Also, please use English rather than: 'Bitte benutzen Sie auch Englisch anstelle von...' 
 Also, please use English rather than XXX.: Bitte verwenden Sie <b>Englisch</b> anstatt XXX.
 
 ########################################
@@ -890,8 +957,10 @@ consider enabling UAC: Vielleicht m&ouml;chten Sie die &#39;Zugriffskontrolle&#3
 recommend approving new public events: Wir empfehlen, dass alle &ouml;ffentlichen Eintr&auml;ge genehmigt werden.
 recommend using CAPTCHA: Es wird CAPTCHA empfohlen, zum Schutz gegen automatisierende eingegebende Eintr&auml;ge (SPAM).
 Database cache directory location: Ort des Datenbank-Cache-Verzeichnis
+db cache should be inaccessible: Der Datenbankspeicher sollte sich in einem Verzeichnis befinden, auf das nicht mit einer URL zugegriffen werden kann.
 PHP Settings XXX: PHP Einstellungen: "XXX"
 recommend setting XXX Off: Die empfohlene Einstellung f&uuml;r "XXX" ist <b>Aus (Off)</b>.
+recommend setting XXX On: Empfehlung: XXX einstellen
 recommend setting allow_url_fopen Off: Die empfohlene Einstellung f&uuml;r "<b>allow_url_fopen</b>" ist <b>Aus (Off)</b>, wenn die Option Remote-Kalender (externe andere Kalender) deaktiviert ist.
 
 ########################################
@@ -926,6 +995,21 @@ System Log: System Protokoll
 Public Preferences: Voreinstellungen &Ouml;ffentl. Zugang
 Unapproved Public Events: Unbest&auml;tigte &Ouml;ffentl. Termine
 Administrative Tools: Administrative Werkzeuge
+
+########################################
+# Page: resourcecal_mgmt.php
+#
+Are you sure you want to delete this resource calendar?: Sind Sie sicher, dass Sie diesen Ressourcenkalender löschen möchten?
+This will remove all events for this resource calendar.: Dies wird alle Ereignisse für diesen Ressourcenkalender entfernen.
+Unique Calendar ID for resource calendar: Eindeutiger Kalender-ID für Ressourcenkalender
+Admin of this resource calendar: Admin dieses Ressourcenkalenders
+Enabling allows this resource calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.: Wenn es aktiviert ist, kann dieser Ressourcenkalender als öffentlicher Kalender verwendet und ein direkter Link dazu beim Anmelden angezeigt werden.
+Number of events currently in the resource calendar: Anzahl der derzeit im Ressourcenkalender enthaltenen Ereignisse
+Add Resource Calendar: Ressourcenkalender hinzufügen
+Delete Resource Calendar: Ressourcenkalender löschen
+Resource Calendar successfully added.: Ressourcenkalender erfolgreich hinzugefügt.
+Resource Calendar successfully updated.: Ressourcenkalender erfolgreich aktualisiert.
+Resource calendar successfully deleted.: Ressourcenkalender erfolgreich gelöscht.
 
 ########################################
 # Page: upcoming.php
@@ -1072,6 +1156,7 @@ Administrator: =
 Welcome: Willkommen
 New user via email.: Neuer Benutzer via Email.
 You have not entered a password.: Sie haben kein Kennwort eingegeben.
+Email cannot be blank.: E-Mail darf nicht leer sein.
 Registration: Registrierung
 Welcome to WebCalendar: Willkommen beim Webkalender
 Your email should arrive shortly.: Ihre Email sollte in k&uuml;rze eintreffen.
@@ -1115,7 +1200,9 @@ The import file contained no data.: Die importierte Datei enthielt keine Daten
 ########################################
 # Page: category_handler.php
 #
+Category name is required: Kategoriename ist erforderlich
 File size exceeds maximum.: Dateigr&ouml;&szlig;e &uuml;bersteigt Maximum
+File is not a GIF or PNG image: Datei ist keine GIF- oder PNG-Bilddatei
 
 ########################################
 # Page: icons.php
@@ -1131,7 +1218,12 @@ export format not defined or incorrect.: Exportiertes Format nicht definiert ode
 # Page: users_ajax.php
 #
 Deleting users not supported.: L&ouml;schen der Benutzer nicht unterst&uuml;tzt.
+Invalid first name.: : Ungültiger Vorname.
+Invalid last name.: Ungültiger Nachname.
 Set Password: Setze Kennwort
+events added: Ereignisse hinzugefügt
+events deleted: Ereignisse gelöscht
+Calendar ID already in use: Kalender-ID bereits verwendet
 
 ########################################
 # Page: help_import.php
@@ -1152,10 +1244,17 @@ will cause events imported previously...: bewirkt, da&szlig; vorige <b>&#34;impo
 # Page: user_mgmt.php
 #
 Are you sure you want to delete this user?: Sind Sie sicher, da&szlig; Sie diesen Benuter l&ouml;schen wollen?
+This will delete all events for this user.: Dies löscht alle Ereignisse für diesen Benutzer.
+Invalid email address: Ungültige E-Mail-Adresse
 Add User: Benutzer hinzuf&uuml;gen
+New username: Neuer Benutzername
 Change Password: Kennwort &auml;ndern
 Delete User: Teilnehmer l&ouml;schen
 Edit User: Benutzer &auml;ndern
+User successfully added.: Benutzer erfolgreich hinzugefügt.
+User successfully updated.: Benutzer erfolgreich aktualisiert.
+Password successfully updated.: Passwort erfolgreich aktualisiert.
+User successfully deleted.: Benutzer erfolgreich gelöscht.
 
 ########################################
 # Page: week_details.php
@@ -1202,6 +1301,7 @@ Next 365 days: N&auml;chsten 365 Tage
 Invalid report id XXX.: Ung&uuml;tige Bericht ID XXX.
 Add Report: Bericht hinzuf&uuml;gen
 Edit Report: Bericht editieren
+Report Name: Berichtsname
 Current User: Aktueller Benutzer
 Include link in menu: Inklusive Link im Men&uuml;
 Include standard header/trailer: Inklusive Standard-Kopf&#47;Navigationsleiste
@@ -1219,13 +1319,9 @@ email-boss-notifications-help: Legt fest ob Chefs Terminbenachrichtigungen als E
 boss-approve-event-help: Legt fest ob der Chef die eingetragenen Termine des Assistenten best&auml;tigen (genehmigen) mu&szlig;
 
 ########################################
-# Page: tools/send_test_email.php
-#
-Error connecting to database: Datenbank Verbindungsfehler
-
-########################################
 # Page: tools/reload_remotes.php
 #
+Error connecting to database: Datenbank Verbindungsfehler
 Include Path: Include Pfad
 No Remote Calendars found: Kein &#39;Externer&#39;-Kalender (Remote) gefunden
 Remote Calendars not enabled: &#39;Externer&#39;-Kalender (Remote) nicht aktiv
@@ -1352,6 +1448,7 @@ invalid db_type XXX: Ung&uuml;ltiger db_type XXX
 Cache cleared from previous SQL!: Cache wird von voriger SQL geleert!
 Error executing query.: Fehler beim Ausf&uuml;hren des Query
 Unfortunately, XXX is not implemented for YYY: Ungew&ouml;hnlich, &#34;XXX&#34; ist nicht (f&uuml;r YYY) implementiert.
+Unsupported db_type.: Nicht unterstützter db_type.
 Unknown ODBC error.: Unbekannter ODBC Fehler
 Error opening cache dir XXX.: Fehler beim &Ouml;ffnen des Cache-Verzeichnisses &#34;XXX&#34;.
 delete: l&ouml;schen
@@ -1392,6 +1489,7 @@ Event rejected: Termin abgelehnt
 Journal rejected: Journal abgelehnt
 Task rejected: Aufgabe abgelehnt
 Reminder sent: Erinnerung gesendet
+System Message: Systemmeldung
 Event updated: Termin aktualisiert
 Journal updated: Journal aktualisiert
 Task updated: Aufgabe aktualisiert
@@ -1468,6 +1566,7 @@ Thu: Do
 Fri: Fr
 Sat: Sa
 unknown-weekday: unbekannter Wochentag
+The permissions for the icons directory are set to read-only: Die Berechtigungen für das Icon-Verzeichnis sind auf Nur-Lesen festgelegt
 
 ########################################
 # Page: includes/user.php
@@ -1559,9 +1658,13 @@ This Year: Aktuelles Jahr
 Add New Event: Neuen Termin hinzuf&uuml;gen
 Delete Entries: Eintr&auml;ge l&ouml;schen (endg&uuml;ltig)
 My Views: Meine Ansichten
+Unnamed: Nameless
 Manage Calendar of: Kalender verwalten von
 My Reports: Meine Berichte
+Your Settings: Ihre Einstellungen
 My Profile: Mein Profil
+Admin Settings: Admin-Einstellungen
+Settings for: Einstellungen für
 Public Calendar: &Ouml;ffentlicher Kalender
 Unapproved Events: Unbest&auml;tigte Termine
 Help Contents: Hilfe Inhaltsverzeichnis
@@ -1593,6 +1696,7 @@ You have not entered a valid time of day: Sie haben keine g&uuml;ltige Zeit f&uu
 ########################################
 # Page: includes/js/import.php
 #
+You must select a file to import: "Sie müssen eine Datei zum Importieren auswählen" 
 File type does not match Import Format: Dateityp passt nicht mit dem Import-Format &uuml;berein
 
 ########################################
@@ -1654,39 +1758,166 @@ provide_address: Sie m&uuml;ssen mindestens eine Emailadresse als Empf&auml;nger
 recipients_failed: SMTP Fehler - Die (der) folgende(n) Empf&auml;nger sind (ist) ung&uuml;tig
 
 ########################################
-# Page: install2/install_page1.php
+# Page: install/install_adminuser.php
 #
-This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
-PHP Version Check: PHP Versions&uuml;berpr&uuml;fung
-PHP version: PHP Version
+Your have XXX admin accounts.: Sie haben XXX Admin-Konten.
+Create Default Admin User: Erstelle Standard-Admin-Benutzer
 
 ########################################
 # Page: install/index.php
 #
+PHP Version: PHP-Version
+GD Module: GD-Modul
+Installed: Installiert
+Not found: Nicht gefunden
+GD module required for gradient background colors: Für farbige Hintergründe ist das GD-Modul erforderlich
+Allow File Uploads: Dateiuploads erlauben
+File uploads are required to upload category icons: Dateiuploads sind erforderlich, um Kategorieiconen hochzuladen
 Allow URL fopen: Allow URL fopen (nur erforderlich wenn Externe-Kalender(Remote-Kalender) verwendet werden)
+Remote URL fopen is required to load remote calendars: Für das Laden von entfernten Kalendern ist fopen URL erforderlich
 Safe Mode: =
+Safe Mode needs to be disabled to allow setting env variables to specify the timezone: Der Safe Mode muss deaktiviert werden, um Umgebungsvariablen zum Festlegen der Zeitzone zu ermöglichen.
+Connection not yet configured: Verbindung noch nicht konfiguriert
+Your form post was either missing a required session token or timed out.: Ihr Formular-Post fehlte entweder ein erforderlicher Sitzungstoken oder hatte eine Zeitüberschreitung.
+Environment variables: Umgebungsvariablen
+Info: Informationen
+
+########################################
+# Page: install/install_dbtables.php
+#
+Upgrade Database: Datenbank aktualisieren
+Your XXX database named 'YYY' is up to date.  You may go on to the next step.: Ihre XXX Datenbank mit dem Namen 'YYY' ist auf dem neuesten Stand. Sie können mit dem nächsten Schritt fortfahren.
+Your XXX database named 'YYY' is empty and needs tables created.: Ihre XXX Datenbank mit dem Namen 'YYY' ist leer und benötigt Tabellen, die erstellt werden müssen.
+Create Database Tables: Erstelle Datenbank-Tabellen
+Your XXX database named 'YYY' needs upgrading from version ZZZ.: Ihre XXX Datenbank mit dem Namen 'YYY' muss von der Version ZZZ aktualisiert werden.
+Display SQL: SQL anzeigen
+Upgrade SQL Commands: 'SQL-Befehle aktualisieren' 
+Copy: 'Kopieren' 
+SQL content copied to clipboard: 'SQL-Inhalt in Zwischenablage kopiert' 
+
+########################################
+# Page: install/headless.php
+#
+Unable to determine current database version.: Kann die aktuelle Datenbankversion nicht bestimmen.
+Database successfully migrated from XXX to YYY: Datenbank erfolgreich von XXX auf YYY migriert.
 
 ########################################
 # Page: install/install_appsettings.php
 #
+When choosing XXX, changes will need to be made to the file auth-settings.php before user authentication will work properly.: Bei der Wahl von XXX müssen Änderungen an der Datei auth-settings.php vorgenommen werden, bevor die Benutzerauthentifizierung ordnungsgemäß funktioniert.
+You are using environment variables for your settings and must make changes externally.: Sie verwenden Umgebungsvariablen für Ihre Einstellungen und müssen Änderungen extern vornehmen.
+You cannot continue until you set the proper environment variables.: Sie können nicht fortfahren, bis Sie die richtigen Umgebungsvariablen eingestellt haben.
+Specify how users will be prompted for username and password.: Geben Sie an, wie Benutzer nach Benutzername und Passwort aufgefordert werden.
 User Authentication: Benutzer Authentisierung
 Web-based via WebCalendar (default): Webbasierend via Webkalender (Grundeinstellung)
 Web Server (not detected): Webserver (nicht erkannt)
 Web Server (detected): Webserver (erkannt)
+Single-User Mode: 'Einzelbenutzermodus'.
+Specify where the user login and password will be verified against.  If an option is disabled, the required PHP module was not found.: Geben Sie an, wo der Benutzernamen und das Passwort verifiziert werden sollen. Wenn eine Option deaktiviert ist, wurde das erforderliche PHP-Modul nicht gefunden.
+User Database: Benutzerdatenbank
+WebCalendar User Database (default): WebCalendar Benutzerdatenbank (Standard)
+Enter login for single user mode.: Geben Sie den Anmeldenamen für den Einzelbenutzermodus ein.
+Single User Login: Anmeldung für Einzelbenutzer
+Set calendar to readonly mode. Default is false.: Stellen Sie den Kalender auf schreibgeschützten Modus. Standard ist falsch.
 Read-Only: Nur Lesen
+Mode selection (Production or Development). Default is Production. Development mode will enable verbose errors in the browser.: Auswahlmodus (Produktion oder Entwicklung). Standard ist Produktion. Im Entwicklungsmodus werden ausführliche Fehler im Browser angezeigt.
+Run Environment: Laufumgebung
+
+########################################
+# Page: install/install_auth.php
+#
+If your installation is accessible to anyone untrusted, you should secure the installation pages by restricting access. The easiest way to do this is by providing a passphrase.: Wenn auf Ihre Installation nicht vertrauenswürdige Personen zugreifen können, sollten die Installationsseiten durch Einschränken des Zugriffs gesichert werden. Der einfachste Weg dazu ist das Bereitstellen eines Passworts.
+Once the installation is complete, you will need not this passphrase again until you want to upgrade your installation. Please take note of your password because there is no way to recover it.: Sobald die Installation abgeschlossen ist, werden Sie das Passwort nicht wieder benötigen, bis Sie Ihre Installation upgraden möchten. Bitte notieren Sie sich Ihr Passwort, da es keine Möglichkeit gibt, es wiederherzustellen.
+This password hint will be provided when the you login at a later time.: Dieser Kennwort-Hinweis wird Ihnen zur Verfügung gestellt, wenn Sie sich später anmelden.
+Enter a hint to remember your password: Geben Sie einen Hinweis ein, um Ihr Kennwort zu merken.
+This passphrase was provided during the initial installation.: Dieses Passwort wurde während der ursprünglichen Installation bereitgestellt.
+Enter your passphrase: Geben Sie Ihr Passwort ein.
+Enter your passphrase again: Geben Sie Ihr Passwort erneut ein.
+This password hint was provided when the password was set.: Dieser Passwort-Hinweis wurde bereitgestellt, als das Passwort eingegeben wurde. 
+Password hint: Passwort-Hinweis
+Installation passphrase: Installation Passwort
 
 ########################################
 # Page: install/install_finish.php
 #
+Install/Upgrade process is now complete.: Installations-/Upgrade-Vorgang jetzt abgeschlossen.
 Launch WebCalendar: Webkalender starten
+
+########################################
+# Page: install/install_createdb.php
+#
+Your XXX database named 'YYY' exists.  You may go on to the next step.: Ihre XXX-Datenbank mit dem Namen "YYY" existiert. Sie können jetzt zum nächsten Schritt übergehen.
+Your XXX database named 'YYY' does not exist yet.: Ihre XXX-Datenbank mit dem Namen 'YYY' existiert noch nicht.
+Create Database: Erstelle Datenbank
+
+########################################
+# Page: install/install_auth_handler.php
+#
+Your passwords must match.: Ihre Passwörter müssen übereinstimmen.
+Install password saved.  Login with password to continue.: Installationspasswort gespeichert. Melden Sie sich mit dem Passwort an, um fortzufahren.
+Successful login: Erfolgreiche Anmeldung
+Invalid passphrase.: Ungültiger Passphrase.
 
 ########################################
 # Page: install/install_dbsettings.php
 #
+Because environment variables are being used to configure WebCalendar, you cannot alter the settings on this page.  You must do this externally.: Da Umgebungsvariablen verwendet werden, um WebCalendar zu konfigurieren, können Sie die Einstellungen auf dieser Seite nicht ändern. Sie müssen dies extern tun.
+Database Server: Datenbankserver
+Database Login: Datenbankanmeldung
+Database Password: Datenbankpasswort
+Database Cache Directory (Optional): Cache-Verzeichnis der Datenbank (optional) 
+Database Debugging: Datenbank-Debugging 
+Disabled (recommended): Deaktiviert (empfohlen) 
+Test Connection: Verbindung testen 
 Save Settings: Einstellung speichern
+Successful database connection: Erfolgreiche Datenbankverbindung 
+Failed to connect to the database. Please check your settings.: Verbindung zur Datenbank fehlgeschlagen. Bitte überprüfen Sie Ihre Einstellungen.
+SQLite3 File Path: SQLite3-Dateipfad
+
+########################################
+# Page: install/install_adminuser_handler.php
+#
+Default admin account created with login "admin" and password "admin".: Standardadministratorkonto erstellt mit dem Login "Admin" und dem Passwort "Admin".
+
+########################################
+# Page: install/install_appsettings_handler.php
+#
+Unknown error: Unbekannter Fehler
+Invalid Application Settings: Ungültige Anwendungseinstellungen
 
 ########################################
 # Page: install/install_functions.php
 #
 Error updating table XXX: Fehler beim Aktualisieren der Tabelle XXX
 Conversion Successful: <b>Konvertierung Erfolgreich</b>
+
+########################################
+# Page: install/install_welcome.php
+#
+Your WebCalendar database is configured and current with the installed version of WebCalendar.: Ihre WebCalendar-Datenbank ist konfiguriert und auf dem aktuellen Stand mit der installierten Version von WebCalendar.
+You can use these pages to change your settings and to re-add the default admin user.: Sie können diese Seiten nutzen, um Ihre Einstellungen zu ändern und den Standard-Admin-Benutzer erneut hinzuzufügen.
+You can re-add the default admin user.: Sie können den Standard-Admin-Benutzer erneut hinzufügen.
+This wizard will guide you through the XXX process.: Dieser Assistent wird Sie durch den XXX-Prozess führen.
+
+########################################
+# Page: install/install_phpsettings.php
+#
+Setting Description: Einstellungsbeschreibung
+Required Setting: Erforderliche Einstellung
+Current Setting: Aktuelle Einstellung
+Correct: Korrekt
+Incorrect: Falsch
+Detailed PHP Info: Detaillierte PHP-Info
+Some WebCalendar function may be limited.  Are you sure?: Einige Funktionen von WebCalendar können begrenzt sein. Bist du sicher?
+Acknowledge: Bestätigen
+PHP Info: PHP-Info
+
+########################################
+# Page: install/install_dbtables_handler.php
+#
+Database tables successfully created: Datenbanktabellen erfolgreich erstellt
+
+########################################
+# Page: install/install_ajax.php
+#
+Invalid test connection request: Ungültige Testverbindungsanfrage

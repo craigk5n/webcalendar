@@ -232,7 +232,7 @@ Global Categories cannot be changed.: Les cat�gories globales ne peuvent pas �tr
 ########################################
 # Page: remotecal_mgmt.php
 #
-You PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.: Votre paramètre PHP pour allow_url_fopen ne permettra pas le chargement d'un calendrier distant.
+Your PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.: Votre paramètre PHP pour allow_url_fopen ne permettra pas le chargement d'un calendrier distant.
 Are you sure you want to delete this remote calendar?: Êtes-vous sûr de vouloir supprimer ce calendrier distant ?
 This will remove all events for this remote calendar.: Ceci va supprimer tous les événements pour ce calendrier distant.
 This action cannot be undone.: Cette action ne peut pas être annulée.
