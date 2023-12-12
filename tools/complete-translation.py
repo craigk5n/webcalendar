@@ -2,11 +2,17 @@
 # You must set the OPENAI_API_KEY environment variable with a valid OpenAI API key.
 # Usage:
 #   python3 German_utf8 > ../translations/German_utf8.txt
-# Then use:
+# Then use the following to properly order/arrange the translation file:
 #   perl update_translation.pl German_utf8
+# Notes:
+#  - This has only been tested on UTF-8.
+#  - Translations are mostly correct, but some have extra quotes at the start
+#    or end.  So you must proof-read the results.
 #
 # TODO: This does not yet properly handle the translations that are abbreviations
 # in the English-US.txt file (e.g. "brief-description-help").
+# In the short term, you can find these translations as comments in the translation
+# file (before running the above perl command which will remove them.)
 import sys
 import os
 import openai
