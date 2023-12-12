@@ -840,7 +840,7 @@ Display in participants list at: Display in participants list at
 Upcoming Events: Upcoming Events
 upcoming-events-help: Enable upcoming.php
 Enabled: Enabled
-upcoming-events-allow-override: Allow user paramter for upcoming.php
+upcoming-events-allow-override: Allow user parameter for upcoming.php
 Allow user override: Allow user override
 upcoming-events-display-caticons: Include category icons in upcoming.php
 Display category icons: Display category icons
