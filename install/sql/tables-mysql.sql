@@ -420,8 +420,8 @@ CREATE TABLE webcal_categories (
   /* unique category id */
   cat_id INT NOT NULL,
   /* user login of category owner. */
-  /* If this is NULL, then it is a global category */
-  cat_owner VARCHAR(25) NULL,
+  /* If this is empty, then it is a global category */
+  cat_owner VARCHAR(25) DEFAULT '' NOT NULL,
   /* category name */
   cat_name VARCHAR(80) NOT NULL,
   /* RGB color for category */

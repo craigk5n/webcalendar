@@ -257,7 +257,7 @@ if ( $debug )
 function send_reminder ( $id, $event_date ) {
   global $ALLOW_EXTERNAL_USERS, $attachics, $debug, $def_tz, $emails,
   $EXTERNAL_REMINDERS, $htmlmail, $ignore_user_case, $is_task, $LANGUAGE,
-  $languages, $names, $only_testing, $SERVER_URL, $site_extras, $tz, $t_format;
+  $languages, $names, $only_testing, $site_extras, $tz, $t_format;
 
   $ext_participants = $participants = [];
   $num_ext_participants = $num_participants = 0;
@@ -319,7 +319,7 @@ function send_reminder ( $id, $event_date ) {
   // Send mail. We send one user at a time so that we can switch
   // languages between users if needed (as well as HTML vs plain text).
   $mailusers = $recipients = [];
-  if ( isset ( $single_user ) && $single_user == 'Y' ) {
+  if ( isset ( $single_user ) && $single_user == 'Y' && !empty($single_user_login)) {
     $mailusers[] = $emails[$single_user_login];
     $recipients[] = $single_user_login;
   } else {
@@ -384,11 +384,9 @@ function send_reminder ( $id, $event_date ) {
     $name = $row[9];
     $description = $row[10];
 
-    // Add trailing '/' if not found in server_url.
     // Don't include link for External users.
-    if ( ! empty ( $SERVER_URL ) && ! $isExt ) {
-      $eventURL = $SERVER_URL
-       . ( substr ( $SERVER_URL, -1, 1 ) == '/' ? '' : '/' )
+    if ( ! $isExt ) {
+      $eventURL = getServerUrl() 
        . 'view_entry.php?id=' . $id . '&em=1';
 
       if ( $useHtml == 'Y' )

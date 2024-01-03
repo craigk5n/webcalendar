@@ -14,6 +14,7 @@ require_once 'includes/gradient.php';
 require_once 'includes/validate.php';
 
 load_global_settings();
+session_name(getSessionName());
 @session_start();
 $empTmp = ( ! empty( $_SESSION['webcal_tmp_login'] ) );
 

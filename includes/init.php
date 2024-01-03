@@ -130,6 +130,13 @@ function send_http_headers () {
   // to restrict all content to one server, but it's blocking more than it should.
   //Header("Content-Security-Policy: default-src " . get_server_top_url() .
   //  "; img-src *; style-src *");
+
+  // Set charset to match what is defined in translation file's "charset" definition.
+  $charset = translate('charset');
+  if ($charset == '=') {
+    $charset = 'UTF-8'; // default
+  }
+  header('Content-Type: text/html; charset=' . $charset);
 }
 
 /**

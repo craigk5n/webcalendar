@@ -40,16 +40,17 @@ require_once 'sql/upgrade_matrix.php';
 
 $debugInstaller = false; // Set to true to get more details on the installer pages (but breaks redirects)
 $includeLogoutButton = false; // Can be helpful testing installer
+$sessionName = 'WebCalendar-Install-' . __DIR__;
 
 if ($debugInstaller && isset($_GET['action']) && $_GET['action'] == 'logout') {
-    session_name('WebCalendar-Install-' . __DIR__);
+    session_name($sessionName);
     session_start();
     session_destroy();
 }
 
 do_config(true);
 ini_set('session.cookie_lifetime', 3600);  // 3600 seconds = 1 hour
-session_name('WebCalendar-Install-' . __DIR__);
+session_name($sessionName);
 session_start();
 if (empty($_SESSION['initialized'])) {
     // New session.  Load the current settings found in either env vars or includes/settings.php
@@ -255,6 +256,10 @@ if (!$canConnectDb) {
     } else {
         $connectError = dbi_error();
     }
+}
+if (!empty($_GET['action']) && $_GET['action'] == "phpinfo") {
+    phpinfo ();
+    exit;
 }
 $emptyDatabase = $canConnectDb ?  isEmptyDatabase() : true;
 $unsavedDbSettings = !empty($_SESSION['unsavedDbSettings']); // Keep track if Db settings were modified by not yet saved

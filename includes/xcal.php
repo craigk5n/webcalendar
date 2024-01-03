@@ -92,7 +92,7 @@ function wc_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
       if ( strcmp( $encoding, 'quotedprintable' ) == 0 )
         $enc = export_quoted_printable_encode( $string[$i] );
       else if ( strcmp( $encoding, 'utf8' ) == 0 )
-        $enc = utf8_encode ( $string[$i] );
+        $enc = mb_convert_encoding($string[$i], 'UTF-8', mb_detect_encoding($string[$i]));
     }
     if ( $string[$i] == ':' )
       $start_encode = 1;
@@ -219,12 +219,15 @@ function export_get_attendee( $id, $export ) {
         // Use "Full Name <email>" if we have it,
         // Just "login" if that's all we have.
         $attendee[$count] .= ';CN="'
-         . ( empty( $user['cal_firstname'] ) && empty( $user['cal_lastname'] )
-           ? $user['cal_login']
-           : utf8_encode( $user['cal_firstname'] ) . ' '
-             . utf8_encode( $user['cal_lastname'] ) ) . '"'
-         . ':MAILTO:' . ( empty( $user['cal_email'] )
-           ? $EMAIL_FALLBACK_FROM : $user['cal_email'] );
+        . (empty($user['cal_firstname']) && empty($user['cal_lastname'])
+          ? $user['cal_login']
+          : mb_convert_encoding($user['cal_firstname'], 'UTF-8', mb_detect_encoding($user['cal_firstname'])) . ' '
+          . mb_convert_encoding($user['cal_lastname'], 'UTF-8', mb_detect_encoding($user['cal_lastname']))) . '"';
+        if (!empty($user['cal_email'])) {
+          $attendee[$count] .= ':MAILTO:' . $user['cal_email'];
+        } else if (strpos('@', $EMAIL_FALLBACK_FROM) > 0) {
+          $attendee[$count] .= ':MAILTO:' . $EMAIL_FALLBACK_FROM;
+        }
       }
       $count++;
     } //end if ( count ( $user ) > 0 )
@@ -739,15 +742,18 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
   return $res;
 } //end function export_get_event_entry($id)
 function generate_uid ( $id = '' ) {
-  global $login, $SERVER_URL;
+  global $login;
 
-  $uid = $SERVER_URL;
+  $uid = getServerUrl();
   if ( empty ( $uid ) )
     $uid = 'UNCONFIGURED-WEBCALENDAR';
-  $uid = str_replace ( 'http://', ' ', $uid );
+  $uid = str_replace ( 'http://', '', $uid );
+  $uid = str_replace ( 'https://', '', $uid );
+  $uid = str_replace ( ':', '-', $uid );
   $uid .= sprintf ( "-%s-%010d", $login, $id );
-  $uid = preg_replace ( "/[\s\/\.-]+/", '-', $uid );
+  $uid = preg_replace ( "/[\/-]+/", '-', $uid );
   $uid = strtoupper ( $uid );
+
   return $uid;
 }
 // Add entries in the webcal_import and webcal_import_data tables.
@@ -944,8 +950,12 @@ function export_ical ( $id = 'all', $attachment = false ) {
   // Always output something, even if no records come back
   // This prevents errors on the iCal client
   $ret = "BEGIN:VCALENDAR\r\n";
-  $title = utf8_encode ( 'X-WR-CALNAME;VALUE=TEXT:' .
-  ( empty ( $publish_fullname ) ? $login : translate ( $publish_fullname ) ) );
+  $title = mb_convert_encoding(
+    'X-WR-CALNAME;VALUE=TEXT:' .
+    (empty($publish_fullname) ? $login : translate($publish_fullname)),
+    'UTF-8',
+    mb_detect_encoding(empty($publish_fullname) ? $login : $publish_fullname)
+  );
   $title = str_replace ( ',', "\\,", $title );
   $ret .= "$title\r\n";
   $ret .= generate_prodid ( 'ics' );

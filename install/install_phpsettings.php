@@ -1,10 +1,10 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th><?php etranslate('Setting Description');?></th>
-      <th><?php etranslate('Required Setting');?></th>
-      <th><?php etranslate('Current Setting');?></th>
-      <th><?php etranslate('Status');?></th>
+      <th><?php etranslate('Setting Description'); ?></th>
+      <th><?php etranslate('Required Setting'); ?></th>
+      <th><?php etranslate('Current Setting'); ?></th>
+      <th><?php etranslate('Status'); ?></th>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +27,12 @@
   </tbody>
 </table>
 
+<script>
+  function testPHPInfo() {
+    $('#wcTestPHPInfo').modal('show');
+  }
+</script>
+<input name="action" type="button" class="btn btn-secondary" value="<?php etranslate('Detailed PHP Info') ?>..." onClick="testPHPInfo()" />
 <?php
 $html = '';
 $buttonLabel = translate('Next');
@@ -37,3 +43,24 @@ if (!$phpSettingsAcked && !$phpSettingsCorrect) {
 }
 printSubmitButton($action, $html, $buttonLabel);
 ?>
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="wcTestPHPInfo" tabindex="-1" role="dialog" aria-labelledby="wcTestPHPInfoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="wcTestPHPInfoLabel"><?php etranslate('PHP Info'); ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Iframe with full width and height -->
+        <iframe src="index.php?action=phpinfo" style="width: 100%; height: 500px;" frameborder="0"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php etranslate('Close'); ?></button>
+      </div>
+    </div>
+  </div>
+</div>

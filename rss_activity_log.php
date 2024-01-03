@@ -109,14 +109,14 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>
 <rss version="2.0" xml:lang="' . $lang . '">
   <channel>
     <title><![CDATA[' . $appStr . ']]></title>
-    <link>' . $SERVER_URL . '</link>
+    <link>' . getServerUrl() . '</link>
     <description><![CDATA[' . $descr . ']]></description>
     <language>' . $lang . '</language>
     <generator>WebCalendar ' . $PROGRAM_VERSION
  . '</generator>
     <image>
       <title><![CDATA[' . $appStr . ']]></title>
-      <link>' . $SERVER_URL . '</link>
+      <link>' . getServerUrl() . '</link>
       <url>http://k5n.us/k5n_small.gif</url>
     </image>' . "\n";
 
@@ -134,7 +134,7 @@ exit;
  * Generate the activity log.
 */
 function rss_activity_log ( $sys, $entries ) {
-  global $ALLOW_HTML_DESCRIPTION, $login, $SERVER_URL;
+  global $ALLOW_HTML_DESCRIPTION, $login;
 
   $sql_params = [];
 
@@ -193,7 +193,7 @@ function rss_activity_log ( $sys, $entries ) {
     $ret .=
       "<item>\n" . '  <title><![CDATA[' . $subject . ': '
       . htmlspecialchars( $l_ename ) . ']]></title>' . "\n  <link>"
-      . $SERVER_URL . 'view_entry.php?id=' . $l_eid . "</link>\n"
+      . getServerUrl() . 'view_entry.php?id=' . $l_eid . "</link>\n"
       . '  <description>';
     if ( $ALLOW_HTML_DESCRIPTION == 'Y' ) {
       $x = str_replace ( '&', '&amp;', $l_description );
@@ -206,7 +206,7 @@ function rss_activity_log ( $sys, $entries ) {
     // . '  <category><![CDATA[' . $category . ']]></category>' . "\n"
     /* RSS 2.0 date format Wed, 02 Oct 2002 13:00:00 GMT */
       . '<pubDate>' . gmdate( 'D, d M Y H:i:s', $unixtime ) . ' GMT</pubDate>'
-      . "\n" . '  <guid>' . $SERVER_URL . 'view_entry.php?id=' . $l_eid
+      . "\n" . '  <guid>' . getServerUrl() . 'view_entry.php?id=' . $l_eid
       . '&amp;friendly=1&amp;rssuser=' . $login . '&amp;date=' . $l_date
       . "</guid>\n" . "</item>\n\n";
   }

@@ -116,9 +116,9 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
   function updateDateFields () {
     var displayAll = $('#exportall')[0].checked;
     if (displayAll) {
-      $('#dateArea').show();
-    } else {
       $('#dateArea').hide();
+    } else {
+      $('#dateArea').show();
     }
   }
 

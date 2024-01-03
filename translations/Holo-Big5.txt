@@ -9,7 +9,7 @@
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
 
-# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# A lone equal sign "=" to the right of the colon, such as "Ok: =",
 # indicates that the "translation" is identical to the English text.
 
 # Specify a charset (will be sent within meta tag for each page).

@@ -84,6 +84,15 @@ EOT;
   exit;
 }
 
+/**
+ * Give the PHP session a name unique to this install, allowing multiple WebCalendar installs
+ * on the same server.
+ */
+function getSessionName()
+{
+  return 'WebCalendar-' . __DIR__;
+}
+
 function db_error($doExit = false, $sql = '')
 {
   global $settings;

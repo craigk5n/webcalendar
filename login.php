@@ -1,17 +1,4 @@
 <?php
-@session_start();
-foreach ( $_SESSION as $key => $value ) {
-  $dummy[$key] = $value; // Copy to a dummy array.
-}
-if ( ! empty ( $dummy ) ) {
-  foreach ( $dummy as $key => $value ) {
-    if ( substr ( $key, 0, 6 ) == 'webcal' )
-      unset ( $_SESSION[$key] );
-  }
-}
-// PHP 4.1.0 may have issues with the above code.
-unset ( $_SESSION['webcal_login'] );
-unset ( $_SESSION['webcalendar_session'] );
 
 require_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.php';
@@ -22,6 +9,19 @@ require_once 'includes/config.php';
 require_once 'includes/dbi4php.php';
 require_once 'includes/formvars.php';
 require_once 'includes/functions.php';
+
+session_name(getSessionName());
+@session_start();
+
+foreach ( $_SESSION as $key => $value ) {
+  $dummy[$key] = $value; // Copy to a dummy array.
+}
+if ( ! empty ( $dummy ) ) {
+  foreach ( $dummy as $key => $value ) {
+    if ( substr ( $key, 0, 6 ) == 'webcal' )
+      unset ( $_SESSION[$key] );
+  }
+}
 
 $WebCalendar->initializeFirstPhase();
 

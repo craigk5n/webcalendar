@@ -479,6 +479,10 @@ class WebCalendar {
     $SCRIPT, $session_not_found, $settings, $single_user, $single_user_login,
     $user_inc, $use_http_auth, $validate_redirect, $webcalendar_session;
 
+    // Give the PHP session a name unique to this install, allowing multiple WebCalendar installs
+    // on the same server.
+    $sessionName = 'WebCalendar-' . __DIR__;
+
     /* If WebCalendar is configured to use http authentication, then we can
      * use _initValidate(). If we are not using http auth, icalclient.php will
      * create its own http auth since an iCal client cannot login via a
@@ -553,6 +557,7 @@ class WebCalendar {
         if ( ! $login = user_logged_in() )
           $session_not_found = true;
       } else {
+        session_name(getSessionName());
         @session_start();
         if ( ! empty ( $_SESSION['webcal_login'] ) )
           $login = $_SESSION['webcal_login'];
