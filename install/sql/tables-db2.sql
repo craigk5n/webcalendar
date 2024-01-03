@@ -150,7 +150,7 @@ CREATE TABLE webcal_entry_log (
 );
 CREATE TABLE webcal_categories (
   cat_id INT NOT NULL,
-  cat_owner VARCHAR(25) NULL,
+  cat_owner VARCHAR(25) DEFAULT '' NOT NULL,
   cat_name VARCHAR(80) NOT NULL,
   cat_color VARCHAR(8),
   cat_status CHAR DEFAULT 'A',

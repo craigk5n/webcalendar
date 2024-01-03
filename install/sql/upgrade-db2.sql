@@ -81,7 +81,7 @@ CREATE TABLE webcal_entry_repeats_not (
 ALTER TABLE webcal_entry_user ADD cal_category INT DEFAULT NULL;
 CREATE TABLE webcal_categories (
   cat_id INT NOT NULL,
-  cat_owner VARCHAR(25),
+  cat_owner VARCHAR(25) NOT NULL,
   cat_name VARCHAR(80) NOT NULL,
   PRIMARY KEY ( cat_id )
 );

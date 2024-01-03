@@ -221,15 +221,11 @@ if (empty($error) && !empty($control)) {
       )
       . "\n";
 
-    // Add URL to event, if we can figure it out.
-    if (!empty($SERVER_URL)) {
-      $url = $SERVER_URL . 'login.php';
-
-      if ($htmlmail == 'Y')
-        $url = activate_urls($url);
-
-      $msg .= "\n\n" . $url;
-    }
+    // Add URL to event
+    $url = getServerUrl() . 'login.php';
+    if ($htmlmail == 'Y')
+      $url = activate_urls($url);
+    $msg .= "\n\n" . $url;
     $msg .= "\n\n"
       . translate('You may change your password after logging in the first time.')
       . "\n\n" . translate('If you received this email in error') . "\n\n";

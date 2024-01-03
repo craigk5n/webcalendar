@@ -155,7 +155,7 @@ CREATE TABLE webcal_categories (
   cat_id INT NOT NULL,
   cat_color VARCHAR2(8) NULL,
   cat_name VARCHAR2(80) NOT NULL,
-  cat_owner VARCHAR2(25),
+  cat_owner VARCHAR2(25) DEFAULT '' NOT NULL,
   cat_status CHAR DEFAULT 'A',
   cat_icon_mime VARCHAR(32) DEFAULT NULL,
   cat_icon_blob BLOB DEFAULT NULL,

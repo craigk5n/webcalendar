@@ -66,6 +66,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   global $ALLOW_EXTERNAL_USERS, $DISABLE_PARTICIPANTS_FIELD,
   $DISABLE_PRIORITY_FIELD, $EXTERNAL_REMINDERS, $SERVER_URL,
   $single_user, $single_user_login, $site_extras, $WS_DEBUG;
+  $out = '';
 
   // Get participants first...
   $res = dbi_execute ( 'SELECT cal_login, cal_status FROM webcal_entry_user
@@ -131,9 +132,9 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   $out = '
 <event>
   <id>' . $id . '</id>
-  <name>' . ws_escape_xml ( $name ) . '</name>' . ( ! empty ( $SERVER_URL ) ? '
-  <url>' . $SERVER_URL . ( substr ( $SERVER_URL, -1, 1 ) == '/' ? '' : '/' )
-     . 'view_entry.php?id=' . $id . '</url>' : '' ) . '
+  <name>' . ws_escape_xml ( $name ) . '</name>' .
+  '<url>' . getServerUrl() 
+     . 'view_entry.php?id=' . $id . '</url>' . '
   <description>' . ws_escape_xml ( $description ) . '</description>
   <dateFormatted>' . date_to_str ( $event_date ) . '</dateFormatted>
   <date>' . $event_date . '</date>
@@ -193,9 +194,6 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
         $se .= $extras[$extra_name]['cal_date'];
       elseif ( $extra_type == EXTRA_MULTILINETEXT )
         $se .= ws_escape_xml ( $extras[$extra_name]['cal_data'] );
-      elseif ( $extra_type == EXTRA_REMINDER )
-        $se .= ( $extras[$extra_name]['cal_remind'] > 0
-          ? translate ( 'Yes' ) : translate ( 'No' ) );
       else
         // Default method for EXTRA_URL, EXTRA_TEXT, etc...
         $se .= ws_escape_xml ( $extras[$extra_name]['cal_data'] );

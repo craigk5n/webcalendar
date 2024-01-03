@@ -349,8 +349,7 @@ $app_same_db = (($db_database == $app_db) && ($app_host == $db_host)) ? '1' : '0
 
 // Redirect the user to the login-app.php page
 function app_login_screen( $return ) {
-  global $SERVER_URL;
-  header ( "Location: {$SERVER_URL}login-app.php?return_path={$return}");
+  header ( "Location: " . getServerUrl() . "login-app.php?return_path={$return}");
   exit;
 }
 
