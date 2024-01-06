@@ -14,6 +14,7 @@ html {
   background-color: #FFFFFE;
   color: #000001;
   color-scheme: dark light;
+  hanging-punctuation: first last;
 }
 *,
 *:before,
