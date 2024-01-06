@@ -13,6 +13,7 @@ html {
   /* These are to prevent some 'spam site' complaints. */
   background-color: #FFFFFE;
   color: #000001;
+  color-scheme: dark light;
 }
 *,
 *:before,
