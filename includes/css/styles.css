@@ -86,6 +86,10 @@ fieldset {
 label {
   font-weight:bold;
 }
+p {
+  max-inline-size: 65ch;
+  text-wrap: pretty;
+}
 textarea {
   /*font-size:.75rem;*/
   overflow:auto;
