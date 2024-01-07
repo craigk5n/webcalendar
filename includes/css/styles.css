@@ -179,7 +179,19 @@ td.weekcell {
   text-decoration:none;
 }
 img {
-  border:0;
+  max-inline-size: 100%;
+  block-size: auto;
+  
+  /* These 2 presume pre-load a low-res image in an inline style="" on each img. */
+  /* We probably don't need them. Yet. */
+  /*
+  background-repeat: no-repeat;
+  background-size: cover;
+  */
+
+  shape-margin: 1rem;  
+  border: 0;
+  vertical-align: middle;
 }
 img.color {
   width:.9375rem;
