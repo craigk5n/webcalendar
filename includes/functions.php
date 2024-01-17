@@ -802,7 +802,7 @@ function date_selection($prefix, $date, $trigger = false, $num_years = 20)
  * @return int  Timestamp representing, in UTC or LOCAL time.
  */
 function date_to_epoch( $d, $gmt = true ) {
-  if ( $d == 0 )
+  if ( $d == 0 || $d === '' )
     return 0;
 
   $dH = $di = $ds = 0;
@@ -2596,7 +2596,13 @@ function get_groups($user, $includeUserlist=false)
       $sql = 'SELECT cal_login FROM webcal_group_user WHERE cal_group_id = ? ORDER BY cal_login';
       $res = dbi_execute($sql, [$groups[$i]['cal_group_id']]);
       while ($row = dbi_fetch_row($res)) {
-        $users[] = $users_by_name[$row[0]];
+        if (isset($users_by_name[$row[0]])){
+            // It is possible some users assigned to this group may not exist, 
+            // so we skip those that don't. For example, if users are fetched 
+            // from an external source via user-app-*.php, and one of those 
+            // users is deleted externally.
+            $users[] = $users_by_name[$row[0]];
+        }
       }
       $groups[$i]['cal_users'] = $users;
     }
