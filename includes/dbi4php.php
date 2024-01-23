@@ -355,7 +355,7 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
       return OCIExecute( $GLOBALS['oracle_statement'], OCI_COMMIT_ON_SUCCESS );
   } elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 ) {
     $found_db_type = true;
-    $res = pg_exec( $GLOBALS['postgresql_connection'], $sql );
+    $res = @pg_exec( $GLOBALS['postgresql_connection'], $sql );
   } elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 ) {
     $found_db_type = true;
     $res = sqlite_query( $GLOBALS['sqlite_c'], $sql, SQLITE_NUM );
@@ -367,9 +367,12 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
   if( $found_db_type ) {
     if( ! $res ) {
       //echo "<b>Db error: " . dbi_error() . "</b><br>\n";
-      dbi_fatal_error( translate( 'Error executing query.' )
-       . ( $phpdbiVerbose ? ( dbi_error() . "\n\n<br>\n" . $sql ) : '' ),
-         $fatalOnError, $showError );
+      $verboseDetails = empty($phpdbiVerbose) ? '' : ('<br><br>' . dbi_error() . "\n\n<br>\n" . $sql);
+      dbi_fatal_error(
+        translate('Error executing query.') . $verboseDetails,
+        $fatalOnError,
+        $showError
+      );
     }
     return $res;
   } else
@@ -594,7 +597,8 @@ function dbi_free_result($res)
       }
       return true; // Assuming a successful operation as it's not directly supported.
     case 'postgresql':
-      return pg_freeresult($res);
+      pg_query_params($GLOBALS['postgresql_connection'], 'SELECT 1', []); // auto-free query
+      return true;
     case 'sqlite':
       // Not supported for SQLite, just return true.
       return true;
@@ -638,7 +642,7 @@ function dbi_error()
       return htmlentities($e['message']);
 
     case 'postgresql':
-      return pg_errormessage($GLOBALS['postgresql_connection']);
+      return pg_last_error($GLOBALS['postgresql_connection']);
 
     case 'sqlite':
       if (empty($GLOBALS['db_sqlite_error_str'])) {
@@ -707,7 +711,7 @@ function dbi_escape_string( $string ) {
         ? addslashes( $string )
         : $db_connection_info['connection']->real_escape_string( $string ) );
     case 'postgresql':
-      return pg_escape_string( $string );
+      return pg_escape_string( $GLOBALS['postgresql_connection'], $string );
     case 'sqlite':
       return sqlite_escape_string( $string );
     case 'sqlite3':
@@ -740,10 +744,7 @@ function dbi_escape_string( $string ) {
  *                to the {@link dbi_fetch_row()} function to obtain the
  *                results), or true/false on insert or delete queries.
  */
-function dbi_execute ( $sql, $params = [], $fatalOnError = true,
-  $showError = true ) {
-
-  //echo "SQL: $sql <br>\n";
+function dbi_execute($sql, $params = [], $fatalOnError = true, $showError = true) {
   if( count( $params ) == 0 )
     return dbi_query( $sql, $fatalOnError, $showError );
 
