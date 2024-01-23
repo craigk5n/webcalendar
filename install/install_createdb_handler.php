@@ -1,9 +1,12 @@
 <?php
 
 // The dbi4php.php functions don't uniformly handle create database, so we have the code for it here.
+$existsMessage = translate('Database XXX already exists.');
+$createdMessage = translate('Created database XXX');
 
 function createMysqlDatabase(string $hostname, string $login, string $password, string $databaseName): bool
 {
+  global $existsMessage;
   // Create connection without selecting a database
   $conn = new mysqli($hostname, $login, $password);
 
@@ -16,6 +19,8 @@ function createMysqlDatabase(string $hostname, string $login, string $password, 
   $sql = "CREATE DATABASE " . $databaseName;
   if ($conn->query($sql) === TRUE) {
     $conn->close();
+    $existsMessage = str_replace("XXX", $databaseName, $existsMessage);
+    $_SESSION['alert'] = $existsMessage;
     return true;
   } else {
     throw new Exception("Error creating database: " . $conn->error);
@@ -31,6 +36,7 @@ function createSqliteDatabase(string $filename): bool
     $db->exec("DROP TABLE dummy");
     $db->close();
     return true;
+    // TODO: Implement this...
   } catch (Exception $e) {
     throw new Exception("Error creating SQLite3 database: " . $e->getMessage());
   }
@@ -38,17 +44,34 @@ function createSqliteDatabase(string $filename): bool
 
 function createPostgresqlDatabase($hostname, $login, $password, $databaseName): bool
 {
-  $connString = "host={$hostname} user={$login} password={$password}";
+  global $existsMessage, $createdMessage;
+  // Use specific query for existing database check (dbname=postgres)
+  $connString = "host={$hostname} dbname=postgres user={$login} password={$password}";
   $db = pg_connect($connString);
   if (!$db) {
-    throw new Exception("Connection failed: " . pg_last_error());
+    throw new Exception("Connection failed");
   }
-
+  $existsQuery = "SELECT 1 FROM information_schema.schemata WHERE schema_name = $1";
+  $result = pg_query_params($db, $existsQuery, [$databaseName]);
+  if ($result) {
+    $row = pg_fetch_row($result);
+    if ($row && $row[0] === '1') {
+      // Database exists
+      pg_close($db);
+      $existsMessage = str_replace("XXX", $databaseName, $existsMessage);
+      $_SESSION['alert'] = $existsMessage;
+      return false;
+    } else {
+      // Database doesn't exist
+    }
+  }
   $result = pg_query($db, "CREATE DATABASE {$databaseName}");
   if (!$result) {
     throw new Exception("Error creating database: " . pg_last_error($db));
   }
   pg_close($db);
+  $createdMessage = str_replace("XXX", $databaseName, $createdMessage);
+  $_SESSION['alert'] = $createdMessage;
   return true;
 }
 

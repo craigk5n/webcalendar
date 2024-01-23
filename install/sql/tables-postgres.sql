@@ -94,7 +94,8 @@ CREATE TABLE webcal_site_extras (
   cal_type INT NOT NULL,
   cal_date INT DEFAULT '0',
   cal_remind INT DEFAULT '0',
-  cal_data TEXT
+  cal_data TEXT,
+  PRIMARY KEY (cal_id, cal_name)
 );
 CREATE TABLE webcal_reminders (
   cal_id INT DEFAULT '0' NOT NULL,
@@ -158,7 +159,7 @@ CREATE TABLE webcal_categories (
   cat_status CHAR DEFAULT 'A',
   cat_icon_mime VARCHAR(32) DEFAULT NULL,
   cat_icon_blob BYTEA DEFAULT NULL,
-  PRIMARY KEY ( cat_id, cat_order, cat_owner )
+  PRIMARY KEY ( cat_id, cat_owner )
 );
 CREATE TABLE webcal_asst (
   cal_boss VARCHAR(25) NOT NULL,
@@ -184,8 +185,6 @@ CREATE TABLE webcal_import (
   cal_md5 VARCHAR(32) NULL DEFAULT NULL,
   PRIMARY KEY ( cal_import_id )
 );
-CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type);
-CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
 CREATE TABLE webcal_import_data (
   cal_import_id INT NOT NULL,
   cal_id INT NOT NULL,
@@ -194,6 +193,8 @@ CREATE TABLE webcal_import_data (
   cal_external_id VARCHAR(200) NULL,
   PRIMARY KEY  ( cal_id, cal_login )
 );
+CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type);
+CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
 CREATE TABLE webcal_report (
   cal_login VARCHAR(25) NOT NULL,
   cal_report_id INT NOT NULL,

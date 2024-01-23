@@ -155,6 +155,14 @@ CREATE TABLE webcal_entry_repeats_not (
   cal_date INT NOT NULL,
   PRIMARY KEY (cal_id,cal_date)
 );
+SQL,
+    'posgresql-sql' => <<<'SQL'
+ALTER TABLE webcal_user ALTER COLUMN cal_passwd TYPE VARCHAR(32);
+CREATE TABLE webcal_entry_repeats_not (
+  cal_id INT NOT NULL,
+  cal_date INT NOT NULL,
+  PRIMARY KEY (cal_id,cal_date)
+);
 SQL
   ],
   [
@@ -167,7 +175,7 @@ CREATE TABLE webcal_categories (
   cat_owner VARCHAR(25),
   PRIMARY KEY (cat_id)
 );
-SQL
+SQL,
   ],
   [
     'version' => 'v0.9.41',
@@ -263,6 +271,14 @@ SQL
   ],
   [
     'version' => 'v1.1.0a-CVS',
+    'postresql-sql' => <<<'SQL'
+CREATE TABLE webcal_access_function (
+  cal_login VARCHAR(25) NOT NULL,
+  cal_permissions VARCHAR(64) NOT NULL,
+  PRIMARY KEY (cal_login)
+);
+ALTER TABLE webcal_nonuser_cals ALTER COLUMN cal_is_public SET TYPE CHAR(1) NOT NULL DEFAULT 'N';
+SQL,
     'default-sql' => <<<'SQL'
 CREATE TABLE webcal_access_function (
   cal_login VARCHAR(25) NOT NULL,
@@ -274,6 +290,32 @@ SQL
   ],
   [
     'version' => 'v1.1.0b-CVS',
+    'postgresql-sql' => <<<'SQL'
+CREATE TABLE webcal_user_template (
+  cal_login VARCHAR(25) NOT NULL,
+  cal_type CHAR(1) NOT NULL,
+  cal_template_text TEXT,
+  PRIMARY KEY (cal_login,cal_type)
+);
+ALTER TABLE webcal_entry_repeats ADD COLUMN cal_endtime INTEGER DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD COLUMN cal_bymonth VARCHAR(50) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD COLUMN cal_bymonthday VARCHAR(100) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD COLUMN cal_byday VARCHAR(100) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD COLUMN cal_bysetpos VARCHAR(50) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD COLUMN cal_byweekno VARCHAR(50) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD COLUMN cal_byyearday VARCHAR(50) DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats ADD COLUMN cal_wkst CHAR(2) DEFAULT 'MO';
+ALTER TABLE webcal_entry_repeats ADD COLUMN cal_count INTEGER DEFAULT NULL;
+ALTER TABLE webcal_entry_repeats_not ADD COLUMN cal_exdate BOOLEAN DEFAULT TRUE;
+ALTER TABLE webcal_entry ADD COLUMN cal_due_date INTEGER DEFAULT NULL;
+ALTER TABLE webcal_entry ADD COLUMN cal_due_time INTEGER DEFAULT NULL;
+ALTER TABLE webcal_entry ADD COLUMN cal_location VARCHAR(100) DEFAULT NULL;
+ALTER TABLE webcal_entry ADD COLUMN cal_url VARCHAR(100) DEFAULT NULL;
+ALTER TABLE webcal_entry ADD COLUMN cal_completed BOOLEAN DEFAULT NULL;
+ALTER TABLE webcal_entry_user ADD COLUMN cal_percent SMALLINT NOT NULL DEFAULT 0;
+ALTER TABLE webcal_site_extras DROP CONSTRAINT webcal_site_extras_pkey;
+ALTER TABLE webcal_site_extras ADD CONSTRAINT webcal_site_extras_pkey PRIMARY KEY (cal_id, cal_name);
+SQL,
     'default-sql' => <<<'SQL'
 CREATE TABLE webcal_user_template (
   cal_login VARCHAR(25) NOT NULL,
@@ -298,17 +340,19 @@ ALTER TABLE webcal_entry ADD cal_url VARCHAR(100) DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_completed INT(11) DEFAULT NULL;
 ALTER TABLE webcal_entry_user ADD cal_percent INT(11) NOT NULL DEFAULT '0';
 ALTER TABLE webcal_site_extras DROP PRIMARY KEY;
-SQL
+ALTER TABLE webcal_site_extras ADD PRIMARY KEY (cal_id, cal_name);
+SQL,
   ],
   [
     'version' => 'v1.1.0c-CVS',
     'upgrade-function' => 'do_v11b_updates',
     'default-sql' => <<<'SQL'
 CREATE TABLE webcal_entry_categories (
-  cal_id int(11) NOT NULL DEFAULT '0',
-  cat_id int(11) NOT NULL DEFAULT '0',
-  cat_order int(11) NOT NULL DEFAULT '0',
-  cat_owner VARCHAR(25) DEFAULT NULL
+  cal_id INT NOT NULL DEFAULT 0,
+  cat_id INT NOT NULL DEFAULT 0,
+  cat_order INT NOT NULL DEFAULT 0,
+  cat_owner VARCHAR(25) DEFAULT NULL,
+  PRIMARY KEY ( cal_id, cat_id, cat_order, cat_owner )
 );
 SQL
   ],
@@ -385,12 +429,24 @@ SQL
   ],
   [
     'version' => 'v1.1.2',
+    'postgresql-sql' => <<<'SQL'
+ALTER TABLE webcal_nonuser_cals ADD COLUMN cal_url VARCHAR(255) DEFAULT NULL;
+SQL,
     'default-sql' => <<<'SQL'
 ALTER TABLE webcal_nonuser_cals ADD cal_url VARCHAR(255) DEFAULT NULL;
 SQL
   ],
   [
     'version' => 'v1.1.3',
+    'postgresql-sql' => <<<'SQL'
+ALTER TABLE webcal_categories ADD COLUMN cat_color VARCHAR(8) DEFAULT NULL;
+ALTER TABLE webcal_user ADD COLUMN cal_enabled CHAR(1) DEFAULT 'Y';
+ALTER TABLE webcal_user ADD COLUMN cal_telephone VARCHAR(50) DEFAULT NULL;
+ALTER TABLE webcal_user ADD COLUMN cal_address VARCHAR(75) DEFAULT NULL;
+ALTER TABLE webcal_user ADD COLUMN cal_title VARCHAR(75) DEFAULT NULL;
+ALTER TABLE webcal_user ADD COLUMN cal_birthday INTEGER DEFAULT NULL;
+ALTER TABLE webcal_user ADD COLUMN cal_last_login INTEGER DEFAULT NULL;
+SQL,
     'default-sql' => <<<'SQL'
 ALTER TABLE webcal_categories ADD cat_color VARCHAR(8) DEFAULT NULL;
 ALTER TABLE webcal_user ADD cal_enabled CHAR(1) DEFAULT 'Y';
@@ -421,16 +477,27 @@ SQL
   ],
   [
     'version' => 'v1.9.1',
+    'postgresql-sql' => <<<'SQL'
+    ALTER TABLE webcal_import ADD COLUMN cal_check_date INTEGER DEFAULT NULL;
+    ALTER TABLE webcal_import ADD COLUMN cal_md5 VARCHAR(32) DEFAULT NULL;
+    CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type);
+    CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
+    ALTER TABLE webcal_user ALTER COLUMN cal_passwd SET TYPE VARCHAR(255);
+    SQL,
     'default-sql' => <<<'SQL'
-ALTER TABLE webcal_import ADD cal_check_date INT NULL;
-ALTER TABLE webcal_import ADD cal_md5 VARCHAR(32) NULL DEFAULT NULL;
-CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type);
-CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
-ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);
+    ALTER TABLE webcal_import ADD cal_check_date INT NULL;
+    ALTER TABLE webcal_import ADD cal_md5 VARCHAR(32) NULL DEFAULT NULL;
+    CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type);
+    CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
+    ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);
 SQL
   ],
   [
     'version' => 'v1.9.6',
+    'postgresql-sql' => <<<'SQL'
+UPDATE webcal_entry_categories SET cat_owner = '' WHERE cat_owner IS NULL;
+ALTER TABLE webcal_entry_categories ADD CONSTRAINT pkey_webcal_entry_categories PRIMARY KEY (cal_id, cat_id, cat_order, cat_owner);
+SQL,
     'default-sql' => <<<'SQL'
 UPDATE webcal_entry_categories SET cat_owner = '' WHERE cat_owner IS NULL;
 ALTER TABLE webcal_entry_categories ADD PRIMARY KEY (cal_id, cat_id, cat_order, cat_owner);
@@ -445,15 +512,19 @@ ALTER TABLE webcal_categories ADD cat_icon_mime VARCHAR(32) DEFAULT NULL;
 ALTER TABLE webcal_categories ADD cat_icon_blob LONGBLOB DEFAULT NULL;
 ALTER TABLE webcal_categories MODIFY cat_owner VARCHAR(25) DEFAULT '' NOT NULL;
 SQL,
-    'postgres-sql' => <<<'SQL'
-ALTER TABLE webcal_categories ADD COLUMN cat_status CHAR DEFAULT 'A';
+    'postgresql-sql' => <<<'SQL'
+ALTER TABLE webcal_categories ADD COLUMN cat_status CHAR(1) DEFAULT 'A';
 ALTER TABLE webcal_categories ADD COLUMN cat_icon_mime VARCHAR(32) DEFAULT NULL;
 ALTER TABLE webcal_categories ADD COLUMN cat_icon_blob BYTEA DEFAULT NULL;
-ALTER TABLE webcal_categories MODIFY cat_owner VARCHAR(25) DEFAULT '' NOT NULL;
+ALTER TABLE webcal_categories ALTER COLUMN cat_owner TYPE VARCHAR(25);
 SQL
   ],
   [
     'version' => 'v1.9.12',
+    'postgres-sql' => <<<'SQL'
+ALTER TABLE webcal_nonuser_cals ALTER COLUMN cal_url TYPE VARCHAR(255);
+ALTER TABLE webcal_entry ALTER COLUMN cal_url TYPE VARCHAR(255);
+SQL,
     'default-sql' => <<<'SQL'
 ALTER TABLE webcal_nonuser_cals MODIFY COLUMN cal_url VARCHAR(255);
 ALTER TABLE webcal_entry MODIFY COLUMN cal_url VARCHAR(255);
