@@ -36,7 +36,7 @@
 #        Translate "May_" to the full month name and "May" to the,
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
-# Translation last updated on 12-08-2023
+# Translation last updated on 01-23-2024
 
 charset: iso-8859-1
 direction: ltr
@@ -1927,6 +1927,12 @@ PHP Info: PHP Info
 # Page: install/install_dbtables_handler.php
 #
 Database tables successfully created: Database tables successfully created
+
+########################################
+# Page: install/install_createdb_handler.php
+#
+Database XXX already exists.: Database XXX already exists.
+Created database XXX: Created database XXX
 
 ########################################
 # Page: install/install_ajax.php

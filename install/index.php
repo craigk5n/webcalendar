@@ -63,15 +63,42 @@ $phpSettingsAcked = (isset($_SESSION['phpSettingsAcked']) && !empty($_SESSION['p
 
 function tryDbConnect()
 {
-    global $settings, $db_database;
+    global $settings, $db_database, $db_connection, $debugInstaller;
     if (!isset($settings['db_type']) || !isset($_SESSION['db_host']) || !isset($_SESSION['db_login']) || !isset($_SESSION['db_database'])) {
         return false;
     }
     try {
-        // Don't require database to exist in mysqli
+        // Don't require database to exist in mysqli and postgres
         if ($_SESSION['db_type'] == 'mysqli') {
             $mysqli = new mysqli($_SESSION['db_host'], $_SESSION['db_login'], $_SESSION['db_password']);
             if ($mysqli->connect_error) {
+                return false;
+            }
+            $db_connection = $mysqli;
+            return true;
+        } else if ( $_SESSION['db_type'] == 'postgresql') {
+            try {
+                $connString = "host=" . $_SESSION['db_host'] . " dbname=" . $_SESSION['db_database'] . " user=" . $_SESSION['db_login']
+                    . " password=" . $_SESSION['db_password'];
+                $c = @pg_connect($connString);
+                if ($c) {
+                    $db_connection = $c;
+                    if ($debugInstaller)
+                        echo "Successful Postgres connection to " . $_SESSION['db_database'] . "<br>";
+                    return true;
+                } else {
+                    if ($debugInstaller)
+                        echo "First Postgres connection to " . $_SESSION['db_database'] . " FAILED<br>";
+                }
+            } catch (Exception $e) {
+                // We may have failed because the db has not been created yet.  So try again with the 'postgres' database.
+                if(!$debugInstaller) {
+                    echo "First db connect attempt failed.  Trying postgres db instead.<br>";
+                }
+            }
+            $connString = "host=" . $_SESSION['db_host'] . " dbname=postgres user=" . $_SESSION['db_login'] . " password=" . $_SESSION['db_password'];
+            $c = @pg_connect($connString);
+            if (!$c) {
                 return false;
             }
             return true;
@@ -86,6 +113,9 @@ function tryDbConnect()
         }
     } catch (Exception $e) {
         return false;
+    }
+    if ($c) {
+        $db_connection = $c;
     }
     return !empty($c);
 }
@@ -261,17 +291,23 @@ if (!empty($_GET['action']) && $_GET['action'] == "phpinfo") {
     phpinfo ();
     exit;
 }
-$emptyDatabase = $canConnectDb ?  isEmptyDatabase() : true;
+$databaseExists = false;
+$emptyDatabase = false;
+try {
+    // Try checking if there is a webcal_config table.  If there is, then the db exists.
+    $emptyDatabase = isEmptyDatabase();
+  } catch (Exception $e) {
+    // If we get an exception, then the db does not exist.
+  }
 $unsavedDbSettings = !empty($_SESSION['unsavedDbSettings']); // Keep track if Db settings were modified by not yet saved
 $reportedDbVersion = 'Unknown';
 $adminUserCount = 0;
-$databaseExists = false;
 $databaseCurrent = false;
 $settingsSaved = true; // True if a valid settings.php found unless user changes settings
 $detectedDbVersion = 'Unknown';
 if ($canConnectDb && !empty($db_connection)) {
     $reportedDbVersion = getDbVersion();
-    $detectedDbVersion = getDatabaseVersionFromSchema();
+    $detectedDbVersion = getDatabaseVersionFromSchema(!$debugInstaller);
     if ($debugInstaller) {
         //echo "Db Version: $dbV <br>";
     }

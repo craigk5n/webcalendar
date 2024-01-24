@@ -4,7 +4,7 @@
 # docker-compose up).  You only need to do this once.
 #
 #   Start a shell on the mariadb container:
-#     docker-compose -f docker/docker-compose-php8-dev.yml exec db /bin/sh
+#     docker-compose -f docker/docker-compose-php8-dev.yml exec db-mariadb /bin/sh
 #   Start the mariadb client:
 #     /bin/mariadb -p
 #     (enter the MYSQL_ROOT_PASSWORD below)
@@ -15,15 +15,15 @@
 #
 #   If you need shell access on the webserver container running WebCalendar, you can use
 #   the following command:
-#     docker-compose -f docker/docker-compose-php8-dev.yml exec webcalendar-php8 /bin/sh
+#     docker-compose -f docker/docker-compose-php8-dev.yml exec webcalendar-php8-mariadb /bin/sh
 
 version: '3.1'
 
 services:
 
-  db:
+  db-mariadb:
     image: mariadb
-    container_name: webcalendar-db
+    container_name: webcalendar-maria-db
     volumes:
       - mysql-data:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
@@ -34,12 +34,12 @@ services:
       - MYSQL_USER=webcalendar
     restart: unless-stopped
 
-  webcalendar-php8:
+  webcalendar-php8-mariadb:
     build:
       context: ../
       dockerfile: docker/Dockerfile-php8-dev
     depends_on:
-      - db
+      - db-mariadb
     ports:
       - 8080:80
     volumes:
@@ -56,10 +56,49 @@ services:
       - WEBCALENDAR_DB_DATABASE=webcalendar_php8
       - WEBCALENDAR_DB_LOGIN=webcalendar
       - WEBCALENDAR_DB_PASSWORD=Webcalendar.1
-      - WEBCALENDAR_DB_HOST=db
+      - WEBCALENDAR_DB_HOST=db-mariadb
       - WEBCALENDAR_DB_PERSISTENT=true
       - WEBCALENDAR_USER_INC=user.php
       - WEBCALENDAR_MODE=dev
 
+  webcalendar-php8-pgsql:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile-php8-dev
+    depends_on:
+      - db-pgsql
+    ports:
+      - 8081:80
+    volumes:
+      - ..:/var/www/html/
+    environment:
+      - WEBCALENDAR_USE_ENV=true
+      - WEBCALENDAR_INSTALL_PASSWORD=da1437a2c74ee0b35eed71e27d00c618
+      - WEBCALENDAR_DB_TYPE=postgresql
+      - WEBCALENDAR_DB_DATABASE=webcalendar_php81
+      - WEBCALENDAR_DB_LOGIN=webcalendar
+      - WEBCALENDAR_DB_PASSWORD=Webcalendar.1 # Change this
+      - WEBCALENDAR_DB_HOST=db-pgsql
+      - WEBCALENDAR_DB_PERSISTENT=true
+      - WEBCALENDAR_USER_INC=user.php
+      - WEBCALENDAR_MODE=dev
+
+  # To access the pgsql command line:
+  # docker-compose -f docker/docker-compose-php8-dev.yml exec db-pgsql /bin/bash
+  # Before the webcalendar db is created:
+  #   psql -h localhost -p 5432 -U webcalendar -W -d postgres
+  db-pgsql:
+    image: postgres
+    container_name: webcalendar-db-pgsql
+    volumes:
+      - pgsql-data:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - POSTGRES_DB=webcalendar_php81
+      - POSTGRES_USER=webcalendar
+      - POSTGRES_PASSWORD=Webcalendar.1 # Change this
+    restart: unless-stopped
+
 volumes:
-  mysql-data:
+  mysql-data: # MySQL/Maria data volume for persistence
+  pgsql-data: # PostgreSQL data volume for persistence

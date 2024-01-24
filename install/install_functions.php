@@ -17,6 +17,9 @@ function isEmptyDatabase()
 {
   global $db_connection, $debugInstaller;
   if (empty($db_connection)) {
+    if ($debugInstaller) {
+      echo "No connection => empty db<br>";
+    }
     return true;
   }
   try {
@@ -499,7 +502,7 @@ function getDatabaseVersionFromSchema($silent = true)
   for ($i = 0; $i < count($database_upgrade_matrix); $i++) {
     $sql = $database_upgrade_matrix[$i][0];
     if (!$silent) {
-      echo "SQL: $sql<br>\n";
+      echo "SQL: $sql<br>Success: " . ($success ? "true":"false") . "\n<br>";
     }
 
     if (empty($sql)) {
@@ -507,6 +510,9 @@ function getDatabaseVersionFromSchema($silent = true)
         // We reached the end of database_upgrade_matrix[] with no errors, which
         // means the database is structurally up-to-date.
         $dbVersion = $PROGRAM_VERSION;
+        if (!$silent) {
+          echo "Complete success: version $dbVersion<br>\n";
+        }
       }
     } else {
       try {
