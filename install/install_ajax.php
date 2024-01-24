@@ -31,10 +31,15 @@ function testDbConnection($host, $login, $password, $database)
       $ret = true;
       $c->close();
     } elseif ($_POST['dbType'] == 'postgresql') {
-      $c = pg_connect("host=$host dbname=$database user=$login password=$password");
+      $c = @pg_connect("host=$host dbname=$database user=$login password=$password");
       $ret = ($c !== false);
-      $error_msg = pg_last_error($c);
-      pg_close($c);
+      if (!$ret) {
+        $c = @pg_connect("host=$host dbname=postgres user=$login password=$password");
+        $ret = ($c !== false);
+      }
+      if ($c) {
+        pg_close($c);
+      }
     } elseif ($_POST['dbType'] == 'ibase') {
       $c = ibase_connect($database, $login, $password);
       $ret = ($c !== false);

@@ -714,7 +714,7 @@ if( empty( $error ) ) {
   $cat_owner = ( ( ! empty( $user ) && strlen( $user ) )
       && ( $is_assistant || $is_admin ) ? $user : $login );
   dbi_execute( 'DELETE FROM webcal_entry_categories WHERE cal_id = ?
-    AND ( cat_owner = ? OR cat_owner = "" )', [$id, $cat_owner] );
+    AND ( cat_owner = ? OR cat_owner = ? )', [$id, $cat_owner, ''] );
 
   if( ! empty( $cat_id ) ) {
     $categories = explode( ',', $cat_id );

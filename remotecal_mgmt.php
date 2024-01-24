@@ -18,7 +18,7 @@ if ($REMOTES_ENABLED != 'Y' || (access_is_enabled() && !access_can_access_functi
 }
 
 $LOADING = '<center><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></center>';
-$cannotLoadStr = translate('You PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.');
+$cannotLoadStr = translate('Your PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.');
 $areYouSure = translate('Are you sure you want to delete this remote calendar?');
 $deleteUserInfo = translate('This will remove all events for this remote calendar.') .
     ' ' . translate('This action cannot be undone.');
