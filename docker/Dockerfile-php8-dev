@@ -6,6 +6,11 @@ LABEL vendor="k5n.us"
 # Install mysqli extension
 RUN docker-php-ext-install mysqli
 
+# Install PosgreSQL extension and dependencies
+RUN apt-get update && apt-get install -y libpq-dev \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pgsql pdo_pgsql
+
 # Install GD extension and its dependencies
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \

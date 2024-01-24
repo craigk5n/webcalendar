@@ -16,9 +16,9 @@
 </p>
 
 <?php
-  if ($databaseExists) {
-    printNextPageButton($action);
-  } else {
-    printSubmitButton($action, null, translate('Create Database'));
-  }
+if ($databaseExists) {
+  printNextPageButton($action);
+} else {
+  printSubmitButton($action, null, translate('Create Database'));
+}
 ?>
