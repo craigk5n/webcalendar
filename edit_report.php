@@ -216,7 +216,7 @@ echo '
       <div class="form-inline">
         <label class="col-sm-2 col-form-label" for="rpt_name">' . translate ('Report Name') . '</label>
         <input class="form-control" type="text" name="report_name" id="rpt_name" size="40" ' .
-        'maxlength="50" value="' . $report_name . '"></div>';
+        'maxlength="50" value="' . htmlentities($report_name) . '"></div>';
 
 if ( $show_participants ) {
   echo '<div class="form-inline">
