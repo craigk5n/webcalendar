@@ -110,6 +110,7 @@ function event_to_text ( $event, $date ) {
   } else
     $id = $event->getID();
 
+  $name_str = $description_str = '';
   if ( $tempAcc == 'R' ) {
     if ( ( $login != $user && strlen ( $user ) ) ||
         ( $login != $tempLog && strlen ( $tempLog ) ) ) {
@@ -237,9 +238,9 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
     $addStr = translate ( 'Add new report' );
     $unnamesStr = translate ( 'Unnamed Report' );
     while ( $row = dbi_fetch_row ( $res ) ) {
-      $rep_name = trim ( $row[1] );
+      $rep_name = htmlentities(trim($row[1]));
       if ( empty ( $rep_name ) )
-        $rep_name = $unnamesStr;
+        $rep_name = htmlentities($unnamesStr);
 
       $list .= '
       <li class="nav"><a href="edit_report.php?report_id=' . $row[0] . '" class="nav">'
@@ -463,7 +464,7 @@ $adminLinkStr = $manageStr = $nextLinkStr = $prevLinkStr = $textStr = '';
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 $reportNameStr = ( $include_header ? '
-    <h2>' . $report_name . '</h2>' : '' );
+    <h2>' . htmlentities($report_name) . '</h2>' : '' );
 
 if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
   $temp = '" href="report.php?report_id=' . $report_id . $u_url . '&amp;offset=';
