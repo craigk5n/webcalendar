@@ -35,6 +35,11 @@ body{
   color: var(--textcolor);
   font: var(--def-font-size)/1.5 var(--def-font-family);
 }
+
+del {
+  text-decoration: line-through 2px var(--textcolor);
+}
+
 div.container-fluid, div.container, nav.navbar,
   div.dropdown-menu, ul.dropdown-menu, .list-group, .list-group-item,
   .sectioncontent {
