@@ -17,8 +17,8 @@ html {
   hanging-punctuation: first last;
 }
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
 }
