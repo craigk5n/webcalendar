@@ -23,8 +23,8 @@
  */
 require_once 'includes/init.php';
 
-$allow_view_other =
-  ( ! empty( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' );
+$ALLOW_VIEW_OTHER = ( $ALLOW_VIEW_OTHER ?: 'N' );
+$allow_view_other = ( $ALLOW_VIEW_OTHER === 'Y' );
 
 if( ! access_is_enabled() ) {
   echo print_not_auth();
@@ -108,8 +108,9 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
     $saved = true;
   }
 }
-$checked = ' checked';
 $guser = getPostValue( 'guser' );
+
+$checked = ' checked';
 $selected = ' selected';
 
 if( $guser == '__default__' ) {
@@ -133,27 +134,23 @@ if( ! empty( $otheruser ) ) {
     // Now load all the data from webcal_access_user.
     $allPermissions = access_load_user_permissions( false );
 
-    // Load default-default values if exist.
-    if( ! empty( $allPermissions['__default__.__default__'] ) )
-      $op = $allPermissions['__default__.__default__'];
-
-    if( $is_admin ) {
-      // Load user-default values if exist.
-      if( ! empty( $allPermissions[ $guser . '.__default__' ] ) )
-        $op = $allPermissions[ $guser . '.__default__' ];
-
-      // Load user-otheruser values if exist.
-      if( ! empty( $allPermissions[ $guser . '.' . $otheruser ] ) )
-        $op = $allPermissions[ $guser . '.' . $otheruser ];
-    } else {
-      // Load default-user values if exist.
-      if( ! empty( $allPermissions['__default__.' . $guser] ) )
-        $op = $allPermissions['__default__.' . $guser ];
-
+    $op = (
       // Load otheruser-user values if exist.
-      if( ! empty( $allPermissions[$otheruser . '.' . $guser] ) )
-        $op = $allPermissions[$otheruser . '.' . $guser];
+      $allPermissions["$otheruser.$guser"] ?:
+      // Load default-user values if exist.
+      $allPermissions["__default__.$guser"] );
+
+    if ( $is_admin ) {
+      // Load user-otheruser values if exist.
+      $op = ( $allPermissions["$guser.$otheruser"] ?:
+        // Load user-default values if exist.
+        $allPermissions["$guser.__default__"] );
     }
+
+    $op = ( $op ?:
+      // Load default-default values if exist.
+      $allPermissions['__default__.__default__'] ?:
+      '' );
   }
 }
 print_header( '',
@@ -356,17 +353,22 @@ if( ! empty( $otheruser ) ) {
           <tr>
             <td class="boxleft leftpadded' . ( $j > 3 ? ' boxbottom' : '' )
        . '"><input class="form-control-sm" type="checkbox" value="Y" name=';
+
+       $op['email'] = ( $op['email'] ?: 'Y' );
+       $op['invite'] = ( $op['invite'] ?: 'Y' );
+       $op['time'] = ( $op['time'] ?: 'N' );
+
       if( $j == 1 )
         echo '"invite"'
-         . ( ! empty( $op['invite'] ) && $op['invite'] == 'N' ? '' : $checked )
+         . ( $op['invite'] === 'N' ? '' : $checked )
          . '>' . translate( 'Can Invite' );
       elseif( $j == 2 )
         echo '"email"'
-         . ( ! empty( $op['email'] ) && $op['email'] == 'N' ? '' : $checked )
+         . ( $op['email'] === 'N' ? '' : $checked )
          . '>' . translate( 'Can Email' );
       else {
         echo '"time"'
-         . ( ! empty( $op['time'] ) && $op['time'] == 'Y' ? $checked : '' )
+         . ( $op['time'] === 'Y' ? $checked : '' )
          . ' onclick="enableAll( this.checked );">'
          . translate( 'Can See Time Only' );
         $bottomedge = 'boxbottom';
@@ -458,12 +460,9 @@ echo print_trailer();
 /**
  * get_list_of_users
  *
- * @param  string $user
+ * @param  string  $user
  *
- * @global string $is_admin
- * @global string $is_nonuser_admin
- *
- * @return array of users that the specified user can see.
+ * @return array of users that the specified user can see
  */
 function get_list_of_users( $user ) {
   global $is_admin, $is_nonuser_admin;
