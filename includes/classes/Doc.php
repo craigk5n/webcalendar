@@ -19,42 +19,42 @@
  */
 class Doc {
   /**
- * The unique id
+   * The unique id
    * @var int
    * @access private
    */
   var $_blob_id;
 
   /**
- * Associated event's id (if any)
+   * Associated event's id (if any)
    * @var int
    * @access private
    */
   var $_event_id;
 
   /**
- * The user login of user who created this Doc
+   * The user login of user who created this Doc
    * @var string
    * @access private
    */
   var $_login;
 
   /**
- * Filename of the doc (not used for comments)
+   * Filename of the doc (not used for comments)
    * @var string
    * @access private
    */
   var $_name;
 
   /**
- * The description of the doc
+   * The description of the doc
    * @var string
    * @access private
    */
   var $_description;
 
   /**
- * The size of the doc (in bytes)
+   * The size of the doc (in bytes)
    * (not used for comments)
    * @var int
    * @access private
@@ -62,28 +62,28 @@ class Doc {
   var $_size;
 
   /**
- * The MIME type of the doc
+   * The MIME type of the doc
    * @var string
    * @access private
    */
   var $_mime_type;
 
   /**
- * Type of object (C=Comment, A=Attachment)
+   * Type of object (C=Comment, A=Attachment)
    * @var string
    * @access private
    */
   var $_type;
 
   /**
- * Date last modified (in YYYYMMDD format)
+   * Date last modified (in YYYYMMDD format)
    * @var int
    * @access private
    */
   var $_mod_date;
 
   /**
- * Time last modified (in HHMMSS format)
+   * Time last modified (in HHMMSS format)
    * @var int
    * @access private
    */
@@ -314,7 +314,7 @@ class Doc {
     if ( $this->_size < 1024 )
       $ret .= $this->_size . ' ' . translate ( 'bytes' );
     else
-    if ( $this->_size < 1024 * 1024 )
+    if ( $this->_size < 1048576 ) // 1024 * 1024
       $ret .= sprintf ( " %.1f", ( $this->_size / 1024 ) ) . translate ( 'kb' );
     else
       $ret .= sprintf ( " %.1f", ( $this->_size / 1048576 ) ) . translate ( 'Mb' );
