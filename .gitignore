@@ -1,5 +1,4 @@
 *.class
-composer.json
 .DS_Store
 .htaccess
 includes/htmlare*
