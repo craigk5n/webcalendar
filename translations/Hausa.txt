@@ -1,0 +1,2387 @@
+# Hausa ha
+#
+# Tsarin ya kunshi taken kai tsaye:
+#
+# Fassara ta: sunanka da imel
+# Sabuntawa ta karshe: ranar fassara
+# (Ciki har da jagorar "#" da duk wani tsokaci da masu fassarar da suka gabata suka yi.
+# Layin farko na FIRST yana ƙare waɗannan maganganun taken.)
+#
+# Bi da yawa kamar yadda ake buƙata:
+#
+# Harshen Turanci: fassara
+# (Daya zuwa layi. BANDA jagora "#".
+# The "Jumlar Ingilishi:", gami da ciwon ciki ":", an samar da ita ta
+# Masu haɓaka WebCalendar. Sashinku shine "fassarar".)
+#
+# Littafin kayan aikin ya ƙunshi rubutun perl guda biyu don taimaka muku:
+# - check_translation.pl
+# yana nuna idan anyi fassarar duk rubutu cikin nasara.
+# - update_translation.pl
+# zaiyi nazarin fayilolin shirin don neman duk fassarar ('jimla') kuma
+# kayan aiki ('magana'). Zai tsara jimloli bisa ga shafin
+# (fayil) wanda ya ƙunshi farkon ɓoye. Optionally, zai iya yiwa alama
+# jimloli waɗanda ba a fassara su ba ta hanyar sawa
+#  << MISSING >>
+# akan layin sama da jimlar. Kuma, idan kalmar taƙaice ce,
+# zai hada da cikakken rubutun Ingilishi akan layin da ke kasa da jimlar.
+#
+# Bayani: Ina yunƙurin rage girman fayel ɗin gabaɗaya. Idan "fassarar"
+# kalma / jimla daidai take a cikin yarenku da Ingilishi, kawai yi amfani da alamar "=".
+#
+# Bayani: Za ku lura da shigarwa don "May_" a ƙasa. Akwai dalilin hakan.
+# Fassara "May_" zuwa cikakken sunan watan da "May" zuwa ga,
+# yawanci haruffa uku, gajarta wata (kamar "Oct" don "Oktoba").
+#
+# Na yi amfani da Google translate don wannan.
+# Ya isa har sai mai magana na asali zai iya tabbatar dashi.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: Kalanda
+version XXX: sigar XXX
+WebCalendar is a PHP application used...: WebCalendar aikace-aikacen PHP ne da ake amfani dashi don kiyaye kalandar don mai amfani ɗaya ko ƙungiyar intanet / intanet ɗin masu amfani. Hakanan za'a iya saita shi azaman kalandar taron.
+Credits: Halitta
+About: Game da
+OK: KO
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Kuskuren Database: XXX.
+DEFAULT CONFIGURATION: KYAUTA KYAUTA
+Go: Tafi
+Save: Ajiye
+Undo: Maimaita
+Public Access: Samun Jama'a
+Admin: Gudanarwa
+User Access Control: Ikon Shiga Mai amfani
+Allow Access to Other Users Calendar: Bada Dama ga Kalanda Masu Amfani
+Grant This User Access to My Calendar: Bada Wannan damar Mai amfanin zuwa Kalanda na
+Type: Rubuta
+Calendar: Kalanda
+View Event: Duba Taron
+View: Duba
+Edit: Shirya
+Approve/Reject: Amincewa / jecti Amincewa
+Events: Ayyuka
+Tasks: Ksawainiya
+Journals: Mujallolin
+Can Invite: Iya Gayyata
+Can Email: Iya Imel
+Can See Time Only: Iya Iya Ganin Lokaci Kawai
+Assistant: Mataimakin
+Select All: Zaɓi Duk
+Clear All: Share Duk
+Public: Jama'a
+Confidential: Sirri
+Private: Na sirri
+
+########################################
+# Page: activity_log.php
+#
+Next: Na gaba
+Previous: Na baya
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Lamarin XXX ya riga ya kasance kan kalandarku.
+Invalid entry id XXX.: Id mara inganci: "XXX".
+a XXX event may not be added to your calendar: Wannan taron XXX ne kuma mai yuwuwa baza a kara shi cikin kalandar ba.
+confidential: sirri
+private: mai zaman kansa
+Error adding event XXX.: Kuskure wajen ƙara taron: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Sunan saiti mara aiki "XXX"
+Select: Zaɓi
+Day: Rana
+Week: Mako
+Month: Watan
+Year: Shekara
+Bottom: Kasa
+Top: Sama
+Anyone: Kowa
+Participant: Mahalarta
+Settings: Saituna
+Groups: Sungiyoyi
+NonUser Calendars: Kalanda marasa amfani
+Other: Sauran
+Email: Imel
+Colors: Launuka
+Document background: Bayanan daftarin aiki
+Document title: Takardar rubutu
+Document text: Rubutun rubutu
+My event text: Rubutun taron na
+Table grid color: Launi layin tebur
+Table header background: Bayanin kan tebur
+Table header text: Rubutun rubutun kai
+Table cell background: Bayanin salula
+Table cell background for current day: Bayanin salula na yau
+Table cell background for days with events: Bayanin salula na Table don kwanaki tare da abubuwan da suka faru
+Table cell background for weekends: Bayanin salula a ƙarshen mako
+Table cell background for other month: Bayanin salula na wata-wata
+Week number color: Launin lambar mako
+Event popup background: Bayanin bayan fage
+Event popup text: Rubutun fitowar taron
+System Settings: Saitunan Tsarin
+Help: Taimako
+System options: Zaɓuɓɓukan tsarin
+app-name-help: Yana ƙayyade sunan aikace-aikacen da zai bayyana a cikin sandar take na mai bincike don duk shafuka da kan shafin shiga. Theimar da kuka saka a nan za a duba ta cikin fayil ɗin fassarar da za ta ba ku damar samar da take daban-daban don yare daban-daban.
+Application Name: Sunan Aikace-aikace
+Translated Name (XXX): Sunan da Aka Fassara (XXX)
+server-url-help: Yana ƙayyade tushen URL don aikace-aikacen. Wannan za a hada shi lokacin aikawa da masu tuni da sanarwa na imel.
+Server URL: Adireshin URL
+home-url-help: Yana bayyana URL na gida don aikace-aikacen. Wannan na iya zama cikakke ko dangi
+Home URL: =
+language-help: Yana ƙayyade wane yare ne za a yi amfani da shi.
+Language: Harshe
+Your browser default language is XXX.: Tsoffin yaren burauzanku shine "XXX".
+Allow user to use themes: Bada mai amfani damar amfani da jigogi
+themes-help: Bada izinin sabunta taro na saitunan sanyi. Alamar ƙananan lambobi sune pref mai amfani kawai.
+Themes: Jigogi
+AVAILABLE THEMES: JAGORAN DA AKA SAMU
+None: Babu
+Preview: Gabatarwa
+Site customization: Tsarin yanar gizo
+custom-script-help: Yana ba da izinin shigar da rubutu na Javascript na al'ada ko rubutun salo wanda za a saka a cikin sashin "shugaban" HTML na kowane shafi.
+Custom script/stylesheet: Rubutun rubutu / salo na al'ada
+custom-header-help: Yana ba da damar ƙayyadadden rubutun HTML na al'ada a saman kowane shafi.
+Custom header: Rubutun al'ada
+custom-trailer-help: Yana ba da damar yanki na HTML na al'ada a ƙarshen kowane shafi.
+Custom trailer: Tallan al'ada
+enable-external-header-help: Yana ba da izinin ɗora trailer na al'ada daga fayil na waje
+Allow external file for header/script/trailer: Bada izinin fayil na waje don taken / rubutun / tirela
+Allow user to override header/trailer: Bada mai amfani damar shawo kan taken / tirela
+Date and Time: Kwanan Wata da Lokaci
+server-tz-help: Yana ƙayyade awoyi nawa don daidaita lokaci daga UTC zuwa lokacin saba.
+Server Timezone Selection: Zaɓin Lokacin Lokaci na Sabis
+tz-help: Yana ƙayyade awoyi nawa don daidaita lokaci daga UTC zuwa lokaci na gida.
+Default Client Timezone Selection: Tsoffin Abokin Cinikin Lokaci
+display-general-use-gmt-help: Idan an kunna, ana nuna kwanuka / lokuta na kowa azaman GMT
+Display Common Use Date/Times as GMT: Nuna Kwanan wata / Lokuttukan Amfani da Yau kamar GMT
+date-format-help: Yana ƙayyade tsarin kwanan wata da aka fi so.
+Date format: Tsarin kwanan wata
+Small Task Date: Dateananan Ranar Aiki
+display-week-starts-on: Yana ƙayyade ranar mako wanda makon zai fara. Idan an ayyana Litinin, to lambobin mako zasu zama lambobin mako na ISO.
+Week starts on: Mako yana farawa
+display-weekend-starts-on: Sanya ranar mako don karshen mako don farawa
+Weekend starts on: Arshen mako yana farawa
+time-format-help: Yana ƙayyade tsarin lokacin da za a yi amfani da shi:<br><em>Sa'a 12:</em> Lokacin nunawa kamar 3 na safe, 8:30 na yamma, da sauransu.<br><em>Sa'a 24:</em> Lokacin nunawa kamar 300 , 2030, da dai sauransu.
+Time format: Tsarin lokaci
+12 hour: 12 hours
+24 hour: 24 hours
+timed-evt-len-help: Yana ƙayyade hanyar shigarwa don ƙayyade tsawon abin da aka tsara na lokaci.
+Specify timed event length by: Ayyade lokacin taron ta hanyar
+Duration: Tsawon Lokaci
+End Time: Karshen Lokaci
+work-hours-help: Yana ƙayyade kewayon lokaci don nunawa don kallon rana.
+Work hours: Lokacin aiki
+From: Daga
+to: zuwa
+Appearance: Bayyanar
+preferred-view-help: Yana ƙayyade ra'ayi na tsoho (Rana, Mako, Wata, ko Shekara).
+Preferred view: An fi so gani
+Allow top menu: Bada menu na sama
+Date Selectors position: Matsayin Masu Zaɓuɓɓuka
+menu-themes-help: Saita launuka da salon menu na sama
+Menu theme: Jigon menu
+fonts-help: Yana ƙayyade jerin tsarin rubutu don amfani (kamar "Arial, Helvetica")
+Fonts: Fonti
+display-sm_month-help: Idan an kunna, yana nuna ƙananan watanni a cikin ra'ayoyi na wata
+Display small months: Nuna kananan watanni
+display-weekends-help: Hada da karshen mako lokacin duba sati.
+Display weekends: Nuna karshen mako
+display-long-daynames-help: Idan an kunna, ana nuna sunayen rana mai tsawo
+Display long day names: Nuna sunayen rana mai tsawo
+display-alldays-help: Nuna kwanakin baya da na gaba masu zuwa a cikin ra'ayoyi na wata, suna cika dukkan ƙwayoyin halitta.
+Display all days in month view: Nuna duk ranakun duba wata
+display-week-number-help: Yana ƙayyade ko ya kamata a nuna lambar mako (1-52) a cikin duba watan da na mako.
+Display week number: Nunin mako
+display-desc-print-day-help: Descriara bayanan kwatankwacin abin da ya dace da bugawan gani na rana.
+Display description in printer day view: Bayanin nuni a cikin ganin rana na firintar
+yearly-shows-events-help: A ganin shekara-shekara, nuna ranakun da suka ƙunshi abubuwan da ke cikin rubutu mai haske.
+Display days with events in bold in month and year views: Nuna ranaku tare da abubuwan da suka faru a bayyane a cikin duban watan da shekara
+display-minutes-help: Idan an kunna, mintuna da suka ƙare da: 00 koyaushe za a nuna su
+Display 00 minutes always: Nuna mintocin 00 koyaushe
+display-end-times-help: Nuna lokutan karshen taron idan lokaci yayi
+Display end times on calendars: Nuna lokutan ƙarshe a kan kalandar
+allow-view-add-help: Za a haɗa gunkin '+' a cikin ra'ayoyi, yana bawa masu amfani damar ƙara abubuwan da ke faruwa cikin sauri a cikin kalandar sauran masu amfani.
+Include add event link in views: Hada da hada mahada taron a cikin ra'ayoyi
+lunar-help: Idan an kunna, zai nuna kananan gumaka masu wakiltar lokutan watan a kowane wata
+Display Lunar Phases in month view: Nuna Hanyoyin Lunar a cikin watan duba
+Restrictions: Restuntatawa
+allow-view-other-help: Yana ƙayyade ko mai amfani ɗaya na iya duba kalandar wani mai amfani.
+Allow viewing other users calendars: Bada izinin kallon kalandar sauran masu amfani
+require-approvals-help: Lokacin da aka kunna, mai amfani dole ne ya yarda da wani abu kafin a nuna shi a kalandarsu (sai dai idan an kunna Nuna ba a yarda da shi ba). Bayanin kula sa wannan zuwa "A'a" ba zai kashe amincewa ba don kalandar Samun Jama'a (idan an kunna kalandar Samun Jama'a).
+Require event approvals: Nemi izinin taron
+display-unapproved-help: Yana ƙayyade ko abubuwan da ba a amince da su ba sun nuna a cikin kalandarku.<br>Idan an saita zuwa "Ee", to abubuwan da ba a yarda da su ba za a nuna su a cikin kalandarku (a cikin launi daban-daban).<br>Idan an saita zuwa "A'a", to Dole ne a yarda da abubuwan da ba a amince da su ba kafin a nuna su cikin kalandarku.
+Display unapproved: Nuna ba a yarda da shi ba
+conflict-check-help: Bincika don rikice-rikicen taron (abubuwa biyu da aka shirya lokaci ɗaya don mutum ɗaya). Idan ka saita wannan zuwa "Ee", har yanzu zaka iya tsara abubuwan biyu a lokaci guda bayan tabbatar da gargaɗi. Idan ka saita wannan zuwa "A'a", babu binciken rikice-rikice da za'a yi. Da alama kuna son saita wannan zuwa "Ee", don haka bincika rikici yana faruwa.
+Check for event conflicts: Bincika don rikice-rikicen taron
+Yes: Ee
+No: A'a
+conflict-months-help: Idan ana duba yanayin rikice-rikice ("Bincika don rikice-rikicen da ya faru" an saita zuwa "A'a" & # 41 ;, wannan yana ƙayyade watanni nawa zuwa gaba ya kamata mu bincika rikice-rikice. Idan kuka sami ƙara abubuwan da ke faruwa yana ɗaukar lokaci mai tsawo don aiwatar , rage wannan lambar.
+Conflict checking months: Rikici duba watanni
+conflict-check-override-help: Ba masu amfani damar shawo kan rikice-rikicen da suka faru da kuma tsara abubuwa biyu ko sama da haka a lokaci guda.
+Allow users to override conflicts: Bada masu amfani damar shawo kan rikice-rikice
+limit-appts-help: Ba da damar mai gudanar da tsarin ya saita iyaka-tsarin kan adadin nade-naden da mai amfani da su guda ɗaya zai iya yi a kowace rana.
+Limit number of timed events per day: Ayyade adadin abubuwan da aka tsara a kowace rana
+limit-appts-number-help: Yana ƙayyade matsakaicin adadin lokutan abubuwan da mai amfani zai iya samu a cikin rana ɗaya.
+Maximum timed events per day: Abubuwa mafi ƙarancin lokaci a kowace rana
+crossday-help: Idan an kunna, abubuwan da suka faru na tsawon kwanaki za a nuna su a ranaku daban
+Disable Cross-Day Events: Kashe Ayyuka na Ranar-Giciye
+disable-location-field-help: Zaɓin "Ee" zai cire filin "Wuri" daga shafukan bayanin abubuwan da suka faru
+Disable Location field: Kashe filin Wuri
+disable-url-field-help: Zaɓin "Ee" zai cire filin "URL" daga shafukan bayanin abubuwan da suka faru
+Disable URL field: Kashe filin URL
+disable-priority-field-help: Zaɓin "Ee" zai cire filin "Fifiko" daga shafukan bayanin abubuwan da suka faru, yana ba da sauƙi mai sassauƙa don sabbin yara.
+Disable Priority field: Kashe filin fifiko
+disable-access-field-help: Zaɓin "Ee" zai cire filin "Samun dama" daga shafukan bayanin abin da ya faru, yana ba da sauƙi mai sauƙi don sabbin yara.
+Disable Access field: Kashe filin shiga
+disable-participants-field-help: Zaɓin "Ee" zai cire filin "Mahalarta" daga shafukan bayanin abubuwan da suka faru, yana hana masu amfani ƙara waɗansu masu amfani da abubuwan da suka faru. Idan kun ba da damar wannan zaɓin, kuna so kuma a kashe maɓallin "Bada izinin kallon kalandar sauran masu amfani".
+Disable Participants field: Kashe filin Mahalarta
+disable-repeating-field-help: Zabin "Ee" zai cire filin "Maimaitawa" lokacin daɗa abubuwan da ke faruwa. Wannan zai samar da mafi sauki dubawa don novices.
+Disable Repeating field: Kashe maimaita filin
+allow-html-description-help: Idan an kunna, masu amfani za su iya shigar da HTML a cikin filin bayanin abin da ya faru. Idan ba a kunna ba, alamun HTML za su tsere don su bayyana azaman rubutu bayyananne. Gargaɗi: Bada damar wannan fasalin zai ba masu amfani damar yin amfani da hotuna a wasu shafukan yanar gizo.
+Allow HTML in Description: Bada HTML a cikin Bayani
+Popups: Bayyanawa
+disable-popups-help: Kashe popups daga ra'ayoyin kalanda
+Disable Pop-Ups: Kashe Pop-Ups
+popup-includes-siteextras-help: Idan an kunna, ba da izinin saitin filayen taron al'ada a cikin fayil ɗin site_extras.php za a nuna a cikin fitowar abubuwa.
+Display Site Extras in popup: Nuna Sitearin Yanar gizo a cikin popup
+popup-includes-participants-help: Idan an kunna, ana nuna mahalarta a yayin ɓullowar abubuwa.
+Display Participants in popup: Nuna Mahalarta a cikin popup
+Miscellaneous: Dabam dabam
+remember-last-login-help: Lokacin da aka kunna, za a cika shigar masu amfani a gare su a kan shafin shiga (amma ba kalmar sirri ba), kuma za a ɗora abubuwan da masu amfani ke so (gami da launukan da suka fi so da zaɓin yare).
+Remember last login: Ka tuna shiga na ƙarshe
+summary_length-help: Matsakaicin iyakar Takaitaccen Bayani a cikin ra'ayoyin kalanda
+Brief Description Length: Takaitaccen Bayanin Bayani
+user_sort-help: Ayyade jerin tsari don Mai amfani, Jerin sunayen marasa amfani
+User Sort Order: Tsaran Mai amfani
+Lastname, Firstname: Sunan mahaifa, Sunan mahaifa
+Firstname, Lastname: Sunan mahaifa, sunan mahaifa
+allow-public-access-help: Lokacin da aka kunna, za a iya amfani da kalandar azaman kalandar jama'a ta karanta kawai wanda baya buƙatar masu amfani su shiga.
+Allow public access: Bada damar jama'a
+public-access-default-visible: Abubuwan da ke faruwa daga kalandar jama'a za su bayyana ta atomatik akan kalandar duk masu amfani
+Public access visible by default: Hanyar jama'a ta bayyane
+public-access-default-selected: Lokacin ƙara sabon taron, mai amfani da jama'a za a zaɓi tsoho a matsayin ɗan takara.
+Public access is default participant: Samun dama ga jama'a tsoho mahalarci ne
+public-access-view-others-help: Lokacin samun dama ga tsarin tare da samun damar jama'a, yana ƙayyade ko mai amfani zai iya duba kalandar wani mai amfani da kalandar.
+Public access can view other users: Samun jama'a na iya duba sauran masu amfani
+public-access-can-add-help: Lokacin da aka kunna, masu amfani waɗanda ke samun damar tsarin ta hanyar Samun Jama'a za su iya ƙara sababbin abubuwan, amma ba za su bayyana a cikin kalandar ba har sai mai gudanarwa ya yarda da sabon taron.
+Public access can add events: Samun jama'a na iya ƙara abubuwan da suka faru
+public-access-add-requires-approval-help: Yana ƙayyade ko abubuwan da aka ƙara ta hanyar asusun samun damar jama'a na buƙatar amincewa kafin a nuna su.
+Public access new events require approval: Sabbin al'amuran jama'a suna buƙatar yarda
+public-access-sees-participants-help: Idan aka kunna, masu amfani da ke samun kalandar daga asusun jama'a za su iya ganin mahalarta taron idan sun duba bayanan wani taron.
+Public access can view participants: Samun jama'a na iya duba mahalarta
+public-access-override-help: Yana ba da damar a ɓoye sunaye da kwatancin abubuwan da ke faruwa a kalandar jama'a
+Override event name/description for public access: Shafe sunan taron / kwatancen taron don samun damar jama'a
+public-access-override-text-help: Rubutun don nunawa idan an kunna zaɓi na sama. Idan 'Babu', za'a fassara shi.
+Text to display to public access: Rubutu don nunawa ga damar jama'a
+public-access-captcha-help: Idan an kunna, sabbin abubuwan da aka kara ta Jama'a suna buƙatar wucewar CAPTCHA.
+Require CAPTCHA validation for public access new events: Nemi CAPTCHA inganci don samun damar jama'a sabbin abubuwan da suka faru
+uac-enabled-help: Ba da ikon sarrafa matakin-mai amfani
+User Access Control enabled: An kunna Ikon Shiga Mai amfani
+groups-enabled-help: Ba da tallafi ga ƙungiya, ba masu amfani damar zaɓar masu amfani ta ƙungiyoyi.
+Groups enabled: An kunna ƙungiyoyi
+user-sees-his-group-help: Idan an kunna, masu amfani ba za su ga masu amfani da kalandar waɗanda ba a cikin aƙalla ɗaya daga rukunin su ba.
+User sees only his groups: Mai amfani yana ganin ƙungiyoyinsa kawai
+nonuser-enabled-help: Idan aka kunna, admins za su sami damar da za su kara kalandarku mara amfani
+Nonuser enabled: Kalandar da ba ta amfani ba
+nonuser-list-help: Inda za a nuna kalandar marasa amfani a cikin jerin mahalarta
+Nonuser list: Nuna a jerin mahalarta a
+Upcoming Events: Abubuwan da ke zuwa a gaba
+upcoming-events-help: Enable mai zuwa.php
+Enabled: An kunna
+upcoming-events-allow-override: Bada izinin mai amfani don mai zuwa.php
+Allow user override: Bada izinin mai amfani
+upcoming-events-display-caticons: Haɗa gumakan rukuni a cikin mai zuwa.php
+Display category icons: Nuna gumakan rukuni
+upcoming-events-display-layers: Nuna yadudduka a cikin mai zuwa.php
+Display layers: Nuna yadudduka
+upcoming-events-display-links: Nuna hanyoyin a cikin mai zuwa.php
+Display links to events: Nuna hanyoyin haɗi
+upcoming-events-display-popups: Bayyana abubuwan da ke faruwa a cikin mai zuwa.php
+Display event popups: Bayyanan abubuwan da suka faru
+reports-enabled-help: Idan aka kunna, masu amfani za su ga sashen "Rahotanni" a ƙasan kowane shafi kuma za a ba su izinin ƙirƙirar rahotanni na al'ada. Bugu da ƙari, masu amfani da gudanarwa na iya ƙirƙirar rahotannin duniya waɗanda za su bayyana a ƙasan dukkan shafukan masu amfani.
+Reports enabled: An kunna rahotanni
+subscriptions-enabled-help: Yana ƙayyade idan masu amfani da nesa zasu iya biyan kuɗi zuwa kalandar mai amfani da WebCalendar, yana basu damar ganin abubuwan mai amfani da WebCalendar a cikin aikace-aikacen da suka kunna iCal (kamar Apple's iCal ko Mozilla Calendar).
+Allow remote subscriptions: Bada rajistar nesa
+remotes-enabled-help: Ba masu amfani damar ɗaukar fayilolin ics masu nisa ta amfani da URL
+Allow remote calendars: Bada kalandarku masu nisa
+rss-enabled-help: Yana ƙayyade idan za a iya samun kalandar mai amfani daga ciyarwar RSS.
+Enable RSS feed: Kunna ciyarwar RSS
+categories-enabled-help: Yana ba da tallafi ga rukunin taron.
+Categories enabled: An kunna rukuni
+icon_upload-enabled-help: Idan an kunna, masu amfani za su iya loda alamun gumaka
+Category Icon Upload enabled: Enabledaddamar da Icon Nau'in
+(Requires XXX folder to exist.): (Yana buƙatar babban fayil na XXX don wanzu.)
+display-tasks-help: Nuna karamin taga a watan da kalanda
+Display small task list: Nuna kananan ayyuka
+display-tasks-in-grid-help: Nuna ayyuka a cikin kalandarku tare da abubuwan da suka faru
+Display tasks in Calendars: Nuna ayyuka a Kalanda
+allow-external-users-help: Yana ƙayyade ko ana iya saka mai amfani da kalanda a cikin taron. Wannan yana bawa masu amfani da kalanda damar jera su azaman mahalarta taron.
+Allow external users: Bada masu amfani na waje
+external-can-receive-notification-help: Lokacin da aka kunna masu amfani na waje kuma aka kunna amfani da imel, masu amfani na waje zasu iya karɓar sanarwar imel lokacin da aka ƙara taron, sabuntawa ko sharewa (idan an samar da adireshin imel ɗin mai amfani na waje).
+External users can receive email notifications: Masu amfani na waje za su iya karɓar sanarwar imel
+external-can-receive-reminder-help: Lokacin da aka kunna masu amfani na waje kuma aka kunna amfani da imel, masu amfani na waje zasu iya karɓar masu tuni na imel (idan an samar da adireshin imel na mai amfani na waje).
+External users can receive email reminders: Masu amfani na waje zasu iya karɓar masu tuni na imel
+allow-self-registration-help: Bada sabbin masu amfani damar yin rajistar kansu
+Allow self-registration: Bada rajistar kai
+use-blacklist-help: Iyakance damar yin amfani da ayyukan Yanar Gizo dangane da adireshin IP
+Restrict self-registration to blacklist: Untata yin rajistar kai zuwa jerin sunayen baki
+allow-self-registration-full-help: Bada sabbin masu amfani damar kammala aikin rajistar kan layi
+Use self-registration email notifications: Haɗa kalmomin shiga kuma aika wa sababbin masu amfani
+allow-attachment-help: Bada masu amfani damar ƙara abubuwan haɗe-haɗe na fayil zuwa abubuwan da suka faru.
+Allow file attachments to events: Bada izinin haɗe-haɗen fayil zuwa abubuwan da suka faru
+Admin and owner can always add attachments if enabled.: Gudanarwa da mai abu koyaushe zasu iya ƙara haɗe-haɗe idan an kunna su.
+allow-comments-help: Bada masu amfani damar ƙara tsokaci akan abubuwan da suka faru.
+Allow comments to events: Bada ra'ayoyi ga al'amuran
+Admin and owner can always add comments if enabled.: Admin da mai gida koyaushe zasu iya ƙara tsokaci idan an kunna.
+email-enabled-help: Kunna ko kashe duk aikawar imel don sanarwa da tunatarwa. Saita zuwa "a'a", idan ba a saita uwar garkenka da kyau ba don aika wasiƙa.
+Email enabled: An kunna imel
+email-default-sender: Yana ƙayyade adireshin imel ɗin don sakawa azaman mai aikawa lokacin aika tuni.
+Default sender address: Tsoffin adireshin mai aikawa
+email-mailer: Zaɓi nau'in imel (SMTP, mail na PHP, mailmail)
+Email Mailer: Adireshin Imel
+email-smtp-host: Sunan mahaifi (s) na uwar garken SMTP (s) rabu da wakafi
+SMTP Host name(s): Sunan mai watsa shiri na SMTP
+email-smtp-port: Lambar tashar tashar SMTP (yawanci 25)
+SMTP Port Number: Lambar Tashar SMTP
+email-smtp-auth: Yi amfani da Tantance kalmar sirri ta SMTP
+SMTP Authentication: Tabbatar da SMTP
+email-smtp-username: Sunan mai amfani na SMTP idan yana amfani da Tantance kalmar sirri
+SMTP Username: Sunan mai amfani na SMTP
+email-smtp-password: SMTP Password idan amfani da Tantance kalmar sirri
+SMTP Password: Kalmar wucewa ta SMTP
+Default user settings: Tsoffin saitunan mai amfani
+email-format: Saka fifiko ga HTML ko saƙonnin rubutu sarari
+Email format preference: Fatan tsarin email
+HTML: =
+Plain Text: Rubutun Bayyana
+email-include-ics: Hada da iCalendar ICS fayil zuwa sakon email
+Include iCalendar attachments: Attachara haɗe-haɗen iCalendar
+email-event-reminders-help: Yana ƙayyade ko a aika masu tuni na taron ko a'a.
+Event reminders: Tunatarwar taron
+email-event-added: Yana ƙayyade ko aika aika sanarwar imel lokacin da aka ƙara taron zuwa kalandarku.
+Events added to my calendar: Abubuwan da suka faru sun kara zuwa kalanda na
+email-event-updated: Yana ƙayyade ko a aika da sanarwar imel lokacin da aka sabunta taron a kan kalandarku.
+Events updated on my calendar: Abubuwan da aka sabunta akan kalandar ta
+email-event-deleted: Yana ƙayyade ko aika aika sanarwar imel lokacin da aka cire taron daga kalandarku.
+Events removed from my calendar: Abubuwan da aka cire daga kalandata
+email-event-rejected: Yana ƙayyade ko a aika sanarwar imel ko a'a yayin da ɗan takara ya ƙi abin da ya faru a kan kalanda.
+Event rejected by participant: Abun da mai halarta yayi watsi dashi
+email-event-create: Yana ƙayyade ko mahaliccin shigarwar zai karɓi imel
+Event that I create: Taron da na kirkira
+Color options: Zaɓuɓɓukan launi
+Allow user to customize colors: Bada mai amfani damar tsara launuka
+gradient-colors: Idan an kunna launuka dan tudu Wannan na iya yin tasiri sosai ga aiki.
+Enable gradient images for background colors: Kunna hotunan dan tudu don launuka na baya
+Not available: Babu
+Background Image options: Fage zabin Hoto
+bgimage-help: URL na asalin bayanan da ake so. Zai iya zama haɗin dangi.
+Background Image: Hoto na Fage
+bgrepeat-help: Gudanar da maimaita halayyar hoton baya.
+Background Repeat: Maimaita Bayanin
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Mataimakai
+Preferences: Zaɓuɓɓuka
+Control Panel: Kwamitin Sarrafawa
+Users: Masu amfani
+Account: Asusun
+Categories: =
+Views: Ra'ayoyi
+Layers: Gidaje
+Reports: Rahotanni
+Delete Events: Share Abubuwan
+Activity Log: Rajistar Aiki
+System Log: Tsarin Tsarin
+Security Audit: Binciken Tsaro
+Public Preferences: Shafin Jama'a
+Unapproved Public Events: Abubuwan Taron Jama'a da ba a Amince da su ba
+Administrative Tools: Kayan Gudanarwa
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Kwafin Kwafi: "XXX"
+Username XXX already exists.: Sunan mai amfani "XXX" ya kasance
+Email address XXX already exists.: Adireshin imel ɗin "XXX" ya riga ya wanzu
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Commentsarin Bayani (na zaɓi)
+Approve and Send: Amince da Aika
+Approve and Exit: Amincewa da Fita
+(Your comments will be emailed to the event creator.): (Za a yi wasikun maganganun ku zuwa ga mahaliccin taron.)
+Hello, XXX.: Barka dai, XXX.
+XXX has approved an appointment and added comments.: An yarda da alƙawari kuma an ƙara tsokaci ta XXX.
+Subject XXX: Take: "XXX".
+Description XXX: Bayani: "XXX"
+Date XXX: Kwanan wata: XXX
+Time XXX: Lokaci: XXX
+Comments XXX: Sharhi: XXX
+Approved w/Comments by XXX.: Amince w / Bayani ta: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Yanayin gudanarwa
+Your assistants: Mataimakanku
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Kuskuren da ba a sani ba
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Kuskuren Shirye-shiryen: Babu takamaiman XXX!
+user: mai amfani
+year: shekara
+month: wata
+day: rana
+
+########################################
+# Page: category.php
+#
+Category Icon: Alamar Rukuni
+Global: Duniya
+The permissions for the icons directory are set to read-only: An saita izini don kundin gumakan don karanta kawai.
+Category Name: Sunan Rukuni:
+Color: Launi
+Remove Icon: Cire Alamar:
+Add Icon to Category: Iara Alamar zuwa oryangare
+Upload: Loda
+GIF or PNG 6kb max: GIF ko PNG 6kb max
+Search for existing icons: Binciki gumakan da ke akwai
+Add: Ara
+Delete: Share
+Are you sure you want to delete this entry?: Shin kun tabbata kuna son share wannan shigarwar?
+Make New Category: Sanya Sabon Fanni
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Ana buƙatar sunan rukuni
+File size exceeds maximum.: Girman fayil ya wuce iyakar.
+File is not a GIF or PNG image: Fayil ba hoto bane na GIF ko PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: KASUWAN DA AKA SAMU
+ENTRY CATEGORIES: KASAN SHIGA
+Remove: Cire
+Global Category: Rukunin Duniya
+Cancel: Soke
+
+########################################
+# Page: colors.php
+#
+Add Custom: Customara Custom
+Basic Colors: Launuka na asali
+Current Color: Launin Yanzu
+Custom Colors: Launuka na Musamman
+Old Color: Tsohon Launi
+
+########################################
+# Page: combo.php
+#
+Select None: Zaɓi Babu
+Agenda: Ajanda
+Add Task: Tasara kawainiya
+Description: Bayani
+Date: Kwanan wata
+Time: Lokaci
+Priority: Fifiko
+Access: Samun dama
+Created by: Wanda ya kirkira
+Updated: An sabunta
+Participants: Mahalarta
+Attachments: Haše-haše
+Comments: Sharhi
+Brief Description: Takaitaccen Bayani
+Full Description: Cikakken Bayani
+Category: Nau'i
+Add event detail: Sanya dalla dalla abubuwan da suka faru
+Start Date: Fara Kwanan wata
+Due Date: Lokaci
+Add task detail: Add daki-daki aiki
+All: Duk
+Error: Kuskure
+no response from server: babu amsa daga sabar
+JSON error: Kuskuren JSON
+High: Babban
+Medium: Matsakaici
+Low: .Asa
+Today: Yau
+Add Entry: Entara Shiga
+Unnamed Event: Taron da ba a bayyana sunan sa ba
+Unnamed Task: Tasawainiyar da ba a ambata ba
+Refresh: Shakata
+Click to add entry: Danna don ƙara shigarwa
+Name: Suna
+pm: maraice
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX ta soke alƙawari.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: ID mara kyau mara kyau
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Commentara Sharhi
+Add Attachment: Attara Abin Da Aka Makala
+Subject: Maudu'i
+Comment: Sharhi
+Upload file: Sanya fayil
+
+########################################
+# Page: docdel.php
+#
+Removed: An cire
+
+########################################
+# Page: edit_entry.php
+#
+days: kwanaki
+hours: awowi
+minutes: mintuna
+You are not authorized to edit this task.: Ba a ba ku izini ba don shirya wannan aikin.
+is in a different timezone than you are. Currently: yana cikin lokaci daban-daban fiye da yadda kake. A halin yanzu
+hour ahead of you: sa'a a gabanka
+hour behind you: sa'a a baya
+hours ahead of you: awowi a gabanka
+hours behind you: awowi a bayanku
+XXX is in a different timezone (ahead): (XXX yana cikin wani lokaci daban-daban; YYY a gabanku.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX yana cikin wani lokaci daban-daban; YYY a bayanku.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Lokacin da aka shigo nan ya dogara da yankinku.
+Edit Entry: Shirya Shigarwa
+Details: Cikakkun bayanai
+Repeat: Maimaita
+Reminders: Tunatarwa
+brief-description-help: Wannan ya kamata ya ba da ɗan gajeren bayanin (game da haruffa 20) na taron. Wannan zai wakilci taron yayin kallon kalanda.
+full-description-help: Wannan yakamata ya kammala cikakkun bayanai game da taron. Ana iya ganin wannan bayanin lokacin da mai amfani ya kalli taron.
+access-help: Yana ƙayyade matakin isa ga taron. <ul> <li> Jama'a: Kowa na iya ganin cikakken bayanin abin da ya faru.</li> <li> Sirri: Wasu na iya ganin cewa kuna da hanyar shiga don kwanan wata da lokacin, amma ba cikakken bayani game da menene ba.</li></ul>
+priority-help: Yana bayyana fifikon taron. Za a nuna abubuwan da suka fi fifiko a gaba ɗaya.
+category-help: Yana ƙayyade rukunin taron.
+completed-help: An kammala aikin kwanan wata. Ana kunna kawai lokacin da duk mahalarta suka yi daidai da 100%.
+Date Completed: Ranar Kammalawa
+percent-help: Adadin kammala aiki ga wannan mai amfanin
+Percent Complete: Kashi cikakke
+All Percentages: Duk kashi
+location-help: Wurin taron
+Location: Wuri
+url-help: Shafin URL
+URL: =
+date-help: Yana ƙayyade ranar taron.
+Untimed event: Taron da ba a yi tsammani ba
+Timed event: Taron lokaci
+All day event: Duk ranar taron
+Timezone Offset: Tsaran Lokaci
+time-help: Yana ƙayyade lokacin taron. <ul> <li> "Taron lokaci" (don taron da aka tsara don wani takamaiman lokaci a wannan ranar)</li> <li> "Lamarin da ba a yi tsammani ba" (don taron wannan ba shi da lokaci (kamar hutu )</li> <li> "Lamarin yini duka" (don abin da ke faruwa a rana duka (kamar fita daga ofis)</li></ul>
+duration-help: Yana ƙayyade tsawon (a cikin awoyi; mintina) na taron. <em>Ana iya barin wannan filin fanko.</em>
+end-time-help: Yana ayyana lokacin da ake tsammanin ƙarshen taron.
+Start Time: Lokacin farawa
+Due Time: Lokacin Lokaci
+Site Extras: Karin Bayanin
+avail_participants-help: Ya lissafa wadatar mahalarta wannan shigarwar.
+Available: Akwai
+Find Name: Nemo Suna
+Resources: Albarkatun kasa
+participants-help: Ya lissafa mahalarta wannan shigarwar.
+Selected: Zaba
+Availability: Samuwar
+external-participants-help: Yana ƙayyade jerin mahalarta taron wanda ba masu amfani da kalanda ba. Ya kamata a lissafa masu amfani ɗaya a kowane layi kuma zasu iya haɗa da adireshin imel. Idan an ayyana adireshin imel, mai amfani ya cancanci karɓar sanarwa da tunatarwa.
+External Participants: Mahalarta Waje
+repeat-type-help: Zaɓi sau nawa abin da ya kamata taron ya maimaita.
+Daily: Kullum
+Weekly: Mako-mako
+Monthly: Watanni
+by day: da rana
+by date: ta kwanan wata
+by position: ta matsayi
+Monthly (by day): Watanni (kowace rana)
+Monthly (by date): Watanni (ta kwanan wata)
+Monthly (by position): Watanni (ta matsayi)
+Yearly: Shekara-shekara
+Manual: =
+Expert Mode: Yan Kwarewa
+repeat-end-date-help: Yana ayyana ranar da abin da ya kamata ya maimaita har sai.
+Ending: Karshen
+Forever: Har abada
+Use end date: Yi amfani da ranar ƙarshe
+Number of times: Yawan lokuta
+repeat-frequency-help: Yana bayyana sau nawa abin da ya kamata taron ya maimaita.
+Frequency: Mitar lokaci
+Weekdays Only: Makonni kawai
+Week Start: Makon Farawa
+repeat-bydayextended-help: Ba da damar zaɓin kwanan wata bisa ranar mako.
+ByDay: Rana
+repeat-month-help: Yana ƙayyade waɗanne watanni ne abin da ya kamata taron ya maimaita a ciki.
+ByMonth: Bayan Wata
+repeat-bysetpos-help: Yana ba da damar zaɓin kwanan wata dangane da matsayi tare da watan.
+BySetPos: =
+repeat-bymonthdayextended-help: Bada damar zaɓin kwanan wata bisa kwanan wata.
+ByMonthDay: RanarMonthDay
+repeat-byweekno-help: Ba mai amfani damar tantance jerin makonni don maimaita abin da ya faru (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: By Aka Anfara
+repeat-byyearday-help: Yana bawa mai amfani damar tantance jerin ranakun shekara don maimaita abin da ya faru (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Arin kwanakin da wannan taron ya kamata ko ba zai faru ba.
+Exclusions: Keɓewa
+Inclusions: Hadawa
+Add Exception: Exara Banda
+Add Inclusion: Incara Hadawa
+Delete Selected: Share Zaba
+Send Reminder: Aika Tunatarwa
+When: Yaushe
+Use Date/Time: Yi amfani da Kwanan / Lokaci
+Use Offset: Yi amfani da Offset
+Before: Kafin
+After: Bayan
+Start: Fara
+End/Due: Karshe / Saboda
+Times: Lokaci
+Every: Kowane
+CAPTCHA Warning: Gargadi:  Ba za a iya amfani da CAPTCHA ba tare da ƙarin GD na PHP ba!<br>
+Delete entry: Share shigarwa
+You are not authorized to edit this entry.: Ba a ba ka izini ba don gyara wannan shigarwar.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX ta yi sabon alƙawari.
+XXX has updated an appointment.: XXX ta sabunta alƙawari.
+Security violation!: Rashin tsaro!
+You must enter the anti-spam text on the previous page.: Dole ne ku shigar da rubutun anti-spam akan shafin da ya gabata.
+The following conflicts with the suggested time: Wadannan rikice-rikice tare da lokacin da aka ba da shawara
+User removed from participants list.: An cire mai amfani daga jerin mahalarta.
+Please look on XXX to accept or reject this appointment.: Da fatan za a duba XXX don karɓa ko ƙi wannan nadin.
+Please look on XXX to view this appointment.: Da fatan za a duba XXX don duba wannan alƙawarin.
+Scheduling Conflict: Tsarin Jadawalin
+Your suggested time of: Lokacin shawararku na
+conflicts with the following existing calendar entries: rikice-rikice tare da shigarwar kalanda masu zuwa
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX ba a saita shi cikin "config.php".
+word characters only: (zai iya ƙunsar haruffan kalma kawai; [a-zA-Z_0-9])
+Add User: Userara Mai amfani
+Edit User: Shirya Mai amfani
+Calendar ID: Kalanda ID
+First Name: Sunan rana
+Last Name: Sunan mahaifa
+Is public calendar: Kalandar jama'a ce
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Kuskuren bayanai
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Remara Kalanda Nesa
+Edit Remote Calendar: Shirya Kalanda Nesa
+Create Layer: Lairƙiri Layer
+Reload: Sake lodi
+Required to View Remote Calendar: Ana buƙatar Duba Kalanda Nesa
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Shigo da Sakamako
+Events successfully imported: An shigo da abubuwan cikin nasara
+Create a new layer to view this calendar.: Irƙiri sabon shafi don duba wannan kalanda.
+Errors: Kurakurai
+There was an error parsing the import file or no events were returned.: An sami kuskure game da shigar da fayil ɗin shigowa ko ba a dawo da abubuwan da suka faru ba.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Gobe
+Yesterday: Jiya
+Day before yesterday: Day kafin jiya
+Next week: Mako mai zuwa
+This week: Wannan makon
+Last week: Makon da ya gabata
+Week before last: Mako kafin karshe
+Next week and week after: Mako mai zuwa da mako bayan
+This week and next week: Wannan makon da mako mai zuwa
+Last week and this week: Makon da ya gabata da wannan makon
+Last two weeks: Makonni biyu da suka gabata
+Next month: Wata mai zuwa
+This month: Wannan wata
+Last month: Watan da ya gabata
+Month before last: Watan da ya gabata
+Next year: Shekarar gaba
+This year: Wannan shekara
+Last year: Shekaran da ya gabata
+Year before last: Shekara kafin karshe
+Next 14 days: Kwanaki 14 masu zuwa
+Next 30 days: Kwanaki 30 masu zuwa
+Next 60 days: Kwana 60 masu zuwa
+Next 90 days: Kwanaki 90 na gaba
+Next 180 days: Kwanaki 180 masu zuwa
+Next 365 days: Kwanaki 365 masu zuwa
+Invalid report id XXX.: ID mara inganci: "XXX".
+Unnamed Report: Rahoton da ba a bayyana sunan sa ba
+Add Report: Reportara rahoto
+Edit Report: Shirya Rahoton
+Report name: Sunan rahoto
+User: Mai amfani
+Current User: Mai amfani na yanzu
+Include link in menu: Hada mahada a cikin menu
+Include standard header/trailer: Ludara da madaidaicin taken / tirela
+Include previous/next links: Hada hanyoyin da suka gabata / na gaba
+Include empty dates: Hada da kwanakin fanko
+Date range: Kwanan wata
+Template variables: Masu canji da samfuri
+Page template: Shafin shafi
+Day template: Samfurin rana
+Event template: Samfurin taron
+Are you sure you want to delete this report?: Shin kun tabbata kuna son share wannan rahoton?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Babu irin wannan rahoton id: "XXX".
+Variable XXX not found.: Ba'a samo mai bambanta XXX ba.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Shirya Header na Custom
+Edit Custom Script/Stylesheet: Shirya Rubutun Custom / Stylesheet
+Edit Custom Trailer: Shirya Trailer Na Musamman
+
+########################################
+# Page: edit_user.php
+#
+Username: Sunan mai amfani
+E-mail address: Adireshin i-mel
+Password: Kalmar wucewa
+again: sake
+Disabled for demo: An kashe don demo
+Are you sure you want to delete this user?: Shin kun tabbata kuna son share wannan mai amfanin?
+Change Password: Canza kalmar shiga
+New Password: Sabuwar Kalmar wucewa
+Set Password: Saita Kalmar wucewa
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Share masu amfani ba shi da tallafi.
+The passwords were not identical.: Kalmar sirrin ba iri daya bane.
+You have not entered a password.: Ba ku sanya kalmar shiga ba
+Username cannot be blank.: Sunan mai amfani ba zai zama fanko ba.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Ba a ba da izini ba
+
+########################################
+# Page: export.php
+#
+Export: Fitarwa
+Export format: Tsarin fitarwa
+Include all layers: Hada dukkan yadudduka
+Include deleted entries: Hada da shigarwar da aka goge
+Export all dates: Fitar da dukkan ranakun
+Start date: Ranar farawa
+End date: Ranar ƙarewa
+Modified since: An gyara tun
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: Tsarin fitarwa ba a bayyana ko kuskure ba.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Babu takamaiman mai amfani.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Newara Sabon Rukuni
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Groupungiyar da ba'a ambata ba
+Add Group: Groupara Groupungiya
+Edit Group: Gyara Group
+Group name: Sunan rukuni
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Dole ne ku saka sunan rukuni
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Kalandar-shakatawa na atomatik
+auto-refresh-help: Lokacin da aka kunna, duba rana, duba mako, duba watan, da jera shafuka da ba a yarda da su ba duk za su sami nutsuwa ta atomatik lokaci-lokaci.
+Auto-refresh time: Sake hutawa ta atomatik
+auto-refresh-time-help: Idan an kunna-Auto-Refresh, wannan yana kayyade lokaci tsakanin kowane abin shakatawa.
+Display days with events in bold in year view: Nuna ranaku tare da abubuwan da suka faru a bayyane cikin duban shekara
+Display weekends in week view: Nuna karshen mako a cikin mako
+Time interval: Lokaci lokaci
+time-interval-help: Yana ƙayyade tsawon lokacin da aka katange abubuwa a cikin mako da kuma ganin rana.
+Nonuser: Kalanda marasa amfani
+user-customize-color: Yana ƙayyade ko an ba masu amfani damar canza tsarin launi nasu.
+enable-gradient-help: Yi amfani da launuka dan tudu don bayanan bayan gida.
+Manually entering color values: Da hannu shigar da dabi'u masu launi
+colors-help: Duk launuka yakamata a bayyana su a cikin "#RRGGBB" hexadecimal inda "RR" shine darajar hex na ja, "GG" shine hex na kore, kuma "BB" shine ƙimar hex na shuɗi
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Rahoton Kwakwalwa
+Please include all the information below when reporting a bug.: Da fatan za a haɗa da dukkan bayanan da ke ƙasa yayin ba da rahoton wata matsala.
+Also, please use English rather than XXX.: Hakanan, don Allah a yi amfani da  Turanci  maimakon XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Takaddun Shafin Yanar Gizo
+Currently in English only.: A halin yanzu cikin Turanci kawai.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Dingara / Gyara shigarwar Kalanda
+Repeat Type: Maimaita Rubuta
+For More Information...: Don Informationarin Bayani ...
+Repeat End Date: Maimaita Kwanan Wata .arshe
+Repeat Day: Maimaita Rana
+repeat-day-help: Yana ƙayyade ranakun mako na abin da ya kamata taron ya maimaita.
+
+########################################
+# Page: help_import.php
+#
+Import: A shigo da
+Palm Desktop: =
+allow you to import entries from the Palm...: Wannan fom din zai baku damar shigo da shigarwa daga Littafin kwanan wata na Palm Desktop. Ya kamata ya kasance a cikin kundin adireshin ku na Palmbook a cikin littafin kwanan wata / kwanan wata.dat a cikin ƙaramin kundin adireshi mai suna da sunan mai amfanin ku.
+The following entries will not be imported: Ba za a shigo da shigarwar masu zuwa ba:
+Entries older than the current date: Shigarwa fiye da kwanan wata
+Entries created in the Palm Desktop...: Abubuwan da aka shigar a cikin Desktop na Palm waɗanda ba HotSync'd bane
+Anything imported from Palm...: Duk abin da aka shigo da shi daga Palm za a sake rubuta shi a yayin shigowa ta gaba (sai dai idan ranar taron ta wuce). Sabili da haka, yakamata ayi sabuntawa a cikin Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Wannan fom ɗin zai shigo da abubuwan vCalendar (.vcs) 1.0.
+The following formats have been tested: An gwada tsarukan masu zuwa:
+This form will import iCalendar (.ics) events.: Wannan fom zai shigo da abubuwan iCalendar (.ics).
+Enabling: Ana kunnawa
+Overwrite Prior Import: Rubuta Shigo da Farko
+will cause events imported previously...: zai haifar da abubuwan da aka shigo da su a baya, waɗanda sukayi amfani da UID iri ɗaya azaman taron daga sabon fayil ɗin shigowa, don yiwa alama azaman sharewa. Wannan zai ba da damar shigo da fayil ɗin iCalendar da aka sabunta ba tare da ƙirƙirar abubuwan biyu ba.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Fihirisar Taimako
+About WebCalendar: Game da Kalandar Yanar Gizo
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Layer suna da amfani don nuna abubuwan sauran masu amfani a cikin kalandar ka. Kuna iya tantance mai amfani da launi abubuwan da zasu faru a ciki.
+Add/Edit/Delete: Addara / Gyara / Sharewa
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Danna mahadar Shirya Layer a cikin ɓangaren gudanarwa a ƙasan shafin zai ba ku damar ƙara / gyara / share matakan.
+The text color of the new layer that will be displayed in your calendar.: Launin rubutu na sabon layin da za a nuna a cikin kalandarku.
+Disabling: Kashewa
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Latsa mahadar kashe Layer a cikin sashen gudanarwa a kasan shafin don kashe yadudduka.
+Duplicates: Kwafi
+If checked, events that are duplicates of your events will be shown.: Idan an bincika, za a nuna abubuwan da suka kwafi abubuwan abubuwanku.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Latsa mahaɗin Enable Layers a cikin sashen gudanarwa a ƙasan shafin don kunna layuka.
+Source: =
+Specifies the user that you would like to see displayed in your calendar.: Yana ƙayyade mai amfani da kuke son ganin an nuna a cikin kalandarku.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Tsoffin Rukuni
+default-category-help: Yana ƙayyade rukunin sabon taron da ya kamata ya zama tsoho.
+When I am the boss: Lokacin nine shugaba
+Email me event notification: Email ni sanarwar sanarwa
+email-boss-notifications-help: Yana ƙayyade idan shuwagabanni suka karɓi imel azaman sanarwar sanarwar taron.
+I want to approve events: Ina so in yarda da abubuwan da suka faru
+boss-approve-event-help: Yana bayyana ko za'a buƙaci shugaban ya yarda da abubuwan da mataimaka suka ƙara.
+Subscribe/Publish: Biyan kuɗi / Buga
+Allow remote publishing: Bada damar wallafawa
+allow-remote-publishing-help: Yana ƙayyade idan abokin ciniki na iCal na nesa zai iya buga abubuwan da suka faru zuwa WebCalendar
+remote-publishing-url-help: Nuna URL don amfani a cikin aikace-aikacen abokin ciniki iCal don biyan kuɗi da kuma sake bugawa zuwa WebCalendar.
+allow-remote-subscriptions-help: Yana ƙayyade idan masu amfani masu nisa za su iya biyan kuɗi zuwa kalandarku, yana ba su damar ganin al'amuranku a cikin aikace-aikacen iCal (kamar Apple na iCal ko Kalanda Mozilla).
+remote-subscriptions-url-help: Nuna URL masu amfani da nesa yakamata suyi amfani dasu don biyan kuɗi zuwa kalandarku.
+Enable FreeBusy publishing: Enable FreeBusy wallafa
+freebusy-enabled-help: Yana ƙayyade idan ana iya samun wadatar lokacin mai amfani ta amfani da daidaitaccen iCal FreeBusy.
+freebusy-url-help: Adireshin URL don samun damar jerin masu amfani na FreeBusy
+rss-feed-url-help: Adireshin don samun damar ciyarwar RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Yana ba da izinin kyakkyawan ikon isa ga mai amfani da izini. Masu amfani zasu iya ba da tsoho da izinin mutum idan mai gudanarwa ya ba da izini.
+If disabled, this user cannot send you emails.: Idan an kashe, wannan mai amfanin ba zai iya aiko muku da imel ba.
+If disabled, this user cannot see you in the participants list.: Idan an kashe, wannan mai amfanin ba zai iya ganin ku a cikin jerin mahalarta ba.
+If enabled, this user cannot view the details of any of your entries.: Idan an kunna, wannan mai amfanin ba zai iya duba bayanan kowane shigarwar ku ba.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Bugun nakasa (Admin)
+Publishing Disabled (User): Disabataccen abledab'in (Mai amfani)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Danna don Zaɓi
+Current Icons on Server: Gumakan Yanzu akan Sabar
+
+########################################
+# Page: import.php
+#
+import from file: shigo daga fayil
+Disabled: Naƙasasshe
+Import format: Shigo da tsari
+Exclude private records: Banda bayanan sirri
+Repeated items are imported separately. Prior imports are not overwritten.: Maimaita abubuwa ana shigo dasu daban. Ba a sake rubuta abubuwan da aka shigo da su ba.
+
+########################################
+# Page: import_handler.php
+#
+No file: Babu fayil
+Error deleting palm events from webcalendar.: Kuskure share abubuwan dabino daga kalandar yanar gizo.
+Events from prior import marked as deleted: Abubuwan da suka faru daga shigo da shigo da alama anyi share su
+Conflicting events: Abubuwa masu rikici
+The import file contained no data.: Fayil ɗin da aka shigo da shi bai ƙunshi bayanai ba.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Shin kun tabbata kuna son share wannan rukunin?
+Delete layer: Share Layer
+Edit layer: Gyara Layer
+Enable layers: Enable yadudduka
+Layer: =
+Layers are currently disabled.: Launuka a halin yanzu suna da nakasa.
+Layers are currently enabled.: Ana kunna layuka a halin yanzu
+Click to modify layers settings for XXX: Danna nan don gyara saitunan yadudduka don kalandar XXX.
+Disable Layers: Kashe Layer
+Add layer: Layerara Layer
+Add Layer: Laara Layer
+Edit Layer: Shirya Layer
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Ba za a iya sabunta fifiko ba
+Invalid entry id.: Id mara inganci
+You cannot create a layer for yourself.: Ba za ku iya ƙirƙirar wani abu don kanku ba.
+You can only create one layer for each user.: Kuna iya ƙirƙirar layi ɗaya don kowane mai amfani.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Amince / Tabbatar
+Approve Selected: Amince Zaba
+Check All: Duba Duk
+Emails Will Not Be Sent: Ba Za A Aika Imel Ba
+Reject Selected: Jecti Amincewa
+Reject: In yarda
+Uncheck All: Cire alamar Duk
+View this entry: Duba wannan shigarwa
+No unapproved entries for XXX.: Babu shigarwar da ba a amince da ita ba don: "XXX".
+Unapproved Entries: Shigar da Ba a Amince da su ba
+Approve this entry?: Amince da wannan shigarwar?
+Reject this entry?: Amince da wannan shigarwar?
+Approve Selected entries?: Amince da Zaɓaɓɓun shigarwar?
+Reject Selected entries?: Jectin Amintattun shigarwar?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Dole ne ku shigar da hanyar shiga da kalmar wucewa.
+Save login via cookies so I dont have to login next time.: Adana shiga ta hanyar cookies don haka ba lallai bane in shiga lokaci na gaba
+Login: Shiga
+public: jama'a
+Access XXX calendar: Iso ga kalandar XXX
+cookies-note: Lura: Wannan aikace-aikacen yana buƙatar kunna cookies.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Haruffan doka ba bisa doka ba a shiga XXX.
+Invalid login: Shiga ciki mara aiki
+Activity login failure: Sunan mai amfani: "XXX", IP: "YYY"
+Error XXX: Kuskure: "XXX"
+You have been logged out.: An fitar da ku
+Access public calendar: Iso ga kalandar jama'a
+Not yet registered? Register here!: Ba a yi rajista ba tukuna? Yi rijista a nan!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Babu wannan kalandar mara amfani, "XXX".
+This Calendar is not Public.: Wannan Kalanda ba Jama'a bane.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Newara Sabon Kalanda mara amfani
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Dole ne a kayyade hanyar shiga.
+No such nonuser calendar: Babu wannan kalandar mara amfani
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Jigon mara aiki
+Save Preferences: Adana abubuwan fifiko
+Public Access calendar: Kalandar Samun Jama'a
+Modify Non User Calendar Preferences: Gyara Zaɓin Kalanda Masu Amfani Ba
+Return to My Preferences: Koma Zuwa Abinda Na Fi So
+Custom Scripts: Rubutun Musamman
+Timezone Selection: Zaɓin Lokaci
+Multiview: =
+entry-interval-help: Ya sanya tazarar minti lokacin gyara lokutan shigarwa
+Entry interval: Lokacin shiga
+hour: awa
+minute: minti
+theme-reload-help: Saboda kwasfa na CSS, ana iya buƙatar sake shigar da shafi
+Page may need to be reloaded for new Theme to take effect: Za'a iya buƙatar sake loda shafi don sabon Jigo don fara aiki
+display_byproxy-help: Nuna ainihin mahaliccin akan shafin ra'ayi_shirwa
+Display if created by Assistant: Nuna idan createdirƙirar Mataimakin ne
+allow-view-subscriptions-help: Yana ba da damar ƙuntata damar isa ga masu zaman kansu ko bayanan sirri
+Allow remote viewing of: Bada izinin kallon nesa
+entries: shigarwar
+
+########################################
+# Page: purge.php
+#
+Purging events for: Bayyanar abubuwan da suka faru don
+Finished: An gama
+Back: Baya
+Check box to delete ALL events for a user: Duba akwati don share abubuwan  ALL  ga mai amfani
+Delete all events before: Share duk abubuwan da suka faru kafin
+Purge deleted only: Goge share kawai
+Preview delete: Share samfoti
+Are you sure you want to delete events for: Shin kun tabbata kuna son share abubuwan don
+Records deleted from XXX: An share rikodin daga "XXX"
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Adireshin imel ba zai zama fanko ba.
+Username already exists.: Dama akwai sunan mai amfani.
+Email address already exists.: Adireshin imel ya riga ya wanzu
+New user via self-registration.: Sabon mai amfani ta hanyar rajistar kai.
+A new WebCalendar account has been set up for you.: An saita sabon lissafin Yanar Gizo.
+Your username is XXX.: Sunan mai amfani naka shine: "XXX".
+Your password is XXX.: Kalmar sirrinku ita ce: "XXX".
+Please visit XXX to log in and start using your account!: Da fatan za a ziyarci "XXX" don shiga kuma fara amfani da asusunku!
+You may change your password after logging in the first time.: Kuna iya canza kalmar sirrinku bayan kun shiga farkon lokaci.
+If you received this email in error: Idan ka karɓi wannan imel ɗin a cikin kuskure kuma ba ka yi rajista don asusun yanar gizo ba, za ka iya yin watsi da wannan sanarwar, ko ka ba da amsa da ɗan gajeren rubutu
+Administrator: Mai gudanarwa
+Welcome: Barka da zuwa
+New user via email.: Sabon mai amfani ta hanyar imel.
+Registration: Rijista
+Welcome to WebCalendar: Maraba da zuwa Kalandar Yanar Gizo
+Your email should arrive shortly.: Adireshin i-mel dinka ya isa nan bada jimawa ba.
+Return to Login screen: Komawa kan allon shiga
+Password (again): Kalmar wucewa (sake):
+Your account information will be emailed to you.: Za a yi maka imel da bayanin asusunka.
+Submit: Sallama
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Ci gaba
+(Your comments will be emailed to the other participants.): (Za a yi imel da ra'ayoyinku ga sauran mahalarta.)
+XXX has rejected an appointment.: XXX ta ƙi amincewa.
+Rejected by XXX.: An ƙi shi ta hanyar XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Newara Sabon Kalanda Nesa
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Wannan taron sirri ne.
+(Private): (Na sirri)
+(cont.): (gaba.)
+Approved: Amince
+Deleted: An goge
+Rejected: An ƙi shi
+Waiting for approval: Jiran yarda
+Unknown: Ba a sani ba
+Invalid report id.: Rahoton mara inganci.
+Click here to manage reports for the Public Access calendar.: Danna nan don sarrafa rahotanni don kalandar Samun Jama'a.
+Add new report: Newara sabon rahoto
+Manage Reports: Sarrafa rahotanni
+
+########################################
+# Page: search.php
+#
+Advanced Search: Binciken Bincike
+Search: Bincika
+Keywords: Mahimman kalmomi
+Enter % for all entries: Shigar da% don duk shigarwar
+Include: A hada
+Filter by Date: Tace ta kwanan wata
+All Dates: Duk Ranakun
+Past: Ya wuce
+Upcoming: Mai zuwa
+Range: Yankin
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Dole ne ku shigar da kalmomin bincike ɗaya ko fiye.
+Search Results: Sakamakon Bincike
+match found: asamu
+matches found: matakan da aka samo
+No matches found: Babu ashana da aka samo
+New Search: Sabon Bincike
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Bayanin da ke ƙasa ya lissafa abubuwan da za su iya faruwa tare da shigarwar Gidan yanar gizonku wanda za a iya gyara don sanya ƙirarku ta kasance amintacce.
+For questions about WebCalendar security see the forums: Don tambayoyi game da kowane batun tsaro na WebCalendar, da fatan za a yi amfani da zauren gidan yanar gizon da aka shirya akan GitHub.com;<br>XXX
+View your current PHP settings: Duba saitunan PHP na yanzu
+Security Issue: Batun Tsaro
+Status: Matsayi
+Default admin user password: Tsohuwar mai amfani kalmar wucewa
+You should change the password of the default admin user.: Ya kamata ku canza kalmar sirri ta mai amfani mai amfani na yau da kullun.
+File permissions XXX: Izinin fayil: XXX
+item XXX should not be writable: Abun da ke gaba bai kamata a rubuta shi ba:<br><tt> XXX</tt>
+File exists XXX: Akwai fayil ɗin: "XXX"
+Because you have email disabled, you should remove this file.: Saboda kun sami imel da nakasa, yakamata ku cire wannan fayil din.
+File location XXX: Wurin fayil: "XXX"
+remove XXX if not using: Idan baku amfani da fayil "XXX", yakamata ku share shi. Ko kuma, aƙalla, matsar da shi zuwa sabon kundin adireshi.
+System Settings XXX: Saitunan Tsarin: "XXX"
+consider enabling UAC: Kuna so kuyi la'akari da ba da damar Ikon Shiga Mai amfani don saita gatan mai amfani.
+recommend approving new public events: Muna ba da shawarar cewa a yarda da duk abubuwan da aka gabatar na taron jama'a.
+recommend using CAPTCHA: Ana ba da shawarar CAPTCHA don kiyaye sake shigar da abubuwan ta atomatik.
+Database cache directory location: =
+db cache should be inaccessable: Ya kamata ma'ajiyar bayanan bayanai ta kasance a cikin kundin adireshi wanda ba za a iya samun damar ta ba tare da URL
+PHP Settings XXX: Saitunan PHP: "XXX"
+recommend setting XXX Off: Saitin da aka bada shawarar don "XXX" a kashe yake.
+recommend setting allow_url_fopen Off: Saitin shawarar don "allow_url_fopen" yana Kashe lokacin da ba a kunna kalandarku ta nesa ba.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Duba Kalandar Wani Mai amfani
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Ba ku kara kowane rukuni ba.
+Set Category: Saita Fanni
+Global Categories cannot be changed.: Ba za a iya canza Rukunin Duniya ba.
+
+########################################
+# Page: upcoming.php
+#
+more: Kara
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Kalanda masu nisa
+denotes administrative user: yana nuna mai amfani da gudanarwa
+Add New User: Newara Sabon Mai amfani
+
+########################################
+# Page: usersel.php
+#
+form: tsari
+Reset: Sake saita
+
+########################################
+# Page: views.php
+#
+Add New View: Newara Sabon Duba
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Sunan da ba'a sani ba
+Add View: Viewara Duba
+Edit View: Shirya Duba
+View Name: Duba Suna
+View Type: Nau'in Duba
+Day by Time: Day by Lokaci
+Week (Users horizontal): Mako (Masu amfani a kwance)
+Week by Time: Mako-lokaci
+Week (Users vertical): Mako (Masu amfani a tsaye)
+Week (Timebar): Makon (Lokaci)
+Month (Timebar): Watan (Lokaci)
+Month (side by side): Watan (gefe da gefe)
+Month (on same calendar): Watan (a kan kalanda ɗaya)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Dole ne ku saka sunan ra'ayi
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Babu masu amfani da wannan ra'ayi.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Peraukaka Kashi na Task
+Completed: Kammala
+Assistant mode: Yanayin taimako
+Declined: Ƙi
+Needs-Action: Bukatun-Aiki
+by: =
+Percentage Complete: Kashi cikakke
+External User: Mai Amfani na Waje
+Update: Sabunta
+at: a
+comments: tsokaci
+Show: Nuna
+Hide: .Oye
+Approve/Confirm entry: Amince / Tabbatar da shigarwa
+Reject entry: Qin shiga
+Set category: Saita rukuni
+Add to My Calendar: Ara zuwa Kalanda na
+Copy entry: Kwafi shigarwa
+This will delete this entry for all users.: Wannan zai share wannan shigarwar ga duk masu amfani.
+Edit entry: Shirya shigarwa
+Edit repeating entry for all dates: Gyara maimaita shigarwa don duk kwanakin
+Delete repeating event for all dates: Share abin da yake maimaitawa don duk kwanakin
+Edit entry for this date: Shirya shigarwa don wannan kwanan wata
+Delete entry only for this date: Share shigarwa kawai don wannan kwanan wata
+Delete entry from calendar of XXX: Share shigarwa daga kalandar XXX
+This will delete the entry from your XXX calendar.: Wannan zai share shigarwar daga kalandar XXX.
+boss: shugaba '
+This will delete the entry from your boss calendar.: Wannan zai share shigarwar daga kalandar maigidanku.
+This will delete the entry from your calendar.: Wannan zai share shigarwar daga kalandarku.
+from your boss calendar: daga kalandar maigidan ka
+Do you want to add this entry to your calendar?: Shin kuna son ƙara wannan shigarwar zuwa kalandarku?
+This will add the entry to your calendar.: Wannan zai kara shigarwa zuwa kalandarku.
+Email all participants: Email dukkan mahalarta
+Hide activity log: Logoye log log
+Show activity log: Nuna rajistan ayyukan
+Export this entry to: Fitar da wannan shigarwa zuwa
+Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Bugi sau biyu kan salula babu komai don ƙara sabon shiga.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Sabuwar Shiga
+cont.: =
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Wani Kalandar Mai amfani
+Category Management: Gudanar da Rukuni
+Day View: Ganin Rana
+Edit Event: Shirya Taron
+Month View: Duba Watan
+Common Trailer: Tallan gama gari
+User Management: Gudanar da Mai amfani
+Manage Views: Sarrafa Ra'ayoyi
+Week View: Duba Makon
+Year View: Duba Shekara
+Invalid function id: Aiki mara aiki
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: An kasa samo fayil ɗin "settings.php".<br>Da fatan a kwafa "settings.php.orig" zuwa "settings.php" kuma a gyara shafinku.
+Incomplete settings.php file...: Fayil din "settings.php" bai cika ba ...
+Could not find XXX defined in...: An kasa samo ma'anar "XXX" a cikin fayil ɗin "settings.php".
+You must define XXX in: Dole ne ku ayyana "XXX" a cikin fayil ɗin "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Disamba
+Dec: Dis
+LANGUAGE DEFINED: YADDA AKA BAYYANA
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Kuskuren haɗi zuwa bayanan bayanai: "XXX".
+db_type not defined.: db_type ba a bayyana ba.
+invalid db_type XXX: mara inganci db_type "" XXX ".
+Cache cleared from previous SQL!: An share cache daga SQL na baya!
+Error executing query.: Kuskure wajen aiwatar da tambaya.
+Unfortunately, XXX is not implemented for YYY: Abin baƙin ciki, ba a aiwatar da "XXX" don (YYY) ba.
+Unknown ODBC error.: Kuskuren ODBC ba a sani ba.
+Error opening cache dir XXX.: Kuskure wajen buɗe cache dir "XXX"
+delete: goge
+Cache error Could not XXX file YYY.: Kuskuren ɓoye: An kasa fayil ɗin XXX "YYY"
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Kuskuren Mutuwar
+Invalid data format for: Tsarin bayanai mara inganci don
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Kuskure: Buga ba a saita shi ba don aikin shiga!
+This event is XXX.: Wannan taron shine XXX.
+Conf.: =
+exceeds limit of XXX events per day: ya wuce iyakokin abubuwan XXX a kowace rana
+on: a kan
+All Attendees: Duk Mahalarta
+Busy: Aiki
+Tentative: Mai tsayi
+Schedule an appointment for XXX.: Tsara alƙawari don XXX: YYY
+date_select: __dd__ __mon____ __yyyyyy__
+Event approved: An yarda da taron
+Journal approved: An amince da mujallar
+Task approved: An amince da aiki
+Attachment: Abin da aka makala
+Event created: An kirkiro taron
+Journal created: Jarida halitta
+Task created: An ƙirƙiri ɗawainiya
+Event deleted: An share abin da ya faru
+Journal deleted: An goge jarida
+Task deleted: An share aiki
+New user via email (self registration): Sabon mai amfani ta hanyar imel (rajistar kai)
+New user (self registration): Sabon mai amfani (rajistar kai)
+Notification sent: An aika sanarwar
+Event rejected: Ba a yarda da taron ba
+Journal rejected: Jaridar ta ƙi
+Task rejected: An ƙi aikin
+Reminder sent: An aika tunatarwa
+Event updated: An sabunta taron
+Journal updated: An sabunta jarida
+Task updated: An sabunta aikin
+Delete User: Share Mai amfani
+WK: =
+TASKS: AYYUKA
+Task_Title: Take
+Due: Saboda
+Task Name: Sunan Aiki
+Task Due Date: Ranar Aiki
+You have XXX unapproved entries: Kuna da shigarwar XXX da ba a amince da su ba 
+Changes successfully saved: Canje-canje cikin nasara
+Event: Taron
+Action: Aiki
+Printer Friendly: Mai bugawa Abokai
+Generate printer-friendly version: Haɗa sigar mai ɗanɗano mai bugawa
+after: bayan
+before: kafin
+end: karshen
+start: fara
+View this event: Duba wannan taron
+View this task: Duba wannan aikin
+January: Janairu
+February: Fabrairu
+March: Maris
+April: Afrilu
+May_: Mayu
+June: Yuni
+July: Yuli
+August: Agusta
+September: Satumba
+October: Oktoba
+November: Nuwamba
+Jan: Janairu
+Feb: Fabrairu
+Mar: =
+Apr: =
+May: Mayu
+Jun: Yuni
+Jul: =
+Aug: Agusta
+Sep: Satumba
+Oct: Oktoba
+Nov: Nuwamba
+SU: =
+MO: =
+TU: =
+WE: MU
+TH: =
+FR: =
+SA: =
+unknown-month: ba a sani ba-wata
+First Quarter Moon: Wata Na Uku
+Full Moon: Cikakken Wata
+Last Quarter Moon: Moonarshen Quarshen Wata
+New Moon: Sabon Wata
+Error TIME_SLOTS undefined!: Kuskure: TIME_SLOTS ba a bayyana ba!
+The following error occurred: Kuskuren da ya biyo baya ya faru
+You are not authorized.: Ba ku da izini.
+Add N hours to: Nara N hours zuwa
+Subtract N hours from: Rage N hours daga
+same as: daidai da
+server time: lokacin sabar
+Cannot read timezone file XXX.: Ba za a iya karanta fayil din lokaci ba: XXX.
+Your current GMT offset is XXX hours.: Tsaran GMT na yanzu shine awanni XXX.
+Unauthorized: Ba da izini ba
+Error approving event XXX.: Kuskure wajen amincewa da taron: XXX.
+Error deleting event XXX.: Kuskuren share taron: XXX.
+Error rejecting event XXX.: Kuskure kin amincewa da taron: XXX.
+Sunday: Lahadi
+Monday: Litinin
+Tuesday: Talata
+Wednesday: Laraba
+Thursday: Alhamis
+Friday: Juma'a
+Saturday: Asabar
+Sun: Rana
+Mon: Litinin
+Tue: =
+Wed: =
+Thu: Alhamis
+Fri: =
+Sat: Asabar
+unknown-weekday: ba-mako-mako
+Invalid referring URL: URL mara aiki mara aiki
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Fihirisa
+Documentation: Takaddun shaida
+Page: Shafi
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Kalanda na
+Add New Entry: Newara Sabuwar Shigarwa
+Add New Task: Sanya Sabon Aiki
+Logout: =
+Home: Gida
+Back to My Calendar: Koma zuwa Kalanda na
+Go to: Je zuwa
+Manage calendar of: Sarrafa kalandar na
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Ba a Samu Yaren Bincike ba
+(not supported): (ba a tallafawa)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: Afirkaans
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: Albaniyanci
+Aleut: Ji sanarwa
+Algonquian: =
+Altai (Southern): Distance Watsa-Altai (Kudu)
+Amharic: =
+Angika: =
+Apache: =
+Arabic (Algeria): Larabci (Aljeriya)
+Arabic (Bahrain): Larabci (Bahrain)
+Arabic (Egypt): Larabci (Misira)
+Arabic (Iraq): Larabci (Iraki)
+Arabic (Jordan): Larabci (Jordan)
+Arabic (Kuwait): Larabci (Kuwait)
+Arabic (Lebanon): Larabci (Lebanon)
+Arabic (Libya): Larabci (Libya)
+Arabic (Morocco): Larabci (Maroko)
+Arabic (Oman): Larabci (Oman)
+Arabic (Qatar): Larabci (Qatar)
+Arabic (Saudi Arabia): Larabci (Saudiyya)
+Arabic (Syria): Larabci (Siriya)
+Arabic (Tunisia): Larabci (Tunisia)
+Arabic (U.A.E.): Larabci (U.A.E.)
+Arabic (Yemen): Larabci (Yemen)
+Arabic: Larabci
+Aragonese: =
+Aramaic: =
+Arapaho: =
+Arawak: =
+Armenian: Armeniyanci
+Assamese: Assamisanci
+Asturian: Asturiyanci
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: =
+Balinese: =
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: =
+Beja: =
+Belarusian: Belarusiyanci
+Bemba: =
+Bengali: =
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Takalmin kafa
+Blin: =
+Bliss: Ni'ima
+Bosnian: Bosniyanci
+Braj: =
+Breton: =
+Buginese: =
+Bulgarian: Bulgaria
+Buriat: =
+Burmese: Burma
+Caddo: =
+Catalan: Katalaniyanci
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: Checheniya
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Sinanci (Hong Kong)
+Chinese (PRC): Sinanci (PRC)
+Chinese (Simplified/GB2312): Sinanci (Saukakke / GB2312) 
+Chinese (Singapore): Sinanci (Singapore)
+Chinese (Taiwan): Sinanci (Taiwan)
+Chinese (Traditional/Big5): Sinanci (Na Gargajiya / Babban 5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: 'Yan Koftik
+Cornish: Masara
+Corsican: Corsikan
+Cree: =
+Creek: =
+Croatian: Kuroshiya
+Czech: =
+Dakota: =
+Danish: =
+Dargwa: =
+Delaware: Shirya
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): =
+Dutch: Yaren mutanen Holland
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Ingilishi (Ostiraliya)
+English (Belize): Ingilishi (Belize)
+English (Canada): Ingilishi (Kanada)
+English (Ireland): Ingilishi (Ireland)
+English (Jamaica): Ingilishi (Jamaica)
+English (New Zealand): Ingilishi (New Zealand)
+English (Philippines): Ingilishi (Philippines)
+English (South Africa): Ingilishi (Afirka ta Kudu)
+English (Trinidad & Tobago): Ingilishi (Trinidad & Tobago)
+English (United Kingdom): Ingilishi (United Kingdom)
+English (United States): Ingilishi (Amurka)
+English (Zimbabwe): Ingilishi (Zimbabwe)
+English: Ingilishi-Amurka
+Erzya: =
+Esperanto: =
+Estonian: Estoniyanci
+Ewe: =
+Ewondo: =
+Fang: Angangaran
+Fanti: =
+Faroese: =
+Fijian: =
+Filipino: =
+Finnish: Yaren mutanen Finland
+Fon: Dan
+French (Belgium): Faransanci (Belgium)
+French (Canada): Faransanci (Kanada)
+French (France): Faransanci (Faransa)
+French (Luxembourg): Faransanci (Luxembourg)
+French (Monaco): Faransanci (Monaco)
+French (Switzerland): Faransanci (Switzerland)
+French: Faransanci
+Frisian (Eastern): Frisian (Gabas)
+Frisian (Northern): Frisian (Arewacin)
+Frisian (Western): Frisian (Yammaci)
+Frisian: Frisiyanci
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galiziya
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Jojiyanci
+German (Austria): Jamusanci (Ostiriya)
+German (Germany): Jamusanci (Jamus)
+German (Liechtenstein): Jamusanci (Liechtenstein)
+German (Luxembourg): Jamusanci (Luxembourg)
+German (Standard): Jamusanci (Daidaitacce)
+German (Switzerland): Jamusanci (Switzerland)
+German: Bajamushe
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: =
+Grebo: =
+Greek: Girkanci
+Greenlandic: =
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haiti (Creole)
+Haitian: Haiti
+Hausa: =
+Hawaiian: Harshen Hawaii
+Hebrew: Ibrananci
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Hittiyawa
+Hmong: =
+Holo (Taiwanese): Holo (Taiwan)
+Hungarian: Harshen Hungary
+Hupa: =
+Iban: =
+Icelandic: =
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: Indonesiyanci
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Yar Iran
+Irish (Gaelic): =
+Irish: =
+Iroquoian: =
+Italian (Switzerland): Italiyanci (Switzerland)
+Italian: Italiyanci
+Japanese: Jafananci
+Javanese: Javanisanci
+Judeo-Arabic: Yahudanci-Larabci
+Judeo-Persian: Yahuza-Fasiya
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: Kashubiyan
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): Khmer (Tsakiya)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Koriya (Johab)
+Korean (North): Koriya (Arewa)
+Korean (South): Koriya (Ta Kudu)
+Korean: Yaren Koriya
+Kosraean: Kosrayan
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kurdawa
+Kutenai: =
+Kyrgyz: Kirgiziya
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: =
+Latvian: Latvia
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Lituweniyanci
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: =
+Macedonian: Macedonia
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: =
+Malay: =
+Malayalam: =
+Maldivian: Maldiviyanci
+Maltese: =
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: =
+Mongo: =
+Mongolian: Mongoliyanci
+Montenegrin: =
+Moroccan: Maroko
+Mossi: =
+Myanmar: =
+Māori: Maori
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Arewa)
+Ndebele (South): Ndebele (Kudu)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Yaren Norway (Bokmål)
+Norwegian (Nynorsk): Yaren mutanen Norway (Nynorsk)
+Norwegian: Yaren mutanen Norway
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Occitaniya
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: =
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: =
+Pedi: =
+Persian (Farsi): Farsi (Farsi)
+Persian (Iran): Farsi (Iran)
+Persian: Farisanci
+Phoenician: Finikiyanci
+Pohnpeian: =
+Polish: Yaren mutanen Poland
+Portuguese: Fotigal
+Portuguese/Brazil: Fotigal / Brasil
+Punjabi (India): Punjabi (Indiya)
+Punjabi (Pakistan): =
+Punjabi: Harshen Punjabi
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: Romaniyanci
+Romansh: Romanh
+Romany: =
+Rundi: =
+Russian (Moldavia: Rashanci (Moldavia)
+Russian (Republic of Moldova): Rashanci (Jamhuriyar Moldova)
+Russian: Rashanci
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Arewa)
+Sami (Skolt): =
+Sami (Southern): Sami (Kudu)
+Sami: =
+Samoan: =
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: Sardiyanci
+Sasak: =
+Scots (Gaelic): =
+Selkup: Tsallake
+Serbian (Upper): Sabiyanci (Na Sama)
+Serbian: Sabiyanci
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Sikiliyan
+Sindhi: =
+Sinhala: =
+Slavic: =
+Slovak: Slovakiya
+Slovenian: Slobaniyanci
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbian ()asa)
+Sorbian (Upper): Sorbian (Sama)
+Sorbian: =
+Sotho: =
+Spanish (Argentina): Sifeniyanci (Ajantina)
+Spanish (Bolivia): Sifananci (Bolivia)
+Spanish (Chile): Sifananci (Chile)
+Spanish (Colombia): Sifeniyanci (Kolombiya)
+Spanish (Costa Rica): Sifananci (Costa Rica)
+Spanish (Dominican Republic): Sifeniyanci (Jamhuriyar Dominica)
+Spanish (Ecuador): Sifananci (Ekwado)
+Spanish (El Salvador): Sifananci (El Salvador)
+Spanish (Guatemala): Sifananci (Guatemala)
+Spanish (Honduras): Sifananci (Honduras)
+Spanish (Mexico): Sifananci (Meziko)
+Spanish (Nicaragua): Sifananci (Nicaragua)
+Spanish (Panama): Sifananci (Panama)
+Spanish (Paraguay): Sifananci (Paraguay)
+Spanish (Peru): Sifananci (Peru)
+Spanish (Puerto Rico): Sifananci (Puerto Rico)
+Spanish (Spain): Sifeniyanci (Sifen)
+Spanish (Uruguay): Sifananci (Uruguay)
+Spanish (Venezuela): Sifeniyanci (Venezuela)
+Spanish: Sifeniyanci
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumeriyanci
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Yaren mutanen Sweden (Finland)
+Swedish (Sweden): Yaren mutanen Sweden (Sweden)
+Swedish: Yaren mutanen Sweden
+Syriac: Siriyanci
+Tagalog: =
+Tahitian: Tahitiyanci
+Tai: =
+Taiwan: =
+Tajik: =
+Tamashek: =
+Tamil: =
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: Tibet
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Tsibiran Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Baturke
+Turkmen: Turkmeniya
+Tuvinian: Tuviniyanci
+Twi: =
+Udmurt: =
+Ugaritic: Ugarit
+Ukrainian: Yukreniyanci
+Umbundu: =
+Urdu: =
+Uyghur: =
+Uzbek: =
+Vai: =
+Venda: =
+Vietnamese: Vietnam
+Volapük: =
+Votic: Mai yawan magana
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: =
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: Yardawa
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Mai bincike
+event: taron
+journal: mujallar
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Shiga mai amfani mara aiki
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: kalmar wucewa ba daidai ba
+no such user: babu irin wannan mai amfani
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Asusun ba shi da aiki
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Tazara
+Months: Watanni
+Month Days: Kwanakin Wata
+Days: Kwanaki
+Weeks: Makonni
+Position: Matsayi
+Until: Har sai
+Count: Idaya
+Inclusion Dates: Ranakun Hadawa
+Exclusion Dates: Ranar keɓewa
+Event Imported: An Shigo Taron
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: baiti
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Sanarwa
+authenticate: Kuskuren SMTP: Ba za a iya tantancewa ba
+connect_host: Kuskuren SMTP: An kasa haɗawa da mai watsa shiri na SMTP:
+data_not_accepted: Kuskuren SMTP: Ba a karɓar bayanai ba
+encoding: Cikakken bayani ba a sani ba:
+execute: An kasa aiwatarwa:
+file_access: An kasa samun damar fayil:
+file_open: Kuskuren Fayil Ba za a iya buɗe fayil ba:
+from_failed: Wadannan Daga adireshin ya gaza:
+instantiate: Ba za a iya sake aiwatar da aikin wasiku ba
+mailer_not_supported: mailer bata da tallafi
+provide_address: Dole ne ku samar da aƙalla adireshin imel na mai karɓa ɗaya.
+recipients_failed: Kuskuren SMTP: Masu karɓar mai zuwa sun kasa:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Shiga Harafin da Aka gani a Zane
+Enter the correct letters and numbers...: Shigar da haruffa da lambobi daidai daga hoton cikin akwatin rubutu. Wannan ƙaramin gwajin yana aiki ne a matsayin ƙuntatawar dama ga bots mara kyau. Sauƙaƙe sake shigar da shafin idan wannan hoton yana da wuyar karantawa
+Challenge/Response: Kalubale / Amsa
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Canja kwanan wata da lokaci na wannan shigarwar?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Ba ku shiga taƙaitaccen bayanin ba
+time prior to work hours...: lokaci kafin lokacin aiki ...
+Invalid Event Date: Kwanan Taron da ba Inganci
+Please add a participant: Da fatan za a ƙara ɗan takara
+Invalid Date: Kwanan aiki mara aiki
+You have not entered a valid time of day: Ba ku shigar da ingantaccen lokacin rana ba.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: ID na Kalanda ba zai zama fanko ba.
+First and last names cannot both be blank.: Sunaye na farko dana karshe duk ba zasu zama fanko ba.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Launi mara aiki
+Color format should be RRGGBB.: Tsarin launi ya zama #RRGGBB.
+URL cannot be blank.: URL ba zai zama fanko ba.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Nau'in fayil bai yi daidai da Tsarin shigowa ba
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Launi mara aiki don asalin takardu.
+Invalid color for document title.: Launi mara aiki don taken takardu.
+Invalid color for table cell background.: Launi mara aiki don asalin tantanin halitta.
+Invalid color for table cell background for today.: Launi mara aiki don asalin tantanin halitta na yau.
+Invalid work hours.: Lokacin aiki mara aiki.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Dole ne URL ɗin Server ya ƙare tare da yankan (/).
+Invalid color for table grid.: Launi mara aiki don layin tebur.
+Invalid color for event popup background.: Launi mara aiki don asalin bayan fage.
+Invalid color for event popup text.: Launi mara aiki don rubutun popup na taron.
+Invalid color for table header text.: Launi mara aiki don rubutun taken tebur.
+Invalid color for table header background.: Launi mara aiki don asalin taken tebur.
+Server URL is required.: Ana buƙatar URL ɗin uwar garke.
+Invalid Color: Launi mara aiki
+Database Name: Sunan Bayanai
+Full Path (no backslashes): Cikakkiyar Hanya (babu ja da baya)
+The password contains illegal characters.: Kalmar sirri ta ƙunshi haruffan da ba su dace ba.
+Error you must specify a Single-User Login: Kuskure: Dole ne ku saka takaddun shiga mai amfani guda
+Could not find XXX.: An kasa samo XXX.
+Could not find XXX in DOM.: An kasa samo XXX a cikin DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Wannan Makon
+This Month: Wannan Watan
+This Year: Wannan shekara
+Exit: Mafita
+Add New Event: Newara Sabuwar Aukuwa
+Delete Entries: Share shigarwar
+My Views: Ra'ayoyi Na
+Manage Calendar of: Sarrafa Kalanda na
+My Reports: Rahotona
+My Profile: Profile dina
+Public Calendar: Kalandar Jama'a
+Unapproved Events: Abubuwan da ba a Amince da su ba
+User Manager: Manajan Mai amfani
+Help Contents: Taimako abubuwan ciki
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Littafin Adireshin Bayanai
+Create New: Newirƙiri Sabo
+Failure Reason: Rashin Dalili:
+You must manually create database: Dole ne ku ƙirƙiri bayanai da hannu.
+Single-User: Mai-amfani
+Test Settings: Saitunan Gwaji
+Timezone Conversion Successful: Canza Lokaci ya yi Nasara
+WebCalendar Installation Wizard Step XXX: Wizard na Shigar da WebCalendar Mataki na XXX
+Password Accepted: An karɓa kalmar shiga
+Successful Login: Shiga cikin nasara
+Password Incorrect: Kalmar wucewa ba daidai ba
+Invalid Login: Shiga ciki mara aiki
+Display Errors: Kurakurai Nuni
+File Uploads: Fayilolin Fayil
+Allow URL fopen: Bada izinin URL (ana buƙatar kawai idan ana amfani da Kalanda M)
+Safe Mode: Yanayin lafiya
+Safe Mode Allowed Vars: Yanayin Amintaccen Vars (TZ kawai ake buƙata idan Yanayin Safearya Ya Kunna)
+GD: GD (da ake buƙata don Bayanan Gradient)
+Passwords do not match!: Kalmomin shiga basu daidaita ba!
+Unable to write password to settings.php file: An kasa rubuta kalmar shiga zuwa fayil din "settings.php".
+Password Updated: An sabunta Kalmar wucewa
+Password has been set: An saita kalmar wucewa.
+Connection Successful...: Haɗin Ya Yi Nasara  Da fatan za a je shafi na gaba don ci gaba da girkawa.
+Correct your entries or click the Create New...: Gyara shigarwar ka ko danna maballin  Newirƙiri Sabo  don ci gaba da girkawa.
+Correct your entries and try again.: Gyara shigarwarka ka sake gwadawa.
+XXX does not exist: XXX babu shi
+XXX is not writable: XXX ba abin rubutu bane
+Error Converting Timezone: Kuskuren Canza Lokaci
+Error Unable to write to file XXX.: Kuskure An kasa rubutawa don shigar da XXX.
+Please change the file permissions of this file.: Da fatan za a canza izinin fayil ɗin wannan fayil ɗin
+Please change includes dir permission: Da fatan za a canza izinin fayil na kundin adiresoshin "ya hada" don ba da damar rubutawa daga sauran masu amfani.
+Your settings have been saved.: An ajiye saitunanku.
+OFF: KASHE
+ON: Kunna
+WebCalendar Setup Wizard: Wizard Saitin Yanar gizo
+This installation wizard will guide you...: Wannan mayen shigarwar zai yi muku jagora ta hanyar kafa kafuwa na WebCalendar.<br>Domin neman taimako da matsala duba:<br>
+System Administrators Guide: Jagoran Mai Gudanar da Tsarin
+Frequently Asked Questions: Tambayoyi akai-akai
+FAQ: Tambayoyi
+Troubleshooting: Shirya matsala
+Getting Help: Samun Taimako
+Upgrading Guide: Jagorar haɓakawa
+User Supported Wiki: Mai amfani da Wiki
+PHP Version Check: PHP Sigar Duba
+Check to see if PHP 7.1.0 or greater is installed.: Duba don ganin idan an shigar da PHP 7.1.0 ko mafi girma.
+PHP version: Sigar PHP
+PHP Settings: Saitunan PHP
+Detailed PHP Info: Cikakken Bayanin PHP
+settings.php Status: "settings.php" Matsayi
+Session Check: Duba Zama
+To test the proper operation of sessions...: Don gwada yadda ya dace da zama, sake loda wannan shafin. Ya kamata ku ga ƙimar zama a kowane lokaci.
+SESSION COUNTER: ZANGO ZAMA
+The file permissions of settings.php are set...: An saita izinin izini na "settings.php" don mai sakawa ba shi da izinin gyara shi. Da fatan za a canza izinin fayil ɗin fayil mai zuwa don ci gaba
+The file permissions of the includes directory are set...: An saita izinin fayil ɗin wanda ya haɗa da kundin adireshi don mai sakawa ba shi da izinin ƙirƙirar sabon fayil. Da fatan za a canza izinin abubuwan da ke gaba don ci gaba
+Your settings.php file appears to be valid.: Fayil din ku "settings.php" ya bayyana yana aiki.
+Configuration Wizard Password: Kalmar wucewa ta maye
+Create Settings File Password: Createirƙiri Password File Password
+db setup directions...: A wannan ɓangaren zaku saita kuma gwada haɗin haɗi zuwa sabar bayananku. Bayanin asusun da aka kawo ya kamata ya sami cikakkun izini don ƙirƙirar rumbunan adana bayanai, tebur da masu amfani. Idan wannan ba zai yuwu ba, ko kuma damar samun damar shiga rumbun adana bayananku da hannu, lallai ne ku sanya bayananku da hannu.
+Database Status: Matsayin Bayanan Bayanai
+Supported databases for your PHP installation: Abubuwan tallafi na talla don shigarwar PHP ɗin ku
+Your current database settings are able to access the database.: Saitunan gidan yanar gizonku na yanzu suna iya samun damar bayanan.
+Please Test Settings: Da fatan za a Gwada Saituna
+Your current database settings are not able...: Saitunan bayananka na yanzu ba su da damar shiga rumbun adana bayanan ko kuma ba a taɓa gwada su ba.
+Database Settings: Saitunan Bayanan Bayanai
+Database Type: Nau'in Bayanai
+Server: Sabisa
+Connection Persistence: Dorewar Haɗi
+All your database tables appear to be up...: Duk teburorin bayanan ka sun kasance suna aiki har zuwa yau. Kuna iya ci gaba zuwa shafi na gaba kuma kammala saitin Gidan yanar gizonku.
+This appears to be a new installation...: Wannan ya bayyana sabon shigarwa ne. Idan wannan ba daidai bane, da fatan za a koma shafin da ya gabata kuma gyara saitunanku.
+This appears to be an upgrade...: Wannan ya bayyana haɓaka ne daga sigar&nbsp;XXX&nbsp;zuwa&nbsp;YYY
+The database requires some data input...: Bayanan yana buƙatar shigar da bayanai Danna Clickaukaka Database don kammala haɓakawa.
+In this section we will perform...: A wannan bangare za mu yi canje-canje don kawo rumbun adana bayananku zuwa matakin da ake bukata. Idan kana amfani da cikakken bayanan tallafi, wannan matakin za'ayi maka ta atomatik. Idan ba haka ba, za a iya nuna SQL ɗin da ake buƙata kuma ya kamata ku sami damar yankewa da liƙa shi a cikin taga tambayar uwar garken bayananku.
+No database actions are required.: Babu ayyukan bayanan da ake buƙata.
+The following database actions are required: Ana buƙatar ayyukan ayyukan bayanan masu zuwa
+ODBC Underlying Database: ODBC lyingarfafa Database:
+Automatic installation not supported: Ba a aiwatar da shigarwa ta atomatik ba don nau'in bayanan ku. Dole ne ku ƙirƙiri teburin hannu da hannu ta amfani da SQL ɗin da aka kawo. Da fatan za a danna  Nuna SQL  don ci gaba. Yanke kuma Manna a cikin taga tambayar bayanan ka.
+This may take several minutes to complete: Wannan na iya ɗaukar severalan mintuna don kammalawa.
+Install Database: Shigar da Bayanai
+Update Database: Sabunta Database
+Display Required SQL: SQL da ake buƙata SQL
+Return to previous page after processing SQL.: Bayan aiwatar da wannan SQL da hannu, kuna buƙatar komawa zuwa shafin da ya gabata kuma sake gwada bayanan ku don rubutun zai iya gano canje-canje.
+This is the final step in setting up your WebCalendar Installation.: Wannan shine mataki na karshe wajan girka shigarwar WebCalendar dinka.
+Timezone Conversion: Canza lokaci
+It appears that you have NOT converted...: Ya bayyana cewa BA ku canza bayanan abubuwan da ke faruwa na WebCalendar zuwa GMT ba. Idan kana da, za ka iya watsi da wannan sanarwar kuma ba za ka ci gaba da juyawa ba. Idan wannan sabon shigarwa ne, zaku iya watsi da wannan sanarwar.
+Convert Data to GMT: Sanya bayanai zuwa GMT
+Application Settings: Saitunan Aikace-aikace
+HTTP-based authentication was not detected...: Ba a gano ingantaccen tushen HTTP ba. Kuna buƙatar sake saita sabar gidan yanar gizon ku idan kuna son zaɓar 'Sabar Yanar Gizo' daga zaɓin 'Ingantaccen Mai amfani' da ke ƙasa.
+HTTP-based authentication was detected...: An gano ingantaccen tushen HTTP. Tabbatar da mai amfani ana sarrafa shi ta sabar yanar gizo. Ya kamata ku zaɓi 'Sabar Yanar Gizo' daga cikin jerin zaɓin 'Tabbatar da Mai amfani' a ƙasa.
+Create Default Admin Account: Irƙiri Asusun Gudanarwa na Tsoho
+(Admin Account Not Found): (Ba a Samu Asusun Gudanarwa ba)
+User Authentication: Tabbatar da Mai amfani
+Web-based via WebCalendar (default): Yanar gizo ta hanyar Yanar gizo (tsoho)
+Web Server (not detected): Sabar Yanar gizo (ba a gano ta ba)
+Web Server (detected): Sabar Yanar gizo (an gano)
+None (Single-User): Babu (Mai Amfani da Ita)
+Read-Only: Karanta-Kawai
+Environment: Muhalli
+Production: =
+Development: Ci gaba
+Save Settings: Ajiye Saituna
+Launch WebCalendar: Kaddamar da WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Kuskure kan sabunta tebur "XXX": YYY
+Conversion Successful: Canza Canza yayi nasara
+Perl script required: Kayan da kuka gabata na WebCalendar yana buƙatar gudanar da rubutun PERL don canza bayananku. Da fatan za a gudanar /tools/upgrade_to_0.9.7.pl sannan a koma wannan shafin don ci gaba.
+previous version requires updating several tables: Tsarin da kuka gabata na WebCalendar yana buƙatar sabunta teburin bayanai da yawa.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: BABU SHIRI
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Kuskuren haɗi zuwa wurin adana bayanai
+Include Path: Hada da Hanya
+Deleting events for: Share abubuwan don
+Importing events for: Ana shigo da al'amuran don
+No data returned from: Babu bayanai da aka dawo daga
+for non-user calendar: don kalanda mara amfani
+No Remote Calendars found: Ba a sami Kalanda Daga Nesa ba
+Remote Calendars not enabled: Kalandar nesa ba a kunna ba
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: kasa samun id id
+could not find event id XXX in database.: an kasa samun id XXX abin da ya faru a cikin rumbun adana bayanai.
+task: aiki
+This is a reminder for the XXX detailed below.: Wannan tunatarwa ce ga XXX dalla-dalla a ƙasa.
+Pecentage Complete: Yankin Kammalawa
+Reminder: Tunatarwa
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Aiki mara tallafi: XXX.
+No event id specified.: Babu takamaiman id id dhacdo.
+Not authorized (not admin).: Ba a ba da izini ba (ba mai gudanarwa ba).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Duba abubuwan da suka faru don XXX daga ranar YYY zuwa yau ZZZ.
+Found XXX events in time range.: Samu abubuwan XXX a cikin kewayon lokaci.
+Event id=XXX YYY at ZZZ on AAA.: Taron id = XXX "YYY" a ZZZ akan AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Barin mai amfani XXX damar duba kalandar sauran masu amfani.
+Error Email reminders disabled for user XXX.: Kuskure: An dakatar da masu tuni na imel don mai amfani "XXX".
+Number of site_extras XXX.: Yawan shafin_kashiyoyi: XXX.
+Reminder set for event.: Tunatarwa don taron.
+Mins Before XXX.: Mins Kafin: XXX.
+Event time is XXX.: Lokacin taron shine: XXX.
+Remind time is XXX.: Tunatarwa lokaci shine: XXX.
+Reminders for user XXX, login YYY.: Tunatarwa ga mai amfani "XXX", shiga "YYY"
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Rashin amincewa da mai amfani "XXX".
+Event id=XXX YYY already sent.: Lamarin id = XXX "YYY" an riga an aika.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Babu buƙatar shiga don yanayin mai amfani ɗaya.
+No login required for HTTP authentication.: Babu buƙatar shiga don tabbatarwar HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Haruffa mara aiki a cikin shiga
+Username XXX does not exist.: Babu sunan mai amfani "XXX"
+You cannot remove admin rights from yourself!: Ba za ku iya cire haƙƙin gudanarwa daga kanku ba!
+Unknown error saving user: Kuskuren kuskuren ceton mai amfani.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Babu mahalarta da aka samo don id ID: XXX.
+Db error Could not find event id XXX.: Kuskuren Db: An kasa samo id aukuwa XXX.
+Error Could not find event id XXX in database.: Kuskure: An kasa samo id id XXX a cikin rumbun adana bayanai.
