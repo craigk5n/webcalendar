@@ -1,0 +1,2387 @@
+# Amharic am
+#
+# ቅርጸቱ አማራጭ ራስጌን ያካትታል-
+#
+# የተተረጎመው በስምህ እና በኢሜልህ
+# የመጨረሻው ዝመና-የትርጉም ቀን
+# (መሪውን “#” እና በቀደሙት ተርጓሚዎች የተሰጡ ማናቸውንም አስተያየቶች ጨምሮ) ፡፡
+# FIRST ባዶ መስመር እነዚህን የራስጌ አስተያየቶች ያበቃል።)
+#
+# እንደአስፈላጊነቱ የተከተለ
+#
+# የእንግሊዝኛ ሐረግ: ትርጉም
+# (አንድ ወደ አንድ መስመር። መሪውን "#" ሳይጨምር።
+# "የእንግሊዝኛ ሐረግ:", ኮሎን ጨምሮ ":" የተሰጠው በ
+# የድር ካላንደር ገንቢዎች። የእርስዎ ክፍል “ትርጉም” ነው።)
+#
+# የመሳሪያዎቹ ማውጫ እርስዎን ለመርዳት ሁለት ፐርል ስክሪፕቶችን ይ containsል-
+# - check_translation.pl
+# ሁሉም ጽሑፍ በተሳካ ሁኔታ የተተረጎመ መሆኑን ያሳያል።
+# - update_translation.pl
+# ሁሉንም ትርጉሞች (‹ሀረግ›) እና ለማግኘት የፕሮግራሙን ፋይሎች ይተነትናል
+# tooltip ('ሐረግ')። ሐረጎቹን በገጹ መሠረት ያዘጋጃቸዋል
+# የመጀመሪያውን ኦክዩሽን የያዘ # (ፋይል)። እንደአማራጭ መለያውን መለያ ይችላል
+# በማስቀመጥ ገና ያልተተረጎሙ ሀረጎች
+#  << MISSING >>
+# ከሐረጉ በላይ ባለው መስመር ላይ # እና ፣ ሀረጉ ምህፃረ ቃል ከሆነ ፣
+# ከሐረጉ በታች ባለው መስመር ላይ ሙሉውን የእንግሊዝኛ ጽሑፍን ያካትታል ፡፡
+#
+# ማስታወሻ-አጠቃላይ የፋይል መጠንን ለመቀነስ እየሞከርኩ ነው ፡፡ ከሆነ “ትርጉም”
+# ቃል / ሐረግ በእርስዎ ቋንቋ እና በእንግሊዝኛ ተመሳሳይ ነው ፣ የ “=” ምልክትን ብቻ ይጠቀሙ ፡፡
+#
+# ማስታወሻ-ከዚህ በታች “May_” መግቢያውን ያስተውላሉ ፡፡ ለዚህ አንድ ምክንያት አለ ፡፡
+# “May_” ን ወደ ሙሉ ወር ስሙ እና “May” ን ለ ፣
+# ብዙውን ጊዜ ባለሶስት-ፊደል ፣ የወር አህጽሮተ ቃል (እንደ “ኦክቶ” ለ “ጥቅምት”) ፡፡
+#
+# ለዚህ ጉግል ትርጉምን ተጠቀምኩ ፡፡
+# የአገሬው ተወላጅ እስኪያረጋግጠው ድረስ በቂ መሆን አለበት።
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: የድር ካላንደር
+version XXX: ስሪት XXX
+WebCalendar is a PHP application used...: WebCalendar ለአንድ ተጠቃሚ ወይም ለኢንተርኔት / በይነገጽ የተጠቃሚዎች ቡድን የቀን መቁጠሪያን ለማቆየት የሚያገለግል የ PHP መተግበሪያ ነው ፡፡ እንደ ክስተት የቀን መቁጠሪያም ሊዋቀር ይችላል።
+Credits: ክሬዲቶች
+About: ስለ
+OK: እሺ
+
+########################################
+# Page: access.php
+#
+Database error XXX.: የውሂብ ጎታ ስህተት: XXX.
+DEFAULT CONFIGURATION: ዲፊልት ማዋቀር
+Go: ሂድ
+Save: አስቀምጥ
+Undo: ቀልብስ
+Public Access: የህዝብ መዳረሻ
+Admin: አስተዳዳሪ
+User Access Control: የተጠቃሚ መዳረሻ ቁጥጥር
+Allow Access to Other Users Calendar: የሌሎች ተጠቃሚዎች የቀን መቁጠሪያ መዳረሻ ይፍቀዱ
+Grant This User Access to My Calendar: ለእኔ የቀን መቁጠሪያ ለዚህ የተጠቃሚ መዳረሻ ይስጡ
+Type: ዓይነት
+Calendar: የቀን መቁጠሪያ
+View Event: ክስተት ይመልከቱ
+View: አሳይ
+Edit: አርትዕ
+Approve/Reject: ማጽደቅ / አለመቀበል
+Events: ዝግጅቶች
+Tasks: ተግባራት
+Journals: መጽሔቶች
+Can Invite: መጋበዝ ይችላል
+Can Email: ኢሜል ማድረግ ይችላል
+Can See Time Only: ጊዜን ብቻ ማየት ይችላል
+Assistant: ረዳት
+Select All: ሁሉንም ምረጥ
+Clear All: ሁሉንም ያፅዱ
+Public: ህዝባዊ
+Confidential: ሚስጥራዊ
+Private: የግል
+
+########################################
+# Page: activity_log.php
+#
+Next: ቀጣይ
+Previous: ቀዳሚ
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: ክስተት XXX አስቀድሞ በቀን መቁጠሪያዎ ላይ አለ።
+Invalid entry id XXX.: ልክ ያልሆነ የመግቢያ መታወቂያ ፦ "XXX"።
+a XXX event may not be added to your calendar: ይህ የ XXX ክስተት ነው እና ወደ የቀን መቁጠሪያዎ ላይታከል ይችላል።
+confidential: ሚስጥራዊ
+private: የግል
+Error adding event XXX.: ክስተት ማከል ላይ ስህተት ፦ XXX።
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: ልክ ያልሆነ የቅንብር ስም "XXX"።
+Select: ይምረጡ
+Day: ቀን
+Week: ሳምንት
+Month: ወር
+Year: አመት
+Bottom: ታች
+Top: ከላይ
+Anyone: ማንኛውም ሰው
+Participant: ተሳታፊ
+Settings: ቅንብሮች
+Groups: ቡድኖች
+NonUser Calendars: ተጠቃሚ ያልሆኑ የቀን መቁጠሪያዎች
+Other: ሌላ
+Email: ኢሜል
+Colors: ቀለሞች
+Document background: የሰነድ ዳራ
+Document title: የሰነድ ርዕስ
+Document text: የሰነድ ጽሑፍ
+My event text: የእኔ የዝግጅት ጽሑፍ
+Table grid color: የጠረጴዛ ፍርግርግ ቀለም
+Table header background: የሠንጠረዥ ራስጌ ዳራ
+Table header text: የሠንጠረዥ ራስጌ ጽሑፍ
+Table cell background: የሠንጠረዥ ሕዋስ ዳራ
+Table cell background for current day: ለአሁኑ ቀን የጠረጴዛ ሕዋስ ዳራ
+Table cell background for days with events: ከክስተቶች ጋር ለቀናት የጠረጴዛ ሕዋስ ዳራ
+Table cell background for weekends: ለሳምንቱ መጨረሻ የጠረጴዛ ሕዋስ ዳራ
+Table cell background for other month: ለሌላ ወር የጠረጴዛ ሕዋስ ዳራ
+Week number color: የሳምንት ቁጥር ቀለም
+Event popup background: የክስተት ብቅ-ባይ ዳራ
+Event popup text: የክስተት ብቅ-ባይ ጽሑፍ
+System Settings: የስርዓት ቅንብሮች
+Help: እገዛ
+System options: የስርዓት አማራጮች
+app-name-help: ለሁሉም ገጾች እና በመግቢያ ገጹ ላይ በአሳሹ አርዕስት አሞሌ ውስጥ የሚታየውን የመተግበሪያውን ስም ይገልጻል። እዚህ የገለጹት ዋጋ ለተለያዩ ቋንቋዎች የተለያዩ ርዕሶችን እንዲያቀርቡ በሚያስችልዎት የትርጉሞች ፋይል ውስጥ ይታያል ፡፡
+Application Name: የትግበራ ስም
+Translated Name (XXX): የተተረጎመ ስም (XXX)
+server-url-help: ለመተግበሪያው መሰረታዊ ዩ.አር.ኤልን ይገልጻል። የኢሜይል አስታዋሾችን እና ማሳወቂያዎችን ሲልክ ይህ ይካተታል ፡፡
+Server URL: የአገልጋይ ዩ.አር.ኤል.
+home-url-help: ለመተግበሪያው የቤት ዩ.አር.ኤልን ይገልጻል። ይህ ፍፁም ወይም ዘመድ ሊሆን ይችላል
+Home URL: መነሻ ዩ.አር.ኤል.
+language-help: የትኛውን ቋንቋ መጠቀም እንዳለበት ይገልጻል።
+Language: ቋንቋ
+Your browser default language is XXX.: የእርስዎ አሳሽ ነባሪ ቋንቋ "XXX" ነው።
+Allow user to use themes: ተጠቃሚው ገጽታዎችን እንዲጠቀም ይፍቀዱለት
+themes-help: የውቅረት ቅንጅቶችን በጅምላ ማዘመንን ይፈቅዳል። የዝቅተኛ ጉዳይ መለያዎች የተጠቃሚ ቅድመ-ዝግጅት ብቻ ናቸው ፡፡
+Themes: ገጽታዎች
+AVAILABLE THEMES: የሚገኙ ገጽታዎች
+None: የለም
+Preview: ቅድመ-እይታ
+Site customization: የጣቢያ ማበጀት
+custom-script-help: በእያንዳንዱ ገጽ የኤችቲኤምኤል “ራስ” ክፍል ውስጥ የሚገባው ብጁ የጃቫ ስክሪፕት ወይም የቅጥ ወረቀት ጽሑፍ ለማስገባት ይፈቅዳል ፡፡
+Custom script/stylesheet: ብጁ ስክሪፕት / የቅጥ ሉህ
+custom-header-help: ብጁ የኤችቲኤምኤል ቅንጥብ በእያንዳንዱ ገጽ አናት ላይ እንዲካተት ይፈቅድለታል።
+Custom header: ብጁ ራስጌ
+custom-trailer-help: ብጁ የኤች.ቲ.ኤም.ኤል ቅንጥብ በእያንዳንዱ ገጽ መጨረሻ ላይ እንዲካተት ይፈቅድለታል።
+Custom trailer: ብጁ ተጎታች
+enable-external-header-help: ብጁ ተጎታችውን ከውጭ ፋይል ለመጫን ይፈቅድለታል
+Allow external file for header/script/trailer: ውጫዊ ፋይል ለራስጌ / ስክሪፕት / ተጎታች ፍቀድ
+Allow user to override header/trailer: ተጠቃሚው የራስጌ / ተጎታችን እንዲሻር ይፍቀዱለት
+Date and Time: ቀን እና ሰዓት
+server-tz-help: ጊዜውን ከ UTC እስከ አገልጋይ ሰዓት ለማስተካከል ስንት ሰዓቶችን ይገልጻል።
+Server Timezone Selection: የአገልጋይ የጊዜ ሰቅ ምርጫ
+tz-help: ጊዜውን ከ UTC እስከ አካባቢያዊ ሰዓት ለማስተካከል ስንት ሰዓቶችን ይገልጻል።
+Default Client Timezone Selection: ነባሪ የደንበኛ የሰዓት ሰቅ ምርጫ
+display-general-use-gmt-help: ከነቃ ፣ የተለመዱ ቀናት / ሰዓቶች እንደ GMT ይታያሉ
+Display Common Use Date/Times as GMT: የጋራ አጠቃቀም ቀን / ሰዓት እንደ GMT አሳይ
+date-format-help: የተመረጠውን የቀን ቅርጸት ይገልጻል።
+Date format: የቀን ቅርጸት
+Small Task Date: አነስተኛ ተግባር ቀን
+display-week-starts-on: ሳምንቱ የሚጀምርበትን የሳምንቱን ቀን ይገልጻል ፡፡ ሰኞ ከተገለጸ የሳምንቱ ቁጥሮች የ ISO ሳምንት ቁጥሮች ይሆናሉ ፡፡
+Week starts on: ሳምንት ይጀምራል
+display-weekend-starts-on: የሳምንቱን ቀን ለሳምንቱ መጨረሻ እንዲጀምር ያዘጋጃል
+Weekend starts on: ቅዳሜና እሁድ ይጀምራል
+time-format-help: የትኛውን የጊዜ ቅርጸት እንደሚጠቀም ይገልጻል-<br><em>12 ሰዓት:</em> የማሳያ ሰዓቶች ከጠዋቱ 3 ሰዓት ፣ ከሌሊቱ 8 30 ፣ ወዘተ.<br><em>24 ሰዓት:</em> የማሳያ ጊዜዎች እስከ 300 ፣ 2030 ፣ ወዘተ
+Time format: የጊዜ ቅርጸት
+12 hour: 12 ሰዓታት
+24 hour: 24 ሰዓታት
+timed-evt-len-help: የጊዜያዊ ክስተት ርዝመት ለመወሰን የግብዓት ዘዴን ይገልጻል።
+Specify timed event length by: የጊዜን ክስተት ርዝመት በ ይግለጹ
+Duration: የቆይታ ጊዜ
+End Time: የማብቂያ ጊዜ
+work-hours-help: ለዕለቱ እይታ ለማሳየት የጊዜ ወሰን ይገልጻል።
+Work hours: የሥራ ሰዓቶች
+From: ከ
+to: ወደ
+Appearance: መልክ
+preferred-view-help: ነባሪውን እይታ (ቀን ፣ ሳምንት ፣ ወር ወይም ዓመት) ይገልጻል።
+Preferred view: ተመራጭ እይታ
+Allow top menu: የላይኛው ምናሌ ፍቀድ
+Date Selectors position: ቀን መራጮች ቦታ
+menu-themes-help: የላይኛው ምናሌ ቀለሞችን እና ዘይቤን ያዘጋጃል
+Menu theme: የምናሌ ገጽታ
+fonts-help: የሚጠቀሙባቸውን የስርዓት ቅርጸ-ቁምፊዎች ዝርዝር ይገልጻል (እንደ “Arial ፣ Helvetica”)
+Fonts: ቅርጸ ቁምፊዎች
+display-sm_month-help: ከነቃ በወር ዕይታዎች ውስጥ አነስተኛ ወራትን ያሳያል
+Display small months: ትናንሽ ወራትን አሳይ
+display-weekends-help: አንድ ሳምንት ሲመለከቱ ቅዳሜና እሁድን ያካትቱ ፡፡
+Display weekends: ቅዳሜና እሁድን አሳይ
+display-long-daynames-help: ከነቃ ረጅም ቀን ስሞች ይታያሉ
+Display long day names: ረጅም ቀን ስሞችን አሳይ
+display-alldays-help: ሁሉንም ሕዋሶች በመሙላት በወር ዕይታዎች ውስጥ ያለፉትን እና የሚቀጥሉትን ወራቶች ቀናት ያሳዩ።
+Display all days in month view: ሁሉንም ቀናት በወር እይታ ውስጥ ያሳዩ
+display-week-number-help: የሳምንቱ ቁጥር (1-52) በወር እይታ እና በሳምንቱ ዕይታ ውስጥ መታየት እንዳለበት ይገልጻል ፡፡
+Display week number: የማሳያ ሳምንት ቁጥር
+display-desc-print-day-help: የክስተት መግለጫዎችን በአታሚዎች ተስማሚ በሆነ የቀን እይታ ስሪት ውስጥ ያካትቱ።
+Display description in printer day view: መግለጫ በአታሚው ቀን እይታ ውስጥ አሳይ
+yearly-shows-events-help: በዓመት ዕይታ ላይ በደማቅ ቅርጸ-ቁምፊ ውስጥ ክስተቶችን የያዙ ቀናትን ያሳዩ።
+Display days with events in bold in month and year views: ቀናት በወር እና በዓመት እይታዎች በደማቅ ሁኔታ ከክስተቶች ጋር ያሳዩ
+display-minutes-help: ከነቃ በ: 00 የሚጠናቀቁ ደቂቃዎች ሁልጊዜ ይታያሉ
+Display 00 minutes always: 00 ደቂቃዎችን ሁልጊዜ ያሳዩ
+display-end-times-help: ጊዜው ካለፈ የክስተት ማብቂያ ጊዜዎችን ያሳዩ
+Display end times on calendars: የቀን መቁጠሪያዎችን የማብቂያ ጊዜዎችን አሳይ
+allow-view-add-help: የ '+' አዶ በእይታዎች ውስጥ ይካተታል ፣ ይህም ተጠቃሚዎች በሌሎች ተጠቃሚዎች የቀን መቁጠሪያዎች ላይ ክስተቶችን በፍጥነት እንዲያክሉ ያስችላቸዋል።
+Include add event link in views: በእይታዎች ውስጥ የክስተት አገናኝን ያክሉ
+lunar-help: ከነቃ በየወሩ የጨረቃ ደረጃዎችን የሚወክሉ ትናንሽ አዶዎችን ያሳያል
+Display Lunar Phases in month view: የጨረቃ ደረጃዎችን በወር እይታ ውስጥ ያሳዩ
+Restrictions: ገደቦች
+allow-view-other-help: አንድ ተጠቃሚ የሌላ ተጠቃሚ የቀን መቁጠሪያን ማየት ይችል እንደሆነ ይገልጻል።
+Allow viewing other users calendars: የሌላ ተጠቃሚ የቀን መቁጠሪያዎችን ለመመልከት ፍቀድ
+require-approvals-help: ሲነቃ ተጠቃሚው አንድን ክስተት በቀን መቁጠሪያቸው ላይ ከመታየቱ በፊት ማፅደቅ አለበት (ያልጸደቀ ማሳያ ካልነቃ በስተቀር)። ይህንን ወደ “አይ” ማዘጋጀቱ ማስታወሻ ለህዝባዊ መዳረሻ ቀን መቁጠሪያ ማጽደቂያዎችን አያጠፋም (የሕዝባዊ መዳረሻ ቀን መቁጠሪያ ከነቃ) ፡፡
+Require event approvals: የዝግጅት ማጽደቂያዎችን ይጠይቁ
+display-unapproved-help: የቀን መቁጠሪያዎ ውስጥ ያልጸደቁ ክስተቶች መታየታቸውን ይገልጻል።<br>ወደ “አዎ” ከተቀናበሩ ያልጸደቁ ክስተቶች በቀን መቁጠሪያዎ ውስጥ ይታያሉ (በተለየ የጽሑፍ ቀለም)።<br>ወደ “አይ” ከተቀናበሩ ከዚያ ያልተፈቀዱ ክስተቶች በቀን መቁጠሪያዎ ውስጥ ከመታየታቸው በፊት መጽደቅ አለባቸው።
+Display unapproved: ማሳያ አልተፈቀደም
+conflict-check-help: የክስተት ግጭቶችን ይፈትሹ (ለተመሳሳይ ሰው በተመሳሳይ ጊዜ የታቀዱ ሁለት ክስተቶች) ፡፡ ይህንን ወደ “አዎ” ካቀናጁ ማስጠንቀቂያውን ካረጋገጡ በኋላ አሁንም ሁለት ዝግጅቶችን በአንድ ጊዜ ማቀድ ይችላሉ ፡፡ ይህንን ወደ “አይ” ካዘጋጁት የግጭቶች ምርመራ አይደረግም ፡፡ ምናልባት ይህንን ወደ “አዎ” ማቀናበር ይፈልጉ ይሆናል ፣ ስለሆነም የግጭት ፍተሻ ይከሰታል ፡፡
+Check for event conflicts: የዝግጅት ግጭቶች ካሉ ይፈትሹ
+Yes: አዎ
+No: አይ
+conflict-months-help: የግጭት ፍተሻ በቦታው ካለ (“የዝግጅት ግጭቶችን ይፈትሹ” ወደ “አይ” ተቀናብሯል & # 41; ፣ ይህ ለወደፊቱ ስንት ወራቶች ግጭቶችን መፈተሽ እንዳለብን ይገልጻል። ክስተቶችን ማከል ረጅም ጊዜ የሚወስድ ሆኖ ካገኘ ፣ ይህን ቁጥር ይቀንሱ።
+Conflict checking months: የግጭት ፍተሻ ወራትን
+conflict-check-override-help: ተጠቃሚዎች የክስተት ግጭቶችን እንዲሽሩ እና ሁለት ወይም ከዚያ በላይ ክስተቶችን በተመሳሳይ ጊዜ መርሃግብር እንዲያደርጉ ያስችላቸዋል።
+Allow users to override conflicts: ተጠቃሚዎች ግጭቶችን እንዲሽሩ ይፍቀዱላቸው
+limit-appts-help: የስርዓት አስተዳዳሪው አንድ ተጠቃሚ በማንኛውም ነጠላ ቀን ሊኖረው በሚችለው የቀጠሮዎች ብዛት ላይ የስርዓት-ወሰን አጠቃላይ መጠን እንዲወስን ይፈቅድለታል።
+Limit number of timed events per day: በየቀኑ የጊዜ ሰሌዳ ክስተቶች ብዛት ይገድቡ
+limit-appts-number-help: አንድ ተጠቃሚ በአንድ ቀን ውስጥ ሊኖረው የሚችለውን ከፍተኛ የጊዜ ብዛት ክስተቶች ይገልጻል።
+Maximum timed events per day: በቀን ውስጥ ከፍተኛ ጊዜ ያላቸው ክስተቶች
+crossday-help: ከነቃ ቀናትን የሚቆዩ ክስተቶች በተናጠል ቀናት ይታያሉ
+Disable Cross-Day Events: የመስቀል ቀን ዝግጅቶችን ያሰናክሉ
+disable-location-field-help: “አዎ” ን መምረጥ ከዝግጅት መረጃ ገጾች “አካባቢ” መስኩን ያስወግዳል
+Disable Location field: የአካባቢ መስክን ያሰናክሉ
+disable-url-field-help: “አዎ” ን መምረጥ ከክስተት መረጃ ገጾች የ “ዩአርኤል” መስክን ያስወግዳል
+Disable URL field: የዩአርኤል መስክን ያሰናክሉ
+disable-priority-field-help: “አዎ” ን መምረጥ ለጀማሪዎች ቀለል ያለ በይነገጽ በማቅረብ የ “ቅድሚያ” መስክን ከክስተቶች መረጃ ገጾች ያስወግዳል።
+Disable Priority field: ቅድሚያ የሚሰጠውን መስክ አሰናክል
+disable-access-field-help: “አዎ” ን መምረጥ ለጀማሪዎች ቀለል ያለ በይነገጽ በማቅረብ “መዳረሻ” መስኩን ከክስተቶች መረጃ ገጾች ላይ ያስወግዳል።
+Disable Access field: የመዳረሻ መስክን ያሰናክሉ
+disable-participants-field-help: “አዎ” ን መምረጥ “ተሳታፊዎች” መስክን ከክስተት መረጃ ገጾች ያስወግዳቸዋል ፣ ተጠቃሚዎች ሌሎች ተጠቃሚዎችን በክስተቶቻቸው ላይ እንዳያክሉ ያደርጋቸዋል። ይህንን አማራጭ ካነቁ “የሌላ ተጠቃሚን የቀን መቁጠሪያዎችን ለማየት ፍቀድ” የሚለውን መስክ እንዲሁ ማሰናከል ይፈልጉ ይሆናል።
+Disable Participants field: የተሳታፊዎችን መስክ ያሰናክሉ
+disable-repeating-field-help: ክስተቶችን በሚጨምሩበት ጊዜ “አዎ” ን መምረጥ “መደጋገም” መስኩን ያስወግዳል። ይህ ለጀማሪዎች ቀለል ያለ በይነገጽ ይሰጣል።
+Disable Repeating field: የመድገም መስክን ያሰናክሉ
+allow-html-description-help: ከነቃ ተጠቃሚዎች በክስተት መግለጫው መስክ ኤችቲኤምኤል ማስገባት ይችላሉ። ካልነቃ የኤችቲኤምኤል መለያዎች እንደ ቀላል ጽሑፍ እንዲታዩ ይድናሉ። ማስጠንቀቂያ-ይህንን ባህሪ ማንቃት ተጠቃሚዎች በሌሎች ድርጣቢያዎች ላይ ምስሎችን ለማጣቀስ ያስችላቸዋል ፡፡
+Allow HTML in Description: ኤችቲኤምኤልን በመግለጫ ውስጥ ይፍቀዱ
+Popups: ብቅ-ባዮች
+disable-popups-help: ብቅ ባዮችን ከቀን መቁጠሪያ ዕይታዎች ያሰናክሉ
+Disable Pop-Ups: ብቅ-ባዮችን አሰናክል
+popup-includes-siteextras-help: ከነቃ በቦታው_extras.php ፋይል ውስጥ ብጁ የክስተት መስኮችን ማዋቀር በክስተቶች ብቅ ባዮች ውስጥ እንዲታይ ይፍቀዱ ፡፡
+Display Site Extras in popup: ብቅ ባዩ ውስጥ የጣቢያ ተጨማሪዎችን አሳይ
+popup-includes-participants-help: ከነቃ ተሳታፊዎች በክስተት ብቅ ባዮች ውስጥ ይታያሉ።
+Display Participants in popup: ብቅ ባዮች ውስጥ ተሳታፊዎችን አሳይ
+Miscellaneous: ልዩ ልዩ
+remember-last-login-help: ሲነቃ የተጠቃሚው መግቢያ በመግቢያ ገጹ ላይ ለእነሱ ይሞላል (ግን የይለፍ ቃሉ አይደለም) ፣ እና የተጠቃሚው ምርጫዎች ይጫናሉ (የመረጡትን ቀለሞች እና የቋንቋ ምርጫቸውን ጨምሮ)።
+Remember last login: የመጨረሻውን መግቢያ ያስታውሱ
+summary_length-help: በቀን መቁጠሪያ ዕይታዎች ውስጥ የአጫጭር መግለጫ ከፍተኛ ርዝመት
+Brief Description Length: አጭር መግለጫ ርዝመት
+user_sort-help: ለተጠቃሚ ፣ nonuser ዝርዝሮች ድርድርን ይወስናል
+User Sort Order: የተጠቃሚ ደርድር ትዕዛዝ
+Lastname, Firstname: የአባት ስም ፣ የመጀመሪያ ስም
+Firstname, Lastname: የመጀመሪያ ስም, የአባት ስም
+allow-public-access-help: ሲነቃ ፣ የቀን መቁጠሪያው ተጠቃሚዎች እንዲገቡ የማይፈልግ እንደ ተነባቢ-ብቻ የህዝብ የቀን መቁጠሪያ ሆኖ ሊያገለግል ይችላል።
+Allow public access: የህዝብ መዳረሻ ፍቀድ
+public-access-default-visible: ከሕዝብ የቀን መቁጠሪያ የሚመጡ ክስተቶች በራስ-ሰር በሁሉም ተጠቃሚዎች የቀን መቁጠሪያዎች ላይ ይታያሉ
+Public access visible by default: በነባሪነት የህዝብ መዳረሻ ይታያል
+public-access-default-selected: አዲስ ክስተት ሲያክሉ የህዝብ ተጠቃሚው በነባሪነት እንደ ተሳታፊ ይመረጣል።
+Public access is default participant: የህዝብ መዳረሻ ነባሪ ተሳታፊ ነው
+public-access-view-others-help: ስርዓቱን በይፋዊ ተደራሽነት ሲደርሱ ተጠቃሚው የሌላውን የቀን መቁጠሪያ ተጠቃሚ የቀን መቁጠሪያ ማየት ይችል እንደሆነ ይገልጻል።
+Public access can view other users: የህዝብ ተደራሽነት ሌሎች ተጠቃሚዎችን ማየት ይችላል
+public-access-can-add-help: ሲነቃ በህዝባዊ ተደራሽነት ስርዓቱን የሚደርሱ ተጠቃሚዎች አዲስ ክስተቶችን ማከል ይችላሉ ፣ ግን አንድ አስተዳዳሪ አዲሱን ክስተት እስኪያፀድቁ ድረስ በቀን መቁጠሪያው ውስጥ አይታዩም።
+Public access can add events: የህዝብ ተደራሽነት ክስተቶችን ማከል ይችላል
+public-access-add-requires-approval-help: በይፋዊ መዳረሻ አካውንት በኩል የታከሉ ክስተቶች ከመታየታቸው በፊት ማጽደቅን ይጠይቅ እንደሆነ ይገልጻል ፡፡
+Public access new events require approval: ለሕዝብ ተደራሽነት አዲስ ዝግጅቶች ማፅደቅን ይፈልጋሉ
+public-access-sees-participants-help: ከነቃ የቀን መቁጠሪያውን ከሕዝብ መለያ የሚደርሱ ተጠቃሚዎች የአንድ ክስተት ዝርዝሮችን ከተመለከቱ የዝግጅት ተሳታፊዎችን ማየት ይችላሉ።
+Public access can view participants: የህዝብ ተደራሽነት ተሳታፊዎችን ማየት ይችላል
+public-access-override-help: የክስተት ስሞች እና መግለጫዎች በህዝባዊ የቀን መቁጠሪያ ላይ እንዲደበቁ ይፈቅድላቸዋል
+Override event name/description for public access: ለሕዝብ ተደራሽነት የዝግጅት ስም / መግለጫን ይሽሩ
+public-access-override-text-help: ከላይ ያለው አማራጭ ከነቃ የሚታየው ጽሑፍ። 'ከሌለ' ይተረጎማል።
+Text to display to public access: ለሕዝብ ተደራሽነት ለማሳየት ጽሑፍ
+public-access-captcha-help: ከነቃ በሕዝብ የታከሉ አዲስ ክስተቶች የ CAPTCHA ማረጋገጫ ማለፍ ይፈልጋሉ።
+Require CAPTCHA validation for public access new events: ለሕዝብ ተደራሽነት አዲስ ክስተቶች የ CAPTCHA ማረጋገጫ ይጠይቁ
+uac-enabled-help: የተጠቃሚ-ደረጃ መዳረሻ ቁጥጥርን ያነቃል
+User Access Control enabled: የተጠቃሚ መዳረሻ ቁጥጥር ነቅቷል
+groups-enabled-help: ተጠቃሚዎች ተጠቃሚዎችን በቡድን እንዲመርጡ የሚያስችል የቡድን ድጋፍን ያነቃል።
+Groups enabled: ቡድኖች ነቅተዋል
+user-sees-his-group-help: ከነቃ ተጠቃሚዎች ቢያንስ በአንዱ ቡድናቸው ውስጥ የሌሉ የቀን መቁጠሪያ ተጠቃሚዎችን አያዩም ፡፡
+User sees only his groups: ተጠቃሚው የሚያየው ቡድኖቹን ብቻ ነው
+nonuser-enabled-help: ከነቃ አስተዳዳሪዎች ተጠቃሚ ያልሆኑ የቀን መቁጠሪያዎችን የማከል አማራጭ ይኖራቸዋል
+Nonuser enabled: Nonuser የቀን መቁጠሪያዎች ነቅተዋል
+nonuser-list-help: በተሳታፊዎች ዝርዝር ውስጥ ያልተጠቀሱ የቀን መቁጠሪያዎችን የት እንደሚያሳዩ
+Nonuser list: በተሳታፊዎች ዝርዝር ውስጥ አሳይ
+Upcoming Events: መጪ ክስተቶች
+upcoming-events-help: መጪውን .php ያንቁ
+Enabled: ነቅቷል
+upcoming-events-allow-override: የተጠቃሚ መለኪያን ለ መጪው. Php ፍቀድ
+Allow user override: ተጠቃሚን እንዲሽር ይፍቀዱ
+upcoming-events-display-caticons: በመጪው.php ውስጥ የምድብ አዶዎችን ያካትቱ
+Display category icons: የምድብ አዶዎችን አሳይ
+upcoming-events-display-layers: በመጪው.php ውስጥ ንብርብሮችን ያሳዩ
+Display layers: ንብርብሮችን አሳይ
+upcoming-events-display-links: በመጪው.php ውስጥ አገናኞችን አሳይ
+Display links to events: ወደ ዝግጅቶች አገናኞችን አሳይ
+upcoming-events-display-popups: በመጪው.php ውስጥ የክስተት ብቅ-ባዮችን አሳይ
+Display event popups: የክስተት ብቅ-ባዮችን አሳይ
+reports-enabled-help: ከነቃ ተጠቃሚዎች በእያንዳንዱ ገጽ ታችኛው ክፍል ላይ “ሪፖርቶች” የሚለውን ክፍል ያዩና ብጁ ሪፖርቶችን እንዲፈጥሩ ይፈቀድላቸዋል ፡፡ በተጨማሪም የአስተዳዳሪ ተጠቃሚዎች በሁሉም ተጠቃሚዎች ገጾች ታችኛው ክፍል ላይ የሚታዩ ዓለም አቀፍ ሪፖርቶችን መፍጠር ይችላሉ ፡፡ 
+Reports enabled: ሪፖርቶች ነቅተዋል
+subscriptions-enabled-help: የርቀት ተጠቃሚዎች በዌብካላንደር ተጠቃሚ የቀን መቁጠሪያ ላይ መመዝገብ እንደሚችሉ ይገልጻል ፣ ይህም የ iCal- የነቃ መተግበሪያ (ለምሳሌ እንደ አፕል አይካካል ወይም ሞዚላ ቀን መቁጠሪያ) የዌብካላንደር ተጠቃሚ ክስተቶችን እንዲያዩ ያስችላቸዋል ፡፡
+Allow remote subscriptions: የርቀት ምዝገባዎችን ፍቀድ
+remotes-enabled-help: ተጠቃሚዎች ዩ አር ኤል በመጠቀም የርቀት ics ፋይሎችን እንዲጭኑ ይፈቅድላቸዋል
+Allow remote calendars: የርቀት ቀን መቁጠሪያዎችን ፍቀድ
+rss-enabled-help: የተጠቃሚ የቀን መቁጠሪያ ከአርኤስኤስ ምግብ ማግኘት ከቻለ ይገልጻል።
+Enable RSS feed: RSS ምግብ አንቃ
+categories-enabled-help: ለክስተት ምድቦች ድጋፍን ያነቃል።
+Categories enabled: ምድቦች ነቅተዋል
+icon_upload-enabled-help: ከነቃ ተጠቃሚዎች የምድብ አዶዎችን መስቀል ይችላሉ
+Category Icon Upload enabled: የምድብ አዶ ሰቀላ ነቅቷል
+(Requires XXX folder to exist.): (የ XXX አቃፊ እንዲኖር ይጠይቃል)
+display-tasks-help: በወር እና በቀን የቀን መቁጠሪያ ላይ አነስተኛ የተግባር መስኮትን ያሳዩ
+Display small task list: አነስተኛ የሥራ ዝርዝርን አሳይ
+display-tasks-in-grid-help: ተግባሮችን ከቀን መቁጠሪያዎች ጋር ከክስተቶች ጋር ያሳዩ
+Display tasks in Calendars: በቀን መቁጠሪያዎች ውስጥ ስራዎችን አሳይ
+allow-external-users-help: የቀን መቁጠሪያ ያልሆነ ተጠቃሚ ወደ አንድ ክስተት መታከል ይችል እንደሆነ ይገልጻል። ይህ የቀን መቁጠሪያ ያልሆኑ ተጠቃሚዎች እንደ ክስተት ተሳታፊዎች እንዲዘረዘሩ ያስችላቸዋል።
+Allow external users: ውጫዊ ተጠቃሚዎችን ፍቀድ
+external-can-receive-notification-help: ውጫዊ ተጠቃሚዎች ሲነቁ እና የኢሜል አጠቃቀም ሲነቃ ክስተቱ ሲታከል ፣ ሲዘምን ወይም ሲሰረዝ የውጭ ተጠቃሚዎች የኢሜይል ማሳወቂያዎችን ሊቀበሉ ይችላሉ (የውጭ ተጠቃሚው የኢሜይል አድራሻ ከቀረበ)
+External users can receive email notifications: ውጫዊ ተጠቃሚዎች የኢሜል ማሳወቂያዎችን መቀበል ይችላሉ
+external-can-receive-reminder-help: ውጫዊ ተጠቃሚዎች ሲነቁ እና የኢሜል አጠቃቀም ሲነቃ ውጫዊ ተጠቃሚዎች የኢሜል አስታዋሾችን ሊቀበሉ ይችላሉ (የውጭ ተጠቃሚው የኢሜል አድራሻ ከቀረበ) ፡፡
+External users can receive email reminders: ውጫዊ ተጠቃሚዎች የኢሜል አስታዋሾችን መቀበል ይችላሉ
+allow-self-registration-help: አዲስ ተጠቃሚዎች እራሳቸውን እንዲመዘገቡ ይፍቀዱ
+Allow self-registration: የራስ ምዝገባን ይፍቀዱ
+use-blacklist-help: በአይፒ አድራሻ ላይ በመመስረት የዌብካላንደር ተግባራት መዳረሻ ይገድቡ
+Restrict self-registration to blacklist: የራስ-ምዝገባን ወደ ጥቁር መዝገብ ይገድቡ
+allow-self-registration-full-help: አዳዲስ ተጠቃሚዎች በመስመር ላይ የራስ ምዝገባ ሂደቱን እንዲያጠናቅቁ ይፍቀዱላቸው
+Use self-registration email notifications: የይለፍ ቃላትን ይፍጠሩ እና ለአዳዲስ ተጠቃሚዎች ይላኩ
+allow-attachment-help: ተጠቃሚዎች የፋይል አባሪዎችን በክስተቶች ላይ እንዲያክሉ ይፍቀዱላቸው ፡፡
+Allow file attachments to events: የፋይል አባሪዎችን ለክስተቶች ይፍቀዱ
+Admin and owner can always add attachments if enabled.: አስተዳዳሪ እና ባለቤቱ ከነቃ ሁልጊዜ አባሪዎችን ማከል ይችላሉ።
+allow-comments-help: ተጠቃሚዎች አስተያየቶችን በክስተቶች ላይ እንዲያክሉ ይፍቀዱላቸው ፡፡
+Allow comments to events: ለክስተቶች አስተያየቶችን ይፍቀዱ
+Admin and owner can always add comments if enabled.: አስተዳዳሪ እና ባለቤቱ ከነቃ ሁልጊዜ አስተያየቶችን ማከል ይችላሉ።
+email-enabled-help: ለማሳወቂያ እና ለማስታወሻዎች ሁሉንም የኢሜል መላክ ያብሩ ወይም ያጥፉ። አገልጋይዎ ደብዳቤ ለመላክ በትክክል ካልተዋቀረ ወደ “አይ” ተቀናብሯል።
+Email enabled: ኢሜል ነቅቷል
+email-default-sender: አስታዋሾችን በሚልክበት ጊዜ እንደ ላኪው ለመለየት የኢሜሉን አድራሻ ይገልጻል ፡፡
+Default sender address: ነባሪ ላኪ አድራሻ
+email-mailer: የኢሜል አይነት ይምረጡ (SMTP ፣ PHP ሜይል ፣ ላኪ መልእክት)
+Email Mailer: የኢሜል መላኪያ
+email-smtp-host: በኮማ የተለዩ የ SMTP አገልጋይ (ሎች) የአስተናጋጅ ስም (ሎች)
+SMTP Host name(s): የ SMTP አስተናጋጅ ስም (ቶች)
+email-smtp-port: የ SMTP ወደብ ቁጥር (በመደበኛነት 25)
+SMTP Port Number: የ SMTP ወደብ ቁጥር
+email-smtp-auth: የ SMTP ማረጋገጫ ይጠቀሙ
+SMTP Authentication: የ SMTP ማረጋገጫ
+email-smtp-username: ማረጋገጥን የሚጠቀሙ ከሆነ የ SMTP የተጠቃሚ ስም
+SMTP Username: የ SMTP የተጠቃሚ ስም
+email-smtp-password: ማረጋገጫ የሚጠቀሙ ከሆነ የ SMTP የይለፍ ቃል
+SMTP Password: የ SMTP የይለፍ ቃል
+Default user settings: ነባሪ የተጠቃሚ ቅንብሮች
+email-format: ለኤችቲኤምኤል ወይም ግልጽ የጽሑፍ መልዕክቶች ምርጫ ይጥቀሱ
+Email format preference: የኢሜል ቅርጸት ምርጫ
+HTML: ኤችቲኤምኤል
+Plain Text: በሚነበብ መልኩ
+email-include-ics: ወደ ኢሜል ለመላክ የ iCalendar ICS ፋይልን ያካትቱ
+Include iCalendar attachments: የ iCalendar ቀን አባሪዎችን አካት
+email-event-reminders-help: የክስተት አስታዋሾችን ለመላክ ወይም ላለመላክ ይገልጻል ፡፡
+Event reminders: የክስተት አስታዋሾች
+email-event-added: አንድ ክስተት ወደ ቀን መቁጠሪያዎ ሲታከል የኢሜይል ማሳወቂያዎችን ለመላክ ወይም ላለመላክ ይገልጻል ፡፡
+Events added to my calendar: ክስተቶች ወደ ቀን መቁጠሪያዬ ታክለዋል
+email-event-updated: አንድ ክስተት በቀን መቁጠሪያዎ ላይ ሲዘምን የኢሜይል ማሳወቂያዎችን ለመላክ ወይም ላለመላክ ይገልጻል።
+Events updated on my calendar: ክስተቶች በቀን መቁጠሪያዬ ላይ ዘምነዋል
+email-event-deleted: አንድ ክስተት ከቀን መቁጠሪያዎ ሲወገድ የኢሜይል ማሳወቂያዎችን ለመላክ ወይም ላለመላክ ይገልጻል።
+Events removed from my calendar: ክስተቶች ከቀን መቁጠሪያዬ ተወግደዋል
+email-event-rejected: አንድ ተሳታፊ በቀን መቁጠሪያዎ ላይ ያለውን ክስተት ውድቅ ሲያደርግ የኢሜል ማሳወቂያዎችን ለመላክ ወይም ላለመላክ ይገልጻል።
+Event rejected by participant: ክስተት በተሳታፊ ውድቅ ተደርጓል
+email-event-create: የምዝገባዎች ፈጣሪ ኢሜል ይቀበላል እንደሆነ ይገልጻል
+Event that I create: እኔ የምፈጥረው ክስተት
+Color options: የቀለም አማራጮች
+Allow user to customize colors: ተጠቃሚው ቀለሞችን እንዲያበጅ ይፍቀዱለት
+gradient-colors: የነቃ የግራዲያንት ቀለሞች ጥቅም ላይ ከዋሉ። ይህ በአፈፃፀም ላይ ከፍተኛ ተጽዕኖ ሊያሳድር ይችላል።
+Enable gradient images for background colors: ለጀርባ ቀለሞች የግራዲዲንግ ምስሎችን ያንቁ
+Not available: አይገኝም
+Background Image options: የጀርባ ምስል አማራጮች
+bgimage-help: የተፈለገውን የጀርባ ምስል ዩ.አር.ኤል. አንጻራዊ አገናኝ ሊሆን ይችላል።
+Background Image: የጀርባ ምስል
+bgrepeat-help: የጀርባ ምስል ድገም ባህሪን ይቆጣጠራል።
+Background Repeat: የጀርባ ድገም
+
+########################################
+# Page: adminhome.php
+#
+Assistants: ረዳቶች
+Preferences: ምርጫዎች
+Control Panel: መቆጣጠሪያ ሰሌዳ
+Users: ተጠቃሚዎች
+Account: መለያ
+Categories: ምድቦች
+Views: እይታዎች
+Layers: ንብርብሮች
+Reports: ሪፖርቶች
+Delete Events: ክስተቶችን ሰርዝ
+Activity Log: የእንቅስቃሴ መዝገብ
+System Log: የስርዓት መዝገብ
+Security Audit: የደህንነት ኦዲት
+Public Preferences: የህዝብ ምርጫዎች
+Unapproved Public Events: ያልተፈቀዱ የህዝብ ክስተቶች
+Administrative Tools: የአስተዳደር መሳሪያዎች
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: የተባዛ ስም “XXX”
+Username XXX already exists.: የተጠቃሚ ስም "XXX" አስቀድሞ አለ
+Email address XXX already exists.: የኢሜል አድራሻ "XXX" አስቀድሞ አለ
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): ተጨማሪ አስተያየቶች (አስገዳጅ ያልሆነ)
+Approve and Send: ማጽደቅ እና መላክ
+Approve and Exit: ማጽደቅ እና መውጣት
+(Your comments will be emailed to the event creator.): (አስተያየቶችዎ ለክስተቱ ፈጣሪ በኢሜል ይላካሉ ፡፡)
+Hello, XXX.: ሰላም ፣ XXX።
+XXX has approved an appointment and added comments.: ቀጠሮ ጸድቋል እና አስተያየቶች በ XXX ታክለዋል።
+Subject XXX: ርዕሰ ጉዳይ: "XXX"
+Description XXX: መግለጫ: "XXX"
+Date XXX: ቀን: XXX
+Time XXX: ጊዜ: XXX
+Comments XXX: አስተያየቶች-XXX
+Approved w/Comments by XXX.: ጸድቋል ወ / አስተያየቶች በ: XXX።
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: የአስተዳደር ሁኔታ
+Your assistants: የእርስዎ ረዳቶች
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: ያልታወቀ ስህተት።
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: የፕሮግራም ስህተት-ምንም XXX አልተገለጸም!
+user: ተጠቃሚ
+year: አመት
+month: ወር
+day: ቀን
+
+########################################
+# Page: category.php
+#
+Category Icon: ምድብ አዶ
+Global: ዓለም አቀፍ
+The permissions for the icons directory are set to read-only: ለአዶዎች ማውጫ ፈቃዶች ተነባቢ-ብቻ ተቀናብረዋል።
+Category Name: ምድብ ስም
+Color: ቀለም
+Remove Icon: አዶን አስወግድ
+Add Icon to Category: አዶን ወደ ምድብ ያክሉ
+Upload: ስቀል
+GIF or PNG 6kb max: GIF ወይም PNG 6kb max
+Search for existing icons: ነባር አዶዎችን ይፈልጉ
+Add: አክል
+Delete: ሰርዝ
+Are you sure you want to delete this entry?: እርግጠኛ ነዎት ይህን ግቤት መሰረዝ ይፈልጋሉ?
+Make New Category: አዲስ ምድብ ይስሩ
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: የምድብ ስም ያስፈልጋል
+File size exceeds maximum.: የፋይል መጠን ከከፍተኛው አል exል።
+File is not a GIF or PNG image: ፋይል የ GIF ወይም PNG ምስል አይደለም
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: ሊገኙ የሚችሉ ምድቦች
+ENTRY CATEGORIES: የመግቢያ ምድቦች
+Remove: አስወግድ
+Global Category: ዓለም አቀፍ ምድብ
+Cancel: ሰርዝ
+
+########################################
+# Page: colors.php
+#
+Add Custom: ብጁ አክል
+Basic Colors: መሰረታዊ ቀለሞች
+Current Color: የአሁኑ ቀለም
+Custom Colors: ብጁ ቀለሞች
+Old Color: የድሮ ቀለም
+
+########################################
+# Page: combo.php
+#
+Select None: ምረጥ የለም
+Agenda: አጀንዳ
+Add Task: ተግባር አክል
+Description: መግለጫ
+Date: ቀን
+Time: ጊዜ
+Priority: ቅድሚያ የሚሰጠው
+Access: መዳረሻ
+Created by: የተፈጠረ
+Updated: ዘምኗል
+Participants: ተሳታፊዎች
+Attachments: አባሪዎች
+Comments: አስተያየቶች
+Brief Description: አጭር ገለጻ
+Full Description: ሙሉ መግለጫ
+Category: ምድብ
+Add event detail: የክስተት ዝርዝርን ያክሉ
+Start Date: የመጀመሪያ ቀን
+Due Date: የመጨረሻ ማስረከቢያ ቀን
+Add task detail: የተግባር ዝርዝርን ያክሉ
+All: ሁሉም
+Error: ስህተት
+no response from server: ከአገልጋይ መልስ የለም
+JSON error: የ JSON ስህተት
+High: ከፍተኛ
+Medium: መካከለኛ
+Low: ዝቅተኛ
+Today: ዛሬ
+Add Entry: መግቢያ አክል
+Unnamed Event: ያልተሰየመ ክስተት
+Unnamed Task: ያልተሰየመ ተግባር
+Refresh: አድስ
+Click to add entry: ግቤትን ለመጨመር ጠቅ ያድርጉ
+Name: ስም
+pm: ከሰዓት በኋላ
+am: ነኝ
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX ቀጠሮ ሰር canceledል።
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: ልክ ያልሆነ የብሎብ መታወቂያ
+
+########################################
+# Page: docadd.php
+#
+Add Comment: አስተያየት ያክሉ
+Add Attachment: አባሪ ያክሉ
+Subject: ርዕሰ ጉዳይ
+Comment: አስተያየት
+Upload file: ፋይል ስቀል
+
+########################################
+# Page: docdel.php
+#
+Removed: ተወግዷል
+
+########################################
+# Page: edit_entry.php
+#
+days: ቀናት
+hours: ሰዓታት
+minutes: ደቂቃዎች
+You are not authorized to edit this task.: ይህንን ተግባር ለማርትዕ አልተፈቀደልዎትም።
+is in a different timezone than you are. Currently: ከእርስዎ በተለየ የጊዜ ሰቅ ውስጥ ነው። በአሁኑ ግዜ
+hour ahead of you: ሰዓት ከፊትህ
+hour behind you: ሰዓት ከኋላዎ
+hours ahead of you: ሰዓታት ከፊትዎ
+hours behind you: ሰዓታት ከኋላዎ
+XXX is in a different timezone (ahead): (XXX በተለየ የጊዜ ሰቅ ውስጥ ነው ፣ YYY ከእርስዎ በፊት ነው።<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX በተለየ የጊዜ ሰቅ ውስጥ ነው ፣ YYY ከኋላዎ።<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: እዚህ የገባው ጊዜ በእርስዎ የጊዜ ሰቅ ላይ የተመሠረተ ነው።
+Edit Entry: የመግቢያ አርትዕ
+Details: ዝርዝሮች
+Repeat: ይድገሙ
+Reminders: አስታዋሾች
+brief-description-help: ይህ የዝግጅቱን አጭር መግለጫ (ወደ 20 ያህል ቁምፊዎች) ማቅረብ አለበት ፡፡ የቀን መቁጠሪያውን ሲመለከቱ ይህ ክስተቱን ይወክላል።
+full-description-help: ይህ የዝግጅቱን ዝርዝር ማጠናቀቅ አለበት። አንድ ተጠቃሚ ክስተቱን ሲመለከት ይህ መረጃ ሊታይ ይችላል ፡፡
+access-help: የዝግጅቱን የመድረሻ ደረጃን ይገልጻል። <ul> <li> ህዝባዊ: - ሁሉም ሰው የዝግጅቱን ሙሉ ዝርዝር ማየት ይችላል። ምን እንደ ሆነ ዝርዝሩ አይደለም።</li></ul>
+priority-help: የዝግጅቱን ቅድሚያ ይገልጻል ፡፡ ከፍተኛ ቅድሚያ የሚሰጣቸው ክስተቶች በደማቅ ሁኔታ ይታያሉ።
+category-help: የዝግጅቱን ምድብ ይገልጻል።
+completed-help: የቀን ሥራ ተጠናቅቋል። ሁሉም ተሳታፊዎች መቶኛ ከ 100% ጋር እኩል ሲሆኑ ብቻ ነቅቷል።
+Date Completed: የተጠናቀቀበት ቀን
+percent-help: ለዚህ ተጠቃሚ የተግባር ማጠናቀቂያ መቶኛ
+Percent Complete: መቶኛ ተጠናቅቋል
+All Percentages: ሁሉም መቶኛዎች
+location-help: የዝግጅት ቦታ
+Location: አካባቢ
+url-help: የክስተት ዩ.አር.ኤል.
+URL: ዩ.አር.ኤል.
+date-help: የዝግጅቱን ቀን ይገልጻል።
+Untimed event: ያልታሰበ ክስተት
+Timed event: ጊዜ ያለፈበት ክስተት
+All day event: የሙሉ ቀን ክስተት
+Timezone Offset: የሰዓት ሰቅ ማካካሻ
+time-help: የዝግጅቱን ጊዜ ይገልጻል። <ul> <li> "የጊዜ ክስተት" (በዚያ ቀን ለተወሰነ ጊዜ ለተያዘለት ክስተት)</li> <li> "ያልታሰበ ክስተት" (ለአንድ ክስተት ይህ ጊዜ የለውም (እንደ አንድ በዓል) )</li> <li> "የሙሉ ቀን ክስተት" (ቀኑን ሙሉ ለሚወስድ ክስተት (ከቢሮ ውጭ ላለመሆን)</li></ul>
+duration-help: የዝግጅቱን ቆይታ (በሰዓታት; ደቂቃዎች ውስጥ) ይገልጻል። <em>ይህ መስክ ባዶ ሆኖ ሊተው ይችላል።</em>
+end-time-help: ዝግጅቱ ይጠናቀቃል ተብሎ የሚጠበቅበትን ጊዜ ይገልጻል ፡፡
+Start Time: የመነሻ ጊዜ
+Due Time: የመድረሻ ጊዜ
+Site Extras: የጣቢያ ተጨማሪዎች
+avail_participants-help: የዚህን ግቤት ተሳታፊዎች ይዘረዝራል ፡፡
+Available: ይገኛል
+Find Name: ስም ፈልግ
+Resources: ሀብቶች
+participants-help: የዚህ ግቤት ተሳታፊዎች ይዘረዝራል ፡፡
+Selected: ተመርጧል
+Availability: ተገኝነት
+external-participants-help: የቀን መቁጠሪያ ተጠቃሚዎች ያልሆኑ የዝግጅቱ ተሳታፊዎች ዝርዝር ይገልጻል። ተጠቃሚዎቹ በአንድ መስመር አንድ ሊዘረዘሩ እና የኢሜል አድራሻ ሊያካትቱ ይችላሉ ፡፡ የኢሜል አድራሻ ከተገለጸ ተጠቃሚው ማሳወቂያዎችን እና ማስታወሻዎችን ለመቀበል ብቁ ነው ፡፡
+External Participants: የውጭ ተሳታፊዎች
+repeat-type-help: ክስተቱ ምን ያህል ጊዜ መደገም እንዳለበት ይምረጡ።
+Daily: በየቀኑ
+Weekly: ሳምንታዊ
+Monthly: ወርሃዊ
+by day: በቀን
+by date: በቀን
+by position: በአቀማመጥ
+Monthly (by day): ወርሃዊ (በቀን)
+Monthly (by date): ወርሃዊ (በቀን)
+Monthly (by position): ወርሃዊ (በአቀማመጥ)
+Yearly: ዓመታዊ
+Manual: መመሪያ
+Expert Mode: የባለሙያ ሞድ
+repeat-end-date-help: ዝግጅቱ እስከሚደገምበት ቀን ድረስ ይገልጻል ፡፡
+Ending: ማለቅ
+Forever: ለዘላለም
+Use end date: የማብቂያ ቀን ይጠቀሙ
+Number of times: የጊዜ ብዛት
+repeat-frequency-help: ክስተቱ ምን ያህል ጊዜ መደገም እንዳለበት ይገልጻል።
+Frequency: ድግግሞሽ
+Weekdays Only: የሳምንቱ ቀናት ብቻ
+Week Start: ሳምንት መጀመሪያ
+repeat-bydayextended-help: በሳምንቱ ቀን ላይ በመመርኮዝ የቀን ምርጫን ይፈቅዳል።
+ByDay: =
+repeat-month-help: ክስተቱ በየትኛው ወራቶች ውስጥ መደገም እንዳለበት ይገልጻል።
+ByMonth: በወር
+repeat-bysetpos-help: ከወሩ ጋር ባለው አቋም ላይ የተመሠረተ የቀን ምርጫን ይፈቅዳል።
+BySetPos: =
+repeat-bymonthdayextended-help: ቀንን መሠረት በማድረግ የቀን ምርጫን ይፈቅዳል ፡፡
+ByMonthDay: በሰኞ ቀን
+repeat-byweekno-help: ተጠቃሚን ክስተት ለመድገም የሳምንቶችን ዝርዝር እንዲለይ ያስችለዋል (1,2 ... 53, -53, -52 ...- 1)።
+ByWeekNo: በWeekNo
+repeat-byyearday-help: ክስተትን ለመድገም ተጠቃሚው የዓመቱን ቀናት ዝርዝር እንዲገልጽ ያስችለዋል (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: በአመት
+repeat-exceptions-help: ይህ ክስተት መከሰት ያለበት ወይም የማይኖርበት ተጨማሪ ቀናት።
+Exclusions: ማግለሎች
+Inclusions: ማካተት
+Add Exception: ልዩነትን ያክሉ
+Add Inclusion: ማካተት አክል
+Delete Selected: የተመረጠውን ሰርዝ
+Send Reminder: አስታዋሽ ላክ
+When: መቼ
+Use Date/Time: ቀን / ሰዓት ይጠቀሙ
+Use Offset: ማካካሻ ይጠቀሙ
+Before: ከዚህ በፊት
+After: በኋላ
+Start: ይጀምሩ
+End/Due: ማብቂያ / መድረሻ
+Times: ታይምስ
+Every: እያንዳንዱ
+CAPTCHA Warning: ማስጠንቀቂያ  ያለ PHP’s GD ቅጥያ CAPTCHA ን መጠቀም አይቻልም!<br>
+Delete entry: መግቢያን ሰርዝ
+You are not authorized to edit this entry.: ይህንን ግቤት አርትዕ ለማድረግ አልተፈቀደልዎትም።
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX አዲስ ቀጠሮ ወስዷል ፡፡
+XXX has updated an appointment.: XXX ቀጠሮ አዘምኗል።
+Security violation!: የደህንነት ጥሰት!
+You must enter the anti-spam text on the previous page.: በቀድሞው ገጽ ላይ ጸረ-አይፈለጌ መልእክት ጽሑፍ ማስገባት አለብዎት።
+The following conflicts with the suggested time: ከተጠቆመው ጊዜ ጋር የሚከተሉት ግጭቶች
+User removed from participants list.: ተጠቃሚው ከተሳታፊዎች ዝርዝር ውስጥ ተወግዷል።
+Please look on XXX to accept or reject this appointment.: ይህንን ቀጠሮ ለመቀበል ወይም ላለመቀበል እባክዎ XXX ላይ ይመልከቱ።
+Please look on XXX to view this appointment.: ይህንን ቀጠሮ ለመመልከት እባክዎ XXX ላይ ይመልከቱ ፡፡
+Scheduling Conflict: የጊዜ መርሐግብር ግጭት
+Your suggested time of: የተጠቆሙበት ጊዜ
+conflicts with the following existing calendar entries: ከሚከተሉት የቀን መቁጠሪያ ግቤቶች ጋር ግጭቶች
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX በ "config.php" ውስጥ አልተዘጋጀም።
+word characters only: (የቃል ቁምፊዎችን ብቻ መያዝ ይችላል ፣ [a-zA-Z_0-9])
+Add User: ተጠቃሚን አክል
+Edit User: ተጠቃሚ ያርትዑ
+Calendar ID: የቀን መቁጠሪያ መታወቂያ
+First Name: የመጀመሪያ ስም
+Last Name: ያባት ስም
+Is public calendar: የህዝብ የቀን መቁጠሪያ ነው
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: የውሂብ ጎታ ስህተት
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: የርቀት ቀን መቁጠሪያ ያክሉ
+Edit Remote Calendar: የርቀት ቀን መቁጠሪያን ያርትዑ
+Create Layer: ንብርብር ይፍጠሩ
+Reload: እንደገና ጫን
+Required to View Remote Calendar: የርቀት ቀን መቁጠሪያን ማየት ያስፈልጋል
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: ውጤቶችን አስመጣ
+Events successfully imported: ዝግጅቶች በተሳካ ሁኔታ ከውጭ መጥተዋል
+Create a new layer to view this calendar.: ይህንን የቀን መቁጠሪያ ለመመልከት አዲስ ንብርብር ይፍጠሩ።
+Errors: ስህተቶች
+There was an error parsing the import file or no events were returned.: የማስመጣት ፋይልን መተንተን ላይ አንድ ስህተት ነበር ወይም ምንም ክስተቶች አልተመለሱም ፡፡
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: ነገ
+Yesterday: ትናንት
+Day before yesterday: ከትናንት በፊት ቀን
+Next week: በሚቀጥለው ሳምንት
+This week: በዚህ ሳምንት
+Last week: ባለፈው ሳምንት
+Week before last: ካለፈው ሳምንት በፊት
+Next week and week after: በሚቀጥለው ሳምንት እና ከሳምንት በኋላ
+This week and next week: በዚህ ሳምንት እና በሚቀጥለው ሳምንት
+Last week and this week: ባለፈው ሳምንት እና በዚህ ሳምንት
+Last two weeks: ያለፉት ሁለት ሳምንታት
+Next month: በሚቀጥለው ወር
+This month: በዚህ ወር
+Last month: ባለፈው ወር
+Month before last: ከመጨረሻው በፊት አንድ ወር
+Next year: የሚመጣው አመት
+This year: የህ አመት
+Last year: ባለፈው ዓመት
+Year before last: ካለፈው ዓመት በፊት
+Next 14 days: ቀጣይ 14 ቀናት
+Next 30 days: ቀጣይ 30 ቀናት
+Next 60 days: ቀጣይ 60 ቀናት
+Next 90 days: ቀጣይ 90 ቀናት
+Next 180 days: የሚቀጥሉት 180 ቀናት
+Next 365 days: ቀጣይ 365 ቀናት
+Invalid report id XXX.: ልክ ያልሆነ የሪፖርት መታወቂያ “XXX”።
+Unnamed Report: ያልተሰየመ ሪፖርት
+Add Report: ሪፖርት አክል
+Edit Report: ሪፖርት አርትዕ
+Report name: የሪፖርት ስም
+User: ተጠቃሚ
+Current User: የአሁኑ ተጠቃሚ
+Include link in menu: በምናሌው ውስጥ አገናኝን ያካትቱ
+Include standard header/trailer: መደበኛ ራስጌ / ተጎታች አካትት ያካትቱ
+Include previous/next links: ቀዳሚ / ቀጣይ አገናኞችን አካት
+Include empty dates: ባዶ ቀናትን አካትት
+Date range: የቀን ክልል
+Template variables: የአብነት ተለዋዋጮች
+Page template: የገጽ አብነት
+Day template: የቀን አብነት
+Event template: የክስተት አብነት
+Are you sure you want to delete this report?: እርግጠኛ ነዎት ይህንን ሪፖርት መሰረዝ ይፈልጋሉ?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: እንደዚህ ያለ የሪፖርት መታወቂያ የለም “XXX”።
+Variable XXX not found.: ተለዋዋጭ XXX አልተገኘም።
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: የጉምሩክ ራስጌን ያርትዑ
+Edit Custom Script/Stylesheet: ብጁ ስክሪፕት / የቅጥ ሉህ ያርትዑ
+Edit Custom Trailer: ብጁ የፊልም ማስታወቂያ አርትዕ
+
+########################################
+# Page: edit_user.php
+#
+Username: የተጠቃሚ ስም
+E-mail address: የ ኢሜል አድራሻ
+Password: ፕስወርድ
+again: እንደገና
+Disabled for demo: ለ ማሳያ ተሰናክሏል
+Are you sure you want to delete this user?: እርግጠኛ ነዎት ይህን ተጠቃሚ መሰረዝ ይፈልጋሉ?
+Change Password: የሚስጥር ቁልፍ ይቀይሩ
+New Password: አዲስ የይለፍ ቃል
+Set Password: የይለፍ ቃል ያዘጋጁ
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: ተጠቃሚዎችን መሰረዝ አልተደገፈም።
+The passwords were not identical.: የይለፍ ቃሎቹ ተመሳሳይ አልነበሩም ፡፡
+You have not entered a password.: የይለፍ ቃል አያስገቡም።
+Username cannot be blank.: የተጠቃሚ ስም ባዶ ሊሆን አይችልም።
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: አልተፈቀደም
+
+########################################
+# Page: export.php
+#
+Export: ወደ ውጭ ላክ
+Export format: ቅርጸት ወደ ውጭ ይላኩ
+Include all layers: ሁሉንም ንብርብሮች ያካትቱ
+Include deleted entries: የተሰረዙ ግቤቶችን አካትት
+Export all dates: ሁሉንም ቀናት ወደ ውጭ ይላኩ
+Start date: የመጀመሪያ ቀን
+End date: የማብቂያ ቀን
+Modified since: ጀምሮ ተሻሽሏል
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: ወደ ውጭ መላክ ቅርጸት አልተገለጸም ወይም ትክክል አይደለም።
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: ማንም ተጠቃሚ አልተገለጸም ፡፡
+
+########################################
+# Page: groups.php
+#
+Add New Group: አዲስ ቡድን አክል
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: ያልተሰየመ ቡድን
+Add Group: ቡድን አክል
+Edit Group: ቡድንን ያርትዑ
+Group name: የቡድን ስም
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: የቡድን ስም መጥቀስ አለብዎት
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: የቀን መቁጠሪያዎችን በራስ-አድስ
+auto-refresh-help: ሲነቃ የቀን ዕይታ ፣ የሳምንቱ ዕይታ ፣ የወሩ እይታ እና ያልተፈቀዱ ገጾች ዝርዝር ሁሉም በየወቅቱ ራሳቸውን ያድሳሉ ፡፡
+Auto-refresh time: ራስ-አድስ ጊዜ
+auto-refresh-time-help: ራስ-ማደስ ከነቃ ይህ በእያንዳንዱ አድስ መካከል ያለውን ጊዜ ይገልጻል።
+Display days with events in bold in year view: በዓመት እይታ በደማቅ ሁኔታ ከክስተቶች ጋር ቀናትን ያሳዩ
+Display weekends in week view: በሳምንቱ ዕይታ በሳምንቱ መጨረሻ ያሳዩ
+Time interval: የጊዜ ክፍተት
+time-interval-help: በሳምንቱ ዕይታ እና የቀን ዕይታ የጊዜ ገደቦች ምን ያህል እንደሚሆኑ ይገልጻል ፡፡
+Nonuser: ተጠቃሚ ያልሆኑ የቀን መቁጠሪያዎች
+user-customize-color: ተጠቃሚዎች የራሳቸውን የቀለም አሠራር እንዲያሻሽሉ ይፈቀድላቸው እንደሆነ ይገልጻል።
+enable-gradient-help: ለሴል ዳራዎች የግራዲዲንግ ቀለሞችን ይጠቀሙ።
+Manually entering color values: የቀለም እሴቶችን በእጅ በማስገባት
+colors-help: ሁሉም ቀለሞች በ "#RRGGBB" hexadecimal ቅርጸት መጠቀስ አለባቸው "RR" ለቀይ የሄክስ እሴት ፣ "ጂጂ" ለአረንጓዴ የሄክስ እሴት ፣ እና "ቢቢ" ደግሞ ለሄክስክስ ሰማያዊ
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: ሪፖርት አድርግ ሳንካ
+Please include all the information below when reporting a bug.: አንድ ሳንካ ሪፖርት ሲያደርጉ እባክዎ ሁሉንም መረጃዎች ከዚህ በታች ያካትቱ።
+Also, please use English rather than XXX.: እንዲሁም ፣ እባክዎን ከ ‹XXX› ይልቅ  እንግሊዝኛን ይጠቀሙ ፡፡
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: የድር ካላንደር ሰነድ
+Currently in English only.: በአሁኑ ጊዜ በእንግሊዝኛ ብቻ ፡፡
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: የቀን መቁጠሪያ ግቤቶችን ማከል / ማርትዕ
+Repeat Type: ድገም ዓይነት
+For More Information...: ለበለጠ መረጃ ...
+Repeat End Date: የማብቂያ ቀን ይድገሙ
+Repeat Day: ድገም ቀን
+repeat-day-help: ዝግጅቱ በየትኛው የሳምንቱ ቀናት ላይ መደገም እንዳለበት ይገልጻል ፡፡
+
+########################################
+# Page: help_import.php
+#
+Import: አስመጣ
+Palm Desktop: የፓልም ዴስክቶፕ
+allow you to import entries from the Palm...: ይህ ቅጽ ከዘንባባ ዴስክቶፕ የቀን መጽሐፍ ግቤቶችን ለማስመጣት ያስችልዎታል። በተጠቃሚ ስምዎ በተሰየመ ንዑስ ማውጫ ውስጥ ባለው የቀን መጽሐፍ / datebook.dat ውስጥ ባለው የፓልም ማውጫዎ ውስጥ መቀመጥ አለበት ፡፡
+The following entries will not be imported: የሚከተሉት ግቤቶች አይመጡም
+Entries older than the current date: ከአሁኑ ቀን በላይ የሆኑ ግቤቶች
+Entries created in the Palm Desktop...: በ ‹ሆምሲንግ› ያልተደረጉ በፓልም ዴስክቶፕ ውስጥ የተፈጠሩ ግቤቶች
+Anything imported from Palm...: ከፓልም የመጣ ማንኛውም ነገር በሚቀጥለው የማስመጣት ጊዜ (የክስተቱ ቀን ካላለፈ በስተቀር) እንደገና ይፃፋል። ስለዚህ ዝመናዎች በፓልም ዴስክቶፕ ውስጥ መደረግ አለባቸው ፡፡
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: ይህ ቅጽ vCalendar (.vcs) 1.0 ክስተቶችን ያስመጣል ፡፡
+The following formats have been tested: የሚከተሉት ቅርፀቶች ተፈትነዋል
+This form will import iCalendar (.ics) events.: ይህ ቅጽ iCalendar (.ics) ክስተቶችን ያስመጣል።
+Enabling: ማንቃት
+Overwrite Prior Import: ቀዳሚውን ማስመጣት ይተካ
+will cause events imported previously...: ቀደም ሲል ከውጭ የመጡትን ክስተቶች ከአዲሱ አስመጪ ፋይል ተመሳሳይ ክስተት ያገለገሉ ክስተቶች እንዲሰረዙ ያደርጋቸዋል ፡፡ ይህ የተሻሻለ የ iCalendar ፋይል ብዜቶችን ሳይፈጥር እንዲመጣ መፍቀድ አለበት።
+
+########################################
+# Page: help_index.php
+#
+Help Index: የእገዛ ማውጫ
+About WebCalendar: ስለ WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: ንብርብሮች በእራስዎ የቀን መቁጠሪያ ውስጥ የሌሎች ተጠቃሚዎችን ክስተቶች ለማሳየት ጠቃሚ ናቸው ፡፡ ተጠቃሚው እና ክስተቶቹ የሚታዩበትን ቀለም መለየት ይችላሉ ፡፡
+Add/Edit/Delete: አክል / አርትዕ / ሰርዝ
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: ከገጹ በታች ባለው የአስተዳዳሪ ክፍል ውስጥ የአርትዖት ንብርብሮችን አገናኝ ጠቅ ማድረግ ንብርብሮችን ለመጨመር / ለማርትዕ / ለመሰረዝ ያስችልዎታል ፡፡
+The text color of the new layer that will be displayed in your calendar.: በቀን መቁጠሪያዎ ውስጥ የሚታየው የአዲሱ ንብርብር የጽሑፍ ቀለም።
+Disabling: ማሰናከል
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: ንብርብሮችን ለማጥፋት በገጹ ታችኛው ክፍል ላይ ባለው የአስተዳዳሪ ክፍል ውስጥ የአሰናክል ንብርብሮችን አገናኝን ይጫኑ ፡፡
+Duplicates: ብዜቶች
+If checked, events that are duplicates of your events will be shown.: ምልክት ከተደረገበት የዝግጅትዎ ብዜት የሆኑ ክስተቶች ይታያሉ።
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: ንብርብሮችን ለማብራት ከገጹ በታች ባለው የአስተዳዳሪ ክፍል ውስጥ የንብርብሮች አገናኝን አገናኝን ይጫኑ ፡፡
+Source: ምንጭ
+Specifies the user that you would like to see displayed in your calendar.: በቀን መቁጠሪያዎ ውስጥ እንዲታይ የሚፈልጉትን ተጠቃሚ ይገልጻል።
+
+########################################
+# Page: help_pref.php
+#
+Default Category: ነባሪ ምድብ
+default-category-help: አዲስ ክስተት በነባሪነት ሊሰራበት የሚገባውን ምድብ ይገልጻል።
+When I am the boss: አለቃ ሳለሁ
+Email me event notification: የክስተት ማሳወቂያ በኢሜል ላኩልኝ
+email-boss-notifications-help: አለቆች ኢሜይሎችን እንደ ክስተት ማሳወቂያዎች ከተቀበሉ ይገልጻል ፡፡
+I want to approve events: ዝግጅቶችን ማፅደቅ እፈልጋለሁ
+boss-approve-event-help: አለቃው በረዳቶች የታከሉ ዝግጅቶችን እንዲያፀድቅ ይፈለግ እንደሆነ ይገልጻል ፡፡
+Subscribe/Publish: ይመዝገቡ / ያትሙ
+Allow remote publishing: የርቀት ህትመትን ፍቀድ
+allow-remote-publishing-help: አንድ የርቀት አይካካል ደንበኛ ክስተቶችን ወደ ድር ካላንደር እንደገና ማተም ከቻለ ይገልጻል
+remote-publishing-url-help: በዌብ ካላንደር ላይ ለመመዝገብ እና ለማተም በ iCal ደንበኛ መተግበሪያ ውስጥ ለመጠቀም ዩ.አር.ኤልን ያሳያል።
+allow-remote-subscriptions-help: የርቀት ተጠቃሚዎች ቀን መቁጠሪያዎን መመዝገብ ከቻሉ ይገልጻል ፣ ይህም ክስተቶችዎን በ iCal የነቃ መተግበሪያ ውስጥ እንዲያዩ ያስችላቸዋል (እንደ አፕል አይካካል ወይም ሞዚላ የቀን መቁጠሪያ ያሉ) ፡፡
+remote-subscriptions-url-help: የዩ.አር.ኤል. የርቀት ተጠቃሚዎች ቀን መቁጠሪያዎን ለመመዝገብ መጠቀም አለባቸው።
+Enable FreeBusy publishing: FreeBusy ህትመትን ያንቁ
+freebusy-enabled-help: የ iCal FreeBusy ደረጃን በመጠቀም የተጠቃሚ የሚገኝ ጊዜ ሊገኝ እንደሚችል ይገልጻል።
+freebusy-url-help: የተጠቃሚውን FreeBusy ዝርዝር ለመድረስ ዩ.አር.ኤል.
+rss-feed-url-help: የአርኤስኤስ ምግብን ለመድረስ ዩ.አር.ኤል.
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: የተጠቃሚ መዳረሻን እና ፈቃዶችን በጥሩ ሁኔታ ለመቆጣጠር ይፈቅዳል ፡፡ በአስተዳዳሪው ፈቃድ ከተሰጠ ተጠቃሚዎችም በነባሪ እና በግለሰብ ፈቃድ መስጠት ይችላሉ
+If disabled, this user cannot send you emails.: ከተሰናከለ ይህ ተጠቃሚ ኢሜሎችን ሊልክልዎ አይችልም።
+If disabled, this user cannot see you in the participants list.: ከተሰናከለ ይህ ተጠቃሚ በተሳታፊዎች ዝርዝር ውስጥ ሊያይዎት አይችልም።
+If enabled, this user cannot view the details of any of your entries.: ከነቃ ይህ ተጠቃሚ የማንኛውም የእርስዎን ግቤቶች ዝርዝር ማየት አይችልም።
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): ህትመት ተሰናክሏል (አስተዳዳሪ)
+Publishing Disabled (User): ህትመት ተሰናክሏል (ተጠቃሚ)
+
+########################################
+# Page: icons.php
+#
+Click to Select: ለመምረጥ ጠቅ ያድርጉ
+Current Icons on Server: የአሁኑ አዶዎች በአገልጋይ ላይ
+
+########################################
+# Page: import.php
+#
+import from file: ከፋይል አስመጣ
+Disabled: ተሰናክሏል
+Import format: ቅርጸት ያስመጡ
+Exclude private records: የግል መዝገቦችን አታካትት
+Repeated items are imported separately. Prior imports are not overwritten.: ተደጋጋሚ ዕቃዎች በተናጠል ይመጣሉ ፡፡ ቀደም ሲል ከውጭ የሚገቡ ምርቶች እንደገና አልተፃፉም ፡፡
+
+########################################
+# Page: import_handler.php
+#
+No file: ፋይል የለም
+Error deleting palm events from webcalendar.: የዘንባባ ክስተቶችን ከድር ቀን መቁጠሪያ መሰረዝ ላይ ስህተት።
+Events from prior import marked as deleted: ከቀዳሚው ማስመጣት የሚመጡ ክስተቶች ተሰርዘዋል
+Conflicting events: የሚጋጩ ክስተቶች
+The import file contained no data.: የማስመጣት ፋይል ምንም ውሂብ አልያዘም ፡፡
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: እርግጠኛ ነዎት ይህን ንብርብር መሰረዝ ይፈልጋሉ?
+Delete layer: ንብርብርን ሰርዝ
+Edit layer: ንብርብርን ያርትዑ
+Enable layers: ንብርብሮችን ያንቁ
+Layer: ንብርብር
+Layers are currently disabled.: ንብርብሮች በአሁኑ ጊዜ ተሰናክለዋል ፡፡
+Layers are currently enabled.: ንብርብሮች በአሁኑ ጊዜ ነቅተዋል ፡፡
+Click to modify layers settings for XXX: ለ XXX ቀን መቁጠሪያ የንብርብሮች ቅንብሮችን ለማሻሻል እዚህ ጠቅ ያድርጉ።
+Disable Layers: ንብርብሮችን ያሰናክሉ
+Add layer: ንብርብር ያክሉ
+Add Layer: ንብርብር አክል
+Edit Layer: ንብርብር አርትዕ
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: ምርጫን ማዘመን አልተቻለም
+Invalid entry id.: ልክ ያልሆነ የመግቢያ መታወቂያ።
+You cannot create a layer for yourself.: ንብርብር ለራስዎ መፍጠር አይችሉም ፡፡
+You can only create one layer for each user.: ለእያንዳንዱ ተጠቃሚ አንድ ንብርብር ብቻ መፍጠር ይችላሉ።
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: ማጽደቅ / ማረጋገጥ
+Approve Selected: የተመረጠውን ያጽድቁ
+Check All: ሁሉንም አረጋግጥ
+Emails Will Not Be Sent: ኢሜሎች አይላኩም
+Reject Selected: አልተመረጠም ተመርጧል
+Reject: እምቢ
+Uncheck All: ሁሉንም ምልክት ያንሱ
+View this entry: ይህንን ግቤት ይመልከቱ
+No unapproved entries for XXX.: ለ "XXX" ያልጸደቁ ግቤቶች የሉም
+Unapproved Entries: ያልተፈቀዱ ግቤቶች
+Approve this entry?: ይህ ግቤት ይፀድቃል?
+Reject this entry?: ይህን ግቤት ውድቅ ያድርጉ?
+Approve Selected entries?: የተመረጡ ግቤቶች ይፀድቁ?
+Reject Selected entries?: የተመረጡ ግቤቶችን ውድቅ ያድርጉ?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: መግቢያ እና የይለፍ ቃል ማስገባት አለብዎት
+Save login via cookies so I dont have to login next time.: በሚቀጥለው ጊዜ መግባት እንዳይኖርብኝ በኩኪዎች በኩል መግቢያ ይቆጥቡ
+Login: ግባ
+public: የህዝብ
+Access XXX calendar: XXX የቀን መቁጠሪያን ይድረሱባቸው
+cookies-note: ማሳሰቢያ-ይህ መተግበሪያ ኩኪዎችን እንዲነቃ ይፈልጋል።
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: በመግቢያ XXX ውስጥ ህገ-ወጥ ቁምፊዎች።
+Invalid login: ልክ ያልኾነ መግቢያ
+Activity login failure: የተጠቃሚ ስም: "XXX", IP: "YYY"
+Error XXX: ስህተት: "XXX"
+You have been logged out.: ዘግተው ወጥተዋል ፡፡
+Access public calendar: ይፋዊ የቀን መቁጠሪያን ይድረሱ
+Not yet registered? Register here!: እስካሁን አልተመዘገበም? እዚህ ይመዝገቡ!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: እንደዚህ ያለ ተጠቃሚ ያልሆነ የቀን መቁጠሪያ “XXX” የለም።
+This Calendar is not Public.: ይህ የቀን መቁጠሪያ ይፋዊ አይደለም።
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: አዲስ nonUser የቀን መቁጠሪያ ያክሉ
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: በመለያ መግባት አለበት ፡፡
+No such nonuser calendar: እንደዚህ ያለ ተጠቃሚ ያልሆነ የቀን መቁጠሪያ የለም
+
+########################################
+# Page: pref.php
+#
+Invalid theme: ልክ ያልሆነ ጭብጥ
+Save Preferences: ምርጫዎችን ያስቀምጡ
+Public Access calendar: የህዝብ መዳረሻ የቀን መቁጠሪያ
+Modify Non User Calendar Preferences: የተጠቃሚ ያልሆኑ የቀን መቁጠሪያ ምርጫዎችን ያስተካክሉ
+Return to My Preferences: ወደ ምርጫዎቼ ተመለስ
+Custom Scripts: ብጁ ስክሪፕቶች
+Timezone Selection: የሰዓት ሰቅ ምርጫ
+Multiview: ብዙ እይታ
+entry-interval-help: የመግቢያ ጊዜዎችን ሲያርትዑ የደቂቃ ክፍተትን ያዘጋጃል
+Entry interval: የመግቢያ ክፍተት
+hour: ሰአት
+minute: ደቂቃ
+theme-reload-help: በ CSS መሸጎጫ ምክንያት የገጽ ዳግም መጫን ሊያስፈልግ ይችላል
+Page may need to be reloaded for new Theme to take effect: አዲስ ገጽታ እንዲተገበር ገጽ እንደገና መጫን ሊያስፈልግ ይችላል
+display_byproxy-help: እውነተኛ ፈጣሪውን በእይታ_እይታ ገጽ ላይ ያሳዩ
+Display if created by Assistant: በረዳት ከተፈጠረ አሳይ
+allow-view-subscriptions-help: ወደ የግል ወይም ምስጢራዊ ግቤቶች የርቀት መዳረሻን መገደብ ይፈቅዳል
+Allow remote viewing of: የርቀት እይታን ፍቀድ
+entries: ግቤቶች
+
+########################################
+# Page: purge.php
+#
+Purging events for: ክስተቶችን ማጽዳት ለ
+Finished: ተጠናቅቋል
+Back: ተመለስ
+Check box to delete ALL events for a user: ለተጠቃሚ የ  ሁሉም ክስተቶችን ለመሰረዝ ምልክት ያድርጉበት
+Delete all events before: ከዚህ በፊት ሁሉንም ክስተቶች ሰርዝ
+Purge deleted only: ማጥራት ብቻ ተሰር .ል
+Preview delete: መሰረዝን ቅድመ ዕይታ
+Are you sure you want to delete events for: ክስተቶችን መሰረዝ እንደሚፈልጉ እርግጠኛ ነዎት
+Records deleted from XXX: መዝገቦች ከ "XXX" ተሰርዘዋል።
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: የኢሜል አድራሻ ባዶ ሊሆን አይችልም።
+Username already exists.: የተጠቃሚ ስም አስቀድሞ አለ
+Email address already exists.: የኢሜል አድራሻ አስቀድሞ አለ
+New user via self-registration.: አዲስ ተጠቃሚ በራስ ምዝገባ በኩል።
+A new WebCalendar account has been set up for you.: አዲስ የድር ካላንደር መለያ ለእርስዎ ተዘጋጅቷል።
+Your username is XXX.: የተጠቃሚ ስምዎ “XXX” ነው።
+Your password is XXX.: የእርስዎ የይለፍ ቃል “XXX” ነው።
+Please visit XXX to log in and start using your account!: ለመግባት እባክዎን ‹XXX› ን ይጎብኙ እና የእርስዎን መለያ መጠቀም ይጀምሩ!
+You may change your password after logging in the first time.: ለመጀመሪያ ጊዜ ከገቡ በኋላ የይለፍ ቃልዎን መለወጥ ይችላሉ ፡፡
+If you received this email in error: ይህንን ኢሜል በስህተት ከተቀበሉ እና ለድር ካላንደር መለያ ካልተመዘገቡ ይህንን ማስታወቂያ ችላ ማለት ወይም በአጭር ማስታወሻ መልስ መስጠት ይችላሉ ፡፡
+Administrator: አስተዳዳሪ
+Welcome: እንኳን ደህና መጣህ
+New user via email.: አዲስ ተጠቃሚ በኢሜል ፡፡
+Registration: ምዝገባ
+Welcome to WebCalendar: ወደ የድር ካላንደር እንኳን በደህና መጡ
+Your email should arrive shortly.: ኢሜልዎ በቅርቡ መምጣት አለበት።
+Return to Login screen: ወደ የመግቢያ ማያ ገጽ ይመለሱ
+Password (again): የይለፍ ቃል (እንደገና):
+Your account information will be emailed to you.: የመለያዎ መረጃ በኢሜል ይላክልዎታል።
+Submit: አስገባ
+
+########################################
+# Page: reject_entry.php
+#
+Continue: ቀጥል
+(Your comments will be emailed to the other participants.): (አስተያየቶችዎ ለሌሎች ተሳታፊዎች በኢሜል ይላካሉ ፡፡)
+XXX has rejected an appointment.: XXX ቀጠሮ አልተቀበለም።
+Rejected by XXX.: በ XXX ውድቅ ተደርጓል።
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: አዲስ የርቀት ቀን መቁጠሪያ ያክሉ
+
+########################################
+# Page: report.php
+#
+This event is confidential.: ይህ ክስተት ሚስጥራዊ ነው።
+(Private): (የግል)
+(cont.): (ቀጥሎም)
+Approved: ጸድቋል
+Deleted: ተሰር .ል
+Rejected: ውድቅ ተደርጓል
+Waiting for approval: ማጽደቅን በመጠበቅ ላይ
+Unknown: ያልታወቀ
+Invalid report id.: ልክ ያልሆነ የሪፖርት መታወቂያ።
+Click here to manage reports for the Public Access calendar.: ለህዝባዊ መዳረሻ ቀን መቁጠሪያ ሪፖርቶችን ለማስተዳደር እዚህ ጠቅ ያድርጉ።
+Add new report: አዲስ ሪፖርት ያክሉ
+Manage Reports: ሪፖርቶችን ያቀናብሩ
+
+########################################
+# Page: search.php
+#
+Advanced Search: የላቀ ፍለጋ
+Search: ፈልግ
+Keywords: ቁልፍ ቃላት
+Enter % for all entries: ለሁሉም ግቤቶች% ያስገቡ
+Include: አካትት
+Filter by Date: ቀን አጣራ
+All Dates: ሁሉም ቀናት
+Past: ያለፈው
+Upcoming: መጪ
+Range: ክልል
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: አንድ ወይም ከዚያ በላይ የፍለጋ ቁልፍ ቃላት ማስገባት አለብዎት።
+Search Results: የፍለጋ ውጤቶች
+match found: ግጥሚያ ተገኝቷል
+matches found: ግጥሚያዎች ተገኝተዋል
+No matches found: ምንም ግጥሚያዎች አልተገኙም
+New Search: አዲስ ፍለጋ
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: ከዚህ በታች ያለው መረጃ ጭነትዎን የበለጠ ደህንነቱ የተጠበቀ ለማድረግ ሊሻሻል የሚችል በድር ጣቢያዎ የቀን መቁጠሪያ ጭነት ላይ ሊሆኑ የሚችሉ ጉዳዮችን ይዘረዝራል።
+For questions about WebCalendar security see the forums: ስለ ማንኛውም የዌብካላንደር ደህንነት ጉዳይ ጥያቄ ፣ እባክዎ በ GitHub.com የተስተናገዱ የድር ካላንደር መድረኮችን ይጠቀሙ ፣<br>XXX
+View your current PHP settings: የአሁኑን PHP ቅንብሮችዎን ይመልከቱ
+Security Issue: የደህንነት ጉዳይ
+Status: ሁኔታ
+Default admin user password: ነባሪ የአስተዳዳሪ ተጠቃሚ ይለፍ ቃል
+You should change the password of the default admin user.: የነባሪውን የአስተዳዳሪ ተጠቃሚ የይለፍ ቃል መለወጥ አለብዎት።
+File permissions XXX: የፋይል ፈቃዶች XXX
+item XXX should not be writable: የሚከተለው ንጥል መጻፍ የለበትም ፦<br><tt> XXX</tt>
+File exists XXX: ፋይል አለ: "XXX"
+Because you have email disabled, you should remove this file.: ኢሜል ስላሰናከሉ ይህንን ፋይል ማስወገድ ይኖርብዎታል።
+File location XXX: የፋይል ሥፍራ: "XXX"
+remove XXX if not using: ፋይል "XXX" የማይጠቀሙ ከሆነ መሰረዝ አለብዎት። ወይም ቢያንስ ወደ አዲስ ማውጫ ያዛውሩት ፡፡
+System Settings XXX: የስርዓት ቅንብሮች: "XXX"
+consider enabling UAC: የተጠቃሚ መብቶችን ለማቀናበር የተጠቃሚ መዳረሻ ቁጥጥርን ማንቃት ሊያስቡበት ይፈልጉ ይሆናል።
+recommend approving new public events: ሁሉም የህዝብ ዝግጅቶች ማቅረቢያዎች እንዲፀድቁ እንመክራለን።
+recommend using CAPTCHA: CAPTCHA እንደገና አውቶማቲክ የዝግጅት አቅርቦቶችን ለመጠበቅ ይመከራል ፡፡
+Database cache directory location: የውሂብ ጎታ መሸጎጫ ማውጫ ቦታ
+db cache should be inaccessable: የመረጃ ቋቱ መሸጎጫ በዩ.አር.ኤል ሊደረስበት በማይችል ማውጫ ውስጥ መሆን አለበት።
+PHP Settings XXX: የ PHP ቅንብሮች “XXX”
+recommend setting XXX Off: ለ "XXX" የሚመከረው ቅንብር ጠፍቷል።
+recommend setting allow_url_fopen Off: የርቀት ቀን መቁጠሪያዎች በማይነቃበት ጊዜ ለ “allow_url_fopen” የሚመከረው ቅንብር ጠፍቷል።
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: የሌላ ተጠቃሚ የቀን መቁጠሪያን ይመልከቱ
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: ምንም ምድቦችን አላከሉም።
+Set Category: ምድብ ያዘጋጁ
+Global Categories cannot be changed.: ዓለም አቀፍ ምድቦች ሊለወጡ አይችሉም።
+
+########################################
+# Page: upcoming.php
+#
+more: ተጨማሪ
+
+########################################
+# Page: users.php
+#
+Remote Calendars: የርቀት ቀን መቁጠሪያዎች
+denotes administrative user: አስተዳደራዊ ተጠቃሚን ያመለክታል
+Add New User: አዲስ ተጠቃሚ ያክሉ
+
+########################################
+# Page: usersel.php
+#
+form: ቅጽ
+Reset: ዳግም አስጀምር
+
+########################################
+# Page: views.php
+#
+Add New View: አዲስ እይታን ያክሉ
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: ያልተሰየመ እይታ
+Add View: እይታን አክል
+Edit View: እይታን ያርትዑ
+View Name: ስም ይመልከቱ
+View Type: የእይታ ዓይነት
+Day by Time: ቀን በጊዜ
+Week (Users horizontal): ሳምንት (ተጠቃሚዎች አግድም)
+Week by Time: ሳምንት በ ሰዓት
+Week (Users vertical): ሳምንት (ተጠቃሚዎች ቀጥ ያሉ)
+Week (Timebar): ሳምንት (የጊዜ አሞሌ)
+Month (Timebar): ወር (የጊዜ አሞሌ)
+Month (side by side): ወር (ጎን ለጎን)
+Month (on same calendar): ወር (በተመሳሳይ የቀን መቁጠሪያ ላይ)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: የእይታ ስም መለየት አለብዎት
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: ለዚህ እይታ ተጠቃሚዎች የሉም።
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: የተግባር መቶኛን ያዘምኑ
+Completed: ተጠናቅቋል
+Assistant mode: የረዳት ሁነታ
+Declined: ውድቅ ተደርጓል
+Needs-Action: ፍላጎቶች-እርምጃ
+by: በ
+Percentage Complete: መቶኛ ተጠናቅቋል
+External User: ውጫዊ ተጠቃሚ
+Update: አዘምን
+at: በ
+comments: አስተያየቶች
+Show: አሳይ
+Hide: ደብቅ
+Approve/Confirm entry: መግቢያን ማጽደቅ / ማረጋገጥ
+Reject entry: ግባን እንቢ
+Set category: ምድብ ያዘጋጁ
+Add to My Calendar: ወደ የእኔ ቀን መቁጠሪያ አክል
+Copy entry: ቅዳ ቅጅ
+This will delete this entry for all users.: ይህ ለሁሉም ተጠቃሚዎች ይህንን ግቤት ይሰርዘዋል።
+Edit entry: ግቤት አርትዕ
+Edit repeating entry for all dates: ለሁሉም ቀናት ተደጋጋሚ ግቤትን ያርትዑ
+Delete repeating event for all dates: ለሁሉም ቀናት ተደጋጋሚ ክስተት ይሰርዙ
+Edit entry for this date: ለዚህ ቀን ግቤት ያርትዑ
+Delete entry only for this date: ለዚህ ቀን ብቻ ግቤትን ሰርዝ
+Delete entry from calendar of XXX: ከ XXX ቀን መቁጠሪያ ግቤትን ሰርዝ
+This will delete the entry from your XXX calendar.: ይህ መግቢያውን ከእርስዎ XXX ቀን መቁጠሪያ ላይ ይሰርዘዋል።
+boss: አለቃ
+This will delete the entry from your boss calendar.: ይህ መግቢያውን ከአለቃዎ የቀን መቁጠሪያ ይሰርዘዋል።
+This will delete the entry from your calendar.: ይህ ግቤቱን ከቀን መቁጠሪያዎ ይሰርዘዋል።
+from your boss calendar: ከአለቃዎ የቀን መቁጠሪያ
+Do you want to add this entry to your calendar?: ይህን ግቤት ቀን መቁጠሪያዎ ላይ ማከል ይፈልጋሉ?
+This will add the entry to your calendar.: ይህ መግቢያዎን ወደ ቀን መቁጠሪያዎ ያክላል።
+Email all participants: ለሁሉም ተሳታፊዎች ኢሜል ይላኩ
+Hide activity log: የእንቅስቃሴ ምዝግብን ደብቅ
+Show activity log: የእንቅስቃሴ ምዝግብ ማስታወሻ አሳይ
+Export this entry to: ይህንን ግቤት ወደ ውጭ ይላኩ
+Palm Pilot: የፓልም ፓይለት
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: አዲስ ግቤትን ለማከል ባዶ ሕዋስ ላይ ሁለቴ ጠቅ ያድርጉ።
+
+########################################
+# Page: week_details.php
+#
+New Entry: አዲስ መግቢያ
+cont.: ተቃዋሚ
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: ሌላ የተጠቃሚ የቀን መቁጠሪያ
+Category Management: ምድብ አስተዳደር
+Day View: የቀን እይታ
+Edit Event: ዝግጅት አርትዕ
+Month View: ወር እይታ
+Common Trailer: የጋራ ተጎታች
+User Management: የተጠቃሚ አስተዳደር
+Manage Views: እይታዎችን ያቀናብሩ
+Week View: የሳምንት እይታ
+Year View: የዓመት እይታ
+Invalid function id: ልክ ያልሆነ ተግባር መታወቂያ
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: የ "settings.php" ፋይልን ማግኘት አልተቻለም።<br>እባክዎን "settings.php.orig" ን ወደ "settings.php" ገልብጠው ለጣቢያዎ ያርትዑ።
+Incomplete settings.php file...: ያልተሟላ "settings.php" ፋይል ...
+Could not find XXX defined in...: በ "settings.php" ፋይልዎ ውስጥ የተገለጸ "XXX" ን ማግኘት አልተቻለም።
+You must define XXX in: በ "settings.php" ፋይል ውስጥ "XXX" ን መግለፅ አለብዎት።
+
+########################################
+# Page: includes/date_formats.php
+#
+December: ታህሳስ
+Dec: እ.ኤ.አ.
+LANGUAGE DEFINED: ቋንቋ ተተርጉሟል
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: ከመረጃ ቋቱ ጋር መገናኘት ላይ ስህተት "XXX"
+db_type not defined.: db_type አልተገለጸም
+invalid db_type XXX: ልክ ያልሆነ db_type "" XXX "ዓይነት።
+Cache cleared from previous SQL!: መሸጎጫ ከቀዳሚው SQL ጸድቷል!
+Error executing query.: ጥያቄን ማከናወን ላይ ስህተት።
+Unfortunately, XXX is not implemented for YYY: እንደ መጥፎ አጋጣሚ ሆኖ "XXX" ለ (YYY) አልተተገበረም።
+Unknown ODBC error.: ያልታወቀ የኦ.ዲ.ቢ.ቢ. ስህተት ፡፡
+Error opening cache dir XXX.: መሸጎጫ dir "XXX" ን በመክፈት ላይ ስህተት
+delete: ሰርዝ
+Cache error Could not XXX file YYY.: መሸጎጫ ስህተት: XXX ፋይል "YYY" አልተቻለም።
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: አደገኛ ስህተት
+Invalid data format for: ልክ ያልሆነ የውሂብ ቅርጸት ለ
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: ስህተት ለእንቅስቃሴ ምዝግብ ማስታወሻ አልተዘጋጀም!
+This event is XXX.: ይህ ክስተት XXX ነው።
+Conf.: ኮን.
+exceeds limit of XXX events per day: በቀን ከ XXX ክስተቶች ገደብ ይበልጣል
+on: ላይ
+All Attendees: ሁሉም ተሳታፊዎች
+Busy: ስራ የሚበዛበት
+Tentative: ጊዜያዊ
+Schedule an appointment for XXX.: ለ XXX: YYY ቀጠሮ ይያዙ
+date_select: __dd__ __ ወር__ __yyyy__
+Event approved: ዝግጅት ፀድቋል
+Journal approved: ጆርናል ፀደቀ
+Task approved: ተግባር ጸድቋል
+Attachment: ዓባሪ
+Event created: ክስተት ተፈጥሯል
+Journal created: ጆርናል ተፈጥሯል
+Task created: ተግባር ተፈጥሯል
+Event deleted: ክስተት ተሰር .ል
+Journal deleted: ጆርናል ተሰር .ል
+Task deleted: ተግባር ተሰር .ል
+New user via email (self registration): አዲስ ተጠቃሚ በኢሜል (ራስን ምዝገባ)
+New user (self registration): አዲስ ተጠቃሚ (የራስ ምዝገባ)
+Notification sent: ማሳወቂያ ተልኳል
+Event rejected: ዝግጅት ውድቅ ተደርጓል
+Journal rejected: ጆርናል ውድቅ ተደርጓል
+Task rejected: ተግባር ውድቅ ተደርጓል
+Reminder sent: አስታዋሽ ተልኳል
+Event updated: ክስተት ዘምኗል
+Journal updated: ጆርናል ዘምኗል
+Task updated: ተግባር ዘምኗል
+Delete User: ተጠቃሚን ሰርዝ
+WK: ወ.ኬ.
+TASKS: ተግባር
+Task_Title: ርዕስ
+Due: ምክንያት
+Task Name: የተግባር ስም
+Task Due Date: የተግባር ቀን
+You have XXX unapproved entries: XXX ያልተፈቀዱ ግቤቶች አለዎት 
+Changes successfully saved: ለውጦች በተሳካ ሁኔታ ተቀምጠዋል
+Event: ክስተት
+Action: እርምጃ
+Printer Friendly: ማተሚያ ተስማሚ
+Generate printer-friendly version: ለአታሚ ተስማሚ ስሪት ይፍጠሩ
+after: በኋላ
+before: ከዚህ በፊት
+end: ጨርስ
+start: ጀምር
+View this event: ይህንን ክስተት ይመልከቱ
+View this task: ይህንን ተግባር ይመልከቱ
+January: ጥር
+February: የካቲት
+March: መጋቢት
+April: ሚያዚያ
+May_: ግንቦት
+June: ሰኔ
+July: ሀምሌ
+August: ነሐሴ
+September: መስከረም
+October: ጥቅምት
+November: ህዳር
+Jan: ጃንዋሪ
+Feb: የካቲት
+Mar: ማር
+Apr: ኤፕሪል
+May: ግንቦት
+Jun: ሰኔ
+Jul: እ.ኤ.አ.
+Aug: ነሐሴ
+Sep: ሴፕቴምበር
+Oct: ጥቅምት
+Nov: ኖቬምበር
+SU: ሱ
+MO: ሞ
+TU: ቱ
+WE: እኛ
+TH: ቲ
+FR: አር
+SA: ኤስ.ኤ.
+unknown-month: ያልታወቀ-ወር
+First Quarter Moon: የመጀመሪያ ሩብ ጨረቃ
+Full Moon: ሙሉ ጨረቃ
+Last Quarter Moon: ያለፈው ሩብ ጨረቃ
+New Moon: አዲስ ጨረቃ
+Error TIME_SLOTS undefined!: ስህተት TIME_SLOTS አልተገለጸም!
+The following error occurred: የሚከተለው ስህተት ተከስቷል
+You are not authorized.: እርስዎ አልተፈቀዱም።
+Add N hours to: N ሰዓቶችን ጨምርባቸው
+Subtract N hours from: N ሰዓቶችን ከ ቀንስ
+same as: ልክ እንደ
+server time: የአገልጋይ ጊዜ
+Cannot read timezone file XXX.: የሰዓት ሰቅ ፋይልን ማንበብ አልተቻለም XXX።
+Your current GMT offset is XXX hours.: የአሁኑ የእርስዎ GMT ማካካሻ XXX ሰዓታት ነው።
+Unauthorized: ያልተፈቀደ
+Error approving event XXX.: ክስተትን ማጽደቅ ላይ ስህተት ፦ XXX።
+Error deleting event XXX.: ክስተት መሰረዝ ላይ ስህተት ፦ XXX።
+Error rejecting event XXX.: ክስተት አለመቀበል ላይ ስህተት XXX
+Sunday: እሁድ
+Monday: ሰኞ
+Tuesday: ማክሰኞ
+Wednesday: እሮብ
+Thursday: ሐሙስ
+Friday: አርብ
+Saturday: ቅዳሜ
+Sun: ፀሐይ
+Mon: ሰኞ
+Tue: እ.አ.አ.
+Wed: ረቡዕ
+Thu: ሐሙስ
+Fri: ፍሪ
+Sat: ቅዳሜ
+unknown-weekday: የሳምንቱ ቀን ያልታወቀ
+Invalid referring URL: ልክ ያልሆነ የማጣቀሻ ዩ.አር.ኤል.
+
+########################################
+# Page: includes/help_list.php
+#
+Index: ማውጫ
+Documentation: ሰነድ
+Page: ገጽ
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: የእኔ ቀን መቁጠሪያ
+Add New Entry: አዲስ ግባ አክል
+Add New Task: አዲስ ተግባር ያክሉ
+Logout: ውጣ
+Home: ቤት
+Back to My Calendar: ወደ የእኔ ቀን መቁጠሪያ ተመለስ
+Go to: መሄድ
+Manage calendar of: የቀን መቁጠሪያ ያቀናብሩ
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: የአሳሽ ቋንቋ አልተገኘም
+(not supported): (አይደገፍም)
+Abkhazian: አብሃዚያያን
+Acoli: አኮሊ
+Adangme: አዳንግሜ
+Adyghe: =
+Afar: አፋር
+Afrihili: አፍሪሂሊ
+Afrikaans: አፍሪካንስ
+Ainu: አይኑ
+Akan: አካን
+Akkadian: አካዲያን
+Albanian: አልበንያኛ
+Aleut: ማስጠንቀቂያ
+Algonquian: አልጎንኪያን
+Altai (Southern): አልታይ (ደቡባዊ)
+Amharic: አማርኛ
+Angika: አንጊካ
+Apache: =
+Arabic (Algeria): አረብኛ (አልጄሪያ)
+Arabic (Bahrain): አረብኛ (ባህሬን)
+Arabic (Egypt): አረብኛ (ግብፅ)
+Arabic (Iraq): አረብኛ (ኢራቅ)
+Arabic (Jordan): አረብኛ (ዮርዳኖስ)
+Arabic (Kuwait): አረብኛ (ኩዌት)
+Arabic (Lebanon): አረብኛ (ሊባኖስ)
+Arabic (Libya): አረብኛ (ሊቢያ)
+Arabic (Morocco): አረብኛ (ሞሮኮ)
+Arabic (Oman): አረብኛ (ኦማን)
+Arabic (Qatar): አረብኛ (ኳታር)
+Arabic (Saudi Arabia): አረብኛ (ሳውዲ አረቢያ)
+Arabic (Syria): አረብኛ (ሶሪያ)
+Arabic (Tunisia): አረብኛ (ቱኒዚያ)
+Arabic (U.A.E.): አረብኛ (ዩ.ኤ.ኢ.)
+Arabic (Yemen): አረብኛ (የመን)
+Arabic: አረብኛ
+Aragonese: አርጎኛኛ
+Aramaic: አረማይክ
+Arapaho: አራፓሆ
+Arawak: አራዋክ
+Armenian: አርመንያኛ
+Assamese: አሳማኛ
+Asturian: አስቱሪያን
+Athapascan: አታፓስካን
+Avaric: አቫሪክ
+Avestan: አቨስታን
+Awadhi: አዋዲ
+Aymara: አይማራራ
+Azerbaijani: አዘርባጃኒ
+Balinese: ባሊኔዝ
+Baluchi: ባልቺ
+Bambara: ባምባራ
+Bamileke: ባሚሌኬ
+Banda: ባንዳ
+Basa: ባሳ
+Bashkir: ባሽኪር
+Basque: ባስክ
+Beja: ቤጃ
+Belarusian: ቤላሩሲያን
+Bemba: ቤምባ
+Bengali: ቤንጋሊ
+Bhojpuri: =
+Bihari: ቢሃሪ
+Bikol: ቢኮል
+Bislama: ቢስላማ
+Blackfoot: ብላክፉት
+Blin: ብሊን
+Bliss: ደስታ
+Bosnian: ቦስንያን
+Braj: ብራጅ
+Breton: ብሬቶን
+Buginese: ቡጊኒዝ
+Bulgarian: ቡልጋርያኛ
+Buriat: ቡሪያት
+Burmese: በርሚስ
+Caddo: ካዶ
+Catalan: ካታሊያን
+Cebuano: ሴቡአኖ
+Chagatai: ቻጋታይ
+Chamorro: ሻሞሮ
+Chechen: ቼቼን
+Cherokee: ቼሮኬ
+Cheyenne: ቼየን
+Chibcha: ቺብቻ
+Chichewa: ቺቼዋ
+Chinese (Hong Kong): ቻይንኛ (ሆንግ ኮንግ)
+Chinese (PRC): ቻይንኛ (PRC)
+Chinese (Simplified/GB2312): ቻይንኛ (ቀለል ያለ / GB2312) 
+Chinese (Singapore): ቻይንኛ (ሲንጋፖር)
+Chinese (Taiwan): ቻይንኛ (ታይዋን)
+Chinese (Traditional/Big5): ቻይንኛ (ባህላዊ / ቢግ 5)
+Chinook: ቺንኮክ
+Chipewyan: ቺፔዊያን
+Choctaw: ቾክዋው
+Chuukese: ቹኩሴ
+Chuvash: ቹቫሽ
+Coptic: ኮፕቲክ
+Cornish: ኮርኒሽ
+Corsican: ኮርሲካን
+Cree: ክሬይ
+Creek: ክሪክ
+Croatian: ክሮኤሽያን
+Czech: ቼክ
+Dakota: ዳኮታ
+Danish: ዳኒሽ
+Dargwa: ዳርጋ
+Delaware: ደላዌር
+Dinka: ዲንቃ
+Dogri: ዶግሪ
+Dogrib: ዶግሪብ
+Duala: ዱአላ
+Dutch (Belgium): ደች (ቤልጂየም)
+Dutch: ደች
+Dyula: ዲዩላ
+Dzongkha: ዶዞንግካ
+Edo: ኢዶ
+Efik: ኤፊክ
+Ekajuk: ኢካጁክ
+Elamite: ኢላማይት
+English (Australia): እንግሊዝኛ (አውስትራሊያ)
+English (Belize): እንግሊዝኛ (ቤሊዝ)
+English (Canada): እንግሊዝኛ (ካናዳ)
+English (Ireland): እንግሊዝኛ (አየርላንድ)
+English (Jamaica): እንግሊዝኛ (ጃማይካ)
+English (New Zealand): እንግሊዝኛ (ኒው ዚላንድ)
+English (Philippines): እንግሊዝኛ (ፊሊፒንስ)
+English (South Africa): እንግሊዝኛ (ደቡብ አፍሪካ)
+English (Trinidad & Tobago): እንግሊዝኛ (ትሪኒዳድ እና ቶባጎ)
+English (United Kingdom): እንግሊዝኛ (ዩናይትድ ኪንግደም)
+English (United States): እንግሊዝኛ (አሜሪካ)
+English (Zimbabwe): እንግሊዝኛ (ዚምባብዌ)
+English: እንግሊዝኛ-አሜሪካ
+Erzya: ኤርሲያ
+Esperanto: እስፔራንቶ
+Estonian: ኢስቶኒያን
+Ewe: ኢው
+Ewondo: =
+Fang: ዘራፊ
+Fanti: ፋንቲ
+Faroese: ፋሮይስ
+Fijian: ፊጂያን
+Filipino: ፊሊፒኖኛ
+Finnish: ፊኒሽ
+Fon: ፎን
+French (Belgium): ፈረንሳይኛ (ቤልጂየም)
+French (Canada): ፈረንሳይኛ (ካናዳ)
+French (France): ፈረንሳይኛ (ፈረንሳይ)
+French (Luxembourg): ፈረንሳይኛ (ሉክሰምበርግ)
+French (Monaco): ፈረንሳይኛ (ሞናኮ)
+French (Switzerland): ፈረንሳይኛ (ስዊዘርላንድ)
+French: ፈረንሳይኛ
+Frisian (Eastern): ፍሪሲያኛ (ምስራቃዊ)
+Frisian (Northern): ፍሪሺያን (ሰሜን)
+Frisian (Western): ፍሪሺያን (ምዕራባዊ)
+Frisian: ፍሪሺያን
+Friulian: ፍሪዩሊያን
+Fulah: ፉላህ
+Ga: ጋ
+Galibi: ጋሊቢ
+Galician: ጋላሺያን
+Ganda: ጋንዳ
+Gayo: ጋዮ
+Gbaya: =
+Geez: ግእዝ
+Georgian: ጆርጅያን
+German (Austria): ጀርመንኛ (ኦስትሪያ)
+German (Germany): ጀርመንኛ (ጀርመን)
+German (Liechtenstein): ጀርመንኛ (ሊችተንስታይን)
+German (Luxembourg): ጀርመንኛ (ሉክሰምበርግ)
+German (Standard): ጀርመንኛ (ስታንዳርድ)
+German (Switzerland): ጀርመንኛ (ስዊዘርላንድ)
+German: ጀርመንኛ
+Gilbertese: ጊልበርትኛ
+Gondi: ጎንዲ
+Gorontalo: ጎሮንታሎ
+Gothic: ጎቲክ
+Grebo: ግሬቦ
+Greek: ግሪክኛ
+Greenlandic: ግሪንላንዲክ
+Guarani: ጓራኒ
+Gujarati: ጉጅራቲ
+Gwich&#39;in: Gwich'in
+Haida: ሃይዳ
+Haitian (Creole): ሓይቲያን ክሬኦሌ)
+Haitian: ሃይቲኛ
+Hausa: ሃውሳ
+Hawaiian: ሐዋያን
+Hebrew: ሂብሩ
+Herero: ሄሬሮ
+Hiligaynon: ሂሊጋይነን
+Hindi: ሂንዲ
+Hiri Motu: ህሪ ሞቱ
+Hittite: ሂቲኛ
+Hmong: ሕሞንግ
+Holo (Taiwanese): ሆሎ (ታይዋንኛ)
+Hungarian: ሃንጋሪያን
+Hupa: ሁፓ
+Iban: ኢባን
+Icelandic: አይስላንዲ ክ
+Ido: አደርጋለሁ
+Igbo: አይግቦ
+Iloko: ኢሎኮ
+Indonesian: ኢንዶኔዥያን
+Ingush: ኢንጉሽ
+Inuktitut: =
+Inupiaq: =
+Iranian: ኢራናዊ
+Irish (Gaelic): አይሪሽ (ጋሊሊክ)
+Irish: አይሪሽ
+Iroquoian: =
+Italian (Switzerland): ጣልያንኛ (ስዊዘርላንድ)
+Italian: ጣሊያንኛ
+Japanese: ጃፓንኛ
+Javanese: ጃቫኒስ
+Judeo-Arabic: ይሁዳ-አረብኛ
+Judeo-Persian: ይሁዳ-ፋርስ
+Kabardian: ካባርዲያን
+Kabyle: ካቢል
+Kachin: ካሺን
+Kalaallisut: =
+Kalmyk: ካሊሚክ
+Kamba: ካምባ
+Kannada: ካናዳ
+Kanuri: ካኑሪ
+Kara-Kalpak: ካራ-ካልፓክ
+Karachay-Balkar: ካራቻይ-ባልካር
+Karelian: =
+Kashmiri: ካሽሚሪ
+Kashubian: ካሹቢያን
+Kawi: ካዊ
+Kazakh: ካዛክሀ
+Khasi: ቃሲ
+Khmer (Central): ክመር (ማዕከላዊ)
+Khmer: ክመር
+Khotanese: Hoታኔዝኛ
+Kikuyu: ኪኩዩ
+Kimbundu: ኪምቡንዱ
+Kinyarwanda: ኪንያሪያዋንዳ
+Kirghiz: ኪርጊዝ
+Klingon: ክሊንጎን
+Komi: ኮሚ
+Kongo: ኮንጎ
+Konkani: ኮንካኒ
+Korean (Johab): ኮሪያኛ (ጆሃብ)
+Korean (North): ኮሪያኛ (ሰሜን)
+Korean (South): ኮሪያኛ (ደቡብ)
+Korean: ኮሪያኛ
+Kosraean: ኮስራያን
+Kpelle: ክብል
+Kuanyama: ኩንያማ
+Kumyk: ኩሚክ
+Kurdish: ኩርዲሽ
+Kutenai: ኩተናይ
+Kyrgyz: ክይርግያዝ
+Ladino: ላዲኖ
+Lahnda: ላህንዳ
+Lamba: ላምባ
+Lao: ላኦ
+Latin: ላቲን
+Latvian: ላትቪያን
+Lezghian: ሌዝጊያን
+Limburgan: ሊምበርጋን
+Lingala: ሊንጋላ
+Lithuanian: ሊቱኒያን
+Lojban: ሎጃባን
+Lozi: ሎዚ
+Luba-Katanga: ሉባ-ካታንጋ
+Luba-Lulua: ሉባ-ሉሉዋ
+Luiseno: ሉዊሴኖ
+Lunda: ሉንዳ
+Luo: ሉኦ
+Lushai: ሉሻይ
+Luxembourghish: ሉክሰምበርግሺሽ
+Macedonian: ማስዶንያን
+Madurese: ማዱሬዝ
+Magahi: መጋሂ
+Maithili: ማይቲሊ
+Makasar: ማካሳር
+Malagasy: ማላጋሲ
+Malay: ማላይ
+Malayalam: ማላያላም
+Maldivian: ማልዲቪያን
+Maltese: ማልትስ
+Manchu: ማንቹ
+Mandar: ማንዳር
+Mandingo: ማንዲንጎ
+Manipuri: ማኒpሪ
+Manx: ማንክስ
+Maori: ማኦሪይ
+Mapuche: ማpuche
+Marathi: ማራቲ
+Mari: ማሪ
+Marshallese: =
+Marwari: ማርዋሪ
+Masai: ማሳይ
+Mayan: ማያን
+Mende: ሜንዴ
+Mi&#39;kmaq: ሚክማክ
+Minangkabau: ሚንጋባባው
+Mirandese: ሚራንዳሴ
+Mohawk: ሞሃውክ
+Moksha: ሞክሻ
+Moldavian: ሞልዳቪያን
+Mongo: ሞንጎ
+Mongolian: ሞኒጎሊያን
+Montenegrin: ሞንቴኔግግሪን
+Moroccan: ሞሮኮኛ
+Mossi: ሞሲ
+Myanmar: ማይንማር
+Māori: ማኦሪይ
+N&#39;Ko: ንኮ
+Nauru: ናኡሩ
+Navajo: ናቫጆ
+Ndebele (North): ንደበለ (ሰሜን)
+Ndebele (South): ንደበለ (ደቡብ)
+Ndebele: ንደበለ
+Ndonga: ንዶንጋ
+Neapolitan: ናፖሊታን
+Nepali: ኔፓሊ
+Nias: ኒያስ
+Niuean: ኒውየን
+Nogai: ኖጋይ
+Norse: ኖርስ
+Norwegian (Bokmål): ኖርዌጂያዊ (ቦክሙል)
+Norwegian (Nynorsk): ኖርዌጂያዊ (ናይኖርስክ)
+Norwegian: ኖርወይኛ
+Nyamwezi: ንያምወዚ
+Nyankole: ኒያንቆሌ
+Nyoro: ኒዮሮ
+Nzima: ንዚማ
+Occitan: ኦሲታን
+Odia: ኦዲያ
+Ojibwa: ኦጂብዋ
+Oriyia: ኦርያያ
+Oromo: ኦሮሞ
+Osage: ኦሳጅ
+Ossetic: ኦሴቲክ
+Pahlavi: ፓህላቪ
+Palauan: ፓላውያን
+Pali: ፓሊ
+Pampanga: ፓምፓንጋ
+Pangasinan: ፓንጋዛናን
+Panjabi: ፓንጃቢ
+Papiamento: ፓፒየሜንቶ
+Pashto: ፓሽቶ
+Pedi: ፔዲ
+Persian (Farsi): ፋርስኛ (ፋርሲ)
+Persian (Iran): ፋርስ (ኢራን)
+Persian: ፐርሽያን
+Phoenician: ፊንቄያውያን
+Pohnpeian: ፖንፔያን
+Polish: ፖሊሽ
+Portuguese: ፖርቹጋልኛ
+Portuguese/Brazil: ፖርቱጋላዊ / ብራዚል
+Punjabi (India): ንጃቢኛ (ህንድ)
+Punjabi (Pakistan): Punንጃቢ (ፓኪስታን)
+Punjabi: ፑንጃቢ
+Quechua: Chቹዋ
+Rajasthani: ራጃስታኒ
+Rapanui: ራፓኑይ
+Rarotongan: ራሮትቶንጋን
+Rhaeto-Romanic: ራሄቶ-ሮማዊ
+Romanian: ሮማንያን
+Romansh: ሮማንሽ
+Romany: ሮማንኒ
+Rundi: ሩንዲ
+Russian (Moldavia: ሩሲያኛ (ሞልዳቪያ)
+Russian (Republic of Moldova): ሩሲያኛ (የሞልዶቫ ሪፐብሊክ)
+Russian: ራሺያኛ
+Sami (Inari): ሳሚ (ኢናሪ)
+Sami (Lappish): ሳሚ (ላፕሽ)
+Sami (Lule): ሳሚ (ሉሌ)
+Sami (Northern): ሳሚ (ሰሜናዊ)
+Sami (Skolt): ሳሚ (ስኮልት)
+Sami (Southern): ሳሚ (ደቡባዊ)
+Sami: ሳሚ
+Samoan: ሳሞአን
+Samoli: ሳሞሊ
+Sandawe: ሳንዳዌ
+Sango: ሳንጎ
+Sanskrit: ሳንስክሪት
+Santali: ሳንታሊ
+Sardinian: ሰርዲያንኛ
+Sasak: ሳሳክ
+Scots (Gaelic): እስኮትስ (ጌሊሊክ)
+Selkup: ሰልልክፕ
+Serbian (Upper): ሰርቢያኛ (የላይኛው)
+Serbian: ሰሪቢያን
+Serer: ሰሪር
+Sesotho: ሴሶቶ
+Shan: ሻን
+Shona: ሾና
+Sichuan Yi: ሲቹዋን ኢ
+Sicilian: ሲሲሊያን
+Sindhi: ስንድሂ
+Sinhala: ሲንሃላ
+Slavic: ስላቪክ
+Slovak: ስሎቫክ
+Slovenian: ስሎቬንያን
+Sogdian: ሶግዲያያን
+Somali: ሶማሌ
+Somani: ሶማኒ
+Songhai: ሶንግሃይ
+Soninke: ሶኒንኬ
+Sorbian (Lower): ሶርቢያኛ (ታችኛ)
+Sorbian (Upper): ሶርቢያኛ (የላይኛው)
+Sorbian: ሶርቢያኛ
+Sotho: ሶቶ
+Spanish (Argentina): ስፓኒሽ (አርጀንቲና)
+Spanish (Bolivia): ስፓኒሽ (ቦሊቪያ)
+Spanish (Chile): ስፓኒሽ (ቺሊ)
+Spanish (Colombia): ስፓኒሽ (ኮሎምቢያ)
+Spanish (Costa Rica): ስፓኒሽ (ኮስታሪካ)
+Spanish (Dominican Republic): ስፓኒሽ (ዶሚኒካን ሪፐብሊክ)
+Spanish (Ecuador): ስፓኒሽ (ኢኳዶር)
+Spanish (El Salvador): ስፓኒሽ (ኤል ሳልቫዶር)
+Spanish (Guatemala): ስፓኒሽ (ጓቲማላ)
+Spanish (Honduras): ስፓኒሽ (ሆንዱራስ)
+Spanish (Mexico): ስፓኒሽ (ሜክሲኮ)
+Spanish (Nicaragua): ስፓኒሽ (ኒካራጓ)
+Spanish (Panama): ስፓኒሽ (ፓናማ)
+Spanish (Paraguay): ስፓኒሽ (ፓራጓይ)
+Spanish (Peru): ስፓኒሽ (ፔሩ)
+Spanish (Puerto Rico): ስፓኒሽ (ፖርቶ ሪኮ)
+Spanish (Spain): ስፓኒሽ (ስፔን)
+Spanish (Uruguay): ስፓኒሽ (ኡራጓይ)
+Spanish (Venezuela): ስፓኒሽ (ቬኔዙዌላ)
+Spanish: ስፓንኛ
+Sranan Tongo: Sranan ቶንጎ
+Sukuma: ሱኩማ
+Sumerian: ሱመርኛ
+Sundanese: ሱንዳኔዝኛ
+Susu: ሱሱ
+Sutu: ሱቱ
+Swahili: ስዋሕሊ
+Swati: ስዋቲ
+Swedish (Finland): ስዊድናዊ (ፊንላንድ)
+Swedish (Sweden): ስዊድናዊ (ስዊድን)
+Swedish: ስዊድንኛ
+Syriac: ሲራይክ
+Tagalog: ታንጋሎግ
+Tahitian: ታሂቲኛ
+Tai: ታይ
+Taiwan: ታይዋን
+Tajik: ታጂክ
+Tamashek: ታማasheክ
+Tamil: ታሚል
+Tatar: ታታር
+Telugu: ተሉጉ
+Tereno: ቴሬኖ
+Tetum: ጥጡም
+Thai: ታይ
+Tibetan: ትቤታን
+Tigre: ትግሬ
+Tigrinya: ትግርኛ
+Timne: ቲምኔ
+Tlingit: ትሊንቲት
+Tok Pisin: ቶክ ፒሲን
+Tokelau: ቶኬላኡ
+Tonga (Nytmhasa): ቶንጋ (ኒትማሳ)
+Tonga (Tonga Islands): ቶንጋ (ቶንጋ ደሴቶች)
+Tonga: ቶንጋ
+Tsimshian: ጽምሺያን
+Tsonga: ቶንሰጋ
+Tswana: =
+Tumbuka: ቱምቡካ
+Turkish: ቱሪክሽ
+Turkmen: ቱሪክሜን
+Tuvinian: ቱቪኒያንኛ
+Twi: ትዊ
+Udmurt: ኡምድርት
+Ugaritic: ኡጋሪቲክ
+Ukrainian: ዩክሬንያን
+Umbundu: ኡምቡንዱ
+Urdu: ኡርዱ
+Uyghur: ኡይግሁር
+Uzbek: ኡዝቤክ
+Vai: ቫይ
+Venda: ቬንዳ
+Vietnamese: ቪትናሜሴ
+Volapük: ቮላፕክ
+Votic: ተለዋጭ
+Wakashan: ዋካሻን
+Walloon: ዋሎን
+Waray: ዋራይ
+Washo: ዋሾ
+Welsh: ዋልሽ
+Wolaitta: ወላይታ
+Wolof: ዎሎፍ
+Xhosa: ዛይሆሳ
+Yakut: ያኩት
+Yao: ያኦ
+Yapese: ያፕስ
+Yiddish: ዪዲሽ
+Yorùbá: ዮሩባ
+Yupik: ዩፒክ
+Zande: ዛንዴ
+Zapotec: ዛፖቴክ
+Zaza: ዛዛ
+Zenaga: ዜናጋ
+Zhuang: Huንግ
+Zulu: ዙሉ
+Browser-defined: በአሳሽ-ተገለጸ
+event: ክስተት
+journal: መጽሔት
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: ልክ ያልሆነ የተጠቃሚ መግቢያ
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: የተሳሳተ የይለፍ ቃል
+no such user: እንደዚህ ያለ ተጠቃሚ የለም
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: መለያ ተሰናክሏል
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: የጊዜ ክፍተት
+Months: ወሮች
+Month Days: ወር ቀኖች
+Days: ቀናት
+Weeks: ሳምንቶች
+Position: አቀማመጥ
+Until: እስከ
+Count: ቆጠራ
+Inclusion Dates: የማካተት ቀናት
+Exclusion Dates: የማግለል ቀናት
+Event Imported: ክስተት መጥቷል
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: ባይት
+kb: ኪባ
+Mb: ም
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: ማስታወቂያ
+authenticate: የ SMTP ስህተት ማረጋገጥ አልተቻለም
+connect_host: የ SMTP ስህተት ከ SMTP አስተናጋጅ ጋር መገናኘት አልተቻለም
+data_not_accepted: የ SMTP ስህተት ፦ ውሂብ አልተቀበለም
+encoding: ያልታወቀ ኢንኮዲንግ
+execute: ማስፈፀም አልተቻለም
+file_access: ፋይልን መድረስ አልተቻለም
+file_open: የፋይል ስህተት ፋይልን መክፈት አልተቻለም
+from_failed: የሚከተለው አድራሻ አልተሳካም
+instantiate: የመልእክት ተግባርን ወዲያውኑ ማነቃቃት አልተቻለም
+mailer_not_supported: መላኪያ አይደገፍም
+provide_address: ቢያንስ አንድ የተቀባይ ኢሜይል አድራሻ ማቅረብ አለብዎት ፡፡
+recipients_failed: የ SMTP ስህተት የሚከተሉት ተቀባዮች አልተሳኩም
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: በግራፊክ የተመለከቱ ገጸ-ባህሪያትን ያስገቡ
+Enter the correct letters and numbers...: ትክክለኛዎቹን ፊደሎች እና ቁጥሮች ከምስሉ ወደ የጽሑፍ ሳጥን ውስጥ ያስገቡ ፡፡ ይህ አነስተኛ ሙከራ በተንኮል አዘል ቦቶች ላይ እንደ መዳረሻ ገደብ ሆኖ ያገለግላል ፡፡ ይህ ግራፊክ ለማንበብ በጣም ከባድ ከሆነ በቀላሉ ገጹን እንደገና ይጫኑ
+Challenge/Response: ፈተና / ምላሽ
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: የዚህ ግቤት ቀን እና ሰዓት ይቀየር?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: አጭር መግለጫ አልገቡም
+time prior to work hours...: ከሥራ ሰዓት በፊት ...
+Invalid Event Date: ልክ ያልሆነ የዝግጅት ቀን
+Please add a participant: እባክዎ ተሳታፊ ያክሉ
+Invalid Date: ልክ ያልሆነ ቀን
+You have not entered a valid time of day: የቀን ትክክለኛ ሰዓት አልገቡም ፡፡
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: የቀን መቁጠሪያ መታወቂያ ባዶ ሊሆን አይችልም።
+First and last names cannot both be blank.: የመጀመሪያ እና የመጨረሻ ስሞች ሁለቱም ባዶ ሊሆኑ አይችሉም።
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: ልክ ያልሆነ ቀለም
+Color format should be RRGGBB.: የቀለም ቅርጸት #RRGGBB መሆን አለበት።
+URL cannot be blank.: ዩ.አር.ኤል ባዶ ሊሆን አይችልም።
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: የፋይል ዓይነት ከውጭ አስመጣ ቅርጸት ጋር አይዛመድም
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: ለሰነድ ዳራ ልክ ያልሆነ ቀለም።
+Invalid color for document title.: ለሰነድ ርዕስ ልክ ያልሆነ ቀለም።
+Invalid color for table cell background.: ለሠንጠረዥ ሕዋስ ዳራ ልክ ያልሆነ ቀለም።
+Invalid color for table cell background for today.: ለዛሬ የጠረጴዛ ሕዋስ ዳራ ልክ ያልሆነ ቀለም።
+Invalid work hours.: ልክ ያልሆነ የሥራ ሰዓት።
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: የአገልጋይ ዩአርኤል በጥቂት (/) ማለቅ አለበት።
+Invalid color for table grid.: ለሠንጠረዥ ፍርግርግ ልክ ያልሆነ ቀለም።
+Invalid color for event popup background.: ለክስተት ብቅ-ባይ ዳራ ልክ ያልሆነ ቀለም።
+Invalid color for event popup text.: ለክስተት ብቅ-ባይ ጽሑፍ ልክ ያልሆነ ቀለም።
+Invalid color for table header text.: ለሠንጠረዥ ራስጌ ጽሑፍ ልክ ያልሆነ ቀለም።
+Invalid color for table header background.: ለጠረጴዛ ራስጌ ዳራ ልክ ያልሆነ ቀለም።
+Server URL is required.: የአገልጋይ ዩአርኤል ያስፈልጋል
+Invalid Color: ልክ ያልሆነ ቀለም
+Database Name: የውሂብ ጎታ ስም
+Full Path (no backslashes): ሙሉ ዱካ (ወደኋላ የሚመለስ የለም)
+The password contains illegal characters.: የይለፍ ቃሉ ሕገ-ወጥ ቁምፊዎችን ይ containsል።
+Error you must specify a Single-User Login: ስህተት-የአንድ ተጠቃሚ መግቢያ መግለፅ አለብዎት
+Could not find XXX.: XXX ን ማግኘት አልተቻለም።
+Could not find XXX in DOM.: XXX በ DOM ውስጥ ማግኘት አልተቻለም።
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: በዚህ ሳምንት
+This Month: በዚህ ወር
+This Year: የህ አመት
+Exit: መውጫ
+Add New Event: አዲስ ክስተት ያክሉ
+Delete Entries: ግቤቶችን ሰርዝ
+My Views: የእኔ እይታዎች
+Manage Calendar of: የቀን መቁጠሪያን ያቀናብሩ
+My Reports: የእኔ ሪፖርቶች
+My Profile: የግል ማህደሬ
+Public Calendar: የህዝብ ቀን መቁጠሪያ
+Unapproved Events: ያልጸደቁ ክስተቶች
+User Manager: የተጠቃሚ ሥራ አስኪያጅ
+Help Contents: የእገዛ ይዘቶች
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: የውሂብ ጎታ መሸጎጫ ማውጫ
+Create New: አዲስ ፍጠር
+Failure Reason: ውድቀት ምክንያት
+You must manually create database: እራስዎ የውሂብ ጎታ መፍጠር አለብዎት።
+Single-User: ነጠላ-ተጠቃሚ
+Test Settings: የሙከራ ቅንብሮች
+Timezone Conversion Successful: የሰዓት ሰቅ መለወጥ ስኬታማ
+WebCalendar Installation Wizard Step XXX: የድር ካላንደር መጫኛ አዋቂ ደረጃ XXX
+Password Accepted: የይለፍ ቃል ተቀብሏል
+Successful Login: የተሳካ መግቢያ
+Password Incorrect: የይለፍ ቃል የተሳሳተ ነው
+Invalid Login: ልክ ያልኾነ መግቢያ
+Display Errors: የማሳያ ስህተቶች
+File Uploads: የፋይል ሰቀላዎች
+Allow URL fopen: ዩ.አር.ኤል ከፍ እንዲል ይፍቀዱ (የርቀት ቀን መቁጠሪያዎች ጥቅም ላይ ከዋሉ ብቻ ያስፈልጋል)
+Safe Mode: ደህንነቱ የተጠበቀ ሁነታ
+Safe Mode Allowed Vars: ደህንነቱ የተጠበቀ ሁነታ የተፈቀዱ ቫርስ (ደህንነቱ የተጠበቀ ሁነታ ከበራ ብቻ TZ ያስፈልጋል)
+GD: ጂዲ (ለግራዲየንት ምስል ዳራዎች ያስፈልጋሉ)
+Passwords do not match!: የይለፍ ቃሎች ተመሳሳይ አይደሉም!
+Unable to write password to settings.php file: በ "settings.php" ፋይል ላይ የይለፍ ቃል መጻፍ አልተቻለም።
+Password Updated: የይለፍ ቃል ዘምኗል
+Password has been set: የይለፍ ቃል ተዘጋጅቷል
+Connection Successful...: ግንኙነቱ የተሳካ  መጫኑን ለመቀጠል እባክዎ ወደ ቀጣዩ ገጽ ይሂዱ።
+Correct your entries or click the Create New...: መጫኑን ለመቀጠል ግቤቶችዎን ያስተካክሉ ወይም የ  አዲስ ፍጠር  ቁልፍን ጠቅ ያድርጉ።
+Correct your entries and try again.: ግቤቶችዎን ያስተካክሉ እና እንደገና ይሞክሩ።
+XXX does not exist: XXX የለም
+XXX is not writable: XXX መፃፍ አይቻልም
+Error Converting Timezone: የሰዓት ሰቅን መለወጥ ላይ ስህተት
+Error Unable to write to file XXX.: ስህተት XXX ን ለማስገባት መጻፍ አልተቻለም።
+Please change the file permissions of this file.: እባክዎን የዚህን ፋይል ፋይል ፈቃዶች ይቀይሩ።
+Please change includes dir permission: በሌሎች ተጠቃሚዎች መጻፍ እንዲችል እባክዎ የ “ይካተታል” ማውጫዎን የፋይል ፈቃዶች ይለውጡ።
+Your settings have been saved.: የእርስዎ ቅንብሮች ተቀምጠዋል
+OFF: ጠፍቷል
+ON: በርቷል
+WebCalendar Setup Wizard: የድር ካላንደር ማዋቀር አዋቂ
+This installation wizard will guide you...: ይህ የመጫኛ ጠንቋይ መሠረታዊ የዌብካላንደር ጭነት በማቀናበር ይመራዎታል።<br>ለእገዛ እና መላ ለመፈለግ የሚከተሉትን ይመልከቱ: -
+System Administrators Guide: የስርዓት አስተዳዳሪ መመሪያ
+Frequently Asked Questions: ተደጋግሞ የሚነሱ ጥያቄዎች
+FAQ: በየጥ
+Troubleshooting: ችግርመፍቻ
+Getting Help: እገዛን ማግኘት
+Upgrading Guide: የማሻሻል መመሪያ
+User Supported Wiki: በተጠቃሚ የተደገፈ ዊኪ
+PHP Version Check: የ PHP ስሪት ማረጋገጫ
+Check to see if PHP 7.1.0 or greater is installed.: PHP 7.1.0 ወይም ከዚያ በላይ መጫኑን ያረጋግጡ።
+PHP version: የ PHP ስሪት
+PHP Settings: የ PHP ቅንብሮች
+Detailed PHP Info: ዝርዝር PHP መረጃ
+settings.php Status: "settings.php" ሁኔታ
+Session Check: የክፍለ-ጊዜ ፍተሻ
+To test the proper operation of sessions...: የክፍለ ጊዜዎቹን ትክክለኛ አሠራር ለመፈተሽ ይህንን ገጽ እንደገና ይጫኑ ፡፡ በእያንዳንዱ ጊዜ የክፍለ-ጊዜው ቆጣሪ ጭማሪን ማየት አለብዎት።
+SESSION COUNTER: የስብሰባ ቆጣሪ
+The file permissions of settings.php are set...: የ "settings.php" የፋይል ፈቃዶች ጫ theው እሱን እንዲያሻሽለው ፈቃድ እንዳይኖረው ተደርገዋል። ለመቀጠል እባክዎ የሚከተለውን ፋይል የፋይል ፈቃዶች ይለውጡ
+The file permissions of the includes directory are set...: ጫalው አዲስ ፋይል ለመፍጠር ፈቃድ እንዳይኖረው የማውጫውን የፋይል ፈቃዶች ተዋቅረዋል። ለመቀጠል እባክዎ የሚከተለውን ማውጫ ፈቃዶች ይለውጡ
+Your settings.php file appears to be valid.: የእርስዎ “settings.php” ፋይል ልክ የሆነ ይመስላል።
+Configuration Wizard Password: የውቅር አዋቂ የይለፍ ቃል
+Create Settings File Password: የቅንብሮች ፋይል ይለፍ ቃል ይፍጠሩ
+db setup directions...: በዚህ ክፍል ውስጥ ከእርስዎ የውሂብ ጎታ አገልጋይ ጋር ግንኙነትን ያዘጋጃሉ እና ይሞክራሉ ፡፡ የቀረበው የመለያ መረጃ የመረጃ ቋቶችን ፣ ሰንጠረ andችን እና ተጠቃሚዎችን ለመፍጠር ሙሉ ፈቃዶች ሊኖረው ይገባል ፡፡ ይህ የማይቻል ከሆነ ወይም የመረጃ ቋትዎ መዳረሻ ውስን ከሆነ የውሂብ ጎታዎን እራስዎ ማዋቀር ይኖርብዎታል።
+Database Status: የውሂብ ጎታ ሁኔታ
+Supported databases for your PHP installation: ለ PHP ጭነትዎ የሚደገፉ የውሂብ ጎታዎች
+Your current database settings are able to access the database.: የእርስዎ የአሁኑ የመረጃ ቋት (ዳታቤዝ) ቅንብሮች የመረጃ ቋቱን (ዳታቤዝ) ማግኘት ይችላሉ
+Please Test Settings: እባክዎ ቅንብሮችን ይሞክሩ
+Your current database settings are not able...: የእርስዎ የአሁኑ የመረጃ ቋት (ዳታቤዝ) ቅንብሮች የመረጃ ቋቱን (ዳታቤዙ) መድረስ አይችሉም ወይም ገና አልተፈተኑም ፡፡
+Database Settings: የውሂብ ጎታ ቅንብሮች
+Database Type: የመረጃ ቋት ዓይነት
+Server: አገልጋይ
+Connection Persistence: የግንኙነት ጽናት
+All your database tables appear to be up...: ሁሉም የመረጃ ቋቶችዎ ሰንጠረ toች የዘመኑ ይመስላሉ። ወደ ቀጣዩ ገጽ መቀጠል እና የድር-ቀን መቁጠሪያዎን ማጠናቀቅ ይችላሉ።
+This appears to be a new installation...: ይህ አዲስ ጭነት ይመስላል። ይህ ትክክል ካልሆነ እባክዎ ወደ ቀድሞው ገጽ ይመለሱ እና ቅንብሮችን ያስተካክሉ።
+This appears to be an upgrade...: ይህ ከ&nbsp;XXX&nbsp;እስከ&nbsp;YYY ማሻሻያ ይመስላል።
+The database requires some data input...: የመረጃ ቋቱ ማሻሻያውን ለማጠናቀቅ የተወሰነ የውሂብ ግብዓት ይጠይቃል የዘመነ ዳታቤዝን ጠቅ ያድርጉ ፡፡
+In this section we will perform...: በዚህ ክፍል ውስጥ የውሂብ ጎታዎን ወደሚፈለገው ደረጃ ለማድረስ ለውጦቹን እናከናውናለን ፡፡ ሙሉ በሙሉ የተደገፈ የውሂብ ጎታ የሚጠቀሙ ከሆነ ይህ እርምጃ በራስ-ሰር ለእርስዎ ይከናወናል። ካልሆነ የሚፈለገው ኤስኪኤል ሊታይ ይችላል እና እርስዎ በመቆለፊያዎ አገልጋይ መጠይቅ መስኮት ውስጥ ቆርጠው መለጠፍ መቻል አለብዎት።
+No database actions are required.: የመረጃ ቋት እርምጃዎች አያስፈልጉም።
+The following database actions are required: የሚከተሉት የውሂብ ጎታ እርምጃዎች ያስፈልጋሉ
+ODBC Underlying Database: የኦ.ዲ.ቢ.ቢ የመሠረት ጎታ
+Automatic installation not supported: የራስ-ሰር ጭነት ለእርስዎ የመረጃ ቋት ዓይነት ሙሉ በሙሉ አልተተገበረም። የቀረበውን ኤስኪኤል በመጠቀም አስፈላጊዎቹን ሰንጠረ manuallyች እራስዎ መፍጠር ይኖርብዎታል። ለመቀጠል እባክዎ  አሳይ SQL  ን ጠቅ ያድርጉ። በመረጃ ቋትዎ (ዊንዶውስ) መስኮት ውስጥ ይቁረጡ እና ይለጥፉ።
+This may take several minutes to complete: ይህ ለማጠናቀቅ ብዙ ደቂቃዎችን ሊወስድ ይችላል።
+Install Database: የመረጃ ቋትን ጫን
+Update Database: የመረጃ ቋትን ያዘምኑ
+Display Required SQL: ማሳያ ያስፈልጋል SQL
+Return to previous page after processing SQL.: ይህንን SQL በእጅ ከሰሩ በኋላ ስክሪፕቱ ለውጦቹን እንዲለይ ወደ ቀድሞው ገጽ መመለስ እና ዳታቤዝዎን እንደገና መሞከር ያስፈልግዎታል።
+This is the final step in setting up your WebCalendar Installation.: የድርዎን ቀን መቁጠሪያ ጭነት ለማዘጋጀት ይህ የመጨረሻው ደረጃ ነው።
+Timezone Conversion: የሰዓት ሰቅ መለወጥ
+It appears that you have NOT converted...: አሁን ያለዎትን የድር ካላንደር ክስተት መረጃ ወደ ጂኤምቲ ያልለወጡ ይመስላል። ካለዎት ይህንን ማስታወቂያ ችላ ማለት ይችላሉ እና ወደ ልወጣው አይቀጥሉም። ይህ አዲስ ጭነት ከሆነ ፣ እርስዎም ይህን ማስታወቂያ ችላ ማለት ይችላሉ።
+Convert Data to GMT: መረጃን ወደ GMT ይለውጡ
+Application Settings: የትግበራ ቅንብሮች
+HTTP-based authentication was not detected...: በኤችቲቲቲፒ ላይ የተመሠረተ ማረጋገጫ አልተገኘም ፡፡ ከታች ካለው ‹የተጠቃሚ ማረጋገጫ› ምርጫዎች ውስጥ ‹ድር አገልጋይ› ን መምረጥ ከፈለጉ የድር አገልጋይዎን እንደገና ማዋቀር ያስፈልግዎታል ፡፡
+HTTP-based authentication was detected...: በኤችቲቲቲፒ ላይ የተመሠረተ ማረጋገጫ ተገኝቷል። የተጠቃሚ ማረጋገጫ በድር አገልጋይዎ እየተያዘ ነው። ከዚህ በታች ከ ‹የተጠቃሚ ማረጋገጫ› ምርጫዎች ዝርዝር ውስጥ ‹የድር አገልጋይ› መምረጥ አለብዎት ፡፡
+Create Default Admin Account: ነባሪ የአስተዳዳሪ መለያ ፍጠር
+(Admin Account Not Found): (የአስተዳዳሪ መለያ አልተገኘም)
+User Authentication: የተጠቃሚ ማረጋገጫ
+Web-based via WebCalendar (default): በድር-መሠረት በዌብ ካላንደር (ነባሪ)
+Web Server (not detected): የድር አገልጋይ (አልተገኘም)
+Web Server (detected): የድር አገልጋይ (ተገኝቷል)
+None (Single-User): የለም (ነጠላ ተጠቃሚ)
+Read-Only: ለማንበብ ብቻ የተፈቀደ
+Environment: አካባቢ
+Production: ምርት
+Development: ልማት
+Save Settings: ቅንብሮችን ያስቀምጡ
+Launch WebCalendar: የድር ካላንደርን ያስጀምሩ
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: ሰንጠረዥን "XXX" ማዘመን ላይ ስህተት: YYY
+Conversion Successful: ልወጣ ስኬታማ 
+Perl script required: የእርስዎ የቀድሞው የ WebCalendar ስሪት የእርስዎን ውሂብ ለመለወጥ የ PERL ስክሪፕት ማስኬድን ይፈልጋል። እባክዎን /tools/upgrade_to_0.9.7.pl ን ያሂዱ ከዚያ ለመቀጠል ወደዚህ ገጽ ይመለሱ።
+previous version requires updating several tables: የእርስዎ የቀድሞው የ WebCalendar ስሪት ብዙ የመረጃ ቋት ሰንጠረ updችን ማዘመን ይጠይቃል።
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: አይገኝም ቅድመ እይታ
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: ከመረጃ ቋት ጋር መገናኘት ላይ ስህተት
+Include Path: ዱካ አካትት
+Deleting events for: ክስተቶችን በመሰረዝ ላይ ለ
+Importing events for: ክስተቶችን በማስመጣት ለ
+No data returned from: ምንም ውሂብ አልተመለሰም
+for non-user calendar: ለተጠቃሚ ያልሆነ የቀን መቁጠሪያ
+No Remote Calendars found: የርቀት ቀን መቁጠሪያዎች አልተገኙም
+Remote Calendars not enabled: የርቀት ቀን መቁጠሪያዎች አልነቁም
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: የክስተት መታወቂያ ማግኘት አልቻለም
+could not find event id XXX in database.: በክስተት ውስጥ የክስተት መታወቂያ XXX ማግኘት አልቻለም።
+task: ተግባር
+This is a reminder for the XXX detailed below.: ይህ ከዚህ በታች ለተዘረዘሩት XXX ማሳሰቢያ ነው ፡፡
+Pecentage Complete: መቶኛ ተጠናቅቋል
+Reminder: አስታዋሽ
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: የማይደገፍ እርምጃ XXX።
+No event id specified.: ምንም የዝግጅት መታወቂያ አልተገለጸም ፡፡
+Not authorized (not admin).: አልተፈቀደም (አስተዳዳሪ አይደለም)።
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: ከ YYY ቀን እስከ ZZZ ድረስ ለ XXX ዝግጅቶችን በመፈተሽ ላይ።
+Found XXX events in time range.: የ XXX ክስተቶች በጊዜ ክልል ውስጥ ተገኝተዋል።
+Event id=XXX YYY at ZZZ on AAA.: የዝግጅት id = XXX "YYY" በ ZZZ በ AAA ላይ።
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: XXX ተጠቃሚ የሌላ ተጠቃሚ የቀን መቁጠሪያን እንዲመለከት መፍቀድ።
+Error Email reminders disabled for user XXX.: ስህተት የኢሜይል አስታዋሾች ለተጠቃሚ "XXX" ተሰናክለዋል።
+Number of site_extras XXX.: የጣቢያ_ተክሎች ብዛት-XXX።
+Reminder set for event.: ማስታወሻ ለዝግጅት ተዘጋጅቷል ፡፡
+Mins Before XXX.: ማይንስ በፊት-XXX።
+Event time is XXX.: የዝግጅት ጊዜ XXX ነው።
+Remind time is XXX.: የማስታወሻ ጊዜ-XXX ነው ፡፡
+Reminders for user XXX, login YYY.: ለተጠቃሚዎች "XXX" ማሳሰቢያዎች ፣ "YYY" ይግቡ።
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: ለተጠቃሚ "XXX" አለመፈቀድ።
+Event id=XXX YYY already sent.: የክስተት መታወቂያ = XXX "YYY" አስቀድሞ ተልኳል።
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: ለነጠላ ተጠቃሚ ሁነታ ምንም መግቢያ አያስፈልግም።
+No login required for HTTP authentication.: ለኤችቲቲፒ ማረጋገጫ ምንም መግቢያ አያስፈልግም።
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: በመግቢያ ውስጥ ልክ ያልሆኑ ቁምፊዎች
+Username XXX does not exist.: የተጠቃሚ ስም "XXX" የለም
+You cannot remove admin rights from yourself!: የአስተዳዳሪ መብቶችን ከራስዎ ማስወገድ አይችሉም!
+Unknown error saving user: ያልታወቀ ስህተት ቆጣቢ ተጠቃሚ።
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: ለዝግጅት መታወቂያ ምንም ተሳታፊዎች አልተገኙም XXX።
+Db error Could not find event id XXX.: የ Db ስህተት የክስተት መታወቂያ XXX ማግኘት አልተቻለም።
+Error Could not find event id XXX in database.: ስህተት ፦ በክስተት ውስጥ የክስተት መታወቂያ XXX ማግኘት አልተቻለም።

@@ -1,0 +1,2387 @@
+# Thai th
+#
+# รูปแบบประกอบด้วยส่วนหัวเสริม:
+#
+# แปลโดย: ชื่อและอีเมลของคุณ
+# อัพเดทล่าสุด: วันที่แปล
+# (รวมถึง "#" นำหน้าและความคิดเห็นใด ๆ ของนักแปลคนก่อน ๆ
+# บรรทัดว่าง FIRST จะสิ้นสุดความคิดเห็นส่วนหัวเหล่านี้)
+#
+# ตามด้วยมากเท่าที่จำเป็น:
+#
+# วลีภาษาอังกฤษ: การแปล
+# (ตัวต่อตัวไม่มี "#" นำหน้า
+# วลีภาษาอังกฤษ: "รวมถึงเครื่องหมายจุดคู่": "จัดทำโดย
+# นักพัฒนา WebCalendar ส่วนของคุณคือ "การแปล")
+#
+# ไดเร็กทอรี tools มีสองสคริปต์ perl เพื่อช่วยคุณ:
+# - check_translation.pl
+# ระบุว่าข้อความทั้งหมดได้รับการแปลสำเร็จหรือไม่
+# - update_translation.pl
+# จะแยกวิเคราะห์ไฟล์โปรแกรมเพื่อค้นหาการแปลทั้งหมด ('วลี') และ
+# tooltip ('วลี') มันจะจัดเรียงวลีตามหน้า
+# (ไฟล์) ที่มีการเกิดขึ้นครั้งแรก อีกทางหนึ่งก็สามารถติดแท็กไฟล์
+# วลีที่ยังไม่ได้แปลโดยการใส่
+#  << MISSING >>
+# ในบรรทัดเหนือวลี และถ้าวลีนั้นเป็นตัวย่อ
+# จะมีข้อความภาษาอังกฤษแบบเต็มในบรรทัดด้านล่างวลี
+#
+# หมายเหตุ: ฉันกำลังพยายามลดขนาดไฟล์โดยรวม หาก "การแปล"
+# คำ / วลีเหมือนกันในภาษาและภาษาอังกฤษของคุณเพียงแค่ใช้เครื่องหมาย "="
+#
+# หมายเหตุ: คุณจะสังเกตเห็นรายการสำหรับ "May_" ด้านล่าง มีเหตุผลสำหรับเรื่องนี้
+#  แปลภาษา "May_" เป็นชื่อเต็มเดือนและ "May" ไปที่
+# โดยปกติจะเป็นตัวอักษรสามตัวอักษรย่อเดือน (เช่น "Oct" สำหรับ "October")
+#
+# ฉันใช้ Google แปลภาษาสำหรับสิ่งนี้
+# ควรพอเพียงจนกว่าเจ้าของภาษาจะตรวจสอบได้
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: รุ่น XXX
+WebCalendar is a PHP application used...: WebCalendar เป็นแอปพลิเคชัน PHP ที่ใช้ในการดูแลรักษาปฏิทินสำหรับผู้ใช้คนเดียวหรือกลุ่มผู้ใช้อินเทอร์เน็ต / อินทราเน็ต นอกจากนี้ยังสามารถกำหนดค่าเป็นปฏิทินกิจกรรม
+Credits: เครดิต
+About: เกี่ยวกับ
+OK: ตกลง
+
+########################################
+# Page: access.php
+#
+Database error XXX.: ข้อผิดพลาดของฐานข้อมูล: XXX
+DEFAULT CONFIGURATION: การกำหนดค่าเริ่มต้น
+Go: ไป
+Save: บันทึก
+Undo: เลิกทำ
+Public Access: การเข้าถึงสาธารณะ
+Admin: ธุรการ
+User Access Control: การควบคุมการเข้าถึงของผู้ใช้
+Allow Access to Other Users Calendar: อนุญาตให้เข้าถึงปฏิทินของผู้ใช้รายอื่น
+Grant This User Access to My Calendar: ให้สิทธิ์ผู้ใช้นี้เข้าถึงปฏิทินของฉัน
+Type: ประเภท
+Calendar: ปฏิทิน
+View Event: ดูเหตุการณ์
+View: ดู
+Edit: แก้ไข
+Approve/Reject: อนุมัติ / ปฏิเสธ
+Events: เหตุการณ์
+Tasks: งาน
+Journals: วารสาร
+Can Invite: เชิญได้เลยครับ
+Can Email: สามารถ Email
+Can See Time Only: สามารถดูเวลาเท่านั้น
+Assistant: ผู้ช่วย
+Select All: เลือกทั้งหมด
+Clear All: ลบทั้งหมด
+Public: สาธารณะ
+Confidential: เป็นความลับ
+Private: เอกชน
+
+########################################
+# Page: activity_log.php
+#
+Next: ต่อไป
+Previous: ก่อนหน้านี้
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: กิจกรรม XXX อยู่ในปฏิทินของคุณแล้ว
+Invalid entry id XXX.: รหัสรายการไม่ถูกต้อง: "XXX"
+a XXX event may not be added to your calendar: นี่คือกิจกรรม XXX และไม่สามารถเพิ่มลงในปฏิทินของคุณได้
+confidential: เป็นความลับ
+private: เอกชน
+Error adding event XXX.: เกิดข้อผิดพลาดในการเพิ่มเหตุการณ์: XXX
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: ชื่อการตั้งค่า "XXX" ไม่ถูกต้อง
+Select: เลือก
+Day: วัน
+Week: สัปดาห์
+Month: เดือน
+Year: ปี
+Bottom: ด้านล่าง
+Top: ด้านบน
+Anyone: ทุกคน
+Participant: ผู้เข้าร่วม
+Settings: การตั้งค่า
+Groups: กลุ่ม
+NonUser Calendars: ปฏิทินที่ไม่ใช่ผู้ใช้
+Other: อื่น ๆ
+Email: อีเมล์
+Colors: สี
+Document background: พื้นหลังเอกสาร
+Document title: ชื่อเอกสาร
+Document text: ข้อความเอกสาร
+My event text: ข้อความกิจกรรมของฉัน
+Table grid color: สีตารางตาราง
+Table header background: พื้นหลังส่วนหัวของตาราง
+Table header text: ข้อความส่วนหัวของตาราง
+Table cell background: พื้นหลังของเซลล์ตาราง
+Table cell background for current day: พื้นหลังของเซลล์ตารางสำหรับวันปัจจุบัน
+Table cell background for days with events: พื้นหลังของเซลล์ตารางสำหรับวันที่มีกิจกรรม
+Table cell background for weekends: พื้นหลังของเซลล์ตารางสำหรับวันหยุดสุดสัปดาห์
+Table cell background for other month: พื้นหลังของเซลล์ตารางสำหรับเดือนอื่น ๆ
+Week number color: สีหมายเลขสัปดาห์
+Event popup background: พื้นหลังป๊อปอัปเหตุการณ์
+Event popup text: ข้อความป๊อปอัปของเหตุการณ์
+System Settings: การตั้งค่าระบบ
+Help: ช่วยด้วย
+System options: ตัวเลือกระบบ
+app-name-help: ระบุชื่อของแอ็พพลิเคชันที่จะปรากฏในแถบหัวเรื่องของเบราว์เซอร์สำหรับทุกเพจและบนเพจล็อกอิน ค่าที่คุณระบุที่นี่จะถูกค้นหาในไฟล์คำแปลซึ่งช่วยให้คุณสามารถระบุชื่อที่แตกต่างกันสำหรับภาษาต่างๆ
+Application Name: ชื่อแอปพลิเคชัน
+Translated Name (XXX): ชื่อที่แปล (XXX)
+server-url-help: ระบุ URL พื้นฐานสำหรับแอ็พพลิเคชัน สิ่งนี้จะรวมอยู่ในการส่งการแจ้งเตือนและการแจ้งเตือนทางอีเมล
+Server URL: URL ของเซิร์ฟเวอร์
+home-url-help: ระบุ URL บ้านสำหรับแอ็พพลิเคชัน อาจเป็นค่าสัมบูรณ์หรือสัมพัทธ์
+Home URL: URL หน้าแรก
+language-help: ระบุภาษาที่จะใช้
+Language: ภาษา
+Your browser default language is XXX.: ภาษาเริ่มต้นของเบราว์เซอร์ของคุณคือ "XXX"
+Allow user to use themes: อนุญาตให้ผู้ใช้ใช้ธีม
+themes-help: อนุญาตให้อัปเดตการตั้งค่าการกำหนดค่าจำนวนมาก ป้ายกำกับตัวพิมพ์เล็กเป็นคำตอบเฉพาะของผู้ใช้เท่านั้น
+Themes: ธีม
+AVAILABLE THEMES: ธีมที่มีอยู่
+None: ไม่มี
+Preview: ดูตัวอย่าง
+Site customization: การปรับแต่งไซต์
+custom-script-help: อนุญาตให้ป้อนข้อความ Javascript หรือสไตล์ชีตที่กำหนดเองซึ่งจะแทรกลงในส่วน "head" ของ HTML ของทุกหน้า
+Custom script/stylesheet: สคริปต์ / สไตล์ชีตที่กำหนดเอง
+custom-header-help: อนุญาตให้รวมข้อมูลโค้ด HTML ที่กำหนดเองไว้ที่ด้านบนสุดของทุกหน้า
+Custom header: ส่วนหัวที่กำหนดเอง
+custom-trailer-help: อนุญาตให้รวมข้อมูลโค้ด HTML ที่กำหนดเองไว้ที่ส่วนท้ายของทุกหน้า
+Custom trailer: ตัวอย่างที่กำหนดเอง
+enable-external-header-help: อนุญาตให้โหลดตัวอย่างที่กำหนดเองจากไฟล์ภายนอก
+Allow external file for header/script/trailer: อนุญาตไฟล์ภายนอกสำหรับส่วนหัว / สคริปต์ / ตัวอย่าง
+Allow user to override header/trailer: อนุญาตให้ผู้ใช้แทนที่ส่วนหัว / ตัวอย่าง
+Date and Time: วันและเวลา
+server-tz-help: ระบุจำนวนชั่วโมงในการปรับเวลาจาก UTC เป็นเวลาเซิร์ฟเวอร์
+Server Timezone Selection: การเลือกเขตเวลาเซิร์ฟเวอร์
+tz-help: ระบุจำนวนชั่วโมงในการปรับเวลาจาก UTC เป็นเวลาท้องถิ่น
+Default Client Timezone Selection: การเลือกเขตเวลาไคลเอ็นต์เริ่มต้น
+display-general-use-gmt-help: หากเปิดใช้งานวันที่ / เวลาทั่วไปจะแสดงเป็น GMT
+Display Common Use Date/Times as GMT: แสดงวันที่ / เวลาการใช้งานทั่วไปเป็น GMT
+date-format-help: ระบุรูปแบบวันที่ที่ต้องการ
+Date format: รูปแบบวันที่
+Small Task Date: วันที่งานขนาดเล็ก
+display-week-starts-on: ระบุวันในสัปดาห์ที่เริ่มต้นสัปดาห์ หากระบุวันจันทร์ตัวเลขสัปดาห์จะเป็นตัวเลข ISO week
+Week starts on: สัปดาห์เริ่มต้นใน
+display-weekend-starts-on: กำหนดวันในสัปดาห์สำหรับวันหยุดสุดสัปดาห์เพื่อเริ่มต้น
+Weekend starts on: วันหยุดสุดสัปดาห์เริ่มใน
+time-format-help: ระบุรูปแบบเวลาที่จะใช้:<br><em>12 ชั่วโมง:</em> แสดงเวลาเป็น 03.00 น. 20.30 น. เป็นต้น<br><em>24 ชั่วโมง:</em> แสดงเวลาเป็น 300 , 2030 ฯลฯ
+Time format: รูปแบบเวลา
+12 hour: 12 ชั่วโมง                                                  
+24 hour: 24 ชั่วโมง                                                  
+timed-evt-len-help: ระบุวิธีการป้อนข้อมูลเพื่อกำหนดความยาวของเหตุการณ์ที่กำหนดเวลา
+Specify timed event length by: ระบุความยาวของเหตุการณ์ที่หมดเวลาโดย
+Duration: ระยะเวลา
+End Time: เวลาสิ้นสุด
+work-hours-help: ระบุช่วงเวลาที่จะแสดงสำหรับมุมมองวัน
+Work hours: ชั่วโมงทำงาน
+From: จาก
+to: ถึง
+Appearance: ลักษณะ
+preferred-view-help: ระบุมุมมองเริ่มต้น (วันสัปดาห์เดือนหรือปี)
+Preferred view: มุมมองที่ต้องการ
+Allow top menu: อนุญาตเมนูด้านบน
+Date Selectors position: ตำแหน่งตัวเลือกวันที่
+menu-themes-help: ตั้งค่าสีและรูปแบบของเมนูด้านบน
+Menu theme: ธีมเมนู
+fonts-help: ระบุรายการแบบอักษรระบบที่จะใช้ (เช่น "Arial, Helvetica")
+Fonts: แบบอักษร
+display-sm_month-help: หากเปิดใช้งานจะแสดงเดือนขนาดเล็กในมุมมองรายเดือน
+Display small months: แสดงเดือนขนาดเล็ก
+display-weekends-help: รวมวันหยุดสุดสัปดาห์เมื่อดูหนึ่งสัปดาห์
+Display weekends: แสดงวันหยุดสุดสัปดาห์
+display-long-daynames-help: หากเปิดใช้งานชื่อวันยาวจะแสดงขึ้น
+Display long day names: แสดงชื่อวันแบบยาว
+display-alldays-help: แสดงวันก่อนหน้าและเดือนถัดไปในมุมมองเดือนเติมเซลล์ทั้งหมด
+Display all days in month view: แสดงวันทั้งหมดในมุมมองรายเดือน
+display-week-number-help: ระบุว่าควรแสดงหมายเลขสัปดาห์ (1-52) ในมุมมองเดือนและมุมมองสัปดาห์หรือไม่
+Display week number: แสดงหมายเลขสัปดาห์
+display-desc-print-day-help: รวมคำอธิบายเหตุการณ์ไว้ในมุมมองวันเวอร์ชันที่เหมาะกับเครื่องพิมพ์
+Display description in printer day view: แสดงคำอธิบายในมุมมองวันของเครื่องพิมพ์
+yearly-shows-events-help: ในมุมมองรายปีแสดงวันที่มีกิจกรรมเป็นแบบอักษรตัวหนา
+Display days with events in bold in month and year views: แสดงวันที่มีกิจกรรมเป็นตัวหนาในมุมมองเดือนและปี
+display-minutes-help: หากเปิดใช้งานนาทีที่ลงท้ายด้วย 00 จะแสดงขึ้นเสมอ
+Display 00 minutes always: แสดง 00 นาทีเสมอ
+display-end-times-help: แสดงเวลาสิ้นสุดของเหตุการณ์หากเหตุการณ์หมดเวลา
+Display end times on calendars: แสดงเวลาสิ้นสุดบนปฏิทิน
+allow-view-add-help: ไอคอน "+" จะรวมอยู่ในมุมมองทำให้ผู้ใช้สามารถเพิ่มกิจกรรมลงในปฏิทินของผู้ใช้รายอื่นได้อย่างรวดเร็ว
+Include add event link in views: รวมลิงก์เพิ่มเหตุการณ์ในมุมมอง
+lunar-help: หากเปิดใช้งานจะแสดงไอคอนขนาดเล็กที่แสดงถึงระยะของดวงจันทร์ในแต่ละเดือน
+Display Lunar Phases in month view: แสดงระยะทางจันทรคติในมุมมองรายเดือน
+Restrictions: ข้อ จำกัด
+allow-view-other-help: ระบุว่าผู้ใช้รายหนึ่งสามารถดูปฏิทินของผู้ใช้รายอื่นได้หรือไม่
+Allow viewing other users calendars: อนุญาตให้ดูปฏิทินของผู้ใช้รายอื่น
+require-approvals-help: เมื่อเปิดใช้งานผู้ใช้จะต้องอนุมัติกิจกรรมก่อนที่จะแสดงบนปฏิทินของตน (เว้นแต่ว่าจะเปิดใช้งานการแสดงผลที่ไม่ได้รับการอนุมัติ) หมายเหตุการตั้งค่านี้เป็น "ไม่ใช่" จะไม่ปิดการอนุมัติสำหรับปฏิทินการเข้าถึงสาธารณะ (หากเปิดใช้งานปฏิทินการเข้าถึงสาธารณะ)
+Require event approvals: ต้องมีการอนุมัติเหตุการณ์
+display-unapproved-help: ระบุว่ากิจกรรมที่ไม่ได้รับการอนุมัติจะแสดงในปฏิทินของคุณหรือไม่<br>หากตั้งค่าเป็น "ใช่" กิจกรรมที่ไม่ได้รับการอนุมัติจะแสดงในปฏิทินของคุณ (เป็นสีข้อความอื่น)<br>หากตั้งค่าเป็น "ไม่ใช่" กิจกรรมที่ไม่ได้รับการอนุมัติจะต้องได้รับการอนุมัติก่อนที่จะแสดงในปฏิทินของคุณ
+Display unapproved: ไม่ได้รับการอนุมัติการแสดงผล
+conflict-check-help: ตรวจสอบความขัดแย้งของเหตุการณ์ (สองเหตุการณ์ที่กำหนดไว้ในเวลาเดียวกันสำหรับบุคคลเดียวกัน) หากคุณตั้งค่านี้เป็น "ใช่" คุณจะยังคงสามารถกำหนดเวลาสองเหตุการณ์ในเวลาเดียวกันได้หลังจากยืนยันคำเตือน หากคุณตั้งค่านี้เป็น "ไม่ใช่" จะไม่มีการตรวจสอบความขัดแย้ง คุณอาจต้องการตั้งค่านี้เป็น "ใช่" ดังนั้นการตรวจสอบความขัดแย้งจึงเกิดขึ้น
+Check for event conflicts: ตรวจสอบความขัดแย้งของเหตุการณ์
+Yes: ใช่
+No: ไม่
+conflict-months-help: หากมีการตรวจสอบข้อขัดแย้ง ("ตรวจสอบความขัดแย้งของเหตุการณ์" ตั้งค่าเป็น "ไม่" & # 41; จะเป็นการระบุว่าเราควรตรวจสอบความขัดแย้งในอนาคตกี่เดือนหากคุณพบว่าการเพิ่มเหตุการณ์ใช้เวลาดำเนินการนาน ลดจำนวนนี้
+Conflict checking months: เดือนที่ตรวจสอบข้อขัดแย้ง
+conflict-check-override-help: อนุญาตให้ผู้ใช้ลบล้างความขัดแย้งของเหตุการณ์และกำหนดเวลาสองเหตุการณ์ขึ้นไปในเวลาเดียวกัน
+Allow users to override conflicts: อนุญาตให้ผู้ใช้ลบล้างความขัดแย้ง
+limit-appts-help: อนุญาตให้ผู้ดูแลระบบกำหนดขีด จำกัด ทั้งระบบเกี่ยวกับจำนวนการนัดหมายที่ผู้ใช้คนเดียวสามารถมีได้ในวันใดวันหนึ่ง
+Limit number of timed events per day: จำกัด จำนวนกิจกรรมตามกำหนดเวลาต่อวัน
+limit-appts-number-help: ระบุจำนวนเหตุการณ์ที่กำหนดเวลาสูงสุดที่ผู้ใช้สามารถมีได้ในหนึ่งวัน
+Maximum timed events per day: เหตุการณ์ที่กำหนดเวลาสูงสุดต่อวัน
+crossday-help: หากเปิดใช้งานกิจกรรมที่มีช่วงวันจะแสดงในวันที่แยกจากกัน
+Disable Cross-Day Events: ปิดใช้งานกิจกรรมข้ามวัน
+disable-location-field-help: การเลือก "ใช่" จะลบฟิลด์ "ตำแหน่ง" ออกจากหน้าข้อมูลกิจกรรม
+Disable Location field: ปิดใช้งานฟิลด์ตำแหน่ง
+disable-url-field-help: การเลือก "ใช่" จะลบช่อง "URL" ออกจากหน้าข้อมูลกิจกรรม
+Disable URL field: ปิดใช้งานช่อง URL
+disable-priority-field-help: การเลือก "ใช่" จะลบช่อง "ลำดับความสำคัญ" ออกจากหน้าข้อมูลกิจกรรมซึ่งเป็นอินเทอร์เฟซที่ง่ายกว่าสำหรับมือใหม่
+Disable Priority field: ปิดใช้งานช่องลำดับความสำคัญ
+disable-access-field-help: การเลือก "ใช่" จะลบช่อง "การเข้าถึง" ออกจากหน้าข้อมูลเหตุการณ์ซึ่งเป็นอินเทอร์เฟซที่ง่ายกว่าสำหรับมือใหม่
+Disable Access field: ปิดการใช้งานฟิลด์ Access
+disable-participants-field-help: การเลือก "ใช่" จะลบช่อง "ผู้เข้าร่วม" ออกจากหน้าข้อมูลกิจกรรมทำให้ผู้ใช้ไม่สามารถเพิ่มผู้ใช้รายอื่นในกิจกรรมของตนได้ หากคุณเปิดใช้งานตัวเลือกนี้คุณอาจต้องการปิดใช้งานช่อง "อนุญาตให้ดูปฏิทินของผู้ใช้รายอื่น" ด้วย
+Disable Participants field: ปิดใช้งานฟิลด์ผู้เข้าร่วม
+disable-repeating-field-help: การเลือก "ใช่" จะลบช่อง "การทำซ้ำ" เมื่อเพิ่มเหตุการณ์ สิ่งนี้จะทำให้อินเทอร์เฟซที่ง่ายขึ้นสำหรับมือใหม่
+Disable Repeating field: ปิดการใช้งานช่องการทำซ้ำ
+allow-html-description-help: หากเปิดใช้งานผู้ใช้สามารถป้อน HTML ในช่องคำอธิบายเหตุการณ์ หากไม่ได้เปิดใช้งานแท็ก HTML จะถูก Escape เพื่อให้ปรากฏเป็นข้อความธรรมดา คำเตือน: การเปิดใช้งานคุณสมบัตินี้จะทำให้ผู้ใช้สามารถอ้างอิงรูปภาพบนเว็บไซต์อื่นได้
+Allow HTML in Description: อนุญาต HTML ในคำอธิบาย
+Popups: ป๊อปอัพ
+disable-popups-help: ปิดใช้งานป๊อปอัปจากมุมมองปฏิทิน
+Disable Pop-Ups: ปิดการใช้งานป๊อปอัป
+popup-includes-siteextras-help: หากเปิดใช้งานอนุญาตให้ตั้งค่าฟิลด์เหตุการณ์ที่กำหนดเองในไฟล์ site_extras.php จะแสดงในป๊อปอัปเหตุการณ์
+Display Site Extras in popup: แสดงไซต์พิเศษในป๊อปอัป
+popup-includes-participants-help: หากเปิดใช้งานผู้เข้าร่วมจะแสดงในป๊อปอัปของเหตุการณ์
+Display Participants in popup: แสดงผู้เข้าร่วมในป๊อปอัป
+Miscellaneous: เบ็ดเตล็ด
+remember-last-login-help: เมื่อเปิดใช้งานการเข้าสู่ระบบของผู้ใช้จะถูกกรอกสำหรับพวกเขาในหน้าเข้าสู่ระบบ (แต่ไม่ใช่รหัสผ่าน) และค่ากำหนดของผู้ใช้จะถูกโหลด (รวมถึงสีที่ต้องการและการเลือกภาษา)
+Remember last login: จำการเข้าสู่ระบบครั้งสุดท้าย
+summary_length-help: ความยาวสูงสุดของคำอธิบายย่อในมุมมองปฏิทิน
+Brief Description Length: คำอธิบายสั้น ๆ ความยาว
+user_sort-help: กำหนดลำดับการจัดเรียงสำหรับผู้ใช้รายการที่ไม่ใช่ผู้ใช้
+User Sort Order: ลำดับการจัดเรียงของผู้ใช้
+Lastname, Firstname: นามสกุลชื่อจริง
+Firstname, Lastname: ชื่อนามสกุล
+allow-public-access-help: เมื่อเปิดใช้งานปฏิทินสามารถใช้เป็นปฏิทินสาธารณะแบบอ่านอย่างเดียวที่ไม่ต้องการให้ผู้ใช้เข้าสู่ระบบ
+Allow public access: อนุญาตการเข้าถึงสาธารณะ
+public-access-default-visible: กิจกรรมจากปฏิทินสาธารณะจะปรากฏในปฏิทินของผู้ใช้ทั้งหมดโดยอัตโนมัติ
+Public access visible by default: การเข้าถึงสาธารณะจะมองเห็นได้ตามค่าเริ่มต้น
+public-access-default-selected: เมื่อเพิ่มกิจกรรมใหม่ผู้ใช้สาธารณะจะถูกเลือกโดยค่าเริ่มต้นเป็นผู้เข้าร่วม
+Public access is default participant: การเข้าถึงสาธารณะคือผู้เข้าร่วมเริ่มต้น
+public-access-view-others-help: เมื่อเข้าถึงระบบด้วยการเข้าถึงแบบสาธารณะให้ระบุว่าผู้ใช้สามารถดูปฏิทินของผู้ใช้ปฏิทินรายอื่นได้หรือไม่
+Public access can view other users: การเข้าถึงแบบสาธารณะสามารถดูผู้ใช้รายอื่นได้
+public-access-can-add-help: เมื่อเปิดใช้งานผู้ใช้ที่เข้าถึงระบบผ่านการเข้าถึงสาธารณะจะสามารถเพิ่มกิจกรรมใหม่ได้ แต่จะไม่ปรากฏในปฏิทินจนกว่าผู้ดูแลระบบจะอนุมัติกิจกรรมใหม่
+Public access can add events: การเข้าถึงแบบสาธารณะสามารถเพิ่มเหตุการณ์ได้
+public-access-add-requires-approval-help: ระบุว่าเหตุการณ์ที่เพิ่มผ่านบัญชีการเข้าถึงสาธารณะจำเป็นต้องได้รับการอนุมัติก่อนที่จะแสดงหรือไม่
+Public access new events require approval: การเข้าถึงกิจกรรมใหม่แบบสาธารณะต้องได้รับการอนุมัติ
+public-access-sees-participants-help: หากเปิดใช้งานผู้ใช้ที่เข้าถึงปฏิทินจากบัญชีสาธารณะจะสามารถดูผู้เข้าร่วมกิจกรรมได้หากพวกเขาดูรายละเอียดของกิจกรรม
+Public access can view participants: การเข้าถึงแบบสาธารณะสามารถดูผู้เข้าร่วมได้
+public-access-override-help: อนุญาตให้ซ่อนชื่อกิจกรรมและคำอธิบายในปฏิทินสาธารณะ
+Override event name/description for public access: แทนที่ชื่อเหตุการณ์ / คำอธิบายสำหรับการเข้าถึงแบบสาธารณะ
+public-access-override-text-help: ข้อความที่จะแสดงหากเปิดใช้งานตัวเลือกข้างต้น หาก "ไม่พร้อมใช้งาน" จะมีการแปล
+Text to display to public access: ข้อความที่จะแสดงต่อสาธารณะ
+public-access-captcha-help: หากเปิดใช้งานกิจกรรมใหม่ที่เพิ่มโดยสาธารณะจะต้องผ่านการตรวจสอบความถูกต้อง CAPTCHA
+Require CAPTCHA validation for public access new events: ต้องมีการตรวจสอบ CAPTCHA สำหรับการเข้าถึงกิจกรรมใหม่ของสาธารณะ
+uac-enabled-help: เปิดใช้งานการควบคุมการเข้าถึงระดับผู้ใช้
+User Access Control enabled: เปิดใช้งานการควบคุมการเข้าถึงของผู้ใช้
+groups-enabled-help: เปิดใช้งานการสนับสนุนกลุ่มทำให้ผู้ใช้สามารถเลือกผู้ใช้ตามกลุ่มได้
+Groups enabled: เปิดใช้งานกลุ่มแล้ว
+user-sees-his-group-help: หากเปิดใช้งานผู้ใช้จะไม่เห็นผู้ใช้ปฏิทินที่ไม่ได้อยู่ในกลุ่มของตนอย่างน้อยหนึ่งกลุ่ม
+User sees only his groups: ผู้ใช้เห็นเฉพาะกลุ่มของเขา
+nonuser-enabled-help: หากเปิดใช้งานผู้ดูแลระบบจะมีตัวเลือกในการเพิ่มปฏิทินที่ไม่ใช่ผู้ใช้
+Nonuser enabled: ปฏิทินที่ไม่ใช่ผู้ใช้เปิดใช้งาน
+nonuser-list-help: ตำแหน่งที่จะแสดงปฏิทินที่ไม่ใช่ผู้ใช้ในรายชื่อผู้เข้าร่วม
+Nonuser list: แสดงในรายชื่อผู้เข้าร่วมที่
+Upcoming Events: เหตุการณ์ที่จะเกิดขึ้น
+upcoming-events-help: เปิดใช้งาน coming.php
+Enabled: เปิดใช้งาน
+upcoming-events-allow-override: อนุญาตพารามิเตอร์ผู้ใช้สำหรับ coming.php
+Allow user override: อนุญาตให้ผู้ใช้แทนที่
+upcoming-events-display-caticons: รวมไอคอนหมวดหมู่ใน coming.php
+Display category icons: แสดงไอคอนหมวดหมู่
+upcoming-events-display-layers: แสดงเลเยอร์ใน coming.php
+Display layers: แสดงเลเยอร์
+upcoming-events-display-links: แสดงลิงค์ใน coming.php
+Display links to events: แสดงลิงก์ไปยังเหตุการณ์
+upcoming-events-display-popups: แสดงป๊อปอัปเหตุการณ์ใน coming.php
+Display event popups: แสดงป๊อปอัปเหตุการณ์
+reports-enabled-help: หากเปิดใช้งานผู้ใช้จะเห็นส่วน "รายงาน" ที่ด้านล่างของแต่ละหน้าและจะได้รับอนุญาตให้สร้างรายงานที่กำหนดเอง นอกจากนี้ผู้ใช้ที่เป็นผู้ดูแลระบบสามารถสร้างรายงานส่วนกลางซึ่งจะปรากฏที่ด้านล่างของหน้าของผู้ใช้ทั้งหมด
+Reports enabled: เปิดใช้รายงานแล้ว
+subscriptions-enabled-help: ระบุว่าผู้ใช้ระยะไกลสามารถสมัครใช้ปฏิทินของผู้ใช้ WebCalendar ได้หรือไม่โดยอนุญาตให้พวกเขาดูกิจกรรมของผู้ใช้ WebCalendar ในแอปพลิเคชันที่เปิดใช้งาน iCal (เช่น iCal ของ Apple หรือ Mozilla Calendar)
+Allow remote subscriptions: อนุญาตการสมัครสมาชิกระยะไกล
+remotes-enabled-help: อนุญาตให้ผู้ใช้โหลดไฟล์ ics ระยะไกลโดยใช้ URL
+Allow remote calendars: อนุญาตปฏิทินระยะไกล
+rss-enabled-help: ระบุว่าสามารถรับปฏิทินของผู้ใช้จากฟีด RSS ได้หรือไม่
+Enable RSS feed: เปิดใช้งาน RSS feed
+categories-enabled-help: เปิดใช้งานการสนับสนุนสำหรับประเภทเหตุการณ์
+Categories enabled: เปิดใช้หมวดหมู่
+icon_upload-enabled-help: หากเปิดใช้งานผู้ใช้สามารถอัปโหลดไอคอนหมวดหมู่ได้
+Category Icon Upload enabled: เปิดใช้งานการอัปโหลดไอคอนหมวดหมู่
+(Requires XXX folder to exist.): (ต้องมีโฟลเดอร์ XXX)
+display-tasks-help: แสดงหน้าต่างงานขนาดเล็กในปฏิทินเดือนและวัน
+Display small task list: แสดงรายการงานขนาดเล็ก
+display-tasks-in-grid-help: แสดงงานในปฏิทินพร้อมกับกิจกรรม
+Display tasks in Calendars: แสดงงานในปฏิทิน
+allow-external-users-help: ระบุว่าสามารถเพิ่มผู้ใช้ที่ไม่ใช่ปฏิทินในเหตุการณ์ได้หรือไม่ สิ่งนี้ช่วยให้ผู้ใช้ที่ไม่ใช่ปฏิทินสามารถแสดงรายชื่อเป็นผู้เข้าร่วมกิจกรรมได้
+Allow external users: อนุญาตผู้ใช้ภายนอก
+external-can-receive-notification-help: เมื่อเปิดใช้งานผู้ใช้ภายนอกและเปิดใช้งานการใช้งานอีเมลผู้ใช้ภายนอกสามารถรับการแจ้งเตือนทางอีเมลเมื่อมีการเพิ่มอัปเดตหรือลบกิจกรรม (หากมีการระบุที่อยู่อีเมลของผู้ใช้ภายนอก)
+External users can receive email notifications: ผู้ใช้ภายนอกสามารถรับการแจ้งเตือนทางอีเมล
+external-can-receive-reminder-help: เมื่อเปิดใช้งานผู้ใช้ภายนอกและเปิดใช้งานการใช้งานอีเมลผู้ใช้ภายนอกสามารถรับการแจ้งเตือนทางอีเมลได้ (หากระบุที่อยู่อีเมลของผู้ใช้ภายนอก)
+External users can receive email reminders: ผู้ใช้ภายนอกสามารถรับการแจ้งเตือนทางอีเมล
+allow-self-registration-help: อนุญาตให้ผู้ใช้ใหม่ลงทะเบียนด้วยตนเอง
+Allow self-registration: อนุญาตให้ลงทะเบียนด้วยตนเอง
+use-blacklist-help: จำกัด การเข้าถึงฟังก์ชัน WebCalendar ตามที่อยู่ IP
+Restrict self-registration to blacklist: จำกัด การลงทะเบียนด้วยตนเองไว้ในบัญชีดำ
+allow-self-registration-full-help: อนุญาตให้ผู้ใช้ใหม่ทำขั้นตอนการลงทะเบียนด้วยตนเองทางออนไลน์
+Use self-registration email notifications: สร้างรหัสผ่านและส่งไปยังผู้ใช้ใหม่
+allow-attachment-help: อนุญาตให้ผู้ใช้เพิ่มไฟล์แนบในกิจกรรม
+Allow file attachments to events: อนุญาตให้แนบไฟล์กับเหตุการณ์
+Admin and owner can always add attachments if enabled.: ผู้ดูแลระบบและเจ้าของสามารถเพิ่มไฟล์แนบได้ตลอดเวลาหากเปิดใช้งาน
+allow-comments-help: อนุญาตให้ผู้ใช้เพิ่มความคิดเห็นในกิจกรรม
+Allow comments to events: อนุญาตให้แสดงความคิดเห็นต่อกิจกรรม
+Admin and owner can always add comments if enabled.: ผู้ดูแลระบบและเจ้าของสามารถเพิ่มความคิดเห็นได้ตลอดเวลาหากเปิดใช้งาน
+email-enabled-help: เปิดหรือปิดการส่งอีเมลทั้งหมดสำหรับการแจ้งเตือนและการช่วยเตือน ตั้งค่าเป็น "ไม่" หากเซิร์ฟเวอร์ของคุณตั้งค่าไม่ถูกต้องเพื่อส่งอีเมล
+Email enabled: เปิดใช้งานอีเมลแล้ว
+email-default-sender: ระบุที่อยู่อีเมลที่จะระบุเป็นผู้ส่งเมื่อส่งการแจ้งเตือน
+Default sender address: ที่อยู่ผู้ส่งเริ่มต้น
+email-mailer: เลือกประเภทอีเมล (SMTP, PHP mail, sendmail)
+Email Mailer: จดหมายอีเมล
+email-smtp-host: ชื่อโฮสต์ของเซิร์ฟเวอร์ SMTP คั่นด้วยลูกน้ำ
+SMTP Host name(s): ชื่อโฮสต์ SMTP
+email-smtp-port: หมายเลขพอร์ต SMTP (ปกติ 25)
+SMTP Port Number: หมายเลขพอร์ต SMTP
+email-smtp-auth: ใช้การตรวจสอบสิทธิ์ SMTP
+SMTP Authentication: การตรวจสอบสิทธิ์ SMTP
+email-smtp-username: ชื่อผู้ใช้ SMTP หากใช้การตรวจสอบสิทธิ์
+SMTP Username: ชื่อผู้ใช้ SMTP
+email-smtp-password: รหัสผ่าน SMTP หากใช้การรับรองความถูกต้อง
+SMTP Password: รหัสผ่าน SMTP
+Default user settings: การตั้งค่าผู้ใช้เริ่มต้น
+email-format: ระบุการกำหนดลักษณะสำหรับ HTML หรือข้อความธรรมดา
+Email format preference: การตั้งค่ารูปแบบอีเมล
+HTML: =
+Plain Text: ข้อความธรรมดา
+email-include-ics: รวมไฟล์ iCalendar ICS ไว้ในข้อความอีเมล
+Include iCalendar attachments: รวมไฟล์แนบ iCalendar
+email-event-reminders-help: ระบุว่าจะส่งการแจ้งเตือนเหตุการณ์หรือไม่
+Event reminders: การแจ้งเตือนเหตุการณ์
+email-event-added: ระบุว่าจะส่งการแจ้งเตือนทางอีเมลหรือไม่เมื่อมีการเพิ่มกิจกรรมลงในปฏิทินของคุณ
+Events added to my calendar: เพิ่มกิจกรรมในปฏิทินของฉันแล้ว
+email-event-updated: ระบุว่าจะส่งการแจ้งเตือนทางอีเมลหรือไม่เมื่อมีการอัปเดตกิจกรรมบนปฏิทินของคุณ
+Events updated on my calendar: อัปเดตกิจกรรมในปฏิทินของฉัน
+email-event-deleted: ระบุว่าจะส่งการแจ้งเตือนทางอีเมลหรือไม่เมื่อกิจกรรมถูกลบออกจากปฏิทินของคุณ
+Events removed from my calendar: กิจกรรมถูกลบออกจากปฏิทินของฉัน
+email-event-rejected: ระบุว่าจะส่งการแจ้งเตือนทางอีเมลหรือไม่เมื่อผู้เข้าร่วมปฏิเสธกิจกรรมที่อยู่ในปฏิทินของคุณ
+Event rejected by participant: กิจกรรมถูกปฏิเสธโดยผู้เข้าร่วม
+email-event-create: ระบุว่าผู้สร้างรายการจะได้รับอีเมลหรือไม่
+Event that I create: เหตุการณ์ที่ฉันสร้าง
+Color options: ตัวเลือกสี
+Allow user to customize colors: อนุญาตให้ผู้ใช้ปรับแต่งสี
+gradient-colors: หากเปิดใช้งานสีไล่ระดับสี สิ่งนี้สามารถส่งผลต่อประสิทธิภาพอย่างมาก
+Enable gradient images for background colors: เปิดใช้งานภาพไล่ระดับสีสำหรับสีพื้นหลัง
+Not available: ไม่สามารถใช้ได้
+Background Image options: ตัวเลือกภาพพื้นหลัง
+bgimage-help: URL ของภาพพื้นหลังที่ต้องการ อาจเป็นลิงค์ญาติ
+Background Image: ภาพพื้นหลัง
+bgrepeat-help: ควบคุมพฤติกรรมซ้ำ ๆ ของภาพพื้นหลัง
+Background Repeat: ทำซ้ำพื้นหลัง
+
+########################################
+# Page: adminhome.php
+#
+Assistants: ผู้ช่วย
+Preferences: ค่ากำหนด
+Control Panel: แผงควบคุม
+Users: ผู้ใช้
+Account: บัญชีผู้ใช้
+Categories: หมวดหมู่
+Views: มุมมอง
+Layers: เลเยอร์
+Reports: รายงาน
+Delete Events: ลบกิจกรรม
+Activity Log: บันทึกกิจกรรม
+System Log: บันทึกระบบ
+Security Audit: การตรวจสอบความปลอดภัย
+Public Preferences: การตั้งค่าสาธารณะ
+Unapproved Public Events: กิจกรรมสาธารณะที่ไม่ได้รับการอนุมัติ
+Administrative Tools: เครื่องมือการดูแลระบบ
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: ชื่อที่ซ้ำกัน: "XXX"
+Username XXX already exists.: มีชื่อผู้ใช้ "XXX" อยู่แล้ว
+Email address XXX already exists.: มีที่อยู่อีเมล "XXX" แล้ว
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): ความคิดเห็นเพิ่มเติม (ไม่บังคับ)
+Approve and Send: อนุมัติและส่ง
+Approve and Exit: อนุมัติและออก
+(Your comments will be emailed to the event creator.): (ความคิดเห็นของคุณจะถูกส่งไปยังผู้สร้างกิจกรรมทางอีเมล)
+Hello, XXX.: สวัสดีคุณ XXX
+XXX has approved an appointment and added comments.: การนัดหมายได้รับการอนุมัติและเพิ่มความคิดเห็นโดย XXX
+Subject XXX: หัวเรื่อง: "XXX"
+Description XXX: คำอธิบาย: "XXX"
+Date XXX: วันที่: XXX
+Time XXX: เวลา: XXX
+Comments XXX: ความคิดเห็น: XXX
+Approved w/Comments by XXX.: อนุมัติพร้อมความคิดเห็นโดย: XXX
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: โหมดผู้ดูแลระบบ
+Your assistants: ผู้ช่วยของคุณ
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: ข้อผิดพลาดที่ไม่รู้จัก.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: ข้อผิดพลาดของโปรแกรม: ไม่ได้ระบุ XXX!
+user: ผู้ใช้
+year: ปี
+month: เดือน
+day: วัน
+
+########################################
+# Page: category.php
+#
+Category Icon: ไอคอนหมวดหมู่
+Global: ทั่วโลก
+The permissions for the icons directory are set to read-only: สิทธิ์สำหรับไดเร็กทอรีไอคอนถูกตั้งค่าเป็นแบบอ่านอย่างเดียว
+Category Name: ชื่อหมวดหมู่:
+Color: สี
+Remove Icon: ลบไอคอน:
+Add Icon to Category: เพิ่มไอคอนในหมวดหมู่
+Upload: ที่อัพโหลด
+GIF or PNG 6kb max: GIF หรือ PNG สูงสุด 6kb
+Search for existing icons: ค้นหาไอคอนที่มีอยู่
+Add: เพิ่ม
+Delete: ลบ
+Are you sure you want to delete this entry?: แน่ใจไหมว่าต้องการลบรายการนี้
+Make New Category: สร้างหมวดหมู่ใหม่
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: ต้องระบุชื่อหมวดหมู่
+File size exceeds maximum.: ขนาดไฟล์เกินขนาดสูงสุด
+File is not a GIF or PNG image: ไฟล์ไม่ใช่ภาพ GIF หรือ PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: หมวดหมู่ที่มีจำหน่าย
+ENTRY CATEGORIES: ประเภทรายการ
+Remove: ลบ
+Global Category: หมวดหมู่ทั่วโลก
+Cancel: ยกเลิก
+
+########################################
+# Page: colors.php
+#
+Add Custom: เพิ่มกำหนดเอง
+Basic Colors: สีพื้นฐาน
+Current Color: สีปัจจุบัน
+Custom Colors: สีที่กำหนดเอง
+Old Color: สีเก่า
+
+########################################
+# Page: combo.php
+#
+Select None: เลือกไม่มี
+Agenda: ระเบียบวาระ
+Add Task: เพิ่มงาน
+Description: คำอธิบาย
+Date: วันที่
+Time: เวลา
+Priority: ลำดับความสำคัญ
+Access: เข้าไป
+Created by: สร้างโดย
+Updated: อัปเดตแล้ว
+Participants: ผู้เข้าร่วม
+Attachments: ไฟล์แนบ
+Comments: ความคิดเห็น
+Brief Description: คำอธิบายสั้น ๆ
+Full Description: คำอธิบายแบบเต็ม
+Category: ประเภท
+Add event detail: เพิ่มรายละเอียดเหตุการณ์
+Start Date: วันที่เริ่มต้น
+Due Date: วันครบกำหนด
+Add task detail: เพิ่มรายละเอียดงาน
+All: ทั้งหมด
+Error: ข้อผิดพลาด
+no response from server: ไม่มีการตอบสนองจากเซิร์ฟเวอร์
+JSON error: ข้อผิดพลาด JSON
+High: สูง
+Medium: ปานกลาง
+Low: ต่ำ
+Today: วันนี้
+Add Entry: เพิ่มรายการ
+Unnamed Event: เหตุการณ์ที่ไม่มีชื่อ
+Unnamed Task: งานที่ไม่มีชื่อ
+Refresh: รีเฟรช
+Click to add entry: คลิกเพื่อเพิ่มรายการ
+Name: ชื่อ
+pm: น
+am: น
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX ยกเลิกการนัดหมายแล้ว
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: รหัสหยดไม่ถูกต้อง
+
+########################################
+# Page: docadd.php
+#
+Add Comment: เพิ่มความเห็น
+Add Attachment: เพิ่มไฟล์แนบ
+Subject: เรื่อง
+Comment: แสดงความคิดเห็น
+Upload file: อัปโหลดไฟล์
+
+########################################
+# Page: docdel.php
+#
+Removed: นำออกแล้ว
+
+########################################
+# Page: edit_entry.php
+#
+days: วัน
+hours: ชั่วโมง
+minutes: นาที
+You are not authorized to edit this task.: คุณไม่ได้รับอนุญาตให้แก้ไขงานนี้
+is in a different timezone than you are. Currently: อยู่ในเขตเวลาที่แตกต่างจากที่คุณเป็นอยู่ ปัจจุบัน
+hour ahead of you: ก่อนหน้าคุณหนึ่งชั่วโมง
+hour behind you: ชั่วโมงข้างหลังคุณ
+hours ahead of you: ล่วงหน้าหลายชั่วโมง
+hours behind you: หลายชั่วโมงหลังคุณ
+XXX is in a different timezone (ahead): (XXX อยู่คนละเขตเวลา YYY นำหน้าคุณ<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX อยู่ในเขตเวลาอื่น YYY อยู่ข้างหลังคุณ<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: เวลาที่ป้อนที่นี่จะขึ้นอยู่กับเขตเวลาของคุณ
+Edit Entry: แก้ไขรายการ
+Details: รายละเอียด
+Repeat: ทำซ้ำ
+Reminders: การแจ้งเตือน
+brief-description-help: ควรให้คำอธิบายสั้น ๆ (ประมาณ 20 อักขระ) ของเหตุการณ์ สิ่งนี้จะแสดงถึงเหตุการณ์เมื่อดูปฏิทิน
+full-description-help: ควรกรอกรายละเอียดของกิจกรรมให้ครบถ้วน ข้อมูลนี้สามารถเห็นได้เมื่อผู้ใช้ดูเหตุการณ์
+access-help: ระบุระดับการเข้าถึงของกิจกรรม <ul> <li> สาธารณะ: ทุกคนสามารถดูรายละเอียดทั้งหมดของกิจกรรมได้</li> <li> เป็นความลับ: คนอื่น ๆ จะเห็นว่าคุณมีรายการสำหรับวันที่และเวลานั้น แต่ ไม่ใช่รายละเอียดว่ามันคืออะไร</li></ul>
+priority-help: ระบุลำดับความสำคัญของเหตุการณ์ เหตุการณ์ที่มีลำดับความสำคัญสูงจะแสดงเป็นตัวหนา
+category-help: ระบุประเภทของเหตุการณ์
+completed-help: งานวันที่เสร็จสมบูรณ์ เปิดใช้เฉพาะเมื่อเปอร์เซ็นต์ผู้เข้าร่วมทั้งหมดเท่ากับ 100%
+Date Completed: วันที่เสร็จสิ้น
+percent-help: เปอร์เซ็นต์ความสำเร็จของงานสำหรับผู้ใช้รายนี้
+Percent Complete: เปอร์เซ็นต์เสร็จสมบูรณ์
+All Percentages: เปอร์เซ็นต์ทั้งหมด
+location-help: สถานที่จัดงาน
+Location: สถานที่
+url-help: URL เหตุการณ์
+URL: =
+date-help: ระบุวันที่ของเหตุการณ์
+Untimed event: เหตุการณ์ที่ไม่ได้กำหนดเวลา
+Timed event: เหตุการณ์ที่หมดเวลา
+All day event: กิจกรรมตลอดทั้งวัน
+Timezone Offset: =
+time-help: ระบุเวลาของเหตุการณ์ <ul> <li> "กิจกรรมที่กำหนดเวลา" (สำหรับกิจกรรมที่มีกำหนดเวลาเฉพาะในวันนั้น)</li> <li> "เหตุการณ์ที่ไม่กำหนดเวลา" (สำหรับกิจกรรมที่ไม่มีเวลา (เช่นวันหยุด )</li> <li> "กิจกรรมตลอดวัน" (สำหรับกิจกรรมที่ใช้เวลาทั้งวัน (เช่นอยู่นอกสำนักงาน)</li></ul>
+duration-help: ระบุระยะเวลา (เป็นชั่วโมงนาที) ของเหตุการณ์ <em>ช่องนี้สามารถเว้นว่างได้</em>
+end-time-help: ระบุเวลาที่คาดว่าเหตุการณ์จะสิ้นสุด
+Start Time: เวลาเริ่มต้น
+Due Time: เวลาครบกำหนด
+Site Extras: เว็บไซต์พิเศษ
+avail_participants-help: รายชื่อผู้เข้าร่วมที่มีอยู่ของรายการนี้
+Available: พร้อมใช้งาน
+Find Name: ค้นหาชื่อ
+Resources: ทรัพยากร
+participants-help: รายชื่อผู้เข้าร่วมของรายการนี้
+Selected: เลือกแล้ว
+Availability: ความพร้อมใช้งาน
+external-participants-help: ระบุรายชื่อผู้เข้าร่วมสำหรับกิจกรรมที่ไม่ใช่ผู้ใช้ปฏิทิน ผู้ใช้ควรอยู่ในรายการหนึ่งรายการต่อบรรทัดและสามารถรวมที่อยู่อีเมล หากระบุที่อยู่อีเมลผู้ใช้จะมีสิทธิ์รับการแจ้งเตือนและการแจ้งเตือน
+External Participants: ผู้เข้าร่วมภายนอก
+repeat-type-help: เลือกว่าจะให้กิจกรรมเกิดซ้ำบ่อยเพียงใด
+Daily: รายวัน
+Weekly: รายสัปดาห์
+Monthly: รายเดือน
+by day: ตามวัน
+by date: ตามวันที่
+by position: ตามตำแหน่ง
+Monthly (by day): รายเดือน (ตามวัน)
+Monthly (by date): รายเดือน (ตามวันที่)
+Monthly (by position): รายเดือน (ตามตำแหน่ง)
+Yearly: รายปี
+Manual: คู่มือ
+Expert Mode: โหมดผู้เชี่ยวชาญ
+repeat-end-date-help: ระบุวันที่เหตุการณ์ควรเกิดซ้ำจนถึง
+Ending: สิ้นสุด
+Forever: ตลอดไป
+Use end date: ใช้วันที่สิ้นสุด
+Number of times: จำนวนครั้ง
+repeat-frequency-help: ระบุความถี่ที่เหตุการณ์ควรเกิดซ้ำ
+Frequency: ความถี่
+Weekdays Only: วันธรรมดาเท่านั้น
+Week Start: เริ่มต้นสัปดาห์
+repeat-bydayextended-help: อนุญาตให้เลือกวันที่ตามวันในสัปดาห์
+ByDay: =
+repeat-month-help: ระบุเดือนที่เหตุการณ์ควรเกิดซ้ำ
+ByMonth: =
+repeat-bysetpos-help: อนุญาตให้เลือกวันที่ตามตำแหน่งที่มีเดือน
+BySetPos: =
+repeat-bymonthdayextended-help: อนุญาตให้เลือกวันที่ตามวันที่
+ByMonthDay: =
+repeat-byweekno-help: อนุญาตให้ผู้ใช้ระบุรายการสัปดาห์ที่จะทำเหตุการณ์ซ้ำ (1,2 ... 53, -53, -52 ...- 1)
+ByWeekNo: =
+repeat-byyearday-help: อนุญาตให้ผู้ใช้ระบุรายการวันของปีเพื่อทำเหตุการณ์ซ้ำ (1,2 ... 366, -366, -365 ...- 1)
+ByYearDay: =
+repeat-exceptions-help: วันเพิ่มเติมที่เหตุการณ์นี้ควรหรือไม่ควรเกิดขึ้น
+Exclusions: การยกเว้น
+Inclusions: รวม
+Add Exception: เพิ่มข้อยกเว้น
+Add Inclusion: เพิ่มการรวม
+Delete Selected: ลบรายการที่เลือก
+Send Reminder: ส่งการแจ้งเตือน
+When: เมื่อไหร่
+Use Date/Time: ใช้วันที่ / เวลา
+Use Offset: ใช้ Offset
+Before: ก่อน
+After: หลังจาก
+Start: เริ่ม
+End/Due: สิ้นสุด / ครบกำหนด
+Times: ครั้ง
+Every: ทุก
+CAPTCHA Warning: คำเตือน:  ไม่สามารถใช้ CAPTCHA หากไม่มีส่วนขยาย GD ของ PHP!<br>
+Delete entry: ลบรายการ
+You are not authorized to edit this entry.: คุณไม่ได้รับอนุญาตให้แก้ไขรายการนี้
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX ได้ทำการนัดหมายใหม่
+XXX has updated an appointment.: XXX ได้อัปเดตการนัดหมาย
+Security violation!: ละเมิดความปลอดภัย!
+You must enter the anti-spam text on the previous page.: คุณต้องป้อนข้อความป้องกันสแปมในหน้าที่แล้ว
+The following conflicts with the suggested time: ต่อไปนี้ขัดแย้งกับเวลาที่แนะนำ
+User removed from participants list.: ผู้ใช้ถูกลบออกจากรายชื่อผู้เข้าร่วม
+Please look on XXX to accept or reject this appointment.: โปรดดูที่ XXX เพื่อยอมรับหรือปฏิเสธการนัดหมายนี้
+Please look on XXX to view this appointment.: โปรดดูที่ XXX เพื่อดูการนัดหมายนี้
+Scheduling Conflict: การตั้งเวลาความขัดแย้ง
+Your suggested time of: เวลาที่แนะนำของคุณคือ
+conflicts with the following existing calendar entries: ขัดแย้งกับรายการปฏิทินที่มีอยู่ต่อไปนี้
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: ไม่ได้ตั้งค่า NONUSER_PREFIX ใน "config.php"
+word characters only: (สามารถมีได้เฉพาะอักขระคำ [a-zA-Z_0-9])
+Add User: เพิ่มผู้ใช้
+Edit User: แก้ไขผู้ใช้
+Calendar ID: รหัสปฏิทิน
+First Name: ชื่อจริง
+Last Name: นามสกุล
+Is public calendar: เป็นปฏิทินสาธารณะ
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: ฐานข้อมูลผิดพลาด
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: เพิ่มปฏิทินระยะไกล
+Edit Remote Calendar: แก้ไขปฏิทินระยะไกล
+Create Layer: สร้างเลเยอร์
+Reload: โหลดซ้ำ
+Required to View Remote Calendar: จำเป็นในการดูปฏิทินระยะไกล
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: นำเข้าผลลัพธ์
+Events successfully imported: นำเข้ากิจกรรมสำเร็จแล้ว
+Create a new layer to view this calendar.: สร้างเลเยอร์ใหม่เพื่อดูปฏิทินนี้
+Errors: ข้อผิดพลาด
+There was an error parsing the import file or no events were returned.: เกิดข้อผิดพลาดในการแยกวิเคราะห์ไฟล์นำเข้าหรือไม่มีการส่งคืนเหตุการณ์
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: พรุ่งนี้
+Yesterday: เมื่อวานนี้
+Day before yesterday: วันก่อนเมื่อวานนี้
+Next week: สัปดาห์หน้า
+This week: ในสัปดาห์นี้
+Last week: อาทิตย์ที่แล้ว
+Week before last: สัปดาห์ก่อนสุดท้าย
+Next week and week after: สัปดาห์หน้าและสัปดาห์หลัง
+This week and next week: สัปดาห์นี้และสัปดาห์หน้า
+Last week and this week: สัปดาห์ที่แล้วและสัปดาห์นี้
+Last two weeks: สองสัปดาห์ที่ผ่านมา
+Next month: เดือนหน้า
+This month: เดือนนี้
+Last month: เดือนที่แล้ว
+Month before last: เดือนก่อนสุดท้าย
+Next year: ปีหน้า
+This year: ปีนี้
+Last year: ปีที่แล้ว
+Year before last: ปีก่อนล่าสุด
+Next 14 days: 14 วันถัดไป
+Next 30 days: 30 วันถัดไป
+Next 60 days: 60 วันถัดไป
+Next 90 days: 90 วันถัดไป
+Next 180 days: 180 วันถัดไป
+Next 365 days: 365 วันถัดไป
+Invalid report id XXX.: รหัสรายงานไม่ถูกต้อง: "XXX"
+Unnamed Report: รายงานที่ไม่มีชื่อ
+Add Report: เพิ่มรายงาน
+Edit Report: แก้ไขรายงาน
+Report name: ชื่อรายงาน
+User: ผู้ใช้
+Current User: ผู้ใช้ปัจจุบัน
+Include link in menu: รวมลิงค์ในเมนู
+Include standard header/trailer: รวมส่วนหัว / ตัวอย่างมาตรฐาน
+Include previous/next links: รวมลิงค์ก่อนหน้า / ถัดไป
+Include empty dates: รวมวันที่ว่าง
+Date range: ช่วงวันที่
+Template variables: ตัวแปรเทมเพลต
+Page template: เทมเพลตหน้า
+Day template: เทมเพลตวัน
+Event template: เทมเพลตเหตุการณ์
+Are you sure you want to delete this report?: แน่ใจไหมว่าต้องการลบรายงานนี้
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: ไม่มีรหัสรายงานดังกล่าว: "XXX"
+Variable XXX not found.: ไม่พบตัวแปร XXX
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: แก้ไขส่วนหัวที่กำหนดเอง
+Edit Custom Script/Stylesheet: แก้ไขสคริปต์ / สไตล์ชีตที่กำหนดเอง
+Edit Custom Trailer: แก้ไขตัวอย่างที่กำหนดเอง
+
+########################################
+# Page: edit_user.php
+#
+Username: ชื่อผู้ใช้
+E-mail address: ที่อยู่อีเมล
+Password: รหัสผ่าน
+again: อีกครั้ง
+Disabled for demo: ปิดการใช้งานสำหรับการสาธิต
+Are you sure you want to delete this user?: แน่ใจไหมว่าต้องการลบผู้ใช้นี้
+Change Password: เปลี่ยนรหัสผ่าน
+New Password: รหัสผ่านใหม่
+Set Password: ตั้งรหัสผ่าน
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: ไม่รองรับการลบผู้ใช้
+The passwords were not identical.: รหัสผ่านไม่เหมือนกัน
+You have not entered a password.: คุณยังไม่ได้ป้อนรหัสผ่าน
+Username cannot be blank.: ชื่อผู้ใช้ต้องไม่เว้นว่าง
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: ไม่มีอำนาจ
+
+########################################
+# Page: export.php
+#
+Export: ส่งออก
+Export format: รูปแบบการส่งออก
+Include all layers: รวมเลเยอร์ทั้งหมด
+Include deleted entries: รวมรายการที่ถูกลบ
+Export all dates: ส่งออกวันที่ทั้งหมด
+Start date: วันที่เริ่มต้น
+End date: วันที่สิ้นสุด
+Modified since: แก้ไขตั้งแต่
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: ไม่ได้กำหนดรูปแบบการส่งออกหรือไม่ถูกต้อง
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: ไม่ได้ระบุผู้ใช้
+
+########################################
+# Page: groups.php
+#
+Add New Group: เพิ่มกลุ่มใหม่
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: กลุ่มที่ไม่มีชื่อ
+Add Group: เพิ่มกลุ่ม
+Edit Group: แก้ไขกลุ่ม
+Group name: ชื่อกลุ่ม
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: คุณต้องระบุชื่อกลุ่ม
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: รีเฟรชปฏิทินอัตโนมัติ
+auto-refresh-help: เมื่อเปิดใช้งานมุมมองวันมุมมองสัปดาห์มุมมองเดือนและรายการหน้าที่ไม่ได้รับการอนุมัติทั้งหมดจะรีเฟรชโดยอัตโนมัติเป็นระยะ
+Auto-refresh time: เวลารีเฟรชอัตโนมัติ
+auto-refresh-time-help: หากเปิดใช้งานการรีเฟรชอัตโนมัติจะระบุเวลาระหว่างการรีเฟรชแต่ละครั้ง
+Display days with events in bold in year view: แสดงวันที่มีกิจกรรมเป็นตัวหนาในมุมมองปี
+Display weekends in week view: แสดงวันหยุดสุดสัปดาห์ในมุมมองสัปดาห์
+Time interval: ช่วงเวลา
+time-interval-help: ระบุระยะเวลาที่บล็อกในมุมมองสัปดาห์และมุมมองวัน
+Nonuser: ปฏิทินที่ไม่ใช่ผู้ใช้
+user-customize-color: ระบุว่าผู้ใช้ได้รับอนุญาตให้แก้ไขโครงร่างสีของตนเองหรือไม่
+enable-gradient-help: ใช้สีไล่ระดับสำหรับพื้นหลังของเซลล์
+Manually entering color values: ป้อนค่าสีด้วยตนเอง
+colors-help: ควรระบุสีทั้งหมดในรูปแบบเลขฐานสิบหก "#RRGGBB" โดยที่ "RR" เป็นค่าฐานสิบหกสำหรับสีแดง "GG" คือค่าฐานสิบหกสำหรับสีเขียวและ "BB" คือค่าฐานสิบหกสำหรับสีน้ำเงิน
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: รายงานปัญหา
+Please include all the information below when reporting a bug.: โปรดใส่ข้อมูลทั้งหมดด้านล่างนี้เมื่อรายงานข้อบกพร่อง
+Also, please use English rather than XXX.: นอกจากนี้โปรดใช้  ภาษาอังกฤษ  แทน XXX
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: เอกสาร WebCalendar
+Currently in English only.: ขณะนี้เป็นภาษาอังกฤษเท่านั้น
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: การเพิ่ม / แก้ไขรายการปฏิทิน
+Repeat Type: ประเภทการทำซ้ำ
+For More Information...: สำหรับข้อมูลเพิ่มเติม...
+Repeat End Date: ทำซ้ำวันที่สิ้นสุด
+Repeat Day: ทำซ้ำวัน
+repeat-day-help: ระบุวันในสัปดาห์ที่เหตุการณ์ควรทำซ้ำ
+
+########################################
+# Page: help_import.php
+#
+Import: นำเข้า
+Palm Desktop: เดสก์ท็อปปาล์ม
+allow you to import entries from the Palm...: แบบฟอร์มนี้จะช่วยให้คุณสามารถนำเข้ารายการจาก Palm Desktop Datebook ควรอยู่ในไดเรกทอรี Palm ของคุณใน datebook / datebook.dat ในไดเรกทอรีย่อยที่ตั้งชื่อตามชื่อผู้ใช้ของคุณ
+The following entries will not be imported: จะไม่มีการนำเข้ารายการต่อไปนี้:
+Entries older than the current date: รายการที่เก่ากว่าวันที่ปัจจุบัน
+Entries created in the Palm Desktop...: รายการที่สร้างใน Palm Desktop ที่ยังไม่ได้รับ HotSync
+Anything imported from Palm...: ทุกสิ่งที่นำเข้าจาก Palm จะถูกเขียนทับในการนำเข้าครั้งถัดไป (เว้นแต่จะเลยวันที่ของกิจกรรมไปแล้ว) ดังนั้นควรทำการอัปเดตใน Palm Desktop
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: แบบฟอร์มนี้จะนำเข้าเหตุการณ์ vCalendar (.vcs) 1.0
+The following formats have been tested: รูปแบบต่อไปนี้ได้รับการทดสอบ:
+This form will import iCalendar (.ics) events.: แบบฟอร์มนี้จะนำเข้าเหตุการณ์ iCalendar (.ics)
+Enabling: กำลังเปิดใช้งาน
+Overwrite Prior Import: เขียนทับการนำเข้าก่อนหน้า
+will cause events imported previously...: จะทำให้เหตุการณ์ที่นำเข้าก่อนหน้านี้ซึ่งใช้ UID เดียวกันกับเหตุการณ์จากไฟล์นำเข้าใหม่ถูกทำเครื่องหมายว่าถูกลบ สิ่งนี้ควรอนุญาตให้นำเข้าไฟล์ iCalendar ที่อัปเดตโดยไม่ต้องสร้างรายการที่ซ้ำกัน
+
+########################################
+# Page: help_index.php
+#
+Help Index: ดัชนีความช่วยเหลือ
+About WebCalendar: เกี่ยวกับ WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: เลเยอร์มีประโยชน์สำหรับการแสดงกิจกรรมของผู้ใช้รายอื่นในปฏิทินของคุณเอง คุณสามารถระบุผู้ใช้และสีของเหตุการณ์ที่จะแสดง
+Add/Edit/Delete: เพิ่ม / แก้ไข / ลบ
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: การคลิกลิงก์แก้ไขเลเยอร์ในส่วนผู้ดูแลระบบที่ด้านล่างของหน้าจะช่วยให้คุณสามารถเพิ่ม / แก้ไข / ลบเลเยอร์ได้
+The text color of the new layer that will be displayed in your calendar.: สีข้อความของเลเยอร์ใหม่ที่จะแสดงในปฏิทินของคุณ
+Disabling: กำลังปิดการใช้งาน
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: กดลิงก์ปิดการใช้งานเลเยอร์ในส่วนผู้ดูแลระบบที่ด้านล่างของหน้าเพื่อปิดเลเยอร์
+Duplicates: รายการที่ซ้ำกัน
+If checked, events that are duplicates of your events will be shown.: หากเลือกไว้เหตุการณ์ที่ซ้ำกับกิจกรรมของคุณจะแสดงขึ้น
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: กดลิงก์เปิดใช้งานเลเยอร์ในส่วนผู้ดูแลระบบที่ด้านล่างของหน้าเพื่อเปิดเลเยอร์
+Source: ที่มา
+Specifies the user that you would like to see displayed in your calendar.: ระบุผู้ใช้ที่คุณต้องการให้แสดงในปฏิทินของคุณ
+
+########################################
+# Page: help_pref.php
+#
+Default Category: หมวดหมู่เริ่มต้น
+default-category-help: ระบุประเภทที่เหตุการณ์ใหม่ควรเป็นค่าเริ่มต้น
+When I am the boss: เมื่อฉันเป็นเจ้านาย
+Email me event notification: ส่งอีเมลแจ้งเตือนเหตุการณ์
+email-boss-notifications-help: ระบุว่าผู้บังคับบัญชาได้รับอีเมลเป็นการแจ้งเตือนเหตุการณ์หรือไม่
+I want to approve events: ฉันต้องการอนุมัติกิจกรรม
+boss-approve-event-help: ระบุว่าเจ้านายจะต้องอนุมัติเหตุการณ์ที่ผู้ช่วยเพิ่มหรือไม่
+Subscribe/Publish: สมัครสมาชิก / เผยแพร่
+Allow remote publishing: อนุญาตการเผยแพร่ระยะไกล
+allow-remote-publishing-help: ระบุว่าไคลเอ็นต์ iCal แบบรีโมตสามารถเผยแพร่เหตุการณ์กลับไปยัง WebCalendar ได้หรือไม่
+remote-publishing-url-help: แสดง URL ที่จะใช้ในแอปพลิเคชันไคลเอนต์ iCal สำหรับทั้งการสมัครสมาชิกและการเผยแพร่กลับไปที่ WebCalendar
+allow-remote-subscriptions-help: ระบุว่าผู้ใช้ระยะไกลสามารถสมัครรับปฏิทินของคุณได้หรือไม่โดยอนุญาตให้พวกเขาเห็นกิจกรรมของคุณในแอปพลิเคชันที่เปิดใช้งาน iCal (เช่น iCal หรือ Mozilla Calendar ของ Apple)
+remote-subscriptions-url-help: แสดง URL ระยะไกลที่ผู้ใช้ควรใช้เพื่อสมัครสมาชิกปฏิทินของคุณ
+Enable FreeBusy publishing: เปิดใช้งานการเผยแพร่ FreeBusy
+freebusy-enabled-help: ระบุว่าสามารถหาเวลาว่างของผู้ใช้ได้โดยใช้มาตรฐาน iCal FreeBusy หรือไม่
+freebusy-url-help: URL สำหรับเข้าถึงรายการ FreeBusy ของผู้ใช้
+rss-feed-url-help: URL สำหรับเข้าถึง RSS feed
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: อนุญาตให้ควบคุมการเข้าถึงและสิทธิ์ของผู้ใช้ได้ดี ผู้ใช้ยังสามารถให้สิทธิ์เริ่มต้นและต่อสิทธิ์แต่ละรายการหากได้รับอนุญาตจากผู้ดูแลระบบ
+If disabled, this user cannot send you emails.: หากปิดใช้งานผู้ใช้รายนี้จะไม่สามารถส่งอีเมลถึงคุณได้
+If disabled, this user cannot see you in the participants list.: หากปิดใช้งานผู้ใช้รายนี้จะไม่เห็นคุณในรายชื่อผู้เข้าร่วม
+If enabled, this user cannot view the details of any of your entries.: หากเปิดใช้งานผู้ใช้รายนี้จะไม่สามารถดูรายละเอียดของรายการใด ๆ ของคุณได้
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): ปิดใช้งานการเผยแพร่ (ผู้ดูแลระบบ)
+Publishing Disabled (User): ปิดใช้งานการเผยแพร่ (ผู้ใช้)
+
+########################################
+# Page: icons.php
+#
+Click to Select: คลิกเพื่อเลือก
+Current Icons on Server: ไอคอนปัจจุบันบนเซิร์ฟเวอร์
+
+########################################
+# Page: import.php
+#
+import from file: นำเข้าจากไฟล์
+Disabled: ปิดการใช้งาน
+Import format: นำเข้ารูปแบบ
+Exclude private records: ไม่รวมบันทึกส่วนตัว
+Repeated items are imported separately. Prior imports are not overwritten.: รายการที่ซ้ำจะถูกนำเข้าแยกต่างหาก การนำเข้าก่อนหน้านี้จะไม่ถูกเขียนทับ
+
+########################################
+# Page: import_handler.php
+#
+No file: ไม่มีไฟล์
+Error deleting palm events from webcalendar.: เกิดข้อผิดพลาดในการลบกิจกรรมปาล์มจากเว็บปฏิทิน
+Events from prior import marked as deleted: กิจกรรมจากการนำเข้าก่อนหน้าทำเครื่องหมายว่าถูกลบ
+Conflicting events: เหตุการณ์ที่ขัดแย้งกัน
+The import file contained no data.: ไฟล์นำเข้าไม่มีข้อมูล
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: แน่ใจไหมว่าต้องการลบเลเยอร์นี้
+Delete layer: ลบเลเยอร์
+Edit layer: แก้ไขเลเยอร์
+Enable layers: เปิดใช้งานเลเยอร์
+Layer: ชั้น
+Layers are currently disabled.: ขณะนี้เลเยอร์ถูกปิดใช้งาน
+Layers are currently enabled.: ขณะนี้เลเยอร์ถูกเปิดใช้งาน
+Click to modify layers settings for XXX: คลิกที่นี่เพื่อแก้ไขการตั้งค่าเลเยอร์สำหรับปฏิทิน XXX
+Disable Layers: ปิดการใช้งานเลเยอร์
+Add layer: เพิ่มเลเยอร์
+Add Layer: เพิ่มเลเยอร์
+Edit Layer: แก้ไขเลเยอร์
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: ไม่สามารถอัปเดตค่ากำหนด
+Invalid entry id.: รหัสรายการไม่ถูกต้อง
+You cannot create a layer for yourself.: คุณไม่สามารถสร้างเลเยอร์ด้วยตัวคุณเองได้
+You can only create one layer for each user.: คุณสามารถสร้างเลเยอร์เดียวสำหรับผู้ใช้แต่ละคน
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: อนุมัติ / ยืนยัน
+Approve Selected: อนุมัติรายการที่เลือก
+Check All: เลือกทั้งหมด
+Emails Will Not Be Sent: อีเมลจะไม่ถูกส่ง
+Reject Selected: ปฏิเสธที่เลือก
+Reject: ปฏิเสธ
+Uncheck All: ยกเลิกการเลือกทั้งหมด
+View this entry: ดูรายการนี้
+No unapproved entries for XXX.: ไม่มีรายการที่ไม่ได้รับการอนุมัติสำหรับ: "XXX"
+Unapproved Entries: รายการที่ไม่ได้รับการอนุมัติ
+Approve this entry?: อนุมัติรายการนี้หรือไม่
+Reject this entry?: ปฏิเสธรายการนี้หรือไม่
+Approve Selected entries?: อนุมัติรายการที่เลือก?
+Reject Selected entries?: ปฏิเสธรายการที่เลือก?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: คุณต้องป้อนข้อมูลเข้าสู่ระบบและรหัสผ่าน
+Save login via cookies so I dont have to login next time.: บันทึกการเข้าสู่ระบบผ่านคุกกี้เพื่อที่ฉันจะได้ไม่ต้องเข้าสู่ระบบในครั้งต่อไป
+Login: เข้าสู่ระบบ
+public: สาธารณะ
+Access XXX calendar: เข้าถึงปฏิทิน XXX
+cookies-note: หมายเหตุ: แอปพลิเคชันนี้ต้องเปิดใช้งานคุกกี้
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: อักขระที่ไม่ถูกต้องในการเข้าสู่ระบบ XXX
+Invalid login: เข้าสู่ระบบไม่ถูกต้อง
+Activity login failure: ชื่อผู้ใช้: "XXX", IP: "YYY"
+Error XXX: ข้อผิดพลาด: "XXX"
+You have been logged out.: คุณออกจากระบบแล้ว
+Access public calendar: เข้าถึงปฏิทินสาธารณะ
+Not yet registered? Register here!: ยังไม่ได้ลงทะเบียน? ลงทะเบียนที่นี่!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: ไม่มีปฏิทิน nonuser: "XXX"
+This Calendar is not Public.: ปฏิทินนี้ไม่ใช่แบบสาธารณะ
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: เพิ่มปฏิทินที่ไม่ใช่ผู้ใช้ใหม่
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: ต้องระบุการเข้าสู่ระบบ
+No such nonuser calendar: ไม่มีปฏิทิน nonuser ดังกล่าว
+
+########################################
+# Page: pref.php
+#
+Invalid theme: ธีมไม่ถูกต้อง
+Save Preferences: บันทึกการตั้งค่า
+Public Access calendar: ปฏิทินการเข้าถึงสาธารณะ
+Modify Non User Calendar Preferences: แก้ไขการตั้งค่าปฏิทินที่ไม่ใช่ผู้ใช้
+Return to My Preferences: กลับไปที่การตั้งค่าของฉัน
+Custom Scripts: สคริปต์ที่กำหนดเอง
+Timezone Selection: การเลือกเขตเวลา
+Multiview: หลายวิว:
+entry-interval-help: ตั้งค่าช่วงนาทีเมื่อแก้ไขเวลาเข้า
+Entry interval: ช่วงการเข้า
+hour: ชั่วโมง
+minute: นาที
+theme-reload-help: เนื่องจากการแคช CSS อาจต้องมีการโหลดหน้าซ้ำ
+Page may need to be reloaded for new Theme to take effect: อาจต้องโหลดหน้าใหม่เพื่อให้ธีมใหม่มีผล
+display_byproxy-help: แสดงผู้สร้างที่แท้จริงในหน้า view_entry
+Display if created by Assistant: แสดงหากผู้ช่วยสร้างขึ้น
+allow-view-subscriptions-help: อนุญาตให้ จำกัด การเข้าถึงจากระยะไกลไปยังรายการส่วนตัวหรือข้อมูลลับ
+Allow remote viewing of: อนุญาตให้ดูจากระยะไกลของ
+entries: รายการ
+
+########################################
+# Page: purge.php
+#
+Purging events for: ล้างเหตุการณ์สำหรับ
+Finished: เสร็จแล้ว
+Back: กลับ
+Check box to delete ALL events for a user: ช่องทำเครื่องหมายเพื่อลบเหตุการณ์  ทั้งหมด  สำหรับผู้ใช้
+Delete all events before: ลบกิจกรรมทั้งหมดก่อน
+Purge deleted only: ลบเท่านั้น
+Preview delete: ดูตัวอย่างการลบ
+Are you sure you want to delete events for: แน่ใจไหมว่าต้องการลบกิจกรรมสำหรับ
+Records deleted from XXX: ลบบันทึกจาก "XXX"
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: ที่อยู่อีเมลต้องไม่เว้นว่าง
+Username already exists.: ชื่อผู้ใช้อยู่แล้ว.
+Email address already exists.: มีที่อยู่อีเมลแล้ว
+New user via self-registration.: ผู้ใช้ใหม่ผ่านการลงทะเบียนด้วยตนเอง
+A new WebCalendar account has been set up for you.: มีการตั้งค่าบัญชี WebCalendar ใหม่สำหรับคุณ
+Your username is XXX.: ชื่อผู้ใช้ของคุณคือ: "XXX"
+Your password is XXX.: รหัสผ่านของคุณคือ "XXX"
+Please visit XXX to log in and start using your account!: โปรดไปที่ "XXX" เพื่อเข้าสู่ระบบและเริ่มใช้งานบัญชีของคุณ!
+You may change your password after logging in the first time.: คุณสามารถเปลี่ยนรหัสผ่านได้หลังจากเข้าสู่ระบบครั้งแรก
+If you received this email in error: หากคุณได้รับอีเมลนี้ด้วยความผิดพลาดและไม่ได้สมัครบัญชี WebCalendar คุณสามารถเพิกเฉยต่อประกาศนี้หรือตอบกลับด้วยข้อความสั้น ๆ
+Administrator: ผู้ดูแลระบบ
+Welcome: ยินดีต้อนรับ
+New user via email.: ผู้ใช้ใหม่ทางอีเมล
+Registration: การลงทะเบียน
+Welcome to WebCalendar: ยินดีต้อนรับสู่ WebCalendar
+Your email should arrive shortly.: อีเมลของคุณจะมาถึงในไม่ช้า
+Return to Login screen: กลับไปที่หน้าจอเข้าสู่ระบบ
+Password (again): รหัสผ่าน (อีกครั้ง):
+Your account information will be emailed to you.: ข้อมูลบัญชีของคุณจะถูกส่งถึงคุณทางอีเมล
+Submit: ส่ง
+
+########################################
+# Page: reject_entry.php
+#
+Continue: ดำเนินการต่อ
+(Your comments will be emailed to the other participants.): (ความคิดเห็นของคุณจะถูกส่งไปยังผู้เข้าร่วมคนอื่น ๆ ทางอีเมล)
+XXX has rejected an appointment.: XXX ปฏิเสธการนัดหมาย
+Rejected by XXX.: ปฏิเสธโดย XXX
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: เพิ่มปฏิทินระยะไกลใหม่
+
+########################################
+# Page: report.php
+#
+This event is confidential.: เหตุการณ์นี้เป็นความลับ
+(Private): (เอกชน)
+(cont.): (ต่อ)
+Approved: ได้รับการอนุมัติ
+Deleted: ลบแล้ว
+Rejected: ถูกปฏิเสธ
+Waiting for approval: รอการอนุมัติ
+Unknown: ไม่ทราบ
+Invalid report id.: รหัสรายงานไม่ถูกต้อง
+Click here to manage reports for the Public Access calendar.: คลิกที่นี่เพื่อจัดการรายงานสำหรับปฏิทิน Public Access
+Add new report: เพิ่มรายงานใหม่
+Manage Reports: จัดการรายงาน
+
+########################################
+# Page: search.php
+#
+Advanced Search: การค้นหาขั้นสูง
+Search: ค้นหา
+Keywords: คำหลัก
+Enter % for all entries: ป้อน% สำหรับรายการทั้งหมด
+Include: รวม
+Filter by Date: กรองตามวันที่
+All Dates: วันที่ทั้งหมด
+Past: ที่ผ่านมา
+Upcoming: กำลังจะเกิดขึ้น
+Range: พิสัย
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: คุณต้องป้อนคำค้นหาอย่างน้อยหนึ่งคำ
+Search Results: ผลการค้นหา
+match found: พบรายการที่ตรงกัน
+matches found: พบรายการที่ตรงกัน
+No matches found: ไม่พบรายการที่ตรงกัน
+New Search: การค้นหาใหม่
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: ข้อมูลด้านล่างแสดงปัญหาที่อาจเกิดขึ้นกับการติดตั้ง WebCalendar ของคุณซึ่งสามารถแก้ไขได้เพื่อให้การติดตั้งของคุณปลอดภัยยิ่งขึ้น
+For questions about WebCalendar security see the forums: สำหรับคำถามเกี่ยวกับปัญหาด้านความปลอดภัยของ WebCalendar โปรดใช้ฟอรัม WebCalendar ที่โฮสต์บน GitHub.com<br>XXX
+View your current PHP settings: ดูการตั้งค่า PHP ปัจจุบันของคุณ
+Security Issue: ปัญหาด้านความปลอดภัย
+Status: สถานะ
+Default admin user password: รหัสผ่านผู้ใช้เริ่มต้นของผู้ดูแลระบบ
+You should change the password of the default admin user.: คุณควรเปลี่ยนรหัสผ่านของผู้ใช้ผู้ดูแลระบบเริ่มต้น
+File permissions XXX: สิทธิ์ของไฟล์: XXX
+item XXX should not be writable: รายการต่อไปนี้ไม่ควรเขียนได้:<br><tt> XXX</tt>
+File exists XXX: มีไฟล์อยู่: "XXX"
+Because you have email disabled, you should remove this file.: เนื่องจากคุณได้ปิดใช้งานอีเมลคุณจึงควรลบไฟล์นี้
+File location XXX: ตำแหน่งไฟล์: "XXX"
+remove XXX if not using: หากคุณไม่ได้ใช้ไฟล์ "XXX" คุณควรลบออก หรืออย่างน้อยก็ย้ายไปยังไดเร็กทอรีใหม่
+System Settings XXX: การตั้งค่าระบบ: "XXX"
+consider enabling UAC: คุณอาจต้องการพิจารณาเปิดใช้งานการควบคุมการเข้าถึงของผู้ใช้เพื่อตั้งค่าสิทธิ์ของผู้ใช้
+recommend approving new public events: เราขอแนะนำให้อนุมัติการส่งงานกิจกรรมสาธารณะทั้งหมด
+recommend using CAPTCHA: ขอแนะนำให้ใช้ CAPTCHA เพื่อป้องกันการส่งเหตุการณ์อัตโนมัติอีกครั้ง
+Database cache directory location: ตำแหน่งไดเร็กทอรีแคชฐานข้อมูล
+db cache should be inaccessable: แคชฐานข้อมูลควรอยู่ในไดเร็กทอรีที่ไม่สามารถเข้าถึงได้ด้วย URL
+PHP Settings XXX: การตั้งค่า PHP: "XXX"
+recommend setting XXX Off: การตั้งค่าที่แนะนำสำหรับ "XXX" ปิดอยู่
+recommend setting allow_url_fopen Off: การตั้งค่าที่แนะนำสำหรับ "allow_url_fopen" คือปิดเมื่อไม่ได้เปิดใช้งานปฏิทินระยะไกล
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: ดูปฏิทินของผู้ใช้รายอื่น
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: คุณยังไม่ได้เพิ่มหมวดหมู่ใด ๆ
+Set Category: ตั้งค่าหมวดหมู่
+Global Categories cannot be changed.: ไม่สามารถเปลี่ยนแปลงหมวดหมู่ส่วนกลางได้
+
+########################################
+# Page: upcoming.php
+#
+more: มากกว่า
+
+########################################
+# Page: users.php
+#
+Remote Calendars: ปฏิทินระยะไกล
+denotes administrative user: หมายถึงผู้ใช้ที่เป็นผู้ดูแลระบบ
+Add New User: เพิ่มผู้ใช้ใหม่
+
+########################################
+# Page: usersel.php
+#
+form: แบบฟอร์ม
+Reset: รีเซ็ต
+
+########################################
+# Page: views.php
+#
+Add New View: เพิ่มมุมมองใหม่
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: มุมมองที่ไม่มีชื่อ
+Add View: เพิ่มมุมมอง
+Edit View: แก้ไขมุมมอง
+View Name: ดูชื่อ
+View Type: ประเภทมุมมอง
+Day by Time: วันตามเวลา
+Week (Users horizontal): สัปดาห์ (ผู้ใช้ตามแนวนอน)
+Week by Time: สัปดาห์ตามเวลา
+Week (Users vertical): สัปดาห์ (ประเภทผู้ใช้)
+Week (Timebar): สัปดาห์ (แถบเวลา)
+Month (Timebar): เดือน (แถบเวลา)
+Month (side by side): เดือน (เคียงข้างกัน)
+Month (on same calendar): เดือน (ในปฏิทินเดียวกัน)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: คุณต้องระบุชื่อข้อมูลพร็อพเพอร์ตี้
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: ไม่มีผู้ใช้สำหรับข้อมูลพร็อพเพอร์ตี้นี้
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: อัปเดตเปอร์เซ็นต์งาน
+Completed: เสร็จเรียบร้อย
+Assistant mode: โหมดผู้ช่วย
+Declined: ปฏิเสธ
+Needs-Action: ความต้องการ - การกระทำ
+by: โดย
+Percentage Complete: เปอร์เซ็นต์เสร็จสมบูรณ์
+External User: ผู้ใช้ภายนอก
+Update: อัปเดต
+at: ที่
+comments: ความคิดเห็น
+Show: แสดง
+Hide: ซ่อน
+Approve/Confirm entry: อนุมัติ / ยืนยันรายการ
+Reject entry: ปฏิเสธรายการ
+Set category: ตั้งหมวดหมู่
+Add to My Calendar: เพิ่มในปฏิทินของฉัน
+Copy entry: คัดลอกรายการ
+This will delete this entry for all users.: การดำเนินการนี้จะลบรายการนี้สำหรับผู้ใช้ทั้งหมด
+Edit entry: แก้ไขรายการ
+Edit repeating entry for all dates: แก้ไขรายการที่ทำซ้ำสำหรับวันที่ทั้งหมด
+Delete repeating event for all dates: ลบเหตุการณ์ที่เกิดซ้ำสำหรับวันที่ทั้งหมด
+Edit entry for this date: แก้ไขรายการสำหรับวันที่นี้
+Delete entry only for this date: ลบรายการสำหรับวันที่นี้เท่านั้น
+Delete entry from calendar of XXX: ลบรายการจากปฏิทินของ XXX
+This will delete the entry from your XXX calendar.: การดำเนินการนี้จะลบรายการออกจากปฏิทิน XXX ของคุณ
+boss: เจ้านาย '
+This will delete the entry from your boss calendar.: การดำเนินการนี้จะลบรายการออกจากปฏิทินของเจ้านายของคุณ
+This will delete the entry from your calendar.: การดำเนินการนี้จะลบรายการออกจากปฏิทินของคุณ
+from your boss calendar: จากปฏิทินของเจ้านายของคุณ
+Do you want to add this entry to your calendar?: คุณต้องการเพิ่มรายการนี้ในปฏิทินของคุณหรือไม่
+This will add the entry to your calendar.: สิ่งนี้จะเพิ่มรายการลงในปฏิทินของคุณ
+Email all participants: ส่งอีเมลถึงผู้เข้าร่วมทั้งหมด
+Hide activity log: ซ่อนบันทึกกิจกรรม
+Show activity log: แสดงบันทึกกิจกรรม
+Export this entry to: ส่งออกรายการนี้ไปที่
+Palm Pilot: ปาล์มนักบิน
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: ดับเบิลคลิกที่เซลล์ว่างเพื่อเพิ่มรายการใหม่
+
+########################################
+# Page: week_details.php
+#
+New Entry: รายการใหม่
+cont.: ต่อ
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: ปฏิทินของผู้ใช้รายอื่น
+Category Management: การจัดการหมวดหมู่
+Day View: มุมมองวัน
+Edit Event: แก้ไขเหตุการณ์
+Month View: มุมมองเดือน
+Common Trailer: รถพ่วงทั่วไป
+User Management: การจัดการผู้ใช้
+Manage Views: จัดการมุมมอง
+Week View: มุมมองสัปดาห์
+Year View: มุมมองปี
+Invalid function id: รหัสฟังก์ชันไม่ถูกต้อง
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: ไม่พบไฟล์ "settings.php"<br>โปรดคัดลอก "settings.php.orig" ไปที่ "settings.php" และแก้ไขสำหรับไซต์ของคุณ
+Incomplete settings.php file...: ไฟล์ "settings.php" ไม่สมบูรณ์ ...
+Could not find XXX defined in...: ไม่พบ "XXX" ที่กำหนดไว้ในไฟล์ "settings.php" ของคุณ
+You must define XXX in: คุณต้องกำหนด "XXX" ในไฟล์ "settings.php"
+
+########################################
+# Page: includes/date_formats.php
+#
+December: ธันวาคม
+Dec: ธ.ค.
+LANGUAGE DEFINED: ภาษาที่กำหนด
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: เกิดข้อผิดพลาดในการเชื่อมต่อกับฐานข้อมูล: "XXX"
+db_type not defined.: ไม่ได้กำหนด db_type
+invalid db_type XXX: db_type "" XXX "ไม่ถูกต้อง
+Cache cleared from previous SQL!: ล้างแคชจาก SQL ก่อนหน้า!
+Error executing query.: เกิดข้อผิดพลาดในการดำเนินการค้นหา
+Unfortunately, XXX is not implemented for YYY: ขออภัยไม่ได้ใช้ "XXX" สำหรับ (YYY)
+Unknown ODBC error.: ข้อผิดพลาด ODBC ที่ไม่รู้จัก
+Error opening cache dir XXX.: เกิดข้อผิดพลาดในการเปิดแคช dir "XXX"
+delete: ลบ
+Cache error Could not XXX file YYY.: ข้อผิดพลาดแคช: ไม่สามารถ XXX ไฟล์ "YYY"
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: ข้อผิดพลาดร้ายแรง
+Invalid data format for: รูปแบบข้อมูลไม่ถูกต้องสำหรับ
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: ข้อผิดพลาด: ไม่ได้ตั้งค่าประเภทสำหรับบันทึกกิจกรรม!
+This event is XXX.: กิจกรรมนี้คือ XXX
+Conf.: =
+exceeds limit of XXX events per day: เกินขีด จำกัด XXX เหตุการณ์ต่อวัน
+on: บน
+All Attendees: ผู้เข้าร่วมทั้งหมด
+Busy: ไม่ว่าง
+Tentative: ไม่แน่นอน
+Schedule an appointment for XXX.: กำหนดเวลานัดหมายสำหรับ XXX: YYY
+date_select: =
+Event approved: อนุมัติกิจกรรมแล้ว
+Journal approved: วารสารได้รับการอนุมัติ
+Task approved: อนุมัติงานแล้ว
+Attachment: เอกสารแนบ
+Event created: สร้างกิจกรรมแล้ว
+Journal created: สร้างวารสารแล้ว
+Task created: สร้างงานแล้ว
+Event deleted: ลบกิจกรรมแล้ว
+Journal deleted: ลบวารสารแล้ว
+Task deleted: ลบงานแล้ว
+New user via email (self registration): ผู้ใช้ใหม่ทางอีเมล (ลงทะเบียนด้วยตนเอง)
+New user (self registration): ผู้ใช้ใหม่ (ลงทะเบียนด้วยตนเอง)
+Notification sent: ส่งการแจ้งเตือนแล้ว
+Event rejected: กิจกรรมถูกปฏิเสธ
+Journal rejected: วารสารถูกปฏิเสธ
+Task rejected: งานถูกปฏิเสธ
+Reminder sent: ส่งการแจ้งเตือนแล้ว
+Event updated: อัปเดตกิจกรรมแล้ว
+Journal updated: อัปเดตวารสารแล้ว
+Task updated: อัปเดตงานแล้ว
+Delete User: ลบผู้ใช้
+WK: =
+TASKS: งาน
+Task_Title: หัวข้อ
+Due: ครบกำหนด
+Task Name: ชื่องาน
+Task Due Date: วันที่ครบกำหนดของงาน
+You have XXX unapproved entries: คุณมี XXX รายการที่ไม่ได้รับการอนุมัติ
+Changes successfully saved: บันทึกการเปลี่ยนแปลงเรียบร้อยแล้ว
+Event: เหตุการณ์
+Action: หนังบู๊
+Printer Friendly: เครื่องพิมพ์ที่เป็นมิตร
+Generate printer-friendly version: สร้างเวอร์ชันที่เหมาะกับเครื่องพิมพ์
+after: หลังจาก
+before: ก่อน
+end: จบ
+start: เริ่มต้น
+View this event: ดูกิจกรรมนี้
+View this task: ดูงานนี้
+January: มกราคม
+February: กุมภาพันธ์
+March: มีนาคม
+April: เมษายน
+May_: อาจ
+June: มิถุนายน
+July: กรกฎาคม
+August: สิงหาคม
+September: กันยายน
+October: ตุลาคม
+November: พฤศจิกายน
+Jan: ม.ค.
+Feb: ก.พ.
+Mar: มี.ค.
+Apr: เม.ย.
+May: อาจ
+Jun: มิ.ย.
+Jul: ก.ค.
+Aug: ส.ค.
+Sep: ก.ย.
+Oct: ต.ค.
+Nov: พ.ย.
+SU: =
+MO: มอ
+TU: ม ธ
+WE: เรา
+TH: =
+FR: =
+SA: ส
+unknown-month: ไม่ทราบเดือน
+First Quarter Moon: ดวงจันทร์ไตรมาสแรก
+Full Moon: พระจันทร์เต็มดวง
+Last Quarter Moon: พระจันทร์ไตรมาสสุดท้าย
+New Moon: นิวมูน
+Error TIME_SLOTS undefined!: ข้อผิดพลาด: TIME_SLOTS undefined!
+The following error occurred: เกิดข้อผิดพลาดต่อไปนี้
+You are not authorized.: คุณไม่ได้รับอนุญาต
+Add N hours to: เพิ่ม N ชั่วโมงให้
+Subtract N hours from: ลบ N ชั่วโมงออกจาก
+same as: เหมือนกับ
+server time: เวลาเซิร์ฟเวอร์
+Cannot read timezone file XXX.: ไม่สามารถอ่านไฟล์เขตเวลา: XXX
+Your current GMT offset is XXX hours.: GMT offset ปัจจุบันของคุณคือ XXX ชั่วโมง
+Unauthorized: ไม่ได้รับอนุญาต
+Error approving event XXX.: เกิดข้อผิดพลาดในการอนุมัติกิจกรรม: XXX
+Error deleting event XXX.: เกิดข้อผิดพลาดในการลบกิจกรรม: XXX
+Error rejecting event XXX.: เกิดข้อผิดพลาดในการปฏิเสธกิจกรรม: XXX
+Sunday: วันอาทิตย์
+Monday: วันจันทร์
+Tuesday: วันอังคาร
+Wednesday: วันพุธ
+Thursday: วันพฤหัสบดี
+Friday: วันศุกร์
+Saturday: วันเสาร์
+Sun: อา
+Mon: จ
+Tue: อ
+Wed: พุธ
+Thu: พฤ
+Fri: ศ
+Sat: ส
+unknown-weekday: ไม่ทราบวันธรรมดา
+Invalid referring URL: URL อ้างอิงไม่ถูกต้อง
+
+########################################
+# Page: includes/help_list.php
+#
+Index: ดัชนี
+Documentation: เอกสารประกอบ
+Page: หน้า
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: ปฏิทินของฉัน
+Add New Entry: เพิ่มรายการใหม่
+Add New Task: เพิ่มงานใหม่
+Logout: ออกจากระบบ
+Home: บ้าน
+Back to My Calendar: กลับไปที่ปฏิทินของฉัน
+Go to: ไปที่
+Manage calendar of: จัดการปฏิทินของ
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: ไม่พบภาษาของเบราว์เซอร์
+(not supported): (ไม่รองรับ)
+Abkhazian: อับฮาเซียน
+Acoli: =
+Adangme: อาดังเม
+Adyghe: =
+Afar: ห่างไกล
+Afrihili: =
+Afrikaans: แอฟริกัน
+Ainu: ไอนุ
+Akan: อาคัง
+Akkadian: อัคคาเดียน
+Albanian: แอลเบเนีย
+Aleut: =
+Algonquian: =
+Altai (Southern): อัลไต (ภาคใต้)
+Amharic: อัมฮาริก
+Angika: แองจิกา
+Apache: =
+Arabic (Algeria): อาหรับ (แอลจีเรีย)
+Arabic (Bahrain): อาหรับ (บาห์เรน)
+Arabic (Egypt): อาหรับ (อียิปต์)
+Arabic (Iraq): อาหรับ (อิรัก)
+Arabic (Jordan): อาหรับ (จอร์แดน)
+Arabic (Kuwait): อาหรับ (คูเวต)
+Arabic (Lebanon): อาหรับ (เลบานอน)
+Arabic (Libya): อาหรับ (ลิเบีย)
+Arabic (Morocco): อาหรับ (โมร็อกโก)
+Arabic (Oman): อาหรับ (โอมาน)
+Arabic (Qatar): อาหรับ (กาตาร์)
+Arabic (Saudi Arabia): อาหรับ (ซาอุดีอาระเบีย)
+Arabic (Syria): อาหรับ (ซีเรีย)
+Arabic (Tunisia): อาหรับ (ตูนิเซีย)
+Arabic (U.A.E.): อาหรับ (U.A.E. )
+Arabic (Yemen): อาหรับ (เยเมน)
+Arabic: อาหรับ
+Aragonese: อารากอน
+Aramaic: อราเมอิก
+Arapaho: อาราปาโฮ
+Arawak: อร๊ากกก
+Armenian: อาร์เมเนีย
+Assamese: อัสสัม
+Asturian: =
+Athapascan: อรรถปาสน์
+Avaric: =
+Avestan: อเวสแทน
+Awadhi: อวาธี
+Aymara: ไอมารา
+Azerbaijani: อาเซอร์ไบจัน
+Balinese: บาหลี
+Baluchi: บาลูจิ
+Bambara: บัมบาร่า
+Bamileke: =
+Banda: บันดา
+Basa: บาซา
+Bashkir: บัชคีร์
+Basque: บาสก์
+Beja: เบจา
+Belarusian: เบลารุส
+Bemba: =
+Bengali: เบงกาลี
+Bhojpuri: โภชปุรี
+Bihari: บิฮารี
+Bikol: =
+Bislama: =
+Blackfoot: แบล็คฟุต
+Blin: บลิน
+Bliss: ความสุข
+Bosnian: บอสเนีย
+Braj: บราจ
+Breton: เบรอตง
+Buginese: บูกิส
+Bulgarian: บัลแกเรีย
+Buriat: บุรีรัตน์
+Burmese: พม่า
+Caddo: =
+Catalan: คาตาลัน
+Cebuano: =
+Chagatai: ชะกะไต
+Chamorro: =
+Chechen: เชเชน
+Cherokee: เชอโรกี
+Cheyenne: ไชแอนน์
+Chibcha: ชิบชา
+Chichewa: ชิเชวะ
+Chinese (Hong Kong): จีน (ฮ่องกง)
+Chinese (PRC): จีน (PRC)
+Chinese (Simplified/GB2312): จีน (ตัวย่อ / GB2312) 
+Chinese (Singapore): จีน (สิงคโปร์)
+Chinese (Taiwan): จีน (ไต้หวัน)
+Chinese (Traditional/Big5): ภาษาจีน (ตัวเต็ม / Big5)
+Chinook: ชีนุก
+Chipewyan: =
+Choctaw: ช็อกทอว์
+Chuukese: =
+Chuvash: ชูวัช
+Coptic: คอปติก
+Cornish: คอร์นิช
+Corsican: คอร์ซิกา
+Cree: เหยียบ
+Creek: ครีก
+Croatian: โครเอเชีย
+Czech: เช็ก
+Dakota: ดาโกต้า
+Danish: เดนมาร์ก
+Dargwa: ดาร์กวา
+Delaware: เดลาแวร์
+Dinka: =
+Dogri: =
+Dogrib: ด็อกริบ
+Duala: ดูอัล
+Dutch (Belgium): ดัตช์ (เบลเยียม)
+Dutch: ดัตช์
+Dyula: =
+Dzongkha: ซองคา
+Edo: เอโดะ
+Efik: =
+Ekajuk: เอกจุ๊
+Elamite: อีลาไมท์
+English (Australia): อังกฤษ (ออสเตรเลีย)
+English (Belize): อังกฤษ (เบลีซ)
+English (Canada): อังกฤษ (แคนาดา)
+English (Ireland): อังกฤษ (ไอร์แลนด์)
+English (Jamaica): อังกฤษ (จาเมกา)
+English (New Zealand): อังกฤษ (นิวซีแลนด์)
+English (Philippines): อังกฤษ (ฟิลิปปินส์)
+English (South Africa): อังกฤษ (แอฟริกาใต้)
+English (Trinidad & Tobago): อังกฤษ (ตรินิแดดและโตเบโก)
+English (United Kingdom): อังกฤษ (สหราชอาณาจักร)
+English (United States): อังกฤษ (สหรัฐอเมริกา)
+English (Zimbabwe): อังกฤษ (ซิมบับเว)
+English: อังกฤษ - สหรัฐฯ
+Erzya: =
+Esperanto: ภาษาเอสเปรันโต
+Estonian: เอสโตเนีย
+Ewe: อุรา
+Ewondo: =
+Fang: ฝาง
+Fanti: =
+Faroese: แฟโร
+Fijian: ฟิจิ
+Filipino: ฟิลิปปินส์
+Finnish: ฟินแลนด์
+Fon: ฝน
+French (Belgium): ฝรั่งเศส (เบลเยี่ยม)
+French (Canada): ฝรั่งเศส (แคนาดา)
+French (France): ฝรั่งเศส (ฝรั่งเศส)
+French (Luxembourg): ฝรั่งเศส (ลักเซมเบิร์ก)
+French (Monaco): ฝรั่งเศส (โมนาโก)
+French (Switzerland): ฝรั่งเศส (สวิตเซอร์แลนด์)
+French: ฝรั่งเศส
+Frisian (Eastern): Frisian (ตะวันออก)
+Frisian (Northern): Frisian (ภาคเหนือ)
+Frisian (Western): Frisian (ตะวันตก)
+Frisian: =
+Friulian: ฟรูเลียน
+Fulah: ฟูลาห์
+Ga: =
+Galibi: กาลิบิ
+Galician: กาลิเซีย
+Ganda: กานดา
+Gayo: กาโย
+Gbaya: กบายา
+Geez: =
+Georgian: จอร์เจีย
+German (Austria): เยอรมัน (ออสเตรีย)
+German (Germany): เยอรมัน (เยอรมนี)
+German (Liechtenstein): เยอรมัน (ลิกเตนสไตน์)
+German (Luxembourg): เยอรมัน (ลักเซมเบิร์ก)
+German (Standard): เยอรมัน (มาตรฐาน)
+German (Switzerland): เยอรมัน (สวิตเซอร์แลนด์)
+German: เยอรมัน
+Gilbertese: กิลแบร์เตส
+Gondi: กอนดี
+Gorontalo: =
+Gothic: โกธิค
+Grebo: =
+Greek: กรีก
+Greenlandic: กรีนแลนด์
+Guarani: กัวรานี
+Gujarati: คุชราต
+Gwich&#39;in: กวิชอิน
+Haida: =
+Haitian (Creole): เฮติ (ครีโอล)
+Haitian: เฮติ
+Hausa: เฮาซา
+Hawaiian: ฮาวาย
+Hebrew: ฮีบรู
+Herero: เฮโร
+Hiligaynon: ฮิลิไกนอน
+Hindi: ภาษาฮินดี
+Hiri Motu: ฮิริโมตู
+Hittite: ฮิตไทต์
+Hmong: ม้ง
+Holo (Taiwanese): Holo (ชาวไต้หวัน)
+Hungarian: ฮังการี
+Hupa: ฮูปา
+Iban: =
+Icelandic: ไอซ์แลนด์
+Ido: ฉันทำ
+Igbo: อิกโบ
+Iloko: อิโลโก
+Indonesian: ชาวอินโดนีเซีย
+Ingush: อินกุช
+Inuktitut: อินุกทิทุต
+Inupiaq: =
+Iranian: ชาวอิหร่าน
+Irish (Gaelic): ไอริช (เกลิก)
+Irish: ไอริช
+Iroquoian: =
+Italian (Switzerland): อิตาลี (สวิตเซอร์แลนด์)
+Italian: อิตาลี
+Japanese: ญี่ปุ่น
+Javanese: ภาษาชวา
+Judeo-Arabic: Judeo- อาหรับ
+Judeo-Persian: จูดีโอ - เปอร์เซีย
+Kabardian: คาบาร์เดียน
+Kabyle: =
+Kachin: คะฉิ่น
+Kalaallisut: กะลาลิสูตร
+Kalmyk: =
+Kamba: กัมบะ
+Kannada: กันนาดา
+Kanuri: คานูรี
+Kara-Kalpak: กะระ - กัลภักดิ์
+Karachay-Balkar: =
+Karelian: คาเรเลียน
+Kashmiri: แคชเมียร์
+Kashubian: คาชูเบียน
+Kawi: คาวี
+Kazakh: คาซัค
+Khasi: =
+Khmer (Central): เขมร (ภาคกลาง)
+Khmer: เขมร
+Khotanese: =
+Kikuyu: คิคุยู
+Kimbundu: =
+Kinyarwanda: คินยาร์วันดา
+Kirghiz: =
+Klingon: คลิงออน
+Komi: โคมิ
+Kongo: =
+Konkani: กอนกานี
+Korean (Johab): เกาหลี (Johab)
+Korean (North): เกาหลี (เหนือ)
+Korean (South): เกาหลี (ใต้)
+Korean: เกาหลี
+Kosraean: =
+Kpelle: =
+Kuanyama: กวนยามา
+Kumyk: คูมิก
+Kurdish: เคิร์ด
+Kutenai: =
+Kyrgyz: คีร์กีซ
+Ladino: ลาดิโน
+Lahnda: ลาห์นดา
+Lamba: แลมบา
+Lao: ลาว
+Latin: ละติน
+Latvian: ลัตเวีย
+Lezghian: =
+Limburgan: ลิมเบอร์กัน
+Lingala: ลิงกาลา
+Lithuanian: ลิทัวเนีย
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: ลูบา - ลูลัว
+Luiseno: ลุยเซโน
+Lunda: =
+Luo: หลัว
+Lushai: =
+Luxembourghish: หรูหรา
+Macedonian: มาซิโดเนีย
+Madurese: มาดูเรส
+Magahi: มากาฮี
+Maithili: ไมถิลี
+Makasar: มาคาซาร์
+Malagasy: มาลากาซี
+Malay: มาเลย์
+Malayalam: มาลายาลัม
+Maldivian: มัลดิเวียน
+Maltese: มอลตา
+Manchu: แมนจู
+Mandar: =
+Mandingo: =
+Manipuri: มณีปุรี
+Manx: เกาะแมน
+Maori: เมารี
+Mapuche: มาปูเช
+Marathi: มราฐี
+Mari: มาริ
+Marshallese: จอมพล
+Marwari: =
+Masai: มาไซ
+Mayan: มายัน
+Mende: เมนเด
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: มินังกาเบา
+Mirandese: =
+Mohawk: อินเดียนแดง
+Moksha: ม็อกชา
+Moldavian: มอลโดวา
+Mongo: =
+Mongolian: มองโกเลีย
+Montenegrin: มอนเตเนกริน
+Moroccan: โมร็อกโก
+Mossi: มอสซี่
+Myanmar: พม่า
+Māori: เมารี
+N&#39;Ko: เอ็นโก
+Nauru: นาอูรู
+Navajo: นาวาโฮ
+Ndebele (North): Ndebele (ภาคเหนือ)
+Ndebele (South): Ndebele (ใต้)
+Ndebele: =
+Ndonga: =
+Neapolitan: เนเปิล
+Nepali: เนปาล
+Nias: =
+Niuean: =
+Nogai: โนไก
+Norse: นอร์ส
+Norwegian (Bokmål): นอร์เวย์ (Bokmål)
+Norwegian (Nynorsk): นอร์เวย์ (Nynorsk)
+Norwegian: นอร์เวย์
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: อ็อกซิตัน
+Odia: โอเดีย
+Ojibwa: โอจิบวา
+Oriyia: โอริยา
+Oromo: โอโรโม
+Osage: โอเซจ
+Ossetic: ออสเซติก
+Pahlavi: ปาห์ลาวี
+Palauan: ปาเลา
+Pali: บาลี
+Pampanga: =
+Pangasinan: =
+Panjabi: ปัญจาบี
+Papiamento: ปาเปียเมนโต
+Pashto: =
+Pedi: =
+Persian (Farsi): เปอร์เซีย (ฟาร์ซี)
+Persian (Iran): เปอร์เซีย (อิหร่าน)
+Persian: เปอร์เซีย
+Phoenician: ฟินีเซียน
+Pohnpeian: โปนเปียน
+Polish: ขัด
+Portuguese: โปรตุเกส
+Portuguese/Brazil: โปรตุเกส / บราซิล 
+Punjabi (India): ปัญจาบ (อินเดีย)
+Punjabi (Pakistan): ปัญจาบ (ปากีสถาน)
+Punjabi: ปัญจาบ
+Quechua: เคชัว
+Rajasthani: ราชสถาน
+Rapanui: ราปานุย
+Rarotongan: ราโรตองกา
+Rhaeto-Romanic: =
+Romanian: โรมาเนีย
+Romansh: โรมานช
+Romany: =
+Rundi: รันดี
+Russian (Moldavia: รัสเซีย (มอลดาเวีย
+Russian (Republic of Moldova): รัสเซีย (สาธารณรัฐมอลโดวา)
+Russian: รัสเซีย
+Sami (Inari): ซามี (Inari)
+Sami (Lappish): ซามี (Lappish)
+Sami (Lule): ซามี (Lule)
+Sami (Northern): ซามี (ภาคเหนือ)
+Sami (Skolt): ซามี (Skolt)
+Sami (Southern): Sami (ภาคใต้)
+Sami: ซามี
+Samoan: ซามัว
+Samoli: ซาโมลี
+Sandawe: =
+Sango: =
+Sanskrit: ภาษาสันสกฤต
+Santali: =
+Sardinian: ซาร์ดิเนีย
+Sasak: ศศก
+Scots (Gaelic): สก็อต (เกลิก)
+Selkup: =
+Serbian (Upper): เซอร์เบีย (ตอนบน)
+Serbian: เซอร์เบีย
+Serer: =
+Sesotho: เซโซโท
+Shan: ฉาน
+Shona: โชนา
+Sichuan Yi: เสฉวนยี่
+Sicilian: ซิซิลี
+Sindhi: สินธุ
+Sinhala: สิงหล
+Slavic: สลาฟ
+Slovak: สโลวัก
+Slovenian: สโลเวเนีย
+Sogdian: ซ็อกเดียน
+Somali: โซมาเลีย
+Somani: สมณะ
+Songhai: ซ่งไห่
+Soninke: โซนินเก้
+Sorbian (Lower): ซอร์เบียน (ต่ำกว่า)
+Sorbian (Upper): ซอร์เบียน (ตอนบน)
+Sorbian: ซอร์เบียน
+Sotho: โส
+Spanish (Argentina): สเปน (อาร์เจนตินา)
+Spanish (Bolivia): สเปน (โบลิเวีย)
+Spanish (Chile): สเปน (ชิลี)
+Spanish (Colombia): สเปน (โคลอมเบีย)
+Spanish (Costa Rica): สเปน (คอสตาริกา)
+Spanish (Dominican Republic): สเปน (สาธารณรัฐโดมินิกัน)
+Spanish (Ecuador): สเปน (เอกวาดอร์)
+Spanish (El Salvador): สเปน (เอลซัลวาดอร์)
+Spanish (Guatemala): สเปน (กัวเตมาลา)
+Spanish (Honduras): สเปน (ฮอนดูรัส)
+Spanish (Mexico): สเปน (เม็กซิโก)
+Spanish (Nicaragua): สเปน (นิการากัว)
+Spanish (Panama): สเปน (ปานามา)
+Spanish (Paraguay): สเปน (ปารากวัย)
+Spanish (Peru): สเปน (เปรู)
+Spanish (Puerto Rico): สเปน (เปอร์โตริโก)
+Spanish (Spain): สเปน (สเปน)
+Spanish (Uruguay): สเปน (อุรุกวัย)
+Spanish (Venezuela): สเปน (เวเนซุเอลา)
+Spanish: สเปน
+Sranan Tongo: ศรัณย์ตองโก
+Sukuma: ซูกุมะ
+Sumerian: สุเมเรียน
+Sundanese: ซุนดา
+Susu: ซูซู
+Sutu: =
+Swahili: ภาษาสวาฮิลี
+Swati: สวาติ
+Swedish (Finland): สวีเดน (ฟินแลนด์)
+Swedish (Sweden): สวีเดน (สวีเดน)
+Swedish: สวีเดน
+Syriac: =
+Tagalog: ภาษาตากาล็อก
+Tahitian: ตาฮิเตียน
+Tai: ไท
+Taiwan: ไต้หวัน
+Tajik: ทาจิก
+Tamashek: ทามาเชค
+Tamil: ทมิฬ
+Tatar: ตาตาร์
+Telugu: กู
+Tereno: =
+Tetum: เตตัม
+Thai: ไทย
+Tibetan: ธิเบต
+Tigre: ไทเกร
+Tigrinya: กริญญา
+Timne: =
+Tlingit: =
+Tok Pisin: ต๊อกพศิน
+Tokelau: =
+Tonga (Nytmhasa): ตองกา (Nytmhasa)
+Tonga (Tonga Islands): ตองกา (หมู่เกาะตองกา)
+Tonga: ตองกา
+Tsimshian: จิมเชียน
+Tsonga: ซองก้า
+Tswana: =
+Tumbuka: ทัมบูกะ
+Turkish: ตุรกี
+Turkmen: เติร์กเมนิสถาน
+Tuvinian: ทูวิเนียน
+Twi: ทวิ
+Udmurt: =
+Ugaritic: อูการิติก
+Ukrainian: ยูเครน
+Umbundu: =
+Urdu: ภาษาอูรดู
+Uyghur: อุยกูร์
+Uzbek: อุซเบก
+Vai: ไว
+Venda: เวนดา
+Vietnamese: เวียดนาม
+Volapük: โวลาปุก
+Votic: =
+Wakashan: วากาจัง
+Walloon: วัลลูน
+Waray: =
+Washo: =
+Welsh: เวลส์
+Wolaitta: =
+Wolof: วูลอฟ
+Xhosa: =
+Yakut: ยาคุต
+Yao: เย้า
+Yapese: ยาเปส
+Yiddish: ยิดดิช
+Yorùbá: =
+Yupik: ยุพิก
+Zande: =
+Zapotec: =
+Zaza: ซาซ่า
+Zenaga: =
+Zhuang: จ้วง
+Zulu: ซูลู
+Browser-defined: กำหนดเบราว์เซอร์
+event: เหตุการณ์
+journal: วารสาร
+0: 0                                                  
+1: 1                                                  
+2: 2                                                  
+3: 3                                                  
+4: 4                                                  
+5: 5                                                  
+6: 6                                                  
+7: 7                                                  
+8: 8                                                  
+9: 9                                                  
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: ล็อกอินผู้ใช้ไม่ถูกต้อง
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: รหัสผ่านผิดพลาด
+no such user: ไม่มีผู้ใช้ดังกล่าว
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: บัญชีถูกปิดใช้งาน
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: ช่วงเวลา
+Months: เดือน
+Month Days: เดือนวัน
+Days: วัน
+Weeks: สัปดาห์
+Position: ตำแหน่ง
+Until: จนถึง
+Count: นับ
+Inclusion Dates: วันที่รวม
+Exclusion Dates: วันที่ยกเว้น
+Event Imported: นำเข้ากิจกรรมแล้ว
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: ไบต์
+kb: KB
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: การแจ้งเตือน
+authenticate: ข้อผิดพลาด SMTP: ไม่สามารถรับรองความถูกต้อง
+connect_host: ข้อผิดพลาด SMTP: ไม่สามารถเชื่อมต่อกับโฮสต์ SMTP:
+data_not_accepted: ข้อผิดพลาด SMTP: ไม่ยอมรับข้อมูล
+encoding: การเข้ารหัสที่ไม่รู้จัก:
+execute: ไม่สามารถดำเนินการ:
+file_access: ไม่สามารถเข้าถึงไฟล์:
+file_open: ข้อผิดพลาดของไฟล์ไม่สามารถเปิดไฟล์ได้:
+from_failed: ที่อยู่จากต่อไปนี้ล้มเหลว:
+instantiate: ไม่สามารถสร้างอินสแตนซ์ฟังก์ชันเมลได้
+mailer_not_supported: ไม่รองรับจดหมาย
+provide_address: คุณต้องระบุที่อยู่อีเมลของผู้รับอย่างน้อยหนึ่งรายการ
+recipients_failed: ข้อผิดพลาด SMTP: ผู้รับต่อไปนี้ล้มเหลว:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: ป้อนอักขระที่เห็นในภาพกราฟิก
+Enter the correct letters and numbers...: ป้อนตัวอักษรและตัวเลขที่ถูกต้องจากรูปภาพลงในกล่องข้อความ การทดสอบขนาดเล็กนี้ทำหน้าที่ จำกัด การเข้าถึงบอทที่เป็นอันตราย เพียงโหลดหน้านี้ซ้ำหากกราฟิกนี้อ่านยากเกินไป
+Challenge/Response: การท้าทาย / การตอบสนอง
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: เปลี่ยนวันที่และเวลาของรายการนี้หรือไม่
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: คุณยังไม่ได้ป้อนคำอธิบายโดยย่อ
+time prior to work hours...: ก่อนเวลาเลิกงาน ...
+Invalid Event Date: วันที่จัดกิจกรรมไม่ถูกต้อง
+Please add a participant: โปรดเพิ่มผู้เข้าร่วม 
+Invalid Date: วันที่ไม่ถูกต้อง
+You have not entered a valid time of day: คุณไม่ได้ป้อนช่วงเวลาที่ถูกต้องของวัน 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: รหัสปฏิทินต้องไม่ว่างเปล่า 
+First and last names cannot both be blank.: ชื่อและนามสกุลต้องไม่เว้นว่าง 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: สีไม่ถูกต้อง
+Color format should be RRGGBB.: รูปแบบสีควรเป็น #RRGGBB 
+URL cannot be blank.: URL ต้องไม่ว่างเปล่า
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: ประเภทไฟล์ไม่ตรงกับรูปแบบการนำเข้า 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: สีพื้นหลังเอกสารไม่ถูกต้อง
+Invalid color for document title.: สีของชื่อเอกสารไม่ถูกต้อง
+Invalid color for table cell background.: สีพื้นหลังของเซลล์ตารางไม่ถูกต้อง
+Invalid color for table cell background for today.: สีพื้นหลังของเซลล์ตารางไม่ถูกต้องสำหรับวันนี้
+Invalid work hours.: ชั่วโมงการทำงานไม่ถูกต้อง
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL ของเซิร์ฟเวอร์ต้องลงท้ายด้วยเครื่องหมายทับ (/)
+Invalid color for table grid.: สีของตารางตารางไม่ถูกต้อง
+Invalid color for event popup background.: สีไม่ถูกต้องสำหรับพื้นหลังป๊อปอัปเหตุการณ์
+Invalid color for event popup text.: สีของข้อความป๊อปอัปเหตุการณ์ไม่ถูกต้อง
+Invalid color for table header text.: สีของข้อความส่วนหัวตารางไม่ถูกต้อง
+Invalid color for table header background.: สีสำหรับพื้นหลังส่วนหัวตารางไม่ถูกต้อง
+Server URL is required.: ต้องระบุ URL ของเซิร์ฟเวอร์
+Invalid Color: สีไม่ถูกต้อง
+Database Name: ชื่อฐานข้อมูล
+Full Path (no backslashes): เส้นทางเต็ม (ไม่มีแบ็กสแลช) 
+The password contains illegal characters.: รหัสผ่านมีอักขระที่ไม่ถูกต้อง
+Error you must specify a Single-User Login: ข้อผิดพลาด: คุณต้องระบุการเข้าสู่ระบบผู้ใช้คนเดียว
+Could not find XXX.: ไม่พบ XXX
+Could not find XXX in DOM.: ไม่พบ XXX ใน DOM
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: ในสัปดาห์นี้
+This Month: เดือนนี้
+This Year: ปีนี้
+Exit: ออก
+Add New Event: เพิ่มกิจกรรมใหม่
+Delete Entries: ลบรายการ
+My Views: มุมมองของฉัน
+Manage Calendar of: จัดการปฏิทินของ
+My Reports: รายงานของฉัน
+My Profile: ประวัติของฉัน
+Public Calendar: ปฏิทินสาธารณะ
+Unapproved Events: เหตุการณ์ที่ไม่ได้รับการอนุมัติ
+User Manager: ผู้จัดการผู้ใช้
+Help Contents: เนื้อหาความช่วยเหลือ
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: ไดเรกทอรีแคชฐานข้อมูล
+Create New: สร้างใหม่
+Failure Reason: สาเหตุความล้มเหลว:
+You must manually create database: คุณต้องสร้างฐานข้อมูลด้วยตนเอง
+Single-User: ผู้ใช้คนเดียว
+Test Settings: ทดสอบการตั้งค่า
+Timezone Conversion Successful: การแปลงเขตเวลาสำเร็จ
+WebCalendar Installation Wizard Step XXX: ตัวช่วยสร้างการติดตั้ง WebCalendar ขั้นตอนที่ XXX
+Password Accepted: ยอมรับรหัสผ่าน
+Successful Login: เข้าสู่ระบบสำเร็จ
+Password Incorrect: รหัสผ่านไม่ถูกต้อง
+Invalid Login: เข้าสู่ระบบไม่ถูกต้อง
+Display Errors: แสดงข้อผิดพลาด
+File Uploads: อัปโหลดไฟล์
+Allow URL fopen: อนุญาต URL fopen (จำเป็นเฉพาะเมื่อใช้ปฏิทินระยะไกล)
+Safe Mode: โหมดปลอดภัย
+Safe Mode Allowed Vars: Safe Mode Allowed Vars (จำเป็นต้องใช้ TZ เฉพาะเมื่อ Safe Mode เปิดอยู่)
+GD: GD (จำเป็นสำหรับพื้นหลังภาพไล่ระดับสี)
+Passwords do not match!: รหัสผ่านไม่ตรงกัน!
+Unable to write password to settings.php file: ไม่สามารถเขียนรหัสผ่านไปยังไฟล์ "settings.php"
+Password Updated: อัปเดตรหัสผ่านแล้ว
+Password has been set: ตั้งรหัสผ่านแล้ว
+Connection Successful...: การเชื่อมต่อสำเร็จ  โปรดไปที่หน้าถัดไปเพื่อทำการติดตั้งต่อ
+Correct your entries or click the Create New...: แก้ไขรายการของคุณหรือคลิกปุ่ม  สร้างใหม่  เพื่อดำเนินการติดตั้งต่อไป
+Correct your entries and try again.: แก้ไขรายการของคุณแล้วลองอีกครั้ง
+XXX does not exist: ไม่มี XXX
+XXX is not writable: XXX ไม่สามารถเขียนได้
+Error Converting Timezone: เกิดข้อผิดพลาดในการแปลงเขตเวลา
+Error Unable to write to file XXX.: ข้อผิดพลาดไม่สามารถเขียนไปยังไฟล์ XXX
+Please change the file permissions of this file.: โปรดเปลี่ยนการอนุญาตไฟล์ของไฟล์นี้
+Please change includes dir permission: โปรดเปลี่ยนสิทธิ์ไฟล์ของไดเร็กทอรี "รวม" ของคุณเพื่ออนุญาตให้เขียนโดยผู้ใช้รายอื่น
+Your settings have been saved.: บันทึกการตั้งค่าของคุณแล้ว
+OFF: ปิด
+ON: บน
+WebCalendar Setup Wizard: ตัวช่วยสร้างการตั้งค่า WebCalendar
+This installation wizard will guide you...: วิซาร์ดการติดตั้งนี้จะแนะนำคุณตลอดการตั้งค่าการติดตั้ง WebCalendar พื้นฐาน<br>สำหรับความช่วยเหลือและการแก้ไขปัญหาโปรดดู:<br>
+System Administrators Guide: คู่มือผู้ดูแลระบบ
+Frequently Asked Questions: คำถามที่พบบ่อย
+FAQ: คำถามที่พบบ่อย
+Troubleshooting: การแก้ไขปัญหา
+Getting Help: การขอความช่วยเหลือ
+Upgrading Guide: คู่มือการอัพเกรด
+User Supported Wiki: ผู้ใช้สนับสนุน Wiki
+PHP Version Check: ตรวจสอบเวอร์ชัน PHP
+Check to see if PHP 7.1.0 or greater is installed.: ตรวจสอบดูว่ามีการติดตั้ง PHP 7.1.0 ขึ้นไปหรือไม่
+PHP version: เวอร์ชัน PHP
+PHP Settings: การตั้งค่า PHP
+Detailed PHP Info: ข้อมูล PHP โดยละเอียด
+settings.php Status: "settings.php" สถานะ
+Session Check: ตรวจสอบเซสชัน
+To test the proper operation of sessions...: หากต้องการทดสอบการทำงานที่เหมาะสมของเซสชันให้โหลดหน้านี้ซ้ำ คุณควรเห็นตัวนับเซสชันเพิ่มขึ้นทุกครั้ง
+SESSION COUNTER: ตัวนับเซสชั่น
+The file permissions of settings.php are set...: มีการตั้งค่าสิทธิ์ไฟล์ของ "settings.php" เพื่อให้โปรแกรมติดตั้งไม่มีสิทธิ์แก้ไข โปรดเปลี่ยนการอนุญาตไฟล์ของไฟล์ต่อไปนี้เพื่อดำเนินการต่อ
+The file permissions of the includes directory are set...: สิทธิ์ของไฟล์ของไดเร็กทอรี include ถูกตั้งค่าเพื่อให้ตัวติดตั้งไม่มีสิทธิ์ในการสร้างไฟล์ใหม่ โปรดเปลี่ยนสิทธิ์ของไดเร็กทอรีต่อไปนี้เพื่อดำเนินการต่อ
+Your settings.php file appears to be valid.: ดูเหมือนว่าไฟล์ "settings.php" ของคุณจะถูกต้อง
+Configuration Wizard Password: รหัสผ่านตัวช่วยสร้างการกำหนดค่า
+Create Settings File Password: สร้างรหัสผ่านไฟล์การตั้งค่า
+db setup directions...: ในส่วนนี้คุณจะตั้งค่าและทดสอบการเชื่อมต่อกับเซิร์ฟเวอร์ฐานข้อมูลของคุณ ข้อมูลบัญชีที่ให้มาควรมีสิทธิ์เต็มที่ในการสร้างฐานข้อมูลตารางและผู้ใช้ หากเป็นไปไม่ได้หรือการเข้าถึงฐานข้อมูลของคุณมี จำกัด คุณจะต้องกำหนดค่าฐานข้อมูลของคุณด้วยตนเอง
+Database Status: สถานะฐานข้อมูล
+Supported databases for your PHP installation: ฐานข้อมูลที่รองรับสำหรับการติดตั้ง PHP ของคุณ
+Your current database settings are able to access the database.: การตั้งค่าฐานข้อมูลปัจจุบันของคุณสามารถเข้าถึงฐานข้อมูลได้
+Please Test Settings: กรุณาทดสอบการตั้งค่า
+Your current database settings are not able...: การตั้งค่าฐานข้อมูลปัจจุบันของคุณไม่สามารถเข้าถึงฐานข้อมูลหรือยังไม่ได้รับการทดสอบ
+Database Settings: การตั้งค่าฐานข้อมูล
+Database Type: ประเภทฐานข้อมูล
+Server: เซิร์ฟเวอร์
+Connection Persistence: ความคงอยู่ของการเชื่อมต่อ
+All your database tables appear to be up...: ตารางฐานข้อมูลทั้งหมดของคุณดูเหมือนเป็นข้อมูลล่าสุด คุณสามารถดำเนินการต่อในหน้าถัดไปและตั้งค่า WebCalendar ให้เสร็จสมบูรณ์
+This appears to be a new installation...: ดูเหมือนจะเป็นการติดตั้งใหม่ หากไม่ถูกต้องโปรดกลับไปที่หน้าก่อนและแก้ไขการตั้งค่าของคุณ
+This appears to be an upgrade...: ดูเหมือนว่าจะเป็นการอัปเกรดจากเวอร์ชัน&nbsp;XXX&nbsp;เป็น&nbsp;YYY
+The database requires some data input...: ฐานข้อมูลต้องการการป้อนข้อมูลบางอย่างคลิกอัปเดตฐานข้อมูลเพื่อทำการอัพเกรด
+In this section we will perform...: ในส่วนนี้เราจะดำเนินการเปลี่ยนแปลงเพื่อนำฐานข้อมูลของคุณไปสู่ระดับที่กำหนด หากคุณกำลังใช้ฐานข้อมูลที่รองรับอย่างสมบูรณ์ขั้นตอนนี้จะดำเนินการโดยอัตโนมัติสำหรับคุณ หากไม่เป็นเช่นนั้นคุณสามารถแสดง SQL ที่ต้องการได้และคุณควรจะสามารถตัดและวางลงในหน้าต่างแบบสอบถามเซิร์ฟเวอร์ฐานข้อมูลของคุณได้
+No database actions are required.: ไม่จำเป็นต้องมีการดำเนินการกับฐานข้อมูล
+The following database actions are required: จำเป็นต้องมีการดำเนินการกับฐานข้อมูลต่อไปนี้
+ODBC Underlying Database: ฐานข้อมูลพื้นฐาน ODBC:
+Automatic installation not supported: การติดตั้งอัตโนมัติยังไม่ถูกนำไปใช้อย่างสมบูรณ์สำหรับประเภทฐานข้อมูลของคุณ คุณจะต้องสร้างตารางที่ต้องการด้วยตนเองโดยใช้ SQL ที่ให้มา กรุณาคลิกที่  แสดง SQL  เพื่อดำเนินการต่อ ตัดและวางลงในหน้าต่างการสืบค้นฐานข้อมูลของคุณ
+This may take several minutes to complete: การดำเนินการนี้อาจใช้เวลาหลายนาที
+Install Database: ติดตั้งฐานข้อมูล
+Update Database: อัปเดตฐานข้อมูล
+Display Required SQL: แสดง SQL ที่จำเป็น
+Return to previous page after processing SQL.: หลังจากประมวลผล SQL นี้ด้วยตนเองคุณจะต้องกลับไปที่หน้าก่อนหน้าและทดสอบฐานข้อมูลของคุณอีกครั้งเพื่อให้สคริปต์สามารถตรวจพบการเปลี่ยนแปลง
+This is the final step in setting up your WebCalendar Installation.: นี่เป็นขั้นตอนสุดท้ายในการตั้งค่าการติดตั้ง WebCalendar ของคุณ
+Timezone Conversion: การแปลงเขตเวลา
+It appears that you have NOT converted...: ดูเหมือนว่าคุณยังไม่ได้แปลงข้อมูลเหตุการณ์ WebCalendar ที่มีอยู่เป็น GMT หากคุณมีคุณอาจเพิกเฉยต่อประกาศนี้และไม่ดำเนินการแปลงต่อ หากเป็นการติดตั้งใหม่คุณอาจเพิกเฉยต่อประกาศนี้
+Convert Data to GMT: แปลงข้อมูลเป็น GMT
+Application Settings: การตั้งค่าแอปพลิเคชัน
+HTTP-based authentication was not detected...: ตรวจไม่พบการพิสูจน์ตัวตนโดยใช้ HTTP คุณจะต้องกำหนดค่าเว็บเซิร์ฟเวอร์ของคุณใหม่หากคุณต้องการเลือก 'เว็บเซิร์ฟเวอร์' จากตัวเลือก 'การรับรองความถูกต้องของผู้ใช้' ด้านล่าง
+HTTP-based authentication was detected...: ตรวจพบการพิสูจน์ตัวตนโดยใช้ HTTP การตรวจสอบผู้ใช้กำลังจัดการโดยเว็บเซิร์ฟเวอร์ของคุณ คุณควรเลือก 'Web Server' จากรายการตัวเลือก 'User Authentication' ด้านล่าง
+Create Default Admin Account: สร้างบัญชีผู้ดูแลระบบเริ่มต้น
+(Admin Account Not Found): (ไม่พบบัญชีผู้ดูแลระบบ)
+User Authentication: การตรวจสอบผู้ใช้
+Web-based via WebCalendar (default): บนเว็บผ่าน WebCalendar (ค่าเริ่มต้น)
+Web Server (not detected): เว็บเซิร์ฟเวอร์ (ตรวจไม่พบ)
+Web Server (detected): เว็บเซิร์ฟเวอร์ (ตรวจพบ)
+None (Single-User): ไม่มี (ผู้ใช้คนเดียว)
+Read-Only: อ่านเท่านั้น
+Environment: สิ่งแวดล้อม
+Production: การผลิต
+Development: การพัฒนา
+Save Settings: บันทึกการตั้งค่า
+Launch WebCalendar: เปิด WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: เกิดข้อผิดพลาดในการอัปเดตตาราง "XXX": YYY
+Conversion Successful: การแปลงสำเร็จ 
+Perl script required: WebCalendar เวอร์ชันก่อนหน้าของคุณต้องการการเรียกใช้สคริปต์ PERL เพื่อแปลงข้อมูลของคุณ โปรดเรียกใช้ /tools/upgrade_to_0.9.7.pl จากนั้นกลับมาที่หน้านี้เพื่อดำเนินการต่อ
+previous version requires updating several tables: WebCalendar เวอร์ชันก่อนหน้าของคุณต้องการการอัปเดตตารางฐานข้อมูลหลายตาราง
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: ไม่มีดูตัวอย่าง
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: เกิดข้อผิดพลาดในการเชื่อมต่อกับฐานข้อมูล
+Include Path: รวมเส้นทาง
+Deleting events for: การลบเหตุการณ์สำหรับ
+Importing events for: การนำเข้าเหตุการณ์สำหรับ
+No data returned from: ไม่มีการส่งคืนข้อมูลจาก
+for non-user calendar: สำหรับปฏิทินที่ไม่ใช่ผู้ใช้
+No Remote Calendars found: ไม่พบปฏิทินระยะไกล
+Remote Calendars not enabled: ไม่ได้เปิดใช้งานปฏิทินระยะไกล
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ไม่พบรหัสเหตุการณ์
+could not find event id XXX in database.: ไม่พบรหัสเหตุการณ์ XXX ในฐานข้อมูล
+task: งาน
+This is a reminder for the XXX detailed below.: นี่คือการแจ้งเตือนสำหรับ XXX ตามรายละเอียดด้านล่าง
+Pecentage Complete: Pecentage เสร็จสมบูรณ์
+Reminder: การแจ้งเตือน
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: การดำเนินการที่ไม่รองรับ: XXX
+No event id specified.: ไม่ได้ระบุรหัสเหตุการณ์
+Not authorized (not admin).: ไม่ได้รับอนุญาต (ไม่ใช่ผู้ดูแลระบบ)
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: กำลังตรวจสอบกิจกรรมสำหรับ XXX ตั้งแต่วันที่ YYY ถึงวันที่ ZZZ
+Found XXX events in time range.: พบ XXX เหตุการณ์ในช่วงเวลา
+Event id=XXX YYY at ZZZ on AAA.: รหัสเหตุการณ์ = XXX "YYY" ที่ ZZZ ใน AAA
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: อนุญาตให้ผู้ใช้ XXX ดูปฏิทินของผู้ใช้รายอื่น
+Error Email reminders disabled for user XXX.: ข้อผิดพลาด: ปิดใช้การแจ้งเตือนทางอีเมลสำหรับผู้ใช้ "XXX"
+Number of site_extras XXX.: จำนวน site_extras: XXX
+Reminder set for event.: ตั้งการแจ้งเตือนสำหรับกิจกรรมแล้ว
+Mins Before XXX.: นาทีก่อน: XXX
+Event time is XXX.: เวลาของกิจกรรมคือ XXX
+Remind time is XXX.: เวลาเตือนคือ: XXX
+Reminders for user XXX, login YYY.: การแจ้งเตือนสำหรับผู้ใช้ "XXX" เข้าสู่ระบบ "YYY"
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: ไม่ได้รับการอนุมัติสำหรับผู้ใช้ "XXX"
+Event id=XXX YYY already sent.: รหัสเหตุการณ์ = XXX "YYY" ส่งไปแล้ว
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: ไม่จำเป็นต้องเข้าสู่ระบบสำหรับโหมดผู้ใช้คนเดียว
+No login required for HTTP authentication.: ไม่จำเป็นต้องเข้าสู่ระบบสำหรับการตรวจสอบสิทธิ์ HTTP
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: อักขระไม่ถูกต้องในการเข้าสู่ระบบ
+Username XXX does not exist.: ไม่มีชื่อผู้ใช้ "XXX"
+You cannot remove admin rights from yourself!: คุณไม่สามารถลบสิทธิ์ผู้ดูแลระบบออกจากตัวคุณเองได้!
+Unknown error saving user: ข้อผิดพลาดที่ไม่รู้จักในการบันทึกผู้ใช้
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: ไม่พบผู้เข้าร่วมสำหรับรหัสเหตุการณ์: XXX
+Db error Could not find event id XXX.: ข้อผิดพลาด Db: ไม่พบรหัสเหตุการณ์ XXX 
+Error Could not find event id XXX in database.: ข้อผิดพลาด: ไม่พบรหัสเหตุการณ์ XXX ในฐานข้อมูล 

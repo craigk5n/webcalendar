@@ -1,0 +1,2387 @@
+# Hawaiian haw
+#
+# Aia ke ʻano o kahi poʻo koho:
+#
+# Unuhi ʻia e: kou inoa a me kāu leka uila
+# Hoʻohou hope loa: ka lā o ka unuhi
+# (Me ke alakaʻi ʻana i "#" a me nā ʻōlelo i haʻi ʻia e nā mea unuhi mua.
+# Pau ka laina hakahaka mua i kēia mau manaʻo pane.)
+#
+# Hahai ʻia e nā mea e pono ai:
+#
+# ʻŌlelo Pelekane: unuhi
+# (Hoʻokahi i kahi lālani. ME KA ʻole o ke alakaʻi ʻana "#".
+# ʻO ka "ʻōlelo Pelekane:", me ke kolona ":", i hāʻawi ʻia e ka
+# Mea hoʻomohala WebCalendar. ʻO kāu ʻāpana ka "unuhi".)
+#
+# Aia i ka papa kuhikuhipuhi nā palapala ʻelua perl e kōkua iā ʻoe:
+# - check_translation.pl
+# Hōʻike ʻo # inā ua unuhi maikaʻi ʻia nā ʻōlelo āpau.
+# - update_translation.pl
+# e haʻi i nā faila o ka papahana e loaʻa i nā unuhi āpau ('huaʻōlelo') a
+# tooltip ('huaʻōlelo'). E hoʻonohonoho ia i nā huaʻōlelo e like me ka ʻaoʻao
+# (faile) i loaʻa ka hanana mua. ʻO ke koho, hiki iā ia ke hōʻailona i ka
+# mau māmala ʻōlelo i unuhi ʻole ʻia i ka waiho ʻana
+#  << MISSING >>
+# ma ka laina ma luna aʻe o ka māmalaʻōlelo. A, inā he huaʻōlelo ka pōkole,
+# e hoʻopili ʻia ka ʻōlelo Pelekane piha ma ka laina ma lalo o ka māmalaʻōlelo.
+#
+# Kahakaha: Ke hoʻāʻo nei au e ʻoki i ka nui o ka faila. Inā ka "unuhi"
+# kūlike ka huaʻōlelo / huaʻōlelo i kāu ʻōlelo a me ka ʻōlelo Pelekania, e hoʻohana wale i kahi hōʻailona "=".
+#
+# Kahakaha: E ʻike ʻoe i ke komo no "May_" ma lalo. Aia kekahi kumu no kēia.
+# Unuhi "May_" i ka inoa piha o ka malama a "May" i ka,
+# maʻamau ʻekolu leka, hoʻolōʻihi o ka mahina (e like me "ʻOkakopa" no "ʻOkakopa").
+#
+# Ua hoʻohana wau i ka unuhi Google no kēia.
+# E lawa a hiki i ka manawa e hōʻoia ʻia ai e kahi mea kamaʻilio ʻōiwi.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: Pūnaewele Pūnaewele
+version XXX: mana XXX
+WebCalendar is a PHP application used...: ʻO WebCalendar kahi noi PHP i hoʻohana ʻia e mālama i kahi kalena no kahi mea hoʻohana hoʻokahi a i kahi pūnaewele / intranet hui o nā mea hoʻohana. Hiki iā ia ke hoʻonohonoho pū ʻia me kahi kalena hanana.
+Credits: Nā manaʻo
+About: E pili ana i
+OK: =
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Kuʻia ka ʻikepili: XXX.
+DEFAULT CONFIGURATION: CONFIGURATION HOPE
+Go: Hele
+Save: Mālama
+Undo: Hoʻihoʻi
+Public Access: Loaʻa i ka lehulehu
+Admin: Luna Hoʻokele
+User Access Control: Kaohi Loaʻa Mea hoʻohana
+Allow Access to Other Users Calendar: ʻAe i ke kiʻi i ka Alemanaka Mea hoʻohana ʻē aʻe
+Grant This User Access to My Calendar: Hāʻawi i kēia Mea hoʻohana i kaʻu Kalena
+Type: ʻAno
+Calendar: Kalena
+View Event: Nānā Hanana
+View: Nānā
+Edit: Hoʻoponopono
+Approve/Reject: E ʻae / hōʻole
+Events: Nā hanana
+Tasks: Nā hana
+Journals: Nā Hōʻailona
+Can Invite: Hiki ke kono
+Can Email: Hiki Email
+Can See Time Only: Hiki ke ʻike i ka manawa wale nō
+Assistant: Kōkua
+Select All: Koho All
+Clear All: Holoi i nā mea āpau
+Public: Lehulehu
+Confidential: Palekana
+Private: Pilikino
+
+########################################
+# Page: activity_log.php
+#
+Next: Aʻe aʻe
+Previous: Mua
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Aia ʻo XXX ka hanana i kāu kalena.
+Invalid entry id XXX.: Hewa ʻeʻe komo: "XXX".
+a XXX event may not be added to your calendar: He hanana XXX kēia a ʻaʻole paha e hoʻohui ʻia i kāu kalena.
+confidential: hūnā
+private: pilikino
+Error adding event XXX.: Hewa i ka hoʻohui ʻana i ka hanana: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Hewa ka hoʻonohonoho ʻana i ka inoa "XXX".
+Select: Koho
+Day: Lā
+Week: Pule
+Month: Mahina
+Year: Makahiki
+Bottom: Lalo
+Top: Luna
+Anyone: Kekahi kanaka
+Participant: Mea komo
+Settings: Nā koho
+Groups: Pūʻulu
+NonUser Calendars: Nā Alemanaka NonUser
+Other: Nā ʻē aʻe
+Email: Leka uila
+Colors: Nā kala
+Document background: Palapala palapala
+Document title: Poʻo inoa
+Document text: Palapala palapala
+My event text: ʻO kaʻu huaʻōlelo hanana
+Table grid color: ʻO ke kala makaukau papaʻaina
+Table header background: Papa kāʻei poʻo poʻo
+Table header text: Palapala pane poʻo papa
+Table cell background: Papa kāʻei kua papaʻa
+Table cell background for current day: Papa kāʻei kapu o kēia lā
+Table cell background for days with events: ʻO ka papa ʻaina papakaukau no nā lā me nā hanana
+Table cell background for weekends: Papa kāʻei kapu no ka hopena pule
+Table cell background for other month: Papa kāʻei papaʻaina no kekahi mahina
+Week number color: Waihoʻoluʻu helu wiki
+Event popup background: ʻO ka hanana popup hanana
+Event popup text: Kikokikona popoki hanana
+System Settings: Nā hoʻonohonoho pūnaewele
+Help: Kōkua
+System options: Nā koho ʻōnaehana
+app-name-help: Hōʻike kikoʻī i ka inoa o ka noi e hōʻike ʻia i ka pae inoa o ka polokalamu kele pūnaewele no nā ʻaoʻao āpau a ma ka ʻaoʻao ʻeʻe. E nānā ʻia ke kumukūʻai āu e kuhikuhi ai ma aneʻi i nā faile unuhi i ʻae iā ʻoe e hāʻawi i nā poʻo inoa ʻokoʻa no nā ʻōlelo ʻokoʻa.
+Application Name: Inoa inoa
+Translated Name (XXX): Inoa unuhi (XXX)
+server-url-help: Kuhi ʻia ka URL kumu no ka noi. E hoʻopili ʻia kēia i ka wā e hoʻouna ai i nā hoʻomanaʻo leka uila a me nā leka hoʻomaopopo.
+Server URL: Pūnaewele URL
+home-url-help: Kuhi ʻia ka URL home no ka noi. Hiki i kēia ke lilo i pili a pilina paha
+Home URL: URL home
+language-help: Kuhi i ka ʻōlelo e hoʻohana ai.
+Language: ʻLelo
+Your browser default language is XXX.: ʻO kāu ʻōlelo paʻamau ʻo "XXX".
+Allow user to use themes: ʻAe i ka mea hoʻohana e hoʻohana i nā poʻomanaʻo
+themes-help: ʻAe i ka hoʻohou nui o nā hoʻonohonoho hoʻonohonoho. ʻO nā lepili hihia haʻahaʻa ka hoʻohana mua.
+Themes: Nā Kumuhana
+AVAILABLE THEMES: HE MAU KUMU E MAU LOA
+None: ʻAʻohe
+Preview: =
+Site customization: Hoʻopilikino pūnaewele
+custom-script-help: ʻAe i ke komo ʻana o ka ʻōlelo Javascript a i ʻole ka styleheet kikokikona e hoʻokomo ʻia i ka ʻāpana "poʻo" HTML o kēlā me kēia ʻaoʻao.
+Custom script/stylesheet: Palapala kākau maʻamau / styleheet
+custom-header-help: ʻAe i kahi ʻāpana HTML pilikino e hoʻopili ʻia i ka piko o kēlā me kēia ʻaoʻao.
+Custom header: Poʻo poʻo Custom
+custom-trailer-help: ʻĀpono e hoʻopili ʻia kahi ʻāpana HTML maʻamau i ka hopena o kēlā me kēia ʻaoʻao.
+Custom trailer: Laulaha kūlohelohe
+enable-external-header-help: ʻAe ʻia e hoʻouka i ka trailer trailer mai kahi faila waho
+Allow external file for header/script/trailer: ʻAe i kahi faile kūwahi no ka poʻo poʻo / script / trailer
+Allow user to override header/trailer: ʻAe i ka mea hoʻohana e hoʻokahuli i ke poʻo inoa / trailer
+Date and Time: Ka lā a me ka manawa
+server-tz-help: Hōʻike kikoʻī i mau hola e hoʻoponopono ai i ka manawa mai UTC a i ka manawa kikowaena.
+Server Timezone Selection: Koho Koho Wa Manawa
+tz-help: Hōʻike kikoʻī i mau hola e hoʻoponopono ai i ka manawa mai UTC a i ka manawa kūloko.
+Default Client Timezone Selection: Koho Selekele Client Timezone
+display-general-use-gmt-help: Inā hiki, hōʻike ʻia nā lā / manawa maʻamau e like me GMT
+Display Common Use Date/Times as GMT: Hōʻike i ka lā hoʻohana maʻamau e like me GMT
+date-format-help: Kuhi ʻia ka hōʻano lā i makemake ʻia.
+Date format: Hōʻike lā
+Small Task Date: ʻO ka lā hana liʻiliʻi
+display-week-starts-on: Hōʻike i ka lā o ka pule e hoʻomaka ai ka pule. Inā Pōʻakahi i hōʻike ʻia, a laila nā helu hebedoma e helu hebedoma ISO.
+Week starts on: Hoʻomaka ka pule ma
+display-weekend-starts-on: Hoʻonohonoho i ka lā o ka pule no ka hoʻomaka ʻana o nā hopena pule
+Weekend starts on: Hoʻomaka ka hopena pule ma
+time-format-help: Hōʻike i ke ʻano manawa e hoʻohana ai:<br><em>12 hola:</em> Hōʻike i nā manawa e like me 3am, 8:30 pm, a pēlā aku.<br><em>24 hola:</em> Hōʻike i nā manawa e like me 300 , 2030, etc.
+Time format: Hōʻike manawa
+12 hour: 12 mau hola
+24 hour: 24 hola
+timed-evt-len-help: Kuhi i ke ʻano hoʻokomo no ka hoʻoholo ʻana i ka lōʻihi o kahi hanana i kuhikuhi ʻia.
+Specify timed event length by: E kuhikuhi i ka lōʻihi hanana hanana e
+Duration: =
+End Time: Manawa Pau
+work-hours-help: Hōʻike kikoʻī i ka palena manawa e hōʻike ai no ka ʻike o ke ao.
+Work hours: Nā hola hana
+From: Mai
+to: i
+Appearance: Helehelena
+preferred-view-help: Kuhi i ka ʻike paʻamau (Lā, Pule, Mahina, a i ʻole Makahiki).
+Preferred view: Nānā makemake ʻia
+Allow top menu: ʻAe i ka papa kuhikuhi ma luna
+Date Selectors position: Kahi kūlana Selectors
+menu-themes-help: Hoʻonohonoho i nā kala a me ke kaila o ka papa kuhikuhi kiʻekiʻe
+Menu theme: Poʻomanaʻo papaʻa
+fonts-help: Kuhi i kahi papa inoa o nā ʻōnaehana fonts e hoʻohana ai (e like me "Arial, Helvetica")
+Fonts: Nā hua palapala
+display-sm_month-help: Inā hiki, hōʻike i nā mahina liʻiliʻi i nā ʻike o ka mahina
+Display small months: Hōʻike i nā mahina liʻiliʻi
+display-weekends-help: Hoʻopili i nā hopena pule ke nānā aku i hoʻokahi pule.
+Display weekends: Hōʻike hopena pule
+display-long-daynames-help: Inā hiki, hōʻike ʻia nā inoa lā lōʻihi
+Display long day names: Hōʻike i nā inoa lā lōʻihi
+display-alldays-help: Hōʻike i nā mahina i hala a me nā mahina aʻe i nā ʻike o ka mahina, e hoʻopihapiha ana i nā pūnaewele.
+Display all days in month view: Hōʻike i nā lā āpau i ka nānā ʻana o ka mahina
+display-week-number-help: Hōʻike kikoʻī inā pono e hōʻike ʻia ka helu o ka pule (1-52) i ka ʻike o ka mahina a me ka ʻike o ka pule.
+Display week number: Hōʻike helu wiki
+display-desc-print-day-help: Hoʻopili i nā wehewehe hanana i ka mana paʻi-maikaʻi o ka nānā ʻana i ke ao.
+Display description in printer day view: Hōʻike i ka wehewehe i ka nānā ʻana i ka lā mīkini paʻi
+yearly-shows-events-help: I ka ʻike makahiki, hōʻike i nā lā i loaʻa nā hanana i ka font wiwo ʻole.
+Display days with events in bold in month and year views: Hōʻike i nā lā me nā hanana i wiwo ʻole i ka ʻike o ka mahina a me ka makahiki
+display-minutes-help: Inā hiki, nā minuke e pau me: 00 e hōʻike mau ʻia
+Display 00 minutes always: Hōʻike 00 mau minuke
+display-end-times-help: Hōʻike i nā manawa hopena inā hanana hanana
+Display end times on calendars: Hōʻike i nā manawa hopena ma nā kalena
+allow-view-add-help: E hoʻokomo ʻia kahi ikona '+' i nā ʻike, e ʻae ana i nā mea hoʻohana e hoʻohui koke i nā hanana i nā kalena a nā mea hoʻohana ʻē aʻe.
+Include add event link in views: Hoʻopili i ka loulou hanana hanana i nā manaʻo
+lunar-help: Inā hiki, e hōʻike i nā kiʻi liʻiliʻi e hōʻike ana i nā pae lunar i kēlā me kēia mahina
+Display Lunar Phases in month view: Hōʻike i nā Mana Lunar i ka nānā o ka mahina
+Restrictions: Kapu
+allow-view-other-help: Kuhi ʻia inā ʻike paha kekahi mea hoʻohana i ka kalena a kahi mea hoʻohana.
+Allow viewing other users calendars: ʻAe e nānā i nā kalena a nā mea hoʻohana ʻē aʻe
+require-approvals-help: Ke hiki ʻia, pono i kahi mea hoʻohana e ʻae i kahi hanana ma mua o ka hōʻike ʻia ʻana i kā lākou alemanaka (inā ʻaʻole ʻae ʻia ka Display unapproved). E hoʻomaopopo i ka hoʻonohonoho ʻana i kēia iā "ʻAʻole" ʻaʻole e kāpae i nā ʻāpono no ka kalena Access Public (inā hiki i ka kalena Access Public).
+Require event approvals: Koi i nā ʻāpono i nā hanana
+display-unapproved-help: Kuhi inā hōʻike ʻia nā hanana i hōʻole ʻole ʻia i loko o kāu kalena. pono e ʻae ʻia nā hanana i ʻāpono ʻole ʻia ma mua o ka hōʻike ʻia ʻana i kāu kalena.
+Display unapproved: Hōʻike ʻole ʻia
+conflict-check-help: E hōʻoia no nā hakakā hanana (ʻelua mau hanana i hoʻonohonoho ʻia no ka manawa like no ka mea like). Inā hoʻonohonoho ʻoe i kēia i "ʻAe", hiki nō iā ʻoe ke hoʻonohonoho i ʻelua hanana i ka manawa like ma hope o ka hōʻoia ʻana i kahi ʻōlelo aʻoaʻo. Inā hoʻonohonoho ʻoe i kēia i "ʻAʻole", ʻaʻole e nānā ʻia nā hakakā. Makemake paha ʻoe e hoʻonohonoho i kēia i "ʻAe", no laila e kū nei ka nānā ʻana i nā hakakā
+Check for event conflicts: E hōʻoia no nā hakakā hanana
+Yes: Ae
+No: Aʻole
+conflict-months-help: Inā hoʻonohonoho ʻia ka nānā hakakā , hoʻēmi i kēia helu.
+Conflict checking months: Nā mahina nānā hakakā
+conflict-check-override-help: ʻAe i nā mea hoʻohana e hoʻokahuli i nā hakakā hanana a hoʻonohonoho i nā hanana ʻelua a ʻoi paha no ka manawa like.
+Allow users to override conflicts: ʻAe i nā mea hoʻohana e hoʻokahuli i nā hakakā
+limit-appts-help: ʻAe i ka luna ʻōnaehana e hoʻonohonoho i kahi palena palena o ka ʻōnaehana ma ka helu o nā koho i hiki i hoʻokahi mea hoʻohana ke loaʻa i kēlā me kēia lā.
+Limit number of timed events per day: Ka palena o nā hanana manawa i kēlā me kēia lā
+limit-appts-number-help: Kuhi i ka nui o nā hanana i hiki i ka mea hoʻohana ke loaʻa i hoʻokahi lā.
+Maximum timed events per day: Nā hanana palena palena palena manawa no kēlā me kēia lā
+crossday-help: Inā hiki, e hōʻike ʻia nā hanana i hoʻolōʻihi i nā lā i nā lā ʻokoʻa
+Disable Cross-Day Events: Hoʻopio i nā hanana kea
+disable-location-field-help: ʻO ke koho ʻana iā "ʻAe" e hemo ia ka kahua "Kahi" mai nā ʻaoʻao ʻikepili hanana
+Disable Location field: Hoʻopio i kahi kahua
+disable-url-field-help: ʻO ke koho ʻana iā "ʻAe" e hemo ia ka kahua "URL" mai nā ʻaoʻao ʻikepili hanana
+Disable URL field: E hoʻopau iā URL kahua
+disable-priority-field-help: ʻO ke koho ʻana iā "ʻAe" e hemo i ka māla "Priority" mai nā ʻaoʻao ʻikepili hanana, e hāʻawi ana i kahi kuʻina maʻalahi no nā novice.
+Disable Priority field: E hoʻopau i ka kahua makakoho
+disable-access-field-help: ʻO ke koho ʻana iā "ʻAe" e hemo i ke kahua "Komo" mai nā ʻaoʻao ʻikepili hanana, e hāʻawi ana i kahi kuʻina maʻalahi no nā mea hou.
+Disable Access field: Hoʻopio i ke kahua komo
+disable-participants-field-help: ʻO ke koho ʻana iā "ʻAe" e kāpae i ke kahua "Nā mea komo" mai nā ʻaoʻao ʻike hanana, e pale ana i nā mea hoʻohana mai ka hoʻohui ʻana i nā mea hoʻohana ʻē aʻe i kā lākou hanana. Inā ʻae ʻoe i kēia koho, makemake paha ʻoe e hoʻopau pū i ka kahua "ʻAe e nānā i nā kalena a nā mea hoʻohana" pū.
+Disable Participants field: Hoʻopio i nā māina komo
+disable-repeating-field-help: ʻO ke koho ʻana iā "ʻAe" e hemo ia ka kahua "Repeating" ke hoʻohui nei i nā hanana. E hāʻawi kēia i kahi maʻalahi maʻalahi no nā novices.
+Disable Repeating field: Hoʻopio i ka pā hana hou
+allow-html-description-help: Inā hiki, hiki i nā mea hoʻohana ke hoʻokomo i ka HTML i ka māhele wehewehe hanana. Inā ʻaʻole hiki, e pakele nā ​​māka HTML i ʻike ʻia ma ke ʻano he kikokikona maʻamau. Ka ʻōlelo aʻoaʻo: e ʻae ka hoʻohana ʻana i kēia hiʻohiʻona i nā mea hoʻohana e kuhikuhi i nā kiʻi ma nā pūnaewele ʻē aʻe.
+Allow HTML in Description: ʻAe i ka HTML ma ka Hōʻike
+Popups: Popup
+disable-popups-help: E hoʻopau i nā popup mai nā ʻike papakaʻaka
+Disable Pop-Ups: E hoʻopau iā Pop-Ups
+popup-includes-siteextras-help: Inā hiki, e ʻae i nā hoʻonohonoho hanana hanana i ka pūnaewele_extras.php faila e hōʻike ʻia i nā hanana popup.
+Display Site Extras in popup: Hōʻike Pūnaewele Kuhi i ka popup
+popup-includes-participants-help: Inā hiki, hōʻike ʻia nā mea i loko o nā hanana popup.
+Display Participants in popup: Hōʻike i nā mea komo i ka popup
+Miscellaneous: Nā Mea Like ʻole
+remember-last-login-help: Ke hiki ʻia, e hoʻopihapiha ka ʻeʻe o ka mea hoʻohana no lākou ma ka ʻaoʻao ʻeʻe (ʻaʻole ka ʻōlelo huna), a e hoʻouka ʻia nā makemake o ka mea hoʻohana (me kā lākou mau kala e makemake ai a me ke koho ʻōlelo).
+Remember last login: Hoʻomanaʻo i ka ʻeʻe hope
+summary_length-help: ʻO ka lōʻihi o ka lōʻihi o ka wehewehe pōkole i nā ʻike ma ka kalena
+Brief Description Length: Lōʻihi wehewehe pōkole
+user_sort-help: Hoʻoholo i ka ʻoka hoʻonohonoho no ka mea hoʻohana, nā papa inoa Nonuser
+User Sort Order: Kauoha Hoʻokaʻina Mea hoʻohana
+Lastname, Firstname: Inoa hope, inoa mua
+Firstname, Lastname: Inoa mua inoa hope
+allow-public-access-help: Ke hiki ʻia, hiki ke hoʻohana ʻia ke kalena ma ke ʻano he kalena lehulehu heluhelu wale ia e koi ʻole ana i nā mea hoʻohana e ʻeʻe.
+Allow public access: ʻAe i ke komo ʻana o ka lehulehu
+public-access-default-visible: E ʻike ʻia nā hanana mai ka kalena lehulehu ma nā kalena a nā mea hoʻohana
+Public access visible by default: ʻIke ākea e ka paʻamau
+public-access-default-selected: Ke hoʻohui nei i kahi hanana hou, e koho ʻia ka mea hoʻohana lehulehu e ka paʻamau ma ke ʻano he komo.
+Public access is default participant: He komo paʻamau ka komo lehulehu
+public-access-view-others-help: Ke komo i ka ʻōnaehana me ke komo ʻana o ka lehulehu, kikoʻī inā hiki i ka mea hoʻohana ke ʻike i ka kalena o kahi mea hoʻohana ʻē aʻe.
+Public access can view other users: Hiki i ka lehulehu ke ʻike i nā mea hoʻohana ʻē aʻe
+public-access-can-add-help: Ke hiki ʻia, hiki i nā mea hoʻohana ke komo i ka ʻōnaehana ma o ka Access Public ke hoʻohui i nā hanana hou, akā ʻaʻole lākou e hōʻike ʻia i ka alemanaka a ʻae ʻia kahi luna i ka hanana hou.
+Public access can add events: Hiki i ka lehulehu ke hoʻohui i nā hanana
+public-access-add-requires-approval-help: Kuhi ʻia inā nā hanana i hoʻohui ʻia ma o ka waihona komo lehulehu e koi i ka ʻae ma mua o ka hōʻike ʻana.
+Public access new events require approval: Loaʻa i ka lehulehu i nā hanana hou e pono ai ka ʻae
+public-access-sees-participants-help: Inā hiki, hiki i nā mea hoʻohana ke komo i ka kalena mai ka waihona lehulehu e ʻike i nā poʻe komo hanana inā ʻike lākou i nā kikoʻī o kahi hanana.
+Public access can view participants: Hiki i ka lehulehu ke ʻike i nā mea komo
+public-access-override-help: ʻAe ʻia e hūnā ʻia nā inoa hanana a me nā wehewehe ʻana ma ka kalena lehulehu
+Override event name/description for public access: E hoʻokahuli i ka inoa hanana / wehewehe ʻana no ka hiki i ka lehulehu
+public-access-override-text-help: Hōʻike ka huaʻōlelo inā hōʻike ʻia ka koho i luna. Inā ʻaʻole loaʻa ', e unuhi ʻia ia.
+Text to display to public access: Kikokikona e hōʻike ai i ke komo ʻana o ka lehulehu
+public-access-captcha-help: Inā hiki, nā mea hou i hoʻohui ʻia e ka lehulehu e koi i ka hala ʻana i kahi hōʻoia CAPTCHA.
+Require CAPTCHA validation for public access new events: Koi ʻia ka hōʻoia CAPTCHA no ke komo ʻana o ka lehulehu i nā hanana hou
+uac-enabled-help: Hiki i ka pae ʻana o ka pae hoʻohana
+User Access Control enabled: Ua hoʻohana ʻia ke kāohi komo hoʻohana
+groups-enabled-help: Hiki i ke kākoʻo hui, ʻae i nā mea hoʻohana e koho i nā mea hoʻohana e nā hui.
+Groups enabled: Hana ʻia nā pūʻulu
+user-sees-his-group-help: Inā hiki, ʻaʻole ʻike nā mea hoʻohana i nā mea hoʻohana kalena i ka hapa iki o kā lākou mau hui.
+User sees only his groups: ʻIke wale ka mea hoʻohana i kāna mau pūʻulu
+nonuser-enabled-help: Inā hiki ʻia, e loaʻa i nā admin ke koho e hoʻohui i nā calendars nonuser
+Nonuser enabled: Hāʻawi ʻia nā Alemanaka Nonuser
+nonuser-list-help: Kahi e hōʻike ai i nā kalena hoʻohana ʻole i ka papa inoa o ka mea komo
+Nonuser list: Hōʻike i ka papa inoa o nā poʻe komo ma
+Upcoming Events: Nā hanana e hiki mai ana
+upcoming-events-help: Hoʻā i ka hiki mai.php
+Enabled: Hoʻā ʻia
+upcoming-events-allow-override: ʻAe i ka mea hoʻohana paramter no ka hiki mai.php
+Allow user override: ʻAe i ka mea hoʻohana e hoʻokahuli
+upcoming-events-display-caticons: Hoʻopili i nā ikona waeʻano i ka hiki mai.php
+Display category icons: Hōʻike hiʻohiʻona hiʻohiʻona
+upcoming-events-display-layers: Hōʻike i nā papa i ka wā e hiki mai ana.php
+Display layers: Hōʻike papa
+upcoming-events-display-links: Hōʻike i nā loulou i ka hiki mai.php
+Display links to events: Hōʻike i nā loulou i nā hanana
+upcoming-events-display-popups: Hōʻike i nā popup hanana i ka hiki mai.php
+Display event popups: Hōʻike nā hanana popup
+reports-enabled-help: Inā hiki, ʻike nā mea hoʻohana i kahi ʻāpana "Reports" ma lalo o kēlā me kēia ʻaoʻao a ʻae ʻia e hana i nā hōʻike pilikino. Hoʻohui ʻia, hiki i nā mea hoʻohana ke hana i nā hōʻike honua e hōʻike ʻia ma lalo o nā ʻaoʻao a nā mea hoʻohana.
+Reports enabled: Ua hiki nā hōʻike
+subscriptions-enabled-help: Kuhi inā hiki i nā mea hoʻohana mamao ke hoʻopaʻa inoa i ka kalena a ka mea hoʻohana WebCalendar, e ʻae iā lākou e ʻike i nā hanana o ka mea hoʻohana WebCalendar i kā lākou noi iCal-i hoʻohana ʻia (e like me Apple iCal a i ʻole Kalena Mozilla)
+Allow remote subscriptions: E ʻae i nā kau inoa mamao
+remotes-enabled-help: ʻAe i nā mea hoʻohana e hoʻouka i nā faila ics mamao me ka hoʻohana ʻana iā URL
+Allow remote calendars: ʻAe i nā alemanaka mamao
+rss-enabled-help: Kuhi ʻia inā hiki ke kiʻi ʻia kahi kalena a kahi mea hoʻohana mai ka hānai RSS.
+Enable RSS feed: Hiki i ka hānai RSS
+categories-enabled-help: Hiki i ke kākoʻo no nā mahele hanana.
+Categories enabled: ʻAe ʻia nā ʻāpana
+icon_upload-enabled-help: Inā hiki, hiki i nā mea hoʻohana ke hoʻouka i nā kiʻiona waeʻano
+Category Icon Upload enabled: Ua ʻae ʻia ka wae ikona mahele
+(Requires XXX folder to exist.): (Koi ʻia XXX folder e ola.)
+display-tasks-help: Hōʻike i ka puka aniani liʻiliʻi ma ka kalena mahina a me ka lā
+Display small task list: Hōʻike i ka papa inoa hana liʻiliʻi
+display-tasks-in-grid-help: Hōʻike i nā hana i nā kalena me nā hanana
+Display tasks in Calendars: Hōʻike i nā hana i nā Calendars
+allow-external-users-help: Kuhi ʻia inā hiki ke hoʻohui ʻia kahi mea hoʻohana ʻole i kahi hanana. ʻAe kēia i nā mea hoʻohana ʻae ʻole e helu ʻia ma ke ʻano he poʻe komo hanana.
+Allow external users: ʻAe i nā mea hoʻohana kūwaho
+external-can-receive-notification-help: Ke hiki i nā mea hoʻohana kūwaho a hoʻohana ʻia ka hoʻohana ʻana i ka leka uila, hiki i nā mea hoʻohana kūwaho ke loaʻa i nā leka uila ke hoʻohui ʻia ka hanana, hōʻano hou a holoi ʻia (inā hāʻawi ʻia ka leka uila o ka mea hoʻohana waho.
+External users can receive email notifications: Hiki i nā mea hoʻohana o waho ke loaʻa nā leka uila
+external-can-receive-reminder-help: Ke hiki i nā mea hoʻohana kūwaho a ʻae ʻia ka hoʻohana ʻana i ka leka uila, hiki i nā mea hoʻohana kūwaho ke loaʻa nā hoʻomanaʻo leka uila (inā hāʻawi ʻia ka leka uila o ka mea hoʻohana waho.
+External users can receive email reminders: Hiki i nā mea hoʻohana o waho ke loaʻa nā hoʻomanaʻo leka uila
+allow-self-registration-help: ʻAe i nā mea hoʻohana hou e hoʻopaʻa inoa iā lākou iho
+Allow self-registration: ʻAe i ka hoʻopaʻa inoa ʻana iā ʻoe iho
+use-blacklist-help: Palena i ke kiʻi i nā hana WebCalendar ma muli o ka IP address
+Restrict self-registration to blacklist: Kaohi i ka hoʻopaʻa inoa ʻana iā ʻoe iho i ka papa inoa ʻeleʻele
+allow-self-registration-full-help: E ʻae i nā mea hoʻohana hou e hoʻopau i ke kaʻina hana hoʻopaʻa inoa ponoʻī ma ka laina
+Use self-registration email notifications: Hana i nā ʻōlelo huna a hoʻouna i nā mea hoʻohana hou
+allow-attachment-help: ʻAe i nā mea hoʻohana e hoʻohui i nā hoʻopili faila i nā hanana.
+Allow file attachments to events: ʻAe i nā hoʻopili faila i nā hanana
+Admin and owner can always add attachments if enabled.: Hiki i ka luna a me nā ʻona ke hoʻohui mau i nā mea hoʻopili inā ʻae ʻia.
+allow-comments-help: ʻAe i nā mea hoʻohana e hoʻohui i nā manaʻo i nā hanana.
+Allow comments to events: ʻAe i nā manaʻo i nā hanana
+Admin and owner can always add comments if enabled.: Hiki i ka luna a me nā mea nona ke hoʻohui mau i nā manaʻo inā hiki ʻia.
+email-enabled-help: E huli a hoʻopau paha i nā hoʻouna ʻana a pau o ka leka uila no ka hoʻolaha a me nā hoʻomanaʻo. Hoʻonohonoho ʻia i "ʻaʻole", inā ʻaʻole hoʻonohonoho pono kāu kikowaena e hoʻouna i nā leka uila.
+Email enabled: Hana ʻia ka leka uila
+email-default-sender: Hōʻike kikoʻī i ka helu leka uila e kikoʻī i ka mea hoʻouna ke hoʻouna ʻia nā mea hoʻomanaʻo.
+Default sender address: Wahi a ka mea hoʻouna paʻamau
+email-mailer: Koho i ka ʻano leka uila (SMTP, PHP mail, sendmail)
+Email Mailer: Leka uila
+email-smtp-host: Hoʻokaʻawale ʻia ka hostname (s) o ka kikowaena SMTP (s) e nā koma
+SMTP Host name(s): SMTP inoa inoa (s)
+email-smtp-port: Helu Port SMTP (maʻamau 25)
+SMTP Port Number: Helu Awa SMTP
+email-smtp-auth: E hoʻohana i ka hōʻoia ʻo SMTP
+SMTP Authentication: SMTP Hōʻoia
+email-smtp-username: SMTP inoa mea hoʻohana inā hoʻohana ʻoiaʻiʻo ʻana
+SMTP Username: SMTP inoa mea hoʻohana
+email-smtp-password: Palapala huna SMTP inā hoʻohana ʻoiaʻiʻo
+SMTP Password: Palapala huna SMTP
+Default user settings: Nā hoʻonohonoho hoʻohana paʻamau
+email-format: E kuhikuhi kikoʻī no ka HTML a i ʻole nā ​​leka uila maʻamau
+Email format preference: ʻOi aku ka makemake leka uila
+HTML: =
+Plain Text: Kupu Plain
+email-include-ics: Hoʻopili i kahi faila iCalendar ICS i leka uila
+Include iCalendar attachments: Hoʻopili i nā hoʻopili iCalendar
+email-event-reminders-help: Hōʻike kikoʻī inā e hoʻouna i nā hoʻomanaʻo hanana hanana a i ʻole.
+Event reminders: Hoʻomanaʻo hoʻomanaʻo hanana
+email-event-added: Hōʻike kikoʻī inā e hoʻouna i nā leka uila a i ʻole inā hoʻohui ʻia kahi hanana i kāu kalena.
+Events added to my calendar: Pākuʻi ʻia nā hanana i kaʻu kalena
+email-event-updated: Kuhi inā hoʻouna paha i nā leka uila i ka manawa e hōʻano hou ʻia kahi hanana i kāu kalena.
+Events updated on my calendar: Hōʻano hou ʻia nā hanana ma kaʻu kalena
+email-event-deleted: Hōʻike kikoʻī inā paha ʻaʻole e hoʻouna i nā leka uila i ka wā i wehe ʻia ai kahi hanana mai kāu kalena.
+Events removed from my calendar: Ua wehe ʻia nā hanana mai kaʻu kalena
+email-event-rejected: Hōʻike kikoʻī inā e hoʻouna i nā leka uila a i ʻole inā hōʻole kekahi mea i kahi hanana i kāu kalena.
+Event rejected by participant: Hōʻole ʻia ka hanana e ka mea i komo
+email-event-create: Kuhi ʻia inā e loaʻa i kahi mea hana i kahi leka uila
+Event that I create: Hanana aʻu e hana ai
+Color options: Nā koho kala
+Allow user to customize colors: ʻAe i ka mea hoʻohana e hoʻopilikino i nā kala
+gradient-colors: Inā hoʻohana ʻia nā kala gradient. Hiki i kēia ke hoʻololi i ka hana.
+Enable gradient images for background colors: Hiki i nā kiʻi gradient no nā kala kāʻei kua
+Not available: ʻAʻole loaʻa
+Background Image options: Koho i nā koho Kiʻi
+bgimage-help: URL o ke kiʻi kāʻei kua makemake ʻia. Loulou pili paha.
+Background Image: Kiʻi kāʻei kua
+bgrepeat-help: Hoʻokele i nā hana hou o ke kiʻi hope.
+Background Repeat: Hōʻuluʻulu Manaʻo
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Nā mea kōkua
+Preferences: Nā makemake
+Control Panel: Paʻa Kūʻai
+Users: Mea hoʻohana
+Account: Waihona
+Categories: Māhele
+Views: Nānā
+Layers: Papa,
+Reports: Nā Hōʻike
+Delete Events: Holoi i nā hanana
+Activity Log: Papa Hana
+System Log: Pūnaewele Log
+Security Audit: Hooia maluhia
+Public Preferences: Nā makemake lehulehu
+Unapproved Public Events: Nā hanana lehulehu i ʻāpono ʻole ʻia
+Administrative Tools: Na Mea Hana Hooponopono
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Inoa inoa pālua: "XXX".
+Username XXX already exists.: ʻO ka inoa mea hoʻohana "XXX" i kēia manawa.
+Email address XXX already exists.: Aia ma kahi leka uila "XXX".
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Nā Manaʻo Hou (pono ʻole)
+Approve and Send: E ʻae a hoʻouna mai
+Approve and Exit: Apono a puka
+(Your comments will be emailed to the event creator.): (E leka uila ʻia kāu mau manaʻo i ka mea hana hanana.)
+Hello, XXX.: Aloha, XXX.
+XXX has approved an appointment and added comments.: Ua ʻae ʻia kahi manawa a ua hoʻohui ʻia nā ʻōlelo e XXX.
+Subject XXX: Kumuhana: "XXX".
+Description XXX: Hōʻike: "XXX".
+Date XXX: Lā: XXX
+Time XXX: Manawa: XXX
+Comments XXX: Nā Manaʻo: XXX
+Approved w/Comments by XXX.: Ua ʻae ʻia / nā manaʻo e: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: ʻAno hoʻokele
+Your assistants: ʻO kāu mau mea kōkua
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Hewa ʻike ʻole ʻia.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Hewa o ka Polokalamu: ʻAʻohe XXX i hōʻike ʻia!
+user: mea hoʻohana
+year: makahiki
+month: mahina
+day: lā
+
+########################################
+# Page: category.php
+#
+Category Icon: Ikona Māhele
+Global: Honua
+The permissions for the icons directory are set to read-only: Hoʻonohonoho ʻia nā ʻae no ka papa kuhikuhi kiʻi i ka heluhelu wale ʻana.
+Category Name: Inoa Category:
+Color: Waihoʻoluʻu
+Remove Icon: Wehe i ikona:
+Add Icon to Category: Hoʻohui i ikona i ka mahele
+Upload: Hoʻouka
+GIF or PNG 6kb max: GIF a PNG paha 6kb max
+Search for existing icons: Huli i nā kiʻiona e kū nei
+Add: Pākuʻi
+Delete: Holoi
+Are you sure you want to delete this entry?: Makemake ʻoe makemake e holoi i kēia komo?
+Make New Category: Hana i ka Māhele Hou
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Koi ʻia ka inoa waeʻano
+File size exceeds maximum.: Ua ʻoi aku ka nui o ka faila ma mua o ka nui.
+File is not a GIF or PNG image: ʻAʻole kahi kiʻi GIF a PNG kiʻi paha
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: NA MEA HIKI MAU
+ENTRY CATEGORIES: Nā ʻATElelo komo
+Remove: Wehe
+Global Category: Māhele Honua
+Cancel: Hoʻopau
+
+########################################
+# Page: colors.php
+#
+Add Custom: Pākuʻi Dute
+Basic Colors: Nā Waihona Kumu
+Current Color: Waihoʻoluʻu o kēia wā
+Custom Colors: Nā Waihona Dute
+Old Color: Waihona Kahiko
+
+########################################
+# Page: combo.php
+#
+Select None: Koho ʻAʻohe
+Agenda: =
+Add Task: Hoʻohui i ka hana
+Description: Wehewehe
+Date: Lā
+Time: Manawa
+Priority: Ka makamua
+Access: Loaʻa
+Created by: Ua hana 'ia e
+Updated: Hoʻohou
+Participants: Nā mea komo
+Attachments: Pākuʻi
+Comments: Nā Manaʻo Manaʻo
+Brief Description: Wehewehe pōkole
+Full Description: Hōʻike piha
+Category: Māhele
+Add event detail: Hoʻohui i nā hanana hanana
+Start Date: Lā Hoʻomaka
+Due Date: Palena pau
+Add task detail: Hoʻohui kikoʻī hana
+All: Pau
+Error: Hewa
+no response from server: ʻaʻohe pane mai ke kikowaena pūnaewele
+JSON error: Hewa ʻo JSON
+High: Kiʻekiʻena
+Medium: Waena
+Low: Haahaa
+Today: I kēia lā
+Add Entry: Pākuʻi komo
+Unnamed Event: Hanana hanana inoa ʻole
+Unnamed Task: Kahi Hana inoa ʻole
+Refresh: Hoʻomaha hou
+Click to add entry: Kaomi e hoʻohui i ke komo
+Name: Inoa
+pm: ahiahi
+am: ʻo wau
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: Ua kāpae ʻo XXX i kahi manawa hoʻopaʻa.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: ʻO ka id pono ʻole blob
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Pākuʻi manaʻo
+Add Attachment: Pākuʻi Pākuʻi
+Subject: Kumuhana
+Comment: Manaʻo manaʻo
+Upload file: Hoʻouka i ka faile
+
+########################################
+# Page: docdel.php
+#
+Removed: Wehe ʻia
+
+########################################
+# Page: edit_entry.php
+#
+days: nā lā
+hours: mau hola
+minutes: minuke
+You are not authorized to edit this task.: ʻAʻole ʻae ʻia ʻoe e hoʻoponopono i kēia hana.
+is in a different timezone than you are. Currently: Aia i loko o kahi zona ʻokoʻa ma mua ou. I kēia manawa
+hour ahead of you: hola ma mua ou
+hour behind you: hola ma hope ou
+hours ahead of you: mau hola ma mua ou
+hours behind you: mau hola ma hope ou
+XXX is in a different timezone (ahead): (Aia ʻo XXX i kahi manawa ʻokoʻa; YYY ma mua ou.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (Aia ʻo XXX i kahi manawa ʻokoʻa; YYY ma hope ou.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Hoʻokumu ʻia ka manawa ma aneʻi ma kāu Timezone.
+Edit Entry: Hoʻoponopono komo
+Details: Nā kikoʻī
+Repeat: E hana hou
+Reminders: Nā Hoʻomanaʻo
+brief-description-help: Pono kēia e hāʻawi i kahi wehewehe pōkole (ma kahi o 20 mau huapalapala) o ka hanana. ʻO kēia ka mea e hōʻike i ka hanana ke nānā aku i ka kalena.
+full-description-help: Pono kēia e hoʻopau i nā kikoʻī o ka hanana. Hiki ke ʻike ʻia kēia ʻike ke ʻike ka mea hoʻohana i ka hanana.
+access-help: Hōʻike i ka pae komo o ka hanana. <ul> <li> lehulehu: hiki i kēlā me kēia ke ʻike i nā kikoʻī piha o ka hanana.</li> <li> hilinaʻi: Hiki i nā poʻe ʻē aʻe ke ʻike he komo kou no kēlā lā a me ka manawa, akā ʻaʻole nā ​​kikoʻī o ka mea.</li></li>
+priority-help: Kuhi i ka mea nui o ka hanana. E hōʻike ʻia nā hanana kiʻekiʻe kiʻekiʻe me ka wiwo ʻole.
+category-help: Kuhi i ka mahele o ka hanana.
+completed-help: Pau ka hana lā. Hoʻonohonoho wale ʻia inā pili ka hapa haneri i 100%.
+Date Completed: Lā Ua Pau
+percent-help: Ka pākēneka hoʻopau hana no kēia mea hoʻohana
+Percent Complete: Piha pākēneka
+All Percentages: Nā Hualeneka a pau
+location-help: Kahi hanana
+Location: Kahi
+url-help: URL hanana
+URL: =
+date-help: Kuhi ʻia ka lā o ka hanana.
+Untimed event: Hanana Untimed
+Timed event: Hanana hanana manawa
+All day event: Hanana lā holoʻokoʻa
+Timezone Offset: ʻO Offset Timezone
+time-help: Kuhi i ka manawa o ka hanana. <ul> <li> "Hanana manawa" (no kekahi hanana i hoʻolālā ʻia no kekahi manawa kikoʻī ma ia lā) )</li> <li> "Hanana lā holoʻokoʻa" (no kahi hanana i hala i ka lā holoʻokoʻa (e like me ka haʻalele ʻana i ke keʻena)</li></ul>
+duration-help: Kuhi i ka lōʻihi (i nā hola; mau minuke) o ka hanana. <em>Hiki ke waiho hakahaka kēia kahua.</em>
+end-time-help: Kuhi i ka manawa i manaʻo ʻia e pau ka hanana.
+Start Time: Manawa Hoʻomaka
+Due Time: Manawa Manawa
+Site Extras: Paʻi pūnaewele
+avail_participants-help: Papa inoa o nā mea komo i loaʻa o kēia komo.
+Available: Loaʻa
+Find Name: E ʻike i ka inoa
+Resources: Kumuwaiwai
+participants-help: Papa inoa o nā mea komo o kēia komo.
+Selected: Koho ʻia
+Availability: Loaʻa
+external-participants-help: Kuhi i kahi papa inoa o nā mea komo no ka hanana ʻaʻole nā ​​mea hoʻohana kalena. Pono e helu ʻia nā mea hoʻohana i kēlā me kēia laina a hiki ke hoʻohui i kahi leka uila. Inā kuhikuhi ʻia kahi leka uila, hiki i ka mea hoʻohana ke kiʻi i nā leka hoʻomaopopo a me nā hoʻomanaʻo.
+External Participants: Nā mea komo i waho
+repeat-type-help: Koho i nā manawa e hana hou ai ka hanana.
+Daily: I kēlā me kēia lā
+Weekly: Pule Pule
+Monthly: Mahina
+by day: e ka lā
+by date: ma ka lā
+by position: ma ke kūlana
+Monthly (by day): Mahina (e ka lā)
+Monthly (by date): Mahina (e ka lā)
+Monthly (by position): Mahina (ma ke kūlana)
+Yearly: Makahiki
+Manual: Manuahi
+Expert Mode: ʻAno Manaʻo
+repeat-end-date-help: Kuhi i ka lā e hana hou ai ka hanana a hiki.
+Ending: Pau
+Forever: Mau loa
+Use end date: E hoʻohana i ka lā hoʻopau
+Number of times: Ka helu o nā manawa
+repeat-frequency-help: Hōʻike i ka manawa e hana hou ai ka hanana.
+Frequency: Alapine (frequency)
+Weekdays Only: Nā lā pule wale nō
+Week Start: Hoʻomaka Pule
+repeat-bydayextended-help: ʻAe i ka koho lā e pili ana i ka lā o ka pule.
+ByDay: ʻO ByDay
+repeat-month-help: Kuhi ʻia i mau mahina e hana hou ai ka hanana i loko.
+ByMonth: NaMonth
+repeat-bysetpos-help: ʻAe i ka koho ʻana o ka lā e pili ana i ke kūlana me ka malama.
+BySetPos: NaSetPos
+repeat-bymonthdayextended-help: ʻAe i ka koho lā e pili ana i ka lā.
+ByMonthDay: =
+repeat-byweekno-help: ʻAe i ka mea hoʻohana e kuhikuhi i ka papa inoa o nā pule e hana hou i ka hanana (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: ʻAe i ka mea hoʻohana e kuhikuhi i ka papa inoa o nā lā makahiki e hana hou i ka hanana (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: Kukahiko
+repeat-exceptions-help: Nā lā hou aʻe e pono ʻole ai kēia hanana a i ʻole.
+Exclusions: Hoʻokaʻawale
+Inclusions: Nā Hoʻohui
+Add Exception: Hoʻohui Exception
+Add Inclusion: Hoʻohui Hoʻohui
+Delete Selected: Holoi i koho ʻia
+Send Reminder: Hoʻouna Hoʻomanaʻo
+When: Āhea
+Use Date/Time: E hoʻohana i ka lā / manawa
+Use Offset: E hoʻohana iā Offset
+Before: Ma mua
+After: Mahope iho
+Start: Hoʻomaka
+End/Due: Pau / Ma muli o
+Times: Manawa
+Every: Kēlā me kēia
+CAPTCHA Warning: ʻninglelo Aʻo:  ʻAʻole hiki ke hoʻohana iā CAPTCHA me ka ʻole o kā PHP extension GD!<br>
+Delete entry: Holoi i ke komo
+You are not authorized to edit this entry.: ʻAʻole ʻae ʻia ʻoe e hoʻoponopono i kēia komo.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: Ua hana ʻo XXX i kahi manawa hou.
+XXX has updated an appointment.: Ua hōʻano hou ʻo XXX i kahi manawa.
+Security violation!: Hewa ka palekana!
+You must enter the anti-spam text on the previous page.: Pono ʻoe e hoʻokomo i ka huaʻōlelo anti-spam ma ka ʻaoʻao i hala.
+The following conflicts with the suggested time: Kūʻē nā mea aʻe me ka manawa i hōʻike ʻia
+User removed from participants list.: Ua wehe ʻia ka mea hoʻohana mai ka papa inoa o nā mea komo.
+Please look on XXX to accept or reject this appointment.: E ʻoluʻolu e nānā iā XXX e ʻae a hōʻole paha i kēia hoʻokohu.
+Please look on XXX to view this appointment.: E ʻoluʻolu e nānā iā XXX e ʻike i kēia hoʻokohu.
+Scheduling Conflict: Hoʻonohonoho hoʻonohonoho hakakā
+Your suggested time of: Kou manawa i manaʻo ʻia o
+conflicts with the following existing calendar entries: paio me nā mea i kākau inoa ʻia ma ka ʻalekahi e kū nei
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: ʻAʻole hoʻonohonoho ʻia ʻo NONUSER_PREFIX ma "config.php".
+word characters only: (hiki ke loaʻa nā huaʻōlelo wale nō; [a-zA-Z_0-9])
+Add User: Pākuʻi Mea hoʻohana
+Edit User: Hoʻoponopono Mea hoʻohana
+Calendar ID: Kālena ID
+First Name: Inoa mua
+Last Name: Inoa hope
+Is public calendar: He lālani lehulehu
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Hewa ʻikepili
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Hoʻohui i ka Alemanaka Mamao
+Edit Remote Calendar: Hoʻoponopono i ka Alemanaka Mamao
+Create Layer: Hana i ka Layer
+Reload: Hoʻouka hou
+Required to View Remote Calendar: Koi ʻia e ʻike i ka Alemanaka Mamao
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Nā hopena i lawe ʻia mai
+Events successfully imported: Ua lawe maikaʻi ʻia nā hanana
+Create a new layer to view this calendar.: E hana i kahi papa hou e ʻike i kēia kalena.
+Errors: Nā Hewa
+There was an error parsing the import file or no events were returned.: Ua loaʻa kahi hemahema i ka haʻi ʻana i ka faile a ʻaʻole hoʻi i hoʻihoʻi ʻia nā hanana.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Āpōpō
+Yesterday: Nehinei
+Day before yesterday: I ka lā ma nehinei
+Next week: I kēia pule aʻe
+This week: Kēia pule
+Last week: I ka pule aku nei
+Week before last: ʻO ka pule ma mua o ka hala
+Next week and week after: ʻO ka pule aʻe a me ka pule aʻe ma hope
+This week and next week: Kēia pule a kēia pule aʻe
+Last week and this week: ʻO ka pule i hala a me kēia pule
+Last two weeks: ʻO nā pule ʻelua i hala iho nei
+Next month: I kēia mahina aʻe
+This month: Kēia mahina
+Last month: I ka mahina i hala
+Month before last: Mahina ma mua o ka hala
+Next year: I kēia makahiki aʻe
+This year: Kēia makahiki
+Last year: I ka makahiki aku nei
+Year before last: Makahiki ma mua o ka hala
+Next 14 days: Nā lā 14 aʻe
+Next 30 days: 30 mau lā aʻe
+Next 60 days: 60 mau lā aʻe
+Next 90 days: 90 mau lā aʻe
+Next 180 days: 180 mau lā aʻe
+Next 365 days: Nā lā 365 aʻe
+Invalid report id XXX.: Hōʻike hewa hewa: "XXX".
+Unnamed Report: Hoike inoa ole
+Add Report: Pākuʻi Hōʻike
+Edit Report: Hooponopono Hoike
+Report name: Inoa hōʻike
+User: Mea hoʻohana
+Current User: Mea hoʻohana o kēia manawa
+Include link in menu: Hoʻopili i ka loulou i ka papa kuhikuhi
+Include standard header/trailer: Hoʻopili i ka poʻo poʻo poʻo / trailer
+Include previous/next links: Hoʻopili i nā loulou ma mua / aʻe
+Include empty dates: Hoʻopili i nā lā hakahaka
+Date range: Laulā lā
+Template variables: Nā loli Template
+Page template: Palapala ʻaoʻao
+Day template: Laulā lā
+Event template: Pepa kiʻi hanana
+Are you sure you want to delete this report?: Makemake ʻoe e kāpae i kēia hōʻike?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: ʻAʻohe hōʻike hōʻike penei: "XXX".
+Variable XXX not found.: ʻAʻole loaʻa ʻo XXX loli.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Hoʻoponopono i ke poʻo poʻo Custom
+Edit Custom Script/Stylesheet: Hoʻoponopono i ka Script / Stylesheet
+Edit Custom Trailer: Hoʻololi i ke kaʻa kiʻi maʻamau
+
+########################################
+# Page: edit_user.php
+#
+Username: Inoa mea hoʻohana
+E-mail address: Helu leka uila
+Password: Hua huna
+again: hou
+Disabled for demo: Ua pio ka polokalamu no ka demo
+Are you sure you want to delete this user?: Makemake ʻoe makemake e holoi i kēia mea hoʻohana?
+Change Password: Hoʻololi ʻōlelo huna
+New Password: Hua ʻōlelo huna hou
+Set Password: Hoʻonoho i ka ʻōlelo huna
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Holoi i nā mea hoʻohana ʻaʻole kākoʻo ʻia.
+The passwords were not identical.: ʻAʻole like nā ʻōlelo huna.
+You have not entered a password.: ʻAʻole ʻoe i komo i kahi huaʻōlelo.
+Username cannot be blank.: ʻAʻole hiki ke hakahaka ka inoa inoa.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: ʻAʻole ʻae ʻia
+
+########################################
+# Page: export.php
+#
+Export: Hoʻouna aku
+Export format: Hōʻano hoʻolilo
+Include all layers: Hoʻopili i nā papa āpau
+Include deleted entries: Hoʻopili i nā mea i kāpae ʻia
+Export all dates: E hoʻolilo i nā lā āpau
+Start date: Lā hoʻomaka
+End date: Lā pau
+Modified since: Hoʻololi ʻia mai
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: ʻaʻole i wehewehe ʻia a pololei ʻole paha ka hōʻaike hoʻolilo.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: ʻAʻohe mea hoʻohana i kuhikuhi ʻia.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Hoʻohui Pūʻulu Hou
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Pūʻulu inoa ʻole
+Add Group: Pākuʻi Pūʻulu
+Edit Group: Pūʻulu Hoʻoponopono
+Group name: Ka inoa pūʻulu
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Pono ʻoe e kuhikuhi i kahi inoa pūʻulu
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Hoʻomālamu hou i nā kalena
+auto-refresh-help: Ke hiki ʻia, ka nānā ʻana o ka lā, ka nānā ʻana i ka pule, ka nānā ʻana o ka mahina, a me ka papa inoa ʻana i nā ʻaoʻao i ʻae ʻole ʻia e hōʻoluʻolu iā lākou iho i kēlā me kēia manawa.
+Auto-refresh time: Auto-hoʻoulu manawa
+auto-refresh-time-help: Inā hiki i ka Auto-refresh, kuhikuhi kēia i ka manawa ma waena o kēlā me kēia hōʻoluʻolu.
+Display days with events in bold in year view: Hōʻike i nā lā me nā hanana i ka wiwo ʻole i ka nānā makahiki
+Display weekends in week view: Hōʻike i nā hopena pule i ka ʻike pule
+Time interval: Waena manawa
+time-interval-help: Kuhi i ka lōʻihi o nā poloka manawa i ka ʻike o ka pule a me ka ʻike ʻana o ke ao.
+Nonuser: Nā Alemanaka Nonuser
+user-customize-color: Kuhi ʻia inā ʻae ʻia nā mea hoʻohana e hoʻololi i kā lākou kala kala ponoʻī.
+enable-gradient-help: E hoʻohana i nā waihoʻoluʻu gradient no ke kāʻei kapu.
+Manually entering color values: E komo lima ʻana i nā waiwai kala
+colors-help: Pono e hōʻike i nā kala āpau i ka "#RRGGBB" hōʻano hexadecimal kahi o "RR" ka helu hex no ka ʻulaʻula, ʻo "GG" ka waiwai hex no ka ʻōmaʻomaʻo, a ʻo "BB" ka helu hex no ka polū.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Hōʻike Pepeke
+Please include all the information below when reporting a bug.: E ʻoluʻolu e hoʻokomo i ka ʻike āpau ma lalo i ka hōʻike ʻana i kahi pāʻina.
+Also, please use English rather than XXX.: Eia kekahi, e ʻoluʻolu e hoʻohana iā  English  ma mua o XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Palapala Pūnaewele WebCalendar
+Currently in English only.: I kēia manawa ma ka ʻōlelo Pelekania wale nō.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Hoʻohui / hoʻoponopono ʻana i nā komo ʻalena
+Repeat Type: ʻAno hou
+For More Information...: No ka ʻike hou aku ...
+Repeat End Date: E hana hou i ka lā hoʻopau
+Repeat Day: Lā Hana Hou
+repeat-day-help: Hōʻike kikoʻī i nā lā o ka pule e hana hou ai ka hanana ma.
+
+########################################
+# Page: help_import.php
+#
+Import: =
+Palm Desktop: Pākaukau Pama
+allow you to import entries from the Palm...: E ʻae kēia palapala iā ʻoe e lawe mai i nā mea komo mai ka puke ʻoneki ʻo Palm Desktop. Pono ia e loaʻa i kāu papa kuhikuhi Palm ma ka puke puke / datebook.dat i kahi subdirectory i kapa ʻia e kāu inoa inoa.
+The following entries will not be imported: ʻAʻole e lawe ʻia nā mea hoʻokomo aʻe:
+Entries older than the current date: ʻO nā komo i hala ma mua o ka lā o kēia manawa
+Entries created in the Palm Desktop...: Hana ʻia nā komo i loko o ka Papamahi Papamoe ʻaʻole HotSync'd
+Anything imported from Palm...: E hoʻopili ʻia nā mea i lawe ʻia mai Palm mai i ka wā e lawe mai ai (inā ʻaʻole i hala ka lā hanana). No laila, pono e hana i nā mea hou i ka Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: E lawe kēia palapala i nā hanana vCalendar (.vcs) 1.0.
+The following formats have been tested: Ua hoʻāʻo ʻia nā ʻano aʻe:
+This form will import iCalendar (.ics) events.: E lawe kēia palapala i nā hanana iCalendar (.ics).
+Enabling: Ke hoʻohana nei
+Overwrite Prior Import: E hoʻokahuli i ka lawe mua ʻana mai
+will cause events imported previously...: e hoʻokumu i nā hanana i lawe ʻia ma mua, i hoʻohana i ka UID like me kahi hanana mai ka faila lawe mai hou, e māka ʻia e holoi ʻia. E ʻae kēia i kahi faila iCalendar i hoʻohou ʻia e lawe ʻia mai me ka hana ʻole ʻana i nā mea pālua.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Papa Kuhikuhi Kōkua
+About WebCalendar: No WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: He mea maikaʻi nā papa no ka hōʻike ʻana i nā hanana o nā mea hoʻohana ʻē aʻe i kāu kalena ponoʻī. Hiki iā ʻoe ke wehewehe i ka mea hoʻohana a me ke kala e hōʻike ʻia nā hanana i loko.
+Add/Edit/Delete: Hoʻohui / hoʻoponopono / kāpae
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Ke kāomi nei i ka loulou Edit Layers i ka ʻaoʻao admin ma ka lalo o ka ʻaoʻao e ʻae iā ʻoe e hoʻohui / hoʻoponopono / holoi i nā papa.
+The text color of the new layer that will be displayed in your calendar.: ʻO ka waihoʻoluʻu kikokiko o ka ʻāpana hou e hōʻike ʻia i kāu kalena.
+Disabling: Hoʻopau ʻole ʻana
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Kaomi i ka loulou Disable Layers i ka ʻaoʻao admin ma lalo o ka ʻaoʻao e hoʻopau i nā papa.
+Duplicates: Pālua
+If checked, events that are duplicates of your events will be shown.: Inā nānā ʻia, e hōʻike ʻia nā hanana i kope ʻia i kāu mau hanana.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Kaomi i ka loulou Enable Layers i ka ʻaoʻao admin ma ka lalo o ka ʻaoʻao e hoʻohuli i nā papa.
+Source: Punawai
+Specifies the user that you would like to see displayed in your calendar.: Hōʻike kikoʻī i ka mea hoʻohana āu e makemake ai e ʻike i kāu kalena.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Mahele Maʻamau
+default-category-help: Kuhi i ka mahele i kahi hanana hou e paʻamau i.
+When I am the boss: Ke hele au i ka luna
+Email me event notification: Leka uila iaʻu hanana hoʻolaha
+email-boss-notifications-help: Kuhi ʻia inā loaʻa nā luna i nā leka uila ma ke ʻano he leka hoʻomaopopo i nā hanana.
+I want to approve events: Makemake wau e ʻae i nā hanana
+boss-approve-event-help: Kuhi inā koi ʻia ka luna e ʻae i nā hanana i hoʻohui ʻia e nā mea kōkua.
+Subscribe/Publish: Kakau inoa / paʻi
+Allow remote publishing: ʻAe i ka paʻi mamao ʻana
+allow-remote-publishing-help: Kuhi inā hiki i kahi mea kūʻai aku iCal mamao ke paʻi i nā hanana hoʻi i WebCalendar
+remote-publishing-url-help: Hōʻike i ka URL e hoʻohana ai i ka noi client iCal no ka hoʻopaʻa inoa ʻelua a me ka paʻi ʻana ʻana hoʻi i WebCalendar.
+allow-remote-subscriptions-help: Kuhi inā hiki i nā mea hoʻohana mamao ke hoʻopaʻa inoa i kāu kalena, e ʻae iā lākou e ʻike i kāu mau hanana i kahi noi iCal-i hoʻohana ʻia (e like me Apple iCal a i ʻole Kalena Mozilla).
+remote-subscriptions-url-help: Hōʻike i nā URL o nā mea hoʻohana mamao e hoʻohana ai e kau inoa i kāu kalena.
+Enable FreeBusy publishing: Hoʻā i ka paʻi ʻana o FreeBusy
+freebusy-enabled-help: Kuhi ʻia inā hiki ke kiʻi ʻia kahi manawa hoʻohana i ka hoʻohana ʻana i ke kūlana iCal FreeBusy.
+freebusy-url-help: ʻO ka URL no ke kiʻi ʻana i ka papa inoa FreeBusy o ka mea hoʻohana
+rss-feed-url-help: E kiʻi i ka URL i ka hānai RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: ʻAe no ka mālama maikaʻi ʻana o ka hoʻohana a me nā ʻae. Hiki i nā mea hoʻohana ke hāʻawi i ka paʻamau a no kēlā me kēia ʻae inā ʻae ʻia e ka luna.
+If disabled, this user cannot send you emails.: Inā kīnā ʻole, ʻaʻole hiki i kēia mea hoʻohana ke hoʻouna iā ʻoe i nā leka uila.
+If disabled, this user cannot see you in the participants list.: Inā kīnā ʻole, ʻaʻole hiki i kēia mea hoʻohana ke ʻike iā ʻoe i ka papa inoa o nā mea komo.
+If enabled, this user cannot view the details of any of your entries.: Inā hiki, ʻaʻole hiki i kēia mea hoʻohana ke ʻike i nā kikoʻī o kekahi o kāu komo ʻana.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Hewa ka paʻi paʻi (luna hoʻomalu)
+Publishing Disabled (User): Hewa ka paʻi ʻana (hoʻohana)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Kaomi aku e koho
+Current Icons on Server: Nā kiʻi o kēia manawa ma ke kikowaena pūnaewele
+
+########################################
+# Page: import.php
+#
+import from file: lawe mai mai ka faile
+Disabled: Ka polokalamu JavaScript
+Import format: Hōʻike waihona
+Exclude private records: E kāpae i nā moʻolelo pilikino
+Repeated items are imported separately. Prior imports are not overwritten.: Hoʻokomo ʻokoʻa ʻia nā mea i hana hou ʻia. ʻAʻole hoʻokahuli ʻia nā lawe mai ma mua.
+
+########################################
+# Page: import_handler.php
+#
+No file: ʻAʻohe faila
+Error deleting palm events from webcalendar.: Hewa i ka holoi ʻana i nā hanana pāma mai ka webcalendar.
+Events from prior import marked as deleted: Hōʻailona ʻia nā hanana mai ka lawe mua ʻia mai
+Conflicting events: Nā hanana hakakā
+The import file contained no data.: ʻAʻohe ʻikepili i ka faila lawe mai.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Makemake ʻoe e kāpae i kēia papa?
+Delete layer: Holoi papa
+Edit layer: Pākuʻi hoʻoponopono
+Enable layers: Hiki i nā papa
+Layer: Kauwai
+Layers are currently disabled.: Ua pio ka papa o nā papa.
+Layers are currently enabled.: Hāʻawi ʻia nā papa i kēia manawa.
+Click to modify layers settings for XXX: Kaomi ma aneʻi e hoʻololi i nā hoʻonohonoho papa no ka kalena XXX.
+Disable Layers: Hoʻopio i nā papa
+Add layer: Pākuʻi papa
+Add Layer: Pākuʻi Layer
+Edit Layer: Hoʻonohonoho Kau
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: ʻAʻole hiki ke hoʻohou i ka makemake
+Invalid entry id.: Kūpono ʻole ka id id.
+You cannot create a layer for yourself.: ʻAʻole hiki iā ʻoe ke hana i kahi papa nāu.
+You can only create one layer for each user.: Hiki iā ʻoe ke hana i hoʻokahi papa no kēlā me kēia mea hoʻohana.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: E ʻae / hōʻoia
+Approve Selected: Apono ʻia i koho ʻia
+Check All: E hōʻoia a pau
+Emails Will Not Be Sent: ʻAʻole e hoʻouna ʻia nā leka uila
+Reject Selected: Hoole ʻia i koho ʻia
+Reject: Hoole
+Uncheck All: Hōʻalo i nā mea āpau
+View this entry: E nānā i kēia komo
+No unapproved entries for XXX.: ʻAʻohe mea i ʻāpono ʻole ʻia no: "XXX".
+Unapproved Entries: Nā Komo i ʻāpono ʻole ʻia
+Approve this entry?: E ʻae i kēia komo?
+Reject this entry?: E hōʻole i kēia komo?
+Approve Selected entries?: ʻAe i nā mea i koho ʻia?
+Reject Selected entries?: E hōʻole i nā mea i koho ʻia?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Pono ʻoe e hoʻokomo i kahi ʻeʻe a me ka ʻōlelo huna.
+Save login via cookies so I dont have to login next time.: Mālama i ka ʻeʻe ma o nā kuki no laila ʻaʻole pono wau e komo i ka manawa aʻe
+Login: ʻEʻe
+public: lehulehu
+Access XXX calendar: Loaʻa i ka kalena XXX
+cookies-note: Kahakaha: Pono kēia noi i nā kuki e hiki ai.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Nā huapalapala kū ʻole i ka ʻeʻe XXX.
+Invalid login: ʻEʻe kūpono ʻole
+Activity login failure: Mea hoʻohana: "XXX", IP: "YYY".
+Error XXX: Hewa: "XXX".
+You have been logged out.: Ua kua ʻia ʻoe.
+Access public calendar: E kiʻi i ka papa manawa lehulehu
+Not yet registered? Register here!: ʻAʻole kau inoa? Aaeno maanei!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: ʻAʻohe kalena hoʻohana ʻole: "XXX".
+This Calendar is not Public.: ʻAʻole ākea kēia Kalena
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Hoʻohui i ka Alemanaka NonUser Hou
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Pono e kuhikuhi ʻia kahi ʻeʻe.
+No such nonuser calendar: ʻAʻohe o kēlā ʻano ʻāpana ʻole
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Kumuhana kūpono ʻole
+Save Preferences: Mālama i nā makemake
+Public Access calendar: ʻO ka ʻalemanaka Access Public
+Modify Non User Calendar Preferences: Hoʻololi i nā makemake Kālele ʻAoʻao Mea hoʻohana
+Return to My Preferences: E hoʻi i kaʻu mau makemake
+Custom Scripts: Nā Palapala Kahiko
+Timezone Selection: Koho Wāzona
+Multiview: =
+entry-interval-help: Hoʻonohonoho i ka wā minuke ke hoʻoponopono nei i nā manawa komo
+Entry interval: Wā komo
+hour: hola
+minute: minuke
+theme-reload-help: Ma muli o ka caching CSS, koi ʻia kahi hoʻouka ʻaoʻao
+Page may need to be reloaded for new Theme to take effect: Pono e hoʻouka hou ʻia i ka ʻaoʻao no ka mana o ke Kumuhana hou
+display_byproxy-help: Hōʻike i ka mea hana maoli ma ka ʻaoʻao view_entry
+Display if created by Assistant: Hōʻike inā hana ʻia e Kōkua
+allow-view-subscriptions-help: ʻAe i ka palena ʻana i ke komo mamao ʻana i nā mea komo pilikino a pilikino paha
+Allow remote viewing of: E ʻae i ka nānā mamao ʻana o
+entries: komo
+
+########################################
+# Page: purge.php
+#
+Purging events for: Hoʻomaʻemaʻe i nā hanana no
+Finished: Pau
+Back: Hope
+Check box to delete ALL events for a user: Pahu pahu e holoi ai i nā hanana  ALL  no kahi mea hoʻohana
+Delete all events before: Holoi i nā hanana āpau ma mua
+Purge deleted only: Holoi ʻia ka hoʻomaʻemaʻe
+Preview delete: Preview holoi
+Are you sure you want to delete events for: Makemake ʻoe makemake e holoi i nā hanana no
+Records deleted from XXX: Holoi ʻia nā moʻolelo mai "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: ʻAʻole hiki ke hakahaka ka leka uila
+Username already exists.: Loaʻa ka inoa mea hoʻohana.
+Email address already exists.: Aia ka leka uila
+New user via self-registration.: Mea hoʻohana hou ma o ka hoʻopaʻa inoa ʻana.
+A new WebCalendar account has been set up for you.: Ua hoʻonohonoho ʻia kahi waihona WebCalendar hou nāu.
+Your username is XXX.: ʻO kou inoa inoa ʻo: "XXX".
+Your password is XXX.: ʻO kāu ʻōlelo huna ʻo: "XXX".
+Please visit XXX to log in and start using your account!: E ʻoluʻolu e kipa iā "XXX" e ʻeʻe a hoʻomaka e hoʻohana i kāu moʻokāki.
+You may change your password after logging in the first time.: Hiki paha iā ʻoe ke hoʻololi i kāu ʻōlelo huna ma hope o ke komo ʻana i ka manawa mua.
+If you received this email in error: Inā loaʻa hewa ʻoe i kēia leka uila a ʻaʻole kau inoa inoa no kahi moʻokāki WebCalendar, e hōʻalo paha ʻoe i kēia leka hoʻomaopopo, a pane paha me kahi memo pōkole
+Administrator: Luna hoʻokele
+Welcome: Welina
+New user via email.: Mea hoʻohana hou ma o ka leka uila.
+Registration: Kakau inoa
+Welcome to WebCalendar: Welina i WebCalendar
+Your email should arrive shortly.: E hōʻea koke kāu leka uila.
+Return to Login screen: Hoʻi i ka pale Login
+Password (again): ʻ Passwordlelo huna (hou):
+Your account information will be emailed to you.: E leka uila ʻia kāu ʻike ʻikepili iā ʻoe.
+Submit: Waiho
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Hoʻomau
+(Your comments will be emailed to the other participants.): (E leka uila ʻia kāu mau manaʻo i nā mea hui ʻē aʻe.)
+XXX has rejected an appointment.: Ua hōʻole ʻo XXX i kahi manawa hoʻopaʻa.
+Rejected by XXX.: Ua hōʻole ʻia e XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Hoʻohui i ka Alemanaka Mamao Hou
+
+########################################
+# Page: report.php
+#
+This event is confidential.: He hūnā kēia hanana.
+(Private): (Pilikino)
+(cont.): =
+Approved: Aponoia
+Deleted: Holoi ʻia
+Rejected: Ua hōʻole ʻia
+Waiting for approval: Ke kali nei no ka ʻae ʻia
+Unknown: ʻIke ʻole ʻia
+Invalid report id.: Kūpono ʻole ka hōʻike id.
+Click here to manage reports for the Public Access calendar.: Kaomi ma aneʻi e hoʻomalu i nā hōʻike no ka kalena Access Public.
+Add new report: Pākuʻi i ka hōʻike hou
+Manage Reports: Hoʻokele i nā hōʻike
+
+########################################
+# Page: search.php
+#
+Advanced Search: Huli Pae holomua
+Search: Huli
+Keywords: Huaʻōlelo huaʻōlelo
+Enter % for all entries: E hoʻokomo iā% no nā mea hoʻokomo
+Include: Hoʻopili pū
+Filter by Date: Kānana ma ka Lā
+All Dates: Nā lā āpau
+Past: Ua hala
+Upcoming: Ke hiki mai nei
+Range: Laulā
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Pono ʻoe e hoʻokomo i hoʻokahi a ʻoi paha huaʻōlelo hulina.
+Search Results: Nā hopena ʻimi
+match found: match loaʻa
+matches found: nā match i loaʻa
+No matches found: ʻAʻohe ʻike i ʻike ʻia
+New Search: Huli Hou
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Hōʻike ka ʻikepili ma lalo i nā pilikia i hiki ke pilikia me kāu hoʻonohonoho pūnaewele WebCalendar i hiki ke hoʻololi ʻia i mea e paʻa hou ai kāu hoʻonohonoho.
+For questions about WebCalendar security see the forums: No nā nīnau e pili ana i nā pilikia palekana WebCalendar, e ʻoluʻolu e hoʻohana i nā kolamu WebCalendar i mālama ʻia ma GitHub.com;<br>XXX
+View your current PHP settings: E ʻike i kāu hoʻonohonoho PHP i kēia manawa
+Security Issue: Hoʻopuka palekana
+Status: Kūlana
+Default admin user password: Palapala ʻōlelo hoʻohana hoʻohana paʻamau
+You should change the password of the default admin user.: Pono ʻoe e hoʻololi i ka ʻōlelo huna o ka hoʻohana hoʻohana paʻamau.
+File permissions XXX: Nā ʻae ʻae: XXX
+item XXX should not be writable: ʻAʻole pono e kākau ʻia nā mea i lalo:<br><tt> XXX</tt>
+File exists XXX: Aia kahi faila: "XXX"
+Because you have email disabled, you should remove this file.: Ma muli o ka hiki ʻole o kāu leka uila, pono ʻoe e wehe i kēia faila.
+File location XXX: Kahi waihona: "XXX"
+remove XXX if not using: Inā ʻaʻole ʻoe e hoʻohana nei i ka faile "XXX", pono ʻoe e kāpae iā ia. A i ʻole, e hoʻoneʻe iā ia i kahi papa kuhikuhi hou.
+System Settings XXX: Nā hoʻonohonoho pūnaewele: "XXX"
+consider enabling UAC: E makemake paha ʻoe e noʻonoʻo i ka hiki ʻana i ke kaohi o ka mea hoʻohana e hoʻonohonoho i nā pono o nā mea hoʻohana.
+recommend approving new public events: Paipai mākou e ʻae ʻia nā hoʻouna hanana lehulehu āpau.
+recommend using CAPTCHA: Paipai ʻia ʻo CAPTCHA e kiaʻi hou i nā hoʻouna hanana hanana.
+Database cache directory location: Kahi henua waihona cache database
+db cache should be inaccessable: Pono ka cache database ma kahi papa kuhikuhi e hiki ʻole ke kiʻi ʻia me kahi URL.
+PHP Settings XXX: Kāu Mau Koho PHP: "XXX"
+recommend setting XXX Off: Pau ka hoʻonohonoho paipai ʻia no "XXX".
+recommend setting allow_url_fopen Off: Paʻa ka hoʻonohonoho pono ʻia no "allow_url_fopen" ke ʻole e hiki i nā calendars mamao.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: E ʻike i kahi ʻalemanaka a kahi mea hoʻohana
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: ʻAʻole ʻoe i hoʻohui i nā ʻāpana.
+Set Category: Hoʻonohonoho Māhele
+Global Categories cannot be changed.: ʻAʻole hiki ke hoʻololi i nā ʻāpana honua.
+
+########################################
+# Page: upcoming.php
+#
+more: hou aku
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Nā Alemanaka Mamao
+denotes administrative user: hōʻike i ka mea hoʻohana hoʻomalu
+Add New User: Pākuʻi Mea hoʻohana Hou
+
+########################################
+# Page: usersel.php
+#
+form: palapala
+Reset: Hoʻihoʻi hou
+
+########################################
+# Page: views.php
+#
+Add New View: Hoʻohui i Nānā Hou
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: ʻIke inoa ʻole
+Add View: Pākuʻi i ka nānā
+Edit View: Hoʻolaha Manaʻo
+View Name: Nānā inoa
+View Type: ʻIkeʻano
+Day by Time: Kahi lā
+Week (Users horizontal): Wiki (hoʻohana ākea)
+Week by Time: ʻO kēlā me kēia pule
+Week (Users vertical): Wiki (Nā mea hoʻohana kiʻikuhi)
+Week (Timebar): Pule (Timebar)
+Month (Timebar): Mahina (Timebar)
+Month (side by side): Mahina (ʻaoʻao a ʻaoʻao)
+Month (on same calendar): Mahina (ma ka helu like like)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Pono ʻoe e kuhikuhi i kahi inoa ʻike
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: ʻAʻohe mea hoʻohana no kēia ʻike.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Hoʻohou i ka pākēneka hana
+Completed: Hoʻopau
+Assistant mode: ʻAno kōkua
+Declined: Hooholoia
+Needs-Action: Pono-hana
+by: e
+Percentage Complete: Piha pākēneka
+External User: Mea hoʻohana kūwaho
+Update: Hoʻohou
+at: ma
+comments: ʻōlelo manaʻo
+Show: Hōʻike
+Hide: Hūnā
+Approve/Confirm entry: E ʻae / hōʻoia i ke komo ʻana
+Reject entry: E hōʻole i ke komo ʻana
+Set category: Hoʻonohonoho waeʻano
+Add to My Calendar: Pākuʻi i kaʻu Kalena
+Copy entry: Komo kope
+This will delete this entry for all users.: E kāpae kēia i kēia komo ʻana no nā mea hoʻohana āpau.
+Edit entry: Hoʻoponopono komo
+Edit repeating entry for all dates: Hoʻoponopono i ke komo ʻana no nā lā āpau
+Delete repeating event for all dates: Holoi i ka hanana hana hou no nā lā āpau
+Edit entry for this date: Hoʻoponopono i ke komo no kēia lā
+Delete entry only for this date: Holoi i ke komo wale no kēia lā
+Delete entry from calendar of XXX: Holoi i ke komo ʻana mai ka kalena o XXX
+This will delete the entry from your XXX calendar.: E kāpae kēia i ke komo ʻana mai kāu kalena XXX.
+boss: luna '
+This will delete the entry from your boss calendar.: E kāpae kēia i ke komo mai ka kalena o kāu haku.
+This will delete the entry from your calendar.: E kāpae kēia i ke komo ʻana mai kāu kalena.
+from your boss calendar: mai ka alemanaka a kou haku
+Do you want to add this entry to your calendar?: Makemake ʻoe e hoʻohui i kēia komo i kāu kalena?
+This will add the entry to your calendar.: E hoʻohui kēia i ke komo i kāu kalena.
+Email all participants: Leka uila i nā mea komo a pau
+Hide activity log: Hūnā i ka loiloi hana
+Show activity log: Hōʻike i ka loiloi hana
+Export this entry to: E hoʻokuʻu aku i kēia komo i
+Palm Pilot: Paʻa Pailaka
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Kaomi pāpālua i ka pūnaewele hakahaka e hoʻohui i kahi komo hou.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Komo Hou
+cont.: cont
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: ʻO ka Alemanaka Mea hoʻohana ʻē aʻe
+Category Management: Māhele Māhele
+Day View: Nānā Lā
+Edit Event: Hoʻoponopono hanana
+Month View: Nānā Mahina
+Common Trailer: Laulaha maʻamau
+User Management: Hoʻokele Mea hoʻohana
+Manage Views: Mālama i nā ʻike
+Week View: Nānā Pule
+Year View: Nānā Makahiki
+Invalid function id: Kūpono ʻole ka hana id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: ʻAʻole i loaʻa nā faila "setting.php".<br>E ʻoluʻolu kope i "setting.php.orig" i "setting.php" a hoʻoponopono no kāu pūnaewele.
+Incomplete settings.php file...: Hoʻopau i ka faila "setting.php" ...
+Could not find XXX defined in...: ʻAʻole i loaʻa iā "XXX" i wehewehe ʻia i kāu faile "setting.php".
+You must define XXX in: Pono ʻoe e wehewehe iā "XXX" i ka faila "setting.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Kekemapa
+Dec: Dek
+LANGUAGE DEFINED: OLELO HOAKAKA
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Hewa i ka hoʻohui ʻana i ka waihona pūnaewele: "XXX".
+db_type not defined.: ʻAʻole wehewehe ʻia ka db_type.
+invalid db_type XXX: he maikaʻi ʻole db_type "" XXX ".
+Cache cleared from previous SQL!: Ua holoi ʻia ʻo Cache mai ka SQL i hala!
+Error executing query.: Ua hewa ka hoʻokō ʻana i ka nīnau.
+Unfortunately, XXX is not implemented for YYY: Minamina, ʻaʻole hoʻokō ʻia ʻo "XXX" no (YYY).
+Unknown ODBC error.: Hewa ODBC ʻike ʻole ʻia.
+Error opening cache dir XXX.: Hewa i ka wehe ʻana i ka cache dir "XXX".
+delete: kāpae
+Cache error Could not XXX file YYY.: Hewa ahu hoʻokoe: ʻAʻole hiki iā XXX ke faila "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Ona kikowaena
+Invalid data format for: Hōʻoia ʻikepili hewa ʻole no
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Kuʻia: ʻAʻole kau ʻia ka ʻano no ka log hana.
+This event is XXX.: ʻO kēia hanana ʻo XXX.
+Conf.: =
+exceeds limit of XXX events per day: ʻoi aku i ka palena o nā hanana XXX i kēlā me kēia lā
+on: ma
+All Attendees: ʻO nā mea hele a pau
+Busy: ʻOihana
+Tentative: ʻĀkau
+Schedule an appointment for XXX.: E hoʻolālā i kahi manawa no XXX: YYY.
+date_select: =
+Event approved: Ua ʻae ʻia ka hanana
+Journal approved: Ua ʻae ʻia ka puke pai
+Task approved: Ua ʻae ʻia ka hana
+Attachment: Pākuʻi
+Event created: Hana ʻia ka hanana
+Journal created: Hana ʻia ka puke pai
+Task created: Hana ʻia ka hana
+Event deleted: Holoi ʻia ka hanana
+Journal deleted: Ua holoi ʻia ka puke pai
+Task deleted: Holoi ʻia ka hana
+New user via email (self registration): Mea hoʻohana hou ma o ka leka uila (hoʻopaʻa inoa iho)
+New user (self registration): Mea hoʻohana hou (hoʻopaʻa inoa ponoʻī)
+Notification sent: Hoʻouna ʻia ka leka hoʻomaopopo
+Event rejected: Ua hōʻole ʻia ka hanana
+Journal rejected: Ua hōʻole ʻia ka puke pai
+Task rejected: Ua hōʻole ʻia ka hana
+Reminder sent: Hoʻouna ʻia hoʻomanaʻo
+Event updated: Hōʻano hou ʻia ka hanana
+Journal updated: Pai hou ʻia ka puke pai
+Task updated: Hana hou ʻia ka hana
+Delete User: Holoi i ka Mea hoʻohana
+WK: =
+TASKS: NA HANA
+Task_Title: Poʻo inoa
+Due: Kūpono
+Task Name: Ka inoa hana
+Task Due Date: Lā Kūpono Kūpono
+You have XXX unapproved entries: Loaʻa iā ʻoe nā komo komo XXX i ʻāpono ʻole ʻia 
+Changes successfully saved: Mālama maikaʻi ʻia nā hoʻololi
+Event: Hanana
+Action: Hana
+Printer Friendly: Palapala Pai
+Generate printer-friendly version: Hana i kahi mana paʻi-aloha
+after: ma hope
+before: ma mua
+end: hoʻopau
+start: hoʻomaka
+View this event: E ʻike i kēia hanana
+View this task: E nānā i kēia hana
+January: Ianuali
+February: Pepeluali
+March: Malaki
+April: Apelila
+May_: Mei
+June: Iune
+July: Iulai
+August: Aukake
+September: Kepakemapa
+October: Okakopa
+November: Nowemapa
+Jan: Ian
+Feb: Pepeluali
+Mar: =
+Apr: Apr.
+May: Mei
+Jun: Hun
+Jul: Iulai
+Aug: ʻAukake
+Sep: Sep.
+Oct: ʻOkakopa
+Nov: Nov.
+SU: =
+MO: ʻO MO
+TU: =
+WE: =
+TH: ʻO TH
+FR: =
+SA: =
+unknown-month: mahina-ʻike ʻole ʻia
+First Quarter Moon: Mahina hapaha mua
+Full Moon: Mahina Piha
+Last Quarter Moon: Mahina hapaha hope
+New Moon: Newa moona
+Error TIME_SLOTS undefined!: Kuʻia: TIME_SLOTS hōʻole ʻole ʻia!
+The following error occurred: Ua loaʻa kēia hewa
+You are not authorized.: ʻAʻole ʻae ʻia ʻoe.
+Add N hours to: Pākuʻi i nā hola N i
+Subtract N hours from: Unuhi N hola mai
+same as: like me
+server time: manawa kikowaena
+Cannot read timezone file XXX.: ʻAʻole hiki ke heluhelu i ka faile wāzone: XXX.
+Your current GMT offset is XXX hours.: ʻO kāu offset o kēia wā he XXX hola.
+Unauthorized: ʻAe ʻole ʻia
+Error approving event XXX.: Hewa i ka ʻae ʻana i ka hanana: XXX.
+Error deleting event XXX.: Hewa i ka holoi ʻana i ka hanana: XXX.
+Error rejecting event XXX.: Hewa i ka hōʻole ʻana i ka hanana: XXX.
+Sunday: Lāpule
+Monday: PōʻakahiEnglish
+Tuesday: Pōʻalua
+Wednesday: Pōʻakolu
+Thursday: Pōʻahā
+Friday: Pōʻalima
+Saturday: Pōʻaono
+Sun: Lā
+Mon: =
+Tue: Pōʻalua
+Wed: Pōʻalua
+Thu: Pōʻahā
+Fri: Poʻalima
+Sat: Poʻa
+unknown-weekday: ʻike ʻole ʻia
+Invalid referring URL: Hewa ke kuhikuhi ʻana i URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Papa Kuhikuhi
+Documentation: Palapala
+Page: ʻAoʻao
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Kaʻu Alemanaka
+Add New Entry: Pākuʻi komo hou
+Add New Task: Hoʻohui i kahi hana hou
+Logout: Lele
+Home: Ka home
+Back to My Calendar: E hoʻi i kaʻu Kalena
+Go to: E hele
+Manage calendar of: Hoʻomalu kalena o
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: ʻAʻole Loaʻa ka ʻ Languagelelo Pūnaewele
+(not supported): (ʻaʻole kākoʻo)
+Abkhazian: =
+Acoli: ʻO Acoli
+Adangme: =
+Adyghe: ʻO Adyghe
+Afar: Ma kahi mamao loa
+Afrihili: =
+Afrikaans: Apikana
+Ainu: ʻAinu
+Akan: =
+Akkadian: =
+Albanian: Alapania
+Aleut: =
+Algonquian: ʻAlekonaika
+Altai (Southern): Altai (Hema)
+Amharic: Amahapika
+Angika: =
+Apache: =
+Arabic (Algeria): ʻAlapia (ʻAlekelia)
+Arabic (Bahrain): ʻAlapia (Bahrain)
+Arabic (Egypt): ʻAlapia (ʻAikupika)
+Arabic (Iraq): ʻAlapia (ʻIraka)
+Arabic (Jordan): ʻAlapia (Ioredane)
+Arabic (Kuwait): ʻAlapia (Kuwait)
+Arabic (Lebanon): ʻAlapia (Lebanona)
+Arabic (Libya): ʻAlapia (Libya)
+Arabic (Morocco): ʻAlapia (Maroko)
+Arabic (Oman): ʻAlapia (ʻOmana)
+Arabic (Qatar): ʻAlapia (Qatar)
+Arabic (Saudi Arabia): ʻAlapia (Saudi ʻAlapia)
+Arabic (Syria): ʻAlapia (Suria)
+Arabic (Tunisia): ʻAlapia (Tunisia)
+Arabic (U.A.E.): ʻAlapia (U.A.E.)
+Arabic (Yemen): ʻAlapia (Yemen)
+Arabic: Apapika
+Aragonese: =
+Aramaic: =
+Arapaho: =
+Arawak: =
+Armenian: Ameniana
+Assamese: =
+Asturian: ʻAseteria
+Athapascan: ʻO Athapascan
+Avaric: ʻAbarika
+Avestan: ʻAvestan
+Awadhi: =
+Aymara: =
+Azerbaijani: ʻAzerbaijan
+Balinese: ʻIneseiwi
+Baluchi: ʻO Baluchi
+Bambara: ʻO Bambara
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: ʻO Bashkir
+Basque: Pōkē
+Beja: ʻO Beja
+Belarusian: Ōlelo Belarusa
+Bemba: =
+Bengali: Penekali
+Bhojpuri: ʻĀpana
+Bihari: =
+Bikol: ʻO Bikol
+Bislama: =
+Blackfoot: ʻEleʻele
+Blin: =
+Bliss: Pōmaikaʻi
+Bosnian: Ponia
+Braj: =
+Breton: =
+Buginese: Bugina
+Bulgarian: Pukalia
+Buriat: ʻO Buriat
+Burmese: Pulumi
+Caddo: ʻO Caddo
+Catalan: Ōlelo Katalonia
+Cebuano: =
+Chagatai: =
+Chamorro: ʻO Chamorro
+Chechen: =
+Cherokee: Ōlelo Cherokī
+Cheyenne: ʻO Cheyenne
+Chibcha: ʻO Chibcha
+Chichewa: ʻO Chichewa
+Chinese (Hong Kong): Pākē (Hong Kong)
+Chinese (PRC): Pākē (PRC)
+Chinese (Simplified/GB2312): Pākē (Simplified / GB2312) 
+Chinese (Singapore): Pākē (Singapore)
+Chinese (Taiwan): Pākē (Taiwan)
+Chinese (Traditional/Big5): Pākē (Kuʻuna / Big5)
+Chinook: =
+Chipewyan: ʻO Chipewyan
+Choctaw: =
+Chuukese: ʻO Chuukese
+Chuvash: =
+Coptic: =
+Cornish: =
+Corsican: Ōlelo Kokia
+Cree: ʻO Cree
+Creek: Kahawai
+Croatian: Koalia
+Czech: Keka
+Dakota: =
+Danish: Kenemaka
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: ʻO Dogri
+Dogrib: ʻO Dogrib
+Duala: =
+Dutch (Belgium): Hōlani (Pelekiuma)
+Dutch: Hōlani
+Dyula: ʻO Dyula
+Dzongkha: ʻO Dzongkha
+Edo: ʻO Edo
+Efik: ʻO Efik
+Ekajuk: ʻO Ekajuk
+Elamite: ʻO Elamite
+English (Australia): Pelekania (Australia)
+English (Belize): Pelekania (Belize)
+English (Canada): Pelekania (Kanada)
+English (Ireland): Pelekania (ʻIlani)
+English (Jamaica): Pelekania (Jamaica)
+English (New Zealand): Pelekania (Nu Kilani)
+English (Philippines): Pelekania (Pilipino)
+English (South Africa): Pelekania (ʻApelika Hema)
+English (Trinidad & Tobago): Pelekania (Trinidad & Tobago)
+English (United Kingdom): Pelekania (United Kingdom)
+English (United States): English (ʻAmelika Hui Pū ʻIa)
+English (Zimbabwe): Pelekania (Zimbabwe)
+English: Pelekania-US
+Erzya: ʻO Erzya
+Esperanto: Ōlelo Esperanto
+Estonian: Ekekonia
+Ewe: ʻEwe
+Ewondo: ʻO Ewondo
+Fang: Pua
+Fanti: ʻO Fanti
+Faroese: =
+Fijian: =
+Filipino: Pilipino
+Finnish: Pinilana
+Fon: ʻO Fon
+French (Belgium): Palani (Pelekiuma)
+French (Canada): Palani (Kanada)
+French (France): Palani (Palani)
+French (Luxembourg): Palani (Lukemapuka)
+French (Monaco): Palani (Monako)
+French (Switzerland): Palani (Kuikilana)
+French: Palani
+Frisian (Eastern): Frisian (Hikina)
+Frisian (Northern): Frisian (ʻĀkau)
+Frisian (Western): Frisian (Komohana)
+Frisian: =
+Friulian: =
+Fulah: =
+Ga: ʻO Ga
+Galibi: =
+Galician: Kalikia
+Ganda: =
+Gayo: ʻO Gayo
+Gbaya: ʻO Gbaya
+Geez: ʻO Geez
+Georgian: Keokia
+German (Austria): Kelemania (ʻAukekulia)
+German (Germany): Kelemania (Kelemania)
+German (Liechtenstein): Kelemania (Liechtenstein)
+German (Luxembourg): Kelemania (Lukemapuka)
+German (Standard): Kelemānia (Koʻo)
+German (Switzerland): Kelemania (Kuikilana)
+German: Alemania
+Gilbertese: =
+Gondi: ʻO Gondi
+Gorontalo: =
+Gothic: ʻO Gothic
+Grebo: ʻO Grebo
+Greek: Helene
+Greenlandic: Ōlelo' Āina 'Ōmaʻomaʻo
+Guarani: ʻO Guarani
+Gujarati: Kuhalaki
+Gwich&#39;in: ʻO Gwichʻin
+Haida: =
+Haitian (Creole): Ōlelo Haiki)
+Haitian: =
+Hausa: Hauka
+Hawaiian: Ōlelo Hawaiʻi
+Hebrew: Hepela
+Herero: =
+Hiligaynon: =
+Hindi: Hiniki
+Hiri Motu: =
+Hittite: =
+Hmong: Mona
+Holo (Taiwanese): =
+Hungarian: Hunakalia
+Hupa: =
+Iban: =
+Icelandic: Āinahau
+Ido: Makemake wau
+Igbo: ʻO Igbo
+Iloko: =
+Indonesian: Inikonia
+Ingush: ʻO Ingush
+Inuktitut: =
+Inupiaq: =
+Iranian: ʻIlaniana
+Irish (Gaelic): ʻIlelani (Gaelic)
+Irish: Ipelana
+Iroquoian: ʻIroquoian
+Italian (Switzerland): Ikalia (Kuikilana)
+Italian: Ikalia
+Japanese: Kepanī
+Javanese: Kawanī
+Judeo-Arabic: Judeo-ʻAlapia
+Judeo-Persian: Iudaio-Peresia
+Kabardian: Ōlelo Kabaradia
+Kabyle: ʻO Kabyle
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: Kanākā
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: ʻO Kawi
+Kazakh: Ōlelo Kazaka
+Khasi: =
+Khmer (Central): Khmer (waena)
+Khmer: ʻO Khmer
+Khotanese: =
+Kikuyu: ʻO Kikuyu
+Kimbundu: ʻO Kundundu
+Kinyarwanda: ʻO Kinyarwanda
+Kirghiz: ʻO Kirghiz
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Kōlea (Johab)
+Korean (North): Kōlea (ʻĀkau)
+Korean (South): Kōlea (Hema)
+Korean: Kolea
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Ōlelo Kurdish
+Kutenai: ʻO Kutenai
+Kyrgyz: Ōlelo Kyrgyz
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Ōlelo Laosa
+Latin: Ōlelo Lākni
+Latvian: Lakiwiana
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Ōlelo Lituania
+Lojban: =
+Lozi: ʻO Lozi
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: ʻO Luiseno
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: =
+Macedonian: Makekoni
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Malagaria
+Malay: Mālei
+Malayalam: Mālealama
+Maldivian: Maledivian
+Maltese: Malkī
+Manchu: =
+Mandar: =
+Mandingo: ʻO Mandingo
+Manipuri: =
+Manx: =
+Maori: Ōlelo Māori
+Mapuche: =
+Marathi: Malapi
+Mari: ʻO Mari
+Marshallese: =
+Marwari: ʻO Marwari
+Masai: =
+Mayan: ʻO Maya
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: ʻO Minangkabau
+Mirandese: ʻO Mirandese
+Mohawk: =
+Moksha: =
+Moldavian: Moulana
+Mongo: =
+Mongolian: Ōlelo Monokolia
+Montenegrin: =
+Moroccan: =
+Mossi: =
+Myanmar: Maianamara
+Māori: Ōlelo Māori
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: ʻO Navajo
+Ndebele (North): Ndebele (ʻĀkau)
+Ndebele (South): Ndebele (Hema)
+Ndebele: ʻO Ndebele
+Ndonga: ʻO Ndonga
+Neapolitan: =
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: Noheka
+Norse: =
+Norwegian (Bokmål): Nolewai (Bokmål)
+Norwegian (Nynorsk): Nolewai (Nynorsk)
+Norwegian: Nolewai
+Nyamwezi: ʻO Nyamwezi
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Kahiki
+Odia: ʻOdia
+Ojibwa: ʻO'jibwa
+Oriyia: =
+Oromo: ʻO Oromo
+Osage: =
+Ossetic: =
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: Ōlelo Pashto
+Pedi: =
+Persian (Farsi): Peresia (Farsi)
+Persian (Iran): Peresia (ʻIrana)
+Persian: Pelekia
+Phoenician: Poenikia
+Pohnpeian: ʻO Pohnpeian
+Polish: Pōlani
+Portuguese: Pukikī
+Portuguese/Brazil: Pokukala / Brazil
+Punjabi (India): Paniolo (ʻInia)
+Punjabi (Pakistan): Paniolo (Pakistan)
+Punjabi: Ōlelo Punajabi
+Quechua: ʻO Quechua
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: Lomānia
+Romansh: ʻO Romanh
+Romany: =
+Rundi: =
+Russian (Moldavia: Lūkia (Moldavia
+Russian (Republic of Moldova): Lūkia (Repubalika o Moldova)
+Russian: Lukia
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (ʻĀkau)
+Sami (Skolt): =
+Sami (Southern): Sami (Hema)
+Sami: Ōlelo Sami
+Samoan: Kāmoa
+Samoli: ʻO Samoli
+Sandawe: ʻO Sandawe
+Sango: ʻO Sango
+Sanskrit: Ōlelo Sanskrit
+Santali: =
+Sardinian: Sardinia
+Sasak: =
+Scots (Gaelic): Skots (Gaelic)
+Selkup: =
+Serbian (Upper): Serbia (luna)
+Serbian: Ōlelo Serbia
+Serer: =
+Sesotho: ʻO Sesotho
+Shan: ʻO Shan
+Shona: =
+Sichuan Yi: ʻO Sichuan Yi
+Sicilian: Sikiliana
+Sindhi: Kiniki
+Sinhala: =
+Slavic: =
+Slovak: Kolowakia
+Slovenian: Kolewenia
+Sogdian: =
+Somali: Ōlelo Somalia
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbian (Lalo)
+Sorbian (Upper): Sorbian (luna)
+Sorbian: ʻAmelikana
+Sotho: ʻO Sotho
+Spanish (Argentina): Paniolo (Argentina)
+Spanish (Bolivia): Paniolo (Bolivia)
+Spanish (Chile): Paniolo (Chile)
+Spanish (Colombia): Paniolo (Colombia)
+Spanish (Costa Rica): Paniolo (Costa Rica)
+Spanish (Dominican Republic): Paniolo (Dominican Republic)
+Spanish (Ecuador): Paniolo (Ecuador)
+Spanish (El Salvador): Paniolo (ʻEl Salvador)
+Spanish (Guatemala): Paniolo (Guatemala)
+Spanish (Honduras): Paniolo (Honduras)
+Spanish (Mexico): Paniolo (Mekiko)
+Spanish (Nicaragua): Paniolo (Nicaragua)
+Spanish (Panama): Paniolo (Panama)
+Spanish (Paraguay): Paniolo (Paraguay)
+Spanish (Peru): Paniolo (Peru)
+Spanish (Puerto Rico): Paniolo (Pokoliko)
+Spanish (Spain): Paniolo (Sepania)
+Spanish (Uruguay): Paniolo (Uruguay)
+Spanish (Venezuela): Paniolo (Venezuela)
+Spanish: Kepania
+Sranan Tongo: ʻO Sranan Tongo
+Sukuma: =
+Sumerian: =
+Sundanese: Sundana
+Susu: =
+Sutu: =
+Swahili: Kawahili
+Swati: =
+Swedish (Finland): Kuekene (Pinilana)
+Swedish (Sweden): Kuekene (Kuekene)
+Swedish: Kuekene
+Syriac: Ōlelo Syriac
+Tagalog: Kakalo
+Tahitian: Tahiti
+Tai: =
+Taiwan: =
+Tajik: =
+Tamashek: ʻO Tamashek
+Tamil: Kamili
+Tatar: =
+Telugu: Keluku
+Tereno: =
+Tetum: ʻO Tetum
+Thai: Kailani
+Tibetan: Kipeka
+Tigre: Tigrere
+Tigrinya: ʻO Tigrinya
+Timne: =
+Tlingit: ʻO Tlingit
+Tok Pisin: ʻO Tok Pisin
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Nā Moku Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: ʻO Tsonga
+Tswana: =
+Tumbuka: =
+Turkish: Tureke
+Turkmen: Ōlelo Kuleke
+Tuvinian: =
+Twi: ʻO Twi
+Udmurt: ʻO Udmurt
+Ugaritic: =
+Ukrainian: ʻUnekania
+Umbundu: =
+Urdu: ʻUrdu
+Uyghur: Ōlelo Uyghur
+Uzbek: =
+Vai: =
+Venda: =
+Vietnamese: Wiekanama
+Volapük: =
+Votic: ʻO Votic
+Wakashan: ʻO Wakashan
+Walloon: =
+Waray: =
+Washo: =
+Welsh: =
+Wolaitta: =
+Wolof: Ōlelo Wolof
+Xhosa: Ōlelo Xhosa
+Yakut: ʻO Yakut
+Yao: ʻO Yao
+Yapese: Iapese
+Yiddish: =
+Yorùbá: ʻO Yorùbá
+Yupik: ʻO Yupik
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Hoakaka-lako
+event: hanana
+journal: puke pai
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Hewa ʻole ka hoʻohana ʻana o ka mea hoʻohana
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: ʻōlelo huna ʻole
+no such user: ʻaʻohe mea hoʻohana
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Ua pio ka waihona kālā
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Wāwaena
+Months: Mahina
+Month Days: Nā Lā Mahina
+Days: Nā Lā
+Weeks: Nā Weke
+Position: Kūlana
+Until: Ā hiki
+Count: Heluhelu
+Inclusion Dates: Nā lā hoʻohui
+Exclusion Dates: Nā lā wehe
+Event Imported: Hana ʻia ka hanana
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Hoʻolaha
+authenticate: Kuʻia SMTP: ʻAʻole hiki ke hōʻoia
+connect_host: Kuʻia SMTP: ʻAʻole hiki ke hoʻohui i ka host SMTP:
+data_not_accepted: Hewa SMTP: ʻae ʻole ʻia ka ʻikepili
+encoding: Hōʻike ʻikepili ʻole ʻia:
+execute: ʻAʻole hiki ke hoʻokō:
+file_access: ʻAʻole hiki ke komo i ka faile:
+file_open: ʻAʻole hiki i ka hewa faila ke wehe i ka faile:
+from_failed: Ua kūleʻa ka mea aʻe mai ka helu wahi:
+instantiate: ʻAʻole hiki ke hoʻokumu i ka hana leka uila
+mailer_not_supported: ʻaʻole kākoʻo ʻia ka leka uila
+provide_address: Pono ʻoe e hāʻawi ma kahi o hoʻokahi leka uila i loaʻa iā ʻoe.
+recipients_failed: Kuʻia SMTP: Ua holomua nā mea e loaʻa ana:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: E hoʻokomo i nā huapalapala i ʻike ʻia ma ka kiʻi
+Enter the correct letters and numbers...: E hoʻokomo i nā leka pololei a me nā helu mai ke kiʻi i loko o ka pahu ʻōlelo. Kēia hoʻokolohua uuku lawelawe 'ia e like me ke kōkua o ke kapu i nā polokalamu kolohe. Hoʻouka hou i ka ʻaoʻao inā paʻakikī kēia heluhelu ʻana i kēia kiʻi
+Challenge/Response: Kūʻai / Pane
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Hoʻololi i ka lā a me ka manawa o kēia komo?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: ʻAʻole ʻoe i komo i kahi wehewehe pōkole
+time prior to work hours...: ka manawa ma mua o nā hola hana ...
+Invalid Event Date: Lā hanana kūpono ʻole
+Please add a participant: E ʻoluʻolu e hoʻohui i kahi mea komo
+Invalid Date: Lā kūpono ʻole
+You have not entered a valid time of day: ʻAʻole ʻoe i komo i kahi manawa kūpono o ka lā.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: ʻAʻole hiki ke hakahaka ka pepa 'alemanaka.
+First and last names cannot both be blank.: ʻAʻole hiki i nā inoa mua a hope hoʻi ke hakahaka.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Kala kūpono ʻole
+Color format should be RRGGBB.: ʻO ka waihoʻoluʻu kala e #RRGGBB.
+URL cannot be blank.: ʻAʻole hiki ke hakahaka URL.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: ʻAʻohe kūlike o ka faile ma ka ʻAno Hoʻokomo
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Waihona kūpono ʻole no ka waihona palapala.
+Invalid color for document title.: Waihona kūpono ʻole no ka poʻo inoa palapala.
+Invalid color for table cell background.: Waihoʻoluʻu kūpono ʻole no ka waihona paʻa pūnaewele.
+Invalid color for table cell background for today.: ʻO ke kala kūpono ʻole no ka waihona paʻa pūnaewele no kēia lā.
+Invalid work hours.: Nā hola hana kūpono ʻole.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Pono e hoʻopau i ka URL kikowaena me kahi slash (/).
+Invalid color for table grid.: Waihoʻoluʻu kūpono ʻole no ka pākaukau papa.
+Invalid color for event popup background.: Waihoʻoluʻu kūpono ʻole no ke kāʻei kua hanana hanana.
+Invalid color for event popup text.: Waihona kūpono ʻole no ka hua paʻi popup hanana.
+Invalid color for table header text.: Waihoʻoluʻu kūpono ʻole no ke poʻo poʻo poʻo o ka papa.
+Invalid color for table header background.: Waihoʻoluʻu kūpono ʻole no ka waihona poʻo poʻo papa.
+Server URL is required.: Koi ʻia ka URL kikowaena pūnaewele.
+Invalid Color: Waihoʻoluʻu kūpono ʻole
+Database Name: Inoa hōkeo ʻikepili
+Full Path (no backslashes): Ala piha (ʻaʻohe backslashes)
+The password contains illegal characters.: Loaʻa nā huaʻōlelo kū ʻole i ke kānāwai.
+Error you must specify a Single-User Login: Kuʻia: Pono ʻoe e kuhikuhi i kahi Hoʻokele Hoʻokahi-Hoʻokahi
+Could not find XXX.: ʻAʻole i loaʻa iā XXX.
+Could not find XXX in DOM.: ʻAʻole i loaʻa iā XXX ma DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Kēia Pule
+This Month: Kēia Mahina
+This Year: Kēia Makahiki
+Exit: Puka
+Add New Event: Hoʻohui hanana hou
+Delete Entries: Holoi i nā komo
+My Views: ʻO kaʻu mau ʻike
+Manage Calendar of: Mālama i ka Alemanaka o
+My Reports: Koʻu mau Hoike
+My Profile: ʻO kaʻu Profile
+Public Calendar: Alemanaka lehulehu
+Unapproved Events: Nā hanana i ʻāpono ʻole ʻia
+User Manager: Luna Hoʻohana
+Help Contents: Nā ʻike kōkua
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Papa Kuhikuhina Cache Database
+Create New: Hana Hou
+Failure Reason: Kumu kumu hoʻokō ʻole:
+You must manually create database: Pono ʻoe e hana lima i ka waihona.
+Single-User: Hoʻohana-Hoʻokahi
+Test Settings: Nā Hoʻonohonoho Hoʻokolohua
+Timezone Conversion Successful: Ua kūleʻa ka huli ʻana o Timezone
+WebCalendar Installation Wizard Step XXX: Hoʻokūkū Hoʻokau Pūnaewele ʻo WebCalendar XXX
+Password Accepted: ʻAe ʻae ʻia ka ʻōlelo huna
+Successful Login: ʻEʻe kūleʻa
+Password Incorrect: Hewa ka ʻōlelo huna
+Invalid Login: ʻEʻe kūpono ʻole
+Display Errors: Hōʻike Hewa
+File Uploads: Waihona Waihona
+Allow URL fopen: ʻAe URL fopen (koi ʻia inā hoʻohana ʻia nā Calendars mamao)
+Safe Mode: ʻAno palekana
+Safe Mode Allowed Vars: ʻAno ʻae ʻia e ka palekana mode (koi ʻia ʻo TZ inā aia ke ʻano palekana)
+GD: GD (pono no ka Gradient Image Backgrounds)
+Passwords do not match!: ʻAʻole kūlike nā ʻōlelo huna!
+Unable to write password to settings.php file: ʻAʻole hiki ke kākau ʻōlelo huna i ka faila "setting.php".
+Password Updated: Ua hōʻano hou ʻia ka ʻōlelo huna
+Password has been set: Ua hoʻonohonoho ʻia ka ʻōlelo huna
+Connection Successful...: Kūleʻa Honua  E hele i kahi ʻaoʻao aʻe e hoʻomau i ka hoʻouka ʻana.
+Correct your entries or click the Create New...: Pololei i kāu mau komo a kāomi i ke pihi  Hana Hou  e hoʻomau i ke kau ʻana.
+Correct your entries and try again.: Pololei kāu mau komo a hoʻāʻo hou.
+XXX does not exist: ʻAʻohe o XXX
+XXX is not writable: ʻAʻole hiki ke kākau ʻia ʻo XXX
+Error Converting Timezone: Hewa e hoʻohuli ana iā Timezone
+Error Unable to write to file XXX.: Hewa Hiki ʻole ke kākau i ka faila XXX.
+Please change the file permissions of this file.: E ʻoluʻolu e hoʻololi i nā ʻae file o kēia faile.
+Please change includes dir permission: E ʻoluʻolu e hoʻololi i nā ʻae file o kāu papa kuhikuhi "hoʻokomo" e ʻae ai i ke kākau ʻana e nā mea hoʻohana ʻē aʻe.
+Your settings have been saved.: Ua mālama ʻia kāu hoʻonohonoho.
+OFF: HALA
+ON: =
+WebCalendar Setup Wizard: Wizard hoʻonohonoho hoʻonohonoho WebCalendar
+This installation wizard will guide you...: Na kēia wizard hoʻokalakupua e alakaʻi iā ʻoe ma o ka hoʻonohonoho ʻana i kahi hoʻonohonoho WebCalendar maʻamau.<br>No ke kōkua a me ka hoʻoponopono pilikia e ʻike ai:<br>
+System Administrators Guide: Alakaʻi o ka Luna Hoʻokele ʻōnaehana
+Frequently Asked Questions: Nā nīnau i nīnau pinepine ʻia
+FAQ: =
+Troubleshooting: Ka hoʻoponopono pilikia
+Getting Help: Ke kiʻi ʻana i kōkua
+Upgrading Guide: Alakaʻi Hou
+User Supported Wiki: Kākoʻo ʻia ka mea hoʻohana iā Wiki
+PHP Version Check: PHP Mana Mana Mana
+Check to see if PHP 7.1.0 or greater is installed.: E ʻike inā ua kau ʻia ʻo PHP 7.1.0 a ʻoi paha.
+PHP version: Mana PHP
+PHP Settings: Nā hoʻonohonoho PHP
+Detailed PHP Info: ʻIke PHP kikoʻī
+settings.php Status: "kūlana.php" Kūlana
+Session Check: Nānā Kau
+To test the proper operation of sessions...: No ka hoʻāʻo ʻana i ka hana kūpono o nā kau, hoʻouka hou i kēia ʻaoʻao. E ʻike ʻoe i ka piʻi kūʻē o ke kau i kēlā me kēia manawa.
+SESSION COUNTER: ʻUNLELO HUI
+The file permissions of settings.php are set...: Hoʻonohonoho ʻia nā ʻae ʻae o "setting.php" i ʻole e ʻae ka mea hoʻonoho e hoʻololi iā ia. E ʻoluʻolu e hoʻololi i nā ʻae file o kēia faile e hoʻomau
+The file permissions of the includes directory are set...: Hoʻonohonoho ʻia nā ʻae ʻae o nā papa kuhikuhina i ʻole e ʻae ka mea hoʻonohonoho e hana i kahi faila hou. E ʻoluʻolu e hoʻololi i nā ʻae o kēia papa kuhikuhi e hoʻomau
+Your settings.php file appears to be valid.: Kuhi ʻia paha he faila kāu "setting.php".
+Configuration Wizard Password: Hoʻonohonoho Wizard Password
+Create Settings File Password: Hana i nā ʻōlelo huna faila faila
+db setup directions...: Ma kēia ʻāpana e hoʻonohonoho ʻoe a hoʻāʻo i kahi pilina i kāu kikowaena pūnaewele. Pono i ka ʻike moʻohelu i hāʻawi ʻia i ʻae piha e hana i ka ʻikepili, papaʻaina a me nā mea hoʻohana. Inā hiki ʻole kēia, a i kaupalena ʻia kāu ʻikepili, pono ʻoe e hoʻonohonoho lima i kāu pūnaewele.
+Database Status: Kūlana hōkeo ʻikepili
+Supported databases for your PHP installation: Kahi ʻikepili i kākoʻo ʻia no kāu hoʻokomo PHP
+Your current database settings are able to access the database.: Hiki i kāu hoʻonohonoho pūnaewele i kēia manawa ke komo i ka pūnaewele.
+Please Test Settings: E ʻoluʻolu e hoʻāʻo i nā hoʻonohonoho
+Your current database settings are not able...: ʻAʻole hiki i kāu hoʻonohonoho pūnaewele i kēia manawa ke kiʻi i ka pūnaewele a ʻaʻole i hoʻokolohua ʻia.
+Database Settings: Kāu Mau Koʻo Pūnaewele
+Database Type: ʻAno hōkeo ʻikepili
+Server: Kikowaena
+Connection Persistence: Hoʻomau paʻa
+All your database tables appear to be up...: Hōʻike ʻia kāu mau papa ʻikepili a pau i kēia lā. Hiki iā ʻoe ke hele i kahi ʻaoʻao aʻe a hoʻopau i kāu hoʻonohonoho WebCalendar.
+This appears to be a new installation...: Kuhi ʻia kēia he mea hoʻonoho hou. Inā ʻaʻole pololei kēia, e ʻoluʻolu e hoʻi i ka ʻaoʻao mua a hoʻoponopono i kāu hoʻonohonoho.
+This appears to be an upgrade...: Hōʻike kēia i kahi hoʻomaikaʻi mai ka mana&nbsp;XXX&nbsp;a i&nbsp;YYY.
+The database requires some data input...: Koi ʻia ka ʻikepili i kekahi hoʻokomo o ka ʻikepili Kaomi i ka hōkeo ʻikepili hōʻano hou e hoʻopau i ka hoʻomaikaʻi.
+In this section we will perform...: Ma kēia ʻāpana e hana mākou i nā loli e lawe i kāu database i ka pae i koi ʻia. Inā ʻoe e hoʻohana nei i kahi waihona waihona i kākoʻo piha ʻia, e hana aunoa ʻia kēia kaʻina no ʻoe. Inā ʻaʻole, hiki ke hōʻike ʻia ka SQL i koi ʻia a hiki iā ʻoe ke ʻoki a kāpili iā ia i loko o kāu puka ʻikepili kikowaena kikowaena.
+No database actions are required.: ʻAʻole koi ʻia kahi hana ʻikepili.
+The following database actions are required: Koi ʻia nā hana database ma hope
+ODBC Underlying Database: ODBC kahua paʻa pūnaewele:
+Automatic installation not supported: ʻAʻole i hoʻokō piha ʻia ka hoʻonohonoho hoʻonohonoho no kāu ʻano waihona. Pono ʻoe e hana lima i nā papa i koi ʻia e hoʻohana ana i ka SQL i hoʻolako ʻia. E ʻoluʻolu e kaomi iā  Hōʻike SQL  e hoʻomau. E ʻoki a kāpili i loko o kāu puka aniani database.
+This may take several minutes to complete: He mau minuke paha kēia e hoʻopau ai.
+Install Database: E hoʻouka i ka hōkeo ʻikepili
+Update Database: Hoʻohou i ka hōkeo ʻikepili
+Display Required SQL: Hōʻike ʻia ʻo SQL i koi ʻia
+Return to previous page after processing SQL.: Ma hope o ka hana lima ʻana i kēia SQL, pono ʻoe e hoʻi i ka ʻaoʻao mua a ho'āʻo hou i kāu waihona i hiki ai i ka script ke ʻike i nā loli.
+This is the final step in setting up your WebCalendar Installation.: ʻO kēia ka hana hope loa i ka hoʻonohonoho ʻana i kāu Hoʻokomo Pūnaewele.
+Timezone Conversion: Hoʻololi Timezone
+It appears that you have NOT converted...: ʻIke ʻia ʻaʻole ʻoe i hoʻohuli i kāu ʻikepili hanana WebCalendar i kēia manawa iā GMT. Inā loaʻa iā ʻoe, e nānā paha ʻoe i kēia leka a mai hoʻomau i ka hoʻololi ʻana. Inā he hoʻonohonoho hou kēia, e nānā paha ʻoe i kēia hoʻolaha.
+Convert Data to GMT: Hoʻohuli i ka ʻikepili iā GMT
+Application Settings: Nānā palapala noi
+HTTP-based authentication was not detected...: ʻAʻole ʻike ʻia ka hōʻoia ʻo HTTP. Pono ʻoe e hoʻoponopono hou i kāu kikowaena pūnaewele inā makemake ʻoe e koho iā 'Pūnaewele Pūnaewele' mai nā koho ʻo 'Authentication' ma lalo.
+HTTP-based authentication was detected...: Ua ʻike ʻia ka hōʻoia ʻo HTTP. Ke lawelawe ʻia nei ka hōʻoia ʻoihana e kāu pūnaewele pūnaewele. Pono ʻoe e koho i ka 'Pūnaewele Pūnaewele' mai ka papa inoa o nā koho ʻo 'Authentication' ma lalo.
+Create Default Admin Account: Hana i ka waihona hoʻokele paʻamau
+(Admin Account Not Found): (ʻAʻole ʻIke ʻia ka ʻIke Hoʻokele)
+User Authentication: Hōʻoiaʻikepili mea hoʻohana
+Web-based via WebCalendar (default): Hoʻokumu ʻia ka pūnaewele ma o WebCalendar (paʻamau)
+Web Server (not detected): Pūnaewele Pūnaewele (ʻaʻole i ʻike ʻia)
+Web Server (detected): Pūnaewele Pūnaewele (ʻike ʻia)
+None (Single-User): ʻAʻohe (Hoʻokahi-Hoʻohana)
+Read-Only: Heluhelu Wale
+Environment: Kaiapuni
+Production: Iecaianoaaiiuo
+Development: Hoʻolālā
+Save Settings: Mālama i nā koho
+Launch WebCalendar: E neʻe Pūnaewele Pūnaewele
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Ua hewa ka hoʻomaikaʻi ʻana i ka papa "XXX": YYY.
+Conversion Successful: Kūleʻa ka huli ʻana 
+Perl script required: Pono kāu mana o WebCalendar e holo nei i kahi script PERL e hoʻololi i kāu ʻikepili. E ʻoluʻolu e holo /tools/upgrade_to_0.9.7.pl a laila hoʻi i kēia ʻaoʻao e hoʻomau.
+previous version requires updating several tables: Koi nei kāu mana o WebCalendar i ka hōʻano hou ʻana i nā papa hōkeo ʻikepili.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: AOHE MAKAHIKI E HIKI ANA
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Hewa i ka hoʻohui ʻana i ka hōkeo ʻikepili
+Include Path: Hoʻopili i ke ala
+Deleting events for: Holoi i nā hanana no
+Importing events for: Ke lawe mai nei i nā hanana no
+No data returned from: ʻAʻohe ʻikepili i hoʻihoʻi ʻia mai
+for non-user calendar: no ka papa inoa mea hoʻohana ʻole
+No Remote Calendars found: ʻAʻohe Calendars mamao i loaʻa
+Remote Calendars not enabled: ʻAʻole ʻae ʻia nā Calendars mamao
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ʻaʻole hiki ke loaʻa ka hanana id
+could not find event id XXX in database.: ʻAʻole hiki ke loaʻa ka hanana id XXX i ka waihona.
+task: hana
+This is a reminder for the XXX detailed below.: He mea hoʻomanaʻo kēia no ka XXX kikoʻī ma lalo.
+Pecentage Complete: Pecentage Piha
+Reminder: Hoʻomanaʻo
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Hana i kākoʻo ʻole ʻia: XXX.
+No event id specified.: ʻAʻohe hanana hanana i hōʻike ʻia.
+Not authorized (not admin).: ʻAʻole ʻae ʻia (ʻaʻole admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Ke nānā nei no nā hanana no XXX mai ka lā YYY a hiki i ka lā ZZZ.
+Found XXX events in time range.: Loaʻa nā hanana XXX i ka pae manawa.
+Event id=XXX YYY at ZZZ on AAA.: Hanana id = XXX "YYY" ma ZZZ ma AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: ʻAe i ka mea hoʻohana XXX e ʻike i ka kalena a nā mea hoʻohana ʻē aʻe.
+Error Email reminders disabled for user XXX.: Hewa: hoʻopau ʻia nā hoʻomanaʻo leka uila no ka mea hoʻohana "XXX".
+Number of site_extras XXX.: Ka helu o ka pūnaewele_extras: XXX.
+Reminder set for event.: Hoʻonohonoho hoʻonohonoho ʻia no ka hanana.
+Mins Before XXX.: Mins Ma mua: XXX.
+Event time is XXX.: ʻO ka manawa hanana: XXX.
+Remind time is XXX.: ʻO ka manawa hoʻomanaʻo: XXX.
+Reminders for user XXX, login YYY.: Hoʻomanaʻo no ka mea hoʻohana "XXX", ʻeʻe "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Kūpono ʻole ʻia no ka mea hoʻohana "XXX".
+Event id=XXX YYY already sent.: Ua hoʻouna ʻia ka hanana id = XXX "YYY".
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: ʻAʻohe ʻeʻe koi no ke ʻano hoʻohana hoʻokahi.
+No login required for HTTP authentication.: ʻAʻohe ʻeʻe i koi ʻia no ka hōʻoia ʻo HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Hewa nā huapalapala i ka ʻeʻe.
+Username XXX does not exist.: ʻAʻohe inoa mea hoʻohana "XXX".
+You cannot remove admin rights from yourself!: ʻAʻole hiki iā ʻoe ke hemo i nā kuleana hoʻomalu mai ou iho!
+Unknown error saving user: Mea hoʻohana hemahema hewa i ʻike ʻole ʻia.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: ʻAʻohe i komo ʻia no ka hanana hanana: XXX.
+Db error Could not find event id XXX.: Kuʻia Db: ʻAʻole i loaʻa ka hanana hanana XXX.
+Error Could not find event id XXX in database.: Kuhi: ʻaʻole i loaʻa ka hanana hanana XXX ma ka waihona pūnaewele.

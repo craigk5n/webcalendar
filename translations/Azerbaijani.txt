@@ -1,0 +1,2387 @@
+# Azerbaijani az
+#
+# Format isteğe bağlı bir başlıqdan ibarətdir:
+#
+# Tərcümə: adınız və e-poçtunuz
+# Son yeniləmə: tərcümə tarixi
+# (Aparıcı "#" və əvvəlki tərcüməçilər tərəfindən edilən şərhlər daxil olmaqla.
+# İLK boş sətir bu başlıq şərhlərini bitirir.)
+#
+# Lazım olan qədər izlədi:
+#
+# İngilis dili ifadəsi: tərcümə
+# (Birdən bir sətrə. Lider "#" olmadan.
+# "İngilis ifadəsi:", ":" iki nöqtə daxil olmaqla, tərəfindən təmin edilir
+# WebCalendar inkişaf etdiriciləri. Sizin hissəniz "tərcümə" dir.)
+#
+# Alətlər qovluğu sizə kömək etmək üçün iki perl skriptini ehtiva edir:
+# - check_translation.pl
+# bütün mətnlərin uğurla tərcümə olunduğunu göstərir.
+# - update_translation.pl
+# bütün tərcümələri ('söz') və tapmaq üçün proqram fayllarını təhlil edəcəkdir
+# alət ipucu ('cümlə'). İfadələri səhifəyə uyğun olaraq düzəldəcəkdir
+# ilk hadisəni ehtiva edən # (fayl). İsteğe bağlı olaraq
+# qoyaraq hələ tərcümə olunmayan ifadələr
+#  << MISSING >>
+# ifadənin üstündəki sətirdə #. Və bu söz bir qısaldılmışsa,
+# ifadənin altındakı sətirdə tam ingilis mətni yer alacaq.
+#
+# Qeyd: Ümumi fayl ölçüsünü azaltmağa çalışıram. Əgər "tərcümə"
+# söz / cümlə dildə və ingilis dilində eynidir, sadəcə "=" işarəsi istifadə edin.
+#
+# Qeyd: Aşağıdakı "May_" girişini görəcəksiniz. Bunun bir səbəbi var.
+# "May_" ayın tam adına, "May" ı isə,
+# ümumiyyətlə üç hərfli, ay qısaltması ("Oktyabr" üçün "Oktyabr" kimi).
+#
+# Bunun üçün Google translate istifadə etdim.
+# Anadili bunu təsdiqləyənə qədər kifayət etməlidir.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: versiya XXX
+WebCalendar is a PHP application used...: WebCalendar, tək bir istifadəçi və ya bir internet / intranet istifadəçi qrupu üçün bir təqvim qorumaq üçün istifadə olunan bir PHP tətbiqidir. Həm də bir hadisə təqvimi olaraq konfiqurasiya edilə bilər.
+Credits: Kreditlər
+About: Haqqında
+OK: tamam
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Verilənlər bazası xətası: XXX.
+DEFAULT CONFIGURATION: XƏSTƏLİK KONFİQURASİYASI
+Go: Gedin
+Save: Yadda saxla
+Undo: Geri qaytar
+Public Access: İctimai giriş
+Admin: =
+User Access Control: İstifadəçi giriş nəzarəti
+Allow Access to Other Users Calendar: Digər istifadəçilərin təqviminə girişə icazə verin
+Grant This User Access to My Calendar: Bu istifadəçiyə Təqvimimə giriş verin
+Type: Yazın
+Calendar: Təqvim
+View Event: Tədbirə baxın
+View: Bax
+Edit: Redaktə edin
+Approve/Reject: Təsdiq et / rədd et
+Events: Tədbirlər
+Tasks: Tapşırıqlar
+Journals: Jurnallar
+Can Invite: Dəvət edə bilər
+Can Email: E-poçt göndərmək olar
+Can See Time Only: Yalnız vaxtı görə bilər
+Assistant: Köməkçi
+Select All: Hamısını seç
+Clear All: Hamısını sil, hamısını təmizlə
+Public: İctimai
+Confidential: Gizli
+Private: Şəxsi
+
+########################################
+# Page: activity_log.php
+#
+Next: Növbəti
+Previous: Əvvəlki
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: XXX hadisə artıq təqviminizdədir.
+Invalid entry id XXX.: Yanlış giriş id: "XXX".
+a XXX event may not be added to your calendar: Bu XXX hadisəsidir və təqviminizə əlavə edilə bilməz.
+confidential: gizli
+private: özəl
+Error adding event XXX.: Tədbir əlavə edərkən xəta baş verdi: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Yanlış ayar adı "XXX".
+Select: Seçin
+Day: Gün
+Week: Həftə
+Month: Ay
+Year: İl
+Bottom: Alt
+Top: Yuxarı
+Anyone: Hər kəs
+Participant: İştirakçı
+Settings: Parametrlər
+Groups: Qruplar
+NonUser Calendars: İstifadəçi Təqvimləri
+Other: Digər
+Email: Elektron poçt
+Colors: Rənglər
+Document background: Sənədin arxa planı
+Document title: Sənədin adı
+Document text: Sənəd mətni
+My event text: Mənim tədbir mətnim
+Table grid color: Cədvəl rəngi rəngi
+Table header background: Cədvəl başlığı fonu
+Table header text: Cədvəl başlığı mətni
+Table cell background: Cədvəl hüceyrəsinin arxa planı
+Table cell background for current day: Cari gün üçün cədvəl hüceyrəsi fonu
+Table cell background for days with events: Hadisələrlə günlər üçün cədvəl hüceyrəsi
+Table cell background for weekends: Həftə sonları üçün masa hüceyrəsi
+Table cell background for other month: Digər ay üçün cədvəl hüceyrəsi
+Week number color: Həftə sayı rəng
+Event popup background: Tədbirin açılan fonu
+Event popup text: Tədbir popup mətni
+System Settings: Sistem Ayarları
+Help: Kömək edin
+System options: Sistem seçimləri
+app-name-help: Bütün səhifələr üçün brauzerin başlıq zolağında və giriş səhifəsində görünən tətbiqin adını müəyyənləşdirir. Burada göstərdiyiniz dəyər, fərqli dillər üçün fərqli adlar təqdim etməyə imkan verən tərcümələr sənədində axtarılacaqdır.
+Application Name: Tətbiq adı
+Translated Name (XXX): Tərcümə edilmiş ad (XXX)
+server-url-help: Tətbiq üçün əsas URL-i müəyyənləşdirir. Bu e-poçt xatırlatmaları və bildirişləri göndərərkən daxil ediləcək.
+Server URL: =
+home-url-help: Tətbiq üçün ev URL-sini müəyyənləşdirir. Bu mütləq və ya nisbi ola bilər
+Home URL: Ev URL
+language-help: Hansı dildən istifadə ediləcəyini müəyyənləşdirir.
+Language: Dil
+Your browser default language is XXX.: Brauzerinizin defolt dili "XXX" dür.
+Allow user to use themes: İstifadəçinin mövzulardan istifadə etməsinə icazə verin
+themes-help: Konfiqurasiya parametrlərinin kütləvi yenilənməsinə imkan verir. Kiçik kiçik etiketlər yalnız istifadəçi üçün hazırlanır.
+Themes: Mövzular
+AVAILABLE THEMES: Mövcud mövzular
+None: Yoxdur
+Preview: Önizləmə
+Site customization: Saytın fərdiləşdirilməsi
+custom-script-help: Hər səhifənin HTML "baş" hissəsinə daxil ediləcək xüsusi Javascript və ya stil cədvəli mətninin daxil olmasına icazə verir.
+Custom script/stylesheet: Xüsusi skript / stil cədvəli
+custom-header-help: Xüsusi bir HTML parçasının hər səhifənin yuxarı hissəsinə daxil edilməsinə imkan verir.
+Custom header: Xüsusi başlıq
+custom-trailer-help: Xüsusi bir HTML parçasının hər səhifənin sonunda daxil edilməsinə imkan verir.
+Custom trailer: Xüsusi qoşqu
+enable-external-header-help: Xarici fayldan xüsusi treylerin yüklənməsinə imkan verir
+Allow external file for header/script/trailer: Xarici fayla başlıq / skript / treyler üçün icazə verin
+Allow user to override header/trailer: İstifadəçiyə başlığı / qoşmanı ləğv etməyə icazə verin
+Date and Time: Tarix və saat
+server-tz-help: UTC-dən server vaxtına qədər neçə saat tənzimlənəcəyini müəyyənləşdirir.
+Server Timezone Selection: Server vaxt zonası seçimi
+tz-help: UTC-dən yerli vaxta qədər neçə saat tənzimlənəcəyini müəyyənləşdirir.
+Default Client Timezone Selection: Varsayılan Müştəri Saat Dilimi Seçimi
+display-general-use-gmt-help: Aktiv edildikdə ümumi tarixlər / vaxtlar GMT olaraq göstərilir
+Display Common Use Date/Times as GMT: GMT olaraq ümumi istifadə tarixini / vaxtlarını göstərin
+date-format-help: Tercih olunan tarix formatını müəyyənləşdirir.
+Date format: Tarix formatı
+Small Task Date: Kiçik Tapşırıq Tarixi
+display-week-starts-on: Həftənin başladığı həftənin gününü müəyyənləşdirir. Bazar ertəsi təyin edilərsə, həftə nömrələri ISO həftə nömrələri olacaqdır.
+Week starts on: Həftə başlayır
+display-weekend-starts-on: Həftə sonu başlayacaq həftəsonu təyin edir
+Weekend starts on: Həftə sonu başlayır
+time-format-help: Hansı vaxt formatının istifadə ediləcəyini müəyyənləşdirir:<br><em>12 saat:</em> Görünüş vaxtları saat 3-ü, 20: 30-da və s.<br><em>24 saat:</em> 300 dəfə göstərmə vaxtı , 2030, və s.
+Time format: Vaxt formatı
+12 hour: 12 saat
+24 hour: 24 saat
+timed-evt-len-help: Müddətli hadisənin uzunluğunu təyin etmək üçün giriş metodunu müəyyənləşdirir.
+Specify timed event length by: Müddətli tədbir uzunluğunu göstərin
+Duration: Müddət
+End Time: Bitmə vaxtı
+work-hours-help: Gün görünüşü üçün göstəriləcək vaxt aralığını müəyyənləşdirir.
+Work hours: İş saatları
+From: Kimdən
+to: üçün
+Appearance: Görünüş
+preferred-view-help: Varsayılan görünüşü (Gün, Həftə, Ay və ya İl) təyin edir.
+Preferred view: Tercih olunan görünüş
+Allow top menu: Üst menyuya icazə verin
+Date Selectors position: Tarix Seçicilərin mövqeyi
+menu-themes-help: Üst menyunun rənglərini və tərzini təyin edir
+Menu theme: Menyu teması
+fonts-help: İstifadə ediləcək sistem şriftlərinin siyahısını müəyyənləşdirir ("Arial, Helvetica" kimi)
+Fonts: Şriftlər
+display-sm_month-help: Aktiv edildiyi təqdirdə, kiçik ayları ay baxışlarında göstərir
+Display small months: Kiçik ayları göstərin
+display-weekends-help: Bir həftəyə baxarkən həftə sonlarını da əlavə edin.
+Display weekends: Həftə sonlarını göstərin
+display-long-daynames-help: Aktivdirsə, uzun gün adları göstərilir
+Display long day names: Uzun gün adlarını göstərin
+display-alldays-help: Əvvəlki və sonrakı ay günlərini bütün hücrələri dolduraraq ay görüntülərində göstərin.
+Display all days in month view: Bütün günləri ay görünüşündə göstərin
+display-week-number-help: Həftə nömrəsinin (1-52) ay görüntüsündə və həftə görünüşündə göstərilib göstərilməməsini müəyyənləşdirir.
+Display week number: Həftə nömrəsini göstərin
+display-desc-print-day-help: Tədbir təsvirlərini gün görünüşünün printer dostu versiyasına daxil edin.
+Display description in printer day view: Təsviri printer günündə göstərin
+yearly-shows-events-help: İllik görünüşdə, qalın şriftdə hadisələr olan günləri göstərin.
+Display days with events in bold in month and year views: Günləri ay və il görünüşlərində qalın rəngdə olan hadisələrlə göstərin
+display-minutes-help: Aktiv edildikdə: 00 ilə bitən dəqiqələr hər zaman görünəcəkdir
+Display 00 minutes always: Həmişə 00 dəqiqə göstərin
+display-end-times-help: Tədbirin vaxtı təyin olunduqda hadisənin bitmə vaxtlarını göstərin
+Display end times on calendars: Təqvimlərdə bitmə vaxtlarını göstərin
+allow-view-add-help: Görünüşlərə '+' işarəsi əlavə ediləcək və bu, istifadəçilərin digər istifadəçilərin təqvimlərinə hadisələr sürətlə əlavə etməsinə imkan verir.
+Include add event link in views: Tədbir bağlantısını baxışlara əlavə edin
+lunar-help: Aktiv edildikdə, hər ay Ay fazalarını əks etdirən kiçik nişanlar görünəcəkdir
+Display Lunar Phases in month view: Ay Fəzalarını ay görünüşündə göstərin
+Restrictions: Məhdudiyyətlər
+allow-view-other-help: Bir istifadəçinin digər istifadəçinin təqviminə baxa biləcəyini təyin edir.
+Allow viewing other users calendars: Digər istifadəçinin təqvimlərinə baxmağa icazə verin
+require-approvals-help: Aktiv edildikdə, istifadəçi bir hadisəni təqvimində görünməmişdən əvvəl təsdiqləməlidir (Ekran təsdiqlənməyibsə). Bunu "Xeyr" olaraq təyin etməyiniz, İctimai Giriş təqvimi üçün təsdiqləri söndürməyəcəkdir (İctimai Giriş təqvimi aktivdirsə).
+Require event approvals: Tədbir təsdiqlərini tələb edin
+display-unapproved-help: Təsdiqlənməmiş hadisələrin təqviminizdə göstərilib-göstərilməməsini müəyyənləşdirir.<br>"Bəli" olaraq təyin olunarsa, təsdiqlənməmiş hadisələr təqviminizdə (fərqli mətn rəngində) görünəcəkdir.<br>"Xeyr" olaraq təyin olunarsa, onda təsdiqlənməmiş hadisələr təqviminizdə görünməmişdən əvvəl təsdiqlənməlidir.
+Display unapproved: Ekran təsdiqlənməyib
+conflict-check-help: Hadisə ziddiyyətlərini yoxlayın (eyni şəxs üçün eyni vaxta planlaşdırılan iki hadisə). Bunu "Bəli" olaraq təyin etsəniz, bir xəbərdarlığı təsdiqlədikdən sonra eyni vaxtda iki tədbiri planlaşdıra biləcəksiniz. Bunu "Xeyr" olaraq təyin etsəniz, ziddiyyətlər yoxlanılmayacaq. Yəqin ki, bunu "Bəli" olaraq təyin etmək istəyirsiniz, buna görə ziddiyyət yoxlanılması baş verir.
+Check for event conflicts: Hadisə ziddiyyətlərini yoxlayın
+Yes: Bəli
+No: Yox
+conflict-months-help: Münaqişə yoxlanışı mövcuddursa ("Tədbir ziddiyyətlərini yoxlayın" "Xeyr" olaraq təyin olundu və bu, gələcəkdə neçə aydan sonra ziddiyyətlərin olub olmadığını yoxlamalı olduğumuzu göstərir. Əgər əlavə etsəniz, hadisələrin işlənməsi çox vaxt aparır , bu rəqəmi azaldır.
+Conflict checking months: Münaqişələrin yoxlanılması ayları
+conflict-check-override-help: İstifadəçilərə hadisə ziddiyyətlərini ləğv etməyə və eyni vaxtda iki və ya daha çox hadisəni planlaşdırmağa imkan verir.
+Allow users to override conflicts: İstifadəçilərə ziddiyyətləri ləğv etməyə icazə verin
+limit-appts-help: Sistem administratoruna, tək bir istifadəçinin istənilən bir gündə edə biləcəyi görüş sayına sistem səviyyəsində bir məhdudiyyət qoymasına imkan verir.
+Limit number of timed events per day: Gündəlik təyin olunmuş tədbirlərin sayını məhdudlaşdırın
+limit-appts-number-help: Bir istifadəçinin bir gündə edə biləcəyi maksimum müddətli hadisəni müəyyənləşdirir.
+Maximum timed events per day: Gündə maksimum vaxtı müəyyən hadisələr
+crossday-help: Aktiv edildikdə, günləri əhatə edən hadisələr ayrı günlərdə göstəriləcəkdir
+Disable Cross-Day Events: Günlərarası Tədbirləri deaktiv edin
+disable-location-field-help: "Bəli" seçilərək "Yer" sahəsi hadisə məlumat səhifələrindən silinəcəkdir
+Disable Location field: Məkan sahəsini deaktiv edin
+disable-url-field-help: "Bəli" seçilərək "URL" sahəsi hadisə məlumat səhifələrindən silinəcəkdir
+Disable URL field: URL sahəsini deaktiv edin
+disable-priority-field-help: "Bəli" seçilərək "Prioritet" sahəsi hadisə məlumat səhifələrindən silinəcək və yeni başlayanlar üçün daha sadə bir interfeys təmin edəcəkdir.
+Disable Priority field: Prioritet sahəsini deaktiv edin
+disable-access-field-help: "Bəli" seçilərək "Giriş" sahəsi hadisə məlumat səhifələrindən silinəcək və yeni başlayanlar üçün daha sadə bir interfeys təmin edəcəkdir.
+Disable Access field: Giriş sahəsini deaktiv edin
+disable-participants-field-help: "Bəli" seçilərək "İştirakçılar" sahəsi tədbir məlumat səhifələrindən silinəcək və istifadəçilərin öz tədbirlərinə başqa istifadəçilər əlavə etmələri maneə törədiləcəkdir. Bu seçimi aktiv etsəniz, "Başqa istifadəçinin təqvimlərinə baxmağa icazə ver" sahəsini də söndürmək istəyə bilərsiniz.
+Disable Participants field: İştirakçılar sahəsini deaktiv edin
+disable-repeating-field-help: "Bəli" seçilərək, hadisələr əlavə edilərkən "Təkrarlanan" sahəsi silinəcəkdir. Bu, yeni başlayanlar üçün daha sadə bir interfeys təmin edəcəkdir.
+Disable Repeating field: Təkrarlanan sahəni deaktiv edin
+allow-html-description-help: Aktiv edildikdə, istifadəçilər hadisə təsviri sahəsinə HTML daxil edə bilərlər. Aktiv edilmədikdə, HTML yazıları düz mətn kimi görünəcək şəkildə qaçacaq. Xəbərdarlıq: Bu xüsusiyyəti aktivləşdirmək, istifadəçilərə digər veb saytlardakı şəkillərə istinad etmək imkanı verəcəkdir.
+Allow HTML in Description: Təsvirdə HTML-ə icazə verin
+Popups: Popuplar
+disable-popups-help: Təqvim baxışlarından popupları deaktiv edin
+Disable Pop-Ups: Pop-up'ları deaktiv edin
+popup-includes-siteextras-help: Aktiv edildikdə, site_extras.php faylında xüsusi hadisə sahələrinin quraşdırılmasına icazə verin, hadisə popuplarında görünəcək.
+Display Site Extras in popup: Popupda Sayt Əlavələrini göstərin
+popup-includes-participants-help: Aktiv edildikdə, iştirakçılar hadisə popuplarında göstərilir.
+Display Participants in popup: İştirakçıları pop-upda göstərin
+Miscellaneous: Müxtəlif
+remember-last-login-help: Aktiv edildikdə, istifadəçinin giriş səhifəsi onlar üçün giriş səhifəsində doldurulacaq (şifrə deyil) və istifadəçinin üstünlükləri yüklənəcək (üstünlük verdiyi rənglər və dil seçimi daxil olmaqla).
+Remember last login: Son girişi xatırlayın
+summary_length-help: Təqvim görünüşlərində Qısa Təsvirin maksimum uzunluğu
+Brief Description Length: Qisa təsvir uzunluğu
+user_sort-help: İstifadəçi, İstifadəçi siyahıları üçün sıralama qaydasını müəyyənləşdirir
+User Sort Order: İstifadəçi Sıralaması
+Lastname, Firstname: Soyadı Adı
+Firstname, Lastname: Ad Soyad
+allow-public-access-help: Aktiv edildikdə, təqvim istifadəçilərin giriş tələb etmədiyi yalnız oxunan bir ümumi təqvim kimi istifadə edilə bilər.
+Allow public access: İctimai girişə icazə verin
+public-access-default-visible: İctimai təqvimdəki hadisələr avtomatik olaraq bütün istifadəçilərin təqvimlərində görünəcəkdir
+Public access visible by default: İctimai giriş standart olaraq görünür
+public-access-default-selected: Yeni bir hadisə əlavə edilərkən, ümumi istifadəçi varsayılan olaraq iştirakçı olaraq seçiləcəkdir.
+Public access is default participant: İctimai giriş default iştirakçıdır
+public-access-view-others-help: Sistemə ümumi giriş ilə daxil olduqda, istifadəçinin başqa bir təqvim istifadəçisinin təqviminə baxa biləcəyini müəyyənləşdirir.
+Public access can view other users: İctimai giriş digər istifadəçilərə baxa bilər
+public-access-can-add-help: Aktivləşdirildikdə, sistemə Public Access vasitəsilə daxil olan istifadəçilər yeni tədbirlər əlavə edə biləcəklər, ancaq administrator yeni hadisəni təsdiqləməyincə təqvimdə görünməyəcəklər.
+Public access can add events: İctimai giriş hadisələr əlavə edə bilər
+public-access-add-requires-approval-help: Ümumi giriş hesabı vasitəsi ilə əlavə olunan tədbirlərin göstərilmədən əvvəl təsdiq tələb edib etməyəcəyini müəyyənləşdirir.
+Public access new events require approval: İctimaiyyətə yeni giriş hadisələri təsdiq tələb edir
+public-access-sees-participants-help: Aktiv edildikdə, ümumi hesabdan təqvimə daxil olan istifadəçilər, tədbirin təfərrüatlarına baxdıqları təqdirdə tədbir iştirakçılarını görə biləcəklər.
+Public access can view participants: İctimai giriş iştirakçıları görüntüləyə bilər
+public-access-override-help: Tədbir adlarının və təsvirlərinin ümumi təqvimdə gizlənməsinə imkan verir
+Override event name/description for public access: İctimai giriş üçün hadisə adını / təsvirini ləğv edin
+public-access-override-text-help: Yuxarıda göstərilən seçim aktivdirsə göstəriləcək mətn. 'Mövcud deyilsə' tərcümə olunacaq.
+Text to display to public access: Hər kəsin istifadəsinə göstərmək üçün mətn
+public-access-captcha-help: Aktivdirsə, Public tərəfindən əlavə edilən yeni hadisələr bir CAPTCHA doğrulamasından keçməyi tələb edir.
+Require CAPTCHA validation for public access new events: Yeni hadisələrə açıq giriş üçün CAPTCHA doğrulamasını tələb edin
+uac-enabled-help: İstifadəçi səviyyəsində giriş nəzarətini aktivləşdirir
+User Access Control enabled: İstifadəçi Giriş Nəzarəti aktivdir
+groups-enabled-help: İstifadəçilərin qruplara görə istifadəçilər seçməsinə imkan verən qrup dəstəyini təmin edir.
+Groups enabled: Qruplar aktivdir
+user-sees-his-group-help: Aktiv edildikdə, istifadəçilər qruplarından ən az birində olmayan təqvim istifadəçilərini görməyəcəklər.
+User sees only his groups: İstifadəçi yalnız qruplarını görür
+nonuser-enabled-help: Aktivdirsə, administratorlar istifadəçi olmayan təqvimlər əlavə etmək seçiminə sahib olacaqlar
+Nonuser enabled: İstifadəçi olmayan Təqvimlər aktivdir
+nonuser-list-help: İstifadəçi olmayan təqvimləri iştirakçı siyahısında harada göstərmək olar
+Nonuser list: İştirakçılar siyahısında göstərin
+Upcoming Events: Gələcək hadisələr
+upcoming-events-help: Qarşıdakı.php-ni aktivləşdirin
+Enabled: Aktivdir
+upcoming-events-allow-override: Qarşıdakı.php üçün istifadəçi parametrlərinə icazə verin
+Allow user override: İstifadəçinin ləğvinə icazə verin
+upcoming-events-display-caticons: Qarşıdakı.php-də kateqoriya nişanlarını əlavə edin
+Display category icons: Kateqoriya nişanlarını göstərin
+upcoming-events-display-layers: Qatları gələn.php-də göstərin
+Display layers: Ekran təbəqələri
+upcoming-events-display-links: Linkləri next.php-də göstərin
+Display links to events: Tədbirlərə bağlantıları göstərin
+upcoming-events-display-popups: Tədbir popuplarını qarşıdakı.php-də göstərin
+Display event popups: Tədbir popuplarını göstərin
+reports-enabled-help: Aktiv edildikdə, istifadəçilər hər səhifənin altındakı "Hesabatlar" bölməsini görəcək və xüsusi hesabatlar yaratmağa icazə veriləcəklər. Bundan əlavə, administrator istifadəçiləri bütün istifadəçilərin səhifələrinin alt hissəsində görünəcək qlobal hesabatlar yarada bilərlər.
+Reports enabled: Hesabatlar aktivdir
+subscriptions-enabled-help: Uzaq istifadəçilərin WebCalendar istifadəçi təqviminə abunə olub-olmadığını iCal-effektiv tətbiqetmələrində (Apple iCal və ya Mozilla Təqvim kimi) WebCalendar istifadəçisinin hadisələrini görmələrinə imkan yaradır.
+Allow remote subscriptions: Uzaqdan abunəliklərə icazə verin
+remotes-enabled-help: İstifadəçilərə URL istifadə edərək uzaqdan ics faylları yükləməyə imkan verir
+Allow remote calendars: Uzaqdan təqvimlərə icazə verin
+rss-enabled-help: Bir istifadəçinin təqviminin bir RSS lentindən əldə edilə biləcəyini müəyyənləşdirir.
+Enable RSS feed: RSS lentini aktiv edin
+categories-enabled-help: Tədbir kateqoriyası üçün dəstəyi təmin edir.
+Categories enabled: Kateqoriyalar aktivdir
+icon_upload-enabled-help: Aktivdirsə, istifadəçilər kateqoriya nişanlarını yükləyə bilərlər
+Category Icon Upload enabled: Kateqoriya Icon Yükləmə aktivdir
+(Requires XXX folder to exist.): (XXX qovluğunun mövcud olmasını tələb edir.)
+display-tasks-help: Ay və gün təqvimində kiçik tapşırıq pəncərəsini göstərin
+Display small task list: Kiçik tapşırıq siyahısını göstərin
+display-tasks-in-grid-help: Tapşırıqları hadisələrlə birlikdə təqvimlərdə göstərin
+Display tasks in Calendars: Tapşırıqları Təqvimlərdə göstərin
+allow-external-users-help: Təqvim olmayan bir istifadəçinin bir tədbirə əlavə edilib-edilməyəcəyini müəyyənləşdirir. Bu, təqvimdən kənar istifadəçilərin tədbir iştirakçıları siyahısına salınmasına imkan verir.
+Allow external users: Xarici istifadəçilərə icazə verin
+external-can-receive-notification-help: Xarici istifadəçilər aktiv olduqda və e-poçt istifadəsi aktivləşdirildikdə, hadisə əlavə edildikdə, yeniləndikdə və ya sildikdə (xarici istifadəçinin e-poçt ünvanı təqdim edildikdə) xarici istifadəçilər e-poçt bildirişləri ala bilərlər.
+External users can receive email notifications: Xarici istifadəçilər e-poçt bildirişləri ala bilərlər
+external-can-receive-reminder-help: Xarici istifadəçilər aktiv olduqda və e-poçt istifadəsi aktiv olduqda, xarici istifadəçilər e-poçt xatırlatmaları ala bilərlər (xarici istifadəçinin e-poçt ünvanı təqdim edildiyi təqdirdə).
+External users can receive email reminders: Xarici istifadəçilər e-poçt xatırlatmaları ala bilərlər
+allow-self-registration-help: Yeni istifadəçilərin özlərini qeydiyyatdan keçirməsinə icazə verin
+Allow self-registration: Öz qeydiyyatına icazə verin
+use-blacklist-help: IP ünvanına əsasən WebCalendar funksiyalarına giriş məhdudlaşdırın
+Restrict self-registration to blacklist: Qara siyahı ilə öz qeydiyyatınızı məhdudlaşdırın
+allow-self-registration-full-help: Yeni istifadəçilərə öz qeydiyyatı prosesini on-line rejimində tamamlamağa icazə verin
+Use self-registration email notifications: Şifrələr yaradın və yeni istifadəçilərə göndərin
+allow-attachment-help: İstifadəçilərə tədbirlərə fayl əlavələri əlavə etməyə icazə verin.
+Allow file attachments to events: Tədbirlərə fayl qoşmalarına icazə verin
+Admin and owner can always add attachments if enabled.: İdarəetici və sahibi aktiv olduqda hər zaman əlavə əlavə edə bilər.
+allow-comments-help: İstifadəçilərə tədbirlərə şərh əlavə etməyə icazə verin.
+Allow comments to events: Tədbirlərə şərhlərə icazə verin
+Admin and owner can always add comments if enabled.: İdarəetici və sahibi aktiv olduqda hər zaman şərh əlavə edə bilər.
+email-enabled-help: Bildiriş və xatırlatmalar üçün bütün e-poçt göndərmələrini açın və ya söndürün. Serveriniz poçt göndərmək üçün düzgün qurulmayıbsa, "yox" olaraq ayarlayın.
+Email enabled: E-poçt aktivdir
+email-default-sender: Xatırlatmalar göndərərkən göndərən kimi göstəriləcək e-poçt ünvanını müəyyənləşdirir.
+Default sender address: Varsayılan göndərici ünvanı
+email-mailer: E-poçt növünü seçin (SMTP, PHP poçtu, sendmail)
+Email Mailer: E-poçt poçtu
+email-smtp-host: Vergi ilə ayrılmış SMTP server (lər) inin adı (lər) i
+SMTP Host name(s): SMTP Host adı (s)
+email-smtp-port: SMTP Port Nömrəsi (normal olaraq 25)
+SMTP Port Number: SMTP Port Nömrəsi
+email-smtp-auth: SMTP Doğrulamasından istifadə edin
+SMTP Authentication: SMTP Doğrulama
+email-smtp-username: Kimlik doğrulamasından istifadə edirsinizsə SMTP istifadəçi adı
+SMTP Username: SMTP istifadəçi adı
+email-smtp-password: Doğrulama istifadə edilərsə SMTP parolu
+SMTP Password: SMTP Şifrə
+Default user settings: Varsayılan istifadəçi parametrləri
+email-format: HTML və ya düz mətn mesajları üçün üstünlük daxil edin
+Email format preference: E-poçt formatına üstünlük
+HTML: =
+Plain Text: Sadə mətn
+email-include-ics: E-poçt mesajı göndərmək üçün bir iCalendar ICS sənədini əlavə edin
+Include iCalendar attachments: İCalendar əlavələrini daxil edin
+email-event-reminders-help: Tədbir xatırlatmalarının göndərilib göndərilməməsini təyin edir.
+Event reminders: Tədbir xatırlatmaları
+email-event-added: Təqviminizə bir hadisə əlavə edildikdə e-poçt bildirişlərinin göndərilib göndərilməməsini təyin edir.
+Events added to my calendar: Tədbirlər mənim təqvimimə əlavə edildi
+email-event-updated: Təqviminizdə bir hadisə yeniləndikdə e-poçt bildirişlərinin göndərilib göndərilməməsini təyin edir.
+Events updated on my calendar: Tədbirlər mənim təqvimimdə yeniləndi
+email-event-deleted: Bir hadisə təqviminizdən silindikdə e-poçt bildirişlərinin göndərilib göndərilməməsini təyin edir.
+Events removed from my calendar: Tədbirlər təqvimimdən silindi
+email-event-rejected: Bir iştirakçı təqviminizdə olan bir hadisəni rədd etdikdə e-poçt bildirişlərinin göndərilib göndərilməməsini təyin edir.
+Event rejected by participant: Tədbir iştirakçı tərəfindən rədd edildi
+email-event-create: Girişlərin yaradıcısının bir e-poçt alacağını təyin edir
+Event that I create: Yaratdığım hadisə
+Color options: Rəng seçimləri
+Allow user to customize colors: İstifadəçinin rəngləri fərdiləşdirməsinə icazə verin
+gradient-colors: Aktivdirsə, gradient rəngləri istifadə olunur. Bu, performansı çox təsir edə bilər.
+Enable gradient images for background colors: Arxa plan rəngləri üçün qradiyent şəkillərini aktivləşdirin
+Not available: Mövcud deyil
+Background Image options: Fon şəkli seçimləri
+bgimage-help: İstədiyiniz fon şəklinin URL. Nisbi əlaqə ola bilər.
+Background Image: Arxa fon şəkli
+bgrepeat-help: Arxa fon şəklinin təkrar davranışına nəzarət edir.
+Background Repeat: Arxa plan təkrarlayın
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Köməkçiləri
+Preferences: Tercihlər
+Control Panel: İdarə paneli
+Users: İstifadəçilər
+Account: Hesab
+Categories: Kateqoriyalar
+Views: Baxışlar
+Layers: Laylar
+Reports: Hesabatlar
+Delete Events: Tədbirləri silin
+Activity Log: Fəaliyyət qeydləri
+System Log: Sistem Giriş
+Security Audit: Təhlükəsizlik Auditi
+Public Preferences: İctimai Tercihlər
+Unapproved Public Events: Təsdiqlənməmiş ictimai tədbirlər
+Administrative Tools: İnzibati alətlər
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Dublikat Adı: "XXX".
+Username XXX already exists.: "XXX" istifadəçi adı artıq mövcuddur.
+Email address XXX already exists.: "XXX" e-poçt ünvanı artıq mövcuddur.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Əlavə şərhlər (istəyə görə)
+Approve and Send: Təsdiq et və göndər
+Approve and Exit: Təsdiq et və çıx
+(Your comments will be emailed to the event creator.): (Şərhləriniz tədbir yaradıcısına elektron poçtla göndəriləcək.)
+Hello, XXX.: Salam xxx.
+XXX has approved an appointment and added comments.: Randevu XXX tərəfindən təsdiqləndi və şərh əlavə edildi.
+Subject XXX: Mövzu: "XXX".
+Description XXX: Təsvir: "XXX".
+Date XXX: Tarix: XXX
+Time XXX: Vaxt: XXX
+Comments XXX: Şərhlər: XXX
+Approved w/Comments by XXX.: Şərhlər təsdiqləndi: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: İdarə rejimi
+Your assistants: Köməkçiləriniz
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Naməlum səhv.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Proqram xətası: XXX göstərilməyib!
+user: istifadəçi
+year: il
+month: ay
+day: gün
+
+########################################
+# Page: category.php
+#
+Category Icon: Kateqoriya nişanı
+Global: Qlobal
+The permissions for the icons directory are set to read-only: Nişanlar qovluğu üçün icazələr yalnız oxunaq üçün təyin edilmişdir.
+Category Name: Kateqoriya Adı:
+Color: Rəng
+Remove Icon: Nişanı silin:
+Add Icon to Category: Kateqoriyalara nişan əlavə edin
+Upload: Yükləmək
+GIF or PNG 6kb max: Maksimum GIF və ya PNG 6kb
+Search for existing icons: Mövcud nişanları axtarın
+Add: Əlavə et
+Delete: Sil
+Are you sure you want to delete this entry?: Bu girişi silmək istədiyinizə əminsiniz?
+Make New Category: Yeni kateqoriya et
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Kateqoriya adı tələb olunur
+File size exceeds maximum.: Fayl ölçüsü maksimumu keçir.
+File is not a GIF or PNG image: Fayl GIF və ya PNG şəkli deyil
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: MEVCUT KATEGORİLER
+ENTRY CATEGORIES: GİRİŞ KATEGORİLƏRİ
+Remove: Sil
+Global Category: Qlobal kateqoriya
+Cancel: Ləğv et
+
+########################################
+# Page: colors.php
+#
+Add Custom: Xüsusi əlavə edin
+Basic Colors: Əsas rənglər
+Current Color: Cari Rəng
+Custom Colors: Xüsusi rənglər
+Old Color: Köhnə Rəng
+
+########################################
+# Page: combo.php
+#
+Select None: Heç birini seçin
+Agenda: Gündəm
+Add Task: Tapşırıq əlavə edin
+Description: Təsvir
+Date: Tarix
+Time: Vaxt
+Priority: Prioritet
+Access: Giriş
+Created by: Yaradılıb
+Updated: Yenilənib
+Participants: İştirakçılar
+Attachments: Əlavələr
+Comments: Şərhlər
+Brief Description: Qısa təsviri
+Full Description: Tam təsvir
+Category: Kateqoriya
+Add event detail: Tədbir detalı əlavə edin
+Start Date: Başlama tarixi
+Due Date: Bitiş tarixi, son tarix
+Add task detail: Tapşırıq detalı əlavə edin
+All: Hamısı
+Error: Xəta
+no response from server: serverdən cavab yoxdur
+JSON error: JSON xətası
+High: Yüksək
+Medium: Orta
+Low: Aşağı
+Today: Bu gün
+Add Entry: Giriş əlavə edin
+Unnamed Event: Adsız hadisə
+Unnamed Task: Adsız Vəzifə
+Refresh: təzələmək
+Click to add entry: Giriş əlavə etmək üçün vurun
+Name: Ad
+pm: =
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX görüşü ləğv etdi.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Yanlış blob id
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Şərh əlavə edin
+Add Attachment: Əlavə et
+Subject: Mövzu
+Comment: Şərh
+Upload file: Fayl yüklə
+
+########################################
+# Page: docdel.php
+#
+Removed: Silindi
+
+########################################
+# Page: edit_entry.php
+#
+days: günlər
+hours: saat
+minutes: dəqiqə
+You are not authorized to edit this task.: Bu tapşırığı redaktə etmək səlahiyyətiniz yoxdur.
+is in a different timezone than you are. Currently: sizdən fərqli bir saat qurşağındadır. Hal hazırda
+hour ahead of you: sizdən bir saat qabaqda
+hour behind you: geridə bir saat
+hours ahead of you: sizdən saat qabaqda
+hours behind you: saat arxada
+XXX is in a different timezone (ahead): (XXX fərqli bir saat qurşağındadır; YYY sizdən qabaqdadır.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX fərqli bir saat qurşağındadır; YYY arxada.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Buraya daxil edilən vaxt Saat qurşağınıza əsaslanır.
+Edit Entry: Girişi redaktə edin
+Details: Ətraflı məlumat
+Repeat: Təkrarlamaq
+Reminders: Xatırlatmalar
+brief-description-help: Bu hadisənin qısa təsvirini (təxminən 20 simvol) təmin etməlidir. Bu təqvimə baxarkən hadisəni təmsil edəcəkdir.
+full-description-help: Bu tədbirin təfərrüatlarını tamamlamalıdır. Bu məlumat bir istifadəçi hadisəyə baxarkən görünə bilər.
+access-help: Tədbirin giriş səviyyəsini müəyyənləşdirir. <ul> <li> Hər kəs: Tədbirin tam təfərrüatlarını görə bilər.</li> <li> Gizli: Digərləri həmin tarix və vaxt üçün girişiniz olduğunu görə bilər, lakin nə olduğunun təfərrüatları deyil.</li></ul>
+priority-help: Tədbirin prioritetini müəyyənləşdirir. Yüksək prioritetli hadisələr qalın şəkildə göstəriləcək.
+category-help: Tədbirin kateqoriyasını müəyyənləşdirir.
+completed-help: Tarix tapşırığı tamamlandı. Yalnız bütün iştirakçılar yüzdə 100-ə bərabər olduqda aktivdir.
+Date Completed: Tamamlandığı tarix
+percent-help: Bu istifadəçi üçün tapşırıq tamamlama faizi
+Percent Complete: Yüzdə Tamamlandı
+All Percentages: Bütün faizlər
+location-help: Tədbirin keçirildiyi yer
+Location: Yer
+url-help: Tədbir URL
+URL: =
+date-help: Tədbirin tarixini göstərir.
+Untimed event: Zamansız hadisə
+Timed event: Müddətli tədbir
+All day event: Bütün gün tədbiri
+Timezone Offset: Saat qurşağı ofset
+time-help: Tədbirin vaxtını təyin edir. <ul> <li> "Müddətli hadisə" (həmin gün müəyyən bir vaxta planlaşdırılan bir hadisə üçün)</li> <li> "Müddətli hadisə" (bunun üçün vaxtı olmayan bir hadisə üçün (tətil kimi) )</li> <li> "Bütün gün tədbiri" (bütün günü davam edən bir hadisə üçün (ofisdən kənarda qalmaq kimi)</li></ul>
+duration-help: Tədbirin müddətini (saat; dəqiqə) göstərir. <em>Bu sahə boş qala bilər.</em>
+end-time-help: Tədbirin bitməsi gözlənilən vaxtı göstərir.
+Start Time: Başlama vaxtı
+Due Time: Zamanında
+Site Extras: Sayt Əlavələri
+avail_participants-help: Bu girişin mövcud iştirakçılarını sadalayır.
+Available: Mövcuddur
+Find Name: Ad tap
+Resources: Resurslar
+participants-help: Bu girişin iştirakçılarını sadalayır.
+Selected: Seçildi
+Availability: Mövcudluğu
+external-participants-help: Təqvim istifadəçisi olmayan tədbir iştirakçılarının siyahısını müəyyənləşdirir. İstifadəçilər hər sətirdə bir siyahıya alınmalı və bir e-poçt ünvanı daxil edə bilərlər. Bir e-poçt ünvanı göstərildiyi təqdirdə istifadəçi bildirişlər və xatırlatmalar almaq hüququna malikdir.
+External Participants: Xarici iştirakçılar
+repeat-type-help: Tədbirin nə qədər təkrarlanacağını seçin.
+Daily: Gündəlik
+Weekly: Həftəlik
+Monthly: Aylıq
+by day: gündən-günə
+by date: tarixə görə
+by position: mövqeyə görə
+Monthly (by day): Aylıq (günlə)
+Monthly (by date): Aylıq (tarixə görə)
+Monthly (by position): Aylıq (mövqeyə görə)
+Yearly: İllik
+Manual: Əl ilə
+Expert Mode: Mütəxəssis rejimi
+repeat-end-date-help: Tədbirin tarixinədək təkrarlanmalı olduğu tarixi müəyyənləşdirir.
+Ending: Bitir
+Forever: Əbədi
+Use end date: Bitmə tarixindən istifadə edin
+Number of times: Dəfə sayı
+repeat-frequency-help: Tədbirin nə qədər təkrarlanacağını göstərir.
+Frequency: Tezlik
+Weekdays Only: Yalnız iş günləri
+Week Start: Həftə başladı
+repeat-bydayextended-help: Həftənin gününə əsasən tarix seçiminə imkan verir.
+ByDay: =
+repeat-month-help: Tədbirin hansı aylarda təkrarlanacağını göstərir.
+ByMonth: Ayın
+repeat-bysetpos-help: Ayın mövqeyinə əsasən tarix seçiminə imkan verir.
+BySetPos: =
+repeat-bymonthdayextended-help: Tarixə əsasən tarix seçiminə imkan verir.
+ByMonthDay: =
+repeat-byweekno-help: İstifadəçiyə hadisəni təkrarlamaq üçün həftələrin siyahısını təyin etməyə imkan verir (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: İstifadəçiyə hadisəni təkrarlamaq üçün il günlərinin siyahısını təyin etməyə imkan verir (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Bu hadisənin baş verməli və olmamalı olduğu əlavə günlər.
+Exclusions: İstisnalar
+Inclusions: Daxilolmalar
+Add Exception: İstisna əlavə edin
+Add Inclusion: Daxil et
+Delete Selected: Seçilmişləri silin
+Send Reminder: Xatırlatma göndərin
+When: Nə vaxt
+Use Date/Time: Tarix / Saat istifadə edin
+Use Offset: Ofset istifadə edin
+Before: Əvvəl
+After: Sonra
+Start: Başlamaq
+End/Due: Son / Son
+Times: =
+Every: Hər
+CAPTCHA Warning: Xəbərdarlıq:  PHP-nin GD uzantısı olmadan CAPTCHA istifadə edilə bilməz!<br>
+Delete entry: Girişi silin
+You are not authorized to edit this entry.: Bu girişi redaktə etmək səlahiyyətiniz yoxdur.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX yeni bir görüş təyin etdi.
+XXX has updated an appointment.: XXX görüşü yeniləyib.
+Security violation!: Təhlükəsizlik pozuntusu!
+You must enter the anti-spam text on the previous page.: Əvvəlki səhifəyə spam əleyhinə mətn daxil etməlisiniz.
+The following conflicts with the suggested time: Təklif olunan vaxtla aşağıdakı ziddiyyətlər
+User removed from participants list.: İstifadəçi iştirakçılar siyahısından çıxarıldı.
+Please look on XXX to accept or reject this appointment.: Bu görüşü qəbul etmək və ya rədd etmək üçün xahiş edirəm XXX-ə baxın.
+Please look on XXX to view this appointment.: Bu görüşə baxmaq üçün xahiş edirəm XXX-ə baxın.
+Scheduling Conflict: Münaqişənin planlaşdırılması
+Your suggested time of: Təklif etdiyiniz vaxt
+conflicts with the following existing calendar entries: aşağıdakı mövcud təqvim girişləri ilə ziddiyyətlər
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX "config.php" də ayarlanmamışdır.
+word characters only: (yalnız söz simvollarından ibarət ola bilər; [a-zA-Z_0-9])
+Add User: İstifadəçi əlavə edin
+Edit User: İstifadəçini redaktə edin
+Calendar ID: Təqvim ID
+First Name: Ad
+Last Name: Soyad
+Is public calendar: İctimai təqvimdir
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Verilənlər bazası xətası
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Uzaqdan Təqvim əlavə edin
+Edit Remote Calendar: Uzaq Təqvimə düzəliş edin
+Create Layer: Layer yaradın
+Reload: Yenidən yükləyin
+Required to View Remote Calendar: Uzaq Təqvimə baxmaq üçün tələb olunur
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: İdxal nəticələri
+Events successfully imported: Tədbirlər uğurla idxal edildi
+Create a new layer to view this calendar.: Bu təqvimi görmək üçün yeni bir qat yaradın.
+Errors: Səhvlər
+There was an error parsing the import file or no events were returned.: İdxal faylını təhlil edərkən bir xəta baş verdi və ya heç bir hadisə qaytarılmadı.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Sabah
+Yesterday: Dünən
+Day before yesterday: Srağagün
+Next week: Gələn həftə
+This week: Bu həftə
+Last week: Keçən həftə
+Week before last: Sondan bir həftə əvvəl
+Next week and week after: Gələn həftə və bir həftə sonra
+This week and next week: Bu həftə və gələn həftə
+Last week and this week: Keçən həftə və bu həftə
+Last two weeks: Son iki həftə
+Next month: Gələn ay
+This month: Bu ay
+Last month: Ötən ay
+Month before last: Sondan bir ay əvvəl
+Next year: Növbəti il
+This year: Bu il
+Last year: Keçən il
+Year before last: Keçəndən bir il əvvəl
+Next 14 days: Növbəti 14 gün
+Next 30 days: Növbəti 30 gün
+Next 60 days: Növbəti 60 gün
+Next 90 days: Növbəti 90 gün
+Next 180 days: Gələn 180 gün
+Next 365 days: Növbəti 365 gün
+Invalid report id XXX.: Yanlış hesabat id: "XXX".
+Unnamed Report: Adsız Hesabat
+Add Report: Hesabat əlavə edin
+Edit Report: Hesabatı redaktə edin
+Report name: Hesabat adı
+User: İstifadəçi
+Current User: Hazırkı istifadəçi
+Include link in menu: Linki menyuya daxil edin
+Include standard header/trailer: Standart başlığı / qoşqu əlavə edin
+Include previous/next links: Əvvəlki / sonrakı bağlantıları daxil edin
+Include empty dates: Boş tarixləri daxil edin
+Date range: Tarix aralığı
+Template variables: Şablon dəyişənlər
+Page template: Səhifə şablonu
+Day template: Gün şablonu
+Event template: Tədbir şablonu
+Are you sure you want to delete this report?: Bu hesabatı silmək istədiyinizə əminsiniz?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Belə bir hesab id-i yoxdur: "XXX".
+Variable XXX not found.: Dəyişən XXX tapılmadı.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Xüsusi başlığı redaktə edin
+Edit Custom Script/Stylesheet: Xüsusi skript / üslub cədvəlini redaktə edin
+Edit Custom Trailer: Xüsusi qoşqu redaktə edin
+
+########################################
+# Page: edit_user.php
+#
+Username: İstifadəçi adı
+E-mail address: Elektron poçt ünvanı
+Password: Şifrə
+again: yenidən
+Disabled for demo: Demo üçün deaktiv edildi
+Are you sure you want to delete this user?: Bu istifadəçini silmək istədiyinizə əminsiniz?
+Change Password: Şifrənizi dəyişdirin
+New Password: yeni şifrə
+Set Password: Parol seçin
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: İstifadəçilərin silinməsi dəstəklənmir.
+The passwords were not identical.: Parollar eyni deyildi.
+You have not entered a password.: Parol daxil etməmisiniz.
+Username cannot be blank.: İstifadəçi adı boş ola bilməz.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Səlahiyyətli deyiləm
+
+########################################
+# Page: export.php
+#
+Export: İxrac
+Export format: Formatı ixrac edin
+Include all layers: Bütün təbəqələri daxil edin
+Include deleted entries: Silinmiş girişləri daxil edin
+Export all dates: Bütün tarixləri ixrac edin
+Start date: Başlama tarixi
+End date: Bitmə vaxtı
+Modified since: Bəri dəyişdirildi
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: ixrac formatı təyin olunmamış və ya səhvdir.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: İstifadəçi göstərilməyib.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Yeni Qrup əlavə edin
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Adsız Qrup
+Add Group: Qrup əlavə edin
+Edit Group: Qrupu redaktə edin
+Group name: Qrup adı
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Bir qrup adı göstərməlisiniz
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Təqvimləri avtomatik təzələyin
+auto-refresh-help: Aktiv edildikdə, gün görünüşü, həftə görünüşü, ay görünüşü və təsdiqlənməmiş səhifələrin siyahısı avtomatik olaraq vaxtaşırı yenilənəcəkdir.
+Auto-refresh time: Avtomatik yenilənmə vaxtı
+auto-refresh-time-help: Avtomatik yeniləmə aktivdirsə, bu, hər yeniləmə arasındakı vaxtı göstərir.
+Display days with events in bold in year view: İlin görünüşünü qalın rəngdə olan hadisələrlə günləri göstərin
+Display weekends in week view: Həftə sonlarını həftə görünüşündə göstərin
+Time interval: Vaxt intervalı
+time-interval-help: Həftə görünüşündə və gün görünüşündə vaxt bloklarının nə qədər olacağını göstərir.
+Nonuser: İstehlakçı olmayan Təqvimlər
+user-customize-color: İstifadəçilərə öz rəng sxemlərini dəyişdirməyə icazə verilib-verilmədiyini müəyyənləşdirir.
+enable-gradient-help: Hüceyrə fonları üçün qradiyent rənglərindən istifadə edin.
+Manually entering color values: Rəng dəyərlərini əl ilə daxil edin
+colors-help: Bütün rənglər "#RRGGBB" onaltılıq formatında göstərilməlidir, burada "RR" qırmızı üçün hex dəyəri, "GG" yaşıl üçün hex dəyəri, "BB" isə mavi üçün hex dəyəridir.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Hata bildirin
+Please include all the information below when reporting a bug.: Zəhmət olmasa bir səhv barədə məlumat verərkən aşağıdakı bütün məlumatları daxil edin.
+Also, please use English rather than XXX.: Xahiş edirəm, XXX deyil,  İngilis dili  istifadə edin.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar sənədləri
+Currently in English only.: Hal-hazırda yalnız İngilis dilindədir.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Təqvim Girişlərinin əlavə edilməsi / redaktə edilməsi
+Repeat Type: Növü təkrarlayın
+For More Information...: Daha ətraflı məlumat üçün...
+Repeat End Date: Bitmə tarixini təkrarlayın
+Repeat Day: Günü təkrarlayın
+repeat-day-help: Tədbirin həftənin hansı günlərini təkrarlamalı olduğunu müəyyənləşdirir.
+
+########################################
+# Page: help_import.php
+#
+Import: İdxal
+Palm Desktop: Palma Masaüstü
+allow you to import entries from the Palm...: Bu forma, Palm Desktop Tarix kitabından girişləri idxal etməyə imkan verəcəkdir. İstifadəçi adınızla adlandırılan bir alt kitabçada tarix dəftəri / datebook.dat içindəki Palm qovluğunuzda yerləşməlidir.
+The following entries will not be imported: Aşağıdakı qeydlər idxal olunmayacaq:
+Entries older than the current date: Mövcud tarixdən köhnə girişlər
+Entries created in the Palm Desktop...: Palm Masaüstündə yaradılan, HotSync'd edilməmiş girişlər
+Anything imported from Palm...: Palmdan gətirilən hər hansı bir şey növbəti idxal zamanı yazılacaq (hadisə tarixi keçmədikdə). Buna görə Palm Desktop-da yeniləmələr edilməlidir.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Bu forma vCalendar (.vcs) 1.0 hadisələrini idxal edəcəkdir.
+The following formats have been tested: Aşağıdakı formatlar sınaqdan keçirilmişdir:
+This form will import iCalendar (.ics) events.: Bu forma iCalendar (.ics) tədbirlərini idxal edəcəkdir.
+Enabling: Aktivləşdirir
+Overwrite Prior Import: Əvvəlki idxalın üzərinə yazın
+will cause events imported previously...: əvvəllər idxal edilmiş və yeni idxal sənədindəki hadisə ilə eyni UID istifadə olunan hadisələrin silinmiş kimi qeyd olunmasına səbəb olacaqdır. Bu, yenilənmiş bir iCalendar sənədinin təkrarlanmadan idxalına imkan verməlidir.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Kömək indeksi
+About WebCalendar: WebCalendar haqqında
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Layerlər digər istifadəçilərin hadisələrini öz təqviminizdə göstərmək üçün faydalıdır. İstifadəçini və hadisələrin görünəcəyi rəngi təyin edə bilərsiniz.
+Add/Edit/Delete: Əlavə et / Redaktə et / Sil
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Səhifənin altındakı admin bölməsində Layers Düzenle bağlantısını vurmaq, qat əlavə etmək / redaktə etmək və silmək üçün imkan verir.
+The text color of the new layer that will be displayed in your calendar.: Təqviminizdə görünəcək yeni qatın mətn rəngi.
+Disabling: Söndürmə
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Qatları söndürmək üçün səhifənin altındakı admin bölməsindəki Layers Disable linkini basın.
+Duplicates: Dublikatlar
+If checked, events that are duplicates of your events will be shown.: Yoxlanarsa, tədbirlərin təkrarı olan hadisələr göstəriləcəkdir.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Qatları açmaq üçün səhifənin altındakı admin hissəsindəki Layers Enable linkini basın.
+Source: Mənbə
+Specifies the user that you would like to see displayed in your calendar.: Təqviminizdə göstərilməsini istədiyiniz istifadəçini müəyyənləşdirir.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Varsayılan kateqoriya
+default-category-help: Varsayılan olaraq yeni bir tədbirin kateqoriyasını təyin edir.
+When I am the boss: Mən boss olduğum zaman
+Email me event notification: Mənə hadisə bildirişini elektron poçtla göndərin
+email-boss-notifications-help: Patronların hadisə bildirişi olaraq e-poçt almasını təyin edir.
+I want to approve events: Tədbirləri təsdiqləmək istəyirəm
+boss-approve-event-help: Patrondan köməkçilər tərəfindən əlavə edilən tədbirləri təsdiqləməyin tələb ediləcəyini müəyyənləşdirir.
+Subscribe/Publish: Abunə olun / Nəşr edin
+Allow remote publishing: Uzaqdan yayımlanmağa icazə verin
+allow-remote-publishing-help: Uzaq bir iCal müştərisinin hadisələri yenidən WebCalendar-a yayımlaya biləcəyini müəyyənləşdirir
+remote-publishing-url-help: Həm abunə olmaq, həm də yenidən WebCalendar-a yayımlamaq üçün iCal müştəri tətbiqində istifadə ediləcək URL-ni göstərir.
+allow-remote-subscriptions-help: Uzaq istifadəçilərin təqviminizə abunə olub-olmadıqlarını, iCal effektiv bir tətbiqetmədə (Apple iCal və ya Mozilla Təqvim kimi) hadisələrinizi görmələrini təmin edər.
+remote-subscriptions-url-help: Uzaqdan istifadə edənlərin təqviminizə abunə olmaq üçün istifadə etmələri lazım olan URL-ni göstərir.
+Enable FreeBusy publishing: FreeBusy nəşrini aktivləşdirin
+freebusy-enabled-help: Bir istifadəçinin əlverişli vaxtının iCal FreeBusy standartından istifadə edərək əldə edilə biləcəyini müəyyənləşdirir.
+freebusy-url-help: İstifadəçinin FreeBusy siyahısına daxil olmaq üçün URL
+rss-feed-url-help: RSS lentinə daxil olmaq üçün URL
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: İstifadəçi girişinin və icazələrinin incə nəzarətinə imkan verir. İstifadəçilər administrator tərəfindən icazə verildiyi təqdirdə fərdi icazə və fərdi icazə verə bilərlər.
+If disabled, this user cannot send you emails.: Deaktivdirsə, bu istifadəçi sizə e-poçt göndərə bilməz.
+If disabled, this user cannot see you in the participants list.: Deaktivdirsə, bu istifadəçi sizi iştirakçılar siyahısında görə bilməz.
+If enabled, this user cannot view the details of any of your entries.: Aktivdirsə, bu istifadəçi girişlərinizin heç birinə baxa bilməz.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Nəşr Deaktivdir (Admin)
+Publishing Disabled (User): Nəşr Əlil (İstifadəçi)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Seçmək üçün vurun
+Current Icons on Server: Serverdəki cari nişanlar
+
+########################################
+# Page: import.php
+#
+import from file: fayldan idxal et
+Disabled: Əlildir
+Import format: İdxal formatı
+Exclude private records: Şəxsi qeydləri istisna edin
+Repeated items are imported separately. Prior imports are not overwritten.: Təkrarlanan əşyalar ayrıca idxal olunur. Əvvəlki idxalın üzərinə yazılmır.
+
+########################################
+# Page: import_handler.php
+#
+No file: Fayl yoxdur
+Error deleting palm events from webcalendar.: Xurma hadisələri veb təqvimdən silinərkən səhv.
+Events from prior import marked as deleted: Əvvəlki idxaldan olan hadisələr silinmiş kimi qeyd edildi
+Conflicting events: Ziddiyyətli hadisələr
+The import file contained no data.: İdxal sənədində heç bir məlumat yox idi.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Bu qatı silmək istədiyinizə əminsiniz?
+Delete layer: Qatı silin
+Edit layer: Qatı redaktə edin
+Enable layers: Qatları aktivləşdirin
+Layer: =
+Layers are currently disabled.: Hazırda laylar deaktivdir.
+Layers are currently enabled.: Qatlar hazırda aktivdir.
+Click to modify layers settings for XXX: XXX təqvim üçün qat parametrlərini dəyişdirmək üçün buraya vurun.
+Disable Layers: Layerləri deaktiv edin
+Add layer: Qat əlavə edin
+Add Layer: Layer əlavə edin
+Edit Layer: Layeri düzəldin
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Tercihi güncəlləmək mümkün deyil
+Invalid entry id.: Yanlış giriş id.
+You cannot create a layer for yourself.: Özünüz üçün bir qat yarada bilməzsiniz.
+You can only create one layer for each user.: Hər istifadəçi üçün yalnız bir qat yarada bilərsiniz.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Təsdiq et / təsdiq et
+Approve Selected: Təsdiqləndi seçildi
+Check All: Hamısını yoxlayın
+Emails Will Not Be Sent: Elektron poçtlar göndərilməyəcək
+Reject Selected: Seçilənləri rədd et
+Reject: Rədd et
+Uncheck All: Hamısının işarəsini götürün
+View this entry: Bu girişə baxın
+No unapproved entries for XXX.: "XXX" üçün təsdiqlənməmiş giriş yoxdur.
+Unapproved Entries: Təsdiqlənməmiş girişlər
+Approve this entry?: Bu giriş təsdiqlənir?
+Reject this entry?: Bu giriş rədd edilsin?
+Approve Selected entries?: Seçilmiş yazıları təsdiqləyin?
+Reject Selected entries?: Seçilmiş girişlər rədd edilsin?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Giriş və şifrə daxil etməlisiniz.
+Save login via cookies so I dont have to login next time.: Çərəzlər daxil olmağa ehtiyacım olmadığı üçün girişinizi çərəzlər vasitəsilə saxla
+Login: Daxil ol
+public: ictimai
+Access XXX calendar: XXX təqvimə daxil olun
+cookies-note: Qeyd: Bu tətbiq çərəzlərin aktiv olmasını tələb edir.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: XXX-də qanunsuz simvollar.
+Invalid login: Yanlış giriş
+Activity login failure: İstifadəçi adı: "XXX", IP: "YYY".
+Error XXX: Xəta: "XXX".
+You have been logged out.: Girişdən çıxmısınız
+Access public calendar: Ümumi təqvimə daxil olun
+Not yet registered? Register here!: Hələ qeydiyyatdan keçməmisiniz? Buradan qeydiyyatdan keçin!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Belə bir istifadəçi təqvimi yoxdur: "XXX".
+This Calendar is not Public.: Bu Təqvim İctimai deyil.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Yeni istifadəçi olmayan təqvim əlavə edin
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Giriş qeyd olunmalıdır.
+No such nonuser calendar: Belə bir istifadəçi təqvimi yoxdur
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Yanlış tema
+Save Preferences: Tercihləri saxla
+Public Access calendar: İctimai giriş təqvimi
+Modify Non User Calendar Preferences: İstifadəçi Təqvim Tercihlərini dəyişdirin
+Return to My Preferences: Tercihlərimə qayıt
+Custom Scripts: Xüsusi skriptlər
+Timezone Selection: Saat qurşağı seçimi
+Multiview: Çox görüntü:
+entry-interval-help: Giriş vaxtlarını redaktə edərkən dəqiqə intervalı təyin edir
+Entry interval: Giriş intervalı
+hour: saat
+minute: dəqiqə
+theme-reload-help: CSS önbelleğe görə bir səhifənin yenidən yüklənməsi tələb oluna bilər
+Page may need to be reloaded for new Theme to take effect: Yeni Temanın qüvvəyə minməsi üçün səhifənin yenidən yüklənməsinə ehtiyac ola bilər
+display_byproxy-help: Əsl yaradıcını view_entry səhifəsində göstərin
+Display if created by Assistant: Köməkçi tərəfindən yaradılıbsa göstərin
+allow-view-subscriptions-help: Şəxsi və ya Gizli girişlərə uzaqdan girişin məhdudlaşdırılmasına imkan verir
+Allow remote viewing of: Uzaqdan baxmağa icazə verin
+entries: girişlər
+
+########################################
+# Page: purge.php
+#
+Purging events for: Üçün təmiz hadisələr
+Finished: Bitirdi
+Back: Geri
+Check box to delete ALL events for a user: Bir istifadəçi üçün  BÜTÜN hadisələri silmək üçün onay qutusunu seçin
+Delete all events before: Əvvəlki bütün tədbirləri silin
+Purge deleted only: Təmizləmə yalnız silindi
+Preview delete: Önizlə silin
+Are you sure you want to delete events for: Tədbirləri silmək istədiyinizə əminsiniz
+Records deleted from XXX: Qeydlər "XXX" -dən silindi.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Elektron poçt ünvanı boş ola bilməz.
+Username already exists.: İstifadəçi adı artıq mövcuddur.
+Email address already exists.: Elektron poçt ünvanı artıq mövcuddur.
+New user via self-registration.: Öz qeydiyyatı ilə yeni istifadəçi.
+A new WebCalendar account has been set up for you.: Sizin üçün yeni bir WebCalendar hesabı quruldu.
+Your username is XXX.: İstifadəçi adınız: "XXX".
+Your password is XXX.: Parolunuz: "XXX".
+Please visit XXX to log in and start using your account!: Giriş etmək və hesabınızdan istifadə etməyə başlamaq üçün zəhmət olmasa "XXX" -ə daxil olun!
+You may change your password after logging in the first time.: Şifrənizi ilk dəfə daxil olduqdan sonra dəyişə bilərsiniz.
+If you received this email in error: Bu e-poçtu səhvən aldınız və bir WebCalendar hesabına qeydiyyatdan keçməmisinizsə, bu bildirişi laqeyd edə və ya qısa bir qeyd ilə cavab verə bilərsiniz.
+Administrator: =
+Welcome: Xoş gəlmisiniz
+New user via email.: E-poçt vasitəsilə yeni istifadəçi.
+Registration: Qeydiyyat
+Welcome to WebCalendar: WebCalendar-a xoş gəlmisiniz
+Your email should arrive shortly.: E-poçtunuz qısa müddətdə gəlməlidir.
+Return to Login screen: Giriş ekranına qayıt
+Password (again): Şifrə (yenidən):
+Your account information will be emailed to you.: Hesab məlumatlarınız sizə elektron poçtla göndəriləcəkdir.
+Submit: təqdim
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Davam edin
+(Your comments will be emailed to the other participants.): (Şərhləriniz digər iştirakçılara elektron poçtla göndəriləcək.)
+XXX has rejected an appointment.: XXX randevuyu rədd etdi.
+Rejected by XXX.: XXX tərəfindən rədd edildi.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Yeni Uzaqdan Təqvim əlavə edin
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Bu hadisə məxfidir.
+(Private): (Şəxsi)
+(cont.): (davamı)
+Approved: Təsdiq edildi
+Deleted: Silindi
+Rejected: Rədd edildi
+Waiting for approval: Təsdiq gözləyirəm
+Unknown: Naməlum
+Invalid report id.: Yanlış hesabat id.
+Click here to manage reports for the Public Access calendar.: İctimai giriş təqvimi üçün hesabatları idarə etmək üçün buraya vurun.
+Add new report: Yeni hesabat əlavə edin
+Manage Reports: Hesabatları idarə edin
+
+########################################
+# Page: search.php
+#
+Advanced Search: Ətraflı axtarış
+Search: Axtarış
+Keywords: Açar sözlər
+Enter % for all entries: Bütün girişlər üçün% daxil edin
+Include: Daxil edin
+Filter by Date: Tarixə görə süzün
+All Dates: Bütün tarixlər
+Past: Keçmiş
+Upcoming: Gələcəkdir
+Range: Menzil
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Bir və ya daha çox axtarış açar sözləri daxil etməlisiniz.
+Search Results: Axtarış nəticələri
+match found: uyğunluq tapıldı
+matches found: matçlar tapıldı
+No matches found: Heç bir nəticə tapılmadı
+New Search: Yeni axtarış
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Aşağıdakı məlumatlar, WebCalendar quraşdırmanızda quraşdırmanın daha etibarlı olması üçün dəyişdirilə biləcək potensial problemləri sadalayır.
+For questions about WebCalendar security see the forums: Hər hansı bir WebCalendar təhlükəsizlik problemi ilə bağlı suallarınız üçün, GitHub.com-da yerləşdirilən WebCalendar forumlarını istifadə edin;<br>XXX
+View your current PHP settings: Cari PHP parametrlərinizə baxın
+Security Issue: Təhlükəsizlik məsələsi
+Status: =
+Default admin user password: Varsayılan admin istifadəçi şifrəsi
+You should change the password of the default admin user.: Varsayılan administrator istifadəçisinin şifrəsini dəyişdirməlisiniz.
+File permissions XXX: Fayl icazələri: XXX
+item XXX should not be writable: Aşağıdakı maddə yazılabilir olmamalıdır:<br><tt> XXX</tt>
+File exists XXX: Fayl mövcuddur: "XXX"
+Because you have email disabled, you should remove this file.: E-poçtunuzu deaktiv etdiyiniz üçün bu faylı çıxarmalısınız.
+File location XXX: Fayl yeri: "XXX"
+remove XXX if not using: "XXX" sənədindən istifadə etmirsinizsə, onu silməlisiniz. Və ya heç olmasa yeni bir qovluğa köçürün.
+System Settings XXX: Sistem Ayarları: "XXX"
+consider enabling UAC: İstifadəçi Erişim Nəzarətinin istifadəçi imtiyazlarını təyin etməsini təmin etməyi düşünmək istəyə bilərsiniz.
+recommend approving new public events: Bütün kütləvi tədbir təqdimatlarının təsdiqlənməsini tövsiyə edirik.
+recommend using CAPTCHA: CAPTCHA, avtomatik hadisə təqdimatını qorumaq üçün tövsiyə olunur.
+Database cache directory location: Verilənlər bazası önbelleği yeri
+db cache should be inaccessable: Verilənlər bazası önbelleği bir URL ilə əldə edilə bilməyən bir qovluqda olmalıdır.
+PHP Settings XXX: PHP Ayarları: "XXX"
+recommend setting XXX Off: "XXX" üçün tövsiyə olunan ayar Qapalıdır.
+recommend setting allow_url_fopen Off: Uzaqdan təqvimlər aktiv olmadıqda, "allow_url_fopen" üçün tövsiyə olunan parametr Qapalıdır.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Başqa bir istifadəçi təqviminə baxın
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Heç bir kateqoriya əlavə etməmisiniz.
+Set Category: Kateqoriya seçin
+Global Categories cannot be changed.: Qlobal kateqoriyalar dəyişdirilə bilməz.
+
+########################################
+# Page: upcoming.php
+#
+more: daha çox
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Uzaqdan Təqvimlər
+denotes administrative user: inzibati istifadəçini bildirir
+Add New User: Yeni istifadəçi əlavə edin
+
+########################################
+# Page: usersel.php
+#
+form: forma
+Reset: Sıfırla
+
+########################################
+# Page: views.php
+#
+Add New View: Yeni baxış əlavə edin
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Adsız Görünüş
+Add View: Görünüş əlavə edin
+Edit View: Görünüşü redaktə edin
+View Name: Adı göstər
+View Type: Baxış növü
+Day by Time: Gündən-günə
+Week (Users horizontal): Həftə (istifadəçilər üfüqi)
+Week by Time: Həftə ilə
+Week (Users vertical): Həftə (İstifadəçilər şaquli)
+Week (Timebar): Həftə (Timebar)
+Month (Timebar): Ay (Timebar)
+Month (side by side): Ay (yan yana)
+Month (on same calendar): Ay (eyni təqvimdə)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Görünüş adını göstərməlisiniz
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Bu baxış üçün istifadəçi yoxdur.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Tapşırıq faizini yeniləyin
+Completed: Tamamlandı
+Assistant mode: Köməkçi rejimi
+Declined: Rədd edildi
+Needs-Action: Ehtiyaclar-Fəaliyyət
+by: tərəfindən
+Percentage Complete: Yüzdə tamamlandı
+External User: Xarici istifadəçi
+Update: Yeniləyin
+at: =
+comments: şərhlər
+Show: Göstər
+Hide: Gizlədin
+Approve/Confirm entry: Girişi təsdiqləyin / təsdiq edin
+Reject entry: Girişi rədd et
+Set category: Kateqoriya seçin
+Add to My Calendar: Təqvimimə əlavə edin
+Copy entry: Girişi kopyalayın
+This will delete this entry for all users.: Bu, bütün istifadəçilər üçün bu yazını siləcəkdir.
+Edit entry: Girişi redaktə edin
+Edit repeating entry for all dates: Bütün tarixlər üçün təkrar giriş redaktə edin
+Delete repeating event for all dates: Bütün tarixlər üçün təkrarlanan hadisəni silin
+Edit entry for this date: Bu tarix üçün girişi redaktə edin
+Delete entry only for this date: Girişi yalnız bu tarix üçün silin
+Delete entry from calendar of XXX: XXX təqvimindən girişi silin
+This will delete the entry from your XXX calendar.: Bu girişinizi XXX təqviminizdən siləcəkdir.
+boss: boss '
+This will delete the entry from your boss calendar.: Bu girişinizi müdirinizin təqvimindən siləcəkdir.
+This will delete the entry from your calendar.: Bu giriş təqviminizdən silinəcəkdir.
+from your boss calendar: müdirinizin təqvimindən
+Do you want to add this entry to your calendar?: Bu girişi təqviminizə əlavə etmək istəyirsiniz?
+This will add the entry to your calendar.: Bu girişinizi təqviminizə əlavə edəcəkdir.
+Email all participants: Bütün iştirakçılara elektron poçt göndərin
+Hide activity log: Fəaliyyət jurnalını gizlədin
+Show activity log: Fəaliyyət jurnalını göstərin
+Export this entry to: Bu girişi ixrac edin
+Palm Pilot: Palma Pilotu
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Yeni giriş əlavə etmək üçün boş xana iki dəfə vurun.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Yeni giriş
+cont.: davam
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Başqa bir istifadəçi təqvimi
+Category Management: Kateqoriya İdarəetmə
+Day View: Günə baxış
+Edit Event: Tədbiri redaktə edin
+Month View: Ay görünüşü
+Common Trailer: Ümumi Qoşqu
+User Management: İstifadəçi idarəetməsi
+Manage Views: Baxışları idarə edin
+Week View: Həftə baxışı
+Year View: İlin görünüşü
+Invalid function id: Yanlış funksiya id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: "Settings.php" faylı tapılmadı.<br>Zəhmət olmasa "settings.php.orig" düyməsini "settings.php" yə kopyalayın və saytınıza düzəliş edin.
+Incomplete settings.php file...: Tamamlanmamış "settings.php" faylı ...
+Could not find XXX defined in...: "Settings.php" sənədinizdə müəyyən edilmiş "XXX" tapılmadı.
+You must define XXX in: "Settings.php" sənədində "XXX" təyin etməlisiniz.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Dekabr
+Dec: Dekabr
+LANGUAGE DEFINED: DİL TƏMİN EDİLDİ
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Verilənlər bazasına qoşulma xətası: "XXX".
+db_type not defined.: db_type müəyyən edilməyib.
+invalid db_type XXX: etibarsız db_type "" XXX ".
+Cache cleared from previous SQL!: Önbellek əvvəlki SQL-dən təmizləndi!
+Error executing query.: Sorğu icra edilərkən xəta baş verdi.
+Unfortunately, XXX is not implemented for YYY: Təəssüf ki, "XXX" (YYY) üçün tətbiq edilmir.
+Unknown ODBC error.: Naməlum ODBC xətası.
+Error opening cache dir XXX.: "XXX" önbelleğini açma xətası.
+delete: silin
+Cache error Could not XXX file YYY.: Önbellek xətası: XXX "YYY" faylı alınmadı.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Ölümcül Xəta
+Invalid data format for: Üçün yanlış məlumat formatı
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Xəta: Fəaliyyət qeydləri üçün ayarlanmadı!
+This event is XXX.: Bu hadisə XXX.
+Conf.: Konf.
+exceeds limit of XXX events per day: gündə XXX hadisə limitini keçir
+on: haqqında
+All Attendees: Bütün iştirakçılar
+Busy: Məşğul
+Tentative: Müvəqqəti
+Schedule an appointment for XXX.: XXX: YYY üçün görüş təyin edin.
+date_select: __dd__ __ ay____yyyy__
+Event approved: Tədbir təsdiqləndi
+Journal approved: Jurnal təsdiqləndi
+Task approved: Tapşırıq təsdiqləndi
+Attachment: Əlavə
+Event created: Tədbir yaradıldı
+Journal created: Jurnal yaradıldı
+Task created: Tapşırıq yaradıldı
+Event deleted: Tədbir silindi
+Journal deleted: Jurnal silindi
+Task deleted: Tapşırıq silindi
+New user via email (self registration): E-poçt vasitəsilə yeni istifadəçi (öz qeydiyyatı)
+New user (self registration): Yeni istifadəçi (öz qeydiyyatı)
+Notification sent: Bildiriş göndərildi
+Event rejected: Tədbir rədd edildi
+Journal rejected: Jurnal rədd edildi
+Task rejected: Tapşırıq rədd edildi
+Reminder sent: Xatırlatma göndərildi
+Event updated: Tədbir güncəlləşdi
+Journal updated: Jurnal yeniləndi
+Task updated: Tapşırıq yeniləndi
+Delete User: İstifadəçini silin
+WK: =
+TASKS: Tapşırıqlar
+Task_Title: Başlıq
+Due: Görə
+Task Name: Tapşırıq adı
+Task Due Date: Tapşırıqun son tarixi
+You have XXX unapproved entries: XXX təsdiq olunmamış girişləriniz var 
+Changes successfully saved: Dəyişikliklər uğurla qeyd edildi
+Event: Tədbir
+Action: Fəaliyyət
+Printer Friendly: Yazıcı dostu
+Generate printer-friendly version: Yazıcı dostu versiya yaradın
+after: sonra
+before: əvvəl
+end: son
+start: başlamaq
+View this event: Bu hadisəyə baxın
+View this task: Bu tapşırığa baxın
+January: yanvar
+February: Fevral
+March: mart
+April: Aprel
+May_: Bilər
+June: İyun
+July: İyul
+August: Avqust
+September: Sentyabr
+October: oktyabr
+November: Noyabr
+Jan: Yanvar
+Feb: Fevral
+Mar: =
+Apr: Aprel
+May: Bilər
+Jun: İyun
+Jul: İyul
+Aug: Avqust
+Sep: Sentyabr
+Oct: Oktyabr
+Nov: Noyabr
+SU: =
+MO: =
+TU: =
+WE: BİZ
+TH: =
+FR: =
+SA: =
+unknown-month: naməlum ay
+First Quarter Moon: Birinci rüb
+Full Moon: Bütöv ay
+Last Quarter Moon: Son Dörd Ay
+New Moon: Yeni ay
+Error TIME_SLOTS undefined!: Xəta: TIME_SLOTS təyin olunmamışdır!
+The following error occurred: Aşağıdakı səhv baş verdi
+You are not authorized.: Səlahiyyətli deyilsiniz.
+Add N hours to: N saat əlavə edin
+Subtract N hours from: N saat çıxartın
+same as: eyni ilə
+server time: server vaxtı
+Cannot read timezone file XXX.: Saat qurşağı faylı oxuna bilmir: XXX.
+Your current GMT offset is XXX hours.: Cari GMT ofsetiniz XXX saatdır.
+Unauthorized: İcazəsiz
+Error approving event XXX.: Tədbir təsdiqlənmə xətası: XXX.
+Error deleting event XXX.: Tədbir silinərkən xəta baş verdi: XXX.
+Error rejecting event XXX.: Tədbirin rədd edilməsində səhv: XXX.
+Sunday: Bazar
+Monday: Bazar ertəsi
+Tuesday: Çərşənbə axşamı
+Wednesday: Çərşənbə
+Thursday: Cümə axşamı
+Friday: Cümə
+Saturday: Şənbə
+Sun: Günəş
+Mon: Ay
+Tue: Çərşənbə axşamı
+Wed: Çərşənbə axşamı
+Thu: Cümə
+Fri: Cümə
+Sat: Oturdu
+unknown-weekday: naməlum-iş günü
+Invalid referring URL: Yanlış istinad URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: İndeks
+Documentation: Sənədlər
+Page: Səhifə
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Təqvimim
+Add New Entry: Yeni giriş əlavə edin
+Add New Task: Yeni Tapşırıq əlavə edin
+Logout: Çıxış
+Home: Ev
+Back to My Calendar: Təqvimimə qayıdın
+Go to: Getmək
+Manage calendar of: Təqvimini idarə edin
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Brauzer dili tapılmadı
+(not supported): (dəstəklənmir)
+Abkhazian: Abxaz
+Acoli: Akoli
+Adangme: =
+Adyghe: Adıgey
+Afar: =
+Afrihili: =
+Afrikaans: =
+Ainu: =
+Akan: =
+Akkadian: Akkad
+Albanian: Alban
+Aleut: =
+Algonquian: =
+Altai (Southern): Altay (cənub)
+Amharic: Amarikcə
+Angika: =
+Apache: =
+Arabic (Algeria): Ərəb (Əlcəzair)
+Arabic (Bahrain): Ərəb (bəhreyn)
+Arabic (Egypt): Ərəb (Misir)
+Arabic (Iraq): Ərəb (İraq)
+Arabic (Jordan): Ərəb (İordaniya)
+Arabic (Kuwait): Ərəb (Küveyt)
+Arabic (Lebanon): Ərəb (Livan)
+Arabic (Libya): Ərəb (Liviya)
+Arabic (Morocco): Ərəb (Mərakeş)
+Arabic (Oman): Ərəb (umman)
+Arabic (Qatar): Ərəb (Qətər)
+Arabic (Saudi Arabia): Ərəb (Səudiyyə Ərəbistanı)
+Arabic (Syria): Ərəb (Suriya)
+Arabic (Tunisia): Ərəb (Tunis)
+Arabic (U.A.E.): Ərəb (U.A.E.)
+Arabic (Yemen): Ərəb (Yəmən)
+Arabic: Ərəb
+Aragonese: Aragonca
+Aramaic: Aramey
+Arapaho: =
+Arawak: =
+Armenian: Erməni
+Assamese: Assam
+Asturian: Asturiya
+Athapascan: Atapaskan
+Avaric: =
+Avestan: =
+Awadhi: Avadhi
+Aymara: =
+Azerbaijani: Azərbaycan dili
+Balinese: Bali dili
+Baluchi: Baluçi
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: Bəsə
+Bashkir: Başqırd
+Basque: Bask dili
+Beja: =
+Belarusian: Belarus
+Bemba: =
+Bengali: Benqal dili
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Qara ayaq
+Blin: Şəfəq
+Bliss: zövq
+Bosnian: Bosniya
+Braj: =
+Breton: =
+Buginese: Bugin dili
+Bulgarian: Bolqar
+Buriat: =
+Burmese: Birma
+Caddo: Kaddo
+Catalan: Katalan dili
+Cebuano: Sebuano
+Chagatai: Çağatay
+Chamorro: Çamorro
+Chechen: Çeçen
+Cherokee: =
+Cheyenne: Şeyne
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Çin (Hong Kong)
+Chinese (PRC): Çin (ÇXR)
+Chinese (Simplified/GB2312): Çin dili (Sadələşdirilmiş / GB2312) 
+Chinese (Singapore): Çin dili (Sinqapur)
+Chinese (Taiwan): Çin (Tayvan)
+Chinese (Traditional/Big5): Çin (Ənənəvi / Böyük5)
+Chinook: =
+Chipewyan: =
+Choctaw: Choktav
+Chuukese: =
+Chuvash: Çuvaş dili
+Coptic: Koptik
+Cornish: Korniş
+Corsican: Korsika
+Cree: Kri
+Creek: Dərə
+Croatian: Xorvat
+Czech: Çex
+Dakota: =
+Danish: Danimarka
+Dargwa: Darqva
+Delaware: Delaver
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Holland (Belçika)
+Dutch: Holland
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Elam
+English (Australia): İngilis dili (Avstraliya)
+English (Belize): İngilis dili (Beliz)
+English (Canada): İngilis dili (Kanada)
+English (Ireland): İngilis dili (İrlandiya)
+English (Jamaica): İngilis dili (Yamayka)
+English (New Zealand): İngilis dili (Yeni Zelandiya)
+English (Philippines): İngilis dili (Filippinlər)
+English (South Africa): İngilis dili (Cənubi Afrika)
+English (Trinidad & Tobago): İngilis dili (Trinidad və Tobaqo)
+English (United Kingdom): İngilis dili (Birləşmiş Krallıq)
+English (United States): İngilis dili (Amerika Birləşmiş Ştatları)
+English (Zimbabwe): İngilis dili (Zimbabve)
+English: İngilis-ABŞ
+Erzya: =
+Esperanto: =
+Estonian: Estoniya
+Ewe: Qoyun
+Ewondo: Evondo
+Fang: Azı
+Fanti: =
+Faroese: Farer
+Fijian: Fiji
+Filipino: Filippin
+Finnish: Fin
+Fon: =
+French (Belgium): Fransız dili (Belçika)
+French (Canada): Fransız dili (Kanada)
+French (France): Fransız dili (Fransa)
+French (Luxembourg): Fransız dili (Lüksemburq)
+French (Monaco): Fransız (Monako)
+French (Switzerland): Fransız dili (İsveçrə)
+French: Fransız dili
+Frisian (Eastern): Friz (şərq)
+Frisian (Northern): Friz (Şimal)
+Frisian (Western): Friz (Qərb)
+Frisian: Friz
+Friulian: =
+Fulah: =
+Ga: Qa
+Galibi: Qalibi
+Galician: Qalisian
+Ganda: Qanda
+Gayo: Qayo
+Gbaya: =
+Geez: Qarışıq
+Georgian: Gürcü
+German (Austria): Alman dili (Avstriya)
+German (Germany): Alman dili (Almaniya)
+German (Liechtenstein): Alman dili (Lixtenşteyn)
+German (Luxembourg): Alman dili (Lüksemburq)
+German (Standard): Alman dili (Standart)
+German (Switzerland): Alman dili (İsveçrə)
+German: Alman
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gotik
+Grebo: =
+Greek: Yunan
+Greenlandic: Qrenlandiya
+Guarani: Quarani
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haiti (Kreol)
+Haitian: Haiti
+Hausa: =
+Hawaiian: =
+Hebrew: İvrit
+Herero: =
+Hiligaynon: =
+Hindi: Hind
+Hiri Motu: =
+Hittite: Hitit
+Hmong: =
+Holo (Taiwanese): Holo (Tayvan)
+Hungarian: Macar
+Hupa: =
+Iban: İban
+Icelandic: İslandiya
+Ido: Mən edirəm
+Igbo: İqbo
+Iloko: İloko
+Indonesian: İndoneziya
+Ingush: İnquş
+Inuktitut: =
+Inupiaq: =
+Iranian: İran
+Irish (Gaelic): İrland (qal)
+Irish: İrland
+Iroquoian: =
+Italian (Switzerland): İtalyan (İsveçrə)
+Italian: İtalyan
+Japanese: Yapon
+Javanese: Cava
+Judeo-Arabic: Yəhudi-ərəb
+Judeo-Persian: =
+Kabardian: =
+Kabyle: Kabil
+Kachin: Kaçin
+Kalaallisut: Kalalisut
+Kalmyk: Kalmık
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: Qaraçay-Balkar
+Karelian: =
+Kashmiri: Kəşmir
+Kashubian: Kaşubian
+Kawi: =
+Kazakh: Qazax
+Khasi: Xasi
+Khmer (Central): Khmer (Mərkəzi)
+Khmer: =
+Khotanese: Xotan dili
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: Kinyarvanda
+Kirghiz: Qırğız
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Koreya (Johab)
+Korean (North): Koreya (Şimal)
+Korean (South): Koreya (Cənubi)
+Korean: Koreya
+Kosraean: Kosreyan
+Kpelle: =
+Kuanyama: =
+Kumyk: Kumuk dili
+Kurdish: Kürd
+Kutenai: =
+Kyrgyz: Qırğızlar
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Latın
+Latvian: Latviya
+Lezghian: Ləzgi
+Limburgan: Limburqan
+Lingala: Linqala
+Lithuanian: Litva
+Lojban: Loğban
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Lüksemburq
+Macedonian: Makedoniya
+Madurese: Madures
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Malaqas
+Malay: Malay dili
+Malayalam: =
+Maldivian: Maldiv
+Maltese: Malta dili
+Manchu: Mançu
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: Manks
+Maori: =
+Mapuche: =
+Marathi: Marati dili
+Mari: =
+Marshallese: Marşal
+Marwari: =
+Masai: =
+Mayan: Maya
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: Minanqkabau
+Mirandese: =
+Mohawk: =
+Moksha: Mokşa
+Moldavian: Moldova
+Mongo: =
+Mongolian: Monqol
+Montenegrin: Çernoqoriya
+Moroccan: Mərakeş
+Mossi: =
+Myanmar: Myanma
+Māori: Maori
+N&#39;Ko: Yox
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Şimal)
+Ndebele (South): Ndebele (cənub)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: Nepal
+Nias: =
+Niuean: =
+Nogai: Noqay
+Norse: =
+Norwegian (Bokmål): Norveç (Bokmål)
+Norwegian (Nynorsk): Norveç (Nynorsk)
+Norwegian: Norveç
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Oksitan
+Odia: =
+Ojibwa: Ocibva
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Osetik
+Pahlavi: Pəhləvi
+Palauan: =
+Pali: =
+Pampanga: Pampanqa
+Pangasinan: Panqasinan
+Panjabi: =
+Papiamento: =
+Pashto: Puştu
+Pedi: =
+Persian (Farsi): Farsca (farsca)
+Persian (Iran): Fars dili (İran)
+Persian: Farsca
+Phoenician: Finikiya
+Pohnpeian: =
+Polish: Polşa
+Portuguese: Portuqal
+Portuguese/Brazil: Portuqaliya / Braziliya
+Punjabi (India): Pəncab (Hindistan)
+Punjabi (Pakistan): Pəncab (Pakistan)
+Punjabi: Pəncab dili
+Quechua: Keçua
+Rajasthani: =
+Rapanui: =
+Rarotongan: Rarotonqan
+Rhaeto-Romanic: Rhaeto-Roman
+Romanian: Rumıniya
+Romansh: =
+Romany: =
+Rundi: =
+Russian (Moldavia: Rus dili (Moldaviya
+Russian (Republic of Moldova): Rus dili (Moldova Respublikası)
+Russian: Rus
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Şimal)
+Sami (Skolt): =
+Sami (Southern): Sami (Cənub)
+Sami: =
+Samoan: Samoa
+Samoli: =
+Sandawe: =
+Sango: Sanqo
+Sanskrit: Sanskrit dili
+Santali: =
+Sardinian: Sardiniya
+Sasak: =
+Scots (Gaelic): İskoç (Gal)
+Selkup: =
+Serbian (Upper): Serb (Yuxarı)
+Serbian: Serb
+Serer: =
+Sesotho: Sesoto
+Shan: Şan
+Shona: Şona
+Sichuan Yi: =
+Sicilian: Siciliya
+Sindhi: =
+Sinhala: =
+Slavic: Slavyan
+Slovak: =
+Slovenian: Sloven
+Sogdian: Soğdi
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbca (aşağı)
+Sorbian (Upper): Sorbca (yuxarı)
+Sorbian: =
+Sotho: =
+Spanish (Argentina): İspan (Argentina)
+Spanish (Bolivia): İspan (Boliviya)
+Spanish (Chile): İspan (Çili)
+Spanish (Colombia): İspan (Kolumbiya)
+Spanish (Costa Rica): İspan (Kosta Rika)
+Spanish (Dominican Republic): İspan (Dominik Respublikası)
+Spanish (Ecuador): İspan (Ekvador)
+Spanish (El Salvador): İspan (El Salvador)
+Spanish (Guatemala): İspan (Qvatemala)
+Spanish (Honduras): İspan (Honduras)
+Spanish (Mexico): İspan (Meksika)
+Spanish (Nicaragua): İspan (Nikaraqua)
+Spanish (Panama): İspan (Panama)
+Spanish (Paraguay): İspan (Paraqvay)
+Spanish (Peru): İspan (Peru)
+Spanish (Puerto Rico): İspan (Porto Riko)
+Spanish (Spain): İspan (İspaniya)
+Spanish (Uruguay): İspan (Uruqvay)
+Spanish (Venezuela): İspan (Venesuela)
+Spanish: İspan
+Sranan Tongo: Sranan tonqo
+Sukuma: =
+Sumerian: Şumer
+Sundanese: Sudan
+Susu: =
+Sutu: =
+Swahili: Suahili
+Swati: Svati
+Swedish (Finland): İsveç (Finlandiya)
+Swedish (Sweden): İsveç (İsveç)
+Swedish: İsveç
+Syriac: Suriyalı
+Tagalog: Taqaloq dili
+Tahitian: =
+Tai: =
+Taiwan: Tayvan
+Tajik: Tacik
+Tamashek: Tamaşek
+Tamil: Tamil dili
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: Tay
+Tibetan: Tibet
+Tigre: Pələng
+Tigrinya: Tiqrinya
+Timne: =
+Tlingit: Tlinqit
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): Tonqa (Nytmhasa)
+Tonga (Tonga Islands): Tonqa (Tonqa adaları)
+Tonga: Tonqa
+Tsimshian: Tsimşian
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Türk
+Turkmen: Türkmən
+Tuvinian: Tuvinalı
+Twi: =
+Udmurt: =
+Ugaritic: Uqaritik
+Ukrainian: Ukrayna
+Umbundu: =
+Urdu: =
+Uyghur: Uyğur
+Uzbek: Özbək
+Vai: =
+Venda: =
+Vietnamese: Vyetnam
+Volapük: =
+Votic: Votik
+Wakashan: Vakaşan
+Walloon: Valun
+Waray: Varay
+Washo: =
+Welsh: Uels
+Wolaitta: =
+Wolof: Volof
+Xhosa: Xosa
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: Yəhudi
+Yorùbá: Yorba
+Yupik: =
+Zande: =
+Zapotec: Zapotek
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Brauzer müəyyənləşdirilib
+event: hadisə
+journal: jurnal
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Yanlış istifadəçi girişi
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: səhv parol
+no such user: Belə istifadəçi yoxdur
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Hesab deaktiv edildi
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Fasilə
+Months: Aylar
+Month Days: Ay günləri
+Days: Günlər
+Weeks: Həftələr
+Position: Vəzifə
+Until: Qədər
+Count: Say
+Inclusion Dates: Daxil olma tarixləri
+Exclusion Dates: İstisna tarixləri
+Event Imported: Tədbir idxal edildi
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: bayt
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Bildiriş
+authenticate: SMTP Xətası: Doğrulanmadı
+connect_host: SMTP Xətası: SMTP hostuna qoşula bilmədi:
+data_not_accepted: SMTP Xətası: Məlumat qəbul edilmir
+encoding: Naməlum kodlama:
+execute: İcra oluna bilmədi:
+file_access: Fayl daxil ola bilmədi:
+file_open: Fayl xətası faylı aça bilmədi:
+from_failed: Aşağıdakı ünvandan alınmadı:
+instantiate: Poçt funksiyası qurula bilmədi
+mailer_not_supported: poçtu dəstəklənmir
+provide_address: Ən azı bir alıcının e-poçt ünvanı verməlisiniz.
+recipients_failed: SMTP Xətası: Aşağıdakı alıcılar uğursuz oldu:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Qrafikdə Görülən Simvolları daxil edin
+Enter the correct letters and numbers...: Mətn qutusuna şəkildən düzgün hərfləri və rəqəmləri daxil edin. Bu kiçik test zərərli botlara qarşı giriş məhdudiyyəti kimi xidmət edir. Bu qrafika oxumaq çox çətindirsə, sadəcə səhifəni yenidən yükləyin
+Challenge/Response: Çağırış / Cavab
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Bu girişin tarixi və saatı dəyişdirilsin?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Qısa Təsvir daxil etməmisiniz
+time prior to work hours...: iş saatından əvvəl vaxt ...
+Invalid Event Date: Yanlış hadisə tarixi
+Please add a participant: Xahiş edirəm iştirakçı əlavə edin
+Invalid Date: Yanlış tarix
+You have not entered a valid time of day: Günün etibarlı bir vaxtını daxil etməmisiniz.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Təqvim identifikatoru boş ola bilməz.
+First and last names cannot both be blank.: Ad və soyad hər ikisi boş ola bilməz.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Yanlış rəng
+Color format should be RRGGBB.: Rəng formatı #RRGGBB olmalıdır.
+URL cannot be blank.: URL boş ola bilməz.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Fayl növü İdxal Formatı ilə uyğun gəlmir
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Sənədin fonu üçün yanlış rəng.
+Invalid color for document title.: Sənəd adı üçün yanlış rəng.
+Invalid color for table cell background.: Cədvəl xanası fonu üçün yanlış rəng.
+Invalid color for table cell background for today.: Bu gün üçün masa hüceyrəsi fonu üçün yanlış rəng.
+Invalid work hours.: Yanlış iş saatları.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Server URL slash (/) ilə bitməlidir.
+Invalid color for table grid.: Cədvəl şəbəkəsi üçün yanlış rəng.
+Invalid color for event popup background.: Tədbir açılan fon üçün yanlış rəng.
+Invalid color for event popup text.: Tədbir açılan mətni üçün yanlış rəng.
+Invalid color for table header text.: Cədvəl başlığı mətni üçün yanlış rəng.
+Invalid color for table header background.: Cədvəl başlığı fonu üçün yanlış rəng.
+Server URL is required.: Server URL tələb olunur.
+Invalid Color: Yanlış rəng
+Database Name: Verilənlər bazası adı
+Full Path (no backslashes): Tam yol (arxa zərbəsiz)
+The password contains illegal characters.: Parolda qanunsuz simvollar var.
+Error you must specify a Single-User Login: Xəta: Tək istifadəçi girişini təyin etməlisiniz
+Could not find XXX.: XXX tapılmadı.
+Could not find XXX in DOM.: DOM-da XXX tapılmadı.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Bu həftə
+This Month: Bu ay
+This Year: Bu il
+Exit: Çıx
+Add New Event: Yeni hadisə əlavə edin
+Delete Entries: Girişləri silin
+My Views: Mənim baxışlarım
+Manage Calendar of: Təqvimini idarə edin
+My Reports: Hesabatlarım
+My Profile: Mənim Hesabım
+Public Calendar: İctimai Təqvim
+Unapproved Events: Təsdiqlənməmiş hadisələr
+User Manager: İstifadəçi meneceri
+Help Contents: Kömək məzmunu
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: =
+Create New: Yeni yaradın
+Failure Reason: Arızanın səbəbi:
+You must manually create database: Əl ilə verilənlər bazası yaratmalısınız.
+Single-User: Tək istifadəçi
+Test Settings: Test parametrləri
+Timezone Conversion Successful: Saat qurşağının çevrilməsi uğurlu oldu
+WebCalendar Installation Wizard Step XXX: WebCalendar Quraşdırma Sihirbazı Adım XXX
+Password Accepted: Şifrə qəbul edildi
+Successful Login: Uğurlu giriş
+Password Incorrect: Parol səhvdir
+Invalid Login: Yanlış Giriş
+Display Errors: Ekran səhvləri
+File Uploads: Fayl yükləmələri
+Allow URL fopen: URL açılmasına icazə verin (yalnız Uzaq Təqvimlər istifadə edildikdə tələb olunur)
+Safe Mode: Təhlükəsizlik rejimi
+Safe Mode Allowed Vars: Təhlükəsiz rejimə icazə verilən dəyişikliklər (yalnız təhlükəsiz rejim açıq olduqda TZ tələb olunur)
+GD: GD (Qradiyent Şəkil Arxa Planları üçün lazımdır)
+Passwords do not match!: Parollar uyğun gəlmir!
+Unable to write password to settings.php file: "Settings.php" sənədinə parol yazmaq mümkün deyil.
+Password Updated: Şifrə Yeniləndi
+Password has been set: Şifrə təyin edildi
+Connection Successful...: Bağlantı Uğurlu  Quraşdırmaya davam etmək üçün xahiş edirəm növbəti səhifəyə keçin.
+Correct your entries or click the Create New...: Quraşdırmaya davam etmək üçün girişlərinizi düzəldin və ya  Yeni Yarat  düyməsini vurun.
+Correct your entries and try again.: Girişlərinizi düzəldin və yenidən cəhd edin.
+XXX does not exist: XXX yoxdur
+XXX is not writable: XXX yazılı deyil
+Error Converting Timezone: Saat qurşağını çevirmə xətası
+Error Unable to write to file XXX.: Xəta XXX sənədinə yazmaq olmur.
+Please change the file permissions of this file.: Xahiş edirəm bu sənədin fayl icazələrini dəyişdirin.
+Please change includes dir permission: Xahiş edirəm digər istifadəçilər tərəfindən yazılmasına icazə vermək üçün "daxildir" qovluğunuzun fayl icazələrini dəyişdirin.
+Your settings have been saved.: Ayarlarınız qeyd edildi.
+OFF: QAPALI
+ON: AÇIQDIR
+WebCalendar Setup Wizard: WebCalendar Quraşdırma Sihirbazı
+This installation wizard will guide you...: Bu quraşdırma sihirbazı sizə əsas WebCalendar quraşdırılmasını qurmaq üçün rəhbərlik edəcəkdir.<br>Yardım və nasazlıqların aradan qaldırılması üçün baxın:<br>
+System Administrators Guide: Sistem İdarəçisi Təlimatı
+Frequently Asked Questions: Tez-tez soruşulan suallar
+FAQ: Suallar
+Troubleshooting: Giderme
+Getting Help: Kömək almaq
+Upgrading Guide: Təkmilləşdirmə Bələdçisi
+User Supported Wiki: İstifadəçi tərəfindən dəstəklənən Wiki
+PHP Version Check: PHP versiyasını yoxlayın
+Check to see if PHP 7.1.0 or greater is installed.: PHP 7.1.0 və ya daha yüksək versiyanın quraşdırılıb-quraşdırılmadığını yoxlayın.
+PHP version: PHP versiyası
+PHP Settings: PHP parametrləri
+Detailed PHP Info: Ətraflı PHP məlumatı
+settings.php Status: "settings.php" statusu
+Session Check: Sessiya yoxlanışı
+To test the proper operation of sessions...: Sessiyaların düzgün işləməsini yoxlamaq üçün bu səhifəni yenidən yükləyin. Hər dəfə seans sayğacının artdığını görməlisiniz.
+SESSION COUNTER: SESSİYA SAYICI
+The file permissions of settings.php are set...: "Settings.php" fayl icazələri, quraşdırıcının onu dəyişdirmək üçün icazəsi olmadığı üçün təyin edilmişdir. Xahiş edirəm davam etmək üçün aşağıdakı faylın fayl icazələrini dəyişdirin
+The file permissions of the includes directory are set...: Daxil olan qovluğun fayl icazələri quraşdırıcının yeni bir fayl yaratmaq üçün icazəsi olmayacaq şəkildə qurulur. Xahiş edirəm davam etmək üçün aşağıdakı qovluğun icazələrini dəyişdirin
+Your settings.php file appears to be valid.: "Settings.php" sənədiniz etibarlı görünür.
+Configuration Wizard Password: Konfiqurasiya Sihirbazının Şifrəsi
+Create Settings File Password: Parollar Fayl Şifrəsi Yaradın
+db setup directions...: Bu bölmədə verilənlər bazası serverinizlə əlaqə quracaq və test edəcəksiniz. Verilən hesab məlumatları verilənlər bazaları, cədvəllər və istifadəçilər yaratmaq üçün TAM icazələrə sahib olmalıdır. Bu mümkün deyilsə və ya verilənlər bazanıza giriş məhduddursa, verilənlər bazanızı əl ilə konfiqurasiya etməlisiniz.
+Database Status: Verilənlər bazası vəziyyəti
+Supported databases for your PHP installation: PHP quraşdırma üçün dəstəklənən verilənlər bazası
+Your current database settings are able to access the database.: Mövcud verilənlər bazası parametrləriniz verilənlər bazasına daxil ola bilər.
+Please Test Settings: Zəhmət olmasa Ayarları Test edin
+Your current database settings are not able...: Mövcud verilənlər bazası parametrləriniz verilənlər bazasına daxil ola bilmir və ya hələ sınaqdan keçirilməyib.
+Database Settings: Verilənlər bazası parametrləri
+Database Type: Verilənlər bazası növü
+Server: =
+Connection Persistence: Bağlantı davamlılığı
+All your database tables appear to be up...: Bütün verilənlər bazası cədvəlləriniz yenidir. Növbəti səhifəyə keçib WebCalendar quraşdırma işlərini tamamlaya bilərsiniz.
+This appears to be a new installation...: Bu yeni bir quraşdırma kimi görünür. Bu düzgün deyilsə, əvvəlki səhifəyə qayıdın və parametrlərinizi düzəldin.
+This appears to be an upgrade...: Bunun versiyası&nbsp;XXX&nbsp;-YYY üçün bir yüksəliş olduğu görünür.
+The database requires some data input...: Verilənlər bazası bəzi məlumat daxil etmələrini tələb edir. Yeniləməni başa çatdırmaq üçün Database Update düyməsini basın.
+In this section we will perform...: Bu hissədə verilənlər bazanızı lazımi səviyyəyə çatdırmaq üçün dəyişiklikləri həyata keçirəcəyik. Tamamilə dəstəklənən bir verilənlər bazasından istifadə edirsinizsə, bu addım sizin üçün avtomatik olaraq həyata keçiriləcəkdir. Əks təqdirdə, tələb olunan SQL göstərilə bilər və onu kəsib verilənlər bazası serverinin sorğu pəncərəsinə yapışdırmalısınız.
+No database actions are required.: Verilənlər bazası əməliyyatları tələb olunmur.
+The following database actions are required: Aşağıdakı verilənlər bazası tədbirləri tələb olunur
+ODBC Underlying Database: ODBC Əsas Məlumat Bazası:
+Automatic installation not supported: Avtomatik quraşdırma verilənlər bazası tipiniz üçün tam olaraq həyata keçirilməyib. Verilən SQL-dən istifadə edərək lazımi cədvəlləri əl ilə yaratmalı olacaqsınız. Xahiş edirəm davam etmək üçün  SQL göstər  düyməsini basın. Kəsin və verilənlər bazası sorğu pəncərənizə yapışdırın.
+This may take several minutes to complete: Bunun tamamlanması bir neçə dəqiqə çəkə bilər.
+Install Database: Verilənlər bazasını quraşdırın
+Update Database: Məlumat bazasını yeniləyin
+Display Required SQL: Tələb olunan SQL-i göstərin
+Return to previous page after processing SQL.: Bu SQL-i əl ilə işlədikdən sonra əvvəlki səhifəyə qayıtmalı və verilənlər bazasını yenidən test etməlisiniz, belə ki skript dəyişiklikləri aşkar edə bilər.
+This is the final step in setting up your WebCalendar Installation.: Bu, WebCalendar Quraşdırmanızın qurulmasında son addımdır.
+Timezone Conversion: Saat qurşağının çevrilməsi
+It appears that you have NOT converted...: Mövcud WebCalendar hadisə məlumatlarınızı GMT-yə çevirmədiyiniz görünür. Əgər varsa, bu bildirişi görməməzlikdən gələ bilərsiniz və çevrilməyə davam edə bilməzsiniz. Bu yeni bir quraşdırma varsa, bu bildirişi də görməməzlikdən gələ bilərsiniz.
+Convert Data to GMT: Verilənləri GMT-yə çevirin
+Application Settings: Tətbiq parametrləri
+HTTP-based authentication was not detected...: HTTP əsaslı identifikasiya aşkarlanmadı. Aşağıdakı 'İstifadəçi Doğrulaması' seçimlərindən 'Veb Sunucusu' seçmək istəyirsinizsə veb serverinizi yenidən qurmalısınız.
+HTTP-based authentication was detected...: HTTP əsaslı identifikasiya algılandı. İstifadəçi identifikasiyası veb serveriniz tərəfindən idarə olunur. Aşağıdakı 'İstifadəçi Doğrulaması' seçimləri siyahısından 'Veb Server' seçməlisiniz.
+Create Default Admin Account: Varsayılan İdarə Hesabı Yaradın
+(Admin Account Not Found): (Admin Hesabı tapılmadı)
+User Authentication: İstifadəçi identifikasiyası
+Web-based via WebCalendar (default): WebCalendar vasitəsilə veb-əsaslı (standart)
+Web Server (not detected): Veb server (aşkarlanmadı)
+Web Server (detected): Veb Server (aşkar edildi)
+None (Single-User): Yoxdur (Tək İstifadəçi)
+Read-Only: Yalnız oxumaq üçün
+Environment: Ətraf mühit
+Production: İstehsal
+Development: İnkişaf
+Save Settings: Parametrləri saxla
+Launch WebCalendar: WebCalendar başladın
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: "XXX" cədvəlini yeniləmə xətası: YYY.
+Conversion Successful: Dönüşüm Uğurlu 
+Perl script required: Əvvəlki WebCalendar versiyanız, məlumatlarınızı çevirmək üçün bir PERL skriptinin işlədilməsini tələb edir. Zəhmət olmasa /tools/upgrade_to_0.9.7.pl çalıştırın və davam etmək üçün bu səhifəyə qayıdın.
+previous version requires updating several tables: Əvvəlki WebCalendar versiyanız bir neçə verilənlər bazası cədvəlinin yenilənməsini tələb edir.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: Əvvəlcədən nəzərdən keçirilmir
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Verilənlər bazasına qoşulma xətası
+Include Path: Yolu daxil edin
+Deleting events for: Tədbirlər silinir
+Importing events for: Tədbirlər idxal olunur
+No data returned from: Heç bir məlumat geri qaytarılmadı
+for non-user calendar: istifadəçi olmayan təqvim üçün
+No Remote Calendars found: Uzaqdan Təqvim tapılmadı
+Remote Calendars not enabled: Uzaqdan Təqvimlər aktiv deyil
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: hadisə idini tapa bilmədi
+could not find event id XXX in database.: verilənlər bazasında hadisə id XXX tapa bilmədi.
+task: tapşırıq
+This is a reminder for the XXX detailed below.: Bu aşağıda detallı XXX üçün bir xatırlatmadır.
+Pecentage Complete: Təmizlik tamamlandı
+Reminder: Xatırlatma
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Dəstəklənməyən əməliyyat: XXX.
+No event id specified.: Tədbir id göstərilməyib.
+Not authorized (not admin).: Səlahiyyətli deyil (admin deyil).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: YYY tarixindən ZZZ tarixinə qədər olan hadisələr yoxlanılır.
+Found XXX events in time range.: Vaxt aralığında XXX hadisə tapıldı.
+Event id=XXX YYY at ZZZ on AAA.: Tədbir id = AAA-da ZZZ-də XXX "YYY".
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: XXX istifadəçinin digər istifadəçinin təqviminə baxmasına icazə verilir.
+Error Email reminders disabled for user XXX.: Xəta: "XXX" istifadəçisi üçün e-poçt xatırlatmaları deaktiv edildi.
+Number of site_extras XXX.: Sayt_ekstlərinin sayı: XXX.
+Reminder set for event.: Tədbir üçün xatırlatma quruldu.
+Mins Before XXX.: Əvvəlki dəqiqələr: XXX.
+Event time is XXX.: Tədbirin vaxtı: XXX.
+Remind time is XXX.: Xatırladma vaxtı: XXX.
+Reminders for user XXX, login YYY.: "XXX" istifadəçisi üçün xatırlatmalar, "YYY" daxil olun.
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: "XXX" istifadəçisi üçün təsdiq edilmir.
+Event id=XXX YYY already sent.: Tədbir id = XXX "YYY" artıq göndərilib.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Tək istifadəçi rejimi üçün giriş tələb olunmur.
+No login required for HTTP authentication.: HTTP identifikasiyası üçün giriş tələb olunmur.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Girişdə səhv simvollar.
+Username XXX does not exist.: "XXX" istifadəçi adı mövcud deyil.
+You cannot remove admin rights from yourself!: İdarə hüquqlarını özünüzdən silə bilməzsiniz!
+Unknown error saving user: İstifadəçini yadda saxlamaqda naməlum səhv.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Tədbir id: XXX üçün iştirakçı tapılmadı.
+Db error Could not find event id XXX.: DB xətası: XXX hadisə id-si tapılmadı.
+Error Could not find event id XXX in database.: Xəta: verilənlər bazasında hadisə id XXX tapılmadı.

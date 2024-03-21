@@ -1,0 +1,2387 @@
+# Maltese mt
+#
+# Il-format jikkonsisti minn header fakultattiv:
+#
+# Tradott minn: ismek u l-email tiegħek
+# L-aħħar aġġornament: id-data tat-traduzzjoni
+# (Inkluż il- "#" ewlieni u kwalunkwe kumment magħmul minn tradutturi preċedenti.
+# L-EWWEL linja vojta ttemm dawn il-kummenti tal-intestatura.)
+#
+# Segwit minn kemm hemm bżonn:
+#
+# Frażi Ingliża: traduzzjoni
+# (Wieħed għal linja. MINGĦAJR l-ewwel "#".
+# Il- "frażi Ingliża:", inkluż il-kolon ":", hija pprovduta mill -
+# Żviluppaturi tal-WebCalendar. Il-parti tiegħek hija t- "traduzzjoni".)
+#
+# Id-direttorju tal-għodda fih żewġ skripts perl biex jgħinuk:
+# - check_translation.pl
+# jindika jekk it-test kollu ġiex tradott b'suċċess.
+# - update_translation.pl
+# se analizza l-fajls tal-programm biex issib it-traduzzjoni kollha ('frażi') u
+# tooltip ('frażi'). Se tirranġa l-frażijiet skont il-paġna
+# (fajl) li fih l-ewwel okkorrenza. B'għażla, jista 'jimmarka l-
+# frażijiet li għadhom mhumiex tradotti bit-tqegħid
+#  << MISSING >>
+# fuq il-linja fuq il-frażi. U, jekk il-frażi hija abbrevjazzjoni,
+# se tinkludi t-test Ingliż sħiħ fuq il-linja taħt il-frażi.
+#
+# Nota: Qed nipprova naqqas id-daqs ġenerali tal-fajl. Jekk it- "traduzzjoni"
+# kelma / frażi hija identika fil-lingwa tiegħek u bl-Ingliż, uża biss sinjal "=".
+#
+# Nota: Tinnota d-dħul għal "May_" hawn taħt. Hemm raġuni għal dan.
+# Ittraduċi "May_" għall-isem tax-xahar sħiħ u "May" lill-,
+# ġeneralment taqsira ta 'tliet ittri, xahar (bħal "Ottubru" għal "Ottubru").
+#
+# Jien użajt Google translate għal dan.
+# Għandu jkun biżżejjed sakemm kelliem nattiv ikun jista 'jivverifikah.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: verżjoni XXX
+WebCalendar is a PHP application used...: WebCalendar hija applikazzjoni PHP użata biex iżżomm kalendarju għal utent wieħed jew grupp ta 'utenti tal-internet / intranet. Jista 'jiġi kkonfigurat ukoll bħala kalendarju ta' avvenimenti.
+Credits: Krediti
+About: Dwar
+OK: kollox sew
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Żball fid-database: XXX.
+DEFAULT CONFIGURATION: KONFIGURAZZJONI DEFAULT
+Go: Mur
+Save: Ħlief
+Undo: Ħoll
+Public Access: Aċċess Pubbliku
+Admin: Ammin
+User Access Control: Kontroll tal-Aċċess tal-Utent
+Allow Access to Other Users Calendar: Ħalli Aċċess għall-Kalendarju ta 'Utenti Oħra
+Grant This User Access to My Calendar: Agħti Dan l-Utent Aċċess għall-Kalendarju Tiegħi
+Type: Tip
+Calendar: Kalendarju
+View Event: Ara l-Avveniment
+View: Ara
+Edit: Editja
+Approve/Reject: Japprova / Irrifjuta
+Events: Avvenimenti
+Tasks: Kompiti
+Journals: Ġurnali
+Can Invite: Jista 'Jistieden
+Can Email: Tista 'tibgħat email
+Can See Time Only: Jista 'Jara Ħin Biss
+Assistant: Assistent
+Select All: Agħżel kollox
+Clear All: Żbarazza kollox
+Public: Pubbliku
+Confidential: Kunfidenzjali
+Private: Privat
+
+########################################
+# Page: activity_log.php
+#
+Next: Li jmiss
+Previous: Preċedenti
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Avveniment XXX huwa diġà fil-kalendarju tiegħek.
+Invalid entry id XXX.: Id ta 'dħul invalidu: "XXX".
+a XXX event may not be added to your calendar: Dan huwa avveniment ta 'XXX u jista' ma jiżdiedx mal-kalendarju tiegħek.
+confidential: kunfidenzjali
+private: privat
+Error adding event XXX.: Żball meta żied l-avveniment: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Isem tal-issettjar mhux validu "XXX".
+Select: Agħżel
+Day: Jum
+Week: Ġimgħa
+Month: Xahar
+Year: Sena
+Bottom: Qiegħ
+Top: Fuq
+Anyone: Kulħadd
+Participant: Parteċipant
+Settings: =
+Groups: Gruppi
+NonUser Calendars: Kalendarji Mhux Utenti
+Other: Oħrajn
+Email: =
+Colors: Kuluri
+Document background: Sfond tad-dokument
+Document title: Titlu tad-dokument
+Document text: Test tad-dokument
+My event text: It-test tal-avveniment tiegħi
+Table grid color: Kulur tal-grilja tal-mejda
+Table header background: Sfond tal-intestatura tal-mejda
+Table header text: Test tal-intestatura tat-tabella
+Table cell background: Sfond taċ-ċellula tal-mejda
+Table cell background for current day: Sfond taċ-ċellula tal-mejda għall-ġurnata kurrenti
+Table cell background for days with events: Sfond taċ-ċellula tal-mejda għal ġranet b'avvenimenti
+Table cell background for weekends: Sfond taċ-ċellula tal-mejda għal tmiem il-ġimgħa
+Table cell background for other month: Sfond taċ-ċellula tal-mejda għal xahar ieħor
+Week number color: Kulur tan-numru tal-ġimgħa
+Event popup background: Sfond popup tal-avveniment
+Event popup text: Test popup tal-avveniment
+System Settings: Settings tas-Sistema
+Help: Għajnuna
+System options: Għażliet tas-sistema
+app-name-help: Jispeċifika l-isem tal-applikazzjoni li tidher fil-bar tat-titlu tal-browser għall-paġni kollha u fuq il-paġna tal-login. Il-valur li tispeċifika hawn se jiġi mfittex fil-fajl tat-traduzzjonijiet li jippermettilek tipprovdi titoli differenti għal lingwi differenti.
+Application Name: Isem tal-Applikazzjoni
+Translated Name (XXX): Isem Tradott (XXX)
+server-url-help: Jispeċifika l-URL bażi għall-applikazzjoni. Dan se jkun inkluż meta tibgħat tfakkiriet u notifiki bl-email.
+Server URL: URL tas-server
+home-url-help: Jispeċifika l-URL tad-dar għall-applikazzjoni. Dan jista 'jkun assolut jew relattiv
+Home URL: URL tad-dar
+language-help: Jispeċifika liema lingwa tuża.
+Language: Lingwa
+Your browser default language is XXX.: Il-lingwa default tal-browser tiegħek hija "XXX".
+Allow user to use themes: Ħalli lill-utent juża t-temi
+themes-help: Tippermetti aġġornament tal-massa tas-settings tal-konfigurazzjoni. Tikketti b'ittri żgħar huma pref għall-utent biss.
+Themes: Temi
+AVAILABLE THEMES: TEMI DISPONIBBLI
+None: Xejn
+Preview: =
+Site customization: Personalizzazzjoni tas-sit
+custom-script-help: Tippermetti d-dħul ta 'Javascript apposta jew test tal-folja ta' l-istil li se jiddaħħal fit-taqsima HTML "ras" ta 'kull paġna.
+Custom script/stylesheet: Skrittura / skeda tal-istil apposta
+custom-header-help: Tippermetti siltiet HTML apposta jiġu nklużi fil-parti ta 'fuq ta' kull paġna.
+Custom header: Intestatura tad-dwana
+custom-trailer-help: Tippermetti siltiet HTML apposta jiġu nklużi fl-aħħar ta 'kull paġna.
+Custom trailer: Trejler apposta
+enable-external-header-help: Tippermetti li t-trejler apposta jitgħabba minn fajl estern
+Allow external file for header/script/trailer: Ħalli fajl estern għal header / script / trailer
+Allow user to override header/trailer: Ħalli lill-utent jwarrab header / trailer
+Date and Time: Data u Ħin
+server-tz-help: Jispeċifika kemm sigħat biex taġġusta l-ħin minn UTC għall-ħin tas-server.
+Server Timezone Selection: Għażla taż-Żona tal-Ħin tas-Server
+tz-help: Jispeċifika kemm sigħat biex taġġusta l-ħin minn UTC għall-ħin lokali.
+Default Client Timezone Selection: Għażla ta 'Żona tal-Ħin tal-Klijent Default
+display-general-use-gmt-help: Jekk attivat, dati / ħinijiet komuni jintwerew bħala GMT
+Display Common Use Date/Times as GMT: Uri Data / Ħinijiet ta 'Użu Komuni bħala GMT
+date-format-help: Jispeċifika l-format tad-data preferuta.
+Date format: Format tad-data
+Small Task Date: Data tal-Kompitu Ż-Żgħir
+display-week-starts-on: Jispeċifika l-jum tal-ġimgħa li l-ġimgħa tibda fiha. Jekk it-Tnejn huwa speċifikat, allura n-numri tal-ġimgħa jkunu n-numri tal-ġimgħa ISO.
+Week starts on: Il-ġimgħa tibda
+display-weekend-starts-on: Issettja l-jum tal-ġimgħa biex tibda tmiem il-ġimgħa
+Weekend starts on: Weekend jibda
+time-format-help: Jispeċifika liema format tal-ħin tuża:<br><em>12-il siegħa:</em> Uri l-ħinijiet bħala 3am, 8:30 pm, eċċ.<br><em>24 siegħa:</em> Uri l-ħinijiet bħala 300 , 2030, eċċ.
+Time format: Format tal-ħin
+12 hour: 12-il siegħa
+24 hour: 24 siegħa
+timed-evt-len-help: Jispeċifika l-metodu ta 'input biex jiġi ddeterminat it-tul ta' avveniment bil-ħin.
+Specify timed event length by: Speċifika t-tul tal-avveniment bil-ħin sa
+Duration: Tul ta 'żmien
+End Time: Ħin tat-Tmiem
+work-hours-help: Tispeċifika l-firxa tal-ħin li trid tidher għall-vista tal-ġurnata.
+Work hours: Ħinijiet tax-xogħol
+From: Minn
+to: għal
+Appearance: Dehra
+preferred-view-help: Jispeċifika l-veduta default (Jum, Ġimgħa, Xahar jew Sena).
+Preferred view: Veduta preferuta
+Allow top menu: Ħalli l-aqwa menu
+Date Selectors position: Pożizzjoni tas-Seletturi tad-Data
+menu-themes-help: Issettja l-kuluri u l-istil tal-menu ta 'fuq
+Menu theme: Tema tal-menu
+fonts-help: Jispeċifika lista ta 'fonts tas-sistema għall-użu (bħal "Arial, Helvetica")
+Fonts: =
+display-sm_month-help: Jekk attivat, juri xhur żgħar f'xhur ta 'xahar
+Display small months: Uri xhur żgħar
+display-weekends-help: Inkludi tmiem il-ġimgħa meta tara ġimgħa.
+Display weekends: Uri tmiem il-ġimgħa
+display-long-daynames-help: Jekk attivat, ismijiet ta 'ġurnata twila huma murija
+Display long day names: Uri ismijiet ta 'ġurnata twila
+display-alldays-help: Uri l-ġranet tax-xhur ta 'qabel u ta' wara f'xhur ta 'xahar, imla ċ-ċelloli kollha.
+Display all days in month view: Uri l-ġranet kollha fid-dawl tax-xahar
+display-week-number-help: Jispeċifika jekk in-numru tal-ġimgħa (1-52) għandux jintwera fil-vista tax-xahar u fil-viżjoni tal-ġimgħa.
+Display week number: Uri n-numru tal-ġimgħa
+display-desc-print-day-help: Inkludi deskrizzjonijiet tal-avvenimenti fil-verżjoni tal-vista tal-ġurnata li ma tagħmilx ħsara lill-istampatur.
+Display description in printer day view: Uri deskrizzjoni fil-vista tal-ġurnata tal-istampatur
+yearly-shows-events-help: Fil-veduta ta 'kull sena, uri ġranet li fihom avvenimenti b'tipa grassa.
+Display days with events in bold in month and year views: Uri ġranet b'avvenimenti b'tipa grassa fil-veduti ta 'xahar u sena
+display-minutes-help: Jekk attivat, il-minuti li jintemmu bi: 00 dejjem jintwerew
+Display 00 minutes always: Uri 00 minuta dejjem
+display-end-times-help: Uri l-ħinijiet tat-tmiem ta 'l-avveniment jekk avveniment ittajjat
+Display end times on calendars: Uri l-ħinijiet tat-tmiem fuq il-kalendarji
+allow-view-add-help: Ikona '+' se tkun inkluża fil-veduti, li tippermetti lill-utenti jżidu malajr l-avvenimenti fil-kalendarji ta 'utenti oħra.
+Include add event link in views: Inkludi żid link għall-avveniment fil-veduti
+lunar-help: Jekk attivat, juri ikoni żgħar li jirrappreżentaw il-fażijiet lunari kull xahar
+Display Lunar Phases in month view: Uri l-Fażijiet Lunari fid-dawl tax-xahar
+Restrictions: Restrizzjonijiet
+allow-view-other-help: Jispeċifika jekk utent jistax jara l-kalendarju ta 'utent ieħor.
+Allow viewing other users calendars: Ħalli tara kalendarji ta 'utent ieħor
+require-approvals-help: Meta jkun attivat, utent għandu japprova avveniment qabel ma jintwera fil-kalendarju tiegħu (sakemm il-Wiri mhux approvat ikun attivat). Innota li tissettja dan għal "Le" mhux se tintefa 'l-approvazzjonijiet għall-kalendarju ta' Aċċess Pubbliku (jekk il-kalendarju ta 'Aċċess Pubbliku huwa attivat).
+Require event approvals: Jeħtieġu approvazzjonijiet ta 'avvenimenti
+display-unapproved-help: Jispeċifika jekk l-avvenimenti mhux approvati humiex murija fil-kalendarju tiegħek.<br>Jekk issettjat għal "Iva", allura l-avvenimenti mhux approvati jintwerew fil-kalendarju tiegħek (b'kulur ta 'test differenti).<br>Jekk issettjat fuq "Le", allura avvenimenti mhux approvati għandhom jiġu approvati qabel ma jintwerew fil-kalendarju tiegħek.
+Display unapproved: Uri mhux approvat
+conflict-check-help: Iċċekkja għal kunflitti ta 'avvenimenti (żewġ avvenimenti skedati għall-istess ħin għall-istess persuna). Jekk issettja dan għal "Iva", xorta tkun tista 'tippjana żewġ avvenimenti fl-istess ħin wara li tikkonferma twissija. Jekk tissettja dan għal "Le", ma ssir l-ebda verifika għall-kunflitti. Probabbilment trid issettja dan fuq "Iva", allura jseħħ kontroll tal-kunflitt.
+Check for event conflicts: Iċċekkja għal kunflitti ta 'avvenimenti
+Yes: Iva
+No: Le
+conflict-months-help: Jekk il-verifika tal-kunflitt hija f'postha ("Iċċekkja għal kunflitti ta 'avvenimenti" hija ssettjata għal "Le" & # 41 ;, dan jispeċifika kemm xhur fil-futur għandna niċċekkjaw għal kunflitti. Jekk issib li żżid avvenimenti qed tieħu ħafna ħin biex tipproċessa , naqqas dan in-numru.
+Conflict checking months: Xhur ta 'kontroll tal-kunflitti
+conflict-check-override-help: Tippermetti lill-utenti jegħlbu kunflitti ta 'avvenimenti u jippjanaw żewġ avvenimenti jew aktar għall-istess ħin.
+Allow users to override conflicts: Ħalli lill-utenti jegħlbu l-kunflitti
+limit-appts-help: Tippermetti lill-amministratur tas-sistema biex jistabbilixxi limitu għas-sistema kollha fuq in-numru ta 'appuntamenti li utent wieħed jista' jkollu f'kull ġurnata waħda.
+Limit number of timed events per day: Limita n-numru ta 'avvenimenti bil-ħin kuljum
+limit-appts-number-help: Jispeċifika n-numru massimu ta 'avvenimenti puntwali li utent jista' jkollu f'ġurnata waħda.
+Maximum timed events per day: Avvenimenti massimi bil-ħin kuljum
+crossday-help: Jekk attivat, avvenimenti li jkopru ġranet jintwerew fi ġranet separati
+Disable Cross-Day Events: Itfi l-Avvenimenti ta 'Ġranet
+disable-location-field-help: L-għażla ta '"Iva" tneħħi l-kamp "Post" mill-paġni ta' informazzjoni dwar l-avveniment
+Disable Location field: Itfi l-qasam tal-Post
+disable-url-field-help: L-għażla ta '"Iva" tneħħi l-kamp "URL" mill-paġni ta' informazzjoni dwar l-avveniment
+Disable URL field: Itfi l-qasam tal-URL
+disable-priority-field-help: L-għażla ta '"Iva" tneħħi l-qasam "Prijorità" mill-paġni ta' informazzjoni dwar l-avveniment, u tipprovdi interface aktar sempliċi għan-novizzi.
+Disable Priority field: Itfi l-qasam tal-Prijorità
+disable-access-field-help: L-għażla ta '"Iva" tneħħi l-qasam "Aċċess" mill-paġni ta' informazzjoni dwar l-avveniment, u tipprovdi interface aktar sempliċi għan-novizzi.
+Disable Access field: Itfi l-qasam tal-Aċċess
+disable-participants-field-help: L-għażla ta '"Iva" tneħħi l-qasam "Parteċipanti" mill-paġni ta' informazzjoni dwar l-avvenimenti, u tipprevjeni lill-utenti milli jżidu utenti oħra ma 'l-avvenimenti tagħhom. Jekk tippermetti din l-għażla, tista 'tkun trid tiddiżattiva wkoll il-kaxxa "Ħalli tara kalendarji ta' utent ieħor" ukoll.
+Disable Participants field: Itfi l-qasam tal-Parteċipanti
+disable-repeating-field-help: L-għażla ta '"Iva" tneħħi l-kamp "Irrepeti" meta żżid l-avvenimenti. Dan se jipprovdi interface aktar sempliċi għan-novizzi.
+Disable Repeating field: Itfi l-qasam li Tirrepeti
+allow-html-description-help: Jekk attivat, l-utenti jistgħu jdaħħlu HTML fil-qasam tad-deskrizzjoni tal-avveniment. Jekk mhux attivat, it-tikketti HTML jinħarġu sabiex jidhru bħala test sempliċi. Twissija: L-attivazzjoni ta ’din il-karatteristika tippermetti lill-utenti jirreferu għal stampi fuq websajts oħra.
+Allow HTML in Description: Ħalli HTML fid-Deskrizzjoni
+Popups: =
+disable-popups-help: Itfi popups mill-veduti tal-kalendarju
+Disable Pop-Ups: Itfi Pop-Ups
+popup-includes-siteextras-help: Jekk attivat, ippermetti li s-setup ta 'oqsma ta' avvenimenti personalizzati fil-fajl site_extras.php jintwerew fil-popups tal-avvenimenti.
+Display Site Extras in popup: Uri Extras tas-Sit fil-popup
+popup-includes-participants-help: Jekk attivat, il-parteċipanti jintwerew fi popups tal-avvenimenti.
+Display Participants in popup: Uri l-Parteċipanti fil-popup
+Miscellaneous: Mixxellanji
+remember-last-login-help: Meta tkun attivata, il-login tal-utent jimtela għalihom fil-paġna tal-login (iżda mhux il-password), u l-preferenzi tal-utent jitgħabbew (inklużi l-kuluri preferuti tagħhom u l-għażla tal-lingwa).
+Remember last login: Ftakar l-aħħar login
+summary_length-help: It-tul massimu ta 'Deskrizzjoni qasira fil-veduti tal-kalendarju
+Brief Description Length: Deskrizzjoni qasira Tul
+user_sort-help: Tiddetermina l-ordni ta 'l-għażla għall-Utent, il-listi ta' Nonuser
+User Sort Order: Ordni ta 'Sort tal-Utent
+Lastname, Firstname: Kunjom, Isem
+Firstname, Lastname: Isem, Kunjom
+allow-public-access-help: Meta jkun attivat, il-kalendarju jista 'jintuża bħala kalendarju pubbliku li jinqara biss li ma jeħtieġx li l-utenti jidħlu.
+Allow public access: Ħalli aċċess pubbliku
+public-access-default-visible: Avvenimenti mill-kalendarju pubbliku jidhru awtomatikament fuq il-kalendarji kollha tal-utenti
+Public access visible by default: Aċċess pubbliku viżibbli awtomatikament
+public-access-default-selected: Meta żżid avveniment ġdid, l-utent pubbliku jintgħażel awtomatikament bħala parteċipant.
+Public access is default participant: L-aċċess pubbliku huwa parteċipant awtomatiku
+public-access-view-others-help: Meta taċċessa s-sistema b'aċċess pubbliku, tispeċifika jekk l-utent jistax jara l-kalendarju ta 'utent ieħor tal-kalendarju.
+Public access can view other users: Aċċess pubbliku jista 'jara utenti oħra
+public-access-can-add-help: Meta jkun attivat, l-utenti li jaċċessaw is-sistema permezz tal-Aċċess Pubbliku jkunu jistgħu jżidu avvenimenti ġodda, iżda ma jidhrux fil-kalendarju sakemm amministratur japprova l-avveniment il-ġdid.
+Public access can add events: Aċċess pubbliku jista 'jżid avvenimenti
+public-access-add-requires-approval-help: Jispeċifika jekk avvenimenti miżjuda permezz tal-kont ta 'aċċess pubbliku jeħtieġux approvazzjoni qabel ma jintwerew.
+Public access new events require approval: Aċċess pubbliku avvenimenti ġodda jeħtieġu approvazzjoni
+public-access-sees-participants-help: Jekk ikun attivat, l-utenti li jaċċessaw il-kalendarju mill-kont pubbliku jkunu jistgħu jaraw il-parteċipanti tal-avveniment jekk jaraw id-dettalji ta 'avveniment.
+Public access can view participants: Aċċess pubbliku jista 'jara lill-parteċipanti
+public-access-override-help: Jippermetti li l-ismijiet u d-deskrizzjonijiet tal-avvenimenti jkunu moħbija fil-kalendarju pubbliku
+Override event name/description for public access: Niżżel l-isem / deskrizzjoni tal-avveniment għal aċċess pubbliku
+public-access-override-text-help: It-test li jintwera jekk l-għażla ta 'hawn fuq hija attivata. Jekk 'Mhux Disponibbli', tiġi tradotta.
+Text to display to public access: Test biex jintwera għall-aċċess pubbliku
+public-access-captcha-help: Jekk attivat, avvenimenti ġodda miżjuda mill-Pubbliku jeħtieġu li tgħaddi validazzjoni CAPTCHA.
+Require CAPTCHA validation for public access new events: Jeħtieġ validazzjoni CAPTCHA għal aċċess pubbliku għal avvenimenti ġodda
+uac-enabled-help: Jippermetti l-kontroll tal-aċċess fil-livell tal-utent
+User Access Control enabled: Kontroll tal-Aċċess tal-Utent attivat
+groups-enabled-help: Jippermetti l-appoġġ tal-grupp, li jippermetti lill-utenti jagħżlu l-utenti skont il-gruppi.
+Groups enabled: Gruppi attivati
+user-sees-his-group-help: Jekk attivat, l-utenti ma jarawx utenti tal-kalendarju li mhumiex f'mill-inqas wieħed mill-gruppi tagħhom.
+User sees only his groups: Utent jara biss il-gruppi tiegħu
+nonuser-enabled-help: Jekk attivat, l-amministraturi se jkollhom l-għażla li jżidu kalendarji li mhumiex utenti
+Nonuser enabled: Kalendarji Mhux Użati
+nonuser-list-help: Fejn għandek turi l-kalendarji li ma jużawx il-lista fil-lista tal-parteċipanti
+Nonuser list: Uri fil-lista tal-parteċipanti fuq
+Upcoming Events: Avvenimenti li ġejjin
+upcoming-events-help: Jippermettu li jmiss.php
+Enabled: Abilitat
+upcoming-events-allow-override: Ħalli l-parametru tal-utent għal coming.php
+Allow user override: Ħalli l-utent jinqabeż
+upcoming-events-display-caticons: Inkludi l-ikoni tal-kategorija fil-li jmiss.php
+Display category icons: Uri l-ikoni tal-kategorija
+upcoming-events-display-layers: Uri saffi fi coming.php
+Display layers: Uri saffi
+upcoming-events-display-links: Uri l-links fuq coming.php
+Display links to events: Uri links għal avvenimenti
+upcoming-events-display-popups: Uri popups tal-avvenimenti fi coming.php
+Display event popups: Uri popups tal-avvenimenti
+reports-enabled-help: Jekk ikun attivat, l-utenti jaraw taqsima "Rapporti" fil-qiegħ ta 'kull paġna u jitħallew joħolqu rapporti personalizzati. Barra minn hekk, l-utenti amministrattivi jistgħu joħolqu rapporti globali li jidhru fil-qiegħ tal-paġni tal-utenti kollha.
+Reports enabled: Rapporti ppermettiet
+subscriptions-enabled-help: Jispeċifika jekk l-utenti remoti jistgħux jissottoskrivu għall-kalendarju ta 'utent tal-WebCalendar, u jippermettulhom jaraw l-avvenimenti tal-utent tal-WebCalendar fl-applikazzjoni tagħhom abilitata għall-iCal (bħall-iCal ta' Apple jew il-Kalendarju Mozilla).
+Allow remote subscriptions: Ħalli abbonamenti remoti
+remotes-enabled-help: Tippermetti lill-utenti jillowdjaw fajls ICS remoti billi jużaw URL
+Allow remote calendars: Ħalli kalendarji remoti
+rss-enabled-help: Jispeċifika jekk il-kalendarju ta 'utent jistax jinkiseb minn RSS feed.
+Enable RSS feed: Attiva l-għalf RSS
+categories-enabled-help: Jippermetti appoġġ għal kategoriji ta 'avvenimenti.
+Categories enabled: Kategoriji attivati
+icon_upload-enabled-help: Jekk attivat, l-utenti jistgħu jtellgħu l-ikoni tal-kategorija
+Category Icon Upload enabled: Tella 'l-Ikona tal-Kategorija attivata
+(Requires XXX folder to exist.): (Jeħtieġ li jkun hemm folder XXX.)
+display-tasks-help: Uri tieqa żgħira tal-kompiti fuq il-kalendarju tax-xahar u tal-ġurnata
+Display small task list: Uri lista ta 'kompiti żgħar
+display-tasks-in-grid-help: Uri kompiti f'kalendarji flimkien ma 'avvenimenti
+Display tasks in Calendars: Uri l-kompiti fil-Kalendarji
+allow-external-users-help: Jispeċifika jekk utent mhux tal-kalendarju jistax jiżdied ma 'avveniment. Dan jippermetti lill-utenti mhux tal-kalendarju jiġu elenkati bħala parteċipanti fl-avveniment.
+Allow external users: Ħalli utenti esterni
+external-can-receive-notification-help: Meta l-utenti esterni huma attivati ​​u l-użu tal-email huwa attivat, l-utenti esterni jistgħu jirċievu notifiki tal-email meta l-avveniment jiżdied, jiġi aġġornat jew jitħassar (jekk l-indirizz tal-email tal-utent estern ikun ipprovdut).
+External users can receive email notifications: Utenti esterni jistgħu jirċievu notifiki bl-email
+external-can-receive-reminder-help: Meta l-utenti esterni huma attivati ​​u l-użu tal-email huwa attivat, l-utenti esterni jistgħu jirċievu tfakkiriet tal-email (jekk l-indirizz tal-email tal-utent estern ikun ipprovdut).
+External users can receive email reminders: Utenti esterni jistgħu jirċievu tfakkiriet bl-email
+allow-self-registration-help: Ħalli utenti ġodda jirreġistraw lilhom infushom
+Allow self-registration: Ħalli awto-reġistrazzjoni
+use-blacklist-help: Limita l-aċċess għall-funzjonijiet tal-WebCalendar ibbażati fuq l-indirizz IP
+Restrict self-registration to blacklist: Irrestrinġi l-awto-reġistrazzjoni għal-lista s-sewda
+allow-self-registration-full-help: Ħalli utenti ġodda jimlew il-proċess ta 'awto-reġistrazzjoni onlajn
+Use self-registration email notifications: Iġġenera passwords u ibgħathom lil utenti ġodda
+allow-attachment-help: Ħalli lill-utenti jżidu annessi tal-fajl ma 'avvenimenti.
+Allow file attachments to events: Ħalli fajls mehmuża ma 'avvenimenti
+Admin and owner can always add attachments if enabled.: Amministratur u sid dejjem jistgħu jżidu annessi jekk ikunu attivati.
+allow-comments-help: Ħalli lill-utenti jżidu kummenti ma 'avvenimenti.
+Allow comments to events: Ħalli kummenti għal avvenimenti
+Admin and owner can always add comments if enabled.: Amministratur u sid dejjem jistgħu jżidu kummenti jekk ikunu attivati.
+email-enabled-help: Ixgħel jew itfi kull tibgħat ta 'email għal notifika u tfakkiriet. Issettja fuq "le", jekk is-server tiegħek mhux issettjat sew biex tibgħat il-posta.
+Email enabled: Email attivata
+email-default-sender: Tispeċifika l-indirizz tal-email biex tispeċifika bħala l-mittent meta tibgħat tfakkiriet.
+Default sender address: Indirizz awtomatiku tal-mittent
+email-mailer: Agħżel it-tip ta 'email (SMTP, posta PHP, sendmail)
+Email Mailer: =
+email-smtp-host: Hostname (s) ta 'server (i) SMTP separati b'virgola
+SMTP Host name(s): Isem (ismijiet) tal-Ospitanti SMTP
+email-smtp-port: Numru tal-Port SMTP (normalment 25)
+SMTP Port Number: Numru tal-Port SMTP
+email-smtp-auth: Uża l-Awtentikazzjoni SMTP
+SMTP Authentication: Awtentikazzjoni SMTP
+email-smtp-username: SMTP Username jekk tuża Awtentikazzjoni
+SMTP Username: Username SMTP
+email-smtp-password: Password SMTP jekk tuża Awtentikazzjoni
+SMTP Password: Password SMTP
+Default user settings: Settings tal-utent default
+email-format: Speċifika l-preferenza għal messaġġi HTML jew test sempliċi
+Email format preference: Preferenza tal-format tal-email
+HTML: =
+Plain Text: Test sempliċi
+email-include-ics: Inkludi fajl ICS tal-iCalendar għall-messaġġ bl-email
+Include iCalendar attachments: Inkludi annessi iCalendar
+email-event-reminders-help: Jispeċifika jekk tibgħatx tfakkiriet tal-avveniment jew le.
+Event reminders: Tifkiriet tal-avveniment
+email-event-added: Jispeċifika jekk tibgħatx notifiki bl-email jew le meta avveniment jiżdied mal-kalendarju tiegħek.
+Events added to my calendar: Avvenimenti miżjuda mal-kalendarju tiegħi
+email-event-updated: Jispeċifika jekk tibgħatx notifiki bl-email jew le meta avveniment jiġi aġġornat fil-kalendarju tiegħek jew le.
+Events updated on my calendar: Avvenimenti aġġornati fil-kalendarju tiegħi
+email-event-deleted: Jispeċifika jekk tibgħatx notifiki bl-email jew le meta avveniment jitneħħa mill-kalendarju tiegħek.
+Events removed from my calendar: Avvenimenti mneħħija mill-kalendarju tiegħi
+email-event-rejected: Jispeċifika jekk tibgħatx notifiki bl-email jew le meta parteċipant jirrifjuta avveniment li jkun fil-kalendarju tiegħek.
+Event rejected by participant: Avveniment miċħud mill-parteċipant
+email-event-create: Jispeċifika jekk il-kreatur tal-entrati jirċevix email
+Event that I create: Avveniment li noħloq
+Color options: Għażliet tal-kulur
+Allow user to customize colors: Ħalli lill-utent jippersonalizza l-kuluri
+gradient-colors: Jekk attivat jintużaw kuluri ta 'gradjent. Dan jista 'jkollu impatt kbir fuq il-prestazzjoni.
+Enable gradient images for background colors: Ippermetti immaġini ta 'gradjent għal kuluri ta' l-isfond
+Not available: Mhux disponibbli
+Background Image options: Għażliet ta 'Image ta' Sfond
+bgimage-help: URL tal-immaġni tal-isfond mixtieqa. Jista 'jkun rabta relattiva.
+Background Image: Image ta 'Sfond
+bgrepeat-help: Jikkontrolla l-imġieba ripetuta tal-immaġni tal-isfond.
+Background Repeat: Irrepeti l-Isfond
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Assistenti
+Preferences: Preferenzi
+Control Panel: Pannell tal-Kontroll
+Users: Utenti
+Account: Kont
+Categories: Kategoriji
+Views: Veduti
+Layers: Saffi
+Reports: Rapporti
+Delete Events: Ħassar Avvenimenti
+Activity Log: Ġurnal tal-Attività
+System Log: Ġurnal tas-Sistema
+Security Audit: Verifika tas-Sigurtà
+Public Preferences: Preferenzi Pubbliċi
+Unapproved Public Events: Avvenimenti Pubbliċi mhux approvati
+Administrative Tools: Għodda Amministrattiva
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Isem duplikat: "XXX".
+Username XXX already exists.: Username "XXX" diġà jeżisti.
+Email address XXX already exists.: L-indirizz elettroniku "XXX" diġà jeżisti.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Kummenti Addizzjonali (mhux obbligatorju)
+Approve and Send: Approva u Ibgħat
+Approve and Exit: Japprova u Ħareġ
+(Your comments will be emailed to the event creator.): (Il-kummenti tiegħek jintbagħtu bl-email lill-kreatur tal-avveniment.)
+Hello, XXX.: =
+XXX has approved an appointment and added comments.: Ħatra ġiet approvata u kummenti miżjuda minn XXX.
+Subject XXX: Suġġett: "XXX".
+Description XXX: Deskrizzjoni: "XXX".
+Date XXX: Data: XXX
+Time XXX: Ħin: XXX
+Comments XXX: Kummenti: XXX
+Approved w/Comments by XXX.: Approvat w / Kummenti minn: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Mod ta 'amministrazzjoni
+Your assistants: L-assistenti tiegħek
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Żball mhux magħruf.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Żball tal-Programm: L-ebda XXX speċifikat!
+user: utent
+year: sena
+month: xahar
+day: jum
+
+########################################
+# Page: category.php
+#
+Category Icon: Ikona tal-Kategorija
+Global: Globali
+The permissions for the icons directory are set to read-only: Il-permessi għad-direttorju tal-ikoni huma ssettjati għal qari biss.
+Category Name: Isem tal-Kategorija:
+Color: Kulur
+Remove Icon: Neħħi l-Ikona:
+Add Icon to Category: Żid Ikona mal-Kategorija
+Upload: Tella '
+GIF or PNG 6kb max: GIF jew PNG 6kb mass
+Search for existing icons: Fittex ikoni eżistenti
+Add: Żid
+Delete: Ħassar
+Are you sure you want to delete this entry?: Int żgur li trid tħassar din l-entrata?
+Make New Category: Agħmel Kategorija Ġdida
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: L-isem tal-kategorija huwa meħtieġ
+File size exceeds maximum.: Id-daqs tal-fajl jaqbeż il-massimu.
+File is not a GIF or PNG image: Il-fajl mhuwiex immaġni GIF jew PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: KATEGORIJI DISPONIBBLI
+ENTRY CATEGORIES: KATEGORIJI TA 'DĦUL
+Remove: Neħħi
+Global Category: Kategorija Globali
+Cancel: Ikkanċella
+
+########################################
+# Page: colors.php
+#
+Add Custom: Żid Custom
+Basic Colors: Kuluri Bażiċi
+Current Color: Kulur Kurrenti
+Custom Colors: Kuluri Custom
+Old Color: Kulur Qadim
+
+########################################
+# Page: combo.php
+#
+Select None: Agħżel Xejn
+Agenda: Aġenda
+Add Task: Żid Kompitu
+Description: Deskrizzjoni
+Date: Data
+Time: Ħin
+Priority: Prijorità
+Access: Aċċess
+Created by: Maħluq minn
+Updated: Aġġornat
+Participants: Parteċipanti
+Attachments: Mehmużin
+Comments: Kummenti
+Brief Description: Deskrizzjoni qasira
+Full Description: Deskrizzjoni sħiħa
+Category: Kategorija
+Add event detail: Żid dettall tal-avveniment
+Start Date: Data tal-Bidu
+Due Date: Data ta 'Skadenza
+Add task detail: Żid dettall tal-kompitu
+All: Kollha
+Error: Żball
+no response from server: l-ebda risposta mis-server
+JSON error: Żball JSON
+High: Għoli
+Medium: Medju
+Low: Baxx
+Today: Illum
+Add Entry: Żid Dħul
+Unnamed Event: Avveniment bla isem
+Unnamed Task: Kompitu bla isem
+Refresh: Aġġorna
+Click to add entry: Ikklikkja biex iżżid id-dħul
+Name: Isem
+pm: =
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX ikkanċella appuntament.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Blob id invalidu
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Żid Kumment
+Add Attachment: Żid Dokument Mehmuż
+Subject: Suġġett
+Comment: Kumment
+Upload file: Tella 'fajl
+
+########################################
+# Page: docdel.php
+#
+Removed: Imneħħi
+
+########################################
+# Page: edit_entry.php
+#
+days: jiem
+hours: sigħat
+minutes: minuti
+You are not authorized to edit this task.: M'intix awtorizzat li teditja dan ix-xogħol.
+is in a different timezone than you are. Currently: tinsab f'żona tal-ħin differenti minnek. Bħalissa
+hour ahead of you: siegħa quddiemek
+hour behind you: siegħa warajk
+hours ahead of you: sigħat quddiemek
+hours behind you: sigħat warajk
+XXX is in a different timezone (ahead): (XXX jinsab f'żona tal-ħin differenti; SSS quddiemek.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX jinsab f'żona tal-ħin differenti; SSS warajk.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Il-ħin imdaħħal hawn huwa bbażat fuq iż-Żona tat-Tim tiegħek.
+Edit Entry: Editja Dħul
+Details: Dettalji
+Repeat: Irrepeti
+Reminders: Tifkiriet
+brief-description-help: Dan għandu jipprovdi deskrizzjoni qasira (madwar 20 karattru) tal-avveniment. Dan jirrappreżenta l-avveniment meta tara l-kalendarju.
+full-description-help: Dan għandu jimla d-dettalji tal-avveniment. Din l-informazzjoni tista 'tidher meta utent jara l-avveniment.
+access-help: Jispeċifika l-livell ta 'aċċess tal-avveniment. <ul> <li> Pubbliku: Kulħadd jista' jara d-dettalji sħaħ tal-avveniment.</li> <li> Kunfidenzjali: Oħrajn jistgħu jaraw li għandek dħul għal dik id-data u dak il-ħin, imma mhux id-dettalji ta 'x'inhu.</li></ul>
+priority-help: Jispeċifika l-prijorità tal-avveniment. Avvenimenti ta 'prijorità għolja jintwerew b'tipa grassa.
+category-help: Jispeċifika l-kategorija tal-avveniment.
+completed-help: Id-data tal-kompitu titlesta. Abilitat biss meta l-perċentwal tal-parteċipanti kollha huwa ugwali għal 100%.
+Date Completed: Data Tlestija
+percent-help: Perċentwal ta 'tlestija tal-kompitu għal dan l-utent
+Percent Complete: Perċentwali Tlesti
+All Percentages: Il-Perċentwali kollha
+location-help: Post tal-avveniment
+Location: Post
+url-help: URL tal-Avveniment
+URL: =
+date-help: Jispeċifika d-data tal-avveniment.
+Untimed event: Avveniment mhux ippjanat
+Timed event: Avveniment puntwali
+All day event: Avveniment tal-ġurnata kollha
+Timezone Offset: Offset taż-Żona tal-Ħin
+time-help: Jispeċifika l-ħin tal-avveniment. <ul> <li> "Avveniment bil-ħin" (għal avveniment li huwa skedat għal ħin speċifiku f'dak il-jum)</li> <li> "Avveniment mingħajr ħin" (għal avveniment dan m'għandux ħin (bħal vaganza )</li> <li> "Avveniment tal-ġurnata kollha" (għal avveniment li jieħu l-ġurnata kollha (bħal li tkun barra mill-uffiċċju)</li></ul>
+duration-help: Jispeċifika t-tul ta 'żmien (f'sigħat; minuti) tal-avveniment. <em>Dan il-qasam jista 'jitħalla vojt.</em>
+end-time-help: Jispeċifika l-ħin li mistenni jispiċċa l-avveniment.
+Start Time: Ħin tal-Bidu
+Due Time: Ħin dovut
+Site Extras: Extras tas-Sit
+avail_participants-help: Jelenka l-parteċipanti disponibbli ta 'din l-entrata.
+Available: Disponibbli
+Find Name: Sib l-Isem
+Resources: Riżorsi
+participants-help: Jelenka l-parteċipanti ta 'din l-entrata.
+Selected: Magħżula
+Availability: Disponibbiltà
+external-participants-help: Tispeċifika lista ta 'parteċipanti għall-avveniment li mhumiex utenti tal-kalendarju. L-utenti għandhom ikunu elenkati wieħed għal kull linja u jistgħu jinkludu indirizz tal-email. Jekk ikun speċifikat indirizz elettroniku, l-utent huwa eliġibbli li jirċievi notifiki u tfakkiriet.
+External Participants: Parteċipanti Esterni
+repeat-type-help: Agħżel kemm-il darba l-avveniment għandu jirrepeti ruħu.
+Daily: Kuljum
+Weekly: Kull ġimgħa
+Monthly: Kull xahar
+by day: bi nhar
+by date: sad-data
+by position: skond il-pożizzjoni
+Monthly (by day): Kull xahar (b'jum)
+Monthly (by date): Kull xahar (bid-data)
+Monthly (by position): Kull xahar (skont il-pożizzjoni)
+Yearly: Kull sena
+Manual: Manwal
+Expert Mode: Modalità Esperta
+repeat-end-date-help: Jispeċifika d-data li l-avveniment għandu jirrepeti sa.
+Ending: Tmiem
+Forever: Għal dejjem
+Use end date: Uża d-data tat-tmiem
+Number of times: Numru ta 'drabi
+repeat-frequency-help: Jispeċifika kemm-il darba l-avveniment għandu jirrepeti ruħu.
+Frequency: Frekwenza
+Weekdays Only: Ġimgħa biss
+Week Start: Bidu tal-Ġimgħa
+repeat-bydayextended-help: Tippermetti l-għażla tad-data bbażata fuq il-ġurnata tal-ġimgħa.
+ByDay: Sa Jum
+repeat-month-help: Jispeċifika f'liema xhur għandu jtenni l-avveniment.
+ByMonth: Sa Xahar
+repeat-bysetpos-help: Tippermetti l-għażla tad-data bbażata fuq il-pożizzjoni fix-xahar.
+BySetPos: =
+repeat-bymonthdayextended-help: Tippermetti l-għażla tad-data bbażata fuq id-data.
+ByMonthDay: =
+repeat-byweekno-help: Tippermetti lill-utent jispeċifika lista ta 'ġimgħat biex jirrepeti l-avveniment (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Tippermetti lill-utent jispeċifika lista ta 'ġranet ta' sena biex jirrepeti l-avveniment (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Ġranet addizzjonali li f'dan l-avveniment għandhom jew m'għandhomx iseħħu.
+Exclusions: Esklużjonijiet
+Inclusions: Inklużjonijiet
+Add Exception: Żid Eċċezzjoni
+Add Inclusion: Żid Inklużjoni
+Delete Selected: Ħassar Magħżul
+Send Reminder: Ibgħat Tifkira
+When: Meta
+Use Date/Time: Uża Data / Ħin
+Use Offset: Uża Offset
+Before: Qabel
+After: Wara
+Start: Ibda
+End/Due: Tmiem / dovut
+Times: =
+Every: Kull
+CAPTCHA Warning: Twissija:  Ma tistax tuża CAPTCHA mingħajr l-estensjoni GD tal-PHP!<br>
+Delete entry: Ħassar l-entrata
+You are not authorized to edit this entry.: M'intix awtorizzat li teditja din l-entrata.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX għamel appuntament ġdid.
+XXX has updated an appointment.: XXX aġġornat appuntament.
+Security violation!: Vjolazzjoni tas-sigurtà!
+You must enter the anti-spam text on the previous page.: Int trid tiddaħħal it-test kontra l-ispam fil-paġna ta 'qabel.
+The following conflicts with the suggested time: Is-segwenti jikkonfliġġu mal-ħin issuġġerit
+User removed from participants list.: Utent imneħħi mil-lista tal-parteċipanti.
+Please look on XXX to accept or reject this appointment.: Jekk jogħġbok ħares fuq XXX biex taċċetta jew tirrifjuta din il-ħatra.
+Please look on XXX to view this appointment.: Jekk jogħġbok ħares fuq XXX biex tara din l-appuntament.
+Scheduling Conflict: Skedar tal-Kunflitt
+Your suggested time of: Il-ħin issuġġerit tiegħek ta '
+conflicts with the following existing calendar entries: imur kontra l-iskrizzjonijiet tal-kalendarju eżistenti li ġejjin
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX ma ġiex issettjat f '"config.php".
+word characters only: (jista 'jkun fih biss karattri tal-kliem; [a-zA-Z_0-9])
+Add User: Żid Utent
+Edit User: Editja l-Utent
+Calendar ID: Kalendarju ID
+First Name: Isem
+Last Name: Kunjom
+Is public calendar: Huwa kalendarju pubbliku
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Żball fid-database
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Żid Kalendarju mill-Bogħod
+Edit Remote Calendar: Editja Kalendarju mill-Bogħod
+Create Layer: Oħloq Saff
+Reload: =
+Required to View Remote Calendar: Meħtieġ li Ara Kalendarju mill-Bogħod
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Riżultati tal-Importazzjoni
+Events successfully imported: Avvenimenti importati b'suċċess
+Create a new layer to view this calendar.: Oħloq saff ġdid biex tara dan il-kalendarju.
+Errors: Żbalji
+There was an error parsing the import file or no events were returned.: Kien hemm żball fl-analiżi tal-fajl tal-importazzjoni jew l-ebda avveniment ma ġie rritornat.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Għada
+Yesterday: Il-bierah
+Day before yesterday: Qabel ilbieraħ
+Next week: Il-gimgha d-diehla
+This week: Din il-ġimgħa
+Last week: Il-gimgha l-ohra
+Week before last: Ġimgħa qabel l-aħħar
+Next week and week after: Il-ġimgħa d-dieħla u l-ġimgħa wara
+This week and next week: Din il-ġimgħa u l-ġimgħa d-dieħla
+Last week and this week: Il-ġimgħa li għaddiet u din il-ġimgħa
+Last two weeks: L-aħħar ġimagħtejn
+Next month: Ix-xahar id-diehel
+This month: Dan ix-xahar
+Last month: Ix-xahar li għadda
+Month before last: Xahar qabel l-aħħar
+Next year: Is-sena d-dieħla
+This year: Din is-sena
+Last year: Is-sena l-oħra
+Year before last: Sena qabel l-aħħar
+Next 14 days: L-14-il jum li ġejjin
+Next 30 days: It-30 jum li jmiss
+Next 60 days: Is-60 jum li jmiss
+Next 90 days: Id-90 jum li jmiss
+Next 180 days: Il-180 jum li jmiss
+Next 365 days: 365 jum li jmiss
+Invalid report id XXX.: Id tar-rapport mhux validu: "XXX".
+Unnamed Report: Rapport bla isem
+Add Report: Żid Rapport
+Edit Report: Editja r-Rapport
+Report name: Isem ir-rapport
+User: Utent
+Current User: Utent kurrenti
+Include link in menu: Inkludi link fil-menu
+Include standard header/trailer: Inkludi header / karru standard
+Include previous/next links: Inkludi links preċedenti / li jmiss
+Include empty dates: Inkludi dati vojta
+Date range: Firxa ta 'dati
+Template variables: Varjabbli tal-mudell
+Page template: Mudell tal-paġna
+Day template: Mudell ta 'jum
+Event template: Mudell tal-avveniment
+Are you sure you want to delete this report?: Int żgur li trid tħassar dan ir-rapport?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: L-ebda rapport ta 'identità bħal dan: "XXX".
+Variable XXX not found.: Il-Varjabbli XXX ma nstabx.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: =
+Edit Custom Script/Stylesheet: Edit Custom Script / Stylesheet
+Edit Custom Trailer: =
+
+########################################
+# Page: edit_user.php
+#
+Username: =
+E-mail address: Indirizz tal-posta elettronika
+Password: =
+again: mill-ġdid
+Disabled for demo: Diżattivat għad-demo
+Are you sure you want to delete this user?: Int żgur li trid tħassar dan l-utent?
+Change Password: Biddel il-password
+New Password: Password gdida
+Set Password: Issettja l-Password
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: It-tħassir ta 'utenti mhux appoġġjat.
+The passwords were not identical.: Il-passwords ma kinux identiċi.
+You have not entered a password.: Int ma dħaltx password.
+Username cannot be blank.: Username ma jistax ikun vojt.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Mhux awtorizzat
+
+########################################
+# Page: export.php
+#
+Export: Esportazzjoni
+Export format: Format tal-esportazzjoni
+Include all layers: Inkludi s-saffi kollha
+Include deleted entries: Inkludi entrati mħassra
+Export all dates: Esporta d-dati kollha
+Start date: Data tal-bidu
+End date: Data tat-tmiem
+Modified since: Modifikat minn dakinhar
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: format tal-esportazzjoni mhux definit jew skorrett.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: L-ebda utent speċifikat.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Żid Grupp Ġdid
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Grupp bla isem
+Add Group: Żid Grupp
+Edit Group: Edit Grupp
+Group name: Isem il-grupp
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Int trid tispeċifika isem grupp
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Aġġorna awtomatikament kalendarji
+auto-refresh-help: Meta tkun attivata, il-veduta tal-ġurnata, il-veduta tal-ġimgħa, il-veduta tax-xahar, u l-lista tal-paġni mhux approvati kollha se jġedded awtomatikament lilhom infushom perjodikament.
+Auto-refresh time: Ħin ta 'aġġornament awtomatiku
+auto-refresh-time-help: Jekk l-Aġġornament awtomatiku huwa attivat, dan jispeċifika l-ħin bejn kull aġġornament.
+Display days with events in bold in year view: Uri ġranet b'avvenimenti b'tipa grassa fid-dawl tas-sena
+Display weekends in week view: Uri tmiem il-ġimgħa fil-veduta tal-ġimgħa
+Time interval: Intervall ta 'ħin
+time-interval-help: Jispeċifika kemm se jkunu twal il-blokki tal-ħin fil-viżjoni tal-ġimgħa u tal-ġurnata.
+Nonuser: Kalendarji Mhux Użaturi
+user-customize-color: Jispeċifika jekk l-utenti jitħallewx jimmodifikaw l-iskema tal-kulur tagħhom stess.
+enable-gradient-help: Uża kuluri ta 'gradjent għal sfondi taċ-ċelloli.
+Manually entering color values: Iddaħħal manwalment valuri tal-kulur
+colors-help: Il-kuluri kollha għandhom jiġu speċifikati f'format eżadeċimali "#RRGGBB" fejn "RR" huwa l-valur hex għall-aħmar, "GG" huwa l-valur hex għall-aħdar, u "BB" huwa l-valur hex għall-blu.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Irrapporta Bug
+Please include all the information below when reporting a bug.: Jekk jogħġbok inkludi l-informazzjoni kollha hawn taħt meta tirrapporta bug.
+Also, please use English rather than XXX.: Ukoll, jekk jogħġbok uża  Ingliż  minflok XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Dokumentazzjoni tal-WebCalendar
+Currently in English only.: Bħalissa bl-Ingliż biss.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Żieda / Editjar ta 'Entrati tal-Kalendarju
+Repeat Type: Irrepeti t-Tip
+For More Information...: Għal Aktar Informazzjoni ...
+Repeat End Date: Irrepeti d-Data tat-Tmiem
+Repeat Day: Irrepeti Jum
+repeat-day-help: Jispeċifika liema ġranet tal-ġimgħa l-avveniment għandu jirrepeti fuqu.
+
+########################################
+# Page: help_import.php
+#
+Import: Importa
+Palm Desktop: =
+allow you to import entries from the Palm...: Din il-formola tippermettilek timporta entrati mill-Palm Desktop Datebook. Għandu jkun jinsab fid-direttorju Palm tiegħek fid-databook / datebook.dat f’sottodirettorju msemmi mill-username tiegħek.
+The following entries will not be imported: Id-daħliet li ġejjin ma jiġux importati:
+Entries older than the current date: Annotazzjonijiet eqdem mid-data kurrenti
+Entries created in the Palm Desktop...: Entrati maħluqa fil-Palm Desktop li ma ġewx HotSync'd
+Anything imported from Palm...: Kwalunkwe ħaġa importata minn Palm se tinkiteb fuqha matul l-importazzjoni li jmiss (sakemm id-data tal-avveniment ma tkunx għaddiet). Għalhekk, l-aġġornamenti għandhom isiru fil-Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Din il-formola timporta vCalendar (.vcs) 1.0 avvenimenti.
+The following formats have been tested: Il-formati li ġejjin ġew ittestjati:
+This form will import iCalendar (.ics) events.: Din il-formola timporta avvenimenti ta 'iCalendar (.ics).
+Enabling: Abilitazzjoni
+Overwrite Prior Import: Ikteb l-Importazzjoni Qabel
+will cause events imported previously...: se tikkawża li avvenimenti importati qabel, li użaw l-istess UID bħala avveniment mill-fajl ta 'importazzjoni l-ġdid, jiġu mmarkati bħala mħassra. Dan għandu jippermetti li jiġi importat fajl iCalendar aġġornat mingħajr ma jinħolqu duplikati.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Indiċi tal-Għajnuna
+About WebCalendar: Dwar WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Is-saffi huma utli biex juru l-avvenimenti ta 'utenti oħra fil-kalendarju tiegħek stess. Tista 'tispeċifika l-utent u l-kulur li fih jintwerew l-avvenimenti.
+Add/Edit/Delete: Żid / Editja / Ħassar
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Meta tikklikkja l-link Edit Layers fit-taqsima amministrattiva fil-qiegħ tal-paġna jippermettilek iżżid / teditja / tħassar saffi.
+The text color of the new layer that will be displayed in your calendar.: Il-kulur tat-test tas-saff il-ġdid li se jintwera fil-kalendarju tiegħek.
+Disabling: Diżattivazzjoni
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Agħfas il-link Disable Layers fit-taqsima amministrattiva fil-qiegħ tal-paġna biex itfi s-saffi.
+Duplicates: Duplikati
+If checked, events that are duplicates of your events will be shown.: Jekk iċċekkjat, l-avvenimenti li huma kopji tal-avvenimenti tiegħek jintwerew.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Agħfas il-link Enable Layers fit-taqsima amministrattiva fil-qiegħ tal-paġna biex tixgħel saffi.
+Source: Sors
+Specifies the user that you would like to see displayed in your calendar.: Jispeċifika l-utent li tixtieq tara muri fil-kalendarju tiegħek.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Kategorija Default
+default-category-help: Jispeċifika l-kategorija li avveniment ġdid għandu jonqos għaliha.
+When I am the boss: Meta jien il-kap
+Email me event notification: Ibgħatli email b'avviż ta 'avveniment
+email-boss-notifications-help: Jispeċifika jekk il-pumijiet jirċievux emails bħala notifiki tal-avvenimenti.
+I want to approve events: Irrid napprova avvenimenti
+boss-approve-event-help: Jispeċifika jekk il-boxxla tkunx meħtieġa tapprova avvenimenti miżjuda mill-assistenti.
+Subscribe/Publish: Abbona / Ippubblika
+Allow remote publishing: Ħalli l-pubblikazzjoni mill-bogħod
+allow-remote-publishing-help: Jispeċifika jekk klijent iCal remot jistax jippubblika avvenimenti lura fuq il-WebCalendar
+remote-publishing-url-help: Juri l-URL li tuża fl-applikazzjoni tal-klijent iCal kemm għall-abbonament kif ukoll għall-pubblikazzjoni lura għall-WebCalendar.
+allow-remote-subscriptions-help: Jispeċifika jekk utenti remoti jistgħux jissottoskrivu għall-kalendarju tiegħek, u jippermettulhom jaraw l-avvenimenti tiegħek f'applikazzjoni abilitata għall-iCal (bħall-iCal ta 'Apple jew il-Kalendarju Mozilla).
+remote-subscriptions-url-help: Juri l-URL li l-utenti remoti għandhom jużaw biex jissottoskrivu għall-kalendarju tiegħek.
+Enable FreeBusy publishing: Ippermetti l-pubblikazzjoni FreeBusy
+freebusy-enabled-help: Jispeċifika jekk il-ħin disponibbli ta 'utent jistax jinkiseb bl-użu tal-istandard iCal FreeBusy.
+freebusy-url-help: Il-URL għall-aċċess tal-lista FreeBusy tal-utent
+rss-feed-url-help: Il-URL biex taċċessa l-RSS feed
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Tippermetti kontroll fin ta 'aċċess u permessi tal-utent. L-utenti jistgħu wkoll jagħtu inadempjenza u għal kull permess individwali jekk awtorizzati mill-amministratur.
+If disabled, this user cannot send you emails.: Jekk diżattivat, dan l-utent ma jistax jibgħatlek emails.
+If disabled, this user cannot see you in the participants list.: Jekk diżattivat, dan l-utent ma jistax jara int fil-lista tal-parteċipanti.
+If enabled, this user cannot view the details of any of your entries.: Jekk attivat, dan l-utent ma jistax jara d-dettalji ta 'kwalunkwe daħla tiegħek.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Pubblikazzjoni b'Diżabilità (Amministratur)
+Publishing Disabled (User): Pubblikazzjoni b'Diżabilità (Utent)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Ikklikkja biex Agħżel
+Current Icons on Server: Ikoni kurrenti fuq is-Server
+
+########################################
+# Page: import.php
+#
+import from file: importazzjoni mill-fajl
+Disabled: Diżabbli
+Import format: Format tal-importazzjoni
+Exclude private records: Jeskludi rekords privati
+Repeated items are imported separately. Prior imports are not overwritten.: Oġġetti ripetuti huma importati separatament. Importazzjonijiet preċedenti mhumiex miktuba fuqhom.
+
+########################################
+# Page: import_handler.php
+#
+No file: L-ebda fajl
+Error deleting palm events from webcalendar.: Żball meta tħassar avvenimenti tal-palm mill-webcalendar.
+Events from prior import marked as deleted: Avvenimenti minn importazzjoni preċedenti mmarkati bħala mħassra
+Conflicting events: Avvenimenti konfliġġenti
+The import file contained no data.: Il-fajl tal-importazzjoni ma kien fih l-ebda dejta.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Int żgur li trid tħassar dan is-saff?
+Delete layer: Ħassar saff
+Edit layer: Editja s-saff
+Enable layers: Ħalli saffi
+Layer: Saff
+Layers are currently disabled.: Is-saffi bħalissa huma diżattivati.
+Layers are currently enabled.: Is-saffi bħalissa huma attivati.
+Click to modify layers settings for XXX: Ikklikkja hawn biex timmodifika s-settings tas-saffi għall-kalendarju XXX.
+Disable Layers: Itfi saffi
+Add layer: Żid saff
+Add Layer: Żid Saff
+Edit Layer: =
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Ma tistax taġġorna l-preferenza
+Invalid entry id.: Id ta 'dħul invalidu.
+You cannot create a layer for yourself.: Ma tistax toħloq saff għalik innifsek.
+You can only create one layer for each user.: Tista 'toħloq saff wieħed biss għal kull utent.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Japprova / Ikkonferma
+Approve Selected: Japprova Magħżula
+Check All: Iċċekkja Kollha
+Emails Will Not Be Sent: Emails Mhumiex Ser Jintbagħtu
+Reject Selected: Irrifjuta Magħżula
+Reject: Irrifjuta
+Uncheck All: Neħħi l-marka minn Kulħadd
+View this entry: Ara din l-entrata
+No unapproved entries for XXX.: L-ebda entrata mhux approvata għal: "XXX".
+Unapproved Entries: Entrati mhux approvati
+Approve this entry?: Japprova din l-entrata?
+Reject this entry?: Tiċħad din l-entrata?
+Approve Selected entries?: Japprova l-iskrizzjonijiet magħżula?
+Reject Selected entries?: Irrifjuta l-entrati magħżula?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Int trid tidħol login u password.
+Save login via cookies so I dont have to login next time.: Iffranka l-login permezz tal-cookies u għalhekk m'għandix għalfejn tilloggja l-ħin li jmiss
+Login: Idħol
+public: pubbliku
+Access XXX calendar: Aċċess għall-kalendarju XXX
+cookies-note: Nota: Din l-applikazzjoni teħtieġ li l-cookies jiġu attivati.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Karattri illegali fil-login XXX.
+Invalid login: Login invalidu
+Activity login failure: Username: "XXX", IP: "SSSS".
+Error XXX: Żball: "XXX".
+You have been logged out.: Ġie skonnettjat.
+Access public calendar: Aċċess għall-kalendarju pubbliku
+Not yet registered? Register here!: Għadu mhux irreġistrat? Irreġistra hawn!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Ebda kalendarju ta 'non-utent bħal dan: "XXX".
+This Calendar is not Public.: Dan il-Kalendarju mhux Pubbliku.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Żid Kalendarju Ġdid NonUser
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Trid tkun speċifikata login.
+No such nonuser calendar: Ebda kalendarju ta 'non-utent bħal dan
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Tema invalida
+Save Preferences: Ħlief Preferenzi
+Public Access calendar: Kalendarju ta 'Aċċess Pubbliku
+Modify Non User Calendar Preferences: Immodifika l-Preferenzi tal-Kalendarju Mhux Utent
+Return to My Preferences: Ritorn għall-Preferenzi Tiegħi
+Custom Scripts: Skripts Custom
+Timezone Selection: Għażla taż-Żona tal-Ħin
+Multiview: =
+entry-interval-help: Issettja l-intervall tal-minuta meta teditja l-ħinijiet tad-dħul
+Entry interval: Intervall tad-dħul
+hour: siegħa
+minute: minuta
+theme-reload-help: Minħabba CSS caching, rikarika tal-paġna tista 'tkun meħtieġa
+Page may need to be reloaded for new Theme to take effect: Il-paġna jista 'jkollha bżonn terġa' titgħabba biex Tema ġdida tidħol fis-seħħ
+display_byproxy-help: Uri l-kreatur veru fuq il-paġna view_entry
+Display if created by Assistant: Uri jekk maħluq mill-Assistent
+allow-view-subscriptions-help: Tippermetti r-restrizzjoni tal-aċċess mill-bogħod għal daħliet Privati ​​jew Kunfidenzjali
+Allow remote viewing of: Ħalli wiri remot ta '
+entries: daħliet
+
+########################################
+# Page: purge.php
+#
+Purging events for: Tnaddif ta 'avvenimenti għal
+Finished: Lest
+Back: Lura
+Check box to delete ALL events for a user: Iċċekkja l-kaxxa biex tħassar l-avvenimenti  KOLLHA  għal utent
+Delete all events before: Ħassar l-avvenimenti kollha qabel
+Purge deleted only: Tnaddaf imħassar biss
+Preview delete: Ħassar minn qabel
+Are you sure you want to delete events for: Int żgur li trid tħassar avvenimenti għal
+Records deleted from XXX: Rekords imħassra minn "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: L-indirizz elettroniku ma jistax ikun vojt.
+Username already exists.: Username diġà jeżisti.
+Email address already exists.: L-indirizz elettroniku diġà jeżisti.
+New user via self-registration.: Utent ġdid permezz ta 'awto-reġistrazzjoni.
+A new WebCalendar account has been set up for you.: Ġie stabbilit kont ġdid tal-WebCalendar għalik.
+Your username is XXX.: L-isem tal-utent tiegħek huwa: "XXX".
+Your password is XXX.: Il-password tiegħek hija: "XXX".
+Please visit XXX to log in and start using your account!: Jekk jogħġbok żur "XXX" biex tidħol u tibda tuża l-kont tiegħek!
+You may change your password after logging in the first time.: Tista 'tbiddel il-password tiegħek wara li tidħol fl-ewwel darba.
+If you received this email in error: Jekk irċevejt din l-email bi żball u ma rreġistrajtx għal kont tal-WebCalendar, tista 'tinjora dan l-avviż, jew twieġeb b'nota qasira
+Administrator: Amministratur
+Welcome: Merħba
+New user via email.: Utent ġdid permezz tal-email.
+Registration: Reġistrazzjoni
+Welcome to WebCalendar: Merħba fil-WebCalendar
+Your email should arrive shortly.: L-email tiegħek għandha tasal dalwaqt.
+Return to Login screen: Ritorn għall-iskrin tal-Login
+Password (again): Password (għal darb'oħra):
+Your account information will be emailed to you.: L-informazzjoni dwar il-kont tiegħek tibgħatilek email.
+Submit: Issottometti
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Kompli
+(Your comments will be emailed to the other participants.): (Il-kummenti tiegħek jintbagħtu bl-email lill-parteċipanti l-oħra.)
+XXX has rejected an appointment.: XXX irrifjuta appuntament.
+Rejected by XXX.: Miċħuda minn XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Żid Kalendarju Ġdid mill-Bogħod
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Dan l-avveniment huwa kunfidenzjali.
+(Private): (Privat)
+(cont.): (ikompli)
+Approved: Approvat
+Deleted: Imħassar
+Rejected: Miċħuda
+Waiting for approval: Stennija għall-approvazzjoni
+Unknown: Mhux magħruf
+Invalid report id.: Id tar-rapport mhux validu.
+Click here to manage reports for the Public Access calendar.: Ikklikkja hawn biex timmaniġġja r-rapporti għall-kalendarju tal-Aċċess Pubbliku.
+Add new report: Żid rapport ġdid
+Manage Reports: Immaniġġja Rapporti
+
+########################################
+# Page: search.php
+#
+Advanced Search: Tiftix Avvanzat
+Search: Fittex
+Keywords: Kliem ewlieni
+Enter % for all entries: Daħħal% għad-dħul kollu
+Include: Inkludi
+Filter by Date: Iffiltra skont id-Data
+All Dates: Id-dati kollha
+Past: Passat
+Upcoming: Li jmiss
+Range: Medda
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Trid ddaħħal kelma ewlenija tat-tfittxija waħda jew aktar.
+Search Results: Riżultati tat-Tiftix
+match found: taqbila misjuba
+matches found: logħbiet misjuba
+No matches found: Ma nstabux logħbiet
+New Search: Fittex Ġdida
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: L-informazzjoni hawn taħt telenka kwistjonijiet potenzjali bl-installazzjoni tal-WebCalendar tiegħek li jistgħu jiġu modifikati biex jagħmlu l-installazzjoni tiegħek aktar sigura.
+For questions about WebCalendar security see the forums: Għal mistoqsijiet dwar kwalunkwe kwistjoni ta 'sigurtà tal-WebCalendar, jekk jogħġbok uża l-fora tal-WebCalendar ospitati fuq GitHub.com;<br>XXX
+View your current PHP settings: Ara s-settings tal-PHP attwali tiegħek
+Security Issue: Kwistjoni ta 'Sigurtà
+Status: =
+Default admin user password: Password tal-utent tal-amministratur default
+You should change the password of the default admin user.: Għandek tibdel il-password ta 'l-utent amministrattiv default.
+File permissions XXX: Permessi tal-fajl: XXX
+item XXX should not be writable: L-oġġett li ġej m'għandux jinkiteb:<br><tt> XXX</tt>
+File exists XXX: Il-fajl jeżisti: "XXX"
+Because you have email disabled, you should remove this file.: Minħabba li għandek email b'diżabilità, għandek tneħħi dan il-fajl.
+File location XXX: Post tal-fajl: "XXX"
+remove XXX if not using: Jekk m'intix tuża l-fajl "XXX", għandek tħassarha. Jew, għall-inqas, imxiha lejn direttorju ġdid.
+System Settings XXX: Settings tas-Sistema: "XXX"
+consider enabling UAC: Inti tista 'tkun trid tikkunsidra li tippermetti l-Kontroll tal-Aċċess tal-Utent biex tissettja privileġġi tal-utent.
+recommend approving new public events: Nirrakkomandaw li s-sottomissjonijiet kollha tal-avvenimenti pubbliċi jiġu approvati.
+recommend using CAPTCHA: CAPTCHA huwa rrakkomandat biex iħares kontra sottomissjonijiet ta 'avvenimenti awtomatizzati.
+Database cache directory location: Post tad-direttorju tal-cache tad-database
+db cache should be inaccessable: Il-cache tad-database għandu jkun f'direttorju li ma jistax jiġi aċċessat b'URL.
+PHP Settings XXX: Settings tal-PHP: "XXX"
+recommend setting XXX Off: L-issettjar rakkomandat għal "XXX" huwa Mitfi.
+recommend setting allow_url_fopen Off: L-issettjar rakkomandat għal "allow_url_fopen" huwa Mitfi meta kalendarji remoti mhumiex attivati.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Ara l-Kalendarju ta 'Utent Ieħor
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Ma żidt l-ebda kategorija.
+Set Category: Kategorija tas-Sett
+Global Categories cannot be changed.: Kategoriji Globali ma jistgħux jinbidlu.
+
+########################################
+# Page: upcoming.php
+#
+more: aktar
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Kalendarji mill-Bogħod
+denotes administrative user: tindika utent amministrattiv
+Add New User: Żid Utent Ġdid
+
+########################################
+# Page: usersel.php
+#
+form: forma
+Reset: Irrisettja
+
+########################################
+# Page: views.php
+#
+Add New View: Żid Veduta Ġdida
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Veduta bla isem
+Add View: Żid Veduta
+Edit View: =
+View Name: Ara l-Isem
+View Type: Ara t-Tip
+Day by Time: Jum il-Ħin
+Week (Users horizontal): Ġimgħa (Utenti orizzontali)
+Week by Time: Ġimgħa minn Ħin
+Week (Users vertical): Ġimgħa (Utenti vertikali)
+Week (Timebar): Ġimgħa (Timebar)
+Month (Timebar): Xahar (Timebar)
+Month (side by side): Xahar (ġenb ma 'ġenb)
+Month (on same calendar): Xahar (fuq l-istess kalendarju)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Int trid tispeċifika isem tal-vista
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: L-ebda utenti għal din il-fehma.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Aġġorna l-Perċentwal tal-Kompitu
+Completed: Tlesta
+Assistant mode: Modalità Assistent
+Declined: Irrifjuta
+Needs-Action: Bżonnijiet-Azzjoni
+by: minn
+Percentage Complete: Perċentwal Tlesti
+External User: Utent Estern
+Update: Aġġornament
+at: fi
+comments: kummenti
+Show: Uri
+Hide: Aħbi
+Approve/Confirm entry: Japprova / Ikkonferma d-dħul
+Reject entry: Irrifjuta l-entrata
+Set category: Issettja kategorija
+Add to My Calendar: Żid mal-Kalendarju Tiegħi
+Copy entry: Kopja tad-dħul
+This will delete this entry for all users.: Dan iħassar din l-entrata għall-utenti kollha.
+Edit entry: Editja l-entrata
+Edit repeating entry for all dates: Editja dħul ripetut għad-dati kollha
+Delete repeating event for all dates: Ħassar avveniment ripetut għad-dati kollha
+Edit entry for this date: Editja l-entrata għal din id-data
+Delete entry only for this date: Ħassar l-entrata għal din id-data biss
+Delete entry from calendar of XXX: Ħassar dħul mill-kalendarju ta 'XXX
+This will delete the entry from your XXX calendar.: Dan iħassar l-entrata mill-kalendarju XXX tiegħek.
+boss: boxxla "
+This will delete the entry from your boss calendar.: Dan iħassar l-entrata mill-kalendarju tal-imgħallem tiegħek.
+This will delete the entry from your calendar.: Dan iħassar l-entrata mill-kalendarju tiegħek.
+from your boss calendar: mill-kalendarju tal-imgħallem tiegħek
+Do you want to add this entry to your calendar?: Trid iżżid din l-entrata mal-kalendarju tiegħek?
+This will add the entry to your calendar.: Dan iżid l-entrata mal-kalendarju tiegħek.
+Email all participants: Ibgħat email lill-parteċipanti kollha
+Hide activity log: Aħbi r-reġistru tal-attività
+Show activity log: Uri r-reġistru tal-attività
+Export this entry to: Esporta din l-entrata lejn
+Palm Pilot: Pilota Pilota
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Ikklikkja darbtejn fuq ċellula vojta biex iżżid dħul ġdid.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Dħul Ġdid
+cont.: kont.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Kalendarju ta 'Utent Ieħor
+Category Management: Ġestjoni tal-Kategorija
+Day View: View ta 'Jum
+Edit Event: Edit Avveniment
+Month View: View tax-Xahar
+Common Trailer: Trailer Komuni
+User Management: Ġestjoni tal-Utenti
+Manage Views: Immaniġġja l-Veduti
+Week View: View tal-Ġimgħa
+Year View: Sena View
+Invalid function id: Funzjoni invalida id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Ma stajtx issib il-fajl "settings.php".<br>Jekk jogħġbok kopja "settings.php.orig" għal "settings.php" u editja għas-sit tiegħek.
+Incomplete settings.php file...: Fajl "settings.php" mhux komplut ...
+Could not find XXX defined in...: Ma stajtx issib "XXX" definit fil-fajl "settings.php" tiegħek.
+You must define XXX in: Int trid tiddefinixxi "XXX" fil-fajl "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Diċembru
+Dec: Diċembru
+LANGUAGE DEFINED: LINGWA DEFINITA
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Żball fil-konnessjoni mad-database: "XXX".
+db_type not defined.: db_type mhux definit.
+invalid db_type XXX: db_type invalidu "" XXX ".
+Cache cleared from previous SQL!: Cache meħlus minn SQL preċedenti!
+Error executing query.: Żball waqt l-eżekuzzjoni tal-mistoqsija.
+Unfortunately, XXX is not implemented for YYY: Sfortunatament, "XXX" mhux implimentat għal (SSSS).
+Unknown ODBC error.: Żball ODBC mhux magħruf.
+Error opening cache dir XXX.: Żball fil-ftuħ tal-cache dir "XXX".
+delete: ħassar
+Cache error Could not XXX file YYY.: Żball tal-cache: Ma setax XXX jippreżenta "SSSS".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Żball fatali
+Invalid data format for: Format ta 'dejta invalidu għal
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Żball: Tip mhux issettjat għar-reġistru tal-attività!
+This event is XXX.: Dan l-avveniment huwa XXX.
+Conf.: Konf.
+exceeds limit of XXX events per day: jaqbeż il-limitu ta 'XXX avvenimenti kuljum
+on: fuq
+All Attendees: L-Attendenti Kollha
+Busy: Għandi x'nagħmel
+Tentative: Tentattiv
+Schedule an appointment for XXX.: Skeda appuntament għal XXX: SSSS.
+date_select: __dd__ __ xahar__ __yyyy__
+Event approved: Avveniment approvat
+Journal approved: Ġurnal approvat
+Task approved: Kompitu approvat
+Attachment: Sekwestru
+Event created: Avveniment maħluq
+Journal created: Ġurnal maħluq
+Task created: Kompitu maħluq
+Event deleted: Avveniment imħassar
+Journal deleted: Ġurnal imħassar
+Task deleted: Kompitu mħassar
+New user via email (self registration): Utent ġdid permezz tal-email (awto-reġistrazzjoni)
+New user (self registration): Utent ġdid (awto-reġistrazzjoni)
+Notification sent: Notifika mibgħuta
+Event rejected: Avveniment miċħud
+Journal rejected: Ġurnal miċħud
+Task rejected: Kompitu miċħud
+Reminder sent: Tifkira mibgħuta
+Event updated: Avveniment aġġornat
+Journal updated: Ġurnal aġġornat
+Task updated: Kompitu aġġornat
+Delete User: Ħassar Utent
+WK: =
+TASKS: KOMPITI
+Task_Title: Titolu
+Due: Minħabba
+Task Name: Isem il-Kompitu
+Task Due Date: Data ta 'Skadenza tal-Kompitu
+You have XXX unapproved entries: Għandek XXX entrati mhux approvati 
+Changes successfully saved: Bidliet salvati b'suċċess
+Event: Avveniment
+Action: Azzjoni
+Printer Friendly: =
+Generate printer-friendly version: Iġġenera verżjoni faċli għall-istampatur
+after: wara
+before: qabel
+end: tmiem
+start: ibda
+View this event: Ara dan l-avveniment
+View this task: Ara din il-biċċa xogħol
+January: Jannar
+February: Frar
+March: Marzu
+April: =
+May_: Mejju
+June: Ġunju
+July: Lulju
+August: Awissu
+September: Settembru
+October: Ottubru
+November: Novembru
+Jan: =
+Feb: Frar
+Mar: =
+Apr: April
+May: Mejju
+Jun: Ġunju
+Jul: Lul
+Aug: Awissu
+Sep: Settembru
+Oct: Ottubru
+Nov: =
+SU: =
+MO: =
+TU: =
+WE: AĦNA
+TH: =
+FR: =
+SA: =
+unknown-month: mhux magħruf-xahar
+First Quarter Moon: Qamar tal-Ewwel Kwart
+Full Moon: Qamar sħiħ
+Last Quarter Moon: Il-Qamar tal-Aħħar Kwart
+New Moon: Qamar ġdid
+Error TIME_SLOTS undefined!: Żball: TIME_SLOTS mhux definit!
+The following error occurred: L-iżball li ġej seħħ
+You are not authorized.: M'intix awtorizzat.
+Add N hours to: Żid N sigħat ma '
+Subtract N hours from: Naqqas N sigħat minn
+same as: l-istess bħal
+server time: ħin tas-server
+Cannot read timezone file XXX.: Ma tistax taqra l-fajl taż-żona tal-ħin: XXX.
+Your current GMT offset is XXX hours.: L-offset tal-GMT attwali tiegħek huwa ta 'XXX siegħa.
+Unauthorized: Mhux awtorizzat
+Error approving event XXX.: Żball meta approva l-avveniment: XXX.
+Error deleting event XXX.: Żball meta tħassar l-avveniment: XXX.
+Error rejecting event XXX.: Żball meta ċaħdet l-avveniment: XXX.
+Sunday: Il-Ħadd
+Monday: It-Tnejn
+Tuesday: It-Tlieta
+Wednesday: L-Erbgħa
+Thursday: Il-Ħamis
+Friday: Il-Ġimgħa
+Saturday: Is-Sibt
+Sun: xemx
+Mon: It-Tnejn
+Tue: It-Tlieta
+Wed: L-Erbgħa
+Thu: Ħam
+Fri: Il-Ġimgħa
+Sat: Sib
+unknown-weekday: mhux magħruf fil-ġimgħa
+Invalid referring URL: URL ta 'referenza invalidu
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Indiċi
+Documentation: Dokumentazzjoni
+Page: Paġna
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Il-Kalendarju Tiegħi
+Add New Entry: Żid Dħul Ġdid
+Add New Task: Żid Kompitu Ġdid
+Logout: Oħroġ
+Home: Id-dar
+Back to My Calendar: Lura għall-Kalendarju Tiegħi
+Go to: Mur fuq
+Manage calendar of: Immaniġġja l-kalendarju ta '
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Lingwa tal-Browser Mhux Misjuba
+(not supported): (mhux appoġġjat)
+Abkhazian: Abkażjan
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: Afrikans
+Ainu: =
+Akan: =
+Akkadian: Akkadjan
+Albanian: Albaniż
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Nofsinhar)
+Amharic: Amħariku
+Angika: =
+Apache: =
+Arabic (Algeria): Għarbi (Alġerija)
+Arabic (Bahrain): Għarbi (Baħrejn)
+Arabic (Egypt): Għarbi (Eġittu)
+Arabic (Iraq): Għarbi (Iraq)
+Arabic (Jordan): Għarbi (il-Ġordan)
+Arabic (Kuwait): Għarbi (Kuwajt)
+Arabic (Lebanon): Għarbi (Libanu)
+Arabic (Libya): Għarbi (Libja)
+Arabic (Morocco): Għarbi (Marokk)
+Arabic (Oman): Għarbi (Oman)
+Arabic (Qatar): Għarbi (Qatar)
+Arabic (Saudi Arabia): Għarbi (Għarabja Sawdita)
+Arabic (Syria): Għarbi (Sirja)
+Arabic (Tunisia): Għarbi (Tuneżija)
+Arabic (U.A.E.): Għarbi (U.A.E.)
+Arabic (Yemen): Għarbi (Jemen)
+Arabic: Għarbi
+Aragonese: =
+Aramaic: Aramajk
+Arapaho: =
+Arawak: =
+Armenian: Armenjan
+Assamese: Assamiż
+Asturian: =
+Athapascan: =
+Avaric: Avariku
+Avestan: =
+Awadhi: =
+Aymara: Ajmara
+Azerbaijani: Ażerbajġan
+Balinese: Baliniż
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: Bask
+Beja: =
+Belarusian: Belarussu
+Bemba: =
+Bengali: =
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: =
+Bliss: =
+Bosnian: Bosnijan
+Braj: =
+Breton: Brenton
+Buginese: Buginiż
+Bulgarian: Bulgaru
+Buriat: Burjat
+Burmese: Burmiż
+Caddo: =
+Catalan: Katalan
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: Ċeċen
+Cherokee: =
+Cheyenne: =
+Chibcha: Ċibċa
+Chichewa: =
+Chinese (Hong Kong): Ċiniż (Ħong Kong)
+Chinese (PRC): Ċiniż (RPĊ)
+Chinese (Simplified/GB2312): Ċiniż (Simplifikat / GB2312) 
+Chinese (Singapore): Ċiniż (Singapor)
+Chinese (Taiwan): Ċiniż (Tajwan)
+Chinese (Traditional/Big5): Ċiniż (Tradizzjonali / Kbir5)
+Chinook: =
+Chipewyan: Ċipewjan
+Choctaw: Ċoktaw
+Chuukese: Ċuċiżi
+Chuvash: Ċuvax
+Coptic: Koptiku
+Cornish: Korniku
+Corsican: Korsiku
+Cree: =
+Creek: =
+Croatian: Kroat
+Czech: Ċek
+Dakota: =
+Danish: Daniż
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Olandiż (Belġju)
+Dutch: Olandiż
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Elamit
+English (Australia): Ingliż (Awstralja)
+English (Belize): Ingliż (Beliże)
+English (Canada): Ingliż (Kanada)
+English (Ireland): Ingliż (Irlanda)
+English (Jamaica): Ingliż (Ġamajka)
+English (New Zealand): Ingliż (New Zealand)
+English (Philippines): Ingliż (Filippini)
+English (South Africa): Ingliż (Afrika t'Isfel)
+English (Trinidad & Tobago): Ingliż (Trinidad & Tobago)
+English (United Kingdom): Ingliż (Renju Unit)
+English (United States): Ingliż (Stati Uniti)
+English (Zimbabwe): Ingliż (Żimbabwe)
+English: Ingliż-SU
+Erzya: =
+Esperanto: =
+Estonian: Estonjan
+Ewe: Nagħġa
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: Fawriż
+Fijian: Fiġi
+Filipino: Filippin
+Finnish: Finlandiż
+Fon: =
+French (Belgium): Franċiż (Belġju)
+French (Canada): Franċiż (Kanada)
+French (France): Franċiż (Franza)
+French (Luxembourg): Franċiż (Lussemburgu)
+French (Monaco): Franċiż (Monako)
+French (Switzerland): Franċiż (l-Iżvizzera)
+French: Franċiż
+Frisian (Eastern): Friżjan (tal-Lvant)
+Frisian (Northern): Friżjan (tat-Tramuntana)
+Frisian (Western): Friżjan (tal-Punent)
+Frisian: Friżjan
+Friulian: Frijuljan
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galizjan
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Ġorġjan
+German (Austria): Ġermaniż (Awstrija)
+German (Germany): Ġermaniż (Ġermanja)
+German (Liechtenstein): Ġermaniż (Liechtenstein)
+German (Luxembourg): Ġermaniż (Lussemburgu)
+German (Standard): Ġermaniż (Standard)
+German (Switzerland): Ġermaniż (Svizzera)
+German: Ġermaniż
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gotiku
+Grebo: =
+Greek: Grieg
+Greenlandic: =
+Guarani: Gwarani
+Gujarati: Guġarati
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haiti (Creole)
+Haitian: Ħaiti
+Hausa: Ħawsa
+Hawaiian: Ħawajjan
+Hebrew: Ebrajk
+Herero: =
+Hiligaynon: =
+Hindi: Ħindi
+Hiri Motu: Ħiri Motu
+Hittite: Ħittit
+Hmong: =
+Holo (Taiwanese): Holo (Tajwaniż)
+Hungarian: Ungeriż
+Hupa: Ħupa
+Iban: =
+Icelandic: Iżlandiż
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: Indoneżjan
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Iranjan
+Irish (Gaelic): Irlandiż (Galliku)
+Irish: Irlandiż
+Iroquoian: =
+Italian (Switzerland): Taljan (l-Iżvizzera)
+Italian: Taljan
+Japanese: Ġappuniż
+Javanese: Ġavaniż
+Judeo-Arabic: Ġudeo-Għarbi
+Judeo-Persian: Ġudeo-Persjan
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: Kareljan
+Kashmiri: Kaxmiri
+Kashubian: =
+Kawi: =
+Kazakh: Każak
+Khasi: =
+Khmer (Central): Khmer (Ċentrali)
+Khmer: =
+Khotanese: =
+Kikuyu: Kikuju
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: Kirgiż
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): =
+Korean (North): Korean (tat-Tramuntana)
+Korean (South): Korean (Nofsinhar)
+Korean: =
+Kosraean: Kosrej
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kurdi
+Kutenai: =
+Kyrgyz: Kirgiż
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Laos
+Latin: =
+Latvian: Latvjan
+Lezghian: Leżgjan
+Limburgan: =
+Lingala: =
+Lithuanian: Litwan
+Lojban: Loġban
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Lussemburgiż
+Macedonian: Maċedonjan
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Madagaskar
+Malay: Malajan
+Malayalam: Malajalam
+Maldivian: Maldiv
+Maltese: Malti
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: Manks
+Maori: =
+Mapuche: =
+Marathi: Marati
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: Maja
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: Mirandiż
+Mohawk: =
+Moksha: =
+Moldavian: Moldavjan
+Mongo: =
+Mongolian: Mongoljan
+Montenegrin: =
+Moroccan: Marokkin
+Mossi: =
+Myanmar: Il-Mjanmar
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: Navaħo
+Ndebele (North): =
+Ndebele (South): Ndebele (Nofsinhar)
+Ndebele: =
+Ndonga: =
+Neapolitan: Naplitan
+Nepali: Nepaliż
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Norveġiż
+Norwegian (Bokmål): Norveġiż (Bokmål)
+Norwegian (Nynorsk): Norveġiż (Nynorsk)
+Norwegian: Norveġiż
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: Nżima
+Occitan: Oċċitan
+Odia: =
+Ojibwa: Oġibwa
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Ossetiku
+Pahlavi: =
+Palauan: Palawani
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: Papjamento
+Pashto: =
+Pedi: =
+Persian (Farsi): Persjan (Farsi)
+Persian (Iran): Persjan (Iran)
+Persian: Persjan
+Phoenician: Feniċju
+Pohnpeian: =
+Polish: Pollakk
+Portuguese: Portugiż
+Portuguese/Brazil: Portugiż / Brażil 
+Punjabi (India): Punġabi (l-Indja)
+Punjabi (Pakistan): Punġabi (Pakistan)
+Punjabi: Punġabi
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Retoromaniku
+Romanian: Rumen
+Romansh: Ruma
+Romany: Rumani
+Rundi: =
+Russian (Moldavia: Russu (Moldavja
+Russian (Republic of Moldova): Russu (Repubblika tal-Moldova)
+Russian: Russu
+Sami (Inari): =
+Sami (Lappish): Sami (Lappiż)
+Sami (Lule): =
+Sami (Northern): Sami (tat-Tramuntana)
+Sami (Skolt): =
+Sami (Southern): Sami (tan-Nofsinhar)
+Sami: =
+Samoan: Samojan
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: Sardinjan
+Sasak: =
+Scots (Gaelic): Skoċċiż (Galliku)
+Selkup: =
+Serbian (Upper): Serb (Fuq)
+Serbian: Serb
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Sqalli
+Sindhi: =
+Sinhala: =
+Slavic: Slavi
+Slovak: Slovakk
+Slovenian: Sloven
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbjan (Baxx)
+Sorbian (Upper): Sorbjan (Fuq)
+Sorbian: Sorbjan
+Sotho: =
+Spanish (Argentina): Spanjol (Arġentina)
+Spanish (Bolivia): Spanjol (Bolivja)
+Spanish (Chile): Spanjol (Ċili)
+Spanish (Colombia): Spanjol (Kolombja)
+Spanish (Costa Rica): Spanjol (Kosta Rika)
+Spanish (Dominican Republic): Spanjol (Repubblika Dominikana)
+Spanish (Ecuador): Spanjol (Ekwador)
+Spanish (El Salvador): Spanjol (El Salvador)
+Spanish (Guatemala): Spanjol (Gwatemala)
+Spanish (Honduras): Spanjol (Ħonduras)
+Spanish (Mexico): Spanjol (Messiku)
+Spanish (Nicaragua): Spanjol (Nikaragwa)
+Spanish (Panama): Spanjol (Panama)
+Spanish (Paraguay): Spanjol (Paragwaj)
+Spanish (Peru): Spanjol (il-Perù)
+Spanish (Puerto Rico): Spanjol (Puerto Rico)
+Spanish (Spain): Spanjol (Spanja)
+Spanish (Uruguay): Spanjol (Urugwaj)
+Spanish (Venezuela): Spanjol (il-Venezwela)
+Spanish: Spanjol
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumerjan
+Sundanese: Sundaniż
+Susu: =
+Sutu: =
+Swahili: Swaħili
+Swati: =
+Swedish (Finland): Svediż (Finlandja)
+Swedish (Sweden): Svediż (Svezja)
+Swedish: Svediż
+Syriac: Sirjak
+Tagalog: =
+Tahitian: =
+Tai: =
+Taiwan: Tajwan
+Tajik: Taġik
+Tamashek: Tamasek
+Tamil: =
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: Tajlandiż
+Tibetan: Tibetani
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (il-Gżejjer Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Tork
+Turkmen: Turkmeni
+Tuvinian: Tuvinjan
+Twi: =
+Udmurt: =
+Ugaritic: Ugaritiku
+Ukrainian: Ukren
+Umbundu: =
+Urdu: =
+Uyghur: Uigur
+Uzbek: Użbek
+Vai: =
+Venda: =
+Vietnamese: Vjetnamiż
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: =
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: Jiddix
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: Żapotek
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: Żulu
+Browser-defined: Browser-definit
+event: avveniment
+journal: ġurnal
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Login tal-utent invalidu
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: password ħażina
+no such user: ebda utent bħal dan
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Kont diżattivat
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Intervall
+Months: Xhur
+Month Days: Xahar Jiem
+Days: Jiem
+Weeks: Ġimgħat
+Position: Pożizzjoni
+Until: Sakemm
+Count: Għadd
+Inclusion Dates: Dati ta 'Inklużjoni
+Exclusion Dates: Dati ta 'Esklużjoni
+Event Imported: Avveniment Importat
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Notifika
+authenticate: Żball SMTP: Ma setax jawtentika
+connect_host: Żball SMTP: Ma setax jikkonnettja mal-host SMTP:
+data_not_accepted: Żball SMTP: Dejta mhux aċċettata
+encoding: Kodifikazzjoni mhux magħrufa:
+execute: Ma setax jeżegwixxi:
+file_access: Ma setax jaċċessa l-fajl:
+file_open: Żball tal-Fajl Ma setax jiftaħ il-fajl:
+from_failed: L-indirizz Minn li ġej falla:
+instantiate: Ma setax jistanzjja l-funzjoni tal-posta
+mailer_not_supported: mailer mhux appoġġjat
+provide_address: Int trid tipprovdi mill-inqas indirizz tal-email tar-riċevitur wieħed.
+recipients_failed: Żball SMTP: Ir-riċevituri li ġejjin fallew:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Daħħal Karattri li Jaraw fil-Grafika
+Enter the correct letters and numbers...: Daħħal l-ittri u n-numri korretti mill-immaġini fil-kaxxa tat-test. Dan it-test żgħir iservi bħala restrizzjoni ta 'aċċess kontra bots malizzjużi. Sempliċement erġa 'kkarga l-paġna jekk din il-grafika hija diffiċli wisq biex tinqara
+Challenge/Response: Sfida / Rispons
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Ibdel id-data u l-ħin ta 'din l-entrata?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Inti ma ddaħħlitx Deskrizzjoni qasira
+time prior to work hours...: ħin qabel il-ħinijiet tax-xogħol ...
+Invalid Event Date: Data tal-Avveniment Invalida
+Please add a participant: Jekk jogħġbok żid parteċipant 
+Invalid Date: Data Invalida
+You have not entered a valid time of day: Int ma dħaltx f'ħin validu tal-ġurnata. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: L-ID tal-Kalendarju ma jistax ikun vojt. 
+First and last names cannot both be blank.: L-ewwel u l-kunjom ma jistgħux it-tnejn ikunu vojta. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Kulur invalidu
+Color format should be RRGGBB.: Il-format tal-kulur għandu jkun #RRGGBB. 
+URL cannot be blank.: URL ma jistax ikun vojt.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: It-tip ta 'fajl ma jaqbilx mal-Format tal-Importazzjoni 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Kulur mhux validu għall-isfond tad-dokument.
+Invalid color for document title.: Kulur mhux validu għat-titlu tad-dokument.
+Invalid color for table cell background.: Kulur invalidu għall-isfond taċ-ċellula tal-mejda.
+Invalid color for table cell background for today.: Kulur invalidu għall-isfond taċ-ċellula tal-mejda għal-lum.
+Invalid work hours.: Ħinijiet tax-xogħol invalidi.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Il-URL tas-server għandu jispiċċa bi slash (/).
+Invalid color for table grid.: Kulur invalidu għall-gradilja tal-mejda.
+Invalid color for event popup background.: Kulur invalidu għall-isfond popup tal-avveniment.
+Invalid color for event popup text.: Kulur invalidu għat-test popup tal-avveniment.
+Invalid color for table header text.: Kulur invalidu għat-test tal-intestatura tat-tabella.
+Invalid color for table header background.: Kulur invalidu għall-isfond tal-header tat-tabella.
+Server URL is required.: L-URL tas-server huwa meħtieġ.
+Invalid Color: Kulur invalidu
+Database Name: Isem tad-Database
+Full Path (no backslashes): Path sħiħ (l-ebda backslashes) 
+The password contains illegal characters.: Il-password fiha karattri illegali.
+Error you must specify a Single-User Login: Żball: Int trid tispeċifika Login ta 'Utent Uniku
+Could not find XXX.: Ma stajtx insib XXX.
+Could not find XXX in DOM.: Ma stajtx insib XXX f'DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Din il-ġimgħa
+This Month: Dan ix-xahar
+This Year: Din is-sena
+Exit: Ħruġ
+Add New Event: Żid Avveniment Ġdid
+Delete Entries: Ħassar Entrati
+My Views: L-Opinjonijiet Tiegħi
+Manage Calendar of: Immaniġġja l-Kalendarju ta '
+My Reports: Ir-Rapporti Tiegħi
+My Profile: Il-profil Tiegħi
+Public Calendar: Kalendarju Pubbliku
+Unapproved Events: Avvenimenti mhux approvati
+User Manager: Maniġer tal-Utent
+Help Contents: Kontenut tal-Għajnuna
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Direttorju tal-Cache tad-Database
+Create New: Oħloq Ġdid
+Failure Reason: Raġuni tal-Ħsara:
+You must manually create database: Trid toħloq database manwalment.
+Single-User: Utent Uniku
+Test Settings: Issettjar tat-Test
+Timezone Conversion Successful: Il-Konverżjoni taż-Żona tal-Ħin Rnexxiet
+WebCalendar Installation Wizard Step XXX: WebCalendar Installation Wizard Pass XXX
+Password Accepted: Password Aċċettata
+Successful Login: Idħol b'suċċess
+Password Incorrect: Password Żbaljata
+Invalid Login: Login invalidu
+Display Errors: Uri Żbalji
+File Uploads: Tlugħ tal-Fajls
+Allow URL fopen: Ħalli URL fopen (meħtieġ biss jekk jintużaw Kalendarji mill-Bogħod)
+Safe Mode: Modalità Sikura
+Safe Mode Allowed Vars: Safe Mode Permessi Vars (TZ meħtieġa biss jekk Safe Mode tkun Mixgħula)
+GD: GD (meħtieġ għal Sfondi ta 'Immaġni ta' Gradjent)
+Passwords do not match!: Il-passwords ma jaqblux!
+Unable to write password to settings.php file: Ma tistax tikteb il-password fil-fajl "settings.php".
+Password Updated: Password Aġġornata
+Password has been set: Password ġiet issettjata.
+Connection Successful...: Konnessjoni Rnexxiet  Jekk jogħġbok mur fil-paġna li jmiss biex tkompli l-installazzjoni.
+Correct your entries or click the Create New...: Ikkoreġi l-entrati tiegħek jew ikklikkja l-buttuna  Oħloq Ġdid  biex tkompli l-installazzjoni.
+Correct your entries and try again.: Ikkoreġi l-entrati tiegħek u erġa 'pprova.
+XXX does not exist: XXX ma teżistix
+XXX is not writable: XXX ma jistax jinkiteb
+Error Converting Timezone: Żball fil-Konverżjoni taż-Żona tal-Ħin
+Error Unable to write to file XXX.: Żball Ma jistax jikteb fil-fajl XXX.
+Please change the file permissions of this file.: Jekk jogħġbok ibdel il-permessi tal-fajl ta 'dan il-fajl.
+Please change includes dir permission: Jekk jogħġbok ibdel il-permessi tal-fajl tad-direttorju "jinkludi" tiegħek biex jippermetti l-kitba minn utenti oħra.
+Your settings have been saved.: Is-settings tiegħek ġew salvati.
+OFF: =
+ON: FUQ
+WebCalendar Setup Wizard: =
+This installation wizard will guide you...: Dan is-saħħar ta 'installazzjoni jiggwidak fit-twaqqif ta' installazzjoni bażika tal-WebCalendar.<br>Għall-għajnuna u s-soluzzjoni tal-problemi ara:<br>
+System Administrators Guide: Gwida għall-Amministratur tas-Sistema
+Frequently Asked Questions: Mistoqsijiet Frekwenti
+FAQ: =
+Troubleshooting: Issolvi l-problemi
+Getting Help: Ikseb Għajnuna
+Upgrading Guide: Gwida għat-Titjib
+User Supported Wiki: Wiki Appoġġjat mill-Utent
+PHP Version Check: Verifika tal-Verżjoni PHP
+Check to see if PHP 7.1.0 or greater is installed.: Iċċekkja biex tara jekk PHP 7.1.0 jew aktar huwiex installat.
+PHP version: Verżjoni PHP
+PHP Settings: Settings tal-PHP
+Detailed PHP Info: Informazzjoni dettaljata dwar il-PHP
+settings.php Status: Status "settings.php"
+Session Check: Kontroll tas-Sessjoni
+To test the proper operation of sessions...: Biex tittestja t-tħaddim xieraq tas-sessjonijiet, erġa 'kkarga din il-paġna. Għandek tara l-inkrement tal-kontro tas-sessjoni kull darba.
+SESSION COUNTER: =
+The file permissions of settings.php are set...: Il-permessi tal-fajl ta '"settings.php" huma ssettjati sabiex l-installatur ma jkollux permess biex jimmodifikah. Jekk jogħġbok ibdel il-permessi tal-fajl tal-fajl li ġej biex tkompli
+The file permissions of the includes directory are set...: Il-permessi tal-fajl tad-direttorju jinkludi huma stabbiliti sabiex l-installatur ma jkollux permess biex joħloq fajl ġdid. Jekk jogħġbok ibdel il-permessi tad-direttorju li ġej biex tkompli
+Your settings.php file appears to be valid.: Il-fajl "settings.php" tiegħek jidher li huwa validu.
+Configuration Wizard Password: Password tal-Wizard tal-Konfigurazzjoni
+Create Settings File Password: Oħloq Settings File Password
+db setup directions...: F’din it-taqsima se twaqqaf u tittestja konnessjoni mas-server tad-database tiegħek. L-informazzjoni tal-kont fornuta għandu jkollha permessi SĦIĦA biex toħloq databases, tabelli u utenti. Jekk dan mhux possibbli, jew l-aċċess għad-database tiegħek huwa limitat, ikollok tikkonfigura d-database tiegħek manwalment.
+Database Status: Status tad-Database
+Supported databases for your PHP installation: Bażijiet tad-dejta appoġġjati għall-installazzjoni tal-PHP tiegħek
+Your current database settings are able to access the database.: Is-settings tad-database attwali tiegħek jistgħu jaċċessaw id-database.
+Please Test Settings: Jekk jogħġbok Test Settings
+Your current database settings are not able...: Is-settings tad-database attwali tiegħek ma jistgħux jaċċessaw id-database jew għadhom ma ġewx ittestjati.
+Database Settings: Issettjar tad-Dejtabejż
+Database Type: Tip ta 'Database
+Server: =
+Connection Persistence: Persistenza tal-Konnessjoni
+All your database tables appear to be up...: It-tabelli kollha tad-database tiegħek jidhru li huma aġġornati. Tista 'tipproċedi għall-paġna li jmiss u tlesti s-setup tal-WebCalendar tiegħek.
+This appears to be a new installation...: Din tidher li hija installazzjoni ġdida. Jekk dan mhux korrett, jekk jogħġbok mur lura għall-paġna preċedenti u kkoreġi s-settings tiegħek.
+This appears to be an upgrade...: Dan jidher li huwa aġġornament mill-verżjoni&nbsp;XXX&nbsp;għal&nbsp;SSS.
+The database requires some data input...: Id-database teħtieġ xi input ta 'dejta Ikklikkja Aġġorna d-Database biex tlesti l-aġġornament.
+In this section we will perform...: F'din it-taqsima se nwettqu l-bidliet biex inġibu d-database tiegħek sal-livell meħtieġ. Jekk qed tuża database kompletament appoġġjata, dan il-pass jitwettaq awtomatikament għalik. Jekk le, l-SQL meħtieġ jista 'jintwera u inti għandek tkun tista' taqta 'u twaħħalha fit-tieqa tal-mistoqsija tas-server tad-database tiegħek.
+No database actions are required.: Mhuma meħtieġa l-ebda azzjonijiet fid-database.
+The following database actions are required: L-azzjonijiet tad-database li ġejjin huma meħtieġa
+ODBC Underlying Database: Bażi tad-Dejta Sottostanti ODBC:
+Automatic installation not supported: L-installazzjoni awtomatika ma ġietx implimentata kompletament għat-tip tad-database tiegħek. Int ser ikollok toħloq manwalment it-tabelli meħtieġa billi tuża l-SQL fornut. Jekk jogħġbok ikklikkja  Uri SQL  biex tkompli. Aqta 'u Paste fit-tieqa tal-mistoqsija tad-database tiegħek.
+This may take several minutes to complete: Dan jista 'jieħu bosta minuti biex jitlesta.
+Install Database: Installa Database
+Update Database: Aġġorna Database
+Display Required SQL: Uri l-SQL Meħtieġ
+Return to previous page after processing SQL.: Wara li tipproċessa dan l-SQL manwalment, ikollok bżonn terġa 'lura għall-paġna ta' qabel u erġa 'ttestja d-database tiegħek sabiex l-iskritt ikun jista' jsib il-bidliet.
+This is the final step in setting up your WebCalendar Installation.: Dan huwa l-aħħar pass fit-twaqqif tal-Installazzjoni tal-WebCalendar tiegħek.
+Timezone Conversion: Konverżjoni taż-Żona tal-Ħin
+It appears that you have NOT converted...: Jidher li MHUX ikkonvertejt id-dejta tal-avveniment tal-WebCalendar eżistenti tiegħek għal GMT. Jekk għandek, tista 'tinjora dan l-avviż u ma tipproċedix bil-konverżjoni. Jekk din hija installazzjoni ġdida, tista 'wkoll tinjora dan l-avviż.
+Convert Data to GMT: Ikkonverti Data għal GMT
+Application Settings: Settings tal-Applikazzjoni
+HTTP-based authentication was not detected...: L-awtentikazzjoni bbażata fuq HTTP ma nstabitx. Ikollok bżonn terġa 'tikkonfigura l-web server tiegħek jekk tixtieq tagħżel' Web Server 'mill-għażliet ta' 'Awtentikazzjoni tal-Utent' hawn taħt.
+HTTP-based authentication was detected...: Ġiet skoperta awtentikazzjoni bbażata fuq HTTP. L-awtentikazzjoni tal-utent qed tiġi ttrattata mill-web server tiegħek. Għandek tagħżel 'Web Server' mil-lista ta 'għażliet ta' 'Awtentikazzjoni tal-Utent' hawn taħt.
+Create Default Admin Account: Oħloq Kont Amministrattiv Default
+(Admin Account Not Found): (Kont Amministrattiv Mhux Misjub)
+User Authentication: Awtentikazzjoni tal-Utent
+Web-based via WebCalendar (default): Ibbażat fuq il-web permezz tal-WebCalendar (default)
+Web Server (not detected): Web Server (mhux skopert)
+Web Server (detected): Web Server (skopert)
+None (Single-User): Xejn (Utent Uniku)
+Read-Only: Aqra biss
+Environment: Ambjent
+Production: Produzzjoni
+Development: Żvilupp
+Save Settings: =
+Launch WebCalendar: Tnedija tal-WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Żball meta ġiet aġġornata t-tabella "XXX": SSSS.
+Conversion Successful: Konverżjoni Rnexxiet 
+Perl script required: Il-verżjoni preċedenti tiegħek tal-WebCalendar teħtieġ li tħaddem skript PERL biex tikkonverti d-dejta tiegħek. Jekk jogħġbok run /tools/upgrade_to_0.9.7.pl imbagħad irritorna f'din il-paġna biex tkompli.
+previous version requires updating several tables: Il-verżjoni preċedenti tiegħek tal-WebCalendar teħtieġ aġġornament ta 'diversi tabelli tad-database.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: EBDA PREVIŻJONI DISPONIBBLI
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Żball fil-konnessjoni mad-database
+Include Path: Inkludi Path
+Deleting events for: Tħassir ta 'avvenimenti għal
+Importing events for: Importazzjoni ta 'avvenimenti għal
+No data returned from: L-ebda dejta ma ġiet ritornata minn
+for non-user calendar: għal kalendarju mhux tal-utent
+No Remote Calendars found: Ebda Kalendarji mill-Bogħod ma nstabu
+Remote Calendars not enabled: Kalendarji mill-bogħod mhux attivati
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ma setax isib l-avveniment id
+could not find event id XXX in database.: ma setax isib l-avveniment id XXX fid-database.
+task: kompitu
+This is a reminder for the XXX detailed below.: Din hija tfakkira għat-XXX dettaljata hawn taħt.
+Pecentage Complete: Pecentage Tlesti
+Reminder: Tifkira
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Azzjoni mhux appoġġjata: XXX.
+No event id specified.: L-ebda avveniment id speċifikat.
+Not authorized (not admin).: Mhux awtorizzat (mhux amministratur).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Iċċekkjar għal avvenimenti għal XXX mid-data SSS sad-data ZZZ.
+Found XXX events in time range.: Sib avvenimenti XXX fil-medda tal-ħin.
+Event id=XXX YYY at ZZZ on AAA.: Avveniment id = XXX "SSSS" f'ZZZ fuq AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Li tippermetti lil utent XXX jara l-kalendarju ta 'utent ieħor.
+Error Email reminders disabled for user XXX.: Żball: It-tfakkiriet bl-email huma diżattivati ​​għall-utent "XXX".
+Number of site_extras XXX.: Numru ta 'sit_extras: XXX.
+Reminder set for event.: Tifkira stabbilita għall-avveniment.
+Mins Before XXX.: Minjiera Qabel: XXX.
+Event time is XXX.: Il-ħin tal-avveniment huwa: XXX.
+Remind time is XXX.: Ftakar il-ħin huwa: XXX.
+Reminders for user XXX, login YYY.: Tifkiriet għall-utent "XXX", illoggja "SSSS".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Jiġu mhux approvati għall-utent "XXX".
+Event id=XXX YYY already sent.: Id tal-avveniment = XXX "SSSS" diġà mibgħut.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: M’hemmx bżonn login għal modalità ta ’utent wieħed.
+No login required for HTTP authentication.: L-ebda login ma huwa meħtieġ għall-awtentikazzjoni HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Karattri invalidi fil-login.
+Username XXX does not exist.: Username "XXX" ma jeżistix.
+You cannot remove admin rights from yourself!: Ma tistax tneħħi d-drittijiet ta 'amministratur minnek innifsek!
+Unknown error saving user: Żball mhux magħruf waqt l-iffrankar tal-utent.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Ma nstab l-ebda parteċipant għall-id tal-avveniment: XXX.
+Db error Could not find event id XXX.: Żball Db: Ma setax isib l-avveniment id XXX. 
+Error Could not find event id XXX in database.: Żball: Ma setax isib l-avveniment id XXX fid-database. 

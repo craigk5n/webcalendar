@@ -1,0 +1,2387 @@
+# Xhosa xh
+#
+# Ifomathi inesihloko esinganyanzelekanga:
+#
+# Guqulelwa ngu: igama lakho kunye ne-imeyile
+# Uhlaziyo lokugqibela: umhla wokuguqulelwa
+# (Kubandakanya ohamba phambili "#" kunye naziphi na izimvo ezenziwe ngabaguquleli bangaphambili
+# Umgca wokuqala ongenanto uphelisa la magqabantshintshi.)
+#
+# Kulandelwa uninzi njengoko kufuneka:
+#
+# Ibinzana lesiNgesi: uguqulo
+# (Omnye ukuya emgceni. NGAPHANDLE kokukhokelayo "#".
+# "Ibinzana lesiNgesi:", kubandakanya ikholoni ":", linikezelwa yi
+# Abaphuhlisi beKhalenda yeWebhu. Inxalenye yakho "yinguqulelo".)
+#
+# Isikhombisi sezixhobo siqulathe izikripthi ezimbini zeeper ukukunceda:
+# - check_translation.pl
+# ibonisa ukuba sonke isicatshulwa siguqulelwe ngempumelelo.
+# - update_translation.pl
+# iya kucacisa iifayile zenkqubo ukufumana konke ukuguqulela ('ibinzana') kunye
+# Ingcebiso yesixhobo # ('ibinzana'). Iya kulungelelanisa amabinzana ngokwephepha
+# (ifayile) equlathe ukwenzeka okokuqala. Ngokukhetha, inokuthi ithegi
+# amabinzana angekaguqulelwa ngokubeka
+# << UKUPHOSA >>
+# kumgca ongentla kwebinzana. Kwaye, ukuba ibinzana sisifinyezo,
+# iya kubandakanya isicatshulwa esipheleleyo sesiNgesi kumgca ongezantsi kwebinzana.
+#
+# Qaphela: Ndizama ukunciphisa ubungakanani befayile iyonke. Ukuba "uguqulo"
+# igama / ibinzana liyafana kulwimi lwakho nakwisiNgesi, sebenzisa nje uphawu "=".
+#
+# Qaphela: Uya kuqaphela ungeniso lwe "May_" ngezantsi. Kukho isizathu soku.
+# Guqula "May_" kwigama elipheleleyo lenyanga kunye "May" kwi,
+# Ngokuqhelekileyo iileta ezintathu, isifinyezo senyanga (njenge "Okt" ka "Okthobha").
+#
+# Ndisebenzise ukuguqulela kuGoogle koku.
+# Iya kwanela de isithethi sendabuko sinokuyiqinisekisa.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: Ikhalenda yeWebhu
+version XXX: Inguqulelo XXX
+WebCalendar is a PHP application used...: Ikhalenda yeWebhu sisicelo se-PHP esisetyenziselwa ukugcina ikhalenda yomsebenzisi omnye okanye iqela le-intanethi / le-intranet labasebenzisi. Inokuqwalaselwa kwakhona njenge khalenda yomsitho.
+Credits: Imivuzo
+About: Malunga
+OK: Kulungile
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Impazamo kwindawo yogcino lwedatha: XXX.
+DEFAULT CONFIGURATION: UKUQULUNQWA KWEENKONZO
+Go: Yiya
+Save: Gcina
+Undo: Qhaqha
+Public Access: Ukufikelela kuLuntu
+Admin: Ulawulo
+User Access Control: Ulawulo lokuFikelela komsebenzisi
+Allow Access to Other Users Calendar: Vumela ukuFikelela kwabanye abaKhalenda
+Grant This User Access to My Calendar: Nika olu Fikelelo kuMsebenzisi kwiKhalenda yam
+Type: Chwetheza
+Calendar: Ikhalenda
+View Event: Jonga umsitho
+View: Jonga
+Edit: Hlela
+Approve/Reject: Vuma / Yala
+Events: Iziganeko
+Tasks: Imisebenzi
+Journals: IiJenali
+Can Invite: Ungamema
+Can Email: Ngaba ungathumela i-imeyile
+Can See Time Only: Ungabona ixesha kuphela
+Assistant: Umncedisi
+Select All: Khetha Zonke
+Clear All: Yicime yonke
+Public: Esidlangalaleni
+Confidential: Imfihlo
+Private: Bucala
+
+########################################
+# Page: activity_log.php
+#
+Next: Okulandelayo
+Previous: Ngaphambili
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Umsitho XXX sele uvele kwikhalenda yakho.
+Invalid entry id XXX.: Akuyiyo i-id yokungena: "XXX".
+a XXX event may not be added to your calendar: Lo ngumsitho we-XXX kwaye awunakongezwa kwikhalenda yakho.
+confidential: ziyimfihlo
+private: ngasese
+Error adding event XXX.: Impazamo yokongeza umsitho: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Alilunganga igama loseto "XXX".
+Select: Khetha
+Day: Usuku
+Week: Iveki
+Month: Inyanga
+Year: Unyaka
+Bottom: Ezantsi
+Top: Ngaphezulu
+Anyone: Nabani na
+Participant: Umthathi-nxaxheba
+Settings: Useto
+Groups: Amaqela
+NonUser Calendars: Iikhalenda ezingasetyenziswanga
+Other: Okunye
+Email: Imeyile
+Colors: Imibala
+Document background: Imvelaphi yoxwebhu
+Document title: Isihloko soxwebhu
+Document text: Umbhalo woxwebhu
+My event text: Isicatshulwa sam somcimbi
+Table grid color: Umbala wegridi yetafile
+Table header background: Imvelaphi yentloko yetafile
+Table header text: Itheyibhile yokubhaliweyo okuphezulu
+Table cell background: Imvelaphi yeseli yetafile
+Table cell background for current day: Imvelaphi yeseli yetafile yosuku lwangoku
+Table cell background for days with events: Imvelaphi yeseli yetafile yeentsuku ezinemicimbi
+Table cell background for weekends: Imvelaphi yeseli yetafile ngeempelaveki
+Table cell background for other month: Imvelaphi yeseli yetafile kwenye inyanga
+Week number color: Umbala wenombolo yeveki
+Event popup background: Imvelaphi yokungena komnyhadala
+Event popup text: Isicatshulwa esivelayo somsitho
+System Settings: Useto lweNkqubo
+Help: Nceda
+System options: Izinketho zenkqubo
+app-name-help: Icacisa igama lesicelo eliza kuvela kwibar yomxholo webrawuza kuwo onke amaphepha nakwiphepha lokungena. Ixabiso olichazayo apha liya kujongwa kwifayile yoguqulelo ekuvumela ukuba ubonelele ngezihloko ezahlukeneyo zeelwimi ezahlukeneyo.
+Application Name: Igama lesicelo
+Translated Name (XXX): Igama eliguqulelweyo (XXX)
+server-url-help: Icacisa i-URL esisiseko yesicelo. Oku kuyakufakwa xa kuthunyelwa izikhumbuzo ze-imeyile kunye nezaziso.
+Server URL: I-URL yomncedisi
+home-url-help: Icacisa i-URL yasekhaya yesicelo. Oku kunokuba sisiphelo okanye isihlobo
+Home URL: I-URL yasekhaya
+language-help: Ixela ukuba loluphi ulwimi oza kulusebenzisa.
+Language: Ulwimi
+Your browser default language is XXX.: Ulwimi olungagqibekanga lwebrawuza yi "XXX".
+Allow user to use themes: Vumela umsebenzisi ukuba asebenzise imixholo
+themes-help: Ivumela uhlaziyo lobunzima kuseto lwesimo. Iilebhile zamatyala asezantsi zikhethwa ngumsebenzisi kuphela.
+Themes: Izihloko
+AVAILABLE THEMES: IMIBA EFUMANEKAYO
+None: Akukho nanye
+Preview: Imboniso
+Site customization: Ulwenziwo lwesiza
+custom-script-help: Ivumela ungeno lwesiko leJavascript okanye okubhaliweyo kwesimbo sokubhaliweyo okuya kufakwa kwi-HTML "intloko" yecandelo lephepha ngalinye.
+Custom script/stylesheet: Iskripthi / iphepha lesitayile esiko
+custom-header-help: Ivumela i-snippet yesiko le-HTML ukuba ibandakanywe phezulu kwiphepha ngalinye.
+Custom header: Intloko yesiqhelo
+custom-trailer-help: Ivumela isiko eliqhelekileyo le-HTML ukuba libandakanywe ekupheleni kwephepha ngalinye.
+Custom trailer: Itreyila yesiqhelo
+enable-external-header-help: Ivumela ukuhanjiswa kwetreyila kwifayile yangaphandle
+Allow external file for header/script/trailer: Vumela ifayile yangaphandle yentloko / yeskripthi / itreyila
+Allow user to override header/trailer: Vumela umsebenzisi ukuba abhale ngaphezulu iintloko / itreyila
+Date and Time: Umhla nexesha
+server-tz-help: Icacisa ukuba zingaphi iiyure zokulungisa ixesha ukusuka kwi-UTC ukuya kwixesha leseva.
+Server Timezone Selection: Ukhetho lwendawo yeseva
+tz-help: Icacisa ukuba zingaphi iiyure zokulungisa ixesha ukusuka kwi-UTC ukuya kwixesha lendawo.
+Default Client Timezone Selection: Ukhetho loMda weXesha laBathengi
+display-general-use-gmt-help: Ukuba yenziwe, imihla / amaxesha aqhelekileyo aboniswa njenge-GMT
+Display Common Use Date/Times as GMT: Bonakalisa uMhla wokuSetyenziswa oSetyenziswa / amaXesha njengeGMT
+date-format-help: Icacisa ifomathi yomhla owuthandayo.
+Date format: Ifomathi yomhla
+Small Task Date: Umhla woMsebenzi oMncinci
+display-week-starts-on: Icacisa usuku lweveki eqala ngalo iveki. Ukuba uMvulo ucacisiwe, iinombolo zeeveki ziya kuba ngamanani eeveki ze-ISO.
+Week starts on: Iveki iqala
+display-weekend-starts-on: Cwangcisa usuku lweveki ngeempelaveki ukuba luqale
+Weekend starts on: Impelaveki iqala
+time-format-help: Icacisa ukuba yeyiphi ifomathi yexesha oza kuyisebenzisa:<br><em>iiyure ezili-12:</em> Veza amaxesha ngo-3am, ngo-8: 30 ntambama, njl.<br><em>24 iyure: , 2030, njl.
+Time format: Ifomathi yexesha
+12 hour: Iiyure ezili-12                                                  
+24 hour: Iiyure ezingama-24                                                  
+timed-evt-len-help: Icacisa indlela yokufaka yokumisela ubude besiganeko esenziwe ngexesha.
+Specify timed event length by: Chaza ubude bomsitho wexesha nge
+Duration: Ubude bexesha
+End Time: Ixesha lokuphela
+work-hours-help: Icacisa uluhlu lwamaxesha ukubonisa umboniso wosuku.
+Work hours: Iiyure zomsebenzi
+From: Ukusuka
+to: ukuya
+Appearance: Inkangeleko
+preferred-view-help: Icacisa imbonakalo emiyo (Usuku, iVeki, iNyanga, okanye uNyaka).
+Preferred view: Umbono okhethiweyo
+Allow top menu: Vumela imenyu ephezulu
+Date Selectors position: Umhla wabakhethi bemihla
+menu-themes-help: Cwangcisa imibala kunye nesitayile semenyu ephezulu
+Menu theme: Umxholo wemenyu
+fonts-help: Icacisa uluhlu lwamagama esistim aza kusetyenziswa (njenge "Arial, Helvetica")
+Fonts: Imigca
+display-sm_month-help: Ukuba yenziwe, bonisa iinyanga ezincinci kwiimbono zenyanga
+Display small months: Bonisa iinyanga ezincinci
+display-weekends-help: Bandakanya impelaveki xa ujonga iveki.
+Display weekends: Bonisa iimpelaveki
+display-long-daynames-help: Ukuba yenziwe, amagama emini ende ayaboniswa
+Display long day names: Bonisa amagama emini ende
+display-alldays-help: Bonisa iintsuku ezidlulileyo nezizayo kwiimbono zenyanga, ugcwalisa zonke iiseli.
+Display all days in month view: Bonisa yonke imihla ekujongeni kwenyanga
+display-week-number-help: Icacisa ukuba inani leveki (1-52) kufuneka liboniswe kwimbonakalo yenyanga kunye nokujonga kweveki.
+Display week number: Bonisa inombolo yeveki
+display-desc-print-day-help: Bandakanya iinkcazo zomnyhadala kuhlobo olushicilelayo lokujonga umbono wosuku.
+Display description in printer day view: Inkcazo yokubonisa kumbono wosuku lomshicileli
+yearly-shows-events-help: Kumbono wonyaka, bonisa iintsuku eziqulethe imicimbi kwifonti ebhalwe ngqindilili.
+Display days with events in bold in month and year views: Bonisa iintsuku ngeziganeko ezibhalwe ngqindilili kwimbono yenyanga nonyaka
+display-minutes-help: Ukuba yenziwe, imizuzu ephela ngo: 00 iya kuhlala iboniswa
+Display 00 minutes always: Bonisa imizuzu engama-00 rhoqo
+display-end-times-help: Bonisa amaxesha okuphela komsitho ukuba umcimbi uphelelwe lixesha
+Display end times on calendars: Bonisa amaxesha okuphela kwiikhalenda
+allow-view-add-help: I icon '' 'iya kufakwa kwiimbono, ivumela abasebenzisi ukuba bongeze ngokukhawuleza iminyhadala kwezinye iikhalenda zabasebenzisi.
+Include add event link in views: Bandakanya ukongeza ikhonkco lomsitho kwiimbono
+lunar-help: Ukuba yenziwe, iya kubonisa ii icon ezincinci ezimele izigaba zenyanga inyanga nenyanga
+Display Lunar Phases in month view: Veza iZigaba zeLunar kwimbono yenyanga
+Restrictions: Izithintelo
+allow-view-other-help: Icacisa ukuba ngaba umsebenzisi omnye unokujonga ikhalenda yomnye umsebenzisi.
+Allow viewing other users calendars: Vumela ukujonga ezinye iikhalenda zomsebenzisi
+require-approvals-help: Xa unikwe amandla, umsebenzisi kufuneka avume umsitho ngaphambi kokuba uboniswe kwikhalenda yakhe (ngaphandle kokuba umboniso awuvunyelwanga yenziwe). Qaphela ukuseta oku ukuba "Hayi" ngekhe kucime ukuvunywa kwekhalenda yoFikelelo kuLuntu (ukuba ikhalenda yoFikelelo kuLuntu yenziwe).
+Require event approvals: Funa ulwamkelo lomsitho
+display-unapproved-help: Icacisa ukuba ingaba iziganeko ezingavunywanga zibonisiwe kwikhalenda yakho.<br>Ukuba imiselwe ku "Ewe", ize iziganeko ezingavunyelwanga ziboniswe kwikhalenda yakho (ngombala owahlukileyo wombhalo).<br>Ukuba imiselwe ku "Hayi" emva koko izehlo ezingavunyelwanga kufuneka zamkelwe ngaphambi kokuba ziboniswe kwikhalenda yakho.
+Display unapproved: Umboniso awuvunywanga
+conflict-check-help: Jonga ukungqubana komsitho (imisitho emibini icwangciselwe ixesha elifanayo kumntu omnye). Ukuba ubeka oku ukuba ibe ngu "Ewe", uza kuba nakho ukucwangcisa imicimbi emibini ngaxeshanye emva kokuqinisekisa isilumkiso. Ukuba ucwangcisa oku ukuba "Hayi", akukho lukhangelo lwembambano luya kwenziwa. Mhlawumbi ufuna ukuseta oku ukuba "ewe", ke ukujonga ukungaboni ngasonye kwenzeka.
+Check for event conflicts: Jonga ukungaboni ngasonye
+Yes: Ewe
+No: Hayi
+conflict-months-help: Ukuba ukujonga ungquzulwano kukhona ("Jonga ungquzulwano lomsitho" ucwangciselwe "Hayi" & # 41 ;, oku kuchaza ukuba zingaphi iinyanga kwikamva ekufuneka siqwalasele ukungqubana. Ukuba ufumanisa ukuba ukongeza imicimbi kuthatha ixesha elide ukwenza , ukunciphisa eli nani.
+Conflict checking months: Iinyanga zokujonga ukungqubana
+conflict-check-override-help: Ivumela abasebenzisi ukuba babeke ngaphezulu ukungqubana kwemisitho kunye nokucwangciswa kweziganeko ezibini okanye nangaphezulu ngaxeshanye.
+Allow users to override conflicts: Vumela abasebenzisi ukuba babhale ngaphezulu iingxabano
+limit-appts-help: Ivumela umlawuli wenkqubo ukuba abeke umda obanzi besixokelelwano kwinani lokuqeshwa anokuthi abenalo umsebenzisi omnye nangaluphi na usuku.
+Limit number of timed events per day: Umda wenani leziganeko ezibekiweyo ngosuku
+limit-appts-number-help: Icacisa elona nani liphezulu leziganeko zomsebenzisi anokuba nazo ngosuku olunye.
+Maximum timed events per day: Ubuninzi bexesha elinikiweyo ngemini
+crossday-help: Ukuba yenziwe, iziganeko ezithatha iintsuku ziya kuboniswa ngeentsuku ezahlukeneyo
+Disable Cross-Day Events: Khubaza imicimbi yoSuku loMnqamlezo
+disable-location-field-help: Ukukhetha u "Ewe" kuzakususa indawo "Yendawo" kwiphepha lolwazi lomsitho
+Disable Location field: Khubaza indawo yendawo
+disable-url-field-help: Ukukhetha u- "Ewe" kuzakususa indawo "ye-URL" kwiphepha lolwazi lomsitho
+Disable URL field: Khubaza umhlaba we-URL
+disable-priority-field-help: Ukukhetha u "Ewe" kuzakususa intsimi "yePrayorithi" kwiphepha lolwazi lomsitho, ukubonelela ngokujongana ngokulula kwee-novices.
+Disable Priority field: Khubaza intsimi ePhambili
+disable-access-field-help: Ukukhetha u- "Ewe" kuzakususa indawo yoku "Fikelela" kwiphepha lolwazi lomsitho, ukubonelela ngokujongana ngokulula kwee-novices.
+Disable Access field: Khubaza indawo yokufikelela
+disable-participants-field-help: Ukukhetha u- "Ewe" kuzakususa indawo ethi "Abathathi-nxaxheba" kwiphepha lolwazi lomsitho, ukuthintela abasebenzisi ekongezeni abanye abasebenzisi kwiminyhadala yabo. Ukuba wenza olu khetho, ungafuna ukukhubaza i "Vumela ukubonwa kweekhalenda zabanye abasebenzisi".
+Disable Participants field: Khubaza indawo yabathathi-nxaxheba
+disable-repeating-field-help: Ukukhetha u "Ewe" kuzakususa intsimi "Iphindayo" xa kusongezwa imicimbi. Oku kuya kubonelela ngonxibelelwano olulula kwii-novices.
+Disable Repeating field: Khubaza umhlaba ophindayo
+allow-html-description-help: Ukuba yenziwe, abasebenzisi banokufaka i-HTML kwicandelo lenkcazo yomsitho. Ukuba ayenziwanga yasebenza, iithegi ze-HTML ziya kusinda ukuze zibonakale njengombhalo ocacileyo. Isilumkiso: Ukwenza eli nqaku kuvumele abasebenzisi ukuba babhekise imifanekiso kwezinye iiwebhusayithi.
+Allow HTML in Description: Vumela i-HTML kwinkcazo
+Popups: Ezivelelayo
+disable-popups-help: Khubaza ii-popups kwiimbonakalo zekhalenda
+Disable Pop-Ups: Khubaza iiPop-Up
+popup-includes-siteextras-help: Ukuba yenziwe, vumela ukuseta kwamasiko emisitho yesiko kwifayile ye-site_extras.php iya kuboniswa kumcimbi wokuvela.
+Display Site Extras in popup: Bonisa indawo eyongezelelweyo kwi-popup
+popup-includes-participants-help: Ukuba yenziwe, abathathi-nxaxheba bayaboniswa kwiziganeko ezivelayo.
+Display Participants in popup: Bonisa abathathi-nxaxheba popup
+Miscellaneous: Iintlobo ngeentlobo
+remember-last-login-help: Xa yenziwe, ukungena ngemvume komsebenzisi kuya kugcwaliselwa kubo kwiphepha lokungena (kodwa hayi igama eligqithisiweyo), kwaye ukhetho lomsebenzisi luya kulayishwa (kubandakanya imibala abayithandayo kunye nokukhethwa kolwimi).
+Remember last login: Khumbula ukungena ngemvume kokugqibela
+summary_length-help: Ubuninzi bobude beNkcazo emfutshane kwiimbono zekhalenda
+Brief Description Length: Inkcazo emfutshane Ubude
+user_sort-help: Ichonga uhlobo loku-odola loMsebenzisi, uluhlu olungasetyenziswanga
+User Sort Order: Uhlobo lomsebenzisi
+Lastname, Firstname: Igama lokugqibela, igama lokuqala
+Firstname, Lastname: Igama lokulqala nefani
+allow-public-access-help: Xa yenziwe, ikhalenda inokusetyenziswa njengekhalenda yoluntu efundwayo kuphela engafuni ukuba abasebenzisi bangene ngemvume.
+Allow public access: Vumela ukufikelela koluntu
+public-access-default-visible: Imicimbi evela kwikhalenda yoluntu iya kuvela ngokuzenzekelayo kuzo zonke iikhalenda zabasebenzisi
+Public access visible by default: Ukufikelela koluntu kubonakala ngokungagqibekanga
+public-access-default-selected: Xa usongeza umsitho omtsha, umsebenzisi woluntu uya kukhethwa ngokungagqibekanga njengomthathi-nxaxheba.
+Public access is default participant: Ukufikelela koluntu kukuthatha inxaxheba ngokungagqibekanga
+public-access-view-others-help: Xa ufikelela kwinkqubo kunye nokufikelela koluntu, ichaza ukuba ngaba umsebenzisi angayijonga ikhalenda yomnye umsebenzisi wekhalenda.
+Public access can view other users: Ukufikelela koluntu kunokujonga abanye abasebenzisi
+public-access-can-add-help: Xa yenziwe, abasebenzisi abafikelela kwinkqubo ngoFikelelo kuLuntu baya kuba nakho ukongeza imicimbi emitsha, kodwa abayi kuvela kwikhalenda de umlawuli avume umcimbi omtsha.
+Public access can add events: Ukufikelela koluntu kunokongeza iminyhadala
+public-access-add-requires-approval-help: Icacisa ukuba ingaba iminyhadala eyongezwe ngeakhawunti yokufikelela kuluntu ifuna imvume ngaphambi kokuba iboniswe.
+Public access new events require approval: Ukufikelela koluntu kwimisitho emitsha kufuna ukuvunywa
+public-access-sees-participants-help: Ukuba yenziwe, abasebenzisi abafikelela kwikhalenda kwiakhawunti yoluntu baya kuba nakho ukubona abathathi-nxaxheba kumsitho ukuba babona iinkcukacha zomsitho.
+Public access can view participants: Ukufikelela koluntu kunokujonga abathathi-nxaxheba
+public-access-override-help: Ivumela amagama omsitho kunye neenkcazo ukuba zifihlwe kwikhalenda yoluntu
+Override event name/description for public access: Ukugqithisa igama lomcimbi / inkcazo yokufikelela koluntu
+public-access-override-text-help: Isicatshulwa ukubonisa ukuba olu khetho lungentla lwenziwe. Ukuba 'ayifumaneki', iya kuguqulelwa.
+Text to display to public access: Isicatshulwa esizakuboniswa kuluntu
+public-access-captcha-help: Ukuba yenziwe, imicimbi emitsha yongezwa nguRhulumente ifuna ukudlula ukuqinisekiswa kweCAPTCHA.
+Require CAPTCHA validation for public access new events: Funa ukuqinisekiswa kweCAPTCHA ukufikelela kuluntu kwimisitho emitsha
+uac-enabled-help: Yenza ulawulo lomgangatho wokufikelela kumsebenzisi
+User Access Control enabled: Ulawulo lokuFikelela koMsebenzisi lwenziwe lwasebenza
+groups-enabled-help: Yenza inkxaso yeqela, ivumela abasebenzisi ukuba bakhethe abasebenzisi ngamaqela.
+Groups enabled: Amaqela anikwe amandla
+user-sees-his-group-help: Ukuba yenziwe, abasebenzisi ngekhe babone abasebenzisi beekhalenda abekho kwelinye lamaqela abo.
+User sees only his groups: Umsebenzisi ubona kuphela amaqela akhe
+nonuser-enabled-help: Ukuba yenziwe, abalawuli baya kuba nenketho yokongeza iikhalenda ezingasebenzisi mntu
+Nonuser enabled: Iikhalenda ezingasetyenziswanga zivunyelwe
+nonuser-list-help: Kuphi ukubonisa iikhalenda ezingasebenzisi mntu kuluhlu lwabathathi-nxaxheba
+Nonuser list: Bonisa kuluhlu lwabathathi-nxaxheba e
+Upcoming Events: Imicimbi Ezayo
+upcoming-events-help: Nika amandla oluzayo.php
+Enabled: Inikwe amandla
+upcoming-events-allow-override: Vumela iparameter yomsebenzisi ezayo.php
+Allow user override: Vumela ukugqithisa komsebenzisi
+upcoming-events-display-caticons: Faka ii-icon zodidi kwi-future.php
+Display category icons: Bonisa ii-icon zodidi
+upcoming-events-display-layers: Veza imaleya kwi.php ezayo
+Display layers: Bonisa maleko
+upcoming-events-display-links: Bonisa amakhonkco kwi future.php
+Display links to events: Bonisa amakhonkco kwimisitho
+upcoming-events-display-popups: Veza iminyhadala yeziganeko kwi-future.php
+Display event popups: Veza ezivelelayo zomnyhadala
+reports-enabled-help: Ukuba yenziwe, abasebenzisi baya kubona icandelo elithi "Iingxelo" emazantsi ephepha ngalinye kwaye baya kuvunyelwa ukuba benze iingxelo zesiko. Ukongeza, abasebenzisi be-admin banokwenza iingxelo zehlabathi eziza kuvela emazantsi abo bonke abasebenzisi.
+Reports enabled: Iingxelo zenziwe zasebenza
+subscriptions-enabled-help: Icacisa ukuba abasebenzisi abakude bangabhalisela ikhalenda yomsebenzisi weWebhu yeKhalenda, ebavumela ukuba babone imicimbi yomsebenzisi weWebhu yeKhalenda kwisicelo sabo se-iCal (njenge-Apple iCal okanye iKhalenda yeMozilla).
+Allow remote subscriptions: Vumela imirhumo ekude
+remotes-enabled-help: Ivumela abasebenzisi ukuba balayishe iifayile ze-ics ezikude besebenzisa i-URL
+Allow remote calendars: Vumela iikhalenda ezikude
+rss-enabled-help: Icacisa ukuba ikhalenda yomsebenzisi inokufumaneka kwi-RSS feed.
+Enable RSS feed: Nika amandla ukutya kwe-RSS
+categories-enabled-help: Yenza inkxaso kumacandelo omnyhadala.
+Categories enabled: Izigaba zenziwe zasebenza
+icon_upload-enabled-help: Ukuba yenziwe, abasebenzisi banokufaka ii-icon zodidi
+Category Icon Upload enabled: Udidi lwe-Icon yokulayisha lwenziwe
+(Requires XXX folder to exist.): (Ifuna XXX ifolda ukuba ibekhona.)
+display-tasks-help: Veza iwindow yomsebenzi omncinci kwinyanga nakwikhalenda yosuku
+Display small task list: Bonisa uluhlu lwemisebenzi emincinci
+display-tasks-in-grid-help: Bonisa imisebenzi kwiikhalenda kunye neziganeko
+Display tasks in Calendars: Bonisa imisebenzi kwiiKhalenda
+allow-external-users-help: Icacisa ukuba ingaba umsebenzisi ongeyekhalenda unokongezwa kumsitho. Oku kuvumela abasebenzisi abangabhaliswanga ukuba badweliswe njengabathathi-nxaxheba kumsitho.
+Allow external users: Vumela abasebenzisi bangaphandle
+external-can-receive-notification-help: Xa abasebenzisi bangaphandle banikwe amandla kwaye ukusetyenziswa kwe-imeyile kunikwe amandla, abasebenzisi bangaphandle banokufumana izaziso ze-imeyile xa umcimbi wongezwa, uhlaziywa okanye ucime (ukuba idilesi ye-imeyile yomsebenzisi wangaphandle inikezelwe)
+External users can receive email notifications: Abasebenzisi bangaphandle banokufumana izaziso ze-imeyile
+external-can-receive-reminder-help: Xa abasebenzisi bangaphandle banikwe amandla kwaye ukusetyenziswa kwe-imeyile kunikwe amandla, abasebenzisi bangaphandle banokufumana izikhumbuzo ze-imeyile (ukuba idilesi ye-imeyile yomsebenzisi wangaphandle inikiwe).
+External users can receive email reminders: Abasebenzisi bangaphandle banokufumana izikhumbuzo ze-imeyile
+allow-self-registration-help: Vumela abasebenzisi abatsha ukuba bazibhalise
+Allow self-registration: Vumela ubhaliso lwakho
+use-blacklist-help: Nciphisa ukufikelela kwimisebenzi yeKhalenda yeWebhu esekwe kwidilesi ye-IP
+Restrict self-registration to blacklist: Thintela ubhaliso lwakho kuluhlu lwabamnyama
+allow-self-registration-full-help: Vumela abasebenzisi abatsha ukuba bagqibezele inkqubo yobhaliso lwakho kwi-intanethi
+Use self-registration email notifications: Yenza iphasiwedi kunye nokuthumela kubasebenzisi abatsha
+allow-attachment-help: Vumela abasebenzisi ukuba bongeze iziqhoboshelo zefayile kwimisitho.
+Allow file attachments to events: Vumela izinamathiselo zefayile kwimisitho
+Admin and owner can always add attachments if enabled.: Umlawuli kunye nomnini bangahlala bongeza izinamathiselo ukuba zinikwe amandla.
+allow-comments-help: Vumela abasebenzisi ukuba bongeze izimvo kwimisitho.
+Allow comments to events: Vumela amagqabantshintshi kwimicimbi
+Admin and owner can always add comments if enabled.: Ulawulo kunye nomnini bangahlala bongeza amagqabantshintshi ukuba anikwe amandla.
+email-enabled-help: Vula okanye ucime konke ukuthumela i-imeyile kwesaziso kunye nezikhumbuzo. Misela ku "hayi", ukuba iserver yakho ayimiselwanga ngokufanelekileyo ukuthumela iposi.
+Email enabled: I-imeyile yenziwe
+email-default-sender: Icacisa idilesi yemeyile ukuba ichaze njengomthumeli xa kuthunyelwa izikhumbuzo.
+Default sender address: Idilesi yomthumeli emiselweyo
+email-mailer: Khetha uhlobo lwe-imeyile (i-SMTP, i-imeyile ye-PHP, i-imeyile yokuthumela)
+Email Mailer: Umthumeli wemeyile
+email-smtp-host: Igama lenginginya (ii) zeeseva (ze) ze-SMTP ezahlulwe zizikhefana
+SMTP Host name(s): Amagama ehostela ze-SMTP
+email-smtp-port: Inombolo yeSport ye-SMTP (ngesiqhelo ama-25)
+SMTP Port Number: Inombolo yeSport ye-SMTP
+email-smtp-auth: Sebenzisa ungqinisiso lwe-SMTP
+SMTP Authentication: Uqinisekiso lwe-SMTP
+email-smtp-username: Igama lomsebenzisi le-SMTP ukuba usebenzisa uqinisekiso
+SMTP Username: Igama lomsebenzisi le-SMTP
+email-smtp-password: Igama lokugqithisa le-SMTP ukuba usebenzisa uQinisekiso
+SMTP Password: Igama lokugqithisa le-SMTP
+Default user settings: Useto lomsebenzisi olungagqibekanga
+email-format: Chaza ukhetho lwe-HTML okanye imiyalezo ebhaliweyo
+Email format preference: Ukukhetha ifomathi ye-imeyile
+HTML: I-HTML
+Plain Text: Amagama alula
+email-include-ics: Faka ifayile ye-ICalendar ICS ukuthumela umyalezo nge-imeyile
+Include iCalendar attachments: Faka ii-attachments ze-iCalendar
+email-event-reminders-help: Icacisa ukuba izithunyelwa okanye azithumeli izikhumbuzo.
+Event reminders: Izikhumbuzo zomnyhadala
+email-event-added: Icacisa ukuba okanye ungathumeli izaziso ze-imeyile xa umcimbi wongezwa kwikhalenda yakho.
+Events added to my calendar: Izehlo zongezwa kwikhalenda yam
+email-event-updated: Icacisa ukuba okanye ungazithumeli izaziso ze-imeyile xa umsitho uhlaziywa kwikhalenda yakho.
+Events updated on my calendar: Imicimbi ihlaziyiwe kwikhalenda yam
+email-event-deleted: Icacisa ukuba ungathumela okanye ungathumeli izaziso ze-imeyile xa umcimbi ususwe kwikhalenda yakho.
+Events removed from my calendar: Iziganeko zisuswe kwikhalenda yam
+email-event-rejected: Ixela ukuba ungathumela okanye ungathumeli izaziso ze-imeyile xa umntu othabatha inxaxheba engawamkeli umsitho okwikhalenda yakho.
+Event rejected by participant: Umnyhadala ukwaliwe nguthathi-nxaxheba
+email-event-create: Icacisa ukuba ngaba umyili wamangenelo uya kuyifumana i-imeyile
+Event that I create: Umsitho endiwenzayo
+Color options: Izinketho zombala
+Allow user to customize colors: Vumela umsebenzisi ukuba enze ngokwezifiso imibala
+gradient-colors: Ukuba imibala yegradient yenziwe yasetyenziswa. Oku kunokuba nefuthe kakhulu kwintsebenzo.
+Enable gradient images for background colors: Yenza imifanekiso yegradient kwimbala engasemva
+Not available: Ayifumaneki
+Background Image options: Imifanekiso engasemva
+bgimage-help: I-URL yomfanekiso wangasemva oyifunayo. Isenokuba sisidibanisi esihambelanayo.
+Background Image: Umfanekiso ongasemva
+bgrepeat-help: Ukulawula ukuphinda indlela yokuziphatha yomfanekiso ongasemva.
+Background Repeat: Ukuphindaphinda okungasemva
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Abancedisi
+Preferences: Ukukhetha
+Control Panel: Iphaneli yokulawula
+Users: Abasebenzisi
+Account: Akhawunti
+Categories: Iindidi
+Views: Iimbono
+Layers: Maleko
+Reports: Iingxelo
+Delete Events: Cima imicimbi
+Activity Log: Umsebenzi weLog
+System Log: Ukungena kwenkqubo
+Security Audit: Uphicotho lwezokhuseleko
+Public Preferences: Ukukhethwa koluntu
+Unapproved Public Events: Iziganeko Zoluntu ezingavunyelwanga
+Administrative Tools: Izixhobo zoLawulo
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Igama eliphindiweyo: "XXX".
+Username XXX already exists.: Igama lomsebenzisi "XXX" sele ikhona.
+Email address XXX already exists.: Idilesi yemeyile "XXX" sele ikhona.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Amagqabantshintshi ongezelelweyo (ukhetho)
+Approve and Send: Vuma kwaye uthumele
+Approve and Exit: Vuma kwaye uphume
+(Your comments will be emailed to the event creator.): (Izimvo zakho ziya kuthunyelwa nge-imeyile kumyili womsitho.)
+Hello, XXX.: Molo, XXX.
+XXX has approved an appointment and added comments.: I-aphoyintimenti yamkelwe kwaye izimvo zongezwa ngu-XXX.
+Subject XXX: Isihloko: "XXX".
+Description XXX: Inkcazo: "XXX".
+Date XXX: Umhla: XXX
+Time XXX: Ixesha: XXX
+Comments XXX: Izimvo: XXX
+Approved w/Comments by XXX.: Kuvunywe w / Izimvo ngu: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Imo yolawulo
+Your assistants: Abancedisi bakho
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Impazamo engaziwayo.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Impazamo yenkqubo: Akukho XXX ichaziweyo!
+user: umsebenzisi
+year: unyaka
+month: inyanga
+day: usuku
+
+########################################
+# Page: category.php
+#
+Category Icon: Udidi lwe icon
+Global: Ehlabathini lonke
+The permissions for the icons directory are set to read-only: Imvume yesikhombisi se icon isetelwe ukufundwa kuphela.
+Category Name: Udidi Igama:
+Color: Umbala
+Remove Icon: Susa i icon:
+Add Icon to Category: Yongeza i-Icon kudidi
+Upload: Layisha
+GIF or PNG 6kb max: I-GIF okanye i-PNG 6kb max
+Search for existing icons: Khangela ii-icon ezikhoyo
+Add: Yongeza
+Delete: Cima
+Are you sure you want to delete this entry?: Uqinisekile ufuna ukucima oku kungenayo?
+Make New Category: Yenza udidi olutsha
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Igama lodidi luyafuneka
+File size exceeds maximum.: Ubungakanani befayile budlula ubuninzi.
+File is not a GIF or PNG image: Ifayile ayisosithombe se-GIF okanye se-PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: IINDIDI EZIFUMANEKAYO
+ENTRY CATEGORIES: IINDIDI ZOKUNGENELA
+Remove: Susa
+Global Category: Icandelo lehlabathi
+Cancel: Rhoxisa
+
+########################################
+# Page: colors.php
+#
+Add Custom: Yongeza isiko
+Basic Colors: Imibala esisiseko
+Current Color: Umbala wangoku
+Custom Colors: Imibala yesiqhelo
+Old Color: Umbala Omdala
+
+########################################
+# Page: combo.php
+#
+Select None: Khetha Akukho
+Agenda: Ajenda
+Add Task: Yongeza umsebenzi
+Description: Inkcazo
+Date: Umhla
+Time: Ixesha
+Priority: Okuphambili
+Access: Ukufikelela
+Created by: Yenziwe ngu
+Updated: Ukuhlaziywa
+Participants: Abathathi-nxaxheba
+Attachments: Iziqhoboshelo
+Comments: Izimvo
+Brief Description: Inkcazo emfutshane
+Full Description: Inkcazo epheleleyo
+Category: Udidi
+Add event detail: Yongeza iinkcukacha zomsitho
+Start Date: Umhla wokuqala
+Due Date: Umhla wokuphila
+Add task detail: Yongeza iinkcukacha zomsebenzi
+All: Zonke
+Error: Impazamo
+no response from server: akukho mpendulo ivela kumncedisi
+JSON error: Impazamo yeJSON
+High: Phezulu
+Medium: Phakathi
+Low: Phantsi
+Today: Namhlanje
+Add Entry: Yongeza ukungena
+Unnamed Event: Umsitho ongenagama
+Unnamed Task: Umsebenzi ongenagama
+Refresh: Hlaziya
+Click to add entry: Cofa ukongeza ukungena
+Name: Igama
+pm: emva kwemini
+am: ndim
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: UXX urhoxise idinga.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Ayisiyo blob id
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Yongeza iNkcazo
+Add Attachment: Yongeza isiQhoboshelo
+Subject: Isihloko
+Comment: Gqabaza
+Upload file: Ngenisa ifayile
+
+########################################
+# Page: docdel.php
+#
+Removed: Kususiwe
+
+########################################
+# Page: edit_entry.php
+#
+days: iintsuku
+hours: iiyure
+minutes: imizuzu
+You are not authorized to edit this task.: Awuvumelekanga ukuhlela lo msebenzi.
+is in a different timezone than you are. Currently: ukwindawo eyahlukileyo kunaleyo uyiyo. Okwangoku
+hour ahead of you: iyure phambi kwakho
+hour behind you: iyure emva kwakho
+hours ahead of you: iiyure phambi kwakho
+hours behind you: iiyure emva kwakho
+XXX is in a different timezone (ahead): (I-XXX ikwindawo eyahlukileyo eyahlukeneyo; YYY phambi kwakho.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (I-XXX ikwindawo eyahlukileyo eyahlukeneyo; YYY phambi kwakho.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Ixesha elifakwe apha lixhomekeke kwiNdawo yeXesha lakho.
+Edit Entry: Hlela ukungena
+Details: Iinkcukacha
+Repeat: Phinda
+Reminders: Izikhumbuzo
+brief-description-help: Oku kuya kunika inkcazo emfutshane (malunga nabalinganiswa abangama-20) yomsitho. Oku kuyakubonisa umsitho xa ujonga ikhalenda.
+full-description-help: Oku kufuneka kugcwalise iinkcukacha zomsitho. Olu lwazi lunokubonwa xa umsebenzisi ejonga umsitho.
+access-help: Icacisa inqanaba lokungena lomsitho. <ul> <li> Esesidlangalaleni: Wonke umntu angazibona iinkcukacha ezipheleleyo zomsitho.</li> <li> Eyimfihlo: Abanye banokubona ukuba unongeniso lwalo mhla nexesha, kodwa hayi iinkcukacha zento eyiyo.</li></ul>
+priority-help: Icacisa ngokubaluleka komsitho. Iziganeko eziphambili ngokubaluleka ziya kuboniswa ngqindilili.
+category-help: Icacisa udidi lomsitho.
+completed-help: Umsebenzi womhla ugqityiwe. Inikwe amandla kuphela xa yonke ipesenti yabathathi-nxaxheba ilingana ne-100%.
+Date Completed: Umhla ogqityiweyo
+percent-help: Ipesenti yokugqiba umsebenzi walo msebenzisi
+Percent Complete: Ipesenti igqityiwe
+All Percentages: Zonke ipesenti
+location-help: Indawo yomsitho
+Location: Indawo
+url-help: I-URL yomsitho
+URL: I-URL
+date-help: Icacisa umhla womsitho.
+Untimed event: Umsitho ongagqitywanga
+Timed event: Umcimbi ophelelwe lixesha
+All day event: Umnyhadala wemini
+Timezone Offset: Ixesha lendawo elisikiweyo
+time-help: Icacisa ixesha lomsitho. <ul> <li> "Umcimbi obekelwe ixesha" (womsitho ocwangciselwe ixesha elithile ngalomini)</li> <li> "Isiganeko esingaziwayo" (kumsitho lo awunaxesha (njengeholide )</li> <li> "Yonke iminyhadala" (yomsitho othatha yonke imini (njengokuphuma eofisini)</li></ul>
+duration-help: Icacisa ubude bexesha (ngeyure; imizuzu) yomsitho. <em>Lo mhlaba ungashiywa ungenanto.</em>
+end-time-help: Icacisa ixesha ekulindeleke ukuba umcimbi uphele ngalo.
+Start Time: Ixesha lokuqalisa
+Due Time: Ixesha elifanelekileyo
+Site Extras: Indawo eyongezelelweyo
+avail_participants-help: Uluhlu lwabathathi-nxaxheba abafumanekayo kolu ngeno.
+Available: Iyafumaneka
+Find Name: Khangela igama
+Resources: Izixhobo
+participants-help: Uluhlu lwabathathi-nxaxheba kolu ngeno.
+Selected: Ikhethiwe
+Availability: Ukufumaneka
+external-participants-help: Icacisa uluhlu lwabathathi-nxaxheba kumnyhadala abangasebenzisi ikhalenda. Abasebenzisi kufuneka badweliswe ngomgca ngamnye kwaye banokubandakanya idilesi ye-imeyile. Ukuba idilesi ye-imeyile icacisiwe, umsebenzisi unelungelo lokufumana izaziso kunye nezikhumbuzo.
+External Participants: Abathathi-nxaxheba bangaphandle
+repeat-type-help: Khetha ukuba umcimbi mawuphindwe kaninzi kangakanani.
+Daily: Yonke imihla
+Weekly: Ngeveki
+Monthly: Ngenyanga
+by day: emini
+by date: ngomhla
+by position: ngesikhundla
+Monthly (by day): Ngenyanga (ngemini)
+Monthly (by date): Ngenyanga (ngomhla)
+Monthly (by position): Ngenyanga (ngokwesikhundla)
+Yearly: Qho ngonyaka
+Manual: Isikhokelo
+Expert Mode: Indlela yeNgcali
+repeat-end-date-help: Icacisa umhla umcimbi oya kuphinda ngawo kude kube.
+Ending: Ukuphela
+Forever: Ngonaphakade
+Use end date: Sebenzisa umhla wokuphela
+Number of times: Inani lamaxesha
+repeat-frequency-help: Icacisa ukuba umcimbi mawuphindwe kaninzi kangakanani.
+Frequency: Rhoqo
+Weekdays Only: Ngeentsuku zeveki kuphela
+Week Start: Ukuqala Kweveki
+repeat-bydayextended-help: Ivumela ukhetho lomhla ngokusekwe kumhla weveki.
+ByDay: =
+repeat-month-help: Icacisa ukuba zeziphi iinyanga umsitho ofanele ukuphinda kuwo.
+ByMonth: NgeNyanga
+repeat-bysetpos-help: Ivumela ukhetho lomhla ngokubhekisele kwisikhundla sokubamba inyanga.
+BySetPos: =
+repeat-bymonthdayextended-help: Ivumela ukhetho lomhla ngokusekwe kumhla.
+ByMonthDay: =
+repeat-byweekno-help: Ivumela umsebenzisi ukuba akhankanye uluhlu lweeveki eziphinda-phinda umsitho (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Ivumela umsebenzisi ukuba akhankanye uluhlu lweentsuku zonyaka eziphinda-phinda umsitho (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: Ngonyaka
+repeat-exceptions-help: Iintsuku ezongezelelekileyo ekufuneka zenzekile okanye ezingafanelekanga ukuba zenzeke ngalo msitho.
+Exclusions: Ukungabandakanywa
+Inclusions: Ukufakwa
+Add Exception: Yongeza ngaphandle
+Add Inclusion: Yongeza ukufakwa
+Delete Selected: Cima ezikhethiweyo
+Send Reminder: Thumela Isikhumbuzi
+When: Nini
+Use Date/Time: Sebenzisa uMhla / ixesha
+Use Offset: Sebenzisa i-Offset
+Before: Ngaphambi
+After: Emva
+Start: Qalisa
+End/Due: Ukuphela / ngenxa
+Times: Amaxesha
+Every: Yonke
+CAPTCHA Warning: Isilumkiso:  Ayikwazi ukusebenzisa i-CAPTCHA ngaphandle kokongezwa kwe-GD ye-PHP!<br>
+Delete entry: Cima ukungena
+You are not authorized to edit this entry.: Awugunyaziswanga ukuhlela oku kungenayo.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: U-XXX wenze idinga elitsha.
+XXX has updated an appointment.: U-XXX uhlaziye idinga.
+Security violation!: Ukuphulwa kokhuseleko!
+You must enter the anti-spam text on the previous page.: Kuya kufuneka ufake isicatshulwa esichasene nogaxekile kwiphepha langaphambili.
+The following conflicts with the suggested time: Ezi ngxabano zilandelayo nexesha eliphakanyisiweyo
+User removed from participants list.: Umsebenzisi ususwe kuluhlu lwabathathi-nxaxheba.
+Please look on XXX to accept or reject this appointment.: Nceda ujonge ku-XXX ukwamkela okanye ukwala ukutyunjwa.
+Please look on XXX to view this appointment.: Nceda ujonge ku-XXX ukujonga olu nyulo.
+Scheduling Conflict: Ukucwangcisa ungquzulwano
+Your suggested time of: Ixesha lakho eliphakanyisiweyo
+conflicts with the following existing calendar entries: ungqubano noku kungenayo kwekhalenda kulandelayo
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX ayimiselwanga kwi "config.php".
+word characters only: (inokuba kuphela namagama; [a-zA-Z_0-9])
+Add User: Yongeza uMsebenzisi
+Edit User: Hlela uMsebenzisi
+Calendar ID: I-ID yeKhalenda
+First Name: Igama lakho
+Last Name: Ifani
+Is public calendar: Ikhalenda yoluntu
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Impazamo kwindawo yogcino lwedatha
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Yongeza iKhalenda ekude
+Edit Remote Calendar: Hlela iKhalenda ekude
+Create Layer: Yenza uLuhlu
+Reload: Layisha kwakhona
+Required to View Remote Calendar: Iyafuneka ukujonga iKhalenda ekude
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Iziphumo zokungenisa
+Events successfully imported: Imicimbi ingeniswe ngempumelelo
+Create a new layer to view this calendar.: Yenza umaleko omtsha wokujonga le khalenda.
+Errors: Iimpazamo
+There was an error parsing the import file or no events were returned.: Kubekhona impazamo ekungeniseni ifayile yokungenisa okanye akukho ziganeko zibuyisiweyo.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Ngomso
+Yesterday: Izolo
+Day before yesterday: Usuku phambi kwezolo
+Next week: Kwiveki elandelayo
+This week: Kule veki
+Last week: Kwiveki ephelile
+Week before last: Kwiveki ephelileyo
+Next week and week after: Kwiveki ezayo nangeveki elandelayo
+This week and next week: Kule veki nakwiveki ezayo
+Last week and this week: Kwiveki ephelileyo nakule veki
+Last two weeks: Iiveki ezimbini ezidlulileyo
+Next month: Kwinyanga elandelayo
+This month: Kule nyanga
+Last month: Kwinyanga ephelile
+Month before last: Inyanga ngaphambi kokugqibela
+Next year: Kunyaka olandelayo
+This year: Kulo nyaka
+Last year: Kunyaka ophelile
+Year before last: Unyaka ngaphambi kokugqibela
+Next 14 days: Iintsuku ezili-14 ezizayo
+Next 30 days: Iintsuku ezingama-30 ezizayo
+Next 60 days: Iintsuku ezingama-60 ezizayo
+Next 90 days: Iintsuku ezingama-90 ezizayo
+Next 180 days: Iintsuku ezingama-180 ezizayo
+Next 365 days: Iintsuku ezingama-365 ezilandelayo
+Invalid report id XXX.: I-id engasebenziyo yengxelo: "XXX".
+Unnamed Report: Ingxelo engenagama
+Add Report: Yongeza ingxelo
+Edit Report: Hlela Ingxelo
+Report name: Xela igama
+User: Umsebenzisi
+Current User: Umsebenzisi wangoku
+Include link in menu: Faka ikhonkco kwimenyu
+Include standard header/trailer: Faka i-header / trailer esemgangathweni
+Include previous/next links: Bandakanya amakhonkco angaphambili / alandelayo
+Include empty dates: Faka imihla engenanto
+Date range: Uluhlu lomhla
+Template variables: Izinto eziguquguqukayo kwiTemplate
+Page template: Itemplate yephepha
+Day template: Ithemplethi yosuku
+Event template: Itemplate yomnyhadala
+Are you sure you want to delete this report?: Uqinisekile ufuna ukucima le ngxelo?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Akukho ngxelo id: "XXX".
+Variable XXX not found.: Umahluko weXX akafumaneki.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Hlela iNtloko yeSiko
+Edit Custom Script/Stylesheet: Hlela iSkripthi esiSiko / iFayile yesitayile
+Edit Custom Trailer: Hlela iTrailer yesiqhelo
+
+########################################
+# Page: edit_user.php
+#
+Username: Igama lomsebenzisi
+E-mail address: Idilesi yemeyile
+Password: Inombolo yokuvula
+again: kwakhona
+Disabled for demo: Khubaza idemo
+Are you sure you want to delete this user?: Uqinisekile ufuna ukucima lo msebenzisi?
+Change Password: Tshintsha iphasiwedi
+New Password: Iphasiwedi entsha
+Set Password: Misela iphasiwedi
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Ukucima abasebenzisi abaxhaswanga.
+The passwords were not identical.: Iiphasiwedi zazingafani.
+You have not entered a password.: Awuyingenisanga igama eligqithisiweyo.
+Username cannot be blank.: Igama lomsebenzisi alinakuba nanto.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Ayigunyaziswanga
+
+########################################
+# Page: export.php
+#
+Export: Thumela ngaphandle
+Export format: Ifomathi yokuthumela ngaphandle
+Include all layers: Faka onke amanqanaba
+Include deleted entries: Faka amangeno asusiweyo
+Export all dates: Thumela yonke imihla
+Start date: Umhla wokuqala
+End date: Umhla wokuphela
+Modified since: Ilungisiwe okoko
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: ifomathi yokuthumela ngaphandle ayichazwanga okanye ayichanekanga.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Akukho msebenzisi uchaziweyo.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Yongeza iqela elitsha
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Iqela elingenagama
+Add Group: Yongeza iQela
+Edit Group: Hlela iQela
+Group name: Igama leqela
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Kufuneka ukhankanye igama leqela
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Ukuhlaziya ngokuzenzekelayo iikhalenda
+auto-refresh-help: Xa yenziwe ukuba isebenze, ukujonga usuku, ukujonga iveki, ukujonga inyanga, kunye noluhlu lwamaphepha angavunyelwanga aya kuzihlaziya ngokuzenzekelayo.
+Auto-refresh time: Ukuhlaziya ngokuzenzekelayo ixesha
+auto-refresh-time-help: Ukuba uhlaziyo oluzenzekelayo lwenziwe lwasebenza, oku kuchaza ixesha eliphakathi kuhlaziyo ngalunye.
+Display days with events in bold in year view: Bonisa iintsuku ngeziganeko ezibhalwe ngqindilili kumbono wonyaka
+Display weekends in week view: Veza ngeempelaveki ekuboneni iveki
+Time interval: Ixesha lokuphumla
+time-interval-help: Icacisa ukuba ubude bexesha kwimbonakalo yeveki kunye nokujonga kwemini kuya kuba njani.
+Nonuser: Iikhalenda ezingasebenziyo
+user-customize-color: Icacisa ukuba ingaba abasebenzisi bavunyelwe na ukuba baguqule iskimu sabo sombala.
+enable-gradient-help: Sebenzisa imibala yegradient kwimvelaphi yeseli.
+Manually entering color values: Ukufaka ngesandla amaxabiso ombala
+colors-help: Yonke imibala kufuneka icaciswe "#RRGGBB" hexadecimal fomati apho "RR" lixabiso lehex elibomvu, "GG" lixabiso lehex eliluhlaza, kwaye "BB" lixabiso lehex eliluhlaza.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Xela i-Bug
+Please include all the information below when reporting a bug.: Nceda ufake lonke ulwazi olungezantsi xa unika ingxelo ngegciwane.
+Also, please use English rather than XXX.: Kwakhona, nceda usebenzise  isiNgesi  kune-XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Amaxwebhu eKhalenda yeWebhu
+Currently in English only.: Okwangoku ngesiNgesi kuphela.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Ukudibanisa / ukuHlela iiNgeniso zeKhalenda
+Repeat Type: Phinda Uhlobo
+For More Information...: Ngolwazi oluthe kratya ...
+Repeat End Date: Phinda Umhla Wokuphela
+Repeat Day: Phinda uSuku
+repeat-day-help: Icacisa ukuba zeziphi iintsuku zeveki umsitho ekufuneka uphinde ngazo.
+
+########################################
+# Page: help_import.php
+#
+Import: Ngenisa
+Palm Desktop: Idesktop yePalm
+allow you to import entries from the Palm...: Le fomu iyakukuvumela ukuba ungenise amangeniso kwiPalm Desktop Datebook. Kuya kufuneka ibekwe kulawulo lwakho lwePalm kwincwadi yencwadi yomhla / yencwadi yomhla.dat kwi-subdirectory enegama lomsebenzisi.
+The following entries will not be imported: Oku kungenayo kulandelayo akuyi kungeniswa elizweni:
+Entries older than the current date: Amangenelo amadala kunangoku
+Entries created in the Palm Desktop...: Amangenelo enziwe kwiDesktop yePalm engakhange ishushu
+Anything imported from Palm...: Nantoni na engeniswe ngaphandle yePalm iya kubhalwa ngaphezulu ngexesha lokungenisa elilandelayo (ngaphandle kokuba usuku lomsitho ludlulile). Ke ngoko, uhlaziyo kufuneka lwenziwe kwiPalm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Le fomu izakungenisa i-vCalendar (.vcs) imicimbi eyi-1.0.
+The following formats have been tested: Ezi fomathi zilandelayo ziye zavavanywa:
+This form will import iCalendar (.ics) events.: Le fomu izakungenisa imicimbi ye-iCalendar (.ics).
+Enabling: Ukwenza ukuba isebenze
+Overwrite Prior Import: Bhala ngaphezulu ukungenisa kwangaphambili
+will cause events imported previously...: iya kubangela ukuba iminyhadala engeniswe ngaphambili, eyayisebenzisa i-UID efanayo njengomnyhadala ovela kwifayile entsha yokungenisa, ukuba iphawulwe njengokususwa. Oku kufuneka kuvumele ifayile ye-iCalendar ehlaziyiweyo ukuba ingeniswe ngaphandle kokwenza iikopi.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Isalathiso Soncedo
+About WebCalendar: Malunga neKhalenda yeWebhu
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Amacwecwe aluncedo ekuboniseni ezinye iziganeko zabanye abasebenzisi kwikhalenda yakho. Ungacacisa umsebenzisi kunye nombala imicimbi eya kuboniswa kuyo.
+Add/Edit/Delete: Yongeza / Hlela / Cima
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Ukucofa indawo yokuHlela yokuLawula kwicandelo lolawulo emazantsi ephepha kuya kukuvumela ukongeza / ukuhlela / ukucima umaleko.
+The text color of the new layer that will be displayed in your calendar.: Umbala wombala wendawo entsha eya kubonakala kwikhalenda yakho.
+Disabling: Ukukhubaza
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Cinezela ukukhubaza uLaleko lwekhonkco kwicandelo lolawulo emazantsi ephepha ukucima iileya.
+Duplicates: Ukuphinda kabini
+If checked, events that are duplicates of your events will be shown.: Ukuba kukhangelwe, iziganeko eziphindiweyo zeziganeko zakho ziya kuboniswa.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Cinezela i-Layers link kwi-admin icandelo elisezantsi kwephepha ukuvula iileya.
+Source: Imvelaphi
+Specifies the user that you would like to see displayed in your calendar.: Icacisa umsebenzisi ongathanda ukumbona eboniswe kwikhalenda yakho.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Udidi olungagqibekanga
+default-category-help: Icacisa udidi umsitho omtsha ekufuneka usilele kuwo.
+When I am the boss: Xa ndingumphathi
+Email me event notification: Ndithumele umyalezo nge-imeyile
+email-boss-notifications-help: Icacisa ukuba ngaba abaphathi bafumana ii-imeyile njengezaziso zomnyhadala.
+I want to approve events: Ndifuna ukwamkela imicimbi
+boss-approve-event-help: Icacisa ukuba ngaba umphathi kuya kufuneka ukuba avume iminyhadala eyongezwe ngabancedisi.
+Subscribe/Publish: Bhalisa / Papasha
+Allow remote publishing: Vumela upapasho olukude
+allow-remote-publishing-help: Icacisa ukuba umxhasi we-iCal okude angazipapasha izehlo kwi-WebCalendar
+remote-publishing-url-help: Ibonisa i-URL oza kuyisebenzisa kwisicelo somthengi se-iCal kokubhalisela kunye nokupapasha ubuyele kwiKhalenda yeWebhu.
+allow-remote-subscriptions-help: Icacisa ukuba abasebenzisi abakude bangabhalisela ikhalenda yakho, ubavumele ukuba babone imicimbi yakho kwisicelo esenziwe nge-iCal (njenge-Apple iCal okanye iKhalenda yeMozilla).
+remote-subscriptions-url-help: Ibonisa iURL abasebenzisi ekude bayisebenzise ukubhalisela ikhalenda yakho.
+Enable FreeBusy publishing: Yenza ushicilelo lweFreeBusy
+freebusy-enabled-help: Icacisa ukuba ixesha elikhoyo lomsebenzisi linokufunyanwa kusetyenziswa umgangatho we-iCal FreeBusy.
+freebusy-url-help: I-URL yokufikelela kuluhlu lomsebenzisi lweFreeBusy
+rss-feed-url-help: I-URL yokufikelela kwi-RSS feed
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Ivumela ulawulo olululo lokufikelela komsebenzisi kunye neemvume. Abasebenzisi banokunika nokusilela kunye nemvume nganye ukuba ugunyazisiwe ngumlawuli.
+If disabled, this user cannot send you emails.: Ukuba ukhubazekile, lo msebenzisi akanakukuthumela ii-imeyile.
+If disabled, this user cannot see you in the participants list.: Ukuba ukhubazekile, lo msebenzisi akanakukubona kuluhlu lwabathathi-nxaxheba.
+If enabled, this user cannot view the details of any of your entries.: Ukuba yenziwe, lo msebenzisi akakwazi ukujonga iinkcukacha zalo naluphi ungeno lwakho.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Ukupapasha kwabakhubazekileyo (ulawulo)
+Publishing Disabled (User): Ukupapasha kukhubazekile (Umsebenzisi)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Cofa ukuze ukhethe
+Current Icons on Server: Iimpawu zangoku kwiServer
+
+########################################
+# Page: import.php
+#
+import from file: ukungenisa kwifayile
+Disabled: Khubazekile
+Import format: Ngenisa ifomathi
+Exclude private records: Ungazibandakanyi iirekhodi zabucala
+Repeated items are imported separately. Prior imports are not overwritten.: Izinto eziphindiweyo zingeniswa zodwa ngokwahlukeneyo. Ukungeniswa kwempahla kwangaphambili akunakubhalwa ngaphezulu.
+
+########################################
+# Page: import_handler.php
+#
+No file: Akukho fayile
+Error deleting palm events from webcalendar.: Impazamo ekususeni imicimbi yesundu kwikhalenda yewebhu.
+Events from prior import marked as deleted: Izehlo ezivela kumngeniso wangaphambili zinikwe uphawu lokususwa
+Conflicting events: Imicimbi ephikisanayo
+The import file contained no data.: Ifayile yokungenisa ayinadatha.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Uqinisekile ufuna ukucima lo maleko?
+Delete layer: Cima umaleko
+Edit layer: Hlela umaleko
+Enable layers: Nika amandla iileya
+Layer: Ulwaleko
+Layers are currently disabled.: Imaleko ikhubazekile okwangoku.
+Layers are currently enabled.: Iziqendu zinikwe amandla okwangoku.
+Click to modify layers settings for XXX: Cofa apha ukutshintsha useto lweekhalenda zeXXX.
+Disable Layers: Khubaza iiLayers
+Add layer: Yongeza umaleko
+Add Layer: Yongeza uLaleko
+Edit Layer: Hlela uLaleko
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Ayikwazi kuhlaziya ukhetho
+Invalid entry id.: Akuvumelekanga ukungena kwi-id.
+You cannot create a layer for yourself.: Awunakho ukuzenzela umaleko.
+You can only create one layer for each user.: Unokwenza kuphela umaleko omnye womsebenzisi ngamnye.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Vuma / Qinisekisa
+Approve Selected: Vuma Okukhethiweyo
+Check All: Jonga konke
+Emails Will Not Be Sent: Ii-imeyile aziyi kuthunyelwa
+Reject Selected: Yala uKhethiweyo
+Reject: Yale
+Uncheck All: Sukukhangela konke
+View this entry: Jonga olu ngeno
+No unapproved entries for XXX.: Akukho zingeniso ezingavunyelwanga ze: "XXX".
+Unapproved Entries: Amangenelo angavunyelwanga
+Approve this entry?: Vumela oku kungenayo?
+Reject this entry?: Yala oku kungenayo?
+Approve Selected entries?: Vumela amangeniso akhethiweyo?
+Reject Selected entries?: Wala amangeno akhethiweyo?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Kuya kufuneka ungene ngemvume kunye negama lokugqitha.
+Save login via cookies so I dont have to login next time.: Gcina ukungena ngemvume ngeicookies ngenxa yoko akufuneki ungene kwixesha elizayo
+Login: Ngema
+public: esidlangalaleni
+Access XXX calendar: Fikelela kwikhalenda yeXXX
+cookies-note: Qaphela: Esi sicelo sifuna ukuba ii-cookies zenziwe zisebenze.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Iimpawu ezingekho mthethweni xa ungena kwi-XXX.
+Invalid login: Ukungena okungasebenziyo
+Activity login failure: Igama lomsebenzisi: "XXX", IP: "YYY".
+Error XXX: Impazamo: "XXX".
+You have been logged out.: Ukhutshiwe.
+Access public calendar: Fikelela kwikhalenda yoluntu
+Not yet registered? Register here!: Awukabhaliswa? Bhalisa apha!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Akukho khalenda ingengomsebenzisi: "XXX".
+This Calendar is not Public.: Le Khalenda ayisiyiyo kaRhulumente.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Yongeza iKhalenda eNtsha yokuSebenzisa
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Ukungena kufuneka kuchazwe.
+No such nonuser calendar: Akukho khalenda ingasebenziyo
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Umxholo ongasebenziyo
+Save Preferences: Gcina Izikhethwa
+Public Access calendar: Ikhalenda yokuFikelela kuLuntu
+Modify Non User Calendar Preferences: Guqula uKhetho lweKhalenda engeyoyomsebenzisi
+Return to My Preferences: Buyela Kwikhetho Lam
+Custom Scripts: Izikripthi zesiqhelo
+Timezone Selection: Ukhetho lwexesha
+Multiview: Imultiview:
+entry-interval-help: Cwangcisa ixesha lokuphumla xa uhlela amaxesha okungena
+Entry interval: Ixesha lokungena
+hour: yure
+minute: mzuzu
+theme-reload-help: Ngenxa yokugcinwa kwe-CSS, kunokuphinda kulayishwe iphepha
+Page may need to be reloaded for new Theme to take effect: Iphepha lisenokufuna ukuphinda lilayishwe ukuze uMxholo omtsha uqale ukusebenza
+display_byproxy-help: Bonisa umyili wokwenene kwiphepha lokujonga_okungena
+Display if created by Assistant: Bonisa ukuba yenziwe nguMncedisi
+allow-view-subscriptions-help: Ivumela ukuthintela ukufikelela kude ekungeneni kwaBucala okanye kuBucala
+Allow remote viewing of: Vumela ukujonga okukude kwe
+entries: amangeno
+
+########################################
+# Page: purge.php
+#
+Purging events for: Ukucoca imicimbi ye
+Finished: Igqitywe tu
+Back: Emva
+Check box to delete ALL events for a user: Jonga ibhokisi ukucima  ZONKE  izehlo zomsebenzisi
+Delete all events before: Cima yonke imicimbi ngaphambili
+Purge deleted only: Ukucoca kususwe kuphela
+Preview delete: Imboniso yokucima
+Are you sure you want to delete events for: Uqinisekile ufuna ukucima imicimbi
+Records deleted from XXX: Iirekhodi ezicinyiweyo kwi "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Idilesi ye-imeyile ayinakubhalwa.
+Username already exists.: Igama lomsebenzisi sele likho.
+Email address already exists.: Idilesi yemeyile sele ikhona.
+New user via self-registration.: Umsebenzisi omtsha ngokuzibhalisa.
+A new WebCalendar account has been set up for you.: Iakhawunti entsha yeWebhu yeKhalenda imiselwe wena.
+Your username is XXX.: Igama lakho lomsebenzisi ngu: "XXX".
+Your password is XXX.: Iphasiwedi yakho yile: "XXX".
+Please visit XXX to log in and start using your account!: Nceda undwendwele "XXX" ukuze ungene kwaye uqale ukusebenzisa iakhawunti yakho!
+You may change your password after logging in the first time.: Unokutshintsha iphasiwedi emva kokungena kwixesha lokuqala.
+If you received this email in error: Ukuba ufumene le imeyile ngempazamo kwaye ubhalisela iakhawunti yeWebhu yeKhalenda, unokungasihoyi esi saziso, okanye uphendule ngenqaku elifutshane
+Administrator: Umlawuli
+Welcome: Wamkelekile
+New user via email.: Umsebenzisi omtsha nge-imeyile.
+Registration: Ubhaliso
+Welcome to WebCalendar: Wamkelekile kwiKhalenda yeWebhu
+Your email should arrive shortly.: I-imeyile yakho kufuneka ifike kungekudala.
+Return to Login screen: Buyela kwiscreen sokungena
+Password (again): Iphasiwedi (kwakhona):
+Your account information will be emailed to you.: Ulwazi lweakhawunti yakho luya kuthunyelwa nge-imeyile kuwe.
+Submit: Ngenisa
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Qhubeka
+(Your comments will be emailed to the other participants.): (Izimvo zakho ziya kuthunyelwa nge-imeyile kwabanye abathathi-nxaxheba.)
+XXX has rejected an appointment.: U-XXX ulalile idinga.
+Rejected by XXX.: Yaliwe ngu-XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Yongeza iKhalenda eNtsha ekude
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Lo msitho uyimfihlo.
+(Private): (Ezabucala)
+(cont.): (Qhubeka.)
+Approved: Ivunyiwe
+Deleted: Kucinyiwe
+Rejected: Yaliwe
+Waiting for approval: Ilinde ukuvunywa
+Unknown: Yaziwa
+Invalid report id.: Ayisiyiyo ingxelo yengxelo.
+Click here to manage reports for the Public Access calendar.: Cofa apha ukulawula iingxelo zekhalenda yoFikelelo kuLuntu.
+Add new report: Yongeza ingxelo entsha
+Manage Reports: Lawula iiNgxelo
+
+########################################
+# Page: search.php
+#
+Advanced Search: Ukhangelo olunzulu
+Search: Khangela
+Keywords: Amagama aphambili
+Enter % for all entries: Ngenisa% kuwo onke amangenelo
+Include: Faka
+Filter by Date: Hluza ngoMhla
+All Dates: Yonke imihla
+Past: Edlulileyo
+Upcoming: Ezayo
+Range: Uluhlu
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Kuya kufuneka ufake igama elingaphezulu elinye okanye nangaphezulu.
+Search Results: Iziphumo zokuKhangela
+match found: umdlalo ufunyenwe
+matches found: imatshisi ifunyenwe
+No matches found: Akukho ntelekiso ifunyenweyo
+New Search: UKhangelo olutsha
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Olu lwazi lungezantsi luluhlu lwemiba enokubakho kufakelo lweKhalenda yeWebhu enokuthi iguqulwe ukwenza ufako lwakho lukhuseleke ngakumbi.
+For questions about WebCalendar security see the forums: Xa unemibuzo malunga nawo nawuphi na umba wokhuseleko lweKhalenda yeWebhu, nceda usebenzise iiforam zeKhalenda yeWebhu ebanjwe kwiGitHub.com;<br>XXX
+View your current PHP settings: Jonga useto lwangoku lwe-PHP
+Security Issue: Umba woKhuseleko
+Status: Ubume
+Default admin user password: Iphasiwedi yomsebenzisi emiselweyo
+You should change the password of the default admin user.: Kuya kufuneka utshintshe iphasiwedi yomsebenzisi osisiseko solawulo.
+File permissions XXX: Iimvume zefayile: XXX
+item XXX should not be writable: Into elandelayo akufuneki ibhalwe:<br><tt> XXX</tt>
+File exists XXX: Ifayile ikhona: "XXX"
+Because you have email disabled, you should remove this file.: Kuba une-imeyile ekhubazekileyo, kuya kufuneka uyisuse le fayile.
+File location XXX: Indawo ekuyo ifayile: "XXX"
+remove XXX if not using: Ukuba awusebenzisi ifayile "XXX", kuya kufuneka uyicime. Okanye, ubuncinci, hambisa kulawulo olutsha.
+System Settings XXX: Useto lweNkqubo: "XXX"
+consider enabling UAC: Unokufuna ukuqaphela ukuvumela uLawulo lokuFikelela koMsebenzisi ukuseta amalungelo omsebenzisi.
+recommend approving new public events: Sicebisa ukuba konke ukungeniswa komsitho woluntu kwamkelwe.
+recommend using CAPTCHA: I-CAPTCHA icetyiswa ukuba ikhusele ukungeniswa komnyhadala oqinisekileyo.
+Database cache directory location: Indawo yogcino lwedatha
+db cache should be inaccessable: Indawo yokugcina yedatha kufuneka ibe kwisikhombisi esingenakufikeleleka nge-URL.
+PHP Settings XXX: Useto lwe-PHP: "XXX"
+recommend setting XXX Off: Isimo esimiselweyo se "XXX" sicinyiwe.
+recommend setting allow_url_fopen Off: Useto olucetyiswayo lwe "allow_url_fopen" lucimile xa iikhalenda ezikude zingenziwanga.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Jonga iKhalenda yomnye uMsebenzisi
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Awukhange ungeze naluphi na udidi.
+Set Category: Cwangcisa udidi
+Global Categories cannot be changed.: Izigaba zehlabathi azinakutshintshwa.
+
+########################################
+# Page: upcoming.php
+#
+more: Kaninzi
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Iikhalenda ezikude
+denotes administrative user: Chaza umsebenzisi wolawulo
+Add New User: Yongeza umsebenzisi omtsha
+
+########################################
+# Page: usersel.php
+#
+form: ifom
+Reset: Hlela kwakhona
+
+########################################
+# Page: views.php
+#
+Add New View: Yongeza iNew View
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Imbonakalo engenagama
+Add View: Yongeza ukujonga
+Edit View: Hlela uMboniso
+View Name: Jonga igama
+View Type: Uhlobo lokujonga
+Day by Time: Usuku nexesha
+Week (Users horizontal): Iveki (Abasebenzisi abathe tye)
+Week by Time: Iveki ngamaxesha
+Week (Users vertical): Iveki (Abasebenzisi nkqo)
+Week (Timebar): Iveki (Timebar)
+Month (Timebar): Inyanga (Timebar)
+Month (side by side): Inyanga (ecaleni)
+Month (on same calendar): Inyanga (kwikhalenda enye)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Kufuneka ukhankanye igama lokujonga
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Akukho basebenzisi balo mbono.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Hlaziya ipesenti yomsebenzi
+Completed: Kugqityiwe
+Assistant mode: Imowudi yomncedisi
+Declined: Inqabile
+Needs-Action: Iimfuno-zenzo
+by: =
+Percentage Complete: Ipesenti igqityiwe
+External User: Umsebenzisi wangaphandle
+Update: Uhlaziyo
+at: e
+comments: izimvo
+Show: Bonisa
+Hide: Fihla
+Approve/Confirm entry: Vuma / Qinisekisa ukungena
+Reject entry: Yala ukungena
+Set category: Cwangcisa udidi
+Add to My Calendar: Yongeza kwiKhalenda yam
+Copy entry: Khuphela ungeniso
+This will delete this entry for all users.: Oku kuyakucima oku kungena kubo bonke abasebenzisi.
+Edit entry: Hlela ukungena
+Edit repeating entry for all dates: Hlela ukungena okuphindayo kuyo yonke imihla
+Delete repeating event for all dates: Cima umsitho ophindayo kuyo yonke imihla
+Edit entry for this date: Hlela ukungena ngalo mhla
+Delete entry only for this date: Cima ungeno lwalo mhla kuphela
+Delete entry from calendar of XXX: Cima ungeno kwikhalenda yeXXX
+This will delete the entry from your XXX calendar.: Oku kuyakucima ungeno kwikhalenda yakho yeXXX.
+boss: umphathi '
+This will delete the entry from your boss calendar.: Oku kuyakucima ungeno kwikhalenda yomphathi wakho.
+This will delete the entry from your calendar.: Oku kuyakucima ungeno kwikhalenda yakho.
+from your boss calendar: kwikhalenda yomphathi wakho
+Do you want to add this entry to your calendar?: Ingaba ufuna ukongeza oku kungena kwikhalenda yakho?
+This will add the entry to your calendar.: Oku kuyakongeza ukungena kwikhalenda yakho.
+Email all participants: Thumela i-imeyile bonke abathathi-nxaxheba
+Hide activity log: Fihla ilog yomsebenzi
+Show activity log: Bonisa ilog yomsebenzi
+Export this entry to: Rhweba ngaphandle olu ngeno
+Palm Pilot: Umqhubi wenqwelo moya wePalm
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Cofa kabini kwiseli engenanto ukongeza ungeno olutsha.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Ungeniso olutsha
+cont.: Qhubeka.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Ikhalenda yomnye uMsebenzisi
+Category Management: Icandelo loLawulo
+Day View: Ukujonga kwemini
+Edit Event: Hlela uMsitho
+Month View: Ukujonga iNyanga
+Common Trailer: Itreyila eqhelekileyo
+User Management: Ulawulo lomsebenzisi
+Manage Views: Lawula ukuJongwa
+Week View: Ukujonga iVeki
+Year View: Umbono Wonyaka
+Invalid function id: Ayisebenzi umsebenzi id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Ayinakufumana "useto.php" ifayile.
+Incomplete settings.php file...: Ifayile ye "settings.php" engaphelelanga ...
+Could not find XXX defined in...: Ayinakufumana "XXX" echazwe kwifayile yakho "yeesetingi.php".
+You must define XXX in: Kufuneka uchaze u- "XXX" kwifayile ye "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: EtiMnga
+Dec: Dis
+LANGUAGE DEFINED: ULWIMI Luchaziwe
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Impazamo yokuqhagamshela kwindawo yogcino lwedatha: "XXX".
+db_type not defined.: Uhlobo db_ aluchazwanga.
+invalid db_type XXX: Uhlobo olungasebenziyo db_ "" XXX ".
+Cache cleared from previous SQL!: Indawo efihlakeleyo yokugcina icinyiwe kwi-SQL yangaphambili!
+Error executing query.: Impazamo ekuphumezeni umbuzo.
+Unfortunately, XXX is not implemented for YYY: Ngelishwa, "XXX" ayimiselwanga i (YYY).
+Unknown ODBC error.: Impazamo engaziwayo ye-ODBC.
+Error opening cache dir XXX.: Imposiso xa kuvulwa i-cache dir "XXX".
+delete: cima
+Cache error Could not XXX file YYY.: Imposiso yendawo efihlakeleyo yokugcina: Ayikwazanga kuyenza ifayile ye-XXX "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Impazamo encinana
+Invalid data format for: Ifomathi yedatha engasebenziyo
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Impazamo: Uhlobo alusetwanga ilog yomsebenzi!
+This event is XXX.: Lo msitho ngu-XXX.
+Conf.: I-Conf.
+exceeds limit of XXX events per day: ungaphezulu komyinge weziganeko ezi-XXX ngosuku
+on: ivuliwe
+All Attendees: Bonke abezileyo
+Busy: Ndixakekile
+Tentative: Okwexeshana
+Schedule an appointment for XXX.: Cwangcisa idinga le-XXX: YYY.
+date_select: =
+Event approved: Umcimbi uvunyiwe
+Journal approved: Ijenali yamkelwe
+Task approved: Umsebenzi uvunyiwe
+Attachment: Isinamathiselo
+Event created: Kwenziwe umsitho
+Journal created: Ijenali yenziwe
+Task created: Umsebenzi wenziwe
+Event deleted: Umcimbi ususiwe
+Journal deleted: Ijenali icinyiwe
+Task deleted: Umsebenzi ucinyiwe
+New user via email (self registration): Umsebenzisi omtsha nge-imeyile (ukubhalisa ngokwakho)
+New user (self registration): Umsebenzisi omtsha (ubhaliso lwakho)
+Notification sent: Isaziso sithunyelwe
+Event rejected: Isiganeko sikhatyiwe
+Journal rejected: Ijenali yaliwe
+Task rejected: Umsebenzi wale
+Reminder sent: Isikhumbuzi sithunyelwe
+Event updated: Isiganeko sihlaziyiwe
+Journal updated: Ijenali ihlaziyiwe
+Task updated: Umsebenzi uhlaziyiwe
+Delete User: Cima uMsebenzisi
+WK: =
+TASKS: IMISEBENZI
+Task_Title: Isihloko
+Due: Ngenxa
+Task Name: Igama lomsebenzi
+Task Due Date: Umhla omiselwe ukuSebenza
+You have XXX unapproved entries: Unongeniso olungagunyaziswanga olu-XXX
+Changes successfully saved: Utshintsho lugcinwe ngempumelelo
+Event: Umsitho
+Action: Intshukumo
+Printer Friendly: Umshicileli ongumhlobo
+Generate printer-friendly version: Yenza uguqulelo olulungele umshicileli
+after: emva
+before: ngaphambili
+end: isiphelo
+start: qalisa
+View this event: Jonga lo msitho
+View this task: Jonga lo msebenzi
+January: EyoMqungu
+February: EyoMdumba
+March: EyoKwindla
+April: UTshazimpuzi
+May_: UCanzibe
+June: Isilimela
+July: EyeKhala
+August: EyeThupha
+September: EyoMsintsi
+October: EyeDwarha
+November: EyeNkanga
+Jan: NgoJan
+Feb: Februwari
+Mar: =
+Apr: Epreli
+May: UCanzibe
+Jun: Juni
+Jul: Julayi
+Aug: =
+Sep: =
+Oct: Oktobha
+Nov: NgoNovemba
+SU: =
+MO: =
+TU: =
+WE: =
+TH: UTH
+FR: =
+SA: =
+unknown-month: inyanga engaziwayo
+First Quarter Moon: Ikota yokuqala yeNyanga
+Full Moon: Inyanga ephelele
+Last Quarter Moon: Inyanga yekota yokugqibela
+New Moon: Inyanga entsha
+Error TIME_SLOTS undefined!: Impazamo: TIME_SLOTS undefined!
+The following error occurred: Impazamo elandelayo yenzekile
+You are not authorized.: Awugunyaziswanga.
+Add N hours to: Yongeza iiyure ezingama-N
+Subtract N hours from: Thabatha iiyure ezingama-N ukusuka
+same as: Iyafana ne
+server time: ixesha leseva
+Cannot read timezone file XXX.: Ayikwazi ukufunda ifayile yendawo: XXX.
+Your current GMT offset is XXX hours.: Okwangoku okusisiweyo se-GMT ziiyure ezili-XXX.
+Unauthorized: Ayigunyaziswanga
+Error approving event XXX.: Impazamo yokuvuma umsitho: XXX.
+Error deleting event XXX.: Impazamo ekususeni umsitho: XXX.
+Error rejecting event XXX.: Impazamo ukwala umsitho: XXX.
+Sunday: iCawe
+Monday: uMvulo
+Tuesday: uLwesibini
+Wednesday: uLwesithathu
+Thursday: uLwesine
+Friday: uLwesihlanu
+Saturday: uMgqibelo
+Sun: Ilanga
+Mon: =
+Tue: NgoLwesibini
+Wed: =
+Thu: =
+Fri: =
+Sat: Ngomhla
+unknown-weekday: evekini-engaziwayo
+Invalid referring URL: I-URL yokubhekisa ayisebenzi
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Isalathiso
+Documentation: Amaxwebhu
+Page: Iphepha
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Ikhalenda Yam
+Add New Entry: Yongeza ungeniso olutsha
+Add New Task: Yongeza umsebenzi omtsha
+Logout: Phuma
+Home: Ekhaya
+Back to My Calendar: Buyela kwikhalenda yam
+Go to: Yiya e
+Manage calendar of: Lawula ikhalenda ye
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: IsiKhangeli soLwimi asifunyenwanga
+(not supported): (ayixhaswanga)
+Abkhazian: Isi-Abkhazian
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: Isibhulu
+Ainu: Ewe
+Akan: =
+Akkadian: IsiAkkadia
+Albanian: =
+Aleut: I-Aleut
+Algonquian: =
+Altai (Southern): Altai (Emazantsi)
+Amharic: =
+Angika: UAngika
+Apache: =
+Arabic (Algeria): IsiArabic (Algeria)
+Arabic (Bahrain): IsiArabic (Bahrain)
+Arabic (Egypt): IsiArabic (Egypt)
+Arabic (Iraq): IsiArabic (Iraq)
+Arabic (Jordan): IsiArabic (Jordan)
+Arabic (Kuwait): IsiArabic (Kuwait)
+Arabic (Lebanon): IsiArabic (eLebhanon)
+Arabic (Libya): IsiArabic (Libya)
+Arabic (Morocco): IsiArabic (Morocco)
+Arabic (Oman): IsiArabic (Oman)
+Arabic (Qatar): IsiArabic (Qatar)
+Arabic (Saudi Arabia): IsiArabic (Saudi Arabia)
+Arabic (Syria): IsiArabic (eSyria)
+Arabic (Tunisia): IsiArabic (Tunisia)
+Arabic (U.A.E.): IsiArabic (U.A.E)
+Arabic (Yemen): IsiArabic (Yemen)
+Arabic: IsiArabhu
+Aragonese: IsiAragonese
+Aramaic: IsiAramiki
+Arapaho: IArapaho
+Arawak: =
+Armenian: =
+Assamese: Isi-Assamese
+Asturian: I-Asturian
+Athapascan: =
+Avaric: IsiAvaric
+Avestan: IAvestan
+Awadhi: =
+Aymara: =
+Azerbaijani: IsiAzerbaijani
+Balinese: IBalinese
+Baluchi: IBaluchi
+Bambara: =
+Bamileke: UBamileke
+Banda: =
+Basa: Umsebenzi
+Bashkir: Isibashkir
+Basque: =
+Beja: =
+Belarusian: IsiBhelarushiyen
+Bemba: =
+Bengali: =
+Bhojpuri: =
+Bihari: IsiBihari
+Bikol: =
+Bislama: IBislama
+Blackfoot: Mnyama
+Blin: =
+Bliss: Ukonwaba
+Bosnian: =
+Braj: IBraj
+Breton: IBreton
+Buginese: IsiBuginese
+Bulgarian: =
+Buriat: IBuriat
+Burmese: =
+Caddo: ICaddo
+Catalan: isiKhathalan
+Cebuano: =
+Chagatai: =
+Chamorro: IsiChamorro
+Chechen: =
+Cherokee: isiTshiroki
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): IsiTshayina (eHong Kong)
+Chinese (PRC): IsiTshayina (PRC)
+Chinese (Simplified/GB2312): IsiTshayina (Esenziwe lula / i-GB2312)
+Chinese (Singapore): IsiTshayina (eSingapore)
+Chinese (Taiwan): IsiTshayina (eTaiwan)
+Chinese (Traditional/Big5): IsiTshayina (Esiqhelekileyo / Esikhulu5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: IsiChuukese
+Chuvash: IsiChuvash
+Coptic: ICoptic
+Cornish: Ingqolowa
+Corsican: isiKhorsikhen
+Cree: =
+Creek: ICreek
+Croatian: =
+Czech: =
+Dakota: EDakota
+Danish: =
+Dargwa: UDargwa
+Delaware: =
+Dinka: IDinka
+Dogri: UDogri
+Dogrib: =
+Duala: UDuala
+Dutch (Belgium): IsiDatshi (eBelgium)
+Dutch: IsiDatshi
+Dyula: =
+Dzongkha: IsiDzongkha
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): IsiNgesi (Australia)
+English (Belize): IsiNgesi (eBelize)
+English (Canada): IsiNgesi (eCanada)
+English (Ireland): IsiNgesi (eIreland)
+English (Jamaica): IsiNgesi (eJamaica)
+English (New Zealand): IsiNgesi (eNew Zealand)
+English (Philippines): IsiNgesi (Philippines)
+English (South Africa): IsiNgesi (eMzantsi Afrika)
+English (Trinidad & Tobago): IsiNgesi (iTrinidad neTobago)
+English (United Kingdom): IsiNgesi (eUnited Kingdom)
+English (United States): IsiNgesi (saseMerika)
+English (Zimbabwe): IsiNgesi (eZimbabwe)
+English: IsiNgesi
+Erzya: =
+Esperanto: isiEsperanto
+Estonian: =
+Ewe: =
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: IsiFaroese
+Fijian: =
+Filipino: KwiiPhilippines
+Finnish: =
+Fon: Ifowuni
+French (Belgium): IsiFrentshi (eBelgium)
+French (Canada): IsiFrentshi (Canada)
+French (France): IsiFrentshi (eFrance)
+French (Luxembourg): IsiFrentshi (eLuxembourg)
+French (Monaco): IsiFrentshi (eMonaco)
+French (Switzerland): IsiFrentshi (eSwitzerland)
+French: IsiFrentshi
+Frisian (Eastern): IsiFrisian (eMpuma)
+Frisian (Northern): IsiFrisian (emantla)
+Frisian (Western): IsiFrisian (eNtshona)
+Frisian: IsiFrisian
+Friulian: Ummi waseFransi
+Fulah: UFulah
+Ga: =
+Galibi: UGalibi
+Galician: =
+Ganda: IGanda
+Gayo: UGayo
+Gbaya: =
+Geez: Umvuzo
+Georgian: =
+German (Austria): IsiJamani (Ostriya)
+German (Germany): IsiJamani (eJamani)
+German (Liechtenstein): IsiJamani (eLiechtenstein)
+German (Luxembourg): IsiJamani (eLuxembourg)
+German (Standard): IsiJamani (esiqhelekileyo)
+German (Switzerland): IsiJamani (eSwitzerland)
+German: IsiJamani
+Gilbertese: IsiGilbertese
+Gondi: UGondi
+Gorontalo: =
+Gothic: IsiGothic
+Grebo: =
+Greek: IsiGrike
+Greenlandic: IsiGrinlendik
+Guarani: IsiGuarani
+Gujarati: =
+Gwich&#39;in: Isonka & # 39; phakathi
+Haida: =
+Haitian (Creole): IsiKriyoli saseHayiti)
+Haitian: IsiHaiti
+Hausa: =
+Hawaiian: isiHawayi
+Hebrew: IsiHebhere
+Herero: IsiHerero
+Hiligaynon: IHiligaynon
+Hindi: =
+Hiri Motu: =
+Hittite: AmaHeti
+Hmong: =
+Holo (Taiwanese): Holo (Taiwan)
+Hungarian: =
+Hupa: =
+Iban: =
+Icelandic: Iceland
+Ido: Ndiyavuma
+Igbo: =
+Iloko: =
+Indonesian: =
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: =
+Irish (Gaelic): Isi-Irish (Gaelic)
+Irish: =
+Iroquoian: =
+Italian (Switzerland): IsiTaliyane (eSwitzerland)
+Italian: IsiTaliyani
+Japanese: IsiJaphani
+Javanese: =
+Judeo-Arabic: I-Judeo-Arabic
+Judeo-Persian: I-Judao-Persian
+Kabardian: isiKhabardiyani
+Kabyle: =
+Kachin: IKachin
+Kalaallisut: IKalaallisut
+Kalmyk: IKalmyk
+Kamba: UKamba
+Kannada: =
+Kanuri: =
+Kara-Kalpak: IKara-Kalpak
+Karachay-Balkar: IKarachay-Balkar
+Karelian: UKarelian
+Kashmiri: IKashmiri
+Kashubian: UKashubian
+Kawi: =
+Kazakh: isiKazakh
+Khasi: =
+Khmer (Central): Khmer (embindini)
+Khmer: =
+Khotanese: =
+Kikuyu: IsiKikuyu
+Kimbundu: =
+Kinyarwanda: IsiKinyarwanda
+Kirghiz: I-Kirghiz
+Klingon: IsiKlingon
+Komi: IKomi
+Kongo: IsiKongo
+Konkani: UKonkani
+Korean (Johab): IsiKorean (Johab)
+Korean (North): IsiKorea (Emantla)
+Korean (South): IsiKorea (eMzantsi)
+Korean: =
+Kosraean: IKosrae
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: isiKhudish
+Kutenai: =
+Kyrgyz: isiKyrgyz
+Ladino: ILadino
+Lahnda: =
+Lamba: =
+Lao: isiLawo
+Latin: isiLatini
+Latvian: =
+Lezghian: =
+Limburgan: ILimburgan
+Lingala: IsiLingala
+Lithuanian: isiLithuwaniya
+Lojban: ILojban
+Lozi: IsiLozi
+Luba-Katanga: ILuba-Katanga
+Luba-Lulua: =
+Luiseno: =
+Lunda: ULunda
+Luo: IsiLuo
+Lushai: =
+Luxembourghish: =
+Macedonian: Mecedonian
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: IsiMalagasy
+Malay: =
+Malayalam: =
+Maldivian: Maldiviya
+Maltese: =
+Manchu: IsiManchu
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: Imanx
+Maori: isiMawori
+Mapuche: IsiMapuche
+Marathi: =
+Mari: EMari
+Marshallese: IMarshallese
+Marwari: UMarwari
+Masai: IMasai
+Mayan: UMayan
+Mende: UMende
+Mi&#39;kmaq: Kmaq
+Minangkabau: IMinangkabau
+Mirandese: =
+Mohawk: UMohawk
+Moksha: UMoksha
+Moldavian: IsiMoldavia
+Mongo: IMongo
+Mongolian: isiMongoliya
+Montenegrin: IMontenegro
+Moroccan: EMorocco
+Mossi: UMossi
+Myanmar: Miyanimar
+Māori: IsiMawori
+N&#39;Ko: Akunjalo
+Nauru: Nawuru
+Navajo: IsiNavajo
+Ndebele (North): Ndebele (Emantla)
+Ndebele (South): IsiNdebele (South)
+Ndebele: =
+Ndonga: =
+Neapolitan: I-Neapolitan
+Nepali: =
+Nias: =
+Niuean: IsiNiuean
+Nogai: UNogai
+Norse: =
+Norwegian (Bokmål): Isi-Norwegian (Bokmål)
+Norwegian (Nynorsk): Isi-Norwegian (Nynorsk)
+Norwegian: =
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Isi-Occitan
+Odia: =
+Ojibwa: =
+Oriyia: IOriya
+Oromo: =
+Osage: Ukusetyenziswa
+Ossetic: IsiOssetic
+Pahlavi: =
+Palauan: IsiPalauan
+Pali: =
+Pampanga: =
+Pangasinan: IsiPangasinan
+Panjabi: IPanjabi
+Papiamento: IsiPapiamento
+Pashto: isiPhashto
+Pedi: IsiPedi
+Persian (Farsi): IsiPersian (Farsi)
+Persian (Iran): IsiPersian (Iran)
+Persian: =
+Phoenician: YaseFenike
+Pohnpeian: IPohnpeian
+Polish: =
+Portuguese: IsiPhuthukezi
+Portuguese/Brazil: IsiPhuthukezi / iBrazil
+Punjabi (India): IsiPunjabi (India)
+Punjabi (Pakistan): IsiPunjabi (Pakistan)
+Punjabi: isiPhunjabi
+Quechua: IsiQuechua
+Rajasthani: =
+Rapanui: IRapanui
+Rarotongan: URarotongan
+Rhaeto-Romanic: IsiRhaeto-Romanic
+Romanian: =
+Romansh: IsiRomansh
+Romany: IsiRomany
+Rundi: IRundi
+Russian (Moldavia: IsiRashiya (iMoldavia
+Russian (Republic of Moldova): IsiRussian (kwiRiphabhlikhi yaseMoldova)
+Russian: IsiRashiya
+Sami (Inari): IsiSami (Inari)
+Sami (Lappish): Isami (Lappish)
+Sami (Lule): Isami (Lule)
+Sami (Northern): ISami (emantla)
+Sami (Skolt): Isami (Skolt)
+Sami (Southern): IsiSami (emazantsi)
+Sami: isiSami
+Samoan: IsiSamoa
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: isiSanskrit
+Santali: ISantali
+Sardinian: =
+Sasak: =
+Scots (Gaelic): IScots (isiGaelic)
+Selkup: Ukuhanjiswa
+Serbian (Upper): IsiSerbia (Phezulu)
+Serbian: isiSebhiya
+Serer: =
+Sesotho: IsiSuthu
+Shan: =
+Shona: IsiShona
+Sichuan Yi: ISichuan Yi
+Sicilian: Sisicili
+Sindhi: =
+Sinhala: =
+Slavic: ISlavic
+Slovak: =
+Slovenian: =
+Sogdian: =
+Somali: isiSomali
+Somani: =
+Songhai: USonghai
+Soninke: =
+Sorbian (Lower): IsiSorbian (Ezantsi)
+Sorbian (Upper): IsiSorbian (Phezulu)
+Sorbian: IsiSorbian
+Sotho: IsiSotho
+Spanish (Argentina): IsiSpanish (eArgentina)
+Spanish (Bolivia): IsiSpanish (eBolivia)
+Spanish (Chile): IsiSpanish (eChile)
+Spanish (Colombia): IsiSpanish (eColombia)
+Spanish (Costa Rica): IsiSpanish (eCosta Rica)
+Spanish (Dominican Republic): IsiSpanish (kwiRiphabhlikhi yaseDominican)
+Spanish (Ecuador): IsiSpanish (e-Ecuador)
+Spanish (El Salvador): IsiSpanish (e-El Salvador)
+Spanish (Guatemala): IsiSpanish (eGuatemala)
+Spanish (Honduras): IsiSpanish (Honduras)
+Spanish (Mexico): IsiSpanish (eMexico)
+Spanish (Nicaragua): IsiSpanish (eNicaragua)
+Spanish (Panama): IsiSpanish (ePanama)
+Spanish (Paraguay): IsiSpanish (eParaguay)
+Spanish (Peru): IsiSpanish (ePeru)
+Spanish (Puerto Rico): IsiSpanish (ePuerto Rico)
+Spanish (Spain): IsiSpanish (eSpain)
+Spanish (Uruguay): IsiSpanish (eUruguay)
+Spanish (Venezuela): IsiSpanish (eVenezuela)
+Spanish: =
+Sranan Tongo: ISranan Tongo
+Sukuma: =
+Sumerian: IsiSumeriya
+Sundanese: IsiSundanese
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): IsiSwedish (eFinland)
+Swedish (Sweden): IsiSwedish (eSweden)
+Swedish: =
+Syriac: isiSiriya
+Tagalog: Tagolog
+Tahitian: IsiTahiti
+Tai: =
+Taiwan: ETaiwan
+Tajik: IsiTajik
+Tamashek: UTamashek
+Tamil: =
+Tatar: IsiTatar
+Telugu: =
+Tereno: =
+Tetum: ITetum
+Thai: IsiThai
+Tibetan: =
+Tigre: IHigre
+Tigrinya: IsiTigrinya
+Timne: UTimne
+Tlingit: Ukulinganisa
+Tok Pisin: IsiTok Pisin
+Tokelau: Tokelawu
+Tonga (Nytmhasa): IsiTonga (Nytmhasa)
+Tonga (Tonga Islands): IsiTonga (Tonga Islands)
+Tonga: Thonga
+Tsimshian: =
+Tsonga: IsiTsonga
+Tswana: IsiTswana
+Tumbuka: =
+Turkish: IsiTurkish
+Turkmen: isiTurkmen
+Tuvinian: IsiTuvinian
+Twi: IsiTwi
+Udmurt: =
+Ugaritic: IsiUgarit
+Ukrainian: IsiUkraine
+Umbundu: =
+Urdu: IsiUrdu
+Uyghur: isiUyghur
+Uzbek: IsiUzbek
+Vai: UVai
+Venda: IsiVenda
+Vietnamese: IsiVietnamese
+Volapük: IVolapük
+Votic: =
+Wakashan: =
+Walloon: =
+Waray: IWaray
+Washo: =
+Welsh: =
+Wolaitta: =
+Wolof: isiWolof
+Xhosa: isiXhosa
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: IsiYiddish
+Yorùbá: =
+Yupik: =
+Zande: UZande
+Zapotec: =
+Zaza: UZaza
+Zenaga: IZenaga
+Zhuang: =
+Zulu: IsiZulu
+Browser-defined: I-Browser-defined
+event: isiganeko
+journal: Ijenali
+0: 0                                                  
+1: 1                                                  
+2: 2                                                  
+3: 3                                                  
+4: 4                                                  
+5: 5                                                  
+6: 6                                                  
+7: 7                                                  
+8: 8                                                  
+9: 9                                                  
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Ukungena ngemvume akuvumelekanga
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: iphasiwedi engalunganga
+no such user: akukho msebenzisi onjalo
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Akhawunti ikhubaziwe
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Ikhefu
+Months: Iinyanga
+Month Days: Iintsuku zeNyanga
+Days: Iintsuku
+Weeks: Iiveki
+Position: Indawo
+Until: Kude kube
+Count: Bala
+Inclusion Dates: Imihla yokubandakanya
+Exclusion Dates: Imihla yokuKhutshwa
+Event Imported: Umnyhadala ungenisiwe
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: ii-byte
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Isaziso
+authenticate: Imposiso yeSMTP: Ayinakuqinisekisa
+connect_host: Impazamo ye-SMTP: Ayinakudibanisa kumamkeli weSMTP:
+data_not_accepted: Impazamo ye-SMTP: Idatha ayamkelwanga
+encoding: Ukwenza ikhowudi engaziwayo:
+execute: Ayinakuphumeza:
+file_access: Ayinakufikelela kwifayile:
+file_open: Impazamo yeFayile ayikwazanga ukuvula ifayile:
+from_failed: Oku kulandelayo kwidilesi akuphumelelanga:
+instantiate: Ayinakuqinisekisa umsebenzi wemeyile
+mailer_not_supported: iposi ayixhaswanga
+provide_address: Kuya kufuneka unikezele ngedilesi enye ye-imeyile.
+recipients_failed: Imposiso ye-SMTP: Abamkeli balandelayo abakwazanga:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Ngenisa abalinganiswa abonwe kwimizobo
+Enter the correct letters and numbers...: Faka iileta ezichanekileyo kunye neenombolo ezivela kumfanekiso kwibhokisi yokubhaliweyo. Olu vavanyo lincinci lisebenza njengothintelo lofikelelo ngokuchasene ne-bots ezinobungozi. Phinda ulayishe iphepha kwakhona ukuba le graphic inzima kakhulu ukuyifunda
+Challenge/Response: Umngeni / Ukuphendula
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Guqula umhla kunye nexesha lolu ngeniso?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Awuyingenisanga Inkcazo emfutshane
+time prior to work hours...: ixesha ngaphambi kweeyure zomsebenzi ...
+Invalid Event Date: Umhla Womsitho Ongasebenziyo
+Please add a participant: Nceda wongeze umthathi-nxaxheba 
+Invalid Date: Ayisebenzi
+You have not entered a valid time of day: Awungenisanga ixesha losuku. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: I-ID yeKhalenda ayinakubhalwa. 
+First and last names cannot both be blank.: Amagama okuqala kunye neefani azinakuba zombini zingenanto. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Umbala ongasebenziyo
+Color format should be RRGGBB.: Ifomathi yombala kufuneka ibe yi #RRGGBB. 
+URL cannot be blank.: I-URL ayinakubhalwa.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Uhlobo lwefayile aluhambelani nefomathi yokungenisa 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Akunguwo umbala wendawo yangasemva.
+Invalid color for document title.: Umbala ongasebenziyo wesihloko sexwebhu.
+Invalid color for table cell background.: Akunguwo umbala wendawo yangasemva kweseli yetafile.
+Invalid color for table cell background for today.: Umbala ongalunganga wemvelaphi yeseli yetafile yanamhlanje.
+Invalid work hours.: Iiyure zomsebenzi ezingasebenziyo
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: I-URL yeseva kufuneka iphele ngeslash (/).
+Invalid color for table grid.: Umbala ongasebenziyo kwigridi yetafile.
+Invalid color for event popup background.: Akunguwo umbala wesiganeko esivelelayo.
+Invalid color for event popup text.: Akunguwo umbala wombhalo ovelelayo.
+Invalid color for table header text.: Umbala ongasasebenziyo wombhalo wesihloko setafile.
+Invalid color for table header background.: Umbala ongasasebenziyo wesihloko setheyibhile.
+Server URL is required.: I-URL yomncedisi iyafuneka.
+Invalid Color: Umbala ongasebenziyo
+Database Name: Igama ledatha
+Full Path (no backslashes): Indlela epheleleyo (akukho kubuyela umva) 
+The password contains illegal characters.: Igama lokugqithisa linamagama angekho mthethweni.
+Error you must specify a Single-User Login: Impazamo: Kuya kufuneka uchaze ukungena ngemvume koMsebenzisi omnye
+Could not find XXX.: Ayikwazanga kufumana i-XXX.
+Could not find XXX in DOM.: Ayikwazanga kufumana i-XXX kwi-DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Kule veki
+This Month: Kule nyanga
+This Year: Kulo nyaka
+Exit: Phuma
+Add New Event: Yongeza umsitho omtsha
+Delete Entries: Cima amangeniso
+My Views: Izimvo zam
+Manage Calendar of: Lawula iKhalenda ye
+My Reports: Iingxelo zam
+My Profile: Iprofayile yam
+Public Calendar: Ikhalenda kaRhulumente
+Unapproved Events: Iziganeko ezingavunyelwanga
+User Manager: Umlawuli womsebenzisi
+Help Contents: Iziqulatho zoNcedo
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Ugcino lwedatha
+Create New: Yenza eNtsha
+Failure Reason: Isizathu sokusilela:
+You must manually create database: Kuya kufuneka wenze ngesandla isiseko sedatha.
+Single-User: Umsebenzisi omnye
+Test Settings: Izicwangciso zovavanyo
+Timezone Conversion Successful: Ukuguqulwa Kwendawo Ekuyo Kuyimpumelelo
+WebCalendar Installation Wizard Step XXX: IWebhu yoFakelo lweWebhu yeWebhu Inyathelo XXX
+Password Accepted: Igama lokugqithisa lamkelwe
+Successful Login: Ukungena ngempumelelo
+Password Incorrect: Iphasiwedi ayichanekanga
+Invalid Login: Ukungena okungasebenziyo
+Display Errors: Bonisa iimpazamo
+File Uploads: Ukulayishwa kweFayile
+Allow URL fopen: Vumela i-URL fopen (ifuneka kuphela ukuba kusetyenziswa iikhalenda ezikude)
+Safe Mode: Uhlobo olukhuselekile
+Safe Mode Allowed Vars: Imo ekhuselekileyo iVars Vars (TZ ifuneka kuphela ukuba indlela ekhuselekileyo ivuliwe)
+GD: I-GD (iyafuneka kwimvelaphi yemifanekiso emileyo)
+Passwords do not match!: Amagama agqithisiweyo awahambelani!
+Unable to write password to settings.php file: Ayikwazi ukubhala igama eligqithisiweyo kwifayile "settings.php".
+Password Updated: Iphasiwedi ihlaziyiwe
+Password has been set: Igama lokugqithisa lisetelwe.
+Connection Successful...: Uqhagamshelo Luyimpumelelo  Nceda uye kwiphepha elilandelayo ukuqhubeka nokuhlohla.
+Correct your entries or click the Create New...: Lungisa amangeniso akho okanye ucofe i  Yenza eNtsha  iqhosha ukuze uqhubeke nokufaka.
+Correct your entries and try again.: Lungisa amangeniso akho uzame kwakhona.
+XXX does not exist: I-XXX ayikho
+XXX is not writable: I-XXX ayibhaleki
+Error Converting Timezone: Impazamo Ukuguqula Indawo
+Error Unable to write to file XXX.: Impazamo ayikwazi ukubhala kwifayile yeXX.
+Please change the file permissions of this file.: Nceda utshintshe iimvume zefayile yale fayile.
+Please change includes dir permission: Nceda utshintshe iimvume zefayile yakho "ibandakanya" isikhombisi ukuvumela ukubhala kwabanye abasebenzisi.
+Your settings have been saved.: Useto lwakho lugciniwe.
+OFF: CIMA
+ON: VULA
+WebCalendar Setup Wizard: Ukuseta iWizadi yeKhalenda yeWebhu
+This installation wizard will guide you...: Olu fakelo lwewizard luya kukukhokela ngokumisela isiseko sokufakwa kweKhalenda yeWebhu.<br>Uncedo kunye nokusombulula ingxaki jonga:
+System Administrators Guide: Isikhokelo soMlawuli weNkqubo
+Frequently Asked Questions: Imibuzo ebuzwa qho
+FAQ: =
+Troubleshooting: Ukulungisa ingxaki
+Getting Help: Ukufumana Uncedo
+Upgrading Guide: Ukuphucula Isikhokelo
+User Supported Wiki: I-Wiki exhaswa ngumsebenzisi
+PHP Version Check: Uhlobo lwenguqulo ye-PHP
+Check to see if PHP 7.1.0 or greater is installed.: Jonga ukuze ubone ukuba ngaba i-PHP 7.1.0 okanye ngaphezulu ifakiwe.
+PHP version: Inguqulelo ye-PHP
+PHP Settings: Izicwangciso ze-PHP
+Detailed PHP Info: Ulwazi olunenkcukacha lwe-PHP
+settings.php Status: msgstr "Isimo
+Session Check: Ukujonga iseshoni
+To test the proper operation of sessions...: Ukuvavanya ukusebenza ngokufanelekileyo kweeseshoni, layisha kwakhona eli phepha. Kuya kufuneka ubone ixesha lokunyuka kwekhawuntingi.
+SESSION COUNTER: IKHANSELA YESESHONI
+The file permissions of settings.php are set...: Imvume yefayile ye "settings.php" icwangcisiwe ukuze isifakeli singabinayo imvume yokuyiguqula. Nceda utshintshe iimvume zefayile elandelayo ukuze uqhubeke
+The file permissions of the includes directory are set...: Imvume yolawulo "includes" icwangcisiwe ukuze isifakeli singabinayo imvume yokwenza ifayile entsha. Nceda utshintshe iimvume zecandelo elilandelayo ukuze uqhubeke
+Your settings.php file appears to be valid.: Ifayile yakho "yeesetingi.php" ibonakala isebenza.
+Configuration Wizard Password: Uqwalaselo lwegama eligqithisiweyo leWizard
+Create Settings File Password: Yenza Useto lweFayile yePhasiwedi
+db setup directions...: Kweli candelo uza kuseta kwaye uvavanye unxibelelwano kwiseva yakho yedatha. Ulwazi lweakhawunti olunikiweyo kufuneka lube neemvume eziFANELEYO zokwenza ugcino lwedatha, iitafile kunye nabasebenzisi. Ukuba oku akunakwenzeka, okanye ukufikelela kwakho kugcino lwedatha, kuya kufuneka ukuba uqwalasele ngokwakho indawo yogcino lwedatha.
+Database Status: Imeko yedatha
+Supported databases for your PHP installation: Iinkcukacha zolwazi ezixhasiweyo kufakelo lwakho lwe-PHP
+Your current database settings are able to access the database.: Izicwangciso zakho zangoku zedatha ziyakwazi ukufikelela kwiziko ledatha.
+Please Test Settings: Nceda Uvavanye useto
+Your current database settings are not able...: Izicwangciso zakho zangoku zedatha azikwazi ukufikelela kwiziko ledatha okanye azikavavanywa.
+Database Settings: Useto lweDatabase
+Database Type: Uhlobo lweDatabase
+Server: Umncedisi
+Connection Persistence: Ukuqhubeka koQhagamshelo
+All your database tables appear to be up...: Zonke iitafile zakho zedatha zibonakala zihlaziyiwe. Ungaqhubeka kwiphepha elilandelayo kwaye ugqibezele ukuseta iKhalenda yeWebhu.
+This appears to be a new installation...: Oku kubonakala ngathi kukufakwa ngokutsha. Ukuba oku akulunganga, nceda ubuyele kwiphepha elidlulileyo kwaye ulungise useto lwakho.
+This appears to be an upgrade...: Oku kubonakala ngathi kukuphuculwa kwinguqulelo&nbsp;XXX&nbsp;ukuya kwi&nbsp;YYY.
+The database requires some data input...: Isiseko sedatha sifuna ukungeniswa kwedatha Cofa uHlaziyo loVimba ukugqibezela uhlaziyo.
+In this section we will perform...: Kule candelo siza kwenza utshintsho ukuzisa i-database yakho kwinqanaba elifunekayo. Ukuba usebenzisa isiseko sedatha esixhaswe ngokupheleleyo, eli nyathelo liya kwenziwa ngokuzenzekelayo kuwe. Ukuba akukhange kubenjalo, i-SQL efunekayo inokuboniswa kwaye kuya kufuneka usike kwaye uyincamathisele kwisicelo sedatha yemibuzo eserver.
+No database actions are required.: Akukho zenzo zesiseko sedatha ziyafuneka.
+The following database actions are required: Ezi nyathelo zedatha zilandelayo ziyafuneka
+ODBC Underlying Database: Indawo yogcino lwedatha esezantsi ye-ODBC:
+Automatic installation not supported: Ukufakwa okuzenzekelayo akuphunyezwanga ngokupheleleyo kuhlobo lwedatha yakho. Kuya kufuneka wenze ngesandla iitafile ezifunekayo usebenzisa i-SQL ebonelelweyo. Nceda ucofe i  bonisa i-SQL  ukuze uqhubeke. Sika kwaye Cola kwindawo yakho yokugcina ulwazi.
+This may take several minutes to complete: Oku kungathatha imizuzu eliqela ukuyigqiba.
+Install Database: Faka indawo yogcino lwedatha
+Update Database: Uhlaziyo lweDatabase
+Display Required SQL: Bonisa iSQL efunekayo
+Return to previous page after processing SQL.: Emva kokuqhubekeka ngesandla ngale SQL, kuyakufuneka ubuyele kwiphepha elidlulileyo kwaye uphinde uzame kwakhona isiseko sedatha ukuze iskripthi sikwazi ukubona utshintsho.
+This is the final step in setting up your WebCalendar Installation.: Eli linyathelo lokugqibela lokuseta ukuFakwa kweKhalenda yeWebhu.
+Timezone Conversion: Uguquko lwexesha
+It appears that you have NOT converted...: Kubonakala ngathi AUKAYIGUQUMBI idata yakho yomsitho weKhalenda yeWebhu kwiGMT. Ukuba unayo, ungasityeshela esi saziso kwaye ungaqhubeki notshintsho. Ukuba oku kufakelo olutsha, unokusihoya esi saziso.
+Convert Data to GMT: Guqula idatha ibe yi-GMT
+Application Settings: Useto lwesicelo
+HTTP-based authentication was not detected...: Ukuqinisekiswa okusekwe kwi-HTTP akufumanekanga. Uzakufuna ukumisela kwakhona iseva yewebhu ukuba unqwenela ukukhetha 'iServer yeWebhu' kukhetho lokuQinisekiswa koMsebenzisi 'ngezantsi.
+HTTP-based authentication was detected...: Ukuqinisekiswa okusekwe kwi-HTTP kufunyenwe. Ukuqinisekiswa komsebenzisi kuyaphathwa yiseva yakho yewebhu. Kuya kufuneka ukhethe 'iServer yeWebhu' kuluhlu 'lokuQinisekiswa koMsebenzisi' ukhetho olungezantsi.
+Create Default Admin Account: Yenza iAkhawunti yoLawulo oluNgagqibekanga
+(Admin Account Not Found): (Akhawunti Yolawulo Ayifumanekanga)
+User Authentication: Ukuqinisekiswa komsebenzisi
+Web-based via WebCalendar (default): Iwebhu-esekwe ngeKhalenda yeWebhu (emiselweyo)
+Web Server (not detected): Umncedisi weWebhu (akafumaneki)
+Web Server (detected): Iseva yeWebhu (ifunyenwe)
+None (Single-User): Akukho namnye (uMsebenzisi omnye)
+Read-Only: Funda uqhubeleke
+Environment: Indalo esingqongileyo
+Production: Imveliso
+Development: Uphuhliso
+Save Settings: Gcina izicwangciso
+Launch WebCalendar: Qalisa iKhalenda yeWebhu
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Impazamo ekuhlaziyweni kwetafile "XXX": YYY.
+Conversion Successful: Uguquko luphumelele 
+Perl script required: Uhlobo lwakho lwangaphambili lweKhalenda yeWebhu ifuna ukuqhuba iskripthi se-PERL ukuguqula idatha yakho. Nceda usebenze / izixhobo / uhlaziye_to_0.9.7.pl uze ubuyele kweli phepha ukuze uqhubeke.
+previous version requires updating several tables: Uhlobo lwakho lwangaphambili lweKhalenda yeWebhu ifuna uhlaziyo lweetafile zedatha ezininzi.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: AKUKHO PHAMBILI EFUMANEKAYO
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Impazamo yokuqhagamshela kwindawo yogcino lwedatha
+Include Path: Faka iPath
+Deleting events for: Ukucima imicimbi ye
+Importing events for: Ukungenisa iminyhadala ye
+No data returned from: Akukho datha ibuyisiweyo ivela
+for non-user calendar: kwikhalenda engengomsebenzisi
+No Remote Calendars found: Akukho Khalenda ikude efumanekileyo
+Remote Calendars not enabled: Iikhalenda ezikude azenziwanga
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: Ayifumaneki kwi-id yomnyhadala
+could not find event id XXX in database.: Ayifumaneki kwi-id yomsitho kwindawo yogcino lwedatha.
+task: umsebenzi
+This is a reminder for the XXX detailed below.: Esi sisikhumbuzo seXX esineenkcukacha ezingezantsi.
+Pecentage Complete: Ipesenti epheleleyo
+Reminder: Isikhumbuzo
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Intshukumo engaxhaswanga: XXX.
+No event id specified.: Akukho id yesiganeko ichaziweyo.
+Not authorized (not admin).: Ayigunyaziswanga (hayi admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Ukujonga imicimbi ye-XXX ukusuka kumhla we-YYY ukuya kumhla we-ZZZ.
+Found XXX events in time range.: Kufunyenwe imicimbi ye-XXX kuluhlu lwexesha.
+Event id=XXX YYY at ZZZ on AAA.: I-id yomsitho = XXX "YYY" kwiZZZ kwiAAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Ukuvumela umsebenzisi weXX ukujonga ikhalenda yomnye umsebenzisi.
+Error Email reminders disabled for user XXX.: Impazamo: Izikhumbuzi ze-imeyile zikhubazelwe umsebenzisi "XXX".
+Number of site_extras XXX.: Inani lendawo_zokuvela: XXX.
+Reminder set for event.: Isikhumbuzo sisetelwe umcimbi.
+Mins Before XXX.: Imizuzu ngaphambili: XXX.
+Event time is XXX.: Ixesha lomnyhadala ngu: XXX.
+Remind time is XXX.: Ukukhumbuza ixesha ngu: XXX.
+Reminders for user XXX, login YYY.: Izikhumbuzi zomsebenzisi "XXX", ngena "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Ukungamkelwa komsebenzisi "XXX".
+Event id=XXX YYY already sent.: Isiganeko id = XXX "YYY" sele ithunyelwe.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Akukho ukungena ngemvume okufunekayo kwimodi yomsebenzisi omnye.
+No login required for HTTP authentication.: Akukho lungelo lifunekayo lokungqinisisa i-HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Abasebenzi abangalunganga xa bengena.
+Username XXX does not exist.: Igama lomsebenzisi "XXX" alikho
+You cannot remove admin rights from yourself!: Awunakho ukususa amalungelo olawulo kuwe!
+Unknown error saving user: Impazamo engaziwayo yokugcina umsebenzisi.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Abekho abathathi-nxaxheba abafunyenwe kwi-id yomsitho: XXX.
+Db error Could not find event id XXX.: Impazamo ye-Db: Ayifumanekanga i-id yomsitho XXX. 
+Error Could not find event id XXX in database.: Impazamo: Ayifumaneki kwi-id yomsitho kwindawo yogcino lwedatha. 

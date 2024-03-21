@@ -1,0 +1,2387 @@
+# Sindhi sd
+#
+# فارميٽ هڪ اختياري ھيڊر تي مشتمل آھي:
+#
+# ترجمو ڪيل: توهان جو نالو ۽ اي ميل
+# آخري تازه ڪاري: ترجمي جي تاريخ
+# (معروف "#" سميت ۽ اڳين مترجمن جي طرفان ڪيل رايا.
+# پهرين لڪير ـ هيڊ ڌاڙيلن کي ختم ڪري ٿي.)
+#
+# ضرورت کان وڌيڪ پيروي ڪيل:
+#
+# انگريزي جملو: ترجمو
+# (هڪ لائين تي. معروف "#" جي بغير.
+# "انگريزي جملو:" ، بشمول ڪولون ":" ، طرفان مهيا ڪيل آهي
+# ويب ڪئلينڊر ڊولپرز. توھان جو حصو ”ترجمو“ آھي.)
+#
+# توهان جي مدد لاءِ ٽولز ڊاريڪٽري ٻن پرل اسڪرپٽ تي مشتمل آهي:
+# - check.translation.pl
+# ظاهر ڪري ٿو ته ڇا سموري متن ڪاميابي سان ترجمو ڪيو ويو آهي.
+# - update_translation.pl
+# ترجمي لاءِ پروگرام فائلن کي پارسل ڪندو ('جملي') ۽
+# ٽول ٽپ ('جملو'). اهو صفحي جي مطابق جملن کي ترتيب ڏيندو
+# (فائيل) جيڪا پهرين واقعيت تي مشتمل آهي. اختيارن سان ، اهو ٽيگ ڪري سگهي ٿو
+# جملا جيڪي اڃان تائين ترجمو نٿا ڪري رکيا وڃن
+#  << MISSING >>
+# جملي جي مٿان ليڪ تي. ۽ ، جيڪڏهن جملو هڪ مخفف آهي ،
+# اهو جملي جي هيٺ ڏنل لڪير تي مڪمل انگريزي متن شامل ڪندو.
+#
+# نوٽ: مان مجموعي فائل جي سائيز کي گهٽائڻ جي ڪوشش ڪري رهيو آهيان. جيڪڏھن ”ترجمو“
+# لفظ / جملو توهان جي ٻولي ۽ انگريزي ۾ هڪجهڙائي آهي ، صرف "=" نشاني استعمال ڪريو.
+#
+# نوٽ: توهان لاءِ داخلا جو اطلاع ڏيندا "May_" هيٺيان. انهي جو هڪ سبب آهي.
+# ترجمو "May_" پوري مهيني جو نالو ۽ "May" ڏانهن،
+# عام طور تي ٽي اکر ، مهيني مخفف (“آڪٽوبر” لاءِ “آڪٽوبر” لاءِ).
+#
+# مون ان لاءِ گوگل ترجمو استعمال ڪيو.
+# اهو ڪافي هجڻ گهرجي جيستائين هڪ اصلي ڌر ان جي تصديق نه ڪري سگهي.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: rtl
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: ويب ڪئلينڊر
+version XXX: نسخو ايڪس اينڪس
+WebCalendar is a PHP application used...: ويب ڪئلينڊر هڪ پي ايڇ پي ايپليڪيشن آهي جيڪا هڪ صارف جي لاءِ ڪئلينڊر برقرار رکڻ لاءِ يا صارفن جي انٽرنيٽ / انٽرنيٽ جي گروهه هوندي آهي. اهو پڻ هڪ واقعي جي ڪئلينڊر جي طور تي ترتيب ڏئي سگهجي ٿو.
+Credits: ڪريڊٽ
+About: جي باري
+OK: ٺيڪ آهي
+
+########################################
+# Page: access.php
+#
+Database error XXX.: ڊيٽابيس جي غلطي: ايڪس اينڪس.
+DEFAULT CONFIGURATION: مڪمل جوڙجڪ
+Go: وڃ
+Save: محفوظ ڪريو
+Undo: ڪٽيو
+Public Access: عوامي پھچ
+Admin: ايڊمن
+User Access Control: استعمال ڪندڙن جي رسائي جو ڪنٽرول
+Allow Access to Other Users Calendar: ٻين استعمال ڪندڙن جي ڪئلينڊر تائين رسائي جي اجازت ڏيو
+Grant This User Access to My Calendar: هن ڪئلينڊر تائين استعمال ڪندڙ کي رسائي ڏيو
+Type: قسم
+Calendar: ڪئلينڊر
+View Event: واقعو ڏسو
+View: ڏسو
+Edit: تبديلي آڻيو
+Approve/Reject: منظور ڪريو / رد ڪريو
+Events: تقريبون
+Tasks: ڪم
+Journals: جرائد
+Can Invite: دعوت ڏئي سگھي ٿو
+Can Email: ايميل ڪري سگهان ٿو
+Can See Time Only: رڳو وقت ڏسي سگھي ٿو
+Assistant: اسسٽنٽ
+Select All: سڀ چونڊيو
+Clear All: سڀ صاف ڪريو
+Public: عوامي
+Confidential: سنجيده
+Private: نجي
+
+########################################
+# Page: activity_log.php
+#
+Next: اڳتي
+Previous: اڳوڻو
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: واقعي جي ايڪسينڪس اڳ ئي توهان جي ڪئلينڊر تي آهي.
+Invalid entry id XXX.: داخلا جو غلط شناخت: "XXX".
+a XXX event may not be added to your calendar: هي ھڪڙو ايڪس اينڪس ايونٽ آھي ۽ ٿي سگھي ٿو توھان کي توھان جي ڪئلينڊر ۾ شامل نه ٿيو آھي.
+confidential: رازداري
+private: نجي
+Error adding event XXX.: واقعي شامل ڪرڻ ۾ غلطي: ايڪس اينڪس.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: سيٽنگ جو نالو ”ايڪس اين ايڪس“ غلط آهي.
+Select: چونڊيو
+Day: ڏينهن
+Week: هفتو
+Month: مهينو
+Year: سال
+Bottom: هيٺيون
+Top: مٿي
+Anyone: ڪو به آهي
+Participant: حصو وٺندڙ
+Settings: جوڙ
+Groups: ميڙَ
+NonUser Calendars: غير استعمال ڪندڙن جو ڪئلينڊر
+Other: ٻيا
+Email: ايميل
+Colors: رنگَ
+Document background: دستاويزي پس منظر
+Document title: دستاويز جو عنوان
+Document text: دستاويزي متن
+My event text: منهنجي واقعي جو متن
+Table grid color: ٽيبل گرڊ جو رنگ
+Table header background: ٽيبل جو هيڊر پس منظر
+Table header text: ٽيبل جو هيڊر وارو متن
+Table cell background: ٽيبل سيل جو پس منظر
+Table cell background for current day: ا dayڪلھ لاءِ ٽيبل سيل پس منظر
+Table cell background for days with events: واقعن سان گڏ ڏينهن لاءِ ٽيبل جي سيل پس منظر
+Table cell background for weekends: هفتي جي آخر ۾ ٽيبل سيل پس منظر
+Table cell background for other month: ٽيبل خان جو پس منظر ٻين مهينن لاءِ
+Week number color: هفتو نمبر رنگ
+Event popup background: واقعي جو پاپ اپ پس منظر
+Event popup text: واقعي جو پاپ اپ متن
+System Settings: سسٽم سيٽنگون
+Help: مدد ڪريو
+System options: سسٽم جا اختيار
+app-name-help: ايپليڪيشن جو نالو بيان ڪري ٿو جيڪو برائوزر جي عنوان بار ۾ سڀني صفحن ۽ لاگ ان پيج تي ظاهر ٿيندو. توهان هتي بيان ڪيل قيمت ترجمي جي فائل ۾ نظر اچي ٿي توهان کي مختلف ٻولين لاءِ مختلف عنوان فراهم ڪرڻ جي اجازت ڏي ٿي.
+Application Name: درخواست جو نالو
+Translated Name (XXX): ترجمو ٿيل نالو
+server-url-help: درخواست لاءِ بنيادي URL جو تعين ڪندو آهي. اهو اي ميل ياد ڏياريندڙ ۽ اطلاع موڪلڻ دوران شامل ڪيو ويندو.
+Server URL: سرور جو يو آر ايل
+home-url-help: اپليڪيشن لاءِ گهر جي يو آر ايل جي وضاحت ڪئي وئي آهي. اھو ھڪڙو مطلق يا تعلق رکندڙ ٿي سگھي ٿو
+Home URL: هوم يو آر ايل
+language-help: وضاحت ڪري ٿي ته ڪهڙي ٻولي استعمال ڪجي.
+Language: ٻولي
+Your browser default language is XXX.: توھان جي برائوزر جي ڊفالٽ ٻولي ”XXX“ آھي.
+Allow user to use themes: صارف کي موضوع استعمال ڪرڻ جي اجازت ڏيو
+themes-help: تشڪيل جي سيٽنگن جي وڏي تعداد کي اجازت ڏئي ٿو. نن caseي صورت جي ليبل صرف صارف جي ترجيح آھن.
+Themes: ٽيڪَ
+AVAILABLE THEMES: دستياب ڪتاب
+None: ڪوبه به نه
+Preview: پريويو
+Site customization: سائيٽ جي حسب ضرورت
+custom-script-help: ڪسٽم جاوا اسڪرپٽ يا اسٽائل شيٽ متن کي داخل ڪرڻ جي اجازت ڏي ٿو جيڪا هر صفحي جي HTML "هيڊ" سيڪشن ۾ داخل ٿي ويندي.
+Custom script/stylesheet: مرضي مطابق اسڪرپٽ / اسٽائل شيٽ
+custom-header-help: هر پيج جي مٿئين حصي ۾ ڪسٽم HTML ٽڪڙا شامل ٿيڻ جي اجازت ڏيندو آهي.
+Custom header: ڪسٽم هيڊر
+custom-trailer-help: هر پيج جي آخر ۾ ڪسٽم HTML ٽڪڙا شامل ٿيڻ جي اجازت ڏيندو آهي.
+Custom trailer: ڪسٽم ٽرالر
+enable-external-header-help: ڪسٽم ٽريلر کي خارجي فائل کان لوڊ ڪرڻ جي اجازت ڏئي ٿو
+Allow external file for header/script/trailer: هيڊر / اسڪرپٽ / ٽريلر لاءِ خارجي فائل جي اجازت ڏيو
+Allow user to override header/trailer: صارف کي هيڊر / ٽريلر کي ختم ڪرڻ جي اجازت ڏيو
+Date and Time: تاريخ ۽ وقت
+server-tz-help: اهو بيان ڪري ٿو ته UTC کان سرور جي وقت کي ترتيب ڏيڻ جا ڪيترا ڪلاڪ.
+Server Timezone Selection: سرور جي وقت جو انتخاب
+tz-help: وضاحت ڪري ٿي ته ڪيترا ڪلاڪ UTC کان مڪاني وقت کي ترتيب ڏيڻ ۾.
+Default Client Timezone Selection: طئي ٿيل گراهڪ ٽائم زون جو انتخاب
+display-general-use-gmt-help: جيڪڏهن فعال هجي ، عام تاريخون / وقت GMT وانگر ظاهر ٿين ٿيون
+Display Common Use Date/Times as GMT: عام استعمال جي تاريخ / ٽائيم GMT وانگر ظاهر ڪريو
+date-format-help: ترجيح واري تاريخ جي شڪل اڻايل آهي.
+Date format: تاريخ جي شڪل
+Small Task Date: نن Tasي ڪم جي تاريخ
+display-week-starts-on: هفتي جو ڏينهن بيان ڪري ٿو ته هفتو شروع ٿئي ٿو. جيڪڏهن سومر مخصوص ڪيو ويو آهي ، ته هفتي جا نمبر ISO هفتي جا نمبر هوندا.
+Week starts on: هفتو شروع ٿئي ٿو
+display-weekend-starts-on: هفتي جي ڏينهن لاءِ ڏينهن جي ڏينهن کي شروع ڪرڻ لاءِ مقرر ڪندو آهي
+Weekend starts on: هفتي جي آخر شروع ٿيندي آهي
+time-format-help: اهو بيان ڪري ٿو ته ڪهڙي وقت جو فارميٽ استعمال ڪجي:<br><em>12 ڪلاڪ:</em> 3 ايم ، 8:30 پي ايم ، وغيره وقت ڏيکاريل ، 2030 ، وغيره.
+Time format: وقت جو فارميٽ
+12 hour: 12 ڪلاڪ                                                   
+24 hour: 24 ڪلاڪ                                                   
+timed-evt-len-help: وقت واري واقعي جي ڊيگهه کي طئي ڪرڻ لاءِ ان پٽ طريقا بيان ڪري ٿي.
+Specify timed event length by: ٺاھيو ويو وقت وارو واقعو جي ڊيگهه
+Duration: مدو
+End Time: آخري وقت
+work-hours-help: ڏينهن جي منظر کي ظاهر ڪرڻ لاءِ وقت جي حد بيان ڪندو
+Work hours: ڪم جا ڪلاڪ
+From: کان
+to: جي طرف
+Appearance: ظاهري
+preferred-view-help: ڊفالٽ ڏيک جي وضاحت ڪئي وڃي ٿي (ڏينهن ، هفتو ، مهينو ، يا سال).
+Preferred view: ترجيح ڏيک
+Allow top menu: مٿين مينيو جي اجازت ڏيو
+Date Selectors position: تاريخ چونڊيندڙ جي پوزيشن
+menu-themes-help: مٿين مينيو جي رنگن ۽ انداز کي سيٽ ڪري ٿو
+Menu theme: مينيو موضوع
+fonts-help: سسٽم فونٽ جي استعمال جي فهرست بيان ڪئي وئي آهي (جهڙوڪ ”ايريل ، هيليويڪا“)
+Fonts: فانٽ
+display-sm_month-help: جيڪڏھن قابل آھي ، ڏيکاري ٿو نن monthsا نن monthا مهينا ڏيک ۾
+Display small months: نن monthsا مهينا ڏيکاريو
+display-weekends-help: هفتي شامل ڪرڻ دوران هفتي جو وقت شامل ڪريو.
+Display weekends: هفتي جي آخر ۾ ظاهر ڪيو
+display-long-daynames-help: جيڪڏھن فعال آھي ، ڊگھن ڏينھن جا نالا ڏيکاريا وڃن
+Display long day names: وڏا ڏينهن جا نالا ظاهر ڪريو
+display-alldays-help: گذريل مهينن ۽ ايندڙ مهينن ۾ ڏينهن جي نظارن جي ظاهر ڪريو ، سڀني خاني کي ڀريندي.
+Display all days in month view: مهيني جي ڏيهي ۾ سڀ ڏينهن ڏيکاريو
+display-week-number-help: اهو اڻيندي ته ڇا هفتي جو نمبر (1-52) مهيني جي ڏيک ۽ هفتي واري ڏيک ۾ ظاهر ٿيڻ گهرجي.
+Display week number: هفتي جو نمبر ڏيکاريو
+display-desc-print-day-help: پرنٽر-ڏينهن واري ڏيک ۾ تقريب جي وضاحت شامل ڪريو.
+Display description in printer day view: پرنٽر ڏينهن جي ڏيک ۾ وضاحت ڏيکاريو
+yearly-shows-events-help: سالياني منظر تي ، ڊسپلي ڏينهن جنهن ۾ واقعن کي ڳري فونٽ ۾ شامل ڪيو ويندو آهي.
+Display days with events in bold in month and year views: مھينن ۽ سال جي نظارن ۾ بولڊ سان واقعن کي ڏيکاريو
+display-minutes-help: جيڪڏھن فعال آھي ، منٽ ختم ٿيڻ وارا: 00 سدائين ظاھر ٿيندا
+Display 00 minutes always: 00 منٽ هميشه ڏيکاري
+display-end-times-help: ڏي وٺ واقعي واقعو آخري وقت تي جيڪڏهن واقعي جو وقت آهي
+Display end times on calendars: قلندرز تي آخري وقت ڏيکاريو
+allow-view-add-help: نظارن ۾ هڪ '+' آئکن شامل ڪيو ويندو ، صارفن کي ٻين استعمال ڪندڙن جي ڪئلينڊر ۾ جلدي واقعن کي شامل ڪرڻ جي اجازت ڏيندو.
+Include add event link in views: نظارن ۾ لنڪ شامل ڪريو تقريب شامل ڪريو
+lunar-help: جيڪڏهن فعال ٿي وڃي ، هر مهيني قمري مرحلن جي نمائندگي ڪندڙ نن iconsيون نن iconsيون شڪليون ظاهر ڪنديون
+Display Lunar Phases in month view: مهيني جي منظر ۾ قمري مرحلا ڏيکاريو
+Restrictions: پابنديون
+allow-view-other-help: اهو واضح ڪري ٿو ته ڇا هڪ صارف ٻئي صارف جو ڪئلينڊر ڏسي سگهي ٿو.
+Allow viewing other users calendars: ٻين استعمال ڪندڙ جي ڪئلينڊر ڏسڻ جي اجازت ڏيو
+require-approvals-help: جڏهن فعال ٿيو ، هڪ صارف کي هن جي ڪئلينڊر تي ظاهر ٿيڻ کان پهريان هڪ تقريب کي لازمي طور تي منظور ڪرڻ گهرجي (جيستائين ڊسپلي غير منظور ٿيل فعال نه آهي). ياد ڪريو انهي کي سيٽ ڪريو "نه" پبلڪ رسائي ڪئلينڊر (جيڪڏهن پبلڪ رسائي ڪئلينڊر فعال آهي) جي منظوريءَ کي بند نه ڪندا.
+Require event approvals: واقعي جي منظوري گهربل آهي
+display-unapproved-help: اهو بيان ڪري ٿو ته ڇا غير منظور ٿيل واقعا توهان جي ڪئلينڊر ۾ ظاهر ڪيا ويندا.<br>جيڪڏهن "ها" تي سيٽ ڪئي وڃي ، ته اڻ منظوري وارا واقعا توهان جي ڪئلينڊر ۾ ظاهر ڪيا ويندا (مختلف متن جي رنگ ۾).<br>جيڪڏهن "نه" کي سيٽ ڪيو ويو ، ته پوءِ غير منظور ٿيل واقعا لازمي طور تي توهان جي ڪئلينڊر ۾ ظاهر ٿيڻ کان پهريان منظور ٿيڻ گهرجن.
+Display unapproved: ظاهر نا منظور
+conflict-check-help: واقعن جي تضاد جي چڪاس ڪريو (ساڳئي شخص لاءِ ساڳئي وقت لاءِ ٻه واقعا مقرر ڪيا ويا). جيڪڏهن توهان هن کي “ها” تي سيٽ ڪريو ، توهان ڊي aاريندڙ کي تصديق ڪرڻ کانپوءِ اڃا تائين ٻن واقعن کي شيڊول ڪري سگهندا. جيڪڏهن توهان هن کي "نه" تي مقرر ڪيو ، تضاد جي چڪاس ڪونه ڪئي ويندي. توھان شايد ھن کي "ھا" کي سيٽ ڪرڻ چاھيو ٿا ، تنھنڪري تڪرار جي جانچ ٿئي ٿي.
+Check for event conflicts: واقعن جي تضاد جي چڪاس ڪريو
+Yes: ها
+No: نه
+conflict-months-help: جيڪڏهن تڪرار جي چڪاس جي هنڌ موجود آهي ("واقعن جي تصادم جي چڪاس ڪريو" کي "نه" تي سيٽ ڪيو ويو آهي & # 41 ؛ ، هي بيان ڪري ٿو ته مستقبل ۾ ڪيترا مهينا اسان کي تنازعات جي جانچ ڪرڻ گهرجي. هن نمبر کي گھٽايو.
+Conflict checking months: مهينن جي چڪاس لڙائي
+conflict-check-override-help: صارفن کي واقعن جي تضاد کي ختم ڪرڻ جي اجازت ڏئي ٿو ۽ ساڳئي وقت ٻن يا وڌيڪ واقعن کي شيڊول ڪري ٿو.
+Allow users to override conflicts: صارفين کي تڪرار کي ختم ڪرڻ جي اجازت ڏيو
+limit-appts-help: سسٽم منتظم کي ھڪڙي جڳھ تي مقررين جي تعداد تي س wideي نظام جي حد جي حد مقرر ڪرڻ جي اجازت ڏئي ٿو.
+Limit number of timed events per day: هر ڏينهن جي مقرر ڪيل واقعن جي حد
+limit-appts-number-help: صارف جي هڪ ڏينهن ۾ وڌ کان وڌ وقت واري واقعن جي وضاحت ڪري ٿي.
+Maximum timed events per day: سڀ کان وڌيڪ وقت جي واقعن
+crossday-help: جيڪڏهن فعال ٿي ويا هجن ، اهي واقعا جيڪي مختلف ڏينهن ۾ ڏيکاريا ويندا انهن کي الڳ ڏينهن تي ظاهر ڪيو ويندو
+Disable Cross-Day Events: ڪراس ڏينهن جي واقعن کي غير فعال ڪريو
+disable-location-field-help: ”ها“ چونڊڻ واقعن واري معلومات جي صفحن مان ”لوڪيشن“ فيلڊ ختم ٿي ويندي
+Disable Location field: جڳھ جي ميدان کي بند ڪريو
+disable-url-field-help: ”ها“ چونڊڻ واقعي واري معلومات جي صفحن مان ”يو آر ايل“ فيلڊ ڪ removeي ڇڏيندو
+Disable URL field: URL فيلڊ کي بند ڪريو
+disable-priority-field-help: ”ها“ چونڊڻ واقعن جي معلومات جي صفحن مان ”ترجيح“ فيلڊ ڪ willي ويندي ، نوڪرين لاءِ هڪ آسان انٽرفيس فراهم ڪندي.
+Disable Priority field: ترجيح واري فيلڊ کي بند ڪرڻ
+disable-access-field-help: ”ها“ چونڊڻ واقعن جي معلومات جي صفحن مان ”پهچ“ وارو فيلڊ ختم ڪري ڇڏيندو ، نوڪرين لاءِ هڪ آسان سا انٽرفيس مهيا ڪندو آهي.
+Disable Access field: رسائي جي فيلڊ کي بند ڪريو
+disable-participants-field-help: "ها" کي منتخب ڪندي "شرڪت ڪندڙن" فيلڊ کي واقعن جي pagesاڻ واري صفحن تان هٽائيندو ، صارفين کي سندن واقعن ۾ ٻين استعمال ڪندڙن کي شامل ڪرڻ کان روڪيندو جيڪڏهن توهان هن اختيار کي فعال ڪيو ، توهان شايد "ٻين صارف جي ڪئلينڊر ڏسڻ جي اجازت" جي فيلڊ کي به غير فعال ڪرڻ چاهيو ٿا.
+Disable Participants field: شرڪت ڪندڙن جو ميدان بند ڪريو
+disable-repeating-field-help: "ها" کي منتخب ڪندي واقعن کي شامل ڪرڻ دوران "ورجائي" فيلڊ ختم ٿي ويندو. اهو نوڪرين لاءِ هڪ آسان انٽرنيٽ فراهم ڪندو.
+Disable Repeating field: ورجائي فيلڊ ختم ڪريو
+allow-html-description-help: جيڪڏھن فعال آھي ، استعمال ڪندڙ واقعا بيان جي فيلڊ ۾ HTML داخل ڪري سگھن ٿا. جيڪڏھن فعال نه ھجي ، ايڇ ٽي ايم ايل کي بچايو ويندو جيئن سادي متن وانگر ظاھر ٿيندو. خبردار: هن فيچر کي فعال ڪرڻ سان صارفين ٻين ويب سائيٽن تي تصويرن جو حوالو ڏئي سگهندي.
+Allow HTML in Description: وضاحت ۾ HTML جي اجازت ڏيو
+Popups: پاپ اپ
+disable-popups-help: ڪئلينڊر جي نظارن مان پاپ اپ کي بند ڪريو
+Disable Pop-Ups: پاپ اپس کي غير فعال ڪريو
+popup-includes-siteextras-help: جيڪڏھن فعال آھي ، سائيٽ_extras.php ۾ ڪسٽم واقعي جا فيلڊ سيٽ ڪرڻ جي اجازت ڏيو فائل پاپ اپ ۾ ظاھر ٿيندو.
+Display Site Extras in popup: پاپ اپ ۾ سائيٽ جي اضافي ڏيکاريو
+popup-includes-participants-help: جيڪڏھن فعال آھي ، شرڪت ڪندڙن واقعن کي پاپ اپ ۾ ڏيکارجن ٿا.
+Display Participants in popup: پاپ اپ ۾ شرڪت ڪندڙن کي ظاهر ڪريو
+Miscellaneous: متفرق
+remember-last-login-help: جڏهن فعال ٿي ، صارف جو لاگ ان انهن لاءِ لاگ ان پيج تي ڀريو ويندو (پر پاسورڊ نه) ، ۽ صارف جون ترجيحات لوڊ ڪيون وينديون (انهن جي پسنديده رنگ ۽ ٻولي جو انتخاب).
+Remember last login: آخري لاگ ان ياد رکو
+summary_length-help: مختصر ڪئلينڊر جي مختصر وضاحت ڪئلينڊر جي نظرن ۾
+Brief Description Length: مختصر وضاحت جي ڊيگهه
+user_sort-help: صارف ، غير استعمال ڪندڙ لسٽن جي ترتيب لاءِ ترتيب ڏيندو
+User Sort Order: استعمال ڪندڙن جي ترتيب وار ترتيب
+Lastname, Firstname: آخري نالو پهريون نالو
+Firstname, Lastname: نالو ذات
+allow-public-access-help: جڏهن فعال ٿي ، ڪئلينڊر صرف پڙهيل عوامي عوامي ڪئلينڊر طور استعمال ٿي سگهي ٿو جيڪو صارف کي لاگ ان ٿيڻ جي ضرورت نه آهي.
+Allow public access: عوام جي رسائي جي اجازت ڏيو
+public-access-default-visible: عوامي ڪئلينڊر مان تقريبون پاڻمرادو سڀني استعمال ڪندڙن جي ڪئلينڊر تي ظاهر ٿينديون
+Public access visible by default: عوامي رسائي ترتيب سان پڌري ٿي
+public-access-default-selected: جڏهن هڪ نئون واقعو شامل ڪرڻ ، عوامي صارف ڊفالٽ طور شرڪت ڪندڙ طور تي چونڊيو ويندو.
+Public access is default participant: عوامي پھچائڻ وارا ڊفالٽ حصو وٺندا آھن
+public-access-view-others-help: جڏهن سسٽم کي عوام جي رسائي سان رسائي ڪري ، وضاحت ڪري ٿي ته ڇا صارف ٻئي ڪئلينڊر استعمال ڪندڙ جو ڪئلينڊر ڏسي سگهي ٿو.
+Public access can view other users: عوام جي رسائي ٻيا استعمال ڪندڙ ڏسي سگھن ٿا
+public-access-can-add-help: جڏهن فعال ٿي وڃن ، اهي صارف جيڪي پبلڪ رسائي ذريعي سسٽم تائين رسائي ڪن ٿا ۾ نوان واقعا شامل ڪرڻ جي قابل هوندا ، پر اهي ايڊمنسٽريٽر تائين نوان واقعا جي منظوري تائين ڪيلينڊر ۾ ظاهر نه ٿيندا
+Public access can add events: عوامي رسائي واقعن کي شامل ڪري سگهي ٿي
+public-access-add-requires-approval-help: اهو بيان ڪري ٿو ته ڇا واقعن کي عوام جي رسائي کاتي ذريعي شامل ڪيو ويو آهي ڏيکارڻ کان پهريان منظوري جي ضرورت آهي.
+Public access new events require approval: عوامي رسائي جي نئين واقعن جي منظوري جي ضرورت آھي
+public-access-sees-participants-help: جيڪڏهن فعال ٿي ويا ، عوامي اڪائونٽ مان ڪئلينڊر تائين رسائي ڪندڙ واقعن جا شرڪت ڪندڙ ڏسي سگهندا جيڪڏهن اهي ڪنهن واقعي جي تفصيل ڏسندا.
+Public access can view participants: عوامي پھچ شرڪت ڪندڙن کي ڏسي سگھي ٿي
+public-access-override-help: عوامي ڪئلينڊر تي واقعن جي نالن ۽ وضاحتن کي لڪائڻ جي اجازت ڏئي ٿي
+Override event name/description for public access: عوام جي رسائي لاءِ واقعاتي نالو / تفصيل کي رد ڪريو
+public-access-override-text-help: مٿي ڏنل آپشن کي فعال ڪرڻ لاءِ ڏسڻ لاءِ متن جيڪڏهن 'دستياب ناهي' ، اهو ترجمو ڪيو ويندو.
+Text to display to public access: متن کي عوامي رسائي جي ظاهر ڪرڻ لاءِ
+public-access-captcha-help: جيڪڏهن فعال ٿي وڃي ، پبلڪ طرفان شامل ڪيل نئين واقعا ڪيپيچا تصديق جي تقاضا ڪن ٿا.
+Require CAPTCHA validation for public access new events: عوامي پھچن نئين واقعن لاءِ CAPTCHA تصديق جي ضرورت آھي
+uac-enabled-help: صارف جي سطح تي رسائي ڪنٽرول کي فعال ڪري ٿو
+User Access Control enabled: استعمال ڪندڙن جي رسائي جو اختيار فعال ٿي ويو
+groups-enabled-help: گروپ سپورٽ کي قابل بنائي ٿو ، صارفين کي گروپن ذريعي صارف چونڊڻ جي اجازت ڏئي ٿو.
+Groups enabled: ميڙَ چالو ٿي ويا
+user-sees-his-group-help: جيڪڏھن فعال آھي ، استعمال ڪندڙ کي ڪئلينڊر استعمال ڪندڙ نه ڏسندا جيڪي گھٽ ۾ گھٽ پنھنجي گروپن ۾ نه ھجن.
+User sees only his groups: استعمال ڪندڙ پنھنجي گروپن کي ئي ڏسي ٿو
+nonuser-enabled-help: جيڪڏهن فعال هجي ، منتظمين کي اختيار هوندو ته اهي غير نصاب وارا ڪئلينڊر شامل ڪندا
+Nonuser enabled: غير استعمال ڪندڙ ڪئلينڊر کي فعال ڪيو ويو
+nonuser-list-help: حصو وٺندڙن جي فهرست ۾ غيرو استعمال ڪندڙ ڪئلينڊر کي ظاهر ڪرڻ لاءِ
+Nonuser list: شرڪت ڪندڙن جي لسٽ ۾ ڏيکاريو
+Upcoming Events: ايندڙ واقعا
+upcoming-events-help: ايندڙ. php کي فعال ڪريو
+Enabled: فعال ٿيو
+upcoming-events-allow-override: User.Pamter for next.php جي اجازت ڏيو
+Allow user override: استعمال ڪندڙ جي اوسر ڪرڻ جي اجازت ڏيو
+upcoming-events-display-caticons: ڪلاس ۾ آئکن کي آئوٽ ڪريو. php ۾
+Display category icons: درجي جو خاڪو ڏيکاري
+upcoming-events-display-layers: ظاهر ڪريو تہه ۾ ايندڙ. php
+Display layers: تہه نما
+upcoming-events-display-links: soon.php ۾ لنڪ ڏيکاريو
+Display links to events: واقعن جا لنڪس ڏيکاريو
+upcoming-events-display-popups: تقريب ۾ پاپ اپ ڏيکاريو. php
+Display event popups: شو جي واقعا پاپ اپ
+reports-enabled-help: جيڪڏهن فعال ٿي ويا ، صارف هر صفحي جي تري ۾ ”رپورٽون“ سيڪشن ڏسندا ۽ ان کي حسب ضرورت رپورٽون ٺاهڻ جي اجازت ڏني ويندي. ان کان علاوه ، منتظم صارف عالمي رپورٽون ٺاهي سگهن ٿا جيڪي سڀني صارفين جي صفحن جي تري ۾ ظاهر ٿينديون.
+Reports enabled: رپورٽون فعال ڪيون ويون
+subscriptions-enabled-help: اهو بيان ڪري ٿو ته ريموٽ صارف ويب ڪئلينڊر استعمال ڪندڙ جي ڪئلينڊر جي رڪنيت حاصل ڪري سگھن ٿا ، انهن کي انهن جي آئي سيال واري ايپليڪيشن ۾ ويب ڪئلينڊر استعمال ڪندڙ واقعن ڏسڻ جي اجازت ڏين ٿا (جهڙوڪ ايپل جي آئي سيال يا موزيلا ڪئلينڊر).
+Allow remote subscriptions: ريموٽ سبسڪرپشن جي اجازت ڏيو
+remotes-enabled-help: يو آر ايل استعمال ڪندي صارفين کي ريموٽ آئي ايس فائلون لوڊ ڪرڻ جي اجازت ڏئي ٿو
+Allow remote calendars: ريموٽ ڪئلينڊر کي اجازت ڏيو
+rss-enabled-help: اهو بيان ڪري ٿو ته ڇا صارف جو ڪئلينڊر آر ايس ايس فيڊ مان حاصل ڪري سگهجي ٿو.
+Enable RSS feed: آر ايس ايس فيڊ کي فعال ڪريو
+categories-enabled-help: ايونٽ ڪيٽيگريز لاءِ تعاون کي قابل بنائي ٿو
+Categories enabled: قسمون فعال آھن
+icon_upload-enabled-help: جيڪڏهن فعال هجي ، صارف درجه بندي جون شڪنون اپ لوڊ ڪري سگهن ٿا
+Category Icon Upload enabled: ڪيٽيگري آئڪن اپ لوڊ ٿيل فعال آهي
+(Requires XXX folder to exist.): (موجود هجڻ لاءِ XXX فولڊر جي ضرورت آهي.)
+display-tasks-help: مهيني ۽ ڏينهن جي ڪئلينڊر تي نن taskي ڪم جي ونڊو ڏيکاريو
+Display small task list: نن taskي ڪم جي فهرست ڏيکاري
+display-tasks-in-grid-help: قلندرز ۾ واقعن سان گڏ ڪم ڏيکاريو
+Display tasks in Calendars: قلندرز ۾ ڪم ڏيکاريو
+allow-external-users-help: اهو بيان ڪري ٿو ته ڇا ڪئلينڊر جو استعمال ڪندڙ ايونٽ ۾ شامل ٿي سگهي ٿو. اهو غير ڪئلينڊر استعمال ڪندڙن کي واقعن جي شرڪت جي طور تي درج ٿيڻ جي اجازت ڏئي ٿو.
+Allow external users: ٻاهرين استعمال ڪندڙن جي اجازت ڏيو
+external-can-receive-notification-help: جڏهن ٻاهرين صارف کي فعال ڪيو ويو آهي ۽ اي ميل جو استعمال فعال آهي ، خارجي صارف کي اي ميل اطلاع ملي سگھن ٿيون جڏهن واقعي شامل ڪيو وڃي ، تازه ڪاري ٿئي يا ختم ٿي وڃي (جيڪڏهن خارجي صارف جو اي ميل پتو مهيا ڪيو وڃي)
+External users can receive email notifications: خارجي استعمال ڪندڙ کي اي ميل جا اطلاع ملي سگھن ٿا
+external-can-receive-reminder-help: جڏهن ٻاهرين صارف کي فعال ڪيو ويو آهي ۽ اي ميل جو استعمال فعال آهي ، خارجي صارف اي ميل ياد ڏياريندڙ وصول ڪري سگھن ٿا (جيڪڏهن خارجي صارف جو اي ميل پتو مهيا ڪيو وڃي).
+External users can receive email reminders: خارجي صارف اي ميل ياد ڏياريندڙ حاصل ڪري سگهن ٿا
+allow-self-registration-help: نون استعمال ڪندڙن کي پنهنجو رجسٽر ڪرائڻ جي اجازت ڏيو
+Allow self-registration: خود رجسٽريشن جي اجازت ڏيو
+use-blacklist-help: IP پتي جي بنياد تي ويب ڪئلينڊر جي فنڪشن تائين رسائي کي محدود ڪريو
+Restrict self-registration to blacklist: خود رجسٽريشن کي بليڪ لسٽ ۾ محدود ڪيو وڃي
+allow-self-registration-full-help: نون استعمال ڪندڙن کي خود-رجسٽريشن جو عمل آن لائن مڪمل ڪرڻ جي اجازت ڏيو
+Use self-registration email notifications: پاسورڊ ٺاھيو ۽ نئين استعمال ڪندڙن ڏانھن موڪليو
+allow-attachment-help: صارفين کي واقعن ۾ فائل منسلڪ شامل ڪرڻ جي اجازت ڏيندو.
+Allow file attachments to events: واقعن کي فائل جي منسلڪ جي اجازت ڏيو
+Admin and owner can always add attachments if enabled.: منتظم ۽ مالڪ هميشه شامل ڪري منسلڪ شامل ڪري سگھن ٿا.
+allow-comments-help: صارفين کي واقعن تي تبصرا شامل ڪرڻ جي اجازت ڏي.
+Allow comments to events: واقعن کي اجازت ڏيڻ جي اجازت ڏيو
+Admin and owner can always add comments if enabled.: منتظم ۽ مالڪ هميشه شامل ڪري راءِ شامل ڪري سگھن ٿا.
+email-enabled-help: اطلاع ۽ ياد ڏياريندڙ لاءِ اي ميل جي تمام موڪلڻ کي بند يا بند ڪريو. ”نه“ کي سيٽ ڪيو ، جيڪڏهن توهان جو سرور صحيح طرح سان ميل موڪلڻ لاءِ سيٽ ٿيل ناهي.
+Email enabled: اي ميل فعال ٿي وئي
+email-default-sender: ياد ڏياريندڙ موڪلڻ دوران موڪليندڙ جي طور تي emailاڻڻ لاءِ اي ميل پتو بيان ڪري ٿو.
+Default sender address: پاڻ موڪلڻ وارو ڏيتي ليتي
+email-mailer: اي ميل قسم چونڊيو (SMTP ، PHP ميل ، sendmail)
+Email Mailer: ايميل ميلر
+email-smtp-host: ڪاسٽ کان جدا ٿيل ايس ايم ٽي پي سرورز جو ميزبان نالو
+SMTP Host name(s): ايس ايم پي ٽي هسٽري جو نالو
+email-smtp-port: ايس ايم ٽي پي پورٽ نمبر (عام طور تي 25)
+SMTP Port Number: ايس ايم پي پورٽ نمبر
+email-smtp-auth: SMTP جي تصديق جو استعمال ڪريو
+SMTP Authentication: ايس ايم پي ٽي پي جي تصديق
+email-smtp-username: ايس ايم ٽي پي جو صارف جو نالو جيڪڏھن تصديق جو استعمال
+SMTP Username: ايس ايم پي يو کاتي جو نالو
+email-smtp-password: ايس ايم ٽي پي پاسورڊ جيڪڏهن تصديق جو استعمال ڪندي
+SMTP Password: ايس ايم پي ٽي پاسورڊ
+Default user settings: ڊفالٽ صارف سيٽنگون
+email-format: HTML يا سادي متن پيغام لاءِ ترجيح بيان ڪريو
+Email format preference: اي ميل فارميٽ جي ترجيح
+HTML: ايڇ ٽي ايم
+Plain Text: سادي متن
+email-include-ics: اي ميل پيغام لاءِ iCalendar ICS فائل شامل ڪريو
+Include iCalendar attachments: آءِ ڪئلينڊر اٽيچمينٽ شامل آهن
+email-event-reminders-help: اهو بيان ڪري ٿو ته ڇا واقعا ياد ڏياريندڙ موڪلڻ يا نه.
+Event reminders: واقعي جي ياد ڏياريندڙ
+email-event-added: اهو بيان ڪري ٿو ته ڇا اي ميل اطلاع موڪلڻ يا نه موڪلڻ جڏهن ڪو واقعو توهان جي ڪئلينڊر ۾ شامل ڪيو ويندو آهي.
+Events added to my calendar: منهنجي ڪئلينڊر ۾ واقعا شامل ڪيا ويا
+email-event-updated: اهو بيان ڪري ٿو ته ڇا اي ميل اطلاع موڪلڻ يا نه موڪلڻ جڏهن ڪو واقعو توهان جي ڪئلينڊر تي اپڊيٽ ٿيل آهي.
+Events updated on my calendar: منهنجي ڪئلينڊر تي واقعا تازا ٿيا
+email-event-deleted: اهو بيان ڪري ٿو ته ڇا اي ميل اطلاع موڪلڻ يا نه موڪلڻ جڏهن ڪو واقعو توهان جي ڪئلينڊر مان هٽايو وڃي ٿو.
+Events removed from my calendar: منهنجا ڪئلينڊر ختم ڪيا ويا
+email-event-rejected: اهو وضاحت ڪري ٿو ته ڇا اي ميل اطلاع موڪلڻ يا نه موڪلڻ جڏهن ته هڪ شرڪت ڪندڙ ڪنهن واقعي کي رد ڪري ٿو جيڪو توهان جي ڪئلينڊر ۾ آهي.
+Event rejected by participant: واقعي شرڪت ڪندڙ طرفان رد ڪئي وئي
+email-event-create: اهو اڻيندي ته ڇا داخلا جو خالق هڪ اي ميل وصول ڪندو
+Event that I create: واقعي جيڪو آئون ٺاهي ٿو
+Color options: رنگن جا اختيار
+Allow user to customize colors: صارف کي رنگن کي ترتيب ڏيڻ جي اجازت ڏي
+gradient-colors: جيڪڏهن قابل ٿي گريري رنگ استعمال ڪيا ويندا. اهو ڪارڪردگي تي گھڻو اثر وجھي سگھي ٿو.
+Enable gradient images for background colors: پس منظر وارن رنگن لاءِ تدريسي تصويرون فعال ڪريو
+Not available: دستياب ناھي
+Background Image options: پس منظر تصويري آپشن
+bgimage-help: گھربل پس منظر واري تصوير جو URL. ٿي سگهي ٿو لاڳاپا ڳن linkيل.
+Background Image: پسمنظر جي تصوير
+bgrepeat-help: پس منظر واري تصوير جي ورجائي واري رويي کي ڪنٽرول ڪري ٿو.
+Background Repeat: پسمنظر ٻيهر ورجائي
+
+########################################
+# Page: adminhome.php
+#
+Assistants: اسسٽنٽس
+Preferences: ترجيحات
+Control Panel: ڪنٽرول پينل
+Users: استعمال ڪندڙ
+Account: کاتو
+Categories: قسمون
+Views: نظارو
+Layers: ليئرز
+Reports: رپورٽون
+Delete Events: واقعات ختم ڪريو
+Activity Log: سرگرمي جي لاگ
+System Log: سسٽم جو ڪم
+Security Audit: سيڪيورٽي آڊٽ
+Public Preferences: عوامي ترجيحات
+Unapproved Public Events: غير منظور ٿيل عوامي واقعن
+Administrative Tools: انتظامي اوزار
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: ٻيڻو نالو: "ايڪس اينڪس".
+Username XXX already exists.: کاتي جو نالو ”ايڪس اينڪس“ اڳ ۾ ئي موجود آهي.
+Email address XXX already exists.: اڳ ۾ ئي موجود آھي اي ميل پتو ”XXX“.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): اضافي رايا
+Approve and Send: منظور ڪريو ۽ موڪليو
+Approve and Exit: منظور ۽ ٻاھر ڪ Exو
+(Your comments will be emailed to the event creator.): (توهان جا رايا ايونٽ ٺاهيندڙ کي اي ميل ڪيا ويندا.)
+Hello, XXX.: هيلو ، ايڪسڪسڪس.
+XXX has approved an appointment and added comments.: ھڪڙي ملاقات منظور ڪئي وئي آھي ۽ تبصرو ايڪس اينڪس طرفان شامل ڪيل.
+Subject XXX: مضمون: "ايڪس اينڪس".
+Description XXX: وضاحت: "ايڪس اينڪس".
+Date XXX: تاريخ: ايڪس اينڪس
+Time XXX: وقت: ايڪس اين ايڪس
+Comments XXX: تبصرو: ايڪس اينڪس
+Approved w/Comments by XXX.: منظور ٿيل وي / رايا پاران: ايڪس اينڪس.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: ايڊمن موڊ
+Your assistants: توهان جا مددگار
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: اڻ errorاڻ مسئلو.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: پروگرام جي غلطي: ڪا ايڪسريڪس مخصوص ناھي!
+user: استعمال ڪندڙ
+year: سال
+month: مهينو
+day: ڏينهن
+
+########################################
+# Page: category.php
+#
+Category Icon: درجه بندي جو آئڪن
+Global: گلوبل
+The permissions for the icons directory are set to read-only: آئڪن ڊاريڪٽري لاءِ اجازت صرف پڙهڻ لاءِ مقرر ٿيل آهن.
+Category Name: زمرو جو نالو:
+Color: رنگ
+Remove Icon: آئڪن هٽايو:
+Add Icon to Category: ڪيٽيگري ۾ آئڪن شامل ڪريو
+Upload: اپ لوڊ ڪريو
+GIF or PNG 6kb max: GIF يا PNG 6kb وڌ
+Search for existing icons: موجود آئڪن لاءِ ڳوليو
+Add: جوڙيو
+Delete: ختم ڪريو
+Are you sure you want to delete this entry?: ڇا توهان پڪ سان هن داخلا کي ختم ڪرڻ چاهيندا آهيو؟
+Make New Category: نئون ڪيٽيگري ٺاهيو
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: قسم جو نالو گھربل آھي
+File size exceeds maximum.: فائل جي سائيز وڌ کان وڌ ٿي.
+File is not a GIF or PNG image: فائل GIF يا PNG تصوير ناھي
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: دستياب ڪيٽيگريز
+ENTRY CATEGORIES: داخلا درجات
+Remove: هٽايو
+Global Category: گلوبل ڪيٽيگري
+Cancel: رد ڪرڻ
+
+########################################
+# Page: colors.php
+#
+Add Custom: مرضي شامل ڪريو
+Basic Colors: بنيادي رنگ
+Current Color: موجوده رنگ
+Custom Colors: مرضي وارا رنگ
+Old Color: پراڻو رنگ
+
+########################################
+# Page: combo.php
+#
+Select None: ڪوبه چونڊيو
+Agenda: گهرجائو
+Add Task: ٽاسڪ شامل ڪريو
+Description: تفصيل
+Date: تاريخ
+Time: ٽائيم
+Priority: ترجيح
+Access: پھچ
+Created by: جي تخليق
+Updated: تازو ڪيو ويو
+Participants: ڌرين
+Attachments: منسلڪات
+Comments: مشورا
+Brief Description: مختصر وضاحت
+Full Description: مڪمل وضاحت
+Category: ڪيٽيگري
+Add event detail: واقعي جي تفصيل شامل ڪريو
+Start Date: شروعاتي تاريخ
+Due Date: مقرر تاريخ
+Add task detail: ڪم جي تفصيل شامل ڪريو
+All: سڀ
+Error: نقص
+no response from server: سرور کان ڪوبه جواب ناهي
+JSON error: JSON غلطي
+High: وڏي
+Medium: وچٿرو
+Low: گهٽ
+Today: ا.
+Add Entry: داخلا شامل ڪريو
+Unnamed Event: بغير نالي وارو واقعو
+Unnamed Task: بغير نالي وارو ڪم
+Refresh: ريفريش
+Click to add entry: داخلا شامل ڪرڻ لاءِ ڪلڪ ڪريو
+Name: نالو
+pm: پي ايم
+am: آهيان
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: ايڪسينڪس هڪ ملاقات منسوخ ڪري ڇڏي آهي.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: غلط بلڊ آءِ ڊي
+
+########################################
+# Page: docadd.php
+#
+Add Comment: مشورا شامل ڪريو
+Add Attachment: منسلڪ شامل ڪريو
+Subject: مضمون
+Comment: راءِ ڏيو
+Upload file: اپ لوڊ ٿيل فائل آهي
+
+########################################
+# Page: docdel.php
+#
+Removed: لاٿو ويو
+
+########################################
+# Page: edit_entry.php
+#
+days: ڏينهن
+hours: ڪلاڪ
+minutes: منٽ
+You are not authorized to edit this task.: توھان ھن ڪم کي ايڊٽ ڪرڻ جا مجاز ناھي.
+is in a different timezone than you are. Currently: ڇا توهان کان وڌيڪ مختلف وقت ۾ آهي. في الحال
+hour ahead of you: توهان جي اڳيان ڪلاڪ
+hour behind you: تنهنجي پويان ڪلاڪ
+hours ahead of you: توهان جي اڳيان ڪلاڪ
+hours behind you: ڪلاڪ پويان تنهنجي پويان
+XXX is in a different timezone (ahead): (ايڪس اينڪس هڪ مختلف ٽائيم زون ۾ آهي ؛ YYY توهان جي اڳيان.<br>& nbsp ؛ ZZZ)
+XXX is in a different timezone (behind): (ايڪس اينڪس هڪ مختلف ٽائيم زون ۾ آهي ؛ YYY توهان جي پويان.<br>& nbsp ؛ ZZZ)
+Time entered here is based on your Timezone.: ٽائيم داخل ٿيل وقت توهان جي ٽائم زون تي ٻڌل آهي.
+Edit Entry: داخلا ۾ تبديلي آڻيو
+Details: تفصيلات
+Repeat: ورجائي
+Reminders: ياد ڏياريندڙ
+brief-description-help: هن کي واقعن جي مختصر وضاحت (اٽڪل 20 اکرن) فراهم ڪرڻ گهرجي. اهو ڪئلينڊر ڏسڻ دوران تقريب جي نمائندگي ڪندو.
+full-description-help: ھن کي تقريب جي مڪمل تفصيل ڏيڻ گھرجي. اها canاڻ ڏسي سگھجي ٿي جڏهن هڪ صارف تقريب کي ڏسي سگهي ٿو.
+access-help: تقريب جي رسائي جي سطح بيان ڪري ٿي. <ul> <li> عوامي: هر ماڻهو واقعي جي مڪمل تفصيل ڏسي سگهي ٿو.</li> <li> رازدار: ٻيا ماڻهو ڏسي سگهن ٿا ته توهان وٽ ان تاريخ ۽ وقت لاءِ داخلا آهي ، پر تفصيل ناهي ان جي ڇا آهي.</li></ul>
+priority-help: تقريب جي ترجيح کي بيان ڪري ٿي. اعلٰيٰ اوليت وارا واقعا جرئت سان پيش ڪيا ويندا.
+category-help: تقريب جي قسم بيان ڪري ٿي.
+completed-help: تاريخ جو ڪم مڪمل ٿيو. صرف ان صورت ۾ فعال ٿيو جڏهن سڀني شرڪت ڪندڙن جي شرح 100٪ برابر هجي.
+Date Completed: مڪمل ٿيڻ جي تاريخ
+percent-help: ھن صارف لاءِ ڪم جي مڪمل شرح
+Percent Complete: سيڪڙو مڪمل
+All Percentages: سڀ فيصد
+location-help: واقعي جي جڳھ
+Location: هنڌ
+url-help: واقعي جو يو آر ايل
+URL: =
+date-help: واقعي جي تاريخ بيان ڪري ٿي.
+Untimed event: اڻ وڻندڙ ​​واقعو
+Timed event: ٽائيم وارو واقعو
+All day event: س dayو ڏينهن جي تقريب
+Timezone Offset: ٽائم زون آفset
+time-help: تقريب جو وقت بيان ڪري ٿو. <ul> <li> "ٽائمڊو واقعو" (هڪ تقريب لاءِ جيڪا ان ڏينهن ڪنهن خاص وقت لاءِ طئي ڪئي وئي آهي)</li> <li> "اڻ وڻندڙ ​​ايونٽ" (هڪ تقريب لاءِ هي وقت نٿو ملي )</li> <li> "س dayو ڏينهن وارو واقعو" (هڪ تقريب لاءِ جيڪو س takesو ڏينهن وٺندو آهي (جهڙوڪ آفيس جي ٻاهر هجڻ جي ڪري)</li></ul>
+duration-help: تقريب جو عرصو بيان ڪيو وڃي ٿو (ڪلاڪن ۾ ؛ منٽ) <em>ھي ميدان خالي ڇڏي سگھجي ٿو.</em>
+end-time-help: ان وقت کي نمايان ڪندو آهي جنهن واقعي کي ختم ٿيڻ جي توقع ڪئي وئي آهي.
+Start Time: شروعاتي وقت
+Due Time: مقرر وقت
+Site Extras: سائيٽ واڌارو
+avail_participants-help: ھن داخلا جي موجود شرڪت ڪندڙن جي لسٽ ڪئي.
+Available: دستياب
+Find Name: نالو ڳوليو
+Resources: وسيلا
+participants-help: ھن داخلا جي شرڪت ڪندڙن کي لسٽ ڪري ٿي.
+Selected: چونڊيل
+Availability: موجودگي
+external-participants-help: تقريب لاءِ شرڪت ڪندڙن جي فهرست بيان ڪري ٿي جيڪي ڪئلينڊر استعمال ڪندڙ نه آهن. صارفين کي هر هڪ لائن ۾ درج ٿيڻ گهرجي ۽ هڪ اي ميل پتو شامل ڪري سگھن ٿا. جيڪڏهن هڪ اي ميل پتو مخصوص آهي ، صارف اطلاعن ۽ ياد ڏياريندڙ حاصل ڪرڻ لاءِ اهل آهي.
+External Participants: ٻاهرين حصو وٺندڙ
+repeat-type-help: منتخب ڪيو ته واقعي کي ڪيترو بار بار ٿيڻ گهرجي.
+Daily: روزانو
+Weekly: ھفتيوار
+Monthly: ماھوار
+by day: ڏهاڙي ۾
+by date: تاريخ کان
+by position: پوزيشن کان
+Monthly (by day): ماھوار (ڏينھن کان)
+Monthly (by date): ماھوار (تاريخ کان)
+Monthly (by position): ماھوار (پوزيشن پاران)
+Yearly: ساليانو
+Manual: دستي
+Expert Mode: ماهر موڊ
+repeat-end-date-help: تاريخ بيان ڪري ٿي جيستائين واقعو ٻيهر ورجائڻ گهرجي.
+Ending: ختم ٿيڻ
+Forever: هميشه لاءِ
+Use end date: آخري تاريخ استعمال ڪريو
+Number of times: دفعا ڪيترا
+repeat-frequency-help: اهو بيان ڪري ٿو ته واقعي واقعي کي ڪڏهن ٻيهر ورجائڻ گهرجي.
+Frequency: فريڪوئنسي
+Weekdays Only: صرف ڏينھن جا ڏينھن
+Week Start: هفتو شروع
+repeat-bydayextended-help: هفتي جي ڏينهن جي بنياد تي تاريخ جو انتخاب اجازت ڏيندو آهي.
+ByDay: پاران
+repeat-month-help: اهو بيان ڪري ٿو ته ڪهڙن مهينن کي تقريب ۾ ٻيهر ورجائڻ گهرجي.
+ByMonth: =
+repeat-bysetpos-help: تاريخ جي چونڊ کي مهيني سان گڏ پوزيشن جي بنياد تي اجازت ڏئي ٿو.
+BySetPos: سيٽ سيٽ
+repeat-bymonthdayextended-help: تاريخ جي بنياد تي چونڊ جي اجازت ڏئي ٿو.
+ByMonthDay: ByMonthDay پاران
+repeat-byweekno-help: صارف کي واقعن کي ٻيهر ورجائڻ جي هفتن جي لسٽ بيان ڪرڻ جي اجازت ڏئي ٿو (1،2 ... 53، -53، -52 ...- 1).
+ByWeekNo: ويڪ ويڪ پاران
+repeat-byyearday-help: صارف کي ڏي وٺ جي لاءِ ڏينهن جي لسٽ بيان ڪرڻ جي اجازت ڏي ٿو (1،2 ... 366 ، -366 ، -365 ...- 1).
+ByYearDay: يو ڊي ڊي طرفان
+repeat-exceptions-help: اضافي ڏينهن ته اهو واقعو هئڻ گهرجي يا نه هئڻ گهرجي.
+Exclusions: بائيڪاٽ
+Inclusions: انڪشاف
+Add Exception: استثنا شامل ڪريو
+Add Inclusion: شموليت شامل ڪريو
+Delete Selected: منتخب ٿيل کي ختم ڪريو
+Send Reminder: نصيحت موڪل
+When: ڪڏھن
+Use Date/Time: تاريخ / وقت استعمال ڪريو
+Use Offset: آفسيٽ استعمال ڪريو
+Before: اڳي
+After: کان پوءِ
+Start: شروع ڪريو
+End/Due: ختم / واجب الادا
+Times: ٽائمز
+Every: هر
+CAPTCHA Warning: خبردار: PHP جي GD توسيع کان سواءِ CAPTCHA استعمال نٿا ڪري سگھجي.<br>
+Delete entry: داخلا ختم ڪريو
+You are not authorized to edit this entry.: توھان ھن داخلا کي ايڊٽ ڪرڻ جا مجاز ناھي.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: ايڪس اينڪس نئين ملاقات ڪئي آهي.
+XXX has updated an appointment.: ايڪسينڪس هڪ ملاقات جو وقت اپڊيٽ ڪيو آهي.
+Security violation!: حفاظت جي ڀڃڪڙي!
+You must enter the anti-spam text on the previous page.: توھان کي لازمي ھجڻ گھرجي انسداد اسپام وارو متن گذريل صفحي تي.
+The following conflicts with the suggested time: هيٺين وقت جي تجويز ڪيل وقت سان تڪرار آهي
+User removed from participants list.: استعمال ڪندڙن جي فهرست مان استعمال ڪندڙ هٽايو ويو
+Please look on XXX to accept or reject this appointment.: مهرباني ڪري هن ملاقات کي مڃڻ يا رد ڪرڻ جي لاءِ ايڪس اينڪس تي ڏسو.
+Please look on XXX to view this appointment.: مهرباني ڪري هن ملاقات کي ڏسڻ لاءِ ايڪس اينڪس تي ڏسو.
+Scheduling Conflict: شيڊولنگ لڙائي
+Your suggested time of: توهان جو تجويز ڪيل وقت
+conflicts with the following existing calendar entries: موجوده موجوده ڪئلينڊر وارين ڳالهين سان تضاد آهي
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX "config.php" ۾ طئي نہ ٿيو آھي.
+word characters only: (فقط لفظ جي ڪردارن تي مشتمل ٿي سگھي ٿو ؛ [a-zA-Z_0-9])
+Add User: استعمال ڪندڙ شامل ڪريو
+Edit User: استعمال ڪندڙ ۾ تبديلي آڻيو
+Calendar ID: ڪئلينڊر آئي ڊي
+First Name: پهريون نالو
+Last Name: آخري نالو
+Is public calendar: عوامي ڪئلينڊر آهي
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: ڊيٽابيس جي غلطي
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: ريموٽ ڪئلينڊر شامل ڪريو
+Edit Remote Calendar: ريموٽ ڪئلينڊر ۾ تبديلي آڻيو
+Create Layer: ليئر ٺاهيو
+Reload: ٻيهر لوڊ ڪريو
+Required to View Remote Calendar: ريموٽ ڪئلينڊر ڏسڻ جي لاءِ گهربل
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: درآمد جا نتيجا
+Events successfully imported: واقعن ڪاميابي سان درآمد ڪيا
+Create a new layer to view this calendar.: ھن ڪئلينڊر کي ڏسڻ لاءِ نئين پرت ٺاھيو.
+Errors: نقصَ
+There was an error parsing the import file or no events were returned.: درآمد فائل کي ترتيب ڏيڻ ۾ هڪ غلطي هئي يا نه ئي واقعا واپس ڪيا ويا.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: سڀاڻي
+Yesterday: ڪالهه
+Day before yesterday: ٻہ ڏينھن اڳ
+Next week: اڳين هفتي
+This week: ھن ھفتي
+Last week: گزريل هفتي
+Week before last: گذريل هفتي کان پهريان
+Next week and week after: اڳيون هفتو ۽ هفتو پوءِ
+This week and next week: ھن ھفتي ۽ ايندڙ ھفتي
+Last week and this week: گذريل هفتي ۽ هن هفتي
+Last two weeks: گذريل ٻه هفتا
+Next month: ايندڙ مهيني
+This month: هن مهيني
+Last month: گذريل مھيني
+Month before last: مھينا اڳي
+Next year: اڳئين سال
+This year: هن سال
+Last year: پوئين سال
+Year before last: گذريل سال کان اڳ
+Next 14 days: ايندڙ 14 ڏينهن
+Next 30 days: ايندڙ 30 ڏينهن
+Next 60 days: ايندڙ 60 ڏينهن
+Next 90 days: ايندڙ 90 ڏينهن
+Next 180 days: ايندڙ 180 ڏينهن
+Next 365 days: ايندڙ 365 ڏينهن
+Invalid report id XXX.: غلط رپورٽ آءِ ڊي: "XXX".
+Unnamed Report: نامعلوم رپورٽ
+Add Report: رپورٽ شامل ڪريو
+Edit Report: رپورٽ ۾ تبديلي آڻيو
+Report name: نالو ـ رپورٽ
+User: استعمال ڪندڙ
+Current User: هاڻوڪو صارف
+Include link in menu: مينيو ۾ ڳن link شامل ڪريو
+Include standard header/trailer: معياري ھيڊر / ٽيلر شامل ڪريو
+Include previous/next links: پوئين / ايندڙ لنڪس شامل ڪريو
+Include empty dates: خالي تاريخون شامل ڪريو
+Date range: تاريخ جي حد
+Template variables: خاڪا متغير
+Page template: صفحي جو نمونو
+Day template: ڏينھن جو نمونو
+Event template: واقعي جو نمونو
+Are you sure you want to delete this report?: ڇا اوھان واقعي ھن رپورٽ کي ختم ڪرڻ چاھيو ٿا؟
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: ڪابه اهڙي رپورٽ آئي ناهي: "ايڪس آرڪس".
+Variable XXX not found.: ڪيفيت ايڪس ايڪس نه مليو.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: ڪسٽم هيڊر ۾ تبديلي آڻيو
+Edit Custom Script/Stylesheet: ڪسٽم اسڪرپٽ / اسٽائل شيٽ ۾ تبديلي آڻيو
+Edit Custom Trailer: ڪسٽم ٽريلر ۾ تبديلي آڻيو
+
+########################################
+# Page: edit_user.php
+#
+Username: کاتي جو نالو
+E-mail address: اي ميل پتو
+Password: پاسورڊ
+again: ٻيهر
+Disabled for demo: ڊيمو لاءِ غير فعال
+Are you sure you want to delete this user?: ڇا اوھان واقعي ھن صارف کي ختم ڪرڻ چاھيو ٿا؟
+Change Password: پاس ورڊ تبديل ڪريو
+New Password: نئون پاسورڊ
+Set Password: پاسورڊ قائم ڪريو
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: استعمال ڪندڙ ختم ڪرڻ جي معاون ناھي.
+The passwords were not identical.: پاسورڊ هڪجهڙا نه هئا.
+You have not entered a password.: توهان پاسورڊ داخل نه ڪيو آهي
+Username cannot be blank.: يوزرنيم خالي نه ٿي سگھي.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: اختيار ٿيل نه
+
+########################################
+# Page: export.php
+#
+Export: برآمد ڪريو
+Export format: ايڪسپورٽ فارميٽ
+Include all layers: سڀ تہه شامل ڪريو
+Include deleted entries: ختم ٿيل داخلا شامل ڪريو
+Export all dates: سڀ تاريخون برآمد ڪريو
+Start date: شروعاتي تاريخ
+End date: آخري تاريخ
+Modified since: جڏھن کان تبديل ٿيل
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: برآمد جو نمونو تعريف ٿيل يا غلط ناهي.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: ڪوبه صارف متعين ٿيل ناهي
+
+########################################
+# Page: groups.php
+#
+Add New Group: نئون گروپ شامل ڪريو
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: بغير نالي وارو گروپ
+Add Group: گروپ شامل ڪريو
+Edit Group: ايڊيٽوريل گروپ
+Group name: گروپ جو نالو
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: توهان کي ڪنهن گروهه جو نالو طئي ڪرڻ گهرجي
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: پاڻمرادو تازه ترين ڪئلينڊر
+auto-refresh-help: جڏهن فعال ٿي ويو ، ڏينهن جو ڏيک ، هفتو وارو منظر ، مهينو ڏسڻ ، ۽ فهرست نه منظور ٿيل صفحا سڀ پنهنجو پاڻ کي وقتي طور تي ريفريش ڪندا.
+Auto-refresh time: پاڻمرادو تازو وقت
+auto-refresh-time-help: جيڪڏهن آٽو ريفريج فعال ٿي وئي آهي ، اهو هر ريفريش جي وچ ۾ وقت جو تعين ڪندو آهي.
+Display days with events in bold in year view: سال جي ڏيک ۾ بولڊ سان واقعن سان ڏينهن ڏيکاريو
+Display weekends in week view: هفتي جي ڏيک ۾ هفتي جي آخر ڏيکاريو
+Time interval: وقت جو وقفو
+time-interval-help: اهو بيان ڪري ٿو ته هفتو ڏسڻ ۾ ۽ وقت جو نظارو ڪيترو وقت بلاڪ ڪندو.
+Nonuser: غير استعمال ڪندڙ ڪئلينڊر
+user-customize-color: اهو واضح ڪري ٿو ته ڇا صارفين کي پنهنجن رنگن جي منصوبن ۾ تبديلي آڻڻ جي اجازت آهي.
+enable-gradient-help: سيل جي پسمنظر لاءِ تدريسي رنگ استعمال ڪريو.
+Manually entering color values: دستي طور رنگن جي قدرن ۾ داخل ٿيڻ
+colors-help: سڀني رنگن کي مخصوص ڪيو وڃي.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: بگ رپورٽ ڪيو
+Please include all the information below when reporting a bug.: مهرباني ڪري بگ جي رپورٽ ڪرڻ وقت هيٺ ڏنل معلومات شامل ڪريو.
+Also, please use English rather than XXX.: ان کان علاوه ، مهرباني ڪري ايڪس اين ايڪس جي بدران  انگريزي استعمال ڪريو.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: ويب ڪئلينڊر دستاويزي دستاويز
+Currently in English only.: في الحال صرف انگريزي ۾.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: ڪئلينڊر جي داخلا کي شامل ڪندي / ايڊٽ ڪرڻ
+Repeat Type: ورجائي وارو قسم
+For More Information...: وڌيڪ معلومات لاءِ ...
+Repeat End Date: ورجائي ختم ٿيڻ جي تاريخ
+Repeat Day: ورجائي ڏينهن
+repeat-day-help: اهو بيان ڪري ٿو ته هفتي جا ڏينهن ڪهڙا واقعا ٻيهر ورجائڻ گهرجن.
+
+########################################
+# Page: help_import.php
+#
+Import: درآمد ڪريو
+Palm Desktop: پام ڊيسڪ ٽاپ
+allow you to import entries from the Palm...: هي فارم توهان کي پام ڊيسڪٽاپ جي تاريخ ڪتاب مان داخلا درآمد ڪرڻ جي اجازت ڏيندو. اھو توھان جي پام ڊاريڪٽري ۾ واقع ھجڻ گھرجي توھان جي يوزر نيم طرفان ڏنل ذيلي ڊائريڪٽري ۾ datebook / datebook.dat ۾.
+The following entries will not be imported: هيٺيون داخلائون درآمد نه ڪيون وينديون.
+Entries older than the current date: موجوده تاريخ کان پراڻا داخلا
+Entries created in the Palm Desktop...: پام ڊيسڪ ٽاپ ۾ ٺاھيل اندراجات جيڪي HotSync'd نه رهيا آھن
+Anything imported from Palm...: پام مان جيڪا به درآمد ٿيل آهي اها ايندڙ واردات جي دوران لکندي ويندي (جيستائين واقعي جي تاريخ نٿي گذري). ان ڪري ، پام ڊيسڪاپ ۾ اپڊيٽس ڪرڻ گهرجن.
+vCal: وي سيال
+This form will import vCalendar (.vcs) 1.0 events.: هي فارم vCalendar (.vcs) 1.0 واقعن کي درآمد ڪندو.
+The following formats have been tested: هيٺيون شڪلون آزمائيون آھن.
+This form will import iCalendar (.ics) events.: هي فارم iCalendar (.ics) واقعن کي درآمد ڪندو.
+Enabling: فعال ڪرڻ
+Overwrite Prior Import: اڳوڻي واردات مٿان چڙھيو
+will cause events imported previously...: اڳوڻن وارداتن جو سبب بڻجندو ، جيڪي ساڳي UID استعمال ڪئي ، نئين درآمد فائل کان واقعي طور ، خارج ٿيل طور نشان لڳل. اها نقل ٿيل ٺاهي بغير هڪ تازه ڪاري آئي ڪئلينڊر فائل درآمد ڪرڻ جي اجازت ڏئي ٿي.
+
+########################################
+# Page: help_index.php
+#
+Help Index: مدد وارو انڊيڪس
+About WebCalendar: ويب ڪئلينڊر بابت
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: ٻرندڙ توهان جي پنهنجي ڪئلينڊر ۾ ٻين استعمال ڪندڙن جي واقعن کي ظاهر ڪرڻ لاءِ ڪارائتو آهن. توهان صارف کي بيان ڪري سگھو ٿا ۽ واقعن ۾ جنهن جو رنگ ظاهر ٿيندو.
+Add/Edit/Delete: جوڙ / ايڊٽ ڪريو / ختم ڪريو
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: صفحي جي تري ۾ منتظم سيڪشن ۾ ايڊٽ ڪريو ليئرز ايڊٽ ڪريو تي ڪلڪ ڪرڻ سان توهان ليئرز کي شامل ڪرڻ / ايڊٽ ڪرڻ / ختم ڪرڻ جي اجازت ڏيندا.
+The text color of the new layer that will be displayed in your calendar.: نئين پرت جو متن رنگ جيڪو توهان جي ڪئلينڊر ۾ ظاهر ٿيندو.
+Disabling: نااهل ڪرڻ
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: پيج کي بند ڪرڻ لاءِ پيج جي هيٺيان حصي ۾ منتظم سيڪشن ۾ Disable Layers لنڪ کي دٻايو.
+Duplicates: نقل
+If checked, events that are duplicates of your events will be shown.: جيڪڏهن چيڪ ڪيو ويو ته ، واقعا جيڪي توهان جي واقعن جا نقل آهن ڏيکاريا ويندا.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: پيج کي کولڻ لاءِ پيج جي هيٺئين حصي ۾ منتظم سيڪشن ۾ اينٽي ليئر لنڪ کي دٻايو.
+Source: ذريعو
+Specifies the user that you would like to see displayed in your calendar.: صارف کي بيان ڪيو جيڪو توهان ڏسڻ چاهيو ٿا توهان جي ڪئلينڊر ۾.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: اصلي قسم
+default-category-help: ڪيٽيگريءَ کي واضع ڪري ٿو هڪ نئون واقعو ڊيفالٽ ٿيڻ گھرجي.
+When I am the boss: جڏهن مان باس آهيان
+Email me event notification: مون کي واقعي جي اطلاع ڏانهن اي ميل ڪيو
+email-boss-notifications-help: اهو بيان ڪري ٿو ته جيڪڏهن باس اي ميلز واقعي واري اطلاع جي طور تي وصول ڪندا آهن
+I want to approve events: مان واقعن کي منظور ڪرڻ چاهيان ٿو
+boss-approve-event-help: اهو بيان ڪري ٿو ته ڇا باس کي مددگار طرفان شامل واقعن کي منظور ڪرڻ جي ضرورت پوندي.
+Subscribe/Publish: قبوليو / شايع ڪريو
+Allow remote publishing: ريموٽ اشاعت جي اجازت ڏيو
+allow-remote-publishing-help: اهو بيان ڪري ٿو ته ڪو ريموٽ iCal ڪلائنٽ واقعن کي ويب ڪئلينڊر ڏانهن واپس شايع ڪري سگهي
+remote-publishing-url-help: ويب ڪريلنر کي سبسڪرائيب ڪرڻ ۽ واپس شايع ڪرڻ لاءِ URL کي آئي سيال ڪلائنٽ ايپليڪيشن ۾ استعمال ڪرڻ لاءِ ڏيکاري ٿو.
+allow-remote-subscriptions-help: اهو بيان ڪري ٿو ته دور دراز جا صارف توهان جي ڪئلينڊر کي سبسڪرائيب ڪري سگھن ٿا ، انهن کي توهان جي واقعن کي iCal کي فعال ٿيل ايپليڪيشن ۾ ڏسڻ جي اجازت ڏين ٿا (جهڙوڪ ايپل جو iCal يا Mozilla Calendar).
+remote-subscriptions-url-help: ڏيکاري ٿو URL ريموٽ استعمال ڪندڙن کي توهان جي ڪئلينڊر کي سبسڪرائب ڪرڻ لاءِ استعمال ڪرڻ گهرجي.
+Enable FreeBusy publishing: فري بسائي اشاعت کي فعال ڪريو
+freebusy-enabled-help: اهو بيان ڪري ٿو ته جيڪڏهن صارف جو دستياب وقت iCal FreeBusy معيار استعمال ڪندي حاصل ڪري سگهجي ٿو.
+freebusy-url-help: يوزر جو فريسي بس استعمال ڪندڙ جي رسائي تائين رسائي حاصل ڪرڻ لاءِ
+rss-feed-url-help: آر ايس ايس فيڊ تائين رسائي جي لاءِ URL
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: صارف جي رسائي ۽ اجازتن جي صحيح ڪنٽرول جي اجازت ڏئي ٿو. صارف منتظم جي طرفان اجازت ڏنل ۽ انفرادي اجازت پڻ ڏئي سگھن ٿا.
+If disabled, this user cannot send you emails.: جيڪڏهن معذور آهي ، اهو صارف توهان کي اي ميلون نه موڪلي سگهي ٿو.
+If disabled, this user cannot see you in the participants list.: جيڪڏھن معذور ھجي ، اھو صارف توھان کي شرڪت ڪندڙن جي فھرست ۾ نه ڏسي سگھي.
+If enabled, this user cannot view the details of any of your entries.: جيڪڏهن فعال ٿي ويو ، اهو صارف توهان جي ڪنهن به اندراج جي تفصيل نه ڏسي سگهندو.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): پبلشنگ معذور (ايڊمن)
+Publishing Disabled (User): پبلشنگ معذور (يوزر)
+
+########################################
+# Page: icons.php
+#
+Click to Select: منتخب ڪرڻ لاءِ ڪلڪ ڪريو
+Current Icons on Server: سرور تي موجوده نشانيون
+
+########################################
+# Page: import.php
+#
+import from file: فائل مان درآمد ڪريو
+Disabled: معذور
+Import format: واپار جي شڪل
+Exclude private records: خانگي رڪارڊ ختم ڪيو
+Repeated items are imported separately. Prior imports are not overwritten.: بار بار واريون شيون ڌار ڌار درآمد ڪيون وينديون آهن. اڳئين واردات گهڻي تعداد ۾ نه لکندي آهي.
+
+########################################
+# Page: import_handler.php
+#
+No file: فائيل نه
+Error deleting palm events from webcalendar.: ويب ڪئلينڊر کان کجي جا واقعا ختم ڪرڻ ۾ مسئلو.
+Events from prior import marked as deleted: اڳوڻي واردات بابت واقعن کي خارج ڪيو ويو نشان لڳل
+Conflicting events: تڪرار وارا واقعا
+The import file contained no data.: درآمد واري فائل ۾ ڪا ڊيٽا نه هئي.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: ڇا توهان پڪ سان هن پرت کي ختم ڪرڻ چاهيندا آهيو؟
+Delete layer: پرت کي ختم ڪريو
+Edit layer: ليٽر ايڊٽ ڪريو
+Enable layers: تہه چالو ڪريو
+Layer: ليئر
+Layers are currently disabled.: ليور هن وقت ناجائز آهن.
+Layers are currently enabled.: ليور هن وقت فعال آهن.
+Click to modify layers settings for XXX: ايڪس اين ايڪس ڪئلينڊر لاءِ ٺاھ جوڙ جي تبديلين لاءِ ھتي ڪلڪ ڪريو.
+Disable Layers: تہه بند ڪريو
+Add layer: پرت شامل ڪريو
+Add Layer: ليئر شامل ڪريو
+Edit Layer: ليئر ۾ تبديلي آڻيو
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: ترجيح کي اپڊيٽ ڪرڻ جي قابل ناھي
+Invalid entry id.: داخلا جي غلط سڃاڻپ
+You cannot create a layer for yourself.: توھان پنھنجي لاءِ پرت پيدا نٿا ڪري سگھو.
+You can only create one layer for each user.: توھان رڳو ٺاھي سگھوٿا ھر ھڪڙي صارف لاءِ.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: منظور ڪريو / پڪ ڪريو
+Approve Selected: منتخب ٿيل منظور
+Check All: سڀ چيڪ ڪريو
+Emails Will Not Be Sent: اي ميلون نه موڪليون وينديون
+Reject Selected: منتخب ٿيل رد
+Reject: رد ڪريو
+Uncheck All: سڀ غير چيڪ ڪريو
+View this entry: هي داخلا ڏسو
+No unapproved entries for XXX.: لاءِ "ايڪس اين ايڪسڪس" لاءِ غير منظور ٿيل داخلا ،
+Unapproved Entries: غير منظور ٿيل داخلائون
+Approve this entry?: هن داخلا کي منظور ڪيو؟
+Reject this entry?: هن داخلا کي رد ڪريو؟
+Approve Selected entries?: منتخب ٿيل داخلا منظور ڪيو؟
+Reject Selected entries?: منتخب ٿيل داخلين کي رد ڪريو؟
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: توهان کي هڪ لاگ ان ۽ پاسورڊ داخل ڪرڻ گهرجي
+Save login via cookies so I dont have to login next time.: ڪوڪيز ذريعي لاگ ان محفوظ ڪريو پوءِ مون کي ايندڙ وقت لاگ ان نه ٿيڻ گهرجي
+Login: لاگ ان
+public: عوامي
+Access XXX calendar: ايڪس اين ايڪس ڪئلينڊر تائين رسائي
+cookies-note: نوٽ: هن ايپليڪيشن کي فعال ٿيڻ لاءِ ڪوڪيز جي ضرورت آهي.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: لاگ ان ايڪس ايمڪس ۾ غير قانوني حرف.
+Invalid login: غلط لاگ ان
+Activity login failure: يوزر نيم: "ايڪس ايمڪس" ، اي پي: "وائي يو"
+Error XXX: غلطي: "ايڪس اينڪس".
+You have been logged out.: توهان لاگ آئوٽ ٿي چڪا آهيو.
+Access public calendar: عوامي ڪئلينڊر تائين رسائي ڪريو
+Not yet registered? Register here!: اڃا تائين رجسٽر ٿيل ناهي؟ هتي داخل ٿيو!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: ڪوبه اهڙو غير نصابي ڪئلينڊر ناهي: ”ايڪس آرڪس“.
+This Calendar is not Public.: اهو ڪئلينڊر عوامي ناهي.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: نون استعمال ڪندڙن جو ڪئلينڊر شامل ڪريو
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: لاگ ان ضرور بيان ڪيو وڃي.
+No such nonuser calendar: ڪوبه اهڙو به غير ڪئلينڊر نه آهي
+
+########################################
+# Page: pref.php
+#
+Invalid theme: غلط موضوع
+Save Preferences: ترجيحات محفوظ ڪريو
+Public Access calendar: عوامي پهچ جو ڪئلينڊر
+Modify Non User Calendar Preferences: غير صارف جي ڪئلينڊر جي ترجيحن کي تبديل ڪريو
+Return to My Preferences: منهنجي ترجيحن ڏانهن واپس اچو
+Custom Scripts: ڪسٽم اسڪرپٽ
+Timezone Selection: ٽائيم زون جو انتخاب
+Multiview: ملائي ڏسڻ:
+entry-interval-help: داخلا وقت تبديل ڪندي جڏهن منٽ جو وقفو مقرر ڪيو وڃي
+Entry interval: داخلا جو وقفو
+hour: ڪلاڪ
+minute: منٽ
+theme-reload-help: سي ايس ايس ڪيچنگ جي ڪري ، صفحن کي ٻيهر لوڊ ڪرڻ جي ضرورت ٿي سگهي ٿي
+Page may need to be reloaded for new Theme to take effect: اثر انداز ٿيڻ لاءِ پيج کي نئين سر لوڊ ڪرڻ جي ضرورت آهي
+display_byproxy-help: view_entry پيج تي حقيقي دڪاندار ڏيکاريو
+Display if created by Assistant: ظاهر ڪريو جيڪڏهن اسسٽنٽ طرفان ٺاهيل
+allow-view-subscriptions-help: خانگي يا ڳجهي داخلين تائين ريموٽ رسائي کي محدود ڪرڻ جي اجازت ڏئي ٿو
+Allow remote viewing of: ٻاهرين ڏسڻ جي اجازت ڏي
+entries: داخلائون
+
+########################################
+# Page: purge.php
+#
+Purging events for: جي لاءِ پاڪ ڪرڻ واريون تقريبون
+Finished: پورو ٿيو
+Back: پوئتي
+Check box to delete ALL events for a user: چيڪ ڪيو باڪس کي ختم ڪرڻ لاءِ  سڀ ايونٽ استعمال ڪندڙ لاءِ
+Delete all events before: سڀ واقعا اڳ ۾ ختم ڪريو
+Purge deleted only: صرف صاف ٿيل خذمت
+Preview delete: ڏيکاء ختم ڪريو
+Are you sure you want to delete events for: ڇا توهان پڪ ڪيو ته توهان واقعن کي ختم ڪرڻ چاهيو ٿا
+Records deleted from XXX: ”ايڪسريڪس“ مان ريڪارڊ حذف ٿي ويا.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: اي ميل پتو خالي نٿو ٿي سگھي.
+Username already exists.: يوزر نيم اڳ ۾ ئي موجود آهي.
+Email address already exists.: ايميل پتو اڳ ئي موجود آهي.
+New user via self-registration.: نئون استعمال ڪندڙ پنهنجي رجسٽريشن ذريعي.
+A new WebCalendar account has been set up for you.: توھان جي لاءِ نئون ويب ڪئلينڊر کاتو قائم ڪيو ويو آھي.
+Your username is XXX.: توھان جو يوزر نيم آھي: "XXX".
+Your password is XXX.: توهان جو پاسورڊ آهي: "XXX"
+Please visit XXX to log in and start using your account!: مهرباني ڪري لاگ ان ڪريو ۽ پنهنجو اڪائونٽ استعمال ڪرڻ شروع ڪريو ته ”XXX“!
+You may change your password after logging in the first time.: توهان پهريون دفعو لاگ ان ٿيڻ بعد پنهنجو پاسورڊ مٽائي سگهو ٿا.
+If you received this email in error: جيڪڏهن توهان هي اي ميل غلطي سان حاصل ڪئي ۽ ويب ڪئلينڊر اڪائونٽ لاءِ سائن اپ نه ڪيو ، توهان شايد هن نوٽيس کي نظرانداز ڪيو ، يا هڪ مختصر نوٽ سان جواب ڏيو.
+Administrator: ايڊمنسٽريٽر
+Welcome: ڀلي ڪري آيا
+New user via email.: اي ميل ذريعي نئون استعمال ڪندڙ.
+Registration: رجسٽريشن
+Welcome to WebCalendar: ويب ڪئلينڊر ۾ ڀليڪار
+Your email should arrive shortly.: توهان جي ايم ميل جلد اچڻ گهرجي.
+Return to Login screen: لاگ ان اسڪرين تي واپس وڃو
+Password (again): پاسورڊ (ٻيهر):
+Your account information will be emailed to you.: توهان جي اڪائونٽ جي youاڻ توهان کي اي ميل ٿي ويندي.
+Submit: جمع ڪريو
+
+########################################
+# Page: reject_entry.php
+#
+Continue: جاري رکو
+(Your comments will be emailed to the other participants.): (توهان جا رايا ٻين شرڪت ڪندڙن کي اي ميل ڪيا ويندا.)
+XXX has rejected an appointment.: ايڪس اينڪس هڪ ملاقات کي رد ڪري ڇڏيو آهي.
+Rejected by XXX.: ايڪس اينڪس کان رد.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: نئون ريموٽ ڪئلينڊر شامل ڪريو
+
+########################################
+# Page: report.php
+#
+This event is confidential.: اها واقعي رازداري آهي.
+(Private): (خانگي)
+(cont.): (مقابلو)
+Approved: منظور ٻگهيو
+Deleted: ختم ٿيل
+Rejected: رد ٿيل
+Waiting for approval: منظوري جو انتظار رهندو
+Unknown: اڻ سڃاتل
+Invalid report id.: غلط رپورٽ آئي.
+Click here to manage reports for the Public Access calendar.: عوامي رسائي واري ڪئلينڊر لاءِ رپورٽون منظم ڪرڻ لاءِ هتي ڪلڪ ڪريو.
+Add new report: نئين رپورٽ شامل ڪريو
+Manage Reports: رپورٽون سنڀاليو
+
+########################################
+# Page: search.php
+#
+Advanced Search: ايڊوانس سرچ
+Search: ڳولا
+Keywords: لفظ
+Enter % for all entries: سڀ داخلا لاءِ٪ داخل ڪريو
+Include: شامل ڪريو
+Filter by Date: تاريخ مطابق چڪاس ڪريو
+All Dates: سڀ تاريخون
+Past: اڳوڻو
+Upcoming: ايندڙ
+Range: حد
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: توهان کي لازمي طور تي هڪ يا وڌيڪ ڳولا وارو لفظ داخل ڪرڻ گهرجي.
+Search Results: ڳولا جا نتيجا
+match found: ميچ ملي وئي
+matches found: مليا
+No matches found: ڪوبه مادو نه مليو
+New Search: نئين ڳولها
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: هيٺ ڏنل yourاڻ توهان جي ويب ڪئلينڊر جي انسٽاليشن سان امڪاني مسئلن جي فهرست آهي جيڪا توهان جي انسٽاليشن کي وڌيڪ محفوظ بڻائڻ لاءِ تبديل ٿي سگهي ٿي.
+For questions about WebCalendar security see the forums: ڪنهن به ويب ڪئلينڊر جي حفاظت واري مسئلي بابت سوال لاءِ ، مهرباني ڪري GitHub.com تي ميزباني ڪيل ويب ڪئلينڊر فورم استعمال ڪريو ؛<br>XXX
+View your current PHP settings: پنھنجي موجوده PHP سيٽنگن کي ڏسو
+Security Issue: سيڪيورٽي جو مسئلو
+Status: حيثيت
+Default admin user password: طئي ٿيل منتظم صارف جو پاسورڊ
+You should change the password of the default admin user.: توهان کي ڊفالٽ منتظم صارف جو پاسورڊ تبديل ڪرڻ گهرجي.
+File permissions XXX: فائل جي اجازتون: ايڪس اينڪس
+item XXX should not be writable: هيٺ ڏنل شين کي لکڻ نه گهرجي.<br><tt> XXX</tt>
+File exists XXX: فائيل موجود آهي: "XXX"
+Because you have email disabled, you should remove this file.: ڇاڪاڻ ته توهان وٽ اي ميل معذور آهي ، توهان کي هن فائل کي ختم ڪرڻ گهرجي.
+File location XXX: فائيل جي جڳھ: "XXX"
+remove XXX if not using: جيڪڏهن توهان فائيل "ايڪس ايمڪس" استعمال نه پيا ڪريو ، توهان کي ان کي ختم ڪرڻ گهرجي. يا ، گهٽ ۾ گهٽ ، ان کي نئين ڊاريڪٽري ڏانهن منتقل ڪريو.
+System Settings XXX: سسٽم سيٽنگون: "ايڪس ايمڪس"
+consider enabling UAC: توهان صارف جي استحقاق کي ترتيب ڏيڻ لاءِ صارف رسائي رسائي کي فعال ڪرڻ تي غور ڪرڻ چاهيندا.
+recommend approving new public events: اسان مشورو ڏيو ته سڀني عوامي واقعن جون موڪلون منظور ڪيون وڃن.
+recommend using CAPTCHA: ڪئپٽيڪا کي خودڪار واقعن جي جمع ڪرائڻ جي حفاظت لاءِ سفارش ڪئي وئي آهي.
+Database cache directory location: ڊيٽابيس ڪيش ڊاريڪٽري جي جڳھ
+db cache should be inaccessable: ڊيٽابيس جي ڪيش ھڪڙي ڊاريڪٽري ۾ ھجڻ گھرجي جيڪا يو آر ايل سان پھچي نه سگھي.
+PHP Settings XXX: پي ايڇ پي سيٽنگون: "ايڪس اينڪس"
+recommend setting XXX Off: "ايڪس اينڪس" لاءِ تجويز ڪيل جوڙجڪ بند آھي.
+recommend setting allow_url_fopen Off: "allow_url_fopen" لاءِ تجويز ڪيل ترتيب بند آھي جڏھن ريموٽ ڪئلينڊرون فعال نه آھن.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: ٻي استعمال ڪندڙ جو ڪئلينڊر ڏسو
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: توهان ڪي به درجو شامل نه ڪيو آهي.
+Set Category: سيٽ ڪريو ڀا Categoryو
+Global Categories cannot be changed.: گلوبل ڪيٽيگريز تبديل نه ٿي ڪري سگھجن.
+
+########################################
+# Page: upcoming.php
+#
+more: وڌيڪ
+
+########################################
+# Page: users.php
+#
+Remote Calendars: ريموٽ ڪئلينڊر
+denotes administrative user: انتظامي صارف کي رد ڪري ٿو
+Add New User: نئون استعمال ڪندڙ شامل ڪريو
+
+########################################
+# Page: usersel.php
+#
+form: فارم
+Reset: ٻيھر سيٽ ڪريو
+
+########################################
+# Page: views.php
+#
+Add New View: نئون ڏيک شامل ڪريو
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: بغير نالي وارو منظر
+Add View: شامل ڪريو
+Edit View: تبديلي جو ڏيک
+View Name: نالو ڏسو
+View Type: قسم جو ڏيک
+Day by Time: ڏينهن ويو وقت
+Week (Users horizontal): هفتو (صارفين افقي)
+Week by Time: هفتو وقت جي لحاظ سان
+Week (Users vertical): هفتو (صارفين عمودي)
+Week (Timebar): هفتو (ٽائمبار)
+Month (Timebar): مهينو (ٽائمبار)
+Month (side by side): مهينو (طرف سان)
+Month (on same calendar): مهينو (ساڳئي ڪئلينڊر تي)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: توهان کي هڪ نظارو نالو specifyاڻڻ گهرجي
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: ڪوبه ڏيکاءُ رکندڙ انهي لاءِ ناهي.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: ٽاسڪ في سيڪڙو تازه ڪاري ڪريو
+Completed: مڪمل ٿيل
+Assistant mode: اسسٽنٽ موڊ
+Declined: رد ڪيو ويو
+Needs-Action: گهربل عمل
+by: پاران
+Percentage Complete: في سيڪڙو مڪمل
+External User: ٻاهرين استعمال ڪندڙ
+Update: اپڊيٽ
+at: تي
+comments: تبصرا
+Show: ڏيکاريو
+Hide: لڪايو
+Approve/Confirm entry: داخلا منظور يا تصديق ڪريو
+Reject entry: داخلا رد ڪريو
+Set category: درجي جو قسم
+Add to My Calendar: منهنجي ڪئلينڊر ۾ شامل ڪريو
+Copy entry: نقل داخل ڪريو
+This will delete this entry for all users.: اهو سڀ استعمال ڪندڙن لاءِ هن داخلا کي خارج ڪري ڇڏيندو آهي.
+Edit entry: داخلا ۾ تبديلي آڻيو
+Edit repeating entry for all dates: سڀني تاريخن لاءِ ورجائي واري داخلا ۾ تبديلي آڻيو
+Delete repeating event for all dates: سڀني تاريخن لاءِ ورجائڻ وارو واقعو ختم ڪريو
+Edit entry for this date: هن تاريخ لاءِ داخلا داخل ڪريو
+Delete entry only for this date: صرف ھن تاريخ لاءِ داخلا ختم ڪريو
+Delete entry from calendar of XXX: ايڪس اين ايڪسڪس جي ڪئلينڊر کان داخلا ختم ڪريو
+This will delete the entry from your XXX calendar.: اهو توهان جي ايڪس اين ايڪس ڪئلينڊر کان داخلا ختم ڪري ڇڏيندو.
+boss: باس ’
+This will delete the entry from your boss calendar.: اهو توهان جي باس جي ڪئلينڊر کان داخلا ختم ڪري ڇڏيندو.
+This will delete the entry from your calendar.: اهو توهان جي ڪئلينڊر کان داخلا ختم ڪري ڇڏيندو.
+from your boss calendar: توهان جي باس جي ڪئلينڊر کان
+Do you want to add this entry to your calendar?: ڇا توهان هن داخلي کي پنهنجي ڪئلينڊر ۾ شامل ڪرڻ چاهيو ٿا؟
+This will add the entry to your calendar.: اهو توهان جي ڪئلينڊر ۾ داخل ٿيڻ شامل ڪندو.
+Email all participants: سڀني شرڪت ڪندڙن کي اي ميل ڪيو
+Hide activity log: سرگرمي لاگ لڪايو
+Show activity log: سرگرمي لاگ ڏيکاريو
+Export this entry to: انهي کي داخل ڪريو برآمد ڪريو
+Palm Pilot: پام جو پائلٽ
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: خالي داخلا تي ڊبل ڪلڪ ڪريو نئين داخلا شامل ڪرڻ لاءِ.
+
+########################################
+# Page: week_details.php
+#
+New Entry: نئين داخلا
+cont.: مقابلو
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: يوزر جي استعمال جو ڪئلينڊر
+Category Management: درجه بندي جو انتظام
+Day View: ڏينھن جو ڏيک
+Edit Event: واقعي ۾ تبديلي آڻيو
+Month View: مهيني جو ڏيک
+Common Trailer: عام پيچرو
+User Management: يوزر مئنيجمينٽ
+Manage Views: نظارن کي سنڀاليو
+Week View: هفتو ڏسڻ
+Year View: سال جو ڏيک
+Invalid function id: غلط ڪم واري سڃاڻپ
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: "setting.php" فائل نه لڌو.
+Incomplete settings.php file...: نامڪمل "setting.php" فائيل ...
+Could not find XXX defined in...: توھان جي "setting.php" فائل ۾ ڏنل "XXX" ڳولي نه لڌو.
+You must define XXX in: "سيٽنگس.پ.پي" فائل ۾ توھان کي "ايڪسچينج" ضرور بيان ڪرڻ گھرجي.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: ڊسمبر
+Dec: ڊسمبر
+LANGUAGE DEFINED: ٻولين جي وضاحت ڪئي وئي
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: ڊيٽابيس سان ڳن connectingڻ ۾ غلطي: "ايڪس اينڪس".
+db_type not defined.: ڊي بي_ قسم بيان نه ٿيل آهي.
+invalid db_type XXX: غلط db_type "" XXX ".
+Cache cleared from previous SQL!: گذريل SQL کان ڪيش صاف ڪئي وئي!
+Error executing query.: سوال هلائڻ دوران مسئلو.
+Unfortunately, XXX is not implemented for YYY: بدقسمتي سان ، "ايڪس ايمڪس" تي عمل نه ڪيو ويو آھي (وائي يو) لاءِ
+Unknown ODBC error.: او ڊي بي سي جي نامعلوم غلطي.
+Error opening cache dir XXX.: ڪيش dir "XXX" کولڻ ۾ مسئلو.
+delete: ختم ڪريو
+Cache error Could not XXX file YYY.: ڪيش جي غلطي: ايڪس اينڪس فائيل ”وائي“ نه ٿي سگھيو.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: موتمار غلطي
+Invalid data format for: لاءِ غلط ڊيٽا فارميٽ
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: مسئلو: سرگرمي لاگ جي لاءِ سيٽ ناھي
+This event is XXX.: اهو واقعو ايڪس اين ايڪس آهي.
+Conf.: جوڙ.
+exceeds limit of XXX events per day: في ڏينهن ايڪس ايڪسڪس واقعن جي حد کان وڌي ويو آهي
+on: جاري آهي
+All Attendees: سڀ حاضري ڏيندڙ
+Busy: مصروف
+Tentative: عارضي
+Schedule an appointment for XXX.: ايڪسينڪس لاء ملاقات جو وقت طئي ڪيو: YYY.
+date_select: __d______ مهيني_ __yyy__
+Event approved: واقعي جي منظوري ڏني وئي
+Journal approved: جرنل منظور ٿيو
+Task approved: ڪم منظور ٿيو
+Attachment: منسلڪ
+Event created: واقعو پيدا ٿيو
+Journal created: جرنل ٺاھيو ويو
+Task created: ڪم تخليق ٿيو
+Event deleted: واقعي کي ختم ڪيو ويو
+Journal deleted: جرنل ختم ڪيو ويو
+Task deleted: ڪم ختم ٿيل
+New user via email (self registration): اي ميل ذريعي نئون استعمال ڪندڙ (خود رجسٽريشن)
+New user (self registration): نئون استعمال ڪندڙ (خود رجسٽريشن)
+Notification sent: اطلاع موڪليو ويو
+Event rejected: واقعي رد ڪيو ويو
+Journal rejected: جرنل رد ڪيو
+Task rejected: ڪم رد ٿي ويو
+Reminder sent: يادگيري موڪلي وئي
+Event updated: واقعي جي اپڊيٽ ٿي
+Journal updated: جرنل تازو ٿي ويو
+Task updated: ڪم تازو ڪيو ويو
+Delete User: استعمال ڪندڙ ختم ڪريو
+WK: ويڪ
+TASKS: ٽاسڪ
+Task_Title: عنوان
+Due: سبب ٿينديون
+Task Name: ڪم جو نالو
+Task Due Date: ڪم جي آخري تاريخ
+You have XXX unapproved entries: توھان وٽ ايڪس ايمڪس جون غير منظور ٿيل داخلائون آھن 
+Changes successfully saved: تبديليون ڪاميابي سان محفوظ ٿي چڪيون
+Event: واقعي
+Action: عمل
+Printer Friendly: پرنٽر دوست
+Generate printer-friendly version: پرنٽر-دوستانه نسخو ٺاھيو
+after: کانپوءِ
+before: اڳ
+end: آخري
+start: شروعات
+View this event: ھي واقعو ڏسو
+View this task: هن ڪم کي ڏسو
+January: جنوري
+February: فيبروري
+March: مارچ
+April: اپريل
+May_: مئي
+June: جون
+July: جولاء
+August: آگسٽ
+September: سيپٽمبر
+October: آڪٽوبر
+November: نومبر
+Jan: جنوري
+Feb: فيبروري
+Mar: مارچ
+Apr: اپريل
+May: مئي
+Jun: جون
+Jul: جولاءِ
+Aug: آگسٽ
+Sep: سيپٽمبر
+Oct: آڪٽوبر
+Nov: نومبر
+SU: ايس يو
+MO: ايم او
+TU: ٽيو
+WE: اسان
+TH: ايڇ
+FR: ايف
+SA: =
+unknown-month: اڻ -اڻ وارو مهينو
+First Quarter Moon: پھرين ڪوارٽر چنڊ
+Full Moon: مڪمل چنڊ
+Last Quarter Moon: آخري چوٿون چنڊ
+New Moon: نئون چنڊ
+Error TIME_SLOTS undefined!: نقص: TIME_SLOTS اڻ وضاحت ٿيل!
+The following error occurred: هيٺ ڏنل غلطي ٿي وئي
+You are not authorized.: توھان مجاز ناھي.
+Add N hours to: شامل ڪريو ن ڪلاڪن جا
+Subtract N hours from: ڪٽيون N ڪلاڪ کان
+same as: ساڳيو
+server time: سرور جو وقت
+Cannot read timezone file XXX.: ٽائم زون فائل نه پڙهي سگهيا: XXX.
+Your current GMT offset is XXX hours.: توهان جي هاڻوڪي جي ايم ٽي آفسيٽ ايڪس سي ايڪس ڪلاڪ آهي.
+Unauthorized: غير مجاز
+Error approving event XXX.: واقعي جي منظوري جي غلطي: ايڪس اينڪس.
+Error deleting event XXX.: واقعي کي ختم ڪرڻ ۾ غلطي: XXX.
+Error rejecting event XXX.: واقعي کي رد ڪرڻ ۾ غلطي: ايڪس اينڪس.
+Sunday: آچر
+Monday: سومر
+Tuesday: اڱارو
+Wednesday: اربع
+Thursday: خميس
+Friday: جمع
+Saturday: ڇنڇر
+Sun: آچر
+Mon: پير
+Tue: ا .ارو
+Wed: اربع
+Thu: ٿُو
+Fri: جمعو
+Sat: ڇنڇر
+unknown-weekday: اڻ -اڻ-هفتيوار ڏينهن
+Invalid referring URL: غلط حوالي واري يوآر ايل
+
+########################################
+# Page: includes/help_list.php
+#
+Index: انڊيڪس
+Documentation: دستاويز
+Page: صفحو
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: منهنجو ڪئلينڊر
+Add New Entry: نئون داخلا شامل ڪريو
+Add New Task: نئون ٽاسڪ شامل ڪريو
+Logout: ڪم ڇڏڻ
+Home: گهري
+Back to My Calendar: منهنجي ڪئلينڊر ڏانهن واپس ٿيو
+Go to: ڏانھن وڃو
+Manage calendar of: ڪئلينڊر جو انتظام ڪريو
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: برائوزر ٻولي نه لڌي
+(not supported): (مدد نه ڪئي وئي)
+Abkhazian: ابخازين
+Acoli: اڪيلي
+Adangme: ايڊانگم
+Adyghe: اجائي
+Afar: افڪار
+Afrihili: آفريشي
+Afrikaans: آفريڪي
+Ainu: ائنو
+Akan: اڪان
+Akkadian: اڪκαڊين
+Albanian: الباني
+Aleut: الوٽ
+Algonquian: الگنونين
+Altai (Southern): الٽيائي (ڏاکڻي)
+Amharic: امهاري
+Angika: انجيڪا
+Apache: اپاچي
+Arabic (Algeria): عربي (الجيريا)
+Arabic (Bahrain): عربي (بحرين)
+Arabic (Egypt): عربي (مصر)
+Arabic (Iraq): عربي (عراق)
+Arabic (Jordan): عربي (اردن)
+Arabic (Kuwait): عربي (ڪويت)
+Arabic (Lebanon): عربي (لبنان)
+Arabic (Libya): عربي (لبيا)
+Arabic (Morocco): عربي (مراڪش)
+Arabic (Oman): عربي (عمان)
+Arabic (Qatar): عربي (قطر)
+Arabic (Saudi Arabia): عربي (سعودي عرب)
+Arabic (Syria): عربي (شام)
+Arabic (Tunisia): عربي (تيونس)
+Arabic (U.A.E.): عربي (يو اي ڊي)
+Arabic (Yemen): عربي (يمن)
+Arabic: عربي
+Aragonese: اراجنجن
+Aramaic: آرامائي
+Arapaho: ايراپو
+Arawak: اروڙ
+Armenian: آرمينيائي
+Assamese: آسامي
+Asturian: ايسٽورين
+Athapascan: اتاپاسڪن
+Avaric: اوارڪ
+Avestan: آوسٽان
+Awadhi: اودي
+Aymara: اِيِمارا
+Azerbaijani: آذربائيجان
+Balinese: بالينسي
+Baluchi: بلوچي
+Bambara: بامارا
+Bamileke: بامليڪ
+Banda: بندا
+Basa: باسا
+Bashkir: بشرڪ
+Basque: بسڪاني
+Beja: بيجا
+Belarusian: بيلاروسي
+Bemba: بيema
+Bengali: بنگالي
+Bhojpuri: باجوپوري
+Bihari: بِھاري
+Bikol: بڪلول
+Bislama: بسلما
+Blackfoot: بليڪ فوٽ
+Blin: بلين
+Bliss: خوشي
+Bosnian: بوسنيائي
+Braj: برج
+Breton: بريٽن
+Buginese: بگين
+Bulgarian: بلغاريائي
+Buriat: بوريات
+Burmese: برمي
+Caddo: ڪدو
+Catalan: قيطلوني
+Cebuano: ڪيوبوانو
+Chagatai: چگٽي
+Chamorro: چموررو
+Chechen: چيچن
+Cherokee: چروڪي
+Cheyenne: چيئي
+Chibcha: چيڀا
+Chichewa: چيچي
+Chinese (Hong Kong): چيني (هانگ ڪانگ)
+Chinese (PRC): චීන (PRC)
+Chinese (Simplified/GB2312): چيني (سولي / GB2312) 
+Chinese (Singapore): چيني (سنگاپور)
+Chinese (Taiwan): چيني (تائيوان)
+Chinese (Traditional/Big5): چيني (روائتي / وڏي 5)
+Chinook: چنانوڪ
+Chipewyan: چپائي
+Choctaw: چوڪٽ
+Chuukese: چوڪيز
+Chuvash: چوويش
+Coptic: ڪوپٽڪ
+Cornish: ڪارنيش
+Corsican: ڪارسيڪائي
+Cree: ڪر
+Creek: ڪيري
+Croatian: ڪروشيائي
+Czech: چيڪ ٻولي
+Dakota: ڊڪوڪا
+Danish: ڊينش ٻولي
+Dargwa: دارگاوا
+Delaware: ڊيلويئر
+Dinka: دڪا
+Dogri: ڊاگر
+Dogrib: ڊاٽ ڪام
+Duala: دوالا
+Dutch (Belgium): ڊچ (بيلجيم)
+Dutch: ڊچ ٻولي
+Dyula: دووله
+Dzongkha: ژونگڪا
+Edo: اڊو
+Efik: ايفيڪ
+Ekajuk: ايجڪج
+Elamite: ايلامائٽ
+English (Australia): انگريزي (آسٽريليا)
+English (Belize): انگريزي (بيلز)
+English (Canada): انگريزي (ڪينيڊا)
+English (Ireland): انگريزي (آئرلينڊ)
+English (Jamaica): انگريزي (جميڪا)
+English (New Zealand): انگريزي (نيوزيلينڊ)
+English (Philippines): انگريزي (فلپائن)
+English (South Africa): انگريزي (ڏکڻ آفريڪا)
+English (Trinidad & Tobago): انگريزي (ٽرنيداد ۽ ٽوباگو)
+English (United Kingdom): انگريزي (برطانيه)
+English (United States): انگريزي (آمريڪا)
+English (Zimbabwe): انگريزي (زمبابوي)
+English: انگريزي-يو ايس
+Erzya: آرزيا
+Esperanto: ايسپرانتو
+Estonian: ايستونائي
+Ewe: ايڏو
+Ewondo: ايوانڊو
+Fang: فانگ
+Fanti: فينتي
+Faroese: فيروزي
+Fijian: فجيان
+Filipino: فلپائني
+Finnish: فني
+Fon: فونن
+French (Belgium): فرانسيسي (بيلجيم)
+French (Canada): فرانسيسي (ڪينيڊا)
+French (France): فرانسيسي (فرانس)
+French (Luxembourg): فرانسيسي (لگسمبرگ)
+French (Monaco): فرانسيسي (موناکو)
+French (Switzerland): فرانسيسي (سوئٽزرلينڊ)
+French: فرانسي
+Frisian (Eastern): فريزيئن (مشرقي)
+Frisian (Northern): فريزيئن (اترادي)
+Frisian (Western): فريزيئن (مغربي)
+Frisian: فريسيئن
+Friulian: فرييويان
+Fulah: فلاحي
+Ga: گي
+Galibi: گليبي
+Galician: گاليشين ٻولي
+Ganda: گنڈا
+Gayo: گايو
+Gbaya: گبيا
+Geez: گزي
+Georgian: جيارجي
+German (Austria): جرمن (آسٽريا)
+German (Germany): جرمن (جرمني)
+German (Liechtenstein): جرمن (لڪٽنسشٽن)
+German (Luxembourg): جرمن (لڪسمبرگ)
+German (Standard): جرمن (معياري)
+German (Switzerland): جرمن (سوئٽزرلينڊ)
+German: جرمني
+Gilbertese: گلبرٽَ
+Gondi: گنڊي
+Gorontalo: گورونٽو
+Gothic: گوٿڪ
+Grebo: گِربو
+Greek: يوناني
+Greenlandic: گرين لينڊيائي
+Guarani: گَُراني
+Gujarati: گجراتي
+Gwich&#39;in: گوچوين
+Haida: هدا
+Haitian (Creole): هيٽي ڪرولي)
+Haitian: هيٽي
+Hausa: هوسا ٻولي
+Hawaiian: هوائين
+Hebrew: عبراني
+Herero: ھيرو
+Hiligaynon: هيليگون
+Hindi: هندي
+Hiri Motu: هاري موٽو
+Hittite: هيٽائي
+Hmong: همنگي
+Holo (Taiwanese): هولو (تائيوان)
+Hungarian: هنگري
+Hupa: هپا
+Iban: اي بيين
+Icelandic: آئس لينڊي
+Ido: مان ڪيان ٿو
+Igbo: اِگبو
+Iloko: ايلڪو
+Indonesian: انڊونيشي
+Ingush: اينگش
+Inuktitut: انڪوڪٽيٽ
+Inupiaq: انوپياڪ
+Iranian: ايراني
+Irish (Gaelic): آئرش (گئلڪ)
+Irish: آئرستاني
+Iroquoian: ايروڪين
+Italian (Switzerland): اطالوي (سوئٽزرلينڊ)
+Italian: اطالوي
+Japanese: جاپاني
+Javanese: جاواني
+Judeo-Arabic: جاودو عربي
+Judeo-Persian: جوديو فارسي
+Kabardian: ڪبراڊي
+Kabyle: ڪبائل
+Kachin: ڪيچين
+Kalaallisut: ڪليلاٽسٽ
+Kalmyk: ڪلڪيم
+Kamba: ڪامبا
+Kannada: ڪنادي
+Kanuri: ڪنوري
+Kara-Kalpak: ڪارا ڪلپاک
+Karachay-Balkar: ڪرچي-بلڪر
+Karelian: ڪريلين
+Kashmiri: ڪشميري
+Kashubian: ڪاشوبيان
+Kawi: ڪوي
+Kazakh: قازق
+Khasi: خسي
+Khmer (Central): خمير (مرڪزي)
+Khmer: خمير
+Khotanese: ڪوٽياني
+Kikuyu: ڪڪيئو
+Kimbundu: ڪمبوڊو
+Kinyarwanda: ڪنيارواندا
+Kirghiz: ڪريزي
+Klingon: ڪلنگٽن
+Komi: ڪومي
+Kongo: ڪانگو
+Konkani: ڪانڪني
+Korean (Johab): කොරියානු (ජොහාබ්)
+Korean (North): කොරියානු (උතුර)
+Korean (South): කොරියානු (දකුණ)
+Korean: ڪورين
+Kosraean: ڪوسرين
+Kpelle: ڪيپل
+Kuanyama: ڪوياما
+Kumyk: ڪيمڪي
+Kurdish: ڪردي
+Kutenai: ڪتنائي
+Kyrgyz: ڪرغيز
+Ladino: لادينو
+Lahnda: لاھنڈا
+Lamba: لامبا
+Lao: لائو
+Latin: لاطيني
+Latvian: لاتوين ٻولي
+Lezghian: ليزگيان
+Limburgan: ليمبرگن
+Lingala: لنگالا
+Lithuanian: ليٿونيائي
+Lojban: لوجن
+Lozi: لوزي
+Luba-Katanga: لوبا-ڪياتنگا
+Luba-Lulua: لوبا-لولو
+Luiseno: لوئسانو
+Lunda: لنڊا
+Luo: لو
+Lushai: لوشي
+Luxembourghish: لکسمبرگهڻي
+Macedonian: مقدوني
+Madurese: مدوري
+Magahi: ميگهي
+Maithili: ميٿلي
+Makasar: ميڪر
+Malagasy: ملاگسي
+Malay: مالائي
+Malayalam: مالايالم
+Maldivian: مالديپين
+Maltese: مالٽي
+Manchu: منچو
+Mandar: منڊر
+Mandingo: مانڊنگو
+Manipuri: منيپوري
+Manx: منڪس
+Maori: مائوري
+Mapuche: ميپاوَ
+Marathi: مراٺي
+Mari: مارئي
+Marshallese: مارشللي
+Marwari: مارواڙي
+Masai: مسائي
+Mayan: مايون
+Mende: مينڊي
+Mi&#39;kmaq: ميثاق
+Minangkabau: =
+Mirandese: ميرانڊينز
+Mohawk: موهڪ
+Moksha: موڪشا
+Moldavian: مولووين
+Mongo: مونگو
+Mongolian: منگولي
+Montenegrin: مانٽينيگرن
+Moroccan: مراڪش
+Mossi: ماسسي
+Myanmar: میانمار
+Māori: مائوري
+N&#39;Ko: اين ڪي
+Nauru: ناريو
+Navajo: نواجو
+Ndebele (North): اين ڊي بيلي (اتر)
+Ndebele (South): اين ڊي بيلي (ڏکڻ)
+Ndebele: اين ڊي بيلي
+Ndonga: نِنڊگا
+Neapolitan: نيپيليٽن
+Nepali: نيپالي
+Nias: نياس
+Niuean: نوانين
+Nogai: نوگائي
+Norse: نورس
+Norwegian (Bokmål): نارويائي (بوڪمل)
+Norwegian (Nynorsk): نارويئن (نئنورسڪ)
+Norwegian: نارويجي
+Nyamwezi: نيازيزي
+Nyankole: نانڪوول
+Nyoro: نورو
+Nzima: نسيم
+Occitan: آڪسيٽن
+Odia: اوڊيا
+Ojibwa: اوجيبوا
+Oriyia: ඔරියා
+Oromo: اورومو
+Osage: اوج
+Ossetic: اوسيٽڪ
+Pahlavi: پهلوي
+Palauan: پلاان
+Pali: پالي
+Pampanga: پمپمپا
+Pangasinan: پينانگسنين
+Panjabi: پنجابي
+Papiamento: پيپنيٽو
+Pashto: پشتو
+Pedi: ٻارن جي
+Persian (Farsi): فارسي (فارسي)
+Persian (Iran): فارسي (ايران)
+Persian: فارسي
+Phoenician: فينسي
+Pohnpeian: پوهاڻي
+Polish: پالش
+Portuguese: پرتگالي
+Portuguese/Brazil: پورچوگيز / برازيل 
+Punjabi (India): پنجابي (انڊيا)
+Punjabi (Pakistan): پنجابي (پاڪستان)
+Punjabi: پنجابي
+Quechua: قيوچوا
+Rajasthani: راجستھاني
+Rapanui: رپنائي
+Rarotongan: رارووٽگن
+Rhaeto-Romanic: رائوٽو-رومنڪ
+Romanian: رومانوي
+Romansh: رومانش
+Romany: روماني
+Rundi: رونڊي
+Russian (Moldavia: රුසියානු (මෝල්ඩාවියාව
+Russian (Republic of Moldova): රුසියානු (මෝල්ඩෝවා ජනරජය)
+Russian: روسي
+Sami (Inari): سمي (انيري)
+Sami (Lappish): سامي (لپش)
+Sami (Lule): سمي (قاعدو)
+Sami (Northern): سامي (اترادي)
+Sami (Skolt): سامي (اسڪول)
+Sami (Southern): سامي (ڏاکڻي)
+Sami: سامي
+Samoan: ساموئي
+Samoli: سولي
+Sandawe: سينڊاوو
+Sango: سانگو
+Sanskrit: سنسڪرت
+Santali: سينٽيلي
+Sardinian: سردين
+Sasak: ساساڪ
+Scots (Gaelic): اسڪاٽس (گئلڪ)
+Selkup: سلڪ اپ
+Serbian (Upper): සර්බියානු (ඉහළ)
+Serbian: سربيائي
+Serer: سيرر
+Sesotho: سِسوٿو
+Shan: شان
+Shona: شونا
+Sichuan Yi: سيچوان يي
+Sicilian: سسيليين
+Sindhi: سنڌي
+Sinhala: سنھالا
+Slavic: سلاوڪ
+Slovak: سلوويڪي
+Slovenian: سلوويني
+Sogdian: سوگڊين
+Somali: صومالي
+Somani: سوماني
+Songhai: سونگھائي
+Soninke: سونڪي
+Sorbian (Lower): سوربين (هيٺين)
+Sorbian (Upper): سوربين (مٿيون)
+Sorbian: سوربين
+Sotho: سوٿو
+Spanish (Argentina): اسپينش (ارجنٽائن)
+Spanish (Bolivia): اسپينش (بوليويا)
+Spanish (Chile): اسپينش (چلي)
+Spanish (Colombia): اسپينش (ڪولمبيا)
+Spanish (Costa Rica): اسپينش (ڪوسٽاريڪا)
+Spanish (Dominican Republic): اسپينش (ڊوميڪيائي جمھوريه)
+Spanish (Ecuador): اسپينش (ايڪواڊور)
+Spanish (El Salvador): اسپينش (ايل سلواڊور)
+Spanish (Guatemala): اسپينش (گوئٽي مالا)
+Spanish (Honduras): اسپينش (ھوندرس)
+Spanish (Mexico): اسپينش (ميڪسيڪو)
+Spanish (Nicaragua): اسپينش (نڪاراگوا)
+Spanish (Panama): اسپينش (پاناما)
+Spanish (Paraguay): اسپينش (پيرا گوئي)
+Spanish (Peru): اسپينش (پيرو)
+Spanish (Puerto Rico): اسپينش (پورٽو ريڪو)
+Spanish (Spain): اسپينش (اسپين)
+Spanish (Uruguay): اسپينش (يوراگوئي)
+Spanish (Venezuela): اسپينش (وينزويلا)
+Spanish: اندلسي
+Sranan Tongo: سرانگو ٽونگو
+Sukuma: سڪوما
+Sumerian: سميري
+Sundanese: سنڊينيز
+Susu: سوسو
+Sutu: سوٽو
+Swahili: سواهلي
+Swati: سواتي
+Swedish (Finland): سوئيڊش (فنلينڊ)
+Swedish (Sweden): سوئيڊش (سويڊن)
+Swedish: سويڊني
+Syriac: سيريائي
+Tagalog: تگلگ ٻولي
+Tahitian: تائيٽيان
+Tai: تائي
+Taiwan: තායිවානය
+Tajik: تاجڪ
+Tamashek: تماشق
+Tamil: تاملي
+Tatar: تاتار
+Telugu: تيلوگو ٻولي
+Tereno: ٽينيانو
+Tetum: ٽاٽم
+Thai: ٿائي ٻولي
+Tibetan: تبتي
+Tigre: ٽائيگر
+Tigrinya: ٽِگرِنيا
+Timne: ٽائم
+Tlingit: ٽٽلنگ
+Tok Pisin: ٽوڪ پسين
+Tokelau: ٽوڪليا
+Tonga (Nytmhasa): ٽونگا (نٿماسا)
+Tonga (Tonga Islands): ٽونگا (ٽونگا ٻيٽ)
+Tonga: ٽونگا
+Tsimshian: تسميشين
+Tsonga: تونگا
+Tswana: سوانا
+Tumbuka: ٽمبڪو
+Turkish: تُرڪي
+Turkmen: ترڪماني
+Tuvinian: تيوينين
+Twi: ٽوئي
+Udmurt: ڌرمي
+Ugaritic: اوگريٽڪ
+Ukrainian: يوڪرينين
+Umbundu: امبنڊو
+Urdu: اردو
+Uyghur: يوغور
+Uzbek: اُزبڪ
+Vai: وائي
+Venda: وينٽا
+Vietnamese: ويٽناميز
+Volapük: وولپوڪ
+Votic: ووٽيڪ
+Wakashan: واڪشان
+Walloon: والون
+Waray: واريا
+Washo: واشو
+Welsh: ويلش
+Wolaitta: وولاٽا
+Wolof: ولوف
+Xhosa: هوسا
+Yakut: سخا
+Yao: ياائو
+Yapese: ياپز
+Yiddish: يِدِش
+Yorùbá: يوربا
+Yupik: يوپڪ
+Zande: زنده
+Zapotec: زاپوٽڪ
+Zaza: زازا
+Zenaga: زينگا
+Zhuang: ژانگ
+Zulu: زولو
+Browser-defined: برائوزر جي تعين ٿيل
+event: واقعو
+journal: جرنل
+0: 0                                                   
+1: 1                                                   
+2: 2                                                   
+3: 3                                                   
+4: 4                                                   
+5: 5                                                   
+6: 6                                                   
+7: 7                                                   
+8: 8                                                   
+9: 9                                                   
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: غلط يوزر لاگ اِن
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: پاسورڊ غلط
+no such user: اهڙو ڪوبه صارف ڪونهي
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: اڪائونٽ بند ٿيل آهي
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: وقفو
+Months: مهينا
+Month Days: مهينا ڏينهن
+Days: ڏينهن
+Weeks: هفتو
+Position: پوزيشن
+Until: جيستائين
+Count: ڳڻپ
+Inclusion Dates: انڪشاف تاريخ
+Exclusion Dates: خارج ٿيل تاريخون
+Event Imported: واقعي جي واردات
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: بائٽس
+kb: ڪلو
+Mb: ايم بي
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: اطلاع
+authenticate: ايس ايم ٽي پي غلطي: تصديق نه ٿي سگهي
+connect_host: ايس ايم ٽي پي غلطي: ايس ايم ٽي پي ميزبان سان رابطو نه ٿي سگهيو.
+data_not_accepted: ايس ايم ٽي پي غلطي: ڊيٽا قبول نه ڪئي وئي
+encoding: اڻ encاتل انڪوڊنگ
+execute: عمل نه ٿي ڪري سگھجي:
+file_access: فائل تائين رسائي نه ٿي سگھيو
+file_open: فائل جي غلطي فائل نه کولي سگهيس:
+from_failed: هيٺ ڏنل ايڊريس ناڪام ٿي وئي:
+instantiate: ميل جي فنڪشن کي شروعات نه ڪري سگھيو
+mailer_not_supported: ٽپال لاءِ سهڪار نه آهي
+provide_address: توهان کي گهٽ ۾ گهٽ هڪ وصول ڪندڙ اي ميل پتو ضرور ڏيو.
+recipients_failed: ايس ايم ٽي پي غلطي: هيٺ ڏنل وصول ڪندڙ ناڪام ٿي ويا:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: گرافڪ ۾ ڏٺو ويو ڪردار داخل ڪريو
+Enter the correct letters and numbers...: تصوير مان صحيح اکرن ۽ نمبرن کي ٽيڪسٽ باڪس ۾ داخل ڪريو. اهو نن testو امتحان بدنيتي بوٽن خلاف رسائي جي پابندي جو ڪم ڏئي ٿو. بس جيڪڏهن صفحو ٻيهر لوڊ ڪريو ته هي گرافڪ پڙهڻ ڏکيو به آهي
+Challenge/Response: چيلينج / جوابي
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: هن داخلا جي تاريخ ۽ وقت تبديل ڪريو؟
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: توھان مختصر وضاحت داخل نه ڪئي آھي
+time prior to work hours...: ڪم جي وقت کان پهريان جو وقت…
+Invalid Event Date: واقعي جي غلط تاريخ
+Please add a participant: مهرباني ڪري حصو وٺندڙ 
+Invalid Date: غلط تاريخ
+You have not entered a valid time of day: توهان ڏينهن جو صحيح وقت داخل نه ڪيو آهي. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: ڪئلينڊر آئي اي ڊي خالي نه ٿي سگھي. 
+First and last names cannot both be blank.: پهرين ۽ آخري نالا ٻئي خالي نه ٿي سگهن. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: غلط رنگ
+Color format should be RRGGBB.: رنگين فارميٽ #RRGGBB هجڻ گھرجي. 
+URL cannot be blank.: URL خالي نه ٿي سگھي.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: فائل جو قسم امپورٽ فارميٽ سان نٿو ٺهي 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: دستاويزي پس منظر لاءِ غلط رنگ.
+Invalid color for document title.: دستاويز جي عنوان لاءِ غلط رنگ
+Invalid color for table cell background.: ٽيبل سيل جي پس منظر لاءِ غلط رنگ.
+Invalid color for table cell background for today.: ا table لاءِ ٽيبل سيل پس منظر لاءِ غلط رنگ.
+Invalid work hours.: غلط ڪم جا ڪلاڪ.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: سرور جو URL ختم ٿيڻ لازمي آھي ھڪڙي (/)
+Invalid color for table grid.: ٽيبل گرڊ لاءِ غلط رنگ.
+Invalid color for event popup background.: ايونٽ پاپ اپ پس منظر لاءِ غلط رنگ.
+Invalid color for event popup text.: ايونٽ پاپ اپ متن لاءِ غلط رنگ.
+Invalid color for table header text.: ٽيبل جي هيڊر متن لاءِ غلط رنگ.
+Invalid color for table header background.: ٽيبل هيڊر پس منظر لاءِ غلط رنگ.
+Server URL is required.: سرور جي يو آر گهربل آهي.
+Invalid Color: غلط رنگ
+Database Name: ڊيٽابيس جو نالو
+Full Path (no backslashes): مڪمل رستو (پٺتي پيل نه) 
+The password contains illegal characters.: پاسورڊ ۾ غيرقانوني اکر شامل آهن.
+Error you must specify a Single-User Login: مسئلو: توھان کي لازمي طور تي ھڪڙي استعمال ڪندڙ لاگ ان جو بيان ڪرڻ گھرجي
+Could not find XXX.: ايڪس اينڪس نه ڳولي سگهيو.
+Could not find XXX in DOM.: DOM ۾ ايڪس اينڪس نه ڳولي سگهيا.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: هن هفتي
+This Month: هن مهيني
+This Year: هن سال
+Exit: نڪتل
+Add New Event: نئون واقعو شامل ڪريو
+Delete Entries: داخلا ختم ڪريو
+My Views: منهنجا نظارا
+Manage Calendar of: ڪئلينڊر جو انتظام ڪريو
+My Reports: منهنجون رپورٽون
+My Profile: منهنجو پروفائل
+Public Calendar: عوامي ڪئلينڊر
+Unapproved Events: غير منظور ٿيل واقعا
+User Manager: يوزر مئنيجر
+Help Contents: مددگار مواد
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: ڊيٽابيس ڪيش ڊاريڪٽري
+Create New: نئون ٺاھيو
+Failure Reason: ناڪامي جو سبب:
+You must manually create database: توھان کي لازمي طور تي ڊيٽابيس ٺاھڻ گھرجي.
+Single-User: اڪيلو استعمال ڪندڙ
+Test Settings: ٽيسٽ سيٽنگون
+Timezone Conversion Successful: ٽائيم زون بدلائڻ ڪامياب
+WebCalendar Installation Wizard Step XXX: ويب ڪئلينڊر جي انسٽاليشن وزرڊ قدم ايڪس اينڪس
+Password Accepted: پاسورڊ قبول ڪيو ويو
+Successful Login: ڪامياب لاگ ان
+Password Incorrect: پاسورڊ غلط
+Invalid Login: غلط لاگ ان
+Display Errors: نقص ڏيکاريو
+File Uploads: فائيل لوڊ ڪريو
+Allow URL fopen: URL فپن جي اجازت ڏيو (صرف گهربل جيڪڏهن ريموٽ ڪئلينڊر استعمال ڪيا وڃن)
+Safe Mode: محفوظ موڊ
+Safe Mode Allowed Vars: محفوظ موڊ جي اجازت ڏني وئي وارين (ٽي جي گهربل صرف تڏهن آهي جڏهن محفوظ موڊ کليل آهي)
+GD: جي ڊي (تدريسي تصوير پس منظر جي لاءِ گهربل)
+Passwords do not match!: پاسورڊ نٿا ملن
+Unable to write password to settings.php file: "setting.php" فائل ڏانھن پاسورڊ لکڻ کان قاصر.
+Password Updated: پاسورڊ تازو ڪيو ويو
+Password has been set: پاسورڊ سيٽ ڪيو ويو آهي.
+Connection Successful...: ڪنيڪشن ڪامياب ٿي ويو مهرباني ڪري انسٽاليشن جاري رکڻ لاءِ ٻئي صفحي تي وڃو.
+Correct your entries or click the Create New...: پنهنجي داخلا صحيح ڪريو يا انسٽاليشن جاري رکڻ لاءِ  نئون ٺاهيو  بٽڻ تي ڪلڪ ڪريو.
+Correct your entries and try again.: پنهنجي داخلا کي درست ڪريو ۽ ٻيهر ڪوشش ڪريو.
+XXX does not exist: ايڪسڪسڪس موجود ناهي
+XXX is not writable: ايڪس اينڪس قابل ذڪر ناهي
+Error Converting Timezone: ٽائيم زون بدلائڻ ۾ غلطي
+Error Unable to write to file XXX.: غلطي کي ايڪس اينڪس تي فائل ڪرڻ ۾ ناڪام.
+Please change the file permissions of this file.: مھرباني ڪري ھن فائل جي اجازتن کي تبديل ڪريو.
+Please change includes dir permission: مهرباني ڪري ٻين استعمال ڪندڙن جي لکڻين جي اجازت ڏيڻ لاءِ ڊائريڪٽري جي ”اجازت“ جي فائل اجازتن کي تبديل ڪريو.
+Your settings have been saved.: توهان جون سيٽنگون محفوظ ڪيون ويون آهن
+OFF: بند ڪريو
+ON: کولڻ
+WebCalendar Setup Wizard: ويب ڪئلينڊر ترتيب ڏيڻ جو مددگار
+This installation wizard will guide you...: اها انسٽاليشن وزرڊ توهان کي بنيادي ويب ڪئلينڊر جي انسٽاليشن جي ذريعي رهنمائي ڪندي.<br>مدد ۽ مسئلي کي حل ڪرڻ لاءِ ڏسو:<br>
+System Administrators Guide: سسٽم ايڊمنسٽريٽر جي گائيڊ
+Frequently Asked Questions: وچان وچان سوال ڪرڻ
+FAQ: سوالات
+Troubleshooting: تڪليف ٺٽوي
+Getting Help: مدد وٺڻ
+Upgrading Guide: اپ گريڊنگ گائيڊ
+User Supported Wiki: استعمال ڪندڙ وڪي مدد ڪئي
+PHP Version Check: پي ايڇ پي جا نسخو چيڪ
+Check to see if PHP 7.1.0 or greater is installed.: اهو ڏسڻ لاءِ ڏسو ته PHP 7.1.0 يا وڌيڪ انسٽال ٿيل آهي.
+PHP version: پي ايڇ پي جو نسخو
+PHP Settings: پي ايڇ پي سيٽنگون
+Detailed PHP Info: تفصيلي پي ايڇ پي Infoاڻ
+settings.php Status: "سيٽنگون. php" اسٽيٽس
+Session Check: سيشن چيڪ
+To test the proper operation of sessions...: سيشنن جي صحيح آپريشن کي جانچڻ لاءِ ، ھن صفحي کي ٻيھر لوڊ ڪريو. توهان کي هر وقت سيشن جي جوابي واڌاري ڏسڻ گهرجي.
+SESSION COUNTER: سيشن جو اجلاس
+The file permissions of settings.php are set...: "setting.php" جي فائل اجازتون طئي ٿيل آھن ان ڪري انسٽالر کي ان ۾ ترميم ڪرڻ جي اجازت ناھي. جاري رکڻ لاءِ مهرباني ڪري هيٺ ڏنل فائل جي اجازتن کي تبديل ڪريو
+The file permissions of the includes directory are set...: ڊائريڪٽريري فائل جي اجازتن کي سيٽ ڪيو ويو آھي ان ڪري انسٽالڪر کي نئين فائل ٺاهڻ جي اجازت ڪونھي. جاري رکڻ لاءِ مهرباني ڪري هيٺ ڏنل ڊائريڪٽري جي اجازتن کي تبديل ڪريو
+Your settings.php file appears to be valid.: لڳي ٿو توھانجو ”setting.php“ فائل صحيح لڳندو.
+Configuration Wizard Password: ٺاھڻ مددگار پاسورڊ
+Create Settings File Password: سيٽنگ فائل فائل پاسورڊ ٺاهيو
+db setup directions...: هن حصي ۾ توهان پنهنجي ڊيٽابيس سرور سان ڪنيڪشن قائم ۽ جانچ ڪندا. کاتي جي معلومات فراهم ڪئي وئي ڊيٽابيس ، ٽيبل ۽ صارف ٺاهڻ لاءِ مڪمل اجازتون هئڻ گهرجن. جيڪڏهن اهو ممڪن نه آهي ، يا توهان جي ڊيٽابيس جي رسائي محدود آهي ، توهان کي پنهنجي ڊيٽابيس کي دستي طور تي ترتيب ڏيڻو پوندو.
+Database Status: ڊيٽابيس جي اسٽيٽس
+Supported databases for your PHP installation: توهان جي پي ايڇ پي جي انسٽاليشن لاءِ سپورٽ ڊيٽابيس
+Your current database settings are able to access the database.: توهان جي موجوده ڊيٽابيس سيٽنگون ڊيٽابيس تائين رسائي حاصل ڪرڻ جي قابل آهن.
+Please Test Settings: مهرباني ڪري ٽيسٽ جي ترتيب ڏيو
+Your current database settings are not able...: توهان جي موجوده ڊيٽابيس سيٽنگون ڊيٽابيس تائين رسائي جي قابل نه آهن يا اڃا به آزمائي نه سگهيون آهن.
+Database Settings: ڊيٽابيس سيٽنگون
+Database Type: ڊيٽابيس جي قسم
+Server: سرور
+Connection Persistence: رابطه استقامت
+All your database tables appear to be up...: توهان جي سڀني ڊيٽابيس جي جدولن تي تاريخ نظر اچي ٿي. توھان اڳتي ھلي سگھوٿا صفحي ڏانھن ۽ پنھنجو ويب ڪئلينڊر جوڙ.
+This appears to be a new installation...: اهو ظاهر ٿئي ٿو نئين انسٽاليشن. جيڪڏھن اھو صحيح ناھي ، مھرباني ڪري پوئين صفحي ڏانھن واپس وڃو ۽ پنھنجي جوڙجڪ کي درست ڪريو.
+This appears to be an upgrade...: اهو ورزن & nbsp ؛ ايڪس اين ايڪس & nbsp ؛ کان & nbsp ؛ يا YY کان اپڊيٽ ٿيڻ لڳي ٿو.
+The database requires some data input...: ڊيٽابيس لاءِ ڪجهه ڊيٽا ان پٽ گهربل هوندي اپڊيٽ ڊيٽابيس تي ڪلڪ ڪريو اپڊيٽ مڪمل ڪرڻ لاءِ.
+In this section we will perform...: هن حصي ۾ اسان توهان جي ڊيٽابيس کي گهربل سطح تائين آڻڻ لاءِ تبديليون سرانجام ڏينداسين. جيڪڏهن توهان مڪمل سپورٽ ڊيٽابيس استعمال ڪري رهيا آهيو ، اهو قدم توهان لاءِ پاڻمرادو انجام ڏنو ويندو. جيڪڏهن نه ، گهربل SQL ڊسپلي ڪري سگھجي ٿي ۽ توهان کي توهان جي ڊيٽابيس سرور سوال جي ونڊو ۾ ان کي ڪٽڻ ۽ پيسٽ ڪرڻ جي قابل هئڻ گهرجي.
+No database actions are required.: ڪي ڊيٽابيس جي عملن جي ضرورت ناھي.
+The following database actions are required: هيٺ ڏنل ڊيٽابيس جي ڪارناما جي ضرورت آهي
+ODBC Underlying Database: او ڊي بي سي هيٺيون ڊيٽابيس:
+Automatic installation not supported: خودڪار ڊيٽابيس مڪمل طور تي عمل نه ڪيو ويو آهي توهان جي ڊيٽابيس جي قسم لاءِ. توهان دستي طور تي فراهم ڪيل SQL استعمال ڪندي گهربل ٽيبل ٺاهڻا پوندا. جاري رکڻ لاءِ مهرباني ڪري  ظاهر ڪريو SQL  تي ڪلڪ ڪريو. پنهنجي ڊيٽابيس جي سوال واري ونڊو ۾ ڪٽ ۽ پيسٽ ڪريو.
+This may take several minutes to complete: اھو پورو ٿيڻ ۾ ڪيترائي منٽ وٺي سگھن ٿا.
+Install Database: ڊيٽابيس انسٽال ڪريو
+Update Database: ڊيٽابيس کي تازو ڪريو
+Display Required SQL: ڏيکاريل SQL ڏيکاري
+Return to previous page after processing SQL.: هن ايس ايس ايل کي دستي طور تي پروسيسنگ ڪرڻ کانپوءِ ، توهان کي پوئين صفحي ڏانهن واپس اچڻ جي ضرورت پوندي ۽ پنهنجي ڊيٽابيس کي ٻيهر جاچڻ جي ضرورت پوندي ته جيئن اسڪرپٽ تبديلين کي ڳولي سگهي.
+This is the final step in setting up your WebCalendar Installation.: اهو توهان جو ويب ڪئلينڊر واري انسٽاليشن کي ترتيب ڏيڻ جو آخري قدم آهي.
+Timezone Conversion: ٽائيم زون بدلجڻ
+It appears that you have NOT converted...: اهو ظاهر ٿئي ٿو ته توهان پنهنجي موجوده ويب ڪئلينڊر واقعي جي ڊيٽا کي GMT ۾ تبديل نه ڪيو آهي. جيڪڏهن توهان وٽ آهي ، توهان شايد هن نوٽيس کي نظر انداز ڪريو ۽ تبديلي سان اڳتي نه وڌو. جيڪڏھن اھو ھڪڙي نئين انسٽاليشن آھي ، توھان شايد ھن نوٽيس کي نظرانداز ڪري سگھو ٿا.
+Convert Data to GMT: ڊيٽا کي GMT ۾ تبديل ڪريو
+Application Settings: ايپليڪيشن سيٽنگون
+HTTP-based authentication was not detected...: HTTP جي بنياد تي تصديق نه ڪئي وئي. توهان کي ضرورت هوندي توهان جي ويب سرور کي ٻيهر ترتيب ڏيڻ جي ضرورت آهي جيڪڏهن توهان هيٺ ڏنل ’صارف جي تصديق‘ واري انتخاب مان ’ويب سرور‘ چونڊڻ چاهيو ٿا.
+HTTP-based authentication was detected...: HTTP جي بنياد تي تصديق ڪئي وئي. توهان جي ويب سرور تان صارف جي تصديق جو هٿ ٿي رهيو آهي. توھان ھيٺ ڏنل 'صارف جي تصديق' جي لسٽ مان 'ويب سرور' چونڊڻ گھرجي.
+Create Default Admin Account: ڊيفالٽ ايڊمنسٽريٽر کاتو بڻايو
+(Admin Account Not Found): (ايڊمنسٽريٽر کاتو نه مليو)
+User Authentication: استعمال ڪندڙ جي تصديق
+Web-based via WebCalendar (default): ويب ڪئلينڊر ذريعي ويب تي ٻڌل (ڊفالٽ)
+Web Server (not detected): ويب سرور (اڻ notاتل)
+Web Server (detected): ويب سرور (معلوم ڪيو ويو)
+None (Single-User): ڪوبه (اڪيلو استعمال ڪندڙ)
+Read-Only: صرف پڙهو
+Environment: ماحولياتي
+Production: پيداوار
+Development: ترقي
+Save Settings: جوڙ محفوظ ڪريو
+Launch WebCalendar: ويب ڪئلينڊر لانچ ڪريو
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: ٽيبل "ايڪس آرڪس" کي تازه ڪاري ڪرڻ ۾ غلطي. YYY.
+Conversion Successful: تبديلي ڪاميابي
+Perl script required: توهان جو ڊيٽا تبديل ڪرڻ لاءِ ويب ڪئلينڊر جو توهان جو اڳين ورزن PERL اسڪرپٽ هلائڻ جي ضرورت آهي. مھرباني ڪري /tools/upgrade_to_0.9.7.pl هلائي پوءِ جاري رکڻ لاءِ ھن صفحي ڏانھن واپس اچو.
+previous version requires updating several tables: ويب ڪئلينڊر جو توهان جو اڳوڻو نسخو ، ڪيترن ئي ڊيٽابيس جي جدولن کي اپڊيٽ ڪرڻ جي ضرورت آهي.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: ڪا به نظرثاني موجود ناهي
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: ڊيٽابيس سان ڳن connectingڻ ۾ نقص
+Include Path: رستو شامل ڪريو
+Deleting events for: واقعن کي ختم ڪرڻ جي لاءِ
+Importing events for: وارد ڪرائڻ جي واقعن
+No data returned from: کان ڊيٽا واپس نه ڪئي وئي
+for non-user calendar: غير صارف جي ڪئلينڊر لاءِ
+No Remote Calendars found: ريموٽ ڪئلينڊر نه مليا
+Remote Calendars not enabled: ريموٽ ڪئلينڊرن کي فعال ناهي ڪيو ويو
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: واقعي جي سڃاڻپ نه ڳولي سگهيس
+could not find event id XXX in database.: ڊيٽابيس ۾ واقعي واري ايڪس ايڪس ايڪس نه ڳولي سگھيو.
+task: ڪم
+This is a reminder for the XXX detailed below.: اهو هڪ ياداشت آهي ايڪس اينڪس جي هيٺ ڏنل تفصيلي.
+Pecentage Complete: پنڻ مڪمل
+Reminder: نصيحت ڪندڙ
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: غير معاونت واري عمل: ايڪس اينڪس.
+No event id specified.: واقعي جو ڪوبه انگ بيان ٿيل ناهي.
+Not authorized (not admin).: اختيار ٿيل نه آهي (منتظم نه).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: ZYZ کان وٺي YYY تائين تاريخ جي ايڪسينڪس تائين واقعن جي چڪاس ڪئي پئي وڃي.
+Found XXX events in time range.: وقت جي درجي ۾ ايڪس اينڪس واقعا مليا.
+Event id=XXX YYY at ZZZ on AAA.: ايونٽ اي ڊي = ايڪس ايمڪس "يو اي" زا زا تي AAA تي.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: ايڪس اينڪس صارف کي ٻئي صارف جو ڪئلينڊر ڏسڻ جي اجازت.
+Error Email reminders disabled for user XXX.: مسئلو: اي ميل جي ياد ڏياريندڙ صارف ”ايڪس ايمڪس“ لاءِ معذور آهن.
+Number of site_extras XXX.: سائيٽ_اسٽراس جو تعداد: XXX.
+Reminder set for event.: ياد ڏياريندڙ واقعي لاءِ مقرر
+Mins Before XXX.: منٽ کان پهريان: ايڪس اينڪس.
+Event time is XXX.: واقعي جو وقت آهي: ايڪس اينڪس.
+Remind time is XXX.: ياد ڏياريندڙ وقت آهي: ايڪس اينڪس.
+Reminders for user XXX, login YYY.: يوزر "ايڪس ايمڪس" لاءِ ياد ڏياريندڙ ، "YYY" لاگ ان ڪريو.
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: صارف "ايڪساڪس" جي غير منظور ٿيل حاصل ڪرڻ.
+Event id=XXX YYY already sent.: واقعي جي id = ايڪس اينڪس "YYY" اڳ ۾ ئي موڪلي وئي.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: واحد صارف موڊ لاءِ لاگ ان گهربل ناهي.
+No login required for HTTP authentication.: HTTP جي تصديق لاءِ لاگ ان جي ضرورت ناهي.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: لاگ ان ۾ غلط اکر
+Username XXX does not exist.: صارف جو نالو ”XXX“ موجود نه آهي.
+You cannot remove admin rights from yourself!: توهان پنهنجي پاڻ کان منتظم جا حق ختم نٿا ڪري سگهو.
+Unknown error saving user: نامعلوم بچائيندڙ کي بچائيندي آهي.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: شرڪت ڪندڙ واقعي جي سڃاڻپ لاءِ نه مليو: ايڪس اينڪس.
+Db error Could not find event id XXX.: ڊي بي غلطي: ايڪس آئي ڊي ايڪس اين ايڪس جو واقعو ڳولي نه سگهيو. 
+Error Could not find event id XXX in database.: مسئلو: ڊيٽابيس ۾ واقعي واري ايڪس ايڪس ايڪس کي نه ڳولي سگھيو. 

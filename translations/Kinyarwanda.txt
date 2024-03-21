@@ -1,0 +1,2387 @@
+# Kinyarwanda rw
+#
+# Imiterere igizwe numutwe utabishaka:
+#
+# Byahinduwe na: izina ryawe na imeri
+# Ivugurura rya nyuma: itariki yo gusemura
+# (Harimo kuyobora "#" nibitekerezo byose byatanzwe nabasemuzi babanjirije.
+# UMURONGO WA MBERE wuzuye urangiza ibi bitekerezo.)
+#
+# Bikurikirwa na benshi nkuko bikenewe:
+#
+# Imvugo y'Icyongereza: ubusobanuro
+# (Umwe kumurongo. NTA "#" uyobora.
+# "Imvugo y'Icyongereza:", harimo na colon ":", itangwa na
+# Abategura Urubuga. Igice cyawe ni "ubusemuzi".)
+#
+# Ibikoresho byububiko birimo inyandiko ebyiri za perl zagufasha:
+# - check_translation.pl
+# yerekana niba inyandiko zose zarahinduwe neza.
+# - update_translation.pl
+# izasesengura dosiye ya porogaramu kugirango ubone ibisobanuro byose ('interuro') na
+# ibikoresho ('interuro'). Bizategura interuro ukurikije urupapuro
+# (dosiye) ikubiyemo ibyabaye mbere. Ubishaka, irashobora kuranga i
+# interuro itarahindurwa mugushira
+#  << MISSING >>
+# kumurongo uri hejuru yinteruro. Kandi, niba interuro ari impfunyapfunyo,
+# izaba ikubiyemo inyandiko yicyongereza yuzuye kumurongo uri munsi yimvugo.
+#
+# Icyitonderwa: Ndagerageza kugabanya ubunini bwa dosiye. Niba "ubusobanuro"
+# ijambo / interuro irasa mururimi rwawe nicyongereza, koresha gusa "=" ikimenyetso.
+#
+# Icyitonderwa: Uzabona ibyinjira kuri "May_" hepfo. Hariho impamvu yabyo.
+# Sobanura "May_" kugeza ukwezi kwuzuye izina na "May" Kuri i,
+# mubisanzwe inyuguti eshatu, amagambo ahinnye (nka "Ukwakira" kuri "Ukwakira").
+#
+# Nakoresheje Google ibisobanuro kuri ibi.
+# Bikwiye kuba bihagije kugeza igihe abavuga kavukire bashobora kubigenzura.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: Urubuga
+version XXX: verisiyo ya XXX
+WebCalendar is a PHP application used...: WebCalendar ni porogaramu ya PHP ikoreshwa mu kubungabunga ikirangaminsi ku mukoresha umwe cyangwa umurongo wa interineti / intranet y'abakoresha. Irashobora kandi gushyirwaho nkikirangaminsi cyibyabaye.
+Credits: Inguzanyo
+About: Ibyerekeye
+OK: Nibyo
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Ikosa ryububiko: XXX.
+DEFAULT CONFIGURATION: KUBONA AMAFARANGA
+Go: Genda
+Save: Bika
+Undo: Kuraho
+Public Access: Kugera rusange
+Admin: Umuyobozi
+User Access Control: Igenzura ry'abakoresha
+Allow Access to Other Users Calendar: Emera Kubona Kalendari Yabandi bakoresha
+Grant This User Access to My Calendar: Tanga Uyu Ukoresha Kubona Kalendari yanjye
+Type: Andika
+Calendar: Kalendari
+View Event: Reba ibyabaye
+View: Reba
+Edit: Hindura
+Approve/Reject: Emeza / Wange
+Events: Ibyabaye
+Tasks: Inshingano
+Journals: Ibinyamakuru
+Can Invite: Urashobora gutumira
+Can Email: Urashobora kohereza imeri
+Can See Time Only: Urashobora Kubona Igihe Cyonyine
+Assistant: Umufasha
+Select All: Hitamo byose
+Clear All: Kuraho Byose
+Public: Rubanda
+Confidential: Ibanga
+Private: Abikorera
+
+########################################
+# Page: activity_log.php
+#
+Next: Ibikurikira
+Previous: Mbere
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Ibirori XXX bimaze kuba kuri kalendari yawe.
+Invalid entry id XXX.: Id yemewe kwinjira: "XXX".
+a XXX event may not be added to your calendar: Nibikorwa bya XXX kandi ntibishobora kongerwa kuri kalendari yawe.
+confidential: ibanga
+private: wenyine
+Error adding event XXX.: Ikosa ryo kongera ibyabaye: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Izina ryo gushiraho ritemewe "XXX".
+Select: Hitamo
+Day: Umunsi
+Week: Icyumweru
+Month: Ukwezi
+Year: Umwaka
+Bottom: Hasi
+Top: Hejuru
+Anyone: Umuntu uwo ari we wese
+Participant: Uwitabira
+Settings: Igenamiterere
+Groups: Amatsinda
+NonUser Calendars: Kalendari
+Other: Ibindi
+Email: Imeri
+Colors: Amabara
+Document background: Inyuma yinyandiko
+Document title: Umutwe w'inyandiko
+Document text: Inyandiko
+My event text: Inyandiko y'ibyabaye
+Table grid color: Imeza ya gride ibara
+Table header background: Imbonerahamwe Umutwe
+Table header text: Imbonerahamwe y'umutwe
+Table cell background: Imbonerahamwe yimbere
+Table cell background for current day: Imbonerahamwe ya selile yumunsi uyumunsi
+Table cell background for days with events: Imbonerahamwe ya selire kumunsi hamwe nibyabaye
+Table cell background for weekends: Imbonerahamwe yama selire muri wikendi
+Table cell background for other month: Imbonerahamwe yama selire yandi mezi
+Week number color: Icyumweru nimero
+Event popup background: Ibyabaye byimbere
+Event popup text: Icyabaye popup inyandiko
+System Settings: Igenamiterere rya sisitemu
+Help: Ubufasha
+System options: Amahitamo ya sisitemu
+app-name-help: Kugaragaza izina rya porogaramu izagaragara muri bariri ya titre ya mushakisha kumpapuro zose no kurupapuro rwinjira. Agaciro ugaragaza hano kazarebwa muri dosiye yubuhinduzi igufasha gutanga imitwe itandukanye yindimi zitandukanye.
+Application Name: Izina rya Porogaramu
+Translated Name (XXX): Izina ryahinduwe (XXX)
+server-url-help: Kugaragaza URL shingiro ya porogaramu. Ibi bizashyirwamo mugihe wohereje imeri yibutsa imeri.
+Server URL: Seriveri URL
+home-url-help: Kugaragaza URL yo murugo ya porogaramu. Ibi birashobora kuba byimazeyo cyangwa isano
+Home URL: Urugo URL
+language-help: Kugaragaza ururimi ugomba gukoresha.
+Language: Ururimi
+Your browser default language is XXX.: Mucukumbuzi yawe imvugo isanzwe ni "XXX".
+Allow user to use themes: Emerera umukoresha gukoresha insanganyamatsiko
+themes-help: Emerera ivugurura ryinshi ryimiterere. Inyuguti ntoya ni umukoresha pref gusa.
+Themes: Insanganyamatsiko
+AVAILABLE THEMES: BISHOBORA KUBONA
+None: Nta na kimwe
+Preview: Imbere
+Site customization: Guhitamo urubuga
+custom-script-help: Emerera kwinjiza inyandiko ya Javascript cyangwa urupapuro rwerekana imiterere izinjizwa muri HTML "umutwe" wa buri paji.
+Custom script/stylesheet: Inyandiko yihariye
+custom-header-help: Emerera agace gakondo ka HTML gushyirwa hejuru ya page yose.
+Custom header: Umutwe wihariye
+custom-trailer-help: Emerera agace gakondo ka HTML gushyirwamo kumpera ya page yose.
+Custom trailer: Trailer
+enable-external-header-help: Emerera trailer yihariye gupakirwa muri dosiye yo hanze
+Allow external file for header/script/trailer: Emerera dosiye yo hanze kumutwe / inyandiko / trailer
+Allow user to override header/trailer: Emerera umukoresha kurenga umutwe / trailer
+Date and Time: Itariki nigihe
+server-tz-help: Kugaragaza amasaha angahe kugirango uhindure igihe kuva UTC kugeza igihe cya seriveri.
+Server Timezone Selection: Seriveri Igihe cyatoranijwe
+tz-help: Kugaragaza amasaha angahe kugirango uhindure igihe kuva UTC kugeza kumwanya waho.
+Default Client Timezone Selection: Mburabuzi Umukiriya Timezone Guhitamo
+display-general-use-gmt-help: Niba bishoboka, amatariki / ibihe bisanzwe byerekanwa nka GMT
+Display Common Use Date/Times as GMT: Erekana Ikoreshwa Rusange Itariki / Ibihe nka GMT
+date-format-help: Kugaragaza imiterere yitariki yatoranijwe.
+Date format: Imiterere y'itariki
+Small Task Date: Itariki ntoya
+display-week-starts-on: Kugaragaza umunsi wicyumweru icyumweru gitangira. Niba kuwa mbere ugenwe, noneho imibare yicyumweru izaba ISO icyumweru.
+Week starts on: Icyumweru gitangira
+display-weekend-starts-on: Shiraho umunsi wicyumweru muri wikendi gutangira
+Weekend starts on: Icyumweru gitangira
+time-format-help: Kugaragaza isaha yo gukoresha:<br><em>isaha 12:</em> Erekana ibihe nka 3am, 8h30, nibindi<br><em>amasaha 24:</em> Erekana ibihe nka 300 , 2030, n'ibindi.
+Time format: Imiterere yigihe
+12 hour: Amasaha 12
+24 hour: Amasaha 24
+timed-evt-len-help: Kugaragaza uburyo bwo kwinjiza uburyo bwo kumenya uburebure bwigihe cyagenwe.
+Specify timed event length by: Kugaragaza igihe cyabaye igihe kirekire
+Duration: Ikiringo
+End Time: Igihe cyanyuma
+work-hours-help: Kugaragaza igihe cyagenwe cyo kwerekana umunsi wo kureba.
+Work hours: Amasaha y'akazi
+From: Kuva
+to: Kuri
+Appearance: Kugaragara
+preferred-view-help: Kugaragaza ibisanzwe (Umunsi, Icyumweru, Ukwezi, cyangwa Umwaka).
+Preferred view: Icyifuzo
+Allow top menu: Emera menu yo hejuru
+Date Selectors position: Itariki Abahitamo
+menu-themes-help: Shiraho amabara nuburyo bwa menu yo hejuru
+Menu theme: Insanganyamatsiko
+fonts-help: Kugaragaza urutonde rwimyandikire ya sisitemu yo gukoresha (nka "Arial, Helvetica")
+Fonts: Imyandikire
+display-sm_month-help: Niba bishoboka, yerekana amezi mato mukwezi kureba
+Display small months: Erekana amezi mato
+display-weekends-help: Shyiramo wikendi mugihe ureba icyumweru.
+Display weekends: Erekana weekend
+display-long-daynames-help: Niba bishoboka, amazina yumunsi arerekanwa
+Display long day names: Erekana amazina maremare
+display-alldays-help: Erekana ukwezi gushize nataha iminsi muminsi yo kureba, yuzuza selile zose.
+Display all days in month view: Erekana iminsi yose mukwezi kureba
+display-week-number-help: Kugaragaza niba umubare wicyumweru (1-52) ugomba kwerekanwa mukwezi kureba no kureba icyumweru.
+Display week number: Erekana umubare wicyumweru
+display-desc-print-day-help: Shyiramo ibyabaye ibisobanuro muri printer-yoroheje verisiyo yumunsi.
+Display description in printer day view: Erekana ibisobanuro mumacapiro yumunsi
+yearly-shows-events-help: Kuri buri mwaka Reba, erekana iminsi ikubiyemo ibyabaye mumyandikire itinyitse.
+Display days with events in bold in month and year views: Erekana iminsi hamwe nibyabaye mubushizi bw'ukwezi n'umwaka
+display-minutes-help: Niba bishoboka, iminota irangira na: 00 izahora igaragara
+Display 00 minutes always: Erekana iminota 00 burigihe
+display-end-times-help: Erekana ibyabaye birangiye niba igihe cyateganijwe
+Display end times on calendars: Erekana ibihe byanyuma kuri kalendari
+allow-view-add-help: Agashusho '' 'kazashyirwa mubitekerezo, kwemerera abakoresha kongera ibyabaye kuri kalendari yabandi bakoresha.
+Include add event link in views: Shyiramo kongeramo ibyabaye mubitekerezo
+lunar-help: Nibishoboka, izerekana udushushondanga duto tugereranya ukwezi buri kwezi
+Display Lunar Phases in month view: Erekana Icyiciro cy'ukwezi mukwezi kureba
+Restrictions: Ibibujijwe
+allow-view-other-help: Kugaragaza niba umukoresha umwe ashobora kureba ikirangaminsi cyundi.
+Allow viewing other users calendars: Emera kureba kalendari yabandi bakoresha
+require-approvals-help: Iyo bishobotse, umukoresha agomba kwemeza ibyabaye mbere yuko byerekanwa kuri kalendari yabo (keretse Kugaragaza bitemewe birashoboka). Icyitonderwa gushiraho ibi kuri "Oya" ntabwo bizimya ibyemezo bya kalendari rusange (niba ikirangantego rusange gishoboka).
+Require event approvals: Saba ibyemezo byemewe
+display-unapproved-help: Kugaragaza niba ibintu bitemewe byerekanwe muri kalendari yawe. ibyabaye bitemewe bigomba kwemezwa mbere yuko bigaragara muri kalendari yawe.
+Display unapproved: Erekana bitemewe
+conflict-check-help: Reba amakimbirane yibyabaye (ibintu bibiri byateganijwe mugihe kimwe kumuntu umwe). Niba ushyizeho ibi "Yego", uzakomeza gutegura gahunda ebyiri icyarimwe nyuma yo kwemeza umuburo. Niba ushyizeho ibi "Oya", nta kugenzura amakimbirane bizakorwa. Birashoboka ko ushaka gushyira ibi kuri "Yego", bityo kugenzura amakimbirane bibaho.
+Check for event conflicts: Reba amakimbirane yabaye
+Yes: Yego
+No: Oya
+conflict-months-help: Niba kugenzura amakimbirane bihari ("Kugenzura amakimbirane y'ibyabaye" yashyizwe kuri "Oya"&#41;, ibi birerekana amezi angahe mugihe kizaza tugomba kugenzura amakimbirane. Niba ubona ko kongera ibyabaye bifata igihe kirekire cyo gutunganya , gabanya iyi mibare.
+Conflict checking months: Amezi yo kugenzura amakimbirane
+conflict-check-override-help: Emerera abakoresha gutandukanya ibyabaye no guteganya ibyabaye bibiri cyangwa byinshi mugihe kimwe.
+Allow users to override conflicts: Emerera abakoresha gukuraho amakimbirane
+limit-appts-help: Emerera sisitemu umuyobozi gushiraho sisitemu-ntarengwa kumubare wabashyizweho umukoresha umwe ashobora kugira kumunsi uwariwo wose.
+Limit number of timed events per day: Gabanya umubare wibyabaye byateganijwe kumunsi
+limit-appts-number-help: Kugaragaza umubare ntarengwa wibyabaye igihe umukoresha ashobora kugira kumunsi umwe.
+Maximum timed events per day: Ibihe ntarengwa byateganijwe kumunsi
+crossday-help: Nibishoboka, ibyabaye muminsi bizerekanwa kuminsi itandukanye
+Disable Cross-Day Events: Hagarika ibirori byambukiranya umunsi
+disable-location-field-help: Guhitamo "Yego" bizakuraho ikibanza "Ikibanza" kurupapuro rwamakuru
+Disable Location field: Hagarika ikibanza
+disable-url-field-help: Guhitamo "Yego" bizakuraho "URL" umurima kurupapuro rwamakuru
+Disable URL field: Hagarika umurongo wa URL
+disable-priority-field-help: Guhitamo "Yego" bizakuraho umurima "Icyambere" kurupapuro rwamakuru yibyabaye, utange intera yoroshye kubashya.
+Disable Priority field: Hagarika umwanya wambere
+disable-access-field-help: Guhitamo "Yego" bizakuraho umurima "Kwinjira" kurupapuro rwamakuru yibyabaye, utange intera yoroshye kubashya.
+Disable Access field: Hagarika ikibanza
+disable-participants-field-help: Guhitamo "Yego" bizakuraho umurima "Abitabiriye" kurupapuro rwamakuru yibyabaye, bibuza abakoresha kongera abandi bakoresha mubikorwa byabo. Niba ushoboje guhitamo, urashobora kandi guhagarika "Emera kureba kalendari yabandi bakoresha".
+Disable Participants field: Hagarika abitabiriye amahugurwa
+disable-repeating-field-help: Guhitamo "Yego" bizakuraho umurima "Gusubiramo" mugihe wongeyeho ibyabaye. Ibi bizatanga interineti yoroshye kubashya.
+Disable Repeating field: Hagarika gusubiramo
+allow-html-description-help: Niba bishobotse, abakoresha barashobora kwinjiza HTML murwego rwo gusobanura ibyabaye. Niba bidashoboka, ibirango bya HTML bizacika kugirango bigaragare nkumwandiko usanzwe. Icyitonderwa: Gushoboza iyi mikorere bizafasha abakoresha kwerekana amashusho kurundi rubuga.
+Allow HTML in Description: Emerera HTML mubisobanuro
+Popups: Amashanyarazi
+disable-popups-help: Hagarika popups uhereye kuri kalendari
+Disable Pop-Ups: Hagarika Pop-Ups
+popup-includes-siteextras-help: Niba bishobojwe, emera ibintu byabigenewe byashizweho kurubuga_extras.php dosiye izerekanwa mubyabaye popups.
+Display Site Extras in popup: Erekana Urubuga Inyongera muri popup
+popup-includes-participants-help: Niba bishoboka, abitabiriye amahugurwa bagaragara mubikorwa byabaye.
+Display Participants in popup: Erekana Abitabiriye popup
+Miscellaneous: Dutandukanye
+remember-last-login-help: Iyo bishobojwe, kwinjira kwabakoresha kuzuzuzwa kubwabo kurupapuro rwinjira (ariko ntabwo ari ijambo ryibanga), kandi ibyo ukoresha azabyikorera (harimo amabara bakunda no guhitamo ururimi).
+Remember last login: Ibuka kwinjira byanyuma
+summary_length-help: Uburebure ntarengwa bwa Bigufi Ibisobanuro muri kalendari yo kureba
+Brief Description Length: Ubusobanuro muri make Uburebure
+user_sort-help: Kugena gahunda yo gutondekanya kubakoresha, urutonde rwabakoresha
+User Sort Order: Urutonde rwabakoresha
+Lastname, Firstname: Izina ryanyuma, Izina ryambere
+Firstname, Lastname: Izina ryambere, Izina ryanyuma
+allow-public-access-help: Iyo bishobojwe, ikirangaminsi gishobora gukoreshwa nkisomwa-risanzwe gusa kalendari rusange idasaba abakoresha kwinjira.
+Allow public access: Emerera abantu bose
+public-access-default-visible: Ibyabaye kuva kuri kalendari rusange bizahita bigaragara kuri kalendari yabakoresha bose
+Public access visible by default: Kwinjira kumugaragaro kugaragara kubisanzwe
+public-access-default-selected: Mugihe wongeyeho ibyabaye bishya, umukoresha rusange azatorwa muburyo busanzwe nkuwitabira.
+Public access is default participant: Kwinjira kumugaragaro ni abitabiriye amahugurwa
+public-access-view-others-help: Iyo winjiye muri sisitemu hamwe nabantu benshi, yerekana niba uyikoresha ashobora kureba ikirangaminsi yundi mukoresha.
+Public access can view other users: Kwinjira kumugaragaro birashobora kureba abandi bakoresha
+public-access-can-add-help: Iyo bishobojwe, abakoresha bagera kuri sisitemu binyuze muri rubanda nyamwinshi bazashobora kongeramo ibintu bishya, ariko ntibazagaragara muri kalendari kugeza igihe umuyobozi yemeye ibyabaye bishya.
+Public access can add events: Kwinjira kumugaragaro birashobora kongera ibyabaye
+public-access-add-requires-approval-help: Kugaragaza niba ibyabaye byongewe kuri konte rusange bisaba kwemererwa mbere yo kwerekanwa.
+Public access new events require approval: Kugera kumugaragaro ibikorwa bishya bisaba kwemerwa
+public-access-sees-participants-help: Niba bishoboka, abakoresha bagera kuri kalendari kuva kuri konte rusange bazashobora kubona abitabiriye ibirori niba bareba amakuru yibyabaye.
+Public access can view participants: Kwinjira kumugaragaro birashobora kureba abitabiriye amahugurwa
+public-access-override-help: Emerera ibyabaye nibisobanuro guhishwa kuri kalendari rusange
+Override event name/description for public access: Kurenga ibyabaye izina / ibisobanuro kubantu bose
+public-access-override-text-help: Inyandiko yo kwerekana niba amahitamo yavuzwe haruguru ashoboye. Niba 'Ntaboneka', bizahindurwa.
+Text to display to public access: Inyandiko kugirango yerekanwe kubantu bose
+public-access-captcha-help: Niba bishoboka, ibintu bishya byongeweho na rubanda bisaba gutsinda CAPTCHA.
+Require CAPTCHA validation for public access new events: Saba kwemeza CAPTCHA kugirango abantu babone ibintu bishya
+uac-enabled-help: Gushoboza abakoresha-urwego rwo kugenzura
+User Access Control enabled: Kugenzura Abakoresha Kugenzura birashoboka
+groups-enabled-help: Gushoboza itsinda, kwemerera abakoresha guhitamo abakoresha mumatsinda.
+Groups enabled: Amatsinda arashoboye
+user-sees-his-group-help: Nibishoboka, abakoresha ntibazabona abakoresha kalendari itari byibuze imwe mumatsinda yabo.
+User sees only his groups: Umukoresha abona amatsinda ye gusa
+nonuser-enabled-help: Nibishoboka, abadmin bazagira amahitamo yo kongeramo kalendari
+Nonuser enabled: Kalendari idakoreshwa
+nonuser-list-help: Aho kwerekana kalendari idakoreshwa murutonde rwabitabiriye
+Nonuser list: Erekana abitabiriye urutonde kuri
+Upcoming Events: Ibizaza
+upcoming-events-help: Gushoboza kuza.php
+Enabled: Gushoboza
+upcoming-events-allow-override: Emerera abakoresha ibice byegereje.php
+Allow user override: Emerera umukoresha kurengana
+upcoming-events-display-caticons: Shyiramo amashusho yicyiciro mugihe kiri imbere.php
+Display category icons: Erekana amashusho
+upcoming-events-display-layers: Erekana ibice biri imbere.php
+Display layers: Erekana ibice
+upcoming-events-display-links: Erekana amahuza mugihe kiri imbere.php
+Display links to events: Erekana amahuza kubyabaye
+upcoming-events-display-popups: Erekana ibyabaye popups mugihe kiri imbere.php
+Display event popups: Erekana ibyabaye
+reports-enabled-help: Nibishoboka, abakoresha bazabona igice cya "Raporo" hepfo ya buri paji kandi bazemererwa gukora raporo yihariye. Byongeye kandi, abakoresha admin barashobora gukora raporo yisi yose izagaragara munsi yimpapuro zose zabakoresha.
+Reports enabled: Raporo irashoboka
+subscriptions-enabled-help: Kugaragaza niba abakoresha kure bashobora kwiyandikisha kuri kalendari yumukoresha wa WebCalendar, ibemerera kubona ibyabaye byumukoresha wa WebCalendar mubisabwa na iCal (nka iCal ya Apple cyangwa Kalendari ya Mozilla).
+Allow remote subscriptions: Emera abiyandikisha kure
+remotes-enabled-help: Emerera abakoresha kwipakurura dosiye ya kure ukoresheje URL
+Allow remote calendars: Emera kalendari ya kure
+rss-enabled-help: Kugaragaza niba ikirangaminsi cyumukoresha gishobora kuboneka kubiryo bya RSS.
+Enable RSS feed: Gushoboza ibiryo bya RSS
+categories-enabled-help: Gushoboza inkunga y'ibyiciro.
+Categories enabled: Ibyiciro birashoboka
+icon_upload-enabled-help: Niba bishobotse, abakoresha barashobora gushiraho ibyiciro byamashusho
+Category Icon Upload enabled: Icyiciro Agashusho Gukuramo birashoboka
+(Requires XXX folder to exist.): (Irasaba ububiko bwa XXX kubaho.)
+display-tasks-help: Erekana akadirishya gashinzwe idirishya ukwezi na kalendari
+Display small task list: Erekana urutonde ruto rw'akazi
+display-tasks-in-grid-help: Erekana imirimo muri kalendari hamwe nibyabaye
+Display tasks in Calendars: Erekana imirimo muri Kalendari
+allow-external-users-help: Kugaragaza niba umukoresha utari ikirangaminsi ashobora kongerwaho ibyabaye. Ibi bituma abakoresha kalendari batondekanya nkabitabiriye ibirori.
+Allow external users: Emerera abakoresha hanze
+external-can-receive-notification-help: Iyo abakoresha hanze bashoboye kandi imikoreshereze ya imeri ishoboye, abakoresha hanze barashobora kwakira imenyesha rya imeri mugihe ibirori byongeweho, bivugururwa cyangwa gusiba (niba aderesi imeyiri yo hanze yatanzwe).
+External users can receive email notifications: Abakoresha hanze barashobora kwakira imenyesha rya imeri
+external-can-receive-reminder-help: Iyo abakoresha hanze bashoboye kandi imikoreshereze ya imeri ishoboye, abakoresha hanze barashobora kwakira imeri yibutsa imeri (niba aderesi imeyiri yo hanze yatanzwe).
+External users can receive email reminders: Abakoresha hanze barashobora kwakira imeri yibutsa imeri
+allow-self-registration-help: Emerera abakoresha bashya kwiyandikisha ubwabo
+Allow self-registration: Emera kwiyandikisha
+use-blacklist-help: Gabanya uburyo bwo gukora kuri WebCalendar ishingiye kuri aderesi ya IP
+Restrict self-registration to blacklist: Gabanya kwiyandikisha kurutonde rwabirabura
+allow-self-registration-full-help: Emerera abakoresha bashya kurangiza gahunda yo kwiyandikisha kumurongo
+Use self-registration email notifications: Kora ijambo ryibanga hanyuma wohereze kubakoresha bashya
+allow-attachment-help: Emerera abakoresha kongeramo dosiye kumugereka.
+Allow file attachments to events: Emerera dosiye kumugereka kubyabaye
+Admin and owner can always add attachments if enabled.: Umuyobozi na nyirubwite barashobora buri gihe kongeramo imigereka niba bishoboka.
+allow-comments-help: Emerera abakoresha kongeramo ibitekerezo kubyabaye.
+Allow comments to events: Emerera ibitekerezo kubyabaye
+Admin and owner can always add comments if enabled.: Umuyobozi na nyirubwite barashobora kongeramo ibitekerezo niba bishoboka.
+email-enabled-help: Zimya cyangwa uzimye kohereza imeri kugirango ubimenyeshe kandi wibutse. Shyira kuri "oya", niba seriveri yawe idashyizweho neza kugirango wohereze ubutumwa.
+Email enabled: Imeri ishoboye
+email-default-sender: Kugaragaza aderesi imeri kugirango ugaragaze nkuwohereje mugihe wohereje kwibutsa.
+Default sender address: Aderesi yoherejwe
+email-mailer: Hitamo ubwoko bwa imeri (SMTP, imeri ya PHP, imeri)
+Email Mailer: Imeri
+email-smtp-host: Izina ryakiriwe rya seriveri ya SMTP yatandukanijwe na koma
+SMTP Host name(s): SMTP Izina ryakiriwe
+email-smtp-port: Numero yicyambu cya SMTP (mubisanzwe 25)
+SMTP Port Number: Numero yicyambu cya SMTP
+email-smtp-auth: Koresha SMTP Kwemeza
+SMTP Authentication: Kwemeza SMTP
+email-smtp-username: Izina rya SMTP niba ukoresha Authentication
+SMTP Username: Izina rya SMTP
+email-smtp-password: SMTP Ijambobanga niba ukoresha Authentication
+SMTP Password: Ijambobanga rya SMTP
+Default user settings: Igenamiterere ry'abakoresha
+email-format: Kugaragaza ibyifuzo bya HTML cyangwa ubutumwa bwanditse bworoshye
+Email format preference: Imiterere ya imeri
+HTML: =
+Plain Text: Inyandiko
+email-include-ics: Shyiramo dosiye ya iCalendar ICS kubutumwa bwa imeri
+Include iCalendar attachments: Shyiramo imigereka ya iCalendar
+email-event-reminders-help: Kugaragaza niba wohereza cyangwa utohereza ibyibutsa ibyabaye.
+Event reminders: Ibyibutswa
+email-event-added: Kugaragaza niba wohereza imeri imenyesha mugihe ibyabaye byongewe kuri kalendari yawe.
+Events added to my calendar: Ibyabaye byongewe kuri kalendari yanjye
+email-event-updated: Kugaragaza niba wohereza imeri imenyesha mugihe ibyabaye bigezweho kuri kalendari yawe.
+Events updated on my calendar: Ibyabaye bigezweho kuri kalendari yanjye
+email-event-deleted: Kugaragaza niba wohereza imeri imenyesha mugihe ikintu cyakuwe kuri kalendari yawe.
+Events removed from my calendar: Ibyabaye byakuwe kuri kalendari yanjye
+email-event-rejected: Kugaragaza niba wohereza imeri imenyesha mugihe abitabiriye amahugurwa banze ibyabaye kuri kalendari yawe.
+Event rejected by participant: Ibirori byanzwe nabitabiriye amahugurwa
+email-event-create: Kugaragaza niba uwashizeho ibyinjira azakira imeri
+Event that I create: Icyabaye ndema
+Color options: Amahitamo y'amabara
+Allow user to customize colors: Emerera umukoresha guhitamo amabara
+gradient-colors: Niba bishobojwe amabara akoreshwa. Ibi birashobora guhindura cyane imikorere.
+Enable gradient images for background colors: Gushoboza buhoro buhoro amashusho yamabara yinyuma
+Not available: Ntiboneka
+Background Image options: Amahitamo Amafoto Amahitamo
+bgimage-help: URL yerekana ishusho yinyuma. Birashobora kuba isano.
+Background Image: Ishusho Yinyuma
+bgrepeat-help: Igenzura gusubiramo imyitwarire yinyuma yibishusho.
+Background Repeat: Gusubiramo
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Abafasha
+Preferences: Ibyifuzo
+Control Panel: Akanama gashinzwe kugenzura
+Users: Abakoresha
+Account: Konti
+Categories: Ibyiciro
+Views: Reba
+Layers: Imirongo
+Reports: Raporo
+Delete Events: Siba ibyabaye
+Activity Log: Logi y'ibikorwa
+System Log: Sisitemu Log
+Security Audit: Igenzura ry'umutekano
+Public Preferences: Ibyifuzo rusange
+Unapproved Public Events: Ibikorwa rusange bitemewe
+Administrative Tools: Ibikoresho by'Ubuyobozi
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Izina ry'impimbano: "XXX".
+Username XXX already exists.: Izina ryukoresha "XXX" rimaze kubaho.
+Email address XXX already exists.: Imeri imeri "XXX" irahari.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Ibitekerezo by'inyongera (bidashoboka)
+Approve and Send: Emeza kandi wohereze
+Approve and Exit: Emeza kandi usohoke
+(Your comments will be emailed to the event creator.): (Ibitekerezo byawe bizoherezwa kuri uwashizeho ibirori.)
+Hello, XXX.: Mwaramutse, XXX.
+XXX has approved an appointment and added comments.: Isango ryaremejwe kandi ibitekerezo byongeweho na XXX.
+Subject XXX: Ingingo: "XXX".
+Description XXX: Ibisobanuro: "XXX".
+Date XXX: Itariki: XXX
+Time XXX: Igihe: XXX
+Comments XXX: Ibitekerezo: XXX
+Approved w/Comments by XXX.: Byemejwe w / Ibitekerezo by: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Uburyo bwa Admin
+Your assistants: Abafasha bawe
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Ikosa ritazwi.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Ikosa rya Porogaramu: Nta XXX yasobanuwe!
+user: umukoresha
+year: umwaka
+month: ukwezi
+day: umunsi
+
+########################################
+# Page: category.php
+#
+Category Icon: Icyiciro Igishushanyo
+Global: Isi yose
+The permissions for the icons directory are set to read-only: Uruhushya rwibishushanyo rwashyizweho kugirango rusome-gusa.
+Category Name: Izina ry'icyiciro:
+Color: Ibara
+Remove Icon: Kuraho Agashusho:
+Add Icon to Category: Ongeraho Agashusho Kuri Category
+Upload: Kuramo
+GIF or PNG 6kb max: INGABIRE cyangwa PNG 6kb max
+Search for existing icons: Shakisha amashusho ariho
+Add: Ongeraho
+Delete: Siba
+Are you sure you want to delete this entry?: Uzi neza ko ushaka gusiba iyi nyandiko?
+Make New Category: Kora Icyiciro gishya
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Izina ryicyiciro rirakenewe
+File size exceeds maximum.: Ingano ya dosiye irenze ntarengwa.
+File is not a GIF or PNG image: Idosiye ntabwo ari INGABIRE cyangwa PNG ishusho
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: KUBONA CATEGORIES
+ENTRY CATEGORIES: CATEGORIES YINJIRA
+Remove: Kuraho
+Global Category: Icyiciro cyisi
+Cancel: Kureka
+
+########################################
+# Page: colors.php
+#
+Add Custom: Ongeraho Custom
+Basic Colors: Amabara Yibanze
+Current Color: Ibara ryubu
+Custom Colors: Amabara yihariye
+Old Color: Ibara rya kera
+
+########################################
+# Page: combo.php
+#
+Select None: Hitamo Nta na kimwe
+Agenda: Gahunda
+Add Task: Ongeraho Umukoro
+Description: Ibisobanuro
+Date: Itariki
+Time: Igihe
+Priority: Ibyingenzi
+Access: Kwinjira
+Created by: Byakozwe na
+Updated: Yavuguruwe
+Participants: Abitabiriye amahugurwa
+Attachments: Umugereka
+Comments: Ibitekerezo
+Brief Description: Ibisobanuro muri make
+Full Description: Ibisobanuro Byuzuye
+Category: Icyiciro
+Add event detail: Ongeraho ibyabaye birambuye
+Start Date: Itariki yo gutangiriraho
+Due Date: Itariki ntarengwa
+Add task detail: Ongeraho ibisobanuro birambuye
+All: Byose
+Error: Ikosa
+no response from server: nta gisubizo kiva kuri seriveri
+JSON error: Ikosa rya JSON
+High: Hejuru
+Medium: Hagati
+Low: Hasi
+Today: Uyu munsi
+Add Entry: Ongeraho Icyinjira
+Unnamed Event: Icyabaye kitiriwe izina
+Unnamed Task: Igikorwa kitiriwe izina
+Refresh: Ongera
+Click to add entry: Kanda kugirango wongere ibyinjira
+Name: Izina
+pm: nimugoroba
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX yahagaritse gahunda.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Blob id
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Ongeraho Igitekerezo
+Add Attachment: Ongeraho Umugereka
+Subject: Ingingo
+Comment: Igitekerezo
+Upload file: Kuramo dosiye
+
+########################################
+# Page: docdel.php
+#
+Removed: Yakuweho
+
+########################################
+# Page: edit_entry.php
+#
+days: iminsi
+hours: amasaha
+minutes: iminota
+You are not authorized to edit this task.: Ntabwo wemerewe guhindura iki gikorwa.
+is in a different timezone than you are. Currently: ni muri timezone itandukanye nawe. Kugeza ubu
+hour ahead of you: isaha imbere yawe
+hour behind you: isaha inyuma yawe
+hours ahead of you: amasaha imbere yawe
+hours behind you: amasaha inyuma yawe
+XXX is in a different timezone (ahead): (XXX iri mubihe bitandukanye; YYY imbere yawe.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX iri mugihe gitandukanye; YYY inyuma yawe.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Igihe cyinjiye hano gishingiye kuri Timezone yawe.
+Edit Entry: Hindura ibyinjira
+Details: Ibisobanuro
+Repeat: Subiramo
+Reminders: Kwibutsa
+brief-description-help: Ibi bigomba gutanga ibisobanuro bigufi (inyuguti zigera kuri 20) zibyabaye. Ibi bizerekana ibyabaye mugihe ureba kalendari.
+full-description-help: Ibi bigomba kuzuza ibisobanuro birambuye kubyabaye. Aya makuru arashobora kugaragara mugihe umukoresha areba ibyabaye.
+access-help: Kugaragaza urwego rwo kugera kubyabaye. <ul> <li> Rusange: Umuntu wese arashobora kubona amakuru yuzuye yibyabaye.</li> <li> Ibanga: Abandi barashobora kubona ko ufite ibyinjira kuriyi tariki nigihe, ariko ntabwo ibisobanuro birambuye kubyo aribyo.</li></ul>
+priority-help: Kugaragaza ibyibanze byibyabaye. Ibyibanze byingenzi bizerekanwa mubutinyutsi.
+category-help: Kugaragaza icyiciro cyibyabaye.
+completed-help: Igikorwa cyitariki cyarangiye. Gusa birashoboka iyo ijanisha ryabitabiriye bose bangana 100%.
+Date Completed: Itariki Yuzuye
+percent-help: Ijanisha ryo kurangiza umukoresha
+Percent Complete: Ijanisha ryuzuye
+All Percentages: Ijanisha ryose
+location-help: Aho byabereye
+Location: Aho biherereye
+url-help: URL y'ibyabaye
+URL: =
+date-help: Kugaragaza itariki y'ibyabaye.
+Untimed event: Igihe kitaragera
+Timed event: Igihe cyagenwe
+All day event: Umunsi wose
+Timezone Offset: Igihe cyateganijwe
+time-help: Kugaragaza igihe cyibyabaye. <ul> <li> "Ibihe byagenwe" (kubirori byateganijwe mugihe runaka kuri uriya munsi)</li> <li> "Igihe kitaragera" (kubirori ibi ntabwo bigira umwanya (nkumunsi mukuru )</li> <li> "Umunsi wose wabaye" (kubirori bifata umunsi wose (nko kuba hanze yu biro)</li></ul>
+duration-help: Kugaragaza igihe (mumasaha; iminota) yibyabaye. <em>Uyu murima urashobora gusigara ari ubusa.</em>
+end-time-help: Kugaragaza igihe ibyabaye biteganijwe kurangira.
+Start Time: Igihe cyo Gutangira
+Due Time: Igihe gikwiye
+Site Extras: Urubuga rwinyongera
+avail_participants-help: Urutonde abitabiriye iyi nyandiko.
+Available: Birashoboka
+Find Name: Shakisha Izina
+Resources: Ibikoresho
+participants-help: Andika abitabiriye iyi nyandiko.
+Selected: Byahiswemo
+Availability: Kuboneka
+external-participants-help: Kugaragaza urutonde rwabitabiriye ibirori bitari abakoresha kalendari. Abakoresha bagomba gutondekwa kumurongo umwe kandi barashobora gushiramo aderesi imeri. Niba aderesi imeri isobanuwe neza, uyikoresha yemerewe kwakira imenyesha nibutsa.
+External Participants: Abitabiriye hanze
+repeat-type-help: Hitamo inshuro ibyabaye bigomba gusubiramo.
+Daily: Buri munsi
+Weekly: Buri cyumweru
+Monthly: Buri kwezi
+by day: ku manywa
+by date: ku italiki
+by position: ku mwanya
+Monthly (by day): Buri kwezi (ku manywa)
+Monthly (by date): Buri kwezi (ku italiki)
+Monthly (by position): Buri kwezi (ukurikije umwanya)
+Yearly: Buri mwaka
+Manual: Igitabo
+Expert Mode: Uburyo bw'impuguke
+repeat-end-date-help: Kugaragaza itariki ibyabaye bigomba gusubiramo kugeza.
+Ending: Kurangiza
+Forever: Iteka ryose
+Use end date: Koresha itariki yo kurangiriraho
+Number of times: Inshuro
+repeat-frequency-help: Kugaragaza inshuro ibyabaye bigomba gusubiramo.
+Frequency: Inshuro
+Weekdays Only: Icyumweru Cyonyine
+Week Start: Icyumweru gitangira
+repeat-bydayextended-help: Emerera guhitamo itariki ukurikije umunsi wicyumweru.
+ByDay: =
+repeat-month-help: Kugaragaza amezi ibyabaye bigomba gusubiramo.
+ByMonth: Ukwezi
+repeat-bysetpos-help: Emerera italiki guhitamo ukurikije umwanya hamwe ukwezi.
+BySetPos: =
+repeat-bymonthdayextended-help: Emerera guhitamo itariki ukurikije itariki.
+ByMonthDay: Ukwezi
+repeat-byweekno-help: Emerera umukoresha kwerekana urutonde rwibyumweru kugirango asubiremo ibyabaye (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Emerera umukoresha kwerekana urutonde rwumunsi wumwaka kugirango asubiremo ibyabaye (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Iminsi yinyongera ko ibyabaye bigomba cyangwa bitagomba kubaho kuri.
+Exclusions: Kwirengagiza
+Inclusions: Harimo
+Add Exception: Ongeraho Ibidasanzwe
+Add Inclusion: Ongeramo Kwinjiza
+Delete Selected: Gusiba Byatoranijwe
+Send Reminder: Kohereza Kwibutsa
+When: Igihe
+Use Date/Time: Koresha Itariki / Igihe
+Use Offset: Koresha Offset
+Before: Mbere
+After: Nyuma
+Start: Tangira
+End/Due: Iherezo / Bikwiye
+Times: Ibihe
+Every: Buri
+CAPTCHA Warning: Iburira:  Ntushobora gukoresha CAPTCHA udafite GD ya PHP!<br>
+Delete entry: Siba ibyinjira
+You are not authorized to edit this entry.: Ntabwo wemerewe guhindura iyi nyandiko.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX yashyizeho gahunda nshya.
+XXX has updated an appointment.: XXX yavuguruye gahunda.
+Security violation!: Guhungabanya umutekano!
+You must enter the anti-spam text on the previous page.: Ugomba kwinjiza inyandiko irwanya spam kurupapuro rwibanze.
+The following conflicts with the suggested time: Ibikurikira bikurikira bivuguruzanya nigihe cyateganijwe
+User removed from participants list.: Umukoresha yakuwe kurutonde rwabitabiriye.
+Please look on XXX to accept or reject this appointment.: Nyamuneka reba kuri XXX kugirango wemere cyangwa wange iyi gahunda.
+Please look on XXX to view this appointment.: Nyamuneka reba kuri XXX kugirango urebe iyi gahunda.
+Scheduling Conflict: Guteganya Amakimbirane
+Your suggested time of: Igihe cyawe cyo
+conflicts with the following existing calendar entries: amakimbirane hamwe na kalendari ikurikira
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX ntabwo yashyizwe muri "config.php".
+word characters only: (irashobora kubamo ijambo inyuguti gusa; [a-zA-Z_0-9])
+Add User: Ongeraho Umukoresha
+Edit User: Hindura Umukoresha
+Calendar ID: Indangamuntu
+First Name: Izina
+Last Name: Izina ryanyuma
+Is public calendar: Ni kalendari rusange
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Ikosa ryububiko
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Ongeraho Kalendari ya kure
+Edit Remote Calendar: Hindura Kalendari ya kure
+Create Layer: Kurema Igice
+Reload: Ongera usubiremo
+Required to View Remote Calendar: Birasabwa kureba Kalendari ya kure
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Kuzana ibisubizo
+Events successfully imported: Ibyabaye byatumijwe mu mahanga neza
+Create a new layer to view this calendar.: Kora urwego rushya kugirango urebe iyi kalendari.
+Errors: Amakosa
+There was an error parsing the import file or no events were returned.: Habayeho ikosa ryerekana dosiye yatumijwe cyangwa ntakintu cyasubijwe.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Ejo
+Yesterday: Ejo
+Day before yesterday: Umunsi umwe ejo
+Next week: Icyumweru gitaha
+This week: Muri iki cyumweru
+Last week: Icyumweru gishize
+Week before last: Icyumweru mbere yanyuma
+Next week and week after: Icyumweru gitaha nicyumweru nyuma
+This week and next week: Iki cyumweru nicyumweru gitaha
+Last week and this week: Icyumweru gishize n'iki cyumweru
+Last two weeks: Ibyumweru bibiri bishize
+Next month: Ukwezi gutaha
+This month: Uku kwezi
+Last month: Ukwezi gushize
+Month before last: Ukwezi mbere yanyuma
+Next year: Umwaka utaha
+This year: Uyu mwaka
+Last year: Umwaka ushize
+Year before last: Umwaka mbere yanyuma
+Next 14 days: Iminsi 14 iri imbere
+Next 30 days: Iminsi 30 iri imbere
+Next 60 days: Iminsi 60 iri imbere
+Next 90 days: Iminsi 90 iri imbere
+Next 180 days: Iminsi 180 iri imbere
+Next 365 days: Iminsi 365 iri imbere
+Invalid report id XXX.: Raporo itemewe id: "XXX".
+Unnamed Report: Raporo Izina
+Add Report: Ongeraho Raporo
+Edit Report: Hindura Raporo
+Report name: Raporo izina
+User: Umukoresha
+Current User: Umukoresha wa none
+Include link in menu: Shyiramo ihuza muri menu
+Include standard header/trailer: Shyiramo umutwe usanzwe / trailer
+Include previous/next links: Shyiramo ibice byabanjirije / ibikurikira
+Include empty dates: Shyiramo amatariki yubusa
+Date range: Itariki
+Template variables: Inyandikorugero
+Page template: Urupapuro rwerekana
+Day template: Inyandikorugero y'umunsi
+Event template: Inyandikorugero
+Are you sure you want to delete this report?: Uzi neza ko ushaka gusiba iyi raporo?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Nta raporo nk'iyi id: "XXX".
+Variable XXX not found.: Impinduka XXX ntabwo yabonetse.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Hindura Umutwe
+Edit Custom Script/Stylesheet: Hindura inyandiko yihariye / Urupapuro
+Edit Custom Trailer: Hindura Trailer
+
+########################################
+# Page: edit_user.php
+#
+Username: Izina ryukoresha
+E-mail address: Aderesi ya imeri
+Password: Ijambobanga
+again: na none
+Disabled for demo: Yahagaritswe kuri demo
+Are you sure you want to delete this user?: Uzi neza ko ushaka gusiba uyu ukoresha?
+Change Password: Hindura ijambo ryibanga
+New Password: Ijambobanga Rishya
+Set Password: Shiraho ijambo ryibanga
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Gusiba abakoresha ntibashyigikiwe.
+The passwords were not identical.: Ijambobanga ntiryari risa.
+You have not entered a password.: Ntabwo winjiye ijambo ryibanga.
+Username cannot be blank.: Izina ryukoresha ntirishobora kuba ubusa.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Ntabwo byemewe
+
+########################################
+# Page: export.php
+#
+Export: Kohereza hanze
+Export format: Imiterere yohereza hanze
+Include all layers: Shyiramo ibice byose
+Include deleted entries: Shyiramo ibyasibwe
+Export all dates: Kohereza amatariki yose
+Start date: Itariki yo gutangiriraho
+End date: Itariki yo kurangiriraho
+Modified since: Yahinduwe kuva
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: imiterere yo kohereza hanze ntabwo isobanuwe cyangwa sibyo.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Nta mukoresha wasobanuwe.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Ongera Itsinda Rishya
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Itsinda ritiriwe izina
+Add Group: Ongera Itsinda
+Edit Group: Hindura Itsinda
+Group name: Izina ryitsinda
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Ugomba kwerekana izina ryitsinda
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Kora-kalendari
+auto-refresh-help: Iyo bishobojwe, umunsi wo kureba, icyumweru cyo kureba, ukwezi kureba, nurutonde rwimpapuro zitemewe zose zizahita zisubiramo ubwazo buri gihe.
+Auto-refresh time: Igihe-cyo kugarura igihe
+auto-refresh-time-help: Niba Auto-refresh ishoboye, ibi byerekana igihe hagati ya buri kugarura.
+Display days with events in bold in year view: Erekana iminsi hamwe nibyabaye mubushizi bw'amanga
+Display weekends in week view: Erekana weekend muri wikendi
+Time interval: Intera
+time-interval-help: Kugaragaza igihe umwanya uhagarara mucyumweru cyo kureba n'umunsi kureba bizaba.
+Nonuser: Kalendari
+user-customize-color: Kugaragaza niba abakoresha bemerewe guhindura ibara ryabo bwite.
+enable-gradient-help: Koresha ibara rya gradient ya selile inyuma.
+Manually entering color values: Intoki winjize amabara
+colors-help: Amabara yose agomba gutomorwa muburyo bwa "#RRGGBB" muburyo butandatu aho "RR" nigiciro cyiza kumutuku, "GG" nigiciro cyicyatsi kibisi, naho "BB" nigiciro cyiza cyubururu.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Raporo Bug
+Please include all the information below when reporting a bug.: Nyamuneka shyiramo amakuru yose hepfo mugihe utanga raporo.
+Also, please use English rather than XXX.: Nyamuneka, nyamuneka koresha  Icyongereza  aho gukoresha XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Urubuga rwa Kalindari
+Currently in English only.: Kugeza ubu mucyongereza gusa.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Ongeraho / Guhindura Kalendari Ibyanditswe
+Repeat Type: Subiramo Ubwoko
+For More Information...: Kubindi bisobanuro ...
+Repeat End Date: Subiramo Itariki Yanyuma
+Repeat Day: Subiramo umunsi
+repeat-day-help: Kugaragaza iminsi yicyumweru ibirori bigomba gusubiramo.
+
+########################################
+# Page: help_import.php
+#
+Import: Kuzana ibicuruzwa
+Palm Desktop: Ibiro by'imikindo
+allow you to import entries from the Palm...: Iyi fomu izagufasha gutumiza ibyanditswe mubitabo bya Palm desktop. Igomba kuba iri mububiko bwawe bwikiganza mubitabo byamatariki / itariki.dat mubuyobozi bwitiriwe izina ryumukoresha wawe.
+The following entries will not be imported: Ibyanditswe bikurikira ntibizatumizwa mu mahanga:
+Entries older than the current date: Ibyanditswe kera kurenza itariki
+Entries created in the Palm Desktop...: Ibyanditswe byakozwe muri desktop ya Palm bitabaye HotSync'd
+Anything imported from Palm...: Ikintu cyose cyatumijwe muri Palm kizandikwa mugihe gikurikira cyo gutumiza (keretse itariki y'ibyabaye yarangiye). Kubwibyo, ivugurura rigomba gukorwa muri desktop ya Palm.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Iyi fomu izatumiza vCalendar (.vcs) 1.0 ibyabaye.
+The following formats have been tested: Imiterere ikurikira yageragejwe:
+This form will import iCalendar (.ics) events.: Iyi fomu izatumiza iCalendar (.ics) ibyabaye.
+Enabling: Gushoboza
+Overwrite Prior Import: Andika ibicuruzwa byinjira mbere
+will cause events imported previously...: Bizatera ibyabaye byatumijwe mbere, byakoresheje UID imwe nkibyabaye kuva muri dosiye nshya yatumijwe mu mahanga, gushyirwaho ikimenyetso cyo gusiba. Ibi bigomba kwemerera dosiye iCalendar ivuguruye gutumizwa hanze idakoze duplicates.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Ironderero
+About WebCalendar: Ibyerekeye Urubuga
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Imirongo ni ingirakamaro mu kwerekana abandi bakoresha ibyabaye muri kalendari yawe. Urashobora kwerekana umukoresha nibara ibyabaye bizerekanwa muri.
+Add/Edit/Delete: Ongeraho / Guhindura / Gusiba
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Kanda ahanditse Guhindura ibice mubice bya admin hepfo yurupapuro bizagufasha kongera / guhindura / gusiba ibice.
+The text color of the new layer that will be displayed in your calendar.: Ibara ryanditse ryurwego rushya ruzerekanwa muri kalendari yawe.
+Disabling: Guhagarika
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Kanda ahanditse Disable Layers mugice cya admin hepfo yurupapuro kugirango uzimye ibice.
+Duplicates: Amakopi
+If checked, events that are duplicates of your events will be shown.: Niba bigenzuwe, ibyabaye byigana ibyabaye bizerekanwa.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Kanda kuri Enable Layers ihuza mugice cya admin hepfo yurupapuro kugirango ufungure ibice.
+Source: Inkomoko
+Specifies the user that you would like to see displayed in your calendar.: Kugaragaza umukoresha wifuza kubona yerekanwe muri kalendari yawe.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Icyiciro gisanzwe
+default-category-help: Kugaragaza icyiciro ikintu gishya kigomba gusiba kuri.
+When I am the boss: Iyo ndi umuyobozi
+Email me event notification: Unyandikire imenyesha ry'ibyabaye
+email-boss-notifications-help: Kugaragaza niba abayobozi bakiriye imeri nkibimenyesha ibyabaye.
+I want to approve events: Ndashaka kwemeza ibyabaye
+boss-approve-event-help: Kugaragaza niba umuyobozi azasabwa kwemeza ibyabaye byongeweho nabafasha.
+Subscribe/Publish: Kwiyandikisha / Gutangaza
+Allow remote publishing: Emera gutangaza kure
+allow-remote-publishing-help: Kugaragaza niba umukiriya wa kure wa iCal ashobora gutangaza ibyabaye kuri WebCalendar
+remote-publishing-url-help: Yerekana URL yo gukoresha muri porogaramu ya iCal kubakiriya kubiyandikisha no gutangaza kuri WebCalendar.
+allow-remote-subscriptions-help: Kugaragaza niba abakoresha kure bashobora kwiyandikisha kuri kalendari yawe, ibemerera kubona ibyabaye muri porogaramu ikoreshwa na iCal (nka iCal ya Apple cyangwa Kalendari ya Mozilla).
+remote-subscriptions-url-help: Erekana URL abakoresha kure bagomba gukoresha kugirango biyandikishe kuri kalendari yawe.
+Enable FreeBusy publishing: Gushoboza FreeBusy gutangaza
+freebusy-enabled-help: Kugaragaza niba umukoresha umwanya uhari ushobora kuboneka ukoresheje iCal FreeBusy isanzwe.
+freebusy-url-help: URL yo kubona urutonde rwumukoresha wa FreeBusy
+rss-feed-url-help: URL yo kubona ibiryo bya RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Emerera kugenzura neza abakoresha no kubemerera. Abakoresha barashobora kandi gutanga uruhushya kandi kuburuhushya rwumuntu kugiti cye iyo abiherewe uburenganzira nubuyobozi.
+If disabled, this user cannot send you emails.: Niba byahagaritswe, uyu ukoresha ntashobora kohereza imeri.
+If disabled, this user cannot see you in the participants list.: Niba byahagaritswe, uyu ukoresha ntashobora kukubona kurutonde rwabitabiriye.
+If enabled, this user cannot view the details of any of your entries.: Niba bishoboka, uyu ukoresha ntashobora kureba amakuru arambuye mubyo wanditse byose.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Gutangaza Abamugaye (Admin)
+Publishing Disabled (User): Gutangaza Abamugaye (Umukoresha)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Kanda Kuri Guhitamo
+Current Icons on Server: Udushushondanga twa none kuri seriveri
+
+########################################
+# Page: import.php
+#
+import from file: kwinjiza muri dosiye
+Disabled: Abamugaye
+Import format: Kuzana imiterere
+Exclude private records: Kuramo inyandiko bwite
+Repeated items are imported separately. Prior imports are not overwritten.: Ibintu byasubiwemo bitumizwa mu mahanga ukundi. Ibicuruzwa byatumijwe mbere ntabwo byanditse.
+
+########################################
+# Page: import_handler.php
+#
+No file: Nta dosiye
+Error deleting palm events from webcalendar.: Ikosa ryo gusiba ibyabaye kuri webcalendar.
+Events from prior import marked as deleted: Ibyabaye kuva ibicuruzwa byatumijwe mbere byerekanwe ko byasibwe
+Conflicting events: Ibyabaye bivuguruzanya
+The import file contained no data.: Idosiye yatumijwe mu mahanga nta makuru yari afite.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Uzi neza ko ushaka gusiba iki cyiciro?
+Delete layer: Siba urwego
+Edit layer: Hindura urwego
+Enable layers: Gushoboza ibice
+Layer: Inzira
+Layers are currently disabled.: Imirongo irahagaritswe.
+Layers are currently enabled.: Imirongo irashoboka.
+Click to modify layers settings for XXX: Kanda hano kugirango uhindure igenamiterere rya kalendari ya XXX.
+Disable Layers: Hagarika Imirongo
+Add layer: Ongeraho urwego
+Add Layer: Ongeraho
+Edit Layer: Hindura
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Ntibishobora kuvugurura ibyifuzo
+Invalid entry id.: Id yemewe kwinjira.
+You cannot create a layer for yourself.: Ntushobora gukora urwego rwawe wenyine.
+You can only create one layer for each user.: Urashobora gukora gusa urwego rumwe kuri buri mukoresha.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Emeza / Emeza
+Approve Selected: Emeza abatoranijwe
+Check All: Reba Byose
+Emails Will Not Be Sent: Imeri ntizoherezwa
+Reject Selected: Wange Abatoranijwe
+Reject: Wange
+Uncheck All: Kuramo Byose
+View this entry: Reba iyi nyandiko
+No unapproved entries for XXX.: Nta byanditswe bitemewe kuri: "XXX".
+Unapproved Entries: Ibyinjira bitemewe
+Approve this entry?: Emeza iyi nyandiko?
+Reject this entry?: Wange iyi nyandiko?
+Approve Selected entries?: Emeza ibyatoranijwe?
+Reject Selected entries?: Kwanga ibyatoranijwe?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Ugomba kwinjiza kwinjira nijambobanga.
+Save login via cookies so I dont have to login next time.: Bika kwinjira ukoresheje kuki kugirango ntagomba kwinjira ubutaha
+Login: Injira
+public: rusange
+Access XXX calendar: Kugera kuri kalendari ya XXX
+cookies-note: Icyitonderwa: Iyi porogaramu isaba kuki gukora.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Inyuguti zitemewe mu kwinjira XXX.
+Invalid login: Kwinjira bitemewe
+Activity login failure: Izina ryukoresha: "XXX", IP: "YYY".
+Error XXX: Ikosa: "XXX".
+You have been logged out.: Winjiye hanze.
+Access public calendar: Kugera kuri kalendari rusange
+Not yet registered? Register here!: Ntabwo wiyandikishije? Iyandikishe hano!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Nta kalendari nkiyi idakoreshwa: "XXX".
+This Calendar is not Public.: Iyi Kalendari ntabwo ari rusange.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Ongeraho Kalendari Nshya idakoreshwa
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Ifashayinjira rigomba gutomorwa.
+No such nonuser calendar: Nta kalendari nkiyi
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Insanganyamatsiko itemewe
+Save Preferences: Bika Ibyatoranijwe
+Public Access calendar: Kalendari rusange
+Modify Non User Calendar Preferences: Hindura Abakoresha Kalendari Ibyifuzo
+Return to My Preferences: Garuka kubyo nkunda
+Custom Scripts: Inyandiko yihariye
+Timezone Selection: Guhitamo Igihe
+Multiview: =
+entry-interval-help: Shiraho umunota intera mugihe uhindura ibihe byinjira
+Entry interval: Intera yinjira
+hour: isaha
+minute: umunota
+theme-reload-help: Bitewe na CSS cishing, urupapuro rushobora gusubirwamo
+Page may need to be reloaded for new Theme to take effect: Urupapuro rushobora gukenera gusubirwamo kugirango Insanganyamatsiko nshya itangire gukurikizwa
+display_byproxy-help: Erekana umuremyi nyawe kurupapuro rwo kureba
+Display if created by Assistant: Erekana niba byakozwe na Assistant
+allow-view-subscriptions-help: Emerera kubuza kugera kure kubanga cyangwa Ibanga ryinjira
+Allow remote viewing of: Emerera kure kureba
+entries: Ibyanditswe
+
+########################################
+# Page: purge.php
+#
+Purging events for: Gusiba ibyabaye kuri
+Finished: Byarangiye
+Back: Inyuma
+Check box to delete ALL events for a user: Reba agasanduku kugirango usibe  BYOSE  ibyabaye kubakoresha
+Delete all events before: Siba ibyabaye byose mbere
+Purge deleted only: Isiba ryasibwe gusa
+Preview delete: Gusiba gusiba
+Are you sure you want to delete events for: Uzi neza ko ushaka gusiba ibyabaye kuri
+Records deleted from XXX: Inyandiko zasibwe muri "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Aderesi imeri ntishobora kuba ubusa.
+Username already exists.: Izina ryukoresha rimaze kubaho.
+Email address already exists.: Aderesi imeri irahari.
+New user via self-registration.: Umukoresha mushya binyuze mu kwiyandikisha.
+A new WebCalendar account has been set up for you.: Konti nshya ya WebCalendar yashizweho kubwawe.
+Your username is XXX.: Izina ukoresha ni: "XXX".
+Your password is XXX.: Ijambo ryibanga ni: "XXX".
+Please visit XXX to log in and start using your account!: Nyamuneka sura "XXX" kugirango winjire hanyuma utangire ukoreshe konte yawe!
+You may change your password after logging in the first time.: Urashobora guhindura ijambo ryibanga nyuma yo kwinjira mugihe cyambere.
+If you received this email in error: Niba wakiriye iyi imeri mu makosa kandi ukaba utiyandikishije kuri konte ya WebCalendar, urashobora kwirengagiza iri tangazo, cyangwa ugasubiza ufite inoti ngufi
+Administrator: Umuyobozi
+Welcome: Murakaza neza
+New user via email.: Umukoresha mushya ukoresheje imeri.
+Registration: Kwiyandikisha
+Welcome to WebCalendar: Murakaza neza kuri WebCalendar
+Your email should arrive shortly.: Imeri yawe igomba kugera vuba.
+Return to Login screen: Garuka Kuri Ifashayinjira
+Password (again): Ijambobanga (nanone):
+Your account information will be emailed to you.: Amakuru ya konte yawe azohererezwa imeri yawe.
+Submit: Tanga
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Komeza
+(Your comments will be emailed to the other participants.): (Ibitekerezo byawe bizoherezwa kubandi bitabiriye.)
+XXX has rejected an appointment.: XXX yanze gahunda.
+Rejected by XXX.: Banze na XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Ongeramo Kalendari Nshya ya kure
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Iki gikorwa ni ibanga.
+(Private): =
+(cont.): =
+Approved: Byemejwe
+Deleted: Gusiba
+Rejected: Yanze
+Waiting for approval: Gutegereza kwemerwa
+Unknown: Ntazwi
+Invalid report id.: Raporo idemewe.
+Click here to manage reports for the Public Access calendar.: Kanda hano kugirango ucunge raporo kuri kalendari rusange.
+Add new report: Ongeraho raporo nshya
+Manage Reports: Gucunga Raporo
+
+########################################
+# Page: search.php
+#
+Advanced Search: Ishakisha ryambere
+Search: Shakisha
+Keywords: Ijambo ryibanze
+Enter % for all entries: Injira% kubyo wanditse byose
+Include: Shyiramo
+Filter by Date: Akayunguruzo ku Itariki
+All Dates: Amatariki Yose
+Past: Kera
+Upcoming: Ibizaza
+Range: Urwego
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Ugomba kwinjiza ijambo rimwe cyangwa byinshi by'ishakisha.
+Search Results: Shakisha Ibisubizo
+match found: umukino wabonetse
+matches found: Imikino yabonetse
+No matches found: Nta mukino wabonetse
+New Search: Gushakisha gushya
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Ibisobanuro bikurikira birerekana urutonde rwibibazo ushobora kwishyiriraho WebCalendar yawe ishobora guhinduka kugirango igenamigambi ryanyu ririnde umutekano.
+For questions about WebCalendar security see the forums: Kubibazo bijyanye nikibazo icyo aricyo cyose cyumutekano wa WebCalendar, nyamuneka koresha amahuriro ya WebCalendar yakiriwe kuri GitHub.com;<br>XXX
+View your current PHP settings: Reba igenamiterere rya PHP ryubu
+Security Issue: Ikibazo cy'umutekano
+Status: Imiterere
+Default admin user password: Mburabuzi ukoresha ijambo ryibanga
+You should change the password of the default admin user.: Ugomba guhindura ijambo ryibanga ryumukoresha usanzwe.
+File permissions XXX: Uruhushya rwa dosiye: XXX
+item XXX should not be writable: Ingingo ikurikira ntigomba kwandikwa:<br><tt> XXX</tt>
+File exists XXX: Dosiye irahari: "XXX"
+Because you have email disabled, you should remove this file.: Kuberako ufite imeri yamugaye, ugomba gukuraho iyi dosiye.
+File location XXX: Aho dosiye iri: "XXX"
+remove XXX if not using: Niba udakoresha dosiye "XXX", ugomba kuyisiba. Cyangwa, byibura, iyimure mububiko bushya.
+System Settings XXX: Igenamiterere rya sisitemu: "XXX"
+consider enabling UAC: Urashobora gushaka gutekereza kubijyanye no gukoresha abakoresha kugenzura gushiraho uburenganzira bwabakoresha.
+recommend approving new public events: Turasaba ko ibyatanzwe mubikorwa rusange byemezwa.
+recommend using CAPTCHA: CAPTCHA irasabwa kurinda ibintu byongeye gutangwa.
+Database cache directory location: Ububiko bwububiko bwububiko
+db cache should be inaccessable: Ububiko bwububiko bugomba kuba mububiko budashobora kugerwaho na URL.
+PHP Settings XXX: Igenamiterere rya PHP: "XXX"
+recommend setting XXX Off: Igenamigambi risabwa kuri "XXX" rirahari.
+recommend setting allow_url_fopen Off: Igenamiterere risabwa kuri "kwemerera_url_fungura" rirahari mugihe kalendari ya kure idashoboka.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Reba Kalendari Yundi Ukoresha
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Ntabwo wongeyeho ibyiciro.
+Set Category: Shiraho Icyiciro
+Global Categories cannot be changed.: Ibyiciro byisi ntibishobora guhinduka.
+
+########################################
+# Page: upcoming.php
+#
+more: byinshi
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Kalendari ya kure
+denotes administrative user: bisobanura umukoresha
+Add New User: Ongeraho Umukoresha mushya
+
+########################################
+# Page: usersel.php
+#
+form: ifishi
+Reset: Gusubiramo
+
+########################################
+# Page: views.php
+#
+Add New View: Ongeraho Reba Gishya
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Reba Amazina
+Add View: Ongera Reba
+Edit View: Hindura Reba
+View Name: Reba Izina
+View Type: Reba Ubwoko
+Day by Time: Umunsi ku wundi
+Week (Users horizontal): Icyumweru (Abakoresha horizontal)
+Week by Time: Icyumweru ku gihe
+Week (Users vertical): Icyumweru (Abakoresha bahagaze)
+Week (Timebar): Icyumweru (Igihe cyagenwe)
+Month (Timebar): Ukwezi (Igihe cyagenwe)
+Month (side by side): Ukwezi (kuruhande)
+Month (on same calendar): Ukwezi (kuri kalendari imwe)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Ugomba kwerekana izina ryo kureba
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Nta bakoresha kuri iki gitekerezo.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Kuvugurura Inshingano Ijanisha
+Completed: Byarangiye
+Assistant mode: Uburyo bwungirije
+Declined: Yanze
+Needs-Action: Ibikenewe-Igikorwa
+by: na
+Percentage Complete: Ijanisha ryuzuye
+External User: Umukoresha wo hanze
+Update: Kuvugurura
+at: kuri
+comments: ibitekerezo
+Show: Erekana
+Hide: Hisha
+Approve/Confirm entry: Emeza / Emeza ibyinjira
+Reject entry: Wange kwinjira
+Set category: Shiraho icyiciro
+Add to My Calendar: Ongera kuri Kalendari yanjye
+Copy entry: Gukoporora ibyinjira
+This will delete this entry for all users.: Ibi bizasiba ibyinjira kubakoresha bose.
+Edit entry: Hindura ibyinjira
+Edit repeating entry for all dates: Hindura gusubiramo ibyanditswe kumatariki yose
+Delete repeating event for all dates: Siba ibyabaye gusubiramo amatariki yose
+Edit entry for this date: Hindura ibyanditswe kuriyi tariki
+Delete entry only for this date: Siba ibyinjira kuriyi tariki gusa
+Delete entry from calendar of XXX: Siba ibyinjira muri kalendari ya XXX
+This will delete the entry from your XXX calendar.: Ibi bizasiba ibyinjira muri kalendari yawe ya XXX.
+boss: shobuja '
+This will delete the entry from your boss calendar.: Ibi bizasiba ibyinjira muri kalendari ya shobuja.
+This will delete the entry from your calendar.: Ibi bizasiba ibyinjira muri kalendari yawe.
+from your boss calendar: uhereye kuri kalendari ya shobuja
+Do you want to add this entry to your calendar?: Urashaka kongeramo iyi nyandiko kuri kalendari yawe?
+This will add the entry to your calendar.: Ibi bizongera ibyinjira kuri kalendari yawe.
+Email all participants: Ohereza abitabiriye amahugurwa bose
+Hide activity log: Hisha igitabo cyibikorwa
+Show activity log: Erekana igitabo cyibikorwa
+Export this entry to: Kohereza ibyinjira kuri
+Palm Pilot: Umuderevu
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Kanda inshuro ebyiri kuri selile yubusa kugirango wongere ibyinjira.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Icyinjira gishya
+cont.: =
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Indi Kalendari y'abakoresha
+Category Management: Gucunga ibyiciro
+Day View: Umunsi Reba
+Edit Event: Hindura ibyabaye
+Month View: Ukwezi Kureba
+Common Trailer: Inzira rusange
+User Management: Gucunga Abakoresha
+Manage Views: Gucunga Reba
+Week View: Icyumweru Reba
+Year View: Umwaka Reba
+Invalid function id: Imikorere idemewe
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Ntushobora kubona dosiye "igenamiterere.php".
+Incomplete settings.php file...: Idosiye "igenamigambi.php" ituzuye ...
+Could not find XXX defined in...: Ntushobora kubona "XXX" yasobanuwe muri dosiye yawe "igenamiterere.php".
+You must define XXX in: Ugomba gusobanura "XXX" muri dosiye "igenamiterere.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Kigarama
+Dec: Kig
+LANGUAGE DEFINED: URURIMI RUSOBANUWE
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Ikosa rihuza data base: "XXX".
+db_type not defined.: db_ubwoko ntibusobanuwe.
+invalid db_type XXX: db_ubwoko butemewe "" XXX ".
+Cache cleared from previous SQL!: Cache yakuwe muri SQL yabanjirije iyi!
+Error executing query.: Ikosa ryo gukora ikibazo.
+Unfortunately, XXX is not implemented for YYY: Kubwamahirwe, "XXX" ntabwo yashyizwe mubikorwa (YYY).
+Unknown ODBC error.: Ikosa rya ODBC ritazwi.
+Error opening cache dir XXX.: Ikosa ryo gufungura cache dir "XXX".
+delete: gusiba
+Cache error Could not XXX file YYY.: Cache ikosa: Ntishobora dosiye ya XXX "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Ikosa Ryica
+Invalid data format for: Imiterere yamakuru atemewe
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Ikosa: Andika udashyizweho kubikorwa byibikorwa!
+This event is XXX.: Iki gikorwa ni XXX.
+Conf.: =
+exceeds limit of XXX events per day: irenze imipaka y'ibyabaye XXX kumunsi
+on: ku
+All Attendees: Abitabiriye bose
+Busy: Irahuze
+Tentative: Ihema
+Schedule an appointment for XXX.: Teganya gahunda ya XXX: YYY.
+date_select: __dd__ __ ukwezi__ __yyyy__
+Event approved: Ibirori byemewe
+Journal approved: Ikinyamakuru cyemejwe
+Task approved: Igikorwa cyemewe
+Attachment: Umugereka
+Event created: Ibirori byarakozwe
+Journal created: Ikinyamakuru cyarakozwe
+Task created: Inshingano yashizweho
+Event deleted: Icyabaye cyasibwe
+Journal deleted: Ikinyamakuru cyasibwe
+Task deleted: Igikorwa cyasibwe
+New user via email (self registration): Umukoresha mushya ukoresheje imeri (kwiyandikisha)
+New user (self registration): Umukoresha mushya (kwiyandikisha wenyine)
+Notification sent: Imenyesha ryoherejwe
+Event rejected: Ibirori byanze
+Journal rejected: Ikinyamakuru cyanze
+Task rejected: Igikorwa cyanze
+Reminder sent: Kwibutsa byoherejwe
+Event updated: Ibirori byavuguruwe
+Journal updated: Ikinyamakuru cyavuguruwe
+Task updated: Igikorwa cyavuguruwe
+Delete User: Siba Umukoresha
+WK: =
+TASKS: =
+Task_Title: Umutwe
+Due: Kubera
+Task Name: Izina ry'inshingano
+Task Due Date: Igikorwa gikwiye
+You have XXX unapproved entries: Ufite XXX ibyinjira bitemewe
+Changes successfully saved: Impinduka zabitswe neza
+Event: Icyabaye
+Action: Igikorwa
+Printer Friendly: Mucapyi Nshuti
+Generate printer-friendly version: Gukora printer-nshuti
+after: nyuma
+before: mbere
+end: iherezo
+start: gutangira
+View this event: Reba ibyabaye
+View this task: Reba iki gikorwa
+January: Mutarama
+February: Gashyantare
+March: Werurwe
+April: Mata
+May_: Gicurasi
+June: Kamena
+July: Nyakanga
+August: Kanama
+September: Nzeri
+October: Ukwakira
+November: Ugushyingo
+Jan: Mutarama
+Feb: Gashyantare
+Mar: Werurwe
+Apr: Mata
+May: Gicurasi
+Jun: =
+Jul: =
+Aug: Kanama
+Sep: Nzeri
+Oct: Ukwakira
+Nov: Ugushyingo
+SU: =
+MO: =
+TU: =
+WE: TWE
+TH: =
+FR: =
+SA: =
+unknown-month: ukwezi
+First Quarter Moon: Ukwezi kwa mbere
+Full Moon: Ukwezi kuzuye
+Last Quarter Moon: Ukwezi kwanyuma
+New Moon: Ukwezi gushya
+Error TIME_SLOTS undefined!: Ikosa: TIME_SLOTS idasobanuwe!
+The following error occurred: Ikosa rikurikira ryabaye
+You are not authorized.: Ntabwo wemerewe.
+Add N hours to: Ongeraho N amasaha kuri
+Subtract N hours from: Gukuramo amasaha N kuva
+same as: kimwe na
+server time: Seriveri Igihe
+Cannot read timezone file XXX.: Ntushobora gusoma dosiye ya timezone: XXX.
+Your current GMT offset is XXX hours.: Kugeza ubu GMT offset ni amasaha ya XXX.
+Unauthorized: Uruhushya
+Error approving event XXX.: Ikosa ryo kwemeza ibyabaye: XXX.
+Error deleting event XXX.: Ikosa ryo gusiba ibyabaye: XXX.
+Error rejecting event XXX.: Ikosa ryo kwanga ibyabaye: XXX.
+Sunday: Ku cyumweru
+Monday: Ku wa mbere
+Tuesday: Ku wa kabiri
+Wednesday: Ku wa gatatu
+Thursday: Ku wa kane
+Friday: Ku wa gatanu
+Saturday: Ku wa gatandatu
+Sun: Izuba
+Mon: Ukwezi
+Tue: =
+Wed: =
+Thu: =
+Fri: Ku wa gatanu
+Sat: =
+unknown-weekday: umunsi utazwi
+Invalid referring URL: URL itemewe
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Ironderero
+Documentation: Inyandiko
+Page: Urupapuro
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Kalendari yanjye
+Add New Entry: Ongeraho Ibyinjira
+Add New Task: Ongeraho Inshingano Nshya
+Logout: Gusohoka
+Home: Murugo
+Back to My Calendar: Subira kuri Kalendari yanjye
+Go to: Jya kuri
+Manage calendar of: Gucunga kalendari ya
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Ururimi Mucukumbuzi Ntiruboneka
+(not supported): (ntibishyigikiwe)
+Abkhazian: Abhazian
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: Abanyafurika
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: Ikinyalubaniya
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Amajyepfo)
+Amharic: =
+Angika: =
+Apache: =
+Arabic (Algeria): Icyarabu (Alijeriya)
+Arabic (Bahrain): Icyarabu (Bahrein)
+Arabic (Egypt): Icyarabu (Misiri)
+Arabic (Iraq): Icyarabu (Iraki)
+Arabic (Jordan): Icyarabu (Yorodani)
+Arabic (Kuwait): Icyarabu (Koweti)
+Arabic (Lebanon): Icyarabu (Libani)
+Arabic (Libya): Icyarabu (Libiya)
+Arabic (Morocco): Icyarabu (Maroc)
+Arabic (Oman): Icyarabu (Oman)
+Arabic (Qatar): Icyarabu (Qatar)
+Arabic (Saudi Arabia): Icyarabu (Arabiya Sawudite)
+Arabic (Syria): Icyarabu (Siriya)
+Arabic (Tunisia): Icyarabu (Tuniziya)
+Arabic (U.A.E.): Icyarabu (U.A.E.)
+Arabic (Yemen): Icyarabu (Yemeni)
+Arabic: Icyarabu
+Aragonese: =
+Aramaic: Icyarameyi
+Arapaho: =
+Arawak: =
+Armenian: Ikinyarumeniya
+Assamese: =
+Asturian: =
+Athapascan: Athapasikani
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Azaribayijan
+Balinese: Balineine
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: =
+Beja: =
+Belarusian: Biyelorusiya
+Bemba: =
+Bengali: Ikibengali
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Ikirenge
+Blin: =
+Bliss: Mugisha
+Bosnian: Bosiniya
+Braj: =
+Breton: =
+Buginese: =
+Bulgarian: Buligariya
+Buriat: =
+Burmese: Ikirundi
+Caddo: =
+Catalan: Igikatalani
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Igishinwa (Hong Kong)
+Chinese (PRC): Igishinwa (PRC)
+Chinese (Simplified/GB2312): Igishinwa (Byoroheje / GB2312) 
+Chinese (Singapore): Igishinwa (Singapore)
+Chinese (Taiwan): Igishinwa (Tayiwani)
+Chinese (Traditional/Big5): Igishinwa (Gakondo / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: Abakopi
+Cornish: =
+Corsican: =
+Cree: =
+Creek: =
+Croatian: Igikorowasiya
+Czech: Ceki
+Dakota: =
+Danish: Danemark
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Ubuholandi (Ububiligi)
+Dutch: Ikidage
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Icyongereza (Ositaraliya)
+English (Belize): Icyongereza (Belize)
+English (Canada): Icyongereza (Kanada)
+English (Ireland): Icyongereza (Irilande)
+English (Jamaica): Icyongereza (Jamayike)
+English (New Zealand): Icyongereza (New Zealand)
+English (Philippines): Icyongereza (Philippines)
+English (South Africa): Icyongereza (Afurika y'Epfo)
+English (Trinidad & Tobago): Icyongereza (Trinidad & Tobago)
+English (United Kingdom): Icyongereza (Ubwongereza)
+English (United States): Icyongereza (Amerika)
+English (Zimbabwe): Icyongereza (Zimbabwe)
+English: Icyongereza-Amerika
+Erzya: =
+Esperanto: =
+Estonian: Esitoniya
+Ewe: =
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: =
+Fijian: Fijiyani
+Filipino: Abanyafilipine
+Finnish: Igifinilande
+Fon: =
+French (Belgium): Igifaransa (Ububiligi)
+French (Canada): Igifaransa (Kanada)
+French (France): Igifaransa (Ubufaransa)
+French (Luxembourg): Igifaransa (Luxembourg)
+French (Monaco): Igifaransa (Monaco)
+French (Switzerland): Igifaransa (Ubusuwisi)
+French: Igifaransa
+Frisian (Eastern): Frisiyani (Iburasirazuba)
+Frisian (Northern): Frisiyani (Amajyaruguru)
+Frisian (Western): Frisiyani (Iburengerazuba)
+Frisian: Igifaransa
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Abagalatiya
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Jeworujiya
+German (Austria): Ikidage (Otirishiya)
+German (Germany): Ikidage (Ubudage)
+German (Liechtenstein): Ikidage (Liechtenstein)
+German (Luxembourg): Ikidage (Luxembourg)
+German (Standard): Ikidage (Standard)
+German (Switzerland): Ikidage (Ubusuwisi)
+German: Ikidage
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gothique
+Grebo: =
+Greek: Ikigereki
+Greenlandic: =
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haiti (igikerewole)
+Haitian: Haiti
+Hausa: =
+Hawaiian: Hawayi
+Hebrew: Igiheburayo
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Abaheti
+Hmong: =
+Holo (Taiwanese): Holo (Tayiwani)
+Hungarian: Hongiriya
+Hupa: =
+Iban: =
+Icelandic: Isilande
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: Indoneziya
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Irani
+Irish (Gaelic): Irlande (Ikigereki)
+Irish: Irlande
+Iroquoian: =
+Italian (Switzerland): Umutaliyani (Ubusuwisi)
+Italian: Umutaliyani
+Japanese: Ikiyapani
+Javanese: =
+Judeo-Arabic: Yudaya-Icyarabu
+Judeo-Persian: Yudaya-Umuperesi
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: Kazak
+Khasi: =
+Khmer (Central): Khmer (Hagati)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Umunyakoreya (Johab)
+Korean (North): Igikoreya (Amajyaruguru)
+Korean (South): Igikoreya (Amajyepfo)
+Korean: Igikoreya
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: =
+Kutenai: =
+Kyrgyz: Kirigizisitani
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Ikilatini
+Latvian: Ikilatini
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Lituwaniya
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: =
+Macedonian: Abanyamakedoniya
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Malagasi
+Malay: Malayika
+Malayalam: =
+Maldivian: Maldiviya
+Maltese: =
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: Abamaya
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Moldaviya
+Mongo: =
+Mongolian: Mongoliya
+Montenegrin: =
+Moroccan: Maroc
+Mossi: =
+Myanmar: Miyanimari
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Amajyaruguru)
+Ndebele (South): Ndebele (Amajyepfo)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Noruveje (Bokmål)
+Norwegian (Nynorsk): Noruveje (Nynorsk)
+Norwegian: Noruveje
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: =
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: =
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: =
+Pedi: =
+Persian (Farsi): Umuperesi (Farsi)
+Persian (Iran): Persian (Irani)
+Persian: =
+Phoenician: Abanyafenisiya
+Pohnpeian: =
+Polish: Igipolonye
+Portuguese: Igiporutugali
+Portuguese/Brazil: Igiporutugali / Burezili
+Punjabi (India): Punjabi (Ubuhinde)
+Punjabi (Pakistan): Punjabi (Pakisitani)
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: Ikinyarumaniya
+Romansh: =
+Romany: =
+Rundi: =
+Russian (Moldavia: Ikirusiya (Moldaviya
+Russian (Republic of Moldova): Ikirusiya (Repubulika ya Moldaviya)
+Russian: Ikirusiya
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Amajyaruguru)
+Sami (Skolt): =
+Sami (Southern): Sami (Amajyepfo)
+Sami: =
+Samoan: =
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: Umusardiniya
+Sasak: =
+Scots (Gaelic): Abanya-Scots (Ikigali)
+Selkup: =
+Serbian (Upper): Igiseribiya (Hejuru)
+Serbian: Igiseribiya
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Sisiliyani
+Sindhi: =
+Sinhala: =
+Slavic: Igisilave
+Slovak: Igisilovakiya
+Slovenian: Sloveniya
+Sogdian: Sogdiyani
+Somali: Somaliya
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbian (Hasi)
+Sorbian (Upper): Sorbian (Hejuru)
+Sorbian: =
+Sotho: =
+Spanish (Argentina): Icyesipanyoli (Arijantine)
+Spanish (Bolivia): Icyesipanyoli (Boliviya)
+Spanish (Chile): Icyesipanyoli (Chili)
+Spanish (Colombia): Icyesipanyoli (Kolombiya)
+Spanish (Costa Rica): Icyesipanyoli (Kosta Rika)
+Spanish (Dominican Republic): Icyesipanyoli (Repubulika ya Dominikani)
+Spanish (Ecuador): Icyesipanyoli (Ecuador)
+Spanish (El Salvador): Icyesipanyoli (El Salvador)
+Spanish (Guatemala): Icyesipanyoli (Guatemala)
+Spanish (Honduras): Icyesipanyoli (Honduras)
+Spanish (Mexico): Icyesipanyoli (Mexico)
+Spanish (Nicaragua): Icyesipanyoli (Nikaragwa)
+Spanish (Panama): Icyesipanyoli (Panama)
+Spanish (Paraguay): Icyesipanyoli (Paraguay)
+Spanish (Peru): Icyesipanyoli (Peru)
+Spanish (Puerto Rico): Icyesipanyoli (Porto Rico)
+Spanish (Spain): Icyesipanyoli (Espanye)
+Spanish (Uruguay): Icyesipanyoli (Uruguay)
+Spanish (Venezuela): Icyesipanyoli (Venezuwela)
+Spanish: Icyesipanyoli
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Abasumeriya
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: Igiswahiri
+Swati: =
+Swedish (Finland): Igisuwede (Finlande)
+Swedish (Sweden): Igisuwede (Suwede)
+Swedish: Igisuwede
+Syriac: Igisiriyake
+Tagalog: =
+Tahitian: =
+Tai: =
+Taiwan: Tayiwani
+Tajik: =
+Tamashek: =
+Tamil: =
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: Tayilande
+Tibetan: Abanyatibetani
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Ibirwa bya Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Turukiya
+Turkmen: Abanyaturukiya
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: =
+Ukrainian: Ukraine
+Umbundu: =
+Urdu: =
+Uyghur: =
+Uzbek: =
+Vai: =
+Venda: =
+Vietnamese: Abanya Vietnam
+Volapük: =
+Votic: Amajwi
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: =
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Mucukumbuzi
+event: Icyabaye
+journal: ikinyamakuru
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Ifashayinjira ryemewe
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: ijambo ryibanga ritari ryo
+no such user: nta mukoresha nkuyu
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Konti yarahagaritswe
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Intera
+Months: Amezi
+Month Days: Iminsi Ukwezi
+Days: Iminsi
+Weeks: Icyumweru
+Position: Umwanya
+Until: Kugeza
+Count: Kubara
+Inclusion Dates: Amatariki yo Kwinjiza
+Exclusion Dates: Amatariki yo guhezwa
+Event Imported: Ibirori byatumijwe mu mahanga
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Kumenyesha
+authenticate: Ikosa rya SMTP: Ntishobora kwemeza
+connect_host: Ikosa rya SMTP: Ntushobora guhuza na host ya SMTP:
+data_not_accepted: Ikosa rya SMTP: Amakuru ntabwo yemewe
+encoding: Kode itazwi:
+execute: Ntushobora gukora:
+file_access: Ntushobora kubona dosiye:
+file_open: Ikosa rya dosiye Ntishobora gufungura dosiye:
+from_failed: Ibikurikira Kuva kuri aderesi byananiranye:
+instantiate: Ntushobora guhita ukora ibikorwa bya posita
+mailer_not_supported: amabaruwa ntabwo ashyigikiwe
+provide_address: Ugomba gutanga byibuze aderesi imeri yakiriye.
+recipients_failed: Ikosa rya SMTP: Abahawe ibi bikurikira barananiwe:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Injira Inyuguti Ziboneka Mubishushanyo
+Enter the correct letters and numbers...: Injiza inyuguti nimibare ikwiye kuva mwishusho mumasanduku yinyandiko. Iki kizamini gito gikora nkibibuza kubi bibi. Ongera usubiremo urupapuro niba iyi shusho igoye gusoma
+Challenge/Response: Ikibazo / Igisubizo
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Hindura itariki nigihe cyo kwinjira?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Ntabwo winjiye muri make Ibisobanuro
+time prior to work hours...: igihe mbere yamasaha yakazi ...
+Invalid Event Date: Itariki y'ibyabaye itemewe
+Please add a participant: Nyamuneka ongeraho abitabiriye amahugurwa
+Invalid Date: Itariki itemewe
+You have not entered a valid time of day: Ntabwo winjiye mugihe cyemewe cyumunsi.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Indangamuntu ya kalendari ntishobora kuba ubusa.
+First and last names cannot both be blank.: Amazina yanyuma nayanyuma ntashobora kuba ubusa.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Ibara ritemewe
+Color format should be RRGGBB.: Imiterere y'amabara igomba kuba #RRGGBB.
+URL cannot be blank.: URL ntishobora kuba ubusa.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Ubwoko bwa dosiye ntabwo buhuye nuburyo bwo gutumiza mu mahanga
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Ibara ritemewe kumyandiko yinyuma.
+Invalid color for document title.: Ibara ritemewe kumutwe winyandiko.
+Invalid color for table cell background.: Ibara ritemewe kumeza selile yimbere.
+Invalid color for table cell background for today.: Ibara ritemewe kumeza ya selire yumunsi uyumunsi.
+Invalid work hours.: Amasaha y'akazi atemewe.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Seriveri URL igomba kurangizwa no gutombora (/).
+Invalid color for table grid.: Ibara ritemewe kumeza ya gride.
+Invalid color for event popup background.: Ibara ritemewe kubintu byabaye inyuma.
+Invalid color for event popup text.: Ibara ritemewe kubyabaye popup inyandiko.
+Invalid color for table header text.: Ibara ritemewe kumeza yumutwe winyandiko.
+Invalid color for table header background.: Ibara ritemewe kumeza yumutwe winyuma.
+Server URL is required.: URL ya seriveri irakenewe.
+Invalid Color: Ibara ritemewe
+Database Name: Izina ryububiko
+Full Path (no backslashes): Inzira Yuzuye (nta gusubira inyuma)
+The password contains illegal characters.: Ijambobanga ririmo inyuguti zitemewe.
+Error you must specify a Single-User Login: Ikosa: Ugomba kwerekana Umukoresha umwe
+Could not find XXX.: Ntushobora kubona XXX.
+Could not find XXX in DOM.: Ntushobora kubona XXX muri DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Muri iki cyumweru
+This Month: Uku kwezi
+This Year: Uyu mwaka
+Exit: Sohoka
+Add New Event: Ongeraho Ibirori bishya
+Delete Entries: Siba ibyanditswe
+My Views: Ibitekerezo byanjye
+Manage Calendar of: Gucunga Kalendari ya
+My Reports: Raporo zanjye
+My Profile: Umwirondoro wanjye
+Public Calendar: Kalendari rusange
+Unapproved Events: Ibintu bitemewe
+User Manager: Umuyobozi ukoresha
+Help Contents: Gufasha Ibirimo
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Ububikoshingiro Ububiko
+Create New: Kurema Gishya
+Failure Reason: Impamvu yo kunanirwa:
+You must manually create database: Ugomba gukora intoki.
+Single-User: Umukoresha umwe
+Test Settings: Igenamiterere ry'ikizamini
+Timezone Conversion Successful: Guhindura Timezone Byagenze neza
+WebCalendar Installation Wizard Step XXX: Urubuga rwa Kalindari Wizard Intambwe ya XXX
+Password Accepted: Ijambobanga ryemewe
+Successful Login: Kwinjira neza
+Password Incorrect: Ijambobanga Ntabwo
+Invalid Login: Kwinjira bitemewe
+Display Errors: Erekana Amakosa
+File Uploads: Kohereza dosiye
+Allow URL fopen: Emerera URL fopen (bisabwa gusa niba kalendari ya kure ikoreshwa)
+Safe Mode: Uburyo butekanye
+Safe Mode Allowed Vars: Uburyo bwizewe Bwemerewe Vars (TZ isabwa gusa niba Mode Yizewe iri)
+GD: GD (ikenewe kuri Gradient Ishusho Yinyuma)
+Passwords do not match!: Ijambobanga ntirihuye!
+Unable to write password to settings.php file: Ntushobora kwandika ijambo ryibanga kuri dosiye "igenamiterere.php".
+Password Updated: Ijambobanga ryavuguruwe
+Password has been set: Ijambobanga ryashyizweho.
+Connection Successful...: Kwihuza Byagenze neza  Nyamuneka jya kurupapuro rukurikira kugirango ukomeze kwishyiriraho.
+Correct your entries or click the Create New...: Kosora ibyo wanditse cyangwa ukande kuri  Kurema Gishya  kugirango ukomeze kwishyiriraho.
+Correct your entries and try again.: Kosora ibyo wanditse hanyuma ugerageze.
+XXX does not exist: XXX ntabwo ibaho
+XXX is not writable: XXX ntabwo yanditse
+Error Converting Timezone: Ikosa Guhindura Igihe
+Error Unable to write to file XXX.: Ikosa Ntibishobora kwandika kwandika dosiye XXX.
+Please change the file permissions of this file.: Nyamuneka hindura uburenganzira bwa dosiye.
+Please change includes dir permission: Nyamuneka hindura dosiye uruhushya rwa "rurimo" ububiko bwo kwemerera kwandika nabandi bakoresha.
+Your settings have been saved.: Igenamiterere ryawe ryabitswe.
+OFF: =
+ON: =
+WebCalendar Setup Wizard: WebCalendar Gushiraho Wizard
+This installation wizard will guide you...: Iyi wizard yo kwishyiriraho izakuyobora mugushiraho ibyingenzi bya webCalendar.<br>Kubufasha no gukemura ibibazo reba:<br>
+System Administrators Guide: Ubuyobozi bwa sisitemu
+Frequently Asked Questions: Ibibazo Bikunze Kubazwa
+FAQ: Ibibazo
+Troubleshooting: Gukemura ibibazo
+Getting Help: Kubona Ubufasha
+Upgrading Guide: Igitabo cyo kuzamura
+User Supported Wiki: Umukoresha Wiki
+PHP Version Check: Kugenzura verisiyo ya PHP
+Check to see if PHP 7.1.0 or greater is installed.: Reba kugirango urebe niba PHP 7.1.0 cyangwa irenga yashyizweho.
+PHP version: Imiterere ya PHP
+PHP Settings: Igenamiterere rya PHP
+Detailed PHP Info: Ibisobanuro birambuye bya PHP
+settings.php Status: "igenamiterere.php" Imiterere
+Session Check: Kugenzura Isomo
+To test the proper operation of sessions...: Kugirango ugerageze imikorere ikwiye, ongera usubiremo iyi page. Ugomba kubona amasomo yo kwiyongera buri gihe.
+SESSION COUNTER: IGIKORWA CY'IGIKORWA
+The file permissions of settings.php are set...: Uruhushya rwa dosiye ya "settings.php" yashyizweho kugirango ushyiraho adafite uburenganzira bwo kuyihindura. Nyamuneka hindura uburenganzira bwa dosiye ya dosiye ikurikira kugirango ukomeze
+The file permissions of the includes directory are set...: Uruhushya rwa dosiye rurimo ububiko bwashyizweho kugirango uwashizeho adafite uburenganzira bwo gukora dosiye nshya. Nyamuneka hindura uburenganzira bwububiko bukurikira kugirango ukomeze
+Your settings.php file appears to be valid.: Idosiye yawe "igenamiterere.php" isa nkaho ifite agaciro.
+Configuration Wizard Password: Ijambobanga ryibanga
+Create Settings File Password: Kora Igenamiterere Idosiye Ijambobanga
+db setup directions...: Muri iki gice uzashyiraho kandi ugerageze guhuza na seriveri yawe. Konti amakuru yatanzwe agomba kuba afite uruhushya rwuzuye rwo gukora data base, imbonerahamwe nabakoresha. Niba ibi bidashoboka, cyangwa ububikoshingiro bwawe bugarukira, ugomba gushiraho intoki.
+Database Status: Ububikoshingiro
+Supported databases for your PHP installation: Inkunga yububiko kugirango ushyireho PHP
+Your current database settings are able to access the database.: Igenamiterere rya data base yawe irashobora kugera kububiko.
+Please Test Settings: Nyamuneka Gerageza Igenamiterere
+Your current database settings are not able...: Igenamiterere rya data base yawe ntishobora kugera kububiko cyangwa ntibirageragezwa.
+Database Settings: Igenamiterere ry'ububikoshingiro
+Database Type: Ubwoko bwububiko
+Server: Seriveri
+Connection Persistence: Kwihuza Kwihangana
+All your database tables appear to be up...: Imbonerahamwe yububiko bwawe bwose isa nkaho igezweho. Urashobora gukomeza kurupapuro rukurikira hanyuma ukarangiza gushiraho WebCalendar.
+This appears to be a new installation...: Ibi bigaragara ko ari installation nshya. Niba ibi atari byo, nyamuneka subira kurupapuro rwambere hanyuma ukosore igenamiterere ryawe.
+This appears to be an upgrade...: Ibi bisa nkaho ari kuzamura kuva verisiyo&nbsp;XXX&nbsp;kugeza&nbsp;YYY.
+The database requires some data input...: Ububikoshingiro busaba amakuru yinjiza Kanda Kuvugurura Ububikoshingiro kugirango urangize kuzamura.
+In this section we will perform...: Muri iki gice tuzakora impinduka zo kuzana base yawe kugeza kurwego rusabwa. Niba ukoresha base base yuzuye, iyi ntambwe izakorwa byikora kubwawe. Niba atariyo, SQL isabwa irashobora kwerekanwa kandi ugomba gushobora kuyikata no kuyishira mububiko bwububiko bwa seriveri yibibazo.
+No database actions are required.: Nta bikorwa byububiko bisabwa.
+The following database actions are required: Ibikorwa bikurikira bikurikira birakenewe
+ODBC Underlying Database: Ububikoshingiro bwa ODBC:
+Automatic installation not supported: Kwiyubaka byikora ntabwo byashyizwe mubikorwa kubwoko bwububiko bwawe. Uzakenera gukora intoki imbonerahamwe isabwa ukoresheje SQL yatanzwe. Nyamuneka kanda  Erekana SQL  kugirango ukomeze. Kata hanyuma Wandike mububiko bwawe bwibibazo.
+This may take several minutes to complete: Ibi birashobora gufata iminota mike kugirango urangire.
+Install Database: Shyiramo Ububikoshingiro
+Update Database: Kuvugurura Ububikoshingiro
+Display Required SQL: Erekana SQL isabwa
+Return to previous page after processing SQL.: Nyuma yo gutunganya intoki iyi SQL, uzakenera gusubira kurupapuro rwambere hanyuma usubiremo base base kugirango inyandiko ibashe kumenya impinduka.
+This is the final step in setting up your WebCalendar Installation.: Nintambwe yanyuma mugushiraho Urubuga rwa Kalendari.
+Timezone Conversion: Guhindura Igihe
+It appears that you have NOT converted...: Bigaragara ko utigeze uhindura amakuru y'ibyabaye kuri WebCalendar kuri GMT. Niba ufite, urashobora kwirengagiza iri tangazo kandi ntukomeze guhinduka. Niba iyi ari installation nshya, urashobora kandi kwirengagiza iri tangazo.
+Convert Data to GMT: Hindura amakuru kuri GMT
+Application Settings: Igenamiterere rya porogaramu
+HTTP-based authentication was not detected...: Icyemezo gishingiye kuri HTTP nticyagaragaye. Uzakenera kongera gushakisha seriveri yawe niba ushaka guhitamo 'Urubuga Serveri' uhereye kumahitamo 'Umukoresha Authentication' hepfo.
+HTTP-based authentication was detected...: Icyemezo gishingiye kuri HTTP cyaragaragaye. Kwemeza ukoresha bikorwa na seriveri yawe. Ugomba guhitamo 'Urubuga Seriveri' uhereye kurutonde rwa 'Umukoresha Kwemeza' amahitamo hepfo.
+Create Default Admin Account: Kora Konti isanzwe ya Admin
+(Admin Account Not Found): (Konti ya Admin Ntabonetse)
+User Authentication: Kwemeza Umukoresha
+Web-based via WebCalendar (default): Urubuga rushingiye kuri WebCalendar (isanzwe)
+Web Server (not detected): Seriveri y'urubuga (ntabwo yamenyekanye)
+Web Server (detected): Seriveri y'urubuga (yatahuwe)
+None (Single-User): Nta na kimwe (Umukoresha umwe)
+Read-Only: Soma gusa
+Environment: Ibidukikije
+Production: Umusaruro
+Development: Iterambere
+Save Settings: Bika Igenamiterere
+Launch WebCalendar: Tangiza Urubuga
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Ikosa ryo kuvugurura imbonerahamwe "XXX": YYY.
+Conversion Successful: Guhindura Byagenze neza 
+Perl script required: Verisiyo yawe yambere ya WebCalendar isaba gukoresha inyandiko ya PERL kugirango uhindure amakuru yawe. Nyamuneka koresha /tools/upgrade_to_0.9.7.pl hanyuma usubire kuriyi page kugirango ukomeze.
+previous version requires updating several tables: Verisiyo yawe yambere ya WebCalendar isaba kuvugurura imbonerahamwe yububiko.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: NTA MBERE YABONA
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Ikosa rihuza ububikoshingiro
+Include Path: Shyiramo Inzira
+Deleting events for: Gusiba ibyabaye kuri
+Importing events for: Kuzana ibyabaye kuri
+No data returned from: Nta makuru yaturutse
+for non-user calendar: Kuri Kalendari
+No Remote Calendars found: Nta Kalendari ya kure yabonetse
+Remote Calendars not enabled: Kalendari ya kure ntabwo ishoboye
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ntashobora kubona ibyabaye id
+could not find event id XXX in database.: ntishobora kubona ibyabaye id XXX muri base de base.
+task: inshingano
+This is a reminder for the XXX detailed below.: Ibi nibutsa kuri XXX birambuye hepfo.
+Pecentage Complete: Ijanisha ryuzuye
+Reminder: Kwibutsa
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Igikorwa kidashyigikiwe: XXX.
+No event id specified.: Nta kintu cyabaye cyerekanwe.
+Not authorized (not admin).: Ntabwo byemewe (ntabwo ari admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Kugenzura ibyabaye kuri XXX kuva YYY kugeza kumunsi ZZZ.
+Found XXX events in time range.: Habonetse ibyabaye XXX mugihe cyagenwe.
+Event id=XXX YYY at ZZZ on AAA.: Ibirori id = XXX "YYY" kuri ZZZ kuri AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Emerera umukoresha XXX kureba ikirangaminsi cyabakoresha.
+Error Email reminders disabled for user XXX.: Ikosa: Kwibutsa imeri byahagaritswe kubakoresha "XXX".
+Number of site_extras XXX.: Umubare wurubuga_inyandiko: XXX.
+Reminder set for event.: Kwibutsa gushiraho ibyabaye.
+Mins Before XXX.: Mins Mbere: XXX.
+Event time is XXX.: Igihe cyibirori ni: XXX.
+Remind time is XXX.: Ibutsa igihe ni: XXX.
+Reminders for user XXX, login YYY.: Kwibutsa kubakoresha "XXX", injira "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Kubona bitemewe kubakoresha "XXX".
+Event id=XXX YYY already sent.: Ibirori id = XXX "YYY" yamaze koherezwa.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Ntabwo kwinjira byinjira muburyo bumwe-bwumukoresha.
+No login required for HTTP authentication.: Nta kwinjira bisabwa kugirango HTTP yemeze.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Inyuguti zitemewe muri kwinjira.
+Username XXX does not exist.: Izina ryukoresha "XXX" ntiribaho.
+You cannot remove admin rights from yourself!: Ntushobora gukuraho uburenganzira bwa admin wenyine!
+Unknown error saving user: Umukoresha utazwi neza kubika.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Nta bitabiriye amahugurwa yabonetse id: XXX.
+Db error Could not find event id XXX.: Ikosa rya Db: Ntushobora kubona ibyabaye id XXX.
+Error Could not find event id XXX in database.: Ikosa: Ntushobora kubona ibyabaye id XXX muri base de base.

@@ -1,0 +1,2387 @@
+# Corsican co
+#
+# U furmatu hè custituitu da un header facoltativu:
+#
+# Traduttu da: u vostru nome è e-mail
+# Ultimu aghjurnamentu: a data di a traduzzione
+# (Inclusu u primu "#" è qualsiasi cummentariu fattu da i traduttori precedenti.
+# A PRIMA linea in biancu finisce questi cumenti di intestazione.)
+#
+# Seguitatu da quanti avianu bisognu:
+#
+# Frasa inglese: traduzzione
+# (Unu à una ligna. SENZA u "#" principale.
+# A "Frasa inglese:", cumprendu i dui punti ":", hè furnita da u
+# WebCalendar sviluppatori. A vostra parte hè a "traduzzione".)
+#
+# U repertoriu di strumenti cuntene dui script perl per aiutà:
+# - check_translation.pl
+# indica se tuttu u testu hè statu traduttu cù successu.
+# - update_translation.pl
+# analiserà i fugliali di u prugramma per truvà tutti i tradutti ('frase') è
+# tooltip ('frase'). Organizzerà e frasi secondu a pagina
+# (schedariu) chì cuntene a prima occurrenza. Optionally, pò tag u
+# frasi chì ùn sò ancu tradutti mettendu
+#  << MISSING >>
+# nantu à a linea sopra à a frasa. È, se a frasa hè una abbreviazione,
+# includerà u testu inglese cumpletu nantu à a linea sottu à a frase.
+#
+# Nota: Cercu di riduce a dimensione generale di u fugliale. Se a "traduzzione"
+# parola / frase hè identica in a vostra lingua è in inglese, basta aduprà un segnu "=".
+#
+# Nota: Noterete l'entrata per "May_" quì sottu. Ci hè una ragione per questu.
+# Traduce "May_" à u nome di u mese sanu è "May" à u,
+# di solitu trè lettere, abbreviazione mensile (cum'è "Oct" per "Ottobre").
+#
+# Aghju utilizatu Google translate per questu.
+# Deve bastà finu à chì un parlante nativu u possi verificà.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: versione XXX
+WebCalendar is a PHP application used...: WebCalendar hè un'applicazione PHP aduprata per mantene un calendariu per un utilizatore unicu o un gruppu di utilizatori internet / intranet. Pò esse ancu cunfiguratu cum'è calendariu di l'eventi.
+Credits: Crediti
+About: Circa
+OK: =
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Errore di basa di dati: XXX.
+DEFAULT CONFIGURATION: CONFIGURAZIONE PREDETTA
+Go: Andate
+Save: Salvà
+Undo: Annullà
+Public Access: Accessu Publicu
+Admin: =
+User Access Control: Cuntrollu di Accessu à l'Usuariu
+Allow Access to Other Users Calendar: Permettite l'accessu à u Calendariu di l'altri Utenti
+Grant This User Access to My Calendar: Dà Accessu Questu Utente à U mo Calendariu
+Type: =
+Calendar: Calendariu
+View Event: Vede l'eventu
+View: Vede
+Edit: Mudificà
+Approve/Reject: Appruvà / Rifiutà
+Events: Eventi
+Tasks: Compiti
+Journals: Ghjurnali
+Can Invite: Pudete Invità
+Can Email: Pò Email
+Can See Time Only: Pudete vede solu u tempu
+Assistant: Assistante
+Select All: Selezziunate tuttu
+Clear All: Sguassà tuttu
+Public: Publicu
+Confidential: Cunfidenziale
+Private: Privatu
+
+########################################
+# Page: activity_log.php
+#
+Next: Dopu
+Previous: Precedente
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: L'avvenimentu XXX hè dighjà in u vostru calendariu.
+Invalid entry id XXX.: ID d'entrata invalida: "XXX".
+a XXX event may not be added to your calendar: Questu hè un avvenimentu XXX è ùn pò micca esse aghjuntu à u vostru calendariu.
+confidential: cunfidenziale
+private: privatu
+Error adding event XXX.: Errore aghjuntu di l'avvenimentu: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Nome di paràmetru invalidu "XXX".
+Select: Selezziunà
+Day: Ghjornu
+Week: Settimana
+Month: Mese
+Year: Annu
+Bottom: In fondu
+Top: Cima
+Anyone: Qualchissia
+Participant: Participante
+Settings: Impostazioni
+Groups: Gruppi
+NonUser Calendars: Calendarii NonUser
+Other: Altru
+Email: =
+Colors: Culori
+Document background: Documentu di fondu
+Document title: Titulu di u documentu
+Document text: Testu di documentu
+My event text: Testu di u mo avvenimentu
+Table grid color: Culore di griglia di tavula
+Table header background: Sfondu di l'intestazione di u tavulu
+Table header text: Testu di l'intestazione di a tavula
+Table cell background: Sfondu di a cellula di u tavulinu
+Table cell background for current day: Sfondu di e cellule di u tavulu per u ghjornu attuale
+Table cell background for days with events: Fondu di cellula di tavula per ghjorni cù eventi
+Table cell background for weekends: Fondu di e cellule di u tavulu per u weekend
+Table cell background for other month: Fondu di e cellule di u tavulu per l'altru mese
+Week number color: Culore di numeru di settimana
+Event popup background: Sfondu popup di l'avvenimentu
+Event popup text: Testu popup di l'avvenimentu
+System Settings: Impostazioni di u Sistema
+Help: Aiutu
+System options: Opzioni di sistema
+app-name-help: Specifica u nome di l'applicazione chì apparirà in a barra di titulu di u navigatore per tutte e pagine è in a pagina di login. U valore specificatu quì serà cercatu in u fugliale di traduzzione chì vi permette di furnisce tituli sfarenti per e diverse lingue.
+Application Name: Nome d'applicazione
+Translated Name (XXX): Nome Traduttu (XXX)
+server-url-help: Specifica l'URL di basa per l'applicazione. Questu serà inclusu quandu si spedisce ricordi per email è notifiche.
+Server URL: URL di u servitore
+home-url-help: Specifica l'URL di casa per l'applicazione. Questu pò esse un assulutu o un parente
+Home URL: URL di casa
+language-help: Specifica quale lingua aduprà.
+Language: Lingua
+Your browser default language is XXX.: A lingua predeterminata di u vostru navigatore hè "XXX".
+Allow user to use themes: Permettite à l'utilizatore di aduprà temi
+themes-help: Permette l'aghjurnamentu di massa di e configurazioni di cunfigurazione. Etichette minuscole sò solu pref di l'utente.
+Themes: Temi
+AVAILABLE THEMES: TEMI DISPONIBILI
+None: Nisunu
+Preview: =
+Site customization: Personalizazione di u situ
+custom-script-help: Permette l'entrata di testu persunalizatu Javascript o di stile chì serà inseritu in a sezzione HTML "testa" di ogni pagina.
+Custom script/stylesheet: Script / fogliu di stile persunalizatu
+custom-header-help: Permette à un frammento HTML persunalizatu d'esse inclusu in cima di ogni pagina.
+Custom header: Intestazione persunalizata
+custom-trailer-help: Permette un snippet HTML persunalizatu per esse inclusu à a fine di ogni pagina.
+Custom trailer: Trailer persunalizatu
+enable-external-header-help: Permette à u caricamentu di u trailer persunalizatu da un fugliale esternu
+Allow external file for header/script/trailer: Permettite un fugliale esternu per l'intestazione / script / trailer
+Allow user to override header/trailer: Permettite à l'utilizatore di rimpiazzà l'intestazione / trailer
+Date and Time: Data è Ora
+server-tz-help: Specifica quante ore per adattà u tempu da UTC à l'ora di u servitore.
+Server Timezone Selection: Selezione di u Fusinu Orariu di u Server
+tz-help: Specifica quante ore per adattà u tempu da UTC à l'ora locale.
+Default Client Timezone Selection: Scelta di u Fusinu Orariu di u Cliente Default
+display-general-use-gmt-help: S'ellu hè attivatu, e date / l'ore cumuni sò visualizati cum'è GMT
+Display Common Use Date/Times as GMT: Mustrà Usu Cumunu Data / Tempi cum'è GMT
+date-format-help: Specifica u furmatu di data preferitu.
+Date format: Formatu di data
+Small Task Date: Data di piccula attività
+display-week-starts-on: Specifica u ghjornu di a settimana chì a settimana inizia. Se u luni hè specificatu, allora i numeri di settimana saranu numeri di settimana ISO.
+Week starts on: A settimana cumencia
+display-weekend-starts-on: Pone u ghjornu di a settimana per cumincià i fine di settimana
+Weekend starts on: U Weekend cumencia
+time-format-help: Specifica u furmatu di l'ora da aduprà:<br><em>12 ore:</em> Affissà i tempi cum'è 3am, 8:30 pm, ecc.<br><em>24 ore:</em> Affissà volte cum'è 300 , 2030, ecc.
+Time format: Formatu di ora
+12 hour: 12 ore
+24 hour: 24 ore
+timed-evt-len-help: Specifica u metudu di input per determinà a lunghezza di un avvenimentu cronometratu.
+Specify timed event length by: Specificà a durata di l'eventu cronometratu da
+Duration: Durata
+End Time: Tempu di Fine
+work-hours-help: Specifica u intervallu di tempu da visualizà per a vista di ghjornu.
+Work hours: Ore di travagliu
+From: Da
+to: à
+Appearance: Aspettu
+preferred-view-help: Specifica a vista predefinita (Ghjornu, Settimana, Mese o Annu).
+Preferred view: Vista preferita
+Allow top menu: Permettite u menu superiore
+Date Selectors position: Posizione Selettori di Data
+menu-themes-help: Imposta i culori è u stile di u menu superiore
+Menu theme: Tema di menu
+fonts-help: Specifica un elencu di caratteri di u sistema da aduprà (cum'è "Arial, Helvetica")
+Fonts: Caratteri
+display-sm_month-help: S'ellu hè attivatu, mostra picculi mesi in vista di mesi
+Display small months: Mustrà picculi mesi
+display-weekends-help: Includite i week-end quandu vede una settimana.
+Display weekends: Mustrà i fine di settimana
+display-long-daynames-help: Se attivatu, i nomi di ghjornu longu sò visualizati
+Display long day names: Mustrà nomi di ghjornu longu
+display-alldays-help: Mustrà i mesi precedenti è prossimi ghjorni in vista di u mese, riempendu tutte e cellule.
+Display all days in month view: Mustrà tutti i ghjorni in vista di u mese
+display-week-number-help: Specifica se u numeru di settimana (1-52) deve esse visualizatu in a vista di u mese è a vista di a settimana.
+Display week number: Mustrà u numeru di a settimana
+display-desc-print-day-help: Includite e descrizzioni di l'eventi in a versione stampabile di vista di ghjornu.
+Display description in printer day view: Mustrà a descrizzione in vista di u ghjornu di l'impresora
+yearly-shows-events-help: In a vista annuale, visualizate i ghjorni chì cuntenenu eventi in una carattera grassetta.
+Display days with events in bold in month and year views: Mustrà i ghjorni cù eventi in grassettu in vista di mesi è annata
+display-minutes-help: S'ellu hè attivatu, i minuti finiti cù: 00 seranu sempre visualizati
+Display 00 minutes always: Mustrà 00 minuti sempre
+display-end-times-help: Mustrà i tempi di fine di l'avvenimentu se l'avvenimentu cronometratu
+Display end times on calendars: Mustrà i tempi di fine nantu à i calendarii
+allow-view-add-help: Un icona '+' serà inclusu in e vedute, permettendu à l'utenti di aghjunghje rapidamente eventi à i calendari di l'altri utilizatori.
+Include add event link in views: Includite aghjunghje ligame di l'eventu in vista
+lunar-help: S'ellu hè attivatu, mostrerà piccule icone chì ripresentanu e fasi lunari ogni mese
+Display Lunar Phases in month view: Mustrà e fasi lunare in vista mensile
+Restrictions: Restrizzioni
+allow-view-other-help: Specifica se un utilizatore pò vede u calendariu di un altru utilizatore.
+Allow viewing other users calendars: Permettite di vede i calendarii di l'altri utilizatori
+require-approvals-help: Quandu hè attivatu, un utilizatore deve appruvà un avvenimentu prima ch'ellu sia visualizatu in u so calendariu (a menu chì a visualizazione micca appruvata sia attivata). Nota chì ponite questu "No" ùn spegnerà micca l'approvazioni per u calendariu di l'Accessu Publicu (se u calendariu di l'Accessu Publicu hè attivatu).
+Require event approvals: Richiede l'approvazioni di l'eventi
+display-unapproved-help: Specifica se l'avvenimenti micca appruvati sò visualizati in u vostru calendariu.<br>Se hè impostatu à "Iè", allora l'eventi non approvati saranu visualizzati in u vostru calendariu (in un culore di testu diversu).<br>Se impostatu à "No", allora eventi non approvati devenu esse appruvati prima ch'elli sianu affissati in u vostru calendariu.
+Display unapproved: Mustrà micca appruvatu
+conflict-check-help: Verificate i cunflitti di l'eventi (dui eventi pianificati per a listessa ora per a listessa persona). Se setate questu "Iè", puderete ancu pudè pianificà dui eventi in u stessu tempu dopu avè cunfirmatu un avvertimentu. Se setate questu "No", ùn serà fattu nisun cuntrollu per i cunflitti. Probabilmente vulete stabilisce questu "Iè", dunque si verifica u cunflittu.
+Check for event conflicts: Verificate i cunflitti di l'eventi
+Yes: Iè
+No: Innò
+conflict-months-help: Se u cuntrollu di cunflitti hè in opera ("Verificà i cunflitti di l'eventi" hè impostatu à "No" & # 41 ;, questu specifica quanti mesi in u futuru duvemu verificà per i cunflitti. Se truvate chì l'aggiunta di eventi richiede assai tempu per trattà , riduce stu numeru.
+Conflict checking months: Cuntrollu di i cunflitti mesi
+conflict-check-override-help: Permette à l'utilizatori di rimpiazzà i cunflitti di l'eventi è di pianificà dui o più eventi per u stessu tempu.
+Allow users to override conflicts: Permettite à l'utilizatori di rimpiazzà i cunflitti
+limit-appts-help: Permette à l'amministratore di u sistema di definisce un limitu in tuttu u sistema per u numeru di appuntamenti chì un solu utilizatore pò avè in ogni ghjornu.
+Limit number of timed events per day: Limite u numeru di eventi cronometrati per ghjornu
+limit-appts-number-help: Specifica u numeru massimu di eventi cronometrati chì un utilizatore pò avè in una sola ghjurnata.
+Maximum timed events per day: Avvenimenti massimi cronometrati per ghjornu
+crossday-help: S'ellu hè attivatu, l'eventi chì spazianu i ghjorni seranu affissati in ghjorni separati
+Disable Cross-Day Events: Disattivà Eventi Cross-Day
+disable-location-field-help: Sceglie "Iè" eliminerà u campu "Situazione" da e pagine di l'infurmazioni di l'avvenimentu
+Disable Location field: Disattivà u campu Location
+disable-url-field-help: Sceglite "Iè", u campu "URL" serà eliminatu da e pagine di informazioni nantu à l'avvenimentu
+Disable URL field: Disattivà u campu URL
+disable-priority-field-help: Sceglie "Iè" eliminerà u campu "Priurità" da e pagine d'infurmazione di l'avvenimenti, dendu una interfaccia più simplice per i principianti.
+Disable Priority field: Disattivà u campu di priorità
+disable-access-field-help: Sceglite "Iè", serà eliminatu u campu "Accessu" da e pagine di informazioni nantu à l'avvenimentu, furnisce una interfaccia più simplice per i principianti.
+Disable Access field: Disattivà u campu di Accessu
+disable-participants-field-help: A selezzione di "Iè" eliminerà u campu "Participanti" da e pagine di l'infurmazioni di l'eventi, impedendu à l'utilizatori d'aghjunghje altri utilizatori à i so eventi. Se attivate questa opzione, pudete vulete disattivà ancu u campu "Permettà di vede calendarii di altri utilizatori".
+Disable Participants field: Disattivà u campu Participanti
+disable-repeating-field-help: Sceglie "Iè" eliminerà u campu "Ripetitu" quandu si aghjunghjenu eventi. Questu furnisce una interfaccia più simplice per i principianti.
+Disable Repeating field: Arrigistrera Ripetendu u campu
+allow-html-description-help: Se attivatu, l'utilizatori ponu inserisce HTML in u campu di descrizzione di l'eventu. S'ellu ùn hè micca attivatu, i tag HTML seranu scappati per cumparisce cum'è testu chjaru. Attenzione: L'attivazione di sta funzione permetterà à l'utilizatori di riferisce l'imaghjini in altri siti web.
+Allow HTML in Description: Permettenu HTML in Description
+Popups: =
+disable-popups-help: Disattivà i popup da e viste di u calendariu
+Disable Pop-Ups: Disattivà Pop-Ups
+popup-includes-siteextras-help: S'ellu hè attivatu, permette l'installazione di i campi di l'eventi persunalizati in u schedariu site_extras.php serà visualizatu in popup popup.
+Display Site Extras in popup: Mustrà Extras di u situ in popup
+popup-includes-participants-help: S'ellu hè attivatu, i participanti sò visualizati in popup popup.
+Display Participants in popup: Mostra i Participanti in popup
+Miscellaneous: Diversi
+remember-last-login-help: Quandu hè attivatu, u login di l'utilizatore serà cumpletu per elli nantu à a pagina di login (ma micca a password), è e preferenze di l'utilizatore seranu caricate (cumprese i so culori preferiti è a selezzione di lingua).
+Remember last login: Arricurdatevi di l'ultimu login
+summary_length-help: Lunghezza massima di Breve Descrizione in viste di calendariu
+Brief Description Length: Breve Descrizione Lunghezza
+user_sort-help: Determina l'ordine di sorte per l'Usuariu, e liste Nonuser
+User Sort Order: Ordine di Sort di l'Usuariu
+Lastname, Firstname: Cognome, Nome
+Firstname, Lastname: Nome casata
+allow-public-access-help: Quandu hè attivatu, u calendariu pò esse adupratu cum'è calendariu publicu di sola lettura chì ùn impone micca à l'utilizatori di cunnettassi.
+Allow public access: Permettite l'accessu publicu
+public-access-default-visible: L'avvenimenti da u calendariu publicu appareranu automaticamente in tutti i calendarii di l'utilizatori
+Public access visible by default: Accessu publicu visibile per difettu
+public-access-default-selected: Quandu aghjunghjenu un novu avvenimentu, l'utilizatore publicu serà sceltu per difettu cum'è participante.
+Public access is default participant: L'accessu publicu hè participante predefinitu
+public-access-view-others-help: Quandu accede à u sistema cù accessu publicu, specifica se l'utilizatore pò vede u calendariu di un altru utilizatore di u calendariu.
+Public access can view other users: L'accessu publicu pò vede altri utilizatori
+public-access-can-add-help: Quandu hè attivatu, l'utilizatori chì accede à u sistema per via di l'Accessu Publicu puderanu aghjunghje novi eventi, ma ùn si presenteranu micca in u calendariu finu à chì un amministratore approva u novu avvenimentu.
+Public access can add events: L'accessu publicu pò aghjunghje eventi
+public-access-add-requires-approval-help: Specifica se l'eventi aghjunti via u cuntu d'accessu publicu necessitanu appruvazione prima di esse visualizati.
+Public access new events require approval: L'accessu publicu à novi eventi richiede l'approvazione
+public-access-sees-participants-help: S'ellu hè attivatu, l'utilizatori chì accede à u calendariu da u cuntu publicu seranu capace di vede i participanti à l'avvenimentu si vedenu i dettagli di un avvenimentu.
+Public access can view participants: L'accessu publicu pò vede i participanti
+public-access-override-help: Permette chì i nomi è e descrizzioni di l'eventi sianu piattati in u calendariu publicu
+Override event name/description for public access: Anullà u nome di l'eventu / a descrizzione per l'accessu publicu
+public-access-override-text-help: U testu da vede se l'opzione sopra hè attivata. Se 'Micca dispunibule', serà traduttu.
+Text to display to public access: Testu da mustrà à l'accessu publicu
+public-access-captcha-help: S'ellu hè attivatu, i novi eventi aghjunti da u Publicu richiedenu di passà una validazione CAPTCHA.
+Require CAPTCHA validation for public access new events: Richiede a validazione CAPTCHA per l'accessu publicu novi eventi
+uac-enabled-help: Permette u cuntrollu di accessu à livellu d'utilizatore
+User Access Control enabled: Cuntrollu d'Accessu Utente attivatu
+groups-enabled-help: Permette u supportu di gruppu, chì permette à l'utilizatori di selezziunà l'utilizatori per gruppi.
+Groups enabled: Gruppi attivati
+user-sees-his-group-help: S'ellu hè attivatu, l'utilizatori ùn vedenu micca l'utilizatori di u calendariu chì ùn sò micca in almenu unu di i so gruppi.
+User sees only his groups: L'Usuariu vede solu i so gruppi
+nonuser-enabled-help: S'ellu hè attivatu, l'amministratori averanu l'opzione di aghjunghje calendarii chì ùn sò micca utilizatori
+Nonuser enabled: Calendarii Non Utenti Attivati
+nonuser-list-help: Induve mustrà i calendarii non utilizatori in a lista di i participanti
+Nonuser list: Mustrà in a lista di i participanti à
+Upcoming Events: Prossimi Eventi
+upcoming-events-help: Attivà prossimu.php
+Enabled: Attivatu
+upcoming-events-allow-override: Permettite à i parametri di l'utilizatore per coming.php
+Allow user override: Permettite l'override di l'utente
+upcoming-events-display-caticons: Includite icone di categuria in coming.php
+Display category icons: Mustrà icone di categuria
+upcoming-events-display-layers: Mustrà i strati in coming.php
+Display layers: Mustrà strati
+upcoming-events-display-links: Mustrà i ligami in coming.php
+Display links to events: Mustrà ligami per eventi
+upcoming-events-display-popups: Mustrà popup popup di l'eventi in coming.php
+Display event popups: Mustrà popup emergenti
+reports-enabled-help: S'ellu hè attivatu, l'utilizatori vedenu una sezzione "Rapporti" in fondu à ogni pagina è seranu permessi di creà raporti persunalizati. Inoltre, l'utilizatori amministratori ponu creà rapporti globali chì appareranu in u fondu di tutte e pagine di l'utenti.
+Reports enabled: Rapporti attivati
+subscriptions-enabled-help: Specifica se l'utenti remoti ponu abbonassi à u calendariu di un utilizatore WebCalendar, permettenduli di vede l'avvenimenti di l'utente WebCalendar in a so applicazione attivata iCal (cum'è iCal d'Apple o u Calendariu Mozilla).
+Allow remote subscriptions: Permettenu abbonamenti remoti
+remotes-enabled-help: Permette à l'utilizatori di carregà i fugliali ics remoti cù URL
+Allow remote calendars: Permettenu calendarii remoti
+rss-enabled-help: Specifica se u calendariu di un utilizatore pò esse ottenutu da un feed RSS.
+Enable RSS feed: Attivà u flussu RSS
+categories-enabled-help: Permette u supportu per e categurie di l'eventi.
+Categories enabled: Categurie attivate
+icon_upload-enabled-help: S'ellu hè attivatu, l'utilizatori ponu carà icone di categuria
+Category Icon Upload enabled: Caricamentu di l'icona di categuria attivatu
+(Requires XXX folder to exist.): (Richiede u cartulare XXX per esiste.)
+display-tasks-help: Mustrà piccula finestra di compitu in u calendariu di u mese è di u ghjornu
+Display small task list: Mustrà piccula lista di compiti
+display-tasks-in-grid-help: Mustrà e cumpetenze in i calendarii cù l'avvenimenti
+Display tasks in Calendars: Mustrà e cumpetenze in Calendari
+allow-external-users-help: Specifica se un utilizatore chì ùn hè in calendariu pò esse aghjuntu à un avvenimentu. Questu permette à l'utenti chì ùn sò micca di u calendariu esse elencati cum'è participanti à l'eventi.
+Allow external users: Permettite à l'utilizatori esterni
+external-can-receive-notification-help: Quandu l'utilizatori esterni sò attivati ​​è l'usu di e-mail hè attivatu, l'utilizatori esterni ponu riceve notifiche per email quandu l'avvenimentu hè aghjuntu, aghjurnatu o sguassatu (se l'indirizzu email di l'utilizatore esternu hè furnitu).
+External users can receive email notifications: L'utilizatori esterni ponu riceve notifiche per email
+external-can-receive-reminder-help: Quandu l'utilizatori esterni sò attivati ​​è l'usu di e-mail hè attivatu, l'utilizatori esterni ponu riceve ricordi per email (se l'indirizzu email di l'utilizatore esternu hè furnitu).
+External users can receive email reminders: L'utilizatori esterni ponu riceve ricordi per email
+allow-self-registration-help: Permettite à i novi utilizatori di registrà si
+Allow self-registration: Permettite l'auto-registrazione
+use-blacklist-help: Limite l'accessu à e funzioni WebCalendar basatu annantu à l'indirizzu IP
+Restrict self-registration to blacklist: Limità l'auto-registrazione à a lista nera
+allow-self-registration-full-help: Permettite à i novi utilizatori di compie u prucessu di autore-registrazione in ligna
+Use self-registration email notifications: Generate password è inviate à novi utilizatori
+allow-attachment-help: Permettite à l'utilizatori di aghjunghje aghjunti di fugliale à l'avvenimenti.
+Allow file attachments to events: Permettite file allegati à eventi
+Admin and owner can always add attachments if enabled.: L'amministratore è u pruprietariu ponu sempre aghjunghje aghjunti se attivatu.
+allow-comments-help: Permettite à l'utilizatori di aghjunghje cummenti à l'eventi.
+Allow comments to events: Permettite cumenti à l'eventi
+Admin and owner can always add comments if enabled.: L'amministratore è u pruprietariu ponu sempre aghjunghje cummenti se attivatu.
+email-enabled-help: Attiva o spegne tuttu l'inviu di e-mail per notifiche è ricordi. Piazzà à "innò", se u vostru servitore ùn hè micca stallatu bè per invià mail.
+Email enabled: Email attivatu
+email-default-sender: Specifica l'indirizzu email da specificà cum'è u mittente quandu si spedisce i ricordi.
+Default sender address: Indirizzu predefinitu di u mittente
+email-mailer: Sceglite u tipu di email (SMTP, mail PHP, sendmail)
+Email Mailer: =
+email-smtp-host: Hostname (s) di servitore (i) SMTP separati da virgule
+SMTP Host name(s): Nome (i) host SMTP
+email-smtp-port: Numaru di Portu SMTP (nurmalmente 25)
+SMTP Port Number: Numeru di Portu SMTP
+email-smtp-auth: Aduprà Autenticazione SMTP
+SMTP Authentication: Autentificazione SMTP
+email-smtp-username: SMTP Username se utilizate Autenticazione
+SMTP Username: Nome d'utilizatore SMTP
+email-smtp-password: Password SMTP se aduprate Autenticazione
+SMTP Password: Password SMTP
+Default user settings: Impostazioni predefinite di l'utente
+email-format: Specificate a preferenza per i messaghji HTML o di testu chjaru
+Email format preference: Preferenza di furmatu per email
+HTML: =
+Plain Text: Testu Chianu
+email-include-ics: Includite un fugliale ICS iCalendar per mandà un email
+Include iCalendar attachments: Includite annessi iCalendar
+email-event-reminders-help: Specifica se invià o micca ricordi di l'avvenimentu.
+Event reminders: Ricordi d'avvenimentu
+email-event-added: Specifica se invià o micca notifiche per email quandu un avvenimentu hè aghjuntu à u vostru calendariu.
+Events added to my calendar: Eventi aghjuntu à u mo calendariu
+email-event-updated: Specifica se invià o micca notifiche per email quandu un avvenimentu hè aggiornatu nantu à u vostru calendariu.
+Events updated on my calendar: Eventi aggiornati nantu à u mo calendariu
+email-event-deleted: Specifica se invià o micca notifiche per email quandu un avvenimentu hè eliminatu da u vostru calendariu.
+Events removed from my calendar: Eventi cacciati da u mo calendariu
+email-event-rejected: Specifica se invià o micca notifiche per email quandu un participante rifiuta un avvenimentu chì hè in u vostru calendariu.
+Event rejected by participant: Eventu rifiutatu da u participante
+email-event-create: Specifica se u creatore di l'entrate riceverà un email
+Event that I create: Avvenimentu chì creu
+Color options: Opzioni di culore
+Allow user to customize colors: Permettite à l'utilizatore di persunalizà i culori
+gradient-colors: Se attivatu sò aduprati culori di gradiente. Questu pò influenzà notevolmente e prestazioni.
+Enable gradient images for background colors: Attivà l'imaghjini gradienti per i culori di fondu
+Not available: Micca dispunibule
+Background Image options: Opzioni di Image Background
+bgimage-help: URL di l'immagine di fondu desiderata. Pò esse ligame relative.
+Background Image: Immagine di Sfondu
+bgrepeat-help: Cuntrolla u cumpurtamentu ripetutu di l'immagine di fondu.
+Background Repeat: Ripetizione di Sfondu
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Assistenti
+Preferences: Preferenze
+Control Panel: Pannellu di cuntrollu
+Users: Utenti
+Account: Contu
+Categories: Categurie
+Views: Viste
+Layers: Livelli
+Reports: Rapporti
+Delete Events: Sguassà Eventi
+Activity Log: Log di attività
+System Log: Log di u Sistema
+Security Audit: Auditu di Sicurezza
+Public Preferences: Preferenze Publiche
+Unapproved Public Events: Eventi Pubblichi Non Appruvati
+Administrative Tools: Strumenti Amministrativi
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Nome Duplicatu: "XXX".
+Username XXX already exists.: U nome d'utilizatore "XXX" esiste dighjà.
+Email address XXX already exists.: L'indirizzu email "XXX" esiste dighjà.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Commenti Addiziunali (opzionale)
+Approve and Send: Approvà è Mandà
+Approve and Exit: Approvà è Esce
+(Your comments will be emailed to the event creator.): (I vostri cummenti seranu inviati per email à u creatore di l'avvenimentu.)
+Hello, XXX.: Salutu, XXX.
+XXX has approved an appointment and added comments.: Un appuntamentu hè statu appruvatu è i cumenti aghjunti da XXX.
+Subject XXX: =
+Description XXX: =
+Date XXX: Data: XXX
+Time XXX: Tempu: XXX
+Comments XXX: Commenti: XXX
+Approved w/Comments by XXX.: Appruvatu w / Commenti da: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Modu Admin
+Your assistants: I vostri assistenti
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Errore scunnisciutu.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Errore di prugramma: No XXX specificatu!
+user: utilizatore
+year: annu
+month: mese
+day: ghjornu
+
+########################################
+# Page: category.php
+#
+Category Icon: Icona di categuria
+Global: Glubale
+The permissions for the icons directory are set to read-only: L'autorizazioni per u repertoriu di l'icone sò stabilite in sola lettura.
+Category Name: Nome di a categuria:
+Color: Culore
+Remove Icon: Elimina Icona:
+Add Icon to Category: Aghjunghje Icona à a Categoria
+Upload: Caricà
+GIF or PNG 6kb max: GIF o PNG 6kb max
+Search for existing icons: Ricerca per icone esistenti
+Add: Aghjunghje
+Delete: Sguassà
+Are you sure you want to delete this entry?: Site sicuru di vulè sguassà st'entrata?
+Make New Category: Fate Nova Categoria
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: U nome di a categuria hè necessariu
+File size exceeds maximum.: A dimensione di u fugliale supera u massimu.
+File is not a GIF or PNG image: U schedariu ùn hè micca una maghjina GIF o PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: CATEGORIE DISPONIBILI
+ENTRY CATEGORIES: CATEGORIE INGRESSU
+Remove: Cacciate
+Global Category: Catigurìa Glubale
+Cancel: Annulla
+
+########################################
+# Page: colors.php
+#
+Add Custom: Aghjunghje persunalizata
+Basic Colors: Culori di basa
+Current Color: Culore attuale
+Custom Colors: Culori persunalizati
+Old Color: Vechju Culore
+
+########################################
+# Page: combo.php
+#
+Select None: Selezziunate Nimu
+Agenda: =
+Add Task: Aghjunghje Task
+Description: =
+Date: Data
+Time: Tempu
+Priority: Priurità
+Access: Accessu
+Created by: Creatu da
+Updated: Aghjurnatu
+Participants: Participanti
+Attachments: =
+Comments: Cummentarii
+Brief Description: Breve descrizzione
+Full Description: Descrizione cumpleta
+Category: Catigurìa
+Add event detail: Aghjunghjite u dettu di l'avvenimentu
+Start Date: Data di Principiu
+Due Date: Scadenza
+Add task detail: Aghjunghje dettagliu di compitu
+All: Tutti
+Error: Errore
+no response from server: nisuna risposta da u servitore
+JSON error: Errore JSON
+High: Alta
+Medium: Mediu
+Low: Bassa
+Today: Oghje
+Add Entry: Aghjunghje Entrata
+Unnamed Event: Avvenimentu senza nome
+Unnamed Task: Task Innominatu
+Refresh: Rinfresca
+Click to add entry: Cliccate per aghjunghje l'entrata
+Name: Nome
+pm: =
+am: sò
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX hà annullatu un appuntamentu.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Id blob invalidu
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Aghjunghje Commentu
+Add Attachment: Aghjunghje Attachment
+Subject: Sughjettu
+Comment: Cumentu
+Upload file: Caricà u fugliale
+
+########################################
+# Page: docdel.php
+#
+Removed: Cacciatu
+
+########################################
+# Page: edit_entry.php
+#
+days: ghjorni
+hours: ore
+minutes: minuti
+You are not authorized to edit this task.: Ùn site micca autorizatu à edità stu compitu.
+is in a different timezone than you are. Currently: hè in un fuso orariu diversu da voi. Attualmente
+hour ahead of you: ora davanti à voi
+hour behind you: ora daretu à tè
+hours ahead of you: ore davanti à voi
+hours behind you: ore daretu à tè
+XXX is in a different timezone (ahead): (XXX hè in un fuso orariu diversu; AAAA davanti à voi.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX hè in un fuso orariu differente; AAA daretu à voi.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: U tempu inseritu quì hè basatu annantu à u vostru Timezone.
+Edit Entry: Mudificà l'entrata
+Details: Dettagli
+Repeat: Ripetiri
+Reminders: Ricurdativi
+brief-description-help: Questu deve furnisce una breve descrizione (circa 20 caratteri) di l'evenimentu. Questu riprisenterà l'avvenimentu quandu si vede u calendariu.
+full-description-help: Questu deve cumplettà i dettagli di l'evenimentu. Questa informazione pò esse vista quandu un utilizatore vede l'avvenimentu.
+access-help: Specifica u livellu di accessu di l'evenimentu. <ul> <li> Publicu: Tuttu u mondu pò vede i dettagli cumpleti di l'evenimentu.</li> <li> Confidenziale: L'altri ponu vede chì avete una voce per quella data è ora, ma micca i dettagli di ciò chì hè.</li></ul>
+priority-help: Specifica a priorità di l'eventu. L'avvenimenti d'alta priorità seranu affissati in grassettu.
+category-help: Specifica a categuria di l'evenimentu.
+completed-help: Data compitu hè compiu. Abilitatu solu quandu tutti i percentuali di participanti sò uguali à 100%.
+Date Completed: Data Completata
+percent-help: Percentuale di compie l'attività per questu utilizatore
+Percent Complete: Percentuale Cumplitu
+All Percentages: Tutti i percentuali
+location-help: Situazione di l'avvenimentu
+Location: Situazione
+url-help: URL di l'eventu
+URL: =
+date-help: Specifica a data di l'evenimentu.
+Untimed event: Avvenimentu senza tempu
+Timed event: Avvenimentu cronometratu
+All day event: Eventu tuttu u ghjornu
+Timezone Offset: Offset Timezone
+time-help: Specifica u tempu di l'evenimentu. <ul> <li> "Avvenimentu cronometratu" (per un avvenimentu chì hè pianificatu per un tempu specificu quellu ghjornu)</li> <li> "Avvenimentu senza tempu" (per un avvenimentu questu ùn hà micca un tempu (cum'è una festa )</li> <li> "Avvenimentu tutta a ghjurnata" (per un avvenimentu chì dura tuttu u ghjornu (cum'è esse fora di l'uffiziu)</li></ul>
+duration-help: Specifica a durata (in ore; minuti) di l'evenimentu. <em>Stu campu pò esse lasciatu in biancu.</em>
+end-time-help: Specifica u tempu chì l'avvenimentu hè previstu di finisce.
+Start Time: =
+Due Time: =
+Site Extras: Extras di u situ
+avail_participants-help: Elenca i participanti dispunibili di sta voce.
+Available: Dispunibule
+Find Name: Truvà Nome
+Resources: Risorse
+participants-help: Elenca i participanti di sta voce.
+Selected: Sceltu
+Availability: Disponibilità
+external-participants-help: Specifica un elencu di participanti per l'evenimentu chì ùn sò micca utenti di u calendariu. L'utilizatori devenu esse elencati unu per linea è ponu include un indirizzu email. Se un indirizzu email hè specificatu, l'utente hè eligibile per riceve notifiche è ricordi.
+External Participants: Participanti Esterni
+repeat-type-help: Sceglite à chì frequenza l'avvenimentu deve ripete.
+Daily: Ogni ghjornu
+Weekly: Semanale
+Monthly: Mensili
+by day: di ghjornu
+by date: per data
+by position: per pusizione
+Monthly (by day): Mensili (di ghjornu)
+Monthly (by date): Mensili (per data)
+Monthly (by position): Mensile (per pusizione)
+Yearly: Annuale
+Manual: Manuale
+Expert Mode: Modu Espertu
+repeat-end-date-help: Specifica a data chì l'avvenimentu duverà ripetiri finu.
+Ending: Finendu
+Forever: Per sempre
+Use end date: Aduprà a data di fine
+Number of times: Numeru di volte
+repeat-frequency-help: Specifica quantu volte l'avvenimentu deve ripete.
+Frequency: Frequenza
+Weekdays Only: Solu Ghjorni di Settimana
+Week Start: Start Week
+repeat-bydayextended-help: Permette a selezzione di data secondu u ghjornu di a settimana.
+ByDay: =
+repeat-month-help: Specifica in quali mesi l'eventu deve ripete.
+ByMonth: =
+repeat-bysetpos-help: Permette a selezzione di data secondu a pusizione cù u mese.
+BySetPos: =
+repeat-bymonthdayextended-help: Permette a selezzione di data basata annantu à a data.
+ByMonthDay: =
+repeat-byweekno-help: Permette à l'utilizatore di specificà un elencu di settimane per ripete l'avvenimentu (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Permette à l'utilizatore di specificà un elencu di ghjorni d'annu per ripete l'avvenimentu (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Ghjorni addiziunali chì questu avvenimentu duverà o ùn deve accade.
+Exclusions: Esclusioni
+Inclusions: Inclusioni
+Add Exception: Aggiungi Eccezione
+Add Inclusion: Aghjunghjite Inclusione
+Delete Selected: Sguassà Selezziunatu
+Send Reminder: Mandate Reminder
+When: Quandu
+Use Date/Time: Aduprate Data / Ora
+Use Offset: Aduprà Offset
+Before: Nanzu
+After: Dopu
+Start: Principià
+End/Due: Fine / Due
+Times: Tempi
+Every: Tutti
+CAPTCHA Warning: Attenzione:  Ùn si pò micca aduprà CAPTCHA senza l'estensione GD di PHP!<br>
+Delete entry: Sguassà l'entrata
+You are not authorized to edit this entry.: Ùn site micca autorizatu à mudificà sta voce.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX hà fattu un novu appuntamentu.
+XXX has updated an appointment.: XXX hà aghjurnatu un appuntamentu.
+Security violation!: Violazione di securità!
+You must enter the anti-spam text on the previous page.: Duvete inserisce u testu anti-spam in a pagina precedente.
+The following conflicts with the suggested time: I seguenti cunflitti cù u tempu suggeritu
+User removed from participants list.: Utente cacciatu da a lista di i participanti.
+Please look on XXX to accept or reject this appointment.: Per piacè fighjate nantu à XXX per accettà o rifiutà questu appuntamentu.
+Please look on XXX to view this appointment.: Per piacè fighjate nantu à XXX per vede st'appuntamentu.
+Scheduling Conflict: Pianificazione di u Cunflittu
+Your suggested time of: U vostru tempu suggeritu di
+conflicts with the following existing calendar entries: cunflitti cù e seguenti entrate di calendariu esistenti
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX ùn hè micca statu messu in "config.php".
+word characters only: (pò cuntene solu caratteri di parolle; [a-zA-Z_0-9])
+Add User: Aghjunghje l'Usuariu
+Edit User: Modificà l'Usuariu
+Calendar ID: ID Calendariu
+First Name: Nome
+Last Name: Casata
+Is public calendar: Hè u calendariu publicu
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Errore di basa di dati
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Aghjunghje u Calendariu Remote
+Edit Remote Calendar: Mudificà u Calendariu Remote
+Create Layer: Creà Livellu
+Reload: Ricaricà
+Required to View Remote Calendar: Ubligatoriu per Vede u Calendariu Remote
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Importa risultati
+Events successfully imported: Eventi impurtati cù successu
+Create a new layer to view this calendar.: Crea un novu nivellu per vede stu calendariu.
+Errors: Errori
+There was an error parsing the import file or no events were returned.: Ci hè statu un errore durante l'analisi di u fugliale d'impurtazione o ùn sò stati riturnati eventi.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Dumane
+Yesterday: Ieri
+Day before yesterday: Davanti à ieri
+Next week: A settimane prossima
+This week: Sta settimana
+Last week: A settimana passata
+Week before last: Settimana prima di l'ultima
+Next week and week after: A settimana prossima è a settimana dopu
+This week and next week: Sta settimana è a settimana prossima
+Last week and this week: A settimana scorsa è sta settimana
+Last two weeks: Ultime duie settimane
+Next month: U mesi chì vene
+This month: Stu mese
+Last month: U mese scorsu
+Month before last: Mese prima di l'ultimu
+Next year: L'annu prossimu
+This year: Quist'annu
+Last year: L'annu scorsu
+Year before last: Annu prima l'ultimu
+Next 14 days: Prussimi 14 ghjorni
+Next 30 days: Prossimi 30 ghjorni
+Next 60 days: 60 ghjorni dopu
+Next 90 days: Prossimi 90 ghjorni
+Next 180 days: 180 ghjorni dopu
+Next 365 days: 365 ghjorni dopu
+Invalid report id XXX.: ID di raportu invalidu: "XXX".
+Unnamed Report: Rapportu Innominatu
+Add Report: Aghjunghje Rapportu
+Edit Report: Mudificà u Rapportu
+Report name: Nome di u raportu
+User: Utente
+Current User: Utente attuale
+Include link in menu: Includite u ligame in u menù
+Include standard header/trailer: Includite header / trailer standard
+Include previous/next links: Includite ligami precedenti / prossimi
+Include empty dates: Includite date viote
+Date range: Fascia di data
+Template variables: Variabili di mudellu
+Page template: Template di pagina
+Day template: Template di ghjornu
+Event template: Modellu d'avvenimentu
+Are you sure you want to delete this report?: Site sicuru di vulè sguassà stu raportu?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Ùn hè micca stu rapportu id: "XXX".
+Variable XXX not found.: Variabile XXX micca truvata.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Edite Header Custom
+Edit Custom Script/Stylesheet: Modificà Script Custom / Stylesheet
+Edit Custom Trailer: Edite Trailer Custom
+
+########################################
+# Page: edit_user.php
+#
+Username: Nome d'utilizatore
+E-mail address: Indirizzu mail
+Password: Codice
+again: torna
+Disabled for demo: Disattivatu per a demo
+Are you sure you want to delete this user?: Site sicuru di vulè sguassà st'utilizatore?
+Change Password: Cambià Password
+New Password: Nova Password
+Set Password: =
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Eliminazione di l'utilizatori micca supportati.
+The passwords were not identical.: E password ùn eranu micca identiche.
+You have not entered a password.: Ùn avete micca inseritu una password.
+Username cannot be blank.: U nome d'utilizatore ùn pò micca esse viotu.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Micca auturizatu
+
+########################################
+# Page: export.php
+#
+Export: Esporta
+Export format: Formatu di esportazione
+Include all layers: Includite tutti i strati
+Include deleted entries: Includite entrate cancellate
+Export all dates: Esporta tutte e date
+Start date: Data d'iniziu
+End date: Data di fine
+Modified since: Mudificatu dapoi
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: furmatu di spurtazione micca definitu o incorrettu.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Nisun utilizatore specificatu.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Aghjunghje Novu Gruppu
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Gruppu Innominatu
+Add Group: Aghjunghje Gruppu
+Edit Group: Edite u Gruppu
+Group name: Nome di u gruppu
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Duvete specificà un nome di gruppu
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Auto-rinfriscà i calendarii
+auto-refresh-help: Quandu hè attivatu, a vista di u ghjornu, a vista di a settimana, a vista di u mese, è l'elencu di e pagine micca appruvate si rinfrisceranu automaticamente automaticamente periodicamente.
+Auto-refresh time: Tempu di rinfrescamentu automaticu
+auto-refresh-time-help: Se l'actualizazione automatica hè attivata, questu specifica u tempu trà ogni rinfrescamentu.
+Display days with events in bold in year view: Mustrà ghjorni cù eventi in grassettu in vista d'annu
+Display weekends in week view: Mustrà i week-end in vista di settimana
+Time interval: Intervallu di tempu
+time-interval-help: Specifica quantu seranu i blocchi di tempu in a vista di settimana è di vista di ghjornu.
+Nonuser: Calendari NonUtilizatori
+user-customize-color: Specifica se l'utilizatori sò permessi di mudificà u so schema di culore.
+enable-gradient-help: Aduprate culori di gradiente per i sfondi cellulari.
+Manually entering color values: Ingressu manualmente i valori di culore
+colors-help: Tutti i culori devenu esse specificati in u formatu esadecimale "#RRGGBB" induve "RR" hè u valore hex per u rossu, "GG" hè u valore hex per u verde, è "BB" hè u valore hex per u turchinu.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Segnala Bug
+Please include all the information below when reporting a bug.: Per piacè includite tutte l'infurmazioni quì sottu quandu segnalate un bug.
+Also, please use English rather than XXX.: Inoltre, per piacè aduprate  Inglese  invece di XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Documentazione WebCalendar
+Currently in English only.: Attualmente solu in inglese.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Aghjunghjendu / Modificendu Entrate di Calendariu
+Repeat Type: Ripetite u Tipu
+For More Information...: Per più infurmazione ...
+Repeat End Date: Ripetite a Data di Fine
+Repeat Day: Ripetite u ghjornu
+repeat-day-help: Specifica chì ghjorni di a settimana l'avvenimentu duveria ripete.
+
+########################################
+# Page: help_import.php
+#
+Import: Impurtazione
+Palm Desktop: =
+allow you to import entries from the Palm...: Questu modulu vi permetterà di impurtà entrate da u Palm Desktop Datebook. Deve esse situatu in u vostru repertoriu Palm in datebook / datebook.dat in un sottodirectory chjamatu da u vostru nome d'utilizatore.
+The following entries will not be imported: L'entrate seguenti ùn seranu micca impurtate:
+Entries older than the current date: Voci più vechje di a data attuale
+Entries created in the Palm Desktop...: Voci create in u Palm Desktop chì ùn sò state HotSync'd
+Anything imported from Palm...: Tuttu ciò impurtatu da Palm serà soprascrittu durante a prossima importazione (a menu chì a data di l'avvenimentu sia passata). Dunque, l'aghjurnamenti devenu esse fatti in u Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Questa forma importerà eventi vCalendar (.vcs) 1.0.
+The following formats have been tested: I seguenti formati sò stati testati:
+This form will import iCalendar (.ics) events.: Questa forma importerà eventi iCalendar (.ics).
+Enabling: Attivendu
+Overwrite Prior Import: Sovrascrive l'importazione precedente
+will cause events imported previously...: pruvucarà l'avvenimenti impurtati prima, chì anu utilizatu u listessu UID cum'è un avvenimentu da u novu schedariu d'impurtazione, per esse marcatu cum'è eliminatu. Questu deve permette un file iCalendar aggiornatu da esse impurtatu senza creà duplicati.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Indice d'aiutu
+About WebCalendar: À propositu di WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: I livelli sò utili per visualizà l'avvenimenti di l'altri utilizatori in u vostru calendariu. Pudete specificà l'utilizatore è u culore in quale l'eventi saranu visualizzati.
+Add/Edit/Delete: Aghjunghje / Modificà / Sguassà
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Cliccà nantu à u ligame Modificà Livelli in a sezione amministrativa in u fondu di a pagina vi permetterà di aghjunghje / edità / cancellà strati.
+The text color of the new layer that will be displayed in your calendar.: U culore di u testu di u novu stratu chì serà visualizatu in u vostru calendariu.
+Disabling: Disattivazione
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Pulsà u ligame Disable Layers in a sezione amministrativa in u fondu di a pagina per spegne i livelli.
+Duplicates: Duplicati
+If checked, events that are duplicates of your events will be shown.: Sì verificatu, l'eventi chì sò duplicati di i vostri eventi saranu mostrati.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Pulsà u ligame Attivà i Livelli in a sezione amministrativa in u fondu di a pagina per accende i livelli.
+Source: Surghjente
+Specifies the user that you would like to see displayed in your calendar.: Specifica l'utilizatore chì vulete vede affissatu in u vostru calendariu.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Categoria predefinita
+default-category-help: Specifica a categuria à chì un novu avvenimentu deve esse predefinitu.
+When I am the boss: Quandu sò u patrone
+Email me event notification: Mandami per email una notificazione di l'avvenimentu
+email-boss-notifications-help: Specifica se i capi ricevenu e-mail cum'è notifiche di l'eventi.
+I want to approve events: Vogliu appruvà l'eventi
+boss-approve-event-help: Specifica se u capu serà tenutu per appruvà l'eventi aghjunti da assistenti.
+Subscribe/Publish: Arrugà / Publicà
+Allow remote publishing: Permettite a publicazione à distanza
+allow-remote-publishing-help: Specifica se un client iCal remoto pò publicà eventi torna in WebCalendar
+remote-publishing-url-help: Mostra l'URL da aduprà in l'applicazione client iCal sia per l'abbonamentu sia per a pubblicazione torna à WebCalendar.
+allow-remote-subscriptions-help: Specifica se l'utilizatori remoti ponu abbonà si à u vostru calendariu, permettendu di vede i vostri eventi in una applicazione attivata iCal (cum'è iCal di Apple o u Calendariu Mozilla).
+remote-subscriptions-url-help: Mostra l'URL chì l'utilizatori remoti anu da aduprà per abbonassi à u vostru calendariu.
+Enable FreeBusy publishing: Attivà a publicazione FreeBusy
+freebusy-enabled-help: Specifica se u tempu dispunibile di un utilizatore pò esse ottenutu cù u standard iCal FreeBusy.
+freebusy-url-help: L'URL per accede à a lista FreeBusy di l'utilizatore
+rss-feed-url-help: L'URL per accede à u filu RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Permette un cuntrollu fine di l'accessu di l'utilizatori è i permessi. L'utilizatori ponu ancu cuncede per difettu è per permessu individuale se autorizatu da l'amministratore.
+If disabled, this user cannot send you emails.: Sì disattivatu, questu utilizatore ùn pò micca invià email.
+If disabled, this user cannot see you in the participants list.: Se hè disattivatu, questu utilizatore ùn pò micca vederti in a lista di i participanti.
+If enabled, this user cannot view the details of any of your entries.: Se attivatu, questu utilizatore ùn pò micca vede i dettagli di alcuna di e vostre entrate.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Edizione Disattivata (Admin)
+Publishing Disabled (User): Publicazione Disattivata (Utente)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Cliccate per Selezziunà
+Current Icons on Server: Icone attuali nantu à u Server
+
+########################################
+# Page: import.php
+#
+import from file: impurtà da u fugliale
+Disabled: Disattivatu
+Import format: Formatu di impurtazione
+Exclude private records: Escludite i registri privati
+Repeated items are imported separately. Prior imports are not overwritten.: L'articuli ripetuti sò impurtati separatamente. L'impurtazioni precedenti ùn sò micca soprascritte.
+
+########################################
+# Page: import_handler.php
+#
+No file: Nisun schedariu
+Error deleting palm events from webcalendar.: Errore à l'eliminazione di l'eventi palma da u webcalendar.
+Events from prior import marked as deleted: Eventi da impurtazioni precedenti marcati cum'è cancellati
+Conflicting events: Eventi cunflitti
+The import file contained no data.: U schedariu d'impurtazione ùn cuntene dati.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Site sicuru di vulè sguassà stu livellu?
+Delete layer: Eliminà u stratu
+Edit layer: =
+Enable layers: Attivate i livelli
+Layer: Livellu
+Layers are currently disabled.: I strati sò attualmente disattivati.
+Layers are currently enabled.: I strati sò attualmente attivati.
+Click to modify layers settings for XXX: Cliccate quì per mudificà i paràmetri di u nivellu per u calendariu XXX.
+Disable Layers: Disattivà i Livelli
+Add layer: Aghjunghje una capa
+Add Layer: Aghjunghje Layer
+Edit Layer: =
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Impussibule d'aghjurnà a preferenza
+Invalid entry id.: ID d'entrata invalida.
+You cannot create a layer for yourself.: Ùn pudete micca creà un stratu per voi stessu.
+You can only create one layer for each user.: Pudete creà solu un stratu per ogni utilizatore.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Appruvà / Cunfirmà
+Approve Selected: Appruvà Sceltu
+Check All: Verificate Tuttu
+Emails Will Not Be Sent: E-mail ùn seranu micca inviate
+Reject Selected: Ricusà Selezziunatu
+Reject: Ricusà
+Uncheck All: Deseleziona tutti
+View this entry: Vede sta voce
+No unapproved entries for XXX.: Nisuna entrata micca appruvata per: "XXX".
+Unapproved Entries: Entrate micca approvate
+Approve this entry?: Appruvà sta voce?
+Reject this entry?: Ricusà sta voce?
+Approve Selected entries?: Appruvà l'entrate selezziunate?
+Reject Selected entries?: Ricusà l'entrate selezziunate?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Duvete inserisce un login è una password.
+Save login via cookies so I dont have to login next time.: Salvate l'accessu via i cookies per ùn avè micca da accede à a prossima volta
+Login: Cunnessione
+public: publicu
+Access XXX calendar: Accede à u calendariu XXX
+cookies-note: Nota: Questa applicazione richiede chì i cookies sianu attivati.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Caratteri illegali in u login XXX.
+Invalid login: Cunnessione invalida
+Activity login failure: Username: "XXX", IP: "AAAA".
+Error XXX: Errore: "XXX".
+You have been logged out.: Avete statu disconnettu.
+Access public calendar: Accede à u calendariu publicu
+Not yet registered? Register here!: Micca registratu? Iscriviti quì!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Nisun calendariu chì ùn hè micca usuariu: "XXX".
+This Calendar is not Public.: Stu Calendariu ùn hè Publicu.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Aghjunghje u Novu Calendariu NonUser
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Un login deve esse specificatu.
+No such nonuser calendar: Ùn ci hè micca un calendariu chì ùn sia micca utilizatore
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Tema invalidu
+Save Preferences: Salvà e Preferenze
+Public Access calendar: Calendariu di l'Accessu Publicu
+Modify Non User Calendar Preferences: Mudificà e Preferenze di u Calendariu Non Utente
+Return to My Preferences: Riturnà à E mo Preferenze
+Custom Scripts: Scripts persunalizati
+Timezone Selection: Selezzione Timezone
+Multiview: Multivista:
+entry-interval-help: Piazzà un intervallu di minutu quandu si mudificanu i tempi d'entrata
+Entry interval: Intervallu d'entrata
+hour: ora
+minute: minutu
+theme-reload-help: A causa di a cache CSS, una ricarica di a pagina pò esse necessaria
+Page may need to be reloaded for new Theme to take effect: A pagina pò avè bisognu à esse ricaricata per u novu Tema per entrà in vigore
+display_byproxy-help: Mustrà u veru creatore nantu à a pagina view_entry
+Display if created by Assistant: Mustrà si creatu da l'Assistente
+allow-view-subscriptions-help: Permette di limità l'accessu remotu à l'entrate Private o Confidenziali
+Allow remote viewing of: Permettite a visualizazione remota di
+entries: entrate
+
+########################################
+# Page: purge.php
+#
+Purging events for: Pulizia di eventi per
+Finished: Finitu
+Back: Torna
+Check box to delete ALL events for a user: Selezziunà a casella per sguassà  TUTTI  l'avvenimenti per un utilizatore
+Delete all events before: Elimina tutti l'avvenimenti prima
+Purge deleted only: Purga eliminata solu
+Preview delete: Preview cancellazione
+Are you sure you want to delete events for: Site sicuru di vulè sguassà l'avvenimenti per
+Records deleted from XXX: Dischi cancellati da "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: L'indirizzu email ùn pò micca esse viotu.
+Username already exists.: U nome d'utilizatore esiste dighjà.
+Email address already exists.: L'indirizzu email esiste dighjà.
+New user via self-registration.: Novu utilizatore per auto-registrazione.
+A new WebCalendar account has been set up for you.: Un novu contu WebCalendar hè statu creatu per voi.
+Your username is XXX.: U vostru nome d'utilizatore hè: "XXX".
+Your password is XXX.: A vostra parolla d'intesa hè: "XXX".
+Please visit XXX to log in and start using your account!: Per piacè visitate "XXX" per cunnettavvi è cuminciate à aduprà u vostru contu!
+You may change your password after logging in the first time.: Pudete cambià a vostra password dopu avè logatu in a prima volta.
+If you received this email in error: Se avete ricevutu questu email per errore è ùn avete micca firmatu per un contu WebCalendar, pudete ignurà questu avvisu, o risponde cù una nota breve
+Administrator: Amministratore
+Welcome: Benvenuti
+New user via email.: Novu utilizatore per email.
+Registration: Scrizzione
+Welcome to WebCalendar: Benvenutu in WebCalendar
+Your email should arrive shortly.: U vostru email deve ghjunghje da quì à pocu.
+Return to Login screen: Ritorna à a pantalla di cunnessione
+Password (again): Password (torna):
+Your account information will be emailed to you.: L'infurmazione di u vostru contu vi serà inviata per email.
+Submit: Invia
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Cuntinuà
+(Your comments will be emailed to the other participants.): (I vostri cummenti seranu inviati per email à l'altri participanti.)
+XXX has rejected an appointment.: XXX hà rifiutatu un appuntamentu.
+Rejected by XXX.: Ricusatu da XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Aghjunghjite u Novu Calendariu Remote
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Questu avvenimentu hè cunfidenziale.
+(Private): (Privatu)
+(cont.): (cunt.)
+Approved: Appruvatu
+Deleted: Eliminatu
+Rejected: Ricusatu
+Waiting for approval: Aspettendu l'approvazione
+Unknown: Inconnu
+Invalid report id.: ID di raportu invalidu.
+Click here to manage reports for the Public Access calendar.: Cliccate quì per gestisce i rapporti per u calendariu di l'Accessu Publicu.
+Add new report: Aghjunghje un novu raportu
+Manage Reports: Gestisce i Rapporti
+
+########################################
+# Page: search.php
+#
+Advanced Search: Ricerca Avanzata
+Search: Cerca
+Keywords: Parolle chjave
+Enter % for all entries: Ingressu% per tutte l'entrate
+Include: Includite
+Filter by Date: Filtra per Data
+All Dates: Tutte e Date
+Past: Passatu
+Upcoming: À prossimu
+Range: =
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Duvete inserisce una o più parole chiave di ricerca.
+Search Results: Risultati di ricerca
+match found: partita truvata
+matches found: partite truvate
+No matches found: Nisuna partita truvata
+New Search: Nova Ricerca
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: L'infurmazioni sottu elencanu i prublemi putenziali cù a vostra installazione WebCalendar chì puderebbenu esse mudificate per fà a vostra installazione più sicura.
+For questions about WebCalendar security see the forums: Per e dumande nantu à qualsiasi prublemu di securità WebCalendar, aduprate i fori WebCalendar ospitati in GitHub.com;<br>XXX
+View your current PHP settings: Vede i vostri paràmetri PHP attuali
+Security Issue: Issue di Sicurezza
+Status: Statutu
+Default admin user password: Password d'utilizatore amministratore predefinitu
+You should change the password of the default admin user.: Duvete cambià a password di l'usu predeterminatu amministratore.
+File permissions XXX: Permessi di schedariu: XXX
+item XXX should not be writable: L'elementu chì seguita ùn deve micca esse scrivibile:<br><tt> XXX</tt>
+File exists XXX: U schedariu esiste: "XXX"
+Because you have email disabled, you should remove this file.: Perchè avete un email disattivatu, duvete sguassà stu fugliale.
+File location XXX: Situazione di u fugliale: "XXX"
+remove XXX if not using: Se ùn utilizate micca u fugliale "XXX", duverebbe sguassallu. O, almenu, move in un novu repertoriu.
+System Settings XXX: Configurazione di u Sistema: "XXX"
+consider enabling UAC: Pudete vulè cunsiderà di attivà u Cuntrollu d'Accessu à l'Usuariu per definisce i privilegi di l'utente.
+recommend approving new public events: Ricumandemu chì tutte e presentazioni di eventi publichi sianu appruvate.
+recommend using CAPTCHA: CAPTCHA hè cunsigliatu per guardà una nova presentazione di eventi automatizati.
+Database cache directory location: Situazione di u repertoriu di cache di basa di dati
+db cache should be inaccessable: A cache di a basa di dati deve esse in un repertoriu chì ùn pò micca esse accessu cù un URL.
+PHP Settings XXX: Impostazioni PHP: "XXX"
+recommend setting XXX Off: U paràmetru cunsigliatu per "XXX" hè Off.
+recommend setting allow_url_fopen Off: U paràmetru cunsigliatu per "allow_url_fopen" hè Disattivatu quandu i calendarii remoti ùn sò micca attivati.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Vede u Calendariu di Altru Usuariu
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Ùn avete micca aghjuntu alcuna categuria.
+Set Category: Set Categoria
+Global Categories cannot be changed.: E Categorie Glubali ùn ponu micca esse cambiate.
+
+########################################
+# Page: upcoming.php
+#
+more: più
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Calendarii à Distanza
+denotes administrative user: denota un utilizatore amministrativu
+Add New User: Aghjunghje Novu Utente
+
+########################################
+# Page: usersel.php
+#
+form: forma
+Reset: Resettate
+
+########################################
+# Page: views.php
+#
+Add New View: Aghjunghje New View
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Vista Innominata
+Add View: Aghjunghje Vista
+Edit View: Modificà a Vista
+View Name: Vede Nome
+View Type: Vede u Tipu
+Day by Time: Ghjornu per Tempu
+Week (Users horizontal): Settimana (Utenti in orizzontale)
+Week by Time: =
+Week (Users vertical): Settimana (Utenti verticali)
+Week (Timebar): Settimana (Timebar)
+Month (Timebar): Mese (Timebar)
+Month (side by side): Mese (fiancu à fiancu)
+Month (on same calendar): Mese (in listessu calendariu)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Duvete specificà un nome di vista
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Nisun utilizatori per questa vista.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Percentuale di Task d'aghjurnamentu
+Completed: Compiu
+Assistant mode: Modu assistente
+Declined: Ricusatu
+Needs-Action: Bisogni-Azione
+by: da
+Percentage Complete: Percentuale Cumplitu
+External User: Usuariu esternu
+Update: Aghjurnamentu
+at: à
+comments: cumenti
+Show: Spettaculu
+Hide: Oculta
+Approve/Confirm entry: Appruvà / Cunfirmà l'entrata
+Reject entry: Ricusà l'entrata
+Set category: Set categuria
+Add to My Calendar: Aghjunghje à U mo Calendariu
+Copy entry: Copia l'entrata
+This will delete this entry for all users.: Questa eliminerà sta voce per tutti l'utilizatori.
+Edit entry: Mudificà a voce
+Edit repeating entry for all dates: Modificà a voce ripetuta per tutte e date
+Delete repeating event for all dates: Elimina l'avvenimentu ripetitu per tutte e date
+Edit entry for this date: Mudificà a voce per sta data
+Delete entry only for this date: Sguassà l'entrata solu per questa data
+Delete entry from calendar of XXX: Elimina l'entrata da u calendariu di XXX
+This will delete the entry from your XXX calendar.: Questu eliminerà l'entrata da u vostru calendariu XXX.
+boss: patrone '
+This will delete the entry from your boss calendar.: Questu eliminerà l'entrata da u calendariu di u vostru capu.
+This will delete the entry from your calendar.: Questu eliminerà l'entrata da u vostru calendariu.
+from your boss calendar: da u calendariu di u vostru capu
+Do you want to add this entry to your calendar?: Vulete aghjunghje sta voce à u vostru calendariu?
+This will add the entry to your calendar.: Questu aghjunghje l'entrata à u vostru calendariu.
+Email all participants: Mandate un email à tutti i participanti
+Hide activity log: Oculta u registru di attività
+Show activity log: Mostra u registru di attività
+Export this entry to: Esporta sta voce in
+Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Cliccate duie volte nantu à a cellula viota per aghjunghje una nova entrata.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Nova entrata
+cont.: cunt.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Un altru Calendariu di l'Usuariu
+Category Management: Gestione di categurie
+Day View: Vista di u Ghjornu
+Edit Event: Mudificà Avvenimentu
+Month View: Vista di u mese
+Common Trailer: Trailer Cumunu
+User Management: Gestione Utente
+Manage Views: Gestite Views
+Week View: Vista di Settimana
+Year View: Vista di l'annu
+Invalid function id: ID di funzione invalida
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Impussibule di truvà u schedariu "settings.php".<br>Copiate "settings.php.orig" in "settings.php" è mudificate per u vostru situ.
+Incomplete settings.php file...: File "settings.php" incompletu ...
+Could not find XXX defined in...: Impussibule di truvà "XXX" definitu in u vostru fugliale "settings.php".
+You must define XXX in: Duvete definisce "XXX" in u fugliale "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Dicembre
+Dec: Dic
+LANGUAGE DEFINED: LINGUA DEFINITA
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Errore di cunnessione à a basa di dati: "XXX".
+db_type not defined.: db_type micca definitu.
+invalid db_type XXX: db_type invàlidu "" XXX ".
+Cache cleared from previous SQL!: Cache sbulicatu da SQL precedente!
+Error executing query.: Errore durante l'esecuzione di a dumanda.
+Unfortunately, XXX is not implemented for YYY: Sfurtunatamente, "XXX" ùn hè micca implementatu per (AAAA).
+Unknown ODBC error.: Errore ODBC scunnisciutu.
+Error opening cache dir XXX.: Errore à l'apertura di a cache dir "XXX".
+delete: sguassà
+Cache error Could not XXX file YYY.: Errore di cache: Ùn pudia micca XXX file "AAAA".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Errore Fatale
+Invalid data format for: Formatu di dati invalidu per
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Errore: Tipu micca impostatu per u registru di attività!
+This event is XXX.: Questu avvenimentu hè XXX.
+Conf.: Cunf.
+exceeds limit of XXX events per day: supera u limitu di XXX eventi per ghjornu
+on: nantu
+All Attendees: Tutti i Participanti
+Busy: Impegnatu
+Tentative: Pruvucatu
+Schedule an appointment for XXX.: Pianificate un appuntamentu per XXX: AAAA.
+date_select: =
+Event approved: Avvenimentu appruvatu
+Journal approved: Ghjurnale appruvatu
+Task approved: Task appruvata
+Attachment: Attaccamentu
+Event created: Avvenimentu creatu
+Journal created: Ghjurnale creatu
+Task created: Task creatu
+Event deleted: Avvenimentu sguassatu
+Journal deleted: Ghjurnale sguassatu
+Task deleted: Task cancellatu
+New user via email (self registration): Novu utilizatore per email (autore registrazione)
+New user (self registration): Novu utilizatore (autore registrazione)
+Notification sent: Notificazione inviata
+Event rejected: Avvenimentu rifiutatu
+Journal rejected: Ghjurnale rifiutatu
+Task rejected: Task rifiutatu
+Reminder sent: Reminder inviatu
+Event updated: Avvenimentu aghjurnatu
+Journal updated: Ghjurnale aghjurnatu
+Task updated: Task aghjurnata
+Delete User: Sguassà l'Usuariu
+WK: =
+TASKS: Task
+Task_Title: Titulu
+Due: =
+Task Name: Nome di l'attività
+Task Due Date: Task Data di Scadenza
+You have XXX unapproved entries: Avete XXX entrate micca appruvate 
+Changes successfully saved: Cambiamenti salvati cù successu
+Event: Avvenimentu
+Action: Azione
+Printer Friendly: Stampa Amichevule
+Generate printer-friendly version: Generate una versione amichevuli à a stampetta
+after: dopu
+before: prima
+end: fine
+start: principià
+View this event: Vede questu avvenimentu
+View this task: Vede stu compitu
+January: Ghjinnaghju
+February: Febbraiu
+March: Marzu
+April: Aprile
+May_: Maghju
+June: Ghjugnu
+July: Lugliu
+August: Aostu
+September: Sittembre
+October: Ottobre
+November: Nuvembre
+Jan: Ghjenn
+Feb: Ferraghju
+Mar: =
+Apr: =
+May: Maghju
+Jun: Giu
+Jul: Lug
+Aug: Aostu
+Sep: Sitt
+Oct: Utt
+Nov: Nuv
+SU: =
+MO: =
+TU: =
+WE: NOI
+TH: =
+FR: =
+SA: =
+unknown-month: mese scunnisciutu
+First Quarter Moon: Luna di u primu quartu
+Full Moon: Luna Piena
+Last Quarter Moon: Luna di l'ultimu quartu
+New Moon: Luna nova
+Error TIME_SLOTS undefined!: Errore: TIME_SLOTS indefinitu!
+The following error occurred: L'errore seguente hè accadutu
+You are not authorized.: Ùn site micca autorizatu.
+Add N hours to: Aghjunghje N ore à
+Subtract N hours from: Sottrae N ore da
+same as: listessu cum'è
+server time: tempu servore
+Cannot read timezone file XXX.: Impussibule di leghje u schedariu di u fuso orariu: XXX.
+Your current GMT offset is XXX hours.: U vostru offset GMT attuale hè XXX ore.
+Unauthorized: Senza autorizazione
+Error approving event XXX.: Errore appruvendu l'avvenimentu: XXX.
+Error deleting event XXX.: Errore durante a cancellazione di l'avvenimentu: XXX.
+Error rejecting event XXX.: Errore rifiutendu l'avvenimentu: XXX.
+Sunday: Dumenica
+Monday: Luni
+Tuesday: Marti
+Wednesday: Marcuri
+Thursday: Ghjovi
+Friday: Vennari
+Saturday: Sabatu
+Sun: =
+Mon: Lun
+Tue: U marti
+Wed: Mer
+Thu: Ghju
+Fri: Ven
+Sat: =
+unknown-weekday: scunnisciutu-weekday
+Invalid referring URL: URL di riferimentu invalidu
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Indice
+Documentation: Ducumentazione in corsu
+Page: Pagina
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: U mo Calendariu
+Add New Entry: Aghjunghje Nuova Entrata
+Add New Task: Aghjunghje New Task
+Logout: Scunnettà si
+Home: =
+Back to My Calendar: Torna à U mo calendariu
+Go to: Andà à
+Manage calendar of: Gestite u calendariu di
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Lingua di u Navigatore Ùn Trovata
+(not supported): (micca suppurtatu)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Luntanu
+Afrihili: =
+Afrikaans: =
+Ainu: =
+Akan: =
+Akkadian: Accadianu
+Albanian: Albanese
+Aleut: =
+Algonquian: Algonquianu
+Altai (Southern): Altai (Sud)
+Amharic: Amaricu
+Angika: =
+Apache: =
+Arabic (Algeria): Arabu (Algeria)
+Arabic (Bahrain): Arabu (Bahrain)
+Arabic (Egypt): Arabu (Egittu)
+Arabic (Iraq): Arabu (Iraq)
+Arabic (Jordan): Arabu (Ghjordania)
+Arabic (Kuwait): Arabu (Kuwait)
+Arabic (Lebanon): Arabu (Libanu)
+Arabic (Libya): Arabu (Libia)
+Arabic (Morocco): Arabu (Maroccu)
+Arabic (Oman): Arabu (Oman)
+Arabic (Qatar): Arabu (Qatar)
+Arabic (Saudi Arabia): Arabu (Arabia Saudita)
+Arabic (Syria): Arabu (Siria)
+Arabic (Tunisia): Arabu (Tunisia)
+Arabic (U.A.E.): Arabu (U.A.E.)
+Arabic (Yemen): Arabu (Yemen)
+Arabic: Arabu
+Aragonese: Aragunese
+Aramaic: Arameanu
+Arapaho: =
+Arawak: =
+Armenian: Armenu
+Assamese: =
+Asturian: Asturianu
+Athapascan: =
+Avaric: Avaricu
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Azerianu
+Balinese: =
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: Vascu
+Beja: =
+Belarusian: Bielorussu
+Bemba: =
+Bengali: =
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: =
+Bliss: Beatitudine
+Bosnian: Bosniacu
+Braj: =
+Breton: Bretone
+Buginese: =
+Bulgarian: Bulgaru
+Buriat: =
+Burmese: Birmanu
+Caddo: =
+Catalan: Catalanu
+Cebuano: Cebuanu
+Chagatai: =
+Chamorro: =
+Chechen: Cecenu
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Cinese (Hong Kong)
+Chinese (PRC): Cinese (RPC)
+Chinese (Simplified/GB2312): Cinese (Simplificatu / GB2312) 
+Chinese (Singapore): Cinese (Singapore)
+Chinese (Taiwan): Cinese (Taiwan)
+Chinese (Traditional/Big5): Cinese (Tradiziunale / Grande5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: Coptu
+Cornish: =
+Corsican: Corsu
+Cree: Cris
+Creek: =
+Croatian: Cruatu
+Czech: Ceccu
+Dakota: =
+Danish: Danese
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Olandese (Belgio)
+Dutch: Ulandesa
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Inglese (Australia)
+English (Belize): Inglese (Belize)
+English (Canada): Inglese (Canada)
+English (Ireland): Inglese (Irlanda)
+English (Jamaica): Inglese (Giamaica)
+English (New Zealand): Inglese (Nova Zelanda)
+English (Philippines): Inglese (Filippine)
+English (South Africa): Inglese (Sudafrica)
+English (Trinidad & Tobago): Inglese (Trinità è Tobago)
+English (United Kingdom): Inglese (Regnu Unitu)
+English (United States): Inglese (Stati Uniti)
+English (Zimbabwe): Inglese (Zimbabwe)
+English: Inglese-SU
+Erzya: =
+Esperanto: Esperantu
+Estonian: Estone
+Ewe: Pecora
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: Feroese
+Fijian: Fijianu
+Filipino: Filippinu
+Finnish: Finlandese
+Fon: =
+French (Belgium): Francese (Belgio)
+French (Canada): Francese (Canada)
+French (France): Francese (Francia)
+French (Luxembourg): Francese (Lussemburgu)
+French (Monaco): Francese (Monaco)
+French (Switzerland): Francese (Svizzera)
+French: Francese
+Frisian (Eastern): Frisone (orientale)
+Frisian (Northern): Frisone (Nordu)
+Frisian (Western): Frisone (occidentale)
+Frisian: Frisgianu
+Friulian: Friulianu
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galizianu
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Georgianu
+German (Austria): Tedescu (Austria)
+German (Germany): Tedesco (Germania)
+German (Liechtenstein): Tedesco (Liechtenstein)
+German (Luxembourg): Tedesco (Lussemburgu)
+German (Standard): Tedesco (Standard)
+German (Switzerland): Tedescu (Svizzera)
+German: Tedescu
+Gilbertese: Ghjilbertese
+Gondi: =
+Gorontalo: =
+Gothic: Goticu
+Grebo: =
+Greek: Grecu
+Greenlandic: Groenlandese
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Creolu Haitianu)
+Haitian: Haitianu
+Hausa: =
+Hawaiian: Hawaiianu
+Hebrew: Ebraicu
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: =
+Hmong: =
+Holo (Taiwanese): Holo (taiwanese)
+Hungarian: Ungherese
+Hupa: =
+Iban: =
+Icelandic: Islandesu
+Ido: Eiu sì
+Igbo: =
+Iloko: =
+Indonesian: Indonesianu
+Ingush: Inguscu
+Inuktitut: =
+Inupiaq: =
+Iranian: Iranianu
+Irish (Gaelic): Irlandese (Gaelicu)
+Irish: Irlandese
+Iroquoian: Iroquoianu
+Italian (Switzerland): Talianu (Svizzera)
+Italian: Talianu
+Japanese: Ghjappunese
+Javanese: Giavanese
+Judeo-Arabic: Ghjudeo-arabu
+Judeo-Persian: Ghjudeo-persianu
+Kabardian: Kabardianu
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: Carelianu
+Kashmiri: Cachemire
+Kashubian: Kashubianu
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): Khmer (Centrale)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Coreanu (Johab)
+Korean (North): Coreanu (Nordu)
+Korean (South): Coreanu (Sud)
+Korean: Coreanu
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Curdu
+Kutenai: =
+Kyrgyz: =
+Ladino: Ladinu
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Latinu
+Latvian: Lettone
+Lezghian: Lezghianu
+Limburgan: =
+Lingala: =
+Lithuanian: Littuanianu
+Lojban: Loghjanu
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Lussemburghese
+Macedonian: Macedone
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Malgache
+Malay: Malese
+Malayalam: =
+Maldivian: Maldivianu
+Maltese: =
+Manchu: =
+Mandar: =
+Mandingo: Mandingu
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: Maya
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Moldavianu
+Mongo: =
+Mongolian: Mongolianu
+Montenegrin: Montenegrinu
+Moroccan: Maroccu
+Mossi: =
+Myanmar: Birmania
+Māori: Maori
+N&#39;Ko: Nò
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Nord)
+Ndebele (South): Ndebele (Sud)
+Ndebele: =
+Ndonga: =
+Neapolitan: Napulitanu
+Nepali: Nepalese
+Nias: =
+Niuean: Niueanu
+Nogai: =
+Norse: Norvegese
+Norwegian (Bokmål): Norvegese (Bokmål)
+Norwegian (Nynorsk): Norvegese (Nynorsk)
+Norwegian: Novegese
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Occitanu
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Osseticu
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: =
+Pedi: =
+Persian (Farsi): Persianu (Farsi)
+Persian (Iran): Persianu (Iran)
+Persian: Persianu
+Phoenician: Fenici
+Pohnpeian: =
+Polish: Pulaccu
+Portuguese: Portughese
+Portuguese/Brazil: Portughese / Brasile
+Punjabi (India): Punjabi (Inde)
+Punjabi (Pakistan): =
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Retoromanicu
+Romanian: Rumenu
+Romansh: Rumanzu
+Romany: =
+Rundi: =
+Russian (Moldavia: Russu (Moldavia
+Russian (Republic of Moldova): Russu (Republica di Moldova)
+Russian: Russu
+Sami (Inari): =
+Sami (Lappish): Sami (Laponu)
+Sami (Lule): =
+Sami (Northern): Sami (Nordu)
+Sami (Skolt): =
+Sami (Southern): Sami (Sud)
+Sami: =
+Samoan: =
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Sanscrittu
+Santali: =
+Sardinian: Sardu
+Sasak: =
+Scots (Gaelic): Scozzese (Gaelicu)
+Selkup: =
+Serbian (Upper): Serbe (Upper)
+Serbian: Serbianu
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Sicilianu
+Sindhi: =
+Sinhala: =
+Slavic: Slava
+Slovak: Sluvaccu
+Slovenian: Sluvenu
+Sogdian: Sogdianu
+Somali: Somalianu
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbianu (Inferiore)
+Sorbian (Upper): Sorbianu (Superiore)
+Sorbian: Sorbianu
+Sotho: =
+Spanish (Argentina): Spagnolu (Argentina)
+Spanish (Bolivia): Spagnolu (Bolivia)
+Spanish (Chile): Spagnolu (Cile)
+Spanish (Colombia): Spagnolu (Culumbia)
+Spanish (Costa Rica): Spagnolu (Costa Rica)
+Spanish (Dominican Republic): Spagnolu (Repubblica Dominicana)
+Spanish (Ecuador): Spagnolu (Ecuador)
+Spanish (El Salvador): Spagnolu (El Salvador)
+Spanish (Guatemala): Spagnolu (Guatemala)
+Spanish (Honduras): Spagnolu (Honduras)
+Spanish (Mexico): Spagnolu (Messicu)
+Spanish (Nicaragua): Spagnolu (Nicaragua)
+Spanish (Panama): Spagnolu (Panama)
+Spanish (Paraguay): Spagnolu (Paraguay)
+Spanish (Peru): Spagnolu (Perù)
+Spanish (Puerto Rico): Spagnolu (Portu Riccu)
+Spanish (Spain): Spagnolu (Spagna)
+Spanish (Uruguay): Spagnolu (Uruguay)
+Spanish (Venezuela): Spagnolu (Venezuela)
+Spanish: Spagnolu
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumerinu
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Svedese (Finlandia)
+Swedish (Sweden): Svedese (Svezia)
+Swedish: Svedese
+Syriac: Siriaccu
+Tagalog: =
+Tahitian: Tahitianu
+Tai: =
+Taiwan: =
+Tajik: Tadjicu
+Tamashek: =
+Tamil: =
+Tatar: Tataru
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: Tibetanu
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Isule Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Turcu
+Turkmen: Turchmennu
+Tuvinian: Tuvinianu
+Twi: =
+Udmurt: =
+Ugaritic: Ugariticu
+Ukrainian: Ucrainu
+Umbundu: =
+Urdu: =
+Uyghur: =
+Uzbek: Ouzbek
+Vai: =
+Venda: =
+Vietnamese: Vietnamiana
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: Vallone
+Waray: =
+Washo: =
+Welsh: Gallese
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Navigatore definitu
+event: avvenimentu
+journal: ghjurnale
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Cunnessione d'utilizatore invalida
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: password incorretta
+no such user: nisunu utilizatore
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Contu disattivatu
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Intervallu
+Months: Mesi
+Month Days: Mesi Ghjorni
+Days: Ghjorni
+Weeks: Settimane
+Position: Posizione
+Until: Sin'à
+Count: Conti
+Inclusion Dates: Date di Inclusione
+Exclusion Dates: Date di Esclusione
+Event Imported: Avvenimentu impurtatu
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Notificazione
+authenticate: Errore SMTP: Ùn pò micca esse autentificatu
+connect_host: Errore SMTP: Impussibule di cunnette vi à l'òspite SMTP:
+data_not_accepted: Errore SMTP: Dati micca accettati
+encoding: Codificazione scunnisciuta:
+execute: Impussibule di eseguisce:
+file_access: Impussibule di accede à u fugliale:
+file_open: File Errore Impussibule di apre u fugliale:
+from_failed: L'indirizzu Da seguenti hà fallutu:
+instantiate: Impussibule di istanzià a funzione mail
+mailer_not_supported: mailer ùn hè micca suppurtatu
+provide_address: Duvete furnisce almenu un indirizzu email di destinatariu.
+recipients_failed: Errore SMTP: I seguenti destinatari fallenu:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Inserite i Caratteri Visti in Graficu
+Enter the correct letters and numbers...: Inserite e lettere è i numeri curretti da l'immagine in a casella di testu. Stu picculu test serve cum'è restrizzione d'accessu contr'à bots maliziosi. Basta à ricaricà a pagina se stu graficu hè troppu difficiule da leghje
+Challenge/Response: Sfida / Risposta
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Cambia a data è l'ora di sta voce?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Ùn avete micca inseritu una Breve Descrizione
+time prior to work hours...: tempu prima di l'ore di travagliu ...
+Invalid Event Date: Data di Avvenimentu Invalida
+Please add a participant: Per piacè aghjunghje un participante
+Invalid Date: Data invalida
+You have not entered a valid time of day: Ùn avete micca inseritu un ora validu di a ghjurnata.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: L'ID di u calendariu ùn pò esse viotu.
+First and last names cannot both be blank.: U nome è i cognomi ùn ponu micca tramindui esse vioti.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Culore invalidu
+Color format should be RRGGBB.: U formatu di culore deve esse #RRGGBB.
+URL cannot be blank.: L'URL ùn pò micca esse viotu.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: U tippu di schedariu ùn currisponde micca à u Format d'importazione
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Culore invalidu per u fondu di u ducumentu.
+Invalid color for document title.: Culore invalida per u titulu di u ducumentu.
+Invalid color for table cell background.: Culore invalidu per u fondu di e cellule di u tavulu.
+Invalid color for table cell background for today.: Culore invalidu per u fondu di e cellule di tavula per oghje.
+Invalid work hours.: Ore di travagliu invalide.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: L'URL di u servitore deve finisce cù una barra (/).
+Invalid color for table grid.: Culore invalidu per a reta di a tavula.
+Invalid color for event popup background.: Culore invalidu per u fondu popup di l'eventu.
+Invalid color for event popup text.: Culore invalidu per u testu popup di l'avvenimentu.
+Invalid color for table header text.: Culore invalidu per u testu di l'intestazione di a tavula.
+Invalid color for table header background.: Culore invalidu per u fondu di l'intestazione di a tavula.
+Server URL is required.: L'URL di u servitore hè necessariu.
+Invalid Color: Culore invalidu
+Database Name: Nome di a basa di dati
+Full Path (no backslashes): Percorsu Pienu (nisuna barra inversa)
+The password contains illegal characters.: A password cuntene caratteri illegali.
+Error you must specify a Single-User Login: Errore: Duvete specificà un Login di Utente Unicu
+Could not find XXX.: Impussibule di truvà XXX.
+Could not find XXX in DOM.: Impussibule di truvà XXX in DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Sta Settimana
+This Month: Stu Mese
+This Year: Quist'annu
+Exit: Esci
+Add New Event: Aghjunghje Novu Avvenimentu
+Delete Entries: Sguassà Entries
+My Views: I mo punti di vista
+Manage Calendar of: Gestite u Calendariu di
+My Reports: I mo Rapporti
+My Profile: U mo Profilu
+Public Calendar: Calendariu Publicu
+Unapproved Events: Eventi micca approvati
+User Manager: Manager di l'Usuariu
+Help Contents: Aiutu Cuntenutu
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Directory di cache di basa di dati
+Create New: Creà Novu
+Failure Reason: Ragione di Fallimentu:
+You must manually create database: Duvete creà manualmente a basa di dati.
+Single-User: Unicu Utente
+Test Settings: Impostazioni di prova
+Timezone Conversion Successful: Cunversione Timezone Successu
+WebCalendar Installation Wizard Step XXX: =
+Password Accepted: Password Accettata
+Successful Login: Cunnessione successu
+Password Incorrect: Password Incorrettu
+Invalid Login: Cunnessione invalida
+Display Errors: Mustrà Errori
+File Uploads: Caricà File
+Allow URL fopen: Permettenu URL fopen (necessariu solu se Calendari Remote sò usati)
+Safe Mode: Modu Safe
+Safe Mode Allowed Vars: Modu Safe Safe Vars (TZ hè necessariu solu se u Modu Safe hè On)
+GD: GD (necessariu per Sfondi di Immagine Gradiente)
+Passwords do not match!: E password ùn currispondenu micca!
+Unable to write password to settings.php file: Impussibule di scrive a password in u schedariu "settings.php".
+Password Updated: Password aghjurnata
+Password has been set: A password hè stata stabilita.
+Connection Successful...: Cunnessione riesciuta  Andate à a pagina dopu per cuntinuà l'installazione.
+Correct your entries or click the Create New...: Corregge e vostre entrate o cliccate nantu à u buttone  Crea novu  per cuntinuà l'installazione.
+Correct your entries and try again.: Corregge e vostre entrate è riprova.
+XXX does not exist: XXX ùn esiste micca
+XXX is not writable: XXX ùn hè micca scrivibile
+Error Converting Timezone: Errore di cunversione di u Fusulariu Timezone
+Error Unable to write to file XXX.: Errore Impussibule di scrive in u schedariu XXX.
+Please change the file permissions of this file.: Si prega di cambià i permessi di u schedariu di stu schedariu.
+Please change includes dir permission: Cambiate puru i permessi di u fugliale di u vostru cartulare "include" per permette a scrittura da altri utilizatori.
+Your settings have been saved.: I vostri paràmetri sò stati salvati.
+OFF: =
+ON: =
+WebCalendar Setup Wizard: =
+This installation wizard will guide you...: Questu assistente d'installazione vi guiderà à l'installazione di una installazione di basa di WebCalendar.<br>Per aiutu è risoluzione di prublemi vedi:<br>
+System Administrators Guide: Guida di l'amministratore di u sistema
+Frequently Asked Questions: Dumande Frequenti
+FAQ: =
+Troubleshooting: Risoluzione di i prublemi
+Getting Help: Uttenendu Aiutu
+Upgrading Guide: Guida d'aghjurnamentu
+User Supported Wiki: Wiki Supportatu da l'Usuariu
+PHP Version Check: Verificazione di Versione PHP
+Check to see if PHP 7.1.0 or greater is installed.: Verificate se PHP 7.1.0 o superiore hè installatu.
+PHP version: Versione PHP
+PHP Settings: Impostazioni PHP
+Detailed PHP Info: Infurmazioni PHP dettagliate
+settings.php Status: Statu "settings.php"
+Session Check: Verificazione di Sessione
+To test the proper operation of sessions...: Per pruvà u funziunamentu currettu di e sessione, ricaricate sta pagina. Duvete vede l'incrementu di u contatore di sessione ogni volta.
+SESSION COUNTER: =
+The file permissions of settings.php are set...: I permessi di u fugliale di "settings.php" sò stabiliti in modu chì l'installatore ùn abbia micca permessu di mudificallu. Per piacè cambiate i permessi di u fugliale di u schedariu seguente per continuà
+The file permissions of the includes directory are set...: I permessi di u fugliale di u repertoriu include sò stabiliti in modu chì l'installatore ùn abbia micca permessu per creà un novu fugliale. Per piacè cambiate i permessi di u seguitu repertoriu per cuntinuà
+Your settings.php file appears to be valid.: U vostru schedariu "settings.php" pare esse validu.
+Configuration Wizard Password: Password di l'Assistente di Cunfigurazione
+Create Settings File Password: Creà Impostazioni File Password
+db setup directions...: In questa sezzione stallate è testate una cunnessione à u vostru servitore di basa di dati. L'infurmazioni di u contu furnite duveranu avè permessi COMPLETI per creà basi di dati, tavule è utilizatori. S'ellu ùn hè micca pussibule, o l'accessu à a vostra basa di dati hè limitatu, duverete cunfigurà manualmente a vostra basa di dati.
+Database Status: Status di a basa di dati
+Supported databases for your PHP installation: Basi di dati supportate per a vostra installazione PHP
+Your current database settings are able to access the database.: I vostri parametri di basa di dati attuali ponu accede à a basa di dati.
+Please Test Settings: Per piacè Pruvate Impostazioni
+Your current database settings are not able...: I vostri parametri di basa di dati attuali ùn sò micca capaci di accede à a basa di dati o ùn sò ancu stati testati.
+Database Settings: Impostazioni di basa di dati
+Database Type: Tipu di basa di dati
+Server: Servitore
+Connection Persistence: Persistenza di Cunnessione
+All your database tables appear to be up...: Tutte e vostre tavule di basa di dati parenu esse aggiornate. Pudete andà à a pagina successiva è compie a vostra installazione WebCalendar.
+This appears to be a new installation...: Questa pare esse una nova installazione. S'ellu ùn hè micca currettu, per piacè torna à a pagina precedente è corregge i vostri parametri.
+This appears to be an upgrade...: Ciò pare esse un aghjurnamentu da a versione&nbsp;XXX&nbsp;à&nbsp;AAAA.
+The database requires some data input...: A basa di dati richiede qualchì input di dati Cliccate nantu à Aghjurnà a basa di dati per compie l'upgrade.
+In this section we will perform...: In questa sezione faremu i cambiamenti per portà a vostra basa di dati finu à u livellu richiestu. Se state aduprendu una basa di dati cumpletamente supportata, questu passu serà realizatu automaticamente per voi. Se no, u SQL richiestu pò esse visualizatu è duverete esse capace di tagliallu è incollallu in a finestra di quistione di u vostru servitore di basa di dati.
+No database actions are required.: Nisuna azzione di basa di dati hè necessaria.
+The following database actions are required: E seguenti azzioni di basa di dati sò necessarie
+ODBC Underlying Database: Base di dati ODBC:
+Automatic installation not supported: L'installazione automatica ùn hè micca stata cumpletamente implementata per u vostru tipu di basa di dati. Duvete creà manualmente e tavule richieste aduprendu u SQL furnitu. Per piacè cliccate  Mustrà SQL  per cuntinuà. Tagliate è Incollate in a vostra finestra di quistione di basa di dati.
+This may take several minutes to complete: Questu pò piglià parechji minuti per compie.
+Install Database: Installa a basa di dati
+Update Database: Aghjurnà a basa di dati
+Display Required SQL: Mustrà SQL Richiestu
+Return to previous page after processing SQL.: Dopu avè trattatu manualmente questu SQL, duverete vultà à a pagina precedente è pruvà torna a vostra basa di dati per chì u script possi rilevà i cambiamenti.
+This is the final step in setting up your WebCalendar Installation.: Questu hè u passu finale in a configurazione di a vostra Installazione WebCalendar.
+Timezone Conversion: Cunversione Timezone
+It appears that you have NOT converted...: Pare chì ùn abbiate micca cunvertitu i vostri dati di l'eventi WebCalendar esistenti in GMT. Sì avete, pudete ignorà questu avvisu è ùn procedere micca cù a cunversione. S'ellu si tratta di una nova installazione, pudete ancu ignurà stu avvisu.
+Convert Data to GMT: Cunvertisce Dati in GMT
+Application Settings: Impostazioni di l'applicazione
+HTTP-based authentication was not detected...: L'autenticazione basata in HTTP ùn hè stata rilevata. Averete bisognu di riconfigurà u vostru servore web se vulete selezziunà "Servitore Web" da e scelte "Autentificazione Utente" sottu.
+HTTP-based authentication was detected...: L'autenticazione basata in HTTP hè stata rilevata. L'autenticazione di l'utente hè gestita da u vostru servitore web. Duvete selezziunà 'Server Web' da a lista di e scelte 'Autenticazione Utente' sottu.
+Create Default Admin Account: Creà un Account Admin Default
+(Admin Account Not Found): (Account Admin micca truvatu)
+User Authentication: Autenticazione Utente
+Web-based via WebCalendar (default): Web-based via WebCalendar (predefinitu)
+Web Server (not detected): Servore Web (micca rilevatu)
+Web Server (detected): Servore Web (rilevatu)
+None (Single-User): Nisunu (Utente Unicu)
+Read-Only: Solu di Lettura
+Environment: Ambiente
+Production: Pruduzione
+Development: Sviluppu
+Save Settings: Salvà Impostazioni
+Launch WebCalendar: Lanciari WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Errore d'aghjurnamentu di a tavula "XXX": AAAA.
+Conversion Successful: Cunversione riesciuta 
+Perl script required: A vostra versione precedente di WebCalendar richiede l'esecuzione di un script PERL per cunvertisce i vostri dati. Per piacè esegue /tools/upgrade_to_0.9.7.pl poi torna à sta pagina per cuntinuà.
+previous version requires updating several tables: A vostra versione precedente di WebCalendar richiede l'aghjurnamentu di parechje tavule di basa di dati.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: NESSUNA PREVISIONE DISPONIBILE
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Errore di cunnessione à a basa di dati
+Include Path: Includite Path
+Deleting events for: Eliminazione di l'eventi per
+Importing events for: Importazione di eventi per
+No data returned from: Nisunu dati riturnati da
+for non-user calendar: per u calendariu chì ùn hè micca utilizatori
+No Remote Calendars found: Nisun Calendariu à Distanza truvatu
+Remote Calendars not enabled: Calendarii à Distanza micca attivati
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: Impussibule di truvà l'identificatore di l'eventu
+could not find event id XXX in database.: Impussibule di truvà l'eventu ID XXX in a basa di dati.
+task: compitu
+This is a reminder for the XXX detailed below.: Questu hè un ricordu per a XXX dettagliata sottu.
+Pecentage Complete: =
+Reminder: Ramentu
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Azzione micca suppurtata: XXX.
+No event id specified.: Nisun ID d'eventu specificatu.
+Not authorized (not admin).: Micca auturizatu (micca amministratore).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Verificà l'avvenimenti per XXX da a data AAA à a data ZZZ.
+Found XXX events in time range.: Avvenimenti XXX truvati in l'intervallo di tempu.
+Event id=XXX YYY at ZZZ on AAA.: Avvenimentu id = XXX "AAAA" in ZZZ nantu à AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Permettendu à l'utente XXX di vede u calendariu di l'altru utilizatore.
+Error Email reminders disabled for user XXX.: Errore: Ricordi per email disattivati ​​per l'utilizatore "XXX".
+Number of site_extras XXX.: Numaru di site_extras: XXX.
+Reminder set for event.: Reminder set per l'avvenimentu.
+Mins Before XXX.: Mins Nanzu: XXX.
+Event time is XXX.: U tempu di l'eventu hè: XXX.
+Remind time is XXX.: U tempu di ramintà hè: XXX.
+Reminders for user XXX, login YYY.: Ramentu per l'utilizatore "XXX", login "AAA".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Uttene micca appruvatu per l'utilizatore "XXX".
+Event id=XXX YYY already sent.: Avvenimentu id = XXX "AAA" digià inviatu.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Nisun login necessariu per a modalità unicu utilizatore.
+No login required for HTTP authentication.: Nisun login necessariu per l'autenticazione HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Caratteri invalidi in u login.
+Username XXX does not exist.: U nome d'utilizatore "XXX" ùn esiste micca.
+You cannot remove admin rights from yourself!: Ùn pudete micca eliminà i diritti di amministratore da voi stessu!
+Unknown error saving user: Errore scunnisciutu salvendu l'utilizatore.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Nisun participante trovu per l'eventu id: XXX.
+Db error Could not find event id XXX.: Errore Db: Impussibule di truvà l'identità di l'eventu XXX.
+Error Could not find event id XXX in database.: Errore: Impussibule di truvà l'eventu ID XXX in a basa di dati.

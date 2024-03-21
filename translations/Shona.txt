@@ -1,0 +1,2387 @@
+# Shona sn
+#
+# Fomati yacho ine musoro wekusarudza:
+#
+# Yakashandurwa ne: zita rako uye email
+# Yekupedzisira kugadzirisa: zuva rekushandura
+# (Kusanganisira inotungamira "#" uye chero mhinduro dzakataurwa nevashanduri vekare.
+# Mutsara wekutanga usina chinhu unopedzisa zvinyorwa zvemusoro.)
+#
+# Inoteverwa nevakawanda sekudikanwa:
+#
+# Chirungu mutsara: dudziro
+# (Imwe kumutsara. PASINA pekutungamira "#".
+# Mutsara we "Chirungu:", kusanganisira colon ":", Inopihwa ne
+# WebCalendar vagadziri. Chikamu chako "dudziro".)
+#
+# Dhairekitori rezvishandiso rine maviri perl zvinyorwa zvekukubatsira iwe:
+# - check_translation.pl
+# inoratidza kana zvinyorwa zvese zvakashandurwa zvinobudirira.
+# - update_translation.pl
+# ichaongorora mafaera echirongwa kuti uwane ese anodudzira ('phrase') uye
+# chishandiso ('mutsara'). Icharonga zvirevo zvinoenderana nepeji
+# (faira) ine yekutanga kuitika. Nesarudzo, inogona kumaka iyo
+# mitsara iyo isati yashandurwa nekuisa
+#  << MISSING >>
+# pamutsara uri pamusoro pemutsara. Uye, kana mutsara uri chidimbu,
+# ichasanganisira iwo akazara echirungu zvinyorwa pamutsara pazasi pemutsara.
+#
+# Cherechedzo: Ndiri kuyedza kucheka pahukuru hwese saizi. Kana "dudziro"
+# izwi / mutsara wakafanana mumutauro wako uye Chirungu, ingoshandisa "=" chiratidzo.
+#
+# Cherechedzo: Iwe uchaona iyo yekupinda ye "May_" pazasi. Pane chikonzero cheizvi.
+# Dudziro "May_" kuzita remwedzi wakazara uye "May" ku,
+# kazhinji tsamba nhatu, chidimbu chemwedzi (se "Oct" ye "Gumiguru").
+#
+# Ini ndashandisa Google kududzira izvi.
+# Inofanirwa kukwana kusvika mutauri wemuno azvionere.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: mhando XXX
+WebCalendar is a PHP application used...: WebCalendar ndeye PHP application inoshandiswa kuchengetedza karenda yemunhu mumwechete kana internet / intranet boka revashandisi. Inogona zvakare kugadziridzwa seyakaitika chiitiko.
+Credits: =
+About: =
+OK: Zvakanaka
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Dhatabhesi kukanganisa: XXX.
+DEFAULT CONFIGURATION: KUSVIRA KWEMAHARA
+Go: Enda
+Save: Sevha
+Undo: Dzokorora
+Public Access: Veruzhinji Kuwana
+Admin: =
+User Access Control: Yekushandisa Yekushandisa Kudzora
+Allow Access to Other Users Calendar: Bvumira Kuwanikwa Kune Vamwe Vashandisi 'Karenda
+Grant This User Access to My Calendar: Ipa Uyu Mushandisi Kuwana kuKarenda Yangu
+Type: =
+Calendar: Karenda
+View Event: Wona Chiitiko
+View: Ona
+Edit: Hora
+Approve/Reject: Bvumira / Ramba
+Events: Zviitiko
+Tasks: Mabasa
+Journals: Magazini
+Can Invite: Unogona Kukoka
+Can Email: Unogona Email
+Can See Time Only: Unogona Kuona Nguva Chete
+Assistant: Mubatsiri
+Select All: Sarudza zvose
+Clear All: Bvisa zvese
+Public: Veruzhinji
+Confidential: Yakavanzika
+Private: Pachivande
+
+########################################
+# Page: activity_log.php
+#
+Next: Inotevera
+Previous: Kare
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Chiitiko XXX chatove pakarenda rako.
+Invalid entry id XXX.: Id isiriyo yekupinda id: "XXX".
+a XXX event may not be added to your calendar: Ichi chiitiko cheXXX uye chingasawedzerwe pakarenda yako.
+confidential: zvakavanzika
+private: zvakavanzika
+Error adding event XXX.: Kukanganisa kuwedzera chiitiko: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Zita rekugadzika risiri iro "XXX".
+Select: Sarudza
+Day: Zuva
+Week: Vhiki
+Month: Mwedzi
+Year: Gore
+Bottom: Pazasi
+Top: Pamusoro
+Anyone: Chero ani
+Participant: Mubatanidzwa
+Settings: Zvirongwa
+Groups: Mapoka
+NonUser Calendars: NonUser Makarenda
+Other: Zvimwe
+Email: =
+Colors: Mavara
+Document background: Gwaro rekumashure
+Document title: Gwaro remusoro
+Document text: Gwaro zvinyorwa
+My event text: Chinyorwa changu chechiitiko
+Table grid color: Tafura gridhi ruvara
+Table header background: Tafura yemusoro kumashure
+Table header text: Tafura yemusoro wenyaya
+Table cell background: Tafura sero kumashure
+Table cell background for current day: Tafura sero kumashure kwezuva ranhasi
+Table cell background for days with events: Tafura sero kumashure kwemazuva nezviitiko
+Table cell background for weekends: Tafura yesero kumashure kwevhiki
+Table cell background for other month: Tafura sero kumashure kweimwe mwedzi
+Week number color: Rudzi rwevhiki svondo
+Event popup background: Chiitiko popup kumashure
+Event popup text: Chiitiko popup zvinyorwa
+System Settings: Zvirongwa zveSystem
+Help: Batsira
+System options: Sarudzo dzesystem
+app-name-help: Inotsanangura zita rekushandisa iro rinozoonekwa mubrowser title bar yemapeji ese uye pane peji rekupinda. Iko kukosha kwaunodoma pano kuchazotariswa kumusoro mufaira rekushandura richikubvumidza iwe kuti upe mazita akasiyana emitauro yakasiyana.
+Application Name: Zita rekushandisa
+Translated Name (XXX): Rakadudzirwa Zita (XXX)
+server-url-help: Inotsanangudza base base yekushandisa. Izvi zvinosanganisirwa pakutumira zviyeuchidzo zveemail uye zviyeuchidzo.
+Server URL: URL yeSeva
+home-url-help: Inotsanangura URL yepamusha yekushandisa. Izvi zvinogona kuve zvemhedziso kana hama
+Home URL: Imba URL
+language-help: Inotsanangura mutauro unoshandiswa.
+Language: Mutauro
+Your browser default language is XXX.: Bhurawuza rako rekutanga mutauro ndi "XXX".
+Allow user to use themes: Rega mushandisi kushandisa madingindira
+themes-help: Inobvumira kuwanda kwemasisitimu ekugadzirisa. Makesi emakesi epasi ndeekushandisa chete.
+Themes: =
+AVAILABLE THEMES: MITAMBO INOWANIKA
+None: Hapana
+Preview: Ongorora
+Site customization: Saiti kugadzirisa
+custom-script-help: Inobvumira kupinda kwetsika Javascript kana mameseji eshiti mavara ayo anozoiswa muHTML "musoro" chikamu chepeji rega rega.
+Custom script/stylesheet: Tsika script / masitayiti
+custom-header-help: Inobvumira yetsika HTML snippet kuverengerwa pamusoro peji rega rega.
+Custom header: Tsika yemusoro
+custom-trailer-help: Inobvumira yetsika HTML snippet kuverengerwa panoperera peji rega rega.
+Custom trailer: Tsika tirera
+enable-external-header-help: Inobvumira iyo tirera yetsika kutakurwa kubva kune rekunze faira
+Allow external file for header/script/trailer: Bvumira rekunze faira remusoro / script / tirera
+Allow user to override header/trailer: Rega mushandisi awedzere musoro / tirera
+Date and Time: Zuva neNguva
+server-tz-help: Inotsanangura kuti mangani maawa ekugadzirisa iyo nguva kubva kuITC kuenda kuseva nguva.
+Server Timezone Selection: Seva Nguva Yenzvimbo Sarudzo
+tz-help: Inotsanangura kuti mangani maawa ekugadzirisa iyo nguva kubva kuITC kuenda kunharaunda yenguva.
+Default Client Timezone Selection: Default Mutengi Nguva Yenzvimbo Sarudzo
+display-general-use-gmt-help: Kana ikabvumidzwa, mazuva akajairwa / nguva zvinoratidzwa seGMT
+Display Common Use Date/Times as GMT: Ratidza Zuva Rekushandisa Zuva / Nguva seGMT
+date-format-help: Inotsanangura fomati yemusi yakasarudzika.
+Date format: Mazuva mafomati
+Small Task Date: Diki Basa Rezuva
+display-week-starts-on: Inotsanangura zuva revhiki iro svondo rinotanga. Kana Muvhuro ukatsanangurwa, saka vhiki dzevhiki dzinozove ISO svondo nhamba.
+Week starts on: Vhiki rinotanga
+display-weekend-starts-on: Inoisa zuva revhiki rekupera kwevhiki kutanga
+Weekend starts on: Kupera kwevhiki kunotanga
+time-format-help: Inotsanangura kuti inguvai fomati yekushandisa:<br><em>12 awa:</em> Ratidza nguva sa3am, 8:30 pm, nezvimwewo<br><em>24 awa:</em> Ratidza nguva se300 , 2030, nezvimwe.
+Time format: Nguva fomati
+12 hour: Maawa gumi nemaviri                                                  
+24 hour: Maawa makumi maviri nemana                                                  
+timed-evt-len-help: Inotsanangura nzira yekuisa yekutarisa kureba kwechiitiko chakatarwa.
+Specify timed event length by: Tsanangura nguva yakatarwa yechiitiko na
+Duration: Nguva
+End Time: Nguva Yokuguma
+work-hours-help: Inotsanangura nguva yenguva yekuratidzira yekutarisa kwezuva.
+Work hours: Maawa ekushanda
+From: Kubva
+to: ku
+Appearance: Chitarisiko
+preferred-view-help: Inotsanangudza iyo yekutarisa (Zuva, Svondo, Mwedzi, kana Gore).
+Preferred view: Maonero akasarudzika
+Allow top menu: Rega menyu yepamusoro
+Date Selectors position: Zuva Sarudzo nzvimbo
+menu-themes-help: Inoisa iwo mavara uye maitiro ezvinyorwa zvepamusoro
+Menu theme: Musoro wemenu
+fonts-help: Inotsanangura rondedzero yemafonti ehurongwa kuti ushandise (senge "Arial, Helvetica")
+Fonts: =
+display-sm_month-help: Kana ikabvumidzwa, inoratidza mashoma mwedzi mukutarisa kwemwedzi
+Display small months: Ratidzai mwedzi mishoma
+display-weekends-help: Sanganisira kupera kwevhiki kana uchiona vhiki.
+Display weekends: Ratidza kupera kwevhiki
+display-long-daynames-help: Kana ikabvumidzwa, mazita ezuva refu anoratidzwa
+Display long day names: Ratidza mazita ezuva refu
+display-alldays-help: Ratidza mazuva apfuura uye anotevera mazuva mukutarisa kwemwedzi, uchizadza maseru ese.
+Display all days in month view: Ratidza mazuva ese mukuona kwemwedzi
+display-week-number-help: Inotsanangudza kana iyo svondo nhamba (1-52) inofanirwa kuratidzwa mukutarisa kwemwedzi uye nekuona kwevhiki.
+Display week number: Ratidza nhamba yevhiki
+display-desc-print-day-help: Sanganisira zviitiko zvechiitiko muprinta-inoshamwaridzika vhezheni yekutarisa kwezuva.
+Display description in printer day view: Ratidza tsananguro muprinta zuva rekuona
+yearly-shows-events-help: Pamaonero egore, ratidza mazuva ane zviitiko zvine mutsindo font.
+Display days with events in bold in month and year views: Ratidza mazuva ane zviitiko zvakashinga mumwedzi uye gore maonero
+display-minutes-help: Kana ikabvumidzwa, maminetsi anopera na: 00 anogara achiratidzwa
+Display 00 minutes always: Ratidza maminetsi 00 nguva dzose
+display-end-times-help: Ratidza chiitiko chekupera nguva kana chiitiko chakatemwa
+Display end times on calendars: Ratidza nguva yekupedzisira pamakendendende
+allow-view-add-help: A '+' Icon ichasanganisirwa mumaonero, ichibvumira vashandisi kukurumidza kuwedzera zviitiko kune vamwe vashandisi makarenda.
+Include add event link in views: Sanganisira wedzera chiitiko chinongedzo mumaonero
+lunar-help: Kana ikabvumidzwa, inoratidza madiki madiki anomiririra mafambiro emwedzi mwedzi wega wega
+Display Lunar Phases in month view: Ratidza maLunar Phase mumwedzi kuona
+Restrictions: Kurambidzwa
+allow-view-other-help: Inotsanangudza kana mushandisi mumwe angaone khalenda yemumwe mushandisi.
+Allow viewing other users calendars: Rega kutarisa mamwe makarenda evamwe
+require-approvals-help: Kana yagoneswa, mushandisi anofanira kubvumidza chiitiko chisati charatidzwa pakarenda yavo (kunze kwekunge Ratidziro risina kubvumidzwa rikabvumidzwa). Cherekedza kumisikidza izvi kuti "Kwete" hakuzodzime mvumo yePublic Access kalendari (kana iyo Ruzhinji Rakarenda rakagoneswa).
+Require event approvals: Inoda kubvumidzwa kwechiitiko
+display-unapproved-help: Inotsanangudza kana zviitiko zvisina kutenderwa zvichiratidzwa mukarenda yako.<br>Kana zvikaiswa kuti "Hongu", zvinoitika zviitiko zvisina kubvumidzwa zvinoratidzwa mukendari yako (mune rimwe mavara mavara).<br>Kana yakagadzirirwa "Kwete", ipapo zviitiko zvisina kubvumidzwa zvinofanirwa kubvumidzwa zvisati zvaratidzwa mukarenda yako.
+Display unapproved: Ratidza kusatenderwa
+conflict-check-help: Tarisa uone kupokana kwezviitiko (zviitiko zviviri zvakarongerwa nguva imwechete kumunhu mumwe chete). Kana iwe ukaisa izvi kuti "Hongu", iwe uchazokwanisa kuronga zviitiko zviviri panguva imwe chete mushure mekusimbisa yambiro. Kana iwe ukaisa izvi kuti "Kwete", hapana kuongororwa kwemakakatanwa kuchaitwa. Iwe ungangoda kumisikidza izvi kuti "Hongu", saka kupokana kuongorora kunoitika.
+Check for event conflicts: Tarisa zviitiko zvekupokana
+Yes: Ehe
+No: Aihwa
+conflict-months-help: Kana kutarisa kunetsana kuripo ("Tarisa zviitiko zvekupokana" zvakagadzirirwa kuti "Kwete" & # 41 ;, izvi zvinotsanangura kuti ingani mwedzi mune ramangwana yatinofanira kutarisa kusawirirana. Kana iwe ukaona uchiwedzera zviitiko zviri kutora nguva yakareba kuti zviitwe , deredzai nhamba iyi.
+Conflict checking months: Kunetsana kutarisa mwedzi
+conflict-check-override-help: Inobvumira vashandisi kudarika kusagadzikana kwezviitiko uye kuronga zviitiko zviviri kana kupfuura panguva imwe chete.
+Allow users to override conflicts: Bvumira vashandisi kudarika kukakavara
+limit-appts-help: Inobvumidza manejimendi wehurongwa kuseta muganho-wakapamhama pasisitimu pane nhamba dzekugadzwa kunoitwa nemushandisi mumwechete pane chero zuva rimwe chete.
+Limit number of timed events per day: Limit nhamba yezviitiko zvakatemwa pazuva
+limit-appts-number-help: Inotsanangura huwandu hwakawanda hwezviitiko zvine nguva mushandisi anogona kuva nazvo nezuva rimwe chete.
+Maximum timed events per day: Zviitiko zvakakurisa nguva pazuva
+crossday-help: Kana ikabvumidzwa, zviitiko zvinotora mazuva zvinoratidzwa pamazuva akapatsanurwa
+Disable Cross-Day Events: Dzima Zviitiko ZveMuchinjikwa
+disable-location-field-help: Kusarudza "Hongu" kuchabvisa iyo "Nzvimbo" munda kubva pamapeji emashoko echiitiko
+Disable Location field: Dzvitsa nzvimbo yeNzvimbo
+disable-url-field-help: Kusarudza "Hongu" kuchabvisa iyo "URL" munda kubva pamapeji ezveruzivo
+Disable URL field: Dzima URL munda
+disable-priority-field-help: Kusarudza "Hongu" kuchabvisa munda "Wekutanga" kubva pamapeji eruzivo rwechiitiko, ichipa chimiro chakareruka chemavara.
+Disable Priority field: Dzima munda wekutanga
+disable-access-field-help: Kusarudza "Hongu" kuchabvisa iyo "Kuwana" munda kubva pamapeji eruzivo rwechiitiko, ichipa chimiro chakareruka chemavara.
+Disable Access field: =
+disable-participants-field-help: Kusarudza "Hongu" kuchabvisa iyo "Vatori vechikamu" munda kubva pamapeji ezviitiko zvechiitiko, kudzivirira vashandisi kubva pakuwedzera vamwe vashandisi kuzviitiko zvavo. Kana iwe ukagonesa iyi sarudzo, ungangoda kudzima iyo iyo "Bvumira kuona mamwe makarenda evamwe" zvakare.
+Disable Participants field: Dzima Vatori vechikamu munda
+disable-repeating-field-help: Kusarudza "Hongu" kuchabvisa iyo "Kudzokorora" munda kana uchiwedzera zviitiko. Izvi zvinopa iri nyore interface yeanovices.
+Disable Repeating field: Regedza Kudzokorora munda
+allow-html-description-help: Kana ikabvumidzwa, vashandisi vanogona kuisa HTML mune inotsanangurwa yechiitiko munda. Kana ikasabvumidzwa, maHTML eHTML anotiza kuti aonekwe seakajeka zvinyorwa. Yambiro: Kugonesa chimiro ichi kuchabvumira vashandisi kunongedza mifananidzo pane mamwe mawebhusaiti.
+Allow HTML in Description: Bvumira HTML muDudziro
+Popups: =
+disable-popups-help: Dzima popups kubva pakarenda maonero
+Disable Pop-Ups: Dzima Pop-Ups
+popup-includes-siteextras-help: Kana ikabvumidzwa, tendera tsika yechiitiko minda kumisikidza saiti_extras.php faira inozoratidzwa mune zvinoitika popups.
+Display Site Extras in popup: Ratidza Saiti Yekuwedzera mune popup
+popup-includes-participants-help: Kana ikabvumidzwa, vatori vechikamu vanoratidzwa mune zvinoitika popups.
+Display Participants in popup: Ratidza Vatori vechikamu mune popup
+Miscellaneous: =
+remember-last-login-help: Kana yagoneswa, kupinda kwemushandisi kunozadzwa mukati mavo pane peji rekupinda (asi kwete pasiwedhi), uye zvido zvemushandisi zvinozotakurwa (kusanganisira mavara avo avanoda uye nesarudzo yemitauro).
+Remember last login: Rangarira yekupedzisira login
+summary_length-help: Kureba kwakanyanya kwePfupiso Rondedzero mumaonero ekarenda
+Brief Description Length: Tsananguro Pfupi Kureba
+user_sort-help: Inosarudza rondedzero yemhando yeMushandisi, Nonuser zvinyorwa
+User Sort Order: Mushandisi Ronga Kurongeka
+Lastname, Firstname: Zita rekupedzisira, Zita rekutanga
+Firstname, Lastname: Zita rokutanga Zita rokupedzisira
+allow-public-access-help: Kana yagoneswa, iyo khalendari inogona kushandiswa seyakaverengwa-chete yeruzhinji khalenda isingade kuti vashandisi vapinde.
+Allow public access: Rega kuruzhinji ruwanikwe
+public-access-default-visible: Zviitiko kubva pakarenda reruzhinji zvinongoerekana zvaonekwa pane ese makarenda evashandisi
+Public access visible by default: Kuwanika kweruzhinji kunoonekwa nekutadza
+public-access-default-selected: Paunenge uchiwedzera chiitiko chitsva, mushandisi weveruzhinji achasarudzwa nekutadza semubatanidzwa.
+Public access is default participant: Ruzhinji rwevanhu kuwana ndeyekutora chikamu
+public-access-view-others-help: Kana iwe ukawana iyo sisitimu neruzhinji kuwana, inotsanangudza kana mushandisi anogona kuona khalendari yeimwe kendari mushandisi.
+Public access can view other users: Veruzhinji vanokwanisa kuona vamwe vashandisi
+public-access-can-add-help: Kana yagoneswa, vashandisi vanowana iyo sisitimu kuburikidza nePublic Access vanozokwanisa kuwedzera zviitiko zvitsva, asi havazowoneka mukendendende kusvikira maneja abvumidza chiitiko chitsva.
+Public access can add events: Kuwanika kweruzhinji kunogona kuwedzera zviitiko
+public-access-add-requires-approval-help: Inotsanangura kana zviitiko zvakawedzerwa kuburikidza neakaundi yekuwana account zvinoda kubvumidzwa zvisati zvaratidzwa.
+Public access new events require approval: Veruzhinji kuwana zviitiko zvitsva zvinoda kubvumidzwa
+public-access-sees-participants-help: Kana ikabvumidzwa, vashandisi vanowana iyo khalendari kubva kuruzhinji account vanozokwanisa kuona vechiitiko vatori vechikamu kana vakaona ruzivo rwechiitiko.
+Public access can view participants: Veruzhinji vanokwanisa kuona vatori vechikamu
+public-access-override-help: Inobvumira mazita echiitiko uye tsananguro kuvanzwa pakarenda yeruzhinji
+Override event name/description for public access: Nyora zita yechiitiko / tsananguro yekuwanikwa neruzhinji
+public-access-override-text-help: Iwo mavara ekuratidzira kana sarudzo iri pamusoro ichigoneswa. Kana 'Isiri Kuwanikwa', inozoshandurwa.
+Text to display to public access: Chinyorwa chekuratidza kuruzhinji
+public-access-captcha-help: Kana ikabvumidzwa, zviitiko zvitsva zvakawedzerwa neRuzhinji zvinoda kupasa kugadziriswa kweCAPTCHA.
+Require CAPTCHA validation for public access new events: Inoda kugadziriswa kweCAPTCHA kweruzhinji kuwana zviitiko zvitsva
+uac-enabled-help: Inogonesa mushandisi-chikamu chekupinda kudzora
+User Access Control enabled: User Access Control inogoneswa
+groups-enabled-help: Inogonesa rutsigiro rweboka, uchibvumira vashandisi kusarudza vashandisi nemapoka.
+Groups enabled: Mapoka akagoneswa
+user-sees-his-group-help: Kana ikabvumidzwa, vashandisi havazoone vashandisi vekarenda vasiri mune rimwe chete remapoka avo.
+User sees only his groups: Mushandisi anoona chete mapoka ake
+nonuser-enabled-help: Kana ikabvumidzwa, maAdmin anozove nesarudzo yekuwedzera asiri makarenda makarenda
+Nonuser enabled: Nonuser Makarenda Akabvumidzwa
+nonuser-list-help: Iko kwekuratidzira isiri makarenda makarenda mune yeanotora chikamu
+Nonuser list: Ratidza muvatori vechikamu rondedzero pa
+Upcoming Events: Sravana Sameeralu Serial 4th Upcoming Events
+upcoming-events-help: Gonesa kuri kuuya.php
+Enabled: Yakagoneswa
+upcoming-events-allow-override: Rega mushandisi paramter yekuuya.php
+Allow user override: Rega mushandisi awedzere
+upcoming-events-display-caticons: Sanganisira maratidziro echikamu mune iri kuuya.php
+Display category icons: Ratidza maikoni echikamu
+upcoming-events-display-layers: Ratidza zvidimbu mune zviri kuuya.php
+Display layers: Ratidza zvidimbu
+upcoming-events-display-links: Ratidza zvinongedzo mukuuya.php
+Display links to events: Ratidza zvinongedzo kuzviitiko
+upcoming-events-display-popups: Ratidza chiitiko popups mune kuri kuuya.php
+Display event popups: Ratidza chiitiko popups
+reports-enabled-help: Kana ikabvumidzwa, vashandisi vanoona chikamu che "Mishumo" pazasi peji rega uye vanozobvumidzwa kugadzira mishumo yetsika Pamusoro pezvo, admin vashandisi vanogona kugadzira mishumo yepasirese inozoonekwa pazasi pemapeji evashandisi vese.
+Reports enabled: Mishumo inogoneswa
+subscriptions-enabled-help: Inotsanangudza kana vashandisi vekunze vanogona kunyorera kune iyo WebCalendar mushandisi khalendari, ichivatendera kuti vaone zviitiko zveWebhuCalendar mushandisi mune yavo ical-inogoneswa application (senge Apple's iCal kana Mozilla Calendar).
+Allow remote subscriptions: Bvumira kunyoreswa kure
+remotes-enabled-help: Inotendera vashandisi kurodha mafaira eic ari kure vachishandisa URL
+Allow remote calendars: Bvumira makarenda ari kure
+rss-enabled-help: Inotsanangudza kana karenda yemushandisi inogona kuwanikwa kubva kuRSS feed.
+Enable RSS feed: Bvumira RSS feed
+categories-enabled-help: Inoita kutsigirwa kwezvikamu zvezviitiko.
+Categories enabled: Zvikamu zvakagoneswa
+icon_upload-enabled-help: Kana ikabvumidzwa, vashandisi vanogona kukanda zvikamu zvechikwata
+Category Icon Upload enabled: Chikamu Icon Kuisa inogoneswa
+(Requires XXX folder to exist.): (Inoda XXX folda kuti ivepo.)
+display-tasks-help: Ratidza diki rebasa hwindo pamwedzi uye zuva rekarenda
+Display small task list: Ratidza diki rebasa runyorwa
+display-tasks-in-grid-help: Ratidza mabasa mumatarenda pamwe nezviitiko
+Display tasks in Calendars: Ratidza mabasa muKarenda
+allow-external-users-help: Inotsanangudza kana musiri-wekarenda mushandisi anogona kuwedzerwa kune chiitiko. Izvi zvinobvumidza vashandisi vasiri-khalendari kuti vanyorwe sevatori vechiitiko.
+Allow external users: Rega vashandisi vekunze
+external-can-receive-notification-help: Kana vashandisi vekunze vakagoneswa uye kushandiswa kweemail kwanogoneswa, vashandisi vekunze vanogamuchira zviziviso zveemail kana chiitiko chikawedzerwa, kuvandudzwa kana kudzimwa (kana kero yeemail yekunze yemumwe ikapihwa)
+External users can receive email notifications: Vashandisi vekunze vanogona kugamuchira zviziviso zveemail
+external-can-receive-reminder-help: Kana vashandisi vekunze vakagoneswa uye kushandiswa kweemail kwanogoneswa, vashandisi vekunze vanogashira zviyeuchidzo zveemail (kana kero yeemail yekunze yakapihwa).
+External users can receive email reminders: Vashandisi vekunze vanogona kugamuchira zviyeuchidzo zveemail
+allow-self-registration-help: Bvumidza vashandisi vatsva kuzvinyoresa ivo pachavo
+Allow self-registration: Rega kuzvinyoresa
+use-blacklist-help: Deredza kuwana WebCalendar mabasa zvinoenderana neIP kero
+Restrict self-registration to blacklist: Chengetedza kuzvinyoresa kune yakasarudzika
+allow-self-registration-full-help: Bvumira vashandisi vatsva kupedzisa yavo yekuzvinyoresa maitiro pa-line
+Use self-registration email notifications: Gadzira mapassword uye tumira kune vashandisi vatsva
+allow-attachment-help: Bvumira vashandisi kuwedzera mafaira ekubatanidza kune zviitiko.
+Allow file attachments to events: Rega mafaira ekubatanidza kune zviitiko
+Admin and owner can always add attachments if enabled.: Admin nemuridzi vanogona kugara vachiwedzera zvinongedzo kana zvichibvumidzwa.
+allow-comments-help: Bvumira vashandisi kuwedzera makomendi kuzviitiko.
+Allow comments to events: Rega zvirevo kuzviitiko
+Admin and owner can always add comments if enabled.: Admin nemuridzi vanogona kugara vachiwedzera makomendi kana zvichibvumidzwa.
+email-enabled-help: Batidza kana kudzima kwese kutumira email kwekuzivisa uye zviyeuchidzo. Gadza kuna "kwete", kana sevha yako isina kunyatso kumisikidzwa kutumira tsamba.
+Email enabled: Email yakagoneswa
+email-default-sender: Inotsanangudza iyo email kero kutsanangura semutumi kana uchitumira zviyeuchidzo.
+Default sender address: Default sender kero
+email-mailer: Sarudza email mhando (SMTP, PHP tsamba, sendmail)
+Email Mailer: =
+email-smtp-host: Hostname (s) yeSMTP server (s) akapatsanurwa nemakoma
+SMTP Host name(s): SMTP Host mazita (s)
+email-smtp-port: SMTP Port Nhamba (kazhinji 25)
+SMTP Port Number: SMTP Port Nhamba
+email-smtp-auth: Shandisa SMTP Kutendeseka
+SMTP Authentication: SMTP Kusimbiswa
+email-smtp-username: SMTP Username kana uchishandisa Kusimbisa
+SMTP Username: =
+email-smtp-password: SMTP password kana uchishandisa Kusimbisa
+SMTP Password: SMTP password
+Default user settings: Zvirongwa zvekushandisa zvevashandisi
+email-format: Tsanangura zvaunofarira zveHTML kana mameseji mameseji
+Email format preference: Email fomati zvaunofarira
+HTML: =
+Plain Text: Rugwaro Rakajeka
+email-include-ics: Sanganisira iCalendar ICS faira kuemail meseji
+Include iCalendar attachments: Sanganisira iCalendar zvakanamatira
+email-event-reminders-help: Inotsanangudza kana kana kutumira zviitiko zvezviitiko.
+Event reminders: Zviitiko zvezviyeuchidzo
+email-event-added: Inotsanangura kana kutumira kana notisi dzeemail kana chiitiko chiwedzerwa kukerenda yako.
+Events added to my calendar: Zviitiko zvakawedzerwa pakarenda yangu
+email-event-updated: Inotsanangudza kuti kana kwete kutumira tsamba dzeemail kana chiitiko chikagadziridzwa pakarenda yako.
+Events updated on my calendar: Zviitiko zvakagadziridzwa pakarenda rangu
+email-event-deleted: Inotsanangura kana kutumira kana notisi dzeemail kana chiitiko chabviswa kubva pakarenda yako.
+Events removed from my calendar: Zviitiko zvakabviswa pakarenda rangu
+email-event-rejected: Inotsanangudza kuti kana kwete kutumira tsamba dzeemail kana mutori wechikamu achiramba chiitiko chiri pakarenda yako.
+Event rejected by participant: Chiitiko chakarambwa nemubatanidzwa
+email-event-create: Inotsanangura kana iye mugadziri wezvinyorwa achizogamuchira email
+Event that I create: Chiitiko chandinogadzira
+Color options: Ruvara sarudzo
+Allow user to customize colors: Rega mushandisi kugadzirisa mavara
+gradient-colors: Kana akagonesa gradient mavara anoshandiswa. Izvi zvinogona kukanganisa kushanda.
+Enable gradient images for background colors: Gonesa gradient mifananidzo yemashure mavara
+Not available: Haisipo
+Background Image options: Background Mufananidzo sarudzo
+bgimage-help: URL yemufananidzo wepashure waunoda. Inogona kunge iri hukama hwehukama.
+Background Image: Mufananidzo weShure
+bgrepeat-help: Kudzora kudzokorora maitiro emufananidzo wepashure.
+Background Repeat: Background Dzokorora
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Vabatsiri
+Preferences: Zvaunoda
+Control Panel: Kudzora Panel
+Users: Vashandisi
+Account: Akaundi
+Categories: Zvikamu
+Views: Maonero
+Layers: Akaturikidzana
+Reports: Mishumo
+Delete Events: Delete Zviitiko
+Activity Log: Chiitiko Rogi
+System Log: Sistimu Log
+Security Audit: =
+Public Preferences: Veruzhinji Zvido
+Unapproved Public Events: Zviitiko Zveruzhinji zvisina kubvumidzwa
+Administrative Tools: Zvekushandisa Zvishandiso
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Dzokorora Zita: "XXX".
+Username XXX already exists.: Username "XXX" yatovepo.
+Email address XXX already exists.: Kero yeemail "XXX" yatovepo.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Zvimwe Zvinyorwa (sarudzo)
+Approve and Send: Bvumira uye Tumira
+Approve and Exit: Bvumira uye Buda
+(Your comments will be emailed to the event creator.): (Makomenti ako achatumirwa neemail kumusiki wechiitiko.)
+Hello, XXX.: Mhoro, XXX.
+XXX has approved an appointment and added comments.: Chirongwa chakatenderwa uye makomendi akawedzerwa neXX.
+Subject XXX: Musoro: "XXX".
+Description XXX: Tsananguro: "XXX".
+Date XXX: Zuva: XXX
+Time XXX: Nguva: XXX
+Comments XXX: Mhinduro: XXX
+Approved w/Comments by XXX.: Yakatenderwa w / Makomendi na: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Admin maitiro
+Your assistants: Vabatsiri vako
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Kanganiso isingazivikanwe.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Chirongwa Chemakanganiso: Hapana XXX yakatsanangurwa!
+user: mushandisi
+year: gore
+month: mwedzi
+day: zuva
+
+########################################
+# Page: category.php
+#
+Category Icon: Chikamu Icon
+Global: Pasi rose
+The permissions for the icons directory are set to read-only: Iwo mvumo yedhairekitori remifananidzo akaisirwa kuverenga-chete.
+Category Name: Chikamu Zita:
+Color: Ruvara
+Remove Icon: Bvisa Icon:
+Add Icon to Category: Wedzera Icon kuChikamu
+Upload: Isa
+GIF or PNG 6kb max: GIF kana PNG 6kb max
+Search for existing icons: Tsvaga mifananidzo iripo
+Add: Wedzera
+Delete: =
+Are you sure you want to delete this entry?: Une chokwadi here kuti unoda kudzima kupinda uku?
+Make New Category: Gadzira Nyowani Chikamu
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Chikamu zita rinodiwa
+File size exceeds maximum.: Saizi yefaira inodarika yakanyanya.
+File is not a GIF or PNG image: Faira harisi GIF kana PNG mufananidzo
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: MABASA ANOGONA
+ENTRY CATEGORIES: KUPINDA MABASA
+Remove: Bvisa
+Global Category: Global Chikamu
+Cancel: Kanzura
+
+########################################
+# Page: colors.php
+#
+Add Custom: Wedzera Tsika
+Basic Colors: =
+Current Color: Ruvara Rwazvino
+Custom Colors: Tsika Colors
+Old Color: Ruvara rwekare
+
+########################################
+# Page: combo.php
+#
+Select None: Sarudza Hapana
+Agenda: =
+Add Task: Wedzera Basa
+Description: Tsananguro
+Date: Zuva
+Time: Nguva
+Priority: Chinonyanya kukosha
+Access: Kuwana
+Created by: Gadzirwa na
+Updated: Yakagadziridzwa
+Participants: Vatori vechikamu
+Attachments: Zvakabatanidzwa
+Comments: Makomendi
+Brief Description: Tsananguro Pfupi
+Full Description: Tsananguro Yakazara
+Category: Chikamu
+Add event detail: Wedzera chiitiko chiitiko
+Start Date: Kutanga Zuva
+Due Date: Zuva racho
+Add task detail: Wedzera basa ruzivo
+All: Zvese
+Error: Kukanganisa
+no response from server: hapana mhinduro kubva kuseva
+JSON error: JSON kukanganisa
+High: Kumusoro
+Medium: Pakati
+Low: Yakadzika
+Today: Nhasi
+Add Entry: Wedzera Kupinda
+Unnamed Event: Chiitiko Chisina Zita
+Unnamed Task: Basa risina zita
+Refresh: Zorodza
+Click to add entry: Dzvanya kuti uwedzere kupinda
+Name: Zita
+pm: =
+am: ndiri
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX yakanzura musangano.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: ID isiriyo yedhibhodhi
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Wedzera Komendi
+Add Attachment: Wedzera Attachment
+Subject: Musoro
+Comment: Komenda
+Upload file: Isa faira
+
+########################################
+# Page: docdel.php
+#
+Removed: Kubviswa
+
+########################################
+# Page: edit_entry.php
+#
+days: mazuva
+hours: maawa
+minutes: maminetsi
+You are not authorized to edit this task.: Hauna mvumo yekugadzirisa basa iri.
+is in a different timezone than you are. Currently: iri munzvimbo yenguva yakasiyana newe. Parizvino
+hour ahead of you: awa pamberi pako
+hour behind you: awa shure kwako
+hours ahead of you: maawa pamberi pako
+hours behind you: maawa kumashure kwako
+XXX is in a different timezone (ahead): (XXX iri mune imwe nguva yenguva; YYY pamberi pako.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX iri mune imwe nguva yenguva; YYY kumashure kwako.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Nguva yakapinda pano inoenderana neTimeZone yako.
+Edit Entry: Rongedza Kupinda
+Details: Nhoroondo
+Repeat: Dzokorora
+Reminders: Zviyeuchidzo
+brief-description-help: Izvi zvinofanirwa kupa tsananguro pfupi (vangangoita makumi maviri mavara) echiitiko. Izvi zvinomiririra chiitiko kana uchiona khalendari.
+full-description-help: Izvi zvinofanirwa kuzadza ruzivo rwechiitiko. Ruzivo urwu runogona kuonekwa kana mushandisi achiona chiitiko.
+access-help: Inotsanangura chiyero chekuwana chechiitiko. <ul> <li> Veruzhinji: Wese munhu anogona kuona zvizere ruzivo rwechiitiko.</li> <li> Chakavanzika: Vamwe vanogona kuona kuti iwe une yekupinda yezuva uye nguva iyoyo, asi kwete ruzivo rwezviri.</li></ul>
+priority-help: Inotsanangura kukosha kwechiitiko. Zviitiko zvepamusoro zvekutanga zvinoratidzwa zvine hushingi.
+category-help: Inotsanangura chikamu chechiitiko.
+completed-help: Zuva rebasa rapera. Inogoneswa chete kana vese vatori vechikamu vakaenzana ne100%.
+Date Completed: Zuva Rakapera
+percent-help: Basa rekupedzisa muzana yemushandisi uyu
+Percent Complete: Percent Yakazara
+All Percentages: Zvikamu zvese
+location-help: Chiitiko nzvimbo
+Location: Nzvimbo
+url-help: Chiitiko URL
+URL: =
+date-help: Inotsanangura musi wechiitiko.
+Untimed event: Unimed chiitiko
+Timed event: Chiitiko chine nguva
+All day event: Chiitiko chezuva rese
+Timezone Offset: Nguva yenguva Yakatemwa
+time-help: Inotsanangura nguva yechiitiko. <ul> <li> "Nguva yakatarwa" (yechiitiko chakarongerwa nguva yakatarwa musi iwoyo)</li> <li> "Chiitiko chisinga zivikanwe" (yechiitiko ichi hachina nguva (sezororo )</li> <li> "Chiitiko chezuva rese" (yechiitiko chinotora zuva rese (sekunge wabuda muhofisi)</li></ul>
+duration-help: Inotsanangura nguva (mumaawa; maminitsi) yechiitiko. <em>Iyi ndima inogona kusiiwa isina chinhu.</em>
+end-time-help: Inotsanangura nguva iyo chiitiko chinotarisirwa kupera.
+Start Time: Kutanga Nguva
+Due Time: Yakakodzera Nguva
+Site Extras: Saiti Yakawedzerwa
+avail_participants-help: Rondedzero vatori vechikamu varipo veiyi kupinda.
+Available: Inowanikwa
+Find Name: Tsvaga Zita
+Resources: Zvishandiso
+participants-help: Anonyora vatori vechikamu chekupinda uku.
+Selected: Sarudzo
+Availability: Kuwanika
+external-participants-help: Inotsanangura runyorwa rwevatori vechikamu chechiitiko chisiri vashandisi vekarenda. Vashandisi vanofanirwa kuverengerwa imwe pamutsetse uye vanogona kusanganisira email kero. Kana kero yeemail ikataurwa, mushandisi anokodzera kugamuchira zviziviso nezviyeuchidzo.
+External Participants: Vokunze Vatori vechikamu
+repeat-type-help: Sarudza kuti chiitiko chacho chinofanira kudzokorora kangani.
+Daily: Mazuva ese
+Weekly: Vhiki nevhiki
+Monthly: Mwedzi wega wega
+by day: masikati
+by date: nezuva
+by position: nechinzvimbo
+Monthly (by day): Mwedzi wega wega (nezuva)
+Monthly (by date): Mwedzi wega wega (nezuva)
+Monthly (by position): Mwedzi wega wega (nechinzvimbo)
+Yearly: Gore negore
+Manual: Chinyorwa
+Expert Mode: Nyanzvi Mode
+repeat-end-date-help: Inotsanangura zuva iro chiitiko chinofanira kudzokorora kusvika.
+Ending: Kupera
+Forever: Zvachose
+Use end date: Shandisa zuva rekupedzisira
+Number of times: Nhamba yenguva
+repeat-frequency-help: Inotsanangura kuti chiitiko chinofanira kudzokorora kangani.
+Frequency: Kakawanda
+Weekdays Only: Mazuva evhiki chete
+Week Start: Kutanga Kwevhiki
+repeat-bydayextended-help: Inotendera zuva kusarudzwa zvichibva nezuva revhiki.
+ByDay: =
+repeat-month-help: Inotsanangura kuti ndedzipi mwedzi chiitiko chinofanira kudzokororwa.
+ByMonth: =
+repeat-bysetpos-help: Inotendera zuva kusarudzwa zvichienderana nenzvimbo ine mwedzi.
+BySetPos: =
+repeat-bymonthdayextended-help: Inotendera zuva kusarudzwa zvichienderana nezuva.
+ByMonthDay: =
+repeat-byweekno-help: Inotendera mushandisi kudoma runyorwa rwemasvondo kudzokorora chiitiko (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Inotendera mushandisi kudoma runyorwa rwemazuva egore kudzokorora chiitiko (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Mamwe mazuva ekuti chiitiko ichi chinofanirwa kana kusafanira kuitika.
+Exclusions: Kusiyiwa
+Inclusions: =
+Add Exception: Wedzera Kunze
+Add Inclusion: Wedzera Kubatanidzwa
+Delete Selected: Delete Akasarudzwa
+Send Reminder: Tumira Chiyeuchidzo
+When: Rini
+Use Date/Time: Shandisa Zuva / Nguva
+Use Offset: Shandisa Offset
+Before: Pamberi
+After: Pashure
+Start: Kutanga
+End/Due: End / Yakakodzera
+Times: Nguva
+Every: Zvese
+CAPTCHA Warning: Yambiro:  Haigone kushandisa CAPTCHA pasina kuwedzerwa kweGD yeGD!<br>
+Delete entry: Delete kupinda
+You are not authorized to edit this entry.: Hauna mvumo yekugadzirisa izvi.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX yaita musangano mutsva.
+XXX has updated an appointment.: XXX yakagadzirisa musangano.
+Security violation!: Kuchengetedzeka kutyorwa!
+You must enter the anti-spam text on the previous page.: Iwe unofanirwa kuisa iyo anti-spam zvinyorwa pane yapfuura peji.
+The following conflicts with the suggested time: Kunotevera kunetsana nenguva yakataurwa
+User removed from participants list.: Mushandisi abviswa pane vatori vechikamu runyorwa.
+Please look on XXX to accept or reject this appointment.: Ndokumbira utarise paXX kuti ubvume kana kuramba musangano uyu.
+Please look on XXX to view this appointment.: Ndokumbira utarise paXXX kuti uone musangano uyu.
+Scheduling Conflict: Kuronga Kurwisana
+Your suggested time of: Yako nguva yakataurwa ye
+conflicts with the following existing calendar entries: inopesana nezvinotevera zviripo karenda
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX haina kuiswa mu "config.php".
+word characters only: (inogona kungova nemavara ezvinyorwa; [a-zA-Z_0-9])
+Add User: Wedzera Mushandisi
+Edit User: Hora Mushandisi
+Calendar ID: Karenda ID
+First Name: Zita rokutanga
+Last Name: Zita rokupedzisira
+Is public calendar: Karenda yeruzhinji
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Dhatabhesi kukanganisa
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Wedzera Remote Karenda
+Edit Remote Calendar: Rongedza Remote Calendar
+Create Layer: Gadzira Rukoko
+Reload: Dzokazve
+Required to View Remote Calendar: Inodikanwa Kuona Remote Karenda
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Tumira Zvabuda
+Events successfully imported: Zviitiko zvinobudirira kupinzwa
+Create a new layer to view this calendar.: Gadzira nyowani nyowani kuti uone iyi khalenda.
+Errors: Zvikanganiso
+There was an error parsing the import file or no events were returned.: Panga paine kukanganisa kutamisa iyo yekungenisa faira kana pasina zviitiko zvakadzoserwa.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Mangwana
+Yesterday: Nezuro
+Day before yesterday: Kuswera nezuro
+Next week: Vhiki rinotevera
+This week: Vhiki rino
+Last week: Vhiki rapera
+Week before last: Vhiki pamberi pekupedzisira
+Next week and week after: Vhiki inotevera uye vhiki rinotevera
+This week and next week: Vhiki rino uye rinotevera svondo
+Last week and this week: Vhiki rapera uye vhiki rino
+Last two weeks: Mavhiki maviri apfuura
+Next month: Mwedzi unouya
+This month: Mwedzi uno
+Last month: Mwedzi wapfuura
+Month before last: Mwedzi pamberi pekupedzisira
+Next year: Gore rinouya
+This year: Gore rino
+Last year: Gore rapera
+Year before last: Gore pamberi pekupedzisira
+Next 14 days: Mazuva anotevera gumi nemana
+Next 30 days: Mazuva makumi matatu anotevera
+Next 60 days: Mazuva makumi matanhatu anotevera
+Next 90 days: Mazuva anotevera makumi mapfumbamwe
+Next 180 days: Anotevera 180 mazuva
+Next 365 days: Mazuva anotevera makumi matatu neshanu
+Invalid report id XXX.: ID isiriyo: "XXX".
+Unnamed Report: =
+Add Report: Wedzera Chirevo
+Edit Report: Rongedza Chirevo
+Report name: Taura zita
+User: Mushandisi
+Current User: Wazvino Mushandisi
+Include link in menu: Sanganisira chinongedzo mumenu
+Include standard header/trailer: Sanganisira yakajairwa musoro / tirera
+Include previous/next links: Sanganisira zvakapfuura / zvinotevera zvinongedzo
+Include empty dates: Sanganisira misi isina chinhu
+Date range: Zuva renhamba
+Template variables: Matemplate akasiyana
+Page template: Peji template
+Day template: Zuva template
+Event template: Chiitiko template
+Are you sure you want to delete this report?: Une chokwadi here kuti unoda kudzima chirevo ichi?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Hakuna yakadaro id id: "XXX".
+Variable XXX not found.: Variable XXX haina kuwanikwa.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Rongedza Tsika Yemusoro
+Edit Custom Script/Stylesheet: Rongedza Tsika Chinyorwa / Stylesheet
+Edit Custom Trailer: Rongedza Tsika Trailer
+
+########################################
+# Page: edit_user.php
+#
+Username: =
+E-mail address: Chikero chetsamba yemumhepo
+Password: Pasiwedhi
+again: zvakare
+Disabled for demo: Akaremara demo
+Are you sure you want to delete this user?: Une chokwadi here kuti unoda kudzima uyu mushandisi?
+Change Password: Chinja password
+New Password: Nyowani Nyowani
+Set Password: =
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Kubvisa vashandisi hakuna kutsigirwa.
+The passwords were not identical.: Iwo mapassword anga asina kufanana.
+You have not entered a password.: Iwe hauna kuisa password.
+Username cannot be blank.: Username haigone kuve isina chinhu.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Kwete mvumo
+
+########################################
+# Page: export.php
+#
+Export: =
+Export format: Export fomati
+Include all layers: Sanganisira matanda ese
+Include deleted entries: Sanganisira zvakadzimwa zvinyorwa
+Export all dates: Tumira kunze kwemazuva ese
+Start date: Kutanga zuva
+End date: Zuva rekuguma
+Modified since: Yakagadziridzwa kubvira
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: Export fomati haina kutsanangurwa kana isiriyo.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Hapana mushandisi ataurwa.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Wedzera Boka Nyowani
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Asina zita Boka
+Add Group: Wedzera Boka
+Edit Group: Hora Boka
+Group name: Zita reboka
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Iwe unofanirwa kudoma zita reboka
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Auto-zorodza makarenda
+auto-refresh-help: Kana yagoneswa, iyo yekutarisa kwezuva, kuona kwevhiki, kuona kwemwedzi, uye nyora mapeji asina kubvumidzwa anozozvimisikidza ega nguva nenguva.
+Auto-refresh time: Auto-zororo nguva
+auto-refresh-time-help: Kana Auto-zororo rogoneswa, izvi zvinotsanangura nguva iri pakati pega yega yekuzorodza.
+Display days with events in bold in year view: Ratidza mazuva ane zviitiko zvakashinga mukutarisa kwegore
+Display weekends in week view: Ratidza kupera kwevhiki mukutarisa kwevhiki
+Time interval: Nguva yenguva
+time-interval-help: Inotsanangura kuti nguva inovharika sei muvhiki uye maonero ezuva.
+Nonuser: Nonuser Makarenda
+user-customize-color: Inotsanangura kana vashandisi vanobvumidzwa kushandura yavo yega scheme.
+enable-gradient-help: Shandisa gradient mavara emaseru kumashure.
+Manually entering color values: Nemaoko kupinda mavara etsvarakadenga
+colors-help: Mavara ese anofanirwa kutsanangurwa mu "#RRGGBB" hexadecimal fomati panonzi "RR" iyo hex kukosha kweyekundu, "GG" ndiyo hex kukosha kwegirini, uye "BB" ndiyo hex kukosha kwebhuruu.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Mhan'ara Bug
+Please include all the information below when reporting a bug.: Ndokumbirawo ubatanidze ruzivo rwese pazasi kana uchimhan'arira bug.
+Also, please use English rather than XXX.: Zvakare, ndapota shandisa  Chirungu  pane XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar Zvinyorwa
+Currently in English only.: Parizvino muChirungu chete.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Kuwedzera / Kugadzirisa Karenda Mapinda
+Repeat Type: Dzokorora Rudzi
+For More Information...: Kuti Uwedzere Ruzivo ...
+Repeat End Date: Dzokorora Zuva Rekupedzisira
+Repeat Day: Dzokorora Zuva
+repeat-day-help: Inodudzira kuti ndeapi mazuva evhiki chiitiko chinofanira kudzokororwa.
+
+########################################
+# Page: help_import.php
+#
+Import: Tumira
+Palm Desktop: =
+allow you to import entries from the Palm...: Fomu iri rinokutendera kuti uunze zvinyorwa kubva kuPalm Desktop Datebook. Inofanira kunge iri mune yako Palm dhairekitori mu datebook / datebook.dat mune subdirectory inonzi neako zita rezita.
+The following entries will not be imported: Izvi zvinotevera hazvizoendeswa kunze:
+Entries older than the current date: Mapinda akura kupfuura zuva razvino
+Entries created in the Palm Desktop...: Mapinda akagadzirwa muPalm Desktop iyo yanga isiri HotSync'd
+Anything imported from Palm...: Chero chinhu chinounzwa kubva kuPalm chicha nyorwa pasi panguva inotevera kuendesa (kunze kwekunge musi wechiitiko wapfuura). Naizvozvo, zvigadziriso zvinofanirwa kuitwa muPalm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Iyi fomu ichatumira vCalendar (.vcs) 1.0 zviitiko.
+The following formats have been tested: Aya mafomati akaedzwa.
+This form will import iCalendar (.ics) events.: Iyi fomu inozounza iCalendar (.ics) zviitiko.
+Enabling: Kugonesa
+Overwrite Prior Import: Nyora Pasati Pinda
+will cause events imported previously...: inokonzera zviitiko zvakatumirwa kare, izvo zvakashandisa iyo iyo UID sechiitiko kubva kune nyowani faira rekupi, kumakwa sekubviswa. Izvi zvinofanirwa kubvumidza yakagadziriswa iCalendar faira kuunzwa kunze kwekugadzira zvakapetwa.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Indekisi Yokubatsira
+About WebCalendar: Nezve WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Zvidimbu zvinobatsira pakuratidza zvimwe zviitiko zvevashandisi pakarenda yako wega. Iwe unogona kudoma mushandisi uye neruvara zviitiko zvinozoratidzwa mukati.
+Add/Edit/Delete: Wedzera / Hora / Delete
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Kudzvanya iyo Rongedza Matanho link muchikamu che admin pazasi peji rinokutendera iwe kuwedzera / kugadzirisa / kudzima materu.
+The text color of the new layer that will be displayed in your calendar.: Ruvara rwemavara rweiyo nyowani nyowani inozoratidzwa mukarenda yako.
+Disabling: Kuremadza
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Dhinda iyo Disable Layers link muchikamu che admin pazasi pepeji kudzima materu.
+Duplicates: Dzakadzokororwa
+If checked, events that are duplicates of your events will be shown.: Kana zvikaongororwa, zviitiko zvakadzokororwa zvezviitiko zvako zvinoratidzwa.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Dhinda iyo Enable Layers chinongedzo muchikamu che admin pazasi peji kuti uvhure matara.
+Source: Kunobva
+Specifies the user that you would like to see displayed in your calendar.: Inotsanangudza mushandisi waungade kuona achiratidzwa mukarenda yako.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Default Chikamu
+default-category-help: Inotsanangura chikamu chiitiko chitsva chinofanira kutadza kuita.
+When I am the boss: Kana ndiri ini shefu
+Email me event notification: Nditumire email chiitiko chechiitiko
+email-boss-notifications-help: Inotsanangudza kana vakuru vebasa vanogamuchira maemail sezviitiko zvezviitiko
+I want to approve events: Ndiri kuda kubvumidza zviitiko
+boss-approve-event-help: Inotsanangudza kuti shefu anodiwa here kubvumidza zviitiko zvakawedzerwa nevabatsiri.
+Subscribe/Publish: Nyorera / Shambadza
+Allow remote publishing: Bvumira kutsikisa kure
+allow-remote-publishing-help: Inotsanangudza kana iri kure iCal mutengi inokwanisa kushambadza zviitiko kudzokera kuWebhuCalendar
+remote-publishing-url-help: Inotaridza iyo URL yekushandisa muICal mutengi kunyorera kune ese ari maviri kunyorera uye kutsikisa kudzoka kuWebhuCalendar.
+allow-remote-subscriptions-help: Inotsanangudza kana vashandisi vekunze vanogona kunyorera kukarenda yako, vachivabvumidza kuti vaone zviitiko zvako muICal-inogoneswa kunyorera (senge Apple's iCal kana Mozilla Calendar).
+remote-subscriptions-url-help: Inoratidzira iyo URL iri kure vashandisi vanofanirwa kushandisa kunyorera kune yako karenda.
+Enable FreeBusy publishing: Bvumira kushambadzira kweFreeBusy
+freebusy-enabled-help: Inotsanangura kana nguva yemushandisi iripo inogona kuwanikwa uchishandisa iyo iCal FreeBusy standard.
+freebusy-url-help: Iyo URL yekuwana yemushandisi yeFreeBusy runyorwa
+rss-feed-url-help: Iyo URL yekuwana iyo RSS feed
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Inobvumira kutonga kwakanaka kwekushandisa kwevashandisi uye mvumo. Vashandisi vanogona zvakare kupa default uye pamunhu mvumo kana vakatenderwa nemaneja.
+If disabled, this user cannot send you emails.: Kana akaremara, uyu mushandisi haakwanise kukutumira maemail.
+If disabled, this user cannot see you in the participants list.: Kana akaremara, uyu mushandisi haakwanise kukuona iwe mune runyorwa rwevatori vechikamu.
+If enabled, this user cannot view the details of any of your entries.: Kana akagoneswa, uyu mushandisi haakwanise kuona ruzivo rwechero chipi zvacho chako.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Kuburitsa Akaremara (Admin)
+Publishing Disabled (User): Kuburitsa Akaremara (Mushandisi)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Dzvanya kuti Sarudza
+Current Icons on Server: Zviratidzo Zvezvino pane Server
+
+########################################
+# Page: import.php
+#
+import from file: kupinza kubva kufaira
+Disabled: Akaremara
+Import format: Tumira mafomati
+Exclude private records: Bvisa zvakavanzika zvinyorwa
+Repeated items are imported separately. Prior imports are not overwritten.: Zvinhu zvinodzokororwa zvinotengwa zvakasiyana. Kutenga kunze kusati kwanyorwa.
+
+########################################
+# Page: import_handler.php
+#
+No file: Hapana faira
+Error deleting palm events from webcalendar.: Kukanganisa kudzima zviitiko zvechindwe kubva pawebhusaiti.
+Events from prior import marked as deleted: Zviitiko kubva pamberi pekunze zvakaratidzirwa sekubviswa
+Conflicting events: Zviitiko zvinopesana
+The import file contained no data.: Iyo yekuisa faira yaive isina data.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Une chokwadi here kuti unoda kudzima dura iri?
+Delete layer: =
+Edit layer: Rongedza rukoko
+Enable layers: Gonesa matanda
+Layer: Rukoko
+Layers are currently disabled.: Matanda akaremara parizvino.
+Layers are currently enabled.: Zvivakwa parizvino zvinogoneswa.
+Click to modify layers settings for XXX: Dzvanya apa kuti ushandure marongero ematanho ekendendari yeXXX.
+Disable Layers: =
+Add layer: Wedzera rukoko
+Add Layer: Wedzera Rukoko
+Edit Layer: Rongedza Rukoko
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Haikwanisi kugadzirisa zvido
+Invalid entry id.: Id isiriyo yekupinda.
+You cannot create a layer for yourself.: Iwe haugone kuzvigadzirira wega.
+You can only create one layer for each user.: Iwe unogona chete kugadzira imwechete yakaturikidzana kune yega mushandisi
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Bvumira / Simbisa
+Approve Selected: Bvumira Zvakasarudzwa
+Check All: Tarisa Zvese
+Emails Will Not Be Sent: Emails Haazotumirwe
+Reject Selected: Ramba Sarudzo
+Reject: Ramba
+Uncheck All: Uncheck Zvese
+View this entry: Wona iyi yekupinda
+No unapproved entries for XXX.: Hapana zvinyorwa zvisingatenderwe zve: "XXX".
+Unapproved Entries: Mapindiro Asina Kubvumidzwa
+Approve this entry?: Bvumira kupinda uku?
+Reject this entry?: Ramba iyi yekupinda?
+Approve Selected entries?: Bvumira Zvakasarudzwa?
+Reject Selected entries?: Ramba zvinyorwa Zvakasarudzwa?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Unofanira kupinda Login uye pasiwedhi.
+Save login via cookies so I dont have to login next time.: Sevha kupinda kuburikidza nemakuki saka ini handifanire kupinda nguva inotevera
+Login: =
+public: pachena
+Access XXX calendar: Tsvaga XXX kalendari
+cookies-note: Ongorora: Ichi chishandiso chinoda kuti makuki agoneswe.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Mavara asiri epamutemo mukupinda XXX.
+Invalid login: Kunyoresa zvisiri izvo
+Activity login failure: =
+Error XXX: Kukanganisa: "XXX".
+You have been logged out.: Wakabudiswa kunze.
+Access public calendar: Famba karenda yeruzhinji
+Not yet registered? Register here!: Hausati wanyoreswa? Bhalisa pano!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Hakuna yakadaro nonuser karenda: "XXX".
+This Calendar is not Public.: Iyi Karenda haisi Ruzhinji.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Wedzera Nyowani Isingashandisi Karenda
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Chinongedzo chinofanirwa kudomwa.
+No such nonuser calendar: Hakuna yakadaro nonuser karenda
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Dingindira risiri iro
+Save Preferences: Sevha Zvaunoda
+Public Access calendar: Veruzhinji Kuwana karenda
+Modify Non User Calendar Preferences: Chinja Asina Mushandisi Karenda Zvekuda
+Return to My Preferences: Dzokera kune Zvangu Zvandinoda
+Custom Scripts: Tsika Zvinyorwa
+Timezone Selection: Nguva yenguva Sarudzo
+Multiview: =
+entry-interval-help: Inoisa nguva yeminiti kana uchigadzirisa nguva yekupinda
+Entry interval: Nguva yekupinda
+hour: awa
+minute: Mineti
+theme-reload-help: Nekuda kwe CSS caching, peji reload zvakare rinogona kudikanwa
+Page may need to be reloaded for new Theme to take effect: Peji ingangoda kuiswazve kuti Musoro mutsva utange kushanda
+display_byproxy-help: Ratidza iye chaiye musiki pane view_entry peji
+Display if created by Assistant: Ratidza kana yakagadzirwa naMubatsiri
+allow-view-subscriptions-help: Inobvumira kudzora kupinda kure kune zvakavanzika kana zvakavanzika zvinyorwa
+Allow remote viewing of: Rega kutarisa kure kwe
+entries: zvinyorwa
+
+########################################
+# Page: purge.php
+#
+Purging events for: Kuchenesa zviitiko zve
+Finished: Yapera
+Back: Kudzoka
+Check box to delete ALL events for a user: Tarisa bhokisi kudzima  ZVESE  zviitiko zvemushandisi
+Delete all events before: Delete zviitiko zvese zvisati zvaitika
+Purge deleted only: Kuchenesa kwakabviswa chete
+Preview delete: Preview zvinomuomera kuikanganwa
+Are you sure you want to delete events for: Une chokwadi here kuti unoda kudzima zviitiko zve
+Records deleted from XXX: Rekodhi dzadzimwa kubva ku "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Kero yeemail haigone kuvharwa.
+Username already exists.: Username yatovepo.
+Email address already exists.: Kero yeemail yatovepo.
+New user via self-registration.: Mushandisi mutsva kuburikidza nekuzvinyoresa wega.
+A new WebCalendar account has been set up for you.: Iyo itsva WebCalendar account yakagadzirirwa iwe.
+Your username is XXX.: Zita rako rekushandisa ndere: "XXX".
+Your password is XXX.: Pasiwedhi yako ndeiyi: "XXX".
+Please visit XXX to log in and start using your account!: Ndokumbira kuti ushanyire "XXX" kuti upinde uye utange kushandisa account yako!
+You may change your password after logging in the first time.: Unogona kushandura password yako mushure mekutema nguva yekutanga.
+If you received this email in error: Kana iwe wakagamuchira iyi email mukukanganisa uye ukasaina kusaina account yeWebhuCalendar, unogona kuzvidza chiziviso ichi, kana kupindura nekatsamba kapfupi
+Administrator: =
+Welcome: Mauya
+New user via email.: Mushandisi mutsva kuburikidza neemail.
+Registration: Kunyoresa
+Welcome to WebCalendar: =
+Your email should arrive shortly.: Email yako inofanira kusvika munguva pfupi.
+Return to Login screen: Dzokera ku Login skrini
+Password (again): Pasiwedhi (zvakare):
+Your account information will be emailed to you.: Yako account nhoroondo ichatumirwa kwauri.
+Submit: Tumira
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Enderera
+(Your comments will be emailed to the other participants.): (Makomenti ako achatumirwa kune vamwe vatori vechikamu.
+XXX has rejected an appointment.: XXX yaramba musangano.
+Rejected by XXX.: Yakarambwa naXXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Wedzera Nyowani Remote Karenda
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Ichi chiitiko chakavanzika.
+(Private): (Yakavanzika)
+(cont.): (pfuurira.)
+Approved: Yakatenderwa
+Deleted: Dzadzimwa
+Rejected: Kurambwa
+Waiting for approval: Kumirira kubvumidzwa
+Unknown: Hazvizivikanwe
+Invalid report id.: ID isiriyo.
+Click here to manage reports for the Public Access calendar.: Dzvanya apa kuti utore mishumo yePublic Access kalendari.
+Add new report: Wedzera mushumo mutsva
+Manage Reports: =
+
+########################################
+# Page: search.php
+#
+Advanced Search: Kutsvaga Kwakadzama
+Search: Tsvaga
+Keywords: Mazwi akakosha
+Enter % for all entries: Pinda% yezvese zvinyorwa
+Include: Sanganisira
+Filter by Date: Sefa nezuva
+All Dates: Mazuva ese
+Past: Kare
+Upcoming: Sravana Sameeralu Serial 4th Upcoming
+Range: =
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Iwe unofanirwa kuisa rimwe kana akawanda mazwi ekutsvaga.
+Search Results: Kutsvaga Zviwanikwa
+match found: mutambo wawanikwa
+matches found: machisi akawanikwa
+No matches found: Hapana mimwe mitambo yakawanikwa
+New Search: Kutsvaga kutsva
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Ruzivo rwuri pazasi runoronga zvingangoitika nenyaya neWebhu yako yeKokisheni yekumisikidza iyo inogona kuchinjwa kuita kuti kuiswa kwako kuve kwakachengeteka.
+For questions about WebCalendar security see the forums: Kune mibvunzo nezve chero WebCalendar yekuchengetedza nyaya, ndapota shandisa iyo WebCalendar maforamu akaitirwa paGitHub.com;<br>XXX
+View your current PHP settings: Wona yako yazvino PHP marongero
+Security Issue: Nyaya Yekuchengetedza
+Status: Chinzvimbo
+Default admin user password: Default admin mushandisi password
+You should change the password of the default admin user.: Iwe unofanirwa kushandura password yeiyo default admin mushandisi.
+File permissions XXX: Mvumo yefaira: XXX
+item XXX should not be writable: Chinhu chinotevera hachifanirwe kunyorwa:<br><tt> XXX</tt>
+File exists XXX: Faira riripo: "XXX"
+Because you have email disabled, you should remove this file.: Nekuti une email yakaremara, unofanirwa kubvisa iri faira.
+File location XXX: Nzvimbo yefaira: "XXX"
+remove XXX if not using: Kana usiri kushandisa faira "XXX", unofanirwa kuidzima. Kana, zvirinani, zviendese kune dhairekitori idzva.
+System Settings XXX: Zvirongwa zveSystem: "XXX"
+consider enabling UAC: Ungangoda kufunga kugonesa Mushandisi Yekushandisa Kudzora kumisikidza rombo remushandisi.
+recommend approving new public events: Isu tinokurudzira kuti zvese zvechiitiko zveveruzhinji zvibvumidzwe.
+recommend using CAPTCHA: CAPTCHA inokurudzirwa kuchengetedza againt automated chiitiko kutumira.
+Database cache directory location: Dhatabhesi cache dhairekitori nzvimbo
+db cache should be inaccessable: Iyo dhatabhesi cache inofanirwa kunge iri mudhairekitori isingakwanise kuwanikwa ne URL.
+PHP Settings XXX: PHP Zvirongwa: "XXX"
+recommend setting XXX Off: Marongero anokurudzirwa e "XXX" abviswa.
+recommend setting allow_url_fopen Off: Mamiriro ekurudziro e "allow_url_fopen" abviswa kana makarenda ekure asina kubvumidzwa.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Wona Imwe Karenda Yemushandisi
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Iwe hauna kuwedzera chero zvikamu.
+Set Category: Gadza Chikamu
+Global Categories cannot be changed.: Global zvikamu hazvigone kuchinjwa.
+
+########################################
+# Page: upcoming.php
+#
+more: zvimwe
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Makarenda Ari Kure
+denotes administrative user: Inoreva mushandisi wekushandisa
+Add New User: Wedzera Nyowani Mushandisi
+
+########################################
+# Page: usersel.php
+#
+form: fomu
+Reset: Dzorera zvakare
+
+########################################
+# Page: views.php
+#
+Add New View: Wedzera Nyowani Nyowani
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Isina zita Rekutarisa
+Add View: Wedzera Kuona
+Edit View: Hora Kutarisa
+View Name: Tarisa Zita
+View Type: Tarisa Rudzi
+Day by Time: Zuva neNguva
+Week (Users horizontal): Vhiki (Vashandisi vakatwasuka)
+Week by Time: Vhiki nenguva
+Week (Users vertical): Vhiki (Vashandisi vakatwasuka)
+Week (Timebar): Vhiki (Timebar)
+Month (Timebar): Mwedzi (Timebar)
+Month (side by side): Mwedzi (padivi nerutivi)
+Month (on same calendar): Mwedzi (pakarenda rimwe chete)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Iwe unofanirwa kudoma zita rekutarisa
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Hapana vashandisi veichi chiono.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Gadziridza Task Percentage
+Completed: Zvapera
+Assistant mode: Mubatsiri muoti
+Declined: Yakaramba
+Needs-Action: Zvinodiwa-Chiito
+by: =
+Percentage Complete: Percentage Yakazara
+External User: Mushandisi Wekunze
+Update: Kwidziridza
+at: pa
+comments: makomendi
+Show: Ratidza
+Hide: =
+Approve/Confirm entry: Bvumira / Simbisa kupinda
+Reject entry: Ramba kupinda
+Set category: Seta chikamu
+Add to My Calendar: Wedzera kuKarenda Yangu
+Copy entry: Kopa kupinda
+This will delete this entry for all users.: Izvi zvinodzima iyi yekupinda yevashandisi vese.
+Edit entry: Rongedza kupinda
+Edit repeating entry for all dates: Rongedza kudzokorora kupinda kwemazuva ese
+Delete repeating event for all dates: Delete inodzokorora chiitiko chemazuva ese
+Edit entry for this date: Rongedza kupinda kwezuva iri
+Delete entry only for this date: Delete yekupinda chete yezuva rino
+Delete entry from calendar of XXX: Delete yekupinda kubva pakarenda yeXXX
+This will delete the entry from your XXX calendar.: Izvi zvinodzima iyo yekupinda kubva kune yako XXX khalendari.
+boss: mukuru '
+This will delete the entry from your boss calendar.: Izvi zvinodzima iyo yekupinda kubva kune yako 'khalendara.
+This will delete the entry from your calendar.: Izvi zvinodzima iyo yekupinda kubva pakarenda yako.
+from your boss calendar: kubva pakarenda remukuru wako
+Do you want to add this entry to your calendar?: Iwe unoda here kuwedzera uku kupinda kukarenda yako?
+This will add the entry to your calendar.: Izvi zvichawedzera kupinda kukarenda yako.
+Email all participants: Tumira email vese vatori vechikamu
+Hide activity log: Viga chiitiko cherogi
+Show activity log: Ratidza chiitiko chebasa
+Export this entry to: Tumira kunze uku kupinda ku
+Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Tinya kaviri pasero risina chinhu kuti uwedzere mutsva.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Kupinda kutsva
+cont.: =
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Imwe Karenda Yemushandisi
+Category Management: Chikamu Management
+Day View: =
+Edit Event: Hora Chiitiko
+Month View: Mwedzi Wakatarisa
+Common Trailer: Yakajairwa Trailer
+User Management: Mushandisi Management
+Manage Views: =
+Week View: Svondo Kuona
+Year View: =
+Invalid function id: Haushandi id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Hatina kuwana "settings.php" faira.
+Incomplete settings.php file...: Faira isina kukwana "settings.php" ...
+Could not find XXX defined in...: Haukwanise kuwana "XXX" yakatsanangurwa mufaira rako re "settings.php".
+You must define XXX in: Iwe unofanirwa kutsanangura "XXX" mu "settings.php" faira.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Zvita
+Dec: Zvita
+LANGUAGE DEFINED: MUTAURO WAKATSANANGURWA
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Kanganiso yekubatanidza kudhatabhesi: "XXX".
+db_type not defined.: db_type haina kutsanangurwa.
+invalid db_type XXX: zvisina kufanira db_type "" XXX ".
+Cache cleared from previous SQL!: Cache yakabviswa kubva yapfuura SQL!
+Error executing query.: Paita kukanganisa kubvunza.
+Unfortunately, XXX is not implemented for YYY: Nehurombo, "XXX" haina kuitirwa (YYY).
+Unknown ODBC error.: Yisingazivikanwe ODBC kukanganisa.
+Error opening cache dir XXX.: Kanganiso yekuvhura cache dir "XXX".
+delete: bvisa
+Cache error Could not XXX file YYY.: Cache kukanganisa: Haikwanise XXX faira "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Kanganiso Inouraya
+Invalid data format for: Fomati yedhata isiriyo ye
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Kanganiso: Type haina kusetwa yechiitiko chebasa!
+This event is XXX.: Ichi chiitiko iXX.
+Conf.: =
+exceeds limit of XXX events per day: inodarika muganho wezviitiko zveXX pazuva
+on: =
+All Attendees: Vese Vanopinda
+Busy: Kubatikana
+Tentative: Kufungisisa
+Schedule an appointment for XXX.: Ronga musangano weXX: YYY.
+date_select: =
+Event approved: Chiitiko chakabvumidzwa
+Journal approved: Zvinyorwa zvinobvumidzwa
+Task approved: Basa rakabvumidzwa
+Attachment: Zvakabatanidzwa
+Event created: Chiitiko chakagadzirwa
+Journal created: Zvinyorwa zvakagadzirwa
+Task created: Basa rakagadzirwa
+Event deleted: Chiitiko chakabviswa
+Journal deleted: Zvinyorwa zvakadzimwa
+Task deleted: Basa rakabviswa
+New user via email (self registration): Mushandisi mutsva kuburikidza neemail (kuzvinyoresa)
+New user (self registration): Mushandisi mutsva (kuzvinyoresa)
+Notification sent: Notification yakatumirwa
+Event rejected: Chiitiko chakarambwa
+Journal rejected: Zvinyorwa zvakaramba
+Task rejected: Basa rakarambwa
+Reminder sent: Chiyeuchidzo chakatumirwa
+Event updated: Chiitiko chakavandudzwa
+Journal updated: Zvinyorwa zvakagadziridzwa
+Task updated: Basa rakavandudzwa
+Delete User: Delete Mushandisi
+WK: =
+TASKS: MABASA
+Task_Title: Musoro
+Due: Yakakodzera
+Task Name: Zita rebasa
+Task Due Date: Basa Rakafanira Zuva
+You have XXX unapproved entries: Une zvinyorwa zvisingatenderwi zveXXX 
+Changes successfully saved: Shanduko dzakabudirira kuchengetwa
+Event: Chiitiko
+Action: Chiito
+Printer Friendly: Printer Shamwari
+Generate printer-friendly version: Gadzira shanduro-inoshamwaridzika vhezheni
+after: mushure
+before: pamberi
+end: magumo
+start: tanga
+View this event: Wona chiitiko ichi
+View this task: Wona iri basa
+January: Ndira
+February: Kukadzi
+March: Kurume
+April: Kubvumbi
+May_: Chivabvu
+June: Chikumi
+July: Chikunguru
+August: Nyamavhuvhu
+September: Gunyana
+October: Gumiguru
+November: Mbudzi
+Jan: Ndira
+Feb: Kukadzi
+Mar: Kurume
+Apr: Kubvumbi
+May: Chivabvu
+Jun: =
+Jul: =
+Aug: =
+Sep: =
+Oct: Gumiguru
+Nov: Mbudzi
+SU: =
+MO: =
+TU: =
+WE: =
+TH: =
+FR: =
+SA: =
+unknown-month: asingazivikanwe-mwedzi
+First Quarter Moon: Chekutanga Quarter Mwedzi
+Full Moon: Mwedzi uzere
+Last Quarter Moon: Yekupedzisira Quarter Mwedzi
+New Moon: Mwedzi mutsva
+Error TIME_SLOTS undefined!: Kanganiso: TIME_SLOTS isina kujekeswa!
+The following error occurred: Iko kukanganisa kunotevera kwakaitika
+You are not authorized.: Hauna mvumo.
+Add N hours to: Wedzera N maawa ku
+Subtract N hours from: Bvisa N maawa kubva
+same as: zvakafanana ne
+server time: nguva ye server
+Cannot read timezone file XXX.: Haugone kuverenga nguva yenguva faira: XXX.
+Your current GMT offset is XXX hours.: Yako yazvino GMT kukanganisa ndeye XXX maawa.
+Unauthorized: Unuthorised
+Error approving event XXX.: Kanganiso yekutambira chiitiko: XXX.
+Error deleting event XXX.: Kukanganisa kudzima chiitiko: XXX.
+Error rejecting event XXX.: Kukanganisa kuramba chiitiko: XXX.
+Sunday: Svondo
+Monday: Muvhuro
+Tuesday: Chipiri
+Wednesday: Chitatu
+Thursday: China
+Friday: Chishanu
+Saturday: Mugovera
+Sun: Zuva
+Mon: =
+Tue: =
+Wed: =
+Thu: Tue
+Fri: Tue
+Sat: =
+unknown-weekday: isingazivikanwe-zuva revhiki
+Invalid referring URL: URL isiriyo inoreva
+
+########################################
+# Page: includes/help_list.php
+#
+Index: =
+Documentation: Zvinyorwa
+Page: Peji
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Karenda Yangu
+Add New Entry: Wedzera Kupinda Nyowani
+Add New Task: Wedzera Basa Nyowani
+Logout: Kubuda
+Home: Kumba
+Back to My Calendar: Dzokera kuKarenda Yangu
+Go to: Enda ku
+Manage calendar of: Manage kalendari ye
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Mutauro weBhurawuza Hauwanikwe
+(not supported): (haina kutsigirwa)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: ChiAfrikaans
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: ChiAlbanian
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Maodzanyemba)
+Amharic: ChiAmharic
+Angika: =
+Apache: =
+Arabic (Algeria): ChiArabhu (Algeria)
+Arabic (Bahrain): ChiArabhu (Bahrain)
+Arabic (Egypt): ChiArabhu (Egypt)
+Arabic (Iraq): ChiArabhu (Iraq)
+Arabic (Jordan): ChiArabhu (Jorodhani)
+Arabic (Kuwait): ChiArabhu (Kuwait)
+Arabic (Lebanon): ChiArabhu (Lebanon)
+Arabic (Libya): ChiArabhu (Libya)
+Arabic (Morocco): ChiArabhu (Morocco)
+Arabic (Oman): ChiArabhu (Oman)
+Arabic (Qatar): ChiArabhu (Qatar)
+Arabic (Saudi Arabia): ChiArabhu (Saudi Arabia)
+Arabic (Syria): ChiArabhu (Syria)
+Arabic (Tunisia): ChiArabhu (Tunisia)
+Arabic (U.A.E.): ChiArabic (U.A.E.)
+Arabic (Yemen): ChiArabhu (Yemen)
+Arabic: ChiArabic
+Aragonese: =
+Aramaic: ChiAramaiki
+Arapaho: =
+Arawak: =
+Armenian: ChiArmenian
+Assamese: =
+Asturian: =
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: =
+Balinese: =
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: Bhashkir
+Basque: ChiBasque
+Beja: =
+Belarusian: Chiberaruzi
+Bemba: =
+Bengali: ChiBengali
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Nhema
+Blin: =
+Bliss: Mufaro
+Bosnian: ChiBosnian
+Braj: =
+Breton: =
+Buginese: =
+Bulgarian: ChiBulgarian
+Buriat: =
+Burmese: ChiBurmese
+Caddo: =
+Catalan: Katarani
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: Cheroki
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): ChiChinese (Hong Kong)
+Chinese (PRC): ChiChinese (PRC)
+Chinese (Simplified/GB2312): ChiChinese (Chakareruka / GB2312) 
+Chinese (Singapore): ChiChinese (Singapore)
+Chinese (Taiwan): ChiChinese (Taiwan)
+Chinese (Traditional/Big5): Chinese (Chinyakare / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: =
+Cornish: =
+Corsican: Kosikeni
+Cree: =
+Creek: =
+Croatian: ChiCroatian
+Czech: ChiCzech
+Dakota: =
+Danish: ChiDanish
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): ChiDutch (Belgium)
+Dutch: ChiDutch
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Chirungu (Australia)
+English (Belize): Chirungu (Belize)
+English (Canada): Chirungu (Canada)
+English (Ireland): Chirungu (Ireland)
+English (Jamaica): Chirungu (Jamaica)
+English (New Zealand): Chirungu (New Zealand)
+English (Philippines): Chirungu (Philippines)
+English (South Africa): Chirungu (Chamhembe Afrika)
+English (Trinidad & Tobago): Chirungu (Trinidad & Tobago)
+English (United Kingdom): Chirungu (United Kingdom)
+English (United States): Jya ku United States - English Guma mu Rwanda - Kinyarwanda
+English (Zimbabwe): Chirungu (Zimbabwe)
+English: Chirungu-US
+Erzya: =
+Esperanto: Esiperando
+Estonian: ChiEstonian
+Ewe: =
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: ChiFaroese
+Fijian: =
+Filipino: =
+Finnish: ChiFinish
+Fon: =
+French (Belgium): ChiFrench (Belgium)
+French (Canada): ChiFrench (Canada)
+French (France): ChiFrench (Furanzi)
+French (Luxembourg): ChiFrench (Luxembourg)
+French (Monaco): ChiFrench (Monaco)
+French (Switzerland): ChiFrench (Switzerland)
+French: ChiFrench
+Frisian (Eastern): ChiFrisian (Kumabvazuva)
+Frisian (Northern): Frisian (Kuchamhembe)
+Frisian (Western): ChiFrisian (Western)
+Frisian: =
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: ChiGalician
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: ChiGeorgian
+German (Austria): ChiGerman (Austria)
+German (Germany): ChiGerman (Germany)
+German (Liechtenstein): ChiGerman (Liechtenstein)
+German (Luxembourg): ChiGerman (Luxembourg)
+German (Standard): ChiGerman (Chijairira)
+German (Switzerland): ChiGerman (Switzerland)
+German: ChiJerimani
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: =
+Grebo: =
+Greek: ChiGiriki
+Greenlandic: Girinirend
+Guarani: =
+Gujarati: ChiGujarati
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Kiriyoro yeHaiti)
+Haitian: =
+Hausa: ChiHausa
+Hawaiian: Chihawayi
+Hebrew: ChiHebhuru
+Herero: =
+Hiligaynon: =
+Hindi: ChiHindi
+Hiri Motu: =
+Hittite: VaHiti
+Hmong: ChiHmong
+Holo (Taiwanese): Holo (ChiTaiwanese)
+Hungarian: ChiHungarian
+Hupa: =
+Iban: =
+Icelandic: ChiIcelandic
+Ido: Ndino
+Igbo: =
+Iloko: =
+Indonesian: ChiIndonesian
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: =
+Irish (Gaelic): ChiIrish (Gaelic)
+Irish: ChiIrish
+Iroquoian: =
+Italian (Switzerland): ChiItaly (Switzerland)
+Italian: ChiItalian
+Japanese: ChiJapanese
+Javanese: ChiJavanese
+Judeo-Arabic: Judhao-chiArabic
+Judeo-Persian: Judhao-Persian
+Kabardian: Kabhadhiyeni
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: ChiKannada
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: Kazaki
+Khasi: =
+Khmer (Central): Khmer (Pakati)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): ChiKorean (Johab)
+Korean (North): =
+Korean (South): ChiKorea (Maodzanyemba)
+Korean: ChiKorean
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: ChiKedhi
+Kutenai: =
+Kyrgyz: Kiyagizi
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Layo
+Latin: Ratini
+Latvian: ChiLatvian
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Ritunia
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: ChiLuo
+Lushai: =
+Luxembourghish: =
+Macedonian: ChiMacedonian
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: =
+Malay: ChiMalay
+Malayalam: ChiMalayalam
+Maldivian: =
+Maltese: ChiMaltese
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: ChiMarati
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: =
+Mongo: =
+Mongolian: ChiMongoria
+Montenegrin: Montenegro
+Moroccan: =
+Mossi: =
+Myanmar: Mayanima
+Māori: Maori
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): =
+Ndebele (South): Ndebele (Maodzanyemba)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: ChiNepali
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): ChiNorway (Bokmål)
+Norwegian (Nynorsk): ChiNorway (Nynorsk)
+Norwegian: ChiNorwegian
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: =
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: =
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: Pashito
+Pedi: =
+Persian (Farsi): ChiPersia (Farsi)
+Persian (Iran): ChiPersia (Iran)
+Persian: ChiPersian
+Phoenician: Fenikiya
+Pohnpeian: =
+Polish: ChiPolish
+Portuguese: ChiPutukezi
+Portuguese/Brazil: Portuguese / Brazil 
+Punjabi (India): ChiPunjabi (India)
+Punjabi (Pakistan): ChiPunjabi (Pakistan)
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Rhaeto-chiRomanic
+Romanian: ChiRomanian
+Romansh: ChiRomansh
+Romany: ChiRomany
+Rundi: =
+Russian (Moldavia: ChiRussian (Moldavia
+Russian (Republic of Moldova): ChiRussian (Republic of Moldova)
+Russian: ChiRussian
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): Sami (Shona)
+Sami (Northern): Sami (kuchamhembe)
+Sami (Skolt): Sami kuenderana nemamwe mazita
+Sami (Southern): Sami (Kumabvazuva)
+Sami: =
+Samoan: =
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Sanzikiriti
+Santali: =
+Sardinian: =
+Sasak: =
+Scots (Gaelic): ChiScots (Gaelic)
+Selkup: =
+Serbian (Upper): ChiSerbia (Kumusoro)
+Serbian: ChiSebhiya
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: =
+Sindhi: ChiSindhi
+Sinhala: =
+Slavic: =
+Slovak: ChiSlovak
+Slovenian: ChiSlovanian
+Sogdian: =
+Somali: Somari
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): ChiSorbian (Chasi)
+Sorbian (Upper): ChiSorbian (Kumusoro)
+Sorbian: =
+Sotho: =
+Spanish (Argentina): ChiSpanish (Argentina)
+Spanish (Bolivia): ChiSpanish (Bolivia)
+Spanish (Chile): ChiSpanish (Chile)
+Spanish (Colombia): ChiSpanish (Colombia)
+Spanish (Costa Rica): ChiSpanish (Costa Rica)
+Spanish (Dominican Republic): ChiSpanish (Dominican Republic)
+Spanish (Ecuador): ChiSpanish (Ecuador)
+Spanish (El Salvador): ChiSpanish (El Salvador)
+Spanish (Guatemala): ChiSpanish (Guatemala)
+Spanish (Honduras): ChiSpanish (Honduras)
+Spanish (Mexico): ChiSpanish (Mexico)
+Spanish (Nicaragua): ChiSpanish (Nicaragua)
+Spanish (Panama): ChiSpanish (Panama)
+Spanish (Paraguay): ChiSpanish (Paraguay)
+Spanish (Peru): ChiSpanish (Peru)
+Spanish (Puerto Rico): ChiSpanish (Puerto Rico)
+Spanish (Spain): ChiSpanish (Spain)
+Spanish (Uruguay): ChiSpanish (Uruguay)
+Spanish (Venezuela): ChiSpanish (Venezuela)
+Spanish: ChiSpanish
+Sranan Tongo: =
+Sukuma: =
+Sumerian: =
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: ChiSwahili
+Swati: =
+Swedish (Finland): ChiSweden (Finland)
+Swedish (Sweden): ChiSweden (Sweden)
+Swedish: ChiSwedish
+Syriac: Siriyaki
+Tagalog: ChiTagalog
+Tahitian: ChiTahiti
+Tai: =
+Taiwan: =
+Tajik: =
+Tamashek: =
+Tamil: ChiTamil
+Tatar: ChiTatar
+Telugu: ChiTelugu
+Tereno: =
+Tetum: =
+Thai: ChiThai
+Tibetan: ChiTibetan
+Tigre: Tigere
+Tigrinya: =
+Timne: =
+Tlingit: Kufambisa
+Tok Pisin: ChiTok Pisin
+Tokelau: Tokerau
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): =
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: =
+Turkmen: ChiTeki
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: =
+Ukrainian: ChiUkraine
+Umbundu: =
+Urdu: =
+Uyghur: Ugwa
+Uzbek: =
+Vai: =
+Venda: =
+Vietnamese: =
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: =
+Wolaitta: =
+Wolof: Worofu
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Bhurawuza-yakatsanangurwa
+event: chiitiko
+journal: chinyorwa
+0: 0                                                  
+1: 1                                                  
+2: 2                                                  
+3: 3                                                  
+4: 4                                                  
+5: 5                                                  
+6: 6                                                  
+7: 7                                                  
+8: 8                                                  
+9: 9                                                  
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Login yemushandisi isiriyo
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: password isiriyo
+no such user: hapana mushandisi akadaro
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Akaunti yakaremara
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Chinguva
+Months: Mwedzi
+Month Days: Mwedzi Mazuva
+Days: Mazuva
+Weeks: Mavhiki
+Position: Chinzvimbo
+Until: Kusvikira
+Count: Verenga
+Inclusion Dates: Inosanganisira Mazuva
+Exclusion Dates: Kusiyiwa Mazuva
+Event Imported: Chiitiko Chinotorwa
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: mabheti
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: =
+authenticate: SMTP Kanganiso: Haikwanise kuratidza
+connect_host: SMTP Kanganiso: Haikwanisi kubatanidza kune SMTP inomiririra:
+data_not_accepted: SMTP Kanganiso: Dhata haina kugamuchirwa
+encoding: Encoding isingazivikanwe:
+execute: Haikwanise kuitisa:
+file_access: Haukwanise kuwana faira:
+file_open: Faira Kanganiso Haina kukwanisa kuvhura faira:
+from_failed: Inotevera Kubva kukero yakakundikana:
+instantiate: Haikwanise kusimbisa basa remail
+mailer_not_supported: mail haina kutsigirwa
+provide_address: Iwe unofanirwa kupa imwechete email yekugamuchira kero.
+recipients_failed: SMTP Kanganiso: Vanotevera vanogamuchira vakakundikana:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Pinda Mavara Anoonekwa muGraphic
+Enter the correct letters and numbers...: Pinda mavara akakodzera nenhamba kubva pamufananidzo mubhokisi remavara. Uyu muedzo mudiki unoshanda seyakaganhurirwa yekuwana marobhoti akashata. Ingo rejesa peji racho kana graphic iyi yakanyanya kuoma kuverenga
+Challenge/Response: Dambudziko / Mhinduro
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Chinja zuva uye nguva yekupinda uku?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Hauna kupinda Tsanangudzo Ipfupi
+time prior to work hours...: nguva isati yatanga maawa ekushanda ...
+Invalid Event Date: Chiitiko Chisina Kuitika Zuva
+Please add a participant: Ndokumbirawo uwedzere munhu anotora chikamu 
+Invalid Date: Zuva risiri iro
+You have not entered a valid time of day: Hauna kupinda panguva chaiyo yezuva. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Karenda ID haigone kuvharwa. 
+First and last names cannot both be blank.: Chekutanga uye chekupedzisira mazita haagoni kuva maviri asina chinhu. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Ruvara rusingaenderane
+Color format should be RRGGBB.: Ruvara fomati inofanirwa kunge iri #RRGGBB. 
+URL cannot be blank.: URL haigoni kuvharwa.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Rudzi rwefaira haruwirirane neRudzi rwekunze 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Ruvara rusiri rwekutanga rwegwaro.
+Invalid color for document title.: Ruvara rusiri rwemusoro wenyaya.
+Invalid color for table cell background.: Ruvara rusiri rwechokwadi rwemaseri etafura.
+Invalid color for table cell background for today.: Ruvara rusingaenderane rwemaseri etafura yanhasi.
+Invalid work hours.: Maawa asiri pabasa.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Server URL inofanirwa kupera neslash (/).
+Invalid color for table grid.: Ruvara rusiri rwe grid yetafura.
+Invalid color for event popup background.: Ruvara rusiri rwechiitiko chekuputika kumashure.
+Invalid color for event popup text.: Ruvara rusingaenderane nerwunobuda rwechiitiko.
+Invalid color for table header text.: Ruvara rusiri rwechokwadi rwemusoro wetafura.
+Invalid color for table header background.: Ruvara rusiri rwechokwadi rwemusoro wetafura.
+Server URL is required.: URL yeSeva inodikanwa.
+Invalid Color: Ruvara rusina kuenderana
+Database Name: Dhatabhesi Zita
+Full Path (no backslashes): Yakazara Nzira (hapana backslashes) 
+The password contains illegal characters.: Pasiwedhi ine mavara asiri pamutemo.
+Error you must specify a Single-User Login: Kanganiso: Iwe unofanirwa kudoma Imwe-YeMushandisi Login
+Could not find XXX.: Hauna kuwana XXX.
+Could not find XXX in DOM.: Hauna kuwana XXX muDOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Vhiki rino
+This Month: Mwedzi uno
+This Year: Gore rino
+Exit: Buda
+Add New Event: Wedzera Chiitiko Chitsva
+Delete Entries: Delete Mapinda
+My Views: Maonero angu
+Manage Calendar of: Manage Karenda ye
+My Reports: Mishumo Yangu
+My Profile: Mbiri Yangu
+Public Calendar: Ruzhinji Karenda
+Unapproved Events: Zviitiko Zvisina Kubvumidzwa
+User Manager: Mushandisi Manager
+Help Contents: Batsira Zviri Mukati
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Dhatabhesi Cache Directory
+Create New: Gadzira Nyowani
+Failure Reason: Kukundikana Chikonzero:
+You must manually create database: Iwe unofanirwa nemaoko kugadzira database.
+Single-User: Mumwe-Mushandisi
+Test Settings: Zvirongwa zvekuyedza
+Timezone Conversion Successful: Shanduko Yezvenguva Yakabudirira
+WebCalendar Installation Wizard Step XXX: WebCalendar Kuisa Wizard Nhanho XXX
+Password Accepted: Pasiwedhi Yakagamuchirwa
+Successful Login: Kubudirira Kupinda
+Password Incorrect: Pasiwedhi Haisiriyo
+Invalid Login: Kupinda Zvisiri Pakafanira
+Display Errors: Ratidza Zvikanganiso
+File Uploads: Faira Zvikwereti
+Allow URL fopen: Rega URL fopen (inongodiwa chete kana maKarenda e Remote achishandiswa)
+Safe Mode: Nzira Yakachengeteka
+Safe Mode Allowed Vars: Mamiriro Akachengeteka Akabvumidzwa Vars (TZ inongodiwa chete kana Safe Mode iri Pairi)
+GD: GD (inodikanwa yeGradient Image Maumbirwo)
+Passwords do not match!: Passwords haafanane!
+Unable to write password to settings.php file: Kutadza kunyora pasiwedhi ku "settings.php" faira.
+Password Updated: Pasiwedhi Yakavandudzwa
+Password has been set: Pasiwedhi yaiswa.
+Connection Successful...: Kubatana Kwakabudirira  Ndapota enda peji rinotevera kuti uenderere mberi nekumisikidza.
+Correct your entries or click the Create New...: Ruramisa zvawanyora kana tinya  Gadzira Nyowani  bhatani kuti uenderere mberi nekuisa.
+Correct your entries and try again.: Ruramisa zvawanyora woedza zvakare.
+XXX does not exist: XXX haipo
+XXX is not writable: XXX haina kunyorwa
+Error Converting Timezone: Kukanganisa Kutendeuka Nguva Yenzvimbo
+Error Unable to write to file XXX.: Kukanganisa Kutadza kunyora kune faira XXX.
+Please change the file permissions of this file.: Ndokumbirawo uchinje mvumo yefaira yeiyi faira.
+Please change includes dir permission: Ndokumbirawo uchinje mvumo yefaira yeako "inosanganisira" dhairekitori kubvumidza kunyora nevamwe vashandisi.
+Your settings have been saved.: Zvirongwa zvako zvakachengetedzwa.
+OFF: =
+ON: =
+WebCalendar Setup Wizard: =
+This installation wizard will guide you...: Iyi yekuisa wizard ichakutungamira kuburikidza nekumisikidza yekutanga WebCalendar kuisirwa.<br>Kuti ubatsirwe uye kugadzirisa matambudziko ona:<br>
+System Administrators Guide: Sisitimu Yemutungamiriri
+Frequently Asked Questions: Inowanzo Bvunzwa Mibvunzo
+FAQ: MIBVUNZO
+Troubleshooting: Dambudziko rekugadzirisa
+Getting Help: Kuwana Rubatsiro
+Upgrading Guide: Inosimudzira Nhungamiro
+User Supported Wiki: Mushandisi Anotsigirwa Wiki
+PHP Version Check: PHP Shanduro Tarisa
+Check to see if PHP 7.1.0 or greater is installed.: Tarisa uone kana PHP 7.1.0 kana yakakura yakaiswa.
+PHP version: PHP vhezheni
+PHP Settings: PHP Zvirongwa
+Detailed PHP Info: Yakadzama PHP Info
+settings.php Status: "settings.php" Mamiriro
+Session Check: Chikamu Chekutarisa
+To test the proper operation of sessions...: Kuti uedze kushanda kwakakodzera kwezvikamu, dzosera peji ino. Iwe unofanirwa kuona iyo chikamu counter yekuwedzera nguva imwe neimwe.
+SESSION COUNTER: =
+The file permissions of settings.php are set...: Mvumo yefaira ye "settings.php" inoiswa kuitira kuti mugadziri ave asina mvumo yekuigadzirisa. Ndokumbirawo uchinje mvumo yefaira yeiyo inotevera faira kuti uenderere mberi
+The file permissions of the includes directory are set...: Iyo mvumo yefaira yeinosanganisira dhairekitori yakaiswa kuitira kuti mugadziri ave asina mvumo yekugadzira faira nyowani. Ndokumbirawo uchinje mvumo yedhairekitori rinotevera kuti uenderere mberi
+Your settings.php file appears to be valid.: Yako "settings.php" faira rinoratidzika kunge rinoshanda.
+Configuration Wizard Password: Kugadziridza Wizard Password
+Create Settings File Password: Gadzira Zvirongwa Faira Pasiwedhi
+db setup directions...: Muchikamu chino iwe uchaisa uye kuyedza kubatana kune yako dhatabhesi server. Ruzivo rweakaunzi rwunopihwa runofanirwa kuve nemvumo YEMAHARA yekugadzira dhatabhesi, matafura nevashandisi. Kana izvi zvisingaite, kana yako dhatabhesi yekuwana ishoma, iwe uchafanirwa kugadzirisa manyore database yako.
+Database Status: Dhatabhesi Mamiriro
+Supported databases for your PHP installation: Yakatsigirwa dhatabhesi yekuisa kwako PHP
+Your current database settings are able to access the database.: Yako yazvino dhatabhesi marongero anokwanisa kuwana iyo dhatabhesi.
+Please Test Settings: Ndokumbirawo Muedze Zvirongwa
+Your current database settings are not able...: Yako yazvino dhatabhesi marongero haakwanise kuwana iyo dhatabhesi kana haisati yaedzwa.
+Database Settings: Dhatabhesi Zvirongwa
+Database Type: Rudzi rweDhatabhesi
+Server: =
+Connection Persistence: Kubatana Kushingirira
+All your database tables appear to be up...: Matafura ako ese e database anoita kunge ave kusvika pari zvino. Unogona kuenderera kune rinotevera peji uye zadza yako WebCalendar setup.
+This appears to be a new installation...: Izvi zvinoita kunge kuiswa kutsva. Kana izvi zvisiri izvo, ndokumbirawo udzokere papeji rekutanga uye gadzirisa marongero ako.
+This appears to be an upgrade...: Izvi zvinoita kunge kusimudzira kubva mushanduro&nbsp;XXX&nbsp;kusvika&nbsp;YYY.
+The database requires some data input...: Iyo dhatabhesi inoda imwe yekuisa data Dzvanya Gadziriso Dhatabhesi kuti upedze iyo yekuvandudza.
+In this section we will perform...: Muchikamu chino tichaita shanduko kuunza dhatabhesi yako kusvika padanho rinodiwa. Kana iwe uri kushandisa yakazara yakatsigirwa dhatabhesi, iyi nhanho ichaitirwa otomatiki iwe. Kana zvisiri, iyo inodiwa SQL inogona kuratidzwa uye iwe unofanirwa kukwanisa kuicheka nekuiisa mune yako dhatabhesi server query hwindo.
+No database actions are required.: Hapana zviito zve database zvinodikanwa.
+The following database actions are required: Izvi zvinotevera dhatabhesi zviito zvinodiwa
+ODBC Underlying Database: ODBC Inotungamirwa Dhatabhesi:
+Automatic installation not supported: Kuisa otomatiki hakuna kuitwa zvizere kune yako dhatabhesi mhando. Iwe uchafanirwa kugadzira manyore matafura anodiwa uchishandisa iyo SQL yakapihwa. Ndokumbirawo ubaye  Ratidza SQL  kuti uenderere mberi. Cheka uye Namatira mu database yako yemubvunzo hwindo.
+This may take several minutes to complete: Izvi zvinogona kutora maminetsi akati kuti apedze.
+Install Database: Isa Dhatabhesi
+Update Database: Gadziridza Dhatabhesi
+Display Required SQL: Ratidza Inodikanwa SQL
+Return to previous page after processing SQL.: Mushure mekugadzirisa nemaoko SQL iyi, iwe unozofanirwa kudzokera kune peji rapfuura uye wedzazve dhatabhesi yako kuti script igone kuona shanduko.
+This is the final step in setting up your WebCalendar Installation.: Iri ndiro danho rekupedzisira mukumisikidza yako WebCalendar Kuisirwa.
+Timezone Conversion: Shanduko yenguva
+It appears that you have NOT converted...: Zvinotaridza kuti HAUSATI washandura dhata yako yechiitiko cheWebhuChalenda kuita GMT. Kana iwe uine, unogona kufuratira ichi chiziviso uye usazoenderera nekushandurwa. Kana uku kuri kuiswa kutsva, unogona zvakare kufuratira ichi chiziviso.
+Convert Data to GMT: Chinja Dhata kuenda kuGMT
+Application Settings: Zvirongwa zvekushandisa
+HTTP-based authentication was not detected...: HTTP-based kuvimbiswa haina kuwanikwa. Iwe unozofanirwa kugadzirisa zvakare webhu server yako kana iwe uchida kusarudza 'Web Server' kubva kune 'Mushandisi Kusimbisa' sarudzo pazasi.
+HTTP-based authentication was detected...: Kuvimbika kweHTTP-kwakaonekwa. Yechokwadi mushandisi iri kubatwa newebhu dura rako. Iwe unofanirwa kusarudza 'Web Server' kubva pane runyorwa rwe 'Mushandisi Kusimbisa' sarudzo pazasi.
+Create Default Admin Account: Gadzira Default Admin Akaunti
+(Admin Account Not Found): (Admin Akaunti Haina Kuwanikwa)
+User Authentication: Mushandisi Kusimbiswa
+Web-based via WebCalendar (default): Webhu-based kuburikidza neWebhuCalendar (default)
+Web Server (not detected): Webhu Server (haina kuwanikwa)
+Web Server (detected): Web Server (yakawanikwa)
+None (Single-User): Hapana (Mumwe-Mushandisi)
+Read-Only: Verenga-Chete
+Environment: Zvakatipoteredza
+Production: Kugadzira
+Development: Kubudirira
+Save Settings: Sevha Zvirongwa
+Launch WebCalendar: Vhura WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Kanganiso yekuvandudza tafura "XXX": YYY.
+Conversion Successful: Kutendeuka Kwakabudirira 
+Perl script required: Yako yapfuura vhezheni yeWebhuCalendar inoda kumhanyisa PERL script kushandura yako data. Ndokumbirawo umhanye /tools/upgrade_to_0.9.7.pl wobva wadzokera kune ino peji kuti uenderere mberi.
+previous version requires updating several tables: Yako yapfuura vhezheni yeWebhuCalendar inoda kumutsiridza akati wandei matafura e database.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: HAPANA KUTARISIRA
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Kanganiso yekubatanidza kune dhatabhesi
+Include Path: Sanganisira Path
+Deleting events for: Deleting zviitiko zve
+Importing events for: Kuunza zviitiko zve
+No data returned from: Hapana data rakadzoserwa kubva
+for non-user calendar: kune isiri-mushandisi khalendari
+No Remote Calendars found: Hapana Remende Makarenda akawanikwa
+Remote Calendars not enabled: Makarenda ari kure haana kubvumidzwa
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: handina kuwana chiitiko id
+could not find event id XXX in database.: hatina kuwana chiitiko id XXX mudhatabhesi.
+task: basa
+This is a reminder for the XXX detailed below.: Ichi chiyeuchidzo cheXX yakatsanangurwa pazasi.
+Pecentage Complete: Pecentage Yakazara
+Reminder: Chiyeuchidzo
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Chiito chisina kutsigirwa: XXX.
+No event id specified.: Hapana chiitiko chechiitiko chakataurwa.
+Not authorized (not admin).: Haisi mvumo (kwete admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Kutarisa zviitiko zveXX kubva pazuva YYY kusvika nhasi ZZZ.
+Found XXX events in time range.: Tsvaga XXX zviitiko munguva yenguva.
+Event id=XXX YYY at ZZZ on AAA.: Chiitiko id = XXX "YYY" paZZZ paAAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Kubvumidza mushandisi weXX kuona imwe khalenda yemumwe mushandisi.
+Error Email reminders disabled for user XXX.: Kanganiso: Zviyeuchidzo zveemail zvakaremerwa mushandisi "XXX".
+Number of site_extras XXX.: Nhamba yenzvimbo_extras: XXX.
+Reminder set for event.: Chiyeuchidzo chakagadzirirwa chiitiko.
+Mins Before XXX.: Mins Pamberi: XXX.
+Event time is XXX.: Nguva yechiitiko ndeye: XXX.
+Remind time is XXX.: Yeuchidza nguva ndeiyi: XXX.
+Reminders for user XXX, login YYY.: Zviyeuchidzo zvemushandisi "XXX", pinda "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Kuwana kusatenderwa kune mushandisi "XXX".
+Event id=XXX YYY already sent.: Chiitiko id = XXX "YYY" yatotumirwa kare.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Hapana kupinda mukati kunodikanwa kune imwechete-mushandisi maitiro.
+No login required for HTTP authentication.: Hapana kupinda kunodiwa kwechokwadi kweHTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Mavara asiri iwo ekupinda.
+Username XXX does not exist.: Zita rekushandisa "XXX" haripo.
+You cannot remove admin rights from yourself!: Iwe haugone kubvisa kodzero dze admin kubva iwe pachako!
+Unknown error saving user: Kanganiso isingazivikanwe pakuponesa mushandisi.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Hapana vatori vechikamu vakawana yechiitiko id: XXX.
+Db error Could not find event id XXX.: Db kukanganisa: Haugone kuwana chiitiko id XXX. 
+Error Could not find event id XXX in database.: Kukanganisa: Hatina kuwana chiitiko id XXX mudhatabhesi. 
