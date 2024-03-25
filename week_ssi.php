@@ -79,9 +79,10 @@ for ( $i = 0; $i < 7; $i++ ) {
    . date ( 'd', $days[$i] ) . '</th>';
 
   $tmpOut2 .= '
-              <td style="vertical-align: top; width: 75px; height: 75px; '
-   . 'background: ' . ( $date == date ( 'Ymd' ) ? $TODAYCELLBG : $CELLBG )
-   . print_date_entries ( $date, $login, true, true ) . '&nbsp;</td>';
+              <td style="inline-size: 75px; block-size: 75px; background: ' .
+    ( $date == date ( 'Ymd' ) ? $TODAYCELLBG : $CELLBG ) .
+    '; vertical-align: top;">' .
+    print_date_entries ( $date, $login, true, true ) . '&nbsp;</td>';
 }
 
 echo '
