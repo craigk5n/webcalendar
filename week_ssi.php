@@ -34,7 +34,7 @@ $view = 'week';
 // TODO This is suspect
 $today = time();
 
-if ( ! empty ( $date ) && ! empty ( $date ) ) {
+if ( ! empty ( $date ) ) {
   $thisyear = substr ( $date, 0, 4 );
   $thismonth = substr ( $date, 4, 2 );
   $thisday = substr ( $date, 6, 2 );
