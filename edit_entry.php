@@ -1196,10 +1196,10 @@ $tabI = 0;
           $rpt_byday_label++
         ) {
           $rpt_byday_mod = $rpt_byday_label % 7;
-          $class = (is_weekend($rpt_byday_mod) ? ' class="weekend" ' : '');
-          echo '
-                <th width="50px"' . $class . '><label>'
-            . translate($weekday_names[$rpt_byday_mod]) . '</label></th>';
+          $class = ( is_weekend ( $rpt_byday_mod ) ? 'class="weekend" ' : '' );
+          echo "
+                <th $class" . 'width="50px"><label>' . 
+            $weekday_names[$rpt_byday_mod] . '</label></th>';
         }
         echo '
               </tr>
