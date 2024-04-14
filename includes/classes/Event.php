@@ -202,7 +202,7 @@ class Event {
     $this->_calType = $calType;
     $this->_location = $location;
     $this->_url = $url;
-    $this->_dueDate  = $dueDate;
+    $this->_dueDate  = empty($dueDate) ? '' : $dueDate;
     $this->_dueTime  = sprintf ( "%06d", $dueTime );
     $this->_due = $dueDate . sprintf ( "%06d", $dueTime );
     $this->_percent = $percent;
