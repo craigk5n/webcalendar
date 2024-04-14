@@ -821,14 +821,14 @@ function date_to_epoch( $d, $gmt = true ) {
 
   if ( $gmt )
     return gmmktime ( $dH, $di, $ds,
-      substr ( $d, 4, 2 ),
-      substr ( $d, 6, 2 ),
-      substr ( $d, 0, 4 ) );
+      (int)substr ( $d, 4, 2 ),
+      (int)substr ( $d, 6, 2 ),
+      (int)substr ( $d, 0, 4 ) );
   else
     return mktime ( $dH, $di, $ds,
-      substr ( $d, 4, 2 ),
-      substr ( $d, 6, 2 ),
-      substr ( $d, 0, 4 ) );
+      (int)substr ( $d, 4, 2 ),
+      (int)substr ( $d, 6, 2 ),
+      (int)substr ( $d, 0, 4 ) );
 }
 
 
