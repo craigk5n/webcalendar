@@ -192,10 +192,10 @@ function print_upcoming_event ( $e, $date ) {
       $catNum = abs(intval($e->getCategory()));
       if ($catNum > 0 &&  !empty($categories[$catNum]['cat_icon_mime'])) {
         $catIcon = "getIcon.php?cat_id=" . $catNum;
-        $link .= '<img src="' . $catIcon . '" alt="category icon"></a>';
+        $link .= '<img src="' . $catIcon . '" alt="category icon">';
       }
     }
-    echo $link;
+    echo "$link</a>";
   }
   }
   if ( $private ) {
