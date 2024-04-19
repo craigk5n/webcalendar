@@ -155,17 +155,12 @@ function print_upcoming_event ( $e, $date ) {
 
   $popupid = 'pop' . $e->getId() . '-' . $date;
 
-  $private = $confidential = false;
   // Access: P=Public, R=Private, C=Confidential
-  if ( $e->getAccess() == 'R' ) {
-    // not a public event, so we will just display "Private"
-    $private = true;
-  }
-  else if ( $e->getAccess() == 'C' ) {
-    // not a public event, so we will just display "Confidential"
-    $confidential = true;
-  }
-
+  // not a public event, just "Private"
+  $private = ( $e->getAccess() == 'R' );
+  // not a public event, just "Confidential"
+  $confidential = ( $e->getAccess() == 'C' );
+  
   if ( ! empty ( $SERVER_URL ) && ! $private && ! $confidential) {
     echo "<div class=\"vevent\">\n";
       if ( $display_link ) {
@@ -195,7 +190,7 @@ function print_upcoming_event ( $e, $date ) {
         $link .= '<img src="' . $catIcon . '" alt="category icon">';
       }
     }
-    echo "$link</a>";
+    echo $link;
   }
   }
   if ( $private ) {
