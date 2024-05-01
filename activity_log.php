@@ -34,8 +34,7 @@ echo generate_activity_log( '', $sys, $startid ) . '
     <div class="navigation">'
 // Go BACK in time.
   . ( ! empty ( $nextpage ) ? '
-      <a title="' . $prevStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr
-    . '" class="prev" href="activity_log.php?startid=' . $nextpage
+      <a class="prev" href="activity_log.php?startid=' . $nextpage
     . ( $sys ? '&amp;system=1' : '' ) . '">' . $prevStr . '&nbsp;' . $PAGE_SIZE
     . '&nbsp;' . $eventsStr . '</a>' : '' );
 
