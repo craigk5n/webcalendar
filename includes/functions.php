@@ -2581,9 +2581,9 @@ function get_groups($user, $includeUserlist=false)
       $res = dbi_execute($sql, [$groups[$i]['cal_group_id']]);
       while ($row = dbi_fetch_row($res)) {
         if (isset($users_by_name[$row[0]])){
-            // It is possible some users assigned to this group may not exist, 
-            // so we skip those that don't. For example, if users are fetched 
-            // from an external source via user-app-*.php, and one of those 
+            // It is possible some users assigned to this group may not exist,
+            // so we skip those that don't. For example, if users are fetched
+            // from an external source via user-app-*.php, and one of those
             // users is deleted externally.
             $users[] = $users_by_name[$row[0]];
         }
@@ -4632,7 +4632,7 @@ function print_color_input_html ($varname, $title, $varval = '', $id='', $tag='d
   }
 
   return '<' . $tag . ' class="form-inline">' .
-  (empty($title) ? '' : ('<label class="' . $class . '" for="' . $prefix . $varname . '">' . $title . '</label>')) .
+  (empty($title) ? '' : ('<label class="' . $class . '" for="' . $prefix . $id . '">' . $title . '</label>')) .
     '<input class="form-control" style="height: 2em; width: 4em;" name="' . $prefix . $varname . '" id="' . $prefix . $id .
     '" type="color" value="' . $setting . '"' . (empty($onchange) ? '' : ' onchange="' . $onchange . '()"') .
     '></' . $tag . '>';
