@@ -95,21 +95,21 @@ print_header(
                 <form name="editUserForm" id="editUserForm">
                     <input type="hidden" name="editUserDelete" id="editUserDelete" value="0">
                     <input type="hidden" name="editUserAdd" id="editUserAdd" value="0">
-                    <div class="form-inline" is="divEditUsername">
+                    <div class="form-inline" id="divEditUsername">
                         <label class="col-5" for="editUsername"><?php etranslate('Username') ?>: </label>
-                        <input type="text" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New username') . ' (' . translate('required') . ')'; ?>" MAXLENGTH="25">
+                        <input type="text" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New username') . ' (' . translate('required') . ')'; ?>" maxlengtHH="25">
                     </div>
                     <div class="form-inline mt-1" id="div-editFirstname">
                         <label class="col-5 for=" editFirstname"><?php etranslate('First Name') ?>: </label>
-                        <input type="text" class="col-7 form-control" id="editFirstname" name="editFirstname" MAXLENGTH="25">
+                        <input type="text" class="col-7 form-control" id="editFirstname" name="editFirstname" maxlengtHH="25">
                     </div>
                     <div class="form-inline mt-1" id="div-editLastname">
                         <label class="col-5 for=" editLastname"><?php etranslate('Last Name') ?>: </label>
-                        <input type="text" class="col-7 form-control" id="editLastname" name="editLastname" MAXLENGTH="25">
+                        <input type="text" class="col-7 form-control" id="editLastname" name="editLastname" maxlengtHH="25">
                     </div>
                     <div class="form-inline mt-1" id="div-editEmail">
                         <label class="col-5 for=" editEmail"><?php etranslate('Email') ?>: </label>
-                        <input type="email" class="col-7 form-control" id="editEmail" name="editEmail" MAXLENGTH="75">
+                        <input type="email" class="col-7 form-control" id="editEmail" name="editEmail" maxlengtHH="75">
                     </div>
                     <div class="form-inline mt-1" id="div-editPassword1">
                         <label class="col-5 for=" editPassword1"><?php etranslate('Password') ?>: </label>
@@ -201,7 +201,7 @@ print_header(
                     <div class="p-3"><?php echo $areYouSure; ?></div>
                     <div class="p-3 m-3 text-danger"><?php echo $deleteUserInfo; ?></div>
                     <form name="deleteUserForm" id="deleteUserForm">
-                        <div class="form-inline" is="divdeleteUsername">
+                        <div class="form-inline" id="divdeleteUsername">
                             <label class="col-5" for="deleteUsername"><?php etranslate('Username') ?>: </label>
                             <input disabled type="text" class="col-7 form-control" id="deleteUsername" name="deleteUsername">
                         </div>

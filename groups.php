@@ -86,7 +86,7 @@ print_header(
                 <form name="editGroupForm" id="editGroupForm">
                     <input type="hidden" name="editGroupAdd" id="editGroupAdd" value="0">
                     <input type="hidden" name="editGroupId" id="editGroupId" value="0">
-                    <div class="form-inline" is="divEditName">
+                    <div class="form-inline" id="divEditName">
                         <label class="col-5" for="editName"><?php etranslate('Group name') ?>: </label>
                         <input required type="text" class="col-7 form-control" id="editName" name="editName" placeholder="<?php echo translate('New group name') . ' (' . translate('required') . ')'; ?>">
                         <div id="invalid-name-error" class="invalid-feedback text-right">
