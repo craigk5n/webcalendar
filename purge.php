@@ -96,7 +96,7 @@ if ( $do_purge ) {
     $M_ids = get_ids ( 'SELECT DISTINCT(we.cal_id) FROM webcal_entry we,
       webcal_entry_user weu, webcal_entry_repeats wer
       WHERE we.cal_type = \'M\'
-      AND we.cal_id = wer.cal_id AND we.cal_id = wer.cal_id '
+      AND we.cal_id = wer.cal_id AND weu.cal_id = wer.cal_id '
       . "AND cal_end IS NOT NULL AND cal_end < '$end_date' $tail",
       $ALL );
     $ids = array_merge ( $E_ids, $M_ids );
