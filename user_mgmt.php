@@ -63,9 +63,9 @@ print_header(
                 <!-- dropdown menu -->
             </th>
         </tr>
+    </thead>
     <tbody id="user-tbody">
     </tbody>
-    </thead>
 </table>
 
 <br>
