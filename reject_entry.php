@@ -16,7 +16,7 @@ else {
   echo '
     <form action="reject_entry.php'
    . ( empty ( $_SERVER['QUERY_STRING'] ) ? '' : '?' . $_SERVER['QUERY_STRING'] )
-   . '" method="post" name="add_comments">'.
+   . '" method="post" name="add_comments">';
   print_form_key ();
   echo '<table cellspacing="5">
         <tr>
