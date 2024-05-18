@@ -100,31 +100,31 @@ print_header(
                         <input type="text" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New username') . ' (' . translate('required') . ')'; ?>" maxlength="25">
                     </div>
                     <div class="form-inline mt-1" id="div-editFirstname">
-                        <label class="col-5 for=" editFirstname"><?php etranslate('First Name') ?>: </label>
+                        <label class="col-5" for="editFirstname"><?php etranslate('First Name') ?>: </label>
                         <input type="text" class="col-7 form-control" id="editFirstname" name="editFirstname" maxlength="25">
                     </div>
                     <div class="form-inline mt-1" id="div-editLastname">
-                        <label class="col-5 for=" editLastname"><?php etranslate('Last Name') ?>: </label>
+                        <label class="col-5" for="editLastname"><?php etranslate('Last Name') ?>: </label>
                         <input type="text" class="col-7 form-control" id="editLastname" name="editLastname" maxlength="25">
                     </div>
                     <div class="form-inline mt-1" id="div-editEmail">
-                        <label class="col-5 for=" editEmail"><?php etranslate('Email') ?>: </label>
+                        <label class="col-5" for="editEmail"><?php etranslate('Email') ?>: </label>
                         <input type="email" class="col-7 form-control" id="editEmail" name="editEmail" maxlength="75">
                     </div>
                     <div class="form-inline mt-1" id="div-editPassword1">
-                        <label class="col-5 for=" editPassword1"><?php etranslate('Password') ?>: </label>
+                        <label class="col-5" for="editPassword1"><?php etranslate('Password') ?>: </label>
                         <input type="password" class="col-7 form-control" id="editPassword1" name="editPassword1">
                     </div>
                     <div class="form-inline mt-1" id="div-editPassword2">
-                        <label class="col-5 for=" editPassword2"><?php etranslate('Password (again)'); ?>: </label>
+                        <label class="col-5" for="editPassword2"><?php etranslate('Password (again)'); ?>: </label>
                         <input type="password" class="col-7 form-control" id="editPassword2" name="editPassword2">
                     </div>
                     <div class="form-inline mt-1 mb-2" id="div-editEnabled">
-                        <label class="col-5 for=" editEnabled"><?php etranslate('Enabled') ?>: </label>
+                        <label class="col-5" for="editEnabled"><?php etranslate('Enabled') ?>: </label>
                         <?php echo print_radio('editEnabled'); ?>
                     </div>
                     <div class="form-inline mt-1 mb-2" id="div-editIsAdmin">
-                        <label class="col-5 for=" editIsAdmin"><?php etranslate('Admin') ?>: </label>
+                        <label class="col-5" for="editIsAdmin"><?php etranslate('Admin') ?>: </label>
                         <?php echo print_radio('editIsAdmin'); ?>
                     </div>
 
@@ -163,11 +163,11 @@ print_header(
                         <input disabled type="text" class="col-7 form-control" id="editPasswordUsername" name="editPasswordUsername">
                     </div>
                     <div class="form-inline mt-1" id="div-setPassword1">
-                        <label class="col-5 for=" setPassword1"><?php etranslate('Password') ?>: </label>
+                        <label class="col-5" for="setPassword1"><?php etranslate('Password') ?>: </label>
                         <input type="password" class="col-7 form-control" id="setPassword1" name="setPassword1">
                     </div>
                     <div class="form-inline mt-1" id="div-setPassword2">
-                        <label class="col-5 for=" setPassword2"><?php etranslate('Password (again)'); ?>: </label>
+                        <label class="col-5" for="setPassword2"><?php etranslate('Password (again)'); ?>: </label>
                         <input type="password" class="col-7 form-control" id="setPassword2" name="setPassword2">
                     </div>
 
