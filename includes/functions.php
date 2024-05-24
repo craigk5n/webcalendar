@@ -249,7 +249,7 @@ function build_entry_label ( $event, $popupid,
  * @param string $time        Input time in HHMMSS format
  * @param bool   $round_down  Should we change 1100 to 1059?
  *                            (This will make sure a 10AM-100AM appointment just
- *                            shows up in the 10AM slow and not in the 11AM slot
+ *                            shows up in the 10AM slot and not in the 11AM slot
  *                            also.)
  *
  * @return int  The time slot index.
