@@ -113,7 +113,7 @@ if (!ini_get('allow_url_fopen')) { ?>
             <div class="modal-body">
                 <!-- Error Alert -->
                 <div id="edit-user-dialog-alert" class="alert alert-danger" style="display: none">
-                    <strong><?php etranslate("Error"); ?>!</strong>&nbsp;<span id="errorMessage">A problem has been occurred while submitting your data.</span>
+                    <strong><?php etranslate("Error"); ?>!</strong>&nbsp;<span id="errorMessage">A problem has occurred while submitting your data.</span>
                     <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
                 </div>
                 <form class="needs-validation" novalidate name="editUserForm" id="editUserForm">

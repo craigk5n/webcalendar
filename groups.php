@@ -80,7 +80,7 @@ print_header(
             <div class="modal-body">
                 <!-- Error Alert -->
                 <div id="edit-group-dialog-alert" class="alert alert-danger" style="display: none">
-                    <strong><?php etranslate("Error"); ?>!</strong>&nbsp;<span id="errorMessage">A problem has been occurred while submitting your data.</span>
+                    <strong><?php etranslate("Error"); ?>!</strong>&nbsp;<span id="errorMessage">A problem has occurred while submitting your data.</span>
                     <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
                 </div>
                 <form name="editGroupForm" id="editGroupForm">
