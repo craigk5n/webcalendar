@@ -46,7 +46,7 @@ function write_password_in_new_settings($file, $password, $hint)
 $passwordSet = !empty($settings['install_password']);
 
 if (!$passwordSet) {
-  // No password set.  New instsall. Set password now.
+  // No password set.  New install. Set password now.
   $password = $_POST['password'] ?? '';
   $password2 = $_POST['password2'] ?? '';
   if ($password != $password2) {
