@@ -1,7 +1,7 @@
 <?php
 require_once 'includes/init.php';
 require_once 'includes/help_list.php';
-print_header ( '', '', '', true );
+print_header ( [], '', '', true );
 echo '
     <h2>' . translate ( 'Help Index' ) . '</h2>
     <ul>';
