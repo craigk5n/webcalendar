@@ -64,6 +64,7 @@ if ( empty ( $error ) && $id > 0 ) {
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
   WHERE cal_id = ?
     AND cal_status = "A"', [$id] );
+  $partlogin = [];
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $partlogin[] = $row[0];
