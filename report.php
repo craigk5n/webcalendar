@@ -220,7 +220,7 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
       if ( $PUBLIC_ACCESS == 'Y' ) {
         $clickStr =
         translate ( 'Click here to manage reports for the Public Access calendar.' );
-        $list .= '<p><a title="' . $clickStr . '" href="report.php?public=1">'
+        $list .= '<p><a href="report.php?public=1">'
          . $clickStr . '</a></p>';
       }
       $sql .= '? OR cal_is_global = \'Y\'';
@@ -250,7 +250,7 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
     </ul>';
     $addurl = 'edit_report.php' . ( $updating_public ? '?public=1' : '' );
     $list .= '
-    <p><a class="btn btn-primary" title="' . $addStr . '" href="' . $addurl . '" class="nav">'
+    <p><a class="btn btn-primary" href="' . $addurl . '" class="nav">'
      . $addStr . '</a></p>';
     dbi_free_result ( $res );
   } else
@@ -461,18 +461,14 @@ if ( ! empty ( $error ) ) {
 }
 
 $adminLinkStr = $manageStr = $nextLinkStr = $prevLinkStr = $textStr = '';
-$nextStr = translate ( 'Next' );
-$prevStr = translate ( 'Previous' );
 $reportNameStr = ( $include_header ? '
     <h2>' . htmlentities($report_name) . '</h2>' : '' );
 
 if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
-  $temp = '" href="report.php?report_id=' . $report_id . $u_url . '&amp;offset=';
-
   $nextLinkStr = $prevLinkStr = '
-    <a class="nav" title="';
-  $nextLinkStr .= $nextStr . $temp . $next . '">' . $nextStr . '</a>';
-  $prevLinkStr .= $prevStr . $temp . $prev . '">' . $prevStr . '</a>&nbsp;&nbsp;';
+    <a href="report.php?report_id=' . $report_id . $u_url . '&amp;offset=';
+  $nextLinkStr .= $next . '" class="nav">' . translate ( 'Next' ) . '</a>';
+  $prevLinkStr .= $prev . '" class="nav">' . translate ( 'Previous' ) . '</a>&nbsp;&nbsp;';
 }
 
 if ( empty ( $list ) ) {

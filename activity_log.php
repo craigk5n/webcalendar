@@ -34,8 +34,7 @@ echo generate_activity_log( '', $sys, $startid ) . '
     <div class="navigation">'
 // Go BACK in time.
   . ( ! empty ( $nextpage ) ? '
-      <a title="' . $prevStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr
-    . '" class="prev" href="activity_log.php?startid=' . $nextpage
+      <a class="prev" href="activity_log.php?startid=' . $nextpage
     . ( $sys ? '&amp;system=1' : '' ) . '">' . $prevStr . '&nbsp;' . $PAGE_SIZE
     . '&nbsp;' . $eventsStr . '</a>' : '' );
 
@@ -46,8 +45,7 @@ if ( ! empty ( $startid ) ) {
     if ( $row = dbi_fetch_row ( $res ) )
       // Go FORWARD in time.
       echo '
-      <a title="' . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr
-        . '" class="next" href="activity_log.php' . ( $row[0] <= $previd
+      <a class="next" href="activity_log.php' . ( $row[0] <= $previd
           ? ( $sys ? '?system=1' : '' )
           : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) ) . '">'
         . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr . '</a><br>';

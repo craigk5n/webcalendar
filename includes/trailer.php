@@ -46,7 +46,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   if ( ! empty ( $GLOBALS['HOME_LINK'] ) ) {
     $home = $GLOBALS['HOME_LINK'];
     $homeStr = translate ( 'Home' );
-    $goto_link[] = '<a title="' . $homeStr . '" class="bold" href=" '
+    $goto_link[] = '<a class="bold" href=" '
      . "$home\">$homeStr" . '</a>';
   }
 
@@ -78,7 +78,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
       if ( ! empty ( $user ) && $user != $login )
         $todayURL .= '?user=' . $user;
 
-      $goto_link[] = '<a title="' . $todayStr . '" class="bold" href="'
+      $goto_link[] = '<a class="bold" href="'
        . "$todayURL\">$todayStr" . '</a>';
     }
     if ( $login != '__public__' ) {
@@ -86,14 +86,12 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
         if( ( ! access_is_enabled()
             || access_can_access_function( ACCESS_ADMIN_HOME )
             || access_can_access_function( ACCESS_PREFERENCES ) ) )
-          $goto_link[] = '<a title="' . $adminStr
-           . '" class="bold" href="adminhome.php'
+          $goto_link[] = '<a class="bold" href="adminhome.php'
            . ( $is_nonuser_admin ? '?user=' . $user : '' )
            . "\">$adminStr" . '</a>';
 
         if ( $REQUIRE_APPROVALS == 'Y' || $PUBLIC_ACCESS == 'Y' )
-          $goto_link[] = '<a title="' . $unapprovedStr
-           . '" href="list_unapproved.php'
+          $goto_link[] = '<a href="list_unapproved.php'
            . ( $is_nonuser_admin ? '?user=' . getValue ( 'user' ) : '' )
            . "\">$unapprovedStr" . '</a>';
       }
@@ -109,33 +107,32 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
       $ulist = array_merge( get_my_users(), get_my_nonusers( $login, true ) );
       if ( count ( $ulist ) > 1 ) {
         $calStr = translate ( 'Another Users Calendar' );
-        $goto_link[] = '<a title="' . $calStr . '" href="select_user.php">'
+        $goto_link[] = '<a href="select_user.php">'
          . $calStr . '</a>';
       }
     }
   } else {
-    $goto_link[] = '<a title="' . $myCalStr . '" class="bold" href="'
+    $goto_link[] = '<a class="bold" href="'
      . "$mycal\">$myCalStr" . '</a>';
-    $goto_link[] = '<a title="' . $todayStr . '" class="bold" href="'
+    $goto_link[] = '<a class="bold" href="'
      . "$todayURL\">$todayStr" . '</a>';
 
     if ( $readonly == 'N' )
-      $goto_link[] = '<a title="' . $adminStr
-       . '" class="bold" href="adminhome.php">' . $adminStr . '</a>';
+      $goto_link[] = '<a class="bold" href="adminhome.php">' . $adminStr . '</a>';
   }
   // Only display some links if we're viewing our own calendar.
   if ( empty ( $user ) || $user == $login ) {
     if ( access_can_access_function ( ACCESS_SEARCH ) )
-      $goto_link[] = '<a title="' . $searchStr . '" href="search.php">'
+      $goto_link[] = '<a href="search.php">'
        . $searchStr . '</a>';
 
     if ( $login != '__public__' && ! $is_nonuser && $readonly != 'Y' ) {
       if ( access_can_access_function ( ACCESS_IMPORT ) )
-        $goto_link[] = '<a title="' . $importStr . '" href="import.php">'
+        $goto_link[] = '<a href="import.php">'
          . $importStr . '</a>';
 
       if ( access_can_access_function ( ACCESS_EXPORT ) )
-        $goto_link[] = '<a title="' . $exportStr . '" href="export.php">'
+        $goto_link[] = '<a href="export.php">'
          . $exportStr . '</a>';
     }
     if ( $can_add ) {
@@ -144,13 +141,12 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
          . ( ! empty ( $thismonth ) ? '&amp;month=' . $thismonth : '' )
          . ( ! empty ( $thisday ) ? '&amp;day=' . $thisday : '' );
 
-      $goto_link[] = '<a title="' . $addNewEntryStr . '" href="edit_entry.php'
+      $goto_link[] = '<a href="edit_entry.php'
        . ( ! empty ( $thisyear ) ? '?' . $tmpYrStr : '' )
        . '">' . $addNewEntryStr . '</a>';
 
       if ( $DISPLAY_TASKS_IN_GRID == 'Y' || $DISPLAY_TASKS == 'Y' )
-        $goto_link[] = '<a title="' . $addNewTaskStr
-         . '" href="edit_entry.php?eType=task'
+        $goto_link[] = '<a href="edit_entry.php?eType=task'
          . ( ! empty ( $thisyear ) ? '&amp;' . $tmpYrStr : '' )
          . '">' . $addNewTaskStr . '</a>';
     }
@@ -160,8 +156,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     : ( $login != '__public__' && ! $is_nonuser ) );
 
   if ( $showHelp )
-    $goto_link[] = '<a title="' . $helpStr
-     . '" href="#" onclick="javascript:openHelp()" '
+    $goto_link[] = '<a href="#" onclick="javascript:openHelp()" '
      . 'onmouseover="window.status=\'\'; return true">' . $helpStr . '</a>';
 
   if ( count ( $goto_link ) > 0 ) {
@@ -177,8 +172,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   $viewcnt = count ( $views );
   if ( ( access_can_access_function ( ACCESS_VIEW ) && $ALLOW_VIEW_OTHER != 'N' ) && $viewcnt > 0 ) {
     for ( $i = 0; $i < $viewcnt; $i++ ) {
-      $views_link[] = '<a title="' . htmlspecialchars ( $views[$i]['cal_name'] )
-       . '" href="' . $views[$i]['url']
+      $views_link[] = '<a href="' . $views[$i]['url']
        . ( ! empty ( $thisdate ) ? '&amp;date=' . $thisdate : '' )
        . '">' . htmlspecialchars ( $views[$i]['cal_name'] ) . "</a>\n";
     }
@@ -204,8 +198,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
-        $reports_link[] = '<a title="' . htmlspecialchars ( $row[0] )
-         . '" href="report.php?report_id=' . $row[1]
+        $reports_link[] = '<a href="report.php?report_id=' . $row[1]
          . ( ! empty ( $user ) && $user != $login ? '&amp;user=' . $user : '' )
          . '">' . htmlspecialchars ( $row[0] ) . '</a>';
       }
@@ -247,10 +240,10 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     if ( $readonly != 'Y' )
       $tret .= '<br><span class="prefix">' . $currentUserStr . ':</span>&nbsp;'
        . ( strlen ( $login ) && $login != '__public__'
-        ? $fullname . '&nbsp;(<a title="' . $logoutStr . '" href="'
+        ? $fullname . '&nbsp;(<a href="'
          . $logout_url . '">' . $logoutStr
         : // For public user (who did not actually login).
-        $publicStr . '&nbsp;(<a title="' . $loginStr . '" href="' . $login_url
+        $publicStr . '&nbsp;(<a href="' . $login_url
          . '">' . $loginStr ) . "</a>)\n";
   }
 
@@ -301,7 +294,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
         // Year does not show events, so you cannot manage someone's cal.
       }
       $groups .= ( $i > 0 && $groups != '' ? ", \n" : '' )
-       . '<a title="' . "$f\" href=\"$xurl\">$f".'</a>';
+       . "<a href=\"$xurl\">$f".'</a>';
     }
     if ( ! empty ( $groups ) )
       $tret .= '<br><span class="prefix">'
@@ -310,7 +303,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
 
   // WebCalendar Info...
   $tret .= '<br><br>
-<a title="' . $GLOBALS['PROGRAM_NAME'] . '" id="programname" href="'
+<a id="programname" href="'
    . $GLOBALS['PROGRAM_URL'] . '" target="_blank">' . $GLOBALS['PROGRAM_NAME']
    . "</a>\n" . '</div></div>
 <!-- /TRAILER -->' . "\n";

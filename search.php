@@ -140,8 +140,8 @@ if ($show_others) {
     $size = $cnt;
 
   if (! $show_advanced) {
-    echo '<tr id="advlink"><td colspan="2"><a title="' . $advSearchStr
-      . '" href="search.php?adv=1">'
+    echo '<tr id="advlink"><td colspan="2"><a' 
+      . ' href="search.php?adv=1">'
       . $advSearchStr . '</a></td></tr>';
   }
   echo '<tr  id="adv" style="visibility:' . $avdStyle[$show_advanced]

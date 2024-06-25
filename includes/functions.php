@@ -719,7 +719,7 @@ EOT;
           <a class="matrix" href="view_entry.php?id='
              . $master[$participants[$i]][$r]['ID']
              . '&friendly=1"><img src="images/pix' . ( $tmpMast = 'A' ? '' : 'b' )
-             . '.gif" title="' . $viewMsg . '" alt="' . $viewMsg . '"></a>';
+             . '.gif" alt="' . $viewMsg . '"></a>';
         }
 
         $ret .= '
@@ -738,9 +738,9 @@ EOT;
     </table><br>
     <table class="aligncenter">
       <tr>
-        <td class="matrixlegend"><img src="images/pix.gif" title="{$busy}"
+        <td class="matrixlegend"><img src="images/pix.gif"
           alt="{$busy}">{$busy}&nbsp;&nbsp;&nbsp;<img src="images/pixb.gif"
-          title="{$tentative}" alt="{$tentative}">{$tentative}</td>
+          alt="{$tentative}">{$tentative}</td>
       </tr>
     </table>
 EOT;
@@ -984,8 +984,8 @@ function display_admin_link($break = true) {
   $adminStr = translate ( 'Admin' );
 
   return ( $break ? "<br>\n" : '' )
-   . ( $MENU_ENABLED == 'N' ? '<a title="' . $adminStr
-     . '" class="nav" href="adminhome.php">&laquo;&nbsp; ' . $adminStr
+   . ( $MENU_ENABLED == 'N' ? '<a'
+     . ' class="nav" href="adminhome.php">&laquo;&nbsp; ' . $adminStr
      . '</a><br><br>' . "\n" : '' );
 }
 
@@ -1156,10 +1156,10 @@ function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
   . ( get_web_browser() == 'MSIE' ? ' style="zoom:1"' : '' )
    . '>' . ( $show_arrows &&
     ( $name != 'month' || $DISPLAY_SM_MONTH == 'N' || $DISPLAY_TASKS == 'Y' ) ? '
-        <a title="' . $nextStr . '" class="next" href="' . $name . '.php?'
+        <a class="next" href="' . $name . '.php?'
      . $u_url . 'date=' . $nextYmd . $caturl
      . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '"></a>
-        <a title="' . $prevStr . '" class="prev" href="' . $name . '.php?'
+        <a class="prev" href="' . $name . '.php?'
      . $u_url . 'date=' . $prevYmd . $caturl
      . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '"></a>' : '' ) . '
         <div class="title">
@@ -1247,10 +1247,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       <thead>
         <tr class="monthnav">
           <th colspan="' . ( $DISPLAY_WEEKNUMBER == true ? 8 : 7 ) . '">
-            <a title="' . $prevStr . '" class="prev" href="day.php?' . $u_url
+            <a class="prev" href="day.php?' . $u_url
      . 'date=' . $month_ago . $caturl
      . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '"></a>
-            <a title="' . $nextStr . '" class="next" href="day.php?' . $u_url
+            <a class="next" href="day.php?' . $u_url
      . 'date=' . $month_ahead . $caturl
      . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '"></a>'
      . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
@@ -1267,10 +1267,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       <thead>
         <tr class="monthnav">
           <th colspan="7">
-            <a title="' . $prevStr . '" class="prev" href="minical.php?'
+            <a class="prev" href="minical.php?'
      . $u_url . 'date=' . $month_ago
      . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '"></a>
-            <a title="' . $nextStr . '" class="next" href="minical.php?'
+            <a class="next" href="minical.php?'
      . $u_url . 'date=' . $month_ahead
      . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '"></a>'
      . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
@@ -1905,8 +1905,8 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
           // Added TZ conversion
           ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y' ? 3 : 2 ) )
          . '</td>
-        <td>' . ( ! $sys && ! $id ? '<a title="' . htmlspecialchars ( $l_ename )
-           . '" href="view_entry.php?id=' . $l_eid . '">'
+        <td>' . ( ! $sys && ! $id ? '<a' 
+           . ' href="view_entry.php?id=' . $l_eid . '">'
            . htmlspecialchars ( $l_ename ) . '</a></td>
         <td>' : '' ) . display_activity_log ( $l_type, $l_text ) . '</td>
       </tr>';
@@ -3647,7 +3647,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   if ( $getCat > 0 && file_exists ( $catIcon ) ) {
     $catAlt = translate ( 'Category' ) . ': ' . $categories[$getCat]['cat_name'];
     $hour_arr[$ind] .= '<img src="' . $catIcon . '" alt="' . $catAlt
-     . '" title="' . $catAlt . '">';
+     . '">';
   }
 
   if ( $getCalTypeName == 'task' ) {
@@ -3804,7 +3804,7 @@ function html_for_event_week_at_a_glance ( $event, $date,
   if ( $getCat > 0 && file_exists ( $catIcon ) ) {
     $catAlt = translate ( 'Category' ) . ': ' . $categories[$getCat]['cat_name'];
     $hour_arr[$ind] .= '<img src="' . $catIcon . '" alt="' . $catAlt
-     . '" title="' . $catAlt . '">';
+     . '">';
   }
 
   // Build entry link if UAC permits viewing.
@@ -4690,13 +4690,13 @@ function print_date_entries ( $date, $user, $ssi = false,
     $moon_title = ( empty ( $tmp ) ? '' : translate ( ucfirst ( $tmp )
      . ( strpos ( 'fullnew', $tmp ) !== false ? '' : ' Quarter' ) . ' Moon' ) );
     $ret = ( $can_add ? '
-        <a title="' . $newEntryStr . '" href="edit_entry.php?' . $userCatStr
+        <a href="edit_entry.php?' . $userCatStr
        . 'date=' . $date . '"><img src="images/bootstrap-icons/plus-circle.svg" alt="' . $newEntryStr
        . '" class="new"></a>' : '' ) . '
         <a class="dayofmonth" href="day.php?' . $userCatStr . 'date=' . $date
      . '">' . substr ( $date, 6, 2 ) . '</a>' . ( empty ( $tmp )
-      ? '' : '<img src="images/' . $tmp . 'moon.gif" title="' . $moon_title
-      . '" alt="' . $moon_title . '">' ) . "<br>\n";
+      ? '' : '<img src="images/' . $tmp . 'moon.gif"'
+      . ' alt="' . $moon_title . '">' ) . "<br>\n";
     $cnt++;
   }
   // Get, combine and sort the events for this date.
@@ -4958,7 +4958,7 @@ function print_entry ( $event, $date ) {
       ? '' : translate ( 'Category' ) . ': '
        . $categories[$catNum]['cat_name'] );
 
-    $ret .= $catIcon . '" alt="' . $catAlt . '" title="' . "$catAlt\">";
+    $ret .= $catIcon . '" alt="' . $catAlt . '">';
   }
 
   if ( $login != $loginStr && strlen ( $loginStr ) ) {
