@@ -20,7 +20,7 @@ if ( ! $is_admin )
 
 $BodyX = 'onload="usermode_handler();"';
 $INC = ['js/views_edit.php'];
-print_header( $INC, '', $BodyX );
+print_header ( $INC, '', $BodyX );
 ?>
 
 <form action="views_edit_handler.php" method="post" name="editviewform">

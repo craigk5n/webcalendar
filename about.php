@@ -27,9 +27,9 @@ if ( empty ( $data ) ) {
   $replacements[] = '';
   $data = preg_replace ( $patterns, $replacements, $data );
 }
-print_header ( [], '<link href="includes/css/about.css" rel="stylesheet">',
-  '', true, false, true );
-echo '    <div id="creds">'
+print_header ( ['css/about.css'], '', '', true, false, true );
+echo '
+    <div id="creds">'
   . ( empty ( $credits ) ? '
       <a href="' . $PROGRAM_URL
     . '" target="_blank" title="' . $PROGRAM_NAME . '">

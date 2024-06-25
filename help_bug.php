@@ -8,7 +8,7 @@ if ( empty ( $SERVER_SOFTWARE ) )
 if ( empty ( $HTTP_USER_AGENT ) )
   $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
 
-  print_header ( '', '', '', true );
+  print_header ( [], '', '', true );
   echo $helpListStr . '
     <h2>' . translate ( 'Report Bug' ) . '</h2>
     <p>' .

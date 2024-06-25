@@ -156,11 +156,8 @@ if( ! empty( $otheruser ) ) {
     }
   }
 }
-print_header( '',
-  '<script src="includes/js/access.js?'
- . filemtime( 'includes/js/access.js' ) . '"></script>
-    <link href="includes/css/access.css?'
- . filemtime( 'includes/css/access.css' ) . '" rel="stylesheet">',
+
+print_header ( ['css/access.css', 'js/access.js'], '',
   ( ! empty( $op['time'] ) && $op['time'] == 'Y'
     ? 'onload="enableAll( true );"' : '' ) );
 

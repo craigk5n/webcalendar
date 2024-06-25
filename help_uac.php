@@ -5,7 +5,7 @@ require_once 'includes/help_list.php';
 $descStr =
 translate ( 'Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.' );
 
-print_header ( '', '', '', true, false, true );
+print_header ( [], '', '', true, false, true );
 echo $helpListStr . '
     <div class="helpbody">
       <h2>' . translate ( 'Help' ) . ': '
