@@ -1,0 +1,2387 @@
+# Tatar tt
+#
+# Формат өстәмә баштан тора:
+#
+# Тәрҗемә ителгән: сезнең исемегез һәм электрон почтагыз
+# Соңгы яңарту: тәрҗемә көне
+# (Әйдәп баручы "#" һәм алдагы тәрҗемәчеләрнең аңлатмаларын кертеп.
+# БЕРЕНЧЕ буш сызык бу баш аңлатмаларны тәмамлый.)
+#
+# Кирәк булган кадәр иярә:
+#
+# Инглиз сүзе: тәрҗемә
+# (Бер сызыкка. Әйдәп баручы "#".
+# "Инглиз сүзтезмәсе:", шул исәптән эчәк колонкасы: ", белән тәэмин ителгән
+# WebCalendar ясаучылар. Сезнең өлеш - "тәрҗемә".)
+#
+# Кораллар каталогында сезгә ярдәм итәр өчен ике перл скрипты бар:
+# - check_translation.pl
+# барлык текстның уңышлы тәрҗемә ителгәнен күрсәтә.
+# - update_translation.pl
+# барлык тәрҗемәләрне табу өчен программа файлларын анализлаячак ('фраза') һәм
+# кораллар киңәше ('гыйбарә'). Ул бит буенча фразеологизмнарны тәртипкә китерәчәк
+# беренче очракны үз эченә алган # (файл). Ихтыяр рәвештә, ул теге булырга мөмкин
+# куеп тәрҗемә ителмәгән # фразеологизмнар
+#  << MISSING >>
+# фразеологизм өстендә. , Әм, сүзтезмә кыскарту булса,
+# ул тулы инглизчә текстны фразеологизм астындагы юлга кертәчәк.
+#
+# Искәрмә: Мин файлның гомуми күләмен киметергә тырышам. "Тәрҗемә" булса
+# сүз / фраза сезнең телегездә һәм инглизчә бертигез, "=" билгесен кулланыгыз.
+#
+# Искәрмә: Сез язуны күрерсез "Маy_" аста. Моның сәбәбе бар.
+# Тәрҗемә итү "Маy_" тулы ай исеменә һәм "Маy" өчен,
+# гадәттә өч хәрефле, ай кыскартуы ("октябрь" өчен "октябрь" кебек).
+#
+# Мин моның өчен Google тәрҗемәсен кулландым.
+# Туган тел аны раслый алганчы җитәрлек.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: XXX версия
+WebCalendar is a PHP application used...: WebCalendar - бер кулланучы яки интернет / интернет челтәре өчен календарьны саклау өчен кулланылган PHP кушымтасы. Аны шулай ук ​​вакыйга календаре итеп конфигурацияләргә мөмкин.
+Credits: Кредитлар
+About: Турында
+OK: Ярар
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Мәгълүматлар базасы хата: XXX.
+DEFAULT CONFIGURATION: Дефаль конфигурация
+Go: Бар
+Save: Саклагыз
+Undo: Кире кайтару
+Public Access: Халыкка керү
+Admin: Админ
+User Access Control: Кулланучыларга керү контроле
+Allow Access to Other Users Calendar: Башка кулланучылар календарена керергә рөхсәт итегез
+Grant This User Access to My Calendar: Бу кулланучыга минем календарьга рөхсәт бирегез
+Type: Тип
+Calendar: Календарь
+View Event: Вакыйга карау
+View: Карарга
+Edit: Редакцияләү
+Approve/Reject: Рөхсәт / кире кагу
+Events: Вакыйгалар
+Tasks: Биремнәр
+Journals: Журналлар
+Can Invite: Чакыра ала
+Can Email: Электрон почта аша җибәрә аласыз
+Can See Time Only: Вакытны гына күрә аласыз
+Assistant: Ярдәмче
+Select All: Барысын да сайлагыз
+Clear All: Барысын да чистарт
+Public: Халык
+Confidential: Яшерен
+Private: Шәхси
+
+########################################
+# Page: activity_log.php
+#
+Next: Чираттагы
+Previous: Алдагы
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: XXX вакыйга сезнең календарьда.
+Invalid entry id XXX.: Яраксыз керү ID: "XXX".
+a XXX event may not be added to your calendar: Бу XXX вакыйга, һәм сезнең календарьга өстәлмәскә мөмкин.
+confidential: яшерен
+private: шәхси
+Error adding event XXX.: Вакыйга өстәүдә хата: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: "XXX" көйләү исеме дөрес түгел.
+Select: Сайлагыз
+Day: Көн
+Week: Атна
+Month: Ай
+Year: Ел
+Bottom: Түбәндә
+Top: .Гары
+Anyone: Anyoneәркем
+Participant: Катнашучы
+Settings: Көйләүләр
+Groups: Төркемнәр
+NonUser Calendars: Кулланучылар булмаган календарьлар
+Other: Бүтәннәр
+Email: Электрон почта
+Colors: Төсләр
+Document background: Документ фоны
+Document title: Документ исеме
+Document text: Документ тексты
+My event text: Минем вакыйга тексты
+Table grid color: Өстәл челтәре төсе
+Table header background: Өстәл башы фоны
+Table header text: Таблицаның баш тексты
+Table cell background: Өстәл шакмак фоны
+Table cell background for current day: Бүгенге көн өчен өстәл шакмаклары
+Table cell background for days with events: Вакыйгалар белән берничә көн өстәл шакмак фоны
+Table cell background for weekends: Ял көннәрендә өстәл шакмаклары
+Table cell background for other month: Башка ай өчен өстәл шакмаклары
+Week number color: Атна саны төсе
+Event popup background: Вакыйга поп
+Event popup text: Вакыйга ачылган текст
+System Settings: Система көйләүләре
+Help: Ярдәм итегез
+System options: Система вариантлары
+app-name-help: Барлык битләр өчен дә, логин битендә дә браузерның титулында күренәчәк кушымтаның исемен күрсәтә. Сез күрсәткән кыйммәт тәрҗемә файлында каралачак, сезгә төрле телләр өчен төрле исемнәр бирергә мөмкинлек бирә.
+Application Name: Гариза исеме
+Translated Name (XXX): Тәрҗемә ителгән исем (XXX)
+server-url-help: Кушымта өчен төп URL күрсәтә. Бу электрон почта искәртмәләрен һәм хәбәрләрен җибәргәндә кертеләчәк.
+Server URL: Сервер URL
+home-url-help: Кушымта өчен төп URL күрсәтә. Бу абсолют яки туган булырга мөмкин
+Home URL: Төп URL
+language-help: Кайсы телне кулланырга икәнен күрсәтә.
+Language: Тел
+Your browser default language is XXX.: Сезнең браузерның төп теле "XXX".
+Allow user to use themes: Кулланучыларга темалар кулланырга рөхсәт итегез
+themes-help: Конфигурация көйләүләрен массакүләм яңартырга рөхсәт итә. Кечкенә хәрефләр кулланучылар префы гына.
+Themes: Темалар
+AVAILABLE THEMES: Мөмкин булган темалар
+None: Беркем дә юк
+Preview: Алдан карау
+Site customization: Сайтны көйләү
+custom-script-help: Customәр битнең HTML "баш" бүлегенә кертеләчәк махсус Javascript яки стиль таблицасы текстын кертергә рөхсәт итә.
+Custom script/stylesheet: Махсус сценарий / стиль таблицасы
+custom-header-help: Customәрбер битнең башына махсус HTML фрагментын кертергә рөхсәт итә.
+Custom header: Махсус башлам
+custom-trailer-help: Customәр бит ахырында махсус HTML фрагментын кертергә рөхсәт итә.
+Custom trailer: Махсус трейлер
+enable-external-header-help: Традицион трейлерны тышкы файлдан йөкләргә рөхсәт итә
+Allow external file for header/script/trailer: Баш файл / скрипт / трейлер өчен тышкы файлга рөхсәт итегез
+Allow user to override header/trailer: Кулланучының баш / трейлерны кире кагарга рөхсәт итегез
+Date and Time: Дата һәм Вакыт
+server-tz-help: Вакытны сервер вакытына көйләү өчен ничә сәгать күрсәтә.
+Server Timezone Selection: Серверның вакыт зонасын сайлау
+tz-help: Вакытны UTC-тан җирле вакытка көйләү өчен ничә сәгать күрсәтә.
+Default Client Timezone Selection: Килешү клиент вакыт зонасын сайлау
+display-general-use-gmt-help: Кушылса, гомуми даталар / вакытлар GMT рәвешендә күрсәтелә
+Display Common Use Date/Times as GMT: Гомуми куллану датасын / вакытын GMT итеп күрсәтегез
+date-format-help: Сайланган дата форматын күрсәтә.
+Date format: Дата форматы
+Small Task Date: Кечкенә эш вакыты
+display-week-starts-on: Атна башланган атна көнен күрсәтә. Дүшәмбе күрсәтелгән булса, атна саннары ISO атна номерлары булачак.
+Week starts on: Атна башлана
+display-weekend-starts-on: Ял көннәре башланыр өчен атна көнен билгели
+Weekend starts on: Ял көннәре башлана
+time-format-help: Кайсы вакыт форматын кулланырга икәнен күрсәтә:<br><em>12 сәгать:</em> Күрсәтү вакыты 3 сәгать, кичке 8:30 һ.б.<br><em>24 сәгать:</em> 300 тапкыр күрсәтегез , 2030 һ.б.
+Time format: Вакыт форматы
+12 hour: 12 сәгать                                                   
+24 hour: 24 сәгать                                                   
+timed-evt-len-help: Вакытлы вакыйганың озынлыгын билгеләү өчен кертү ысулын күрсәтә.
+Specify timed event length by: Вакытлы вакыйганың озынлыгын күрсәтегез
+Duration: Озынлыгы
+End Time: Ахыр вакыт
+work-hours-help: Көн күренеше өчен күрсәтү вакытын күрсәтә.
+Work hours: Эш вакыты
+From: Кемнән
+to: =
+Appearance: Күренеш
+preferred-view-help: Килешенгән күренешне күрсәтә (Көн, Атна, Ай яки Ел).
+Preferred view: Сайланган күренеш
+Allow top menu: Topгары менюга рөхсәт итегез
+Date Selectors position: Дата Селекторлар позициясе
+menu-themes-help: Menuгары менюның төсләрен һәм стилен куя
+Menu theme: Меню темасы
+fonts-help: Кулланыла торган система шрифтлары исемлеген күрсәтә (мәсәлән, "Ариал, Хельветика")
+Fonts: Шрифтлар
+display-sm_month-help: Эшләтелгән булса, ай күренешләрендә кечкенә айларны күрсәтә
+Display small months: Кечкенә айларны күрсәтегез
+display-weekends-help: Атнаны караган вакытта ял көннәрен кертегез.
+Display weekends: Ял көннәрен күрсәтегез
+display-long-daynames-help: Кушылса, озын көн исемнәре күрсәтелә
+Display long day names: Озын көн исемнәрен күрсәтегез
+display-alldays-help: Барлык күзәнәкләрне тутырып, алдагы һәм киләсе ай көннәрен ай күренешләрендә күрсәтегез.
+Display all days in month view: Барлык көннәрне ай күренешендә күрсәтегез
+display-week-number-help: Атна саны (1-52) ай күренешендә һәм атна күренешендә күрсәтелергә тиешлеген күрсәтә.
+Display week number: Атна номерын күрсәтегез
+display-desc-print-day-help: Көн күренешенең принтерга файдалы версиясенә вакыйгалар тасвирламасын кертегез.
+Display description in printer day view: Принтерның көн күренешендә тасвирлау
+yearly-shows-events-help: Еллык күренештә калын шрифттагы вакыйгаларны үз эченә алган көннәрне күрсәтегез.
+Display days with events in bold in month and year views: Көннәрне вакыйгалар белән ай һәм ел күренешләрендә күрсәтегез
+display-minutes-help: Кушылса, 00 белән тәмамланган минутлар һәрвакыт күрсәтеләчәк
+Display 00 minutes always: 00әрвакыт 00 минут күрсәтегез
+display-end-times-help: Вакытлы вакыйга булса, вакыйганың соңгы вакытларын күрсәтегез
+Display end times on calendars: Соңгы вакытларны календарьларда күрсәтегез
+allow-view-add-help: '+' Иконасы күренешләргә кертеләчәк, бу кулланучыларга календарьга вакыйгаларны тиз өстәргә мөмкинлек бирә.
+Include add event link in views: Вакыйгаларга сылтама өстәгез
+lunar-help: Эшләтелгән булса, ай фазаларын күрсәтүче кечкенә иконалар күрсәтеләчәк
+Display Lunar Phases in month view: Ай күренешләрен ай күренешендә күрсәтегез
+Restrictions: Чикләүләр
+allow-view-other-help: Бер кулланучы бүтән кулланучының календарен карый аламы-юкмы икәнен күрсәтә.
+Allow viewing other users calendars: Башка кулланучының календарьларын карарга рөхсәт итегез
+require-approvals-help: Эшләтелгәндә, кулланучы вакыйганы календарьда күрсәтелгәнче расларга тиеш (расланмаган күрсәтү кушылмаган булса). Игътибар итегез, моны "" к "итеп кую Халыкка керү календаре өчен рөхсәтне сүндермәячәк (әгәр дә Халыкка керү календаре кушылган булса).
+Require event approvals: Вакыйга рөхсәтен таләп итегез
+display-unapproved-help: Сезнең календарьда расланмаган вакыйгалар күрсәтеләме-юкмы икәнен күрсәтә.<br>"Әйе" итеп куелса, расланмаган вакыйгалар сезнең календарьда күрсәтеләчәк (башка текст төсендә).<br>"" к "булса, димәк расланмаган вакыйгалар сезнең календарьда күрсәтелгәнче расланырга тиеш.
+Display unapproved: Рөхсәтсез күрсәтегез
+conflict-check-help: Вакыйга конфликтын тикшерегез (бер үк кеше өчен бер үк вакытта планлаштырылган ике вакыйга). Әгәр сез моны "Әйе" итеп куйсагыз, сез кисәтүне раслаганнан соң берьюлы ике вакыйганы раслый аласыз. Моны "" к "итеп куйсагыз, конфликтларны тикшермәячәкләр. Сез моны "Әйе" итеп куярга телисез, шуңа күрә конфликтны тикшерү була.
+Check for event conflicts: Вакыйга конфликтларын тикшерегез
+Yes: Әйе
+No: .К
+conflict-months-help: Әгәр конфликтны тикшерү урында булса ("Вакыйгалар конфликтын тикшерегез" "" к "& # 41; итеп куелган, бу киләчәктә ничә ай дәвамында конфликтларны тикшерергә кирәклеген күрсәтә. , бу санны киметү.
+Conflict checking months: Конфликтларны тикшерү айлары
+conflict-check-override-help: Кулланучыларга вакыйгалар конфликтын юкка чыгарырга һәм бер үк вакытта ике яки күбрәк вакыйгаларны расларга мөмкинлек бирә.
+Allow users to override conflicts: Кулланучыларга конфликтларны кире кагарга рөхсәт итегез
+limit-appts-help: Система администраторына бер кулланучы теләсә кайсы көнне була ала торган билгеләнү санына система күләмен чикләргә рөхсәт итә.
+Limit number of timed events per day: Көнгә билгеләнгән вакыйгалар санын чикләгез
+limit-appts-number-help: Кулланучының бер көндә була алган максималь вакыйгалар санын күрсәтә.
+Maximum timed events per day: Көнгә максималь вакытлы вакыйгалар
+crossday-help: Кушылса, берничә көн эчендә булган вакыйгалар аерым көннәрдә күрсәтеләчәк
+Disable Cross-Day Events: Көндезге вакыйгаларны сүндерегез
+disable-location-field-help: "Әйе" сайлау вакыйга урыны битеннән "Урын" кырын бетерәчәк
+Disable Location field: Урын кырын сүндерегез
+disable-url-field-help: "Әйе" сайлау вакыйга URL битләреннән "URL" кырын бетерәчәк
+Disable URL field: URL кырын сүндерегез
+disable-priority-field-help: "Әйе" сайлау, "Приоритет" кырын вакыйгалар мәгълүмат битләреннән бетерәчәк, яңа кешеләр өчен гадирәк интерфейс тәкъдим итә.
+Disable Priority field: Приоритет кырын сүндерегез
+disable-access-field-help: "Әйе" ны сайлау вакыйгалар өчен мәгълүмат битләреннән "Рөхсәт" кырын бетерәчәк, яңа кешеләр өчен гадирәк интерфейс тәкъдим итә.
+Disable Access field: Керү кырын сүндерегез
+disable-participants-field-help: "Әйе" сайлау "Катнашучылар" кырын вакыйга мәгълүмат битләреннән бетерәчәк, кулланучыларга үз вакыйгаларына бүтән кулланучылар өстәргә комачаулый. Әгәр дә сез бу вариантны эшләтсәгез, сез "Башка кулланучы календарьларын карарга рөхсәт итегез" кырын да сүндерергә теләрсез.
+Disable Participants field: Катнашучылар кырын сүндерегез
+disable-repeating-field-help: "Әйе" сайлау вакыйгаларны өстәгәндә "Кабатлау" кырын бетерәчәк. Бу яңа кешеләр өчен гадирәк интерфейс тәкъдим итәчәк.
+Disable Repeating field: Кабатлау кырын сүндерегез
+allow-html-description-help: Кушылса, кулланучылар вакыйганы тасвирлау кырына HTML кертә алалар. Әгәр дә кушылмаса, HTML тэглары гади текст булып күренсен өчен качачаклар. Кисәтү: бу функцияне куллану кулланучыларга бүтән вебсайтларда рәсемнәргә мөрәҗәгать итәргә мөмкинлек бирәчәк.
+Allow HTML in Description: Тасвирлауда HTML рөхсәт итегез
+Popups: Калкып чыккан
+disable-popups-help: Календарь күренешләреннән калкып чыкканнарны сүндерегез
+Disable Pop-Ups: Поп-апларны сүндерегез
+popup-includes-siteextras-help: Кушылса, site_extras.php файлында махсус вакыйгалар кырларын урнаштырырга рөхсәт итегез, вакыйгалар калкып чыкканда.
+Display Site Extras in popup: Сайт өстәмәләрен калкып чык
+popup-includes-participants-help: Кушылса, катнашучылар вакыйгалар калкып чыга.
+Display Participants in popup: Калкып чыккан катнашучыларны күрсәтегез
+Miscellaneous: Төрле
+remember-last-login-help: Эшләтелгәндә, кулланучының логины алар өчен логин битендә тутырылачак (ләкин серсүз түгел), һәм кулланучының өстенлекләре йөкләнәчәк (аларның өстенлекле төсләрен һәм тел сайлауын да кертеп).
+Remember last login: Соңгы логинны исегездә тотыгыз
+summary_length-help: Календарь күренешләрендә кыскача тасвирлау максималь озынлыгы
+Brief Description Length: Кыска тасвирлау озынлыгы
+user_sort-help: Кулланучы, кулланучылар исемлеге өчен тәртип тәртибен билгели
+User Sort Order: Кулланучының сорт тәртибе
+Lastname, Firstname: Фамилия, Фамилия
+Firstname, Lastname: Исем Фамилия
+allow-public-access-help: Эшләтелгәндә, календарь укучылар өчен генә керүне таләп итмәгән календарь буларак кулланылырга мөмкин.
+Allow public access: Халыкка рөхсәт итегез
+public-access-default-visible: Иҗтимагый календарьдагы вакыйгалар барлык кулланучылар календарьларында автоматик рәвештә барлыкка киләчәк
+Public access visible by default: Килешү буенча халыкка керү
+public-access-default-selected: Яңа вакыйга өстәгәндә, җәмәгать кулланучысы килешү буенча сайлап алыначак.
+Public access is default participant: Халыкка керү - демократик катнашучы
+public-access-view-others-help: Халыкка рөхсәтле системага кергәндә, кулланучының башка календарь календарен карый алу-булмавын күрсәтә.
+Public access can view other users: Халыкка керү башка кулланучыларны карый ала
+public-access-can-add-help: Эшләтелгәндә, җәмәгать рөхсәте аша системага кергән кулланучылар яңа вакыйгалар өсти алалар, ләкин администратор яңа вакыйганы раслаганчы календарьда күрсәтмәячәкләр.
+Public access can add events: Халыкка керү вакыйгалар өсти ала
+public-access-add-requires-approval-help: Халыкка керү счеты аша өстәлгән вакыйгалар күрсәтелгәнче рөхсәт таләп итәме-юкмы икәнен күрсәтә.
+Public access new events require approval: Халыкка яңа вакыйгалар рөхсәт таләп итә
+public-access-sees-participants-help: Эшләтелгән очракта, календарьга җәмәгать счетыннан кергән кулланучылар, вакыйганың детальләрен карасалар, катнашучыларны күрә алалар.
+Public access can view participants: Халыкка керү катнашучыларны карый ала
+public-access-override-help: Иҗтимагый календарьда вакыйгалар исемнәрен һәм тасвирламаларын яшерергә рөхсәт итә
+Override event name/description for public access: Халыкка керү өчен вакыйганың исемен / тасвирламасын кире кагарга
+public-access-override-text-help: Aboveгарыдагы вариант кушылган булса, күрсәтү өчен текст. "Мөмкин түгел" икән, ул тәрҗемә ителәчәк.
+Text to display to public access: Халыкка күрсәтү өчен текст
+public-access-captcha-help: Эшләтелгән булса, җәмәгать тарафыннан өстәлгән яңа вакыйгалар CAPTCHA тикшерүен таләп итә.
+Require CAPTCHA validation for public access new events: Халыкка яңа вакыйгаларга керү өчен CAPTCHA тикшерүен таләп итегез
+uac-enabled-help: Кулланучының дәрәҗәсенә керү мөмкинлеген бирә
+User Access Control enabled: Кулланучыларга керү контроле кушылган
+groups-enabled-help: Төркем ярдәмен кулланучыларга төркемнәр буенча сайларга мөмкинлек бирә.
+Groups enabled: Төркемнәр кушылган
+user-sees-his-group-help: Кушылса, кулланучылар ким дигәндә бер төркемдә булмаган календарь кулланучыларын күрмәячәкләр.
+User sees only his groups: Кулланучы аның төркемнәрен генә күрә
+nonuser-enabled-help: Кушылса, администраторлар календарьлар өстәргә мөмкинлек алачак
+Nonuser enabled: Кулланучылар календарьлары кушылган
+nonuser-list-help: Катнашучылар исемлегендә календарьларны кая күрсәтергә
+Nonuser list: Катнашучылар исемлегендә күрсәтү
+Upcoming Events: Киләчәк вакыйгалар
+upcoming-events-help: Киләчәк.php кушу
+Enabled: Эшләтелгән
+upcoming-events-allow-override: Киләчәк.php өчен кулланучы параметрына рөхсәт итегез
+Allow user override: Кулланучыны кире кагарга рөхсәт итегез
+upcoming-events-display-caticons: Киләчәк.php категориясенә иконалар кертегез
+Display category icons: Төркем иконаларын күрсәтү
+upcoming-events-display-layers: Киләчәк.php катламнарын күрсәтегез
+Display layers: Катламнарны күрсәтү
+upcoming-events-display-links: Киләчәк.php сылтамаларын күрсәтегез
+Display links to events: Вакыйгаларга сылтамалар күрсәтегез
+upcoming-events-display-popups: Киләчәк.php сайтында вакыйгалар калкып чыгуын күрсәтегез
+Display event popups: Вакыйга калкып чыгу
+reports-enabled-help: Кушылса, кулланучылар һәр битнең аскы өлешендә "Докладлар" бүлеген күрәчәкләр һәм махсус докладлар ясарга рөхсәт ителә. Моннан тыш, администратор кулланучылары барлык кулланучылар битләренең төбендә барлыкка киләчәк глобаль докладлар ясый ала.
+Reports enabled: Докладлар кушылган
+subscriptions-enabled-help: Ерак кулланучылар WebCalendar кулланучы календарена языла алалармы, WebCalendar кулланучы вакыйгаларын iCal кушылган кушымтасында күрергә мөмкинлек бирә (мәсәлән, Apple iCal яки Mozilla календаре кебек).
+Allow remote subscriptions: Дистанцион язылу рөхсәт итегез
+remotes-enabled-help: Кулланучыларга URL ярдәмендә дистанцион ics файлларын йөкләргә рөхсәт итә
+Allow remote calendars: Ерак календарьларга рөхсәт итегез
+rss-enabled-help: Кулланучының календарен RSS тасмасыннан алу мөмкинлеген күрсәтә.
+Enable RSS feed: RSS тасмасын кушу
+categories-enabled-help: Вакыйга категорияләренә ярдәм күрсәтә.
+Categories enabled: Төркемнәр кушылган
+icon_upload-enabled-help: Кушылса, кулланучылар категория иконаларын йөкли алалар
+Category Icon Upload enabled: Төркем иконасын йөкләү кушылган
+(Requires XXX folder to exist.): (XXX папка булырга тиеш.)
+display-tasks-help: Ай һәм көн календарендә кечкенә эш тәрәзәсен күрсәтегез
+Display small task list: Кечкенә эш исемлеген күрсәтегез
+display-tasks-in-grid-help: Вакыйгалар белән бергә календарьларда биремнәр күрсәтегез
+Display tasks in Calendars: Календарьда биремнәр күрсәтегез
+allow-external-users-help: Календарь булмаган кулланучының вакыйгага кушылу мөмкинлеген күрсәтә. Бу календарь булмаган кулланучыларга вакыйга катнашучылары исемлегенә керергә мөмкинлек бирә.
+Allow external users: Тышкы кулланучыларга рөхсәт итегез
+external-can-receive-notification-help: Тышкы кулланучылар кушылганда һәм электрон почта куллану кушылганда, тышкы кулланучылар вакыйга өстәлгәндә, яңартылганда яки бетерелгәндә (тышкы кулланучының электрон почта адресы күрсәтелгән булса) электрон почта хәбәрләрен ала ала.
+External users can receive email notifications: Тышкы кулланучылар электрон почта хәбәрләрен ала ала
+external-can-receive-reminder-help: Тышкы кулланучылар кушылганда һәм электрон почта куллану кушылганда, тышкы кулланучылар электрон почта искәртмәләрен ала ала (әгәр тышкы кулланучының электрон почта адресы бирелгән булса).
+External users can receive email reminders: Тышкы кулланучылар электрон почта искәртмәләрен ала ала
+allow-self-registration-help: Яңа кулланучыларга үзләрен теркәлергә рөхсәт итегез
+Allow self-registration: Selfз-үзеңне теркәлергә рөхсәт ит
+use-blacklist-help: IP адрес нигезендә WebCalendar функцияләренә керү мөмкинлеген чикләгез
+Restrict self-registration to blacklist: Кара исемлектә үз-үзеңне теркәлүне чиклә
+allow-self-registration-full-help: Яңа кулланучыларга үз-үзләрен теркәү процессын он-лайн тәмамларга рөхсәт итегез
+Use self-registration email notifications: Серсүзләр ясагыз һәм яңа кулланучыларга җибәрегез
+allow-attachment-help: Кулланучыларга вакыйгаларга файл кушымталарын өстәргә рөхсәт итегез.
+Allow file attachments to events: Вакыйгаларга файл кушымталарын рөхсәт итегез
+Admin and owner can always add attachments if enabled.: Администратор һәм хуҗа кушылса, гел кушымталар өсти алалар.
+allow-comments-help: Кулланучыларга вакыйгаларга аңлатма өстәргә рөхсәт итегез.
+Allow comments to events: Вакыйгаларга аңлатмалар бирергә рөхсәт итегез
+Admin and owner can always add comments if enabled.: Администратор һәм хуҗа кушылган очракта һәрвакыт аңлатмалар өсти алалар.
+email-enabled-help: Хәбәрләр һәм искәртмәләр өчен электрон почта җибәрүне кабызыгыз яки сүндерегез. Сезнең сервер почта җибәрү өчен дөрес куелмаган булса, "юк" итеп куегыз.
+Email enabled: Электрон почта кушылган
+email-default-sender: Искә төшерүләр җибәргәндә җибәрүче итеп күрсәтү өчен электрон почта адресын күрсәтә.
+Default sender address: Килешү җибәрүче адресы
+email-mailer: Электрон почта төрен сайлагыз (SMTP, PHP почта, җибәрү)
+Email Mailer: Электрон почта
+email-smtp-host: SMTP серверның хост исеме (лары) үтем белән аерылган
+SMTP Host name(s): SMTP Хост исеме (ләре)
+email-smtp-port: SMTP порт номеры (гадәттә 25)
+SMTP Port Number: SMTP порт номеры
+email-smtp-auth: SMTP аутентификациясен кулланыгыз
+SMTP Authentication: SMTP аутентификациясе
+email-smtp-username: Аутентификация кулланса, SMTP кулланучы исеме
+SMTP Username: SMTP кулланучы исеме
+email-smtp-password: Аутентификацияне куллансагыз, SMTP серсүз
+SMTP Password: SMTP серсүз
+Default user settings: Килешү кулланучы көйләүләре
+email-format: HTML яки гади текст хәбәрләренә өстенлек күрсәтегез
+Email format preference: Электрон почта форматы өстенлеге
+HTML: =
+Plain Text: Гади текст
+email-include-ics: Электрон почта хәбәренә iCalendar ICS файлын кертегез
+Include iCalendar attachments: ICalendar кушымталарын кертегез
+email-event-reminders-help: Вакыйга искәртмәләрен җибәрү-җибәрмәүне күрсәтә.
+Event reminders: Вакыйга искәртмәләре
+email-event-added: Сезнең календарьга вакыйга өстәлгәндә электрон почта хәбәрләрен җибәрү-җибәрмәүне күрсәтә.
+Events added to my calendar: Вакыйгалар минем календарьга өстәлде
+email-event-updated: Сезнең календарьда вакыйга яңартылганда электрон почта хәбәрләрен җибәрү-җибәрмәүне күрсәтә.
+Events updated on my calendar: Вакыйгалар минем календарьда яңартылды
+email-event-deleted: Сезнең календарьдан берәр вакыйга алынгач, электрон почта хәбәрләрен җибәрү-җибәрмәүне күрсәтә.
+Events removed from my calendar: Вакыйгалар минем календарьдан алынды
+email-event-rejected: Катнашучы сезнең календарьдагы вакыйганы кире какканда электрон почта хәбәрләрен җибәрү-җибәрмәүне күрсәтә.
+Event rejected by participant: Чара катнашучы тарафыннан кире кагылды
+email-event-create: Язмаларны ясаучы электрон почта алырмы-юкмы икәнен күрсәтә
+Event that I create: Мин ясаган вакыйга
+Color options: Төс вариантлары
+Allow user to customize colors: Кулланучыларга төсләрне көйләргә рөхсәт итегез
+gradient-colors: Кушылса, градиент төсләр кулланыла. Бу эшкә зур йогынты ясарга мөмкин.
+Enable gradient images for background colors: Фон төсләр өчен градиент рәсемнәрне рөхсәт итегез
+Not available: Кулланып булмый
+Background Image options: Фон рәсемнәре
+bgimage-help: Теләгән фон рәсеменең URL. Нисби сылтама булырга мөмкин.
+Background Image: Фон рәсем
+bgrepeat-help: Фон сурәтнең кабатлану тәртибен контрольдә тота.
+Background Repeat: Фон кабатлау
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Ярдәмчеләр
+Preferences: Өстенлекләр
+Control Panel: Идарә панеле
+Users: Кулланучылар
+Account: Хисап
+Categories: Төркемнәр
+Views: Карарлар
+Layers: Катламнар
+Reports: Докладлар
+Delete Events: Вакыйгаларны бетерү
+Activity Log: Эшләр журналы
+System Log: Система журналы
+Security Audit: Куркынычсызлык аудиты
+Public Preferences: Publicәмәгать өстенлекләре
+Unapproved Public Events: Рөхсәт ителмәгән җәмәгать вакыйгалары
+Administrative Tools: Административ кораллар
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Күчерелмә исем: "XXX".
+Username XXX already exists.: "XXX" кулланучы исеме инде бар.
+Email address XXX already exists.: "XXX" электрон почта адресы бар.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Өстәмә аңлатмалар (өстәмә)
+Approve and Send: Рөхсәт итегез һәм җибәрегез
+Approve and Exit: Килешү һәм чыгу
+(Your comments will be emailed to the event creator.): (Сезнең комментарийлар вакыйганы ясаучыга җибәреләчәк.)
+Hello, XXX.: Сәлам, XXX.
+XXX has approved an appointment and added comments.: Билгеләнү хупланды һәм аңлатмалар XXX өстәлде.
+Subject XXX: Тема: "XXX".
+Description XXX: Тасвирлау: "XXX".
+Date XXX: Дата: XXX
+Time XXX: Вакыт: XXX
+Comments XXX: Фикерләр: XXX
+Approved w/Comments by XXX.: Расланган w / Комментарийлар: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Администратор режимы
+Your assistants: Сезнең ярдәмчеләрегез
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Билгесез хата.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Программа хата: XXX күрсәтелмәгән!
+user: кулланучы
+year: ел
+month: ай
+day: көн
+
+########################################
+# Page: category.php
+#
+Category Icon: Төркем иконасы
+Global: Глобаль
+The permissions for the icons directory are set to read-only: Иконалар каталогына рөхсәтләр бары тик уку өчен генә куелган.
+Category Name: Төркем исеме:
+Color: Төс
+Remove Icon: Иконаны бетерегез:
+Add Icon to Category: Төркемгә иконаны өстәгез
+Upload: Йөкләү
+GIF or PNG 6kb max: GIF яки PNG 6кб макс
+Search for existing icons: Хәзерге иконаларны эзләгез
+Add: Кушу
+Delete: Бетерү
+Are you sure you want to delete this entry?: Сез бу язманы бетерергә телисезме?
+Make New Category: Яңа категория ясагыз
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Төркем исеме кирәк
+File size exceeds maximum.: Файл зурлыгы максимумнан артып китә.
+File is not a GIF or PNG image: Файл GIF яки PNG рәсеме түгел
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: МАКСАТ КАТЕГОРИЯЛӘР
+ENTRY CATEGORIES: Керү категориясе
+Remove: Чыгар
+Global Category: Глобаль категория
+Cancel: Баш тарту
+
+########################################
+# Page: colors.php
+#
+Add Custom: Custom өстәү
+Basic Colors: Төп төсләр
+Current Color: Хәзерге төс
+Custom Colors: Махсус төсләр
+Old Color: Иске төс
+
+########################################
+# Page: combo.php
+#
+Select None: Берсен дә сайлама
+Agenda: Көн тәртибе
+Add Task: Бирем өстәү
+Description: Тасвирлау
+Date: Дата
+Time: Вакыт
+Priority: Приоритет
+Access: Рөхсәт
+Created by: Ясалган
+Updated: Яңартылды
+Participants: Катнашучылар
+Attachments: Кушымчалар
+Comments: Аңлатмалар
+Brief Description: Кыска тасвирлау
+Full Description: Тулы тасвирлау
+Category: Төркем
+Add event detail: Вакыйга детальләрен өстәгез
+Start Date: Башлангыч көне
+Due Date: Түләү срогы
+Add task detail: Биремнең детальләрен өстәгез
+All: Барысы да
+Error: Хата
+no response from server: сервердан җавап юк
+JSON error: JSON хата
+High: Биек
+Medium: Урта
+Low: Түбән
+Today: Бүген
+Add Entry: Керү өстәү
+Unnamed Event: Исемсез вакыйга
+Unnamed Task: Исемсез бирем
+Refresh: Яңарту
+Click to add entry: Керү өчен басыгыз
+Name: Исем
+pm: кич
+am: мин
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX очрашуны юкка чыгарды.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Яраксыз блок идентификаторы
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Аңлатма өстәгез
+Add Attachment: Кушымта өстәү
+Subject: Тема
+Comment: Аңлатма
+Upload file: Файлны йөкләү
+
+########################################
+# Page: docdel.php
+#
+Removed: Чыгарылды
+
+########################################
+# Page: edit_entry.php
+#
+days: көннәр
+hours: сәгатьләр
+minutes: минут
+You are not authorized to edit this task.: Сезгә бу биремне редакцияләү хокукы юк.
+is in a different timezone than you are. Currently: сездән башка вакыт зонасында. Хәзерге вакытта
+hour ahead of you: бер сәгать алда
+hour behind you: сезнең артта бер сәгать
+hours ahead of you: сәгатьләр алда
+hours behind you: сәгатьләр артта
+XXX is in a different timezone (ahead): (XXX бүтән вакыт зонасында; YYY сезнең алда.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX бүтән вакыт зонасында; YYY сезнең артта.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Монда кертелгән вакыт сезнең Вакыт зонасына нигезләнгән.
+Edit Entry: Керүне үзгәртү
+Details: Детальләр
+Repeat: Кабатлау
+Reminders: Искә төшерүләр
+brief-description-help: Бу вакыйганың кыскача тасвирламасын бирергә тиеш (якынча 20 символ). Бу календарьны караган вакытта вакыйганы күрсәтәчәк.
+full-description-help: Бу вакыйганың детальләрен тулыландырырга тиеш. Бу мәгълүматны кулланучы вакыйганы күргәндә күрергә мөмкин.
+access-help: Чараның керү дәрәҗәсен күрсәтә. <ul> <li> Халык: вакыйганың тулы детальләрен һәркем күрә ала.</li> <li> Яшерен: Башкалар сезнең бу дата һәм вакыт өчен язуыгызны күрә ала, ләкин аның детальләре түгел.</li></ul>
+priority-help: Чараның өстенлеген күрсәтә. Priorityгары өстенлекле вакыйгалар калын итеп күрсәтеләчәк.
+category-help: Чараның категориясен күрсәтә.
+completed-help: Дата биреме тәмамланды. Барлык катнашучылар да 100% тигез булганда гына эшли.
+Date Completed: Дата тәмамланды
+percent-help: Бу кулланучы өчен биремне тәмамлау проценты
+Percent Complete: Процент тулы
+All Percentages: Барлык процентлар
+location-help: Вакыйга урыны
+Location: Урын
+url-help: Вакыйга URL
+URL: =
+date-help: Вакыйга көнен күрсәтә.
+Untimed event: Вакытсыз вакыйга
+Timed event: Вакытлы вакыйга
+All day event: Көне буе вакыйга
+Timezone Offset: Вакыт зонасы офсеты
+time-help: Вакыйга вакытын күрсәтә. <ul> <li> "Вакытлы вакыйга" (ул көнне билгеле бер вакытка планлаштырылган вакыйга өчен)</li> <li> "Вакытсыз вакыйга" (вакыйга өчен бу вакыт юк (бәйрәм кебек) )</li> <li> "Көне буе вакыйга" (көне буе булган вакыйга өчен (офистан булмаган кебек)</li></ul>
+duration-help: Чараның озынлыгын (сәгатьләрдә; минутларда) күрсәтә. <em>Бу кыр буш калырга мөмкин.</em>
+end-time-help: Чараның тәмамлану вакыты күрсәтелә.
+Start Time: Башлау вакыты
+Due Time: Вакыт
+Site Extras: Сайт өстәмәләре
+avail_participants-help: Бу язмада катнашучыларның исемлеге.
+Available: Мөмкин
+Find Name: Исем табыгыз
+Resources: Ресурслар
+participants-help: Бу язмада катнашучыларның исемлеге.
+Selected: Сайланган
+Availability: Мөмкинлек
+external-participants-help: Календарь кулланучылары булмаган вакыйгада катнашучылар исемлеген күрсәтә. Кулланучылар бер сызыкка бер булырга тиеш һәм электрон почта адресын кертә ала. Электрон почта адресы күрсәтелгән булса, кулланучы хәбәрләр һәм искәртмәләр алырга хокуклы.
+External Participants: Тышкы катнашучылар
+repeat-type-help: Вакыйга ничә тапкыр кабатланырга тиешлеген сайлагыз.
+Daily: Көн саен
+Weekly: Атна саен
+Monthly: Ай саен
+by day: көндез
+by date: дата буенча
+by position: позициясе буенча
+Monthly (by day): Айлык (көндез)
+Monthly (by date): Айлык (дата буенча)
+Monthly (by position): Айлык (позиция буенча)
+Yearly: Ел саен
+Manual: Дәреслек
+Expert Mode: Эксперт режимы
+repeat-end-date-help: Вакыйга кадәр кабатланырга тиешле датаны күрсәтә.
+Ending: Ахыры
+Forever: Мәңге
+Use end date: Ахыр датасын кулланыгыз
+Number of times: Күп тапкыр
+repeat-frequency-help: Вакыйга ничә тапкыр кабатланырга тиешлеген күрсәтә.
+Frequency: Ешлык
+Weekdays Only: Ял көннәре генә
+Week Start: Атна башы
+repeat-bydayextended-help: Атна көненә нигезләнеп датаны сайларга рөхсәт итә.
+ByDay: =
+repeat-month-help: Вакыйга кайсы айларда кабатланырга тиешлеген күрсәтә.
+ByMonth: Ай
+repeat-bysetpos-help: Ай белән позициягә нигезләнеп датаны сайларга рөхсәт итә.
+BySetPos: =
+repeat-bymonthdayextended-help: Дата нигезендә датаны сайларга рөхсәт итә.
+ByMonthDay: =
+repeat-byweekno-help: Кулланучының вакыйганы кабатлау өчен атналар исемлеген күрсәтергә рөхсәт итә (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: Byәр сүзнең
+repeat-byyearday-help: Кулланучының вакыйганы кабатлау өчен ел көннәре исемлеген күрсәтергә рөхсәт итә (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: Yәр сүзнең
+repeat-exceptions-help: Бу вакыйга булырга тиеш яки булырга тиеш булмаган өстәмә көннәр.
+Exclusions: Чыгышлар
+Inclusions: Керүләр
+Add Exception: Моннан тыш
+Add Inclusion: Керү
+Delete Selected: Сайланганны бетерү
+Send Reminder: Искә төшерү
+When: Кайчан
+Use Date/Time: Дата / Вакыт кулланыгыз
+Use Offset: Офсет кулланыгыз
+Before: Моңа кадәр
+After: Соңыннан
+Start: Башлау
+End/Due: Ахыр / тиеш
+Times: =
+Every: Барысы да
+CAPTCHA Warning: Кисәтү:  PHP-ның GD киңәйтүеннән башка CAPTCHA куллана алмыйсыз!<br>
+Delete entry: Керүне бетерегез
+You are not authorized to edit this entry.: Сезгә бу язманы редакцияләү хокукы юк.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX яңа билгеләнде.
+XXX has updated an appointment.: XXX очрашуны яңартты.
+Security violation!: Куркынычсызлыкны бозу!
+You must enter the anti-spam text on the previous page.: Сез алдагы биттә спамга каршы текст кертергә тиеш.
+The following conflicts with the suggested time: Тәкъдим ителгән вакыт белән түбәндәге конфликтлар
+User removed from participants list.: Кулланучылар катнашучылар исемлегеннән алынды.
+Please look on XXX to accept or reject this appointment.: Зинһар, бу очрашуны кабул итү яки кире кагу өчен XXX карагыз.
+Please look on XXX to view this appointment.: Зинһар, бу очрашуны карау өчен XXX карагыз.
+Scheduling Conflict: Планлаштыру конфликты
+Your suggested time of: Сезнең тәкъдим ителгән вакыт
+conflicts with the following existing calendar entries: түбәндәге календарь язмалары белән конфликтлар
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX "config.php" көйләнмәгән.
+word characters only: (сүз символларын гына үз эченә ала; [a-zA-Z_0-9])
+Add User: Кулланучыны өстәгез
+Edit User: Кулланучыны үзгәртү
+Calendar ID: Календарь ID
+First Name: Исем
+Last Name: Фамилия
+Is public calendar: Иҗтимагый календарь
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Мәгълүматлар базасында хата
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Ерак календарь өстәргә
+Edit Remote Calendar: Ерак календарьны үзгәртү
+Create Layer: Катлам ясау
+Reload: Йөкләү
+Required to View Remote Calendar: Ерак календарьны карау кирәк
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Нәтиҗә кертү
+Events successfully imported: Вакыйгалар уңышлы кертелде
+Create a new layer to view this calendar.: Бу календарьны карау өчен яңа катлам ясагыз.
+Errors: Хаталар
+There was an error parsing the import file or no events were returned.: Импорт файлын анализлауда хата бар, яисә вакыйгалар кире кайтарылмаган.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Иртәгә
+Yesterday: Кичә
+Day before yesterday: Кичәгә кадәр
+Next week: Киләсе атна
+This week: Бу атна
+Last week: Узган атнада
+Week before last: Соңгы атна
+Next week and week after: Киләсе атна һәм атна
+This week and next week: Бу атна һәм киләсе атна
+Last week and this week: Узган атнада һәм бу атнада
+Last two weeks: Соңгы ике атнада
+Next month: Киләсе ай
+This month: Бу ай
+Last month: Узган ай
+Month before last: Соңгы ай
+Next year: Киләсе ел
+This year: Бу елны
+Last year: Үткән елда
+Year before last: Соңгы ел
+Next 14 days: Киләсе 14 көн
+Next 30 days: Киләсе 30 көн
+Next 60 days: Киләсе 60 көн
+Next 90 days: Киләсе 90 көн
+Next 180 days: Киләсе 180 көн
+Next 365 days: Киләсе 365 көн
+Invalid report id XXX.: Дөрес булмаган отчет ID: "XXX".
+Unnamed Report: Исемсез доклад
+Add Report: Доклад өстәү
+Edit Report: Докладны үзгәртү
+Report name: Доклад исеме
+User: Кулланучы
+Current User: Хәзерге кулланучы
+Include link in menu: Менюга сылтама кертегез
+Include standard header/trailer: Стандарт башлам / трейлер кертегез
+Include previous/next links: Алдагы / киләсе сылтамаларны кертегез
+Include empty dates: Буш даталарны кертегез
+Date range: Дата диапазоны
+Template variables: Шаблон үзгәрүчәннәре
+Page template: Бит шаблоны
+Day template: Көн шаблоны
+Event template: Вакыйга шаблоны
+Are you sure you want to delete this report?: Сез бу отчетны бетерергә телисезме?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Мондый доклад идентификаторы юк: "XXX".
+Variable XXX not found.: Xзгәрешле XXX табылмады.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Custom Header үзгәртү
+Edit Custom Script/Stylesheet: Custom Script / Стиль таблицасын үзгәртү
+Edit Custom Trailer: Custom Trailer'ны үзгәртү
+
+########################################
+# Page: edit_user.php
+#
+Username: Кулланучы исеме
+E-mail address: Мэйл адресы
+Password: Серсүз
+again: тагын
+Disabled for demo: Демо өчен инвалид
+Are you sure you want to delete this user?: Сез бу кулланучыны бетерергә телисезме?
+Change Password: Серсүзне алмаштырыгыз
+New Password: Яңа серсүз
+Set Password: Серсүз куегыз
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Кулланучыларны бетерү ярдәм итми.
+The passwords were not identical.: Серсүзләр бер үк булмаган.
+You have not entered a password.: Сез серсүз кертмәдегез.
+Username cannot be blank.: Кулланучының исеме буш була алмый.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Рөхсәтле түгел
+
+########################################
+# Page: export.php
+#
+Export: Экспорт
+Export format: Экспорт форматы
+Include all layers: Барлык катламнарны кертегез
+Include deleted entries: Бетерелгән язмаларны кертегез
+Export all dates: Барлык даталарны экспортлагыз
+Start date: Башлангыч көне
+End date: Ахыр датасы
+Modified since: Шуннан үзгәртелде
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: экспорт форматы билгеләнмәгән яки дөрес булмаган.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Кулланучы күрсәтелмәгән.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Яңа төркем өстәгез
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Исемсез төркем
+Add Group: Төркем өстәү
+Edit Group: Төркемне үзгәртү
+Group name: Төркем исеме
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Сез төркем исемен күрсәтергә тиеш
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Календарьларны автоматик яңарту
+auto-refresh-help: Эшләтелгәндә, көн күренеше, атна күренеше, ай күренеше, расланмаган битләр исемлеге барысы да вакыт-вакыт үзләрен яңартачак.
+Auto-refresh time: Авто-яңарту вакыты
+auto-refresh-time-help: Авто-яңарту кушылган булса, бу һәр яңарту арасындагы вакытны күрсәтә.
+Display days with events in bold in year view: Ел күренешендә калын вакыйгалар белән көннәрне күрсәтегез
+Display weekends in week view: Ял көннәрен атна күренешендә күрсәтегез
+Time interval: Вакыт аралыгы
+time-interval-help: Атна күренешендә һәм көн күренешендә вакыт блоклары күпме булачагын күрсәтә.
+Nonuser: Кулланучылар календарьлары
+user-customize-color: Кулланучыларга үз төс схемасын үзгәртергә рөхсәт ителәме-юкмы икәнен күрсәтә.
+enable-gradient-help: Күзәнәк фоны өчен градиент төсләр кулланыгыз.
+Manually entering color values: Төс кыйммәтләрен кул белән кертү
+colors-help: Барлык төсләр дә "#RRGGBB" алты почмаклы форматта күрсәтелергә тиеш, анда "RR" - кызылның алты кыйммәте, "GG" - яшелнең алты бәясе, "BB" - зәңгәрнең алты бәясе.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Хата турында хәбәр
+Please include all the information below when reporting a bug.: Зинһар, хата турында хәбәр иткәндә түбәндәге барлык мәгълүматны кертегез.
+Also, please use English rather than XXX.: Шулай ук, зинһар, XXX түгел,  Инглиз  кулланыгыз.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar Документация
+Currently in English only.: Хәзерге вакытта инглиз телендә генә.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Календарь язмаларын өстәү / редакцияләү
+Repeat Type: Кабатлау төре
+For More Information...: Күбрәк мәгълүмат өчен ...
+Repeat End Date: Ахыр датаны кабатлау
+Repeat Day: Кабатлау көне
+repeat-day-help: Атнаның кайсы көннәрендә кабатланырга тиешлеген күрсәтә.
+
+########################################
+# Page: help_import.php
+#
+Import: Импорт
+Palm Desktop: Пальма өстәле
+allow you to import entries from the Palm...: Бу форма сезгә Пальма эш өстәле датасыннан язмалар кертергә мөмкинлек бирәчәк. Бу сезнең Пальма каталогында дата китабы / datebook.dat кулланучы исеме белән аталган суб-каталогта урнашырга тиеш.
+The following entries will not be imported: Түбәндәге язмалар кертелмәячәк:
+Entries older than the current date: Хәзерге датадан олырак язмалар
+Entries created in the Palm Desktop...: Пальм өстәлендә HotSync'd булмаган язмалар
+Anything imported from Palm...: Пальмадан кертелгән әйберләр киләсе импорт вакытында язылачак (вакыйга датасы үтмәгән булса). Шуңа күрә яңартулар Пальма өстәлендә ясалырга тиеш.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Бу форма vCalendar (.vcs) 1.0 вакыйгаларын кертәчәк.
+The following formats have been tested: Түбәндәге форматлар сынадылар:
+This form will import iCalendar (.ics) events.: Бу форма iCalendar (.ics) вакыйгаларын кертәчәк.
+Enabling: Килешү
+Overwrite Prior Import: Алдан импортны языгыз
+will cause events imported previously...: элегрәк импортланган вакыйгаларга китерәчәк, яңа импорт файлындагы вакыйга белән бер үк UID кулланган, бетерелгән дип билгеләнәчәк. Бу яңартылган iCalendar файлын дубликатлар ясамыйча импортларга рөхсәт итәргә тиеш.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Ярдәм индексы
+About WebCalendar: WebCalendar турында
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Катлам башка кулланучыларның вакыйгаларын үз календарегызда күрсәтү өчен файдалы. Сез кулланучыны күрсәтә аласыз, вакыйгалар күрсәтеләчәк төс.
+Add/Edit/Delete: Кушу / үзгәртү / бетерү
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Битнең астындагы администратор бүлегендәге Катламнарны үзгәртү сылтамасына басыгыз, катламнарны өстәргә / үзгәртү / бетерү мөмкинлеге бирәчәк.
+The text color of the new layer that will be displayed in your calendar.: Сезнең календарьда күрсәтеләчәк яңа катламның текст төсе.
+Disabling: Сүндерү
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Катламнарны сүндерү өчен бит астындагы администратор бүлегендә Катламнарны сүндерү сылтамасына басыгыз.
+Duplicates: Күчермәләр
+If checked, events that are duplicates of your events will be shown.: Тикшерелсә, сезнең вакыйгаларның дубликаты булган вакыйгалар күрсәтеләчәк.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Катламнарны кабызу өчен бит астындагы администратор бүлегендә Катламнарны Enable сылтамасына басыгыз.
+Source: Чыганак
+Specifies the user that you would like to see displayed in your calendar.: Сезнең календарьда күрсәтергә теләгән кулланучыны күрсәтә.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Килешү категориясе
+default-category-help: Яңа вакыйга килешү категориясен күрсәтә.
+When I am the boss: Мин начальник булганда
+Email me event notification: Миңа вакыйга турында хәбәр җибәрегез
+email-boss-notifications-help: Начальниклар вакыйгалар турында хәбәрләр итеп электрон почталар алалармы, юкмы.
+I want to approve events: Мин вакыйгаларны хупларга телим
+boss-approve-event-help: Начальник ярдәмчеләр өстәгән вакыйгаларны расларга тиешме-юкмы икәнен күрсәтә.
+Subscribe/Publish: Подписка / бастыру
+Allow remote publishing: Дистанцион басмага рөхсәт итегез
+allow-remote-publishing-help: Ерак iCal клиенты вакыйгаларны WebCalendar'ка кире бастыра аламы-юкмы икәнен күрсәтә
+remote-publishing-url-help: WebCalendar'ка язылу һәм бастыру өчен iCal клиент кушымтасында куллану өчен URL күрсәтә.
+allow-remote-subscriptions-help: Дистанцион кулланучылар сезнең календарьга язылу мөмкинлеген күрсәтә, аларга сезнең вакыйгаларны iCal кушылган кушымтада күрергә мөмкинлек бирә (мәсәлән, Apple iCal яки Mozilla календаре кебек).
+remote-subscriptions-url-help: Ерактагы кулланучылар сезнең календарьга язылу өчен кулланырга тиеш URL күрсәтә.
+Enable FreeBusy publishing: FreeBusy нәшер итүне рөхсәт итегез
+freebusy-enabled-help: ICal FreeBusy стандарты ярдәмендә кулланучының булган вакытын алу мөмкинлеген күрсәтә.
+freebusy-url-help: Кулланучының FreeBusy исемлегенә керү өчен URL
+rss-feed-url-help: RSS тасмасына керү өчен URL
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Кулланучының рөхсәтен һәм рөхсәтен яхшы контрольдә тотарга мөмкинлек бирә. Кулланучылар шулай ук ​​администратор рөхсәт иткән очракта килешү һәм шәхси рөхсәт бирә ала.
+If disabled, this user cannot send you emails.: Инвалид булса, бу кулланучы сезгә электрон почта җибәрә алмый.
+If disabled, this user cannot see you in the participants list.: Инвалид булса, бу кулланучы сезне катнашучылар исемлегендә күрә алмый.
+If enabled, this user cannot view the details of any of your entries.: Эшләтелгән булса, бу кулланучы сезнең язмаларның детальләрен карый алмый.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Инвалид нәшер итү (Администратор)
+Publishing Disabled (User): Инвалид нәшер итү (кулланучы)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Сайлау өчен басыгыз
+Current Icons on Server: Сервердагы хәзерге иконалар
+
+########################################
+# Page: import.php
+#
+import from file: файлдан кертү
+Disabled: Инвалид
+Import format: Импорт форматы
+Exclude private records: Шәхси язмаларны чыгар
+Repeated items are imported separately. Prior imports are not overwritten.: Кабатланган әйберләр аерым кертелә. Элек импорт өстәмә язылмаган.
+
+########################################
+# Page: import_handler.php
+#
+No file: Файл юк
+Error deleting palm events from webcalendar.: Веб-календарьдан пальма вакыйгаларын бетерүдә хата.
+Events from prior import marked as deleted: Алдан кертелгән вакыйгалар бетерелгән дип билгеләнде
+Conflicting events: Конфликтлы вакыйгалар
+The import file contained no data.: Импорт файлында мәгълүмат юк.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Сез бу катламны бетерергә телисезме?
+Delete layer: Катламны бетерү
+Edit layer: Катламны үзгәртү
+Enable layers: Катламнарны кушу
+Layer: Катлам
+Layers are currently disabled.: Катламнар хәзерге вакытта инвалид.
+Layers are currently enabled.: Катламнар хәзерге вакытта кушылган.
+Click to modify layers settings for XXX: XXX календаре өчен катлам көйләүләрен үзгәртү өчен монда басыгыз.
+Disable Layers: Катламнарны сүндерегез
+Add layer: Катлам өстәгез
+Add Layer: Катлам өстәгез
+Edit Layer: Катламны үзгәртү
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Өстенлекне яңартып булмый
+Invalid entry id.: Яраксыз идентификация.
+You cannot create a layer for yourself.: Сез үзегез өчен катлам булдыра алмыйсыз.
+You can only create one layer for each user.: Сез һәр кулланучы өчен бер катлам гына булдыра аласыз.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Раслау / раслау
+Approve Selected: Сайланганны раслагыз
+Check All: Барысын да тикшерегез
+Emails Will Not Be Sent: Электрон хатлар җибәрелмәячәк
+Reject Selected: Сайланганны кире кага
+Reject: Баш тарт
+Uncheck All: Барысын да тикшерегез
+View this entry: Бу язманы карау
+No unapproved entries for XXX.: "XXX" өчен расланмаган язмалар юк.
+Unapproved Entries: Рөхсәт ителмәгән язмалар
+Approve this entry?: Бу язуны раслыйсызмы?
+Reject this entry?: Бу язуны кире кагасызмы?
+Approve Selected entries?: Сайланган язмаларны раслыйсызмы?
+Reject Selected entries?: Сайланган язмаларны кире кагарга?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Сез логин һәм серсүз кертергә тиеш.
+Save login via cookies so I dont have to login next time.: Куки аша логинны саклагыз, шуңа күрә мин киләсе тапкыр керергә тиеш түгел
+Login: Керергә
+public: җәмәгать
+Access XXX calendar: XXX календарьга керегез
+cookies-note: Искәрмә: Бу кушымта cookie'ларны кушуны таләп итә.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: XXX логинда законсыз символлар.
+Invalid login: Логин дөрес түгел
+Activity login failure: Кулланучының исеме: "XXX", IP: "YYY".
+Error XXX: Хата: "XXX".
+You have been logged out.: Сез чыгарылдыгыз.
+Access public calendar: Иҗтимагый календарьга керегез
+Not yet registered? Register here!: Әле теркәлмәгән? Монда теркәлегез!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Мондый кулланучылар календаре юк: "XXX".
+This Calendar is not Public.: Бу календарь җәмәгать түгел.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Яңа Кулланучы календарен өстәгез
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Логин күрсәтелергә тиеш.
+No such nonuser calendar: Мондый календарь юк
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Яраксыз тема
+Save Preferences: Сайлауларны саклагыз
+Public Access calendar: Халыкка керү календаре
+Modify Non User Calendar Preferences: Кулланучы булмаган календарь өстенлекләрен үзгәртү
+Return to My Preferences: Минем өстенлекләргә кире кайту
+Custom Scripts: Махсус сценарийлар
+Timezone Selection: Вакыт зонасын сайлау
+Multiview: Күп тапкыр карау:
+entry-interval-help: Керү вакытын редакцияләгәндә минут аралыгын куя
+Entry interval: Керү аралыгы
+hour: сәгать
+minute: минут
+theme-reload-help: CSS кэшлау аркасында битне яңадан йөкләү кирәк булырга мөмкин
+Page may need to be reloaded for new Theme to take effect: Яңа Теманың көченә керүе өчен битне яңадан йөкләргә кирәк булырга мөмкин
+display_byproxy-help: View_entry битендә чын иҗат итүчене күрсәтегез
+Display if created by Assistant: Ярдәмче тарафыннан ясалган булса күрсәтегез
+allow-view-subscriptions-help: Шәхси яки Конфиденциаль язмаларга дистанцион керүне чикләргә рөхсәт итә
+Allow remote viewing of: Дистанцион карарга рөхсәт итегез
+entries: язмалар
+
+########################################
+# Page: purge.php
+#
+Purging events for: Вакыйгаларны чистарту
+Finished: Тәмамланды
+Back: Кире
+Check box to delete ALL events for a user: Кулланучы өчен  БАРЫ  вакыйгаларны бетерү өчен рамканы тикшерегез
+Delete all events before: Моңарчы барлык вакыйгаларны бетерегез
+Purge deleted only: Чистарту гына бетерелде
+Preview delete: Алдан карау
+Are you sure you want to delete events for: Сез вакыйгаларны бетерергә телисезме?
+Records deleted from XXX: Язмалар "XXX" дан бетерелде.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Электрон почта адресы буш була алмый.
+Username already exists.: Кулланучының исеме инде бар.
+Email address already exists.: Электрон почта адресы бар.
+New user via self-registration.: Selfз-үзеңне теркәү аша яңа кулланучы.
+A new WebCalendar account has been set up for you.: Сезнең өчен яңа WebCalendar аккаунты булдырылды.
+Your username is XXX.: Сезнең кулланучы исеме: "XXX".
+Your password is XXX.: Сезнең серсүз: "XXX".
+Please visit XXX to log in and start using your account!: Зинһар өчен, "XXX" га керегез һәм счетыгызны куллана башлагыз!
+You may change your password after logging in the first time.: Беренче тапкыр кергәннән соң серсүзне үзгәртә аласыз.
+If you received this email in error: Әгәр сез бу электрон почтаны хата белән кабул итсәгез һәм WebCalendar счетына язылмаган булсагыз, сез бу хәбәрне санга сукмаска яки кыска язма белән җавап бирергә мөмкин.
+Administrator: Администратор
+Welcome: Рәхим итегез
+New user via email.: Электрон почта аша яңа кулланучы.
+Registration: Теркәлү
+Welcome to WebCalendar: WebCalendar'ка рәхим итегез
+Your email should arrive shortly.: Сезнең электрон почтагыз тиздән килергә тиеш.
+Return to Login screen: Керү экранына кире кайту
+Password (again): Серсүз (тагын):
+Your account information will be emailed to you.: Сезнең хисап мәгълүматы сезгә электрон почта аша җибәреләчәк.
+Submit: Тапшыр
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Дәвам итегез
+(Your comments will be emailed to the other participants.): (Сезнең аңлатмалар бүтән катнашучыларга җибәреләчәк.)
+XXX has rejected an appointment.: XXX билгеләнүне кире какты.
+Rejected by XXX.: XXX тарафыннан кире кагылган.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Яңа Ерак календарь өстәгез
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Бу вакыйга яшерен.
+(Private): (Шәхси)
+(cont.): (дәвамы)
+Approved: Расланган
+Deleted: Бетерелгән
+Rejected: Кире кагылды
+Waiting for approval: Рөхсәт көтә
+Unknown: Билгесез
+Invalid report id.: Доклад дөрес түгел.
+Click here to manage reports for the Public Access calendar.: Халыкка керү календаре өчен отчетлар белән идарә итү өчен монда басыгыз.
+Add new report: Яңа доклад өстәгез
+Manage Reports: Докладлар белән идарә итү
+
+########################################
+# Page: search.php
+#
+Advanced Search: Алга таба эзләү
+Search: Эзләү
+Keywords: Төп төшенчәләр
+Enter % for all entries: Барлык язмалар өчен% кертегез
+Include: Керегез
+Filter by Date: Дата буенча фильтр
+All Dates: Барлык даталар
+Past: Pastткән
+Upcoming: Киләчәк
+Range: Аралыгы
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Сез бер яки берничә эзләү сүзен кертергә тиеш.
+Search Results: Эзләү нәтиҗәләре
+match found: матч табылды
+matches found: матчлар табылды
+No matches found: Бер матч та табылмады
+New Search: Яңа эзләү
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Түбәндәге мәгълүмат сезнең WebCalendar урнаштыру белән потенциаль проблемаларны күрсәтә, сезнең урнаштыру куркынычсызрак булсын өчен үзгәртелергә мөмкин.
+For questions about WebCalendar security see the forums: WebCalendar куркынычсызлыгы турында сораулар өчен GitHub.com сайтында урнашкан WebCalendar форумнарын кулланыгыз;<br>XXX
+View your current PHP settings: Хәзерге PHP көйләүләрен карагыз
+Security Issue: Куркынычсызлык проблемасы
+Status: Статус
+Default admin user password: Килешү буенча администратор кулланучы серсүзе
+You should change the password of the default admin user.: Сез администратор кулланучы серсүзен үзгәртергә тиеш.
+File permissions XXX: Файл рөхсәте: XXX
+item XXX should not be writable: Түбәндәге пункт язылырга тиеш түгел:<br><tt> XXX</tt>
+File exists XXX: Файл бар: "XXX"
+Because you have email disabled, you should remove this file.: Сезнең электрон почта инвалид булганга, сез бу файлны бетерергә тиеш.
+File location XXX: Файлның урнашуы: "XXX"
+remove XXX if not using: "XXX" файлын кулланмыйсыз икән, сез аны бетерергә тиеш. Яки, ким дигәндә, аны яңа каталогка күчерегез.
+System Settings XXX: Система көйләүләре: "XXX"
+consider enabling UAC: Кулланучының өстенлекләрен урнаштыру өчен, Сез кулланучыларга керү контроле мөмкинлеген карарга теләрсез.
+recommend approving new public events: Иҗтимагый вакыйгаларның барысын да расларга киңәш итәбез.
+recommend using CAPTCHA: CAPTCHA кабат автоматлаштырылган вакыйгалар тапшыруларын сакларга киңәш ителә.
+Database cache directory location: Мәгълүматлар базасы кэш каталогының урнашуы
+db cache should be inaccessable: Мәгълүматлар базасы кэшы URL белән кереп булмый торган каталогта булырга тиеш.
+PHP Settings XXX: PHP көйләүләре: "XXX"
+recommend setting XXX Off: "XXX" өчен тәкъдим ителгән көйләү сүнгән.
+recommend setting allow_url_fopen Off: "Allow_url_fopen" өчен тәкъдим ителгән көйләү ерак календарьлар кушылмаганда сүндерелгән.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Башка кулланучы календарен карау
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Сез бернинди категория дә кушмадыгыз.
+Set Category: Төркемне куегыз
+Global Categories cannot be changed.: Глобаль категорияләрне үзгәртеп булмый.
+
+########################################
+# Page: upcoming.php
+#
+more: Тулырак
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Ерак календарьлар
+denotes administrative user: административ кулланучыны белдерә
+Add New User: Яңа кулланучы өстәгез
+
+########################################
+# Page: usersel.php
+#
+form: форма
+Reset: Бетерү
+
+########################################
+# Page: views.php
+#
+Add New View: Яңа күренеш өстәү
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Исемсез күренеш
+Add View: Күрү
+Edit View: Күрсәтү
+View Name: Исемне карау
+View Type: Типны карау
+Day by Time: Вакыт-вакыт
+Week (Users horizontal): Атна (кулланучылар горизонталь)
+Week by Time: Атна саен
+Week (Users vertical): Атна (Кулланучылар вертикаль)
+Week (Timebar): Атна (Вакыт сызыгы)
+Month (Timebar): Ай (Вакыт тактасы)
+Month (side by side): Ай (янәшә)
+Month (on same calendar): Ай (шул ук календарьда)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Сез күренеш исемен күрсәтергә тиеш
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Бу күренеш өчен кулланучылар юк.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Бирем процентын яңарту
+Completed: Тәмамланды
+Assistant mode: Ярдәмче режим
+Declined: Баш тарту
+Needs-Action: Ихтыяҗ
+by: тарафыннан
+Percentage Complete: Процент тулы
+External User: Тышкы кулланучы
+Update: Яңарту
+at: чыгыш
+comments: аңлатмалар
+Show: Шоу
+Hide: Яшер
+Approve/Confirm entry: Керүне раслагыз / раслагыз
+Reject entry: Керүне кире кага
+Set category: Төркемне куегыз
+Add to My Calendar: Минем календарьга өстәргә
+Copy entry: Керүне күчерегез
+This will delete this entry for all users.: Бу барлык кулланучылар өчен бу язуны бетерәчәк.
+Edit entry: Керүне үзгәртү
+Edit repeating entry for all dates: Барлык даталар өчен кабатлау язмасын үзгәртү
+Delete repeating event for all dates: Барлык даталар өчен кабатланган вакыйганы бетерегез
+Edit entry for this date: Бу дата өчен язуны үзгәртү
+Delete entry only for this date: Бу дата өчен язуны бетерегез
+Delete entry from calendar of XXX: XXX календареннән язуны бетерегез
+This will delete the entry from your XXX calendar.: Бу сезнең XXX календарьдан язуны бетерәчәк.
+boss: начальник '
+This will delete the entry from your boss calendar.: Бу сезнең начальник календареннән язуны бетерәчәк.
+This will delete the entry from your calendar.: Бу сезнең календарьдан язуны бетерәчәк.
+from your boss calendar: начальнигы календареннән
+Do you want to add this entry to your calendar?: Бу язманы календарьга өстәргә телисезме?
+This will add the entry to your calendar.: Бу сезнең календарьга язуны өстәячәк.
+Email all participants: Барлык катнашучыларга да хат җибәрегез
+Hide activity log: Эшчәнлек журналын яшерегез
+Show activity log: Эшчәнлек журналын күрсәт
+Export this entry to: Бу язуны экспортлагыз
+Palm Pilot: Пальма очучы
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Яңа язу өстәү өчен буш шакмакка ике тапкыр басыгыз.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Яңа керү
+cont.: дәвамы.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Башка кулланучы календаре
+Category Management: Төркем белән идарә итү
+Day View: Көн күренеше
+Edit Event: Вакыйга
+Month View: Ай күренеше
+Common Trailer: Гомуми трейлер
+User Management: Кулланучылар белән идарә итү
+Manage Views: Күрү белән идарә итү
+Week View: Атна күренеше
+Year View: Ел күренеше
+Invalid function id: Яраксыз функция id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: "Settings.php" файлын таба алмадым. Зинһар, "settings.php.orig" ны "settings.php" га күчерегез һәм сайтыгыз өчен редакцияләгез.
+Incomplete settings.php file...: Тулы булмаган "settings.php" файл ...
+Could not find XXX defined in...: Сезнең "settings.php" файлында билгеләнгән "XXX" таба алмады.
+You must define XXX in: Сез "settings.php" файлында "XXX" ны билгеләргә тиеш.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Декабрь
+Dec: Дек
+LANGUAGE DEFINED: ТЕЛ АЧЫК
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Мәгълүматлар базасына тоташу хата: "XXX".
+db_type not defined.: db_type билгеләнмәгән.
+invalid db_type XXX: яраксыз db_type "" XXX ".
+Cache cleared from previous SQL!: Кэш алдагы SQLдан чистартылды!
+Error executing query.: Сорауны үтәүдә хата.
+Unfortunately, XXX is not implemented for YYY: Кызганычка каршы, "XXX" (YYY) өчен тормышка ашырылмый.
+Unknown ODBC error.: Билгесез ODBC хата.
+Error opening cache dir XXX.: "XXX" кэш режиссерын ачуда хата.
+delete: бетерү
+Cache error Could not XXX file YYY.: Кэш хата: "YYY" XXX файлын ясап булмады.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fatлемгә китерүче хата
+Invalid data format for: Өчен дөрес булмаган мәгълүмат форматы
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Хата: эшчәнлек журналына куелмаган!
+This event is XXX.: Бу вакыйга XXX.
+Conf.: Конф.
+exceeds limit of XXX events per day: көненә XXX вакыйгалар чикләреннән артып китә
+on: өстендә
+All Attendees: Барлык катнашучылар
+Busy: Мәшгуль
+Tentative: Тентатив
+Schedule an appointment for XXX.: XXX өчен расписаниене раслагыз: YYY.
+date_select: __dd__ __ ай__ __yyyy__
+Event approved: Чара расланды
+Journal approved: Журнал расланды
+Task approved: Бирем расланды
+Attachment: Кушымта
+Event created: Вакыйга булдырылды
+Journal created: Журнал булдырылды
+Task created: Бирем булдырылды
+Event deleted: Вакыйга бетерелде
+Journal deleted: Журнал бетерелде
+Task deleted: Бирем бетерелде
+New user via email (self registration): Электрон почта аша яңа кулланучы (үз-үзеңне теркәү)
+New user (self registration): Яңа кулланучы (үз-үзен теркәү)
+Notification sent: Хәбәр җибәрелде
+Event rejected: Вакыйга кире кагылды
+Journal rejected: Журнал кире кагылды
+Task rejected: Бирем кире кагылды
+Reminder sent: Искә төшерү җибәрелде
+Event updated: Вакыйга яңартылды
+Journal updated: Журнал яңартылды
+Task updated: Бирем яңартылды
+Delete User: Кулланучыны бетерү
+WK: =
+TASKS: ТАСС
+Task_Title: Титул
+Due: Бурыч
+Task Name: Биремнең исеме
+Task Due Date: Тапшыру вакыты
+You have XXX unapproved entries: Сездә XXX расланмаган язмалар бар
+Changes successfully saved: Successfulзгәрешләр уңышлы сакланды
+Event: Вакыйга
+Action: Эш
+Printer Friendly: Принтер дус
+Generate printer-friendly version: Принтерга файдалы версия ясагыз
+after: аннан соң
+before: элек
+end: ахыр
+start: башлау
+View this event: Бу вакыйганы карау
+View this task: Бу биремне карау
+January: Гыйнвар
+February: Февраль
+March: Март
+April: Апрель
+May_: Май
+June: Июнь
+July: Июль
+August: Август
+September: Сентябрь
+October: Октябрь
+November: Ноябрь
+Jan: Янв
+Feb: Фев
+Mar: Март
+Apr: Апр
+May: Май
+Jun: Июнь
+Jul: Июль
+Aug: Авг
+Sep: Сентябрь
+Oct: Окт
+Nov: Ноябрь
+SU: =
+MO: М.
+TU: Т.У.
+WE: БЕЗ
+TH: =
+FR: Фр
+SA: =
+unknown-month: билгесез ай
+First Quarter Moon: Беренче чирек ай
+Full Moon: Тулы Ай
+Last Quarter Moon: Соңгы чирек ай
+New Moon: Яңа ай
+Error TIME_SLOTS undefined!: Хата: TIME_SLOTS билгеләнмәгән!
+The following error occurred: Түбәндәге хата килеп чыкты
+You are not authorized.: Сез рөхсәтле түгел.
+Add N hours to: N сәгать өстәргә
+Subtract N hours from: N сәгатьтән алыгыз
+same as: кебек
+server time: сервер вакыты
+Cannot read timezone file XXX.: Вакыт зонасы файлын укып булмый: XXX.
+Your current GMT offset is XXX hours.: Сезнең хәзерге GMT ​​офсеты - XXX сәгать.
+Unauthorized: Рөхсәтсез
+Error approving event XXX.: Вакыйга раслауда хата: XXX.
+Error deleting event XXX.: Вакыйга бетерүдә хата: XXX.
+Error rejecting event XXX.: Вакыйгадан баш тарту хата: XXX.
+Sunday: Якшәмбе
+Monday: Дүшәмбе
+Tuesday: Сишәмбе
+Wednesday: Чәршәмбе
+Thursday: Пәнҗешәмбе
+Friday: Fridayомга
+Saturday: Шимбә
+Sun: Кояш
+Mon: Дүш
+Tue: Ср
+Wed: Ср
+Thu: Чш
+Fri: Friомга
+Sat: Шимбә
+unknown-weekday: билгесез-ял көне
+Invalid referring URL: Яраксыз сылтама URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Индекс
+Documentation: Документация
+Page: Бит
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Минем календарь
+Add New Entry: Яңа керү
+Add New Task: Яңа бирем өстәгез
+Logout: Чыгарга
+Home: Өй
+Back to My Calendar: Минем календарьга кире кайту
+Go to: Барыгыз
+Manage calendar of: Календарь белән идарә итү
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Браузер теле табылмады
+(not supported): (ярдәм итми)
+Abkhazian: Абхазиан
+Acoli: Аколи
+Adangme: Адангме
+Adyghe: Адыге
+Afar: Афар
+Afrihili: Африхили
+Afrikaans: Африка
+Ainu: Айну
+Akan: Акан
+Akkadian: Аккадиан
+Albanian: Албан
+Aleut: Алеут
+Algonquian: Алгонкуан
+Altai (Southern): Алтай (Көньяк)
+Amharic: Амхар
+Angika: Ангика
+Apache: Апаче
+Arabic (Algeria): Гарәп теле (Алжир)
+Arabic (Bahrain): Гарәп теле (Бахрейн)
+Arabic (Egypt): Гарәп (Мисыр)
+Arabic (Iraq): Гарәп (Ирак)
+Arabic (Jordan): Гарәп теле (Иордания)
+Arabic (Kuwait): Гарәп теле (Кувейт)
+Arabic (Lebanon): Гарәп теле (Ливан)
+Arabic (Libya): Гарәп (Ливия)
+Arabic (Morocco): Гарәп теле (Марокко)
+Arabic (Oman): Гарәп теле (Оман)
+Arabic (Qatar): Гарәп теле (Катар)
+Arabic (Saudi Arabia): Гарәп (Согуд Гарәбстаны)
+Arabic (Syria): Гарәп (Сүрия)
+Arabic (Tunisia): Гарәп теле (Тунис)
+Arabic (U.A.E.): Гарәп теле (U.A.E.)
+Arabic (Yemen): Гарәп теле (Йемен)
+Arabic: Гарәп
+Aragonese: Арагон
+Aramaic: Арамей
+Arapaho: Арапахо
+Arawak: Аравак
+Armenian: Әрмән
+Assamese: Ассам
+Asturian: Астурия
+Athapascan: Атапаскан
+Avaric: Аварик
+Avestan: Авестан
+Awadhi: Авадхи
+Aymara: Аймара
+Azerbaijani: Азәрбайҗан
+Balinese: Балин
+Baluchi: Балучи
+Bambara: Бамбара
+Bamileke: Бамилеке
+Banda: Банда
+Basa: Баса
+Bashkir: Башкир
+Basque: Баск
+Beja: Бежа
+Belarusian: Беларусия
+Bemba: Бемба
+Bengali: Бенгал
+Bhojpuri: Божпури
+Bihari: Бихари
+Bikol: Бикол
+Bislama: Бислама
+Blackfoot: Блэкфут
+Blin: Блин
+Bliss: Бәхет
+Bosnian: Босния
+Braj: Бра
+Breton: Бретон
+Buginese: Бугинез
+Bulgarian: Болгар
+Buriat: Бурят
+Burmese: Бирма
+Caddo: Каддо
+Catalan: Каталан
+Cebuano: Себуано
+Chagatai: Чагатай
+Chamorro: Хаморро
+Chechen: Чечен
+Cherokee: Чероки
+Cheyenne: Шайен
+Chibcha: Чибча
+Chichewa: Чичева
+Chinese (Hong Kong): Кытай (Гонконг)
+Chinese (PRC): Кытай (PRC)
+Chinese (Simplified/GB2312): Кытай (Гадиләштерелгән / GB2312) 
+Chinese (Singapore): Кытай (Сингапур)
+Chinese (Taiwan): Кытай (Тайвань)
+Chinese (Traditional/Big5): Кытай (традицион / Big5)
+Chinook: Чинок
+Chipewyan: Чипевян
+Choctaw: Чоктау
+Chuukese: Чукес
+Chuvash: Чуваш
+Coptic: Коптик
+Cornish: Корниш
+Corsican: Корсика
+Cree: Кри
+Creek: Крик
+Croatian: Хорватия
+Czech: Чехия
+Dakota: Дакота
+Danish: Дания
+Dargwa: Даргва
+Delaware: Делавэр
+Dinka: Динка
+Dogri: Догри
+Dogrib: Догриб
+Duala: Дуала
+Dutch (Belgium): Голландия (Бельгия)
+Dutch: Голландия
+Dyula: Дюла
+Dzongkha: Дзонгха
+Edo: Эдо
+Efik: Эфик
+Ekajuk: Экажук
+Elamite: Эламит
+English (Australia): Инглиз (Австралия)
+English (Belize): Инглиз теле (Белиз)
+English (Canada): Инглиз (Канада)
+English (Ireland): Инглиз (Ирландия)
+English (Jamaica): Инглиз теле (Ямайка)
+English (New Zealand): Инглиз (Яңа Зеландия)
+English (Philippines): Инглиз (Филиппин)
+English (South Africa): Инглиз (Көньяк Африка)
+English (Trinidad & Tobago): Инглиз теле (Тринидад & Тобаго)
+English (United Kingdom): Инглиз (Бөекбритания)
+English (United States): Инглиз (АКШ)
+English (Zimbabwe): Инглиз (Зимбабве)
+English: Инглиз-АКШ
+Erzya: Эрзя
+Esperanto: Эсперанто
+Estonian: Эстония
+Ewe: Иве
+Ewondo: Эвондо
+Fang: Тән
+Fanti: Фанти
+Faroese: Фарер
+Fijian: Фиджи
+Filipino: Филиппиннар
+Finnish: Фин
+Fon: Шрифт
+French (Belgium): Француз (Бельгия)
+French (Canada): Француз (Канада)
+French (France): Француз (Франция)
+French (Luxembourg): Француз (Люксембург)
+French (Monaco): Француз (Монако)
+French (Switzerland): Француз (Швейцария)
+French: Француз
+Frisian (Eastern): Фриз (Көнчыгыш)
+Frisian (Northern): Фриз (Төньяк)
+Frisian (Western): Фриз (Көнбатыш)
+Frisian: Фриз
+Friulian: Фриулиан
+Fulah: Фула
+Ga: Га
+Galibi: Галиби
+Galician: Галисия
+Ganda: Ганда
+Gayo: Гайо
+Gbaya: Гбая
+Geez: Гиз
+Georgian: Грузин
+German (Austria): Алман (Австрия)
+German (Germany): Алман (Германия)
+German (Liechtenstein): Немец (Лихтенштейн)
+German (Luxembourg): Алман (Люксембург)
+German (Standard): Немец (Стандарт)
+German (Switzerland): Алман (Швейцария)
+German: Немец
+Gilbertese: Гилбертесе
+Gondi: Гонди
+Gorontalo: Горонтало
+Gothic: Готик
+Grebo: Гребо
+Greek: Грек
+Greenlandic: Гренландия
+Guarani: Гуарани
+Gujarati: Гуджарати
+Gwich&#39;in: Гвич'ин
+Haida: Хайда
+Haitian (Creole): Гаити (Креол)
+Haitian: Гаити
+Hausa: Хауса
+Hawaiian: Гавайи
+Hebrew: Иврит
+Herero: Гереро
+Hiligaynon: Хилигайнон
+Hindi: Hindiинди
+Hiri Motu: Хири Моту
+Hittite: Хетит
+Hmong: Гмонг
+Holo (Taiwanese): Холо (Тайвань)
+Hungarian: Венгр
+Hupa: Хупа
+Iban: Ибан
+Icelandic: Исландия
+Ido: Мин эшлим
+Igbo: Игбо
+Iloko: Илоко
+Indonesian: Индонезия
+Ingush: Ингуш
+Inuktitut: Инуктитут
+Inupiaq: Инупиак
+Iranian: Иран
+Irish (Gaelic): Ирландия (Гэль)
+Irish: Ирландия
+Iroquoian: Ирокуян
+Italian (Switzerland): Италия (Швейцария)
+Italian: Италия
+Japanese: Япон
+Javanese: Ява
+Judeo-Arabic: Яһүд-гарәп
+Judeo-Persian: Яһүд-Фарсы
+Kabardian: Кабардиан
+Kabyle: Кабил
+Kachin: Качин
+Kalaallisut: Калалисут
+Kalmyk: Калмик
+Kamba: Камба
+Kannada: Каннада
+Kanuri: Канури
+Kara-Kalpak: Кара-Калпак
+Karachay-Balkar: Карачай-Балкар
+Karelian: Карелян
+Kashmiri: Кашмир
+Kashubian: Кашубиан
+Kawi: Кави
+Kazakh: Казакъстан
+Khasi: Хаси
+Khmer (Central): Кхмер (Centralзәк)
+Khmer: Кхмер
+Khotanese: Хотан
+Kikuyu: Кикуйу
+Kimbundu: Кимбунду
+Kinyarwanda: Кинярванда
+Kirghiz: Кыргыз
+Klingon: Клингон
+Komi: Коми
+Kongo: Конго
+Konkani: Конкани
+Korean (Johab): Корея (Йохаб)
+Korean (North): Корея (Төньяк)
+Korean (South): Корея (Көньяк)
+Korean: Корея
+Kosraean: Косраин
+Kpelle: Кпелле
+Kuanyama: Куаняма
+Kumyk: Кумык
+Kurdish: Көрд
+Kutenai: Кутенай
+Kyrgyz: Кыргызстан
+Ladino: Ладино
+Lahnda: Лахнда
+Lamba: Ламба
+Lao: Лаос
+Latin: Латин
+Latvian: Латвия
+Lezghian: Лезгиан
+Limburgan: Лимбурган
+Lingala: Лингала
+Lithuanian: Литва
+Lojban: Лойбан
+Lozi: Лози
+Luba-Katanga: Луба-Катанга
+Luba-Lulua: Луба-Лулуа
+Luiseno: Луисено
+Lunda: Лунда
+Luo: Луо
+Lushai: Лушай
+Luxembourghish: Люксембург
+Macedonian: Македония
+Madurese: Мадур
+Magahi: Магахи
+Maithili: Майтили
+Makasar: Макасар
+Malagasy: Малагаси
+Malay: Малайча
+Malayalam: Малаялам
+Maldivian: Мальдивян
+Maltese: Мальта
+Manchu: Манчу
+Mandar: Мандар
+Mandingo: Мандинго
+Manipuri: Манипури
+Manx: Манкс
+Maori: Маори
+Mapuche: Мапуче
+Marathi: Марат
+Mari: Мари
+Marshallese: Маршалл
+Marwari: Марвари
+Masai: Масай
+Mayan: Майя
+Mende: Менде
+Mi&#39;kmaq: Микмак
+Minangkabau: Минангкабау
+Mirandese: Мирандес
+Mohawk: Мохавк
+Moksha: Мокша
+Moldavian: Молдавиан
+Mongo: Монго
+Mongolian: Монгол
+Montenegrin: Черногория
+Moroccan: Марокко
+Mossi: Мосси
+Myanmar: Мьянма
+Māori: Мори
+N&#39;Ko: N'Ko
+Nauru: Науру
+Navajo: Навахо
+Ndebele (North): Ндебеле (Төньяк)
+Ndebele (South): Ндебеле (Көньяк)
+Ndebele: Ндебеле
+Ndonga: Ндонга
+Neapolitan: Неаполитан
+Nepali: Непал
+Nias: Ниас
+Niuean: Ниуан
+Nogai: Ногай
+Norse: Норсе
+Norwegian (Bokmål): Норвегия (Бокмåл)
+Norwegian (Nynorsk): Норвегия (Нинорск)
+Norwegian: Норвегия
+Nyamwezi: Нямвези
+Nyankole: Нянколь
+Nyoro: Нйоро
+Nzima: Нзима
+Occitan: Окитан
+Odia: Одия
+Ojibwa: Оджибва
+Oriyia: Ория
+Oromo: Оромо
+Osage: Осаге
+Ossetic: Осетик
+Pahlavi: Пахлави
+Palauan: Палауан
+Pali: Пали
+Pampanga: Пампанга
+Pangasinan: Пангасинан
+Panjabi: Панджаби
+Papiamento: Папиаменто
+Pashto: Пушту
+Pedi: Педи
+Persian (Farsi): Фарсы (Фарсы)
+Persian (Iran): Фарсы (Иран)
+Persian: Фарсы
+Phoenician: Финик
+Pohnpeian: Понпеян
+Polish: Поляк
+Portuguese: Португал
+Portuguese/Brazil: Португал / Бразилия 
+Punjabi (India): Пәнҗаби (Indiaиндстан)
+Punjabi (Pakistan): Пәнҗаби (Пакистан)
+Punjabi: Пәнҗаби
+Quechua: Кечуа
+Rajasthani: Раджастани
+Rapanui: Рапануи
+Rarotongan: Раротонган
+Rhaeto-Romanic: Раето-Роман
+Romanian: Румыния
+Romansh: Романш
+Romany: Романи
+Rundi: Рунди
+Russian (Moldavia: Рус (Молдавия)
+Russian (Republic of Moldova): Рус (Молдова Республикасы)
+Russian: Рус
+Sami (Inari): Сами (Инари)
+Sami (Lappish): Сами (Лаппиш)
+Sami (Lule): Сами (Люле)
+Sami (Northern): Сами (Төньяк)
+Sami (Skolt): Сами (Сколт)
+Sami (Southern): Сами (Көньяк)
+Sami: Сами
+Samoan: Самоа
+Samoli: Самоли
+Sandawe: Сандаве
+Sango: Санго
+Sanskrit: Санскрит
+Santali: Сантали
+Sardinian: Сардиния
+Sasak: Сасак
+Scots (Gaelic): Шотландлар (Гэль)
+Selkup: Селкуп
+Serbian (Upper): Серб (Upperгары)
+Serbian: Серб
+Serer: Серер
+Sesotho: Сесото
+Shan: Шан
+Shona: Шона
+Sichuan Yi: Сичуан И.
+Sicilian: Сицилия
+Sindhi: Синдхи
+Sinhala: Синхала
+Slavic: Славян
+Slovak: Словакия
+Slovenian: Словения
+Sogdian: Согдиан
+Somali: Сомали
+Somani: Сомани
+Songhai: Сонгхай
+Soninke: Сонинке
+Sorbian (Lower): Сорбиан (Түбән)
+Sorbian (Upper): Сорбиан (Upperгары)
+Sorbian: Сорбиан
+Sotho: Сото
+Spanish (Argentina): Испан (Аргентина)
+Spanish (Bolivia): Испан (Боливия)
+Spanish (Chile): Испан (Чили)
+Spanish (Colombia): Испан (Колумбия)
+Spanish (Costa Rica): Испан (Коста-Рика)
+Spanish (Dominican Republic): Испан (Доминикан Республикасы)
+Spanish (Ecuador): Испан (Эквадор)
+Spanish (El Salvador): Испан (Сальвадор)
+Spanish (Guatemala): Испан (Гватемала)
+Spanish (Honduras): Испан (Гондурас)
+Spanish (Mexico): Испан (Мексика)
+Spanish (Nicaragua): Испан (Никарагуа)
+Spanish (Panama): Испан (Панама)
+Spanish (Paraguay): Испан (Парагвай)
+Spanish (Peru): Испан (Перу)
+Spanish (Puerto Rico): Испан (Пуэрто-Рико)
+Spanish (Spain): Испан (Испания)
+Spanish (Uruguay): Испан (Уругвай)
+Spanish (Venezuela): Испан (Венесуэла)
+Spanish: Испан
+Sranan Tongo: Сранан Тонго
+Sukuma: Сукума
+Sumerian: Шумер
+Sundanese: Сундан
+Susu: Сусу
+Sutu: Суту
+Swahili: Суахили
+Swati: Свати
+Swedish (Finland): Швед (Финляндия)
+Swedish (Sweden): Швед (Швеция)
+Swedish: Швед
+Syriac: Сурия
+Tagalog: Тагалог
+Tahitian: Тахит
+Tai: Тай
+Taiwan: Тайвань
+Tajik: Таҗик
+Tamashek: Тамашек
+Tamil: Тамил
+Tatar: Татар
+Telugu: Телугу
+Tereno: Терено
+Tetum: Тетум
+Thai: Тай
+Tibetan: Тибет
+Tigre: Тигр
+Tigrinya: Тигриня
+Timne: Тимне
+Tlingit: Тлингит
+Tok Pisin: Ток Писин
+Tokelau: Токелау
+Tonga (Nytmhasa): Тонга (Нитмхаса)
+Tonga (Tonga Islands): Тонга (Тонга утраулары)
+Tonga: Тонга
+Tsimshian: Imимшян
+Tsonga: Tsонга
+Tswana: Tsвана
+Tumbuka: Тумбука
+Turkish: Төрек
+Turkmen: Төрекмәнстан
+Tuvinian: Тувинян
+Twi: =
+Udmurt: Удмурт
+Ugaritic: Угарит
+Ukrainian: Украин
+Umbundu: Умбунду
+Urdu: Урду
+Uyghur: Уйгур
+Uzbek: Uzbekзбәк
+Vai: Вай
+Venda: Венда
+Vietnamese: Вьетнам
+Volapük: Волапүк
+Votic: Тавыш
+Wakashan: Вакашан
+Walloon: Валлон
+Waray: Варай
+Washo: Вашо
+Welsh: Уэльс
+Wolaitta: Волайтта
+Wolof: Волоф
+Xhosa: Коса
+Yakut: Якут
+Yao: Яо
+Yapese: Япе
+Yiddish: Идиш
+Yorùbá: Йорùба
+Yupik: Upпик
+Zande: Занде
+Zapotec: Запотек
+Zaza: Заза
+Zenaga: Зенага
+Zhuang: Чжуан
+Zulu: Зулу
+Browser-defined: Браузер белән билгеләнгән
+event: вакыйга
+journal: журнал
+0: 0                                                   
+1: 1                                                   
+2: 2                                                   
+3: 3                                                   
+4: 4                                                   
+5: 5                                                   
+6: 6                                                   
+7: 7                                                   
+8: 8                                                   
+9: 9                                                   
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Кулланучының логины дөрес түгел
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: дөрес серсүз
+no such user: андый кулланучы юк
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Хисап инвалид
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Интервал
+Months: Айлар
+Month Days: Ай көннәре
+Days: Көннәр
+Weeks: Атналар
+Position: Позиция
+Until: Кадәр
+Count: Сана
+Inclusion Dates: Керү даталары
+Exclusion Dates: Чыгару даталары
+Event Imported: Вакыйга импорт
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: байт
+kb: кб
+Mb: Мб
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Хәбәрләр
+authenticate: SMTP Хата: Тикшереп булмады
+connect_host: SMTP Хата: SMTP хостына тоташып булмады:
+data_not_accepted: SMTP Хата: Мәгълүмат кабул ителмәгән
+encoding: Билгесез кодлау:
+execute: Эшләп булмады:
+file_access: Файлга кереп булмады:
+file_open: Файл хата Файлны ача алмады:
+from_failed: Түбәндәге адрес уңышсыз:
+instantiate: Почта функциясен тиз арада ясап булмады
+mailer_not_supported: почта ярдәмче түгел
+provide_address: Сез ким дигәндә бер алучының электрон почта адресын күрсәтергә тиеш.
+recipients_failed: SMTP Хата: Түбәндәге алучылар уңышсыз калды:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Графикада күренгән персонажларны кертегез
+Enter the correct letters and numbers...: Рәсемнән дөрес хәрефләрне һәм саннарны текст тартмасына кертегез. Бу кечкенә тест зарарлы ботларга каршы чикләү булып хезмәт итә. Бу графикны уку бик авыр булса, битне яңадан йөкләгез
+Challenge/Response: Чакыру / җавап
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Бу язманың датасын һәм вакытын үзгәртегез?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Сез кыскача тасвирлама кертмәдегез
+time prior to work hours...: эш вакытына кадәр вакыт ...
+Invalid Event Date: Яраксыз вакыйга датасы
+Please add a participant: Зинһар, катнашучы өстәгез 
+Invalid Date: Яраксыз дата
+You have not entered a valid time of day: Сез көннең дөрес вакытын кертмәдегез. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Календарь ID буш була алмый. 
+First and last names cannot both be blank.: Фамилияләр дә, фамилияләр дә буш була алмый. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Ярак төс
+Color format should be RRGGBB.: Төс форматы #RRGGBB булырга тиеш. 
+URL cannot be blank.: URL буш була алмый.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Файл төре импорт форматына туры килми 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Документ фоны өчен дөрес булмаган төс.
+Invalid color for document title.: Документ исеме өчен дөрес булмаган төс.
+Invalid color for table cell background.: Өстәл күзәнәкләре фоны өчен дөрес булмаган төс.
+Invalid color for table cell background for today.: Бүгенге көндә өстәл шакмаклары өчен дөрес булмаган төс.
+Invalid work hours.: Эш вакыты яраксыз.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Сервер URL слайш (/) белән тәмамланырга тиеш.
+Invalid color for table grid.: Өстәл челтәре өчен яраксыз төс.
+Invalid color for event popup background.: Вакыйга ачылган фон өчен дөрес булмаган төс.
+Invalid color for event popup text.: Вакыйга ачылган текст өчен төс дөрес түгел.
+Invalid color for table header text.: Өстәл башы тексты өчен дөрес булмаган төс.
+Invalid color for table header background.: Өстәл башы фоны өчен дөрес булмаган төс.
+Server URL is required.: Сервер URL кирәк.
+Invalid Color: Ярак төс
+Database Name: Мәгълүматлар базасы исеме
+Full Path (no backslashes): Тулы юл (арткы сызык юк) 
+The password contains illegal characters.: Серсүздә законсыз символлар бар.
+Error you must specify a Single-User Login: Хата: Сез бер кулланучы-логинны күрсәтергә тиеш
+Could not find XXX.: XXX таба алмадым.
+Could not find XXX in DOM.: DOMда XXX таба алмадым.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Бу атна
+This Month: Бу ай
+This Year: Бу елны
+Exit: Чыгу
+Add New Event: Яңа вакыйга өстәргә
+Delete Entries: Язмаларны бетерү
+My Views: Минем карашларым
+Manage Calendar of: Календарь белән идарә итү
+My Reports: Минем докладлар
+My Profile: Минем профиль
+Public Calendar: Халык календаре
+Unapproved Events: Рөхсәт ителмәгән вакыйгалар
+User Manager: Кулланучы менеджеры
+Help Contents: Ярдәм эчтәлеге
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Мәгълүматлар базасы кэш каталогы
+Create New: Яңа ясагыз
+Failure Reason: Уңышсызлык сәбәбе:
+You must manually create database: Сез кул белән мәгълүмат базасын булдырырга тиеш.
+Single-User: Бер кулланучы
+Test Settings: Тест көйләүләре
+Timezone Conversion Successful: Вакыт зонасын үзгәртү уңышлы
+WebCalendar Installation Wizard Step XXX: WebCalendar урнаштыру остасы XXX адым
+Password Accepted: Серсүз кабул ителде
+Successful Login: Уңышлы керү
+Password Incorrect: Серсүз дөрес түгел
+Invalid Login: Логин дөрес түгел
+Display Errors: Хаталарны күрсәтү
+File Uploads: Файл йөкләүләре
+Allow URL fopen: URL ачарга рөхсәт итегез (Ерак календарьлар кулланылган очракта гына)
+Safe Mode: Куркынычсыз режим
+Safe Mode Allowed Vars: Куркынычсыз режим рөхсәт ителгән варлар (TZ куркынычсыз режим эшләгәндә генә кирәк)
+GD: GD (Градиент Рәсем Фоннары өчен кирәк)
+Passwords do not match!: Серсүзләр туры килми!
+Unable to write password to settings.php file: "Setings.php" файлына серсүз яза алмый.
+Password Updated: Серсүз яңартылды
+Password has been set: Серсүз куелды.
+Connection Successful...: тоташу уңышлы  урнаштыруны дәвам итү өчен зинһар, киләсе биткә керегез.
+Correct your entries or click the Create New...: Керүләрегезне төзәтегез яки урнаштыруны дәвам итәр өчен  Яңа ясагыз  төймәсенә басыгыз.
+Correct your entries and try again.: Язмаларны төзәтегез һәм кабатлап карагыз.
+XXX does not exist: XXX юк
+XXX is not writable: XXX язып булмый
+Error Converting Timezone: Вакыт зонасын үзгәртүдә хата
+Error Unable to write to file XXX.: Хата XXX файлына яза алмый.
+Please change the file permissions of this file.: Зинһар, бу файлның рөхсәтләрен үзгәртегез.
+Please change includes dir permission: Зинһар, бүтән кулланучылар язарга рөхсәт итәр өчен сезнең "кертелгән" каталогның файл рөхсәтен үзгәртегез.
+Your settings have been saved.: Сезнең көйләүләр сакланган.
+OFF: ӨЧЕН
+ON: ЯШ ON
+WebCalendar Setup Wizard: WebCalendar урнаштыру остасы
+This installation wizard will guide you...: Бу урнаштыру остасы сезгә төп WebCalendar урнаштыру ярдәмендә юл күрсәтәчәк.<br>Ярдәм һәм проблемаларны чишү өчен карагыз:<br>
+System Administrators Guide: Система администраторы өчен кулланма
+Frequently Asked Questions: Еш бирелә торган сораулар
+FAQ: еш бирелгән сораулар
+Troubleshooting: Төзексезлекләрне Эзләү
+Getting Help: Ярдәм алу
+Upgrading Guide: Яңарту өчен кулланма
+User Supported Wiki: Кулланучы Wiki
+PHP Version Check: PHP версиясен тикшерү
+Check to see if PHP 7.1.0 or greater is installed.: PHP 7.1.0 яки аннан да зуррак урнаштырылганын тикшерегез.
+PHP version: PHP версиясе
+PHP Settings: PHP көйләүләре
+Detailed PHP Info: PHP турында тулы мәгълүмат
+settings.php Status: "settings.php" Статус
+Session Check: Сессияне тикшерү
+To test the proper operation of sessions...: Сессияләрнең дөрес эшләвен сынап карау өчен, бу битне яңадан йөкләгез. Сез сессия счетчикының артуын һәрвакыт күрергә тиеш.
+SESSION COUNTER: Сессия өлкәсе
+The file permissions of settings.php are set...: "Settings.php" файл рөхсәте урнаштыручы аны үзгәртергә рөхсәт итмәсен өчен куелган. Зинһар, дәвам итәр өчен түбәндәге файлның рөхсәтләрен үзгәртегез
+The file permissions of the includes directory are set...: Кертелгән каталогның файл рөхсәте монтажлаучының яңа файл ясарга рөхсәте булмаганлыктан куелган. Зинһар, дәвам итәр өчен түбәндәге каталог рөхсәтен үзгәртегез
+Your settings.php file appears to be valid.: Сезнең "settings.php" файл дөрес булып күренә.
+Configuration Wizard Password: Конфигурация остасы серсүзе
+Create Settings File Password: Файл серсүзен көйләү
+db setup directions...: Бу бүлектә сез үзегезнең база серверына тоташуны урнаштырачаксыз. Бирелгән хисап мәгълүматы мәгълүмат базаларын, таблицаларны һәм кулланучыларны булдыру өчен тулы рөхсәт булырга тиеш. Әгәр бу мөмкин булмаса, яки сезнең мәгълүмат базасына керү чикләнгән булса, сез үзегезнең базаны кул белән конфигурацияләргә тиеш буласыз.
+Database Status: Мәгълүматлар базасы торышы
+Supported databases for your PHP installation: PHP урнаштыру өчен ярдәм базалары
+Your current database settings are able to access the database.: Сезнең хәзерге мәгълүмат базасы көйләүләре базага керә ала.
+Please Test Settings: Зинһар, көйләүләрне сынап карагыз
+Your current database settings are not able...: Сезнең хәзерге мәгълүмат базасы көйләүләре мәгълүмат базасына керә алмый яки әле сыналмаган.
+Database Settings: Мәгълүматлар базасы көйләүләре
+Database Type: Мәгълүматлар базасы тибы
+Server: Сервер
+Connection Persistence: Бәйләнеш ныклыгы
+All your database tables appear to be up...: Сезнең барлык мәгълүмат базасы таблицалары заманча булып күренә. Сез киләсе биткә кереп, WebCalendar көйләүләрен тәмамлый аласыз.
+This appears to be a new installation...: Бу яңа урнаштыру кебек. Бу дөрес булмаса, зинһар, алдагы биткә кире кайтыгыз һәм көйләүләрегезне төзәтегез.
+This appears to be an upgrade...: Бу&nbsp;XXX&nbsp;YYY версиясеннән яңарту булып күренә.
+The database requires some data input...: Яңартуны тәмамлау өчен мәгълүмат базасы кайбер мәгълүмат кертүне таләп итә.
+In this section we will perform...: Бу бүлектә без сезнең базаны кирәкле дәрәҗәгә күтәрү өчен үзгәрешләр кертәчәкбез. Әгәр дә сез тулысынча хупланган мәгълүмат базасын кулланасыз икән, бу адым сезнең өчен автоматик рәвештә башкарылачак. Notк икән, кирәкле SQL күрсәтелергә мөмкин, һәм сез аны кисеп, сезнең база серверы соравы тәрәзәсенә урнаштырырга тиеш.
+No database actions are required.: Мәгълүматлар базасы гамәлләре кирәк түгел.
+The following database actions are required: Түбәндәге мәгълүмат базасы гамәлләре кирәк
+ODBC Underlying Database: ODBC төп мәгълүмат базасы:
+Automatic installation not supported: Сезнең база төре өчен автоматик урнаштыру тулысынча тормышка ашырылмады. Сезгә бирелгән SQL ярдәмендә кирәкле таблицаларны кул белән ясарга туры киләчәк. Дәвам итәр өчен зинһар,  SQL күрсәтү  басыгыз. Сезнең мәгълүмат базасы соравы тәрәзәсенә кисегез.
+This may take several minutes to complete: Моны тәмамлау өчен берничә минут кирәк булырга мөмкин.
+Install Database: Мәгълүматлар базасын урнаштырыгыз
+Update Database: Мәгълүматлар базасын яңарту
+Display Required SQL: Кирәкле SQL күрсәтү
+Return to previous page after processing SQL.: Бу SQLны кул белән эшкәрткәннән соң, алдагы биткә кире кайтырга һәм скрипт үзгәрешләрне ачыклый алсын өчен, сезнең базаны яңадан торгызырга кирәк.
+This is the final step in setting up your WebCalendar Installation.: Бу сезнең Веб-календарь урнаштыру өчен соңгы адым.
+Timezone Conversion: Вакыт зонасын үзгәртү
+It appears that you have NOT converted...: Сез булган WebCalendar вакыйга мәгълүматларын GMTка үзгәртмәдегез бугай. Сездә булса, сез бу хәбәрне санга сукмаска һәм конверсияне дәвам итмәскә мөмкин. Бу яңа урнаштыру булса, сез бу хәбәрне санга сукмаска мөмкин.
+Convert Data to GMT: Мәгълүматны GMTка әйләндерү
+Application Settings: Кушымта көйләүләре
+HTTP-based authentication was not detected...: HTTP нигезендә аутентификация табылмады. Веб-серверны конфигурацияләргә кирәк булачак, әгәр сез "Веб-сервер" ны түбәндәге "Кулланучының аутентификациясе" сайлаудан сайларга телисез.
+HTTP-based authentication was detected...: HTTP нигезендә аутентификация ачыкланды. Кулланучының аутентификациясе сезнең веб-сервер белән эшләнә. Сез түбәндәге 'Кулланучының аутентификациясе' исемлегеннән 'Веб-сервер' сайларга тиеш.
+Create Default Admin Account: Килешү буенча Административ Хисап ясагыз
+(Admin Account Not Found): (Администратор счеты табылмады)
+User Authentication: Кулланучының аутентификациясе
+Web-based via WebCalendar (default): Веб-календарь аша веб-нигезендә (килешү буенча)
+Web Server (not detected): Веб-сервер (табылмаган)
+Web Server (detected): Веб-сервер (табылды)
+None (Single-User): Беркем дә (бер кулланучы)
+Read-Only: Уку гына
+Environment: Әйләнә-тирә мохит
+Production: Producитештерү
+Development: Developmentсеш
+Save Settings: Көйләүләрне саклагыз
+Launch WebCalendar: WebCalendar җибәрү
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: "XXX" таблицасын яңартуда хата: YYY.
+Conversion Successful: Конверсия уңышлы 
+Perl script required: Сезнең WebCalendar-ның алдагы версиясе сезнең мәгълүматны үзгәртү өчен PERL скриптын эшләүне таләп итә. Зинһар, /tools/upgrade_to_0.9.7.pl эшләгез, дәвам итү өчен бу биткә кире кайтыгыз.
+previous version requires updating several tables: Сезнең WebCalendar версиясе берничә мәгълүмат базасы таблицасын яңартуны таләп итә.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: КАРАШ БУЛМЫЙ
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Мәгълүматлар базасына тоташу хата
+Include Path: .Лны кертегез
+Deleting events for: Вакыйгаларны бетерү
+Importing events for: Вакыйгаларны импортлау
+No data returned from: Бернинди мәгълүмат та кире кайтмады
+for non-user calendar: кулланучы булмаган календарь өчен
+No Remote Calendars found: Ерак календарьлар табылмады
+Remote Calendars not enabled: Ерак календарьлар кушылмаган
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: вакыйга идентификациясен таба алмады
+could not find event id XXX in database.: мәгълүмат базасында XXX вакыйга id таба алмады.
+task: бирем
+This is a reminder for the XXX detailed below.: Бу аста китерелгән XXX өчен искә төшерү.
+Pecentage Complete: Пента тулы
+Reminder: Искә төшерү
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Ярдәм ителмәгән эш: XXX.
+No event id specified.: Вакыйга ID күрсәтелмәгән.
+Not authorized (not admin).: Рөхсәт ителмәгән (администратор түгел).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: YYY датасыннан ZZZ датасына кадәр XXX вакыйгаларын тикшерү.
+Found XXX events in time range.: Вакыт аралыгында XXX вакыйгалары табылды.
+Event id=XXX YYY at ZZZ on AAA.: Вакыйга id = XXX "YYY" AAZдагы ZZZда.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: XXX кулланучыга бүтән кулланучы календарен карарга рөхсәт.
+Error Email reminders disabled for user XXX.: Хата: "XXX" кулланучы өчен электрон почта искәртмәләре инвалид.
+Number of site_extras XXX.: Сайт_ текстлар саны: XXX.
+Reminder set for event.: Вакыйга өчен искә төшерү.
+Mins Before XXX.: Алдан миналар: XXX.
+Event time is XXX.: Вакыйга вакыты: XXX.
+Remind time is XXX.: Искә төшерү вакыты: XXX.
+Reminders for user XXX, login YYY.: "XXX" кулланучы өчен искәртмәләр, "YYY" логин.
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: "XXX" кулланучы өчен хупланмау.
+Event id=XXX YYY already sent.: Вакыйга id = XXX "YYY" җибәрелгән.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Бер кулланучы режимы өчен логин кирәк түгел.
+No login required for HTTP authentication.: HTTP аутентификациясе өчен логин кирәк түгел.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Логинда дөрес булмаган символлар.
+Username XXX does not exist.: "XXX" кулланучы исеме юк.
+You cannot remove admin rights from yourself!: Сез үзегездән администратор хокукларын бетерә алмыйсыз!
+Unknown error saving user: Билгесез хата саклаучы кулланучы.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Чараның идентификаторы өчен катнашучылар табылмады: XXX.
+Db error Could not find event id XXX.: Db хата: XXX вакыйга idен таба алмадым. 
+Error Could not find event id XXX in database.: Хата: мәгълүмат базасында XXX вакыйга idен таба алмадым. 

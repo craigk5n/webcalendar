@@ -1,0 +1,2387 @@
+# Irish ga
+#
+# Tá ceanntásc roghnach san fhormáid:
+#
+# Aistrithe ag: d’ainm agus do r-phost
+# Nuashonrú deireanach: dáta an aistriúcháin
+# (Lena n-áirítear na "#" tosaigh agus aon tráchtanna a rinne aistritheoirí roimhe seo.
+# Cuireann an líne bhán CHÉAD deireadh leis na tráchtanna ceanntásca seo.)
+#
+# Ina dhiaidh sin an oiread agus is gá:
+#
+# Frása Béarla: aistriúchán
+# (Ceann go líne. GAN an "#" tosaigh.
+# Soláthraíonn an. "An frása Béarla:", an colon ":" san áireamh
+# Forbróirí WebCalendar. Is é do chuid an "aistriúchán".)
+#
+# Tá dhá script perl san eolaire uirlisí chun cabhrú leat:
+# - check_translation.pl
+# le fios an bhfuil an téacs go léir aistrithe go rathúil.
+# - update_translation.pl
+# Déanfaidh comhaid an chláir a pharsáil chun gach aistriúchán ('frása') agus
+# tooltip ('frása'). Socróidh sé na frásaí de réir an leathanaigh
+# (comhad) ina bhfuil an chéad áitíocht. De rogha air sin, féadann sé an
+# frásaí nach bhfuil aistrithe go fóill trí chur
+#  << MISSING >>
+# ar an líne os cionn na habairte. Agus, más giorrúchán an abairt,
+# áireofar ann an téacs iomlán Béarla ar an líne faoi bhun na habairte.
+#
+# Nóta: Táim ag iarraidh méid iomlán an chomhaid a laghdú. Má tá an "aistriúchán"
+# tá focal / frása comhionann i do theanga agus i mBéarla, ná húsáid ach comhartha "=".
+#
+# Nóta: Tabharfaidh tú faoi deara an iontráil do "May_" thíos. Tá cúis leis seo.
+# Aistrigh "May_" go dtí ainm na míosa iomláine agus "May" chuig an,
+# giorrúchán trí litir, mí de ghnáth (cosúil le "Deireadh Fómhair" in ionad "Deireadh Fómhair").
+#
+# D'úsáid mé Google translate as seo.
+# Ba chóir go mbeadh go leor ann go dtí gur féidir le cainteoir dúchais é a fhíorú.
+# Bruce Bannon wcDev@bbannon.net
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: leagan XXX
+WebCalendar is a PHP application used...: Is feidhmchlár PHP é WebCalendar a úsáidtear chun féilire a choinneáil d’úsáideoir aonair nó do ghrúpa úsáideoirí idirlín / inlín. Is féidir é a chumrú freisin mar fhéilire imeachta.
+Credits: Creidmheasanna
+About: Faoi
+OK: Ceart go leor
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Earráid sa bhunachar sonraí: XXX.
+DEFAULT CONFIGURATION: COMHDHLÚTHÚ DEFAULT
+Go: Téigh
+Save: Sábháil
+Undo: Cealaigh
+Public Access: Rochtain Phoiblí
+Admin: Riarachán
+User Access Control: Rialú Rochtana Úsáideora
+Allow Access to Other Users Calendar: Lig Rochtain ar Fhéilire Úsáideoirí Eile
+Grant This User Access to My Calendar: Deonaigh an Rochtain Úsáideora seo ar Mo Fhéilire
+Type: Cineál
+Calendar: Féilire
+View Event: Féach ar Imeacht
+View: Amharc
+Edit: Cuir in Eagar
+Approve/Reject: Faomhadh / Diúltú
+Events: Imeachtaí
+Tasks: Tascanna
+Journals: Irisí
+Can Invite: An féidir cuireadh a thabhairt
+Can Email: An féidir Ríomhphost a dhéanamh
+Can See Time Only: An féidir Am a fheiceáil amháin
+Assistant: Cúntóir
+Select All: Roghnú go léir
+Clear All: Soiléir ar fad
+Public: Poiblí
+Confidential: Faoi rún
+Private: Príobháideach
+
+########################################
+# Page: activity_log.php
+#
+Next: Ar Aghaidh
+Previous: Roimhe seo
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Tá Imeacht XXX ar d’fhéilire cheana féin.
+Invalid entry id XXX.: Id iontrála neamhbhailí: "XXX".
+a XXX event may not be added to your calendar: Is ócáid ​​XXX é seo agus ní fhéadfar é a chur le d’fhéilire.
+confidential: faoi ​​rún
+private: príobháideach
+Error adding event XXX.: Earráid ag cur leis an teagmhas: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Ainm suímh neamhbhailí "XXX".
+Select: Roghnaigh
+Day: Lá
+Week: Seachtain
+Month: Mí
+Year: Bliain
+Bottom: Bun
+Top: Barr
+Anyone: Duine ar bith
+Participant: Rannpháirtí
+Settings: Socruithe
+Groups: Grúpaí
+NonUser Calendars: Féilirí NonUser
+Other: Eile
+Email: Ríomhphost
+Colors: Dathanna
+Document background: Cúlra an doiciméid
+Document title: Teideal an doiciméid
+Document text: Téacs an doiciméid
+My event text: Téacs mo imeachta
+Table grid color: Dath greille tábla
+Table header background: Cúlra ceanntásc tábla
+Table header text: Téacs ceanntásc tábla
+Table cell background: Cúlra cille tábla
+Table cell background for current day: Cúlra cille tábla don lá reatha
+Table cell background for days with events: Cúlra cille tábla do laethanta le himeachtaí
+Table cell background for weekends: Cúlra cille tábla don deireadh seachtaine
+Table cell background for other month: Cúlra cille tábla do mhí eile
+Week number color: Dath uimhir na seachtaine
+Event popup background: Cúlra aníos imeachta
+Event popup text: Téacs aníos imeachta
+System Settings: Socruithe Córais
+Help: Cabhrú
+System options: Roghanna córais
+app-name-help: Sonraítear ainm an fheidhmchláir a bheidh le feiceáil i mbarra teidil an bhrabhsálaí do gach leathanach agus ar an leathanach logála isteach. Féachfar ar an luach a shonraíonn tú anseo sa chomhad aistriúcháin a ligfidh duit teidil éagsúla a sholáthar do theangacha éagsúla.
+Application Name: Ainm an Iarratais
+Translated Name (XXX): Ainm Aistrithe (XXX)
+server-url-help: Sonraíonn sé an URL bun don fheidhmchlár. Áireofar é seo agus meabhrúcháin ríomhphoist agus fógraí á seoladh amach.
+Server URL: URL an fhreastalaí
+home-url-help: Sonraíonn sé URL baile an fheidhmchláir. Is féidir seo a bheith ina ghaol iomlán nó coibhneasta
+Home URL: URL baile
+language-help: Sonraítear cén teanga le húsáid.
+Language: Teanga
+Your browser default language is XXX.: Is é "XXX" teanga réamhshocraithe do bhrabhsálaí.
+Allow user to use themes: Lig don úsáideoir téamaí a úsáid
+themes-help: Ligeann sé nuashonrú mais ar na socruithe cumraíochta. Is réamhfhocal úsáideora amháin iad lipéid cás íochtair.
+Themes: Téamaí
+AVAILABLE THEMES: TÉAMAÍ AR FÁIL
+None: Dada
+Preview: Réamhamharc
+Site customization: Saincheapadh láithreáin
+custom-script-help: Ligeann sé iontráil téacs saincheaptha Javascript nó stílbhileog a chuirfear isteach sa chuid “ceann” HTML de gach leathanach.
+Custom script/stylesheet: Script saincheaptha / stílbhileog
+custom-header-help: Ceadaíonn snippet HTML saincheaptha a áireamh ar bharr gach leathanaigh.
+Custom header: Ceanntásc saincheaptha
+custom-trailer-help: Ceadaíonn snippet HTML saincheaptha a áireamh ag deireadh gach leathanaigh.
+Custom trailer: Leantóir saincheaptha
+enable-external-header-help: Ligeann sé an leantóir saincheaptha a luchtú ó chomhad seachtrach
+Allow external file for header/script/trailer: Ceadaigh comhad seachtrach le haghaidh ceanntásc / script / leantóir
+Allow user to override header/trailer: Lig don úsáideoir ceanntásc / leantóir a shárú
+Date and Time: Dáta agus Am
+server-tz-help: Sonraítear cé mhéad uair an chloig chun an t-am ó UTC a choigeartú go ham an fhreastalaí.
+Server Timezone Selection: Roghnú Crios Ama Freastalaí
+tz-help: Sonraítear cé mhéad uair an chloig chun an t-am ó UTC a choigeartú go ham áitiúil.
+Default Client Timezone Selection: Roghnú Crios Ama Réamhshocraithe Cliant
+display-general-use-gmt-help: Má tá sé cumasaithe, taispeántar dátaí / tráthanna coitianta mar GMT
+Display Common Use Date/Times as GMT: Dáta / Amanna Úsáide Coitianta a thaispeáint mar GMT
+date-format-help: Sonraíonn sé an fhormáid dáta is fearr.
+Date format: Formáid dáta
+Small Task Date: Dáta Tasc Beag
+display-week-starts-on: Sonraíonn sé lá na seachtaine a dtosaíonn an tseachtain. Má shonraítear Dé Luain, ansin uimhreacha seachtaine ISO a bheidh in uimhreacha na seachtaine.
+Week starts on: Tosaíonn an tseachtain
+display-weekend-starts-on: Socraíonn sé lá na seachtaine le go dtosóidh an deireadh seachtaine
+Weekend starts on: Tosaíonn an deireadh seachtaine ar
+time-format-help: Sonraítear cén fhormáid ama atá le húsáid:<br><em>12 uair:</em> Amanna taispeána mar 3am, 8:30 in, srl.<br><em>24 uair:</em> Amanna taispeána mar 300 , 2030, etc.
+Time format: Formáid ama
+12 hour: 12 uair an chloig
+24 hour: 24 uair an chloig
+timed-evt-len-help: Sonraíonn sé modh ionchuir chun fad imeachta uainithe a chinneadh.
+Specify timed event length by: Sonraigh fad imeachta uainithe de réir
+Duration: Fad
+End Time: Am Deiridh
+work-hours-help: Sonraíonn sé an raon ama atá le taispeáint don amharc lae.
+Work hours: Uaireanta oibre
+From: Ó
+to: chun
+Appearance: Dealramh
+preferred-view-help: Sonraíonn sé an dearcadh réamhshocraithe (Lá, Seachtain, Mí, nó Bliain).
+Preferred view: An radharc is fearr
+Allow top menu: Ceadaigh an roghchlár barr
+Date Selectors position: Dáta Seasamh na roghnóirí
+menu-themes-help: Socraigh dathanna agus stíl an roghchláir barr
+Menu theme: Téama an roghchláir
+fonts-help: Sonraítear liosta de na clónna córais atá le húsáid (mar shampla "Arial, Helvetica")
+Fonts: Clónna
+display-sm_month-help: Má tá sé cumasaithe, taispeántar tuairimí beaga míonna beaga
+Display small months: Taispeáin míonna beaga
+display-weekends-help: Cuir deireadh seachtaine san áireamh agus tú ag féachaint ar sheachtain.
+Display weekends: Deireadh seachtaine a thaispeáint
+display-long-daynames-help: Má tá sé cumasaithe, taispeántar ainmneacha lae fada
+Display long day names: Taispeáin ainmneacha lae fada
+display-alldays-help: Taispeáin radharcanna na míosa roimhe sin agus na míonna seo chugainn, ag líonadh gach cealla.
+Display all days in month view: Taispeáin gach lá i bhfianaise na míosa
+display-week-number-help: Sonraítear ar cheart uimhir na seachtaine (1-52) a thaispeáint in amharc na míosa agus in amharc na seachtaine.
+Display week number: Uimhir na seachtaine taispeána
+display-desc-print-day-help: Cuir tuairiscí imeachta san áireamh i leagan atá furasta le printéir de radharc an lae.
+Display description in printer day view: Cur síos ar taispeáint i bhfianaise lá an chlódóra
+yearly-shows-events-help: Ar an amharc bliantúil, laethanta taispeána ina mbíonn imeachtaí i gcló trom.
+Display days with events in bold in month and year views: Laethanta taispeána le himeachtaí i gcló trom i dtuairimí míosa agus bliana
+display-minutes-help: Má tá sé cumasaithe, taispeánfar miontuairiscí dar críoch: 00 i gcónaí
+Display 00 minutes always: Taispeáin 00 nóiméad i gcónaí
+display-end-times-help: Taispeáin amanna deiridh na hócáide má dhéantar an t-am a uainiú
+Display end times on calendars: Amanna deiridh a thaispeáint ar fhéilirí
+allow-view-add-help: Beidh deilbhín '+' san áireamh i radharcanna, rud a ligfidh d'úsáideoirí imeachtaí a chur go tapa le féilirí úsáideoirí eile.
+Include add event link in views: Cuir nasc imeachta leis i dtuairimí
+lunar-help: Má tá sé cumasaithe, taispeánfar deilbhíní beaga a sheasann do na céimeanna gealaí gach mí
+Display Lunar Phases in month view: Taispeáin Céimeanna Gealaí i bhfianaise na míosa
+Restrictions: Srianta
+allow-view-other-help: Sonraítear an bhféadfaidh úsáideoir amháin féilire úsáideora eile a fheiceáil.
+Allow viewing other users calendars: Lig féachaint ar fhéilirí úsáideora eile
+require-approvals-help: Nuair a bheidh sé cumasaithe, ní mór d’úsáideoir imeacht a cheadú sula dtaispeántar é ar a bhféilire (mura bhfuil Taispeáin neamhcheadaithe cumasaithe). Ní dhéanfaidh nóta é seo a shocrú go "Níl" ceaduithe don fhéilire Rochtana Poiblí a mhúchadh (má tá an féilire Rochtana Poiblí cumasaithe).
+Require event approvals: Teastaíonn ceadú imeachta
+display-unapproved-help: Sonraítear an bhfuil imeachtaí neamhcheadaithe ar taispeáint i d’fhéilire.<br>Má tá siad socraithe go “Tá”, taispeánfar imeachtaí neamhcheadaithe i d’fhéilire (i ndath téacs difriúil).<br>Má tá siad socraithe go "Níl", ansin ní mór imeachtaí neamhcheadaithe a cheadú sula dtaispeántar iad i d’fhéilire.
+Display unapproved: Taispeáin neamhcheadaithe
+conflict-check-help: Seiceáil le haghaidh coinbhleachtaí imeachta (dhá imeacht sceidealta don duine céanna). Má shocraíonn tú é seo ar “Tá”, beidh tú fós in ann dhá imeacht a sceidealú ag an am céanna tar éis rabhadh a dhearbhú. Má shocraíonn tú é seo ar “Níl”, ní dhéanfar aon seiceáil ar choimhlintí. Is dócha gur mhaith leat é seo a shocrú do “Tá”, mar sin déantar seiceáil coinbhleachta.
+Check for event conflicts: Seiceáil le haghaidh coimhlintí imeachta
+Yes: Sea
+No: Níl
+conflict-months-help: Má tá seiceáil coinbhleachta i bhfeidhm (tá "Seiceáil le haghaidh coinbhleachtaí imeachta" socraithe ag "Níl"&#41;, sonraítear leis seo cé mhéad mí sa todhchaí ba cheart dúinn coinbhleachtaí a sheiceáil. Má aimsíonn tú go bhfuil sé ag glacadh go leor ama le himeachtaí a chur leis a phróiseáil , laghdaigh an líon seo.
+Conflict checking months: Míonna seiceála coimhlinte
+conflict-check-override-help: Ligeann sé d’úsáideoirí coinbhleachtaí imeachta a shárú agus dhá imeacht nó níos mó a sceidealú ag an am céanna.
+Allow users to override conflicts: Lig d’úsáideoirí coinbhleachtaí a shárú
+limit-appts-help: Ligeann sé do riarthóir an chórais teorainn uile-chórais a shocrú ar líon na gceapachán is féidir le húsáideoir aonair a dhéanamh ar aon lá amháin.
+Limit number of timed events per day: Teorainn a chur le líon na n-imeachtaí uainithe in aghaidh an lae
+limit-appts-number-help: Sonraíonn sé an líon uasta imeachtaí uainithe is féidir le húsáideoir a bheith acu in aon lá amháin.
+Maximum timed events per day: Imeachtaí uainithe uasta in aghaidh an lae
+crossday-help: Má chumasaítear é, taispeánfar imeachtaí a mhaireann laethanta ar laethanta ar leithligh
+Disable Cross-Day Events: Imeachtaí Tras-Lae a dhíchumasú
+disable-location-field-help: Trí "Tá" a roghnú bainfear an réimse "Suíomh" ó leathanaigh faisnéise imeachta
+Disable Location field: Réimse Suíomh a dhíchumasú
+disable-url-field-help: Trí "Tá" a roghnú bainfear an réimse "URL" ó leathanaigh faisnéise imeachta
+Disable URL field: Díchumasaigh réimse URL
+disable-priority-field-help: Trí "Tá" a roghnú, bainfear an réimse "Tosaíocht" ó leathanaigh faisnéise imeachta, ag soláthar comhéadan níos simplí do dhaoine nua.
+Disable Priority field: Réimse Tosaíochta a dhíchumasú
+disable-access-field-help: Trí "Tá" a roghnú, bainfear an réimse "Rochtain" ó leathanaigh faisnéise imeachta, ag soláthar comhéadan níos simplí do dhaoine nua.
+Disable Access field: Réimse Rochtana a dhíchumasú
+disable-participants-field-help: Trí “Tá” a roghnú bainfear an réimse “Rannpháirtithe” ó leathanaigh faisnéise imeachta, rud a choiscfidh ar úsáideoirí úsáideoirí eile a chur lena n-imeachtaí. Má chumasaíonn tú an rogha seo, b’fhéidir gur mhaith leat an réimse “Ceadaigh féachaint ar fhéilirí úsáideora eile” a dhíchumasú freisin.
+Disable Participants field: Díchumasaigh réimse na Rannpháirtithe
+disable-repeating-field-help: Má roghnaítear "Tá" bainfear an réimse "Athrá" agus imeachtaí á gcur leis. Soláthróidh sé seo comhéadan níos simplí do dhaoine nua.
+Disable Repeating field: Díchumasaigh réimse Athrá
+allow-html-description-help: Má tá sé cumasaithe, is féidir le húsáideoirí HTML a iontráil sa réimse tuairiscithe imeachta. Mura gcumasófar iad, éalófar na clibeanna HTML ionas go mbeidh siad le feiceáil mar ghnáth-théacs. Rabhadh: Ligfidh an ghné seo a chumasú d'úsáideoirí tagairt a dhéanamh d'íomhánna ar láithreáin ghréasáin eile.
+Allow HTML in Description: Ceadaigh HTML sa Tuairisc
+Popups: =
+disable-popups-help: Díchumasaigh popups ó amharc féilire
+Disable Pop-Ups: Díchumasaigh Pop-ups
+popup-includes-siteextras-help: Má tá sé cumasaithe, lig do réimsí saincheaptha imeachta atá socraithe sa chomhad site_extras.php a thaispeáint i bpreabanna imeachta.
+Display Site Extras in popup: Breiseáin Suímh Taispeáin sa aníos
+popup-includes-participants-help: Má tá sé cumasaithe, taispeántar rannpháirtithe i bpreabanna imeachta.
+Display Participants in popup: Taispeáin Rannpháirtithe sa aníos
+Miscellaneous: Ilghnéitheach
+remember-last-login-help: Nuair a bheidh sé cumasaithe, líonfar logáil isteach an úsáideora dóibh ar an leathanach logála isteach (ach ní an focal faire), agus déanfar roghanna an úsáideora a luchtú (na dathanna is fearr leo agus an rogha teanga san áireamh).
+Remember last login: Cuimhnigh an logáil isteach deireanach
+summary_length-help: Uasfhad an Tuairisc Achomair i radharcanna féilire
+Brief Description Length: Cur síos Achomair Fad
+user_sort-help: Cinneann ord sórtála do liostaí Úsáideora, Nonuser
+User Sort Order: Ordú Sórtáil Úsáideora
+Lastname, Firstname: Sloinne chéad ainm
+Firstname, Lastname: Ainm Sloinne
+allow-public-access-help: Nuair a chumasaítear é, is féidir an féilire a úsáid mar fhéilire poiblí inléite amháin nach gá d’úsáideoirí logáil isteach ann.
+Allow public access: Lig rochtain phoiblí
+public-access-default-visible: Beidh imeachtaí ón bhféilire poiblí le feiceáil go huathoibríoch ar fhéilirí gach úsáideora
+Public access visible by default: Rochtain phoiblí le feiceáil de réir réamhshocraithe
+public-access-default-selected: Agus imeacht nua á cur leis, roghnófar an t-úsáideoir poiblí de réir réamhshocraithe mar rannpháirtí.
+Public access is default participant: Is rannpháirtí réamhshocraithe rochtain phoiblí
+public-access-view-others-help: Nuair a bhíonn rochtain phoiblí ar an gcóras, sonraítear an féidir leis an úsáideoir féilire úsáideora féilire eile a fheiceáil.
+Public access can view other users: Is féidir le rochtain phoiblí féachaint ar úsáideoirí eile
+public-access-can-add-help: Nuair a bheidh sé cumasaithe, beidh úsáideoirí a dhéanann rochtain ar an gcóras trí Rochtain Phoiblí in ann imeachtaí nua a chur leis, ach ní thaispeánfar iad san fhéilire go dtí go gceadóidh riarthóir an ócáid ​​nua.
+Public access can add events: Féadann rochtain phoiblí imeachtaí a chur leis
+public-access-add-requires-approval-help: Sonraítear an dteastaíonn ceadú ó imeachtaí a chuirtear leis tríd an gcuntas rochtana poiblí sula gcuirtear ar taispeáint iad.
+Public access new events require approval: Teastaíonn cead ón bpobal rochtain nua a fháil ar imeachtaí nua
+public-access-sees-participants-help: Má tá sé cumasaithe, beidh úsáideoirí a bhfuil rochtain acu ar an bhféilire ón gcuntas poiblí in ann rannpháirtithe na hócáide a fheiceáil má fheiceann siad sonraí imeachta.
+Public access can view participants: Is féidir le rochtain phoiblí féachaint ar rannpháirtithe
+public-access-override-help: Ligeann sé go mbeidh ainmneacha agus tuairiscí imeachta i bhfolach ar an bhféilire poiblí
+Override event name/description for public access: Sáraigh ainm / tuairisc an imeachta maidir le rochtain phoiblí
+public-access-override-text-help: An téacs le taispeáint má tá an rogha thuas cumasaithe. Mura bhfuil sé ar fáil, aistreofar é.
+Text to display to public access: Téacs le taispeáint don rochtain phoiblí
+public-access-captcha-help: Má tá sé cumasaithe, caithfear bailíochtú CAPTCHA a rith le himeachtaí nua a chuireann an Pobal leis.
+Require CAPTCHA validation for public access new events: A cheangal ar bhailíochtú CAPTCHA le haghaidh rochtain phoiblí ar imeachtaí nua
+uac-enabled-help: Cumasaíonn sé rialú rochtana ar leibhéal an úsáideora
+User Access Control enabled: Cumasaíodh Rialú Rochtana Úsáideora
+groups-enabled-help: Cumasaíonn sé tacaíocht ghrúpa, rud a ligeann d’úsáideoirí úsáideoirí a roghnú de réir grúpaí.
+Groups enabled: Grúpaí cumasaithe
+user-sees-his-group-help: Má tá siad cumasaithe, ní fheicfidh úsáideoirí úsáideoirí féilire nach bhfuil i gceann amháin ar a laghad dá ngrúpaí.
+User sees only his groups: Ní fheiceann an t-úsáideoir ach a ghrúpaí
+nonuser-enabled-help: Má tá sé cumasaithe, beidh rogha ag admins féilirí nonuser a chur leis
+Nonuser enabled: Féilirí Nonuser Cumasaithe
+nonuser-list-help: Cá háit a ndéanfar na féilirí nonuser a thaispeáint ar liosta na rannpháirtithe
+Nonuser list: Taispeáin ar liosta na rannpháirtithe ag
+Upcoming Events: Imeachtaí atá ag Teacht
+upcoming-events-help: Cumasaigh le teacht.php
+Enabled: Cumasaithe
+upcoming-events-allow-override: Lig paraiméadar úsáideora le haghaidh teacht.php
+Allow user override: Lig don úsáideoir sárú
+upcoming-events-display-caticons: Cuir deilbhíní na gcatagóirí san áireamh sa atá le teacht.php
+Display category icons: Deilbhíní catagóir taispeána
+upcoming-events-display-layers: Taispeáin sraitheanna sa atá le teacht.php
+Display layers: Sraitheanna taispeána
+upcoming-events-display-links: Naisc a thaispeáint i atá le teacht.php
+Display links to events: Taispeáin naisc chuig imeachtaí
+upcoming-events-display-popups: Taispeáin popups imeachta i teacht.php
+Display event popups: Taispeáin popups imeachta
+reports-enabled-help: Má tá siad cumasaithe, feicfidh úsáideoirí rannán "Tuarascálacha" ag bun gach leathanaigh agus beidh cead acu tuarascálacha saincheaptha a chruthú. Ina theannta sin, is féidir le húsáideoirí riaracháin tuarascálacha domhanda a chruthú a bheidh le feiceáil ag bun leathanaigh gach úsáideora.
+Reports enabled: Tuarascálacha cumasaithe
+subscriptions-enabled-help: Sonraítear an féidir le húsáideoirí iargúlta liostáil le féilire úsáideora WebCalendar, rud a ligeann dóibh imeachtaí úsáideora WebCalendar a fheiceáil ina bhfeidhmchlár atá cumasaithe ag iCal (mar iCal Apple nó Féilire Mozilla).
+Allow remote subscriptions: Ceadaigh síntiúis iargúlta
+remotes-enabled-help: Ligeann sé d’úsáideoirí comhaid iargúlta ics a luchtú ag úsáid URL
+Allow remote calendars: Ceadaigh féilirí iargúlta
+rss-enabled-help: Sonraítear an féidir féilire úsáideora a fháil ó fhotha RSS.
+Enable RSS feed: Cumasaigh fotha RSS
+categories-enabled-help: Cumasaíonn sé tacaíocht do chatagóirí imeachtaí.
+Categories enabled: Catagóirí cumasaithe
+icon_upload-enabled-help: Má tá sé cumasaithe, is féidir le húsáideoirí deilbhíní catagóir a uaslódáil
+Category Icon Upload enabled: Uaslódáil Deilbhín Catagóir cumasaithe
+(Requires XXX folder to exist.): (Éilíonn go bhfuil fillteán XXX ann.)
+display-tasks-help: Taispeáin fuinneog bheag tascanna ar fhéilire na míosa agus an lae
+Display small task list: Taispeáin liosta tascanna beaga
+display-tasks-in-grid-help: Taispeáin tascanna i bhféilirí in éineacht le himeachtaí
+Display tasks in Calendars: Taispeáin tascanna i bhFéilirí
+allow-external-users-help: Sonraítear an féidir úsáideoir neamhfhéilire a chur le hócáid. Ligeann sé seo d’úsáideoirí neamhfhéilire a liostáil mar rannpháirtithe imeachta.
+Allow external users: Lig d'úsáideoirí seachtracha
+external-can-receive-notification-help: Nuair a chumasaítear úsáideoirí seachtracha agus nuair a chumasaítear úsáid ríomhphoist, is féidir le húsáideoirí seachtracha fógraí ríomhphoist a fháil nuair a chuirtear, a nuashonraítear nó a scriosadh an teagmhas (má chuirtear seoladh ríomhphoist an úsáideora sheachtraigh ar fáil).
+External users can receive email notifications: Is féidir le húsáideoirí seachtracha fógraí ríomhphoist a fháil
+external-can-receive-reminder-help: Nuair a chumasaítear úsáideoirí seachtracha agus nuair a chumasaítear úsáid ríomhphoist, is féidir le húsáideoirí seachtracha meabhrúcháin ríomhphoist a fháil (má chuirtear seoladh ríomhphoist an úsáideora sheachtraigh ar fáil).
+External users can receive email reminders: Is féidir le húsáideoirí seachtracha meabhrúcháin ríomhphoist a fháil
+allow-self-registration-help: Ceadaigh d’úsáideoirí nua iad féin a chlárú
+Allow self-registration: Lig féinchlárú
+use-blacklist-help: Teorainn a chur le rochtain ar fheidhmeanna WebCalendar bunaithe ar sheoladh IP
+Restrict self-registration to blacklist: Cuir srian ar fhéinchlárú ar an liosta dubh
+allow-self-registration-full-help: Lig d’úsáideoirí nua an próiseas féinchlárúcháin a chríochnú ar líne
+Use self-registration email notifications: Cruthaigh pasfhocail agus seol chuig úsáideoirí nua iad
+allow-attachment-help: Lig d’úsáideoirí ceangaltáin comhaid a chur le himeachtaí.
+Allow file attachments to events: Lig ceangaltáin comhaid d’imeachtaí
+Admin and owner can always add attachments if enabled.: Is féidir le lucht riaracháin agus úinéir ceangaltáin a chur leis i gcónaí má tá sé cumasaithe.
+allow-comments-help: Lig d’úsáideoirí tráchtanna a chur le himeachtaí.
+Allow comments to events: Lig trácht ar imeachtaí
+Admin and owner can always add comments if enabled.: Is féidir le lucht riaracháin agus úinéir tráchtanna a chur leis i gcónaí má tá sé cumasaithe.
+email-enabled-help: Tiontaigh nó múch gach seoladh ríomhphoist le haghaidh fógra agus meabhrúcháin. Socraigh ar "níl", mura bhfuil do fhreastalaí socraithe i gceart chun post a sheoladh.
+Email enabled: Ríomhphost cumasaithe
+email-default-sender: Sonraíonn sé an seoladh ríomhphoist le sonrú mar an seoltóir agus meabhrúcháin á seoladh amach.
+Default sender address: Seoladh réamhshocraithe an tseoltóra
+email-mailer: Roghnaigh cineál ríomhphoist (SMTP, PHP mail, sendmail)
+Email Mailer: Ríomhphost Mailer
+email-smtp-host: Óstach (í) freastalaí (í) SMTP scartha le camóga
+SMTP Host name(s): Ainm óstach (í) SMTP
+email-smtp-port: Uimhir Chalafoirt SMTP (25 de ghnáth)
+SMTP Port Number: Uimhir Chalafoirt SMTP
+email-smtp-auth: Úsáid Fíordheimhniú SMTP
+SMTP Authentication: Fíordheimhniú SMTP
+email-smtp-username: Ainm Úsáideora SMTP má tá Fíordheimhniú á úsáid agat
+SMTP Username: Ainm Úsáideora SMTP
+email-smtp-password: Pasfhocal SMTP má tá Fíordheimhniú á úsáid agat
+SMTP Password: Pasfhocal SMTP
+Default user settings: Socruithe úsáideora réamhshocraithe
+email-format: Sonraigh tosaíocht do theachtaireachtaí HTML nó gnáth-théacs
+Email format preference: Rogha formáide ríomhphoist
+HTML: =
+Plain Text: Téacs Plain
+email-include-ics: Cuir comhad iCalendar ICS san áireamh chun teachtaireacht ríomhphoist a sheoladh
+Include iCalendar attachments: Cuir ceangaltáin iCalendar san áireamh
+email-event-reminders-help: Sonraítear cé acu meabhrúcháin imeachta a sheoladh nó nach ea.
+Event reminders: Meabhrúcháin imeachta
+email-event-added: Sonraítear cé acu fógraí ríomhphoist a sheoladh nó nach ea nuair a chuirtear imeacht le d’fhéilire.
+Events added to my calendar: Imeachtaí a cuireadh le m’fhéilire
+email-event-updated: Sonraítear cé acu fógraí ríomhphoist a sheoladh nó nach ea nuair a dhéantar imeacht a nuashonrú ar d’fhéilire.
+Events updated on my calendar: Imeachtaí nuashonraithe ar mo fhéilire
+email-event-deleted: Sonraítear cé acu fógraí ríomhphoist a sheoladh nó nach ea nuair a bhaintear imeacht as d’fhéilire.
+Events removed from my calendar: Imeachtaí bainte as m’fhéilire
+email-event-rejected: Sonraítear an ceart fógraí ríomhphoist a sheoladh nó nach gcuirfidh nuair a dhiúltaíonn rannpháirtí d’imeacht atá ar d’fhéilire.
+Event rejected by participant: Diúltaigh an rannpháirtí don imeacht
+email-event-create: Sonraítear an bhfaighidh cruthaitheoir na n-iontrálacha r-phost
+Event that I create: Imeacht a chruthaím
+Color options: Roghanna dathanna
+Allow user to customize colors: Lig don úsáideoir dathanna a shaincheapadh
+gradient-colors: Má úsáidtear dathanna grádáin cumasaithe. Is féidir leis seo dul i bhfeidhm go mór ar fheidhmíocht.
+Enable gradient images for background colors: Cumasaigh íomhánna grádáin do dathanna cúlra
+Not available: Níl sé ar fáil
+Background Image options: Cúlra Roghanna íomhá
+bgimage-help: URL na híomhá cúlra atá ag teastáil. D’fhéadfadh gur nasc coibhneasta é.
+Background Image: Íomhá Cúlra
+bgrepeat-help: Rialaíonn sé iompraíocht íomhá chúlra arís.
+Background Repeat: Athdhéanamh Cúlra
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Cúntóirí
+Preferences: Sainroghanna
+Control Panel: Painéal rialú
+Users: Úsáideoirí
+Account: Cuntas
+Categories: Catagóirí
+Views: Radhairc
+Layers: Sraitheanna
+Reports: Tuarascálacha
+Delete Events: Scrios Imeachtaí
+Activity Log: Log Gníomhaíochta
+System Log: Logáil Córais
+Security Audit: Iniúchadh Slándála
+Public Preferences: Roghanna Poiblí
+Unapproved Public Events: Imeachtaí Poiblí Neamhcheadaithe
+Administrative Tools: Uirlisí Riaracháin
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Ainm Dúblach: "XXX".
+Username XXX already exists.: Tá ainm úsáideora "XXX" ann cheana.
+Email address XXX already exists.: Tá seoladh ríomhphoist "XXX" ann cheana.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Tráchtaireachtaí Breise (roghnach)
+Approve and Send: Faomhadh agus Seol
+Approve and Exit: Faomhadh agus Scoir
+(Your comments will be emailed to the event creator.): (Seolfar do chuid tuairimí trí ríomhphost chuig cruthaitheoir na hócáide.)
+Hello, XXX.: Dia duit, XXX.
+XXX has approved an appointment and added comments.: Tá coinne ceadaithe agus tuairimí curtha leis ag XXX.
+Subject XXX: Ábhar: "XXX".
+Description XXX: Cur síos: "XXX".
+Date XXX: Dáta: XXX
+Time XXX: Am: XXX
+Comments XXX: Nótaí tráchta: XXX
+Approved w/Comments by XXX.: Ceadaithe w / Tráchtanna le: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Modh riaracháin
+Your assistants: Do chúntóirí
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Earráid anaithnid.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Earráid an Chláir: Níl XXX sonraithe!
+user: úsáideoir
+year: bhliain
+month: mhí
+day: lá
+
+########################################
+# Page: category.php
+#
+Category Icon: Deilbhín Catagóir
+Global: Domhanda
+The permissions for the icons directory are set to read-only: Tá na ceadanna don eolaire deilbhíní socraithe le léamh amháin.
+Category Name: Ainm Catagóir:
+Color: Dath
+Remove Icon: Bain Deilbhín:
+Add Icon to Category: Cuir Deilbhín leis an gCatagóir
+Upload: Uaslódáil
+GIF or PNG 6kb max: Uasmhéid GIF nó PNG 6kb
+Search for existing icons: Cuardaigh deilbhíní atá ann cheana
+Add: Cuir leis
+Delete: Scrios
+Are you sure you want to delete this entry?: An bhfuil tú cinnte gur mhaith leat an iontráil seo a scriosadh?
+Make New Category: Déan Catagóir Nua
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Teastaíonn ainm na catagóire
+File size exceeds maximum.: Sáraíonn méid an chomhaid an t-uasmhéid.
+File is not a GIF or PNG image: Ní íomhá GIF nó PNG é an comhad
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: CATEGORIES AR FÁIL
+ENTRY CATEGORIES: CATAGÓIRÍ IONTRÁLA
+Remove: Bain
+Global Category: Catagóir Dhomhanda
+Cancel: Cealaigh
+
+########################################
+# Page: colors.php
+#
+Add Custom: Cuir Saincheaptha leis
+Basic Colors: Dathanna Bunúsacha
+Current Color: Dath Reatha
+Custom Colors: Dathanna Saincheaptha
+Old Color: Sean-Dath
+
+########################################
+# Page: combo.php
+#
+Select None: Roghnaigh Dada
+Agenda: Clár Oibre
+Add Task: Cuir Tasc leis
+Description: Cur síos
+Date: Dáta
+Time: Am
+Priority: Tosaíocht
+Access: Rochtain
+Created by: Cruthaithe ag
+Updated: Nuashonraithe
+Participants: Rannpháirtithe
+Attachments: Ceangaltáin
+Comments: Nótaí tráchta
+Brief Description: Cur síos Achomair
+Full Description: Cur síos Iomlán
+Category: Catagóir
+Add event detail: Cuir mionsonraí na hócáide leis
+Start Date: Dáta tosaigh
+Due Date: Dáta dlite
+Add task detail: Cuir mionsonraí tasc leis
+All: Gach
+Error: Earráid
+no response from server: aon fhreagra ón bhfreastalaí
+JSON error: Earráid JSON
+High: Ard
+Medium: Mheán
+Low: Íseal
+Today: Inniu
+Add Entry: Cuir Iontráil leis
+Unnamed Event: Imeacht Gan Ainm
+Unnamed Task: Tasc gan Ainm
+Refresh: Athnuachan
+Click to add entry: Cliceáil chun iontráil a chur leis
+Name: Ainm
+pm: i.n.
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: Tá coinne curtha ar ceal ag XXX.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Id neamhbhailí blob
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Cuir Trácht leis
+Add Attachment: Cuir Ceangaltán leis
+Subject: Ábhar
+Comment: Tráchtaireacht
+Upload file: Uaslódáil comhad
+
+########################################
+# Page: docdel.php
+#
+Removed: Bhaint
+
+########################################
+# Page: edit_entry.php
+#
+days: laethanta
+hours: uair an chloig
+minutes: nóiméad
+You are not authorized to edit this task.: Níl tú údaraithe an tasc seo a chur in eagar.
+is in a different timezone than you are. Currently: i gcrios ama difriúil ná tusa. Faoi láthair
+hour ahead of you: uair an chloig romhat
+hour behind you: uair an chloig i do dhiaidh
+hours ahead of you: uair an chloig romhat
+hours behind you: uair an chloig taobh thiar duit
+XXX is in a different timezone (ahead): (Tá XXX i gcrios ama difriúil; YYY chun tosaigh ort.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (Tá XXX i gcrios ama difriúil; YYY taobh thiar díot.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Tá an t-am a iontráiltear anseo bunaithe ar do Chrios Ama.
+Edit Entry: Cuir Iontráil in Eagar
+Details: Sonraí
+Repeat: Déan arís
+Reminders: Meabhrúcháin
+brief-description-help: Ba cheart go dtabharfadh sé seo cur síos gairid (thart ar 20 carachtar) ar an ócáid. Léireoidh sé seo an ócáid ​​agus tú ag féachaint ar an bhféilire.
+full-description-help: Ba cheart go gcuirfeadh sé seo sonraí an imeachta i gcrích. Is féidir an fhaisnéis seo a fheiceáil nuair a fheiceann úsáideoir an ócáid.
+access-help: Sonraíonn sé leibhéal rochtana na hócáide. <ul> <li> Poiblí: Is féidir le gach duine sonraí iomlána na hócáide a fheiceáil.</li> <li> Rúnda: Is féidir le daoine eile a fheiceáil go bhfuil iontráil agat don dáta agus don am sin, ach ní na sonraí faoina bhfuil ann.</li></ul>
+priority-help: Sonraíonn sé tosaíocht na hócáide. Taispeánfar imeachtaí ardtosaíochta i gcló trom.
+category-help: Sonraíonn sé catagóir na hócáide.
+completed-help: Dáta an tasc críochnaithe. Ní chumasaítear é ach nuair is ionann céatadán na rannpháirtithe uile agus 100%.
+Date Completed: Dáta Críochnaithe
+percent-help: Céatadán críochnaithe tascanna don úsáideoir seo
+Percent Complete: Céatadán Críochnaithe
+All Percentages: Gach Céatadán
+location-help: Suíomh imeachta
+Location: Suíomh
+url-help: URL Imeachta
+URL: =
+date-help: Sonraíonn sé dáta an imeachta.
+Untimed event: Imeacht gan cheangal
+Timed event: Imeacht uainithe
+All day event: Imeacht ar feadh an lae
+Timezone Offset: Fritháireamh Crios Ama
+time-help: Sonraíonn sé am na hócáide. <ul> <li> "Imeacht uainithe" (le haghaidh imeachta atá sceidealta le haghaidh am faoi leith ar an lá sin)</li> <li> "Imeacht gan cheangal" (le haghaidh imeachta ní bhíonn am aige seo (cosúil le saoire )</li> <li> "Imeacht ar feadh an lae" (le haghaidh imeachta a thógann an lá ar fad (cosúil le bheith as an oifig)</li></ul>
+duration-help: Sonraíonn sé fad (in uaireanta; nóiméad) an imeachta. <em>Is féidir an réimse seo a fhágáil bán.</em>
+end-time-help: Sonraíonn sé an t-am a bhfuiltear ag súil go dtiocfaidh deireadh leis an ócáid.
+Start Time: Am Tosaigh
+Due Time: Am Dlite
+Site Extras: Breiseáin Láithreáin
+avail_participants-help: Liostaíonn sé na rannpháirtithe atá ar fáil san iontráil seo.
+Available: Ar fáil
+Find Name: Faigh Ainm
+Resources: Acmhainní
+participants-help: Liostaíonn sé rannpháirtithe na hiontrála seo.
+Selected: Roghnaithe
+Availability: Infhaighteacht
+external-participants-help: Sonraítear liosta de na rannpháirtithe don ócáid ​​nach úsáideoirí féilire iad. Ba cheart na húsáideoirí a liostáil ceann in aghaidh na líne agus seoladh ríomhphoist a bheith iontu. Má shonraítear seoladh ríomhphoist, tá an t-úsáideoir incháilithe fógraí agus meabhrúcháin a fháil.
+External Participants: Rannpháirtithe Seachtracha
+repeat-type-help: Roghnaigh cé chomh minic ba chóir an ócáid ​​a athdhéanamh.
+Daily: Laethúil
+Weekly: Seachtainiúil
+Monthly: Míosúil
+by day: sa lá
+by date: de réir dáta
+by position: de réir poist
+Monthly (by day): Míosúil (in aghaidh an lae)
+Monthly (by date): Míosúil (de réir dáta)
+Monthly (by position): Míosúil (de réir poist)
+Yearly: Gach bliain
+Manual: Lámhleabhar
+Expert Mode: Mód Saineolaithe
+repeat-end-date-help: Sonraíonn sé an dáta ar chóir an ócáid ​​a athdhéanamh go dtí.
+Ending: Ag críochnú
+Forever: Go deo
+Use end date: Úsáid an dáta deiridh
+Number of times: Líon uaireanta
+repeat-frequency-help: Sonraítear cé chomh minic ba chóir an ócáid ​​a athdhéanamh.
+Frequency: Minicíocht
+Weekdays Only: Laethanta na Seachtaine Amháin
+Week Start: Tús na Seachtaine
+repeat-bydayextended-help: Ceadaíonn roghnú dáta bunaithe ar lá na seachtaine.
+ByDay: =
+repeat-month-help: Sonraíonn sé na míonna ar chóir an ócáid ​​a athdhéanamh.
+ByMonth: =
+repeat-bysetpos-help: Ceadaíonn roghnú dáta bunaithe ar sheasamh an mhí.
+BySetPos: =
+repeat-bymonthdayextended-help: Ligeann roghnú dáta bunaithe ar dháta.
+ByMonthDay: =
+repeat-byweekno-help: Ligeann sé don úsáideoir liosta seachtainí a shonrú chun imeacht a athdhéanamh (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Ligeann sé don úsáideoir liosta de laethanta bliana a shonrú chun imeacht a athdhéanamh (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Laethanta breise ar cheart nó nár cheart go dtarlódh an teagmhas seo.
+Exclusions: Eisiaimh
+Inclusions: Cuimsithe
+Add Exception: Cuir Eisceacht leis
+Add Inclusion: Cuir Cuimsiú leis
+Delete Selected: Scrios Roghnaithe
+Send Reminder: Seol Meabhrúchán
+When: Cathain
+Use Date/Time: Úsáid Dáta / Am
+Use Offset: Úsáid Fritháireamh
+Before: Roimh
+After: Tar éis
+Start: Tosaigh
+End/Due: Deireadh / Dlite
+Times: Amanna
+Every: Gach
+CAPTCHA Warning: Rabhadh:  Ní féidir CAPTCHA a úsáid gan síneadh GD PHP!<br>
+Delete entry: Scrios iontráil
+You are not authorized to edit this entry.: Níl tú údaraithe an iontráil seo a chur in eagar.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: Tá coinne nua déanta ag XXX.
+XXX has updated an appointment.: Tá coinne nuashonraithe ag XXX.
+Security violation!: Sárú slándála!
+You must enter the anti-spam text on the previous page.: Caithfidh tú an téacs frith-spam a iontráil ar an leathanach roimhe seo.
+The following conflicts with the suggested time: Tagann an méid seo a leanas salach ar an am a mholtar
+User removed from participants list.: Úsáideoir bainte de liosta na rannpháirtithe.
+Please look on XXX to accept or reject this appointment.: Féach ar XXX le do thoil chun glacadh leis an gceapachán seo nó é a dhiúltú.
+Please look on XXX to view this appointment.: Féach ar XXX le do thoil chun an coinne seo a fheiceáil.
+Scheduling Conflict: Coimhlint Sceidealaithe
+Your suggested time of: Do chuid ama molta de
+conflicts with the following existing calendar entries: coimhlintí leis na hiontrálacha féilire seo a leanas
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: Níl NONUSER_PREFIX socraithe i "config.php".
+word characters only: (ní féidir ach carachtair fhocail a bheith ann; [a-zA-Z_0-9])
+Add User: Cuir Úsáideoir leis
+Edit User: Cuir Úsáideoir in Eagar
+Calendar ID: Aitheantas Féilire
+First Name: Ainm
+Last Name: Ainm Deireanach
+Is public calendar: An bhfuil féilire poiblí
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Earráid sa bhunachar sonraí
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Cuir Féilire cianda leis
+Edit Remote Calendar: Cuir Féilire cianda in eagar
+Create Layer: Cruthaigh Sraith
+Reload: Athlódáil
+Required to View Remote Calendar: Riachtanach féachaint ar an bhFéilire cianda
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Torthaí Iompórtála
+Events successfully imported: D'éirigh le himeachtaí a allmhairiú
+Create a new layer to view this calendar.: Cruthaigh sraith nua chun an féilire seo a fheiceáil.
+Errors: Earráidí
+There was an error parsing the import file or no events were returned.: Tharla earráid agus an comhad iompórtála á pharsáil nó níor tugadh aon imeachtaí ar ais.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Amárach
+Yesterday: Inné
+Day before yesterday: Lá roimh inné
+Next week: An tseachtain seo chugainn
+This week: An tseachtain seo
+Last week: An tseachtain seo caite
+Week before last: Seachtain roimh seo caite
+Next week and week after: An tseachtain seo chugainn agus an tseachtain ina dhiaidh sin
+This week and next week: An tseachtain seo agus an tseachtain seo chugainn
+Last week and this week: An tseachtain seo caite agus an tseachtain seo
+Last two weeks: Coicís anuas
+Next month: An mhí seo chugainn
+This month: An mhí seo
+Last month: An mhí seo caite
+Month before last: Mí roimh seo caite
+Next year: An bhliain seo chugainn
+This year: An bhliain seo
+Last year: Anuraidh
+Year before last: Bliain roimh seo caite
+Next 14 days: 14 lá seo chugainn
+Next 30 days: 30 lá seo chugainn
+Next 60 days: 60 lá seo chugainn
+Next 90 days: 90 lá seo chugainn
+Next 180 days: 180 lá seo chugainn
+Next 365 days: 365 lá seo chugainn
+Invalid report id XXX.: Tuarascáil neamhbhailí id: "XXX".
+Unnamed Report: Tuarascáil Gan Ainm
+Add Report: Cuir Tuarascáil leis
+Edit Report: Cuir Tuarascáil in Eagar
+Report name: Ainm na tuarascála
+User: Úsáideoir
+Current User: Úsáideoir Reatha
+Include link in menu: Cuir nasc san áireamh sa roghchlár
+Include standard header/trailer: Cuir ceanntásc / leantóir caighdeánach san áireamh
+Include previous/next links: Cuir naisc roimhe seo / an chéad cheann eile san áireamh
+Include empty dates: Cuir dátaí folmha san áireamh
+Date range: Raon dáta
+Template variables: Athróga teimpléad
+Page template: Teimpléad an leathanaigh
+Day template: Teimpléad lae
+Event template: Teimpléad imeachta
+Are you sure you want to delete this report?: An bhfuil tú cinnte gur mhaith leat an tuarascáil seo a scriosadh?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Níl a leithéid de thuairisc id: "XXX".
+Variable XXX not found.: Níor aimsíodh XXX inathraithe.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Cuir Ceanntásc Saincheaptha in eagar
+Edit Custom Script/Stylesheet: Cuir Script Saincheaptha / Bileog Stíle in eagar
+Edit Custom Trailer: Cuir Leantóir Saincheaptha in Eagar
+
+########################################
+# Page: edit_user.php
+#
+Username: Ainm úsáideora
+E-mail address: Seoladh ríomhphoist
+Password: Pasfhocal
+again: arís
+Disabled for demo: Míchumasaithe don taispeántas
+Are you sure you want to delete this user?: An bhfuil tú cinnte gur mhaith leat an t-úsáideoir seo a scriosadh?
+Change Password: Athraigh do phasfhocal
+New Password: Focal Faire Nua
+Set Password: Socraigh Pasfhocal
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Ag scriosadh úsáideoirí nach dtacaítear leo.
+The passwords were not identical.: Ní raibh na pasfhocail comhionann.
+You have not entered a password.: Níor iontráil tú pasfhocal.
+Username cannot be blank.: Ní féidir ainm úsáideora a bheith bán.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Gan údarú
+
+########################################
+# Page: export.php
+#
+Export: Easpórtáil
+Export format: Formáid easpórtála
+Include all layers: Cuir na sraitheanna uile san áireamh
+Include deleted entries: Cuir iontrálacha scriosta san áireamh
+Export all dates: Easpórtáil na dátaí go léir
+Start date: Dáta tosaigh
+End date: Dáta deiridh
+Modified since: Athraithe ó shin
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: formáid onnmhairithe nach bhfuil sainithe nó mícheart.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Níor sonraíodh aon úsáideoir.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Cuir Grúpa Nua leis
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Grúpa Gan Ainm
+Add Group: Cuir Grúpa leis
+Edit Group: Cuir Grúpa in Eagar
+Group name: Ainm an ghrúpa
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Caithfidh tú ainm grúpa a shonrú
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Féilirí uath-athnuachana
+auto-refresh-help: Nuair a chumasófar é, déanfaidh radharc an lae, amharc na seachtaine, amharc na míosa, agus leathanaigh neamhcheadaithe a liostáil iad féin a athnuachan go tréimhsiúil.
+Auto-refresh time: Am athnuachana uathoibríoch
+auto-refresh-time-help: Má tá Auto-athnuachan cumasaithe, sonraítear leis seo an t-am idir gach athnuachan.
+Display days with events in bold in year view: Laethanta taispeána le himeachtaí i gcló trom i rith na bliana
+Display weekends in week view: Taispeáin deireadh seachtaine i bhfianaise na seachtaine
+Time interval: Eatramh ama
+time-interval-help: Sonraítear cá fhad a bheidh na bloic ama in amharc na seachtaine agus i radharc an lae.
+Nonuser: Féilirí Nonuser
+user-customize-color: Sonraítear an bhfuil cead ag úsáideoirí a scéim dathanna féin a mhodhnú.
+enable-gradient-help: Úsáid dathanna grádáin do chúlraí cille.
+Manually entering color values: Ag dul isteach i luachanna dath de láimh
+colors-help: Ba cheart na dathanna go léir a shonrú i bhformáid heicsidheachúlach "#RRGGBB" áit arb é "RR" an luach heics do dhearg, is é "GG" an luach heics do ghlas, agus is é "BB" an luach heics do ghorm.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Tuairiscigh Bug
+Please include all the information below when reporting a bug.: Cuir an fhaisnéis uile thíos san áireamh agus fabht á thuairisciú.
+Also, please use English rather than XXX.: Chomh maith leis sin, bain úsáid as  Béarla  seachas XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Doiciméadú WebCalendar
+Currently in English only.: I mBéarla amháin faoi láthair.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Iontrálacha Féilire a Chur Leis / Eagarthóireacht
+Repeat Type: Cineál Athrá
+For More Information...: Le haghaidh Tuilleadh Eolais ...
+Repeat End Date: Déan an Dáta Deiridh arís
+Repeat Day: Lá Athrá
+repeat-day-help: Sonraítear cé na laethanta den tseachtain ar chóir an ócáid ​​a athdhéanamh.
+
+########################################
+# Page: help_import.php
+#
+Import: Iompórtáil
+Palm Desktop: Deasc Palm
+allow you to import entries from the Palm...: Ligfidh an fhoirm seo duit iontrálacha a iompórtáil ón Palm Desktop Datebook. Ba chóir go mbeadh sé suite i do eolaire Palm i datebook / datebook.dat i bhfochomhadlann darb ainm d’ainm úsáideora.
+The following entries will not be imported: Ní iompórtálfar na hiontrálacha seo a leanas:
+Entries older than the current date: Iontrálacha níos sine ná an dáta reatha
+Entries created in the Palm Desktop...: Iontrálacha a cruthaíodh sa Deasc Palm nár cuireadh HotSync'd orthu
+Anything imported from Palm...: Déanfar aon rud a allmhairítear ó Palm a fhorscríobh le linn na chéad allmhairithe eile (mura mbeidh dáta na hócáide caite). Dá bhrí sin, ba cheart nuashonruithe a dhéanamh sa Deasc Palm.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Déanfaidh an fhoirm seo imeachtaí vCalendar (.vcs) 1.0 a iompórtáil.
+The following formats have been tested: Tástáladh na formáidí seo a leanas:
+This form will import iCalendar (.ics) events.: Déanfaidh an fhoirm seo imeachtaí iCalendar (.ics) a iompórtáil.
+Enabling: Ag cumasú
+Overwrite Prior Import: Scríobh Iompórtáil Roimhe Seo
+will cause events imported previously...: cuirfidh sé faoi deara imeachtaí a allmhairíodh roimhe seo, a d’úsáid an UID céanna le teagmhas ón gcomhad nua iompórtála, a mharcáil mar scriosadh. Ba cheart go gceadódh sé seo comhad nuashonraithe iCalendar a iompórtáil gan dúbailtí a chruthú.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Innéacs Cabhrach
+About WebCalendar: Maidir le WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Tá sraitheanna úsáideach chun imeachtaí úsáideoirí eile a thaispeáint i d’fhéilire féin. Is féidir leat an t-úsáideoir a shonrú agus an dath a thaispeánfar na himeachtaí ann.
+Add/Edit/Delete: Cuir / Cuir in Eagar / Scrios
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Trí chliceáil ar an nasc Edit Layers sa rannán riaracháin ag bun an leathanaigh ligfidh tú sraitheanna a chur leis / a chur in eagar / a scriosadh.
+The text color of the new layer that will be displayed in your calendar.: Dath téacs na sraithe nua a thaispeánfar i d’fhéilire.
+Disabling: Díchumasaithe
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Brúigh an nasc Sraitheanna Díchumasaithe sa chuid riaracháin ag bun an leathanaigh chun sraitheanna a mhúchadh.
+Duplicates: Dúblaigh
+If checked, events that are duplicates of your events will be shown.: Má dhéantar seiceáil orthu, taispeánfar imeachtaí ar dúbailtí d’imeachtaí iad.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Brúigh an nasc Cumasaigh Sraitheanna sa rannán riaracháin ag bun an leathanaigh chun sraitheanna a chasadh air.
+Source: Foinse
+Specifies the user that you would like to see displayed in your calendar.: Sonraíonn sé an t-úsáideoir ar mhaith leat a fheiceáil ar taispeáint i d’fhéilire.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Catagóir Réamhshocraithe
+default-category-help: Sonraíonn sé an chatagóir ar cheart imeacht nua a mhainneachtain.
+When I am the boss: Nuair is mise an Boss
+Email me event notification: Fógra imeachta a sheoladh chugam
+email-boss-notifications-help: Sonraítear an bhfaigheann bosses ríomhphoist mar fhógraí imeachta.
+I want to approve events: Ba mhaith liom imeachtaí a cheadú
+boss-approve-event-help: Sonraítear an gceanglófar ar an bhfostaí imeachtaí a chuir cúntóirí leis a cheadú.
+Subscribe/Publish: Liostáil / Foilsigh
+Allow remote publishing: Ceadaigh foilsitheoireacht iargúlta
+allow-remote-publishing-help: Sonraítear an féidir le cliant iargúlta iCal imeachtaí a fhoilsiú ar ais chuig WebCalendar
+remote-publishing-url-help: Taispeánann sé an URL le húsáid san fheidhmchlár cliant iCal chun liostáil agus foilsiú ar ais chuig WebCalendar.
+allow-remote-subscriptions-help: Sonraítear an féidir le húsáideoirí iargúlta liostáil le d’fhéilire, rud a ligeann dóibh d’imeachtaí a fheiceáil in feidhmchlár atá cumasaithe ag iCal (mar iCal Apple nó Féilire Mozilla).
+remote-subscriptions-url-help: Taispeánann sé an URL ba cheart d’úsáideoirí iargúlta a úsáid chun liostáil le d’fhéilire.
+Enable FreeBusy publishing: Cumasaigh foilsiú FreeBusy
+freebusy-enabled-help: Sonraítear an féidir an t-am atá ar fáil don úsáideoir a fháil trí chaighdeán iCal FreeBusy a úsáid.
+freebusy-url-help: An URL chun rochtain a fháil ar liosta FreeBusy an úsáideora
+rss-feed-url-help: An URL chun an fotha RSS a rochtain
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Ligeann sé rialú breá ar rochtain agus ceadanna úsáideora. Féadann úsáideoirí cead réamhshocraithe agus in aghaidh an duine aonair a dheonú má tá siad údaraithe ag an riarthóir.
+If disabled, this user cannot send you emails.: Má tá sé faoi mhíchumas, ní féidir leis an úsáideoir seo ríomhphoist a sheoladh chugat.
+If disabled, this user cannot see you in the participants list.: Má tá sé faoi mhíchumas, ní fheiceann an t-úsáideoir seo tú ar liosta na rannpháirtithe.
+If enabled, this user cannot view the details of any of your entries.: Má tá sé cumasaithe, ní féidir leis an úsáideoir seo sonraí aon cheann d’iontrálacha a fheiceáil.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Foilsitheoireacht faoi Mhíchumas (Riarachán)
+Publishing Disabled (User): Foilsitheoireacht faoi Mhíchumas (Úsáideoir)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Cliceáil chun Roghnaigh
+Current Icons on Server: Deilbhíní Reatha ar an bhFreastalaí
+
+########################################
+# Page: import.php
+#
+import from file: allmhairiú ón gcomhad
+Disabled: Faoi mhíchumas
+Import format: Formáid iompórtála
+Exclude private records: Taifid phríobháideacha a eisiamh
+Repeated items are imported separately. Prior imports are not overwritten.: Allmhairítear earraí arís agus arís eile ar leithligh. Ní dhéantar réamh-allmhairí a dhíscríobh.
+
+########################################
+# Page: import_handler.php
+#
+No file: Gan comhad
+Error deleting palm events from webcalendar.: Earráid agus imeachtaí pailme á scriosadh as webcalendar.
+Events from prior import marked as deleted: Imeachtaí ó allmhairiú roimh ré marcáilte mar scriosadh
+Conflicting events: Imeachtaí coimhlinte
+The import file contained no data.: Ní raibh aon sonraí sa chomhad iompórtála.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: An bhfuil tú cinnte gur mhaith leat an ciseal seo a scriosadh?
+Delete layer: Scrios ciseal
+Edit layer: Cuir an ciseal in eagar
+Enable layers: Cumasaigh sraitheanna
+Layer: Sraith
+Layers are currently disabled.: Tá sraitheanna faoi mhíchumas faoi láthair.
+Layers are currently enabled.: Cumasaítear sraitheanna faoi láthair.
+Click to modify layers settings for XXX: Cliceáil anseo chun socruithe na sraitheanna don fhéilire XXX a mhodhnú.
+Disable Layers: Sraitheanna a dhíchumasú
+Add layer: Cuir ciseal leis
+Add Layer: Cuir Sraith leis
+Edit Layer: Cuir Sraith in Eagar
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Ní féidir an rogha a nuashonrú
+Invalid entry id.: Id neamhbhailí iontrála.
+You cannot create a layer for yourself.: Ní féidir leat ciseal a chruthú duit féin.
+You can only create one layer for each user.: Ní féidir leat ach sraith amháin a chruthú do gach úsáideoir.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Faomhadh / Deimhnigh
+Approve Selected: Ceadaithe Roghnaithe
+Check All: Seiceáil Gach
+Emails Will Not Be Sent: Ní Seolfar Ríomhphoist
+Reject Selected: Diúltaigh Roghnaithe
+Reject: Diúltaigh
+Uncheck All: Díthiceáil Uile
+View this entry: Féach ar an iontráil seo
+No unapproved entries for XXX.: Níl aon iontrálacha neamhcheadaithe le haghaidh: "XXX".
+Unapproved Entries: Iontrálacha Neamhcheadaithe
+Approve this entry?: An iontráil seo a cheadú?
+Reject this entry?: Diúltaigh an iontráil seo?
+Approve Selected entries?: Iontrálacha roghnaithe a cheadú?
+Reject Selected entries?: Diúltaigh iontrálacha roghnaithe?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Caithfidh tú logáil isteach agus pasfhocal a iontráil.
+Save login via cookies so I dont have to login next time.: Sábháil logáil isteach trí fhianáin ionas nach mbeidh orm logáil isteach an chéad uair eile
+Login: Logáil isteach
+public: poiblí
+Access XXX calendar: Rochtain ar fhéilire XXX
+cookies-note: Nóta: Éilíonn an feidhmchlár seo go bhféadfar fianáin a chumasú.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Carachtair neamhdhleathacha i logáil isteach XXX.
+Invalid login: Logáil isteach neamhbhailí
+Activity login failure: Ainm úsáideora: "XXX", IP: "YYY".
+Error XXX: Earráid: "XXX".
+You have been logged out.: Tá tú logáilte amach.
+Access public calendar: Rochtain ar fhéilire poiblí
+Not yet registered? Register here!: Gan a bheith cláraithe fós? Cláraigh anseo!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Gan aon fhéilire nonuser den sórt sin: "XXX".
+This Calendar is not Public.: Níl an Féilire seo Poiblí.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Cuir Féilire Nua NonUser leis
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Ní mór logáil isteach a shonrú.
+No such nonuser calendar: Gan féilire nonuser den sórt sin
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Téama neamhbhailí
+Save Preferences: Sábháil Sainroghanna
+Public Access calendar: Féilire Rochtana Poiblí
+Modify Non User Calendar Preferences: Sainroghanna Féilire Neamh-Úsáideora a mhodhnú
+Return to My Preferences: Fill ar ais ar Mo Roghanna
+Custom Scripts: Scripteanna Saincheaptha
+Timezone Selection: Roghnú Crios Ama
+Multiview: =
+entry-interval-help: Socraigh eatramh nóiméad agus amanna iontrála á n-eagarthóireacht
+Entry interval: Eatramh iontrála
+hour: uair an chloig
+minute: nóiméad
+theme-reload-help: Mar gheall ar thaisceadh CSS, d’fhéadfadh go mbeadh athlódáil leathanaigh ag teastáil
+Page may need to be reloaded for new Theme to take effect: B’fhéidir go gcaithfear an leathanach a athlódáil le go dtiocfaidh Téama nua i bhfeidhm
+display_byproxy-help: Taispeáin an fíor-chruthaitheoir ar leathanach view_entry
+Display if created by Assistant: Taispeáin má chruthaíonn Cúntóir é
+allow-view-subscriptions-help: Ligeann sé srian a chur ar chianrochtain ar iontrálacha Príobháideacha nó Rúnda
+Allow remote viewing of: Lig do chianbhreathnú ar
+entries: iontrálacha
+
+########################################
+# Page: purge.php
+#
+Purging events for: Imeachtaí glanta do
+Finished: Críochnaithe
+Back: Ar ais
+Check box to delete ALL events for a user: Seiceáil bosca chun  GACH  imeacht a scriosadh d’úsáideoir
+Delete all events before: Scrios gach imeacht roimhe seo
+Purge deleted only: Purge scriosta amháin
+Preview delete: Réamhamharc scriosadh
+Are you sure you want to delete events for: An bhfuil tú cinnte gur mhaith leat imeachtaí a scriosadh
+Records deleted from XXX: Taifid scriosta ó "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Ní féidir an seoladh ríomhphoist a bheith bán.
+Username already exists.: Tá ainm úsáideora ann cheana.
+Email address already exists.: Tá seoladh ríomhphoist ann cheana.
+New user via self-registration.: Úsáideoir nua trí fhéinchlárú.
+A new WebCalendar account has been set up for you.: Tá cuntas nua WebCalendar curtha ar bun duit.
+Your username is XXX.: Is é d’ainm úsáideora: "XXX".
+Your password is XXX.: Is é do phasfhocal: "XXX".
+Please visit XXX to log in and start using your account!: Tabhair cuairt ar "XXX" le logáil isteach agus tosú ag úsáid do chuntas!
+You may change your password after logging in the first time.: Féadfaidh tú do phasfhocal a athrú tar éis duit logáil isteach sa chéad uair.
+If you received this email in error: Má fuair tú an ríomhphost seo trí dhearmad agus nár chláraigh tú le haghaidh cuntas WebCalendar, féadfaidh tú neamhaird a thabhairt ar an bhfógra seo, nó freagra a thabhairt le nóta gairid
+Administrator: Riarthóir
+Welcome: Fáilte
+New user via email.: Úsáideoir nua trí ríomhphost.
+Registration: Clárú
+Welcome to WebCalendar: Fáilte go WebCalendar
+Your email should arrive shortly.: Ba chóir go dtiocfadh do r-phost gan mhoill.
+Return to Login screen: Fill ar an scáileán Logáil Isteach
+Password (again): Pasfhocal (arís):
+Your account information will be emailed to you.: Seolfar faisnéis do chuntais chugat trí r-phost.
+Submit: Cuir isteach
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Leanúint ar aghaidh
+(Your comments will be emailed to the other participants.): (Seolfar do chuid tuairimí trí ríomhphost chuig na rannpháirtithe eile.)
+XXX has rejected an appointment.: Dhiúltaigh XXX do choinne.
+Rejected by XXX.: Diúltaithe ag XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Cuir Féilire Nua cianda leis
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Tá an ócáid ​​seo faoi rún.
+(Private): (Príobháideach)
+(cont.): (ar lean.)
+Approved: Ceadaithe
+Deleted: Scriosta
+Rejected: Diúltaithe
+Waiting for approval: Ag feitheamh ar cheadú
+Unknown: Anaithnid
+Invalid report id.: Tuarascáil neamhbhailí id.
+Click here to manage reports for the Public Access calendar.: Cliceáil anseo chun tuarascálacha don fhéilire Rochtana Poiblí a bhainistiú.
+Add new report: Cuir tuarascáil nua leis
+Manage Reports: Bainistigh Tuarascálacha
+
+########################################
+# Page: search.php
+#
+Advanced Search: Cuardach Casta
+Search: Cuardaigh
+Keywords: =
+Enter % for all entries: Iontráil% do gach iontráil
+Include: Cuir san áireamh
+Filter by Date: Scagaire de réir Dáta
+All Dates: Gach Dáta
+Past: Caite
+Upcoming: Le teacht
+Range: Raon
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Caithfidh tú eochairfhocal cuardaigh amháin nó níos mó a iontráil.
+Search Results: Torthaí Cuardaigh
+match found: cluiche aimsithe
+matches found: cluichí le fáil
+No matches found: Níor aimsíodh aon chluichí
+New Search: Cuardach Nua
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Liostaíonn an fhaisnéis thíos saincheisteanna féideartha le do shuiteáil WebCalendar a d’fhéadfaí a mhodhnú chun do shuiteáil a dhéanamh níos sláine.
+For questions about WebCalendar security see the forums: Le haghaidh ceisteanna faoi aon saincheist slándála WebCalendar, bain úsáid as na fóraim WebCalendar a óstáiltear ar GitHub.com;<br>XXX
+View your current PHP settings: Féach ar do shocruithe PHP reatha
+Security Issue: Saincheist Slándála
+Status: Stádas
+Default admin user password: Pasfhocal úsáideora admin réamhshocraithe
+You should change the password of the default admin user.: Ba cheart duit pasfhocal an úsáideora riaracháin réamhshocraithe a athrú.
+File permissions XXX: Ceadanna comhaid: XXX
+item XXX should not be writable: Níor chóir an mhír seo a leanas a scríobh:<br><tt> XXX</tt>
+File exists XXX: Tá an comhad ann: "XXX"
+Because you have email disabled, you should remove this file.: Toisc go bhfuil ríomhphost díchumasaithe agat, ba cheart duit an comhad seo a bhaint.
+File location XXX: Suíomh comhaid: "XXX"
+remove XXX if not using: Mura bhfuil comhad "XXX" á úsáid agat, ba cheart duit é a scriosadh. Nó, ar a laghad, bog é go eolaire nua.
+System Settings XXX: Socruithe Córais: "XXX"
+consider enabling UAC: B’fhéidir gur mhaith leat smaoineamh ar Rialú Rochtana Úsáideora a chumasú chun pribhléidí úsáideora a shocrú.
+recommend approving new public events: Molaimid go gceadófaí gach aighneacht d’imeachtaí poiblí.
+recommend using CAPTCHA: Moltar CAPTCHA aighneachtaí imeachta uathoibrithe a chosaint arís.
+Database cache directory location: Suíomh eolaire taisce bunachar sonraí
+db cache should be inaccessable: Ba cheart taisce an bhunachar sonraí a bheith i eolaire nach féidir a rochtain le URL.
+PHP Settings XXX: Socruithe PHP: "XXX"
+recommend setting XXX Off: Tá an socrú molta do "XXX" Off.
+recommend setting allow_url_fopen Off: Tá an socrú a mholtar le haghaidh "allow_url_fopen" Off nuair nach bhfuil féilirí iargúlta cumasaithe.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Féach ar Fhéilire Úsáideora Eile
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Níor chuir tú aon chatagóirí leis.
+Set Category: Catagóir Socraithe
+Global Categories cannot be changed.: Ní féidir Catagóirí Domhanda a athrú.
+
+########################################
+# Page: upcoming.php
+#
+more: níos mó
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Féilirí cianda
+denotes administrative user: seasann úsáideoir riaracháin
+Add New User: Cuir Úsáideoir Nua leis
+
+########################################
+# Page: usersel.php
+#
+form: fhoirm
+Reset: Athshocraigh
+
+########################################
+# Page: views.php
+#
+Add New View: Cuir Amharc Nua leis
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Amharc Gan Ainm
+Add View: Cuir Amharc leis
+Edit View: Cuir Amharc in Eagar
+View Name: Féach ar Ainm
+View Type: Féach ar an gCineál
+Day by Time: Lá le hAm
+Week (Users horizontal): Seachtain (Úsáideoirí cothrománach)
+Week by Time: Seachtain de réir ama
+Week (Users vertical): Seachtain (Úsáideoirí ingearach)
+Week (Timebar): Seachtain (Barra Ama)
+Month (Timebar): Mí (Barra Ama)
+Month (side by side): Mí (taobh le taobh)
+Month (on same calendar): Mí (ar an bhféilire céanna)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Caithfidh tú ainm amharc a shonrú
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Níl aon úsáideoirí ann don dearcadh seo.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Céatadán Tasc a Nuashonrú
+Completed: Críochnaithe
+Assistant mode: Modh cúnta
+Declined: Laghdaithe
+Needs-Action: Gníomh Riachtanas
+by: le
+Percentage Complete: Céatadán Críochnaithe
+External User: Úsáideoir Seachtrach
+Update: Nuashonrú
+at: ag
+comments: tráchtanna
+Show: Taispeáin
+Hide: Folaigh
+Approve/Confirm entry: Iontráil a cheadú / a dhearbhú
+Reject entry: Diúltaigh iontráil
+Set category: Catagóir socraithe
+Add to My Calendar: Cuir le Mo Fhéilire
+Copy entry: Cóipeáil iontráil
+This will delete this entry for all users.: Scriosfaidh sé seo an iontráil seo do gach úsáideoir.
+Edit entry: Cuir iontráil in eagar
+Edit repeating entry for all dates: Cuir iontráil athrá in eagar do gach dáta
+Delete repeating event for all dates: Scrios imeacht athrá do gach dáta
+Edit entry for this date: Cuir iontráil in eagar don dáta seo
+Delete entry only for this date: Scrios iontráil don dáta seo amháin
+Delete entry from calendar of XXX: Scrios iontráil ó fhéilire XXX
+This will delete the entry from your XXX calendar.: Scriosfaidh sé seo an iontráil ó d’fhéilire XXX.
+boss: boss '
+This will delete the entry from your boss calendar.: Scriosfaidh sé seo an iontráil ó fhéilire do shaoiste.
+This will delete the entry from your calendar.: Scriosfaidh sé seo an iontráil ó d’fhéilire.
+from your boss calendar: ó fhéilire do shaoiste
+Do you want to add this entry to your calendar?: Ar mhaith leat an iontráil seo a chur le d’fhéilire?
+This will add the entry to your calendar.: Cuirfidh sé seo an iontráil le d’fhéilire.
+Email all participants: Seol ríomhphost chuig na rannpháirtithe go léir
+Hide activity log: Folaigh logáil gníomhaíochta
+Show activity log: Taispeáin loga gníomhaíochta
+Export this entry to: Easpórtáil an iontráil seo chuig
+Palm Pilot: Píolótach Pailme
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Cliceáil faoi dhó ar chill folamh chun iontráil nua a chur leis.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Iontráil Nua
+cont.: ar lean.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Féilire Úsáideora Eile
+Category Management: Bainistíocht Catagóire
+Day View: Amharc Lae
+Edit Event: Cuir Imeacht in Eagar
+Month View: Amharc na Míosa
+Common Trailer: Leantóir Coiteann
+User Management: Bainistíocht Úsáideoirí
+Manage Views: Bainistigh Radhairc
+Week View: Amharc na Seachtaine
+Year View: Amharc na Bliana
+Invalid function id: Feidhm neamhbhailí id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Níorbh fhéidir an comhad "settings.php" a aimsiú.<br>Cóipeáil "settings.php.orig" go "settings.php" agus cuir in eagar do do shuíomh.
+Incomplete settings.php file...: Comhad neamhiomlán "settings.php" ...
+Could not find XXX defined in...: Níorbh fhéidir "XXX" a fháil atá sainithe i do chomhad "settings.php".
+You must define XXX in: Caithfidh tú "XXX" a shainiú sa chomhad "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Nollaig
+Dec: Nollaig
+LANGUAGE DEFINED: TEANGA SAINMHÍNITHE
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Earráid ag nascadh leis an mbunachar sonraí: "XXX".
+db_type not defined.: db_type gan sainmhíniú.
+invalid db_type XXX: db_type neamhbhailí "" XXX ".
+Cache cleared from previous SQL!: Taisce glanta ó SQL roimhe seo!
+Error executing query.: Earráid agus an cheist á forghníomhú.
+Unfortunately, XXX is not implemented for YYY: Ar an drochuair, ní chuirtear "XXX" i bhfeidhm le haghaidh (BBBB).
+Unknown ODBC error.: Earráid anaithnid ODBC.
+Error opening cache dir XXX.: Earráid ag oscailt taisce dir "XXX".
+delete: scriosadh
+Cache error Could not XXX file YYY.: Earráid taisce: Níorbh fhéidir XXX "YYY" a chomhdú.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Earráid marfach
+Invalid data format for: Formáid sonraí neamhbhailí do
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Earráid: Cineál gan socrú le haghaidh logáil gníomhaíochta!
+This event is XXX.: Is é XXX an ócáid ​​seo.
+Conf.: =
+exceeds limit of XXX events per day: níos mó ná teorainn imeachtaí XXX in aghaidh an lae
+on: ar
+All Attendees: Gach Freastalaí
+Busy: Gnóthach
+Tentative: Sealadach
+Schedule an appointment for XXX.: Déan coinne a sceidealú do XXX: BBBB.
+date_select: =
+Event approved: Imeacht ceadaithe
+Journal approved: Iris ceadaithe
+Task approved: Tasc ceadaithe
+Attachment: Ceangaltán
+Event created: Imeacht cruthaithe
+Journal created: Iris cruthaithe
+Task created: Tasc cruthaithe
+Event deleted: Scriosadh imeacht
+Journal deleted: Iris scriosta
+Task deleted: Scriosadh an tasc
+New user via email (self registration): Úsáideoir nua trí ríomhphost (féinchlárú)
+New user (self registration): Úsáideoir nua (féinchlárú)
+Notification sent: Fógra seolta
+Event rejected: Diúltaíodh don imeacht
+Journal rejected: Diúltaíodh Iris
+Task rejected: Diúltaíodh don tasc
+Reminder sent: Meabhrúchán seolta
+Event updated: Nuashonraíodh an ócáid
+Journal updated: Iris nuashonraithe
+Task updated: Tasc nuashonraithe
+Delete User: Scrios Úsáideoir
+WK: =
+TASKS: TASCANNA
+Task_Title: Teideal
+Due: Dlite
+Task Name: Ainm Tasc
+Task Due Date: Dáta Dlite dlite
+You have XXX unapproved entries: Tá iontrálacha neamhcheadaithe XXX agat 
+Changes successfully saved: Sábháladh na hathruithe go rathúil
+Event: Imeacht
+Action: Gníomh
+Printer Friendly: Printéir Cairdiúil
+Generate printer-friendly version: Cruthaigh leagan atá furasta le printéir
+after: tar éis
+before: roimh
+end: deireadh
+start: tosú
+View this event: Féach ar an ócáid ​​seo
+View this task: Féach ar an tasc seo
+January: Eanáir
+February: Feabhra
+March: Márta
+April: Aibreán
+May_: Bealtaine
+June: Meitheamh
+July: Iúil
+August: Lúnasa
+September: Meán Fómhair
+October: Deireadh Fómhair
+November: Samhain
+Jan: Ean
+Feb: Feabh
+Mar: Márta
+Apr: Aib
+May: Bealtaine
+Jun: Meitheamh
+Jul: Iúil
+Aug: Lúnasa
+Sep: Meán Fómhair
+Oct: Deireadh Fómhair
+Nov: Samhain
+SU: =
+MO: =
+TU: =
+WE: =
+TH: =
+FR: =
+SA: =
+unknown-month: anaithnid-mhí
+First Quarter Moon: Gealach na Chéad Ráithe
+Full Moon: Gealach Lán
+Last Quarter Moon: Gealach na Ceathrún Deireanaí
+New Moon: Gealach nua
+Error TIME_SLOTS undefined!: Earráid: TIME_SLOTS neamhshainithe!
+The following error occurred: Tharla an earráid seo a leanas
+You are not authorized.: Níl tú údaraithe.
+Add N hours to: Cuir N uair an chloig leis
+Subtract N hours from: Dealaigh N uair an chloig ó
+same as: céanna le
+server time: am freastalaí
+Cannot read timezone file XXX.: Ní féidir an comhad crios ama a léamh: XXX.
+Your current GMT offset is XXX hours.: Is é do fhritháireamh GMT reatha ná XXX uair an chloig.
+Unauthorized: Neamhúdaraithe
+Error approving event XXX.: Earráid ag ceadú imeachta: XXX.
+Error deleting event XXX.: Earráid maidir le scriosadh earráide: XXX.
+Error rejecting event XXX.: Earráid ag diúltú imeachta: XXX.
+Sunday: Dé Domhnaigh
+Monday: Dé Luain
+Tuesday: Dé Máirt
+Wednesday: Dé Céadaoin
+Thursday: Déardaoin
+Friday: Dé hAoine
+Saturday: Dé Sathairn
+Sun: Grian
+Mon: Luan
+Tue: Máirt
+Wed: Céad
+Thu: =
+Fri: Aoine
+Sat: Satharn
+unknown-weekday: lá anaithnid-seachtaine
+Invalid referring URL: URL tagartha neamhbhailí
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Innéacs
+Documentation: Doiciméadú
+Page: Leathanach
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Mo Fhéilire
+Add New Entry: Cuir Iontráil Nua leis
+Add New Task: Cuir Tasc Nua leis
+Logout: Logáil Amach
+Home: Baile
+Back to My Calendar: Ar ais chuig Mo Fhéilire
+Go to: Téigh
+Manage calendar of: Bainistigh féilire de
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Teanga Brabhsálaí Gan Aimsiú
+(not supported): (Gan tacaíocht)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: Afracáinis
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: Albáinis
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Deisceart)
+Amharic: Amarais
+Angika: =
+Apache: =
+Arabic (Algeria): Araibis (An Ailgéir)
+Arabic (Bahrain): Araibis (Bairéin)
+Arabic (Egypt): Araibis (an Éigipt)
+Arabic (Iraq): Araibis (an Iaráic)
+Arabic (Jordan): Araibis (an Iordáin)
+Arabic (Kuwait): Araibis (Cuáit)
+Arabic (Lebanon): Araibis (an Liobáin)
+Arabic (Libya): Araibis (an Libia)
+Arabic (Morocco): Araibis (Maracó)
+Arabic (Oman): Araibis (Oman)
+Arabic (Qatar): Araibis (Catar)
+Arabic (Saudi Arabia): Araibis (An Araib Shádach)
+Arabic (Syria): Araibis (an tSiria)
+Arabic (Tunisia): Araibis (An Túinéis)
+Arabic (U.A.E.): Araibis (U.A.E.)
+Arabic (Yemen): Araibis (Éimin)
+Arabic: Araibis
+Aragonese: Aragóinis
+Aramaic: =
+Arapaho: =
+Arawak: =
+Armenian: Airméinis
+Assamese: Asaimis
+Asturian: Astrálach
+Athapascan: =
+Avaric: =
+Avestan: Aivéain
+Awadhi: =
+Aymara: =
+Azerbaijani: Asarbaiseáinis
+Balinese: =
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: Bascais
+Beja: =
+Belarusian: Bealarúisis
+Bemba: =
+Bengali: Beangáilis
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: =
+Bliss: =
+Bosnian: Boisnis
+Braj: =
+Breton: Briotáinis
+Buginese: =
+Bulgarian: Bulgáiris
+Buriat: =
+Burmese: Burmais
+Caddo: =
+Catalan: Catalóinis
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: Seisniach
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Sínis (Hong Cong)
+Chinese (PRC): Sínis (PRC)
+Chinese (Simplified/GB2312): Sínis (Simplithe / GB2312) 
+Chinese (Singapore): Sínis (Singeapór)
+Chinese (Taiwan): Sínis (Taiwan)
+Chinese (Traditional/Big5): Sínis (Traidisiúnta / Mór5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: Coptach
+Cornish: Coirnis
+Corsican: Corsaicis
+Cree: =
+Creek: =
+Croatian: Cróitis
+Czech: Seiceach
+Dakota: =
+Danish: Danmhairgis
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Ollainnis (An Bheilg)
+Dutch: Ollainnis
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Béarla (An Astráil)
+English (Belize): Béarla (An Bheilís)
+English (Canada): Béarla (Ceanada)
+English (Ireland): Béarla (Éire)
+English (Jamaica): Béarla (Iamáice)
+English (New Zealand): Béarla (An Nua-Shéalainn)
+English (Philippines): Béarla (Na hOileáin Fhilipíneacha)
+English (South Africa): Béarla (an Afraic Theas)
+English (Trinidad & Tobago): Béarla (Oileán na Tríonóide & Tobága)
+English (United Kingdom): Béarla (An Ríocht Aontaithe)
+English (United States): Béarla (Stáit Aontaithe Mheiriceá)
+English (Zimbabwe): Béarla (An tSiombáib)
+English: Béarla-SAM
+Erzya: =
+Esperanto: =
+Estonian: Eastóinis
+Ewe: Caora
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: Faróis
+Fijian: Fidsis
+Filipino: Filipíneach
+Finnish: Fionlainnis
+Fon: =
+French (Belgium): Fraincis (an Bheilg)
+French (Canada): Fraincis (Ceanada)
+French (France): Fraincis (An Fhrainc)
+French (Luxembourg): Fraincis (Lucsamburg)
+French (Monaco): Fraincis (Monacó)
+French (Switzerland): Fraincis (An Eilvéis)
+French: Fraincis
+Frisian (Eastern): Freaslainnis (Oirthir)
+Frisian (Northern): Frisian (Tuaisceart)
+Frisian (Western): Freaslainnis (Iarthar)
+Frisian: Freaslainnis
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: =
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Seoirseach
+German (Austria): Gearmáinis (an Ostair)
+German (Germany): Gearmáinis (An Ghearmáin)
+German (Liechtenstein): Gearmáinis (Lichtinstéin)
+German (Luxembourg): Gearmáinis (Lucsamburg)
+German (Standard): Gearmáinis (Caighdeán)
+German (Switzerland): Gearmáinis (An Eilvéis)
+German: Gearmáinis
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gotach
+Grebo: =
+Greek: Gréigis
+Greenlandic: An Ghraonlainn
+Guarani: Guaráinis
+Gujarati: Gúisearáitis
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): =
+Haitian: =
+Hausa: =
+Hawaiian: Haváís
+Hebrew: Eabhrais
+Herero: =
+Hiligaynon: =
+Hindi: Hiondúis
+Hiri Motu: =
+Hittite: Hiteach
+Hmong: =
+Holo (Taiwanese): =
+Hungarian: Ungáiris
+Hupa: =
+Iban: =
+Icelandic: Íoslainnis
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: Indinéisis
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Iaráin
+Irish (Gaelic): Gaeilge (Gàidhlig)
+Irish: Gaeilge
+Iroquoian: =
+Italian (Switzerland): Iodáilis (An Eilvéis)
+Italian: Iodáilis
+Japanese: Seapánach
+Javanese: Iávais
+Judeo-Arabic: Judeo-Araibis
+Judeo-Persian: Judeo-Peirsis
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: Cannadais
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: Caismíris
+Kashubian: =
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): Khmer (Lár)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: Ciniarwanda
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Cóiréis (Johab)
+Korean (North): Cóiréis (Thuaidh)
+Korean (South): Cóiréis (Theas)
+Korean: Cóiréis
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Coirdis
+Kutenai: =
+Kyrgyz: Cirgisis
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Laidin
+Latvian: Laitvis
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Liotuáinis
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Lucsamburg
+Macedonian: Macadóinis
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: =
+Malay: Malaeis
+Malayalam: Mailéalaimis
+Maldivian: =
+Maltese: Máltais
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: Manainnis
+Maori: Maorais
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: Maya
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: =
+Mongo: =
+Mongolian: Mongóilis
+Montenegrin: =
+Moroccan: Mharacó
+Mossi: =
+Myanmar: Maenmar
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: Nárú
+Navajo: Navachóis
+Ndebele (North): Ndebele (Thuaidh)
+Ndebele (South): Ndebele (Theas)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: Neipealais
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Lochlannach
+Norwegian (Bokmål): Ioruais (Bokmål)
+Norwegian (Nynorsk): Ioruais (Nynorsk)
+Norwegian: Ioruais
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: =
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Oiséiteach
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: Paistis
+Pedi: =
+Persian (Farsi): Peirsis (Farsi)
+Persian (Iran): Peirsis (An Iaráin)
+Persian: Peirsis
+Phoenician: =
+Pohnpeian: =
+Polish: Polainnis
+Portuguese: Portaingéilis
+Portuguese/Brazil: Portaingéilis / An Bhrasaíl
+Punjabi (India): Puinseáibis (An India)
+Punjabi (Pakistan): Puinseáibis (An Phacastáin)
+Punjabi: Puinseáibis
+Quechua: Ceatsuais
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Rhaeto-Rómánach
+Romanian: Rómáinis
+Romansh: =
+Romany: Rómáinis
+Rundi: =
+Russian (Moldavia: Rúisis (Moldavia
+Russian (Republic of Moldova): Rúisis (Poblacht na Moldóive)
+Russian: Rúisis
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Tuaisceart)
+Sami (Skolt): Sami (Scolt)
+Sami (Southern): Sami (Deisceart)
+Sami: =
+Samoan: Samó
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Sanscrait
+Santali: =
+Sardinian: Sairdínis
+Sasak: =
+Scots (Gaelic): Albanach (Gàidhlig)
+Selkup: =
+Serbian (Upper): Seirbis (Uachtarach)
+Serbian: Seirbis
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Sicileach
+Sindhi: =
+Sinhala: Siolóinis
+Slavic: Slavach
+Slovak: An tSlóvaic
+Slovenian: Slóivéinis
+Sogdian: =
+Somali: Somáilis
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbian (Íochtarach)
+Sorbian (Upper): Sorbian (Uachtarach)
+Sorbian: =
+Sotho: =
+Spanish (Argentina): Spáinnis (An Airgintín)
+Spanish (Bolivia): Spáinnis (An Bholaiv)
+Spanish (Chile): Spáinnis (An tSile)
+Spanish (Colombia): Spáinnis (An Cholóim)
+Spanish (Costa Rica): Spáinnis (Costa Rica)
+Spanish (Dominican Republic): Spáinnis (An Phoblacht Dhoiminiceach)
+Spanish (Ecuador): Spáinnis (Eacuadór)
+Spanish (El Salvador): Spáinnis (El Salvador)
+Spanish (Guatemala): Spáinnis (Guatamala)
+Spanish (Honduras): Spáinnis (Hondúras)
+Spanish (Mexico): Spáinnis (Meicsiceo)
+Spanish (Nicaragua): Spáinnis (Nicearagua)
+Spanish (Panama): Spáinnis (Panama)
+Spanish (Paraguay): Spáinnis (Paragua)
+Spanish (Peru): Spáinnis (Peiriú)
+Spanish (Puerto Rico): Spáinnis (Pórtó Ríce)
+Spanish (Spain): Spáinnis (an Spáinn)
+Spanish (Uruguay): Spáinnis (Uragua)
+Spanish (Venezuela): Spáinnis (Veiniséala)
+Spanish: Spainnis
+Sranan Tongo: =
+Sukuma: =
+Sumerian: =
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: Svahaílis
+Swati: =
+Swedish (Finland): Sualainnis (An Fhionlainn)
+Swedish (Sweden): Sualainnis (An tSualainn)
+Swedish: Sualainnis
+Syriac: =
+Tagalog: Tagálaigis
+Tahitian: =
+Tai: =
+Taiwan: =
+Tajik: Táidsícis
+Tamashek: =
+Tamil: Tamailis
+Tatar: Tatairis
+Telugu: Teileagúis
+Tereno: =
+Tetum: =
+Thai: Téalainnis
+Tibetan: Tibéidis
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Oileáin Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Tuircis
+Turkmen: Tuircméinis
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: =
+Ukrainian: Úcráinis
+Umbundu: =
+Urdu: Urdais
+Uyghur: =
+Uzbek: Úisbéicis
+Vai: =
+Venda: =
+Vietnamese: Vítneaimis
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: Vallúnais
+Waray: =
+Washo: =
+Welsh: Breatnais
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: Giúdais
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: Súlúis
+Browser-defined: Brabhsálaí-sainithe
+event: imeacht
+journal: dialann
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Logáil isteach úsáideora neamhbhailí
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: Pasfhocal mícheart
+no such user: aon úsáideoir den sórt sin
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Cuntas faoi mhíchumas
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Eatramh
+Months: Míonna
+Month Days: Laethanta Míosa
+Days: Laethanta
+Weeks: Seachtaine
+Position: Post
+Until: Go dtí
+Count: Líon
+Inclusion Dates: Dátaí Cuimsithe
+Exclusion Dates: Dátaí Eisiata
+Event Imported: Imeacht a Allmhairíodh
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: bearta
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Fógra
+authenticate: Earráid SMTP: Níorbh fhéidir é a fhíordheimhniú
+connect_host: Earráid SMTP: Níorbh fhéidir ceangal le hóstach SMTP:
+data_not_accepted: Earráid SMTP: Níor glacadh le sonraí
+encoding: Ionchódú anaithnid:
+execute: Níorbh fhéidir a fhorghníomhú:
+file_access: Níorbh fhéidir an comhad a rochtain:
+file_open: Earráid Comhad Níorbh fhéidir an comhad a oscailt:
+from_failed: Theip ar an seoladh Ón méid seo a leanas:
+instantiate: Níorbh fhéidir feidhm ríomhphoist a chur ar an toirt
+mailer_not_supported: ní thacaítear le mailer
+provide_address: Caithfidh tú seoladh ríomhphoist faighteora amháin ar a laghad a sholáthar.
+recipients_failed: Earráid SMTP: Theip ar na faighteoirí seo a leanas:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Iontráil Carachtair a Feictear i nGrafach
+Enter the correct letters and numbers...: Iontráil na litreacha agus na huimhreacha cearta ón íomhá sa bhosca téacs. Feidhmíonn an tástáil bheag seo mar shrian rochtana ar róbónna mailíseacha. Níl ort ach an leathanach a athlódáil má tá an grafach seo ró-deacair a léamh
+Challenge/Response: Dúshlán / Freagra
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Athraigh dáta agus am na hiontrála seo?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Níor iontráil tú Tuairisc Achomair
+time prior to work hours...: am roimh uaireanta oibre ...
+Invalid Event Date: Dáta Imeachta Neamhbhailí
+Please add a participant: Cuir rannpháirtí leis, le do thoil
+Invalid Date: Dáta Neamhbhailí
+You have not entered a valid time of day: Níor iontráil tú am bailí den lá.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Ní féidir ID an Fhéilire a bheith bán.
+First and last names cannot both be blank.: Ní féidir an chéad ainm agus an t-ainm deireanach a bheith bán.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Dath neamhbhailí
+Color format should be RRGGBB.: Ba chóir go mbeadh formáid dathanna #RRGGBB.
+URL cannot be blank.: Ní féidir URL a bheith bán.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Ní hionann an cineál comhaid agus an Fhormáid Iompórtála
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Dath neamhbhailí do chúlra an doiciméid.
+Invalid color for document title.: Dath neamhbhailí do theideal an doiciméid.
+Invalid color for table cell background.: Dath neamhbhailí do chúlra cille tábla.
+Invalid color for table cell background for today.: Dath neamhbhailí do chúlra cille tábla don lá inniu.
+Invalid work hours.: Uaireanta oibre neamhbhailí.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Caithfidh URL an fhreastalaí deireadh a chur le slais (/).
+Invalid color for table grid.: Dath neamhbhailí don eangach tábla.
+Invalid color for event popup background.: Dath neamhbhailí do chúlra aníos an imeachta.
+Invalid color for event popup text.: Dath neamhbhailí le haghaidh téacs aníos imeachta.
+Invalid color for table header text.: Dath neamhbhailí le haghaidh téacs ceanntásc tábla.
+Invalid color for table header background.: Dath neamhbhailí do chúlra ceanntásc tábla.
+Server URL is required.: Teastaíonn URL an fhreastalaí.
+Invalid Color: Dath Neamhbhailí
+Database Name: Ainm Bunachar Sonraí
+Full Path (no backslashes): Conair Iomlán (gan aon chúlslais)
+The password contains illegal characters.: Tá carachtair neamhdhleathacha sa phasfhocal.
+Error you must specify a Single-User Login: Earráid: Caithfidh tú Logáil Isteach Úsáideora Aonair a shonrú
+Could not find XXX.: Níorbh fhéidir XXX a aimsiú.
+Could not find XXX in DOM.: Níorbh fhéidir XXX a fháil i DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: An tseachtain seo
+This Month: An mhí seo
+This Year: An bhliain seo
+Exit: An slí amach
+Add New Event: Cuir Imeacht Nua leis
+Delete Entries: Scrios Iontrálacha
+My Views: Mo Radhairc
+Manage Calendar of: Bainistigh Féilire na
+My Reports: Mo Thuarascálacha
+My Profile: Mo phróifíl
+Public Calendar: Féilire Poiblí
+Unapproved Events: Imeachtaí Neamhcheadaithe
+User Manager: Bainisteoir Úsáideora
+Help Contents: Ábhar Cabhrach
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Eolaire Taisce Bunachar Sonraí
+Create New: Cruthaigh Nua
+Failure Reason: Cúis Teip:
+You must manually create database: Caithfidh tú bunachar sonraí a chruthú de láimh.
+Single-User: Úsáideoir Aonair
+Test Settings: Socruithe Tástála
+Timezone Conversion Successful: D'éirigh le Tiontú Crios Ama
+WebCalendar Installation Wizard Step XXX: Treoraí Suiteála WebCalendar Céim XXX
+Password Accepted: Glactar le Pasfhocal
+Successful Login: Logáil Isteach rathúil
+Password Incorrect: Pasfhocal Mícheart
+Invalid Login: Logáil isteach Neamhbhailí
+Display Errors: Earráidí Taispeáin
+File Uploads: Uaslódáil Comhad
+Allow URL fopen: Lig URL fopen (ní theastaíonn ach má úsáidtear Féilirí cianda)
+Safe Mode: Mód Sábháilte
+Safe Mode Allowed Vars: Vars Ceadaithe Mód Sábháilte (ní theastaíonn TZ ach má tá an Mód Sábháilte Ar siúl)
+GD: GD (riachtanach do Chúlra Íomhá Grádán)
+Passwords do not match!: Ní hionann pasfhocail!
+Unable to write password to settings.php file: Ní féidir pasfhocal a scríobh chuig comhad "settings.php".
+Password Updated: Nuashonraíodh Pasfhocal
+Password has been set: Tá pasfhocal socraithe.
+Connection Successful...: D'éirigh le Ceangal  Téigh go dtí an chéad leathanach eile chun leanúint den suiteáil.
+Correct your entries or click the Create New...: Ceartaigh d’iontrálacha nó cliceáil ar an gcnaipe  Create New  chun leanúint den suiteáil.
+Correct your entries and try again.: Ceartaigh d’iontrálacha agus bain triail eile as.
+XXX does not exist: Níl XXX ann
+XXX is not writable: Ní féidir XXX a scríobh
+Error Converting Timezone: Earráid ag Tiontú Crios Ama
+Error Unable to write to file XXX.: Earráid Ní féidir scríobh chuig comhad XXX.
+Please change the file permissions of this file.: Athraigh ceadanna an chomhaid seo le do thoil.
+Please change includes dir permission: Athraigh ceadanna comhaid d’eolaire “áirítear” le do thoil chun go bhféadfaidh úsáideoirí eile iad a scríobh.
+Your settings have been saved.: Sábháladh do chuid socruithe.
+OFF: =
+ON: AR
+WebCalendar Setup Wizard: Treoraí Socraithe WebCalendar
+This installation wizard will guide you...: Tabharfaidh an draoi suiteála seo treoir duit trí shuiteáil bhunúsach WebCalendar a bhunú.<br>Le haghaidh cabhrach agus fabhtcheartaithe féach:<br>
+System Administrators Guide: Treoir do Riarthóir Córais
+Frequently Asked Questions: Ceisteanna Coitianta
+FAQ: CC
+Troubleshooting: Fabhtcheartú
+Getting Help: Cabhair a Fháil
+Upgrading Guide: Treoir Uasghrádaithe
+User Supported Wiki: Wiki le Tacaíocht Úsáideora
+PHP Version Check: Seiceáil Leagan PHP
+Check to see if PHP 7.1.0 or greater is installed.: Seiceáil an bhfuil PHP 7.1.0 nó níos mó suiteáilte.
+PHP version: Leagan PHP
+PHP Settings: Socruithe PHP
+Detailed PHP Info: Eolas mionsonraithe PHP
+settings.php Status: Stádas "settings.php"
+Session Check: Seiceáil Seisiúin
+To test the proper operation of sessions...: Chun oibriú ceart na seisiún a thástáil, athlódáil an leathanach seo. Ba cheart duit incrimint an chuntair seisiúin a fheiceáil gach uair.
+SESSION COUNTER: TÍR SEISIÚN
+The file permissions of settings.php are set...: Socraítear na ceadanna comhaid de “settings.php” ionas nach mbeidh cead ag an suiteálaí é a mhodhnú. Athraigh ceadanna an chomhaid seo a leanas le do thoil chun leanúint ar aghaidh
+The file permissions of the includes directory are set...: Socraítear ceadanna comhaid an eolaire folaigh ionas nach mbeidh cead ag an suiteálaí comhad nua a chruthú. Athraigh ceadanna an eolaire seo a leanas chun leanúint ar aghaidh
+Your settings.php file appears to be valid.: Is cosúil go bhfuil do chomhad "settings.php" bailí.
+Configuration Wizard Password: Pasfhocal Treoraí Cumraíochta
+Create Settings File Password: Cruthaigh Pasfhocal Comhad Socruithe
+db setup directions...: Sa chuid seo bunóidh tú agus tástáilfidh tú nasc le do fhreastalaí bunachar sonraí. Ba cheart go mbeadh ceadanna IOMLÁN ag an bhfaisnéis chuntais a sholáthraítear chun bunachair sonraí, táblaí agus úsáideoirí a chruthú. Mura féidir é sin a dhéanamh, nó má tá rochtain ar do bhunachar sonraí teoranta, beidh ort do bhunachar sonraí a chumrú de láimh.
+Database Status: Stádas Bunachar Sonraí
+Supported databases for your PHP installation: Bunachair sonraí tacaithe le haghaidh do shuiteáil PHP
+Your current database settings are able to access the database.: Tá socruithe do bhunachar sonraí reatha in ann rochtain a fháil ar an mbunachar sonraí.
+Please Test Settings: Socruithe Tástála le do thoil
+Your current database settings are not able...: Níl do shocruithe bunachar sonraí reatha in ann rochtain a fháil ar an mbunachar sonraí nó níor tástáladh iad fós.
+Database Settings: Socruithe Bunachar Sonraí
+Database Type: Cineál Bunachar Sonraí
+Server: Freastalaí
+Connection Persistence: Marthanacht Ceangal
+All your database tables appear to be up...: Is cosúil go bhfuil do tháblaí bunachar sonraí uile cothrom le dáta. Féadfaidh tú dul ar aghaidh go dtí an chéad leathanach eile agus do shocrú WebCalendar a chomhlánú.
+This appears to be a new installation...: Is cosúil gur suiteáil nua é seo. Mura bhfuil sé seo ceart, téigh ar ais go dtí an leathanach roimhe seo agus ceartaigh do chuid socruithe.
+This appears to be an upgrade...: Is cosúil gur uasghrádú é seo ón leagan&nbsp;XXX&nbsp;go&nbsp;BBBB.
+The database requires some data input...: Éilíonn an bunachar sonraí roinnt ionchur sonraí Cliceáil Nuashonrú Bunachar Sonraí chun an t-uasghrádú a chur i gcrích.
+In this section we will perform...: Sa chuid seo déanfaimid na hathruithe chun do bhunachar sonraí a thabhairt suas go dtí an leibhéal riachtanach. Má tá bunachar sonraí lán-tacaithe á úsáid agat, déanfar an chéim seo go huathoibríoch duit. Mura féidir, is féidir an SQL riachtanach a thaispeáint agus ba cheart go mbeifeá in ann é a ghearradh agus a ghreamú i bhfuinneog cheist do fhreastalaí bunachar sonraí.
+No database actions are required.: Ní theastaíonn aon ghníomhartha bunachar sonraí.
+The following database actions are required: Teastaíonn na gníomhartha bunachar sonraí seo a leanas
+ODBC Underlying Database: Bunachar Sonraí Bunúsach ODBC:
+Automatic installation not supported: Níor cuireadh suiteáil uathoibríoch i bhfeidhm go hiomlán do do chineál bunachar sonraí. Beidh ort na táblaí riachtanacha a chruthú de láimh ag baint úsáide as an SQL a sholáthraítear. Cliceáil le do thoil  Taispeáin SQL  chun leanúint ar aghaidh. Gearr agus Greamaigh isteach i bhfuinneog cheist do bhunachar sonraí.
+This may take several minutes to complete: D’fhéadfadh sé seo roinnt nóiméad a thógáil.
+Install Database: Suiteáil Bunachar Sonraí
+Update Database: Nuashonraigh an Bunachar Sonraí
+Display Required SQL: Taispeáin SQL Riachtanach
+Return to previous page after processing SQL.: Tar éis duit an SQL seo a phróiseáil de láimh, beidh ort filleadh ar an leathanach roimhe seo agus do bhunachar sonraí a athscrúdú ionas gur féidir leis an script na hathruithe a bhrath.
+This is the final step in setting up your WebCalendar Installation.: Is é seo an chéim dheiridh chun do Shuiteáil WebCalendar a bhunú.
+Timezone Conversion: Comhshó Crios Ama
+It appears that you have NOT converted...: Dealraíonn sé NACH bhfuil tú tar éis do shonraí imeachta WebCalendar atá ann cheana a thiontú go GMT. Má tá, féadfaidh tú neamhaird a dhéanamh den fhógra seo agus gan dul ar aghaidh leis an tiontú. Más suiteáil nua é seo, féadfaidh tú neamhaird a dhéanamh den fhógra seo freisin.
+Convert Data to GMT: Sonraí a thiontú go GMT
+Application Settings: Socruithe Feidhmchláir
+HTTP-based authentication was not detected...: Níor aimsíodh fíordheimhniú bunaithe ar HTTP. Beidh ort do fhreastalaí gréasáin a athchumrú más mian leat ‘Freastalaí Gréasáin’ a roghnú as na roghanna ‘Fíordheimhniú Úsáideora’ thíos.
+HTTP-based authentication was detected...: Braitheadh ​​fíordheimhniú bunaithe ar HTTP. Tá fíordheimhniú úsáideora á láimhseáil ag do fhreastalaí gréasáin. Ba cheart duit ‘Freastalaí Gréasáin’ a roghnú ón liosta roghanna ‘Fíordheimhniú Úsáideora’ thíos.
+Create Default Admin Account: Cruthaigh Cuntas Riaracháin Réamhshocraithe
+(Admin Account Not Found): (Níor aimsíodh Cuntas Riaracháin)
+User Authentication: Fíordheimhniú Úsáideora
+Web-based via WebCalendar (default): Gréasán-bhunaithe trí WebCalendar (réamhshocrú)
+Web Server (not detected): Freastalaí Gréasáin (nár braitheadh)
+Web Server (detected): Freastalaí Gréasáin (braite)
+None (Single-User): Dada (Úsáideoir Aonair)
+Read-Only: Léamh amháin
+Environment: Comhshaol
+Production: Táirgeadh
+Development: Forbairt
+Save Settings: Sábháil Socruithe
+Launch WebCalendar: Seoladh WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Earráid agus an tábla "XXX" á nuashonrú: BBBB.
+Conversion Successful: D'éirigh le  Comhshó 
+Perl script required: Éilíonn do leagan roimhe seo de WebCalendar script PERL a reáchtáil chun do chuid sonraí a thiontú. Rith /tools/upgrade_to_0.9.7.pl le do thoil ansin fill ar ais ar an leathanach seo chun leanúint ar aghaidh.
+previous version requires updating several tables: Éilíonn do leagan roimhe seo de WebCalendar roinnt táblaí bunachar sonraí a nuashonrú.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: NÍL RÉAMHRÁ AR FÁIL
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Earráid ag nascadh leis an mbunachar sonraí
+Include Path: Conair a áireamh
+Deleting events for: Imeachtaí a scriosadh le haghaidh
+Importing events for: Imeachtaí iompórtála do
+No data returned from: Níor cuireadh aon sonraí ar ais ó
+for non-user calendar: le haghaidh féilire neamh-úsáideora
+No Remote Calendars found: Níor aimsíodh Féilirí cianda
+Remote Calendars not enabled: Féilirí cianda gan a bheith cumasaithe
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: níorbh fhéidir imeacht id a aimsiú
+could not find event id XXX in database.: níorbh fhéidir imeacht id XXX a aimsiú sa bhunachar sonraí.
+task: tasc
+This is a reminder for the XXX detailed below.: Is meabhrúchán é seo don XXX atá mionsonraithe thíos.
+Pecentage Complete: Pecentage Críochnaithe
+Reminder: Meabhrúchán
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Gníomh gan tacaíocht: XXX.
+No event id specified.: Níor sonraíodh id imeachta.
+Not authorized (not admin).: Gan údarú (ní admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Seiceáil le haghaidh imeachtaí do XXX ón dáta YYY go dtí seo ZZZ.
+Found XXX events in time range.: Aimsíodh imeachtaí XXX sa raon ama.
+Event id=XXX YYY at ZZZ on AAA.: Imeacht id = XXX "BBBB" ag ZZZ ar AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Ag ligean d’úsáideoir XXX féilire úsáideora eile a fheiceáil.
+Error Email reminders disabled for user XXX.: Earráid: Meabhrúcháin ríomhphoist díchumasaithe don úsáideoir "XXX".
+Number of site_extras XXX.: Líon na suíomh_extras: XXX.
+Reminder set for event.: Meabhrúchán socraithe don ócáid.
+Mins Before XXX.: Min roimh: XXX.
+Event time is XXX.: Is é am imeachta: XXX.
+Remind time is XXX.: Is é an t-am meabhrúcháin: XXX.
+Reminders for user XXX, login YYY.: Meabhrúcháin don úsáideoir "XXX", logáil isteach "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Ag fáil neamhcheadaithe don úsáideoir "XXX".
+Event id=XXX YYY already sent.: Imeacht id = XXX "BBBB" seolta cheana féin.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Níl aon logáil isteach ag teastáil i mód aon úsáideora.
+No login required for HTTP authentication.: Níl aon logáil isteach ag teastáil le haghaidh fíordheimhnithe HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Carachtair neamhbhailí ag logáil isteach.
+Username XXX does not exist.: Níl ainm úsáideora "XXX" ann.
+You cannot remove admin rights from yourself!: Ní féidir leat cearta riaracháin a bhaint díot féin!
+Unknown error saving user: Úsáideoir anaithnid ag sábháil earráidí.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Níor aimsíodh aon rannpháirtithe le haghaidh id imeachta: XXX.
+Db error Could not find event id XXX.: Earráid Db: Níorbh fhéidir imeacht id XXX a aimsiú.
+Error Could not find event id XXX in database.: Earráid: Níorbh fhéidir imeacht id XXX a aimsiú sa bhunachar sonraí.

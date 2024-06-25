@@ -1,0 +1,2387 @@
+# Yoruba yo
+#
+# Ọna kika ni akọsori iyan:
+#
+# Ti tumọ nipasẹ: orukọ rẹ ati imeeli
+# Imudojuiwọn ti o kẹhin: ọjọ itumọ
+# (Pelu idari “#” ati eyikeyi awọn asọye ti awọn olutumọ iṣaaju ṣe.
+# Laini òfo FIRST pari awọn asọye akọsori wọnyi.)
+#
+# Atẹle nipasẹ ọpọlọpọ bi o ṣe nilo:
+#
+# Gẹẹsi Gẹẹsi: itumọ
+# (Ọkan si ila kan. LAISI oludari "#".
+# Awọn "Gẹẹsi Gẹẹsi:", pẹlu oluṣafihan ":", ni a pese nipasẹ awọn
+# Awọn olupilẹṣẹ WebCalendar. Apakan rẹ ni "itumọ".)
+#
+# Iwe itọsọna awọn irinṣẹ ni awọn iwe afọwọkọ perl meji lati ṣe iranlọwọ fun ọ:
+# - check_translation.pl
+# tọkasi ti o ba ti tumọ gbogbo ọrọ ni itumọ.
+# - update_translation.pl
+# yoo ṣe itupalẹ awọn faili eto lati wa gbogbo itumọ ('gbolohun ọrọ') ati
+# irinṣẹ ('gbolohun ọrọ'). Yoo ṣeto awọn gbolohun ọrọ gẹgẹbi oju-iwe naa
+# (faili) ti o ni idaniloju akọkọ. Ni aṣayan, o le taagi awọn
+# awọn gbolohun ọrọ ti a ko tii tumọ nipasẹ fifi
+#  << MISSING >>
+# lori ila loke gbolohun ọrọ. Ati pe, ti gbolohun naa ba jẹ abuku,
+# yoo pẹlu ọrọ Gẹẹsi ni kikun lori laini isalẹ gbolohun naa.
+#
+# Akiyesi: Mo n gbiyanju lati ge iwọn faili lapapọ. Ti o ba jẹ pe "itumọ"
+# ọrọ / gbolohun jẹ aami kanna ni ede rẹ ati Gẹẹsi, kan lo ami "=".
+#
+# Akiyesi: Iwọ yoo ṣe akiyesi titẹsi fun "May_" ni isalẹ. Idi kan wa fun eyi.
+# Tumọ "May_" si orukọ oṣu kikun ati "May" si,
+# nigbagbogbo lẹta mẹta, abbreviation oṣu (bii "Oṣu Kẹwa" fun "Oṣu Kẹwa").
+#
+# Mo lo Google tumọ fun eyi.
+# O yẹ ki o to titi ti agbọrọsọ abinibi kan le fi idi rẹ mulẹ.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: Kalẹnda Ayelujara
+version XXX: ẹya XXX
+WebCalendar is a PHP application used...: WebCalendar jẹ ohun elo PHP ti a lo lati ṣetọju kalẹnda kan fun olumulo kan tabi ẹya intanẹẹti / intranet ti awọn olumulo. O tun le ṣe tunto bi kalẹnda iṣẹlẹ.
+Credits: Awọn kirediti
+About: Nipa
+OK: O DARA
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Aṣiṣe aaye data: XXX.
+DEFAULT CONFIGURATION: Iṣetọ DEFAULT
+Go: Lọ                                        
+Save: Fipamọ
+Undo: Paarẹ
+Public Access: Wiwọle Gbangba
+Admin: Isakoso
+User Access Control: Iṣakoso Iṣakoso Olumulo
+Allow Access to Other Users Calendar: Gba Wiwọle si Kalẹnda Awọn olumulo miiran
+Grant This User Access to My Calendar: Fifun Wiwọle Olumulo yii si Kalẹnda Mi                                        
+Type: Iru
+Calendar: Kalẹnda
+View Event: Wo Iṣẹlẹ
+View: Wo
+Edit: Ṣatunkọ
+Approve/Reject: Gba / Kọ
+Events: Awọn iṣẹlẹ
+Tasks: Awọn iṣẹ-ṣiṣe
+Journals: Awọn iwe iroyin                                        
+Can Invite: Le Pepe
+Can Email: Le Imeeli
+Can See Time Only: Le Wo Aago Nikan
+Assistant: Olùrànlówó
+Select All: Sa gbogbo re
+Clear All: Ko Gbogbo re kuro
+Public: Gbangba
+Confidential: Asiri
+Private: Ikọkọ
+
+########################################
+# Page: activity_log.php
+#
+Next: Itele                                        
+Previous: Tẹlẹ
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Iṣẹlẹ XXX ti wa tẹlẹ lori kalẹnda rẹ.
+Invalid entry id XXX.: ID titẹsi ti ko wulo: "XXX".                                        
+a XXX event may not be added to your calendar: Eyi jẹ iṣẹlẹ XXX ati pe o le ma fi kun si kalẹnda rẹ.
+confidential: igbekele
+private: ikọkọ
+Error adding event XXX.: Aṣiṣe ṣe afikun iṣẹlẹ: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Orukọ eto ti ko fẹsẹmulẹ "XXX".                                        
+Select: Yan
+Day: Ọjọ
+Week: Ọsẹ
+Month: Osù                                        
+Year: Odun
+Bottom: Isalẹ
+Top: Oke
+Anyone: Ẹnikẹni
+Participant: Olukopa
+Settings: Ètò
+Groups: Awọn ẹgbẹ                                        
+NonUser Calendars: Awọn kalẹnda ti kii ṣe Olumulo
+Other: Omiiran
+Email: Imeeli
+Colors: Awọn awọ
+Document background: Lẹhin iwe-ipamọ
+Document title: Akọle iwe aṣẹ
+Document text: Ọrọ iwe aṣẹ
+My event text: Ọrọ iṣẹlẹ mi                                        
+Table grid color: Awọ akoj tabili
+Table header background: Tabili akọle lẹhin
+Table header text: Tabili akọle tabili
+Table cell background: Atilẹyin sẹẹli tabili
+Table cell background for current day: Atilẹyin sẹẹli tabili fun ọjọ lọwọlọwọ
+Table cell background for days with events: Atilẹyin sẹẹli tabili fun awọn ọjọ pẹlu awọn iṣẹlẹ
+Table cell background for weekends: Atilẹyin sẹẹli tabili fun awọn ipari ose
+Table cell background for other month: Atilẹyin sẹẹli tabili fun oṣu miiran
+Week number color: Awọ nọmba ọsẹ
+Event popup background: Abẹlẹ agbejade iṣẹlẹ
+Event popup text: Ọrọ agbejade iṣẹlẹ
+System Settings: Eto Eto
+Help: Egba Mi O                                        
+System options: Awọn aṣayan eto
+app-name-help: Ṣe apejuwe orukọ ohun elo naa ti yoo han ninu aaye akọle aṣawakiri fun gbogbo awọn oju-iwe ati lori oju-iwe iwọle. Iye ti o ṣalaye nibi yoo wa ni oju soke ninu faili awọn itumọ ti o fun ọ laaye lati pese awọn akọle oriṣiriṣi fun awọn ede oriṣiriṣi.
+Application Name: Orukọ Ohun elo
+Translated Name (XXX): Orukọ Ti a Tumọ (XXX)
+server-url-help: Sọ URL ipilẹ fun ohun elo naa. Eyi yoo wa pẹlu fifiranṣẹ awọn olurannileti imeeli ati awọn iwifunni.
+Server URL: URL olupin
+home-url-help: Sọ URL ile fun ohun elo naa. Eyi le jẹ idi tabi ibatan
+Home URL: Ile URL                                        
+language-help: Sọ ede ti o yẹ ki o lo.
+Language: Ede                                        
+Your browser default language is XXX.: Ede aiyipada aṣawakiri rẹ ni "XXX".
+Allow user to use themes: Gba olumulo laaye lati lo awọn akori
+themes-help: Faye gba imudojuiwọn ibi-pupọ ti awọn eto iṣeto. Awọn akole ọran kekere jẹ pref olumulo nikan.
+Themes: Awọn akori
+AVAILABLE THEMES: Awọn akori WA
+None: Ko si
+Preview: Awotẹlẹ
+Site customization: Isọdi aaye
+custom-script-help: Faye gba titẹsi ti aṣa Javascript tabi ọrọ aza aza ti yoo fi sii sinu apakan “ori” HTML ti gbogbo oju-iwe.
+Custom script/stylesheet: Aṣa iwe afọwọkọ / aza
+custom-header-help: Gba laaye snippet HTML ti aṣa lati wa ni oke ti gbogbo oju-iwe.
+Custom header: Aṣa akọsori
+custom-trailer-help: Gba laaye snippet HTML ti aṣa lati ṣafikun ni opin gbogbo oju-iwe.
+Custom trailer: Aṣa tirela
+enable-external-header-help: Faye gba trailer aṣa lati gbe lati faili ita kan
+Allow external file for header/script/trailer: Gba faili ti ita laaye fun akọsori / afọwọkọ / tirela
+Allow user to override header/trailer: Gba olumulo laaye lati fagile akọle / tirela
+Date and Time: Ọjọ ati Aago
+server-tz-help: Sọ pato awọn wakati melo lati ṣatunṣe akoko lati UTC si akoko olupin.
+Server Timezone Selection: Aṣayan Agbegbe Aago olupin
+tz-help: Sọ awọn wakati melo lati ṣatunṣe akoko lati UTC si akoko agbegbe.
+Default Client Timezone Selection: Aṣayan Akoko Aago Onibara
+display-general-use-gmt-help: Ti o ba ṣiṣẹ, awọn ọjọ / akoko to wọpọ han bi GMT
+Display Common Use Date/Times as GMT: Han Ọjọ Lilo / Igba bi GMT
+date-format-help: Sọ ọna kika ọjọ ti o fẹ julọ.
+Date format: Ọna kika ọjọ
+Small Task Date: Ọjọ Iṣẹ-ṣiṣe Kekere
+display-week-starts-on: Sọ ọjọ ti ọsẹ ti ọsẹ bẹrẹ. Ti Ọjọ Aarọ ba ṣalaye, lẹhinna awọn nọmba ọsẹ yoo jẹ awọn nọmba ọsẹ ISO.
+Week starts on: Ọsẹ bẹrẹ lori
+display-weekend-starts-on: Ṣeto ọjọ ti ọsẹ fun awọn ipari ose lati bẹrẹ
+Weekend starts on: Ìparí bẹrẹ
+time-format-help: Sọ pato ọna kika akoko lati lo:<br><em>wakati 12:</em> Awọn akoko ifihan bi 3 owurọ, 8:30 irọlẹ, ati bẹbẹ lọ<br><em>wakati 24:</em> Awọn akoko ifihan bi 300 , 2030, abbl.
+Time format: Ọna kika akoko
+12 hour: 12 wakati                                                   
+24 hour: 24 wakati                                                   
+timed-evt-len-help: Sọ ọna titẹ sii fun ṣiṣe ipinnu gigun ti iṣẹlẹ iṣẹlẹ.
+Specify timed event length by: Sọ pato ipari iṣẹlẹ iṣẹlẹ nipasẹ
+Duration: Àkókò
+End Time: Akoko ipari
+work-hours-help: Ṣe apejuwe ibiti akoko lati han fun wiwo ọjọ.
+Work hours: Awọn wakati iṣẹ
+From: Lati                                        
+to: si
+Appearance: Irisi
+preferred-view-help: Ṣe apejuwe wiwo aiyipada (Ọjọ, Ọsẹ, Oṣu, tabi Ọdun).
+Preferred view: Ayanfẹ wiwo
+Allow top menu: Gba akojọ aṣayan oke
+Date Selectors position: Ipo Awọn ayanmọ Ọjọ
+menu-themes-help: Ṣeto awọn awọ ati aṣa ti akojọ oke
+Menu theme: Akori Akojọ aṣyn                                        
+fonts-help: Ṣe atokọ atokọ ti awọn nkọwe eto lati lo (bii “Arial, Helvetica”)
+Fonts: Awọn lẹta            
+display-sm_month-help: Ti o ba ṣiṣẹ, ṣafihan awọn oṣu kekere ni awọn iwo oṣu
+Display small months: Ṣe afihan awọn oṣu kekere
+display-weekends-help: Pẹlu awọn ipari ose nigbati o nwo ọsẹ kan.
+Display weekends: Han awọn ipari ose
+display-long-daynames-help: Ti o ba ṣiṣẹ, awọn orukọ ọjọ pipẹ yoo han
+Display long day names: Ṣe afihan awọn orukọ ọjọ pipẹ
+display-alldays-help: Ṣe afihan awọn iṣaaju ati awọn ọjọ ti nbo ni awọn iwo oṣu, kikun gbogbo awọn sẹẹli.
+Display all days in month view: Han gbogbo ọjọ ni wiwo oṣu
+display-week-number-help: So pato boya nọmba ọsẹ (1-52) yẹ ki o han ni wiwo oṣu ati wiwo ọsẹ.
+Display week number: Nọmba ọsẹ ifihan
+display-desc-print-day-help: Pẹlu awọn apejuwe iṣẹlẹ ni ẹya itẹwe ọrẹ-ti wiwo ọjọ.
+Display description in printer day view: Ifihan apejuwe ni wiwo ọjọ itẹwe
+yearly-shows-events-help: Lori iwoye ti ọdun, awọn ọjọ ifihan ti o ni awọn iṣẹlẹ ninu fonti alaifoya. 
+Display days with events in bold in month and year views: Ṣe afihan awọn ọjọ pẹlu awọn iṣẹlẹ ni igboya ninu oṣu ati awọn wiwo ọdun
+display-minutes-help: Ti o ba ṣiṣẹ, awọn iṣẹju ti o pari pẹlu: 00 yoo han nigbagbogbo
+Display 00 minutes always: Han awọn iṣẹju 00 nigbagbogbo
+display-end-times-help: Ṣafihan awọn akoko ipari iṣẹlẹ ti iṣẹlẹ asiko
+Display end times on calendars: Ṣe afihan awọn akoko ipari lori awọn kalẹnda
+allow-view-add-help: Aami kan '+' yoo wa ninu awọn iwo, gbigba awọn olumulo laaye lati ṣafikun awọn iṣẹlẹ si awọn kalẹnda awọn olumulo miiran.
+Include add event link in views: Pẹlu ṣafikun ọna asopọ iṣẹlẹ ni awọn iwo                                        
+lunar-help: Ti o ba ṣiṣẹ, yoo han awọn aami kekere ti o nsoju awọn ipele oṣupa ni oṣu kọọkan
+Display Lunar Phases in month view: Ṣe afihan Awọn ipele Oṣupa ni wiwo oṣu
+Restrictions: Awọn ihamọ
+allow-view-other-help: Ṣọkasi boya olumulo kan le wo kalẹnda olumulo miiran.
+Allow viewing other users calendars: Gba laaye wiwo awọn kalẹnda olumulo miiran
+require-approvals-help: Nigbati o ba ṣiṣẹ, olumulo kan gbọdọ fọwọsi iṣẹlẹ ṣaaju ki o han lori kalẹnda wọn (ayafi ti Ifihan ti a ko fọwọsi ba ṣiṣẹ). Eto akiyesi eyi si "Bẹẹkọ" kii yoo pa awọn ifọwọsi fun kalẹnda Wiwọle ti Gbogbogbo (ti o ba ti ṣiṣẹ kalẹnda Iwọle ti Gbogbogbo)
+Require event approvals: Beere awọn itẹwọgba iṣẹlẹ
+display-unapproved-help: Ṣọkasi boya awọn iṣẹlẹ ti a ko fọwọsi ti han ninu kalẹnda rẹ. awọn iṣẹlẹ ti a ko fọwọsi gbọdọ fọwọsi ṣaaju ki wọn to han ninu kalẹnda rẹ.
+Display unapproved: Ifihan ti a ko fọwọsi
+conflict-check-help: Ṣayẹwo fun awọn ija iṣẹlẹ (awọn iṣẹlẹ meji ti a ṣeto fun akoko kanna fun eniyan kanna). Ti o ba ṣeto eyi si "Bẹẹni", iwọ yoo tun ni anfani lati ṣeto awọn iṣẹlẹ meji ni akoko kanna lẹhin ti o jẹrisi ikilọ kan. Ti o ba ṣeto eyi si "Bẹẹkọ", ko si ṣayẹwo fun awọn ija yoo ṣee ṣe. O ṣee ṣe ki o fẹ ṣeto eyi si “Bẹẹni”, nitorinaa iṣayẹwo rogbodiyan waye.
+Check for event conflicts: Ṣayẹwo fun awọn ija iṣẹlẹ
+Yes: Bẹẹni
+No: Rara
+conflict-months-help: Ti yiyewo ariyanjiyan wa ni ipo ("Ṣayẹwo fun awọn ija iṣẹlẹ" ti ṣeto si "Bẹẹkọ" & # 41 ;, eyi ṣalaye iye oṣu melo si ọjọ iwaju o yẹ ki a ṣayẹwo fun awọn ija. Ti o ba rii fifi awọn iṣẹlẹ sii gba akoko pipẹ lati ṣe ilana , dinku nọmba yii.
+Conflict checking months: Awọn osu ṣayẹwo ariyanjiyan
+conflict-check-override-help: Gba awọn olumulo laaye lati idojuk awọn ija-iṣẹlẹ ati ṣeto awọn iṣẹlẹ meji tabi diẹ sii fun akoko kanna.
+Allow users to override conflicts: Gba awọn olumulo laaye lati idojuk awọn ija
+limit-appts-help: Faye gba alakoso eto lati ṣeto opin eto-jakejado lori nọmba awọn ipinnu lati pade ti olumulo kan le ni ni ọjọ kan.
+Limit number of timed events per day: Nọmba iye to ti awọn iṣẹlẹ akoko fun ọjọ kan                                        
+limit-appts-number-help: Ṣe apejuwe nọmba ti o pọ julọ ti awọn iṣẹlẹ asiko ti olumulo kan le ni ni ọjọ kan.
+Maximum timed events per day: Awọn iṣẹlẹ akoko ti o pọ julọ fun ọjọ kan                                        
+crossday-help: Ti o ba ṣiṣẹ, awọn iṣẹlẹ ti o gun awọn ọjọ yoo han ni awọn ọjọ lọtọ
+Disable Cross-Day Events: Mu Awọn iṣẹlẹ Ọjọ-irekọja ṣiṣẹ
+disable-location-field-help: Yiyan "Bẹẹni" yoo yọ aaye "Ipo" kuro lati awọn oju-iwe alaye iṣẹlẹ
+Disable Location field: Mu aaye ipo Mu
+disable-url-field-help: Yiyan "Bẹẹni" yoo yọ aaye "URL" kuro ni awọn oju-iwe alaye iṣẹlẹ
+Disable URL field: Mu aaye URL kuro
+disable-priority-field-help: Yiyan "Bẹẹni" yoo yọ aaye "Ni ayo" kuro awọn oju-iwe alaye iṣẹlẹ, n pese wiwo ti o rọrun fun awọn alakobere.
+Disable Priority field: Mu ayo aaye kuro
+disable-access-field-help: Yiyan "Bẹẹni" yoo yọ aaye "Wiwọle" kuro awọn oju-iwe alaye iṣẹlẹ, n pese wiwo ti o rọrun fun awọn alakobere.
+Disable Access field: Mu aaye Wiwọle ṣiṣẹ
+disable-participants-field-help: Yiyan "Bẹẹni" yoo yọ aaye "Awọn olukopa" kuro lati awọn oju-iwe alaye iṣẹlẹ, idilọwọ awọn olumulo lati ṣafikun awọn olumulo miiran si awọn iṣẹlẹ wọn. Ti o ba mu aṣayan yii ṣiṣẹ, o le fẹ lati tun mu “Gba laaye wo awọn kalẹnda olumulo miiran” tun.
+Disable Participants field: Mu aaye Awọn alabaṣepọ mu
+disable-repeating-field-help: Yiyan "Bẹẹni" yoo yọ aaye "Tun-ṣe" nigbati o ba nfi awọn iṣẹlẹ kun. Eyi yoo pese wiwo ti o rọrun fun awọn alakobere.
+Disable Repeating field: Muu Tun aaye ṣe
+allow-html-description-help: Ti o ba ṣiṣẹ, awọn olumulo le tẹ HTML sii ni aaye apejuwe iṣẹlẹ. Ti ko ba ṣiṣẹ, awọn afi HTML yoo sa asala ki o le han bi ọrọ lasan. Ikilọ: Ṣiṣe ẹya yii yoo gba awọn olumulo laaye lati tọka awọn aworan lori awọn oju opo wẹẹbu miiran.
+Allow HTML in Description: Gba HTML laaye ni Apejuwe
+Popups: Agbejade
+disable-popups-help: Mu awọn agbejade ṣiṣẹ lati awọn iwo kalẹnda
+Disable Pop-Ups: Mu Agbejade-Ups ṣiṣẹ
+popup-includes-siteextras-help: Ti o ba ṣiṣẹ, gba awọn aaye iṣẹlẹ iṣẹlẹ aṣa ni faili site_extras.php yoo han ni awọn agbejade iṣẹlẹ.
+Display Site Extras in popup: Ṣe afihan Awọn afikun Aaye ni igarun
+popup-includes-participants-help: Ti o ba ṣiṣẹ, awọn olukopa yoo han ni awọn agbejade iṣẹlẹ.
+Display Participants in popup: Han Awọn olukopa ninu agbejade
+Miscellaneous: Oniruuru                                        
+remember-last-login-help: Nigbati o ba ṣiṣẹ, wiwọle olumulo yoo kun fun wọn ni oju-iwe iwọle (ṣugbọn kii ṣe ọrọ igbaniwọle), ati pe awọn ayanfẹ awọn olumulo yoo di ẹrù (pẹlu awọn awọ ti o fẹ julọ ati yiyan ede).
+Remember last login: Ranti iwọle ti o kẹhin
+summary_length-help: Iwọn gigun ti Apejuwe Alaye ni awọn iwo kalẹnda
+Brief Description Length: Ipari Apejuwe Kukuru
+user_sort-help: Awọn ipinnu iru aṣẹ fun Olumulo, Awọn atokọ Nonuser
+User Sort Order: Iru Eto Olumulo
+Lastname, Firstname: Orukọ idile, Orukọ akọkọ                                        
+Firstname, Lastname: Oruko akoko oruko igbeyin            
+allow-public-access-help: Nigbati o ba ṣiṣẹ, kalẹnda le ṣee lo bi kalẹnda ti gbogbo eniyan ka-ti ko nilo awọn olumulo lati buwolu wọle.
+Allow public access: Gba iraye si gbogbo eniyan
+public-access-default-visible: Awọn iṣẹlẹ lati kalẹnda ti gbogbo eniyan yoo han laifọwọyi lori gbogbo awọn kalẹnda awọn olumulo
+Public access visible by default: Wiwọle ti gbogbo eniyan han nipasẹ aiyipada
+public-access-default-selected: Nigbati o ba nfi iṣẹlẹ tuntun kun, olumulo ti gbogbo eniyan yoo yan nipa aiyipada bi alabaṣe.
+Public access is default participant: Wiwọle si gbogbo eniyan jẹ alabaṣe aiyipada
+public-access-view-others-help: Nigbati o ba wọle si eto pẹlu iraye si gbogbo eniyan, ṣalaye boya olumulo le wo kalẹnda ti olumulo kalẹnda miiran.
+Public access can view other users: Wiwọle ti gbogbo eniyan le wo awọn olumulo miiran
+public-access-can-add-help: Nigbati o ba ṣiṣẹ, awọn olumulo ti o wọle si eto nipasẹ Wiwọle Gbangba yoo ni anfani lati ṣafikun awọn iṣẹlẹ tuntun, ṣugbọn wọn kii yoo han ni kalẹnda naa titi ti alakoso yoo fi fọwọsi iṣẹlẹ tuntun naa.
+Public access can add events: Wiwọle ti gbogbo eniyan le ṣafikun awọn iṣẹlẹ
+public-access-add-requires-approval-help: So pato boya awọn iṣẹlẹ ti o ṣafikun nipasẹ akọọlẹ iraye si ita nilo ifọwọsi ṣaaju iṣafihan.
+Public access new events require approval: Wiwọle ti gbogbo eniyan awọn iṣẹlẹ tuntun nilo ifọwọsi
+public-access-sees-participants-help: Ti o ba ṣiṣẹ, awọn olumulo n wọle si kalẹnda lati akọọlẹ gbogbogbo yoo ni anfani lati wo awọn olukopa iṣẹlẹ ti wọn ba wo awọn alaye iṣẹlẹ kan.
+Public access can view participants: Wiwọle si gbogbo eniyan le wo awọn olukopa
+public-access-override-help: Gba awọn orukọ iṣẹlẹ ati awọn apejuwe laaye lati farapamọ lori kalẹnda ti gbogbo eniyan
+Override event name/description for public access: Fagile orukọ iṣẹlẹ / apejuwe iṣẹlẹ fun wiwọle si gbogbo eniyan
+public-access-override-text-help: Ọrọ lati han ti o ba ti mu aṣayan ti o wa loke ṣiṣẹ. Ti 'Ko Ba Wa', yoo tumọ.
+Text to display to public access: Ọrọ lati han si iraye si gbogbo eniyan
+public-access-captcha-help: Ti o ba ṣiṣẹ, awọn iṣẹlẹ tuntun ti o ṣafikun nipasẹ Gbangba nilo gbigbewọle afọwọsi CAPTCHA kan.
+Require CAPTCHA validation for public access new events: Beere fun idaniloju CAPTCHA fun iraye si awọn iṣẹlẹ tuntun ni gbangba
+uac-enabled-help: Ṣiṣe iṣakoso iraye si ipele olumulo
+User Access Control enabled: Ṣiṣẹ Iṣakoso Wiwọle Olumulo
+groups-enabled-help: Ṣe atilẹyin atilẹyin ẹgbẹ, gbigba awọn olumulo laaye lati yan awọn olumulo nipasẹ awọn ẹgbẹ.
+Groups enabled: Awọn ẹgbẹ ṣiṣẹ                                        
+user-sees-his-group-help: Ti o ba ṣiṣẹ, awọn olumulo kii yoo rii awọn olumulo kalẹnda ti ko si o kere ju ọkan ninu awọn ẹgbẹ wọn.
+User sees only his groups: Olumulo n wo awọn ẹgbẹ rẹ nikan
+nonuser-enabled-help: Ti o ba ṣiṣẹ, awọn alakoso yoo ni aṣayan lati ṣafikun awọn kalẹnda ti kii ṣe lilo
+Nonuser enabled: Nonuser Kalẹnda Igbaalaaye
+nonuser-list-help: Nibo ni lati ṣafihan awọn kalẹnda ti kii ṣe lilo ninu atokọ alabaṣe
+Nonuser list: Ifihan ninu atokọ awọn olukopa ni
+Upcoming Events: Awọn iṣẹlẹ ti n bọ
+upcoming-events-help: Jeki nbo.php
+Enabled: Ti ṣiṣẹ
+upcoming-events-allow-override: Gba oluṣamulo olumulo fun coming.php
+Allow user override: Gba olumulo danu
+upcoming-events-display-caticons: Ṣe pẹlu awọn aami ẹka ni coming.php
+Display category icons: Han awọn aami ẹka
+upcoming-events-display-layers: Ṣe afihan awọn fẹlẹfẹlẹ ni mbọ.php
+Display layers: Awọn ipele fẹlẹfẹlẹ
+upcoming-events-display-links: Han awọn ọna asopọ ni mbọ.php
+Display links to events: Han awọn ọna asopọ si awọn iṣẹlẹ
+upcoming-events-display-popups: Ṣafihan awọn agbejade iṣẹlẹ ni coming.php
+Display event popups: Han awọn agbejade iṣẹlẹ
+reports-enabled-help: Ti o ba ṣiṣẹ, awọn olumulo yoo wo apakan “Awọn ijabọ” ni isalẹ ti oju-iwe kọọkan wọn yoo gba wọn laaye lati ṣẹda awọn iroyin aṣa. Ni afikun, awọn olumulo abojuto le ṣẹda awọn ijabọ agbaye ti yoo han ni isalẹ gbogbo awọn oju-iwe awọn olumulo.
+Reports enabled: Awọn iroyin ti ṣiṣẹ
+subscriptions-enabled-help: So pato ti awọn olumulo latọna jijin le ṣe alabapin si kalẹnda olumulo WebCalendar kan, gbigba wọn laaye lati wo awọn iṣẹlẹ olumulo WebCalendar ninu ohun elo ti a ṣiṣẹ iCal wọn (bii iCal Apple tabi Kalẹnda Mozilla).
+Allow remote subscriptions: Gba awọn iforukọsilẹ latọna jijin laaye
+remotes-enabled-help: Gba awọn olumulo laaye lati fifuye awọn faili ics latọna jijin nipa lilo URL
+Allow remote calendars: Gba awọn kalẹnda latọna jijin laaye
+rss-enabled-help: Ṣọkasi ti o ba le gba kalẹnda olumulo kan lati kikọ sii RSS kan.
+Enable RSS feed: Jeki kikọ sii RSS
+categories-enabled-help: Ṣe atilẹyin atilẹyin fun awọn isori iṣẹlẹ.
+Categories enabled: Isori sise
+icon_upload-enabled-help: Ti o ba ṣiṣẹ, awọn olumulo le ṣe ikojọpọ awọn aami ẹka
+Category Icon Upload enabled: Ṣiṣe Aami Aami ti Ẹka ṣiṣẹ
+(Requires XXX folder to exist.): (O nilo folda XXX lati wa tẹlẹ.)
+display-tasks-help: Ṣe afihan window iṣẹ-ṣiṣe kekere lori oṣu ati kalẹnda ọjọ
+Display small task list: Ṣe afihan atokọ iṣẹ-ṣiṣe kekere
+display-tasks-in-grid-help: Ṣe afihan awọn iṣẹ-ṣiṣe ni awọn kalẹnda pẹlu awọn iṣẹlẹ
+Display tasks in Calendars: Awọn iṣẹ ifihan ni Awọn kalẹnda
+allow-external-users-help: Ṣọkasi boya olumulo ti kii ṣe kalẹnda le ni afikun si iṣẹlẹ kan. Eyi n gba awọn olumulo ti kii-kalẹnda laaye lati ṣe atokọ bi awọn olukopa iṣẹlẹ.
+Allow external users: Gba awọn olumulo ti ita laaye
+external-can-receive-notification-help: Nigbati awọn olumulo ti ita ba ṣiṣẹ ati ti muu lilo imeeli, awọn olumulo ti ita le gba awọn iwifunni imeeli nigbati a ba ṣafikun iṣẹlẹ, imudojuiwọn tabi paarẹ (ti o ba ti pese adirẹsi imeeli olumulo ti ita).
+External users can receive email notifications: Awọn olumulo ti ita le gba awọn iwifunni imeeli
+external-can-receive-reminder-help: Nigbati awọn olumulo ti ita ba ṣiṣẹ ati ti muu lilo imeeli, awọn olumulo ti ita le gba awọn olurannileti imeeli (ti o ba ti pese adirẹsi imeeli olumulo ti ita).
+External users can receive email reminders: Awọn olumulo ti ita le gba awọn olurannileti imeeli
+allow-self-registration-help: Gba awọn olumulo laaye lati forukọsilẹ ara wọn
+Allow self-registration: Gba iforukọsilẹ ara ẹni silẹ
+use-blacklist-help: Diwọn aaye si awọn iṣẹ WebCalendar ti o da lori adiresi IP
+Restrict self-registration to blacklist: Ni ihamọ iforukọsilẹ ti ara ẹni si atokọ dudu
+allow-self-registration-full-help: Gba awọn olumulo laaye lati pari ilana iforukọsilẹ ti ara ẹni lori ila
+Use self-registration email notifications: Ṣe awọn ọrọigbaniwọle ki o ranṣẹ si awọn olumulo tuntun
+allow-attachment-help: Gba awọn olumulo laaye lati ṣafikun awọn asomọ faili si awọn iṣẹlẹ.
+Allow file attachments to events: Gba awọn asomọ faili si awọn iṣẹlẹ
+Admin and owner can always add attachments if enabled.: Abojuto ati oniwun le nigbagbogbo ṣafikun awọn asomọ ti o ba ṣiṣẹ.
+allow-comments-help: Gba awọn olumulo laaye lati ṣafikun awọn asọye si awọn iṣẹlẹ.
+Allow comments to events: Gba awọn asọye si awọn iṣẹlẹ
+Admin and owner can always add comments if enabled.: Abojuto ati oniwun le nigbagbogbo ṣafikun awọn asọye ti o ba ṣiṣẹ.
+email-enabled-help: Tan-an tabi pa gbogbo fifiranṣẹ imeeli fun ifitonileti ati awọn olurannileti. Ṣeto si "rara", ti olupin rẹ ko ba ṣeto daradara lati firanṣẹ meeli.
+Email enabled: Imeeli ti ṣiṣẹ
+email-default-sender: Ṣe apejuwe adirẹsi imeeli lati ṣalaye bi oluranṣẹ nigba fifiranṣẹ awọn olurannileti.
+Default sender address: Adirẹsi oluyipada aiyipada
+email-mailer: Yan iru imeeli (SMTP, mail PHP, mail meeli)
+Email Mailer: Oluṣowo Imeeli
+email-smtp-host: Orukọ ogun (s) ti olupin (awọn) SMTP ti o yapa nipasẹ awọn aami idẹsẹ
+SMTP Host name(s): Orukọ (s) Gbalejo SMTP
+email-smtp-port: Nọmba Ibudo SMTP (deede 25)
+SMTP Port Number: Nọmba Ibudo SMTP
+email-smtp-auth: Lo Ijeri SMTP
+SMTP Authentication: Ijeri SMTP
+email-smtp-username: Orukọ olumulo SMTP ti o ba nlo Ijeri
+SMTP Username: Orukọ olumulo SMTP
+email-smtp-password: Ọrọigbaniwọle SMTP ti o ba nlo Ijeri
+SMTP Password: Ọrọigbaniwọle SMTP
+Default user settings: Awọn eto olumulo aiyipada
+email-format: Pato ààyò fun HTML tabi awọn ifiranṣẹ ọrọ lasan
+Email format preference: Aṣayan kika Imeeli
+HTML: HTML                                        
+Plain Text: Text Text
+email-include-ics: Pẹlu faili iCalendar ICS kan si ifiranṣẹ imeeli
+Include iCalendar attachments: Pẹlu awọn asomọ iCalendar                                        
+email-event-reminders-help: So pato boya tabi lati firanṣẹ awọn olurannileti iṣẹlẹ.
+Event reminders: Awọn olurannileti iṣẹlẹ
+email-event-added: Ṣọkasi boya tabi kii ṣe lati firanṣẹ awọn iwifunni imeeli nigbati a ba ṣafikun iṣẹlẹ kan si kalẹnda rẹ.
+Events added to my calendar: Awọn iṣẹlẹ ti a ṣafikun si kalẹnda mi
+email-event-updated: Ṣọkasi boya tabi kii ṣe lati firanṣẹ awọn iwifunni imeeli nigbati iṣẹlẹ ba ti ni imudojuiwọn lori kalẹnda rẹ.
+Events updated on my calendar: Awọn iṣẹlẹ ti a ṣe imudojuiwọn lori kalẹnda mi
+email-event-deleted: Ṣọkasi boya tabi kii ṣe lati firanṣẹ awọn iwifunni imeeli nigbati a yọ iṣẹlẹ kan kuro ninu kalẹnda rẹ.
+Events removed from my calendar: Awọn iṣẹlẹ ti yọ kuro lati kalẹnda mi
+email-event-rejected: Ṣọkasi boya tabi kii ṣe lati firanṣẹ awọn iwifunni imeeli nigbati alabaṣe kan kọ iṣẹlẹ ti o wa lori kalẹnda rẹ.
+Event rejected by participant: Iṣẹlẹ kọ nipa alabaṣe
+email-event-create: Ṣọkasi boya eleda ti awọn titẹ sii yoo gba imeeli kan
+Event that I create: Iṣẹlẹ ti Mo ṣẹda
+Color options: Awọn aṣayan awọ
+Allow user to customize colors: Gba olumulo laaye lati ṣe awọn awọ
+gradient-colors: Ti o ba ti ṣiṣẹ awọn awọ igbasoke. Eyi le ni ipa pupọ lori iṣẹ.
+Enable gradient images for background colors: Jeki awọn aworan gradient fun awọn awọ lẹhin
+Not available: Ko si
+Background Image options: Awọn aṣayan Aworan abẹlẹ
+bgimage-help: URL ti aworan isale ti o fẹ. Le jẹ ibatan ibatan.
+Background Image: Aworan abẹlẹ
+bgrepeat-help: Awọn iṣakoso tun ihuwasi ti aworan isale.
+Background Repeat: Tun Atilẹyin
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Awọn arannilọwọ
+Preferences: Awọn ayanfẹ
+Control Panel: Ibi iwaju alabujuto
+Users: Awọn olumulo
+Account: Iroyin
+Categories: Awọn ẹka
+Views: Awọn iwo
+Layers: Fẹlẹfẹlẹ                                        
+Reports: Awọn iroyin
+Delete Events: Paarẹ Awọn iṣẹlẹ
+Activity Log: Iṣẹ Wọle
+System Log: System Wọle
+Security Audit: Ayewo Aabo
+Public Preferences: Awọn Aṣayan Gbangba
+Unapproved Public Events: Awọn iṣẹlẹ Gbangba ti a ko fọwọsi
+Administrative Tools: Awọn irinṣẹ Isakoso
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Orukọ ẹda: "XXX".
+Username XXX already exists.: Orukọ olumulo "XXX" ti wa tẹlẹ.
+Email address XXX already exists.: Adirẹsi imeeli "XXX" ti wa tẹlẹ.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Afikun Comments (iyan)
+Approve and Send: Gba ki o Firanṣẹ
+Approve and Exit: Gba ki o si Jade
+(Your comments will be emailed to the event creator.): (Awọn asọye rẹ yoo fi imeeli ranṣẹ si eleda iṣẹlẹ.)
+Hello, XXX.: Kaabo, XXX.                                        
+XXX has approved an appointment and added comments.: A ti fọwọsi ipinnu lati pade ati awọn asọye ti o fi kun nipasẹ XXX.
+Subject XXX: Koko-ọrọ: "XXX".
+Description XXX: Apejuwe: "XXX".
+Date XXX: Ọjọ: XXX
+Time XXX: Akoko: XXX
+Comments XXX: Awọn asọye: XXX
+Approved w/Comments by XXX.: Ti fọwọsi w / Awọn asọye nipasẹ: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Ipo iṣakoso
+Your assistants: Awọn oluranlọwọ rẹ
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Aṣiṣe aimọ.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Aṣiṣe Eto: Ko si pato XXX!
+user: olumulo
+year: odun
+month: osù
+day: ọjọ
+
+########################################
+# Page: category.php
+#
+Category Icon: Aami Ẹka
+Global: Agbaye                                        
+The permissions for the icons directory are set to read-only: Awọn igbanilaaye fun itọsọna awọn aami ti ṣeto si kika-nikan.
+Category Name: Orukọ Ẹka:
+Color: Awọ
+Remove Icon: Yọ Aami:
+Add Icon to Category: Ṣafikun Aami si Ẹka
+Upload: Po si
+GIF or PNG 6kb max: GIF tabi PNG 6kb max                                        
+Search for existing icons: Wa awọn aami ti o wa tẹlẹ
+Add: Fikun-un
+Delete: Paarẹ
+Are you sure you want to delete this entry?: Ṣe o da ọ loju pe o fẹ paarẹ titẹsi yii?
+Make New Category: Ṣe Ẹka Tuntun                                        
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: O nilo orukọ ẹka
+File size exceeds maximum.: Iwọn faili ti kọja o pọju.
+File is not a GIF or PNG image: Faili kii ṣe aworan GIF tabi PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: Awọn ẹka TI O NIPA
+ENTRY CATEGORIES: Tẹ awọn ile-iṣẹ
+Remove: Yọ
+Global Category: Ẹka Agbaye                                        
+Cancel: Fagilee
+
+########################################
+# Page: colors.php
+#
+Add Custom: Ṣafikun Aṣa
+Basic Colors: Awọn awọ ipilẹ
+Current Color: Awọ lọwọlọwọ
+Custom Colors: Awọn Awọ Aṣa
+Old Color: Awọ Atijọ
+
+########################################
+# Page: combo.php
+#
+Select None: Yan Ko si
+Agenda: Eto agbese
+Add Task: Ṣafikun Iṣẹ-ṣiṣe
+Description: Apejuwe
+Date: Ọjọ
+Time: Aago
+Priority: Ni ayo
+Access: Wiwọle
+Created by: Ti a ṣẹda nipasẹ
+Updated: Imudojuiwọn
+Participants: Olukopa
+Attachments: Awọn asomọ
+Comments: Awọn asọye
+Brief Description: Apejuwe Brief
+Full Description: Apejuwe kikun                                        
+Category: Ẹka
+Add event detail: Ṣafikun apejuwe iṣẹlẹ
+Start Date: Ọjọ Ibẹrẹ
+Due Date: Asiko to ba to
+Add task detail: Ṣafikun awọn alaye iṣẹ-ṣiṣe
+All: Gbogbo
+Error: Aṣiṣe
+no response from server: ko si esi lati olupin
+JSON error: JSON aṣiṣe                                        
+High: Giga                                        
+Medium: Alabọde                                        
+Low: Kekere                                        
+Today: Loni
+Add Entry: Fi Akọsilẹ sii
+Unnamed Event: Iṣẹlẹ ti a ko darukọ
+Unnamed Task: Iṣẹ-ṣiṣe ti a ko darukọ
+Refresh: Sọ
+Click to add entry: Tẹ lati ṣafikun titẹsi
+Name: Orukọ                                        
+pm: irọlẹ
+am: emi
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX ti fagile ipinnu lati pade.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: ID idagiri ti ko wulo                                        
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Ṣafikun Ọrọìwòye
+Add Attachment: Ṣafikun asomọ
+Subject: Koko-ọrọ
+Comment: Ọrọìwòye
+Upload file: Po si faili
+
+########################################
+# Page: docdel.php
+#
+Removed: Ti yọ kuro
+
+########################################
+# Page: edit_entry.php
+#
+days: ọjọ
+hours: wakati
+minutes: iṣẹju
+You are not authorized to edit this task.: A ko fun ọ ni aṣẹ lati ṣatunkọ iṣẹ yii.
+is in a different timezone than you are. Currently: wa ninu agbegbe agbegbe ti o yatọ si ti o wa. Lọwọlọwọ
+hour ahead of you: wakati niwaju rẹ
+hour behind you: wakati lẹhin rẹ
+hours ahead of you: wakati niwaju ti o
+hours behind you: awọn wakati lẹhin rẹ
+XXX is in a different timezone (ahead): (XXX wa ni agbegbe aago oriṣiriṣi; YYY niwaju rẹ.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX wa ni agbegbe aago oriṣiriṣi; YYY lẹhin rẹ.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Akoko ti o tẹ nibi da lori Aago rẹ.
+Edit Entry: Ṣatunkọ titẹsi
+Details: Awọn alaye
+Repeat: Tun ṣe
+Reminders: Awọn olurannileti
+brief-description-help: Eyi yẹ ki o pese apejuwe kukuru (nipa awọn ohun kikọ 20) ti iṣẹlẹ naa. Eyi yoo ṣe aṣoju iṣẹlẹ nigba wiwo kalẹnda.
+full-description-help: Eyi yẹ ki o pari awọn alaye ti iṣẹlẹ naa. Alaye yii ni a le rii nigbati olumulo kan wo iṣẹlẹ naa.
+access-help: Ṣe afihan ipele iraye si ti iṣẹlẹ naa. <ul> <li> Gbangba: Gbogbo eniyan le wo awọn alaye ni kikun ti iṣẹlẹ naa.</li> <li> Asiri: Awọn miiran le rii pe o ni titẹsi fun ọjọ ati akoko yẹn, ṣugbọn kii ṣe awọn alaye ohun ti o jẹ.</li></ul>
+priority-help: So ayo ti iṣẹlẹ. Awọn iṣẹlẹ ayo akọkọ yoo han ni igboya.
+category-help: Sọ pato ẹka ti iṣẹlẹ naa.
+completed-help: Iṣẹ-ṣiṣe ọjọ ti pari. Mu ṣiṣẹ nikan nigbati gbogbo awọn olukopa ogorun ba dọgba 100%.
+Date Completed: Ọjọ Ti Pari
+percent-help: Oṣuwọn ipari iṣẹ-ṣiṣe fun olumulo yii
+Percent Complete: Ipari ogorun
+All Percentages: Gbogbo Ogorun
+location-help: Ipo iṣẹlẹ
+Location: Ipo                                        
+url-help: Iṣẹlẹ URL
+URL: =
+date-help: Sọ ọjọ ti iṣẹlẹ naa.
+Untimed event: Iṣẹlẹ ailopin
+Timed event: Iṣẹlẹ ti akoko
+All day event: Gbogbo iṣẹlẹ ọjọ
+Timezone Offset: Aiṣedeede Aago
+time-help: Sọ akoko ti iṣẹlẹ naa. <ul> <li> "Iṣẹlẹ akoko" (fun iṣẹlẹ ti a ṣeto fun akoko kan pato ni ọjọ yẹn)</li> <li> "Iṣẹlẹ ti a ko rii" (fun iṣẹlẹ eyi ko ni akoko kan (bii isinmi )</li> <li> "Iṣẹlẹ gbogbo ọjọ" (fun iṣẹlẹ ti o gba ni gbogbo ọjọ (bii jijade ni ọfiisi)</li></ul>
+duration-help: Ṣe apejuwe iye akoko (ni awọn wakati; iṣẹju) ti iṣẹlẹ naa. <em>Aaye yii le fi silẹ ni ofo.</em>
+end-time-help: Sọ akoko ti o yẹ ki iṣẹlẹ naa pari.
+Start Time: Ibẹrẹ Aago
+Due Time: Akoko to to
+Site Extras: Awọn afikun Aaye
+avail_participants-help: Awọn atokọ awọn olukopa ti o wa ti titẹsi yii.
+Available: Wa
+Find Name: Wa Orukọ            
+Resources: Awọn orisun
+participants-help: Awọn atokọ awọn olukopa ti titẹsi yii.
+Selected: Ti yan
+Availability: Wiwa
+external-participants-help: Ṣe atokọ atokọ ti awọn olukopa fun iṣẹlẹ ti kii ṣe awọn olumulo kalẹnda. Awọn olumulo yẹ ki o ṣe atokọ ọkan fun ila kan ati pe o le pẹlu adirẹsi imeeli kan. Ti o ba ti ṣalaye adirẹsi imeeli kan, olumulo ni ẹtọ lati gba awọn iwifunni ati awọn olurannileti.
+External Participants: Awọn olukopa ti ita
+repeat-type-help: Yan bii igbagbogbo iṣẹlẹ yẹ ki o tun ṣe.
+Daily: Ojoojumọ
+Weekly: Osẹ-ọsẹ
+Monthly: Oṣooṣu                                        
+by day: nipasẹ ọjọ
+by date: nipa ọjọ
+by position: nipa ipo
+Monthly (by day): Oṣooṣu (ni ọjọ)                                        
+Monthly (by date): Oṣooṣu (nipa ọjọ)                                        
+Monthly (by position): Oṣooṣu (nipasẹ ipo)                                        
+Yearly: Lododun
+Manual: Afowoyi                                        
+Expert Mode: Ipo Amoye
+repeat-end-date-help: So ọjọ ti iṣẹlẹ yẹ ki o tun ṣe titi.
+Ending: Ipari
+Forever: Lailai                                        
+Use end date: Lo ọjọ ipari
+Number of times: Nọmba ti igba
+repeat-frequency-help: Ṣọkasi bi igbagbogbo iṣẹlẹ yẹ ki o tun ṣe.
+Frequency: Igbohunsafẹfẹ                                        
+Weekdays Only: Awọn ọjọ ọsẹ nikan
+Week Start: Ibẹrẹ Ọsẹ
+repeat-bydayextended-help: Faye gba yiyan ọjọ ti o da lori ọjọ ọsẹ.
+ByDay: =
+repeat-month-help: Sọ awọn oṣu wo ti iṣẹlẹ yẹ ki o tun ṣe.
+ByMonth: =
+repeat-bysetpos-help: Faye gba yiyan ọjọ ti o da lori ipo pẹlu oṣu naa.
+BySetPos: =
+repeat-bymonthdayextended-help: Faye gba yiyan ọjọ ti o da lori ọjọ.
+ByMonthDay: NipaMonthDay
+repeat-byweekno-help: Gba olumulo laaye lati ṣafihan atokọ ti awọn ọsẹ lati tun ṣe iṣẹlẹ (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Gba olumulo laaye lati ṣafihan atokọ ti awọn ọjọ ọdun lati tun ṣe iṣẹlẹ (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Awọn ọjọ afikun ti iṣẹlẹ yii yẹ tabi ko yẹ ki o waye lori.
+Exclusions: Awọn imukuro
+Inclusions: Awọn ifisi                                        
+Add Exception: Fikun Imukuro
+Add Inclusion: Fikun ifisi
+Delete Selected: Paarẹ Ti yan
+Send Reminder: Firanṣẹ Olurannileti
+When: Nigbawo
+Use Date/Time: Lo Ọjọ / Aago
+Use Offset: Lo aiṣedeede
+Before: Ṣaaju
+After: Lẹhin
+Start: Bẹrẹ
+End/Due: Ipari / Nitori
+Times: Igba
+Every: Gbogbo
+CAPTCHA Warning: Ikilọ:  Ko le lo CAPTCHA laisi itẹsiwaju GD ti PHP!<br>
+Delete entry: Pa titẹ sii
+You are not authorized to edit this entry.: A ko fun ọ ni aṣẹ lati ṣatunkọ titẹsi yii.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX ti ṣe ipinnu lati pade tuntun.
+XXX has updated an appointment.: XXX ti ṣe imudojuiwọn ipinnu lati pade.
+Security violation!: Aabo aabo!
+You must enter the anti-spam text on the previous page.: O gbọdọ tẹ ọrọ egboogi-àwúrúju sii loju iwe ti tẹlẹ.
+The following conflicts with the suggested time: Awọn ija wọnyi pẹlu akoko ti a daba
+User removed from participants list.: A yọ olumulo kuro ninu atokọ awọn olukopa.
+Please look on XXX to accept or reject this appointment.: Jọwọ wo XXX lati gba tabi kọ ipinnu lati pade yii.
+Please look on XXX to view this appointment.: Jọwọ wo XXX lati wo ipinnu lati pade yii.
+Scheduling Conflict: Iṣeto Iṣeto
+Your suggested time of: Rẹ daba akoko ti
+conflicts with the following existing calendar entries: awọn ija pẹlu awọn titẹ sii kalẹnda to wa tẹlẹ
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX ko ti ṣeto ni "config.php".                                        
+word characters only: (o le ni awọn kikọ ọrọ nikan ninu; [a-zA-Z_0-9])
+Add User: Ṣafikun Olumulo
+Edit User: Ṣatunkọ Olumulo
+Calendar ID: ID Kalẹnda
+First Name: Orukọ akọkọ            
+Last Name: Oruko idile                                        
+Is public calendar: Je kalẹnda ti gbogbo eniyan                                        
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Aṣiṣe aaye data
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Ṣafikun Kalẹnda Latọna jijin
+Edit Remote Calendar: Ṣatunkọ Kalẹnda Latọna jijin
+Create Layer: Ṣẹda fẹlẹfẹlẹ
+Reload: Tun gbee
+Required to View Remote Calendar: Nilo lati Wo Kalẹnda Latọna jijin
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Awọn esi wọle                                        
+Events successfully imported: Awọn iṣẹlẹ wọle ni ifijišẹ
+Create a new layer to view this calendar.: Ṣẹda fẹlẹfẹlẹ tuntun lati wo kalẹnda yii.
+Errors: Awọn aṣiṣe
+There was an error parsing the import file or no events were returned.: Aṣiṣe kan wa ti n ṣatunwo faili ti o gbe wọle tabi ko si awọn iṣẹlẹ ti o pada.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Ọla
+Yesterday: Lana
+Day before yesterday: Ọjọ ṣaaju lana
+Next week: Ọsẹ ti n bọ                                        
+This week: Ose yi
+Last week: Ose ti o koja                                        
+Week before last: Ọsẹ ṣaaju kẹhin
+Next week and week after: Ọsẹ ti n bọ ati ọsẹ lẹhin                                        
+This week and next week: Ni ose yii ati ni ọsẹ ti n bọ
+Last week and this week: Ose ati ose yii                                        
+Last two weeks: Ose meji seyin                                        
+Next month: Oṣu ti n bọ                                        
+This month: Oṣu yii
+Last month: Osu to koja                                        
+Month before last: Osu ṣaaju to kẹhin                                        
+Next year: Odun to nbo                                        
+This year: Odun yii
+Last year: Esi                                        
+Year before last: Odun ki o to keyin
+Next 14 days: Next ọjọ 14                                        
+Next 30 days: Next 30 ọjọ                                        
+Next 60 days: Next 60 ọjọ                                        
+Next 90 days: Next 90 ọjọ                                        
+Next 180 days: Next 180 ọjọ                                        
+Next 365 days: Next 365 ọjọ                                        
+Invalid report id XXX.: Id ijabọ ti ko fẹ: "XXX".                                        
+Unnamed Report: Iroyin ti a ko darukọ
+Add Report: Fikun Iroyin
+Edit Report: Iroyin Ṣatunkọ
+Report name: Orukọ iroyin
+User: Olumulo
+Current User: Olumulo lọwọlọwọ
+Include link in menu: Pẹlu ọna asopọ ninu akojọ aṣayan                                        
+Include standard header/trailer: Pẹlu akọle boṣewa / tirela                                        
+Include previous/next links: Pẹlu awọn ọna asopọ ti tẹlẹ / atẹle                                        
+Include empty dates: Pẹlu awọn ọjọ ofo                                        
+Date range: Ọjọ ibiti
+Template variables: Awọn oniyipada awoṣe
+Page template: Awoṣe oju-iwe
+Day template: Awoṣe ọjọ
+Event template: Awoṣe iṣẹlẹ
+Are you sure you want to delete this report?: Ṣe o da ọ loju pe o fẹ paarẹ ijabọ yii?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Ko si id ijabọ iru bẹ: "XXX".
+Variable XXX not found.: A ko ri oniyipada XXX.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Ṣatunkọ Akọsori Aṣa
+Edit Custom Script/Stylesheet: Ṣatunkọ Iwe afọwọkọ aṣa / Stylesheet
+Edit Custom Trailer: Ṣatunkọ Trailer Aṣa
+
+########################################
+# Page: edit_user.php
+#
+Username: Orukọ olumulo
+E-mail address: Adirẹsi imeeli
+Password: Ọrọigbaniwọle
+again: lẹẹkansi
+Disabled for demo: Alaabo fun demo
+Are you sure you want to delete this user?: Ṣe o da ọ loju pe o fẹ paarẹ olumulo yii?
+Change Password: Tun oruko akowole re se
+New Password: Ọrọ aṣina Tuntun                                        
+Set Password: Ṣeto Ọrọigbaniwọle
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Npa awọn olumulo ko ni atilẹyin.
+The passwords were not identical.: Awọn ọrọigbaniwọle kii ṣe aami kanna.
+You have not entered a password.: O ko ti tẹ ọrọ igbaniwọle kan sii.
+Username cannot be blank.: Orukọ olumulo ko le ṣofo.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Ko fun ni aṣẹ
+
+########################################
+# Page: export.php
+#
+Export: Si ilẹ okeere
+Export format: Ọna okeere
+Include all layers: Pẹlu gbogbo awọn fẹlẹfẹlẹ                                        
+Include deleted entries: Pẹlu awọn titẹ sii ti o paarẹ                                        
+Export all dates: Okeere gbogbo awọn ọjọ
+Start date: Ọjọ ibere
+End date: Ọjọ ipari
+Modified since: Ti tunṣe lati igba naa                                        
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: ọna kika okeere ko ṣalaye tabi ti ko tọ.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Ko si olumulo kan pato.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Ṣafikun Ẹgbẹ Tuntun
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Ẹgbẹ ti a ko darukọ
+Add Group: Ṣafikun Ẹgbẹ
+Edit Group: Ẹgbẹ Ṣatunkọ
+Group name: Orukọ ẹgbẹ                                        
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: O gbọdọ pato orukọ ẹgbẹ kan
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Awọn kalẹnda aifọwọyi-aifọwọyi
+auto-refresh-help: Nigbati o ba muu ṣiṣẹ, wiwo ọjọ, wiwo ọsẹ, wiwo oṣu, ati atokọ awọn oju-iwe ti a ko fọwọsi gbogbo wọn yoo sọ ara wọn di alafia ni igbakanna.
+Auto-refresh time: Akoko-isọdọtun aifọwọyi
+auto-refresh-time-help: Ti a ba mu isọdọtun Laifọwọyi ṣiṣẹ, eyi ṣe afihan akoko laarin isọdọtun kọọkan.
+Display days with events in bold in year view: Han awọn ọjọ pẹlu awọn iṣẹlẹ ni igboya ni wiwo ọdun
+Display weekends in week view: Han awọn ipari ose ni wiwo ọsẹ
+Time interval: Aarin akoko
+time-interval-help: So pato bi awọn bulọọki akoko ninu wiwo ọsẹ ati wiwo ọjọ yoo ṣe.
+Nonuser: Awọn kalẹnda ti kii ṣe Olumulo
+user-customize-color: So pato boya a gba awọn olumulo laaye lati yipada eto awọ tiwọn.
+enable-gradient-help: Lo awọn awọ igbasẹ fun awọn ẹhin sẹẹli.
+Manually entering color values: Pẹlu ọwọ titẹ awọn iye awọ                                        
+colors-help: Gbogbo awọn awọ yẹ ki o ṣalaye ni ọna kika hexadecimal "#RRGGBB" nibiti "RR" jẹ iye hex fun pupa, "GG" ni iye hex fun alawọ ewe, ati "BB" ni iye hex fun buluu.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Iroyin Kokoro
+Please include all the information below when reporting a bug.: Jọwọ ṣafikun gbogbo alaye ti o wa ni isalẹ nigbati o ba n ṣe ijabọ kokoro kan.
+Also, please use English rather than XXX.: Pẹlupẹlu, jọwọ lo  Gẹẹsi  dipo XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Iwe Iwe Kalẹnda wẹẹbu
+Currently in English only.: Lọwọlọwọ ni Gẹẹsi nikan.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Fifi / Ṣiṣatunkọ Awọn titẹ sii Kalẹnda
+Repeat Type: Tun Iru
+For More Information...: Fun Alaye Diẹ sii ...            
+Repeat End Date: Tun Ọjọ Ipari
+Repeat Day: Tun ọjọ ṣe
+repeat-day-help: So awọn ọjọ wo ni ọsẹ ti iṣẹlẹ yẹ ki o tun ṣe.
+
+########################################
+# Page: help_import.php
+#
+Import: Gbe wọle                                        
+Palm Desktop: Ojú-iṣẹ Ọpẹ
+allow you to import entries from the Palm...: Fọọmu yii yoo gba ọ laaye lati gbe awọn titẹ sii wọle lati Iwe-iṣẹ Ọjọ-iṣẹ Ọpẹ Palm. O yẹ ki o wa ninu itọsọna ọpẹ rẹ ni iwe-ọjọ / datebook.dat ninu itọsọna-kekere ti a pe nipasẹ orukọ olumulo rẹ.
+The following entries will not be imported: Awọn titẹ sii wọnyi ko ni gbe wọle:
+Entries older than the current date: Awọn titẹ sii ti o dagba ju ọjọ lọwọlọwọ lọ
+Entries created in the Palm Desktop...: Awọn titẹ sii ti a ṣẹda ni Ojú-iṣẹ Ọpẹ ti ko jẹ HotSync'd
+Anything imported from Palm...: Ohunkohun ti o wọle lati Ọpẹ yoo tun kọ lakoko gbigbe wọle ti n bọ (ayafi ti ọjọ iṣẹlẹ ba ti kọja). Nitorinaa, awọn imudojuiwọn yẹ ki o ṣe ni Ojú-iṣẹ Ọpẹ.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Fọọmu yii yoo gbe wọle vCalendar (.vcs) Awọn iṣẹlẹ 1.0.
+The following formats have been tested: Awọn ọna kika wọnyi ti ni idanwo:
+This form will import iCalendar (.ics) events.: Fọọmu yii yoo gbe awọn iṣẹlẹ iCalendar (.ics) wọle.
+Enabling: Muu ṣiṣẹ
+Overwrite Prior Import: Ìkọlé Importaaju Gbe wọle
+will cause events imported previously...: yoo fa awọn iṣẹlẹ ti a ko wọle tẹlẹ, ti o lo UID kanna bi iṣẹlẹ lati faili akowọle tuntun, lati samisi bi paarẹ. Eyi yẹ ki o gba faili iCalendar ti o ni imudojuiwọn lati gbe wọle laisi ṣiṣẹda awọn ẹda-ẹda.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Atọka Iranlọwọ                                        
+About WebCalendar: Nipa WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Awọn fẹlẹfẹlẹ wulo fun iṣafihan awọn iṣẹlẹ awọn olumulo miiran ninu kalẹnda tirẹ. O le ṣọkasi olumulo ati awọ ti awọn iṣẹlẹ yoo han ninu.                                        
+Add/Edit/Delete: Ṣafikun / Ṣatunkọ / Paarẹ
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Tite ọna asopọ Ṣatunkọ Awọn fẹlẹfẹlẹ ni apakan abojuto ni isalẹ ti oju-iwe yoo gba ọ laaye lati fikun / satunkọ / paarẹ awọn fẹlẹfẹlẹ.
+The text color of the new layer that will be displayed in your calendar.: Awọ ọrọ ti fẹlẹfẹlẹ tuntun ti yoo han ninu kalẹnda rẹ.
+Disabling: Muu
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Tẹ ọna asopọ Muu Awọn fẹlẹfẹlẹ mu ni apakan abojuto ni isalẹ ti oju-iwe lati pa awọn fẹlẹfẹlẹ.
+Duplicates: Awọn ẹda
+If checked, events that are duplicates of your events will be shown.: Ti o ba ṣayẹwo, awọn iṣẹlẹ ti o jẹ ẹda ti awọn iṣẹlẹ rẹ yoo han.                                        
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Tẹ ọna asopọ Ṣiṣe Awọn fẹlẹfẹlẹ ni apakan abojuto ni isalẹ ti oju-iwe lati tan awọn fẹlẹfẹlẹ.
+Source: Orisun
+Specifies the user that you would like to see displayed in your calendar.: Sọ olumulo ti o fẹ lati rii ti o han ninu kalẹnda rẹ.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Ẹka aiyipada
+default-category-help: Ṣe apejuwe ẹka kan ti iṣẹlẹ tuntun yẹ ki o aiyipada si.
+When I am the boss: Nigbati emi Oga
+Email me event notification: Imeeli mi iwifunni iṣẹlẹ
+email-boss-notifications-help: So pato ti awọn ọga ba gba awọn imeeli bi awọn iwifunni iṣẹlẹ.
+I want to approve events: Mo fẹ lati fọwọsi awọn iṣẹlẹ                                        
+boss-approve-event-help: So pato boya yoo nilo oga lati fọwọsi awọn iṣẹlẹ ti awọn oluranlọwọ fikun.
+Subscribe/Publish: Alabapin / Jade
+Allow remote publishing: Gba ikedejade latọna jijin
+allow-remote-publishing-help: So pato ti alabara iCal latọna jijin le ṣe atẹjade awọn iṣẹlẹ pada si WebCalendar
+remote-publishing-url-help: Han URL lati lo ninu ohun elo alabara iCal fun ṣiṣe alabapin ati atẹjade pada si WebCalendar.
+allow-remote-subscriptions-help: So pato ti awọn olumulo latọna jijin le ṣe alabapin si kalẹnda rẹ, gbigba wọn laaye lati wo awọn iṣẹlẹ rẹ ninu ohun elo ti o ṣiṣẹ fun iCal (bii iCal Apple tabi Kalẹnda Mozilla).
+remote-subscriptions-url-help: Han awọn olumulo latọna URL yẹ ki o lo lati ṣe alabapin si kalẹnda rẹ.
+Enable FreeBusy publishing: Jeki titẹjade FreeBusy
+freebusy-enabled-help: Ṣọkasi ti o ba gba akoko ti olumulo wa nipa lilo boṣewa iCal FreeBusy.
+freebusy-url-help: URL naa fun iraye si atokọ FreeBusy olumulo naa
+rss-feed-url-help: URL naa lati wọle si ifunni RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Faye gba iṣakoso itanran ti iraye si olumulo ati awọn igbanilaaye. Awọn olumulo tun le funni ni aiyipada ati fun igbanilaaye kọọkan ti o ba fun ni aṣẹ nipasẹ oludari.
+If disabled, this user cannot send you emails.: Ti o ba jẹ alaabo, olumulo yii ko le fi imeeli ranṣẹ si ọ.                                        
+If disabled, this user cannot see you in the participants list.: Ti o ba jẹ alaabo, olumulo yii ko le rii ọ ninu atokọ awọn olukopa.                                        
+If enabled, this user cannot view the details of any of your entries.: Ti o ba ṣiṣẹ, olumulo yii ko le wo awọn alaye ti eyikeyi awọn titẹ sii rẹ.                                        
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Alaabo Atejade (Abojuto)
+Publishing Disabled (User): Alaabo Atejade (Olumulo)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Tẹ lati Yan
+Current Icons on Server: Awọn aami lọwọlọwọ lori Server
+
+########################################
+# Page: import.php
+#
+import from file: gbe wọle lati faili
+Disabled: Alaabo
+Import format: Ọna kika wọle                                        
+Exclude private records: Yọọ awọn igbasilẹ aladani kuro
+Repeated items are imported separately. Prior imports are not overwritten.: Tun awọn ohun ti wa ni tun ti wa ni wole lọtọ. Awọn agbewọle ti iṣaaju ko ṣe atunkọ.
+
+########################################
+# Page: import_handler.php
+#
+No file: Ko si faili
+Error deleting palm events from webcalendar.: Aṣiṣe piparẹ awọn iṣẹlẹ ọpẹ lati kalẹnda wẹẹbu.
+Events from prior import marked as deleted: Awọn iṣẹlẹ lati akowọle akowọle ti samisi bi paarẹ
+Conflicting events: Awọn iṣẹlẹ ikọlu
+The import file contained no data.: Faili ti o gbe wọle ko si data kankan.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Ṣe o da ọ loju pe o fẹ paarẹ yii kuro?
+Delete layer: Paarẹ fẹlẹfẹlẹ rẹ
+Edit layer: Layer ṣiṣu
+Enable layers: Jeki awọn fẹlẹfẹlẹ
+Layer: Fẹlẹfẹlẹ                                        
+Layers are currently disabled.: Awọn fẹlẹfẹlẹ ti wa ni alaabo lọwọlọwọ.                                        
+Layers are currently enabled.: Awọn fẹlẹfẹlẹ ti ṣiṣẹ lọwọlọwọ.                                        
+Click to modify layers settings for XXX: Tẹ ibi lati yipada awọn eto fẹlẹfẹlẹ fun kalẹnda XXX.
+Disable Layers: Mu Awọn fẹlẹfẹlẹ mu
+Add layer: Fikun fẹlẹfẹlẹ
+Add Layer: Fikun Layer
+Edit Layer: Layer Ṣatunkọ
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Ko le ṣe imudojuiwọn ayanfẹ
+Invalid entry id.: ID titẹsi ti ko wulo.                                        
+You cannot create a layer for yourself.: O ko le ṣẹda fẹlẹfẹlẹ fun ara rẹ.
+You can only create one layer for each user.: O le ṣẹda fẹlẹfẹlẹ kan nikan fun olumulo kọọkan.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Gba / Jẹrisi
+Approve Selected: Gba Aṣayan
+Check All: Ṣayẹwo Gbogbo
+Emails Will Not Be Sent: A Ko Ni Firanṣẹ Awọn Imeeli
+Reject Selected: Kọ Ti yan
+Reject: Kọ
+Uncheck All: Ṣayẹwo Gbogbo
+View this entry: Wo titẹsi yii
+No unapproved entries for XXX.: Ko si awọn titẹ sii ti a ko fọwọsi fun: "XXX".
+Unapproved Entries: Awọn titẹ sii ti a ko fọwọsi
+Approve this entry?: Fọwọsi titẹsi yii?
+Reject this entry?: Kọ titẹsi yii?
+Approve Selected entries?: Fọwọsi Awọn titẹ sii Ti a yan?
+Reject Selected entries?: Kọ awọn titẹ sii ti a yan?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: O gbọdọ tẹ ibuwolu wọle ati ọrọ igbaniwọle sii.
+Save login via cookies so I dont have to login next time.: Fipamọ wiwọle nipasẹ awọn kuki nitorinaa Emi ko ni buwolu wọle nigbakugba
+Login: Wo ile                                        
+public: àkọsílẹ
+Access XXX calendar: Wọle si kalẹnda XXX
+cookies-note: Akiyesi: Ohun elo yii nilo awọn kuki lati muu ṣiṣẹ.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Awọn ohun kikọ arufin ni wiwọle XXX.                                        
+Invalid login: Wiwọle ti ko wulo                                        
+Activity login failure: Orukọ olumulo: "XXX", IP: "YYY".
+Error XXX: Aṣiṣe: "XXX".
+You have been logged out.: O ti jade.
+Access public calendar: Wọle kalẹnda ti gbogbo eniyan
+Not yet registered? Register here!: Ko tii forukọsilẹ? Forukọsilẹ nibi!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Ko si iru kalẹnda ti kii ṣe olumulo: "XXX".
+This Calendar is not Public.: Kalẹnda yii kii ṣe Gbangba.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Ṣafikun Kalẹnda NonUser Tuntun
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Wiwọle kan gbọdọ jẹ pàtó.
+No such nonuser calendar: Ko si iru kalẹnda ti kii ṣe oluṣe
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Akori ti ko wulo                                        
+Save Preferences: Fipamọ Awọn ayanfẹ
+Public Access calendar: Kalẹnda Wiwọle ti Gbangba
+Modify Non User Calendar Preferences: Ṣe atunṣe Awọn ayanfẹ Kalẹnda Olumulo                                        
+Return to My Preferences: Pada si Awọn ayanfẹ mi
+Custom Scripts: Awọn iwe afọwọkọ aṣa
+Timezone Selection: Aṣayan Aago
+Multiview: Multiview:                                        
+entry-interval-help: Ṣeto aaye aarin iṣẹju nigba ṣiṣatunkọ awọn akoko titẹsi
+Entry interval: Aarin titẹsi
+hour: wakati
+minute: iseju
+theme-reload-help: Nitori fifipamọ CSS, atunyẹwo oju-iwe kan le nilo
+Page may need to be reloaded for new Theme to take effect: Oju-iwe le nilo lati tun ṣe igbasilẹ fun Akori tuntun lati ni ipa
+display_byproxy-help: Ṣe afihan ẹlẹda gidi loju oju-iwe view_entry
+Display if created by Assistant: Han ti o ba ṣẹda nipasẹ Iranlọwọ
+allow-view-subscriptions-help: Faye gba ihamọ wiwọle si ọna jijin si Awọn titẹ sii Ikọkọ tabi Asiri
+Allow remote viewing of: Gba wiwo wiwo latọna jijin ti
+entries: awọn titẹ sii
+
+########################################
+# Page: purge.php
+#
+Purging events for: Nu iṣẹlẹ fun
+Finished: Ti pari            
+Back: Pada
+Check box to delete ALL events for a user: Ṣayẹwo apoti lati paarẹ awọn iṣẹlẹ  GBOGBO  fun olumulo kan
+Delete all events before: Pa gbogbo awọn iṣẹlẹ ṣaaju ṣaaju
+Purge deleted only: Nu paarẹ nikan
+Preview delete: Paarẹ Awotẹlẹ
+Are you sure you want to delete events for: Ṣe o da ọ loju pe o fẹ paarẹ awọn iṣẹlẹ fun
+Records deleted from XXX: Ti paarẹ awọn igbasilẹ lati "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Adirẹsi imeeli ko le ṣofo.
+Username already exists.: Orukọ olumulo ti wa tẹlẹ.
+Email address already exists.: Adirẹsi Imeeli ti wa tẹlẹ.
+New user via self-registration.: Olumulo tuntun nipasẹ iforukọsilẹ ti ara ẹni.                                        
+A new WebCalendar account has been set up for you.: A ti ṣeto akọọlẹ WebCalendar tuntun fun ọ.
+Your username is XXX.: Orukọ olumulo rẹ ni: "XXX".
+Your password is XXX.: Ọrọ aṣínà rẹ ni: "XXX".
+Please visit XXX to log in and start using your account!: Jọwọ ṣabẹwo si "XXX" lati wọle ki o bẹrẹ lilo akọọlẹ rẹ!
+You may change your password after logging in the first time.: O le yi ọrọ igbaniwọle rẹ pada lẹhin ti o wọle ni igba akọkọ.
+If you received this email in error: Ti o ba gba imeeli yii ni aṣiṣe ati pe ko forukọsilẹ fun akọọlẹ WebCalendar kan, o le foju si akiyesi yii, tabi fesi pẹlu akọsilẹ kukuru                                        
+Administrator: Alakoso
+Welcome: Kaabo
+New user via email.: Olumulo tuntun nipasẹ imeeli.                                        
+Registration: Iforukọsilẹ
+Welcome to WebCalendar: Kaabo si WebCalendar
+Your email should arrive shortly.: Imeeli rẹ yẹ ki o de laipẹ.
+Return to Login screen: Pada si iboju Wiwọle
+Password (again): Ọrọigbaniwọle (lẹẹkansi):
+Your account information will be emailed to you.: Alaye àkọọlẹ rẹ yoo fi imeeli ranṣẹ si ọ.
+Submit: Firanṣẹ
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Tẹsiwaju
+(Your comments will be emailed to the other participants.): (Awọn asọye rẹ yoo fi imeeli ranṣẹ si awọn olukopa miiran.)
+XXX has rejected an appointment.: XXX ti kọ ipinnu lati pade.
+Rejected by XXX.: Kọ nipa XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Ṣafikun Kalẹnda Latọna jijin Tuntun
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Iṣẹlẹ yii jẹ igbekele.
+(Private): (Ikọkọ)
+(cont.): (ibamu.)
+Approved: Ti a fọwọsi
+Deleted: Ti paarẹ
+Rejected: Kọ
+Waiting for approval: Nduro fun ifọwọsi
+Unknown: Aimọ
+Invalid report id.: ID ijabọ ti ko fẹ.                                        
+Click here to manage reports for the Public Access calendar.: Tẹ ibi lati ṣakoso awọn iroyin fun kalẹnda Wiwọle ti Gbangba.
+Add new report: Fi iroyin titun kun
+Manage Reports: Ṣakoso awọn Ijabọ                                        
+
+########################################
+# Page: search.php
+#
+Advanced Search: Iwadi Ilọsiwaju
+Search: Ṣawari
+Keywords: Awọn ọrọ-ọrọ                                        
+Enter % for all entries: Tẹ% fun gbogbo awọn titẹ sii sii
+Include: Ni                                        
+Filter by Date: Àlẹmọ nipasẹ Ọjọ            
+All Dates: Gbogbo Awọn Ọjọ
+Past: Ti o ti kọja
+Upcoming: Nbo
+Range: Ibiti
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: O gbọdọ tẹ ọkan tabi diẹ ẹ sii awọn ọrọ wiwa.
+Search Results: Awọn abajade Wiwa
+match found: baramu ti a rii
+matches found: awọn ere-kere ti a rii
+No matches found: Ko ri awọn ere-kere
+New Search: Wiwa Tuntun                                        
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Alaye ti o wa ni isalẹ ṣe atokọ awọn ọran ti o ni agbara pẹlu fifi sori WebCalendar rẹ ti o le yipada lati jẹ ki fifi sori rẹ ni aabo siwaju sii.
+For questions about WebCalendar security see the forums: Fun awọn ibeere nipa eyikeyi aabo aabo WebCalendar, jọwọ lo awọn apejọ WebCalendar ti o gbalejo lori GitHub.com;<br>XXX            
+View your current PHP settings: Wo awọn eto PHP lọwọlọwọ rẹ
+Security Issue: Oro Aabo
+Status: Ipo
+Default admin user password: Ọrọ igbaniwọle olumulo aiyipada
+You should change the password of the default admin user.: O yẹ ki o yi ọrọ igbaniwọle ti olumulo abojuto aiyipada pada.
+File permissions XXX: Awọn igbanilaaye faili: XXX
+item XXX should not be writable: Ohun ti o tẹle ko yẹ ki o jẹ kikọ:<br><tt> XXX</tt>
+File exists XXX: Faili wa: "XXX"
+Because you have email disabled, you should remove this file.: Nitoripe o ti ni alaabo imeeli, o yẹ ki o yọ faili yii.
+File location XXX: Ipo faili: "XXX"
+remove XXX if not using: Ti o ko ba lo faili "XXX", o yẹ ki o paarẹ. Tabi, o kere ju, gbe si itọsọna tuntun kan.
+System Settings XXX: Eto Eto: "XXX"
+consider enabling UAC: O le fẹ lati ronu gbigba Iṣakoso Wiwọle Olumulo lati ṣeto awọn anfani olumulo.
+recommend approving new public events: A ṣe iṣeduro pe gbogbo awọn ifisilẹ iṣẹlẹ gbangba ni ifọwọsi.
+recommend using CAPTCHA: A ṣe iṣeduro CAPTCHA lati ṣetọju awọn ifisilẹ iṣẹlẹ adaṣe lẹẹkansii.
+Database cache directory location: Ipo itọsọna kaṣe aaye data
+db cache should be inaccessable: Kaṣe ibi ipamọ data yẹ ki o wa ninu itọsọna kan ti ko le wọle pẹlu URL kan.
+PHP Settings XXX: Awọn Eto PHP: "XXX"
+recommend setting XXX Off: Eto ti a ṣe iṣeduro fun "XXX" wa ni Paa.
+recommend setting allow_url_fopen Off: Eto ti a ṣe iṣeduro fun "allow_url_fopen" wa ni Paa nigbati awọn kalẹnda latọna jijin ko ba ṣiṣẹ.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Wo Kalẹnda Olumulo miiran
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Iwọ ko ti ṣafikun awọn isori kankan.
+Set Category: Ṣeto Ẹka
+Global Categories cannot be changed.: Awọn Isori Agbaye ko le yipada.                                        
+
+########################################
+# Page: upcoming.php
+#
+more: siwaju sii
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Awọn kalẹnda latọna jijin
+denotes administrative user: tọka olumulo iṣakoso
+Add New User: Ṣafikun Olumulo tuntun
+
+########################################
+# Page: usersel.php
+#
+form: fọọmu
+Reset: Tunto
+
+########################################
+# Page: views.php
+#
+Add New View: Ṣafikun Wiwo Tuntun
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Wiwo ti a ko mọ Orukọ
+Add View: Ṣafikun Wiwo
+Edit View: Ṣatunkọ Wiwo
+View Name: Wo Orukọ
+View Type: Iru Wo
+Day by Time: Ọjọ nipasẹ Aago
+Week (Users horizontal): Ọsẹ (Awọn olumulo petele)
+Week by Time: Ọsẹ nipasẹ Aago
+Week (Users vertical): Ọsẹ (Awọn olumulo ni inaro)
+Week (Timebar): Ọsẹ (Aago Aago)
+Month (Timebar): Osù (Aago)                                        
+Month (side by side): Oṣooṣu (lẹgbẹẹgbẹ)                                        
+Month (on same calendar): Osù (lori kalẹnda kanna)                                        
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: O gbọdọ pato orukọ wiwo kan
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Ko si awọn olumulo fun wiwo yii.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Imudojuiwọn ogorun Iṣẹ-ṣiṣe
+Completed: Ti pari
+Assistant mode: Ipo oluranlọwọ
+Declined: Ti kọ
+Needs-Action: Awọn iwulo-Igbese                                        
+by: nipasẹ
+Percentage Complete: Ipari ogorun
+External User: Olumulo ti ita
+Update: Imudojuiwọn
+at: ni
+comments: awọn asọye
+Show: Fihan
+Hide: Tọju                                        
+Approve/Confirm entry: Fọwọsi / jẹrisi titẹsi
+Reject entry: Kọ titẹsi
+Set category: Ṣeto ẹka
+Add to My Calendar: Ṣafikun si Kalẹnda Mi
+Copy entry: Daakọ titẹsi
+This will delete this entry for all users.: Eyi yoo paarẹ titẹsi yii fun gbogbo awọn olumulo.
+Edit entry: Titẹsi titẹsi
+Edit repeating entry for all dates: Satunkọ titẹsi tun fun gbogbo awọn ọjọ
+Delete repeating event for all dates: Paarẹ iṣẹlẹ atunwi fun gbogbo awọn ọjọ
+Edit entry for this date: Ṣatunkọ titẹsi fun ọjọ yii
+Delete entry only for this date: Pa titẹ sii nikan fun ọjọ yii
+Delete entry from calendar of XXX: Paarẹ titẹsi lati kalẹnda ti XXX
+This will delete the entry from your XXX calendar.: Eyi yoo paarẹ titẹsi rẹ lati kalẹnda XXX rẹ.
+boss: ọga '
+This will delete the entry from your boss calendar.: Eyi yoo paarẹ titẹsi rẹ lati kalẹnda ọga rẹ.
+This will delete the entry from your calendar.: Eyi yoo paarẹ titẹsi rẹ lati kalẹnda rẹ.
+from your boss calendar: lati kalẹnda ọga rẹ
+Do you want to add this entry to your calendar?: Ṣe o fẹ ṣafikun titẹsi yii si kalẹnda rẹ?
+This will add the entry to your calendar.: Eyi yoo ṣafikun titẹsi si kalẹnda rẹ.
+Email all participants: Imeeli gbogbo awọn olukopa
+Hide activity log: Tọju log aṣayan iṣẹ-ṣiṣe                                        
+Show activity log: Ṣe afihan akọọlẹ iṣẹ
+Export this entry to: Okeere yi titẹsi si
+Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Tẹ lẹmeji lori sẹẹli ti o ṣofo lati ṣafikun titẹsi tuntun.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Titẹ sii Titun                                        
+cont.: ilodi.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Kalẹnda Olumulo miiran
+Category Management: Isakoso Ẹka
+Day View: Wiwo Ọjọ
+Edit Event: Ṣatunkọ Iṣẹlẹ
+Month View: Iwo Osu                                        
+Common Trailer: Wọpọ Trailer
+User Management: Iṣakoso Olumulo
+Manage Views: Ṣakoso awọn Wiwo                                        
+Week View: Wiwo Ose
+Year View: Wiwo Odun
+Invalid function id: ID iṣẹ ti ko wulo                                        
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Ko le wa faili "settings.php".<br>Jọwọ daakọ "settings.php.orig" si "settings.php" ki o ṣatunkọ fun aaye rẹ.
+Incomplete settings.php file...: Faili "settings.php" ti ko pe ...                                        
+Could not find XXX defined in...: Ko le ri "XXX" ti a ṣalaye ninu faili "settings.php" rẹ.
+You must define XXX in: O gbọdọ ṣalaye "XXX" ninu faili "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Oṣu kejila
+Dec: Oṣu kejila
+LANGUAGE DEFINED: D D TI ṢE ṢEjuwe                                        
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Aṣiṣe sisopọ si ibi ipamọ data: "XXX".
+db_type not defined.: db_type ko ṣalaye.
+invalid db_type XXX: invalid db_type "" XXX ".
+Cache cleared from previous SQL!: Kaṣe kuro ni SQL ti tẹlẹ!
+Error executing query.: Aṣiṣe ṣiṣe ibeere.
+Unfortunately, XXX is not implemented for YYY: Laanu, "XXX" ko ṣe imuse fun (YYY).
+Unknown ODBC error.: Aṣiṣe ODBC aimọ.
+Error opening cache dir XXX.: Aṣiṣe ṣiṣi kaṣe dir "XXX".
+delete: paarẹ
+Cache error Could not XXX file YYY.: Aṣiṣe kaṣe: Ko le ṣe faili XXX "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Aṣiṣe Ipaniyan
+Invalid data format for: Ọna kika data ti ko fẹ fun                                        
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Aṣiṣe: Iru ko ṣeto fun log log!
+This event is XXX.: Iṣẹlẹ yii jẹ XXX.
+Conf.: =
+exceeds limit of XXX events per day: kọja opin ti awọn iṣẹlẹ XXX fun ọjọ kan
+on: lori
+All Attendees: Gbogbo Awọn olukopa
+Busy: Nšišẹ
+Tentative: =
+Schedule an appointment for XXX.: Ṣeto ipinnu lati pade fun XXX: YYY.
+date_select: __dd__ __ osu____ __yyyy__
+Event approved: Iṣẹlẹ ti a fọwọsi
+Journal approved: Iwe akọọlẹ ti a fọwọsi                                        
+Task approved: Iṣẹ ti a fọwọsi
+Attachment: Asomọ
+Event created: Iṣẹlẹ ti ṣẹda
+Journal created: Iwe akọọlẹ ti a ṣẹda                                        
+Task created: Iṣẹ-ṣiṣe ti ṣẹda
+Event deleted: Ti paarẹ iṣẹlẹ
+Journal deleted: Ti paarẹ iwe akọọlẹ                                        
+Task deleted: Ti paarẹ iṣẹ-ṣiṣe
+New user via email (self registration): Olumulo tuntun nipasẹ imeeli (iforukọsilẹ ara ẹni)                                        
+New user (self registration): Olumulo tuntun (iforukọsilẹ ara ẹni)                                        
+Notification sent: Ti firanṣẹ iwifunni
+Event rejected: Iṣẹlẹ kọ
+Journal rejected: Iwe akosile kọ                                        
+Task rejected: Iṣẹ-ṣiṣe kọ
+Reminder sent: Olurannileti ti firanṣẹ
+Event updated: Iṣẹlẹ imudojuiwọn
+Journal updated: Journal imudojuiwọn                                        
+Task updated: Iṣẹ-ṣiṣe ti ni imudojuiwọn
+Delete User: Pa Olumulo
+WK: =
+TASKS: Awọn iṣẹ-ṣiṣe
+Task_Title: Akọle
+Due: Nitori
+Task Name: Orukọ Iṣẹ-ṣiṣe
+Task Due Date: Ọjọ-ṣiṣe Nitori Iṣẹ
+You have XXX unapproved entries: O ni awọn titẹ sii ti a ko fọwọsi XXX
+Changes successfully saved: Ayipada awọn ayipada ni ifijišẹ
+Event: Iṣẹlẹ
+Action: Iṣe
+Printer Friendly: Itẹwe Friendly
+Generate printer-friendly version: Ṣe ipilẹṣẹ ẹya ọrẹ itẹwe                                        
+after: lẹhin
+before: ṣaaju
+end: opin
+start: bẹrẹ
+View this event: Wo iṣẹlẹ yii
+View this task: Wo iṣẹ yii
+January: Oṣu Kini                                        
+February: Kínní
+March: Oṣu Kẹta                                        
+April: Oṣu Kẹrin
+May_: Ṣe                                        
+June: Oṣu kẹfa                                        
+July: Oṣu Keje                                        
+August: Oṣu Kẹjọ
+September: Oṣu Kẹsan
+October: Oṣu Kẹwa
+November: Kọkànlá Oṣù
+Jan: Oṣu Kini                                        
+Feb: Oṣu Kẹwa
+Mar: Mar.                                        
+Apr: Oṣu Kẹwa
+May: Ṣe                                        
+Jun: Oṣu keje                                        
+Jul: Oṣu kejila                                        
+Aug: Oṣu Kẹwa
+Sep: Oṣu Kẹsan
+Oct: Oṣu Kẹwa
+Nov: Oṣu kọkanla
+SU: =
+MO: MO                                        
+TU: =
+WE: WA
+TH: =
+FR: =
+SA: =
+unknown-month: aimọ-osù
+First Quarter Moon: Oṣupa mẹẹdogun akọkọ            
+Full Moon: Oṣupa kikun                                        
+Last Quarter Moon: Oṣupa mẹẹdogun to kẹhin                                        
+New Moon: Osupa tuntun                                        
+Error TIME_SLOTS undefined!: Aṣiṣe: TIME_SLOTS a ko ṣalaye!
+The following error occurred: Aṣiṣe atẹle yii waye
+You are not authorized.: A ko fun ọ ni aṣẹ.
+Add N hours to: Ṣafikun awọn wakati N si
+Subtract N hours from: Iyokuro awọn wakati N lati
+same as: Bakan naa
+server time: akoko olupin
+Cannot read timezone file XXX.: Ko le ka faili faili agbegbe aago: XXX.
+Your current GMT offset is XXX hours.: Iṣiro GMT lọwọlọwọ rẹ ni awọn wakati XXX.
+Unauthorized: Laigba aṣẹ
+Error approving event XXX.: Aṣiṣe ti o fọwọsi iṣẹlẹ: XXX.
+Error deleting event XXX.: Aṣiṣe piparẹ iṣẹlẹ: XXX.
+Error rejecting event XXX.: Aṣiṣe kọ iṣẹlẹ: XXX.
+Sunday: =
+Monday: Awọn aarọ                                        
+Tuesday: =
+Wednesday: Ọjọbọ
+Thursday: Ọjọbọ
+Friday: Ọjọ Ẹtì                                        
+Saturday: Ọjọ Satide
+Sun: Oorun
+Mon: Mon                                        
+Tue: =
+Wed: =
+Thu: Oṣu Kẹsan
+Fri: Fri                                        
+Sat: =
+unknown-weekday: aimọ-weekday
+Invalid referring URL: URL ti n tọka ko wulo                                        
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Atọka                                        
+Documentation: Iwe aṣẹ
+Page: Oju-iwe
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Kalẹnda Mi                                        
+Add New Entry: Ṣafikun Titẹsi Titun
+Add New Task: Ṣafikun Iṣẹ-ṣiṣe Tuntun
+Logout: Logout                                        
+Home: Ile                                        
+Back to My Calendar: Pada si Kalẹnda Mi
+Go to: Lọ si                                        
+Manage calendar of: Ṣakoso kalẹnda ti                                        
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: A Ko ri Ede Burausa
+(not supported): (ko ṣe atilẹyin)
+Abkhazian: Abakhazian
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: Afirika
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: Ede Albenia
+Aleut: Itaniji
+Algonquian: =
+Altai (Southern): Altai (Gusu)
+Amharic: =
+Angika: =
+Apache: Afun
+Arabic (Algeria): Ede Larubaawa (Algeria)
+Arabic (Bahrain): Ede Larubaawa (Bahrain)
+Arabic (Egypt): Ede Larubawa (Egipti)
+Arabic (Iraq): Ede Larubaawa (Iraq)
+Arabic (Jordan): Ede Larubaawa (Jordani)
+Arabic (Kuwait): Ede Larubawa (Kuwait)
+Arabic (Lebanon): Ede Larubawa (Lebanoni)
+Arabic (Libya): Ede Larubaawa (Libiya)
+Arabic (Morocco): Ede Larubaawa (Ilu Maroko)
+Arabic (Oman): Ede Larubawa (Oman)
+Arabic (Qatar): Ede Larubaawa (Qatar)
+Arabic (Saudi Arabia): Ede Larubaawa (Saudi Arabia)
+Arabic (Syria): Ede Larubaawa (Siria)
+Arabic (Tunisia): Ede Larubaawa (Tunisia)
+Arabic (U.A.E.): Ede Larubawa (U.A.E.)
+Arabic (Yemen): Ede Larubaawa (Yemen)
+Arabic: Ede Larubawa
+Aragonese: =
+Aramaic: Ramarámáíkì
+Arapaho: =
+Arawak: =
+Armenian: Armenia
+Assamese: Ara Assamese
+Asturian: =
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: =
+Balinese: Ede Balinese
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: =
+Beja: =
+Belarusian: Ara ilu Belarus
+Bemba: =
+Bengali: Ede Bengali
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: =
+Bliss: Ibukun
+Bosnian: Ara ilu Bosnia
+Braj: =
+Breton: Bretoni
+Buginese: Ede Buginese
+Bulgarian: Bulgaria
+Buriat: =
+Burmese: Ede Burmese
+Caddo: =
+Catalan: Katalandi
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Ara Ṣaina (Ilu Họngi Kọngi)
+Chinese (PRC): Ara Ṣaina (PRC)
+Chinese (Simplified/GB2312): Ara Ṣaina (Ni irọrun / GB2312)
+Chinese (Singapore): Ara Ṣaina (Sipọpọanu)
+Chinese (Taiwan): Ara Ṣaina (Taiwan)
+Chinese (Traditional/Big5): Ara Ṣaina (Ibile / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: =
+Cornish: =
+Corsican: =
+Cree: =
+Creek: =
+Croatian: Ara Croatian
+Czech: Ede Czech
+Dakota: =
+Danish: Ede Danish
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Dutch (Bẹljiọmu)
+Dutch: Ede Dutch
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Gẹẹsi (Ọstrelia)
+English (Belize): Gẹẹsi (Belize)
+English (Canada): Gẹẹsi (Ilu Kanada)
+English (Ireland): Gẹẹsi (Ireland)
+English (Jamaica): Englishdè Gẹẹsi (Ilu Jamaica)
+English (New Zealand): Gẹẹsi (Ilu Niu silandii)
+English (Philippines): Gẹẹsi (Philippines)
+English (South Africa): Gẹẹsi (South Africa)
+English (Trinidad & Tobago): Gẹẹsi (Trinidad & Tobago)
+English (United Kingdom): Gẹẹsi (United Kingdom)
+English (United States): Gẹẹsi (Amẹrika)
+English (Zimbabwe): Gẹẹsi (Zimbabwe)
+English: Gẹẹsi
+Erzya: =
+Esperanto: =
+Estonian: Estonia
+Ewe: =
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: =
+Fijian: =
+Filipino: =
+Finnish: Ede Finland
+Fon: =
+French (Belgium): Faranse (Bẹljiọmu)
+French (Canada): Ede Faranse (Ilu Kanada)
+French (France): Faranse (Faranse)
+French (Luxembourg): Ede Faranse (Luxembourg)
+French (Monaco): Faranse (Monaco)
+French (Switzerland): Faranse (Siwitsalandi)
+French: Faranse
+Frisian (Eastern): Frisian (Ila-oorun)
+Frisian (Northern): Frisian (Ariwa)
+Frisian (Western): Frisian (Oorun)
+Frisian: Frisia
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Ara Galisia
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Iandè Georgia
+German (Austria): Jẹmánì (Austria)
+German (Germany): Jẹmánì (Jẹmánì)
+German (Liechtenstein): Jẹmánì (Liechtenstein)
+German (Luxembourg): Ede Jamani (Luxembourg)
+German (Standard): Jẹmánì (Standard)
+German (Switzerland): Jẹmánì (Siwitsalandi)
+German: Jẹmánì
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gotik
+Grebo: =
+Greek: =
+Greenlandic: Girinilandi
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich & # 39; ni
+Haida: =
+Haitian (Creole): Haiti (Creole)
+Haitian: Haiti
+Hausa: =
+Hawaiian: Ilu Hawahi
+Hebrew: Heberu
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Hiti
+Hmong: =
+Holo (Taiwanese): =
+Hungarian: Ede Hungary
+Hupa: =
+Iban: =
+Icelandic: Ede Iceland
+Ido: Mo ṣe
+Igbo: =
+Iloko: =
+Indonesian: Ara Indonesia
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Ara ilu Iran
+Irish (Gaelic): Ede Irish (Gaelic)
+Irish: .Dè Irish
+Iroquoian: =
+Italian (Switzerland): Ede Italia (Siwitsalandi)
+Italian: Ara Italia
+Japanese: Ara ilu Japan
+Javanese: Ede Javanese
+Judeo-Arabic: Judeo-arabic
+Judeo-Persian: Judeo-Persia
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: Ede Kannada
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): Khmer (Aringbungbun)
+Khmer: =
+Khotanese: Ede Khotanese
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Ede Korea (Johab)
+Korean (North): Ede Korea (Ariwa)
+Korean (South): Ede Korea (Guusu)
+Korean: Ede Koria
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Ede Kurdish
+Kutenai: =
+Kyrgyz: =
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: =
+Latvian: Latvia
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Ede Lithuania
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: =
+Macedonian: Ede Makedonia
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Ede Malagasi
+Malay: =
+Malayalam: Malayalamu
+Maldivian: Didè Maldivian
+Maltese: Ilu Malta
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi & # 39; kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: =
+Mongo: =
+Mongolian: Ede Mongolia
+Montenegrin: =
+Moroccan: Ara Ilu Morocco
+Mossi: =
+Myanmar: Mianma
+Māori: Màori
+N&#39;Ko: N & # 39; Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Ariwa)
+Ndebele (South): Ndebele (Guusu)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Ede Nowejiani (Bokmål)
+Norwegian (Nynorsk): Ede Nowejiani (Nynorsk)
+Norwegian: Norwegiandè Norway
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: =
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: Ede Oromo
+Osage: =
+Ossetic: Ossetiki
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: Pasto
+Pedi: =
+Persian (Farsi): Persia (Farsi)
+Persian (Iran): Persia (Iran)
+Persian: Ara Pasia
+Phoenician: Fenisiani
+Pohnpeian: =
+Polish: Pólándì
+Portuguese: Portuguesedè Pọtugalii
+Portuguese/Brazil: Pọtugalii / Brasil
+Punjabi (India): =
+Punjabi (Pakistan): =
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: Ede Romania
+Romansh: Romanh
+Romany: =
+Rundi: =
+Russian (Moldavia: Ede Rọsia (Moldavia)
+Russian (Republic of Moldova): Ede Russia (Republic of Moldova)
+Russian: Ara ilu Rọsia
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Ariwa)
+Sami (Skolt): =
+Sami (Southern): Sami (Gusu)
+Sami: =
+Samoan: Samoa
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: Sardinia
+Sasak: =
+Scots (Gaelic): =
+Selkup: =
+Serbian (Upper): Serbia (Upperkè)
+Serbian: Ara Ilu Serbia
+Serer: Alagbata
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Icdè Sicilian
+Sindhi: =
+Sinhala: =
+Slavic: =
+Slovak: =
+Slovenian: Ede Silobenia
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbian (Isalẹ)
+Sorbian (Upper): Sorbian (Upperkè)
+Sorbian: =
+Sotho: =
+Spanish (Argentina): Ede Sipeeni (Argentina)
+Spanish (Bolivia): Ede Sipeeni (Bolivia)
+Spanish (Chile): Ede Sipeeni (Chile)
+Spanish (Colombia): Ede Sipeeni (Kolombia)
+Spanish (Costa Rica): Ede Sipeeni (Costa Rica)
+Spanish (Dominican Republic): Ede Sipeeni (Dominican Republic)
+Spanish (Ecuador): Ede Sipeeni (Ecuador)
+Spanish (El Salvador): Ede Sipeeni (El Salvador)
+Spanish (Guatemala): Ede Sipeeni (Guatemala)
+Spanish (Honduras): Ede Sipeeni (Honduras)
+Spanish (Mexico): Ede Sipeeni (Meziko)
+Spanish (Nicaragua): Ede Sipeeni (Nicaragua)
+Spanish (Panama): Ede Sipeeni (Panama)
+Spanish (Paraguay): Ede Sipeeni (Paraguay)
+Spanish (Peru): Ede Sipeeni (Peru)
+Spanish (Puerto Rico): Ede Sipeeni (Puerto Rico)
+Spanish (Spain): Ede Sipeeni (Sipeeni)
+Spanish (Uruguay): Ede Sipeeni (Uruguay)
+Spanish (Venezuela): Ede Sipeeni (Venezuela)
+Spanish: Ede Sipeeni
+Sranan Tongo: =
+Sukuma: =
+Sumerian: =
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Ede Siwidini (Finland)
+Swedish (Sweden): =
+Swedish: .Dè Sweden
+Syriac: Síríákì
+Tagalog: =
+Tahitian: Tahiti
+Tai: =
+Taiwan: =
+Tajik: =
+Tamashek: =
+Tamil: Ede Tamil
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: Tibeti
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): =
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Ara Tọki
+Turkmen: =
+Tuvinian: Ede Tuvinian
+Twi: =
+Udmurt: =
+Ugaritic: Ugaritiki
+Ukrainian: Ede Ti Ukarain
+Umbundu: =
+Urdu: Dudè Urdu
+Uyghur: Uyguru
+Uzbek: Usibek
+Vai: =
+Venda: =
+Vietnamese: Vietnam
+Volapük: =
+Votic: Yiyan
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: Ede Welsh
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Ṣàpèjúwe aṣàwákiri
+event: iṣẹlẹ
+journal: iwe iroyin
+0: 0                                                   
+1: 1                                                   
+2: 2                                                   
+3: 3                                                   
+4: 4                                                   
+5: 5                                                   
+6: 6                                                   
+7: 7                                                   
+8: 8                                                   
+9: 9                                                   
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Wiwọle olumulo ti ko fẹ                                        
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: ọrọigbaniwọle ti ko tọ
+no such user: ko si iru olumulo
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Iroyin ti ṣiṣẹ
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Aarin                                        
+Months: Awọn oṣu                                        
+Month Days: Ọjọ Ọjọ                                        
+Days: Awọn ọjọ
+Weeks: Ọsẹ
+Position: Ipo
+Until: Titi
+Count: Ka
+Inclusion Dates: Awọn Ọjọ ifisi                                        
+Exclusion Dates: Awọn Ọjọ imukuro
+Event Imported: Iṣẹlẹ wole
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: baiti
+kb: =
+Mb: Mb                                        
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Iwifunni
+authenticate: Aṣiṣe SMTP: Ko le jẹrisi
+connect_host: Aṣiṣe SMTP: Ko le sopọ si agbalejo SMTP:
+data_not_accepted: Aṣiṣe SMTP: A ko gba data laaye
+encoding: Aiyipada koodu:
+execute: Ko le ṣe:
+file_access: Ko le wọle si faili:
+file_open: Aṣiṣe Faili Ko le ṣi faili:
+from_failed: Atẹle Lati Adirẹsi naa kuna:
+instantiate: Ko le ṣe atunṣe iṣẹ meeli
+mailer_not_supported: ifiweranse ko ni atilẹyin
+provide_address: O gbọdọ pese o kere ju adirẹsi imeeli olugba kan.
+recipients_failed: Aṣiṣe SMTP: Awọn olugba wọnyi kuna:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Tẹ Awọn ohun kikọ Ti a rii ni Ti iwọn
+Enter the correct letters and numbers...: Tẹ awọn lẹta ati nọmba to pe lati aworan naa sinu apoti ọrọ. Idanwo kekere yii jẹ ihamọ ihamọ si awọn botilẹjẹ irira. Nìkan tun gbe oju-iwe naa ti o ba jẹ pe iwọn yii nira pupọ lati ka
+Challenge/Response: Ipenija / Idahun
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Yi ọjọ ati akoko ti titẹsi yii pada?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: O ko ti tẹ Apejuwe Brief
+time prior to work hours...: akoko ṣaaju awọn wakati iṣẹ ...
+Invalid Event Date: Ọjọ Iṣẹlẹ Ti ko wulo                                        
+Please add a participant: Jọwọ ṣafikun alabaṣe kan 
+Invalid Date: Ọjọ Ti ko wulo                                        
+You have not entered a valid time of day: O ko ti tẹ akoko to wulo ti ọjọ. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: ID kalẹnda ko le ṣofo. 
+First and last names cannot both be blank.: Awọn orukọ akọkọ ati ti ikẹhin ko le jẹ ofo. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Awọ ti ko fẹsẹmulẹ                                        
+Color format should be RRGGBB.: Ọna awọ yẹ ki o jẹ #RRGGBB. 
+URL cannot be blank.: URL ko le ṣofo.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Iru faili ko baamu Ọna kika wọle 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Awọ ti ko wulo fun ipilẹṣẹ iwe-ipamọ.                                        
+Invalid color for document title.: Awọ ti ko wulo fun akọle iwe-ipamọ.                                        
+Invalid color for table cell background.: Awọ ti ko wulo fun abẹlẹ sẹẹli tabili.                                        
+Invalid color for table cell background for today.: Awọ ti ko wulo fun ipilẹ sẹẹli tabili fun loni.                                        
+Invalid work hours.: Awọn wakati iṣẹ ti ko wulo.                                        
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL olupin gbọdọ pari pẹlu din ku (/).
+Invalid color for table grid.: Awọ ti ko wulo fun akojuu tabili.
+Invalid color for event popup background.: Awọ ti ko wulo fun abẹlẹ agbejade iṣẹlẹ.
+Invalid color for event popup text.: Awọ ti ko wulo fun ọrọ agbejade iṣẹlẹ.
+Invalid color for table header text.: Awọ ti ko wulo fun ọrọ akọle ori tabili.
+Invalid color for table header background.: Awọ ti ko wulo fun abori akọle tabili.
+Server URL is required.: URL olupin nilo.
+Invalid Color: Awọ Invalid                                        
+Database Name: Orukọ aaye data
+Full Path (no backslashes): Ona Kikun (ko si ẹhin ẹhin) 
+The password contains illegal characters.: Ọrọigbaniwọle naa ni awọn ohun kikọ arufin.
+Error you must specify a Single-User Login: Aṣiṣe: O gbọdọ sọ pato Wiwọle Olumulo Kan
+Could not find XXX.: Ko le ri XXX.
+Could not find XXX in DOM.: Ko le ri XXX ni DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Ose yi
+This Month: Osù yii
+This Year: Odun yii
+Exit: Jade
+Add New Event: Ṣafikun Iṣẹlẹ Tuntun
+Delete Entries: Pa Awọn titẹ sii rẹ
+My Views: Awọn Iwo Mi                                        
+Manage Calendar of: Ṣakoso Kalẹnda ti                                        
+My Reports: Awọn Iroyin Mi                                        
+My Profile: Profaili mi                                        
+Public Calendar: Kalẹnda ti gbogbo eniyan
+Unapproved Events: Awọn iṣẹlẹ ti a ko fọwọsi
+User Manager: Olumulo Olumulo
+Help Contents: Awọn akoonu Iranlọwọ                                        
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Ilana Ibi ipamọ data
+Create New: Ṣẹda Titun
+Failure Reason: Idi Ikuna:
+You must manually create database: O gbọdọ ṣẹda ọwọ pẹlu ibi ipamọ data.
+Single-User: Olumulo-Kan
+Test Settings: Awọn Eto Idanwo
+Timezone Conversion Successful: Iyipada Agogo Aseyori
+WebCalendar Installation Wizard Step XXX: Igbimọ Fifi sori WebCalendar Igbesẹ XXX
+Password Accepted: Ọrọigbaniwọle Ti Gba
+Successful Login: Wiwọle Wọle
+Password Incorrect: Ọrọigbaniwọle Ti ko tọ
+Invalid Login: Wiwọle Wiwọle                                        
+Display Errors: Awọn aṣiṣe Ifihan
+File Uploads: Awọn ikojọpọ faili
+Allow URL fopen: Gba URL laaye laaye (beere nikan ti Awọn kalẹnda jijin ti lo)
+Safe Mode: Ipo Ailewu
+Safe Mode Allowed Vars: Awọn Vars laaye Ipo Ailewu (TZ nilo nikan ti Ipo Ailewu Ba Tan)
+GD: GD (nilo fun Awọn ipilẹṣẹ Aworan Ikọra)                                        
+Passwords do not match!: Awọn ọrọigbaniwọle ko baamu!
+Unable to write password to settings.php file: Lagbara lati kọ ọrọ igbaniwọle si faili "settings.php".
+Password Updated: Ọrọigbaniwọle Imudojuiwọn
+Password has been set: Ti ṣeto ọrọ igbaniwọle.
+Connection Successful...: Asopọ naa ṣaṣeyọri  Jọwọ lọ si oju-iwe ti o tẹle lati tẹsiwaju fifi sori ẹrọ.
+Correct your entries or click the Create New...: Ṣe atunṣe awọn titẹ sii rẹ tabi tẹ bọtini  Ṣẹda Titun  lati tẹsiwaju fifi sori ẹrọ.
+Correct your entries and try again.: Ṣe atunṣe awọn titẹ sii rẹ ki o tun gbiyanju.
+XXX does not exist: XXX ko si
+XXX is not writable: XXX kii ṣe atunkọ
+Error Converting Timezone: Aṣiṣe Yiyipada Aago
+Error Unable to write to file XXX.: Aṣiṣe Ko le kọ si faili XXX.
+Please change the file permissions of this file.: Jọwọ yi awọn igbanilaaye faili ti faili yii pada.
+Please change includes dir permission: Jọwọ yipada awọn igbanilaaye faili ti itọsọna rẹ "pẹlu" lati gba kikọ laaye nipasẹ awọn olumulo miiran.
+Your settings have been saved.: Awọn eto rẹ ti wa ni fipamọ.
+OFF: PA
+ON: LORI
+WebCalendar Setup Wizard: Oluṣeto Oṣo WebCalendar
+This installation wizard will guide you...: Oluṣeto fifi sori ẹrọ yoo ṣe itọsọna fun ọ nipasẹ siseto fifi sori WebCalendar ipilẹ kan.<br>Fun iranlọwọ ati laasigbotitusita wo:<br>
+System Administrators Guide: Itọsọna Alabojuto Eto
+Frequently Asked Questions: Awon ibeere ti awon eniyan saaba ma n beere                                        
+FAQ: Ibeere
+Troubleshooting: Laasigbotitusita
+Getting Help: Gbigba Iranlọwọ                                        
+Upgrading Guide: Igbegasoke Guide
+User Supported Wiki: Olumulo atilẹyin ti Wiki
+PHP Version Check: Ṣayẹwo Ẹya PHP
+Check to see if PHP 7.1.0 or greater is installed.: Ṣayẹwo lati rii boya PHP 7.1.0 tabi tobi julọ ti fi sii.
+PHP version: Ẹya PHP
+PHP Settings: Awọn Eto PHP
+Detailed PHP Info: Alaye PHP Alaye
+settings.php Status: "settings.php" Ipo
+Session Check: Ṣayẹwo Igba
+To test the proper operation of sessions...: Lati ṣe idanwo isẹ to dara ti awọn akoko, tun gbe oju-iwe yii pada. O yẹ ki o wo alekun kika igba ni akoko kọọkan.
+SESSION COUNTER: IKILỌ IKAN
+The file permissions of settings.php are set...: Awọn igbanilaaye faili ti "settings.php" ti ṣeto ki oluṣeto naa ko ni igbanilaaye lati yipada. Jọwọ yi awọn igbanilaaye faili ti faili atẹle lati tẹsiwaju
+The file permissions of the includes directory are set...: Awọn igbanilaaye faili ti itọsọna naa pẹlu ti ṣeto ki oluṣeto ko ni igbanilaaye lati ṣẹda faili tuntun kan. Jọwọ yi awọn igbanilaaye ti itọsọna atẹle lati tẹsiwaju
+Your settings.php file appears to be valid.: Faili rẹ "settings.php" han pe o wulo.
+Configuration Wizard Password: Iṣeto ọrọ Oluṣeto Iṣeto
+Create Settings File Password: Ṣẹda Ọrọigbaniwọle Faili Eto
+db setup directions...: Ni apakan yii iwọ yoo ṣeto ati idanwo asopọ kan si olupin data rẹ. Alaye ti akọọlẹ ti a pese yẹ ki o ni awọn igbanilaaye FULL lati ṣẹda awọn apoti isura data, awọn tabili ati awọn olumulo. Ti eyi ko ba ṣee ṣe, tabi iraye si ibi ipamọ data rẹ ti ni opin, iwọ yoo ni lati tunto ibi ipamọ data pẹlu ọwọ.
+Database Status: Ipo aaye data
+Supported databases for your PHP installation: Awọn apoti isura infomesonu ti a ṣe atilẹyin fun fifi sori PHP rẹ
+Your current database settings are able to access the database.: Awọn eto ipilẹ data lọwọlọwọ rẹ ni anfani lati wọle si ibi ipamọ data.
+Please Test Settings: Jọwọ Ṣayẹwo Awọn Eto
+Your current database settings are not able...: Awọn eto ibi ipamọ data lọwọlọwọ rẹ ko ni anfani lati wọle si ibi ipamọ data tabi ko ti ni idanwo.
+Database Settings: Awọn Eto aaye data
+Database Type: Iru aaye data
+Server: Olupin
+Connection Persistence: Itẹramọṣẹ Asopọ
+All your database tables appear to be up...: Gbogbo awọn tabili data ipamọ rẹ han lati wa ni imudojuiwọn. O le tẹsiwaju si oju-iwe ti o tẹle ki o pari iṣeto WebCalendar rẹ.
+This appears to be a new installation...: Eyi han lati jẹ fifi sori tuntun. Ti eyi ko ba tọ, jọwọ pada si oju-iwe ti tẹlẹ ki o ṣe atunṣe awọn eto rẹ.
+This appears to be an upgrade...: Eyi han lati jẹ igbesoke lati ẹya&nbsp;XXX&nbsp;si&nbsp;YYY.
+The database requires some data input...: Ibi ipamọ data nilo diẹ ninu titẹ sii data Tẹ Database Imudojuiwọn lati pari igbesoke naa.
+In this section we will perform...: Ni apakan yii a yoo ṣe awọn ayipada lati mu ibi-ipamọ data rẹ de ipele ti o nilo. Ti o ba nlo ipilẹ data ti o ni atilẹyin ni kikun, igbesẹ yii yoo ṣe ni aifọwọyi fun ọ. Ti kii ba ṣe bẹ, SQL ti o nilo le ṣe afihan ati pe o yẹ ki o ni anfani lati ge ati lẹẹ mọ si window window ibeere olupin data rẹ.                                        
+No database actions are required.: Ko si awọn iṣe ibi ipamọ data ti o nilo.
+The following database actions are required: Awọn iṣe data data atẹle ni a nilo
+ODBC Underlying Database: ODBC Ipilẹ data:
+Automatic installation not supported: Fifi sori ẹrọ aifọwọyi ko ti ni imuse ni kikun fun iru ipilẹ data rẹ. Iwọ yoo ni lati ṣẹda pẹlu ọwọ awọn tabili ti a beere nipa lilo ipese SQL. Jọwọ tẹ  Ifihan SQL  lati tẹsiwaju. Ge ati Lẹẹ mọ window window ibeere rẹ.
+This may take several minutes to complete: Eyi le gba iṣẹju pupọ lati pari.
+Install Database: Fi aaye data sori ẹrọ                                        
+Update Database: Imudojuiwọn aaye data
+Display Required SQL: Ifihan beere SQL
+Return to previous page after processing SQL.: Lẹhin ṣiṣe ọwọ pẹlu SQL yii, iwọ yoo nilo lati pada si oju-iwe ti tẹlẹ ki o tun ṣe idanwo data rẹ ki iwe afọwọkọ le rii awọn ayipada.
+This is the final step in setting up your WebCalendar Installation.: Eyi ni igbesẹ ikẹhin ni siseto Fifi sori WebCalendar rẹ.
+Timezone Conversion: Iyipada Aago
+It appears that you have NOT converted...: O han pe o KO ṣe iyipada data iṣẹlẹ WebCalendar ti o wa tẹlẹ si GMT. Ti o ba ni, o le foju akiyesi yii ki o ma tẹsiwaju pẹlu iyipada naa. Ti eyi ba jẹ fifi sori tuntun, o le tun foju akiyesi yii.                                        
+Convert Data to GMT: Yi data pada si GMT
+Application Settings: Ohun elo Eto
+HTTP-based authentication was not detected...: A ko rii ijẹrisi orisun HTTP. Iwọ yoo nilo lati tunto olupin wẹẹbu rẹ ti o ba fẹ yan ‘Olupin Wẹẹbu’ lati awọn aṣayan ‘Ijeri Olumulo’ ni isalẹ.                                        
+HTTP-based authentication was detected...: A ti rii ijẹrisi orisun HTTP. Ijẹrisi olumulo ni o ṣakoso nipasẹ olupin ayelujara rẹ. O yẹ ki o yan 'Olupin Wẹẹbu' lati inu akojọ awọn aṣayan 'Ijeri Olumulo' ni isalẹ.                                        
+Create Default Admin Account: Ṣẹda Account Admin aiyipada
+(Admin Account Not Found): (A ko ri akọọlẹ Isakoso)
+User Authentication: Ijeri Olumulo
+Web-based via WebCalendar (default): Oju opo wẹẹbu nipasẹ WebCalendar (aiyipada)
+Web Server (not detected): Olupin Wẹẹbu (a ko rii)
+Web Server (detected): Olupin Wẹẹbu (ri)
+None (Single-User): Kò (Olumulo Kan)
+Read-Only: Ka nikan
+Environment: Ayika
+Production: Gbóògì
+Development: Idagbasoke
+Save Settings: Fipamọ Eto
+Launch WebCalendar: Ifilole WebCalendar                                        
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Aṣiṣe imudojuiwọn tabili "XXX": YYY.
+Conversion Successful: Iyipada ni aṣeyọri 
+Perl script required: Ẹya ti tẹlẹ ti WebCalendar rẹ nilo ṣiṣe iwe afọwọkọ PERL lati yi data rẹ pada. Jọwọ ṣiṣe /tools/upgrade_to_0.9.7.pl lẹhinna pada si oju-iwe yii lati tẹsiwaju.
+previous version requires updating several tables: Ẹya ti tẹlẹ ti WebCalendar rẹ nilo mimuṣe awọn tabili awọn data pupọ.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: KO Tẹlẹ wa                                        
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Aṣiṣe sisopọ si ibi ipamọ data
+Include Path: Pẹlu Ọna                                        
+Deleting events for: Npaarẹ awọn iṣẹlẹ fun
+Importing events for: Akowọle awọn iṣẹlẹ fun                                        
+No data returned from: Ko si data ti a pada lati
+for non-user calendar: fun kalẹnda ti kii ṣe olumulo
+No Remote Calendars found: A ko rii Awọn kalẹnda Latọna jijin
+Remote Calendars not enabled: Awọn kalẹnda jijin ko ṣiṣẹ
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ko le rii id iṣẹlẹ
+could not find event id XXX in database.: ko le ri id iṣẹlẹ XXX ni ibi ipamọ data.
+task: iṣẹ-ṣiṣe
+This is a reminder for the XXX detailed below.: Eyi jẹ olurannileti kan fun alaye XXX ni isalẹ.
+Pecentage Complete: Pecentage Pari
+Reminder: Iranti
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Igbese ti ko ṣe atilẹyin: XXX.
+No event id specified.: Ko si id iṣẹlẹ.
+Not authorized (not admin).: Ko fun ni aṣẹ (kii ṣe abojuto).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Ṣiṣayẹwo fun awọn iṣẹlẹ fun XXX lati ọjọ YYY titi di ọjọ ZZZ.
+Found XXX events in time range.: Ri awọn iṣẹlẹ XXX ni ibiti akoko.                                        
+Event id=XXX YYY at ZZZ on AAA.: Iṣẹlẹ id = XXX "YYY" ni ZZZ lori AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Gbigba olumulo XXX laaye lati wo kalẹnda olumulo miiran.
+Error Email reminders disabled for user XXX.: Aṣiṣe: Awọn olurannileti imeeli ti di alaabo fun olumulo "XXX".
+Number of site_extras XXX.: Nọmba ti aaye_extras: XXX.
+Reminder set for event.: Olurannileti ti a ṣeto fun iṣẹlẹ.
+Mins Before XXX.: Awọn iṣaaju Ṣaaju: XXX.                                        
+Event time is XXX.: Akoko iṣẹlẹ ni: XXX.
+Remind time is XXX.: Akoko iranti ni: XXX.
+Reminders for user XXX, login YYY.: Awọn olurannileti fun olumulo "XXX", buwolu wọle "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Gbigba ti a ko fọwọsi fun olumulo "XXX".                                        
+Event id=XXX YYY already sent.: Iṣẹlẹ id = XXX "YYY" ti firanṣẹ tẹlẹ.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Ko si ibuwolu wọle ti o nilo fun ipo olumulo ẹyọkan.
+No login required for HTTP authentication.: Ko si ibuwolu wọle ti o nilo fun ifitonileti HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Awọn ohun kikọ ti ko fẹ ni wiwọle.                                        
+Username XXX does not exist.: Orukọ olumulo "XXX" ko si.
+You cannot remove admin rights from yourself!: O ko le yọ awọn ẹtọ abojuto kuro lọwọ ararẹ!
+Unknown error saving user: Aṣiṣe aimọ fifipamọ olumulo.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Ko si awọn olukopa ti a rii fun id iṣẹlẹ: XXX.
+Db error Could not find event id XXX.: Aṣiṣe Db: Ko le ri id iṣẹlẹ XXX. 
+Error Could not find event id XXX in database.: Aṣiṣe: Ko le ri id iṣẹlẹ XXX ni ibi ipamọ data. 

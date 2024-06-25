@@ -1,0 +1,2387 @@
+# Haitian (Creole) ht
+#
+# Fòma a konsiste de yon header si ou vle:
+#
+# Tradui pa: non ou ak imèl
+# Dènye aktyalizasyon: dat tradiksyon an
+# (Ki gen ladan dirijan "#" a ak nenpòt kòmantè ki fèt pa tradiktè anvan yo.
+# PREMYE liy vid la fini kòmantè header sa yo.)
+#
+# Ki te swiv pa kòm anpil jan sa nesesè:
+#
+# Fraz angle: tradiksyon
+# (Youn nan yon liy. SAN dirijan "#" la.
+# "Fraz angle a:", ki gen ladan kolon an ":", se founi pa
+# Devlopè WebCalendar. Pati ou a se "tradiksyon an".)
+#
+# Anyè a zouti gen de Scripts perl ede ou:
+# - check_translation.pl
+# endike si tout tèks yo te tradwi avèk siksè.
+# - update_translation.pl
+# pral analize dosye pwogram yo pou jwenn tout tradwi ('fraz') ak
+# tooltip ('fraz'). Li pral aranje fraz yo selon paj la
+# (dosye) ki gen premye okazyon an. Si ou vle, li ka tag la
+# fraz ki poko tradwi pa mete
+# << MISSING  >>
+# sou liy ki anlè fraz la. Epi, si fraz la se yon abrevyasyon,
+# li pral gen ladan tèks la plen angle sou liy ki anba fraz la.
+#
+# Remak: Mwen ap eseye koupe sou gwosè a dosye an jeneral. Si "tradiksyon an"
+#  mo / fraz ki idantik nan lang ou ak angle, jis itilize yon siy "=".
+#
+# Remak: Ou pral remake antre pou "May_" anba a. Gen yon rezon pou sa.
+# Tradwi "May_" nan non mwa konplè ak "May" nan,
+# anjeneral twa-lèt, abrevyasyon mwa (tankou "Oct" pou "Oktòb").
+#
+# Mwen te itilize Google tradwi pou sa.
+# Li ta dwe sifi jiskaske yon oratè natif natal ka verifye li.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: vèsyon XXX
+WebCalendar is a PHP application used...: WebCalendar se yon aplikasyon PHP ki itilize pou kenbe yon kalandriye pou yon sèl itilizatè oswa yon gwoup entènèt / entranèt itilizatè yo. Li kapab tou configuré kòm yon kalandriye evènman.
+Credits: Kredi
+About: Sou
+OK: =
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Erè baz done: XXX.
+DEFAULT CONFIGURATION: KONFIGURASYON DEFAULT
+Go: Ale
+Save: Sove
+Undo: Defèt
+Public Access: Aksè Piblik
+Admin: =
+User Access Control: Kontwòl Aksè Itilizatè
+Allow Access to Other Users Calendar: Pèmèt Aksè nan Kalandriye Lòt Itilizatè yo
+Grant This User Access to My Calendar: Bay aksè itilizatè sa a nan kalandriye mwen an
+Type: Kalite
+Calendar: Kalandriye
+View Event: View Evènman
+View: =
+Edit: Edite
+Approve/Reject: Apwouve / rejte
+Events: Evènman
+Tasks: Travay
+Journals: Jounal
+Can Invite: Ka envite
+Can Email: Èske Imèl
+Can See Time Only: Ka wè tan sèlman
+Assistant: Asistan
+Select All: Seleksyone tout
+Clear All: Klè Tout
+Public: Piblik
+Confidential: Konfidansyèl
+Private: Prive
+
+########################################
+# Page: activity_log.php
+#
+Next: =
+Previous: =
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Evènman XXX deja nan kalandriye w lan.
+Invalid entry id XXX.: ID antre ki pa valab: "XXX".
+a XXX event may not be added to your calendar: Sa a se yon evènman XXX epi yo pa ka ajoute nan kalandriye w lan.
+confidential: konfidansyèl
+private: prive
+Error adding event XXX.: Erè nan ajoute evènman: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Non anviwònman ki pa valab "XXX".
+Select: Chwazi
+Day: Jou
+Week: Semèn
+Month: Mwa
+Year: Ane
+Bottom: Anba
+Top: =
+Anyone: Nenpòt moun
+Participant: Patisipan
+Settings: Anviwònman
+Groups: Gwoup yo
+NonUser Calendars: Kalandriye NonUser
+Other: Lòt
+Email: Imèl
+Colors: Koulè
+Document background: Dokiman background
+Document title: Tit dokiman an
+Document text: Dokiman tèks
+My event text: Tèks evènman mwen an
+Table grid color: Koulè kadriyaj tab la
+Table header background: Tab header background
+Table header text: Tèks header tab la
+Table cell background: Tablo selil background
+Table cell background for current day: Tablo selil background pou jou aktyèl la
+Table cell background for days with events: Tablo background selil pou jou ak evènman yo
+Table cell background for weekends: Tablo selil background pou wikenn
+Table cell background for other month: Tablo background selil pou lòt mwa
+Week number color: Koulè nimewo semèn nan
+Event popup background: Evènman contextuel background
+Event popup text: Tèks evènman popup
+System Settings: Anviwònman Sistèm
+Help: Ede
+System options: Opsyon sistèm
+app-name-help: Espesifye non aplikasyon an ki pral parèt nan ba tit navigatè a pou tout paj yo ak nan paj koneksyon an. Valè ou presize isit la ap gade nan dosye tradiksyon ki pèmèt ou bay diferan tit pou diferan lang.
+Application Name: Non aplikasyon an
+Translated Name (XXX): Non tradui (XXX)
+server-url-help: Espesifye URL baz la pou aplikasyon an. Sa a pral enkli lè w ap voye rapèl imèl ak notifikasyon.
+Server URL: URL sèvè
+home-url-help: Espesifye URL kay la pou aplikasyon an. Sa a kapab yon absoli oswa relatif
+Home URL: URL Kay
+language-help: Espesifye ki lang yo itilize.
+Language: Lang
+Your browser default language is XXX.: Lang default navigatè ou a se "XXX".
+Allow user to use themes: Pèmèt itilizatè yo sèvi ak tèm
+themes-help: Pèmèt aktyalizasyon mas nan anviwònman konfigirasyon. Etikèt ki pi ba yo se itilizatè pref sèlman.
+Themes: Tèm
+AVAILABLE THEMES: TEM DISPONIB
+None: Okenn
+Preview: =
+Site customization: Pèrsonalizasyon sit la
+custom-script-help: Pèmèt antre nan Javascript koutim oswa estil tèks ki pral eleman nan seksyon HTML "tèt" nan chak paj.
+Custom script/stylesheet: Custom Script / Stylesheet
+custom-header-help: Pèmèt yon moso HTML koutim yo dwe enkli nan tèt chak paj.
+Custom header: =
+custom-trailer-help: Pèmèt yon moso HTML koutim yo dwe enkli nan fen chak paj.
+Custom trailer: Custom trelè
+enable-external-header-help: Pèmèt trelè a koutim yo dwe chaje soti nan yon dosye ekstèn
+Allow external file for header/script/trailer: Pèmèt dosye ekstèn pou header / script / trelè
+Allow user to override header/trailer: Pèmèt itilizatè pase sou desizyon lento / trelè
+Date and Time: Dat ak lè
+server-tz-help: Espesifye konbyen èdtan yo ajiste tan an soti nan UTC nan tan sèvè.
+Server Timezone Selection: Sèvè Timezone Seleksyon
+tz-help: Espesifye konbyen èdtan yo ajiste tan an soti nan UTC nan tan lokal yo.
+Default Client Timezone Selection: Default Kliyan Timezone Seleksyon
+display-general-use-gmt-help: Si pèmèt, dat komen / fwa yo parèt tankou GMT
+Display Common Use Date/Times as GMT: Montre komen Itilize Dat / Times kòm GMT
+date-format-help: Espesifye fòma dat la pi pito.
+Date format: Dat fòma
+Small Task Date: Dat ti travay la
+display-week-starts-on: Espesifye jou nan semèn ke semèn nan kòmanse sou. Si Lendi espesifye, Lè sa a, nimewo semèn yo pral nimewo ISO semèn.
+Week starts on: Semèn kòmanse sou
+display-weekend-starts-on: Mete jou nan semèn nan pou wikenn yo kòmanse
+Weekend starts on: Nan wikenn kòmanse
+time-format-help: Espesifye ki fòma tan pou itilize:<br><em>12 èdtan:</em> Montre fwa kòm 3am, 8:30 pm, elatriye<br><em>24 èdtan:</em> Montre fwa kòm 300 , 2030, elatriye.
+Time format: Fòma tan
+12 hour: 12 èdtan
+24 hour: 24 èdtan
+timed-evt-len-help: Espesifye metòd opinyon pou detèmine longè yon evènman kwonometre.
+Specify timed event length by: Espesifye longè evènman kwonometre pa
+Duration: Dire
+End Time: Tan Fen
+work-hours-help: Espesifye seri a tan yo montre pou gade nan jou.
+Work hours: Lè travay
+From: Soti nan
+to: a
+Appearance: Aparans
+preferred-view-help: Espesifye gade nan default (Jou, Semèn, Mwa, oswa Ane).
+Preferred view: View pi pito
+Allow top menu: Pèmèt meni tèt
+Date Selectors position: Dat Selektè pozisyon
+menu-themes-help: Mete koulè yo ak style nan meni an tèt la
+Menu theme: Tèm meni
+fonts-help: Espesifye yon lis polis sistèm yo itilize (tankou "Arial, Helvetica")
+Fonts: Polis
+display-sm_month-help: Si pèmèt, montre ti mwa nan opinyon mwa
+Display small months: Montre ti mwa
+display-weekends-help: Mete wikenn lè gade yon semèn.
+Display weekends: Montre wikenn
+display-long-daynames-help: Si pèmèt, non jou long yo ap parèt
+Display long day names: Montre non jou ki long
+display-alldays-help: Montre jou anvan ak pwochen mwa nan opinyon mwa, ranpli tout selil yo.
+Display all days in month view: Montre tout jou nan vi mwa
+display-week-number-help: Espesifye si nimewo semèn nan (1-52) yo ta dwe parèt nan gade nan mwa ak gade nan semèn.
+Display week number: Montre nimewo semèn lan
+display-desc-print-day-help: Mete deskripsyon evènman nan vèsyon enprimant-zanmitay nan View jou.
+Display description in printer day view: Montre deskripsyon nan View jou enprimant
+yearly-shows-events-help: Sou gade nan chak ane, montre jou ki gen evènman nan yon font fonse.
+Display days with events in bold in month and year views: Montre jou ak evènman an karaktè gra nan mwa ak ane opinyon
+display-minutes-help: Si pèmèt, minit ki fini ak: 00 ap toujou parèt
+Display 00 minutes always: Montre 00 minit toujou
+display-end-times-help: Montre fwa fen evènman si evènman kwonometre
+Display end times on calendars: Montre fwa fen nan kalandriye
+allow-view-add-help: Yon '+' icon pral enkli nan opinyon, sa ki pèmèt itilizatè yo byen vit ajoute evènman nan kalandriye lòt itilizatè yo.
+Include add event link in views: Mete ajoute lyen evènman nan opinyon
+lunar-help: Si pèmèt, ap montre ti ikon ki reprezante faz linè yo chak mwa
+Display Lunar Phases in month view: Montre Faz linè nan vi mwa
+Restrictions: Restriksyon yo
+allow-view-other-help: Espesifye si yon itilizatè ka wè kalandriye yon lòt itilizatè.
+Allow viewing other users calendars: Pèmèt gade kalandriye lòt itilizatè a
+require-approvals-help: Lè li pèmèt, yon itilizatè dwe apwouve yon evènman anvan li parèt sou kalandriye yo (sof si Display ki pa apwouve pèmèt). Remake mete sa a nan "Non" pa pral fèmen apwobasyon pou kalandriye Aksè Piblik la (si kalandriye Aksè Piblik la pèmèt).
+Require event approvals: Mande pou apwobasyon evènman yo
+display-unapproved-help: Espesifye si evènman ki pa apwouve yo ap parèt nan kalandriye w lan.<br>Si w mete li nan "Wi", evènman ki pa apwouve yo ap parèt nan kalandriye w lan (nan yon lòt koulè tèks).<br>Si w mete li nan "Non", lè sa a evènman ki pa apwouve yo dwe apwouve anvan yo parèt nan kalandriye w lan.
+Display unapproved: Montre ki pa apwouve
+conflict-check-help: Tcheke pou konfli evènman (de evènman ki pwograme pou menm tan an pou menm moun nan). Si ou mete sa a nan "Wi", ou ap toujou kapab pwograme de evènman an menm tan an apre konfime yon avètisman. Si ou mete sa a nan "Non", pa gen okenn tcheke pou konfli yo pral fè. Ou pwobableman vle mete sa a nan "Wi", se konsa konfli tcheke rive.
+Check for event conflicts: Tcheke pou konfli evènman yo
+Yes: Wi
+No: Non
+conflict-months-help: Si tcheke konfli an plas ("Tcheke pou konfli evènman" mete nan "Non" & # 41 ;, sa a presize konbyen mwa nan lavni an nou ta dwe tcheke pou konfli. Si ou jwenn ajoute evènman ap pran yon bon bout tan nan pwosesis , diminye kantite sa a.
+Conflict checking months: Konfli tcheke mwa
+conflict-check-override-help: Pèmèt itilizatè yo pase sou desizyon konfli evènman ak orè de oswa plis evènman pou menm tan an.
+Allow users to override conflicts: Pèmèt itilizatè yo pase sou desizyon konfli yo
+limit-appts-help: Pèmèt administratè sistèm lan mete yon limit sistèm-lajè sou kantite randevou yon sèl itilizatè ka genyen nan nenpòt ki jou.
+Limit number of timed events per day: Limite kantite evènman kwonometre chak jou
+limit-appts-number-help: Espesifye kantite maksimòm evènman kwonometre yon itilizatè ka genyen nan yon sèl jou.
+Maximum timed events per day: Evènman maksimòm kwonometre chak jou
+crossday-help: Si pèmèt, evènman ki span jou yo pral parèt nan jou apa
+Disable Cross-Day Events: Enfim Evènman Kwa-Jou
+disable-location-field-help: Chwazi "Wi" pral retire jaden an "Kote" nan paj enfòmasyon evènman an
+Disable Location field: Enfim jaden Kote
+disable-url-field-help: Chwazi "Wi" pral retire jaden "URL la" nan paj enfòmasyon evènman yo
+Disable URL field: Enfim jaden URL
+disable-priority-field-help: Chwazi "Wi" pral retire "Priyorite" jaden an nan paj enfòmasyon evènman, bay yon koòdone ki pi senp pou inisyasyon yo.
+Disable Priority field: Enfim jaden priyorite
+disable-access-field-help: Chwazi "Wi" yo pral retire "Aksè" jaden an nan paj enfòmasyon evènman, bay yon koòdone ki pi senp pou inisyasyon.
+Disable Access field: Enfim jaden Aksè
+disable-participants-field-help: Chwazi "Wi" pral retire jaden an "Patisipan yo" nan paj enfòmasyon evènman, anpeche itilizatè yo ajoute lòt itilizatè nan evènman yo. Si ou pèmèt opsyon sa a, ou ka vle tou enfim jaden an "Pèmèt gade kalandriye lòt itilizatè a" tou.
+Disable Participants field: Enfim jaden Patisipan yo
+disable-repeating-field-help: Chwazi "Wi" pral retire jaden an "Repete" lè ou ajoute evènman yo. Sa a pral bay yon koòdone ki pi senp pou inisyasyon yo.
+Disable Repeating field: Enfim Repete jaden
+allow-html-description-help: Si pèmèt, itilizatè yo ka antre HTML nan jaden deskripsyon evènman an. Si se pa sa ki pèmèt, Tags HTML yo pral chape konsa tankou parèt kòm tèks plenn. Avètisman: Pèmèt karakteristik sa a pral pèmèt itilizatè yo referans imaj sou lòt sit entènèt.
+Allow HTML in Description: Pèmèt HTML nan Deskripsyon
+Popups: =
+disable-popups-help: Enfim popup soti nan opinyon kalandriye
+Disable Pop-Ups: Enfim Pop-Ups
+popup-includes-siteextras-help: Si pèmèt, pèmèt konfigirasyon jaden evènman koutim nan dosye site_extras.php la ap parèt nan popup evènman yo.
+Display Site Extras in popup: Montre Extras Sit nan popup
+popup-includes-participants-help: Si pèmèt, patisipan yo ap parèt nan popup evènman yo.
+Display Participants in popup: Montre Patisipan yo nan popup
+Miscellaneous: Divè
+remember-last-login-help: Lè li pèmèt, login itilizatè a pral ranpli nan yo sou paj la login (men se pa modpas la), ak preferans itilizatè a pral chaje (ki gen ladan koulè pi pito yo ak seleksyon lang).
+Remember last login: Sonje dènye koneksyon an
+summary_length-help: Longè maksimòm de deskripsyon kout nan opinyon kalandriye
+Brief Description Length: Brief Deskripsyon Longè
+user_sort-help: Detèmine lòd sòt pou Itilizatè, lis Nonuser
+User Sort Order: Itilizatè Triye Lòd
+Lastname, Firstname: Siyati, prenon
+Firstname, Lastname: Prenon, siyati
+allow-public-access-help: Lè li pèmèt, kalandriye a ka itilize kòm yon kalandriye piblik sèlman li ki pa mande pou itilizatè yo konekte.
+Allow public access: Pèmèt aksè piblik la
+public-access-default-visible: Evènman ki soti nan kalandriye piblik la ap parèt otomatikman sou kalandriye tout itilizatè yo
+Public access visible by default: Aksè piblik vizib pa default
+public-access-default-selected: Lè w ajoute yon nouvo evènman, itilizatè piblik la pral chwazi pa default kòm yon patisipan.
+Public access is default participant: Aksè piblik la se patisipan default
+public-access-view-others-help: Lè aksè sistèm lan ak aksè piblik, presize si itilizatè a ka wè kalandriye yon lòt itilizatè kalandriye.
+Public access can view other users: Aksè piblik ka wè lòt itilizatè yo
+public-access-can-add-help: Lè li pèmèt, itilizatè ki gen aksè nan sistèm lan atravè Aksè Piblik yo pral kapab ajoute nouvo evènman, men yo pa pral parèt nan kalandriye a jiskaske yon administratè apwouve nouvo evènman an.
+Public access can add events: Aksè piblik ka ajoute evènman yo
+public-access-add-requires-approval-help: Espesifye si evènman yo te ajoute atravè kont aksè piblik la mande apwobasyon anvan yo te parèt.
+Public access new events require approval: Aksè piblik evènman nouvo mande pou apwobasyon
+public-access-sees-participants-help: Si pèmèt, itilizatè yo gen aksè nan kalandriye a nan kont piblik la yo pral kapab wè patisipan evènman yo si yo wè detay sou yon evènman.
+Public access can view participants: Aksè piblik ka wè patisipan yo
+public-access-override-help: Pèmèt non evènman ak deskripsyon yo kache nan kalandriye piblik la
+Override event name/description for public access: Anile non evènman / deskripsyon pou aksè piblik la
+public-access-override-text-help: Tèks la yo montre si opsyon ki anwo a pèmèt. Si 'Pa Disponib', li pral tradui.
+Text to display to public access: Tèks pou montre aksè piblik
+public-access-captcha-help: Si pèmèt, nouvo evènman te ajoute nan Piblik mande pou pase yon validation CAPTCHA.
+Require CAPTCHA validation for public access new events: Mande pou validation CAPTCHA pou aksè piblik nouvo evènman yo
+uac-enabled-help: Pèmèt kontwòl aksè itilizatè-nivo
+User Access Control enabled: Kontwòl Aksè Itilizatè pèmèt
+groups-enabled-help: Pèmèt sipò gwoup, sa ki pèmèt itilizatè yo chwazi itilizatè yo pa gwoup yo.
+Groups enabled: Gwoup pèmèt
+user-sees-his-group-help: Si pèmèt, itilizatè yo pa pral wè itilizatè kalandriye ki pa nan omwen youn nan gwoup yo.
+User sees only his groups: Itilizatè wè sèlman gwoup li yo
+nonuser-enabled-help: Si pèmèt, administratè yo ap gen opsyon pou ajoute kalandriye non itilizatè yo
+Nonuser enabled: Kalandriye Nonuser pèmèt
+nonuser-list-help: Ki kote yo montre kalandriye non itilizatè yo nan lis patisipan yo
+Nonuser list: Montre nan lis patisipan yo nan
+Upcoming Events: Evènman kap vini yo
+upcoming-events-help: Pèmèt coming.php
+Enabled: Pèmèt
+upcoming-events-allow-override: Pèmèt paramter itilizatè pou coming.php
+Allow user override: Pèmèt itilizatè pase sou desizyon
+upcoming-events-display-caticons: Mete ikon kategori nan coming.php
+Display category icons: Montre ikon kategori
+upcoming-events-display-layers: Montre kouch nan coming.php
+Display layers: Montre kouch
+upcoming-events-display-links: Montre lyen nan coming.php
+Display links to events: Montre lyen ki mennen nan evènman yo
+upcoming-events-display-popups: Montre popup evènman nan coming.php
+Display event popups: Montre evènman popup
+reports-enabled-help: Si pèmèt, itilizatè yo pral wè yon seksyon "Rapò" nan pati anba a nan chak paj epi yo pral pèmèt yo kreye rapò koutim. Anplis de sa, itilizatè administratè yo ka kreye rapò mondyal ki pral parèt nan pati anba paj tout itilizatè yo.
+Reports enabled: Rapò pèmèt
+subscriptions-enabled-help: Espesifye si itilizatè aleka ka abònman nan kalandriye yon itilizatè WebCalendar a, sa ki pèmèt yo wè evènman itilizatè WebCalendar a nan aplikasyon iCal ki pèmèt yo (tankou iCal Apple la oswa Kalandriye Mozilla).
+Allow remote subscriptions: Pèmèt abònman aleka
+remotes-enabled-help: Pèmèt itilizatè yo chaje aleka ICS dosye lè l sèvi avèk URL
+Allow remote calendars: Pèmèt kalandriye aleka
+rss-enabled-help: Espesifye si kalandriye yon itilizatè ka jwenn nan yon RSS feed.
+Enable RSS feed: Pèmèt RSS feed
+categories-enabled-help: Pèmèt sipò pou kategori evènman yo.
+Categories enabled: Kategori pèmèt
+icon_upload-enabled-help: Si pèmèt, itilizatè yo ka Upload ikon kategori
+Category Icon Upload enabled: Kategori Icon Upload pèmèt
+(Requires XXX folder to exist.): (Mande pou katab XXX egziste.)
+display-tasks-help: Montre ti fenèt travay nan kalandriye mwa ak jou
+Display small task list: Montre ti lis travay
+display-tasks-in-grid-help: Montre travay nan kalandriye ansanm ak evènman yo
+Display tasks in Calendars: Montre travay nan Kalandriye
+allow-external-users-help: Espesifye si yon itilizatè ki pa kalandriye ka ajoute nan yon evènman. Sa a pèmèt itilizatè ki pa kalandriye yo dwe ki nan lis kòm patisipan evènman yo.
+Allow external users: Pèmèt itilizatè ekstèn
+external-can-receive-notification-help: Lè itilizatè ekstèn yo pèmèt epi itilizasyon imèl la pèmèt, itilizatè ekstèn yo ka resevwa notifikasyon imèl lè evènman an ajoute, mete ajou oswa efase (si adrès imèl itilizatè ekstèn lan bay).
+External users can receive email notifications: Itilizatè ekstèn ka resevwa notifikasyon imel
+external-can-receive-reminder-help: Lè itilizatè ekstèn yo pèmèt epi itilizasyon imèl la pèmèt, itilizatè ekstèn yo ka resevwa rapèl imèl (si yo bay adrès imèl itilizatè ekstèn lan).
+External users can receive email reminders: Itilizatè ekstèn ka resevwa rapèl imel
+allow-self-registration-help: Pèmèt nouvo itilizatè yo enskri tèt yo
+Allow self-registration: Pèmèt enskripsyon pwòp tèt ou
+use-blacklist-help: Limite aksè nan fonksyon WebCalendar ki baze sou adrès IP
+Restrict self-registration to blacklist: Mete restriksyon sou enskripsyon pwòp tèt ou nan lis nwa
+allow-self-registration-full-help: Pèmèt itilizatè nouvo ranpli pwosesis la enskripsyon pwòp tèt ou-sou entènèt
+Use self-registration email notifications: Jenere modpas epi voye bay nouvo itilizatè yo
+allow-attachment-help: Pèmèt itilizatè yo ajoute atachman dosye nan evènman yo.
+Allow file attachments to events: Pèmèt atachman dosye evènman yo
+Admin and owner can always add attachments if enabled.: Admin ak pwopriyetè ka toujou ajoute atachman si pèmèt.
+allow-comments-help: Pèmèt itilizatè yo ajoute kòmantè nan evènman yo.
+Allow comments to events: Pèmèt kòmantè nan evènman yo
+Admin and owner can always add comments if enabled.: Admin ak pwopriyetè ka toujou ajoute kòmantè si pèmèt.
+email-enabled-help: Vire oswa etenn tout voye imèl pou notifikasyon ak rapèl. Mete nan "non", si sèvè ou a pa byen konfigirasyon yo voye lapòs.
+Email enabled: Imèl pèmèt
+email-default-sender: Espesifye adrès imel la pou presize kòm moun k la lè l ap voye rapèl yo.
+Default sender address: Adrès default moun k la
+email-mailer: Chwazi kalite imel (SMTP, PHP mail, sendmail)
+Email Mailer: =
+email-smtp-host: Hostname (yo) nan sèvè SMTP (yo) separe pa vigil
+SMTP Host name(s): SMTP Host non (yo)
+email-smtp-port: Nimewo SMTP Port (nòmalman 25)
+SMTP Port Number: Nimewo SMTP Port
+email-smtp-auth: Sèvi ak otantifikasyon SMTP
+SMTP Authentication: Otantifikasyon SMTP
+email-smtp-username: Non itilizatè SMTP si w ap itilize Otantifikasyon
+SMTP Username: Non itilizatè SMTP
+email-smtp-password: SMTP Modpas si w ap itilize Otantifikasyon
+SMTP Password: Modpas SMTP
+Default user settings: Anviwònman itilizatè default
+email-format: Espesifye preferans pou HTML oswa mesaj tèks plenn
+Email format preference: Imèl preferans fòma
+HTML: =
+Plain Text: Plain Tèks
+email-include-ics: Mete yon dosye iCalendar ICS nan mesaj imel
+Include iCalendar attachments: Mete atachman iCalendar
+email-event-reminders-help: Espesifye si wi ou non yo voye rapèl evènman.
+Event reminders: Rapèl Evènman
+email-event-added: Espesifye si wi ou non yo voye imèl notifikasyon lè se yon evènman ajoute nan kalandriye ou.
+Events added to my calendar: Evènman ajoute nan kalandriye mwen an
+email-event-updated: Espesifye si wi ou non yo voye notifikasyon imel lè yon evènman mete ajou sou kalandriye w lan.
+Events updated on my calendar: Evènman mete ajou sou kalandriye mwen an
+email-event-deleted: Espesifye si wi ou non yo voye notifikasyon imèl lè yo retire yon evènman nan kalandriye w lan.
+Events removed from my calendar: Evènman yo retire nan kalandriye mwen an
+email-event-rejected: Espesifye si wi ou non yo voye notifikasyon imel lè yon patisipan rejte yon evènman ki nan kalandriye w lan.
+Event rejected by participant: Evènman patisipan an rejte
+email-event-create: Espesifye si kreyatè a nan antre ap resevwa yon imèl
+Event that I create: Evènman ke mwen kreye
+Color options: Opsyon koulè
+Allow user to customize colors: Pèmèt itilizatè yo Customize koulè
+gradient-colors: Si pèmèt koulè dégradé yo te itilize. Sa ka anpil enpak sou pèfòmans.
+Enable gradient images for background colors: Pèmèt imaj gradyan pou koulè background
+Not available: Pa disponib
+Background Image options: Opsyon Imaj background
+bgimage-help: URL nan imaj background background. Ka lyen relatif.
+Background Image: Imaj background
+bgrepeat-help: Kontwole konpòtman repete nan imaj background.
+Background Repeat: Istwa Repete
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Asistan
+Preferences: Preferans
+Control Panel: Kontwòl Panel
+Users: Itilizatè yo
+Account: Kont
+Categories: Kategori
+Views: Pwen de vi
+Layers: Kouch
+Reports: Rapò
+Delete Events: Efase Evènman yo
+Activity Log: Journal aktivite
+System Log: Sistèm Journal
+Security Audit: Odit Sekirite Sosyal
+Public Preferences: Preferans Piblik
+Unapproved Public Events: Evènman Piblik ki pa apwouve
+Administrative Tools: Zouti Administratif
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Kopi Non: "XXX".
+Username XXX already exists.: Non itilizatè "XXX" deja egziste.
+Email address XXX already exists.: Adrès imèl "XXX" deja egziste.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Lòt Kòmantè (si ou vle)
+Approve and Send: Apwouve epi voye
+Approve and Exit: Apwouve ak sòti
+(Your comments will be emailed to the event creator.): (Kòmantè ou yo pral imèl bay kreyatè evènman an.)
+Hello, XXX.: Bonjou, XXX.
+XXX has approved an appointment and added comments.: Yon randevou te apwouve ak kòmantè te ajoute pa XXX.
+Subject XXX: Sijè: "XXX".
+Description XXX: Deskripsyon: "XXX".
+Date XXX: Dat: XXX
+Time XXX: Tan: XXX
+Comments XXX: Kòmantè: XXX
+Approved w/Comments by XXX.: Apwouve w / Kòmantè pa: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Mòd Admin
+Your assistants: Asistan ou yo
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Erè enkoni.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Pwogram Erè: Pa gen okenn XXX espesifye!
+user: itilizatè
+year: ane
+month: mwa
+day: jou
+
+########################################
+# Page: category.php
+#
+Category Icon: Kategori Icon
+Global: =
+The permissions for the icons directory are set to read-only: Otorizasyon yo pou anyè ikon yo tabli pou li sèlman.
+Category Name: Non kategori:
+Color: Koulè
+Remove Icon: Retire Icon:
+Add Icon to Category: Ajoute Icon nan Kategori
+Upload: Voye
+GIF or PNG 6kb max: GIF oswa PNG 6kb max
+Search for existing icons: Search pou ikon ki egziste deja
+Add: Ajoute
+Delete: Efase
+Are you sure you want to delete this entry?: Èske ou sèten ou vle efase antre sa a?
+Make New Category: Fè Nouvo Kategori
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Non kategori obligatwa
+File size exceeds maximum.: Gwosè dosye a depase maksimòm.
+File is not a GIF or PNG image: Dosye se pa yon imaj GIF oswa PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: KATEGORI DISPONIB
+ENTRY CATEGORIES: ENTWO KATEGORI
+Remove: Retire
+Global Category: Kategori mondyal
+Cancel: Anile
+
+########################################
+# Page: colors.php
+#
+Add Custom: Ajoute Custom
+Basic Colors: Koulè Debaz
+Current Color: Koulè Kouran
+Custom Colors: Koulè Custom
+Old Color: Old Koulè
+
+########################################
+# Page: combo.php
+#
+Select None: Chwazi Okenn
+Agenda: =
+Add Task: Ajoute Objektif Travay la
+Description: Deskripsyon
+Date: Dat
+Time: Tan
+Priority: Priyorite
+Access: Aksè
+Created by: Kreye pa
+Updated: Mizajou
+Participants: Patisipan yo
+Attachments: Atachman
+Comments: Kòmantè
+Brief Description: Kout Deskripsyon
+Full Description: Deskripsyon konplè
+Category: Kategori
+Add event detail: Ajoute detay evènman an
+Start Date: Dat Kòmanse
+Due Date: Dat pou renmet
+Add task detail: Add detay travay
+All: Tout
+Error: Erè
+no response from server: pa gen repons nan men sèvè
+JSON error: JSON erè
+High: Segondè
+Medium: Mwayen
+Low: Ba
+Today: Jodi a
+Add Entry: Ajoute Antre
+Unnamed Event: Evènman san non
+Unnamed Task: Travay san non
+Refresh: Rafrechi
+Click to add entry: Klike sou yo ajoute antre
+Name: Non
+pm: =
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX anile yon randevou.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Id pate envalid
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Ajoute kòmantè
+Add Attachment: Ajoute Dokiman siplemantè
+Subject: Sijè
+Comment: Kòmantè
+Upload file: Upload dosye
+
+########################################
+# Page: docdel.php
+#
+Removed: Retire
+
+########################################
+# Page: edit_entry.php
+#
+days: jou
+hours: èdtan
+minutes: minit
+You are not authorized to edit this task.: Ou pa otorize pou edite travay sa a.
+is in a different timezone than you are. Currently: se nan yon lòt timezone pase ou ye. Kounye a
+hour ahead of you: èdtan devan ou
+hour behind you: èdtan dèyè ou
+hours ahead of you: èdtan devan ou
+hours behind you: èdtan dèyè ou
+XXX is in a different timezone (ahead): (XXX se nan yon lòt timezone; AAA devan ou.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX se nan yon lòt timezone; AAA dèyè ou.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Tan ki te rantre isit la baze sou Orè ou.
+Edit Entry: Edit Antre
+Details: Detay
+Repeat: Repete
+Reminders: Rapèl
+brief-description-help: Sa a ta dwe bay yon deskripsyon kout (apeprè 20 karaktè) nan evènman an. Sa a pral reprezante evènman an lè gade kalandriye a.
+full-description-help: Sa a ta dwe ranpli detay sou evènman an. Enfòmasyon sa a ka wè lè yon itilizatè wè evènman an.
+access-help: Espesifye nivo aksè nan evènman an. <ul> <li> Piblik: Tout moun ka wè detay yo konplè sou evènman an.</li> <li> Konfidansyèl: Lòt moun ka wè ke ou gen yon antre pou dat ak lè sa a, men pa detay sou sa li ye.</li></ul>
+priority-help: Espesifye priyorite nan evènman an. Evènman ki gen gwo priyorite ap parèt an karaktè gra.
+category-help: Espesifye kategori evènman an.
+completed-help: Dat travay la fini. Sèlman pèmèt lè tout patisipan pousantaj egal a 100%.
+Date Completed: Dat Konplete
+percent-help: Travay pousantaj fini pou itilizatè sa a
+Percent Complete: Pousantaj Ranpli
+All Percentages: Tout pousantaj
+location-help: Kote Evènman an
+Location: Kote
+url-help: URL Evènman an
+URL: =
+date-help: Espesifye dat evènman an.
+Untimed event: Evènman alè
+Timed event: Evènman kwonometre
+All day event: Tout evènman jounen an
+Timezone Offset: =
+time-help: Espesifye tan evènman an. <ul> <li> "Evènman kwonometre" (pou yon evènman ki pwograme pou yon tan espesifik nan jou sa a)</li> <li> "Evènman timed" (pou yon evènman sa a pa gen yon tan (tankou yon jou ferye )</li> <li> "Tout jounen evènman" (pou yon evènman ki pran tout jounen (tankou yo te soti nan biwo a))</li></ul>
+duration-help: Espesifye dire a (nan èdtan; minit) nan evènman an. <em>Jaden sa a ka rete vid.</em>
+end-time-help: Espesifye tan evènman an espere fini.
+Start Time: Tan Kòmanse
+Due Time: Akòz Tan
+Site Extras: Sit Siplemantè
+avail_participants-help: Lis patisipan ki disponib nan antre sa a.
+Available: Disponib
+Find Name: Jwenn Non
+Resources: Resous
+participants-help: Lis patisipan yo nan antre sa a.
+Selected: Chwazi
+Availability: Disponibilite
+external-participants-help: Espesifye yon lis patisipan yo pou evènman an ki pa itilizatè kalandriye. Itilizatè yo ta dwe ki nan lis youn pou chak liy epi yo ka gen ladan yon adrès imel. Si yon adrès imèl espesifye, itilizatè a kalifye pou resevwa notifikasyon ak rapèl.
+External Participants: Patisipan ekstèn
+repeat-type-help: Chwazi konbyen fwa evènman an ta dwe repete.
+Daily: Chak jou
+Weekly: Chak semèn
+Monthly: Chak mwa
+by day: pa jou
+by date: pa dat
+by position: pa pozisyon
+Monthly (by day): Chak mwa (pa jou)
+Monthly (by date): Chak mwa (pa dat)
+Monthly (by position): Chak mwa (pa pozisyon)
+Yearly: Chak ane
+Manual: Manyèl
+Expert Mode: Ekspè Mode
+repeat-end-date-help: Espesifye dat evènman an ta dwe repete jouk.
+Ending: Fini
+Forever: Pou toutan
+Use end date: Sèvi ak dat fen
+Number of times: Kantite fwa
+repeat-frequency-help: Espesifye konbyen fwa evènman an ta dwe repete.
+Frequency: Frekans
+Weekdays Only: Jou lasemèn sèlman
+Week Start: Semèn Kòmanse
+repeat-bydayextended-help: Pèmèt dat seleksyon ki baze sou jou nan semèn.
+ByDay: =
+repeat-month-help: Espesifye ki mwa evènman an ta dwe repete nan.
+ByMonth: =
+repeat-bysetpos-help: Pèmèt dat seleksyon ki baze sou pozisyon withing mwa a.
+BySetPos: =
+repeat-bymonthdayextended-help: Pèmèt seleksyon dat ki baze sou dat.
+ByMonthDay: =
+repeat-byweekno-help: Pèmèt itilizatè a presize yon lis semèn pou repete evènman (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Pèmèt itilizatè a presize yon lis jou ane yo repete evènman (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Lòt jou ki evènman sa a ta dwe oswa pa ta dwe rive sou.
+Exclusions: Eksklizyon
+Inclusions: Enklizyon
+Add Exception: Ajoute eksepsyon
+Add Inclusion: Add Enklizyon
+Delete Selected: Efase Chwazi
+Send Reminder: Voye Rapèl
+When: Kilè
+Use Date/Time: Sèvi ak Dat / Lè
+Use Offset: Sèvi ak Offset
+Before: Anvan
+After: Apre
+Start: Kòmanse
+End/Due: Fen / Akòz
+Times: Fwa
+Every: Chak
+CAPTCHA Warning: Avètisman:  Pa ka itilize CAPTCHA san ekstansyon GD PHP a!<br>
+Delete entry: Efase antre
+You are not authorized to edit this entry.: Ou pa otorize pou edite antre sa a.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX te fè yon nouvo randevou.
+XXX has updated an appointment.: XXX mete ajou yon randevou.
+Security violation!: Vyolasyon sekirite!
+You must enter the anti-spam text on the previous page.: Ou dwe antre tèks la anti-Spam nan paj anvan an.
+The following conflicts with the suggested time: Konfli sa yo ak tan yo sijere a
+User removed from participants list.: Itilizatè yo retire nan lis patisipan yo.
+Please look on XXX to accept or reject this appointment.: Tanpri gade sou XXX pou aksepte oswa rejte randevou sa a.
+Please look on XXX to view this appointment.: Tanpri gade sou XXX pou wè randevou sa a.
+Scheduling Conflict: Orè konfli
+Your suggested time of: Tan ou sijere nan
+conflicts with the following existing calendar entries: konfli ak antre kalandriye sa yo ki deja egziste
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX pa te mete nan "config.php".
+word characters only: (ka gen ladan sèlman karaktè mo; [a-zA-Z_0-9])
+Add User: Add Itilizatè
+Edit User: Edit itilizatè
+Calendar ID: Kalandriye ID
+First Name: Premye Non
+Last Name: Siyati
+Is public calendar: Èske kalandriye piblik la
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Erè baz done
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Ajoute Remote Kalandriye
+Edit Remote Calendar: Edite Kalandriye Remote
+Create Layer: Kreye Kouch
+Reload: =
+Required to View Remote Calendar: Oblije wè Remote Kalandriye
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Enpòte rezilta yo
+Events successfully imported: Evènman enpòte avèk siksè
+Create a new layer to view this calendar.: Kreye yon nouvo kouch pou wè kalandriye sa a.
+Errors: Erè
+There was an error parsing the import file or no events were returned.: Te gen yon erè analize dosye a enpòte oswa pa gen okenn evènman yo te retounen.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Demen
+Yesterday: Yè
+Day before yesterday: Jou anvan yè
+Next week: Semèn kap vini an
+This week: Semèn sa a
+Last week: Semèn pase
+Week before last: Semèn anvan dènye
+Next week and week after: Semèn pwochèn ak semèn apre
+This week and next week: Semèn sa a ak semèn pwochèn
+Last week and this week: Semèn pase a ak semèn sa a
+Last two weeks: De dènye semèn
+Next month: Mwa pwochen
+This month: Mwa sa a
+Last month: Mwa pase a
+Month before last: Mwa anvan dènye
+Next year: Ane pwochèn
+This year: Ane sa a
+Last year: Ane pase
+Year before last: Ane anvan dènye
+Next 14 days: 14 jou kap vini yo
+Next 30 days: 30 jou kap vini yo
+Next 60 days: 60 jou kap vini yo
+Next 90 days: 90 jou kap vini yo
+Next 180 days: 180 jou kap vini yo
+Next 365 days: 365 jou kap vini yo
+Invalid report id XXX.: Id rapò ki pa valab: "XXX".
+Unnamed Report: Rapò san non
+Add Report: Ajoute Rapò
+Edit Report: Edit Rapò
+Report name: Rapò non
+User: Itilizatè
+Current User: Itilizatè aktyèl
+Include link in menu: Mete lyen nan meni an
+Include standard header/trailer: Mete estanda header / trelè
+Include previous/next links: Mete lyen anvan / pwochen
+Include empty dates: Mete dat vid
+Date range: Dat ranje
+Template variables: Modèl varyab
+Page template: Modèl paj la
+Day template: Modèl Jou
+Event template: Modèl evènman an
+Are you sure you want to delete this report?: Èske ou sèten ou vle efase rapò sa a?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Pa gen okenn rapò id: "XXX".
+Variable XXX not found.: Varyab XXX pa jwenn.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: =
+Edit Custom Script/Stylesheet: Edit Custom Script / Stylesheet
+Edit Custom Trailer: Edit Custom Trelè
+
+########################################
+# Page: edit_user.php
+#
+Username: Non itilizatè
+E-mail address: Adrès imèl
+Password: Modpas
+again: ankò
+Disabled for demo: Andikape pou Demo
+Are you sure you want to delete this user?: Èske ou sèten ou vle efase itilizatè sa a?
+Change Password: Chanje Modpas
+New Password: Nouvo modpas
+Set Password: Mete modpas
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Efase itilizatè yo pa sipòte.
+The passwords were not identical.: Modpas yo pa te idantik.
+You have not entered a password.: Ou pa te antre nan yon modpas.
+Username cannot be blank.: Non itilizatè pa ka vid.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Pa otorize
+
+########################################
+# Page: export.php
+#
+Export: Ekspòtasyon
+Export format: Fòma ekspòtasyon
+Include all layers: Mete tout kouch
+Include deleted entries: Mete antre efase
+Export all dates: Ekspòte tout dat
+Start date: Dat kòmansman
+End date: Dat fen
+Modified since: Modifye depi
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: fòma ekspòtasyon pa defini oswa kòrèk.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Pa gen itilizatè ki espesifye.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Add Nouvo Gwoup
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Gwoup non
+Add Group: Ajoute Gwoup
+Edit Group: Edit Gwoup
+Group name: Non gwoup la
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Ou dwe presize yon non gwoup
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Kalandriye Auto-rafrechi
+auto-refresh-help: Lè li pèmèt, gade nan jou, gade nan semèn, gade nan mwa, ak lis paj ki pa apwouve pral tout otomatikman rafrechi tèt yo detanzantan.
+Auto-refresh time: Auto-rafrechi tan
+auto-refresh-time-help: Si Auto-rafrechi pèmèt, sa a presize tan ki genyen ant chak rafrechi.
+Display days with events in bold in year view: Montre jou ak evènman an karaktè gra nan gade ane a
+Display weekends in week view: Montre wikenn nan gade semèn
+Time interval: Entèval tan
+time-interval-help: Espesifye konbyen tan blòk yo tan nan gade nan semèn ak View jou yo pral.
+Nonuser: Kalandriye Nonuser
+user-customize-color: Espesifye si itilizatè yo gen dwa modifye konplo koulè pwòp yo.
+enable-gradient-help: Sèvi ak koulè gradyan pou orijin selil yo.
+Manually entering color values: Manyèlman k ap antre nan valè koulè
+colors-help: Tout koulè yo ta dwe espesifye nan fòma ekzadecimal "#RRGGBB" kote "RR" se valè hex pou wouj, "GG" se valè hex pou vèt, ak "BB" se valè hex pou ble.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Rapò ensèk
+Please include all the information below when reporting a bug.: Tanpri mete tout enfòmasyon ki anba a lè wap rapòte yon ensèk.
+Also, please use English rather than XXX.: Epitou, tanpri itilize  angle  olye ke XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar Dokimantasyon
+Currently in English only.: Kounye a nan lang angle sèlman.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Ajoute / Korije Entries Kalandriye
+Repeat Type: Repete Kalite
+For More Information...: Pou plis enfòmasyon...
+Repeat End Date: Repete Dat Fen
+Repeat Day: Repete Jou
+repeat-day-help: Espesifye ki jou nan semèn nan evènman an ta dwe repete sou.
+
+########################################
+# Page: help_import.php
+#
+Import: Enpòte
+Palm Desktop: =
+allow you to import entries from the Palm...: Fòm sa a pral pèmèt ou enpòte antre nan datbook Palm Desktop la. Li ta dwe sitiye nan anyè Palm ou nan datwar / datwar.dat nan yon repèrtwar yo te rele pa non itilizatè ou an.
+The following entries will not be imported: Antre sa yo pa pral enpòte:
+Entries older than the current date: Entries ki gen plis pase dat aktyèl la
+Entries created in the Palm Desktop...: Entries ki te kreye nan Desktop Palm lan ki pa te HotSync'd
+Anything imported from Palm...: Nenpòt bagay ki enpòte soti nan Palm pral ranplase pandan enpòte kap vini an (sof si dat evènman an te pase). Se poutèt sa, dènye yo ta dwe fèt nan Desktop Palm la.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Fòm sa a pral enpòte vCalendar (.vcs) 1.0 evènman yo.
+The following formats have been tested: Fòma sa yo te teste:
+This form will import iCalendar (.ics) events.: Fòm sa a pral enpòte evènman iCalendar (.ics).
+Enabling: Pèmèt
+Overwrite Prior Import: Kouvri Enpòte Anvan
+will cause events imported previously...: ap lakòz evènman enpòte deja, ki itilize UID a menm jan ak yon evènman ki soti nan dosye a enpòte nouvo, yo dwe make kòm efase. Sa a ta dwe pèmèt yon dosye iCalendar mete ajou yo dwe enpòte san yo pa kreye kopi.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Ede Index
+About WebCalendar: Sou WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Kouch yo itil pou montre evènman lòt itilizatè yo nan pwòp kalandriye ou. Ou ka presize itilizatè a ak koulè evènman yo ap parèt nan.
+Add/Edit/Delete: Add / Edit / Efase
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Klike sou lyen Edisyon Kouch nan seksyon admin nan pati anba a pral pèmèt ou ajoute / modifye / efase kouch.
+The text color of the new layer that will be displayed in your calendar.: Koulè tèks nouvo kouch ki pral parèt nan kalandriye w lan.
+Disabling: Enfimite
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Peze lyen ki enfim Kouch nan seksyon admin nan pati anba a pou fèmen kouch yo.
+Duplicates: Kopi
+If checked, events that are duplicates of your events will be shown.: Si w tcheke, evènman ki kopi nan evènman ou yo pral montre.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Peze lyen Pèmèt Kouch nan seksyon admin nan pati anba a pou vire kouch yo.
+Source: Sous
+Specifies the user that you would like to see displayed in your calendar.: Espesifye itilizatè a ke ou ta renmen wè parèt nan kalandriye ou.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Kategori Default
+default-category-help: Espesifye kategori yon nouvo evènman ta dwe default.
+When I am the boss: Lè mwen se bòs nan travay la
+Email me event notification: Imèl m 'notifikasyon evènman
+email-boss-notifications-help: Espesifye si patwon resevwa Imèl kòm notifikasyon evènman.
+I want to approve events: Mwen vle apwouve evènman yo
+boss-approve-event-help: Espesifye si bòs nan travay la pral oblije apwouve evènman ke asistan yo te ajoute.
+Subscribe/Publish: Abònman / Pibliye
+Allow remote publishing: Pèmèt pibliye aleka
+allow-remote-publishing-help: Espesifye si yon kliyan iCal aleka ka pibliye evènman tounen nan WebCalendar
+remote-publishing-url-help: Montre URL la yo itilize nan aplikasyon an kliyan iCal pou tou de abònman ak pibliye tounen nan WebCalendar.
+allow-remote-subscriptions-help: Espesifye si itilizatè aleka ka abònman nan kalandriye ou, sa ki pèmèt yo wè evènman ou yo nan yon aplikasyon iCal ki pèmèt (tankou iCal Apple la oswa Kalandriye Mozilla).
+remote-subscriptions-url-help: Montre URL itilizatè aleka yo ta dwe itilize pou abònman nan kalandriye w lan.
+Enable FreeBusy publishing: Pèmèt pibliye FreeBusy
+freebusy-enabled-help: Espesifye si tan disponib yon itilizatè a ka jwenn lè l sèvi avèk estanda iCal FreeBusy la.
+freebusy-url-help: URL la pou jwenn aksè nan lis FreeBusy itilizatè a
+rss-feed-url-help: URL la pou jwenn aksè nan RSS feed la
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Pèmèt pou kontwòl amann nan aksè itilizatè ak autorisations. Itilizatè yo kapab tou bay default ak pou chak pèmisyon endividyèl si administratè a otorize.
+If disabled, this user cannot send you emails.: Si enfim, itilizatè sa a pa ka voye imèl ba ou.
+If disabled, this user cannot see you in the participants list.: Si enfim, itilizatè sa a pa ka wè ou nan lis patisipan yo.
+If enabled, this user cannot view the details of any of your entries.: Si pèmèt, itilizatè sa a pa ka wè detay yo nan nenpòt nan antre ou yo.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Piblikasyon andikape (Admin)
+Publishing Disabled (User): Piblikasyon andikape (Itilizatè)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Klike sou Chwazi
+Current Icons on Server: Ikon Kouran sou sèvè
+
+########################################
+# Page: import.php
+#
+import from file: enpòte soti nan dosye
+Disabled: Andikape
+Import format: Enpòte fòma
+Exclude private records: Ekskli dosye prive
+Repeated items are imported separately. Prior imports are not overwritten.: Atik repete yo enpòte separeman. Enpòtasyon anvan yo pa ranplase.
+
+########################################
+# Page: import_handler.php
+#
+No file: Pa gen dosye
+Error deleting palm events from webcalendar.: Erè nan efase evènman palmis nan webcalendar.
+Events from prior import marked as deleted: Evènman ki soti nan enpòte anvan make kòm efase
+Conflicting events: Evènman konfli
+The import file contained no data.: Dosye a enpòte pa gen okenn done.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Èske ou sèten ou vle efase kouch sa a?
+Delete layer: Efase kouch
+Edit layer: Edit kouch
+Enable layers: Pèmèt kouch
+Layer: Kouch
+Layers are currently disabled.: Kouch yo enfim kounye a.
+Layers are currently enabled.: Kouch yo kounye a pèmèt.
+Click to modify layers settings for XXX: Klike la a pou modifye anviwònman kouch yo pou kalandriye XXX la.
+Disable Layers: Enfim Kouch
+Add layer: Ajoute kouch
+Add Layer: Ajoute Kouch
+Edit Layer: Edit Kouch
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Kapab mete ajou preferans
+Invalid entry id.: Id antre ki pa valab.
+You cannot create a layer for yourself.: Ou pa ka kreye yon kouch pou tèt ou.
+You can only create one layer for each user.: Ou kapab sèlman kreye yon kouch pou chak itilizatè.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Apwouve / Konfime
+Approve Selected: Apwouve Chwazi
+Check All: Tcheke tout
+Emails Will Not Be Sent: Imèl pa pral voye
+Reject Selected: Rejte Chwazi
+Reject: Rejte
+Uncheck All: Dezaktive tout
+View this entry: Gade antre sa a
+No unapproved entries for XXX.: Pa gen antre ki pa apwouve pou: "XXX".
+Unapproved Entries: Entri ki pa apwouve
+Approve this entry?: Apwouve antre sa a?
+Reject this entry?: Rejte antre sa a?
+Approve Selected entries?: Apwouve antre chwazi yo?
+Reject Selected entries?: Refize antre yo chwazi?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Ou dwe antre nan yon login ak modpas.
+Save login via cookies so I dont have to login next time.: Sove login via bonbon pou mwen pa bezwen konekte pwochenn fwa
+Login: Ouvri sesyon an
+public: piblik
+Access XXX calendar: Aksè nan kalandriye XXX
+cookies-note: Remak: Aplikasyon sa a mande pou bonbon yo dwe pèmèt.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Karaktè ilegal nan koneksyon XXX.
+Invalid login: Login valab
+Activity login failure: Non itilizatè: "XXX", IP: "AAA".
+Error XXX: Erè: "XXX".
+You have been logged out.: Ou te louvri sesyon an.
+Access public calendar: Aksede nan kalandriye piblik la
+Not yet registered? Register here!: Ou poko anrejistre? Enskri isit la!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Pa gen kalandriye non itilizatè sa yo: "XXX".
+This Calendar is not Public.: Kalandriye sa a pa piblik.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Add Nouvo Kalandriye NonUser
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Yon login dwe espesifye.
+No such nonuser calendar: Pa gen kalandriye nonuser sa yo
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Tèm ki pa valab
+Save Preferences: Sove Preferans
+Public Access calendar: Kalandriye Aksè Piblik
+Modify Non User Calendar Preferences: Modifye Preferans Kalandriye ki pa Itilizatè yo
+Return to My Preferences: Retounen nan Preferans mwen yo
+Custom Scripts: Scripts Custom
+Timezone Selection: Seleksyon Timezone
+Multiview: =
+entry-interval-help: Mete entèval minit lè koreksyon fwa antre
+Entry interval: Entèval antre
+hour: èdtan
+minute: minit
+theme-reload-help: Akòz CSS caching, yo ka mande yon paj Reload
+Page may need to be reloaded for new Theme to take effect: Paj ka bezwen yo dwe Reloaded pou nouvo Tèm yo pran efè
+display_byproxy-help: Montre kreyatè reyèl la sou paj view_entry
+Display if created by Assistant: Montre si Asistan kreye l
+allow-view-subscriptions-help: Pèmèt restriksyon aksè aleka nan antre prive oswa konfidansyèl
+Allow remote viewing of: Pèmèt gade aleka nan
+entries: antre
+
+########################################
+# Page: purge.php
+#
+Purging events for: Purge evènman pou
+Finished: Fini
+Back: Retounen
+Check box to delete ALL events for a user: Koche kaz pou efase  TOUT  evènman pou yon itilizatè
+Delete all events before: Efase tout evènman anvan yo
+Purge deleted only: Purge efase sèlman
+Preview delete: Preview efase
+Are you sure you want to delete events for: Èske ou sèten ou vle efase evènman pou
+Records deleted from XXX: Dosye efase nan "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Adrès imèl pa ka vid.
+Username already exists.: Non itilizatè deja egziste.
+Email address already exists.: Adrès imèl deja egziste.
+New user via self-registration.: Nouvo itilizatè atravè enskripsyon pwòp tèt ou.
+A new WebCalendar account has been set up for you.: Yon nouvo kont WebCalendar te mete kanpe pou ou.
+Your username is XXX.: Non itilizatè ou an se: "XXX".
+Your password is XXX.: Modpas ou se: "XXX".
+Please visit XXX to log in and start using your account!: Tanpri vizite "XXX" pou konekte epi kòmanse itilize kont ou!
+You may change your password after logging in the first time.: Ou ka chanje modpas ou apre ou fin ouvri sesyon an premye fwa.
+If you received this email in error: Si ou te resevwa imèl sa a nan erè epi ou pa enskri pou yon kont WebCalendar, ou ka neglije avi sa a, oswa reponn ak yon nòt kout
+Administrator: Administratè
+Welcome: Byenveni
+New user via email.: Nouvo itilizatè via imel.
+Registration: Enskripsyon
+Welcome to WebCalendar: Byenveni nan WebCalendar
+Your email should arrive shortly.: Imèl ou ta dwe rive yon ti tan.
+Return to Login screen: Retounen nan ekran Login
+Password (again): Modpas (ankò):
+Your account information will be emailed to you.: Enfòmasyon kont ou yo pral imèl ba ou.
+Submit: Soumèt
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Kontinye
+(Your comments will be emailed to the other participants.): (Kòmantè ou yo pral imèl bay lòt patisipan yo.)
+XXX has rejected an appointment.: XXX te rejte yon randevou.
+Rejected by XXX.: Rejte pa XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Add Nouvo Kalandriye Remote
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Evènman sa a konfidansyèl.
+(Private): (Prive)
+(cont.): (kont.)
+Approved: Apwouve
+Deleted: Efase
+Rejected: Rejte
+Waiting for approval: Ap tann pou apwobasyon
+Unknown: Enkoni
+Invalid report id.: Id rapò ki pa valab.
+Click here to manage reports for the Public Access calendar.: Klike la a pou jere rapò pou kalandriye Aksè Piblik la.
+Add new report: Ajoute nouvo rapò
+Manage Reports: Jere Rapò
+
+########################################
+# Page: search.php
+#
+Advanced Search: Rechèch avanse
+Search: Rechèch
+Keywords: Mo kle
+Enter % for all entries: Mete% pou tout antre yo
+Include: Mete
+Filter by Date: Filtre pa dat
+All Dates: Tout Dat
+Past: Sot pase
+Upcoming: À
+Range: =
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Ou dwe antre nan youn oswa plis mo rechèch.
+Search Results: Rechèch rezilta yo
+match found: match jwenn
+matches found: alimèt yo te jwenn
+No matches found: Pa jwenn match
+New Search: Nouvo rechèch
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Enfòmasyon ki anba a bay lis pwoblèm potansyèl ak enstalasyon WebCalendar ou ki ta ka modifye pou fè enstalasyon ou an pi an sekirite.
+For questions about WebCalendar security see the forums: Pou kesyon sou nenpòt pwoblèm sekirite WebCalendar, tanpri itilize fowòm yo WebCalendar anime sou GitHub.com;<br>XXX
+View your current PHP settings: Gade anviwònman PHP ou ye kounye a
+Security Issue: Pwoblèm Sekirite Sosyal
+Status: Estati
+Default admin user password: Default modpas itilizatè admin
+You should change the password of the default admin user.: Ou ta dwe chanje modpas itilizatè admin default la.
+File permissions XXX: Otorizasyon dosye: XXX
+item XXX should not be writable: Atik sa a pa ta dwe ekri:<br><tt> XXX</tt>
+File exists XXX: Dosye egziste: "XXX"
+Because you have email disabled, you should remove this file.: Paske ou gen imèl enfim, ou ta dwe retire dosye sa a.
+File location XXX: Kote dosye a: "XXX"
+remove XXX if not using: Si ou pa itilize dosye "XXX", ou ta dwe efase li. Oswa, omwen, deplase li nan yon nouvo anyè.
+System Settings XXX: Anviwònman Sistèm: "XXX"
+consider enabling UAC: Ou ka vle konsidere pèmèt Kontwòl Aksè Itilizatè yo mete privilèj itilizatè yo.
+recommend approving new public events: Nou rekòmande pou tout apwobasyon evènman piblik yo apwouve.
+recommend using CAPTCHA: CAPTCHA rekòmande pou veye sou soumèt evènman otomatik yo.
+Database cache directory location: Database anyè kachèt kote
+db cache should be inaccessable: Kachèt baz done a ta dwe nan yon anyè ki pa ka jwenn aksè ak yon URL.
+PHP Settings XXX: Anviwònman PHP: "XXX"
+recommend setting XXX Off: Anviwònman rekòmande pou "XXX" la se Off.
+recommend setting allow_url_fopen Off: Anviwònman rekòmande pou "allow_url_fopen" la se Off lè kalandriye aleka yo pa pèmèt.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Gade Kalandriye yon lòt itilizatè
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Ou pa te ajoute okenn kategori.
+Set Category: Mete Kategori
+Global Categories cannot be changed.: Kategori mondyal yo pa ka chanje.
+
+########################################
+# Page: upcoming.php
+#
+more: plis
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Kalandriye Remote
+denotes administrative user: vle di itilizatè administratif
+Add New User: Ajoute nouvo itilizatè
+
+########################################
+# Page: usersel.php
+#
+form: fòm
+Reset: Reyajiste
+
+########################################
+# Page: views.php
+#
+Add New View: Ajoute nouvo View
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: View san non
+Add View: Ajoute View
+Edit View: Edite View
+View Name: View Non
+View Type: View Kalite
+Day by Time: Jou pa tan
+Week (Users horizontal): Semèn (Itilizatè yo orizontal)
+Week by Time: Semèn pa tan
+Week (Users vertical): Semèn (Itilizatè yo vètikal)
+Week (Timebar): Semèn (Timebar)
+Month (Timebar): Mwa (Timebar)
+Month (side by side): Mwa (kòt a kòt)
+Month (on same calendar): Mwa (nan menm kalandriye a)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Ou dwe presize yon non View
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Pa gen itilizatè pou wè sa a.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Mizajou Pousantaj Objektif Travay la
+Completed: Konplete
+Assistant mode: Asistan mòd
+Declined: Refize
+Needs-Action: Bezwen-Aksyon
+by: pa
+Percentage Complete: Pousantaj Ranpli
+External User: Itilizatè ekstèn
+Update: Mizajou
+at: nan
+comments: kòmantè
+Show: Montre
+Hide: Kache
+Approve/Confirm entry: Apwouve / Konfime antre
+Reject entry: Rejte antre
+Set category: Mete kategori
+Add to My Calendar: Ajoute nan Kalandriye mwen an
+Copy entry: Kopi antre
+This will delete this entry for all users.: Sa a pral efase antre sa a pou tout itilizatè yo.
+Edit entry: Edite antre
+Edit repeating entry for all dates: Edite repete antre pou tout dat
+Delete repeating event for all dates: Efase repete evènman pou tout dat
+Edit entry for this date: Modifye antre pou dat sa a
+Delete entry only for this date: Efase antre sèlman pou dat sa a
+Delete entry from calendar of XXX: Efase antre nan kalandriye XXX
+This will delete the entry from your XXX calendar.: Sa a pral efase antre a nan kalandriye XXX ou a.
+boss: bòs '
+This will delete the entry from your boss calendar.: Sa a pral efase antre a nan kalandriye bòs nan travay ou '.
+This will delete the entry from your calendar.: Sa pral efase antre nan kalandriye w lan.
+from your boss calendar: soti nan kalandriye bòs nan travay ou
+Do you want to add this entry to your calendar?: Èske ou vle ajoute antre sa a nan kalandriye ou a?
+This will add the entry to your calendar.: Sa a pral ajoute antre nan kalandriye w lan.
+Email all participants: Imèl tout patisipan yo
+Hide activity log: Kache boutèy demi lit aktivite
+Show activity log: Montre boutèy demi lit aktivite
+Export this entry to: Ekspòte antre sa a
+Palm Pilot: Palm Pilòt
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Double-klike sou selil vid yo ajoute nouvo antre.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Nouvo antre
+cont.: kont.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Kalandriye yon lòt itilizatè
+Category Management: Kategori Jesyon
+Day View: View Jou
+Edit Event: Edit Evènman
+Month View: View Mwa
+Common Trailer: Komen Trelè
+User Management: Jesyon Itilizatè
+Manage Views: Jere Views
+Week View: View Semèn
+Year View: Ane View
+Invalid function id: Id valid fonksyon
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Pa t 'kapab jwenn "settings.php" dosye.<br>Tanpri kopye "settings.php.orig" nan "settings.php" ak modifye pou sit ou.
+Incomplete settings.php file...: Enkonplè "settings.php" dosye ...
+Could not find XXX defined in...: Pa t 'kapab jwenn "XXX" defini nan dosye "settings.php" ou a.
+You must define XXX in: Ou dwe defini "XXX" nan dosye "settings.php" la.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Desanm
+Dec: Desanm
+LANGUAGE DEFINED: LANG DEFINI
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Erè konekte nan baz done: "XXX".
+db_type not defined.: db_type pa defini.
+invalid db_type XXX: valab db_type "" XXX ".
+Cache cleared from previous SQL!: Cache otorize soti nan SQL anvan!
+Error executing query.: Erè nan egzekite rechèch.
+Unfortunately, XXX is not implemented for YYY: Malerezman, "XXX" pa aplike pou (AAAA).
+Unknown ODBC error.: Erè ODBC enkoni.
+Error opening cache dir XXX.: Erè nan louvri kachèt dir "XXX".
+delete: efase
+Cache error Could not XXX file YYY.: Erè Cache: Pa t 'kapab XXX dosye "AAA".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Erè fatal
+Invalid data format for: Fòma done ki pa valab pou
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Erè: Kalite pa mete pou boutèy demi lit aktivite!
+This event is XXX.: Evènman sa a se XXX.
+Conf.: Konf.
+exceeds limit of XXX events per day: depase limit evènman XXX chak jou
+on: sou
+All Attendees: Tout patisipan yo
+Busy: Okipe
+Tentative: Pwovizwa
+Schedule an appointment for XXX.: Pran yon randevou pou XXX: AAAA.
+date_select: =
+Event approved: Evènman apwouve
+Journal approved: Jounal apwouve
+Task approved: Objektif Travay la apwouve
+Attachment: Atachman
+Event created: Evènman kreye
+Journal created: Jounal kreye
+Task created: Objektif Travay la kreye
+Event deleted: Evènman efase
+Journal deleted: Jounal efase
+Task deleted: Travay efase
+New user via email (self registration): Nouvo itilizatè via imèl (enskripsyon pwòp tèt ou)
+New user (self registration): Nouvo itilizatè (enskripsyon pwòp tèt ou)
+Notification sent: Notifikasyon voye
+Event rejected: Evènman rejte
+Journal rejected: Jounal rejte
+Task rejected: Travay rejte
+Reminder sent: Rapèl voye
+Event updated: Evènman mete ajou
+Journal updated: Jounal mete ajou
+Task updated: Travay mete ajou
+Delete User: Efase Itilizatè
+WK: =
+TASKS: =
+Task_Title: Tit
+Due: Akòz
+Task Name: Travay Non
+Task Due Date: Objektif Dat delè
+You have XXX unapproved entries: Ou gen XXX antre ki pa apwouve 
+Changes successfully saved: Chanjman sove avèk siksè
+Event: Evènman
+Action: Aksyon
+Printer Friendly: Enprime Zanmitay
+Generate printer-friendly version: Jenere vèsyon enprimant-zanmitay
+after: apre
+before: anvan
+end: fini
+start: kòmanse
+View this event: Gade evènman sa a
+View this task: Gade travay sa a
+January: Janvye
+February: fevriye
+March: Mas
+April: Avril
+May_: Me
+June: Jen
+July: Jiyè
+August: Out
+September: Septanm
+October: Oktòb
+November: Novanm
+Jan: Janvye
+Feb: Fevriye
+Mar: Mas
+Apr: Avril
+May: Me
+Jun: Jen
+Jul: =
+Aug: Out
+Sep: Septanm
+Oct: Oktòb
+Nov: =
+SU: =
+MO: =
+TU: =
+WE: NOU
+TH: =
+FR: =
+SA: =
+unknown-month: enkoni-mwa
+First Quarter Moon: Premye Trimès Lalin
+Full Moon: Lalin plen
+Last Quarter Moon: Dènye Trimès Lalin
+New Moon: Nouvo lalin
+Error TIME_SLOTS undefined!: Erè: TIME_SLOTS endefini!
+The following error occurred: Erè sa a te fèt
+You are not authorized.: Ou pa otorize.
+Add N hours to: Ajoute N èdtan nan
+Subtract N hours from: Fè soustraksyon N èdtan soti nan
+same as: menm jan ak
+server time: tan sèvè
+Cannot read timezone file XXX.: Pa ka li dosye timezone: XXX.
+Your current GMT offset is XXX hours.: Offset GMT ou ye kounye a se XXX èdtan.
+Unauthorized: San otorizasyon
+Error approving event XXX.: Erè nan apwouve evènman an: XXX.
+Error deleting event XXX.: Erè nan efase evènman: XXX.
+Error rejecting event XXX.: Erè rejte evènman an: XXX.
+Sunday: Dimanch
+Monday: Lendi
+Tuesday: Madi
+Wednesday: Mèkredi
+Thursday: Jedi
+Friday: Vandredi
+Saturday: Samdi
+Sun: Solèy
+Mon: Lendi
+Tue: Madi
+Wed: Mèkredi
+Thu: Jedi
+Fri: Vandredi
+Sat: Samdi
+unknown-weekday: enkoni-jou lasemèn
+Invalid referring URL: Envalid refere URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Endèks
+Documentation: Dokimantasyon
+Page: Paj
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Kalandriye mwen an
+Add New Entry: Ajoute nouvo antre
+Add New Task: Add Nouvo Objektif Travay la
+Logout: Dekonekte
+Home: Lakay
+Back to My Calendar: Retounen nan Kalandriye mwen an
+Go to: Ale nan
+Manage calendar of: Jere kalandriye nan
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Lang navigatè pa jwenn
+(not supported): (pa sipòte)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Byen lwen
+Afrihili: =
+Afrikaans: Afriken
+Ainu: =
+Akan: =
+Akkadian: Akadyen
+Albanian: Albanyen
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Sid)
+Amharic: =
+Angika: =
+Apache: =
+Arabic (Algeria): Arab (Aljeri)
+Arabic (Bahrain): Arab (Bahrain)
+Arabic (Egypt): Arab (peyi Lejip)
+Arabic (Iraq): Arab (Irak)
+Arabic (Jordan): Arab (lòt bò larivyè Jouden)
+Arabic (Kuwait): Arab (Kowet)
+Arabic (Lebanon): Arab (Liban)
+Arabic (Libya): Arab (Libi)
+Arabic (Morocco): Arab (Mawòk)
+Arabic (Oman): Arab (Omàn)
+Arabic (Qatar): Arab (Katar)
+Arabic (Saudi Arabia): Arab (Arabi Saoudit)
+Arabic (Syria): Arab (Siri)
+Arabic (Tunisia): Arab (Tinizi)
+Arabic (U.A.E.): Arab (U.A.E.)
+Arabic (Yemen): Arab (Yemèn)
+Arabic: Arab
+Aragonese: =
+Aramaic: Arameyen
+Arapaho: =
+Arawak: =
+Armenian: Amenyen
+Assamese: =
+Asturian: Asturyen
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Azerbaydjan
+Balinese: =
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: =
+Beja: =
+Belarusian: Belarisyen
+Bemba: =
+Bengali: =
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Pye nwa
+Blin: =
+Bliss: =
+Bosnian: Bosnyen
+Braj: =
+Breton: =
+Buginese: =
+Bulgarian: Bilgari
+Buriat: =
+Burmese: =
+Caddo: =
+Catalan: Katalan
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Chinwa (Hong Kong)
+Chinese (PRC): Chinwa (PRC)
+Chinese (Simplified/GB2312): Chinwa (Senplifye / GB2312) 
+Chinese (Singapore): Chinwa (Singapore)
+Chinese (Taiwan): Chinwa (Taiwan)
+Chinese (Traditional/Big5): Chinwa (Tradisyonèl / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: Choktaw
+Chuukese: =
+Chuvash: =
+Coptic: Kopt
+Cornish: =
+Corsican: Korsik
+Cree: Kri
+Creek: =
+Croatian: Kwoasyen
+Czech: Tchekoslovaki
+Dakota: =
+Danish: Danwa
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Olandè (Bèljik)
+Dutch: Olandè
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Elamit
+English (Australia): Angle (Ostrali)
+English (Belize): Angle (Beliz)
+English (Canada): Angle (Kanada)
+English (Ireland): Angle (Iland)
+English (Jamaica): Angle (Jamayik)
+English (New Zealand): Angle (New Zeland)
+English (Philippines): Angle (Filipin)
+English (South Africa): Angle (Lafrik di sid)
+English (Trinidad & Tobago): Angle (Trinidad & Tobago)
+English (United Kingdom): Angle (Wayòm Ini)
+English (United States): Angle (Etazini)
+English (Zimbabwe): Angle (Zimbabwe)
+English: Angle-US
+Erzya: =
+Esperanto: =
+Estonian: Estonyen
+Ewe: =
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: =
+Fijian: Fidjyen
+Filipino: =
+Finnish: =
+Fon: =
+French (Belgium): Franse (Bèljik)
+French (Canada): Franse (Kanada)
+French (France): Franse (frans)
+French (Luxembourg): Franse (Luxembourg)
+French (Monaco): Franse (monako)
+French (Switzerland): Franse (Swis)
+French: Franse
+Frisian (Eastern): Frisian (lès)
+Frisian (Northern): Frisian (Nò)
+Frisian (Western): Frisian (Lwès)
+Frisian: Frizyen
+Friulian: Frioulian
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galisyen
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: =
+German (Austria): Alman (Otrich)
+German (Germany): Alman (Almay)
+German (Liechtenstein): Alman (Liechtenstein)
+German (Luxembourg): Alman (Luxembourg)
+German (Standard): Alman (Creole)
+German (Switzerland): Alman (Swis)
+German: Alman
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gotik
+Grebo: =
+Greek: Grèk
+Greenlandic: Grannland
+Guarani: Gwarani
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Ayisyen (kreyòl)
+Haitian: Ayisyen
+Hausa: =
+Hawaiian: Awayi
+Hebrew: Ebre
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Etit
+Hmong: =
+Holo (Taiwanese): Holo (Taiwan)
+Hungarian: Ongwa
+Hupa: =
+Iban: =
+Icelandic: =
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: Endonezyen
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Iranyen
+Irish (Gaelic): Ilandè (Gaelik)
+Irish: Ilandè
+Iroquoian: =
+Italian (Switzerland): Italyen (Swis)
+Italian: Italyen
+Japanese: Japonè
+Javanese: =
+Judeo-Arabic: Judeo-arab
+Judeo-Persian: Judeo-Pèsik
+Kabardian: =
+Kabyle: Kabil
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): Khmer (Santral)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Koreyen (Johab)
+Korean (North): Koreyen (Nò)
+Korean (South): Koreyen (Sid)
+Korean: Koreyen
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: =
+Kutenai: =
+Kyrgyz: Kirgiz
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Laten
+Latvian: =
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Lityanyen
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: =
+Macedonian: Masedwan
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Malgache
+Malay: =
+Malayalam: =
+Maldivian: Maldiv
+Maltese: =
+Manchu: Manchou
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: Manks
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: Maya
+Mende: =
+Mi&#39;kmaq: Mikmak
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Moldavi
+Mongo: =
+Mongolian: Mongolyen
+Montenegrin: Montenegwo
+Moroccan: Mawoken
+Mossi: =
+Myanmar: Myanma
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Nò)
+Ndebele (South): Ndebele (Sid)
+Ndebele: =
+Ndonga: =
+Neapolitan: Napolitèn
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Nò
+Norwegian (Bokmål): Nòvejyen (Bokmål)
+Norwegian (Nynorsk): Nòvejyen (Nynorsk)
+Norwegian: Nòvejyen
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Oksitan
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Osetik
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: Pangasinàn
+Panjabi: =
+Papiamento: =
+Pashto: =
+Pedi: =
+Persian (Farsi): Pèsik (Farsi)
+Persian (Iran): Pèsik (Iran)
+Persian: Pèsik
+Phoenician: Fenisyen
+Pohnpeian: =
+Polish: Polonè
+Portuguese: Pòtigè
+Portuguese/Brazil: Pòtigè / Brezil
+Punjabi (India): Punjabi (Lend)
+Punjabi (Pakistan): =
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: =
+Romansh: =
+Romany: =
+Rundi: =
+Russian (Moldavia: Ris (Moldavi
+Russian (Republic of Moldova): Ris (Repiblik Moldavi)
+Russian: Ris
+Sami (Inari): =
+Sami (Lappish): Sami (Lapon)
+Sami (Lule): =
+Sami (Northern): Sami (Nò)
+Sami (Skolt): =
+Sami (Southern): Sami (Sid)
+Sami: =
+Samoan: =
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: Sard
+Sasak: =
+Scots (Gaelic): =
+Selkup: =
+Serbian (Upper): Sèb (Upper)
+Serbian: Sèb
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Sisilyen
+Sindhi: =
+Sinhala: =
+Slavic: Slav
+Slovak: =
+Slovenian: Sloveni
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): =
+Sorbian (Upper): =
+Sorbian: =
+Sotho: =
+Spanish (Argentina): Panyòl (Ajantin)
+Spanish (Bolivia): Panyòl (Bolivi)
+Spanish (Chile): Panyòl (Chili)
+Spanish (Colombia): Panyòl (Kolonbi)
+Spanish (Costa Rica): Panyòl (Costa Rica)
+Spanish (Dominican Republic): Panyòl (Repiblik Dominikèn)
+Spanish (Ecuador): Panyòl (Ekwatè)
+Spanish (El Salvador): Panyòl (El Salvador)
+Spanish (Guatemala): Panyòl (Gwatemala)
+Spanish (Honduras): Panyòl (Ondiras)
+Spanish (Mexico): Panyòl (Meksik)
+Spanish (Nicaragua): Panyòl (Nikaragwa)
+Spanish (Panama): Panyòl (Panama)
+Spanish (Paraguay): Panyòl (Paragwe)
+Spanish (Peru): Panyòl (Perou)
+Spanish (Puerto Rico): Panyòl (Puerto Rico)
+Spanish (Spain): Panyòl (Espay)
+Spanish (Uruguay): Panyòl (Irigwe)
+Spanish (Venezuela): Panyòl (Venezyela)
+Spanish: Panyòl
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumeryen
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Swedish (Fenlann)
+Swedish (Sweden): Syèd (Syèd)
+Swedish: Syèd
+Syriac: Siryak
+Tagalog: =
+Tahitian: =
+Tai: =
+Taiwan: =
+Tajik: =
+Tamashek: =
+Tamil: =
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: Tibeten
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Zile Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Tik
+Turkmen: =
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: Ugaritik
+Ukrainian: Ikrenyen
+Umbundu: =
+Urdu: Oudou
+Uyghur: =
+Uzbek: Ouzbek
+Vai: =
+Venda: =
+Vietnamese: Vyetnamyen
+Volapük: Volapuk
+Votic: =
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: =
+Wolaitta: =
+Wolof: =
+Xhosa: Kosa
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: Zapotèk
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: Zoulou
+Browser-defined: Navigatè-defini
+event: evènman
+journal: jounal
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Non itilizatè login valab
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: modpas la pa bon
+no such user: pa gen okenn itilizatè sa yo
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Kont enfim
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Entèval
+Months: Mwa
+Month Days: Jou Mwa
+Days: Jou
+Weeks: Semèn
+Position: Pozisyon
+Until: Jiska
+Count: Konte
+Inclusion Dates: Dat enklizyon
+Exclusion Dates: Dat eksklizyon
+Event Imported: Evènman Enpòte
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Notifikasyon
+authenticate: SMTP Erè: Pa t 'kapab otantifye
+connect_host: SMTP Erè: Pa t 'kapab konekte ak SMTP lame:
+data_not_accepted: SMTP Erè: Done pa aksepte
+encoding: Kodaj enkoni:
+execute: Pa t 'kapab egzekite:
+file_access: Pa t 'kapab jwenn aksè nan dosye:
+file_open: File Erè pa t 'kapab louvri dosye:
+from_failed: Adrès sa a soti nan echwe:
+instantiate: Pa t 'kapab enstansyone fonksyon lapòs
+mailer_not_supported: mailer pa sipòte
+provide_address: Ou dwe bay omwen yon adrès imèl moun k ap resevwa.
+recipients_failed: SMTP Erè: Moun k ap resevwa sa yo echwe:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Mete karaktè wè nan grafik
+Enter the correct letters and numbers...: Mete lèt ki kòrèk yo ak nimewo ki soti nan imaj la nan bwat tèks la. Ti tès sa a sèvi kòm restriksyon aksè kont robo move. Senpleman Reload paj la si grafik sa a twò difisil pou li
+Challenge/Response: Defi / Repons
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Chanje dat ak lè antre sa a?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Ou pa te antre nan yon deskripsyon tou kout
+time prior to work hours...: tan anvan lè travay ...
+Invalid Event Date: Dat Evènman ki pa valab
+Please add a participant: Tanpri ajoute yon patisipan
+Invalid Date: Dat ki pa valab
+You have not entered a valid time of day: Ou pa te antre nan yon lè ki valab nan jounen an.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Kalandriye ID pa ka vid.
+First and last names cannot both be blank.: Premye ak dènye non yo pa ka tou de vid.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Koulè ki pa valab
+Color format should be RRGGBB.: Fòma koulè yo ta dwe #RRGGBB.
+URL cannot be blank.: URL pa ka vid.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Kalite dosye pa matche ak Fòma enpòte
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Koulè ki pa valab pou background dokiman an.
+Invalid color for document title.: Koulè ki pa valab pou tit dokiman an.
+Invalid color for table cell background.: Koulè ki pa valab pou background selil tab la.
+Invalid color for table cell background for today.: Koulè envalid pou background selil tab pou jodi a.
+Invalid work hours.: Lè travay ki pa valab.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL sèvè dwe fini ak yon koupe (/).
+Invalid color for table grid.: Koulè ki pa valab pou kadriyaj tab la.
+Invalid color for event popup background.: Koulè ki pa valab pou background evènman popup.
+Invalid color for event popup text.: Koulè ki pa valab pou tèks popup evènman an.
+Invalid color for table header text.: Koulè ki pa valab pou tèks header tab la.
+Invalid color for table header background.: Koulè envalab pou background header tab la.
+Server URL is required.: Sèvè URL obligatwa.
+Invalid Color: Koulè envalid
+Database Name: Non baz done a
+Full Path (no backslashes): Full Path (pa gen okenn backslashes)
+The password contains illegal characters.: Modpas la gen karaktè ilegal.
+Error you must specify a Single-User Login: Erè: Ou dwe presize yon Login Single-Itilizatè
+Could not find XXX.: Pa t 'kapab jwenn XXX.
+Could not find XXX in DOM.: Pa t 'kapab jwenn XXX nan DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Semèn sa a
+This Month: Mwa sa a
+This Year: Ane sa a
+Exit: Sòti
+Add New Event: Add Nouvo Evènman
+Delete Entries: Efase Entries
+My Views: Opinyon mwen
+Manage Calendar of: Jere Kalandriye nan
+My Reports: Rapò mwen yo
+My Profile: Pwofil mwen
+Public Calendar: Kalandriye piblik la
+Unapproved Events: Evènman ki pa apwouve
+User Manager: Manadjè Itilizatè
+Help Contents: Ede sa
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Anyè baz done Cache
+Create New: Kreye nouvo
+Failure Reason: Rezon ki fè echèk:
+You must manually create database: Ou dwe manyèlman kreye baz done.
+Single-User: Single-Itilizatè
+Test Settings: Tès Anviwònman
+Timezone Conversion Successful: Konvèsyon Orè Siksè
+WebCalendar Installation Wizard Step XXX: WebCalendar Enstalasyon Sòsye Etap XXX
+Password Accepted: Modpas aksepte
+Successful Login: Login siksè
+Password Incorrect: Modpas ki pa kòrèk
+Invalid Login: Login valab
+Display Errors: Montre Erè
+File Uploads: Ranpli Uploads
+Allow URL fopen: Pèmèt URL fopen (obligatwa sèlman si Kalandriye Remote yo te itilize)
+Safe Mode: =
+Safe Mode Allowed Vars: Safe Mode pèmèt Vars (TZ obligatwa sèlman si Safe Mode se sou)
+GD: GD (nesesè pou Fond Imaj gradyan)
+Passwords do not match!: Modpas pa matche ak!
+Unable to write password to settings.php file: Kapab ekri modpas nan dosye "settings.php".
+Password Updated: Modpas Mizajou
+Password has been set: Modpas yo te mete.
+Connection Successful...: Koneksyon avèk siksè  Tanpri ale nan pwochen paj la pou kontinye enstalasyon an.
+Correct your entries or click the Create New...: Korije antre ou oswa klike sou  Kreye nouvo  bouton pou kontinye enstalasyon an.
+Correct your entries and try again.: Korije antre ou yo epi eseye ankò.
+XXX does not exist: XXX pa egziste
+XXX is not writable: XXX pa ekri
+Error Converting Timezone: Erè konvèti Orè
+Error Unable to write to file XXX.: Erè paka ekri nan dosye XXX.
+Please change the file permissions of this file.: Tanpri chanje otorizasyon dosye sa a.
+Please change includes dir permission: Tanpri chanje otorizasyon yo dosye nan "gen ladan" anyè ou a ki pèmèt ekri pa itilizatè lòt.
+Your settings have been saved.: Anviwònman ou yo te sove.
+OFF: =
+ON: SOU
+WebCalendar Setup Wizard: Sòsye Enstalasyon WebCalendar
+This installation wizard will guide you...: Sòsye enstalasyon sa a ap gide ou nan mete kanpe yon enstalasyon debaz WebCalendar.<br>Pou èd ak depanaj gade:<br>
+System Administrators Guide: Gid Administratè Sistèm lan
+Frequently Asked Questions: Kesyon yo poze souvan
+FAQ: =
+Troubleshooting: Depanaj
+Getting Help: Jwenn èd
+Upgrading Guide: Mizajou Gid
+User Supported Wiki: Itilizatè Sipò pou Wiki
+PHP Version Check: PHP Version Tcheke
+Check to see if PHP 7.1.0 or greater is installed.: Tcheke pou wè si PHP 7.1.0 oswa pi gran enstale.
+PHP version: PHP vèsyon
+PHP Settings: Anviwònman PHP
+Detailed PHP Info: Enfòmasyon detaye sou PHP
+settings.php Status: Estati "settings.php"
+Session Check: Sesyon Tcheke
+To test the proper operation of sessions...: Pou teste bon operasyon sesyon yo, rechaje paj sa a. Ou ta dwe wè sesyon kont enkreman an chak fwa.
+SESSION COUNTER: SESYON KONT
+The file permissions of settings.php are set...: Otorizasyon yo dosye nan "settings.php" yo mete pou enstale a pa gen pèmisyon modifye li. Tanpri chanje otorizasyon yo nan dosye sa a kontinye
+The file permissions of the includes directory are set...: Otorizasyon yo dosye nan gen ladan anyè a yo mete pou enstale a pa gen pèmisyon yo kreye yon nouvo dosye. Tanpri chanje otorizasyon anyè sa yo pou kontinye
+Your settings.php file appears to be valid.: Dosye "settings.php" ou a parèt valab.
+Configuration Wizard Password: Konfigirasyon Sòsye Modpas
+Create Settings File Password: Kreye Anviwònman File Modpas
+db setup directions...: Nan seksyon sa a ou pral mete kanpe ak tès yon koneksyon ak sèvè baz done ou. Enfòmasyon kont lan apwovizyone ta dwe gen otorizasyon konplè pou kreye baz done, tab ak itilizatè yo. Si sa a pa posib, oswa aksè baz done ou limite, ou pral gen manyèlman configured baz done ou.
+Database Status: Estati baz done a
+Supported databases for your PHP installation: Baz done sipòte pou enstalasyon PHP ou
+Your current database settings are able to access the database.: Anviwònman baz done ou ye kounye a kapab jwenn aksè nan baz done a.
+Please Test Settings: Tanpri Teste Anviwònman
+Your current database settings are not able...: Anviwònman baz done ou ye kounye a yo pa kapab jwenn aksè nan baz done a oswa ou poko teste.
+Database Settings: Anviwònman baz done
+Database Type: Kalite baz done
+Server: Sèvè
+Connection Persistence: Koneksyon Persistence
+All your database tables appear to be up...: Tout tab baz done ou parèt yo dwe ajou. Ou ka ale nan paj kap vini an epi konplete konfigirasyon WebCalendar ou an.
+This appears to be a new installation...: Sa parèt tankou yon nouvo enstalasyon. Si sa pa kòrèk, tanpri tounen nan paj anvan an epi korije anviwònman ou yo.
+This appears to be an upgrade...: Sa parèt tankou yon ajou soti nan vèsyon XXX pou AAAA.
+The database requires some data input...: Baz done a mande pou kèk opinyon done Klike sou Mizajou baz done a fini ajou la.
+In this section we will perform...: Nan seksyon sa a nou pral fè chanjman yo pote baz done ou jiska nivo yo mande yo. Si w ap itilize yon baz done konplètman sipòte, etap sa a pral fèt otomatikman pou ou. Si ou pa, SQL ki nesesè yo ka parèt epi ou ta dwe kapab koupe li epi kole li nan fenèt rechèch sèvè baz done ou a.
+No database actions are required.: Pa gen aksyon baz done ki nesesè.
+The following database actions are required: Aksyon sa yo baz done yo obligatwa
+ODBC Underlying Database: ODBC sou baz done:
+Automatic installation not supported: Enstalasyon otomatik pa te konplètman aplike pou kalite baz done ou. Ou pral gen manyèlman kreye tab yo mande yo lè l sèvi avèk SQL apwovizyone la. Tanpri klike sou  Montre SQL  pou kontinye. Koupe epi kole nan fenèt rechèch baz done ou a.
+This may take several minutes to complete: Sa ka pran plizyè minit pou konplete.
+Install Database: Enstale baz done
+Update Database: Mizajou baz done
+Display Required SQL: Montre Obligatwa SQL
+Return to previous page after processing SQL.: Apre manyèlman trete SQL sa a, ou pral bezwen pou retounen nan paj anvan an ak teste baz done ou a pou ke script la ka detekte chanjman yo.
+This is the final step in setting up your WebCalendar Installation.: Sa a se etap final la nan mete kanpe Enstalasyon WebCalendar ou.
+Timezone Conversion: Konvèsyon Timezone
+It appears that you have NOT converted...: Li parèt ke ou PA konvèti done ki deja egziste evènman WebCalendar ou a GMT. Si ou genyen, ou ka inyore avi sa a epi ou pa kontinye ak konvèsyon an. Si sa a se yon nouvo enstalasyon, ou ka inyore avi sa a tou.
+Convert Data to GMT: Konvèti Done nan GMT
+Application Settings: Anviwònman Aplikasyon
+HTTP-based authentication was not detected...: Otantifikasyon HTTP ki baze sou pa te detekte. Ou pral bezwen rkonfigurasyon sèvè entènèt ou si ou vle chwazi 'sèvè entènèt' nan 'Otantifikasyon Itilizatè' chwa ki anba yo.
+HTTP-based authentication was detected...: Otantifikasyon HTTP ki baze sou te detekte. Se otantifikasyon itilizatè ki te okipe pa sèvè entènèt ou an. Ou ta dwe chwazi 'sèvè entènèt' nan lis chwa 'Otantifikasyon Itilizatè' anba a.
+Create Default Admin Account: Kreye Default Admin Kont
+(Admin Account Not Found): (Kont Admin pa jwenn)
+User Authentication: Otantifikasyon Itilizatè
+Web-based via WebCalendar (default): Web ki baze sou atravè WebCalendar (default)
+Web Server (not detected): Sèvè entènèt (pa detekte)
+Web Server (detected): Sèvè entènèt (detekte)
+None (Single-User): Okenn (Single-Itilizatè)
+Read-Only: Li sèlman
+Environment: Anviwònman
+Production: Pwodiksyon
+Development: Devlopman
+Save Settings: Sove Anviwònman
+Launch WebCalendar: Lanse WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Erè mete ajou tab "XXX": AAA.
+Conversion Successful: Konvèsyon avèk siksè 
+Perl script required: Vèsyon anvan ou nan WebCalendar mande pou kouri yon script PERL konvèti done ou. Tanpri kouri /tools/upgrade_to_0.9.7.pl Lè sa a, retounen nan paj sa a kontinye.
+previous version requires updating several tables: Vèsyon anvan ou nan WebCalendar mande pou mete ajou plizyè tab baz done.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: PA GEN PREVIZYON DISPONIB
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Erè konekte nan baz done
+Include Path: Mete Path
+Deleting events for: Efase evènman pou
+Importing events for: Enpòte evènman pou
+No data returned from: Pa gen done retounen nan
+for non-user calendar: pou kalandriye ki pa itilizatè
+No Remote Calendars found: Pa gen Kalandriye Remote yo te jwenn
+Remote Calendars not enabled: Kalandriye Remote pa pèmèt
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: pa t 'kapab jwenn id evènman
+could not find event id XXX in database.: pa t 'kapab jwenn evènman id XXX nan baz done.
+task: travay
+This is a reminder for the XXX detailed below.: Sa a se yon rapèl pou XXX detaye anba a.
+Pecentage Complete: Pousantaj Ranpli
+Reminder: Rapèl
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Aksyon ki pa sipòte: XXX.
+No event id specified.: Pa gen evènman id espesifye.
+Not authorized (not admin).: Pa otorize (pa admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Tcheke pou evènman pou XXX soti nan dat AAA jiska dat ZZZ.
+Found XXX events in time range.: Twouve evènman XXX nan seri tan.
+Event id=XXX YYY at ZZZ on AAA.: Id Evènman = XXX "AAA" nan ZZZ sou AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Pèmèt XXX itilizatè yo wè kalandriye lòt itilizatè a.
+Error Email reminders disabled for user XXX.: Erè: Imèl rapèl enfim pou itilizatè "XXX".
+Number of site_extras XXX.: Kantite sit_extras: XXX.
+Reminder set for event.: Rapèl mete pou evènman an.
+Mins Before XXX.: Min Anvan: XXX.
+Event time is XXX.: Tan evènman an se: XXX.
+Remind time is XXX.: Raple tan se: XXX.
+Reminders for user XXX, login YYY.: Rapèl pou itilizatè "XXX", konekte "AAA".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Lè w pa apwouve pou itilizatè "XXX".
+Event id=XXX YYY already sent.: ID Evènman = XXX "AAA" deja voye.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Pa gen okenn login obligatwa pou mòd sèl-itilizatè.
+No login required for HTTP authentication.: Pa gen okenn login obligatwa pou otantifikasyon HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Karaktè envalid nan login.
+Username XXX does not exist.: Non itilizatè "XXX" pa egziste.
+You cannot remove admin rights from yourself!: Ou pa ka retire dwa admin nan tèt ou!
+Unknown error saving user: Unknown erè ekonomize itilizatè.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Pa jwenn okenn patisipan pou id evènman: XXX.
+Db error Could not find event id XXX.: Db erè: pa t 'kapab jwenn ID evènman XXX.
+Error Could not find event id XXX in database.: Erè: Pa t 'kapab jwenn evènman ID XXX nan baz done.

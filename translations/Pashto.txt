@@ -1,0 +1,2387 @@
+# Pashto ps
+#
+# ب formatه د اختیاري سرۍ لري:
+#
+# ژباړل شوی لخوا: ستاسو نوم او بریښنالیک
+# وروستی تازه: د ژباړې نیټه
+# (مخکښ "#" او د تیرو ژباړونکو لخوا کومې څرګندونې په شمول.
+# لومړی لومړی خالي لاین د دې سرلیک څرګندونې پای ته رسوي.)
+#
+# د اړتیا له مخې ډیری لخوا تعقیب شوي:
+#
+# انګلیسي جمله: ژباړه
+# (یوه کرښې ته. مخکښ "#" پرته.
+# د انګلیسي جمله: "په شمول استعمار": "د لخوا لخوا چمتو شوی
+# د ویب کالیډر پرمختیا کونکي. ستاسو برخه "ژباړه" ده.)
+#
+# د وسیلو لارښود ستاسو سره د مرستې لپاره دوه پرل سکریپټونه لري:
+# - check_translation.pl
+# اشاره کوي که ټول متن په بریالیتوب سره وژباړل شو.
+# - update_translation.pl
+# به د پروګرام فایلونه تجزیه کړي ترڅو ټولې ژباړې ('عبارت') ومومي او
+# توکی ټاپ ('فقره'). دا به د پا toې مطابق فقرې تنظیم کړي
+# (دوتنه) چې لمړی ځل پکې شتون لري. په اختیاري ډول ، دا کولی شي ټګ کړي
+# عبارتونه چې تر دې دمه په ژباړل شوي ندي
+#  << MISSING >>
+# د ټکي په پورتنۍ کرښه کې. او ، که جمله لنډې وي ،
+# دا به د جملې لاندې کرښه کې د انګلیسي بشپړ متن ولري.
+#
+# یادونه: زه د ټول فایل اندازه کمولو هڅه کوم. که "ژباړه"
+# ټکي / ټکي ستاسو په ژبه او انګلیسي کې یو شان دي ، یوازې یو "=" نښه وکاروئ.
+#
+# یادونه: تاسو به د ننوتلو لپاره وګورئ "May_" لاندې. د دې لپاره یو دلیل شتون لري.
+# ژباړه "May_" د پوره میاشت نوم او "May" ته ،
+# معمولا درې لیکونه ، میاشت لنډیز (لکه "اکتوبر" لپاره د "اکتوبر").
+#
+# ما د دې لپاره ګوګل ژباړن کارولی.
+# دا باید کافی وي ترڅو چې اصلي خبرې کوونکی د دې تصدیق وکړي.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: rtl
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: ګورتکارلر
+version XXX: نسخه XXX
+WebCalendar is a PHP application used...: ویب کیلندر د پی ایچ پی غوښتنلیک دی چې د واحد کارونکي یا د انټرنیټ / کاروونکو ګروپ ګروپ لپاره کیلنڈر ساتلو لپاره کارول کیږي. دا د پیښې تقویم په توګه هم تنظیم کیدی شي.
+Credits: کریډیټونه
+About: په اړه
+OK: سمه ده
+
+########################################
+# Page: access.php
+#
+Database error XXX.: د ډیټابیس تېروتنه: XXX.
+DEFAULT CONFIGURATION: د پیژندنې تګلاره
+Go: ځه
+Save: خوندي کړئ
+Undo: ړنګول
+Public Access: عامه لاسرسی
+Admin: اډمین
+User Access Control: د کاروونکي لاسرسي کنټرول
+Allow Access to Other Users Calendar: د نورو کاروونکو تقویم ته د لاسرسي اجازه
+Grant This User Access to My Calendar: دا کارونکي زما کليز ته لاسرسی ورکړئ
+Type: ډول
+Calendar: کليز
+View Event: پیښه وګوره
+View: لید
+Edit: سمول
+Approve/Reject: منظور / رد
+Events: پیښې
+Tasks: ټاسکونه
+Journals: ژورنالونه
+Can Invite: بلنه ورکولای شي
+Can Email: بریښنالیک کولی شي
+Can See Time Only: یوازې وخت لیدلی شئ
+Assistant: معاون
+Select All: ټول وټاکئ
+Clear All: ټول پاک کړه
+Public: عامه
+Confidential: محرم
+Private: شخصي
+
+########################################
+# Page: activity_log.php
+#
+Next: بل
+Previous: تېر
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: پیښه XXX دمخه ستاسو په کیلنڈر کې ده.
+Invalid entry id XXX.: د ننوتلو ناسمه ID: "XXX".
+a XXX event may not be added to your calendar: دا د ایکس این ایکس پیښه ده او ممکن ستاسو کیلنر کې اضافه نشي.
+confidential: محرم
+private: ځاني
+Error adding event XXX.: د پیښې په اضافه کولو کې تېروتنه: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: د تنظیم کولو غیرقانوني نوم "XXX".
+Select: وټاکئ
+Day: ورځ
+Week: اونۍ
+Month: میاشت
+Year: کال
+Bottom: ښکته
+Top: سر
+Anyone: هرڅوک
+Participant: برخه اخیستونکی
+Settings: امستنې
+Groups: ډلې
+NonUser Calendars: بې کارونکي جنتري
+Other: نور
+Email: بریښنالیک
+Colors: رنګونه
+Document background: لاسوند شالید
+Document title: لاسوند
+Document text: لاسوند متن
+My event text: زما د پیښې متن
+Table grid color: د میز ګرډ رنګ
+Table header background: د میز سرۍ شالید
+Table header text: د میز سرۍ متن
+Table cell background: د میز حجره شالید
+Table cell background for current day: د نن ورځې لپاره د میز حجرو شالید
+Table cell background for days with events: د پیښو سره ورځو لپاره د میز حجرو شالید
+Table cell background for weekends: د اونۍ پای لپاره د میز حجرو شالید
+Table cell background for other month: د بلې میاشتې لپاره د میز حجرو شالید
+Week number color: د اونۍ شمیره رنګ
+Event popup background: د پیښې پاپ اپ شالید
+Event popup text: د پیښې پاپ اپ متن
+System Settings: د سیستم امستنې
+Help: مرسته
+System options: د سیسټم اختیارونه
+app-name-help: د غوښتنلیک نوم مشخص کوي چې د ټولو پا pagesو لپاره او د ننوتنې پا onې لپاره به د براوزر سرلیک بار کې څرګند شي. هغه ارزښت چې تاسو یې دلته مشخص کوئ به د ژباړې فایل کې وکتل شي تاسو ته اجازه درکوي د مختلف ژبو لپاره مختلف سرلیکونه چمتو کړئ.
+Application Name: د غوښتنې نوم
+Translated Name (XXX): ژباړل شوی نوم (XXX)
+server-url-help: د غوښتنلیک لپاره اساس URL مشخص کوي. دا به شامل وي کله چې د بریښنالیک یادونې او خبرتیاوې لیږلو کې شامل وي.
+Server URL: د سرور URL
+home-url-help: د غوښتنلیک لپاره د کور URL مشخص کوي. دا مطلق یا نسبتا کیدی شي
+Home URL: کور پا .ه
+language-help: ټاکي چې کومه ژبه وکاروو.
+Language: ژبه
+Your browser default language is XXX.: ستاسو د براوزر ډیفالټ ژبه "XXX" ده.
+Allow user to use themes: کارن ته اجازه ورکړئ چې موضوعات وکاروي
+themes-help: د تنظیم تنظیماتو ډله ایز تازه کولو ته اجازه ورکوي. د ټیټ قضیې لیبلونه یوازې د کارن لپاره چمتو دي.
+Themes: موضوعات
+AVAILABLE THEMES: د ترلاسه کولو موضوعات
+None: هیڅ نه
+Preview: مخلید
+Site customization: د ځای تنظیمول
+custom-script-help: د دودیز جاواسکریپټ یا سټایل شیټ متن ته د ننوتلو اجازه ورکوي چې د هر پا ofې HTML "سر" برخې ته به دننه شي.
+Custom script/stylesheet: دودیز سکریپټ / سټایل شیټ
+custom-header-help: دودیز HTML سنیپټ ته اجازه ورکوي چې د هرې پا ofې په سر کې شامل شي.
+Custom header: دودیز سرۍ
+custom-trailer-help: د دود پا HTMLې HTML سنیپټ ته اجازه ورکوي چې د هر پا ofې په پای کې شامل شي.
+Custom trailer: ګمرک ټریلر
+enable-external-header-help: دودیز ټریلر ته اجازه ورکوي چې له بهرني فایل څخه پورته شي
+Allow external file for header/script/trailer: د سرۍ / سکریپټ / ټریلر لپاره بهرني فایل ته اجازه ورکړئ
+Allow user to override header/trailer: کارونکي ته اجازه ورکړئ سرلیک / ټریلر پراخه کړي
+Date and Time: نیټه او وخت
+server-tz-help: مشخص کوي چې څومره ساعتونه د UTC څخه سرور وخت ته وخت تنظیم کړئ.
+Server Timezone Selection: د سرور ټایم زون انتخاب
+tz-help: مشخص کوي چې څو ساعته وخت له UTC څخه ځایی وخت ته تنظیم کړئ.
+Default Client Timezone Selection: د مراجع د وخت زون انتخاب
+display-general-use-gmt-help: که چیرې فعال شي ، عام نیټې / وختونه د GMT په توګه ښودل کیږي
+Display Common Use Date/Times as GMT: د GMT په توګه د عام استعمال نیټه / وخت ښودل
+date-format-help: د ټاکل شوي نیټې ب formatه مشخص کوي.
+Date format: نیټه ب .ه
+Small Task Date: د کوچني کار نیټه
+display-week-starts-on: د اونۍ ورځ مشخص کوي چې اونۍ پیل کیږي. که پیر ټاکل شوی وي ، نو د اونۍ شمیرې به د ISO اونۍ شمیرې وي.
+Week starts on: اونۍ پیل کیږي
+display-weekend-starts-on: د اونۍ پای پیل لپاره د اونۍ ورځ ټاکي
+Weekend starts on: د اونۍ پای پیل کیږي
+time-format-help: مشخص کوي چې د وخت ب useه څنګه کارول کیږي:<br><em>12 ساعت:</em> وخت د سهار په 3 بجو ، د ماښام په ،: etc.، بجو. وغيره.<br><em>hour 24 ساعته:</em> د وخت وخت 300 300 300 ښودل ، 2030 ، وغيره.
+Time format: د وخت ب .ه
+12 hour: 12 ساعته
+24 hour: 24 ساعته
+timed-evt-len-help: د ټاکل شوي پیښې اوږدوالي د ټاکلو لپاره د ان پټ میتود مشخص کوي.
+Specify timed event length by: د وخت ټاکل شوي وخت اوږدوالي مشخص کړئ
+Duration: دوره
+End Time: د پای وخت
+work-hours-help: د ورځې لید لپاره د ښودلو لپاره د وخت اندازه ټاکي.
+Work hours: د کار ساعتونه
+From: له
+to: ته
+Appearance: ظاهري ب .ه
+preferred-view-help: د ډیفالټ لید ټاکي (ورځ ، اونۍ ، میاشت ، یا کال).
+Preferred view: غوره شوی لید
+Allow top menu: پورته مینو ته اجازه ورکړه
+Date Selectors position: د نیټې انتخاب کونکي موقعیت
+menu-themes-help: د پورتنۍ مینو رنګ او ډول ټاکي
+Menu theme: د مینو موضوع
+fonts-help: د کارولو لپاره د سیسټم فونټونو لیست ټاکي (لکه "ایریل ، هیلویټیکا")
+Fonts: لیکب .ې
+display-sm_month-help: که چیرې فعال شي ، د میاشتې لیدونو کې کوچني میاشتې ښیې
+Display small months: کوچنۍ میاشتې ښودل
+display-weekends-help: د اونۍ پای کې شامل کړئ کله چې د اونۍ لیدل کیږي.
+Display weekends: د اونۍ پای ښودل
+display-long-daynames-help: که چیرې فعال شي ، د اوږدې ورځې نومونه ښودل کیږي
+Display long day names: د اوږدې ورځې نومونه ښودل
+display-alldays-help: د میاشتې لیدونو کې مخکینۍ او راتلونکي میاشتې ورځې ښودل ، ټولې حجرې ډک کړئ.
+Display all days in month view: د میاشتې لید کې ټولې ورځې ښودل
+display-week-number-help: مشخص کوي چې ایا د اونۍ شمیره (1-52) باید د میاشتې لید او د اونۍ لید کې ښودل شي.
+Display week number: د اونۍ شمیره ښودل
+display-desc-print-day-help: د ورځ لید پرنټر ملونکي نسخه کې د پیښې توضیحات شامل کړئ.
+Display description in printer day view: د پرنټر ورځ لید کې توضیحات ښودل
+yearly-shows-events-help: په کلني لید کې ، هغه ورځې وښایه چې په بولډ فونټ کې پیښې پکې شامل وي.
+Display days with events in bold in month and year views: ورځې په جریان کې په میاشت او کال لیدونو کې پیښو سره وښایاست
+display-minutes-help: که چیرې فعال شي ، دقیقې سره پای: 00 به تل ښکاره شي
+Display 00 minutes always: minutes 00 دقیقې تل ښودل
+display-end-times-help: د غونډې پای وختونه ښودل که پیښه شوي وخت وي
+Display end times on calendars: د کال وختونو کې د پای وخت ښودل
+allow-view-add-help: A '+' عکس به په لیدونو کې شامل شي ، کاروونکو ته اجازه ورکوي چې ژر تر ژره د نورو کاروونکو تقویم کې پیښې اضافه کړي.
+Include add event link in views: په لیدونو کې د پیښې لینک اضافه کړئ
+lunar-help: که چیرې فعال شي ، نو کوچني شیان به وښیې چې هره میاشت د قمري مرحلو نمایندګي کوي
+Display Lunar Phases in month view: د میاشتې لید کې د قمري مرحلو ښودل
+Restrictions: محدودیتونه
+allow-view-other-help: مشخص کوي چې ایا یو کارن ممکن د بل کارن تقویم وګوري.
+Allow viewing other users calendars: د نورو کارن کیلنرونو لیدلو ته اجازه ورکړئ
+require-approvals-help: کله چې فعال شوی ، یو کارونکی باید پیښه د دوی په کیلنڈر کې ښکاره کیدو دمخه تصویب کړي (پرته لدې چې تایید شوی غیر نافع شوی چالان شوی وي). د دې "نه" سره ټایپ کول به د عامه لاسرسي تقویم لپاره تصویبونه بند نه کړي (که چیرې د عامه لاسرسي کیلنجر فعال شي).
+Require event approvals: د پیښې تصویب ته اړتیا ده
+display-unapproved-help: مشخص کوي چې ایا نامعلومه شوې پیښې ستاسو په کیلنډر کې ښودل شوي. نه منل شوي پیښې باید لا دمخه تصویب شي مخکې لدې چې دا ستاسو په کیلنڈر کې ښکاره شي.
+Display unapproved: ناتاييد شوي ښودل
+conflict-check-help: د پیښې شخړو لپاره چیک کړئ (د ورته شخص لپاره د ورته وخت لپاره دوه پیښې ټاکل شوي). که تاسو دا "هو" ته ټاکئ ، نو تاسو به د خبرداری تایید وروسته په ورته وخت کې دوه پیښې مهالویش کړئ. که تاسو دا "نه" ته ټاکلی وي ، نو د شخړو لپاره به هیڅ ډول پلټنه ونه کړي. تاسو شاید وغواړئ چې دا "هو" سره وټاکئ ، نو د شخړې معاینه کیږي.
+Check for event conflicts: د پیښې شخړو لپاره چیک کړئ
+Yes: هو
+No: نه
+conflict-months-help: که چیرې د شخړې معاینه په ځای وي ("د پیښو شخړو لپاره چک وکړئ" "نه" & # 41 ته ټاکل شوي ، دا په ګوته کوي چې په راتلونکي کې موږ باید څو میاشتې د شخړو لپاره وڅیړو. که تاسو موندلي چې پیښې اضافه کول یې ډیر وخت نیسي ، دا شمیره کم کړئ.
+Conflict checking months: د شخړې معاینې میاشتې
+conflict-check-override-help: کاروونکو ته اجازه ورکوي چې د پیښې شخړې راوباسي او د ورته وخت لپاره دوه یا ډیر پیښې مهالویش کړي.
+Allow users to override conflicts: کاروونکو ته اجازه ورکړئ چې شخړې واوړي
+limit-appts-help: د سیسټم مدیر ته اجازه ورکوي چې د مقرراتو په شمیر باندې د سیسټم پراخه حد تنظیم کړي چې یو کارونکی یې په یوه ورځ کې کولی شي.
+Limit number of timed events per day: په ورځ کې د وخت تنظیم شوي پیښې محدودیت
+limit-appts-number-help: د وخت ټاکل شوي پیښو اعظمي شمیر په ګوته کوي چې کارونکي یې په یوه ورځ کې کولی شي.
+Maximum timed events per day: په ورځ کې د وخت اعظمي وخت
+crossday-help: که چیرې فعال شي ، پیښې چې پراخې ورځې به په جلا ورځو کې ښکاره شي
+Disable Cross-Day Events: د سره صلیب ورځې پیښې غیر فعال کړئ
+disable-location-field-help: د "هو" غوره کول به د پیښې د معلوماتو پا fromو څخه د "موقعیت" ساحه لرې کړي
+Disable Location field: د ځای ساحه ناتوانه کړئ
+disable-url-field-help: د "هو" غوره کول به د پیښې د معلوماتو پا fromو څخه "URL" ساحه لرې کړي
+Disable URL field: د URL ساحه ناتوان کړئ
+disable-priority-field-help: د "هو" غوره کول به د پیښو معلوماتو پا pagesو څخه "لمړیتوب" ساحه لرې کړي ، د نووسکونو لپاره یو ساده انٹرفیس چمتو کوي.
+Disable Priority field: د لومړیتوب ډګر ناتوان کړئ
+disable-access-field-help: د "هو" غوره کول به د پیښې معلوماتو پا pagesو څخه د "لاسرسي" ساحه لرې کړي ، د نووسکونو لپاره یو ساده انٹرفیس چمتو کوي.
+Disable Access field: د لاسرسي ډګر ناتوان کړئ
+disable-participants-field-help: د "هو" غوره کول به د پیښې معلوماتو پا pagesو څخه "برخه اخیستونکي" ساحه لرې کړي ، د کاروونکو مخنیوی به د دوی کاروونکو ته نور کاروونکي اضافه کړي. که تاسو دا اختیار فعال کړئ ، نو تاسو ممکن د "نورو کارنانو کیلنرونو لیدلو ته اجازه ورکړئ" فیلډ هم غیر فعال کړئ.
+Disable Participants field: د برخه والو برخه ناتوان کړئ
+disable-repeating-field-help: د "هو" غوره کول به د پیښو اضافه کولو پرمهال د "تکرار" ساحه لرې کړي. دا به د نویو زده کونکو لپاره یو ساده انٹرفیس چمتو کړي.
+Disable Repeating field: د تکرارونې ډګر ناتوان کړئ
+allow-html-description-help: که چیرې فعال شوي ، کارونکي کولی شي د پیښې توضیح کولو ډګر کې HTML ته ننوځي. که چیرې وړ نه وي ، د HTML ټاګونه به وتښتي ترڅو د ساده متن په څیر څرګند شي. خبرداری: د دې ب Enې فعالول به کاروونکو ته اجازه ورکړي چې په نورو ویب پا onو کې عکسونو ته مراجعه وکړي.
+Allow HTML in Description: په تفصیل کې HTML ته اجازه ورکړئ
+Popups: پاپ اپ
+disable-popups-help: د کیلنر لیدونو څخه پاپ اپونه غیر فعال کړئ
+Disable Pop-Ups: د پاپ اپ غیر فعال کړئ
+popup-includes-siteextras-help: که چیرې فعال شوي وي ، نو په سایټ_ټیکټراس. پی ایچ پی فایل کې د ګمرکي پیښې ساحې تنظیم کولو ته اجازه ورکړئ د پیښې پاپ اپ کې به ښودل شي.
+Display Site Extras in popup: په پاپ اپ کې د سایټ اضافي ښودل
+popup-includes-participants-help: که چیرې فعال شوي ، برخه وال د پیښې په پاپ اپ کې ښودل شوي.
+Display Participants in popup: په پاپ اپ کې برخه اخیستونکي وښایه
+Miscellaneous: متفرقه
+remember-last-login-help: کله چې فعال شي ، د کارونکي ننوتل به د دوی لپاره د ننوتنې پا pageه کې ډک شي (مګر رمز نه وي) ، او د کارونکي غوره توبونه به پورته شي (د دوی غوره شوي رنګونو او ژبې انتخاب په شمول).
+Remember last login: وروستی ننوتل په یاد وساتئ
+summary_length-help: د کیلنر لیدونو کې د لنډ تفصیل اعظمي حد
+Brief Description Length: د لنډ لنډیز اوږدوالی
+user_sort-help: د کاروونکي ، غیرسرلیک لیستونو لپاره د ترتیب ترتیب ټاکي
+User Sort Order: د کاروونکي ترتیب ترتیب
+Lastname, Firstname: وروستی نوم لمړی نوم
+Firstname, Lastname: نوم تخلص
+allow-public-access-help: کله چې فعال شي ، کیلنډر د لوستلو وړ عامه کیلنر په توګه کارول کیدی شي چې کاروونکو ته اړتیا نلري ننوځي.
+Allow public access: عامه لاسرسي ته اجازه ورکړه
+public-access-default-visible: د عامه کليز څخه پیښې به په اتوماتيک ډول د ټولو کاروونکو په کیلنډرونو کې څرګند شي
+Public access visible by default: عامه لاسرسي په تلواله ب visibleه لیدل کیږي
+public-access-default-selected: کله چې نوې پیښه اضافه کول ، عامه کارن به د ډیفالټ لخوا د برخه اخیستونکي په توګه وټاکل شي.
+Public access is default participant: عامه لاسرسی د ډیفالټ برخه اخیستونکی دی
+public-access-view-others-help: کله چې عامه لاسرسی سره سیسټم ته لاسرسی ومومي ، مشخص کوي چې ایا کارن کولی شي د بل کیلنر کارونکي کیلنر وګوري.
+Public access can view other users: عامه لاسرسی کولی شي نور کارونکي وګوري
+public-access-can-add-help: کله چې فعال شي ، کاروونکي چې د عامه لاسرسي له لارې سیسټم ته لاسرسی به د نوي پیښو اضافه کولو توان ولري ، مګر دوی به په تقویم کې نه ښودل کیږي ترڅو چې اداره نوې پیښه تصویب کړي.
+Public access can add events: عامه لاسرسی کولی شي پیښې اضافه کړي
+public-access-add-requires-approval-help: مشخص کوي چې ایا د عامه لاسرسي حساب له لارې شامل شوي پیښې د ښودلو دمخه تصویب ته اړتیا لري.
+Public access new events require approval: د عامه لاسرسي نوې پیښې تصویب ته اړتیا لري
+public-access-sees-participants-help: که چیرې فعال شي ، کارونکي د عامه حساب څخه کليز ته لاسرسی به د دې وړتیا ولري چې د پیښې برخه وال وګوري که چیرې دوی د پیښې توضیحات وګوري.
+Public access can view participants: عامه لاسرسی کولی شي ګډونوال وګوري
+public-access-override-help: د پیښې نومونو او توضیحاتو ته اجازه درکوي چې په عامه کیلنڈر کې پټ شي
+Override event name/description for public access: د عامه لاسرسي لپاره د پیښې نوم / توضیحات پراخه کړئ
+public-access-override-text-help: د ښودلو لپاره متن که پورته پورتنی غوراوی فعال شوی وي. که 'شتون نلري' ، نو دا به ژباړل شي.
+Text to display to public access: د خلکو لاسرسي ته د ښودلو لپاره متن
+public-access-captcha-help: که چیرې فعال شوي ، نوو پیښو د عامه لخوا اضافه شوي د CAPTCHA تایید ته اړتیا لري.
+Require CAPTCHA validation for public access new events: د عامه لاسرسي نوي پیښو لپاره د کیپچا اعتبار ته اړتیا ده
+uac-enabled-help: د کاروونکي کچې لاسرسي کنټرول وړوي
+User Access Control enabled: د کارونکي لاسرسي کنټرول وړ شوی
+groups-enabled-help: د ګروپ ملاتړ چمتو کوي ، کاروونکو ته اجازه ورکوي چې د ډلو په واسطه کاروونکي غوره کړي.
+Groups enabled: ډلې فعالې شوې
+user-sees-his-group-help: که چیرې فعال شي ، کارونکي به د تقویم کارونکي ونه ګوري چې لږترلږه د دوی ډلو څخه نه وي.
+User sees only his groups: کارونکي یوازې خپلې ډلې ګوري
+nonuser-enabled-help: که چیرې فعال شي ، نو منتظمین به د غیرسرلیک کیلنڈرز اضافه کولو اختیار ولري
+Nonuser enabled: غیر کاروونکي تقویمونه فعال شوي
+nonuser-list-help: چیرې چې د برخه اخیستونکي لیست کې د غیرزر کیلندرونه وښودل شي
+Nonuser list: د برخه اخیستونکو لیست کې په
+Upcoming Events: راتلونکي پیښې
+upcoming-events-help: راتلونکی.پی پی فعال کړئ
+Enabled: فعال شوی
+upcoming-events-allow-override: د आगामी.php لپاره د کاروونکي پیرامیټر ته اجازه ورکړئ
+Allow user override: د کارونکي مخور ته اجازه ورکول
+upcoming-events-display-caticons: په راتلونکی. پی پی پی کې د کټګورۍ شبیہیں شامل کړئ
+Display category icons: د کټګورۍ شبیانونه ښودل
+upcoming-events-display-layers: په راتلونکی.پی پی کې پرتونه ښودل
+Display layers: پرتونه وښیه
+upcoming-events-display-links: په راتلونکی.پی پی کې لینکونه وښایاست
+Display links to events: پیښو ته لینکونه وښایاست
+upcoming-events-display-popups: په ای.پی.پی. کې د پیښې پاپ اپ ښودل
+Display event popups: د پیښې پاپ اپ ښودل
+reports-enabled-help: که چیرې فعال شي ، کارونکي به د هرې پا ofې په پای کې د "راپورونو" برخې وګوري او د دودیز راپورونو جوړولو ته به اجازه ورکړل شي. سربیره پردې ، د ادارې کارونکي کولی شي نړیوال راپورونه رامینځته کړي چې د ټولو کارونکو پا pagesو په ښکته برخه کې به څرګند شي.
+Reports enabled: راپورونه فعال شوي
+subscriptions-enabled-help: مشخص کوي که چیرې لیرې کاروونکي وکولی شي د ویب کیلنډ کارونکي کیلنر کې ګډون وکړي ، دوی ته اجازه ورکوي د دوی iCal - وړ شوي غوښتنلیک کې د ویب کیلنجر کارونکي پیښې وګوري (لکه د آپیل iCal یا موزیلا تقویم).
+Allow remote subscriptions: د ریموټ شراکتونو ته اجازه ورکړئ
+remotes-enabled-help: کاروونکو ته اجازه ورکوي د URL په کارولو سره د ریموټ ics فایلونه پورته کړي
+Allow remote calendars: د ریموټ تقویمونو ته اجازه ورکړه
+rss-enabled-help: مشخص کوي که چیرې د کارونکي تقویم د RSS فیډ څخه ترلاسه شي.
+Enable RSS feed: د RSS فیډ فعال کړئ
+categories-enabled-help: د پیښې کټګوریو لپاره ملاتړ چمتو کوي.
+Categories enabled: کټګورۍ فعال شوې
+icon_upload-enabled-help: که چیرې فعال شي ، کارونکي کولی شي د کټګورۍ شبیه اپلوډ کړي
+Category Icon Upload enabled: د کټګورۍ انځورن اپلوډ فعال شوی
+(Requires XXX folder to exist.): (د XXX فولډر شتون لپاره اړتیا لري.)
+display-tasks-help: په میاشت او ورځ تقویم کې د کوچنۍ کاري کړکۍ ښودل
+Display small task list: د کوچنۍ دندې لیست ښودل
+display-tasks-in-grid-help: د پیښو سره په کیلنڈر کې دندې ښودل
+Display tasks in Calendars: په کیلنڈرونو کې دندې ښکاره کړئ
+allow-external-users-help: مشخص کوي چې ایا غیر کیلنډ کاروونکي په پیښه کې اضافه کیدی شي. دا غیر کیلنڈر کاروونکو ته اجازه ورکوي چې د پیښې برخه اخیستونکو په توګه لیست شي.
+Allow external users: بهرني کاروونکو ته اجازه ورکړئ
+external-can-receive-notification-help: کله چې بهرني کارونکي فعال شوي وي او د بریښنالیک کارول فعال شوي وي ، بهرني کارونکي کولی شي د بریښنالیک خبرتیاوې ترلاسه کړي کله چې پیښه اضافه شي ، نوي شي یا حذف شي (که د بهرني کارونکي بریښنالیک پتې چمتو شوې وي).
+External users can receive email notifications: بهرني کارونکي کولی شي د بریښنالیک خبرتیاوې ترلاسه کړي
+external-can-receive-reminder-help: کله چې بهرني کارونکي فعال شوي وي او د بریښنالیک کارول فعال شوي وي ، بهرني کارونکي کولی شي د بریښنالیک یادونه ترلاسه کړي (که د بهرني کارونکي بریښنالیک پتې چمتو شوې وي).
+External users can receive email reminders: بهرني کارونکي کولی شي د بریښنالیک یادونه ترلاسه کړي
+allow-self-registration-help: نويو کاروونکو ته اجازه ورکړئ چې ځانونه ثبت کړي
+Allow self-registration: خپل ځان راجسټریشن ته اجازه ورکړئ
+use-blacklist-help: د IP پتې پراساس د ویب کیلنڈر افعالاتو ته لاسرسی محدود کړئ
+Restrict self-registration to blacklist: خپل ځان راجسټریشن تور لیست پورې محدود کړئ
+allow-self-registration-full-help: نوي کاروونکو ته اجازه ورکړئ چې په آنلاین د ځان ثبتولو پروسې بشپړ کړي
+Use self-registration email notifications: شفرونه تولید او نوي کاروونکو ته واستوئ
+allow-attachment-help: کاروونکو ته اجازه ورکړئ چې په پیښو کې د فایل ضمیمه اضافه کړي.
+Allow file attachments to events: پیښو ته د فایل ضمیمو ته اجازه ورکړئ
+Admin and owner can always add attachments if enabled.: د مدیر او مالکین کولی شي تل ضمیمې اضافه کړي که چیرې فعال وي.
+allow-comments-help: کاروونکو ته اجازه ورکړئ چې پیښو ته خپل نظرونه اضافه کړي.
+Allow comments to events: پیښو ته د نظرونو اجازه ورکړئ
+Admin and owner can always add comments if enabled.: د مدیر او مالکین کولی شي تل څرګندونې اضافه کړي که چیرې فعال وي.
+email-enabled-help: د خبرتیا او یادونې لپاره د بریښنالیک لیږلو ټول یا بل کړئ. "نه" ته تنظیم کړئ ، که ستاسو سرور د میل لیږلو لپاره سم تنظیم نه وي.
+Email enabled: بریښنالیک فعال شوی
+email-default-sender: د بریښنالیک آدرس مشخص کوي ترڅو د لیږونکي په توګه مشخص شي کله چې یادداشت لیږئ.
+Default sender address: د اصلي لیږونکي پته
+email-mailer: د بریښنالیک ډول غوره کړئ (SMTP ، پی ایچ پی میل ، لیږل)
+Email Mailer: بریښنالیک
+email-smtp-host: د SMTP سرور (ه) نومونه د کامې لخوا جلا شوي
+SMTP Host name(s): د SMTP کوربه نوم (نومونه)
+email-smtp-port: د SMTP پورټ نمبر (معمولا 25)
+SMTP Port Number: د SMTP پورټ شمیره
+email-smtp-auth: د SMTP تصدیق وکاروئ
+SMTP Authentication: د SMTP اعتبار
+email-smtp-username: د SMTP کارن نوم که د اعتبار غوښتنه کوي
+SMTP Username: د SMTP کارن نوم
+email-smtp-password: د SMTP رمز که د اعتبار غوښتنه کوي
+SMTP Password: د ایس ایم ټي شفر
+Default user settings: د اصلي کاروونکي امستنې
+email-format: د HTML یا ساده متن پیغامونو لپاره لومړیتوب روښانه کړئ
+Email format preference: د بریښنالیک ب formatه غوره توب
+HTML: =
+Plain Text: ساده متن
+email-include-ics: د بریښنالیک پیغام لپاره د آی کیلندر ICS فایل شامل کړئ
+Include iCalendar attachments: د آی کیلندر ضمیمې شامل کړئ
+email-event-reminders-help: مشخص کوي که نه د پیښې یادونې لیږل.
+Event reminders: د پیښې یادونه
+email-event-added: مشخص کوي که نه د بریښنالیک خبرتیاوې لیږل یا نه کله چې پیښه ستاسو کیلنڈر کې اضافه شي.
+Events added to my calendar: پیښې زما په کیلنډر کې اضافه شوي
+email-event-updated: مشخص کوي که نه د بریښنالیک خبرتیاوې لیږل یا نه کله چې ستاسو په کیلنڈر کې پیښه تازه کیږي.
+Events updated on my calendar: پیښې زما په کیلنڈر کې تازه شوي
+email-event-deleted: مشخص کوي چې ایا د بریښنالیک خبرتیاوې لیږل یا نه باید کله چې پیښه ستاسو له کلینډر څخه حذف شي.
+Events removed from my calendar: پیښې زما له کلینډر څخه لیرې شوې
+email-event-rejected: مشخص کوي که نه د بریښنالیک خبرتیاوې لیږل یا نه کله چې برخه اخیستونکي هغه پیښه رد کړي چې ستاسو په کیلنڈر کې وي.
+Event rejected by participant: پیښه د برخه اخیستونکي لخوا رد شوه
+email-event-create: مشخص کوي چې ایا د ننوتلو خالق به بریښنالیک ترلاسه کړي
+Event that I create: هغه پیښه چې ما رامینځته کړه
+Color options: د رنګ اختیارونه
+Allow user to customize colors: کارونکي ته اجازه ورکړئ چې رنګونه تنظیم کړي
+gradient-colors: که چیرې فعال تدریجي رنګونه وکارول شي. دا کولی شي په فعالیت خورا اغیزه وکړي.
+Enable gradient images for background colors: د شاليد رنګونو لپاره تدریجي عکسونه فعال کړئ
+Not available: نشته
+Background Image options: د شالید انځور اختیارونه
+bgimage-help: د مطلوب شاليد عکس URL. کیدی شي تړاو ولري.
+Background Image: شالید انځور
+bgrepeat-help: د شاليد عکس د چلند تکرار کنټرولوي.
+Background Repeat: د شالید تکرار
+
+########################################
+# Page: adminhome.php
+#
+Assistants: معاونین
+Preferences: غوره توبونه
+Control Panel: د تضمین اداره
+Users: کارونکي
+Account: ګ .ون
+Categories: کټګورۍ
+Views: لیدونه
+Layers: پوړونه
+Reports: راپورونه
+Delete Events: پیښې حذف کړئ
+Activity Log: د چارندتيا يادښت
+System Log: سیسټم ننوتل
+Security Audit: امنیتی پلټنه
+Public Preferences: عامه ترجیحات
+Unapproved Public Events: نامعلومه عامه پیښې
+Administrative Tools: اداري توکي
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: دوه ګونی نوم: "XXX".
+Username XXX already exists.: د "XXX" کارن نوم لا دمخه شتون لري.
+Email address XXX already exists.: د بریښنالیک پته "XXX" دمخه شتون لري.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): اضافي نظرونه (اختیاري)
+Approve and Send: منظور او لیږل
+Approve and Exit: تصویب او وتل
+(Your comments will be emailed to the event creator.): (ستاسو نظرونه به د غونډې جوړونکي ته واستول شي.)
+Hello, XXX.: سلام ، XXX.
+XXX has approved an appointment and added comments.: د لیدو وخت تصویب شوی او نظرونه د XXX لخوا اضافه شوي.
+Subject XXX: موضوع: "XXX".
+Description XXX: توضیحات: "XXX".
+Date XXX: نیټه: XXX
+Time XXX: وخت: XXX
+Comments XXX: نظرونه: XXX
+Approved w/Comments by XXX.: لخوا تاييد شوي W / څرګندونې د: XXX لخوا.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: اډمین اکر
+Your assistants: ستاسو همکاران
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: نامعلومه تېروتنه.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: د برنامې تېروتنه: هیڅ ایکس ایکسکس ټاکل شوی نه دی!
+user: کارن
+year: کال
+month: میاشت
+day: ورځ
+
+########################################
+# Page: category.php
+#
+Category Icon: کټګورۍ نښه
+Global: نړیوال
+The permissions for the icons directory are set to read-only: د شبیه لارښود لپاره اجازه لیکونه یوازې د لوستلو لپاره تنظیم شوي.
+Category Name: د کټګورۍ نوم:
+Color: رنګ
+Remove Icon: ش Removeه لرې کړئ:
+Add Icon to Category: کټګورۍ کې کلیمې اضافه کړئ
+Upload: اپلوډ
+GIF or PNG 6kb max: GIF یا PNG 6kb اعظمي
+Search for existing icons: د شته شبیانو لپاره لټون
+Add: اضافه کول
+Delete: ړنګول
+Are you sure you want to delete this entry?: ایا ته باوري یې چې دا داخله ړنګول غواړې؟
+Make New Category: نوې کټګورۍ جوړه کړئ
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: د کټګورۍ نوم اړین دی
+File size exceeds maximum.: د فایل اندازه تر اعظمي حد زیات ده
+File is not a GIF or PNG image: فایل د GIF یا PNG عکس ندی
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: د پام وړ کتګورۍ
+ENTRY CATEGORIES: کټګورۍ داخل کړئ
+Remove: لرې کړئ
+Global Category: نړیواله کټګورۍ
+Cancel: لغوه کول
+
+########################################
+# Page: colors.php
+#
+Add Custom: دود اضافه کړئ
+Basic Colors: لومړني رنګونه
+Current Color: اوسنی رنګ
+Custom Colors: دودیز رنګونه
+Old Color: زوړ رنګ
+
+########################################
+# Page: combo.php
+#
+Select None: هیڅ نه غوره کړئ
+Agenda: اجنډا
+Add Task: ټاسک اضافه کړئ
+Description: توضيح
+Date: نیټه
+Time: وخت
+Priority: لومړیتوب
+Access: لاسرسی
+Created by: لخوا جوړ شوی
+Updated: تازه شوی
+Participants: برخه اخیستونکي
+Attachments: ضمیمه
+Comments: نظرونه
+Brief Description: لنډ معلومات
+Full Description: بشپړ توضیحات
+Category: کټګورۍ
+Add event detail: د پیښې جزییات اضافه کړئ
+Start Date: پیل نېټه
+Due Date: د تاریخ په مطابق
+Add task detail: د کاري توضیحات اضافه کړئ
+All: ټول
+Error: تېروتنه
+no response from server: د سرور لخوا هیڅ ځواب نشته
+JSON error: د JSON غلطي
+High: لوړ
+Medium: وچ
+Low: ټیټ
+Today: نن
+Add Entry: ورننوتل
+Unnamed Event: نامعلومه پیښه
+Unnamed Task: نامعلوم ټاسک
+Refresh: تازه کړئ
+Click to add entry: د ننوتلو لپاره کلیک وکړئ
+Name: نوم
+pm: ماسپخین
+am: يم
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX ناسته لغوه کړې.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: ناببره بلب ID
+
+########################################
+# Page: docadd.php
+#
+Add Comment: نظر اضافه کړئ
+Add Attachment: ضمیمه کړئ
+Subject: موضوع
+Comment: څرګندونه
+Upload file: دوتنه پورته کول
+
+########################################
+# Page: docdel.php
+#
+Removed: لرې شوی
+
+########################################
+# Page: edit_entry.php
+#
+days: ورځې
+hours: ساعتونه
+minutes: دقیقې
+You are not authorized to edit this task.: تاسو د دې دندې د سمولو واک نه لرئ.
+is in a different timezone than you are. Currently: ستاسو په پرتله په مختلف وخت زون کې دی. اوس مهال
+hour ahead of you: ساعت ستاسو په مخکې
+hour behind you: ساعت ستاسو تر شا
+hours ahead of you: ساعتونه ستاسو په مخکې
+hours behind you: ساعتونه ستاسو تر شا
+XXX is in a different timezone (ahead): (ایکس این ایکس ایکس په مختلف وخت زون کې دی Y YYY ستاسو څخه مخکې دی.<br>& nbsp؛ ZZZ)
+XXX is in a different timezone (behind): (ایکس این ایکس ایکس په مختلف وخت زون کې دی Y YYY ستاسو شاته دی.<br>& nbsp؛ ZZZ)
+Time entered here is based on your Timezone.: دلته داخل شوي وخت ستاسو د وخت زون پر اساس دی.
+Edit Entry: ننوتل
+Details: توضیحات
+Repeat: تکرار کړئ
+Reminders: یادونه
+brief-description-help: دا باید د پیښې یو لنډ وضاحت (شاوخوا 20 حرفونه) چمتو کړي. دا به د پیښې استازیتوب وکړي کله چې کیلنر ګوري.
+full-description-help: دا باید د پیښې جزئیات بشپړ کړي. دا معلومات لیدل کیدی شي کله چې یو کاروونکی پیښه وګوري.
+access-help: د پیښې لاسرسي کچه مشخص کوي. <ul> <li> عامه: هرڅوک کولی شي د پیښې بشپړ توضیحات وګوري.</li> <li> محرم: نور کولی شي وګوري چې تاسو د دې نیټې او وخت لپاره ننوتئ ، مګر د دې په اړه جزئیات نه دي.</li></ul>
+priority-help: د پیښې لومړیتوب مشخص کوي. د لوړ لومړیتوب پیښې به په زړورتیا کې ښودل شي.
+category-help: د پیښې کټګورۍ مشخص کوي.
+completed-help: د نیټې کار بشپړ شوی. یوازې فعال شوي کله چې د ټولو برخه اخیستونکو سلنه 100 als مساوي وي.
+Date Completed: نیټه بشپړه شوه
+percent-help: د دې کارونکي لپاره د کاري تکمیل فیصدي
+Percent Complete: سلنه بشپړه شوه
+All Percentages: ټولې سلنه
+location-help: د پیښې ځای
+Location: ځای
+url-help: د پیښې یو ار ایل
+URL: یو آر ایل
+date-help: د پیښې نیټه مشخص کوي.
+Untimed event: بې وسلې پیښه
+Timed event: وخت په وخت
+All day event: ټوله ورځ پیښه
+Timezone Offset: د وخت زون
+time-help: د پیښې وخت مشخص کوي. <ul> <li> "مهال ویش" (د یوې پیښې لپاره چې په هغه ورځ د ځانګړي وخت لپاره ټاکل شوی وي)</li> <li> "غیر منظم پیښه" (د یوې پیښې لپاره دا وخت نلري (د رخصتۍ په څیر) )</li> <li> "ټوله ورځ پیښه" (د یوې غونډې لپاره چې ټوله ورځ نیسي (لکه د دفتر څخه بهر))</li></ul>
+duration-help: د پیښې موده (په ساعتونو کې؛ دقیقو کې) مشخص کوي. <em>دا ډګر خالي پاتې کیدی شي.</em>
+end-time-help: هغه وخت مشخص کوي چې پیښه د پای تمه کیږي.
+Start Time: د پيل وخت
+Due Time: د وخت ټاکل
+Site Extras: سایټ اضافي
+avail_participants-help: د دې ننوتلو برخه اخیستونکو لیست کړئ.
+Available: شتون لري
+Find Name: نوم ومومئ
+Resources: سرچینې
+participants-help: د دې ننوتلو برخه والو لیست کړئ.
+Selected: ټاکل شوی
+Availability: شتون
+external-participants-help: د غونډې لپاره د برخه اخیستونکو لیست ټاکي چې د تقویم کاروونکي ندي. کارونکي باید په هره کرښه کې یو لیست شي او د بریښنالیک پته پکې شامل شي. که چیرې د بریښنالیک آدرس مشخص شوی وي ، نو کارن د خبرتیاوو او یادونو ترلاسه کولو لپاره وړ دی.
+External Participants: بهرني برخه اخیستونکي
+repeat-type-help: غوره کړئ چې پیښه باید څو ځله تکرار شي.
+Daily: ورځنۍ
+Weekly: اونيزه
+Monthly: میاشتنی
+by day: په ورځ
+by date: په نیټه
+by position: په مقام
+Monthly (by day): میاشتنی (د ورځې لخوا)
+Monthly (by date): میاشتنی (د نیټې سره سم)
+Monthly (by position): میاشتنی (د موقعیت له مخې)
+Yearly: کلنی
+Manual: لارښود
+Expert Mode: د متخصص حالت
+repeat-end-date-help: هغه نیټه مشخص کوي چې پیښه باید تر هغه وخته تکرار شي.
+Ending: ختمول
+Forever: د تل لپاره
+Use end date: د پای نیټه وکاروئ
+Number of times: د وختونو تعداد
+repeat-frequency-help: مشخص کوي چې پیښه باید څو ځله تکرار شي.
+Frequency: فريکوينسي
+Weekdays Only: یوازې د اونۍ ورځې
+Week Start: د اونۍ پیل
+repeat-bydayextended-help: د اونۍ انتخاب پراساس د نیټې ټاکلو ته اجازه ورکوي.
+ByDay: د ګل په ورځ
+repeat-month-help: مشخص کوي چې په کومو میاشتو کې پیښه باید تکرار شي.
+ByMonth: بواسطه
+repeat-bysetpos-help: د نیټې ټاکل د میاشتې سره د موقعیت پراساس اجازه ورکوي.
+BySetPos: لخوا سیټ پووس
+repeat-bymonthdayextended-help: د نیټې پراساس د نیټې انتخاب ته اجازه ورکوي.
+ByMonthDay: ماونټډی لخوا
+repeat-byweekno-help: کارونکي ته اجازه ورکوي چې د اونۍ تکرار کولو لیست مشخص کړي ترڅو پیښه تکرار کړي (1،2 ... 53، -53، -52 ...- 1).
+ByWeekNo: د ویک نیو لخوا
+repeat-byyearday-help: کارن ته اجازه ورکوي د پیښې تکرار کولو لپاره د کال ورځو لیست مشخص کړي (1،2 ... 366 ، -366 ، -365 ...- 1).
+ByYearDay: د یارډای لخوا
+repeat-exceptions-help: اضافي ورځې چې دا پیښه باید یا پیښ شي.
+Exclusions: اخراجونه
+Inclusions: شمولیت
+Add Exception: استثنا اضافه کړئ
+Add Inclusion: شاملول شامل کړئ
+Delete Selected: ټاکل شوی ړنګول
+Send Reminder: یادول ولېږئ
+When: كله؟، څه وخت؟، كله چې
+Use Date/Time: نیټه / وخت وکاروئ
+Use Offset: آفسیټ وکاروئ
+Before: مخکې
+After: وروسته
+Start: پیل
+End/Due: پای / له امله
+Times: وختونه
+Every: هر
+CAPTCHA Warning: خبرداری: د PHP د GD توسیع پرته کیپچا نشي کارولی!<br>
+Delete entry: ننوتل حذف کړئ
+You are not authorized to edit this entry.: تاسو د دې ننوتلو اډیټ نه یاست.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: ایکس این ایکس نوې ټاکنه کړې.
+XXX has updated an appointment.: ایکس این ایکس اپایټشن تازه کړی دی.
+Security violation!: د امنیت سرغړونه!
+You must enter the anti-spam text on the previous page.: تاسو باید په مخکینۍ پا onه کې د سپیم ضد متن دننه کړئ.
+The following conflicts with the suggested time: لاندې وړاندیز شوي وړاندیز سره مخالفتونه
+User removed from participants list.: کارن د برخه اخیستونکو له لیست څخه لرې شوی.
+Please look on XXX to accept or reject this appointment.: مهرباني وکړئ د دې لیدنې منلو یا ردولو لپاره په XXX کې وګورئ.
+Please look on XXX to view this appointment.: مهرباني وکړئ د دې لیدو کتلو لپاره XXX باندې وګورئ.
+Scheduling Conflict: د مهالویش مهال ویش
+Your suggested time of: ستاسو وړاندیز شوی وخت
+conflicts with the following existing calendar entries: د لاندې موجودې تقویمونو سره شخړې
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX په "config.php" کې نه دی ټاکل شوی.
+word characters only: (یوازې د ټکي حرفونه لري؛ [a-zA-Z_0-9])
+Add User: کارن اضافه کړئ
+Edit User: کارن
+Calendar ID: تقویم پیژند
+First Name: لومړی نوم
+Last Name: تخلص
+Is public calendar: عامه کلیزه ده
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: د ډیټابیس تېروتنه
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: ریموٹ کیلنڈر اضافه کړئ
+Edit Remote Calendar: ریموټ جنتري
+Create Layer: پوړ جوړ کړئ
+Reload: بیا ولولئ
+Required to View Remote Calendar: د ریموٹ کیلنڈر لیدلو لپاره اړین دی
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: پایلې واردول
+Events successfully imported: پیښې په بریالیتوب سره وارد شوې
+Create a new layer to view this calendar.: د دې کیلنر لیدلو لپاره نوی پرت جوړ کړئ.
+Errors: تېروتنې
+There was an error parsing the import file or no events were returned.: د واردولو دوتنې په پار کولو کې یوه تېروتنه وه یا هیڅ پیښه بیرته نه وه راستول شوې.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: سبا
+Yesterday: پرون
+Day before yesterday: پرون د مخه
+Next week: بله اونی
+This week: دغه هفته
+Last week: تېره اونۍ
+Week before last: اونۍ دمخه
+Next week and week after: راتلونکې اونۍ او اونۍ وروسته
+This week and next week: دا اونۍ او بله اونۍ
+Last week and this week: تیره اونۍ او دا اونۍ
+Last two weeks: دوه اونۍ
+Next month: راتلونکې میاشت
+This month: دا میاشت
+Last month: تیره میاشت
+Month before last: وروستۍ یوه میاشت
+Next year: راتلونکی کال
+This year: سږ کال
+Last year: تېر کال
+Year before last: تیر کال مخکې
+Next 14 days: راتلونکی 14 ورځې
+Next 30 days: راتلونکې 30 ورځې
+Next 60 days: راتلونکی 60 ورځې
+Next 90 days: راتلونکی 90 ورځې
+Next 180 days: راتلونکی 180 ورځې
+Next 365 days: راتلونکی 5 365 ورځې
+Invalid report id XXX.: د راپور غلط ناباوره: "XXX".
+Unnamed Report: نامعلوم راپور
+Add Report: راپور اضافه کړئ
+Edit Report: راپور
+Report name: د راپور نوم
+User: کارن
+Current User: اوسنی کارونکی
+Include link in menu: په مینو کې لینک شامل کړئ
+Include standard header/trailer: معیاري سرلیک / ټریلر پکې شامل کړئ
+Include previous/next links: پخواني / راتلونکي لینکونه پکې شامل کړئ
+Include empty dates: خالي نیټې شامل کړئ
+Date range: د نیټې حد
+Template variables: د ټیمپینټ متغیرونه
+Page template: د پا templateې ټیمپلیټ
+Day template: د ورځې نمونې
+Event template: د پیښې نمونې
+Are you sure you want to delete this report?: ایا تاسو باوري یاست چې غواړئ دا راپور ړنګ کړئ؟
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: د راپور هیڅ داسې نه دی: "XXX".
+Variable XXX not found.: تغیر لرونکی XXX ونه موندل شو.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: دود دود
+Edit Custom Script/Stylesheet: دودیز سکریپټ / سټایل شیټ
+Edit Custom Trailer: دود دود
+
+########################################
+# Page: edit_user.php
+#
+Username: کارن نوم
+E-mail address: بریښنالیک
+Password: رمز
+again: بیا
+Disabled for demo: د ډیمو لپاره ناتوان شوی
+Are you sure you want to delete this user?: ایا ته باوري یې چې د دې کارونکي ړنګول غواړې؟
+Change Password: پټ نوم بدل کړی
+New Password: نوئ پټ نوم
+Set Password: شفر ټاکل
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: د کاروونکو ړنګول ملاتړ نلري.
+The passwords were not identical.: شفرونه یوشان نه و
+You have not entered a password.: تاسو رمز ندی ورکړی
+Username cannot be blank.: کارن نوم خالي نه کیدی شي
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: مجاز نه دی
+
+########################################
+# Page: export.php
+#
+Export: صادرول
+Export format: د صادراتو ب .ه
+Include all layers: ټول پرتونه پکې شامل کړئ
+Include deleted entries: حذف شوې ننوتنې پکې شاملې کړئ
+Export all dates: ټولې نیټې صادر کړئ
+Start date: پیل نېټه
+End date: د پای نیټه
+Modified since: له هغه وروسته تغیر شوی
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: د صادراتو ب definedه نده ټاکل شوې یا غلطه ده.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: هیڅ کارن ندی مشخص شوی.
+
+########################################
+# Page: groups.php
+#
+Add New Group: نوې ډله اضافه کړئ
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: نامعلومه ډله
+Add Group: ډله اضافه کړئ
+Edit Group: ډله
+Group name: ډلې نوم
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: تاسو باید د ډلې نوم مشخص کړئ
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: د آټو ریفریش کلینډرې
+auto-refresh-help: کله چې فعال شي ، د ورځ لید ، د اونۍ لید ، میاشت لید ، او لیږل شوي غیر منظور شوي پا pagesې به ټول وخت په اوتومات ډول خپل ځانونه تازه کړي.
+Auto-refresh time: د ځان د تازه کولو وخت
+auto-refresh-time-help: که آٹو ریفریش فعال شي ، دا د هر ریفریش ترمینځ وخت ټاکي.
+Display days with events in bold in year view: ورځې په کال کې د پیښو سره ډیزاین کړئ
+Display weekends in week view: د اونۍ لید کې د اونۍ پای ښودل
+Time interval: د وخت وقفه
+time-interval-help: مشخص کوي چې د اونۍ لید او ورځ لید کې د وخت بلاکس به څومره وخت وي.
+Nonuser: بې کارونکي جنتري
+user-customize-color: مشخص کوي چې ایا کاروونکو ته اجازه ورکول کیږي چې خپل رنګ سکیم بدل کړي.
+enable-gradient-help: د حجرو پس منظر لپاره تدریجي رنګونه وکاروئ.
+Manually entering color values: په لاسي ډول د رنګ ارزښتونو ته ننوتل
+colors-help: ټول رنګونه باید په "#RRGGBB" hexadecimal ب formatه کې مشخص شي چیرې چې "RR" د سور لپاره hex ارزښت دی ، "GG" د شین لپاره hex ارزښت دی ، او "BB" د نیلي لپاره hex ارزښت دی.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: راپور بګ
+Please include all the information below when reporting a bug.: مهرباني وکړئ لاندې ټول معلومات شامل کړئ کله چې د بګ راپور ورکول.
+Also, please use English rather than XXX.: همچنان ، مهرباني وکړئ د XXX په پرتله  انګلیسي وکاروئ.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: د ګورت کیلندر اسناد
+Currently in English only.: اوس مهال یوازې په انګلیسي کې.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: د کیلنڈر ننوتلو / ایډیټ کول
+Repeat Type: تکرار ډول
+For More Information...: د نورو معلوماتو لپاره ...
+Repeat End Date: د پای نیټه تکرار کړئ
+Repeat Day: ورځ تکرار کړئ
+repeat-day-help: مشخص کوي د اونۍ په کومې ورځې پیښه باید تکرار شي.
+
+########################################
+# Page: help_import.php
+#
+Import: واردول
+Palm Desktop: پام ډیسټاپ
+allow you to import entries from the Palm...: دا ب willه به تاسو ته اجازه درکړي د پام ډیسټاپ ډیسټ بوک څخه ننوتنې وارد کړئ. دا باید ستاسو د پام ډایریکټری کې په نیټه بوک / تاریخ کتاب کې ځای په ځای شي. په فرعي لارښود کې ستاسو د کارونکي نوم لخوا نومول شوی.
+The following entries will not be imported: لاندې ننوتل به وارد نشي:
+Entries older than the current date: د اوسني نیټې څخه زاړه ننوتلې
+Entries created in the Palm Desktop...: په پام ډیسټاپ کې ننوتلې چې HotSync'd نه وې
+Anything imported from Palm...: د پام څخه وارد شوي هرڅه به د بل وارداتو په جریان کې له سره ولیکل شي (پرته لدې چې د پیښې نیټه تیره شوې وي). نو ځکه ، تازه معلومات باید په پام ډیسټاپ کې وشي.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: دا ب willه به د vCender (.vcs) 1.0 پیښې وارد کړي.
+The following formats have been tested: لاندې فارمیټونه ازمول شوي:
+This form will import iCalendar (.ics) events.: دا ب willه به د آی کالیډر (.ics) پیښې وارد کړي.
+Enabling: وړول
+Overwrite Prior Import: د مخه واردول ولولئ
+will cause events imported previously...: دا به د مخه وارد شوي پیښو لامل شي ، کوم چې د نوي وارد شوي فایل څخه د پیښې په څیر ورته UID کارول شوی ، د حذف کیدو په توګه به نښه شي. دا باید د نقل کولو رامینځته کولو پرته د تازه آی کیلیډر فایل وارد کولو ته اجازه ورکړي.
+
+########################################
+# Page: help_index.php
+#
+Help Index: د مرستې شاخص
+About WebCalendar: د ویب کیلندر په اړه
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: پوړونه ستاسو په خپل جنتري کې د نورو کاروونکو پیښو ښودلو لپاره ګټور دي. تاسو کولی شئ کاروونکي مشخص کړئ او رنګونه پیښې به په کې ښکاره شي.
+Add/Edit/Delete: اضافه / ترمیم / حذف کول
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: د پا ofې په ښکته برخه کې د اداري برخې کې د ترمیم لینکونو کلیک کول به تاسو ته اجازه درکړي چې پرتونه اضافه / ترمیم / حذف کړئ.
+The text color of the new layer that will be displayed in your calendar.: د نوي پرت د متن رنګ چې ستاسو په کیلنڈر کې به ښودل شي.
+Disabling: معیوبول
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: د پا ofې په ښکته برخه کې د اډمین برخې کې د پرتونو غیر فعال کولو لینک فشار ورکړئ ترڅو پوړونه وتړئ.
+Duplicates: نقلونه
+If checked, events that are duplicates of your events will be shown.: که چک شوی وي ، پیښې چې ستاسو د پیښو نقل وي به وښودل شي.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: د پا ofې په لاندینۍ برخه کې د اډمین برخه کې د پرتونو وړولو لینک فشار ورکړئ ترڅو پوړونه مو وګرځي.
+Source: سرچینه
+Specifies the user that you would like to see displayed in your calendar.: هغه کارونکي ټاکي چې تاسو یې غواړئ په خپل تقویم کې ښودل شوي وګورئ.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: اصلي کټګورۍ
+default-category-help: کټګورۍ مشخص کوي نوې پیښه باید ډیفالټ وي.
+When I am the boss: کله چې زه مالک یم
+Email me event notification: د ماښام خبرتیا راولیږئ
+email-boss-notifications-help: مشخص کوي که چیرې مالکین د پیښې خبرتیاوې په توګه بریښنالیکونه ترلاسه کړي.
+I want to approve events: زه غواړم پیښې تصویب کړم
+boss-approve-event-help: مشخص کوي چې ایا مالک به د هغه همکارانو لخوا اضافه شوي پیښو تصویب کولو ته اړتیا ولري.
+Subscribe/Publish: ګډون وکړئ / خپور کړئ
+Allow remote publishing: لیرې پرتو خپرولو ته اجازه ورکړئ
+allow-remote-publishing-help: مشخص کوي که چیرې لیرې iCal پیرودونکي کولی شي پیښې بیرته ویب کیالډر ته خپروي
+remote-publishing-url-help: URL د IDCal مؤکل غوښتنلیک کې د کارولو لپاره وښیې چې دواړه د ګډون او خپرولو لپاره بیرته ویب کیالډر ته.
+allow-remote-subscriptions-help: مشخص کوي که چیرې لیرې کاروونکي وکولی شي ستاسو کیلنر کې ګډون وکړي ، دوی ته اجازه ورکوي ستاسو پیښې د آی سيال فعال شوي غوښتنلیک کې وګوري (لکه د آپیل iCal یا موزیلا تقویم).
+remote-subscriptions-url-help: د URL ښکارندوی کوي ریموټ کارونکي باید ستاسو کیلنر کې ګډون لپاره وکاروي.
+Enable FreeBusy publishing: د فریباسي خپرونه فعال کړئ
+freebusy-enabled-help: مشخص کوي که چیرې د کاروونکي موجود وخت د iCal فري بوسي معیار په کارولو سره ترلاسه شي.
+freebusy-url-help: د کارونکي د فریباسی لیست ته د لاسرسي لپاره URL
+rss-feed-url-help: د RSS فیډ ته لاسرسي لپاره URL
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: د کاروونکي لاسرسي او جوازونو سم کنټرول لپاره اجازه ورکوي. کارونکي هم کولی شي ډیفالټ او هر فرد ته اجازه ورکړي که چیرې د مدیر لخوا اجازه ورکړل شوې وي.
+If disabled, this user cannot send you emails.: که چیرې معلول شوی وي ، نو دا کارونکی نشي کولی تاسو ته بریښنالیکونه واستوي.
+If disabled, this user cannot see you in the participants list.: که چیرې معلول شوی وي ، نو دا کارونکی نشي کولی تاسو د برخه اخیستونکو لیست کې وګوري.
+If enabled, this user cannot view the details of any of your entries.: که چیرې فعال شوی وي ، نو دا کارونکی نشي کولی ستاسو د ننوتلو توضیحات وګوري.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): خپرول ناتوانه شوي (اداره)
+Publishing Disabled (User): خپرول ناتوان شوي (کارن)
+
+########################################
+# Page: icons.php
+#
+Click to Select: کلیک کولو لپاره کلیک وکړئ
+Current Icons on Server: په پالنګر کې اوسني عکسونه
+
+########################################
+# Page: import.php
+#
+import from file: له فایل څخه واردول
+Disabled: ناتوان شوی
+Import format: د واردولو ب .ه
+Exclude private records: شخصي ریکارډونه لرې کړئ
+Repeated items are imported separately. Prior imports are not overwritten.: تکرار شوي توکي جلا جلا وارد شوي. مخکیني واردات له سره نه لیکل کیږي.
+
+########################################
+# Page: import_handler.php
+#
+No file: دوتنه نشته
+Error deleting palm events from webcalendar.: د ویب کیلنڈر څخه د پام لرونکي پیښو په حذف کولو کې تېروتنه.
+Events from prior import marked as deleted: د مخکیني وارداتو پیښې د حذف شوي په توګه نښه شوي
+Conflicting events: جنجالي پیښې
+The import file contained no data.: د واردولو دوسیه هیڅ معلومات نلري.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: ایا تاسو باوري یاست چې غواړئ دا پرت ړنګ کړئ؟
+Delete layer: پرت ړنګ کړئ
+Edit layer: پرت
+Enable layers: پرتونه فعال کړئ
+Layer: پوړ
+Layers are currently disabled.: اوس مهال پرتونه معلول شوي دي.
+Layers are currently enabled.: اوس مهال پرتونه فعال شوي دي.
+Click to modify layers settings for XXX: د XXX کیلنڈر لپاره د پوړونو ترتیبات ترمیم کولو لپاره دلته کلیک وکړئ.
+Disable Layers: پوړونه ناتوان کړئ
+Add layer: پرت اضافه کړئ
+Add Layer: پرت اضافه کړئ
+Edit Layer: پرت
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: د غوره توب اوسمهالولو توان نلري
+Invalid entry id.: ننوتنه ناسمه.
+You cannot create a layer for yourself.: تاسو نشئ کولی د ځان لپاره پرت جوړ کړئ.
+You can only create one layer for each user.: تاسو کولی شئ د هر کارونکي لپاره یوازې یو پرت رامینځته کړئ.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: تصویب / تصدیق کول
+Approve Selected: ټاکل شوی تصویب کړه
+Check All: ټول وګوره
+Emails Will Not Be Sent: بریښنالیکونه به ونه لیږل شي
+Reject Selected: ټاکل شوی رد کړئ
+Reject: رد کړئ
+Uncheck All: ټول چیک کړه
+View this entry: دا ننوتل وګورئ
+No unapproved entries for XXX.: د دې لپاره نابلده ننوتلې ننوتل: "XXX".
+Unapproved Entries: ناتاييد شوې ننوتلې
+Approve this entry?: دا ننوتنه تصویب کړه؟
+Reject this entry?: دا ننوتنه رد کړئ؟
+Approve Selected entries?: ټاکل شوې ننوتې تصویب کړئ؟
+Reject Selected entries?: ټاکل شوې ننوتنې رد کړئ؟
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: تاسو باید ننوتل او پټنوم داخل کړئ.
+Save login via cookies so I dont have to login next time.: د کوکیز له لارې ننوتل خوندي کړئ نو زه باید بل ځل لاګ ان نه کړم
+Login: د ننه کیدل
+public: عامه
+Access XXX calendar: د XXX کیلنر ته لاسرسی
+cookies-note: یادونه: دا غوښتنلیک د کوکیز وړ کولو ته اړتیا لري.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: په ننوتلو XXX کې ناقانونه کرکټرونه.
+Invalid login: ناباوره ننوتل
+Activity login failure: کارن نوم: "XXX" ، IP: "YYY".
+Error XXX: تېروتنه: "XXX".
+You have been logged out.: تاسو وتل شوی یاست
+Access public calendar: عامه کليز ته لاسرسی
+Not yet registered? Register here!: تراوسه نه دی ثبت شوی؟ دلته راجسټر شئ!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: هیڅ داسې غیر نانسر تقویم نشته: "XXX".
+This Calendar is not Public.: دا کلیز عامه نده.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: نوی بې کارونکی جنتري اضافه کړئ
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: ننوتل باید مشخص شي.
+No such nonuser calendar: د داسې هیڅ غیرسرلیک تقویم نشته
+
+########################################
+# Page: pref.php
+#
+Invalid theme: ناسمه موضوع
+Save Preferences: غوره توبونه خوندي کړه
+Public Access calendar: عامه لاسرسي جنتري
+Modify Non User Calendar Preferences: د غیر کارونکي کیلنر غوره توبونه بدل کړئ
+Return to My Preferences: زما غوره توبونو ته بیرته ورشئ
+Custom Scripts: دودیز سکریپټونه
+Timezone Selection: د وخت زون ټاکنه
+Multiview: ملټي ویو:
+entry-interval-help: د ننوتلو وخت ترمیم کولو پرمهال د دقیقې وقاره ټاکل
+Entry interval: د ننوتلو وقفه
+hour: ساعت
+minute: دقیقه
+theme-reload-help: د سی ایس ایس کیچینګ له امله ، د پا pageې بیا ډکول ممکن اړین وي
+Page may need to be reloaded for new Theme to take effect: د نوي تھیم د اغیزې کولو لپاره ممکن پا Pageه بیا ډکولو ته اړتیا وي
+display_byproxy-help: ریښتینی جوړونکی په لید_ینټري پا pageه کې ښودل
+Display if created by Assistant: ښودل که د معاون لخوا رامینځته شوی
+allow-view-subscriptions-help: شخصي یا محرم ننوتلو ته د ریموټ لاسرسي محدودولو اجازه ورکوي
+Allow remote viewing of: د ریموټ لید لید اجازه ورکړه
+entries: ننوتل
+
+########################################
+# Page: purge.php
+#
+Purging events for: لپاره د پیښو پاکول
+Finished: ختم شو
+Back: شاته
+Check box to delete ALL events for a user: د کارونکي لپاره  ټول پیښو حذف کولو لپاره بکس چیک کړئ
+Delete all events before: مخکې ټولې پیښې حذف کړئ
+Purge deleted only: یوازې حذف شوی
+Preview delete: د مخکتنې ړنګول
+Are you sure you want to delete events for: ایا تاسو واقعیا د دې لپاره پیښې حذف کول غواړئ؟
+Records deleted from XXX: ریکارډونه له "XXX" څخه حذف شوي.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: د بریښنالیک آدرس خالي نشی کیدی.
+Username already exists.: کارن نوم لا وختي شتون لري.
+Email address already exists.: د بریښنالیک آدرس لا دمخه شتون لري.
+New user via self-registration.: نوی کارن د ځان راجسټریشن له لارې.
+A new WebCalendar account has been set up for you.: ستاسو لپاره نوی ویب کیلندر حساب تنظیم شوی.
+Your username is XXX.: ستاسو کارن نوم دی: "XXX".
+Your password is XXX.: ستاسو پاسورډ دی: "XXX".
+Please visit XXX to log in and start using your account!: مهرباني وکړئ ننوتل او د خپل حساب کارولو پیل کولو لپاره "XXX" ته لاړشئ!
+You may change your password after logging in the first time.: تاسو ممکن په لومړي ځل ننوتلو وروسته خپل رمز بدل کړئ.
+If you received this email in error: که تاسو دا بریښنالیک په غلطۍ سره ترلاسه کړی وي او د ویب کیلنور حساب لپاره یې لاسلیک نه کړی وي ، نو تاسو ممکن دا یادداشت له پامه غورځ کړئ ، یا په لنډ یادښت سره ځواب ورکړئ
+Administrator: اداره کونکی
+Welcome: ښه راغلاست
+New user via email.: نوی کارن د بریښنالیک له لارې.
+Registration: ثبتول
+Welcome to WebCalendar: ویب کیلیګر ته ښه راغلاست
+Your email should arrive shortly.: ستاسو بریښنالیک باید ډیر ژر راورسیږي
+Return to Login screen: د ننوتلو سکرین ته راستون شئ
+Password (again): رمز (بیا):
+Your account information will be emailed to you.: ستاسو د حساب معلومات به تاسو ته بریښنالیک شي.
+Submit: وسپارئ
+
+########################################
+# Page: reject_entry.php
+#
+Continue: دوام ورکړئ
+(Your comments will be emailed to the other participants.): (ستاسو نظرونه به نورو ګډونوالو ته واستول شي.)
+XXX has rejected an appointment.: XXX ناسته رد کړې.
+Rejected by XXX.: د XXX لخوا رد شوی.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: نوی ریموٹ کیلنڈر اضافه کړئ
+
+########################################
+# Page: report.php
+#
+This event is confidential.: دا پیښه محرمه ده.
+(Private): (خصوصي)
+(cont.): (دوام لري)
+Approved: منظور شوی
+Deleted: ړنګ شوی
+Rejected: رد شو
+Waiting for approval: د تصویب لپاره انتظار
+Unknown: نامعلوم
+Invalid report id.: ناباوره راپور ID.
+Click here to manage reports for the Public Access calendar.: د عامه لاسرسي تقویم لپاره د راپورونو اداره کولو لپاره دلته کلیک وکړئ.
+Add new report: نوی راپور اضافه کړئ
+Manage Reports: راپورونه سمبال کړئ
+
+########################################
+# Page: search.php
+#
+Advanced Search: پرمختللی لټون
+Search: لټون
+Keywords: کلیدي ټکي
+Enter % for all entries: د ټولو ننوتلو لپاره٪ ورکړه
+Include: شامل کړئ
+Filter by Date: د نیټې له مخې چاter
+All Dates: ټولې نیټې
+Past: تېر
+Upcoming: راتلونکی
+Range: حد
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: تاسو باید یو یا ډیر د لټون ټکي داخل کړئ.
+Search Results: د لټون پایلې
+match found: لوبه وموندله
+matches found: لوبې وموندلې
+No matches found: هیڅ میچ ونه موندل شو
+New Search: نوې پلټنه
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: لاندې معلومات ستاسو د ویب کیلندر نصب سره احتمالي مسلې لیست کوي چې ستاسو د نصبولو نور خوندي کولو لپاره ترمیم کیدی شي.
+For questions about WebCalendar security see the forums: د هرې ویب کیلندر امنیت مسلې په اړه پوښتنو لپاره ، مهرباني وکړئ په ګیټ هب. com کې کوربه شوي ویب کیلیډر فورمونه وکاروئ<br><br>XXX
+View your current PHP settings: خپل د PHP اوسني تنظیمات وګورئ
+Security Issue: امنیتی مسله
+Status: حالت
+Default admin user password: د ډیفالټ اډمین کارن رمز
+You should change the password of the default admin user.: تاسو باید د ډیفالټ اډمین کارونکي رمز بدل کړئ.
+File permissions XXX: د دوتنې اجازه: XXX
+item XXX should not be writable: لاندې توکي باید د لیکلو وړ نه وي:<br><<< XXX</tt>
+File exists XXX: فایل شتون لري: "XXX"
+Because you have email disabled, you should remove this file.: ځکه چې تاسو بریښنالیک غیر فعال کړی ، نو تاسو باید دا فایل لرې کړئ.
+File location XXX: د فایل موقعیت: "XXX"
+remove XXX if not using: که تاسو د "XXX" فایل نه کاروئ ، نو تاسو باید دا حذف کړئ. یا ، لږترلږه ، دا نوي لارښود ته واړوی.
+System Settings XXX: د سیسټم تنظیمات: "XXX"
+consider enabling UAC: تاسو ممکن د کارن امتیازاتو تنظیم کولو لپاره د کاروونکي لاسرسي کنټرول وړ کولو باندې غور وکړئ.
+recommend approving new public events: موږ سپارښتنه کوو چې د عامه پیښې ټول وړاندیزونه تصویب شي.
+recommend using CAPTCHA: CAPTCHA سپارښتنه کیږي چې د اتوماتیک پیښې سپارنې بیا ساتنه وکړي.
+Database cache directory location: د ډیټابیس کیچ لارښود ځای
+db cache should be inaccessable: د ډیټابیس زیرمه باید په ډایرکټرۍ کې وي چې د URL سره لاسرسی نلري.
+PHP Settings XXX: د پی ایچ پی تنظیمات: "XXX"
+recommend setting XXX Off: د "XXX" لپاره وړاندیز شوی ترتیب بند دی.
+recommend setting allow_url_fopen Off: د "اجازه_url_fopen" لپاره وړاندیز شوی تنظیم بند دی کله چې لیرې کیلنرې فعال نه وي.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: د بل کارونکي تقویم وګورئ
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: تاسو هیڅ ډول کټګورۍ نه دي شامل کړي
+Set Category: کټګورۍ وټاکئ
+Global Categories cannot be changed.: نړیوال کټګورۍ نشي بدلیدلی.
+
+########################################
+# Page: upcoming.php
+#
+more: نور
+
+########################################
+# Page: users.php
+#
+Remote Calendars: ریموټ قلندرونه
+denotes administrative user: اداري کارونکی په نښه کوي
+Add New User: نوی کارن اضافه کړئ
+
+########################################
+# Page: usersel.php
+#
+form: ب .ه
+Reset: بیا تنظیمول
+
+########################################
+# Page: views.php
+#
+Add New View: نوې لید اضافه کړئ
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: نامعلوم لید
+Add View: لید اضافه کړئ
+Edit View: لید
+View Name: نوم وګوره
+View Type: ډول وګوره
+Day by Time: ورځ په وخت
+Week (Users horizontal): اونۍ (کارونکي افقي)
+Week by Time: د وخت سره سم
+Week (Users vertical): اونۍ (د کارونکي عمودی)
+Week (Timebar): اونۍ (ټایمبر)
+Month (Timebar): میاشت (ټایم بار)
+Month (side by side): میاشت (څنګ په څنګ)
+Month (on same calendar): میاشت (په ورته کیلنڈر کې)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: تاسو باید د لید نوم مشخص کړئ
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: د دې لید لپاره هیڅ کاروونکي نشته.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: د کاري فیصدي تازه کول
+Completed: بشپړ شوی
+Assistant mode: د مرستې اکر
+Declined: رد شوی
+Needs-Action: اړتیا - عمل
+by: د
+Percentage Complete: سلنه بشپړه شوه
+External User: خارجي کارن
+Update: تازه
+at: په
+comments: څرګندونې
+Show: ښودل
+Hide: پټول
+Approve/Confirm entry: د ننوتلو تصدیق / تصدیق کول
+Reject entry: ننوتل رد کړئ
+Set category: کټګورۍ وټاکئ
+Add to My Calendar: زما کليز ته اضافه کړئ
+Copy entry: کاپي ننوتل
+This will delete this entry for all users.: دا به د ټولو کاروونکو لپاره دا ننوت حذف کړي.
+Edit entry: ننوتل
+Edit repeating entry for all dates: د ټولو نیټو لپاره تکرار دننه کول
+Delete repeating event for all dates: د ټولو تاریخونو لپاره تکرار پیښه حذف کړئ
+Edit entry for this date: دې نیټې ته ننوتل
+Delete entry only for this date: د دې نیټې لپاره یوازې ننوتل حذف کړئ
+Delete entry from calendar of XXX: د XXX کیلنڈر څخه ننوتل حذف کړئ
+This will delete the entry from your XXX calendar.: دا به ستاسو د XXX کیلنڈر څخه ننوتل حذف کړي.
+boss: مشر
+This will delete the entry from your boss calendar.: دا به ستاسو د مالک کیلنڈر څخه ننوتل حذف کړي.
+This will delete the entry from your calendar.: دا به ستاسو له کلینډر څخه ننوتل حذف کړي.
+from your boss calendar: ستاسو د مدیر له کليز څخه
+Do you want to add this entry to your calendar?: ایا تاسو غواړئ چې دا ننوتنه په خپل کليز کې اضافه کړئ؟
+This will add the entry to your calendar.: دا به ستاسو کیلنڈر ته ننوتنه اضافه کړي.
+Email all participants: ټولو برخه والو ته بریښنالیک ورکړئ
+Hide activity log: د فعالیت خبر پټ کړئ
+Show activity log: د فعالیت خبرتیا وښیه
+Export this entry to: دې ننوت ته صادرول
+Palm Pilot: پام پیلوټ
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: د نوي ننوتلو اضافه کولو لپاره په خالي سیل باندې دوه ځله کلیک وکړئ.
+
+########################################
+# Page: week_details.php
+#
+New Entry: نوې ننوتل
+cont.: دوام لري.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: د بل کارونکي تقویم
+Category Management: د کټګورۍ مدیریت
+Day View: د ورځې لید
+Edit Event: پیښه
+Month View: میاشت لید
+Common Trailer: عام ټریلر
+User Management: کارن سمبالښت
+Manage Views: لیدونه سمبال کړئ
+Week View: د اونۍ لید
+Year View: د کال لید
+Invalid function id: د کار کولو ناباوره
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: "सेटिंग..pp" فایل ونه موندل شو.<br>مهرباني وکړئ د "settings.php" ته "settings.php.orig" کاپي او د خپل سایټ لپاره اډیټ کړئ.
+Incomplete settings.php file...: نامکمل "settings.php" فایل ...
+Could not find XXX defined in...: ستاسو "सेटिंग..pp" فایل کې "ایکسینیمکس" تعریف شوی ونه موندل شو.
+You must define XXX in: تاسو باید د "सेटिंग्ज.php" فایل کې "XXX" تعریف کړئ.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: دسمبر
+Dec: دسمبر
+LANGUAGE DEFINED: ژبه ټاکل شوې
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: ډیټابیس سره په پیوستون کې تېروتنه: "XXX".
+db_type not defined.: db_type ندی ټاکل شوی.
+invalid db_type XXX: ناباوره db_type "" XXX ".
+Cache cleared from previous SQL!: کیچ د تیر SQL څخه پاک شوی!
+Error executing query.: د پوښتنې په اجرا کولو کې تېروتنه.
+Unfortunately, XXX is not implemented for YYY: بدبختانه ، "XXX" د (YYY) لپاره ندي پلي شوی.
+Unknown ODBC error.: د ODBC نامعلومه تېروتنه.
+Error opening cache dir XXX.: د کیچ ډیر "XXX" په پرانیستلو کې تېروتنه.
+delete: ړنګول
+Cache error Could not XXX file YYY.: د کیچ تېروتنه: د "YYY" فایلونو فایل نشو ترسره کولی.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: وژونکې تېروتنه
+Invalid data format for: د لپاره د ډاټا ناسمه ب formatه
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: تېروتنه: د فعالیت لاگ لپاره ټاكل شوې نده!
+This event is XXX.: دا پیښه XXX ده.
+Conf.: اعتراف
+exceeds limit of XXX events per day: په ورځ کې د XXX پیښو حد تجاوز کوي
+on: په
+All Attendees: ټول ګډون وال
+Busy: بوخت
+Tentative: عصبي
+Schedule an appointment for XXX.: د XXX لپاره ناستې مهالویش: YYY.
+date_select: _د_د_م_م_____ه_
+Event approved: پیښه تصویب شوه
+Journal approved: ژورنال تصویب شو
+Task approved: ټاسک تصویب شو
+Attachment: ضمیمه
+Event created: پیښه رامینځته شوه
+Journal created: ژورنال جوړ شو
+Task created: ټاسک جوړ شو
+Event deleted: پیښه حذف شوه
+Journal deleted: ژورنال ړنګ شو
+Task deleted: دنده ړنګه شوه
+New user via email (self registration): نوی کارونکی د بریښنالیک له لارې (ځان راجسټریشن)
+New user (self registration): نوی کارونکی (ځان راجسټریشن)
+Notification sent: خبرتیا واستول شوه
+Event rejected: پیښه رد شوه
+Journal rejected: ژورنال رد شو
+Task rejected: ټاس رد شو
+Reminder sent: یادداشت لیږل شوی
+Event updated: پیښه تازه شوه
+Journal updated: ژورنال تازه شو
+Task updated: دندې تازه
+Delete User: کارن ړنګ کړئ
+WK: =
+TASKS: ټاسکس
+Task_Title: سرلیک
+Due: له امله
+Task Name: د کاري نوم
+Task Due Date: د دندې د ټاکلو نیټه
+You have XXX unapproved entries: تاسو د ایکس ایکس ایکس غیر تصویب شوي ننوتنې لرئ 
+Changes successfully saved: بدلونونه په بریالیتوب سره خوندي شوي
+Event: پیښه
+Action: عمل
+Printer Friendly: د چاپګر دوستانه
+Generate printer-friendly version: د چاپګر دوستانه نسخه تولید کړئ
+after: وروسته
+before: مخکې
+end: پای
+start: شروع کول
+View this event: دا پیښه وګورئ
+View this task: دا دنده وګورئ
+January: جنوري
+February: فبروري
+March: مارچ
+April: اپریل
+May_: می
+June: جون
+July: جولای
+August: اګست
+September: سپتمبر
+October: اکتوبر
+November: نومبر
+Jan: جان
+Feb: فبروري
+Mar: مار
+Apr: اپريل
+May: می
+Jun: جون
+Jul: جولای
+Aug: اګست
+Sep: ستمبر
+Oct: اکتوبر
+Nov: نومبر
+SU: =
+MO: =
+TU: =
+WE: موږ
+TH: ت
+FR: =
+SA: =
+unknown-month: نامعلومه میاشت
+First Quarter Moon: د لومړۍ ربع سپوږمۍ
+Full Moon: مکمل سپوږمۍ
+Last Quarter Moon: د تیرې ربعې سپوږمۍ
+New Moon: نوې سپوږمۍ
+Error TIME_SLOTS undefined!: تېروتنه: TIME_SLOTS نه ټاکل شوی!
+The following error occurred: لاندې خطا واقع شوه
+You are not authorized.: تاسو مجاز نه یاست.
+Add N hours to: په کې N ساعتونه اضافه کول
+Subtract N hours from: له N ساعتونو څخه تخفیف
+same as: هغه ته ورته
+server time: سرور وخت
+Cannot read timezone file XXX.: د وخت زون فایل نشي لوستلی: XXX.
+Your current GMT offset is XXX hours.: ستاسو اوسني GMT آفسټ د XXX ساعتونو دی.
+Unauthorized: غیر مجاز
+Error approving event XXX.: د پیښې په تصویب کې تېروتنه: XXX.
+Error deleting event XXX.: د پیښې په حذف کولو کې تېروتنه: XXX.
+Error rejecting event XXX.: د پیښې په ردولو کې تېروتنه: XXX.
+Sunday: یک شنبه
+Monday: دوشنبه
+Tuesday: سه شنبه
+Wednesday: چهارشنبه
+Thursday: پنجشنبه
+Friday: جمعه
+Saturday: شنبه
+Sun: لمر
+Mon: پیر
+Tue: د
+Wed: ودونه
+Thu: خ
+Fri: جمعه
+Sat: ست
+unknown-weekday: نامعلومه اونۍ
+Invalid referring URL: د حوالې ناباوره URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: شاخص
+Documentation: لاسوندونه
+Page: پا .ه
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: زما کليز
+Add New Entry: نوې داخله ورکړه
+Add New Task: نوې دنده اضافه کړئ
+Logout: وتل
+Home: کور
+Back to My Calendar: بېرته زما کليز ته
+Go to: ورتګ
+Manage calendar of: د
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: د لټونګر ژبه نده موندل شوې
+(not supported): (ملاتړ ندی شوی)
+Abkhazian: ابخازیان
+Acoli: اکولي
+Adangme: اډانګم
+Adyghe: اډیګ
+Afar: افار
+Afrihili: افريلي
+Afrikaans: افریقایی
+Ainu: عینو
+Akan: اکان
+Akkadian: اکاډیان
+Albanian: البانیایی
+Aleut: الیوټ
+Algonquian: الګونکوین
+Altai (Southern): Altai (جنوبي)
+Amharic: امهاریک
+Angika: انګیکا
+Apache: اپاچی
+Arabic (Algeria): عربي (الجیریا)
+Arabic (Bahrain): عربي (بحرین)
+Arabic (Egypt): عربي (مصر)
+Arabic (Iraq): عربي (عراق)
+Arabic (Jordan): عربي (اردن)
+Arabic (Kuwait): عربي (کویټ)
+Arabic (Lebanon): عربي (لبنان)
+Arabic (Libya): عربي (لیبیا)
+Arabic (Morocco): عربي (مراکش)
+Arabic (Oman): عربي (عمان)
+Arabic (Qatar): عربي (قطر)
+Arabic (Saudi Arabia): عربي (سعودي عرب)
+Arabic (Syria): عربي (سوریه)
+Arabic (Tunisia): عربي (تیونس)
+Arabic (U.A.E.): عربي (د متحده ایالاتو)
+Arabic (Yemen): عربي (یمن)
+Arabic: عربي
+Aragonese: اراګون
+Aramaic: ارمایک
+Arapaho: اراپاهو
+Arawak: اراواک
+Armenian: ارمانیایی
+Assamese: آسامي
+Asturian: وجود
+Athapascan: اتhaاسکاین
+Avaric: آواریک
+Avestan: ایوستین
+Awadhi: اودهي
+Aymara: ایمارا
+Azerbaijani: اذربایجان
+Balinese: بالینی
+Baluchi: بلوچي
+Bambara: بامبره
+Bamileke: بامیلیک
+Banda: بنده
+Basa: باسا
+Bashkir: بشکیر
+Basque: باسک
+Beja: بیجا
+Belarusian: بلاروسي
+Bemba: بېمبا
+Bengali: بنګالي
+Bhojpuri: بھوجپوری
+Bihari: بهاري
+Bikol: باکول
+Bislama: بسملا
+Blackfoot: بلیک فوټ
+Blin: ړانده
+Bliss: خوند
+Bosnian: بوسنیایی
+Braj: برج
+Breton: بریټان
+Buginese: بګیني
+Bulgarian: بلغاریه ایی
+Buriat: بوریات
+Burmese: برمایی
+Caddo: کدو
+Catalan: کتالین
+Cebuano: سیبانو
+Chagatai: چګاتۍ
+Chamorro: کامرو
+Chechen: چیچین
+Cherokee: چیروکي
+Cheyenne: چایین
+Chibcha: چبچه
+Chichewa: چیچوا
+Chinese (Hong Kong): چینایی (هانګ کانګ)
+Chinese (PRC): چینایی
+Chinese (Simplified/GB2312): چینایی (ساده شوی / GB2312) 
+Chinese (Singapore): چینایی (سینګاپور)
+Chinese (Taiwan): چینایی (تایوان)
+Chinese (Traditional/Big5): چینایي (دودیز / لوی 5)
+Chinook: چینوک
+Chipewyan: چیپویان
+Choctaw: چاکټاو
+Chuukese: چوکیز
+Chuvash: چوواش
+Coptic: کاپټیک
+Cornish: کارنش
+Corsican: کورسیکن
+Cree: کری
+Creek: کریک
+Croatian: کرواسین
+Czech: چکسلواکي
+Dakota: ډکوټا
+Danish: دنمارکي
+Dargwa: دارګوا
+Delaware: دلاور
+Dinka: دنکا
+Dogri: ډوگري
+Dogrib: ډوګریب
+Duala: دواله
+Dutch (Belgium): هالنډي (بلجیم)
+Dutch: الماني
+Dyula: ډایولا
+Dzongkha: زونگخا
+Edo: ایډو
+Efik: ایفیک
+Ekajuk: اکاجوک
+Elamite: ايلامايټ
+English (Australia): انګلیسي (آسټرالیا)
+English (Belize): انګلیسي (بیلیز)
+English (Canada): انګلیسي (کاناډا)
+English (Ireland): انګلیسي (آیرلینډ)
+English (Jamaica): انګلیسي (جمیکا)
+English (New Zealand): انګلیسي (نیوزیلینډ)
+English (Philippines): انګلیسي (فیلیپین)
+English (South Africa): انګلیسي (سویلي افریقا)
+English (Trinidad & Tobago): انګلیسي (ټرینیډاډ او ټوبیګو)
+English (United Kingdom): انګلیسي (انګلستان)
+English (United States): انګلیسي (متحده ایالات)
+English (Zimbabwe): انګلیسي (زمبابوې)
+English: انګلیسي - امریکا
+Erzya: ایرزیا
+Esperanto: ایسپیرینټو
+Estonian: ایستونین
+Ewe: ميږه
+Ewondo: ایوانډو
+Fang: فنګ
+Fanti: فانتي
+Faroese: فیروزی
+Fijian: فجیان
+Filipino: فلیپیني
+Finnish: فنلینډي
+Fon: فونی
+French (Belgium): فرانسوی (بلجیم)
+French (Canada): فرانسوی (کاناډا)
+French (France): فرانسوی (فرانسه)
+French (Luxembourg): فرانسوی (لوګزامبرګ)
+French (Monaco): فرانسوی (موناکو)
+French (Switzerland): فرانسوی (سویس)
+French: فرانسوي
+Frisian (Eastern): فاریشین (ختیځ)
+Frisian (Northern): فريشين (شمالي)
+Frisian (Western): فاریشین (لویدیز)
+Frisian: فريشاني
+Friulian: فریولین
+Fulah: فواله
+Ga: گا
+Galibi: ګاليبي
+Galician: ګالیسي
+Ganda: ګانډا
+Gayo: ګی
+Gbaya: ګبیا
+Geez: ګیز
+Georgian: ګرجستاني
+German (Austria): جرمني (اتریش)
+German (Germany): جرمني (جرمني)
+German (Liechtenstein): الماني (ليختنسټين)
+German (Luxembourg): جرمني (لوګزامبورګ)
+German (Standard): الماني (معیاري)
+German (Switzerland): جرمني (سویس)
+German: جرمني
+Gilbertese: ګیلبرټیز
+Gondi: ګونډي
+Gorontalo: ګورټونټو
+Gothic: ګوتیک
+Grebo: ګریبو
+Greek: یوناني
+Greenlandic: ګرینلینډیک
+Guarani: ګوراني
+Gujarati: ګجراتي
+Gwich&#39;in: ګویچین
+Haida: هیدا
+Haitian (Creole): هايټي (کرولي)
+Haitian: هایتین
+Hausa: هوسا
+Hawaiian: هوایی
+Hebrew: عبري
+Herero: هیرو
+Hiligaynon: هیلیګیون
+Hindi: هندي
+Hiri Motu: هیری موټو
+Hittite: هیټایټ
+Hmong: همونګ
+Holo (Taiwanese): هولو (تایوان)
+Hungarian: هنګري
+Hupa: هوپا
+Iban: =
+Icelandic: ایلینډیک
+Ido: زه کوم
+Igbo: اګبو
+Iloko: الکو
+Indonesian: انډونیزین
+Ingush: انګش
+Inuktitut: انکوټیتوت
+Inupiaq: انوپیاق
+Iranian: ايراني
+Irish (Gaelic): ایرلینډي (ګیلیک)
+Irish: ایرلینډي
+Iroquoian: =
+Italian (Switzerland): ایټالیا (سویس)
+Italian: ایټالیوي
+Japanese: جاپاني
+Javanese: جاوه ای
+Judeo-Arabic: جودو - عربي
+Judeo-Persian: جودو - پارسي
+Kabardian: کبدیان
+Kabyle: کبیل
+Kachin: کاچین
+Kalaallisut: کالیلیسټ
+Kalmyk: کلیمک
+Kamba: کامبا
+Kannada: کناډا
+Kanuri: کانوري
+Kara-Kalpak: کارا - کلپک
+Karachay-Balkar: کارکول
+Karelian: کیریلین
+Kashmiri: کشمیری
+Kashubian: کاشوبیان
+Kawi: کاوي
+Kazakh: قزاقي
+Khasi: خسي
+Khmer (Central): خمر (مرکزي)
+Khmer: خمیر
+Khotanese: خوټانیز
+Kikuyu: کیکیو
+Kimbundu: کیمونډو
+Kinyarwanda: کینیارونډا
+Kirghiz: کرغیز
+Klingon: کلینګون
+Komi: کومی
+Kongo: کانګو
+Konkani: کونکاني
+Korean (Johab): کوریایی (جواهاب)
+Korean (North): کوریا (شمالي)
+Korean (South): کوریا (سویل)
+Korean: کوریایی
+Kosraean: کوسرین
+Kpelle: کیپللی
+Kuanyama: کوانیما
+Kumyk: کومیک
+Kurdish: کرد
+Kutenai: کوټینی
+Kyrgyz: قرغیزي
+Ladino: لادینو
+Lahnda: لاهنډا
+Lamba: لامبا
+Lao: لاو
+Latin: لاتین
+Latvian: لیتوین
+Lezghian: ليزيايان
+Limburgan: لیمبرګ
+Lingala: لنګاله
+Lithuanian: لیتوانیایی
+Lojban: لوزبان
+Lozi: لوزی
+Luba-Katanga: لوبا-کټنګا
+Luba-Lulua: =
+Luiseno: لوسیانو
+Lunda: لنډا
+Luo: لوو
+Lushai: لوشي
+Luxembourghish: لکسمبرګورش
+Macedonian: مقدوني
+Madurese: مادوروس
+Magahi: مګهي
+Maithili: میتلي
+Makasar: مکاسار
+Malagasy: مالاګسي
+Malay: مالایا
+Malayalam: ملایلم
+Maldivian: مالدیپ
+Maltese: مالتیس
+Manchu: مانچو
+Mandar: مانډر
+Mandingo: منډینګو
+Manipuri: منیپوری
+Manx: مانکس
+Maori: ماوري
+Mapuche: میپچو
+Marathi: مراټي
+Mari: ماری
+Marshallese: مارشلیز
+Marwari: مرواري
+Masai: مسای
+Mayan: میان
+Mende: مونډي
+Mi&#39;kmaq: میثاق
+Minangkabau: منانګکاؤ
+Mirandese: مراندیز
+Mohawk: موهاک
+Moksha: موکشا
+Moldavian: مولداویان
+Mongo: منګو
+Mongolian: مغولي
+Montenegrin: مانټینیګرین
+Moroccan: مراکش
+Mossi: مسی
+Myanmar: میانمار
+Māori: ماوري
+N&#39;Ko: N'Ko
+Nauru: نایرو
+Navajo: ناواجو
+Ndebele (North): نډیبیل (شمالي)
+Ndebele (South): نډیبیل (سویل)
+Ndebele: =
+Ndonga: اینډونگا
+Neapolitan: نیپالیټ
+Nepali: نیپالي
+Nias: نیاز
+Niuean: نیوان
+Nogai: نوګای
+Norse: نری
+Norwegian (Bokmål): نارویژي (بوکلم)
+Norwegian (Nynorsk): نارویژي (نینورسک)
+Norwegian: نارویژي
+Nyamwezi: نیاموازی
+Nyankole: نیانکول
+Nyoro: نیورو
+Nzima: =
+Occitan: اوکسيټي
+Odia: اوډیا
+Ojibwa: اوزبوا
+Oriyia: اوریا
+Oromo: اورومو
+Osage: وسایل
+Ossetic: اوسټیک
+Pahlavi: پهلوي
+Palauan: پلوان
+Pali: پالي
+Pampanga: پامپانګا
+Pangasinan: پانګاسینان
+Panjabi: پنجابي
+Papiamento: پاپي
+Pashto: پښتو
+Pedi: پیډی
+Persian (Farsi): فارسي (فارسي)
+Persian (Iran): فارسي (ایران)
+Persian: فارسي
+Phoenician: فینیشین
+Pohnpeian: پوهنپیان
+Polish: پولیش
+Portuguese: پورتګالي
+Portuguese/Brazil: پرتګالي / برازیل 
+Punjabi (India): پنجابي (هندوستان)
+Punjabi (Pakistan): پنجابي (پاکستان)
+Punjabi: پنجابي
+Quechua: کویچووا
+Rajasthani: راجستاني
+Rapanui: راپانوی
+Rarotongan: راروټګان
+Rhaeto-Romanic: ریتو - رومانیک
+Romanian: رومانیایی
+Romansh: رومانش
+Romany: روماني
+Rundi: رنڈی
+Russian (Moldavia: روسی (مولداویه)
+Russian (Republic of Moldova): روسیه (د مالدوا جمهوریت)
+Russian: روسي
+Sami (Inari): سمیع (اناري)
+Sami (Lappish): سمیع (لیپش)
+Sami (Lule): سمیع (لول)
+Sami (Northern): سمیع (شمالي)
+Sami (Skolt): سمیع (سکولټ)
+Sami (Southern): سمیع (جنوبي)
+Sami: سمیع
+Samoan: سماوان
+Samoli: سمولي
+Sandawe: سانډوی
+Sango: سانګو
+Sanskrit: سانسکریټ
+Santali: سانتالی
+Sardinian: سارډینین
+Sasak: ساساک
+Scots (Gaelic): سکاټ (ګیلیک)
+Selkup: وپلټل
+Serbian (Upper): سربیا (پورتنی)
+Serbian: صربي
+Serer: سیرر
+Sesotho: سیسوتو
+Shan: شان
+Shona: شونا
+Sichuan Yi: سیچوان یی
+Sicilian: سيسيلي
+Sindhi: سندي
+Sinhala: سنګاله
+Slavic: سلاوی
+Slovak: سلواکي
+Slovenian: سلوانیایی
+Sogdian: سوګډیان
+Somali: سومالیایی
+Somani: سوماني
+Songhai: سونګهي
+Soninke: سونینک
+Sorbian (Lower): سوربین (ښکته)
+Sorbian (Upper): سوربین (اپر)
+Sorbian: سوربین
+Sotho: سوتو
+Spanish (Argentina): هسپانیا (ارجنټاین)
+Spanish (Bolivia): هسپانوي (بولیویا)
+Spanish (Chile): هسپانوي (چیلي)
+Spanish (Colombia): هسپانیا (کولمبیا)
+Spanish (Costa Rica): هسپانوي (کوسټا ریکا)
+Spanish (Dominican Republic): هسپانوي (دومینیکن جمهوریت)
+Spanish (Ecuador): هسپانوي (ایکواډور)
+Spanish (El Salvador): هسپانوي (ایل سلواډور)
+Spanish (Guatemala): هسپانوي (ګواتیمالا)
+Spanish (Honduras): هسپانوي (هوندوراس)
+Spanish (Mexico): هسپانوي (میکسیکو)
+Spanish (Nicaragua): هسپانوي (نیکاراګوا)
+Spanish (Panama): هسپانوي (پاناما)
+Spanish (Paraguay): هسپانوي (پاراګوی)
+Spanish (Peru): هسپانوي (پیرو)
+Spanish (Puerto Rico): هسپانوي (پورټو ریکو)
+Spanish (Spain): هسپانیا
+Spanish (Uruguay): هسپانوي (یوراګوای)
+Spanish (Venezuela): هسپانوي (وینزویلا)
+Spanish: هسپانیه ایی
+Sranan Tongo: سرینان ټونګو
+Sukuma: سکوما
+Sumerian: سومریان
+Sundanese: سنډانیز
+Susu: سوسو
+Sutu: سوټو
+Swahili: سواحلي
+Swati: سواتي
+Swedish (Finland): سویډني (فنلنډ)
+Swedish (Sweden): سویډني (سویډن)
+Swedish: سویډیش یا سویډني
+Syriac: سیریاک
+Tagalog: تګالوګ
+Tahitian: تاهیتی
+Tai: تای
+Taiwan: تایوان
+Tajik: تاجک
+Tamashek: تامشیک
+Tamil: تامیل
+Tatar: تاتار
+Telugu: تولیګو
+Tereno: تیرینو
+Tetum: ټیټم
+Thai: تای
+Tibetan: تبتي
+Tigre: ټیګر
+Tigrinya: ټګرینیا
+Timne: ټیمني
+Tlingit: ټلنګیت
+Tok Pisin: ټوک پیسین
+Tokelau: توکیلو
+Tonga (Nytmhasa): ټونګا (نیتماسه)
+Tonga (Tonga Islands): ټونګا (ټونګ ټاپوګان)
+Tonga: تونګا
+Tsimshian: سمشیان
+Tsonga: سونګا
+Tswana: سوانا
+Tumbuka: ټومبوکا
+Turkish: ترکي
+Turkmen: ترکمني
+Tuvinian: تویوینی
+Twi: دوه
+Udmurt: اډمورټ
+Ugaritic: یوګاریتیک
+Ukrainian: اوکرایني
+Umbundu: امبندو
+Urdu: اردو
+Uyghur: ایغور
+Uzbek: ازبکي
+Vai: وائي
+Venda: وینډا
+Vietnamese: ویتنامي
+Volapük: =
+Votic: ووټیک
+Wakashan: واکاشان
+Walloon: والون
+Waray: واره
+Washo: واشو
+Welsh: ولش
+Wolaitta: =
+Wolof: ولف
+Xhosa: ژوسا
+Yakut: یاکوت
+Yao: یاو
+Yapese: یاپیس
+Yiddish: یدیش
+Yorùbá: یوروبا
+Yupik: یوپیک
+Zande: زنده
+Zapotec: زاپوټیک
+Zaza: ځاځی
+Zenaga: زینګا
+Zhuang: ژوانګ
+Zulu: زولو
+Browser-defined: د براوزر ټاکل شوی
+event: پیښه
+journal: ژورنال
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: ناباوره کارن ننوتل
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: ناسم پټنوم
+no such user: داسې کارن نشته
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: اکاونټ ناتوان شوی
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: وقفه
+Months: میاشتې
+Month Days: د میاشتې ورځې
+Days: ورځې
+Weeks: اونۍ
+Position: موقعیت
+Until: تر
+Count: شمېرل
+Inclusion Dates: د شمولیت نیټې
+Exclusion Dates: د اخراج تاریخونه
+Event Imported: پیښه وارد شوه
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: بایټونه
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: خبرتیا
+authenticate: د SMTP تیروتنه: اعتبار نشي کولی
+connect_host: د SMTP تیروتنه: د SMTP کوربه سره ونښلول شو:
+data_not_accepted: د SMTP تیروتنه: ډاټا ونه منل شوه
+encoding: نامعلوم کوډ ورکول:
+execute: اجرا نشو کولی:
+file_access: فایل ته لاسرسی نه شو کولی
+file_open: د دوتنې تېروتنه د فایل پرانستل نشو:
+from_failed: لاندې پته ناکامه شوه:
+instantiate: د میل فعالیت فوري نشو کولی
+mailer_not_supported: میلر ملاتړ ندی
+provide_address: تاسو باید لږترلږه د ترلاسه کونکي بریښنالیک آدرس چمتو کړئ.
+recipients_failed: د SMTP تیروتنه: لاندې ترلاسه کونکي ناکام شوي:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: هغه کلیمې دننه کړئ چې په ګرافیک کې لیدل شوي دي
+Enter the correct letters and numbers...: د عکس څخه سم لیکونه او شمیرې په متن بکس کې دننه کړئ. دا کوچنۍ ازموینه د ناوړه بوټو په وړاندې د لاسرسي محدودیت په توګه کار کوي. په ساده ډول پا reه ډاونلوډ کړئ که دا ګرافیک لوستل خورا سخت وي
+Challenge/Response: ننګونه / ځواب
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: تاریخ و زمان این ورود تغییر می کند؟
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: شما شرح مختصری وارد نکرده اید
+time prior to work hours...: د کار ساعتونو مخکې وخت ...
+Invalid Event Date: د پیښې ناسمه نیټه
+Please add a participant: مهرباني وکړئ یو ګډون کونکی اضافه کړئ 
+Invalid Date: ناباوره نیټه
+You have not entered a valid time of day: تاسو د ورځې معقول وخت ندی داخل کړی. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: د کیلنګ پیژند خالي ندی. 
+First and last names cannot both be blank.: لومړي او وروستي نوم دواړه خالي نه کیدی شي. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: ناباوره رنګ
+Color format should be RRGGBB.: د رنګ ب formatه باید #RRGGBB وي. 
+URL cannot be blank.: یو آر ایل خالي نشی کیدی.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: د دوتنې ډول د واردولو بmatه سره سمون نه خوري 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: د لاسوند شاليد لپاره ناباوره رنګ.
+Invalid color for document title.: د سند سرلیک لپاره ناباوره رنګ.
+Invalid color for table cell background.: د میز د حجرې شالید لپاره ناباوره رنګ.
+Invalid color for table cell background for today.: د نن ورځې لپاره د میز حجرو شالید لپاره ناباوره رنګ.
+Invalid work hours.: د کار ناسمه ساعتونه.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: د سرور URL باید د سلیش (/) سره پای ته ورسي.
+Invalid color for table grid.: رنگ برای شبکه جدول نامعتبر است.
+Invalid color for event popup background.: رنگ پس زمینه پنجره رویداد نامعتبر است.
+Invalid color for event popup text.: رنگ متن معتبر برای رویداد نامعتبر است.
+Invalid color for table header text.: رنگ متن معتبر جدول نیست.
+Invalid color for table header background.: رنگ نامعتبر برای پس زمینه هدر جدول.
+Server URL is required.: د سرور URL اړین دی.
+Invalid Color: ناباوره رنګ
+Database Name: د ډیټابیس نوم
+Full Path (no backslashes): بشپړه لاره (هیڅ بیک سلیش نشته) 
+The password contains illegal characters.: پټنوم ناقانونه کرکټر لري
+Error you must specify a Single-User Login: تېروتنه: تاسو باید د یو کارن-کارن ننوتنه مشخص کړئ
+Could not find XXX.: XXX یافت نشد.
+Could not find XXX in DOM.: XXX در DOM پیدا نشد.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: دغه هفته
+This Month: دا میاشت
+This Year: سږ کال
+Exit: وتون
+Add New Event: نوې پېښه اضافه کړئ
+Delete Entries: ننوتل حذف کړئ
+My Views: زما نظریات
+Manage Calendar of: د
+My Reports: زما راپورونه
+My Profile: زما پېژنيال
+Public Calendar: عامه کليز
+Unapproved Events: نه منل شوې پیښې
+User Manager: کارن سمبالګر
+Help Contents: د مینځپانګو مینځپانګه
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: د ډیټابیس کیچ لارښود
+Create New: نوی جوړ کړئ
+Failure Reason: د ناکامۍ لامل:
+You must manually create database: تاسو باید په لاسي ډول ډیټابیس جوړ کړئ.
+Single-User: یوزر کارونکی
+Test Settings: د ازمونې امستنې
+Timezone Conversion Successful: د وخت زون بدلونه بریالۍ
+WebCalendar Installation Wizard Step XXX: د ویب کیلیندر نصب کولو وزرډ ګام XXX
+Password Accepted: شفر منل شوی
+Successful Login: بریالی ننوتل
+Password Incorrect: شفر ناسم
+Invalid Login: ناباوره ننوتل
+Display Errors: تېروتنې ښودل
+File Uploads: د دوتنې پورته کول
+Allow URL fopen: د URL fopen اجازه ورکړئ (یوازې هغه وخت اړین دي چې لیرې کلېډرې کارول کیږي)
+Safe Mode: خوندي اکر
+Safe Mode Allowed Vars: خوندي حالت ته اجازه ورکړل شوي ډولونه (TZ یوازې هغه وخت اړین دي کله چې خوندي موډ آن وي)
+GD: جي ډي (د انځور مخاليزې لپاره اړين دی)
+Passwords do not match!: پاسورډونه سم نه دي!
+Unable to write password to settings.php file: "सेटिंग..pp" فایل ته د رمز لیکلو توان نلري.
+Password Updated: شفر تازه شو
+Password has been set: شفر ټاکل شوی.
+Connection Successful...: پیوستون بریالي و مهرباني وکړئ انسټالټ ته ادامه ورکولو لپاره بلې پا pageې ته لاړشئ.
+Correct your entries or click the Create New...: خپلې ننوتې سم کړئ یا د نصبولو ته ادامه ورکولو لپاره  نوی جوړ ت buttonۍ کلیک وکړئ.
+Correct your entries and try again.: خپلې ننوتې سمې کړئ او بیا کوښښ وکړئ.
+XXX does not exist: XXX شتون نلري
+XXX is not writable: XXX د لیکلو وړ ندي
+Error Converting Timezone: د وخت زون بدلولو کې تېروتنه
+Error Unable to write to file XXX.: XXX فایل ته د لیکلو توان نلري.
+Please change the file permissions of this file.: مهرباني وکړئ د دې فایل فایل جواز بدل کړئ.
+Please change includes dir permission: مهرباني وکړئ د نورو "کاروونکو" لخوا لیکلو ته اجازه ورکولو لپاره ستاسو "شامل" لارښود فایل جواز بدل کړئ.
+Your settings have been saved.: ستاسو تنظیمات خوندي شوي دي
+OFF: بند
+ON: په
+WebCalendar Setup Wizard: ګورتکارلینډ تنظیمولو وزرداد
+This installation wizard will guide you...: د دې انسټالټ وزرډ به تاسو ته د لومړني ویب کیلندر نصب کولو له لارې لارښود وکړي.<br>د مرستې او ستونزو حل کولو لپاره وګورئ:<br>
+System Administrators Guide: د سیسټم مدیر لارښود
+Frequently Asked Questions: څو ځلې پوښتل شوې پوښتنې
+FAQ: پرله پسې پوښتنې
+Troubleshooting: خرابوالی
+Getting Help: مرسته ترلاسه کول
+Upgrading Guide: د لوړولو لارښود
+User Supported Wiki: کارن ملاتړ شوی ویکي
+PHP Version Check: د پی ایچ پی نسخه چیک
+Check to see if PHP 7.1.0 or greater is installed.: وګورئ چې وګورئ PHP 7.1.0 یا تر دې لوی.
+PHP version: د پی ایچ پی نسخه
+PHP Settings: د پی ایچ پی تنظیمات
+Detailed PHP Info: د پی ایچ پی تفصيلي معلومات
+settings.php Status: "settings.php" حالت
+Session Check: ناسته چیک
+To test the proper operation of sessions...: د غونډو مناسب عملیاتو ازموینې لپاره ، دا پا reه بیرته پورته کړئ. تاسو باید هر ځل د ناستې ضد اضافه وګورئ.
+SESSION COUNTER: سیشن کاونټر
+The file permissions of settings.php are set...: د "settings.php" د فایل اجازه لیکونه تنظیم شوي نو نصب کونکي ورته د ترمیم کولو اجازه نلري. د دوام ورکولو لپاره مهرباني وکړئ د لاندې فایل فایل جواز بدل کړئ
+The file permissions of the includes directory are set...: د لارښوونې د فایل اجازه لیکونه تنظیم شوي نو له همدې امله نصب کونکي د نوې فایل جوړولو اجازه نلري. مهرباني وکړئ د دوام لپاره د لاندې ډایرکټرۍ اجازه بدل کړئ
+Your settings.php file appears to be valid.: ستاسو د "settings.php" فایل باوري ښکاري.
+Configuration Wizard Password: د سازونې وزرډ شفر
+Create Settings File Password: د امستنو فایل شفر جوړ کړئ
+db setup directions...: پدې برخه کې به تاسو تنظیم او ستاسو د ډیټابیس سرور سره د تړاو ازموینه وکړئ. د حساب معلومات ورکړل شوي باید د ډیټابیس ، میزونو او کاروونکو رامینځته کولو لپاره بشپړ اجازه ولري. که دا امکان نلري ، یا ستاسو ډیټابیس لاسرسی محدود وي ، نو تاسو باید پخپله خپل ډیټابیس ترتیب کړئ.
+Database Status: د ډیټابیس حالت
+Supported databases for your PHP installation: ستاسو د پی ایچ پی نصبولو لپاره ملاتړ شوي ډیټابیس
+Your current database settings are able to access the database.: ستاسو اوسني ډیټابیس تنظیمات د ډیټابیس لاسرسي وړ دي.
+Please Test Settings: مهرباني وکړئ امستنې معاینه کړئ
+Your current database settings are not able...: ستاسو اوسني ډیټابیس ترتیبات ډیټابیس ته لاسرسي کې وړ ندي یا تراوسه ندي ازمول شوي.
+Database Settings: د ډیټابیس امستنې
+Database Type: د ډیټابیس ډول
+Server: سرور
+Connection Persistence: د پيوستون دوام
+All your database tables appear to be up...: ستاسو ټول ډیټابیس جدولونه تر دې نیټې ښکاري. تاسو ممکن راتلونکي پا pageې ته لاړ شئ او خپل د ویب کلینډر تنظیم کول بشپړ کړئ.
+This appears to be a new installation...: دا یو نوی نصب دی. که دا سم نه وي ، نو مهرباني وکړئ پخوانۍ پا toې ته لاړشئ او خپل تنظیمات سم کړئ.
+This appears to be an upgrade...: دا داسې ښکاري چې له & nbsp؛ XXX & nbsp؛ څخه & nbsp؛ YYY ته له نسخه څخه نوي شوي دي.
+The database requires some data input...: ډیټابیس د ډیټا ډیټا ته اړتیا لري د اپ گریډ بشپړولو لپاره ډیټابیس تازه کول کلیک وکړئ.
+In this section we will perform...: پدې برخه کې به موږ بدلونونه ترسره کړو ترڅو ستاسو ډیټابیس اړین کچې ته ورسوو. که تاسو بشپړ ملاتړ شوي ډیټابیس کاروئ ، نو دا مرحله به ستاسو لپاره پخپله ترسره شي. که نه ، نو اړین SQL څرګند کیدی شي او تاسو باید وړ اوسئ چې دا ستاسو د ډیټابیس سرور پوښتنې کړکۍ کې پرې کړئ او چسپ کړئ.
+No database actions are required.: د ډیټابیس اعمالو ته اړتیا نشته.
+The following database actions are required: لاندې ډیټابیس عملونه اړین دي
+ODBC Underlying Database: د ODBC اصلي ډیټابیس:
+Automatic installation not supported: اتوماتیک نصب ستاسو د ډیټابیس ډول لپاره په بشپړ ډول ندي پلي شوی. تاسو باید د لاسرسي وړ SQL په کارولو سره لازمي اړین میزونه جوړ کړئ. مهرباني وکړئ دوام ورکولو لپاره  SQL څرګند کلیک وکړئ. ستاسو د ډیټابیس پوښتنې کړکۍ کې کټ او پیسټ کړئ.
+This may take several minutes to complete: دا ممکن څو دقیقې وخت ونیسي ترڅو بشپړ شي.
+Install Database: ډیټابیس ولګوه
+Update Database: اوسمهالول
+Display Required SQL: اړین SQL څرګندول
+Return to previous page after processing SQL.: د دې SQL په لاسي ډول پروسس کولو وروسته ، تاسو به اړتیا ولرئ پخوانۍ پا toې ته بیرته راشئ او خپل ډیټابیس و ازموئ ترڅو سکریپټ کولی شي بدلونونه کشف کړي.
+This is the final step in setting up your WebCalendar Installation.: دا ستاسو د ویب کیلندر نصب کولو تنظیم کولو کې وروستی ګام دی.
+Timezone Conversion: د وخت زون بدلونه
+It appears that you have NOT converted...: داسې ښکاري چې تاسو خپل د ویب کلینډر پیښې ډیټا GMT ته ندي بدل کړي. که تاسو لرئ ، نو تاسو ممکن دا خبرتیا له پامه وغورځئ او د تبادلې سره پرمخ لاړ نشئ. که دا نوی نصب وي ، نو تاسو ممکن دا خبرتیا هم له پامه وغورځئ.
+Convert Data to GMT: ډاټا GMT ته واړوئ
+Application Settings: کاریال امستنې
+HTTP-based authentication was not detected...: د HTTP پر اساس اعتبار ندی موندل شوی. تاسو به د خپل ویب سرور بیا تنظیم کولو ته اړتیا ولرئ که تاسو غواړئ لاندې د 'کارن تصدیق "انتخابونو څخه' ویب سرور 'غوره کړئ.
+HTTP-based authentication was detected...: د HTTP پر اساس اعتبار کشف شو. د کارن تصدیق ستاسو د ویب سرور لخوا اداره کیږي. تاسو باید لاندې د 'کارن تصدیق' لست څخه 'ویب سرور' غوره کړئ.
+Create Default Admin Account: د ډیفالټ اډمین حساب جوړ کړئ
+(Admin Account Not Found): (د ادارې اکاونټ ونه موندل شو)
+User Authentication: د کارن اعتبار
+Web-based via WebCalendar (default): د ویب کیلندر له لارې ویب پر اساس (ډیفالټ)
+Web Server (not detected): ویب سرور (ونه موندل شو)
+Web Server (detected): ویب سرور (کشف شو)
+None (Single-User): هیڅ نه (یوازینی کارن)
+Read-Only: یوازې لوستل
+Environment: چاپیریال
+Production: تولید
+Development: پرمختګ
+Save Settings: امستنې خوندي کړه
+Launch WebCalendar: ویب کیلیونر لانچ کړئ
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: د جدول "XXX" په تازه کولو کې تېروتنه: YYY.
+Conversion Successful: د تبادلې بریالیتوب
+Perl script required: ستاسو د ویب کیلندر پخوانی نسخه ستاسو د معلوماتو بدلولو لپاره د PERL سکریپټ چلولو ته اړتیا لري. مهرباني وکړئ /tools/upreg_to_0.9.7.pl پرمخ وړئ بیا دې پا pageې ته بیرته ستنیدو ته دوام ورکړئ.
+previous version requires updating several tables: ستاسو د ویب کیلندر پخوانی نسخه د ډیټابیس جدولونو تازه کولو ته اړتیا لري.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: هیڅ مخکتنه نشته
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: ډیټابیس سره په پیوستولو کې تېروتنه
+Include Path: لاره شامل کړئ
+Deleting events for: لپاره د پیښو حذف کول
+Importing events for: لپاره د پیښو واردول
+No data returned from: له هیڅ ډاټا نه راګرځېدلی
+for non-user calendar: د غیر کارونکي کیلنڈر لپاره
+No Remote Calendars found: د ریموٹ کلیډرې ونه موندل شو
+Remote Calendars not enabled: ریموٹ کیلنډرې ندی فعال شوي
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: د غونډې id ونه موندل شو
+could not find event id XXX in database.: په ډیټابیس کې د ایډیټ id XXX ونه موندل.
+task: دنده
+This is a reminder for the XXX detailed below.: دا د تفصیل لاندې د ایکسینیمکس لپاره یادونه ده.
+Pecentage Complete: فیصله مکمل
+Reminder: یادونه
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: ناملاتړی اقدام: XXX.
+No event id specified.: د پیښې هیڅ پیژندل شوی ندي.
+Not authorized (not admin).: مجاز نه دی (نه اداره کیږي).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: د YYY نیټې څخه ZZZ نیټې پورې د XXX لپاره د پیښو په اړه پلټنه.
+Found XXX events in time range.: د وخت لړ کې د XXX پیښې وموندلې.
+Event id=XXX YYY at ZZZ on AAA.: د پیښې ID = XXX "YYY" په AZA کې ZZZ کې.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: د XXX کارونکي ته اجازه ورکول چې د نورو کارن تقویم وګورئ.
+Error Email reminders disabled for user XXX.: تېروتنه: د بریښنالیک یادونې د کارونکي "XXX" لپاره ناتوان شوې.
+Number of site_extras XXX.: د سایټ_ټیکټراس شمیره: XXX.
+Reminder set for event.: د غونډې لپاره یادونه جوړه شوې.
+Mins Before XXX.: دمخه دمخه: XXX.
+Event time is XXX.: د پیښې وخت دی: XXX.
+Remind time is XXX.: د یادونې وخت دی: XXX.
+Reminders for user XXX, login YYY.: د "XXX" کارونکي لپاره یادونې ، "YYY" ننوتل.
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: د کارونکي "XXX" لپاره ناتایید شوي ترلاسه کول.
+Event id=XXX YYY already sent.: د پیښې ID = XXX "YYY" دمخه لیږل شوی.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: د واحد کاروونکي حالت لپاره لاګ ان ته اړتیا نشته.
+No login required for HTTP authentication.: د HTTP اعتبار لپاره ننوتل اړین ندي.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: په ننوتلو کې ناباوره حروف
+Username XXX does not exist.: د "XXX" کارن نوم شتون نلري.
+You cannot remove admin rights from yourself!: تاسو نشئ کولی د خپل ځان څخه د اداري حقونه لرې کړئ!
+Unknown error saving user: د کاروونکي په خوندي کولو کې نامعلومه تېروتنه.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: د غونډې ID لپاره هیڅ برخه وال ونه موندل شو: XXX.
+Db error Could not find event id XXX.: د Db تیروتنه: د ایډیټ id XXX ونه موندل شو. 
+Error Could not find event id XXX in database.: تیروتنه: په ډیټابیس کې د ایډیټ ID XXX ونه موندل شو. 

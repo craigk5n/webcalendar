@@ -1,0 +1,2387 @@
+# Swahili sw
+#
+# Muundo huo una kichwa cha hiari:
+#
+# Ilitafsiriwa na: jina lako na barua pepe
+# Sasisho la mwisho: tarehe ya tafsiri
+# (Ikijumuisha "#" inayoongoza na maoni yoyote yaliyotolewa na watafsiri waliopita.
+# Mstari wa kwanza ulio wazi unamaliza maoni haya ya kichwa.)
+#
+# Inafuatwa na wengi kama inahitajika:
+#
+# Kifungu cha Kiingereza: tafsiri
+# (Moja kwa mstari. BILA kuongoza "#".
+# "Maneno ya Kiingereza:", pamoja na koloni ":", hutolewa na
+# Watengenezaji # Kalenda ya Wavuti. Sehemu yako ni "tafsiri".)
+#
+# Saraka ya zana ina hati mbili za kukusaidia:
+# - check_translation.pl
+# inaonyesha ikiwa maandishi yote yametafsiriwa kwa mafanikio.
+# - update_translation.pl
+# itachanganua faili za programu ili kupata tafsiri zote ('phrase') na
+# Kidokezo # cha zana ('kifungu cha maneno'). Itapanga misemo kulingana na ukurasa
+# (faili) ambayo ina tukio la kwanza. Kwa hiari, inaweza kuweka lebo
+# misemo # ambayo bado haijatafsiriwa kwa kuweka
+#  << MISSING >>
+# kwenye mstari juu ya kifungu. Na, ikiwa kifungu ni kifupi,
+# itajumuisha maandishi kamili ya Kiingereza kwenye mstari chini ya kifungu.
+#
+# Kumbuka: Ninajaribu kupunguza ukubwa wa faili kwa jumla. Ikiwa "tafsiri"
+# neno / kifungu ni sawa katika lugha yako na Kiingereza, tumia tu ishara "=".
+#
+# Kumbuka: Utagundua kuingia kwa "May_" chini. Kuna sababu ya hii.
+# Tafsiri "May_" kwa jina kamili la mwezi na "May" kwa,
+# kawaida barua tatu, kifupi cha mwezi (kama "Oktoba" ya "Oktoba").
+#
+# Nilitumia Google kutafsiri kwa hili.
+# Inapaswa kuwa ya kutosha hadi mzungumzaji asili aweza kuithibitisha.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: Kalenda ya Wavuti
+version XXX: toleo la XXX
+WebCalendar is a PHP application used...: Kalenda ya wavuti ni programu ya PHP inayotumika kudumisha kalenda ya mtumiaji mmoja au kikundi cha watumiaji wa mtandao / mtandao. Inaweza pia kusanidiwa kama kalenda ya hafla.
+Credits: Mikopo
+About: Kuhusu
+OK: sawa
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Kosa la hifadhidata: XXX.
+DEFAULT CONFIGURATION: MABADILIKO YA KINYUME
+Go: Nenda
+Save: Okoa
+Undo: Tendua
+Public Access: Ufikiaji wa Umma
+Admin: Usimamizi
+User Access Control: Udhibiti wa Ufikiaji wa Mtumiaji
+Allow Access to Other Users Calendar: Ruhusu Ufikiaji wa Kalenda ya Watumiaji Wengine
+Grant This User Access to My Calendar: Ruhusu Ufikiaji huu wa Mtumiaji kwenye Kalenda Yangu
+Type: Andika
+Calendar: Kalenda
+View Event: Angalia Tukio
+View: Angalia
+Edit: Hariri
+Approve/Reject: Idhinisha / Kataa
+Events: Matukio
+Tasks: Kazi
+Journals: Jarida
+Can Invite: Unaweza Kukaribisha
+Can Email: Unaweza Barua pepe
+Can See Time Only: Unaweza Kuona Wakati Tu
+Assistant: Msaidizi
+Select All: Chagua Zote
+Clear All: Futa Yote
+Public: Umma
+Confidential: Siri
+Private: Privat
+
+########################################
+# Page: activity_log.php
+#
+Next: Ifuatayo
+Previous: Iliyotangulia
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Tukio XXX tayari liko kwenye kalenda yako.
+Invalid entry id XXX.: Kitambulisho batili cha kuingia: "XXX".
+a XXX event may not be added to your calendar: Hili ni tukio la XXX na haliwezi kuongezwa kwenye kalenda yako.
+confidential: siri
+private: Privat
+Error adding event XXX.: Hitilafu wakati wa kuongeza tukio: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Jina batili la mipangilio "XXX".
+Select: Chagua
+Day: Siku
+Week: Wiki
+Month: Mwezi
+Year: Mwaka
+Bottom: Chini
+Top: Juu
+Anyone: Yeyote
+Participant: Mshiriki
+Settings: Mipangilio
+Groups: Vikundi
+NonUser Calendars: Kalenda Zisizotumiwa
+Other: Nyingine
+Email: Barua pepe
+Colors: Rangi
+Document background: Asili ya hati
+Document title: Kichwa cha hati
+Document text: Nakala ya hati
+My event text: Maandishi yangu ya hafla
+Table grid color: Rangi ya gridi ya meza
+Table header background: Mandharinyuma ya kichwa cha jedwali
+Table header text: Maandishi ya kichwa cha jedwali
+Table cell background: Mandharinyuma ya seli ya jedwali
+Table cell background for current day: Usuli wa jedwali la jedwali kwa siku ya sasa
+Table cell background for days with events: Kiini cha jedwali la seli kwa siku na hafla
+Table cell background for weekends: Asili ya jedwali la jedwali kwa wikendi
+Table cell background for other month: Asili ya jedwali la jedwali kwa mwezi mwingine
+Week number color: Rangi ya nambari ya wiki
+Event popup background: Historia ya kidukizo cha hafla
+Event popup text: Matini ibukizi la tukio
+System Settings: Mipangilio ya Mfumo
+Help: Msaada
+System options: Chaguzi za mfumo
+app-name-help: Inabainisha jina la programu ambayo itaonekana kwenye upau wa kichwa cha kivinjari kwa kurasa zote na kwenye ukurasa wa kuingia. Thamani unayotaja hapa itatafutwa katika faili ya tafsiri inayokuruhusu kutoa vichwa tofauti vya lugha tofauti.
+Application Name: Jina la Maombi
+Translated Name (XXX): Jina lililotafsiriwa (XXX)
+server-url-help: Inabainisha msingi wa URL ya programu. Hii itajumuishwa wakati wa kutuma vikumbusho na arifa za barua pepe.
+Server URL: URL ya seva
+home-url-help: Inabainisha URL ya nyumbani kwa programu. Hii inaweza kuwa kamili au jamaa
+Home URL: URL ya Nyumbani
+language-help: Inabainisha ni lugha gani ya kutumia.
+Language: Lugha
+Your browser default language is XXX.: Lugha chaguomsingi ya kivinjari chako ni "XXX".
+Allow user to use themes: Ruhusu mtumiaji atumie mandhari
+themes-help: Inaruhusu sasisho la misa ya mipangilio ya usanidi. Lebo za kesi ndogo ni upendeleo wa watumiaji tu.
+Themes: Mada
+AVAILABLE THEMES: MAMBO YANAPATIKANA
+None: Hakuna
+Preview: Hakiki
+Site customization: Kubadilisha tovuti
+custom-script-help: Huruhusu kuingia kwa Javascript maalum au maandishi ya laini ya mitindo ambayo itaingizwa kwenye sehemu ya "kichwa" ya HTML ya kila ukurasa.
+Custom script/stylesheet: Hati ya kawaida / karatasi ya mitindo
+custom-header-help: Huruhusu kijisehemu maalum cha HTML kujumuishwa juu ya kila ukurasa.
+Custom header: Kichwa cha kawaida
+custom-trailer-help: Huruhusu kijisehemu maalum cha HTML kujumuishwa mwishoni mwa kila ukurasa.
+Custom trailer: Tela ya kawaida
+enable-external-header-help: Inaruhusu trela maalum kupakiwa kutoka faili ya nje
+Allow external file for header/script/trailer: Ruhusu faili ya nje ya kichwa / hati / trela
+Allow user to override header/trailer: Ruhusu mtumiaji kubatilisha kichwa / trela
+Date and Time: Tarehe na Wakati
+server-tz-help: Inabainisha saa ngapi kurekebisha wakati kutoka kwa UTC hadi wakati wa seva.
+Server Timezone Selection: Uteuzi wa Saa za Saa za Seva
+tz-help: Inabainisha saa ngapi kurekebisha wakati kutoka kwa UTC hadi saa za hapa.
+Default Client Timezone Selection: Uteuzi chaguomsingi wa Wakati wa Mteja
+display-general-use-gmt-help: Ikiwa imewezeshwa, tarehe / nyakati za kawaida zinaonyeshwa kama GMT
+Display Common Use Date/Times as GMT: Onyesha Tarehe / Nyakati za Matumizi ya Kawaida kama GMT
+date-format-help: Inabainisha fomati ya tarehe unayopendelea.
+Date format: Muundo wa tarehe
+Small Task Date: Tarehe ya Kazi Ndogo
+display-week-starts-on: Hubainisha siku ya wiki ambayo wiki inaanza. Ikiwa Jumatatu imeainishwa, basi nambari za wiki zitakuwa nambari za wiki za ISO.
+Week starts on: Wiki inaanza
+display-weekend-starts-on: Inaweka siku ya wiki kwa wikendi kuanza
+Weekend starts on: Mwishoni mwa wiki huanza
+time-format-help: Hubainisha ni fomati gani ya saa ya kutumia:<br><em>Saa 12:</em> Nyakati za kuonyesha kama saa 3 asubuhi, 8:30 jioni, nk.<br><em>Saa 24:</em> Nyakati za kuonyesha kama 300 , 2030, nk.
+Time format: Muundo wa wakati
+12 hour: Masaa 12
+24 hour: Masaa 24
+timed-evt-len-help: Hubainisha njia ya kuingiza data kwa kuamua urefu wa tukio lililopangwa.
+Specify timed event length by: Bainisha urefu wa tukio uliopangwa na
+Duration: Muda
+End Time: Saa ya Mwisho
+work-hours-help: Inabainisha kiwango cha saa cha kuonyesha kwa mwonekano wa siku.
+Work hours: Saa za kazi
+From: Kutoka
+to: kwa
+Appearance: Mwonekano
+preferred-view-help: Hubainisha mwonekano chaguomsingi (Siku, Wiki, Mwezi, au Mwaka).
+Preferred view: Mtazamo unaopendelea
+Allow top menu: Ruhusu menyu ya juu
+Date Selectors position: Wachaguzi wa Tarehe nafasi
+menu-themes-help: Inaweka rangi na mtindo wa menyu ya juu
+Menu theme: Mandhari ya menyu
+fonts-help: Inabainisha orodha ya fonti za mfumo za kutumia (kama vile "Arial, Helvetica")
+Fonts: Fonti
+display-sm_month-help: Ikiwa imewezeshwa, inaonyesha miezi michache katika kutazamwa kwa mwezi
+Display small months: Onyesha miezi ndogo
+display-weekends-help: Jumuisha wikendi wakati wa kutazama wiki.
+Display weekends: Onyesha wikendi
+display-long-daynames-help: Ikiwa imewezeshwa, majina ya siku ndefu yanaonyeshwa
+Display long day names: Onyesha majina ya siku ndefu
+display-alldays-help: Onyesha siku za miezi iliyopita na inayofuata katika maoni ya mwezi, ukijaza seli zote.
+Display all days in month view: Onyesha siku zote kwa mtazamo wa mwezi
+display-week-number-help: Inabainisha ikiwa nambari ya wiki (1-52) inapaswa kuonyeshwa katika mwonekano wa mwezi na mwonekano wa wiki.
+Display week number: Onyesha nambari ya wiki
+display-desc-print-day-help: Jumuisha maelezo ya hafla katika toleo linalofaa la printa la mwonekano wa siku.
+Display description in printer day view: Onyesha maelezo katika mtazamo wa siku ya printa
+yearly-shows-events-help: Kwenye mwonekano wa kila mwaka, onyesha siku zilizo na hafla kwa herufi nzito.
+Display days with events in bold in month and year views: Onyesha siku zilizo na hafla nzito katika maoni ya mwezi na mwaka
+display-minutes-help: Ikiwa imewezeshwa, dakika zinazoishia na: 00 zitaonyeshwa kila wakati
+Display 00 minutes always: Onyesha dakika 00 kila wakati
+display-end-times-help: Onyesha nyakati za kumaliza tukio ikiwa tukio la wakati
+Display end times on calendars: Onyesha nyakati za mwisho kwenye kalenda
+allow-view-add-help: Aikoni ya '+' itajumuishwa kwenye maoni, ikiruhusu watumiaji kuongeza haraka matukio kwenye kalenda za watumiaji wengine.
+Include add event link in views: Jumuisha kuongeza kiunga cha hafla katika maoni
+lunar-help: Ikiwa imewezeshwa, itaonyesha ikoni ndogo zinazowakilisha awamu za mwezi kila mwezi
+Display Lunar Phases in month view: Onyesha Awamu za Mwezi kwa mwonekano wa mwezi
+Restrictions: Vizuizi
+allow-view-other-help: Inabainisha ikiwa mtumiaji anaweza kuona kalenda ya mtumiaji mwingine.
+Allow viewing other users calendars: Ruhusu kutazama kalenda za mtumiaji mwingine
+require-approvals-help: Inapowezeshwa, mtumiaji lazima aidhinishe tukio kabla halijaonyeshwa kwenye kalenda yake (isipokuwa Onyesho ambalo halijaidhinishwa limewezeshwa). Kumbuka kuweka hii kuwa "Hapana" hakutazima idhini za kalenda ya Ufikiaji Umma (ikiwa kalenda ya Ufikiaji Umma imewezeshwa).
+Require event approvals: Inahitaji idhini ya hafla
+display-unapproved-help: Hubainisha ikiwa hafla zilizoidhinishwa zinaonyeshwa kwenye kalenda yako.<br>Ikiwekwa kuwa "Ndio", basi hafla zilizoidhinishwa zitaonyeshwa kwenye kalenda yako (kwa rangi tofauti ya maandishi).<br>Ikiwekwa kuwa "Hapana", basi hafla zilizoidhinishwa lazima ziidhinishwe kabla ya kuonyeshwa kwenye kalenda yako.
+Display unapproved: Onyesho halijakubaliwa
+conflict-check-help: Angalia mizozo ya hafla (hafla mbili zilizopangwa kwa wakati mmoja kwa mtu yule yule). Ikiwa utaweka hii kuwa "Ndio", bado utaweza kupanga matukio mawili kwa wakati mmoja baada ya kuthibitisha onyo. Ikiwa utaweka hii kuwa "Hapana", hakuna kuangalia mizozo itafanywa. Labda unataka kuweka hii kuwa "Ndio", kwa hivyo ukaguzi wa mizozo hufanyika.
+Check for event conflicts: Angalia mizozo ya hafla
+Yes: Ndio
+No: Hapana
+conflict-months-help: Ikiwa kukagua mizozo kumefanyika ("Angalia mizozo ya hafla" imewekwa kuwa "Hapana" & # 41 ;, hii inabainisha ni miezi mingapi katika siku zijazo tunapaswa kuangalia mizozo. Ukigundua kuongeza hafla inachukua muda mrefu kushughulikia , punguza idadi hii.
+Conflict checking months: Miezi ya kuangalia migogoro
+conflict-check-override-help: Huruhusu watumiaji kubatilisha mizozo ya tukio na kupanga ratiba ya matukio mawili au zaidi kwa wakati mmoja.
+Allow users to override conflicts: Ruhusu watumiaji kubatilisha mizozo
+limit-appts-help: Huruhusu msimamizi wa mfumo kuweka kikomo cha mfumo mzima kwa idadi ya miadi ambayo mtumiaji mmoja anaweza kuwa nayo siku yoyote.
+Limit number of timed events per day: Punguza idadi ya matukio ya wakati kwa siku
+limit-appts-number-help: Hubainisha idadi ya juu kabisa ya hafla ambazo muhusika anaweza kuwa nazo kwa siku moja.
+Maximum timed events per day: Matukio ya muda uliopangwa kwa siku
+crossday-help: Ikiwezeshwa, hafla ambazo huchukua muda wa siku zitaonyeshwa kwa siku tofauti
+Disable Cross-Day Events: Lemaza Matukio ya Siku za Msalaba
+disable-location-field-help: Kuchagua "Ndio" kutaondoa uwanja wa "Mahali" kutoka kurasa za habari za hafla
+Disable Location field: Lemaza sehemu ya Mahali
+disable-url-field-help: Kuchagua "Ndio" kutaondoa uwanja wa "URL" kutoka kurasa za habari za hafla
+Disable URL field: Lemaza sehemu ya URL
+disable-priority-field-help: Kuchagua "Ndio" kutaondoa uwanja wa "Kipaumbele" kutoka kwa kurasa za habari za hafla, ikitoa kiolesura rahisi cha novices.
+Disable Priority field: Lemaza sehemu ya Kipaumbele
+disable-access-field-help: Kuchagua "Ndio" kutaondoa uwanja wa "Upataji" kutoka kwa kurasa za habari za hafla, ikitoa kiolesura rahisi cha novices.
+Disable Access field: Lemaza uwanja wa Ufikiaji
+disable-participants-field-help: Kuchagua "Ndio" kutaondoa uwanja wa "Washiriki" kutoka kurasa za habari za hafla, kuzuia watumiaji kuongeza watumiaji wengine kwenye hafla zao. Ukiwezesha chaguo hili, unaweza kutaka pia kuzima uwanja wa "Ruhusu kutazama kalenda za watumiaji wengine" pia.
+Disable Participants field: Lemaza sehemu ya Washiriki
+disable-repeating-field-help: Kuchagua "Ndio" kutaondoa uwanja wa "Kurudia" wakati wa kuongeza hafla. Hii itatoa kiolesura rahisi cha novices.
+Disable Repeating field: Lemaza Uga wa Kurudia
+allow-html-description-help: Ikiwa imewezeshwa, watumiaji wanaweza kuingiza HTML katika uwanja wa maelezo ya tukio. Ikiwa haijawezeshwa, vitambulisho vya HTML vitatoroka ili kuonekana kama maandishi wazi. Onyo: Kuwasha huduma hii kutawaruhusu watumiaji kurejelea picha kwenye wavuti zingine.
+Allow HTML in Description: Ruhusu HTML katika Maelezo
+Popups: Dukizi
+disable-popups-help: Lemaza kidukizo kutoka kwa maoni ya kalenda
+Disable Pop-Ups: Lemaza Wana-pop-up
+popup-includes-siteextras-help: Ikiwa imewezeshwa, ruhusu usanidi wa sehemu maalum za hafla katika faili ya tovuti_extras.php itaonyeshwa katika dukizo za hafla.
+Display Site Extras in popup: Onyesha Ziada za Wavuti kwenye kidukizo
+popup-includes-participants-help: Ikiwa imewezeshwa, washiriki huonyeshwa katika dukizo za hafla.
+Display Participants in popup: Onyesha Washiriki katika kidukizo
+Miscellaneous: Mbalimbali
+remember-last-login-help: Inapowezeshwa, kuingia kwa mtumiaji kutajazwa kwao kwenye ukurasa wa kuingia (lakini sio nenosiri), na mapendeleo ya mtumiaji yatapakiwa (pamoja na rangi wanazopendelea na uteuzi wa lugha).
+Remember last login: Kumbuka kuingia mwisho
+summary_length-help: Urefu wa juu wa Maelezo mafupi katika maoni ya kalenda
+Brief Description Length: Maelezo mafupi Urefu
+user_sort-help: Huamua mpangilio wa orodha ya Mtumiaji, orodha zisizo za Watumiaji
+User Sort Order: Aina ya Mtumiaji
+Lastname, Firstname: Jina la mwisho, Jina la kwanza
+Firstname, Lastname: Jina la kwanza Jina la mwisho
+allow-public-access-help: Ikiwashwa, kalenda inaweza kutumika kama kalenda ya umma inayosomwa tu ambayo haihitaji watumiaji kuingia.
+Allow public access: Ruhusu ufikiaji wa umma
+public-access-default-visible: Matukio kutoka kalenda ya umma yataonekana moja kwa moja kwenye kalenda za watumiaji wote
+Public access visible by default: Ufikiaji wa umma unaonekana kwa chaguomsingi
+public-access-default-selected: Wakati wa kuongeza hafla mpya, mtumiaji wa umma atachaguliwa kwa chaguo-msingi kama mshiriki.
+Public access is default participant: Ufikiaji wa umma ni mshiriki chaguo-msingi
+public-access-view-others-help: Unapofikia mfumo na ufikiaji wa umma, inabainisha ikiwa mtumiaji anaweza kuona kalenda ya mtumiaji mwingine wa kalenda.
+Public access can view other users: Ufikiaji wa umma unaweza kuona watumiaji wengine
+public-access-can-add-help: Ikiwashwa, watumiaji wanaofikia mfumo kupitia Ufikiaji wa Umma wataweza kuongeza hafla mpya, lakini hawataonekana kwenye kalenda mpaka msimamizi atakapoidhinisha hafla mpya.
+Public access can add events: Ufikiaji wa umma unaweza kuongeza hafla
+public-access-add-requires-approval-help: Inabainisha ikiwa hafla zilizoongezwa kupitia akaunti ya ufikiaji wa umma zinahitaji idhini kabla ya kuonyeshwa.
+Public access new events require approval: Matukio mapya ya ufikiaji wa umma yanahitaji idhini
+public-access-sees-participants-help: Ikiwa imewezeshwa, watumiaji wanaofikia kalenda kutoka kwa akaunti ya umma wataweza kuona washiriki wa hafla ikiwa wataona maelezo ya hafla.
+Public access can view participants: Ufikiaji wa umma unaweza kuona washiriki
+public-access-override-help: Huruhusu majina ya tukio na maelezo kufichwa kwenye kalenda ya umma
+Override event name/description for public access: Batilisha jina la tukio / maelezo ya ufikiaji wa umma
+public-access-override-text-help: Maandishi ya kuonyesha ikiwa chaguo hapo juu imewezeshwa. Ikiwa 'Haipatikani', itatafsiriwa.
+Text to display to public access: Maandishi ya kuonyeshwa kwa ufikiaji wa umma
+public-access-captcha-help: Ikiwa imewezeshwa, hafla mpya zilizoongezwa na Umma zinahitaji kupitisha uthibitishaji wa CAPTCHA.
+Require CAPTCHA validation for public access new events: Inahitaji uthibitisho wa CAPTCHA kwa ufikiaji wa hafla mpya
+uac-enabled-help: Huwasha udhibiti wa ufikiaji wa kiwango cha mtumiaji
+User Access Control enabled: Udhibiti wa Ufikiaji wa Mtumiaji umewezeshwa
+groups-enabled-help: Inawezesha usaidizi wa kikundi, kuruhusu watumiaji kuchagua watumiaji kwa vikundi.
+Groups enabled: Vikundi vimewezeshwa
+user-sees-his-group-help: Ikiwashwa, watumiaji hawataona watumiaji wa kalenda ambao hawako katika angalau moja ya vikundi vyao.
+User sees only his groups: Mtumiaji huona tu vikundi vyake
+nonuser-enabled-help: Ikiwashwa, wasimamizi watakuwa na chaguo la kuongeza kalenda zisizo za watumiaji
+Nonuser enabled: Kalenda zisizo za Watumiaji zimewashwa
+nonuser-list-help: Wapi kuonyesha kalenda zisizo za watumiaji katika orodha ya washiriki
+Nonuser list: Onyesha katika orodha ya washiriki katika
+Upcoming Events: Matukio Yajayo
+upcoming-events-help: Washa ujao.php
+Enabled: Imewezeshwa
+upcoming-events-allow-override: Ruhusu paramter ya mtumiaji kwa ujao.php
+Allow user override: Ruhusu kubatilisha kwa mtumiaji
+upcoming-events-display-caticons: Jumuisha aikoni za kitengo katika ujao.php
+Display category icons: Onyesha aikoni za kategoria
+upcoming-events-display-layers: Onyesha tabaka katika ujao.php
+Display layers: Onyesha tabaka
+upcoming-events-display-links: Onyesha viungo katika ujao.php
+Display links to events: Onyesha viungo kwa hafla
+upcoming-events-display-popups: Onyesha popups za hafla katika ujao.php
+Display event popups: Onyesha kidukizo cha hafla
+reports-enabled-help: Ikiwashwa, watumiaji wataona sehemu ya "Ripoti" chini ya kila ukurasa na wataruhusiwa kuunda ripoti maalum. Kwa kuongezea, watumiaji wa msimamizi wanaweza kuunda ripoti za ulimwengu ambazo zitaonekana chini ya kurasa zote za watumiaji.
+Reports enabled: Ripoti zimewezeshwa
+subscriptions-enabled-help: Inabainisha ikiwa watumiaji wa kijijini wanaweza kujisajili kwenye kalenda ya mtumiaji wa Kompyuta.
+Allow remote subscriptions: Ruhusu usajili wa mbali
+remotes-enabled-help: Inaruhusu watumiaji kupakia faili za ics za mbali kwa kutumia URL
+Allow remote calendars: Ruhusu kalenda za mbali
+rss-enabled-help: Hubainisha ikiwa kalenda ya mtumiaji inaweza kupatikana kutoka kwa mpasho wa RSS.
+Enable RSS feed: Washa mpasho wa RSS
+categories-enabled-help: Huwasha usaidizi kwa kategoria za hafla.
+Categories enabled: Jamii imewezeshwa
+icon_upload-enabled-help: Ikiwa imewezeshwa, watumiaji wanaweza kupakia aikoni za kategoria
+Category Icon Upload enabled: Upakiaji wa Picha ya Jamii umewezeshwa
+(Requires XXX folder to exist.): (Inahitaji folda ya XXX kuwepo.)
+display-tasks-help: Onyesha dirisha dogo la kazi kwenye kalenda ya mwezi na siku
+Display small task list: Onyesha orodha ndogo ya kazi
+display-tasks-in-grid-help: Onyesha kazi katika kalenda pamoja na hafla
+Display tasks in Calendars: Onyesha kazi katika Kalenda
+allow-external-users-help: Hubainisha ikiwa mtumiaji asiye kalenda anaweza kuongezwa kwenye tukio. Hii inaruhusu watumiaji wasio wa kalenda kuorodheshwa kama washiriki wa hafla.
+Allow external users: Ruhusu watumiaji wa nje
+external-can-receive-notification-help: Watumiaji wa nje wanapowezeshwa na matumizi ya barua pepe yamewezeshwa, watumiaji wa nje wanaweza kupokea arifa za barua pepe wakati tukio linaongezwa, kusasishwa au kufuta (ikiwa anwani ya barua pepe ya mtumiaji wa nje imetolewa).
+External users can receive email notifications: Watumiaji wa nje wanaweza kupokea arifa za barua pepe
+external-can-receive-reminder-help: Wakati watumiaji wa nje wamewezeshwa na matumizi ya barua pepe yamewezeshwa, watumiaji wa nje wanaweza kupokea vikumbusho vya barua pepe (ikiwa anwani ya barua pepe ya mtumiaji wa nje imetolewa).
+External users can receive email reminders: Watumiaji wa nje wanaweza kupokea vikumbusho vya barua pepe
+allow-self-registration-help: Ruhusu watumiaji wapya kujiandikisha
+Allow self-registration: Ruhusu usajili wa kibinafsi
+use-blacklist-help: Punguza ufikiaji wa kazi za Kalenda ya Wavuti kulingana na anwani ya IP
+Restrict self-registration to blacklist: Zuia usajili wa kibinafsi kwenye orodha nyeusi
+allow-self-registration-full-help: Ruhusu watumiaji wapya kukamilisha mchakato wa kujisajili kwenye mtandao
+Use self-registration email notifications: Tengeneza nywila na tuma kwa watumiaji wapya
+allow-attachment-help: Ruhusu watumiaji kuongeza viambatisho vya faili kwenye hafla.
+Allow file attachments to events: Ruhusu viambatisho vya faili kwenye hafla
+Admin and owner can always add attachments if enabled.: Msimamizi na mmiliki anaweza kuongeza viambatisho kila wakati ikiwa imewezeshwa.
+allow-comments-help: Ruhusu watumiaji kuongeza maoni kwenye hafla.
+Allow comments to events: Ruhusu maoni kwa hafla
+Admin and owner can always add comments if enabled.: Msimamizi na mmiliki anaweza kuongeza maoni kila wakati ikiwa imewezeshwa.
+email-enabled-help: Washa au uzime kutuma kwa barua pepe kwa arifa na vikumbusho. Weka "hapana", ikiwa seva yako haijawekwa vizuri kutuma barua.
+Email enabled: Barua pepe imewezeshwa
+email-default-sender: Inabainisha anwani ya barua pepe kutaja kama mtumaji wakati wa kutuma vikumbusho.
+Default sender address: Anwani chaguomsingi ya mtumaji
+email-mailer: Chagua aina ya barua pepe (SMTP, barua ya PHP, sendmail)
+Email Mailer: Barua pepe
+email-smtp-host: Jina la mwenyeji la seva za SMTP zilizotengwa na koma
+SMTP Host name(s): Jina la mwenyeji wa SMTP
+email-smtp-port: Nambari ya Bandari ya SMTP (kawaida 25)
+SMTP Port Number: Nambari ya Bandari ya SMTP
+email-smtp-auth: Tumia Uthibitishaji wa SMTP
+SMTP Authentication: Uthibitishaji wa SMTP
+email-smtp-username: Jina la mtumiaji la SMTP ikiwa unatumia Uthibitishaji
+SMTP Username: Jina la Mtumiaji la SMTP
+email-smtp-password: Nenosiri la SMTP ikiwa unatumia Uthibitishaji
+SMTP Password: Nenosiri la SMTP
+Default user settings: Mipangilio chaguomsingi ya mtumiaji
+email-format: Taja upendeleo kwa HTML au ujumbe wazi wa maandishi
+Email format preference: Upendeleo wa muundo wa barua pepe
+HTML: =
+Plain Text: Maandishi wazi
+email-include-ics: Jumuisha faili ya ICalendar ICS kwa barua pepe
+Include iCalendar attachments: Jumuisha viambatisho vya Kalenda
+email-event-reminders-help: Inabainisha ikiwa utatuma vikumbusho vya hafla au la.
+Event reminders: Mawaidha ya hafla
+email-event-added: Inabainisha ikiwa utatuma au usitume arifa za barua pepe wakati tukio linaongezwa kwenye kalenda yako.
+Events added to my calendar: Matukio yaliongezwa kwenye kalenda yangu
+email-event-updated: Inabainisha ikiwa utatuma au usitume arifa za barua pepe wakati tukio linasasishwa kwenye kalenda yako.
+Events updated on my calendar: Matukio yamesasishwa kwenye kalenda yangu
+email-event-deleted: Inabainisha ikiwa utatuma au usitume arifa za barua pepe wakati tukio limeondolewa kwenye kalenda yako.
+Events removed from my calendar: Matukio yameondolewa kwenye kalenda yangu
+email-event-rejected: Inabainisha ikiwa utatuma au usitume arifa za barua pepe wakati mshiriki anakataa tukio ambalo liko kwenye kalenda yako.
+Event rejected by participant: Tukio limekataliwa na mshiriki
+email-event-create: Inabainisha ikiwa muundaji wa maingizo atapokea barua pepe
+Event that I create: Tukio ambalo ninaunda
+Color options: Chaguzi za rangi
+Allow user to customize colors: Ruhusu mtumiaji kubadilisha rangi
+gradient-colors: Ikiwa rangi za gradient zilizowezeshwa hutumiwa. Hii inaweza kuathiri sana utendaji.
+Enable gradient images for background colors: Washa picha za gradient kwa rangi za mandharinyuma
+Not available: Haipatikani
+Background Image options: Chaguzi za Picha za Asili
+bgimage-help: URL ya picha ya mandharinyuma inayotarajiwa. Inaweza kuwa kiungo cha jamaa.
+Background Image: Picha ya Asili
+bgrepeat-help: Udhibiti unarudia tabia ya picha ya mandharinyuma.
+Background Repeat: Rudia Usuli
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Wasaidizi
+Preferences: Mapendeleo
+Control Panel: Jopo kudhibiti
+Users: Watumiaji
+Account: Akaunti
+Categories: Jamii
+Views: Maoni
+Layers: Tabaka
+Reports: Ripoti
+Delete Events: Futa Matukio
+Activity Log: Kumbukumbu ya shughuli
+System Log: Ingia ya Mfumo
+Security Audit: Ukaguzi wa Usalama
+Public Preferences: Mapendeleo ya Umma
+Unapproved Public Events: Matukio ya Umma ambayo hayakuidhinishwa
+Administrative Tools: Zana za Utawala
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Jina la Nakala: "XXX".
+Username XXX already exists.: Jina la mtumiaji "XXX" tayari lipo.
+Email address XXX already exists.: Anwani ya barua pepe "XXX" tayari ipo.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Maoni ya Ziada (hiari)
+Approve and Send: Idhinisha na Tuma
+Approve and Exit: Idhinisha na Toka
+(Your comments will be emailed to the event creator.): (Maoni yako yatatumwa kwa barua pepe kwa muundaji wa hafla.)
+Hello, XXX.: Halo, XXX.
+XXX has approved an appointment and added comments.: Miadi imeidhinishwa na maoni yameongezwa na XXX.
+Subject XXX: Mada: "XXX".
+Description XXX: Maelezo: "XXX".
+Date XXX: Tarehe: XXX
+Time XXX: Wakati: XXX
+Comments XXX: Maoni: XXX
+Approved w/Comments by XXX.: Imeidhinishwa w / Maoni na: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Hali ya Usimamizi
+Your assistants: Wasaidizi wako
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Hitilafu isiyojulikana.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Kosa la Programu: Hakuna XXX iliyobainishwa!
+user: mtumiaji
+year: mwaka
+month: mwezi
+day: siku
+
+########################################
+# Page: category.php
+#
+Category Icon: Picha ya Jamii
+Global: Ulimwenguni
+The permissions for the icons directory are set to read-only: Ruhusa za saraka ya ikoni imewekwa kuwa ya kusoma tu.
+Category Name: Jina la Jamii:
+Color: Rangi
+Remove Icon: Ondoa Aikoni:
+Add Icon to Category: Ongeza Icon kwa Jamii
+Upload: Pakia
+GIF or PNG 6kb max: GIF au PNG 6kb max
+Search for existing icons: Tafuta aikoni zilizopo
+Add: Ongeza
+Delete: Futa
+Are you sure you want to delete this entry?: Je! Una uhakika unataka kufuta maandishi haya?
+Make New Category: Fanya Jamii Mpya
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Jina la kategoria linahitajika
+File size exceeds maximum.: Ukubwa wa faili unazidi kiwango cha juu.
+File is not a GIF or PNG image: Faili sio picha ya GIF au PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: Jamii ZINAPATIKANA
+ENTRY CATEGORIES: AINA ZA KUINGIA
+Remove: Ondoa
+Global Category: Jamii ya Ulimwenguni
+Cancel: Ghairi
+
+########################################
+# Page: colors.php
+#
+Add Custom: Ongeza Desturi
+Basic Colors: Rangi za Msingi
+Current Color: Rangi ya Sasa
+Custom Colors: Rangi za kawaida
+Old Color: Rangi ya Kale
+
+########################################
+# Page: combo.php
+#
+Select None: Chagua Hakuna
+Agenda: Ajenda
+Add Task: Ongeza Kazi
+Description: Maelezo
+Date: Tarehe
+Time: Wakati
+Priority: Kipaumbele
+Access: Ufikiaji
+Created by: Imetengenezwa na
+Updated: Imesasishwa
+Participants: Washiriki
+Attachments: Viambatisho
+Comments: Maoni
+Brief Description: Maelezo mafupi
+Full Description: Maelezo kamili
+Category: Jamii
+Add event detail: Ongeza undani wa hafla
+Start Date: Tarehe ya Kuanza
+Due Date: Tarehe ya kukamilisha
+Add task detail: Ongeza maelezo ya kazi
+All: Wote
+Error: Kosa
+no response from server: hakuna majibu kutoka kwa seva
+JSON error: Kosa la JSON
+High: Juu
+Medium: Ya kati
+Low: Chini
+Today: Leo
+Add Entry: Ongeza Kuingia
+Unnamed Event: Tukio Lisilo na Jina
+Unnamed Task: Kazi Isiyo na Jina
+Refresh: Onyesha upya
+Click to add entry: Bonyeza ili kuongeza kuingia
+Name: Jina
+pm: jioni
+am: mimi
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX imeghairi miadi.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Kitambulisho batili cha blob
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Ongeza Maoni
+Add Attachment: Ongeza Kiambatisho
+Subject: Mada
+Comment: Maoni
+Upload file: Pakia faili
+
+########################################
+# Page: docdel.php
+#
+Removed: Imeondolewa
+
+########################################
+# Page: edit_entry.php
+#
+days: siku
+hours: masaa
+minutes: dakika
+You are not authorized to edit this task.: Hujaruhusiwa kuhariri kazi hii.
+is in a different timezone than you are. Currently: iko katika eneo tofauti kuliko wewe. Hivi sasa
+hour ahead of you: saa mbele yako
+hour behind you: saa nyuma yako
+hours ahead of you: masaa mbele yako
+hours behind you: masaa nyuma yako
+XXX is in a different timezone (ahead): (XXX iko katika eneo la wakati tofauti; YYY iko mbele yako.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX iko katika eneo la wakati tofauti; YYY nyuma yako.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Saa iliyoingizwa hapa inategemea eneo lako la saa.
+Edit Entry: Hariri Kuingia
+Details: Maelezo
+Repeat: Rudia
+Reminders: Mawaidha
+brief-description-help: Hii inapaswa kutoa maelezo mafupi (kama wahusika 20) wa hafla hiyo. Hii itawakilisha tukio wakati wa kutazama kalenda.
+full-description-help: Hii inapaswa kukamilisha maelezo ya hafla hiyo. Habari hii inaweza kuonekana wakati mtumiaji anaangalia tukio hilo.
+access-help: Inabainisha kiwango cha ufikiaji wa hafla hiyo. <ul> <li> Umma: Kila mtu anaweza kuona maelezo kamili ya hafla hiyo.</li> <li> Siri: Wengine wanaweza kuona kuwa unaweza kuingia kwa tarehe na wakati huo, lakini sio maelezo ya ni nini.</li></ul>
+priority-help: Inabainisha kipaumbele cha hafla hiyo. Matukio ya kipaumbele yataonyeshwa kwa maandishi mazito.
+category-help: Inabainisha kitengo cha hafla hiyo.
+completed-help: Kazi ya tarehe imekamilika. Imewezeshwa tu wakati asilimia yote ya washiriki ni sawa na 100%.
+Date Completed: Tarehe Ilikamilishwa
+percent-help: Asilimia ya kukamilisha kazi kwa mtumiaji huyu
+Percent Complete: Asilimia Imekamilika
+All Percentages: Asilimia zote
+location-help: Mahali pa tukio
+Location: Mahali
+url-help: URL ya Tukio
+URL: =
+date-help: Inabainisha tarehe ya tukio.
+Untimed event: Tukio lisilodhibitiwa
+Timed event: Tukio lililopangwa
+All day event: Tukio la siku nzima
+Timezone Offset: Ukosefu wa Saa za Wakati
+time-help: Inabainisha wakati wa tukio. <ul> <li> "Tukio lililopangwa" (kwa tukio ambalo limepangwa kwa muda maalum siku hiyo)</li> <li> "Tukio lisilodhibitiwa" (kwa hafla ambayo hii haina wakati (kama likizo )</li> <li> "Tukio la siku nzima" (kwa hafla inayochukua siku nzima (kama vile kuwa nje ya ofisi)</li></ul>
+duration-help: Inabainisha muda (kwa masaa, dakika) ya tukio. <em>Shamba hili linaweza kuachwa wazi.</em>
+end-time-help: Inabainisha wakati tukio linatarajiwa kumalizika.
+Start Time: Wakati wa Kuanza
+Due Time: Wakati Unaofaa
+Site Extras: Ziada ya Tovuti
+avail_participants-help: Inaorodhesha washiriki wa maandishi haya.
+Available: Inapatikana
+Find Name: Pata Jina
+Resources: Rasilimali
+participants-help: Inaorodhesha washiriki wa kiingilio hiki.
+Selected: Imechaguliwa
+Availability: Upatikanaji
+external-participants-help: Inabainisha orodha ya washiriki wa hafla hiyo ambayo sio watumiaji wa kalenda. Watumiaji wanapaswa kuorodheshwa kwa kila mstari na wanaweza kujumuisha anwani ya barua pepe. Ikiwa anwani ya barua pepe imeainishwa, mtumiaji anastahiki kupokea arifa na vikumbusho.
+External Participants: Washiriki wa nje
+repeat-type-help: Chagua ni mara ngapi tukio linapaswa kurudia.
+Daily: Kila siku
+Weekly: Kila wiki
+Monthly: Kila mwezi
+by day: kwa siku
+by date: kwa tarehe
+by position: kwa msimamo
+Monthly (by day): Kila mwezi (kwa siku)
+Monthly (by date): Kila mwezi (kwa tarehe)
+Monthly (by position): Kila mwezi (kwa nafasi)
+Yearly: Kila mwaka
+Manual: Mwongozo
+Expert Mode: Njia ya Mtaalam
+repeat-end-date-help: Inabainisha tarehe ambayo tukio linapaswa kurudia hadi.
+Ending: Kuishia
+Forever: Milele
+Use end date: Tumia tarehe ya mwisho
+Number of times: Idadi ya nyakati
+repeat-frequency-help: Inabainisha ni mara ngapi tukio linapaswa kurudia.
+Frequency: Mzunguko
+Weekdays Only: Siku za wiki tu
+Week Start: Kuanza kwa Wiki
+repeat-bydayextended-help: Inaruhusu uteuzi wa tarehe kulingana na siku ya wiki.
+ByDay: =
+repeat-month-help: Inabainisha ni miezi gani tukio linapaswa kurudia.
+ByMonth: Kwa mwezi
+repeat-bysetpos-help: Inaruhusu uteuzi wa tarehe kulingana na nafasi iliyo na mwezi.
+BySetPos: =
+repeat-bymonthdayextended-help: Inaruhusu uteuzi wa tarehe kulingana na tarehe.
+ByMonthDay: =
+repeat-byweekno-help: Inaruhusu mtumiaji kutaja orodha ya wiki za kurudia tukio (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: Kwa WikiNa
+repeat-byyearday-help: Inaruhusu mtumiaji kutaja orodha ya siku za mwaka kurudia tukio (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Siku za ziada ambazo hafla hii inapaswa au haifai kutokea.
+Exclusions: Kutengwa
+Inclusions: Uingizaji
+Add Exception: Ongeza Isipokuwa
+Add Inclusion: Ongeza Ujumuishaji
+Delete Selected: Futa Zilizochaguliwa
+Send Reminder: Tuma Kikumbusho
+When: Lini
+Use Date/Time: Tumia Tarehe / Wakati
+Use Offset: Tumia Offset
+Before: Kabla
+After: Baada ya
+Start: Anza
+End/Due: Mwisho / Unastahili
+Times: Nyakati
+Every: Kila
+CAPTCHA Warning: Onyo:  Haiwezi kutumia CAPTCHA bila kiendelezi cha GD cha PHP!<br>
+Delete entry: Futa kuingia
+You are not authorized to edit this entry.: Hujaruhusiwa kuhariri kiingilio hiki.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX imefanya miadi mpya.
+XXX has updated an appointment.: XXX imesasisha miadi.
+Security violation!: Ukiukaji wa usalama!
+You must enter the anti-spam text on the previous page.: Lazima uweke maandishi ya kupambana na barua taka kwenye ukurasa uliopita.
+The following conflicts with the suggested time: Migogoro ifuatayo na wakati uliopendekezwa
+User removed from participants list.: Mtumiaji ameondolewa kwenye orodha ya washiriki.
+Please look on XXX to accept or reject this appointment.: Tafadhali angalia XXX kukubali au kukataa miadi hii.
+Please look on XXX to view this appointment.: Tafadhali angalia XXX ili uone miadi hii.
+Scheduling Conflict: Kupanga Mgogoro
+Your suggested time of: Wakati wako uliopendekezwa wa
+conflicts with the following existing calendar entries: inakinzana na viingilio vifuatavyo vya kalenda
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX haijawekwa katika "config.php".
+word characters only: (inaweza tu kuwa na herufi za maneno; [a-zA-Z_0-9])
+Add User: Ongeza Mtumiaji
+Edit User: Hariri Mtumiaji
+Calendar ID: Kitambulisho cha Kalenda
+First Name: Jina la kwanza
+Last Name: Jina la familia
+Is public calendar: Kalenda ya umma
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Kosa la hifadhidata
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Ongeza Kalenda ya Kijijini
+Edit Remote Calendar: Hariri Kalenda ya Kijijini
+Create Layer: Unda Tabaka
+Reload: Pakia tena
+Required to View Remote Calendar: Inahitajika Kutazama Kalenda ya Kijijini
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Matokeo ya Kuingiza
+Events successfully imported: Matukio yameletwa kwa mafanikio
+Create a new layer to view this calendar.: Unda safu mpya ili uone kalenda hii.
+Errors: Makosa
+There was an error parsing the import file or no events were returned.: Kulikuwa na hitilafu wakati wa kuchanganua faili ya kuingiza au hakuna matukio yaliyorudishwa.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Kesho
+Yesterday: Jana
+Day before yesterday: Siku moja kabla ya jana
+Next week: Wiki ijayo
+This week: Wiki hii
+Last week: Wiki iliyopita
+Week before last: Wiki kabla ya mwisho
+Next week and week after: Wiki ijayo na wiki ijayo
+This week and next week: Wiki hii na wiki ijayo
+Last week and this week: Wiki iliyopita na wiki hii
+Last two weeks: Wiki mbili zilizopita
+Next month: Mwezi ujao
+This month: Mwezi huu
+Last month: Mwezi uliopita
+Month before last: Mwezi kabla ya mwisho
+Next year: Mwaka ujao
+This year: Mwaka huu
+Last year: Mwaka jana
+Year before last: Mwaka kabla ya mwisho
+Next 14 days: Siku 14 zijazo
+Next 30 days: Siku 30 zijazo
+Next 60 days: Siku 60 zijazo
+Next 90 days: Siku 90 zijazo
+Next 180 days: Siku 180 zijazo
+Next 365 days: Siku 365 zijazo
+Invalid report id XXX.: Kitambulisho batili cha ripoti: "XXX".
+Unnamed Report: Ripoti Isiyo na Jina
+Add Report: Ongeza Ripoti
+Edit Report: Hariri Ripoti
+Report name: Ripoti jina
+User: Mtumiaji
+Current User: Mtumiaji wa sasa
+Include link in menu: Jumuisha kiunga kwenye menyu
+Include standard header/trailer: Jumuisha kichwa / trela ya kawaida
+Include previous/next links: Jumuisha viungo vya awali / vifuatavyo
+Include empty dates: Jumuisha tarehe tupu
+Date range: Kiwango cha tarehe
+Template variables: Vigezo vya kiolezo
+Page template: Kiolezo cha ukurasa
+Day template: Kiolezo cha siku
+Event template: Kiolezo cha hafla
+Are you sure you want to delete this report?: Je! Una uhakika unataka kufuta ripoti hii?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Hakuna kitambulisho kama hicho: "XXX".
+Variable XXX not found.: Variable XXX haikupatikana.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Hariri Kichwa cha Desturi
+Edit Custom Script/Stylesheet: Hariri Hati ya Mtindo / Karatasi ya Mtindo
+Edit Custom Trailer: Hariri Trela ​​Maalum
+
+########################################
+# Page: edit_user.php
+#
+Username: Jina la mtumiaji
+E-mail address: Barua pepe
+Password: Nenosiri
+again: tena
+Disabled for demo: Imelemazwa kwa onyesho
+Are you sure you want to delete this user?: Je! Una uhakika unataka kufuta mtumiaji huyu?
+Change Password: Badilisha neno la siri
+New Password: Nenosiri mpya
+Set Password: Weka Nenosiri
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Kufuta watumiaji hakuhimiliwi.
+The passwords were not identical.: Manenosiri hayakuwa sawa.
+You have not entered a password.: Hujaweka nenosiri.
+Username cannot be blank.: Jina la mtumiaji haliwezi kuwa wazi.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Haijaidhinishwa
+
+########################################
+# Page: export.php
+#
+Export: Hamisha
+Export format: Umbizo la kusafirisha nje
+Include all layers: Jumuisha tabaka zote
+Include deleted entries: Jumuisha maingizo yaliyofutwa
+Export all dates: Hamisha tarehe zote
+Start date: Tarehe ya kuanza
+End date: Tarehe ya mwisho
+Modified since: Imebadilishwa tangu
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: umbizo la usafirishaji halijafafanuliwa au sio sahihi.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Hakuna mtumiaji aliyeainishwa.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Ongeza Kikundi kipya
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Kikundi kisicho na jina
+Add Group: Ongeza Kikundi
+Edit Group: Hariri Kikundi
+Group name: Jina la kikundi
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Lazima ueleze jina la kikundi
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Kalenda za kuonyesha upya kiotomatiki
+auto-refresh-help: Ikiwashwa, mwonekano wa siku, mwonekano wa wiki, mwonekano wa mwezi, na orodha ya kurasa ambazo hazijakubaliwa zote zitajirudisha kiotomatiki mara kwa mara.
+Auto-refresh time: Muda wa kuonyesha upya kiotomatiki
+auto-refresh-time-help: Ikiwa kuonyesha upya kiotomatiki kumewashwa, hii inabainisha muda kati ya kila onyesho.
+Display days with events in bold in year view: Onyesha siku zilizo na hafla kali kwa mtazamo wa mwaka
+Display weekends in week view: Onyesha wikendi katika mtazamo wa wiki
+Time interval: Muda wa muda
+time-interval-help: Hubainisha muda wa vizuizi katika mwonekano wa wiki na mwonekano wa siku utakuwa.
+Nonuser: Kalenda zisizo za watumiaji
+user-customize-color: Inabainisha ikiwa watumiaji wanaruhusiwa kurekebisha mpango wao wa rangi.
+enable-gradient-help: Tumia rangi za gradient kwa asili ya seli.
+Manually entering color values: Kuingia kwa maadili ya rangi
+colors-help: Rangi zote zinapaswa kutajwa katika muundo wa "#RRGGBB" hexadecimal ambapo "RR" ni thamani ya hex ya nyekundu, "GG" ni thamani ya hex kwa kijani kibichi, na "BB" ni thamani ya hex ya hudhurungi.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Ripoti Mdudu
+Please include all the information below when reporting a bug.: Tafadhali jumuisha habari yote hapa chini wakati wa kuripoti mdudu.
+Also, please use English rather than XXX.: Pia, tafadhali tumia  Kiingereza  badala ya XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Nyaraka za Kalenda ya Wavuti
+Currently in English only.: Hivi sasa kwa Kiingereza tu.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Kuongeza / Kuhariri Entries za Kalenda
+Repeat Type: Rudia Aina
+For More Information...: Kwa Habari Zaidi ...
+Repeat End Date: Rudia Tarehe ya Mwisho
+Repeat Day: Rudia Siku
+repeat-day-help: Inabainisha ni siku zipi za wiki tukio linapaswa kurudiwa.
+
+########################################
+# Page: help_import.php
+#
+Import: Ingiza
+Palm Desktop: Desktop ya Palm
+allow you to import entries from the Palm...: Fomu hii itakuruhusu kuingiza maingizo kutoka kwa Kitabu cha Tarehe cha Desktop ya Palm. Inapaswa kuwa iko kwenye saraka yako ya Palm kwenye kitabu cha tarehe / kitabu cha tarehe.dat katika saraka ndogo inayoitwa na jina lako la mtumiaji.
+The following entries will not be imported: Viingilio vifuatavyo havitaletwa:
+Entries older than the current date: Viingilio vya zamani kuliko tarehe ya sasa
+Entries created in the Palm Desktop...: Viingilio vilivyoundwa kwenye Kompyuta ya mezani ya Palm ambayo haikuwa HotSync'd
+Anything imported from Palm...: Chochote kilichoingizwa kutoka kwa Mtende kitaondolewa wakati wa uagizaji unaofuata (isipokuwa tarehe ya tukio imepita). Kwa hivyo, sasisho zinapaswa kufanywa kwenye Dawati la Palm.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Fomu hii itaingiza vCalendar (.vcs) hafla 1.0.
+The following formats have been tested: Fomati zifuatazo zimejaribiwa:
+This form will import iCalendar (.ics) events.: Fomu hii itaingiza hafla za iCalendar (.ics).
+Enabling: Inawasha
+Overwrite Prior Import: Andika kabisa Uingizaji wa Mbele
+will cause events imported previously...: itasababisha hafla zilizoingizwa hapo awali, ambazo zilitumia UID sawa na hafla kutoka faili mpya ya kuagiza, kuwekwa alama kuwa imefutwa. Hii inapaswa kuruhusu faili ya iCalendar iliyosasishwa kuingizwa bila kuunda nakala.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Kielelezo cha Usaidizi
+About WebCalendar: Kuhusu Kalenda ya Wavuti
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Safu ni muhimu kwa kuonyesha hafla za watumiaji wengine kwenye kalenda yako mwenyewe. Unaweza kutaja mtumiaji na rangi matukio yatakayoonyeshwa.
+Add/Edit/Delete: Ongeza / Hariri / Futa
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Kubofya kiunga cha Hariri Tabaka katika sehemu ya msimamizi chini ya ukurasa itakuruhusu kuongeza / kuhariri / kufuta safu.
+The text color of the new layer that will be displayed in your calendar.: Rangi ya maandishi ya safu mpya ambayo itaonyeshwa kwenye kalenda yako.
+Disabling: Inalemaza
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Bonyeza kiungo cha Lemaza Tabaka katika sehemu ya msimamizi chini ya ukurasa kuzima matabaka.
+Duplicates: Marudio
+If checked, events that are duplicates of your events will be shown.: Ikikaguliwa, hafla ambazo ni marudio ya hafla zako zitaonyeshwa.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Bonyeza Wezesha kiungo cha Tabaka katika sehemu ya msimamizi chini ya ukurasa ili kuwasha tabaka.
+Source: Chanzo
+Specifies the user that you would like to see displayed in your calendar.: Inabainisha mtumiaji ambaye ungependa kuona akionyeshwa kwenye kalenda yako.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Jamii chaguomsingi
+default-category-help: Inabainisha kategoria tukio jipya linapaswa kutekelezwa kwa.
+When I am the boss: Wakati mimi ndio bosi
+Email me event notification: Nitumie arifa ya tukio
+email-boss-notifications-help: Inabainisha ikiwa wakubwa hupokea barua pepe kama arifa za hafla.
+I want to approve events: Ninataka kuidhinisha hafla
+boss-approve-event-help: Inabainisha ikiwa bosi atahitajika kuidhinisha hafla zilizoongezwa na wasaidizi.
+Subscribe/Publish: Jisajili / Chapisha
+Allow remote publishing: Ruhusu uchapishaji wa mbali
+allow-remote-publishing-help: Inabainisha ikiwa mteja wa mbali wa iCal anaweza kuchapisha hafla kurudi kwenye Kalenda ya Wavuti
+remote-publishing-url-help: Inaonyesha URL ya kutumia katika programu ya mteja wa iCal kwa wote wanaofuatilia na kuchapisha kurudi kwenye Kalenda ya Wavuti.
+allow-remote-subscriptions-help: Inabainisha ikiwa watumiaji wa mbali wanaweza kujisajili kwenye kalenda yako, ikiwaruhusu kuona hafla zako kwenye programu iliyowezeshwa na iCal (kama vile Apple's iCal au Kalenda ya Mozilla).
+remote-subscriptions-url-help: Inaonyesha watumiaji wa kijijini wa URL wanapaswa kutumia kujisajili kwenye kalenda yako.
+Enable FreeBusy publishing: Washa uchapishaji wa FreeBusy
+freebusy-enabled-help: Inabainisha ikiwa wakati unaopatikana wa mtumiaji unaweza kupatikana kwa kutumia kiwango cha iCal FreeBusy.
+freebusy-url-help: URL ya kupata orodha ya mtumiaji ya FreeBusy
+rss-feed-url-help: URL ya kufikia mpasho wa RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Inaruhusu udhibiti mzuri wa ufikiaji wa watumiaji na ruhusa. Watumiaji wanaweza pia kutoa chaguo-msingi na kwa ruhusa ya mtu binafsi ikiwa imeidhinishwa na msimamizi.
+If disabled, this user cannot send you emails.: Ikiwa amelemazwa, mtumiaji huyu hawezi kukutumia barua pepe.
+If disabled, this user cannot see you in the participants list.: Ikiwa amelemazwa, mtumiaji huyu hawezi kukuona katika orodha ya washiriki.
+If enabled, this user cannot view the details of any of your entries.: Ikiwa imewezeshwa, mtumiaji huyu hawezi kuona maelezo ya maandishi yako yoyote.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Kuchapisha Walemavu (Usimamizi)
+Publishing Disabled (User): Uchapishaji Umezimwa (Mtumiaji)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Bonyeza Chagua
+Current Icons on Server: Icons za Sasa kwenye Seva
+
+########################################
+# Page: import.php
+#
+import from file: kuagiza kutoka faili
+Disabled: Imelemazwa
+Import format: Fomati ya kuagiza
+Exclude private records: Tenga rekodi za kibinafsi
+Repeated items are imported separately. Prior imports are not overwritten.: Vitu vinavyorudiwa vinaingizwa kando. Uagizaji wa awali haujaandikwa tena.
+
+########################################
+# Page: import_handler.php
+#
+No file: Hakuna faili
+Error deleting palm events from webcalendar.: Hitilafu wakati wa kufuta hafla za mitende kutoka kwa kalenda ya wavuti.
+Events from prior import marked as deleted: Matukio kutoka uingizaji wa awali yalitiwa alama kuwa yamefutwa
+Conflicting events: Matukio yanayokinzana
+The import file contained no data.: Faili ya kuingiza haikuwa na data.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Je! Una uhakika unataka kufuta safu hii?
+Delete layer: Futa safu
+Edit layer: Hariri safu
+Enable layers: Washa matabaka
+Layer: Safu
+Layers are currently disabled.: Tabaka zimelemazwa kwa sasa.
+Layers are currently enabled.: Safu zimewezeshwa kwa sasa.
+Click to modify layers settings for XXX: Bonyeza hapa kurekebisha mipangilio ya matabaka ya kalenda ya XXX.
+Disable Layers: Lemaza Tabaka
+Add layer: Ongeza safu
+Add Layer: Ongeza Tabaka
+Edit Layer: Hariri Tabaka
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Imeshindwa kusasisha upendeleo
+Invalid entry id.: Kitambulisho batili cha kuingia.
+You cannot create a layer for yourself.: Huwezi kuunda safu yako mwenyewe.
+You can only create one layer for each user.: Unaweza kuunda safu moja tu kwa kila mtumiaji.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Idhinisha / Thibitisha
+Approve Selected: Idhinisha Iliyochaguliwa
+Check All: Angalia zote
+Emails Will Not Be Sent: Barua pepe hazitatumwa
+Reject Selected: Kataa Iliyochaguliwa
+Reject: Kataa
+Uncheck All: Batilisha uteuzi Wote
+View this entry: Tazama kiingilio hiki
+No unapproved entries for XXX.: Hakuna viingilio ambavyo havijaidhinishwa vya: "XXX".
+Unapproved Entries: Wasilisho Zilizoidhinishwa
+Approve this entry?: Idhinisha kiingilio hiki?
+Reject this entry?: Kataa kiingilio hiki?
+Approve Selected entries?: Idhinisha viingilio vilivyochaguliwa?
+Reject Selected entries?: Kataa viingilio vilivyochaguliwa?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Lazima uingie kuingia na nywila.
+Save login via cookies so I dont have to login next time.: Hifadhi kuingia kupitia vidakuzi kwa hivyo sio lazima niingie wakati ujao
+Login: Ingia
+public: umma
+Access XXX calendar: Fikia kalenda ya XXX
+cookies-note: Kumbuka: Programu tumizi hii inahitaji kuki kuwezeshwa.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Wahusika haramu katika kuingia XXX.
+Invalid login: Kuingia batili
+Activity login failure: Jina la mtumiaji: "XXX", IP: "YYY".
+Error XXX: Kosa: "XXX".
+You have been logged out.: Umeondolewa nje.
+Access public calendar: Fikia kalenda ya umma
+Not yet registered? Register here!: Bado haijasajiliwa? Jisajili hapa!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Hakuna kalenda kama hiyo: "XXX".
+This Calendar is not Public.: Kalenda hii sio ya Umma.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Ongeza Kalenda Mpya isiyo ya Mtumiaji
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Kuingia lazima kutajwe.
+No such nonuser calendar: Hakuna kalenda kama hiyo isiyo ya kutumia
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Mandhari si sahihi
+Save Preferences: Hifadhi Mapendeleo
+Public Access calendar: Kalenda ya Ufikiaji Umma
+Modify Non User Calendar Preferences: Rekebisha Mapendeleo ya Kalenda Isiyokuwa ya Mtumiaji
+Return to My Preferences: Rudi kwenye Mapendeleo Yangu
+Custom Scripts: Hati Maalum
+Timezone Selection: Uteuzi wa Saa za Wakati
+Multiview: =
+entry-interval-help: Inaweka muda wa dakika wakati wa kuhariri nyakati za kuingia
+Entry interval: Muda wa kuingia
+hour: saa
+minute: dakika
+theme-reload-help: Kwa sababu ya akiba ya CSS, upakiaji wa ukurasa unaweza kuhitajika
+Page may need to be reloaded for new Theme to take effect: Ukurasa unaweza kuhitaji kupakiwa upya ili Mada mpya itekeleze
+display_byproxy-help: Onyesha muundaji halisi kwenye ukurasa wa view_entry
+Display if created by Assistant: Onyesha ikiwa imeundwa na Mratibu
+allow-view-subscriptions-help: Huruhusu kuzuia ufikiaji wa mbali kwa viingilio vya Binafsi au vya Siri
+Allow remote viewing of: Ruhusu kutazama kwa mbali kwa
+entries: viingilio
+
+########################################
+# Page: purge.php
+#
+Purging events for: Matukio ya kusafisha kwa
+Finished: Imemalizika
+Back: Nyuma
+Check box to delete ALL events for a user: Angalia kisanduku ili kufuta matukio  YOTE  ya mtumiaji
+Delete all events before: Futa matukio yote hapo awali
+Purge deleted only: Usafi umefutwa tu
+Preview delete: Hakiki ya kufuta
+Are you sure you want to delete events for: Je! Una uhakika unataka kufuta hafla za
+Records deleted from XXX: Rekodi zimefutwa kutoka "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Anwani ya barua pepe haiwezi kuwa wazi.
+Username already exists.: Jina la mtumiaji tayari lipo.
+Email address already exists.: Anwani ya barua pepe tayari ipo.
+New user via self-registration.: Mtumiaji mpya kupitia usajili wa kibinafsi.
+A new WebCalendar account has been set up for you.: Akaunti mpya ya Kalenda ya Wavuti imewekwa kwa ajili yako.
+Your username is XXX.: Jina lako la mtumiaji ni: "XXX".
+Your password is XXX.: Nenosiri lako ni: "XXX".
+Please visit XXX to log in and start using your account!: Tafadhali tembelea "XXX" ili uingie na uanze kutumia akaunti yako!
+You may change your password after logging in the first time.: Unaweza kubadilisha nywila yako baada ya kuingia mara ya kwanza.
+If you received this email in error: Ikiwa umepokea barua pepe hii kimakosa na haukujisajili kwa akaunti ya Wavuti, unaweza kupuuza ilani hii, au jibu kwa barua fupi
+Administrator: Msimamizi
+Welcome: Karibu
+New user via email.: Mtumiaji mpya kupitia barua pepe.
+Registration: Usajili
+Welcome to WebCalendar: Karibu kwenye Kalenda ya Wavuti
+Your email should arrive shortly.: Barua pepe yako inapaswa kufika hivi karibuni.
+Return to Login screen: Rudi kwenye skrini ya Ingia
+Password (again): Nenosiri (tena):
+Your account information will be emailed to you.: Maelezo ya akaunti yako yatatumwa kwako kwa barua pepe.
+Submit: Wasilisha
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Endelea
+(Your comments will be emailed to the other participants.): (Maoni yako yatatumwa kwa barua pepe kwa washiriki wengine.)
+XXX has rejected an appointment.: XXX imekataa miadi.
+Rejected by XXX.: Imekataliwa na XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Ongeza Kalenda Mpya ya Kijijini
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Tukio hili ni la siri.
+(Private): (Privat)
+(cont.): =
+Approved: Imeidhinishwa
+Deleted: Imefutwa
+Rejected: Imekataliwa
+Waiting for approval: Inasubiri idhini
+Unknown: Haijulikani
+Invalid report id.: Kitambulisho batili cha ripoti.
+Click here to manage reports for the Public Access calendar.: Bonyeza hapa kudhibiti ripoti za kalenda ya Ufikiaji Umma.
+Add new report: Ongeza ripoti mpya
+Manage Reports: Dhibiti Ripoti
+
+########################################
+# Page: search.php
+#
+Advanced Search: Utafutaji wa Juu
+Search: Tafuta
+Keywords: Maneno muhimu
+Enter % for all entries: Ingiza% kwa viingilio vyote
+Include: Jumuisha
+Filter by Date: Chuja kwa Tarehe
+All Dates: Tarehe Zote
+Past: Zamani
+Upcoming: Inayokuja
+Range: Mbalimbali
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Lazima uweke neno moja au zaidi za utaftaji.
+Search Results: Matokeo ya Utafutaji
+match found: mechi imepatikana
+matches found: mechi zilizopatikana
+No matches found: Hakuna mechi zilizopatikana
+New Search: Utafutaji Upya
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Habari hapa chini inaorodhesha maswala yanayowezekana na usakinishaji wako wa Kalenda ya Wavuti ambayo inaweza kubadilishwa ili kufanya usakinishaji wako uwe salama zaidi.
+For questions about WebCalendar security see the forums: Kwa maswali juu ya suala lolote la usalama wa Kalenda ya Wavuti, tafadhali tumia vikao vya Kalenda ya Wavuti zilizowekwa kwenye GitHub.com;<br>XXX
+View your current PHP settings: Tazama mipangilio yako ya sasa ya PHP
+Security Issue: Suala la Usalama
+Status: Hali
+Default admin user password: Nenosiri chaguomsingi la mtumiaji
+You should change the password of the default admin user.: Unapaswa kubadilisha nenosiri la mtumiaji chaguo-msingi wa msimamizi.
+File permissions XXX: Ruhusa za faili: XXX
+item XXX should not be writable: Bidhaa ifuatayo haipaswi kuandikwa:<br><tt> XXX</tt>
+File exists XXX: Faili ipo: "XXX"
+Because you have email disabled, you should remove this file.: Kwa sababu una barua pepe imelemazwa, unapaswa kuondoa faili hii.
+File location XXX: Mahali pa faili: "XXX"
+remove XXX if not using: Ikiwa hutumii faili "XXX", unapaswa kuifuta. Au, angalau, isonge kwa saraka mpya.
+System Settings XXX: Mipangilio ya Mfumo: "XXX"
+consider enabling UAC: Unaweza kutaka kuzingatia kuwezesha Udhibiti wa Ufikiaji wa Mtumiaji kuweka marupurupu ya mtumiaji.
+recommend approving new public events: Tunapendekeza maoni yote ya hafla ya umma yaidhinishwe.
+recommend using CAPTCHA: CAPTCHA inashauriwa kulinda uwasilishaji wa matukio ya kiotomatiki.
+Database cache directory location: Eneo la saraka ya kashe ya hifadhidata
+db cache should be inaccessable: Cache ya hifadhidata inapaswa kuwa kwenye saraka ambayo haiwezi kupatikana na URL.
+PHP Settings XXX: Mipangilio ya PHP: "XXX"
+recommend setting XXX Off: Mipangilio inayopendekezwa ya "XXX" imezimwa.
+recommend setting allow_url_fopen Off: Mpangilio uliopendekezwa wa "allow_url_fopen" Umezimwa wakati kalenda za mbali hazijawezeshwa.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Angalia Kalenda ya Mtumiaji Mwingine
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Hujaongeza kategoria zozote.
+Set Category: Weka Jamii
+Global Categories cannot be changed.: Jamii za Ulimwenguni haziwezi kubadilishwa.
+
+########################################
+# Page: upcoming.php
+#
+more: zaidi
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Kalenda za mbali
+denotes administrative user: Inaashiria mtumiaji wa utawala
+Add New User: Ongeza Mtumiaji Mpya
+
+########################################
+# Page: usersel.php
+#
+form: fomu
+Reset: Weka upya
+
+########################################
+# Page: views.php
+#
+Add New View: Ongeza Mwonekano Mpya
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Taswira isiyo na jina
+Add View: Ongeza Mwonekano
+Edit View: Hariri Mwonekano
+View Name: Angalia Jina
+View Type: Angalia Aina
+Day by Time: Siku kwa Wakati
+Week (Users horizontal): Wiki (Watumiaji usawa)
+Week by Time: Wiki kwa Wakati
+Week (Users vertical): Wiki (Watumiaji wima)
+Week (Timebar): Wiki (Timebar)
+Month (Timebar): Mwezi (Timebar)
+Month (side by side): Mwezi (bega kwa bega)
+Month (on same calendar): Mwezi (kwenye kalenda hiyo hiyo)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Lazima ueleze jina la mtazamo
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Hakuna watumiaji wa maoni haya.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Sasisha Asilimia ya Kazi
+Completed: Imekamilika
+Assistant mode: Hali ya msaidizi
+Declined: Imekataa
+Needs-Action: Mahitaji-Hatua
+by: na
+Percentage Complete: Asilimia Imekamilika
+External User: Mtumiaji wa nje
+Update: Sasisha
+at: katika
+comments: maoni
+Show: Onyesha
+Hide: Ficha
+Approve/Confirm entry: Idhinisha / Thibitisha kuingia
+Reject entry: Kataa kuingia
+Set category: Weka jamii
+Add to My Calendar: Ongeza kwenye Kalenda Yangu
+Copy entry: Nakili kuingia
+This will delete this entry for all users.: Hii itafuta kifungu hiki kwa watumiaji wote.
+Edit entry: Hariri kuingia
+Edit repeating entry for all dates: Hariri kuingia kwa kurudia kwa tarehe zote
+Delete repeating event for all dates: Futa tukio la kurudia kwa tarehe zote
+Edit entry for this date: Hariri kuingia kwa tarehe hii
+Delete entry only for this date: Futa kuingia tu kwa tarehe hii
+Delete entry from calendar of XXX: Futa kiingilio kutoka kalenda ya XXX
+This will delete the entry from your XXX calendar.: Hii itafuta maandishi kutoka kalenda yako ya XXX.
+boss: bosi '
+This will delete the entry from your boss calendar.: Hii itafuta maandishi kutoka kwa kalenda ya bosi wako.
+This will delete the entry from your calendar.: Hii itafuta maandishi kutoka kalenda yako.
+from your boss calendar: kutoka kalenda ya bosi wako
+Do you want to add this entry to your calendar?: Je! Unataka kuongeza kiingilio hiki kwenye kalenda yako?
+This will add the entry to your calendar.: Hii itaongeza kuingia kwenye kalenda yako.
+Email all participants: Tuma barua pepe kwa washiriki wote
+Hide activity log: Ficha kumbukumbu ya shughuli
+Show activity log: Onyesha kumbukumbu ya shughuli
+Export this entry to: Hamisha kiingilio hiki kwa
+Palm Pilot: Majaribio ya Palm
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Bonyeza mara mbili kwenye seli tupu ili kuongeza kiingilio kipya.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Kuingia Mpya
+cont.: =
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Kalenda ya Mtumiaji mwingine
+Category Management: Usimamizi wa Jamii
+Day View: Mwonekano wa Mchana
+Edit Event: Hariri Tukio
+Month View: Mwonekano wa Mwezi
+Common Trailer: Trailer ya kawaida
+User Management: Usimamizi wa Mtumiaji
+Manage Views: Dhibiti Maoni
+Week View: Mwonekano wa Wiki
+Year View: Mwonekano wa Mwaka
+Invalid function id: Kitambulisho cha kitendaji batili
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Haikuweza kupata faili ya "settings.php".<br>Tafadhali nakili "settings.php.orig" hadi "settings.php" na uihariri kwa tovuti yako.
+Incomplete settings.php file...: Faili isiyokamilika ya "settings.php" ...
+Could not find XXX defined in...: Haikuweza kupata "XXX" iliyofafanuliwa katika faili yako ya "settings.php".
+You must define XXX in: Lazima ufafanue "XXX" katika faili ya "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Desemba
+Dec: Desemba
+LANGUAGE DEFINED: LUGHA INAFafanuliwa
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Hitilafu wakati wa kuunganisha kwenye hifadhidata: "XXX".
+db_type not defined.: Aina ya db_ haijafafanuliwa.
+invalid db_type XXX: Aina batili ya db_ "" XXX ".
+Cache cleared from previous SQL!: Cache imefutwa kutoka SQL iliyopita!
+Error executing query.: Hitilafu wakati wa kutekeleza hoja.
+Unfortunately, XXX is not implemented for YYY: Kwa bahati mbaya, "XXX" haitekelezwi kwa (YYY).
+Unknown ODBC error.: Hitilafu isiyojulikana ya ODBC.
+Error opening cache dir XXX.: Hitilafu wakati wa kufungua kashe dir "XXX".
+delete: futa
+Cache error Could not XXX file YYY.: Kosa la akiba: Haikuweza faili ya XXX "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Hitilafu mbaya
+Invalid data format for: Muundo wa data si sahihi wa
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Hitilafu: Chapa isiwekwe kwa kumbukumbu ya shughuli!
+This event is XXX.: Tukio hili ni XXX.
+Conf.: =
+exceeds limit of XXX events per day: inazidi kikomo cha matukio XXX kwa siku
+on: kuwasha
+All Attendees: Wahudhuriaji wote
+Busy: Yuko busy
+Tentative: Kutazama
+Schedule an appointment for XXX.: Panga miadi ya XXX: YYY.
+date_select: __dd__ __mwezi__ __yyyy__
+Event approved: Tukio limeidhinishwa
+Journal approved: Jarida limeidhinishwa
+Task approved: Kazi imeidhinishwa
+Attachment: Kiambatisho
+Event created: Tukio limeundwa
+Journal created: Jarida limeundwa
+Task created: Kazi imeundwa
+Event deleted: Tukio limefutwa
+Journal deleted: Jarida limefutwa
+Task deleted: Kazi imefutwa
+New user via email (self registration): Mtumiaji mpya kupitia barua pepe (usajili wa kibinafsi)
+New user (self registration): Mtumiaji mpya (usajili wa kibinafsi)
+Notification sent: Arifa imetumwa
+Event rejected: Tukio limekataliwa
+Journal rejected: Jarida limekataliwa
+Task rejected: Kazi imekataliwa
+Reminder sent: Kikumbusho kimetumwa
+Event updated: Tukio limesasishwa
+Journal updated: Jarida limesasishwa
+Task updated: Kazi imesasishwa
+Delete User: Futa Mtumiaji
+WK: =
+TASKS: KAZI
+Task_Title: Kichwa
+Due: Kwa sababu
+Task Name: Jina la Kazi
+Task Due Date: Tarehe ya Kufanya Kazi
+You have XXX unapproved entries: Una viingilio XXX ambavyo havijaidhinishwa
+Changes successfully saved: Mabadiliko yamehifadhiwa
+Event: Tukio
+Action: Hatua
+Printer Friendly: Printa ya Kirafiki
+Generate printer-friendly version: Tengeneza toleo linalofaa kwa printa
+after: baada ya
+before: kabla
+end: mwisho
+start: anza
+View this event: Tazama tukio hili
+View this task: Angalia kazi hii
+January: Januari
+February: Februari
+March: Machi
+April: Aprili
+May_: Mei
+June: Juni
+July: Julai
+August: Agosti
+September: Septemba
+October: Oktoba
+November: Novemba
+Jan: Januari
+Feb: Februari
+Mar: Machi
+Apr: Aprili
+May: Mei
+Jun: Juni
+Jul: =
+Aug: Agosti
+Sep: =
+Oct: Oktoba
+Nov: Novemba
+SU: =
+MO: =
+TU: =
+WE: =
+TH: =
+FR: =
+SA: =
+unknown-month: haijulikani-mwezi
+First Quarter Moon: Mwezi wa Robo ya Kwanza
+Full Moon: Mwezi mzima
+Last Quarter Moon: Mwezi wa Robo ya Mwisho
+New Moon: Mwezi mpya
+Error TIME_SLOTS undefined!: Kosa: TIME_SLOTS haijafafanuliwa!
+The following error occurred: Hitilafu ifuatayo ilitokea
+You are not authorized.: Hujaidhinishwa.
+Add N hours to: Ongeza masaa N kwa
+Subtract N hours from: Ondoa masaa N kutoka
+same as: sawa na
+server time: wakati wa seva
+Cannot read timezone file XXX.: Imeshindwa kusoma faili ya saa za eneo: XXX.
+Your current GMT offset is XXX hours.: Mpangilio wako wa sasa wa GMT ni masaa XXX.
+Unauthorized: Isiyoidhinishwa
+Error approving event XXX.: Hitilafu wakati wa kuidhinisha tukio: XXX.
+Error deleting event XXX.: Hitilafu ya kufuta tukio: XXX.
+Error rejecting event XXX.: Hitilafu wakati wa kukataa tukio: XXX.
+Sunday: Jumapili
+Monday: Jumatatu
+Tuesday: Jumanne
+Wednesday: Jumatano
+Thursday: Alhamisi
+Friday: Ijumaa
+Saturday: Jumamosi
+Sun: Jua
+Mon: Mwezi
+Tue: Jumanne
+Wed: =
+Thu: =
+Fri: Ijumaa
+Sat: Kuketi
+unknown-weekday: haijulikani-siku ya wiki
+Invalid referring URL: URL batili ya kurejelea
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Kielelezo
+Documentation: Nyaraka
+Page: Ukurasa
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Kalenda Yangu
+Add New Entry: Ongeza Kuingia Mpya
+Add New Task: Ongeza Kazi Mpya
+Logout: Kuondoka
+Home: Nyumbani
+Back to My Calendar: Rudi kwenye Kalenda Yangu
+Go to: Enda kwa
+Manage calendar of: Dhibiti kalenda ya
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Lugha ya Kivinjari Haipatikani
+(not supported): (haitumiki)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: Kiafrikana
+Ainu: =
+Akan: =
+Akkadian: Kiakadi
+Albanian: Kialbania
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Kusini)
+Amharic: Kiamhariki
+Angika: =
+Apache: =
+Arabic (Algeria): Kiarabu (Algeria)
+Arabic (Bahrain): Kiarabu (Bahrain)
+Arabic (Egypt): Kiarabu (Misri)
+Arabic (Iraq): Kiarabu (Iraq)
+Arabic (Jordan): Kiarabu (Jordan)
+Arabic (Kuwait): Kiarabu (Kuwait)
+Arabic (Lebanon): Kiarabu (Lebanoni)
+Arabic (Libya): Kiarabu (Libya)
+Arabic (Morocco): Kiarabu (Moroko)
+Arabic (Oman): Kiarabu (Oman)
+Arabic (Qatar): Kiarabu (Qatar)
+Arabic (Saudi Arabia): Kiarabu (Saudi Arabia)
+Arabic (Syria): Kiarabu (Syria)
+Arabic (Tunisia): Kiarabu (Tunisia)
+Arabic (U.A.E.): Kiarabu (U.A.E.)
+Arabic (Yemen): Kiarabu (Yemen)
+Arabic: Kiarabu
+Aragonese: =
+Aramaic: Kiaramu
+Arapaho: =
+Arawak: =
+Armenian: Kiarmenia
+Assamese: Kiassam
+Asturian: =
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Kiazabajani
+Balinese: =
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: Kibasque
+Beja: =
+Belarusian: Kibelarusi
+Bemba: =
+Bengali: Kibengali
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Nyeusi
+Blin: =
+Bliss: Furaha
+Bosnian: Kibosnia
+Braj: =
+Breton: Kibretoni
+Buginese: Kibugini
+Bulgarian: Kibulgaria
+Buriat: =
+Burmese: Kiburma
+Caddo: =
+Catalan: Kikatalani
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Kichina (Hong Kong)
+Chinese (PRC): Kichina (PRC)
+Chinese (Simplified/GB2312): Kichina (Kilichorahisishwa / GB2312) 
+Chinese (Singapore): Kichina (Singapore)
+Chinese (Taiwan): Kichina (Taiwan)
+Chinese (Traditional/Big5): Kichina (Jadi / Kubwa5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: Kikoptiki
+Cornish: =
+Corsican: Kikosikani
+Cree: =
+Creek: =
+Croatian: Kikroeshia
+Czech: Kicheki
+Dakota: =
+Danish: Kidenmaki
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Kiholanzi (Ubelgiji)
+Dutch: Kiholanzi
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Kiingereza (Australia)
+English (Belize): Kiingereza (Belize)
+English (Canada): Kiingereza (Kanada)
+English (Ireland): Kiingereza (Ireland)
+English (Jamaica): Kiingereza (Jamaika)
+English (New Zealand): Kiingereza (New Zealand)
+English (Philippines): Kiingereza (Ufilipino)
+English (South Africa): Kiingereza (Afrika Kusini)
+English (Trinidad & Tobago): Kiingereza (Trinidad & Tobago)
+English (United Kingdom): Kiingereza (Uingereza)
+English (United States): Kiingereza (Marekani)
+English (Zimbabwe): Kiingereza (Zimbabwe)
+English: Kiingereza-Amerika
+Erzya: =
+Esperanto: Kiesperanto
+Estonian: Kiestonia
+Ewe: =
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: Kifaroe
+Fijian: Kifiji
+Filipino: Kifilipino
+Finnish: Kifini
+Fon: =
+French (Belgium): Kifaransa (Ubelgiji)
+French (Canada): Kifaransa (Kanada)
+French (France): Kifaransa (Ufaransa)
+French (Luxembourg): Kifaransa (Luxemburg)
+French (Monaco): Kifaransa (Monaco)
+French (Switzerland): Kifaransa (Uswizi)
+French: Kifaransa
+Frisian (Eastern): Kifrisia (Mashariki)
+Frisian (Northern): Kifrisia (Kaskazini)
+Frisian (Western): Kifrisia (Magharibi)
+Frisian: Kifrisia
+Friulian: Friulia
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Kigalisia
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: Jamani
+Georgian: Kijojiajia
+German (Austria): Kijerumani (Austria)
+German (Germany): Kijerumani (Ujerumani)
+German (Liechtenstein): Kijerumani (Liechtenstein)
+German (Luxembourg): Kijerumani (Luxemburg)
+German (Standard): Kijerumani (Kiwango)
+German (Switzerland): Kijerumani (Uswizi)
+German: Kijerumani
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: =
+Grebo: =
+Greek: Kigiriki
+Greenlandic: Kijani
+Guarani: Kiguarani
+Gujarati: Kigujarati
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Kihaiti (Krioli)
+Haitian: Kihaiti
+Hausa: Kihausa
+Hawaiian: Kihawai
+Hebrew: Kiebrania
+Herero: =
+Hiligaynon: =
+Hindi: Kihindi
+Hiri Motu: =
+Hittite: Mhiti
+Hmong: =
+Holo (Taiwanese): Holo (Taiwan)
+Hungarian: Kihungari
+Hupa: =
+Iban: =
+Icelandic: Kiaislandi
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: Kiindonesia
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Irani
+Irish (Gaelic): Kiayalandi (Gaelic)
+Irish: Kiayalandi
+Iroquoian: =
+Italian (Switzerland): Kiitaliano (Uswizi)
+Italian: Kiitaliano
+Japanese: Kijapani
+Javanese: Kijava
+Judeo-Arabic: Kiyahudi-Kiarabu
+Judeo-Persian: Kiyahudi-Kiajemi
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: Kikannada
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: Kikazaki
+Khasi: =
+Khmer (Central): Khmer (Katikati)
+Khmer: =
+Khotanese: Khotani
+Kikuyu: Kikikuyu
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: Kiklingoni
+Komi: =
+Kongo: Kikongo
+Konkani: =
+Korean (Johab): Kikorea (Johab)
+Korean (North): Kikorea (Kaskazini)
+Korean (South): Kikorea (Kusini)
+Korean: Kikorea
+Kosraean: Kosrai
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kikurdi
+Kutenai: =
+Kyrgyz: Kikirigizi
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Kilatini
+Latvian: Kilatvia
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Kilithuania
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: Kiluo
+Lushai: =
+Luxembourghish: Kufurahi
+Macedonian: Kimasedonia
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Malagasi
+Malay: Kimalesia
+Malayalam: Kimalayalam
+Maldivian: =
+Maltese: Kimalta
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: Kimaori
+Mapuche: =
+Marathi: Kimarathi
+Mari: =
+Marshallese: Kimarshallese
+Marwari: =
+Masai: Wamasai
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Kimoldavia
+Mongo: =
+Mongolian: Kimongolia
+Montenegrin: Montenegini
+Moroccan: Morocco
+Mossi: =
+Myanmar: =
+Māori: Maori
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Kaskazini)
+Ndebele (South): Ndebele (Kusini)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: Kinepali
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Kinorwe (Bokmål)
+Norwegian (Nynorsk): Kinorwe (Nynorsk)
+Norwegian: Kinorwe
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Kiokitani
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Kiossetiki
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: Kipashto
+Pedi: Wapedi
+Persian (Farsi): Kiajemi (Kiajemi)
+Persian (Iran): Kiajemi (Irani)
+Persian: Kiajemi
+Phoenician: Mfinisia
+Pohnpeian: =
+Polish: Kipolishi
+Portuguese: Kireno
+Portuguese/Brazil: Kireno / Brazil 
+Punjabi (India): Kipunjabi (India)
+Punjabi (Pakistan): Kipunjabi (Pakistan)
+Punjabi: Kipunjabi
+Quechua: Kiquechua
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Rhaeto-Kirumi
+Romanian: Kiromania
+Romansh: Kirumi
+Romany: =
+Rundi: Kirundi
+Russian (Moldavia: Kirusi (Moldavia
+Russian (Republic of Moldova): Kirusi (Jamhuri ya Moldova)
+Russian: Kirusi
+Sami (Inari): Kisami (Inari)
+Sami (Lappish): Msami (Lappish)
+Sami (Lule): Msami (Lule)
+Sami (Northern): Kisami (Kaskazini)
+Sami (Skolt): Msami (Skolt)
+Sami (Southern): Kisami (Kusini)
+Sami: Msami
+Samoan: Kisamoa
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Kisanskriti
+Santali: =
+Sardinian: =
+Sasak: =
+Scots (Gaelic): =
+Selkup: Usafirishaji
+Serbian (Upper): Kiserbia (Juu)
+Serbian: Mserbia
+Serer: =
+Sesotho: Kisotho
+Shan: =
+Shona: Kishona
+Sichuan Yi: =
+Sicilian: Sicilia
+Sindhi: Kisindhi
+Sinhala: =
+Slavic: =
+Slovak: Kislovakia
+Slovenian: Kislovenia
+Sogdian: =
+Somali: Msomali
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Kisorbia (Chini)
+Sorbian (Upper): Kisorbia (Juu)
+Sorbian: Msorbia
+Sotho: Wasotho
+Spanish (Argentina): Kihispania (Ajentina)
+Spanish (Bolivia): Kihispania (Bolivia)
+Spanish (Chile): Kihispania (Chile)
+Spanish (Colombia): Kihispania (Kolombia)
+Spanish (Costa Rica): Kihispania (Kosta Rika)
+Spanish (Dominican Republic): Kihispania (Jamhuri ya Dominika)
+Spanish (Ecuador): Kihispania (Ekvado)
+Spanish (El Salvador): Kihispania (El Salvador)
+Spanish (Guatemala): Kihispania (Guatemala)
+Spanish (Honduras): Kihispania (Honduras)
+Spanish (Mexico): Kihispania (Mexico)
+Spanish (Nicaragua): Kihispania (Nikaragua)
+Spanish (Panama): Kihispania (Panama)
+Spanish (Paraguay): Kihispania (Paragwai)
+Spanish (Peru): Kihispania (Peru)
+Spanish (Puerto Rico): Kihispania (Puerto Rico)
+Spanish (Spain): Kihispania (Uhispania)
+Spanish (Uruguay): Kihispania (Uruguay)
+Spanish (Venezuela): Kihispania (Venezuela)
+Spanish: Kihispania
+Sranan Tongo: =
+Sukuma: Wasukuma
+Sumerian: =
+Sundanese: Msunda
+Susu: =
+Sutu: Msutu
+Swahili: Kiswahili
+Swati: =
+Swedish (Finland): Kiswidi (Ufini)
+Swedish (Sweden): Kiswidi (Uswidi)
+Swedish: Kiswidi
+Syriac: =
+Tagalog: =
+Tahitian: Kitahiti
+Tai: =
+Taiwan: =
+Tajik: =
+Tamashek: =
+Tamil: Kitamil
+Tatar: Kitatari
+Telugu: Kitelugu
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: Kitibeti
+Tigre: =
+Tigrinya: Kitigrinya
+Timne: =
+Tlingit: Kuunganisha
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Visiwa vya Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: Kitsonga
+Tswana: =
+Tumbuka: =
+Turkish: Kituruki
+Turkmen: Waturuki
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: Ugariti
+Ukrainian: Kiukreni
+Umbundu: =
+Urdu: Kiurdu
+Uyghur: =
+Uzbek: Kiuzbeki
+Vai: =
+Venda: =
+Vietnamese: Kivietinamu
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: =
+Wolaitta: =
+Wolof: Kiwolof
+Xhosa: Kixhosa
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: Kiyidi
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: Zapoteki
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: Kizulu
+Browser-defined: Vivinjari vimefafanuliwa
+event: tukio
+journal: jarida
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Kuingia batili kwa mtumiaji
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: nywila isiyo sahihi
+no such user: hakuna mtumiaji kama huyo
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Akaunti imelemazwa
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Muda
+Months: Miezi
+Month Days: Siku za Mwezi
+Days: Siku
+Weeks: Wiki
+Position: Nafasi
+Until: Mpaka
+Count: Hesabu
+Inclusion Dates: Tarehe za Kujumuishwa
+Exclusion Dates: Tarehe za Kutengwa
+Event Imported: Tukio Limeingizwa
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: ka
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Arifa
+authenticate: Hitilafu ya SMTP: Haikuweza kuthibitisha
+connect_host: Hitilafu ya SMTP: Haikuweza kuunganishwa kwa mwenyeji wa SMTP:
+data_not_accepted: Hitilafu ya SMTP: Data haikubaliki
+encoding: Usimbuaji usiojulikana:
+execute: Haikuweza kutekeleza:
+file_access: Imeshindwa kufikia faili:
+file_open: Hitilafu ya Faili Haikuweza kufungua faili:
+from_failed: Ifuatayo kutoka kwa anwani imeshindwa:
+instantiate: Haikuweza kuthibitisha utendaji wa barua
+mailer_not_supported: barua pepe haitumiki
+provide_address: Lazima utoe angalau anwani moja ya barua pepe.
+recipients_failed: Hitilafu ya SMTP: Wapokeaji wafuatayo walishindwa:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Ingiza Wahusika Wanaoonekana kwenye Picha
+Enter the correct letters and numbers...: Ingiza herufi na nambari sahihi kutoka kwenye picha kwenye kisanduku cha maandishi. Jaribio hili dogo hutumika kama kizuizi cha ufikiaji dhidi ya bots mbaya. Pakia tu ukurasa ikiwa picha hii ni ngumu sana kusoma
+Challenge/Response: Changamoto / Majibu
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Badilisha tarehe na saa ya kuingia?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Hujaandika Maelezo Mafupi
+time prior to work hours...: muda kabla ya saa za kazi ..
+Invalid Event Date: Tarehe batili ya Tukio
+Please add a participant: Tafadhali ongeza mshiriki 
+Invalid Date: Tarehe batili
+You have not entered a valid time of day: Hujaweka saa sahihi ya siku. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Kitambulisho cha Kalenda hakiwezi kuwa wazi. 
+First and last names cannot both be blank.: Majina ya kwanza na ya mwisho hayawezi kuwa wazi. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Rangi batili
+Color format should be RRGGBB.: Muundo wa rangi unapaswa kuwa #RRGGBB. 
+URL cannot be blank.: URL haiwezi kuwa wazi.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Aina ya faili hailingani na Umbizo la Kuingiza 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Rangi batili ya usuli wa hati.
+Invalid color for document title.: Rangi batili ya kichwa cha hati.
+Invalid color for table cell background.: Rangi batili ya mandharinyuma ya seli.
+Invalid color for table cell background for today.: Rangi batili ya mandharinyuma ya seli ya leo.
+Invalid work hours.: Saa batili za kazi.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL ya seva lazima iishe na kufyeka (/).
+Invalid color for table grid.: Rangi batili ya gridi ya meza.
+Invalid color for event popup background.: Rangi batili ya mandhari-nyuma ibukizi ya tukio.
+Invalid color for event popup text.: Rangi batili ya maandishi ya kidukizo cha tukio.
+Invalid color for table header text.: Rangi batili ya maandishi ya kichwa cha meza.
+Invalid color for table header background.: Rangi batili ya mandharinyuma ya kichwa cha meza.
+Server URL is required.: URL ya seva inahitajika.
+Invalid Color: Rangi batili
+Database Name: Jina la Hifadhidata
+Full Path (no backslashes): Njia Kamili (hakuna kurudi nyuma) 
+The password contains illegal characters.: Nenosiri lina herufi haramu.
+Error you must specify a Single-User Login: Kosa: Lazima ueleze Ingia ya Mtumiaji Mmoja
+Could not find XXX.: Imeshindwa kupata XXX.
+Could not find XXX in DOM.: Imeshindwa kupata XXX katika DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Wiki hii
+This Month: Mwezi huu
+This Year: Mwaka huu
+Exit: Utgång
+Add New Event: Ongeza Tukio Jipya
+Delete Entries: Futa Wasilisho
+My Views: Maoni Yangu
+Manage Calendar of: Dhibiti Kalenda ya
+My Reports: Ripoti Zangu
+My Profile: Profaili yangu
+Public Calendar: Kalenda ya Umma
+Unapproved Events: Matukio Yasiyoidhinishwa
+User Manager: Meneja wa Mtumiaji
+Help Contents: Msaada Yaliyomo
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Saraka ya Hifadhi ya Hifadhidata
+Create New: Unda Mpya
+Failure Reason: Sababu ya Kushindwa:
+You must manually create database: Lazima mwenyewe uunda hifadhidata.
+Single-User: Mtumiaji-Mmoja
+Test Settings: Mipangilio ya Mtihani
+Timezone Conversion Successful: Ubadilishaji wa Saa za Wakati Umefanikiwa
+WebCalendar Installation Wizard Step XXX: Hatua ya XXX ya mchawi wa Usakinishaji wa Wavuti
+Password Accepted: Nenosiri Limekubaliwa
+Successful Login: Kuingia kwa Mafanikio
+Password Incorrect: Nenosiri si sahihi
+Invalid Login: Kuingia batili
+Display Errors: Onyesha Makosa
+File Uploads: Upakiaji wa faili
+Allow URL fopen: Ruhusu URL ipatikane (inahitajika tu ikiwa Kalenda za mbali zinatumika)
+Safe Mode: Njia salama
+Safe Mode Allowed Vars: Njia salama zilizoruhusiwa Vira (TZ inahitajika tu ikiwa Hali salama imewashwa)
+GD: GD (inahitajika kwa Asili za Picha za Gradient)
+Passwords do not match!: Nywila hazilingani!
+Unable to write password to settings.php file: Imeshindwa kuandika nenosiri kwa faili ya "settings.php".
+Password Updated: Nenosiri Limesasishwa
+Password has been set: Nenosiri limewekwa.
+Connection Successful...: Uunganisho Umefanikiwa  Tafadhali nenda kwenye ukurasa unaofuata ili kuendelea kusakinisha.
+Correct your entries or click the Create New...: Sahihisha maandishi yako au bonyeza kitufe cha  Unda Mpya  ili kuendelea kusanikisha.
+Correct your entries and try again.: Sahihisha maandishi yako na ujaribu tena.
+XXX does not exist: XXX haipo
+XXX is not writable: XXX haiwezi kuandikwa
+Error Converting Timezone: Hitilafu Kubadilisha Zoni ya Saa
+Error Unable to write to file XXX.: Hitilafu Imeshindwa kuandika kwa faili XXX.
+Please change the file permissions of this file.: Tafadhali badilisha ruhusa za faili ya faili hii.
+Please change includes dir permission: Tafadhali badilisha ruhusa za faili ya saraka yako "inajumuisha" ili kuruhusu uandishi na watumiaji wengine.
+Your settings have been saved.: Mipangilio yako imehifadhiwa.
+OFF: ZIMA
+ON: Washa
+WebCalendar Setup Wizard: Mchawi wa Kuweka Kalenda ya Wavuti
+This installation wizard will guide you...: Mchawi huyu wa usanidi atakuongoza kupitia usanidi msingi wa Kalenda ya Wavuti
+System Administrators Guide: Mwongozo wa Msimamizi wa Mfumo
+Frequently Asked Questions: maswali yanayoulizwa mara kwa mara
+FAQ: Maswali Yanayoulizwa Sana
+Troubleshooting: Utatuzi wa shida
+Getting Help: Kupata Msaada
+Upgrading Guide: Mwongozo wa Kuboresha
+User Supported Wiki: Wiki inayoungwa mkono na Mtumiaji
+PHP Version Check: Toleo la PHP Angalia
+Check to see if PHP 7.1.0 or greater is installed.: Angalia kuona ikiwa PHP 7.1.0 au zaidi imewekwa.
+PHP version: Toleo la PHP
+PHP Settings: Mipangilio ya PHP
+Detailed PHP Info: Maelezo ya kina ya PHP
+settings.php Status: Hali ya "settings.php"
+Session Check: Kuangalia Kikao
+To test the proper operation of sessions...: Ili kujaribu utendaji mzuri wa vipindi, pakia upya ukurasa huu. Unapaswa kuona ongezeko la kaunta ya kikao kila wakati.
+SESSION COUNTER: KIKAO CHA KIKAO
+The file permissions of settings.php are set...: Ruhusa za faili za "settings.php" zimewekwa ili kisanikishaji hakina idhini ya kuibadilisha. Tafadhali badilisha ruhusa za faili ya faili ifuatayo ili kuendelea
+The file permissions of the includes directory are set...: Ruhusa ya faili ya saraka ni pamoja na imewekwa ili kisanidi kisipate idhini ya kuunda faili mpya. Tafadhali badilisha ruhusa za saraka ifuatayo ili kuendelea
+Your settings.php file appears to be valid.: Faili yako ya "settings.php" inaonekana kuwa halali.
+Configuration Wizard Password: Nenosiri la mchawi
+Create Settings File Password: Unda Mipangilio ya Nenosiri la Faili
+db setup directions...: Katika sehemu hii utaanzisha na kujaribu unganisho kwa seva yako ya hifadhidata. Habari ya akaunti inayotolewa inapaswa kuwa na idhini KAMILI ya kuunda hifadhidata, meza na watumiaji. Ikiwa hii haiwezekani, au ufikiaji wako wa hifadhidata ni mdogo, itabidi usanidi hifadhidata yako mwenyewe.
+Database Status: Hali ya Hifadhidata
+Supported databases for your PHP installation: Hifadhidata zinazoungwa mkono za usanidi wako wa PHP
+Your current database settings are able to access the database.: Mipangilio yako ya sasa ya hifadhidata inaweza kufikia hifadhidata.
+Please Test Settings: Tafadhali Jaribu Mipangilio
+Your current database settings are not able...: Mipangilio yako ya hifadhidata ya sasa haiwezi kufikia hifadhidata hiyo au bado haijajaribiwa.
+Database Settings: Mipangilio ya Hifadhidata
+Database Type: Aina ya Hifadhidata
+Server: Seva
+Connection Persistence: Uvumilivu wa Uunganisho
+All your database tables appear to be up...: Meza zako zote za hifadhidata zinaonekana kuwa za kisasa. Unaweza kuendelea na ukurasa unaofuata na ukamilishe usanidi wako wa Kalenda ya Wavuti.
+This appears to be a new installation...: Hii inaonekana kuwa usakinishaji mpya. Ikiwa hii sio sahihi, tafadhali rudi kwenye ukurasa uliopita na urekebishe mipangilio yako.
+This appears to be an upgrade...: Hii inaonekana kuwa sasisho kutoka toleo&nbsp;XXX&nbsp;hadi&nbsp;YYY.
+The database requires some data input...: Hifadhidata inahitaji ingizo fulani la data Bonyeza Sasisha ili kukamilisha usasishaji.
+In this section we will perform...: Katika sehemu hii tutafanya mabadiliko ili kuleta hifadhidata yako kwa kiwango kinachohitajika. Ikiwa unatumia hifadhidata inayoungwa mkono kikamilifu, hatua hii itafanywa kiatomati kwako. Ikiwa sio hivyo, SQL inayohitajika inaweza kuonyeshwa na unapaswa kuikata na kuibandika kwenye dirisha la swala la hifadhidata yako.
+No database actions are required.: Hakuna vitendo vya hifadhidata vinahitajika.
+The following database actions are required: Vitendo vifuatavyo vya hifadhidata vinahitajika
+ODBC Underlying Database: Hifadhidata ya Msingi ya ODBC:
+Automatic installation not supported: Ufungaji otomatiki haujatekelezwa kikamilifu kwa aina yako ya hifadhidata. Utalazimika kuunda mwenyewe meza zinazohitajika kwa kutumia SQL iliyotolewa. Tafadhali bonyeza  Onyesha SQL  ili kuendelea. Kata na Bandika kwenye duka lako la swala la hifadhidata.
+This may take several minutes to complete: Hii inaweza kuchukua dakika kadhaa kukamilisha.
+Install Database: Sakinisha Hifadhidata
+Update Database: Sasisha Hifadhidata
+Display Required SQL: Onyesha SQL Inayohitajika
+Return to previous page after processing SQL.: Baada ya kusindika SQL hii kwa mikono, utahitaji kurudi kwenye ukurasa uliopita na ujaribu tena hifadhidata yako ili hati iweze kugundua mabadiliko.
+This is the final step in setting up your WebCalendar Installation.: Hii ni hatua ya mwisho ya kuanzisha Ufungaji wako wa Kalenda ya Wavuti.
+Timezone Conversion: Ubadilishaji wa Saa za Wakati
+It appears that you have NOT converted...: Inaonekana kuwa HUJABadilisha data yako ya hafla ya Kalenda ya Wavuti kuwa GMT. Ikiwa unayo, unaweza kupuuza ilani hii na usiendelee na ubadilishaji. Ikiwa hii ni usanikishaji mpya, unaweza pia kupuuza ilani hii.
+Convert Data to GMT: Badilisha Data kuwa GMT
+Application Settings: Mipangilio ya Maombi
+HTTP-based authentication was not detected...: Uthibitishaji unaotegemea HTTP haukugunduliwa. Utahitaji kusanidi upya seva yako ya wavuti ikiwa unataka kuchagua 'Seva ya Wavuti' kutoka kwa chaguo za 'Uthibitishaji wa Mtumiaji' hapa chini.
+HTTP-based authentication was detected...: Uthibitishaji unaotegemea HTTP uligunduliwa. Uthibitishaji wa mtumiaji unashughulikiwa na seva yako ya wavuti. Unapaswa kuchagua 'Seva ya Wavuti' kutoka kwenye orodha ya chaguo za 'Uthibitishaji wa Mtumiaji' hapa chini.
+Create Default Admin Account: Unda Akaunti ya Msingi ya Usimamizi
+(Admin Account Not Found): (Akaunti ya Msimamizi Haikupatikana)
+User Authentication: Uthibitishaji wa Mtumiaji
+Web-based via WebCalendar (default): Wavuti kupitia Wavuti ya Wavuti (chaguomsingi)
+Web Server (not detected): Seva ya Wavuti (haijagunduliwa)
+Web Server (detected): Seva ya Wavuti (imetambuliwa)
+None (Single-User): Hakuna (Mtumiaji-Mmoja)
+Read-Only: Soma-Tu
+Environment: Mazingira
+Production: Uzalishaji
+Development: Maendeleo
+Save Settings: Hifadhi Mipangilio
+Launch WebCalendar: Anzisha Kalenda ya Wavuti
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Hitilafu wakati wa kusasisha jedwali "XXX": YYY.
+Conversion Successful: Uongofu umefanikiwa 
+Perl script required: Toleo lako la awali la Kalenda ya Wavuti linahitaji kutumia hati ya PERL ili kubadilisha data yako. Tafadhali tumia / tools / upgrade_to_0.9.7.pl kisha urudi kwenye ukurasa huu kuendelea.
+previous version requires updating several tables: Toleo lako la awali la Kalenda ya Wavuti inahitaji kusasisha meza kadhaa za hifadhidata.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: HAKUNA MAONI YA MAONI KUPATIKANA
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Hitilafu wakati wa kuunganisha kwenye hifadhidata
+Include Path: Jumuisha Njia
+Deleting events for: Inafuta matukio ya
+Importing events for: Inaleta hafla za
+No data returned from: Hakuna data iliyorudishwa kutoka
+for non-user calendar: kwa kalenda isiyo ya mtumiaji
+No Remote Calendars found: Hakuna Kalenda za Kijijini zilizopatikana
+Remote Calendars not enabled: Kalenda za mbali hazijawezeshwa
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: haikuweza kupata kitambulisho cha hafla
+could not find event id XXX in database.: haikuweza kupata id id ya tukio katika hifadhidata.
+task: kazi
+This is a reminder for the XXX detailed below.: Hii ni ukumbusho wa XXX iliyoonyeshwa hapa chini.
+Pecentage Complete: Asilimia Imekamilika
+Reminder: Kikumbusho
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Kitendo kisichoweza kutumika: XXX.
+No event id specified.: Hakuna kitambulisho cha tukio kilichobainishwa.
+Not authorized (not admin).: Haijaidhinishwa (sio msimamizi).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Kuangalia hafla za XXX kutoka tarehe YYY hadi tarehe ZZZ.
+Found XXX events in time range.: Imepata hafla XXX katika muda.
+Event id=XXX YYY at ZZZ on AAA.: Kitambulisho cha hafla = XXX "YYY" katika ZZZ kwenye AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Kuruhusu mtumiaji XXX kuona kalenda ya mtumiaji mwingine.
+Error Email reminders disabled for user XXX.: Kosa: Vikumbusho vya barua pepe vimezimwa kwa mtumiaji "XXX".
+Number of site_extras XXX.: Idadi ya tovuti_matini: XXX.
+Reminder set for event.: Kikumbusho kimewekwa kwa tukio.
+Mins Before XXX.: Dakika Kabla: XXX.
+Event time is XXX.: Wakati wa tukio ni: XXX.
+Remind time is XXX.: Wakati wa kukumbusha ni: XXX.
+Reminders for user XXX, login YYY.: Vikumbusho vya mtumiaji "XXX", ingia "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Kupata idhini ya mtumiaji "XXX".
+Event id=XXX YYY already sent.: Tukio id = XXX "YYY" tayari imetumwa.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Hakuna kuingia kunahitajika kwa hali ya mtumiaji mmoja.
+No login required for HTTP authentication.: Hakuna kuingia kunahitajika kwa uthibitishaji wa HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Herufi si sahihi wakati wa kuingia.
+Username XXX does not exist.: Jina la mtumiaji "XXX" halipo.
+You cannot remove admin rights from yourself!: Huwezi kuondoa haki za msimamizi kutoka kwako!
+Unknown error saving user: Kosa lisilojulikana la kuokoa mtumiaji.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Hakuna washiriki waliopatikana kwa kitambulisho cha tukio: XXX.
+Db error Could not find event id XXX.: Hitilafu ya Db: Haikuweza kupata kitambulisho cha tukio XXX. 
+Error Could not find event id XXX in database.: Kosa: Haikuweza kupata kitambulisho cha tukio XXX katika hifadhidata. 

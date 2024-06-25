@@ -1,0 +1,2387 @@
+# Malagasy mg
+#
+# Ny endrika dia misy lohateny lohateny tsy azo avela:
+#
+# Nadikan'i: ny anaranao sy ny mailakao
+# Fanavaozana farany: ny datin'ny fandikana
+# (Ao anatin'izany ny "#" mitarika sy ny hevitr'ireo mpandika teny teo aloha.
+# Ny tsipika banga VOALOHANY dia mamarana ireo fanehoan-kevitra lohateny ireo.)
+#
+# Arahin'olona betsaka araka izay ilaina:
+#
+# Andian-teny anglisy: dikanteny
+# (Iray mankany amin'ny tsipika iray. TSY MISY "#" mitarika.
+# Ny "fehezan-teny anglisy:", ao anatin'izany ny zanatany ":", dia nomen'ny
+# Mpanamboatra WebCalendar. Ny anjaranao dia ny "fandikan-teny".)
+#
+# Ny lahatahiry fitaovana dia misy script perl roa hanampy anao:
+# - check_translation.pl
+# dia manondro raha voadika tsara ny lahatsoratra rehetra.
+# - update_translation.pl
+# dia hametaka ireo rakitra amin'ny programa hahitanao ny dikanteny rehetra ('andianteny') ary
+# tooltip ('andianteny'). Handamina ireo fehezanteny mifanaraka amin'ny pejy izy io
+# (rakitra) izay misy ny fisehoan-javatra voalohany. Raha afaka izany, afaka mametaka ny
+# Andian-teny izay mbola tsy nadika tamin'ny fametrahana
+#  << MISSING >>
+# amin'ny tsipika ambonin'ilay andianteny. Ary, raha fanafohezana ilay andianteny,
+# dia hanisy ny lahatsoratra anglisy manontolo eo amin'ilay tsipika eo ambanin'ilay andianteny.
+#
+# Fanamarihana: manandrana manapaka ny haben'ny rakitra amin'ny ankapobeny aho. Raha ny "dikanteny"
+# teny / andianteny dia mitovy amin'ny fiteninao sy ny anglisy, ampiasao fambara "=" fotsiny.
+#
+# Fanamarihana: ho hitanao ny fidirana ho "May_" etsy ambany. Misy antony izany.
+# Mandika "May_" amin'ny anarana iray volana sy "May" ho an'ny,
+# matetika fanafohezana litera telo, volana (toy ny "Ok" ho an'ny "Oktobra").
+#
+# Nampiasa ny fandikan-teny Google aho ho an'ity.
+# Tokony ho ampy io mandra-pahitan'ny mpandahateny iray manamarina azy.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: kinova XXX
+WebCalendar is a PHP application used...: WebCalendar dia fampiharana PHP ampiasaina hitazomana ny kalandrie ho an'ny mpampiasa tokana na vondrona mpampiasa Internet / intranet. Izy io koa dia azo alamina ho toy ny tetiandro hetsika.
+Credits: nahazoan-dalana
+About: =
+OK: ok
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Hadisoana amin'ny data: XXX.
+DEFAULT CONFIGURATION: CONFIGURATION DEFAULT
+Go: Mandehana
+Save: afa-tsy
+Undo: Ravao
+Public Access: Fandraisana ampahibemaso
+Admin: =
+User Access Control: Fanaraha-maso ny fidirana amin'ny mpampiasa
+Allow Access to Other Users Calendar: Avelao ny fidirana amin'ny kalandrie ho an'ny mpampiasa hafa
+Grant This User Access to My Calendar: Omeo fidirana amin'ny kalandrie ity mpampiasa ity
+Type: Karazana
+Calendar: =
+View Event: Hijery hetsika
+View: Hijery
+Edit: Ovay
+Approve/Reject: Manaiky / Mandà
+Events: zava-mitranga
+Tasks: asa
+Journals: gazety
+Can Invite: Afaka Manasa
+Can Email: Afaka mandefa mailaka
+Can See Time Only: Afaka mahita ny fotoana fotsiny
+Assistant: mpanampy
+Select All: Safidio daholo
+Clear All: =
+Public: -bahoaka
+Confidential: Tsiambaratelo
+Private: manokana
+
+########################################
+# Page: activity_log.php
+#
+Next: Manaraka
+Previous: Teo aloha
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Hetsika XXX dia efa eo amin'ny kalandrianao.
+Invalid entry id XXX.: Id fidirana tsy mety: "XXX".
+a XXX event may not be added to your calendar: Hetsika XXX ity ary mety tsy azo ampidirina amin'ny kalandrianao.
+confidential: tsiambaratelo
+private: manokana
+Error adding event XXX.: Fahadisoana amin'ny fampidirana hetsika: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Tsy mety ny anarana fametrahana "XXX".
+Select: Safidio
+Day: Andro
+Week: Herinandro
+Month: VOLANA
+Year: TAOM-
+Bottom: ambany
+Top: =
+Anyone: Na iza na iza
+Participant: Mpandray anjara
+Settings: Fikirana
+Groups: Vondrona
+NonUser Calendars: Kalandrie tsy ampiasain'ny mpampiasa
+Other: Hafa
+Email: Mailaka
+Colors: loko
+Document background: Lohatenin'ny antontan-taratasy
+Document title: Lohatenin'ny rakitra
+Document text: Lahatsoratra lahatsoratra
+My event text: Ny lahatsoratro hetsika
+Table grid color: Loko misy ny takelaka
+Table header background: Lohatenin'ny lohatenin'ny latabatra
+Table header text: Lahatsoratra lohateny lohateny
+Table cell background: Tantaran'ny sela latabatra
+Table cell background for current day: Tabilao misy ny latabatra ho an'ny andro ankehitriny
+Table cell background for days with events: Tabilao misy tabilao mandritra ny andro maromaro miaraka amin'ny hetsika
+Table cell background for weekends: Latabatra faran'ny latabatra mandritra ny faran'ny herinandro
+Table cell background for other month: Tabilao misy ny latabatra mandritra ny volana hafa
+Week number color: Loko isa isan-kerinandro
+Event popup background: Hetsika mipoitra hetsika
+Event popup text: Lahatsoratra mipoitra hetsika
+System Settings: Fikirana rafitra
+Help: Vonjeo
+System options: Safidy amin'ny rafitra
+app-name-help: Manondro ny anaran'ny fampiharana izay hiseho ao amin'ny tsanganana lohatenin'ny browser ho an'ny pejy rehetra sy amin'ny pejy fidirana. Ny sanda voatondroo eto dia ho jerena ao amin'ireo rakitra fandikan-teny mamela anao hanome lohanteny samihafa ho an'ny fiteny samihafa.
+Application Name: Anaran'ny fampiharana
+Translated Name (XXX): Anarana voadika (XXX)
+server-url-help: Manondro ny URL fototra ho an'ny fampiharana. Hampidirina io rehefa mandefa fampahatsiahivana sy fampandrenesana mailaka.
+Server URL: URL an'ny mpizara
+home-url-help: Manondro ny URL an-trano ho an'ny fampiharana. Mety ho fianakaviana iray manontolo na havanao izany
+Home URL: URL an-trano
+language-help: Mamaritra izay fiteny ampiasaina.
+Language: Fiteny
+Your browser default language is XXX.: Ny fiteny fanaovan'ny mpanamory anao dia "XXX".
+Allow user to use themes: Avelao ny mpampiasa hampiasa lohahevitra
+themes-help: Mamela ny fanavaozana faobe ny fikirana fikirakirana. Ny laboera ambany dia pref fotsiny ho an'ny mpampiasa.
+Themes: lohahevitra
+AVAILABLE THEMES: HEVITRA AZO ATAO
+None: tsy misy
+Preview: topi-maso
+Site customization: Fanamboarana ny tranokala
+custom-script-help: Mamela ny fidirana lahatsoratra Javascript na styleheet manokana izay hampidirina ao amin'ny fizarana "loha" HTML isaky ny pejy.
+Custom script/stylesheet: Script / styleheet manokana
+custom-header-help: Mamela sombintsombidy HTML namboarina ho tafiditra ao an-tampon'ny pejy.
+Custom header: Lohateny namboarina
+custom-trailer-help: Mamela sombin-tsoratra HTML natokana ho tafiditra ao amin'ny faran'ny pejy tsirairay.
+Custom trailer: Tranofiara namboarina
+enable-external-header-help: Mamela ny tranofiara manokana hampidirina amina rakitra ivelany
+Allow external file for header/script/trailer: Avelao ny rakitra ivelany ho an'ny lohateny / script / tranofiara
+Allow user to override header/trailer: Avelao ny mpampiasa hanongotra ny lohateny / tranofiara
+Date and Time: Daty sy ora
+server-tz-help: Manondro ny ora firy hanovana ny ora manomboka amin'ny UTC ka hatramin'ny ora an'ny mpizara.
+Server Timezone Selection: Selection Timezone Server
+tz-help: Manondro ny ora firy hanovana ny ora manomboka amin'ny UTC ka hatramin'ny ora eo an-toerana.
+Default Client Timezone Selection: Safidy Timezone ho an'ny mpanjifa tsy miova
+display-general-use-gmt-help: Raha azo atao, dia aseho ho GMT ny daty / ora iraisana
+Display Common Use Date/Times as GMT: Asehoy ny daty / ora fampiasa mahazatra toy ny GMT
+date-format-help: Manondro ny endrika daty tiany.
+Date format: Daty daty
+Small Task Date: Daty asa kely
+display-week-starts-on: Manondro andro amin'ny herinandro izay manomboka ny herinandro. Raha voatondro ny alatsinainy dia isa isa-herinandro ny isa amin'ny herinandro.
+Week starts on: Manomboka ny herinandro
+display-weekend-starts-on: Mametraka ny andro amin'ny herinandro hanombohana ny faran'ny herinandro
+Weekend starts on: Manomboka amin'ny faran'ny herinandro
+time-format-help: Manondro ny endrika fotoana hampiasana azy:<br><em>12 ora:</em> Fotoana aseho amin'ny 3 maraina, 8:30 alina sns.<br><em>24 ora:</em> Fotoana aseho amin'ny 300 , 2030, sns.
+Time format: Fandaharam-potoana
+12 hour: 12 ora
+24 hour: 24 ora
+timed-evt-len-help: Manondro fomba fampidirana hamaritana ny halavan'ny hetsika ara-potoana.
+Specify timed event length by: Farito ny halavan'ny hetsika voatondro araka ny
+Duration: =
+End Time: Fotoana farany
+work-hours-help: Manondro ny elanelam-potoana haseho ho an'ny fijerin'ny andro.
+Work hours: Ora fiasana
+From: =
+to: ny
+Appearance: Bika Aman 'endrika
+preferred-view-help: Mamaritra ny fomba fijery tsy miova (Andro, herinandro, volana, na taona).
+Preferred view: Jery ​​tiana kokoa
+Allow top menu: Avelao ny menio ambony
+Date Selectors position: Datin'ny Select select
+menu-themes-help: Mametraka ny loko sy ny fomban'ny menio ambony
+Menu theme: Lohahevitry ny menio
+fonts-help: Manondro ny lisitry ny endritsoratra ampiasaina (toa ny "Arial, Helvetica")
+Fonts: endritsoratra
+display-sm_month-help: Raha azo atao, dia asehoy volana vitsivitsy amin'ny fahitana volana
+Display small months: Asehoy volana vitsivitsy
+display-weekends-help: Ampidiro ny faran'ny herinandro rehefa mijery herinandro.
+Display weekends: Asehoy ny faran'ny herinandro
+display-long-daynames-help: Raha azo atao dia aseho anarana lava be
+Display long day names: Asehoy ny anaran'ny andro lava
+display-alldays-help: Asehoy ny volana teo aloha sy ny volana manaraka amin'ny fomba fijery isam-bolana, fenoy ny sela rehetra.
+Display all days in month view: Asehoy mandritra ny volana ny andro rehetra
+display-week-number-help: Manondro raha tokony haseho amin'ny isa volana sy ny fahitana ny isa ny herinandro (1-52).
+Display week number: Asehoy ny isa isan-kerinandro
+display-desc-print-day-help: Ampidiro ny famaritana hetsika ao amin'ny kinova mpankafy ny fomba fijerin'ny andro.
+Display description in printer day view: Asehoy ny famaritana amin'ny fijerin'ny mpanonta
+yearly-shows-events-help: Amin'ny fahitana isan-taona, asehoy ireo andro izay misy hetsika ao amina endri-tsoratra matevina.
+Display days with events in bold in month and year views: Asehoy ny andro misy fisehoan-javatra aseho amin'ny fahasahiana amin'ny volana sy taona
+display-minutes-help: Raha azo atao dia hiseho foana ny minitra mifarana amin'ny: 00
+Display 00 minutes always: Asehoy 00 minitra foana
+display-end-times-help: Asehoy ny fotoana famaranana ny hetsika raha toa ka hetsika ara-potoana
+Display end times on calendars: Asehoy amin'ny kalandrie ny ora famaranana
+allow-view-add-help: Ny kisary '+' dia hampidirina amin'ny fomba fijery, ahafahan'ny mpampiasa manisy hetsika haingana amin'ny kalandrie an'ny mpampiasa hafa.
+Include add event link in views: Ampidiro manampy ny rohy hetsika amin'ny fomba fijery
+lunar-help: Raha azo atao, dia asehoy sary masina kely maneho ny dingana isam-bolana
+Display Lunar Phases in month view: Asehoy ny dingana Lunar amin'ny fahitana volana
+Restrictions: famerana
+allow-view-other-help: Mamaritra raha mahita ny kalandrie ampiasain'ny mpampiasa iray.
+Allow viewing other users calendars: Avelao hijery ny kalandrie an'ny mpampiasa hafa
+require-approvals-help: Rehefa alefa dia tokony hanaiky hetsika iray ny mpampiasa alohan'ny hanehoana azy amin'ny kalandriany (raha tsy hoe alefa ny Display tsy nankatoavina). Mariho ny fametrahana an'io ho "Tsia" tsy hamono ny fankatoavana ny kalandrie Access Public (raha alefa ny kalandrie Access Public).
+Require event approvals: Mitaky fankatoavana hetsika
+display-unapproved-help: Manondro raha misy fisehoan-javatra tsy nankatoavina aseho ao amin'ny kalandrianao. ny hetsika tsy nankatoavina dia tsy maintsy ekena alohan'ny hisehoany amin'ny kalandrie misy anao.
+Display unapproved: Asehoy tsy ekena
+conflict-check-help: Zahao ireo fifanolanana amin'ny hetsika (hetsika roa voalahatra amin'ny fotoana iray ho an'ny olona iray ihany). Raha apetrakao amin'ny "Eny" ity dia mbola afaka mandahatra hetsika roa miaraka amin'izay ianao aorian'ny fanamafisana ny fampitandremana. Raha apetrakao amin'ny "Tsia" io dia tsy hojerena ny fifanolanana. Mety apetrakao amin'ny "Eny" ity, ka mitranga ny fanaraha-maso ny fifanoherana.
+Check for event conflicts: Hamarino raha misy ny fifanolanana
+Yes: ENY
+No: tsy misy
+conflict-months-help: Raha misy ny fanaraha-maso ny fifanolanana ("Hamarino ireo fifanolanana amin'ny hetsika" dia atao "Tsia" & # 41 ;, izany dia mamaritra hoe firy volana amin'ny ho avy no tokony hijerentsika ireo fifanolanana. Raha hitanao fa manampy fotoana be dia be ny fikarakarana , ahenao io isa io.
+Conflict checking months: Volana fizahana fifandonana
+conflict-check-override-help: Mamela ny mpampiasa handresy ny adin'ny hetsika ary handahatra hetsika roa na roa mandritra ny fotoana iray.
+Allow users to override conflicts: Avelao ny mpampiasa handresy ny fifanolanana
+limit-appts-help: Mamela ny mpitantana ny rafitra hametraka fetra manerana ny rafitra amin'ny isan'ny fanendrena azon'ny mpampiasa tokana atao amin'ny andro iray.
+Limit number of timed events per day: Fero ny isan'ny hetsika ara-potoana isan'andro
+limit-appts-number-help: Mamaritra ny isan'ny hetsika ara-potoana farafaharatsiny azon'ny mpampiasa atao ao anatin'ny iray andro.
+Maximum timed events per day: Hetsika ara-potoana farafahakeliny isan'andro
+crossday-help: Raha azo atao, dia hiseho amin'ny andro misaraka ny fisehoan-javatra maharitra andro
+Disable Cross-Day Events: Atsaharo ireo hetsika mandritra ny tontolo andro
+disable-location-field-help: Ny fisafidianana ny "Eny" dia hanala ny saha "Toerana" avy amin'ny pejin-javatra fampahalalana
+Disable Location field: Atsaharo ny sahan'ny Toerana
+disable-url-field-help: Ny fisafidianana ny "Eny" dia hanala ny saha "URL" amin'ny pejin'ny fampahalalana momba ny hetsika
+Disable URL field: Atsaharo ny saha URL
+disable-priority-field-help: Ny fisafidianana ny "Eny" dia hanaisotra ny saha "Laharam-pahamehana" amin'ny pejin'ny fampahalalana ho an'ny hetsika, manome interface mora kokoa ho an'ireo vao manomboka.
+Disable Priority field: Atsaharo ny saha laharam-pahamehana
+disable-access-field-help: Ny fisafidianana ny "Eny" dia hanaisotra ny saha "Access" amin'ny pejin'ny fampahalalana ho an'ny hetsika, ary manome interface mora kokoa ho an'ireo vao manomboka.
+Disable Access field: Atsaharo ny sehatry ny fidirana
+disable-participants-field-help: Ny fisafidianana ny "Eny" dia hanala ny sahan'ny "Mpandray anjara" amin'ny pejin'ny fampahalalana ho an'ny hetsika, hisorohana ny mpampiasa tsy hanampy mpampiasa hafa amin'ny hetsika nataony. Raha avelanao io safidy io dia azonao atao koa ny manafoana ny saha "Avelao hijery ny kalandrie an'ny mpampiasa hafa" koa.
+Disable Participants field: Atsaharo ny sahan'ny Mpandray anjara
+disable-repeating-field-help: Ny fisafidianana ny "Eny" dia hanala ny saha "Mamerina" rehefa manampy hetsika. Ity dia hanome interface mora kokoa ho an'ireo vao manomboka.
+Disable Repeating field: Atsaharo ny saha miverimberina
+allow-html-description-help: Raha azo atao, ny mpampiasa dia afaka mampiditra HTML ao amin'ny saha famaritana hetsika. Raha tsy azo atao, dia ho afa-miala ireo tag HTML mba hisehoany toy ny lahatsoratra tsotra. Fampitandremana: ny famelana ity fampiasa ity dia hahafahan'ny mpampiasa manondro sary amin'ny tranokala hafa.
+Allow HTML in Description: Avelao ny HTML amin'ny famaritana
+Popups: Popup
+disable-popups-help: Atsaharo ny popup avy amin'ny fijerin'ny kalandrie
+Disable Pop-Ups: Atsaharo ny Pop-Up
+popup-includes-siteextras-help: Raha azo atao, avelao ny sahan-dahatsoratra hetsika manokana hapetraka ao amin'ny rakitra site_extras.php hiseho amin'ny fisehoan-javatra miseho
+Display Site Extras in popup: Asehoy ireo toerana fanampiny ao amin'ny popup
+popup-includes-participants-help: Raha azo atao dia aseho amin'ny popup popup ny mpandray anjara.
+Display Participants in popup: Asehoy ireo mpandray anjara amin'ny popup
+Miscellaneous: SAMIHAFA
+remember-last-login-help: Rehefa alefa, ny fidiran'ny mpampiasa dia ho feno ho azy ireo ao amin'ny pejy fidirana (fa tsy ny teny miafina), ary ny safidin'ny mpampiasa dia ho entina (ao anatin'izany ny loko tiany sy ny safidiny fiteny).
+Remember last login: Aza adino ny fidirana farany
+summary_length-help: Halavany farany famaritana fohy amin'ny fijerin'ny kalandrie
+Brief Description Length: Famaritana fohy halava
+user_sort-help: Mamaritra ny filaharana ho an'ny lisitry ny mpampiasa, ny tsy mpampiasa
+User Sort Order: Order an'ny mpampiasa
+Lastname, Firstname: Anarana Fanampin'anarana
+Firstname, Lastname: Anarana Fanampin'anarana
+allow-public-access-help: Rehefa alefa, ny kalandrie dia azo ampiasaina ho toy ny tetiandro ho an'ny daholobe vakiana fotsiny izay tsy mitaky ny fidiran'ny mpampiasa.
+Allow public access: Avelao ny fidirana ho an'ny daholobe
+public-access-default-visible: Hiseho avy hatrany amin'ny kalandrie ho an'ny mpampiasa ny hetsika avy amin'ny tetiandro ampahibemaso
+Public access visible by default: Fahazoan'ny daholobe hitan'ny masonao
+public-access-default-selected: Rehefa manampy hetsika vaovao dia hisafidy default amin'ny maha mpandray anjara azy ny mpampiasa ny daholobe.
+Public access is default participant: Ny fidiran'ny besinimaro dia mpandray anjara tsy misy fangarony
+public-access-view-others-help: Rehefa miditra amin'ny rafitra amin'ny alàlan'ny fidirana ho an'ny daholobe ny rafitra dia mamaritra raha afaka mijery ny kalandrien'ny mpampiasa kalandrie hafa ny mpampiasa.
+Public access can view other users: Afaka miditra amin'ny mpampiasa hafa ny fidiran'ny besinimaro
+public-access-can-add-help: Rehefa alefa, ny mpampiasa izay miditra amin'ny rafitra amin'ny alàlan'ny Public Access dia afaka manampy hetsika vaovao, saingy tsy hiseho amin'ny kalandrie izy ireo raha tsy eken'ny mpandrindra ny hetsika vaovao.
+Public access can add events: Ny fidiran'ny besinimaro dia afaka manampy hetsika
+public-access-add-requires-approval-help: Manondro raha mitaky fankatoavana alohan'ny hisehoana ny hetsika ampiana amin'ny kaonty fidirana ho an'ny daholobe.
+Public access new events require approval: Mila fankatoavana ny hetsika vaovao amin'ny fidirana imasom-bahoaka
+public-access-sees-participants-help: Raha azo atao, ireo mpampiasa miditra amin'ny kalandrie avy amin'ny kaontim-bahoaka dia ho afaka hahita mpandray anjara raha mahita ny antsipirian'ny hetsika iray izy ireo.
+Public access can view participants: Afaka jeren'ny mpandray anjara ny fidiran'ny besinimaro
+public-access-override-help: Mamela ny anarana sy ny famaritana hanafina ao amin'ny kalandrie ampahibemaso
+Override event name/description for public access: Override anarana / famaritana hetsika ho an'ny fidirana ho an'ny daholobe
+public-access-override-text-help: Ny lahatsoratra aseho raha azo atao ny safidy etsy ambony. Raha 'tsy misy' dia hadika izany.
+Text to display to public access: Lahatsoratra haseho amin'ny fidirana ho an'ny daholobe
+public-access-captcha-help: Raha azo atao, ny hetsika vaovao ampiana ho an'ny daholobe dia mitaky fandaniana fanamarinana CAPTCHA.
+Require CAPTCHA validation for public access new events: Mitaky fanamarinana CAPTCHA amin'ny fidirana amin'ny besinimaro amin'ny hetsika vaovao
+uac-enabled-help: Mamela ny fifehezana fidirana amin'ny haavon'ny mpampiasa
+User Access Control enabled: Nasaina ny fanaraha-maso ny fidirana amin'ny mpampiasa
+groups-enabled-help: Mamela ny fanohanan'ny vondrona, mamela ny mpampiasa hisafidy mpampiasa isaky ny vondrona.
+Groups enabled: Afaka ny vondrona
+user-sees-his-group-help: Raha azo atao dia tsy hahita mpampiasa kalandrie izay tsy ao anatin'ny iray amin'ireo vondrona misy azy ireo ny mpampiasa.
+User sees only his groups: Ny vondrona misy azy ihany no hitan'ny mpampiasa
+nonuser-enabled-help: Raha azo atao, ny admin dia hanana safidy hanisy kalandrie tsy ampiasain'ny mpampiasa
+Nonuser enabled: Alefa ny kalandrie Nonuser
+nonuser-list-help: Aiza no hanehoana ny tetiandro tsy ampiasana amin'ny lisitry ny mpandray anjara
+Nonuser list: Asehoy amin'ny lisitry ny mpandray anjara amin'ny
+Upcoming Events: Hetsika ho avy
+upcoming-events-help: Alefaso ho avy.php
+Enabled: afaka
+upcoming-events-allow-override: Avelao ny paramter ho an'ny mpampiasa amin'ny ho avy.php
+Allow user override: Avelao ny mpampiasa hanongotra
+upcoming-events-display-caticons: Ampidiro ireo kisary sokajy ao amin'ny ho avy.php
+Display category icons: Asehoy ireo kisary sokajy
+upcoming-events-display-layers: Asehoy ny sosona amin'ny ho avy.php
+Display layers: Asehoy ny sosona
+upcoming-events-display-links: Asehoy ireo rohy amin'ny ho avy.php
+Display links to events: Asehoy ny rohy mankany amin'ny hetsika
+upcoming-events-display-popups: Asehoy ireo fisehoan-javatra miseho amin'ny ho avy.php
+Display event popups: Mampiseho popup mipoitra
+reports-enabled-help: Raha azo atao, ny mpampiasa dia hahita fizarana "Tatitra" eo ambanin'ny pejy tsirairay ary avela hamorona tatitra manokana. Ho fanampin'izany, ny mpampiasa admin dia afaka mamorona tatitra manerantany izay hiseho eo ambanin'ny pejin'ny pejin'ny mpampiasa rehetra.
+Reports enabled: Natao ny tatitra
+subscriptions-enabled-help: Manondro raha afaka misoratra anarana amin'ny kalandrie mpampiasa WebCalendar ireo mpampiasa lavitra, mamela azy ireo hahita ny zava-mitranga amin'ny mpampiasa WebCalendar ao amin'ny fampiharana ampiasainy iCal (toy ny Apple's iCal na Mozilla Calendar).
+Allow remote subscriptions: Avelao ny famandrihana lavitra
+remotes-enabled-help: Mamela ny mpampiasa hampiditra rakitra ics lavitra mampiasa URL
+Allow remote calendars: Avelao ny kalandrie lavitra
+rss-enabled-help: Manondro raha afaka mahazo ny kalandrie ho an'ny mpampiasa amin'ny RSS RSS.
+Enable RSS feed: Alefaso ny fahana RSS
+categories-enabled-help: Mamela ny fanohanana amin'ny sokajy hetsika.
+Categories enabled: Nasaina ny sokajy
+icon_upload-enabled-help: Raha azo atao, ny mpampiasa dia afaka mampakatra ny kisary sokajy
+Category Icon Upload enabled: Nampiasaina ny uploader icon Icon
+(Requires XXX folder to exist.): (Mitaky fisian'ny fampirimana XXX.)
+display-tasks-help: Asehoy ny varavarankelin'ny asa kely amin'ny kalandrie volana sy andro
+Display small task list: Asehoy ny lisitry ny lahasa kely
+display-tasks-in-grid-help: Asehoy amin'ny kalandrie ny asanao miaraka amin'ny hetsika
+Display tasks in Calendars: Asehoy ny asanao amin'ny Alimanaka
+allow-external-users-help: Manondro raha azo ampiana amin'ny hetsika iray ny mpampiasa tsy kalandrie. Io dia mamela ireo mpampiasa tsy kalandrie ho voatanisa ho mpandray anjara amin'ny hetsika.
+Allow external users: Avelao ny mpampiasa ivelany
+external-can-receive-notification-help: Rehefa alefa ny mpampiasa ivelany ary alefa ny fampiasana mailaka dia afaka mandray fampandrenesana mailaka ny mpampiasa ivelany rehefa ampiana, havaozina na hamafana ny hetsika (raha misy ny adiresy mailaka an'ny mpampiasa ivelany).
+External users can receive email notifications: Ireo mpampiasa ivelany dia afaka mahazo fampandrenesana mailaka
+external-can-receive-reminder-help: Rehefa alefa ny mpampiasa ivelany ary alefa ny fampiasana mailaka dia afaka mahazo fampahatsiahivana mailaka ny mpampiasa ivelany (raha omena ny adiresy mailaka an'ny mpampiasa ivelany).
+External users can receive email reminders: Ireo mpampiasa ivelany dia afaka mahazo fampahatsiahivana mailaka
+allow-self-registration-help: Avelao ny mpampiasa vaovao hisoratra anarana
+Allow self-registration: Avelao ny fisoratana anarana
+use-blacklist-help: Fero ny fahafaha-miditra amin'ireo lahasa WebCalendar miorina amin'ny adiresy IP
+Restrict self-registration to blacklist: Ferana ny fisoratana anarana amin'ny lisitra mainty
+allow-self-registration-full-help: Avelao ny mpampiasa vaovao hamita an-tserasera ny fizotran'ny fisoratana anarana
+Use self-registration email notifications: Miteraha tenimiafina ary alefaso amin'ireo mpampiasa vaovao
+allow-attachment-help: Avelao ireo mpampiasa hanampy rakitra ao anaty hetsika.
+Allow file attachments to events: Avelao ny fametahana rakitra amin'ny hetsika
+Admin and owner can always add attachments if enabled.: Ny admin sy ny tompony dia afaka manampy fametahana foana raha azo atao.
+allow-comments-help: Avelao ny mpampiasa hanampy hevitra amin'ny hetsika.
+Allow comments to events: Avelao ny fanehoan-kevitra amin'ireo hetsika
+Admin and owner can always add comments if enabled.: Ny admin sy ny tompony dia afaka manampy hevitra foana raha azo atao.
+email-enabled-help: Alefaso na vonoy ny fandefasana mailaka rehetra ho fampandrenesana sy fampahatsiahivana. Apetraho amin'ny "tsia", raha tsy miorina tsara ny mpizara anao handefasana mailaka.
+Email enabled: Nasaina ny mailaka
+email-default-sender: Manondro ny adiresy mailaka holazaina ho toy ny mpandefa rehefa mandefa fampahatsiahivana.
+Default sender address: Adiresy mpandefa default
+email-mailer: Misafidiana karazana mailaka (SMTP, mail PHP, sendmail)
+Email Mailer: Mailer mailaka
+email-smtp-host: Hostname (s) an'ny mpizara SMTP (s) nosarahan'ny koma
+SMTP Host name(s): Anaran'ny mpampiantrano SMTP
+email-smtp-port: Nomera seranan-tsambo SMTP (mazàna 25)
+SMTP Port Number: Nomera seranan-tsambo SMTP
+email-smtp-auth: Ampiasao ny fanamarinana SMTP
+SMTP Authentication: Fanamarinana SMTP
+email-smtp-username: SMTP Username raha mampiasa Authentication
+SMTP Username: =
+email-smtp-password: SMTP Password raha mampiasa Authentication
+SMTP Password: =
+Default user settings: Fikirana ho an'ny mpampiasa default
+email-format: Lazao izay tianao amin'ny HTML na hafatra an-tsoratra tsotra
+Email format preference: Safidy endrika mailaka
+HTML: =
+Plain Text: Lahatsoratra tsotra
+email-include-ics: Ampidiro ao anaty mailaka ny fisie iCalendar ICS
+Include iCalendar attachments: Ampidiro ireo miraikitra iCalendar
+email-event-reminders-help: Manondro na handefa fampahatsiahivana hetsika na tsia.
+Event reminders: Fampahatsiahivana ny hetsika
+email-event-added: Manondro raha handefa fampandrenesana mailaka na tsia raha ampiana hetsika ao amin'ny kalandrianao.
+Events added to my calendar: Niampy hetsika tamin'ny kalandriako
+email-event-updated: Manondro raha handefa fampandrenesana mailaka na tsia ny hetsika raha havaozina amin'ny kalandrie anao.
+Events updated on my calendar: Hetsika nohavaozina amin'ny kalandrie
+email-event-deleted: Manondro raha handefa fampandrenesana mailaka na tsia ny hetsika iray rehefa esorina amin'ny kalandrianao.
+Events removed from my calendar: Nesorina tamin'ny kalandrie ny hetsika
+email-event-rejected: Manondro raha handefa fampandrenesana mailaka na tsia ny mpandray anjara iray raha mandà hetsika iray amin'ny kalandrie misy anao.
+Event rejected by participant: Hetsika nolavin'ny mpandray anjara
+email-event-create: Manondro raha handray mailaka ilay namorona ny fidirana
+Event that I create: Hetsika noforoniko
+Color options: Safidy loko
+Allow user to customize colors: Avelao ny mpampiasa hanamboatra loko
+gradient-colors: Raha loko gradient azo ampiasaina no ampiasaina. Mety hisy fiatraikany lehibe amin'ny fahombiazana izany.
+Enable gradient images for background colors: Alefaso ny sary gradient ho an'ny loko ambadika
+Not available: Tsy misy
+Background Image options: Safidy sary any aoriana
+bgimage-help: URL misy sary afara tiana. Mety ho rohy mifandraika.
+Background Image: Sary afara
+bgrepeat-help: Mifehy ny fihetsika miverimberina amin'ny sary lasa.
+Background Repeat: Famerenana amin'ny laoniny
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Mpanampy
+Preferences: safidinao
+Control Panel: Takelaka fikirakirana
+Users: mpampiasa
+Account: TANTARA
+Categories: Sokajy
+Views: hevitra
+Layers: sosona
+Reports: tatitra
+Delete Events: Fafao ny fisehoan-javatra
+Activity Log: Log momba ny asa
+System Log: =
+Security Audit: Fanaraha-maso ny fiarovana
+Public Preferences: Safidim-bahoaka
+Unapproved Public Events: Hetsika tsy ankatoavin'ny besinimaro
+Administrative Tools: Fitaovana fitantanan-draharaha
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Anaran-droa: "XXX".
+Username XXX already exists.: Efa misy ny anarana mpampiasa "XXX".
+Email address XXX already exists.: Efa misy ny adiresy mailaka "XXX".
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Fanehoan-kevitra fanampiny (tsy voatery)
+Approve and Send: Manaiky ary mandefa
+Approve and Exit: Manaiky sy mivoaka
+(Your comments will be emailed to the event creator.): (Halefa mailaka amin'ny mpamorona hetsika ny hevitrao.)
+Hello, XXX.: Salama, XXX.
+XXX has approved an appointment and added comments.: Nankatoavina ny fotoana iray ary misy ny fanehoan-kevitra nataon'i XXX.
+Subject XXX: Lohahevitra: "XXX".
+Description XXX: Famaritana: "XXX".
+Date XXX: Daty: XXX
+Time XXX: Fotoana: XXX
+Comments XXX: Fanehoan-kevitra: XXX
+Approved w/Comments by XXX.: Nankatoavina tamin'ny / Fanamarihana nataon'i: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Fomba fitantanana
+Your assistants: Ireo mpanampy anao
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Hadisoana tsy fantatra.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Hadisoana amin'ny programa: Tsy misy XXX voatondro!
+user: mpampiasa
+year: TAOM-
+month: VOLANA
+day: andro
+
+########################################
+# Page: category.php
+#
+Category Icon: Kianja sokajy
+Global: FIFANDRAISAM-
+The permissions for the icons directory are set to read-only: Ny fahazoan-dàlana ho an'ny lahatahiry kisary dia apetraka amin'ny famakiana fotsiny.
+Category Name: Sokajy:
+Color: Loko
+Remove Icon: Esory ny kisary:
+Add Icon to Category: Ampio Ikona amin'ny sokajy
+Upload: fampitana
+GIF or PNG 6kb max: GIF na PNG 6kb max
+Search for existing icons: Mikaroha sary masina efa misy
+Add: hametraka
+Delete: Mamafa
+Are you sure you want to delete this entry?: Tena te hamafa ity fidirana ity tokoa ve ianao?
+Make New Category: Manaova sokajy vaovao
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Ilaina ny anaran'ny sokajy
+File size exceeds maximum.: Ny haben'ny rakitra dia mihoatra ny ambony indrindra.
+File is not a GIF or PNG image: Ny sary dia tsy sary GIF na PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: KATEGORIA AZONAO
+ENTRY CATEGORIES: KATEGORIA ENTRY
+Remove: esory
+Global Category: Sokajy manerantany
+Cancel: hanafoana
+
+########################################
+# Page: colors.php
+#
+Add Custom: Ampio Custom
+Basic Colors: Loko fototra
+Current Color: Loko ankehitriny
+Custom Colors: Loko manokana
+Old Color: Loko taloha
+
+########################################
+# Page: combo.php
+#
+Select None: Misafidiana Tsy misy
+Agenda: Fandaharam-potoana
+Add Task: Manampia lahasa
+Description: =
+Date: Daty
+Time: =
+Priority: LAHARAMPAHAMEHANA
+Access: Fidirana
+Created by: Noforonin'i
+Updated: nohavaozina
+Participants: mpandray anjara
+Attachments: kofehy mifamatotra
+Comments: Fanehoan-kevitra
+Brief Description: Famaritana fohy
+Full Description: Famaritana feno
+Category: Sokajy
+Add event detail: Manampia antsipirian'ny hetsika
+Start Date: Daty nanombohana
+Due Date: Daty farany
+Add task detail: Ampio antsipiriany momba ny lahasa
+All: rehetra
+Error: fahadisoana
+no response from server: tsy misy valiny avy amin'ny mpizara
+JSON error: Hadisoana JSON
+High: Avo
+Medium: SALASALANY
+Low: IVA
+Today: ankehitriny
+Add Entry: =
+Unnamed Event: Hetsika tsy fantatra anarana
+Unnamed Task: Asa tsy fantatra anarana
+Refresh: Mamelombelona
+Click to add entry: Kitiho raha hanampy fidirana
+Name: Anarana
+pm: hariva
+am: pm
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: Nanafoana fotoana i XXX.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Id blob tsy mety
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Manampia hevitra
+Add Attachment: Manampia Attachment
+Subject: -DAHATSORATRA
+Comment: fanehoan-kevitra
+Upload file: Ampidiro rakitra
+
+########################################
+# Page: docdel.php
+#
+Removed: nesorina
+
+########################################
+# Page: edit_entry.php
+#
+days: andro
+hours: ORA
+minutes: minitra
+You are not authorized to edit this task.: Tsy mahazo alalana hanitsy an'ity asa ity ianao.
+is in a different timezone than you are. Currently: dia amin'ny zana-potoana hafa noho ianao. Amin'izao fotoana izao
+hour ahead of you: ora mialoha anao
+hour behind you: ora aorianao
+hours ahead of you: ora mialoha anao
+hours behind you: ora ao aorianao
+XXX is in a different timezone (ahead): (XXX dia eo amin'ny zara-potoana hafa; YYY mialoha anao.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (I zzzy dia ao amin'ny zara-potoana hafa; YYY aorianao.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Ny fotoana niditra teto dia miankina amin'ny Timezone anao.
+Edit Entry: =
+Details: tsipiriany
+Repeat: Avereno
+Reminders: FAMPAHATSIAHIVAN'ANDRIAMANITRA?
+brief-description-help: Ity dia tokony hanome famaritana fohy (litera 20 eo ho eo) amin'ny hetsika. Hisolo tena ny hetsika izany rehefa mijery ny kalandrie.
+full-description-help: Tokony hameno ny antsipirian'ny hetsika izany. Ity fampahalalana ity dia azo jerena rehefa mijery ny hetsika ny mpampiasa.
+access-help: Manondro ny haavon'ny fidirana amin'ilay hetsika. <ul> <li> Public: Ny olon-drehetra dia afaka mahita ny antsipiriany feno momba ny hetsika. tsy ny antsipiriany momba azy.</li></ul>
+priority-help: Manondro ny laharam-pahamehana amin'ny hetsika. Ny fisehoan-javatra tena laharam-pahamehana dia haseho amin'ny sahisahy.
+category-help: Manondro ny sokajy ny hetsika.
+completed-help: Vita ny asa daty. Natao ihany raha 100% ny isan-jaton'ny mpandray anjara rehetra.
+Date Completed: Daty Vita
+percent-help: Ny isan-jaton'ny fahavitan'ny asa ho an'ity mpampiasa ity
+Percent Complete: Vita isan-jato
+All Percentages: Ny isan-jato rehetra
+location-help: Toerana misy ny hetsika
+Location: Toerana
+url-help: URL hetsika
+URL: =
+date-help: Manondro ny datin'ny hetsika.
+Untimed event: Hetsika tsy voarafitra
+Timed event: Hetsika ara-potoana
+All day event: Hetsika tontolo andro
+Timezone Offset: =
+time-help: Manondro ny ora nanaovana ny hetsika. <ul> <li> "Hetsika ara-potoana" (ho an'ny hetsika izay voalahatra amin'ny fotoana manokana amin'io andro io)</li> <li> "Hetsika tsy voahasa" (ho an'ny hetsika iray dia tsy manam-potoana io (toy ny fialantsasatra )</li> <li> "Hetsika tontolo andro" (ho an'ny hetsika izay mitaky ny tontolo andro (toy ny tsy hivoahan'ny birao)</li></ul>
+duration-help: Manondro ny faharetana (amin'ny ora maro; minitra) amin'ilay hetsika. <em>Ity saha ity dia azo avela foana.</em>
+end-time-help: Manondro ny fotoana antenaina hamaranana ny hetsika.
+Start Time: Fotoana fanombohana
+Due Time: Fotoana voatondro
+Site Extras: =
+avail_participants-help: Lisitry ny mpandray anjara misy an'ity fidirana ity.
+Available: =
+Find Name: Mitadiava anarana
+Resources: Harena
+participants-help: Lisitry ny mpandray anjara amin'ity fidirana ity.
+Selected: voafantina
+Availability: =
+external-participants-help: Mamaritra ny lisitry ny mpandray anjara amin'ilay hetsika izay tsy mpampiasa kalandrie. Ireo mpampiasa dia tokony tanisaina isaky ny andalana ary afaka mampiditra adiresy mailaka. Raha voalaza ny adiresy mailaka dia afaka mandray fampandrenesana sy fampahatsiahivana ny mpampiasa.
+External Participants: Mpandray anjara ivelany
+repeat-type-help: Safidio ny fotoana tokony hamerenan'ny hetsika matetika.
+Daily: Isan'andro
+Weekly: isan-kerinandro
+Monthly: Isam-bolana
+by day: amin'ny andro
+by date: amin'ny daty
+by position: amin'ny toerana
+Monthly (by day): Isam-bolana (isan'andro)
+Monthly (by date): Volana (amin'ny daty)
+Monthly (by position): Volana (amin'ny toerana)
+Yearly: isan-taona
+Manual: boky fampianarana
+Expert Mode: Mode ho an'ny manam-pahaizana
+repeat-end-date-help: Mamaritra ny daty tokony hamerenan'ny hetsika hatramin'ny.
+Ending: ampy
+Forever: MANDRAKIZAY
+Use end date: Mampiasà daty famaranana
+Number of times: Isan'ny fotoana
+repeat-frequency-help: Mamaritra ny fotoana tokony hamerenan'ny hetsika matetika.
+Frequency: hatetika
+Weekdays Only: Amin'ny herinandro ihany
+Week Start: Fanombohana herinandro
+repeat-bydayextended-help: Ahafahana mifantina daty mifototra amin'ny andro isan-kerinandro.
+ByDay: =
+repeat-month-help: Mamaritra izay volana tokony averina amin'ilay hetsika.
+ByMonth: =
+repeat-bysetpos-help: Mamela ny fisafidianana daty miorina amin'ny toerana misy ny volana.
+BySetPos: =
+repeat-bymonthdayextended-help: Ahafahana mifantina daty mifototra amin'ny daty.
+ByMonthDay: =
+repeat-byweekno-help: Ahafahan'ny mpampiasa mamaritra lisitra herinandro hamerenany hetsika (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Ahafahan'ny mpampiasa mamaritra lisitr'ireo taona iray hamerenany hetsika (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Andro fanampiny izay tokony hisehoan'ity hetsika ity na tsia.
+Exclusions: Fanilihana
+Inclusions: Fampidirana
+Add Exception: =
+Add Inclusion: Ampio fampidirana
+Delete Selected: Fafao voafantina
+Send Reminder: Mandefa fampahatsiahivana
+When: Rahoviana
+Use Date/Time: Mampiasà daty / ora
+Use Offset: Mampiasà Offset
+Before: Talohan'ny
+After: rehefa
+Start: fanombohana
+End/Due: Tapitra / Tokony horaisina
+Times: fotoana
+Every: rehetra
+CAPTCHA Warning: Fampitandremana:  Tsy afaka mampiasa CAPTCHA raha tsy misy extension GD an'i PHP!<br>
+Delete entry: Fafao ny fidirana
+You are not authorized to edit this entry.: Tsy mahazo alalana hanitsy an'ity fidirana ity ianao.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX dia nanao fotoana vaovao.
+XXX has updated an appointment.: Nanavao fotoana i XXX.
+Security violation!: Fanitsakitsahana ny filaminana!
+You must enter the anti-spam text on the previous page.: Tsy maintsy ampidirinao amin'ny pejy teo aloha ny lahatsoratra manohitra ny spam.
+The following conflicts with the suggested time: Ireto manaraka ireto dia mifanohitra amin'ny fotoana natolotra
+User removed from participants list.: Nesorina tamin'ny lisitry ny mpandray anjara ny mpampiasa.
+Please look on XXX to accept or reject this appointment.: Azafady zahao amin'ny XXX raha hanaiky na handà io fotoana io.
+Please look on XXX to view this appointment.: Azafady mba jereo amin'ny XXX raha hijery ity fotoana nifanarahana ity.
+Scheduling Conflict: Fifandonana amin'ny fandaharam-potoana
+Your suggested time of: Ny fotoana narosonao momba ny
+conflicts with the following existing calendar entries: fifanoherana amin'ireto fidirana kalandrie manaraka ireto
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX dia tsy napetraka ao amin'ny "config.php".
+word characters only: (tsy misy afa-tsy litera teny; [a-zA-Z_0-9])
+Add User: Ampio Mpampiasa
+Edit User: Amboary ny mpampiasa
+Calendar ID: ID amin'ny kalandrie
+First Name: Fanampin'anarana
+Last Name: Anarana
+Is public calendar: Kalandrie ampahibemaso
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Hadisoana amin'ny data
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Manampia kalandrie lavitra
+Edit Remote Calendar: Amboary ny kalandrie lavitra
+Create Layer: Mamorona Layer
+Reload: =
+Required to View Remote Calendar: Ilaina ny mijery kalandrie lavitra
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Valim-panafarana
+Events successfully imported: Fampidinana soa aman-tsara ny hetsika
+Create a new layer to view this calendar.: Mamorona sosona vaovao hijerena ity kalandrie ity.
+Errors: fahadisoana
+There was an error parsing the import file or no events were returned.: Nisy lesoka tamin'ny famaritana ny rakitra fanafarana na tsy nisy hetsika naverina.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: rahampitso
+Yesterday: Omaly
+Day before yesterday: Androany omaly
+Next week: Amin'ny herinandro ambony
+This week: Ity herinandro ity
+Last week: Tamin'ny herinandro lasa
+Week before last: Herinandro alohan'ny farany
+Next week and week after: Amin'ny herinandro sy herinandro manaraka
+This week and next week: Amin'ity herinandro ity sy amin'ny herinandro manaraka
+Last week and this week: Tamin'ny herinandro lasa sy tamin'ity herinandro ity
+Last two weeks: Roa herinandro lasa izay
+Next month: Amin'ny volana manaraka
+This month: Ity volana ity
+Last month: Volana lasa
+Month before last: Volana talohan'ny farany
+Next year: Amin'ny herintaona
+This year: Ity taona ity
+Last year: Taona lasa
+Year before last: Taona talohan'ny farany
+Next 14 days: 14 andro manaraka
+Next 30 days: 30 andro manaraka
+Next 60 days: 60 andro manaraka
+Next 90 days: 90 andro manaraka
+Next 180 days: 180 andro manaraka
+Next 365 days: 365 andro manaraka
+Invalid report id XXX.: Id tatitra tsy mety: "XXX".
+Unnamed Report: Tatitra tsy fantatra anarana
+Add Report: Manampia tatitra
+Edit Report: Amboary ny tatitra
+Report name: Anaran'ny tatitra
+User: Mpampiasa
+Current User: Mpampiasa ankehitriny
+Include link in menu: Ampidiro ao anaty menio ny rohy
+Include standard header/trailer: Ampidiro lohapeo / tranofiara mahazatra
+Include previous/next links: Ampidiro ny rohy taloha / manaraka
+Include empty dates: Ampidiro ireo daty tsy misy
+Date range: Datin'ny daty
+Template variables: Miova endrika
+Page template: Modely pejy
+Day template: Day modely
+Event template: Modely hetsika
+Are you sure you want to delete this report?: Tena te hamafa ity tatitra ity ve ianao?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Tsy misy izany tatitra izany: "XXX".
+Variable XXX not found.: XXX tsy hita.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Amboary ny lohateny manokana
+Edit Custom Script/Stylesheet: Amboary ny script / style Styles
+Edit Custom Trailer: Amboary ny tranofiara manokana
+
+########################################
+# Page: edit_user.php
+#
+Username: Anaran'ny mpampiasa
+E-mail address: Adiresy mailaka
+Password: =
+again: indray
+Disabled for demo: Tsy mandeha amin'ny demo
+Are you sure you want to delete this user?: Tena te hamafa ity mpampiasa ity ve ianao?
+Change Password: Hanova tenimiafina
+New Password: Tenimiafina vaovao
+Set Password: Mametraha tenimiafina
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Famafana ireo mpampiasa tsy tohanana.
+The passwords were not identical.: Tsy nitovy ny teny miafina.
+You have not entered a password.: Tsy niditra tenimiafina ianao.
+Username cannot be blank.: Ny mpampiasa anarana dia tsy tokony ho banga.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Tsy nahazo alalana
+
+########################################
+# Page: export.php
+#
+Export: fanondranana
+Export format: Format fanondranana
+Include all layers: Ampidiro ny sosona rehetra
+Include deleted entries: Ampidiro ireo fidirana voafafa
+Export all dates: Aondraho ny daty rehetra
+Start date: Daty nanombohana
+End date: Daty famaranana
+Modified since: Novaina nanomboka
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: endrika voafaritra tsy voafaritra na diso.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Tsy misy mpampiasa voatondro.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Manampy vondrona vaovao
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Vondrona tsy fantatra anarana
+Add Group: =
+Edit Group: Hanitsy vondrona
+Group name: Anaran'ny vondrona
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Tsy maintsy mamaritra anaran'ny vondrona ianao
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Avereno jerena ny tetiandro
+auto-refresh-help: Rehefa alefa, ny fijery ny andro, ny fahitana herinandro, ny fahitana volana ary ny lisitra ireo pejy tsy nankatoavina dia hamelombelona ny tenany avy hatrany.
+Auto-refresh time: Fotoana famelomana aina avy hatrany
+auto-refresh-time-help: Raha alefa ny famelombelona Auto, dia mamaritra ny fotoana anelanelan'ny famelomana.
+Display days with events in bold in year view: Asehoy ny andro misy fisehoan-javatra aseho amin'ny sahy amin'ny taona
+Display weekends in week view: Asehoy ny faran'ny herinandro amin'ny fahitana ny herinandro
+Time interval: Elanelam-potoana
+time-interval-help: Manondro ny halavan'ny fotoana hanakanana ny fahitana amin'ny herinandro sy ny fahitana ny andro.
+Nonuser: Alimanaka Nonuser
+user-customize-color: Manondro raha mahazo manova ny volon-doko misy azy ireo ny mpampiasa.
+enable-gradient-help: Mampiasà loko gradient ho an'ny fiaviana sela.
+Manually entering color values: Mampiditra sanda miloko amin'ny tanana
+colors-help: Ny loko rehetra dia tokony hamafisina amin'ny endrika hexadecimal "#RRGGBB" izay ny "RR" dia hex hex ho an'ny mena, "GG" no hex hex for green, ary "BB" no hex hex for blue.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Hampandre Bug
+Please include all the information below when reporting a bug.: Ampidiro azafady ny fampahalalana rehetra etsy ambany rehefa mitatitra bug.
+Also, please use English rather than XXX.: Ary koa, azafady mba ampiasao ny  Anglisy  fa tsy XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: =
+Currently in English only.: Amin'ny teny anglisy ihany izao.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Manampy / Manitsy ny firaketana ny kalandrie
+Repeat Type: Famerenana karazana
+For More Information...: Raha mila fanazavana fanampiny ...
+Repeat End Date: Avereno daty famaranana
+Repeat Day: Andro famerenana
+repeat-day-help: Manondro izay andro amin'ny herinandro tokony averina ny hetsika.
+
+########################################
+# Page: help_import.php
+#
+Import: =
+Palm Desktop: Desktop Palm
+allow you to import entries from the Palm...: Ity takelaka ity dia hahafahanao manafatra fidirana avy amin'ny Palm Desktop Datebook. Tokony ho hita ao amin'ny lahatahiry Palm ao amin'ny datebook / datebook.dat ao amin'ny subdirectory iray nomena ny anaranao.
+The following entries will not be imported: Ireto manaraka ireto dia tsy hafarana:
+Entries older than the current date: Ny fisoratana anarana dia antitra noho ny daty ankehitriny
+Entries created in the Palm Desktop...: Entries noforonina tao amin'ny Palm Desktop izay tsy HotSync'd
+Anything imported from Palm...: Izay nafarana avy tany Palm dia hosoratana mandritra ny fanafarana manaraka (raha tsy efa lany ny datin'ny hetsika). Noho izany, ny fanavaozana dia tokony hatao ao amin'ny Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Ity takelaka ity dia hanafatra hetsika vCalendar (.vcs) 1.0.
+The following formats have been tested: Ireto endrika manaraka ireto dia notsapaina:
+This form will import iCalendar (.ics) events.: Ity takelaka ity dia hanafatra hetsika iCalendar (.ics).
+Enabling: manome fahafahana
+Overwrite Prior Import: Overwrite Import aloha
+will cause events imported previously...: hiteraka fisehoan-javatra nafarana teo aloha, izay nampiasa ny UID ho toy ny hetsika iray avy amin'ilay fisie fanafarana vaovao, ho marihina fa voafafa. Io dia tokony hamela rakitra iCalendar nohavaozina hafarana nefa tsy mamorona kopia.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Fanondroana fanampiana
+About WebCalendar: Momba ny WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Ilaina ny sosona hanehoana ny fihetsiky ny mpampiasa hafa amin'ny kalandrianao. Azonao atao ny manondro ny mpampiasa sy ny loko hiseho ny hetsika.
+Add/Edit/Delete: Manampia / Manova / mamafa
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Ny fipihana ny rohy Edit Layers ao amin'ny faritra admin eo ambanin'ny pejy dia ahafahanao manampy / manova / mamafa ireo sosona.
+The text color of the new layer that will be displayed in your calendar.: Ny lokon'ny soratra amin'ny sosona vaovao izay haseho ao amin'ny kalandrianao.
+Disabling: Mampandeha
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Tsindrio ny rohy Disable Layers ao amin'ny fizarana admin eo ambanin'ny pejy mba hamono ireo sosona.
+Duplicates: ny mitovy aminy
+If checked, events that are duplicates of your events will be shown.: Raha voamarina dia hiseho ireo fisehoan-javatra izay dika mitovy amin'ny hetsika nataonao.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Tsindrio ny rohy Enable Layers ao amin'ny fizarana admin eo ambanin'ny pejy mba hamelomana ireo sosona.
+Source: =
+Specifies the user that you would like to see displayed in your calendar.: Manondro ny mpampiasa tianao ho hita eo amin'ny kalandrie.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Sokajy default
+default-category-help: Manondro ny sokajy hetsika vaovao tokony hatao default.
+When I am the boss: Rehefa izaho no sefo
+Email me event notification: Alefaso imailaka amiko ny fampandrenesana ny hetsika
+email-boss-notifications-help: Manondro raha mahazo mailaka ho fampandrenesana hetsika ireo lehibeny.
+I want to approve events: Te hankasitraka hetsika aho
+boss-approve-event-help: Manondro raha toa ka takiana amin'ny talen'ny hetsika ny hetsika ampiana mpanampy.
+Subscribe/Publish: Misoratra anarana / Mamoaka
+Allow remote publishing: Avelao ny famoahana lavitra
+allow-remote-publishing-help: Manondro raha afaka mamoaka hetsika miverina amin'ny WebCalendar ny mpanjifa iCal lavitra
+remote-publishing-url-help: Mampiseho ny URL hampiasaina amin'ny fangatahana mpanjifa iCal ho an'ny fisoratana anarana sy famoahana miverina amin'ny WebCalendar.
+allow-remote-subscriptions-help: Manondro raha afaka misoratra anarana amin'ny kalandrie ny mpampiasa lavitra, mamela azy ireo hahita ny zava-mitrangao amin'ny fampiharana iCal (toy ny Apple's iCal na Mozilla Calendar).
+remote-subscriptions-url-help: Mampiseho ny mpampiasa URL lavitra tokony hampiasaina hisoratra anarana amin'ny kalandrie anao.
+Enable FreeBusy publishing: Alefaso ny famoahana FreeBusy
+freebusy-enabled-help: Manondro raha misy fotoana mety ahazoan'ny mpampiasa mampiasa ny fenitra iCal FreeBusy.
+freebusy-url-help: Ny URL amin'ny fidirana amin'ny lisitry ny FreeBusy an'ny mpampiasa
+rss-feed-url-help: Ny URL hiditra amin'ny RSS feed
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Ahafahana mifehy tsara ny fidiran'ny mpampiasa sy ny alalana. Ireo mpampiasa koa dia afaka manome alalana alalana sy isaky ny olona raha omen'ny tompon'andraikitra fahefana.
+If disabled, this user cannot send you emails.: Raha sembana dia tsy afaka mandefa mailaka aminao ity mpampiasa ity.
+If disabled, this user cannot see you in the participants list.: Raha sembana dia tsy afaka mahita anao ao amin'ny lisitry ny mpandray anjara ity mpampiasa ity.
+If enabled, this user cannot view the details of any of your entries.: Raha azo atao, dia tsy afaka mijery ny antsipirian'ny fampidiranao ity mpampiasa ity.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Voarara ny famoahana (Admin)
+Publishing Disabled (User): Voarara ny famoahana (mpampiasa)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Tsindrio raha hisafidy
+Current Icons on Server: Icon amin'izao fotoana izao amin'ny Server
+
+########################################
+# Page: import.php
+#
+import from file: manafatra avy amin'ny rakitra
+Disabled: sembana
+Import format: Manafatra endrika
+Exclude private records: Tsy manilika firaketana manokana
+Repeated items are imported separately. Prior imports are not overwritten.: Ny entana miverimberina dia ampidirina misaraka. Ny imports taloha dia tsy hosoratana.
+
+########################################
+# Page: import_handler.php
+#
+No file: Tsy misy rakitra
+Error deleting palm events from webcalendar.: Hadisoana ny fanesorana ireo hetsika palmie avy amin'ny webcalendar.
+Events from prior import marked as deleted: Ny hetsika tamin'ny fanafarana teo aloha dia voamarika fa voafafa
+Conflicting events: Hetsika mifanipaka
+The import file contained no data.: Ny rakitra manafatra dia tsy misy data.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Tena te hamafa an'ity sosona ity ve ianao?
+Delete layer: Fafao ny sosona
+Edit layer: Hanova sosona
+Enable layers: Alefaso ny sosona
+Layer: sosona
+Layers are currently disabled.: Tsy mandeha izao ny sosona.
+Layers are currently enabled.: Azo ampiasaina izao ny sosona.
+Click to modify layers settings for XXX: Tsindrio eto raha hanova ny toe-javatra ao amin'ny kalandrie XXX.
+Disable Layers: Atsaharo ny sosona
+Add layer: Manampia sosona
+Add Layer: Ampio Layer
+Edit Layer: Hanova Layer
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Tsy afaka manavao ny safidinao
+Invalid entry id.: Id fidirana tsy mety.
+You cannot create a layer for yourself.: Tsy afaka mamorona sosona ho anao ianao.
+You can only create one layer for each user.: Tsy afaka mamorona sosona iray isaky ny mpampiasa ianao.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Manaiky / Manamafy
+Approve Selected: Manaiky voafidy
+Check All: Zahao daholo
+Emails Will Not Be Sent: Tsy halefa ny mailaka
+Reject Selected: Mandà voafidy
+Reject: mandà
+Uncheck All: Hamafana daholo
+View this entry: Jereo ity fidirana ity
+No unapproved entries for XXX.: Tsy misy fidirana tsy ekena ho an'ny: "XXX".
+Unapproved Entries: Entries tsy nankatoavina
+Approve this entry?: Ekena ity fidirana ity?
+Reject this entry?: Lavina ity fidirana ity?
+Approve Selected entries?: Manaiky ny fidirana voafantina?
+Reject Selected entries?: Mandà ny fidirana voafantina?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Tsy maintsy miditra fidirana sy teny miafina ianao.
+Save login via cookies so I dont have to login next time.: Tehirizo ny fidirana amin'ny alàlan'ny cookies fa tsy mila miditra intsony aho amin'ny manaraka
+Login: Hiditra
+public: -bahoaka
+Access XXX calendar: Midira amin'ny kalandrie XXX
+cookies-note: Fanamarihana: Ity rindrambaiko ity dia mila alefa ny cookies.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Karakter tsy ara-dalàna amin'ny fidirana XXX.
+Invalid login: Fidirana tsy mety
+Activity login failure: =
+Error XXX: Hadisoana: "XXX".
+You have been logged out.: Navoaka ianao.
+Access public calendar: Midira amin'ny kalandrie ampahibemaso
+Not yet registered? Register here!: Tsy mbola nisoratra anarana? Misoratra anarana eto!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Tsy misy kalandrie tsy ampiasaina: "XXX".
+This Calendar is not Public.: Ity kalandrie ity dia tsy ampahibemaso.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Manampia Kalandrie NonUser Vaovao
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Ny fidirana dia tsy maintsy faritana.
+No such nonuser calendar: Tsy misy kalandrie tsy ampiasana toy izany
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Lohahevitra tsy mety
+Save Preferences: Tehirizo Préférences
+Public Access calendar: Tetiandro Access Public
+Modify Non User Calendar Preferences: Ovao ny safidin'ny kalandrie tsy an'ny mpampiasa
+Return to My Preferences: Hiverina any amin'ny safidiko
+Custom Scripts: Skrip manokana
+Timezone Selection: Selection timezone
+Multiview: =
+entry-interval-help: Mametraka elanelam-potoana minitra rehefa manitsy ny ora fidirana
+Entry interval: Elanelana fidirana
+hour: ora
+minute: minitra
+theme-reload-help: Noho ny cache CSS dia mety ilaina ny famerenana pejy
+Page may need to be reloaded for new Theme to take effect: Ny pejy dia mety mila averina alefa indray mba hahomby ny Tema vaovao
+display_byproxy-help: Asehoy ny tena mpamorona amin'ny pejy view_entry
+Display if created by Assistant: Asehoy raha noforonin'i Assistant
+allow-view-subscriptions-help: Mamela ny fameperana ny fidirana lavitra amin'ireo fidirana manokana na tsiambaratelo
+Allow remote viewing of: Avelao hijerena lavitra ny
+entries: anglisy
+
+########################################
+# Page: purge.php
+#
+Purging events for: Fanadiovana hetsika ho an'ny
+Finished: vita
+Back: indray
+Check box to delete ALL events for a user: Zahao boaty raha hamafana hetsika  REHETRA »ho an'ny mpampiasa
+Delete all events before: Fafao ny hetsika rehetra taloha
+Purge deleted only: Ny fanadiovana dia voafafa fotsiny
+Preview delete: Preview hamafa
+Are you sure you want to delete events for: Azonao antoka ve fa te hamafa hetsika ianao
+Records deleted from XXX: Voafafa tamin'ny "XXX" ny firaketana.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Tsy tokony ho foana ny adiresy mailaka.
+Username already exists.: Efa misy ny anarana mpampiasa.
+Email address already exists.: Efa misy ny adiresy mailaka.
+New user via self-registration.: Mpampiasa vaovao amin'ny alàlan'ny fisoratana anarana.
+A new WebCalendar account has been set up for you.: Kaonty WebCalendar vaovao no natsangana ho anao.
+Your username is XXX.: Ny anaranao dia: "XXX".
+Your password is XXX.: Ny tenimiafinao dia: "XXX".
+Please visit XXX to log in and start using your account!: Tsidiho azafady ny "XXX" raha hiditra ary manomboka mampiasa ny kaontinao!
+You may change your password after logging in the first time.: Azonao atao ny manova ny tenimiafinao aorian'ny nidiranao voalohany.
+If you received this email in error: Raha sendra nandiso ity mailaka ity ianao ary tsy nanao sonia kaonty WebCalendar dia azonao atao ny tsy miraharaha io fampandrenesana io, na mamaly amin'ny fanamarihana fohy
+Administrator: mpandrindra
+Welcome: tonga soa
+New user via email.: Mpampiasa vaovao amin'ny alàlan'ny mailaka.
+Registration: fisoratana anarana
+Welcome to WebCalendar: Tongasoa eto amin'ny WebCalendar
+Your email should arrive shortly.: Tokony ho tonga vetivety ny mailakao.
+Return to Login screen: Miverina amin'ny efijery Login
+Password (again): Teny miafina (indray):
+Your account information will be emailed to you.: Halefa mailaka aminao ny mombamomba ny kaontinao.
+Submit: manaiky
+
+########################################
+# Page: reject_entry.php
+#
+Continue: hanohy
+(Your comments will be emailed to the other participants.): (Halefa imailaka amin'ireo mpandray anjara hafa ny hevitrao.)
+XXX has rejected an appointment.: Nolavin'i XXX ny fotoana nifanarahana.
+Rejected by XXX.: Nolavin'i XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Manampia Kalandrie lavitra vaovao
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Tsiambaratelo ity hetsika ity.
+(Private): =
+(cont.): =
+Approved: nankatoavina
+Deleted: nofafana
+Rejected: TSY
+Waiting for approval: Miandry ny fankatoavana
+Unknown: TSY FANTATRA
+Invalid report id.: Id an'ny tatitra tsy mety.
+Click here to manage reports for the Public Access calendar.: Tsindrio eto raha hitantana ny tatitra momba ny kalandrie Access Public.
+Add new report: Manampia tatitra vaovao
+Manage Reports: Tantano ny tatitra
+
+########################################
+# Page: search.php
+#
+Advanced Search: Fikarohana mandroso
+Search: karohy
+Keywords: teny fanalahidy
+Enter % for all entries: Ampidiro ny% ho an'ny fidirana rehetra
+Include: ahitana
+Filter by Date: Sivanina amin'ny daty
+All Dates: Daty rehetra
+Past: lasa
+Upcoming: ho avy
+Range: isan-karazany
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Tokony hiditra teny fanalahidy fikarohana iray na maromaro ianao.
+Search Results: Valin'ny fikarohana
+match found: lalao hita
+matches found: lalao hita
+No matches found: Tsy hita ny lalao
+New Search: Fikarohana Vaovao
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Ny fampahalalana etsy ambany dia mitanisa ireo olana mety hitranga amin'ny fametrahana WebCalendar anao izay azo ovaina mba hahatonga ny fametrahana anao ho azo antoka kokoa.
+For questions about WebCalendar security see the forums: Raha te hanontany momba izay olana ara-piarovana WebCalendar dia mba ampiasao azafady ireo forum WebCalendar atsangana amin'ny GitHub.com;<br>XXX
+View your current PHP settings: Jereo ny fikiranao PHP ankehitriny
+Security Issue: Olana momba ny fiarovana
+Status: sata
+Default admin user password: Tenimiafina mpampiasa admin default
+You should change the password of the default admin user.: Tokony hanova ny teny miafin'ny mpampiasa admin default ianao.
+File permissions XXX: Fahazoan-dàlana fisie: XXX
+item XXX should not be writable: Ity entana manaraka ity dia tsy tokony hosoratana:<br><tt> XXX</tt>
+File exists XXX: Misy ny fisie: "XXX"
+Because you have email disabled, you should remove this file.: Noho ianao manana kilema mailaka dia tokony hesorinao io rakitra io.
+File location XXX: Toerana fisie: "XXX"
+remove XXX if not using: Raha tsy mampiasa rakitra "XXX" ianao dia tokony hamafana azy. Na, farafaharatsiny, afindra amin'ny lahatahiry vaovao.
+System Settings XXX: Fikirana rafitra: "XXX"
+consider enabling UAC: Azonao atao ny mieritreritra ny mamela ny User Access Control hametraka ny tombotsoan'ny mpampiasa.
+recommend approving new public events: Manoro hevitra anay izahay mba hankatoavina ny fandefasana hetsika ampahibemaso rehetra.
+recommend using CAPTCHA: CAPTCHA dia asaina hiambina indray amin'ny fandefasana hetsika mandeha ho azy.
+Database cache directory location: Toerana lahatahiry cache cache data
+db cache should be inaccessable: Ny cache database dia tokony ao anaty lahatahiry izay tsy azo idirana amin'ny URL.
+PHP Settings XXX: Fikirana PHP: "XXX"
+recommend setting XXX Off: Tapitra ny toerana natokana ho an'ny "XXX".
+recommend setting allow_url_fopen Off: Ny toerana natokana ho an'ny "allow_url_fopen" dia Paty rehefa tsy alefa ny kalandrie lavitra.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Jereo ny Kalandrie ho an'ny mpampiasa iray hafa
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Tsy nanampy sokajy ianao.
+Set Category: Mametraka sokajy
+Global Categories cannot be changed.: Ny sokajy manerantany dia tsy azo ovaina.
+
+########################################
+# Page: upcoming.php
+#
+more: Bebe kokoa
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Alimanaka lavitra
+denotes administrative user: midika hoe mpampiasa fitantanan-draharaha
+Add New User: Manampia Mpampiasa Vaovao
+
+########################################
+# Page: usersel.php
+#
+form: teny
+Reset: Mamerina
+
+########################################
+# Page: views.php
+#
+Add New View: Manampia fomba fijery vaovao
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Fijery tsy fantatra anarana
+Add View: Manampia View
+Edit View: Amboary ny fijery
+View Name: Jereo ny anarana
+View Type: Karazan-jery
+Day by Time: Isan'andro
+Week (Users horizontal): Herinandro (marindrano ny mpampiasa)
+Week by Time: Isaky ny herinandro
+Week (Users vertical): Herinandro (mitsangana ny mpampiasa)
+Week (Timebar): Herinandro (Timebar)
+Month (Timebar): Volana (Timebar)
+Month (side by side): Volana (mifanila)
+Month (on same calendar): Volana (amin'ny kalandrie mitovy)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Tsy maintsy mamaritra anarana hijerena ianao
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Tsy misy mpampiasa momba an'io fomba fijery io.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Fanavaozana ny isan-jaton'ny asa
+Completed: vita ny
+Assistant mode: Mode mpanampy
+Declined: tsy nety
+Needs-Action: Mila atao
+by: ny
+Percentage Complete: Vita ny isan-jato
+External User: Mpampiasa ivelany
+Update: vaovao farany
+at: amin'ny
+comments: hevitra
+Show: FAMPISEHOANA
+Hide: afeno ny
+Approve/Confirm entry: Manaiky / Manamafy ny fidirana
+Reject entry: Mandà ny fidirana
+Set category: Mametraka sokajy
+Add to My Calendar: Ampio amin'ny Kalandrieko
+Copy entry: Fandraisana anjara
+This will delete this entry for all users.: Hamafana ity fidirana ity ho an'ny mpampiasa rehetra ity.
+Edit entry: Amboary ny fidirana
+Edit repeating entry for all dates: Amboary ny fidirana miverimberina amin'ny daty rehetra
+Delete repeating event for all dates: Fafao ny hetsika miverimberina amin'ny daty rehetra
+Edit entry for this date: Amboary ny fidirana amin'ity daty ity
+Delete entry only for this date: Hamafana ny fidirana raha tsy amin'ity daty ity ihany
+Delete entry from calendar of XXX: Fafao ny fidirana avy amin'ny kalandrie XXX
+This will delete the entry from your XXX calendar.: Hamafana ny fidirana ao amin'ny kalandrie XXX anao ity.
+boss: sefo '
+This will delete the entry from your boss calendar.: Hamafana ny fidirana ao amin'ny kalandrie lehiben'ity ianao.
+This will delete the entry from your calendar.: Hamafana ny fidirana ao amin'ny kalandrianao izany.
+from your boss calendar: avy amin'ny kalandrie an'ny lehibenao
+Do you want to add this entry to your calendar?: Te hampiditra an'ity fidirana ity amin'ny kalandrianao ve ianao?
+This will add the entry to your calendar.: Hanampy ny fidirana ao amin'ny kalandrianao izany.
+Email all participants: Alefaso imailaka ny mpandray anjara rehetra
+Hide activity log: Afeno ny lisitry ny hetsika
+Show activity log: Asehoy ny diary hetsika
+Export this entry to: Alefaso ity fidirana ity amin'ny
+Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Tsindrio indroa ny sela foana raha te hampiditra fidirana vaovao.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Entry Vaovao
+cont.: =
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Kalandrie ho an'ny mpampiasa iray hafa
+Category Management: =
+Day View: Fijery andro
+Edit Event: Hanova hetsika
+Month View: Fijery volana
+Common Trailer: Sarimihetsika mahazatra
+User Management: =
+Manage Views: Tantano ny fahitana
+Week View: Fijerena herinandro
+Year View: Taona fahitana
+Invalid function id: Id fiasa tsy mety
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Tsy nahita ny rakitra "setting.php".<br>Azafady adika ny "setting.php.orig" mankany "setting.php" ary ovao ny tranokalanao.
+Incomplete settings.php file...: Tsy feno ny rakitra "setting.php" ...
+Could not find XXX defined in...: Tsy nahita "XXX" voafaritra ao anaty rakitra "setting.php".
+You must define XXX in: Tokony faritanao ny "XXX" ao amin'ny fisie "setting.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Desambra
+Dec: Dec.
+LANGUAGE DEFINED: Famaritana ny fiteny
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Hadisoana amin'ny fampifandraisana amin'ny base data: "XXX".
+db_type not defined.: db_type tsy voafaritra.
+invalid db_type XXX: db_type tsy mety "" XXX ".
+Cache cleared from previous SQL!: Nesorina tamin'ny cache Sache ny cache taloha!
+Error executing query.: Hadisoana amin'ny fanatanterahana ny fangatahana.
+Unfortunately, XXX is not implemented for YYY: Mampalahelo fa "XXX" dia tsy ampiharina amin'ny (YYY).
+Unknown ODBC error.: Hadisoana ODBC tsy fantatra.
+Error opening cache dir XXX.: Hadisoana amin'ny fanokafana cache dir "XXX".
+delete: hamafa
+Cache error Could not XXX file YYY.: Hadisoana amin'ny cache: Tsy afaka nametraka "YYY" XXX.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fahadisoana mahafaty
+Invalid data format for: Format data tsy mety ho an'ny
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Hadisoana: tsy napetraka ny log ho an'ny hetsika!
+This event is XXX.: Ity hetsika ity dia XXX.
+Conf.: =
+exceeds limit of XXX events per day: mihoatra ny fetran'ny hetsika XXX isan'andro
+on: amin'ny
+All Attendees: Mpanatrika rehetra
+Busy: Be asa
+Tentative: Andrana
+Schedule an appointment for XXX.: Manome fotoana fanendrena ho an'i XXX: YYY.
+date_select: =
+Event approved: Nekena ny hetsika
+Journal approved: Nankatoavina ny gazety
+Task approved: Nankatoavina ny lahasa
+Attachment: miraiki-po
+Event created: Hetsika noforonina
+Journal created: Gazety noforonina
+Task created: Noforonina ny lahasa
+Event deleted: Voafafa ny hetsika
+Journal deleted: Voafafa ny diary
+Task deleted: Voafafa ny lahasa
+New user via email (self registration): Mpampiasa vaovao amin'ny alàlan'ny mailaka (fisoratana anarana)
+New user (self registration): Mpampiasa vaovao (fisoratana anarana)
+Notification sent: Nandefasana fampandrenesana
+Event rejected: Nolavina ny hetsika
+Journal rejected: Nolavina ny gazety
+Task rejected: Nolavina ny lahasa
+Reminder sent: Fampahatsiahivana nalefa
+Event updated: Nohavaozina ny hetsika
+Journal updated: Nohavaozina ny diary
+Task updated: Nohavaozina ny lahasa
+Delete User: Fafao ny mpampiasa
+WK: =
+TASKS: asa
+Task_Title: lohateny
+Due: noho
+Task Name: Anaran'ny asa
+Task Due Date: Daty voatondro ho an'ny asa
+You have XXX unapproved entries: Manana fidirana XXX tsy nankatoavina ianao 
+Changes successfully saved: Voatahiry soa aman-tsara ny fanovana
+Event: Hetsika
+Action: Hetsika
+Printer Friendly: Sariaka amin'ny mpanonta
+Generate printer-friendly version: Miteraha kinova-pirinty
+after: rehefa
+before: alohan'ny
+end: tapitra
+start: fanombohana
+View this event: Jereo ity hetsika ity
+View this task: Jereo ity asa ity
+January: Janoary
+February: février
+March: ny diabe
+April: Aprily
+May_: MEY
+June: Jona
+July: Jolay
+August: Aogositra
+September: septembre
+October: Oktobra
+November: Novambra
+Jan: Janoary
+Feb: Peb
+Mar: =
+Apr: Jul
+May: MEY
+Jun: =
+Jul: =
+Aug: Aog
+Sep: =
+Oct: nov
+Nov: oct
+SU: =
+MO: =
+TU: =
+WE: iSIKA
+TH: faha
+FR: en
+SA: =
+unknown-month: tsy fantatra volana
+First Quarter Moon: Volana volana voalohany
+Full Moon: Diavolana
+Last Quarter Moon: Volana Quarter farany
+New Moon: Volana Vaovao
+Error TIME_SLOTS undefined!: Hadisoana: TIME_SLOTS tsy voafaritra!
+The following error occurred: Ity lesoka manaraka ity dia nitranga
+You are not authorized.: Tsy mahazo alalana ianao.
+Add N hours to: Ampio ora N ny
+Subtract N hours from: Esory ny ora N avy
+same as: mitovy amin'ny
+server time: fotoana mpizara
+Cannot read timezone file XXX.: Tsy afaka mamaky rakitra zana-potoana: XXX.
+Your current GMT offset is XXX hours.: Ny offset GMT anao izao dia XXX ora.
+Unauthorized: tsy nahazoan-dalana
+Error approving event XXX.: Fahadisoana amin'ny fankatoavana hetsika: XXX.
+Error deleting event XXX.: Fahadisoana amin'ny famafana hetsika: XXX.
+Error rejecting event XXX.: Hadisoana amin'ny fandavana hetsika: XXX.
+Sunday: ALAHADY
+Monday: alatsinainy
+Tuesday: talata
+Wednesday: Alarobia
+Thursday: Alakamisy
+Friday: ZOMA
+Saturday: Asabotsy
+Sun: Masoandro
+Mon: =
+Tue: =
+Wed: Talata
+Thu: =
+Fri: Thu
+Sat: Sab
+unknown-weekday: andro tsy fantatra
+Invalid referring URL: URL manondro tsy mety
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Fanondroana
+Documentation: tahirin-kevitra
+Page: Pejy
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Ny Kalandrie
+Add New Entry: Add Entry Vaovao
+Add New Task: Manampia Asa Vaovao
+Logout: Miala
+Home: an-trano
+Back to My Calendar: Miverina amin'ny Kalandrie
+Go to: Mandeha
+Manage calendar of: Tantano ny kalandrie an'ny
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Tsy hita ny fitenenana
+(not supported): (tsy zaka)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: lavitra
+Afrihili: =
+Afrikaans: =
+Ainu: =
+Akan: =
+Akkadian: akadianina
+Albanian: albaney
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (atsimo)
+Amharic: =
+Angika: =
+Apache: =
+Arabic (Algeria): Arabo (Alzeria)
+Arabic (Bahrain): Arabo (Bahrain)
+Arabic (Egypt): Arabo (Egypt)
+Arabic (Iraq): Arabo (Irak)
+Arabic (Jordan): Arabo (Jordania)
+Arabic (Kuwait): Arabo (Koety)
+Arabic (Lebanon): Arabo (Libanona)
+Arabic (Libya): Arabo (Libya)
+Arabic (Morocco): Arabo (Maraoka)
+Arabic (Oman): Arabo (Oman)
+Arabic (Qatar): Arabo (Qatar)
+Arabic (Saudi Arabia): Arabo (Arabia Saodita)
+Arabic (Syria): Arabo (Syria)
+Arabic (Tunisia): Arabo (Tonizia)
+Arabic (U.A.E.): Arabo (U.A.E.)
+Arabic (Yemen): Arabo (Yemen)
+Arabic: Arabo
+Aragonese: =
+Aramaic: =
+Arapaho: =
+Arawak: =
+Armenian: Armeniana
+Assamese: =
+Asturian: Anarana
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: =
+Balinese: Sinoa
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: Baska
+Beja: =
+Belarusian: =
+Bemba: =
+Bengali: =
+Bhojpuri: Bisiana
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: =
+Bliss: fahasambarana
+Bosnian: Bosniaka
+Braj: =
+Breton: =
+Buginese: =
+Bulgarian: biolgara
+Buriat: =
+Burmese: =
+Caddo: =
+Catalan: Katalana
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Sinoa (Hong Kong)
+Chinese (PRC): Sinoa (PRC)
+Chinese (Simplified/GB2312): Sinoa (Notsotra / GB2312) 
+Chinese (Singapore): Sinoa (Singaporo)
+Chinese (Taiwan): Sinoa (Taiwan)
+Chinese (Traditional/Big5): Sinoa (nentin-drazana / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: Chuuk
+Chuvash: =
+Coptic: kôpta
+Cornish: =
+Corsican: =
+Cree: =
+Creek: =
+Croatian: Kroaty
+Czech: TSEKY
+Dakota: =
+Danish: Danoà
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: Antananarivu
+Dutch (Belgium): Dutch (Belzika)
+Dutch: Anarana iombonana
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Elama
+English (Australia): Anglisy (Aostralia)
+English (Belize): Anglisy (Belize)
+English (Canada): Anglisy (Canada)
+English (Ireland): Anglisy (Irlandy)
+English (Jamaica): Anglisy (Jamaika)
+English (New Zealand): Anglisy (Nouvelle Zélande)
+English (Philippines): Anglisy (Filipina)
+English (South Africa): Anglisy (Afrika atsimo)
+English (Trinidad & Tobago): Anglisy (Trinidad & Tobago)
+English (United Kingdom): Anglisy (Angletera)
+English (United States): Anglisy (Etazonia)
+English (Zimbabwe): Anglisy (Zimbaboe)
+English: Anglisy-Etazonia
+Erzya: =
+Esperanto: =
+Estonian: Estoniana
+Ewe: =
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: Zavatra
+Fijian: Fijiana
+Filipino: Filipiana
+Finnish: Anarana
+Fon: =
+French (Belgium): Frantsay (Belzika)
+French (Canada): Frantsay (Kanada)
+French (France): Frantsay (frantsay)
+French (Luxembourg): Frantsay (Luxembourg)
+French (Monaco): Frantsay (monaco)
+French (Switzerland): Frantsay (Suisse)
+French: FRANTSAY
+Frisian (Eastern): Frisian (Atsinanana)
+Frisian (Northern): Frisian (Avaratra)
+Frisian (Western): Frisian (Andrefana)
+Frisian: =
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: galisiana
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Zeorziana
+German (Austria): Alemanina (Aotrisy)
+German (Germany): Alemanina (Alemana)
+German (Liechtenstein): Alemanina (Liechtenstein)
+German (Luxembourg): Alemanina (Luxembourg)
+German (Standard): Alemanina (fenitra)
+German (Switzerland): Alemanina (Soisa)
+German: Anarana
+Gilbertese: gilbert
+Gondi: =
+Gorontalo: =
+Gothic: gôtika
+Grebo: =
+Greek: GRIKA
+Greenlandic: Groenlandey
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): =
+Haitian: Haisiana
+Hausa: =
+Hawaiian: Hawaii
+Hebrew: Hebreo
+Herero: =
+Hiligaynon: =
+Hindi: hindi
+Hiri Motu: =
+Hittite: Hetita
+Hmong: =
+Holo (Taiwanese): =
+Hungarian: hongariana
+Hupa: =
+Iban: =
+Icelandic: Anarana
+Ido: Ataoko
+Igbo: =
+Iloko: =
+Indonesian: indonezianina
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Iraniana
+Irish (Gaelic): Irlandy (Gaelika)
+Irish: irlandey
+Iroquoian: =
+Italian (Switzerland): Italiana (Soisa)
+Italian: Italiana
+Japanese: Anarana
+Javanese: Javaney
+Judeo-Arabic: Judeo-Arabo
+Judeo-Persian: =
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): Khmer (Afovoany)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Koreana (Johab)
+Korean (North): Koreana (Avaratra)
+Korean (South): Koreana (atsimo)
+Korean: Koreana
+Kosraean: kosrae
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kiorda
+Kutenai: =
+Kyrgyz: =
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Latina
+Latvian: Zavatra tsy
+Lezghian: =
+Limburgan: Limburgs
+Lingala: =
+Lithuanian: litoanianina
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: =
+Macedonian: Masedoniana
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: =
+Malay: =
+Malayalam: =
+Maldivian: =
+Maltese: Maltais
+Manchu: teny mandchou
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: marshall
+Marwari: =
+Masai: =
+Mayan: Maya
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Moldavianina
+Mongo: =
+Mongolian: Mongoliana
+Montenegrin: =
+Moroccan: =
+Mossi: =
+Myanmar: Madagascar
+Māori: Malagasy
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Avaratra)
+Ndebele (South): Ndebele (atsimo)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: =
+Nias: =
+Niuean: Niue
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Norvezianina (Bokmål)
+Norwegian (Nynorsk): Norvezianina (nynorsk)
+Norwegian: norvejiana
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: =
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: =
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: =
+Pedi: =
+Persian (Farsi): Persana (Farsi)
+Persian (Iran): Persiana (Iran)
+Persian: Persianina
+Phoenician: Fenisianina
+Pohnpeian: =
+Polish: poloney
+Portuguese: portogey
+Portuguese/Brazil: Portiogey / Brezila 
+Punjabi (India): =
+Punjabi (Pakistan): =
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: rarotonga
+Rhaeto-Romanic: =
+Romanian: Malagasy Romanian
+Romansh: Romana
+Romany: =
+Rundi: =
+Russian (Moldavia: Rosiana (Moldavia
+Russian (Republic of Moldova): Rosiana (Repoblikan'i Moldova)
+Russian: Rosiana
+Sami (Inari): =
+Sami (Lappish): Sami (Lafisy)
+Sami (Lule): =
+Sami (Northern): Sami (Avaratra)
+Sami (Skolt): =
+Sami (Southern): Sami (atsimo)
+Sami: =
+Samoan: samoanina
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: Sardinia
+Sasak: =
+Scots (Gaelic): Skoto (Gaelika)
+Selkup: =
+Serbian (Upper): Serba (ambony)
+Serbian: serbianina
+Serer: =
+Sesotho: =
+Shan: sana
+Shona: =
+Sichuan Yi: =
+Sicilian: Sisilianina
+Sindhi: =
+Sinhala: =
+Slavic: SAMPA tsy
+Slovak: silaovaka
+Slovenian: Slovenianina
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbiana (ambany)
+Sorbian (Upper): Sorbiana (ambony)
+Sorbian: Sorbiana
+Sotho: =
+Spanish (Argentina): Espaniola (Arzantina)
+Spanish (Bolivia): Espaniola (Bolivia)
+Spanish (Chile): Espaniola (Chile)
+Spanish (Colombia): Espaniola (Kolombia)
+Spanish (Costa Rica): Espaniola (Costa Rica)
+Spanish (Dominican Republic): Espaniola (Repoblika Dominikanina)
+Spanish (Ecuador): Espaniola (Ekoatera)
+Spanish (El Salvador): Espaniôla (El Salvador)
+Spanish (Guatemala): Espaniola (Goatemalà)
+Spanish (Honduras): Espaniola (Honduras)
+Spanish (Mexico): Espaniola (Mexico)
+Spanish (Nicaragua): Espaniôla (Nikaragoà)
+Spanish (Panama): Espaniola (Panama)
+Spanish (Paraguay): Espaniola (Paragoay)
+Spanish (Peru): Espaniola (Peroa)
+Spanish (Puerto Rico): Espaniola (Puerto Rico)
+Spanish (Spain): Espaniola (Espana)
+Spanish (Uruguay): Espaniola (Orogoay)
+Spanish (Venezuela): Espaniola (Venezoelà)
+Spanish: Fikarohana
+Sranan Tongo: =
+Sukuma: =
+Sumerian: somerianina
+Sundanese: Sundana
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Soedoà (failandy)
+Swedish (Sweden): Soedoa (soeda)
+Swedish: Anarana
+Syriac: =
+Tagalog: =
+Tahitian: tahisianina
+Tai: =
+Taiwan: TAÏWAN
+Tajik: =
+Tamashek: =
+Tamil: =
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: Tibetana
+Tigre: =
+Tigrinya: =
+Timne: Time
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Nosy Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Tiorka
+Turkmen: Torkmen
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: Ougarit
+Ukrainian: Okrainiana
+Umbundu: =
+Urdu: =
+Uyghur: =
+Uzbek: =
+Vai: =
+Venda: =
+Vietnamese: vietnamiana
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: wallon
+Waray: =
+Washo: =
+Welsh: valesa
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Voafaritry ny mpizaha
+event: hetsika
+journal: gazety
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Tsy mety ny fidiran'ny mpampiasa
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: Diso tenimiafina
+no such user: tsy misy mpampiasa toa izany
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Tsy mandeha ny kaonty
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Elanelana
+Months: VOLANA
+Month Days: Volana Andro
+Days: Andro
+Weeks: HERINANDRON'NY
+Position: Toerana
+Until: mandra
+Count: Manisa
+Inclusion Dates: Daty fampidirana
+Exclusion Dates: Daty fanilihana
+Event Imported: Hetsika nampidirina
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: oktety
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: fampahafantarana
+authenticate: Hadisoana SMTP: Tsy azo hamarinina
+connect_host: Hadisoana SMTP: Tsy afaka nifandray tamin'ny mpampiantrano SMTP:
+data_not_accepted: Hadisoana SMTP: Tsy ekena ny angona
+encoding: Encoding tsy fantatra:
+execute: Tsy afaka nanatanteraka:
+file_access: Tsy afaka miditra amin'ny fisie:
+file_open: Diso File tsy afaka manokatra fisie:
+from_failed: Tsy nahomby ny adiresy From:
+instantiate: Tsy afaka namelombelona ny fiasan'ny mailaka
+mailer_not_supported: mailer tsy tohanana
+provide_address: Tsy maintsy manome adiresy mailaka mpandray iray farafaharatsiny ianao.
+recipients_failed: Hadisoana SMTP: Tsy nahomby ireto mpandray ireto:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Ampidiro ny endri-tsoratra hita amin'ny sary
+Enter the correct letters and numbers...: Ampidiro ao anaty boaty lahatsoratra ireo litera sy isa marina. Ity fitsapana kely ity dia natao ho fameperana fidirana amin'ireo boti-doza. Avereno alaina fotsiny ilay pejy raha sarotra be ilay sary
+Challenge/Response: Fanamby / valiny
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Hanova ny daty sy ny ora an'ity fidirana ity?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Tsy niditra fampidirana fohy ianao
+time prior to work hours...: fotoana alohan'ny ora fiasana ...
+Invalid Event Date: Daty hetsika tsy mety
+Please add a participant: Azafady ampio mpandray anjara 
+Invalid Date: Daty tsy mety
+You have not entered a valid time of day: Tsy mbola niditra ora tsy andehanan'ny andro ianao. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Tsy azo atao banga ny kalandrie ID. 
+First and last names cannot both be blank.: Ny anarana voalohany sy ny anarana farany dia tsy samy tsy tokony hatao banga. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Loko tsy mety
+Color format should be RRGGBB.: Ny endrika loko dia tokony ho #RRGGBB. 
+URL cannot be blank.: Tsy tokony ho banga ny URL.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Ny karazana rakitra dia tsy mifanandrify amin'ny endrika fampidirana 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Loko tsy mety ho an'ny ambadika antontan-taratasy.
+Invalid color for document title.: Loko tsy mety amin'ny lohatenin'ny rakitra.
+Invalid color for table cell background.: Loko tsy mety ho an'ny fiafaran'ny sela latabatra.
+Invalid color for table cell background for today.: Loko tsy mety ho an'ny fiafaran'ny sela latabatra anio.
+Invalid work hours.: Ora fiasana tsy mety.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Ny mpizara URL dia tsy maintsy mifarana amin'ny tsipika (/).
+Invalid color for table grid.: Loko tsy mety ho an'ny takelaka latabatra.
+Invalid color for event popup background.: Loko tsy mety ho an'ny background mipoitra ny hetsika.
+Invalid color for event popup text.: Loko tsy mety ho an'ny lahatsoratra mipoitra hetsika.
+Invalid color for table header text.: Loko tsy mety ho an'ny lohateny lohateny latabatra.
+Invalid color for table header background.: Loko tsy mety ho an'ny lohan-dohan-dohan-databatra.
+Server URL is required.: Ilaina ny URL mpizara.
+Invalid Color: Loko tsy mety
+Database Name: Anaran'ny Database
+Full Path (no backslashes): Lalana feno (tsy misy saron-damosina) 
+The password contains illegal characters.: Misy endri-tsoratra tsy ara-dalàna ny teny miafina.
+Error you must specify a Single-User Login: Hadisoana: tsy maintsy manondro Login ho an'ny mpampiasa tokana ianao
+Could not find XXX.: Tsy nahita XXX.
+Could not find XXX in DOM.: Tsy nahita XXX tao DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Ity herinandro ity
+This Month: Ity volana ity
+This Year: Ity taona ity
+Exit: Fivoahana
+Add New Event: Manampia hetsika vaovao
+Delete Entries: =
+My Views: Ny fahitako
+Manage Calendar of: Tantano ny kalandrie an'ny
+My Reports: Ny tatitra nataoko
+My Profile: Ny mombamomba ahy
+Public Calendar: Kalandrie ampahibemaso
+Unapproved Events: Hetsika tsy nankatoavina
+User Manager: Mpampiasa mpitantana
+Help Contents: Votoatiny fanampiana
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Data Directory Cache Directory
+Create New: Mamorona Vaovao
+Failure Reason: Antony tsy fahombiazana:
+You must manually create database: Tsy maintsy mamorona tahiry data ianao.
+Single-User: Mpampiasa tokana
+Test Settings: Fikirana fanandramana
+Timezone Conversion Successful: Nahomby ny fiovam-po Timezone
+WebCalendar Installation Wizard Step XXX: Wiciel Fametrahana WebCalendar Dingana XXX
+Password Accepted: Teny miafina ekena
+Successful Login: Login mahomby
+Password Incorrect: Diso tenimiafina
+Invalid Login: Login tsy mety
+Display Errors: Fahadisoana mampiseho
+File Uploads: Mampakatra rakitra
+Allow URL fopen: Avelao ny URL fopen (tsy ilaina raha tsy mampiasa kalandrie lavitra)
+Safe Mode: =
+Safe Mode Allowed Vars: Safe Mode Avela Vars (TZ no ilaina raha toa ka tsy mandeha ny Safe Mode)
+GD: GD (ilaina amin'ny haitao sary gradien)
+Passwords do not match!: Tsy mifanaraka ny teny miafina!
+Unable to write password to settings.php file: Tsy afaka manoratra teny miafina amin'ny rakitra "setting.php".
+Password Updated: Nohavaozina ny teny miafina
+Password has been set: Napetraka ny teny miafina.
+Connection Successful...: Nahomby ny fifandraisana  Mba mankanesa any amin'ny pejy manaraka hanohizana ny fametrahana azy.
+Correct your entries or click the Create New...: Amboary ny fidiranao na kitiho ny bokotra  Mamorona Vaovao  raha hanohy ny fametrahana azy.
+Correct your entries and try again.: Amboary ny fidiranao ary manandrama indray.
+XXX does not exist: Tsy misy i XXX
+XXX is not writable: XXX dia tsy azo soratana
+Error Converting Timezone: Hadisoana nanovana ny zotram-potoana
+Error Unable to write to file XXX.: Hadisoana tsy afaka manoratra amin'ny rakitra XXX.
+Please change the file permissions of this file.: Azafady mba ovao ny fahazoan-dàlan'ity rakitra ity.
+Please change includes dir permission: Azafady mba ovao ny fahazoan-dàlan'ny rakitra ao amin'ny lahatahiry "misy" anao mba hahafahan'ny mpanoratra manoratra hafa manoratra.
+Your settings have been saved.: Voatahiry ny fikiranao.
+OFF: NIALA
+ON: =
+WebCalendar Setup Wizard: Magicien fananganana WebCalendar
+This installation wizard will guide you...: Ity wizard fametrahana ity dia hitarika anao amin'ny fametrahanao fametrahana WebCalendar fototra.<br>Raha mila fanampiana sy troubleshooting dia jereo ny:<br>
+System Administrators Guide: Torolàlana an'ny Administrator an'ny rafitra
+Frequently Asked Questions: Fanontaniana napetraka matetika
+FAQ: =
+Troubleshooting: Fanamboarana
+Getting Help: Mahazo fanampiana
+Upgrading Guide: Torolàlana fanatsarana
+User Supported Wiki: Wiki tohanan'ny mpampiasa
+PHP Version Check: =
+Check to see if PHP 7.1.0 or greater is installed.: Hamarino raha napetraka ny PHP 7.1.0 na mihoatra.
+PHP version: =
+PHP Settings: Fikirana PHP
+Detailed PHP Info: Fampahalalana PHP amin'ny antsipiriany
+settings.php Status: "Setting.php" Status
+Session Check: Fizarana fivoriana
+To test the proper operation of sessions...: Mba hizaha toetra ny fizotran'ny fivoriana dia alao indray ity pejy ity. Tokony ho hitanao ny fitomboan'ny counter counter isaky ny mandeha.
+SESSION COUNTER: COUNTER SESSION
+The file permissions of settings.php are set...: Ny fahazoan-dàlan'ny fisie "setting.php" dia apetraka mba tsy ahazoan'ny mpametraka manova azy. Azafady mba ovao ny fahazoan-dàlan'ity rakitra ity hanohy
+The file permissions of the includes directory are set...: Ny fahazoan-dàlan'ny fisie an'ny lahatahiry misy dia napetraka mba tsy ahazoan'ny mpametraka alalana hamorona rakitra vaovao. Azafady mba ovao ny fahazoan-dàlan'ity lahatahiry manaraka ity hanohizana
+Your settings.php file appears to be valid.: Toa mety ny fisie "setting.php" anao.
+Configuration Wizard Password: Tenimiafin'ny Magicien fanamboarana
+Create Settings File Password: Mamorona Password Password Files
+db setup directions...: Amin'ity fizarana ity dia hanangana sy hizaha fifandraisana amin'ny mpizara tahiry data ianao. Ny mombamomba ny kaonty omena dia tokony hanana alalana feno hamoronana tahiry, latabatra ary mpampiasa. Raha tsy azo atao izany, na voafetra ny fidiran'ny angon-drakitrao dia tsy maintsy ampiendrenay tanana ny fikirakirana data.
+Database Status: Status Database
+Supported databases for your PHP installation: Databases tohana amin'ny fametrahana PHP anao
+Your current database settings are able to access the database.: Ireo fidirana data-nao amin'izao fotoana izao dia afaka miditra amin'ny database.
+Please Test Settings: Azafady mba andramo ireo toe-javatra
+Your current database settings are not able...: Tsy afaka miditra amin'ny angon-drakitra na tsy mbola voasedra ny fikirakira ny data ankehitriny.
+Database Settings: Fikirana data
+Database Type: Karazan-tahiry
+Server: =
+Connection Persistence: Fifikirana amin'ny fifandraisana
+All your database tables appear to be up...: Ny latabatra tahirinao rehetra dia toa vaovao. Azonao atao ny manohy mankany amin'ny pejy manaraka ary mamita ny fanamboarana WebCalendar anao.
+This appears to be a new installation...: Toa fametrahana vaovao ity. Raha tsy marina izany dia miverena mankany amin'ilay pejy teo aloha ary ahintsy ny toerana napetrakao.
+This appears to be an upgrade...: Toa fanatsarana avy amin'ny kinova&nbsp;XXX&nbsp;ka hatramin'ny&nbsp;YYY ity.
+The database requires some data input...: Ny angon-drakitra dia mitaky fampidirana angona vitsivitsy Tsindrio ny Database mba hamita ny fanavaozana.
+In this section we will perform...: Amin'ity fizarana ity dia hanatanteraka ny fanovana izahay hitondrana ny angon-tahirinao mankany amin'ny sehatra takiana. Raha mampiasa tahiry angona feno ianao, ity dingana ity dia ho tanterahina ho azy ho anao. Raha tsy izany dia azo aseho ny SQL takiana ary tokony ho azonao ny manapaka sy mametaka azy ao amin'ny fikandrana fangatahana lozisialy.
+No database actions are required.: Tsy mila hetsika tahiry.
+The following database actions are required: Ilaina ireto hetsika tahiry manaraka ireto
+ODBC Underlying Database: ODBC Underlying Database:
+Automatic installation not supported: Ny fametrahana automatique dia tsy nampiharina tanteraka ho an'ny karazana base data. Tsy maintsy mamorona tanana ireo latabatra takiana amin'ny alàlan'ny SQL natolotra ianao. Azafady tsindrio ny  Asehoy SQL  raha hanohy. Hetezo ary apetaho ao anaty fikandrana fitadiavana tahiry.
+This may take several minutes to complete: Mety maharitra minitra maromaro vao vita.
+Install Database: Mametraka Database
+Update Database: Vaovao farany Database
+Display Required SQL: Asehoy ny SQL takiana
+Return to previous page after processing SQL.: Aorian'ny fanodinana an-tanana an'io SQL io dia mila miverina amin'ny pejy teo aloha ianao ary manandrana ny angon-drakitrao mba hahafahan'ny script mahita ireo fanovana.
+This is the final step in setting up your WebCalendar Installation.: Ity no dingana farany amin'ny fametrahana ny fametrahana WebCalendar.
+Timezone Conversion: Fiovan'ny Timezone
+It appears that you have NOT converted...: Hita fa mbola TSY navadinao ny GMT ny angona hetsika WebCalendar misy anao. Raha manana ianao dia mety tsy hiraharaha ity fampandrenesana ity ary tsy hanohy ny fanovana. Raha fametrahana vaovao ity dia azonao atao ihany koa ny tsy miraharaha io fampandrenesana io.
+Convert Data to GMT: Avadiho ho GMT ny data
+Application Settings: Fikirana fampiharana
+HTTP-based authentication was not detected...: Tsy voamarina ny fanamarinana miorina amin'ny HTTP. Mila manamboatra ny mpizara Internet anao ianao raha te-misafidy ny 'Web Server' avy amin'ny safidin'ny 'Authentication an'ny mpampiasa' etsy ambany.
+HTTP-based authentication was detected...: Hamarina ny fanamarinana miorina amin'ny HTTP. Ny fanamarinana ny mpampiasa dia tantanan'ny mpizara tranonkala anao. Tokony hisafidy ny 'Web Server' ianao amin'ny lisitry ny safidin'ny 'Authentication' mpampiasa etsy ambany.
+Create Default Admin Account: Mamorona kaonty Admin Default
+(Admin Account Not Found): (Kaontim-pitantanana tsy hita)
+User Authentication: Fanamarinana ny mpampiasa
+Web-based via WebCalendar (default): Mifototra amin'ny Internet amin'ny alàlan'ny WebCalendar (default)
+Web Server (not detected): Web Server (tsy hita)
+Web Server (detected): Web Server (hita)
+None (Single-User): Tsy misy (Mpampiasa irery)
+Read-Only: Vakiteny ihany
+Environment: TONTOLO IAINANA
+Production: Famokarana
+Development: Fampandrosoana
+Save Settings: Tehirizo ny fikirana
+Launch WebCalendar: Mandrosoa WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Hadisoana tamin'ny fanavaozana ny latabatra "XXX": YYY.
+Conversion Successful: Nahomby ny fiovam-po 
+Perl script required: Ny kinovan'ny WebCalendar teo aloha dia mitaky fandefasana script PERL hanovana ireo data-nao. Azafady azafady /tools/upgrade_to_0.9.7.pl avy eo miverina amin'ity pejy ity hanohy.
+previous version requires updating several tables: Ny kinova WebCalendar teo aloha dia mitaky fanavaozana latabatra databatra maromaro.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: TSY MISY PREVIEW AZO
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Fahadisoana raha mifandray amin'ny tahiry
+Include Path: Ampidiro ny làlana
+Deleting events for: Famafana hetsika ho an'ny
+Importing events for: Fanafarana hetsika ho an'ny
+No data returned from: Tsy misy data naverina avy
+for non-user calendar: ho an'ny tetiandro tsy an'ny mpampiasa
+No Remote Calendars found: Tsy misy kalandrie lavitra hita
+Remote Calendars not enabled: Tsy alefa ny Alimanaka lavitra
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: tsy nahita id hetsika
+could not find event id XXX in database.: tsy nahita hetsika id XXX tao anaty tahiry.
+task: ASA
+This is a reminder for the XXX detailed below.: Ity dia fampahatsiahivana momba ilay tsipiriany XXX etsy ambany.
+Pecentage Complete: Vita ny pecentage
+Reminder: fampahatsiahivana
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Hetsika tsy tohanana: XXX.
+No event id specified.: Tsy misy id hetsika voalaza.
+Not authorized (not admin).: Tsy nahazo alalana (tsy admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Manamarina hetsika momba ny XXX hatramin'ny daty YYY ka hatramin'ny daty ZZZ.
+Found XXX events in time range.: Hetsika hita XXX amin'ny faharetan'ny fotoana.
+Event id=XXX YYY at ZZZ on AAA.: Event id = XXX "YYY" ao amin'ny ZZZ amin'ny AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Mamela ny mpampiasa XXX hijery ny kalandrie an'ny mpampiasa hafa.
+Error Email reminders disabled for user XXX.: Hadisoana: Notadidina ny fampahatsiahivana mailaka ho an'ny mpampiasa "XXX".
+Number of site_extras XXX.: Isan'ny site_extras: XXX.
+Reminder set for event.: Napetraka ny fampahatsiahivana amin'ny hetsika.
+Mins Before XXX.: Mins taloha: XXX.
+Event time is XXX.: Fotoana fisehoan-javatra dia: XXX.
+Remind time is XXX.: Ny fotoana fampahatsiahivana dia: XXX.
+Reminders for user XXX, login YYY.: Fampatsiahivana ho an'ny mpampiasa "XXX", fidio ny "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Tsy ekena ho an'ny mpampiasa "XXX".
+Event id=XXX YYY already sent.: Event id = XXX "YYY" dia efa nalefa.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Tsy ilaina ny fidirana amin'ny maody ho an'ny mpampiasa tokana.
+No login required for HTTP authentication.: Tsy mila fidirana amin'ny fanamarinana HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Karakter tsy mety amin'ny fidirana.
+Username XXX does not exist.: Tsy misy ny anaran'ny mpampiasa "XXX".
+You cannot remove admin rights from yourself!: Tsy azonao esorina aminao ny zon'ny admin!
+Unknown error saving user: Mpampiasa fitehirizana tsy fantatra.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Tsy misy mpandray anjara hita ho an'ny hetsika Id: XXX.
+Db error Could not find event id XXX.: Hadisoana db: tsy nahita hetsika id XXX. 
+Error Could not find event id XXX in database.: Hadisoana: tsy nahita hetsika id XXX tao anaty tahiry. 

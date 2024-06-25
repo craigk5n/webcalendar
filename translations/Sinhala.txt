@@ -1,0 +1,2387 @@
+# Sinhala si
+#
+# ආකෘතිය විකල්ප ශීර්ෂයකින් සමන්විත වේ:
+#
+# පරිවර්තනය කළේ: ඔබේ නම සහ විද්‍යුත් තැපෑල
+# අවසන් යාවත්කාලීන කිරීම: පරිවර්තනය කළ දිනය
+# (ප්‍රමුඛ "#" සහ පෙර පරිවර්තකයන් විසින් කරන ලද අදහස් දැක්වීම් ඇතුළුව.
+# පළමු හිස් පේළිය මෙම ශීර්ෂ අදහස් අවසන් කරයි.)
+#
+# අවශ්‍ය ප්‍රමාණයට පසුව:
+#
+# ඉංග්‍රීසි වාක්‍ය ඛණ්ඩය: පරිවර්තනය
+# (එක් පේළියකට. ප්‍රමුඛ "#" නොමැතිව.
+# "ඉංග්‍රීසි වාක්‍ය ඛණ්ඩය:", මහා බඩවැල ඇතුළුව ":" සපයනු ලබන්නේ
+# වෙබ් කැලැන්ඩර් සංවර්ධකයින්. ඔබේ කොටස "පරිවර්තනය" වේ.)
+#
+# මෙවලම් නාමාවලිය ඔබට උදව් කිරීමට පර්ල් ස්ක්‍රිප්ට් දෙකක් අඩංගු වේ:
+# - check_translation.pl
+# සියලු පෙළ සාර්ථකව පරිවර්තනය කර ඇත්දැයි දක්වයි.
+# - update_translation.pl
+# සියලු පරිවර්තන ('වාක්‍ය ඛණ්ඩය') සොයා ගැනීමට වැඩසටහන් ගොනු විග්‍රහ කරයි
+# මෙවලම් ('වාක්‍ය ඛණ්ඩය'). එය පිටුවට අනුව වාක්‍ය ඛණ්ඩ සකස් කරනු ඇත
+# (ගොනුව) පළමු සිදුවීම අඩංගු වේ. විකල්පයක් ලෙස, එය ටැග් කළ හැකිය
+# තැබීමෙන් තවමත් පරිවර්තනය කර නොමැති වාක්‍ය ඛණ්ඩ
+#  << MISSING >>
+# වාක්‍ය ඛණ්ඩයට ඉහළින් ඇති පේළියේ. තවද, වාක්‍ය ඛණ්ඩය කෙටි නම්,
+# එය වාක්‍යයට පහළින් ඇති පේළියේ සම්පූර්ණ ඉංග්‍රීසි පා text ය ඇතුළත් වේ.
+#
+# සටහන: මම උත්සාහ කරන්නේ සමස්ත ගොනු ප්‍රමාණය අඩු කිරීමටයි. "පරිවර්තනය" නම්
+# වචනය / වාක්‍ය ඛණ්ඩය ඔබේ භාෂාවෙන් සහ ඉංග්‍රීසියෙන් සමාන වේ, "=" ලකුණක් භාවිතා කරන්න.
+#
+# සටහන: සඳහා වන ප්‍රවේශය ඔබ දකිනු ඇත "May_" පහත. මේ සඳහා හේතුවක් තිබේ.
+# පරිවර්තනය කරන්න "May_" සම්පූර්ණ මාසයේ නමට සහ "May" සඳහා,
+# සාමාන්‍යයෙන් අකුරු තුනකින්, මාසයක කෙටි යෙදුමකින් (“ඔක්තෝබර්” සඳහා “ඔක්” වැනි).
+#
+# මම මේ සඳහා ගූගල් පරිවර්තනය භාවිතා කළෙමි.
+# ස්වදේශීය කථිකයෙකුට එය සත්‍යාපනය වන තෙක් එය ප්‍රමාණවත් වේ.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: වෙබ් දින දර්ශනය
+version XXX: අනුවාදය XXX
+WebCalendar is a PHP application used...: වෙබ් කැලැන්ඩරය යනු තනි පරිශීලකයෙකු හෝ අන්තර්ජාල / අන්තර් ජාල පරිශීලකයින් සඳහා දින දර්ශනයක් පවත්වා ගැනීමට භාවිතා කරන PHP යෙදුමකි. එය සිදුවීම් දින දර්ශනයක් ලෙසද වින්‍යාසගත කළ හැකිය.
+Credits: ණය
+About: ගැන
+OK: හරි
+
+########################################
+# Page: access.php
+#
+Database error XXX.: දත්ත සමුදා දෝෂය: XXX.
+DEFAULT CONFIGURATION: අක්‍රීය වින්‍යාසය
+Go: යන්න
+Save: සුරකින්න
+Undo: අහෝසි කරන්න
+Public Access: මහජන ප්‍රවේශය
+Admin: පරිපාලක
+User Access Control: පරිශීලක ප්‍රවේශ පාලනය
+Allow Access to Other Users Calendar: වෙනත් පරිශීලකයින්ගේ දින දර්ශනයට ප්‍රවේශ වීමට ඉඩ දෙන්න
+Grant This User Access to My Calendar: මගේ දින දර්ශනයට මෙම පරිශීලක ප්‍රවේශය ලබා දෙන්න
+Type: වර්ගය
+Calendar: දින දර්ශනය
+View Event: සිදුවීම බලන්න
+View: දැක්ම
+Edit: සංස්කරණය කරන්න
+Approve/Reject: අනුමත කරන්න / ප්‍රතික්ෂේප කරන්න
+Events: සිදුවීම්
+Tasks: කාර්යයන්
+Journals: සඟරා
+Can Invite: ආරාධනා කළ හැකිය
+Can Email: ඊමේල් කළ හැකිය
+Can See Time Only: කාලය පමණක් දැකිය හැකිය
+Assistant: සහකාර
+Select All: සියල්ල තෝරන්න
+Clear All: සියල්ල ඉවත් කරන්න
+Public: පොදු
+Confidential: රහස්‍යයි
+Private: පුද්ගලික
+
+########################################
+# Page: activity_log.php
+#
+Next: ඊළඟ
+Previous: පෙර
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: සිදුවීම් XXX දැනටමත් ඔබගේ දින දර්ශනයේ ඇත.
+Invalid entry id XXX.: අවලංගු ප්‍රවේශ හැඳුනුම්පත: "XXX".
+a XXX event may not be added to your calendar: මෙය XXX සිදුවීමක් වන අතර එය ඔබගේ දින දර්ශනයට එක් නොකරනු ඇත.
+confidential: රහස්‍ය
+private: පුද්ගලික
+Error adding event XXX.: සිදුවීම එකතු කිරීමේදී දෝෂයක්: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: වලංගු නොවන සැකසුම් නම "XXX".
+Select: තෝරන්න
+Day: දින
+Week: සතිය
+Month: මාසික
+Year: අවුරුදු
+Bottom: පහළ
+Top: ඉහළට
+Anyone: ඕනෑම කෙනෙකුට
+Participant: සහභාගිවන්නා
+Settings: සැකසුම්
+Groups: කණ්ඩායම්
+NonUser Calendars: පරිශීලක නොවන දින දර්ශන
+Other: වෙනත්
+Email: විද්යුත් තැපෑල
+Colors: වර්ණ
+Document background: ලේඛන පසුබිම
+Document title: ලේඛන මාතෘකාව
+Document text: ලේඛන පෙළ
+My event text: මගේ සිදුවීම් පෙළ
+Table grid color: මේස ජාලක වර්ණය
+Table header background: වගු ශීර්ෂ පසුබිම
+Table header text: වගු ශීර්ෂ පා .ය
+Table cell background: වගු සෛල පසුබිම
+Table cell background for current day: වත්මන් දිනය සඳහා වගු සෛල පසුබිම
+Table cell background for days with events: සිදුවීම් සහිත දින සඳහා සෛල පසුබිම
+Table cell background for weekends: සති අන්ත සඳහා මේස සෛල පසුබිම
+Table cell background for other month: වෙනත් මාසයක් සඳහා මේස සෛල පසුබිම
+Week number color: සතියේ අංක වර්ණය
+Event popup background: සිදුවීම් උත්පතන පසුබිම
+Event popup text: සිදුවීම් උත්පතන පෙළ
+System Settings: පද්ධති සැකසීම්
+Help: උදව්
+System options: පද්ධති විකල්ප
+app-name-help: සියලුම පිටු සඳහා බ්‍රව්සර් මාතෘකා තීරුවේ සහ පිවිසුම් පිටුවේ දිස්වන යෙදුමේ නම සඳහන් කරයි. ඔබ මෙහි සඳහන් කළ අගය පරිවර්තන ගොනුවේ විවිධ භාෂා සඳහා විවිධ මාතෘකා ලබා දීමට ඉඩ සලසයි.
+Application Name: අයදුම්පත්රයේ නම
+Translated Name (XXX): පරිවර්තනය කළ නම (XXX)
+server-url-help: යෙදුම සඳහා මූලික URL නියම කරයි. ඊමේල් මතක් කිරීම් සහ දැනුම්දීම් යවන විට මෙය ඇතුළත් වේ.
+Server URL: සේවාදායක URL
+home-url-help: යෙදුම සඳහා මුල් URL ය නියම කරයි. මෙය නිරපේක්ෂ හෝ සාපේක්ෂ විය හැකිය
+Home URL: මුල් URL
+language-help: කුමන භාෂාව භාවිතා කළ යුතුද යන්න නියම කරයි.
+Language: භාෂාව
+Your browser default language is XXX.: ඔබගේ බ්‍රව්සරයේ පෙරනිමි භාෂාව "XXX" වේ.
+Allow user to use themes: තේමාවන් භාවිතා කිරීමට පරිශීලකයාට ඉඩ දෙන්න
+themes-help: වින්‍යාස සැකසුම් විශාල වශයෙන් යාවත්කාලීන කිරීමට ඉඩ දෙන්න. කුඩා අකුරු ලේබල් යනු පරිශීලක මනාපය පමණි.
+Themes: තේමාවන්
+AVAILABLE THEMES: ලබා ගත හැකි තේමාවන්
+None: කිසිවක් නැත
+Preview: පෙරදසුන
+Site customization: අඩවි අභිරුචිකරණය
+custom-script-help: සෑම පිටුවකම HTML "හිස" කොටසට ඇතුළත් කරන අභිරුචි ජාවාස්ක්‍රිප්ට් හෝ ස්ටයිල්ෂීට් පෙළ ඇතුළත් කිරීමට ඉඩ දෙන්න.
+Custom script/stylesheet: අභිරුචි ස්ක්‍රිප්ට් / ස්ටයිල්ෂීට්
+custom-header-help: සෑම පිටුවකම ඉහළින් අභිරුචි HTML ස්නිපටයක් ඇතුළත් කිරීමට ඉඩ දෙන්න.
+Custom header: අභිරුචි ශීර්ෂකය
+custom-trailer-help: සෑම පිටුවකම අවසානයේ අභිරුචි HTML ස්නිපටයක් ඇතුළත් කිරීමට ඉඩ දෙන්න.
+Custom trailer: අභිරුචි ට්‍රේලරය
+enable-external-header-help: අභිරුචි ට්‍රේලරය බාහිර ගොනුවකින් පූරණය කිරීමට ඉඩ දෙන්න
+Allow external file for header/script/trailer: ශීර්ෂකය / ස්ක්‍රිප්ට් / ට්‍රේලරය සඳහා බාහිර ගොනුවට ඉඩ දෙන්න
+Allow user to override header/trailer: ශීර්ෂකය / ට්‍රේලරය අභිබවා යාමට පරිශීලකයාට ඉඩ දෙන්න
+Date and Time: දිනය සහ වේලාව
+server-tz-help: UTC සිට සේවාදායක වේලාව දක්වා කාලය සකස් කළ යුතු පැය ගණන නියම කරයි.
+Server Timezone Selection: සේවාදායක කාල කලාප තේරීම
+tz-help: UTC සිට දේශීය වේලාව දක්වා කාලය සකස් කළ යුතු පැය ගණන නියම කරයි.
+Default Client Timezone Selection: පෙරනිමි සේවාලාභී කාල කලාප තේරීම
+display-general-use-gmt-help: සක්‍රිය කර ඇත්නම්, පොදු දිනයන් / වේලාවන් GMT ලෙස පෙන්වනු ලැබේ
+Display Common Use Date/Times as GMT: පොදු භාවිත දිනය / වේලාව GMT ලෙස පෙන්වන්න
+date-format-help: කැමති දින ආකෘතිය නියම කරයි.
+Date format: දිනය ආකෘතිය
+Small Task Date: කුඩා කාර්ය දිනය
+display-week-starts-on: සතිය ආරම්භ වන සතියේ දිනය නියම කරයි. සඳුදා නියම කර ඇත්නම්, සතියේ අංක ISO සතියේ අංක වේ.
+Week starts on: සතිය ආරම්භ වේ
+display-weekend-starts-on: සති අන්ත ආරම්භ කිරීමට සතියේ දිනය නියම කරයි
+Weekend starts on: සති අන්තය ආරම්භ වේ
+time-format-help: කුමන කාල ආකෘතිය භාවිතා කළ යුතුදැයි නියම කරයි:<br><em>පැය 12:</em> වේලාව පාන්දර 3, රාත්‍රී 8:30, ආදිය පෙන්වන්න.<br><em>පැය 24:</em> වේලාවන් 300 ලෙස පෙන්වන්න , 2030, ආදිය.
+Time format: කාල ආකෘතිය
+12 hour: පැය 12 යි                                                  
+24 hour: පැය 24                                                  
+timed-evt-len-help: කාලානුරූපී සිදුවීමක දිග තීරණය කිරීම සඳහා ආදාන ක්‍රමය නියම කරයි.
+Specify timed event length by: විසින් කාලානුරූපී සිදුවීම් දිග අනුව සඳහන් කරන්න
+Duration: කාල සීමාව
+End Time: අවසන් කාලය
+work-hours-help: දිවා දර්ශනය සඳහා පෙන්විය යුතු කාල පරාසය නියම කරයි.
+Work hours: වැඩ කරන වේලාවන්
+From: සිට
+to: දක්වා
+Appearance: පෙනුම
+preferred-view-help: පෙරනිමි දසුන නියම කරයි (දිනය, සතිය, මාසය හෝ වර්ෂය).
+Preferred view: කැමති දර්ශනය
+Allow top menu: ඉහළ මෙනුවට ඉඩ දෙන්න
+Date Selectors position: දිනය තේරීම්කරුවන්ගේ ස්ථානය
+menu-themes-help: ඉහළ මෙනුවේ වර්ණ හා විලාසය සකසයි
+Menu theme: මෙනු තේමාව
+fonts-help: භාවිතා කිරීමට පද්ධති අකුරු ලැයිස්තුවක් නියම කරයි ("ඒරියල්, හෙල්වෙටිකා" වැනි)
+Fonts: අකුරු
+display-sm_month-help: සක්‍රිය කර ඇත්නම්, මාස දර්ශනවල කුඩා මාස පෙන්වයි
+Display small months: කුඩා මාස පෙන්වන්න
+display-weekends-help: සතියක් නරඹන විට සති අන්ත ඇතුළත් කරන්න.
+Display weekends: සති අන්ත ප්‍රදර්ශනය කරන්න
+display-long-daynames-help: සක්‍රිය කර ඇත්නම්, දිගු දින නම් පෙන්වනු ලැබේ
+Display long day names: දිගු දින නම් පෙන්වන්න
+display-alldays-help: සියලුම සෛල පුරවා මාස දර්ශනවල පෙර සහ ඊළඟ මාස දින ප්‍රදර්ශනය කරන්න.
+Display all days in month view: සියලුම දිනවල මාස දර්ශනයේ ප්‍රදර්ශනය කරන්න
+display-week-number-help: සතියේ අංකය (1-52) මාස දර්ශනයේ සහ සතියේ දර්ශනයේ පෙන්විය යුතුද යන්න නියම කරයි.
+Display week number: සතියේ අංකය පෙන්වන්න
+display-desc-print-day-help: දින දර්ශනයේ මුද්‍රණ-හිතකාමී අනුවාදයේ සිදුවීම් විස්තර ඇතුළත් කරන්න.
+Display description in printer day view: මුද්‍රණ දින දර්ශනයේ විස්තරය පෙන්වන්න
+yearly-shows-events-help: වාර්ෂික දර්ශනයේ, එඩිතර අකුරු වලින් සිදුවීම් අඩංගු දින ප්‍රදර්ශනය කරන්න.
+Display days with events in bold in month and year views: මාස සහ වසර දර්ශන වල නිර්භීතව සිදුවීම් සමඟ දින පෙන්වන්න
+display-minutes-help: සක්‍රිය කර ඇත්නම්,: 00 සමඟ අවසන් වන මිනිත්තු සැමවිටම දර්ශනය වේ
+Display 00 minutes always: සෑම විටම මිනිත්තු 00 ක් පෙන්වන්න
+display-end-times-help: කාලයාගේ ඇවෑමෙන් සිදුවීම අවසන් වේලාවන් පෙන්වන්න
+Display end times on calendars: අවසන් දින දර්ශන දින දර්ශනවල පෙන්වන්න
+allow-view-add-help: දර්ශනවල '+' නිරූපකයක් ඇතුළත් වන අතර, පරිශීලකයින්ට වෙනත් පරිශීලකයින්ගේ දින දර්ශනවලට ඉක්මණින් සිදුවීම් එක් කිරීමට ඉඩ දෙයි.
+Include add event link in views: දර්ශන වල සිදුවීම් සබැඳිය එක් කරන්න
+lunar-help: සක්‍රිය කර ඇත්නම්, සෑම මසකම චන්ද්‍ර අවධීන් නියෝජනය කරන කුඩා අයිකන පෙන්වනු ඇත
+Display Lunar Phases in month view: මාස දර්ශනයේදී චන්ද්‍ර අවධීන් පෙන්වන්න
+Restrictions: සීමා
+allow-view-other-help: එක් පරිශීලකයෙකුට තවත් පරිශීලක දින දර්ශනයක් දැකිය හැකිද යන්න නියම කරයි.
+Allow viewing other users calendars: වෙනත් පරිශීලකයාගේ දින දර්ශන බැලීමට ඉඩ දෙන්න
+require-approvals-help: සක්‍රිය කර ඇති විට, පරිශීලකයෙකු යම් සිදුවීමක් ඔවුන්ගේ දින දර්ශනයේ පෙන්වීමට පෙර එය අනුමත කළ යුතුය (අනුමත නොකළ දර්ශනය සක්‍රීය නොකරන්නේ නම්). මෙය "නැත" ලෙස සැකසීම පොදු ප්‍රවේශ දින දර්ශනය සඳහා වන අනුමත කිරීම් අක්‍රිය නොකරනු ඇත (පොදු ප්‍රවේශ දින දර්ශනය සක්‍රීය කර ඇත්නම්).
+Require event approvals: සිදුවීම් අනුමැතිය අවශ්‍ය වේ
+display-unapproved-help: අනුමත නොකළ සිදුවීම් ඔබගේ දින දර්ශනයේ පෙන්වන්නේද යන්න නියම කරයි.<br>“ඔව්” ලෙස සකසා ඇත්නම්, අනුමත නොකළ සිදුවීම් ඔබගේ දින දර්ශනයේ පෙන්වනු ඇත (වෙනත් පෙළ වර්ණයකින්).<br>“නැත” ලෙස සකසා ඇත්නම්, අනුමත නොකළ සිදුවීම් ඔබගේ දින දර්ශනයේ දර්ශනය වීමට පෙර අනුමත කළ යුතුය.
+Display unapproved: අනුමත නොකළ දර්ශනය කරන්න
+conflict-check-help: සිදුවීම් ගැටුම් සඳහා පරීක්ෂා කරන්න (එකම පුද්ගලයා සඳහා එකම වේලාවක සිදුවීම් දෙකක් සැලසුම් කර ඇත). ඔබ මෙය "ඔව්" ලෙස සකසන්නේ නම්, අනතුරු ඇඟවීමක් තහවුරු කිරීමෙන් පසුව ඔබට එකවර සිදුවීම් දෙකක් උපලේඛනගත කිරීමට හැකි වනු ඇත. ඔබ මෙය "නැත" ලෙස සකසන්නේ නම්, ගැටුම් සඳහා කිසිදු පරීක්ෂණයක් සිදු නොකෙරේ. ඔබට මෙය "ඔව්" ලෙස සැකසීමට අවශ්‍ය විය හැක, එබැවින් ගැටුම් පරීක්ෂා කිරීම සිදු වේ.
+Check for event conflicts: සිදුවීම් ගැටුම් සඳහා පරීක්ෂා කරන්න
+Yes: ඔව්
+No: නැත
+conflict-months-help: ගැටුම් පරික්ෂා කිරීම සිදුවී ඇත්නම් ("සිදුවීම් ගැටුම් සඳහා පරීක්ෂා කරන්න" "නැත" & # 41; ලෙස සකසා ඇත, මෙය අනාගතයේ මාස කීයක් ගැටුම් සඳහා පරීක්ෂා කළ යුතුදැයි නියම කරයි.ඔබ සිදුවීම් එකතු කරන්නේ නම් සැකසීමට බොහෝ කාලයක් ගත වේ , මෙම අංකය අඩු කරන්න.
+Conflict checking months: ගැටුම් පරීක්ෂා කිරීමේ මාස
+conflict-check-override-help: සිදුවීම් ගැටුම් අභිබවා යාමට සහ සිදුවීම් දෙකක් හෝ වැඩි ගණනක් එකම වේලාවක උපලේඛනගත කිරීමට පරිශීලකයින්ට ඉඩ දෙන්න.
+Allow users to override conflicts: ගැටුම් ඉක්මවා යාමට පරිශීලකයින්ට ඉඩ දෙන්න
+limit-appts-help: තනි පරිශීලකයෙකුට ඕනෑම දිනක කළ හැකි පත්වීම් ගණන මත පද්ධතිමය සීමාවක් නියම කිරීමට පද්ධති පරිපාලකවරයාට ඉඩ දෙන්න.
+Limit number of timed events per day: දිනකට කාලානුරූපී සිදුවීම් ගණන සීමා කරන්න
+limit-appts-number-help: එක් දිනක් තුළ පරිශීලකයෙකුට කළ හැකි උපරිම කාලරාමු සිදුවීම් ගණන නියම කරයි.
+Maximum timed events per day: දිනකට උපරිම කාලානුරූපී සිදුවීම්
+crossday-help: සක්‍රිය කර ඇත්නම්, දින දක්වා සිදුවීම් වෙනම දිනවල දර්ශනය වේ
+Disable Cross-Day Events: හරස් දින සිදුවීම් අක්‍රීය කරන්න
+disable-location-field-help: "ඔව්" තේරීමෙන් සිදුවීම් තොරතුරු පිටුවලින් "ස්ථානය" ක්ෂේත්‍රය ඉවත් වේ
+Disable Location field: ස්ථාන ක්ෂේත්‍රය අක්‍රීය කරන්න
+disable-url-field-help: "ඔව්" තේරීමෙන් සිදුවීම් තොරතුරු පිටුවලින් "URL" ක්ෂේත්‍රය ඉවත් වේ
+Disable URL field: URL ක්ෂේත්‍රය අක්‍රීය කරන්න
+disable-priority-field-help: "ඔව්" තේරීමෙන් සිදුවීම් තොරතුරු පිටුවලින් "ප්‍රමුඛතා" ක්ෂේත්‍රය ඉවත් වන අතර නවකයින් සඳහා සරල අතුරු මුහුණතක් සපයයි.
+Disable Priority field: ප්‍රමුඛතා ක්ෂේත්‍රය අක්‍රීය කරන්න
+disable-access-field-help: "ඔව්" තේරීමෙන් සිදුවීම් තොරතුරු පිටුවලින් "ප්‍රවේශ" ක්ෂේත්‍රය ඉවත් වන අතර නවකතාකරුවන් සඳහා සරල අතුරු මුහුණතක් සපයයි.
+Disable Access field: ප්‍රවේශ ක්ෂේත්‍රය අක්‍රීය කරන්න
+disable-participants-field-help: "ඔව්" තේරීමෙන් සිදුවීම් තොරතුරු පිටුවලින් "සහභාගිවන්නන්" ක්ෂේත්‍රය ඉවත් වන අතර පරිශීලකයින් ඔවුන්ගේ සිදුවීම් වලට වෙනත් පරිශීලකයින් එකතු කිරීම වළක්වයි. ඔබ මෙම විකල්පය සක්‍රීය කරන්නේ නම්, "වෙනත් පරිශීලකයාගේ දින දර්ශන බැලීමට ඉඩ දෙන්න" යන ක්ෂේත්‍රයද අක්‍රීය කිරීමට ඔබට අවශ්‍ය විය හැකිය.
+Disable Participants field: සහභාගිවන්නන්ගේ ක්ෂේත්‍රය අක්‍රීය කරන්න
+disable-repeating-field-help: "ඔව්" තේරීමෙන් සිදුවීම් එකතු කිරීමේදී "පුනරාවර්තන" ක්ෂේත්‍රය ඉවත් වේ. මෙය සාමනේරයන් සඳහා සරල අතුරු මුහුණතක් සපයනු ඇත.
+Disable Repeating field: පුනරාවර්තන ක්ෂේත්‍රය අක්‍රීය කරන්න
+allow-html-description-help: සක්‍රිය කර ඇත්නම්, පරිශීලකයින්ට සිදුවීම් විස්තර ක්ෂේත්‍රය තුළ HTML ඇතුළත් කළ හැකිය. සක්‍රිය කර නොමැති නම්, සරල පෙළ ලෙස පෙනෙන පරිදි HTML ටැග් ගැලවී යනු ඇත. අවවාදයයි: මෙම අංගය සක්‍රීය කිරීමෙන් පරිශීලකයින්ට වෙනත් වෙබ් අඩවි වල පින්තූර යොමු කිරීමට ඉඩ ලැබේ.
+Allow HTML in Description: විස්තරයේ HTML වලට ඉඩ දෙන්න
+Popups: උත්පතන
+disable-popups-help: දින දර්ශන දර්ශන වලින් උත්පතන අක්‍රීය කරන්න
+Disable Pop-Ups: පොප්-අප් අක්‍රීය කරන්න
+popup-includes-siteextras-help: සක්‍රිය කර ඇත්නම්, site_extras.php ගොනුවේ අභිරුචි සිදුවීම් ක්ෂේත්‍ර සැකසීමට ඉඩ දෙන්න සිදුවීම් උත්පතන වල පෙන්වනු ඇත.
+Display Site Extras in popup: උත්පතන තුළ අඩවි අමතර දර්ශන පෙන්වන්න
+popup-includes-participants-help: සක්‍රිය කර ඇත්නම්, සහභාගිවන්නන් සිදුවීම් උත්පතන වල පෙන්වනු ලැබේ.
+Display Participants in popup: උත්පතන සඳහා සහභාගිවන්නන් පෙන්වන්න
+Miscellaneous: විවිධ
+remember-last-login-help: සක්‍රිය කර ඇති විට, පරිශීලක පිවිසුම ඔවුන් සඳහා පිවිසුම් පිටුවේ පුරවනු ඇත (නමුත් මුරපදය නොවේ), සහ පරිශීලකයාගේ මනාපයන් පටවනු ලැබේ (ඔවුන්ගේ කැමති වර්ණ හා භාෂා තේරීම ඇතුළුව).
+Remember last login: අවසන් පිවිසුම මතක තබා ගන්න
+summary_length-help: දින දර්ශන දර්ශනවල කෙටි විස්තරයේ උපරිම දිග
+Brief Description Length: කෙටි විස්තරය දිග
+user_sort-help: පරිශීලක, නොනූසර් ලැයිස්තු සඳහා වර්ග කිරීමේ අනුපිළිවෙල තීරණය කරයි
+User Sort Order: පරිශීලක වර්ග කිරීමේ ඇණවුම
+Lastname, Firstname: අන්තිම නම, පළමු නම
+Firstname, Lastname: මුල් නම අවසාන නම
+allow-public-access-help: සක්‍රිය කර ඇති විට, පරිශීලකයින්ට පුරනය වීමට අවශ්‍ය නොවන කියවීමට පමණක් පොදු දින දර්ශනයක් ලෙස දින දර්ශනය භාවිතා කළ හැකිය.
+Allow public access: මහජන ප්‍රවේශයට ඉඩ දෙන්න
+public-access-default-visible: පොදු දින දර්ශනයේ සිදුවීම් සියලුම පරිශීලකයින්ගේ දින දර්ශනවල ස්වයංක්‍රීයව දිස්වනු ඇත
+Public access visible by default: පොදු ප්‍රවේශය පෙරනිමියෙන් දැකිය හැකිය
+public-access-default-selected: නව සිදුවීමක් එකතු කරන විට, පොදු පරිශීලකයා පෙරනිමියෙන් සහභාගිවන්නෙකු ලෙස තෝරා ගනු ලැබේ.
+Public access is default participant: පොදු ප්‍රවේශය සුපුරුදු සහභාගිවන්නා වේ
+public-access-view-others-help: පොදු ප්‍රවේශය සමඟ පද්ධතියට ප්‍රවේශ වන විට, පරිශීලකයාට වෙනත් දින දර්ශන පරිශීලකයෙකුගේ දින දර්ශනය බැලීමට හැකිද යන්න නියම කරයි.
+Public access can view other users: පොදු ප්‍රවේශයට වෙනත් පරිශීලකයින් නැරඹිය හැකිය
+public-access-can-add-help: සක්‍රිය කර ඇති විට, පොදු ප්‍රවේශය හරහා පද්ධතියට ප්‍රවේශ වන පරිශීලකයින්ට නව සිදුවීම් එක් කිරීමට හැකි වනු ඇත, නමුත් පරිපාලක විසින් නව සිදුවීම අනුමත කරන තුරු ඒවා දින දර්ශනයේ නොපෙන්වයි.
+Public access can add events: මහජන ප්‍රවේශයට සිදුවීම් එකතු කළ හැකිය
+public-access-add-requires-approval-help: පොදු ප්‍රවේශ ගිණුම හරහා එකතු කරන ලද සිදුවීම් ප්‍රදර්ශනය කිරීමට පෙර අනුමැතිය අවශ්‍යද යන්න නියම කරයි.
+Public access new events require approval: මහජනතාවට ප්‍රවේශ වීම නව සිදුවීම් සඳහා අනුමැතිය අවශ්‍ය වේ
+public-access-sees-participants-help: සක්‍රිය කර ඇත්නම්, පොදු ගිණුමෙන් දින දර්ශනයට ප්‍රවේශ වන පරිශීලකයින්ට යම් සිදුවීමක් පිළිබඳ විස්තර බැලුවහොත් සිදුවීම් සහභාගිවන්නන් දැක ගත හැකිය.
+Public access can view participants: මහජන ප්‍රවේශයට සහභාගිවන්නන් නැරඹිය හැකිය
+public-access-override-help: සිදුවීම් නාම සහ විස්තර පොදු දින දර්ශනයේ සැඟවීමට ඉඩ දෙන්න
+Override event name/description for public access: පොදු ප්‍රවේශය සඳහා සිදුවීම් නම / විස්තරය අභිබවා යන්න
+public-access-override-text-help: ඉහත විකල්පය සක්‍රීය කර ඇත්නම් පෙන්විය යුතු පෙළ. 'ලබා ගත නොහැක' නම්, එය පරිවර්තනය වේ.
+Text to display to public access: පොදු ප්‍රවේශයට පෙන්වීමට පෙළ
+public-access-captcha-help: සක්‍රිය කර ඇත්නම්, මහජනතාව විසින් එකතු කරන ලද නව සිදුවීම් සඳහා කැප්චා වලංගු කිරීමක් අවශ්‍ය වේ.
+Require CAPTCHA validation for public access new events: නව සිදුවීම් සඳහා මහජන ප්‍රවේශය සඳහා කැප්චා වලංගු කිරීම අවශ්‍ය වේ
+uac-enabled-help: පරිශීලක මට්ටමේ ප්‍රවේශ පාලනය සක්‍රීය කරයි
+User Access Control enabled: පරිශීලක ප්‍රවේශ පාලනය සක්‍රීය කර ඇත
+groups-enabled-help: කණ්ඩායම් සහාය සක්‍රීය කරයි, කණ්ඩායම් අනුව පරිශීලකයින් තෝරා ගැනීමට පරිශීලකයින්ට ඉඩ දෙයි.
+Groups enabled: කණ්ඩායම් සක්‍රීය කර ඇත
+user-sees-his-group-help: සක්‍රිය කර ඇත්නම්, අවම වශයෙන් එක් කණ්ඩායමකවත් නැති දින දර්ශන භාවිතා කරන්නන් පරිශීලකයින්ට නොපෙනේ.
+User sees only his groups: පරිශීලකයා දකින්නේ ඔහුගේ කණ්ඩායම් පමණි
+nonuser-enabled-help: සක්‍රිය කර ඇත්නම්, පරිපාලකවරුන්ට නොබැඳි දින දර්ශන එක් කිරීමට විකල්පයක් ඇත
+Nonuser enabled: Nonuser දින දර්ශන සක්‍රීය කර ඇත
+nonuser-list-help: සහභාගිවන්නාගේ ලැයිස්තුවේ භාවිතා නොකරන දින දර්ශන පෙන්විය යුතු ස්ථානය
+Nonuser list: සහභාගිවන්නන්ගේ ලැයිස්තුවේ ප්‍රදර්ශනය කරන්න
+Upcoming Events: ඉදිරියට එන සිදුවීම්
+upcoming-events-help: Coming.php සක්‍රීය කරන්න
+Enabled: සක්‍රීය කර ඇත
+upcoming-events-allow-override: Coming.php සඳහා පරිශීලක පරාමිතියට ඉඩ දෙන්න
+Allow user override: පරිශීලක අභිබවා යාමට ඉඩ දෙන්න
+upcoming-events-display-caticons: Coming.php හි ප්‍රවර්ග අයිකන ඇතුළත් කරන්න
+Display category icons: ප්‍රවර්ග අයිකන පෙන්වන්න
+upcoming-events-display-layers: ඉදිරි ස්ථර වල ස්ථර පෙන්වන්න
+Display layers: ස්ථර පෙන්වන්න
+upcoming-events-display-links: Cominging.php හි සබැඳි පෙන්වන්න
+Display links to events: සිදුවීම් සඳහා සබැඳි පෙන්වන්න
+upcoming-events-display-popups: Event.php හි සිදුවීම් උත්පතන පෙන්වන්න
+Display event popups: සිදුවීම් උත්පතන පෙන්වන්න
+reports-enabled-help: සක්‍රිය කර ඇත්නම්, පරිශීලකයින්ට සෑම පිටුවකම පතුලේ “වාර්තා” අංශයක් පෙනෙනු ඇති අතර අභිරුචි වාර්තා නිර්මාණය කිරීමට ඉඩ දෙනු ලැබේ. ඊට අමතරව, පරිපාලක පරිශීලකයින්ට සියළුම පරිශීලකයින්ගේ පිටුවල පහළින් දිස්වන ගෝලීය වාර්තා නිර්මාණය කළ හැකිය.
+Reports enabled: වාර්තා සබල කර ඇත
+subscriptions-enabled-help: දුරස්ථ පරිශීලකයින්ට වෙබ් කැලැන්ඩර් භාවිතා කරන්නන්ගේ දින දර්ශනයට දායක විය හැකිදැයි නියම කරයි, එමඟින් වෙබ් කැලැන්ඩර් පරිශීලකයාගේ සිදුවීම් ඔවුන්ගේ iCal- සක්‍රීය යෙදුමේ (ඇපල් හි iCal හෝ මොසිල්ලා දින දර්ශනය වැනි) බැලීමට ඉඩ දෙයි.
+Allow remote subscriptions: දුරස්ථ දායකත්වයන්ට ඉඩ දෙන්න
+remotes-enabled-help: URL භාවිතා කරමින් දුරස්ථ ics ගොනු පූරණය කිරීමට පරිශීලකයින්ට ඉඩ දෙන්න
+Allow remote calendars: දුරස්ථ දින දර්ශන වලට ඉඩ දෙන්න
+rss-enabled-help: RSS සංග්‍රහයකින් පරිශීලකයාගේ දින දර්ශනය ලබා ගත හැකිදැයි නියම කරයි.
+Enable RSS feed: RSS පෝෂණය සක්‍රීය කරන්න
+categories-enabled-help: සිදුවීම් කාණ්ඩ සඳහා සහාය සක්‍රීය කරයි.
+Categories enabled: ප්‍රවර්ග සක්‍රීය කර ඇත
+icon_upload-enabled-help: සක්‍රිය කර ඇත්නම්, පරිශීලකයින්ට ප්‍රවර්ග අයිකන උඩුගත කළ හැකිය
+Category Icon Upload enabled: ප්‍රවර්ග අයිකන උඩුගත කිරීම සක්‍රීය කර ඇත
+(Requires XXX folder to exist.): (XXX ෆෝල්ඩරය පැවතීමට අවශ්‍යයි.)
+display-tasks-help: මාස සහ දින කැලැන්ඩරයේ කුඩා කාර්ය කවුළුව පෙන්වන්න
+Display small task list: කුඩා කාර්ය ලැයිස්තුව පෙන්වන්න
+display-tasks-in-grid-help: සිදුවීම් සමඟ දින දර්ශනවල කාර්යයන් පෙන්වන්න
+Display tasks in Calendars: දින දර්ශන තුළ කාර්යයන් පෙන්වන්න
+allow-external-users-help: දින දර්ශනය නොවන පරිශීලකයෙකුට සිදුවීමකට එකතු කළ හැකිද යන්න නියම කරයි. මෙය දින දර්ශන නොවන පරිශීලකයින්ට සිදුවීම් සහභාගීවන්නන් ලෙස ලැයිස්තු ගත කිරීමට ඉඩ දෙයි.
+Allow external users: බාහිර පරිශීලකයින්ට ඉඩ දෙන්න
+external-can-receive-notification-help: බාහිර පරිශීලකයින් සක්‍රීය කර ඇති විට සහ විද්‍යුත් තැපැල් භාවිතය සක්‍රීය කළ විට, සිදුවීම එකතු කළ විට, යාවත්කාලීන වූ විට හෝ මකා දැමූ විට බාහිර පරිශීලකයින්ට විද්‍යුත් තැපැල් දැනුම්දීම් ලැබිය හැකිය (බාහිර පරිශීලකයාගේ විද්‍යුත් තැපැල් ලිපිනය සපයා ඇත්නම්).
+External users can receive email notifications: බාහිර පරිශීලකයින්ට විද්‍යුත් තැපැල් දැනුම්දීම් ලබා ගත හැකිය
+external-can-receive-reminder-help: බාහිර පරිශීලකයින් සක්‍රිය කර ඊමේල් භාවිතය සක්‍රීය කළ විට බාහිර පරිශීලකයින්ට විද්‍යුත් තැපැල් මතක් කිරීම් ලබා ගත හැකිය (බාහිර පරිශීලකයාගේ විද්‍යුත් තැපැල් ලිපිනය සපයා ඇත්නම්).
+External users can receive email reminders: බාහිර පරිශීලකයින්ට විද්‍යුත් තැපැල් මතක් කිරීම් ලබා ගත හැකිය
+allow-self-registration-help: නව පරිශීලකයින්ට ලියාපදිංචි වීමට අවසර දෙන්න
+Allow self-registration: ස්වයං ලියාපදිංචි වීමට ඉඩ දෙන්න
+use-blacklist-help: IP ලිපිනය මත පදනම්ව WebCalendar කාර්යයන් සඳහා ප්‍රවේශය සීමා කරන්න
+Restrict self-registration to blacklist: ස්වයං-ලියාපදිංචිය අසාදු ලේඛනයට සීමා කරන්න
+allow-self-registration-full-help: නව පරිශීලකයින්ට මාර්ගගතව ස්වයං ලියාපදිංචි කිරීමේ ක්‍රියාවලිය සම්පූර්ණ කිරීමට ඉඩ දෙන්න
+Use self-registration email notifications: මුරපද ජනනය කර නව පරිශීලකයින් වෙත යවන්න
+allow-attachment-help: සිදුවීම් වලට ගොනු ඇමුණුම් එක් කිරීමට පරිශීලකයින්ට ඉඩ දෙන්න.
+Allow file attachments to events: සිදුවීම් සඳහා ගොනු ඇමුණුම් වලට ඉඩ දෙන්න
+Admin and owner can always add attachments if enabled.: සක්‍රිය කර ඇත්නම් පරිපාලක සහ හිමිකරුට සෑම විටම ඇමුණුම් එකතු කළ හැකිය.
+allow-comments-help: සිදුවීම් වලට අදහස් එක් කිරීමට පරිශීලකයින්ට ඉඩ දෙන්න.
+Allow comments to events: සිදුවීම් වලට අදහස් දැක්වීමට ඉඩ දෙන්න
+Admin and owner can always add comments if enabled.: සක්‍රිය කර ඇත්නම් පරිපාලක සහ හිමිකරුට සෑම විටම අදහස් එකතු කළ හැකිය.
+email-enabled-help: දැනුම්දීම් සහ මතක් කිරීම් සඳහා සියලුම විද්‍යුත් තැපැල් යැවීම සක්‍රිය හෝ අක්‍රිය කරන්න. ඔබගේ සේවාදායකය තැපැල් යැවීමට නිසි ලෙස සකසා නොමැති නම් "නැත" ලෙස සකසන්න.
+Email enabled: විද්‍යුත් තැපෑල සක්‍රීය කර ඇත
+email-default-sender: මතක් කිරීම් යවන විට යවන්නා ලෙස සඳහන් කිරීමට විද්‍යුත් තැපැල් ලිපිනය නියම කරයි.
+Default sender address: පෙරනිමි යවන්නාගේ ලිපිනය
+email-mailer: ඊමේල් වර්ගය තෝරන්න (SMTP, PHP mail, sendmail)
+Email Mailer: ඊමේල් මේලර්
+email-smtp-host: කොමා මඟින් වෙන් කරන ලද SMTP සේවාදායකයේ ධාරක නාමය
+SMTP Host name(s): SMTP සත්කාරක නාමය (ය)
+email-smtp-port: SMTP වරාය අංකය (සාමාන්‍යයෙන් 25)
+SMTP Port Number: SMTP වරාය අංකය
+email-smtp-auth: SMTP සත්‍යාපනය භාවිතා කරන්න
+SMTP Authentication: SMTP සත්‍යාපනය
+email-smtp-username: සත්‍යාපනය භාවිතා කරන්නේ නම් SMTP පරිශීලක නාමය
+SMTP Username: SMTP පරිශීලක නාමය
+email-smtp-password: සත්‍යාපනය භාවිතා කරන්නේ නම් SMTP මුරපදය
+SMTP Password: SMTP මුරපදය
+Default user settings: පෙරනිමි පරිශීලක සැකසුම්
+email-format: HTML හෝ සරල කෙටි පණිවිඩ සඳහා මනාපයන් සඳහන් කරන්න
+Email format preference: විද්‍යුත් තැපැල් ආකෘති මනාපය
+HTML: =
+Plain Text: සරල පෙළ
+email-include-ics: විද්‍යුත් තැපැල් පණිවිඩයට iCalendar ICS ගොනුවක් ඇතුළත් කරන්න
+Include iCalendar attachments: ICalendar ඇමුණුම් ඇතුළත් කරන්න
+email-event-reminders-help: සිදුවීම් මතක් කිරීම් යැවිය යුතුද නැද්ද යන්න නියම කරයි.
+Event reminders: සිදුවීම් මතක් කිරීම්
+email-event-added: ඔබගේ දින දර්ශනයට සිදුවීමක් එකතු කළ විට විද්‍යුත් තැපැල් දැනුම්දීම් යැවිය යුතුද නැද්ද යන්න නියම කරයි.
+Events added to my calendar: සිදුවීම් මගේ දින දර්ශනයට එක් කරන ලදි
+email-event-updated: ඔබගේ දින දර්ශනයේ සිදුවීමක් යාවත්කාලීන වූ විට විද්‍යුත් තැපැල් දැනුම්දීම් යැවිය යුතුද නැද්ද යන්න නියම කරයි.
+Events updated on my calendar: මගේ දින දර්ශනයේ සිදුවීම් යාවත්කාලීන විය
+email-event-deleted: ඔබගේ දින දර්ශනයෙන් සිදුවීමක් ඉවත් කළ විට විද්‍යුත් තැපැල් දැනුම්දීම් යැවිය යුතුද නැද්ද යන්න නියම කරයි.
+Events removed from my calendar: සිදුවීම් මගේ දින දර්ශනයෙන් ඉවත් කරන ලදි
+email-event-rejected: සහභාගිවන්නෙකු ඔබගේ දින දර්ශනයේ ඇති සිදුවීමක් ප්‍රතික්ෂේප කරන විට විද්‍යුත් තැපැල් දැනුම්දීම් යැවිය යුතුද නැද්ද යන්න නියම කරයි.
+Event rejected by participant: සහභාගිවන්නා විසින් සිදුවීම ප්‍රතික්ෂේප කරන ලදි
+email-event-create: ඇතුළත් කිරීම් නිර්මාතෘට විද්‍යුත් තැපෑලක් ලැබේද යන්න නියම කරයි
+Event that I create: මම නිර්මාණය කරන සිදුවීම
+Color options: වර්ණ විකල්ප
+Allow user to customize colors: වර්ණ අභිරුචිකරණය කිරීමට පරිශීලකයාට ඉඩ දෙන්න
+gradient-colors: සක්‍රීය නම් ශ්‍රේණියේ වර්ණ භාවිතා වේ. මෙය කාර්ය සාධනයට බෙහෙවින් බලපායි.
+Enable gradient images for background colors: පසුබිම් වර්ණ සඳහා ශ්‍රේණියේ රූප සක්‍රීය කරන්න
+Not available: ලද නොහැක
+Background Image options: පසුබිම් රූප විකල්ප
+bgimage-help: අපේක්ෂිත පසුබිම් රූපයේ URL. සාපේක්ෂ සබැඳියක් විය හැකිය.
+Background Image: පසුබිම් රූපය
+bgrepeat-help: පසුබිම් රූපයේ නැවත නැවත හැසිරීම පාලනය කරයි.
+Background Repeat: පසුබිම නැවත කරන්න
+
+########################################
+# Page: adminhome.php
+#
+Assistants: සහායකයින්
+Preferences: මනාප
+Control Panel: පාලන පුවරුව
+Users: පරිශීලකයින්
+Account: ගිණුම
+Categories: ප්රවර්ග
+Views: දසුන්
+Layers: ස්ථර
+Reports: වාර්තා
+Delete Events: සිදුවීම් මකන්න
+Activity Log: ක්‍රියාකාරකම් ලොගය
+System Log: පද්ධති ලොගය
+Security Audit: ආරක්ෂක විගණනය
+Public Preferences: මහජන මනාපයන්
+Unapproved Public Events: අනුමත නොකළ පොදු සිදුවීම්
+Administrative Tools: පරිපාලන මෙවලම්
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: අනුපිටපත් නම: "XXX".
+Username XXX already exists.: පරිශීලක නාමය "XXX" දැනටමත් පවතී.
+Email address XXX already exists.: "XXX" විද්‍යුත් තැපැල් ලිපිනය දැනටමත් පවතී.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): අමතර අදහස් (අත්‍යවශ්‍ය නොවේ)
+Approve and Send: අනුමත කර යවන්න
+Approve and Exit: අනුමත කර පිටවන්න
+(Your comments will be emailed to the event creator.): (ඔබගේ අදහස් සිදුවීම් නිර්මාතෘට විද්‍යුත් තැපැල් කරනු ලැබේ.)
+Hello, XXX.: හෙලෝ, XXX.
+XXX has approved an appointment and added comments.: හමුවීමක් අනුමත කර ඇති අතර අදහස් XXX විසින් එකතු කර ඇත.
+Subject XXX: විෂය: "XXX".
+Description XXX: විස්තරය: "XXX".
+Date XXX: දිනය: XXX
+Time XXX: වේලාව: XXX
+Comments XXX: අදහස්: XXX
+Approved w/Comments by XXX.: අනුමත w / අදහස්: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: පරිපාලක මාදිලිය
+Your assistants: ඔබේ සහායකයින්
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: නොදන්නා දෝෂයකි.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: වැඩසටහන් දෝෂය: XXX කිසිවක් දක්වා නැත!
+user: පරිශීලක
+year: වර්ෂය
+month: මස
+day: දින
+
+########################################
+# Page: category.php
+#
+Category Icon: ප්‍රවර්ග අයිකනය
+Global: ගෝලීය
+The permissions for the icons directory are set to read-only: අයිකන නාමාවලිය සඳහා අවසර කියවීමට පමණක් සකසා ඇත.
+Category Name: කාණ්ඩයේ නම:
+Color: වර්ණ
+Remove Icon: අයිකනය ඉවත් කරන්න:
+Add Icon to Category: කාණ්ඩයට අයිකනය එක් කරන්න
+Upload: උඩුගත කරන්න
+GIF or PNG 6kb max: GIF හෝ PNG 6kb උපරිම
+Search for existing icons: පවතින අයිකන සඳහා සොයන්න
+Add: එකතු කරන්න
+Delete: මකන්න
+Are you sure you want to delete this entry?: ඔබට මෙම ප්‍රවේශය මකා දැමීමට අවශ්‍ය බව විශ්වාසද?
+Make New Category: නව කාණ්ඩයක් සාදන්න
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: කාණ්ඩයේ නම අවශ්‍යයි
+File size exceeds maximum.: ගොනු ප්‍රමාණය උපරිම ඉක්මවයි.
+File is not a GIF or PNG image: ගොනුව GIF හෝ PNG රූපයක් නොවේ
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: ලබා ගත හැකි කාණ්ඩ
+ENTRY CATEGORIES: කාණ්ඩ ඇතුළත් කරන්න
+Remove: ඉවත් කරන්න
+Global Category: ගෝලීය කාණ්ඩය
+Cancel: අවලංගු කරන්න
+
+########################################
+# Page: colors.php
+#
+Add Custom: අභිරුචි එකතු කරන්න
+Basic Colors: මූලික වර්ණ
+Current Color: වත්මන් වර්ණය
+Custom Colors: අභිරුචි වර්ණ
+Old Color: පැරණි වර්ණය
+
+########################################
+# Page: combo.php
+#
+Select None: කිසිවක් තෝරන්න
+Agenda: න්‍යාය පත්‍රය
+Add Task: කාර්යය එක් කරන්න
+Description: විස්තර
+Date: දිනය
+Time: කාලයක්
+Priority: ප්‍රමුඛතාවය
+Access: ප්රවේශ
+Created by: නිර්මාණය කළේ
+Updated: යාවත්කාලීන කරන ලදි
+Participants: සහභාගිවන්නන්
+Attachments: ඇමුණුම්
+Comments: අදහස්
+Brief Description: කෙටි විස්තරය
+Full Description: සම්පූර්ණ විස්තරය
+Category: වර්ගය
+Add event detail: සිදුවීම් විස්තර එක් කරන්න
+Start Date: ආරම්භක දිනය
+Due Date: ගෙවිය යුතු දිනය
+Add task detail: කාර්ය විස්තර එකතු කරන්න
+All: සියළුම
+Error: දෝෂයකි
+no response from server: සේවාදායකයෙන් ප්‍රතිචාරයක් නොමැත
+JSON error: JSON දෝෂයකි
+High: ඉහළ
+Medium: මධ්යම
+Low: අඩු
+Today: අද
+Add Entry: ඇතුළත් කිරීම එක් කරන්න
+Unnamed Event: නම් නොකළ සිදුවීම
+Unnamed Task: නම් නොකළ කාර්යය
+Refresh: නැවුම් කරන්න
+Click to add entry: ප්‍රවේශය එක් කිරීමට ක්ලික් කරන්න
+Name: නම
+pm: ප.ව.
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX හමුවීමක් අවලංගු කර ඇත.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: අවලංගු බ්ලොබ් හැඳුනුම්පත
+
+########################################
+# Page: docadd.php
+#
+Add Comment: අදහස් එක් කරන්න
+Add Attachment: ඇමුණුම එක් කරන්න
+Subject: විෂය
+Comment: අදහස් දක්වන්න
+Upload file: ගොනුව උඩුගත කරන්න
+
+########################################
+# Page: docdel.php
+#
+Removed: ඉවත් කරන ලදි
+
+########################################
+# Page: edit_entry.php
+#
+days: දින
+hours: පැය
+minutes: මිනිත්තු
+You are not authorized to edit this task.: මෙම කාර්යය සංස්කරණය කිරීමට ඔබට අවසර නැත.
+is in a different timezone than you are. Currently: ඔබට වඩා වෙනස් කාල කලාපයක. දැන්
+hour ahead of you: ඔබට ඉදිරියෙන් පැයක්
+hour behind you: ඔබ පිටුපස පැයක්
+hours ahead of you: ඔබට පැය ගණනක් ඉදිරියෙන්
+hours behind you: ඔබට පිටුපස පැය
+XXX is in a different timezone (ahead): (XXX වෙනස් කාල කලාපයක පවතී; ඔබට ඉදිරියෙන්.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX වෙනස් කාල කලාපයක පවතී; ඔබට පිටුපසින්.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: මෙහි ඇතුළත් කළ කාලය ඔබගේ කාල කලාපය මත පදනම් වේ.
+Edit Entry: ප්‍රවේශය සංස්කරණය කරන්න
+Details: විස්තර
+Repeat: නැවත නැවත කරන්න
+Reminders: මතක් කිරීම්
+brief-description-help: මෙය සිද්ධියේ කෙටි විස්තරයක් (අක්ෂර 20 ක් පමණ) සැපයිය යුතුය. මෙය දින දර්ශනය නරඹන විට සිදුවීම නියෝජනය කරයි.
+full-description-help: මෙය සිදුවීම පිළිබඳ විස්තර සම්පූර්ණ කළ යුතුය. පරිශීලකයෙකු සිදුවීම නරඹන විට මෙම තොරතුරු දැකිය හැකිය.
+access-help: සිද්ධියේ ප්‍රවේශ මට්ටම නියම කරයි. <ul> <li> පොදු: සෑම දෙනාටම සිද්ධියේ සම්පූර්ණ තොරතුරු දැක ගත හැකිය.</li> <li> රහස්‍ය: අනෙක් අයට එම දිනය හා වේලාව සඳහා ඔබට ප්‍රවේශයක් ඇති බව දැකිය හැකිය, නමුත් එය කුමක්ද යන්න පිළිබඳ විස්තර නොවේ.</li></ul>
+priority-help: සිද්ධියේ ප්‍රමුඛතාවය නියම කරයි. ඉහළ ප්‍රමුඛතා සිදුවීම් තද අකුරින් පෙන්වනු ඇත.
+category-help: සිද්ධියේ වර්ගය නියම කරයි.
+completed-help: දිනය කාර්යය සම්පූර්ණයි. සියලුම සහභාගිවන්නන්ගේ ප්‍රතිශතය 100% ට සමාන වූ විට පමණි.
+Date Completed: දිනය සම්පූර්ණයි
+percent-help: මෙම පරිශීලකයා සඳහා කාර්ය සම්පූර්ණ කිරීමේ ප්‍රතිශතය
+Percent Complete: ප්‍රතිශතය සම්පූර්ණයි
+All Percentages: සියලුම ප්‍රතිශත
+location-help: සිදුවීම් ස්ථානය
+Location: ස්ථානය
+url-help: සිදුවීම් URL
+URL: =
+date-help: සිදුවීමේ දිනය නියම කරයි.
+Untimed event: නුසුදුසු සිදුවීම
+Timed event: කාලානුරූපී සිදුවීම
+All day event: දවස පුරා සිදුවීම
+Timezone Offset: කාල කලාප ඕෆ්සෙට්
+time-help: සිදුවීමේ වේලාව නියම කරයි. <ul> <li> "කාලානුරූපී සිදුවීම" (එදින නිශ්චිත වේලාවක් සඳහා සැලසුම් කර ඇති සිදුවීමක් සඳහා)</li> <li> "නොවරදින සිදුවීම" (සිදුවීමක් සඳහා මෙය කාලයක් නොමැත (නිවාඩු දිනයක් වැනි) )</li> <li> "දවස පුරා සිදුවීම" (දවස පුරා සිදුවන සිදුවීමක් සඳහා (කාර්යාලයෙන් පිටත සිටීම වැනි)</li></ul>
+duration-help: සිදුවීමේ කාලසීමාව (පැය; මිනිත්තු වලින්) නියම කරයි. <em>මෙම ක්ෂේත්‍රය හිස්ව තැබිය හැකිය.</em>
+end-time-help: සිදුවීම අවසන් වීමට අපේක්ෂා කරන කාලය නියම කරයි.
+Start Time: ආරම්භක වේලාව
+Due Time: නියමිත වේලාව
+Site Extras: අඩවි අමතර
+avail_participants-help: මෙම ප්‍රවේශයට සහභාගිවන්නන් ලැයිස්තුගත කරයි.
+Available: ඇත
+Find Name: නම සොයන්න
+Resources: සම්පත්
+participants-help: මෙම ප්‍රවේශයට සහභාගිවන්නන් ලැයිස්තුගත කරයි.
+Selected: තෝරා ඇත
+Availability: ලබා ගත හැකි
+external-participants-help: දින දර්ශනය භාවිතා කරන්නන් නොවන සිදුවීම සඳහා සහභාගිවන්නන්ගේ ලැයිස්තුවක් නියම කරයි. පරිශීලකයින් එක් පේළියකට එකක් ලැයිස්තුගත කළ යුතු අතර ඊමේල් ලිපිනයක් ඇතුළත් කළ හැකිය. විද්‍යුත් තැපැල් ලිපිනයක් නියම කර ඇත්නම්, දැනුම්දීම් සහ මතක් කිරීම් ලැබීමට පරිශීලකයා සුදුසුකම් ලබයි.
+External Participants: බාහිර සහභාගිවන්නන්
+repeat-type-help: සිද්ධිය කොපමණ වාරයක් පුනරාවර්තනය විය යුතුද යන්න තෝරන්න.
+Daily: දිනපතා
+Weekly: සතිපතා
+Monthly: මාසික
+by day: දවසින් දවස
+by date: දිනය අනුව
+by position: ස්ථානය අනුව
+Monthly (by day): මාසිකව (දවසින් දවස)
+Monthly (by date): මාසිකව (දිනය අනුව)
+Monthly (by position): මාසික (ස්ථානය අනුව)
+Yearly: වාර්ෂික
+Manual: අත්පොත
+Expert Mode: විශේෂඥ මාදිලිය
+repeat-end-date-help: සිදුවීම නැවත නැවත සිදුවිය යුතු දිනය නියම කරයි.
+Ending: අවසන් කිරීම
+Forever: සදහටම
+Use end date: අවසන් දිනය භාවිතා කරන්න
+Number of times: වාර සංඛ්යාව
+repeat-frequency-help: සිද්ධිය කොපමණ වාරයක් පුනරාවර්තනය විය යුතුද යන්න නියම කරයි.
+Frequency: සංඛ්‍යාතය
+Weekdays Only: සතියේ දින පමණි
+Week Start: සතිය ආරම්භය
+repeat-bydayextended-help: සතියේ දිනය මත පදනම්ව දිනය තෝරා ගැනීමට ඉඩ දෙන්න.
+ByDay: බයි ඩේ
+repeat-month-help: සිදුවීම පුනරාවර්තනය විය යුත්තේ කුමන මාසවලද යන්න නියම කරයි.
+ByMonth: =
+repeat-bysetpos-help: මාසය සමඟ පිහිටීම මත පදනම්ව දිනය තෝරා ගැනීමට ඉඩ දෙන්න.
+BySetPos: =
+repeat-bymonthdayextended-help: දිනය මත පදනම්ව දිනය තෝරා ගැනීමට ඉඩ දෙන්න.
+ByMonthDay: =
+repeat-byweekno-help: සිදුවීම පුනරාවර්තනය කිරීම සඳහා සති ලැයිස්තුවක් සඳහන් කිරීමට පරිශීලකයාට ඉඩ දෙන්න (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: සිදුවීම පුනරාවර්තනය කිරීම සඳහා වසර දින ලැයිස්තුවක් සඳහන් කිරීමට පරිශීලකයාට ඉඩ දෙන්න (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: මෙම සිදුවීම සිදුවිය යුතු හෝ නොකළ යුතු අතිරේක දින.
+Exclusions: බැහැර කිරීම්
+Inclusions: ඇතුළත් කිරීම්
+Add Exception: ව්‍යතිරේකය එක් කරන්න
+Add Inclusion: ඇතුළත් කිරීම එක් කරන්න
+Delete Selected: තෝරාගත් මකන්න
+Send Reminder: මතක් කිරීම යවන්න
+When: කවදා ද
+Use Date/Time: දිනය / වේලාව භාවිතා කරන්න
+Use Offset: ඕෆ්සෙට් භාවිතා කරන්න
+Before: කලින්
+After: පසු
+Start: ආරම්භ කරන්න
+End/Due: අවසානය / නියමිත කාලය
+Times: ටයිම්ස්
+Every: සෑම
+CAPTCHA Warning: අවවාදයයි: PHP හි GD දිගුව නොමැතිව CAPTCHA භාවිතා කළ නොහැක!<br>
+Delete entry: ප්‍රවේශය මකන්න
+You are not authorized to edit this entry.: මෙම ප්‍රවේශය සංස්කරණය කිරීමට ඔබට අවසර නැත.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX නව හමුවීමක් කර ඇත.
+XXX has updated an appointment.: XXX හමුවීමක් යාවත්කාලීන කර ඇත.
+Security violation!: ආරක්ෂක උල්ලං! නය කිරීම!
+You must enter the anti-spam text on the previous page.: ඔබ පෙර පිටුවේ ප්‍රති-අයාචිත තැපැල් පෙළ ඇතුළත් කළ යුතුය.
+The following conflicts with the suggested time: යෝජිත කාලය සමඟ පහත ගැටුම්
+User removed from participants list.: සහභාගිවන්නන්ගේ ලැයිස්තුවෙන් පරිශීලකයා ඉවත් කරන ලදි.
+Please look on XXX to accept or reject this appointment.: මෙම හමුවීම පිළිගැනීමට හෝ ප්‍රතික්ෂේප කිරීමට කරුණාකර XXX දෙස බලන්න.
+Please look on XXX to view this appointment.: මෙම හමුවීම බැලීමට කරුණාකර XXX දෙස බලන්න.
+Scheduling Conflict: ගැටුම් උපලේඛනගත කිරීම
+Your suggested time of: ඔබ යෝජනා කළ කාලය
+conflicts with the following existing calendar entries: පහත දැක්වෙන දින දර්ශන ඇතුළත් කිරීම් සමඟ ගැටෙයි
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX "config.php" හි සකසා නොමැත.
+word characters only: (අඩංගු විය හැක්කේ වචන අක්ෂර පමණි; [a-zA-Z_0-9])
+Add User: පරිශීලකයා එක් කරන්න
+Edit User: පරිශීලක සංස්කරණය කරන්න
+Calendar ID: දින දර්ශන හැඳුනුම්පත
+First Name: මුල් නම
+Last Name: අවසන් නම
+Is public calendar: පොදු දින දර්ශනයයි
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: දත්ත සමුදා දෝෂයකි
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: දුරස්ථ දින දර්ශනය එක් කරන්න
+Edit Remote Calendar: දුරස්ථ දින දර්ශනය සංස්කරණය කරන්න
+Create Layer: ස්තරය සාදන්න
+Reload: නැවත පූරණය කරන්න
+Required to View Remote Calendar: දුරස්ථ දින දර්ශනය බැලීමට අවශ්‍ය වේ
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: ප්‍රති .ල ආයාත කරන්න
+Events successfully imported: සිදුවීම් සාර්ථකව ආනයනය කරන ලදි
+Create a new layer to view this calendar.: මෙම දින දර්ශනය බැලීමට නව තට්ටුවක් සාදන්න.
+Errors: දෝෂ
+There was an error parsing the import file or no events were returned.: ආයාත ගොනුව විග්‍රහ කිරීමේදී දෝෂයක් හෝ සිදුවීම් කිසිවක් ආපසු ලබා දී නොමැත.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: හෙට
+Yesterday: ඊයේ
+Day before yesterday: පෙරේදා
+Next week: ලබන සතිය
+This week: මෙම සතිය
+Last week: ගිය සතිය
+Week before last: අවසන් සතියට පෙර සතිය
+Next week and week after: ඊළඟ සතිය සහ සතියෙන් පසුව
+This week and next week: මේ සතියේ සහ ඊළඟ සතියේ
+Last week and this week: පසුගිය සතිය සහ මේ සතිය
+Last two weeks: පසුගිය සති දෙක
+Next month: ලබන මාසයේ
+This month: මේ මාසයේ
+Last month: පසුගිය මාසයේ
+Month before last: අවසන් මාසයට පෙර
+Next year: ලබන වසර
+This year: මේ වසරේ
+Last year: ගිය අවුරුද්දේ
+Year before last: අවසන් වීමට පෙර වසර
+Next 14 days: ඊළඟ දින 14 යි
+Next 30 days: ඊළඟ දින 30 යි
+Next 60 days: ඊළඟ දින 60 යි
+Next 90 days: ඊළඟ දින 90 යි
+Next 180 days: ඊළඟ දින 180 යි
+Next 365 days: ඊළඟ දින 365
+Invalid report id XXX.: අවලංගු වාර්තා හැඳුනුම්පත: "XXX".
+Unnamed Report: නම් නොකළ වාර්තාව
+Add Report: වාර්තාව එක් කරන්න
+Edit Report: වාර්තාව සංස්කරණය කරන්න
+Report name: නම වාර්තා කරන්න
+User: පරිශීලක
+Current User: වත්මන් පරිශීලකයා
+Include link in menu: මෙනුවේ සබැඳිය ඇතුළත් කරන්න
+Include standard header/trailer: සම්මත ශීර්ෂකය / ට්‍රේලරය ඇතුළත් කරන්න
+Include previous/next links: පෙර / ඊළඟ සබැඳි ඇතුළත් කරන්න
+Include empty dates: හිස් දිනයන් ඇතුළත් කරන්න
+Date range: දිනය පරාසය
+Template variables: ආකෘති විචල්යයන්
+Page template: පිටු අච්චුව
+Day template: දින අච්චුව
+Event template: සිදුවීම් අච්චුව
+Are you sure you want to delete this report?: ඔබට මෙම වාර්තාව මකා දැමීමට අවශ්‍ය යැයි විශ්වාසද?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: එවැනි වාර්තා හැඳුනුම්පතක් නොමැත: "XXX".
+Variable XXX not found.: විචල්ය XXX හමු නොවීය.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: අභිරුචි ශීර්ෂය සංස්කරණය කරන්න
+Edit Custom Script/Stylesheet: අභිරුචි ස්ක්‍රිප්ට් / ස්ටයිල්ෂීට් සංස්කරණය කරන්න
+Edit Custom Trailer: අභිරුචි ට්‍රේලරය සංස්කරණය කරන්න
+
+########################################
+# Page: edit_user.php
+#
+Username: පරිශීලක නාමය
+E-mail address: විද්යුත් තැපැල් ලිපිනය
+Password: රහස් පදය
+again: යළි
+Disabled for demo: නිරූපණය සඳහා අක්‍රීය කර ඇත
+Are you sure you want to delete this user?: ඔබට මෙම පරිශීලකයා මකා දැමීමට අවශ්‍ය බව විශ්වාසද?
+Change Password: මුරපදය වෙනස් කරන්න
+New Password: නව මුරපදය
+Set Password: මුරපදය සකසන්න
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: පරිශීලකයින් මකා දැමීම සහාය නොදක්වයි.
+The passwords were not identical.: මුරපද සමාන නොවීය.
+You have not entered a password.: ඔබ මුරපදයක් ඇතුළත් කර නැත.
+Username cannot be blank.: පරිශීලක නාමය හිස් විය නොහැක.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: අවසර නැත
+
+########################################
+# Page: export.php
+#
+Export: අපනයන
+Export format: අපනයන ආකෘතිය
+Include all layers: සියලුම ස්ථර ඇතුළත් කරන්න
+Include deleted entries: මකා දැමූ ඇතුළත් කිරීම් ඇතුළත් කරන්න
+Export all dates: සියලුම දිනයන් අපනයනය කරන්න
+Start date: ආරම්භක දිනය
+End date: අවසාන දිනය
+Modified since: එතැන් සිට වෙනස් කරන ලදි
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: අපනයන ආකෘතිය අර්ථ දක්වා හෝ වැරදි නැත.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: පරිශීලකයෙකු නිශ්චිතව දක්වා නැත.
+
+########################################
+# Page: groups.php
+#
+Add New Group: නව කණ්ඩායමක් එක් කරන්න
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: නම් නොකළ කණ්ඩායම
+Add Group: කණ්ඩායම එකතු කරන්න
+Edit Group: කණ්ඩායම සංස්කරණය කරන්න
+Group name: කණ්ඩායම් නම
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: ඔබ කණ්ඩායම් නාමයක් සඳහන් කළ යුතුය
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: ස්වයංක්‍රීයව නැවුම් දින දර්ශන
+auto-refresh-help: සක්‍රිය කර ඇති විට, දිවා දර්ශනය, සතියේ දර්ශනය, මාස දර්ශනය සහ අනුමත නොකළ පිටු ලැයිස්තුගත කිරීම යන සියල්ලම වරින් වර ස්වයංක්‍රීයව නැවුම් වේ.
+Auto-refresh time: ස්වයංක්‍රීයව නැවුම් කිරීමේ කාලය
+auto-refresh-time-help: ස්වයංක්‍රීයව නැවුම්බව සක්‍රීය කර ඇත්නම්, මෙය එක් එක් නැවුම්බව අතර කාලය නියම කරයි.
+Display days with events in bold in year view: වසර දර්ශනය තුළ නිර්භීතව සිදුවීම් සමඟ දින පෙන්වන්න
+Display weekends in week view: සති අන්තයේ සති අන්ත ප්‍රදර්ශනය කරන්න
+Time interval: කාල විරාමය
+time-interval-help: සතියේ දර්ශනය සහ දිවා දර්ශනය තුළ කොපමණ කාලයක් ගතවේදැයි නියම කරයි.
+Nonuser: නොනූසර් දින දර්ශන
+user-customize-color: පරිශීලකයින්ට තමන්ගේම වර්ණ පටිපාටියක් වෙනස් කිරීමට අවසර තිබේද යන්න නියම කරයි.
+enable-gradient-help: සෛල පසුබිම් සඳහා ශ්‍රේණියේ වර්ණ භාවිතා කරන්න.
+Manually entering color values: වර්ණ අගයන් අතින් ඇතුල් කිරීම
+colors-help: සියලුම වර්ණ "#RRGGBB" ෂඩාස්රාකාර ආකෘතියෙන් සඳහන් කළ යුතු අතර එහිදී "RR" යනු රතු සඳහා හෙක්ස් අගය වන අතර "GG" යනු කොළ සඳහා හෙක්ස් අගය වන අතර "BB" යනු නිල් සඳහා හෙක්ස් අගයයි.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: දෝෂය වාර්තා කරන්න
+Please include all the information below when reporting a bug.: දෝෂයක් වාර්තා කිරීමේදී කරුණාකර පහත සියලු තොරතුරු ඇතුළත් කරන්න.
+Also, please use English rather than XXX.: එසේම, කරුණාකර XXX වෙනුවට  ඉංග්‍රීසි භාවිතා කරන්න.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: වෙබ් කැලැන්ඩර් ප්‍රලේඛනය
+Currently in English only.: දැනට ඉංග්‍රීසියෙන් පමණි.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: දින දර්ශන ඇතුළත් කිරීම / සංස්කරණය කිරීම
+Repeat Type: වර්ගය නැවත කරන්න
+For More Information...: වැඩි විස්තර සඳහා ...
+Repeat End Date: අවසන් දිනය නැවත කරන්න
+Repeat Day: දිනය නැවත කරන්න
+repeat-day-help: සිදුවීම නැවත සිදුවිය යුත්තේ සතියේ කුමන දිනවලද යන්න නියම කරයි.
+
+########################################
+# Page: help_import.php
+#
+Import: ආනයන
+Palm Desktop: පාම් ඩෙස්ක්ටොප් එක
+allow you to import entries from the Palm...: පාම් ඩෙස්ක්ටොප් දින පොතෙන් ප්‍රවේශයන් ආනයනය කිරීමට මෙම පෝරමය ඔබට ඉඩ සලසයි. එය ඔබගේ පාම් නාමාවලියෙහි datebook / datebook.dat හි ඔබේ පරිශීලක නාමය නම් කර ඇති උප බහලුමක තිබිය යුතුය.
+The following entries will not be imported: පහත ඇතුළත් කිරීම් ආනයනය නොකෙරේ:
+Entries older than the current date: වත්මන් දිනයට වඩා පැරණි ඇතුළත් කිරීම්
+Entries created in the Palm Desktop...: HotSync'd කර නැති පාම් ඩෙස්ක්ටොප් එකේ ඇතුළත් කිරීම්
+Anything imported from Palm...: පාම් වෙතින් ආනයනය කරන ඕනෑම දෙයක් ඊළඟ ආනයනයේදී නැවත ලියනු ලැබේ (සිදුවීම් දිනය පසු වී නොමැති නම්). එබැවින්, පාම් ඩෙස්ක්ටොප් එකේ යාවත්කාලීන කිරීම් කළ යුතුය.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: මෙම පෝරමය මඟින් vCalendar (.vcs) සිදුවීම් 1.0 ආනයනය කරනු ඇත.
+The following formats have been tested: පහත ආකෘති පරීක්ෂා කර ඇත:
+This form will import iCalendar (.ics) events.: මෙම පෝරමය iCalendar (.ics) සිදුවීම් ආනයනය කරයි.
+Enabling: සක්‍රීය කිරීම
+Overwrite Prior Import: පෙර ආනයනය නැවත ලියන්න
+will cause events imported previously...: කලින් ආනයනය කළ සිදුවීම්, නව ආනයන ගොනුවේ සිදුවීමක් ලෙස එකම UID භාවිතා කළ, මකාදැමූ ලෙස සලකුණු කිරීමට හේතු වේ. අනුපිටපත් නිර්මාණය නොකර යාවත්කාලීන කළ iCalendar ගොනුවක් ආනයනය කිරීමට මෙය ඉඩ දිය යුතුය.
+
+########################################
+# Page: help_index.php
+#
+Help Index: උදව් දර්ශකය
+About WebCalendar: වෙබ් දින දර්ශනය ගැන
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: ඔබගේ දින දර්ශනයේ වෙනත් පරිශීලකයින්ගේ සිදුවීම් ප්‍රදර්ශනය කිරීමට ස්ථර ප්‍රයෝජනවත් වේ. ඔබට පරිශීලකයා නියම කළ හැකි අතර සිදුවීම් දර්ශනය වන වර්ණය.
+Add/Edit/Delete: එකතු කරන්න / සංස්කරණය කරන්න / මකන්න
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: පිටුවේ පතුලේ ඇති පරිපාලක කොටසේ ඇති සංස්කරණ ස්ථර සබැඳිය ක්ලික් කිරීමෙන් ඔබට ස්ථර එකතු කිරීමට / සංස්කරණය කිරීමට / මකා දැමීමට ඉඩ දෙනු ඇත.
+The text color of the new layer that will be displayed in your calendar.: ඔබගේ දින දර්ශනයේ දර්ශනය වන නව ස්ථරයේ පෙළ වර්ණය.
+Disabling: අක්‍රීය කිරීම
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: ස්ථර අක්‍රිය කිරීම සඳහා පිටුවේ පතුලේ ඇති පරිපාලක කොටසේ ඇති අක්‍රීය ලේයර් සබැඳිය ඔබන්න.
+Duplicates: අනුපිටපත්
+If checked, events that are duplicates of your events will be shown.: පරීක්ෂා කර ඇත්නම්, ඔබගේ සිදුවීම්වල අනුපිටපත් වන සිදුවීම් පෙන්වනු ඇත.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: ස්ථර සක්‍රිය කිරීමට පිටුවේ පතුලේ ඇති පරිපාලක කොටසේ සක්‍රීය ලේයර් සබැඳිය ඔබන්න.
+Source: මූලාශ්රය
+Specifies the user that you would like to see displayed in your calendar.: ඔබගේ දින දර්ශනයේ දර්ශනය වීමට ඔබ කැමති පරිශීලකයා නියම කරයි.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: පෙරනිමි වර්ගය
+default-category-help: නව සිදුවීමක් පෙරනිමිය යුතු කාණ්ඩය නියම කරයි.
+When I am the boss: මම ලොක්කා වූ විට
+Email me event notification: සිදුවීම් දැනුම්දීම මට විද්‍යුත් තැපැල් කරන්න
+email-boss-notifications-help: සිදුවීම් දැනුම්දීම් ලෙස ලොක්කන්ට ඊමේල් ලැබෙන්නේ දැයි නියම කරයි.
+I want to approve events: මට සිදුවීම් අනුමත කිරීමට අවශ්‍යයි
+boss-approve-event-help: සහායකයින් විසින් එකතු කරන ලද සිදුවීම් අනුමත කිරීමට ලොක්කාට අවශ්‍ය වේද යන්න නියම කරයි.
+Subscribe/Publish: දායක වන්න / ප්‍රකාශ කරන්න
+Allow remote publishing: දුරස්ථ ප්‍රකාශනයට ඉඩ දෙන්න
+allow-remote-publishing-help: දුරස්ථ iCal සේවාදායකයෙකුට සිදුවීම් නැවත වෙබ් කැලැන්ඩරයට ප්‍රකාශයට පත් කළ හැකිදැයි නියම කරයි
+remote-publishing-url-help: වෙබ් කැලැන්ඩරයට නැවත දායක වීම සහ ප්‍රකාශනය කිරීම සඳහා iCal ග්‍රාහක යෙදුමේ භාවිතා කිරීමට URL පෙන්වයි.
+allow-remote-subscriptions-help: දුරස්ථ පරිශීලකයින්ට ඔබගේ දින දර්ශනයට දායක විය හැකිදැයි නියම කරයි, iCal- සක්‍රීය යෙදුමක (ඇපල් හි iCal හෝ මොසිල්ලා දින දර්ශනය වැනි) ඔබගේ සිදුවීම් බැලීමට ඔවුන්ට ඉඩ දෙයි.
+remote-subscriptions-url-help: ඔබගේ දින දර්ශනයට දායක වීමට දුරස්ථ පරිශීලකයින් භාවිතා කළ යුතු URL පෙන්වයි.
+Enable FreeBusy publishing: FreeBusy ප්‍රකාශන සක්‍රීය කරන්න
+freebusy-enabled-help: ICal FreeBusy ප්‍රමිතිය භාවිතයෙන් පරිශීලකයෙකුට ලබා ගත හැකි කාලය ලබා ගත හැකිදැයි නියම කරයි.
+freebusy-url-help: පරිශීලකයාගේ FreeBusy ලැයිස්තුවට ප්‍රවේශ වීමේ URL ය
+rss-feed-url-help: RSS සංග්‍රහයට ප්‍රවේශ වීමේ URL ය
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: පරිශීලක ප්‍රවේශය සහ අවසරයන් මනාව පාලනය කිරීමට ඉඩ දෙයි. පරිපාලක විසින් බලය පවරනු ලැබුවහොත් පරිශීලකයන්ට පෙරනිමි සහ තනි අවසරයක් ලබා දිය හැකිය.
+If disabled, this user cannot send you emails.: අක්‍රිය කර ඇත්නම්, මෙම පරිශීලකයා ඔබට ඊමේල් යැවිය නොහැක.
+If disabled, this user cannot see you in the participants list.: අක්‍රීය කර ඇත්නම්, මෙම පරිශීලකයාට සහභාගිවන්නන්ගේ ලැයිස්තුවේ ඔබව දැකිය නොහැක.
+If enabled, this user cannot view the details of any of your entries.: සක්‍රිය කර ඇත්නම්, මෙම පරිශීලකයාට ඔබගේ ඕනෑම ප්‍රවේශයක විස්තර බැලීමට නොහැක.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): ප්‍රකාශන අක්‍රීයයි (පරිපාලක)
+Publishing Disabled (User): ප්‍රකාශන අක්‍රීයයි (පරිශීලක)
+
+########################################
+# Page: icons.php
+#
+Click to Select: තේරීමට ක්ලික් කරන්න
+Current Icons on Server: සේවාදායකයේ වත්මන් අයිකන
+
+########################################
+# Page: import.php
+#
+import from file: ගොනුවෙන් ආයාත කරන්න
+Disabled: ආබාධිතයි
+Import format: ආයාත ආකෘතිය
+Exclude private records: පුද්ගලික වාර්තා බැහැර කරන්න
+Repeated items are imported separately. Prior imports are not overwritten.: නැවත නැවත අයිතම වෙන වෙනම ආනයනය කෙරේ. පෙර ආනයන නැවත ලියනු නොලැබේ.
+
+########################################
+# Page: import_handler.php
+#
+No file: ගොනුවක් නොමැත
+Error deleting palm events from webcalendar.: වෙබ් කැලැන්ඩරයෙන් තල් සිදුවීම් මකාදැමීමේ දෝෂයකි.
+Events from prior import marked as deleted: පෙර ආනයනයේ සිදුවීම් මකා දැමූ ලෙස සලකුණු කර ඇත
+Conflicting events: ගැටුම් සිදුවීම්
+The import file contained no data.: ආයාත ගොනුවේ දත්ත නොමැත.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: ඔබට මෙම ස්ථරය මකා දැමීමට අවශ්‍ය බව විශ්වාසද?
+Delete layer: ස්තරය මකන්න
+Edit layer: ස්තරය සංස්කරණය කරන්න
+Enable layers: ස්ථර සබල කරන්න
+Layer: ස්තරය
+Layers are currently disabled.: ස්ථර දැනට අක්‍රීය කර ඇත.
+Layers are currently enabled.: ස්ථර දැනට සක්‍රීය කර ඇත.
+Click to modify layers settings for XXX: XXX දින දර්ශනය සඳහා ස්ථර සැකසුම් වෙනස් කිරීමට මෙහි ක්ලික් කරන්න.
+Disable Layers: ස්ථර අක්‍රීය කරන්න
+Add layer: ස්තරය එක් කරන්න
+Add Layer: ස්තරය එක් කරන්න
+Edit Layer: ස්ථරය සංස්කරණය කරන්න
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: මනාපයන් යාවත්කාලීන කළ නොහැක
+Invalid entry id.: අවලංගු ප්‍රවේශ හැඳුනුම්පත.
+You cannot create a layer for yourself.: ඔබට ඔබටම තට්ටුවක් සෑදිය නොහැක.
+You can only create one layer for each user.: ඔබට එක් පරිශීලකයෙකු සඳහා එක් ස්ථරයක් පමණක් සෑදිය හැකිය.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: අනුමත කරන්න / තහවුරු කරන්න
+Approve Selected: තෝරාගත් දේ අනුමත කරන්න
+Check All: සියල්ල පරීක්ෂා කරන්න
+Emails Will Not Be Sent: ඊමේල් යවනු නොලැබේ
+Reject Selected: තෝරාගත් දේ ප්‍රතික්ෂේප කරන්න
+Reject: ප්‍රතික්ෂේප කරන්න
+Uncheck All: සියල්ල ඉවත් කරන්න
+View this entry: මෙම සටහන බලන්න
+No unapproved entries for XXX.: මේ සඳහා අනුමත නොකළ ප්‍රවේශයන් නොමැත: "XXX".
+Unapproved Entries: අනුමත නොකළ ප්‍රවේශයන්
+Approve this entry?: මෙම ප්‍රවේශය අනුමත කරනවාද?
+Reject this entry?: මෙම සටහන ප්‍රතික්ෂේප කරන්න?
+Approve Selected entries?: තෝරාගත් ඇතුළත් කිරීම් අනුමත කරනවාද?
+Reject Selected entries?: තෝරාගත් ඇතුළත් කිරීම් ප්‍රතික්ෂේප කරන්න?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: ඔබ පිවිසුම් සහ මුරපදයක් ඇතුළත් කළ යුතුය.
+Save login via cookies so I dont have to login next time.: කුකීස් හරහා පුරනය වීම සුරකින්න, ඊළඟ වතාවේ මට ප්‍රවේශ වීමට අවශ්‍ය නැත
+Login: ඇතුල් වන්න
+public: පොදු
+Access XXX calendar: XXX දින දර්ශනයට ප්‍රවේශ වන්න
+cookies-note: සටහන: මෙම යෙදුමට කුකී සක්‍රීය කිරීම අවශ්‍ය වේ.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: XXX පිවිසුමේ නීති විරෝධී අක්ෂර.
+Invalid login: වැරදි ප්රවේශයක්
+Activity login failure: පරිශීලක නාමය: "XXX", IP: "YYY".
+Error XXX: දෝෂය: "XXX".
+You have been logged out.: ඔබ ඉවත් වී ඇත.
+Access public calendar: පොදු දින දර්ශනයට ප්‍රවේශ වන්න
+Not yet registered? Register here!: තවම ලියාපදිංචි වී නැද්ද? මෙහි ලියාපදිංචි වන්න!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: එවැනි භාවිතා නොකරන දින දර්ශනයක් නොමැත: "XXX".
+This Calendar is not Public.: මෙම දින දර්ශනය පොදු නොවේ.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: නව NonUser දින දර්ශනය එක් කරන්න
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: පුරනය වීමක් නියම කළ යුතුය.
+No such nonuser calendar: එවැනි භාවිතා නොකරන දින දර්ශනයක් නොමැත
+
+########################################
+# Page: pref.php
+#
+Invalid theme: අවලංගු තේමාව
+Save Preferences: මනාපයන් සුරකින්න
+Public Access calendar: පොදු ප්‍රවේශ දින දර්ශනය
+Modify Non User Calendar Preferences: පරිශීලක නොවන දින දර්ශන මනාපයන් වෙනස් කරන්න
+Return to My Preferences: මගේ මනාපයන් වෙත ආපසු යන්න
+Custom Scripts: අභිරුචි පිටපත්
+Timezone Selection: කාල කලාප තේරීම
+Multiview: බහු දර්ශනය:
+entry-interval-help: ඇතුළත් වීමේ වේලාවන් සංස්කරණය කිරීමේදී මිනිත්තු පරතරය සකසයි
+Entry interval: ඇතුල්වීමේ පරතරය
+hour: පැය
+minute: විනාඩිය
+theme-reload-help: CSS හැඹිලිය නිසා, පිටු නැවත පූරණය කිරීම අවශ්‍ය විය හැකිය
+Page may need to be reloaded for new Theme to take effect: නව තේමාව ක්‍රියාත්මක වීමට පිටුව නැවත පූරණය කිරීමට අවශ්‍ය විය හැකිය
+display_byproxy-help: View_entry පිටුවේ සැබෑ නිර්මාතෘ පෙන්වන්න
+Display if created by Assistant: සහකාර විසින් නිර්මාණය කර ඇත්නම් දර්ශනය කරන්න
+allow-view-subscriptions-help: පුද්ගලික හෝ රහස්‍ය ඇතුළත් කිරීම් සඳහා දුරස්ථ ප්‍රවේශය සීමා කිරීමට ඉඩ දෙයි
+Allow remote viewing of: දුරස්ථව බැලීමට ඉඩ දෙන්න
+entries: ඇතුළත් කිරීම්
+
+########################################
+# Page: purge.php
+#
+Purging events for: සඳහා සිදුවීම් ඉවත් කිරීම
+Finished: අවසන්
+Back: ආපසු
+Check box to delete ALL events for a user: පරිශීලකයෙකු සඳහා  සියලු සිදුවීම් මකා දැමීමට කොටුව සලකුණු කරන්න
+Delete all events before: පෙර සියලු සිදුවීම් මකන්න
+Purge deleted only: පිරිසිදු කිරීම මකා දමන ලදි
+Preview delete: පෙරදසුන මකන්න
+Are you sure you want to delete events for: ඔබට සිදුවීම් මකා දැමීමට අවශ්‍ය බව ඔබට විශ්වාසද?
+Records deleted from XXX: "XXX" වෙතින් වාර්තා මකා දමන ලදි.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: විද්‍යුත් තැපැල් ලිපිනය හිස් විය නොහැක.
+Username already exists.: පරිශීලක නාමය දැනටමත් පවතී.
+Email address already exists.: විද්‍යුත් තැපැල් ලිපිනය දැනටමත් පවතී.
+New user via self-registration.: ස්වයං ලියාපදිංචිය හරහා නව පරිශීලකයෙක්.
+A new WebCalendar account has been set up for you.: ඔබ වෙනුවෙන් නව වෙබ් කැලැන්ඩර් ගිණුමක් සකසා ඇත.
+Your username is XXX.: ඔබේ පරිශීලක නාමය: "XXX".
+Your password is XXX.: ඔබගේ මුරපදය: "XXX".
+Please visit XXX to log in and start using your account!: පුරනය වීමට කරුණාකර "XXX" වෙත ගොස් ඔබගේ ගිණුම භාවිතා කිරීම ආරම්භ කරන්න!
+You may change your password after logging in the first time.: පළමු වරට ලොග් වීමෙන් පසු ඔබට ඔබගේ මුරපදය වෙනස් කළ හැකිය.
+If you received this email in error: ඔබට මෙම විද්‍යුත් තැපෑල වැරදියට ලැබී ඇති අතර වෙබ් කැලැන්ඩර් ගිණුමක් සඳහා ලියාපදිංචි නොවී නම්, ඔබට මෙම දැන්වීම නොසලකා හැරිය හැකිය, නැතහොත් කෙටි සටහනකින් පිළිතුරු දෙන්න
+Administrator: පරිපාලක
+Welcome: සාදරයෙන් පිළිගනිමු
+New user via email.: නව පරිශීලකයෙකු විද්‍යුත් තැපෑල හරහා.
+Registration: ලියාපදිංචි කිරීම
+Welcome to WebCalendar: වෙබ් කැලැන්ඩරයට සාදරයෙන් පිළිගනිමු
+Your email should arrive shortly.: ඔබගේ විද්‍යුත් තැපෑල ළඟදීම පැමිණිය යුතුය.
+Return to Login screen: පිවිසුම් තිරයට ආපසු යන්න
+Password (again): මුර පදය නැවත වතාවක්):
+Your account information will be emailed to you.: ඔබගේ ගිණුම් තොරතුරු ඔබට විද්‍යුත් තැපැල් කරනු ලැබේ.
+Submit: ඉදිරිපත් කරන්න
+
+########################################
+# Page: reject_entry.php
+#
+Continue: දිගටම කරගෙන යන්න
+(Your comments will be emailed to the other participants.): (ඔබගේ අදහස් අනෙක් සහභාගිවන්නන්ට විද්‍යුත් තැපැල් කරනු ලැබේ.)
+XXX has rejected an appointment.: XXX හමුවීමක් ප්‍රතික්ෂේප කර ඇත.
+Rejected by XXX.: XXX විසින් ප්‍රතික්ෂේප කරන ලදි.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: නව දුරස්ථ දින දර්ශනය එක් කරන්න
+
+########################################
+# Page: report.php
+#
+This event is confidential.: මෙම සිදුවීම රහස්‍යයි.
+(Private): (පුද්ගලික)
+(cont.): =
+Approved: අනුමත කර ඇත
+Deleted: මකා දමන ලදි
+Rejected: ප්රතික්ෂේප කරන ලදි
+Waiting for approval: අනුමැතිය සඳහා බලා සිටීම
+Unknown: නොදන්නා
+Invalid report id.: අවලංගු වාර්තා හැඳුනුම්පත.
+Click here to manage reports for the Public Access calendar.: පොදු ප්‍රවේශ දින දර්ශනය සඳහා වාර්තා කළමනාකරණය කිරීමට මෙතන ක්ලික් කරන්න.
+Add new report: නව වාර්තාවක් එක් කරන්න
+Manage Reports: වාර්තා කළමනාකරණය කරන්න
+
+########################################
+# Page: search.php
+#
+Advanced Search: උසස් සෙවීම
+Search: සෙවීම
+Keywords: මූල පද
+Enter % for all entries: සියලුම ඇතුළත් කිරීම් සඳහා% ඇතුලත් කරන්න
+Include: ඇතුළත් කරන්න
+Filter by Date: දිනය අනුව පෙරහන් කරන්න
+All Dates: සියලුම දිනයන්
+Past: අතීතයේ
+Upcoming: ඉදිරියට
+Range: පරාසය
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: ඔබ සෙවුම් වචන එකක් හෝ කිහිපයක් ඇතුළත් කළ යුතුය.
+Search Results: සෙවුම් ප්‍රති .ල
+match found: තරගය හමු විය
+matches found: තරඟ හමු විය
+No matches found: තරඟ කිසිවක් හමු නොවීය
+New Search: නව සෙවීම
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: පහත දැක්වෙන තොරතුරු මඟින් ඔබේ වෙබ් කැලැන්ඩර් ස්ථාපනය සමඟ ඇති විය හැකි ගැටළු ලැයිස්තුගත කර ඇති අතර එය ඔබේ ස්ථාපනය වඩාත් ආරක්‍ෂිත කිරීම සඳහා වෙනස් කළ හැකිය.
+For questions about WebCalendar security see the forums: ඕනෑම WebCalendar ආරක්ෂණ ගැටළුවක් පිළිබඳ ප්‍රශ්න සඳහා, කරුණාකර GitHub.com හි සත්කාරකත්වය ඇති WebCalendar සංසද භාවිතා කරන්න;<br>XXX
+View your current PHP settings: ඔබගේ වර්තමාන PHP සැකසුම් බලන්න
+Security Issue: ආරක්ෂක ගැටළුව
+Status: තත්ත්වය
+Default admin user password: පෙරනිමි පරිපාලක පරිශීලක මුරපදය
+You should change the password of the default admin user.: සුපුරුදු පරිපාලක පරිශීලකයාගේ මුරපදය ඔබ වෙනස් කළ යුතුය.
+File permissions XXX: ගොනු අවසර: XXX
+item XXX should not be writable: පහත අයිතමය ලිවිය යුතු නොවේ:<br><tt> XXX</tt>
+File exists XXX: ගොනුව පවතී: "XXX"
+Because you have email disabled, you should remove this file.: ඔබට විද්‍යුත් තැපැල් අක්‍රීය කර ඇති නිසා, ඔබ මෙම ගොනුව ඉවත් කළ යුතුය.
+File location XXX: ගොනු ස්ථානය: "XXX"
+remove XXX if not using: ඔබ "XXX" ගොනුව භාවිතා නොකරන්නේ නම්, ඔබ එය මකා දැමිය යුතුය. නැතහොත්, අවම වශයෙන්, එය නව නාමාවලියකට ගෙන යන්න.
+System Settings XXX: පද්ධති සැකසුම්: "XXX"
+consider enabling UAC: පරිශීලක වරප්‍රසාද සැකසීමට පරිශීලක ප්‍රවේශ පාලනය සක්‍රීය කිරීම ගැන සලකා බැලීමට ඔබට අවශ්‍ය විය හැකිය.
+recommend approving new public events: සියලුම පොදු සිදුවීම් ඉදිරිපත් කිරීම් අනුමත කරන ලෙස අපි නිර්දේශ කරමු.
+recommend using CAPTCHA: නැවත ස්වයංක්‍රීය සිදුවීම් ඉදිරිපත් කිරීම් ආරක්ෂා කිරීම සඳහා කැප්චා නිර්දේශ කරනු ලැබේ.
+Database cache directory location: දත්ත සමුදාය හැඹිලි නාමාවලි පිහිටීම
+db cache should be inaccessable: දත්ත සමුදාය හැඹිලිය URL සමඟ ප්‍රවේශ විය නොහැකි නාමාවලියක තිබිය යුතුය.
+PHP Settings XXX: PHP සැකසුම්: "XXX"
+recommend setting XXX Off: "XXX" සඳහා නිර්දේශිත සැකසුම අක්‍රියයි.
+recommend setting allow_url_fopen Off: දුරස්ථ දින දර්ශන සක්‍රීය කර නොමැති විට "allow_url_fopen" සඳහා නිර්දේශිත සැකසුම අක්‍රියයි.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: වෙනත් පරිශීලක දින දර්ශනයක් බලන්න
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: ඔබ කිසිදු වර්ගයක් එකතු කර නැත.
+Set Category: වර්ගය සකසන්න
+Global Categories cannot be changed.: ගෝලීය කාණ්ඩ වෙනස් කළ නොහැක.
+
+########################################
+# Page: upcoming.php
+#
+more: තව
+
+########################################
+# Page: users.php
+#
+Remote Calendars: දුරස්ථ දින දර්ශන
+denotes administrative user: පරිපාලන පරිශීලකයා දක්වයි
+Add New User: නව පරිශීලකයෙකු එක් කරන්න
+
+########################################
+# Page: usersel.php
+#
+form: ආකෘතිය
+Reset: නැවත සකසන්න
+
+########################################
+# Page: views.php
+#
+Add New View: නව දසුනක් එක් කරන්න
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: නම් නොකළ දර්ශනය
+Add View: දර්ශනය එක් කරන්න
+Edit View: දර්ශනය සංස්කරණය කරන්න
+View Name: නම බලන්න
+View Type: වර්ගය බලන්න
+Day by Time: දවසින් දවස
+Week (Users horizontal): සතිය (පරිශීලකයින් තිරස්)
+Week by Time: සතිය අනුව
+Week (Users vertical): සතිය (පරිශීලකයින් සිරස්)
+Week (Timebar): සතිය (කාල තීරුව)
+Month (Timebar): මාසය (ටයිම්බාර්)
+Month (side by side): මාසය (පැත්තකින්)
+Month (on same calendar): මාසය (එකම දින දර්ශනයේ)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: ඔබ දර්ශන නමක් සඳහන් කළ යුතුය
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: මෙම දර්ශනය සඳහා පරිශීලකයින් නොමැත.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: කාර්ය ප්‍රතිශතය යාවත්කාලීන කරන්න
+Completed: සම්පුර්ණ කරන ලදි
+Assistant mode: සහකාර ප්‍රකාරය
+Declined: ප්රතික්ෂේප විය
+Needs-Action: අවශ්‍යතා-ක්‍රියාව
+by: විසින්
+Percentage Complete: ප්‍රතිශතය සම්පූර්ණයි
+External User: බාහිර පරිශීලකයා
+Update: යාවත්කාලීන කරන්න
+at: හිදී
+comments: අදහස්
+Show: පෙන්වන්න
+Hide: සඟවන්න
+Approve/Confirm entry: ප්‍රවේශය අනුමත කරන්න / තහවුරු කරන්න
+Reject entry: ඇතුළත් කිරීම ප්‍රතික්ෂේප කරන්න
+Set category: කාණ්ඩය සකසන්න
+Add to My Calendar: මගේ දින දර්ශනයට එක් කරන්න
+Copy entry: ඇතුළත් කිරීම පිටපත් කරන්න
+This will delete this entry for all users.: මෙය සියලුම පරිශීලකයින් සඳහා මෙම ප්‍රවේශය මකා දමනු ඇත.
+Edit entry: ප්‍රවේශය සංස්කරණය කරන්න
+Edit repeating entry for all dates: සියලුම දිනයන් සඳහා පුනරාවර්තන ප්‍රවේශය සංස්කරණය කරන්න
+Delete repeating event for all dates: සියලුම දිනයන් සඳහා පුනරාවර්තන සිදුවීම මකන්න
+Edit entry for this date: මෙම දිනය සඳහා ප්‍රවේශය සංස්කරණය කරන්න
+Delete entry only for this date: මෙම දිනය සඳහා පමණක් ප්‍රවේශය මකන්න
+Delete entry from calendar of XXX: XXX දින දර්ශනයෙන් ප්‍රවේශය මකන්න
+This will delete the entry from your XXX calendar.: මෙය ඔබගේ XXX දින දර්ශනයේ ඇතුළත් කිරීම මකා දමනු ඇත.
+boss: ලොක්කා '
+This will delete the entry from your boss calendar.: මෙය ඔබගේ ලොක්කාගේ දින දර්ශනයේ ඇතුළත් කිරීම මකා දමනු ඇත.
+This will delete the entry from your calendar.: මෙය ඔබගේ දින දර්ශනයේ ඇතුළත් කිරීම මකා දමනු ඇත.
+from your boss calendar: ඔබේ ලොක්කාගේ දින දර්ශනයෙන්
+Do you want to add this entry to your calendar?: ඔබගේ දින දර්ශනයට මෙම ප්‍රවේශය එක් කිරීමට ඔබට අවශ්‍යද?
+This will add the entry to your calendar.: මෙය ඔබගේ දින දර්ශනයට ප්‍රවේශය එක් කරයි.
+Email all participants: සියලුම සහභාගිවන්නන්ට විද්‍යුත් තැපැල් කරන්න
+Hide activity log: ක්‍රියාකාරකම් ලොගය සඟවන්න
+Show activity log: ක්‍රියාකාරකම් ලොගය පෙන්වන්න
+Export this entry to: මෙම ප්‍රවේශය අපනයනය කරන්න
+Palm Pilot: පාම් නියමුවා
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: නව ප්‍රවේශයක් එක් කිරීමට හිස් කොටුව මත දෙවරක් ක්ලික් කරන්න.
+
+########################################
+# Page: week_details.php
+#
+New Entry: නව ප්‍රවේශය
+cont.: =
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: තවත් පරිශීලක දින දර්ශනයක්
+Category Management: කාණ්ඩ කළමනාකරණය
+Day View: දින දර්ශනය
+Edit Event: සිදුවීම සංස්කරණය කරන්න
+Month View: මාසික දැක්ම
+Common Trailer: පොදු ට්‍රේලරය
+User Management: පරිශීලක කළමනාකරණය
+Manage Views: දර්ශන කළමනාකරණය කරන්න
+Week View: සති දර්ශනය
+Year View: වසර දර්ශනය
+Invalid function id: අවලංගු ශ්‍රිත හැඳුනුම්පත
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: "Settings.php" ගොනුව සොයාගත නොහැකි විය.<br>කරුණාකර "settings.php.orig" "settings.php" වෙත පිටපත් කර ඔබේ වෙබ් අඩවිය සඳහා සංස්කරණය කරන්න.
+Incomplete settings.php file...: අසම්පූර්ණ "settings.php" ගොනුව ...
+Could not find XXX defined in...: ඔබගේ "settings.php" ගොනුවේ අර්ථ දක්වා ඇති "XXX" සොයාගත නොහැකි විය.
+You must define XXX in: ඔබ "settings.php" ගොනුවේ "XXX" යන්න අර්ථ දැක්විය යුතුය.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: දෙසැම්බර්
+Dec: දෙසැ
+LANGUAGE DEFINED: භාෂාව අර්ථ දක්වා ඇත
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: දත්ත සමුදායට සම්බන්ධ වීමේ දෝෂය: "XXX".
+db_type not defined.: db_type අර්ථ දක්වා නැත.
+invalid db_type XXX: අවලංගු db_type "" XXX ".
+Cache cleared from previous SQL!: පෙර SQL වෙතින් හැඹිලිය ඉවත් කර ඇත!
+Error executing query.: විමසුම ක්‍රියාත්මක කිරීමේදී දෝෂයකි.
+Unfortunately, XXX is not implemented for YYY: අවාසනාවට, "XXX" (YYY) සඳහා ක්‍රියාත්මක නොවේ.
+Unknown ODBC error.: නොදන්නා ODBC දෝෂයකි.
+Error opening cache dir XXX.: හැඹිලිය විවෘත කිරීමේදී දෝෂයක් "XXX".
+delete: මකන්න
+Cache error Could not XXX file YYY.: හැඹිලි දෝෂය: XXX ගොනුව "YYY" කිරීමට නොහැකි විය.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: මාරාන්තික දෝෂයකි
+Invalid data format for: සඳහා වලංගු නොවන දත්ත ආකෘතිය
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: දෝෂය: ක්‍රියාකාරකම් ලොගය සඳහා ටයිප් කර නැත!
+This event is XXX.: මෙම සිදුවීම XXX වේ.
+Conf.: =
+exceeds limit of XXX events per day: දිනකට සිදුවීම් XXX සීමාව ඉක්මවයි
+on: මත
+All Attendees: සියලුම සහභාගිවන්නන්
+Busy: කාර්යබහුල
+Tentative: තාවකාලික
+Schedule an appointment for XXX.: XXX සඳහා හමුවීමක් උපලේඛනගත කරන්න: YYY.
+date_select: __dd__ __ මාස__ __yyyy__
+Event approved: සිදුවීම අනුමත කර ඇත
+Journal approved: ජර්නලය අනුමත කර ඇත
+Task approved: කාර්යය අනුමත කර ඇත
+Attachment: ඇමුණුම
+Event created: සිදුවීම නිර්මාණය විය
+Journal created: ජර්නලය නිර්මාණය කරන ලදි
+Task created: කාර්යය නිර්මාණය කරන ලදි
+Event deleted: සිදුවීම මකා දමන ලදි
+Journal deleted: ජර්නලය මකා දමන ලදි
+Task deleted: කාර්යය මකා දමන ලදි
+New user via email (self registration): නව පරිශීලකයෙකු විද්‍යුත් තැපෑල හරහා (ස්වයං ලියාපදිංචිය)
+New user (self registration): නව පරිශීලක (ස්වයං ලියාපදිංචිය)
+Notification sent: දැනුම්දීම යවන ලදි
+Event rejected: සිද්ධිය ප්‍රතික්ෂේප විය
+Journal rejected: ජර්නලය ප්‍රතික්ෂේප විය
+Task rejected: කාර්යය ප්‍රතික්ෂේප විය
+Reminder sent: මතක් කිරීම යවන ලදි
+Event updated: සිදුවීම යාවත්කාලීන කරන ලදි
+Journal updated: ජර්නලය යාවත්කාලීන කරන ලදි
+Task updated: කාර්යය යාවත්කාලීන කරන ලදි
+Delete User: පරිශීලකයා මකන්න
+WK: ඩබ්ලිව්.කේ
+TASKS: කාර්යයන්
+Task_Title: ශීර්ෂය
+Due: නියමිතයි
+Task Name: කාර්යයේ නම
+Task Due Date: කාර්ය නියමිත දිනය
+You have XXX unapproved entries: ඔබට XXX අනුමත නොකළ ප්‍රවේශයන් ඇත
+Changes successfully saved: වෙනස්කම් සාර්ථකව සුරකින ලදි
+Event: සිදුවීම
+Action: කටයුතු
+Printer Friendly: මුද්‍රණ යන්ත්‍රය මිත්‍රශීලීයි
+Generate printer-friendly version: මුද්‍රණ-හිතකාමී අනුවාදයක් ජනනය කරන්න
+after: අනතුරුව
+before: කලින්
+end: අවසානය
+start: ආරම්භ කරන්න
+View this event: මෙම සිද්ධිය බලන්න
+View this task: මෙම කාර්යය බලන්න
+January: ජනවාරි
+February: පෙබරවාරි
+March: මාර්තු
+April: අප්රේල්
+May_: මැයි
+June: ජූනි
+July: ජුලි
+August: අගෝස්තු
+September: සැප්තැම්බර්
+October: ඔක්තෝම්බර්
+November: නොවැම්බර්
+Jan: ජන
+Feb: පෙබරවාරි
+Mar: මාර්තු
+Apr: අප්‍රේල්
+May: මැයි
+Jun: ජුනි
+Jul: ජුලි
+Aug: අගෝස්තු
+Sep: සැප්තැම්බර්
+Oct: ඔක්
+Nov: නොවැම්බර්
+SU: =
+MO: =
+TU: =
+WE: අප
+TH: =
+FR: එෆ්.ආර්
+SA: එස්.ඒ.
+unknown-month: නොදන්නා මාසය
+First Quarter Moon: පළමු කාර්තුව සඳ
+Full Moon: පුර හඳ
+Last Quarter Moon: අවසාන කාර්තුව සඳ
+New Moon: නව සඳ
+Error TIME_SLOTS undefined!: දෝෂය: TIME_SLOTS නිර්වචනය කර නැත!
+The following error occurred: පහත දෝෂය සිදුවිය
+You are not authorized.: ඔබට අවසර නැත.
+Add N hours to: සඳහා පැය N එකතු කරන්න
+Subtract N hours from: සිට පැය N අඩු කරන්න
+same as: සමාන
+server time: සේවාදායක කාලය
+Cannot read timezone file XXX.: කාල කලාප ගොනුව කියවිය නොහැක: XXX.
+Your current GMT offset is XXX hours.: ඔබගේ වර්තමාන GMT ඕෆ්සෙට් පැය XXX වේ.
+Unauthorized: අනවසර
+Error approving event XXX.: සිදුවීම අනුමත කිරීමේ දෝෂය: XXX.
+Error deleting event XXX.: සිදුවීම මකාදැමීමේ දෝෂය: XXX.
+Error rejecting event XXX.: සිදුවීම ප්‍රතික්ෂේප කිරීමේ දෝෂය: XXX.
+Sunday: ඉරිදා
+Monday: සඳුදා
+Tuesday: අඟහරුවාදා
+Wednesday: බදාදා
+Thursday: බ්‍රහස්පතින්දා
+Friday: සිකුරාදා
+Saturday: සෙනසුරාදා
+Sun: ඉර
+Mon: සඳුදා
+Tue: අඟහරුවාදා
+Wed: බදාදා
+Thu: =
+Fri: සිකුරාදා
+Sat: සෙනසුරාදා
+unknown-weekday: නොදන්නා සතියේ දිනය
+Invalid referring URL: අවලංගු යොමු URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: දර්ශකය
+Documentation: ප්‍රලේඛනය
+Page: පිටුව
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: මගේ දින දර්ශනය
+Add New Entry: නව ප්‍රවේශයක් එක් කරන්න
+Add New Task: නව කාර්යයක් එක් කරන්න
+Logout: ලොග්අවුට්
+Home: ගෙදර
+Back to My Calendar: මගේ දින දර්ශනයට ආපසු යන්න
+Go to: යන්න
+Manage calendar of: හි දින දර්ශනය කළමනාකරණය කරන්න
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: බ්‍රව්සර් භාෂාව හමු නොවීය
+(not supported): (සහාය නොදක්වයි)
+Abkhazian: අබ්කාසියන්
+Acoli: ඇකෝලි
+Adangme: ඇඩැන්ග්මේ
+Adyghe: ඇඩිගේ
+Afar: අෆාර්
+Afrihili: අෆ්රිහිලි
+Afrikaans: අප්‍රිකානු
+Ainu: අයිනු
+Akan: අකාන්
+Akkadian: අක්කාඩියන්
+Albanian: ඇල්බේනියානු
+Aleut: ඇලූට්
+Algonquian: ඇල්ගොන්කියන්
+Altai (Southern): අල්ටයි (දකුණු)
+Amharic: අම්හාරික්
+Angika: ඇන්ජිකා
+Apache: අපාචි
+Arabic (Algeria): අරාබි (ඇල්ජීරියාව)
+Arabic (Bahrain): අරාබි (බහරේන්)
+Arabic (Egypt): අරාබි (ඊජිප්තුව)
+Arabic (Iraq): අරාබි (ඉරාකය)
+Arabic (Jordan): අරාබි (ජෝර්දානය)
+Arabic (Kuwait): අරාබි (කුවේට්)
+Arabic (Lebanon): අරාබි (ලෙබනනය)
+Arabic (Libya): අරාබි (ලිබියාව)
+Arabic (Morocco): අරාබි (මොරොක්කෝව)
+Arabic (Oman): අරාබි (ඕමානය)
+Arabic (Qatar): අරාබි (කටාර්)
+Arabic (Saudi Arabia): අරාබි (සෞදි අරාබිය)
+Arabic (Syria): අරාබි (සිරියාව)
+Arabic (Tunisia): අරාබි (ටියුනීසියාව)
+Arabic (U.A.E.): අරාබි (U.A.E.)
+Arabic (Yemen): අරාබි (යේමනය)
+Arabic: අරාබි
+Aragonese: අරගොනිස්
+Aramaic: ඇරමයික
+Arapaho: අරපහෝ
+Arawak: අරවක්
+Armenian: ආර්මේනියානු
+Assamese: අසාමාස්
+Asturian: ඇස්ටූරියන්
+Athapascan: අතපස්කන්
+Avaric: ඇවරික්
+Avestan: ඇවෙස්ටන්
+Awadhi: අවධි
+Aymara: අයිමාරා
+Azerbaijani: අසර්බයිජානි
+Balinese: බාලිනිස්
+Baluchi: බලුචි
+Bambara: බම්බර
+Bamileke: බැමිලේක්
+Banda: බණ්ඩා
+Basa: බාසා
+Bashkir: බෂ්කීර්
+Basque: බාස්ක්
+Beja: බෙජා
+Belarusian: බෙලාරුසියානු
+Bemba: බෙම්බා
+Bengali: බෙංගාලි
+Bhojpuri: භෝජ්පූරි
+Bihari: බිහාරි
+Bikol: බිකෝල්
+Bislama: බිස්ලාමා
+Blackfoot: බ්ලැක්ෆූට්
+Blin: බ්ලින්
+Bliss: ප්රමෝදය
+Bosnian: බොස්නියානු
+Braj: බ්‍රජ්
+Breton: බ්‍රිටන්
+Buginese: බුගිනිස්
+Bulgarian: බල්ගේරියානු
+Buriat: බුරියාට්
+Burmese: බුරුමය
+Caddo: කැඩ්ඩෝ
+Catalan: කැටලන්
+Cebuano: සෙබුවානෝ
+Chagatai: චගතායි
+Chamorro: චමෝරෝ
+Chechen: චෙචන්
+Cherokee: චෙරෝකි
+Cheyenne: චෙයින්
+Chibcha: චිබ්චා
+Chichewa: චිචෙවා
+Chinese (Hong Kong): චීන (හොංකොං)
+Chinese (PRC): චීන (PRC)
+Chinese (Simplified/GB2312): චීන (සරල / GB2312) 
+Chinese (Singapore): චීන (සිංගප්පූරුව)
+Chinese (Taiwan): චීන (තායිවානය)
+Chinese (Traditional/Big5): චීන (සාම්ප්‍රදායික / බිග් 5)
+Chinook: චිනූක්
+Chipewyan: චිපෙවන්
+Choctaw: චොක්ටාව්
+Chuukese: චුකීස්
+Chuvash: චුවාෂ්
+Coptic: කොප්ටික්
+Cornish: කෝනිෂ්
+Corsican: කෝර්සිකන්
+Cree: ක්‍රි
+Creek: ක්‍රීක්
+Croatian: ක්‍රොඒෂියානු
+Czech: චෙක්
+Dakota: ඩැකෝටා
+Danish: ඩෙන්මාර්ක
+Dargwa: දර්ග්වා
+Delaware: ඩෙලවෙයාර්
+Dinka: ඩින්කා
+Dogri: ඩොග්රි
+Dogrib: ඩොග්රිබ්
+Duala: ඩුවාලා
+Dutch (Belgium): ලන්දේසි (බෙල්ජියම)
+Dutch: ලන්දේසි
+Dyula: ඩියුලා
+Dzongkha: ඩොංකා
+Edo: එඩෝ
+Efik: එෆික්
+Ekajuk: ඒකජුක්
+Elamite: එලමයිට්
+English (Australia): ඉංග්‍රීසි (ඕස්ට්‍රේලියාව)
+English (Belize): ඉංග්‍රීසි (බෙලීස්)
+English (Canada): ඉංග්‍රීසි (කැනඩාව)
+English (Ireland): ඉංග්‍රීසි (අයර්ලන්තය)
+English (Jamaica): ඉංග්‍රීසි (ජැමෙයිකාව)
+English (New Zealand): ඉංග්‍රීසි (නවසීලන්තය)
+English (Philippines): ඉංග්‍රීසි (පිලිපීනය)
+English (South Africa): ඉංග්‍රීසි (දකුණු අප්‍රිකාව)
+English (Trinidad & Tobago): ඉංග්‍රීසි (ට්‍රිනිඩෑඩ් සහ ටොබැගෝ)
+English (United Kingdom): ඉංග්‍රීසි (එක්සත් රාජධානිය)
+English (United States): ඉංග්‍රීසි (එක්සත් ජනපදය)
+English (Zimbabwe): ඉංග්‍රීසි (සිම්බාබ්වේ)
+English: ඉංග්‍රීසි-එක්සත් ජනපදය
+Erzya: අර්සියා
+Esperanto: එස්පෙරාන්තෝ
+Estonian: එස්තෝනියානු
+Ewe: ඊව්
+Ewondo: එවොන්ඩෝ
+Fang: ෆැන්ග්
+Fanti: ෆැන්ටී
+Faroese: ෆාරෝස්
+Fijian: ෆිජියන්
+Filipino: පිලිපීන
+Finnish: ෆින්ලන්ත
+Fon: ෆොන්
+French (Belgium): ප්‍රංශ (බෙල්ජියම)
+French (Canada): ප්‍රංශ (කැනඩාව)
+French (France): ප්‍රංශ (ප්‍රංශය)
+French (Luxembourg): ප්‍රංශ (ලක්සම්බර්ග්)
+French (Monaco): ප්‍රංශ (මොනාකෝ)
+French (Switzerland): ප්‍රංශ (ස්විට්සර්ලන්තය)
+French: ප්‍රංශ
+Frisian (Eastern): ෆ්‍රිෂියන් (නැගෙනහිර)
+Frisian (Northern): ෆ්‍රිෂියන් (උතුරු)
+Frisian (Western): ෆ්‍රිෂියන් (බටහිර)
+Frisian: ෆ්‍රිෂියන්
+Friulian: ෆ්රියුලියන්
+Fulah: ෆුලා
+Ga: ගා
+Galibi: ගලිබි
+Galician: ගැලීසියානු
+Ganda: ගාන්ධා
+Gayo: ගයෝ
+Gbaya: ගබායා
+Geez: ගීස්
+Georgian: ජෝර්ජියානු
+German (Austria): ජර්මානු (ඔස්ට්‍රියාව)
+German (Germany): ජර්මානු (ජර්මනිය)
+German (Liechtenstein): ජර්මානු (ලිච්ටෙන්ස්ටයින්)
+German (Luxembourg): ජර්මානු (ලක්සම්බර්ග්)
+German (Standard): ජර්මානු (සම්මත)
+German (Switzerland): ජර්මානු (ස්විට්සර්ලන්තය)
+German: ජර්මානු
+Gilbertese: ගිල්බර්ටිස්
+Gondi: ගොන්ඩි
+Gorontalo: ගොරන්ටාලෝ
+Gothic: ගොතික්
+Grebo: ග්‍රෙබෝ
+Greek: ග්‍රීක
+Greenlandic: ග්‍රීන්ලන්ත
+Guarani: ගුරානි
+Gujarati: ගුජරාටි
+Gwich&#39;in: ග්විචින්
+Haida: හයිඩා
+Haitian (Creole): හයිටි (ක්‍රෙයෝල්)
+Haitian: හයිටි
+Hausa: හවුසා
+Hawaiian: හවායි
+Hebrew: හෙබ්‍රෙව්
+Herero: හෙරේරෝ
+Hiligaynon: හිලිගෙයිනොන්
+Hindi: හින්දි
+Hiri Motu: හිරි මෝටු
+Hittite: හිත්තයිට්
+Hmong: හ්මොන්ග්
+Holo (Taiwanese): හොලෝ (තායිවාන)
+Hungarian: හංගේරියානු
+Hupa: හූපා
+Iban: ඉබාන්
+Icelandic: අයිස්ලන්ත
+Ido: මම කරනවා
+Igbo: ඉග්බෝ
+Iloko: ඉලෝකෝ
+Indonesian: ඉන්දුනීසියානු
+Ingush: ඉන්ගුෂ්
+Inuktitut: ඉනුක්ටිටුට්
+Inupiaq: ඉනුපියාක්
+Iranian: ඉරාන
+Irish (Gaelic): අයිරිෂ් (ගේලික්)
+Irish: අයිරිෂ්
+Iroquoian: ඉරොක්වියානු
+Italian (Switzerland): ඉතාලි (ස්විට්සර්ලන්තය)
+Italian: ඉතාලි
+Japanese: ජපන්
+Javanese: ජාවානි
+Judeo-Arabic: ජූඩෝ-අරාබි
+Judeo-Persian: ජූඩෝ-පර්සියානු
+Kabardian: කබාර්ඩියන්
+Kabyle: කබිල්
+Kachin: කචින්
+Kalaallisut: කලලිසුට්
+Kalmyk: කල්මික්
+Kamba: කම්බා
+Kannada: කන්නඩ
+Kanuri: කනුරි
+Kara-Kalpak: කරා-කල්පක්
+Karachay-Balkar: කරච්චේ-බෝල්කාර්
+Karelian: කරේලියන්
+Kashmiri: කාශ්මීරය
+Kashubian: කෂුබියන්
+Kawi: කවි
+Kazakh: කසකස්
+Khasi: කාසි
+Khmer (Central): ඛමර් (මධ්‍යම)
+Khmer: ඛමර්
+Khotanese: කොතානිස්
+Kikuyu: කිකුයු
+Kimbundu: කිම්බුන්ඩු
+Kinyarwanda: කිනියර්වන්ද
+Kirghiz: කිර්ගිස්
+Klingon: ක්ලින්ගන්
+Komi: කෝමි
+Kongo: කොංගෝ
+Konkani: කොන්කනි
+Korean (Johab): කොරියානු (ජොහාබ්)
+Korean (North): කොරියානු (උතුර)
+Korean (South): කොරියානු (දකුණ)
+Korean: කොරියානු
+Kosraean: කොස්රාන්
+Kpelle: =
+Kuanyama: ක්වාන්යාමා
+Kumyk: කුම්මික්
+Kurdish: කුර්දි
+Kutenai: කුටෙනෙයි
+Kyrgyz: කිර්ගිස්
+Ladino: ලැඩිනෝ
+Lahnda: ලාන්ඩා
+Lamba: ලැම්බා
+Lao: ලාඕ
+Latin: ලතින්
+Latvian: ලැට්වියානු
+Lezghian: ලෙස්ජියන්
+Limburgan: ලිම්බර්ගන්
+Lingala: ලින්ගල
+Lithuanian: ලිතුවේනියානු
+Lojban: ලොජ්බන්
+Lozi: ලොසි
+Luba-Katanga: ලූබා-කටංග
+Luba-Lulua: ලූබා-ලුලුවා
+Luiseno: ලුයිසෙනෝ
+Lunda: ලුන්ඩා
+Luo: ලුඕ
+Lushai: ලුෂායි
+Luxembourghish: ලක්සම්බර්ග්
+Macedonian: මැසිඩෝනියානු
+Madurese: මදුරීස්
+Magahi: මාගහි
+Maithili: මයිතිලි
+Makasar: මාකසාර්
+Malagasy: මැලගසි
+Malay: මැලේ
+Malayalam: මලයාලම්
+Maldivian: මාලදිවයින්
+Maltese: මෝල්ටිස්
+Manchu: මැන්චු
+Mandar: මන්දර්
+Mandingo: මැන්ඩින්ගෝ
+Manipuri: මනිපුරි
+Manx: මැන්ක්ස්
+Maori: මාඕරි
+Mapuche: මාපුචේ
+Marathi: මරාති
+Mari: මාරි
+Marshallese: මාෂලීස්
+Marwari: මාර්වාරි
+Masai: මසායි
+Mayan: මායාන්
+Mende: මෙන්ඩේ
+Mi&#39;kmaq: මික්මාක්
+Minangkabau: මිනංකාබාවු
+Mirandese: මිරැන්ඩිස්
+Mohawk: මොහව්ක්
+Moksha: මෝක්ෂ
+Moldavian: මෝල්ඩේවියානු
+Mongo: මොන්ගෝ
+Mongolian: මොන්ගෝලියානු
+Montenegrin: මොන්ටිනිග්‍රින්
+Moroccan: මොරොක්කෝව
+Mossi: මොසි
+Myanmar: මියන්මාරය
+Māori: මාඕරි
+N&#39;Ko: එන්'කෝ
+Nauru: නා uru රූ
+Navajo: නවාජෝ
+Ndebele (North): නෙඩෙබෙල් (උතුර)
+Ndebele (South): නෙඩෙබෙල් (දකුණ)
+Ndebele: නෙඩෙබෙල්
+Ndonga: =
+Neapolitan: නියපොතු
+Nepali: නේපාලය
+Nias: නියාස්
+Niuean: නියුආන්
+Nogai: නොගායි
+Norse: නොර්ස්
+Norwegian (Bokmål): නෝර්වීජියානු (බොක්මාල්)
+Norwegian (Nynorsk): නෝර්වීජියානු (නයිනෝර්ස්ක්)
+Norwegian: නෝර්වීජියානු
+Nyamwezi: නියාම්වේසි
+Nyankole: නයන්කෝල්
+Nyoro: නියෝරෝ
+Nzima: නසීමා
+Occitan: ඔක්සිටන්
+Odia: ඔඩියා
+Ojibwa: ඔජිබ්වා
+Oriyia: ඔරියා
+Oromo: ඔරොමෝ
+Osage: ඔසාජ්
+Ossetic: ඔසෙටික්
+Pahlavi: පහලවි
+Palauan: පලවාන්
+Pali: පාලි
+Pampanga: පම්පංග
+Pangasinan: පන්ගසිනන්
+Panjabi: පන්ජාබි
+Papiamento: පැපියාමෙන්ටෝ
+Pashto: පැෂ්ටෝ
+Pedi: පෙඩි
+Persian (Farsi): පර්සියානු (ෆාර්සි)
+Persian (Iran): පර්සියානු (ඉරානය)
+Persian: පර්සියානු
+Phoenician: ෆිනීෂියානු
+Pohnpeian: පොන්පියන්
+Polish: පෝලන්ත
+Portuguese: පෘතුගීසි
+Portuguese/Brazil: පෘතුගීසි / බ්‍රසීලය 
+Punjabi (India): පන්ජාබි (ඉන්දියාව)
+Punjabi (Pakistan): පන්ජාබි (පකිස්ථානය)
+Punjabi: පන්ජාබි
+Quechua: කෙචුවා
+Rajasthani: රාජස්ථාන්
+Rapanui: රාපානුයි
+Rarotongan: රාරොටොංගන්
+Rhaeto-Romanic: රයිටෝ-රොමේනික්
+Romanian: රුමේනියානු
+Romansh: රෝමන්ෂ්
+Romany: රෝමනි
+Rundi: රුන්ඩි
+Russian (Moldavia: රුසියානු (මෝල්ඩාවියාව
+Russian (Republic of Moldova): රුසියානු (මෝල්ඩෝවා ජනරජය)
+Russian: රුසියානු
+Sami (Inari): සාමි (ඉනාරි)
+Sami (Lappish): සාමි (ලැපිෂ්)
+Sami (Lule): සාමි (ලූල්)
+Sami (Northern): සාමි (උතුරු)
+Sami (Skolt): සාමි (ස්කොල්ට්)
+Sami (Southern): සාමි (දක්ෂිණ)
+Sami: සාමි
+Samoan: සැමෝවන්
+Samoli: සමෝලි
+Sandawe: සැන්ඩාවේ
+Sango: සැන්ගෝ
+Sanskrit: සංස්කෘත
+Santali: සන්තාලි
+Sardinian: සාඩීනියානු
+Sasak: සසැක්
+Scots (Gaelic): ස්කොට්ලන්තය (ගේලික්)
+Selkup: සෙල්කප්
+Serbian (Upper): සර්බියානු (ඉහළ)
+Serbian: සර්බියානු
+Serer: සෙරර්
+Sesotho: සෙසෝතෝ
+Shan: ෂාන්
+Shona: ෂෝනා
+Sichuan Yi: සිචුවාන් යී
+Sicilian: සිසිලියානු
+Sindhi: සින්දි
+Sinhala: සිංහල
+Slavic: ස්ලාවික්
+Slovak: ස්ලෝවැක්
+Slovenian: ස්ලොවේනියානු
+Sogdian: සොග්ඩියන්
+Somali: සෝමාලි
+Somani: සෝමනි
+Songhai: සොන්හායි
+Soninke: සොනින්කේ
+Sorbian (Lower): සෝර්බියන් (පහළ)
+Sorbian (Upper): සෝර්බියන් (ඉහළ)
+Sorbian: සෝර්බියන්
+Sotho: සොතෝ
+Spanish (Argentina): ස්පා Spanish ් ((ආර්ජන්ටිනාව)
+Spanish (Bolivia): ස්පා Spanish ් ((බොලිවියාව)
+Spanish (Chile): ස්පා Spanish ් ((චිලී)
+Spanish (Colombia): ස්පා Spanish ් ((කොලොම්බියාව)
+Spanish (Costa Rica): ස්පා Spanish ් ((කොස්ටාරිකාව)
+Spanish (Dominican Republic): ස්පා Spanish ් ((ඩොමිනිකන් ජනරජය)
+Spanish (Ecuador): ස්පා Spanish ් ((ඉක්වදෝරය)
+Spanish (El Salvador): ස්පා Spanish ් ((එල් සැල්වදෝරය)
+Spanish (Guatemala): ස්පා Spanish ් ((ග්වාතමාලාව)
+Spanish (Honduras): ස්පා Spanish ් ((හොන්ඩුරාස්)
+Spanish (Mexico): ස්පා Spanish ් ((මෙක්සිකෝව)
+Spanish (Nicaragua): ස්පා Spanish ් ((නිකරගුවාව)
+Spanish (Panama): ස්පා Spanish ් ((පැනමාව)
+Spanish (Paraguay): ස්පා Spanish ් ((පැරගුවේ)
+Spanish (Peru): ස්පා Spanish ් ((පේරු)
+Spanish (Puerto Rico): ස්පා Spanish ් ((පුවර්ටෝ රිකෝ)
+Spanish (Spain): ස්පා Spanish ් ((ස්පා Spain ්) ය)
+Spanish (Uruguay): ස්පා Spanish ් ((උරුගුවේ)
+Spanish (Venezuela): ස්පා Spanish ් ((වෙනිසියුලාව)
+Spanish: ස්පාඤ්ඤ
+Sranan Tongo: ශ්‍රනාන් ටොංගෝ
+Sukuma: සුකුමා
+Sumerian: සුමේරියානු
+Sundanese: සුන්දනීස්
+Susu: සුසු
+Sutu: සුතු
+Swahili: ස්වහීලී
+Swati: ස්වාති
+Swedish (Finland): ස්වීඩන් (ෆින්ලන්තය)
+Swedish (Sweden): ස්වීඩන් (ස්වීඩනය)
+Swedish: ස්වීඩන්
+Syriac: සිරියැක්
+Tagalog: ටගාලොග්
+Tahitian: ටහීටියානු
+Tai: තායි
+Taiwan: තායිවානය
+Tajik: ටජික්
+Tamashek: තමෂේක්
+Tamil: දෙමළ
+Tatar: ටාටාර්
+Telugu: තෙළිඟු
+Tereno: ටෙරෙනෝ
+Tetum: ටෙටුම්
+Thai: තායි
+Tibetan: ටිබෙට්
+Tigre: ටයිග්‍රේ
+Tigrinya: ටයිග්‍රින්යා
+Timne: ටිම්නේ
+Tlingit: ටිලිංගිට්
+Tok Pisin: ටොක් පිසින්
+Tokelau: ටොකේලව්
+Tonga (Nytmhasa): ටොංගා (නයිට්මාසා)
+Tonga (Tonga Islands): ටොංගා (ටොංගා දූපත්)
+Tonga: ටොංගා
+Tsimshian: සිම්ෂියන්
+Tsonga: සොන්ගා
+Tswana: ෂ්වානා
+Tumbuka: තුම්බුකා
+Turkish: තුර්කි
+Turkmen: ටර්ක්මන්
+Tuvinian: ටුවීනියානු
+Twi: ට්වී
+Udmurt: උඩ්මර්ට්
+Ugaritic: උගරිටික්
+Ukrainian: යුක්රේන
+Umbundu: උම්බුන්ඩු
+Urdu: උර්දු
+Uyghur: උයිගර්
+Uzbek: උස්බෙක්
+Vai: වයි
+Venda: වෙන්ඩා
+Vietnamese: වියට්නාම
+Volapük: වොලපෙක්
+Votic: =
+Wakashan: වකාෂාන්
+Walloon: වොලූන්
+Waray: වරේ
+Washo: වොෂෝ
+Welsh: වේල්ස්
+Wolaitta: වොලයිටා
+Wolof: වොලොෆ්
+Xhosa: ෂෝසා
+Yakut: යකුට්
+Yao: යාඕ
+Yapese: යපීස්
+Yiddish: ඉඩිෂ්
+Yorùbá: යෝරාබේ
+Yupik: යුපික්
+Zande: සැන්ඩේ
+Zapotec: සැපොටෙක්
+Zaza: සාසා
+Zenaga: සෙනගා
+Zhuang: ෂුවාං
+Zulu: සුලූ
+Browser-defined: බ්‍රව්සරය අර්ථ දක්වා ඇත
+event: සිද්ධිය
+journal: ජර්නලය
+0: 0                                                  
+1: 1                                                  
+2: 2                                                  
+3: 3                                                  
+4: 4                                                  
+5: 5                                                  
+6: 6                                                  
+7: 7                                                  
+8: 8                                                  
+9: 9                                                  
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: අවලංගු පරිශීලක පිවිසුම
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: වැරදි මුරපදය
+no such user: එබඳු පරිශීලකයෙකු නොමැත
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: ගිණුම අබල කර ඇත
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: අන්තරය
+Months: මාස
+Month Days: මාස දින
+Days: දින
+Weeks: සති
+Position: තනතුර
+Until: දක්වා
+Count: ගණන් කරන්න
+Inclusion Dates: ඇතුළත් කිරීමේ දිනයන්
+Exclusion Dates: බැහැර කිරීමේ දිනයන්
+Event Imported: සිදුවීම ආයාත කර ඇත
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: බයිට්
+kb: =
+Mb: එම්.බී.
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: දැනුම්දීම
+authenticate: SMTP දෝෂය: සත්‍යාපනය කළ නොහැක
+connect_host: SMTP දෝෂය: SMTP ධාරකයට සම්බන්ධ වීමට නොහැකි විය:
+data_not_accepted: SMTP දෝෂය: දත්ත භාරගෙන නොමැත
+encoding: නොදන්නා කේතීකරණ:
+execute: ක්‍රියාත්මක කිරීමට නොහැකි විය:
+file_access: ගොනුවට ප්‍රවේශ විය නොහැක:
+file_open: ගොනු දෝෂය ගොනුව විවෘත කළ නොහැක:
+from_failed: ලිපිනයෙන් අසමත් විය:
+instantiate: තැපැල් ක්‍රියාකාරිත්වය ක්ෂණිකව කිරීමට නොහැකි විය
+mailer_not_supported: තැපැල්කරුට සහය නොදක්වයි
+provide_address: ඔබ අවම වශයෙන් එක් ලබන්නෙකුගේ විද්‍යුත් තැපැල් ලිපිනයක්වත් ලබා දිය යුතුය.
+recipients_failed: SMTP දෝෂය: පහත ලබන්නන් අසමත් විය:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: ග්‍රැෆික් වලින් දැක ඇති අක්‍ෂර ඇතුළත් කරන්න
+Enter the correct letters and numbers...: රූපයේ සිට නිවැරදි අකුරු සහ අංක පෙළ කොටුවට ඇතුළත් කරන්න. මෙම කුඩා පරීක්ෂණය අනිෂ්ට බොට් වලට ප්‍රවේශවීමේ සීමාව ලෙස සේවය කරයි. මෙම ග්‍රැෆික් කියවීමට අපහසු නම් පිටුව නැවත පූරණය කරන්න
+Challenge/Response: අභියෝගය / ප්‍රතිචාරය
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: මෙම සටහනේ දිනය හා වේලාව වෙනස් කරන්න?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: ඔබ කෙටි විස්තරයක් ඇතුළත් කර නැත
+time prior to work hours...: වැඩ කරන වේලාවට පෙර කාලය ...
+Invalid Event Date: අවලංගු සිදුවීම් දිනය
+Please add a participant: කරුණාකර සහභාගිවන්නෙකු එක් කරන්න 
+Invalid Date: අවලංගු දිනය
+You have not entered a valid time of day: ඔබ වලංගු දවසේ වේලාවක් ඇතුළත් කර නැත. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: දින දර්ශන හැඳුනුම්පත හිස් විය නොහැක. 
+First and last names cannot both be blank.: පළමු සහ අවසාන නම් දෙකම හිස් විය නොහැක. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: වලංගු නොවන වර්ණය
+Color format should be RRGGBB.: වර්ණ ආකෘතිය #RRGGBB විය යුතුය. 
+URL cannot be blank.: URL හිස් විය නොහැක.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: ගොනු වර්ගය ආයාත ආකෘතියට නොගැලපේ 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: ලේඛන පසුබිම සඳහා වලංගු නොවන වර්ණය.
+Invalid color for document title.: ලේඛන මාතෘකාව සඳහා වලංගු නොවන වර්ණය.
+Invalid color for table cell background.: වගු සෛල පසුබිම සඳහා වලංගු නොවන වර්ණය.
+Invalid color for table cell background for today.: අද දින වගු සෛල පසුබිම සඳහා වලංගු නොවන වර්ණය.
+Invalid work hours.: අවලංගු වැඩ කාලය.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: සේවාදායක URL එක කප්පාදුවකින් අවසන් විය යුතුය (/).
+Invalid color for table grid.: වගු ජාලකය සඳහා වලංගු නොවන වර්ණය.
+Invalid color for event popup background.: සිදුවීම් උත්පතන පසුබිම සඳහා වලංගු නොවන වර්ණය.
+Invalid color for event popup text.: සිදුවීම් උත්පතන පෙළ සඳහා වලංගු නොවන වර්ණය.
+Invalid color for table header text.: වගු ශීර්ෂ පා .ය සඳහා වලංගු නොවන වර්ණය.
+Invalid color for table header background.: වගු ශීර්ෂ පසුබිම සඳහා වලංගු නොවන වර්ණය.
+Server URL is required.: සේවාදායක URL අවශ්‍යයි.
+Invalid Color: වලංගු නොවන වර්ණය
+Database Name: දත්ත සමුදායේ නම
+Full Path (no backslashes): සම්පූර්ණ මාර්ගය (බැක්ස්ලෑෂ් නැත) 
+The password contains illegal characters.: මුරපදයේ නීති විරෝධී අක්ෂර අඩංගු වේ.
+Error you must specify a Single-User Login: දෝෂය: ඔබ තනි පරිශීලක පිවිසුමක් නියම කළ යුතුය
+Could not find XXX.: XXX සොයාගත නොහැකි විය.
+Could not find XXX in DOM.: DOM හි XXX සොයාගත නොහැකි විය.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: මෙම සතිය
+This Month: මේ මාසයේ
+This Year: මේ වසරේ
+Exit: පිටවීම
+Add New Event: නව සිදුවීමක් එක් කරන්න
+Delete Entries: ඇතුළත් කිරීම් මකන්න
+My Views: මගේ දසුන්
+Manage Calendar of: දින දර්ශනය කළමනාකරණය කරන්න
+My Reports: මගේ වාර්තා
+My Profile: මගේ පැතිකඩ
+Public Calendar: මහජන දින දර්ශනය
+Unapproved Events: අනුමත නොකළ සිදුවීම්
+User Manager: පරිශීලක කළමනාකරු
+Help Contents: අන්තර්ගතයට උදව් කරන්න
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: දත්ත සමුදා හැඹිලි නාමාවලිය
+Create New: අලුතින් නිර්මාණය කරන්න
+Failure Reason: අසමත් වීමට හේතුව:
+You must manually create database: ඔබ අතින් දත්ත සමුදාය නිර්මාණය කළ යුතුය.
+Single-User: තනි පරිශීලක
+Test Settings: පරීක්ෂණ සැකසුම්
+Timezone Conversion Successful: කාල කලාප පරිවර්තනය සාර්ථකයි
+WebCalendar Installation Wizard Step XXX: වෙබ් කැලැන්ඩර් ස්ථාපන විශාරද පියවර XXX
+Password Accepted: මුරපදය පිළිගෙන ඇත
+Successful Login: සාර්ථක පිවිසුම
+Password Incorrect: මුරපදය වැරදිය
+Invalid Login: වැරදි ප්රවේශයක්
+Display Errors: දර්ශන දෝෂ පෙන්වන්න
+File Uploads: ගොනු උඩුගත කිරීම්
+Allow URL fopen: URL fopen ට ඉඩ දෙන්න (අවශ්‍ය වන්නේ දුරස්ථ දින දර්ශන භාවිතා කරන්නේ නම් පමණි)
+Safe Mode: ආරක්ෂිත ප්‍රකාරය
+Safe Mode Allowed Vars: ආරක්ෂිත ප්‍රකාරයට අවසර ලත් වර්‍ග (TZ අවශ්‍ය වන්නේ ආරක්ෂිත ප්‍රකාරය සක්‍රිය නම් පමණි)
+GD: GD (ශ්‍රේණියේ රූප පසුබිම් සඳහා අවශ්‍ය වේ)
+Passwords do not match!: මුරපද නොගැලපේ!
+Unable to write password to settings.php file: "Setting.php" ගොනුවට මුරපදය ලිවිය නොහැක.
+Password Updated: මුරපදය යාවත්කාලීන කරන ලදි
+Password has been set: මුරපදය සකසා ඇත.
+Connection Successful...: සම්බන්ධතාවය සාර්ථකයි ස්ථාපනය දිගටම කරගෙන යාමට කරුණාකර ඊළඟ පිටුවට යන්න.
+Correct your entries or click the Create New...: ස්ථාපනය දිගටම කරගෙන යාමට ඔබගේ ඇතුළත් කිරීම් නිවැරදි කරන්න හෝ  නව සාදන්න බොත්තම ක්ලික් කරන්න.
+Correct your entries and try again.: ඔබගේ ඇතුළත් කිරීම් නිවැරදි කර නැවත උත්සාහ කරන්න.
+XXX does not exist: XXX නොපවතී
+XXX is not writable: XXX ලිවිය නොහැක
+Error Converting Timezone: කාල කලාපය පරිවර්තනය කිරීමේ දෝෂයකි
+Error Unable to write to file XXX.: දෝෂය XXX ගොනුවට ලිවීමට නොහැකි විය.
+Please change the file permissions of this file.: කරුණාකර මෙම ගොනුවේ ගොනු අවසරයන් වෙනස් කරන්න.
+Please change includes dir permission: වෙනත් පරිශීලකයින්ට ලිවීමට ඉඩ දීම සඳහා කරුණාකර ඔබගේ "ඇතුළත්" නාමාවලියෙහි ගොනු අවසරයන් වෙනස් කරන්න.
+Your settings have been saved.: ඔබගේ සැකසුම් සුරකින ලදි.
+OFF: අක්‍රියයි
+ON: මත
+WebCalendar Setup Wizard: වෙබ් කැලැන්ඩර් සැකසුම් විශාරද
+This installation wizard will guide you...: මෙම ස්ථාපන විශාරද මූලික වෙබ් කැලැන්ඩර ස්ථාපනය කිරීම මඟින් ඔබට මග පෙන්වනු ඇත.<br>උදව් සහ දෝශ නිරාකරණය සඳහා බලන්න:<br>
+System Administrators Guide: පද්ධති පරිපාලකගේ මාර්ගෝපදේශය
+Frequently Asked Questions: නිතර අසනු ලබන ප්‍රශ්න
+FAQ: නිති අසන පැණ
+Troubleshooting: දෝෂගවේෂණය
+Getting Help: උදව් ලබා ගැනීම
+Upgrading Guide: මාර්ගෝපදේශය යාවත්කාලීන කිරීම
+User Supported Wiki: පරිශීලක සහාය දක්වන විකිය
+PHP Version Check: PHP අනුවාදය පරීක්ෂා කිරීම
+Check to see if PHP 7.1.0 or greater is installed.: PHP 7.1.0 හෝ ඊට වැඩි ප්‍රමාණයක් ස්ථාපනය කර ඇත්දැයි පරීක්ෂා කරන්න.
+PHP version: PHP අනුවාදය
+PHP Settings: PHP සැකසුම්
+Detailed PHP Info: සවිස්තරාත්මක PHP තොරතුරු
+settings.php Status: "settings.php" තත්වය
+Session Check: සැසි පරීක්ෂාව
+To test the proper operation of sessions...: සැසි නිසි ලෙස ක්‍රියාත්මක කිරීම පරීක්ෂා කිරීම සඳහා, මෙම පිටුව නැවත පූරණය කරන්න. සෑම අවස්ථාවකදීම ඔබ සැසි කවුන්ටරයේ වර්ධකය දැකිය යුතුය.
+SESSION COUNTER: සැසිවාරය
+The file permissions of settings.php are set...: "Setting.php" හි ගොනු අවසරයන් සකසා ඇති බැවින් එය වෙනස් කිරීමට ස්ථාපකයට අවසර නොමැත. ඉදිරියට යාමට කරුණාකර පහත ගොනුවේ ගොනු අවසර වෙනස් කරන්න
+The file permissions of the includes directory are set...: ඇතුළත් කළ නාමාවලියෙහි ගොනු අවසරයන් සකසා ඇති බැවින් නව ගොනුවක් සෑදීමට ස්ථාපකයට අවසර නොමැත. ඉදිරියට යාමට කරුණාකර පහත නාමාවලියෙහි අවසර වෙනස් කරන්න
+Your settings.php file appears to be valid.: ඔබගේ "settings.php" ගොනුව වලංගු බව පෙනේ.
+Configuration Wizard Password: වින්‍යාස විශාරද මුරපදය
+Create Settings File Password: සැකසුම් ගොනු මුරපදය සාදන්න
+db setup directions...: මෙම කොටසේදී ඔබ ඔබේ දත්ත සමුදා සේවාදායකයට සම්බන්ධතාවයක් සකසා පරීක්ෂා කරනු ඇත. සපයන ලද ගිණුම් තොරතුරු වලට දත්ත සමුදායන්, වගු සහ පරිශීලකයින් නිර්මාණය කිරීම සඳහා පූර්ණ අවසර තිබිය යුතුය. මෙය කළ නොහැකි නම් හෝ ඔබේ දත්ත සමුදා ප්‍රවේශය සීමිත නම්, ඔබට ඔබේ දත්ත සමුදාය අතින් වින්‍යාස කිරීමට සිදුවේ.
+Database Status: දත්ත සමුදා තත්ත්වය
+Supported databases for your PHP installation: ඔබගේ PHP ස්ථාපනය සඳහා සහය දක්වන දත්ත සමුදායන්
+Your current database settings are able to access the database.: ඔබගේ වර්තමාන දත්ත සමුදා සැකසීම් මඟින් දත්ත සමුදායට ප්‍රවේශ විය හැකිය.
+Please Test Settings: කරුණාකර සැකසීම් පරීක්ෂා කරන්න
+Your current database settings are not able...: ඔබගේ වර්තමාන දත්ත සමුදා සැකසුම් වලට දත්ත සමුදායට ප්‍රවේශ විය නොහැක හෝ තවමත් පරීක්ෂා කර නොමැත.
+Database Settings: දත්ත සමුදා සැකසුම්
+Database Type: දත්ත සමුදා වර්ගය
+Server: සේවාදායකය
+Connection Persistence: සම්බන්ධතාවය නොනැසී පවතී
+All your database tables appear to be up...: ඔබගේ සියලු දත්ත සමුදා වගු යාවත්කාලීනව පෙනේ. ඔබට ඊළඟ පිටුවට ගොස් ඔබේ වෙබ් කැලැන්ඩර් සැකසුම සම්පූර්ණ කළ හැකිය.
+This appears to be a new installation...: මෙය නව ස්ථාපනයක් ලෙස පෙනේ. මෙය නිවැරදි නොවේ නම්, කරුණාකර පෙර පිටුවට ගොස් ඔබගේ සැකසුම් නිවැරදි කරන්න.
+This appears to be an upgrade...: මෙය&nbsp;XXX&nbsp;සිට&nbsp;YYY දක්වා යාවත්කාලීන කිරීමක් ලෙස පෙනේ.
+The database requires some data input...: යාවත්කාලීන කිරීම සම්පූර්ණ කිරීම සඳහා දත්ත සමුදායට දත්ත ආදානය අවශ්‍ය වේ.
+In this section we will perform...: මෙම කොටසේදී අපි ඔබේ දත්ත සමුදාය අවශ්‍ය මට්ටමට ගෙන ඒම සඳහා වෙනස්කම් සිදු කරන්නෙමු. ඔබ සම්පුර්ණයෙන්ම සහාය දක්වන දත්ත සමුදායක් භාවිතා කරන්නේ නම්, මෙම පියවර ඔබ වෙනුවෙන් ස්වයංක්‍රීයව සිදු වේ. එසේ නොවේ නම්, අවශ්‍ය SQL දර්ශනය කළ හැකි අතර එය කපා ඔබේ දත්ත සමුදා සේවාදායක විමසුම් කවුළුව තුළට ඇලවිය හැකිය.
+No database actions are required.: දත්ත සමුදා ක්‍රියාමාර්ග අවශ්‍ය නොවේ.
+The following database actions are required: පහත දත්ත සමුදා ක්‍රියාමාර්ග අවශ්‍ය වේ
+ODBC Underlying Database: ODBC යටින් පවතින දත්ත සමුදාය:
+Automatic installation not supported: ඔබේ දත්ත සමුදා වර්ගය සඳහා ස්වයංක්‍රීය ස්ථාපනය සම්පූර්ණයෙන් ක්‍රියාත්මක කර නොමැත. සපයන ලද SQL භාවිතා කර ඔබට අවශ්‍ය වගු අතින් සෑදිය යුතුය. ඉදිරියට යාමට කරුණාකර  දර්ශන SQL  ක්ලික් කරන්න. ඔබේ දත්ත සමුදා විමසුම් කවුළුව තුළට කපා අලවන්න.
+This may take several minutes to complete: මෙය සම්පූර්ණ කිරීමට මිනිත්තු කිහිපයක් ගතවනු ඇත.
+Install Database: දත්ත සමුදාය ස්ථාපනය කරන්න
+Update Database: දත්ත සමුදාය යාවත්කාලීන කරන්න
+Display Required SQL: අවශ්‍ය SQL පෙන්වන්න
+Return to previous page after processing SQL.: මෙම SQL අතින් සැකසීමෙන් පසු, ඔබට පෙර පිටුවට ආපසු ගොස් ඔබේ දත්ත සමුදාය නැවත පරීක්ෂා කිරීමට අවශ්‍ය වන අතර එමඟින් ස්ක්‍රිප්ටයට වෙනස්කම් හඳුනාගත හැකිය.
+This is the final step in setting up your WebCalendar Installation.: ඔබේ වෙබ් කැලැන්ඩර් ස්ථාපනය සැකසීමේ අවසාන පියවර මෙයයි.
+Timezone Conversion: කාල කලාප පරිවර්තනය
+It appears that you have NOT converted...: ඔබගේ පවතින වෙබ් කැලැන්ඩර් සිදුවීම් දත්ත ඔබ GMT බවට පරිවර්තනය කර නොමැති බව පෙනේ. ඔබ සතුව ඇත්නම්, ඔබට මෙම දැන්වීම නොසලකා හැර පරිවර්තනය සමඟ ඉදිරියට නොයා හැකිය. මෙය නව ස්ථාපනයක් නම්, ඔබට මෙම දැන්වීම නොසලකා හැරිය හැක.
+Convert Data to GMT: දත්ත GMT බවට පරිවර්තනය කරන්න
+Application Settings: යෙදුම් සැකසුම්
+HTTP-based authentication was not detected...: HTTP මත පදනම් වූ සත්‍යාපනය අනාවරණය නොවීය. පහත දැක්වෙන 'පරිශීලක සත්‍යාපනය' තේරීම් වලින් 'වෙබ් සේවාදායකය' තෝරා ගැනීමට ඔබට අවශ්‍ය නම් ඔබේ වෙබ් සේවාදායකය නැවත සකස් කිරීමට ඔබට අවශ්‍ය වනු ඇත.
+HTTP-based authentication was detected...: HTTP මත පදනම් වූ සත්‍යාපනය අනාවරණය විය. පරිශීලක සත්‍යාපනය ඔබගේ වෙබ් සේවාදායකයා විසින් හසුරුවනු ලැබේ. පහත දැක්වෙන 'පරිශීලක සත්‍යාපනය' තේරීම් ලැයිස්තුවෙන් ඔබ 'වෙබ් සේවාදායකය' තෝරා ගත යුතුය.
+Create Default Admin Account: පෙරනිමි පරිපාලක ගිණුමක් සාදන්න
+(Admin Account Not Found): (පරිපාලන ගිණුම හමු නොවීය)
+User Authentication: පරිශීලක සත්‍යාපනය
+Web-based via WebCalendar (default): වෙබ් කැලැන්ඩරය හරහා වෙබ්-පාදක (පෙරනිමි)
+Web Server (not detected): වෙබ් සේවාදායකය (අනාවරණය වී නැත)
+Web Server (detected): වෙබ් සේවාදායකය (අනාවරණය විය)
+None (Single-User): කිසිවක් නැත (තනි පරිශීලක)
+Read-Only: කියවීමට පමණි
+Environment: පරිසරය
+Production: නිෂ්පාදනය
+Development: සංවර්ධනය
+Save Settings: සැකසුම් සුරකින්න
+Launch WebCalendar: වෙබ් දින දර්ශනය දියත් කරන්න
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: "XXX" වගුව යාවත්කාලීන කිරීමේ දෝෂයකි: YYY.
+Conversion Successful: පරිවර්තනය සාර්ථකයි
+Perl script required: ඔබගේ පෙර දින WebCalendar අනුවාදයට ඔබේ දත්ත පරිවර්තනය කිරීම සඳහා PERL ස්ක්‍රිප්ට් එකක් අවශ්‍ය වේ. කරුණාකර /tools/upgrade_to_0.9.7.pl ධාවනය කර ඉදිරියට යාමට මෙම පිටුවට ආපසු යන්න.
+previous version requires updating several tables: ඔබගේ පෙර වෙබ් කැලැන්ඩරයේ අනුවාදයට දත්ත සමුදා වගු කිහිපයක් යාවත්කාලීන කිරීම අවශ්‍ය වේ.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: පෙරදසුනක් නොමැත
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: දත්ත සමුදායට සම්බන්ධ වීමේ දෝෂයකි
+Include Path: මාර්ගය ඇතුළත් කරන්න
+Deleting events for: සඳහා සිදුවීම් මකා දැමීම
+Importing events for: සඳහා සිදුවීම් ආනයනය කිරීම
+No data returned from: වෙතින් දත්ත කිසිවක් ආපසු නොලැබුණි
+for non-user calendar: පරිශීලක නොවන දින දර්ශනය සඳහා
+No Remote Calendars found: දුරස්ථ දින දර්ශන හමු නොවීය
+Remote Calendars not enabled: දුරස්ථ දින දර්ශන සක්‍රීය කර නැත
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: සිදුවීම් හැඳුනුම්පත සොයාගත නොහැකි විය
+could not find event id XXX in database.: සිදුවීම් හැඳුනුම්පත XXX දත්ත ගබඩාවේ සොයාගත නොහැකි විය.
+task: කාර්ය
+This is a reminder for the XXX detailed below.: මෙය පහත විස්තර කර ඇති XXX සඳහා මතක් කිරීමකි.
+Pecentage Complete: ප්‍රතිශතය සම්පූර්ණයි
+Reminder: මතක්
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: සහාය නොදක්වන ක්‍රියාව: XXX.
+No event id specified.: සිදුවීම් හැඳුනුම්පතක් සඳහන් කර නැත.
+Not authorized (not admin).: අවසර නැත (පරිපාලක නොවේ).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: YYY සිට ZZZ දක්වා XXX සඳහා සිදුවීම් පරීක්ෂා කිරීම.
+Found XXX events in time range.: කාල පරාසය තුළ XXX සිදුවීම් හමු විය.
+Event id=XXX YYY at ZZZ on AAA.: සිදුවීම් හැඳුනුම්පත = AAA හි ZZZ හි XXX "YYY".
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: XXX පරිශීලකයාට වෙනත් පරිශීලක දින දර්ශනය බැලීමට ඉඩ දීම.
+Error Email reminders disabled for user XXX.: දෝෂය: "XXX" පරිශීලකයා සඳහා විද්‍යුත් තැපැල් මතක් කිරීම් අක්‍රීය කර ඇත.
+Number of site_extras XXX.: අඩවි_එක්ස්ට්‍රා ගණන: XXX.
+Reminder set for event.: සිදුවීම සඳහා මතක් කිරීම සකසා ඇත.
+Mins Before XXX.: මිනිත්තු කිහිපයකට පෙර: XXX.
+Event time is XXX.: සිදුවීම් කාලය: XXX.
+Remind time is XXX.: මතක් කිරීමේ කාලය: XXX.
+Reminders for user XXX, login YYY.: "XXX" පරිශීලකයා සඳහා මතක් කිරීම්, "YYY" වෙත පිවිසෙන්න.
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: "XXX" පරිශීලකයා සඳහා අනුමත නොකිරීම.
+Event id=XXX YYY already sent.: සිදුවීම් හැඳුනුම්පත = XXX "YYY" දැනටමත් යවා ඇත.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: තනි පරිශීලක මාදිලිය සඳහා පුරනය වීමක් අවශ්‍ය නොවේ.
+No login required for HTTP authentication.: HTTP සත්‍යාපනය සඳහා පුරනය වීමක් අවශ්‍ය නොවේ.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: පුරනය වීමේ වලංගු නොවන අක්ෂර.
+Username XXX does not exist.: පරිශීලක නාමය "XXX" නොපවතී.
+You cannot remove admin rights from yourself!: ඔබට පරිපාලක අයිතිවාසිකම් ඔබෙන් ඉවත් කළ නොහැක!
+Unknown error saving user: නොදන්නා දෝෂ සුරකින පරිශීලකයෙක්.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: සිදුවීම් හැඳුනුම්පත සඳහා සහභාගිවන්නන් හමු නොවීය: XXX.
+Db error Could not find event id XXX.: Db දෝෂය: සිදුවීම් හැඳුනුම්පත XXX සොයාගත නොහැකි විය. 
+Error Could not find event id XXX in database.: දෝෂය: සිදුවීම් හැඳුනුම්පත XXX දත්ත ගබඩාවේ සොයාගත නොහැකි විය. 
