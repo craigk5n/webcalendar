@@ -785,8 +785,7 @@ class WebCalendar {
           $lastname = $login_lastname;
           $fullname = $login_fullname;
           $is_admin = ( $login_is_admin == 'Y' );
-          $is_nonuser = ( ! empty ( $GLOBALS['login_is_nonuser'] )
-              && $GLOBALS['login_is_nonuser'] );
+          $is_nonuser = ! empty ( $GLOBALS['login_is_nonuser'] );
           $user_email = $login_email;
         } else {
           // Invalid login.
