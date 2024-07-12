@@ -1633,7 +1633,7 @@ function display_unapproved_events ( $user ) {
     if ( $row && $row[0] > 0 )
       $ret .= ( $MENU_ENABLED == 'N'
         ? '<a class="nav" href="list_unapproved.php'
-         . ( $user != $login ? '?user=' . $user . '"' : '' )
+         . ( $user != $login ? '?user=' . $user : '' )
          . '">' . str_replace ( 'XXX', $row[0],
           translate ( 'You have XXX unapproved entries' ) ) . "</a><br>\n"
         : // Return something that won't display in bottom menu
@@ -4117,7 +4117,7 @@ function load_nonuser_preferences ( $nonuser ) {
 }
 
 /**
- * Returns a custom header, stylesheet or tailer.
+ * Returns a custom header, stylesheet or trailer.
  *
  * The data will be loaded from the webcal_user_template table.
  * If the global variable $ALLOW_EXTERNAL_HEADER is set to 'Y',
