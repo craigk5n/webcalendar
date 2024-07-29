@@ -141,8 +141,8 @@ if (empty($error)) {
 
       </div>
       <div class="modal-footer">
-        <button class="btn btn-default" id="modalclosebtn" data-dismiss="modal"'
-    . ' type="button">' . translate ( 'Close' ) . '</button>
+        <button class="btn btn-default" id="modalclosebtn" data-dismiss="modal"
+                type="button"><?php etranslate ( 'Close' ); ?></button>
       </div>
     </div>
   </div>
