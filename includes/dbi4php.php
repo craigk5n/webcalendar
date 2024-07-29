@@ -337,6 +337,7 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
   } elseif( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
     $found_db_type = true;
     try {
+      $GLOBALS['db_connection']->select_db($db_connection_info['database']);
       $res = $GLOBALS['db_connection']->query( $sql );
     } catch (Exception $e) {
       $res = false;
