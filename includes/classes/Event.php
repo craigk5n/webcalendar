@@ -113,7 +113,7 @@ class Event {
  /**
    * The event's dueDate.
    */
-  private string $_dueDate;
+  private ?string $_dueDate;
  /**
    * The event's dueTime.
    */
