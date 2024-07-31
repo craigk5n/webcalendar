@@ -86,7 +86,7 @@ if ((($add == '1') || (!empty($id))) && empty($error)) {
     . '<a href="category.php" class="form-control btn btn-secondary ml-1">Cancel</a> '
     . (!empty($id) ? '
       <button class="form-control btn btn-danger ml-1" name="delete" '
-      . 'type="submit" onclick="return confirm('
+      . 'type="submit" onclick="return confirm(\''
       . translate ( 'Are you sure you want to delete this entry?', true )
       . '\')">' . translate ( 'Delete' ) . '</button>' : '' ) . '
           </div>

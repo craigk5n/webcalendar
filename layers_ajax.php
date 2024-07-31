@@ -28,12 +28,10 @@ $WebCalendar->setLanguage();
 
 $action = getValue ( 'action' );
 $public = getValue ( 'public' );
-
-$sendPlainText = false;
 $format = getValue ( 'format' );
-if ( ! empty ( $format ) &&
+
+$sendPlainText = ( ! empty ( $format ) &&
  ( $format == 'text' || $format == 'plain' ) );
-$sendPlainText = true;
 
 $error = '';
 

@@ -97,7 +97,7 @@ if ( $user != '' ) {
   if ( access_is_enabled() ) {
      if ( ! access_user_calendar ( 'approve', $user ) ) {
        // not allowed
-       $user = login;
+       $user = $login;
      }
   } else if ( ! $is_admin && $user != $login && ! $is_assistant &&
     ! access_is_enabled() ) {

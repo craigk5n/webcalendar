@@ -93,7 +93,7 @@ CREATE TABLE webcal_entry (
   cal_due_date INT DEFAULT NULL,
   /* Task due time */
   cal_due_time INT DEFAULT NULL,
-  /* event priority: 1=Low, 2=Med, 3=High */
+  /* event priority: 1=High, 5=Med, 9=Low */
   cal_priority INT DEFAULT 5,
   /* 'E' = Event, 'M' = Repeating event, 'T' = Task */
   cal_type CHAR(1) DEFAULT 'E',

@@ -156,7 +156,7 @@ if( typeof document.getElementsBySelector == 'undefined' ) {
               return ( e.getAttribute( attrName ) == attrValue );
             };
             break;
-          case '~': // Match one of space seperated words.
+          case '~': // Match one of space separated words.
             checkFunction = function( e ) {
               return ( e.getAttribute( attrName ).match( new RegExp( '\\b'+attrValue+'\\b' ) ) );
             };
