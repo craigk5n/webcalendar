@@ -5,8 +5,8 @@
  * @author Adam Roben <adam.roben@gmail.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
  * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
- * @package WebCalendar
- * @subpackage Events
+ *
+ * @package WebCalendar\Events
  */
 
 /**

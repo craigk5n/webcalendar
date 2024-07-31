@@ -7,8 +7,8 @@
  * @author Craig Knudsen
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/
  * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
- * @package WebCalendar
- * @subpackage Doc
+ *
+ * @package WebCalendar\Doc
  */
 
 /**
