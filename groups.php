@@ -29,11 +29,7 @@ $noStr = translate('No');
 $noNameError = translate('Group Name cannot be blank.');
 $noUsersSelectedError = translate('You must selected one or more users.');
 
-print_header(
-    '',
-    '',
-    'onload="load_groups();"'
-);
+print_header ( [], '', 'onload="load_groups();"' );
 
 ?>
 <h2><?php etranslate('Groups'); ?></h2>
@@ -282,7 +278,7 @@ print_header(
 
         var selectedUsers = $('#editUsers').val();
         if (! selectedUsers || selectedUsers.length == 0) {
-            $('#errorMessage').html('<?php echo  $noUsersSelectedError; ?>');
+            $('#errorMessage').html('<?php echo $noUsersSelectedError; ?>');
             $('#edit-group-dialog-alert').show();
             return;
         }

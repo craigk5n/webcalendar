@@ -26,11 +26,7 @@ $noLoginError = translate('Username cannot be blank.');
 $noNameError = translate('Name is required');
 $invalidIDError = translate('The ID is limited to letters, numbers and underscore only.');
 
-print_header(
-    '',
-    '',
-    'onload="load_users();"'
-);
+print_header ( [], '', 'onload="load_users();"' );
 
 ?>
 
@@ -355,7 +351,7 @@ print_header(
         var add = $('#editUserAdd').val();
         if (add == "1") {
             if (login.length == 0) {
-                $('#errorMessage').html('<?php echo  $noLoginError; ?>');
+                $('#errorMessage').html('<?php echo $noLoginError; ?>');
                 $('#edit-user-dialog-alert').show();
                 return;
             }

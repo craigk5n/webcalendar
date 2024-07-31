@@ -24,9 +24,8 @@ $entryCatFiller = str_repeat( '&nbsp;', ( 30 - strlen ( $entryCatStr ) ) / 2 );
 if ( strlen ( $entryCatStr ) < 30 )
   $entryCatStr = $entryCatFiller . $entryCatStr . $entryCatFiller;
 
-print_header ( ['js/catsel.php/false/' . $form],
-  '<script type=text/javascript" src="includes/js/catsel.js"></script>',
-  '', true, false, true );
+print_header ( ['js/catsel.php/false/' . $form, 'js/catsel.js'],
+  '', '', true, false, true );
 echo '
     <table class="aligncenter" width="90%">
       <tr>

@@ -10,8 +10,7 @@ if ( empty ( $login ) || $login == '__public__' ) {
 if ( $user != $login )
   $user = ( ( $is_admin || $is_nonuser_admin ) && $user ) ? $user : $login;
 
-print_header( '', ! $GROUPS_ENABLED == 'Y' ? '' :
-  '<script src="includes/js/assistant_edit.js"></script>' );
+print_header ( $GROUPS_ENABLED !== 'Y' ? [] : ['js/assistant_edit.js'] );
 echo '
     <form action="assistant_edit_handler.php" method="post" '
  . 'name="assistanteditform">' . csrf_form_key() . ( $user ? '

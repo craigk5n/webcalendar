@@ -242,9 +242,9 @@ if ( $DISPLAY_TASKS == 'Y' ) {
         </td>';
 }
 
-print_header(
+print_header (
   ['js/popups.js/true', 'js/dblclick_add.js/true'],
-  generate_refresh_meta(), '', false, false, false, false );
+  generate_refresh_meta() );
 
 echo <<<EOT
     <table cellpadding="1">

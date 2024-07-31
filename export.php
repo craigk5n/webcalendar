@@ -23,7 +23,7 @@ $yearAgo = time () - 365 * 24 * 3600;
 $dateYearAgo = date('Ymd', $yearAgo);
 $selected = ' selected ';
 
-print_header('', '', 'onload="updateDateFields();"' );
+print_header ( [], '', 'onload="updateDateFields();"' );
 echo '<h2>' . translate ( 'Export' ) . '</h2>
     <form action="export_handler.php" method="post" name="exportform" id="exportform">';
 echo csrf_form_key();

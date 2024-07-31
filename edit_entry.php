@@ -150,7 +150,7 @@ $wkst = 'MO';
 $real_user = ((!empty($user) && strlen($user)) &&
   ($is_assistant || $is_admin)) ? $user : $login;
 
-print_header($INC, $HEAD, $BodyX);
+print_header ( $INC, $HEAD, $BodyX );
 
 if ($readonly == 'Y' || $is_nonuser)
   $can_edit = false;

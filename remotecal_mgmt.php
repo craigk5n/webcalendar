@@ -32,11 +32,7 @@ $colorStr = translate('Color');
 $duplicatesStr = translate('Duplicates');
 
 
-print_header(
-    '',
-    '',
-    'onload="load_users();"'
-);
+print_header ( [], '', 'onload="load_users();"' );
 
 ?>
 
@@ -503,7 +499,7 @@ if (!ini_get('allow_url_fopen')) { ?>
         var add = $('#editUserAdd').val();
         if (add == "1") {
             if (login.length == 0) {
-                $('#errorMessage').html('<?php echo  $noLoginError; ?>');
+                $('#errorMessage').html('<?php echo $noLoginError; ?>');
                 $('#edit-user-dialog-alert').show();
                 return;
             }
@@ -534,7 +530,7 @@ if (!ini_get('allow_url_fopen')) { ?>
 
         var url = $('#editURL').val();
         if (url.length == 0) {
-            //$('#errorMessage').html('<?php echo  $noUrlError; ?>');
+            //$('#errorMessage').html('<?php echo $noUrlError; ?>');
             $('#invalid-url-error').show();
             //$('#edit-user-dialog-alert').show();
             foundError = true;

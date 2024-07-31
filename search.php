@@ -48,7 +48,7 @@ if ($show_advanced) {
 
 $INC[] = 'js/search.js/true';
 
-print_header($INC, '', 'onload="toggleDateRange();"' );
+print_header ( $INC, '', 'onload="toggleDateRange();"' );
 ?>
 <h2><?php echo ($show_advanced ? $advSearchStr : $searchStr);?></h2>
 
