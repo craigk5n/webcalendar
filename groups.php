@@ -262,7 +262,7 @@ print_header ( [], '', 'onload="load_groups();"' );
             $('#editName').prop("value", group['name']);
             for (var i = 0; i < cnt; i++) {
                 console.log('Selected user: ' + selectedUsers[i]);
-                $('#editUsers option[value=' + selectedUsers[i] + ']').attr('selected',true).change();
+                $('#editUsers option[value="' + selectedUsers[i] + '"]').attr('selected',true).change();
             }
 
         }

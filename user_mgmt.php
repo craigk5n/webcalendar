@@ -119,10 +119,12 @@ print_header ( [], '', 'onload="load_users();"' );
                         <label class="col-5 for=" editEnabled"><?php etranslate('Enabled') ?>: </label>
                         <?php echo print_radio('editEnabled'); ?>
                     </div>
+                    <?php if ($is_admin) { ?>
                     <div class="form-inline mt-1 mb-2" id="div-editIsAdmin">
                         <label class="col-5 for=" editIsAdmin"><?php etranslate('Admin') ?>: </label>
                         <?php echo print_radio('editIsAdmin'); ?>
                     </div>
+                    <?php } ?>
 
                     <div class="modal-footer">
                       <button class="btn btn-secondary" data-dismiss="modal"
