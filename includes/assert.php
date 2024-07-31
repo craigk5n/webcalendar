@@ -1,18 +1,20 @@
 <?php
 /**
- * This file implements the assertion handler.
+ * Implements the assertion handler.
+ *
  * This is called anytime a WebCalendar call to assert() fails.
  *
- * @todo Create a link that will pass all the bug details to a form hosted on
- *       k5n.us so that it can be easily submitted.
+ * @todo Create a link that will pass all the bug details to a form
+ *       hosted on k5n.us so that it can be easily submitted.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
  * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
+ *
  * @package WebCalendar
  */
 
-/*
+/**
  * Setup callback function only if $settings.php mode == dev
  */
 if ( ! empty ( $run_mode ) && $run_mode == 'dev' )
@@ -79,17 +81,17 @@ function assert_backtrace() {
  *
  * Abort execution, print the specified error message along with a stack trace.
  *
- * @param string  $script  Pathname where assertion failed
- * @param int     $line    Line number where assertion failed
- * @param string  $msg     Failed assertion expression
+ * @param  string  $script  Pathname where assertion failed
+ * @param  int     $line    number where assertion failed
+ * @param  string  $msg     Failed assertion expression
  */
 function assert_handler ( $script, $line, $msg='' ) {
   if ( empty ( $msg ) )
-    $msg = 'Assertion failed<br>' . "\n";
+    $msg = "Assertion failed<br>\n";
   $trace = ( function_exists ( 'debug_backtrace' )
     ? assert_backtrace() : basename( $script ) . ': ' . $line . ' ' . $msg );
   $msg .= ( function_exists ( 'debug_backtrace' ) ? '<b>Stack Trace:</b><br><br>' : '' )
-    . '<blockquote><tt>' . nl2br ( $trace ) . '</tt></blockquote>';
+    . '<blockquote class="tt">' . nl2br ( $trace ) . '</blockquote>';
   if ( function_exists ( 'die_miserable_death' ) )
     die_miserable_death ( $msg );
   else {
