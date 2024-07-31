@@ -51,10 +51,10 @@ $prevStr = translate ( 'Previous' );
 print_header ( ['js/popups.js/true'], generate_refresh_meta() );
 echo '
     <div class="title">
-      <a title="' . $prevStr . '" class="prev" href="week_details.php?' . $u_url
+      <a class="prev" href="week_details.php?' . $u_url
  . 'date=' . date ( 'Ymd', $prev ) . $caturl
  . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '"></a>
-      <a title="' . $nextStr . '" class="next" href="week_details.php?' . $u_url . 'date='
+      <a class="next" href="week_details.php?' . $u_url . 'date='
  . date ( 'Ymd', $next ) . $caturl
  . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '"></a>
       <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '', false )
@@ -88,11 +88,11 @@ for ( $d = 0; $d < 7; $d++ ) {
   echo '
         <tr>
           <th' . $class . ( $can_add ? '
-            <a title="' . $newEntryStr . '" href="edit_entry.php?' . $u_url
+            <a href="edit_entry.php?' . $u_url
      . 'date=' . date ( 'Ymd', $days[$d] )
      . '"><img src="images/bootstrap-icons/plus-circle.svg" class="new" alt="' . $newEntryStr
      . '"></a>' : '' ) . '
-            <a title="' . $header[$d] . '" href="day.php?' . $u_url . 'date='
+            <a href="day.php?' . $u_url . 'date='
    . date ( 'Ymd', $days[$d] ) . $caturl . '">' . $header[$d] . '</a>
           </th>
         </tr>

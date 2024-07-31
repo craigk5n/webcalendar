@@ -116,7 +116,7 @@ if (empty($error)) {
 
       if (!empty($V['cat_icon_mime'])) {
         echo '<img src="getIcon.php?cat_id=' . $K . '" alt="'
-        . $catIconStr . '" title="' . $catIconStr . '">';
+        . $catIconStr . '">';
       }
       echo '</li>';
     }

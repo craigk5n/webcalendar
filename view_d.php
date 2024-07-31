@@ -62,11 +62,11 @@ $previousStr = translate ( 'Previous' );
 $formKey = csrf_form_key();
 echo <<<EOT
     <div class="viewnav">
-      <a title="{$previousStr}" class="prev"
+      <a class="prev"
         href="view_d.php?id={$id}&amp;date={$prevdate}">
         <img src="images/bootstrap-icons/arrow-left-circle.svg" class="prev"
           alt="{$previousStr}"></a>
-      <a title="{$nextStr}" class="next"
+      <a class="next"
         href="view_d.php?id={$id}&amp;date={$nextdate}">
         <img src="images/bootstrap-icons/arrow-right-circle.svg" class="next"
           alt="{$nextStr}"></a>

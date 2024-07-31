@@ -66,10 +66,10 @@ $prevStr = translate ( 'Previous' );
 
 echo '
     <div style="width:99%;">
-      <a title="' . $prevStr . '" class="prev" href="' . $prev_url
+      <a class="prev" href="' . $prev_url
  . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" class="prev" alt="'
  . $prevStr . '"></a>
-      <a title="' . $nextStr . '" class="next" href="' . $next_url
+      <a class="next" href="' . $next_url
  . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" class="next" alt="'
  . $nextStr . '"></a>
       <div class="title">
