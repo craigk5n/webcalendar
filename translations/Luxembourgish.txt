@@ -1,0 +1,2387 @@
+# Luxembourghish lb
+#
+# D'Format besteet aus engem optionalem Header:
+#
+# Iwwersat vum: Ären Numm an Ärem E-Mail
+# Leschten Update: den Datum vun der Iwwersetzung
+# (Inklusiv déi féierend "#" an all Kommentarer vu fréieren Iwwersetzer.
+# Déi FIRST eidel Zeil endet dës Header Kommentaren.)
+#
+# Gefollegt vun esou vill wéi néideg:
+#
+# Englesch Ausdrock: Iwwersetzung
+# (Een op eng Linn. OUNI de féierenden "#".
+# Den "engleschen Ausdrock:", dorënner de Colon ":", gëtt vun der
+# WebCalendar Entwéckler. Ären Deel ass d '"Iwwersetzung".)
+#
+# Den Tools Verzeechnes enthält zwee Perl Skripte fir Iech ze hëllefen:
+# - check_translation.pl
+# weist un ob all Text erfollegräich iwwersat gouf.
+# - update_translation.pl
+# analyséiert d'Programmdateien fir all Iwwersetzer ze fannen ('Ausdrock') an
+# Tooltip ('Ausdrock'). Et wäert d'Sätz no der Säit arrangéieren
+# (Datei) déi déi éischt Occasioun enthält. Optional kann et de markéieren
+# Sätz déi nach net iwwersat ginn duerch setzen
+#  << MISSING >>
+# op der Linn iwwer dem Saz. An, wann de Saz eng Ofkierzung ass,
+# et wäert de kompletten engleschen Text op der Linn ënner dem Saz enthalen.
+#
+# Notiz: Ech probéieren d'Gesamt Dateigréisst erofzesetzen. Wann d '"Iwwersetzung"
+# Wuert / Ausdrock ass identesch an Ärer Sprooch an Englescher, benotzt just en "=" Zeechen.
+#
+# Notiz: Dir bemierkt d'Entrée fir "May_" drënner. Et gëtt e Grond dofir.
+# Iwwersetzen "May_" op de ganze Mount Numm an "May" bei den,
+# normalerweis dräi Buschtawen, Ofkierzung vum Mount (wéi "Okt" fir "Oktober").
+#
+# Ech hunn Google Translate dofir benotzt.
+# Et sollt duergoen, bis e Mammesproochler et kann iwwerpréiwen.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: Versioun XXX
+WebCalendar is a PHP application used...: WebCalendar ass eng PHP Uwendung déi benotzt gëtt fir e Kalenner fir een eenzege Benotzer oder eng Internet / Intranet Grupp vu Benotzer z'ënnerhalen. Et kann och als Eventkalenner konfiguréiert ginn.
+Credits: =
+About: Iwwer
+OK: ok
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Datebank Feeler: XXX.
+DEFAULT CONFIGURATION: STOFKONFIGURATIOUN
+Go: Gitt
+Save: Späicheren
+Undo: Undoen
+Public Access: Ëffentlechen Zougang
+Admin: Administrator
+User Access Control: Benotzer Zougang Kontroll
+Allow Access to Other Users Calendar: Erlaabt Zougang zu anere Benotzer Kalenner
+Grant This User Access to My Calendar: Gitt dëse Benotzer Zougang zu mengem Kalenner
+Type: Typ
+Calendar: Kalenner                         
+View Event: =
+View: Vue
+Edit: Änneren
+Approve/Reject: Genehmegen / Oflehnen                         
+Events: Evenementer
+Tasks: Aufgaben
+Journals: Zäitschrëften
+Can Invite: Kann invitéieren                         
+Can Email: Kann E-Mail                         
+Can See Time Only: Kann nëmmen Zäit gesinn                         
+Assistant: Assistent                         
+Select All: Alles auswielen
+Clear All: Alles läschen                         
+Public: Ëffentlech
+Confidential: Vertraulech                                
+Private: Privat
+
+########################################
+# Page: activity_log.php
+#
+Next: Nächst
+Previous: Virdrun
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Event XXX steet schonn an Ärem Kalenner.
+Invalid entry id XXX.: Ongülteg Entrée ID: "XXX".
+a XXX event may not be added to your calendar: Dëst ass en XXX Event a ka net an Äre Kalenner bäigefüügt ginn.
+confidential: vertraulech
+private: privat
+Error adding event XXX.: Feeler beim Bäisetzen vun Event: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Ongültegen Astellungsnumm "XXX".
+Select: Wielt
+Day: Dag
+Week: Woch
+Month: Mount
+Year: Joer
+Bottom: Ënnen                         
+Top: =
+Anyone: Jiddereen                         
+Participant: =
+Settings: Astellungen
+Groups: Gruppen
+NonUser Calendars: NonUser Kalenneren
+Other: Aner
+Email: E-Mail
+Colors: Faarwen                                
+Document background: Dokument Hannergrond
+Document title: Dokument Titel
+Document text: Dokumenttext
+My event text: Mäin Event Text
+Table grid color: Dësch Rasterfaarf
+Table header background: Dësch Header Hannergrond
+Table header text: Tabell Header Text
+Table cell background: Dësch Zell Hannergrond
+Table cell background for current day: Dësch Zell Hannergrond fir aktuellen Dag
+Table cell background for days with events: Dësch Zell Hannergrond fir Deeg mat Evenementer
+Table cell background for weekends: Dësch Zell Hannergrond fir Weekend
+Table cell background for other month: Dësch Zell Hannergrond fir anere Mount
+Week number color: Woch Nummer Faarf
+Event popup background: Popup Hannergrond vum Event
+Event popup text: Popup-Text vum Event
+System Settings: System Astellungen
+Help: Hëllef
+System options: Systemoptiounen
+app-name-help: Spezifizéiert den Numm vun der Uwendung déi am Browser Titelbar fir all Säiten an op der Login Säit erschéngt. De Wäert, deen Dir hei spezifizéiert, gëtt an der Iwwersetzungsdatei opgefouert, fir datt Dir verschidden Titele fir verschidde Sprooche bitt.
+Application Name: Applikatioun Numm                         
+Translated Name (XXX): Iwwersate Numm (XXX)
+server-url-help: Spezifizéiert d'Basis URL fir d'Applikatioun. Dëst gëtt abegraff wann Dir E-Mail Erënnerungen a Notifikatiounen verschéckt.
+Server URL: =
+home-url-help: Spezifizéiert d'Haus URL fir d'Applikatioun. Dëst kann en absolute oder relativ sinn
+Home URL: =
+language-help: Spezifizéiert wéi eng Sprooch ze benotzen.
+Language: Sprooch
+Your browser default language is XXX.: Äre Browser Standardsprooch ass "XXX".
+Allow user to use themes: Erlaabt de Benotzer Themen ze benotzen
+themes-help: Erlaabt Mass Update vu Konfiguratiouns-Astellungen. Klenglabel sinn nëmme Benotzerpräfer.
+Themes: Themen
+AVAILABLE THEMES: DISPONIBEL THEMAEN
+None: Keen
+Preview: Virschau
+Site customization: Site Personnalisatioun
+custom-script-help: Erlaabt Eintrëtt vu personaliséierte Javascript oder Styleblatttext, deen an den HTML "Kapp" ​​Sektioun vun all Säit gesat gëtt.
+Custom script/stylesheet: Benotzerdefinéiert Skript / Styleblad
+custom-header-help: Erlaabt e personaliséierten HTML Snippet uewen op all Säit opzehuelen.
+Custom header: Benotzerdefinéiert Kappball
+custom-trailer-help: Erlaabt e personaliséierten HTML Snippet um Enn vun all Säit opzehuelen.
+Custom trailer: Benotzerdefinéiert Trailer
+enable-external-header-help: Erlaabt de personaliséierten Trailer aus enger externer Datei ze lueden
+Allow external file for header/script/trailer: Erlaabt extern Datei fir Header / Skript / Trailer
+Allow user to override header/trailer: Erlaabt de Benotzer den Header / Trailer z'iwwerschreiden
+Date and Time: Datum an Zäit
+server-tz-help: Spezifizéiert wéi vill Stonnen d'Zäit vun UTC op d'Serverzäit upassen.
+Server Timezone Selection: Server Timezone Selektioun
+tz-help: Spezifizéiert wéi vill Stonnen d'Zäit vun UTC op lokal Zäit upassen.
+Default Client Timezone Selection: Standard Client Timezone Selektioun
+display-general-use-gmt-help: Wann aktivéiert, ginn allgemeng Datumer / Zäiten als GMT ugewisen
+Display Common Use Date/Times as GMT: Weist Gemeinsam Benotzungsdatum / Zäiten als GMT
+date-format-help: Spezifizéiert dat bevorzugt Datumformat.
+Date format: Datumformat
+Small Task Date: Klengen Aufgab Datum
+display-week-starts-on: Spezifizéiert den Dag vun der Woch wou d'Woch ufänkt. Wann e Méindeg spezifizéiert ass, da wieren d'Zuelen ISO Wochennummeren.
+Week starts on: Woch fänkt un
+display-weekend-starts-on: Setzt den Dag vun der Woch fir de Weekend unzefänken
+Weekend starts on: De Weekend fänkt un
+time-format-help: Spezifizéiert wéi en Zäitformat ze benotzen:<br><em>12 Stonn:</em> Weisen Zäiten als 3 Auer, 8:30 Auer, asw.<br><em>24 Stonn:</em> Weisen mol als 300 , 2030, asw.
+Time format: Zäitformat
+12 hour: 12 Stonnen
+24 hour: 24 Stonnen
+timed-evt-len-help: Spezifizéiert Input Method fir d'Längt vun engem Zäit Event ze bestëmmen.
+Specify timed event length by: Spezifizéiert Zäit Event Längt vun
+Duration: Dauer
+End Time: Enn Zäit
+work-hours-help: Spezifizéiert d'Zäitberäich fir ze weisen fir d'Dagesvisioun.
+Work hours: Aarbechtszäiten
+From: Vun
+to: an
+Appearance: Ausgesinn                         
+preferred-view-help: Spezifizéiert d'Standardvisioun (Dag, Woch, Mount oder Joer).
+Preferred view: Virgezunnen Vue
+Allow top menu: Erlaben Top Menu
+Date Selectors position: Datum Wieler Positioun
+menu-themes-help: Setzt d'Faarwen an de Stil vum Top Menu
+Menu theme: Menu Thema
+fonts-help: Spezifizéiert eng Lëscht vu Systemfonter fir ze benotzen (wéi "Arial, Helvetica")
+Fonts: Schrëft
+display-sm_month-help: Wann aktivéiert, weist kleng Méint a Monatsvisiounen
+Display small months: Kleng Méint uweisen
+display-weekends-help: Ëmfaasst Weekender wann Dir eng Woch kuckt.
+Display weekends: Weekender uweisen
+display-long-daynames-help: Wann aktivéiert, ginn Dagdeegennimm ugewisen
+Display long day names: Weist laang Dag Nimm
+display-alldays-help: Weist virdrun an déi nächst Méint Deeg a Monatsvisiounen, fëllt all Zellen aus.
+Display all days in month view: Weisen all Deeg am Mount Vue
+display-week-number-help: Spezifizéiert ob d'Wochennummer (1-52) an der Monatsvisioun an an der Wochenvisioun ugewise soll ginn.
+Display week number: Wochennummer uweisen
+display-desc-print-day-help: Enthält Eventbeschreiwungen a printerfrëndlecher Versioun vum Dagvisioun.
+Display description in printer day view: Weist d'Beschreiwung an der Drockvisioun
+yearly-shows-events-help: Op der jährlecher Sicht affichéiert Deeg déi Eventer an enger fett Schrëft enthalen.
+Display days with events in bold in month and year views: Weist Deeg mat Eventer fett am Mount a Joer Meenung
+display-minutes-help: Wann aktivéiert, ginn ëmmer Minutte mat: 00 ugewisen
+Display 00 minutes always: Weist ëmmer 00 Minutten
+display-end-times-help: Affichéiert Endzäiten wann e geplangten Event
+Display end times on calendars: Weist Ennzäiten op Kalenneren
+allow-view-add-help: E '+' Ikon gëtt a Meenungen abegraff, sou datt d'Benotzer séier Eventer an d'Kalenner vun anere Benotzer bäifügen.
+Include add event link in views: Enthält Add Event Link a Meenungen
+lunar-help: Wann aktivéiert, ginn all Mount kleng Symboler ugewisen, déi d'Moundphasen duerstellen
+Display Lunar Phases in month view: Maacht Moundphasen a Monatsiicht
+Restrictions: Restriktiounen
+allow-view-other-help: Spezifizéiert ob ee Benotzer de Kalenner vun engem anere Benotzer ka gesinn.
+Allow viewing other users calendars: Erlaabt aner Kalenner vun de Benotzer ze kucken
+require-approvals-help: Wann aktivéiert, muss e Benotzer en Event approuvéieren ier et an sengem Kalenner ugewise gëtt (ausser Display net approuvéiert ass aktivéiert). Notiz wann Dir dëst op "Nee" setzt wäert d'Autorisatioune fir de Public Access Kalenner net ausschalten (wann de Public Access Kalenner aktivéiert ass).
+Require event approvals: Verlaangt Event Genehmegungen
+display-unapproved-help: Spezifizéiert ob net approuvéiert Eventer an Ärem Kalenner ugewisen ginn.<br>Wann op "Jo" gesat, da ginn net approuvéiert Eventer an Ärem Kalenner ugewisen (an enger anerer Textfaarf).<br>Wann op "Nee" gesat, da net approuvéiert Eventer musse genehmegt ginn ier se an Ärem Kalenner ugewise ginn.
+Display unapproved: Haaptsäit net guttgeheescht
+conflict-check-help: Préift no Eventkonflikter (zwee Eventer geplangt fir déiselwecht Zäit fir déiselwecht Persoun). Wann Dir dëst op "Jo" setzt, kënnt Dir nach ëmmer zwee Eventer gläichzäiteg plangen nodeems Dir eng Warnung confirméiert hutt. Wann Dir dëst op "Nee" setzt, gëtt kee Kontroll vu Konflikter gemaach. Dir wëllt dëst wahrscheinlech op "Jo" setzen, sou datt Konfliktkontroll geschitt.
+Check for event conflicts: Check fir Event Konflikter                         
+Yes: jo
+No: Nee
+conflict-months-help: Wa Konfliktkontroll op der Plaz ass ("Kontrolléiere fir Eventkonflikter" ass op "Nee"&#41;, da spezifizéiert dëst wéivill Méint an d'Zukunft mir op Konflikter solle kucken. Wann Dir d'Evenementer bäifüügt dauert laang ze verschaffen) , reduzéiert dës Zuel.
+Conflict checking months: Konfliktkontrolle Méint                                
+conflict-check-override-help: Erlaabt de Benotzer Eventkonflikter ze iwwerschreiden an zwee oder méi Eventer fir déiselwecht Zäit ze plangen.
+Allow users to override conflicts: Erlaabt de Benotzer Konflikter ze iwwerschreiden
+limit-appts-help: Erlaabt de Systemadministrator eng systemwäit Limit ze setzen fir d'Zuel vun de Rendez-vousen deen een eenzege Benotzer kann op engem eenzegen Dag hunn.
+Limit number of timed events per day: Limitéiert d'Zuel vun de geplangten Eventer pro Dag
+limit-appts-number-help: Spezifizéiert déi maximal Unzuel vun Zäitgeschäfter, déi e Benotzer an engem eenzegen Dag kann hunn.
+Maximum timed events per day: Maximum Timed Eventer pro Dag
+crossday-help: Wann aktivéiert, ginn Eventer déi Deeg spannen op getrennten Deeg ugewisen
+Disable Cross-Day Events: Desaktivéiere Cross-Day Eventer
+disable-location-field-help: Wann Dir "Jo" wielt wielt de Feld "Location" vun den Event Informatiounssäiten
+Disable Location field: Auszeschalten Location Terrain
+disable-url-field-help: Wann Dir "Jo" wielt, fuert den "URL" Feld vun de Säiten vun den Eventinformatiounen
+Disable URL field: Auszeschalten URL Feld
+disable-priority-field-help: Auswielen vun "Jo" wäert de Feld "Prioritéit" vun Event Informatiounssäiten ewechhuelen, wat eng méi einfach Interface fir Ufänger gëtt.
+Disable Priority field: Auszeschalten Prioritéit Feld
+disable-access-field-help: Auswielen vun "Jo" wäert de Feld "Zougank" vun den Eventinformatiounssäiten ewechhuelen, wat eng méi einfach Interface fir Ufänger gëtt.
+Disable Access field: Auszeschalten Zougangsfeld
+disable-participants-field-help: Auswielen vun "Jo" wäert de Feld "Participants" vun den Informatiounssäiten vun der Event erofhuelen, sou datt d'Benotzer aner Benotzer op hir Eventer bäifügen. Wann Dir dës Optioun aktivéiert, wëllt Dir och de Feld "Erlaabt aner Kalenner vum Benotzer ukucken" deaktivéieren.
+Disable Participants field: Auszeschalten Participanten Feld
+disable-repeating-field-help: Wielt "Jo" wäert de Feld "Widderhuelen" ewechhuelen wann Dir Eventer bäifüügt. Dëst wäert eng méi einfach Interface fir Ufänger bidden.
+Disable Repeating field: Desaktivéiere Widderhuelungsfeld
+allow-html-description-help: Wann aktivéiert, kënnen d'Benotzer HTML am Event Beschreiwungsfeld aginn. Wann net aktivéiert, ginn d'HTL-Tags entkommen sou datt se als Kloertext erschéngen. Opgepasst: Aktivéiert dës Feature erlaabt d'Benotzer Biller op anere Websäiten ze referenzéieren.
+Allow HTML in Description: Erlaabt HTML a Beschreiwung
+Popups: =
+disable-popups-help: Auszeschalten Popups vu Kalennerviewer
+Disable Pop-Ups: Auszeschalten Pop-Ups
+popup-includes-siteextras-help: Wann aktivéiert, erlaabt eegene Eventfelder Setup an der site_extras.php Datei gëtt an Event Popups ugewisen.
+Display Site Extras in popup: Weist Site Extras a Popup
+popup-includes-participants-help: Wann aktivéiert, ginn d'Participanten an Event Popups ugewisen.
+Display Participants in popup: Weist Participanten a Popup
+Miscellaneous: Verschiddenes
+remember-last-login-help: Wann aktivéiert, gëtt de Login vum Benotzer fir si op der Login Säit ausgefëllt (awer net de Passwuert), an de Benotzer seng Virléiften ginn eropgelueden (inklusiv hir bevorzugte Faarwen a Sproochauswiel).
+Remember last login: Erënnert Iech un de leschten Login
+summary_length-help: Maximal Längt vu Kuerzbeschreiwung a Kalennerviewer
+Brief Description Length: Kuerz Beschreiwung Längt                         
+user_sort-help: Bestëmmt Sortéierungsuerdnung fir User, Nonuser Lëschten
+User Sort Order: Benotzer Zortéieren Uerdnung
+Lastname, Firstname: Familljennumm, Virnumm
+Firstname, Lastname: Virnumm Familljennumm
+allow-public-access-help: Wann aktivéiert, kann de Kalenner als e liesen-nëmmen ëffentleche Kalenner benotzt ginn deen net Benotzer erfuerdert sech unzemellen.
+Allow public access: Erlaben ëffentlechen Zougang
+public-access-default-visible: Evenementer aus dem ëffentleche Kalenner erschéngen automatesch op de Kalenner vun alle Benotzer
+Public access visible by default: Ëffentlechen Zougang sichtbar par défaut
+public-access-default-selected: Wann Dir en neit Event bäifügt, gëtt den ëffentleche Benotzer standardméisseg als Participant ausgewielt.
+Public access is default participant: Ëffentlechen Zougang ass Standard Participant
+public-access-view-others-help: Wann Dir Zougang zum System mat ëffentlechen Zougang hutt, spezifizéiert ob de Benotzer de Kalenner vun engem anere Kalennerbenutzer ka gesinn.
+Public access can view other users: Ëffentlechen Zougang kann aner Benotzer kucken
+public-access-can-add-help: Wann aktivéiert, kënnen d'Benotzer, déi op de System zougräifen iwwer den ëffentlechen Zougank fäeg sinn nei Eventer derbäizefügen, awer se weisen net am Kalenner bis en Administrator dat neit Event ugeholl huet.
+Public access can add events: Ëffentlechen Zougank kann Eventer bäifügen
+public-access-add-requires-approval-help: Spezifizéiert ob Eventer, déi iwwer den ëffentlechen Zougangskonto bäigefüügt sinn, erfuerderlech Genehmegung brauchen ier se ugewise ginn.
+Public access new events require approval: Ëffentlechen Zougang nei Eventer erfuerdert Genehmegung
+public-access-sees-participants-help: Wann aktivéiert, kënnen d'Benotzer, déi vum Kalenner vum ëffentleche Kont zougräifen, Event Participanten gesinn, wa se Detailer vun engem Event gesinn.
+Public access can view participants: Ëffentlechen Zougang kann d'Participanten kucken
+public-access-override-help: Erlaabt Event Nimm a Beschreiwungen am ëffentleche Kalenner ze verstoppen
+Override event name/description for public access: Iwwerschreiwe Event Numm / Beschreiwung fir ëffentlechen Zougang
+public-access-override-text-help: Den Text fir ze weisen wann dës Optioun aktivéiert ass. Wann 'Net verfügbar', gëtt et iwwersat.
+Text to display to public access: Text fir den ëffentlechen Zougang ze weisen
+public-access-captcha-help: Wann aktivéiert, nei Eventer bäigefüügt vum Public erfuerderen eng CAPTCHA Validatioun.
+Require CAPTCHA validation for public access new events: CAPTCHA Validatioun fir ëffentlech Zougang nei Eventer erfuerderen
+uac-enabled-help: Erméiglecht Zougangsniveau Zougangskontroll
+User Access Control enabled: User Access Control aktivéiert
+groups-enabled-help: Erméiglecht Gruppenënnerstëtzung, erlaabt de Benotzer Benotzer no Gruppen auszewielen.
+Groups enabled: Gruppen aktivéiert
+user-sees-his-group-help: Wann aktivéiert, gesinn d'Benotzer keng Kalennerbenotzer déi net op d'mannst an enger vun hire Gruppen sinn.
+User sees only his groups: Benotzer gesäit nëmme seng Gruppen
+nonuser-enabled-help: Wann aktivéiert, hunn Admins d'Méiglechkeet fir Netuser Kalenneren derbäizefügen
+Nonuser enabled: Nonuser Kalenneren Aktivéiert
+nonuser-list-help: Wou d'Nonuser Kalenneren an der Participant Lëscht affichéieren
+Nonuser list: An der Lëscht vun de Participante weisen
+Upcoming Events: Upëff Eventer
+upcoming-events-help: Aktivéiert upcoming.php
+Enabled: Aktivéiert
+upcoming-events-allow-override: Erlaabt Benotzer Parameter fir upcoming.php
+Allow user override: Erlaabt de Benotzer iwwerschreiwe
+upcoming-events-display-caticons: Ëmfaasst Kategorie Symboler an upcoming.php
+Display category icons: Kategorie Symboler uweisen
+upcoming-events-display-layers: Weist Schichten an Upcoming.php
+Display layers: Schichten uweisen
+upcoming-events-display-links: Weist Linken an upcoming.php
+Display links to events: Weist Linken op Eventer
+upcoming-events-display-popups: Affichéiert Popups an der Upcoming.php
+Display event popups: Event Popups uweisen
+reports-enabled-help: Wann aktivéiert, gesinn d'Benotzer e "Rapporten" Sektioun ënnen op all Säit a kënnen erlaabt personaliséiert Rapporten erstellen. Zousätzlech kënnen Admin Benotzer global Rapporten erstellen déi ënnen op de Benotzer Säiten erscheinen.
+Reports enabled: Rapporten aktivéiert
+subscriptions-enabled-help: Spezifizéiert ob Remote Benotzer kënnen de WebCalendar Benotzer Kalenner abonnéieren, sou datt se d'Evenementer vum WebCalendar Benotzer an hirer iCal-fäeger Uwendung gesinn (sou wéi Apple's iCal oder Mozilla Kalenner).
+Allow remote subscriptions: Erlaben Erfindungen Abonnementer
+remotes-enabled-help: Erlaabt d'Benotzer Remote Iics Dateien iwwer URL ze lueden
+Allow remote calendars: Erlaabt Remote Kalenneren
+rss-enabled-help: Spezifizéiert ob de Benotzer säi Kalenner kann aus engem RSS Feed kritt ginn.
+Enable RSS feed: Aktivéiert RSS Feed
+categories-enabled-help: Erméiglecht Ënnerstëtzung fir Event Kategorien.
+Categories enabled: Kategorien aktivéiert                         
+icon_upload-enabled-help: Wann aktivéiert, kënnen d'Benotzer Kategorie Symboler eroplueden
+Category Icon Upload enabled: Kategorie Ikon Eroplueden aktivéiert                         
+(Requires XXX folder to exist.): (Verlaangt XXX Dossier ze existéieren.)
+display-tasks-help: Weist kleng Taskfenster am Mount an am Dagkalenner
+Display small task list: Weist kleng Aufgab Lëscht
+display-tasks-in-grid-help: Weist Aufgaben a Kalenneren zesumme mat Eventer
+Display tasks in Calendars: Affichéiert Aufgaben a Kalenneren
+allow-external-users-help: Spezifizéiert ob en Net-Kalenner Benotzer kann zu engem Event derbäigesat ginn. Dëst erlaabt net kalenner Benotzer als Event Participanten ze lëschten.
+Allow external users: Erlaben extern Benotzer
+external-can-receive-notification-help: Wann extern Benotzer aktivéiert sinn an E-Mail Benotzung aktivéiert ass, kënnen extern Benotzer E-Mail Notifikatioune kréien wann d'Evenement bäigefüügt gëtt, aktualiséiert oder geläscht gëtt (wann d'E-Mailadress vum externen Benotzer gëtt).
+External users can receive email notifications: Extern Benotzer kënnen E-Mail Notifikatiounen kréien
+external-can-receive-reminder-help: Wann extern Benotzer aktivéiert sinn an E-Mail Benotzung aktivéiert ass, kënnen extern Benotzer E-Mail Erënnerungen kréien (wann d'E-Mail Adress vum externe Benotzer uginn ass).
+External users can receive email reminders: Extern Benotzer kënnen E-Mail Erënnerungen kréien
+allow-self-registration-help: Erlaabt nei Benotzer sech selwer unzemellen
+Allow self-registration: Selwer umellen erlaabt
+use-blacklist-help: Limitéiert Zougang zu WebCalendar Funktiounen baséiert op IP Adress
+Restrict self-registration to blacklist: Limitéiert d'Selbstregistréierung op schwaarz Lëscht
+allow-self-registration-full-help: Erlaabt nei Benotzer de Selbstregistrierungsprozess online ofzeschléissen
+Use self-registration email notifications: Generéiere Passwierder a schécken un nei Benotzer
+allow-attachment-help: Erlaabt d'Benotzer Dateienunhang zu Eventer ze addéieren.
+Allow file attachments to events: Erlaabt Dateien Uschlëss un Eventer
+Admin and owner can always add attachments if enabled.: Admin a Besëtzer kënnen ëmmer Uschlëss bäifüügt wann aktivéiert.
+allow-comments-help: Erlaabt d'Benotzer Kommentarer zu Eventer ze addéieren.
+Allow comments to events: Erlaabt Kommentarer zu Eventer
+Admin and owner can always add comments if enabled.: Admin a Besëtzer kënnen ëmmer Kommentaren derbäisetze wann aktivéiert.
+email-enabled-help: Schalt oder schéckt all E-Mail schécken fir Notifikatiounen an Erënnerungen. Setzt op "nee", wann Äre Server net korrekt opgestallt ass fir Mail ze schécken.
+Email enabled: E-Mail aktivéiert
+email-default-sender: Spezifizéiert d'E-Mail Adress fir als Sender beim E-Schécken vun Erënnerungen ze spezifizéieren.
+Default sender address: Standard Sender Adress
+email-mailer: Wielt E-Mailtyp (SMTP, PHP Mail, Sendmail)
+Email Mailer: E-Mail Mailer
+email-smtp-host: Hostnumm (en) vum SMTP Server (en) getrennt vu Kommaen
+SMTP Host name(s): SMTP Host Numm (en)
+email-smtp-port: SMTP Portnummer (normalerweis 25)
+SMTP Port Number: SMTP Port Zuel
+email-smtp-auth: Benotzt SMTP Authentifikatioun
+SMTP Authentication: SMTP Authentifikatioun
+email-smtp-username: SMTP Benotzernumm wann Dir Authentifikatioun benotzt
+SMTP Username: SMTP Benotzernumm
+email-smtp-password: SMTP Passwuert wann Dir Authentifikatioun benotzt
+SMTP Password: SMTP Passwuert
+Default user settings: Standard Benotzer Astellungen
+email-format: Uginn Preferenz fir HTML oder Einfache SMSen
+Email format preference: E-Mail Format Präferenz
+HTML: =
+Plain Text: =
+email-include-ics: Ëmfaasst eng iCalendar ICS Datei op eng E-Mail Noriicht
+Include iCalendar attachments: Ëmfaasst iCalendar Uschlëss
+email-event-reminders-help: Spezifizéiert ob Event Erënnerungen ze schécken oder net.
+Event reminders: Event Erënnerungen
+email-event-added: Spezifizéiert ob E-Mail Notifikatiounen ze schécken oder net wann en Event an Äre Kalenner bäigefüügt gëtt.
+Events added to my calendar: Eventer bäigesat a mengem Kalenner
+email-event-updated: Spezifizéiert ob E-Mail Notifikatiounen ze schécken oder net wann en Event an Ärem Kalenner aktualiséiert gëtt.
+Events updated on my calendar: Eventer op mengem Kalenner aktualiséiert
+email-event-deleted: Spezifizéiert ob E-Mail Notifikatiounen ze schécken oder net wann en Event aus Ärem Kalenner erausgeholl gëtt.
+Events removed from my calendar: Eventer aus mengem Kalenner erausgeholl
+email-event-rejected: Spezifizéiert ob E-Mail Notifikatiounen ze schécken oder net wann e Participant en Event ofleent wat an Ärem Kalenner steet.
+Event rejected by participant: Event vum Participant verworf
+email-event-create: Spezifizéiert ob den Ersteller vun Einträg eng E-Mail kritt
+Event that I create: Event dat ech kreéieren
+Color options: Faarfoptiounen                                
+Allow user to customize colors: Erlaabt de Benotzer Faarwen ze personaliséieren
+gradient-colors: Wann aktivéiert Gradientfaarwe benotzt ginn. Dëst kann d'Performance staark beaflossen.
+Enable gradient images for background colors: Aktivéiert Gradientebiller fir Hannergrondfaarwen
+Not available: Nët accessible
+Background Image options: Hannergrond Image Optiounen                         
+bgimage-help: URL vum gewënschten Hannergrondbild. Kann e relativen Link sinn.
+Background Image: Hannergrond Bild                         
+bgrepeat-help: Kontrolléiert d'Widderhuelung vum Hannergrondbild.
+Background Repeat: Hannergrond Widderhuelen                         
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Assistenten                         
+Preferences: Preferenzen
+Control Panel: Kontroll Panel                                
+Users: Benotzer
+Account: Kont
+Categories: Kategorien                         
+Views: Usiichten
+Layers: Schichten
+Reports: Rapporten
+Delete Events: Läscht Eventer
+Activity Log: Aktivitéitsprotokoll
+System Log: Systemprotokoll
+Security Audit: Sécherheet Audit
+Public Preferences: Ëffentlech Virléiften
+Unapproved Public Events: Ongekënnegt Ëffentlech Eventer
+Administrative Tools: Administrativ Tools
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Duplizéierten Numm: "XXX".
+Username XXX already exists.: Benotzernumm "XXX" gëtt et schonn.
+Email address XXX already exists.: E-Mail Adress "XXX" gëtt et schonn.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Zousätzlech Kommentaren (optional)
+Approve and Send: Genehmegen a schécken                         
+Approve and Exit: Genehmegen an erausgoen                         
+(Your comments will be emailed to the event creator.): (Är Kommentarer ginn un den Ersteller vum Event geschéckt.)
+Hello, XXX.: Moien, XXX.
+XXX has approved an appointment and added comments.: E Rendez-vous gouf approuvéiert a Kommentare goufen derbäigesat.
+Subject XXX: Sujet: "XXX".
+Description XXX: Beschreiwung: "XXX".
+Date XXX: Datum: XXX
+Time XXX: Zäit: XXX
+Comments XXX: Kommentarer: XXX                                
+Approved w/Comments by XXX.: Guttgeheescht w / Kommentare vum: XXX.                         
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Admin Modus
+Your assistants: Är Assistenten
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Onbekannte Feeler.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Programmfeeler: Nee XXX spezifizéiert!
+user: Benotzer
+year: Joer
+month: Mount
+day: Dag
+
+########################################
+# Page: category.php
+#
+Category Icon: Kategorie Ikon                         
+Global: =
+The permissions for the icons directory are set to read-only: D'Rechter fir d'Icons Verzeechnes sinn op Lies-Only gesat.
+Category Name: Kategorie Numm:                         
+Color: Faarf                                
+Remove Icon: Ewechzehuelen Ikon:
+Add Icon to Category: Füügt Ikon a Kategorie bäi
+Upload: Eroplueden
+GIF or PNG 6kb max: GIF oder PNG 6kb max
+Search for existing icons: Sich no existente Symboler
+Add: Dobäizemaachen
+Delete: Läschen
+Are you sure you want to delete this entry?: Sidd Dir sécher datt Dir dës Entrée läsche wëllt?                         
+Make New Category: Maacht nei Kategorie
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Kategorien Numm ass erfuerderlech                         
+File size exceeds maximum.: Dateigréisst iwwerschratt maximal.
+File is not a GIF or PNG image: Datei ass kee GIF oder PNG Bild
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: DISPONIBEL KATEGORIEN
+ENTRY CATEGORIES: ENTREEKATEGORIEN
+Remove: Ewechzehuelen
+Global Category: Globale Kategorie
+Cancel: Ofbriechen                         
+
+########################################
+# Page: colors.php
+#
+Add Custom: =
+Basic Colors: Basis Faarwen                         
+Current Color: Aktuell Faarf
+Custom Colors: Benotzerdefinéiert Faarwen
+Old Color: Al Faarf
+
+########################################
+# Page: combo.php
+#
+Select None: Wielt Keen
+Agenda: =
+Add Task: Aufgab derbäi
+Description: Beschreiwung
+Date: Datum
+Time: Zäit
+Priority: Prioritéit
+Access: Zougang
+Created by: Erstallt vum
+Updated: Aktualiséiert
+Participants: Participanten
+Attachments: Uschlëss                         
+Comments: Kommentarer                                
+Brief Description: Kuerz Beschreiwung                         
+Full Description: Voll Beschreiwung
+Category: Kategorie                         
+Add event detail: Füügt Event Detail bäi
+Start Date: Ufanks Datum
+Due Date: Fällegkeetsdatum
+Add task detail: Füügt Aufgab Detail bäi
+All: Alles
+Error: Feeler
+no response from server: keng Äntwert vum Server
+JSON error: JSON Feeler
+High: Héich
+Medium: Mëttelméisseg
+Low: Niddereg
+Today: Haut
+Add Entry: Bäitreeg derbäi
+Unnamed Event: Ouni Numm
+Unnamed Task: Ouni Aufgab
+Refresh: Erfrësch
+Click to add entry: Klickt fir Entrée bäizefügen                         
+Name: Numm
+pm: Auer
+am: sinn
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX huet e Rendez-vous annuléiert.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Ongülteg Blob ID
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Kommentar derbäi
+Add Attachment: =
+Subject: Sujet
+Comment: Kommentéieren                                
+Upload file: Eroplueden Datei
+
+########################################
+# Page: docdel.php
+#
+Removed: Geläscht
+
+########################################
+# Page: edit_entry.php
+#
+days: Deeg
+hours: Stonnen
+minutes: Minutten
+You are not authorized to edit this task.: Dir sidd net autoriséiert dës Aufgab z'änneren.
+is in a different timezone than you are. Currently: ass an enger anerer Zäitzone wéi Dir. Momentan
+hour ahead of you: Stonn virun Iech
+hour behind you: Stonn hannendrun
+hours ahead of you: Stonne virun Iech
+hours behind you: Stonnen hannendrun
+XXX is in a different timezone (ahead): (XXX ass an enger anerer Zäitzon; YYY virun Iech.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX ass an enger anerer Zäitzon; YYY hannert Iech.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Zäit hei aginn ass baséiert op Ärer Zäitzone.
+Edit Entry: Änneren änneren
+Details: Detailer
+Repeat: Widderhuelen
+Reminders: Erënnerungen
+brief-description-help: Dëst sollt eng kuerz Beschreiwung (ongeféier 20 Zeechen) vum Event ginn. Dëst wäert d'Evenement representéieren wann Dir de Kalenner kuckt.
+full-description-help: Dëst soll Detailer vun der Manifestatioun komplett maachen. Dës Informatioun ka gesi ginn wann e Benotzer d'Evenement kuckt.
+access-help: Spezifizéiert den Zougangsniveau vum Event. <ul> <li> Ëffentlech: Jiddereen kann déi komplett Detailer vun der Manifestatioun gesinn. net d'Detailer wat et ass.</li></ul>
+priority-help: Spezifizéiert d'Prioritéit vum Event. Héich Prioritéit Evenementer ginn fett ugewisen.
+category-help: Spezifizéiert d'Kategorie vum Event.
+completed-help: Datum Aufgab ass ofgeschloss. Nëmme aktivéiert wann all Participant Prozentsaz 100% ass.
+Date Completed: Datum Fäerdeg
+percent-help: Aufgab Ofschloss Prozentsaz fir dëse Benotzer
+Percent Complete: Prozentsaz Komplett
+All Percentages: All Prozentzuelen
+location-help: Event Location
+Location: Standuert
+url-help: =
+URL: =
+date-help: Spezifizéiert den Datum vum Event.
+Untimed event: Untimed Event
+Timed event: Timed Event
+All day event: De ganzen Dag Event
+Timezone Offset: Zäitzone Offset
+time-help: Spezifizéiert d'Zäit vum Event. <ul> <li> "Timed Event" (fir en Event dat fir eng bestëmmten Zäit op deem Dag geplangt ass)</li> <li> "Untimed Event" (fir en Event huet dat keng Zäit (wéi eng Vakanz )</li> <li> "De ganzen Dag Event" (fir en Event dat de ganzen Dag dauert (wéi aus dem Büro ze sinn)</li></ul>
+duration-help: Spezifizéiert d'Dauer (a Stonnen; Minutten) vum Event. <em>Dëst Feld kann eidel gelooss ginn.</em>
+end-time-help: Spezifizéiert d'Zäit wou d'Event eriwwer ass.
+Start Time: Startzäit
+Due Time: Wéinst Zäit
+Site Extras: =
+avail_participants-help: Lëscht déi verfügbar Participanten vun dësem Element.
+Available: Verfügbar                         
+Find Name: Fannt Numm
+Resources: Ressourcen
+participants-help: Lëscht d'Participanten vun dësem Bäitrag.
+Selected: Ausgewielt
+Availability: Disponibilitéit                         
+external-participants-help: Spezifizéiert eng Lëscht vun de Participanten fir d'Evenement déi net Kalenner Benotzer sinn. D'Benotzer sollten eng pro Zeil opgezielt sinn a kënnen eng E-Mail Adress enthalen. Wann eng E-Mail Adress uginn ass, kann de Benotzer Notifikatiounen an Erënnerungen kréien.
+External Participants: Extern Participanten
+repeat-type-help: Wielt wéi dacks d'Evenement sollt widderhuelen.
+Daily: Deeglech
+Weekly: Wochemaart
+Monthly: Monatlech
+by day: vum Dag
+by date: nom Datum
+by position: duerch Positioun
+Monthly (by day): Mountlech (Dag)
+Monthly (by date): Mountlech (nom Datum)
+Monthly (by position): Mountlech (no Positioun)
+Yearly: Jäerlech
+Manual: Manuell
+Expert Mode: Expert Modus
+repeat-end-date-help: Spezifizéiert den Datum deen d'Evenement sollt widderhuelen bis.
+Ending: Enn
+Forever: Fir ëmmer
+Use end date: Benotzt Enn Datum
+Number of times: Zuel vun Zäiten
+repeat-frequency-help: Spezifizéiert wéi dacks d'Evenement sollt widderhuelen.
+Frequency: Heefegkeet
+Weekdays Only: Nëmmen Wochendeeg
+Week Start: Woch Start
+repeat-bydayextended-help: Erlaabt Datumauswiel baséiert op Wochendag.
+ByDay: ByDay                         
+repeat-month-help: Spezifizéiert wéi eng Méint d'Evenement sollt widderhuelen.
+ByMonth: ByMonth                         
+repeat-bysetpos-help: Erlaabt Auswiel vum Datum baséiert op der Positioun mam Mount.
+BySetPos: BySetPos                         
+repeat-bymonthdayextended-help: Erlaabt Datumauswiel baséiert op Datum.
+ByMonthDay: ByMonthDay                         
+repeat-byweekno-help: Erlaabt de Benotzer eng Lëscht vu Wochen ze spezifizéieren fir den Event ze widderhuelen (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: ByWeekNo                         
+repeat-byyearday-help: Erlaabt de Benotzer eng Lëscht vu Joresdeeg ze spezifizéieren fir Event ze widderhuelen (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: ByYearDay                         
+repeat-exceptions-help: Zousätzlech Deeg wou dëst Evenement sollt oder sollt optrieden.
+Exclusions: Exclusiounen
+Inclusions: Inklusiounen
+Add Exception: Dobäi Ausnahm
+Add Inclusion: Dobäi Inclusioun
+Delete Selected: Läscht Ausgewielt
+Send Reminder: Erënnerung schécken
+When: Wéini
+Use Date/Time: Benotzt Datum / Zäit
+Use Offset: Benotzt Offset
+Before: Virdrun                         
+After: Nodeems
+Start: =
+End/Due: Enn / Wéinst
+Times: Zäiten
+Every: All
+CAPTCHA Warning: Opgepasst:  Kann net CAPTCHA benotzen ouni d'GD Extensioun vun PHP!<br>                        
+Delete entry: Entree läschen
+You are not authorized to edit this entry.: Dir sidd net autoriséiert dës Entrée z'änneren.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX huet en neie Rendez-vous gemaach.
+XXX has updated an appointment.: XXX huet e Rendez-vous aktualiséiert.
+Security violation!: Sécherheetsverletzung!
+You must enter the anti-spam text on the previous page.: Dir musst den Anti-Spam Text op der viregter Säit aginn.
+The following conflicts with the suggested time: Déi folgend Konflikter mat der proposéierter Zäit
+User removed from participants list.: Benotzer aus der Lëscht vun de Participante geläscht.
+Please look on XXX to accept or reject this appointment.: Kuckt w.e.g. op XXX fir dëse Rendez-vous ze akzeptéieren oder ze refuséieren.
+Please look on XXX to view this appointment.: Kuckt w.e.g. op XXX fir dëse Rendez-vous ze gesinn.
+Scheduling Conflict: Zäitplang Konflikt
+Your suggested time of: Är proposéiert Zäit vum
+conflicts with the following existing calendar entries: Konflikter mat de folgenden existente Kalennerenträg
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX gouf net an "config.php" gesat.
+word characters only: (kann nëmme Wuertzeechen enthalen; [a-zA-Z_0-9])
+Add User: Benotzer derbäisetzen
+Edit User: Benotzer änneren
+Calendar ID: Kalenner ID                         
+First Name: Virnumm
+Last Name: Familljennumm
+Is public calendar: Ass ëffentleche Kalenner
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Datebank Feeler
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Add Remote Kalenner
+Edit Remote Calendar: Änneren Remote Kalenner
+Create Layer: Layer erstellen
+Reload: Nei lueden
+Required to View Remote Calendar: Néideg fir Remote Kalenner ze gesinn
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Import Resultater
+Events successfully imported: Eventer erfollegräich importéiert
+Create a new layer to view this calendar.: Erstellt eng nei Schicht fir dëse Kalenner ze gesinn.
+Errors: Feeler
+There was an error parsing the import file or no events were returned.: Et war e Feeler beim Analyséiere vun der Importdatei oder keng Eventer goufen zréckginn.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Muer
+Yesterday: Gëschter
+Day before yesterday: Virgëschter
+Next week: Nächst Woch
+This week: Des Woch
+Last week: Lescht Woch
+Week before last: Woch virdrun
+Next week and week after: Nächst Woch a Woch duerno
+This week and next week: Dës Woch an d'nächst Woch
+Last week and this week: Lescht Woch an dës Woch
+Last two weeks: Lescht zwou Wochen
+Next month: Nächste Mount
+This month: Dëse Mount
+Last month: Leschten Mount
+Month before last: Mount virum leschte
+Next year: Nächst Joer
+This year: Dëst Joer
+Last year: Läscht Joer
+Year before last: Joer virdrun
+Next 14 days: Nächst 14 Deeg
+Next 30 days: Nächst 30 Deeg
+Next 60 days: Nächst 60 Deeg
+Next 90 days: Nächst 90 Deeg
+Next 180 days: Nächst 180 Deeg
+Next 365 days: Nächst 365 Deeg
+Invalid report id XXX.: Ongülteg Rapport-ID: "XXX".
+Unnamed Report: Ouni Numm
+Add Report: Bericht derbäisetzen
+Edit Report: Edit Bericht
+Report name: Rapport Numm
+User: Benotzer
+Current User: Aktuelle Benotzer
+Include link in menu: Link abegraff am Menu
+Include standard header/trailer: Enthält Standard Header / Trailer
+Include previous/next links: Ëmfaasst virdrun / nächst Linken
+Include empty dates: Setzt eidel Datumer mat
+Date range: Datum Rei
+Template variables: Schablounvariabelen
+Page template: Säit Schabloun
+Day template: Dag Schabloun
+Event template: Event Schabloun
+Are you sure you want to delete this report?: Sidd Dir sécher datt Dir dëse Bericht läsche wëllt?                         
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Keen esou Bericht-ID: "XXX".
+Variable XXX not found.: Variabel XXX net fonnt.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Ännerung Benotzerdefinéiert Header
+Edit Custom Script/Stylesheet: Ännert Custom Skript / Stylesheet
+Edit Custom Trailer: Ännerung Benotzerdefinéiert Trailer
+
+########################################
+# Page: edit_user.php
+#
+Username: Benotzernumm
+E-mail address: E-Mailadress
+Password: Passwuert
+again: erëm
+Disabled for demo: Behënnert fir Demo
+Are you sure you want to delete this user?: Sidd Dir sécher datt Dir dëse Benotzer läsche wëllt?                         
+Change Password: Passwuert änneren                         
+New Password: Neit Passwuert
+Set Password: Setzt Passwuert
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Benotzer läschen net ënnerstëtzt.
+The passwords were not identical.: D'Passwierder waren net identesch.
+You have not entered a password.: Dir hutt kee Passwuert aginn.
+Username cannot be blank.: Benotzernumm kann net eidel sinn.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Net autoriséiert
+
+########################################
+# Page: export.php
+#
+Export: Exportéieren
+Export format: Exportformat
+Include all layers: Ëmfaasst all Schichten
+Include deleted entries: Ëmfaasst geläscht Entréen
+Export all dates: Exportéiert all Datume
+Start date: Ufanks Datum
+End date: Enn Datum
+Modified since: Geännert zënter
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: Exportformat net definéiert oder falsch.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Kee Benotzer uginn.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Neie Grupp bäisetzen
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Numm Grupp
+Add Group: Grupp derbäi
+Edit Group: Grupp änneren
+Group name: Grupp Numm
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Dir musst e Gruppennimm spezifizéieren
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Kalenner automatesch opfrëschen                         
+auto-refresh-help: Wann aktivéiert, ginn d'Dagesvisioun, d'Wochensiicht, de Mountvisioun an d'Lëscht vun net approuvéierte Säiten all automatesch periodesch frësch.
+Auto-refresh time: Auto-Update Zäit                         
+auto-refresh-time-help: Wann Auto-Refresh aktivéiert ass, spezifizéiert dës Zäit tëscht all Refresh.
+Display days with events in bold in year view: Weist Deeg mat Eventer fett am Joer Vue
+Display weekends in week view: Weist Weekender an der Wochenusiicht
+Time interval: Zäitintervall
+time-interval-help: Spezifizéiert wéi laang d'Zäitblocken an der Wochenvisioun an der Dagesvisioun sinn.
+Nonuser: Nonuser Kalenneren
+user-customize-color: Spezifizéiert ob Benotzer erlaabt sinn hir eege Faarf Schema ze änneren.
+enable-gradient-help: Benotzt Gradientfaarwen fir Zellhannergrënn.
+Manually entering color values: Manuell Faarfwäerter aginn
+colors-help: All Faarwen sollten am "#RRGGBB" hexadecimal Format spezifizéiert ginn, wou "RR" den Hex Wäert fir rout ass, "GG" ass den Hex Wäert fir gréng, an "BB" ass den Hex Wäert fir blo.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Bericht Bug
+Please include all the information below when reporting a bug.: Gitt weg all d'Informatiounen hei ënnen wann Dir e Feeler bericht.
+Also, please use English rather than XXX.: Benotzt w.e.g.  Englesch  anstatt XXX.                         
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar Dokumentatioun
+Currently in English only.: De Moment nëmmen op Englesch.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Kalenner Entréen derbäi / änneren
+Repeat Type: Widderhuelen Typ
+For More Information...: Fir méi Informatioun ...
+Repeat End Date: Widderhuelen Enn Datum
+Repeat Day: Widderhuelen Dag
+repeat-day-help: Spezifizéiert wéi eng Deeg vun der Woch d'Evenement sollt widderhuelen.
+
+########################################
+# Page: help_import.php
+#
+Import: Importéieren
+Palm Desktop: =
+allow you to import entries from the Palm...: Dëse Form erlaabt Iech Einträg aus dem Palm Desktop Datebook z'importéieren. Et sollt an Ärem Palm Verzeechnes am Datebuch / Datebuch.dat an enger Ënnerverzeechnung vun Ärem Benotzernumm benannt sinn.
+The following entries will not be imported: Déi folgend Einträg ginn net importéiert:
+Entries older than the current date: Bäiträg méi al wéi den aktuellen Datum
+Entries created in the Palm Desktop...: Entréen erstallt am Palm Desktop déi net HotSync'd sinn
+Anything imported from Palm...: Alles wat vu Palm importéiert gëtt wäert beim nächsten Import iwwerschriwwe ginn (ausser den Datum vum Event ass passéiert). Dofir sollten Updates am Palm Desktop gemaach ginn.                         
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Dës Form importéiert vCalendar (.vcs) 1.0 Eventer.
+The following formats have been tested: Déi folgend Formater si getest ginn:
+This form will import iCalendar (.ics) events.: Dëse Form wäert iCalendar (.ics) Eventer importéieren.
+Enabling: Aktivéiert
+Overwrite Prior Import: Virum Import iwwerschreiwe
+will cause events imported previously...: wäert dozou féieren datt virdrun importéiert Eventer, déi déiselwecht UID als Event aus der neier Importdatei benotzt hunn, als geläscht markéiert goufen. Dëst soll erlaabt eng aktualiséiert iCalendar Datei ze importéieren ouni Duplikaten ze kreéieren.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Hëllef Index
+About WebCalendar: Iwwer WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Schichten sinn nëtzlech fir d'Evenementer vun anere Benotzer an Ärem eegene Kalenner ze weisen. Dir kënnt de Benotzer uginn an d'Faarf an deenen d'Evenementer ugewise ginn.
+Add/Edit/Delete: Add / Edit / Läschen
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Klickt op de Edit Layers Link am Admin Sektioun ënnen op der Säit erlaabt Iech Schichten derbäi / änneren / läschen.                         
+The text color of the new layer that will be displayed in your calendar.: D'Textfaarf vun der neier Schicht déi an Ärem Kalenner gewise gëtt.
+Disabling: Desaktivéiere
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Dréckt den Disable Layers Link am Admin Sektioun ënnen op der Säit fir Schichten auszeschalten.
+Duplicates: Duplikaten
+If checked, events that are duplicates of your events will be shown.: Wa gekuckt, ginn Eventer déi Duplikater vun Ären Eventer sinn.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Dréckt den Enable Layers Link am Admin Sektioun ënnen op der Säit fir Schichten z'aktivéieren.
+Source: Quell
+Specifies the user that you would like to see displayed in your calendar.: Spezifizéiert de Benotzer deen Dir wëllt an Ärem Kalenner gesinn.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Standard Kategorie
+default-category-help: Spezifizéiert d'Kategorie fir déi en neit Event sollt standardiséiert sinn.
+When I am the boss: Wann ech de Patron sinn
+Email me event notification: Email mech Event Notifikatioun
+email-boss-notifications-help: Spezifizéiert ob Cheffen E-Maile kréien als Event Notifikatiounen.
+I want to approve events: Ech wëll Eventer approuvéieren
+boss-approve-event-help: Spezifizéiert ob de Patron gefuerdert gëtt d'Evenementer ze approuvéieren déi vun Assistenten derbäigesat ginn.
+Subscribe/Publish: Abonnéieren / Verëffentlechen
+Allow remote publishing: Erlaben Remote Verëffentlechung
+allow-remote-publishing-help: Spezifizéiert ob e Remote iCal Client Eventer zréck op WebCalendar kann publizéieren
+remote-publishing-url-help: Weist d'URL fir an der iCal Client Uwendung ze benotzen fir béid Abonnementer a Verëffentlechung zréck op WebCalendar.
+allow-remote-subscriptions-help: Spezifizéiert ob Remote Benotzer kënnen Äre Kalenner abonnéieren, sou datt se Är Eventer an enger iCal aktivéierter Uwendung gesinn (wéi Apple's iCal oder Mozilla Kalenner).
+remote-subscriptions-url-help: Weist d'URL Remote Benotzer solle benotze fir Äre Kalenner ze abonnéieren.
+Enable FreeBusy publishing: Aktivéiert FreeBusy Verëffentlechung
+freebusy-enabled-help: Spezifizéiert ob eng verfügbar Zäit vun engem Benotzer ka mam iCal FreeBusy Standard kritt ginn.
+freebusy-url-help: D'URL fir Zougang zum FreeBusy Lëscht vum Benotzer
+rss-feed-url-help: D'URL fir Zougang zum RSS Feed ze kréien
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Erméiglecht eng fein Kontroll vu Benotzer Zougang an Permissiounen. D'Benotzer kënnen och Standard a per individuell Erlaabnis gewähren wann se vum Administrator autoriséiert sinn.
+If disabled, this user cannot send you emails.: Wann ausgeschalt, kann dëse Benotzer Iech keng E-Maile schécken.
+If disabled, this user cannot see you in the participants list.: Wann ausgeschalt, kann dëse Benotzer Iech net an der Lëscht vun de Participante gesinn.
+If enabled, this user cannot view the details of any of your entries.: Wann aktivéiert, kann dëse Benotzer d'Detailer vun engem vun Ären Entréen net gesinn.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Verëffentlechung behënnert (Admin)
+Publishing Disabled (User): Verëffentlechung behënnert (Benotzer)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Klickt fir ze wielen                         
+Current Icons on Server: Aktuell Symboler um Server
+
+########################################
+# Page: import.php
+#
+import from file: Import vun der Datei
+Disabled: Behënnert
+Import format: Importformat
+Exclude private records: Privat Rekorder ausschléissen
+Repeated items are imported separately. Prior imports are not overwritten.: Widderhuelte Saache ginn separat importéiert. Virdrun Importer sinn net iwwerschriwwe ginn.
+
+########################################
+# Page: import_handler.php
+#
+No file: Keng Datei
+Error deleting palm events from webcalendar.: Feeler beim Läschen vu Palm-Eventer aus Webcalendar.
+Events from prior import marked as deleted: Evenementer vum viregten Import markéiert als geläscht
+Conflicting events: Konfliktbar Eventer                                
+The import file contained no data.: Den Importdatei enthält keng Daten.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Sidd Dir sécher datt Dir dës Schicht läsche wëllt?                         
+Delete layer: Läsch läschen
+Edit layer: Ännerung Layer
+Enable layers: Aktivéiert Schichten
+Layer: Schicht
+Layers are currently disabled.: Schichten sinn de Moment behënnert.
+Layers are currently enabled.: Schichten sinn de Moment aktivéiert.
+Click to modify layers settings for XXX: Klickt hei fir d'Schichten Astellunge fir de XXX Kalenner z'änneren.                         
+Disable Layers: Schichten auszeschalten
+Add layer: Layer derbäi
+Add Layer: Layer derbäi
+Edit Layer: Layer änneren
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Kann d'Präferenz net aktualiséieren
+Invalid entry id.: Ongülteg Entrée ID.
+You cannot create a layer for yourself.: Dir kënnt net eng Schicht fir Iech selwer erstellen.
+You can only create one layer for each user.: Dir kënnt nëmmen eng Schicht fir all Benotzer erstellen.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Genehmegen / bestätegen                         
+Approve Selected: Gutt ausgewielt                         
+Check All: Kontrolléiert Alles                         
+Emails Will Not Be Sent: Emails ginn net verschéckt
+Reject Selected: Ofgewielt Ausgewielt
+Reject: Oflehnung
+Uncheck All: Maacht all un
+View this entry: Kuckt dës Entrée
+No unapproved entries for XXX.: Keng net guttgeheescht Einträg fir: "XXX".
+Unapproved Entries: Net guttgeheescht Entréen
+Approve this entry?: Dës Entrée approuvéieren?                         
+Reject this entry?: Dës Entrée refuséieren?
+Approve Selected entries?: Ausgewielt Einträg approuvéieren?                         
+Reject Selected entries?: Ausgewielte Bäiträg refuséieren?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Dir musst e Login a Passwuert aginn.
+Save login via cookies so I dont have to login next time.: Späichert Login via Cookien, fir datt ech d'nächst Kéier net muss umellen
+Login: =
+public: ëffentlechen
+Access XXX calendar: Zougang zum XXX Kalenner
+cookies-note: Opgepasst: Dës Applikatioun erfuerdert Cookien fir aktivéiert ze sinn.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Illegal Personnagen am Login XXX.
+Invalid login: Ongültege Login
+Activity login failure: Benotzernumm: "XXX", IP: "YYY".
+Error XXX: Feeler: "XXX".
+You have been logged out.: Dir sidd ofgemellt.
+Access public calendar: Zougang zu ëffentleche Kalenner
+Not yet registered? Register here!: Nach net ugemellt? Mellt Iech hei un!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Keen esou Netuser Kalenner: "XXX".
+This Calendar is not Public.: Dëse Kalenner ass net ëffentlech.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Neie NonUser Kalenner bäisetzen
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: E Login muss spezifizéiert ginn.
+No such nonuser calendar: Keen esou Netuser Kalenner
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Ongültegt Thema
+Save Preferences: =
+Public Access calendar: Ëffentlechen Zougang Kalenner
+Modify Non User Calendar Preferences: Ännerung Net Benotzer Kalenner Virléiften
+Return to My Preferences: Zréck op Meng Preferences
+Custom Scripts: Benotzerdefinéiert Scripten
+Timezone Selection: Zäitzone Selektioun
+Multiview: =
+entry-interval-help: Setzt Minuttintervall bei der Redaktioun vun den Auerzäiten
+Entry interval: Entrée Intervall
+hour: Stonn
+minute: Minutt
+theme-reload-help: Wéinst CSS Cache kann eng Säit nei gelueden ginn
+Page may need to be reloaded for new Theme to take effect: D'Säit muss vläicht nei gelueden ginn fir dat neit Thema a Kraaft trëtt
+display_byproxy-help: Weist de richtege Schëpfer op der View_entry Säit
+Display if created by Assistant: Weist wann et vum Assistent erstallt gëtt
+allow-view-subscriptions-help: Erlaabt d'Remote Zougang zu Privat oder Vertraulech Einträg ze beschränken
+Allow remote viewing of: Erlaben Erfindungen ukuckt vun
+entries: Entréen
+
+########################################
+# Page: purge.php
+#
+Purging events for: Läschen Eventer fir
+Finished: Fäerdeg
+Back: Zréck                         
+Check box to delete ALL events for a user: Kräizt Këscht fir  ALL  Eventer fir e Benotzer ze läschen                         
+Delete all events before: Läscht all Eventer virdrun
+Purge deleted only: Purge nëmmen geläscht
+Preview delete: Preview läschen
+Are you sure you want to delete events for: Sidd Dir sécher datt Dir Eventer fir läsche wëllt                         
+Records deleted from XXX: Records aus "XXX" geläscht.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: E-Mail Adress kann net eidel sinn.
+Username already exists.: Benotzernumm gëtt et schonn.
+Email address already exists.: E-Mail Adress existéiert scho.
+New user via self-registration.: Neie Benotzer iwwer Selbstregistrierung.
+A new WebCalendar account has been set up for you.: En neie WebCalendar Kont gouf fir Iech opgestallt.
+Your username is XXX.: Äre Benotzernumm ass: "XXX".
+Your password is XXX.: Äert Passwuert ass: "XXX".
+Please visit XXX to log in and start using your account!: Gitt weg op "XXX" fir Iech unzemellen an Äre Benotzerkont unzefänken!
+You may change your password after logging in the first time.: Dir kënnt Äert Passwuert änneren nodeems Dir Iech fir d'éischt ageloggt hutt.
+If you received this email in error: Wann Dir dësen E-Mail falsch krut an Iech net fir e WebCalendar Kont ugemellt hutt, kënnt Dir dësen Avis ignoréieren oder mat enger klenger Notiz äntweren
+Administrator: =
+Welcome: Wëllkomm
+New user via email.: Neie Benotzer iwwer E-Mail.
+Registration: Umeldung
+Welcome to WebCalendar: Wëllkomm op WebCalendar
+Your email should arrive shortly.: Är E-Mail sollt kuerz kommen.
+Return to Login screen: Zréck op den Loginbildschierm
+Password (again): Passwuert (erëm):
+Your account information will be emailed to you.: Äre Kont Informatioun gëtt Iech geschéckt.
+Submit: =
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Fuert weider                                
+(Your comments will be emailed to the other participants.): (Är Kommentarer ginn un déi aner Participanten geschéckt.)
+XXX has rejected an appointment.: XXX huet e Rendez-vous refuséiert.
+Rejected by XXX.: Ofgeleent vum XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Neie Remote Kalenner derbäi
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Dëst Evenement ass vertraulech.
+(Private): (Privat)
+(cont.): (weider.)
+Approved: Guttgeheescht                         
+Deleted: Geläscht
+Rejected: Ofgeleent
+Waiting for approval: Waarden op Genehmegung
+Unknown: Onbekannt
+Invalid report id.: Ongülteg Rapport-ID.
+Click here to manage reports for the Public Access calendar.: Klickt hei fir Berichte fir de Public Access Kalenner ze managen.                         
+Add new report: Neie Bericht derbäi
+Manage Reports: Managen Rapporten
+
+########################################
+# Page: search.php
+#
+Advanced Search: Fortgeschratt Sich
+Search: Sichen
+Keywords: Schlësselwierder
+Enter % for all entries: Gitt% fir all Entréen an
+Include: Enthält
+Filter by Date: Filter nom Datum
+All Dates: All Datumer
+Past: Vergaangenheet
+Upcoming: Upëff
+Range: Reechwäit
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Dir musst een oder méi Sichbegrëffer aginn.
+Search Results: Sich Resultater
+match found: Match fonnt
+matches found: Matcher fonnt
+No matches found: Keng Matcher fonnt
+New Search: Nei Sich
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: D'Informatioun hei ënnendrënner potenziell Probleemer mat Ärer WebCalendar Installatioun déi geännert kënne ginn fir Är Installatioun méi sécher ze maachen.
+For questions about WebCalendar security see the forums: Fir Froen iwwer all WebCalendar Sécherheetsprobleem, benotzt w.e.g. d'WebCalendar Forum'en déi op GitHub.com gehost ginn;<br>XXX
+View your current PHP settings: Kuckt Är aktuell PHP Astellungen
+Security Issue: Sécherheetsausgab
+Status: =
+Default admin user password: Standard Admin Benotzer Passwuert
+You should change the password of the default admin user.: Dir sollt d'Passwuert vum Standard Admin Benotzer änneren.
+File permissions XXX: Dateirechter: XXX
+item XXX should not be writable: Dat folgend Element sollt net schreiwen:<br><tt> XXX</tt>
+File exists XXX: Datei existéiert: "XXX"
+Because you have email disabled, you should remove this file.: Well Dir E-Mail behënnert hutt, sollt Dir dës Datei läschen.                         
+File location XXX: Dateiplaz: "XXX"
+remove XXX if not using: Wann Dir keng Datei "XXX" benotzt, sollt Dir se läschen. Oder, op d'mannst, réckelt et an en neit Verzeechnes.
+System Settings XXX: Systemastellungen: "XXX"
+consider enabling UAC: Dir wëllt iwwerleeën d'Benotzer Access Control z'aktivéieren fir d'Benotzer Privilegien ze setzen.
+recommend approving new public events: Mir recommandéieren datt all ëffentlech Event Soumissiounen approuvéiert ginn.
+recommend using CAPTCHA: CAPTCHA gëtt empfohlen fir nach eng Kéier automatiséiert Event Soumissiounen ze bewaachen.
+Database cache directory location: Datebank Cache Verzeechnes Standuert
+db cache should be inaccessable: De Datebank Cache soll an engem Verzeechnes sinn deen net mat enger URL zougänglech ass.
+PHP Settings XXX: PHP-Astellungen: "XXX"
+recommend setting XXX Off: Déi recommandéiert Astellung fir "XXX" ass Off.
+recommend setting allow_url_fopen Off: Déi recommandéiert Astellung fir "allow_url_fopen" ass Off wann Remote Kalenneren net aktivéiert sinn.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Kuckt de Kalenner vun engem anere Benotzer
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Dir hutt keng Kategorien derbäigesat.
+Set Category: Set Kategorie
+Global Categories cannot be changed.: Globale Kategorien kënnen net geännert ginn.
+
+########################################
+# Page: upcoming.php
+#
+more: méi
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Remote Kalenneren
+denotes administrative user: bezeechent administrativ Benotzer
+Add New User: Neie Benotzer bäisetzen
+
+########################################
+# Page: usersel.php
+#
+form: Form
+Reset: Zrécksetzen
+
+########################################
+# Page: views.php
+#
+Add New View: Neie View bäisetzen
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Ouni Vue
+Add View: =
+Edit View: =
+View Name: View Numm
+View Type: Vue Typ
+Day by Time: Dag fir Zäit
+Week (Users horizontal): Woch (horizontaler Benotzer)
+Week by Time: Woch fir Zäit
+Week (Users vertical): Woch (Benotzer vertikal)
+Week (Timebar): Woch (Timebar)
+Month (Timebar): Mount (Timebar)
+Month (side by side): Mount (niewenteneen)
+Month (on same calendar): Mount (am selwechte Kalenner)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Dir musst e Vue Numm uginn
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Keng Benotzer fir dës Vue.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Update Task Prozentsaz
+Completed: Fäerdeg                                
+Assistant mode: Assistent Modus                         
+Declined: Ofgeleent
+Needs-Action: Braucht-Action
+by: vun
+Percentage Complete: Prozentsaz Komplett
+External User: Externen User
+Update: Aktualiséierung
+at: um
+comments: Kommentaren
+Show: Weisen
+Hide: Verstoppen
+Approve/Confirm entry: Zouloossen / Bestätegen Entrée                         
+Reject entry: Entrée refuséieren
+Set category: Set Kategorie
+Add to My Calendar: =
+Copy entry: Entrée kopéieren                                
+This will delete this entry for all users.: Dëst wäert dës Entrée fir all Benotzer läschen.
+Edit entry: Editioun änneren
+Edit repeating entry for all dates: Ännerung Widderhuelungsentrée fir all Datume
+Delete repeating event for all dates: Läscht Widderhuelungsevent fir all Datumen
+Edit entry for this date: Ännerung Entrée fir dësen Datum
+Delete entry only for this date: Läscht d'Entrée nëmme fir dësen Datum
+Delete entry from calendar of XXX: Läscht d'Entrée aus dem Kalenner vum XXX
+This will delete the entry from your XXX calendar.: Dëst wäert d'Entrée aus Ärem XXX Kalenner läschen.
+boss: Chef '
+This will delete the entry from your boss calendar.: Dëst wäert d'Entrée vum Kalenner vun Ärem Chef läschen.
+This will delete the entry from your calendar.: Dëst wäert d'Entrée aus Ärem Kalenner läschen.
+from your boss calendar: vum Kalenner vun Ärem Chef
+Do you want to add this entry to your calendar?: Wëllt Dir dës Entrée an Äre Kalenner bäifügen?
+This will add the entry to your calendar.: Dëst füügt d'Entrée an Äre Kalenner bäi.
+Email all participants: Email all Participanten
+Hide activity log: Aktivitéitsprotokoll verstoppen
+Show activity log: Aktivitéitsprotokoll weisen
+Export this entry to: Exportéiert dës Entrée op
+Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Duebelklick op eidel Zell fir nei Entrée bäizefügen.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Nei Entrée
+cont.: weider
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: En anere Benotzer Kalenner                         
+Category Management: Kategorie Management                         
+Day View: Dagesvis
+Edit Event: Edit Edit
+Month View: Mount View
+Common Trailer: Gemeinsam Trailer                                
+User Management: Benotzer Management
+Manage Views: Managen Views
+Week View: Wochenusiicht
+Year View: Joer Vue
+Invalid function id: Ongülteg Funktioun ID
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Konnt "Settings.php" Datei net fannen.<br>Kopéiert w.e.g. "settings.php.orig" op "settings.php" an ännert fir Äre Site.
+Incomplete settings.php file...: Inkomplett "settings.php" Datei ...
+Could not find XXX defined in...: Konnt "XXX" net definéiert an Ärem "settings.php" Datei fannen.
+You must define XXX in: Dir musst "XXX" an der "settings.php" Datei definéieren.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Dezember
+Dec: Dez.
+LANGUAGE DEFINED: SPROOCH definéiert
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Feeler beim Uschloss un d'Datebank: "XXX".
+db_type not defined.: db_type net definéiert.
+invalid db_type XXX: ongëlteg db_type "" XXX ".
+Cache cleared from previous SQL!: Cache geläscht vu viregter SQL!                         
+Error executing query.: Feeler beim Ausféiere vun der Ufro.
+Unfortunately, XXX is not implemented for YYY: Leider ass "XXX" net fir (YYY) implementéiert.
+Unknown ODBC error.: Onbekannten ODBC Feeler.
+Error opening cache dir XXX.: Feeler beim Ëffnen vum Cache dir "XXX".
+delete: läschen
+Cache error Could not XXX file YYY.: Cache Feeler: Konnt net XXX Datei "YYY" maachen.                         
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fatal Feeler
+Invalid data format for: Ongültegt Dateformat fir
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Feeler: Typ net gesat fir Aktivitéitsprotokoll!
+This event is XXX.: Dëst Evenement ass XXX.
+Conf.: Conf.                                
+exceeds limit of XXX events per day: iwwerschratt Limit vun XXX Eventer pro Dag
+on: an
+All Attendees: All Participanten
+Busy: Beschäftegt                         
+Tentative: Tentativ
+Schedule an appointment for XXX.: Rendez-vous fir XXX: YYY.
+date_select: =
+Event approved: Event ugeholl
+Journal approved: Journal guttgeheescht
+Task approved: Aufgab guttgeheescht
+Attachment: Unhang                         
+Event created: Event erstallt
+Journal created: Journal erstallt
+Task created: Aufgab erstallt
+Event deleted: Event geläscht
+Journal deleted: Journal geläscht
+Task deleted: Aufgab geläscht
+New user via email (self registration): Neie Benotzer iwwer E-Mail (Selbstregistrierung)
+New user (self registration): Neie Benotzer (Selbstregistrierung)
+Notification sent: Notifikatioun geschéckt
+Event rejected: Event ofgeleent
+Journal rejected: Journal verworf
+Task rejected: Aufgab verworf
+Reminder sent: Erënnerung geschéckt
+Event updated: Event aktualiséiert
+Journal updated: Journal aktualiséiert
+Task updated: Aufgab aktualiséiert
+Delete User: Benotzer läschen
+WK: =
+TASKS: Aufgaben
+Task_Title: Titel
+Due: Wéinst
+Task Name: Aufgab Numm
+Task Due Date: Aufgab wéinst Datum
+You have XXX unapproved entries: Dir hutt XXX net guttgeheescht Entréen 
+Changes successfully saved: Ännerungen erfollegräich gespäichert                         
+Event: =
+Action: Aktioun
+Printer Friendly: Dréckerfrëndlech
+Generate printer-friendly version: Generéiere Dréckerspäicher Versioun
+after: no
+before: virun
+end: Enn
+start: ufänken
+View this event: Kuckt dëst Evenement
+View this task: Kuckt dës Aufgab
+January: Januar
+February: Februar
+March: Mäerz
+April: Abrëll                         
+May_: Mee
+June: Juni
+July: Juli
+August: August                         
+September: =
+October: Oktober
+November: =
+Jan: Jan.
+Feb: Feb.
+Mar: Mar.
+Apr: Abr                         
+May: Mee
+Jun: =
+Jul: =
+Aug: Aug.                         
+Sep: Sep.
+Oct: Okt.
+Nov: Nov.
+SU: =
+MO: =
+TU: =
+WE: MIR
+TH: =
+FR: =
+SA: =
+unknown-month: onbekannt-Mount
+First Quarter Moon: Éischte Véierel Mound
+Full Moon: Vollmound
+Last Quarter Moon: Leschte Quarter Moon
+New Moon: Neimound
+Error TIME_SLOTS undefined!: Feeler: TIME_SLOTS net definéiert!
+The following error occurred: De folgende Feeler ass geschitt
+You are not authorized.: Dir sidd net autoriséiert.
+Add N hours to: Füügt N Stonnen un
+Subtract N hours from: Huelt N Stonne vun
+same as: selwecht wéi
+server time: Serverzäit
+Cannot read timezone file XXX.: Kann d'Zäitzon Datei net liesen: XXX.                         
+Your current GMT offset is XXX hours.: Ären aktuellen GMT Offset ass XXX Stonnen.
+Unauthorized: Net autoriséiert
+Error approving event XXX.: Feeler beim Zouloossen vun Event: XXX.
+Error deleting event XXX.: Feeler beim Läschen vum Event: XXX.
+Error rejecting event XXX.: Feeler beim Oflehnung vum Event: XXX.
+Sunday: Sonndeg
+Monday: Méindeg
+Tuesday: Dënschdeg
+Wednesday: Mëttwoch
+Thursday: Donneschdeg
+Friday: Freideg
+Saturday: Samschdeg
+Sun: Sonn
+Mon: =
+Tue: =
+Wed: Mëttwoch
+Thu: Do
+Fri: Fre
+Sat: =
+unknown-weekday: onbekannt-Wochendag
+Invalid referring URL: Ongülteg referéierend URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: =
+Documentation: Dokumentatioun
+Page: Säit
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Mäi Kalenner
+Add New Entry: Neit Entrée bäifügen
+Add New Task: Neie Aufgab derbäi
+Logout: Ausloggen
+Home: Doheem
+Back to My Calendar: Zréck op Mäi Kalenner                         
+Go to: Géi op
+Manage calendar of: Managen Kalenner vun
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Browser Sprooch net fonnt                         
+(not supported): (net ënnerstëtzt)
+Abkhazian: Abkasesch
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: =
+Ainu: =
+Akan: =
+Akkadian: Akkadesch
+Albanian: Albanesch
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Süd)
+Amharic: Amharesch
+Angika: =
+Apache: =
+Arabic (Algeria): Arabesch (Algerien)
+Arabic (Bahrain): Arabesch (Bahrain)
+Arabic (Egypt): Arabesch (Ägypten)
+Arabic (Iraq): Arabesch (Irak)
+Arabic (Jordan): Arabesch (Jordanien)
+Arabic (Kuwait): Arabesch (Kuwait)
+Arabic (Lebanon): Arabesch (Libanon)
+Arabic (Libya): Arabesch (Libyen)
+Arabic (Morocco): Arabesch (Marokko)
+Arabic (Oman): Arabesch (Oman)
+Arabic (Qatar): Arabesch (Katar)
+Arabic (Saudi Arabia): Arabesch (Saudi Arabien)
+Arabic (Syria): Arabesch (Syrien)
+Arabic (Tunisia): Arabesch (Tunesien)
+Arabic (U.A.E.): Arabesch (UAE)
+Arabic (Yemen): Arabesch (Yemen)
+Arabic: Arabesch
+Aragonese: =
+Aramaic: Aramäesch
+Arapaho: =
+Arawak: =
+Armenian: Armenesch
+Assamese: Assamesesch
+Asturian: Asturesch
+Athapascan: =
+Avaric: Avaresch
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: AserbaidschaneschName
+Balinese: Balinesesch
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: Baschkir
+Basque: Baskesch
+Beja: =
+Belarusian: Wäissrussesch
+Bemba: =
+Bengali: Bengalesch
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Schwaarze Fouss
+Blin: =
+Bliss: Glécklechkeet
+Bosnian: Bosnesch
+Braj: =
+Breton: Bretonesch
+Buginese: =
+Bulgarian: Bulgarescg
+Buriat: =
+Burmese: Birmanesch
+Caddo: =
+Catalan: katalanesch
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: TschetscheneschName
+Cherokee: tscherokesesch
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Chinesesch (Hong Kong)
+Chinese (PRC): Chinesesch (PRC)
+Chinese (Simplified/GB2312): Chinesesch (Vereinfacht / GB2312) 
+Chinese (Singapore): Chinesesch (Singapur)
+Chinese (Taiwan): Chinesesch (Taiwan)
+Chinese (Traditional/Big5): Chinesesch (Traditionell / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: Koptesch
+Cornish: Cornischong
+Corsican: Korsesch
+Cree: =
+Creek: =
+Croatian: Kroatesch
+Czech: Tschechesch
+Dakota: =
+Danish: Dänesch
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Hollännesch (Belsch)
+Dutch: Hollänesch
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Englesch (Australien)
+English (Belize): Englesch (Belize)
+English (Canada): Englesch (Kanada)
+English (Ireland): Englesch (Irland)
+English (Jamaica): Englesch (Jamaika)
+English (New Zealand): Englesch (Neiséiland)
+English (Philippines): Englesch (Philippinen)
+English (South Africa): Englesch (Südafrika)
+English (Trinidad & Tobago): Englesch (Trinidad & Tobago)
+English (United Kingdom): Englesch (Vereenegt Kinnekräich)
+English (United States): Englesch (USA)
+English (Zimbabwe): Englesch (Simbabwe)
+English: Englesch-US
+Erzya: =
+Esperanto: =
+Estonian: Estonesch
+Ewe: Eech
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: Färöeresch
+Fijian: Fidschianesch
+Filipino: Philippinesch
+Finnish: Finnesch
+Fon: =
+French (Belgium): Franséisch (Belsch)
+French (Canada): Franséisch (Kanada)
+French (France): Franséisch (Frankräich)
+French (Luxembourg): Franséisch (Lëtzebuerg)
+French (Monaco): Franséisch (Monaco)
+French (Switzerland): Franséisch (Schwäiz)
+French: Franséisch
+Frisian (Eastern): Frisesch (Ost)
+Frisian (Northern): Frisesch (Nord)
+Frisian (Western): Frisesch (Western)
+Frisian: Frisesch
+Friulian: Friulianesch
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galizesch
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Georgesch
+German (Austria): Däitsch (Éisträich)
+German (Germany): Däitsch (Däitschland)
+German (Liechtenstein): Däitsch (Liechtenstein)
+German (Luxembourg): Däitsch (Lëtzebuerg)
+German (Standard): Däitsch (Standard)
+German (Switzerland): Däitsch (Schwäiz)
+German: Däitsch
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gotesch
+Grebo: =
+Greek: Griichesch
+Greenlandic: grönlännesch
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haitescht Creole)
+Haitian: Haitianesch
+Hausa: Haussa
+Hawaiian: Hawaianesch
+Hebrew: Hebräesch
+Herero: =
+Hiligaynon: Higgaynon
+Hindi: =
+Hiri Motu: =
+Hittite: Hetite
+Hmong: =
+Holo (Taiwanese): Holo (taiwanesesch)
+Hungarian: Ungaresch
+Hupa: =
+Iban: =
+Icelandic: Islännesch
+Ido: Ech maachen
+Igbo: =
+Iloko: =
+Indonesian: Indonesesch
+Ingush: Ingusch
+Inuktitut: =
+Inupiaq: =
+Iranian: Iraneschen
+Irish (Gaelic): Iresch (Gaelesch)
+Irish: Iresch
+Iroquoian: =
+Italian (Switzerland): Italienesch (Schwäiz)
+Italian: Italienesch
+Japanese: Japanesch
+Javanese: Javanesesch
+Judeo-Arabic: Judeo-Arabesch
+Judeo-Persian: Judeo-Persesch
+Kabardian: kabardinesch
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: Karelesch
+Kashmiri: =
+Kashubian: Kaschubesch
+Kawi: =
+Kazakh: kasachesch
+Khasi: =
+Khmer (Central): Khmer (Zentral)
+Khmer: =
+Khotanese: Khotanesesch
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: Klingonesch
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Koreanesch (Johab)
+Korean (North): Koreanesch (Nord)
+Korean (South): Koreanesch (Süd)
+Korean: Koreanesch
+Kosraean: Kosraesch
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: kurdesch
+Kutenai: =
+Kyrgyz: Kirgisesch
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Laotesch
+Latin: laténgesch
+Latvian: Lettesch
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: litauesch
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Lëtzebuerger
+Macedonian: Mazedonesch
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Malagassesch
+Malay: Malaiesch
+Malayalam: Malajalam
+Maldivian: Malediven
+Maltese: Maltesesch
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: maoresch
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Moldawesch
+Mongo: =
+Mongolian: mongolesch
+Montenegrin: =
+Moroccan: Marokkanesch
+Mossi: =
+Myanmar: =
+Māori: Maoresch
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Nord)
+Ndebele (South): Ndebele (Süd)
+Ndebele: =
+Ndonga: =
+Neapolitan: Neapolitaner
+Nepali: Nepalesesch
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Norwegesch (Bokmål)
+Norwegian (Nynorsk): Norwegesch (Nynorsk)
+Norwegian: Norweegesch
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Occitanesch
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Ossetesch
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: pashtu
+Pedi: =
+Persian (Farsi): Persesch (Farsi)
+Persian (Iran): Persesch (Iran)
+Persian: Persesch
+Phoenician: Fenizesch
+Pohnpeian: =
+Polish: Polnesch
+Portuguese: Portugisesch
+Portuguese/Brazil: Portugisesch / Brasilien 
+Punjabi (India): Punjabi (Indien)
+Punjabi (Pakistan): =
+Punjabi: pundschabi
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Rhetoromäesch
+Romanian: Rumänesch
+Romansh: Réimesch
+Romany: Réimesch
+Rundi: =
+Russian (Moldavia: Russesch (Moldawien
+Russian (Republic of Moldova): Russesch (Republik Moldawien)
+Russian: Russesch
+Sami (Inari): =
+Sami (Lappish): Sami (lappesch)
+Sami (Lule): =
+Sami (Northern): Sami (Nord)
+Sami (Skolt): =
+Sami (Southern): Sami (Süd)
+Sami: Samesch
+Samoan: Samoaner
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: Sardinesch
+Sasak: =
+Scots (Gaelic): Schotten (Gaelesch)
+Selkup: =
+Serbian (Upper): Serbesch (Uewer)
+Serbian: Serbesch
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Sizilianesch
+Sindhi: =
+Sinhala: =
+Slavic: Slavesch
+Slovak: Slowakesch
+Slovenian: Slowenesch
+Sogdian: =
+Somali: somalesch
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbesch (Ënnescht)
+Sorbian (Upper): Sorbesch (Uewer)
+Sorbian: Sorbesch
+Sotho: =
+Spanish (Argentina): Spuenesch (Argentinien)
+Spanish (Bolivia): Spuenesch (Bolivien)
+Spanish (Chile): Spuenesch (Chile)
+Spanish (Colombia): Spuenesch (Kolumbien)
+Spanish (Costa Rica): Spuenesch (Costa Rica)
+Spanish (Dominican Republic): Spuenesch (Dominikanesch Republik)
+Spanish (Ecuador): Spuenesch (Ecuador)
+Spanish (El Salvador): Spuenesch (El Salvador)
+Spanish (Guatemala): Spuenesch (Guatemala)
+Spanish (Honduras): Spuenesch (Honduras)
+Spanish (Mexico): Spuenesch (Mexiko)
+Spanish (Nicaragua): Spuenesch (Nicaragua)
+Spanish (Panama): Spuenesch (Panama)
+Spanish (Paraguay): Spuenesch (Paraguay)
+Spanish (Peru): Spuenesch (Peru)
+Spanish (Puerto Rico): Spuenesch (Puerto Rico)
+Spanish (Spain): Spuenesch (Spuenien)
+Spanish (Uruguay): Spuenesch (Uruguay)
+Spanish (Venezuela): Spuenesch (Venezuela)
+Spanish: Spuenesch
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumeresch
+Sundanese: Sundanesesch
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Schwedesch (Finnland)
+Swedish (Sweden): Schwedesch (Schweden)
+Swedish: Schweedesch
+Syriac: syresch
+Tagalog: =
+Tahitian: Tahitesch
+Tai: =
+Taiwan: =
+Tajik: Tadschikesch
+Tamashek: =
+Tamil: =
+Tatar: Tataresch
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: Tibetanesch
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Tonga Inselen)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Tierkesch
+Turkmen: Turkmenesch
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: Ugaritesch
+Ukrainian: Ukrainesch
+Umbundu: =
+Urdu: =
+Uyghur: uiguresch
+Uzbek: Usbekesch
+Vai: =
+Venda: =
+Vietnamese: Vietnamesesch
+Volapük: =
+Votic: Votesch
+Wakashan: =
+Walloon: Wallounesch
+Waray: =
+Washo: =
+Welsh: Walisesch
+Wolaitta: =
+Wolof: wolof
+Xhosa: xhosa
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: Jiddesch
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Browser definéiert                         
+event: Manifestatioun
+journal: Zäitschrëft
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Ongültege Benotzer Login
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: falsch Passwuert
+no such user: keen esou User
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Kont behënnert
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Intervall
+Months: Méint
+Month Days: Mount Deeg
+Days: Deeg
+Weeks: Wochen
+Position: Positioun
+Until: Bis
+Count: Grof
+Inclusion Dates: Inclusioun Datumer
+Exclusion Dates: Exklusioun Datumer
+Event Imported: Event importéiert
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: Bytes
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Notifikatioun
+authenticate: SMTP Feeler: Konnt net authentifizéieren
+connect_host: SMTP Feeler: Konnt net mam SMTP Host verbannen:
+data_not_accepted: SMTP Feeler: Daten net akzeptéiert
+encoding: Onbekannt Kodéierung:
+execute: Konnt net ausféieren:
+file_access: Konnt de Fichier net zougräifen:
+file_open: Dateiformat Konnt d'Datei net opmaachen:
+from_failed: Déi folgend Vun Adress ass feelgeschloen:
+instantiate: Konnt d'Mailfunktioun net instantiéieren
+mailer_not_supported: Mailer gëtt net ënnerstëtzt
+provide_address: Dir musst op d'mannst eng Empfänger E-Mail Adress uginn.
+recipients_failed: SMTP Feeler: Déi folgend Destinatairen hu versot:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Gitt Zeechen a Grafik gesinn
+Enter the correct letters and numbers...: Gitt déi richteg Buschtawen an Zuelen aus dem Bild an den Textfeld. Dëse klengen Test déngt als Zougangsbeschränkung géint béisaarteg Botten. Einfach d'Säit nei lueden wann dës Grafik ze schwéier ass ze liesen
+Challenge/Response: Challenge / Äntwert                         
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Änneren den Datum an d'Zäit vun dësem Element?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Dir hutt keng Kuerzbeschreiwung aginn
+time prior to work hours...: Zäit virum Aarbechtszäit ...
+Invalid Event Date: Ongültegen Event Datum
+Please add a participant: Gitt w.e.g. e Participant bäi 
+Invalid Date: Ongültegen Datum
+You have not entered a valid time of day: Dir hutt keng gëlteg Zäit vum Dag aginn. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Kalenner ID kann net eidel sinn. 
+First and last names cannot both be blank.: Vir- a Familljennimm kënnen net allenzwee eidel sinn. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Ongülteg Faarf
+Color format should be RRGGBB.: Faarfformat soll #RRGGBB sinn. 
+URL cannot be blank.: URL kann net eidel sinn.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Dateityp passt net mam Importformat 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Ongülteg Faarf fir den Hannergrond vum Dokument.
+Invalid color for document title.: Ongülteg Faarf fir den Dokumententitel.
+Invalid color for table cell background.: Ongülteg Faarf fir den Tabellenzellhannergrond.
+Invalid color for table cell background for today.: Ongülteg Faarf fir den Tabellenzellhannergrond fir haut.
+Invalid work hours.: Ongülteg Aarbechtszäiten.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Server URL muss mat engem Slash (/) ophalen.
+Invalid color for table grid.: Ongülteg Faarf fir Dësch Raster.
+Invalid color for event popup background.: Ongülteg Faarf fir Event Popup Hannergrond.
+Invalid color for event popup text.: Ongülteg Faarf fir Pop-up Event.
+Invalid color for table header text.: Ongülteg Faarf fir den Tabell Header Text.
+Invalid color for table header background.: Ongülteg Faarf fir den Tabellen Header Hannergrond.
+Server URL is required.: Server URL ass erfuerderlech.
+Invalid Color: Ongülteg Faarf
+Database Name: Datebank Numm
+Full Path (no backslashes): Voll Wee (kee Réckfall) 
+The password contains illegal characters.: De Passwuert enthält illegal Zeechen.
+Error you must specify a Single-User Login: Feeler: Dir musst e Single-User Login spezifizéieren
+Could not find XXX.: Konnt XXX net fannen.
+Could not find XXX in DOM.: Konnt XXX net an DOM fannen.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Des Woch
+This Month: Dëse Mount
+This Year: Dëst Joer
+Exit: Sortie
+Add New Event: Neit Event bäifügen
+Delete Entries: Entries läschen
+My Views: Meng Meenung
+Manage Calendar of: Managen Kalenner vun
+My Reports: Meng Rapporten
+My Profile: Mäi Profil
+Public Calendar: Ëffentleche Kalenner
+Unapproved Events: Ongekennegt Eventer
+User Manager: Benotzer Manager
+Help Contents: Hëllef Inhalter
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Datebank Cache Verzeechnes
+Create New: Neit erstellen
+Failure Reason: Feeler Ursaach:
+You must manually create database: Dir musst manuell Datebank erstellen.
+Single-User: Eenzege Benotzer
+Test Settings: Test Astellungen
+Timezone Conversion Successful: Zäitzone Konversioun Erfolleg
+WebCalendar Installation Wizard Step XXX: WebCalendar Installatiounsassistent Schrëtt XXX
+Password Accepted: Passwuert akzeptéiert
+Successful Login: Erfollegräich Login
+Password Incorrect: Passwuert falsch
+Invalid Login: Ongültege Login
+Display Errors: Affichage Feeler
+File Uploads: Datei Uploads
+Allow URL fopen: URL fopen erlaabt (nëmmen erfuerderlech wann Remote Kalennere benotzt ginn)
+Safe Mode: Sécherheetsmodus
+Safe Mode Allowed Vars: Safe Mode Erlaabt Vars (TZ erfuerderlech nëmme wann de Safe Mode On ass)
+GD: GD (gebraucht fir Gradient Image Backgrounds)
+Passwords do not match!: Passwierder passen net!
+Unable to write password to settings.php file: Kann net Passwuert fir "Settings.php" Datei schreiwen.
+Password Updated: Passwuert aktualiséiert
+Password has been set: Passwuert gouf gesat.
+Connection Successful...: Verbindung erfollegräich  Gitt w.e.g. op déi nächst Säit fir weider ze installéieren.                                
+Correct your entries or click the Create New...: Korrigéiert Är Einträg oder klickt op de  Neit erstellen  Knäppchen fir weider ze installéieren.                                
+Correct your entries and try again.: Richtegt Är Entréen a probéiert nach eng Kéier.                                
+XXX does not exist: XXX existéiert net
+XXX is not writable: XXX ass net schrëftlech
+Error Converting Timezone: Feeler beim Ëmbau vun Zäitzone
+Error Unable to write to file XXX.: Feeler Kann net an d'Datei XXX schreiwen.
+Please change the file permissions of this file.: Ändert w.e.g. d'Fichier Permissiounen vun dëser Datei.
+Please change includes dir permission: Ändert w.e.g. d'Fichier Permissiounen vun Ärem "enthält" Verzeechnes fir z'erschreiwe vun anere Benotzer.
+Your settings have been saved.: Är Astellunge goufen gespäichert.
+OFF: AUS
+ON: OP
+WebCalendar Setup Wizard: =
+This installation wizard will guide you...: Dëse Installatiounsassistent wäert Iech guidéieren andeems Dir eng Basis WebCalendar Installatioun opbaut.<br>Fir Hëllef an Troubleshooting kuckt:<br>
+System Administrators Guide: Systemadministrator Guide
+Frequently Asked Questions: Oft gestallten Froen
+FAQ: =
+Troubleshooting: =
+Getting Help: Hëllef kréien
+Upgrading Guide: Upgrade Guide
+User Supported Wiki: Benotzer ënnerstëtzt Wiki
+PHP Version Check: PHP Versioun Check
+Check to see if PHP 7.1.0 or greater is installed.: Préift ob PHP 7.1.0 oder méi installéiert ass.                         
+PHP version: PHP Versioun
+PHP Settings: PHP Astellungen
+Detailed PHP Info: Detailléiert PHP Info
+settings.php Status: =
+Session Check: Sessiounskontroll
+To test the proper operation of sessions...: Fir déi richteg Operatioun vu Sessiounen ze testen, lued dës Säit nei. Dir sollt de Sessiouns Konter Inkrement all Kéier gesinn.
+SESSION COUNTER: Sëtzung GËTT
+The file permissions of settings.php are set...: D'Fichier Permissiounen vun "settings.php" si gesat sou datt den Installateur net d'Recht huet et z'änneren. Ändert w.e.g. d'Fichier Permissiounen vun der folgender Datei fir weiderzemaachen
+The file permissions of the includes directory are set...: D'Fichier Permissiounen vum Inclusiv Verzeechnes si gesat sou datt den Installateur net d'Recht huet eng nei Datei ze kreéieren. Ändert w.e.g. d'Rechter vun dësem folgende Verzeechnes fir weiderzemaachen
+Your settings.php file appears to be valid.: Är "settings.php" Datei schéngt gëlteg ze sinn.
+Configuration Wizard Password: Configuratioun Wizard Passwuert                                
+Create Settings File Password: Erstelle Parameteren Dateipasswuert
+db setup directions...: An dëser Sektioun wäert Dir eng Verbindung mat Ärem Datebankserver opstellen an testen. D'Kontinformatioun geliwwert soll VOLLZÄIT Permissiounen hunn fir Datenbanken, Dëscher a Benotzer ze erstellen. Wann dëst net méiglech ass, oder Ären Datebankzougang limitéiert ass, musst Dir Är Datebank manuell konfiguréieren.
+Database Status: Datebank Status
+Supported databases for your PHP installation: Ënnerstëtzte Datenbanken fir Är PHP Installatioun
+Your current database settings are able to access the database.: Är aktuell Datebank Astellunge kënne Zougang zu der Datebank kréien.
+Please Test Settings: W.e.g. Test Astellungen
+Your current database settings are not able...: Är aktuell Datebank Astellunge kënnen net Zougang zu der Datebank kréien oder sinn nach net getest.
+Database Settings: Datebank Astellungen
+Database Type: Datebank Typ
+Server: =
+Connection Persistence: Verbindung Persistenz                                
+All your database tables appear to be up...: All Är Datebank Dëscher schéngen aktuell ze sinn. Dir kënnt op déi nächst Säit weidergoen an Äre WebCalendar Setup fäerdeg maachen.
+This appears to be a new installation...: Dëst schéngt eng nei Installatioun ze sinn. Wann dëst net richteg ass, gitt zréck op déi vireg Säit a korrigéiert Är Astellungen.
+This appears to be an upgrade...: Dëst schéngt en Upgrade vun der Versioun&nbsp;XXX&nbsp;op&nbsp;YYY ze sinn.
+The database requires some data input...: D'Datebank erfuerdert e puer Dateninput Klickt Update Update Datebank fir den Upgrade ze kompletéieren.
+In this section we will perform...: An dëser Sektioun wäerte mir d'Ännerunge maachen fir Är Datebank op den erfuerderlechen Niveau ze bréngen. Wann Dir eng voll ënnerstëtzt Datebank benotzt, gëtt dëse Schrëtt automatesch fir Iech gemaach. Wann net, kann déi erfuerderlech SQL ugewisen ginn an Dir sollt et fäeg sinn ze schneiden an an Är Datebankserver Ufrofenster ze pechen.
+No database actions are required.: Keng Datebank Aktiounen sinn erfuerderlech.
+The following database actions are required: Déi folgend Datebank Aktiounen sinn erfuerderlech
+ODBC Underlying Database: ODBC Ënnerdaach Datebank:
+Automatic installation not supported: Automatesch Installatioun ass net komplett fir Ären Datebankentyp implementéiert. Dir musst déi erfuerderlech Tabelle manuell erstellen mat der geliwwert SQL. Klickt w.e.g. op  SQL affichéieren  fir weiderzemaachen. Cut a Paste an Är Datebank Ufrofenster.                         
+This may take several minutes to complete: Dëst kann e puer Minutten daueren.
+Install Database: Installéiert Datebank
+Update Database: Update Datebank
+Display Required SQL: Weist Néideg SQL
+Return to previous page after processing SQL.: Nodeems Dir dëse SQL manuell veraarbecht hutt, musst Dir op déi vireg Säit zréckgoen an Är Datebank nei testen, sou datt de Skript d'Ännerunge feststellt.
+This is the final step in setting up your WebCalendar Installation.: Dëst ass de leschte Schrëtt fir Är WebCalendar Installatioun opzestellen.
+Timezone Conversion: Zäitzone Konversioun
+It appears that you have NOT converted...: Et schéngt, datt Dir Är existent WebCalendar Eventdaten NET op GMT ëmgewandelt hutt. Wann Dir hutt, kënnt Dir dësen Avis ignoréieren an net mat der Konversioun weidergoen. Wann dëst eng nei Installatioun ass, kënnt Dir dës Notiz och ignoréieren.
+Convert Data to GMT: Konvertéiert Daten op GMT                                
+Application Settings: Uwendungsastellungen                         
+HTTP-based authentication was not detected...: HTTP-baséiert Authentifikatioun gouf net detektéiert. Dir musst Äre Webserver nei konfiguréieren wann Dir 'Webserver' aus de "Benotzer Authentifikatioun" Entscheedunge wielt.
+HTTP-based authentication was detected...: HTTP-baséiert Authentifikatioun gouf festgestallt. Benotzer Authentifikatioun gëtt vun Ärem Webserver behandelt. Dir sollt 'Webserver' aus der Lëscht vun de "Benotzer Authentifikatioun" Entscheedungen auswielen.
+Create Default Admin Account: Erstellt Standard Admin Account
+(Admin Account Not Found): (Admin Account net fonnt)
+User Authentication: Benotzer Authentifikatioun
+Web-based via WebCalendar (default): Webbaséiert iwwer WebCalendar (Standard)
+Web Server (not detected): Webserver (net detektéiert)
+Web Server (detected): Webserver (detektéiert)
+None (Single-User): Keen (Single-User)
+Read-Only: Nëmme liesen
+Environment: Ëmwelt
+Production: Produktioun
+Development: Entwécklung
+Save Settings: Astellunge späicheren
+Launch WebCalendar: Start WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Feeler beim Update vum Dësch "XXX": YYY.
+Conversion Successful: Konversioun erfollegräich                                 
+Perl script required: Är vireg Versioun vu WebCalendar erfuerdert e PERL Skript auszeféieren fir Är Donnéeën ze konvertéieren. Fëllt w.e.g. /tools/upgrade_to_0.9.7.pl da gitt zréck op dës Säit fir weiderzemaachen.
+previous version requires updating several tables: Är vireg Versioun vu WebCalendar erfuerdert d'Aktualiséierung vu verschiddenen Datebank Dëscher.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: KEE VIRSCHLOEN DISPONIBEL
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Feeler beim Uschloss un d'Datebank
+Include Path: Enthält Path
+Deleting events for: Läscht Eventer fir
+Importing events for: Importéiere vun Eventer fir
+No data returned from: Keng Daten zréck vun
+for non-user calendar: fir Net-Benotzer Kalenner
+No Remote Calendars found: Keng Remote Kalennere fonnt
+Remote Calendars not enabled: Remote Kalenneren net aktivéiert
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: konnt keng Event ID fannen
+could not find event id XXX in database.: konnt keng Event ID XXX an der Datebank fannen.
+task: Aufgab
+This is a reminder for the XXX detailed below.: Dëst ass eng Erënnerung fir den XXX hei ënnendrënner detailléiert.
+Pecentage Complete: Pecentage Komplett
+Reminder: Erënnerung
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Net ënnerstëtzten Aktioun: XXX.
+No event id specified.: Keen Event ID uginn.
+Not authorized (not admin).: Net autoriséiert (net Admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Préift no Eventer fir XXX vum Datum YYY bis den Datum ZZZ.                         
+Found XXX events in time range.: XXX Eventer an Zäitberäich fonnt.
+Event id=XXX YYY at ZZZ on AAA.: Event id = XXX "YYY" bei ZZZ op AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Erlaabt de XXX Benotzer de Kalenner vun engem anere Benotzer ze gesinn.
+Error Email reminders disabled for user XXX.: Feeler: E-Mail-Erënnerungen ausgeschalt fir de Benotzer "XXX".
+Number of site_extras XXX.: Zuel vu Site_extras: XXX.
+Reminder set for event.: Erënnerung fir Event gesat.
+Mins Before XXX.: Minutte virdrun: XXX.
+Event time is XXX.: Zäit vum Event ass: XXX.
+Remind time is XXX.: Erënnerungszäit ass: XXX.
+Reminders for user XXX, login YYY.: Erënnerunge fir de Benotzer "XXX", Login "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Net guttgeheescht fir de Benotzer "XXX".
+Event id=XXX YYY already sent.: Event ID = XXX "YYY" scho geschéckt.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Kee Login erfuerderlech fir den eenzege Benotzer Modus.
+No login required for HTTP authentication.: Kee Login erfuerderlech fir HTTP Authentifikatioun.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Ongülteg Zeechen am Login.
+Username XXX does not exist.: Benotzernumm "XXX" gëtt et net.
+You cannot remove admin rights from yourself!: Dir kënnt net Admin Rechter vun Iech selwer ewechhuelen!
+Unknown error saving user: Onbekannte Feeler beim Späichere vum Benotzer.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Keng Participante fir Event ID fonnt: XXX.
+Db error Could not find event id XXX.: Db Feeler: Konnt d'Evenement ID XXX net fannen. 
+Error Could not find event id XXX in database.: Feeler: Konnt d'Eventer ID XXX an der Datebank net fannen. 

@@ -1,0 +1,2387 @@
+# Latin la
+#
+# Quod consistit in ipsa forma header libitum:
+#
+# Translata per nomen et inscriptio
+# Last update: De translatione diem
+# (Possidet ducens ad "#" et quid per previous translators in comment.
+# Prima haec vestis linea terminatur videre caput.)
+#
+# Sequitur ut opus est multis:
+#
+# Anglicus sententia: translatione
+# (Ad versus unum. Ducens sine "#".
+# Quod "Latina sententia", inter quas colonia ': ", provisum est a
+# WebCalendar developers. Pars tui sit "translationem".)
+#
+# Directory habet duos perl scripta sunt instrumenta ad auxilium vobis:
+# - check_translation.pl
+# Si omnes bene indicat textus sunt translata.
+# - update_translation.pl
+# parse in progressio ut omnia interpretari files ( 'phrase') et
+# tooltip ( 'phrase'). Et hoc disponere, et secundum Phrases ad paginam versus
+# (File) Quod primum contineat occurance. Ad libitum: quod can tag in
+# translatis verbis quae nondum posito
+#  << MISSING >>
+# dictum est recta. Et si abbreviationem sententia est,
+# sic erit includit plena Latina cum textu ex sententia sub linea.
+#
+# Nota: Ego conanti ut interficias eos in altiore lima amplitudo. Quod si in "Latin"
+#  Verbum / sententia est esse in lingua tua: et Anglis, iustus utor quod "=" signum habeant.
+#
+# Nota: Vos mos animadverto quod noti "May_" infra. Est ratio.
+#  Interpretari "May_" est ad plenum nomen et mensem "May" in,
+#  plerumque tres litterae, mense abbreviationem (ut 'Oct' pro 'Octobris').
+#
+# Google eram hanc interpretari.
+# Sufficiat ad hoc ut possint cognoscere ea nativi latine loquitur.
+# Bruce Bannon wcDev@bbannon.net
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: XXX version
+WebCalendar is a PHP application used...: WebCalendar PHP applicationem usus est ponere in fastis ad unum aut ad interrete user / intranet group of users. Potest etiam esse figuram, ut in fastis eventu.
+Credits: Promeritum
+About: circa
+OK: Bene
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Erratum in basi datorum: XXX.
+DEFAULT CONFIGURATION: Default configuration
+Go: =
+Save: salvare
+Undo: undo
+Public Access: publica Access
+Admin: Maecenas et ipsum
+User Access Control: User Access Imperium
+Allow Access to Other Users Calendar: Aliae sineret Accessus ad Users 'Calendar
+Grant This User Access to My Calendar: Praesta meae user accessum Calendarium
+Type: genus
+Calendar: =
+View Event: View Vicis
+View: =
+Edit: recensere
+Approve/Reject: Probant / Rogationem contribulati
+Events: =
+Tasks: tasks
+Journals: journals
+Can Invite: invitare potest,
+Can Email: mail potest,
+Can See Time Only: Tempus tantum videre
+Assistant: Suffragium
+Select All: Desumo omnes
+Clear All: Dele omnia
+Public: publica
+Confidential: de secreto
+Private: Privatus
+
+########################################
+# Page: activity_log.php
+#
+Next: deinde
+Previous: priorem
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: XXX res iam in fastis.
+Invalid entry id XXX.: Aliquam id ingressum: "XXX".
+a XXX event may not be added to your calendar: XXX ad hoc Kalendario non rei.
+confidential: de secreto
+private: privatus
+Error adding event XXX.: Erroribus addita rei XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Aliquam occasu nomen "XXX".
+Select: select
+Day: Dies
+Week: week
+Month: mense
+Year: annos singulos
+Bottom: solum
+Top: =
+Anyone: Aliquis
+Participant: participem
+Settings: Optiones
+Groups: =
+NonUser Calendars: Calendars non usu,
+Other: alius
+Email: =
+Colors: colorum
+Document background: document background
+Document title: document title
+Document text: text document
+My event text: Illud mihi res
+Table grid color: Mensam eget color
+Table header background: Mensam background header
+Table header text: Mensam header illud
+Table cell background: Mensam background cellulam
+Table cell background for current day: Mensam cellula background pro current die
+Table cell background for days with events: Mensam cum dies certe background cellulam
+Table cell background for weekends: Mensa enim cellula background weekends
+Table cell background for other month: Nam cellula background aliorum mensa mensis
+Week number color: Color numero octo
+Event popup background: Res background populus
+Event popup text: Res populus illud
+System Settings: Occasus ratio
+Help: auxilium
+System options: ratio options
+app-name-help: Nominatim tamen de parentum nomine applicationem ad pasco quod in titulus talea omnium paginarum, de login pagina. De valore et specificare potest hic non respexit in qua translationes sint praeditae file non permittens aliud titles pro diversis linguis providere.
+Application Name: application nomine
+Translated Name (XXX): Translata nomen (XXX)
+server-url-help: URL dat speciem basi ad applicationem. Hic autem, ubi includi mittens manum inscriptio monitiones Acta Vicimediorum Communium.
+Server URL: Servo URL
+home-url-help: URL enim dat speciem in domum application. Hoc autem potest esse absolutum vel relativum
+Home URL: domus URL
+language-help: Quibus verbis uti dat speciem.
+Language: Lingua
+Your browser default language is XXX.: Vestri default pasco est lingua "XXX".
+Allow user to use themes: Permittit user est uti themata
+themes-help: Update sino massa optionum conformationis uidere possunt. Pittacia sunt inferioribus causa cognovit Ionathas modo usor.
+Themes: themata
+AVAILABLE THEMES: Available THEMES
+None: Nihil
+Preview: preview
+Site customization: =
+custom-script-help: Ļauj ievadīt pielāgotu Javascript vai stila lapas tekstu, kas tiks ievietots katras lapas HTML sadaļā "head".
+Custom script/stylesheet: More scriptor / stylesheet
+custom-header-help: Ļauj pielāgotu HTML fragmentu iekļaut katras lapas augšdaļā.
+Custom header: more header
+custom-trailer-help: Katras lapas beigās ļauj iekļaut pielāgotu HTML fragmentu.
+Custom trailer: more rapidshare
+enable-external-header-help: Ļauj pielāgoto reklāmklipu ielādēt no ārēja faila
+Allow external file for header/script/trailer: Externa enim patitur file header / title / trailer
+Allow user to override header/trailer: Dominari permittit user header / trailer
+Date and Time: Dies et tempus
+server-tz-help: Unde peccatum speciem habet plures horas temporis ad adjust ad UTC a servo tempus.
+Server Timezone Selection: Electio Servo Timezone
+tz-help: Unde peccatum speciem habet plures horas temporis ad adjust ad UTC a loci tempus.
+Default Client Timezone Selection: Default Client Electio Timezone
+display-general-use-gmt-help: Ja tas ir iespējots, kopējie datumi / laiki tiek rādīti kā GMT
+Display Common Use Date/Times as GMT: Clementine_Vulgate Date ostentationem usus / tempora ad GMT
+date-format-help: Norāda vēlamo datuma formātu.
+Date format: forma
+Small Task Date: Officium parvum Date
+display-week-starts-on: Norāda nedēļas dienu, kurā nedēļa sākas. Ja pirmdiena ir norādīta, tad nedēļu numuri būs ISO nedēļu numuri.
+Week starts on: Incipit de septimana
+display-weekend-starts-on: Iestata nedēļas dienu nedēļas nogales sākumam
+Weekend starts on: Incipit super volutpat vestibulum
+time-format-help: Quod nunc uti format speciem<br><em>XII hora est:</em> Display sicut et times 3am, 8:30 post meridiem, etc.<br><em>XXIV hora:</em> Display sicut et times CCC , MMXXX, etc.
+Time format: Tempus forma
+12 hour: XII horas                                                 
+24 hour: XXIV horas                                                 
+timed-evt-len-help: Input modus determinans longitudinem determinat feriati elit.
+Specify timed event length by: Proprius vicis tandem opportuno
+Duration: tempus
+End Time: finis Tempus
+work-hours-help: Propono in conspectu diei assignat tempus rhoncus.
+Work hours: opus horis
+From: Ex
+to: ut
+Appearance: species
+preferred-view-help: Nominatim tamen de parentum default visum (dies, septimana, mensis, vel Annus).
+Preferred view: satius visum
+Allow top menu: Liceat summo menu
+Date Selectors position: Date locum Selectors
+menu-themes-help: De coloribus in menu superiorem et modus sets
+Menu theme: theme Menu
+fonts-help: Fonts usus est index totorum dat speciem (ut 'Antiqua, Times ")
+Fonts: fonts
+display-sm_month-help: Ja tas ir iespējots, mēnesī tiek parādīti mazi mēneši
+Display small months: Display parva mensibus
+display-weekends-help: Ietveriet nedēļas nogales, kad skatāties nedēļu.
+Display weekends: display weekends
+display-long-daynames-help: Ja tas ir iespējots, tiek parādīti garo dienu nosaukumi
+Display long day names: Display nomina longa dies,
+display-alldays-help: Parādīt iepriekšējo un nākamo mēnešu dienas mēneša skatījumos, aizpildot visas šūnas.
+Display all days in month view: Display cunctis diebus View In mense
+display-week-number-help: Norāda, vai nedēļas skaitlis (1–52) jāparāda mēneša un nedēļas skatā.
+Display week number: Display numerum octo
+display-desc-print-day-help: Iekļaujiet notikumu aprakstus printerim draudzīgā dienas skata versijā.
+Display description in printer day view: Pompa illa descriptione visum procer
+yearly-shows-events-help: Sollemnes in conspectu exhibere vices in diebus quibus Font.
+Display days with events in bold in month and year views: Ostentationem rerum dies audere in mensem et annum views
+display-minutes-help: Ja tas ir iespējots, vienmēr tiks rādītas minūtes, kas beidzas ar: 00
+Display 00 minutes always: Display 00 minuta semper
+display-end-times-help: Parādīt notikuma beigu laiku, ja notikums ir noteikts
+Display end times on calendars: Propono in fastos novissima
+allow-view-add-help: A '' includitur in views icon ut sino users ut cito addere events aliis users 'calendariis.
+Include add event link in views: Views addendi includit res link
+lunar-help: Si enabled, will display icons repraesentant minima tempora per menses lunares
+Display Lunar Phases in month view: Augmenta visum est in mense Lunae display
+Restrictions: cohibita artius
+allow-view-other-help: Si autem dat speciem usor alius user scriptor viderit fastis.
+Allow viewing other users calendars: Aliis viewing permittit user scriptor fastos
+require-approvals-help: Cum ipsae res prius a user approbandum kalendario monstratur (nisi forte reprobi Propono possit). Nota hoc profecta "Non" non declinemus ad Public Access fastis approbationes vel (si is enabled fastis Publica Access).
+Require event approvals: Requirere res approbationes
+display-unapproved-help: Norāda, vai kalendārā tiek rādīti neapstiprināti notikumi.<br>Ja iestatīts uz “Jā”, tad neapstiprinātie notikumi tiks parādīti jūsu kalendārā (ar citu teksta krāsu).<br>Ja iestatīts uz “Nē”, tad neapstiprināti notikumi ir jāapstiprina, pirms tie tiek parādīti jūsu kalendārā.
+Display unapproved: display reprobi
+conflict-check-help: Eventum pugnae reprehendo (duae res simul accedant ad idem.) Set si hoc "Ita", et certe duas simul esse posse orci in testimonium quod post confirmationem. Set si hoc est: "Non", non reprehendo pro fiat voluntas confligit. Vos forsit volo ut hoc 'Ita', ut conflictu tenendo occurs.
+Check for event conflicts: Reprehendo pro eventu confligit
+Yes: Ita
+No: nullum
+conflict-months-help: Si tenendo in loco conflictu ( "Reprehendo pro eventu confligit 'posuit, ut sit' nullus 'XLI ;, & # quod cificat quot mensibus in futurum oportet reprehendo pro confligit. Si processus est diu moram facit invenire addere events , redigendum est numerus.
+Conflict checking months: Tenendo conflictu mensibus
+conflict-check-override-help: Dominari permittit users certe res duobus pluribusue eadem contentionibus arcu.
+Allow users to override conflicts: Nolens oboedire ad patitur users confligit
+limit-appts-help: Administrator ratio ad systema-wide concedit ad modum ex multis dispositionibus justificaveris user potest habere unum in omnibus uno die.
+Limit number of timed events per day: Certe numero quotidie terminum feriati
+limit-appts-number-help: Feriati a user potest habere certe maximum numerum dat speciem in die una.
+Maximum timed events per day: Maximam certe importuna per diem,
+crossday-help: Si ipsae rerum spatium dierum proponendum distinctis diebu
+Disable Cross-Day Events: Events inactivare Cross-Day
+disable-location-field-help: Atlasot “Jā”, no notikuma informācijas lapām tiks noņemts lauks “Atrašanās vieta”
+Disable Location field: Location inactivare agri
+disable-url-field-help: Atlasot “Jā”, no notikuma informācijas lapām tiks noņemts lauks “URL”
+Disable URL field: URL inactivare agri
+disable-priority-field-help: Atlasot “Jā”, notikumu informācijas lapās tiks noņemts lauks “Prioritāte”, nodrošinot vienkāršāku interfeisu iesācējiem.
+Disable Priority field: Prior inactivare agri
+disable-access-field-help: Atlasot “Jā”, notikumu informācijas lapās tiks noņemts lauks “Piekļuve”, nodrošinot vienkāršāku interfeisu iesācējiem.
+Disable Access field: Inactivare Access agri
+disable-participants-field-help: Atlasot “Jā”, laukums “Dalībnieki” tiks noņemts no notikuma informācijas lapām, neļaujot lietotājiem pievienot citiem lietotājiem savus pasākumus. Ja iespējojat šo opciju, varat arī atspējot lauku “Atļaut skatīt cita lietotāja kalendārus”.
+Disable Participants field: Participes inactivare agri
+disable-repeating-field-help: Atlasot “Jā”, pievienojot notikumus, tiks noņemts lauks “Atkārtojas”. Tas nodrošinās vienkāršāku interfeisu iesācējiem.
+Disable Repeating field: Inactivare Repeating agri
+allow-html-description-help: Si ipsae users intrare HTML eventus genus agri. Si ipsae non posse ut appareat Tags in textu patet. Annuntiasti Enabling pluma alias imagines respicere patitur users websites.
+Allow HTML in Description: Patitur HTML in Description
+Popups: Pop ups
+disable-popups-help: Atspējojiet uznirstošos logus no kalendāra skatiem
+Disable Pop-Ups: Pop-Ups inactivare
+popup-includes-siteextras-help: Si ipsae res patitur consuetudo erit regionis ostenditur res habeat in site_extras.php popups lima.
+Display Site Extras in popup: Display populus in Re Site
+popup-includes-participants-help: Si ipsae res participes popups monstrantur.
+Display Participants in popup: Display participes populus
+Miscellaneous: =
+remember-last-login-help: Cum enabled, quod user scriptor ut login Repleti eis de login pagina (sed non ignoro), in user scriptor electiones ac saeuitiam non mors noxiorum (including suum pocius coloribus et lingua lectio).
+Remember last login: Memento AthensBigBanner.jpg
+summary_length-help: Descriptio Brevis in calendario maximam longitudinem sententiam
+Brief Description Length: Longitudo brevis Description
+user_sort-help: User generis decernit ut pro usu, lists
+User Sort Order: User Genus Ordo
+Lastname, Firstname: Ultimum nomen, primum nomen
+Firstname, Lastname: Praenomen cognomen
+allow-public-access-help: Cum enabled, quasi legere possunt a fastis non solum publicas fastis non eget, ut login ut users.
+Allow public access: Publicam aditum permittere
+public-access-default-visible: Omnium rerum publico apparuerunt calendarium automatically users 'calendariis
+Public access visible by default: Publicum accessum per default visibilis
+public-access-default-selected: Addens novam rei publice legeretur user defectu participem.
+Public access is default participant: Default est publicum accessum participem
+public-access-view-others-help: Cum publicum accessum ad systema accedere, an cificat user potest videre fastis alterius fastis user.
+Public access can view other users: Publica alius users obvius potes
+public-access-can-add-help: Cum enabled, users accedere, ut addere novum systema per Publica Access poterit certe, sed non ostendere in fastis ad res novas an administrator probet.
+Public access can add events: Certe publicum accessum potest addere
+public-access-add-requires-approval-help: Vel certe propter additae dant speciem per accessum ad publicum requirere quae ante ostendi approbatione.
+Public access new events require approval: Certe novi publica eget accessum approbatione
+public-access-sees-participants-help: Si enabled, quod users obvius a fastis ad res publica ratione poterit a Porphyrio participantium si res est.
+Public access can view participants: Publicum accessum potes participantium
+public-access-override-help: Permittit ut descriptiones et nominibus res publica celatur in fastis
+Override event name/description for public access: Utriusque nomine override / descriptionem publicam aditum
+public-access-override-text-help: Ad illud quod supra display si optio est enabled. Quod si, non Available ', ut et interpretari.
+Text to display to public access: Illud ostendere publicam aditum
+public-access-captcha-help: Si enabled, added a novus certe Publica requirere transeat a radice sensibus maluisset.
+Require CAPTCHA validation for public access new events: Certe novi radice accusantium doloremque eget accessum ad publicum
+uac-enabled-help: -Campester dat user accessum imperium
+User Access Control enabled: User Access Imperium enabled
+groups-enabled-help: Dat firmamentum group patitur users eligere groups users a.
+Groups enabled: enabled Groups
+user-sees-his-group-help: Si enabled, users qui sunt in fastis video, eam ne unus quidem coetus eorum.
+User sees only his groups: User coetus eius non videt,
+nonuser-enabled-help: Si enabled, admins tibi optionem addere et non usu, in calendariis
+Nonuser enabled: Calendars Enabled non usu,
+nonuser-list-help: Ubi apparet non usu, et particeps in fastos album
+Nonuser list: In album ad ostentationem participantium
+Upcoming Events: =
+upcoming-events-help: Admitte upcoming.php
+Enabled: enabled
+upcoming-events-allow-override: Quia permittit user paramter upcoming.php
+Allow user override: Permittit user primi ante Christum
+upcoming-events-display-caticons: Includit genus icons in upcoming.php
+Display category icons: Display genus icons
+upcoming-events-display-layers: Stratis per ostentationem upcoming.php
+Display layers: display stratis
+upcoming-events-display-links: Display nexus in upcoming.php
+Display links to events: Nexus ad ostentationem certe
+upcoming-events-display-popups: Propono in re popups upcoming.php
+Display event popups: Display res popups
+reports-enabled-help: Si enabled, eam videbunt quandocumque a "Renuntiationes 'sectionem in fundo quisque non liceat paginam creare consuetudo tradit. Praeterea admin No users can partum global tradit, quae omnia apparebit in fundo users 'pages
+Reports enabled: Renuntiationes enabled
+subscriptions-enabled-help: Si users potest dare speciem remotis subscribe in fastis ad WebCalendar user, sino user scriptor ut viderem WebCalendar certe in iCal-enabled applicationem (ut Mozilla Calendar aut Apple iCal).
+Allow remote subscriptions: Remotis patitur subnotationes
+remotes-enabled-help: Sino users to load remotis per URL nee ppinqui files
+Allow remote calendars: Remotis patitur fastos
+rss-enabled-help: Si fieri potest, a user scriptor fastis dat speciem nactus ex RSS feed.
+Enable RSS feed: Admitte RSS feed
+categories-enabled-help: Res enim dat firmamentum genera.
+Categories enabled: genera enabled
+icon_upload-enabled-help: Si enabled, users potest upload genus icons
+Category Icon Upload enabled: Index enabled genus Icon
+(Requires XXX folder to exist.): (Facilisis XXX folder ut inveniantur.)
+display-tasks-help: Parādīt nelielu uzdevumu logu mēneša un dienas kalendārā
+Display small task list: Display parva negotium album
+display-tasks-in-grid-help: Attēlot uzdevumus kalendāros kopā ar notikumiem
+Display tasks in Calendars: Display ministrant in Calendar
+allow-external-users-help: Si non dat speciem a calendar-user potest addidit ad res. Et hoc non concedit calendar-users ut participantium res quae enumerantur.
+Allow external users: Externa patitur users
+external-can-receive-notification-help: Kad ir iespējoti ārējie lietotāji un ir iespējota e-pasta lietošana, ārējie lietotāji var saņemt e-pasta paziņojumus, kad notikums tiek pievienots, atjaunināts vai dzēsts (ja ir norādīta ārējā lietotāja e-pasta adrese).
+External users can receive email notifications: Externa inscriptio notificationes recipere users
+external-can-receive-reminder-help: Kad ir iespējoti ārējie lietotāji un iespējota e-pasta lietošana, ārējie lietotāji var saņemt atgādinājumus par e-pastu (ja ir norādīta ārējā lietotāja e-pasta adrese).
+External users can receive email reminders: Email recipere memoria externa users
+allow-self-registration-help: Novum sibi permittere users ut subcriptio
+Allow self-registration: Patitur auto-adnotatione
+use-blacklist-help: IP oratio secundum accessum ad terminum WebCalendar munera
+Restrict self-registration to blacklist: Restringere auto-adnotatione ad blacklist
+allow-self-registration-full-help: Se perficere processus adnotatione sino users online
+Use self-registration email notifications: Tesserae generare mitti users
+allow-attachment-help: Affectus ad patitur users file addere events.
+Allow file attachments to events: Certe permittit file attachiamenta
+Admin and owner can always add attachments if enabled.: Sed et si dominus non semper enabled attachiamenta que add.
+allow-comments-help: Ad patitur users ut certe add comment.
+Allow comments to events: Certe liceat ad comment
+Admin and owner can always add comments if enabled.: Sed et si dominus non semper add comment enabled.
+email-enabled-help: Ieslēdziet vai izslēdziet visu e-pasta ziņojumu sūtīšanu, lai saņemtu paziņojumus un atgādinājumus. Iestatiet uz “nē”, ja jūsu serveris nav pareizi iestatīts, lai sūtītu pastu.
+Email enabled: =
+email-default-sender: Norāda e-pasta adresi, kas jānorāda kā sūtītājs, izsūtot atgādinājumus.
+Default sender address: Mittens default inscriptio
+email-mailer: Izvēlieties e-pasta veidu (SMTP, PHP pasts, sendmail)
+Email Mailer: Email Nuntius
+email-smtp-host: SMTP servera (-u) resursdatora nosaukums (-i), atdalot tos ar komatiem
+SMTP Host name(s): Populus ESMTP nomen (s)
+email-smtp-port: SMTP porta numurs (parasti 25)
+SMTP Port Number: Portus Number ESMTP
+email-smtp-auth: Izmantojiet SMTP autentifikāciju
+SMTP Authentication: ESMTP authenticitate
+email-smtp-username: SMTP lietotājvārds, ja izmantojat autentifikāciju
+SMTP Username: Username ESMTP
+email-smtp-password: SMTP parole, ja izmantojat autentifikāciju
+SMTP Password: ESMTP Password
+Default user settings: Default occasus usor
+email-format: Norādiet priekšroku HTML vai vienkāršām īsziņām
+Email format preference: Email forma preference
+HTML: =
+Plain Text: Clarae verbae
+email-include-ics: Iekļaujiet e-pasta ziņojumā iCalendar ICS failu
+Include iCalendar attachments: Attachiamenta que includit iCalendar
+email-event-reminders-help: Norāda, vai sūtīt atgādinājumus par notikumiem.
+Event reminders: res iteratis
+email-event-added: Norāda, vai sūtīt e-pasta paziņojumus, kad notikums tiek pievienots jūsu kalendāram.
+Events added to my calendar: Certe mihi fastis adiunxit
+email-event-updated: Norāda, vai sūtīt e-pasta paziņojumus, kad notikums tiek atjaunināts jūsu kalendārā.
+Events updated on my calendar: Updated me certe fastis
+email-event-deleted: Norāda, vai sūtīt e-pasta paziņojumus, ja notikums tiek noņemts no kalendāra.
+Events removed from my calendar: Certe remota a mea calendar
+email-event-rejected: Norāda, vai nosūtīt e-pasta paziņojumus, ja dalībnieks noraida notikumu, kas ir jūsu kalendārā.
+Event rejected by participant: Res reprobari a generatione participem
+email-event-create: Norāda, vai ierakstu veidotājs saņems e-pastu
+Event that I create: Res quae ego creo
+Color options: color options
+Allow user to customize colors: Mos sino user ut colorum
+gradient-colors: Si enabled CLIVUS colore usi sunt. Haec incursum perficientur potest vehementer.
+Enable gradient images for background colors: Background colorum imagines ad enable gradiente
+Not available: not available
+Background Image options: Options background Image
+bgimage-help: Desideravit background imaginem domicilio. Possunt esse vel link.
+Background Image: background Image
+bgrepeat-help: Imperium repetere background imaginem et morum.
+Background Repeat: Repeat background
+
+########################################
+# Page: adminhome.php
+#
+Assistants: De Assistentibus
+Preferences: Optiones
+Control Panel: imperium Panel
+Users: users
+Account: ratio
+Categories: categories
+Views: views
+Layers: stratis
+Reports: Renuntiationes
+Delete Events: =
+Activity Log: Actio iniuriarum
+System Log: ratio Stipes
+Security Audit: Audit Security
+Public Preferences: publica Preferences
+Unapproved Public Events: Events Publica reprobi
+Administrative Tools: administrativus Tools
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Effingo Name: "XXX".
+Username XXX already exists.: Nomen usoris "XXX" etiam existit.
+Email address XXX already exists.: Electronicus Nuntium "XXX" etiam existit.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Additional Comments (libitum)
+Approve and Send: Et mitte probant
+Approve and Exit: Et probant Exitus
+(Your comments will be emailed to the event creator.): (Tuus emailed in me diligeretis, quomodo res auctor.)
+Hello, XXX.: Salve, pr.
+XXX has approved an appointment and added comments.: An appointment, et probatus est additum a comment pr.
+Subject XXX: =
+Description XXX: =
+Date XXX: Date: Spam
+Time XXX: Tempus: XXX
+Comments XXX: Comments: Spam
+Approved w/Comments by XXX.: Probatus w / Comments per pr.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Sed modus
+Your assistants: assistentes tuum
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Ignotis error.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Error progressio, nulla certa Music!
+user: usor
+year: annos singulos
+month: mensis
+day: diena
+
+########################################
+# Page: category.php
+#
+Category Icon: genus Icon
+Global: =
+The permissions for the icons directory are set to read-only: Quod permissionum sint ad icones Directory posuit legere-tantum.
+Category Name: Genus Name:
+Color: color
+Remove Icon: Remove Icon
+Add Icon to Category: Add to Latin Icon
+Upload: Index
+GIF or PNG 6kb max: PNG max aut GIF 6kb
+Search for existing icons: Iconibus existentium quaerere
+Add: addere
+Delete: =
+Are you sure you want to delete this entry?: Tu es certus vos volo ut delete is ingressum?
+Make New Category: Numerus fac Novum
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Est genus nominis requiratur
+File size exceeds maximum.: File maximam excedit magnitudine.
+File is not a GIF or PNG image: File non GIF aut imaginem PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: Available CATEGORIES
+ENTRY CATEGORIES: INTROITUS CATEGORIES
+Remove: Aufer
+Global Category: Global Categoriae
+Cancel: =
+
+########################################
+# Page: colors.php
+#
+Add Custom: Custom addere
+Basic Colors: colores fundamentales
+Current Color: Current Colo colui cultum
+Custom Colors: more Colores
+Old Color: vetus Colo colui cultum
+
+########################################
+# Page: combo.php
+#
+Select None: nemo delectos
+Agenda: Publica
+Add Task: addere Negotium
+Description: =
+Date: =
+Time: Tempus
+Priority: PRAECELLENTIA
+Access: aditum
+Created by: per creata est
+Updated: updated
+Participants: participantium
+Attachments: attachiamenta
+Comments: =
+Brief Description: Ut sic brevis descriptio
+Full Description: =
+Category: genus
+Add event detail: Addendi res detail
+Start Date: satus Date
+Due Date: ob Date
+Add task detail: Addendi negotium detail
+All: Omnis
+Error: =
+no response from server: nullum responsum a servo
+JSON error: error JSON
+High: altum
+Medium: medium
+Low: humilis
+Today: hodie
+Add Entry: Aenean congue volutpat
+Unnamed Event: sine nomine Vicis
+Unnamed Task: sine nomine Negotium
+Refresh: Renovare
+Click to add entry: Click viscus addere
+Name: nomine
+pm: post meridiem
+am: sum
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX an appointment subvertit.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Aliquam id STILLA
+
+########################################
+# Page: docadd.php
+#
+Add Comment: =
+Add Attachment: De adscriptione addendi
+Subject: subject
+Comment: comment
+Upload file: Fasciculum imponere
+
+########################################
+# Page: docdel.php
+#
+Removed: remota
+
+########################################
+# Page: edit_entry.php
+#
+days: dienas
+hours: horis
+minutes: =
+You are not authorized to edit this task.: Non Huic categoriae negotium auctoritate ad.
+is in a different timezone than you are. Currently: est alia quam timezone es. currently
+hour ahead of you: hora Dominus ante faciem tuam
+hour behind you: post horam
+hours ahead of you: horis ante vos in Aegyptum
+hours behind you: horis post te
+XXX is in a different timezone (ahead): (XXX timezone est in alia, quod contra vos YYY. Clementine_Vulgate&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX timezone in alium; YYY post te. Clementine_Vulgate&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Tempus intravit hic fundatur in vestri Timezone.
+Edit Entry: recensere Entry
+Details: details
+Repeat: repeat
+Reminders: recordationes
+brief-description-help: Et hoc deberet providere brevis descriptio sit (circiter XX characteres) de eventu. Ea res cum prospiceret agunt calendario.
+full-description-help: Hac re opera perficiant. Haec cum user potest spectat eventum.
+access-help: Nominatim tamen de parentum accessum campester of eventu. <Ul> <li> Public quisque videre potest tota forma inquisitionis de eventu.</li> <li> Dracula: Alii videre potest quod habes quod noti, qui date and time, sed quae singula non sit.</li></ul>
+priority-help: Quodque speciem referat. Eniti debent exponi potest certe non audere.
+category-help: Numerus speciem rei.
+completed-help: Date opus efficitur. Tantum quisque valet participantium enabled cum omni C%.
+Date Completed: Completur Date
+percent-help: Huius complementum negotium percentage usor
+Percent Complete: Latin percent
+All Percentages: omnes Percentages
+location-help: res locum
+Location: =
+url-help: res URL
+URL: =
+date-help: Norāda notikuma datumu.
+Untimed event: res untimed
+Timed event: res intempestivo
+All day event: Tota die rem
+Timezone Offset: Timezone offset
+time-help: Nominatim tempus elit. <Ul> <li> 'Timed res' (nam id quod est scheduled pro certis diebus in die illa)</li> <li> 'untimed res' (nam id quod non habet tempus (sicut feriae )</li> <li> «omnis res die illo" (tollit enim, qui totum diem in res (sicut ens extra officium)</li></ul>
+duration-help: Norāda notikuma ilgumu (stundās; minūtēs). <em>Šo lauku var atstāt tukšu.</em>
+end-time-help: Norāda notikuma beigu laiku.
+Start Time: Satus tempus
+Due Time: Tempore visitationis
+Site Extras: Re Site
+avail_participants-help: Lists cum praesto participantium huius ingressum.
+Available: available
+Find Name: reperio nomen
+Resources: =
+participants-help: Lists cum hoc nomen participantium.
+Selected: lectus
+Availability: NOTIS Availability
+external-participants-help: Norāda notikuma dalībnieku sarakstu, kuri nav kalendāra lietotāji. Lietotāji katrā rindā ir jānorāda pa vienam un var ietvert e-pasta adresi. Ja ir norādīta e-pasta adrese, lietotājs ir tiesīgs saņemt paziņojumus un atgādinājumus.
+External Participants: participes externae
+repeat-type-help: Ut saepius eventu eligere oportet iterare.
+Daily: =
+Weekly: weekly
+Monthly: Vestibulum
+by day: in die illo
+by date: Ad tempus
+by position: per statum
+Monthly (by day): Vestibulum (in dies)
+Monthly (by date): Vestibulum (Ad tempus)
+Monthly (by position): Vestibulum (positione)
+Yearly: quot annis
+Manual: manual
+Expert Mode: Modus peritus
+repeat-end-date-help: Nominatim tamen de parentum debet iterare usque ad diem eventu.
+Ending: ending
+Forever: aeternum
+Use end date: Usus ultimum diem
+Number of times: Multis temporibus
+repeat-frequency-help: Saepe dat speciem, quam si res repetere.
+Frequency: frequency
+Weekdays Only: tantum feriis
+Week Start: Satus sabbati
+repeat-bydayextended-help: Secundum diem lectio concedit die sabbati.
+ByDay: =
+repeat-month-help: Mensem quam res speciem referret.
+ByMonth: =
+repeat-bysetpos-help: Lectio concedit diem et mensem secundum statum withing.
+BySetPos: =
+repeat-bymonthdayextended-help: Date lectio concedit secundum diem.
+ByMonthDay: =
+repeat-byweekno-help: Sino user ut specificare hebdomades a album of res ut repetere (1,2 ... LIII, -53, I ...- -52).
+ByWeekNo: =
+repeat-byyearday-help: Sino user ut specificare annos singulos dies ad a album of res repetere (1,2 ... CCCLXVI, -366, I ...- -365).
+ByYearDay: =
+repeat-exceptions-help: Quod ne accidere eventum kalendae neque.
+Exclusions: exclusiones
+Inclusions: inclusions
+Add Exception: Exceptio addendi
+Add Inclusion: addendi Inclusion
+Delete Selected: delere Selectae
+Send Reminder: Lorem Mitte
+When: cum
+Use Date/Time: Usus Dies / Tempus
+Use Offset: usus cinguli
+Before: Ante
+After: Post
+Start: initium
+End/Due: Finis / Ob
+Times: times
+Every: Omne
+CAPTCHA Warning: Admonitio: Potest non uti accusantium doloremque GD non est extensio PHP! VULA
+Delete entry: Delete ingressum
+You are not authorized to edit this entry.: Non auctoritate Huic categoriae est ingressum.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX fecit novus appointment.
+XXX has updated an appointment.: XXX quae est updated dictatore creando lata.
+Security violation!: Contra securitas?
+You must enter the anti-spam text on the previous page.: Vos oportet intrare anti-paginam priorem redire in textu spam.
+The following conflicts with the suggested time: In sequentibus nunc confligit cum suggesserant
+User removed from participants list.: User participantium a album remota.
+Please look on XXX to accept or reject this appointment.: Placere vultus XXX die quam ille ordinationem aut admiserit aut reiecerit.
+Please look on XXX to view this appointment.: Respice ad XXX ad considerandam huius constitutionis.
+Scheduling Conflict: scheduling CONLATUS
+Your suggested time of: Suggesserant tempus tuam
+conflicts with the following existing calendar entries: confligit cum his fastis existentium entries
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX non constituit in "config.php".
+word characters only: (Quae non nisi verbum characteres: [-a-zA Z_0-9])
+Add User: User addendi
+Edit User: User Edit
+Calendar ID: id Calendar
+First Name: Praenomen
+Last Name: Cognomen
+Is public calendar: Palam est fastis
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: erratum in basi datorum
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Longinquus addere Calendar
+Edit Remote Calendar: Recensere Longinquus Calendar
+Create Layer: Create Stratum
+Reload: =
+Required to View Remote Calendar: Requiritur ut Longinquus View Calendar
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: =
+Events successfully imported: Certe bene importati
+Create a new layer to view this calendar.: Partum a novus layer to view hic fastis.
+Errors: Quos errores
+There was an error parsing the import file or no events were returned.: Aut certe sine errore file import per parsing erat ibi sunt rediit.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: cras
+Yesterday: Heri
+Day before yesterday: Is et nudius tertius
+Next week: deinde septimana
+This week: Hoc septimana
+Last week: Ultima septimana
+Week before last: Ultima septimana ante
+Next week and week after: Et deinde septimana post septimana
+This week and next week: Et hoc septimana deinde septimana
+Last week and this week: Ultima septimana, et hoc septimana
+Last two weeks: Last duas hebdomades
+Next month: Deinde mensis
+This month: Haec mensis
+Last month: Last mensis
+Month before last: Mense ultimo before
+Next year: Proximo anno
+This year: Hoc anno
+Last year: Ultimus annus
+Year before last: Anno ultimo before
+Next 14 days: Next XIV dies
+Next 30 days: Next XXX diebus
+Next 60 days: Next LX diebus
+Next 90 days: Altera XC diebus
+Next 180 days: Next CLXXX diebus
+Next 365 days: Next CCCLXV diebus
+Invalid report id XXX.: Aliquam id famam: "XXX".
+Unnamed Report: sine nomine Report
+Add Report: addere Report
+Edit Report: recensere Report
+Report name: fama nominis
+User: =
+Current User: =
+Include link in menu: Includit menu link
+Include standard header/trailer: Vexillum includit header / trailer
+Include previous/next links: Includere previous / proximo links
+Include empty dates: Includit inanis dies
+Date range: =
+Template variables: Formula variables
+Page template: page template
+Day template: Dies template
+Event template: res template
+Are you sure you want to delete this report?: Tu es certus vos volo ut delete huius fama?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Non tam id famam: "XXX".
+Variable XXX not found.: XXX variabilis non invenitur.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Recensere Custom Header
+Edit Custom Script/Stylesheet: Recensere Custom Script / Stylesheet
+Edit Custom Trailer: Recensere Custom Video
+
+########################################
+# Page: edit_user.php
+#
+Username: nomen usoris
+E-mail address: =
+Password: =
+again: rursus
+Disabled for demo: Debilitata est ob demo
+Are you sure you want to delete this user?: Tu es certus vos volo ut delete is user?
+Change Password: mutare Password
+New Password: novus absconditus verbem
+Set Password: set Password
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Deletis users non valet.
+The passwords were not identical.: Tesserae non uero ipse.
+You have not entered a password.: Et ingressus est non tessera fuit.
+Username cannot be blank.: Nomen usoris non blank.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Non auctoritate
+
+########################################
+# Page: export.php
+#
+Export: export
+Export format: forma export
+Include all layers: Includit omnia laminis
+Include deleted entries: Includit delevit entries
+Export all dates: Omnes dies export
+Start date: satus date
+End date: finis diem
+Modified since: quia mutatio:
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: eksporta formāts nav definēts vai nepareizs.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Nulla user et mundabitur sanctuarium.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Addere nova Group
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: sine nomine Group
+Add Group: addere Group
+Edit Group: recensere Group
+Group name: Group nomen eius
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Tibi opus est nomen coetus
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Auto-reficite fastos
+auto-refresh-help: Cum enabled, per diem visu, visum septimana, mensis visum est, et album pages et omnes reprobi automatice temporibus limina circum.
+Auto-refresh time: Auto-vicis refoveo
+auto-refresh-time-help: Si enim reficite Auto-enabled, is nunc inter se reficite dat speciem.
+Display days with events in bold in year view: Ostentationem rerum dies audere in anno visum
+Display weekends in week view: Octo weekends per visum ostentationem
+Time interval: tempus temporis
+time-interval-help: Unde peccatum speciem habet longo tempore visum, et cuneos, in die illo una sabbatorum et visum est.
+Nonuser: Calendars non usu,
+user-customize-color: Non dat speciem users an liceat mutare color machinemur suis.
+enable-gradient-help: Šūnu foniem izmantojiet gradienta krāsas.
+Manually entering color values: Manually intrantes color values
+colors-help: Omnia esse debent certa et in coloribus "#RRGGBB 'veste hexadecimali ostendentur in forma" R "hexagone habeat valorem, quia est rufus," GG "hexagone habeat valorem ad, est viridis, et" Nova, "est pro valore hyacintho eum unitas eat.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Mendum referre
+Please include all the information below when reporting a bug.: Placere omnis notitia includit inferius ugbay in nuntians.
+Also, please use English rather than XXX.: Item, placere uti magis quam XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Documenta WebCalendar
+Currently in English only.: Currently Anglice tantum.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Addit / Recensens calendar entries
+Repeat Type: Type repeat
+For More Information...: Pro magis notitia...
+Repeat End Date: Repetere finem Date
+Repeat Day: Dies repeat
+repeat-day-help: Quae dat speciem in diebus sabbatorum eventu oportet iterare.
+
+########################################
+# Page: help_import.php
+#
+Import: =
+Palm Desktop: =
+allow you to import entries from the Palm...: Ab hac palma Desktop Datebook viscus importat sinet. Debet esse sita est in Directory in Palm Datebook / datebook.dat in nomine subdirectory tua cap.
+The following entries will not be imported: Entries non importari in sequentibus:
+Entries older than the current date: Entries antiquiorem hodiernam diem
+Entries created in the Palm Desktop...: Entries Palm creatus est in Desktop quod non fuerit HotSync'd
+Anything imported from Palm...: Quidquid erit importari ex Palm overwritten in altera import (nisi eventu cessit diem.) Itaque fiant Palmam Desktop updates.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Haec autem forma importare vCalendar (.vcs) 1.0 events.
+The following formats have been tested: De his formats sunt temptavit;
+This form will import iCalendar (.ics) events.: Haec autem forma importare iCalendar (.ics) events.
+Enabling: Cuius
+Overwrite Prior Import: Prior Import overwrite
+will cause events imported previously...: erit certe causa importari antea, quia in eodem usus est pro UID res import a novus lima, ut alibi delevit. Quoddam quod permittat iCalendar importari sine effingo lima.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Index auxilium
+About WebCalendar: De WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Layers sunt utiles ostenderet alius users 'certe in suis fastis. Si vis usor cum color et quod certe non potest ostendi.
+Add/Edit/Delete: Add / edit / delete
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Stratis sectionem admin No image link Edit ex clicking in imo paginae ad te patitur te addere / edit / delete eius solvit.
+The text color of the new layer that will be displayed in your calendar.: Textus novus layer, quod color est ad proponendum in fastis.
+Disabling: inactivare
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Stratis in Disable puga Press image link sectionem admin in imo paginae ad averte eius solvit.
+Duplicates: effingo
+If checked, events that are duplicates of your events will be shown.: Si sedatus, certe effingo of vestri, qui certe ut ostensum est.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Stratis sectionem admin No image link activare in Press et in imo paginae ad conversus in stratis.
+Source: fons
+Specifies the user that you would like to see displayed in your calendar.: Nominatim tamen de parentum user ut esset similis ad proponendum in fastis.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: =
+default-category-help: Norāda kategoriju, kurai pēc noklusējuma jābūt jaunam notikumam.
+When I am the boss: Et ego bulla
+Email me event notification: Mihi res email notificatio
+email-boss-notifications-help: Norāda, vai priekšnieki saņem e-pastus kā paziņojumus par notikumiem.
+I want to approve events: Ego certe, ut probo,
+boss-approve-event-help: Utrum requiratur in bulla dat speciem non potest esse a probo certe addidit monstrari.
+Subscribe/Publish: Subscribe / Publish
+Allow remote publishing: Remotis palam permittere
+allow-remote-publishing-help: Certe si edere potest in ultimis huius assignat iCal WebCalendar
+remote-publishing-url-help: Propono domicilio ad usum per applicationem ad iCal tam client et pronuntiandis subscripto ad WebCalendar.
+allow-remote-subscriptions-help: Si users potest dare speciem remotis subscribe to your calendar permittens eos videre certe iCal-enabled per applicationem (ut Mozilla Calendar aut Apple iCal).
+remote-subscriptions-url-help: Domicilium remota users uti ostendimus Kalendario subscribere.
+Enable FreeBusy publishing: Admitte FreeBusy libellorum
+freebusy-enabled-help: Si per speciem a user scriptor praesto tunc haberi potest in vexillum iCal FreeBusy.
+freebusy-url-help: URL album pro accessu ad user scriptor FreeBusy
+rss-feed-url-help: RSS feed to access the domicilio
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Imperium concedit in fine user et accessum permissions. Users potest quod per default licentiam concedere potest nisi ab auctoritate administrator.
+If disabled, this user cannot send you emails.: Si erret non hunc vobis fuere.
+If disabled, this user cannot see you in the participants list.: Quod si erret, hic usor potest videre participantium in album.
+If enabled, this user cannot view the details of any of your entries.: Si enabled, is Details of ullus user potest videre entries tui.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Libellorum Disabled (Fusce)
+Publishing Disabled (User): Libellorum Disabled (User)
+
+########################################
+# Page: icons.php
+#
+Click to Select: =
+Current Icons on Server: Servo in current Icones
+
+########################################
+# Page: import.php
+#
+import from file: import a lima
+Disabled: disabled
+Import format: Import forma
+Exclude private records: Excludit mentariis
+Repeated items are imported separately. Prior imports are not overwritten.: Repetita items sunt importari per se. Prior non importat overwritten.
+
+########################################
+# Page: import_handler.php
+#
+No file: nec lima
+Error deleting palm events from webcalendar.: Deletis palmam ex WebCalendar certe errorem scripsisse confessus est.
+Events from prior import marked as deleted: Certe ante import a delevit, sicut alibi
+Conflicting events: Varia certe
+The import file contained no data.: Summa nulla notitia lima continebat.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Tu es certus vos volo ut delete huic algarum?
+Delete layer: Delete accumsan
+Edit layer: recensere accumsan
+Enable layers: Admitte stratis
+Layer: stratum
+Layers are currently disabled.: Layers sunt currently erret.
+Layers are currently enabled.: Layers sunt currently enabled.
+Click to modify layers settings for XXX: Click hic est mutari in stratis occasus pro XXX fastis.
+Disable Layers: Stratis inactivare
+Add layer: addendi accumsan
+Add Layer: Stratum addendi
+Edit Layer: recensere Stratum
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: 'Non update preference
+Invalid entry id.: Aliquam id ingressum.
+You cannot create a layer for yourself.: Tibi non licet creare accumsan enim.
+You can only create one layer for each user.: Vos can tantum per user creare accumsan enim.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Probant / Confírma
+Approve Selected: Lego probant
+Check All: reprehendo omnes
+Emails Will Not Be Sent: Numquid non missam esse emails
+Reject Selected: Rogationem contribulati Selectae
+Reject: Rogationem contribulati
+Uncheck All: omnes Licens
+View this entry: Hanc ingressum
+No unapproved entries for XXX.: Reprobi non entries for: "XXX".
+Unapproved Entries: Viscus reprobi
+Approve this entry?: Ingressum hoc probant?
+Reject this entry?: Rogationem contribulati ingressum huius?
+Approve Selected entries?: Lego entries probo?
+Reject Selected entries?: Rogationem contribulati Selectae entries?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Intra vos est rationis et clavem tuam.
+Save login via cookies so I dont have to login next time.: Login per crustula et salvum me, ne iterum conventum aperire
+Login: login
+public: publicae
+Access XXX calendar: XXX accessum fastis
+cookies-note: Nota: hoc application est enabled crustularum necessitatem.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Illegal characters in login pr.
+Invalid login: Aliquam login
+Activity login failure: Username: "XXX" IP "YYY".
+Error XXX: =
+You have been logged out.: Vos iam conclusum est.
+Access public calendar: Publicum accessum fastis
+Not yet registered? Register here!: Not yet registered? Hic subcriptio?
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Non fastis non usu, huiusmodi: "XXX".
+This Calendar is not Public.: Hoc Calendar Publica est.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Addere nova Calendar non usu,
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Login necesse est esse A et mundabitur sanctuarium.
+No such nonuser calendar: No such fastis non usu,
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Aliquam theme
+Save Preferences: Servare Electiones
+Public Access calendar: Publica Access fastis
+Modify Non User Calendar Preferences: Return To Non User Calendar Preferences
+Return to My Preferences: Ad meus Preferences
+Custom Scripts: Scriptor Custom
+Timezone Selection: Electio Timezone
+Multiview: =
+entry-interval-help: Rediģējot ievadīšanas laikus, tiek iestatīts minūtes intervāls
+Entry interval: ingressum spatium
+hour: hora
+minute: =
+theme-reload-help: Ob css caching, a Reload requiri page
+Page may need to be reloaded for new Theme to take effect: Page requiras, ut ad nova reloaded ad effectum Natus
+display_byproxy-help: Parādiet īsto radītāju lapā view_entry
+Display if created by Assistant: Display si creata Suffragium
+allow-view-subscriptions-help: Circumscribunt remotiores dat aditum privatim viscus Dracula
+Allow remote viewing of: Remote ab patitur viewing
+entries: ieraksti
+
+########################################
+# Page: purge.php
+#
+Purging events for: Certe enim Exit, purgans
+Finished: exactam eam
+Back: =
+Check box to delete ALL events for a user: Reprehendo arca archa delere certe ad a user
+Delete all events before: Certe ante Delere
+Purge deleted only: Expurgate non delevit
+Preview delete: preview delete
+Are you sure you want to delete events for: Certe enim estis vos certus vos volo ut delete
+Records deleted from XXX: Records deletum a "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Electronicus Nuntium non blank.
+Username already exists.: Iam enim Username.
+Email address already exists.: Electronicus Nuntium etiam existit.
+New user via self-registration.: New user-adnotatione per se.
+A new WebCalendar account has been set up for you.: Novum WebCalendar extruxerat est propter vos.
+Your username is XXX.: Tua est nomen usoris: "XXX".
+Your password is XXX.: Vestri password est: "XXX".
+Please visit XXX to log in and start using your account!: Placere visita "XXX" ut satus usura et log in ratione vestra?
+You may change your password after logging in the first time.: Te potest mutare vestri password post primum colligationem est.
+If you received this email in error: Si hanc epistulam accepit in signum WebCalendar ideo erratis non potes animadvertere iudicialia sive respondendum brevem adnotationem
+Administrator: administrator
+Welcome: gratissimum
+New user via email.: New user per email.
+Registration: =
+Welcome to WebCalendar: Gratam WebCalendar
+Your email should arrive shortly.: Tua inscriptio debet venire cito.
+Return to Login screen: Ad Login screen
+Password (again): Password (iterum)
+Your account information will be emailed to you.: Ratio tua notitia ut emailed vobis.
+Submit: submit
+
+########################################
+# Page: reject_entry.php
+#
+Continue: continue
+(Your comments will be emailed to the other participants.): (Tuus comments ut participantium emailed ad alterum.)
+XXX has rejected an appointment.: XXX projecit in dictatore creando lata.
+Rejected by XXX.: Reprobari a generatione pr.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Longinquus addere nova Calendar
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Secretum rei est.
+(Private): (Privatus)
+(cont.): (Con.)
+Approved: probatus
+Deleted: deleted
+Rejected: Reicient
+Waiting for approval: Exspecto pro approbatione
+Unknown: incognita
+Invalid report id.: Aliquam id fama.
+Click here to manage reports for the Public Access calendar.: Click hic pro Public Access fastis administrare tradit.
+Add new report: Addere nova fama
+Manage Reports: curo Renuntiationes
+
+########################################
+# Page: search.php
+#
+Advanced Search: =
+Search: Quaerere
+Keywords: keywords
+Enter % for all entries: Intra% omnium vanitatum mundi
+Include: includere
+Filter by Date: Filter a Date
+All Dates: omnes Dates
+Past: praeteritum
+Upcoming: =
+Range: range
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Vos quaerere intra unum vel plura alia.
+Search Results: =
+match found: par found
+matches found: =
+No matches found: Translate found
+New Search: novum Quaerere
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Indicium infra lists posset esse immutabile est potentiale exitibus cum WebCalendar installation vestri ad institutionem magis secure.
+For questions about WebCalendar security see the forums: Quaestiones de quolibet quia WebCalendar securitatem exitus, placere uti WebCalendar fora hosted in GitHub.com: XXX VULA
+View your current PHP settings: View vestra occasus current PHP
+Security Issue: Part Security
+Status: =
+Default admin user password: Default user admin password
+You should change the password of the default admin user.: Debes mutare password in user admin per default.
+File permissions XXX: Lima permissions: Music
+item XXX should not be writable: Item si non sequuntur writable:<br><t> XXX</tt>
+File exists XXX: File existit: "XXX"
+Because you have email disabled, you should remove this file.: Quia email erret, non oportet removere hunc fasciculum nectunt.
+File location XXX: =
+remove XXX if not using: Si vos es non usus file "XXX", non ut delete is. Aut ad minimum, ea movere ad novum Directory.
+System Settings XXX: Occasus ratio: "XXX"
+consider enabling UAC: Vos may volo ut considerare user ut enabling User Access Imperium habet.
+recommend approving new public events: Nos commendare omnibus res publicas submissionibus debet probatus.
+recommend using CAPTCHA: Commendatur doloremque rem praesidio againt automated penatibus.
+Database cache directory location: Directory locus database cache
+db cache should be inaccessable: Datu bāzes kešatmiņai jābūt direktorijā, kurai nevar piekļūt ar URL.
+PHP Settings XXX: Php Occasus "XXX"
+recommend setting XXX Off: Suspendisse ambitus "XXX" est off.
+recommend setting allow_url_fopen Off: Suspendisse ambitus "allow_url_fopen" quod quum non indiderit calendariis remotum.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Alius User View Calendar scriptor
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Vos ipsi non sunt aliqua genera addidit.
+Set Category: set Categoriae
+Global Categories cannot be changed.: Global Categoriae non mutavit.
+
+########################################
+# Page: upcoming.php
+#
+more: magis
+
+########################################
+# Page: users.php
+#
+Remote Calendars: remotis Calendar
+denotes administrative user: apzīmē administratīvo lietotāju
+Add New User: New User addere
+
+########################################
+# Page: usersel.php
+#
+form: forma
+Reset: Reddere praeferentias
+
+########################################
+# Page: views.php
+#
+Add New View: View addere Novum
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: View sine nomine
+Add View: View addere
+Edit View: recensere
+View Name: View nomine
+View Type: =
+Day by Time: Tempus per diem
+Week (Users horizontal): Week (horizontalem Users)
+Week by Time: Per septimana tempus
+Week (Users vertical): Week (vertical Users)
+Week (Timebar): =
+Month (Timebar): Mense (Timebar)
+Month (side by side): Mense (iuxta)
+Month (on same calendar): Mense (in eadem fastis)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Tibi opus est nomen visum
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: No users ad hanc sententiam.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Update CENTESIMA Negotium
+Completed: complebitur
+Assistant mode: Suffragium modus
+Declined: declinavi ex ea
+Needs-Action: Factum necessitates
+by: per
+Percentage Complete: percentage Complete
+External User: User externae
+Update: =
+at: apud
+comments: comment
+Show: show
+Hide: celare
+Approve/Confirm entry: Probant / ingressum Confírma
+Reject entry: Rogationem contribulati ingressum
+Set category: set genus
+Add to My Calendar: =
+Copy entry: exemplum ingressum
+This will delete this entry for all users.: Et hoc erit quod delete omnes noti users.
+Edit entry: recensere ingressum
+Edit repeating entry for all dates: Recensere omnes noti dies repetita,
+Delete repeating event for all dates: Congeminansque omnis eventus dies delete
+Edit entry for this date: Recensere ingressum ad hanc diem
+Delete entry only for this date: Delete ingressum nisi ad hanc diem
+Delete entry from calendar of XXX: Delete ingressum de XXX a calendar
+This will delete the entry from your XXX calendar.: Et delebit hic ingressum ex fastis XXX.
+boss: bulla,
+This will delete the entry from your boss calendar.: Et delebit hic ingressum ex bulla 'fastis.
+This will delete the entry from your calendar.: Et delebit hic ingressum ex fastis.
+from your boss calendar: ex bulla 'fastis
+Do you want to add this entry to your calendar?: Non vis addere ad ingressum fastis?
+This will add the entry to your calendar.: Hoc erit addere ad ingressum in fastis.
+Email all participants: Email omnium participantium
+Hide activity log: Actio iniuriarum celare
+Show activity log: Show actio iniuriarum
+Export this entry to: Ingressum ad hanc export
+Palm Pilot: Palm nauclerus
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Geminus-click in cellula vacua addere nova ingressum.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Description:
+cont.: verso.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Alius User scriptor Calendar
+Category Management: Sample Image
+Day View: View diem
+Edit Event: recensere Vicis
+Month View: View mense
+Common Trailer: Video communia
+User Management: =
+Manage Views: curo Views
+Week View: View sabbati
+Year View: View annos singulos
+Invalid function id: Aliquam id munus
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Non inveniet 'settings.php "lima. Clementine_Vulgate effingo quaeso' settings.php.orig" ut "settings.php" et edit propter situm.
+Incomplete settings.php file...: Imperfecta 'settings.php "lima ...
+Could not find XXX defined in...: Non inveniet "XXX" in defined "settings.php" lima.
+You must define XXX in: Vos define "XXX" in "settings.php" lima.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: =
+Dec: =
+LANGUAGE DEFINED: lingua defined
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Database connectens ad errorem scripsisse confessus est: "XXX".
+db_type not defined.: db_type nav definēts.
+invalid db_type XXX: db_type invalidum est "" XXX ".
+Cache cleared from previous SQL!: SQL cache remoto priori;
+Error executing query.: Error exsecutioni mandandis refert.
+Unfortunately, XXX is not implemented for YYY: Infeliciter, "XXX" non implemented pro (YYY).
+Unknown ODBC error.: ODBC ignotis error.
+Error opening cache dir XXX.: Error ostium cache dir "XXX".
+delete: dzēst
+Cache error Could not XXX file YYY.: Cache error: Numquid non Music file: "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: =
+Invalid data format for: Nam forma data invalida
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Error in actione iniuriarum non type!
+This event is XXX.: Eventus est XXX.
+Conf.: X Confess.
+exceeds limit of XXX events per day: pārsniedz XXX notikumu ierobežojumu dienā
+on: in
+All Attendees: omnes Attendees
+Busy: occupatus
+Tentative: temptat
+Schedule an appointment for XXX.: Schedule constitutio pro XXX: YYY.
+date_select: __dd__ __mēness__ __yyyy__
+Event approved: res probatus
+Journal approved: Journal probatus
+Task approved: probatus negotium
+Attachment: affectum
+Event created: res creata est
+Journal created: Journal creata est
+Task created: opus creata est
+Event deleted: res delevit
+Journal deleted: Journal delevit
+Task deleted: negotium delevit
+New user via email (self registration): New user via email (sui adnotatione)
+New user (self registration): New user (sui adnotatione)
+Notification sent: misit Notification
+Event rejected: res reprobus efficiar
+Journal rejected: Journal reprobus efficiar
+Task rejected: negotium reprobus efficiar
+Reminder sent: Lorem misit
+Event updated: res updated
+Journal updated: =
+Task updated: updated negotium
+Delete User: User Delete
+WK: =
+TASKS: OFFICIA
+Task_Title: titulus
+Due: ob
+Task Name: negotium nomen
+Task Due Date: Ob negotium Date
+You have XXX unapproved entries: XXX tibi reprobi entrie
+Changes successfully saved: Mutantur prospera salvabitur
+Event: res
+Action: actum
+Printer Friendly: procer Friendly
+Generate printer-friendly version: Printer generate friendly version,
+after: post
+before: ante
+end: beigas
+start: initium
+View this event: Hanc res
+View this task: Hanc negotium
+January: Ianuarii
+February: Februarius
+March: Martii
+April: Aprilis
+May_: =
+June: =
+July: Iulii
+August: =
+September: =
+October: Octobris
+November: =
+Jan: Ian
+Feb: =
+Mar: =
+Apr: =
+May: =
+Jun: Iun
+Jul: Iul
+Aug: =
+Sep: =
+Oct: =
+Nov: =
+SU: =
+MO: =
+TU: =
+WE: NOS
+TH: =
+FR: =
+SA: =
+unknown-month: ignotum mensis,
+First Quarter Moon: First Lunam
+Full Moon: Die plenae lunae reversurus
+Last Quarter Moon: Gibbous Lunam
+New Moon: lunae novae
+Error TIME_SLOTS undefined!: Error: TIME_SLOTS Temporis!
+The following error occurred: In hoc error occurred
+You are not authorized.: Non auctoritate.
+Add N hours to: Adde horas ad N
+Subtract N hours from: Subtrahe N ab horis
+same as: eadem
+server time: et illam moderatri
+Cannot read timezone file XXX.: Non legitur timezone file: XXX.
+Your current GMT offset is XXX hours.: XXX horas GMT offset sit vena tua.
+Unauthorized: alienum
+Error approving event XXX.: Res errorem probans XXX.
+Error deleting event XXX.: Rem error Deleting XXX.
+Error rejecting event XXX.: Repudiatis erroribus utriusque XXX.
+Sunday: Solis
+Monday: dies Lunae
+Tuesday: Martis
+Wednesday: Mercurii
+Thursday: Iovis
+Friday: Veneris
+Saturday: Saturni
+Sun: solis
+Mon: mon
+Tue: Wed
+Wed: =
+Thu: Wed
+Fri: Wed
+Sat: sat
+unknown-weekday: die autem ignotus,
+Invalid referring URL: Aliquam referendo URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: =
+Documentation: documenta
+Page: page
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: mea Calendar
+Add New Entry: Addere Description:
+Add New Task: Addere Officium Novum
+Logout: PP
+Home: domum
+Back to My Calendar: Ad meus Calendar
+Go to: ad
+Manage calendar of: Curo de fastis
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Lingua pasco non inveni
+(not supported): (Non valet)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Longe
+Afrihili: =
+Afrikaans: Africanica
+Ainu: =
+Akan: Acan
+Akkadian: =
+Albanian: Illyrica
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai iii Galii (Southern)
+Amharic: Aethiopica
+Angika: =
+Apache: =
+Arabic (Algeria): Arabica (Africa)
+Arabic (Bahrain): Arabica (Bahrain)
+Arabic (Egypt): Arabica (Egypt)
+Arabic (Iraq): Arabica (Babylonia)
+Arabic (Jordan): Arabica (Jordan)
+Arabic (Kuwait): Arabica (Kuwait)
+Arabic (Lebanon): Arabica (Libanus)
+Arabic (Libya): Arabica (Libya)
+Arabic (Morocco): Arabica (Marocum)
+Arabic (Oman): Arabica (Oman)
+Arabic (Qatar): Arabica (Qatar)
+Arabic (Saudi Arabia): Arabica (Saudi Arabia)
+Arabic (Syria): Arabica (Syria)
+Arabic (Tunisia): Arabica (Tunisia)
+Arabic (U.A.E.): Arabica (U.A.E.)
+Arabic (Yemen): Arabica (Yemen)
+Arabic: Arabica
+Aragonese: Aragonenses
+Aramaic: syriace:
+Arapaho: =
+Arawak: =
+Armenian: Armeniana
+Assamese: Assamicus
+Asturian: Asturica
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Armenia
+Balinese: =
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: banda
+Basa: =
+Bashkir: =
+Basque: Vasca
+Beja: Pacensis
+Belarusian: Belarusica
+Bemba: =
+Bengali: Bengalica
+Bhojpuri: =
+Bihari: Biharica
+Bikol: =
+Bislama: =
+Blackfoot: Melampus
+Blin: blin
+Bliss: Cicero
+Bosnian: Bosniaca
+Braj: =
+Breton: Le Breton
+Buginese: =
+Bulgarian: Bulgarica
+Buriat: =
+Burmese: =
+Caddo: =
+Catalan: Catalana
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: =
+Cheyenne: Cheyenna
+Chibcha: Chibeha
+Chichewa: =
+Chinese (Hong Kong): Sinica (Hong Kong)
+Chinese (PRC): Sinica (PRC)
+Chinese (Simplified/GB2312): Seres (facilius / GB2312) 
+Chinese (Singapore): Sinica (Singapore)
+Chinese (Taiwan): Sinica (Taiwan)
+Chinese (Traditional/Big5): Seres (Traditional / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: coptorum
+Cornish: Cornubiorum
+Corsican: Corsica
+Cree: Cre
+Creek: =
+Croatian: Crovatica
+Czech: Bohemica
+Dakota: California
+Danish: Danica
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: duala
+Dutch (Belgium): Batavica (Belgium)
+Dutch: Batavica
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Anglicus (Australia)
+English (Belize): Anglicus (Belizae)
+English (Canada): Anglicus (Canada)
+English (Ireland): Anglicus (Hibernia)
+English (Jamaica): Anglicus (London)
+English (New Zealand): Anglicus (New Zealand)
+English (Philippines): Anglicus (Philippinae)
+English (South Africa): Anglicus (South Africa)
+English (Trinidad & Tobago): Anglicus (mill & Sancti Spiritus)
+English (United Kingdom): Anglicus (United Kingdom)
+English (United States): Anglicus (United States)
+English (Zimbabwe): Anglicus (Aenean)
+English: Anglicus-US
+Erzya: =
+Esperanto: =
+Estonian: =
+Ewe: =
+Ewondo: =
+Fang: dente
+Fanti: =
+Faroese: Thuleana
+Fijian: =
+Filipino: Philippinica
+Finnish: Fennica
+Fon: fon
+French (Belgium): Gallica (Belgium)
+French (Canada): Gallico (Latin)
+French (France): Gallica (Gallia)
+French (Luxembourg): Gallica (Suecia)
+French (Monaco): Gallica (DV)
+French (Switzerland): Gallica (Switzerland)
+French: Gallica
+Frisian (Eastern): Frisica (Orientis)
+Frisian (Northern): Frisica (Dracontura)
+Frisian (Western): Frisica (Western)
+Frisian: Frisica
+Friulian: =
+Fulah: =
+Ga: ga
+Galibi: =
+Galician: Gallaeca
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: edepol
+Georgian: Pontica
+German (Austria): Germanica (Austria)
+German (Germany): Germanorum (Germania)
+German (Liechtenstein): Germanica (Liechtenstein)
+German (Luxembourg): Germanica (Suecia)
+German (Standard): Germanica (Latin)
+German (Switzerland): Germanica (Switzerland)
+German: Germanica
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Antiqua
+Grebo: =
+Greek: Graeca
+Greenlandic: =
+Guarani: Costadia
+Gujarati: Hibernica
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): =
+Haitian: =
+Hausa: =
+Hawaiian: =
+Hebrew: Hebraica
+Herero: =
+Hiligaynon: Korean
+Hindi: Hibernica
+Hiri Motu: =
+Hittite: Hetthei
+Hmong: =
+Holo (Taiwanese): Ímmolans víc (Tagalog)
+Hungarian: =
+Hupa: =
+Iban: =
+Icelandic: =
+Ido: ido
+Igbo: =
+Iloko: =
+Indonesian: Indonesiaca
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Iran
+Irish (Gaelic): Hibernica (Gaelic)
+Irish: Hibernica
+Iroquoian: =
+Italian (Switzerland): Italica (Switzerland)
+Italian: Italiae
+Japanese: Iaponica
+Javanese: Iavanica
+Judeo-Arabic: Nicaenae Arabica
+Judeo-Persian: Persici Nicaenae
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: Duis egestas elementum risus
+Kanuri: =
+Kara-Kalpak: Cara-Kalpak
+Karachay-Balkar: Karachay Balkar,
+Karelian: =
+Kashmiri: =
+Kashubian: Italica
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): =
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: Klingonica
+Komi: komi
+Kongo: =
+Konkani: =
+Korean (Johab): Coreanica (Johab)
+Korean (North): Coreanica (Septentrionalis)
+Korean (South): Coreanica (South)
+Korean: Coreanica
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Lingua Kurdica
+Kutenai: =
+Kyrgyz: Lingua Kirgistana
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Laomedonteae
+Latin: Latine
+Latvian: =
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: =
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: Luba, Lulua
+Luiseno: Luiseño
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: =
+Macedonian: Macedonica
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Madagascar
+Malay: Malaeorum
+Malayalam: =
+Maldivian: =
+Maltese: Melitensis
+Manchu: =
+Mandar: mandar
+Mandingo: =
+Manipuri: =
+Manx: Insula
+Maori: Maorice
+Mapuche: =
+Marathi: Norvegica
+Mari: mari
+Marshallese: Marsalienses
+Marwari: =
+Masai: Malawi
+Mayan: =
+Mende: Episcopalis Consecrationis
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: moksha
+Moldavian: Moldavica
+Mongo: Brunfelsia
+Mongolian: Mongolica
+Montenegrin: =
+Moroccan: =
+Mossi: mossi
+Myanmar: Suspendisse
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: Naurum
+Navajo: =
+Ndebele (North): Ndebele (Septentrionalis)
+Ndebele (South): =
+Ndebele: =
+Ndonga: =
+Neapolitan: Neapolitanus
+Nepali: Nepalica
+Nias: nias
+Niuean: =
+Nogai: =
+Norse: Nordmannie sedibus mare conscendisse
+Norwegian (Bokmål): =
+Norwegian (Nynorsk): Norwegian (renovata)
+Norwegian: =
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Occitanice
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: =
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: Pastua
+Pedi: coriaceis
+Persian (Farsi): =
+Persian (Iran): Persica (Iran)
+Persian: Persici
+Phoenician: Imperium
+Pohnpeian: =
+Polish: Poloniae
+Portuguese: =
+Portuguese/Brazil: Portuguese / Brazil
+Punjabi (India): Romancica (India)
+Punjabi (Pakistan): Romancica (Pakistan)
+Punjabi: Romancica
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Rhaeto-Romanie
+Romanian: =
+Romansh: Rhaetoromanica
+Romany: Roman
+Rundi: =
+Russian (Moldavia: =
+Russian (Republic of Moldova): Russian (Moldavia)
+Russian: =
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Dracontura)
+Sami (Skolt): =
+Sami (Southern): =
+Sami: =
+Samoan: Samoanis
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Sanscritica
+Santali: =
+Sardinian: Sardiniaeque impleturos
+Sasak: =
+Scots (Gaelic): Scottorum (Gaelic)
+Selkup: =
+Serbian (Upper): Servica (superiorem)
+Serbian: Servica
+Serer: =
+Sesotho: sesturtius
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Siculorum
+Sindhi: Sindhiana
+Sinhala: Sinensi
+Slavic: Slavica
+Slovak: Moravica
+Slovenian: Carnica
+Sogdian: =
+Somali: Somaliana
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbian (Turner)
+Sorbian (Upper): =
+Sorbian: =
+Sotho: =
+Spanish (Argentina): Hispanica (Argentina)
+Spanish (Bolivia): Hispanica (Bolivia)
+Spanish (Chile): Hispanica (Argentina)
+Spanish (Colombia): Hispanica (Colombia)
+Spanish (Costa Rica): Hispanica (Costa Rica)
+Spanish (Dominican Republic): Hispanica (Dominica)
+Spanish (Ecuador): Hispanica (Aequatoria)
+Spanish (El Salvador): Hispanica (El Salvador)
+Spanish (Guatemala): Hispanica (Mexicum)
+Spanish (Honduras): Hispanica (Honduras)
+Spanish (Mexico): Hispanica (Mexico)
+Spanish (Nicaragua): Hispanica (Phaseolus)
+Spanish (Panama): Hispanica (Costa Rica)
+Spanish (Paraguay): Hispanica (Venezuela)
+Spanish (Peru): Hispanica (Peru)
+Spanish (Puerto Rico): Hispanica (United States)
+Spanish (Spain): Hispanica (Spain)
+Spanish (Uruguay): Hispanica (Italy)
+Spanish (Venezuela): Hispanica (Venezuela)
+Spanish: =
+Sranan Tongo: Sranan Tonge
+Sukuma: =
+Sumerian: =
+Sundanese: Sundanica
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Suecica (Finland)
+Swedish (Sweden): Suecica (Sweden)
+Swedish: =
+Syriac: Syriace
+Tagalog: =
+Tahitian: =
+Tai: =
+Taiwan: =
+Tajik: =
+Tamashek: =
+Tamil: =
+Tatar: Mongolice
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: =
+Tigre: =
+Tigrinya: Tigrinyaca
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Tongica Islands Reverendissimo)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Turcorum
+Turkmen: jam
+Tuvinian: =
+Twi: Twiae
+Udmurt: =
+Ugaritic: =
+Ukrainian: Ucraina
+Umbundu: =
+Urdu: =
+Uyghur: =
+Uzbek: Uzbecorum
+Vai: vai
+Venda: venda
+Vietnamese: Vietnamica
+Volapük: Vèneto
+Votic: =
+Wakashan: =
+Walloon: Vallonica
+Waray: =
+Washo: =
+Welsh: Cambrica
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: Yápese
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: Ziza
+Zenaga: =
+Zhuang: =
+Zulu: Zuluensis
+Browser-defined: Pasco terminis circumscriptos
+event: notikumu
+journal: Journal
+0: 0                                                 
+1: I                                                 
+2: II                                                 
+3: III                                                 
+4: IV                                                 
+5: V                                                 
+6: VI                                                 
+7: VII                                                 
+8: VIII                                                 
+9: IX                                                 
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Aliquam User login
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: falsa password
+no such user: non talis user
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: ideo debilitatum
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: intervallum
+Months: Menses
+Month Days: mense diebus
+Days: diebus
+Weeks: hebdomades
+Position: statum
+Until: usque
+Count: numerare
+Inclusion Dates: inclusion Dates
+Exclusion Dates: exclusio Dates
+Event Imported: res Imported
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: MB
+Mb: mb
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: =
+authenticate: ESMTP Error: Non signo authenticitatis incisionem
+connect_host: ESMTP Error: Non ESMTP iungo ut hospes,
+data_not_accepted: SMTP kļūda: dati nav pieņemti
+encoding: Nezināms kodējums:
+execute: Nevarēja izpildīt:
+file_access: Nevarēja piekļūt failam:
+file_open: Faila kļūda Nevarēja atvērt failu
+from_failed: Et haec Ab defecit inscriptio:
+instantiate: Numquid non mail munus instantiate
+mailer_not_supported: Mailer non praebetur
+provide_address: Providebit vos recipient saltem unus email oratio.
+recipients_failed: ESMTP Error: recipients defecit sequuntur:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Intra Personae Ubi Graphics
+Enter the correct letters and numbers...: Intra rectam litterarum et de numero imago in text arca archa. Haec parva test, ut serves restriccione in contrarium inde contra obvius malitiosae Automata. Reload tantum paginae, si hoc legere graphic est difficile?
+Challenge/Response: Challenge / nostrum
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Mutata in diem hanc et tunc ingressum?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Et intravit non Descriptio Brevis
+time prior to work hours...: ut ante horas opus tempus ...
+Invalid Event Date: Aliquam Date
+Please add a participant: Adde placere participem
+Invalid Date: Aliquam Date
+You have not entered a valid time of day: Ingressus es non sit dies et nox non valet.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Id Calendar non blank.
+First and last names cannot both be blank.: Primum et ultimum non possunt tum nomina erunt blank.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Aliquam color
+Color format should be RRGGBB.: Color sit forma #RRGGBB.
+URL cannot be blank.: URL non blank.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Genus tabellae non congruit Import Forma
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Aliquam scriptum est color background.
+Invalid color for document title.: Aliquam titulum scriptum est color.
+Invalid color for table cell background.: Aliquam et mensam in cellula color background.
+Invalid color for table cell background for today.: Aliquam ut color background ad mensam cellula hodie.
+Invalid work hours.: Aliquam operis horis.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL Servo est a VULNUS ad finem (/).
+Invalid color for table grid.: Aliquam ut color in mensa velit.
+Invalid color for event popup background.: Nulla res populus color color.
+Invalid color for event popup text.: Aliquam res populus color in textu.
+Invalid color for table header text.: Aliquam ut color mensam header illud.
+Invalid color for table header background.: Invalida ad mensam header color background.
+Server URL is required.: Servo URL is requiritur.
+Invalid Color: Aliquam Colo colui cultum
+Database Name: nomen database
+Full Path (no backslashes): Semita plena (non virgulas)
+The password contains illegal characters.: Tesseras leges continet ingenia.
+Error you must specify a Single-User Login: Error: Tibi opus est Single-Login
+Could not find XXX.: Non inveniet pr.
+Could not find XXX in DOM.: Non invenies in XXX sapientiam.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Hoc septimana
+This Month: Haec mensis
+This Year: Hoc anno
+Exit: exitus
+Add New Event: Vicis Novus addere
+Delete Entries: Delete Viscus
+My Views: praeter ceteros ipse sentiam
+Manage Calendar of: Curo a Calendar
+My Reports: Renuntiationes mihi
+My Profile: mea Profile
+Public Calendar: publica Calendar
+Unapproved Events: Events reprobi
+User Manager: =
+Help Contents: Contents | auxilium
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Directory database Cache
+Create New: =
+Failure Reason: Ratio defectum,
+You must manually create database: Oportet te manually creare database.
+Single-User: User una,
+Test Settings: test Occasus
+Timezone Conversion Successful: Prosperum ac felix Timezone Conversio
+WebCalendar Installation Wizard Step XXX: Installation Wizard Gradus XXX WebCalendar
+Password Accepted: Acceptae Password
+Successful Login: felix Login
+Password Incorrect: Non recta Password
+Invalid Login: Aliquam Login
+Display Errors: Quos errores display
+File Uploads: file Uploads
+Allow URL fopen: URL patitur fopen (etiam uelut si tantum remotus Calendar sunt)
+Safe Mode: Salvus modus
+Safe Mode Allowed Vars: Licitus Vars tutus Modus (TZ si non requiritur ad tutam tonoque facit remitti)
+GD: GD (cui opus est imago Gradiente background)
+Passwords do not match!: Passwords non aequare!
+Unable to write password to settings.php file: 'Non scribam ad password "settings.php" lima.
+Password Updated: Updated Password
+Password has been set: Password est profectus.
+Connection Successful...: Connection prospere Cede permanere ad deinde ad institutionem pagina.
+Correct your entries or click the Create New...: Click aut corrigere tuam entries  Create New button pergere installation.
+Correct your entries and try again.: Rursum introitibus et corrigere.
+XXX does not exist: XXX non est
+XXX is not writable: XXX, non est writable
+Error Converting Timezone: =
+Error Unable to write to file XXX.: Error 'non scribere lima pr.
+Please change the file permissions of this file.: Placere mutantur in huius file lima permissions.
+Please change includes dir permission: Placere mutare in vestri lima permissions of "includes" Directory scribo ut ab aliis permittit users.
+Your settings have been saved.: Lectis vestris salvari.
+OFF: Off
+ON: DE
+WebCalendar Setup Wizard: WebCalendar setup Veneficus
+This installation wizard will guide you...: Hoc est a basic installation veneficus mos rector vos per profecta WebCalendar installation.<br>Auxilium troubleshooting et See: HB
+System Administrators Guide: Admin 's Guide
+Frequently Asked Questions: Frequenter Interrogata De quaestionibus
+FAQ: =
+Troubleshooting: fermentum
+Getting Help: questus Succurro
+Upgrading Guide: upgrading Edition
+User Supported Wiki: Fulcitur Vicipaedia usor
+PHP Version Check: Reprehendo PHP Version
+Check to see if PHP 7.1.0 or greater is installed.: 7.1.0 nec video Check if PHP maior est installed.
+PHP version: =
+PHP Settings: Optiones PHP
+Detailed PHP Info: Php detailed Info
+settings.php Status: "Settings.php« Status
+Session Check: Sessio Moderare
+To test the proper operation of sessions...: Ut probetur propria operatio sessiones, reload hac pagina. Vos should animadverto incremento contra uniuscuiusque sessionis tempus.
+SESSION COUNTER: Sessio DIVORSUS
+The file permissions of settings.php are set...: Et file permissiones "settings.php 'profecti sunt ut installer quod mutari non habet potestatem. Placere ad mutare sequentibus file permissiones, ut lima continue
+The file permissions of the includes directory are set...: Et lima permissions es paro of the Directory includit sic installer quod partum a novus lima non habet potestatem. Ex his placere mutare licentias quas pergere Directory
+Your settings.php file appears to be valid.: Vestri 'settings.php' file videtur esse verum.
+Configuration Wizard Password: Carmina configurationis Password
+Create Settings File Password: Create Occasus file,
+db setup directions...: Šajā sadaļā jūs iestatīsit un pārbaudīsit savienojumu ar datu bāzes serveri. Norādītajai konta informācijai jābūt PILNĪGĀM atļaujām, lai izveidotu datu bāzes, tabulas un lietotājus. Ja tas nav iespējams vai piekļuve jūsu datu bāzei ir ierobežota, datu bāze būs jākonfigurē manuāli.
+Database Status: Status database
+Supported databases for your PHP installation: Fulcitur databases pro installation vestri PHP
+Your current database settings are able to access the database.: Tua current database occasus possunt accedere ad database.
+Please Test Settings: Tenta nos Occasus
+Your current database settings are not able...: Vena vestri database vel occasus non possunt accedere ad database et non sunt temptavit.
+Database Settings: Optiones database
+Database Type: Type database
+Server: Servo
+Connection Persistence: Perseverantia Connection
+All your database tables appear to be up...: Omnes eas videri datorum pellentesque. Ut habeat WebCalendar proximam paginam perferte.
+This appears to be a new installation...: Et hoc videtur esse novus installation. Si hoc non est verum, quaeso i ad paginam priorem redire et corrigere vestra occasus.
+This appears to be an upgrade...: Ex hoc autem apparet ut upgrade versionem&nbsp;& nbsp XXX ad&nbsp;YYY.
+The database requires some data input...: Click update Checklist input datorum notitia implere quodam upgrade.
+In this section we will perform...: In hac sectione ad nos praestare mutationes adducere vestri database requiritur ad gradu. Si vos es usus confortabant plene database, is gradum: et statim fiat tibi. Si non, requiritur SQL ostendi potest, et debet posse quod crustulum is in vestri database servo query sectis fenestram.
+No database actions are required.: Database nullus actus qui requiritur.
+The following database actions are required: Actus qui requiritur in hoc database
+ODBC Underlying Database: Substratum ODBC Database:
+Automatic installation not supported: Non plene automatic installation vestri database implemented ad genus. Vos mos have ut manually ad creandum requiratur tables per SQL restituit. Please click  Display SQL pergere. Interficiam in vestri database quod Crustulum query fenestra.
+This may take several minutes to complete: Complura momenta hoc perficere.
+Install Database: install Database
+Update Database: =
+Display Required SQL: Display SQL required
+Return to previous page after processing SQL.: Post dispensando his manually SQL, necesse est redire ad priorem paginam et retest vestri database quod potest deprehendere scriptor mutationes.
+This is the final step in setting up your WebCalendar Installation.: Haec est ultima per gradus ascendere te profecta WebCalendar instruitur.
+Timezone Conversion: Conversio Timezone
+It appears that you have NOT converted...: Videtur quod non fuerit conversus vestri existentium WebCalendar res data ad GMT. Quod si non habes, ut non ignorare hanc notitiam procedere per conversionem. Si enim novus installation, vos ignorare potest etiam hanc notitiam.
+Convert Data to GMT: Data est converte GMT
+Application Settings: application Occasus
+HTTP-based authentication was not detected...: HTTP-fundatur authenticas non iudicaretur. Vos mos postulo reconfigure vestri textus servo, si velis eligere, Textus Servo 'a' User authenticitate, infra electiones.
+HTTP-based authentication was detected...: Praetor creatus, detecta, secundum authenticas HTTP. User textus servo tuo a quibuscumque tractari, authenticas esse. Vos should eligere 'Web Servo' a album de authenticitate User 'infra electiones.
+Create Default Admin Account: Create Account Fusce ut Default
+(Admin Account Not Found): (User Ratio Non Inventum)
+User Authentication: User authenticitate
+Web-based via WebCalendar (default): Web-fundatur per WebCalendar (default)
+Web Server (not detected): Web Servo (non nequiquam detecta fraude)
+Web Server (detected): Web Servo (visa)
+None (Single-User): Nihil Infinitus (Maxi-User)
+Read-Only: Tantum legere
+Environment: amet
+Production: Fabricatio
+Development: =
+Save Settings: nisi Occasus
+Launch WebCalendar: Lorem WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Error updating mensam "XXX": YYY.
+Conversion Successful: Conversio prospere
+Perl script required: WebCalendar exigit priorem versionem tua currentem ad perl script vestri notitia convertendos. Vade ergo /tools/upgrade_to_0.9.7.pl ad hanc paginam pro pergere.
+previous version requires updating several tables: WebCalendar exigit priorem versionem adaequationis vestri database traba pluribus.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: Full view
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Connectens ad errorem scripsisse confessus est database
+Include Path: Semita includere
+Deleting events for: Certe enim Deleting
+Importing events for: Certe enim importat
+No data returned from: Non rediit a notitia
+for non-user calendar: enim non-user fastis
+No Remote Calendars found: Longinquus Calendar non inveni
+Remote Calendars not enabled: Calendars remotis non enabled
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: id res non inveniet
+could not find event id XXX in database.: Music database id est in res potuerunt invenire.
+task: negotium
+This is a reminder for the XXX detailed below.: Hoc est a admonitio pro XXX infra descripturum est.
+Pecentage Complete: Latin Pecentage
+Reminder: admonitio
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Ponat decetero aliquem actum: XXX.
+No event id specified.: Id nulla res et mundabitur sanctuarium.
+Not authorized (not admin).: Non auctoritate (non admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Nam certe de XXX ad Reprehendo date YYY ad diem ZZZ.
+Found XXX events in time range.: XXX inveniri in rerum gradibus.
+Event id=XXX YYY at ZZZ on AAA.: XXX res id = "YYY 'apud ZZZ AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: XXX permittens usor alius user to view 's calendar.
+Error Email reminders disabled for user XXX.: Error: Email iteratis debilitata est ob user "XXX".
+Number of site_extras XXX.: Site_extras numerus: II.
+Reminder set for event.: Lorem positae elit.
+Mins Before XXX.: Ante min: pr.
+Event time is XXX.: Eventu est: XXX.
+Remind time is XXX.: Admone est: XXX.
+Reminders for user XXX, login YYY.: Memoria ad user "XXX", login "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Questus reprobi pro user "XXX".
+Event id=XXX YYY already sent.: XXX res id = "YYY" iam misit.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Non enim requiritur login unius user-modus.
+No login required for HTTP authentication.: Non enim requiritur login HTTP authenticas.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Characteribus, in irritum login.
+Username XXX does not exist.: Nomen usoris "XXX" non est.
+You cannot remove admin rights from yourself!: Admin iura removere a te ipsum non potes!
+Unknown error saving user: Error incognitus salutarem usum.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Nulla res id participantium pro XXX.
+Db error Could not find event id XXX.: Bb error: Non inveniet res id pr.
+Error Could not find event id XXX in database.: Error: Non invenietis in eventu id Music database.

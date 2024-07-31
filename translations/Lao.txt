@@ -1,0 +1,2387 @@
+# Lao lo
+#
+# ຮູບແບບປະກອບດ້ວຍຫົວຂໍ້ເລືອກ:
+#
+# ແປໂດຍ: ຊື່ແລະອີເມວຂອງທ່ານ
+# ການປັບປຸງຄັ້ງສຸດທ້າຍ: ວັນທີແປພາສາ
+# (ລວມທັງບົດ ນຳ "#" ແລະ ຄຳ ເຫັນໃດໆທີ່ເຮັດໂດຍນັກແປທີ່ຜ່ານມາ.
+# ເສັ້ນເປົ່າ ທຳ ອິດຈົບ ຄຳ ເຫັນຫົວຂໍ້ເຫຼົ່ານີ້.)
+#
+# ຕິດຕາມດ້ວຍຫຼາຍເທົ່າທີ່ຕ້ອງການ:
+#
+# ປະໂຫຍກພາສາອັງກິດ: ການແປ
+# (ໜຶ່ງ ເສັ້ນເຖິງເສັ້ນ. ໂດຍບໍ່ຕ້ອງ ນຳ ໜ້າ "#").
+# ຄຳ ວ່າ "English English:", including the colon ":", is provided by the
+# ນັກພັດທະນາ WebCalendar. ສ່ວນຂອງທ່ານແມ່ນ "ການແປ".)
+#
+# ປື້ມບັນທຶກເຄື່ອງມືມີສອງອັກສອນ perl ເພື່ອຊ່ວຍທ່ານ:
+# - check_translation.pl
+# ບົ່ງບອກຖ້າວ່າຂໍ້ຄວາມທັງ ໝົດ ຖືກແປຮຽບຮ້ອຍແລ້ວ.
+# - update_translation.pl
+# ຈະແຍກໄຟລ໌ໂປແກຼມເພື່ອຊອກຫາ ຄຳ ແປທັງ ໝົດ ('ປະໂຫຍກ') ແລະ
+# tooltip ('ປະໂຫຍກ'). ມັນຈະຈັດແຈງປະໂຫຍກຕ່າງໆຕາມ ໜ້າ ເຈ້ຍ
+# (ແຟ້ມ) ທີ່ປະກອບມີການເກີດຂື້ນຄັ້ງ ທຳ ອິດ. ທາງເລືອກອື່ນ, ມັນສາມາດຕິດ tag ໄດ້
+# ປະໂຫຍກທີ່ຍັງບໍ່ທັນຖືກແປໂດຍການໃສ່
+# << MISING >>
+# ຢູ່ເທິງເສັ້ນຂ້າງເທິງປະໂຫຍກ. ແລະ, ຖ້າປະໂຫຍກນີ້ແມ່ນຕົວຫຍໍ້,
+# ມັນຈະລວມເອົາຕົວ ໜັງ ສືພາສາອັງກິດເຕັມຢູ່ໃນເສັ້ນທາງລຸ່ມຂອງປະໂຫຍກ.
+#
+# ໝາຍ ເຫດ: ຂ້ອຍພະຍາຍາມຕັດຂະ ໜາດ ເອກະສານໂດຍລວມ. ຖ້າວ່າ "ການແປ"
+# ຄຳ ສັບ / ວະລີແມ່ນຄືກັນກັບພາສາແລະພາສາອັງກິດຂອງທ່ານ, ພຽງແຕ່ໃຊ້ເຄື່ອງ ໝາຍ "=".
+#
+# ໝາຍ ເຫດ: ທ່ານຈະສັງເກດເຫັນການເຂົ້າ "May_" ດ້ານລຸ່ມ. ມີເຫດຜົນ ສຳ ລັບສິ່ງນີ້.
+# ແປ "May_" ເຖິງຊື່ເດືອນເຕັມແລະ "May" ເຖິງ,
+# ໂດຍປົກກະຕິແລ້ວມີສາມຕົວອັກສອນ, ຕົວຫຍໍ້ໃນເດືອນ (ເຊັ່ນ: "Oct" ສຳ ລັບ "ຕຸລາ").
+#
+# ຂ້ອຍໃຊ້ Google ແປ ສຳ ລັບສິ່ງນີ້.
+# ມັນຄວນຈະພຽງພໍຈົນກ່ວາຜູ້ເວົ້າພື້ນເມືອງສາມາດກວດສອບໄດ້.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: ຮຸ່ນ XXX
+WebCalendar is a PHP application used...: WebCalendar ແມ່ນໂປແກຼມ PHP ທີ່ໃຊ້ໃນການຮັກສາປະຕິທິນ ສຳ ລັບຜູ້ໃຊ້ດຽວຫລືກຸ່ມອິນເຕີເນັດ / ກຸ່ມອິນທາເນັດ. ມັນຍັງສາມາດໄດ້ຮັບການຕັ້ງຄ່າເປັນປະຕິທິນເຫດການ.
+Credits: ສິນເຊື່ອ
+About: ກ່ຽວກັບ
+OK: ຕົກ​ລົງ
+
+########################################
+# Page: access.php
+#
+Database error XXX.: ຂໍ້ມູນຜິດພາດ: ຖານຂໍ້ມູນ XXX.
+DEFAULT CONFIGURATION: ກອງປະຊຸມປ້ອງກັນປະເທດ
+Go: ໄປ
+Save: ບັນທຶກ
+Undo: ຍົກເລີກ
+Public Access: ການເຂົ້າເຖິງສາທາລະນະ
+Admin: ບໍລິຫານ
+User Access Control: ການຄວບຄຸມການເຂົ້າເຖິງຜູ້ໃຊ້
+Allow Access to Other Users Calendar: ອະນຸຍາດໃຫ້ເຂົ້າເຖິງປະຕິທິນຂອງຜູ້ໃຊ້ອື່ນ
+Grant This User Access to My Calendar: ໃຫ້ຜູ້ໃຊ້ນີ້ເຂົ້າເບິ່ງປະຕິທິນຂອງຂ້ອຍ
+Type: ປະເພດ
+Calendar: ປະຕິທິນ
+View Event: ເບິ່ງເຫດການ
+View: ເບິ່ງ
+Edit: ແກ້ໄຂ
+Approve/Reject: ອະນຸມັດ / ປະຕິເສດ
+Events: ເຫດການຕ່າງໆ
+Tasks: ໜ້າ ວຽກ
+Journals: ວາລະສານ
+Can Invite: ສາມາດເຊີນເຂົ້າຮ່ວມໄດ້
+Can Email: ສາມາດ Email
+Can See Time Only: ສາມາດເບິ່ງເວລາເທົ່ານັ້ນ
+Assistant: ຜູ້ຊ່ວຍ
+Select All: ເລືອກ​ທັງ​ຫມົດ
+Clear All: ລ້າງທຸກຢ່າງ
+Public: ສາທາລະນະ
+Confidential: ຄວາມລັບ
+Private: ສ່ວນຕົວ
+
+########################################
+# Page: activity_log.php
+#
+Next: ຕໍ່ໄປ
+Previous: ທີ່ຜ່ານມາ
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: ເຫດການ XXX ແມ່ນຢູ່ໃນປະຕິທິນຂອງທ່ານແລ້ວ.
+Invalid entry id XXX.: id ເຂົ້າບໍ່ຖືກຕ້ອງ: "XXX".
+a XXX event may not be added to your calendar: ນີ້ແມ່ນເຫດການ XXX ແລະອາດຈະບໍ່ຖືກເພີ່ມເຂົ້າໃນປະຕິທິນຂອງທ່ານ. 
+confidential: ເປັນຄວາມລັບ 
+private: ເອກະຊົນ
+Error adding event XXX.: ມີຂໍ້ຜິດພາດໃນການເພີ່ມເຫດການ: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: ຊື່ຕັ້ງຄ່າບໍ່ຖືກຕ້ອງ "XXX".
+Select: ເລືອກ
+Day: ມື້
+Week: ອາທິດ
+Month: ເດືອນ
+Year: ປີ
+Bottom: ດ້ານລຸ່ມ
+Top: ທາງເທີງ
+Anyone: ທຸກຄົນ
+Participant: ຜູ້ເຂົ້າຮ່ວມ
+Settings: ການຕັ້ງຄ່າ
+Groups: ກຸ່ມ
+NonUser Calendars: ປະຕິທິນ NonUser
+Other: ອື່ນໆ
+Email: ອີເມວ
+Colors: ສີສັນ
+Document background: ຄວາມເປັນມາຂອງເອກະສານ
+Document title: ຫົວຂໍ້ເອກະສານ
+Document text: ຕົວ ໜັງ ສືເອກະສານ
+My event text: ຂໍ້ຄວາມເຫດການຂອງຂ້ອຍ
+Table grid color: ສີຕາຂ່າຍໄຟຟ້າຕາຕະລາງ
+Table header background: ພື້ນຫລັງຂອງຕາຕະລາງ
+Table header text: ຫົວຂໍ້ ໜ້າ ຕາຕະລາງ
+Table cell background: ຄວາມເປັນມາຂອງຫ້ອງຕາຕະລາງ
+Table cell background for current day: ຄວາມເປັນມາຂອງຫ້ອງຕາຕະລາງ ສຳ ລັບມື້ປະຈຸບັນ
+Table cell background for days with events: ຄວາມເປັນມາຂອງຫ້ອງຕາຕະລາງ ສຳ ລັບມື້ກັບເຫດການ
+Table cell background for weekends: ພື້ນຫລັງຫ້ອງຕາຕະລາງ ສຳ ລັບທ້າຍອາທິດ
+Table cell background for other month: ພື້ນຫລັງຫ້ອງຕາຕະລາງ ສຳ ລັບເດືອນອື່ນ
+Week number color: ສີ ໝາຍ ເລກອາທິດ
+Event popup background: ປະຫວັດຄວາມເປັນມາຂອງການເກີດຂື້ນ
+Event popup text: ຂໍ້ຄວາມທີ່ປາກົດຂື້ນ
+System Settings: ການຕັ້ງຄ່າລະບົບ
+Help: ຊ່ວຍເຫຼືອ
+System options: ຕົວເລືອກລະບົບ
+app-name-help: ລະບຸຊື່ຂອງແອັບພລິເຄຊັນທີ່ຈະສະແດງຢູ່ໃນແຖບຫົວຂໍ້ຂອງໂປຣແກຣມທ່ອງເວັບ ສຳ ລັບທຸກ ໜ້າ ແລະໃນ ໜ້າ ເຂົ້າສູ່ລະບົບ. ຄຸນຄ່າທີ່ທ່ານລະບຸຢູ່ທີ່ນີ້ຈະຖືກຊອກຫາຢູ່ໃນເອກະສານການແປພາສາທີ່ຊ່ວຍໃຫ້ທ່ານສາມາດຂຽນຫົວຂໍ້ຕ່າງໆ ສຳ ລັບພາສາຕ່າງໆ. 
+Application Name: ຊື່ສະ ໝັກ
+Translated Name (XXX): ຊື່ແປ (XXX)
+server-url-help: ລະບຸ URL ຖານ ສຳ ລັບການສະ ໝັກ. ນີ້ຈະຖືກລວມເຂົ້າໃນເວລາທີ່ສົ່ງອີເມວເຕືອນແລະການແຈ້ງເຕືອນ.
+Server URL: URL ຂອງເຊີບເວີ
+home-url-help: ລະບຸ URL ທີ່ຢູ່ເຮືອນ ສຳ ລັບການສະ ໝັກ. ນີ້ສາມາດເປັນພີ່ນ້ອງກັນຢ່າງແທ້ຈິງ
+Home URL: URL ທີ່ຢູ່ເຮືອນ
+language-help: ລະບຸພາສາທີ່ຈະໃຊ້.
+Language: ພາສາ
+Your browser default language is XXX.: ພາສາເລີ່ມຕົ້ນຂອງຕົວທ່ອງເວັບຂອງທ່ານແມ່ນ "XXX".   
+Allow user to use themes: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ໃຊ້ຫົວຂໍ້ຕ່າງໆ
+themes-help: ອະນຸຍາດການປັບປຸງມະຫາຊົນຂອງການຕັ້ງຄ່າການຕັ້ງຄ່າ. ປ້າຍຊື່ກໍລະນີຕ່ ຳ ກວ່າແມ່ນ ຄຳ ນຳ ໜ້າ ຂອງຜູ້ໃຊ້.
+Themes: ຫົວຂໍ້
+AVAILABLE THEMES: ຫົວຂໍ້ທີ່ມີ
+None: ບໍ່ມີ
+Preview: ເບິ່ງຕົວຢ່າງ
+Site customization: ການປັບແຕ່ງເວັບໄຊ
+custom-script-help: ອະນຸຍາດໃຫ້ເຂົ້າຂໍ້ຄວາມ Javascript ຫຼືແບບແມ່ແບບທີ່ຕ້ອງການເຊິ່ງຈະຖືກໃສ່ເຂົ້າໃນສ່ວນ "ຫົວ" HTML ຂອງທຸກໆ ໜ້າ.
+Custom script/stylesheet: ຕົວອັກສອນ / ແບບສະເພາະຂອງລູກຄ້າ
+custom-header-help: ອະນຸຍາດໃຫ້ຫຍໍ້ HTML ທີ່ ກຳ ນົດເອງຢູ່ໃນສ່ວນເທິງຂອງທຸກໆ ໜ້າ.
+Custom header: ຫົວຂໍ້ທີ່ ກຳ ຫນົດເອງ
+custom-trailer-help: ອະນຸຍາດໃຫ້ເອົາຊຸດຕົວຫຍໍ້ HTML ທີ່ ກຳ ນົດເອງໃນທ້າຍຂອງທຸກໆ ໜ້າ.
+Custom trailer: ລົດພ່ວງຕາມສັ່ງ
+enable-external-header-help: ອະນຸຍາດໃຫ້ໂຫລດແບບພົກພາຈາກໄຟລ໌ພາຍນອກ
+Allow external file for header/script/trailer: ອະນຸຍາດໃຫ້ມີເອກະສານພາຍນອກ ສຳ ລັບ header / script / trailer
+Allow user to override header/trailer: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ສາມາດປະຕິເສດ header / trailer ໄດ້
+Date and Time: ວັນທີແລະເວລາ
+server-tz-help: ລະບຸ ຈຳ ນວນຊົ່ວໂມງເພື່ອປັບເວລາຈາກ UTC ກັບເວລາຂອງເຊີບເວີ.
+Server Timezone Selection: ການຄັດເລືອກເວລາຂອງ Server
+tz-help: ລະບຸ ຈຳ ນວນຊົ່ວໂມງເພື່ອປັບເວລາຈາກ UTC ກັບເວລາທ້ອງຖິ່ນ.
+Default Client Timezone Selection: ການເລືອກເຂດເວລາຂອງລູກຄ້າໃນຕອນຕົ້ນ
+display-general-use-gmt-help: ຖ້າເປີດໃຊ້, ວັນທີ / ເວລາທົ່ວໄປຈະຖືກສະແດງເປັນ GMT
+Display Common Use Date/Times as GMT: ສະແດງວັນທີ / ເວລາ ນຳ ໃຊ້ທົ່ວໄປເປັນ GMT
+date-format-help: ລະບຸຮູບແບບວັນທີທີ່ຕ້ອງການ.
+Date format: ຮູບແບບວັນທີ
+Small Task Date: ວັນທີວຽກງານຂະຫນາດນ້ອຍ
+display-week-starts-on: ລະບຸມື້ຂອງອາທິດທີ່ອາທິດເລີ່ມຕົ້ນ. ຖ້າວັນຈັນຖືກລະບຸ, ຫຼັງຈາກນັ້ນຕົວເລກອາທິດຈະເປັນຕົວເລກອາທິດ ISO.
+Week starts on: ອາທິດເລີ່ມຕົ້ນ
+display-weekend-starts-on: ກຳ ນົດມື້ຂອງອາທິດ ສຳ ລັບທ້າຍອາທິດທີ່ຈະເລີ່ມຕົ້ນ
+Weekend starts on: ທ້າຍອາທິດເລີ່ມຕົ້ນ
+time-format-help: ລະບຸວ່າຮູບແບບເວລາໃດທີ່ຈະໃຊ້:<br><em>12 ຊົ່ວໂມງ:</em> ເວລາສະແດງເວລາ 3 ໂມງເຊົ້າ, 8 ໂມງ 30 ນາທີ, ແລະອື່ນໆ.<br><em>24 ຊົ່ວໂມງ:</em> ເວລາສະແດງເປັນ 300 , ປີ 2030, ແລະອື່ນໆ.
+Time format: ຮູບແບບເວລາ
+12 hour: 12 ຊົ່ວໂມງ                                                  
+24 hour: 24 ຊົ່ວໂມງ                                                  
+timed-evt-len-help: ລະບຸວິທີການປ້ອນຂໍ້ມູນ ສຳ ລັບການ ກຳ ນົດໄລຍະເວລາຂອງເຫດການທີ່ ກຳ ນົດ.
+Specify timed event length by: ລະບຸໄລຍະເວລາຂອງເຫດການໂດຍ
+Duration: ໄລຍະເວລາ
+End Time: ເວລາສິ້ນສຸດ
+work-hours-help: ລະບຸຊ່ວງເວລາທີ່ຈະສະແດງ ສຳ ລັບມື້ເບິ່ງ.
+Work hours: ຊົ່ວໂມງເຮັດວຽກ
+From: ຈາກ
+to: ເຖິງ
+Appearance: ຮູບລັກສະນະ
+preferred-view-help: ລະບຸມຸມມອງເລີ່ມຕົ້ນ (ວັນ, ອາທິດ, ເດືອນ, ຫລືປີ).
+Preferred view: ມຸມມອງທີ່ຕ້ອງການ
+Allow top menu: ອະນຸຍາດໃຫ້ມີເມນູດ້ານເທິງ
+Date Selectors position: ຕຳ ແໜ່ງ ຜູ້ເລືອກວັນທີ
+menu-themes-help: ຕັ້ງສີແລະແບບຂອງເມນູດ້ານເທິງ
+Menu theme: ຫົວຂໍ້ເມນູ
+fonts-help: ລະບຸລາຍຊື່ຕົວອັກສອນລະບົບທີ່ຈະໃຊ້ (ເຊັ່ນ "Arial, Helvetica")
+Fonts: ຕົວອັກສອນ
+display-sm_month-help: ຖ້າເປີດໃຊ້ງານ, ສະແດງເດືອນນ້ອຍໆໃນມຸມມອງເດືອນ
+Display small months: ສະແດງເດືອນນ້ອຍໆ
+display-weekends-help: ລວມທັງທ້າຍອາທິດໃນເວລາທີ່ເບິ່ງອາທິດ.
+Display weekends: ສະແດງທ້າຍອາທິດ
+display-long-daynames-help: ຖ້າເປີດໃຊ້, ຊື່ມື້ຍາວຈະຖືກສະແດງ
+Display long day names: ສະແດງຊື່ມື້ຍາວ
+display-alldays-help: ສະແດງວັນກ່ອນ ໜ້າ ແລະມື້ຕໍ່ໄປໃນມຸມມອງເດືອນ, ການເຕີມເຕັມທຸກຈຸລັງ.
+Display all days in month view: ສະແດງທຸກມື້ໃນມຸມມອງເດືອນ
+display-week-number-help: ລະບຸວ່າຕົວເລກອາທິດ (1-52) ຄວນສະແດງຢູ່ໃນມຸມມອງເດືອນແລະມຸມມອງອາທິດ.
+Display week number: ສະແດງເລກອາທິດ
+display-desc-print-day-help: ປະກອບມີ ຄຳ ອະທິບາຍເຫດການໃນຮູບແບບຂອງການເບິ່ງມື້ຂອງເຄື່ອງພິມ.
+Display description in printer day view: ສະແດງ ຄຳ ອະທິບາຍໃນມຸມມອງຂອງມື້ພິມ
+yearly-shows-events-help: ໃນມຸມມອງປະ ຈຳ ປີ, ສະແດງມື້ທີ່ປະກອບດ້ວຍເຫດການທີ່ເປັນຕົວອັກສອນທີ່ກ້າຫານ.
+Display days with events in bold in month and year views: ສະແດງວັນທີ່ມີເຫດການຢ່າງກ້າຫານໃນມຸມມອງເດືອນແລະປີ
+display-minutes-help: ຖ້າເປີດໃຊ້ໄດ້, ນາທີທີ່ສິ້ນສຸດດ້ວຍ: 00 ຈະສະແດງຢູ່ສະ ເໝີ
+Display 00 minutes always: ສະແດງ 00 ນາທີສະ ເໝີ
+display-end-times-help: ສະແດງເວລາສິ້ນສຸດຂອງເຫດການຖ້າເຫດການຖືກ ກຳ ນົດ
+Display end times on calendars: ສະແດງເວລາສິ້ນສຸດໃນປະຕິທິນ
+allow-view-add-help: ໄອຄອນ '+' ຈະຖືກລວມເຂົ້າໃນມຸມມອງ, ຊ່ວຍໃຫ້ຜູ້ໃຊ້ສາມາດເພີ່ມເຫດການຕ່າງໆໃນປະຕິທິນຂອງຜູ້ໃຊ້ອື່ນໄດ້ອຍ່າງລວດໄວ. 
+Include add event link in views: ລວມເອົາການເຊື່ອມຕໍ່ເຫດການໃນມຸມມອງ
+lunar-help: ຖ້າເປີດໃຊ້ງານ, ຈະສະແດງໄອຄອນນ້ອຍໆທີ່ເປັນຕົວແທນໄລຍະເວລາຕາມຈັນທະປະຕິທິນໃນແຕ່ລະເດືອນ
+Display Lunar Phases in month view: ສະແດງໄລຍະເວລາ lunar ໃນມຸມມອງເດືອນ
+Restrictions: ຂໍ້ ຈຳ ກັດ
+allow-view-other-help: ລະບຸວ່າຜູ້ໃຊ້ຄົນ ໜຶ່ງ ອາດຈະເບິ່ງປະຕິທິນຂອງຜູ້ໃຊ້ອື່ນ. 
+Allow viewing other users calendars: ອະນຸຍາດໃຫ້ເບິ່ງປະຕິທິນຂອງຜູ້ໃຊ້ອື່ນ
+require-approvals-help: ເມື່ອເປີດໃຊ້ງານ, ຜູ້ໃຊ້ຕ້ອງອະນຸມັດເຫດການກ່ອນທີ່ມັນຈະສະແດງຢູ່ໃນປະຕິທິນຂອງພວກເຂົາ (ເວັ້ນເສຍແຕ່ວ່າການສະແດງທີ່ບໍ່ໄດ້ຮັບການອະນຸມັດຖືກເປີດໃຊ້ງານ). ການຕັ້ງຄ່າບັນທຶກນີ້ໃຫ້ "ບໍ່" ຈະບໍ່ປິດການອະນຸມັດ ສຳ ລັບປະຕິທິນການເຂົ້າເຖິງສາທາລະນະ (ຖ້າປະຕິທິນການເຂົ້າເຖິງສາທາລະນະສາມາດໃຊ້ງານໄດ້).
+Require event approvals: ຕ້ອງການການອະນຸມັດເຫດການ
+display-unapproved-help: ລະບຸວ່າເຫດການທີ່ບໍ່ໄດ້ຮັບການອະນຸມັດຖືກສະແດງຢູ່ໃນປະຕິທິນຂອງທ່ານ. ເຫດການທີ່ບໍ່ໄດ້ຮັບການອະນຸມັດຕ້ອງໄດ້ຮັບການອະນຸມັດກ່ອນທີ່ມັນຈະສະແດງຢູ່ໃນປະຕິທິນຂອງທ່ານ.
+Display unapproved: ການສະແດງບໍ່ອະນຸມັດ
+conflict-check-help: ກວດເບິ່ງຂໍ້ຂັດແຍ່ງເຫດການ (ສອງເຫດການທີ່ ກຳ ນົດເວລາ ສຳ ລັບຄົນດຽວກັນ). ຖ້າທ່ານຕັ້ງຄ່ານີ້ວ່າ "ແມ່ນແລ້ວ", ທ່ານຍັງສາມາດຈັດຕາຕະລາງສອງເຫດການໃນເວລາດຽວກັນຫຼັງຈາກຢືນຢັນ ຄຳ ເຕືອນ. ຖ້າທ່ານຕັ້ງຄ່ານີ້ໃຫ້ "ບໍ່", ບໍ່ມີການກວດສອບຄວາມຂັດແຍ້ງໃດໆ. ທ່ານອາດຈະຕ້ອງການຕັ້ງຄ່ານີ້ໃຫ້ "ແມ່ນ", ດັ່ງນັ້ນການກວດສອບຂໍ້ຂັດແຍ່ງກໍ່ເກີດຂື້ນ. 
+Check for event conflicts: ກວດເບິ່ງຂໍ້ຂັດແຍ່ງເຫດການ
+Yes: ແມ່ນແລ້ວ
+No: ບໍ່
+conflict-months-help: ຖ້າການກວດສອບຄວາມຂັດແຍ້ງຢູ່ໃນສະຖານທີ່ ("ກວດເບິ່ງຂໍ້ຂັດແຍ່ງເຫດການ" ຖືກ ກຳ ນົດໃຫ້ "ບໍ່" & # 41; ນີ້ລະບຸວ່າຈະມີຈັກເດືອນໃນອະນາຄົດທີ່ພວກເຮົາຄວນກວດເບິ່ງຂໍ້ຂັດແຍ່ງ. ຖ້າທ່ານພົບວ່າການເພີ່ມເຫດການແມ່ນໃຊ້ເວລາດົນນານເພື່ອປະມວນຜົນ , ຫຼຸດຜ່ອນ ຈຳ ນວນນີ້. 
+Conflict checking months: ການກວດສອບການຂັດແຍ້ງເດືອນ
+conflict-check-override-help: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ສາມາດ override ຂໍ້ຂັດແຍ່ງເຫດການແລະຈັດຕາຕະລາງສອງຫຼືຫຼາຍເຫດການໃນເວລາດຽວກັນ. 
+Allow users to override conflicts: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ສາມາດຂ້າມຄວາມຂັດແຍ້ງ
+limit-appts-help: ອະນຸຍາດໃຫ້ຜູ້ເບິ່ງແຍງລະບົບສາມາດ ກຳ ນົດຂອບເຂດຂອງລະບົບໃນ ຈຳ ນວນນັດ ໝາຍ ທີ່ຜູ້ໃຊ້ດຽວສາມາດມີໃນມື້ດຽວ.
+Limit number of timed events per day: ຈຳ ກັດ ຈຳ ນວນເຫດການທີ່ ກຳ ນົດເວລາຕໍ່ມື້
+limit-appts-number-help: ລະບຸ ຈຳ ນວນເຫດການສູງສຸດທີ່ຜູ້ໃຊ້ສາມາດມີໃນມື້ດຽວ.
+Maximum timed events per day: ເຫດການ ກຳ ນົດເວລາສູງສຸດຕໍ່ມື້
+crossday-help: ຖ້າເປີດໃຊ້ງານ, ເຫດການທີ່ໃຊ້ເວລາຫຼາຍມື້ຈະຖືກສະແດງໃນມື້ຕ່າງຫາກ 
+Disable Cross-Day Events: ປິດການໃຊ້ງານກິດຈະ ກຳ ຂ້າມມື້
+disable-location-field-help: ການເລືອກ "ແມ່ນແລ້ວ" ຈະເອົາເຂດ "ສະຖານທີ່" ອອກຈາກ ໜ້າ ຂໍ້ມູນຂ່າວສານເຫດການ
+Disable Location field: ປິດການໃຊ້ງານສະຖານທີ່ຕັ້ງ
+disable-url-field-help: ການເລືອກ "ແມ່ນແລ້ວ" ຈະເອົາ "URL" ລົງຈາກ ໜ້າ ຂໍ້ມູນຂ່າວສານເຫດການ
+Disable URL field: ປິດຊ່ອງ URL
+disable-priority-field-help: ການເລືອກ "ແມ່ນແລ້ວ" ຈະເອົາພາກສະຫນາມ "ບູລິມະສິດ" ອອກຈາກ ໜ້າ ຂໍ້ມູນຂ່າວສານເຫດການ, ເຊິ່ງຈະສະ ໜອງ ການໂຕ້ຕອບທີ່ງ່າຍດາຍກວ່າ ສຳ ລັບປະສົບການ ໃໝ່.
+Disable Priority field: ປິດການ ນຳ ໃຊ້ເຂດບຸລິມະສິດ
+disable-access-field-help: ການເລືອກ "ແມ່ນແລ້ວ" ຈະເອົາພາກສະຫນາມ "ເຂົ້າເຖິງ" ອອກຈາກ ໜ້າ ຂໍ້ມູນຂ່າວສານເຫດການ, ເຊິ່ງຈະສະ ໜອງ ການໂຕ້ຕອບທີ່ງ່າຍດາຍ ສຳ ລັບຜູ້ ໃໝ່.
+Disable Access field: ປິດການໃຊ້ງານພາກສະ ໜາມ
+disable-participants-field-help: ການເລືອກ "ແມ່ນແລ້ວ" ຈະເອົາພາກສະຫນາມ "ຜູ້ເຂົ້າຮ່ວມ" ອອກຈາກ ໜ້າ ຂໍ້ມູນຂ່າວສານເຫດການ, ປ້ອງກັນບໍ່ໃຫ້ຜູ້ໃຊ້ສາມາດເພີ່ມຜູ້ໃຊ້ອື່ນເຂົ້າໃນເຫດການຂອງພວກເຂົາ. ຖ້າທ່ານເປີດໃຊ້ຕົວເລືອກນີ້, ທ່ານອາດຈະຕ້ອງການປິດ "ອະນຸຍາດໃຫ້ເບິ່ງປະຕິທິນຂອງຜູ້ໃຊ້ອື່ນ" ເຊັ່ນກັນ.
+Disable Participants field: ປິດການ ທຳ ງານພາກສະ ໜາມ ຂອງຜູ້ເຂົ້າຮ່ວມ
+disable-repeating-field-help: ການເລືອກ "ແມ່ນແລ້ວ" ຈະເອົາພາກສະຫນາມ "ຊ້ ຳ ອີກ" ເມື່ອເພີ່ມເຫດການ. ນີ້ຈະສະຫນອງການໂຕ້ຕອບງ່າຍດາຍສໍາລັບຈົວ.
+Disable Repeating field: ປິດການ ທຳ ງານພາກສະ ໜາມ
+allow-html-description-help: ຖ້າເປີດໃຊ້ງານ, ຜູ້ໃຊ້ສາມາດໃສ່ HTML ໃນຊ່ອງ ຄຳ ອະທິບາຍເຫດການ. ຖ້າບໍ່ສາມາດໃຊ້ງານໄດ້, ແທັກ HTML ຈະຖືກເອົາໄປຈົນກວ່າຈະປາກົດເປັນຕົວ ໜັງ ສື ທຳ ມະດາ. ຄຳ ເຕືອນ: ການເປີດໃຊ້ຄຸນລັກສະນະນີ້ຈະຊ່ວຍໃຫ້ຜູ້ໃຊ້ສາມາດອ້າງອິງຮູບພາບຕ່າງໆໃນເວັບໄຊທ໌ອື່ນ. 
+Allow HTML in Description: ອະນຸຍາດໃຫ້ໃຊ້ HTML ໃນ ຄຳ ອະທິບາຍ
+Popups: ປupsອບອັບ
+disable-popups-help: ປິດການ ນຳ ໃຊ້ໂປແກຼມຕ່າງໆຈາກມຸມມອງປະຕິທິນ
+Disable Pop-Ups: ປິດໃຊ້ງານ Pop-Ups
+popup-includes-siteextras-help: ຖ້າເປີດໃຊ້ງານ, ອະນຸຍາດໃຫ້ຕັ້ງຄ່າເຫດການທີ່ ກຳ ນົດເອງຢູ່ໃນເອກະສານ site_extras.php ຈະຖືກສະແດງຢູ່ໃນລາຍການເຫດການ.
+Display Site Extras in popup: ສະແດງເວັບໄຊທ໌ພິເສດໃນ popup
+popup-includes-participants-help: ຖ້າເປີດໃຊ້ງານ, ຜູ້ເຂົ້າຮ່ວມຈະຖືກສະແດງຢູ່ໃນລາຍການເຫດການຕ່າງໆ.
+Display Participants in popup: ສະແດງຜູ້ເຂົ້າຮ່ວມໃນປinອບອັບ
+Miscellaneous: ຫລາກຫລາຍ
+remember-last-login-help: ເມື່ອເປີດໃຊ້ງານ, ການເຂົ້າສູ່ລະບົບຂອງຜູ້ໃຊ້ຈະຖືກຕື່ມໃສ່ພວກມັນໃນ ໜ້າ ເຂົ້າສູ່ລະບົບ (ແຕ່ບໍ່ແມ່ນລະຫັດຜ່ານ), ແລະຄວາມມັກຂອງຜູ້ໃຊ້ຈະຖືກໂຫລດ (ລວມທັງສີທີ່ພວກເຂົາມັກແລະການເລືອກພາສາ).
+Remember last login: ຈື່ການເຂົ້າສູ່ລະບົບຄັ້ງສຸດທ້າຍ
+summary_length-help: ຄວາມຍາວສູງສຸດຂອງລາຍລະອຽດສັ້ນໆໃນມຸມມອງປະຕິທິນ
+Brief Description Length: ລາຍລະອຽດຂອງຄວາມຍາວ
+user_sort-help: ກຳ ນົດການຈັດລຽງ ລຳ ດັບ ສຳ ລັບລາຍຊື່ຜູ້ໃຊ້, Nonuser
+User Sort Order: ການຈັດລຽງລໍາດັບຜູ້ໃຊ້
+Lastname, Firstname: ນາມສະກຸນ, Firstname
+Firstname, Lastname: ຊື່​ແລະ​ນາມ​ສະ​ກຸນ
+allow-public-access-help: ເມື່ອເປີດໃຊ້ງານ, ປະຕິທິນສາມາດຖືກ ນຳ ໃຊ້ເປັນປະຕິທິນສາທາລະນະທີ່ອ່ານເທົ່ານັ້ນ, ບໍ່ຕ້ອງການໃຫ້ຜູ້ໃຊ້ເຂົ້າສູ່ລະບົບ. 
+Allow public access: ອະນຸຍາດໃຫ້ເຂົ້າເຖິງສາທາລະນະ
+public-access-default-visible: ເຫດການຈາກປະຕິທິນສາທາລະນະຈະປາກົດໂດຍອັດຕະໂນມັດໃນປະຕິທິນຂອງຜູ້ໃຊ້ທັງ ໝົດ
+Public access visible by default: ການເຂົ້າເຖິງສາທາລະນະເບິ່ງເຫັນໄດ້ໂດຍຄ່າເລີ່ມຕົ້ນ
+public-access-default-selected: ເມື່ອເພີ່ມເຫດການ ໃໝ່, ຜູ້ໃຊ້ສາທາລະນະຈະຖືກເລືອກໂດຍຄ່າເລີ່ມຕົ້ນເປັນຜູ້ເຂົ້າຮ່ວມ.
+Public access is default participant: ການເຂົ້າເຖິງສາທາລະນະແມ່ນຜູ້ເຂົ້າຮ່ວມໃນຕອນຕົ້ນ
+public-access-view-others-help: ເມື່ອເຂົ້າເຖິງລະບົບດ້ວຍການເຂົ້າເຖິງສາທາລະນະ, ລະບຸວ່າຜູ້ໃຊ້ສາມາດເບິ່ງປະຕິທິນຂອງຜູ້ໃຊ້ປະຕິທິນອື່ນໄດ້ບໍ.
+Public access can view other users: ການເຂົ້າເຖິງສາທາລະນະສາມາດເບິ່ງຜູ້ໃຊ້ອື່ນໆ
+public-access-can-add-help: ເມື່ອເປີດໃຊ້ງານ, ຜູ້ໃຊ້ທີ່ເຂົ້າໃຊ້ລະບົບຜ່ານ Public Access ຈະສາມາດເພີ່ມເຫດການ ໃໝ່, ແຕ່ພວກເຂົາຈະບໍ່ສະແດງໃນປະຕິທິນຈົນກວ່າຜູ້ບໍລິຫານຈະອະນຸມັດເຫດການ ໃໝ່.
+Public access can add events: ການເຂົ້າເຖິງສາທາລະນະສາມາດເພີ່ມເຫດການຕ່າງໆ
+public-access-add-requires-approval-help: ລະບຸວ່າເຫດການທີ່ເພີ່ມເຂົ້າຜ່ານບັນຊີການເຂົ້າເຖິງສາທາລະນະຕ້ອງການການອະນຸມັດກ່ອນຈະສະແດງ.
+Public access new events require approval: ການເຂົ້າເຖິງເຫດການ ໃໝ່ໆ ທີ່ສາທາລະນະຕ້ອງການການອະນຸມັດ
+public-access-sees-participants-help: ຖ້າເປີດໃຊ້ງານ, ຜູ້ໃຊ້ທີ່ເຂົ້າເບິ່ງປະຕິທິນຈາກບັນຊີສາທາລະນະຈະສາມາດເຫັນຜູ້ເຂົ້າຮ່ວມເຫດການຖ້າພວກເຂົາເບິ່ງລາຍລະອຽດຂອງເຫດການ.
+Public access can view participants: ການເຂົ້າເຖິງສາທາລະນະສາມາດເບິ່ງຜູ້ເຂົ້າຮ່ວມ
+public-access-override-help: ອະນຸຍາດໃຫ້ເຊື່ອງຊື່ເຫດການແລະລາຍລະອຽດໃນປະຕິທິນສາທາລະນະ
+Override event name/description for public access: ລົບລ້າງຊື່ເຫດການ / ຄຳ ອະທິບາຍ ສຳ ລັບການເຂົ້າເຖິງສາທາລະນະ
+public-access-override-text-help: ຂໍ້ຄວາມທີ່ຈະສະແດງຖ້າຕົວເລືອກຂ້າງເທິງຖືກເປີດໃຊ້. ຖ້າ 'ບໍ່ມີ' ມັນຈະຖືກແປ.
+Text to display to public access: ຂໍ້ຄວາມເພື່ອສະແດງການເຂົ້າເຖິງສາທາລະນະ
+public-access-captcha-help: ຖ້າເປີດໃຊ້ງານ, ເຫດການ ໃໝ່ໆ ທີ່ເພີ່ມໂດຍ Public ຮຽກຮ້ອງໃຫ້ມີການຖ່າຍທອດຄວາມຖືກຕ້ອງຂອງ CAPTCHA.
+Require CAPTCHA validation for public access new events: ຕ້ອງການຄວາມຖືກຕ້ອງຂອງ CAPTCHA ສຳ ລັບການເຂົ້າເຖິງເຫດການ ໃໝ່ໆ
+uac-enabled-help: ເຮັດໃຫ້ສາມາດຄວບຄຸມການເຂົ້າເຖິງລະດັບຜູ້ໃຊ້
+User Access Control enabled: ການຄວບຄຸມການເຂົ້າເຖິງຜູ້ໃຊ້ຖືກເປີດໃຊ້ງານແລ້ວ
+groups-enabled-help: ເຮັດໃຫ້ການສະ ໜັບ ສະ ໜູນ ກຸ່ມ, ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ສາມາດເລືອກຜູ້ໃຊ້ໂດຍກຸ່ມ.
+Groups enabled: ກຸ່ມໄດ້ເປີດ ນຳ ໃຊ້ແລ້ວ
+user-sees-his-group-help: ຖ້າເປີດໃຊ້, ຜູ້ໃຊ້ຈະບໍ່ເຫັນຜູ້ໃຊ້ປະຕິທິນທີ່ບໍ່ຢູ່ໃນຢ່າງ ໜ້ອຍ ໜຶ່ງ ກຸ່ມຂອງພວກເຂົາ.
+User sees only his groups: ຜູ້ໃຊ້ເຫັນແຕ່ກຸ່ມຂອງລາວເທົ່ານັ້ນ
+nonuser-enabled-help: ຖ້າເປີດໃຊ້, ຜູ້ລົງທະບຽນຈະມີທາງເລືອກທີ່ຈະເພີ່ມປະຕິທິນແບບບໍ່ໃຊ້ວຽກ
+Nonuser enabled: ໃຊ້ປະຕິທິນບໍ່ໃຊ້ງານ
+nonuser-list-help: ບ່ອນທີ່ຈະສະແດງປະຕິທິນ nonuser ໃນລາຍຊື່ຜູ້ເຂົ້າຮ່ວມ
+Nonuser list: ສະແດງຢູ່ໃນລາຍຊື່ຜູ້ເຂົ້າຮ່ວມທີ່
+Upcoming Events: ເຫດການ ກຳ ລັງຈະມາເຖິງ
+upcoming-events-help: ເປີດໃຊ້ງານ upcoming.php
+Enabled: ເປີດໃຊ້ງານ
+upcoming-events-allow-override: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ paramter ສໍາລັບ upcoming.php
+Allow user override: ອະນຸຍາດໃຫ້ຜູ້ຊົມໃຊ້ override
+upcoming-events-display-caticons: ລວມຮູບສັນຍາລັກປະເພດໃນ upcoming.php
+Display category icons: ສະແດງໄອຄອນປະເພດ
+upcoming-events-display-layers: ສະແດງຊັ້ນຂໍ້ມູນໃນ upcoming.php
+Display layers: ສະແດງຊັ້ນຂໍ້ມູນ
+upcoming-events-display-links: ສະແດງລິ້ງໃນ upcoming.php
+Display links to events: ສະແດງການເຊື່ອມຕໍ່ກັບເຫດການຕ່າງໆ
+upcoming-events-display-popups: ສະແດງປupsອບອັບເຫດການໃນ upcoming.php
+Display event popups: ສະແດງປupsອບອັບເຫດການ
+reports-enabled-help: ຖ້າເປີດໃຊ້ງານ, ຜູ້ໃຊ້ຈະເຫັນສ່ວນ "ລາຍງານ" ຢູ່ທາງລຸ່ມຂອງແຕ່ລະ ໜ້າ ແລະຈະຖືກອະນຸຍາດສ້າງບົດລາຍງານທີ່ ກຳ ນົດເອງ. ນອກຈາກນັ້ນ, ຜູ້ໃຊ້ admin ສາມາດສ້າງບົດລາຍງານທົ່ວໂລກເຊິ່ງຈະປາກົດຢູ່ທາງລຸ່ມຂອງ ໜ້າ ຜູ້ໃຊ້ທັງ ໝົດ.
+Reports enabled: ລາຍງານຖືກເປີດໃຊ້ງານແລ້ວ
+subscriptions-enabled-help: ລະບຸວ່າຖ້າຜູ້ໃຊ້ຫ່າງໄກສອກຫຼີກສາມາດສະ ໝັກ ໃຊ້ປະຕິທິນຂອງຜູ້ໃຊ້ WebCalendar, ອະນຸຍາດໃຫ້ພວກເຂົາເຫັນເຫດການຂອງຜູ້ໃຊ້ WebCalendar ໃນແອັບພລິເຄຊັນທີ່ເປີດໃຊ້ iCal ຂອງພວກເຂົາ (ເຊັ່ນ Apple iCal ຫຼື Mozilla Calendar).
+Allow remote subscriptions: ອະນຸຍາດການສະ ໝັກ ໃຊ້ໄລຍະໄກ
+remotes-enabled-help: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ສາມາດໂຫລດໄຟລ໌ ics ຫ່າງໄກສອກຫຼີກໂດຍໃຊ້ URL
+Allow remote calendars: ອະນຸຍາດໃຫ້ປະຕິທິນຫ່າງໄກສອກຫຼີກ
+rss-enabled-help: ລະບຸວ່າປະຕິທິນຂອງຜູ້ໃຊ້ສາມາດໄດ້ຮັບຈາກອາຫານ RSS.
+Enable RSS feed: ເປີດໃຊ້ອາຫານ RSS
+categories-enabled-help: ເຮັດໃຫ້ການສະຫນັບສະຫນູນສໍາລັບປະເພດເຫດການ. 
+Categories enabled: ໝວດ ໝູ່ ຖືກເປີດໃຊ້ງານ
+icon_upload-enabled-help: ຖ້າເປີດໃຊ້ງານ, ຜູ້ໃຊ້ສາມາດອັບໂຫລດຮູບສັນຍາລັກປະເພດ
+Category Icon Upload enabled: ໝວດ ຮູບສັນຍາລັກການອັບໂຫລດທີ່ເປີດໃຊ້ງານ
+(Requires XXX folder to exist.): (ຕ້ອງມີໂຟນເດີ XXX ຢູ່.)
+display-tasks-help: ສະແດງ ໜ້າ ຕ່າງວຽກນ້ອຍໆຕາມປະຕິທິນເດືອນແລະມື້
+Display small task list: ສະແດງລາຍຊື່ວຽກງານນ້ອຍໆ
+display-tasks-in-grid-help: ສະແດງ ໜ້າ ວຽກໃນປະຕິທິນພ້ອມກັບເຫດການຕ່າງໆ
+Display tasks in Calendars: ສະແດງ ໜ້າ ວຽກໃນປະຕິທິນ
+allow-external-users-help: ລະບຸວ່າຜູ້ໃຊ້ທີ່ບໍ່ໃຊ້ປະຕິທິນສາມາດຖືກເພີ່ມເຂົ້າໃນເຫດການໃດ. ນີ້ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ທີ່ບໍ່ແມ່ນປະຕິທິນຖືກຈັດເຂົ້າເປັນຜູ້ເຂົ້າຮ່ວມເຫດການ. 
+Allow external users: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ພາຍນອກເຂົ້າມາ
+external-can-receive-notification-help: ເມື່ອຜູ້ໃຊ້ພາຍນອກຖືກເປີດໃຊ້ແລະການ ນຳ ໃຊ້ອີເມວຖືກເປີດໃຊ້, ຜູ້ໃຊ້ພາຍນອກສາມາດໄດ້ຮັບການແຈ້ງເຕືອນທາງອີເມວເມື່ອເຫດການຖືກເພີ່ມ, ປັບປຸງຫລືລຶບອອກ (ຖ້າທີ່ຢູ່ອີເມວຂອງຜູ້ໃຊ້ພາຍນອກໄດ້ສະ ໜອງ ໃຫ້).
+External users can receive email notifications: ຜູ້ໃຊ້ພາຍນອກສາມາດໄດ້ຮັບການແຈ້ງເຕືອນທາງອີເມວ
+external-can-receive-reminder-help: ເມື່ອຜູ້ໃຊ້ພາຍນອກຖືກເປີດໃຊ້ແລະການ ນຳ ໃຊ້ອີເມວຖືກເປີດໃຊ້, ຜູ້ໃຊ້ພາຍນອກສາມາດໄດ້ຮັບການເຕືອນອີເມວ (ຖ້າມີທີ່ຢູ່ອີເມວຂອງຜູ້ໃຊ້ພາຍນອກ).
+External users can receive email reminders: ຜູ້ໃຊ້ພາຍນອກສາມາດໄດ້ຮັບການເຕືອນອີເມວ
+allow-self-registration-help: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ ໃໝ່ ລົງທະບຽນຕົວເອງ 
+Allow self-registration: ອະນຸຍາດໃຫ້ລົງທະບຽນດ້ວຍຕົນເອງ
+use-blacklist-help: ຈຳ ກັດການເຂົ້າເຖິງ ໜ້າ ທີ່ຂອງ WebCalendar ອີງຕາມທີ່ຢູ່ IP
+Restrict self-registration to blacklist: ຈຳ ກັດການລົງທະບຽນດ້ວຍຕົນເອງເຂົ້າໃນບັນຊີ ດຳ
+allow-self-registration-full-help: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ ໃໝ່ ສາມາດເຮັດ ສຳ ເລັດຂັ້ນຕອນການລົງທະບຽນດ້ວຍຕົນເອງທາງອອນລາຍ 
+Use self-registration email notifications: ສ້າງລະຫັດຜ່ານແລະສົ່ງໃຫ້ຜູ້ໃຊ້ ໃໝ່
+allow-attachment-help: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ສາມາດເພີ່ມເອກະສານຄັດຕິດເອກະສານເຂົ້າໃນເຫດການຕ່າງໆ. 
+Allow file attachments to events: ອະນຸຍາດໃຫ້ຕິດເອກະສານຕິດຂັດກັບເຫດການຕ່າງໆ
+Admin and owner can always add attachments if enabled.: ຜູ້ເບິ່ງແຍງແລະເຈົ້າຂອງສາມາດເພີ່ມເອກະສານຕິດຄັດສະ ເໝີ ຖ້າເປີດໃຊ້.
+allow-comments-help: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ສາມາດເພີ່ມ ຄຳ ເຫັນເຂົ້າໃນເຫດການຕ່າງໆ. 
+Allow comments to events: ອະນຸຍາດໃຫ້ ຄຳ ເຫັນຕໍ່ເຫດການຕ່າງໆ
+Admin and owner can always add comments if enabled.: ຜູ້ເບິ່ງແຍງແລະເຈົ້າຂອງສາມາດເພີ່ມ ຄຳ ເຫັນຖ້າເປີດໃຊ້.
+email-enabled-help: ເປີດຫລືປິດການສົ່ງອີເມວທັງ ໝົດ ເພື່ອການແຈ້ງເຕືອນແລະການເຕືອນ. ຕັ້ງຄ່າໃຫ້ "ບໍ່", ຖ້າເຄື່ອງແມ່ຂ່າຍຂອງທ່ານບໍ່ຖືກຕັ້ງຄ່າໃຫ້ສົ່ງຈົດ ໝາຍ.
+Email enabled: ເປີດໃຊ້ງານອີເມວ
+email-default-sender: ລະບຸທີ່ຢູ່ອີເມວເພື່ອລະບຸວ່າເປັນຜູ້ສົ່ງເມື່ອສົ່ງອອກເຕືອນ.
+Default sender address: ທີ່ຢູ່ຜູ້ສົ່ງແບບເລີ່ມຕົ້ນ
+email-mailer: ເລືອກປະເພດອີເມວ (SMTP, PHP mail, sendmail)
+Email Mailer: ຜູ້ສົ່ງອີເມວ
+email-smtp-host: ຊື່ໂຮດຂອງເຄື່ອງແມ່ຂ່າຍ SMTP ຖືກແຍກອອກດ້ວຍເຄື່ອງ ໝາຍ ຈຸດ
+SMTP Host name(s): ຊື່ເຈົ້າຂອງ SMTP
+email-smtp-port: SMTP Port Port (ປົກກະຕິ 25)
+SMTP Port Number: SMTP Port Port
+email-smtp-auth: ໃຊ້ SMTP Authentication
+SMTP Authentication: ການກວດສອບ SMTP
+email-smtp-username: ຊື່ຜູ້ໃຊ້ SMTP ຖ້າໃຊ້ Authentication
+SMTP Username: ຊື່ຜູ້ໃຊ້ SMTP
+email-smtp-password: ລະຫັດຜ່ານ SMTP ຖ້າໃຊ້ Authentication
+SMTP Password: ລະຫັດຜ່ານ SMTP
+Default user settings: ການຕັ້ງຄ່າຜູ້ໃຊ້ແບບເລີ່ມຕົ້ນ
+email-format: ລະບຸຄວາມມັກຂອງ HTML ຫຼືຂໍ້ຄວາມ ທຳ ມະດາ
+Email format preference: ຄວາມຕ້ອງການຮູບແບບອີເມວ
+HTML: =
+Plain Text: ຂໍ້ຄວາມທົ່ງພຽງ
+email-include-ics: ລວມເອົາເອກະສານ iCalendar ICS ເພື່ອສົ່ງອີເມວຫາອີເມວ
+Include iCalendar attachments: ລວມເອກະສານຄັດຕິດ iCalendar
+email-event-reminders-help: ລະບຸວ່າຈະສົ່ງການເຕືອນເຫດການຫຼືບໍ່.
+Event reminders: ເຕືອນເຫດການ
+email-event-added: ລະບຸວ່າຈະສົ່ງອີເມວແຈ້ງເຕືອນເມື່ອເຫດການໃດ ໜຶ່ງ ຖືກເພີ່ມເຂົ້າໃນປະຕິທິນຂອງທ່ານ.
+Events added to my calendar: ເຫດການທີ່ເພີ່ມເຂົ້າໃນປະຕິທິນຂອງຂ້ອຍ
+email-event-updated: ລະບຸວ່າຈະສົ່ງອີເມວແຈ້ງເຕືອນເມື່ອເຫດການໃດ ໜຶ່ງ ຖືກປັບປຸງໃນປະຕິທິນຂອງທ່ານ.
+Events updated on my calendar: ເຫດການທີ່ຖືກປັບປຸງໃນປະຕິທິນຂອງຂ້ອຍ
+email-event-deleted: ລະບຸວ່າຈະສົ່ງອີເມວແຈ້ງເຕືອນເມື່ອເຫດການໃດ ໜຶ່ງ ຖືກລຶບອອກຈາກປະຕິທິນຂອງທ່ານ.
+Events removed from my calendar: ເຫດການຖືກລຶບອອກຈາກປະຕິທິນຂອງຂ້ອຍ
+email-event-rejected: ລະບຸວ່າຈະສົ່ງຫຼືບໍ່ສົ່ງແຈ້ງການທາງອີເມວເມື່ອຜູ້ເຂົ້າຮ່ວມປະຕິເສດເຫດການທີ່ຢູ່ໃນປະຕິທິນຂອງທ່ານ.
+Event rejected by participant: ເຫດການຖືກປະຕິເສດໂດຍຜູ້ເຂົ້າຮ່ວມ
+email-event-create: ລະບຸວ່າຜູ້ສ້າງລາຍການຈະໄດ້ຮັບອີເມວຫລືບໍ່
+Event that I create: ເຫດການທີ່ຂ້ອຍສ້າງຂື້ນ
+Color options: ຕົວເລືອກສີ
+Allow user to customize colors: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ສາມາດປັບແຕ່ງສີໄດ້
+gradient-colors: ຖ້າເປີດໃຊ້ສີ gradient ໄດ້ຖືກ ນຳ ໃຊ້. ນີ້ສາມາດສົ່ງຜົນກະທົບຢ່າງຫຼວງຫຼາຍຕໍ່ການປະຕິບັດ.
+Enable gradient images for background colors: ເຮັດໃຫ້ຮູບພາບ gradient ສຳ ລັບສີພື້ນຫລັງ
+Not available: ບໍ່​ສາ​ມາດ​ໃຊ້​ໄດ້
+Background Image options: ຕົວເລືອກຮູບພາບພື້ນຫລັງ
+bgimage-help: URL ຂອງຮູບພາບພື້ນຫລັງທີ່ຕ້ອງການ. ອາດຈະເປັນການເຊື່ອມໂຍງທີ່ກ່ຽວຂ້ອງ. 
+Background Image: ຮູບພາບພື້ນຫລັງ
+bgrepeat-help: ຄວບຄຸມການເຮັດຊ້ ຳ ຮູບພາບພື້ນຫລັງ. 
+Background Repeat: ຄວາມເປັນມາ
+
+########################################
+# Page: adminhome.php
+#
+Assistants: ຜູ້ຊ່ວຍ
+Preferences: ຕາມທີ່ໃຈມັກ
+Control Panel: ແຜງຄວບຄຸມ
+Users: ຜູ້ໃຊ້
+Account: ບັນຊີ
+Categories: ໝວດ
+Views: ວິວ
+Layers: ຊັ້ນຂໍ້ມູນ
+Reports: ບົດລາຍງານ
+Delete Events: ລຶບເຫດການ
+Activity Log: ບັນທຶກການເຄື່ອນໄຫວ
+System Log: ບັນທຶກລະບົບ
+Security Audit: ການກວດສອບຄວາມປອດໄພ
+Public Preferences: ຄວາມມັກຂອງສາທາລະນະ
+Unapproved Public Events: ເຫດການສາທາລະນະທີ່ບໍ່ໄດ້ຮັບການອະນຸມັດ
+Administrative Tools: ເຄື່ອງມືບໍລິຫານ
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: ຊື່ຊ້ ຳ: "XXX".
+Username XXX already exists.: ຊື່ຜູ້ໃຊ້ "XXX" ມີຢູ່ແລ້ວ.
+Email address XXX already exists.: ທີ່ຢູ່ອີເມວ "XXX" ມີຢູ່ແລ້ວ.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): ຄຳ ເຫັນເພີ່ມເຕີມ (ເປັນທາງເລືອກ)
+Approve and Send: ອະນຸມັດແລະສົ່ງ
+Approve and Exit: ອະນຸມັດແລະອອກ
+(Your comments will be emailed to the event creator.): (ຄຳ ເຫັນຂອງທ່ານຈະຖືກສົ່ງອີເມວຫາຜູ້ສ້າງເຫດການ.)
+Hello, XXX.: ສະບາຍດີ, XXX.
+XXX has approved an appointment and added comments.: ການນັດພົບໄດ້ຖືກອະນຸມັດແລະ ຄຳ ເຫັນເພີ່ມໂດຍ XXX.
+Subject XXX: ຫົວຂໍ້: "XXX".
+Description XXX: ລາຍລະອຽດ: "XXX".
+Date XXX: ວັນທີ: XXX
+Time XXX: ເວລາ: XXX
+Comments XXX: ຄຳ ເຫັນ: XXX
+Approved w/Comments by XXX.: ອະນຸມັດ w / ຄຳ ເຫັນໂດຍ: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: ຮູບແບບການເບິ່ງແຍງລະບົບ
+Your assistants: ຜູ້ຊ່ວຍຂອງທ່ານ   
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: ຂໍ້ຜິດພາດທີ່ບໍ່ຮູ້.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: ຂໍ້ຜິດພາດຂອງໂປຣແກຣມ: ບໍ່ໄດ້ລະບຸ XXX!
+user: ຜູ້ໃຊ້
+year: ປີ
+month: ເດືອນ
+day: ມື້
+
+########################################
+# Page: category.php
+#
+Category Icon: ຮູບສັນຍາລັກປະເພດ
+Global: ທົ່ວໂລກ
+The permissions for the icons directory are set to read-only: ການອະນຸຍາດ ສຳ ລັບລະບົບໄອຄອນແມ່ນຖືກ ກຳ ນົດໃຫ້ອ່ານເທົ່ານັ້ນ.
+Category Name: ຊື່ປະເພດ:
+Color: ສີ
+Remove Icon: ດຶງອອກຈາກໄອຄອນ:
+Add Icon to Category: ເພີ່ມ Icon ໃສ່ ໝວດ ໝູ່
+Upload: ອັບໂຫລດ
+GIF or PNG 6kb max: ສູງສຸດ GIF ຫຼື PNG 6kb
+Search for existing icons: ຄົ້ນຫາຮູບສັນຍາລັກທີ່ມີຢູ່
+Add: ຕື່ມ
+Delete: ລົບ
+Are you sure you want to delete this entry?: ທ່ານແນ່ໃຈບໍ່ວ່າທ່ານຕ້ອງການລຶບລາຍການນີ້?
+Make New Category: ສ້າງ ໝວດ ໝູ່ ໃໝ່
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: ຕ້ອງມີຊື່ປະເພດ
+File size exceeds maximum.: ຂະ ໜາດ ຂອງເອກະສານເກີນ ຈຳ ນວນສູງສຸດ.
+File is not a GIF or PNG image: ເອກະສານບໍ່ແມ່ນຮູບ GIF ຫລື PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: ປະເພດທີ່ມີ
+ENTRY CATEGORIES: ປະເພດ ENTRY
+Remove: ເອົາອອກ
+Global Category: ໝວດ ໝູ່ ທົ່ວໂລກ
+Cancel: ຍົກເລີກ
+
+########################################
+# Page: colors.php
+#
+Add Custom: ເພີ່ມ Custom
+Basic Colors: ສີພື້ນຖານ
+Current Color: ສີປັດຈຸບັນ
+Custom Colors: ສີທີ່ ກຳ ຫນົດເອງ
+Old Color: ສີເກົ່າ
+
+########################################
+# Page: combo.php
+#
+Select None: ເລືອກ None
+Agenda: ວາລະ
+Add Task: ເພີ່ມ Task
+Description: ລາຍລະອຽດ
+Date: ວັນທີ
+Time: ເວລາ
+Priority: ບຸລິມະສິດ
+Access: ການເຂົ້າເຖິງ
+Created by: ສ້າງ​ໂດຍ
+Updated: ອັບເດດແລ້ວ
+Participants: ຜູ້ເຂົ້າຮ່ວມ
+Attachments: ເອກະສານຕິດຄັດ
+Comments: ຄຳ ເຫັນ
+Brief Description: ລາຍລະອຽດໂດຍຫຍໍ້
+Full Description: ລາຍລະອຽດເຕັມ
+Category: ໝວດ
+Add event detail: ເພີ່ມລາຍລະອຽດຂອງເຫດການ
+Start Date: ວັນ​ທີ່​ເລີ່ມ
+Due Date: ວັນ​ຄົບ​ກໍາ​ນົດ
+Add task detail: ຕື່ມລາຍລະອຽດວຽກງານ
+All: ທັງ ໝົດ
+Error: ຂໍ້ຜິດພາດ
+no response from server: ບໍ່ມີ ຄຳ ຕອບຈາກ server
+JSON error: ຂໍ້ຜິດພາດ JSON
+High: ສູງ
+Medium: ປານກາງ
+Low: ຕ່ ຳ
+Today: ມື້​ນີ້
+Add Entry: ຕື່ມການເຂົ້າ
+Unnamed Event: ເຫດການທີ່ບໍ່ມີຊື່ສຽງ
+Unnamed Task: ໜ້າ ວຽກທີ່ບໍ່ມີຊື່
+Refresh: ໂຫຼດຫນ້າຈໍຄືນ
+Click to add entry: ກົດເພື່ອເພີ່ມການເຂົ້າ
+Name: ຊື່
+pm: ນ
+am: am 
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX ໄດ້ຍົກເລີກການນັດ ໝາຍ.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: id blob ບໍ່ຖືກຕ້ອງ
+
+########################################
+# Page: docadd.php
+#
+Add Comment: ເພີ່ມ ຄຳ ເຫັນ
+Add Attachment: ເພີ່ມເອກະສານຕິດຄັດ
+Subject: ຫົວຂໍ້
+Comment: ຄຳ ເຫັນ
+Upload file: ອັບໂຫລດເອກະສານ
+
+########################################
+# Page: docdel.php
+#
+Removed: ໂຍກຍ້າຍ
+
+########################################
+# Page: edit_entry.php
+#
+days: ມື້
+hours: ຊົ່ວໂມງ
+minutes: ນາທີ
+You are not authorized to edit this task.: ທ່ານບໍ່ໄດ້ຮັບອະນຸຍາດໃຫ້ແກ້ໄຂວຽກງານນີ້.
+is in a different timezone than you are. Currently: ແມ່ນຢູ່ໃນເຂດເວລາທີ່ແຕກຕ່າງກັນກ່ວາທ່ານ. ປະຈຸບັນ
+hour ahead of you: ຊົ່ວໂມງກ່ອນ ໜ້າ ທ່ານ
+hour behind you: ຊົ່ວໂມງຢູ່ຫລັງທ່ານ
+hours ahead of you: ຊົ່ວໂມງຂ້າງຫນ້າຂອງທ່ານ
+hours behind you: ຊົ່ວໂມງຢູ່ຫລັງທ່ານ
+XXX is in a different timezone (ahead): (XXX ຢູ່ໃນເຂດເວລາທີ່ແຕກຕ່າງກັນ; YYY ຢູ່ທາງຫນ້າຂອງທ່ານ.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX ຢູ່ໃນເຂດເວລາທີ່ແຕກຕ່າງກັນ; YYY ຢູ່ເບື້ອງຫຼັງທ່ານ.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: ເວລາເຂົ້າທີ່ນີ້ແມ່ນຂື້ນກັບ Timezone ຂອງທ່ານ.
+Edit Entry: ດັດແກ້ການອອກສຽງ
+Details: ລາຍລະອຽດ
+Repeat: ເຮັດຊ້ ຳ ອີກ
+Reminders: ການແຈ້ງເຕືອນ
+brief-description-help: ນີ້ຄວນຈະໃຫ້ລາຍລະອຽດສັ້ນໆ (ປະມານ 20 ຕົວອັກສອນ) ຂອງເຫດການ. ນີ້ຈະເປັນຕົວແທນຂອງເຫດການໃນເວລາທີ່ເບິ່ງປະຕິທິນ. 
+full-description-help: ນີ້ຄວນເຮັດລາຍລະອຽດຂອງເຫດການ. ຂໍ້ມູນນີ້ສາມາດເຫັນໄດ້ເມື່ອຜູ້ໃຊ້ເບິ່ງເຫດການ.
+access-help: ລະບຸລະດັບການເຂົ້າເຖິງຂອງເຫດການ. <ul> <li> ສາທາລະນະ: ທຸກໆຄົນສາມາດເບິ່ງລາຍລະອຽດທັງ ໝົດ ຂອງເຫດການ.</li> <li> ເປັນຄວາມລັບ: ຄົນອື່ນສາມາດເຫັນວ່າທ່ານມີລາຍການເຂົ້າມາໃນວັນທີແລະເວລານັ້ນ, ແຕ່ວ່າ ບໍ່ແມ່ນລາຍລະອຽດວ່າມັນແມ່ນຫຍັງ.</li></ul> 
+priority-help: ລະບຸບູລິມະສິດຂອງເຫດການ. ບັນດາເຫດການບຸລິມະສິດສູງຈະຖືກສະແດງຢ່າງກ້າຫານ.
+category-help: ລະບຸປະເພດຂອງເຫດການ. 
+completed-help: ໜ້າ ວຽກວັນທີ ສຳ ເລັດ. ເປີດໃຊ້ໄດ້ເມື່ອເປີເຊັນຂອງຜູ້ເຂົ້າຮ່ວມເທົ່າກັບ 100%. 
+Date Completed: ວັນທີ ສຳ ເລັດ
+percent-help: ເປີເຊັນການເຮັດວຽກ ສຳ ເລັດ ສຳ ລັບຜູ້ໃຊ້ນີ້
+Percent Complete: ເປີເຊັນ ສຳ ເລັດແລ້ວ
+All Percentages: ເປີເຊັນທັງ ໝົດ
+location-help: ສະຖານທີ່ເຫດການ
+Location: ສະຖານທີ່
+url-help: URL ເຫດການ
+URL: =
+date-help: ລະບຸວັນທີຂອງເຫດການ.
+Untimed event: ເຫດການທີ່ບໍ່ໄດ້ຄາດຫວັງ
+Timed event: ເຫດການຖືກ ກຳ ນົດເວລາ
+All day event: ເຫດການ ໝົດ ມື້
+Timezone Offset: ເວລາຊົດເຊີຍ
+time-help: ລະບຸເວລາຂອງເຫດການ. <ul> <li> "ເຫດການທີ່ ກຳ ນົດເວລາ" (ສຳ ລັບເຫດການ ໜຶ່ງ ທີ່ຖືກ ກຳ ນົດໃນຊ່ວງເວລາສະເພາະໃນມື້ນັ້ນ)</li> <li> "ເຫດການທີ່ບໍ່ມີເວລາ" (ສຳ ລັບເຫດການ ໜຶ່ງ ມັນບໍ່ມີເວລາ (ເຊັ່ນວັນພັກ )</li> <li> "ກິດຈະ ກຳ ໝົດ ມື້" (ສຳ ລັບເຫດການທີ່ໃຊ້ເວລາ ໝົດ ມື້ (ເຊັ່ນວ່າອອກຈາກຫ້ອງການ)</li></ul>
+duration-help: ລະບຸໄລຍະເວລາ (ເປັນຊົ່ວໂມງ; ນາທີ) ຂອງເຫດການ. <em>ສະ ໜາມ ນີ້ສາມາດປ່ອຍໃຫ້ຫວ່າງໄດ້.</em>
+end-time-help: ລະບຸເວລາທີ່ເຫດການຄາດວ່າຈະສິ້ນສຸດ.
+Start Time: ເວລາເລີ່ມຕົ້ນ
+Due Time: ເວລາ ກຳ ນົດ
+Site Extras: ເວັບໄຊທ໌ພິເສດ
+avail_participants-help: ລາຍຊື່ຜູ້ເຂົ້າຮ່ວມທີ່ມີໃນລາຍການນີ້. 
+Available: ມີ
+Find Name: ຊອກຫາຊື່
+Resources: ຊັບ​ພະ​ຍາ​ກອນ
+participants-help: ລາຍຊື່ຜູ້ເຂົ້າຮ່ວມຂອງລາຍການນີ້.
+Selected: ເລືອກແລ້ວ
+Availability: ຄວາມພ້ອມ
+external-participants-help: ລະບຸລາຍຊື່ຜູ້ເຂົ້າຮ່ວມ ສຳ ລັບເຫດການທີ່ບໍ່ແມ່ນຜູ້ໃຊ້ປະຕິທິນ. ຜູ້ໃຊ້ຄວນໄດ້ຮັບການລະບຸຊື່ຕໍ່ແຖວແລະສາມາດປະກອບມີທີ່ຢູ່ອີເມວ. ຖ້າທີ່ຢູ່ອີເມວຖືກລະບຸ, ຜູ້ໃຊ້ມີສິດໄດ້ຮັບການແຈ້ງເຕືອນແລະການເຕືອນ.
+External Participants: ຜູ້ເຂົ້າຮ່ວມພາຍນອກ
+repeat-type-help: ເລືອກວ່າເຫດການຄວນຈະເຮັດຊ້ ຳ ເລື້ອຍປານໃດ.
+Daily: ປະ ຈຳ ວັນ
+Weekly: ປະ ຈຳ ອາທິດ
+Monthly: ລາຍເດືອນ
+by day: ໂດຍມື້ 
+by date: ໂດຍວັນທີ 
+by position: ໂດຍ ຕຳ ແໜ່ງ 
+Monthly (by day): ປະ ຈຳ ເດືອນ (ໂດຍມື້)
+Monthly (by date): ປະ ຈຳ ເດືອນ (ຕາມວັນທີ)
+Monthly (by position): ປະ ຈຳ ເດືອນ (ຕາມ ຕຳ ແໜ່ງ)
+Yearly: ທຸກໆປີ
+Manual: ຄູ່ມື
+Expert Mode: ແບບຊ່ຽວຊານ
+repeat-end-date-help: ລະບຸວັນທີເຫດການທີ່ຄວນຈະເຮັດຊ້ ຳ ອີກຈົນກ່ວາ.
+Ending: ສິ້ນສຸດ
+Forever: ຕະຫຼອດໄປ
+Use end date: ໃຊ້ວັນທີສິ້ນສຸດ
+Number of times: ຈຳ ນວນຄັ້ງ
+repeat-frequency-help: ລະບຸວ່າເຫດການດັ່ງກ່າວຄວນຈະເຮັດຊ້ ຳ ອີກເລື້ອຍປານໃດ.
+Frequency: ຄວາມຖີ່
+Weekdays Only: ວັນອາທິດເທົ່ານັ້ນ
+Week Start: ອາທິດເລີ່ມຕົ້ນ
+repeat-bydayextended-help: ອະນຸຍາດໃຫ້ເລືອກວັນທີໂດຍອີງໃສ່ມື້ຂອງອາທິດ.
+ByDay: =
+repeat-month-help: ລະບຸວ່າເດືອນໃດທີ່ເຫດການຄວນຈະເຮັດຄືນ.
+ByMonth: =
+repeat-bysetpos-help: ອະນຸຍາດໃຫ້ເລືອກວັນທີໂດຍອີງຕາມ ຕຳ ແໜ່ງ ກັບເດືອນ.
+BySetPos: ໂດຍ SetPos
+repeat-bymonthdayextended-help: ອະນຸຍາດໃຫ້ເລືອກວັນທີໂດຍອີງຕາມວັນທີ.
+ByMonthDay: =
+repeat-byweekno-help: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ສາມາດລະບຸລາຍຊື່ຂອງອາທິດເພື່ອເຮັດກິດຈະ ກຳ ຄືນ ໃໝ່ (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: ໂດຍWeekNo
+repeat-byyearday-help: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ສາມາດລະບຸບັນຊີລາຍຊື່ຂອງມື້ຕໍ່ປີເພື່ອເຮັດຊ້ ຳ ຄືນເຫດການ (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: ມື້ເພີ່ມເຕີມທີ່ເຫດການນີ້ຄວນຫຼືບໍ່ຄວນເກີດຂື້ນ.
+Exclusions: ຂໍ້ຍົກເວັ້ນ
+Inclusions: ບົດສະຫລຸບ
+Add Exception: ເພີ່ມຂໍ້ຍົກເວັ້ນ
+Add Inclusion: ຕື່ມການລວມເຂົ້າ
+Delete Selected: ລຶບການຄັດເລືອກ
+Send Reminder: ສົ່ງແຈ້ງເຕືອນ
+When: ເມື່ອ​ໃດ​
+Use Date/Time: ໃຊ້ວັນທີ / ເວລາ
+Use Offset: ໃຊ້ Offset
+Before: ກ່ອນ
+After: ຫລັງຈາກ
+Start: ເລີ່ມຕົ້ນ
+End/Due: ສິ້ນສຸດ / ຍ້ອນເຫດຜົນ
+Times: ເທື່ອ
+Every: ທຸກໆ
+CAPTCHA Warning: ຄຳ ເຕືອນ:  ບໍ່ສາມາດໃຊ້ CAPTCHA ໂດຍບໍ່ມີການຂະຫຍາຍ GD ຂອງ PHP! -
+Delete entry: ລົບເຂົ້າ
+You are not authorized to edit this entry.: ເຈົ້າຍັງບໍ່ໄດ້ຮັບອະນຸຍາດໃຫ້ດັດແກ້ສິ່ງນີ້.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX ໄດ້ນັດ ໝາຍ ໃໝ່.
+XXX has updated an appointment.: XXX ໄດ້ອັບເດດການນັດ ໝາຍ.
+Security violation!: ການລະເມີດຄວາມປອດໄພ!
+You must enter the anti-spam text on the previous page.: ທ່ານຕ້ອງໃສ່ຂໍ້ຄວາມຕ້ານການສະແປມໃນ ໜ້າ ກ່ອນ ໜ້າ ນີ້.   
+The following conflicts with the suggested time: ຂໍ້ຂັດແຍ່ງຕໍ່ໄປນີ້ກັບເວລາແນະ ນຳ
+User removed from participants list.: ຜູ້ໃຊ້ຖືກລຶບອອກຈາກລາຍຊື່ຜູ້ເຂົ້າຮ່ວມ.
+Please look on XXX to accept or reject this appointment.: ກະລຸນາເບິ່ງ XXX ເພື່ອຮັບເອົາຫຼືປະຕິເສດການນັດພົບນີ້.
+Please look on XXX to view this appointment.: ກະລຸນາເບິ່ງ XXX ເພື່ອເບິ່ງການນັດ ໝາຍ ນີ້.
+Scheduling Conflict: ການຂັດແຍ້ງການວາງແຜນ
+Your suggested time of: ເວລາແນະ ນຳ ຂອງທ່ານ 
+conflicts with the following existing calendar entries: ການຂັດແຍ້ງກັບລາຍການປະຕິທິນທີ່ມີຢູ່ຕໍ່ໄປນີ້ 
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX ບໍ່ໄດ້ຖືກຕັ້ງຄ່າໃນ "config.php".
+word characters only: (ສາມາດມີພຽງແຕ່ຕົວອັກສອນ ຄຳ; [a-zA-Z_0-9])
+Add User: ເພີ່ມຜູ້ໃຊ້
+Edit User: ແກ້ໄຂຜູ້ໃຊ້
+Calendar ID: ID ປະຕິທິນ
+First Name: ຊື່​ແທ້
+Last Name: ນາມ​ສະ​ກຸນ
+Is public calendar: ແມ່ນປະຕິທິນສາທາລະນະ
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: ຂໍ້ມູນຜິດພາດ
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: ເພີ່ມປະຕິທິນໄລຍະໄກ
+Edit Remote Calendar: ແກ້ໄຂປະຕິທິນໄລຍະໄກ
+Create Layer: ສ້າງຊັ້ນ
+Reload: ໂຫຼດ ໃໝ່
+Required to View Remote Calendar: ຕ້ອງການເບິ່ງປະຕິທິນໄລຍະໄກ
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: ຜົນການ ນຳ ເຂົ້າ
+Events successfully imported: ເຫດການຖືກ ນຳ ເຂົ້າຢ່າງ ສຳ ເລັດຜົນ
+Create a new layer to view this calendar.: ສ້າງຊັ້ນ ໃໝ່ ເພື່ອເບິ່ງປະຕິທິນນີ້.
+Errors: ຂໍ້ຜິດພາດຕ່າງໆ
+There was an error parsing the import file or no events were returned.: ມີຂໍ້ຜິດພາດໃນການແຍກເອກະສານ ນຳ ເຂົ້າຫລືບໍ່ມີເຫດການໃດໆຖືກສົ່ງຄືນ.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: ມື້ອື່ນ
+Yesterday: ມື້ວານນີ້
+Day before yesterday: ມື້​ກ່ອນ​ມື້​ວານ​ນີ້
+Next week: ອາ​ທິດ​ຫນ້າ
+This week: ອາ​ທິດ​ນີ້
+Last week: ອາ​ທິດ​ທີ່​ແລ້ວ
+Week before last: ອາທິດກ່ອນສຸດທ້າຍ
+Next week and week after: ອາທິດຕໍ່ໄປແລະອາທິດຕໍ່ມາ
+This week and next week: ອາທິດນີ້ແລະອາທິດຕໍ່ໄປ
+Last week and this week: ອາທິດທີ່ຜ່ານມາແລະອາທິດນີ້
+Last two weeks: ສອງອາທິດທີ່ຜ່ານມາ
+Next month: ເດື່ອນ​ຫນ້າ
+This month: ເດືອນ​ນີ້
+Last month: ເດືອນທີ່ຜ່ານມາ
+Month before last: ເດືອນກ່ອນສຸດທ້າຍ
+Next year: ປີ​ຫນ້າ
+This year: ປີ​ນີ້
+Last year: ປີ​ທີ່​ແລ້ວ
+Year before last: ປີກ່ອນປີສຸດທ້າຍ
+Next 14 days: 14 ມື້ຕໍ່ໄປ
+Next 30 days: 30 ວັນຕໍ່ໄປ
+Next 60 days: ຕໍ່ໄປ 60 ວັນ
+Next 90 days: ຕໍ່ໄປ 90 ວັນ
+Next 180 days: ຕໍ່ໄປ 180 ວັນ
+Next 365 days: ຕໍ່ໄປ 365 ວັນ
+Invalid report id XXX.: id ລາຍງານບໍ່ຖືກຕ້ອງ: "XXX".
+Unnamed Report: ບົດລາຍງານທີ່ບໍ່ມີຊື່
+Add Report: ເພີ່ມລາຍງານ
+Edit Report: ບົດລາຍງານການແກ້ໄຂ
+Report name: ຊື່ລາຍງານ
+User: ຜູ້ໃຊ້
+Current User: ຜູ້ໃຊ້ປະຈຸບັນ
+Include link in menu: ລວມເອົາ link ໃນ menu
+Include standard header/trailer: ປະກອບມີ header / trailer ມາດຕະຖານ
+Include previous/next links: ລວມເອົາການເຊື່ອມຕໍ່ກ່ອນຫນ້າ / ຕໍ່ໄປ
+Include empty dates: ປະກອບມີວັນທີຫວ່າງເປົ່າ
+Date range: ຊ່ວງວັນທີ
+Template variables: ຕົວແປແມ່ແບບ
+Page template: ແມ່ແບບຫນ້າ
+Day template: ແມ່ແບບວັນ
+Event template: ແມ່ແບບເຫດການ
+Are you sure you want to delete this report?: ທ່ານແນ່ໃຈບໍ່ວ່າທ່ານຕ້ອງການລຶບລາຍງານນີ້?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: ບໍ່ມີ id ລາຍງານດັ່ງກ່າວ: "XXX".
+Variable XXX not found.: XXX ຕົວແປບໍ່ພົບ.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: ແກ້ໄຂຫົວຂໍ້ Custom
+Edit Custom Script/Stylesheet: ແກ້ໄຂຕົວອັກສອນ / ແບບສະໄຕຣເອງ
+Edit Custom Trailer: ແກ້ໄຂລົດພວງມະໄລ
+
+########################################
+# Page: edit_user.php
+#
+Username: ຊື່ຜູ້ໃຊ້
+E-mail address: ທີ່​ຢູ່​ອີ​ເມວ
+Password: ລະຫັດຜ່ານ
+again: ອີກເທື່ອຫນຶ່ງ 
+Disabled for demo: ພິການ ສຳ ລັບການສາທິດ
+Are you sure you want to delete this user?: ທ່ານແນ່ໃຈບໍ່ວ່າທ່ານຕ້ອງການລຶບຜູ້ໃຊ້ນີ້?
+Change Password: ປ່ຽນ​ລະ​ຫັດ​ຜ່ານ
+New Password: ລະຫັດລັບ ໃໝ່
+Set Password: ຕັ້ງລະຫັດຜ່ານ
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: ການລຶບຜູ້ໃຊ້ບໍ່ຮອງຮັບ.
+The passwords were not identical.: ລະຫັດຜ່ານບໍ່ຄືກັນ.
+You have not entered a password.: ທ່ານຍັງບໍ່ໄດ້ໃສ່ລະຫັດຜ່ານ.
+Username cannot be blank.: ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດປ່ອຍໃຫ້ຫວ່າງໄດ້.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: ບໍ່ໄດ້ຮັບອະນຸຍາດ
+
+########################################
+# Page: export.php
+#
+Export: ການສົ່ງອອກ
+Export format: ຮູບແບບການສົ່ງອອກ
+Include all layers: ລວມທັງທຸກຊັ້ນ
+Include deleted entries: ລວມທັງລາຍການທີ່ຖືກລົບ
+Export all dates: ສົ່ງອອກວັນທີທັງ ໝົດ
+Start date: ວັນ​ທີ່​ເລີ່ມ
+End date: ວັນທີສິ້ນສຸດ
+Modified since: ແກ້ໄຂຕັ້ງແຕ່ນັ້ນມາ
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: ຮູບແບບການສົ່ງອອກບໍ່ໄດ້ ກຳ ນົດຫຼືບໍ່ຖືກຕ້ອງ.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: ບໍ່ມີຜູ້ໃຊ້ລະບຸ.
+
+########################################
+# Page: groups.php
+#
+Add New Group: ຕື່ມກຸ່ມ ໃໝ່
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: ກຸ່ມບໍ່ມີຊື່
+Add Group: ເພີ່ມກຸ່ມ
+Edit Group: ແກ້ໄຂກຸ່ມ
+Group name: ຊື່ກຸ່ມ
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: ທ່ານຕ້ອງລະບຸຊື່ກຸ່ມ   
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: ປະຕິທິນການອັບເດດຄືນ ໃໝ່ ໂດຍອັດຕະໂນມັດ
+auto-refresh-help: ເມື່ອເປີດໃຊ້, ມຸມມອງມື້, ມຸມມອງອາທິດ, ມຸມມອງເດືອນແລະລາຍຊື່ ໜ້າ ທີ່ບໍ່ໄດ້ຮັບການອະນຸມັດຈະເຮັດໃຫ້ຕົນເອງສົດຊື່ນໂດຍອັດຕະໂນມັດເປັນແຕ່ລະໄລຍະ. 
+Auto-refresh time: ເວລາໂຫຼດຫນ້າຈໍຄືນໂດຍອັດຕະໂນມັດ
+auto-refresh-time-help: ຖ້າການເປີດໃຊ້ງານ ໃໝ່ ໂດຍອັດຕະໂນມັດ, ມັນຈະ ກຳ ນົດເວລາລະຫວ່າງການໂຫຼດ ໜ້າ ຈໍຄືນ ໃໝ່. 
+Display days with events in bold in year view: ສະແດງວັນທີ່ມີເຫດການຢ່າງກ້າຫານໃນມຸມມອງປີ
+Display weekends in week view: ສະແດງທ້າຍອາທິດໃນມຸມມອງອາທິດ
+Time interval: ໄລຍະຫ່າງຂອງເວລາ
+time-interval-help: ລະບຸວ່າໄລຍະເວລາໃນການເບິ່ງອາທິດແລະມຸມມອງມື້ຈະດົນປານໃດ.
+Nonuser: ປະຕິທິນຜູ້ໃຊ້
+user-customize-color: ລະບຸວ່າຜູ້ໃຊ້ຖືກອະນຸຍາດໃຫ້ດັດແປງສີຂອງຕົນເອງຫຼືບໍ່.
+enable-gradient-help: ໃຊ້ສີ gradient ສຳ ລັບພື້ນຫລັງຂອງເຊນ.
+Manually entering color values: ໃສ່ຄຸນຄ່າດ້ວຍສີດ້ວຍຕົນເອງ
+colors-help: ທຸກສີຄວນລະບຸເປັນຮູບແບບ "hexadecimal" #RRGGBB "ບ່ອນທີ່" RR "ແມ່ນຄ່າ hex ສຳ ລັບສີແດງ," GG "ແມ່ນຄ່າ hex ສຳ ລັບສີຂຽວ, ແລະ" BB "ແມ່ນຄ່າ hex ສຳ ລັບສີຟ້າ. 
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: ລາຍງານ Bug
+Please include all the information below when reporting a bug.: ກະລຸນາໃສ່ຂໍ້ມູນທັງ ໝົດ ລຸ່ມນີ້ເມື່ອລາຍງານຂໍ້ບົກພ່ອງ.
+Also, please use English rather than XXX.: ນອກຈາກນີ້, ກະລຸນາໃຊ້  ພາສາອັງກິດ  ແທນທີ່ຈະເປັນ XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: ເອກະສານ WebCalendar
+Currently in English only.: ປະຈຸບັນເປັນພາສາອັງກິດເທົ່ານັ້ນ.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: ເພີ່ມ / ດັດແກ້ການອອກສຽງປະຕິທິນ
+Repeat Type: ປະເພດແບບຊ້ ຳ
+For More Information...: ສຳ ລັບຂໍ້ມູນເພີ່ມເຕີມ ...
+Repeat End Date: ເຮັດວັນທີສິ້ນສຸດລົງອີກຄັ້ງ
+Repeat Day: ເຮັດຊ້ ຳ ມື້
+repeat-day-help: ລະບຸວ່າມື້ໃດຂອງອາທິດເຫດການດັ່ງກ່າວຄວນຈະກັບຄືນມາ.
+
+########################################
+# Page: help_import.php
+#
+Import: ການ ນຳ ເຂົ້າ
+Palm Desktop: =
+allow you to import entries from the Palm...: ແບບຟອມນີ້ຈະຊ່ວຍໃຫ້ທ່ານສາມາດ ນຳ ເຂົ້າສິນຄ້າຈາກປື້ມຄູ່ມືວັນທີປື້ມຂອງ Palm Desktop. ມັນຄວນຈະຕັ້ງຢູ່ໃນປື້ມບັນທຶກ Palm ຂອງທ່ານໃນປື້ມຄູ່ມື / datebook.dat ໃນເອກະສານຍ່ອຍຍ່ອຍທີ່ຕັ້ງຊື່ໂດຍຊື່ຜູ້ໃຊ້ຂອງທ່ານ. 
+The following entries will not be imported: ລາຍການຕໍ່ໄປນີ້ຈະບໍ່ຖືກ ນຳ ເຂົ້າ:
+Entries older than the current date: ການອອກສຽງເກົ່າກ່ວາວັນທີປະຈຸບັນ
+Entries created in the Palm Desktop...: ການອອກສຽງທີ່ຖືກສ້າງຂື້ນໃນ Palm Desktop ທີ່ຍັງບໍ່ທັນໄດ້ຖືກ HotSync
+Anything imported from Palm...: ສິ່ງໃດທີ່ ນຳ ເຂົ້າຈາກປາມຈະຖືກຂຽນທັບໃນລະຫວ່າງການ ນຳ ເຂົ້າຄັ້ງຕໍ່ໄປ (ເວັ້ນເສຍແຕ່ວັນທີ່ເຫດການໄດ້ຜ່ານໄປ). ເພາະສະນັ້ນ, ການປັບປຸງຄວນເຮັດໃນ Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: ແບບຟອມນີ້ຈະ ນຳ ເຂົ້າ vCalendar (.vcs) 1.0 ເຫດການ.
+The following formats have been tested: ຮູບແບບຕໍ່ໄປນີ້ໄດ້ຖືກທົດສອບແລ້ວ:
+This form will import iCalendar (.ics) events.: ແບບຟອມນີ້ຈະ ນຳ ເຂົ້າເຫດການ iCalendar (.ics).
+Enabling: ເປີດໃຊ້ງານ
+Overwrite Prior Import: Overwrite ການ ນຳ ເຂົ້າສິນຄ້າກ່ອນ
+will cause events imported previously...: ຈະເຮັດໃຫ້ເຫດການທີ່ ນຳ ເຂົ້າມາກ່ອນ, ເຊິ່ງໃຊ້ UID ດຽວກັນກັບເຫດການຈາກເອກະສານ ນຳ ເຂົ້າ ໃໝ່, ຖືກ ໝາຍ ວ່າຖືກລຶບແລ້ວ. ສິ່ງນີ້ຄວນອະນຸຍາດໃຫ້ ນຳ ເຂົ້າເອກະສານ iCalendar ທີ່ຖືກປັບປຸງໂດຍບໍ່ຕ້ອງສ້າງຊໍ້າກັນ.
+
+########################################
+# Page: help_index.php
+#
+Help Index: ດັດສະນີຄວາມຊ່ວຍເຫຼືອ
+About WebCalendar: ກ່ຽວກັບ WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: ຊັ້ນຂໍ້ມູນແມ່ນເປັນປະໂຫຍດ ສຳ ລັບການສະແດງເຫດການຂອງຜູ້ໃຊ້ອື່ນໃນປະຕິທິນຂອງທ່ານເອງ. ທ່ານສາມາດລະບຸຜູ້ໃຊ້ແລະສີທີ່ເຫດການຈະສະແດງຢູ່.
+Add/Edit/Delete: ເພີ່ມ / ດັດແກ້ / ລຶບ
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: ການຄລິກໃສ່ລິ້ງດັດແກ້ຂັ້ນຕອນໃນສ່ວນ admin ຢູ່ທາງລຸ່ມຂອງ ໜ້າ ຈະຊ່ວຍໃຫ້ທ່ານສາມາດເພີ່ມ / ດັດແກ້ / ລຶບຂັ້ນຕອນ.
+The text color of the new layer that will be displayed in your calendar.: ສີຕົວ ໜັງ ສືຂອງຊັ້ນ ໃໝ່ ທີ່ຈະສະແດງໃນປະຕິທິນຂອງທ່ານ.
+Disabling: ການປິດການໃຊ້ງານ
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: ກົດລິ້ງ Disable Layers ທີ່ຢູ່ໃນສ່ວນ admin ຢູ່ທາງລຸ່ມຂອງ ໜ້າ ເພື່ອປິດລອກ.
+Duplicates: ຊໍ້າກັນ
+If checked, events that are duplicates of your events will be shown.: ຖ້າກວດກາ, ເຫດການທີ່ຊ້ ຳ ກັບເຫດການຂອງທ່ານຈະຖືກສະແດງ.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: ກົດປຸ່ມ Enable Layers ທີ່ເຊື່ອມໂຍງໃນສ່ວນ admin ຢູ່ທາງລຸ່ມຂອງ ໜ້າ ເພື່ອເປີດເປັນຊັ້ນ.
+Source: ແຫຼ່ງຂໍ້ມູນ
+Specifies the user that you would like to see displayed in your calendar.: ລະບຸຜູ້ໃຊ້ທີ່ທ່ານຕ້ອງການເບິ່ງທີ່ສະແດງຢູ່ໃນປະຕິທິນຂອງທ່ານ.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: ປະເພດເລີ່ມຕົ້ນ
+default-category-help: ລະບຸປະເພດເຫດການ ໃໝ່ ທີ່ຄວນຈະເປັນ.
+When I am the boss: ເມື່ອຂ້ອຍເປັນນາຍຈ້າງ
+Email me event notification: ສົ່ງອີເມວແຈ້ງການເຫດການ
+email-boss-notifications-help: ລະບຸວ່ານາຍຈ້າງໄດ້ຮັບອີເມວເປັນການແຈ້ງເຫດການ.
+I want to approve events: ຂ້ອຍຕ້ອງການອະນຸມັດເຫດການຕ່າງໆ
+boss-approve-event-help: ລະບຸວ່ານາຍຈ້າງຈະຕ້ອງໄດ້ອະນຸມັດເຫດການທີ່ເພີ່ມໂດຍຜູ້ຊ່ວຍ. 
+Subscribe/Publish: ລົງທະບຽນ / ເຜີຍແຜ່
+Allow remote publishing: ອະນຸຍາດໃຫ້ເຜີຍແຜ່ທາງໄກ
+allow-remote-publishing-help: ລະບຸວ່າລູກຄ້າ iCal ທີ່ຢູ່ຫ່າງໄກສອກຫຼີກສາມາດເຜີຍແຜ່ເຫດການຕ່າງໆກັບຄືນສູ່ WebCalendar ໄດ້ແນວໃດ 
+remote-publishing-url-help: ສະແດງ URL ທີ່ຈະໃຊ້ໃນແອັບພລິເຄຊັນລູກຄ້າຂອງ iCal ສຳ ລັບທັງການສະ ໝັກ ໃຊ້ແລະເຜີຍແຜ່ກັບໄປທີ່ WebCalendar.
+allow-remote-subscriptions-help: ລະບຸວ່າຖ້າຜູ້ໃຊ້ຫ່າງໄກສອກຫຼີກສາມາດສະ ໝັກ ປະຕິທິນຂອງທ່ານ, ອະນຸຍາດໃຫ້ພວກເຂົາເຫັນເຫດການຂອງທ່ານຢູ່ໃນແອັບພລິເຄຊັນທີ່ເປີດໃຊ້ iCal (ເຊັ່ນ: Apple ຂອງ iCal ຫຼື Mozilla Calendar). 
+remote-subscriptions-url-help: ສະແດງ URL ທີ່ຜູ້ໃຊ້ຫ່າງໄກສອກຫຼີກຄວນໃຊ້ໃນການສະ ໝັກ ໃຊ້ປະຕິທິນຂອງທ່ານ.
+Enable FreeBusy publishing: ເປີດໃຊ້ການເຜີຍແຜ່ FreeBusy
+freebusy-enabled-help: ລະບຸວ່າເວລາທີ່ໃຊ້ໄດ້ຂອງຜູ້ໃຊ້ສາມາດໄດ້ຮັບໂດຍໃຊ້ມາດຕະຖານ iCal FreeBusy.
+freebusy-url-help: URL ສຳ ລັບເຂົ້າເບິ່ງລາຍຊື່ FreeBusy ຂອງຜູ້ໃຊ້
+rss-feed-url-help: URL ໃນການເຂົ້າເຖິງອາຫານ RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: ອະນຸຍາດໃຫ້ຄວບຄຸມການເຂົ້າເຖິງແລະການອະນຸຍາດຂອງຜູ້ໃຊ້ໄດ້ດີ. ຜູ້ຊົມໃຊ້ຍັງສາມາດໃຫ້ຄ່າເລີ່ມຕົ້ນແລະຕໍ່ການອະນຸຍາດສ່ວນບຸກຄົນຖ້າໄດ້ຮັບອະນຸຍາດຈາກຜູ້ບໍລິຫານ.
+If disabled, this user cannot send you emails.: ຖ້າປິດການ ນຳ ໃຊ້, ຜູ້ໃຊ້ນີ້ບໍ່ສາມາດສົ່ງອີເມວຫາທ່ານໄດ້.
+If disabled, this user cannot see you in the participants list.: ຖ້າເປັນຄົນພິການ, ຜູ້ໃຊ້ນີ້ບໍ່ສາມາດເຫັນທ່ານໃນລາຍຊື່ຜູ້ເຂົ້າຮ່ວມ.
+If enabled, this user cannot view the details of any of your entries.: ຖ້າເປີດໃຊ້, ຜູ້ໃຊ້ນີ້ບໍ່ສາມາດເບິ່ງລາຍລະອຽດໃດໆຂອງລາຍການຂອງທ່ານ.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): ການພິມເຜີຍແຜ່ຄົນພິການ (ຜູ້ເບິ່ງແຍງລະບົບ)
+Publishing Disabled (User): ການພິມເຜີຍແຜ່ຄົນພິການ (ຜູ້ໃຊ້)
+
+########################################
+# Page: icons.php
+#
+Click to Select: ກົດເພື່ອເລືອກ
+Current Icons on Server: ໄອຄອນປັດຈຸບັນໃນ Server
+
+########################################
+# Page: import.php
+#
+import from file: ນຳ ເຂົ້າຈາກແຟ້ມ
+Disabled: ພິການ
+Import format: ຮູບແບບການ ນຳ ເຂົ້າ
+Exclude private records: ຍົກເວັ້ນການບັນທຶກເອກະຊົນ
+Repeated items are imported separately. Prior imports are not overwritten.: ສິນຄ້າຊ້ ຳ ພັດຖືກ ນຳ ເຂົ້າຕ່າງຫາກ. ການ ນຳ ເຂົ້າກ່ອນບໍ່ໄດ້ຖືກຂຽນທັບ.
+
+########################################
+# Page: import_handler.php
+#
+No file: ບໍ່ມີເອກະສານ
+Error deleting palm events from webcalendar.: ມີຂໍ້ຜິດພາດໃນການລຶບເຫດການລານຈາກ webcalendar.
+Events from prior import marked as deleted: ເຫດການຈາກການ ນຳ ເຂົ້າກ່ອນຖືກ ໝາຍ ວ່າຖືກລຶບແລ້ວ
+Conflicting events: ເຫດການທີ່ຂັດແຍ້ງກັນ
+The import file contained no data.: ເອກະສານ ນຳ ເຂົ້າບໍ່ມີຂໍ້ມູນ.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: ທ່ານແນ່ໃຈບໍ່ວ່າທ່ານຕ້ອງການລຶບຊັ້ນນີ້ບໍ?
+Delete layer: ລົບຊັ້ນ
+Edit layer: ແກ້ໄຂຊັ້ນ
+Enable layers: ເປີດໃຊ້ຊັ້ນຕ່າງໆ
+Layer: ຊັ້ນ
+Layers are currently disabled.: ຊັ້ນຂໍ້ມູນຖືກພິການໃນປະຈຸບັນ.
+Layers are currently enabled.: ຊັ້ນຂໍ້ມູນຖືກເປີດໃຊ້ງານໃນປະຈຸບັນ.
+Click to modify layers settings for XXX: ກົດບ່ອນນີ້ເພື່ອແກ້ໄຂການຕັ້ງຄ່າຂັ້ນຕອນ ສຳ ລັບປະຕິທິນ XXX.
+Disable Layers: ປິດການໃຊ້ງານຊັ້ນ
+Add layer: ຕື່ມຊັ້ນ
+Add Layer: ຕື່ມຊັ້ນ
+Edit Layer: ແກ້ໄຂຊັ້ນຂໍ້ມູນ
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: ບໍ່ສາມາດອັບເດດຄວາມມັກໄດ້
+Invalid entry id.: id ເຂົ້າບໍ່ຖືກຕ້ອງ.
+You cannot create a layer for yourself.: ທ່ານບໍ່ສາມາດສ້າງຊັ້ນ ສຳ ລັບຕົວທ່ານເອງ.
+You can only create one layer for each user.: ທ່ານສາມາດສ້າງພຽງຊັ້ນດຽວ ສຳ ລັບຜູ້ໃຊ້ແຕ່ລະຄົນ.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: ອະນຸມັດ / ຢັ້ງຢືນ
+Approve Selected: ອະນຸມັດການຄັດເລືອກ
+Check All: ກວດເບິ່ງທັງ ໝົດ
+Emails Will Not Be Sent: ອີເມວຈະບໍ່ຖືກສົ່ງ
+Reject Selected: ປະຕິເສດການຄັດເລືອກ
+Reject: ປະຕິເສດ
+Uncheck All: ຍົກເລີກການເລືອກທັງ ໝົດ
+View this entry: ເບິ່ງລາຍການນີ້
+No unapproved entries for XXX.: ບໍ່ມີລາຍການທີ່ບໍ່ໄດ້ຮັບການອະນຸມັດ ສຳ ລັບ: "XXX".
+Unapproved Entries: ການອອກສຽງທີ່ບໍ່ໄດ້ຮັບອະນຸມັດ
+Approve this entry?: ອະນຸມັດເຂົ້ານີ້ບໍ?
+Reject this entry?: ປະຕິເສດການປ້ອນຂໍ້ມູນນີ້ບໍ?
+Approve Selected entries?: ອະນຸມັດ ຄຳ ທີ່ເລືອກບໍ່?
+Reject Selected entries?: ປະຕິເສດລາຍການທີ່ເລືອກ?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: ທ່ານຕ້ອງໃສ່ລະບົບເຂົ້າລະຫັດແລະລະຫັດຜ່ານ.   
+Save login via cookies so I dont have to login next time.: ບັນທຶກເຂົ້າສູ່ລະບົບຜ່ານ cookies ເພື່ອຂ້ອຍບໍ່ ຈຳ ເປັນຕ້ອງເຂົ້າສູ່ລະບົບຄັ້ງຕໍ່ໄປ
+Login: ເຂົ້າ​ສູ່​ລະ​ບົບ
+public: ສາທາລະນະ
+Access XXX calendar: ເຂົ້າເຖິງປະຕິທິນ XXX
+cookies-note: ໝາຍ ເຫດ: ແອັບພລິເຄຊັນນີ້ຮຽກຮ້ອງໃຫ້ cookies ສາມາດເປີດໃຊ້ງານໄດ້. 
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: ຕົວອັກສອນຜິດກົດ ໝາຍ ເຂົ້າສູ່ລະບົບ XXX.
+Invalid login: ເຂົ້າລະບົບບໍ່ຖືກຕ້ອງ
+Activity login failure: ຊື່ຜູ້ໃຊ້: "XXX", IP: "YYY".
+Error XXX: ຂໍ້ຜິດພາດ: "XXX".
+You have been logged out.: ທ່ານໄດ້ອອກຈາກລະບົບແລ້ວ.
+Access public calendar: ເຂົ້າເຖິງປະຕິທິນສາທາລະນະ
+Not yet registered? Register here!: ຍັງບໍ່ໄດ້ລົງທະບຽນ? ລົງທະບຽນຢູ່ທີ່ນີ້!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: ບໍ່ມີປະຕິທິນຜູ້ໃຊ້ທີ່ໃຊ້ງານແບບນີ້: "XXX".
+This Calendar is not Public.: ປະຕິທິນນີ້ບໍ່ແມ່ນສາທາລະນະ.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: ເພີ່ມປະຕິທິນ NonUser ໃໝ່
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: ຕ້ອງໄດ້ລະບຸການເຂົ້າສູ່ລະບົບ.
+No such nonuser calendar: ບໍ່ມີປະຕິທິນທີ່ໃຊ້ຕົວຈິງ
+
+########################################
+# Page: pref.php
+#
+Invalid theme: ຫົວຂໍ້ບໍ່ຖືກຕ້ອງ
+Save Preferences: ບັນທຶກການຕັ້ງຄ່າ
+Public Access calendar: ປະຕິທິນການເຂົ້າເຖິງສາທາລະນະ
+Modify Non User Calendar Preferences: ປັບປຸງແກ້ໄຂຕາມທີ່ໃຈມັກຜູ້ໃຊ້ປະຕິທິນ
+Return to My Preferences: ກັບໄປທີ່ຄວາມມັກຂອງຂ້ອຍ
+Custom Scripts: =
+Timezone Selection: ການຄັດເລືອກເວລາ
+Multiview: =
+entry-interval-help: ກຳ ນົດໄລຍະຫ່າງຂອງນາທີເມື່ອແກ້ໄຂເວລາເຂົ້າ
+Entry interval: ໄລຍະເຂົ້າ
+hour: ຊົ່ວໂມງ
+minute: ນາທີ
+theme-reload-help: ເນື່ອງຈາກ CSS caching, ຈຳ ເປັນຕ້ອງມີການໂຫຼດ ໜ້າ ເວັບຄືນ ໃໝ່
+Page may need to be reloaded for new Theme to take effect: ໜ້າ ເວັບອາດ ຈຳ ເປັນຕ້ອງຖືກໂຫລດ ສຳ ລັບຫົວຂໍ້ ໃໝ່ ທີ່ມີຜົນບັງຄັບໃຊ້
+display_byproxy-help: ສະແດງຜູ້ສ້າງທີ່ແທ້ຈິງໃນ ໜ້າ view_entry
+Display if created by Assistant: ສະແດງຖ້າຖືກສ້າງຂື້ນໂດຍ Assistant
+allow-view-subscriptions-help: ອະນຸຍາດໃຫ້ ຈຳ ກັດການເຂົ້າເຖິງຂໍ້ມູນສ່ວນຕົວຫລືຄວາມລັບ 
+Allow remote viewing of: ອະນຸຍາດໃຫ້ເບິ່ງໄລຍະໄກ
+entries: ການອອກສຽງ
+
+########################################
+# Page: purge.php
+#
+Purging events for: ເຫດການ ກຳ ຈັດໃຫ້
+Finished: ສຳ ເລັດຮູບ
+Back: ກັບໄປ
+Check box to delete ALL events for a user: ໝາຍ ໃສ່ກ່ອງເພື່ອລຶບເຫດການ  ທັງ ໝົດ  ສຳ ລັບຜູ້ໃຊ້
+Delete all events before: ລົບເຫດການທັງ ໝົດ ກ່ອນ
+Purge deleted only: ລຶບຖິ້ມແລ້ວເທົ່ານັ້ນ
+Preview delete: ເບິ່ງຕົວຢ່າງລົບ
+Are you sure you want to delete events for: ທ່ານແນ່ໃຈບໍ່ວ່າທ່ານຕ້ອງການລຶບເຫດການ ສຳ ລັບ
+Records deleted from XXX: ບັນທຶກທີ່ຖືກລຶບອອກຈາກ "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: ທີ່ຢູ່ອີເມວບໍ່ສາມາດປ່ອຍໃຫ້ຫວ່າງໄດ້.
+Username already exists.: ຊື່ຜູ້ໃຊ້ມີຢູ່ແລ້ວ.
+Email address already exists.: ທີ່ຢູ່ອີເມວມີຢູ່ແລ້ວ.
+New user via self-registration.: ຜູ້ໃຊ້ ໃໝ່ ຜ່ານການລົງທະບຽນດ້ວຍຕົນເອງ.
+A new WebCalendar account has been set up for you.: ບັນຊີ WebCalendar ໃໝ່ ໄດ້ຖືກຕັ້ງ ສຳ ລັບທ່ານ.
+Your username is XXX.: ຊື່ຜູ້ໃຊ້ຂອງທ່ານແມ່ນ: "XXX". 
+Your password is XXX.: ລະຫັດຜ່ານຂອງທ່ານແມ່ນ: "XXX". 
+Please visit XXX to log in and start using your account!: ກະລຸນາເຂົ້າເບິ່ງ "XXX" ເພື່ອເຂົ້າສູ່ລະບົບແລະເລີ່ມໃຊ້ບັນຊີຂອງທ່ານ!
+You may change your password after logging in the first time.: ທ່ານອາດຈະປ່ຽນລະຫັດຜ່ານຂອງທ່ານຫຼັງຈາກເຂົ້າສູ່ລະບົບຄັ້ງ ທຳ ອິດ.   
+If you received this email in error: ຖ້າທ່ານໄດ້ຮັບອີເມວນີ້ຜິດພາດແລະບໍ່ໄດ້ລົງທະບຽນບັນຊີ WebCalendar, ທ່ານອາດຈະບໍ່ສົນໃຈແຈ້ງການນີ້, ຫຼືຕອບກັບບັນທຶກສັ້ນ
+Administrator: ຜູ້​ບໍ​ລິ​ຫານ
+Welcome: ຍິນດີຕ້ອນຮັບ
+New user via email.: ຜູ້ໃຊ້ ໃໝ່ ຜ່ານອີເມວ.
+Registration: ການລົງທະບຽນ
+Welcome to WebCalendar: ຍິນດີຕ້ອນຮັບສູ່ WebCalendar
+Your email should arrive shortly.: ອີເມວຂອງທ່ານຄວນຈະມາຮອດໃນໄວໆນີ້. 
+Return to Login screen: ກັບໄປທີ່ ໜ້າ ຈໍ Login
+Password (again): ລະຫັດຜ່ານ (ອີກຄັ້ງ):
+Your account information will be emailed to you.: ຂໍ້ມູນບັນຊີຂອງທ່ານຈະຖືກສົ່ງອີເມວຫາທ່ານ.   
+Submit: ຍື່ນສະ ເໜີ
+
+########################################
+# Page: reject_entry.php
+#
+Continue: ສືບຕໍ່
+(Your comments will be emailed to the other participants.): (ຄຳ ເຫັນຂອງທ່ານຈະຖືກສົ່ງອີເມວຫາຜູ້ເຂົ້າຮ່ວມອື່ນໆ.)
+XXX has rejected an appointment.: XXX ໄດ້ປະຕິເສດການນັດ ໝາຍ.
+Rejected by XXX.: ປະຕິເສດໂດຍ XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: ເພີ່ມປະຕິທິນໄລຍະໄກ ໃໝ່
+
+########################################
+# Page: report.php
+#
+This event is confidential.: ເຫດການນີ້ແມ່ນເປັນຄວາມລັບ.
+(Private): (ສ່ວນຕົວ)
+(cont.): (ຕໍ່)
+Approved: ອະນຸມັດ
+Deleted: ລຶບແລ້ວ
+Rejected: ຖືກປະຕິເສດ
+Waiting for approval: ລໍຖ້າການອະນຸມັດ
+Unknown: ບໍ່ຮູ້
+Invalid report id.: id ລາຍງານບໍ່ຖືກຕ້ອງ.
+Click here to manage reports for the Public Access calendar.: ກົດບ່ອນນີ້ເພື່ອຈັດການລາຍງານ ສຳ ລັບປະຕິທິນການເຂົ້າເຖິງສາທາລະນະ.
+Add new report: ເພີ່ມລາຍງານ ໃໝ່
+Manage Reports: ຈັດການລາຍງານ
+
+########################################
+# Page: search.php
+#
+Advanced Search: ການຄົ້ນຫາຂັ້ນສູງ
+Search: ຄົ້ນຫາ
+Keywords: ຄຳ ສຳ ຄັນ
+Enter % for all entries: ໃສ່% ສຳ ລັບລາຍການທັງ ໝົດ
+Include: ລວມ
+Filter by Date: ກັ່ນຕອງຕາມວັນທີ
+All Dates: ວັນທີທັງ ໝົດ
+Past: ທີ່ຜ່ານມາ
+Upcoming: ໃກ້ເຂົ້າມາແລ້ວ
+Range: ຊ່ວງ
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: ທ່ານຕ້ອງໃສ່ ຄຳ ຄົ້ນ ໜຶ່ງ ຫລືຫຼາຍ ຄຳ ຄົ້ນ.   
+Search Results: ຜົນການຄົ້ນຫາ
+match found: ພົບ ຄຳ ວ່າ
+matches found: ພົບເຫັນກົງກັນ
+No matches found: ບໍ່ພົບການຈັບຄູ່
+New Search: ຄົ້ນຫາ ໃໝ່
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: ຂໍ້ມູນຂ້າງລຸ່ມນີ້ສະ ເໜີ ບັນຫາທີ່ອາດເກີດຂື້ນກັບການຕິດຕັ້ງ WebCalendar ຂອງທ່ານທີ່ສາມາດແກ້ໄຂເພື່ອເຮັດໃຫ້ການຕິດຕັ້ງຂອງທ່ານປອດໄພກວ່າ.
+For questions about WebCalendar security see the forums: ສຳ ລັບ ຄຳ ຖາມກ່ຽວກັບບັນຫາຄວາມປອດໄພຂອງ WebCalendar, ກະລຸນາໃຊ້ເວບໄຊທ໌ WebCalendar ທີ່ຈັດຢູ່ໃນ GitHub.com;<br>XXX
+View your current PHP settings: ເບິ່ງການຕັ້ງຄ່າ PHP ຂອງທ່ານໃນປະຈຸບັນ
+Security Issue: ປະເດັນຄວາມປອດໄພ
+Status: ສະຖານະພາບ
+Default admin user password: ລະຫັດຜ່ານຜູ້ໃຊ້ admin ແບບປົກກະຕິ
+You should change the password of the default admin user.: ທ່ານຄວນປ່ຽນລະຫັດຜ່ານຂອງຜູ້ໃຊ້ admin ແບບເດີມ.   
+File permissions XXX: ການອະນຸຍາດເອກະສານ: XXX
+item XXX should not be writable: ລາຍການຕໍ່ໄປນີ້ບໍ່ຄວນຂຽນໄດ້:<br><tt> XXX</tt>
+File exists XXX: ມີແຟ້ມ: "XXX"
+Because you have email disabled, you should remove this file.: ເນື່ອງຈາກວ່າທ່ານມີອີເມວຖືກປິດໃຊ້ງານ, ທ່ານຄວນຈະເອົາເອກະສານນີ້ອອກ.
+File location XXX: ສະຖານທີ່ໄຟລ໌: "XXX"
+remove XXX if not using: ຖ້າທ່ານບໍ່ໃຊ້ເອກະສານ "XXX", ທ່ານຄວນລຶບມັນອອກ. ຫຼືຢ່າງ ໜ້ອຍ ກໍ່ຍ້າຍມັນໄປທີ່ໄດເລກະທໍລີ ໃໝ່.
+System Settings XXX: ການຕັ້ງຄ່າລະບົບ: "XXX"
+consider enabling UAC: ທ່ານອາດຈະຕ້ອງການພິຈາລະນາເຮັດໃຫ້ການຄວບຄຸມການເຂົ້າເຖິງຜູ້ໃຊ້ສາມາດ ກຳ ນົດສິດທິພິເສດຂອງຜູ້ໃຊ້. 
+recommend approving new public events: ພວກເຮົາແນະ ນຳ ໃຫ້ທຸກການຍື່ນສະ ເໜີ ເຫດການສາທາລະນະ.
+recommend using CAPTCHA: ຂໍແນະ ນຳ ໃຫ້ CAPTCHA ປົກປ້ອງອີກເທື່ອ ໜຶ່ງ ການຍື່ນສະ ເໜີ ເຫດການໂດຍອັດຕະໂນມັດ.
+Database cache directory location: ຖານຂໍ້ມູນຖານຄວາມ ຈຳ ຖານຂໍ້ມູນ
+db cache should be inaccessable: ຖານຂໍ້ມູນຄວນຢູ່ໃນລະບົບທີ່ບໍ່ສາມາດເຂົ້າເຖິງໄດ້ດ້ວຍ URL.
+PHP Settings XXX: ການຕັ້ງຄ່າ PHP: "XXX"
+recommend setting XXX Off: ການຕັ້ງຄ່າທີ່ແນະ ນຳ ສຳ ລັບ "XXX" ແມ່ນປິດແລ້ວ.
+recommend setting allow_url_fopen Off: ການຕັ້ງຄ່າທີ່ແນະ ນຳ ສຳ ລັບ "allow_url_fopen" ຖືກປິດແລ້ວເມື່ອປະຕິທິນໄລຍະໄກບໍ່ສາມາດໃຊ້ງານໄດ້.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: ເບິ່ງປະຕິທິນຂອງຜູ້ໃຊ້ອື່ນ
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: ທ່ານຍັງບໍ່ໄດ້ເພີ່ມປະເພດໃດໆ.
+Set Category: ກຳ ນົດ ໝວດ ໝູ່
+Global Categories cannot be changed.: ໝວດ ໝູ່ ທົ່ວໂລກບໍ່ສາມາດປ່ຽນແປງໄດ້.
+
+########################################
+# Page: upcoming.php
+#
+more: ຫຼາຍ
+
+########################################
+# Page: users.php
+#
+Remote Calendars: ປະຕິທິນໄລຍະໄກ
+denotes administrative user: ໝາຍ ເຖິງຜູ້ໃຊ້ບໍລິຫານ
+Add New User: ເພີ່ມຜູ້ໃຊ້ ໃໝ່
+
+########################################
+# Page: usersel.php
+#
+form: ແບບຟອມ
+Reset: ປັບ ໃໝ່
+
+########################################
+# Page: views.php
+#
+Add New View: ເພີ່ມມຸມມອງ ໃໝ່
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: ມຸມມອງທີ່ບໍ່ມີຊື່
+Add View: ຕື່ມການເບິ່ງ
+Edit View: ແກ້ໄຂເບິ່ງ
+View Name: ຊື່ເບິ່ງ
+View Type: ເບິ່ງປະເພດ
+Day by Time: ວັນຕາມເວລາ
+Week (Users horizontal): ອາທິດ (ຜູ້ໃຊ້ນອນ)
+Week by Time: ອາທິດຕາມເວລາ
+Week (Users vertical): ອາທິດ (ຜູ້ໃຊ້ຕັ້ງ)
+Week (Timebar): ອາທິດ (Timebar)
+Month (Timebar): ເດືອນ (Timebar)
+Month (side by side): ເດືອນ (ຂ້າງຄຽງ)
+Month (on same calendar): ເດືອນ (ໃນປະຕິທິນດຽວກັນ)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: ທ່ານຕ້ອງລະບຸຊື່ການເບິ່ງ   
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: ບໍ່ມີຜູ້ໃຊ້ ສຳ ລັບມຸມມອງນີ້.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: ອັບເດດເປີເຊັນວຽກ
+Completed: ສຳ ເລັດ
+Assistant mode: ຮູບແບບຜູ້ຊ່ວຍ
+Declined: ປະຕິເສດ
+Needs-Action: ຄວາມຕ້ອງການ - ປະຕິບັດງານ
+by: ໂດຍ 
+Percentage Complete: ເປີເຊັນ ສຳ ເລັດແລ້ວ
+External User: ຜູ້ໃຊ້ພາຍນອກ
+Update: ປັບປຸງໃຫ້ທັນ
+at: ຢູ່ 
+comments: ຄຳ ເຫັນ 
+Show: ສະແດງໃຫ້ເຫັນ
+Hide: ເຊື່ອງ
+Approve/Confirm entry: ອະນຸມັດ / ຢັ້ງຢືນການເຂົ້າ
+Reject entry: ປະຕິເສດການເຂົ້າ
+Set category: ຕັ້ງປະເພດ
+Add to My Calendar: ຕື່ມໃສ່ປະຕິທິນຂອງຂ້ອຍ
+Copy entry: ສຳ ເນົາເຂົ້າ
+This will delete this entry for all users.: ນີ້ຈະລຶບລາຍການນີ້ ສຳ ລັບຜູ້ໃຊ້ທັງ ໝົດ.
+Edit entry: ດັດແກ້ການເຂົ້າ
+Edit repeating entry for all dates: ດັດແກ້ການປ້ອນຂໍ້ມູນຊ້ ຳ ເຂົ້າ ສຳ ລັບວັນທີທັງ ໝົດ
+Delete repeating event for all dates: ລຶບເຫດການຊໍ້າຄືນ ສຳ ລັບວັນທີທັງ ໝົດ
+Edit entry for this date: ດັດແກ້ການເຂົ້າ ສຳ ລັບວັນທີນີ້
+Delete entry only for this date: ລົບອອກ ສຳ ລັບວັນທີນີ້ເທົ່ານັ້ນ
+Delete entry from calendar of XXX: ລົບລາຍການຈາກປະຕິທິນ XXX
+This will delete the entry from your XXX calendar.: ນີ້ຈະລຶບການເຂົ້າອອກຈາກປະຕິທິນ XXX ຂອງທ່ານ.
+boss: ນາຍຈ້າງ ' 
+This will delete the entry from your boss calendar.: ສິ່ງນີ້ຈະລຶບລາຍການດັ່ງກ່າວອອກຈາກປະຕິທິນຂອງເຈົ້ານາຍ.
+This will delete the entry from your calendar.: ນີ້ຈະລົບການເຂົ້າຈາກປະຕິທິນຂອງທ່ານ.
+from your boss calendar: ຈາກປະຕິທິນຂອງນາຍຈ້າງຂອງທ່ານ
+Do you want to add this entry to your calendar?: ທ່ານຕ້ອງການເພີ່ມລາຍການນີ້ເຂົ້າໃນປະຕິທິນຂອງທ່ານບໍ?
+This will add the entry to your calendar.: ນີ້ຈະເພີ່ມການເຂົ້າໃນປະຕິທິນຂອງທ່ານ.
+Email all participants: ສົ່ງອີເມວເຂົ້າຮ່ວມທຸກຄົນ
+Hide activity log: ເຊື່ອງບັນທຶກການເຄື່ອນໄຫວ
+Show activity log: ສະແດງບັນທຶກການເຄື່ອນໄຫວ
+Export this entry to: ສົ່ງອອກສິນຄ້ານີ້ໄປ
+Palm Pilot: ຕົ້ນປາມທົດລອງ
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: ກົດສອງຄັ້ງໃສ່ຫ້ອງຫວ່າງເພື່ອເພີ່ມການເຂົ້າ ໃໝ່.
+
+########################################
+# Page: week_details.php
+#
+New Entry: ການເຂົ້າໃຫມ່
+cont.: cont. 
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: ປະຕິທິນສະມາຊິກຄົນອື່ນ
+Category Management: ການຈັດການປະເພດ
+Day View: ເບິ່ງວັນ
+Edit Event: ແກ້ໄຂເຫດການ
+Month View: ເດືອນເບິ່ງ
+Common Trailer: Trailer ທົ່ວໄປ
+User Management: ການຄຸ້ມຄອງຜູ້ໃຊ້
+Manage Views: ຈັດການ Views
+Week View: ເບິ່ງອາທິດ
+Year View: ມຸມມອງປີ
+Invalid function id: id ໜ້າ ທີ່ບໍ່ຖືກຕ້ອງ
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: ບໍ່ສາມາດຊອກຫາເອກະສານ "settings.php".
+Incomplete settings.php file...: ບໍ່ຄົບຖ້ວນ "settings.php" file ...
+Could not find XXX defined in...: ບໍ່ສາມາດຊອກຫາ "XXX" ທີ່ຖືກ ກຳ ນົດໄວ້ໃນເອກະສານ "settings.php" ຂອງທ່ານ.
+You must define XXX in: ທ່ານຕ້ອງໄດ້ ກຳ ນົດ "XXX" ໃນເອກະສານ "settings.php".   
+
+########################################
+# Page: includes/date_formats.php
+#
+December: ທັນວາ
+Dec: ທັນວາ
+LANGUAGE DEFINED: ພາສາທີ່ຖືກ ກຳ ນົດ
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: ຜິດພາດໃນການເຊື່ອມຕໍ່ຖານຂໍ້ມູນ: "XXX".
+db_type not defined.: db_type ບໍ່ໄດ້ ກຳ ນົດ.
+invalid db_type XXX: ບໍ່ຖືກຕ້ອງ db_type "" XXX ".
+Cache cleared from previous SQL!: ເຊັດ cache ຈາກ SQL ກ່ອນ ໜ້າ ນີ້!
+Error executing query.: ເກີດຂໍ້ຜິດພາດໃນການ ດຳ ເນີນການສອບຖາມ.
+Unfortunately, XXX is not implemented for YYY: ແຕ່ໂຊກບໍ່ດີ, "XXX" ບໍ່ໄດ້ຖືກຈັດຕັ້ງປະຕິບັດ ສຳ ລັບ (YYY).
+Unknown ODBC error.: ຂໍ້ຜິດພາດຂອງ ODBC ທີ່ບໍ່ຮູ້.
+Error opening cache dir XXX.: ຜິດພາດໃນການເປີດ cache dir "XXX".
+delete: ລົບ
+Cache error Could not XXX file YYY.: ຂໍ້ຜິດພາດຂອງຖານຄວາມຈໍາ: ບໍ່ສາມາດ XXX ໄຟລ໌ "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: ຄວາມຜິດພາດ Fatal
+Invalid data format for: ຮູບແບບຂໍ້ມູນບໍ່ຖືກຕ້ອງ ສຳ ລັບ
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: ຜິດພາດ: ປະເພດບໍ່ໄດ້ ກຳ ນົດໄວ້ ສຳ ລັບບັນທຶກກິດຈະ ກຳ!
+This event is XXX.: ເຫດການນີ້ແມ່ນ XXX.
+Conf.: =
+exceeds limit of XXX events per day: ເກີນຂີດ ຈຳ ກັດຂອງ XXX ເຫດການຕໍ່ມື້
+on: ສຸດ
+All Attendees: ຜູ້ເຂົ້າຮ່ວມທັງ ໝົດ
+Busy: ຄາ​ວຽກ
+Tentative: ແກ້ແຄ້ນ
+Schedule an appointment for XXX.: ຈັດຕາຕະລາງນັດ ໝາຍ ສຳ ລັບ XXX: YYY.
+date_select: dd__ ____, monyy mon
+Event approved: ການອະນຸມັດເຫດການ
+Journal approved: ວາລະສານອະນຸມັດ
+Task approved: ວຽກທີ່ຖືກອະນຸມັດ
+Attachment: ເອກະສານຕິດຄັດ
+Event created: ເຫດການທີ່ສ້າງຂື້ນ
+Journal created: ວາລະສານສ້າງຂື້ນ
+Task created: ວຽກທີ່ຖືກສ້າງຂື້ນ
+Event deleted: ເຫດການຖືກລຶບອອກແລ້ວ
+Journal deleted: ວາລະສານຖືກລຶບອອກແລ້ວ
+Task deleted: ໜ້າ ວຽກຖືກລຶບແລ້ວ
+New user via email (self registration): ຜູ້ໃຊ້ ໃໝ່ ຜ່ານອີເມວ (ການລົງທະບຽນຕົວເອງ)
+New user (self registration): ຜູ້ໃຊ້ ໃໝ່ (ລົງທະບຽນຕົວເອງ)
+Notification sent: ແຈ້ງການສົ່ງແລ້ວ
+Event rejected: ເຫດການຖືກປະຕິເສດ
+Journal rejected: ວາລະສານຖືກປະຕິເສດ
+Task rejected: ປະຕິເສດວຽກງານ
+Reminder sent: ສົ່ງເຕືອນແລ້ວ
+Event updated: ເຫດການຖືກປັບປຸງ
+Journal updated: ວາລະສານອັບເດດ
+Task updated: ວຽກ ໃໝ່
+Delete User: ລຶບຜູ້ໃຊ້
+WK: =
+TASKS: =
+Task_Title: ຫົວຂໍ້
+Due: ເນື່ອງ
+Task Name: ຊື່ວຽກງານ
+Task Due Date: ວັນທີວຽກງານ
+You have XXX unapproved entries: ທ່ານມີ XXX ລາຍການທີ່ບໍ່ໄດ້ຮັບການອະນຸມັດ 
+Changes successfully saved: ການປ່ຽນແປງຖືກບັນທຶກຮຽບຮ້ອຍແລ້ວ
+Event: ເຫດການ
+Action: ການປະຕິບັດງານ
+Printer Friendly: ເຄື່ອງພິມທີ່ເປັນມິດ
+Generate printer-friendly version: ສ້າງລຸ້ນທີ່ເປັນມິດກັບເຄື່ອງພິມ
+after: ຫລັງຈາກ 
+before: ກ່ອນ 
+end: ສິ້ນສຸດ
+start: ເລີ່ມຕົ້ນ
+View this event: ເບິ່ງເຫດການນີ້
+View this task: ເບິ່ງວຽກນີ້
+January: ມັງກອນ
+February: ກຸມພາ
+March: ມີນາ
+April: ເດືອນເມສາ
+May_: ພຶດສະພາ
+June: ມິຖຸນາ
+July: ເດືອນກໍລະກົດ
+August: ສິງຫາ
+September: ກັນຍາ
+October: ເດືອນຕຸລາ
+November: ພະຈິກ
+Jan: ມັງກອນ
+Feb: ກຸມພາ
+Mar: ມີນາ
+Apr: ເມສາ
+May: ພຶດສະພາ
+Jun: ມິຖຸນາ
+Jul: ກໍລະກົດ
+Aug: ສິງຫາ
+Sep: ກັນຍາ
+Oct: ຕຸລາ
+Nov: ພະຈິກ
+SU: ສ
+MO: ມ
+TU: ທ
+WE: ພວກເຮົາ
+TH: ທ
+FR: =
+SA: =
+unknown-month: ບໍ່ຮູ້ຈັກເດືອນ
+First Quarter Moon: ໄຕມາດທີ ໜຶ່ງ ຂອງດວງຈັນ
+Full Moon: ເດືອນ​ເຕັມ​ດວງ
+Last Quarter Moon: ໄຕມາດສຸດທ້າຍດວງຈັນ
+New Moon: ດວງຈັນ ໃໝ່
+Error TIME_SLOTS undefined!: ຂໍ້ຜິດພາດ: TIME_SLOTS ບໍ່ໄດ້ ກຳ ນົດ!
+The following error occurred: ຂໍ້ຜິດພາດຕໍ່ໄປນີ້ເກີດຂື້ນ
+You are not authorized.: ເຈົ້າຍັງບໍ່ໄດ້ຮັບອະນຸຍາດ.
+Add N hours to: ເພີ່ມ N ຊົ່ວໂມງເຂົ້າ
+Subtract N hours from: ລົບ N ຊົ່ວໂມງຈາກ
+same as: ຄື​ກັນ​ກັບ
+server time: ເວລາຂອງເຊີບເວີ
+Cannot read timezone file XXX.: ບໍ່ສາມາດອ່ານເອກະສານເຂດເວລາ: XXX.
+Your current GMT offset is XXX hours.: ການຊົດເຊີຍ GMT ໃນປະຈຸບັນຂອງທ່ານແມ່ນ XXX ຊົ່ວໂມງ.   
+Unauthorized: ບໍ່ໄດ້ຮັບອະນຸຍາດ
+Error approving event XXX.: ຜິດພາດໃນການອະນຸມັດເຫດການ: XXX.
+Error deleting event XXX.: ຜິດພາດການລຶບເຫດການ: XXX.
+Error rejecting event XXX.: ຜິດພາດປະຕິເສດເຫດການ: XXX.
+Sunday: ວັນອາທິດ
+Monday: ວັນຈັນ
+Tuesday: ວັນອັງຄານ
+Wednesday: ວັນພຸດ
+Thursday: ວັນພະຫັດ
+Friday: ວັນ​ສຸກ
+Saturday: ວັນເສົາ
+Sun: ຕາເວັນ
+Mon: ມອນ
+Tue: ລ
+Wed: ທ
+Thu: ທ
+Fri: ສຸກ
+Sat: ເສົາ
+unknown-weekday: ວັນເຮັດວຽກທີ່ບໍ່ຮູ້ຈັກ
+Invalid referring URL: URL ອ້າງອີງບໍ່ຖືກຕ້ອງ
+
+########################################
+# Page: includes/help_list.php
+#
+Index: ດັດສະນີ
+Documentation: ເອກະສານ
+Page: ຫນ້າ
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: ປະຕິທິນຂອງຂ້ອຍ
+Add New Entry: ຕື່ມການເຂົ້າ ໃໝ່
+Add New Task: ຕື່ມວຽກ ໃໝ່
+Logout: ອອກ​ຈາກ​ລະ​ບົບ
+Home: ເຮືອນ
+Back to My Calendar: ກັບໄປປະຕິທິນຂອງຂ້ອຍ
+Go to: ໄປ​ຫາ
+Manage calendar of: ຈັດການປະຕິທິນຂອງ
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: ບໍ່ພົບພາສາຂອງຕົວທ່ອງເວັບ
+(not supported): (ບໍ່​ສະ​ຫນັບ​ສະ​ຫນຸນ)
+Abkhazian: ອາຄາຄາໄຊ
+Acoli: =
+Adangme: =
+Adyghe: ແອັດຈິ
+Afar: ພາສາ Afar
+Afrihili: =
+Afrikaans: ພາສາແອັສປາຍ
+Ainu: =
+Akan: ອານົນ
+Akkadian: ອາກາເຄ
+Albanian: ອານບານີ
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (ພາກໃຕ້)
+Amharic: =
+Angika: ແອງກາກາ
+Apache: =
+Arabic (Algeria): ອາຣັບ (ອາລຈີເຣຍ)
+Arabic (Bahrain): ອາຣັບ (ບາເຣນ)
+Arabic (Egypt): ອາຣັບ (ອີຢິບ)
+Arabic (Iraq): ອາຣັບ (ອີຣັກ)
+Arabic (Jordan): ອາຣັບ (ຈໍແດນ)
+Arabic (Kuwait): ພາສາອາຣັບ (ຄູເວດ)
+Arabic (Lebanon): ອາຣັບ (ເລບານອນ)
+Arabic (Libya): ອາຣັບ (ລີເບຍ)
+Arabic (Morocco): ອາຣັບ (ໂມລັອກໂກ)
+Arabic (Oman): ພາສາອາຣັບ (ໂອມານ)
+Arabic (Qatar): ອາຣັບ (ກາຕາ)
+Arabic (Saudi Arabia): =
+Arabic (Syria): ອາຣັບ (ຊີເຣຍ)
+Arabic (Tunisia): ພາສາອາຣັບ (ຕູນິເຊຍ)
+Arabic (U.A.E.): ພາສາອາຣັບ (ສະຫະລັດ)
+Arabic (Yemen): ອາຣັບ (ເຢແມນ)
+Arabic: ອາຣັບ
+Aragonese: ພາສາອາລາຕັນ
+Aramaic: ອາຣາມ
+Arapaho: =
+Arawak: =
+Armenian: ອາກເມນີ
+Assamese: =
+Asturian: ອາລຽນ
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: ອາກາຣາ
+Azerbaijani: ອາເມລິກາ
+Balinese: ບາລີ
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: ບາຊາ
+Bashkir: ບາກາກິ
+Basque: ປະເທດແບນຊິກ
+Beja: =
+Belarusian: ເບລາຣູດ
+Bemba: =
+Bengali: ພາສາເບັງກາລີ
+Bhojpuri: =
+Bihari: ໄບຮີ
+Bikol: =
+Bislama: ບີສະມາລາ
+Blackfoot: ເກີບ ດຳ
+Blin: =
+Bliss: =
+Bosnian: ບອສເນຍ
+Braj: =
+Breton: ປະເທດແບນຊິກ
+Buginese: ບັກບາ
+Bulgarian: ບຸນກາຣີ
+Buriat: ປະເທດ Buriat
+Burmese: ມຽນມາ
+Caddo: =
+Catalan: ກາຕາລັງ
+Cebuano: ຫ້ອງສະ ໝຸດ
+Chagatai: =
+Chamorro: =
+Chechen: ເຊດ
+Cherokee: =
+Cheyenne: ໄຊຊະນະ
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): ຈີນ (ຮ່ອງກົງ)
+Chinese (PRC): ຈີນ (PRC)
+Chinese (Simplified/GB2312): ພາສາຈີນ (ແບບງ່າຍດາຍ / GB2312) 
+Chinese (Singapore): ຈີນ (ສິງກະໂປ)
+Chinese (Taiwan): ຈີນ (ໄຕ້ຫວັນ)
+Chinese (Traditional/Big5): ຈີນ (ແບບດັ້ງເດີມ / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: =
+Cornish: ຊົນເຜົ່າ
+Corsican: =
+Cree: ການເດີນທາງ
+Creek: ສະຫລອງ
+Croatian: ໂຄຣເອເຊຍ
+Czech: ເຊັກ
+Dakota: ປະເທດ Dakota
+Danish: ເດນມາກ
+Dargwa: =
+Delaware: ເດລາເວວ
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): ໂຮນລັງ (ແບນຊິກ)
+Dutch: ໂຮນລັງ
+Dyula: =
+Dzongkha: =
+Edo: ເອີ
+Efik: ອີຟິກ
+Ekajuk: ເອກກະລາດ
+Elamite: ອີເລັມ
+English (Australia): ອັງກິດ (ອົດສະຕາລີ)
+English (Belize): ອັງກິດ (Belize)
+English (Canada): ອັງກິດ (ການາດາ)
+English (Ireland): ອັງກິດ (ໄອແລນ)
+English (Jamaica): ອັງກິດ (ຈາໄມກາ)
+English (New Zealand): ອັງກິດ (ນິວຊີແລນ)
+English (Philippines): ອັງກິດ (ຟີລິບປິນ)
+English (South Africa): ອັງກິດ (ອາຟຣິກາໃຕ້)
+English (Trinidad & Tobago): ອັງກິດ (Trinidad & Tobago)
+English (United Kingdom): ອັງກິດ (ສະຫະລາດຊະອານາຈັກ)
+English (United States): ອັງກິດ (ສະຫະລັດ)
+English (Zimbabwe): ອັງກິດ (ຊິມບັບເວ)
+English: ອັງກິດ - ສະຫະລັດ
+Erzya: ເອເຊັຍ
+Esperanto: =
+Estonian: ເອສໂຕເນຍ
+Ewe: ເອວ
+Ewondo: =
+Fang: ຟາງ
+Fanti: =
+Faroese: ຟາໂລ
+Fijian: ຟິຈິ
+Filipino: ຟິລິບປິນ
+Finnish: ແຟງລັງ
+Fon: =
+French (Belgium): ຝຣັ່ງ (ແບນຊິກ)
+French (Canada): ຝຣັ່ງ (ການາດາ)
+French (France): ຝຣັ່ງ (ຝຣັ່ງ)
+French (Luxembourg): ຝຣັ່ງ (ລັກເຊມເບີກ)
+French (Monaco): ຝຣັ່ງ (ໂມນາໂກ)
+French (Switzerland): ຝຣັ່ງ (ສະວິດເຊີແລນ)
+French: ຝຣັ່ງ
+Frisian (Eastern): ແຟງລັງ (ຕາເວັນອອກ)
+Frisian (Northern): ແຟງລັງ (ພາກ ເໜືອ)
+Frisian (Western): ແຟງລັງ (ຕາເວັນຕົກ)
+Frisian: ປະເທດເກາະ
+Friulian: =
+Fulah: =
+Ga: ກາ
+Galibi: ກາລິບາ
+Galician: ກາລິຊຽນ
+Ganda: =
+Gayo: ເກໂກ
+Gbaya: =
+Geez: =
+Georgian: ຈໍເຈຍ
+German (Austria): ເຢຍລະມັນ (ອອສເຕີຍ)
+German (Germany): ເຢຍລະມັນ (ເຢຍລະມັນ)
+German (Liechtenstein): ເຢຍລະມັນ (Liechtenstein)
+German (Luxembourg): ເຢຍລະມັນ (ລັກເຊມເບີກ)
+German (Standard): ເຢຍລະມັນ (ມາດຕະຖານ)
+German (Switzerland): ເຢຍລະມັນ (ສະວິດເຊີແລນ)
+German: ເຢຍລະມັນ
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: ໂກໂກ
+Grebo: =
+Greek: ກເຣັກ
+Greenlandic: ກຣີນແລນ
+Guarani: =
+Gujarati: ກູບາ
+Gwich&#39;in: Gwich'in
+Haida: ຮາດາ
+Haitian (Creole): =
+Haitian: ປະເທດ Haitian
+Hausa: =
+Hawaiian: ຮາວາຍ
+Hebrew: ຍິວ
+Herero: ນີ້
+Hiligaynon: ສາເຫດ
+Hindi: ຮິນດູ
+Hiri Motu: =
+Hittite: ຮິດ
+Hmong: ເຜົ່າມົ້ງ
+Holo (Taiwanese): ໂຮໂຮ (ຄົນໄຕ້ຫວັນ)
+Hungarian: ຮັງກາຣີ
+Hupa: ຮຮ
+Iban: =
+Icelandic: ພາສາໄອສແລນ
+Ido: ອີຊາກ
+Igbo: ອິໂກໂບ
+Iloko: =
+Indonesian: ອິນໂດເນເຊຍ
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: ອີຣ່ານ
+Irish (Gaelic): ໄອແລນ (Scottish)
+Irish: ໄອແລນ
+Iroquoian: =
+Italian (Switzerland): ອິຕາລຽນ (ສະວິດເຊີແລນ)
+Italian: ອິຕາລຽນ
+Japanese: ຍີ່ປຸ່ນ
+Javanese: ຈາວາ
+Judeo-Arabic: ຢູໂດ - ອາຣັບ
+Judeo-Persian: ຢູເດ - ເປີເຊຍ
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: ເມືອງຄູນ
+Kannada: ການາດາ
+Kanuri: =
+Kara-Kalpak: ຄາຣາກາລາກປາ
+Karachay-Balkar: ການບໍລິການ
+Karelian: =
+Kashmiri: =
+Kashubian: ຊາວກະຊິກອນ
+Kawi: ກອຍ
+Kazakh: ຄາຊັກສະຖານ
+Khasi: ສະຫງວນ
+Khmer (Central): ພາສາຂະແມ (ກາງ)
+Khmer: ພາສາລາວ
+Khotanese: =
+Kikuyu: ກິກີ
+Kimbundu: =
+Kinyarwanda: ກິນົນ
+Kirghiz: ຄູກີ
+Klingon: ຄິງລິງ
+Komi: =
+Kongo: ກົງໂກ
+Konkani: =
+Korean (Johab): ເກົາຫຼີ (Johab)
+Korean (North): ເກົາຫຼີ (ເໜືອ)
+Korean (South): ເກົາຫຼີ (ໃຕ້)
+Korean: ເກົາຫຼີ
+Kosraean: =
+Kpelle: ເຄເບີນ
+Kuanyama: ກຸຍຢາ
+Kumyk: =
+Kurdish: ເຄີດິສ
+Kutenai: =
+Kyrgyz: ກີກີ
+Ladino: =
+Lahnda: ລ້ານຊ້າງ
+Lamba: =
+Lao: ລາວ
+Latin: ລາຕິນ
+Latvian: ລັດເວຍ
+Lezghian: =
+Limburgan: ຣູເບັນ
+Lingala: ລິງກາລາ
+Lithuanian: ລີທົວນີ
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: ລັນດາ
+Luo: =
+Lushai: =
+Luxembourghish: ລັກເຊມເບີກ
+Macedonian: ມາເຊໂດນີ
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: ມາລາກາ
+Malay: ມາເລ
+Malayalam: ມາເລເຊຍ
+Maldivian: =
+Maltese: =
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: ມະນີພອນ
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: ມາຣາທອນ
+Mari: =
+Marshallese: =
+Marwari: ມາລາວາ
+Masai: =
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: ມະຫັດສະຈັນ
+Mohawk: ມໍຣະກົດ
+Moksha: =
+Moldavian: ມອນດາວີ
+Mongo: ມົງໂກ
+Mongolian: ພາສາມົງໂກນ
+Montenegrin: =
+Moroccan: ໂມລັອກໂກ
+Mossi: =
+Myanmar: ມຽນມາ
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: ນາວາ
+Ndebele (North): Ndebele (ເໜືອ)
+Ndebele (South): Ndebele (ພາກໃຕ້)
+Ndebele: =
+Ndonga: =
+Neapolitan: ພາສາ Neapolitan
+Nepali: ເນປານ
+Nias: ກົດ
+Niuean: =
+Nogai: ນໍ
+Norse: ປະເທດ Norse
+Norwegian (Bokmål): ນໍເວ
+Norwegian (Nynorsk): ນໍເວ
+Norwegian: ນໍເວ
+Nyamwezi: =
+Nyankole: ນັນທະໂລ
+Nyoro: =
+Nzima: =
+Occitan: ອັອສຕັນ
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: ໂອໂມໂມ
+Osage: =
+Ossetic: ອົກຊີ
+Pahlavi: =
+Palauan: ປາລາວາ
+Pali: ພາສາປາລີ
+Pampanga: =
+Pangasinan: ພາສາປານິນ
+Panjabi: ພາສາ Panjabi
+Papiamento: ການຊ່ວຍເຫຼືອ
+Pashto: ພາສາ Pashto
+Pedi: ໄພດີ
+Persian (Farsi): ເປີເຊຍ (Farsi)
+Persian (Iran): ເປີເຊຍ (ອີຣານ)
+Persian: ເປີເຊຍ
+Phoenician: ໂພນທັນ
+Pohnpeian: =
+Polish: ໂປໂລຍ
+Portuguese: ປອກຕຸຍການ
+Portuguese/Brazil: ປອກຕຸຍການ / ບາຊິນ
+Punjabi (India): ພາສາປັນຈາ (ອິນເດຍ)
+Punjabi (Pakistan): ພາສາປັນຈາ (ປາກີສະຖານ)
+Punjabi: ພາສາປັນຈາກາ
+Quechua: =
+Rajasthani: ລາດຊາ
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: ໂຣມານີ
+Romansh: ໂຣມັນ
+Romany: =
+Rundi: ຣັນດີ
+Russian (Moldavia: ພາສາລັດເຊຍ (Moldavia
+Russian (Republic of Moldova): ພາສາລັດເຊຍ (ສາທາລະນະລັດ Moldova)
+Russian: ພາສາລັດເຊຍ
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (ພາກ ເໜືອ)
+Sami (Skolt): =
+Sami (Southern): Sami (ພາກໃຕ້)
+Sami: =
+Samoan: ຊາມົວ
+Samoli: =
+Sandawe: ແສນດິນ
+Sango: ສັງໂກ
+Sanskrit: ສັນສະກິດ
+Santali: =
+Sardinian: ຫໍປະຊຸມ
+Sasak: =
+Scots (Gaelic): ສະກັອດ (Scottish)
+Selkup: =
+Serbian (Upper): ເຊີເບຍ (ເທິງ)
+Serbian: ເຊີເບຍ
+Serer: =
+Sesotho: ເຊໂດນ
+Shan: ຊານ
+Shona: =
+Sichuan Yi: ເສສວນ Yi
+Sicilian: =
+Sindhi: =
+Sinhala: ສິນລະປະ
+Slavic: ປະເທດ Slavic
+Slovak: ສະໂລວາເກຍ
+Slovenian: ສະໂລເວນີ
+Sogdian: =
+Somali: ໂຊມາລີ
+Somani: ໂຊມານີ
+Songhai: ເນເທີແລນ
+Soninke: =
+Sorbian (Lower): ຣູຊາຣາມ (ຕ່ ຳ ກວ່າ)
+Sorbian (Upper): ຣູຊາຣາມ (ເທິງ)
+Sorbian: ຮັກ
+Sotho: ໂຊໂທ
+Spanish (Argentina): ສະເປນ (ອາເຈນຕິນາ)
+Spanish (Bolivia): ສະເປນ (ໂບລິເວຍ)
+Spanish (Chile): ສະເປນ (ຊິລີ)
+Spanish (Colombia): ສະເປນ (ໂຄລົມເບຍ)
+Spanish (Costa Rica): ສະເປນ (Costa Rica)
+Spanish (Dominican Republic): ສະເປນ (ສາທາລະນະລັດໂດມິນິກັນ)
+Spanish (Ecuador): ສະເປນ (ເອກວາດໍ)
+Spanish (El Salvador): ພາສາສະເປນ (El Salvador)
+Spanish (Guatemala): ສະເປນ (ກົວເຕມາລາ)
+Spanish (Honduras): ສະເປນ (ຮອນເບິ່ງຣັດ)
+Spanish (Mexico): ສະເປນ (ເມັກຊິໂກ)
+Spanish (Nicaragua): ພາສາສະເປນ (ນິກາຣາກົວ)
+Spanish (Panama): ສະເປນ (ປານາມາ)
+Spanish (Paraguay): ສະເປນ (Paraguay)
+Spanish (Peru): ສະເປນ (ເປຣູ)
+Spanish (Puerto Rico): ສະເປນ (Puerto Rico)
+Spanish (Spain): ສະເປນ (ສະເປນ)
+Spanish (Uruguay): ສະເປນ (ອູຣູກວາຍ)
+Spanish (Venezuela): ສະເປນ (ເວເນຊູເອລາ)
+Spanish: ສະເປນ
+Sranan Tongo: ສີນົນທະນົງ
+Sukuma: ສຸພານຸວົງ
+Sumerian: =
+Sundanese: ສຸວັນດາ
+Susu: ຊູຊູ
+Sutu: ຊູສຸ
+Swahili: =
+Swati: =
+Swedish (Finland): ຊູແອັດ (ຟິນແລນ)
+Swedish (Sweden): ຊູແອັດ (ສະວີເດັນ)
+Swedish: ຊູແອັດ
+Syriac: =
+Tagalog: ຕາກາລTagalogອກ
+Tahitian: ທາຮິດຕາ
+Tai: ໄຕ
+Taiwan: ໄຕ້ຫວັນ
+Tajik: ທາຈິກິສະຖານ
+Tamashek: =
+Tamil: ທະມິນ
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: ໄຕທູມ
+Thai: ໄທ
+Tibetan: ທິເບດ
+Tigre: =
+Tigrinya: =
+Timne: ທິມ
+Tlingit: ຕິ່ງລິງ
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): ຕອງກາ (Nytmhasa)
+Tonga (Tonga Islands): ຕອງກາ (ໝູ່ ເກາະຕອງກາ)
+Tonga: ຕອງກາ
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: ພາສາຕຸລະກີ
+Turkmen: ຕວັກກີ
+Tuvinian: ເທວານີ
+Twi: =
+Udmurt: ອຸດອນ
+Ugaritic: ອູລິກາ
+Ukrainian: ອູແກຣນ
+Umbundu: =
+Urdu: =
+Uyghur: ອູຍຄູ້
+Uzbek: =
+Vai: =
+Venda: =
+Vietnamese: ຫວຽດນາມ
+Volapük: ແບບງ່າຍດາຍ
+Votic: =
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: ແວວ
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: ຍອ້ຍ
+Yapese: ຍິ້ມ
+Yiddish: ຢິດ
+Yorùbá: ຍູùບາ
+Yupik: =
+Zande: =
+Zapotec: ສ
+Zaza: ຊາຊາ
+Zenaga: =
+Zhuang: ຈຸ່ງ
+Zulu: ຊູລູ
+Browser-defined: Browser ທີ່ ກຳ ນົດ
+event: ເຫດການ
+journal: ວາລະສານ
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: ເຂົ້າລະບົບຜູ້ໃຊ້ບໍ່ຖືກຕ້ອງ
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ
+no such user: ບໍ່ມີຜູ້ໃຊ້ແບບນີ້
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: ປິດບັນຊີແລ້ວ
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: ໄລຍະຫ່າງ
+Months: ເດືອນ
+Month Days: ວັນເດືອນ
+Days: ວັນ
+Weeks: ອາທິດ
+Position: ຕຳ ແໜ່ງ
+Until: ຈົນກ່ວາ
+Count: ນັບ
+Inclusion Dates: ວັນທີລວມເອົາ
+Exclusion Dates: ວັນທີຍົກເວັ້ນ
+Event Imported: ການ ນຳ ເຂົ້າເຫດການ
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: ໄບ 
+kb: =
+Mb: ມ
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: ແຈ້ງການ
+authenticate: ຂໍ້ຜິດພາດ SMTP: ບໍ່ສາມາດກວດສອບຄວາມຖືກຕ້ອງ 
+connect_host: ຂໍ້ຜິດພາດຂອງ SMTP: ບໍ່ສາມາດເຊື່ອມຕໍ່ກັບ SMTP host: 
+data_not_accepted: ຂໍ້ຜິດພາດຂອງ SMTP: ຂໍ້ມູນບໍ່ຍອມຮັບ
+encoding: ການເຂົ້າລະຫັດບໍ່ຮູ້:
+execute: ບໍ່ສາມາດປະຕິບັດໄດ້:
+file_access: ບໍ່ສາມາດເຂົ້າເຖິງເອກະສານ:
+file_open: ຂໍ້ຜິດພາດຂອງເອກະສານບໍ່ສາມາດເປີດແຟ້ມ:
+from_failed: ຕໍ່ໄປນີ້ຈາກທີ່ຢູ່ລົ້ມເຫລວ:
+instantiate: ບໍ່ສາມາດເຮັດວຽກໄດ້ໄວ
+mailer_not_supported: mailer ບໍ່ໄດ້ຮັບການສະ ໜັບ ສະ ໜູນ
+provide_address: ທ່ານຕ້ອງໃຫ້ທີ່ຢູ່ອີເມວຜູ້ຮັບຢ່າງ ໜ້ອຍ ໜຶ່ງ ຫົວ.
+recipients_failed: ຂໍ້ຜິດພາດຂອງ SMTP: ຜູ້ຮັບຕໍ່ໄປນີ້ລົ້ມເຫລວ:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: ໃສ່ຕົວອັກສອນທີ່ເຫັນໃນຮູບພາບ
+Enter the correct letters and numbers...: ໃສ່ຕົວອັກສອນແລະຕົວເລກທີ່ຖືກຕ້ອງຈາກຮູບເຂົ້າໃນປ່ອງຂໍ້ຄວາມ. ການທົດສອບຂະຫນາດນ້ອຍນີ້ເຮັດຫນ້າທີ່ເປັນການຈໍາກັດການເຂົ້າເຖິງ bots ທີ່ເປັນອັນຕະລາຍ. ພຽງແຕ່ໂຫຼດ ໜ້າ ນີ້ຄືນ ໃໝ່ ຖ້າຮູບພາບນີ້ຍາກເກີນໄປທີ່ຈະອ່ານ
+Challenge/Response: ຄວາມທ້າທາຍ / ການຕອບໂຕ້
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: ປ່ຽນວັນທີແລະເວລາຂອງການເຂົ້ານີ້ບໍ?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: ທ່ານຍັງບໍ່ໄດ້ໃສ່ ຄຳ ອະທິບາຍສັ້ນໆ
+time prior to work hours...: ເວລາກ່ອນຊົ່ວໂມງເຮັດວຽກ ...
+Invalid Event Date: ວັນທີເຫດການທີ່ບໍ່ຖືກຕ້ອງ
+Please add a participant: ກະລຸນາຕື່ມຜູ້ເຂົ້າຮ່ວມ
+Invalid Date: ວັນທີທີ່ບໍ່ຖືກຕ້ອງ
+You have not entered a valid time of day: ທ່ານຍັງບໍ່ໄດ້ໃສ່ຊ່ວງເວລາທີ່ຖືກຕ້ອງຂອງມື້.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: ID ປະຕິທິນບໍ່ສາມາດປ່ອຍໃຫ້ຫວ່າງໄດ້.
+First and last names cannot both be blank.: ຊື່ ທຳ ອິດແລະນາມສະກຸນທັງສອງບໍ່ສາມາດປະຫວ່າງໄວ້ໄດ້.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: ສີບໍ່ຖືກຕ້ອງ
+Color format should be RRGGBB.: ຮູບແບບສີຄວນຈະເປັນ #RRGGBB.
+URL cannot be blank.: URL ບໍ່ສາມາດປ່ອຍໃຫ້ຫວ່າງໄດ້.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: ປະເພດເອກະສານບໍ່ກົງກັບຮູບແບບການ ນຳ ເຂົ້າ
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: ສີບໍ່ຖືກຕ້ອງ ສຳ ລັບຄວາມເປັນມາຂອງເອກະສານ.
+Invalid color for document title.: ສີບໍ່ຖືກຕ້ອງ ສຳ ລັບຫົວຂໍ້ເອກະສານ.
+Invalid color for table cell background.: ສີບໍ່ຖືກຕ້ອງ ສຳ ລັບພື້ນຫລັງຂອງຕາຕະລາງ.
+Invalid color for table cell background for today.: ສີບໍ່ຖືກຕ້ອງ ສຳ ລັບພື້ນຫລັງຂອງຕາຕະລາງ ສຳ ລັບມື້ນີ້.
+Invalid work hours.: ຊົ່ວໂມງເຮັດວຽກບໍ່ຖືກຕ້ອງ.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL ຂອງເຊີບເວີຕ້ອງສິ້ນສຸດດ້ວຍ slash (/).
+Invalid color for table grid.: ສີບໍ່ຖືກຕ້ອງ ສຳ ລັບຕາຕະລາງຕາຕະລາງ.
+Invalid color for event popup background.: ສີບໍ່ຖືກຕ້ອງ ສຳ ລັບພື້ນຫລັງການສະແດງເຫດການ.
+Invalid color for event popup text.: ສີບໍ່ຖືກຕ້ອງ ສຳ ລັບຂໍ້ຄວາມທີ່ປາກົດຂື້ນ.
+Invalid color for table header text.: ສີບໍ່ຖືກຕ້ອງ ສຳ ລັບຕົວ ໜັງ ສືຕາຕະລາງ.
+Invalid color for table header background.: ສີບໍ່ຖືກຕ້ອງ ສຳ ລັບພື້ນຫລັງຂອງຕາຕະລາງ.
+Server URL is required.: ຕ້ອງມີ URL ຂອງເຊີບເວີ.
+Invalid Color: ສີບໍ່ຖືກຕ້ອງ
+Database Name: ຊື່ຖານຂໍ້ມູນ
+Full Path (no backslashes): ເສັ້ນທາງເຕັມ (ບໍ່ມີສັນຫຼັງ)
+The password contains illegal characters.: ລະຫັດຜ່ານມີໂຕອັກສອນທີ່ຜິດກົດ ໝາຍ.
+Error you must specify a Single-User Login: ຂໍ້ຜິດພາດ: ທ່ານຕ້ອງລະບຸການເຂົ້າສູ່ລະບົບຜູ້ໃຊ້ດຽວ
+Could not find XXX.: ບໍ່ສາມາດຊອກຫາ XXX.
+Could not find XXX in DOM.: ບໍ່ສາມາດຊອກຫາ XXX ໃນ DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: ອາ​ທິດ​ນີ້
+This Month: ເດືອນ​ນີ້
+This Year: ປີ​ນີ້
+Exit: ອອກໄປ
+Add New Event: ຕື່ມເຫດການ ໃໝ່
+Delete Entries: ລຶບການອອກສຽງ
+My Views: Views ຂອງຂ້ອຍ
+Manage Calendar of: ຈັດການປະຕິທິນຂອງ
+My Reports: ບົດລາຍງານຂອງຂ້ອຍ
+My Profile: ຂໍ້ມູນຂອງຂ້ອຍ
+Public Calendar: ປະຕິທິນສາທາລະນະ
+Unapproved Events: ເຫດການທີ່ບໍ່ໄດ້ຮັບການອະນຸມັດ
+User Manager: ຜູ້ຈັດການຜູ້ໃຊ້
+Help Contents: ເນື້ອໃນຊ່ວຍເຫລືອ
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: ໄດເລກະທໍລີຖານຂໍ້ມູນຖານຂໍ້ມູນ
+Create New: ສ້າງ ໃໝ່
+Failure Reason: ເຫດຜົນລົ້ມເຫຼວ:
+You must manually create database: ທ່ານຕ້ອງສ້າງຖານຂໍ້ມູນດ້ວຍຕົນເອງ.   
+Single-User: ຜູ້ໃຊ້ດຽວ
+Test Settings: ການຕັ້ງຄ່າທົດສອບ
+Timezone Conversion Successful: ການປ່ຽນໃຈເຫລື້ອມໃສຂອງເວລາປະສົບຜົນ ສຳ ເລັດ
+WebCalendar Installation Wizard Step XXX: ຕົວຊ່ວຍສ້າງການຕິດຕັ້ງ WebCalendar ຂັ້ນຕອນທີ XXX
+Password Accepted: ລະຫັດຜ່ານທີ່ຍອມຮັບ
+Successful Login: ເຂົ້າສູ່ລະບົບສົບຜົນສໍາເລັດ
+Password Incorrect: ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ
+Invalid Login: ເຂົ້າລະບົບບໍ່ຖືກຕ້ອງ
+Display Errors: ຂໍ້ຜິດພາດໃນການສະແດງ
+File Uploads: ການອັບໂຫລດເອກະສານ
+Allow URL fopen: ອະນຸຍາດໃຫ້ໃຊ້ URL ໄດ້ (ຕ້ອງການຖ້າມີປະຕິທິນໄລຍະໄກ)
+Safe Mode: ແບບປອດໄພ
+Safe Mode Allowed Vars: Vars ແບບປອດໄພທີ່ອະນຸຍາດ (TZ ຕ້ອງໃຊ້ໃນກໍລະນີທີ່ມີ Safe Mode ເທົ່ານັ້ນ)
+GD: GD (ຈຳ ເປັນ ສຳ ລັບພື້ນຖານຮູບພາບ Gradient)
+Passwords do not match!: ລະຫັດຜ່ານບໍ່ກົງ!
+Unable to write password to settings.php file: ບໍ່ສາມາດຂຽນລະຫັດຜ່ານໃສ່ແຟ້ມ "settings.php".
+Password Updated: ປັບປຸງລະຫັດຜ່ານ
+Password has been set: ລະຫັດຜ່ານຖືກຕັ້ງຄ່າແລ້ວ.
+Connection Successful...: ການເຊື່ອມຕໍ່ ສຳ ເລັດ  ກະລຸນາໄປທີ່ ໜ້າ ຕໍ່ໄປເພື່ອສືບຕໍ່ຕິດຕັ້ງ.
+Correct your entries or click the Create New...: ແກ້ໄຂລາຍການຂອງທ່ານຫຼືກົດປຸ່ມ  ສ້າງ ໃໝ່  ເພື່ອສືບຕໍ່ຕິດຕັ້ງ.
+Correct your entries and try again.: ແກ້ໄຂຂໍ້ມູນຂອງທ່ານແລະລອງ ໃໝ່ ອີກຄັ້ງ.
+XXX does not exist: XXX ບໍ່ມີ
+XXX is not writable: XXX ບໍ່ສາມາດຂຽນໄດ້
+Error Converting Timezone: ຄວາມຜິດພາດໃນການແປງເຂດເວລາ
+Error Unable to write to file XXX.: ຂໍ້ຜິດພາດບໍ່ສາມາດຂຽນເພື່ອຍື່ນເອກະສານ XXX.
+Please change the file permissions of this file.: ກະລຸນາປ່ຽນການອະນຸຍາດຂອງເອກະສານນີ້.
+Please change includes dir permission: ກະລຸນາປ່ຽນການອະນຸຍາດເອກະສານຂອງປື້ມ "ລວມ" ຂອງທ່ານເພື່ອອະນຸຍາດໃຫ້ຂຽນໂດຍຜູ້ໃຊ້ອື່ນໆ.
+Your settings have been saved.: ການຕັ້ງຄ່າຂອງທ່ານຖືກບັນທຶກແລ້ວ. 
+OFF: ເບີ
+ON: ເປີດ
+WebCalendar Setup Wizard: ຄວາມຍາວປາການຕັ້ງຄ່າ WebCalendar
+This installation wizard will guide you...: ຕົວຊ່ວຍສ້າງການຕິດຕັ້ງນີ້ຈະ ນຳ ພາທ່ານຜ່ານການຕັ້ງຄ່າການຕິດຕັ້ງ WebCalendar ຂັ້ນພື້ນຖານ.<br>ສຳ ລັບຄວາມຊ່ວຍເຫລືອແລະການແກ້ໄຂບັນຫາເບິ່ງ:<br>
+System Administrators Guide: ຄູ່ມືຂອງຜູ້ບໍລິຫານລະບົບ
+Frequently Asked Questions: ຄໍາ​ຖາມ​ທີ່​ຖືກ​ຖາມ​ເລື້ອຍໆ
+FAQ: ຄຳ ຖາມທີ່ຖາມ
+Troubleshooting: ການແກ້ໄຂບັນຫາ
+Getting Help: ຂໍຄວາມຊ່ວຍເຫລືອ
+Upgrading Guide: ຄູ່ມືການຍົກລະດັບ
+User Supported Wiki: ຜູ້ໃຊ້ສະ ໜັບ ສະ ໜູນ ວິກິພີເດຍ
+PHP Version Check: ກວດສອບ PHP Version
+Check to see if PHP 7.1.0 or greater is installed.: ກວດເບິ່ງວ່າ PHP 7.1.0 ຫຼືຫຼາຍກວ່ານັ້ນຖືກຕິດຕັ້ງ.
+PHP version: ສະບັບ PHP
+PHP Settings: ການຕັ້ງຄ່າ PHP
+Detailed PHP Info: ລາຍລະອຽດກ່ຽວກັບ PHP
+settings.php Status: "settings.php" ສະຖານະພາບ
+Session Check: ເຊັກກອງປະຊຸມ
+To test the proper operation of sessions...: ເພື່ອທົດສອບການ ດຳ ເນີນງານທີ່ຖືກຕ້ອງຂອງກອງປະຊຸມ, ໃຫ້ໂຫຼດ ໜ້າ ນີ້ຄືນ ໃໝ່. ທ່ານຄວນຈະເຫັນຕົວເລກກອງປະຊຸມເພີ່ມຂື້ນໃນແຕ່ລະຄັ້ງ.
+SESSION COUNTER: ກອງປະຊຸມສະພາ
+The file permissions of settings.php are set...: ການອະນຸຍາດເອກະສານຂອງ "settings.php" ຖືກຕັ້ງຄ່າເພື່ອໃຫ້ຜູ້ຕິດຕັ້ງບໍ່ມີສິດໃນການດັດແປງມັນ. ກະລຸນາປ່ຽນການອະນຸຍາດຂອງເອກະສານຕໍ່ໄປນີ້ເພື່ອສືບຕໍ່
+The file permissions of the includes directory are set...: ການອະນຸຍາດເອກະສານຂອງໄດເລກະທໍລີປະກອບມີເພື່ອໃຫ້ຜູ້ຕິດຕັ້ງບໍ່ໄດ້ຮັບອະນຸຍາດສ້າງເອກະສານ ໃໝ່. ກະລຸນາປ່ຽນການອະນຸຍາດຂອງໄດເລກະທໍລີຕໍ່ໄປນີ້ຕໍ່ໄປ
+Your settings.php file appears to be valid.: ເອກະສານ "settings.php" ຂອງທ່ານເບິ່ງຄືວ່າຖືກຕ້ອງ. 
+Configuration Wizard Password: ລະຫັດຜ່ານຂອງຄວາມຍາວປາການຕັ້ງຄ່າ
+Create Settings File Password: ສ້າງລະຫັດຜ່ານຕັ້ງຄ່າ File
+db setup directions...: ໃນສ່ວນນີ້ທ່ານຈະຕັ້ງແລະທົດສອບການເຊື່ອມຕໍ່ກັບເຊີບເວີຖານຂໍ້ມູນຂອງທ່ານ. ຂໍ້ມູນບັນຊີທີ່ສະ ໜອງ ໃຫ້ຄວນມີສິດອະນຸຍາດ FULL ເພື່ອສ້າງຖານຂໍ້ມູນ, ຕາຕະລາງແລະຜູ້ໃຊ້. ຖ້າສິ່ງນີ້ເປັນໄປບໍ່ໄດ້, ຫລືການເຂົ້າເຖິງຖານຂໍ້ມູນຂອງທ່ານມີ ຈຳ ກັດ, ທ່ານຈະຕ້ອງຕັ້ງຄ່າຖານຂໍ້ມູນຂອງທ່ານດ້ວຍຕົນເອງ.
+Database Status: ສະຖານະຖານຂໍ້ມູນ
+Supported databases for your PHP installation: ຖານຂໍ້ມູນທີ່ຮອງຮັບ ສຳ ລັບການຕິດຕັ້ງ PHP ຂອງທ່ານ
+Your current database settings are able to access the database.: ການຕັ້ງຄ່າຖານຂໍ້ມູນປະຈຸບັນຂອງທ່ານສາມາດເຂົ້າເຖິງຖານຂໍ້ມູນ.
+Please Test Settings: ກະລຸນາທົດສອບການຕັ້ງຄ່າ
+Your current database settings are not able...: ການຕັ້ງຄ່າຖານຂໍ້ມູນປະຈຸບັນຂອງທ່ານບໍ່ສາມາດເຂົ້າເຖິງຖານຂໍ້ມູນຫລືຍັງບໍ່ທັນໄດ້ຮັບການທົດສອບເທື່ອ. 
+Database Settings: ການຕັ້ງຄ່າຖານຂໍ້ມູນ
+Database Type: ປະເພດຖານຂໍ້ມູນ
+Server: ເຊີບເວີ
+Connection Persistence: ຄວາມທົນທານຕໍ່ການເຊື່ອມຕໍ່
+All your database tables appear to be up...: ຕາຕະລາງຖານຂໍ້ມູນທັງ ໝົດ ຂອງທ່ານເບິ່ງຄືວ່າມັນລ້າສຸດ. ທ່ານອາດຈະໄປ ໜ້າ ຕໍ່ໄປແລະ ສຳ ເລັດການຕັ້ງ WebCalendar ຂອງທ່ານ.
+This appears to be a new installation...: ນີ້ປະກົດວ່າເປັນການຕິດຕັ້ງ ໃໝ່. ຖ້າສິ່ງນີ້ບໍ່ຖືກຕ້ອງ, ກະລຸນາກັບໄປ ໜ້າ ກ່ອນ ໜ້າ ນີ້ແລະແກ້ໄຂການຕັ້ງຄ່າຂອງທ່ານ.
+This appears to be an upgrade...: ສິ່ງນີ້ປະກົດວ່າເປັນການຍົກລະດັບຈາກລຸ້ນ XXX&nbsp;ເຖິງ&nbsp;YYY.
+The database requires some data input...: ຖານຂໍ້ມູນຕ້ອງການການປ້ອນຂໍ້ມູນບາງຢ່າງກົດປຸ່ມ Update ຖານຂໍ້ມູນເພື່ອ ສຳ ເລັດການຍົກລະດັບ.
+In this section we will perform...: ໃນພາກນີ້ພວກເຮົາຈະ ດຳ ເນີນການປ່ຽນແປງຕ່າງໆເພື່ອ ນຳ ເອົາຖານຂໍ້ມູນຂອງທ່ານໄປສູ່ລະດັບທີ່ຕ້ອງການ. ຖ້າທ່ານ ກຳ ລັງໃຊ້ຖານຂໍ້ມູນທີ່ຮອງຮັບຢ່າງເຕັມສ່ວນ, ຂັ້ນຕອນນີ້ຈະຖືກປະຕິບັດໂດຍອັດຕະໂນມັດ ສຳ ລັບທ່ານ. ຖ້າບໍ່, SQL ທີ່ຕ້ອງການສາມາດສະແດງໄດ້ແລະທ່ານຄວນຈະສາມາດຕັດແລະວາງມັນລົງໃນ ໜ້າ ຈໍການສອບຖາມຂອງຖານຂໍ້ມູນ server ຂອງທ່ານ.
+No database actions are required.: ບໍ່ຕ້ອງມີການປະຕິບັດຖານຂໍ້ມູນ.
+The following database actions are required: ການປະຕິບັດຖານຂໍ້ມູນຕໍ່ໄປນີ້ແມ່ນ ຈຳ ເປັນ
+ODBC Underlying Database: ຖານຂໍ້ມູນທີ່ຕິດພັນຂອງ ODBC:
+Automatic installation not supported: ການຕິດຕັ້ງອັດຕະໂນມັດບໍ່ໄດ້ຖືກຈັດຕັ້ງປະຕິບັດຢ່າງເຕັມທີ່ ສຳ ລັບປະເພດຖານຂໍ້ມູນຂອງທ່ານ. ທ່ານຈະຕ້ອງສ້າງຕາຕະລາງທີ່ຕ້ອງການດ້ວຍຕົນເອງໂດຍໃຊ້ SQL ທີ່ສະ ໜອງ ໃຫ້. ກະລຸນາກົດ  ສະແດງ SQL  ເພື່ອສືບຕໍ່. ຕັດແລະວາງໃສ່ປ່ອງຢ້ຽມແບບສອບຖາມຖານຂໍ້ມູນຂອງທ່ານ.
+This may take several minutes to complete: ມັນອາດໃຊ້ເວລາຫຼາຍນາທີຈິ່ງຈະ ສຳ ເລັດ.
+Install Database: ຕິດຕັ້ງຖານຂໍ້ມູນ
+Update Database: ປັບປຸງຖານຂໍ້ມູນ
+Display Required SQL: ສະແດງ SQL ທີ່ຕ້ອງການ
+Return to previous page after processing SQL.: ຫຼັງຈາກການປຸງແຕ່ງ SQL ນີ້ດ້ວຍຕົນເອງ, ທ່ານຈະຕ້ອງກັບໄປ ໜ້າ ກ່ອນ ໜ້າ ນີ້ແລະກວດເບິ່ງຖານຂໍ້ມູນຂອງທ່ານເພື່ອວ່າສະຄິບສາມາດກວດພົບການປ່ຽນແປງ.
+This is the final step in setting up your WebCalendar Installation.: ນີ້ແມ່ນບາດກ້າວສຸດທ້າຍໃນການຕັ້ງຄ່າຕິດຕັ້ງ WebCalendar ຂອງທ່ານ.
+Timezone Conversion: ການປ່ຽນໃຈຂອງເວລາ
+It appears that you have NOT converted...: ມັນປາກົດວ່າທ່ານບໍ່ໄດ້ປ່ຽນຂໍ້ມູນເຫດການ WebCalendar ຂອງທ່ານທີ່ມີຢູ່ແລ້ວເປັນ GMT. ຖ້າທ່ານມີ, ທ່ານອາດຈະບໍ່ສົນໃຈແຈ້ງການນີ້ແລະບໍ່ ດຳ ເນີນການກັບການປ່ຽນໃຈເຫລື້ອມໃສ. ຖ້ານີ້ແມ່ນການຕິດຕັ້ງ ໃໝ່, ທ່ານອາດຈະບໍ່ສົນໃຈແຈ້ງການນີ້.
+Convert Data to GMT: ປ່ຽນຂໍ້ມູນເປັນ GMT
+Application Settings: ການຕັ້ງຄ່າການສະ ໝັກ
+HTTP-based authentication was not detected...: ບໍ່ມີການກວດສອບການກວດສອບ HTTP-based. ທ່ານ ຈຳ ເປັນຕ້ອງ ກຳ ນົດເຄື່ອງແມ່ຂ່າຍເວັບ ໃໝ່ ຂອງທ່ານຖ້າທ່ານຕ້ອງການເລືອກ 'Web Server' ຈາກຕົວເລືອກ 'ການກວດສອບຄວາມຖືກຕ້ອງຂອງຜູ້ໃຊ້' ຢູ່ທາງລຸ່ມ.
+HTTP-based authentication was detected...: ການກວດສອບການກວດສອບທີ່ອີງໃສ່ HTTP ຖືກກວດພົບ. ການກວດສອບຄວາມຖືກຕ້ອງຂອງຜູ້ໃຊ້ແມ່ນຖືກຈັດການໂດຍເຄື່ອງແມ່ຂ່າຍເວັບຂອງທ່ານ. ທ່ານຄວນເລືອກ 'Web Server' ຈາກລາຍຊື່ຕົວເລືອກ 'ການກວດສອບຄວາມຖືກຕ້ອງຂອງຜູ້ໃຊ້' ຢູ່ທາງລຸ່ມ.
+Create Default Admin Account: ສ້າງບັນຊີຜູ້ເບິ່ງແຍງລະບົບໃນຕອນຕົ້ນ
+(Admin Account Not Found): (ບໍ່ພົບບັນຊີຜູ້ເບິ່ງແຍງລະບົບ)
+User Authentication: ການກວດສອບຄວາມຖືກຕ້ອງຂອງຜູ້ໃຊ້
+Web-based via WebCalendar (default): ເວບໄຊທ໌ໂດຍຜ່ານ WebCalendar (ເລີ່ມຕົ້ນ)
+Web Server (not detected): Web Server (ບໍ່ພົບ)
+Web Server (detected): Web Server (ກວດພົບ)
+None (Single-User): ບໍ່ມີ (ຜູ້ໃຊ້ດຽວ)
+Read-Only: ອ່ານ​ຢ່າງ​ດຽວ
+Environment: ສິ່ງແວດລ້ອມ
+Production: ການຜະລິດ
+Development: ການພັດທະນາ
+Save Settings: ບັນທຶກການຕັ້ງຄ່າ
+Launch WebCalendar: ເປີດ WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: ຜິດພາດໃນການອັບເດດຕາຕະລາງ "XXX": YYY.
+Conversion Successful: ການປ່ຽນໃຈເຫລື້ອມໃສ ສຳ ເລັດ 
+Perl script required: WebCalendar ຮຸ່ນກ່ອນ ໜ້າ ນີ້ຂອງທ່ານຮຽກຮ້ອງໃຫ້ໃຊ້ຕົວອັກສອນ PERL ເພື່ອປ່ຽນຂໍ້ມູນຂອງທ່ານ. ກະລຸນາ ດຳ ເນີນການ /tools/upgrade_to_0.9.7.pl ຫຼັງຈາກນັ້ນກັບໄປທີ່ ໜ້າ ນີ້ເພື່ອ ດຳ ເນີນການຕໍ່.
+previous version requires updating several tables: WebCalendar ຮຸ່ນກ່ອນຫນ້າຂອງທ່ານຮຽກຮ້ອງໃຫ້ມີການປັບປຸງຕາຕະລາງຖານຂໍ້ມູນຫຼາຍຢ່າງ.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: ບໍ່ມີການພິຈາລະນາ
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: ຂໍ້ຜິດພາດໃນການເຊື່ອມຕໍ່ຖານຂໍ້ມູນ
+Include Path: ລວມເອົາເສັ້ນທາງ
+Deleting events for: ລຶບເຫດການ ສຳ ລັບ
+Importing events for: ການ ນຳ ເຂົ້າເຫດການ ສຳ ລັບ
+No data returned from: ບໍ່ມີຂໍ້ມູນກັບມາຈາກ
+for non-user calendar: ສຳ ລັບປະຕິທິນທີ່ບໍ່ແມ່ນຜູ້ໃຊ້
+No Remote Calendars found: ບໍ່ພົບປະຕິທິນໄລຍະໄກ
+Remote Calendars not enabled: ປະຕິທິນໄລຍະໄກບໍ່ໄດ້ເປີດໃຊ້ງານ
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ບໍ່ສາມາດຊອກຫາ id ເຫດການ 
+could not find event id XXX in database.: ບໍ່ສາມາດຊອກຫາ id id ເຫດການໃນຖານຂໍ້ມູນ. 
+task: ວຽກງານ
+This is a reminder for the XXX detailed below.: ນີ້ແມ່ນ ຄຳ ເຕືອນ ສຳ ລັບ XXX ລາຍລະອຽດລຸ່ມນີ້.
+Pecentage Complete: Pecentage ສຳ ເລັດແລ້ວ
+Reminder: ເຕືອນ
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: ການກະ ທຳ ທີ່ບໍ່ໄດ້ຮັບການສະ ໜັບ ສະ ໜູນ: XXX.
+No event id specified.: ບໍ່ໄດ້ລະບຸ id ເຫດການ.
+Not authorized (not admin).: ບໍ່ໄດ້ຮັບອະນຸຍາດ (ບໍ່ແມ່ນ admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: ກວດເບິ່ງເຫດການ ສຳ ລັບ XXX ນັບແຕ່ວັນທີ YYY ເຖິງວັນທີ ZZZ.
+Found XXX events in time range.: ພົບເຫດການ XXX ໃນຊ່ວງເວລາ.
+Event id=XXX YYY at ZZZ on AAA.: id ເຫດການ = XXX "YYY" ທີ່ ZZZ ໃນ AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ XXX ເບິ່ງປະຕິທິນຂອງຜູ້ໃຊ້ອື່ນ.
+Error Email reminders disabled for user XXX.: ຂໍ້ຜິດພາດ: ການແຈ້ງເຕືອນອີເມວຖືກປິດການ ນຳ ໃຊ້ ສຳ ລັບຜູ້ໃຊ້ "XXX".
+Number of site_extras XXX.: ຈຳ ນວນ site_extras: XXX.
+Reminder set for event.: ການຕັ້ງຄ່າເຕືອນ ສຳ ລັບເຫດການ.
+Mins Before XXX.: ບໍ່ແຮ່ກ່ອນ: XXX.
+Event time is XXX.: ເວລາເຫດການແມ່ນ: XXX.
+Remind time is XXX.: ເວລາເຕືອນແມ່ນ: XXX.
+Reminders for user XXX, login YYY.: ເຕືອນ ສຳ ລັບຜູ້ໃຊ້ "XXX", ເຂົ້າສູ່ລະບົບ "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: ການໄດ້ຮັບການອະນຸມັດ ສຳ ລັບຜູ້ໃຊ້ "XXX".
+Event id=XXX YYY already sent.: id ເຫດການ = XXX "YYY" ຖືກສົ່ງໄປແລ້ວ.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: ບໍ່ ຈຳ ເປັນຕ້ອງເຂົ້າລະບົບ ສຳ ລັບຮູບແບບຜູ້ໃຊ້ດຽວ.
+No login required for HTTP authentication.: ບໍ່ຕ້ອງມີການເຂົ້າສູ່ລະບົບ ສຳ ລັບການກວດສອບ HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: ຕົວອັກສອນບໍ່ຖືກຕ້ອງໃນການເຂົ້າລະບົບ.
+Username XXX does not exist.: ຊື່ຜູ້ໃຊ້ "XXX" ບໍ່ມີ.
+You cannot remove admin rights from yourself!: ທ່ານບໍ່ສາມາດເອົາສິດທິ admin ອອກຈາກຕົວທ່ານເອງ!
+Unknown error saving user: ບໍ່ຮູ້ຂໍ້ຜິດພາດໃນການປະຢັດຜູ້ໃຊ້.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: ບໍ່ພົບຜູ້ເຂົ້າຮ່ວມ ສຳ ລັບ id ເຫດການ: XXX.
+Db error Could not find event id XXX.: ຂໍ້ຜິດພາດ Db: ບໍ່ສາມາດຊອກຫາ id ເຫດການ XXX.
+Error Could not find event id XXX in database.: ຂໍ້ຜິດພາດ: ບໍ່ສາມາດຊອກຫາ id id ເຫດການໃນຖານຂໍ້ມູນ.

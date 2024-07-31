@@ -1,0 +1,2387 @@
+# Samoan sm
+#
+# O le faʻatulagaina aofia ai se filifiliga faitalia:
+#
+# Faʻaliliu e: lou igoa ma le imeli
+# Faʻafouina mulimuli: o le aso o le faʻaliliuga
+# (Faʻaaofia ai le taʻimua "#" ma ni manatu na faia e le au faʻaliliu muamua.
+# O le laina avanoa muamua faamutaina nei ulutala manatu.)
+#
+# Mulimuli le toʻatele pe a manaʻomia:
+#
+# Igilisi Igilisi: faʻaliliuga
+# (Tasi i le laina. Aunoa ma le taʻimua "#".
+# O le "Igilisi Igilisi:", e aofia ai le kolone ":", na saunia e le
+# WebCalendar atinaʻe. O lau vaega o le "faʻaliliuga".)
+#
+# O le lisi o mea faigaluega o loʻo iai tusitusiga e lua e fesoasoani ia te oe:
+# - check_translation.pl
+# faʻasino pe a fai o tusitusiga uma na faʻaliliuina ma le manuia.
+# - update_translation.pl
+# o le a faʻamamaina faila o polokalame e suʻe uma ai faʻaliliuga ('fuaitau') ma le
+# mea faigaluega ('fuaitau'). O le a faʻatulagaina fuaitau tusa ma le itulau
+# (faila) o loʻo iai muamua le faʻamoemoega. A tuu i le faitalia, e mafai ona faailoga le
+# fasifuaitau e leʻi faʻaliliuina ile tuʻuina
+#  << MISSING >>
+# luga o le laina luga atu o le fuaitau. Ma, afai o le faʻaupuga o se faʻapuʻupuʻu,
+# o le a aofia ai le Igilisi atoa tusitusiga i luga o le laina i lalo ole fuaitau.
+#
+# Faʻaliga: O loʻo ou taumafai e tipi i lalo le aofaʻi tele o faila. Afai o le "faʻaliliuga"
+# upu / fuaitau e tutusa i lau gagana ma le Igilisi, naʻo le faʻaogaina o le "=" faʻailoga.
+#
+# Faʻaliga: Oe o le a maitauina le ulufale mo "May_" lalo E i ai le mafuaʻaga mo lenei.
+# Faʻaliliu "May_" i le atoa masina igoa ma "May" i le,
+# masani tolu tusi, faʻapuʻupuʻu masina (pei o le "Oketopa" mo le "Oketopa").
+#
+# Na ou faʻaaogaina le Google faʻaliliu mo lenei.
+# E tatau ona lava seʻi vagana ua mafai ona faʻamaonia e se tautalaga.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: lomiga XXX
+WebCalendar is a PHP application used...: WebCalendar o se PHP talosaga faʻaaoga e tausi ai se kalena mo le tasi tagata faʻaaoga poʻo se initaneti / intranet kulupu o tagata faʻaoga. E mafai foi ona configured o se kalena mea na tupu.
+Credits: Tupe maua
+About: E tusa
+OK: Ua lelei
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Sese faʻamaumauga: XXX.
+DEFAULT CONFIGURATION: FAAMAONI O FAI
+Go: Alu
+Save: Sefe
+Undo: Faʻaleaoga
+Public Access: Avanoa Lautele
+Admin: Pule
+User Access Control: Tagata Pulea Avanoa Pulea
+Allow Access to Other Users Calendar: Faʻatagaina le ulufale i isi kalena a tagata faʻaoga
+Grant This User Access to My Calendar: Faʻatagaina Lenei Tagata Faʻaoga Avanoa i laʻu Kalena
+Type: Ituaiga
+Calendar: Kalena
+View Event: Vaʻai Mea na Tutupu
+View: Vaʻai
+Edit: Faʻatonutonu
+Approve/Reject: Faʻamaonia / Teʻena
+Events: Mea na tutupu
+Tasks: Galuega
+Journals: Tusi o Talaaga
+Can Invite: Mafai Ona Valaaulia
+Can Email: Mafai imeli
+Can See Time Only: Mafai naʻo le Vaʻai o le Taimi
+Assistant: Fesoasoani
+Select All: Filifili Uma
+Clear All: Manino Uma
+Public: Faʻalauaʻitele
+Confidential: Faʻalilolilo
+Private: Tumaoti
+
+########################################
+# Page: activity_log.php
+#
+Next: Le isi
+Previous: Talu ai
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Mea ua tupu XXX ua i luga o lau kalena.
+Invalid entry id XXX.: Lē saʻo le pepa ulufale: "XXX"
+a XXX event may not be added to your calendar: Lenei o le XXX gaioiga ma ono le faʻaopopoina i lau kalena.
+confidential: agatapuia
+private: tumaoti
+Error adding event XXX.: Sese i le faʻaopoopoina o mea na tupu: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Le saʻo le seti igoa "XXX"
+Select: Filifili
+Day: Aso
+Week: Vaiaso
+Month: Masina
+Year: Tausaga
+Bottom: Lalo
+Top: Luga
+Anyone: Soʻo seisi
+Participant: Tagata auai
+Settings: Tulaga
+Groups: Kulupu
+NonUser Calendars: Kalena Lē Faʻaoga
+Other: Isi
+Email: Imeli
+Colors: Lanu
+Document background: Talaʻaga pito i tua
+Document title: Ulutala pepa
+Document text: Tusitusiga tusitusiga
+My event text: Laʻu tusitusiga mea na tupu
+Table grid color: Laulau grid lanu
+Table header background: Laulau ulutala ulutala
+Table header text: Lisi ulutala tusitusiga
+Table cell background: Laulau sela pito i tua
+Table cell background for current day: Laulau sela talaʻaga mo aso nei
+Table cell background for days with events: Laulau sela talaʻaga mo aso ma mea na tutupu
+Table cell background for weekends: Laulau sela talaʻaga mo faaiuga o vaiaso
+Table cell background for other month: Laulau sela talaʻaga mo isi masina
+Week number color: Vaiaso numera vaiaso
+Event popup background: Mea na tupu i luga o le popup
+Event popup text: Faʻaliga oso mai tusitusiga
+System Settings: Polokalama Faʻavae
+Help: Fesoasoani
+System options: Filifiliga filifiliga
+app-name-help: Faamaoti mai le igoa o le talosaga o le a aliali mai i le browser ulutala pa mo itulau uma ma luga o le itulau ulufale. O le tau e faʻailoa mai ii o le a suʻeina i luga o faʻaliliuga faila faʻatagaina oe e tuʻuina atu 'eseʻese ulutala mo' eseʻese gagana.
+Application Name: Talosaga Igoa
+Translated Name (XXX): Igoa faʻaliliu (XXX)
+server-url-help: Faʻamaoti mai le autu URL mo le talosaga. Lenei o le a aofia ai pe a lafoina imeli faʻamanatu ma faʻasilasilaga.
+Server URL: Tūmau URL
+home-url-help: Faʻamaoti mai le fale URL mo le talosaga. Lenei mafai ona avea ma atoatoa pe aiga
+Home URL: Fale URL
+language-help: Faʻamaoti mai le gagana e faʻaaoga.
+Language: Gagana
+Your browser default language is XXX.: O lau gagana faʻaaoga o le "XXX".
+Allow user to use themes: Faʻatagaina le tagata faʻaaoga e faʻaaoga autu
+themes-help: Faʻatagaina le tele o faʻafouga o faʻavasega tulaga. Laʻasaga maualalo igoa e naʻo tagata faʻaaoga.
+Themes: Autu
+AVAILABLE THEMES: MAUA FUA
+None: Leai
+Preview: Muai Vaaiga
+Site customization: Nofoaga faʻapitoa
+custom-script-help: Faʻatagaina le ulufale mai o le custom Javascript poʻo le styleheet tusitusiga o le a tuʻuina i totonu o le HTML "ulu" vaega o itulau uma.
+Custom script/stylesheet: Tusitusiga faʻapitoa / sitaili
+custom-header-help: Faʻatagaina se tuʻufaʻatasiga HTML masani e aofia i le pito i luga o itulau uma.
+Custom header: Ulutala faʻapitoa
+custom-trailer-help: Faʻatagaina se faʻavae HTML masani e aofia ai i le faaiuga o itulau uma.
+Custom trailer: Taavale toso tu
+enable-external-header-help: Faʻatagaina le faʻasolosolo tiʻetiʻe ia utaina mai se faila i fafo
+Allow external file for header/script/trailer: Faʻatagaina faila i fafo mo ulutala / tala / toso
+Allow user to override header/trailer: Tuʻu le avanoa i le tagata faʻaaoga e aveese ai le ulutala
+Date and Time: Aso ma le Taimi
+server-tz-help: Faamaoti mai pe fia itula e fetuunai ai le taimi mai le UTC i le taimi o le tautua.
+Server Timezone Selection: Filifiliga Timezone Filifiliga
+tz-help: Faʻamaoti mai pe fia itula e fetuʻunaʻi ai le taimi mai le UTC i le taimi nei.
+Default Client Timezone Selection: Filifiliga ole aufaʻatau a le client
+display-general-use-gmt-help: Afai e mafai, o aso masani / taimi masani e faʻaalia o le GMT
+Display Common Use Date/Times as GMT: Faʻaalia le Faʻaaoga Aso Taʻitasi / Taimi o le GMT
+date-format-help: Faʻamaoti mai le faʻavasega aso fiafia i ai.
+Date format: Aso faʻatulagaina
+Small Task Date: Laiti Galuega Aso
+display-week-starts-on: Faʻailoa mai le aso o le vaiaso e amata ai le vaiaso ile. Afai e faʻamaoti mai le Aso Gafua, ona avea lea o numera vaiaso ma numera o vaiaso ISO.
+Week starts on: E amata le vaiaso ile
+display-weekend-starts-on: Faʻatulaga le aso ole vaiaso mo amataga ole vaiaso
+Weekend starts on: Amata faaiuga o vaiaso
+time-format-help: Faʻailoa mai poʻo fea le faʻatulagaina taimi e faʻaaoga ai:<br><em>12 itula:</em> Faʻaalia taimi e 3am, 8:30 pm, ma isi.<br><em>24 itula:</em> Faʻaalia taimi e 300 , 2030, ma isi
+Time format: Faʻatulagaina taimi
+12 hour: 12 itula                                                   
+24 hour: 24 itula                                                   
+timed-evt-len-help: Faʻamaoti mai auala faʻaulufaleina mo le fuafuaina o le umi o se taimi faʻatulagaina.
+Specify timed event length by: Faʻamaoti taimi umi na tupu i le
+Duration: Umi o le taimi
+End Time: Taimi Faʻaiʻu
+work-hours-help: Faʻamaoti mai le taimi e faʻaali ai le aso vaʻai.
+Work hours: Itula faigaluega
+From: Mai
+to: i le
+Appearance: Foliga Vaaia
+preferred-view-help: Faʻamaoti mai le faʻaali vaʻai (Aso, Vaiaso, Masina, poʻo le Tausaga).
+Preferred view: Manatu faʻaalia
+Allow top menu: Faʻatumu luga lisi
+Date Selectors position: Aso Filifilia tulaga
+menu-themes-help: Seti lanu ma sitaili o le lisi i luga
+Menu theme: Manatu autu
+fonts-help: Faʻamaoti mai se lisi o faʻasologa mataitusi e faʻaaoga ai (pei o le "Arial, Helvetica")
+Fonts: Tusitusiga tusi
+display-sm_month-help: Afai e mafai, faʻaali laʻititi masina i masina matamata
+Display small months: Faʻaali masina laiti
+display-weekends-help: Faʻaaofia faaiuga o vaiaso pe a maimoaina se vaiaso.
+Display weekends: Faʻaalia faaiuga o vaiaso
+display-long-daynames-help: Afai e mafai, ona faʻaalia lea o aso umi igoa
+Display long day names: Faʻaali aso umi igoa
+display-alldays-help: Faʻaali masina ua tuanaʻi ma masina a sau i le masina vaʻai, faʻatumu uma sela.
+Display all days in month view: Faʻaali uma aso i le masina vaʻai
+display-week-number-help: Faʻamaonia pe tatau ona faʻaalia le numera vaiaso (1-52) i le masina ma le vaiaso vaʻai.
+Display week number: Faʻaalia le numera vaiaso
+display-desc-print-day-help: Faʻaaofia mea na tutupu i le lomitusi-faʻauo a le aso vaʻai.
+Display description in printer day view: Faʻaali le faʻamatalaga i le masini lolomi aso vaʻai
+yearly-shows-events-help: I tausaga taʻitasi, faʻaali aso o loʻo iai mea e tutupu i totonu ole tamaʻi mataitusi.
+Display days with events in bold in month and year views: Faʻaali aso ma mea e tutupu i le lototele i masina ma tausaga tausaga
+display-minutes-help: Afai e mafai, minute faʻaiʻu i le: 00 o le a faʻaalia i taimi uma
+Display 00 minutes always: Faʻaalia 00 minute i taimi uma
+display-end-times-help: Faʻaali mea tutupu faʻaiʻu taimi pe a fai o taimi tatau
+Display end times on calendars: Faʻaali taimi faʻaiʻu i luga o kalena
+allow-view-add-help: O le '+' faʻailoga o le a aofia ai i manatu, faʻatagaina tagata faʻaaoga e vave faʻaopopo mea na tutupu i isi tagata 'kalena.
+Include add event link in views: Aofia faʻaopopo mea tutupu soʻoga i manatu
+lunar-help: Afai e mafai, o le a faʻaali tamaʻi faʻailoga e fai ma sui masina i masina taʻitasi
+Display Lunar Phases in month view: Faʻaali Lunar Phases i le masina vaʻai
+Restrictions: Tapulaa
+allow-view-other-help: Faʻamaonia pe mafai e se tasi tagata faʻaaoga ona vaʻai i le isi kalena.
+Allow viewing other users calendars: Faʻatagaina le vaʻaia o isi kalena kalena
+require-approvals-help: A faʻatagaina, e tatau i se tagata faʻaaoga ona faamaonia se mea na tupu ae leʻi faʻaalia ia latou kalena (seʻi vagana ua faʻaalia le faʻaalia le faʻaalia). Matau le setiina o lenei i le "Leai" o le a le tapunia faʻamaoniga mo le Lautele Avanoa kalena (pe a fai o le Public Access kalena ua mafai).
+Require event approvals: Manaʻomia mea faʻamaonia mea na tupu
+display-unapproved-help: Faʻailoa mai pe o mea e leʻi aliali mai o loʻo faʻaalia i lau kalena. mea e leʻi faʻamaonia e tatau ona faʻamaonia muamua ae le i faʻaalia i lau kalena.
+Display unapproved: Faʻaali le taliaina
+conflict-check-help: Siaki mo feteʻenaʻiga (lua gaioiga faʻatulagaina mo le taimi e tasi mo le tagata e tasi). Afai e te setiina lenei i le "Ioe", oe o le a mafai pea ona faʻatulagaina ni mea se lua i le taimi e tasi pe a maeʻa faʻamaonia se lapataiga. Afai e te setiina lenei i le "Leai", e leai se siakiina mo feteʻenaʻiga o le a faia. Oe ono manaʻo e seti lenei i le "Ioe", o lea feteʻenaʻi siaki tupu.
+Check for event conflicts: Siaki mo feteʻenaʻiga mea na tutupu
+Yes: ioe
+No: leai
+conflict-months-help: Afai o loʻo i ai le siakiina o feteʻenaʻiga ("Siaki mo feteʻenaʻiga mea tutupu" seti i le "Leai" & # 41 ;, e faʻailoa mai pe fia masina i le lumanaʻi e tatau ona tatou siakiina feteʻenaʻiga. , faʻaititia lenei numera.
+Conflict checking months: Feteʻenaʻiga siaki masina
+conflict-check-override-help: Faʻatagaina tagata faʻaoga e faʻatoʻilaloina feteʻenaʻiga ma faʻatulaga ni mea se lua pe sili atu mo le taimi e tasi.
+Allow users to override conflicts: Tuʻu le avanoa i le au faʻaoga e teʻena ai finauga
+limit-appts-help: Faʻatagaina le pulega faʻatonu e seti se tapulaʻa lautele-sisitema i luga o le aofai o tofiga o le tasi tagata faʻaaoga mafai i ai i soʻo se tasi aso.
+Limit number of timed events per day: Tapulaʻa numera o taimi faʻatulagaina mea e tutupu ile aso
+limit-appts-number-help: Faʻailoa mai le aofaʻi maualuga o taimi faʻatulagaina e mafai ona maua e le tagata faʻaaoga i le aso e tasi.
+Maximum timed events per day: Ole tapulaʻa maualuga na tupu ile aso
+crossday-help: Afai e mafai, o mea e tutupu e faʻatautaia ai aso e faʻaalia i aso eseese
+Disable Cross-Day Events: Faʻaleaogaina Gaioiga Faʻavaʻa
+disable-location-field-help: Filifilia "Ioe" o le a aveʻesea le "Nofoaga" fanua mai mea na tutupu faʻamatalaga itulau
+Disable Location field: Faʻaleaoga le avanoa ile nofoaga
+disable-url-field-help: Filifilia "Ioe" o le a aveʻese le "URL" fanua mai mea na tutupu faʻamatalaga itulau
+Disable URL field: Faʻaleaoga le malae URL
+disable-priority-field-help: Filifilia "Ioe" o le a aveʻesea le "Faamuamua" fanua mai mea na tutupu faʻamatalaga itulau, saunia ai se faigofie faigofie fesoʻotaʻiga mo novices.
+Disable Priority field: Faʻaleaoga le faʻamuamua
+disable-access-field-help: Filifilia "Ioe" o le a aveʻesea le "Avanoa" fanua mai mea na tutupu faʻamatalaga itulau, saunia ai se faigofie faigofie fesoʻotaʻiga mo novices.
+Disable Access field: Faʻaleaoga le avanoa ile avanoa
+disable-participants-field-help: Filifilia "Ioe" o le a aveʻesea le "Tagata Auai" fanua mai mea na tutupu faʻamatalaga itulau, puipuia tagata faʻaoga mai le faʻaopopoina o isi tagata faʻaaoga i a latou gaioiga. Afai e te faʻatagaina lenei filifiliga, oe ono manaʻo e faʻamuta foi le malae "Faʻatagaina le vaʻaia o isi kalena a le tagata".
+Disable Participants field: Faʻaleaoga sui o le vasega
+disable-repeating-field-help: Filifilia "Ioe" o le a aveʻesea le "Toe fai" avanoa pe a faʻaopopo mea na tutupu. Lenei o le a maua ai se faigofie faigofie faʻaoga mo tagata fou.
+Disable Repeating field: Faʻaleaogaina le toe faia o le fanua
+allow-html-description-help: Afai e mafai, e mafai e tagata faʻaaoga ona faʻaofi le HTML i le faʻamatalaga o le mea na tupu. Afai e le faʻatagaina, o le a sola ese ia pine HTML ina ia foliga mai o ni tusitusiga faigofie. Lapataiga: O le faʻaaogaina o lenei vaega o le a faʻatagaina ai tagata faʻaoga e faʻasino ata i luga o isi upega tafailagi.
+Allow HTML in Description: Faʻatagaina le HTML i le Faʻamatalaga
+Popups: Popup
+disable-popups-help: Faʻapipiʻi popup mai manatu faʻa kalena
+Disable Pop-Ups: Faʻamuta Pop-Ups
+popup-includes-siteextras-help: A faʻapea e faʻatagaina, faʻatagaina tuʻufaʻatasiga o mea na tutupu i le site_extras.php faila o le a faʻaalia i totonu o faʻalavelave tutupu.
+Display Site Extras in popup: Faʻaaliga Nofoaga Faʻaopoopo i popup
+popup-includes-participants-help: Afai e mafai, tagata faʻaalia e faʻaalia i mea tutupu popups.
+Display Participants in popup: Faʻaali Tagata o loʻo auai i le oso i luga
+Miscellaneous: Eseese
+remember-last-login-help: A faʻatagaina, o le a faʻatumuina le saini a le tagata faʻaaoga mo latou i luga o le itulau ulufale (ae le o le password), ma o le a faʻaaogaina mea e fiafia i ai le tagata (e aofia ai a latou lanu e fiafia iai ma le gagana filifilia).
+Remember last login: Manatua le login mulimuli
+summary_length-help: Tapulaʻa umi umi o Faʻamatalaga Puʻupuʻu i kalena manatu
+Brief Description Length: Umi o Faamatalaga puʻupuʻu
+user_sort-help: Fuafua faʻavasega faʻatonuga mo Tagata e faʻaaoga, Nonuser lisi
+User Sort Order: Tagata Faʻavasega Faʻavasega
+Lastname, Firstname: Igoa mulimuli, Igoa muamua
+Firstname, Lastname: Suafa muamua suafa mulimuli
+allow-public-access-help: A mafai, o le kalena mafai ona faʻaaogaina o se faitauga-na o tagata lautele kalena e le manaʻomia tagata faʻaaoga e ulufale ai.
+Allow public access: Faʻatagaina avanoa lautele
+public-access-default-visible: Mea na tutupu mai le kalena lautele o le a otometi lava ona aliali mai luga uma tagata 'kalena kalena
+Public access visible by default: Avanoa lautele vaʻaia e ala i le le mafai
+public-access-default-selected: A faʻaopopoina se mea fou na tupu, o le a filifilia le tagata faʻaaoga lautele e le masani ai o se tagata auai.
+Public access is default participant: Avanoa lautele e le masani ai tagata auai
+public-access-view-others-help: A oʻo i le polokalama ma avanoa lautele, faʻamaoti mai pe mafai e le tagata faʻaaoga ona matamata i le kalena a le isi kalena tagata faʻaaoga.
+Public access can view other users: Avanoa lautele e mafai ona vaʻai i isi tagata faʻaaoga
+public-access-can-add-help: A faʻatagaina, tagata faʻaaoga e faʻaaogaina le polokalama e ala i le Public Access o le a mafai ona faʻaopopo ni mea fou, ae latou te le faʻaalia i le kalena seʻi vagana ua faʻamaonia e le pule le mea fou na tupu.
+Public access can add events: Avanoa lautele mafai ona faʻaopopo mea na tutupu
+public-access-add-requires-approval-help: Faʻamaonia pe o mea na tutupu faʻaopopo e ala i le lautele faʻaaogaina teugatupe manaʻomia le faʻamaonia ae le i faʻaalia.
+Public access new events require approval: Avanoa lautele lautele mea fou e manaʻomia le faʻamaonia
+public-access-sees-participants-help: Afai e mafai, tagata faʻaaoga ulufale atu i le kalena mai le lautele teugatupe o le a mafai ona vaʻaia mea na tutupu tagata auai pe a latou vaʻaia auiliiliga o se mea na tupu.
+Public access can view participants: Avanoa lautele mafai vaʻai tagata auai
+public-access-override-help: Faʻatagaina igoa o faʻamatalaga ma faʻamatalaga e nana i luga o le lautele kalena
+Override event name/description for public access: Faʻasilia igoa o mea na tutupu / faʻamatalaga mo avanoa lautele
+public-access-override-text-help: O le tusitusiga e faʻaali pe a fai o le pito i luga filifiliga ua mafai. Afai 'Le Maua', o le a faaliliuina.
+Text to display to public access: Tusitusiga e faʻaali i avanoa lautele
+public-access-captcha-help: Afai e mafai, o mea fou na faʻaopopo e le lautele e manaʻomia le pasia o le CAPTCHA faʻamaonia.
+Require CAPTCHA validation for public access new events: Manaʻomia CAPTCHA faʻamaonia mo lautele ulufale avanoa fou
+uac-enabled-help: Faʻafesoʻotaʻia le faʻaaogaina o le avanoa e le tagata faʻaaoga
+User Access Control enabled: Faʻaaoga le Pulea Avanoa e le Tagata
+groups-enabled-help: Faʻatagaina le lagolago kulupu, faʻatagaina tagata faʻaoga e filifilia tagata e ala i kulupu.
+Groups enabled: Faʻavanoaina kulupu
+user-sees-his-group-help: Afai e mafai, o le a le vaʻaia e tagata faʻaaoga le kalena tagata faʻaaoga e le o iai i se tasi o a latou kulupu.
+User sees only his groups: Tagata e vaʻaia na o ana vaega
+nonuser-enabled-help: Afai e mafai, o le a i ai i sui pule le filifiliga e faʻaopopo ai le le faʻaaogaina kalena
+Nonuser enabled: Nonuser Kalena Faʻaaogaina
+nonuser-list-help: Le mea e faʻaali ai le le faʻaogaina kalena i le sui auai lisi
+Nonuser list: Faʻaalia i tagata auai lisi i
+Upcoming Events: Mea e Tutupu o loʻo tutupu
+upcoming-events-help: Faʻaleleia le lumanaʻi.php
+Enabled: Faʻagaioia
+upcoming-events-allow-override: Tuʻu le avanoa i le tagata faʻaaoga mo le lumanaʻi.php
+Allow user override: Faʻatagaina le faʻaoga e le tagata faʻaaoga
+upcoming-events-display-caticons: Faʻaaofia faʻailoga o vaega i le lumanaʻi.php
+Display category icons: Faʻaalia faʻailoga o vaega
+upcoming-events-display-layers: Faʻaalia fola i luma atu.php
+Display layers: Faʻaali atu faaputuga
+upcoming-events-display-links: Faʻaali fesoʻotaʻiga i sau.php
+Display links to events: Faʻaali fesoʻotaʻiga i mea na tutupu
+upcoming-events-display-popups: Faʻaalia mea tutupu tutupu i le lumanaʻi.php
+Display event popups: Faʻaali popup popup
+reports-enabled-help: Afai e mafai, o le a vaʻaia e tagata faʻaaoga le vaega o "Lipoti" i lalo o itulau taʻitasi ma o le a faʻatagaina latou te faia ni lipoti faʻapitoa. Ma se faʻaopopoga, admin tagata faʻaoga mafai ona fausia tala o le lalolagi o le a aliali mai i le pito i lalo o tagata uma 'itulau.
+Reports enabled: Ua mafai lipoti
+subscriptions-enabled-help: Faʻailoa mai pe a mafai e tagata faʻaaoga mamao ona lesitala i le kalena a le tagata faʻaaoga WebCalendar, faʻatagaina latou e vaʻai i mea o loʻo tutupu i le WebCalendar i le latou iCal-mafai (pei o Apple iCal poʻo le Mozilla Kalena).
+Allow remote subscriptions: Faʻatagaina saofaga mamao
+remotes-enabled-help: Faʻatagaina tagata faʻaoga e uta uta faila ics faʻaaoga URL
+Allow remote calendars: Faataga kalena mamao
+rss-enabled-help: Faʻailoa mai pe a fai e mafai ona maua se kalena a tagata mai se RSS feed.
+Enable RSS feed: Faʻaola RSS fafaga
+categories-enabled-help: Faʻamalosia le lagolago mo mea na tutupu vasega.
+Categories enabled: Faʻavanoaina vaega
+icon_upload-enabled-help: A faʻatagaina, e mafai e tagata faʻaaoga ona tuʻuina i luga aikona faʻailoga
+Category Icon Upload enabled: Ua mafai le vaega o faʻailoga o loʻo faʻasaoina
+(Requires XXX folder to exist.): (Manaʻomia XXX faila e i ai.)
+display-tasks-help: Faʻaali laʻititi faʻamalama galuega ile kalena masina ma le aso
+Display small task list: Faʻaali se tamaʻi lisi o galuega
+display-tasks-in-grid-help: Faʻaali galuega i kalena ma mea na tutupu
+Display tasks in Calendars: Faʻaali galuega i Kalena
+allow-external-users-help: Faʻamaonia pe mafai ona faʻaopopo se tagata e leʻo kalena i se mea na tupu. Lenei faʻatagaina tagata le kalena tagata faʻaoga e lisiina o mea na tutupu tagata auai.
+Allow external users: Faʻatagaina tagata faʻaaoga i fafo
+external-can-receive-notification-help: A faʻapea e faʻatagaina tagata faʻaaoga i fafo ma faʻaogaina imeli, e mafai e tagata faʻaaoga i fafo ona mauaina ni imeli pe a faʻaopopo le mea na tupu, faʻafouina pe tapeina (pe a fai o le tuatusi imeli a le tagata o loʻo iai na saunia).
+External users can receive email notifications: E mafai e tagata faʻaaoga i fafo ona mauaina ni imeli
+external-can-receive-reminder-help: A faʻapea e faʻatagaina tagata faʻaaoga i fafo ma faʻaogaina imeli, e mafai ona maua e tagata faʻaaoga i fafo ni imeli (pe a fai o le tuatusi imeli a le tagata o loʻo iai.
+External users can receive email reminders: Tagata faʻaaoga i fafo e mafai ona mauaina faʻamanatu imeli
+allow-self-registration-help: Faʻatagaina ni tagata fou e resitaraina latou lava
+Allow self-registration: Faʻatagaina oe lava-lesitala
+use-blacklist-help: Faʻatapulaʻa le ulufale i WebCalendar galuega faʻavae i luga o le tuatusi IP
+Restrict self-registration to blacklist: Faʻatapulaʻa le lesitalaina o oe e oe i le lisi uli
+allow-self-registration-full-help: Faʻatagaina ni tagata faʻaaoga fou e faʻamaeʻaina le faiga o le lesitalaina o oe lava i luga o laina
+Use self-registration email notifications: Fausia passwords ma lafo i fou tagata faʻaaoga
+allow-attachment-help: Faʻatagaina tagata faʻaaoga e faʻaopopo faila faila i mea na tutupu.
+Allow file attachments to events: Faʻatagaina faila faila i mea na tutupu
+Admin and owner can always add attachments if enabled.: Pule ma e ona e masani ona faʻaopopo mea faʻapipiʻi pe a faʻatagaina.
+allow-comments-help: Faʻatagaina tagata faʻaaoga e faʻaopopo manatu i mea na tutupu.
+Allow comments to events: Faʻatagaina manatu i mea na tutupu
+Admin and owner can always add comments if enabled.: Pule ma e ona e masani ona faʻaopopo manatu pe a mafai.
+email-enabled-help: Faʻamoe pe tape uma au lafoina o imeli mo faʻasilasilaga ma faʻamanatuga. Seti i le "leai", pe a fai e leʻo lelei le seti a lau sapalai e lafo ai imeli.
+Email enabled: Ua mafai imeli
+email-default-sender: Faʻamaoti mai le tuatusi imeli e faʻamaoti mai o le tagata lafo mai pe a lafoina faʻamanatu.
+Default sender address: Leai le tuatusi lafo
+email-mailer: Filifili ituaiga imeli (SMTP, PHP meli, lafo imeli)
+Email Mailer: Imeli meli
+email-smtp-host: Igoa ole igoa (s) ole SMTP server (s) na vavaeʻese e koma
+SMTP Host name(s): SMTP Host igoa (s)
+email-smtp-port: SMTP Port Number (masani 25)
+SMTP Port Number: =
+email-smtp-auth: Faʻaaoga SMTP Faamaoniga
+SMTP Authentication: SMTP Faamaoniga
+email-smtp-username: SMTP Username peʻa faʻaaogaina le Faamaoniga
+SMTP Username: =
+email-smtp-password: SMTP Upu Faʻapitoa pe a faʻaaogaina le Faʻamaonia
+SMTP Password: Upu faataga SMTP
+Default user settings: Le faʻaogaina e le tagata
+email-format: Faamaoti mai le fiafia i le HTML poʻo le feau feaveaʻi feau
+Email format preference: Manatu faʻatulagaina imeli
+HTML: =
+Plain Text: Tusitusiga Laugatasi
+email-include-ics: Faʻaaofia se iCalendar ICS faila i imeli meli
+Include iCalendar attachments: Aofia ai fesoʻotaʻiga iCalendar
+email-event-reminders-help: Faʻamaonia pe tatau ona lafo ni faʻamanatuga o mea na tutupu.
+Event reminders: Faamanatu mea na tutupu
+email-event-added: Faʻamaonia pe tatau ona lafo ni faʻasilasilaga imeli pe a faʻaopopo se mea na tupu i lau kalena.
+Events added to my calendar: Mea na tutupu faʻaopoopo i laʻu kalena
+email-event-updated: Faʻamaonia pe tatau ona lafo ni faʻasilasilaga imeli pe a faʻafouina se mea i luga o lau kalena.
+Events updated on my calendar: Mea na tupu na faʻafouina i laʻu kalena
+email-event-deleted: Faʻamaonia pe tatau ona lafo ni faʻasilasilaga imeli pe a aveʻeseina se mea mai lau kalena.
+Events removed from my calendar: Mea na tupu na aveʻese mai laʻu kalena
+email-event-rejected: Faʻamaonia pe tatau ona lafo ni faʻasilasilaga imeli pe a teʻena e se tagata auai se mea na tupu o loʻo i luga o lau kalena.
+Event rejected by participant: Mea na tupu na teʻena e tagata auai
+email-event-create: Faʻamaonia pe o le na faia mea na tusia o le a mauaina se imeli
+Event that I create: Mea na tupu ou te faia
+Color options: Filifiliga lanu
+Allow user to customize colors: Faʻatagaina le tagata faʻaaoga e faʻavasega lanu
+gradient-colors: Afai e faʻaaogaina lanu malamalama o loʻo faʻaaogaina. Lenei mafai ona matua aʻafia ai faatinoga.
+Enable gradient images for background colors: Faʻaleleia agavaʻa ata mo lanu i tua atu
+Not available: Le maua
+Background Image options: Filifiliga Ata i tua atu
+bgimage-help: URL o manaʻoga talaaga ata. Atonu e fesoʻotaʻi.
+Background Image: Ata i tua atu
+bgrepeat-help: Faʻatonutonu amioga toe faia o talaaga ata.
+Background Repeat: Talaaga Toe fai
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Fesoasoani
+Preferences: Manatu
+Control Panel: Lisi Pulea
+Users: Tagata faʻaoga
+Account: Teugatupe
+Categories: Vaega
+Views: Manatu
+Layers: Faʻaputuga
+Reports: Lipoti
+Delete Events: Aveese mea na tutupu
+Activity Log: Laupapa Gaoioiga
+System Log: Ogalaau System
+Security Audit: Suetusi mo le Puipuiga
+Public Preferences: Manatu Lautele
+Unapproved Public Events: O Mea e Le Faʻalia e Tagata lautele
+Administrative Tools: Meafaigaluega Faʻatonu
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Igoa faʻalua: "XXX".
+Username XXX already exists.: Username "XXX" ua uma na i ai.
+Email address XXX already exists.: Ua iai le tuatusi imeli "XXX"
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Faʻamatalaga faʻaopoopo (tuu i le faitalia)
+Approve and Send: Faamaonia ma Lafo Atu
+Approve and Exit: Faʻamaonia ma Totonu
+(Your comments will be emailed to the event creator.): (O au tala o le a imeliina i le tagata na faia mea.)
+Hello, XXX.: Talofa, XXX.
+XXX has approved an appointment and added comments.: Ua faʻamaonia se taimi atofaina ma faʻaopoopo manatu e le XXX.
+Subject XXX: Mataupu: "XXX".
+Description XXX: Faʻamatalaga: "XXX".
+Date XXX: Aso: XXX
+Time XXX: Taimi: XXX
+Comments XXX: Faʻamatalaga: XXX
+Approved w/Comments by XXX.: Faʻamaonia w / Faʻamatalaga e: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Faʻatonutonu faiga
+Your assistants: Au fesoasoani
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Sese le iloa
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Sese polokalame: Leai se XXX faʻamaotiina!
+user: tagata faʻaaoga
+year: tausaga
+month: masina
+day: aso
+
+########################################
+# Page: category.php
+#
+Category Icon: Faailoga Vaega
+Global: Lalolagi aoao
+The permissions for the icons directory are set to read-only: O faʻatagaina mo faʻailoga o faʻailoga ua setiina i le naʻo le faitauga.
+Category Name: Category igoa:
+Color: Lanu
+Remove Icon: Aveese le faʻailoga:
+Add Icon to Category: Faʻaopopo faʻailoga i le vaega
+Upload: Tuʻu i luga
+GIF or PNG 6kb max: GIF poʻo le PNG 6kb max
+Search for existing icons: Saili mo faʻailoga o loʻo iai
+Add: Faʻaopopo
+Delete: Aveese
+Are you sure you want to delete this entry?: O e mautinoa e te manaʻo e aveese lenei mea ulufale?
+Make New Category: Fai Fou Vaega
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: E manaʻomia le igoa igoa
+File size exceeds maximum.: Ua sili atu le tele aofai o faila.
+File is not a GIF or PNG image: Faila e le o se GIF poʻo se PNG faʻatusa
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: MAFAI GALUEGA MAUA
+ENTRY CATEGORIES: Ulufale CATEGORIES
+Remove: Aveese
+Global Category: Vaega o le lalolagi
+Cancel: Faalēaogāina
+
+########################################
+# Page: colors.php
+#
+Add Custom: Faʻaopopo Tiute
+Basic Colors: Lanu Autu
+Current Color: Valivali o loʻo iai nei
+Custom Colors: Lanu Tiute
+Old Color: Lanu tuai
+
+########################################
+# Page: combo.php
+#
+Select None: Filifili seai
+Agenda: Polokalame
+Add Task: Faʻaopopo le Galue
+Description: Faʻamatalaga
+Date: Aso
+Time: Taimi
+Priority: Faamuamua
+Access: Avanoa
+Created by: Fausia e
+Updated: Faafouina
+Participants: Tagata auai
+Attachments: Faʻapipiʻiga
+Comments: Faʻamatalaga
+Brief Description: Faʻamatalaga puʻupuʻu
+Full Description: Faʻamatalaga atoa
+Category: Vaega
+Add event detail: Faʻaopopo faʻamatalaga auiliili
+Start Date: Aso amata
+Due Date: O afea
+Add task detail: Faʻaopopo le auiliiliga o galuega
+All: Uma
+Error: Sese
+no response from server: leai se tali mai le 'auʻauna
+JSON error: JSON sese
+High: Maualuga
+Medium: Feololo
+Low: Maualalo
+Today: Aso nei
+Add Entry: Faʻaopopo le Ulufale
+Unnamed Event: Mea e leʻo taʻua
+Unnamed Task: Galue e leʻo faʻaigoaina
+Refresh: Faʻafouina
+Click to add entry: Kiliki e faʻaopopo le ulufale
+Name: Igoa
+pm: afiafi
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: Ua faaleaogaina e le XXX se taimi atofaina.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Id laupepa saʻo
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Faʻaopopo Faʻamatalaga
+Add Attachment: Faʻaopopo Faʻaopopoga
+Subject: Mataupu
+Comment: Faamatalaga
+Upload file: Tuʻu i luga le faila
+
+########################################
+# Page: docdel.php
+#
+Removed: Aveese
+
+########################################
+# Page: edit_entry.php
+#
+days: aso
+hours: itula
+minutes: minute
+You are not authorized to edit this task.: Oe le faʻatagaina e faʻatonutonu lenei galuega.
+is in a different timezone than you are. Currently: o loʻo i se taimi ese ese nai lo oe. Taimi nei
+hour ahead of you: itula muamua atu ia te oe
+hour behind you: itula i ou tua atu
+hours ahead of you: itula muamua atu ia te oe
+hours behind you: itula i ou tua atu
+XXX is in a different timezone (ahead): (E ese le taimi oleone a le XXX; YYY i ou luma atu.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (E ese le taimi ole asone a le XXX; YYY i ou tua atu.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Taimi ulufale iinei e faʻavae i luga o lau Timezone.
+Edit Entry: Faʻatonutonu Ulufale
+Details: Auiliiliga
+Repeat: Toe fai
+Reminders: Faamanatu
+brief-description-help: Lenei tatau ona saunia se puʻupuʻu faʻamatalaga (tusa ma le 20 mataitusi) o le mea na tupu. Lenei o le a fai ma sui o le mea na tupu pe a matamata i le kalena.
+full-description-help: Lenei tatau ona faʻamaeʻaina auiliiliga o le mea na tupu. Lenei faʻamatalaga mafai ona vaʻaia pe a tagata faʻaaoga vaʻai i le mea na tupu.
+access-help: Faʻailoa le tulaga avanoa i le mea na tupu. <ul> <li> Lautele: E mafai e tagata uma ona vaʻai i faʻamatalaga atoa o le mea na tupu. <li> <li> Faʻalilolilo: O isi e mafai ona vaʻaia o loʻo iai sau ulufale mo lena aso ma le taimi, ae e leʻo auiliiliga o mea ia.</li></li>
+priority-help: Faʻamanino mai le faʻamuamua o le mea na tupu. Maualuga mea taua o le a faʻaalia i le lototele.
+category-help: Faʻamalamalamaina le vaega o le mea na tupu.
+completed-help: Aso galuega ua maeʻa. Faʻatoa mafai pe a o tagata uma e pasene pasene e tutusa le 100%.
+Date Completed: Aso Ua Maeʻa
+percent-help: Galue pasene pasene mo lenei tagata faʻaaoga
+Percent Complete: Pasene maeʻa
+All Percentages: Pasene uma
+location-help: Nofoaga na tupu ai
+Location: Nofoaga
+url-help: Mea na tupu URL
+URL: =
+date-help: Faamaoti le aso o le mea na tupu.
+Untimed event: Gaoioiga e leʻi faʻatuina
+Timed event: Mea na tupu i le taimi
+All day event: Faʻatinoga ile aso atoa
+Timezone Offset: Faʻaletonu Timezone
+time-help: Faʻamaoti mai le taimi o le mea na tupu. <ul> <li> "Taimi faʻatulagaina" (mo se mea na tupu na atofaina mo se taimi faʻapitoa i lena aso)</li> <li> "Untimed mea na tupu" (mo se mea e tupu e leai se taimi (pei o se aso malolo )</li> <li> "Mea e fai i le aso" (mo se mea e tupu e alu ai le aso atoa (pei o le alu i fafo o le ofisa)</li></li>
+duration-help: Faʻamaoti mai le umi (i itula; minute) o le mea na tupu. <em>O lenei fanua e mafai ona tuʻufuaina
+end-time-help: Faʻailoa mai le taimi o le mea na tupu e tatau ona maeʻa.
+Start Time: Taimi Amata
+Due Time: Taimi ua tatau
+Site Extras: Nofoaga Faʻaopoopo
+avail_participants-help: Lisiina tagata avanoa o lenei ulufale.
+Available: Avanoa
+Find Name: Saili Igoa
+Resources: Punaoa
+participants-help: Lisiina tagata auai o lenei ulufale.
+Selected: Filifilia
+Availability: Avanoa
+external-participants-help: Faʻamaoti mai se lisi o tagata auai mo le mea na tupu e le o kalena tagata faʻaaoga. E tatau i le au faʻaoga ona lisi tasi i le laina ma mafai ona aofia ai se imeli tuatusi. A faʻamaonia mai se tuatusi imeli, e agavaʻa le tagata faʻaaoga e talia faʻasilasilaga ma faʻamanatuga.
+External Participants: Tagata auai i fafo
+repeat-type-help: Filifili pe faʻafia ona tatau ona toe tupu le gaioiga.
+Daily: Aso uma
+Weekly: Vaiaso
+Monthly: Masina taʻitasi
+by day: i le ao
+by date: i le aso
+by position: i le tulaga
+Monthly (by day): Masina taʻitasi (ile aso)
+Monthly (by date): Masina taʻitasi (ile aso)
+Monthly (by position): Masina taʻitasi (ile tulaga)
+Yearly: Tausaga
+Manual: Tusi lesona
+Expert Mode: Faiga faʻapitoa
+repeat-end-date-help: Faʻamaoti mai le aso e tatau ai ona toe tupu le mea na tupu.
+Ending: Faaiuga
+Forever: Faavavau lava
+Use end date: Faʻaaoga le aso faʻaiʻu
+Number of times: Aofai o taimi
+repeat-frequency-help: Faʻamaoti mai pe fia taimi e tatau ai ona toe tupu le mea na tupu.
+Frequency: Faafia
+Weekdays Only: Naʻo Aso Vaiaso
+Week Start: Vaiaso Amata
+repeat-bydayextended-help: Faʻatagaina aso filifilia faʻavae i le aso o le vaiaso.
+ByDay: =
+repeat-month-help: Faʻamaoti mai masina o le mea na tupu e tatau ona toe faia i.
+ByMonth: =
+repeat-bysetpos-help: Faʻatagaina aso filifilia faʻavae i luga o le tulaga ma le masina.
+BySetPos: =
+repeat-bymonthdayextended-help: Faʻatagaina aso filifilia faʻavae luga o le aso.
+ByMonthDay: =
+repeat-byweekno-help: Faʻatagaina le tagata faʻaoga e faʻamaoti mai se lisi o vaiaso e toe faʻatino ai mea na tutupu (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Faʻatagaina le tagata faʻaoga e faʻamaoti mai se lisi o aso tausaga e toe tupu ai le mea na tupu (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Aso faʻaopoopo e tatau ai pe le tatau foʻi ona tupu lenei mea.
+Exclusions: Tuusaunoa
+Inclusions: Tuʻufaʻatasiga
+Add Exception: Faʻaopopo Faʻapitoa
+Add Inclusion: Faʻaopopo le aofia ai
+Delete Selected: Aveese Filifilia
+Send Reminder: Lafo Faamanatu
+When: Afea
+Use Date/Time: Faʻaaoga le Aso / Taimi
+Use Offset: Faʻaaoga Offset
+Before: Muamua
+After: Ina ua maeʻa
+Start: Amata
+End/Due: Iʻuga / Taunuʻu
+Times: Taimi
+Every: Uma
+CAPTCHA Warning: Lapataʻiga:  E le mafai ona faʻaaoga le CAPTCHA e aunoa ma le faʻaopopoina ole PHP GD!<br>
+Delete entry: Aveese le ulufale
+You are not authorized to edit this entry.: Oe le faʻatagaina e faʻatonutonu lenei ulufale.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: Ua faia se avanoa fou a le XXX.
+XXX has updated an appointment.: Ua faʻafouina e le XXX se taimi atofaina.
+Security violation!: Solia le saogalemu!
+You must enter the anti-spam text on the previous page.: Oe tatau ona ulufale i le aneti-spam tusitusiga i luga o le muamua itulau.
+The following conflicts with the suggested time: O feteʻenaʻi ma taimi atofaina
+User removed from participants list.: Tagata na toʻesea mai le lisi o tagata na auai.
+Please look on XXX to accept or reject this appointment.: Faʻamolemole vaʻai i le XXX e talia pe teʻena lenei taimi atofaina.
+Please look on XXX to view this appointment.: Faʻamolemole vaʻai i le XXX e vaʻai i lenei taimi atofaina.
+Scheduling Conflict: Fuafuaina Feteenaiga
+Your suggested time of: Lou taimi fautuaina o
+conflicts with the following existing calendar entries: feteʻenaʻi ma mea nei o loʻo iai
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX e leʻo seti ile "config.php".
+word characters only: (naʻo upu e mafai ona iai; [a-zA-Z_0-9])
+Add User: Faʻaopopo le tagata faʻaaoga
+Edit User: Faʻatonutonu Tagata Faʻaoga
+Calendar ID: Kalena ID
+First Name: Igoa muamua
+Last Name: Faʻaiu
+Is public calendar: O le kalena lautele
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Sese faʻamaumauga
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Faʻaopopo le Kalena Mamao
+Edit Remote Calendar: Faʻatonutonu mamao Kalena
+Create Layer: Fausia Layer
+Reload: Toe fai
+Required to View Remote Calendar: Manaʻomia e Vaʻai mamao Kalena
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Auina mai o iʻuga
+Events successfully imported: O mea na tutupu na faʻaulufale mai ma le manuia
+Create a new layer to view this calendar.: Fausia se isi vaega e matamata ai i lenei kalena.
+Errors: Mea Sese
+There was an error parsing the import file or no events were returned.: Sa i ai se mea sese na faʻamamaina le faila faila pe leai foi ni mea na tupu.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Taeao
+Yesterday: Ananafi
+Day before yesterday: Aso ananafi
+Next week: Vaiaso fou
+This week: Lenei vaiaso
+Last week: Vaiaso talu ai
+Week before last: Vaiaso i luma ole taimi mulimuli
+Next week and week after: Le vaiaso fou ma le vaiaso mulimuli ane
+This week and next week: Lenei vaiaso ma le vaiaso fou
+Last week and this week: O le vaiaso ua tuanaʻi ma lenei vaiaso
+Last two weeks: Lua vaiaso talu ai
+Next month: Masina fou
+This month: Lenei masina
+Last month: Masina ua teʻa
+Month before last: Masina muamua
+Next year: Tausaga fou
+This year: Lenei tausaga
+Last year: Tausaga talu ai
+Year before last: Tausaga ae le i mavae atu
+Next 14 days: Le isi 14 aso
+Next 30 days: Le isi 30 aso
+Next 60 days: Le isi 60 aso
+Next 90 days: Le isi 90 aso
+Next 180 days: Le 180 aso e sosoʻo ai
+Next 365 days: Le isi 365 aso
+Invalid report id XXX.: Lē saʻo lipoti lipoti: "XXX"
+Unnamed Report: Lipoti e leʻo faʻaigoaina
+Add Report: Faʻaopopo le Lipoti
+Edit Report: Faʻatonutonu Lipoti
+Report name: Lipoti igoa
+User: Tagata faʻaaoga
+Current User: Tagata faʻaaoga nei
+Include link in menu: Faʻaaofia le fesoʻotaʻiga i le lisi
+Include standard header/trailer: Faʻaaofia tulaga faʻanumera / taavaletoso
+Include previous/next links: Faʻaaofia muamua / isi fesoʻotaʻiga
+Include empty dates: Faʻaaofia ai avanoa leai
+Date range: Aso lautele
+Template variables: Faʻafanua suia
+Page template: Faʻafanua itulau
+Day template: Aso faʻatusa
+Event template: Faʻataʻitaʻiga o mea na tupu
+Are you sure you want to delete this report?: O e mautinoa e te manaʻo e aveese lenei lipoti?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Leai se lipoti faʻapea: "XXX"
+Variable XXX not found.: E le maua le XXX liʻo
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Faʻatonutonu Ulutala Tiute
+Edit Custom Script/Stylesheet: Faʻatonutonu Custom Script / Stylesheet
+Edit Custom Trailer: Faʻatonutonu Custom Trailer
+
+########################################
+# Page: edit_user.php
+#
+Username: Igoa Igoa
+E-mail address: Imeli tuatusi
+Password: Numera e le iloa e sesi
+again: toe
+Disabled for demo: Lē atoatoa le malosi mo demo
+Are you sure you want to delete this user?: O e mautinoa e te manaʻo e aveese lenei tagata faʻaaoga?
+Change Password: Suia Upu Faʻamau
+New Password: Upu Fou
+Set Password: Seti Upu Faʻamau
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Tapeina tagata faʻaoga e le lagolagoina
+The passwords were not identical.: O upu faʻamau sa leʻi tutusa.
+You have not entered a password.: E te leʻi tusia se faʻaupuga.
+Username cannot be blank.: Igoa Igoa e le mafai ona avanoa.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Le faʻatagaina
+
+########################################
+# Page: export.php
+#
+Export: Auina atu i fafo
+Export format: Faiga auina atu i fafo
+Include all layers: Aofia uma faaputuga
+Include deleted entries: Faʻaaofia ai mea na aveese
+Export all dates: Faʻatau atu i fafo aso uma
+Start date: Aso amata
+End date: Aso faʻaiʻu
+Modified since: Fesuiaiga talu mai
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: auina atu i fafo le faʻamatalaina poʻo le saʻo.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Leai se faʻamatalaga faʻapitoa
+
+########################################
+# Page: groups.php
+#
+Add New Group: Faʻaopopo Vaega Fou
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Vaega e leʻo faʻaigoaina
+Add Group: Faʻaopopo le Vaega
+Edit Group: Faʻatonutonu Vaega
+Group name: Igoa o le kulupu
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Oe tatau faʻamaotiina se igoa kulupu
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Taʻavale-toe faʻafouina kalena
+auto-refresh-help: A mafai, o le aso vaʻai, vaʻaiga vaiaso, masina vaʻai, ma lisiina le taliaina itulau o le a otometi lava ona faʻafouina latou lava i lea taimi ma lea taimi.
+Auto-refresh time: Taʻavale faʻafouina taimi
+auto-refresh-time-help: A faʻapea o le Auto-refresh ua faʻafaigofieina, o lona uiga o le taimi i le va o faʻafouga taʻitasi.
+Display days with events in bold in year view: Faʻaali aso ma mea na tutupu i le tausaga o matamata tetele
+Display weekends in week view: Faʻaalia faaiuga o vaiaso i le vaʻaiga vaiaso
+Time interval: Vaitaimi vaitau
+time-interval-help: Faʻailoa mai le umi o le poloka taimi i le vaʻai vaiaso ma le aso vaʻai.
+Nonuser: Nonuser Kalena
+user-customize-color: Faʻamaonia pe faʻatagaina tagata faʻaoga e sui a latou lava lanu lanu.
+enable-gradient-help: Faʻaaoga lanu malamalama mo sela talaʻaga.
+Manually entering color values: Faʻaaoga lima lanu taua
+colors-help: O lanu uma e tatau ona faʻamaoti mai i le "#RRGGBB" hexadecimal format o le "RR" o le hex aoga mo le mumu, "GG" o le hex aoga mo lanumeamata, ma le "BB" o le hex aoga mo le lanumoana.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Lipoti Bug
+Please include all the information below when reporting a bug.: Faʻamolemole faʻaaoga uma faʻamatalaga o loʻo i lalo pe a lipotia se bug.
+Also, please use English rather than XXX.: Faʻapea foʻi, faʻamolemole faʻaaoga le  Igilisi  nai lo le XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar Pepa faʻamaonia
+Currently in English only.: Ole taimi nei ile Igilisi.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Faʻaopopoina / Faʻasaʻoina Faʻailoga Kalena
+Repeat Type: Toe fai Ituaiga
+For More Information...: Mo nisi faʻamatalaga ...
+Repeat End Date: Toe fai Aso Faʻaiʻu
+Repeat Day: Aso toe fai
+repeat-day-help: Faʻamaoti mai aso o le vaiaso e tatau ona toe faia le mea na tupu.
+
+########################################
+# Page: help_import.php
+#
+Import: Faaulufale
+Palm Desktop: Pama Desktop
+allow you to import entries from the Palm...: O lenei pepa faʻatumu e faʻatagaina ai oe ona faʻaulufaleina mai au tusitusiga mai le Palm Desktop Datebook. E tatau ona i ai i lau Pusa tusi faʻamaumauga i le datebook / datebook.dat i se subdirectory igoa i lou igoa igoa.
+The following entries will not be imported: O mea nei o le a le faaulufale mai:
+Entries older than the current date: Faʻailoga tuai nai lo le aso nei
+Entries created in the Palm Desktop...: Ulufale na tusia i totonu o le Palm Desktop e leʻi HotSync'd
+Anything imported from Palm...: Soʻo se mea e faʻaulufale mai mai Pama o le a soloia i luga o le isi import (seʻi vagana ua pasia le mea na tupu aso). O le mea lea, faʻamatalaga e tatau ona faia i le Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Lenei fomu o le a faaulufale vCalendar (.vcs) 1.0 mea na tutupu.
+The following formats have been tested: O faʻamatalaga nei ua uma ona tofotofoina:
+This form will import iCalendar (.ics) events.: O lenei pepa o le a faaulufale mai iCalendar (.ics) mea na tutupu.
+Enabling: Faʻatagaina
+Overwrite Prior Import: Faʻaletonu Luma Faʻaulufale mai
+will cause events imported previously...: o le a mafua ai mea na faʻaulu mai muamua, na faʻaaogaina le UID tutusa ma se mea na tupu mai le faila fou faʻaulufale mai, ia makaina ua tapeina. Lenei tatau ona faʻatagaina se faʻafouina faila iCalendar ona faʻaulufale mai e aunoa ma le faia o ni kopi.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Fesoasoani Faasino
+About WebCalendar: E uiga ile WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: O lapisi e aoga mo le faʻaalia o isi tagata faʻaaoga mea na tutupu i lau oe lava kalena. Oe mafai faʻamaoti mai le tagata faʻaaoga ma le lanu o mea o le a faʻaalia i totonu.
+Add/Edit/Delete: Faʻaopopo / Faʻasaʻo / Tape
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: O le kilikiina o le Faʻavasega Laʻau fesoʻotaʻiga i le pulega vaega i le pito i lalo o le itulau o le a faʻatagaina ai oe e faʻaopopo / faʻatonutonu / aveese vaega.
+The text color of the new layer that will be displayed in your calendar.: Le lanu tusitusiga o le vaega fou o le a faʻaalia i lau kalena.
+Disabling: Faʻaleaogaina
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Fetaomi le Disable Layers link i le admin vaega i le pito i lalo o le itulau e tape laina.
+Duplicates: Faʻalua
+If checked, events that are duplicates of your events will be shown.: Afai e siakiina, o gaioiga faʻaluaina o au gaioiga o le a faʻaalia.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Fetaomi le Enable Layers link i le admin vaega i le pito i lalo o le itulau e liliu i luga o vaega.
+Source: Punavai
+Specifies the user that you would like to see displayed in your calendar.: Faʻamaoti mai le tagata faʻaaoga e te manaʻo e vaʻaia faʻaalia i lau kalena.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Leai vaega
+default-category-help: Faʻamaoti mai le vaega o se mea fou na tupu e tatau ona le masani ai.
+When I am the boss: A o aʻu o le pule
+Email me event notification: Imeli mai ia te aʻu faʻasilasilaga mea na tupu
+email-boss-notifications-help: Faʻailoa mai pe a fai e maua e aliʻi imeli ni faʻasilasilaga o mea na tutupu.
+I want to approve events: Ou te manaʻo e faʻamaonia mea na tutupu
+boss-approve-event-help: Faʻamaonia pe o le pule o le a manaʻomia e faʻamaonia mea na faʻaopoopoina e fesoasoani.
+Subscribe/Publish: Totogi / lolomi
+Allow remote publishing: Faʻatagaina le lolomiga mamao
+allow-remote-publishing-help: Faʻamaoti mai pe a mafai e se kalani mamao iCal ona lolomiina mea na tutupu i tua ile WebCalendar
+remote-publishing-url-help: Faʻaalia le URL e faʻaaoga i le iCal tagata faʻaoga talosaga mo le lesitalaina ma le lolomiina i tua i le WebCalendar.
+allow-remote-subscriptions-help: Faʻailoa mai pe a fai e faʻaaoga mamao e tagata faʻaaoga mamao lau kalena, faʻatagaina i latou e vaʻai i au mea na tutupu i se iCal-mafai apalai (pei o le Apple iCal poʻo le Mozilla Kalena).
+remote-subscriptions-url-help: Faʻaalia le URL mamao tagata faʻaaoga tatau ona faʻaaoga e lesitala ai i lau kalena.
+Enable FreeBusy publishing: Faʻagaio le FreeBusy lolomiga
+freebusy-enabled-help: Faʻamaonia mai pe a mafai ona maua se tagata faʻaaoga avanoa e faʻaaoga ai le iCal FreeBusy standard.
+freebusy-url-help: Le URL mo le faʻaaogaina o le lisi a le tagata faʻaaogaina FreeBusy
+rss-feed-url-help: Le URL e ulufale ai ile RSS fafaga
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Faʻatagaina mo le puleaina lelei o le faʻaaogaina o faʻatagaina ma faʻatagaga. E mafai foi e tagata faʻaaoga ona faʻatagaina le le faʻamaoni ma le faʻatagaga a le tagata pe a faʻatagaina e le pule.
+If disabled, this user cannot send you emails.: Afai e le atoatoa, e le mafai e lenei tagata faʻaaoga ona lafo ia oe imeli.
+If disabled, this user cannot see you in the participants list.: Afai e le atoatoa, o lenei tagata faʻaaoga e le mafai ona vaʻaia oe i le lisi o tagata auai.
+If enabled, this user cannot view the details of any of your entries.: Afai e mafai, e le mafai e lenei tagata faʻaaoga ona matamata i auiliiliga o soʻo se au tusiga.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Lolomiina le lolomiina (Pule)
+Publishing Disabled (User): Lolomiina Lolomiina (Tagata e faaaogaina)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Kiliki e Filifili
+Current Icons on Server: Ata o loʻo iai nei ile Server
+
+########################################
+# Page: import.php
+#
+import from file: aumai mai faila
+Disabled: Lē atoatoa le malosi
+Import format: Auina mai le faatulagaga
+Exclude private records: Tuʻuʻese mai faʻamaumauga tumaoti
+Repeated items are imported separately. Prior imports are not overwritten.: O aitema taʻitasi e toe aumai mai fafo. O oloa mai fafo e le o soloia.
+
+########################################
+# Page: import_handler.php
+#
+No file: Leai se faila
+Error deleting palm events from webcalendar.: Sese i le tapeina o niu mea na tutupu mai le webcalendar.
+Events from prior import marked as deleted: O mea na tutupu mai le taimi na aumai ai oloa mai fafo na faailogaina ua tape
+Conflicting events: Feteenaiga mea na tutupu
+The import file contained no data.: O le faila faaulufale mai leai ni faamatalaga.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: O e mautinoa e te manaʻo e aveese lenei vaega?
+Delete layer: Aveese le vaega
+Edit layer: Faʻatonutonu vaega
+Enable layers: Faʻagaoioi laupepa
+Layer: Faʻaputuga
+Layers are currently disabled.: O loʻo le atoatoa le malosi o faʻavae ile taimi nei.
+Layers are currently enabled.: Faʻafouga o loʻo mafai nei.
+Click to modify layers settings for XXX: Kiliki ii e toe faʻafesuiaʻi ia tulaga mo le kalena XXX.
+Disable Layers: Faʻapipiʻi faʻaputuga
+Add layer: Faʻaopopo vaega
+Add Layer: Faʻaopopo le Apa
+Edit Layer: Faʻatonutonu vaega
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Le mafai ona faʻafouina le manaʻoga
+Invalid entry id.: Lē saʻo le ulufalega id.
+You cannot create a layer for yourself.: Oe le mafai faia se vaega mo oe lava.
+You can only create one layer for each user.: E naʻo le tasi le vaega e mafai ona e faia ai tagata taʻitasi.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Faʻamaonia / Faʻamaonia
+Approve Selected: Faamaonia Filifilia
+Check All: Siaki uma
+Emails Will Not Be Sent: Imeli Le a Le Auina Atu
+Reject Selected: Teena Filifilia
+Reject: Teena
+Uncheck All: Faʻamau uma
+View this entry: Vaʻai lenei tusitusiga
+No unapproved entries for XXX.: Leai ni tusitusiga e leʻi faʻamaonia mo: "XXX"
+Unapproved Entries: Ulufale e leʻi faʻamaonia
+Approve this entry?: Faʻamaonia lenei ulufale?
+Reject this entry?: Teena lenei ulufale?
+Approve Selected entries?: Faamaonia mea filifilia?
+Reject Selected entries?: Teena Faʻamatalaga filifilia?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Oe tatau ona ulufale i se login ma upu faʻamau.
+Save login via cookies so I dont have to login next time.: Sefe login e ala i kuki ina ia ou te le tau login le isi taimi
+Login: Ulufale
+public: lautele
+Access XXX calendar: Avanoa i le kalena XXX
+cookies-note: Faʻaaliga: O lenei tusi talosaga manaʻomia kuki ina ia mafai ai.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Le faʻatulafonoina mataʻitusi ile login XXX.
+Invalid login: Lē saʻo le saini
+Activity login failure: Igoa Igoa: "XXX", IP: "YYY".
+Error XXX: Sese: "XXX"
+You have been logged out.: Ua tuli ese oe i fafo.
+Access public calendar: Avanoa avanoa lautele
+Not yet registered? Register here!: E leʻi lesitalaina? Tusi iinei!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Leai se kalena e le faʻaaogaina: "XXX".
+This Calendar is not Public.: Lenei Kalena e le lautele.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Faʻaopopo le New NonUser Kalena
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: E tatau ona faʻamaoti mai se saini.
+No such nonuser calendar: Leai se kalena le faʻaaogaina
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Autu le saʻo
+Save Preferences: Sefe Faʻamanuiaga
+Public Access calendar: Kalena Avanoa Lautele
+Modify Non User Calendar Preferences: Fesuiaʻi Lē Faʻaogaina Tusi Faʻailoga a le Kalena
+Return to My Preferences: Toe foʻi i aʻu Mea Manaʻomia
+Custom Scripts: Tusitusiga faʻapitoa
+Timezone Selection: Filifiliga o le Timezone
+Multiview: =
+entry-interval-help: Faʻatulaga minute minute pe a faʻatonutonu taimi ulufale
+Entry interval: Vaitaimi ulufale
+hour: itula
+minute: =
+theme-reload-help: Ona o le CSS caching, atonu e manaʻomia se toe uta itulau
+Page may need to be reloaded for new Theme to take effect: Itulau atonu e manaʻomia le toe uta mo fou Aʻoga e amata faamamaluina
+display_byproxy-help: Faʻaali le ata moni faia luga o le itulau view_entry
+Display if created by Assistant: Faʻaalia pe a fai e le Fesoasoani
+allow-view-subscriptions-help: Faʻatagaina le faʻatapulaʻaina o le sao i auala tumaʻoti poʻo Faʻamatalaga e le faalauaiteleina
+Allow remote viewing of: Faʻatagaina le matamata mamao ese o
+entries: faamaumauga
+
+########################################
+# Page: purge.php
+#
+Purging events for: Faamamaina o mea na fai mo
+Finished: Maea
+Back: Tua i tua
+Check box to delete ALL events for a user: Pusa siaki e aveʻese ai gaioiga a le  ALL  mo se tagata faʻaaoga
+Delete all events before: Tape uma mea na tutupu muamua
+Purge deleted only: Faamama na aveese
+Preview delete: Muai Vaaia aveese
+Are you sure you want to delete events for: O e mautinoa e te manaʻo e aveese mea na tutupu
+Records deleted from XXX: Faʻamamaina faamaumauga mai le "XXX"
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Imeli tuatusi le mafai ona avanoa.
+Username already exists.: Username ua uma ona iai.
+Email address already exists.: Ua leva ona iai le tuatusi imeli.
+New user via self-registration.: Fou tagata faʻaaoga e ala ia lava-lesitala.
+A new WebCalendar account has been set up for you.: Ua uma ona setiina se teugatupe fou a le WebCalendar mo oe.
+Your username is XXX.: O lou igoa ole igoa: "XXX".
+Your password is XXX.: O lau faʻaupuga o le: "XXX"
+Please visit XXX to log in and start using your account!: Faʻamolemole asiasi i le "XXX" e te ulufale ai i totonu ma amata faʻaaoga lau teuga tupe!
+You may change your password after logging in the first time.: Oe mafai ona suia lau faʻaupuga pe a maeʻa logging i le taimi muamua.
+If you received this email in error: Afai na e mauaina lenei imeli i se mea sese ma e te leʻi saini mo se WebCalendar account, oe ono le amanaʻiaina lenei faʻaaliga, pe tali mai ma se tusi puʻupuʻu
+Administrator: Pule
+Welcome: Afio mai
+New user via email.: Fou tagata faʻaaoga e ala i imeli.
+Registration: Lesitalaina
+Welcome to WebCalendar: Afio mai i le WebCalendar
+Your email should arrive shortly.: E tatau ona vave taunuʻu lau imeli.
+Return to Login screen: Toe foi i le laupepa Login
+Password (again): Upu faataga (toe):
+Your account information will be emailed to you.: O lau tala faʻamatalaga o le a imeli ia te oe.
+Submit: Tuʻuina atu
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Faaauau
+(Your comments will be emailed to the other participants.): (O au manatu o le a imeliina i isi tagata auai.)
+XXX has rejected an appointment.: Ua teʻena e le XXX se taimi atofaina.
+Rejected by XXX.: Teʻena e XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Faʻaopopo le New Remote Calendar
+
+########################################
+# Page: report.php
+#
+This event is confidential.: O lenei mea na tupu e agatapuia.
+(Private): (Tumaoti)
+(cont.): =
+Approved: Faamaonia
+Deleted: Soloia
+Rejected: Teenaina
+Waiting for approval: Faatali mo le faʻamaoniga
+Unknown: Le iloa
+Invalid report id.: Le aoga le lipoti id.
+Click here to manage reports for the Public Access calendar.: Kiliki ii e faʻatonutonu lipoti mo le kalena Lautele Avanoa.
+Add new report: Faʻaopopo se lipoti fou
+Manage Reports: Pulea Lipoti
+
+########################################
+# Page: search.php
+#
+Advanced Search: Suʻega Sili
+Search: Saili
+Keywords: Upu Taua
+Enter % for all entries: Ulufale% mo faamaumauga uma
+Include: Faʻaaofia ai
+Filter by Date: Faʻamama ile Aso
+All Dates: Aso uma
+Past: Ua tuanaʻi
+Upcoming: Afio mai
+Range: Tulaga
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Oe tatau ona ulufale i se tasi pe sili atu faʻaupuga autu.
+Search Results: Iʻuga o sailiga
+match found: fetaui maua
+matches found: afitusi maua
+No matches found: Leai se fetaui
+New Search: Suʻega Fou
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: O le faʻamatalaga o loʻo i lalo e lisiina atu ai ni faʻafitauli ono ma lau WebCalendar faʻapipiʻiina e mafai ona toe faʻaleleia ina ia atili saogalemu ai lau faʻapipiʻiina.
+For questions about WebCalendar security see the forums: Mo fesili e uiga i soʻo se WebCalendar saogalemu mataupu, faʻamolemole faʻaaoga le WebCalendar forums talimalo luga GitHub.com;<br>XXX
+View your current PHP settings: Vaʻai lau tulaga PHP i le taimi nei
+Security Issue: Mataupu Puipuiga
+Status: Tulaga
+Default admin user password: Le pasi upu pule a le tagata faʻaaoga admin
+You should change the password of the default admin user.: E tatau ona e suia le faʻaupuga o le le masani admin admin.
+File permissions XXX: Faʻatagaina faila: XXX
+item XXX should not be writable: O le aitema lea e le tatau ona tusi:<br><tt> XXX</tt>
+File exists XXX: Faila o loʻo i ai: "XXX"
+Because you have email disabled, you should remove this file.: Ona ua e le atoatoa imeli, oe tatau ona aveʻese lenei faila.
+File location XXX: Nofoaga faila: "XXX"
+remove XXX if not using: Afai e te le o faʻaaogaina le faila "XXX", e tatau ona e aveʻese. Poʻo le mea sili, ave i se tusi fou.
+System Settings XXX: Faʻasologa o faiga: "XXX"
+consider enabling UAC: Atonu e te manaʻo e mafaufau faʻatagaina le faʻaaogaina o le Access Access e seti ai faʻapitoa a tagata e faʻaaoga.
+recommend approving new public events: Matou te fautuaina ia faʻamaonia uma talosaga a tagata lautele.
+recommend using CAPTCHA: CAPTCHA ua fautuaina e leoleo toe i otometi gaioiga gaioiga.
+Database cache directory location: Nofoaga faʻamaufaʻailoga cache nofoaga
+db cache should be inaccessable: O le nofoaga autu o faamaumauga cache tatau ona i ai i totonu o se tusi faʻasino e le mafai ona mauaina faʻatasi ma se URL.
+PHP Settings XXX: PHP tulaga: "XXX"
+recommend setting XXX Off: O le tulaga fautuaina mo le "XXX" ua tape.
+recommend setting allow_url_fopen Off: O le tulaga fautuaina mo le "allow_url_fopen" e Tape pe a le mafai ona faia ni kalena mamao.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Vaʻai le Kalena a seisi tagata faʻaaoga
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: E te leʻi faʻaopopoina ni vaega.
+Set Category: Seti Vaega
+Global Categories cannot be changed.: Global vaega e le mafai ona suia.
+
+########################################
+# Page: upcoming.php
+#
+more: sili atu
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Kalena Mamao
+denotes administrative user: faʻailoa le faʻaoga pulega
+Add New User: Faʻaopopo Tagata Fou
+
+########################################
+# Page: usersel.php
+#
+form: fomu
+Reset: Toe setiina
+
+########################################
+# Page: views.php
+#
+Add New View: Faʻaopopo se Vaʻaiga Fou
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Vaʻai e leʻo faʻaigoaina
+Add View: Faʻaopopo le Vaʻaiga
+Edit View: Faʻatonutonu Vaʻaia
+View Name: Vaʻai Igoa
+View Type: Vaʻai Ituaiga
+Day by Time: Aso ma lea Taimi
+Week (Users horizontal): Vaiaso (Tagata faʻataʻamilomilo)
+Week by Time: Vaiaso ma lea Taimi
+Week (Users vertical): Vaiaso (Tagata e faʻaaogaina)
+Week (Timebar): Vaiaso (Timebar)
+Month (Timebar): Masina (Timebar)
+Month (side by side): Masina (i autafa o leisi)
+Month (on same calendar): Masina (i le tutusa kalena)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Oe tatau faʻamaoti se vaʻaiga igoa
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Leai ni tagata faʻaaoga mo lenei manatu.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Faʻaleleia le Polokalama Pasene
+Completed: Maea
+Assistant mode: Fesoasoani fesoasoani
+Declined: Le taliaina
+Needs-Action: Manaʻoga-Faatinoga
+by: e
+Percentage Complete: Pasene maeʻa
+External User: Tagata faʻaaoga i fafo
+Update: Faʻafouga
+at: i le
+comments: manatu
+Show: Faʻaali
+Hide: Lafi
+Approve/Confirm entry: Faʻamaonia / Faʻamaonia le ulufale
+Reject entry: Tetee le ulufale
+Set category: Seti vaega
+Add to My Calendar: Faʻaopopo i laʻu Kalena
+Copy entry: Kopi le ulufale
+This will delete this entry for all users.: Lenei o le a tapeina lenei ulufale mo uma tagata faʻaaoga.
+Edit entry: Faʻatonutonu ulufale
+Edit repeating entry for all dates: Faʻatonutonu toe fai ulufale mo aso uma
+Delete repeating event for all dates: Aveese le toe faia mea mo aso uma
+Edit entry for this date: Faʻatonutonu ulufale mo lenei aso
+Delete entry only for this date: Aveʻese naʻo le aso na e ulufale ai
+Delete entry from calendar of XXX: Aveese le ulufale mai le kalena a le XXX
+This will delete the entry from your XXX calendar.: Lenei o le a aveʻesea le ulufale mai lau kalena XXX.
+boss: pule '
+This will delete the entry from your boss calendar.: Lenei o le a aveese le ulufale mai lau pule 'kalena.
+This will delete the entry from your calendar.: Lenei o le a aveese le ulufale mai lau kalena.
+from your boss calendar: mai lau kalena 'kalena
+Do you want to add this entry to your calendar?: E te manaʻo e faʻaopopo lenei mea i lau kalena?
+This will add the entry to your calendar.: Lenei o le a faʻaopopo ai le ulufale i lau kalena.
+Email all participants: Imeli tagata auai uma
+Hide activity log: Faʻalafi le tusi ogalaau
+Show activity log: Faʻaali le tusi o gaoioiga
+Export this entry to: Auina atu i fafo lenei ulufale i
+Palm Pilot: Pailate Pailate
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Faʻalua-kiliki i luga o avanoa avanoa e faʻaopopo ai se ulufale fou.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Ulufale Fou
+cont.: cont
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Le Kalena a seisi tagata faʻaaoga
+Category Management: Category pulega
+Day View: Vaʻai i le Aso
+Edit Event: Faʻatonutonu Mea na Tutupu
+Month View: Masina Vaʻai
+Common Trailer: Taavaletoso masani
+User Management: Tagata Faʻatonutonu Pulega
+Manage Views: Pulea Manatu
+Week View: Vaiaso Vaaiga
+Year View: Vaaiga i le Tausaga
+Invalid function id: Le aoga le aoga id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Le maua le faila "setting.php".<br>Faʻamolemole kopi le "setting.php.orig" i le "setting.php" ma faʻasaʻo mo lau tulaga.
+Incomplete settings.php file...: Faʻamaea faila "setting.php" ...
+Could not find XXX defined in...: Le maua le "XXX" faʻauigaina i lau "setting.php" faila.
+You must define XXX in: Oe tatau ona faʻauiga le "XXX" i le "setting.php" faila.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Tesema
+Dec: Tes
+LANGUAGE DEFINED: FAʻAMATALAGA LE GAGANA
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Sese fesoʻotaʻiga i nofoaga autu o faʻamatalaga: "XXX".
+db_type not defined.: db_type le faʻamatalaina.
+invalid db_type XXX: le aoga le db_type "" XXX ".
+Cache cleared from previous SQL!: Cache na kilia mai le SQL talu ai!
+Error executing query.: Sese i le faʻatinoina ole fesili.
+Unfortunately, XXX is not implemented for YYY: Ae paga lea, "XXX" e le faʻatinoina mo (YYY)
+Unknown ODBC error.: Le iloa le mea sese ODBC.
+Error opening cache dir XXX.: Ua sese le tatalaina o le cache "XXX".
+delete: aveese
+Cache error Could not XXX file YYY.: Sese cache: Le mafai le XXX faila "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Faʻalavelave matuia
+Invalid data format for: Le saʻo faamaumauga faʻamatalaga mo
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Sese: Ituaiga le seti mo gaioiga log!
+This event is XXX.: Lenei mea na tupu o le XXX.
+Conf.: =
+exceeds limit of XXX events per day: sili atu i le tapulaʻa o mea na tutupu ile XXX ile aso
+on: i luga
+All Attendees: Tagata Auai Uma
+Busy: Pisi
+Tentative: Fale Faʻalelotu
+Schedule an appointment for XXX.: Faʻatulaga se taimi mo XXX: YYY
+date_select: =
+Event approved: Na faamaonia le mea na tupu
+Journal approved: Faamaonia le tusi talaaga
+Task approved: Na faamaonia le galuega
+Attachment: Faʻapipiʻiga
+Event created: Mea na tupu na faia
+Journal created: Tusi talaaga fausia
+Task created: Na faia le galuega
+Event deleted: Mea na tupu ua tape
+Journal deleted: Tusi tala ua aveese
+Task deleted: Ua tape le galuega
+New user via email (self registration): Fou tagata faʻaaoga e ala i imeli (lava faamauina)
+New user (self registration): Tagata fou (lesitalaina o oe lava)
+Notification sent: Lafo faʻasalalau
+Event rejected: Ua teena le mea na tupu
+Journal rejected: Ua teena le tusi talaaga
+Task rejected: Na teena le galuega
+Reminder sent: Ua lafo le faʻamanatu
+Event updated: Ua faʻafouina le mea na tupu
+Journal updated: Tusitala faʻafouina
+Task updated: Faʻaleleia le galuega
+Delete User: Aveese le tagata faʻaaoga
+WK: =
+TASKS: GALUEGA
+Task_Title: Igoa
+Due: Taunuʻu
+Task Name: Galuega Igoa
+Task Due Date: Galue Aso Aso
+You have XXX unapproved entries: E i ai ni au faamaumauga le taliaina XXX 
+Changes successfully saved: Ua sefe ma le manuia suiga
+Event: Mea na tupu
+Action: Gaioiga
+Printer Friendly: Lomitusi Faʻalelei
+Generate printer-friendly version: Fausia se lomitusi-faʻauo lomiga
+after: ina ua maeʻa
+before: muamua
+end: iʻuga
+start: amata
+View this event: Matamata i lenei mea na tupu
+View this task: Vaʻai lenei galuega
+January: Ianuari
+February: Fepuari
+March: Mati
+April: Apelila
+May_: Mae
+June: Iuni
+July: Iuli
+August: Aukuso
+September: Setema
+October: Okitopa
+November: Novema
+Jan: Ian
+Feb: Fep
+Mar: =
+Apr: Ape
+May: Mae
+Jun: Laitiiti
+Jul: Iulai
+Aug: Auk
+Sep: Setema
+Oct: Oketopa
+Nov: =
+SU: =
+MO: =
+TU: =
+WE: O TATOU
+TH: =
+FR: =
+SA: =
+unknown-month: le iloa-masina
+First Quarter Moon: Masina Muamua Kuata
+Full Moon: Masina Atoa
+Last Quarter Moon: Masina Kuata mulimuli
+New Moon: Masina Fou
+Error TIME_SLOTS undefined!: Sese: TIME_SLOTS le faʻauigaina!
+The following error occurred: O le mea sese sa sosoʻo
+You are not authorized.: Oe le faʻatagaina.
+Add N hours to: Faʻaopopo N itula ile
+Subtract N hours from: Toese N itula mai
+same as: tutusa ma
+server time: taimi faigaluega
+Cannot read timezone file XXX.: Le iloa faitau le faila o lezone: XXX.
+Your current GMT offset is XXX hours.: Lou taimi nei GMT offset o XXX itula.
+Unauthorized: Lē faʻatagaina
+Error approving event XXX.: Sese i le faʻamaonia o le mea na tupu: XXX.
+Error deleting event XXX.: Sese i le tapeina o mea na tupu: XXX.
+Error rejecting event XXX.: Ua sese le teena o mea na tupu: XXX.
+Sunday: Aso Sa
+Monday: Aso Gafua
+Tuesday: Aso Lua
+Wednesday: Aso Lulu
+Thursday: Aso Tofi
+Friday: Aso Faralie
+Saturday: Aso Tonaʻi
+Sun: La
+Mon: =
+Tue: Aso Lua
+Wed: Aso Faraile
+Thu: Aso
+Fri: Aso Faraile
+Sat: =
+unknown-weekday: le iloa-vaiaso
+Invalid referring URL: Lē saʻo le faʻasino URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Faasino igoa
+Documentation: Faʻamaumauga
+Page: Itulau
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Laʻu Kalena
+Add New Entry: Faʻaopopo Fou Ulufale
+Add New Task: Faʻaopopo le Galue Fou
+Logout: Saini ese j
+Home: Fale
+Back to My Calendar: Toe foi i laʻu Kalena
+Go to: Alu i le
+Manage calendar of: Pulea le kalena a le
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: E le maua le Gagana o le Suʻesuʻega
+(not supported): (le lagolagoina)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Mamao
+Afrihili: =
+Afrikaans: Faʻa Afelika
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: Alapania
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Saute)
+Amharic: =
+Angika: =
+Apache: =
+Arabic (Algeria): Alapi (Algeria)
+Arabic (Bahrain): Alapi (Bahrain)
+Arabic (Egypt): Alapi (Aikupito)
+Arabic (Iraq): Alapi (Iraq)
+Arabic (Jordan): Alapi (Ioritana)
+Arabic (Kuwait): Alapi (Kuwait)
+Arabic (Lebanon): Alapi (Lepanona)
+Arabic (Libya): Alapi (Libya)
+Arabic (Morocco): Alapi (Morocco)
+Arabic (Oman): Alapi (Omani)
+Arabic (Qatar): Alapi (Qatar)
+Arabic (Saudi Arabia): Alapi (Saudi Arabia)
+Arabic (Syria): Alapi (Suria)
+Arabic (Tunisia): Alapi (Tunisia)
+Arabic (U.A.E.): Alapi (U.A.E.)
+Arabic (Yemen): Alapi (Yemen)
+Arabic: Alapi
+Aragonese: =
+Aramaic: Aramaika
+Arapaho: =
+Arawak: =
+Armenian: =
+Assamese: =
+Asturian: =
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: =
+Balinese: Faʻa Bali
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: =
+Beja: =
+Belarusian: Pelalusiana
+Bemba: =
+Bengali: =
+Bhojpuri: Bikini
+Bihari: Faʻaaoga
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: =
+Bliss: Fiafia
+Bosnian: =
+Braj: =
+Breton: =
+Buginese: Bugina
+Bulgarian: =
+Buriat: =
+Burmese: =
+Caddo: =
+Catalan: Katalana
+Cebuano: Igilisi
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: Seloki
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Saina (Hong Kong)
+Chinese (PRC): Saina (PRC)
+Chinese (Simplified/GB2312): Saina (Faigofie / GB2312) 
+Chinese (Singapore): Saina (Sigapoa)
+Chinese (Taiwan): Saina (Taiwan)
+Chinese (Traditional/Big5): Saina (Faʻaleaganuu / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: =
+Cornish: =
+Corsican: Kosikana
+Cree: =
+Creek: Vaitafe
+Croatian: =
+Czech: =
+Dakota: =
+Danish: =
+Dargwa: =
+Delaware: Nofouta
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Dutch (Peleseuma)
+Dutch: Siamani
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Igilisi (Ausetalia)
+English (Belize): Igilisi (Belize)
+English (Canada): Igilisi (Kanata)
+English (Ireland): Igilisi (Aialani)
+English (Jamaica): Igilisi (Jamaica)
+English (New Zealand): Igilisi (Niu Sila)
+English (Philippines): Igilisi (Filipaina)
+English (South Africa): Igilisi (Aferika i Saute)
+English (Trinidad & Tobago): Igilisi (Trinidad & Tobago)
+English (United Kingdom): Igilisi (United Kingdom)
+English (United States): Igilisi (United States)
+English (Zimbabwe): Igilisi (Zimbabwe)
+English: Igilisi-US
+Erzya: =
+Esperanto: Eseperano
+Estonian: =
+Ewe: =
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: =
+Fijian: Fiti
+Filipino: =
+Finnish: =
+Fon: =
+French (Belgium): Farani (Peleseuma)
+French (Canada): Farani (Kanata)
+French (France): Farani (Farani)
+French (Luxembourg): Farani (Luxembourg)
+French (Monaco): Farani (Monaco)
+French (Switzerland): Farani (Suiselani)
+French: Falani
+Frisian (Eastern): Frisian (Sasaʻe)
+Frisian (Northern): Frisian (Matu)
+Frisian (Western): Frisian (Sisifo)
+Frisian: =
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: =
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: Susuga
+Georgian: =
+German (Austria): Siamani (Ausetalia)
+German (Germany): Siamani (Siamani)
+German (Liechtenstein): Siamani (Liechtenstein)
+German (Luxembourg): Siamani (Luxembourg)
+German (Standard): Siamani (Standard)
+German (Switzerland): Siamani (Suiselani)
+German: Siamani
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: =
+Grebo: =
+Greek: =
+Greenlandic: Kurinilantika
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwichʻin
+Haida: =
+Haitian (Creole): Haiti Kereole)
+Haitian: Haiti
+Hausa: =
+Hawaiian: Havaii
+Hebrew: Eperu
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Heti
+Hmong: =
+Holo (Taiwanese): =
+Hungarian: =
+Hupa: =
+Iban: =
+Icelandic: =
+Ido: Ioe
+Igbo: =
+Iloko: =
+Indonesian: =
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Irani
+Irish (Gaelic): Aialani (Gaelic)
+Irish: Aialani
+Iroquoian: =
+Italian (Switzerland): Italia (Suiselani)
+Italian: Italia
+Japanese: Iapani
+Javanese: =
+Judeo-Arabic: Judeo-Arapi
+Judeo-Persian: Iutaia-Peresia
+Kabardian: Kapadiana
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: Kasaka
+Khasi: =
+Khmer (Central): Khmer (Tutotonu)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: Kaleundu
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Korea (Johab)
+Korean (North): Korea (Matu)
+Korean (South): Korea (Saute)
+Korean: Kolea
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kutisa
+Kutenai: =
+Kyrgyz: Kirikisi
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Latina
+Latvian: =
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Lituaniana
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: Luieno
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: =
+Macedonian: =
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Malagasi
+Malay: =
+Malayalam: =
+Maldivian: =
+Maltese: =
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: Maoli
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: Maya
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: =
+Mongo: =
+Mongolian: Mokoliana
+Montenegrin: =
+Moroccan: =
+Mossi: =
+Myanmar: =
+Māori: Maoli
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): =
+Ndebele (South): Ndebele (Saute)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Nouei (Bokmål)
+Norwegian (Nynorsk): Nouei (Nynorsk)
+Norwegian: =
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Faifeʻau
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: =
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: Pasato
+Pedi: =
+Persian (Farsi): Peresia (Farsi)
+Persian (Iran): Peresia (Iran)
+Persian: =
+Phoenician: Foinikia
+Pohnpeian: =
+Polish: =
+Portuguese: =
+Portuguese/Brazil: Potukale / Pasila
+Punjabi (India): Punjabi (Initia)
+Punjabi (Pakistan): =
+Punjabi: Punitapi
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: Lomani
+Romansh: Romah
+Romany: =
+Rundi: =
+Russian (Moldavia: Lusia (Moldavia
+Russian (Republic of Moldova): Lusia (Republic of Moldova)
+Russian: Lusia
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Matu)
+Sami (Skolt): =
+Sami (Southern): Sami (Saute)
+Sami: =
+Samoan: Faasamoa
+Samoli: =
+Sandawe: Sanewata
+Sango: =
+Sanskrit: FaʻaSanskrit
+Santali: =
+Sardinian: Satarinia
+Sasak: =
+Scots (Gaelic): =
+Selkup: =
+Serbian (Upper): Serbian (Luga)
+Serbian: Serbia
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Sisila
+Sindhi: =
+Sinhala: =
+Slavic: FaʻaSavava
+Slovak: =
+Slovenian: =
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorabi (Lalo)
+Sorbian (Upper): Sorbian (Luga)
+Sorbian: Sorabi
+Sotho: =
+Spanish (Argentina): Sipaniolo (Atenitina)
+Spanish (Bolivia): Sipaniolo (Bolivia)
+Spanish (Chile): Sipaniolo (Chile)
+Spanish (Colombia): Sipaniolo (Colombia)
+Spanish (Costa Rica): Sipaniolo (Costa Rica)
+Spanish (Dominican Republic): Sipaniolo (Dominican Republic)
+Spanish (Ecuador): Sipaniolo (Ecuador)
+Spanish (El Salvador): Sipaniolo (El Salvador)
+Spanish (Guatemala): Sipaniolo (Kuatemala)
+Spanish (Honduras): Sipaniolo (Honduras)
+Spanish (Mexico): Sipaniolo (Mekisiko)
+Spanish (Nicaragua): Sipaniolo (Nicaragua)
+Spanish (Panama): Sipaniolo (Panama)
+Spanish (Paraguay): Sipaniolo (Paraguay)
+Spanish (Peru): Sipaniolo (Peru)
+Spanish (Puerto Rico): Sipaniolo (Puerto Rico)
+Spanish (Spain): Sipaniolo (Sepania)
+Spanish (Uruguay): Sipaniolo (Iurukuei)
+Spanish (Venezuela): Sipaniolo (Venesuela)
+Spanish: Sipaniolo
+Sranan Tongo: =
+Sukuma: =
+Sumerian: =
+Sundanese: Sundani
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Suetena (Finelani)
+Swedish (Sweden): Suetena (Suetena)
+Swedish: =
+Syriac: Suliana
+Tagalog: =
+Tahitian: Tahiti
+Tai: =
+Taiwan: =
+Tajik: =
+Tamashek: =
+Tamil: =
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: Faʻa Thai
+Tibetan: =
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): Toga (Nytmhasa)
+Tonga (Tonga Islands): Toga (Toga a Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Take
+Turkmen: tamaloloa Take
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: =
+Ukrainian: Ukaraina
+Umbundu: =
+Urdu: =
+Uyghur: Uikaha
+Uzbek: =
+Vai: =
+Venda: =
+Vietnamese: =
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: Uelese
+Wolaitta: =
+Wolof: Uolofo
+Xhosa: Siosa
+Yakut: =
+Yao: =
+Yapese: Iapese
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Browser-faʻamatalaina
+event: mea na tupu
+journal: tusi talaaga
+0: 0                                                   
+1: 1                                                   
+2: 2                                                   
+3: 3                                                   
+4: 4                                                   
+5: 5                                                   
+6: 6                                                   
+7: 7                                                   
+8: 8                                                   
+9: 9                                                   
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Lē saʻo le saini a le tagata
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: faʻaupuga le saʻo
+no such user: leai se faʻaoga faapena
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Teugatupe le atoatoa
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Vaitaimi
+Months: Masina
+Month Days: Masina Aso
+Days: Aso
+Weeks: Vaiaso
+Position: Tulaga
+Until: Seia
+Count: Faitau
+Inclusion Dates: Aso Faʻapitoa
+Exclusion Dates: Aso Faʻesea
+Event Imported: Mea na Faʻaulu mai
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Faʻasilasilaga
+authenticate: SMTP Sese: Le mafai ona faʻamaonia
+connect_host: SMTP Sese: Le mafai ona fesoʻotaʻi i le SMTP talimalo:
+data_not_accepted: SMTP Sese: Faʻamatalaga le taliaina
+encoding: Faʻailoaina le faʻailoaina:
+execute: Le mafai ona faʻatino:
+file_access: Le mafai ona faʻaoga faila:
+file_open: Faila e le mafai ona tatalaina le faila:
+from_failed: Ua le manuia le mea lea Mai le tuatusi:
+instantiate: Le mafai faʻatonuina meli galuega
+mailer_not_supported: e le lagolagoina le meli
+provide_address: Oe tatau ona tuʻuina atu i le tasi le tuatusi imeli tuatusi.
+recipients_failed: SMTP Sese: O tagata na mauaina na le manuia:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Ulufale Uiga Tagata Vaʻai i le Ata
+Enter the correct letters and numbers...: Ulufale tusi saʻo ma numera mai le ata i le pusa tusitusiga. O lenei tamaʻi suʻega e avea ma faʻatapulaʻaina faʻasaga i sioti leaga. Naʻo le toe uta o le itulau pe a fai e faigata tele ona faitau lenei ata
+Challenge/Response: Luʻi / Tali
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Suia le aso ma le taimi o lenei ulufale?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: E te leʻi tusia se Faʻamatalaga Puʻupuʻu
+time prior to work hours...: taimi ae leʻi faigaluega itula ...
+Invalid Event Date: Lē saʻo le Aso na tupu ai
+Please add a participant: Faʻamolemole faʻaopopo se tagata auai
+Invalid Date: Aso le saʻo
+You have not entered a valid time of day: E te leʻi ulufale i se taimi faʻatulafonoina o le aso.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Kalena ID e le mafai ona avanoa.
+First and last names cannot both be blank.: Muamua ma igoa mulimuli e le mafai uma ona avanoa.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Lē saʻo lanu
+Color format should be RRGGBB.: Valivali faatulagaga tatau ona #RRGGBB.
+URL cannot be blank.: E le mafai ona avanoa le URL.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: E le tutusa le ituaiga faila ma le faaulufale mai o le faila
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Lē saʻo lanu mo faʻamaumauga o talafaʻasolopito.
+Invalid color for document title.: Lē saʻo lanu mo pepa ulutala.
+Invalid color for table cell background.: Lē saʻo lanu mo laulau sela i tua atu.
+Invalid color for table cell background for today.: Lē saʻo lanu mo laulau sela i tua mo aso nei.
+Invalid work hours.: Le aoga itula faigaluega.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: E tatau ona faʻaiʻu le server URL i le slash (/).
+Invalid color for table grid.: Lē saʻo lanu mo le laupepa faʻasologa.
+Invalid color for event popup background.: Lē saʻo lanu mo mea na tutupu oso mai tua.
+Invalid color for event popup text.: Lē saʻo lanu mo faʻaupuga oso oso upu.
+Invalid color for table header text.: Lē saʻo lanu mo laulau ulutala tusitusiga.
+Invalid color for table header background.: Lē saʻo lanu mo laʻasaga autu o laulau.
+Server URL is required.: Tagata faigaluega URL e manaʻomia.
+Invalid Color: Valivali le saʻo
+Database Name: Suafa Igoa
+Full Path (no backslashes): Ala atoa (leai ni tua)
+The password contains illegal characters.: O le upu faʻamau e aofia ai le faʻatulafonoina amio.
+Error you must specify a Single-User Login: Sese: E tatau ona e faʻamaoti se Nofofua-Tagata Faʻaoga Login
+Could not find XXX.: Le maua le XXX.
+Could not find XXX in DOM.: Le maua le XXX i DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Lenei Vaiaso
+This Month: Lenei Masina
+This Year: Lenei Tausaga
+Exit: Tuʻua i fafo
+Add New Event: Faʻaopopo Fou Mea Fou
+Delete Entries: Aveese Tusitusiga
+My Views: Oʻu Manatu
+Manage Calendar of: Pulea le Kalena a
+My Reports: O aʻu Lipoti
+My Profile: Loʻu talaaga
+Public Calendar: Kalena a le Malo
+Unapproved Events: O Mea e Le Faamaonia
+User Manager: Pule Pule
+Help Contents: Fesoasoani Mataupu
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Lisi o igoa Cache Directory
+Create New: Fausia Fou
+Failure Reason: Mafuaaga le manuia:
+You must manually create database: E tatau ona e faia lima faʻamaumauga.
+Single-User: Nofofua-Tagata faʻaaoga
+Test Settings: Suʻega Suʻega
+Timezone Conversion Successful: Manuia le Liua o le Taimi
+WebCalendar Installation Wizard Step XXX: WebCalendar Faʻapipiʻi Wizard Laʻasaga XXX
+Password Accepted: Upu taliaina
+Successful Login: Manuia le ulufale
+Password Incorrect: Upu Sese saʻo
+Invalid Login: Lē saʻo le saini
+Display Errors: Faʻaalia Mea Sese
+File Uploads: Faila Faila
+Allow URL fopen: Faʻatagaina URL fopen (naʻo manaʻoga pe a fai o Kalena Mamao e faʻaaogaina)
+Safe Mode: Faiga saogalemu
+Safe Mode Allowed Vars: Faʻasaʻo le Faʻasaʻoga Vars (TZ e manaʻomia pe a fai o le Safe Mode o loʻo i luga)
+GD: GD (manaʻomia mo Gradient Image Backgrounds)
+Passwords do not match!: E le faʻafetauai upu fai upu!
+Unable to write password to settings.php file: Le mafai ona tusi upu faʻamau i le "setting.php" faila.
+Password Updated: Upu faʻafouina
+Password has been set: Upu faataga ua setiina
+Connection Successful...: Manuia le fesoʻotaʻiga  Faʻamolemole alu i le itulau e sosoʻo e faʻaauau ai le faʻapipiʻiina.
+Correct your entries or click the Create New...: Faʻasaʻo au tusiga pe kiliki le faʻamau  Fau Fou  e faʻaauau ai le faʻapipiʻiina.
+Correct your entries and try again.: Faʻasaʻo au faamaumauga ma toe taumafai.
+XXX does not exist: E leai se XXX
+XXX is not writable: XXX e le mafai ona tusitusi
+Error Converting Timezone: Sese Faʻaliliuga o le Timezone
+Error Unable to write to file XXX.: Sese E le mafai ona tusi i le faila XXX.
+Please change the file permissions of this file.: Faʻamolemole sui faila faʻatagaina o lenei faila.
+Please change includes dir permission: Faʻamolemole suia le faʻatagaina faila o lau "aofia ai" faʻasino e faʻatagaina ai tusitusiga e isi tagata faʻaaoga.
+Your settings have been saved.: Ua sefe au tulaga
+OFF: TAPU
+ON: LELEI
+WebCalendar Setup Wizard: WebCalendar Seti Failautusi
+This installation wizard will guide you...: O lenei faʻataulaitu fai togafiti o le a taʻitaʻia oe e ala i le setiina o se faʻavae autu WebCalendar.<br>Mo se fesoasoani ma se faʻafitauli vaʻai vaʻai:<br>
+System Administrators Guide: =
+Frequently Asked Questions: Fesili e masani ona fesiligia
+FAQ: =
+Troubleshooting: Faʻafitauli
+Getting Help: Mauaina o le Fesoasoani
+Upgrading Guide: Tusitusiga Faʻaleleia
+User Supported Wiki: Tagata lagolagoina Wiki
+PHP Version Check: PHP Faʻamatalaga Siaki
+Check to see if PHP 7.1.0 or greater is installed.: Siaki e vaʻai pe ua faʻapipiʻi le PHP 7.1.0 pe sili atu.
+PHP version: =
+PHP Settings: PHP tulaga
+Detailed PHP Info: Faʻamatalaga auiliili PHP
+settings.php Status: "setting.php" Tulaga
+Session Check: Sauniga Siaki
+To test the proper operation of sessions...: Ina ia faʻataʻitaʻia le faʻagaioiga talafeagai o sauniga, toe uta lenei itulau. Oe tatau ona vaʻai i le sauniga counter faʻaititia i taimi uma.
+SESSION COUNTER: FUAFUAGA I LE SAUNIGA
+The file permissions of settings.php are set...: O faila faʻatagaina o "seti.php" ua setiina ina ia le installer leai se faʻatagaina e toe faʻaleleia ia. Faʻamolemole sui faila faʻatagaina o le faila lea e mulimuli ai
+The file permissions of the includes directory are set...: O faila faʻatagaga o le aofia ai faʻasino ua setiina ina ia le installer leai se faʻatagaina e fausia ai se fou faila. Faʻamolemole sui le faʻatagaina o le lisi faʻasino mulimuli e faaauau
+Your settings.php file appears to be valid.: Lau faila "setting.php" e foliga mai e aoga.
+Configuration Wizard Password: Fetuʻunaʻiga Wizard Password
+Create Settings File Password: Fausia tulaga faila faila
+db setup directions...: I lenei vaega oe o le a seti ma tofotofoina se fesoʻotaʻiga i lau 'upega tafaʻilagi tautua. O le teuga faʻamatalaga saunia tatau tatau ona ATUA faʻatagaina e fausia ai faʻamatalaga, laulau ma tagata faʻaoga. Afai e le mafai lenei mea, pe faʻatapulaʻaina lau ulufale faʻamatalaga, e tatau ona e fetuunaʻi lima lau faʻamatalaga.
+Database Status: Tulaga o faʻamaumauga
+Supported databases for your PHP installation: Lagolago lagolago faʻamatalaga mo lau PHP faʻapipiʻiina
+Your current database settings are able to access the database.: O au faʻamaumauga tuʻufaʻatasiga o loʻo iai nei e mafai ona ulufale i le database.
+Please Test Settings: Faʻamolemole suʻega tulaga
+Your current database settings are not able...: O au faʻamatalaga o loʻo i ai nei e le o mafai ona ulufale i le database pe faʻataʻitaʻia.
+Database Settings: Faʻamaumauga nofoaga
+Database Type: Ituaiga faʻamaumauga
+Server: 'Auʻauna
+Connection Persistence: Fesoʻotaʻiga Finafinau
+All your database tables appear to be up...: Uma lau 'upega tafaʻilagi laulau foliga mai e lata mai. Oe ono faʻaauau i le isi itulau ma maeʻa lau WebCalendar seti.
+This appears to be a new installation...: E foliga mai o se fou faʻapipiʻiina. Afai e le saʻo lea, faʻamolemole toe foʻi i le itulau muamua ma faʻasaʻo au tulaga.
+This appears to be an upgrade...: O lenei foliga mai o se toe faʻaleleia mai le lomiga&nbsp;XXX&nbsp;i le&nbsp;YYY
+The database requires some data input...: E manaʻomia e le nofoaga faʻamaumauga ni faʻamatalaga ulufale Kiliki Faʻamatalaga Database e faʻamaeʻa ai le faʻaleleia.
+In this section we will perform...: I lenei vaega o le a matou faia ai suiga e aumai lau database i luga i le tulaga manaʻomia. Afai o loʻo e faʻaogaina se lagolago atoatoa lagolago, o lenei laasaga o le a faia otometi lava mo oe. A leai, o le SQL manaʻomia mafai ona faʻaalia ma e tatau ona mafai ona tipiina ma faapipii i totonu o lau 'upega tafaʻilagi fesili fesili faamalama.
+No database actions are required.: Leai se gaioiga faʻavae e manaʻomia.
+The following database actions are required: O gaioiga nei e manaʻomia
+ODBC Underlying Database: ODBC Punavai autu:
+Automatic installation not supported: Faʻapipiʻi faapipiiina e leʻi faʻatinoina atoatoa mo lau database nofoaga. E tatau ona e faia lima le laulau manaʻomia faʻaaoga le SQL sapalai. Faʻamolemole kiliki  Faʻaali SQL  e faʻaauau. Oti ma Faʻapipiʻi i totonu o lau faʻamatalaga fesili faʻamalama.
+This may take several minutes to complete: Atonu e tele ni nai minute e fai ai.
+Install Database: Faʻapipiʻi le Database
+Update Database: Faʻaleleia le Database
+Display Required SQL: Faʻaali Manaʻomia SQL
+Return to previous page after processing SQL.: A maeʻa ona faʻagaioia lima lenei SQL, e te manaʻo e toe foʻi i le itulau muamua ma toe suʻea lau faʻamaumauga ina ia mafai e le tusitusiga ona iloa suiga.
+This is the final step in setting up your WebCalendar Installation.: Ole laʻasaga mulimuli lea ile setiina o lau Upega Tafaʻilagi WebCalendar.
+Timezone Conversion: Faʻaliliuga o le Timezone
+It appears that you have NOT converted...: E aliali mai e te L converted faaliliuina au faamaumauga o iai i le WebCalendar i le GMT. Afai na e mauaina, oe ono le amanaʻiaina lenei faʻasilasilaga ae le alu i luma ma le liuaina. Afai o lenei o se fou faapipiiina, oe mafai foi ona le amanaiaina lenei faasilasilaga.
+Convert Data to GMT: Suʻe Faʻamatalaga i le GMT
+Application Settings: Talosaga tulaga
+HTTP-based authentication was not detected...: HTTP-faʻavae faʻamaoniga e leʻi mauaina. Oe e manaʻomia le toefaʻaleleia o lau 'upega tafaʻilagi pe a fai e te manaʻo e filifili le' 'Upega Tafaʻilagi' mai le 'Faʻamaoniga Autasi' filifiliga i lalo.
+HTTP-based authentication was detected...: HTTP-faʻavae faʻamaoniga na maitauina. Tagata faʻamaonia o loʻo taulimaina e lau 'upega tafaʻilagi. E tatau ona e filifilia le 'Upega Tafaʻilagi' mai le lisi o 'Faʻamaoniga Autasi' filifiliga i lalo.
+Create Default Admin Account: Fausia le Default Admin Account
+(Admin Account Not Found): (Pule Tupe le Maua)
+User Authentication: Faʻamaoniaina a Tagata
+Web-based via WebCalendar (default): 'Upega tafaʻilagi e ala ile WebCalendar (faaletonu)
+Web Server (not detected): 'Upega tafaʻilagi (le maitauina)
+Web Server (detected): 'Upega tafaʻilagi (mauaina)
+None (Single-User): Leai se (Nofofua-Tagata e faʻaaoga)
+Read-Only: Naʻo le Faitauga
+Environment: Siosiomaga
+Production: Gaosiga
+Development: Atinae
+Save Settings: Sefe tulaga
+Launch WebCalendar: Tatala le WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Ua sese le toe faafouina o le laulau "XXX": YYY
+Conversion Successful: Manuia le Liuaina 
+Perl script required: Lau lomiga talu ai ole WebCalendar manaʻomia le tamoʻe o se PERL tusitusiga e faʻaliliu ai au faʻamatalaga. Faʻamolemole tamoʻe /tools/upgrade_to_0.9.7.pl ona toe foʻi lea i lenei itulau e faʻaauau.
+previous version requires updating several tables: Lau lomiga talu ai ole WebCalendar manaʻomia le toe faʻafouina o le tele o faʻamaumauga nofoaga.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: LEAI MAUA SAUNIGA MAUA
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Sese fesoʻotaʻiga i nofoaga autu o faʻamatalaga
+Include Path: Aofia ai le Ala
+Deleting events for: Tapeina o mea na tutupu mo
+Importing events for: Faʻailoaina o gaioiga mo
+No data returned from: Leai se faʻamatalaga na faʻafoʻi mai
+for non-user calendar: mo le kalena le faʻaaoga
+No Remote Calendars found: Leai se kalena mamao maua
+Remote Calendars not enabled: E le faʻatagaina ni kalena mamao
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: le maua se mea na tupu id
+could not find event id XXX in database.: le mauaina le mea na tupu id XXX i le database.
+task: galuega
+This is a reminder for the XXX detailed below.: Lenei o le faʻamanatu mo le XXX auiliiliina i lalo.
+Pecentage Complete: Maea maeʻa
+Reminder: Faamanatu
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Gaoioiga le lagolagoina: XXX.
+No event id specified.: Leai se mea na tupu id mai.
+Not authorized (not admin).: Le faʻatagaina (le pule)
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Siaki mo mea na tutupu mo le XXX mai le aso YYY e oʻo mai i le ZZZ.
+Found XXX events in time range.: Mauaina gaioiga XXX i taimi taimi.
+Event id=XXX YYY at ZZZ on AAA.: Mea na tupu id = XXX "YYY" i le ZZZ i le AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Faʻatagaina le XXX tagata faʻaaoga e vaʻai i isi kalena a le tagata faʻaaoga.
+Error Email reminders disabled for user XXX.: Sese: Faʻamanatuga i imeli mo tagata faʻaaoga "XXX".
+Number of site_extras XXX.: Numera o site_extras: XXX.
+Reminder set for event.: Faʻamanatu mo le mea na tupu.
+Mins Before XXX.: Mins Luma: XXX.
+Event time is XXX.: Taimi o mea e fai o le: XXX.
+Remind time is XXX.: Faamanatu taimi o le: XXX.
+Reminders for user XXX, login YYY.: Faʻamanatu mo tagata faʻaaoga "XXX", saini "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Faʻaleaogaina mo le tagata faʻaaoga "XXX".
+Event id=XXX YYY already sent.: Mea na tupu id = XXX "YYY" ua uma ona lafo.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Leai se login e manaʻomia mo se tagata e toʻatasi.
+No login required for HTTP authentication.: Leai se login e manaʻomia mo le faʻamaoniga HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Lē saʻo tala i totonu o le saini.
+Username XXX does not exist.: Igoa ole igoa "XXX" e leʻo iai.
+You cannot remove admin rights from yourself!: E le mafai ona e aveʻeseina ia aia tatau a le pulega mai ia te oe!
+Unknown error saving user: Sese le iloa sefeina tagata faʻaaoga.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Leai ni tagata auai mo le mea na tupu: XXX.
+Db error Could not find event id XXX.: Sese mea sese: Le maua se mea na tupu le XXX.
+Error Could not find event id XXX in database.: Sese: Ua le maua se mea na tupu le XXX i le database.

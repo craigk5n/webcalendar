@@ -1,0 +1,2387 @@
+# Turkmen tk
+#
+# Format goşmaça sözbaşydan ybarat:
+#
+# Terjime eden: adyňyz we e-poçtaňyz
+# Iň soňky täzelenme: terjime edilen senesi
+# (Öňdebaryjy "#" we öňki terjimeçileriň beren teswirlerini goşmak bilen.
+# BIRINJI boş setir bu sözbaşy teswirlerini gutarýar.)
+#
+# Zerur bolanlaryň köpüsi:
+#
+# Iňlis sözlemi: terjime
+# (Bir setire. Öňdebaryjy "#" BILEN.
+# "Iňlis sözlemi:", şol sanda içegäni goşmak bilen: "tarapyndan üpjün edilýär
+# WebCalendar döredijiler. Siziň bölümiňiz "terjime".)
+#
+# Gurallar katalogynda size kömek etmek üçin iki sany perl skript bar:
+# - check_translation.pl
+# ähli tekstiň üstünlikli terjime edilendigini görkezýär.
+# - update_translation.pl
+# ähli terjimeleri ('söz düzümi') we
+# gurallar maslahaty ('söz düzümi'). Sahypa boýunça sözlemleri tertipleşdirer
+# ilkinji hadysany öz içine alýan # (faýl). Islege görä, belligi belläp biler
+# goýmak bilen entek terjime edilmedik # sözlemler
+#  << MISSING >>
+# sözlemiň ýokarsyndaky setirde. Bu sözlem gysgaldylan bolsa,
+# söz düzüminiň aşagyndaky setirde iňlis diliniň doly tekstini öz içine alar.
+#
+# Bellik: Faýlyň umumy ululygyny azaltjak bolýaryn. "Terjime" bolsa
+# söz / söz düzümi diliňizde we iňlis dilinde birmeňzeş, diňe "=" belgisini ulanyň.
+#
+# Bellik: Girişi görersiňiz "Maý_" aşakda. Munuň bir sebäbi bar.
+# Terjime "Maý_" doly aýyň adyna we "Maý" Üçin,
+# köplenç üç harply, aýyň gysgaldylyşy ("Oktýabr" üçin "Okt" ýaly).
+#
+# Munuň üçin Google terjimesini ulandym.
+# Aerli gürleýän adam ony tassyklaýança ýeterlik bolmaly.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: XXX wersiýasy
+WebCalendar is a PHP application used...: WebCalendar, bir ulanyjy ýa-da internet / intranet ulanyjy topary üçin bir senenama saklamak üçin ulanylýan PHP programmasy. Şeýle hem, waka senenamasy hökmünde düzülip bilner.
+Credits: Karzlar
+About: Takmynan
+OK: Bolýar
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Maglumat bazasynyň ýalňyşlygy: XXX.
+DEFAULT CONFIGURATION: DEGIŞLI GÖRNÜŞ
+Go: Bar
+Save: Saklaň
+Undo: Yza gaýtar
+Public Access: Jemgyýetçilik üçin elýeterlilik
+Admin: =
+User Access Control: Ulanyjylara giriş gözegçiligi
+Allow Access to Other Users Calendar: Beýleki ulanyjylaryň senenamasyna girmäge rugsat beriň
+Grant This User Access to My Calendar: Bu ulanyja meniň senenamamyza girmäge rugsat beriň
+Type: Görnüşi
+Calendar: Senenama
+View Event: Wakany görmek
+View: Gör
+Edit: Redaktirläň
+Approve/Reject: Tassyklamak / ret etmek
+Events: Wakalar
+Tasks: Wezipeler
+Journals: Joururnallar
+Can Invite: Çakylyk edip biler
+Can Email: E-poçta iberip bilersiňiz
+Can See Time Only: Diňe Wagt görüp bilýär
+Assistant: Kömekçi
+Select All: Ählisini seç
+Clear All: Hemmesini arassala
+Public: Köpçülik
+Confidential: Gizlin
+Private: Hususy
+
+########################################
+# Page: activity_log.php
+#
+Next: Indiki
+Previous: Öňki
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: XXX waka eýýäm senenamaňyzda.
+Invalid entry id XXX.: Nädogry giriş ID: "XXX"
+a XXX event may not be added to your calendar: Bu XXX waka we senenamaňyza goşulmazlygy mümkin.
+confidential: gizlin
+private: hususy
+Error adding event XXX.: Wakany goşmakda säwlik: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Nädogry sazlama ady "XXX"
+Select: Saýlaň
+Day: Gün
+Week: Hepde
+Month: Aý
+Year: .Yl
+Bottom: Aşakda
+Top: Topokarky
+Anyone: Her kim
+Participant: Gatnaşan
+Settings: Sazlamalar
+Groups: Toparlar
+NonUser Calendars: Ulanyjy däl senenamalar
+Other: Beýlekiler
+Email: E-poçta iberiň
+Colors: Reňkler
+Document background: Resminamanyň fon
+Document title: Resminamanyň ady
+Document text: Resminamanyň teksti
+My event text: Çäräniň teksti
+Table grid color: Stol gözeneginiň reňki
+Table header background: Stol sözbaşysynyň fon
+Table header text: Tablisanyň sözbaşy teksti
+Table cell background: Stol öýjüginiň fon
+Table cell background for current day: Häzirki gün üçin tablisanyň öýjügi
+Table cell background for days with events: Wakalar bilen birnäçe günlük stoluň öýjügi
+Table cell background for weekends: Dynç günleri üçin stol öýjüginiň fon
+Table cell background for other month: Beýleki aý üçin stol öýjüginiň fon
+Week number color: Hepdäniň belgisiniň reňki
+Event popup background: Çäräniň açylan fon
+Event popup text: Çäräniň açylan teksti
+System Settings: Ulgam sazlamalary
+Help: Kömek ediň
+System options: Ulgam opsiýalary
+app-name-help: Pagehli sahypalar we giriş sahypasy üçin brauzer ady setirinde peýda boljak programmanyň adyny görkezýär. Bu ýerde görkezen bahaňyz, dürli diller üçin dürli atlar bermäge mümkinçilik berýän terjime faýlynda gözlener.
+Application Name: Arza ady
+Translated Name (XXX): Terjime edilen ady (XXX)
+server-url-help: Programma üçin esasy URL-ni kesgitleýär. E-poçta ýatlatmalary we habarnamalar iberilende bu goşular.
+Server URL: Serwer URL
+home-url-help: Programma üçin öý URL-ni görkezýär. Bu mutlak ýa-da garyndaş bolup biler
+Home URL: Baş sahypa URL
+language-help: Haýsy dili ulanmalydygyny kesgitleýär.
+Language: Dil
+Your browser default language is XXX.: Brauzeriňiziň esasy dili "XXX".
+Allow user to use themes: Ulanyjynyň mowzuklary ulanmagyna rugsat beriň
+themes-help: Sazlama sazlamalarynyň köpçülikleýin täzelenmegine rugsat berýär. Aşakdaky ýazgylar diňe ulanyjy pref.
+Themes: Mowzuklar
+AVAILABLE THEMES: Elýeterli mowzuklar
+None: Hiç
+Preview: Öňünden syn
+Site customization: Sahypany özleşdirmek
+custom-script-help: Her sahypanyň HTML "baş" bölümine salynjak adaty Javascript ýa-da stil tablisasynyň tekstine girmäge rugsat berýär.
+Custom script/stylesheet: Scriptörite skript / stil sahypasy
+custom-header-help: HTMLörite HTML parçasynyň her sahypanyň ýokarsyna goşulmagyna rugsat berýär.
+Custom header: Omörite sözbaşy
+custom-trailer-help: Her sahypanyň soňunda adaty HTML parçasynyň goşulmagyna rugsat berýär.
+Custom trailer: Omörite trailer
+enable-external-header-help: Customörite traileriň daşarky faýldan ýüklenmegine rugsat berýär
+Allow external file for header/script/trailer: Daşarky faýlyň sözbaşy / skript / trailer üçin rugsat beriň
+Allow user to override header/trailer: Ulanyjynyň sözbaşy / trailerini ýok etmegine rugsat beriň
+Date and Time: Sene we Wagt
+server-tz-help: UTC-dan serwer wagtyna näçe wagt sazlamalydygyny kesgitleýär.
+Server Timezone Selection: Serwer Wagt guşagyny saýlamak
+tz-help: UTC-dan ýerli wagt bilen näçe wagt sazlamalydygyny kesgitleýär.
+Default Client Timezone Selection: Müşderiniň wagt guşagyny saýlamak
+display-general-use-gmt-help: Işledilen bolsa, umumy seneler / wagtlar GMT görnüşinde görkezilýär
+Display Common Use Date/Times as GMT: GMT görnüşinde umumy ulanylyş senesini / wagtyny görkeziň
+date-format-help: Islenýän senäniň formatyny kesgitleýär.
+Date format: Sene formaty
+Small Task Date: Kiçi iş senesi
+display-week-starts-on: Hepdäniň başlanjak hepdesini kesgitleýär. Duşenbe kesgitlenen bolsa, hepde sanlary ISO hepde sanlary bolar.
+Week starts on: Hepde başlaýar
+display-weekend-starts-on: Dynç günleriniň başlamagy üçin hepdäniň gününi düzýär
+Weekend starts on: Dynç güni başlaýar
+time-format-help: Haýsy wagt formatyny ulanmalydygyny kesgitleýär:<br><em>12 sagat:</em> Ir sagat 3, agşam 8:30 we ş.m. görkeziň.<br><em>24 sagat:</em> 300 gezek görkeziň , 2030 we ş.m.
+Time format: Wagt formaty
+12 hour: 12 sagat                                                  
+24 hour: 24 sagat                                                  
+timed-evt-len-help: Wagtlaýyn wakanyň uzynlygyny kesgitlemek üçin giriş usulyny kesgitleýär.
+Specify timed event length by: Wagtyň dowamlylygyny kesgitläň
+Duration: Dowamlylygy
+End Time: Ahyrky wagt
+work-hours-help: Gün görnüşi üçin görkeziljek wagt aralygyny kesgitleýär.
+Work hours: Iş wagty
+From: Kimden
+to: =
+Appearance: Daş görnüşi
+preferred-view-help: Adaty görnüşi kesgitleýär (Gün, hepde, aý ýa-da ýyl).
+Preferred view: Iň gowy görülýän görnüş
+Allow top menu: Topokarky menýu rugsat beriň
+Date Selectors position: Sene saýlaýjylaryň ýagdaýy
+menu-themes-help: Topokarky menýunyň reňklerini we stilini düzýär
+Menu theme: Menýu mowzugy
+fonts-help: Ulanyljak ulgam şriftleriniň sanawyny kesgitleýär ("Arial, Helvetica")
+Fonts: Şriftler
+display-sm_month-help: Işledilen bolsa, kiçijik aý aýlaryny görkezýär
+Display small months: Kiçijik aýlary görkeziň
+display-weekends-help: Hepdäni göreniňizde dynç günlerini goşuň.
+Display weekends: Dynç günlerini görkeziň
+display-long-daynames-help: Işledilen bolsa, uzak günlük atlar görkezilýär
+Display long day names: Uzyn gün atlaryny görkeziň
+display-alldays-help: Cellshli öýjükleri dolduryp, öňki we indiki aý günlerini aý görnüşinde görkeziň.
+Display all days in month view: Dayshli günleri aýda görkeziň
+display-week-number-help: Hepdäniň belgisiniň (1-52) aý görnüşinde we hepde görnüşinde görkezilmelidigini kesgitleýär.
+Display week number: Hepdäniň belgisini görkeziň
+display-desc-print-day-help: Wakanyň beýanyny gündelik görnüşiň printer üçin amatly görnüşine goşuň.
+Display description in printer day view: Düşündirişi printeriň gün görnüşinde görkeziň
+yearly-shows-events-help: Viewyllyk görnüşde goýy şriftde wakalary öz içine alýan günleri görkeziň.
+Display days with events in bold in month and year views: Wakalar bilen günleri aý we ýyl görnüşinde görkeziň
+display-minutes-help: Işledilen bolsa: 00 bilen gutarýan minutlar hemişe görkeziler
+Display 00 minutes always: Elmydama 00 minut görkeziň
+display-end-times-help: Wagtlaýyn waka bolsa wakanyň ahyrky wagtlaryny görkeziň
+Display end times on calendars: Ahyrky wagtlary senenamalarda görkeziň
+allow-view-add-help: Ulanyjylara beýleki ulanyjylaryň senenamalaryna hadysalary çalt goşmaga mümkinçilik berýän '+' nyşany görüner.
+Include add event link in views: Waka baglanyşygyny görnüşlere goşuň
+lunar-help: Işledilen bolsa, her aý Aý fazalaryny görkezýän kiçijik nyşanlary görkezer
+Display Lunar Phases in month view: Aý tapgyrlaryny Aý görnüşinde görkeziň
+Restrictions: Çäklendirmeler
+allow-view-other-help: Bir ulanyjynyň başga bir ulanyjynyň senenamasyny görüp biljekdigini kesgitleýär.
+Allow viewing other users calendars: Beýleki ulanyjylaryň senenamalaryny görmäge rugsat beriň
+require-approvals-help: Işledilende, ulanyjy öz senenamasynda görkezilmezden ozal bir hadysany tassyklamalydyr (Ekran tassyklanmadyk bolsa). Muny "" ok "diýip bellemek, köpçülige açyk senenama tassyklamalaryny öçürmez (eger köpçülige açyk senenama açyk bolsa).
+Require event approvals: Waka tassyklamalaryny talap ediň
+display-unapproved-help: Makullanmadyk wakalaryň senenamaňyzda görkezilýändigini ýa-da ýokdugyny kesgitleýär.<br>"Hawa" diýip düzülen bolsa, tassyklanmadyk wakalar senenamaňyzda (başga tekst reňkinde) görkeziler.<br>"" ok "diýlen bolsa, tassyklanmadyk wakalar senenamaňyzda görkezilmezden öň tassyklanmalydyr.
+Display unapproved: Makullanmadyk görkez
+conflict-check-help: Waka gapma-garşylyklaryny barlaň (bir adam üçin bir wagtyň özünde meýilleşdirilýän iki waka). Muny "Hawa" diýip sazlasaňyz, duýduryşy tassyklanyňyzdan soň bir wagtyň özünde iki çäräni tertipläp bilersiňiz. Muny "" ok "diýip sazlasaňyz, gapma-garşylyklar barlanmaz. Muny "Hawa" diýip bellemek islärsiňiz, şonuň üçin gapma-garşylyk barlanýar.
+Check for event conflicts: Waka gapma-garşylyklaryny barlaň
+Yes: Hawa
+No: .Ok
+conflict-months-help: Dawa-jenjeli barlamak ýerinde bolsa ("Waka konfliktlerini barlaň" "" ok "& # 41; bellenen bolsa, bu geljekde näçe aýlap konfliktleri barlamalydygyny kesgitleýär. , bu sany azaltmak.
+Conflict checking months: Konfliktleri barlamak aýlary
+conflict-check-override-help: Ulanyjylara hadysalaryň gapma-garşylyklaryny ýok etmäge we bir wagtyň özünde iki ýa-da has köp çäräni meýilleşdirmäge mümkinçilik berýär.
+Allow users to override conflicts: Ulanyjylara gapma-garşylyklary ýok etmäge rugsat beriň
+limit-appts-help: Ulgam dolandyryjysyna bir ulanyjynyň islendik günde belläp boljak sanyna ulgamlaýyn çäk bellemäge mümkinçilik berýär.
+Limit number of timed events per day: Bir günde bellenen wakalaryň sanyny çäklendiriň
+limit-appts-number-help: Ulanyjynyň bir günde bolup biljek wakalaryň iň köp sanyny kesgitleýär.
+Maximum timed events per day: Günde iň köp wagtlaýyn wakalar
+crossday-help: Işledilen bolsa, günleri öz içine alýan wakalar aýratyn günlerde görkeziler
+Disable Cross-Day Events: Günlük wakalary öçüriň
+disable-location-field-help: "Hawa" saýlasaňyz, "Locationerleşiş" meýdany wakanyň maglumat sahypalaryndan aýrylar
+Disable Location field: Locationerleşiş meýdanyny öçüriň
+disable-url-field-help: "Hawa" saýlasaňyz, "URL" meýdançasy waka maglumat sahypalaryndan aýrylar
+Disable URL field: URL meýdançasyny öçüriň
+disable-priority-field-help: "Hawa" saýlamak, täze gelenler üçin has ýönekeý interfeýs üpjün edip, waka maglumat sahypalaryndan "Üstünlik" meýdançasyny aýyrar.
+Disable Priority field: Üstünlik meýdanyny öçüriň
+disable-access-field-help: "Hawa" saýlanylsa, täze gelenler üçin has ýönekeý interfeýs üpjün edip, waka maglumat sahypalaryndan "Giriş" meýdançasy aýrylar.
+Disable Access field: Giriş meýdanyny öçüriň
+disable-participants-field-help: "Hawa" saýlamak, "Gatnaşanlar" meýdançasyny waka maglumat sahypalaryndan aýyrar, ulanyjylaryň wakalaryna beýleki ulanyjylary goşmagynyň öňüni alar. Bu opsiýany açsaňyz, "Beýleki ulanyjynyň senenamalaryny görmäge rugsat beriň" meýdançasyny hem öçürip bilersiňiz.
+Disable Participants field: Gatnaşýanlar meýdançasyny öçüriň
+disable-repeating-field-help: "Hawa" saýlamak, hadysalar goşulanda "Gaýtalama" meýdançasyny aýyrar. Bu täze gelenler üçin has ýönekeý interfeýs üpjün eder.
+Disable Repeating field: Gaýtalama meýdanyny öçüriň
+allow-html-description-help: Işledilen bolsa, ulanyjylar wakanyň beýany meýdanyna HTML girizip bilerler. Işledilmedik bolsa, HTML bellikleri açyk tekst ýaly görüner ýaly gaçar. Duýduryş: Bu aýratynlygy açmak, ulanyjylara beýleki web sahypalarynda suratlara salgylanmaga mümkinçilik berer.
+Allow HTML in Description: Düşündirişde HTML-e rugsat beriň
+Popups: Açylýan ýerler
+disable-popups-help: Senenama görnüşlerinden çykýan penjireleri öçüriň
+Disable Pop-Ups: Pop-uplary öçüriň
+popup-includes-siteextras-help: Işledilen bolsa, sahypa_extras.php faýlynda ýörite waka meýdanlaryny gurnamaga rugsat beriň.
+Display Site Extras in popup: Açylýan sahypanyň goşmaçalaryny görkeziň
+popup-includes-participants-help: Işledilen bolsa, gatnaşyjylar çäräniň açylan ýerlerinde görkezilýär.
+Display Participants in popup: Açylýan gatnaşyjylary görkeziň
+Miscellaneous: Dürli
+remember-last-login-help: Işledilende ulanyjynyň giriş sahypasy giriş sahypasynda doldurylýar (ýöne parol däl) we ulanyjynyň islegleri ýüklener (halanýan reňkleri we dil saýlamasyny goşmak bilen).
+Remember last login: Soňky girişi ýadyňyzda saklaň
+summary_length-help: Senenama görnüşlerinde gysgaça düşündirişiň iň uzynlygy
+Brief Description Length: Gysgaça düşündiriş uzynlygy
+user_sort-help: Ulanyjy, Nonuser sanawlary üçin tertip tertibini kesgitleýär
+User Sort Order: Ulanyjy tertibi
+Lastname, Firstname: Familiýa, familiýa
+Firstname, Lastname: At familiýa
+allow-public-access-help: Işledilende, senenama ulanyjylaryň girmegini talap etmeýän diňe okalýan umumy senenama hökmünde ulanylyp bilner.
+Allow public access: Jemgyýetçilige girmäge rugsat beriň
+public-access-default-visible: Jemgyýetçilik senenamasyndaky wakalar ähli ulanyjylaryň senenamalarynda awtomatiki peýda bolar
+Public access visible by default: Köpçülige açyk görnüşde görünýär
+public-access-default-selected: Täze waka goşulanda, köpçülikleýin ulanyjy gatnaşyjy hökmünde saýlanar.
+Public access is default participant: Jemgyýetçilige giriş adaty gatnaşyjy
+public-access-view-others-help: Jemgyýetçilik ygtyýary bilen ulgama gireniňizde, ulanyjynyň başga bir senenama ulanyjysynyň senenamasyny görüp biljekdigini kesgitleýär.
+Public access can view other users: Jemgyýetçilik elýeterliligi beýleki ulanyjylary görüp biler
+public-access-can-add-help: Işledilende, “Public Access” arkaly ulgama girýän ulanyjylar täze wakalary goşup bilerler, ýöne administrator täze çäräni tassyklaýança senenamada görkezilmez.
+Public access can add events: Köpçülige giriş wakalary goşup biler
+public-access-add-requires-approval-help: Jemgyýetçilik hasabynyň üsti bilen goşulan wakalar görkezilmezden ozal tassyklanylmagyny talap edýärmi.
+Public access new events require approval: Köpçülige açyk täze wakalar tassyklanmagy talap edýär
+public-access-sees-participants-help: Işledilen bolsa, umumy hasapdan senenama girýän ulanyjylar, bir wakanyň jikme-jikliklerini görseler, çärä gatnaşyjylary görüp bilerler.
+Public access can view participants: Jemgyýetçilik elýeterliligi gatnaşyjylary görüp biler
+public-access-override-help: Wakalaryň atlarynyň we düşündirişleriniň umumy senenamada gizlenmegine rugsat berýär
+Override event name/description for public access: Köpçülige girmek üçin hadysanyň adyny / düşündirişini ýok ediň
+public-access-override-text-help: Aboveokardaky opsiýa açyk bolsa görkezilmeli tekst. 'Elýeterli däl' bolsa, terjime ediler.
+Text to display to public access: Jemgyýetçilige görkezmek üçin tekst
+public-access-captcha-help: Işledilen bolsa, köpçüligiň goşan täze wakalary CAPTCHA tassyklamasyny talap edýär.
+Require CAPTCHA validation for public access new events: Täze wakalara köpçülige girmek üçin CAPTCHA tassyklamasyny talap ediň
+uac-enabled-help: Ulanyjy derejesine giriş gözegçiligini üpjün edýär
+User Access Control enabled: Ulanyjylara giriş dolandyryşy açyk
+groups-enabled-help: Ulanyjylara toparlara görä saýlamaga mümkinçilik berýän topar goldawyny üpjün edýär.
+Groups enabled: Toparlar açyk
+user-sees-his-group-help: Işledilen bolsa, ulanyjylar iň bolmanda bir toparynda bolmadyk senenama ulanyjylaryny görmezler.
+User sees only his groups: Ulanyjy diňe toparlaryny görýär
+nonuser-enabled-help: Işledilen bolsa, adminler ulanyjy senenamalaryny goşup bilerler
+Nonuser enabled: Ulanyjy senenamalary açyk
+nonuser-list-help: Gatnaşýanlaryň sanawynda ulanyjy senenamalaryny nirede görkezmeli
+Nonuser list: Gatnaşanlaryň sanawynda görkeziň
+Upcoming Events: Geljekdäki wakalar
+upcoming-events-help: Geljek.php-i işlediň
+Enabled: Işledildi
+upcoming-events-allow-override: Geljek.php üçin ulanyjy parametrlerine rugsat beriň
+Allow user override: Ulanyjynyň ýokaşmagyna rugsat beriň
+upcoming-events-display-caticons: Geljek.php-de kategoriýa nyşanlaryny goşuň
+Display category icons: Kategoriýa nyşanlaryny görkeziň
+upcoming-events-display-layers: Geljekdäki.php-de gatlaklary görkeziň
+Display layers: Gatlaklary görkeziň
+upcoming-events-display-links: Geljekdäki.php-de baglanyşyklary görkeziň
+Display links to events: Wakalara baglanyşyk görkeziň
+upcoming-events-display-popups: Geljekdäki.php-de hadysanyň çykýan ýerlerini görkeziň
+Display event popups: Wakanyň çykýan ýerlerini görkeziň
+reports-enabled-help: Işledilen bolsa, ulanyjylar her sahypanyň aşagyndaky "Hasabat" bölümini görerler we ýörite hasabatlar döretmäge rugsat berler. Mundan başga-da, administrator ulanyjylary ähli ulanyjylaryň sahypalarynyň aşagynda peýda boljak global hasabatlary döredip bilerler.
+Reports enabled: Hasabatlar açyk
+subscriptions-enabled-help: Uzakdaky ulanyjylaryň, WebCalendar ulanyjysynyň iCal mümkinçilikli programmasynda (Apple-iň iCal ýa-da Mozilla senenamasy ýaly) WebCalendar ulanyjysynyň wakalaryny görmäge mümkinçilik berýän WebCalendar ulanyjy senenamasyna ýazylyp biljekdigini kesgitleýär.
+Allow remote subscriptions: Uzakdaky abunalara rugsat beriň
+remotes-enabled-help: Ulanyjylara URL ulanyp uzakdaky faýllary ýüklemäge mümkinçilik berýär
+Allow remote calendars: Uzakdaky senenamalara rugsat beriň
+rss-enabled-help: Ulanyjynyň senenamasyny RSS iýmitinden alyp bolýandygyny kesgitleýär.
+Enable RSS feed: RSS iýmitini açyň
+categories-enabled-help: Waka kategoriýalaryna goldaw berýär.
+Categories enabled: Kategoriýalar açyk
+icon_upload-enabled-help: Işledilen bolsa, ulanyjylar kategoriýa nyşanlaryny ýükläp bilerler
+Category Icon Upload enabled: Kategoriýa nyşany ýüklemek açyk
+(Requires XXX folder to exist.): (XXX bukjanyň bolmagy talap edilýär.)
+display-tasks-help: Aý we gün senenamasynda kiçi meseleler penjiresini görkeziň
+Display small task list: Kiçijik meseleler sanawyny görkeziň
+display-tasks-in-grid-help: Wakalar bilen birlikde senenamalarda meseleleri görkeziň
+Display tasks in Calendars: Kalendarlarda meseleleri görkeziň
+allow-external-users-help: Senenama däl ulanyjynyň bir hadysa goşup boljakdygyny ýa-da ýokdugyny kesgitleýär. Bu, senenama däl ulanyjylary çärä gatnaşyjylar hökmünde görkezmäge mümkinçilik berýär.
+Allow external users: Daşarky ulanyjylara rugsat beriň
+external-can-receive-notification-help: Daşarky ulanyjylar açyk we e-poçta ulanylyşy açyk bolsa, daşarky ulanyjylar waka goşulanda, täzelenende ýa-da ýok edilende (daşarky ulanyjynyň e-poçta salgysy berlen bolsa) e-poçta habarnamalaryny alyp bilerler.
+External users can receive email notifications: Daşarky ulanyjylar e-poçta habarnamalaryny alyp bilerler
+external-can-receive-reminder-help: Daşarky ulanyjylar açyk bolsa we e-poçta ulanylyşy açyk bolsa, daşarky ulanyjylar e-poçta ýatlatmalaryny alyp bilerler (daşarky ulanyjynyň e-poçta salgysy berlen bolsa).
+External users can receive email reminders: Daşarky ulanyjylar e-poçta ýatlatmalaryny alyp bilerler
+allow-self-registration-help: Täze ulanyjylaryň özlerini hasaba almagyna rugsat beriň
+Allow self-registration: Öz-özüňi hasaba almaga rugsat ber
+use-blacklist-help: IP adresi esasynda WebCalendar funksiýalaryna girişi çäklendiriň
+Restrict self-registration to blacklist: Öz-özüňi hasaba almagy gara sanawda çäklendir
+allow-self-registration-full-help: Täze ulanyjylara öz-özüňi hasaba almak işini onlaýn ýagdaýda tamamlamaga rugsat beriň
+Use self-registration email notifications: Parol dörediň we täze ulanyjylara iberiň
+allow-attachment-help: Ulanyjylara hadysalara faýl goşundylaryny goşmaga rugsat beriň.
+Allow file attachments to events: Wakalara faýl goşundylaryna rugsat beriň
+Admin and owner can always add attachments if enabled.: Admin we eýesi açyk bolsa elmydama goşundy goşup bilerler.
+allow-comments-help: Ulanyjylara wakalara teswir goşmaga rugsat beriň.
+Allow comments to events: Wakalara teswir ýazmaga rugsat beriň
+Admin and owner can always add comments if enabled.: Admin we eýesi açyk bolsa elmydama teswir goşup bilerler.
+email-enabled-help: Duýduryş we ýatlatmalar üçin e-poçta ibermegiň hemmesini açyň ýa-da öçüriň. Serweriňiz poçta ibermek üçin dogry gurulmadyk bolsa, "ýok" diýip sazlaň.
+Email enabled: E-poçta açyk
+email-default-sender: Eratlatmalar iberilende iberiji hökmünde görkezmek üçin e-poçta salgysyny kesgitleýär.
+Default sender address: Bellenen iberijiniň salgysy
+email-mailer: E-poçta görnüşini saýlaň (SMTP, PHP poçta, iberiş poçta)
+Email Mailer: E-poçta haty
+email-smtp-host: SMTP serweriniň (leriniň) baş atlary, dykgat bilen bölünýär
+SMTP Host name(s): SMTP öý eýesiniň ady
+email-smtp-port: SMTP port belgisi (adatça 25)
+SMTP Port Number: SMTP port belgisi
+email-smtp-auth: SMTP tanamaklygy ulanyň
+SMTP Authentication: SMTP tanamaklyk
+email-smtp-username: Autentifikasiýa ulanýan bolsaňyz, SMTP ulanyjy ady
+SMTP Username: SMTP Ulanyjy ady
+email-smtp-password: Autentifikasiýa ulanýan bolsaňyz SMTP paroly
+SMTP Password: SMTP paroly
+Default user settings: Bellenen ulanyjy sazlamalary
+email-format: HTML ýa-da ýönekeý tekst habarlaryny ileri tutuň
+Email format preference: E-poçta formatynyň ileri tutmasy
+HTML: =
+Plain Text: Tekst tekst
+email-include-ics: E-poçta habaryna iCalendar ICS faýly goşuň
+Include iCalendar attachments: ICalendar goşundylaryny goşuň
+email-event-reminders-help: Waka ýatlatmalaryny ibermek ýa-da ibermezlik kesgitleýär.
+Event reminders: Waka ýatlatmalary
+email-event-added: Senenamaňyza bir waka goşulanda e-poçta habarnamalaryny iberip-ibermezligi kesgitleýär.
+Events added to my calendar: Wakalar meniň kalendaryma goşuldy
+email-event-updated: Senenamaňyzda bir waka täzelenende e-poçta habarnamalaryny iberip-ibermezligi kesgitleýär.
+Events updated on my calendar: Wakalar senenamamda täzelendi
+email-event-deleted: Bir waka senenamaňyzdan aýrylanda e-poçta habarnamalaryny iberip-ibermezligi kesgitleýär.
+Events removed from my calendar: Wakalar meniň kalendarymdan aýryldy
+email-event-rejected: Gatnaşýan senenamaňyzdaky bir wakany ret edeninde e-poçta habarnamalaryny ibermek ýa-da ibermezlik kesgitleýär.
+Event rejected by participant: Çärä gatnaşyjy tarapyndan ret edildi
+email-event-create: Triesazgylary döredijiniň e-poçta aljakdygyny ýa-da almajakdygyny kesgitleýär
+Event that I create: Döredýän waka
+Color options: Reňk görnüşleri
+Allow user to customize colors: Ulanyja reňkleri düzmäge rugsat beriň
+gradient-colors: Işledilen bolsa gradient reňkleri ulanylýar. Bu öndürijilige uly täsir edip biler.
+Enable gradient images for background colors: Fon reňkleri üçin gradient şekilleri açyň
+Not available: Elýeterli däl
+Background Image options: Fon surat görnüşleri
+bgimage-help: Islenýän fon suratynyň URL-si. Degişli baglanyşyk bolup biler.
+Background Image: Fon suraty
+bgrepeat-help: Fon şekiliniň gaýtalanýan özüni alyp barşyna gözegçilik edýär.
+Background Repeat: Fon Gaýtalama
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Kömekçiler
+Preferences: Saýlamalar
+Control Panel: Dolandyryş paneli
+Users: Ulanyjylar
+Account: Hasap
+Categories: Kategoriýalar
+Views: Görüşler
+Layers: Gatlaklar
+Reports: Hasabat
+Delete Events: Wakalary poz
+Activity Log: Hereket gündeligi
+System Log: Ulgam gündeligi
+Security Audit: Howpsuzlyk barlagy
+Public Preferences: Jemgyýetçilik islegleri
+Unapproved Public Events: Makullanmadyk köpçülikleýin wakalar
+Administrative Tools: Dolandyryş gurallary
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Dublikat ady: "XXX".
+Username XXX already exists.: "XXX" ulanyjy ady eýýäm bar.
+Email address XXX already exists.: "XXX" e-poçta salgysy eýýäm bar.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Goşmaça teswirler (islege görä)
+Approve and Send: Tassykla we iber
+Approve and Exit: Tassykla we çyk
+(Your comments will be emailed to the event creator.): (Teswirleriňiz çäräni döredijä iberiler.)
+Hello, XXX.: Salam, XXX.
+XXX has approved an appointment and added comments.: Bellenmek tassyklandy we teswirler XXX tarapyndan goşuldy.
+Subject XXX: Mowzuk: "XXX".
+Description XXX: Düşündiriş: "XXX".
+Date XXX: Sene: XXX
+Time XXX: Wagt: XXX
+Comments XXX: Düşündirişler: XXX
+Approved w/Comments by XXX.: Makullanan w / Teswirler: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Dolandyryş tertibi
+Your assistants: Kömekçileriňiz
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Näbelli ýalňyşlyk
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Programma ýalňyşlygy: XXX görkezilmedi!
+user: ulanyjy
+year: ýyl
+month: aý
+day: gün
+
+########################################
+# Page: category.php
+#
+Category Icon: Kategoriýa nyşany
+Global: =
+The permissions for the icons directory are set to read-only: Nyşanlaryň katalogy üçin rugsatlar diňe okalýar.
+Category Name: Kategoriýanyň ady:
+Color: Reňk
+Remove Icon: Nyşan aýyryň:
+Add Icon to Category: Kategoriýa nyşany goşuň
+Upload: Uploadükle
+GIF or PNG 6kb max: GIF ýa-da PNG 6kb max
+Search for existing icons: Bar bolan nyşanlary gözläň
+Add: Goş
+Delete: Öçür
+Are you sure you want to delete this entry?: Bu ýazgyny pozmak isleýändigiňize ynanýarsyňyzmy?
+Make New Category: Täze kategoriýa düzüň
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Kategoriýanyň ady hökmanydyr
+File size exceeds maximum.: Faýlyň ululygy iň ýokary
+File is not a GIF or PNG image: Faýl GIF ýa-da PNG şekili däl
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: MUGT Kategoriýalar
+ENTRY CATEGORIES: GIRIŞ Kategoriýalary
+Remove: Aýyr
+Global Category: Global kategoriýa
+Cancel: Elatyr
+
+########################################
+# Page: colors.php
+#
+Add Custom: Custörite goşuň
+Basic Colors: Esasy reňkler
+Current Color: Häzirki reňk
+Custom Colors: Omörite reňkler
+Old Color: Köne reňk
+
+########################################
+# Page: combo.php
+#
+Select None: Hiç birini saýlaň
+Agenda: Gün tertibi
+Add Task: Wezipe goşuň
+Description: Düşündiriş
+Date: Sene
+Time: Wagt
+Priority: Ileri tutulýan ugur
+Access: Giriş
+Created by: Tarapyndan döredildi
+Updated: Täzelendi
+Participants: Gatnaşanlar
+Attachments: Goşundylar
+Comments: Teswirler
+Brief Description: Gysgaça düşündiriş
+Full Description: Doly düşündiriş
+Category: Kategoriýa
+Add event detail: Wakanyň jikme-jigini goşuň
+Start Date: Başlangyç senesi
+Due Date: Berlen senesi
+Add task detail: Işiň jikme-jigini goşuň
+All: Hemmesi
+Error: Roralňyşlyk
+no response from server: serwerden jogap ýok
+JSON error: JSON ýalňyşlygy
+High: Beýik
+Medium: Orta
+Low: Pes
+Today: Bu gün
+Add Entry: Giriş goş
+Unnamed Event: Ady agzalmadyk waka
+Unnamed Task: Ady tutulmadyk wezipe
+Refresh: Täzele
+Click to add entry: Giriş goşmak üçin basyň
+Name: Ady
+pm: agşam
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX duşuşygy ýatyrdy.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Nädogry blob id
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Teswir goşuň
+Add Attachment: Goşundy goşuň
+Subject: Mowzuk
+Comment: Düşündiriş
+Upload file: Faýl ýükläň
+
+########################################
+# Page: docdel.php
+#
+Removed: Aýyryldy
+
+########################################
+# Page: edit_entry.php
+#
+days: günler
+hours: sagat
+minutes: minut
+You are not authorized to edit this task.: Bu meseläni redaktirlemäge ygtyýaryňyz ýok.
+is in a different timezone than you are. Currently: sizden tapawutly wagt guşagynda. Häzirki wagtda
+hour ahead of you: bir sagat öň
+hour behind you: bir sagat yzyňyzda
+hours ahead of you: birnäçe sagat öňde
+hours behind you: birnäçe sagat yzyňyzda
+XXX is in a different timezone (ahead): (XXX başga bir sebitde; YYY öňüňizde.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX başga bir sebitde; YYY yzyňyzda.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Bu ýere girizilen wagt, Wagt guşagyňyza esaslanýar.
+Edit Entry: Giriş redaktirläň
+Details: Jikme-jiklikler
+Repeat: Gaýtalama
+Reminders: Inderatlatmalar
+brief-description-help: Bu wakanyň gysga beýanyny (takmynan 20 simwol) bermeli. Bu, senenama göreniňizde wakany görkezer.
+full-description-help: Bu wakanyň jikme-jikliklerini doldurmaly. Ulanyjy wakany görende bu maglumatlary görüp bolýar.
+access-help: Çäräniň giriş derejesini kesgitleýär. <ul> <li> Jemgyýetçilik: Her kim wakanyň doly jikme-jikliklerini görüp biler.</li> <li> Gizlin: Beýlekiler şol senä we wagt üçin ýazgyňyzyň bardygyny görüp bilerler, ýöne nämedigini jikme-jiklikleri däl.</li></ul>
+priority-help: Çäräniň ileri tutulýan ugurlaryny kesgitleýär. Priorityokary ähmiýetli wakalar goýy görnüşde görkeziler.
+category-help: Çäräniň kategoriýasyny kesgitleýär.
+completed-help: Sene meselesi tamamlandy. Diňe ähli gatnaşyjylaryň göterimi 100% deň bolanda işledilýär.
+Date Completed: Sene tamamlandy
+percent-help: Bu ulanyjy üçin tabşyryk gutarmak göterimi
+Percent Complete: Göterim
+All Percentages: Allhli göterimler
+location-help: Çäräniň ýerleşýän ýeri
+Location: Locationerleşýän ýeri
+url-help: Waka URL
+URL: =
+date-help: Çäräniň senesini görkezýär.
+Untimed event: Wagty bolmadyk waka
+Timed event: Wagtlaýyn waka
+All day event: Bütin gün çäresi
+Timezone Offset: Wagt guşagy
+time-help: Çäräniň wagtyny kesgitleýär. <ul> <li> "Wagtlaýyn waka" (şol gün belli bir wagtda meýilleşdirilen waka üçin)</li> <li> "Wagty bolmadyk waka" (bu waka üçin wagt ýok (dynç alyş ýaly) )</li> <li> "Bütin gün wakasy" (bütin gün dowam edýän bir waka üçin (ofisden çykmak ýaly)</li></ul>
+duration-help: Çäräniň dowamlylygyny (sagatlarda; minutlarda) kesgitleýär. <em>Bu meýdan boş galdyrylyp bilner.</em>
+end-time-help: Çäräniň gutarjak wagtyny kesgitleýär.
+Start Time: Iş wagty
+Due Time: Wagty
+Site Extras: Saýtyň goşmaçalary
+avail_participants-help: Bu ýazga gatnaşyjylaryň sanawyny.
+Available: Elýeterli
+Find Name: Adyny tap
+Resources: Çeşmeler
+participants-help: Bu ýazga gatnaşyjylary sanawlaýar.
+Selected: Saýlandy
+Availability: Elýeterlilik
+external-participants-help: Senenama ulanyjylary bolmadyk çärä gatnaşyjylaryň sanawyny kesgitleýär. Ulanyjylar her setirde bir sanawda bolmaly we e-poçta salgysyny goşup bilerler. E-poçta salgysy görkezilen bolsa, ulanyjy habarnamalary we ýatlatmalary almaga haklydyr.
+External Participants: Daşarky gatnaşyjylar
+repeat-type-help: Çäräniň näçe gezek gaýtalanmalydygyny saýlaň.
+Daily: Her gün
+Weekly: Hepdelik
+Monthly: Aýlyk
+by day: gündiz
+by date: senesi boýunça
+by position: ýagdaýy boýunça
+Monthly (by day): Aýlyk (gündiz)
+Monthly (by date): Aýlyk (senesi boýunça)
+Monthly (by position): Aýlyk (ýagdaýy boýunça)
+Yearly: Lyyllyk
+Manual: Gollanma
+Expert Mode: Ekspert tertibi
+repeat-end-date-help: Wakanyň gaýtalanýan senesini kesgitleýär.
+Ending: Soňy
+Forever: Baky
+Use end date: Ahyrky senesini ulanyň
+Number of times: Näçe gezek
+repeat-frequency-help: Wakanyň näçe gezek gaýtalanmalydygyny kesgitleýär.
+Frequency: Quygylyk
+Weekdays Only: Diňe dynç günleri
+Week Start: Hepdäniň başlangyjy
+repeat-bydayextended-help: Hepdäniň gününe esaslanyp senäni saýlamaga rugsat berýär.
+ByDay: =
+repeat-month-help: Çäräniň haýsy aýlarda gaýtalanmalydygyny kesgitleýär.
+ByMonth: =
+repeat-bysetpos-help: Aý bilen pozisiýa esasynda senäni saýlamaga rugsat berýär.
+BySetPos: =
+repeat-bymonthdayextended-help: Sene esasynda senäni saýlamaga rugsat berýär.
+ByMonthDay: =
+repeat-byweekno-help: Ulanyja wakany gaýtalamak üçin hepdeleriň sanawyny kesgitlemäge mümkinçilik berýär (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Ulanyja wakany gaýtalamak üçin ýyl günleriniň sanawyny kesgitlemäge mümkinçilik berýär (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Bu hadysanyň ýüze çykmaly ýa-da bolmaly däl goşmaça günleri.
+Exclusions: Kadadan çykmalar
+Inclusions: Goşulmalar
+Add Exception: Kadadan çykma goşuň
+Add Inclusion: Goşmak goş
+Delete Selected: Saýlananlary poz
+Send Reminder: Inderatlatma iber
+When: Haçan
+Use Date/Time: Sene / Wagty ulanyň
+Use Offset: Ofset ulanyň
+Before: Öň
+After: Soň
+Start: Başla
+End/Due: Ahyry / möhleti
+Times: =
+Every: Her kim
+CAPTCHA Warning: Duýduryş:  PHP-iň GD giňeltmesiz CAPTCHA ulanyp bolmaz!<br>
+Delete entry: Girişi poz
+You are not authorized to edit this entry.: Bu ýazgyny redaktirlemäge ygtyýaryňyz ýok.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX täze bellendi.
+XXX has updated an appointment.: XXX duşuşygy täzeledi.
+Security violation!: Howpsuzlygyň bozulmagy!
+You must enter the anti-spam text on the previous page.: Öňki sahypa spama garşy tekst girizmeli.
+The following conflicts with the suggested time: Aşakdaky teklip edilýän wagt bilen gapma-garşy gelýär
+User removed from participants list.: Ulanyjy gatnaşyjylaryň sanawyndan aýryldy.
+Please look on XXX to accept or reject this appointment.: Bu duşuşygy kabul etmek ýa-da ret etmek üçin XXX-e serediň.
+Please look on XXX to view this appointment.: Bu duşuşygy görmek üçin XXX-e serediň.
+Scheduling Conflict: Meýilnama gapma-garşylygy
+Your suggested time of: Teklip edilýän wagtyňyz
+conflicts with the following existing calendar entries: bar bolan senenama ýazgylary bilen gapma-garşy
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX "config.php" -da düzülmedi.
+word characters only: (diňe söz nyşanlaryny öz içine alyp biler; [a-zA-Z_0-9])
+Add User: Ulanyjy goşuň
+Edit User: Ulanyjyny redaktirläň
+Calendar ID: Senenama belgisi
+First Name: Ady
+Last Name: Familiýasy
+Is public calendar: Jemgyýetçilik senenamasy
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Maglumat bazasynyň ýalňyşlygy
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Uzak senenama goşuň
+Edit Remote Calendar: Uzak senenamany redaktirläň
+Create Layer: Gatlak dörediň
+Reload: Gaýtadan ýükläň
+Required to View Remote Calendar: Uzak senenamany görmek zerur
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Netijeleri import ediň
+Events successfully imported: Wakalar üstünlikli getirildi
+Create a new layer to view this calendar.: Bu senenamany görmek üçin täze gatlak dörediň.
+Errors: Rorsalňyşlyklar
+There was an error parsing the import file or no events were returned.: Import faýlyny derňemekde ýalňyşlyk boldy ýa-da hiç hili waka yzyna gaýtarylmady.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Ertir
+Yesterday: Düýn
+Day before yesterday: Düýn bir gün öň
+Next week: Geljek hepde
+This week: Bu hepde
+Last week: Geçen hepde
+Week before last: Soňky bir hepde öň
+Next week and week after: Indiki hepde we ondan soň
+This week and next week: Bu hepde we indiki hepde
+Last week and this week: Geçen hepde we şu hepde
+Last two weeks: Soňky iki hepde
+Next month: Indiki aÿ
+This month: Bu Aý
+Last month: Geçen aý
+Month before last: Iň soňky aý
+Next year: Indiki ýyl
+This year: Bu ýyl
+Last year: Geçen ýyl
+Year before last: Geçen ýyl
+Next 14 days: Indiki 14 gün
+Next 30 days: Indiki 30 gün
+Next 60 days: Geljek 60 gün
+Next 90 days: Indiki 90 gün
+Next 180 days: Indiki 180 gün
+Next 365 days: Indiki 365 gün
+Invalid report id XXX.: Nädogry hasabat ID: "XXX".
+Unnamed Report: Adyny aýtmadyk hasabat
+Add Report: Hasabat goş
+Edit Report: Hasabaty redaktirläň
+Report name: Hasabatyň ady
+User: Ulanyjy
+Current User: Häzirki ulanyjy
+Include link in menu: Salgy menýuda goşuň
+Include standard header/trailer: Adaty sözbaşy / tirkeg goşuň
+Include previous/next links: Öňki / indiki baglanyşyklary goşuň
+Include empty dates: Boş seneleri goşuň
+Date range: Sene aralygy
+Template variables: Şablon üýtgeýjileri
+Page template: Sahypanyň şablony
+Day template: Gün şablony
+Event template: Waka şablony
+Are you sure you want to delete this report?: Bu hasabaty öçürmek isleýändigiňize ynanýarsyňyzmy?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Şeýle hasabat ID-si ýok: "XXX".
+Variable XXX not found.: Üýtgeýji XXX tapylmady
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Custörite sözbaşy redaktirläň
+Edit Custom Script/Stylesheet: Omörite skript / stil tablisasyny redaktirläň
+Edit Custom Trailer: Omörite treýleri redaktirläň
+
+########################################
+# Page: edit_user.php
+#
+Username: Ulanyjy ady
+E-mail address: Email adres
+Password: Parol
+again: ýene
+Disabled for demo: Demo üçin ýapyk
+Are you sure you want to delete this user?: Bu ulanyjyny pozmak isleýändigiňize ynanýarsyňyzmy?
+Change Password: Paroly üýtgetmek
+New Password: Täze parol
+Set Password: Paroly düzüň
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Ulanyjylary pozmak goldanylmaýar.
+The passwords were not identical.: Parollar birmeňzeş däldi.
+You have not entered a password.: Parol girizmediňiz
+Username cannot be blank.: Ulanyjy ady boş bolup bilmez.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Ygtyýarly däl
+
+########################################
+# Page: export.php
+#
+Export: Eksport
+Export format: Eksport formaty
+Include all layers: Layhli gatlaklary goşuň
+Include deleted entries: Öçürilen ýazgylary goşuň
+Export all dates: Dateshli seneleri eksport ediň
+Start date: Başlangyç senesi
+End date: Ahyrky senesi
+Modified since: Şondan bäri üýtgedildi
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: eksport formaty kesgitlenmedi ýa-da nädogry.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Ulanyjy görkezilmedi.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Täze topar goşuň
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Ady agzalmadyk topar
+Add Group: Topar goşuň
+Edit Group: Topary redaktirläň
+Group name: Toparyň ady
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Toparyň adyny görkezmeli
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Senenamalary awtomatiki täzeläň
+auto-refresh-help: Işledilende, gün görnüşi, hepde görnüşi, aý görnüşi we tassyklanmadyk sahypalaryň sanawy awtomatiki usulda wagtal-wagtal täzelenýär.
+Auto-refresh time: Awto-täzeleme wagty
+auto-refresh-time-help: Awto-täzelenme açyk bolsa, bu her täzelenmäniň arasyndaky wagty kesgitleýär.
+Display days with events in bold in year view: Wakalar bilen günleri batyrgaý görnüşde görkeziň
+Display weekends in week view: Dynç günlerini hepdäniň görnüşinde görkeziň
+Time interval: Wagt aralygy
+time-interval-help: Hepdäniň görnüşinde we gündiz görnüşinde näçe wagt blok ediljekdigini kesgitleýär.
+Nonuser: Ulanyjy senenamalary
+user-customize-color: Ulanyjylaryň öz reňk shemasyny üýtgetmäge rugsat berilýändigini ýa-da ýokdugyny kesgitleýär.
+enable-gradient-help: Öýjük fonlary üçin gradient reňkleri ulanyň.
+Manually entering color values: Reňk bahalaryny el bilen girizmek
+colors-help: Colorshli reňkler "#RRGGBB" alty ölçegli formatda görkezilmelidir, bu ýerde "RR" gyzyl üçin alty baha, "GG" ýaşyl üçin alty baha, "BB" gök üçin alty bahadyr.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Bug barada hasabat beriň
+Please include all the information below when reporting a bug.: Bir näsazlyk habar berlende aşakdaky ähli maglumatlary goşmagyňyzy haýyş edýäris.
+Also, please use English rather than XXX.: Şeýle hem, XXX däl-de,  Iňlis  ulanyň.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar resminamalary
+Currently in English only.: Häzirki wagtda diňe iňlis dilinde.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Senenama ýazgylaryny goşmak / redaktirlemek
+Repeat Type: Gaýtalama görnüşi
+For More Information...: Has giňişleýin maglumat üçin ...
+Repeat End Date: Ahyrky senäni gaýtalaň
+Repeat Day: Gaýtalama güni
+repeat-day-help: Çäräniň hepdäniň haýsy günlerinde gaýtalanmalydygyny kesgitleýär.
+
+########################################
+# Page: help_import.php
+#
+Import: =
+Palm Desktop: Palma stoly
+allow you to import entries from the Palm...: Bu görnüş, “Palm Desktop Datebook” -dan ýazgylary import etmäge mümkinçilik berer. Palma katalogyňyzda senäniň kitabynda / datebook.dat-da ulanyjy adyňyz bilen atlandyrylan kiçi bukjada ýerleşmeli.
+The following entries will not be imported: Aşakdaky ýazgylar import edilmez:
+Entries older than the current date: Häzirki seneden has köne ýazgylar
+Entries created in the Palm Desktop...: Palm Desktop-da HotSync'd bolmadyk ýazgylar
+Anything imported from Palm...: Palmadan getirilen islendik zat indiki import wagtynda (wakanyň senesi geçmedik bolsa) ýazylar. Şonuň üçin “Palm Desktop” -da täzelenmeler edilmeli.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Bu forma vCalendar (.vcs) 1.0 hadysasyny import eder.
+The following formats have been tested: Aşakdaky formatlar synagdan geçirildi:
+This form will import iCalendar (.ics) events.: Bu forma iCalendar (.ics) wakalaryny import eder.
+Enabling: Işletmek
+Overwrite Prior Import: Öňki importyň üstünden ýazyň
+will cause events imported previously...: öň import edilen wakalara, täze import faýlyndaky waka bilen birmeňzeş UID-i pozan ýaly bellik edilmegine sebäp bolar. Bu, täzelenen iCalendar faýlynyň dublikat döretmezden import edilmegine rugsat bermeli.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Kömek indeksi
+About WebCalendar: WebCalendar hakda
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Gatlaklar beýleki ulanyjylaryň wakalaryny öz senenamaňyzda görkezmek üçin peýdalydyr. Ulanyjyny we wakalaryň görkeziljek reňkini kesgitläp bilersiňiz.
+Add/Edit/Delete: Goşmak / redaktirlemek / Öçürmek
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Sahypanyň aşagyndaky administrator bölümindäki gatlaklary üýtgetmek baglanyşygyna basmak, gatlaklary goşmaga / redaktirlemäge / pozmaga mümkinçilik berer.
+The text color of the new layer that will be displayed in your calendar.: Senenamaňyzda görkeziljek täze gatlagyň tekst reňki.
+Disabling: Öçürmek
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Gatlaklary öçürmek üçin sahypanyň aşagyndaky administrator bölümindäki Layers Disable baglanyşygyny basyň.
+Duplicates: Göçürmeler
+If checked, events that are duplicates of your events will be shown.: Barlanylsa, wakalaryňyzyň dublikaty bolan wakalar görkeziler.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Gatlaklary açmak üçin sahypanyň aşagyndaky administrator bölümindäki Enable Layers baglanyşygyny basyň.
+Source: Çeşme
+Specifies the user that you would like to see displayed in your calendar.: Senenamaňyzda görkezilmegini isleýän ulanyjyny kesgitleýär.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Bellenen kategoriýa
+default-category-help: Täze hadysanyň deslapky bolmaly kategoriýasyny kesgitleýär.
+When I am the boss: Men başlyk bolanymda
+Email me event notification: Waka habarnamasyny maňa iberiň
+email-boss-notifications-help: Başlyklaryň e-poçta hadysalary habarnamasy hökmünde alýandyklaryny kesgitleýär.
+I want to approve events: Wakalary tassyklamak isleýärin
+boss-approve-event-help: Başlygyň kömekçiler tarapyndan goşulan wakalary tassyklamalydygyny ýa-da ýokdugyny kesgitleýär.
+Subscribe/Publish: Abuna ýazyl / neşir et
+Allow remote publishing: Uzakdan neşir edilmegine rugsat beriň
+allow-remote-publishing-help: Uzakdaky iCal müşderisiniň wakalary WebCalendar-a gaýtadan neşir edip biljekdigini kesgitleýär
+remote-publishing-url-help: WebCalendar-a ýazylmak we neşir etmek üçin iCal müşderi programmasynda ulanjak URL-ni görkezýär.
+allow-remote-subscriptions-help: Uzakdaky ulanyjylaryň, iCal mümkinçilikli programmada (Apple-iň iCal ýa-da Mozilla senenamasy ýaly) wakalaryňyzy görmegine mümkinçilik berýän senenamaňyza ýazylyp biljekdigini kesgitleýär.
+remote-subscriptions-url-help: Senenamaňyza ýazylmak üçin uzakdaky ulanyjylaryň ulanmaly URL-ni görkezýär.
+Enable FreeBusy publishing: FreeBusy neşirini açyň
+freebusy-enabled-help: “ICal FreeBusy” standartyny ulanyp, ulanyjynyň elýeterli wagtyny alyp bolýandygyny kesgitleýär.
+freebusy-url-help: Ulanyjynyň FreeBusy sanawyna girmek üçin URL
+rss-feed-url-help: RSS iýmitine girmek üçin URL
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Ulanyjynyň girişine we rugsatlaryna gowy gözegçilik etmäge mümkinçilik berýär. Ulanyjylar, eger administrator tarapyndan ygtyýarlandyrylan bolsa, deslapky we aýratyn rugsat berip bilerler.
+If disabled, this user cannot send you emails.: Öçürilen bolsa, bu ulanyjy size e-poçta iberip bilmez.
+If disabled, this user cannot see you in the participants list.: Öçürilen bolsa, bu ulanyjy sizi gatnaşyjylaryň sanawynda görüp bilmez.
+If enabled, this user cannot view the details of any of your entries.: Işledilen bolsa, bu ulanyjy ýazgylaryňyzyň jikme-jikliklerini görüp bilmez.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Maýyp neşir etmek (Admin)
+Publishing Disabled (User): Neşir etmek Maýyp (Ulanyjy)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Saýlamak üçin basyň
+Current Icons on Server: Serwerdäki häzirki nyşanlar
+
+########################################
+# Page: import.php
+#
+import from file: faýldan getiriň
+Disabled: Maýyp
+Import format: Formaty import ediň
+Exclude private records: Şahsy ýazgylary aýyryň
+Repeated items are imported separately. Prior imports are not overwritten.: Gaýtalanýan zatlar aýratyn getirilýär. Öňki importlar gaýtadan ýazylmaýar.
+
+########################################
+# Page: import_handler.php
+#
+No file: Faýl ýok
+Error deleting palm events from webcalendar.: Webkalendardan palma hadysalaryny pozmakda ýalňyşlyk.
+Events from prior import marked as deleted: Öň importdan bolan wakalar öçürildi
+Conflicting events: Çaknyşykly wakalar
+The import file contained no data.: Import faýlynda hiç hili maglumat ýokdy.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Bu gatlagy öçürmek isleýändigiňize ynanýarsyňyzmy?
+Delete layer: Gatlagy pozuň
+Edit layer: Gatlagy redaktirläň
+Enable layers: Gatlaklary işletmek
+Layer: Gatlak
+Layers are currently disabled.: Gatlaklar häzirki wagtda ýapyk.
+Layers are currently enabled.: Gatlaklar häzirki wagtda açyk.
+Click to modify layers settings for XXX: XXX senenama üçin gatlak sazlamalaryny üýtgetmek üçin şu ýere basyň.
+Disable Layers: Gatlaklary öçüriň
+Add layer: Gatlak goşuň
+Add Layer: Gatlak goşuň
+Edit Layer: Layeri redaktirläň
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Saýlawy täzeläp bolmaýar
+Invalid entry id.: Nädogry giriş ID.
+You cannot create a layer for yourself.: Özüňiz üçin gatlak döredip bilmersiňiz.
+You can only create one layer for each user.: Her ulanyjy üçin diňe bir gatlak döredip bilersiňiz.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Tassykla / tassykla
+Approve Selected: Saýlananlary tassyklaň
+Check All: Hemmesini barlaň
+Emails Will Not Be Sent: E-poçta iberilmez
+Reject Selected: Saýlananlary ret et
+Reject: Ret et
+Uncheck All: Hemmesini belläň
+View this entry: Bu ýazgyny görüň
+No unapproved entries for XXX.: "XXX" üçin tassyklanmadyk ýazgylar ýok.
+Unapproved Entries: Makullanmadyk ýazgylar
+Approve this entry?: Bu ýazgyny tassyklaýarsyňyzmy?
+Reject this entry?: Bu ýazgyny ret edýärsiňizmi?
+Approve Selected entries?: Saýlanan ýazgylary tassyklamaly?
+Reject Selected entries?: Saýlanan ýazgylary ret ediň?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Giriş we parol girizmeli.
+Save login via cookies so I dont have to login next time.: Girişleri gutapjyklar arkaly ýazdyryň, indiki gezek girmeli däl
+Login: Giriş
+public: köpçülik
+Access XXX calendar: XXX senenama giriň
+cookies-note: Bellik: Bu programma gutapjyklaryň açyk bolmagyny talap edýär.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: XXX girişdäki bikanun nyşanlar.
+Invalid login: Nädogry giriş
+Activity login failure: Ulanyjy ady: "XXX", IP: "YYY".
+Error XXX: Roralňyşlyk: "XXX".
+You have been logged out.: Sessiýadan çykdyňyz
+Access public calendar: Jemgyýetçilik senenamasyna giriň
+Not yet registered? Register here!: Entek hasaba alynmadymy? Şu ýerde hasaba alyň!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Şeýle ulanyjy senenamasy ýok: "XXX".
+This Calendar is not Public.: Bu senenama köpçülige açyk däl.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Ulanyjy däl senenama goşuň
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Giriş görkezilmelidir.
+No such nonuser calendar: Şeýle ulanyjy senenamasy ýok
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Nädogry tema
+Save Preferences: Saýlamalary ýazdyryň
+Public Access calendar: Jemgyýetçilik elýeterliligi senenamasy
+Modify Non User Calendar Preferences: Ulanyjy däl senenama saýlawlaryny üýtgediň
+Return to My Preferences: Isleglerime dolan
+Custom Scripts: Omörite skriptler
+Timezone Selection: Wagt guşagyny saýlamak
+Multiview: Köp syn:
+entry-interval-help: Giriş wagtlaryny redaktirläniňizde minut aralygyny düzýär
+Entry interval: Giriş aralygy
+hour: sagat
+minute: minut
+theme-reload-help: CSS keş keşbi sebäpli sahypany täzeden ýüklemek zerur bolup biler
+Page may need to be reloaded for new Theme to take effect: Täze Tema güýje girmegi üçin sahypa täzeden ýüklenmeli bolup biler
+display_byproxy-help: Hakyky döredijini view_entry sahypasynda görkeziň
+Display if created by Assistant: Kömekçi tarapyndan döredilen bolsa görkeziň
+allow-view-subscriptions-help: Şahsy ýa-da Gizlin ýazgylara uzakdan girmegi çäklendirýär
+Allow remote viewing of: Uzakdan görmäge rugsat beriň
+entries: ýazgylar
+
+########################################
+# Page: purge.php
+#
+Purging events for: Wakalary arassalamak
+Finished: Tamamlandy
+Back: Yzyna
+Check box to delete ALL events for a user: Ulanyjy üçin  HEMMESI  wakalary pozmak üçin gutujygyny belläň
+Delete all events before: Eventshli wakalary öçüriň
+Purge deleted only: Arassalamak diňe pozuldy
+Preview delete: Öçürmek
+Are you sure you want to delete events for: Wakalary pozmak isleýändigiňize ynanýarsyňyzmy?
+Records deleted from XXX: XXazgylar "XXX" -den öçürildi.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: E-poçta salgysy boş bolup bilmez.
+Username already exists.: Ulanyjy ady eýýäm bar.
+Email address already exists.: E-poçta salgysy eýýäm bar.
+New user via self-registration.: Öz-özüni hasaba almak arkaly täze ulanyjy.
+A new WebCalendar account has been set up for you.: Siziň üçin täze WebCalendar hasaby döredildi.
+Your username is XXX.: Ulanyjy adyňyz: "XXX".
+Your password is XXX.: Parolyňyz: "XXX"
+Please visit XXX to log in and start using your account!: Hasabyňyza girip, hasabyňyzy ulanyp başlamak üçin "XXX" -e girmegiňizi haýyş edýäris!
+You may change your password after logging in the first time.: Ilkinji gezek gireniňizden soň parolyňyzy üýtgedip bilersiňiz.
+If you received this email in error: Bu e-poçta ýalňyşlyk bilen gelen bolsaňyz we WebCalendar hasabyna ýazylmadyk bolsaňyz, bu habary äsgermezlik edip bilersiňiz ýa-da gysga bellik bilen jogap berip bilersiňiz
+Administrator: =
+Welcome: Hoş geldiňiz
+New user via email.: E-poçta arkaly täze ulanyjy.
+Registration: Hasaba alyş
+Welcome to WebCalendar: WebCalendar-a hoş geldiňiz
+Your email should arrive shortly.: E-poçtaňyz gysga wagtda gelmeli.
+Return to Login screen: Giriş ekranyna dolan
+Password (again): Parol (ýene):
+Your account information will be emailed to you.: Hasabyňyz baradaky maglumatlar size e-poçta bilen iberiler.
+Submit: Iberiň
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Dowam et
+(Your comments will be emailed to the other participants.): (Teswirleriňiz beýleki gatnaşyjylara iberiler.)
+XXX has rejected an appointment.: XXX duşuşygy ret etdi.
+Rejected by XXX.: XXX tarapyndan ret edildi
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Täze uzakdaky senenama goşuň
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Bu waka gizlin.
+(Private): (Hususy)
+(cont.): (dowamy)
+Approved: Makullandy
+Deleted: Öçürildi
+Rejected: Ret edildi
+Waiting for approval: Tassyklamaga garaşýarys
+Unknown: Näbelli
+Invalid report id.: Nädogry hasabat ID.
+Click here to manage reports for the Public Access calendar.: Jemgyýetçilik kalendary üçin hasabatlary dolandyrmak üçin şu ýere basyň.
+Add new report: Täze hasabat goşuň
+Manage Reports: Hasabatlary dolandyrmak
+
+########################################
+# Page: search.php
+#
+Advanced Search: giňişleýin gözleg
+Search: Gözlemek
+Keywords: Açar sözler
+Enter % for all entries: Allhli ýazgylar üçin% giriziň
+Include: Goşuň
+Filter by Date: Sene boýunça süzgüç
+All Dates: Allhli seneler
+Past: Geçmiş
+Upcoming: Geljekde
+Range: Aralyk
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Bir ýa-da birnäçe gözleg açar sözüni girizmeli.
+Search Results: Gözleg netijeleri
+match found: tapyldy
+matches found: gabat gelýän tapyldy
+No matches found: Gabat gelýän tapylmady
+New Search: Täze gözleg
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Aşakdaky maglumatlar, gurnamagyňyzy has ygtybarly etmek üçin üýtgedilip bilinjek WebCalendar gurnama bilen baglanyşykly meseleleriň sanawyny berýär.
+For questions about WebCalendar security see the forums: WebCalendar howpsuzlyk meselesi barada soraglar üçin GitHub.com-da ýerleşdirilen WebCalendar forumlaryny ulanyň;<br>XXX
+View your current PHP settings: Häzirki PHP sazlamalaryňyzy görüň
+Security Issue: Howpsuzlyk meselesi
+Status: .Agdaý
+Default admin user password: Bellenen administrator ulanyjy paroly
+You should change the password of the default admin user.: Adaty administrator ulanyjynyň parolyny üýtgetmeli.
+File permissions XXX: Faýl rugsatlary: XXX
+item XXX should not be writable: Aşakdaky element ýazylmaly däldir:<br><tt> XXX</tt>
+File exists XXX: Faýl bar: "XXX"
+Because you have email disabled, you should remove this file.: E-poçta öçürilendigi sebäpli bu faýly aýyrmaly.
+File location XXX: Faýlyň ýerleşýän ýeri: "XXX"
+remove XXX if not using: "XXX" faýly ulanmaýan bolsaňyz, ony pozmaly. Ora-da bolmasa, ony täze kataloga geçiriň.
+System Settings XXX: Ulgam sazlamalary: "XXX"
+consider enabling UAC: Ulanyjy hukuklaryny kesgitlemek üçin Ulanyjylara Dolandyryş Dolandyryşyny açmagy göz öňünde tutup bilersiňiz.
+recommend approving new public events: Köpçülikleýin çäräniň tabşyrylmagynyň tassyklanmagyny maslahat berýäris.
+recommend using CAPTCHA: CAPTCHA täzeden awtomatiki hadysalaryň iberilmegini goramak maslahat berilýär.
+Database cache directory location: Maglumat bazasynyň keş keş katalogynyň ýerleşýän ýeri
+db cache should be inaccessable: Maglumat bazasynyň keşi URL bilen girip bolmaýan katalogda bolmaly.
+PHP Settings XXX: PHP sazlamalary: "XXX"
+recommend setting XXX Off: "XXX" üçin maslahat berilýän sazlama ýapyk.
+recommend setting allow_url_fopen Off: Uzakdaky senenamalar açylmadyk ýagdaýynda "allow_url_fopen" üçin maslahat berilýän sazlama ýapyk.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Başga bir ulanyjynyň senenamasyny görüň
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Hiç hili kategoriýa goşmadyňyz.
+Set Category: Kategoriýany düzüň
+Global Categories cannot be changed.: Global kategoriýalary üýtgedip bolmaz.
+
+########################################
+# Page: upcoming.php
+#
+more: has köp
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Uzakdaky senenamalar
+denotes administrative user: administratiw ulanyjyny aňladýar
+Add New User: Täze ulanyjy goşuň
+
+########################################
+# Page: usersel.php
+#
+form: görnüşi
+Reset: Täzeden düzmek
+
+########################################
+# Page: views.php
+#
+Add New View: Täze görnüş goşuň
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Ady görkezilmedik görnüş
+Add View: Görkeziş goş
+Edit View: Görnüşi redaktirläň
+View Name: Adyny gör
+View Type: Görnüşi
+Day by Time: Wagtal-wagtal
+Week (Users horizontal): Hepde (Ulanyjylar keseligine)
+Week by Time: Wagt boýunça hepde
+Week (Users vertical): Hepde (Ulanyjylar dik)
+Week (Timebar): Hepde (Wagt paneli)
+Month (Timebar): Aý (Wagt paneli)
+Month (side by side): Aý (gapdal)
+Month (on same calendar): Aý (şol bir senenama boýunça)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Görkezişiň adyny görkezmeli
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Bu görnüş üçin ulanyjy ýok.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Taslama göterimini täzeläň
+Completed: Tamamlandy
+Assistant mode: Kömekçi re .im
+Declined: Pese gaçdy
+Needs-Action: Zerurlyklar
+by: tarapyndan
+Percentage Complete: Göterim doly
+External User: Daşarky ulanyjy
+Update: Täzelen
+at: =
+comments: teswirler
+Show: Görkez
+Hide: Gizle
+Approve/Confirm entry: Girişi tassykla / tassykla
+Reject entry: Girişi ret et
+Set category: Kategoriýa düzüň
+Add to My Calendar: Senenama goş
+Copy entry: Girişi göçüriň
+This will delete this entry for all users.: Bu, ähli ulanyjylar üçin bu ýazgyny pozar.
+Edit entry: Girişi redaktirläň
+Edit repeating entry for all dates: Dateshli seneler üçin gaýtalanýan ýazgyny redaktirläň
+Delete repeating event for all dates: Datehli seneler üçin gaýtalanýan wakany pozuň
+Edit entry for this date: Bu sene üçin ýazgyny redaktirläň
+Delete entry only for this date: Diňe şu sene üçin ýazgyny pozuň
+Delete entry from calendar of XXX: XXX senenamasyndan ýazgyny pozuň
+This will delete the entry from your XXX calendar.: Bu, XXX senenamaňyzdaky ýazgyny pozar.
+boss: başlyk '
+This will delete the entry from your boss calendar.: Bu, başlygyňyzyň senenamasyndaky ýazgyny pozar.
+This will delete the entry from your calendar.: Bu senenamaňyzdaky ýazgyny pozar.
+from your boss calendar: başlygyňyzyň senenamasyndan
+Do you want to add this entry to your calendar?: Bu ýazgyny senenamaňyza goşmak isleýärsiňizmi?
+This will add the entry to your calendar.: Bu senenamaňyza ýazgy goşar.
+Email all participants: Gatnaşanlaryň hemmesine e-poçta iberiň
+Hide activity log: Hereket gündeligini gizläň
+Show activity log: Hereket gündeligini görkeziň
+Export this entry to: Bu ýazgyny eksport ediň
+Palm Pilot: Palma piloty
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Täze ýazgy goşmak üçin boş öýjüge iki gezek basyň.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Täze giriş
+cont.: dowamy
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Başga bir ulanyjy senenamasy
+Category Management: Kategoriýany dolandyrmak
+Day View: Gün görnüşi
+Edit Event: Wakany redaktirläň
+Month View: Aý görnüşi
+Common Trailer: Umumy treýler
+User Management: Ulanyjy dolandyryşy
+Manage Views: Görüşleri dolandyrmak
+Week View: Hepdäniň görnüşi
+Year View: Viewyl görnüşi
+Invalid function id: Nädogry funksiýa id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: "settings.php" faýlyny tapyp bilmediňiz.
+Incomplete settings.php file...: Doly däl "settings.php" faýly ...
+Could not find XXX defined in...: "settings.php" faýlyňyzda kesgitlenen "XXX" tapylmady.
+You must define XXX in: "Sazlamalar.php" faýlynda "XXX" kesgitlemeli.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Dekabr
+Dec: Dek
+LANGUAGE DEFINED: DIL DEGIŞLI
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Maglumat bazasyna birikmekde säwlik: "XXX".
+db_type not defined.: db_ görnüşi kesgitlenmedi.
+invalid db_type XXX: nädogry db_ görnüşi "" XXX ".
+Cache cleared from previous SQL!: Keş öňki SQL-den arassalandy!
+Error executing query.: Talaby ýerine ýetirmekde säwlik.
+Unfortunately, XXX is not implemented for YYY: Gynansagam, "XXX" (YYY) üçin ýerine ýetirilmeýär.
+Unknown ODBC error.: Näbelli ODBC ýalňyşlygy.
+Error opening cache dir XXX.: "XXX" keş keşini açmakda säwlik.
+delete: poz
+Cache error Could not XXX file YYY.: Keş ýalňyşlygy: XXY faýly "YYY" edip bilmedi.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Öldüriji ýalňyşlyk
+Invalid data format for: Üçin nädogry maglumat formaty
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Roralňyşlyk: Hereket gündeligi üçin ýazylmady!
+This event is XXX.: Bu waka XXX.
+Conf.: Konf.
+exceeds limit of XXX events per day: günde XXX hadysalarynyň çäginden geçýär
+on: üstünde
+All Attendees: Gatnaşanlaryň hemmesi
+Busy: Işli
+Tentative: =
+Schedule an appointment for XXX.: XXX üçin duşuşygy meýilleşdiriň: YYY.
+date_select: __dd__ __ aý__ __yyy__
+Event approved: Waka tassyklandy
+Journal approved: Journalurnal tassyklandy
+Task approved: Wezipe tassyklandy
+Attachment: Goşundy
+Event created: Waka döredildi
+Journal created: Journalurnal döredildi
+Task created: Wezipe döredildi
+Event deleted: Waka öçürildi
+Journal deleted: Journalurnal öçürildi
+Task deleted: Wezipe öçürildi
+New user via email (self registration): E-poçta arkaly täze ulanyjy (özüni hasaba almak)
+New user (self registration): Täze ulanyjy (öz-özüni hasaba almak)
+Notification sent: Duýduryş iberildi
+Event rejected: Waka ret edildi
+Journal rejected: Journalurnal ret edildi
+Task rejected: Wezipe ret edildi
+Reminder sent: Atlatma iberildi
+Event updated: Waka täzelendi
+Journal updated: Journalurnal täzelendi
+Task updated: Wezipe täzelendi
+Delete User: Ulanyjyny poz
+WK: =
+TASKS: =
+Task_Title: Ady
+Due: Berilmeli
+Task Name: Wezipe ady
+Task Due Date: Wezipe möhleti
+You have XXX unapproved entries: Sizde XXX tassyklanmadyk ýazgylar bar 
+Changes successfully saved: Üýtgeşmeler üstünlikli ýatda saklandy
+Event: Waka
+Action: Hereket
+Printer Friendly: Printer dost
+Generate printer-friendly version: Printer üçin amatly wersiýa dörediň
+after: soň
+before: öň
+end: soňy
+start: başla
+View this event: Bu wakany görüň
+View this task: Bu meseläni görüň
+January: Januaryanwar
+February: Fewral
+March: Mart
+April: Aprel
+May_: Maý
+June: Iýun
+July: Iýul
+August: Awgust
+September: Sentýabr
+October: Oktýabr
+November: Noýabr
+Jan: .An
+Feb: Fewral
+Mar: Mart
+Apr: =
+May: Maý
+Jun: Iýun
+Jul: Iýul
+Aug: Awgust
+Sep: Sentýabr
+Oct: Okt.
+Nov: Noýabr
+SU: =
+MO: =
+TU: =
+WE: BIZ
+TH: =
+FR: =
+SA: =
+unknown-month: näbelli aý
+First Quarter Moon: Birinji çärýek Aý
+Full Moon: Doly Aý
+Last Quarter Moon: Soňky çärýek aý
+New Moon: Täze dogan aý
+Error TIME_SLOTS undefined!: Roralňyşlyk: TIME_SLOTS kesgitlenmedi!
+The following error occurred: Aşakdaky ýalňyşlyk ýüze çykdy
+You are not authorized.: Size ygtyýar berilmedi
+Add N hours to: N sagat goşuň
+Subtract N hours from: N sagatdan aýyryň
+same as: ýaly
+server time: Serwer wagty
+Cannot read timezone file XXX.: Wagt guşagy faýlyny okap bolmaýar: XXX.
+Your current GMT offset is XXX hours.: Häzirki GMT ofsetiňiz XXX sagat.
+Unauthorized: Rugsat berilmedik
+Error approving event XXX.: Wakany tassyklamakda säwlik: XXX.
+Error deleting event XXX.: Wakany pozmakda säwlik: XXX.
+Error rejecting event XXX.: Wakany ret etmekde säwlik: XXX.
+Sunday: Sundayekşenbe
+Monday: Duşenbe
+Tuesday: Sişenbe
+Wednesday: Çarşenbe
+Thursday: Penşenbe
+Friday: Juma
+Saturday: Şenbe
+Sun: Gün
+Mon: Duş
+Tue: Sişenbe
+Wed: Çarşenbe
+Thu: Çarşenbe
+Fri: Juma
+Sat: Şenbe
+unknown-weekday: näbelli-dynç güni
+Invalid referring URL: Nädogry salgylanma URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Indeks
+Documentation: Resminamalar
+Page: Sahypa
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Senenamam
+Add New Entry: Täze ýazgy goşuň
+Add New Task: Täze wezipe goşuň
+Logout: Hasapdan çykmak
+Home: Öý
+Back to My Calendar: Senenama dolan
+Go to: Git
+Manage calendar of: Senenamany dolandyryň
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Brauzer dili tapylmady
+(not supported): (goldanok)
+Abkhazian: Abhazian
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: Afrika
+Ainu: Aýnu
+Akan: =
+Akkadian: =
+Albanian: Alban
+Aleut: =
+Algonquian: =
+Altai (Southern): Altaý (Günorta)
+Amharic: Amhar
+Angika: =
+Apache: =
+Arabic (Algeria): Arapça (Aliair)
+Arabic (Bahrain): Arapça (Bahreýn)
+Arabic (Egypt): Arapça (Müsür)
+Arabic (Iraq): Arapça (Yrak)
+Arabic (Jordan): Arapça (Iordaniýa)
+Arabic (Kuwait): Arapça (Kuweýt)
+Arabic (Lebanon): Arapça (Liwan)
+Arabic (Libya): Arapça (Liwiýa)
+Arabic (Morocco): Arapça (Marokko)
+Arabic (Oman): Arapça (Oman)
+Arabic (Qatar): Arapça (Katar)
+Arabic (Saudi Arabia): Arapça (Saud Arabystany)
+Arabic (Syria): Arapça (Siriýa)
+Arabic (Tunisia): Arapça (Tunis)
+Arabic (U.A.E.): Arapça (U.A.E.)
+Arabic (Yemen): Arapça (Yemenemen)
+Arabic: Arapça
+Aragonese: Aragonly
+Aramaic: Arameý
+Arapaho: =
+Arawak: =
+Armenian: Ermeni
+Assamese: =
+Asturian: =
+Athapascan: Atapaskan
+Avaric: Awaric
+Avestan: Awestan
+Awadhi: =
+Aymara: Aýmara
+Azerbaijani: Azerbaýjan
+Balinese: Balin
+Baluchi: Baluçi
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: Başkir
+Basque: Bask
+Beja: =
+Belarusian: Belarus
+Bemba: =
+Bengali: =
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Gara aýak
+Blin: =
+Bliss: Bagt
+Bosnian: Bosniýa
+Braj: =
+Breton: =
+Buginese: =
+Bulgarian: Bolgar
+Buriat: =
+Burmese: Birma
+Caddo: Kaddo
+Catalan: Katalan
+Cebuano: Sebuano
+Chagatai: Çagataý
+Chamorro: =
+Chechen: Çeçen
+Cherokee: Çeroki
+Cheyenne: Çeýnen
+Chibcha: Çibça
+Chichewa: Çiçewa
+Chinese (Hong Kong): Hytaý (Gonkong)
+Chinese (PRC): Hytaý (HHR)
+Chinese (Simplified/GB2312): Hytaý dili (plönekeýleşdirilen / GB2312) 
+Chinese (Singapore): Hytaý (Singapur)
+Chinese (Taiwan): Hytaý (Taýwan)
+Chinese (Traditional/Big5): Hytaý (Adaty / Big5)
+Chinook: Çinook
+Chipewyan: Çipewýan
+Choctaw: Çoktaw
+Chuukese: Çuukese
+Chuvash: Çuwaş
+Coptic: Koptik
+Cornish: Korniş
+Corsican: Korsikan
+Cree: Kri
+Creek: Krik
+Croatian: Horwatiýa
+Czech: Çeh
+Dakota: =
+Danish: Daniýaly
+Dargwa: =
+Delaware: Delawer
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Gollandiýa (Belgiýa)
+Dutch: Gollandiýaly
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Elamit
+English (Australia): Iňlis (Awstraliýa)
+English (Belize): Iňlis (Belize)
+English (Canada): Iňlis (Kanada)
+English (Ireland): Iňlis (Irlandiýa)
+English (Jamaica): Iňlis (Jamaamaýka)
+English (New Zealand): Iňlis (Täze Zelandiýa)
+English (Philippines): Iňlis (Filippinler)
+English (South Africa): Iňlis (Günorta Afrika)
+English (Trinidad & Tobago): Iňlis (Trinidad & Tobago)
+English (United Kingdom): Iňlis (Beýik Britaniýa)
+English (United States): Iňlis (ABŞ)
+English (Zimbabwe): Iňlis (Zimbabwe)
+English: Iňlis-ABŞ
+Erzya: =
+Esperanto: =
+Estonian: Eston
+Ewe: =
+Ewondo: =
+Fang: Aljyramak
+Fanti: =
+Faroese: Faruz
+Fijian: =
+Filipino: Filippinler
+Finnish: Fin
+Fon: =
+French (Belgium): Fransuz (Belgiýa)
+French (Canada): Fransuz (Kanada)
+French (France): Fransuz (Fransiýa)
+French (Luxembourg): Fransuz (Lýuksemburg)
+French (Monaco): Fransuz (Monako)
+French (Switzerland): Fransuz (Şweýsariýa)
+French: Fransuz
+Frisian (Eastern): Friz (Gündogar)
+Frisian (Northern): Friz (Demirgazyk)
+Frisian (Western): Friz (Günbatar)
+Frisian: Frizian
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galisiýa
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Gürji
+German (Austria): Nemes (Awstriýa)
+German (Germany): Nemes (Germaniýa)
+German (Liechtenstein): Nemes (Lihtenşteýn)
+German (Luxembourg): Nemes (Lýuksemburg)
+German (Standard): Nemes (standart)
+German (Switzerland): Nemes (Şweýsariýa)
+German: Nemes
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Got
+Grebo: =
+Greek: Grek
+Greenlandic: Grenlandiýa
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwiçin
+Haida: Haýda
+Haitian (Creole): Gaiti (Kreol)
+Haitian: Gaiti
+Hausa: =
+Hawaiian: Gawaýi
+Hebrew: Hebrewewreýçe
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Hitit
+Hmong: =
+Holo (Taiwanese): Holo (Taýwanlylar)
+Hungarian: Wenger
+Hupa: =
+Iban: =
+Icelandic: Islandiýa
+Ido: Men edýän
+Igbo: =
+Iloko: =
+Indonesian: Indoneziýaly
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Eýranly
+Irish (Gaelic): Irlandiýa (Gael)
+Irish: Irlandiýaly
+Iroquoian: =
+Italian (Switzerland): Italýan (Şweýsariýa)
+Italian: Italýan
+Japanese: Japaneseaponlar
+Javanese: Javaneseawan
+Judeo-Arabic: Iudeo-Arap
+Judeo-Persian: Iudeo-Pars
+Kabardian: =
+Kabyle: =
+Kachin: Kaçin
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: Gara-Kalpak
+Karachay-Balkar: Karaçaý-Balkar
+Karelian: =
+Kashmiri: Kaşmirli
+Kashubian: Kaşubian
+Kawi: =
+Kazakh: Gazak
+Khasi: =
+Khmer (Central): Khmer (Merkezi)
+Khmer: =
+Khotanese: Hotanlylar
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: Gyrgyz
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Koreýçe (Johab)
+Korean (North): Koreý (Demirgazyk)
+Korean (South): Koreý (Günorta)
+Korean: Koreýçe
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kürt
+Kutenai: Kutenaý
+Kyrgyz: Gyrgyzystan
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Laos
+Latin: Latyn
+Latvian: Latwiýa
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Litwa
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: Luşaý
+Luxembourghish: Lýuksemburg
+Macedonian: Makedoniýa
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: =
+Malay: Malaý
+Malayalam: Malaýalam
+Maldivian: =
+Maltese: Malta
+Manchu: Mançu
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: Manks
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: Marşal
+Marwari: =
+Masai: Masaý
+Mayan: Maýan
+Mende: =
+Mi&#39;kmaq: Mikmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: Mokşa
+Moldavian: Moldawian
+Mongo: =
+Mongolian: Mongol
+Montenegrin: Çernogoriýa
+Moroccan: Marokko
+Mossi: =
+Myanmar: Mýanma
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Demirgazyk)
+Ndebele (South): Ndebele (Günorta)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Norwegiýa (Bokmål)
+Norwegian (Nynorsk): Norwegiýa (Nynorsk)
+Norwegian: Norweg
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Oksitan
+Odia: =
+Ojibwa: =
+Oriyia: Oriýa
+Oromo: =
+Osage: =
+Ossetic: Osetik
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: Puştun
+Pedi: =
+Persian (Farsi): Parsça (Parsça)
+Persian (Iran): Pars (Eýran)
+Persian: Pars
+Phoenician: Finikiýaly
+Pohnpeian: =
+Polish: Polýak
+Portuguese: Portugaliýa
+Portuguese/Brazil: Portugaliýa / Braziliýa 
+Punjabi (India): Penjabi (Hindistan)
+Punjabi (Pakistan): Penjapy (Pakistan)
+Punjabi: Penjebi
+Quechua: Keçua
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Rhaeto-Roman
+Romanian: Rumyn
+Romansh: =
+Romany: =
+Rundi: =
+Russian (Moldavia: Rus (Moldawiýa)
+Russian (Republic of Moldova): Rus (Moldowa Respublikasy)
+Russian: Rus
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Demirgazyk)
+Sami (Skolt): =
+Sami (Southern): Sami (Günorta)
+Sami: =
+Samoan: =
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: Sardarin
+Sasak: =
+Scots (Gaelic): Şotlandlar (Gael)
+Selkup: =
+Serbian (Upper): Serb (ýokarky)
+Serbian: Serb
+Serer: =
+Sesotho: =
+Shan: Shanan
+Shona: Şona
+Sichuan Yi: Siçuan Yi
+Sicilian: Sisiliýa
+Sindhi: =
+Sinhala: =
+Slavic: Slawýan
+Slovak: Slowakiýa
+Slovenian: Sloweniýa
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbian (aşaky)
+Sorbian (Upper): Sorbian (ýokarky)
+Sorbian: =
+Sotho: =
+Spanish (Argentina): Ispan (Argentina)
+Spanish (Bolivia): Ispan (Boliwiýa)
+Spanish (Chile): Ispan (Çili)
+Spanish (Colombia): Ispan (Kolumbiýa)
+Spanish (Costa Rica): Ispan (Kosta Rika)
+Spanish (Dominican Republic): Ispan (Dominikan respublikasy)
+Spanish (Ecuador): Ispan (Ekwador)
+Spanish (El Salvador): Ispança (El Salwador)
+Spanish (Guatemala): Ispan (Gwatemala)
+Spanish (Honduras): Ispan (Gonduras)
+Spanish (Mexico): Ispan (Meksika)
+Spanish (Nicaragua): Ispan (Nikaragua)
+Spanish (Panama): Ispan (Panama)
+Spanish (Paraguay): Ispan (Paragwaý)
+Spanish (Peru): Ispan (Peru)
+Spanish (Puerto Rico): Ispan (Puerto Riko)
+Spanish (Spain): Ispan (Ispaniýa)
+Spanish (Uruguay): Ispan (Urugwaý)
+Spanish (Venezuela): Ispan (Wenesuela)
+Spanish: Ispan
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumer
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: Suwaýili
+Swati: =
+Swedish (Finland): Şwesiýa (Finlýandiýa)
+Swedish (Sweden): Şwesiýa (Şwesiýa)
+Swedish: Şwesiýa
+Syriac: Siriýa
+Tagalog: =
+Tahitian: Tahiti
+Tai: Taý
+Taiwan: Taýwan
+Tajik: Täjik
+Tamashek: Tamaşek
+Tamil: =
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: Taý
+Tibetan: Tibet
+Tigre: Tigr
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Tonga adalary)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Türk
+Turkmen: Türkmenler
+Tuvinian: Tuwinian
+Twi: =
+Udmurt: =
+Ugaritic: Ugarit
+Ukrainian: Ukrain
+Umbundu: =
+Urdu: =
+Uyghur: Uýgur
+Uzbek: Özbek
+Vai: =
+Venda: Wenda
+Vietnamese: Wýetnamly
+Volapük: =
+Votic: Ses
+Wakashan: Wakaşan
+Walloon: Wallon
+Waray: =
+Washo: =
+Welsh: Uels
+Wolaitta: =
+Wolof: Möjek
+Xhosa: Kosa
+Yakut: Utakut
+Yao: Oa
+Yapese: Japaneseapon
+Yiddish: Yiddishahudy
+Yorùbá: Ùorba
+Yupik: Upupik
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Brauzer kesgitlenen
+event: waka
+journal: .urnal
+0: 0                                                  
+1: 1                                                  
+2: 2                                                  
+3: 3                                                  
+4: 4                                                  
+5: 5                                                  
+6: 6                                                  
+7: 7                                                  
+8: 8                                                  
+9: 9                                                  
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Nädogry ulanyjy giriş
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: nädogry parol
+no such user: beýle ulanyjy ýok
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Hasap ýapyk
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Aralyk
+Months: Aýlar
+Month Days: Aý günleri
+Days: Günler
+Weeks: Hepdeler
+Position: Positionerleşişi
+Until: Şu wagta çenli
+Count: Hasapla
+Inclusion Dates: Goşma seneleri
+Exclusion Dates: Aýyrmak senesi
+Event Imported: Waka getirildi
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: baýt
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Duýduryş
+authenticate: SMTP roralňyşlygy: Hakyky tassyklap bolmady
+connect_host: SMTP roralňyşlygy: SMTP öý eýesine birigip bolmady:
+data_not_accepted: SMTP roralňyşlygy: Maglumat kabul edilmedi
+encoding: Näbelli kodlamak:
+execute: Execerine ýetirip bilmedi:
+file_access: Faýla girip bolmady:
+file_open: Faýl säwligi Faýly açyp bolmady:
+from_failed: Salgydan aşakdakylar şowsuz:
+instantiate: Poçta funksiýasyny derrew alyp bolmaýar
+mailer_not_supported: poçta goldanok
+provide_address: Iň azyndan bir alyjynyň e-poçta salgysyny bermeli.
+recipients_failed: SMTP ýalňyşlygy: Aşakdaky alyjylar şowsuz boldy:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Grafikde görlen nyşanlary giriziň
+Enter the correct letters and numbers...: Suratdan dogry harplary we sanlary tekst gutusyna giriziň. Bu kiçi synag zyýanly botlara garşy giriş çäklendirmesi bolup hyzmat edýär. Bu grafikany okamak gaty kyn bolsa, sahypany täzeden ýükläň
+Challenge/Response: Mesele / jogap
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Bu ýazgynyň senesini we wagtyny üýtgediňmi?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Gysgaça düşündiriş girizmediňiz
+time prior to work hours...: iş wagtyndan öň wagt ...
+Invalid Event Date: Nädogry waka senesi
+Please add a participant: Bir gatnaşyjy goşmagyňyzy haýyş edýäris 
+Invalid Date: Nädogry senesi
+You have not entered a valid time of day: Günüň dogry wagtyny girizmediňiz. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Senenama belgisi boş bolup bilmez. 
+First and last names cannot both be blank.: Ady we familiýasy ikisi hem boş bolup bilmez. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Nädogry reňk
+Color format should be RRGGBB.: Reňk formaty #RRGGBB bolmaly. 
+URL cannot be blank.: URL boş bolup bilmez.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Faýl görnüşi import formatyna gabat gelenok 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Resminamanyň fonunda nädogry reňk.
+Invalid color for document title.: Resminamanyň ady üçin nädogry reňk.
+Invalid color for table cell background.: Stol öýjüginiň fonunda nädogry reňk.
+Invalid color for table cell background for today.: Häzirki wagtda stol öýjüginiň fonunda nädogry reňk.
+Invalid work hours.: Nädogry iş wagty.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Serwer URL-i çyzgy (/) bilen gutarmaly.
+Invalid color for table grid.: Stol paneli üçin nädogry reňk.
+Invalid color for event popup background.: Wakanyň çykýan fonunda nädogry reňk.
+Invalid color for event popup text.: Wakanyň çykýan teksti üçin nädogry reňk.
+Invalid color for table header text.: Stol sözbaşysynyň teksti üçin nädogry reňk.
+Invalid color for table header background.: Stol sözbaşysynyň fonunda nädogry reňk.
+Server URL is required.: Serwer URL talap edilýär.
+Invalid Color: Nädogry reňk
+Database Name: Maglumat bazasynyň ady
+Full Path (no backslashes): Doly ýol (yza çekilmeýär) 
+The password contains illegal characters.: Parolda bikanun nyşanlar bar.
+Error you must specify a Single-User Login: Roralňyşlyk: Usereke-täk ulanyjy girişini görkezmeli
+Could not find XXX.: XXX tapyp bilmedim
+Could not find XXX in DOM.: DOM-da XXX tapyp bilmedim.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Bu hepde
+This Month: Bu Aý
+This Year: Bu ýyl
+Exit: Çyk
+Add New Event: Täze waka goşuň
+Delete Entries: Triesazgylary poz
+My Views: Meniň pikirlerim
+Manage Calendar of: Senenama dolandyry
+My Reports: Hasabatlarym
+My Profile: Meniň profilim
+Public Calendar: Jemgyýetçilik senenamasy
+Unapproved Events: Makullanmadyk wakalar
+User Manager: Ulanyjy dolandyryjysy
+Help Contents: Mazmuna kömek
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Maglumatlar bazasynyň keş bukjasy
+Create New: Täze dörediň
+Failure Reason: Şowsuzlygyň sebäbi:
+You must manually create database: Maglumatlar bazasyny el bilen döretmeli.
+Single-User: -Eke ulanyjy
+Test Settings: Synag sazlamalary
+Timezone Conversion Successful: Wagt guşagyny öwürmek üstünlikli
+WebCalendar Installation Wizard Step XXX: WebCalendar gurmak ussady XXX ädim
+Password Accepted: Parol kabul edildi
+Successful Login: Üstünlikli giriş
+Password Incorrect: Parol nädogry
+Invalid Login: Nädogry giriş
+Display Errors: Rorsalňyşlyklary görkeziň
+File Uploads: Faýl ýüklemeleri
+Allow URL fopen: URL açylmagyna rugsat beriň (diňe uzakdaky senenamalar ulanylanda talap edilýär)
+Safe Mode: Howpsuz tertip
+Safe Mode Allowed Vars: Ygtybarly tertip rugsat berlen awtoulaglar (TZ diňe Howpsuz re onim açyk bolsa talap edilýär)
+GD: GD (Gradient şekil fonlary üçin zerur)
+Passwords do not match!: Parollar gabat gelenok
+Unable to write password to settings.php file: "Sazlamalar.php" faýlyna parol ýazyp bolmaýar.
+Password Updated: Parol täzelendi
+Password has been set: Parol goýuldy
+Connection Successful...: Baglanyşyk üstünlikli  Gurmagy dowam etdirmek üçin indiki sahypa geçiň.
+Correct your entries or click the Create New...: Gurnamalaryňyzy dowam etdirmek üçin ýazgylaryňyzy düzediň ýa-da  Täze dörediň  düwmesine basyň.
+Correct your entries and try again.: Triesazgylaryňyzy düzediň we gaýtadan synanyşyň.
+XXX does not exist: XXX ýok
+XXX is not writable: XXX ýazyp bolmaýar
+Error Converting Timezone: Wagt guşagyny öwürmekde säwlik
+Error Unable to write to file XXX.: Roralňyşlyk XXX faýly ýazyp bolmaýar.
+Please change the file permissions of this file.: Bu faýlyň faýl rugsatlaryny üýtgediň.
+Please change includes dir permission: Beýleki ulanyjylaryň ýazmagyna rugsat bermek üçin "öz içine alýan" katalogyňyzyň faýl rugsatlaryny üýtgediň.
+Your settings have been saved.: Sazlamalaryňyz ýazdyryldy
+OFF: Öçürmek
+ON: =
+WebCalendar Setup Wizard: WebCalendar gurmak ussady
+This installation wizard will guide you...: Bu gurnama ussasy, esasy WebCalendar gurnamasyny gurmak arkaly size ýol görkezer.<br>Kömek we näsazlyklary düzetmek üçin serediň:<br>
+System Administrators Guide: Ulgam dolandyryjysynyň gollanmasy
+Frequently Asked Questions: Freygy-ýygydan soralýan soraglar
+FAQ: Sorag-jogap
+Troubleshooting: Näsazlyklary düzeltmek
+Getting Help: Kömek
+Upgrading Guide: Döwrebaplaşdyryş gollanmasy
+User Supported Wiki: Ulanyjy goldaýan Wiki
+PHP Version Check: PHP wersiýasyny barlamak
+Check to see if PHP 7.1.0 or greater is installed.: PHP 7.1.0 ýa-da has uly gurnalandygyny barlaň.
+PHP version: PHP wersiýasy
+PHP Settings: PHP sazlamalary
+Detailed PHP Info: Jikme-jik PHP maglumatlary
+settings.php Status: "settings.php" ýagdaýy
+Session Check: Sessiýa barlagy
+To test the proper operation of sessions...: Sessiýalaryň dogry işleýşini barlamak üçin bu sahypany täzeden açyň. Her gezek sessiýa hasaplamasynyň artmagyny görmeli.
+SESSION COUNTER: Sessiýa geňeşi
+The file permissions of settings.php are set...: "Sazlamalar.php" faýl rugsatlary, gurnawçynyň ony üýtgetmäge rugsady bolmazlygy üçin düzüldi. Dowam etmek üçin aşakdaky faýlyň rugsatlaryny üýtgediň
+The file permissions of the includes directory are set...: Gurnaýjynyň täze faýl döretmäge rugsady bolmazlygy üçin bukjanyň faýl rugsatlary düzüldi. Dowam etmek üçin aşakdaky katalogyň rugsatlaryny üýtgediň
+Your settings.php file appears to be valid.: "Sazlamalar.php" faýlyňyz dogry ýaly.
+Configuration Wizard Password: Sazlama ussasynyň paroly
+Create Settings File Password: Sazlamalar faýly parolyny dörediň
+db setup directions...: Bu bölümde maglumat bazasynyň serwerine birikmäni gurarsyňyz we synagdan geçirersiňiz. Berilýän hasap maglumatlary, maglumat bazalaryny, tablisalary we ulanyjylary döretmek üçin doly rugsatlar bolmaly. Bu mümkin däl bolsa ýa-da maglumat bazasyna girmek çäkli bolsa, maglumat bazasyny el bilen düzmeli bolarsyňyz.
+Database Status: Maglumat bazasynyň ýagdaýy
+Supported databases for your PHP installation: PHP gurmak üçin goldanýan maglumat bazalary
+Your current database settings are able to access the database.: Häzirki maglumat bazasynyň sazlamalary maglumat bazasyna girip bilýär.
+Please Test Settings: Sazlamalary synap görmegiňizi haýyş edýäris
+Your current database settings are not able...: Häzirki maglumat bazasynyň sazlamalary maglumat bazasyna girip bilmeýär ýa-da entek synagdan geçirilmedi.
+Database Settings: Maglumat bazasynyň sazlamalary
+Database Type: Maglumat bazasynyň görnüşi
+Server: Serwer
+Connection Persistence: Baglanyşyk dowamlylygy
+All your database tables appear to be up...: Maglumat bazasynyň tablisalarynyň hemmesi täzelenen ýaly. Indiki sahypa geçip, WebCalendar sazlamany tamamlap bilersiňiz.
+This appears to be a new installation...: Bu täze gurnama ýaly bolup görünýär. Bu dogry däl bolsa, öňki sahypa gaýdyp, sazlamalaryňyzy düzediň.
+This appears to be an upgrade...: Bu&nbsp;XXX&nbsp;YYY wersiýasyndan täzelenme ýaly bolup görünýär.
+The database requires some data input...: Maglumat bazasy kämilleşdiriş işini tamamlamak üçin Maglumat bazasyny basyň.
+In this section we will perform...: Bu bölümde maglumatlar binýadyňyzy zerur derejä ýetirmek üçin üýtgeşmeleri ýerine ýetireris. Doly goldanýan maglumat bazasyny ulanýan bolsaňyz, bu ädim siziň üçin awtomatiki ýerine ýetiriler. Notok bolsa, zerur SQL görkezilip bilner we ony kesip, maglumat bazasynyň serwer talap penjiresine goýup bilmeli.
+No database actions are required.: Maglumat bazasynyň hereketleri talap edilmeýär.
+The following database actions are required: Aşakdaky maglumatlar binýadynyň hereketleri zerurdyr
+ODBC Underlying Database: ODBC esasy maglumat bazasy:
+Automatic installation not supported: Maglumat bazasynyň görnüşi üçin awtomatiki gurnama doly ýerine ýetirilmedi. Berilýän SQL ulanyp, zerur tablisalary el bilen döretmeli bolarsyňyz. Dowam etmek üçin  SQL görkezmek  basyň. Maglumat bazasynyň talap penjiresine kesiň we goýuň.
+This may take several minutes to complete: Bu işi tamamlamak üçin birnäçe minut gerek bolup biler.
+Install Database: Maglumat bazasyny guruň
+Update Database: Maglumat bazasyny täzeläň
+Display Required SQL: Gerekli SQL görkeziň
+Return to previous page after processing SQL.: Bu SQL-i el bilen gaýtadan işläniňizden soň, skript üýtgeşmeleri ýüze çykaryp biler ýaly öňki sahypa dolanmaly we maglumat bazasyny täzeden gözden geçirmeli bolarsyňyz.
+This is the final step in setting up your WebCalendar Installation.: WebCalendar gurnamagyňyzy gurmagyň iň soňky ädimidir.
+Timezone Conversion: Wagt guşagyny öwürmek
+It appears that you have NOT converted...: Bar bolan WebCalendar waka maglumatlaryňyzy GMT-e öwürmedigiňiz görünýär. Eger bar bolsa, bu habarnamany äsgermezlik edip, öwrülmegi dowam etdirip bilmersiňiz. Bu täze gurnama bolsa, bu habary äsgermezlik edip bilersiňiz.
+Convert Data to GMT: Maglumatlary GMT-a öwüriň
+Application Settings: Programma sazlamalary
+HTTP-based authentication was not detected...: HTTP esasly tanamaklyk tapylmady. Aşakdaky 'Ulanyjyny tanamak' saýlamalaryndan 'Web Serweri' saýlamak isleseňiz, web serweriňizi täzeden düzmeli bolarsyňyz.
+HTTP-based authentication was detected...: HTTP esasly tanamaklyk tapyldy. Ulanyjyny tanamak web serweriňiz tarapyndan dolandyrylýar. Aşakdaky 'Ulanyjyny tanamak' saýlamalarynyň sanawyndan 'Web Serwer' saýlamaly.
+Create Default Admin Account: Bellenen administrator hasaby dörediň
+(Admin Account Not Found): (Admin hasaby tapylmady)
+User Authentication: Ulanyjyny tanamak
+Web-based via WebCalendar (default): WebCalendar arkaly web esasly (default)
+Web Server (not detected): Web Serwer (tapylmady)
+Web Server (detected): Web Serwer (tapyldy)
+None (Single-User): Hiç biri (-eke-täk ulanyjy)
+Read-Only: Diňe okaň
+Environment: Daşky gurşaw
+Production: Önümçilik
+Development: Ösüş
+Save Settings: Sazlamalary ýazdyryň
+Launch WebCalendar: WebCalendar açyň
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: "XXX" tablisasyny täzelemekde säwlik: YYY.
+Conversion Successful: Öwürmek üstünlikli 
+Perl script required: WebCalendar-yň öňki wersiýasy maglumatlaryňyzy öwürmek üçin PERL skriptini işletmegi talap edýär. /Tools/upgrade_to_0.9.7.pl işlediň we dowam etmek üçin şu sahypa dolanmagyňyzy haýyş edýäris.
+previous version requires updating several tables: WebCalendar-yň öňki wersiýasy birnäçe maglumat bazasynyň tablisasyny täzelemegi talap edýär.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: ÖEÜNI ALMAZ
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Maglumat bazasyna birikmekde säwlik
+Include Path: Athol goşuň
+Deleting events for: Wakalary pozmak
+Importing events for: Wakalary import etmek
+No data returned from: Hiç hili maglumat yzyna gaýtarylmady
+for non-user calendar: ulanyjy däl senenama üçin
+No Remote Calendars found: Uzak kalendarlar tapylmady
+Remote Calendars not enabled: Uzakdaky senenamalar açyk däl
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: hadysanyň idini tapyp bilmedi
+could not find event id XXX in database.: maglumat bazasynda XXX hadysanyň idini tapyp bilmedi.
+task: wezipe
+This is a reminder for the XXX detailed below.: Bu aşakda jikme-jik görkezilen XXX üçin ýatlatma.
+Pecentage Complete: Göterim doly
+Reminder: Inderatlatma
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Goldaw berilmeýän hereket: XXX.
+No event id specified.: Hiç hili waka görkezilmedi.
+Not authorized (not admin).: Ygtyýarly däl (administrator däl)
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: YYY senesinden ZZZ-a çenli XXX wakalary barlamak.
+Found XXX events in time range.: Wagt aralygynda XXX wakalary tapyldy.
+Event id=XXX YYY at ZZZ on AAA.: Waka id = AAA-da ZZZ-de XXX "YYY".
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: XXX ulanyjynyň beýleki ulanyjy senenamasyny görmegine rugsat bermek.
+Error Email reminders disabled for user XXX.: Roralňyşlyk: "XXX" ulanyjysy üçin e-poçta ýatlatmalary ýapyldy.
+Number of site_extras XXX.: Sahypanyň_ tekstleriniň sany: XXX.
+Reminder set for event.: Waka üçin ýatlatma düzüldi.
+Mins Before XXX.: Mina öň: XXX.
+Event time is XXX.: Çäräniň wagty: XXX.
+Remind time is XXX.: Timeatlatma wagty: XXX.
+Reminders for user XXX, login YYY.: "XXX" ulanyjy üçin ýatlatmalar, "YYY" giriň.
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: "XXX" ulanyjy üçin makullanmazlyk.
+Event id=XXX YYY already sent.: Waka id = XXX "YYY" eýýäm iberildi.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Bir ulanyjy re modeimi üçin giriş talap edilmeýär.
+No login required for HTTP authentication.: HTTP tassyklamak üçin giriş gerek däl.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Girişdäki nädogry nyşanlar
+Username XXX does not exist.: "XXX" ulanyjy ady ýok.
+You cannot remove admin rights from yourself!: Dolandyryjy hukuklaryny özüňizden aýryp bilmersiňiz!
+Unknown error saving user: Näbelli ýalňyşlyk tygşytlaýjy.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Çäräniň ID-si üçin gatnaşyjylar tapylmady: XXX.
+Db error Could not find event id XXX.: Db ýalňyşlygy: Wakanyň idini XXX tapyp bilmedim. 
+Error Could not find event id XXX in database.: Roralňyşlyk: Maglumat bazasynda XXX hadysanyň idini tapyp bolmady. 

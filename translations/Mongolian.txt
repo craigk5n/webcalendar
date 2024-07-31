@@ -1,0 +1,2387 @@
+# Mongolian mn
+#
+# Формат нь нэмэлт толгой хэсгээс бүрдэнэ.
+#
+# Орчуулсан: таны нэр, имэйл
+# Сүүлийн шинэчлэлт: орчуулсан огноо
+# (Тэргүүлэх "#" болон өмнөх орчуулагчдын хийсэн бүх тайлбарыг оруулаад.
+# АНХДУГААР хоосон мөрөнд эдгээр толгой тайлбарыг дуусгасан болно.)
+#
+# Шаардлагатай бол олон хүн дагаж мөрдөнө.
+#
+# Англи хэлний өгүүлбэр: орчуулга
+# (Нэг мөрөнд. Тэргүүлэх "#" ҮГҮЙ.
+# "Англи хэлний хэллэг:", үүнд ":" цэгийг оруулаад
+# WebCalendar хөгжүүлэгчид. Таны хэсэг бол "орчуулга" юм.)
+#
+# Хэрэгслийн лавлах нь танд туслах хоёр perl скриптийг агуулдаг.
+# - check_translation.pl
+# бүх текст амжилттай орчуулагдсан эсэхийг заана.
+# - update_translation.pl
+# нь бүх орчуулгыг ('хэллэг') ба олохын тулд програмын файлуудыг задлан шинжлэх болно
+# хэрэгслийн зөвлөгөө ('хэллэг'). Энэ нь үг хэллэгийг хуудасны дагуу байрлуулах болно
+# Эхний тохиолдлыг агуулсан # (файл). Сонголтоор энэ нь
+# Оруулж амжаагүй # хэллэгийг
+#  << MISSING >>
+# хэллэгийн дээрх мөрөнд #. Хэрэв энэ хэллэг нь товчлол юм бол
+# өгүүлбэрийн доорх мөрөнд англи хэл дээрх бүрэн текстийг оруулах болно.
+#
+# Тэмдэглэл: Би файлын ерөнхий хэмжээг багасгахыг оролдож байна. Хэрэв "орчуулга"
+# үг / хэллэг нь таны хэл болон англи хэл дээр ижил байна, "=" тэмдгийг ашиглана уу.
+#
+# Тэмдэглэл: Та оруулгыг анзаарах болно "May_" доор. Үүний шалтгаан бий.
+# Орчуулах "May_" бүтэн сарын нэр болон "May" нь,
+# ихэвчлэн гурван үсэгтэй, сарын товчлол ("10-р сар" гэсэн "Oct" гэх мэт).
+#
+# Би үүнд Google орчуулгыг ашигласан.
+# Эх хэлээр яригч үүнийг баталгаажуулах хүртэл хангалттай.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: Вэб календарь
+version XXX: хувилбар ХХХ
+WebCalendar is a PHP application used...: WebCalendar бол нэг хэрэглэгч эсвэл интернет / дотоод сүлжээний бүлгийн хуанлийг хөтлөхөд ашигладаг PHP програм юм. Үүнийг үйл явдлын хуанли болгон тохируулж болно.
+Credits: Зээл
+About: Тухай
+OK: БОЛЖ БАЙНА УУ
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Мэдээллийн сангийн алдаа: XXX.
+DEFAULT CONFIGURATION: ДУРААЛГААНЫ Тохиргоо
+Go: Яв
+Save: Хадгалах
+Undo: Буцаах
+Public Access: Олон нийтийн хандалт
+Admin: админ
+User Access Control: Хэрэглэгчийн хандалтын хяналт
+Allow Access to Other Users Calendar: Бусад хэрэглэгчийн хуанли руу нэвтрэхийг зөвшөөрөх
+Grant This User Access to My Calendar: Энэ хуанлийн хуанли руу нэвтрэх эрхийг олгоно уу
+Type: Төрөл
+Calendar: Хуанли
+View Event: Үйл явдлыг үзэх
+View: Харах
+Edit: Засах
+Approve/Reject: Батлах / татгалзах
+Events: Арга хэмжээ
+Tasks: Даалгавар
+Journals: Сэтгүүл
+Can Invite: Урьж болно
+Can Email: Имэйл илгээх боломжтой
+Can See Time Only: Зөвхөн цаг хугацааг харж чаддаг
+Assistant: Туслах
+Select All: Бүгдийг сонгох
+Clear All: Бүгдийг цэвэрлэ
+Public: Олон нийтийн
+Confidential: Нууц
+Private: Хувийн
+
+########################################
+# Page: activity_log.php
+#
+Next: Дараачийн
+Previous: Өмнөх
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: XXX үйл явдал таны хуанлид аль хэдийн орсон байна.
+Invalid entry id XXX.: Буруу оруулгын id: "XXX".
+a XXX event may not be added to your calendar: Энэ бол XXX арга хэмжээ бөгөөд таны хуанлид нэмж оруулахгүй байж магадгүй юм.
+confidential: нууц
+private: хувийн
+Error adding event XXX.: Арга хэмжээ нэмэхэд алдаа гарсан: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Буруу тохируулгын нэр "XXX".
+Select: Сонгох
+Day: Өдөр
+Week: Долоо хоног
+Month: Сар
+Year: Он
+Bottom: Доод
+Top: Топ
+Anyone: Хэн ч байсан
+Participant: Оролцогч
+Settings: Тохиргоо
+Groups: Бүлгүүд
+NonUser Calendars: Хэрэглэгчийн бус хуанли
+Other: Бусад
+Email: Имэйл
+Colors: Өнгө
+Document background: Баримтын суурь
+Document title: Баримтын гарчиг
+Document text: Баримтын текст
+My event text: Миний үйл явдлын текст
+Table grid color: Хүснэгтийн торны өнгө
+Table header background: Хүснэгтийн толгойн дэвсгэр
+Table header text: Хүснэгтийн толгой текст
+Table cell background: Хүснэгтийн нүдний дэвсгэр
+Table cell background for current day: Одоогийн өдрийн хүснэгтийн нүдний дэвсгэр
+Table cell background for days with events: Үйл явдлуудтай өдрүүдийн ширээний нүдний дэвсгэр
+Table cell background for weekends: Амралтын өдрүүдэд ширээний нүдний дэвсгэр дэвсгэр
+Table cell background for other month: Бусад сарын ширээний нүдний дэвсгэр
+Week number color: Долоо хоногийн дугаар өнгө
+Event popup background: Үйл явдлын попап дэвсгэр
+Event popup text: Үйл явдлын попап текст
+System Settings: Системийн тохиргоо
+Help: Туслаач
+System options: Системийн сонголтууд
+app-name-help: Бүх хуудсууд болон нэвтрэх хуудсан дээрх хөтчийн гарчгийн мөрөнд гарч ирэх програмын нэрийг зааж өгнө. Таны энд заасан утгыг орчуулгын файл дээрээс хайж олох бөгөөд ингэснээр танд өөр өөр хэл дээр гарчиг өгөх боломжтой болно.
+Application Name: Програмын нэр
+Translated Name (XXX): Орчуулсан нэр (XXX)
+server-url-help: Програмын үндсэн URL-г тодорхойлно. Үүнийг имэйлийн сануулагч, мэдэгдэл илгээх үед оруулах болно.
+Server URL: Серверийн URL
+home-url-help: Програмын гэрийн URL-г тодорхойлно. Энэ нь туйлын эсвэл харьцангуй байж болно
+Home URL: Гэрийн URL
+language-help: Аль хэлийг ашиглахыг зааж өгдөг.
+Language: Хэл
+Your browser default language is XXX.: Таны хөтөчийн үндсэн хэл нь "XXX" байна.
+Allow user to use themes: Хэрэглэгчид сэдэв ашиглахыг зөвшөөрөх
+themes-help: Тохиргооны тохиргоог их хэмжээгээр шинэчлэх боломжийг олгодог. Жижиг үсгийн шошго нь зөвхөн хэрэглэгчийн үг юм.
+Themes: Сэдэв
+AVAILABLE THEMES: БОЛОМЖТОЙ СЭДЭВ
+None: Аль нь ч биш
+Preview: Урьдчилан харах
+Site customization: Сайтын тохируулга
+custom-script-help: Хуудас бүрийн HTML "толгой" хэсэгт оруулах Javascript эсвэл хэв маягийн хүснэгтийн текстийг оруулахыг зөвшөөрдөг.
+Custom script/stylesheet: Захиалгат скрипт / хэв маягийн хуудас
+custom-header-help: Хуудасны дээд хэсэгт өөрчлөн тохируулсан HTML хэсгийг оруулахыг зөвшөөрдөг.
+Custom header: Захиалгат толгой
+custom-trailer-help: Хуудасны төгсгөлд өөрчлөн тохируулсан HTML хэсгийг оруулахыг зөвшөөрдөг.
+Custom trailer: Захиалгат чиргүүл
+enable-external-header-help: Захиалгат трейлерийг гадны файлаас ачаалах боломжтой
+Allow external file for header/script/trailer: Толгой / скрипт / чиргүүлд зориулсан гадаад файлыг зөвшөөрөх
+Allow user to override header/trailer: Хэрэглэгчид толгой / чиргүүлийг хүчингүй болгохыг зөвшөөрөх
+Date and Time: Огноо, цаг
+server-tz-help: UTC-ээс серверийн цаг хүртэл хэдэн цаг тохируулахыг зааж өгнө.
+Server Timezone Selection: Серверийн цагийн бүсийг сонгох
+tz-help: UTC-ээс орон нутгийн цагаар хэдэн цаг тохируулахыг зааж өгнө.
+Default Client Timezone Selection: Үйлчлүүлэгчийн цагийн бүсийг сонгох
+display-general-use-gmt-help: Хэрэв идэвхжүүлсэн бол нийтлэг огноо / цагийг GMT хэлбэрээр харуулна
+Display Common Use Date/Times as GMT: Нийтлэг ашигласан огноо / цагийг GMT хэлбэрээр харуулах
+date-format-help: Сонгосон огнооны форматыг тодорхойлно.
+Date format: Огнооны формат
+Small Task Date: Жижиг даалгаврын огноо
+display-week-starts-on: Долоо хоногийн эхлэх өдрийг заана. Хэрэв Даваа гарагийг зааж өгсөн бол долоо хоногийн тоо нь ISO долоо хоногийн тоо байх болно.
+Week starts on: Долоо хоног эхэлнэ
+display-weekend-starts-on: Долоо хоногийн өдрийг амралтын өдрүүдэд эхлүүлнэ
+Weekend starts on: Амралтын өдрүүд эхэлнэ
+time-format-help: Аль цагийн форматыг ашиглахыг заадаг:<br><em>12 цаг:</em> Харуулах цагийг өглөөний 3 цаг, 20:30 цаг гэх мэт.<br><em>24 цаг:</em> 300 удаа харуулах цаг. , 2030 гэх мэт.
+Time format: Цаг формат
+12 hour: 12 цаг
+24 hour: 24 цаг
+timed-evt-len-help: Цаг хугацаатай үйл явдлын уртыг тодорхойлох оролтын аргыг тодорхойлно.
+Specify timed event length by: Үйл явдлын хугацааг тодорхойлно уу
+Duration: Үргэлжлэх хугацаа
+End Time: Дуусах цаг
+work-hours-help: Өдрийн харагдацад харуулах цагийн хязгаарыг заана.
+Work hours: Ажлын цаг
+From: Хаанаас
+to: руу
+Appearance: Гадаад төрх
+preferred-view-help: Анхдагч харагдацыг (Өдөр, Долоо хоног, Сар, Жил) тодорхойлно.
+Preferred view: Сонгосон харагдац
+Allow top menu: Дээд цэсийг зөвшөөрөх
+Date Selectors position: Огноо сонгогчдын байрлал
+menu-themes-help: Дээд цэсний өнгө, хэв маягийг тохируулна
+Menu theme: Цэсийн сэдэв
+fonts-help: Ашиглах системийн фонтуудын жагсаалтыг тодорхойлно ("Arial, Helvetica" гэх мэт)
+Fonts: Фонтууд
+display-sm_month-help: Хэрэв идэвхжүүлсэн бол жижиг саруудыг сараар нь харуулна
+Display small months: Жижиг саруудыг харуул
+display-weekends-help: Долоо хоног үзэхдээ амралтын өдрүүдийг оруулаарай.
+Display weekends: Амралтын өдрүүдийг харуулах
+display-long-daynames-help: Хэрэв идэвхжүүлсэн бол урт өдрийн нэрийг харуулна
+Display long day names: Урт өдрийн нэрийг харуулах
+display-alldays-help: Өмнөх болон дараагийн саруудыг бүх нүдийг дүүргэж сарны тоогоор харуул.
+Display all days in month view: Бүх өдрүүдийг сарын байдлаар харуулах
+display-week-number-help: Долоо хоногийн дугаарыг (1-52) сар, долоо хоногийн харагдацад харуулах эсэхийг заана.
+Display week number: Долоо хоногийн тоог харуулах
+display-desc-print-day-help: Үйл явдлын тодорхойлолтыг хэвлэхэд ээлтэй хувилбарыг өдөр харах хэлбэрээр оруулна уу.
+Display description in printer day view: Тодорхойлолтыг хэвлэгчийн өдрийн харагдац дээр харуулах
+yearly-shows-events-help: Жилийн харагдац дээр үйл явдлыг тод үсгээр бичсэн өдрүүдийг харуулна уу.
+Display days with events in bold in month and year views: Өдөр, сараар жилийн тод үсгээр тэмдэглэсэн үйл явдлуудыг харуул
+display-minutes-help: Хэрэв идэвхжүүлсэн бол: 00-оор төгссөн минут үргэлж гарч ирнэ
+Display 00 minutes always: 00 минут үргэлж харуул
+display-end-times-help: Цаг хугацаатай бол үйл явдлын дуусах цагийг харуулах
+Display end times on calendars: Хуанли дээр эцсийн хугацааг харуулах
+allow-view-add-help: A '+' дүрсийг үзэгчид оруулах бөгөөд ингэснээр хэрэглэгчид бусад хэрэглэгчийн хуанли дээр үйл явдлыг хурдан нэмэх боломжтой болно.
+Include add event link in views: Үйл явдлын холбоосыг үзэхэд оруулна уу
+lunar-help: Хэрэв идэвхжүүлсэн бол сар бүрийн үе шатыг илэрхийлсэн жижиг дүрсийг харуулах болно
+Display Lunar Phases in month view: Сарны үе шатуудыг сарын байдлаар харуул
+Restrictions: Хязгаарлалт
+allow-view-other-help: Нэг хэрэглэгч өөр хэрэглэгчийн хуанлийг үзэх боломжтой эсэхийг заана.
+Allow viewing other users calendars: Бусад хэрэглэгчийн хуанлийг харахыг зөвшөөрөх
+require-approvals-help: Идэвхжүүлсэн тохиолдолд хэрэглэгч үйл явдлыг хуанли дээрээ харуулахаас өмнө батлах ёстой (Display onapproved идэвхжүүлээгүй тохиолдолд). Үүнийг "Үгүй" гэж тохируулснаар Олон нийтийн хандалтын хуанлийн зөвшөөрлийг унтраахгүй (хэрэв нийтийн хандалтын хуанли идэвхжсэн бол).
+Require event approvals: Үйл явдлын зөвшөөрөл шаардана
+display-unapproved-help: Зөвшөөрөгдөөгүй үйл явдлыг таны хуанли дээр харуулах эсэхийг тодорхойлно.<br>Хэрэв "Тийм" гэж тохируулсан бол батлагдаагүй үйл явдлыг таны хуанли дээр (текстийн өөр өнгөөр) харуулах болно.<br>Хэрэв "Үгүй" гэж тохируулсан бол батлагдаагүй үйл явдлыг таны хуанли дээр харуулахаас өмнө батлагдсан байх ёстой.
+Display unapproved: Батлахгүй дэлгэц
+conflict-check-help: Үйл явдлын зөрчлийг шалгана уу (нэг хүнд ижил хугацаанд төлөвлөсөн хоёр арга хэмжээ). Хэрэв та үүнийг "Тийм" гэж тохируулсан бол анхааруулгыг баталгаажуулсны дараа хоёр арга хэмжээг нэгэн зэрэг хуваарилах боломжтой болно. Хэрэв та үүнийг "Үгүй" гэж тохируулсан бол зөрчил гарсан эсэхийг шалгахгүй. Та үүнийг "Тийм" гэж тохируулахыг хүсч байгаа тул зөрчилдөөнийг шалгаж байна.
+Check for event conflicts: Үйл явдлын зөрчил байгаа эсэхийг шалгана уу
+Yes: Тийм ээ
+No: Үгүй
+conflict-months-help: Хэрэв зөрчил шалгах ажиллагаа явагдаж байгаа бол ("Үйл явдлын зөрчлийг шалгах" -ыг "Үгүй" гэж тохируулсан байна & # 41; энэ нь ирээдүйд хэдэн сарын дараа бид зөрчилдөөнийг шалгах ёстойг зааж өгнө. Хэрэв та үйл явдал нэмэхэд удаан хугацаа шаардагдана , энэ тоог багасгах.
+Conflict checking months: Мөргөлдөөнийг шалгах сарууд
+conflict-check-override-help: Хэрэглэгчид үйл явдлын зөрчлийг хүчингүй болгож, хоёр ба түүнээс дээш арга хэмжээг нэгэн зэрэг хуваарилах боломжийг олгодог.
+Allow users to override conflicts: Хэрэглэгчдэд зөрчлийг даван туулах боломжийг олгох
+limit-appts-help: Системийн администратор нэг хэрэглэгчийн хүссэн өдөр хийх уулзалтын тоог системийн хэмжээнд хязгаарлах боломжийг олгодог.
+Limit number of timed events per day: Өдөрт товлосон үйл явдлын тоог хязгаарлах
+limit-appts-number-help: Хэрэглэгчийн нэг өдөрт хийж болох хамгийн их цаг хугацаатай үйл явдлыг зааж өгдөг.
+Maximum timed events per day: Өдөрт хамгийн их хугацаатай үйл явдал
+crossday-help: Хэрэв идэвхжүүлсэн бол өдөр үргэлжилсэн үйл явдлыг тусдаа өдрүүдэд харуулах болно
+Disable Cross-Day Events: Өдөр хоорондын арга хэмжээг идэвхгүй болгох
+disable-location-field-help: "Тийм" гэж сонгосноор үйл явдлын мэдээллийн хуудсуудаас "Байршил" талбарыг хасах болно
+Disable Location field: Байршлын талбарыг идэвхгүй болгох
+disable-url-field-help: "Тийм" -ийг сонгосноор үйл явдлын мэдээллийн хуудсуудаас "URL" талбарыг хасах болно
+Disable URL field: URL талбарыг идэвхгүй болгох
+disable-priority-field-help: "Тийм" -ийг сонгосноор "Тэргүүлэх" талбарыг үйл явдлын мэдээллийн хуудсуудаас хасах бөгөөд шинэхэн хүмүүст илүү хялбар интерфэйсийг өгөх болно.
+Disable Priority field: Тэргүүлэх талбарыг идэвхгүйжүүл
+disable-access-field-help: "Тийм" -ийг сонгосноор "Хандалт" талбарыг үйл явдлын мэдээллийн хуудсуудаас хасах бөгөөд шинэхэн хүмүүст илүү хялбар интерфэйсийг өгөх болно.
+Disable Access field: Хандалтын талбарыг идэвхгүй болгох
+disable-participants-field-help: "Тийм" гэж сонгосноор "Оролцогчид" талбарыг үйл явдлын мэдээллийн хуудсуудаас хасах бөгөөд хэрэглэгчид өөрсдийн арга хэмжээнд бусад хэрэглэгчид нэмж оруулахаас сэргийлнэ. Хэрэв та энэ сонголтыг идэвхжүүлсэн бол "Бусад хэрэглэгчийн хуанлийг харахыг зөвшөөрөх" талбарыг мөн идэвхгүйжүүлж болно.
+Disable Participants field: Оролцогчдын талбарыг идэвхгүй болгох
+disable-repeating-field-help: "Тийм" гэж сонгосноор үйл явдал нэмэх үед "Давтах" талбарыг хасах болно. Энэ нь шинэхэн хүмүүст илүү хялбар интерфэйсийг өгөх болно.
+Disable Repeating field: Давталтын талбарыг идэвхгүй болгох
+allow-html-description-help: Хэрэв идэвхжүүлсэн бол хэрэглэгчид үйл явдлын тодорхойлолтын талбарт HTML оруулах боломжтой. Хэрэв идэвхжүүлээгүй бол HTML хаягууд нь энгийн текст хэлбэрээр гарч ирэх болно. Анхааруулга: Энэ функцийг идэвхжүүлснээр хэрэглэгчид бусад вэбсайт дээрх зургуудыг лавлах боломжтой болно.
+Allow HTML in Description: Тодорхойлолтод HTML-г зөвшөөрөх
+Popups: Поп хүрэгчид
+disable-popups-help: Хуанлийн харагдацаас попапуудыг идэвхгүй болгох
+Disable Pop-Ups: Pop-up програмыг идэвхгүй болгох
+popup-includes-siteextras-help: Хэрэв идэвхжүүлсэн бол site_extras.php файлд тохируулсан үйл явдлын талбайн тохиргоог үйл явдлын цонхонд харуулах болно.
+Display Site Extras in popup: Сайтын нэмэлтийг попап дээр харуулах
+popup-includes-participants-help: Хэрэв идэвхжүүлсэн бол оролцогчдыг үйл явдлын цонхонд харуулах болно.
+Display Participants in popup: Оролцогчдыг попап дээр харуулах
+Miscellaneous: Бусад
+remember-last-login-help: Идэвхжүүлсэн үед хэрэглэгчийн нэвтрэх хуудсыг нэвтрэх хуудсанд бөглөх болно (гэхдээ нууц үг биш), хэрэглэгчийн тохиргоог ачаалах болно (тэдний хүссэн өнгө, хэлний сонголтыг оруулаад).
+Remember last login: Сүүлийн нэвтрэлтийг санаарай
+summary_length-help: Хуанлийн харагдац дахь Товч тайлбарын хамгийн их урт
+Brief Description Length: Товч тодорхойлолт Урт
+user_sort-help: Хэрэглэгчийн, Хэрэглэгчийн бус жагсаалтад эрэмбэлэх дарааллыг тодорхойлно
+User Sort Order: Хэрэглэгчийн эрэмбэлэх захиалга
+Lastname, Firstname: Овог, Нэр
+Firstname, Lastname: Овог нэр
+allow-public-access-help: Идэвхжүүлсэн тохиолдолд хуанлийг зөвхөн унших боломжтой нийтийн хуанли болгон ашиглаж болох бөгөөд хэрэглэгчид нэвтрэхийг шаарддаггүй.
+Allow public access: Олон нийтийн хандалтыг зөвшөөрөх
+public-access-default-visible: Нийтийн хуанлийн үйл явдлууд бүх хэрэглэгчийн хуанли дээр автоматаар гарч ирнэ
+Public access visible by default: Анхдагч байдлаар нийтийн хандалт харагдана
+public-access-default-selected: Шинэ арга хэмжээ нэмэх үед нийтийн хэрэглэгчийг анхдагчаар оролцогчоор сонгох болно.
+Public access is default participant: Олон нийтийн хандалт нь анхдагч оролцогч юм
+public-access-view-others-help: Нийтийн хандалттай системд нэвтрэх үед хэрэглэгч өөр хуанлийн хэрэглэгчийн хуанлийг үзэх боломжтой эсэхийг тодорхойлно.
+Public access can view other users: Олон нийтийн хандалт нь бусад хэрэглэгчдийг үзэх боломжтой
+public-access-can-add-help: Идэвхжүүлсэн үед Public Access-ээр дамжуулан системд нэвтрэх хэрэглэгчид шинэ арга хэмжээ нэмэх боломжтой боловч админ шинэ үйл явдлыг батлахаас нааш хуанлид харагдахгүй болно.
+Public access can add events: Олон нийтийн хандалт нь үйл явдлуудыг нэмэх боломжтой
+public-access-add-requires-approval-help: Нийтийн хандалтын дансаар нэмэгдсэн үйл явдлуудыг харуулахаас өмнө зөвшөөрөл шаардлагатай эсэхийг тодорхойлно.
+Public access new events require approval: Олон нийтийн хүртээл болох шинэ арга хэмжээнд зөвшөөрөл авах шаардлагатай
+public-access-sees-participants-help: Хэрэв энэ тохиргоог идэвхжүүлсэн бол олон нийтийн данснаас хуанли руу нэвтрэх хэрэглэгчид үйл явдлын дэлгэрэнгүй мэдээллийг үзэх юм бол үйл явдлын оролцогчдыг харах боломжтой болно.
+Public access can view participants: Олон нийтийн хандалт оролцогчдыг үзэх боломжтой
+public-access-override-help: Үйл явдлын нэр, тайлбарыг олон нийтийн хуанли дээр нуухыг зөвшөөрдөг
+Override event name/description for public access: Олон нийтэд хандахын тулд үйл явдлын нэр / тайлбарыг хүчингүй болгох
+public-access-override-text-help: Дээрх тохиргоог идэвхжүүлсэн бол харуулах текст. Хэрэв 'Байхгүй' бол орчуулах болно.
+Text to display to public access: Олон нийтийн хүртээл болгохын тулд харуулах текст
+public-access-captcha-help: Хэрэв идэвхжүүлсэн бол Public-ээс нэмж оруулсан шинэ үйл явдлууд CAPTCHA баталгаажуулалтыг дамжуулах шаардлагатай.
+Require CAPTCHA validation for public access new events: Олон нийтийн хандалтын шинэ арга хэмжээнд CAPTCHA баталгаажуулалт шаардана
+uac-enabled-help: Хэрэглэгчийн түвшний хандалтын хяналтыг идэвхжүүлдэг
+User Access Control enabled: Хэрэглэгчийн хандалтын хяналтыг идэвхжүүлсэн
+groups-enabled-help: Бүлгийн дэмжлэгийг идэвхжүүлж, хэрэглэгчид хэрэглэгчдийг бүлгээр нь сонгох боломжийг олгодог.
+Groups enabled: Бүлгүүдийг идэвхжүүлсэн
+user-sees-his-group-help: Хэрэв идэвхжүүлсэн бол хэрэглэгчид өөрсдийнхөө бүлгүүдийн дор хаяж нэгэнд ороогүй хуанлийн хэрэглэгчдийг харахгүй.
+User sees only his groups: Хэрэглэгч зөвхөн түүний бүлгүүдийг хардаг
+nonuser-enabled-help: Хэрэв идэвхжүүлсэн бол админууд хэрэглэгчийн бус хуанли нэмэх боломжтой болно
+Nonuser enabled: Хэрэглэгчийн бус хуанли идэвхжсэн
+nonuser-list-help: Оролцогчдын жагсаалтад хэрэглэгчийн бус хуанлийг хаана харуулах вэ
+Nonuser list: Оролцогчдын жагсаалтад харуулах
+Upcoming Events: Удахгүй болох үйл явдлууд
+upcoming-events-help: Удахгүй удахгүй идэвхжүүлэх. Php
+Enabled: Идэвхжсэн
+upcoming-events-allow-override: Ирэх.php-д зориулж хэрэглэгчийн тохиргоог зөвшөөрөх
+Allow user override: Хэрэглэгчийн хүчингүй болгохыг зөвшөөрөх
+upcoming-events-display-caticons: Ангиллын дүрсийг удахгүй удахгүй оруулах. Php
+Display category icons: Ангиллын дүрсийг харуулах
+upcoming-events-display-layers: Давхаргыг удахгүй үзүүлэх .php
+Display layers: Давхаргыг харуулах
+upcoming-events-display-links: Холбоосуудыг удахгүй удахгүй үзүүлэх .php
+Display links to events: Үйл явдлын холбоосыг харуулах
+upcoming-events-display-popups: Үйл явдлын попапуудыг удахгүй болох болно. Php
+Display event popups: Үйл явдлын попапуудыг харуулах
+reports-enabled-help: Хэрэв идэвхжүүлсэн бол хэрэглэгчид хуудас бүрийн доод талд "Тайлан" хэсгийг харах бөгөөд захиалгат тайлан үүсгэхийг зөвшөөрнө. Нэмж дурдахад, админ хэрэглэгчид бүх хэрэглэгчийн хуудасны доод талд гарч ирэх дэлхийн тайлангуудыг үүсгэх боломжтой.
+Reports enabled: Тайланг идэвхжүүлсэн
+subscriptions-enabled-help: Алсын зайн хэрэглэгчид WebCalendar хэрэглэгчийн хуанли дээр захиалж болох эсэхийг тодорхойлж, WebCalendar хэрэглэгчийн үйл явдлыг iCal идэвхжүүлсэн програм дээрээ (Apple-ийн iCal эсвэл Mozilla Calendar гэх мэт) харах боломжийг олгоно.
+Allow remote subscriptions: Алсын захиалгыг зөвшөөрөх
+remotes-enabled-help: Хэрэглэгчид URL ашиглан алсын зайны файлуудыг ачаалах боломжийг олгодог
+Allow remote calendars: Алсын хуанлийг зөвшөөрөх
+rss-enabled-help: Хэрэглэгчийн хуанлийг RSS тэжээлээс авах боломжтой эсэхийг тодорхойлно.
+Enable RSS feed: RSS хангамжийг идэвхжүүлэх
+categories-enabled-help: Үйл явдлын ангиллын дэмжлэгийг идэвхжүүлдэг.
+Categories enabled: Ангиллууд идэвхжсэн
+icon_upload-enabled-help: Хэрэв идэвхжүүлсэн бол хэрэглэгчид категорийн дүрсийг байршуулж болно
+Category Icon Upload enabled: Ангиллын дүрс байршуулахыг идэвхжүүлсэн
+(Requires XXX folder to exist.): (XXX хавтас байх шаардлагатай.)
+display-tasks-help: Ажлын жижиг цонхыг сар, өдрийн хуанли дээр харуул
+Display small task list: Жижиг даалгаврын жагсаалтыг харуулах
+display-tasks-in-grid-help: Даалгавруудыг үйл явдлын хамт хуанли дээр харуул
+Display tasks in Calendars: Хуанли дээр ажлуудыг харуулах
+allow-external-users-help: Хуанлийн бус хэрэглэгчийг үйл явдалд нэмж болох эсэхийг тодорхойлно. Энэ нь хуанлийн бус хэрэглэгчдийг үйл явдлын оролцогчийн жагсаалтад оруулах боломжийг олгодог.
+Allow external users: Гадны хэрэглэгчдийг зөвшөөрөх
+external-can-receive-notification-help: Гадны хэрэглэгчид идэвхжсэн, имэйлийн ашиглалт идэвхжсэн үед гадны хэрэглэгчид үйл явдлыг нэмэх, шинэчлэх, устгах үед имэйлийн мэдэгдэл хүлээн авах боломжтой (хэрэв гадны хэрэглэгчийн имэйл хаягийг оруулсан бол).
+External users can receive email notifications: Гадны хэрэглэгчид имэйлээр мэдэгдэл хүлээн авах боломжтой
+external-can-receive-reminder-help: Гадны хэрэглэгчид идэвхжсэн, имэйлийн ашиглалт идэвхжсэн үед гадны хэрэглэгчид имэйлийн сануулагч (гадаад хэрэглэгчийн имэйл хаягийг оруулсан тохиолдолд) хүлээн авах боломжтой.
+External users can receive email reminders: Гадны хэрэглэгчид имэйлийн сануулагчийг хүлээн авах боломжтой
+allow-self-registration-help: Шинэ хэрэглэгчид өөрсдийгөө бүртгүүлэхийг зөвшөөрөх
+Allow self-registration: Өөрийгөө бүртгүүлэхийг зөвшөөрөх
+use-blacklist-help: IP хаяг дээр үндэслэн WebCalendar функцуудад нэвтрэх эрхийг хязгаарлах
+Restrict self-registration to blacklist: Хар жагсаалтад өөрийгөө бүртгүүлэхийг хязгаарлах
+allow-self-registration-full-help: Шинэ хэрэглэгчдэд өөрийгөө бүртгүүлэх үйл явцыг онлайнаар дуусгах боломжийг олгоно уу
+Use self-registration email notifications: Нууц үг үүсгэх, шинэ хэрэглэгчдэд илгээх
+allow-attachment-help: Хэрэглэгчдэд үйл явдлын файлын хавсралт нэмэх боломжийг олгоно уу.
+Allow file attachments to events: Үйл явдлын файл хавсралтыг зөвшөөрөх
+Admin and owner can always add attachments if enabled.: Админ ба эзэмшигч нь идэвхжсэн тохиолдолд хавсралт нэмэх боломжтой.
+allow-comments-help: Хэрэглэгчдэд үйл явдалд сэтгэгдэл нэмэх боломжийг олгоно уу.
+Allow comments to events: Үйл явдлын сэтгэгдлийг зөвшөөрөх
+Admin and owner can always add comments if enabled.: Хэрэв идэвхжүүлсэн бол админ ба эзэмшигч нь үргэлж сэтгэгдэл нэмэх боломжтой.
+email-enabled-help: Мэдэгдэл, сануулга авахын тулд имэйлийн бүх илгээмжийг асааж, унтраа. Хэрэв таны сервер захиа илгээх тохиргоог тохируулаагүй бол "үгүй" гэж тохируулна уу.
+Email enabled: Имэйлийг идэвхжүүлсэн
+email-default-sender: Сануулагч илгээхдээ илгээгчээр зааж өгөх имэйл хаягийг зааж өгнө.
+Default sender address: Үндсэн илгээгчийн хаяг
+email-mailer: Имэйлийн төрлийг сонгоно уу (SMTP, PHP mail, sendmail)
+Email Mailer: Имэйл мэйл
+email-smtp-host: Таслалаар тусгаарлагдсан SMTP серверийн хостын нэр (үүд)
+SMTP Host name(s): SMTP Хостын нэр (үүд)
+email-smtp-port: SMTP портын дугаар (ихэвчлэн 25)
+SMTP Port Number: SMTP портын дугаар
+email-smtp-auth: SMTP баталгаажуулалтыг ашиглах
+SMTP Authentication: SMTP баталгаажуулалт
+email-smtp-username: Баталгаажуулалтыг ашиглаж байгаа тохиолдолд SMTP хэрэглэгчийн нэр
+SMTP Username: SMTP хэрэглэгчийн нэр
+email-smtp-password: Баталгаажуулалтыг ашиглаж байгаа тохиолдолд SMTP нууц үг
+SMTP Password: SMTP нууц үг
+Default user settings: Хэрэглэгчийн анхдагч тохиргоо
+email-format: HTML эсвэл энгийн текст мессежийн тохиргоог тодорхойлно уу
+Email format preference: Имэйлийн форматыг сонгох
+HTML: =
+Plain Text: Энгийн текст
+email-include-ics: ICalendar ICS файлыг имэйлээр илгээх
+Include iCalendar attachments: ICalendar хавсралтыг оруулна уу
+email-event-reminders-help: Үйл явдлын сануулагч илгээх эсэхээ тодорхойлно.
+Event reminders: Үйл явдлын санамж
+email-event-added: Таны хуанли дээр үйл явдал нэмэгдэхэд имэйлээр мэдэгдэл илгээх эсэхээ тодорхойлно.
+Events added to my calendar: Миний хуанли дээр үйл явдлууд нэмэгдсэн
+email-event-updated: Таны хуанли дээр үйл явдал шинэчлэгдэх үед имэйлээр мэдэгдэл илгээх эсэхээ тодорхойлно.
+Events updated on my calendar: Миний хуанли дээр шинэчлэгдсэн үйл явдлууд
+email-event-deleted: Үйл явдлыг таны хуанлиас хасах үед имэйлээр мэдэгдэл илгээх эсвэл илгээхгүй байхыг зааж өгнө.
+Events removed from my calendar: Үйл явдлыг миний хуанлигаас хасав
+email-event-rejected: Оролцогч таны хуанли дээр гарсан үйл явдлаас татгалзах үед имэйлээр мэдэгдэл илгээх эсэхээ тодорхойлно.
+Event rejected by participant: Оролцогч татгалзсан арга хэмжээ
+email-event-create: Оруулсан бүтээлийг имэйлээр хүлээн авах эсэхийг тодорхойлно
+Event that I create: Миний бүтээсэн арга хэмжээ
+Color options: Өнгөний сонголтууд
+Allow user to customize colors: Хэрэглэгчид өнгө тохируулахыг зөвшөөрнө үү
+gradient-colors: Хэрэв идэвхжүүлсэн бол градиент өнгө ашигладаг. Энэ нь гүйцэтгэлд ихээхэн нөлөөлдөг.
+Enable gradient images for background colors: Арын өнгөт градиент зургийг идэвхжүүлнэ үү
+Not available: Боломжгүй
+Background Image options: Арын дэвсгэр сонголтууд
+bgimage-help: Хүссэн арын зургийн URL. Харьцангуй холбоос байж болох юм.
+Background Image: Арын зураг
+bgrepeat-help: Арын зургийн давталтын горимыг хянана.
+Background Repeat: Дахин давтах
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Туслах
+Preferences: Тохиргоо
+Control Panel: Хяналтын самбар
+Users: Хэрэглэгчид
+Account: Данс
+Categories: Ангилалууд
+Views: Үзсэн тоо
+Layers: Давхарга
+Reports: Тайлан
+Delete Events: Үйл явдлыг устгах
+Activity Log: Үйл ажиллагааны бүртгэл
+System Log: Системийн бүртгэл
+Security Audit: Аюулгүй байдлын аудит
+Public Preferences: Олон нийтийн тохиргоо
+Unapproved Public Events: Батлагдаагүй олон нийтийн арга хэмжээ
+Administrative Tools: Захиргааны хэрэгсэл
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Давхардсан нэр: "XXX".
+Username XXX already exists.: "XXX" хэрэглэгчийн нэр аль хэдийн байна.
+Email address XXX already exists.: "XXX" имэйл хаяг аль хэдийн байна.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Нэмэлт сэтгэгдэл (заавал биш)
+Approve and Send: Зөвшөөрч, илгээнэ үү
+Approve and Exit: Зөвшөөрч гарах
+(Your comments will be emailed to the event creator.): (Таны сэтгэгдлийг арга хэмжээ зохиогч руу имэйлээр илгээх болно.)
+Hello, XXX.: Сайн уу, ХХХ.
+XXX has approved an appointment and added comments.: Цаг товлож, ХХХ-оос тайлбар нэмж оруулав.
+Subject XXX: Гарчиг: "XXX".
+Description XXX: Тодорхойлолт: "XXX".
+Date XXX: Огноо: XXX
+Time XXX: Цаг: XXX
+Comments XXX: Сэтгэгдэл: XXX
+Approved w/Comments by XXX.: Батлагдсан / Сэтгэгдэл бичсэн: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Админы горим
+Your assistants: Таны туслахууд
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Үл мэдэгдэх алдаа.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Хөтөлбөрийн алдаа: ХХХ зааж өгөөгүй!
+user: хэрэглэгч
+year: жил
+month: сар
+day: өдөр
+
+########################################
+# Page: category.php
+#
+Category Icon: Ангиллын дүрс
+Global: Глобал
+The permissions for the icons directory are set to read-only: Дүрсүүдийн лавлах зөвшөөрлийг зөвхөн уншихаар тохируулсан байна.
+Category Name: Ангиллын нэр:
+Color: Өнгө
+Remove Icon: Дүрсийг арилгах:
+Add Icon to Category: Ангилалд дүрс нэмэх
+Upload: Байршуулах
+GIF or PNG 6kb max: Хамгийн ихдээ GIF эсвэл PNG 6kb
+Search for existing icons: Одоо байгаа дүрсийг хайх
+Add: Нэмэх
+Delete: Устгах
+Are you sure you want to delete this entry?: Та энэ оруулгыг устгахдаа итгэлтэй байна уу?
+Make New Category: Шинэ ангилал хийх
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Ангиллын нэр шаардлагатай
+File size exceeds maximum.: Файлын хэмжээ дээд хэмжээнээс хэтэрсэн байна.
+File is not a GIF or PNG image: Файл нь GIF эсвэл PNG зураг биш юм
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: БОЛОМЖТОЙ АНГИЛАЛ
+ENTRY CATEGORIES: БҮРТГЭЛИЙН АНГИЛАЛ
+Remove: Устгах
+Global Category: Глобал ангилал
+Cancel: Цуцлах
+
+########################################
+# Page: colors.php
+#
+Add Custom: Захиалга нэмэх
+Basic Colors: Үндсэн өнгө
+Current Color: Одоогийн өнгө
+Custom Colors: Захиалгат өнгө
+Old Color: Хуучин өнгө
+
+########################################
+# Page: combo.php
+#
+Select None: Аль нь ч биш
+Agenda: Хөтөлбөр
+Add Task: Даалгавар нэмэх
+Description: Тодорхойлолт
+Date: Огноо
+Time: Цаг хугацаа
+Priority: Тэргүүлэх чиглэл
+Access: Хандалт
+Created by: Бүтээсэн байгуулсан зохион бүтээсэн
+Updated: Шинэчлэгдсэн
+Participants: Оролцогчид
+Attachments: Хавсралтууд
+Comments: Тайлбар
+Brief Description: Товч тайлбар
+Full Description: Бүрэн тодорхойлолт
+Category: Ангилал
+Add event detail: Үйл явдлын дэлгэрэнгүйг нэмэх
+Start Date: Эхлэх өдөр
+Due Date: Дуусах огноо
+Add task detail: Ажлын дэлгэрэнгүйг нэмэх
+All: Бүгд
+Error: Алдаа
+no response from server: серверээс хариу ирээгүй
+JSON error: JSON алдаа
+High: Өндөр
+Medium: Дунд
+Low: Бага
+Today: Өнөөдөр
+Add Entry: Оруулга нэмэх
+Unnamed Event: Нэргүй арга хэмжээ
+Unnamed Task: Нэргүй даалгавар
+Refresh: Сэргээх
+Click to add entry: Оруулга нэмэхийн тулд товшино уу
+Name: Нэр
+pm: үд
+am: би байна
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: ХХХ цаг товлосон.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Буруу блокийн id
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Сэтгэгдэл нэмэх
+Add Attachment: Хавсралт нэмэх
+Subject: Сэдэв
+Comment: Сэтгэгдэл
+Upload file: Файл байршуулах
+
+########################################
+# Page: docdel.php
+#
+Removed: Устгасан
+
+########################################
+# Page: edit_entry.php
+#
+days: өдөр
+hours: цаг
+minutes: минут
+You are not authorized to edit this task.: Та энэ даалгаврыг засах эрхгүй байна.
+is in a different timezone than you are. Currently: таныхаас өөр цагийн бүсэд байна. Одоогийн байдлаар
+hour ahead of you: танаас нэг цагийн өмнө
+hour behind you: цаана чинь
+hours ahead of you: чамаас хэдэн цагийн өмнө
+hours behind you: хэдэн цагаар
+XXX is in a different timezone (ahead): (ХХХ өөр цагийн бүсэд байна; YYY таны урд байна.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (ХХХ өөр цагийн бүсэд байна; ӨӨХ таны ард байна.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Энд оруулсан цаг нь таны цагийн бүсэд тулгуурласан болно.
+Edit Entry: Оролтыг засах
+Details: Дэлгэрэнгүй мэдээлэл
+Repeat: Дахин давт
+Reminders: Сануулагч
+brief-description-help: Энэ нь үйл явдлын товч тодорхойлолтыг (20 орчим тэмдэгт) өгөх ёстой. Энэ нь хуанлийг үзэх үед үйл явдлыг төлөөлөх болно.
+full-description-help: Энэ нь үйл явдлын дэлгэрэнгүй мэдээллийг бүрэн гүйцэд өгөх ёстой. Хэрэглэгч үйл явдлыг үзэх үед энэ мэдээллийг харж болно.
+access-help: Арга хэмжээний хандалтын түвшинг тодорхойлно. <ul> <li> Нийтэд нээлттэй: Бүх хүмүүс үйл явдлын дэлгэрэнгүй мэдээллийг харах боломжтой.</li> <li> Нууц: Бусад хүмүүс таныг тухайн өдөр, цагт оруулсан болохыг харж болно. юу болохыг нарийвчлан биш.</li></ul>
+priority-help: Арга хэмжээний тэргүүлэх чиглэлийг тодорхойлно. Өндөр ач холбогдол бүхий үйл явдлыг тод үсгээр харуулах болно.
+category-help: Арга хэмжээний ангиллыг тодорхойлно.
+completed-help: Огноо даалгавар дууссан. Бүх оролцогчдын хувь 100% -тай тэнцэх үед л идэвхждэг.
+Date Completed: Дууссан огноо
+percent-help: Энэ хэрэглэгчийн ажлын гүйцэтгэлийн хувь
+Percent Complete: Дууссан хувь
+All Percentages: Бүх хувь хэмжээ
+location-help: Арга хэмжээний байршил
+Location: Байршил
+url-help: Арга хэмжээний URL
+URL: =
+date-help: Арга хэмжээний огноог заана.
+Untimed event: Хугацаагүй үйл явдал
+Timed event: Цаг хугацаатай арга хэмжээ
+All day event: Бүхэл бүтэн өдөрлөг
+Timezone Offset: Цагийн бүсийг нөхөх
+time-help: Арга хэмжээний цагийг тодорхойлно. <ul> <li> "Цаг хугацаатай арга хэмжээ" (тухайн өдөр тодорхой цагт төлөвлөсөн үйл явдлын хувьд)</li> <li> "Хугацаагүй үйл явдал" (энэ арга хэмжээ нь цаг завгүй байдаг (амралт гэх мэт) )</li> <li> "Бүхэл өдрийн арга хэмжээ" (бүтэн өдрийн турш явагдах үйл явдлын хувьд (ажлын өрөөнөөс гадуур байх гэх мэт)</li></ul>
+duration-help: Арга хэмжээний үргэлжлэх хугацааг (цаг, минутаар) тодорхойлно. <em>Энэ талбарыг хоосон үлдээж болно.</em>
+end-time-help: Арга хэмжээ дуусах цаг хугацааг заана.
+Start Time: Эхлэх цаг
+Due Time: Дуусах хугацаа
+Site Extras: Сайтын нэмэлт
+avail_participants-help: Энэхүү бичилтийн боломжтой оролцогчдыг жагсаав.
+Available: Боломжтой
+Find Name: Нэр хайх
+Resources: Нөөц
+participants-help: Энэхүү бичилтийн оролцогчдыг жагсаав.
+Selected: Сонгосон
+Availability: Бэлэн байдал
+external-participants-help: Хуанлийн хэрэглэгч биш үйл явдлын оролцогчдын жагсаалтыг тодорхойлно. Хэрэглэгчдийг нэг мөрөнд нэг жагсаасан байх ёстой бөгөөд имэйл хаягаа оруулж болно. Хэрэв имэйл хаяг зааж өгсөн бол хэрэглэгч мэдэгдэл, санамж авах эрхтэй.
+External Participants: Гадаад оролцогчид
+repeat-type-help: Үйл явдал хэдэн удаа давтагдах ёстойг сонго.
+Daily: Өдөр бүр
+Weekly: Долоо хоног бүр
+Monthly: Сар бүр
+by day: өдрөөр
+by date: огноогоор
+by position: албан тушаалаар
+Monthly (by day): Сар бүр (өдөр)
+Monthly (by date): Сар бүр (огноогоор)
+Monthly (by position): Сар бүр (албан тушаалаар)
+Yearly: Жил бүр
+Manual: Гарын авлага
+Expert Mode: Мэргэшсэн горим
+repeat-end-date-help: Үйл явдлыг хүртэл давтах огноог зааж өгнө.
+Ending: Дуусах
+Forever: Үүрд
+Use end date: Дуусах огноог ашиглана уу
+Number of times: Хэд хэдэн удаа
+repeat-frequency-help: Үйл явдал хэдэн удаа давтагдахыг зааж өгнө.
+Frequency: Давтамж
+Weekdays Only: Зөвхөн ажлын өдрүүдэд
+Week Start: Долоо хоног эхэлнэ
+repeat-bydayextended-help: Долоо хоногийн өдрийг үндэслэн огноо сонгохыг зөвшөөрдөг.
+ByDay: Өдөр
+repeat-month-help: Үйл явдал хэдэн сард давтагдахыг зааж өгнө.
+ByMonth: =
+repeat-bysetpos-help: Сартай хамт байршилд үндэслэн огноог сонгох боломжтой.
+BySetPos: =
+repeat-bymonthdayextended-help: Огноон дээр үндэслэн огноо сонгохыг зөвшөөрдөг.
+ByMonthDay: =
+repeat-byweekno-help: Хэрэглэгчид үйл явдлыг давтах долоо хоногийн жагсаалтыг (1,2 ... 53, -53, -52 ...- 1) зааж өгөх боломжийг олгодог.
+ByWeekNo: =
+repeat-byyearday-help: Үйл явдлыг давтах жилийн хоногийн жагсаалтыг (1,2 ... 366, -366, -365 ...- 1) тодорхойлох боломжийг хэрэглэгчдэд олгоно.
+ByYearDay: =
+repeat-exceptions-help: Энэ үйл явдал тохиолдох ёстой эсвэл тохиолдохгүй байх нэмэлт өдрүүд.
+Exclusions: Үл хамаарах зүйл
+Inclusions: Оруулах
+Add Exception: Онцгой тохиолдол нэмэх
+Add Inclusion: Оруулах
+Delete Selected: Сонгогдсоныг устгах
+Send Reminder: Сануулагч илгээх
+When: Хэзээ
+Use Date/Time: Огноо / цаг ашиглана уу
+Use Offset: Offset ашиглах
+Before: Өмнө нь
+After: Дараа нь
+Start: Эхлэ
+End/Due: Төгсгөл / дуусах
+Times: =
+Every: Бүгдээрээ
+CAPTCHA Warning: Анхааруулга:  PHP-ийн GD өргөтгөлгүйгээр CAPTCHA-г ашиглах боломжгүй!<br>
+Delete entry: Оролтыг устгах
+You are not authorized to edit this entry.: Та энэ оруулгыг засах эрхгүй байна.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: ХХХ шинэ уулзалт хийлээ.
+XXX has updated an appointment.: ХХХ цаг товложээ.
+Security violation!: Аюулгүй байдлын зөрчил!
+You must enter the anti-spam text on the previous page.: Та өмнөх хуудсан дээр спамаас хамгаалах текст оруулах ёстой.
+The following conflicts with the suggested time: Санал болгож буй хугацаатай дараахь зөрчилдөөнүүд байна
+User removed from participants list.: Хэрэглэгчийг оролцогчдын жагсаалтаас хасав.
+Please look on XXX to accept or reject this appointment.: Энэ уулзалтыг хүлээн авахаас татгалзахын тулд ХХХ-г үзнэ үү.
+Please look on XXX to view this appointment.: Энэ уулзалтыг үзэхийн тулд ХХХ-г үзнэ үү.
+Scheduling Conflict: Зөрчлийн хуваарь гаргах
+Your suggested time of: Таны санал болгосон цаг
+conflicts with the following existing calendar entries: дараах хуанлийн оруулгуудтай зөрчилдөж байна
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX-ийг "config.php" -д тохируулаагүй байна.
+word characters only: (зөвхөн үгийн тэмдэгт агуулж болно; [a-zA-Z_0-9])
+Add User: Хэрэглэгч нэмэх
+Edit User: Хэрэглэгчийг засах
+Calendar ID: Хуанлийн ID
+First Name: Нэр
+Last Name: Овог
+Is public calendar: Олон нийтийн хуанли юм
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Мэдээллийн сангийн алдаа
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Алсын хуанли нэмэх
+Edit Remote Calendar: Алсын хуанлийг засах
+Create Layer: Давхарга үүсгэх
+Reload: Дахин ачаалах
+Required to View Remote Calendar: Алсын хуанлийг үзэх шаардлагатай
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Үр дүнг импортлох
+Events successfully imported: Үйл явдлыг амжилттай импортлов
+Create a new layer to view this calendar.: Энэ хуанлийг үзэхийн тулд шинэ давхарга үүсгээрэй.
+Errors: Алдаа
+There was an error parsing the import file or no events were returned.: Импортын файлыг задлахад алдаа гарсан эсвэл үйл явдлыг буцаагүй байна.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Маргааш
+Yesterday: Өчигдөр
+Day before yesterday: Өчигдрийн өмнөх өдөр
+Next week: Дараагийн долоо хоногт
+This week: Энэ долоо хоногт
+Last week: Өнгөрсөн долоо хоногт
+Week before last: Өнгөрсөн долоо хоногийн өмнө
+Next week and week after: Дараагийн долоо хоног, дараа долоо хоногт
+This week and next week: Энэ долоо хоногт болон ирэх долоо хоногт
+Last week and this week: Өнгөрсөн долоо хоногт болон энэ долоо хоногт
+Last two weeks: Сүүлийн хоёр долоо хоног
+Next month: Дараа сар
+This month: Энэ сар
+Last month: Өнгөрсөн сар
+Month before last: Сүүлчийн өмнөх сар
+Next year: Дараа жил
+This year: Энэ жил
+Last year: Өнгөрсөн жил
+Year before last: Өнгөрсөн жилээс өмнөх жил
+Next 14 days: Дараагийн 14 хоног
+Next 30 days: Дараагийн 30 хоног
+Next 60 days: Дараагийн 60 хоног
+Next 90 days: Дараагийн 90 хоног
+Next 180 days: Дараагийн 180 хоног
+Next 365 days: Дараагийн 365 өдөр
+Invalid report id XXX.: Буруу тайлангийн дугаар: "XXX".
+Unnamed Report: Нэргүй тайлан
+Add Report: Тайлан нэмэх
+Edit Report: Тайланг засах
+Report name: Тайлангийн нэр
+User: Хэрэглэгч
+Current User: Одоогийн хэрэглэгч
+Include link in menu: Холбоосыг цэсэнд оруулна уу
+Include standard header/trailer: Стандарт толгой / чиргүүл оруулах
+Include previous/next links: Өмнөх / дараагийн холбоосуудыг оруулна уу
+Include empty dates: Хоосон огноог оруулна уу
+Date range: Огноо
+Template variables: Загварын хувьсагчууд
+Page template: Хуудасны загвар
+Day template: Өдрийн загвар
+Event template: Арга хэмжээний загвар
+Are you sure you want to delete this report?: Та энэ тайланг устгахдаа итгэлтэй байна уу?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Ийм тайлангийн ID байхгүй байна: "XXX".
+Variable XXX not found.: ХХХ хувьсагч олдсонгүй.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Захиалгын толгой хэсгийг засах
+Edit Custom Script/Stylesheet: Custom Script / Stylesheet-ийг засах
+Edit Custom Trailer: Захиалгат трейлерийг засах
+
+########################################
+# Page: edit_user.php
+#
+Username: Хэрэглэгчийн нэр
+E-mail address: Имэйл хаяг
+Password: Нууц үг
+again: дахин
+Disabled for demo: Демо хийхийг идэвхгүй болгосон
+Are you sure you want to delete this user?: Та энэ хэрэглэгчийг устгахдаа итгэлтэй байна уу?
+Change Password: Нууц үгээ солих
+New Password: Шинэ нууц үг
+Set Password: Нууц үгээ тохируулна уу
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Хэрэглэгчдийг устгахыг дэмждэггүй.
+The passwords were not identical.: Нууц үгс ижил биш байв.
+You have not entered a password.: Та нууц үг оруулаагүй байна.
+Username cannot be blank.: Хэрэглэгчийн нэр хоосон байж болохгүй.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Зөвшөөрөлгүй
+
+########################################
+# Page: export.php
+#
+Export: Экспортлох
+Export format: Экспортын формат
+Include all layers: Бүх давхаргыг оруулна уу
+Include deleted entries: Устгасан оруулгуудыг оруулна уу
+Export all dates: Бүх огноог экспортлох
+Start date: Эхлэх өдөр
+End date: Дуусах огноо
+Modified since: Түүнээс хойш өөрчлөгдсөн
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: экспортын форматыг тодорхойлоогүй эсвэл буруу.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Хэрэглэгч заагаагүй байна.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Шинэ бүлэг нэмэх
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Нэргүй бүлэг
+Add Group: Бүлэг нэмэх
+Edit Group: Бүлгийг засах
+Group name: Бүлгийн нэр
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Та бүлгийн нэрийг зааж өгөх ёстой
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Хуанлийг автоматаар шинэчлэх
+auto-refresh-help: Идэвхжүүлсэн тохиолдолд өдөр харах, долоо хоног үзэх, сар үзэх, батлагдаагүй хуудсуудын жагсаалтыг автоматаар үе үе шинэчлэх болно.
+Auto-refresh time: Автоматаар сэргээх цаг
+auto-refresh-time-help: Хэрэв Автоматаар шинэчлэхийг идэвхжүүлсэн бол шинэчлэлт бүрийн хоорондох хугацааг заана.
+Display days with events in bold in year view: Өдрийг тодоор харуулсан үйл явдлуудтай өдрүүдийг харуул
+Display weekends in week view: Амралтын өдрүүдийг долоо хоногийн байдлаар харуул
+Time interval: Цаг хугацааны интервал
+time-interval-help: Долоо хоногийн харагдац ба өдрийн харагдац дахь цаг хугацааны блок хэр удаан байхыг тодорхойлно.
+Nonuser: Хэрэглэгчийн бус хуанли
+user-customize-color: Хэрэглэгчид өөрсдийн өнгөт схемийг өөрчлөх боломжтой эсэхийг тодорхойлно.
+enable-gradient-help: Нүдний дэвсгэр дээр градиент өнгө ашиглана уу.
+Manually entering color values: Өнгөний утгыг гараар оруулах
+colors-help: Бүх өнгийг "#RRGGBB" арван зургаатын форматаар зааж өгөх ёстой бөгөөд "RR" нь улаан, "GG" нь ногоон, "BB" нь цэнхэр өнгийн зургаан өнцөгтийн утга юм.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Алдааг мэдээлэх
+Please include all the information below when reporting a bug.: Алдааг мэдээлэхдээ доорхи бүх мэдээллийг оруулна уу.
+Also, please use English rather than XXX.: Мөн XXX биш  Англи хэлийг  ашиглана уу.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Вэб календарийн баримт бичиг
+Currently in English only.: Одоогийн байдлаар зөвхөн англи хэл дээр.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Хуанлийн бичилт нэмэх / засах
+Repeat Type: Давтан төрөл
+For More Information...: Дэлгэрэнгүй мэдээллийг...
+Repeat End Date: Дуусах огноог давтах
+Repeat Day: Өдрийг давт
+repeat-day-help: Үйл явдал долоо хоногийн аль өдрүүдэд давтагдахыг зааж өгнө.
+
+########################################
+# Page: help_import.php
+#
+Import: Импорт
+Palm Desktop: =
+allow you to import entries from the Palm...: Энэ маягт нь Palm Desktop Datebook-ээс оруулгуудыг импортлох боломжийг танд олгоно. Энэ нь таны Palm лавлахад datebook / datebook.dat дотор таны хэрэглэгчийн нэрээр нэрлэгдсэн дэд директорт байрлах ёстой.
+The following entries will not be imported: Дараах бичлэгүүдийг импортлохгүй.
+Entries older than the current date: Одоогийн огнооноос хуучин бүтээлүүд
+Entries created in the Palm Desktop...: Palm Desktop дээр бүтээсэн, HotSync'd хийгдээгүй оруулгууд
+Anything imported from Palm...: Palm-ээс импортолсон бүх зүйлийг дараагийн импортын үед бичих болно (үйл явдлын огноо өнгөрөөгүй бол). Тиймээс Palm Desktop дээр шинэчлэлт хийх хэрэгтэй.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Энэ хэлбэр нь vCalendar (.vcs) 1.0 үйл явдлыг импортлох болно.
+The following formats have been tested: Дараах форматуудыг туршиж үзсэн болно.
+This form will import iCalendar (.ics) events.: Энэ хэлбэр нь iCalendar (.ics) үйл явдлуудыг импортлох болно.
+Enabling: Идэвхжүүлж байна
+Overwrite Prior Import: Өмнөх импортыг дарж бичих
+will cause events imported previously...: Өмнө нь импортолсон шинэ импортын файл дээрх үйл явдалтай ижил UID ашигласан үйл явдлыг устгасан гэж тэмдэглэхэд хүргэнэ. Энэ нь шинэчлэгдсэн iCalendar файлыг давхардуулахгүйгээр импортлох боломжийг олгох ёстой.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Тусламжийн индекс
+About WebCalendar: WebCalendar-ийн тухай
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Давхарга нь бусад хэрэглэгчийн үйл явдлыг өөрийн хуанли дээр харуулахад хэрэгтэй байдаг. Та хэрэглэгчийг зааж өгч, үйл явдлын өнгөийг харуулах болно.
+Add/Edit/Delete: Нэмэх / Засах / Устгах
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Хуудасны доод талд байрлах админ хэсэгт байрлах Layers Edit линк дээр дарахад та давхарга нэмэх / засах / устгах боломжтой болно.
+The text color of the new layer that will be displayed in your calendar.: Таны хуанли дээр харагдах шинэ давхаргын текстийн өнгө.
+Disabling: Идэвхгүй болгож байна
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Давхаргыг унтраахын тулд хуудасны доод талд байрлах админ хэсэгт байрлах Layers-ийг идэвхгүйжүүлэх холбоосыг дарна уу.
+Duplicates: Хуулбарууд
+If checked, events that are duplicates of your events will be shown.: Хэрэв тэмдэглэгдсэн бол таны үйл явдлын хуулбар болох үйл явдлуудыг харуулах болно.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Давхаргыг асаахын тулд хуудасны доод талд байрлах админ хэсэгт байрлах Layers Enable холбоосыг дарна уу.
+Source: Эх сурвалж
+Specifies the user that you would like to see displayed in your calendar.: Таны хуанли дээр харуулахыг хүсч буй хэрэглэгчийг зааж өгнө.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Анхдагч ангилал
+default-category-help: Анхдагчаар тохируулах ёстой шинэ үйл явдлын ангиллыг заана.
+When I am the boss: Би босс байхдаа
+Email me event notification: Надад үйл явдлын мэдэгдлийг имэйлээр илгээх
+email-boss-notifications-help: Дарга нар үйл явдлын мэдэгдэл хэлбэрээр имэйл хүлээн авах эсэхийг зааж өгнө.
+I want to approve events: Би үйл явдлыг батлахыг хүсч байна
+boss-approve-event-help: Дарга нь туслахуудын нэмсэн арга хэмжээг зөвшөөрөх шаардлагатай эсэхийг тодорхойлно.
+Subscribe/Publish: Захиалах / нийтлэх
+Allow remote publishing: Алсаас нийтлэхийг зөвшөөрөх
+allow-remote-publishing-help: Алсын iCal клиент үйл явдлыг WebCalendar дээр буцааж нийтлэх боломжтой эсэхийг тодорхойлно
+remote-publishing-url-help: WebCalendar дээр буцааж захиалах, нийтлэхэд зориулж iCal клиент програмд ​​ашиглах URL-ыг харуулна.
+allow-remote-subscriptions-help: Алсын зайн хэрэглэгчид таны хуанлийг захиалж болох эсэхийг тодорхойлж, iCal идэвхжүүлсэн програмд ​​(Apple-ийн iCal эсвэл Mozilla Calendar гэх мэт) таны үйл явдлыг үзэх боломжийг олгоно.
+remote-subscriptions-url-help: Алсын зайн хэрэглэгчид таны хуанли захиалахдаа ашиглах ёстой URL-г харуулна.
+Enable FreeBusy publishing: FreeBusy нийтлэлийг идэвхжүүлэх
+freebusy-enabled-help: ICal FreeBusy стандартыг ашиглан хэрэглэгчийн боломжит цагийг авах боломжтой эсэхийг тодорхойлно.
+freebusy-url-help: Хэрэглэгчийн FreeBusy жагсаалтад хандах URL
+rss-feed-url-help: RSS тэжээлд хандах URL хаяг
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Хэрэглэгчийн хандалт, зөвшөөрлийг нарийн хянах боломжийг олгодог. Хэрэглэгчид мөн администраторын зөвшөөрлөөр олгогдсон тохиолдолд анхдагчаар болон хувь хүн бүрт зөвшөөрөл олгож болно.
+If disabled, this user cannot send you emails.: Хэрэв идэвхгүй болгосон бол энэ хэрэглэгч танд имэйл илгээх боломжгүй.
+If disabled, this user cannot see you in the participants list.: Хэрэв идэвхгүй болгосон бол энэ хэрэглэгч таныг оролцогчдын жагсаалтад харах боломжгүй.
+If enabled, this user cannot view the details of any of your entries.: Хэрэв идэвхжүүлсэн бол энэ хэрэглэгч таны оруулсан аливаа мэдээллийг нарийвчлан үзэх боломжгүй.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Нийтлэхийг идэвхгүй болгосон (Админ)
+Publishing Disabled (User): Нийтлэхийг идэвхгүй болгосон (Хэрэглэгч)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Сонгохын тулд товшино уу
+Current Icons on Server: Сервер дээрх одоогийн дүрс тэмдэг
+
+########################################
+# Page: import.php
+#
+import from file: файлаас импортлох
+Disabled: Тахир дутуу
+Import format: Импортын формат
+Exclude private records: Хувийн бүртгэлийг хасах
+Repeated items are imported separately. Prior imports are not overwritten.: Давтагдсан зүйлийг тусад нь оруулж ирдэг. Өмнөх импортыг дарж бичдэггүй.
+
+########################################
+# Page: import_handler.php
+#
+No file: Файл алга
+Error deleting palm events from webcalendar.: Вэб календараас дал модны үйл явдлыг устгахад алдаа гарав.
+Events from prior import marked as deleted: Өмнөх импортын үйл явдлыг устгасан гэж тэмдэглэсэн
+Conflicting events: Зөрчилтэй үйл явдлууд
+The import file contained no data.: Импортын файлд ямар ч өгөгдөл агуулаагүй болно.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Та энэ давхаргыг устгахдаа итгэлтэй байна уу?
+Delete layer: Давхаргыг устгах
+Edit layer: Давхаргыг засах
+Enable layers: Давхаргыг идэвхжүүлэх
+Layer: Давхарга
+Layers are currently disabled.: Одоогийн байдлаар давхаргыг идэвхгүйжүүлсэн байна.
+Layers are currently enabled.: Одоогийн байдлаар давхаргыг идэвхжүүлсэн байна.
+Click to modify layers settings for XXX: ХХХ хуанлийн давхаргын тохиргоог өөрчлөхийн тулд энд дарна уу.
+Disable Layers: Давхаргыг идэвхгүй болгох
+Add layer: Давхарга нэмэх
+Add Layer: Давхарга нэмэх
+Edit Layer: Давхаргыг засах
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Тохируулгыг шинэчлэх боломжгүй байна
+Invalid entry id.: Буруу оруулгын дугаар.
+You cannot create a layer for yourself.: Та өөртөө зориулж давхарга үүсгэх боломжгүй.
+You can only create one layer for each user.: Та хэрэглэгч тус бүрт зөвхөн нэг давхарга үүсгэх боломжтой.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Батлах / баталгаажуулах
+Approve Selected: Сонгогдсоныг батлах
+Check All: Бүгдийг шалгах
+Emails Will Not Be Sent: Имэйл илгээхгүй
+Reject Selected: Сонгогдсоноос татгалзах
+Reject: Татгалзах
+Uncheck All: Бүгдийг цуцлах
+View this entry: Энэ оруулгыг үзэх
+No unapproved entries for XXX.: "XXX" -д зөвшөөрөгдөөгүй оруулга алга.
+Unapproved Entries: Батлагдаагүй оруулгууд
+Approve this entry?: Энэ оруулгыг зөвшөөрөх үү?
+Reject this entry?: Энэ оруулалтаас татгалзах уу?
+Approve Selected entries?: Сонгосон бүтээлүүдийг зөвшөөрөх үү?
+Reject Selected entries?: Сонгосон оруулгуудаас татгалзах уу?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Та нэвтрэх болон нууц үгээ оруулах ёстой.
+Save login via cookies so I dont have to login next time.: Нэвтрэхийг күүки ашиглан хадгалаарай, дараа нь нэвтрэх шаардлагагүй болно
+Login: Нэвтрэх
+public: олон нийтийн
+Access XXX calendar: ХХХ хуанли руу нэвтрэх
+cookies-note: Тэмдэглэл: Энэхүү програм нь күүкийг идэвхжүүлсэн байхыг шаарддаг.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: ХХХ нэвтрэх хууль бус тэмдэгтүүд.
+Invalid login: Буруу нэвтрэлт
+Activity login failure: Хэрэглэгчийн нэр: "XXX", IP: "YYY".
+Error XXX: Алдаа: "XXX".
+You have been logged out.: Та гарсан байна.
+Access public calendar: Олон нийтийн хуанли руу нэвтрэх
+Not yet registered? Register here!: Бүртгүүлж амжаагүй байна уу? Энд бүртгүүлнэ үү!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Ийм хэрэглэгчийн хуанли байхгүй: "XXX".
+This Calendar is not Public.: Энэ хуанли нь нийтийн биш байна.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Хэрэглэгчийн бус шинэ хуанли нэмэх
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Нэвтрэхийг зааж өгөх ёстой.
+No such nonuser calendar: Ийм хэрэглэгчийн хуанли байхгүй
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Буруу сэдэв
+Save Preferences: Тохиргоог хадгалах
+Public Access calendar: Олон нийтийн нэвтрэх хуанли
+Modify Non User Calendar Preferences: Хэрэглэгчийн бус хуанлийн тохиргоог өөрчлөх
+Return to My Preferences: Миний тохиргоо руу буцах
+Custom Scripts: Захиалгат скриптүүд
+Timezone Selection: Цагийн бүсийг сонгох
+Multiview: Олон үзэх:
+entry-interval-help: Оруулах цагийг засахдаа минутын интервалыг тохируулна
+Entry interval: Оруулах интервал
+hour: цаг
+minute: минут
+theme-reload-help: CSS кэшийн улмаас хуудсыг дахин ачаалах шаардлагатай болж магадгүй юм
+Page may need to be reloaded for new Theme to take effect: Шинэ Сэдэв хүчин төгөлдөр болохын тулд хуудсыг дахин ачаалах шаардлагатай байж магадгүй юм
+display_byproxy-help: Жинхэнэ бүтээгчийг view_entry хуудсанд харуулах
+Display if created by Assistant: Туслах үүсгэсэн бол харуулах
+allow-view-subscriptions-help: Хувийн эсвэл Нууц бичлэгт алсын хандалтыг хязгаарлахыг зөвшөөрдөг
+Allow remote viewing of: -Ийг алсаас харахыг зөвшөөрөх
+entries: оруулгууд
+
+########################################
+# Page: purge.php
+#
+Purging events for: Цэвэрлэх үйл явдлууд
+Finished: Дууссан
+Back: Буцах
+Check box to delete ALL events for a user: Хэрэглэгчийн  БҮХ  үйл явдлыг устгахын тулд хайрцагыг тэмдэглэ
+Delete all events before: Өмнөх бүх үйл явдлыг устгах
+Purge deleted only: Цэвэрлэгээг зөвхөн устгасан
+Preview delete: Урьдчилан харах устгах
+Are you sure you want to delete events for: Үйл явдлыг устгахдаа итгэлтэй байна уу?
+Records deleted from XXX: Бичлэгийг "XXX" -с устгасан.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Имэйл хаяг хоосон байж болохгүй.
+Username already exists.: Хэрэглэгчийн нэр аль хэдийн байна.
+Email address already exists.: Имэйл хаяг аль хэдийн байна.
+New user via self-registration.: Өөрийгөө бүртгүүлэх замаар шинэ хэрэглэгч.
+A new WebCalendar account has been set up for you.: Танд зориулж шинэ WebCalendar данс тохирууллаа.
+Your username is XXX.: Таны хэрэглэгчийн нэр: "XXX".
+Your password is XXX.: Таны нууц үг: "XXX".
+Please visit XXX to log in and start using your account!: "XXX" руу орж нэвтрэн ороод дансаа ашиглаж эхэлнэ үү!
+You may change your password after logging in the first time.: Та анх нэвтэрсний дараа нууц үгээ өөрчилж болно.
+If you received this email in error: Хэрэв та энэ имэйлийг алдаатай хүлээн авч, WebCalendar дансанд бүртгүүлээгүй бол та энэ мэдэгдлийг үл тоомсорлож эсвэл богино тэмдэглэлээр хариу бичиж болно.
+Administrator: Администратор
+Welcome: Тавтай морилно уу
+New user via email.: Имэйлээр шинэ хэрэглэгч.
+Registration: Бүртгэл
+Welcome to WebCalendar: WebCalendar-д тавтай морилно уу
+Your email should arrive shortly.: Таны имэйл удахгүй ирнэ.
+Return to Login screen: Нэвтрэх дэлгэц рүү буцах
+Password (again): Нууц үг (дахин):
+Your account information will be emailed to you.: Таны дансны мэдээллийг танд имэйлээр илгээх болно.
+Submit: Оруулах
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Үргэлжлүүлэх
+(Your comments will be emailed to the other participants.): (Таны сэтгэгдлийг бусад оролцогчдод имэйлээр илгээх болно.)
+XXX has rejected an appointment.: ХХХ цаг товлохоос татгалзлаа.
+Rejected by XXX.: ХХХ татгалзсан.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Алсын шинэ хуанли нэмэх
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Энэхүү арга хэмжээ нь нууцад хамааралтай болно.
+(Private): (Хувийн)
+(cont.): (үргэлжлэл)
+Approved: Батлав
+Deleted: Устгасан
+Rejected: Татгалзсан
+Waiting for approval: Батлуулахаар хүлээж байна
+Unknown: Үл мэдэгдэх
+Invalid report id.: Буруу тайлангийн дугаар.
+Click here to manage reports for the Public Access calendar.: Олон нийтийн нэвтрэх хуанлийн тайланг удирдахын тулд энд дарна уу.
+Add new report: Шинэ тайлан нэмэх
+Manage Reports: Тайланг удирдах
+
+########################################
+# Page: search.php
+#
+Advanced Search: Нарийвчилсан хайлт
+Search: Хайх
+Keywords: Түлхүүр үгс
+Enter % for all entries: Бүх оруулгуудад% оруулна уу
+Include: Оруулах
+Filter by Date: Огноогоор шүүх
+All Dates: Бүх огноо
+Past: Өнгөрсөн
+Upcoming: Удахгүй болох гэж байна
+Range: Муж
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Та нэг буюу хэд хэдэн хайлтын түлхүүр үг оруулах ёстой.
+Search Results: Хайлтын үр дүн
+match found: тохирол олдлоо
+matches found: тохирол олдсон
+No matches found: Тохирсон зүйл олдсонгүй
+New Search: Шинэ хайлт
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Доорх мэдээлэл нь таны вэбсалендарийн суулгалтанд гарч болзошгүй асуудлуудыг жагсаасан болно.
+For questions about WebCalendar security see the forums: Аливаа WebCalendar аюулгүй байдлын асуудлын талаархи асуултыг GitHub.com дээр байрлуулсан WebCalendar форумыг ашиглана уу;<br>XXX
+View your current PHP settings: Одоогийн PHP тохиргоогоо үзэх
+Security Issue: Аюулгүй байдлын асуудал
+Status: Статус
+Default admin user password: Анхдагч админы хэрэглэгчийн нууц үг
+You should change the password of the default admin user.: Та анхдагч админ хэрэглэгчийн нууц үгийг өөрчлөх хэрэгтэй.
+File permissions XXX: Файлын зөвшөөрөл: XXX
+item XXX should not be writable: Дараах зүйлийг бичих боломжгүй байх ёстой:<br><tt> XXX</tt>
+File exists XXX: Файл байна: "XXX"
+Because you have email disabled, you should remove this file.: Та имэйлийг идэвхгүй болгосон тул энэ файлыг устгах хэрэгтэй.
+File location XXX: Файлын байршил: "XXX"
+remove XXX if not using: Хэрэв та "XXX" файлыг ашиглахгүй байгаа бол устгах хэрэгтэй. Эсвэл дор хаяж шинэ директор руу шилжүүлээрэй.
+System Settings XXX: Системийн тохиргоо: "XXX"
+consider enabling UAC: Хэрэглэгчийн давуу эрхийг тохируулахын тулд Хэрэглэгчийн хандалтын хяналтыг идэвхжүүлэх талаар бодож үзэхийг хүсч магадгүй юм.
+recommend approving new public events: Бүх нийтийн арга хэмжээний бүх материалыг батлуулахыг зөвлөж байна.
+recommend using CAPTCHA: CAPTCHA нь againt үйл явдлын автоматжуулсан материалыг хамгаалахыг зөвлөж байна.
+Database cache directory location: Мэдээллийн сангийн кэш лавлах байршил
+db cache should be inaccessable: Өгөгдлийн сангийн кэш URL хаягаар хандах боломжгүй директор дотор байх ёстой.
+PHP Settings XXX: PHP тохиргоо: "XXX"
+recommend setting XXX Off: "XXX" -д санал болгож буй тохиргоо Унтраалттай байна.
+recommend setting allow_url_fopen Off: Алсын хуанлийг идэвхжүүлээгүй үед "allow_url_fopen" -ийн тохируулсан тохиргоог унтраасан байна.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Өөр хэрэглэгчийн хуанлийг үзэх
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Та ямар ч ангилал нэмээгүй.
+Set Category: Ангиллыг тохируулах
+Global Categories cannot be changed.: Дэлхийн ангиллыг өөрчлөх боломжгүй.
+
+########################################
+# Page: upcoming.php
+#
+more: дэлгэрэнгүй
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Алсын хуанли
+denotes administrative user: захиргааны хэрэглэгчийг илэрхийлнэ
+Add New User: Шинэ хэрэглэгч нэмэх
+
+########################################
+# Page: usersel.php
+#
+form: хэлбэр
+Reset: Дахин тохируулах
+
+########################################
+# Page: views.php
+#
+Add New View: Шинэ харах нэмэх
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Нэргүй харах
+Add View: View нэмэх
+Edit View: Харах хэсгийг засах
+View Name: Нэрийг үзэх
+View Type: Харах төрөл
+Day by Time: Цаг өдрөөр
+Week (Users horizontal): Долоо хоног (хэрэглэгчид хэвтээ байдлаар)
+Week by Time: Долоо хоногоор
+Week (Users vertical): Долоо хоног (Хэрэглэгчид босоо)
+Week (Timebar): Долоо хоног (Timebar)
+Month (Timebar): Сар (Timebar)
+Month (side by side): Сар (зэрэгцэн)
+Month (on same calendar): Сар (ижил хуанли дээр)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Та үзэх нэрийг зааж өгөх ёстой
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Энэ үзэлд хэрэглэгч байхгүй.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Даалгаврын хувийг шинэчлэх
+Completed: Дууссан
+Assistant mode: Туслах горим
+Declined: Татгалзсан
+Needs-Action: Хэрэгцээ-Үйлдэл
+by: гэхэд
+Percentage Complete: Хувь хэмжээ дууссан
+External User: Гадаад хэрэглэгч
+Update: Шинэчлэх
+at: үед
+comments: сэтгэгдэл
+Show: Үзүүлэх
+Hide: Нуух
+Approve/Confirm entry: Оролтыг зөвшөөрөх / баталгаажуулах
+Reject entry: Оруулалтаас татгалзах
+Set category: Ангиллыг тохируулах
+Add to My Calendar: Миний хуанли дээр нэмэх
+Copy entry: Бичлэгийг хуулах
+This will delete this entry for all users.: Энэ нь бүх хэрэглэгчийн хувьд энэ оруулгыг устгах болно.
+Edit entry: Оролтыг засах
+Edit repeating entry for all dates: Бүх огнооны давталтын оруулгыг засах
+Delete repeating event for all dates: Бүх огнооны давтагдах үйл явдлыг устгах
+Edit entry for this date: Энэ өдрийн оруулгыг засах
+Delete entry only for this date: Зөвхөн энэ огнооны хувьд оруулгыг устгах
+Delete entry from calendar of XXX: ХХХ хуанлиас оруулгыг устгах
+This will delete the entry from your XXX calendar.: Энэ нь таны XXX хуанлийн оруулгыг устгах болно.
+boss: босс '
+This will delete the entry from your boss calendar.: Энэ нь таны боссын хуанли дахь оруулгыг устгах болно.
+This will delete the entry from your calendar.: Энэ нь таны хуанли дахь оруулгыг устгах болно.
+from your boss calendar: даргынхаа хуанлигаас
+Do you want to add this entry to your calendar?: Та энэ оруулгыг хуанли дээрээ нэмэхийг хүсч байна уу?
+This will add the entry to your calendar.: Энэ нь хуанлийн оруулгыг нэмэх болно.
+Email all participants: Бүх оролцогчдод имэйл илгээх
+Hide activity log: Үйл ажиллагааны бүртгэлийг нуух
+Show activity log: Үйл ажиллагааны бүртгэлийг харуулах
+Export this entry to: Энэ оруулгыг экспортлох
+Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Шинэ оруулга нэмэхийн тулд хоосон нүдэн дээр давхар товшино уу.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Шинэ оруулга
+cont.: үргэлжлэл
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Өөр хэрэглэгчийн хуанли
+Category Management: Ангиллын менежмент
+Day View: Өдөр харах
+Edit Event: Үйл явдлыг засах
+Month View: Сар харах
+Common Trailer: Нийтлэг чиргүүл
+User Management: Хэрэглэгчийн удирдлага
+Manage Views: Үзэлтийг удирдах
+Week View: Долоо хоног харах
+Year View: Он харах
+Invalid function id: Буруу функцын id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: "Settings.php" файлыг олж чадсангүй.<br>"settings.php.orig" -ийг "settings.php" руу хуулж, сайтынхаа засварыг хийнэ үү.
+Incomplete settings.php file...: Дуусаагүй "settings.php" файл ...
+Could not find XXX defined in...: Таны "settings.php" файл дотор тодорхойлогдсон "XXX" олдсонгүй.
+You must define XXX in: Та "settings.php" файл дотор "XXX" гэж тодорхойлсон байх ёстой.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Арванхоёрдугаар сар
+Dec: 12-р сар
+LANGUAGE DEFINED: ХЭЛНИЙ ТОДОРХОЙЛОЛТ
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Мэдээллийн сантай холбогдоход алдаа гарлаа: "XXX".
+db_type not defined.: db_type тодорхойлогдоогүй байна.
+invalid db_type XXX: буруу db_type "" XXX ".
+Cache cleared from previous SQL!: Өмнөх SQL-ээс кэшийг арилгасан!
+Error executing query.: Асуулгыг гүйцэтгэхэд алдаа гарав.
+Unfortunately, XXX is not implemented for YYY: Харамсалтай нь, "ХХХ" -г (YYY) хэрэгжүүлээгүй байна.
+Unknown ODBC error.: Үл мэдэгдэх ODBC алдаа.
+Error opening cache dir XXX.: "XXX" кэшийг нээхэд алдаа гарав.
+delete: устгах
+Cache error Could not XXX file YYY.: Кэшийн алдаа: "YYY" гэсэн ХХХ файлыг гаргаж чадсангүй.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Алдаатай алдаа
+Invalid data format for: Мэдээллийн формат буруу байна
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Алдаа: Үйл ажиллагааны бүртгэлд тохируулаагүй байна!
+This event is XXX.: Энэ арга хэмжээ бол XXX.
+Conf.: =
+exceeds limit of XXX events per day: өдөрт XXX үйл явдлын хязгаараас хэтэрсэн
+on: дээр
+All Attendees: Бүх оролцогчид
+Busy: Завгүй
+Tentative: Урьдчилсан
+Schedule an appointment for XXX.: XXX: YYY цаг товлоорой.
+date_select: __dd__ __ сар __ __yyyy__
+Event approved: Арга хэмжээг батлав
+Journal approved: Сэтгүүл батлав
+Task approved: Даалгаврыг батлав
+Attachment: Хавсралт
+Event created: Арга хэмжээ үүсгэсэн
+Journal created: Сэтгүүл үүсгэсэн
+Task created: Даалгавар үүсгэсэн
+Event deleted: Үйл явдлыг устгасан
+Journal deleted: Тэмдэглэлийг устгасан
+Task deleted: Даалгаврыг устгасан
+New user via email (self registration): Имэйлээр шинэ хэрэглэгч (өөрөө бүртгүүлэх)
+New user (self registration): Шинэ хэрэглэгч (өөрөө бүртгүүлэх)
+Notification sent: Мэдэгдлийг илгээсэн
+Event rejected: Арга хэмжээ татгалзсан
+Journal rejected: Сэтгүүлээс татгалзсан
+Task rejected: Даалгавраас татгалзсан
+Reminder sent: Сануулагч илгээсэн
+Event updated: Арга хэмжээг шинэчилсэн
+Journal updated: Сэтгүүл шинэчлэгдсэн
+Task updated: Даалгаврыг шинэчилсэн
+Delete User: Хэрэглэгчийг устгах
+WK: =
+TASKS: ДААЛГАВАР
+Task_Title: Гарчиг
+Due: Дуусах хугацаа
+Task Name: Ажлын нэр
+Task Due Date: Ажлын дуусах хугацаа
+You have XXX unapproved entries: Танд батлагдаагүй XXX бүртгэл байна 
+Changes successfully saved: Өөрчлөлтүүд амжилттай хадгалагдав
+Event: Үйл явдал
+Action: Үйлдэл
+Printer Friendly: Хэвлэгчдэд ээлтэй
+Generate printer-friendly version: Хэвлэгчдэд ээлтэй хувилбарыг бий болгох
+after: дараа
+before: өмнө нь
+end: Төгсгөл
+start: эхлэх
+View this event: Энэ үйл явдлыг үзэх
+View this task: Энэ даалгаврыг үзэх
+January: 1-р сар
+February: 2-р сар
+March: Гуравдугаар сар
+April: Дөрөвдүгээр сар
+May_: 5-р сар
+June: Зургадугаар сар
+July: 7-р сар
+August: Наймдугаар сар
+September: 9-р сар
+October: Аравдугаар сар
+November: Арваннэгдүгээр сар
+Jan: 1-р сар
+Feb: 2-р сар
+Mar: 3-р сар
+Apr: 4-р сар
+May: 5-р сар
+Jun: 6-р сар
+Jul: 7-р сар
+Aug: 8-р сар
+Sep: 9-р сар
+Oct: 10-р сар
+Nov: 11-р сар
+SU: =
+MO: =
+TU: =
+WE: БИД
+TH: =
+FR: =
+SA: =
+unknown-month: үл мэдэгдэх сар
+First Quarter Moon: Эхний улирал
+Full Moon: Бүтэн сар
+Last Quarter Moon: Өнгөрсөн улирлын сар
+New Moon: Шинэ сар
+Error TIME_SLOTS undefined!: Алдаа: TIME_SLOTS тодорхойгүй байна!
+The following error occurred: Дараахь алдаа гарлаа
+You are not authorized.: Та эрхгүй.
+Add N hours to: N цаг нэмнэ үү
+Subtract N hours from: N цагийг хас
+same as: адил
+server time: серверийн цаг
+Cannot read timezone file XXX.: Цагийн бүсийн файлыг уншиж чадахгүй байна: XXX.
+Your current GMT offset is XXX hours.: Таны одоогийн GMT офсет нь XXX цаг байна.
+Unauthorized: Зөвшөөрөлгүй
+Error approving event XXX.: Үйл явдлыг батлахад алдаа гарлаа: XXX.
+Error deleting event XXX.: Үйл явдлыг устгахад алдаа гарлаа: XXX.
+Error rejecting event XXX.: Үйл явдлыг татгалзахад алдаа гарлаа: XXX.
+Sunday: Ням гараг
+Monday: Даваа гараг
+Tuesday: Мягмар гараг
+Wednesday: Лхагва гараг
+Thursday: Пүрэв
+Friday: Баасан гараг
+Saturday: Бямба
+Sun: Нар
+Mon: Мон
+Tue: Мш
+Wed: Лхагва
+Thu: Пн
+Fri: Баасан
+Sat: Бямба
+unknown-weekday: үл мэдэгдэх-ажлын өдөр
+Invalid referring URL: Холбогдох URL буруу байна
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Индекс
+Documentation: Баримтжуулалт
+Page: Хуудас
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Миний хуанли
+Add New Entry: Шинэ оруулга нэмэх
+Add New Task: Шинэ даалгавар нэмэх
+Logout: Гарах
+Home: Нүүр хуудас
+Back to My Calendar: Миний хуанли руу буцах
+Go to: Руу явах
+Manage calendar of: Хуанлийг удирдах
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Хөтчийн хэл олдсонгүй
+(not supported): (дэмжихгүй байна)
+Abkhazian: Абхаз
+Acoli: Аколи
+Adangme: Адангме
+Adyghe: Адыгей
+Afar: Афар
+Afrihili: Африхили
+Afrikaans: Африк
+Ainu: Айну
+Akan: Акан
+Akkadian: Аккад
+Albanian: Албани
+Aleut: Алеут
+Algonquian: Алгонкиан
+Altai (Southern): Алтай (Өмнөд)
+Amharic: Амхарик
+Angika: Ангика
+Apache: Апачи
+Arabic (Algeria): Араб (Алжир)
+Arabic (Bahrain): Араб (Бахрейн)
+Arabic (Egypt): Араб (Египет)
+Arabic (Iraq): Араб (Ирак)
+Arabic (Jordan): Араб (Жордан)
+Arabic (Kuwait): Араб (Кувейт)
+Arabic (Lebanon): Араб (Ливан)
+Arabic (Libya): Араб (Ливи)
+Arabic (Morocco): Араб (Марокко)
+Arabic (Oman): Араб (Оман)
+Arabic (Qatar): Араб (Катар)
+Arabic (Saudi Arabia): Араб (Саудын Араб)
+Arabic (Syria): Араб (Сири)
+Arabic (Tunisia): Араб (Тунис)
+Arabic (U.A.E.): Араб (U.A.E.)
+Arabic (Yemen): Араб (Йемен)
+Arabic: Араб хэл
+Aragonese: Арагон хэл
+Aramaic: Арамей
+Arapaho: Арапахо
+Arawak: Аравак
+Armenian: Армян
+Assamese: Ассам
+Asturian: Астурийн
+Athapascan: Атапаскан
+Avaric: Аварик
+Avestan: Авестан
+Awadhi: Авадхи
+Aymara: Аймара
+Azerbaijani: Азербайжан
+Balinese: Бали
+Baluchi: Балучи
+Bambara: Бамбара
+Bamileke: Бамилеке
+Banda: Банда
+Basa: Баса
+Bashkir: Башкир
+Basque: Баск
+Beja: Бежа
+Belarusian: Беларусь
+Bemba: Бемба
+Bengali: Бенгал
+Bhojpuri: Бхожпури
+Bihari: Бихари
+Bikol: Бикол
+Bislama: Бислама
+Blackfoot: Хар хөл
+Blin: Блин
+Bliss: Аз жаргал
+Bosnian: Босни
+Braj: Браж
+Breton: Бретон
+Buginese: Багини
+Bulgarian: Болгар
+Buriat: Буриат
+Burmese: Бирм
+Caddo: Каддо
+Catalan: Каталан
+Cebuano: Себуано
+Chagatai: Чагатай
+Chamorro: Чаморро
+Chechen: Чечень
+Cherokee: Чероки
+Cheyenne: Чайенн
+Chibcha: Чибча
+Chichewa: Чичева
+Chinese (Hong Kong): Хятад (Хонконг)
+Chinese (PRC): Хятад (БНХАУ)
+Chinese (Simplified/GB2312): Хятад (Хялбаршуулсан / GB2312) 
+Chinese (Singapore): Хятад (Сингапур)
+Chinese (Taiwan): Хятад (Тайвань)
+Chinese (Traditional/Big5): Хятад (Уламжлалт / Том5)
+Chinook: Чинук
+Chipewyan: Чипевян
+Choctaw: Чоктав
+Chuukese: =
+Chuvash: Чуваш
+Coptic: Копт
+Cornish: Корниш
+Corsican: Корсик
+Cree: Кри
+Creek: Крик
+Croatian: Хорват
+Czech: Чех
+Dakota: Дакота
+Danish: Дани
+Dargwa: Даргва
+Delaware: Делавэр
+Dinka: Динка
+Dogri: Догри
+Dogrib: Догриб
+Duala: Дуала
+Dutch (Belgium): Голланд (Бельги)
+Dutch: Голланд
+Dyula: Дула
+Dzongkha: Зонха
+Edo: Эдо
+Efik: Эфик
+Ekajuk: Экажук
+Elamite: Эламит
+English (Australia): Англи (Австрали)
+English (Belize): Англи (Белиз)
+English (Canada): Англи (Канад)
+English (Ireland): Англи (Ирланд)
+English (Jamaica): Англи (Ямайка)
+English (New Zealand): Англи (Шинэ Зеланд)
+English (Philippines): Англи (Филиппин)
+English (South Africa): Англи (Өмнөд Африк)
+English (Trinidad & Tobago): Англи (Тринидад ба Тобаго)
+English (United Kingdom): Англи (Нэгдсэн Вант Улс)
+English (United States): Англи (АНУ)
+English (Zimbabwe): Англи (Зимбабве)
+English: Англи-АНУ
+Erzya: Эрзя
+Esperanto: Эсперанто
+Estonian: Эстони
+Ewe: Хонь
+Ewondo: Эвондо
+Fang: Соёолон
+Fanti: Фанти
+Faroese: Фарер
+Fijian: Фижин
+Filipino: Филиппин хэл
+Finnish: Финлянд
+Fon: Фон
+French (Belgium): Франц (Бельги)
+French (Canada): Франц (Канад)
+French (France): Франц (Франц)
+French (Luxembourg): Франц (Люксембург)
+French (Monaco): Франц (Монако)
+French (Switzerland): Франц (Швейцар)
+French: Франц
+Frisian (Eastern): Фриз (Зүүн)
+Frisian (Northern): Фриз (Хойд)
+Frisian (Western): Фриз (Баруун)
+Frisian: Фриз
+Friulian: =
+Fulah: Фула
+Ga: Га
+Galibi: Галиби
+Galician: Галисик
+Ganda: Ганда
+Gayo: Гайо
+Gbaya: Гбая
+Geez: Гийз
+Georgian: Гүрж
+German (Austria): Герман (Австри)
+German (Germany): Герман (Герман)
+German (Liechtenstein): Герман (Лихтенштейн)
+German (Luxembourg): Герман (Люксембург)
+German (Standard): Герман (Стандарт)
+German (Switzerland): Герман (Швейцар)
+German: Герман
+Gilbertese: Гилбертез
+Gondi: Гонди
+Gorontalo: Горонтало
+Gothic: Готик
+Grebo: Гребо
+Greek: Грек
+Greenlandic: Гренланд
+Guarani: Гуарани
+Gujarati: Гужарати
+Gwich&#39;in: Гвичийн
+Haida: Хайда
+Haitian (Creole): Гаити (креол)
+Haitian: Гаити
+Hausa: Хауса
+Hawaiian: Хавай
+Hebrew: Еврей
+Herero: Хероо
+Hiligaynon: Хилигайнон
+Hindi: Хинди
+Hiri Motu: Хири Моту
+Hittite: Хит
+Hmong: Хмонг
+Holo (Taiwanese): Холо (Тайвань)
+Hungarian: Унгар
+Hupa: Хупа
+Iban: Ибан
+Icelandic: Исланд
+Ido: Би хийнэ
+Igbo: =
+Iloko: Илоко
+Indonesian: Индонез
+Ingush: Ингуш
+Inuktitut: Инуктитут
+Inupiaq: =
+Iranian: Иран
+Irish (Gaelic): Ирланд (галик)
+Irish: Ирланд
+Iroquoian: =
+Italian (Switzerland): Итали (Швейцар)
+Italian: Итали
+Japanese: Япон
+Javanese: Жава
+Judeo-Arabic: Жүдо-араб
+Judeo-Persian: Жүдо-Перс
+Kabardian: Кабардиан
+Kabyle: Кабайл
+Kachin: Качин
+Kalaallisut: Калалисут
+Kalmyk: Халимаг
+Kamba: Камба
+Kannada: Каннада
+Kanuri: Канури
+Kara-Kalpak: Кара-Калпак
+Karachay-Balkar: Карачай-Балкар
+Karelian: Карелийн
+Kashmiri: Кашмири
+Kashubian: Кашубийн
+Kawi: Кави
+Kazakh: Казах
+Khasi: Хаси
+Khmer (Central): Кхмер (Төв)
+Khmer: Кхмер
+Khotanese: Хотан
+Kikuyu: Кикую
+Kimbundu: Кимбунду
+Kinyarwanda: Кинярванда
+Kirghiz: Киргиз
+Klingon: Клингон
+Komi: Коми
+Kongo: Конго
+Konkani: Конкани
+Korean (Johab): Солонгос (Johab)
+Korean (North): Солонгос (Хойд)
+Korean (South): Солонгос (Өмнөд)
+Korean: Солонгос
+Kosraean: Косрейн
+Kpelle: =
+Kuanyama: Куаняма
+Kumyk: Кумык
+Kurdish: Курд
+Kutenai: Кутенай
+Kyrgyz: Киргиз
+Ladino: Ладино
+Lahnda: Лахнда
+Lamba: Ламба
+Lao: Лаос
+Latin: Латин
+Latvian: Латви
+Lezghian: Лезгиан
+Limburgan: Лимбурган
+Lingala: Лингала
+Lithuanian: Литва
+Lojban: Ложбан
+Lozi: Лози
+Luba-Katanga: Люба-Катанга
+Luba-Lulua: Люба-Лулуа
+Luiseno: Луисено
+Lunda: Лунда
+Luo: Луо
+Lushai: Лушай
+Luxembourghish: Люксембург
+Macedonian: Македон
+Madurese: Мадурес
+Magahi: Магахи
+Maithili: Майтхили
+Makasar: Макасар
+Malagasy: Малагас
+Malay: Малай
+Malayalam: Малаялам
+Maldivian: Мальдив
+Maltese: Мальт
+Manchu: Манж
+Mandar: Мандар
+Mandingo: Мандинго
+Manipuri: Манипури
+Manx: Манкс
+Maori: Маори
+Mapuche: Мапуче
+Marathi: Марати
+Mari: Мари
+Marshallese: Маршал
+Marwari: Марвари
+Masai: Масай
+Mayan: Маяа
+Mende: Менде
+Mi&#39;kmaq: Микмак
+Minangkabau: Минангкабау
+Mirandese: Мирандез
+Mohawk: Мохавк
+Moksha: Мокша
+Moldavian: Молдав
+Mongo: Монго
+Mongolian: Монгол
+Montenegrin: Монтенегрин
+Moroccan: Марокко
+Mossi: Мосси
+Myanmar: Мьянмар
+Māori: Маори
+N&#39;Ko: Үгүй ээ
+Nauru: Науру
+Navajo: Навахо
+Ndebele (North): Ндебеле (Хойд)
+Ndebele (South): Ндебеле (Өмнөд)
+Ndebele: Ндебеле
+Ndonga: Ндонга
+Neapolitan: Неаполитан
+Nepali: Непал
+Nias: Ниас
+Niuean: Ниуэн
+Nogai: Ногай
+Norse: Норвегийн
+Norwegian (Bokmål): Норвег (Бокмал)
+Norwegian (Nynorsk): Норвег (Нинорск)
+Norwegian: Норвег
+Nyamwezi: Нямвези
+Nyankole: Нянколе
+Nyoro: Нёро
+Nzima: Нзима
+Occitan: Окситан
+Odia: Одия
+Ojibwa: Ожибва
+Oriyia: Орийиа
+Oromo: Оромо
+Osage: Осаге
+Ossetic: Осетик
+Pahlavi: Пахлави
+Palauan: Палауан
+Pali: Пали
+Pampanga: Пампанга
+Pangasinan: Пангасинан
+Panjabi: Панжаби
+Papiamento: Папиаменто
+Pashto: Пашто
+Pedi: Педи
+Persian (Farsi): Перс (фарси)
+Persian (Iran): Перс (Иран)
+Persian: Перс
+Phoenician: Финик хэл
+Pohnpeian: Понпейан
+Polish: Польш
+Portuguese: Португал хэл
+Portuguese/Brazil: Португал / Бразил 
+Punjabi (India): Пунжаби (Энэтхэг)
+Punjabi (Pakistan): Пунжаби (Пакистан)
+Punjabi: Пунжаби
+Quechua: Кэчуа
+Rajasthani: Ражастхани
+Rapanui: Рапануй
+Rarotongan: Раротонган
+Rhaeto-Romanic: Раето-Романик
+Romanian: Румын
+Romansh: Романш
+Romany: Романи
+Rundi: Рунди
+Russian (Moldavia: Орос (Молдав)
+Russian (Republic of Moldova): Орос (Бүгд Найрамдах Молдав)
+Russian: Орос
+Sami (Inari): Сами (Инари)
+Sami (Lappish): Сами (Лаппиш)
+Sami (Lule): Сами (Люль)
+Sami (Northern): Сами (Хойд)
+Sami (Skolt): Сами (Сколт)
+Sami (Southern): Сами (Өмнөд)
+Sami: Сами
+Samoan: Самоа
+Samoli: Самоли
+Sandawe: Сандау
+Sango: Санго
+Sanskrit: Санскрит
+Santali: Сантали
+Sardinian: Сардини
+Sasak: Сасак
+Scots (Gaelic): Шотланд (Gaelic)
+Selkup: Селкуп
+Serbian (Upper): Серб (дээд)
+Serbian: Серб
+Serer: Серер
+Sesotho: Сесото
+Shan: Шан
+Shona: Шона
+Sichuan Yi: Сичуан И
+Sicilian: Сицилиан
+Sindhi: Синдхи
+Sinhala: Сингал хэл
+Slavic: Славян
+Slovak: Словак
+Slovenian: Словен
+Sogdian: Согд
+Somali: Сомали
+Somani: Сомани
+Songhai: Сонгхай
+Soninke: Сонинке
+Sorbian (Lower): Сорбиан (доод)
+Sorbian (Upper): Сорбиан (дээд)
+Sorbian: Сорбиан
+Sotho: Сотхо
+Spanish (Argentina): Испани (Аргентин)
+Spanish (Bolivia): Испани (Боливи)
+Spanish (Chile): Испани (Чили)
+Spanish (Colombia): Испани (Колумб)
+Spanish (Costa Rica): Испани (Коста Рика)
+Spanish (Dominican Republic): Испани (Бүгд Найрамдах Доминик)
+Spanish (Ecuador): Испани (Эквадор)
+Spanish (El Salvador): Испани (Сальвадор)
+Spanish (Guatemala): Испани (Гватемал)
+Spanish (Honduras): Испани (Гондурас)
+Spanish (Mexico): Испани (Мексик)
+Spanish (Nicaragua): Испани (Никарагуа)
+Spanish (Panama): Испани (Панам)
+Spanish (Paraguay): Испани (Парагвай)
+Spanish (Peru): Испани (Перу)
+Spanish (Puerto Rico): Испани (Пуэрто Рико)
+Spanish (Spain): Испани (Испани)
+Spanish (Uruguay): Испани (Уругвай)
+Spanish (Venezuela): Испани (Венесуэл)
+Spanish: Испани
+Sranan Tongo: Сранан Тонго
+Sukuma: Сукума
+Sumerian: Шумер
+Sundanese: Сундан
+Susu: Сусу
+Sutu: Суту
+Swahili: Суахили
+Swati: Свати
+Swedish (Finland): Швед (Финлянд)
+Swedish (Sweden): Швед (Швед)
+Swedish: Швед
+Syriac: Сири
+Tagalog: Тагалог хэл
+Tahitian: Таитиан
+Tai: Тай
+Taiwan: Тайвань
+Tajik: Тажик
+Tamashek: Тамашек
+Tamil: Тамил
+Tatar: Татар
+Telugu: Телугу
+Tereno: Терено
+Tetum: Тетум
+Thai: Тайланд
+Tibetan: Төвд
+Tigre: =
+Tigrinya: Тигринья
+Timne: Тимне
+Tlingit: Тлингит
+Tok Pisin: Ток Писин
+Tokelau: Токелау
+Tonga (Nytmhasa): Тонга (Нитмхаса)
+Tonga (Tonga Islands): Тонга (Тонга арлууд)
+Tonga: Тонга
+Tsimshian: Цимшиан
+Tsonga: Цонга
+Tswana: Цвана
+Tumbuka: Тумбука
+Turkish: Турк
+Turkmen: Туркмен
+Tuvinian: Тувин
+Twi: Тви
+Udmurt: Удмурт
+Ugaritic: Угарит
+Ukrainian: Украйн
+Umbundu: Умбунду
+Urdu: Урду
+Uyghur: Уйгур
+Uzbek: Узбек
+Vai: Вай
+Venda: Венда
+Vietnamese: Вьетнам
+Volapük: Волапүк
+Votic: Вотик
+Wakashan: Вакашан
+Walloon: Валлон
+Waray: Варай
+Washo: Вашо
+Welsh: Уэльс
+Wolaitta: Волайтта
+Wolof: Волоф
+Xhosa: Хоса
+Yakut: Якут
+Yao: Яо
+Yapese: Япез
+Yiddish: Идиш
+Yorùbá: Ёраба
+Yupik: Юпик
+Zande: Занде
+Zapotec: Запотек
+Zaza: Заза
+Zenaga: Зенага
+Zhuang: Жуан
+Zulu: Зулу
+Browser-defined: Хөтөч тодорхойлсон
+event: үйл явдал
+journal: тэмдэглэл
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Хэрэглэгчийн нэвтрэлт буруу байна
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: нууц үг тохирсонгүй
+no such user: тийм хэрэглэгч байхгүй
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Акаунтыг идэвхгүй болгосон
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Интервал
+Months: Сарууд
+Month Days: Сар өдрүүд
+Days: Өдөр
+Weeks: Долоо хоног
+Position: Байрлал
+Until: Хүртэл
+Count: =
+Inclusion Dates: Оруулах огноо
+Exclusion Dates: Хасах огноо
+Event Imported: Үйл явдлыг импортолсон
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: байт
+kb: кб
+Mb: Мб
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Мэдэгдэл
+authenticate: SMTP алдаа: Баталгаажуулж чадсангүй
+connect_host: SMTP алдаа: SMTP хосттой холбогдож чадсангүй:
+data_not_accepted: SMTP алдаа: Мэдээллийг хүлээн зөвшөөрөхгүй
+encoding: Тодорхойгүй кодчилол:
+execute: Гүйцэтгэж чадсангүй:
+file_access: Файлд хандаж чадсангүй:
+file_open: Файлын алдаа файлыг нээж чадсангүй:
+from_failed: Дараах хаягаас амжилтгүй боллоо:
+instantiate: Шуудангийн функцийг тохируулж чадсангүй
+mailer_not_supported: мэйлийг дэмжихгүй байна
+provide_address: Та дор хаяж нэг хүлээн авагчийн имэйл хаягийг өгөх ёстой.
+recipients_failed: SMTP алдаа: Дараахь хүлээн авагчид амжилтгүй боллоо:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Графикаар харсан тэмдэгтүүдийг оруулна уу
+Enter the correct letters and numbers...: Зурган дээрх зөв үсэг, тоог текстийн хайрцагт оруулна уу. Энэхүү жижиг тест нь хортой роботуудын хандалтыг хязгаарлах үүрэг гүйцэтгэдэг. Хэрэв энэ графикийг уншихад хэтэрхий хэцүү бол хуудсыг дахин ачаална уу
+Challenge/Response: Сорилт / хариу арга хэмжээ
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Энэ бичлэгийн огноо, цагийг өөрчлөх үү?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Та товч тайлбар оруулаагүй байна
+time prior to work hours...: ажлын цагаас өмнөх хугацаа ...
+Invalid Event Date: Үйл явдлын огноо буруу байна
+Please add a participant: Оролцогчийг нэмнэ үү 
+Invalid Date: Огноо буруу байна
+You have not entered a valid time of day: Та өдрийн хүчинтэй цагийг оруулаагүй байна. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Хуанлийн ID хоосон байж болохгүй. 
+First and last names cannot both be blank.: Нэр, овог хоёулаа хоосон байж болохгүй. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Буруу өнгө
+Color format should be RRGGBB.: Өнгөний формат #RRGGBB байх ёстой. 
+URL cannot be blank.: URL хоосон байж болохгүй.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Файлын төрөл нь Импортын форматтай таарахгүй байна 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Баримтын дэвсгэр өнгө буруу байна.
+Invalid color for document title.: Баримтын гарчгийн өнгө буруу байна.
+Invalid color for table cell background.: Хүснэгтийн нүдний дэвсгэр буруу байна.
+Invalid color for table cell background for today.: Өнөөдрийн хүснэгтийн нүдний дэвсгэр буруу байна.
+Invalid work hours.: Ажлын цаг буруу байна.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Серверийн URL нь налуу зураасаар төгсөх ёстой (/).
+Invalid color for table grid.: Хүснэгтийн сүлжээ буруу байна.
+Invalid color for event popup background.: Үйл явдлын попап дэвсгэрийн өнгө буруу байна.
+Invalid color for event popup text.: Үйл явдлын попап текст буруу байна.
+Invalid color for table header text.: Хүснэгтийн толгой текст буруу байна.
+Invalid color for table header background.: Хүснэгтийн толгойн дэвсгэр буруу байна.
+Server URL is required.: Серверийн URL шаардлагатай.
+Invalid Color: Буруу өнгө
+Database Name: Мэдээллийн сангийн нэр
+Full Path (no backslashes): Бүтэн зам (нурууны цохилт байхгүй) 
+The password contains illegal characters.: Нууц үгэнд хууль бус тэмдэгтүүд орсон байна.
+Error you must specify a Single-User Login: Алдаа: Та дан хэрэглэгчийн нэвтрэлтийг зааж өгөх ёстой
+Could not find XXX.: ХХХ олдсонгүй.
+Could not find XXX in DOM.: DOM дотор XXX олдсонгүй.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Энэ долоо хоногт
+This Month: Энэ сар
+This Year: Энэ жил
+Exit: гарах
+Add New Event: Шинэ арга хэмжээ нэмэх
+Delete Entries: Бичлэгийг устгах
+My Views: Миний үзэл бодол
+Manage Calendar of: Хуанлийг удирдах
+My Reports: Миний тайлан
+My Profile: Миний намтар
+Public Calendar: Олон нийтийн хуанли
+Unapproved Events: Зөвшөөрөгдөөгүй үйл явдлууд
+User Manager: Хэрэглэгчийн менежер
+Help Contents: Тусламжийн агуулга
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Мэдээллийн сангийн кэш лавлах
+Create New: Шинэ зүйл үүсгэх
+Failure Reason: Алдааны шалтгаан:
+You must manually create database: Та мэдээллийн санг гараар үүсгэх ёстой.
+Single-User: Нэг хэрэглэгч
+Test Settings: Туршилтын тохиргоо
+Timezone Conversion Successful: Цагийн бүсийн хувиргалт амжилттай боллоо
+WebCalendar Installation Wizard Step XXX: Вэб календарийн суулгалтын шидтэн ХХХ алхам
+Password Accepted: Нууц үгийг хүлээн зөвшөөрөв
+Successful Login: Амжилттай нэвтрэх
+Password Incorrect: Нууц үг буруу байна
+Invalid Login: Буруу нэвтрэлт
+Display Errors: Дэлгэцийн алдаа
+File Uploads: Файл байршуулах
+Allow URL fopen: URL нээгдэхийг зөвшөөрөх (зөвхөн Алсын хуанли ашигласан тохиолдолд л шаардагдана)
+Safe Mode: Аюулгүйн горим
+Safe Mode Allowed Vars: Аюулгүй горимыг зөвшөөрсөн хувилбарууд (зөвхөн аюулгүй горим асаалттай тохиолдолд TZ шаардагдана)
+GD: GD (градиент зургийн дэвсгэрт шаардлагатай)
+Passwords do not match!: Нууц үг таарахгүй байна!
+Unable to write password to settings.php file: "Settings.php" файлд нууц үг бичих боломжгүй байна.
+Password Updated: Нууц үгээ шинэчлэв
+Password has been set: Нууц үгийг тохируулсан болно.
+Connection Successful...: Холболт амжилттай боллоо. Суулгалтаа үргэлжлүүлэхийн тулд дараагийн хуудас руу орно уу.
+Correct your entries or click the Create New...: Оруулсан зүйлээ засах эсвэл  Шинэ үүсгэх  товчийг дарж суулгалтыг үргэлжлүүлнэ үү.
+Correct your entries and try again.: Оруулсан зүйлсээ засаад дахин оролдоно уу.
+XXX does not exist: ХХХ байхгүй байна
+XXX is not writable: ХХХ бичих боломжгүй
+Error Converting Timezone: Цагийн бүсийг хөрвүүлэхэд алдаа гарав
+Error Unable to write to file XXX.: XXX файл руу бичих боломжгүй байна.
+Please change the file permissions of this file.: Энэ файлын файлын зөвшөөрлийг өөрчилнө үү.
+Please change includes dir permission: Бусад хэрэглэгчид бичих боломжийг олгохын тулд "багтсан" директорын файлын зөвшөөрлийг өөрчилнө үү.
+Your settings have been saved.: Таны тохиргоог хадгалсан.
+OFF: УНТРАА
+ON: АСААЛТТАЙ
+WebCalendar Setup Wizard: WebCalendar тохируулах шидтэн
+This installation wizard will guide you...: Энэхүү суулгалтын шидтэн нь үндсэн WebCalendar суулгацыг тохируулах талаар зааварчилгаа өгөх болно.<br>Тусламж, алдааг олж засварлахыг үзнэ үү.<br>
+System Administrators Guide: Системийн администраторын гарын авлага
+Frequently Asked Questions: Түгээмэл асуултууд
+FAQ: Түгээмэл асуултууд
+Troubleshooting: Алдааг олж засварлах
+Getting Help: Тусламж авах
+Upgrading Guide: Шинэчлэх гарын авлага
+User Supported Wiki: Хэрэглэгчийн дэмждэг Wiki
+PHP Version Check: PHP хувилбар шалгах
+Check to see if PHP 7.1.0 or greater is installed.: PHP 7.1.0 ба түүнээс дээш хувилбар суулгасан эсэхийг шалгана уу.
+PHP version: PHP хувилбар
+PHP Settings: PHP тохиргоо
+Detailed PHP Info: PHP-ийн дэлгэрэнгүй мэдээлэл
+settings.php Status: "settings.php" статус
+Session Check: Хичээл шалгах
+To test the proper operation of sessions...: Сешнүүдийн зөв ажиллагааг шалгахын тулд энэ хуудсыг дахин ачаална уу. Тэр болгонд хуралдааны тоолуурын өсөлтийг харах хэрэгтэй.
+SESSION COUNTER: ХУРАЛДААНЫ ТООЛЛОГЧ
+The file permissions of settings.php are set...: "Settings.php" файлын зөвшөөрлийг суулгагч үүнийг өөрчлөх зөвшөөрөлгүй байхаар тохируулсан болно. Үргэлжлүүлэхийн тулд дараах файлын файлын зөвшөөрлийг өөрчилнө үү
+The file permissions of the includes directory are set...: Оруулсан директорын файлын зөвшөөрлийг суулгагч шинэ файл үүсгэх зөвшөөрөлгүй байхаар тохируулсан болно. Үргэлжлүүлэхийн тулд дараахь лавлахын зөвшөөрлийг өөрчилнө үү
+Your settings.php file appears to be valid.: Таны "settings.php" файл хүчин төгөлдөр байна.
+Configuration Wizard Password: Тохиргооны шидтэний нууц үг
+Create Settings File Password: Тохиргооны файлын нууц үгийг үүсгэх
+db setup directions...: Энэ хэсэгт та өгөгдлийн сангийн сервертэйгээ холболтыг тохируулж, туршиж үзэх болно. Нийлүүлсэн дансны мэдээлэл нь мэдээллийн сан, хүснэгт, хэрэглэгч үүсгэх БҮРЭН зөвшөөрөлтэй байх ёстой. Хэрэв энэ боломжгүй, эсвэл мэдээллийн баазад нэвтрэх боломж хязгаарлагдмал бол та мэдээллийн сангаа гараар тохируулах хэрэгтэй болно.
+Database Status: Мэдээллийн сангийн байдал
+Supported databases for your PHP installation: Таны PHP суулгалтын мэдээллийн санг дэмждэг
+Your current database settings are able to access the database.: Таны одоогийн мэдээллийн баазын тохиргоо мэдээллийн санд нэвтрэх боломжтой байна.
+Please Test Settings: Тохиргоог туршина уу
+Your current database settings are not able...: Таны одоогийн мэдээллийн баазын тохиргоо мэдээллийн санд нэвтрэх боломжгүй эсвэл туршиж амжаагүй байна.
+Database Settings: Мэдээллийн сангийн тохиргоо
+Database Type: Мэдээллийн сангийн төрөл
+Server: Сервер
+Connection Persistence: Холболтын тууштай байдал
+All your database tables appear to be up...: Таны мэдээллийн баазын бүх хүснэгтүүд шинэчлэгдсэн байх шиг байна. Та дараагийн хуудас руу шилжиж, WebCalendar тохиргоогоо хийж дуусгах боломжтой.
+This appears to be a new installation...: Энэ нь шинэ суулгалт бололтой. Хэрэв энэ нь зөв биш бол өмнөх хуудас руу ороод тохиргоогоо засна уу.
+This appears to be an upgrade...: Энэ нь&nbsp;XXX&nbsp;хувилбараас&nbsp;YYY болгож сайжруулсан хувилбар бололтой.
+The database requires some data input...: Мэдээллийн санд зарим өгөгдлийг оруулах шаардлагатай бөгөөд шинэчлэлтийг дуусгахын тулд Мэдээллийн санг шинэчлэх товчийг дарна уу.
+In this section we will perform...: Энэ хэсэгт бид мэдээллийн санг шаардлагатай түвшинд хүргэхийн тулд өөрчлөлтүүдийг хийх болно. Хэрэв та бүрэн дэмжигдсэн мэдээллийн санг ашиглаж байгаа бол энэ алхамыг танд автоматаар хийх болно. Хэрэв үгүй ​​бол шаардлагатай SQL-ийг харуулах боломжтой бөгөөд та үүнийг багасгаж мэдээллийн сангийн серверийн хайлтын цонхонд буулгах боломжтой байх ёстой.
+No database actions are required.: Мэдээллийн сангийн үйл ажиллагаа шаардагдахгүй.
+The following database actions are required: Мэдээллийн сангийн дараахь үйлдлүүдийг хийх шаардлагатай
+ODBC Underlying Database: ODBC-ийн суурь мэдээллийн сан:
+Automatic installation not supported: Таны өгөгдлийн сангийн төрөлд автоматаар суулгалт бүрэн хийгдээгүй байна. Та нийлүүлсэн SQL ашиглан шаардлагатай хүснэгтүүдийг гараар үүсгэх хэрэгтэй болно. Үргэлжлүүлэхийн тулд  Display SQL  дээр дарна уу. Өөрийн мэдээллийн баазын лавлах цонхонд хайчилж оруул.
+This may take several minutes to complete: Үүнийг дуусгахад хэдэн минут шаардагдаж магадгүй юм.
+Install Database: Мэдээллийн сан суулгах
+Update Database: Мэдээллийн санг шинэчлэх
+Display Required SQL: Шаардлагатай SQL-ийг харуулах
+Return to previous page after processing SQL.: Энэ SQL-ийг гараар боловсруулсны дараа та өмнөх хуудас руу буцаж, мэдээллийн баазаа дахин шалгах хэрэгтэй бөгөөд ингэснээр скрипт нь өөрчлөлтийг илрүүлэх боломжтой болно.
+This is the final step in setting up your WebCalendar Installation.: Энэ бол таны WebCalendar суулгалтыг тохируулах эцсийн алхам юм.
+Timezone Conversion: Цагийн бүсийг хөрвүүлэх
+It appears that you have NOT converted...: Та одоо байгаа WebCalendar үйл явдлын өгөгдлийг GMT уруу хөрвүүлээгүй бололтой. Хэрэв танд байгаа бол та энэ мэдэгдлийг үл тоомсорлож, хөрвүүлэлтийг үргэлжлүүлэхгүй байж болно. Хэрэв энэ нь шинэ суулгалт бол та энэ мэдэгдлийг үл тоомсорлож магадгүй юм.
+Convert Data to GMT: Өгөгдлийг GMT болгон хөрвүүлэх
+Application Settings: Програмын тохиргоо
+HTTP-based authentication was not detected...: HTTP дээр суурилсан нэвтрэлт танилт илрээгүй байна. Хэрэв та доорх 'Хэрэглэгчийн баталгаажуулалт' сонголтоос 'Вэб сервер' -ийг сонгохыг хүсвэл вэб серверээ дахин тохируулах шаардлагатай болно.
+HTTP-based authentication was detected...: HTTP-д суурилсан нэвтрэлт танилт илрэв. Хэрэглэгчийн баталгаажуулалтыг таны вэб сервер зохицуулж байна. Та доорх 'Хэрэглэгчийн баталгаажуулалт' сонголтын жагсаалтаас 'Вэб сервер' -ийг сонгох хэрэгтэй.
+Create Default Admin Account: Анхдагч админы данс үүсгэх
+(Admin Account Not Found): (Админы данс олдсонгүй)
+User Authentication: Хэрэглэгчийн баталгаажуулалт
+Web-based via WebCalendar (default): Вэб календараар дамжуулан вэбэд суурилсан (анхдагч)
+Web Server (not detected): Вэб сервер (илрүүлээгүй)
+Web Server (detected): Вэб сервер (илэрсэн)
+None (Single-User): Байхгүй (Нэг хэрэглэгчтэй)
+Read-Only: Зөвхөн унших
+Environment: Байгаль орчин
+Production: Үйлдвэрлэл
+Development: Хөгжил
+Save Settings: Тохиргоог хадгалах
+Launch WebCalendar: Вэб календарийг ажиллуулна уу
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: "ХХХ" хүснэгтийг шинэчлэхэд алдаа гарав: ӨӨ.
+Conversion Successful: Хөрвүүлэлт амжилттай 
+Perl script required: Таны WebCalendar-ийн өмнөх хувилбар нь өгөгдлийг хөрвүүлэхийн тулд PERL скрипт ажиллуулахыг шаарддаг. /Tools/upgrade_to_0.9.7.pl-г ажиллуулаад үргэлжлүүлэн энэ хуудас руу буцна уу.
+previous version requires updating several tables: Таны WebCalendar-ийн өмнөх хувилбар нь мэдээллийн сангийн хэд хэдэн хүснэгтийг шинэчлэхийг шаарддаг.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: УРЬДЧИЛАН БОЛОМЖГҮЙ
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Мэдээллийн сантай холбогдоход алдаа гарав
+Include Path: Зам оруулах
+Deleting events for: Үйл явдлыг устгаж байна
+Importing events for: Үйл явдлыг импортлох
+No data returned from: Буцах мэдээлэл алга
+for non-user calendar: хэрэглэгчийн бус хуанлийн хувьд
+No Remote Calendars found: Алсын хуанли олдсонгүй
+Remote Calendars not enabled: Алсын хуанли идэвхжээгүй байна
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: үйл явдлын id олж чадсангүй
+could not find event id XXX in database.: мэдээллийн сангаас XXX үйл явдлын id-г олж чадсангүй.
+task: даалгавар
+This is a reminder for the XXX detailed below.: Энэ бол доор дэлгэрэнгүй харуулсан ХХХ-ийн тухай сануулга юм.
+Pecentage Complete: Төв цэвэршилт дууссан
+Reminder: Сануулагч
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Дэмжигдээгүй үйлдэл: XXX.
+No event id specified.: Үйл явдлын ID-г заагаагүй байна.
+Not authorized (not admin).: Зөвшөөрөлгүй (админ биш).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: YYY өдрөөс ZZZ хүртэлх өдрүүдийн ХХХ үйл явдлыг шалгаж байна.
+Found XXX events in time range.: Цаг хугацааны хүрээнд XXX арга хэмжээ олдсон.
+Event id=XXX YYY at ZZZ on AAA.: Үйл явдлын id = AAA дээрх ZZZ дээр XXX "YYY".
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: XXX хэрэглэгчид бусад хэрэглэгчийн хуанлийг үзэх боломжийг олгох.
+Error Email reminders disabled for user XXX.: Алдаа: "XXX" хэрэглэгчийн имэйлийн сануулагчийг идэвхгүй болгосон.
+Number of site_extras XXX.: Сайтын_ нэмэлт тоо: XXX.
+Reminder set for event.: Үйл явдлыг сануулахаар тохируулсан.
+Mins Before XXX.: Өмнөх минууд: ХХХ.
+Event time is XXX.: Арга хэмжээний хугацаа: XXX.
+Remind time is XXX.: Сануулах хугацаа: XXX.
+Reminders for user XXX, login YYY.: "XXX" хэрэглэгчид зориулсан сануулга, "YYY" нэвтрэх.
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: "XXX" хэрэглэгчид зөвшөөрөгдөөгүй байна.
+Event id=XXX YYY already sent.: Үйл явдлын id = XXX "YYY" аль хэдийн илгээгдсэн.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Нэг хэрэглэгчийн горимд нэвтрэх шаардлагагүй.
+No login required for HTTP authentication.: HTTP нэвтрэлт танилт хийхэд нэвтрэх шаардлагагүй.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Нэвтрэх тэмдэгт буруу байна.
+Username XXX does not exist.: "XXX" хэрэглэгчийн нэр байхгүй байна.
+You cannot remove admin rights from yourself!: Та админы эрхийг өөрөөсөө устгах боломжгүй!
+Unknown error saving user: Хэрэглэгчийг хадгалахад үл мэдэгдэх алдаа гарав.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Үйл явдлын id: XXX-д оролцогч олдсонгүй.
+Db error Could not find event id XXX.: Db алдаа: XXX үйл явдлын id-г олж чадсангүй. 
+Error Could not find event id XXX in database.: Алдаа: Мэдээллийн сангаас XXX үйл явдлын id-г олж чадсангүй. 

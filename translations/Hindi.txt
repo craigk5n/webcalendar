@@ -1,0 +1,2387 @@
+# Hindi hi
+#
+# प्रारूप में वैकल्पिक हेडर होते हैं:
+#
+# द्वारा अनुवादित: आपका नाम और ईमेल
+# अंतिम अपडेट: अनुवाद की तारीख
+# "प्रमुख" # "और पिछले अनुवादकों द्वारा की गई कोई भी टिप्पणी शामिल है।
+# FIRST रिक्त पंक्ति इन शीर्ष लेख टिप्पणियों को समाप्त करती है।)
+#
+# जरूरत से ज्यादा फॉलो करना:
+#
+# अंग्रेजी वाक्यांश: अनुवाद
+# # एक पंक्ति। प्रमुख "#" के बिना।
+# "अंग्रेजी वाक्यांश:", बृहदान्त्र सहित ":", द्वारा प्रदान किया गया है
+# वेबमास्टर डेवलपर्स। आपका हिस्सा "अनुवाद" है।)
+#
+# उपकरण निर्देशिका में आपकी सहायता के लिए दो पर्ल स्क्रिप्ट शामिल हैं:
+# - check_translation.pl
+# इंगित करता है कि सभी पाठ का सफलतापूर्वक अनुवाद किया गया है या नहीं।
+# - update_translation.pl
+# सभी अनुवाद ('वाक्यांश') और खोजने के लिए प्रोग्राम फ़ाइलों को पार्स करेगा
+# टूलटिप ('वाक्यांश')। यह पृष्ठ के अनुसार वाक्यांशों की व्यवस्था करेगा
+# (फ़ाइल) जिसमें पहला रोड़ा है। वैकल्पिक रूप से, यह टैग कर सकता है
+# ऐसे वाक्यांश जो अभी तक डालकर अनुवादित नहीं किए गए हैं
+#  << MISSING >>
+# वाक्यांश के ऊपर की रेखा पर। और, यदि वाक्यांश एक संक्षिप्त नाम है,
+# इसमें वाक्यांश के नीचे लाइन पर पूरा अंग्रेजी पाठ शामिल होगा।
+#
+# नोट: मैं समग्र फ़ाइल आकार में कटौती करने का प्रयास कर रहा हूं। यदि "अनुवाद"
+# शब्द / वाक्यांश आपकी भाषा और अंग्रेजी में समान है, बस "=" चिन्ह का उपयोग करें।
+#
+# नोट: आपको प्रवेश के लिए सूचना मिलेगी "May_" नीचे। इस के लिए एक कारण है।
+#  अनुवाद करना "May_"  पूरे महीने का नाम और "May" को,
+# आमतौर पर तीन-अक्षर, महीने का संक्षिप्त नाम (जैसे "अक्टूबर" के लिए "अक्टूबर")।
+#
+# मैंने इसके लिए Google अनुवाद का उपयोग किया।
+# इसे तब तक पर्याप्त होना चाहिए जब तक कोई देशी वक्ता इसे सत्यापित नहीं कर सकता।
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: एल टीआर
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: संस्करण XXX
+WebCalendar is a PHP application used...: WebCalendar एक PHP अनुप्रयोग है जिसका उपयोग किसी एकल उपयोगकर्ता या उपयोगकर्ताओं के इंटरनेट / इंट्रानेट समूह के लिए कैलेंडर बनाए रखने के लिए किया जाता है। इसे एक कार्यक्रम कैलेंडर के रूप में भी विन्यस्त किया जा सकता है।
+Credits: क्रेडिट
+About: के बारे में
+OK: ठीक है
+
+########################################
+# Page: access.php
+#
+Database error XXX.: डेटाबेस त्रुटि: XXX।
+DEFAULT CONFIGURATION: =
+Go: जाओ
+Save: सहेजें
+Undo: पूर्ववत
+Public Access: सार्वजनिक अभिगम
+Admin: व्यवस्थापक
+User Access Control: उपयोगकर्ता अभिगम नियंत्रण
+Allow Access to Other Users Calendar: अन्य उपयोगकर्ताओं के कैलेंडर तक पहुंच की अनुमति दें
+Grant This User Access to My Calendar: इस उपयोगकर्ता को मेरे कैलेंडर तक पहुँच प्रदान करें
+Type: प्रकार
+Calendar: पंचांग
+View Event: घटना देखें
+View: राय
+Edit: संपादित करें
+Approve/Reject: स्वीकृत अस्वीकृत
+Events: आयोजन
+Tasks: कार्य
+Journals: पत्रिकाओं
+Can Invite: आमंत्रित कर सकते हैं
+Can Email: ईमेल कर सकते हैं
+Can See Time Only: केवल समय देख सकते हैं
+Assistant: सहायक
+Select All: सभी का चयन करे
+Clear All: सभी साफ करें
+Public: जनता
+Confidential: गुप्त
+Private: निजी
+
+########################################
+# Page: activity_log.php
+#
+Next: अगला
+Previous: पहले का
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: ईवेंट XXX आपके कैलेंडर पर पहले से मौजूद है।
+Invalid entry id XXX.: अमान्य प्रविष्टि आईडी: "XXX"।
+a XXX event may not be added to your calendar: यह एक XXX ईवेंट है और इसे आपके कैलेंडर में नहीं जोड़ा जा सकता है।
+confidential: गुप्त
+private: निजी
+Error adding event XXX.: ईवेंट जोड़ने में त्रुटि: XXX
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: अमान्य सेटिंग नाम "XXX"।
+Select: चुनते हैं
+Day: दिन
+Week: सप्ताह
+Month: महीना
+Year: साल
+Bottom: तल
+Top: ऊपर
+Anyone: किसी को
+Participant: प्रतिभागी
+Settings: समायोजन
+Groups: समूहों
+NonUser Calendars: नॉनसेलर कैलेंडर
+Other: अन्य
+Email: ईमेल
+Colors: रंग की
+Document background: दस्तावेज़ पृष्ठभूमि
+Document title: दस्तावेज़ का शीर्षक
+Document text: दस्तावेज़ पाठ
+My event text: मेरी घटना पाठ
+Table grid color: टेबल ग्रिड रंग
+Table header background: टेबल हेडर बैकग्राउंड
+Table header text: टेबल हेडर टेक्स्ट
+Table cell background: तालिका सेल पृष्ठभूमि
+Table cell background for current day: वर्तमान दिन के लिए टेबल सेल पृष्ठभूमि
+Table cell background for days with events: घटनाओं के साथ दिनों के लिए टेबल सेल पृष्ठभूमि
+Table cell background for weekends: सप्ताहांत के लिए टेबल सेल पृष्ठभूमि
+Table cell background for other month: अन्य माह के लिए तालिका सेल पृष्ठभूमि
+Week number color: सप्ताह का रंग
+Event popup background: इवेंट पॉपअप बैकग्राउंड
+Event popup text: इवेंट पॉपअप पाठ
+System Settings: प्रणाली व्यवस्था
+Help: हाथ बटाना
+System options: सिस्टम विकल्प
+app-name-help: उस एप्लिकेशन का नाम निर्दिष्ट करता है जो सभी पृष्ठों के लिए और लॉगिन पृष्ठ पर ब्राउज़र टाइटल बार में दिखाई देगा। आपके द्वारा यहां निर्दिष्ट मूल्य अनुवाद फ़ाइल में दिखाई देगा, जिससे आप विभिन्न भाषाओं के लिए अलग शीर्षक प्रदान कर सकते हैं।
+Application Name: आवेदन का नाम
+Translated Name (XXX): अनुवादित नाम (XXX)
+server-url-help: एप्लिकेशन के लिए आधार URL निर्दिष्ट करता है। ईमेल रिमाइंडर और नोटिफिकेशन भेजते समय इसे शामिल किया जाएगा।
+Server URL: सर्वर URL
+home-url-help: एप्लिकेशन के लिए होम URL निर्दिष्ट करता है। यह एक निरपेक्ष या सापेक्ष हो सकता है
+Home URL: होम यूआरएल
+language-help: निर्दिष्ट करता है कि किस भाषा का उपयोग करना है।
+Language: भाषा: हिन्दी
+Your browser default language is XXX.: आपकी ब्राउज़र डिफ़ॉल्ट भाषा "XXX" है।
+Allow user to use themes: उपयोगकर्ता को थीम का उपयोग करने की अनुमति दें
+themes-help: कॉन्फ़िगरेशन सेटिंग्स के बड़े पैमाने पर अद्यतन की अनुमति देता है। लोअर केस लेबल केवल यूजर प्रीफ होते हैं।
+Themes: विषयों
+AVAILABLE THEMES: उपलब्ध विषय
+None: कोई नहीं
+Preview: पूर्वावलोकन
+Site customization: साइट अनुकूलन
+custom-script-help: कस्टम जावास्क्रिप्ट या स्टाइलशीट पाठ के प्रवेश की अनुमति देता है जिसे हर पृष्ठ के HTML "हेड" अनुभाग में डाला जाएगा।
+Custom script/stylesheet: कस्टम स्क्रिप्ट / स्टाइलशीट
+custom-header-help: प्रत्येक पृष्ठ के शीर्ष में एक कस्टम HTML स्निपेट को शामिल करने की अनुमति देता है।
+Custom header: कस्टम हेडर
+custom-trailer-help: प्रत्येक पृष्ठ के अंत में एक कस्टम HTML स्निपेट को शामिल करने की अनुमति देता है।
+Custom trailer: कस्टम ट्रेलर
+enable-external-header-help: कस्टम ट्रेलर को बाहरी फ़ाइल से लोड करने की अनुमति देता है
+Allow external file for header/script/trailer: हेडर / स्क्रिप्ट / ट्रेलर के लिए बाहरी फ़ाइल की अनुमति दें
+Allow user to override header/trailer: उपयोगकर्ता को हेडर / ट्रेलर को ओवरराइड करने की अनुमति दें
+Date and Time: तिथि और समय
+server-tz-help: यूटीसी से सर्वर समय को समायोजित करने के लिए कितने घंटे निर्दिष्ट करता है।
+Server Timezone Selection: सर्वर Timezone चयन
+tz-help: यूटीसी से स्थानीय समय को समायोजित करने के लिए कितने घंटे निर्दिष्ट करता है।
+Default Client Timezone Selection: डिफ़ॉल्ट क्लाइंट टाइमज़ोन चयन
+display-general-use-gmt-help: यदि सक्षम है, तो आम तिथियां / समय GMT के रूप में प्रदर्शित की जाती हैं
+Display Common Use Date/Times as GMT: जीएमटी के रूप में आम उपयोग की तारीख / टाइम्स प्रदर्शित करें
+date-format-help: पसंदीदा दिनांक प्रारूप निर्दिष्ट करता है।
+Date format: डेटा प्रारूप
+Small Task Date: लघु कार्य तिथि
+display-week-starts-on: सप्ताह का दिन निर्दिष्ट करता है कि सप्ताह शुरू होता है। यदि सोमवार निर्दिष्ट किया गया है, तो सप्ताह संख्या आईएसओ सप्ताह संख्या होगी।
+Week starts on: सप्ताह शुरू होता है
+display-weekend-starts-on: सप्ताहांत शुरू होने के लिए सप्ताह का दिन निर्धारित करता है
+Weekend starts on: सप्ताहांत शुरू होता है
+time-format-help: निर्दिष्ट करता है कि किस समय प्रारूप का उपयोग करना है:<br><em>12 घंटा:</em> प्रदर्शन समय 3 बजे, 8:30 बजे, आदि<br><em>24 घंटे:</em> 300 के रूप में प्रदर्शित समय , 2030, आदि।
+Time format: समय प्रारूप
+12 hour: 12 घंटे
+24 hour: चौबीस घंटे
+timed-evt-len-help: समयबद्ध घटना की लंबाई निर्धारित करने के लिए इनपुट विधि निर्दिष्ट करता है।
+Specify timed event length by: द्वारा निर्दिष्ट समय की लंबाई निर्दिष्ट करें
+Duration: समयांतराल
+End Time: अंतिम समय
+work-hours-help: दिन दृश्य के लिए प्रदर्शित करने के लिए समय सीमा निर्दिष्ट करता है।
+Work hours: कार्य - समय
+From: से
+to: सेवा मेरे
+Appearance: दिखावट
+preferred-view-help: डिफ़ॉल्ट दृश्य (दिन, सप्ताह, महीना या वर्ष) निर्दिष्ट करता है।
+Preferred view: पसंदीदा दृश्य
+Allow top menu: शीर्ष मेनू की अनुमति दें
+Date Selectors position: तिथि चयनकर्ताओं की स्थिति
+menu-themes-help: शीर्ष मेनू के रंग और शैली सेट करता है
+Menu theme: मेनू विषय
+fonts-help: उपयोग करने के लिए सिस्टम फोंट की सूची निर्दिष्ट करता है (जैसे "एरियल, हेल्वेटिका")
+Fonts: फोंट्स
+display-sm_month-help: यदि सक्षम है, तो महीने के दृश्यों में छोटे महीने प्रदर्शित करता है
+Display small months: छोटे महीने प्रदर्शित करें
+display-weekends-help: एक सप्ताह देखने पर सप्ताहांत शामिल करें।
+Display weekends: सप्ताहांत प्रदर्शित करें
+display-long-daynames-help: यदि सक्षम है, तो दिन के नाम प्रदर्शित किए जाते हैं
+Display long day names: दिन के नाम प्रदर्शित करें
+display-alldays-help: सभी कक्षों को भरते हुए, महीने के विचारों में पिछले और अगले महीनों के दिनों को प्रदर्शित करें।
+Display all days in month view: महीने के दृश्य में सभी दिन प्रदर्शित करें
+display-week-number-help: निर्दिष्ट करता है कि सप्ताह संख्या (1-52) को महीने के दृश्य और सप्ताह के दृश्य में प्रदर्शित किया जाना चाहिए।
+Display week number: सप्ताह संख्या प्रदर्शित करें
+display-desc-print-day-help: दिन के दृश्य के प्रिंटर के अनुकूल संस्करण में घटना विवरण शामिल करें।
+Display description in printer day view: प्रिंटर डे व्यू में विवरण प्रदर्शित करें
+yearly-shows-events-help: वार्षिक दृश्य पर, उन दिनों को प्रदर्शित करें जिनमें बोल्ड फ़ॉन्ट में ईवेंट हों।
+Display days with events in bold in month and year views: महीने और साल के दृश्यों में बोल्ड घटनाओं के साथ दिन प्रदर्शित करें
+display-minutes-help: यदि सक्षम किया गया है, तो: 00 के साथ समाप्त होने वाले मिनट हमेशा प्रदर्शित किए जाएंगे
+Display 00 minutes always: हमेशा 00 मिनट प्रदर्शित करें
+display-end-times-help: ईवेंट समय समाप्त होने पर ईवेंट प्रदर्शित करें
+Display end times on calendars: कैलेंडर पर अंत समय प्रदर्शित करें
+allow-view-add-help: एक '+' आइकन को विचारों में शामिल किया जाएगा, जिससे उपयोगकर्ता अन्य उपयोगकर्ताओं के कैलेंडर में घटनाओं को जल्दी से जोड़ सकेंगे।
+Include add event link in views: विचारों में ईवेंट लिंक शामिल करें
+lunar-help: यदि सक्षम किया गया है, तो हर महीने चंद्र चरणों का प्रतिनिधित्व करने वाले छोटे आइकन प्रदर्शित करेंगे
+Display Lunar Phases in month view: महीने के दृश्य में चंद्र चरणों को प्रदर्शित करें
+Restrictions: प्रतिबंध
+allow-view-other-help: निर्दिष्ट करता है कि क्या एक उपयोगकर्ता किसी अन्य उपयोगकर्ता के कैलेंडर को देख सकता है।
+Allow viewing other users calendars: अन्य उपयोगकर्ता के कैलेंडर देखने की अनुमति दें
+require-approvals-help: जब सक्षम किया जाता है, तो एक उपयोगकर्ता को अपने कैलेंडर पर प्रदर्शित होने से पहले एक घटना को मंजूरी देनी चाहिए (जब तक कि प्रदर्शन अप्रकाशित सक्षम न हो)। इसे "नहीं" पर सेट करने पर ध्यान दें सार्वजनिक एक्सेस कैलेंडर (यदि सार्वजनिक एक्सेस कैलेंडर सक्षम है) के लिए अनुमोदन को बंद नहीं करेगा।
+Require event approvals: इवेंट अनुमोदन की आवश्यकता है
+display-unapproved-help: निर्दिष्ट करता है कि क्या आपके कैलेंडर में अप्रकाशित ईवेंट प्रदर्शित हैं।<br>यदि "हां" पर सेट किया गया है, तो आपके कैलेंडर में (एक अलग पाठ रंग में) अनुचित घटनाओं को प्रदर्शित किया जाएगा।<br>यदि "नहीं" पर सेट है, तो आपके कैलेंडर में प्रदर्शित होने से पहले अनुचित घटनाओं को अनुमोदित किया जाना चाहिए।
+Display unapproved: अप्रकाशित प्रदर्शित करें
+conflict-check-help: घटना के संघर्ष की जाँच करें (एक ही व्यक्ति के लिए एक ही समय के लिए निर्धारित दो घटनाएँ)। यदि आप इसे "हां" पर सेट करते हैं, तो आप चेतावनी की पुष्टि करने के बाद भी एक ही समय में दो घटनाओं को शेड्यूल कर पाएंगे। यदि आप इसे "नहीं" पर सेट करते हैं, तो टकराव की कोई जाँच नहीं की जाएगी। आप शायद इसे "हां" पर सेट करना चाहते हैं, इसलिए संघर्ष की जाँच होती है।
+Check for event conflicts: घटना संघर्ष की जाँच करें
+Yes: हाँ
+No: नहीं न
+conflict-months-help: यदि संघर्ष की जाँच की जा रही है ("घटना की जाँच के लिए जाँच करें" "नहीं" & # 41; , इस संख्या को कम करें।
+Conflict checking months: संघर्ष की जाँच के महीने
+conflict-check-override-help: उपयोगकर्ताओं को एक ही समय के लिए इवेंट टकराव को ओवरराइड करने और दो या अधिक इवेंट शेड्यूल करने देता है।
+Allow users to override conflicts: उपयोगकर्ताओं को संघर्षों को ओवरराइड करने की अनुमति दें
+limit-appts-help: सिस्टम व्यवस्थापक को किसी एकल दिन में एक उपयोगकर्ता के लिए नियुक्तियों की संख्या पर एक सिस्टम-वाइड सीमा सेट करने की अनुमति देता है।
+Limit number of timed events per day: प्रति दिन समयबद्ध घटनाओं की संख्या सीमित करें
+limit-appts-number-help: निर्दिष्ट करता है कि उपयोगकर्ता एक ही दिन में अधिकतम समय की घटनाओं को निर्दिष्ट कर सकता है।
+Maximum timed events per day: प्रति दिन अधिकतम समयबद्ध घटनाएँ
+crossday-help: यदि सक्षम किया गया है, तो दिन की घटनाओं को अलग-अलग दिनों में प्रदर्शित किया जाएगा
+Disable Cross-Day Events: क्रॉस-डे इवेंट्स को अक्षम करें
+disable-location-field-help: "हां" का चयन करने से ईवेंट सूचना पृष्ठों से "स्थान" फ़ील्ड हट जाएगी
+Disable Location field: स्थान फ़ील्ड अक्षम करें
+disable-url-field-help: "हां" का चयन करने से ईवेंट सूचना पृष्ठों से "URL" फ़ील्ड हट जाएगी
+Disable URL field: URL फ़ील्ड अक्षम करें
+disable-priority-field-help: "हां" का चयन करने से घटना की जानकारी के पन्नों से "प्राथमिकता" क्षेत्र को हटा दिया जाएगा, नौसिखियों के लिए एक सरल इंटरफ़ेस प्रदान करेगा।
+Disable Priority field: प्राथमिकता फ़ील्ड अक्षम करें
+disable-access-field-help: "हाँ" का चयन करने से ईवेंट जानकारी पृष्ठों से "एक्सेस" फ़ील्ड को हटा दिया जाएगा, नौसिखियों के लिए एक सरल इंटरफ़ेस प्रदान करेगा।
+Disable Access field: पहुंच फ़ील्ड अक्षम करें
+disable-participants-field-help: "हां" का चयन करने से इवेंट प्रतिभागियों के पेज से "प्रतिभागी" फ़ील्ड हट जाएगी, जिससे उपयोगकर्ताओं को अन्य उपयोगकर्ताओं को उनकी घटनाओं में शामिल करने से रोका जा सके। यदि आप इस विकल्प को सक्षम करते हैं, तो आप "अन्य उपयोगकर्ता के कैलेंडर देखने की अनुमति दें" फ़ील्ड को भी अक्षम कर सकते हैं।
+Disable Participants field: प्रतिभागियों को अक्षम करें फ़ील्ड
+disable-repeating-field-help: "हां" का चयन करने से घटनाओं को जोड़ते समय "दोहराने" फ़ील्ड को हटा दिया जाएगा। यह नौसिखियों के लिए एक सरल इंटरफ़ेस प्रदान करेगा।
+Disable Repeating field: दोहराने का क्षेत्र अक्षम करें
+allow-html-description-help: यदि सक्षम है, तो उपयोगकर्ता घटना विवरण फ़ील्ड में HTML दर्ज कर सकते हैं। यदि सक्षम नहीं है, तो HTML टैग से बच जाएगा ताकि सादे पाठ के रूप में दिखाई दे। चेतावनी: इस सुविधा को सक्षम करने से उपयोगकर्ता अन्य वेबसाइटों पर छवियों का संदर्भ ले सकेंगे।
+Allow HTML in Description: HTML को Description में अनुमति दें
+Popups: पॉप अप
+disable-popups-help: कैलेंडर दृश्य से पॉपअप अक्षम करें
+Disable Pop-Ups: पॉप-अप को अक्षम करें
+popup-includes-siteextras-help: यदि सक्षम है, तो site_extras.php फ़ाइल में कस्टम इवेंट फ़ील्ड सेटअप को इवेंट पॉपअप में प्रदर्शित करें।
+Display Site Extras in popup: पॉपअप में साइट एक्स्ट्रा प्रदर्शित करें
+popup-includes-participants-help: यदि सक्षम है, तो प्रतिभागियों को इवेंट पॉपअप में प्रदर्शित किया जाता है।
+Display Participants in popup: पॉपअप में प्रतिभागियों को प्रदर्शित करें
+Miscellaneous: कई तरह का
+remember-last-login-help: सक्षम होने पर, उपयोगकर्ता का लॉगिन उनके लिए लॉगिन पेज (लेकिन पासवर्ड नहीं) पर भरा जाएगा, और उपयोगकर्ता की प्राथमिकताएं लोड की जाएंगी (उनके पसंदीदा रंग और भाषा चयन सहित)।
+Remember last login: पिछला लॉगिन याद रखें
+summary_length-help: कैलेंडर विचारों में संक्षिप्त विवरण की अधिकतम लंबाई
+Brief Description Length: संक्षिप्त विवरण लंबाई
+user_sort-help: उपयोगकर्ता, नॉनज़र सूची के लिए क्रमबद्ध क्रम निर्धारित करता है
+User Sort Order: उपयोगकर्ता सॉर्ट क्रम
+Lastname, Firstname: अंतिम नाम प्रथम नाम
+Firstname, Lastname: प्रथम नाम अंतिम नाम
+allow-public-access-help: जब सक्षम किया जाता है, तो कैलेंडर को केवल-पढ़ने वाले सार्वजनिक कैलेंडर के रूप में उपयोग किया जा सकता है, जिसमें उपयोगकर्ताओं को लॉगिन करने की आवश्यकता नहीं होती है।
+Allow public access: सार्वजनिक उपयोग की अनुमति दें
+public-access-default-visible: सार्वजनिक कैलेंडर के ईवेंट स्वचालित रूप से सभी उपयोगकर्ताओं के कैलेंडर पर दिखाई देंगे
+Public access visible by default: सार्वजनिक पहुंच डिफ़ॉल्ट रूप से दिखाई देती है
+public-access-default-selected: एक नया ईवेंट जोड़ते समय, सार्वजनिक उपयोगकर्ता को एक प्रतिभागी के रूप में डिफ़ॉल्ट रूप से चुना जाएगा।
+Public access is default participant: सार्वजनिक पहुंच डिफ़ॉल्ट भागीदार है
+public-access-view-others-help: जब सार्वजनिक पहुंच के साथ सिस्टम का उपयोग होता है, तो यह निर्दिष्ट करता है कि उपयोगकर्ता किसी अन्य कैलेंडर उपयोगकर्ता के कैलेंडर को देख सकता है या नहीं।
+Public access can view other users: सार्वजनिक पहुंच अन्य उपयोगकर्ताओं को देख सकती है
+public-access-can-add-help: जब सक्षम किया जाता है, तो सार्वजनिक एक्सेस के माध्यम से सिस्टम तक पहुंचने वाले उपयोगकर्ता नए ईवेंट जोड़ पाएंगे, लेकिन वे कैलेंडर में तब तक दिखाई नहीं देंगे जब तक कि कोई व्यवस्थापक नए ईवेंट को स्वीकृति नहीं देता।
+Public access can add events: सार्वजनिक पहुंच घटनाओं को जोड़ सकती है
+public-access-add-requires-approval-help: निर्दिष्ट करता है कि सार्वजनिक एक्सेस खाते के माध्यम से जोड़े गए ईवेंट को प्रदर्शित होने से पहले अनुमोदन की आवश्यकता है या नहीं।
+Public access new events require approval: सार्वजनिक पहुंच नई घटनाओं के लिए अनुमोदन की आवश्यकता होती है
+public-access-sees-participants-help: यदि सक्षम है, तो सार्वजनिक खाते से कैलेंडर तक पहुंचने वाले उपयोगकर्ता इवेंट प्रतिभागियों को किसी इवेंट का विवरण देखने में सक्षम होंगे।
+Public access can view participants: सार्वजनिक पहुंच प्रतिभागियों को देख सकती है
+public-access-override-help: सार्वजनिक कैलेंडर पर ईवेंट नाम और विवरण को छिपाने की अनुमति देता है
+Override event name/description for public access: सार्वजनिक पहुंच के लिए घटना का नाम / विवरण ओवरराइड करें
+public-access-override-text-help: उपरोक्त विकल्प सक्षम होने पर प्रदर्शित करने के लिए पाठ। यदि 'उपलब्ध नहीं है', तो इसका अनुवाद किया जाएगा।
+Text to display to public access: सार्वजनिक पहुंच के लिए प्रदर्शन के लिए पाठ
+public-access-captcha-help: यदि सक्षम है, तो सार्वजनिक रूप से जोड़े गए नए ईवेंट को कैप्चा सत्यापन पास करने की आवश्यकता होती है।
+Require CAPTCHA validation for public access new events: सार्वजनिक उपयोग की नई घटनाओं के लिए कैप्चा सत्यापन की आवश्यकता है
+uac-enabled-help: उपयोगकर्ता-स्तरीय अभिगम नियंत्रण को सक्षम करता है
+User Access Control enabled: उपयोगकर्ता पहुँच नियंत्रण सक्षम है
+groups-enabled-help: समूह समर्थन को सक्षम करता है, जिससे उपयोगकर्ताओं को समूहों द्वारा उपयोगकर्ताओं का चयन करने की अनुमति मिलती है।
+Groups enabled: समूह सक्षम किए गए
+user-sees-his-group-help: यदि सक्षम किया गया है, तो उपयोगकर्ता कैलेंडर उपयोगकर्ताओं को नहीं देखेंगे जो उनके कम से कम एक समूह में नहीं हैं।
+User sees only his groups: उपयोगकर्ता केवल अपने समूह देखता है
+nonuser-enabled-help: यदि सक्षम है, तो प्रवेशकर्ताओं के पास नॉनसेलर कैलेंडर जोड़ने का विकल्प होगा
+Nonuser enabled: नॉनसर कैलेंडर्स सक्षम
+nonuser-list-help: प्रतिभागी सूची में नॉनज़र कैलेंडर प्रदर्शित करने के लिए कहाँ
+Nonuser list: प्रतिभागियों की सूची में प्रदर्शित करें
+Upcoming Events: आने वाले कार्यक्रम
+upcoming-events-help: आगामी सक्षम करें
+Enabled: सक्रिय
+upcoming-events-allow-override: आगामी
+Allow user override: उपयोगकर्ता को ओवरराइड करने दें
+upcoming-events-display-caticons: आगामी प्रतीक में श्रेणी चिह्न शामिल करें
+Display category icons: श्रेणी चिह्न प्रदर्शित करें
+upcoming-events-display-layers: आने वाली परतों को प्रदर्शित करें
+Display layers: परतों को प्रदर्शित करें
+upcoming-events-display-links: आने वाले लिंक प्रदर्शित करें
+Display links to events: घटनाओं के लिंक प्रदर्शित करें
+upcoming-events-display-popups: आने वाले इवेंट पॉपअप को आगामी .php में प्रदर्शित करें
+Display event popups: इवेंट पॉपअप प्रदर्शित करें
+reports-enabled-help: यदि सक्षम किया गया है, तो उपयोगकर्ता प्रत्येक पृष्ठ के निचले भाग में "रिपोर्ट" अनुभाग देखेंगे और उन्हें कस्टम रिपोर्ट बनाने की अनुमति होगी। इसके अतिरिक्त, व्यवस्थापक उपयोगकर्ता वैश्विक रिपोर्ट बना सकते हैं जो सभी उपयोगकर्ताओं के पृष्ठों के नीचे दिखाई देगी।
+Reports enabled: रिपोर्ट सक्षम की गईं
+subscriptions-enabled-help: निर्दिष्ट करता है कि यदि दूरस्थ उपयोगकर्ता किसी WebCalendar उपयोगकर्ता के कैलेंडर की सदस्यता ले सकते हैं, तो उन्हें अपने iCal- सक्षम अनुप्रयोग (जैसे Apple के iCal या मोज़िला कैलेंडर) में WebCalendar उपयोगकर्ता की घटनाओं को देखने की अनुमति देता है।
+Allow remote subscriptions: दूरस्थ सदस्यता की अनुमति दें
+remotes-enabled-help: उपयोगकर्ताओं को URL का उपयोग करके दूरस्थ ics फ़ाइलों को लोड करने की अनुमति देता है
+Allow remote calendars: दूरस्थ कैलेंडर की अनुमति दें
+rss-enabled-help: निर्दिष्ट करता है कि क्या उपयोगकर्ता का कैलेंडर RSS फ़ीड से प्राप्त किया जा सकता है।
+Enable RSS feed: RSS फ़ीड सक्षम करें
+categories-enabled-help: ईवेंट श्रेणियों के लिए समर्थन सक्षम करता है।
+Categories enabled: श्रेणियाँ सक्षम की गईं
+icon_upload-enabled-help: यदि सक्षम है, तो उपयोगकर्ता श्रेणी आइकन अपलोड कर सकते हैं
+Category Icon Upload enabled: श्रेणी चिह्न अपलोड सक्षम किया गया
+(Requires XXX folder to exist.): (XXX फ़ोल्डर मौजूद होने की आवश्यकता है।)
+display-tasks-help: महीने और दिन के कैलेंडर पर छोटे कार्य विंडो प्रदर्शित करें
+Display small task list: छोटी कार्य सूची प्रदर्शित करें
+display-tasks-in-grid-help: घटनाओं के साथ कैलेंडर में कार्य प्रदर्शित करें
+Display tasks in Calendars: कैलेंडर में कार्य प्रदर्शित करें
+allow-external-users-help: निर्दिष्ट करता है कि क्या किसी गैर-कैलेंडर उपयोगकर्ता को किसी ईवेंट में जोड़ा जा सकता है। यह गैर-कैलेंडर उपयोगकर्ताओं को ईवेंट प्रतिभागियों के रूप में सूचीबद्ध करने की अनुमति देता है।
+Allow external users: बाहरी उपयोगकर्ताओं को अनुमति दें
+external-can-receive-notification-help: जब बाहरी उपयोगकर्ता सक्षम होते हैं और ईमेल का उपयोग सक्षम होता है, तो बाहरी उपयोगकर्ता ईमेल सूचनाएं प्राप्त कर सकते हैं, जब घटना को जोड़ा जाता है, तो अद्यतन या हटाएं (यदि बाहरी उपयोगकर्ता का ईमेल पता प्रदान किया गया है)।
+External users can receive email notifications: बाहरी उपयोगकर्ता ईमेल सूचनाएं प्राप्त कर सकते हैं
+external-can-receive-reminder-help: जब बाहरी उपयोगकर्ता सक्षम होते हैं और ईमेल उपयोग सक्षम होता है, तो बाहरी उपयोगकर्ता ईमेल रिमाइंडर प्राप्त कर सकते हैं (यदि बाहरी उपयोगकर्ता का ईमेल पता प्रदान किया गया है)।
+External users can receive email reminders: बाहरी उपयोगकर्ता ईमेल अनुस्मारक प्राप्त कर सकते हैं
+allow-self-registration-help: नए उपयोगकर्ताओं को खुद को पंजीकृत करने की अनुमति दें
+Allow self-registration: स्व-पंजीकरण की अनुमति दें
+use-blacklist-help: IP पते के आधार पर WebCalendar फ़ंक्शनों तक पहुंच सीमित करें
+Restrict self-registration to blacklist: काली सूची में स्व-पंजीकरण को प्रतिबंधित करें
+allow-self-registration-full-help: नए उपयोगकर्ताओं को ऑनलाइन पंजीकरण की प्रक्रिया को पूरा करने की अनुमति दें
+Use self-registration email notifications: पासवर्ड बनाएं और नए उपयोगकर्ताओं को भेजें
+allow-attachment-help: उपयोगकर्ताओं को घटनाओं में फ़ाइल अटैचमेंट जोड़ने की अनुमति दें।
+Allow file attachments to events: घटनाओं के लिए फ़ाइल संलग्नक की अनुमति दें
+Admin and owner can always add attachments if enabled.: सक्षम होने पर व्यवस्थापक और स्वामी हमेशा अनुलग्नक जोड़ सकते हैं।
+allow-comments-help: उपयोगकर्ताओं को ईवेंट में टिप्पणियां जोड़ने की अनुमति दें।
+Allow comments to events: घटनाओं के लिए टिप्पणियों की अनुमति दें
+Admin and owner can always add comments if enabled.: सक्षम होने पर व्यवस्थापक और स्वामी हमेशा टिप्पणियां जोड़ सकते हैं।
+email-enabled-help: अधिसूचना और अनुस्मारक के लिए ईमेल भेजने के सभी चालू या बंद करें। "नहीं" पर सेट करें, अगर आपका सर्वर मेल भेजने के लिए ठीक से सेटअप नहीं है।
+Email enabled: ईमेल सक्षम किया गया
+email-default-sender: अनुस्मारक भेजते समय प्रेषक के रूप में निर्दिष्ट करने के लिए ईमेल पते को निर्दिष्ट करता है।
+Default sender address: डिफ़ॉल्ट प्रेषक का पता
+email-mailer: ईमेल प्रकार (SMTP, PHP मेल, सेंडमेल) चुनें
+Email Mailer: ईमेल मेलर
+email-smtp-host: SMTP सर्वर के होस्टनाम (ओं) को कॉमा द्वारा अलग किया गया
+SMTP Host name(s): SMTP होस्ट नाम
+email-smtp-port: SMTP पोर्ट संख्या (सामान्य रूप से 25)
+SMTP Port Number: SMTP पोर्ट नंबर
+email-smtp-auth: SMTP प्रमाणीकरण का उपयोग करें
+SMTP Authentication: SMTP प्रमाणीकरण
+email-smtp-username: यदि प्रमाणीकरण का उपयोग कर SMTP उपयोगकर्ता नाम
+SMTP Username: SMTP उपयोगकर्ता नाम
+email-smtp-password: यदि प्रमाणीकरण का उपयोग कर SMTP पासवर्ड
+SMTP Password: SMTP पासवर्ड
+Default user settings: डिफ़ॉल्ट उपयोगकर्ता सेटिंग्स
+email-format: HTML या सादे पाठ संदेशों के लिए वरीयता निर्दिष्ट करें
+Email format preference: ईमेल प्रारूप प्राथमिकता
+HTML: एचटीएमएल
+Plain Text: सादे पाठ
+email-include-ics: ईमेल संदेश में एक iCalendar ICS फ़ाइल शामिल करें
+Include iCalendar attachments: ICalendar संलग्नक शामिल करें
+email-event-reminders-help: निर्दिष्ट करता है कि ईवेंट रिमाइंडर भेजना है या नहीं।
+Event reminders: इवेंट रिमाइंडर
+email-event-added: निर्दिष्ट करता है कि कोई ईवेंट आपके कैलेंडर में जोड़े जाने पर ईमेल सूचनाएं भेजे या नहीं।
+Events added to my calendar: मेरे कैलेंडर में ईवेंट जोड़े गए
+email-event-updated: निर्दिष्ट करता है कि आपके कैलेंडर पर कोई ईवेंट अपडेट होने पर ईमेल सूचनाएं भेजे या नहीं।
+Events updated on my calendar: मेरे कैलेंडर पर ईवेंट अपडेट किए गए
+email-event-deleted: निर्दिष्ट करता है कि आपके कैलेंडर से कोई ईवेंट हटाए जाने पर ईमेल सूचनाएँ भेजें या नहीं।
+Events removed from my calendar: मेरे कैलेंडर से ईवेंट हटा दिए गए
+email-event-rejected: निर्दिष्ट करता है कि जब कोई प्रतिभागी आपके कैलेंडर पर होने वाली घटना को अस्वीकार करता है, तो ईमेल सूचनाएं न भेजें या नहीं।
+Event rejected by participant: प्रतिभागी द्वारा घटना को अस्वीकार कर दिया गया
+email-event-create: निर्दिष्ट करता है कि प्रविष्टियों का निर्माता ईमेल प्राप्त करेगा या नहीं
+Event that I create: घटना जो मैं पैदा करता हूं
+Color options: रंग विकल्प
+Allow user to customize colors: उपयोगकर्ता को रंगों को अनुकूलित करने की अनुमति दें
+gradient-colors: यदि सक्षम ढाल रंगों का उपयोग किया जाता है। यह प्रदर्शन को बहुत प्रभावित कर सकता है।
+Enable gradient images for background colors: पृष्ठभूमि रंगों के लिए ढाल चित्र सक्षम करें
+Not available: अनुपलब्ध
+Background Image options: पृष्ठभूमि छवि विकल्प
+bgimage-help: वांछित पृष्ठभूमि छवि का URL। रिश्तेदार लिंक हो सकता है।
+Background Image: पृष्ठभूमि छवि
+bgrepeat-help: नियंत्रण पृष्ठभूमि छवि का दोहराव व्यवहार करता है।
+Background Repeat: पृष्ठभूमि दोहराएँ
+
+########################################
+# Page: adminhome.php
+#
+Assistants: सहायकों
+Preferences: पसंद
+Control Panel: कंट्रोल पैनल
+Users: उपयोगकर्ताओं
+Account: लेखा
+Categories: श्रेणियाँ
+Views: विचारों
+Layers: परतों
+Reports: रिपोर्टों
+Delete Events: ईवेंट हटाएँ
+Activity Log: गतिविधि लॉग
+System Log: सिस्टम लॉग
+Security Audit: सुरक्षा ऑडिट
+Public Preferences: सार्वजनिक प्राथमिकताएँ
+Unapproved Public Events: अनुचित सार्वजनिक आयोजन
+Administrative Tools: प्रशासनिक उपकरण
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: डुप्लिकेट नाम: "XXX"।
+Username XXX already exists.: उपयोगकर्ता नाम "XXX" पहले से मौजूद है।
+Email address XXX already exists.: ईमेल पता "XXX" पहले से मौजूद है।
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): अतिरिक्त टिप्पणियां (ऐच्छिक)
+Approve and Send: स्वीकृत करें और भेजें
+Approve and Exit: अनुमोदन और बाहर निकलें
+(Your comments will be emailed to the event creator.): (आपकी टिप्पणी घटना निर्माता को ईमेल की जाएगी।)
+Hello, XXX.: हैलो, XXX।
+XXX has approved an appointment and added comments.: एक नियुक्ति को मंजूरी दे दी गई है और XXX द्वारा टिप्पणी को जोड़ा गया है।
+Subject XXX: विषय: "XXX"।
+Description XXX: विवरण: "XXX"।
+Date XXX: दिनांक: XXX
+Time XXX: समय: XXX
+Comments XXX: टिप्पणियाँ: XXX
+Approved w/Comments by XXX.: स्वीकृत w / टिप्पणियाँ द्वारा: XXX।
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: व्यवस्थापक मोड
+Your assistants: आपके सहायक
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: अज्ञात त्रुटि।
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: कार्यक्रम त्रुटि: कोई XXX निर्दिष्ट नहीं!
+user: उपयोगकर्ता
+year: साल
+month: महीना
+day: दिन
+
+########################################
+# Page: category.php
+#
+Category Icon: श्रेणी चिह्न
+Global: वैश्विक
+The permissions for the icons directory are set to read-only: आइकन निर्देशिका के लिए अनुमतियाँ केवल पढ़ने के लिए सेट की गई हैं।
+Category Name: श्रेणी नाम:
+Color: रंग
+Remove Icon: चिह्न निकालें:
+Add Icon to Category: श्रेणी में आइकन जोड़ें
+Upload: डालना
+GIF or PNG 6kb max: GIF या PNG 6kb अधिकतम
+Search for existing icons: मौजूदा आइकन खोजें
+Add: जोड़ना
+Delete: हटाएं
+Are you sure you want to delete this entry?: क्या आप वाकई इस प्रविष्टि को हटाना चाहते हैं?
+Make New Category: नई श्रेणी बनाओ
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: श्रेणी नाम आवश्यक है
+File size exceeds maximum.: फ़ाइल का आकार अधिकतम से अधिक है।
+File is not a GIF or PNG image: फ़ाइल कोई GIF या PNG छवि नहीं है
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: उपलब्ध श्रेणियों
+ENTRY CATEGORIES: ऊर्जा श्रेणियों
+Remove: हटाना
+Global Category: वैश्विक श्रेणी
+Cancel: रद्द करना
+
+########################################
+# Page: colors.php
+#
+Add Custom: कस्टम जोड़ें
+Basic Colors: मूल रंग
+Current Color: वर्तमान रंग
+Custom Colors: रीति रिवाजों के रंग
+Old Color: पुराना रंग
+
+########################################
+# Page: combo.php
+#
+Select None: किसी का चयन न करें
+Agenda: कार्यसूची
+Add Task: टास्क जोड़ें
+Description: विवरण
+Date: तारीख
+Time: समय
+Priority: वरीयता
+Access: पहुंच
+Created by: के द्वारा बनाई गई
+Updated: अद्यतन
+Participants: प्रतिभागियों
+Attachments: संलग्नक
+Comments: टिप्पणियाँ
+Brief Description: संक्षिप्त विवरण
+Full Description: पूर्ण विवरण
+Category: वर्ग
+Add event detail: ईवेंट विवरण जोड़ें
+Start Date: आरंभ करने की तिथि
+Due Date: नियत तारीख
+Add task detail: कार्य विवरण जोड़ें
+All: सब
+Error: त्रुटि
+no response from server: सर्वर से कोई प्रतिक्रिया नहीं
+JSON error: JSON त्रुटि
+High: उच्च
+Medium: मध्यम
+Low: कम
+Today: आज
+Add Entry: प्रविष्टि जोड़ें
+Unnamed Event: घटना
+Unnamed Task: बेनाम: कार्य
+Refresh: ताज़ा करना
+Click to add entry: प्रविष्टि जोड़ने के लिए क्लिक करें
+Name: नाम
+pm: बजे
+am: बजे
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX ने एक अपॉइंटमेंट रद्द कर दिया है।
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: अमान्य बूँद आईडी
+
+########################################
+# Page: docadd.php
+#
+Add Comment: टिप्पणी जोड़ें
+Add Attachment: अय्टाचमेंट जोडे
+Subject: विषय
+Comment: टिप्पणी
+Upload file: फ़ाइल अपलोड करें
+
+########################################
+# Page: docdel.php
+#
+Removed: हटा दिया
+
+########################################
+# Page: edit_entry.php
+#
+days: दिन
+hours: घंटे
+minutes: मिनट
+You are not authorized to edit this task.: आप इस कार्य को संपादित करने के लिए अधिकृत नहीं हैं।
+is in a different timezone than you are. Currently: आप की तुलना में एक अलग समयक्षेत्र में है। वर्तमान में
+hour ahead of you: आपके आगे घंटा
+hour behind you: आपके पीछे घंटे
+hours ahead of you: आपके आगे घंटे
+hours behind you: आपके पीछे घंटे
+XXX is in a different timezone (ahead): (XXX एक अलग समयक्षेत्र में है; आपके आगे YYY।<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX एक अलग समयक्षेत्र में है; आपके पीछे YYY।<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: यहां दर्ज किया गया समय आपके टाइमज़ोन पर आधारित है।
+Edit Entry: प्रवेश संपादित करें
+Details: विवरण
+Repeat: दोहराना
+Reminders: अनुस्मारक
+brief-description-help: यह घटना का संक्षिप्त विवरण (लगभग 20 वर्ण) प्रदान करना चाहिए। यह कैलेंडर देखते समय ईवेंट का प्रतिनिधित्व करेगा।
+full-description-help: यह घटना का पूरा विवरण होना चाहिए। यह जानकारी तब देखी जा सकती है जब कोई उपयोगकर्ता घटना को देखता है।
+access-help: घटना के एक्सेस स्तर को निर्दिष्ट करता है। <ul> <li> सार्वजनिक: हर कोई घटना का पूरा विवरण देख सकता है।</li> <li> गोपनीय: अन्य लोग देख सकते हैं कि आपके पास उस दिनांक और समय के लिए प्रविष्टि है, लेकिन यह क्या है इसका विवरण नहीं।</li></ul>
+priority-help: घटना की प्राथमिकता निर्दिष्ट करता है। उच्च प्राथमिकता वाली घटनाओं को बोल्ड में प्रदर्शित किया जाएगा।
+category-help: घटना की श्रेणी निर्दिष्ट करता है।
+completed-help: तिथि कार्य पूरा हुआ। केवल तभी सक्षम होता है जब सभी प्रतिभागी प्रतिशत 100% के बराबर होते हैं।
+Date Completed: दिनांक संपन्न
+percent-help: इस उपयोगकर्ता के लिए कार्य पूर्णता प्रतिशत
+Percent Complete: प्रतिशत पूरा हुआ
+All Percentages: सभी प्रतिशत
+location-help: घटना स्थान
+Location: स्थान
+url-help: इवेंट URL
+URL: यूआरएल
+date-help: घटना की तारीख निर्दिष्ट करता है।
+Untimed event: अनहोनी घटना
+Timed event: समयबद्ध घटना
+All day event: पूरे दिन की घटना
+Timezone Offset: टाइमजोन ऑफसेट
+time-help: घटना के समय को निर्दिष्ट करता है। <ul> <li> "समयबद्ध घटना" (उस दिन के लिए एक विशिष्ट समय के लिए निर्धारित एक घटना के लिए)</li> <li> "अप्रकाशित घटना" (किसी घटना के लिए यह समय नहीं है (जैसे अवकाश की तरह) )</li> <li> "सभी दिन की घटना" (एक घटना के लिए जो पूरे दिन लगती है (जैसे कार्यालय से बाहर होना)</li></ul>
+duration-help: घटना की अवधि (घंटे, मिनट) में निर्दिष्ट करता है। <em>इस फ़ील्ड को खाली छोड़ा जा सकता है।</em>
+end-time-help: उस समय को निर्दिष्ट करता है जब घटना समाप्त होने की उम्मीद है।
+Start Time: समय शुरू
+Due Time: निश्चित समय
+Site Extras: साइट एक्स्ट्रा
+avail_participants-help: इस प्रविष्टि के उपलब्ध प्रतिभागियों को सूचीबद्ध करता है।
+Available: उपलब्ध
+Find Name: नाम खोजो
+Resources: साधन
+participants-help: इस प्रविष्टि के प्रतिभागियों को सूचीबद्ध करता है।
+Selected: चयनित
+Availability: उपलब्धता
+external-participants-help: कैलेंडर उपयोगकर्ताओं के इवेंट के लिए प्रतिभागियों की सूची निर्दिष्ट करता है। उपयोगकर्ताओं को प्रति पंक्ति एक सूचीबद्ध किया जाना चाहिए और इसमें एक ईमेल पता शामिल हो सकता है। यदि एक ईमेल पता निर्दिष्ट किया जाता है, तो उपयोगकर्ता सूचना और अनुस्मारक प्राप्त करने के लिए योग्य है।
+External Participants: बाहरी प्रतिभागी
+repeat-type-help: चुनें कि घटना को कितनी बार दोहराना चाहिए।
+Daily: रोज
+Weekly: साप्ताहिक
+Monthly: महीने के
+by day: दिवस पश्चात
+by date: तिथि के अनुसार
+by position: स्थिति से
+Monthly (by day): मासिक (दिन के हिसाब से)
+Monthly (by date): मासिक (तिथि के अनुसार)
+Monthly (by position): मासिक (स्थिति के अनुसार)
+Yearly: सालाना
+Manual: गाइड
+Expert Mode: विशेषज्ञ साधन
+repeat-end-date-help: उस तिथि को निर्दिष्ट करता है जब तक घटना को दोहराना चाहिए।
+Ending: समापन
+Forever: सदैव
+Use end date: अंतिम तिथि का उपयोग करें
+Number of times: कई बार
+repeat-frequency-help: निर्दिष्ट करता है कि घटना को कितनी बार दोहराना चाहिए।
+Frequency: आवृत्ति
+Weekdays Only: केवल सप्ताहांत
+Week Start: सप्ताह की शुरुआत
+repeat-bydayextended-help: सप्ताह के दिन के आधार पर तिथि चयन की अनुमति देता है।
+ByDay: दिवस पश्चात
+repeat-month-help: निर्दिष्ट करता है कि घटना को किन महीनों में दोहराना चाहिए।
+ByMonth: महीने से
+repeat-bysetpos-help: महीने के साथ स्थिति के आधार पर तिथि चयन की अनुमति देता है।
+BySetPos: बायसेटपोस
+repeat-bymonthdayextended-help: तिथि के आधार पर चयन की अनुमति देता है।
+ByMonthDay: =
+repeat-byweekno-help: उपयोगकर्ता को ईवेंट दोहराने के लिए हफ्तों की एक सूची निर्दिष्ट करने की अनुमति देता है (1,2 ... 53, -53, -52 ...- 1)।
+ByWeekNo: =
+repeat-byyearday-help: उपयोगकर्ता को घटना (1,2 ... 366, -366, -365 ...- 1) को दोहराने के लिए वर्ष के दिनों की एक सूची निर्दिष्ट करने की अनुमति देता है।
+ByYearDay: बाय यारडाय
+repeat-exceptions-help: अतिरिक्त दिन कि यह घटना होनी चाहिए या नहीं होनी चाहिए।
+Exclusions: बहिष्कार
+Inclusions: निष्कर्ष
+Add Exception: अपवाद जोड़ना
+Add Inclusion: समावेश जोड़ें
+Delete Selected: चयनित मिटाएं
+Send Reminder: याद दिलाना
+When: कब
+Use Date/Time: दिनांक / समय का उपयोग करें
+Use Offset: ऑफसेट का उपयोग करें
+Before: इससे पहले
+After: उपरांत
+Start: शुरू
+End/Due: अंत / देय
+Times: बार
+Every: हर एक
+CAPTCHA Warning: चेतावनी: PHP के GD एक्सटेंशन के बिना कैप्चा का उपयोग नहीं कर सकता!<br>
+Delete entry: प्रविष्टि हटाएं
+You are not authorized to edit this entry.: आप इस प्रविष्टि को संपादित करने के लिए अधिकृत नहीं हैं।
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX ने एक नई नियुक्ति की है।
+XXX has updated an appointment.: XXX ने एक अपॉइंटमेंट अपडेट किया है।
+Security violation!: सुरक्षा उल्लंघन!
+You must enter the anti-spam text on the previous page.: आपको पिछले पृष्ठ पर विरोधी स्पैम पाठ दर्ज करना होगा।
+The following conflicts with the suggested time: सुझाए गए समय के साथ निम्नलिखित संघर्ष
+User removed from participants list.: उपयोगकर्ता प्रतिभागियों की सूची से हटा दिया गया।
+Please look on XXX to accept or reject this appointment.: कृपया इस नियुक्ति को स्वीकार या अस्वीकार करने के लिए XXX को देखें।
+Please look on XXX to view this appointment.: कृपया इस नियुक्ति को देखने के लिए XXX को देखें।
+Scheduling Conflict: शेड्यूलिंग के विरोध
+Your suggested time of: आपके सुझाव का समय
+conflicts with the following existing calendar entries: निम्न मौजूदा कैलेंडर प्रविष्टियों के साथ विरोध
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX को "config.php" में सेट नहीं किया गया है।
+word characters only: (केवल शब्द वर्ण हो सकते हैं; [a-zA-Z_0-9])
+Add User: उपयोगकर्ता जोड़ें
+Edit User: यूजर को संपादित करो
+Calendar ID: कैलेंडर आईडी
+First Name: नाम
+Last Name: उपनाम
+Is public calendar: सार्वजनिक कैलेंडर है
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: डाटाबेस त्रुटि
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: रिमोट कैलेंडर जोड़ें
+Edit Remote Calendar: दूरस्थ कैलेंडर संपादित करें
+Create Layer: परत बनाएँ
+Reload: पुनः लोड करें
+Required to View Remote Calendar: दूरस्थ कैलेंडर देखने के लिए आवश्यक है
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: आयात परिणाम
+Events successfully imported: घटनाओं को सफलतापूर्वक आयात किया गया
+Create a new layer to view this calendar.: इस कैलेंडर को देखने के लिए एक नई परत बनाएं।
+Errors: त्रुटियाँ
+There was an error parsing the import file or no events were returned.: आयात फ़ाइल पार्स करने में त्रुटि हुई या कोई ईवेंट वापस नहीं किया गया।
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: आने वाला कल
+Yesterday: बिता कल
+Day before yesterday: परसों
+Next week: अगले सप्ताह
+This week: इस सप्ताह
+Last week: पिछले सप्ताह
+Week before last: अंतिम से पहले सप्ताह
+Next week and week after: अगले सप्ताह और सप्ताह के बाद
+This week and next week: इस हफ्ते और अगले हफ्ते
+Last week and this week: पिछले हफ्ते और इस हफ्ते
+Last two weeks: पिछले दो सप्ताह
+Next month: अगले महीने
+This month: इस महीने
+Last month: पिछला महीना
+Month before last: पिछले महीने से पहले
+Next year: अगले साल
+This year: इस साल
+Last year: पिछले साल
+Year before last: पिछले साल से पहले
+Next 14 days: अगले 14 दिन
+Next 30 days: अगले 30 दिन
+Next 60 days: अगले 60 दिन
+Next 90 days: अगले 90 दिन
+Next 180 days: अगले 180 दिन
+Next 365 days: अगले 365 दिन
+Invalid report id XXX.: अमान्य रिपोर्ट आईडी: "XXX"।
+Unnamed Report: रिपोर्ट
+Add Report: रिपोर्ट जोड़ें
+Edit Report: रिपोर्ट संपादित करें
+Report name: रिपोर्ट का नाम
+User: उपयोगकर्ता
+Current User: तात्कालिक प्रयोगकर्ता
+Include link in menu: मेनू में लिंक शामिल करें
+Include standard header/trailer: मानक हेडर / ट्रेलर शामिल करें
+Include previous/next links: पिछले / अगले लिंक शामिल करें
+Include empty dates: खाली तिथियों को शामिल करें
+Date range: तिथि सीमा
+Template variables: टेम्पलेट चर
+Page template: पेज टेम्पलेट
+Day template: दिन का खाका
+Event template: ईवेंट टेम्पलेट
+Are you sure you want to delete this report?: क्या आप वाकई इस रिपोर्ट को हटाना चाहते हैं?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: ऐसी कोई रिपोर्ट आईडी: "XXX"।
+Variable XXX not found.: चर XXX नहीं मिला।
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: कस्टम हैडर संपादित करें
+Edit Custom Script/Stylesheet: कस्टम स्क्रिप्ट / स्टाइल्सशीट संपादित करें
+Edit Custom Trailer: कस्टम ट्रेलर संपादित करें
+
+########################################
+# Page: edit_user.php
+#
+Username: उपयोगकर्ता नाम
+E-mail address: ईमेल पता
+Password: कुंजिका
+again: फिर
+Disabled for demo: डेमो के लिए अक्षम
+Are you sure you want to delete this user?: क्या आप वाकई इस उपयोगकर्ता को हटाना चाहते हैं?
+Change Password: पासवर्ड बदलें
+New Password: नया पासवर्ड
+Set Password: पासवर्ड सेट करें
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: उपयोगकर्ताओं को हटाने का समर्थन नहीं किया।
+The passwords were not identical.: पासवर्ड समान नहीं थे।
+You have not entered a password.: आपने कोई पासवर्ड दर्ज नहीं किया है।
+Username cannot be blank.: उपयोगकर्ता नाम खाली नहीं हो सकता है।
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: अधिकृत नहीं
+
+########################################
+# Page: export.php
+#
+Export: निर्यात
+Export format: निर्यात प्रारूप
+Include all layers: सभी परतों को शामिल करें
+Include deleted entries: हटाई गई प्रविष्टियों को शामिल करें
+Export all dates: सभी तिथियों का निर्यात करें
+Start date: आरंभ करने की तिथि
+End date: अंतिम तिथि
+Modified since: कब से संशोधित
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: निर्यात प्रारूप परिभाषित या गलत नहीं है।
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: कोई उपयोगकर्ता निर्दिष्ट नहीं है।
+
+########################################
+# Page: groups.php
+#
+Add New Group: नया समूह जोड़ें
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: समूह
+Add Group: समूह जोड़ें
+Edit Group: समूह संपादित करें
+Group name: समूह का नाम
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: आपको एक समूह नाम निर्दिष्ट करना होगा
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: ऑटो-रिफ्रेश कैलेंडर
+auto-refresh-help: जब सक्षम किया जाता है, तो दिन के दृश्य, सप्ताह के दृश्य, महीने के दृश्य, और अप्रकाशित पृष्ठों की सूची सभी स्वचालित रूप से समय-समय पर अपने आप ताज़ा हो जाएगी।
+Auto-refresh time: ऑटो रिफ्रेश का समय
+auto-refresh-time-help: यदि ऑटो-रिफ्रेश सक्षम है, तो यह प्रत्येक रिफ्रेश के बीच के समय को निर्दिष्ट करता है।
+Display days with events in bold in year view: वर्ष दृश्य में बोल्ड घटनाओं के साथ दिन प्रदर्शित करें
+Display weekends in week view: सप्ताह दृश्य में सप्ताहांत प्रदर्शित करें
+Time interval: समय अंतराल
+time-interval-help: निर्दिष्ट करता है कि सप्ताह के दृश्य और दिन के दृश्य में कितना समय ब्लॉक होगा।
+Nonuser: नॉनसर कैलेंडर
+user-customize-color: निर्दिष्ट करता है कि उपयोगकर्ताओं को अपनी रंग योजना को संशोधित करने की अनुमति है या नहीं।
+enable-gradient-help: सेल पृष्ठभूमि के लिए ढाल रंगों का उपयोग करें।
+Manually entering color values: रंग मूल्यों में मैन्युअल रूप से प्रवेश करना
+colors-help: सभी रंगों को "#RRGGBB" हेक्साडेसिमल प्रारूप में निर्दिष्ट किया जाना चाहिए जहां "आरआर" लाल के लिए हेक्स मूल्य है, "जीजी" हरे रंग के लिए हेक्स मूल्य है, और "बीबी" नीले रंग के लिए हेक्स मूल्य है।
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: रिपोर्ट बग
+Please include all the information below when reporting a bug.: बग की रिपोर्ट करते समय कृपया नीचे दी गई सभी जानकारी शामिल करें।
+Also, please use English rather than XXX.: इसके अलावा, कृपया XXX के बजाय  अंग्रेजी का उपयोग करें।
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar प्रलेखन
+Currently in English only.: वर्तमान में केवल अंग्रेजी में।
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: कैलेंडर प्रविष्टियों को जोड़ना / संपादित करना
+Repeat Type: दोहराएँ प्रकार
+For More Information...: अधिक जानकारी के लिए...
+Repeat End Date: अंतिम तिथि दोहराएं
+Repeat Day: दोहराएँ दिन
+repeat-day-help: निर्दिष्ट करता है कि सप्ताह के कौन से दिन घटना को दोहराना चाहिए।
+
+########################################
+# Page: help_import.php
+#
+Import: आयात
+Palm Desktop: पाम डेस्कटॉप
+allow you to import entries from the Palm...: यह फ़ॉर्म आपको पाम डेस्कटॉप डेटबुक से प्रविष्टियाँ आयात करने की अनुमति देगा। यह आपके उपयोक्ता नाम से उपनिर्देशिका में datebook / datebook.dat में आपकी पाम निर्देशिका में स्थित होना चाहिए।
+The following entries will not be imported: निम्नलिखित प्रविष्टियों को आयात नहीं किया जाएगा:
+Entries older than the current date: वर्तमान दिनांक से अधिक पुरानी प्रविष्टियाँ
+Entries created in the Palm Desktop...: पाम डेस्कटॉप में बनाई गई प्रविष्टियाँ जो HotSync'd नहीं की गई हैं
+Anything imported from Palm...: पाम से आयात की गई कोई भी चीज़ अगले आयात के दौरान अधिलेखित हो जाएगी (जब तक कि घटना की तारीख बीत नहीं गई)। इसलिए, पाम डेस्कटॉप में अपडेट किया जाना चाहिए।
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: यह प्रपत्र vCalendar (.vcs) 1.0 ईवेंट आयात करेगा।
+The following formats have been tested: निम्नलिखित स्वरूपों का परीक्षण किया गया है:
+This form will import iCalendar (.ics) events.: यह प्रपत्र iCalendar (.ics) ईवेंट आयात करेगा।
+Enabling: सक्षम करने से
+Overwrite Prior Import: पूर्व आयात को अधिलेखित करें
+will cause events imported previously...: पूर्व में आयात की गई घटनाओं का कारण बनेगा, जो नई आयात फ़ाइल से ईवेंट के रूप में समान यूआईडी का उपयोग करता है, जिसे हटाए जाने के रूप में चिह्नित किया जाएगा। यह एक अद्यतन iCalendar फ़ाइल को डुप्लिकेट बनाए बिना आयात करने की अनुमति देनी चाहिए।
+
+########################################
+# Page: help_index.php
+#
+Help Index: मदद सूचकांक
+About WebCalendar: WebCalendar के बारे में
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: अपने स्वयं के कैलेंडर में अन्य उपयोगकर्ताओं की घटनाओं को प्रदर्शित करने के लिए परतें उपयोगी होती हैं। आप उपयोगकर्ता को निर्दिष्ट कर सकते हैं और घटनाओं में रंग प्रदर्शित किया जाएगा।
+Add/Edit/Delete: जोड़ें / संपादित करें / हटाएं
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: पृष्ठ के नीचे व्यवस्थापक अनुभाग में संपादन परतें लिंक पर क्लिक करने से आप परतों को जोड़ / संपादित / हटा सकते हैं।
+The text color of the new layer that will be displayed in your calendar.: नई परत का पाठ रंग जो आपके कैलेंडर में प्रदर्शित किया जाएगा।
+Disabling: अक्षम करने
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: परतों को बंद करने के लिए पृष्ठ के निचले भाग में व्यवस्थापक अनुभाग में अक्षम परतें लिंक दबाएं।
+Duplicates: डुप्लिकेट
+If checked, events that are duplicates of your events will be shown.: यदि जाँच की जाए, तो आपके ईवेंट के डुप्लिकेट वाले ईवेंट दिखाए जाएंगे।
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: परतों को चालू करने के लिए पृष्ठ के नीचे व्यवस्थापक अनुभाग में सक्षम करें लिंक को दबाएं।
+Source: स्रोत
+Specifies the user that you would like to see displayed in your calendar.: उस उपयोगकर्ता को निर्दिष्ट करता है जिसे आप अपने कैलेंडर में प्रदर्शित करना चाहते हैं।
+
+########################################
+# Page: help_pref.php
+#
+Default Category: डिफ़ॉल्ट श्रेणी
+default-category-help: श्रेणी को निर्दिष्ट करता है कि एक नई घटना को डिफ़ॉल्ट होना चाहिए।
+When I am the boss: जब मैं मालिक हूं
+Email me event notification: मुझे ईवेंट सूचना ईमेल करें
+email-boss-notifications-help: निर्दिष्ट करता है कि बॉस ईवेंट सूचनाओं के रूप में ईमेल प्राप्त करते हैं।
+I want to approve events: मैं घटनाओं का अनुमोदन करना चाहता हूं
+boss-approve-event-help: निर्दिष्ट करता है कि क्या सहायकों द्वारा जोड़ी गई घटनाओं को अनुमोदित करने के लिए बॉस की आवश्यकता होगी।
+Subscribe/Publish: सदस्यता लें / प्रकाशित करें
+Allow remote publishing: दूरस्थ प्रकाशन की अनुमति दें
+allow-remote-publishing-help: निर्दिष्ट करता है कि एक दूरस्थ iCal क्लाइंट वेबकालेंडर पर वापस घटनाओं को प्रकाशित कर सकता है
+remote-publishing-url-help: WebCalendar की सदस्यता और प्रकाशन दोनों के लिए iCal क्लाइंट एप्लिकेशन में उपयोग करने के लिए URL प्रदर्शित करता है।
+allow-remote-subscriptions-help: यह निर्दिष्ट करता है कि क्या दूरस्थ उपयोगकर्ता आपके कैलेंडर की सदस्यता ले सकते हैं, जिससे उन्हें iCal- सक्षम एप्लिकेशन (जैसे Apple का iCal या मोज़िला कैलेंडर) में आपके ईवेंट देखने की अनुमति मिलती है।
+remote-subscriptions-url-help: आपके कैलेंडर की सदस्यता के लिए URL दूरस्थ उपयोगकर्ताओं को प्रदर्शित करना चाहिए।
+Enable FreeBusy publishing: FreeBusy प्रकाशन सक्षम करें
+freebusy-enabled-help: निर्दिष्ट करता है कि क्या उपयोगकर्ता का उपलब्ध समय iCal FreeBusy मानक का उपयोग करके प्राप्त किया जा सकता है।
+freebusy-url-help: उपयोगकर्ता की FreeBusy सूची तक पहुँचने के लिए URL
+rss-feed-url-help: आरएसएस फ़ीड तक पहुँचने के लिए URL
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: उपयोगकर्ता पहुंच और अनुमतियों के ठीक नियंत्रण के लिए अनुमति देता है। व्यवस्थापक द्वारा अधिकृत किए जाने पर उपयोगकर्ता डिफ़ॉल्ट और प्रति व्यक्ति अनुमति भी दे सकते हैं।
+If disabled, this user cannot send you emails.: यदि अक्षम है, तो यह उपयोगकर्ता आपको ईमेल नहीं भेज सकता है।
+If disabled, this user cannot see you in the participants list.: यदि अक्षम है, तो यह उपयोगकर्ता आपको प्रतिभागियों की सूची में नहीं देख सकता है।
+If enabled, this user cannot view the details of any of your entries.: यदि सक्षम है, तो यह उपयोगकर्ता आपकी किसी भी प्रविष्टि का विवरण नहीं देख सकता है।
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): प्रकाशन अक्षम (व्यवस्थापक)
+Publishing Disabled (User): प्रकाशन अक्षम (उपयोगकर्ता)
+
+########################################
+# Page: icons.php
+#
+Click to Select: चुनने के लिए क्लिक करें
+Current Icons on Server: सर्वर पर वर्तमान चिह्न
+
+########################################
+# Page: import.php
+#
+import from file: फ़ाइल से आयात करें
+Disabled: विकलांग
+Import format: आयात प्रारूप
+Exclude private records: निजी रिकॉर्ड को छोड़ दें
+Repeated items are imported separately. Prior imports are not overwritten.: बार-बार आइटम अलग से आयात किए जाते हैं। पूर्व के आयात ओवरराइट नहीं किए गए हैं।
+
+########################################
+# Page: import_handler.php
+#
+No file: कोई फ़ाइल नहीं
+Error deleting palm events from webcalendar.: वेबमास्टर से ताड़ की घटनाओं को हटाने में त्रुटि।
+Events from prior import marked as deleted: पूर्व आयात से ईवेंट हटाए गए के रूप में चिह्नित किए गए हैं
+Conflicting events: परस्पर विरोधी घटनाएँ
+The import file contained no data.: आयात फ़ाइल में कोई डेटा नहीं था।
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: क्या आप वाकई इस परत को हटाना चाहते हैं?
+Delete layer: परत हटाएं
+Edit layer: परत संपादित करें
+Enable layers: परतों को सक्षम करें
+Layer: परत
+Layers are currently disabled.: वर्तमान में परतें अक्षम हैं।
+Layers are currently enabled.: वर्तमान में परतें सक्षम हैं।
+Click to modify layers settings for XXX: XXX कैलेंडर के लिए परतों की सेटिंग्स को संशोधित करने के लिए यहां क्लिक करें।
+Disable Layers: परतों को अक्षम करें
+Add layer: परत जोड़ें
+Add Layer: परत जोड़ें
+Edit Layer: परत संपादित करें
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: वरीयता अद्यतन करने में असमर्थ
+Invalid entry id.: अमान्य प्रविष्टि आईडी।
+You cannot create a layer for yourself.: आप अपने लिए एक परत नहीं बना सकते।
+You can only create one layer for each user.: आप प्रत्येक उपयोगकर्ता के लिए केवल एक परत बना सकते हैं।
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: अनुमोदन / पुष्टि करें
+Approve Selected: चयनित का अनुमोदन करें
+Check All: सभी की जांच करो
+Emails Will Not Be Sent: ईमेल नहीं भेजे जाएंगे
+Reject Selected: चयनित को अस्वीकार करें
+Reject: अस्वीकार
+Uncheck All: सब को अचयनित करें
+View this entry: इस प्रविष्टि को देखें
+No unapproved entries for XXX.: "XXX" के लिए कोई अप्रयुक्त प्रविष्टियां नहीं हैं।
+Unapproved Entries: अनुचित प्रविष्टियाँ
+Approve this entry?: इस प्रविष्टि को स्वीकार करें?
+Reject this entry?: इस प्रविष्टि को अस्वीकार करें?
+Approve Selected entries?: चयनित प्रविष्टियों को स्वीकार करें?
+Reject Selected entries?: चयनित प्रविष्टियों को अस्वीकार करें?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: आपको एक लॉगिन और पासवर्ड दर्ज करना होगा।
+Save login via cookies so I dont have to login next time.: कुकीज़ के माध्यम से लॉगिन सहेजें ताकि मुझे अगली बार लॉगिन न करना पड़े
+Login: लॉग इन करें
+public: जनता
+Access XXX calendar: XXX कैलेंडर तक पहुंचें
+cookies-note: नोट: इस एप्लिकेशन को कुकीज़ को सक्षम करने की आवश्यकता है।
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: लॉगिन XXX में अवैध वर्ण।
+Invalid login: अमान्य लॉगिन
+Activity login failure: उपयोगकर्ता नाम: "XXX", आईपी: "YYY"।
+Error XXX: त्रुटि: "XXX"।
+You have been logged out.: आप लॉग आउट हो चुके हैं।
+Access public calendar: सार्वजनिक कैलेंडर तक पहुँचें
+Not yet registered? Register here!: अभी तक पंजीकृत नहीं किया गया? यहां रजिस्टर करें!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: ऐसा कोई नॉन्युसर कैलेंडर नहीं: "XXX"।
+This Calendar is not Public.: यह कैलेंडर सार्वजनिक नहीं है।
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: नया गैर-कैलेंडर कैलेंडर जोड़ें
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: एक लॉगिन निर्दिष्ट किया जाना चाहिए।
+No such nonuser calendar: ऐसा कोई भी गैर-कैलेंडर नहीं
+
+########################################
+# Page: pref.php
+#
+Invalid theme: अमान्य विषय
+Save Preferences: प्राथमिकताएं सहेजें
+Public Access calendar: पब्लिक एक्सेस कैलेंडर
+Modify Non User Calendar Preferences: गैर उपयोगकर्ता कैलेंडर वरीयताएँ संशोधित करें
+Return to My Preferences: माय प्रेफरेंस पर लौटें
+Custom Scripts: कस्टम लिपियों
+Timezone Selection: समयक्षेत्र चयन
+Multiview: मल्टीव्यू:
+entry-interval-help: प्रविष्टि समय को संपादित करते समय मिनट अंतराल सेट करता है
+Entry interval: प्रवेश अंतराल
+hour: इस घंटे
+minute: मिनट
+theme-reload-help: CSS कैशिंग के कारण, एक पृष्ठ पुनः लोड करना पड़ सकता है
+Page may need to be reloaded for new Theme to take effect: नए थीम को प्रभावी होने के लिए पृष्ठ को पुनः लोड करना पड़ सकता है
+display_byproxy-help: वास्तविक निर्माता को view_entry पृष्ठ पर प्रदर्शित करें
+Display if created by Assistant: यदि सहायक द्वारा बनाया गया है तो प्रदर्शित करें
+allow-view-subscriptions-help: दूरस्थ पहुँच को निजी या गोपनीय प्रविष्टियों तक सीमित रखने की अनुमति देता है
+Allow remote viewing of: के दूरस्थ देखने की अनुमति दें
+entries: प्रविष्टियों
+
+########################################
+# Page: purge.php
+#
+Purging events for: के लिए घटनाओं को शुद्ध करना
+Finished: ख़त्म होना
+Back: वापस
+Check box to delete ALL events for a user: उपयोगकर्ता के लिए  ALL ईवेंट हटाने के लिए बॉक्स चेक करें
+Delete all events before: पहले सभी घटनाओं को हटा दें
+Purge deleted only: पर्स ही डिलीट कर दिया
+Preview delete: पूर्वावलोकन हटाएं
+Are you sure you want to delete events for: क्या आप वाकई के लिए ईवेंट हटाना चाहते हैं?
+Records deleted from XXX: "XXX" से रिकॉर्ड हटाया गया।
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: ईमेल पता रिक्त नहीं हो सकता।
+Username already exists.: उपयोगकर्ता का नाम पहले से मौजूद है।
+Email address already exists.: ईमेल पता पहले से ही मौजूद है।
+New user via self-registration.: स्व-पंजीकरण के माध्यम से नया उपयोगकर्ता।
+A new WebCalendar account has been set up for you.: आपके लिए एक नया वेबमास्टर खाता स्थापित किया गया है।
+Your username is XXX.: आपका उपयोगकर्ता नाम है: "XXX"।
+Your password is XXX.: आपका पासवर्ड है: "XXX"।
+Please visit XXX to log in and start using your account!: लॉग इन करने और अपने खाते का उपयोग शुरू करने के लिए कृपया "XXX" पर जाएं!
+You may change your password after logging in the first time.: पहली बार लॉग इन करने के बाद आप अपना पासवर्ड बदल सकते हैं।
+If you received this email in error: यदि आपको यह ईमेल गलती से प्राप्त हुआ है और आपने WebCalendar खाते के लिए साइन अप नहीं किया है, तो आप इस नोटिस की अवहेलना कर सकते हैं, या छोटे नोट के साथ उत्तर दे सकते हैं।
+Administrator: प्रशासक
+Welcome: स्वागत हे
+New user via email.: नए उपयोगकर्ता ईमेल के माध्यम से।
+Registration: पंजीकरण
+Welcome to WebCalendar: WebCalendar में आपका स्वागत है
+Your email should arrive shortly.: आपका ईमेल शीघ्र ही आ जाना चाहिए।
+Return to Login screen: लॉगिन स्क्रीन पर लौटें
+Password (again): कूटशब्द दुबारा भरें):
+Your account information will be emailed to you.: आपकी खाता जानकारी आपको ईमेल कर दी जाएगी।
+Submit: प्रस्तुत
+
+########################################
+# Page: reject_entry.php
+#
+Continue: जारी रखें
+(Your comments will be emailed to the other participants.): (आपकी टिप्पणी अन्य प्रतिभागियों को ईमेल कर दी जाएगी।)
+XXX has rejected an appointment.: XXX ने एक नियुक्ति को अस्वीकार कर दिया है।
+Rejected by XXX.: XXX द्वारा अस्वीकृत।
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: नया रिमोट कैलेंडर जोड़ें
+
+########################################
+# Page: report.php
+#
+This event is confidential.: यह घटना गोपनीय है।
+(Private): (निजी)
+(cont.): (प्रतियोगिता)
+Approved: मंजूर की
+Deleted: हटाए गए
+Rejected: ठुकरा दिया
+Waiting for approval: अनुमोदन के लिए प्रतीक्षा
+Unknown: अनजान
+Invalid report id.: अवैध रिपोर्ट आई.डी.
+Click here to manage reports for the Public Access calendar.: सार्वजनिक पहुंच कैलेंडर के लिए रिपोर्ट प्रबंधित करने के लिए यहां क्लिक करें।
+Add new report: नई रिपोर्ट जोड़ें
+Manage Reports: रिपोर्ट प्रबंधित करें
+
+########################################
+# Page: search.php
+#
+Advanced Search: उन्नत खोज
+Search: खोज
+Keywords: कीवर्ड
+Enter % for all entries: सभी प्रविष्टियों के लिए% दर्ज करें
+Include: शामिल
+Filter by Date: तिथि के अनुसार फ़िल्टर करें
+All Dates: सभी तिथियां
+Past: अतीत
+Upcoming: आगामी
+Range: रेंज
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: आपको एक या अधिक खोज कीवर्ड दर्ज करने होंगे।
+Search Results: खोज परिणाम
+match found: मेल मिल गया
+matches found: मैच मिले
+No matches found: कोई मेल नहीं मिले
+New Search: नयी शोध
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: नीचे दी गई जानकारी आपके WebCalendar इंस्टॉलेशन के साथ संभावित मुद्दों को सूचीबद्ध करती है जिन्हें आपके इंस्टॉलेशन को अधिक सुरक्षित बनाने के लिए संशोधित किया जा सकता है।
+For questions about WebCalendar security see the forums: किसी भी WebCalendar सुरक्षा समस्या के बारे में प्रश्नों के लिए, कृपया GitHub.com;<br>XXX पर होस्ट किए गए WebCalendar मंचों का उपयोग करें
+View your current PHP settings: अपनी वर्तमान PHP सेटिंग्स देखें
+Security Issue: सुरक्षा का मसला
+Status: स्थिति
+Default admin user password: डिफ़ॉल्ट व्यवस्थापक उपयोगकर्ता पासवर्ड
+You should change the password of the default admin user.: आपको डिफ़ॉल्ट व्यवस्थापक उपयोगकर्ता का पासवर्ड बदलना चाहिए।
+File permissions XXX: फ़ाइल अनुमतियां: XXX
+item XXX should not be writable: निम्नलिखित आइटम को लिखने योग्य नहीं होना चाहिए:<br><tt> XXX</tt>
+File exists XXX: फ़ाइल मौजूद है: "XXX"
+Because you have email disabled, you should remove this file.: क्योंकि आपके पास ईमेल अक्षम है, इसलिए आपको इस फ़ाइल को हटा देना चाहिए।
+File location XXX: फ़ाइल स्थान: "XXX"
+remove XXX if not using: यदि आप फ़ाइल "XXX" का उपयोग नहीं कर रहे हैं, तो आपको इसे हटा देना चाहिए। या, कम से कम, इसे एक नई निर्देशिका में स्थानांतरित करें।
+System Settings XXX: सिस्टम सेटिंग्स: "XXX"
+consider enabling UAC: आप उपयोगकर्ता विशेषाधिकार सेट करने के लिए उपयोगकर्ता पहुँच नियंत्रण को सक्षम करने पर विचार कर सकते हैं।
+recommend approving new public events: हम अनुशंसा करते हैं कि सभी सार्वजनिक ईवेंट सबमिशन स्वीकृत किए जाएं।
+recommend using CAPTCHA: कैप्चा को स्वचालित ईवेंट सबमिशन फिर से करने की सिफारिश की जाती है।
+Database cache directory location: डेटाबेस कैश निर्देशिका स्थान
+db cache should be inaccessable: डेटाबेस कैश एक निर्देशिका में होना चाहिए जिसे URL से एक्सेस नहीं किया जा सकता है।
+PHP Settings XXX: PHP सेटिंग्स: "XXX"
+recommend setting XXX Off: "XXX" के लिए अनुशंसित सेटिंग बंद है।
+recommend setting allow_url_fopen Off: "Allow_url_fopen" के लिए अनुशंसित सेटिंग बंद है जब दूरस्थ कैलेंडर सक्षम नहीं हैं।
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: किसी अन्य उपयोगकर्ता का कैलेंडर देखें
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: आपने कोई श्रेणी नहीं जोड़ी है।
+Set Category: श्रेणी निर्धारित करें
+Global Categories cannot be changed.: वैश्विक श्रेणियां नहीं बदली जा सकतीं।
+
+########################################
+# Page: upcoming.php
+#
+more: अधिक
+
+########################################
+# Page: users.php
+#
+Remote Calendars: दूरस्थ कैलेंडर
+denotes administrative user: प्रशासनिक उपयोगकर्ता को दर्शाता है
+Add New User: नई उपयोगकर्ता को जोड़ना
+
+########################################
+# Page: usersel.php
+#
+form: प्रपत्र
+Reset: रीसेट
+
+########################################
+# Page: views.php
+#
+Add New View: नया दृश्य जोड़ें
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: बेनाम: देखें
+Add View: दृश्य जोड़ें
+Edit View: संपादित देखें
+View Name: नाम देखें
+View Type: प्रकार देखें
+Day by Time: दिन के हिसाब से
+Week (Users horizontal): सप्ताह (उपयोगकर्ता क्षैतिज)
+Week by Time: सप्ताह के हिसाब से
+Week (Users vertical): सप्ताह (उपयोगकर्ता लंबवत)
+Week (Timebar): सप्ताह (टाइमबार)
+Month (Timebar): महीना (टाइमबार)
+Month (side by side): महीना (अगल-बगल)
+Month (on same calendar): महीना (उसी कैलेंडर पर)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: आपको एक दृश्य नाम निर्दिष्ट करना होगा
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: इस दृश्य के लिए कोई उपयोगकर्ता नहीं।
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: अद्यतन कार्य प्रतिशत
+Completed: पूरा हुआ
+Assistant mode: सहायक मोड
+Declined: इंकार कर दिया
+Needs-Action: आवश्यकता-कार्य
+by: द्वारा द्वारा
+Percentage Complete: प्रतिशत पूर्ण
+External User: बाहरी उपयोगकर्ता
+Update: अपडेट करें
+at: पर
+comments: टिप्पणियाँ
+Show: प्रदर्शन
+Hide: छिपाना
+Approve/Confirm entry: प्रवेश की पुष्टि / पुष्टि करें
+Reject entry: प्रविष्टि को अस्वीकार करें
+Set category: श्रेणी निर्धारित करें
+Add to My Calendar: मेरे कैलेंडर में जोड़ें
+Copy entry: प्रवेश प्रति
+This will delete this entry for all users.: यह सभी उपयोगकर्ताओं के लिए इस प्रविष्टि को हटा देगा।
+Edit entry: प्रविष्टि संपादित करें
+Edit repeating entry for all dates: सभी तिथियों के लिए दोहराई जाने वाली प्रविष्टि संपादित करें
+Delete repeating event for all dates: सभी तिथियों के लिए पुनरावृत्ति घटना को हटाएं
+Edit entry for this date: इस तिथि के लिए प्रविष्टि संपादित करें
+Delete entry only for this date: केवल इस तिथि के लिए प्रविष्टि हटाएं
+Delete entry from calendar of XXX: XXX के कैलेंडर से प्रविष्टि हटाएं
+This will delete the entry from your XXX calendar.: यह आपके XXX कैलेंडर से प्रविष्टि को हटा देगा।
+boss: मालिक'
+This will delete the entry from your boss calendar.: यह आपके बॉस के कैलेंडर से प्रविष्टि को हटा देगा।
+This will delete the entry from your calendar.: यह आपके कैलेंडर से प्रविष्टि को हटा देगा।
+from your boss calendar: अपने बॉस के कैलेंडर से
+Do you want to add this entry to your calendar?: क्या आप इस प्रविष्टि को अपने कैलेंडर में जोड़ना चाहते हैं?
+This will add the entry to your calendar.: यह आपके कैलेंडर में प्रविष्टि जोड़ देगा।
+Email all participants: सभी प्रतिभागियों को ईमेल करें
+Hide activity log: गतिविधि लॉग छिपाएँ
+Show activity log: गतिविधि लॉग दिखाएं
+Export this entry to: इस प्रविष्टि को निर्यात करें
+Palm Pilot: हथेली मार्गदर्शक
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: नई प्रविष्टि जोड़ने के लिए रिक्त कक्ष पर डबल-क्लिक करें।
+
+########################################
+# Page: week_details.php
+#
+New Entry: नविन प्रवेश
+cont.: प्रतियोगिता
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: एक अन्य उपयोगकर्ता का कैलेंडर
+Category Management: श्रेणी प्रबंधन
+Day View: डे व्यू
+Edit Event: घटना संपादित करें
+Month View: महीना देखें
+Common Trailer: आम ट्रेलर
+User Management: उपयोगकर्ता प्रबंधन
+Manage Views: दृश्य प्रबंधित करें
+Week View: सप्ताह का दृश्य
+Year View: वर्ष दृश्य
+Invalid function id: अमान्य फ़ंक्शन आईडी
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: "Settings.php" फ़ाइल नहीं मिली।<br>कृपया "settings.php.orig" को "settings.php" पर कॉपी करें और अपनी साइट के लिए संपादित करें।
+Incomplete settings.php file...: अपूर्ण "settings.php" फ़ाइल ...
+Could not find XXX defined in...: आपकी "settings.php" फ़ाइल में परिभाषित "XXX" नहीं मिल सका।
+You must define XXX in: आपको "XXX" को "settings.php" फ़ाइल में परिभाषित करना होगा।
+
+########################################
+# Page: includes/date_formats.php
+#
+December: दिसंबर
+Dec: दिसम्बर
+LANGUAGE DEFINED: भाषा की परिभाषा
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: डेटाबेस से जुड़ने में त्रुटि: "XXX"।
+db_type not defined.: db_type परिभाषित नहीं है।
+invalid db_type XXX: अमान्य db_type "" XXX "।
+Cache cleared from previous SQL!: पिछली SQL से कैश को साफ़ किया गया!
+Error executing query.: क्वेरी निष्पादित करने में त्रुटि।
+Unfortunately, XXX is not implemented for YYY: दुर्भाग्य से, "XXX" को (YYY) के लिए लागू नहीं किया गया है।
+Unknown ODBC error.: अज्ञात ODBC त्रुटि।
+Error opening cache dir XXX.: कैश डायर "XXX" खोलने में त्रुटि।
+delete: हटाना
+Cache error Could not XXX file YYY.: कैश त्रुटि: XXX फ़ाइल "YYY" नहीं कर सका।
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: घातक गलती
+Invalid data format for: के लिए अमान्य डेटा प्रारूप
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: त्रुटि: गतिविधि लॉग के लिए सेट नहीं टाइप करें!
+This event is XXX.: यह घटना XXX की है।
+Conf.: आत्मविश्वास।
+exceeds limit of XXX events per day: XXX घटनाओं की सीमा प्रति दिन से अधिक है
+on: पर
+All Attendees: सभी उपस्थित लोग
+Busy: व्यस्त
+Tentative: जांच का
+Schedule an appointment for XXX.: XXX के लिए अपॉइंटमेंट शेड्यूल करें: YYY।
+date_select: =
+Event approved: घटना को मंजूरी दी
+Journal approved: जर्नल ने मंजूरी दे दी
+Task approved: टास्क मंजूर
+Attachment: आसक्ति
+Event created: ईवेंट बनाया गया
+Journal created: जर्नल बनाया
+Task created: कार्य बनाया गया
+Event deleted: ईवेंट हटा दिया गया
+Journal deleted: पत्रिका हटाई गई
+Task deleted: टास्क डिलीट कर दिया
+New user via email (self registration): ईमेल के माध्यम से नया उपयोगकर्ता (स्व पंजीकरण)
+New user (self registration): नया उपयोगकर्ता (स्व पंजीकरण)
+Notification sent: अधिसूचना भेजी गई
+Event rejected: इवेंट खारिज कर दिया गया
+Journal rejected: जर्नल ने खारिज कर दिया
+Task rejected: टास्क खारिज कर दिया
+Reminder sent: अनुस्मारक भेजा गया
+Event updated: ईवेंट अपडेट किया गया
+Journal updated: जर्नल अपडेट किया गया
+Task updated: टास्क अपडेट किया गया
+Delete User: उपभोक्ता मिटायें
+WK: सप्त
+TASKS: कार्य
+Task_Title: शीर्षक
+Due: देय
+Task Name: कार्य का नाम
+Task Due Date: कार्य नियत तिथि
+You have XXX unapproved entries: आपके पास XXX अप्रयुक्त प्रविष्टियां हैं 
+Changes successfully saved: परिवर्तन सफलतापूर्वक सहेजे गए
+Event: प्रतिस्पर्धा
+Action: कार्य
+Printer Friendly: प्रिंटर के अनुकूल
+Generate printer-friendly version: प्रिंटर के अनुकूल संस्करण उत्पन्न करें
+after: उपरांत
+before: इससे पहले
+end: समाप्त
+start: शुरू
+View this event: इस घटना को देखें
+View this task: इस कार्य को देखें
+January: जनवरी
+February: फ़रवरी
+March: जुलूस
+April: अप्रैल
+May_: मई
+June: जून
+July: जुलाई
+August: अगस्त
+September: सितंबर
+October: अक्टूबर
+November: नवंबर
+Jan: जनवरी
+Feb: फ़रवरी
+Mar: मार्च
+Apr: अप्रैल
+May: मई
+Jun: जून
+Jul: जुलाई
+Aug: अगस्त
+Sep: सितम्बर
+Oct: अक्टूबर
+Nov: नवम्बर
+SU: र
+MO: एमओ
+TU: टीयू
+WE: हम
+TH: वें
+FR: फादर
+SA: एसए
+unknown-month: अज्ञात-महीना
+First Quarter Moon: पहला क्वार्टर मून
+Full Moon: पूर्णचंद्र
+Last Quarter Moon: अंतिम तिमाही चंद्रमा
+New Moon: अमावस्या
+Error TIME_SLOTS undefined!: त्रुटि: TIME_SLOTS अपरिभाषित!
+The following error occurred: निम्नलिखित त्रुटि हुई
+You are not authorized.: तुम अधिकृत नहीं हो।
+Add N hours to: करने के लिए एन घंटे जोड़ें
+Subtract N hours from: से एन घंटे घटाएं
+same as: के समान
+server time: सर्वर समय
+Cannot read timezone file XXX.: समयक्षेत्र फ़ाइल नहीं पढ़ सकता: XXX
+Your current GMT offset is XXX hours.: आपका वर्तमान GMT ऑफसेट XXX घंटे है।
+Unauthorized: अनधिकृत
+Error approving event XXX.: घटना को मंजूरी देने में त्रुटि: XXX
+Error deleting event XXX.: ईवेंट हटाने में त्रुटि: XXX
+Error rejecting event XXX.: ईवेंट को अस्वीकार करने में त्रुटि: XXX।
+Sunday: रविवार
+Monday: सोमवार
+Tuesday: मंगलवार
+Wednesday: बुधवार
+Thursday: गुरूवार
+Friday: शुक्रवार
+Saturday: शनिवार
+Sun: रवि
+Mon: सोमवार
+Tue: मंगल
+Wed: बुध
+Thu: गुरु
+Fri: शुक्र
+Sat: बैठ गया
+unknown-weekday: अज्ञात-सप्ताह का दिन
+Invalid referring URL: अमान्य संदर्भित URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: सूची
+Documentation: प्रलेखन
+Page: पृष्ठ
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: मेरे पंचांग
+Add New Entry: नई प्रविष्टि जोड़ें
+Add New Task: नया कार्य जोड़ें
+Logout: लॉग आउट
+Home: घर
+Back to My Calendar: मेरे कैलेंडर पर वापस जाएं
+Go to: के लिए जाओ
+Manage calendar of: का कैलेंडर प्रबंधित करें
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: ब्राउज़र भाषा नहीं मिली
+(not supported): (समर्थित नहीं)
+Abkhazian: अबखज़ियान
+Acoli: अकोली
+Adangme: अदान्गमे
+Adyghe: अदिघे
+Afar: दूर
+Afrihili: अफरीली
+Afrikaans: दी
+Ainu: आइनु
+Akan: अकान
+Akkadian: अकाडिनी
+Albanian: अल्बानियन
+Aleut: अलेउत
+Algonquian: एल्गोनिकन
+Altai (Southern): अल्ताई (दक्षिणी)
+Amharic: अम्हारिक्
+Angika: अंगिका
+Apache: अमरीका की एक मूल जनजाति
+Arabic (Algeria): अरबी (अल्जीरिया)
+Arabic (Bahrain): अरबी (बहरीन)
+Arabic (Egypt): अरबी (मिस्र)
+Arabic (Iraq): अरबी (इराक)
+Arabic (Jordan): अरबी (जॉर्डन)
+Arabic (Kuwait): अरबी (कुवैत)
+Arabic (Lebanon): अरबी (लेबनान)
+Arabic (Libya): अरबी (लीबिया)
+Arabic (Morocco): अरबी (मोरक्को)
+Arabic (Oman): अरबी (ओमान)
+Arabic (Qatar): अरबी (कतर)
+Arabic (Saudi Arabia): अरबी (सऊदी अरब)
+Arabic (Syria): अरबी (सीरिया)
+Arabic (Tunisia): अरबी (ट्यूनीशिया)
+Arabic (U.A.E.): अरबी (U.A.E)
+Arabic (Yemen): अरबी (यमन)
+Arabic: अरबी
+Aragonese: दुलहन
+Aramaic: इब्रानी
+Arapaho: अरापहो
+Arawak: अरावक
+Armenian: अर्मेनियाई
+Assamese: असमिया
+Asturian: अस्तुरियन
+Athapascan: अथापस्कान
+Avaric: अवेरिक
+Avestan: अवेस्तन
+Awadhi: अवधी
+Aymara: आयमारा
+Azerbaijani: आज़रबाइजानी
+Balinese: बाली
+Baluchi: बलूची
+Bambara: बाम्बारा
+Bamileke: बमीलेक
+Banda: बाँदा
+Basa: बासा
+Bashkir: बशख़िर
+Basque: बस्क
+Beja: बेजा
+Belarusian: बेलारूसी
+Bemba: बेम्बा
+Bengali: बंगाली
+Bhojpuri: भोजपुरी
+Bihari: बिहारी
+Bikol: बिकोल
+Bislama: बिस्लामा
+Blackfoot: ब्लैकफुट
+Blin: ब्लिन
+Bliss: परमानंद
+Bosnian: बोस्नियाई
+Braj: ब्रज
+Breton: ब्रेटन
+Buginese: बगिनीस
+Bulgarian: बल्गेरियाई
+Buriat: बरियात
+Burmese: बर्मी
+Caddo: कड्डो
+Catalan: कातालान
+Cebuano: सिबुआनो
+Chagatai: छगाताई
+Chamorro: चमोर्रो
+Chechen: चेचन
+Cherokee: चेरोकी
+Cheyenne: =
+Chibcha: चिब्चा
+Chichewa: चिचेवा
+Chinese (Hong Kong): चीनी (हांगकांग)
+Chinese (PRC): चीनी (PRC)
+Chinese (Simplified/GB2312): चीनी (सरलीकृत / GB2312) 
+Chinese (Singapore): चीनी (सिंगापुर)
+Chinese (Taiwan): चीनी (ताइवान)
+Chinese (Traditional/Big5): चीनी (पारंपरिक / Big5)
+Chinook: चिनूक
+Chipewyan: चिपवयन
+Choctaw: चोक्तौ
+Chuukese: चूकीस
+Chuvash: चूवाश
+Coptic: कॉप्टिक
+Cornish: कोर्निश
+Corsican: कोर्सीकन
+Cree: क्री
+Creek: क्रीक
+Croatian: क्रोएशियाई
+Czech: चेक
+Dakota: डकोटा
+Danish: दानिश
+Dargwa: दार्गवा
+Delaware: डेलावेयर
+Dinka: दिन्का
+Dogri: डोगरी
+Dogrib: डोग्रिब
+Duala: दुआला
+Dutch (Belgium): डच (बेल्जियम)
+Dutch: डच
+Dyula: दायुला
+Dzongkha: जोंगखा
+Edo: ईदो
+Efik: एफिक
+Ekajuk: एकाजुक
+Elamite: एलामाइट
+English (Australia): अंग्रेजी (ऑस्ट्रेलिया)
+English (Belize): अंग्रेजी (बेलीज)
+English (Canada): अंग्रेजी (कनाडा)
+English (Ireland): अंग्रेजी (आयरलैंड)
+English (Jamaica): अंग्रेजी (जमैका)
+English (New Zealand): अंग्रेजी (न्यूजीलैंड)
+English (Philippines): अंग्रेजी (फिलीपींस)
+English (South Africa): अंग्रेजी (दक्षिण अफ्रीका)
+English (Trinidad & Tobago): अंग्रेजी (त्रिनिदाद और टोबैगो)
+English (United Kingdom): अंग्रेजी यूनाइटेड किंगडम)
+English (United States): अमेरीकन अंग्रेजी)
+English (Zimbabwe): अंग्रेजी (जिम्बाब्वे)
+English: अंग्रेजी हमें
+Erzya: एर्ज़या
+Esperanto: एस्पेरांतो
+Estonian: एस्तोनियावासी
+Ewe: भेड़
+Ewondo: इवोन्डो
+Fang: खांग
+Fanti: फन्टी
+Faroese: फिरोज़ी
+Fijian: फिजी
+Filipino: filipino
+Finnish: फिनिश
+Fon: फॉन
+French (Belgium): फ्रेंच (बेल्जियम)
+French (Canada): फ्रेंच (कनाडा)
+French (France): फ़्रांस के लोग फ्रेंच)
+French (Luxembourg): फ्रेंच (लक्समबर्ग)
+French (Monaco): फ्रेंच (मोनाको)
+French (Switzerland): फ्रेंच (स्विट्जरलैंड)
+French: फ्रेंच
+Frisian (Eastern): पश्चिमी (पूर्वी)
+Frisian (Northern): पश्चिमी (उत्तरी)
+Frisian (Western): पश्चिमी (पश्चिमी)
+Frisian: फ़्रिसियाई
+Friulian: फ्रीयुलीयान
+Fulah: फुलाह
+Ga: गा
+Galibi: गालिब
+Galician: गैलिशियन्
+Ganda: गंडा
+Gayo: गयो
+Gbaya: =
+Geez: गीज़
+Georgian: जॉर्जीयन्
+German (Austria): जर्मन (ऑस्ट्रिया)
+German (Germany): जर्मन जर्मनी)
+German (Liechtenstein): जर्मन (लिकटेंस्टीन)
+German (Luxembourg): जर्मन (लक्समबर्ग)
+German (Standard): जर्मन (मानक)
+German (Switzerland): जर्मन (स्विट्जरलैंड)
+German: जर्मन
+Gilbertese: गिल्बरतीस
+Gondi: गोंडी
+Gorontalo: गोरोन्तालो
+Gothic: गोथिक
+Grebo: ग्रीबो
+Greek: यूनानी
+Greenlandic: ग्रीनलैंडिक
+Guarani: गुआरानी
+Gujarati: गुजराती
+Gwich&#39;in: ग्विच'इन
+Haida: हैडा
+Haitian (Creole): हाईटियन क्रियोल)
+Haitian: हाईटियन
+Hausa: होउसा
+Hawaiian: हवाई
+Hebrew: यहूदी
+Herero: हेरेरो
+Hiligaynon: हिलिगेनन
+Hindi: हिंदी
+Hiri Motu: हिरी मोटू
+Hittite: हित्ती
+Hmong: हमोंग
+Holo (Taiwanese): होलो (ताइवान)
+Hungarian: हंगेरी
+Hupa: हूपा
+Iban: इबान
+Icelandic: आइसलैंड का
+Ido: मैं करता हूं
+Igbo: ईग्बो
+Iloko: इलोको
+Indonesian: इन्डोनेशियाई
+Ingush: इंगुश
+Inuktitut: इनूकीटूत्
+Inupiaq: इनुपियाक्
+Iranian: ईरानी
+Irish (Gaelic): आयरिश गेलिक)
+Irish: आयरिश
+Iroquoian: आइरोक्वियन
+Italian (Switzerland): इतालवी (स्विट्जरलैंड)
+Italian: इतालवी
+Japanese: जापानी
+Javanese: जावानीस
+Judeo-Arabic: जूदेव-अरबी
+Judeo-Persian: जूदेव-फ़ारसी
+Kabardian: कबार्डियन
+Kabyle: कबाइल
+Kachin: काचिन
+Kalaallisut: ग्रीनलैंडिक
+Kalmyk: काल्मिक
+Kamba: कम्बा
+Kannada: कन्नड़
+Kanuri: कनूरी
+Kara-Kalpak: काड़ा कालपाक
+Karachay-Balkar: कराचय-बल्कार
+Karelian: खरेलिअन
+Kashmiri: कश्मीरी
+Kashubian: काशुबियन
+Kawi: कावी
+Kazakh: कजाख
+Khasi: खासी
+Khmer (Central): खमेर (मध्य)
+Khmer: खमेर
+Khotanese: खोतानीस
+Kikuyu: किकुयू
+Kimbundu: किम्बन्दु
+Kinyarwanda: किन्यारवाण्डा
+Kirghiz: किरगिज़
+Klingon: क्लिंगन
+Komi: कोमी
+Kongo: कॉन्गो
+Konkani: कोंकणी
+Korean (Johab): कोरियाई (जोहाब)
+Korean (North): कोरियाई (उत्तर)
+Korean (South): कोरियाई (दक्षिण)
+Korean: कोरियाई
+Kosraean: कोसरैन
+Kpelle: केपीएल
+Kuanyama: क्वान्यामा
+Kumyk: कुमीक
+Kurdish: कुर्द
+Kutenai: कुतेनाई
+Kyrgyz: किरगिज़
+Ladino: लादीनो
+Lahnda: लाह्न्डा
+Lamba: लांबा
+Lao: लाओ
+Latin: लैटिन
+Latvian: लात्वीयावासी
+Lezghian: लेज़्घीयन
+Limburgan: लिम्बुरगन
+Lingala: लिंगाला
+Lithuanian: लिथुआनियाई
+Lojban: लोज्बान
+Lozi: लोज़ी
+Luba-Katanga: लूबा-कटांगा
+Luba-Lulua: लुबा-लुलुआ
+Luiseno: लुइसेनो
+Lunda: लुंडा
+Luo: लुओ
+Lushai: लुशाई
+Luxembourghish: लक्जमबर्ग
+Macedonian: मेसीडोनियन
+Madurese: मादुरीस
+Magahi: मगही
+Maithili: मैथिली
+Makasar: मकासर
+Malagasy: मालागासी
+Malay: मलायी
+Malayalam: मलयालम
+Maldivian: मालदीव
+Maltese: मोलतिज़
+Manchu: मांचू
+Mandar: मंदार
+Mandingo: मन्डिन्गो
+Manipuri: मणिपुरी
+Manx: मैंक्स
+Maori: माओरी
+Mapuche: मापुचे
+Marathi: मराठी
+Mari: मारी
+Marshallese: मार्शलीज़
+Marwari: मारवाड़ी
+Masai: मसाई
+Mayan: माया
+Mende: मेंडे
+Mi&#39;kmaq: मि’कमक
+Minangkabau: मिनांग्काबाउ
+Mirandese: मिरांडी
+Mohawk: मोहौक
+Moksha: मोक्ष
+Moldavian: मोलदावियन
+Mongo: मोंगो
+Mongolian: मंगोलियन
+Montenegrin: मोंटेनिग्रिन
+Moroccan: मोरक्को
+Mossi: मोसी
+Myanmar: म्यांमार
+Māori: माओरी
+N&#39;Ko: एन’को
+Nauru: नाउरू
+Navajo: नावाजो
+Ndebele (North): Ndebele (उत्तर)
+Ndebele (South): Ndebele (दक्षिण)
+Ndebele: नेबेले
+Ndonga: डोन्गा
+Neapolitan: नियपोलिटन
+Nepali: नेपाली
+Nias: नियास
+Niuean: नियुआन
+Nogai: नोगाई
+Norse: नार्वेजियन
+Norwegian (Bokmål): नॉर्वेजियन (बोकमाल)
+Norwegian (Nynorsk): नॉर्वेजियन (Nynorsk)
+Norwegian: नार्वेजियन
+Nyamwezi: =
+Nyankole: न्यानकोल
+Nyoro: न्योरो
+Nzima: नज़िमा
+Occitan: ओसीटान
+Odia: ओडिया
+Ojibwa: ओजिब्वा
+Oriyia: उड़िया
+Oromo: ओरोमो
+Osage: ओसेज
+Ossetic: ओस्सेटिक
+Pahlavi: पहलवी
+Palauan: पलाउअन
+Pali: पाली
+Pampanga: =
+Pangasinan: पंगासिनन
+Panjabi: पंजाबी
+Papiamento: पापियामेन्टो
+Pashto: पश्तो
+Pedi: पेड़ी
+Persian (Farsi): फ़ारसी (फ़ारसी)
+Persian (Iran): फ़ारसी (ईरान)
+Persian: फ़ारसी
+Phoenician: =
+Pohnpeian: पोह्नपिएन
+Polish: पोलिश
+Portuguese: पुर्तगाली
+Portuguese/Brazil: पुर्तगाली / ब्राज़ील
+Punjabi (India): पंजाबी (भारत)
+Punjabi (Pakistan): पंजाबी (पाकिस्तान)
+Punjabi: पंजाबी
+Quechua: क्वेशुआ
+Rajasthani: राजस्थानी
+Rapanui: रापानुई
+Rarotongan: रारोतोंगन
+Rhaeto-Romanic: राएतो-रोमन
+Romanian: रोमानियाई
+Romansh: रोमांश
+Romany: रोमानी
+Rundi: रुन्दी
+Russian (Moldavia: रूसी (मोलदाविया
+Russian (Republic of Moldova): रूसी (मोल्दोवा गणराज्य)
+Russian: रूसी
+Sami (Inari): सामी (इनारी)
+Sami (Lappish): सामी (लापिश)
+Sami (Lule): सामी (नियम)
+Sami (Northern): सामी (उत्तरी)
+Sami (Skolt): सामी (स्कोल्ट)
+Sami (Southern): सामी (दक्षिणी)
+Sami: सामी
+Samoan: सामोन
+Samoli: समोली
+Sandawe: सन्डावे
+Sango: सांगो
+Sanskrit: संस्कृत
+Santali: संताली
+Sardinian: सरदीन
+Sasak: सासाक
+Scots (Gaelic): स्कॉट्स (गेलिक)
+Selkup: सेल्कप
+Serbian (Upper): सर्बियाई (ऊपरी)
+Serbian: सर्बियाई
+Serer: सेरेर
+Sesotho: सेसोथो
+Shan: शान
+Shona: सोणा
+Sichuan Yi: सिचुआन यी
+Sicilian: सिसिली का
+Sindhi: सिंधी
+Sinhala: सिंहली
+Slavic: स्लाव
+Slovak: स्लोवाक
+Slovenian: स्लोवेनियाई
+Sogdian: सोग्डियन
+Somali: सोमाली
+Somani: सोमानी
+Songhai: सोंघई
+Soninke: सोनिन्के
+Sorbian (Lower): सॉर्बियन (निचला)
+Sorbian (Upper): सॉर्बियन (ऊपरी)
+Sorbian: सॉर्बियन
+Sotho: सोथो
+Spanish (Argentina): स्पेनिश (अर्जेंटीना)
+Spanish (Bolivia): स्पेनिश (बोलीविया)
+Spanish (Chile): स्पेनिश (चिली)
+Spanish (Colombia): स्पेनिश (कोलंबिया)
+Spanish (Costa Rica): स्पेनिश (कोस्टा रिका)
+Spanish (Dominican Republic): स्पेनिश (डोमिनिकन गणराज्य)
+Spanish (Ecuador): स्पेनिश (इक्वाडोर)
+Spanish (El Salvador): स्पेनिश (एल साल्वाडोर)
+Spanish (Guatemala): स्पैनिश (ग्वाटेमाला)
+Spanish (Honduras): स्पेनिश (होंडुरास)
+Spanish (Mexico): स्पेनिश (मेक्सिको)
+Spanish (Nicaragua): स्पेनिश (निकारागुआ)
+Spanish (Panama): स्पेनिश (पनामा)
+Spanish (Paraguay): स्पेनिश (पैराग्वे)
+Spanish (Peru): स्पेनिश (पेरू)
+Spanish (Puerto Rico): स्पेनिश (प्यूर्टो रिको)
+Spanish (Spain): स्पेनिश (स्पेन)
+Spanish (Uruguay): स्पेनिश (उरुग्वे)
+Spanish (Venezuela): स्पेनिश (वेनेजुएला)
+Spanish: स्पेनिश
+Sranan Tongo: स्रानन टोंगो
+Sukuma: सुकुमा
+Sumerian: सुमेरियन
+Sundanese: सुंडानी
+Susu: सुसु
+Sutu: Su Tu
+Swahili: swahili
+Swati: स्वाति
+Swedish (Finland): स्वीडिश (फिनलैंड)
+Swedish (Sweden): स्वीडिश (स्वीडन)
+Swedish: स्वीडिश
+Syriac: सिरिएक
+Tagalog: तागालोग
+Tahitian: ताहितियन
+Tai: ताई
+Taiwan: ताइवान
+Tajik: ताजिक
+Tamashek: तामाशेक
+Tamil: तामिल
+Tatar: टाटर
+Telugu: तेलुगू
+Tereno: टेरेनो
+Tetum: तेतुम
+Thai: थाई
+Tibetan: तिब्बती
+Tigre: टाइग्रे
+Tigrinya: तिग्रीन्या
+Timne: टिम्ने
+Tlingit: ट्लिंगिट
+Tok Pisin: टोक पिसिन
+Tokelau: टोकेलाऊ
+Tonga (Nytmhasa): टोंगा (निठम्हासा)
+Tonga (Tonga Islands): टोंगा (टोंगा द्वीप)
+Tonga: टोंगा
+Tsimshian: त्सिमीशियन
+Tsonga: सोंगा
+Tswana: सेत्स्वाना
+Tumbuka: तम्बूका
+Turkish: तुर्की
+Turkmen: तुक्रमेन
+Tuvinian: तुवीनियन
+Twi: ट्वी
+Udmurt: उदमुर्त
+Ugaritic: युगैरिटिक
+Ukrainian: यूक्रेनी
+Umbundu: उम्बुन्डु
+Urdu: उर्दू
+Uyghur: उईघुर
+Uzbek: उज़बेक
+Vai: वै
+Venda: वेन्दा
+Vietnamese: वियतनामी
+Volapük: वोलापुक
+Votic: वॉटिक
+Wakashan: वकाशन
+Walloon: वलून
+Waray: वारै
+Washo: वाशो
+Welsh: वेल्श
+Wolaitta: वोलेट्टा
+Wolof: वोलोफ
+Xhosa: षोसा
+Yakut: याकुट
+Yao: याओ
+Yapese: यापीस
+Yiddish: यहूदी
+Yorùbá: योरोबा
+Yupik: युपिक
+Zande: =
+Zapotec: ज़ेपोटेक
+Zaza: जाजा
+Zenaga: झेनगा
+Zhuang: ज़ुआंग
+Zulu: ज़ुलु
+Browser-defined: ब्राउज़र-परिभाषित
+event: प्रतिस्पर्धा
+journal: पत्रिका
+0: ०
+1: =
+2: २
+3: ३
+4: ४
+5: ५
+6: ६
+7: ।
+8: ।
+9: ९
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: अमान्य उपयोगकर्ता लॉगिन
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: गलत पासवर्ड
+no such user: ऐसा कोई उपयोगकर्ता नहीं है
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: खाता निष्क्रिय किया गया
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: मध्यान्तर
+Months: महीने
+Month Days: महीने के दिन
+Days: दिन
+Weeks: हफ्तों
+Position: पद
+Until: जब तक
+Count: गिनती
+Inclusion Dates: समावेशन दिनांक
+Exclusion Dates: बहिष्कार तिथि
+Event Imported: इवेंट इम्पोर्टेड है
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: बाइट्स
+kb: केबी
+Mb: एमबी
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: अधिसूचना
+authenticate: एसएमटीपी त्रुटि: प्रमाणित नहीं किया जा सका
+connect_host: SMTP त्रुटि: SMTP होस्ट से कनेक्ट नहीं हो सका:
+data_not_accepted: SMTP त्रुटि: डेटा स्वीकार नहीं किया गया
+encoding: अज्ञात एन्कोडिंग:
+execute: निष्पादित नहीं कर सका:
+file_access: फ़ाइल तक नहीं पहुंच सका:
+file_open: फ़ाइल त्रुटियाँ फ़ाइल को नहीं खोल सकी:
+from_failed: निम्नलिखित पते से विफल:
+instantiate: मेल के फंक्शन के बारे में दृष्टांत नहीं दिया जा सका
+mailer_not_supported: मेलर समर्थित नहीं है
+provide_address: आपको कम से कम एक प्राप्तकर्ता ईमेल पता प्रदान करना होगा।
+recipients_failed: SMTP त्रुटि: निम्न प्राप्तकर्ता विफल हुए:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: ग्राफिक में वर्ण सीन दर्ज करें
+Enter the correct letters and numbers...: छवि से सही अक्षरों और संख्याओं को टेक्स्ट बॉक्स में दर्ज करें। यह छोटा परीक्षण दुर्भावनापूर्ण बॉट के खिलाफ पहुंच प्रतिबंध के रूप में कार्य करता है। यदि यह ग्राफ़िक पढ़ना बहुत कठिन है तो बस पृष्ठ को पुनः लोड करें
+Challenge/Response: उत्तर को दावा करें
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: इस प्रविष्टि की तिथि और समय बदलें?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: आपने एक संक्षिप्त विवरण दर्ज नहीं किया है
+time prior to work hours...: समय से पहले काम के घंटे ...
+Invalid Event Date: अमान्य ईवेंट दिनांक
+Please add a participant: कृपया एक प्रतिभागी जोड़ें
+Invalid Date: अमान्य दिनांक
+You have not entered a valid time of day: आपने दिन का कोई मान्य समय नहीं डाला है।
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: कैलेंडर ID रिक्त नहीं हो सकती।
+First and last names cannot both be blank.: प्रथम और अंतिम नाम दोनों रिक्त नहीं हो सकते।
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: अमान्य रंग
+Color format should be RRGGBB.: रंग प्रारूप #RRGGBB होना चाहिए।
+URL cannot be blank.: URL रिक्त नहीं हो सकता है।
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: फ़ाइल प्रकार आयात प्रारूप से मेल नहीं खाता है
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: दस्तावेज़ पृष्ठभूमि के लिए अमान्य रंग।
+Invalid color for document title.: दस्तावेज़ शीर्षक के लिए अमान्य रंग।
+Invalid color for table cell background.: तालिका सेल पृष्ठभूमि के लिए अमान्य रंग।
+Invalid color for table cell background for today.: आज के लिए तालिका सेल पृष्ठभूमि के लिए अमान्य रंग।
+Invalid work hours.: अमान्य कार्य समय
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: सर्वर URL को स्लैश (/) के साथ समाप्त होना चाहिए।
+Invalid color for table grid.: टेबल ग्रिड के लिए अमान्य रंग।
+Invalid color for event popup background.: इवेंट पॉपअप पृष्ठभूमि के लिए अमान्य रंग।
+Invalid color for event popup text.: इवेंट पॉपअप टेक्स्ट के लिए अमान्य रंग।
+Invalid color for table header text.: टेबल हेडर टेक्स्ट के लिए अमान्य रंग।
+Invalid color for table header background.: टेबल हेडर बैकग्राउंड के लिए अमान्य रंग।
+Server URL is required.: सर्वर URL आवश्यक है।
+Invalid Color: अमान्य रंग
+Database Name: डेटाबेस नाम
+Full Path (no backslashes): पूर्ण पथ (कोई बैकस्लैश नहीं)
+The password contains illegal characters.: पासवर्ड में अवैध वर्ण हैं।
+Error you must specify a Single-User Login: त्रुटि: आपको एकल-उपयोगकर्ता लॉगिन निर्दिष्ट करना होगा
+Could not find XXX.: XXX नहीं खोज सका।
+Could not find XXX in DOM.: DOM में XXX नहीं मिला।
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: इस सप्ताह
+This Month: इस महीने
+This Year: इस साल
+Exit: बाहर जाएं
+Add New Event: नई घटना जोड़ें
+Delete Entries: प्रविष्टियां हटाएं
+My Views: मेरे विचार
+Manage Calendar of: का कैलेंडर प्रबंधित करें
+My Reports: मेरी रिपोर्ट
+My Profile: मेरी प्रोफाइल
+Public Calendar: सार्वजनिक कैलेंडर
+Unapproved Events: अनुचित घटनाएँ
+User Manager: उपयोगकर्ता प्रबंधक
+Help Contents: सहायक सामग्री
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: डेटाबेस कैश निर्देशिका
+Create New: नया बनाओ
+Failure Reason: विफलता का कारण:
+You must manually create database: आपको मैन्युअल रूप से डेटाबेस बनाना होगा।
+Single-User: एकल उपयोगकर्ता
+Test Settings: परीक्षण सेटिंग्स
+Timezone Conversion Successful: समयक्षेत्र रूपांतरण सफल
+WebCalendar Installation Wizard Step XXX: WebCalendar स्थापना विज़ार्ड चरण XXX
+Password Accepted: पासवर्ड स्वीकृत
+Successful Login: सफल प्रवेश
+Password Incorrect: गलत पासवर्ड
+Invalid Login: अमान्य लॉगिन
+Display Errors: प्रदर्शन त्रुटियाँ
+File Uploads: फ़ाइल अपलोड
+Allow URL fopen: URL फ़ोपेन की अनुमति दें (केवल यदि दूरस्थ कैलेंडर का उपयोग किया जाता है)
+Safe Mode: सुरक्षित मोड
+Safe Mode Allowed Vars: सुरक्षित मोड अनुमत वर्सेस (सुरक्षित मोड चालू होने पर ही आवश्यक है)
+GD: GD (ग्रेडिएंट इमेज बैकग्राउंड के लिए आवश्यक)
+Passwords do not match!: पासवर्ड मेल नहीं खाते!
+Unable to write password to settings.php file: "Settings.php" फ़ाइल में पासवर्ड लिखने में असमर्थ।
+Password Updated: पासवर्ड अपडेट किया गया
+Password has been set: पासवर्ड सेट कर दिया गया है।
+Connection Successful...: कनेक्शन सफल स्थापना जारी रखने के लिए कृपया अगले पृष्ठ पर जाएं।
+Correct your entries or click the Create New...: अपनी प्रविष्टियों को ठीक करें या स्थापना जारी रखने के लिए  नया बनाएं बटन क्लिक करें।
+Correct your entries and try again.: अपनी प्रविष्टियां सही करें और पुनः प्रयास करें।
+XXX does not exist: XXX मौजूद नहीं है
+XXX is not writable: XXX लेखन योग्य नहीं है
+Error Converting Timezone: टाइमज़ोन परिवर्तित करने में त्रुटि
+Error Unable to write to file XXX.: XXX फाइल करने में लिखने में त्रुटि।
+Please change the file permissions of this file.: कृपया इस फ़ाइल की फ़ाइल अनुमतियाँ बदलें।
+Please change includes dir permission: कृपया अन्य उपयोगकर्ताओं द्वारा लिखने की अनुमति देने के लिए आपकी "शामिल" निर्देशिका की फ़ाइल अनुमतियाँ बदलें।
+Your settings have been saved.: अपनी सेटिंग्स को सुरक्षित कर दिया गया है।
+OFF: बंद
+ON: पर
+WebCalendar Setup Wizard: WebCalendar सेटअप विज़ार्ड
+This installation wizard will guide you...: यह इंस्टॉलेशन विज़ार्ड आपको एक बुनियादी WebCalendar स्थापना स्थापित करने के माध्यम से मार्गदर्शन करेगा।<br>सहायता और समस्या निवारण के लिए देखें:<br>
+System Administrators Guide: सिस्टम प्रशासक गाइड
+Frequently Asked Questions: बार बार पूछे जाने वाले प्रश्न
+FAQ: सामान्य प्रश्न
+Troubleshooting: समस्या निवारण
+Getting Help: मदद प्राप्त करें
+Upgrading Guide: अपग्रेडिंग गाइड
+User Supported Wiki: उपयोगकर्ता समर्थित विकी
+PHP Version Check: PHP संस्करण की जाँच करें
+Check to see if PHP 7.1.0 or greater is installed.: यह देखने के लिए जांचें कि क्या PHP 7.1.0 या अधिक स्थापित है।
+PHP version: PHP संस्करण
+PHP Settings: PHP सेटिंग्स
+Detailed PHP Info: विस्तृत PHP जानकारी
+settings.php Status: "settings.php" स्थिति
+Session Check: सत्र की जाँच
+To test the proper operation of sessions...: सत्रों के उचित संचालन का परीक्षण करने के लिए, इस पृष्ठ को पुनः लोड करें। आपको प्रत्येक बार सत्र काउंटर वेतन वृद्धि को देखना चाहिए।
+SESSION COUNTER: सत्र कूपर
+The file permissions of settings.php are set...: "Settings.php" की फ़ाइल अनुमतियाँ सेट की गई हैं ताकि इंस्टॉलर को इसे संशोधित करने की अनुमति न हो। जारी रखने के लिए कृपया निम्न फ़ाइल की फ़ाइल अनुमतियाँ बदलें
+The file permissions of the includes directory are set...: शामिल निर्देशिका की फ़ाइल अनुमतियाँ सेट की गई हैं ताकि इंस्टॉलर को एक नई फ़ाइल बनाने की अनुमति न हो। जारी रखने के लिए कृपया निम्न निर्देशिका की अनुमतियां बदलें
+Your settings.php file appears to be valid.: आपकी "settings.php" फ़ाइल मान्य प्रतीत होती है।
+Configuration Wizard Password: कॉन्फ़िगरेशन विज़ार्ड पासवर्ड
+Create Settings File Password: सेटिंग्स फ़ाइल पासवर्ड बनाएँ
+db setup directions...: इस सेक्शन में आप अपने डेटाबेस सर्वर से कनेक्शन सेट और टेस्ट करेंगे। डेटाबेस, तालिकाओं और उपयोगकर्ताओं को बनाने के लिए आपूर्ति की गई खाता जानकारी के पास पूर्ण अनुमति होनी चाहिए। यदि यह संभव नहीं है, या आपका डेटाबेस एक्सेस सीमित है, तो आपको अपने डेटाबेस को मैन्युअल रूप से कॉन्फ़िगर करना होगा।
+Database Status: डेटाबेस की स्थिति
+Supported databases for your PHP installation: आपके PHP स्थापना के लिए समर्थित डेटाबेस
+Your current database settings are able to access the database.: आपकी वर्तमान डेटाबेस सेटिंग्स डेटाबेस तक पहुँचने में सक्षम हैं।
+Please Test Settings: कृपया परीक्षण सेटिंग्स
+Your current database settings are not able...: आपकी वर्तमान डेटाबेस सेटिंग्स डेटाबेस तक पहुंचने में सक्षम नहीं हैं या अभी तक परीक्षण नहीं किया गया है।
+Database Settings: डेटाबेस सेटिंग्स
+Database Type: डेटाबेस प्रकार
+Server: सर्वर
+Connection Persistence: कनेक्शन की दृढ़ता
+All your database tables appear to be up...: आपके सभी डेटाबेस टेबल अप टू डेट हो गए हैं। आप अगले पृष्ठ पर जा सकते हैं और अपने WebCalendar सेटअप को पूरा कर सकते हैं।
+This appears to be a new installation...: यह एक नई स्थापना प्रतीत होती है। यदि यह सही नहीं है, तो कृपया पिछले पृष्ठ पर वापस जाएँ और अपनी सेटिंग्स ठीक करें।
+This appears to be an upgrade...: यह संस्करण&nbsp;XXX&nbsp;&nbsp;YYY से अपग्रेड प्रतीत होता है।
+The database requires some data input...: डेटाबेस को कुछ डेटा इनपुट की आवश्यकता है अपग्रेड को पूरा करने के लिए अपडेट डेटाबेस पर क्लिक करें।
+In this section we will perform...: इस खंड में हम आपके डेटाबेस को आवश्यक स्तर तक लाने के लिए बदलाव करेंगे। यदि आप पूरी तरह से समर्थित डेटाबेस का उपयोग कर रहे हैं, तो यह चरण आपके लिए स्वचालित रूप से किया जाएगा। यदि नहीं, तो आवश्यक एसक्यूएल प्रदर्शित किया जा सकता है और आपको इसे अपने डेटाबेस सर्वर क्वेरी विंडो में कट और पेस्ट करने में सक्षम होना चाहिए।
+No database actions are required.: डेटाबेस क्रियाओं की आवश्यकता नहीं है।
+The following database actions are required: निम्नलिखित डेटाबेस क्रियाएं आवश्यक हैं
+ODBC Underlying Database: ODBC अवर डेटाबेस:
+Automatic installation not supported: स्वचालित स्थापना आपके डेटाबेस प्रकार के लिए पूरी तरह से लागू नहीं की गई है। आपको SQL आपूर्ति का उपयोग करके आवश्यक तालिकाओं को मैन्युअल रूप से बनाना होगा। जारी रखने के लिए कृपया  प्रदर्शन SQL पर क्लिक करें। अपने डेटाबेस क्वेरी विंडो में कट और पेस्ट करें।
+This may take several minutes to complete: इसे पूरा होने में कई मिनट लग सकते हैं।
+Install Database: डेटाबेस स्थापित करें
+Update Database: डेटाबेस अद्यतन करें
+Display Required SQL: आवश्यक SQL प्रदर्शित करें
+Return to previous page after processing SQL.: इस SQL ​​को मैन्युअल रूप से संसाधित करने के बाद, आपको पिछले पृष्ठ पर लौटना होगा और अपने डेटाबेस को फिर से लिखना होगा ताकि स्क्रिप्ट परिवर्तनों का पता लगा सके।
+This is the final step in setting up your WebCalendar Installation.: यह आपके WebCalendar स्थापना को स्थापित करने का अंतिम चरण है।
+Timezone Conversion: समयक्षेत्र रूपांतरण
+It appears that you have NOT converted...: ऐसा लगता है कि आपने अपने मौजूदा WebCalendar इवेंट डेटा को GMT में परिवर्तित नहीं किया है। यदि आपके पास है, तो आप इस नोटिस को अनदेखा कर सकते हैं और रूपांतरण के साथ आगे नहीं बढ़ सकते। यदि यह एक नया इंस्टॉलेशन है, तो आप इस नोटिस को अनदेखा भी कर सकते हैं।
+Convert Data to GMT: डेटा को GMT में बदलें
+Application Settings: अनुप्रयोग सेटिंग
+HTTP-based authentication was not detected...: HTTP- आधारित प्रमाणीकरण का पता नहीं लगाया गया था। यदि आप नीचे दिए 'उपयोगकर्ता प्रमाणीकरण' विकल्पों में से 'वेब सर्वर' का चयन करना चाहते हैं तो आपको अपने वेब सर्वर को फिर से कॉन्फ़िगर करना होगा।
+HTTP-based authentication was detected...: HTTP- आधारित प्रमाणीकरण का पता लगाया गया था। उपयोगकर्ता प्रमाणीकरण आपके वेब सर्वर द्वारा संभाला जा रहा है। आपको नीचे 'उपयोगकर्ता प्रमाणीकरण' विकल्पों की सूची से 'वेब सर्वर' का चयन करना चाहिए।
+Create Default Admin Account: डिफ़ॉल्ट व्यवस्थापक खाता बनाएँ
+(Admin Account Not Found): (व्यवस्थापक खाता नहीं मिला)
+User Authentication: प्रयोक्ता प्रमाणीकरण
+Web-based via WebCalendar (default): WebCalendar के माध्यम से वेब-आधारित (डिफ़ॉल्ट)
+Web Server (not detected): वेब सर्वर (पता नहीं)
+Web Server (detected): वेब सर्वर (पाया गया)
+None (Single-User): कोई नहीं (एकल-उपयोगकर्ता)
+Read-Only: केवल पढ़ने के लिए
+Environment: वातावरण
+Production: उत्पादन
+Development: विकास
+Save Settings: सेटिंग्स सेव करें
+Launch WebCalendar: WebCalendar लॉन्च करें
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: टेबल "XXX" को अपडेट करने में त्रुटि: YYY।
+Conversion Successful: रूपांतरण सफल
+Perl script required: WebCalendar के आपके पिछले संस्करण को आपके डेटा को परिवर्तित करने के लिए एक PERL स्क्रिप्ट चलाने की आवश्यकता है। कृपया /tools/upgrad_to_0.9.7.pl चलाएं फिर जारी रखने के लिए इस पृष्ठ पर लौटें।
+previous version requires updating several tables: WebCalendar के आपके पिछले संस्करण को कई डेटाबेस तालिकाओं को अपडेट करने की आवश्यकता है।
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: कोई पूर्वावलोकन उपलब्ध नहीं
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: डेटाबेस से कनेक्ट करने में त्रुटि
+Include Path: पथ शामिल करें
+Deleting events for: के लिए ईवेंट हटाना
+Importing events for: के लिए घटनाओं का आयात
+No data returned from: से कोई डेटा वापस नहीं आया
+for non-user calendar: गैर-उपयोगकर्ता कैलेंडर के लिए
+No Remote Calendars found: कोई दूरस्थ कैलेंडर नहीं मिला
+Remote Calendars not enabled: दूरस्थ कैलेंडर सक्षम नहीं हैं
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ईवेंट आईडी नहीं मिल सका
+could not find event id XXX in database.: डेटाबेस में ईवेंट आईडी XXX नहीं मिल सका।
+task: टास्क
+This is a reminder for the XXX detailed below.: यह नीचे दिए गए एक्सएक्सएक्स के लिए एक अनुस्मारक है।
+Pecentage Complete: पेकेंटेज कम्प्लीट
+Reminder: अनुस्मारक
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: असमर्थित कार्रवाई: XXX।
+No event id specified.: कोई ईवेंट आईडी निर्दिष्ट नहीं है।
+Not authorized (not admin).: अधिकृत नहीं (व्यवस्थापक नहीं)।
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: XXX के लिए घटनाओं की जाँच YYY से तारीख ZZZ तक।
+Found XXX events in time range.: समय सीमा में XXX घटनाओं को मिला।
+Event id=XXX YYY at ZZZ on AAA.: इवेंट आईडी = XXX एएए पर ZZZ में XXX "YYY"।
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: अन्य उपयोगकर्ता के कैलेंडर को देखने के लिए XXX उपयोगकर्ता को अनुमति देना।
+Error Email reminders disabled for user XXX.: त्रुटि: उपयोगकर्ता "XXX" के लिए ईमेल अनुस्मारक अक्षम किया गया।
+Number of site_extras XXX.: Site_extras की संख्या: XXX।
+Reminder set for event.: घटना के लिए अनुस्मारक सेट।
+Mins Before XXX.: इससे पहले Mins: XXX।
+Event time is XXX.: घटना समय है: XXX
+Remind time is XXX.: रिमाइंड टाइम है: XXX
+Reminders for user XXX, login YYY.: उपयोगकर्ता "XXX" के लिए अनुस्मारक, "YYY" लॉगिन करें।
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: उपयोगकर्ता "XXX" के लिए अनुपयुक्त हो रहा है।
+Event id=XXX YYY already sent.: इवेंट आईडी = XXX "YYY" पहले से ही भेजा गया है।
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: एकल-उपयोगकर्ता मोड के लिए कोई लॉगिन आवश्यक नहीं है।
+No login required for HTTP authentication.: HTTP प्रमाणीकरण के लिए कोई लॉगिन आवश्यक नहीं है।
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: लॉगिन में अमान्य वर्ण।
+Username XXX does not exist.: उपयोगकर्ता नाम "XXX" मौजूद नहीं है।
+You cannot remove admin rights from yourself!: आप स्वयं से व्यवस्थापक अधिकार नहीं निकाल सकते हैं!
+Unknown error saving user: उपयोगकर्ता को सहेजने में अज्ञात त्रुटि
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: इवेंट आईडी के लिए कोई प्रतिभागी नहीं मिला: XXX।
+Db error Could not find event id XXX.: डीबी त्रुटि: ईवेंट आईडी XXX नहीं ढूंढ सका।
+Error Could not find event id XXX in database.: त्रुटि: डेटाबेस में इवेंट आईडी XXX नहीं मिला।
