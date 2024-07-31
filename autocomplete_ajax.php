@@ -115,12 +115,12 @@ if ($action == 'search') {
   }
 
   $data = $sug = [];
-  for ($i = 0; $i < count ($ret); $i++) {
-    $sug[$i] = $ret[$i]['name'];
+
+  foreach ( $ret as $i ) {
+    $sug[]  = $i['name'];
+    $data[] = $i['text'];
   }
-  for ($i = 0; $i < count ($ret); $i++) {
-    $data[$i] = $ret[$i]['text'];
-  }
+
   ajax_send_object('matches', $sug, $sendPlainText);
 } else {
   ajax_send_error(translate("Error"));
