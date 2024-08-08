@@ -1,18 +1,4 @@
 # Run docker-compose from the top-level WebCalendar directory and not from this "docker" subdirectory.
-# The first time you run this, you will need to grant permission
-# for the webcalendar user to access mariadb (after you have run
-# docker-compose up).  You only need to do this once.
-#
-#   Start a shell on the mariadb container:
-#     docker-compose -f docker/docker-compose-php8-dev.yml exec db-mariadb /bin/sh
-#   Start the mariadb client:
-#     /bin/mariadb -p
-#     (enter the MYSQL_ROOT_PASSWORD below)
-#   Execute the following three db commands:
-#     GRANT ALL PRIVILEGES ON *.* TO webcalendar@localhost IDENTIFIED BY 'Webcalendar.1' WITH GRANT OPTION;
-#     FLUSH PRIVILEGES;
-#     QUIT
-#
 #   If you need shell access on the webserver container running WebCalendar, you can use
 #   the following command:
 #     docker-compose -f docker/docker-compose-php8-dev.yml exec webcalendar-php8-mariadb /bin/sh
@@ -27,6 +13,17 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
+      # install sql at start
+      # To test the installer's built-in installer, comment this out
+#      - type: bind
+#        source: ../install/sql/tables-mysql.sql
+#        target: /docker-entrypoint-initdb.d/tables-mysql.sql
+      # Set mariadb access policy
+      # NOTE: The specified SQL needs to match the password specified
+      #       in the ENV vars listed below.
+      - type: bind
+        source: ../install/sql/permissions-mysql.sql
+        target: /docker-entrypoint-initdb.d/permissions-mysql.sql
     environment:
       - MYSQL_ROOT_PASSWORD=Webcalendar.1
       - MYSQL_PASSWORD=Webcalendar.1
