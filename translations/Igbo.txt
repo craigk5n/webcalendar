@@ -1,0 +1,2387 @@
+# Igbo ig
+#
+# Usoro ahụ nwere nkụnye eji isi mee nhọrọ:
+#
+# Sụgharịa site na: aha gị na email
+# Mmelite ikpeazụ: ụbọchị ntụgharị
+# (Gụnyere onye ndu "#" na okwu ọ bụla ndị ntụgharị gara aga kwuru.
+# Ahịrị oghere nke mbụ na-agwụ ihe ndị a.
+#
+# Ndị na-esochi ya dị ka mkpa:
+#
+# Nkebi ahịrịokwu bekee: ntụgharị
+# (Otu na ahịrị. N'AGBATA na-eduga "#".
+# The "Ahịrịokwu Bekee:", gụnyere colon ":", bụ nke
+# WebCalendar mmepe. Akụkụ gị bụ "ntụgharị".)
+#
+# Ndepụta ngwa ọrụ nwere ederede abụọ perl iji nyere gị aka:
+# - check_translation.pl
+# na-egosi ma atụgharịala ederede niile nke ọma.
+# - update_translation.pl
+# ga-emegharị faịlụ mmemme iji chọta nsụgharị niile ('ahịrịokwu') na
+# tooltip ('akpaokwu'). Ọ ga-ahazi ahịrịokwu dị ka ibe
+# (faịlụ) nke nwere mbu. Optionally, ọ nwere ike ịkpado na
+# Nkebi ahịrịokwu ndị na-atụgharịbeghị site na itinye
+# << MISSING  >>
+# na akara n'elu akpaokwu ahụ. Ma, ọ bụrụ na akpaokwu ahụ bụ ndebiri,
+# ọ ga-agụnye ederede Bekee zuru ezu na akara dị n'okpuru ahịrịokwu ahụ.
+#
+# Mara: Ana m agbali igbutu nha faịlụ niile. Ọ bụrụ na "ntụgharị asụsụ"
+# okwu / akpaokwu yiri na asụsụ gị na Bekee, naanị jiri akara "=".
+#
+# Mara: will ga - ahụ ntinye maka "May_" n'okpuru. Enwere ihe kpatara nke a.
+# Tugharia"May_" ka aha ọnwa zuru na "May" ka,
+# na-abụkarị akwụkwọ ozi atọ, ndebiri nke ọnwa (dịka "Ọkt" maka "Ọktọba").
+#
+# M ji Google sụgharịa maka nke a.
+# Ọ ga-ezu ruo mgbe onye na-asụ bekee nwere ike nyochaa ya.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: Kalinda
+version XXX: XXXdị XXX
+WebCalendar is a PHP application used...: WebCa kalenda bụ ngwa PHP ejiri iji dobe kalenda maka otu onye ọrụ ma ọ bụ ndị ọrụ ịntanetị / intranet. Enwere ike ịhazi ya dị ka kalenda mmemme.
+Credits: Ebe E Si Nweta
+About: Banyere
+OK: Ọ DỊ MMA
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Njehie data data: XXX.
+DEFAULT CONFIGURATION: NKWUO DEFAULT
+Go: Gaba
+Save: Chekwa
+Undo: Wepu
+Public Access: Ọha Ọha
+Admin: Nlekọta
+User Access Control: Njikwa njikwa Onye njikwa
+Allow Access to Other Users Calendar: Nye ohere nye Kalinda ndị ọrụ ndị ọzọ
+Grant This User Access to My Calendar: Nyefee Ntuziaka Onye a na Kalịnda M
+Type: .Dị
+Calendar: Kalinda
+View Event: Lee Omume
+View: Lelee
+Edit: Dezie
+Approve/Reject: Kwenye / Jụ
+Events: Ihe omume
+Tasks: Ihe aga-eme
+Journals: Akwụkwọ akụkọ
+Can Invite: Nwere Ike Inkù
+Can Email: Nwere ike Email
+Can See Time Only: Nwere Ike Timehụ Naanị Oge
+Assistant: Onye enyemaka
+Select All: Họrọ Ha niile
+Clear All: Kpochapụ Ha niile
+Public: Ọha
+Confidential: Ihe nzuzo
+Private: Nkeonwe
+
+########################################
+# Page: activity_log.php
+#
+Next: Osote
+Previous: Nke gara aga
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Ihe omume XXX adịla na kalịnda gị.
+Invalid entry id XXX.: Ndenye ntinye na ezighi ezi: "XXX".
+a XXX event may not be added to your calendar: Nke a bụ ihe omume XXX ma enwere ike ghara itinye ya na kalịnda gị.
+confidential: nzuzo
+private: nkeonwe
+Error adding event XXX.: Njehie itinye mmemme: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Aha ntọala na ezighi ezi "XXX"
+Select: Họrọ
+Day: .Bọchị
+Week: Izu
+Month: Ọnwa
+Year: Afọ
+Bottom: N'ala
+Top: N'elu
+Anyone: Onye ọ bụla
+Participant: Onye so
+Settings: Ntọala
+Groups: Otu dị iche iche
+NonUser Calendars: Kalịnda Na-abụghị Onye Ọrụ
+Other: Ndị ọzọ
+Email: =
+Colors: Agba
+Document background: Ndabere ederede
+Document title: Aha akwukwo
+Document text: Ederede ederede
+My event text: Ihe omume m
+Table grid color: Isiokwu okporo agba
+Table header background: Isiokwu nkụnye eji isi mee ndabere
+Table header text: Isiokwu isiokwu ederede
+Table cell background: Isiokwu cell okirikiri
+Table cell background for current day: Isiokwu mkpụrụ ndụ okirikiri maka ụbọchị ugbu a
+Table cell background for days with events: Isiokwu mkpụrụ ndụ okirikiri maka ụbọchị nwere ihe omume
+Table cell background for weekends: Isiokwu okpokoro maka izu ụka
+Table cell background for other month: Mbadamba ụrọ maka ọnwa ọzọ
+Week number color: Agba agba izu
+Event popup background: Omume popup ndabere
+Event popup text: Ederede popup ederede
+System Settings: Ntọala sistemụ
+Help: Enyemaka
+System options: Nhọrọ usoro
+app-name-help: Ezipụta aha nke ngwa nke ga-egosi na ihe nchọgharị aha mmanya maka ibe niile na peeji nbanye. Uru ị kwupụtara ebe a ga-ele anya na faịlụ ntụgharị ahụ na-enye gị ohere ịnye utu aha dị iche iche maka asụsụ dị iche iche.
+Application Name: Aha Ngwa
+Translated Name (XXX): Aha atụgharịrị (XXX)
+server-url-help: Ezipụta isi URL maka ngwa ahụ. A ga-etinye nke a mgbe ị na-ezipụ ihe ncheta email na ọkwa.
+Server URL: URL sava
+home-url-help: Ezipụta ụlọ URL maka ngwa ahụ. Nke a nwere ike ịbụ oke ma ọ bụ ikwu
+Home URL: URLlọ URL
+language-help: Egosi asụsụ ị ga-eji.
+Language: Asụsụ
+Your browser default language is XXX.: Asụsụ ihe nchọgharị gị bụ "XXX".
+Allow user to use themes: Nye onye ọrụ ohere iji gburugburu
+themes-help: Na-enye ohere melite nhazi nke ntọala nhazi. Akwụkwọ edemede ndị dị ala bụ naanị pref.
+Themes: Gburugburu
+AVAILABLE THEMES: ISIOKWU NDA DA N’ANYA
+None: Onweghị
+Preview: Previu
+Site customization: Nhazi saịtị
+custom-script-help: Enye ohere ntinye nke omenala Javascript ma ọ bụ stylesheet ederede na ga-etinyere na HTML "isi" ngalaba nke ọ bụla na peeji nke.
+Custom script/stylesheet: Omenala akwukwọ / Stetheet
+custom-header-help: Na-enye ohere ka etinye HTML snippet omenala n'elu ibe ọ bụla.
+Custom header: Omenala isiokwu
+custom-trailer-help: Na-enye ohere ka etinye HTML snippet omenala na njedebe nke ibe ọ bụla.
+Custom trailer: Omenala ụgbọala na-adọkpụ
+enable-external-header-help: Na-enye ohere ka a na-adọkpụ ụgbọala na-adọkpụ ụgbọala site na faịlụ mpụga
+Allow external file for header/script/trailer: Ekwe faịlụ mpụga maka nkụnye eji isi mee / edemede / ụgbọala na-adọkpụ
+Allow user to override header/trailer: Nye onye ọrụ ohere igbochi nkụnye eji isi mee / ụgbọala na-adọkpụ
+Date and Time: Bọchị na Oge
+server-tz-help: Ezipụta awa ole ka ịhazie oge site na UTC na oge nkesa.
+Server Timezone Selection: Nhọrọ Oge Oge Oge
+tz-help: Ezipụta awa ole ka ịhazie oge site na UTC ruo oge mpaghara.
+Default Client Timezone Selection: Ndabere Client Timezone Nhọrọ
+display-general-use-gmt-help: Ọ bụrụ na enyere ya aka, a na-egosipụta ụbọchị / oge ndị ọzọ dịka GMT
+Display Common Use Date/Times as GMT: Gosipụta Usebọchị A Na-ejikarị Eme Ihe / Oge dị ka GMT
+date-format-help: Ezipụta usoro usoro kachasị amasị.
+Date format: Formatbọchị usoro
+Small Task Date: Tasbọchị Ọrụ Obere
+display-week-starts-on: Ezipụta ụbọchị nke izu na-amalite na. Ọ bụrụ na akọwapụtara Mọnde, ọnụọgụ izu ga-abụ nọmba izu ISO.
+Week starts on: Izu na-amalite
+display-weekend-starts-on: Setịpụrụ ụbọchị izu maka ngwụsị izu ịmalite
+Weekend starts on: Oge izu na-amalite
+time-format-help: Na-akọwapụta usoro oge iji:<br><em>Oge 12:</em> Oge ngosi dịka 3am, 8:30 pm, wdg.<br><em>24 awa:</em> Oge ngosi dịka 300 , 2030, wdg.
+Time format: Usoro oge
+12 hour: 12 awa
+24 hour: 24 awa
+timed-evt-len-help: Ezipụta usoro ntinye iji chọpụta ogologo oge ihe omume ejiri.
+Specify timed event length by: Ezipụta ogologo oge omume site
+Duration: Oge
+End Time: Ọgwụgwụ Oge
+work-hours-help: Na-akọwapụta oge iche iji gosipụta maka nlele ụbọchị.
+Work hours: Oge ọrụ
+From: Site na
+to: ka
+Appearance: Ọdịdị
+preferred-view-help: Ezipụta ndabara echiche (Day, Week, Month, or Year).
+Preferred view: Anya elero anya
+Allow top menu: Kwe ka menu dị n’elu
+Date Selectors position: Selectbọchị Nhọrọ ọnọdụ
+menu-themes-help: Setịpụ agba na ụdị nke elu menu
+Menu theme: Isiokwu menu
+fonts-help: Ezipụta ndepụta nke mkpụrụedemede sistemụ iji (dịka "Arial, Helvetica")
+Fonts: Akara ókwú
+display-sm_month-help: Ọ bụrụ na enyere, na-egosiputa obere ọnwa na ọnwa echiche
+Display small months: Gosiputa obere onwa
+display-weekends-help: Gụnye ngwụsị izu mgbe ị na-elele otu izu.
+Display weekends: Gosi ngwụsị izu
+display-long-daynames-help: Ọ bụrụ na enyere, ogologo ụbọchị aha na-egosipụta
+Display long day names: Gosipụta aha ụbọchị
+display-alldays-help: Gosipụta ụbọchị ndị gara aga na ọnwa ndị ọzọ na nlele ọnwa, na-ejuputa mkpụrụ ndụ niile.
+Display all days in month view: Gosi ụbọchị niile n’ọnwa n’ọnwa
+display-week-number-help: Ezipụta ma izu izu (1-52) a ga-egosipụta na nlele ọnwa na nlele izu.
+Display week number: Ngosipụta izu izu
+display-desc-print-day-help: Gụnye nkọwa omume na ngwa nbipute-ọhụhụ nke nlele ụbọchị.
+Display description in printer day view: Ngosipụta ngosipụta na nlele ụbọchị nbipute
+yearly-shows-events-help: Na nlele kwa afọ, gosipụta ụbọchị nwere ihe omume na font.
+Display days with events in bold in month and year views: Gosiputa ubochi na ihe omume n’uzo di omimi n’ime onwa na anya
+display-minutes-help: Ọ bụrụ na agbanyere ya, nkeji ga - ejedebe na: 00 ga - egosipụta mgbe niile
+Display 00 minutes always: Egosipụta oge 00 oge niile
+display-end-times-help: Ngosipụta mmemme ngwụcha oge ma ọ bụrụ na emesiri oge emere
+Display end times on calendars: Gosi oge njedebe na kalenda
+allow-view-add-help: A ga-etinye akara ngosi '+' na echiche, na-enye ndị ọrụ ohere ịgbakwunye ihe omume na kalenda ndị ọrụ ndị ọzọ ngwa ngwa.
+Include add event link in views: Gụnye tinye njikọ ihe omume na elele
+lunar-help: Ọ bụrụ na enyere ya aka, ga-egosipụta obere akara ngosi na-anọchite anya usoro ọnwa kwa ọnwa
+Display Lunar Phases in month view: Gosipụta Ememme ọnwa na nlele ọnwa
+Restrictions: Mmachibido
+allow-view-other-help: Ezipụta ma otu onye ọrụ nwere ike ịlele kalenda onye ọrụ ọzọ.
+Allow viewing other users calendars: Ekwe ka ịlele kalenda ndị ọrụ ndị ọzọ
+require-approvals-help: Mgbe agbanyere ya, onye ọrụ ga-akwado ihe omume tupu ya egosipụta na kalenda ha (belụsọ na egosiputa ngosipụta na-akwadoghị). Mara ịtọ ntọala a na "Mba" agaghị agbanyụ nkwado maka kalenda nke Ọha Ọha (ma ọ bụrụ na enyere kalenda Public Access aka).
+Require event approvals: Chọrọ nkwado omume
+display-unapproved-help: Na-akọwapụta ma emepụtara ihe ndị a na-ekwenyeghị na kalịnda gị.<br>Ọ bụrụ na etinyere na "Ee", mgbe ahụ a ga-egosipụta ihe omume ndị a na-akwadoghị na kalenda gị (na agba ederede dị iche).<br>Ọ bụrụ na e debere ya "Mba", mgbe ahụ emeghi ka akwadoro ihe omume tupu egosiputa ya na kalenda gi.
+Display unapproved: Ngosipụta na-akwadoghị
+conflict-check-help: Lelee maka esemokwu ihe omume (mmemme abụọ emere maka otu oge ahụ). Ọ bụrụ n’itinye nke a na “Eeh”, ị ka ga-enwe ike ịhazi ihe omume abụọ n’otu oge mgbe ịkwesịrị ịdọ aka na ntị. Ọ bụrụ na ịtọọ ya na "Mba", enweghị ịlele esemokwu ga-eme. Eleghị anya ịchọrọ ịtọ nke a na "Ee", yabụ na-achọpụta esemokwu.
+Check for event conflicts: Lelee maka esemokwu ihe omume
+Yes: Eeh
+No: Mba
+conflict-months-help: Ọ bụrụ na ịlele esemokwu dị ("Lelee maka esemokwu ihe omume" ka atọrọ na "Mba" & # 41 ;, nke a na-akọwapụta ọnwa ole n'ọdịnihu ka anyị kwesịrị ịlele esemokwu. , belata nọmba a.
+Conflict checking months: Esemokwu ịlele ọnwa
+conflict-check-override-help: Na-enye ndị ọrụ ohere ịkwụsị esemokwu ihe omume na ịtọọ oge abụọ ma ọ bụ karịa maka otu oge.
+Allow users to override conflicts: Nye ndị ọrụ ohere igbochi esemokwu
+limit-appts-help: Enye ohere ka onye nchịkwa sistemụ setịpụ usoro-oke ịgba na ọnụ ọgụgụ nhọpụta nke otu onye ọrụ nwere ike ịnwe na ụbọchị ọ bụla.
+Limit number of timed events per day: Ịgba ịgba ihe omume oge kwa ụbọchị
+limit-appts-number-help: Na-akọwapụta ọnụọgụ kachasị nke oge ihe omume onye ọrụ nwere ike ịnwe n'otu ụbọchị.
+Maximum timed events per day: Ihe omume kachasị oge kwa ụbọchị
+crossday-help: Ọ bụrụ na agbanyere ya, a ga-egosipụta mmemme ga - adịru ọtụtụ ụbọchị n’ụbọchị dị iche iche
+Disable Cross-Day Events: Gbanyụọ Ihe Omume nke Ubochi
+disable-location-field-help: Inghọrọ “Ee” ga - ewepu “Ọnọdụ” ubi na peeji ozi ihe omume
+Disable Location field: Gbanyụọ ọnọdụ ebe
+disable-url-field-help: Inghọrọ “Ee” ga - ewepụ “URL” ga - esi na peeji ozi ihe omume
+Disable URL field: Gbanyụọ URL
+disable-priority-field-help: Họrọ “Ee” ga - ewepu “Ibu ụzọ” na peeji ozi ihe omume, na - enye ihu dị mfe maka novices.
+Disable Priority field: Gbanyụọ Ibu ụzọ
+disable-access-field-help: Inghọrọ “Eeh” ga - ewepu oghere “Nweta” site na peeji ozi ihe omume, na-enye ihu dị mfe maka novices.
+Disable Access field: Gbanyụọ Access ubi
+disable-participants-field-help: Họrọ “Ee” ga - ewepu “Ndị sonyere” na ibe ozi ihe omume, na - egbochi ndị ọrụ ịgbakwunye ndị ọrụ ndị ọzọ na mmemme ha. Ọ bụrụ n ’ị gbanye nhọrọ a, ị ga-achọkwa gbanyụọkwa“ Ka ikwe kalenda ndị ọrụ ndị ọzọ ”.
+Disable Participants field: Gbanyụọ ndị sonyere n'ọhịa
+disable-repeating-field-help: Inghọrọ “Ee” ga - ewepu ubi “Na - emegharị” mgbe ị na - agbakwụnye ihe omume. Nke a ga - eweta interface dị mfe maka novices.
+Disable Repeating field: Gbanyụọ Na-emegharị ubi
+allow-html-description-help: Ọ bụrụ na agbanyere ya, ndị ọrụ nwere ike tinye HTML na mpaghara ihe omume. Ọ bụrụ na agbanyeghị, mkpado HTML ga-agbanahụ ka ọ pụta dị ka ederede doro anya. Dọ aka ná ntị: Ime ka njirimara a rụọ ọrụ ga-eme ka ndị ọrụ zoo aka n’ihe onyonyo na weebụsaịtị ndị ọzọ.
+Allow HTML in Description: Kwe ka HTML na Nkọwa
+Popups: Popup
+disable-popups-help: Gbanyụọ popups site na kalenda kalenda
+Disable Pop-Ups: Gbanyụọ Pop-Ups
+popup-includes-siteextras-help: Ọ bụrụ na enyere ya aka, kwe ka ntọala mmemme omume pụrụ iche na faịlụ saịtị_extras.php ga-egosipụta na popups omume.
+Display Site Extras in popup: Gosiputa saiti Extras na popup
+popup-includes-participants-help: Ọ bụrụ na enyere ya aka, a ga - egosipụta ndị ọzọ na popups.
+Display Participants in popup: Gosi ndi sonyere na popup
+Miscellaneous: Iche
+remember-last-login-help: Mgbe enyere ya aka, nbanye onye ọrụ ga-ejupụta maka ha na peeji nbanye (mana ọ bụghị paswọọdụ), na mmasị ndị ọrụ ga-ebu (gụnyere agba ha họọrọ na nhọrọ asụsụ).
+Remember last login: Cheta nbanye ikpeazụ
+summary_length-help: Oke kachasị nke Nkọwa nkenke na echiche kalenda
+Brief Description Length: Nkọwa nkenke Ogologo
+user_sort-help: Na-ekpebi ụdị usoro maka Usernye, Ndepụta nonuser
+User Sort Order: Sdị Ntuziaka Onye Ọrụ
+Lastname, Firstname: Aha nna, Aha izizi
+Firstname, Lastname: Aha nna, Aha nna
+allow-public-access-help: Mgbe emere ya, kalenda ahụ nwere ike iji dị ka kalenda ọha na-agụ naanị nke na-achọghị ndị ọrụ nbanye.
+Allow public access: Kwe ka ọha na eze nweta
+public-access-default-visible: Ihe omume sitere na kalenda ọha na eze ga-egosi na kalenda ndị ọrụ niile na-akpaghị aka
+Public access visible by default: Enweta ihu ọha site na ndabara
+public-access-default-selected: Mgbe ị na-agbakwunye ihe omume ọhụrụ, a ga-ahọrọ onye ọrụ ọhaneze na ndabara dịka onye so na ya.
+Public access is default participant: Ọhaneze nweta ndabara
+public-access-view-others-help: Mgbe ịnweta usoro na ịnweta ọha, kọwaa ma onye ọrụ nwere ike ịlele kalenda nke onye ọrụ kalenda ọzọ.
+Public access can view other users: Accessnweta ọha na eze nwere ike ịlele ndị ọrụ ndị ọzọ
+public-access-can-add-help: Mgbe enyere ya aka, ndị ọrụ na-enweta sistemụ site na Nweta Ọha ga-enwe ike itinye ihe omume ọhụụ, mana ha agaghị egosi na kalenda ahụ ruo mgbe onye nchịkwa ga-akwado mmemme ọhụrụ ahụ.
+Public access can add events: Accessnweta ọha na eze nwere ike ịgbakwunye ihe omume
+public-access-add-requires-approval-help: Ezipụta ma ihe omume agbakwunyere site na akaụntụ nnabata ọhaneze chọrọ nnabata tupu egosipụta ya.
+Public access new events require approval: Ihe omume ọhụụ banyere ọha na eze chọrọ nnwapụta
+public-access-sees-participants-help: Ọ bụrụ na enyere ya, ndị ọrụ na-enweta kalenda site na akaụntụ ọha na eze ga-enwe ike ịhụ ndị sonyere na mmemme ma ọ bụrụ na ha lelee nkọwa nke mmemme.
+Public access can view participants: Accessnweta ọha na eze nwere ike ịlele ndị sonyere
+public-access-override-help: Enye ohere omume aha na nkọwa na-ezo na ọha kalenda
+Override event name/description for public access: Gbanwee aha omume / nkọwa maka nnweta ọhaneze
+public-access-override-text-help: Ederede iji gosipụta ma ọ bụrụ na enyere nhọrọ dị n'elu. Ọ bụrụ 'Adịghị', a ga-atụgharị ya.
+Text to display to public access: Ederede iji gosipụta ohere ọha na eze
+public-access-captcha-help: Ọ bụrụ na agbanyere, mmemme ọhụụ gbakwunyere na Ọhaneze chọrọ ịgafe nkwado CAPTCHA.
+Require CAPTCHA validation for public access new events: Chọrọ nkwado CAPTCHA maka ọhaneze inweta ọhụụ ọhụụ
+uac-enabled-help: Na-enyere njikwa-larịị ohere njikwa
+User Access Control enabled: Enyere njikwa njikwa Onye ọrụ
+groups-enabled-help: Na-enyere nkwado otu aka, na-enye ndị ọrụ ohere ịhọrọ ndị ọrụ site na otu.
+Groups enabled: Otu dị iche iche
+user-sees-his-group-help: Ọ bụrụ na enyere ya aka, ndị ọrụ agaghị ahụ ndị ọrụ kalenda na-anọghị na otu otu otu.
+User sees only his groups: Onye ọrụ na-ahụ naanị otu ya
+nonuser-enabled-help: Ọ bụrụ na enyere ya aka, ndị admins ga-enwe nhọrọ ị gbakwunye kalenda ndị na - abụghị ndị ọzọ
+Nonuser enabled: Nonuser kalenda nyeere
+nonuser-list-help: Ebee ka egosiputa kalenda nonuser na ndepụta ndi otu
+Nonuser list: Gosiputa na ndi sonyere na listi
+Upcoming Events: Ihe ndị na-abịanụ
+upcoming-events-help: Kwado na-abịa.php
+Enabled: Kwadoro
+upcoming-events-allow-override: Nye onye ọrụ ọrụ maka ihe na-abịa.php
+Allow user override: Nye onye ọrụ ohere
+upcoming-events-display-caticons: Gụnye akara ngosi udi na abiara.php
+Display category icons: Gosi akara ngosi udi
+upcoming-events-display-layers: Gosiputa ihe nkpuchi na abia.php
+Display layers: Ngosipụta akwa
+upcoming-events-display-links: Gosiputa uzo na abia.php
+Display links to events: Gosi njikọ maka ihe omume
+upcoming-events-display-popups: Gosipụta popups omume na abia.php
+Display event popups: Gosipụta popup pop
+reports-enabled-help: Ọ bụrụ na arụ ọrụ, ndị ọrụ ga-ahụ ngalaba "Akụkọ" na ala nke ibe ọ bụla, a ga-ahapụkwa ya ka ịmepụta akụkọ ọdịnala. Ọzọkwa, ndị ọrụ nchịkwa nwere ike ịmepụta akụkọ zuru ụwa ọnụ nke ga-egosi na ala peeji nke ndị ọrụ niile.
+Reports enabled: Akụkọ nyeere
+subscriptions-enabled-help: Ezipụta ma ọ bụrụ na ndị ọrụ dịpụrụ adịpụ nwere ike ịdenye aha na kalenda onye ọrụ WebCalendar, na-enye ha ohere ịhụ ihe omume WebCalendar onye ọrụ na ngwa iCal ha (dị ka Apple's iCal ma ọ bụ kalenda Mozilla).
+Allow remote subscriptions: Kwee ndenye aha dịpụrụ adịpụ
+remotes-enabled-help: Na-enye ndị ọrụ ohere iburu faịlụ ics dịpụrụ adịpụ site na iji URL
+Allow remote calendars: Hapụ kalenda ndị dịpụrụ adịpụ
+rss-enabled-help: Ezipụta ma ọ bụrụ na onye ọrụ kalenda nwere ike inweta site na ndepụta RSS.
+Enable RSS feed: Kwado ndepụta RSS
+categories-enabled-help: Na-enyere nkwado maka edemede mmemme.
+Categories enabled: Enyere ngalaba
+icon_upload-enabled-help: Ọ bụrụ na agbanyere ya, ndị ọrụ nwere ike bulite akara ngosi udi
+Category Icon Upload enabled: Udi Icon Bulite nyeere
+(Requires XXX folder to exist.): (Chọrọ folda XXX ka ọ dịrị.)
+display-tasks-help: Gosiputa obere oru na onwa na onwa
+Display small task list: Gosipụta obere ndepụta ọrụ
+display-tasks-in-grid-help: Ngosipụta ọrụ na kalenda yana ihe omume
+Display tasks in Calendars: Ngosipụta ọrụ na kalenda
+allow-external-users-help: Ezipụta ma a na-abụghị kalenda ọrụ ike-atụkwasịkwara ihe omume. Nke a na-enye ndị na-abụghị kalenda ọrụ ohere ka edepụtara ha dị ka ndị sonyere na mmemme.
+Allow external users: Kwe ka ndị ọrụ si na mpụga
+external-can-receive-notification-help: Mgbe enyere ndị ọrụ aka aka na ojiji email, ndị ọrụ mpụga nwere ike ịnweta ọkwa email mgbe agbakwunye ihe omume ahụ, emelitere ma ọ bụ hichapụ (ọ bụrụ na enyere adreesị ozi-e nke onye ọrụ)
+External users can receive email notifications: Ndị ọrụ mpụga nwere ike ịnweta ọkwa email
+external-can-receive-reminder-help: Mgbe mpụga ọrụ na-nyeere na email ojiji na-nyeere, mpụga ọrụ nwere ike inweta ihe ncheta email (ma ọ bụrụ na mpụga onye ọrụ adreesị ozi-e na-nyere).
+External users can receive email reminders: Ndị ọrụ mpụga nwere ike ịnweta ihe ncheta email
+allow-self-registration-help: Hapụ ndị ọrụ ọhụrụ ka ha debanye aha ha
+Allow self-registration: Kwebanye aha onwe gị
+use-blacklist-help: Amachi ohere WebCalendar ọrụ dabere na adreesị IP
+Restrict self-registration to blacklist: Machibido onwe ndebanye na blacklist
+allow-self-registration-full-help: Kwe ka ndị ọrụ ọhụụ mezue usoro ndebanye aha nke onwe na ntanetị
+Use self-registration email notifications: N'ịwa okwuntughe na-eziga ka ọhụrụ ọrụ
+allow-attachment-help: Kwe ka ndị ọrụ tinye mgbakwunye faịlụ na mmemme.
+Allow file attachments to events: Ekwe ka faịlụ Mgbakwụnye ka ihe
+Admin and owner can always add attachments if enabled.: Nchịkwa na onye nwe ya nwere ike ịgbakwunye mgbakwunye ma ọ bụrụ na enyere ya aka.
+allow-comments-help: Kwe ka ndị ọrụ tinye ihe na mmemme.
+Allow comments to events: Kwe ka ekwuru ihe omume
+Admin and owner can always add comments if enabled.: Nchịkwa na onye nwe ya nwere ike ịgbakwunye ihe ọ bụla ma ọ bụrụ na enyere ya aka.
+email-enabled-help: Gbanwuo ma ọ bụ gbanyụọ ozi email niile maka ọkwa na ncheta. Tọọ ka “mba”, ọ bụrụ na edozighị sava gị nke ọma iji zipu ozi.
+Email enabled: Email nyeere
+email-default-sender: Ezipụta adreesị email iji kọwaa dị ka onye na-ezipụ mgbe ị na-ezipụ ihe ncheta.
+Default sender address: Adreesị onye na-ezipụ ndabere
+email-mailer: Họrọ ụdị email (SMTP, mail PHP, mailmail)
+Email Mailer: Ozi Email
+email-smtp-host: Hostname (s) nke SMTP nkesa (s) iche site commas
+SMTP Host name(s): SMTP ọbịa aha (s)
+email-smtp-port: Nọmba Port SMTP (nke na-adịkarị 25)
+SMTP Port Number: Nọmba Port SMTP
+email-smtp-auth: Jiri Nyocha SMTP
+SMTP Authentication: Nyocha SMTP
+email-smtp-username: SMTP Aha ojii ma ọ bụrụ na iji Nyocha
+SMTP Username: Aha njirimara SMTP
+email-smtp-password: SMTP Paswọdu ma ọ bụrụ na iji Nyocha
+SMTP Password: SMTP Paswọdu
+Default user settings: Ntọala onye ọrụ ndabara
+email-format: Ezipụta mmasị maka HTML ma ọ bụ ederede ederede ederede
+Email format preference: Email họọrọ mmasị
+HTML: =
+Plain Text: Ederede ederede
+email-include-ics: Gụnye iCalendar ICS file ka ozi email
+Include iCalendar attachments: Gụnye mgbakwunye iCalendar
+email-event-reminders-help: Ezipụta ma izipu ihe ncheta ma ọ bụ na ọ bụghị.
+Event reminders: Ihe ncheta emume
+email-event-added: Ezipụta ma izipu ozi email mgbe agbakwunyere ihe omume na kalịnda gị.
+Events added to my calendar: Ihe omume agbakwunye na kalenda m
+email-event-updated: Ezipụta ma izipu ozi email mgbe emelitere ihe omume na kalịnda gị.
+Events updated on my calendar: Ihe emelitere na kalenda m
+email-event-deleted: Na-akọwapụta ma ọ bụ iziga amamọkwa email mgbe ewepụrụ ihe omume na kalenda gị.
+Events removed from my calendar: Ihe omume wepụrụ na kalenda m
+email-event-rejected: Na-akọwapụta ma ọ bụ iji zipu amamọkwa email mgbe onye so na ya jụrụ ihe omume dị na kalịnda gị.
+Event rejected by participant: Omume nke onye so na ya jụrụ
+email-event-create: Ezipụta ma onye okike nke ndenye ga-enweta ozi-e
+Event that I create: Omume m mepụtara
+Color options: Nhọrọ agba
+Allow user to customize colors: Kwe ka onye ọrụ hazie agba
+gradient-colors: Ọ bụrụ na enyere grajentị agba Nke a nwere ike imetụta arụmọrụ.
+Enable gradient images for background colors: Kwado gradient onyogho maka ndabere agba
+Not available: Adịghị
+Background Image options: Ndabere Image nhọrọ
+bgimage-help: URL nke onyonyo achọrọ. Nwere ike ịbụ njikọ njikọ.
+Background Image: Foto dị n’azụ
+bgrepeat-help: Njikwa imeghari omume nke ndabere image.
+Background Repeat: Ntughariazu
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Ndị na-enyere aka
+Preferences: Mmasị
+Control Panel: Ogwe njikwa
+Users: Ndị ọrụ
+Account: Akaụntụ
+Categories: Ngalaba
+Views: Echiche
+Layers: N'ígwé
+Reports: Akụkọ
+Delete Events: Hichapụ ihe omume
+Activity Log: Arụ Ọrụ Ndekọ
+System Log: Usoro System
+Security Audit: Nche nyocha
+Public Preferences: Mmasị Ọha
+Unapproved Public Events: Ihe Omume Ọha na-akwadoghị
+Administrative Tools: Ngwaọrụ Nlekọta
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Oyiri oyiri: "xxx".
+Username XXX already exists.: Aha njirimara dị "XXX"
+Email address XXX already exists.: Adreesị ozi ịntanetị "XXX" adịlarị.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Agbakwunyere Comments (nhọrọ)
+Approve and Send: Kwado ma zipu
+Approve and Exit: Kwenye ma pụọ
+(Your comments will be emailed to the event creator.): (A ga-ezigara gị ihe omume gị na onye okike.)
+Hello, XXX.: Ndewo, XXX.
+XXX has approved an appointment and added comments.: XXX kwadoro nkwenye ma kwuo ya.
+Subject XXX: Isiokwu: "XXX".
+Description XXX: Nkọwa: "XXX".
+Date XXX: :Bọchị: XXX
+Time XXX: Oge: XXX
+Comments XXX: Nkwupụta: XXX
+Approved w/Comments by XXX.: Kwadoro w / Nkwupụta site na: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Ọnọdụ nchịkwa
+Your assistants: Ndị na-enyere gị aka
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Amaghi ama.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Mperi Mmemme: Enweghị nkọwapụta XXX!
+user: onye ọrụ
+year: afọ
+month: ọnwa
+day: ụbọchị
+
+########################################
+# Page: category.php
+#
+Category Icon: Otu akara ngosi
+Global: =
+The permissions for the icons directory are set to read-only: A na-ahazi ikikere maka akara ngosi akara maka naanị ịgụ.
+Category Name: Aha Otu:
+Color: Agba
+Remove Icon: Wepu Akara
+Add Icon to Category: Tinye Icon ka udi
+Upload: Bugote
+GIF or PNG 6kb max: GIF ma ọ bụ PNG 6kb max
+Search for existing icons: Chọọ akara ngosi dịnụ
+Add: Tinye
+Delete: Hichapụ
+Are you sure you want to delete this entry?: O doro gị anya na ị chọrọ ihichapụ ntinye a?
+Make New Category: Mee udi otu ohuru
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: A choro aha udi
+File size exceeds maximum.: Faịlụ oke karịa kacha.
+File is not a GIF or PNG image: Faịlụ abụghị foto GIF ma ọ bụ PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: AKWATKWỌ ND AV AHARA
+ENTRY CATEGORIES: IHE NDOR Mbanye
+Remove: Wepu
+Global Category: Otu Uwa
+Cancel: Kagbuo
+
+########################################
+# Page: colors.php
+#
+Add Custom: Tinye Omenala
+Basic Colors: Basic agba
+Current Color: Agba dị ugbu a
+Custom Colors: Omenala agba
+Old Color: Agba agba
+
+########################################
+# Page: combo.php
+#
+Select None: Họrọ Ọ dịghị
+Agenda: Burukwa
+Add Task: Tinye Ọrụ
+Description: Nkọwa
+Date: Datebọchị
+Time: Oge
+Priority: Ibu ụzọ
+Access: Nweta
+Created by: Onye kere ya
+Updated: Emelitere
+Participants: Ndi sonyere
+Attachments: Mgbakwụnye
+Comments: Nkwupụta
+Brief Description: Nkowa di nkpa
+Full Description: Nkọwa zuru ezu
+Category: Atiya
+Add event detail: Tinye ihe omume
+Start Date: Ụbọchị mmalite
+Due Date: Oge ngwụcha
+Add task detail: Tinye ọrụ nju
+All: Ihe niile
+Error: Njehie
+no response from server: enweghị nzaghachi sitere na ihe nkesa
+JSON error: Njehie JSON
+High: Elu
+Medium: Ọkara
+Low: Ala
+Today: Taa
+Add Entry: Tinye Ntinye
+Unnamed Event: Omume a na-akpọghị aha
+Unnamed Task: Ọrụ a na-akpọghị aha
+Refresh: Ume ume
+Click to add entry: Pịa iji tinye ntinye
+Name: Aha
+pm: abalị
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: Xxx kagbuo oge atọrọ.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Adabaghi ​​blob id
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Tinye Ikwu
+Add Attachment: Tinye Mgbakwunye
+Subject: Isiokwu
+Comment: Kwuo
+Upload file: Bulite faịlụ
+
+########################################
+# Page: docdel.php
+#
+Removed: Wepụrụ
+
+########################################
+# Page: edit_entry.php
+#
+days: ụbọchị
+hours: awa
+minutes: Nkeji
+You are not authorized to edit this task.: Inyeghị gị ikike idezi ọrụ a.
+is in a different timezone than you are. Currently: nọ n'oge dị iche karịa gị. Ugbu a
+hour ahead of you: oge awa ga-abịa
+hour behind you: awa n'azụ gị
+hours ahead of you: awa dị n'ihu gị
+hours behind you: awa n'azụ gị
+XXX is in a different timezone (ahead): (XXX dị na oge dị iche iche, YYY n'ihu gị.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX dị na oge dị iche, YYY n'azụ gị.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Oge etinyere ebe a dabere na oge gị.
+Edit Entry: Ntinye Ntinye
+Details: Nkọwa
+Repeat: Tinyegharịa
+Reminders: Ihe ncheta
+brief-description-help: Nke a kwesịrị inye nkọwa dị mkpirikpi (ihe odide 20) nke ihe omume ahụ. Nke a ga-anọchi anya ihe omume mgbe ị na-elele kalenda ahụ.
+full-description-help: Nke a ga-mezue nkọwa nke ihe omume. Enwere ike ịhụ ozi a mgbe onye ọrụ lere ihe omume ahụ.
+access-help: Na-akọwapụta ọkwa nnweta nke mmemme ahụ. <ul> <li> Ọha: Onye ọ bụla nwere ike ịhụ nkọwa zuru ezu nke mmemme ahụ.</li> <li> Nkwupụta Obi: Ndị ọzọ nwere ike ịhụ na ị nwere ntinye maka ụbọchị na oge ahụ, mana ọ bụghị nkọwapụta ihe ọ bụ.</li></ul>
+priority-help: Na-akọwapụta ihe omume ahụ. A ga-egosipụta ihe omume kachasị mkpa na nkwuwa okwu.
+category-help: Ezipụta udi nke ihe omume.
+completed-help: Taskbọchị ọrụ agwụla. Naanị enyere mgbe ndị niile sonyere na 100%.
+Date Completed: Datebọchị Emechara
+percent-help: Pasent Task maka onye ọrụ a
+Percent Complete: Pasent zuru ezu
+All Percentages: Pasent niile
+location-help: Ọnọdụ mmemme
+Location: Ọnọdụ
+url-help: Mmemme URL
+URL: =
+date-help: Na-akọwapụta ụbọchị mmemme ahụ.
+Untimed event: Ihe omume
+Timed event: Mmemme oge
+All day event: Emume ụbọchị niile
+Timezone Offset: Mmezi oge
+time-help: Na-akọwapụta oge emume ahụ. <ul> <li> "Mmemme oge" (maka ihe omume emebere maka oge a kapịrị ọnụ n'ụbọchị ahụ)</li> <li> "Ihe a na-emeghị eme" (maka mmemme nke a anaghị enwe oge (dị ka ezumike )</li> <li> "Ihe omume ụbọchị niile" (maka ihe omume na-ewe ụbọchị niile (dị ka ịpụ n'ọfịs)</li></ul>
+duration-help: Na-akọwapụta oge (na awa; nkeji) nke ihe omume ahụ. <em>Mpaghara a nwere ike ịhapụ oghere.</em>
+end-time-help: Egosipụta oge ihe omume a na-atụ anya ịkwụsị.
+Start Time: Oge Mbido
+Due Time: Oge Kwesịrị Ekwesị
+Site Extras: Ihe mgbakwunye saịtị
+avail_participants-help: Ndepụta ndị dịnụ nke ntinye a.
+Available: Dị
+Find Name: Chọta Aha
+Resources: Ihe onwunwe
+participants-help: Ndepụta ndị sonyere na ntinye a.
+Selected: Họrọ
+Availability: Nnweta
+external-participants-help: Ezipụta ndepụta nke ndị sonyere na mmemme ahụ abụghị ndị ọrụ kalenda. Ndị ọrụ kwesịrị ịdepụta otu n'otu akara ma nwee ike ịgụnye adreesị ozi-e. Ọ bụrụ na akọwapụtara adreesị ozi-e, onye ọrụ ahụ ruru eru ịnata ọkwa na ncheta.
+External Participants: Ndị Na-eso Mpụga
+repeat-type-help: Họrọ ugboro ole ihe omume ahụ kwesịrị ikwugharị.
+Daily: Kwa ụbọchị
+Weekly: Kwa izu
+Monthly: Kwa ọnwa
+by day: site na ụbọchị
+by date: site na ụbọchị
+by position: site na ọnọdụ
+Monthly (by day): Kwa ọnwa (site na ụbọchị)
+Monthly (by date): Kwa ọnwa (site na ụbọchị)
+Monthly (by position): Kwa ọnwa (site na ọnọdụ)
+Yearly: Kwa Afọ
+Manual: Akwụkwọ ntuziaka
+Expert Mode: Ọkachamara .kpụrụ
+repeat-end-date-help: Egosiputa ubochi ihe omume kwesiri imeghari rue.
+Ending: Na-agwụsị
+Forever: Ruo mgbe ebighi ebi
+Use end date: Jiri ụbọchị njedebe
+Number of times: Ọnụọgụ nke oge
+repeat-frequency-help: Egosiputa ugboro ole ihe omume kwesiri imeghari.
+Frequency: Ugboro
+Weekdays Only: Daysbọchị izu naanị
+Week Start: Izu Izu
+repeat-bydayextended-help: Enye ohere ụbọchị nhọrọ dabeere na ụbọchị nke izu.
+ByDay: Site na
+repeat-month-help: Na-akọwapụta ọnwa ole ihe omume kwesịrị ịmeghachi.
+ByMonth: =
+repeat-bysetpos-help: Enye ohere ụbọchị nhọrọ dabere na ọnọdụ withing ọnwa.
+BySetPos: =
+repeat-bymonthdayextended-help: Enye ohere ụbọchị nhọrọ dabere na ụbọchị.
+ByMonthDay: SiteMonthDay
+repeat-byweekno-help: Na-enye onye ọrụ ohere ịkọwapụta izu iji megharịa ihe omume (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Na-enye onye ọrụ ohere ịkọwapụta ndepụta nke ụbọchị afọ iji megharịa ihe omume (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Bọchị ndị ọzọ nke ihe omume a kwesịrị ma ọ bụ ekwesịghị ime na.
+Exclusions: Mwepu
+Inclusions: Ntinye
+Add Exception: Tinye Wezuga
+Add Inclusion: Tinye Nsonye
+Delete Selected: Hichapụ Họrọ
+Send Reminder: Zipu Ncheta
+When: Mgbe ole
+Use Date/Time: Jiri Datebọchị / Oge
+Use Offset: Jiri Offset
+Before: Tupu
+After: Mgbe
+Start: Malite
+End/Due: Njedebe / N'ihi
+Times: =
+Every: Kwa
+CAPTCHA Warning: ningdọ aka na ntị:  Enweghị ike iji CAPTCHA na-enweghị ndọtị GD nke PHP!<br>
+Delete entry: Hichapụ ntinye
+You are not authorized to edit this entry.: Are na-adịghị ikike dezie a ntinye.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX emeela ọhụụ.
+XXX has updated an appointment.: XXX emelitere oge ọhụhụ.
+Security violation!: Mmebi iwu!
+You must enter the anti-spam text on the previous page.: Ikwesiri itinye ederede mgbochi spam na ibe gara aga.
+The following conflicts with the suggested time: Ndị na-esonụ esemokwu na-atụ aro oge
+User removed from participants list.: E wepụrụ onye ọrụ na ndepụta ndị sonyere.
+Please look on XXX to accept or reject this appointment.: Biko lee anya na XXX ịnabata ma ọ bụ jụ nhọpụta a.
+Please look on XXX to view this appointment.: Biko lee anya na XXX iji lelee ọkwa a.
+Scheduling Conflict: Isiokwu ndokwa
+Your suggested time of: Oge ị tụrụ aro nke
+conflicts with the following existing calendar entries: esemokwu na ndenye ndenye kalịnda ndị a
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX edozighi na "config.php".
+word characters only: (naanị nwere ike ịnwe mkpụrụedemede okwu; [a-zA-Z_0-9])
+Add User: Tinye Onye ọrụ
+Edit User: Dezie Onye ọrụ
+Calendar ID: Njirimara kalenda
+First Name: Aha mbụ
+Last Name: Aha ikpeazụ
+Is public calendar: Bụ kalenda ọha
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Njehie data
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Tinye Ime kalenda
+Edit Remote Calendar: Dezie Kalinda
+Create Layer: Mepụta Layer
+Reload: Bugharịa
+Required to View Remote Calendar: Achọrọ ilele Kalinda
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Nsonaazụ Bubata
+Events successfully imported: Emere ihe omume nke ọma
+Create a new layer to view this calendar.: Mepụta akwa ọhụrụ iji lelee kalenda a.
+Errors: Njehie
+There was an error parsing the import file or no events were returned.: Enwere mperi na-ebugharị faịlụ mbubata ma ọ bụ enweghị e weghachiri ihe ọ bụla.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Echi
+Yesterday: Nyaahụ
+Day before yesterday: Beforebọchị tupu ụnyaahụ
+Next week: Izu na-esote
+This week: Izu a
+Last week: Izu gara aga
+Week before last: Izu tupu ikpeazụ
+Next week and week after: Izu na-esonụ na izu mgbe
+This week and next week: Izu ụka a na izu na-abịa
+Last week and this week: Urua ye urua
+Last two weeks: Ikpeazụ izu abụọ
+Next month: Ọnwa na-abịa
+This month: Nke a na ọnwa
+Last month: Onwa gara aga
+Month before last: Onwa bu nke ikpeazu
+Next year: Afọ na-abịa
+This year: Afọ a
+Last year: Afọ gara aga
+Year before last: Afọ tupu ikpeazụ
+Next 14 days: Na-esote ụbọchị 14
+Next 30 days: Na-esote ụbọchị 30
+Next 60 days: Na-esote ụbọchị 60
+Next 90 days: Na-esote ụbọchị 90
+Next 180 days: Na-esote ụbọchị 180
+Next 365 days: Na-esote ụbọchị 365
+Invalid report id XXX.: ID na-ezighi ezi id: "XXX".
+Unnamed Report: Nkwupụta a na-akpọghị aha
+Add Report: Tinye Akụkọ
+Edit Report: Dezie Report
+Report name: Kpesa aha
+User: Onye ọrụ
+Current User: Onye ọrụ ugbu a
+Include link in menu: Tinye njikọ na menu
+Include standard header/trailer: Gụnye ọkọlọtọ nkụnye eji isi mee / trailer
+Include previous/next links: Gụnye njikọ ndị gara aga / ọzọ
+Include empty dates: Gụnye ụbọchị efu
+Date range: Ugboro ụbọchị
+Template variables: Ndị na-agbanwe ndebiri
+Page template: Peeji peeji
+Day template: Templatebọchị ndebiri
+Event template: Ihe omume
+Are you sure you want to delete this report?: O doro gị anya na ị chọrọ ihichapụ akụkọ a?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Enweghị ụdị akụkọ id: "xxx".
+Variable XXX not found.: Agbanweghi xxx
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Dezie Isi Ntanetị
+Edit Custom Script/Stylesheet: Dezie Ode ederede / Stylesheet
+Edit Custom Trailer: Dezie Trailer omenala
+
+########################################
+# Page: edit_user.php
+#
+Username: Aha ojii
+E-mail address: Adreesị ozi ịntanetị
+Password: Okwuntughe
+again: ọzọ
+Disabled for demo: Nkwarụ maka ngosi
+Are you sure you want to delete this user?: O doro gị anya na ị chọrọ ihichapụ onye ọrụ a?
+Change Password: Gbanwee okwuntughe
+New Password: Okwuntughe Ọhụrụ
+Set Password: Tọọ Paswọdu
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Ihichapụ ndị ọrụ anaghị akwado.
+The passwords were not identical.: Paswọdu ahụ abụghị otu.
+You have not entered a password.: I tinyeghi okwuntughe.
+Username cannot be blank.: Aha njirimara enweghị ike ịbụ oghere.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Enweghi ikike
+
+########################################
+# Page: export.php
+#
+Export: Mbupụ
+Export format: Dị mbupụ
+Include all layers: Tinye akwa niile
+Include deleted entries: Gụnye ehichapụ ndenye
+Export all dates: Mbupụ niile ụbọchị
+Start date: Ụbọchị mmalite
+End date: Bọchị njedebe
+Modified since: Gbanwee kemgbe
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: mbupụ ụdị akọwaghị ma ọ bụ na-ezighi ezi.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Enweghị onye ọrụ akọwapụtara.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Tinye Otu Ọhụrụ
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Otu a na-akpọghị aha
+Add Group: Tinye Otu
+Edit Group: Dezie Otu
+Group name: Otu aha
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Ikwesiri ịkọwa aha otu
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Nchekwa onwe-kalenda
+auto-refresh-help: Mgbe enyere ha aka, nlele ụbọchị, nlele izu, nlele ọnwa, na depụta peeji ndị a na-akwadoghị ga-enweta ume na-akpaghị aka site n'oge ruo n'oge.
+Auto-refresh time: Nchekwa onwe-oge izu ike
+auto-refresh-time-help: Ọ bụrụ na agbanyere Nchekwa onwe, nke a na-akọwapụta oge dị n'etiti ume ọhụrụ ọ bụla.
+Display days with events in bold in year view: Gosiputa ubochi site na iji ihe omume n’ile anya n’ile anya
+Display weekends in week view: Gosi ngwụsị izu na nlele izu
+Time interval: Oge etiti oge
+time-interval-help: Na-akọwapụta oge ole oge egbochiri izu na nlele ụbọchị ga-abụ.
+Nonuser: Ndị na-abụghị kalenda
+user-customize-color: Ezipụta ma ọrụ na-ekwe ka hazie onwe ha na agba atụmatụ.
+enable-gradient-help: Jiri grajentị agba maka sel iche.
+Manually entering color values: Iji aka abanye ụkpụrụ ụkpụrụ
+colors-help: Ekwesịrị ịkọwa agba niile na "#RRGGBB" hexadecimal usoro ebe "RR" bụ uru hex maka uhie, "GG" bụ uru hex maka akwụkwọ ndụ akwụkwọ ndụ, yana "BB" bụ uru hex maka acha anụnụ anụnụ.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Kpee akụkọ
+Please include all the information below when reporting a bug.: Biko tinye ozi niile n'okpuru mgbe ị na-akọ ahụhụ.
+Also, please use English rather than XXX.: Ọzọkwa, biko jiri  Bekee  karịa XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Akwụkwọ WebCalendar
+Currently in English only.: Ugbu a naanị na Bekee.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Na-agbakwunye / Na-edezi Kalinda Ndenye
+Repeat Type: Tinyegharịa Typedị
+For More Information...: Maka ozi ndị ọzọ ...
+Repeat End Date: Tinyegharịa Datebọchị Ọgwụgwụ
+Repeat Day: Tinyegharịa Daybọchị
+repeat-day-help: Na-akọwapụta ụbọchị ụbọchị nke ihe omume kwesịrị ikwugharị.
+
+########################################
+# Page: help_import.php
+#
+Import: Bubata
+Palm Desktop: Nkwụ na Desktọpụ
+allow you to import entries from the Palm...: Fọm a ga - enyere gị aka ibubata ihe nkwụmụaka sitere na Akwụkwọ Nkwụ na kbọchị Nkwụ. Okwesiri idi na ogwe aka nkwụ gị na datebook / datebook.dat na subdirectory nke aha njirimara gị kpọrọ.
+The following entries will not be imported: Ntinye ndị a agaghị ebubata:
+Entries older than the current date: Ntinye aka karịa ụbọchị ugbu a
+Entries created in the Palm Desktop...: Ntinye ekeputara na Palm Desktop nke abughi HotSync'd
+Anything imported from Palm...: A ga-edegharị ihe ọ bụla batara na nkwụ n'oge mbubata ọzọ (belụsọ ụbọchị mmemme ahụ agafewo). Ya mere, ekwesịrị ime mmelite na Palm Desktọpụ.
+vCal: Nkechi
+This form will import vCalendar (.vcs) 1.0 events.: Formdị a ga-ebubata vCalendar (.vcs) 1.0 ihe.
+The following formats have been tested: A nwalere usoro ndị a:
+This form will import iCalendar (.ics) events.: Formdị a ga-ebubata ihe omume iCalendar (.ics).
+Enabling: Na-enyere
+Overwrite Prior Import: Ghichaa Bubata Mbubata
+will cause events imported previously...: ga-eme ka ihe omume ebubata na mbụ, nke jiri otu UID dị ka ihe omume sitere na faịlụ mbubata ọhụrụ, ka akara ya dị ka ehichapụ ya. Nke a kwesịrị ikwe ka faịlụ iCalendar emelitere na-ebubata na-ekeghị oyiri.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Ndepụta Enyemaka
+About WebCalendar: Banyere WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Rọ dị bara uru maka igosipụta mmemme ndị ọrụ ndị ọzọ na kalịnda gị. Nwere ike ịkọwapụta onye ọrụ na agba ihe omume ahụ ga-egosipụta na.
+Add/Edit/Delete: Tinye / Dezie / Hichapụ
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Ingpị njikọ Njikọ Dezie na ngalaba nchịkwa ha na ala nke ibe ahụ ga-enye gị ohere ịgbakwunye / dezie / hichapụ akwa.
+The text color of the new layer that will be displayed in your calendar.: Agba ederede nke oyi akwa ọhụrụ nke a ga-egosipụta na kalenda gị.
+Disabling: Nkwarụ
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Pịa gbanyụọ Layer njikọ na ngalaba nchịkwa na ala nke ibe iji gbanyụọ n'ígwé.
+Duplicates: Oyiri
+If checked, events that are duplicates of your events will be shown.: Ọ bụrụ na enyochare, a ga-egosi ihe omume ndị mepụtara abụọ nke mmemme gị.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Pịa Kwadoro Layer njikọ na ngalaba nchịkwa na ala nke ibe iji gbanye n'ígwé.
+Source: Isi mmalite
+Specifies the user that you would like to see displayed in your calendar.: Na-akọwapụta onye ọrụ ị ga-achọ ịhụ gosipụtara na kalịnda gị.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Ndi an-kpọ Atiya
+default-category-help: Ezipụta udi ọhụrụ omume kwesịrị ndabere na.
+When I am the boss: Mgbe m bụ onye isi
+Email me event notification: Email m omume ngosi
+email-boss-notifications-help: Na-akọwapụta ma ọ bụrụ na ndị isi na-enweta ozi ịntanetị dị ka ọkwa mmemme.
+I want to approve events: Achọrọ m ịkwado ihe omume
+boss-approve-event-help: Na-akọwapụta ma ọga achọrọ ka ọ kwado mmemme ndị enyemaka nyere.
+Subscribe/Publish: Denye aha / Kwusaanụ
+Allow remote publishing: Kwe ka mbipụta dịpụrụ adịpụ
+allow-remote-publishing-help: Ezipụta ma ọ bụrụ na a ime iCal ahịa nwere ike na-ebipụta ihe laghachi WebCalendar
+remote-publishing-url-help: Na-egosiputa URL na iji na iCal ahịa ngwa n'ihi na ma na ịdenye aha na-ekwusara laghachi WebCalendar.
+allow-remote-subscriptions-help: Ezipụta ma ọ bụrụ na ndị ọrụ dịpụrụ adịpụ nwere ike ịdenye aha na kalenda gị, na-enye ha ohere ịhụ ihe omume gị na ngwa iCal (dịka Apple's iCal ma ọ bụ Mozilla kalenda).
+remote-subscriptions-url-help: Ngosipụta URL ndị ọrụ dịpụrụ adịpụ kwesịrị iji ịdenye aha na kalịnda gị.
+Enable FreeBusy publishing: Kwado mbipụta FreeBusy
+freebusy-enabled-help: Na-akọwapụta ma enwere ike ịnweta oge onye ọrụ site na iji ọkọlọtọ iCal FreeBusy.
+freebusy-url-help: The URL maka ịnweta onye ọrụ FreeBusy ndepụta
+rss-feed-url-help: URL ahụ iji nweta nri RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Na-enye ohere maka njikwa dị mma nke ịnweta onye ọrụ na ikikere. Ndị ọrụ nwekwara ike inye ndabara na kwa ikike onye ọ bụla ma ọ bụrụ na onye nchịkwa nyere ya ikike.
+If disabled, this user cannot send you emails.: Ọ bụrụ na agbanyụrụ ya, onye ọrụ a enweghị ike izitere gị ozi ịntanetị.
+If disabled, this user cannot see you in the participants list.: Ọ bụrụ na-enweghị nkwarụ, onye ọrụ a enweghị ike ịhụ gị na listi ndị sonyere.
+If enabled, this user cannot view the details of any of your entries.: Ọ bụrụ na agbanyere ya, onye ọrụ a enweghị ike ịlele nkọwa nke ndenye ọ bụla.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Nkwusa ndị nkwusa (Admin)
+Publishing Disabled (User): Nkwupụta Nkwarụ (Onye ọrụ)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Pịa Họrọ
+Current Icons on Server: Ihe ngosi di ugbu a na ihe nkesa
+
+########################################
+# Page: import.php
+#
+import from file: ibubata na faịlụ
+Disabled: Nkwarụ
+Import format: Bubata usoro
+Exclude private records: Ewepu ndekọ nkeonwe
+Repeated items are imported separately. Prior imports are not overwritten.: A na-ebubata ihe ugboro ugboro iche iche. Ebubataghị mbubata mbubata.
+
+########################################
+# Page: import_handler.php
+#
+No file: Enweghị faịlụ
+Error deleting palm events from webcalendar.: Njehie ihichapụ ihe nkwụ na webcalendar.
+Events from prior import marked as deleted: Ihe omume si tupu mbubata akara dị ka ehichapụ
+Conflicting events: Ihe esemokwu
+The import file contained no data.: Mbubata faịlụ enweghị data.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: O doro gị anya na ị chọrọ ihichapụ oyi akwa a?
+Delete layer: Hichapụ oyi akwa
+Edit layer: Dezie oyi akwa
+Enable layers: Kwado akwa
+Layer: =
+Layers are currently disabled.: Yersrọ nwere nkwarụ ugbu a.
+Layers are currently enabled.: A na-arụzi oyi akwa ugbu a.
+Click to modify layers settings for XXX: Pịa ebe a iji gbanwee ntọala ntọala maka kalenda XXX.
+Disable Layers: Gbanyụọ n'ígwé
+Add layer: Tinye akwa
+Add Layer: Tinye Layer
+Edit Layer: Dezie oyi akwa
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Enweghi ike imelite mmasị
+Invalid entry id.: Ndenye id na ezighi ezi.
+You cannot create a layer for yourself.: Nweghi ike mepụta ihe nkpuchi nye onwe gi.
+You can only create one layer for each user.: Nwere ike ịmepụta otu akwa maka onye ọrụ ọ bụla.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Kwenye / Kwenye
+Approve Selected: Kwado Họrọ
+Check All: Lelee Ha niile
+Emails Will Not Be Sent: Agaghị Eziga Ozi E-mail
+Reject Selected: Jụ Họrọ
+Reject: Jụ
+Uncheck All: Uncheck niile
+View this entry: Ele ntinye
+No unapproved entries for XXX.: Ọnweghị ndenye akwadoghị maka: "XXX".
+Unapproved Entries: Ndenye aha na-akwadoghị
+Approve this entry?: Kwadoro ntinye a?
+Reject this entry?: Jụ ntinye?
+Approve Selected entries?: Rokwado Ndenye ahọpụtara?
+Reject Selected entries?: Jụ Ndenye ahọpụtara?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Ga-abanye nbanye na paswọọdụ.
+Save login via cookies so I dont have to login next time.: Chekwa nbanye site na kuki ka m wee ghara ịbanye oge ọzọ
+Login: Banye
+public: ọhaneze
+Access XXX calendar: Nweta kalenda XXX
+cookies-note: Mara: Ngwa a chọrọ kuki iji rụọ ọrụ.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Charactersmụ edemede na-ezighi ezi na nbanye XXX.
+Invalid login: Nbanye na ezighi ezi
+Activity login failure: Aha ojii: "XXX", IP: "YYY".
+Error XXX: Mperi: "XXX".
+You have been logged out.: Been banyela aha.
+Access public calendar: Nweta kalenda ọha
+Not yet registered? Register here!: Registered debanyebeghị aha ya? Debanye aha ebe a!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Enweghị usoro kalenda na-enweghị usoro: "XXX".
+This Calendar is not Public.: Kalinda a abụghị Ọha.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Tinye Kalịnda Na-abụghị Onye Ọrụ
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Nbanye ga-akọwapụtara.
+No such nonuser calendar: Enweghị kalenda nonuser
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Isiokwu na ezighi ezi
+Save Preferences: Chekwa Mmasị
+Public Access calendar: Kalenda Ọha na Ọha
+Modify Non User Calendar Preferences: Gbanwee Non User Kalinda Mmasị
+Return to My Preferences: Laghachi na Mmasị M
+Custom Scripts: Omenala Ederede
+Timezone Selection: Oge Nhọrọ
+Multiview: =
+entry-interval-help: Debe nkeji oge mgbe ị na-edezi oge ntinye
+Entry interval: Ntinye oge
+hour: aka elekere
+minute: Nkeji
+theme-reload-help: N'ihi CSS caching, enwere ike ịchọrọ iweghachi peeji
+Page may need to be reloaded for new Theme to take effect: Peeji ahụ nwere ike ịdị mkpa maka Mbugharị ọhụrụ rụ ọrụ
+display_byproxy-help: Gosi ezigbo onye okike na peeji nke ilele_nkwụ
+Display if created by Assistant: Gosiputa ma oburu na enyere gi aka
+allow-view-subscriptions-help: Enye ohere igbochi ohere nnweta nkeonwe ma ọ bụ nke nzuzo
+Allow remote viewing of: Kwe ka ịlele
+entries: ndenye
+
+########################################
+# Page: purge.php
+#
+Purging events for: Imecha ihe omume maka
+Finished: Emechara
+Back: Azụ
+Check box to delete ALL events for a user: Lelee igbe iji hichapụ ihe omume  ALL  maka onye ọrụ
+Delete all events before: Hichapụ ihe niile tupu
+Purge deleted only: Kpochapụ naanị
+Preview delete: Preview ihichapụ
+Are you sure you want to delete events for: O doro gị anya na ị chọrọ ihichapụ ihe omume maka
+Records deleted from XXX: Ehichapụ ndekọ ndekọ na "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Adreesị ozi-e enweghị ike ịbụ oghere.
+Username already exists.: Aha njirimara dị
+Email address already exists.: Adreesị ozi-e adịlarị.
+New user via self-registration.: Onye ọrụ ọhụụ site na ndebanye onwe gị.
+A new WebCalendar account has been set up for you.: Emebere akaụntụ WebCalendar gị.
+Your username is XXX.: Aha njirimara gị bụ: "XXX".
+Your password is XXX.: Paswọọdụ gị bụ: "XXX".
+Please visit XXX to log in and start using your account!: Biko gaa na "XXX" iji banye wee malite iji akaụntụ gị!
+You may change your password after logging in the first time.: Nwere ike ịgbanwe okwuntughe gị mgbe ịbanye na nke mbụ.
+If you received this email in error: Ọ bụrụ na ị nwetara email a na njehie ma banyeghị na akaụntụ WebCalendar, ị nwere ike ileghara ọkwa a anya, ma ọ bụ jiri obere ederede zaghachi
+Administrator: Onye nchịkwa
+Welcome: Nnọọ
+New user via email.: Onye ọrụ ọhụụ site na email.
+Registration: Ndebanye aha
+Welcome to WebCalendar: Mmadụ Bịa ka WebCalendar
+Your email should arrive shortly.: Email gị kwesịrị ịbịa n'oge na-adịghị anya.
+Return to Login screen: Laghachi na nbanye ihuenyo
+Password (again): Okwuntughe (ọzọ):
+Your account information will be emailed to you.: A ga-ezitere gị ozi akaụntụ gị.
+Submit: Nyefee
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Gaa n'ihu
+(Your comments will be emailed to the other participants.): (A ga-ezigara ndị ọzọ sonyere email gị ihe omume gị.)
+XXX has rejected an appointment.: XXX ajụla ọkwa.
+Rejected by XXX.: Jụrụ XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Tinye Kalịnda Ime Obodo Ọhụrụ
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Ihe omume a bụ ihe nzuzo.
+(Private): (Nkeonwe)
+(cont.): (Mgbagha.)
+Approved: Kwadoro
+Deleted: Ehichapụ
+Rejected: A jụrụ
+Waiting for approval: Na-eche nkwenye
+Unknown: Amaghi
+Invalid report id.: ID na-ezighi ezi id.
+Click here to manage reports for the Public Access calendar.: Pịa ebe a iji jikwaa akụkọ maka kalenda Public Access.
+Add new report: Tinye akụkọ ọhụrụ
+Manage Reports: Jikwaa Akụkọ
+
+########################################
+# Page: search.php
+#
+Advanced Search: Nchọta miri emi
+Search: Chọọ
+Keywords: Isiokwu
+Enter % for all entries: Tinye% maka ntinye niile
+Include: Gụnye
+Filter by Date: Iyo site Datebọchị
+All Dates: Oge niile
+Past: Gara aga
+Upcoming: Na-abịa
+Range: Iche
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Ikwesiri itinye otu ma ọ bụ karịa isiokwu ọchụchọ.
+Search Results: Nsonaazụ ọchụchọ
+match found: egwuregwu ahụrụ
+matches found: ọkụ hụrụ
+No matches found: Ọ dịghị ọkụ ahụrụ
+New Search: Ọchịchọ ọhụrụ
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Ozi dị n'okpuru depụtara nwere nsogbu na WebCalendar gị nwụnye nke enwere ike gbanwee iji mee ka nrụnye gị dịkwuo nchebe.
+For questions about WebCalendar security see the forums: Maka ajụjụ maka nsogbu nchekwa WebCalendar ọ bụla, biko jiri ọgbakọ ndị a na-enwe na WebCalendar na GitHub.com;<br>XXX
+View your current PHP settings: Lelee ntọala PHP gị ugbu a
+Security Issue: Okwu Nche
+Status: Ọkwa
+Default admin user password: Ndi an-kpọ paswọọdụ onye ọrụ ha
+You should change the password of the default admin user.: I kwesiri igbanwe okwuntughe nke onye oru ha.
+File permissions XXX: Faịlụ ikike: XXX
+item XXX should not be writable: Ekwesighi ide ihe na-esonụ:<br><tt> XXX</tt>
+File exists XXX: Faịlụ dị: "xxx"
+Because you have email disabled, you should remove this file.: Maka i nwere ozi email, ikwesiri iwepu faịlị a.
+File location XXX: Ọnọdụ faịlụ: "XXX"
+remove XXX if not using: Ọ bụrụ n'ijighi faili "XXX", ị ga-ehichapụ ya. Ma ọ bụ, ọ dịkarịa ala, bugharịa ya na ndekọ ndekọ ọhụụ.
+System Settings XXX: Ntọala usoro: "xxx"
+consider enabling UAC: Nwere ike ịtụle na-enyere enyere Accessnye Access Control ka ọrụ ùgwù.
+recommend approving new public events: Anyị na-akwado ka akwadoro ihe omume ọha na eze niile.
+recommend using CAPTCHA: CAPTCHA na-atụ aro ka ịchekwa ọzọ nnyefe ihe omume akpaghị aka.
+Database cache directory location: Ebe nchekwa data dị n'ime ebe nchekwa data
+db cache should be inaccessable: Nchekwa nchekwa data kwesịrị ịdị na ndekọ na enweghị ike ịnweta ya na URL.
+PHP Settings XXX: Ntọala PHP: "XXX"
+recommend setting XXX Off: Ọnọdụ akwadoro maka "XXX" bụ Gbanyụọ.
+recommend setting allow_url_fopen Off: Ọnọdụ akwadoro maka "allow_url_fopen" bụ Gbanyụọ mgbe emebeghị kalenda ndị dịpụrụ adịpụ.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Lelee Kalịnda Onye Ọrụ Ọzọ
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Have tụkwasịghị edemede ọ bụla.
+Set Category: Nịm Atiya
+Global Categories cannot be changed.: Enweghi ike igbanwe ngalaba Global.
+
+########################################
+# Page: upcoming.php
+#
+more: Ọzọ
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Kalenda dịpụrụ adịpụ
+denotes administrative user: pụtara ọrụ nchịkwa
+Add New User: Tinye Onye Ọrụ Ọhụrụ
+
+########################################
+# Page: usersel.php
+#
+form: ụdị
+Reset: Tọgharia
+
+########################################
+# Page: views.php
+#
+Add New View: Tinye Nlele Ọhụrụ
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Nlele a na-akpọghị aha
+Add View: Tinye Lee
+Edit View: Dezie Echiche
+View Name: Lee Aha
+View Type: Lee .dị
+Day by Time: Bybọchị site na Oge
+Week (Users horizontal): Izu (Ndị ọrụ kwụ ọtọ)
+Week by Time: Izu site Oge
+Week (Users vertical): Izu (Ndị ọrụ kwụ ọtọ)
+Week (Timebar): Izu (Oge Oge)
+Month (Timebar): Ọnwa (Oge Oge)
+Month (side by side): Ọnwa (n'akụkụ n'akụkụ)
+Month (on same calendar): Ọnwa (n'otu kalenda)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Ga-ezipụta echiche echiche
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Enweghị ndị ọrụ maka echiche a.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Melite Task Pasent
+Completed: Emechara
+Assistant mode: Nnyemaaka mode
+Declined: Jụrụ
+Needs-Action: Mkpa-Action
+by: site na
+Percentage Complete: Pasent zuru ezu
+External User: Onye ọrụ na mpụga
+Update: Mmelite
+at: na
+comments: kwuru
+Show: Gosi
+Hide: Zoo
+Approve/Confirm entry: Kwado / Kwenye ntinye
+Reject entry: Jụ ntinye
+Set category: Tọọ otu
+Add to My Calendar: Tinye na Kalinda m
+Copy entry: Detuo ntinye
+This will delete this entry for all users.: Nke a ga-ehichapụ ntinye a maka ndị ọrụ niile.
+Edit entry: Debanye ntinye
+Edit repeating entry for all dates: Dezie ikwugharị ntinye maka ụbọchị niile
+Delete repeating event for all dates: Hichapụ emeghachi omume maka ụbọchị niile
+Edit entry for this date: Dezie ntinye maka ụbọchị a
+Delete entry only for this date: Hichapụ ntinye naanị maka ụbọchị a
+Delete entry from calendar of XXX: Hichapụ ntinye site na kalenda nke XXX
+This will delete the entry from your XXX calendar.: Nke a ga-ehichapụ ntinye gị na kalenda XXX gị.
+boss: onyeisi '
+This will delete the entry from your boss calendar.: Nke a ga - ehichapụ ndenye gị na kalenda onye isi gị.
+This will delete the entry from your calendar.: Nke a ga-ehichapụ ntinye gị na kalenda gị.
+from your boss calendar: site na kalenda onye isi gị
+Do you want to add this entry to your calendar?: Want chọrọ itinye ntinye a na kalenda gị?
+This will add the entry to your calendar.: Nke a ga - agbakwunye ntinye gị na kalenda gị.
+Email all participants: Email ndị niile sonyere
+Hide activity log: Zoo ndekọ mmemme
+Show activity log: Gosi ndekọ mmemme
+Export this entry to: Mbupụ ntinye a
+Palm Pilot: Nkwụ Pilot
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Pịa cell efu ugboro abụọ iji tinye ntinye ọhụrụ.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Ntinye Ọhụrụ
+cont.: agbagha.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Kalịnda Onye Ọrụ Ọzọ
+Category Management: Njikwa Otu
+Day View: Echiche Daybọchị
+Edit Event: Dezie Omume
+Month View: Nlele ọnwa
+Common Trailer: =
+User Management: Njikwa Ndị Ọrụ
+Manage Views: Jikwaa Echiche
+Week View: Izu Izu
+Year View: Anya Afọ
+Invalid function id: Ọrụ id na ezighi ezi
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Enweghi ike ịhụ faịlụ "settings.php".<br>Biko detuo "settings.php.orig" na "settings.php" wee dezie saịtị gị.
+Incomplete settings.php file...: Failụ "settings.php" ezughi oke ...
+Could not find XXX defined in...: Onweghi ike ihu '' XXX '' na faili gi "settings.php"
+You must define XXX in: Ikwesiri ikowa “XXX” na faịlụ “settings.php”
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Disemba
+Dec: Dec.
+LANGUAGE DEFINED: A ASINS D ASGUS.
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Njehie ijikọ na nchekwa data: "XXX".
+db_type not defined.: akọwaghị db_type.
+invalid db_type XXX: ezighi ezi db_type "" XXX ".
+Cache cleared from previous SQL!: Cache kpochapụrụ na SQL gara aga!
+Error executing query.: Mperi n'ịza ajụjụ.
+Unfortunately, XXX is not implemented for YYY: O di nwute, "XXX" anaghị emejuputa maka (YYY).
+Unknown ODBC error.: Odighi ODBC.
+Error opening cache dir XXX.: Mperi mepee cache dir "XXX".
+delete: ihichapụ
+Cache error Could not XXX file YYY.: Cache mperi: Enweghị ike ịnwe faịlụ XXX "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Njehie Egwu
+Invalid data format for: Datadị data na ezighi ezi maka
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Mperi: Pịnyeghị maka log log!
+This event is XXX.: Ihe omume a bụ XXX.
+Conf.: Mkpu.
+exceeds limit of XXX events per day: gafere oke nke ihe omume XXX kwa ụbọchị
+on: na
+All Attendees: Ndị niile bịara
+Busy: Anọghị
+Tentative: Mgbatị
+Schedule an appointment for XXX.: Hazie oge maka XXX: YYY.
+date_select: __dd__ __month__ __yyyyyy__
+Event approved: Emere mmemme
+Journal approved: Edere akwụkwọ akụkọ
+Task approved: A kwadoro ọrụ
+Attachment: Mgbakwunye
+Event created: Emere mmemme
+Journal created: Edere akwụkwọ akụkọ
+Task created: Emepụtara ọrụ
+Event deleted: Ihe omume wepụrụ
+Journal deleted: Ehichapụ akwụkwọ akụkọ
+Task deleted: Ehichapụla ọrụ
+New user via email (self registration): Onye ọrụ ọhụụ site na email (ndebanye aha onwe onye)
+New user (self registration): Onye ọrụ ọhụụ (ndebanye aha onwe onye)
+Notification sent: Ezitere ozi
+Event rejected: Mmemme jụrụ
+Journal rejected: A jụrụ akwụkwọ akụkọ
+Task rejected: Achọghị ọrụ
+Reminder sent: Echetara ncheta
+Event updated: Emelitere mmemme
+Journal updated: Journal emelitere
+Task updated: Task emelitere
+Delete User: Hichapụ Onye ọrụ
+WK: =
+TASKS: Ọrụ
+Task_Title: Aha
+Due: N'ihi
+Task Name: Aha Ọrụ
+Task Due Date: Duebọchị Maka Ọrụ
+You have XXX unapproved entries: I nwere XXX ndenye aha anabataghị 
+Changes successfully saved: Azoputara mgbanwe di iche
+Event: Mmemme
+Action: Omume
+Printer Friendly: Mbipụta Enyi na Enyi
+Generate printer-friendly version: N'ịwa mbipute-enyi na enyi mbipute
+after: mgbe
+before: tupu
+end: ọgwụgwụ
+start: bido
+View this event: Lee ihe omume a
+View this task: Lee ọrụ a
+January: Jenụwarị
+February: Febụwarị
+March: Machị
+April: Eprel
+May_: Mee
+June: =
+July: Julaị
+August: Ọgọst
+September: Septemba
+October: Ọktọba
+November: Nọvemba
+Jan: Jenụwarị
+Feb: Febụwarị
+Mar: =
+Apr: =
+May: Mee
+Jun: =
+Jul: Julaị
+Aug: Ọgọst
+Sep: =
+Oct: Ọkt
+Nov: Nọvemba
+SU: =
+MO: =
+TU: =
+WE: ANY.
+TH: Nke
+FR: Nkechi
+SA: =
+unknown-month: amaghi-onwa
+First Quarter Moon: Ọnwa Iri Nke Mbụ
+Full Moon: Ọnwa zuru ezu
+Last Quarter Moon: Ọnwa Ikpeazụ Nke Ikpeazụ
+New Moon: Ọnwa Ọhụrụ
+Error TIME_SLOTS undefined!: Mperi: TIME_SLOTS akọwaghị ya!
+The following error occurred: Ndị na-esonụ njehie mere
+You are not authorized.: Enyeghị gị ikike.
+Add N hours to: Tinye N awa na
+Subtract N hours from: Wepu N awa si
+same as: dị ka
+server time: oge nkesa
+Cannot read timezone file XXX.: Enweghị ike ịgụ faịlụ oge, XXX.
+Your current GMT offset is XXX hours.: Emebi GMT gị ugbu a bụ awa XXX.
+Unauthorized: Enweghi ikike
+Error approving event XXX.: Mperi na-akwado mmemme: XXX.
+Error deleting event XXX.: Njehie ihichapụ ihe omume: XXX.
+Error rejecting event XXX.: Njehie iju mmemme: XXX.
+Sunday: Ụbọchị ụka
+Monday: Mọnde
+Tuesday: Tusde
+Wednesday: Wenezde
+Thursday: Tọsde
+Friday: Fraide
+Saturday: Satọde
+Sun: Anyanwu
+Mon: Mọnde
+Tue: Di
+Wed: =
+Thu: Tọsde
+Fri: Fraị
+Sat: =
+unknown-weekday: amaghi-izu uka
+Invalid referring URL: URL na-ezighi ezi na-ezighi ezi
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Ndepụta
+Documentation: Ihe ederede
+Page: Peeji
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Kalinda m
+Add New Entry: Tinye Ntinye Ọhụrụ
+Add New Task: Tinye Oru ohuru
+Logout: =
+Home: Ulo
+Back to My Calendar: Laghachi na Kalịnda M
+Go to: Gaa na
+Manage calendar of: Jikwaa kalenda nke
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Achọtaghị Asụsụ Nchọgharị
+(not supported): (anaghị akwado)
+Abkhazian: Onyebuchi
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Asụsụ
+Afrihili: =
+Afrikaans: Afrịka
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: Albania
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Ndịda)
+Amharic: Asụsụ Amharic
+Angika: =
+Apache: =
+Arabic (Algeria): Asụsụ Arab (Algeria)
+Arabic (Bahrain): =
+Arabic (Egypt): =
+Arabic (Iraq): Asụsụ Arab (Iraq)
+Arabic (Jordan): =
+Arabic (Kuwait): =
+Arabic (Lebanon): =
+Arabic (Libya): =
+Arabic (Morocco): =
+Arabic (Oman): =
+Arabic (Qatar): Asụsụ Arab (Qatar)
+Arabic (Saudi Arabia): =
+Arabic (Syria): =
+Arabic (Tunisia): =
+Arabic (U.A.E.): Asụsụ Arab (U.A.E.)
+Arabic (Yemen): =
+Arabic: =
+Aragonese: =
+Aramaic: Asụsụ Arameik
+Arapaho: =
+Arawak: =
+Armenian: Armenia
+Assamese: Asụsụ Assam
+Asturian: =
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: =
+Balinese: Asụsụ Balinese
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: Ogba
+Bashkir: =
+Basque: =
+Beja: =
+Belarusian: =
+Bemba: =
+Bengali: Asụsụ Bengali
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: =
+Bliss: Obi uto
+Bosnian: Asụsụ Bosnian
+Braj: =
+Breton: Akwukwo
+Buginese: =
+Bulgarian: Bulgaria
+Buriat: =
+Burmese: =
+Caddo: =
+Catalan: =
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Asụsụ China (Hong Kong)
+Chinese (PRC): Asụsụ China (PRC)
+Chinese (Simplified/GB2312): Chinese (Aturiri Aturi / GB2312) 
+Chinese (Singapore): =
+Chinese (Taiwan): Asụsụ China (Taiwan)
+Chinese (Traditional/Big5): Chinese (Ọdịnala / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: =
+Cornish: =
+Corsican: Asụsụ Kọsikan
+Cree: Nkume
+Creek: Osimiri
+Croatian: Asụsụ Croatian
+Czech: =
+Dakota: =
+Danish: Asụsụ Danish
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: Nkịta
+Duala: =
+Dutch (Belgium): =
+Dutch: Asụsụ Dutch
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Bekee (Australia)
+English (Belize): Bekee (Belize)
+English (Canada): Bekee (Canada)
+English (Ireland): Bekee (Ireland)
+English (Jamaica): Bekee (Jamaica)
+English (New Zealand): Bekee (New Zealand)
+English (Philippines): Bekee (Philippines)
+English (South Africa): Bekee (South Africa)
+English (Trinidad & Tobago): Bekee (Trinidad & Tobago)
+English (United Kingdom): Bekee (United Kingdom)
+English (United States): Bekee (United States)
+English (Zimbabwe): Bekee (Zimbabwe)
+English: Bekee-US
+Erzya: =
+Esperanto: =
+Estonian: Estonia
+Ewe: =
+Ewondo: =
+Fang: Nri
+Fanti: =
+Faroese: =
+Fijian: =
+Filipino: =
+Finnish: Asụsụ Finish
+Fon: =
+French (Belgium): =
+French (Canada): =
+French (France): =
+French (Luxembourg): Asụsụ French (Luxembourg)
+French (Monaco): Asụsụ France (Monaco)
+French (Switzerland): =
+French: =
+Frisian (Eastern): =
+Frisian (Northern): Distance Arochukwu-Frisian (Northern)
+Frisian (Western): =
+Frisian: Frisị
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Onye Galician
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Onye Georgia
+German (Austria): =
+German (Germany): =
+German (Liechtenstein): =
+German (Luxembourg): Asụsụ German (Luxembourg)
+German (Standard): German (Ọkọlọtọ)
+German (Switzerland): =
+German: =
+Gilbertese: Asụsụ Gilbertese
+Gondi: =
+Gorontalo: =
+Gothic: =
+Grebo: =
+Greek: Grik
+Greenlandic: =
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Asụsụ Haiti (Creole)
+Haitian: Asụsụ Haiti
+Hausa: =
+Hawaiian: Hawaii
+Hebrew: Hibru
+Herero: Onochie
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Hetị
+Hmong: =
+Holo (Taiwanese): Holo (Taiwan)
+Hungarian: Asụsụ Hungary
+Hupa: =
+Iban: =
+Icelandic: Asụsụ Iceland
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: Indoneshian
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Onye Iran
+Irish (Gaelic): Asụsụ Irish (Gaelic)
+Irish: Asụsụ Aịrish
+Iroquoian: =
+Italian (Switzerland): Asụsụ Italia (Switzerland)
+Italian: .Talian
+Japanese: Ndị Japan
+Javanese: Asụsụ Javanese
+Judeo-Arabic: =
+Judeo-Persian: Judeo-Peshia
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): Khmer (Etiti)
+Khmer: =
+Khotanese: Asụsụ Khotanese
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Asụsụ Korea (Johab)
+Korean (North): Igbo (North)
+Korean (South): =
+Korean: =
+Kosraean: Asụsụ Kosraean
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kurdi
+Kutenai: =
+Kyrgyz: =
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: =
+Latvian: Asụsụ Latvian
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Asụsụ Lithuania
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Asụsụ Luxembourghish
+Macedonian: Masedonia
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Asụsụ Malagasy
+Malay: =
+Malayalam: =
+Maldivian: =
+Maltese: Mọlta
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: =
+Mongo: Mọngo
+Mongolian: =
+Montenegrin: =
+Moroccan: Asụsụ Moroccan
+Mossi: =
+Myanmar: Mianmaa
+Māori: Maọrị
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): =
+Ndebele (South): Ndebele (Ndịda)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: Asụsụ Nepali
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Asụsụ Norway (Bokmål)
+Norwegian (Nynorsk): =
+Norwegian: Asụsụ Norway
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: =
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: Asụsụ Oromo
+Osage: =
+Ossetic: Osisi
+Pahlavi: Onyeka Onwenu
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: =
+Pedi: =
+Persian (Farsi): Peshia (Farsi)
+Persian (Iran): Peshia (Iran)
+Persian: Peshia
+Phoenician: Ndị Finishia
+Pohnpeian: =
+Polish: Asụsụ Polish
+Portuguese: Asụsụ Portuguese
+Portuguese/Brazil: Portuguese / Brazil
+Punjabi (India): Asụsụ Punjabi (India)
+Punjabi (Pakistan): Asụsụ Punjabi (Pakistan)
+Punjabi: Asụsụ Punjabi
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: Asụsụ Romania
+Romansh: Romanh
+Romany: =
+Rundi: =
+Russian (Moldavia: Asụsụ Russia (Moldavia
+Russian (Republic of Moldova): =
+Russian: =
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): =
+Sami (Skolt): Onyeka Onwenu
+Sami (Southern): Sami (Ndịda)
+Sami: =
+Samoan: =
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Asụsụ Sanskrit
+Santali: =
+Sardinian: Asiria
+Sasak: =
+Scots (Gaelic): Scots (Gaelik)
+Selkup: Kpochapụ
+Serbian (Upper): Serbian (Elu)
+Serbian: =
+Serer: Onye nkesa
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Asụsụ Sicilian
+Sindhi: =
+Sinhala: =
+Slavic: =
+Slovak: Asụsụ Slovak
+Slovenian: Asụsụ Slovenian
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): =
+Sorbian (Upper): Sorbian (Elu)
+Sorbian: Ogbogu Okonji
+Sotho: Akpan
+Spanish (Argentina): Asụsụ Spanish (Argentina)
+Spanish (Bolivia): Asụsụ Spanish (Bolivia)
+Spanish (Chile): Asụsụ Spanish (Chile)
+Spanish (Colombia): Asụsụ Spanish (Colombia)
+Spanish (Costa Rica): Asụsụ Spanish (Costa Rica)
+Spanish (Dominican Republic): Asụsụ Spanish (Dominican Republic)
+Spanish (Ecuador): Asụsụ Spanish (Ekwedọọ)
+Spanish (El Salvador): Asụsụ Spanish (El Salvador)
+Spanish (Guatemala): Asụsụ Spanish (Guatemala)
+Spanish (Honduras): Asụsụ Spanish (Honduras)
+Spanish (Mexico): Asụsụ Spanish (Mexico)
+Spanish (Nicaragua): Asụsụ Spanish (Nicaragua)
+Spanish (Panama): Asụsụ Spanish (Panama)
+Spanish (Paraguay): Asụsụ Spanish (Paraguay)
+Spanish (Peru): Asụsụ Spanish (Peru)
+Spanish (Puerto Rico): Asụsụ Spanish (Puerto Rico)
+Spanish (Spain): Asụsụ Spanish (Spain)
+Spanish (Uruguay): Asụsụ Spanish (Uruguay)
+Spanish (Venezuela): Asụsụ Spanish (Venezuela)
+Spanish: Asụsụ Spanish
+Sranan Tongo: =
+Sukuma: =
+Sumerian: =
+Sundanese: Asụsụ Sundan
+Susu: =
+Sutu: =
+Swahili: Asụsụ Swahili
+Swati: =
+Swedish (Finland): Asụsụ Sweden (Finland)
+Swedish (Sweden): Asụsụ Sweden (Sweden)
+Swedish: Asụsụ Sweden
+Syriac: Siriak
+Tagalog: Asụsụ Tagle
+Tahitian: Asụsụ Tahitian
+Tai: =
+Taiwan: =
+Tajik: =
+Tamashek: =
+Tamil: Asụsụ Tamil
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: Tibet
+Tigre: =
+Tigrinya: Asụsụ Tigrinya
+Timne: =
+Tlingit: Nkọwa
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Agwaetiti Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: =
+Turkmen: =
+Tuvinian: Asụsụ Tuvinian
+Twi: =
+Udmurt: Udo
+Ugaritic: Ugarit
+Ukrainian: Asụsụ Ukraine
+Umbundu: =
+Urdu: Asụsụ Urdu
+Uyghur: =
+Uzbek: Asụsụ Uzbek
+Vai: =
+Venda: =
+Vietnamese: =
+Volapük: Volapịk
+Votic: Uche
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: =
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: Asụsụ Yiddish
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: Asụsụ Zhuang
+Zulu: Asụsụ
+Browser-defined: Achọpụtara ihe nchọgharị
+event: ihe omume
+journal: akwụkwọ akụkọ
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Nbanye onye ọrụ na ezighi ezi
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: ezighi ezi okwuntughe
+no such user: enweghị onye ọrụ dị otú ahụ
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Akaụntụ nwere nkwarụ
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Etiti
+Months: Ọnwa ole
+Month Days: Dbọchị Ọnwa
+Days: .Bọchị
+Weeks: Izu
+Position: Ọnọdụ
+Until: Ruo mgbe
+Count: Gụ
+Inclusion Dates: Afọ Nsonye
+Exclusion Dates: Oge Mbupute
+Event Imported: Ihe Mbubata
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Nkwupụta
+authenticate: Njehie SMTP: Enweghị ike ịchọpụta
+connect_host: Njehie SMTP: Enweghị ike ijikọ onye ọbịa SMTP:
+data_not_accepted: Njehie SMTP: Anabataghị data
+encoding: Amaghi koodu:
+execute: Enweghi ike igbu:
+file_access: Enweghi ike ịnweta faịlụ:
+file_open: Njehie faịlụ enweghị ike imeghe faịlụ:
+from_failed: Ihe na-esonụ Site adreesị okpu:
+instantiate: Enweghi ike ịmalite ọrụ ọrụ ozi
+mailer_not_supported: anaghị akwado ozi ọzọ
+provide_address: Ikwesiri inye ma ọ dịkarịa ala otu adreesị ozi-e nnata.
+recipients_failed: Njehie SMTP: Ndị nnata ndị a mechara:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Tinye Characters hụrụ na Graphic
+Enter the correct letters and numbers...: Tinye mkpụrụedemede na ọnụọgụ ziri ezi site na onyonyo ahụ na igbe ederede. Obere ule a na-eje ozi dị ka mgbochi ohere megide bots ọjọọ. Naanị bubatagharịa peeji a ma ọ bụrụ na eserese a siri ike ọgụgụ
+Challenge/Response: Ma Aka / Nzaghachi
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Gbanwee ụbọchị na oge nke ntinye a?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Itinyeghi nkenke nkọwa
+time prior to work hours...: oge tupu oge ọrụ ...
+Invalid Event Date: Eventbọchị Omume Na-ezighi ezi
+Please add a participant: Biko tinye onye so na ya
+Invalid Date: Datebọchị Na-ezighi ezi
+You have not entered a valid time of day: Itinyeghi oge dị mma nke ụbọchị.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: ID Kalịnda enweghị oghere.
+First and last names cannot both be blank.: Aha mbụ na aha ikpeazụ agaghị enwe oghere.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Agba na ezighi ezi
+Color format should be RRGGBB.: Dị agba kwesịrị ịbụ #RRGGBB.
+URL cannot be blank.: URL agaghị enwe oghere.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Typedị faịlụ adabaghị na Usoro Mbubata
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Agba na ezighi ezi maka ndabere dọkụmentị.
+Invalid color for document title.: Agba na ezighi ezi maka aha akwukwo.
+Invalid color for table cell background.: Agba na-ezighi ezi maka ndabere okpokoro okpokoro.
+Invalid color for table cell background for today.: Agba na ezighi ezi maka okpokoro okpokoro maka taa.
+Invalid work hours.: Oge ọrụ na-ezighi ezi.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL ga-ejedebe na slash (/).
+Invalid color for table grid.: Agba adịghị mma maka grid okpokoro.
+Invalid color for event popup background.: Agba na-ezighi ezi maka ihe omume popup ndabere.
+Invalid color for event popup text.: Agba na ezighi ezi maka ederede popup ederede.
+Invalid color for table header text.: Agba na-ezighi ezi maka ederede ederede isiokwu.
+Invalid color for table header background.: Agba na-ezighi ezi maka ndabere isi isiokwu.
+Server URL is required.: Achọrọ URL sava.
+Invalid Color: Agba na ezighi ezi
+Database Name: Aha data
+Full Path (no backslashes): Pzọ zuru ezu (enweghị azụ)
+The password contains illegal characters.: Paswọdu ahụ nwere mkpụrụedemede megidere iwu.
+Error you must specify a Single-User Login: Njehie: must ga-ezipụta a Single-akwukwọ Banye
+Could not find XXX.: Enweghi ike ịchọta XXX.
+Could not find XXX in DOM.: Enweghị ike ịhụ XXX na DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Izu a
+This Month: Nke a na ọnwa
+This Year: Afọ a
+Exit: Ụzọ ọpụpụ
+Add New Event: Tinye Mmemme Ọhụrụ
+Delete Entries: Hichapụ ndenye
+My Views: Echiche M
+Manage Calendar of: Jikwaa Kalinda nke
+My Reports: Akụkọ m
+My Profile: Profaịlụ m
+Public Calendar: Kalịnda Ọha
+Unapproved Events: Ihe omume ndị a na-akwadoghị
+User Manager: Njikwa njikwa
+Help Contents: Nyere ọdịnaya
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Ndekọ Cache ndekọ data
+Create New: Mepụta Ọhụrụ
+Failure Reason: Ndaba Reason:
+You must manually create database: Ga-aka ike nchekwa data.
+Single-User: Otu-Onye ọrụ
+Test Settings: Ntọala Ule
+Timezone Conversion Successful: Ntughari oge na-aga nke ọma
+WebCalendar Installation Wizard Step XXX: Ọkachamara Nchịkọta WebCalendar
+Password Accepted: Nabata Paswọdu
+Successful Login: Nbanye na-aga nke ọma
+Password Incorrect: Okwuntughe ezighi ezi
+Invalid Login: Nbanye na ezighi ezi
+Display Errors: Gosipụta Njehie
+File Uploads: Njikwa faịlụ
+Allow URL fopen: Kwe ka URL megharịa (achọrọ naanị ma ọ bụrụ na ejiri kalenda Ime)
+Safe Mode: Ọnọdụ Nchekwa
+Safe Mode Allowed Vars: Akwadoro Vars na Nchekwa (TZ chọrọ naanị ma ọ bụrụ na Ọnọdụ Nchedo Na-agbanye)
+GD: GD (achọrọ maka Gradient Image background)
+Passwords do not match!: Okwuntughe adabaghị!
+Unable to write password to settings.php file: Enweghi ike ide okwuntughe na faịlụ "settings.php".
+Password Updated: Emelitere paswọọdụ
+Password has been set: Atọrọ paswọọdụ.
+Connection Successful...: Njikọ ahụ gaa nke ọma  Biko gaa na peeji na-esote iji gaa n'ihu nwụnye.
+Correct your entries or click the Create New...: Dozie ndenye gị ma ọ bụ pịa bọtịnụ  Mepụta Ọhụrụ  iji gaa n'ihu nrụnye.
+Correct your entries and try again.: Dezie ndenye gị wee nwaa ọzọ.
+XXX does not exist: XXX adịghị adị
+XXX is not writable: XXX anaghị ede ederede
+Error Converting Timezone: Njehie Na-atụgharị Oge Oge
+Error Unable to write to file XXX.: Mperi Enweghị ike ide na faịlụ XXX.
+Please change the file permissions of this file.: Biko gbanwee ikikere faịlụ nke faịlụ a.
+Please change includes dir permission: Biko gbanwee ikikere faịlị nke ndekọ aha "gụnyere" iji nye ndị ọrụ ndị ọzọ ohere ide ihe.
+Your settings have been saved.: Echekwala ntọala gị.
+OFF: Gbanyụọ
+ON: Gbanyụọ
+WebCalendar Setup Wizard: Ọkachamara Mbido WebCalendar
+This installation wizard will guide you...: Ọkachamara nrụnye a ga-eduzi gị site na ịtọlite ​​nwụnye WebCalendar.<br>Maka enyemaka na nchọpụta nsogbu lee:<br>
+System Administrators Guide: Nchịkwa Nchịkwa Sistemụ
+Frequently Asked Questions: Ajụjụ Ndị A Na-ajụkarị
+FAQ: Ajụjụ
+Troubleshooting: Nchọpụta nsogbu
+Getting Help: Inweta Enyemaka
+Upgrading Guide: Ntuzi Nkwalite
+User Supported Wiki: Onye nkwado Wiki
+PHP Version Check: PHP Version Nyocha
+Check to see if PHP 7.1.0 or greater is installed.: Lelee iji hụ ma arụnyere PHP 7.1.0 ma ọ bụ karịa.
+PHP version: Dị PHP
+PHP Settings: Ntọala PHP
+Detailed PHP Info: Ihe omuma PHP zuru ezu
+settings.php Status: "settings.php" Ọnọdụ
+Session Check: Nyocha oge
+To test the proper operation of sessions...: Iji nwalee arụmọrụ kwesịrị ekwesị nke nnọkọ, bubatagharịa ibe a. Ga-ahụ mgbakwunye oge nnọkọ oge ọ bụla.
+SESSION COUNTER: Oge Mgbakọ
+The file permissions of settings.php are set...: E debere ikikere faịlụ nke "settings.php" ka onye nrụnye enweghị ikikere iji gbanwee ya. Biko gbanwee ikikere faịlụ nke faịlụ a ka ịga n'ihu
+The file permissions of the includes directory are set...: A na-edozi ikikere faịlụ nke ndekọ ahụ ka onye nrụnye enweghị ikike ịmepụta faịlụ ọhụrụ. Biko gbanwee ikikere nke ndekọ na-esonụ iji gaa n'ihu
+Your settings.php file appears to be valid.: Faịlụ “settings.php” gị dị ka ihe dị ire.
+Configuration Wizard Password: Nhazi Ọkachamara Ọkachamara
+Create Settings File Password: Mepụta Ntọala Njikwa Paswọdu
+db setup directions...: N'akụkụ a ị ga-edozi ma nwalee njikọ gị na ihe nkesa data gị. Ozi akaụntụ e nyere kwesịrị ịnwe ikikere iji mepụta ọdụ data, tebụl na ndị ọrụ. Ọ bụrụ na nke a agaghị ekwe omume, ma ọ bụ nweta nchekwa data gị dị oke, ị ga-eji aka hazie nchekwa data gị.
+Database Status: Ọnọdụ data
+Supported databases for your PHP installation: Na-akwado ọdụ data maka gị PHP nwụnye
+Your current database settings are able to access the database.: Ntọala nchekwa data gị dị ugbu a nwere ike ịnweta nchekwa data.
+Please Test Settings: Biko Nwalee Ntọala
+Your current database settings are not able...: Ntọala nchekwa data gị ugbu a enweghị ike ịnweta nchekwa data ma ọ bụ nwalebeghị.
+Database Settings: Ntọala data
+Database Type: Dị data
+Server: Sava
+Connection Persistence: Njikọ Ntinye
+All your database tables appear to be up...: Tebụl nchekwa data gị niile dị ka ihe dị ugbu a. Nwere ike gaba na peeji na-esonụ na mezue gị WebCalendar Mbido.
+This appears to be a new installation...: Nke a dị ọhụrụ. Ọ bụrụ na nke a ezighi ezi, biko laghachi na peeji gara aga wee mezie ntọala gị.
+This appears to be an upgrade...: Nke a gosipụtara ịbụ mmelite site na ụdị&nbsp;XXX&nbsp;na&nbsp;YYY.
+The database requires some data input...: The nchekwa data chọrọ ụfọdụ data ntinye Pịa Mmelite na ọdụ mezue nweta nkwalite.
+In this section we will perform...: Ná nkebi a anyị ga-eme mgbanwe iji mee ka nchekwa data gị ruo ọkwa achọrọ. Ọ bụrụ na ị na-eji nchekwa data akwadoro, a ga-arụ ọrụ a na-akpaghị aka maka gị. Ọ bụrụ na ọ bụghị, enwere ike igosipụta SQL achọrọ ma ị ga-enwe ike ibepụ ya na mado ya na windo ajụjụ nchekwa data nchekwa data gị.
+No database actions are required.: Enweghị omume nchekwa data chọrọ.
+The following database actions are required: Achọrọ omume nchekwa data ndị a
+ODBC Underlying Database: ODBC Ihe Odide:
+Automatic installation not supported: Emebebeghị akpaaka akpaaka maka ụdị nchekwa data gị. Ga-eji aka kee tebụl ndị achọrọ iji iji SQL weta. Biko pia  gosiputa SQL  ka ị gaa n’ihu. Bee na Tapawa n'ime windo njụ-ajụjụ nchekwa data gị.
+This may take several minutes to complete: Nke a nwere ike were ọtụtụ nkeji iji wuchaa ya.
+Install Database: Wụnye data
+Update Database: Melite database
+Display Required SQL: Ngosipụta achọrọ SQL
+Return to previous page after processing SQL.: Mgbe iji aka hazie SQL a, ị ga-alaghachi na peeji nke mbụ wee nyochaa ọdụ data gị ka edemede wee nwee ike ịchọpụta mgbanwe ndị ahụ.
+This is the final step in setting up your WebCalendar Installation.: Nke a bụ ikpeazu ịtọlite ​​nwụnye WebCalendar gị.
+Timezone Conversion: Ntughari oge
+It appears that you have NOT converted...: Ọ dị ka ị B convertedGH converted gbanwee data omume WebCalendar gị dị na GMT. Ọ bụrụ na inwere, ịnwere ike ileghara ọkwa a anya ma ghara ịga n'ihu na ntugharị. Ọ bụrụ na nke a bụ nrụnye ọhụụ, ị nwekwara ike ileghara ọkwa a anya.
+Convert Data to GMT: Gbanwee data na GMT
+Application Settings: Ntọala ngwa
+HTTP-based authentication was not detected...: Achọpụtaghị nyocha nyocha HTTP. Kwesịrị ịhazigharị sava weebụ gị ma ọ bụrụ na ịchọrọ ịhọrọ 'Web Server' site na nhọrọ 'njirimara nyocha' n'okpuru.
+HTTP-based authentication was detected...: Achọpụtara nyocha dabere na HTTP. A na-edozi nyocha ndị ọrụ site na sava weebụ gị. Kwesịrị ịhọrọ 'Web Server' na ndepụta nhọrọ 'njirimara nyocha' n'okpuru.
+Create Default Admin Account: Mepụta Akaụntụ Ndi an-kpọ
+(Admin Account Not Found): (Akaụntụ Akaụntụ Adịghị Ahụ)
+User Authentication: Nyocha njirimara
+Web-based via WebCalendar (default): Web sitere na WebCalendar (ndabere)
+Web Server (not detected): Sava Weebụ (achọpụtaghị)
+Web Server (detected): Sava Weebụ (achọpụtara)
+None (Single-User): O nweghi (Onye Nwere Ya)
+Read-Only: Gụọ-Naanị
+Environment: Gburugburu ebe obibi
+Production: Mmepụta
+Development: Mmepe
+Save Settings: Chekwaa Ntọala
+Launch WebCalendar: Ẹkedori WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Njehie imelite tebụl "XXX": YYY.
+Conversion Successful: Ntughari gara nke ọma 
+Perl script required: Usoro WebCalendar gị gara aga chọrọ ịgba ọsọ PERL iji gbanwee data gị. Biko mee /tools/upgrade_to_0.9.7.pl wee laghachi na peeji a ka ị gaa n'ihu.
+previous version requires updating several tables: Usoro mbu nke WebCalendar gị chọrọ imelite ọtụtụ tebụl nchekwa data.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: EBUGH P Nyochaa
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Mperi ijikọ nchekwa data
+Include Path: Gụnye athzọ
+Deleting events for: Ihichapụ ihe maka
+Importing events for: Na-ebubata ihe maka
+No data returned from: Enweghị data weghachite si
+for non-user calendar: maka kalenda ndị na-abụghị ndị ọrụ
+No Remote Calendars found: O nweghi Kalịnda ndị a chọtara
+Remote Calendars not enabled: Remote kalenda anaghị nyeere
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ahụghị ihe omume id
+could not find event id XXX in database.: ahụghị ihe omume id XXX na nchekwa data.
+task: ọrụ
+This is a reminder for the XXX detailed below.: Nke a bụ ihe ncheta maka XXX zuru ezu n'okpuru.
+Pecentage Complete: Pecentage zuru ezu
+Reminder: Ncheta
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Omume akwadoghi: xxx
+No event id specified.: Enweghị nkọwapụta ihe omume.
+Not authorized (not admin).: Enweghi ikike (obughi admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Na-enyocha ihe omume maka XXX site na ụbọchị YYY ruo ụbọchị ZZZ.
+Found XXX events in time range.: Ahụrụ ihe omume XXX n'oge dị nso.
+Event id=XXX YYY at ZZZ on AAA.: Ihe omume id = XXX "YYY" na ZZZ na AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Na-ekwe ka onye ọrụ XXX lelee kalenda onye ọrụ ndị ọzọ.
+Error Email reminders disabled for user XXX.: Mperi: Email ncheta nwere nkwarụ maka onye ọrụ "XXX".
+Number of site_extras XXX.: Ọnụọgụ nke saịtị_extras: xxx.
+Reminder set for event.: Echetara maka ihe omume.
+Mins Before XXX.: Mins Tupu: XXX.
+Event time is XXX.: Oge mmemme bụ: XXX.
+Remind time is XXX.: Chetara oge bụ: XXX.
+Reminders for user XXX, login YYY.: Nchetara maka onye ọrụ "XXX", banye na "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Achọpụtabeghị onye ọrụ "XXX"
+Event id=XXX YYY already sent.: Ihe omume id = XXX "YYY" ezigalarị
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Enweghị nbanye chọrọ maka otu-ọrụ mode.
+No login required for HTTP authentication.: Enweghị nnabata chọrọ maka nyocha HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Ihe odide na ezighi ezi na nbanye.
+Username XXX does not exist.: Aha njirimara "XXX" adịghị.
+You cannot remove admin rights from yourself!: Nweghị ike iwepu ikike ikike n'aka gị!
+Unknown error saving user: Amaghi njehie izoputa onye oru.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Ọnweghị onye sonyere achọtara maka mmemme omume: XXX.
+Db error Could not find event id XXX.: Db njehie: enweghi ike ihu ihe omume id XXX.
+Error Could not find event id XXX in database.: Mperi: Enwenwughi ike ịchọta id ክስተት XXX na nchekwa data.
