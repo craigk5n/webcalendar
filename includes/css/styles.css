@@ -13,10 +13,12 @@ html {
   /* These are to prevent some 'spam site' complaints. */
   background-color: #FFFFFE;
   color: #000001;
+  color-scheme: dark light;
+  hanging-punctuation: first last;
 }
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
 }
@@ -33,6 +35,11 @@ body{
   color: var(--textcolor);
   font: var(--def-font-size)/1.5 var(--def-font-family);
 }
+
+del {
+  text-decoration: line-through 2px var(--textcolor);
+}
+
 div.container-fluid, div.container, nav.navbar,
   div.dropdown-menu, ul.dropdown-menu, .list-group, .list-group-item,
   .sectioncontent {
@@ -70,6 +77,9 @@ abbr {
 div {
   border:0;
 }
+h1,h2,h3,h4,h5,h6 {
+  text-wrap: balance;
+}
 h2 {
   color: var(--h2color);
   font-size:1.875rem;
@@ -82,6 +92,10 @@ fieldset {
 }
 label {
   font-weight:bold;
+}
+p {
+  max-inline-size: 65ch;
+  text-wrap: pretty;
 }
 textarea {
   /*font-size:.75rem;*/
@@ -170,7 +184,19 @@ td.weekcell {
   text-decoration:none;
 }
 img {
-  border:0;
+  max-inline-size: 100%;
+  block-size: auto;
+  
+  /* These 2 presume pre-load a low-res image in an inline style="" on each img. */
+  /* We probably don't need them. Yet. */
+  /*
+  background-repeat: no-repeat;
+  background-size: cover;
+  */
+
+  shape-margin: 1rem;  
+  border: 0;
+  vertical-align: middle;
 }
 img.color {
   width:.9375rem;
@@ -1594,4 +1620,10 @@ table.ThemeMenubar {
   left: 100%;
   margin-left: .1rem;
   margin-right: .1rem;
+}
+@media(prefers-reduced-motion: no-preference) {
+  :has(:target) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+  }
 }
