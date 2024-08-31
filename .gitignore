@@ -9,10 +9,8 @@ __pycache__
 *.sha
 includes/htmlare*
 includes/settings.php
-java/
 mysql-data
 node_modules/
-pub/
 sqlite-data
 tests/.phpunit.result.cache
 vendor/
