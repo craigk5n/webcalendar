@@ -16,8 +16,8 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
  * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
- * @package WebCalendar
- * @subpackage Reports
+ *
+ * @package WebCalendar\Reports
  */
 
 /* Security:
