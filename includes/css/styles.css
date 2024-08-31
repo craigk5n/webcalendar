@@ -949,6 +949,12 @@ tr.highlight td {
 #viewl #nextmonth {
   float:right;
 }
+table#nextmonth {
+  float: right;
+}
+table#prevmonth {
+  float: left;
+}
 #month .minical caption,
 #viewl .minical caption {
   margin-left:4ex;
