@@ -1,7 +1,7 @@
-# Run docker-compose from the top-level WebCalendar directory and not from this "docker" subdirectory.
+# Run docker compose from the top-level WebCalendar directory and not from this "docker" subdirectory.
 #   If you need shell access on the webserver container running WebCalendar, you can use
 #   the following command:
-#     docker-compose -f docker/docker-compose-php8.yml exec webcalendar-php8 /bin/sh
+#     docker compose -f docker/docker-compose-php8.yml exec webcalendar-php8 /bin/sh
 
 version: '3.1'
 

@@ -1,7 +1,7 @@
-# Run docker-compose from the top-level WebCalendar directory and not from this "docker" subdirectory.
+# Run docker compose from the top-level WebCalendar directory and not from this "docker" subdirectory.
 #   If you need shell access on the webserver container running WebCalendar, you can use
 #   the following command:
-#     docker-compose -f docker/docker-compose-php8-dev.yml exec webcalendar-php8-mariadb /bin/sh
+#     docker compose -f docker/docker-compose-php8-dev.yml exec webcalendar-php8-mariadb /bin/sh
 
 version: '3.1'
 
@@ -81,7 +81,7 @@ services:
       - WEBCALENDAR_MODE=dev
 
   # To access the pgsql command line:
-  # docker-compose -f docker/docker-compose-php8-dev.yml exec db-pgsql /bin/bash
+  # docker compose -f docker/docker-compose-php8-dev.yml exec db-pgsql /bin/bash
   # Before the webcalendar db is created:
   #   psql -h localhost -p 5432 -U webcalendar -W -d postgres
   db-pgsql:
