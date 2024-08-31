@@ -1,0 +1,2387 @@
+# Kazakh kk
+#
+# Пішім қосымша тақырыптан тұрады:
+#
+# Аударған: сіздің атыңыз және электрондық поштаңыз
+# Соңғы жаңарту: аударылған күні
+# (Жетекші «#» және алдыңғы аудармашылар жасаған кез-келген ескертпелерді қосқанда.
+# БІРІНШІ бос жол осы тақырып түсініктемелерін аяқтайды.)
+#
+# Қажет болған соң, олардың соңынан:
+#
+# Ағылшынша сөйлем: аударма
+# (Бір жолға. «#» Көшбасшы.
+# «Ағылшынша фраза:», қос нүктені қосқанда «:», арқылы берілген
+# WebCalendar әзірлеушілері. Сіздің үлесіңіз «аударма».)
+#
+# Құралдар каталогында сізге көмектесу үшін екі скрипт бар:
+# - check_translation.pl
+# барлық мәтін сәтті аударылғанын білдіреді.
+# - update_translation.pl
+# барлық аудармаларды ('фраза') және табу үшін бағдарлама файлдарын талдайды
+# нұсқаулық ('сөйлем'). Ол сөз тіркестерін параққа сәйкес орналастырады
+# Бірінші жағдайды қамтитын № (файл). Ол қалауы бойынша
+# аудару әлі аударылмаған
+#  << MISSING >>
+# фразаның үстіндегі жолда. Егер сөз тіркесі аббревиатура болса,
+# бұл сөз тіркесінің астына толық ағылшын мәтінін қосады.
+#
+# Ескерту: Мен файлдың жалпы көлемін азайтуға тырысамын. Егер «аударма»
+# сөз / сөйлем сіздің тіліңізде және ағылшын тілінде бірдей, тек «=» белгісін қолданыңыз.
+#
+# Ескерту: Сіз жазбаны байқайсыз «Маy_» төменде. Мұның себебі бар.
+#  Аудару «Маy_» толық айдың атауына және «Маy» дейін,
+# әдетте үш әріптен тұратын, айлық аббревиатура («қазан» - «қазан» сияқты).
+#
+# Мен бұл үшін Google translate қолдандым.
+# Ана тілі оны анықтағанға дейін жеткілікті.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: ХХХ нұсқасы
+WebCalendar is a PHP application used...: WebCalendar - бұл бір қолданушыға арналған күнтізбені немесе пайдаланушылардың интернет / интранет тобын жүргізу үшін қолданылатын PHP қосымшасы. Оны оқиғалар күнтізбесі ретінде де конфигурациялауға болады.
+Credits: Несиелер
+About: Туралы
+OK: ЖАРАЙДЫ МА
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Деректер базасының қатесі: XXX.
+DEFAULT CONFIGURATION: ДЕФОЛЬТТІ КОНФИГУРАЦИЯ
+Go: Барыңыз
+Save: Сақтау
+Undo: Қайтару
+Public Access: Қоғамдық қол жетімділік
+Admin: Админ
+User Access Control: Пайдаланушының кіруін басқару
+Allow Access to Other Users Calendar: Басқа пайдаланушылардың күнтізбесіне кіруге рұқсат беру
+Grant This User Access to My Calendar: Бұл пайдаланушыға менің күнтізбеме кіруге рұқсат беріңіз
+Type: Түрі
+Calendar: Күнтізбе
+View Event: Іс-шараны қарау
+View: Көру
+Edit: Өңдеу
+Approve/Reject: Бекіту / қабылдамау
+Events: Оқиғалар
+Tasks: Тапсырмалар
+Journals: Журналдар
+Can Invite: Шақыра алады
+Can Email: Электрондық пошта жібере алады
+Can See Time Only: Тек уақытты көре алады
+Assistant: Көмекші
+Select All: Барлығын таңдаңыз
+Clear All: Барлығын өшіру
+Public: Қоғамдық
+Confidential: Құпия
+Private: Жеке
+
+########################################
+# Page: activity_log.php
+#
+Next: Келесі
+Previous: Алдыңғы
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: ХХХ оқиға сіздің күнтізбеңізде бар.
+Invalid entry id XXX.: Жарамсыз енгізу идентификаторы: «XXX».
+a XXX event may not be added to your calendar: Бұл ХХХ оқиға және оны күнтізбеңізге қосуға болмайды.
+confidential: құпия
+private: жеке
+Error adding event XXX.: Іс-шараны қосу қатесі: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: «XXX» параметрінің мәні жарамсыз.
+Select: Таңдаңыз
+Day: Күн
+Week: Апта
+Month: Ай
+Year: Жыл
+Bottom: Төменде
+Top: Жоғары
+Anyone: Кез келген адам
+Participant: Қатысушы
+Settings: Параметрлер
+Groups: Топтар
+NonUser Calendars: Пайдаланушы емес күнтізбелері
+Other: Басқа
+Email: Электрондық пошта
+Colors: Түстер
+Document background: Құжат фоны
+Document title: Құжаттың атауы
+Document text: Құжат мәтіні
+My event text: Менің іс-шара мәтінім
+Table grid color: Кесте торының түсі
+Table header background: Кесте тақырыбының фоны
+Table header text: Кесте тақырыбының мәтіні
+Table cell background: Кесте ұяшығының фоны
+Table cell background for current day: Ағымдағы күнге арналған кесте ұяшығының фоны
+Table cell background for days with events: Оқиғалар бар күндерге арналған кесте ұяшығының фоны
+Table cell background for weekends: Демалыс күндеріне арналған кесте ұяшығының фоны
+Table cell background for other month: Басқа айдағы кесте ұяшығының фоны
+Week number color: Апта нөмірінің түсі
+Event popup background: Оқиғаның қалқымалы фоны
+Event popup text: Оқиғаның қалқымалы мәтіні
+System Settings: Жүйе параметрлері
+Help: Көмектесіңдер
+System options: Жүйе параметрлері
+app-name-help: Барлық беттер үшін және кіру парағында браузердің тақырып тақтасында пайда болатын қолданбаның атауын көрсетеді. Мұнда көрсетілген мән аудармалар файлында әр түрлі тілдерге әр түрлі тақырыптар беруге мүмкіндік беретін болады.
+Application Name: Қолданба атауы
+Translated Name (XXX): Аударылған аты (XXX)
+server-url-help: Бағдарламаның негізгі URL мекенжайын көрсетеді. Бұл электрондық пошта арқылы ескертулер мен хабарламалар жіберген кезде қосылады.
+Server URL: Сервердің URL мекен-жайы
+home-url-help: Қолданба үшін үй URL мекенжайын көрсетеді. Бұл абсолютті немесе салыстырмалы болуы мүмкін
+Home URL: Үйдің URL мекен-жайы
+language-help: Қай тілді қолдану керектігін анықтайды.
+Language: Тіл
+Your browser default language is XXX.: Сіздің шолғыштың әдепкі тілі - «XXX».
+Allow user to use themes: Пайдаланушыға тақырыптарды пайдалануға рұқсат беру
+themes-help: Конфигурация параметрлерін жаппай жаңартуға мүмкіндік береді. Кіші әріптер жапсырмалары тек пайдаланушыға арналған.
+Themes: Тақырыптар
+AVAILABLE THEMES: БАР Тақырыптар
+None: Жоқ
+Preview: Алдын ала қарау
+Site customization: Сайтты теңшеу
+custom-script-help: Әр парақтың HTML «басы» бөліміне енгізілетін арнайы Javascript немесе стиль кестесінің мәтінін енгізуге мүмкіндік береді.
+Custom script/stylesheet: Сценарий / стиль кестесі
+custom-header-help: HTML парағының әр беттің жоғарғы жағына қосылуына мүмкіндік береді.
+Custom header: Жеке тақырып
+custom-trailer-help: Әр парақтың соңында теңшелетін HTML үзіндісін қосуға мүмкіндік береді.
+Custom trailer: Арнайы тіркеме
+enable-external-header-help: Сыртқы файлдан арнайы тіркеме жүктеуге мүмкіндік береді
+Allow external file for header/script/trailer: Сыртқы файлға тақырып / сценарий / трейлерге рұқсат беріңіз
+Allow user to override header/trailer: Пайдаланушыға тақырып / трейлерді болдырмауға рұқсат беріңіз
+Date and Time: Күні мен уақыты
+server-tz-help: UTC-ден сервер уақытына дейінгі уақытты қанша сағатқа реттеуге болатындығын анықтайды.
+Server Timezone Selection: Сервердің уақыт белдеуін таңдау
+tz-help: UTC-ден жергілікті уақытқа дейінгі уақытты қанша сағатқа реттеуге болатындығын анықтайды.
+Default Client Timezone Selection: Әдепкі клиенттің уақыт белдеуін таңдау
+display-general-use-gmt-help: Егер қосылса, жалпы күндер / уақыт GMT түрінде көрсетіледі
+Display Common Use Date/Times as GMT: Жалпы пайдаланылатын күнді / уақытты GMT түрінде көрсету
+date-format-help: Қалаған күн пішімін анықтайды.
+Date format: Күн форматы
+Small Task Date: Шағын тапсырма күні
+display-week-starts-on: Апта басталатын аптаның күнін көрсетеді. Егер дүйсенбі көрсетілген болса, онда апта сандары ISO аптаның нөмірлері болады.
+Week starts on: Апта басталады
+display-weekend-starts-on: Апта күнін демалыс күндеріне бастайды
+Weekend starts on: Демалыс басталады
+time-format-help: Қай уақыт пішімін пайдалану керектігін анықтайды:<br><em>12 сағат:</em> Көрсету уақыты таңғы 3-те, кешкі 8: 30-да және т.б.<br><em>24 сағатта:</em> Көрсету уақыты 300-ге тең , 2030 және т.б.
+Time format: Уақыт форматы
+12 hour: 12 сағат
+24 hour: 24 сағат
+timed-evt-len-help: Уақытталған оқиғаның ұзындығын анықтауға арналған енгізу әдісін анықтайды.
+Specify timed event length by: Уақыттың ұзақтығын көрсетіңіз
+Duration: Ұзақтығы
+End Time: Аяқталу уақыты
+work-hours-help: Тәулік көрінісі үшін көрсетілетін уақыт ауқымын анықтайды.
+Work hours: Жұмыс уақыты
+From: Қайдан
+to: дейін
+Appearance: Сыртқы түрі
+preferred-view-help: Әдепкі көріністі (күн, апта, ай немесе жыл) анықтайды.
+Preferred view: Қалаулы көрініс
+Allow top menu: Жоғарғы мәзірге рұқсат беру
+Date Selectors position: Күнді таңдауыштардың орны
+menu-themes-help: Жоғарғы мәзірдің түстері мен стилін орнатады
+Menu theme: Мәзір тақырыбы
+fonts-help: Пайдаланылатын жүйелік қаріптердің тізімін анықтайды (мысалы, «Arial, Helvetica»)
+Fonts: Қаріптер
+display-sm_month-help: Егер қосылса, айлық көріністегі кішігірім айларды көрсетеді
+Display small months: Кішкентай айларды көрсету
+display-weekends-help: Апта қараған кезде демалыс күндерін қосыңыз.
+Display weekends: Демалыс күндерін көрсету
+display-long-daynames-help: Егер қосылса, ұзақ күн атаулары көрсетіледі
+Display long day names: Ұзақ күн аттарын көрсету
+display-alldays-help: Барлық ұяшықтарды толтырып, алдыңғы және келесі айларды ай көріністерінде көрсетіңіз.
+Display all days in month view: Барлық күндерді ай көрінісінде көрсету
+display-week-number-help: Апта нөмірі (1-52) ай көрінісі мен апта көрінісінде көрсетілуі керек-болмайтынын анықтайды.
+Display week number: Апта нөмірін көрсету
+display-desc-print-day-help: Оқиғалардың сипаттамаларын күн көрінісінің принтерге ыңғайлы нұсқасына қосыңыз.
+Display description in printer day view: Сипаттаманы принтердің күн көрінісінде көрсету
+yearly-shows-events-help: Жылдық көріністе қалың қаріппен оқиғалардан тұратын күндерді көрсетіңіз.
+Display days with events in bold in month and year views: Күндерді аймен және жылмен қарамен қарамен жазылған оқиғалармен көрсетіңіз
+display-minutes-help: Егер қосылса, минутпен аяқталатын минут әрқашан көрсетіледі
+Display 00 minutes always: Әрқашан 00 минут көрсетіңіз
+display-end-times-help: Егер уақиға белгіленген болса, оқиғаның аяқталу уақытын көрсетіңіз
+Display end times on calendars: Күнтізбелерде аяқталу уақытын көрсету
+allow-view-add-help: Көріністерге '+' белгішесі қосылады, бұл пайдаланушыларға басқа қолданушылардың күнтізбелеріне оқиғаларды жылдам қосуға мүмкіндік береді.
+Include add event link in views: Көріністерге іс-шара сілтемесін қосыңыз
+lunar-help: Егер қосылса, ай фазаларын бейнелейтін кішкентай белгішелерді көрсетеді
+Display Lunar Phases in month view: Ай фазаларын ай көрінісінде көрсетіңіз
+Restrictions: Шектеу
+allow-view-other-help: Бір пайдаланушының басқа пайдаланушының күнтізбесін көре алатынын анықтайды.
+Allow viewing other users calendars: Басқа пайдаланушының күнтізбелерін көруге рұқсат етіңіз
+require-approvals-help: Қосылған кезде, пайдаланушы оқиғаны күнтізбесінде көрсетпестен бұрын мақұлдауы керек (егер Дисплейде мақұлданбаған болса). Мұны «Жоқ» етіп орнатқан кезде, Қоғамдық қол жетімділік күнтізбесі үшін растаулар өшірілмейді (егер Қоғамдық қатынас күнтізбесі қосылған болса).
+Require event approvals: Іс-шараны мақұлдауды талап ету
+display-unapproved-help: Күнтізбеңізде мақұлданбаған оқиғалардың көрсетілетін-көрсетілмейтіндігін анықтайды.<br>Егер «Иә» деп орнатылса, онда келісілмеген оқиғалар күнтізбеңізде (басқа мәтін түсінде) көрсетіледі.<br>Егер «Жоқ» деп орнатылса, онда мақұлданбаған оқиғалар күнтізбеңізде көрсетілмес бұрын мақұлдануы керек.
+Display unapproved: Дисплей мақұлданбаған
+conflict-check-help: Оқиға қайшылықтарын тексеріңіз (бір адамға бір уақытта жоспарланған екі оқиға). Егер сіз мұны «Иә» күйіне қойсаңыз, ескертуді растағаннан кейін сіз екі іс-шараны бір уақытта жоспарлай аласыз. Егер сіз мұны «Жоқ» күйіне қойсаңыз, қақтығыстардың болуы тексерілмейді. Сіз мұны «Иә» күйіне орнатқыңыз келетін шығар, сондықтан жанжал тексеріледі.
+Check for event conflicts: Оқиғалар қайшылығын тексеріңіз
+Yes: Иә
+No: Жоқ
+conflict-months-help: Егер қақтығыстар тексерілсе («Оқиға қайшылықтарын тексеру» «Жоқ» деп қойылса & # 41; бұл келешекте қанша айдан кейін қақтығыстардың бар-жоғын тексеретінімізді анықтайды. Егер сіз оқиғаларды қоссаңыз, оларды өңдеу ұзақ уақытты алады) , бұл санды азайтыңыз.
+Conflict checking months: Қақтығыстарды тексеру айлары
+conflict-check-override-help: Пайдаланушыларға оқиғалардың қайшылықтарын болдырмауға және екі немесе одан да көп оқиғаларды бір уақытта жоспарлауға мүмкіндік береді.
+Allow users to override conflicts: Пайдаланушыларға қайшылықтарды болдырмауға мүмкіндік беріңіз
+limit-appts-help: Жүйе әкімшісіне бір пайдаланушының кез-келген күні бола алатын кездесулер санына жалпы жүйелік шектеу қоюға мүмкіндік береді.
+Limit number of timed events per day: Тәулігіне белгіленген іс-шаралар санын шектеу
+limit-appts-number-help: Пайдаланушы бір күнде болуы мүмкін уақыттың максималды санын анықтайды.
+Maximum timed events per day: Тәулігіне максималды уақыттық іс-шаралар
+crossday-help: Егер қосылса, күндерді қамтитын оқиғалар бөлек күндерде көрсетіледі
+Disable Cross-Day Events: Күнаралық іс-шараларды өшіру
+disable-location-field-help: «Иә» таңдау «Орналасу» өрісін оқиғалар туралы ақпарат беттерінен алып тастайды
+Disable Location field: Орын өрісін өшіру
+disable-url-field-help: «Иә» таңдау «URL» өрісін оқиғалар туралы ақпарат беттерінен алып тастайды
+Disable URL field: URL өрісін өшіру
+disable-priority-field-help: «Ия» таңдау «Басымдық» өрісін оқиғалар туралы ақпарат беттерінен алып тастайды, жаңадан бастаушылар үшін қарапайым интерфейс ұсынылады.
+Disable Priority field: Басымдық өрісін өшіру
+disable-access-field-help: «Иә» таңдау «Жаңалықтар үшін қарапайым интерфейсті ұсына отырып, іс-шаралар туралы ақпарат беттерінен« Қатынасу »өрісін алып тастайды.
+Disable Access field: Access өрісін өшіру
+disable-participants-field-help: «Иә» таңдау «Қатысушылар» өрісін іс-шаралар туралы ақпарат беттерінен алып тастайды, бұл қолданушыларға өз оқиғаларына басқа қолданушыларды қосуға мүмкіндік бермейді. Егер сіз осы опцияны қоссаңыз, «Басқа пайдаланушының күнтізбелерін көруге рұқсат беру» өрісін де өшіргіңіз келуі мүмкін.
+Disable Participants field: Қатысушылар өрісін өшіру
+disable-repeating-field-help: «Иә» таңдау оқиғаларды қосқан кезде «Қайталау» өрісін алып тастайды. Бұл жаңадан бастағандарға қарапайым интерфейс ұсынады.
+Disable Repeating field: Қайталау өрісін өшіру
+allow-html-description-help: Егер қосылса, пайдаланушылар HTML-ді оқиғаның сипаттамасы өрісіне енгізе алады. Егер қосылмаған болса, HTML тегтері қарапайым мәтін ретінде көрінетін етіп шығады. Ескерту: бұл мүмкіндікті қосу пайдаланушыларға басқа веб-сайттардағы суреттерге сілтеме жасауға мүмкіндік береді.
+Allow HTML in Description: Сипаттамада HTML-ге рұқсат беру
+Popups: Қалқымалы терезелер
+disable-popups-help: Күнтізбе көріністерінен қалқымалы терезелерді өшіру
+Disable Pop-Ups: Қалқымалы терезелерді өшіру
+popup-includes-siteextras-help: Егер қосулы болса, сайт_extras.php файлында теңшелетін оқиға өрістерін орнатуға рұқсат етіңіз, бұл оқиға қалқымалы терезелерінде көрсетіледі.
+Display Site Extras in popup: Сайт Қосымшаларын қалқымалы терезеде көрсету
+popup-includes-participants-help: Егер қосылса, қатысушылар іс-шаралар қалқымаларында көрсетіледі.
+Display Participants in popup: Қатысушыларды қалқымалы терезеде көрсету
+Miscellaneous: Әр түрлі
+remember-last-login-help: Қосылған кезде, кіру парағында олар үшін пайдаланушының логині толтырылады (бірақ пароль емес) және пайдаланушының қалауы жүктеледі (олардың қалаған түстері мен тіл таңдауын қосқанда).
+Remember last login: Соңғы кіруді есіңізде сақтаңыз
+summary_length-help: Күнтізбе көріністеріндегі қысқаша сипаттаманың максималды ұзындығы
+Brief Description Length: Қысқаша сипаттамасы Ұзындығы
+user_sort-help: Пайдаланушы, Пайдаланушы емес тізімдері бойынша сұрыптау ретін анықтайды
+User Sort Order: Пайдаланушы сұрыптау тәртібі
+Lastname, Firstname: Тегі, аты
+Firstname, Lastname: Аты Тегі
+allow-public-access-help: Қосылған кезде, күнтізбе пайдаланушыларға кіруді қажет етпейтін, тек оқуға арналған жалпы күнтізбе ретінде пайдаланылуы мүмкін.
+Allow public access: Жалпыға қол жетімділікке рұқсат етіңіз
+public-access-default-visible: Жалпы күнтізбедегі оқиғалар барлық пайдаланушылардың күнтізбелерінде автоматты түрде пайда болады
+Public access visible by default: Жалпыға қол жетімділік әдепкі бойынша көрінеді
+public-access-default-selected: Жаңа іс-шара қосқан кезде жалпы пайдаланушы әдепкі бойынша қатысушы ретінде таңдалады.
+Public access is default participant: Жалпыға қол жетімділік - әдепкі қатысушы
+public-access-view-others-help: Жүйеге жалпы қол жетімділікке қол жеткізген кезде, пайдаланушының басқа күнтізбелік пайдаланушының күнтізбесін көре алатынын анықтайды.
+Public access can view other users: Қоғамдық қол жетімділік басқа пайдаланушыларды көре алады
+public-access-can-add-help: Қосылған кезде, жүйеге Public Access арқылы кіретін пайдаланушылар жаңа оқиғаларды қоса алады, бірақ әкімші жаңа оқиғаны мақұлдамайынша, олар күнтізбеде көрінбейді.
+Public access can add events: Жалпыға қол жетімділік іс-шараларды қоса алады
+public-access-add-requires-approval-help: Жалпыға қол жетімді тіркелгі арқылы қосылған оқиғалар көрсетілмес бұрын мақұлдауды қажет ететіндігін анықтайды.
+Public access new events require approval: Көпшілікке қол жетімді жаңа іс-шаралар мақұлдауды талап етеді
+public-access-sees-participants-help: Егер қосылса, жалпы есептік жазбадан күнтізбеге кіретін пайдаланушылар оқиғаның егжей-тегжейін көрген жағдайда іс-шараға қатысушыларды көре алады.
+Public access can view participants: Қоғамдық қол жетімділік қатысушыларды көре алады
+public-access-override-help: Оқиға атаулары мен сипаттамаларын көпшілік күнтізбесінде жасыруға мүмкіндік береді
+Override event name/description for public access: Жалпыға қол жетімді болу үшін іс-шара атауы / сипаттамасын қайта анықтаңыз
+public-access-override-text-help: Жоғарыдағы опция қосылса, көрсетілетін мәтін. Егер 'қол жетімді' болмаса, ол аударылады.
+Text to display to public access: Жалпыға қол жетімді жерде көрсетілетін мәтін
+public-access-captcha-help: Егер қосылса, Public қосқан жаңа оқиғалар CAPTCHA растауын талап етеді.
+Require CAPTCHA validation for public access new events: Жаңа оқиғаларға көпшілік қол жеткізуі үшін CAPTCHA растауын талап етіңіз
+uac-enabled-help: Қолданушы деңгейіндегі қатынасты басқаруға мүмкіндік береді
+User Access Control enabled: Пайдаланушының кіруін басқару қосылды
+groups-enabled-help: Пайдаланушыларға топтар бойынша пайдаланушыларды таңдауға мүмкіндік беріп, топтық қолдауды қосады.
+Groups enabled: Топтар қосылды
+user-sees-his-group-help: Егер қосылса, пайдаланушылар өз топтарының кем дегенде біреуінде жоқ күнтізбелік пайдаланушыларды көрмейді.
+User sees only his groups: Пайдаланушы тек өзінің топтарын ғана көреді
+nonuser-enabled-help: Егер қосылса, әкімшілерде пайдаланушы емес күнтізбелерді қосу мүмкіндігі болады
+Nonuser enabled: Пайдаланушы емес күнтізбелері қосылды
+nonuser-list-help: Қатысушылар тізімінде пайдаланушы емес күнтізбелерді қайда көрсетуге болады
+Nonuser list: Қатысушылар тізімінде көрсетілген
+Upcoming Events: Алдағы іс-шаралар
+upcoming-events-help: Next.php қосыңыз
+Enabled: Қосылды
+upcoming-events-allow-override: Келесі.php үшін пайдаланушы парамтеріне рұқсат беріңіз
+Allow user override: Пайдаланушының бас тартуына рұқсат беру
+upcoming-events-display-caticons: Келесі санатқа белгішелерді енгізіңіз.php
+Display category icons: Санат белгішелерін көрсету
+upcoming-events-display-layers: Қабаттарды next.php файлында көрсету
+Display layers: Қабаттарды көрсету
+upcoming-events-display-links: Сілтемелерді next.php-де көрсету
+Display links to events: Оқиғаларға сілтемелерді көрсету
+upcoming-events-display-popups: Іс-шара қалқымалы терезесін алдағы.php-де көрсету
+Display event popups: Қалқымалы терезелерді көрсету
+reports-enabled-help: Егер қосылса, пайдаланушылар әр беттің төменгі жағында «Есептер» бөлімін көреді және теңшелетін есептер құруға рұқсат алады. Сонымен қатар, әкімші пайдаланушылар барлық пайдаланушылар беттерінің төменгі жағында пайда болатын жаһандық есептер жасай алады.
+Reports enabled: Есептер қосылды
+subscriptions-enabled-help: Қашықтағы пайдаланушылардың WebCalendar пайдаланушысының iCal-қосымшасында (мысалы, Apple iCal немесе Mozilla күнтізбесі) WebCalendar қолданушысының оқиғаларын көруге мүмкіндік бере отырып, WebCalendar пайдаланушысының күнтізбесіне жазыла алатынын анықтайды.
+Allow remote subscriptions: Қашықтықтан жазылуға рұқсат беру
+remotes-enabled-help: Пайдаланушыларға URL көмегімен қашықтағы ics файлдарын жүктеуге мүмкіндік береді
+Allow remote calendars: Қашықтағы күнтізбелерге рұқсат беру
+rss-enabled-help: Пайдаланушының күнтізбесін RSS арнасынан алуға болатындығын анықтайды.
+Enable RSS feed: RSS арнасын қосу
+categories-enabled-help: Іс-шаралар санаттарын қолдауды қосады.
+Categories enabled: Санаттар қосылды
+icon_upload-enabled-help: Егер қосылса, пайдаланушылар санаттар белгішелерін жүктей алады
+Category Icon Upload enabled: Санат белгішесі жүктеу қосылды
+(Requires XXX folder to exist.): (XXX қалтасының болуы қажет.)
+display-tasks-help: Ай мен күнтізбесінде шағын тапсырмалар терезесін көрсету
+Display small task list: Шағын тапсырмалар тізімін көрсету
+display-tasks-in-grid-help: Тапсырмаларды оқиғалармен бірге күнтізбелерде көрсету
+Display tasks in Calendars: Күнтізбелердегі тапсырмаларды көрсету
+allow-external-users-help: Күнтізбелік емес пайдаланушыны оқиғаға қосуға болатындығын не көрсетпейтінін көрсетеді. Бұл күнтізбелік емес пайдаланушыларды іс-шараға қатысушылар тізіміне қосуға мүмкіндік береді.
+Allow external users: Сыртқы пайдаланушыларға рұқсат беру
+external-can-receive-notification-help: Сыртқы пайдаланушылар қосылғанда және электрондық поштаны пайдалану рұқсат етілгенде, сыртқы қолданушылар оқиға қосылғанда, жаңартылғанда немесе жойылғанда (егер сыртқы пайдаланушының электрондық пошта мекенжайы көрсетілген болса) электрондық пошта арқылы хабарлама ала алады.
+External users can receive email notifications: Сыртқы пайдаланушылар электрондық пошта арқылы хабарлама ала алады
+external-can-receive-reminder-help: Сыртқы пайдаланушылар қосылып, электрондық пошта қолданылуы қосылса, сыртқы пайдаланушылар электрондық пошта арқылы ескертулер ала алады (егер сыртқы пайдаланушының электрондық пошта мекенжайы көрсетілген болса).
+External users can receive email reminders: Сыртқы пайдаланушылар электрондық пошта арқылы ескертулер ала алады
+allow-self-registration-help: Жаңа қолданушыларға өздерін тіркеуге рұқсат етіңіз
+Allow self-registration: Өзін-өзі тіркеуге рұқсат етіңіз
+use-blacklist-help: IP мекен-жайы негізінде WebCalendar функцияларына кіруді шектеңіз
+Restrict self-registration to blacklist: Қара тізімге өзін-өзі тіркеуді шектеңіз
+allow-self-registration-full-help: Жаңа қолданушыларға онлайн режимінде өзін-өзі тіркеу процесін аяқтауға мүмкіндік беріңіз
+Use self-registration email notifications: Парольдер жасаңыз және жаңа пайдаланушыларға жіберіңіз
+allow-attachment-help: Пайдаланушыларға іс-шараларға файл тіркемелерін қосуға рұқсат беру.
+Allow file attachments to events: Іс-шараларға файл тіркемелеріне рұқсат беру
+Admin and owner can always add attachments if enabled.: Егер қосылған болса, әкімші мен иесі әрқашан тіркемелер қоса алады.
+allow-comments-help: Пайдаланушыларға іс-шараларға түсініктемелер қосуға рұқсат етіңіз.
+Allow comments to events: Оқиғаларға түсініктемелерге рұқсат беру
+Admin and owner can always add comments if enabled.: Егер қосылған болса, әкімші мен иесі әрқашан түсініктеме қоса алады.
+email-enabled-help: Хабарлама мен еске салғыштар үшін барлық электрондық пошта хабарларын жіберуді қосыңыз немесе өшіріңіз. Егер сіздің серверіңіз пошта жіберу үшін дұрыс орнатылмаған болса, «жоқ» күйіне қойыңыз.
+Email enabled: Электрондық пошта қосылды
+email-default-sender: Еске салғыштарды жіберген кезде жіберуші ретінде көрсетілетін электрондық пошта мекенжайын көрсетеді.
+Default sender address: Жіберушінің әдепкі мекен-жайы
+email-mailer: Электрондық пошта түрін таңдаңыз (SMTP, PHP пошта, sendmail)
+Email Mailer: Электрондық пошта
+email-smtp-host: Үтірлермен бөлінген SMTP сервер (лер) дің хост (тар) ы
+SMTP Host name(s): SMTP хост атаулары
+email-smtp-port: SMTP портының нөмірі (әдетте 25)
+SMTP Port Number: SMTP порт нөмірі
+email-smtp-auth: SMTP аутентификациясын қолданыңыз
+SMTP Authentication: SMTP аутентификациясы
+email-smtp-username: Аутентификация қолданылған жағдайда SMTP пайдаланушы аты
+SMTP Username: SMTP пайдаланушы аты
+email-smtp-password: Аутентификация қолданылған жағдайда SMTP құпия сөзі
+SMTP Password: SMTP құпия сөзі
+Default user settings: Пайдаланушының әдепкі параметрлері
+email-format: HTML немесе қарапайым мәтіндік хабарламаларға артықшылықты көрсетіңіз
+Email format preference: Электрондық пошта форматы
+HTML: =
+Plain Text: Қарапайым мәтін
+email-include-ics: Электрондық хабарға iCalendar ICS файлын қосыңыз
+Include iCalendar attachments: ICalendar тіркемелерін қосыңыз
+email-event-reminders-help: Іс-шара туралы еске салғыштарды жіберу немесе жібермеуді анықтайды.
+Event reminders: Іс-шара туралы еске салғыштар
+email-event-added: Күнтізбеге оқиға қосылған кезде электрондық пошта арқылы хабарлама жіберу немесе жібермеуді анықтайды.
+Events added to my calendar: Менің күнтізбеме оқиғалар қосылды
+email-event-updated: Күнтізбеде іс-шара жаңартылған кезде электрондық пошта арқылы хабарлама жіберу-жібермеуді анықтайды.
+Events updated on my calendar: Менің күнтізбемде жаңартылған оқиғалар
+email-event-deleted: Оқиғалар күнтізбеден жойылған кезде электрондық пошта арқылы хабарламалар жіберу-жібермеуді анықтайды.
+Events removed from my calendar: Оқиғалар күнтізбемнен жойылды
+email-event-rejected: Қатысушы күнтізбеңізде болған оқиғадан бас тартқан кезде электрондық пошта арқылы хабарлама жіберу-жібермеуді анықтайды.
+Event rejected by participant: Іс-шара қатысушы қабылдамады
+email-event-create: Жазбаларды жасаушының электрондық пошта алатынын немесе көрсетпейтінін анықтайды
+Event that I create: Мен жасайтын оқиға
+Color options: Түс параметрлері
+Allow user to customize colors: Пайдаланушыға түстерді реттеуге рұқсат етіңіз
+gradient-colors: Қосылған болса, градиент түстері қолданылады. Бұл өнімділікке үлкен әсер етуі мүмкін.
+Enable gradient images for background colors: Фондық түстер үшін градиенттік кескіндерді қосыңыз
+Not available: Жоқ
+Background Image options: Фондық кескін опциялары
+bgimage-help: Қажетті фондық суреттің URL мекенжайы. Салыстырмалы сілтеме болуы мүмкін.
+Background Image: Фондық кескін
+bgrepeat-help: Фондық кескіннің қайталанатын әрекетін басқарады.
+Background Repeat: Фонды қайталау
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Көмекшілер
+Preferences: Қалаулар
+Control Panel: Басқару панелі
+Users: Пайдаланушылар
+Account: Тіркелгі
+Categories: Санаттар
+Views: Көрулер
+Layers: Қабаттар
+Reports: Есептер
+Delete Events: Оқиғаларды жою
+Activity Log: Әрекеттер журналы
+System Log: Жүйелік журнал
+Security Audit: Қауіпсіздік аудиті
+Public Preferences: Қоғамдық артықшылықтар
+Unapproved Public Events: Бекітілмеген қоғамдық іс-шаралар
+Administrative Tools: Әкімшілік құралдар
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Көшірме атауы: «ХХХ».
+Username XXX already exists.: «XXX» пайдаланушы аты бұрыннан бар.
+Email address XXX already exists.: «XXX» электрондық пошта мекенжайы бұрыннан бар.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Қосымша түсініктемелер (міндетті емес)
+Approve and Send: Бекіту және жіберу
+Approve and Exit: Бекіту және шығу
+(Your comments will be emailed to the event creator.): (Сіздің пікірлеріңіз іс-шараны жасаушыға электрондық пошта арқылы жіберіледі.)
+Hello, XXX.: Сәлем, ХХХ.
+XXX has approved an appointment and added comments.: Кездесу мақұлданды және оған ХХХ ескертулер қосылды.
+Subject XXX: Тақырыбы: «ХХХ».
+Description XXX: Сипаттама: «XXX».
+Date XXX: Күні: ХХХ
+Time XXX: Уақыты: ХХХ
+Comments XXX: Пікірлер: ХХХ
+Approved w/Comments by XXX.: Түсініктемелер мақұлдаған: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Әкімші режимі
+Your assistants: Сіздің көмекшілеріңіз
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Белгісіз қате.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Бағдарлама қатесі: ХХХ көрсетілген жоқ!
+user: пайдаланушы
+year: жыл
+month: ай
+day: күн
+
+########################################
+# Page: category.php
+#
+Category Icon: Санат белгішесі
+Global: Ғаламдық
+The permissions for the icons directory are set to read-only: Белгішелер каталогына арналған рұқсаттар тек оқуға ғана арналған.
+Category Name: Санат атауы:
+Color: Түс
+Remove Icon: Белгішені жою:
+Add Icon to Category: Санатқа белгішені қосыңыз
+Upload: Жүктеу
+GIF or PNG 6kb max: Максимум GIF немесе PNG 6kb
+Search for existing icons: Бар белгішелерді іздеңіз
+Add: Қосу
+Delete: Жою
+Are you sure you want to delete this entry?: Бұл жазбаны жойғыңыз келетініне сенімдісіз бе?
+Make New Category: Жаңа санат жасаңыз
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Санат атауы қажет
+File size exceeds maximum.: Файл мөлшері максимумнан асады.
+File is not a GIF or PNG image: Файл GIF немесе PNG кескіні емес
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: ҚОЛДАНЫЛАТЫН САНАТТАР
+ENTRY CATEGORIES: КІРУ КАТЕГОРИЯЛАРЫ
+Remove: Жою
+Global Category: Жаһандық санат
+Cancel: Бас тарту
+
+########################################
+# Page: colors.php
+#
+Add Custom: Custom қосыңыз
+Basic Colors: Негізгі түстер
+Current Color: Ағымдағы түс
+Custom Colors: Түстер
+Old Color: Ескі түс
+
+########################################
+# Page: combo.php
+#
+Select None: Ешқайсысын таңдаңыз
+Agenda: Күн тәртібі
+Add Task: Тапсырма қосу
+Description: Сипаттама
+Date: Күні
+Time: Уақыт
+Priority: Басымдық
+Access: Кіру
+Created by: Жасалған
+Updated: Жаңартылды
+Participants: Қатысушылар
+Attachments: Тіркемелер
+Comments: Түсініктемелер
+Brief Description: Қысқаша сипаттама
+Full Description: Толық сипаттама
+Category: Санат
+Add event detail: Іс-шара туралы мәлімет қосыңыз
+Start Date: Басталатын күн
+Due Date: Мерзімнің өту күні
+Add task detail: Тапсырманың егжей-тегжейін қосыңыз
+All: Барлық
+Error: Қате
+no response from server: серверден жауап жоқ
+JSON error: JSON қатесі
+High: Жоғары
+Medium: Орташа
+Low: Төмен
+Today: Бүгін
+Add Entry: Жазба қосу
+Unnamed Event: Атаусыз оқиға
+Unnamed Task: Атаусыз тапсырма
+Refresh: Жаңарту
+Click to add entry: Жазба қосу үшін басыңыз
+Name: Аты-жөні
+pm: кешкі
+am: мен
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX кездесуді тоқтатты.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Блог идентификаторы жарамсыз
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Пікір қосу
+Add Attachment: Тіркеме қосу
+Subject: Тақырып
+Comment: Түсініктеме
+Upload file: Файлды жүктеңіз
+
+########################################
+# Page: docdel.php
+#
+Removed: Жойылды
+
+########################################
+# Page: edit_entry.php
+#
+days: күндер
+hours: сағат
+minutes: минут
+You are not authorized to edit this task.: Сіздің бұл тапсырманы өңдеуге құқығыңыз жоқ.
+is in a different timezone than you are. Currently: сізден басқа уақыт белдеуінде орналасқан. Қазіргі уақытта
+hour ahead of you: сізден бір сағат алда
+hour behind you: артта бір сағат
+hours ahead of you: сізден бірнеше сағат алда
+hours behind you: сізден сағат артта қалды
+XXX is in a different timezone (ahead): (ХХХ басқа уақыт белдеуінде; YYY сенің алдыңда.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (ХХХ басқа уақыт белдеуінде; YYY артыңызда.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Мұнда енгізілген уақыт сіздің уақыт белдеуіңізге негізделген.
+Edit Entry: Жазбаны өңдеу
+Details: Егжей
+Repeat: Қайталаңыз
+Reminders: Еске салғыштар
+brief-description-help: Бұл оқиғаның қысқаша сипаттамасын (шамамен 20 таңба) қамтамасыз етуі керек. Бұл күнтізбені қарау кезінде оқиғаны білдіреді.
+full-description-help: Бұл іс-шараның толық мәліметтерін қамтуы керек. Бұл ақпаратты пайдаланушы оқиғаны көрген кезде көруге болады.
+access-help: Іс-шараның қол жетімділік деңгейін анықтайды. <ul> <li> Жалпыға қол жетімді: Барлығы оқиғаның толық мәліметтерін көре алады.</li> <li> Құпия: Басқалары сізде сол күн мен уақытқа жазба бар екенін көре алады, бірақ бұл не туралы егжей-тегжей емес.</li></ul>
+priority-help: Іс-шараның басымдылығын анықтайды. Жоғары басымдылықтағы іс-шаралар қарамен көрсетіледі.
+category-help: Оқиғаның санатын анықтайды.
+completed-help: Күні бойынша тапсырма орындалды. Барлық қатысушылардың пайызы 100% болғанда ғана қосылады.
+Date Completed: Аяқталған күн
+percent-help: Осы пайдаланушы үшін тапсырманың орындалу пайызы
+Percent Complete: Аяқталған пайыз
+All Percentages: Барлық пайыздар
+location-help: Іс-шара өтетін орын
+Location: Орналасқан жері
+url-help: Іс-шараның URL мекен-жайы
+URL: URL мекен-жайы
+date-help: Оқиға күнін көрсетеді.
+Untimed event: Мерзімсіз оқиға
+Timed event: Уақыты белгіленген шара
+All day event: Күні бойғы іс-шара
+Timezone Offset: Уақыт белдеуін жылжыту
+time-help: Іс-шараның уақытын көрсетеді. <ul> <li> «Уақыты белгіленген оқиға» (сол күні белгілі бір уақытқа жоспарланған іс-шара үшін)</li> <li> «Уақытсыз оқиға» (іс-шара үшін бұның уақыты жоқ (демалыс сияқты) )</li> <li> «Күні бойы өткізілетін іс-шара» (бүкіл күні бойы өтетін іс-шара үшін (кеңседе болмау сияқты)</li></ul>
+duration-help: Іс-шараның ұзақтығын (сағатпен; минутпен) көрсетеді. <em>Бұл өрісті бос қалдыруға болады.</em>
+end-time-help: Іс-шараның аяқталу уақытын анықтайды.
+Start Time: Басталу уақыты
+Due Time: Белгіленген уақыт
+Site Extras: Қосымша сайттар
+avail_participants-help: Осы жазбаның қол жетімді қатысушыларын тізімдейді.
+Available: Қол жетімді
+Find Name: Атын табыңыз
+Resources: Ресурстар
+participants-help: Осы жазбаның қатысушыларын тізімдейді.
+Selected: Таңдалған
+Availability: Қол жетімділік
+external-participants-help: Күнтізбе пайдаланушылары болып табылмайтын іс-шараға қатысушылардың тізімін анықтайды. Пайдаланушылар әр жолға бір-бірден жазылуы керек және электрондық пошта мекенжайын қамтуы мүмкін. Егер электрондық пошта мекен-жайы көрсетілген болса, пайдаланушы хабарламалар мен ескертулер алуға құқылы.
+External Participants: Сыртқы қатысушылар
+repeat-type-help: Оқиғаның қаншалықты жиі қайталанатынын таңдаңыз.
+Daily: Күнделікті
+Weekly: Апта сайын
+Monthly: Ай сайын
+by day: күнмен
+by date: күні бойынша
+by position: позициясы бойынша
+Monthly (by day): Ай сайын (күн бойынша)
+Monthly (by date): Ай сайын (күн бойынша)
+Monthly (by position): Ай сайын (лауазымы бойынша)
+Yearly: Жыл сайын
+Manual: Қолмен
+Expert Mode: Сарапшы режимі
+repeat-end-date-help: Оқиғаның қайталанатын күнін көрсетеді.
+Ending: Аяқталуда
+Forever: Мәңгі
+Use end date: Аяқталу күнін қолданыңыз
+Number of times: Рет
+repeat-frequency-help: Оқиғаның қаншалықты жиі қайталануы керектігін анықтайды.
+Frequency: Жиілік
+Weekdays Only: Тек жұмыс күндері
+Week Start: Апта басталады
+repeat-bydayextended-help: Аптаның күніне негізделген күнді таңдауға мүмкіндік береді.
+ByDay: =
+repeat-month-help: Оқиғаның қай айларда қайталануы керектігін анықтайды.
+ByMonth: Айға
+repeat-bysetpos-help: Айды көрсететін жағдайға байланысты күнді таңдауға мүмкіндік береді.
+BySetPos: =
+repeat-bymonthdayextended-help: Күнге негізделген күнді таңдауға мүмкіндік береді.
+ByMonthDay: =
+repeat-byweekno-help: Пайдаланушыға оқиғаны қайталауға арналған апталар тізімін көрсетуге мүмкіндік береді (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Пайдаланушыға оқиғаны қайталау үшін жыл күндерінің тізімін көрсетуге мүмкіндік береді (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Бұл оқиға болуы немесе болмауы керек болатын қосымша күндер.
+Exclusions: Ерекшеліктер
+Inclusions: Кірістер
+Add Exception: Ерекшелік қосу
+Add Inclusion: Қосуды қосыңыз
+Delete Selected: Таңдалғанды ​​жою
+Send Reminder: Еске салғыш жіберу
+When: Қашан
+Use Date/Time: Күнді / уақытты қолданыңыз
+Use Offset: Offset қолданыңыз
+Before: Бұрын
+After: Кейін
+Start: Бастау
+End/Due: Соңы / мерзімі
+Times: =
+Every: Әрқайсысы
+CAPTCHA Warning: Ескерту:  PHP-дің GD кеңейтімінсіз CAPTCHA қолдана алмайсыз!<br>
+Delete entry: Жазбаны жою
+You are not authorized to edit this entry.: Сіз бұл жазбаны өңдеуге құқығыңыз жоқ.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX жаңа кездесу өткізді.
+XXX has updated an appointment.: XXX кездесуді жаңартты.
+Security violation!: Қауіпсіздікті бұзу!
+You must enter the anti-spam text on the previous page.: Сіз спамға қарсы мәтінді алдыңғы параққа енгізуіңіз керек.
+The following conflicts with the suggested time: Ұсынылған уақытқа келесі қайшылықтар
+User removed from participants list.: Пайдаланушы қатысушылар тізімінен шығарылды.
+Please look on XXX to accept or reject this appointment.: Бұл кездесуді қабылдау немесе қабылдамау үшін ХХХ-ге жүгініңіз.
+Please look on XXX to view this appointment.: Бұл кездесуді көру үшін ХХХ-ны қараңыз.
+Scheduling Conflict: Шиеленісті жоспарлау
+Your suggested time of: Сіз ұсынған уақыт
+conflicts with the following existing calendar entries: келесі күнтізбе жазбаларымен қайшылықты
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX «config.php» -де орнатылмаған.
+word characters only: (тек сөздік таңбалардан тұруы мүмкін; [a-zA-Z_0-9])
+Add User: Пайдаланушыны қосу
+Edit User: Пайдаланушыны өңдеу
+Calendar ID: Күнтізбе идентификаторы
+First Name: Аты
+Last Name: Тек
+Is public calendar: Жалпы күнтізбе
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Деректер базасының қатесі
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Қашықтан күнтізбе қосу
+Edit Remote Calendar: Қашықтағы күнтізбені өңдеу
+Create Layer: Қабат жасаңыз
+Reload: Қайта жүктеу
+Required to View Remote Calendar: Қашықтағы күнтізбені қарау үшін қажет
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Нәтижелерді импорттау
+Events successfully imported: Іс-шаралар сәтті импортталды
+Create a new layer to view this calendar.: Осы күнтізбені қарау үшін жаңа қабат жасаңыз.
+Errors: Қателер
+There was an error parsing the import file or no events were returned.: Импорттау файлын талдауда қате пайда болды немесе оқиғалар қайтарылмады.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Ертең
+Yesterday: Кеше
+Day before yesterday: Алдыңғы күні
+Next week: Келесі жұма
+This week: Осы апта
+Last week: Өткен аптада
+Week before last: Соңғыдан бір апта бұрын
+Next week and week after: Келесі апта және одан кейінгі апта
+This week and next week: Осы аптада және келесі аптада
+Last week and this week: Өткен аптада және осы аптада
+Last two weeks: Соңғы екі апта
+Next month: Келесі ай
+This month: Осы айда
+Last month: Өткен айда
+Month before last: Өткенге дейін бір ай
+Next year: Келесі жыл
+This year: Бұл жылы
+Last year: Өткен жылы
+Year before last: Өткенге дейін жыл
+Next 14 days: Келесі 14 күн
+Next 30 days: Келесі 30 күн
+Next 60 days: Келесі 60 күн
+Next 90 days: Келесі 90 күн
+Next 180 days: Келесі 180 күн
+Next 365 days: Келесі 365 күн
+Invalid report id XXX.: Есеп идентификаторы жарамсыз: «XXX».
+Unnamed Report: Атауы жоқ есеп
+Add Report: Есеп қосу
+Edit Report: Есепті өңдеу
+Report name: Есеп беру атауы
+User: Пайдаланушы
+Current User: Ағымдағы қолданушы
+Include link in menu: Сілтемені мәзірге қосыңыз
+Include standard header/trailer: Стандартты тақырып / тіркемені қосыңыз
+Include previous/next links: Алдыңғы / келесі сілтемелерді қосыңыз
+Include empty dates: Бос күндерді қосыңыз
+Date range: Күндер диапазоны
+Template variables: Үлгі айнымалылары
+Page template: Бет үлгісі
+Day template: Күн үлгісі
+Event template: Іс-шара үлгісі
+Are you sure you want to delete this report?: Осы есепті жойғыңыз келетініне сенімдісіз бе?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Мұндай есеп идентификаторы жоқ: «XXX».
+Variable XXX not found.: ХХХ айнымалысы табылмады.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Пайдаланушы тақырыбын өңдеу
+Edit Custom Script/Stylesheet: Сценарий / стиль кестесін өңдеу
+Edit Custom Trailer: Custom Trailer-ді өңдеу
+
+########################################
+# Page: edit_user.php
+#
+Username: Пайдаланушы аты
+E-mail address: Электрондық поштаның адресі
+Password: Пароль
+again: тағы да
+Disabled for demo: Көрсетілім үшін өшірілген
+Are you sure you want to delete this user?: Осы пайдаланушыны жойғыңыз келетініне сенімдісіз бе?
+Change Password: Құпия сөзді өзгерту
+New Password: Жаңа Құпия Сөз
+Set Password: Құпия сөзді орнатыңыз
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Пайдаланушыларды жоюға қолдау көрсетілмейді.
+The passwords were not identical.: Құпия сөздер бірдей болмады.
+You have not entered a password.: Сіз пароль енгізген жоқсыз.
+Username cannot be blank.: Пайдаланушы аты бос болмауы керек.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Рұқсат етілмеген
+
+########################################
+# Page: export.php
+#
+Export: Экспорттау
+Export format: Экспорт форматы
+Include all layers: Барлық қабаттарды қосыңыз
+Include deleted entries: Жойылған жазбаларды қосыңыз
+Export all dates: Барлық күндерді экспорттаңыз
+Start date: Басталатын күн
+End date: Аяқталу күні
+Modified since: Бастап өзгертілген
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: экспорттық формат анықталмаған немесе дұрыс емес.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Пайдаланушы көрсетілген жоқ.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Жаңа топ қосу
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Атауы жоқ топ
+Add Group: Топ қосу
+Edit Group: Топты өңдеу
+Group name: Топ атауы
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Сіз топ атауын көрсетуіңіз керек
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Күнтізбелерді автоматты түрде жаңарту
+auto-refresh-help: Қосылған кезде күн, апта көрінісі, ай көрінісі және мақұлданбаған парақтар тізімі автоматты түрде мезгіл-мезгіл жаңарып отырады.
+Auto-refresh time: Автоматты жаңарту уақыты
+auto-refresh-time-help: Егер автоматты жаңарту қосылса, бұл әр жаңарту арасындағы уақытты көрсетеді.
+Display days with events in bold in year view: Жылдың қарамен жазылған күндерін көрсетіңіз
+Display weekends in week view: Демалыс күндерін апта көрінісінде көрсету
+Time interval: Уақыт аралығы
+time-interval-help: Апта көрінісі мен күн көрінісіндегі уақыт блоктарының қанша болатынын анықтайды.
+Nonuser: Пайдаланушы емес күнтізбелер
+user-customize-color: Пайдаланушыларға өздерінің түс схемасын өзгертуге рұқсат етілетін-берілмейтіндігін анықтайды.
+enable-gradient-help: Ұяшық фондары үшін градиент түстерін қолданыңыз.
+Manually entering color values: Түс мәндерін қолмен енгізу
+colors-help: Барлық түстер «#RRGGBB» он алтылық форматында көрсетілуі керек, мұндағы «RR» - қызыл түстің алтылық мәні, «GG» - жасыл, ал «BB» - алтылық мәні.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Қате туралы хабарлау
+Please include all the information below when reporting a bug.: Қате туралы хабарлау кезінде төмендегі барлық ақпаратты қосыңыз.
+Also, please use English rather than XXX.: Сондай-ақ, XXX тілінен гөрі,  ағылшын тілін  қолданыңыз.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar құжаттамасы
+Currently in English only.: Қазіргі уақытта тек ағылшын тілінде.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Күнтізбе жазбаларын қосу / өңдеу
+Repeat Type: Қайталау түрі
+For More Information...: Қосымша ақпарат алу үшін ...
+Repeat End Date: Аяқталу күнін қайталаңыз
+Repeat Day: Күнді қайталаңыз
+repeat-day-help: Іс-шара аптаның қай күндері қайталануы керек екенін анықтайды.
+
+########################################
+# Page: help_import.php
+#
+Import: Импорттау
+Palm Desktop: =
+allow you to import entries from the Palm...: Бұл форма жазбаларды Palm Desktop Datebook-тен импорттауға мүмкіндік береді. Ол сіздің Palm каталогында datebook / datebook.dat ішінде сіздің пайдаланушы атыңызбен аталған ішкі каталогта орналасуы керек.
+The following entries will not be imported: Келесі жазбалар импортталмайды:
+Entries older than the current date: Ағымдағы күннен бұрынғы жазбалар
+Entries created in the Palm Desktop...: Пальмалық жұмыс үстелінде жасалған, HotSync'd орындалмаған жазбалар
+Anything imported from Palm...: Palm-ден импортталған кез келген нәрсе келесі импорт кезінде жазылады (егер оқиға күні өтпесе). Сондықтан жаңартулар Palm Desktop-да болуы керек.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Бұл форма vCalendar (.vcs) 1.0 оқиғаларын импорттайды.
+The following formats have been tested: Келесі форматтар сыналды:
+This form will import iCalendar (.ics) events.: Бұл форма iCalendar (.ics) оқиғаларын импорттайды.
+Enabling: Қосу
+Overwrite Prior Import: Алдыңғы импортты қайта жазыңыз
+will cause events imported previously...: жаңа импорттық файлдағы оқиға ретінде бірдей UID пайдаланылған бұрын импортталған оқиғалар жойылған деп белгіленеді. Бұл жаңартылған iCalendar файлын көшірмелер жасамай импорттауға мүмкіндік беруі керек.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Анықтама индексі
+About WebCalendar: WebCalendar туралы
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Қабаттар басқа күнтізбелердегі басқа қолданушылардың оқиғаларын көрсету үшін пайдалы. Сіз пайдаланушыны көрсете аласыз және оқиғалардың түсі көрсетіледі.
+Add/Edit/Delete: Қосу / Өңдеу / Жою
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Парақтың төменгі жағындағы әкімші бөліміндегі Қабаттарды өңдеу сілтемесін бассаңыз, қабаттарды қосуға / өңдеуге / жоюға мүмкіндік аласыз.
+The text color of the new layer that will be displayed in your calendar.: Күнтізбеңізде көрсетілетін жаңа қабаттың мәтін түсі.
+Disabling: Өшіру
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Қабаттарды өшіру үшін парақтың төменгі жағындағы әкімші бөліміндегі Қабаттарды өшіру сілтемесін басыңыз.
+Duplicates: Көшірмелер
+If checked, events that are duplicates of your events will be shown.: Белгіленген болса, сіздің іс-шараларыңыздың көшірмелері болып табылатын оқиғалар көрсетіледі.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Қабаттарды қосу үшін парақтың төменгі жағындағы әкімші бөліміндегі Қабаттарды қосу сілтемесін басыңыз.
+Source: Дереккөз
+Specifies the user that you would like to see displayed in your calendar.: Күнтізбеде көргіңіз келетін пайдаланушыны анықтайды.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Әдепкі санат
+default-category-help: Әдепкі бойынша жаңа іс-шара санатын анықтайды.
+When I am the boss: Мен бастық болған кезде
+Email me event notification: Маған іс-шара туралы хабарлама жіберу
+email-boss-notifications-help: Босс-тар электрондық пошта хабарларын оқиға туралы хабарлама ретінде қабылдайтындығын анықтайды.
+I want to approve events: Мен іс-шараларды мақұлдағым келеді
+boss-approve-event-help: Бастықтан көмекшілер қосқан іс-шараларды мақұлдау талап етілетінін немесе болмайтындығын анықтайды.
+Subscribe/Publish: Жазылу / жариялау
+Allow remote publishing: Қашықтықтан жариялауға рұқсат беру
+allow-remote-publishing-help: Қашықтағы iCal клиенті оқиғаларды қайтадан WebCalendar-да жариялай алатынын анықтайды
+remote-publishing-url-help: ICal клиенттік қосымшасында WebCalendar сайтына жазылу үшін де, жариялау үшін де қолданылатын URL мекенжайын көрсетеді.
+allow-remote-subscriptions-help: Қашықтағы пайдаланушылар сіздің күнтізбеңізге жазыла алатынын және iCal қосылған бағдарламада (мысалы, Apple iCal немесе Mozilla Calendar) іс-шараларыңызды көре алатындығын анықтайды.
+remote-subscriptions-url-help: Күнтізбеге жазылу үшін қашықтағы пайдаланушылар пайдаланатын URL мекенжайын көрсетеді.
+Enable FreeBusy publishing: FreeBusy жариялауды қосыңыз
+freebusy-enabled-help: Пайдаланушының қол жетімді уақытын iCal FreeBusy стандарты арқылы алуға болатындығын анықтайды.
+freebusy-url-help: Пайдаланушының FreeBusy тізіміне кіруге арналған URL
+rss-feed-url-help: RSS арнасына кіру үшін URL мекен-жайы
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Пайдаланушының кіруін және рұқсаттарын жақсы басқаруға мүмкіндік береді. Әкімші рұқсат берген жағдайда, пайдаланушылар әдепкі бойынша және әр адамға жеке рұқсат бере алады.
+If disabled, this user cannot send you emails.: Өшірілген болса, бұл пайдаланушы сізге электрондық пошта хабарларын жібере алмайды.
+If disabled, this user cannot see you in the participants list.: Егер өшірілген болса, бұл пайдаланушы сізді қатысушылар тізімінде көре алмайды.
+If enabled, this user cannot view the details of any of your entries.: Егер қосылса, бұл пайдаланушы сіздің кез-келген жазбаңыздың мәліметтерін көре алмайды.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Жариялау өшірілген (әкімші)
+Publishing Disabled (User): Жариялау өшірілген (пайдаланушы)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Таңдау үшін басыңыз
+Current Icons on Server: Сервердегі ағымдағы белгішелер
+
+########################################
+# Page: import.php
+#
+import from file: файлдан импорттау
+Disabled: Өшірілген
+Import format: Импорт форматы
+Exclude private records: Жеке жазбаларды алып тастаңыз
+Repeated items are imported separately. Prior imports are not overwritten.: Қайталанатын заттар бөлек әкелінеді. Алдыңғы импорт қайта жазылмайды.
+
+########################################
+# Page: import_handler.php
+#
+No file: Файл жоқ
+Error deleting palm events from webcalendar.: Пальма оқиғаларын веб-күнтізбеден жою қателігі.
+Events from prior import marked as deleted: Алдын ала импортталған оқиғалар жойылды деп белгіленді
+Conflicting events: Қайшылықты оқиғалар
+The import file contained no data.: Импорттау файлында деректер жоқ.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Бұл қабатты жойғыңыз келетініне сенімдісіз бе?
+Delete layer: Қабатты жою
+Edit layer: Қабатты өңдеу
+Enable layers: Қабаттарды қосу
+Layer: Қабат
+Layers are currently disabled.: Қазіргі уақытта қабаттар өшірілген.
+Layers are currently enabled.: Қазіргі уақытта қабаттар қосулы.
+Click to modify layers settings for XXX: ХХХ күнтізбеге арналған қабаттар параметрлерін өзгерту үшін осы жерді басыңыз.
+Disable Layers: Қабаттарды өшіру
+Add layer: Қабат қосыңыз
+Add Layer: Қабат қосу
+Edit Layer: Қабатты өңдеу
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Артықшылықты жаңарту мүмкін емес
+Invalid entry id.: Жарамсыз енгізу идентификаторы.
+You cannot create a layer for yourself.: Сіз өзіңізге қабат жасай алмайсыз.
+You can only create one layer for each user.: Сіз әр пайдаланушы үшін тек бір қабат жасай аласыз.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Бекіту / растау
+Approve Selected: Бекітілген таңдалған
+Check All: Барлығын тексеру
+Emails Will Not Be Sent: Электрондық пошта хабарлары жіберілмейді
+Reject Selected: Таңдалғаннан бас тарту
+Reject: Қабылдамау
+Uncheck All: Барлығын алып тастаңыз
+View this entry: Осы жазбаны қарау
+No unapproved entries for XXX.: «XXX» үшін мақұлданбаған жазбалар жоқ.
+Unapproved Entries: Бекітілмеген жазбалар
+Approve this entry?: Бұл жазбаны мақұлдайсыз ба?
+Reject this entry?: Бұл жазбадан бас тарту керек пе?
+Approve Selected entries?: Таңдалған жазбаларды мақұлдау керек пе?
+Reject Selected entries?: Таңдалған жазбалардан бас тарту керек пе?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Сіз логин мен парольді енгізуіңіз керек.
+Save login via cookies so I dont have to login next time.: Кіруді cookies файлдары арқылы сақтаңыз, келесі жолы кіруім керек емес
+Login: Кіру
+public: қоғамдық
+Access XXX calendar: ХХХ күнтізбеге қол жеткізу
+cookies-note: Ескерту: бұл қосымша cookies файлдарын қосуды талап етеді.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: ХХХ кірудегі заңсыз кейіпкерлер.
+Invalid login: Кіру дұрыс емес
+Activity login failure: Пайдаланушы аты: «XXX», IP: «YYY».
+Error XXX: Қате: «XXX».
+You have been logged out.: Сіз жүйеден шықтыңыз.
+Access public calendar: Жалпы күнтізбеге қол жеткізу
+Not yet registered? Register here!: Сіз әлі тіркелмегенсіз бе? Мұнда тіркеліңіз!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Мұндай пайдаланушы күнтізбесі жоқ: «ХХХ».
+This Calendar is not Public.: Бұл күнтізбе жалпыға қол жетімді емес.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Жаңа пайдаланушы емес күнтізбесін қосыңыз
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Кіру міндетті түрде көрсетілуі керек.
+No such nonuser calendar: Мұндай пайдаланушы күнтізбесі жоқ
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Тақырып жарамсыз
+Save Preferences: Теңшелімдерді сақтау
+Public Access calendar: Жалпыға қол жетімділік күнтізбесі
+Modify Non User Calendar Preferences: Пайдаланушы емес күнтізбе теңшелімдерін өзгерту
+Return to My Preferences: Менің қалауым дегенге қайта келу
+Custom Scripts: Сценарийлер
+Timezone Selection: Уақыт белдеуін таңдау
+Multiview: Көп көрініс:
+entry-interval-help: Кіру уақыттарын редакциялау кезінде минут аралығын орнатады
+Entry interval: Кіру аралығы
+hour: сағат
+minute: минут
+theme-reload-help: CSS кэштеуіне байланысты бетті қайта жүктеу қажет болуы мүмкін
+Page may need to be reloaded for new Theme to take effect: Жаңа тақырып күшіне енуі үшін парақты қайта жүктеу қажет болуы мүмкін
+display_byproxy-help: Нағыз жасаушыны view_entry бетінде көрсетіңіз
+Display if created by Assistant: Assistant жасаған болса, көрсету
+allow-view-subscriptions-help: Жеке немесе құпия жазбаларға қашықтан қол жеткізуді шектеуге мүмкіндік береді
+Allow remote viewing of: Қашықтан қарауға рұқсат етіңіз
+entries: жазбалар
+
+########################################
+# Page: purge.php
+#
+Purging events for: Таза оқиғалар
+Finished: Аяқталды
+Back: Артқа
+Check box to delete ALL events for a user: Пайдаланушы үшін  БАРЛЫҚ  оқиғаларды жою үшін құсбелгі қойыңыз
+Delete all events before: Бұған дейінгі барлық іс-шараларды жойыңыз
+Purge deleted only: Тазарту тек жойылды
+Preview delete: Алдын ала қарауды жою
+Are you sure you want to delete events for: Іс-шараларды жойғыңыз келетініне сенімдісіз бе?
+Records deleted from XXX: «XXX» ішінен жазбалар жойылды.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Электрондық пошта мекен-жайы бос болмауы керек.
+Username already exists.: Пайдаланушы аты бұрыннан бар.
+Email address already exists.: Электрондық пошта мекенжайы бұрыннан бар.
+New user via self-registration.: Өзін-өзі тіркеу арқылы жаңа қолданушы.
+A new WebCalendar account has been set up for you.: Сізге жаңа WebCalendar тіркелгісі құрылды.
+Your username is XXX.: Сіздің пайдаланушы атыңыз: «XXX».
+Your password is XXX.: Сіздің пароліңіз: «XXX».
+Please visit XXX to log in and start using your account!: Есептік жазбаңызға кіріп, пайдалануды бастау үшін «XXX» -ке кіріңіз!
+You may change your password after logging in the first time.: Парольді бірінші рет кіргеннен кейін өзгертуге болады.
+If you received this email in error: Егер сіз бұл электрондық поштаны қате арқылы алған болсаңыз және WebCalendar тіркелгісіне тіркелмеген болсаңыз, сіз бұл ескертуді елемеуге немесе қысқа жазбамен жауап бере аласыз.
+Administrator: Әкімші
+Welcome: Қош келдіңіз
+New user via email.: Электрондық пошта арқылы жаңа қолданушы.
+Registration: Тіркеу
+Welcome to WebCalendar: WebCalendar қош келдіңіз
+Your email should arrive shortly.: Сіздің электрондық поштаңыз жақын арада келуі керек.
+Return to Login screen: Кіру экранына оралу
+Password (again): Пароль (тағы):
+Your account information will be emailed to you.: Тіркелгі туралы ақпарат сізге электрондық пошта арқылы жіберіледі.
+Submit: Жіберу
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Жалғастыру
+(Your comments will be emailed to the other participants.): (Сіздің пікірлеріңіз электронды пошта арқылы басқа қатысушыларға жіберіледі.)
+XXX has rejected an appointment.: XXX кездесуді қабылдамады.
+Rejected by XXX.: ХХХ қабылдаған жоқ.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Қашықтан жаңа күнтізбе қосу
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Бұл іс-шара құпия болып табылады.
+(Private): (Жеке)
+(cont.): (жалғасы)
+Approved: Бекітілген
+Deleted: Жойылды
+Rejected: Қабылданбады
+Waiting for approval: Бекітуді күтуде
+Unknown: Белгісіз
+Invalid report id.: Есеп идентификаторы жарамсыз.
+Click here to manage reports for the Public Access calendar.: Public Access күнтізбесі үшін есептерді басқару үшін осы жерді басыңыз.
+Add new report: Жаңа есеп қосу
+Manage Reports: Есептерді басқару
+
+########################################
+# Page: search.php
+#
+Advanced Search: Қосымша іздеу
+Search: Іздеу
+Keywords: Кілт сөздер
+Enter % for all entries: Барлық жазбалар үшін% енгізіңіз
+Include: Қосу
+Filter by Date: Күні бойынша сүзу
+All Dates: Барлық даталар
+Past: Өткен
+Upcoming: Алдағы
+Range: Ауқым
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Сіз бір немесе бірнеше іздеу кілт сөздерін енгізуіңіз керек.
+Search Results: Іздеу нәтижелері
+match found: сәйкестік табылды
+matches found: сәйкестіктер табылды
+No matches found: Сәйкестіктер табылмады
+New Search: Жаңа іздеу
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Төмендегі ақпарат сіздің WebCalendar қондырғыңызға қатысты қауіпсіздікті қамтамасыз ету үшін өзгертілуі мүмкін мәселелер тізімін береді.
+For questions about WebCalendar security see the forums: Кез-келген WebCalendar қауіпсіздігіне қатысты сұрақтар үшін GitHub.com сайтында орналасқан WebCalendar форумдарын қолданыңыз;<br>XXX
+View your current PHP settings: Ағымдағы PHP параметрлерін қараңыз
+Security Issue: Қауіпсіздік мәселесі
+Status: Күй
+Default admin user password: Әдепкі әкімші пайдаланушының құпия сөзі
+You should change the password of the default admin user.: Әдепкі әкімші пайдаланушының құпия сөзін өзгерту керек.
+File permissions XXX: Файлға рұқсат: XXX
+item XXX should not be writable: Келесі тармақ жазылмауы керек:<br><tt> XXX</tt>
+File exists XXX: Файл бар: «XXX»
+Because you have email disabled, you should remove this file.: Электрондық пошта өшірілгендіктен, сіз бұл файлды алып тастауыңыз керек.
+File location XXX: Файл орны: «XXX»
+remove XXX if not using: Егер сіз «XXX» файлын қолданбасаңыз, оны жоюыңыз керек. Немесе, кем дегенде, оны жаңа каталогқа жылжытыңыз.
+System Settings XXX: Жүйе параметрлері: «XXX»
+consider enabling UAC: Пайдаланушының артықшылықтарын орнату үшін пайдаланушыға кіруді басқару мүмкіндігін қосу туралы ойлануыңыз мүмкін.
+recommend approving new public events: Біз көпшілікке арналған барлық іс-шараларды мақұлдауды ұсынамыз.
+recommend using CAPTCHA: CAPTCHA-ға іс-шараларды автоматты түрде жіберуді қорғау ұсынылады.
+Database cache directory location: Деректер базасының кэш каталогының орналасуы
+db cache should be inaccessable: Деректер базасының кэші URL мекенжайымен қатынасу мүмкін емес каталогта болуы керек.
+PHP Settings XXX: PHP параметрлері: «XXX»
+recommend setting XXX Off: «XXX» үшін ұсынылған параметр Өшірулі.
+recommend setting allow_url_fopen Off: «Allow_url_fopen» үшін ұсынылған параметр қашықтағы күнтізбелер қосылмаған кезде Өшірулі.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Басқа пайдаланушының күнтізбесін қарау
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Сіз ешқандай категория қосқан жоқсыз.
+Set Category: Санатты орнатыңыз
+Global Categories cannot be changed.: Жаһандық санаттарды өзгерту мүмкін емес.
+
+########################################
+# Page: upcoming.php
+#
+more: Көбірек
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Қашықтағы күнтізбелер
+denotes administrative user: әкімшілік пайдаланушыны білдіреді
+Add New User: Жаңа пайдаланушы қосу
+
+########################################
+# Page: usersel.php
+#
+form: форма
+Reset: Қалпына келтіру
+
+########################################
+# Page: views.php
+#
+Add New View: Жаңа көріністі қосу
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Атаусыз көрініс
+Add View: Көріністі қосу
+Edit View: Көріністі өңдеу
+View Name: Атын қарау
+View Type: Көру түрі
+Day by Time: Күн өткен сайын
+Week (Users horizontal): Апта (пайдаланушылар көлденең)
+Week by Time: Уақыт бойынша апта
+Week (Users vertical): Апта (Пайдаланушылар тік)
+Week (Timebar): Апта (уақыт панелі)
+Month (Timebar): Ай (уақыт панелі)
+Month (side by side): Ай (қатар)
+Month (on same calendar): Ай (сол күнтізбе бойынша)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Көрініс атауын көрсетуіңіз керек
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Бұл көрініске пайдаланушылар жоқ.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Тапсырма пайызын жаңартыңыз
+Completed: Аяқталды
+Assistant mode: Assistant режимі
+Declined: Қабылданбады
+Needs-Action: Мұқтаждықтар
+by: арқылы
+Percentage Complete: Пайыз аяқталды
+External User: Сыртқы пайдаланушы
+Update: Жаңарту
+at: кезінде
+comments: түсініктемелер
+Show: Көрсету
+Hide: Жасыру
+Approve/Confirm entry: Жазбаны мақұлдау / растау
+Reject entry: Жазбадан бас тарту
+Set category: Санатты орнатыңыз
+Add to My Calendar: Менің күнтізбеме қосу
+Copy entry: Жазбаны көшіру
+This will delete this entry for all users.: Бұл барлық пайдаланушылар үшін бұл жазбаны жояды.
+Edit entry: Жазбаны өңдеу
+Edit repeating entry for all dates: Барлық күндер үшін қайталанатын жазбаны өңдеу
+Delete repeating event for all dates: Барлық күндер үшін қайталанатын оқиғаны жою
+Edit entry for this date: Осы күнге жазбаны өңдеу
+Delete entry only for this date: Тек осы күнге жазбаны жойыңыз
+Delete entry from calendar of XXX: ХХХ күнтізбеден жазбаны жою
+This will delete the entry from your XXX calendar.: Бұл сіздің ХХХ күнтізбеңізден жазбаны жояды.
+boss: бастық'
+This will delete the entry from your boss calendar.: Бұл сіздің басшыңыздың күнтізбесінен жазбаны жояды.
+This will delete the entry from your calendar.: Бұл сіздің күнтізбеңізден жазбаны жояды.
+from your boss calendar: сіздің бастығыңыздың күнтізбесінен
+Do you want to add this entry to your calendar?: Бұл жазбаны күнтізбеге қосқыңыз келе ме?
+This will add the entry to your calendar.: Бұл сіздің күнтізбеңізге жазба қосады.
+Email all participants: Барлық қатысушыларға электрондық пошта арқылы жіберіңіз
+Hide activity log: Әрекеттер журналын жасыру
+Show activity log: Әрекеттер журналын көрсету
+Export this entry to: Бұл жазбаны экспорттау
+Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Жаңа жазба қосу үшін бос ұяшықты екі рет басыңыз.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Жаңа жазба
+cont.: жалғасы
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Пайдаланушының басқа күнтізбесі
+Category Management: Санатты басқару
+Day View: Күндізгі көрініс
+Edit Event: Іс-шараны өңдеу
+Month View: Ай көрінісі
+Common Trailer: Жалпы тіркеме
+User Management: Пайдаланушыларды басқару
+Manage Views: Көрулерді басқару
+Week View: Апта көрінісі
+Year View: Жыл көрінісі
+Invalid function id: Жарамсыз функция идентификаторы
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: «Settings.php» файлы табылмады.<br>«settings.php.orig» файлын «settings.php» файлына көшіріп, өз сайтыңызға өңдеңіз.
+Incomplete settings.php file...: Аяқталмаған «settings.php» файлы ...
+Could not find XXX defined in...: «Settings.php» файлында «XXX» анықталмады.
+You must define XXX in: Сіз «settings.php» файлында «XXX» мәнін анықтауыңыз керек.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Желтоқсан
+Dec: Желтоқсан
+LANGUAGE DEFINED: ТІЛ АНЫҚТАЛҒАН
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Дерекқорға қосылу қателігі: «XXX».
+db_type not defined.: db_type анықталмады.
+invalid db_type XXX: жарамсыз db_type «» XXX «.
+Cache cleared from previous SQL!: Кэш алдыңғы SQL-ден тазартылды!
+Error executing query.: Сұранысты орындау кезінде қате пайда болды.
+Unfortunately, XXX is not implemented for YYY: Өкінішке орай, «XXX» (YYY) үшін орындалмайды.
+Unknown ODBC error.: Белгісіз ODBC қатесі.
+Error opening cache dir XXX.: «XXX» кэшін ашу қателігі.
+delete: жою
+Cache error Could not XXX file YYY.: Кэш қатесі: ХХХ «ЖЖЖ» файлын құру мүмкін болмады.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Өлім қателігі
+Invalid data format for: Үшін деректер форматы жарамсыз
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Қате: әрекеттер журналы үшін теру орнатылмаған!
+This event is XXX.: Бұл оқиға - ХХХ.
+Conf.: Конф.
+exceeds limit of XXX events per day: күніне XXX іс-шараның шегінен асады
+on: қосулы
+All Attendees: Барлық қатысушылар
+Busy: Бос емес
+Tentative: Болжалды
+Schedule an appointment for XXX.: ХХХ уақытына жоспарлаңыз: ЖЖЖ.
+date_select: __dd__ __ай __ __yyyy__
+Event approved: Іс-шара мақұлданды
+Journal approved: Журнал мақұлданды
+Task approved: Тапсырма мақұлданды
+Attachment: Тіркеме
+Event created: Іс-шара құрылды
+Journal created: Журнал құрылды
+Task created: Тапсырма жасалды
+Event deleted: Іс-шара жойылды
+Journal deleted: Журнал жойылды
+Task deleted: Тапсырма жойылды
+New user via email (self registration): Электрондық пошта арқылы жаңа қолданушы (өзін-өзі тіркеу)
+New user (self registration): Жаңа қолданушы (өзін-өзі тіркеу)
+Notification sent: Хабарлама жіберілді
+Event rejected: Іс-шара қабылданбады
+Journal rejected: Журнал қабылданбады
+Task rejected: Тапсырма қабылданбады
+Reminder sent: Еске салғыш жіберілді
+Event updated: Іс-шара жаңартылды
+Journal updated: Журнал жаңартылды
+Task updated: Тапсырма жаңартылды
+Delete User: Пайдаланушыны жою
+WK: =
+TASKS: МІНДЕТТЕР
+Task_Title: Тақырып
+Due: Байланысты
+Task Name: Тапсырманың атауы
+Task Due Date: Тапсырманың орындалу мерзімі
+You have XXX unapproved entries: Сізде ХХХ мақұлданбаған жазбалар бар 
+Changes successfully saved: Өзгерістер сәтті сақталды
+Event: Іс-шара
+Action: Әрекет
+Printer Friendly: Принтерге ыңғайлы
+Generate printer-friendly version: Принтерге ыңғайлы нұсқасын жасаңыз
+after: кейін
+before: бұрын
+end: Соңы
+start: бастау
+View this event: Бұл оқиғаны қарау
+View this task: Бұл тапсырманы қарау
+January: Қаңтар
+February: Ақпан
+March: Наурыз
+April: Сәуір
+May_: Мамыр
+June: Маусым
+July: Шілде
+August: Тамыз
+September: Қыркүйек
+October: Қазан
+November: Қараша
+Jan: Қаңтар
+Feb: Ақпан
+Mar: Наурыз
+Apr: Сәуір
+May: Мамыр
+Jun: Маусым
+Jul: Шілде
+Aug: Тамыз
+Sep: Қыркүйек
+Oct: Қазан
+Nov: Қараша
+SU: =
+MO: =
+TU: =
+WE: БІЗ
+TH: =
+FR: =
+SA: =
+unknown-month: белгісіз-ай
+First Quarter Moon: Бірінші тоқсан
+Full Moon: Толған ай
+Last Quarter Moon: Соңғы тоқсандағы ай
+New Moon: Жаңа ай
+Error TIME_SLOTS undefined!: Қате: TIME_SLOTS анықталмады!
+The following error occurred: Келесі қате пайда болды
+You are not authorized.: Сізге рұқсат жоқ.
+Add N hours to: N сағатты қосыңыз
+Subtract N hours from: Бастап N сағатты алып тастаңыз
+same as: сияқты
+server time: сервер уақыты
+Cannot read timezone file XXX.: Уақыт белдеуінің файлын оқу мүмкін емес: XXX.
+Your current GMT offset is XXX hours.: Сіздің GMT офсеті - XXX сағат.
+Unauthorized: Рұқсат етілмеген
+Error approving event XXX.: Іс-шараны растау қателігі: XXX.
+Error deleting event XXX.: Іс-шараны жою қателігі: XXX.
+Error rejecting event XXX.: Іс-шараны қабылдамау қатесі: XXX.
+Sunday: Жексенбі
+Monday: Дүйсенбі
+Tuesday: Сейсенбі
+Wednesday: Сәрсенбі
+Thursday: Бейсенбі
+Friday: Жұма
+Saturday: Сенбі
+Sun: Күн
+Mon: Дс
+Tue: Сс
+Wed: Ср
+Thu: Бс
+Fri: Жм
+Sat: Сб
+unknown-weekday: белгісіз-жұмыс күні
+Invalid referring URL: Сілтеме сілтемесі жарамсыз
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Көрсеткіш
+Documentation: Құжаттама
+Page: Бет
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Менің күнтізбем
+Add New Entry: Жаңа жазба қосу
+Add New Task: Жаңа тапсырма қосу
+Logout: Шығу
+Home: Үй
+Back to My Calendar: Менің күнтізбеме оралу
+Go to: Бару
+Manage calendar of: Күнтізбесін басқару
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Браузер тілі табылмады
+(not supported): (қолдамайды)
+Abkhazian: Абхазия
+Acoli: Аколи
+Adangme: Адангме
+Adyghe: Адыгей
+Afar: Афар
+Afrihili: Африхили
+Afrikaans: Африкаанс
+Ainu: Айну
+Akan: Ақан
+Akkadian: Аккад
+Albanian: Албан
+Aleut: Алеут
+Algonquian: Альгонкиан
+Altai (Southern): Алтай (Оңтүстік)
+Amharic: Амхар
+Angika: Ангика
+Apache: Апа
+Arabic (Algeria): Араб (Алжир)
+Arabic (Bahrain): Араб (Бахрейн)
+Arabic (Egypt): Араб (Египет)
+Arabic (Iraq): Араб (Ирак)
+Arabic (Jordan): Араб (Иордания)
+Arabic (Kuwait): Араб (Кувейт)
+Arabic (Lebanon): Араб (Ливан)
+Arabic (Libya): Араб (Ливия)
+Arabic (Morocco): Араб (Марокко)
+Arabic (Oman): Араб (Оман)
+Arabic (Qatar): Араб (Катар)
+Arabic (Saudi Arabia): Араб (Сауд Арабиясы)
+Arabic (Syria): Араб (Сирия)
+Arabic (Tunisia): Араб (Тунис)
+Arabic (U.A.E.): Араб (U.A.E.)
+Arabic (Yemen): Араб (Йемен)
+Arabic: Араб
+Aragonese: Арагонша
+Aramaic: Арамей
+Arapaho: Арапахо
+Arawak: Аравак
+Armenian: Армян
+Assamese: Ассам
+Asturian: Астуриялық
+Athapascan: Атапаскан
+Avaric: Авариялық
+Avestan: Авеста
+Awadhi: Авадхи
+Aymara: Аймара
+Azerbaijani: Әзірбайжан
+Balinese: Бали
+Baluchi: Белучи
+Bambara: Бамбара
+Bamileke: Бамилеке
+Banda: Банда
+Basa: Баса
+Bashkir: Башқұрт
+Basque: Баск
+Beja: Бежа
+Belarusian: Беларус
+Bemba: Бемба
+Bengali: Бенгал
+Bhojpuri: Бходжури
+Bihari: Бихари
+Bikol: Биколь
+Bislama: Бислама
+Blackfoot: Қара аяқ
+Blin: Блин
+Bliss: Бақыт
+Bosnian: Босниялық
+Braj: Браж
+Breton: Бретон
+Buginese: Бугин
+Bulgarian: Болгар
+Buriat: Буриат
+Burmese: Бирма
+Caddo: Каддо
+Catalan: Каталон
+Cebuano: Себуано
+Chagatai: Шағатай
+Chamorro: Чаморро
+Chechen: Шешен
+Cherokee: Чероки
+Cheyenne: Шайенн
+Chibcha: Чибча
+Chichewa: Чичева
+Chinese (Hong Kong): Қытай (Гонконг)
+Chinese (PRC): Қытай (ҚХР)
+Chinese (Simplified/GB2312): Қытай (Жеңілдетілген / GB2312) 
+Chinese (Singapore): Қытай (Сингапур)
+Chinese (Taiwan): Қытай (Тайвань)
+Chinese (Traditional/Big5): Қытай (дәстүрлі / үлкен5)
+Chinook: Чинук
+Chipewyan: Чипевян
+Choctaw: Чоктав
+Chuukese: Чукесе
+Chuvash: Чуваш
+Coptic: Копт
+Cornish: Корниш
+Corsican: Корсика
+Cree: Кри
+Creek: Крик
+Croatian: Хорват
+Czech: Чех
+Dakota: Дакота
+Danish: Дат
+Dargwa: Даргва
+Delaware: Делавэр
+Dinka: Динка
+Dogri: Догри
+Dogrib: Догриб
+Duala: Дуала
+Dutch (Belgium): Нидерланд (Бельгия)
+Dutch: Голланд
+Dyula: Дюла
+Dzongkha: Джонха
+Edo: Эдо
+Efik: Эфик
+Ekajuk: Екажук
+Elamite: Эламит
+English (Australia): Ағылшын (Австралия)
+English (Belize): Ағылшын (Белиз)
+English (Canada): Ағылшын (Канада)
+English (Ireland): Ағылшын (Ирландия)
+English (Jamaica): Ағылшын (Ямайка)
+English (New Zealand): Ағылшын (Жаңа Зеландия)
+English (Philippines): Ағылшын (Филиппиндер)
+English (South Africa): Ағылшын (Оңтүстік Африка)
+English (Trinidad & Tobago): Ағылшын (Тринидад және Тобаго)
+English (United Kingdom): Ағылшын (Ұлыбритания)
+English (United States): Ағылшын (Америка Құрама Штаттары)
+English (Zimbabwe): Ағылшын (Зимбабве)
+English: Ағылшын-АҚШ
+Erzya: Эрзя
+Esperanto: Эсперанто
+Estonian: Эстон
+Ewe: Қой
+Ewondo: Эвондо
+Fang: Азу
+Fanti: Фанти
+Faroese: Фарер
+Fijian: Фиджиан
+Filipino: Филиппин
+Finnish: Фин
+Fon: Фон
+French (Belgium): Француз (Бельгия)
+French (Canada): Француз (Канада)
+French (France): Француз (Франция)
+French (Luxembourg): Француз (Люксембург)
+French (Monaco): Француз (Монако)
+French (Switzerland): Француз (Швейцария)
+French: Француз
+Frisian (Eastern): Фриз (шығыс)
+Frisian (Northern): Фриз (солтүстік)
+Frisian (Western): Фриз (батыс)
+Frisian: Фриз
+Friulian: Фриул
+Fulah: Фула
+Ga: Га
+Galibi: Галиби
+Galician: Галисия
+Ganda: Ганда
+Gayo: Гайо
+Gbaya: Гбая
+Geez: Гиз
+Georgian: Грузин
+German (Austria): Неміс (Австрия)
+German (Germany): Неміс (Германия)
+German (Liechtenstein): Неміс (Лихтенштейн)
+German (Luxembourg): Неміс (Люксембург)
+German (Standard): Неміс (стандарт)
+German (Switzerland): Неміс (Швейцария)
+German: Неміс
+Gilbertese: Гильберт
+Gondi: Гонди
+Gorontalo: Горонтало
+Gothic: Готикалық
+Grebo: Гребо
+Greek: Грек
+Greenlandic: Гренландиялық
+Guarani: Гуарани
+Gujarati: Гуджарати
+Gwich&#39;in: Гвич
+Haida: Хайда
+Haitian (Creole): Гаити (креол)
+Haitian: Гаити
+Hausa: Хауса
+Hawaiian: Гавайский
+Hebrew: Еврей
+Herero: Гереро
+Hiligaynon: Хилигайнон
+Hindi: Хинди
+Hiri Motu: Хири Моту
+Hittite: Хетт
+Hmong: Хмонг
+Holo (Taiwanese): Холо (Тайвандық)
+Hungarian: Венгр
+Hupa: Хупа
+Iban: Ибан
+Icelandic: Исландия
+Ido: Мен істеймін
+Igbo: =
+Iloko: Илоко
+Indonesian: Индонезиялық
+Ingush: Ингуш
+Inuktitut: Инуктитут
+Inupiaq: Инупияк
+Iranian: Иран
+Irish (Gaelic): Ирланд (гель)
+Irish: Ирланд
+Iroquoian: Ирокой
+Italian (Switzerland): Италия (Швейцария)
+Italian: Итальян
+Japanese: жапон
+Javanese: Ява
+Judeo-Arabic: Иудео-араб
+Judeo-Persian: Иудео-парсы
+Kabardian: Кабардин
+Kabyle: Кабиль
+Kachin: Качин
+Kalaallisut: Калалисут
+Kalmyk: Қалмақ
+Kamba: Камба
+Kannada: Каннада
+Kanuri: Канури
+Kara-Kalpak: Қара-Қалпақ
+Karachay-Balkar: Қарашай-балқар
+Karelian: Карел
+Kashmiri: Кашмири
+Kashubian: Кашубиялық
+Kawi: Кави
+Kazakh: Қазақ
+Khasi: Хаси
+Khmer (Central): Кхмер (орталық)
+Khmer: Кхмер
+Khotanese: Хотан
+Kikuyu: Кикую
+Kimbundu: Кимбунду
+Kinyarwanda: Кинярванда
+Kirghiz: Қырғыз
+Klingon: Клингон
+Komi: Коми
+Kongo: Конго
+Konkani: Конкани
+Korean (Johab): Корей (Йохаб)
+Korean (North): Корей (солтүстік)
+Korean (South): Корей (оңтүстік)
+Korean: Корей
+Kosraean: Косрейн
+Kpelle: Кпелле
+Kuanyama: Куаняма
+Kumyk: Құмық
+Kurdish: Күрд
+Kutenai: Кутенай
+Kyrgyz: Қырғыз
+Ladino: Ладино
+Lahnda: Лахнда
+Lamba: Ламба
+Lao: Лаос
+Latin: Латын
+Latvian: Латыш
+Lezghian: Лезгиян
+Limburgan: Лимбурган
+Lingala: Лингала
+Lithuanian: Литва
+Lojban: Ложбан
+Lozi: Лози
+Luba-Katanga: Люба-Катанга
+Luba-Lulua: Люба-Лулуа
+Luiseno: Луисено
+Lunda: Лунда
+Luo: Луо
+Lushai: Лушай
+Luxembourghish: Люксембург
+Macedonian: Македон
+Madurese: Мадурес
+Magahi: Магахи
+Maithili: Майтхили
+Makasar: Макасар
+Malagasy: Малагасия
+Malay: Малай
+Malayalam: Малаялам
+Maldivian: Мальдив
+Maltese: Мальт
+Manchu: Маньчжур
+Mandar: Мандар
+Mandingo: Мандинго
+Manipuri: Манипури
+Manx: Манкс
+Maori: Маори
+Mapuche: Мапуче
+Marathi: Марати
+Mari: Мари
+Marshallese: Маршал
+Marwari: Марвари
+Masai: Масаи
+Mayan: Мая
+Mende: Менде
+Mi&#39;kmaq: Миықмақ
+Minangkabau: Минангкабау
+Mirandese: Мирандез
+Mohawk: Мохавк
+Moksha: Мокша
+Moldavian: Молдаван
+Mongo: Монго
+Mongolian: Моңғол
+Montenegrin: Черногория
+Moroccan: Марокко
+Mossi: Мосси
+Myanmar: Мьянма
+Māori: Маори
+N&#39;Ko: Жоқ
+Nauru: Науру
+Navajo: Навахо
+Ndebele (North): Ндебеле (солтүстік)
+Ndebele (South): Ндебеле (Оңтүстік)
+Ndebele: Ндебеле
+Ndonga: Ндонга
+Neapolitan: Неаполитан
+Nepali: Непал
+Nias: Ниас
+Niuean: Ниуэ
+Nogai: Ноғай
+Norse: Скандинавия
+Norwegian (Bokmål): Норвег (бокмал)
+Norwegian (Nynorsk): Норвег (Нынорск)
+Norwegian: Норвег
+Nyamwezi: Нямвези
+Nyankole: Нянколе
+Nyoro: Ниро
+Nzima: Нзима
+Occitan: Окситан
+Odia: Одия
+Ojibwa: Оджибва
+Oriyia: Орий
+Oromo: Оромо
+Osage: Осаге
+Ossetic: Осетин
+Pahlavi: Пехлеви
+Palauan: Палауан
+Pali: Пали
+Pampanga: Пампанга
+Pangasinan: Пангасинан
+Panjabi: Панжаби
+Papiamento: Папиаменто
+Pashto: Пушту
+Pedi: Педи
+Persian (Farsi): Парсы (фарси)
+Persian (Iran): Парсы (Иран)
+Persian: Парсы
+Phoenician: Финикия
+Pohnpeian: Понпейан
+Polish: Поляк
+Portuguese: португал тілі
+Portuguese/Brazil: Португал / Бразилия
+Punjabi (India): Пенджаби (Үндістан)
+Punjabi (Pakistan): Пенджаби (Пәкістан)
+Punjabi: Пенджаби
+Quechua: Кечуа
+Rajasthani: Раджастхани
+Rapanui: Рапануи
+Rarotongan: Раротонган
+Rhaeto-Romanic: Рето-роман
+Romanian: Румын
+Romansh: Романш
+Romany: Роман
+Rundi: Рунди
+Russian (Moldavia: Орыс (Молдавия
+Russian (Republic of Moldova): Орыс (Молдова Республикасы)
+Russian: Орыс
+Sami (Inari): Сами (инари)
+Sami (Lappish): Сами (лапиш)
+Sami (Lule): Сами (люль)
+Sami (Northern): Сами (солтүстік)
+Sami (Skolt): Сами (Скольт)
+Sami (Southern): Сами (оңтүстік)
+Sami: Сами
+Samoan: Самоа
+Samoli: Самоли
+Sandawe: Сандау
+Sango: Санго
+Sanskrit: Санскрит
+Santali: Сантали
+Sardinian: Сардин
+Sasak: Сасак
+Scots (Gaelic): Шотланд (гель)
+Selkup: Селкуп
+Serbian (Upper): Серб (жоғарғы)
+Serbian: Серб
+Serer: Серер
+Sesotho: Сесото
+Shan: Шан
+Shona: Шона
+Sichuan Yi: Сычуань И
+Sicilian: Сицилия
+Sindhi: Синди
+Sinhala: Сингала
+Slavic: Славян
+Slovak: Словак
+Slovenian: Словен
+Sogdian: Соғды
+Somali: Сомали
+Somani: Сомани
+Songhai: Сонгхай
+Soninke: Сонинке
+Sorbian (Lower): Сорбиан (төменгі)
+Sorbian (Upper): Сорбиан (жоғарғы)
+Sorbian: Сорбиан
+Sotho: Сотхо
+Spanish (Argentina): Испан (Аргентина)
+Spanish (Bolivia): Испан (Боливия)
+Spanish (Chile): Испан (Чили)
+Spanish (Colombia): Испан (Колумбия)
+Spanish (Costa Rica): Испан (Коста-Рика)
+Spanish (Dominican Republic): Испан (Доминикан Республикасы)
+Spanish (Ecuador): Испан (Эквадор)
+Spanish (El Salvador): Испан (Сальвадор)
+Spanish (Guatemala): Испан (Гватемала)
+Spanish (Honduras): Испан (Гондурас)
+Spanish (Mexico): Испан (Мексика)
+Spanish (Nicaragua): Испан (Никарагуа)
+Spanish (Panama): Испан (Панама)
+Spanish (Paraguay): Испан (Парагвай)
+Spanish (Peru): Испан (Перу)
+Spanish (Puerto Rico): Испан (Пуэрто-Рико)
+Spanish (Spain): Испан (Испания)
+Spanish (Uruguay): Испан (Уругвай)
+Spanish (Venezuela): Испан (Венесуэла)
+Spanish: Испан
+Sranan Tongo: Сранан-тонго
+Sukuma: Сукума
+Sumerian: Шумер
+Sundanese: Сундан
+Susu: Сусу
+Sutu: Суту
+Swahili: Суахили
+Swati: Свати
+Swedish (Finland): Швед (Финляндия)
+Swedish (Sweden): Швед (Швеция)
+Swedish: Швед
+Syriac: Сирия
+Tagalog: Тагалог
+Tahitian: Таитиан
+Tai: Тай
+Taiwan: Тайвань
+Tajik: Тәжік
+Tamashek: Тамашек
+Tamil: Тамил
+Tatar: Татар
+Telugu: Телугу
+Tereno: Терено
+Tetum: Тетум
+Thai: Тай
+Tibetan: Тибет
+Tigre: Тигре
+Tigrinya: Тигриния
+Timne: Тимне
+Tlingit: Тлингит
+Tok Pisin: Ток Писин
+Tokelau: Токелау
+Tonga (Nytmhasa): Тонга (Нитмхаса)
+Tonga (Tonga Islands): Тонга (Тонга аралдары)
+Tonga: Тонга
+Tsimshian: Цимшиан
+Tsonga: Цонга
+Tswana: Цвана
+Tumbuka: Тумбука
+Turkish: Түрік
+Turkmen: Түркімен
+Tuvinian: Тувин
+Twi: Тви
+Udmurt: Удмурт
+Ugaritic: Угарит
+Ukrainian: Украин
+Umbundu: Умбунду
+Urdu: Урду
+Uyghur: Ұйғыр
+Uzbek: Өзбек
+Vai: Вай
+Venda: Венда
+Vietnamese: Вьетнамдықтар
+Volapük: Волапюк
+Votic: Вотикалық
+Wakashan: Вакашан
+Walloon: Сәлем
+Waray: Варай
+Washo: Вашо
+Welsh: Уэльс
+Wolaitta: Волайтта
+Wolof: =
+Xhosa: Хоса
+Yakut: Якут
+Yao: Яо
+Yapese: Жапец
+Yiddish: Идиш
+Yorùbá: Йорба
+Yupik: Юпик
+Zande: Занде
+Zapotec: Запотек
+Zaza: Заза
+Zenaga: Зенага
+Zhuang: Чжуан
+Zulu: Зулу
+Browser-defined: Браузер анықталған
+event: іс-шара
+journal: журнал
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Пайдаланушының кіруі жарамсыз
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: Қате құпиясөз
+no such user: мұндай пайдаланушы жоқ
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Есептік жазба өшірілген
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Аралық
+Months: Айлар
+Month Days: Ай күндері
+Days: Күндер
+Weeks: Апта
+Position: Лауазымы
+Until: Дейін
+Count: Санақ
+Inclusion Dates: Қосу күндері
+Exclusion Dates: Шығару күндері
+Event Imported: Іс-шара импортталды
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: байт
+kb: кб
+Mb: Мб
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Хабарлама
+authenticate: SMTP қатесі: аутентификациялау мүмкін болмады
+connect_host: SMTP қатесі: SMTP хостына қосылу мүмкін болмады:
+data_not_accepted: SMTP қатесі: деректер қабылданбайды
+encoding: Белгісіз кодтау:
+execute: Орындалмады:
+file_access: Файлға қатынасу мүмкін болмады:
+file_open: Файл қатесі файлды ашылмады:
+from_failed: Келесі мекен-жай сәтсіз аяқталды:
+instantiate: Пошта функциясы дайындалған жоқ
+mailer_not_supported: поштаға қолдау көрсетілмейді
+provide_address: Сізге кем дегенде бір алушының электрондық пошта мекенжайын беру керек.
+recipients_failed: SMTP қатесі: Келесі алушылар сәтсіз аяқталды:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Графикада көрінетін таңбаларды енгізіңіз
+Enter the correct letters and numbers...: Мәтін жолағына суреттен дұрыс әріптер мен сандарды енгізіңіз. Бұл кішігірім тест зиянды боттарға қол жеткізуді шектеу ретінде қызмет етеді. Егер бұл сызбаны оқу өте қиын болса, парақты қайта жүктеңіз
+Challenge/Response: Шақыру / жауап
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Осы жазбаның күні мен уақытын өзгерту керек пе?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Сіз қысқаша сипаттаманы енгізген жоқсыз
+time prior to work hours...: жұмыс уақытына дейінгі уақыт ...
+Invalid Event Date: Жарамсыз оқиға күні
+Please add a participant: Қатысушы қосыңыз
+Invalid Date: Жарамсыз күн
+You have not entered a valid time of day: Сіз күннің дұрыс уақытын енгізбедіңіз.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Күнтізбе идентификаторы бос болмауы керек.
+First and last names cannot both be blank.: Аты мен тегі де бос бола алмайды.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Түс жарамсыз
+Color format should be RRGGBB.: Түс форматы #RRGGBB болуы керек.
+URL cannot be blank.: URL бос болмауы керек.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Файл түрі Импорт форматымен сәйкес келмейді
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Құжат фонының түсі жарамсыз.
+Invalid color for document title.: Құжат тақырыбының түсі жарамсыз.
+Invalid color for table cell background.: Кесте ұяшығының өңі жарамсыз.
+Invalid color for table cell background for today.: Бүгінгі күнге арналған кесте ұяшығының фоны жарамсыз.
+Invalid work hours.: Жұмыс уақыты жарамсыз.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Сервер URL мекенжайы қиғаш сызықпен (/) аяқталуы керек.
+Invalid color for table grid.: Кесте торының түсі жарамсыз.
+Invalid color for event popup background.: Іс-шараның қалқымалы фоны үшін жарамсыз түс.
+Invalid color for event popup text.: Қалқымалы мәтін үшін жарамсыз түс.
+Invalid color for table header text.: Кесте тақырыбының мәтіні жарамсыз.
+Invalid color for table header background.: Кесте тақырыбының фоны жарамсыз.
+Server URL is required.: Сервердің URL мекенжайы қажет.
+Invalid Color: Жарамсыз түс
+Database Name: Мәліметтер базасының атауы
+Full Path (no backslashes): Толық жол (қиғаштық жоқ)
+The password contains illegal characters.: Құпия сөзде заңсыз белгілер бар.
+Error you must specify a Single-User Login: Қате: Сіз бір пайдаланушының кіруін көрсетуіңіз керек
+Could not find XXX.: ХХХ табылмады.
+Could not find XXX in DOM.: DOM ішінен XXX табылмады.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Осы апта
+This Month: Осы айда
+This Year: Бұл жылы
+Exit: Шығу
+Add New Event: Жаңа оқиға қосыңыз
+Delete Entries: Жазбаларды жою
+My Views: Менің көзқарастарым
+Manage Calendar of: Күнтізбесін басқару
+My Reports: Менің есептерім
+My Profile: Менің профилім
+Public Calendar: Қоғамдық күнтізбе
+Unapproved Events: Бекітілмеген оқиғалар
+User Manager: Пайдаланушы менеджері
+Help Contents: Анықтама мазмұны
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Мәліметтер базасының кэш каталогы
+Create New: Жаңа жасау
+Failure Reason: Сәтсіздік себебі:
+You must manually create database: Сіз дерекқорды қолмен жасауыңыз керек.
+Single-User: Бір пайдаланушы
+Test Settings: Тест параметрлері
+Timezone Conversion Successful: Уақыт белдеуін түрлендіру сәтті өтті
+WebCalendar Installation Wizard Step XXX: WebCalendar орнату шебері ХХХ қадам
+Password Accepted: Пароль қабылданды
+Successful Login: Сәтті кіру
+Password Incorrect: Пароль дұрыс емес
+Invalid Login: Кіру дұрыс емес
+Display Errors: Қателерді көрсету
+File Uploads: Жүктеу файлдары
+Allow URL fopen: URL ашылуына рұқсат беру (қашықтағы күнтізбелер қолданылған жағдайда ғана қажет)
+Safe Mode: Қауіпсіз режим
+Safe Mode Allowed Vars: Қауіпсіз режимге рұқсат етілген нұсқалар (TZ тек Қауіпсіз режим қосулы болған кезде қажет)
+GD: GD (сурет градиенті үшін қажет)
+Passwords do not match!: Құпия сөздер сәйкес келмейді!
+Unable to write password to settings.php file: «Settings.php» файлына пароль жазу мүмкін емес.
+Password Updated: Құпия сөз жаңартылды
+Password has been set: Құпия сөз орнатылды.
+Connection Successful...: Қосылым сәтті өтті. Орнатуды жалғастыру үшін келесі бетке өтіңіз.
+Correct your entries or click the Create New...: Орнатуды жалғастыру үшін жазбаларды түзетіңіз немесе  Жаңа құру  батырмасын басыңыз.
+Correct your entries and try again.: Жазбаларды түзетіп, қайталап көріңіз.
+XXX does not exist: ХХХ жоқ
+XXX is not writable: ХХХ жазуға болмайды
+Error Converting Timezone: Уақыт белдеуін түрлендіру қателігі
+Error Unable to write to file XXX.: ХХХ файлға жазу мүмкін болмады.
+Please change the file permissions of this file.: Осы файлдың файл рұқсаттарын өзгертіңіз.
+Please change includes dir permission: Басқа пайдаланушыларға жазуға мүмкіндік беру үшін «қамтылған» каталогтың файлдық рұқсаттарын өзгертіңіз.
+Your settings have been saved.: Параметрлеріңіз сақталды.
+OFF: ӨШІРУЛІ
+ON: ҚОСУЛЫ
+WebCalendar Setup Wizard: WebCalendar орнату шебері
+This installation wizard will guide you...: Бұл орнату шебері сізге негізгі WebCalendar орнатылымын орнатуға көмектеседі.<br>Анықтама және ақаулықтарды жою үшін мына сілтемені қараңыз:<br>
+System Administrators Guide: Жүйелік әкімшіге арналған нұсқаулық
+Frequently Asked Questions: Жиі Қойылатын Сұрақтар
+FAQ: Жиі қойылатын сұрақтар
+Troubleshooting: Ақаулық себебін іздеу және түзету
+Getting Help: Көмек алу
+Upgrading Guide: Жаңарту нұсқаулығы
+User Supported Wiki: Пайдаланушы қолдайтын Wiki
+PHP Version Check: PHP нұсқасын тексеру
+Check to see if PHP 7.1.0 or greater is installed.: PHP 7.1.0 немесе одан жоғары нұсқасының орнатылғанын тексеріңіз.
+PHP version: PHP нұсқасы
+PHP Settings: PHP параметрлері
+Detailed PHP Info: PHP туралы толық ақпарат
+settings.php Status: «settings.php» күйі
+Session Check: Сабақты тексеру
+To test the proper operation of sessions...: Сеанстардың дұрыс жұмысын тексеру үшін осы парақты қайта жүктеңіз. Сіз әр уақытта сеанс есептегішінің өсуін көруіңіз керек.
+SESSION COUNTER: СЕССИЯЛЫ ЕСЕПКЕР
+The file permissions of settings.php are set...: «Settings.php» файлының рұқсаттары орнатушының оны өзгертуге рұқсаты болмайтындай етіп орнатылған. Жалғастыру үшін келесі файлдың файл рұқсаттарын өзгертіңіз
+The file permissions of the includes directory are set...: Құрамында каталогтың файлдық рұқсаттары орнатушының жаңа файл жасауға рұқсаты болмайтындай етіп орнатылады. Жалғастыру үшін келесі каталогтың рұқсаттарын өзгертіңіз
+Your settings.php file appears to be valid.: Сіздің «settings.php» файлы дұрыс болып көрінеді.
+Configuration Wizard Password: Конфигурация шеберінің құпия сөзі
+Create Settings File Password: Пароль файлының паролін жасаңыз
+db setup directions...: Бұл бөлімде сіз мәліметтер базасының серверіне қосылуды орнатасыз және тексересіз. Есептік жазба ақпаратында мәліметтер базасын, кестелерді және пайдаланушыларды құруға ТОЛЫҚ рұқсаттар болуы керек. Егер бұл мүмкін болмаса немесе сіздің дерекқорға кіру шектеулі болса, сіз өзіңіздің деректер базаңызды қолмен конфигурациялауыңыз керек.
+Database Status: Мәліметтер базасының күйі
+Supported databases for your PHP installation: PHP-ді орнатуға арналған дерекқорлар
+Your current database settings are able to access the database.: Ағымдағы дерекқор параметрлері дерекқорға қол жеткізе алады.
+Please Test Settings: Параметрлерді тексеріңіз
+Your current database settings are not able...: Дерекқордың қазіргі параметрлері дерекқорға кіру мүмкін емес немесе әлі тексерілмеген.
+Database Settings: Мәліметтер базасының параметрлері
+Database Type: Мәліметтер базасының түрі
+Server: Сервер
+Connection Persistence: Байланыстың табандылығы
+All your database tables appear to be up...: Сіздің барлық мәліметтер базаңыздың кестелері жаңартылған сияқты. Сіз келесі бетке өтіп, WebCalendar орнатуды аяқтай аласыз.
+This appears to be a new installation...: Бұл жаңа қондырғы сияқты. Егер бұл дұрыс болмаса, алдыңғы параққа оралып, параметрлеріңізді түзетіңіз.
+This appears to be an upgrade...: Бұл&nbsp;XXX&nbsp;нұсқасынан&nbsp;YYY дейін жаңартылған сияқты.
+The database requires some data input...: Жаңартуды аяқтау үшін дерекқорға деректер енгізу қажет. Жаңарту түймешігін басыңыз.
+In this section we will perform...: Бұл бөлімде біз сіздің мәліметтер қорыңызды қажетті деңгейге жеткізу үшін өзгертулер енгіземіз. Егер сіз толық қолдайтын дерекқорды қолдансаңыз, бұл қадам сіз үшін автоматты түрде орындалады. Олай болмаған жағдайда, қажетті SQL көрсетілуі мүмкін және сіз оны кесіп алып, мәліметтер базасының серверінің сұраныстар терезесіне қоюыңыз керек.
+No database actions are required.: Дерекқордың әрекеттері қажет емес.
+The following database actions are required: Келесі мәліметтер базасы әрекеттері қажет
+ODBC Underlying Database: ODBC дерекқоры:
+Automatic installation not supported: Автоматты түрде орнату сіздің дерекқор түріне толық енгізілмеген. Берілген SQL көмегімен қажетті кестелерді қолмен жасауға тура келеді. Жалғастыру үшін  SQL көрсету  түймесін басыңыз. Деректер базасына сұраныс терезесін қиып, қойыңыз.
+This may take several minutes to complete: Мұны аяқтауға бірнеше минут кетуі мүмкін.
+Install Database: Дерекқорды орнатыңыз
+Update Database: Дерекқорды жаңарту
+Display Required SQL: Қажетті SQL-ді көрсету
+Return to previous page after processing SQL.: Осы SQL-ді қолмен өңдегеннен кейін, алдыңғы бетке оралып, деректер базасын қайта тексеріп, сценарий өзгертулерді анықтай алады.
+This is the final step in setting up your WebCalendar Installation.: Бұл сіздің WebCalendar орнатуды орнатудың соңғы кезеңі.
+Timezone Conversion: Уақыт белдеуін түрлендіру
+It appears that you have NOT converted...: Бұрыннан бар WebCalendar оқиға туралы деректерді GMT-ге түрлендірмеген сияқтысыз. Егер сізде болса, сіз бұл ескертуді елемей, түрлендіруге кіріспеуіңіз мүмкін. Егер бұл жаңа қондырғы болса, сіз бұл ескертуді елемеуге де болады.
+Convert Data to GMT: Деректерді GMT-ге түрлендіру
+Application Settings: Қолданба параметрлері
+HTTP-based authentication was not detected...: HTTP негізіндегі аутентификация анықталмады. Төмендегі «Пайдаланушының түпнұсқалық растамасы» таңдауынан «Веб-серверді» таңдағыңыз келсе, веб-серверіңізді қайта конфигурациялауыңыз керек.
+HTTP-based authentication was detected...: HTTP негізіндегі аутентификация анықталды. Пайдаланушының аутентификациясы сіздің веб-серверіңізбен өңделеді. Төмендегі «Пайдаланушының аутентификациясы» таңдау тізімінен «Веб-серверді» таңдау керек.
+Create Default Admin Account: Әдепкі әкімші тіркелгісін жасаңыз
+(Admin Account Not Found): (Әкімші тіркелгісі табылған жоқ)
+User Authentication: Пайдаланушының аутентификациясы
+Web-based via WebCalendar (default): WebCalendar арқылы веб-негізделген (әдепкі)
+Web Server (not detected): Веб-сервер (анықталған жоқ)
+Web Server (detected): Веб-сервер (анықталды)
+None (Single-User): Ешқайсысы (бір пайдаланушы)
+Read-Only: Тек оқу үшін
+Environment: Қоршаған орта
+Production: Өндіріс
+Development: Даму
+Save Settings: Параметрлерді сақтаңыз
+Launch WebCalendar: WebCalendar іске қосыңыз
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: «ХХХ» кестесін жаңарту қатесі: ЖЖЖ.
+Conversion Successful: конверсия сәтті 
+Perl script required: WebCalendar бағдарламасының алдыңғы нұсқасы сіздің деректеріңізді түрлендіру үшін PERL сценарийін іске қосуды қажет етеді. /Tools/upgrade_to_0.9.7.pl іске қосыңыз, содан кейін жалғастыру үшін осы бетке оралыңыз.
+previous version requires updating several tables: Сіздің WebCalendar алдыңғы нұсқаңыз бірнеше мәліметтер базасының кестелерін жаңартуды қажет етеді.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: Алдын ала қарау мүмкін емес
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Дерекқорға қосылу қателігі
+Include Path: Жолды қосыңыз
+Deleting events for: Іс-шараларды жою
+Importing events for: Іс-шараларды импорттау
+No data returned from: Деректер қайтарылмады
+for non-user calendar: пайдаланушы емес күнтізбе үшін
+No Remote Calendars found: Қашықтан күнтізбелер табылған жоқ
+Remote Calendars not enabled: Қашықтағы күнтізбелер қосылмаған
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: оқиға идентификаторын таба алмады
+could not find event id XXX in database.: мәліметтер базасында XXX оқиға идентификаторын таба алмады.
+task: тапсырма
+This is a reminder for the XXX detailed below.: Бұл төменде көрсетілген ХХХ үшін еске салу.
+Pecentage Complete: Песентраж аяқталды
+Reminder: Еске салу
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Қолдау көрсетілмеген әрекет: XXX.
+No event id specified.: Ешқандай оқиға идентификаторы көрсетілген жоқ.
+Not authorized (not admin).: Рұқсат етілмеген (әкімші емес).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: YYY күнінен ZZZ күніне дейінгі ХХХ оқиғаларды тексеру.
+Found XXX events in time range.: Уақыт аралығында ХХХ оқиға табылды.
+Event id=XXX YYY at ZZZ on AAA.: Оқиға идентификаторы = AAA-да ZZZ кезінде «XXX» YYY «.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: XXX пайдаланушысына басқа пайдаланушының күнтізбесін көруге рұқсат беру.
+Error Email reminders disabled for user XXX.: Қате: «XXX» пайдаланушысы үшін электрондық пошта еске салғыштары өшірілген.
+Number of site_extras XXX.: Қосымша сайттар саны: XXX.
+Reminder set for event.: Іс-шара үшін еске салғыш орнатылды.
+Mins Before XXX.: Алдыңғы минуттар: ХХХ.
+Event time is XXX.: Оқиға уақыты: ХХХ.
+Remind time is XXX.: Естеріңізге сала кетейік: XXX.
+Reminders for user XXX, login YYY.: «XXX» пайдаланушысына арналған ескертулер, «YYY» кіріңіз.
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: «XXX» пайдаланушысы үшін мақұлданбау.
+Event id=XXX YYY already sent.: Іс-шара = XXX «ЖЖЖ» жіберілді.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Бір пайдаланушы режиміне кіру қажет емес.
+No login required for HTTP authentication.: HTTP аутентификациясы үшін кіру қажет емес.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Кірудегі таңбалар жарамсыз.
+Username XXX does not exist.: «XXX» пайдаланушы аты жоқ.
+You cannot remove admin rights from yourself!: Сіз әкімші құқығын өзіңізден алып тастай алмайсыз!
+Unknown error saving user: Пайдаланушыны сақтау кезінде белгісіз қате пайда болды.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Іс-шара идентификаторы үшін қатысушылар табылмады: XXX.
+Db error Could not find event id XXX.: Db қатесі: оқиға идентификаторы ХХХ табылмады.
+Error Could not find event id XXX in database.: Қате: деректер базасында XXX оқиға идентификаторы табылмады.

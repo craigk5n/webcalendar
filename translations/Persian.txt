@@ -1,0 +1,2387 @@
+# Persian fa
+#
+# قالب از یک سربرگ اختیاری تشکیل شده است:
+#
+# ترجمه شده توسط: نام و ایمیل شما
+# آخرین بروزرسانی: تاریخ ترجمه
+# (از جمله "#" برجسته و هرگونه اظهار نظر توسط مترجمان قبلی.
+# اولین خط خالی این نظرات عنوان را به پایان می رساند.)
+#
+# به دنبال هر تعداد که لازم است:
+#
+# عبارت انگلیسی: ترجمه
+# (یک به یک خط. بدون "#" اصلی.
+# "عبارت انگلیسی:" ، از جمله روده بزرگ ":" ، توسط
+# توسعه دهندگان WebCalendar. قسمت شما "ترجمه" است.)
+#
+# فهرست ابزارها شامل دو اسکریپت پرل برای کمک به شماست:
+# - check_translation.pl
+# نشان می دهد که آیا همه متن با موفقیت ترجمه شده است.
+# - update_translation.pl
+# پرونده های برنامه را تجزیه می کند تا تمام ترجمه ها ("عبارت") و
+# tooltip ("عبارت"). این عبارات را با توجه به صفحه مرتب می کند
+# (پرونده) حاوی اولین رخداد است. به صورت اختیاری ، می تواند برچسب گذاری کند
+# عباراتی که هنوز با قرار دادن ترجمه نشده اند
+#  << MISSING >>
+# روی خط بالای عبارت. و اگر این عبارت مخفف باشد ،
+# شامل متن کامل انگلیسی در خط زیر عبارت است.
+#
+# توجه: سعی می کنم اندازه کلی پرونده را کاهش دهم. اگر "ترجمه"
+# کلمه / عبارت در زبان و انگلیسی شما یکسان است ، فقط از علامت "=" استفاده کنید.
+#
+# توجه: متوجه ورود برای خواهید شد "May_" در زیر دلیل برای این وجود دارد.
+#  ترجمه کردن "May_" به نام کامل ماه و "May" به،
+# معمولاً مخفف سه حرف ، ماه (مانند "اکتبر" برای "اکتبر").
+#
+# من برای این کار از ترجمه گوگل استفاده کردم.
+# این کافی است تا زمانی که یک بومی زبان بتواند آن را تأیید کند.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: rtl
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: تقویم وب
+version XXX: نسخه XXX
+WebCalendar is a PHP application used...: WebCalendar یک برنامه PHP است که برای نگهداری تقویم برای یک کاربر یا یک گروه از کاربران اینترنت / اینترانت استفاده می شود. همچنین می تواند به عنوان یک تقویم رویداد پیکربندی شود.
+Credits: وام
+About: در باره
+OK: خوب
+
+########################################
+# Page: access.php
+#
+Database error XXX.: خطای پایگاه داده: XXX.
+DEFAULT CONFIGURATION: پیکربندی پیش فرض
+Go: برو
+Save: صرفه جویی
+Undo: واگرد
+Public Access: دسترسی عمومی
+Admin: مدیر
+User Access Control: کنترل دسترسی کاربر
+Allow Access to Other Users Calendar: دسترسی به تقویم سایر کاربران را مجاز کنید
+Grant This User Access to My Calendar: به این کاربر اجازه دسترسی به تقویم من بدهید
+Type: تایپ کنید
+Calendar: تقویم
+View Event: مشاهده رویداد
+View: چشم انداز
+Edit: ویرایش کنید
+Approve/Reject: تأیید / رد کردن
+Events: مناسبت ها
+Tasks: وظایف
+Journals: مجلات
+Can Invite: می توانید دعوت کنید
+Can Email: می توانید ایمیل ارسال کنید
+Can See Time Only: فقط زمان را می توان مشاهده کرد
+Assistant: دستیار
+Select All: انتخاب همه
+Clear All: همه را پاک کن
+Public: عمومی
+Confidential: محرمانه
+Private: خصوصی
+
+########################################
+# Page: activity_log.php
+#
+Next: بعد
+Previous: قبلی
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: رویداد XXX از قبل در تقویم شما قرار دارد.
+Invalid entry id XXX.: شناسه ورود نامعتبر است: "XXX".
+a XXX event may not be added to your calendar: این یک رویداد XXX است و ممکن است به تقویم شما اضافه نشود.
+confidential: محرمانه
+private: خصوصی
+Error adding event XXX.: خطا در افزودن رویداد: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: نام تنظیم نامعتبر "XXX".
+Select: انتخاب کنید
+Day: روز
+Week: هفته
+Month: ماه
+Year: سال
+Bottom: پایین
+Top: بالا
+Anyone: هر کسی
+Participant: شرکت کننده
+Settings: تنظیمات
+Groups: گروه ها
+NonUser Calendars: تقویم های غیر کاربر
+Other: دیگر
+Email: پست الکترونیک
+Colors: رنگها
+Document background: پیش زمینه سند
+Document title: عنوان سند
+Document text: متن سند
+My event text: متن رویداد من
+Table grid color: رنگ شبکه جدول
+Table header background: پس زمینه سربرگ جدول
+Table header text: متن سربرگ جدول
+Table cell background: پس زمینه سلول جدول
+Table cell background for current day: پس زمینه سلول جدول برای روز جاری
+Table cell background for days with events: پس زمینه سلول جدول برای روزها با رویدادها
+Table cell background for weekends: پس زمینه سلول جدول برای آخر هفته ها
+Table cell background for other month: پس زمینه سلول جدول برای ماه دیگر
+Week number color: رنگ شماره هفته
+Event popup background: پس زمینه پنجره رویداد
+Event popup text: متن پنجره رویداد
+System Settings: تنظیمات سیستم
+Help: کمک
+System options: گزینه های سیستم
+app-name-help: نام برنامه ای را که در نوار عنوان مرورگر برای همه صفحات و در صفحه ورود به سیستم ظاهر می شود ، مشخص می کند. مقداری که در اینجا مشخص کرده اید در فایل ترجمه جستجو می شود که به شما امکان می دهد عناوین مختلفی را برای زبانهای مختلف تهیه کنید.
+Application Name: نام نرم افزار
+Translated Name (XXX): نام ترجمه شده (XXX)
+server-url-help: URL اصلی برنامه را مشخص می کند. این در هنگام ارسال یادآوری ها و اعلان های ایمیل شامل می شود.
+Server URL: URL سرور
+home-url-help: URL اصلی برنامه را مشخص می کند. این می تواند مطلق یا نسبی باشد
+Home URL: آدرس اینترنتی صفحه اصلی
+language-help: مشخص می کند که از کدام زبان استفاده شود.
+Language: زبان
+Your browser default language is XXX.: زبان پیش فرض مرورگر شما "XXX" است.
+Allow user to use themes: به کاربر اجازه دهید از مضامین استفاده کند
+themes-help: به روزرسانی گسترده تنظیمات پیکربندی را مجاز می کند. برچسب های کوچک فقط ترجیح کاربر هستند.
+Themes: مضامین
+AVAILABLE THEMES: مضامین در دسترس
+None: هیچ یک
+Preview: پیش نمایش
+Site customization: سفارشی سازی سایت
+custom-script-help: ورود متن جاوا اسکریپت یا صفحه سبک را که در بخش "سر" HTML هر صفحه درج می شود ، مجاز می داند.
+Custom script/stylesheet: اسکریپت / صفحه سبک سفارشی
+custom-header-help: اجازه می دهد تا یک قطعه HTML سفارشی در بالای هر صفحه گنجانده شود.
+Custom header: سربرگ سفارشی
+custom-trailer-help: اجازه می دهد تا یک قطعه HTML سفارشی در انتهای هر صفحه گنجانده شود.
+Custom trailer: تریلر سفارشی
+enable-external-header-help: اجازه می دهد تا پیش پرده سفارشی از یک فایل خارجی بارگیری شود
+Allow external file for header/script/trailer: اجازه دادن پرونده خارجی برای عنوان / اسکریپت / پیش پرده
+Allow user to override header/trailer: به کاربر اجازه دهید عنوان / پیش نمایش را لغو کند
+Date and Time: تاریخ و زمان
+server-tz-help: تعیین چند ساعت برای تنظیم زمان از UTC به زمان سرور.
+Server Timezone Selection: انتخاب منطقه زمانی سرور
+tz-help: تعیین چند ساعت برای تنظیم زمان از UTC به زمان محلی.
+Default Client Timezone Selection: انتخاب منطقه زمانی مشتری پیش فرض
+display-general-use-gmt-help: در صورت فعال بودن ، تاریخ ها / زمان های مشترک به صورت GMT نمایش داده می شوند
+Display Common Use Date/Times as GMT: تاریخ / زمان استفاده مشترک را به صورت GMT نمایش دهید
+date-format-help: قالب تاریخ مورد نظر را مشخص می کند.
+Date format: فرمت تاریخ
+Small Task Date: تاریخ کار کوچک
+display-week-starts-on: روزی از هفته را مشخص می کند که هفته شروع شود. اگر دوشنبه مشخص شده باشد ، شماره های هفته اعداد هفته ایزو خواهند بود.
+Week starts on: هفته شروع می شود
+display-weekend-starts-on: روز هفته را برای شروع آخر هفته تنظیم می کند
+Weekend starts on: آخر هفته شروع می شود
+time-format-help: مشخص می کند که از کدام قالب زمان استفاده کنید:<br><em>12 ساعت:</em> زمان نمایش به صورت 3 صبح ، 8:30 بعد از ظهر و غیره<br><em>24 ساعت:</em> زمان نمایش 300 ، 2030 ، و غیره
+Time format: قالب زمان
+12 hour: 12 ساعت                                                  
+24 hour: 24 ساعت                                                  
+timed-evt-len-help: روش ورودی را برای تعیین طول یک رویداد زمان بندی شده مشخص می کند.
+Specify timed event length by: طول رویداد بهنگام را با تعیین کنید
+Duration: مدت زمان
+End Time: زمان پایان
+work-hours-help: محدوده زمانی را برای نمایش روز مشخص می کند.
+Work hours: ساعات کاری
+From: از جانب
+to: به
+Appearance: ظاهر
+preferred-view-help: نمای پیش فرض را مشخص می کند (روز ، هفته ، ماه یا سال).
+Preferred view: نمای ترجیحی
+Allow top menu: منوی بالا را مجاز کنید
+Date Selectors position: موقعیت انتخاب کنندگان تاریخ
+menu-themes-help: رنگ ها و سبک منوی بالا را تنظیم می کند
+Menu theme: طرح زمینه منو
+fonts-help: لیستی از فونت های سیستم را برای استفاده مشخص می کند (مانند "Arial، Helvetica")
+Fonts: قلم ها
+display-sm_month-help: در صورت فعال بودن ، ماههای کمی را در نماهای ماه نمایش می دهد
+Display small months: ماههای کم نمایش دهید
+display-weekends-help: آخر هفته ها را هنگام مشاهده یک هفته قرار دهید.
+Display weekends: آخر هفته ها را نمایش دهید
+display-long-daynames-help: در صورت فعال بودن ، نام روزهای طولانی نمایش داده می شود
+Display long day names: نام روزهای طولانی را نمایش دهید
+display-alldays-help: ماه های قبلی و بعدی را در نماهای ماه نمایش دهید و تمام سلول ها را پر کنید.
+Display all days in month view: نمایش تمام روزها در نمای ماه
+display-week-number-help: مشخص می کند که آیا شماره هفته (1-52) باید در نمای ماه و نمای هفته نمایش داده شود.
+Display week number: نمایش شماره هفته
+display-desc-print-day-help: شرح رویداد را در نسخه قابل چاپ برای نمای روز قرار دهید.
+Display description in printer day view: نمایش توضیحات در نمای روز چاپگر
+yearly-shows-events-help: در نمای سالیانه ، روزهایی را که حاوی رویدادها هستند با قلم پررنگ نمایش دهید.
+Display days with events in bold in month and year views: روزها را با تعداد حروف پررنگ در نماهای ماه و سال نمایش دهید
+display-minutes-help: در صورت فعال بودن ، دقیقه های ختم شده با: 00 همیشه نمایش داده می شوند
+Display 00 minutes always: نمایش 00 دقیقه همیشه
+display-end-times-help: در صورت اتمام زمان ، زمان پایان رویداد را نشان دهید
+Display end times on calendars: زمان پایان را در تقویم ها نمایش دهید
+allow-view-add-help: نماد '+' در بازدیدها گنجانده شده است ، به کاربران امکان می دهد رویدادها را سریع به تقویم های سایر کاربران اضافه کنند.
+Include add event link in views: پیوند رویداد را در نماها اضافه کنید
+lunar-help: در صورت فعال بودن ، هر ماه نمادهای کوچکی را نشان می دهد که فازهای ماه را نشان می دهند
+Display Lunar Phases in month view: نمایش فازهای ماه در نمای ماه
+Restrictions: محدودیت های
+allow-view-other-help: مشخص می کند که آیا یک کاربر می تواند تقویم کاربر دیگر را مشاهده کند یا خیر.
+Allow viewing other users calendars: مشاهده تقویم های کاربر دیگر را مجاز کنید
+require-approvals-help: هنگامی که فعال است ، کاربر باید یک رویداد را قبل از نمایش در تقویم خود تأیید کند (مگر اینکه نمایش تأیید نشده فعال نباشد). توجه داشته باشید که تنظیم این گزینه روی "نه" تأییدهای تقویم دسترسی عمومی را خاموش نمی کند (اگر تقویم دسترسی عمومی فعال باشد).
+Require event approvals: به تأییدیه های رویداد نیاز دارید
+display-unapproved-help: مشخص می کند که آیا رویدادهای تأیید نشده در تقویم شما نمایش داده می شوند.<br>اگر روی "بله" تنظیم شده باشد ، رویدادهای تأیید نشده در تقویم شما نمایش داده می شوند (با رنگ متن متفاوت).<br>اگر روی "نه" تنظیم شده باشد ، رویدادهای تأیید نشده باید قبل از نمایش در تقویم شما تأیید شوند.
+Display unapproved: نمایش تأیید نشده است
+conflict-check-help: بررسی درگیری های رویداد (دو رویداد برای یک فرد به طور همزمان برنامه ریزی شده است). اگر این مورد را روی "بله" تنظیم کنید ، پس از تأیید هشدار همچنان می توانید دو رویداد را به طور همزمان برنامه ریزی کنید. اگر این مورد را روی "خیر" تنظیم کنید ، هیچ بررسی درگیری انجام نمی شود. احتمالاً می خواهید این گزینه را روی "بله" تنظیم کنید ، بنابراین بررسی تعارض رخ می دهد.
+Check for event conflicts: برای درگیری رویداد بررسی کنید
+Yes: آره
+No: نه
+conflict-months-help: اگر بررسی تعارض انجام شود ("بررسی برای درگیری های رویداد" روی "نه" تنظیم شده است & # 41؛ ، این مشخص می کند که چند ماه آینده باید درگیری ها را بررسی کنیم. اگر متوجه شوید پردازش افزودن رویدادها زمان زیادی می برد ، این تعداد را کاهش دهید.
+Conflict checking months: ماه های درگیری را بررسی کنید
+conflict-check-override-help: به کاربران اجازه می دهد تا درگیری های رویداد را نادیده بگیرند و همزمان دو یا چند رویداد را برنامه ریزی کنند.
+Allow users to override conflicts: به کاربران اجازه دهید تا تعارضات را نادیده بگیرند
+limit-appts-help: به سرپرست سیستم اجازه می دهد تا محدودیت تعداد قرارهایی را که یک کاربر می تواند در هر روز داشته باشد در کل سیستم تعیین کند.
+Limit number of timed events per day: تعداد رویدادهای بهنگام را در روز محدود کنید
+limit-appts-number-help: حداکثر تعداد رویدادهای زمان بندی شده کاربر در یک روز را مشخص می کند.
+Maximum timed events per day: حداکثر زمان وقایع در روز
+crossday-help: در صورت فعال بودن ، رویدادهایی که در طول روزها هستند در روزهای جداگانه نمایش داده می شوند
+Disable Cross-Day Events: رویدادهای چند روزه را غیرفعال کنید
+disable-location-field-help: با انتخاب "بله" ، قسمت "مکان" از صفحات اطلاعات رویداد حذف می شود
+Disable Location field: قسمت مکان را غیرفعال کنید
+disable-url-field-help: با انتخاب "بله" ، قسمت "URL" از صفحات اطلاعات رویداد حذف می شود
+Disable URL field: قسمت URL را غیرفعال کنید
+disable-priority-field-help: با انتخاب "بله" ، قسمت "اولویت" از صفحات اطلاعات رویداد حذف می شود و یک رابط کاربری ساده تر برای تازه کارها فراهم می کند.
+Disable Priority field: قسمت اولویت را غیرفعال کنید
+disable-access-field-help: با انتخاب "بله" ، قسمت "دسترسی" از صفحات اطلاعات رویداد حذف می شود و یک رابط کاربری ساده تر برای تازه کارها فراهم می کند.
+Disable Access field: قسمت Access را غیرفعال کنید
+disable-participants-field-help: با انتخاب "بله" ، قسمت "شرکت کنندگان" از صفحات اطلاعات رویداد حذف می شود و از افزودن کاربران دیگر به رویدادهای خود جلوگیری می کند. اگر این گزینه را فعال کنید ، ممکن است بخواهید قسمت "اجازه مشاهده تقویم های کاربر دیگر" را نیز غیرفعال کنید.
+Disable Participants field: قسمت شرکت کنندگان را غیرفعال کنید
+disable-repeating-field-help: با انتخاب "بله" هنگام افزودن رویدادها ، قسمت "تکرار" حذف می شود. این یک رابط کاربری ساده تر برای تازه کارها فراهم می کند.
+Disable Repeating field: قسمت تکرار را غیرفعال کنید
+allow-html-description-help: در صورت فعال بودن ، کاربران می توانند HTML را در قسمت شرح رویداد وارد کنند. اگر فعال نباشد ، از برچسب های HTML فرار می کند تا به عنوان متن ساده ظاهر شود. هشدار: فعال کردن این ویژگی به کاربران امکان می دهد تصاویر را در وب سایت های دیگر ارجاع دهند.
+Allow HTML in Description: اجازه دهید HTML در توضیحات باشد
+Popups: پنجره های باز شو
+disable-popups-help: پنجره های بازشو را از نمای تقویم غیرفعال کنید
+Disable Pop-Ups: پاپ آپ را غیرفعال کنید
+popup-includes-siteextras-help: در صورت فعال بودن ، اجازه دهید تنظیم زمینه های رویداد سفارشی در پرونده site_extras.php در پنجره های رویداد نمایش داده شود.
+Display Site Extras in popup: موارد اضافی سایت را در پنجره نمایش دهید
+popup-includes-participants-help: در صورت فعال بودن ، شرکت کنندگان در پنجره های بازشو رویداد نمایش داده می شوند.
+Display Participants in popup: شرکت کنندگان را در پنجره پنجره نمایش دهید
+Miscellaneous: متفرقه
+remember-last-login-help: با فعال شدن ، ورود کاربر برای وی در صفحه ورود به سیستم پر می شود (اما نه رمز ورود) ، و تنظیمات کاربر بارگیری می شود (از جمله رنگ های ترجیحی و انتخاب زبان).
+Remember last login: آخرین ورود را بخاطر بسپارید
+summary_length-help: حداکثر طول شرح مختصر در نماهای تقویم
+Brief Description Length: شرح مختصر طول
+user_sort-help: ترتیب مرتب سازی برای لیست های User ، Nonuser را تعیین می کند
+User Sort Order: مرتب سازی بر اساس کاربر
+Lastname, Firstname: نام خانوادگی نام
+Firstname, Lastname: نام ، نام خانوادگی
+allow-public-access-help: هنگامی که فعال است ، از تقویم می توان به عنوان یک تقویم عمومی فقط خواندنی استفاده کرد که نیازی به ورود کاربران نیست.
+Allow public access: اجازه دسترسی عمومی را بدهید
+public-access-default-visible: رویدادهای تقویم عمومی به طور خودکار در همه تقویم های کاربران نشان داده می شوند
+Public access visible by default: دسترسی عمومی به طور پیش فرض قابل مشاهده است
+public-access-default-selected: هنگام افزودن یک رویداد جدید ، کاربر عمومی به طور پیش فرض به عنوان یک شرکت کننده انتخاب می شود.
+Public access is default participant: دسترسی عمومی شرکت کننده پیش فرض است
+public-access-view-others-help: هنگام دسترسی به سیستم با دسترسی عمومی ، مشخص می کند که آیا کاربر می تواند تقویم کاربر تقویم دیگری را مشاهده کند یا خیر.
+Public access can view other users: دسترسی عمومی می تواند سایر کاربران را مشاهده کند
+public-access-can-add-help: وقتی فعال شود ، کاربرانی که از طریق دسترسی عمومی به سیستم دسترسی پیدا می کنند می توانند رویدادهای جدیدی اضافه کنند ، اما تا زمانی که سرپرست رویداد جدید را تأیید نکند در تقویم نمایش داده نمی شوند.
+Public access can add events: دسترسی عمومی می تواند رویدادها را اضافه کند
+public-access-add-requires-approval-help: مشخص می کند آیا رویدادهای اضافه شده از طریق حساب دسترسی عمومی قبل از نمایش به تأیید نیاز دارند.
+Public access new events require approval: دسترسی عمومی به رویدادهای جدید نیاز به تأیید دارد
+public-access-sees-participants-help: در صورت فعال بودن ، کاربرانی که از حساب عمومی به تقویم دسترسی پیدا می کنند ، در صورت مشاهده جزئیات یک رویداد ، می توانند شرکت کنندگان در رویداد را مشاهده کنند.
+Public access can view participants: دسترسی عمومی می تواند شرکت کنندگان را مشاهده کند
+public-access-override-help: اجازه می دهد تا نام و شرح رویدادها در تقویم عمومی مخفی شود
+Override event name/description for public access: برای دسترسی عمومی نام / توضیحات رویداد را نادیده بگیرید
+public-access-override-text-help: متنی که در صورت فعال بودن گزینه بالا نمایش داده می شود. در صورت موجود نبودن ، ترجمه خواهد شد.
+Text to display to public access: متن برای نمایش برای دسترسی عمومی
+public-access-captcha-help: در صورت فعال بودن ، رویدادهای جدید اضافه شده توسط Public نیاز به تصویب اعتبار CAPTCHA دارند.
+Require CAPTCHA validation for public access new events: برای دسترسی عمومی به رویدادهای جدید به اعتبار سنجی CAPTCHA نیاز دارید
+uac-enabled-help: کنترل دسترسی در سطح کاربر را فعال می کند
+User Access Control enabled: کنترل دسترسی کاربر فعال است
+groups-enabled-help: پشتیبانی گروهی را فعال می کند ، به کاربران اجازه می دهد تا کاربران را بر اساس گروه انتخاب کنند.
+Groups enabled: گروهها فعال هستند
+user-sees-his-group-help: در صورت فعال بودن ، کاربران کاربران تقویمی را نمی بینند که حداقل در یکی از گروه های آنها باشند.
+User sees only his groups: کاربر فقط گروههای خود را می بیند
+nonuser-enabled-help: در صورت فعال بودن ، سرپرستان این امکان را دارند که تقویم های غیر کاربر را اضافه کنند
+Nonuser enabled: تقویم های غیر استفاده کننده فعال است
+nonuser-list-help: کجا تقویم های غیرکاربر را در لیست شرکت کنندگان نمایش دهید
+Nonuser list: نمایش در لیست شرکت کنندگان در
+Upcoming Events: رویدادهای آینده
+upcoming-events-help: آینده.php را فعال کنید
+Enabled: فعال شد
+upcoming-events-allow-override: به paramter کاربر برای آینده.php اجازه دهید
+Allow user override: اجازه لغو کاربر
+upcoming-events-display-caticons: نمادهای دسته را در آینده.php قرار دهید
+Display category icons: نمادهای دسته را نمایش دهید
+upcoming-events-display-layers: نمایش لایه ها در آینده. php
+Display layers: نمایش لایه ها
+upcoming-events-display-links: پیوندها را در آینده. php نمایش دهید
+Display links to events: پیوندهای رویدادها را نمایش دهید
+upcoming-events-display-popups: پنجره های بازشوی رویداد را در آینده. php نمایش دهید
+Display event popups: پنجره های بازشو را نمایش دهید
+reports-enabled-help: در صورت فعال بودن ، کاربران بخش "گزارش ها" را در پایین هر صفحه مشاهده می کنند و مجاز به ایجاد گزارش های سفارشی هستند. علاوه بر این ، کاربران سرپرست می توانند گزارش های جهانی ایجاد کنند که در پایین صفحه همه کاربران ظاهر می شود.
+Reports enabled: گزارش فعال است
+subscriptions-enabled-help: مشخص می کند که آیا کاربران از راه دور می توانند در تقویم کاربر WebCalendar مشترک شوند ، به آنها اجازه می دهد تا رویدادهای کاربر WebCalendar را در برنامه فعال شده با iCal خود (مانند iCal یا Mozilla Calendar اپل) مشاهده کنند.
+Allow remote subscriptions: اشتراک از راه دور مجاز است
+remotes-enabled-help: به کاربران امکان می دهد تا با استفاده از URL پرونده های ics از راه دور را بارگیری کنند
+Allow remote calendars: تقویم های از راه دور مجاز باشد
+rss-enabled-help: مشخص می کند که تقویم کاربر از طریق خوراک RSS بدست آید.
+Enable RSS feed: خوراک RSS را فعال کنید
+categories-enabled-help: پشتیبانی از دسته های رویداد را فعال می کند.
+Categories enabled: دسته ها فعال هستند
+icon_upload-enabled-help: در صورت فعال بودن ، کاربران می توانند نمادهای دسته را بارگذاری کنند
+Category Icon Upload enabled: نماد دسته بارگذاری فعال است
+(Requires XXX folder to exist.): (وجود پوشه XXX نیاز دارد.)
+display-tasks-help: پنجره کار کوچک را در تقویم ماه و روز نمایش دهید
+Display small task list: لیست کارهای کوچک را نمایش دهید
+display-tasks-in-grid-help: وظایف را در تقویم ها به همراه رویدادها نمایش دهید
+Display tasks in Calendars: نمایش وظایف در تقویم ها
+allow-external-users-help: مشخص می کند آیا یک کاربر غیر تقویمی می تواند به یک رویداد اضافه شود. این اجازه می دهد تا کاربران غیر تقویمی به عنوان شرکت کنندگان در رویداد ذکر شوند.
+Allow external users: به کاربران خارجی اجازه دهید
+external-can-receive-notification-help: وقتی کاربران خارجی فعال هستند و استفاده از ایمیل فعال است ، در صورت افزودن ، به روزرسانی یا حذف رویداد (در صورت ارائه آدرس ایمیل کاربر خارجی) ، کاربران خارجی می توانند اعلان های ایمیل را دریافت کنند.
+External users can receive email notifications: کاربران خارجی می توانند اعلان های ایمیل را دریافت کنند
+external-can-receive-reminder-help: وقتی کاربران خارجی فعال هستند و استفاده از ایمیل فعال است ، کاربران خارجی می توانند یادآوری های ایمیل را دریافت کنند (در صورت ارائه آدرس ایمیل کاربر خارجی).
+External users can receive email reminders: کاربران خارجی می توانند یادآوری های ایمیل را دریافت کنند
+allow-self-registration-help: به کاربران جدید اجازه ثبت نام خود را دهید
+Allow self-registration: اجازه ثبت نام شخصی را بدهید
+use-blacklist-help: دسترسی به توابع WebCalendar را براساس آدرس IP محدود کنید
+Restrict self-registration to blacklist: ثبت نام خود را به لیست سیاه محدود کنید
+allow-self-registration-full-help: به کاربران جدید اجازه دهید مراحل ثبت نام خودکار را به صورت آنلاین انجام دهند
+Use self-registration email notifications: گذرواژه ایجاد کنید و برای کاربران جدید ارسال کنید
+allow-attachment-help: به کاربران اجازه دهید پیوستهای پرونده را به رویدادها اضافه کنند.
+Allow file attachments to events: پیوست پرونده به رویدادها را مجاز کنید
+Admin and owner can always add attachments if enabled.: در صورت فعال بودن ، سرپرست و مالک می توانند پیوستها را همیشه اضافه کنند.
+allow-comments-help: به کاربران اجازه دهید نظرات خود را به رویدادها اضافه کنند.
+Allow comments to events: اجازه دادن به نظرات در مورد رویدادها
+Admin and owner can always add comments if enabled.: مدیر و مالک در صورت فعال بودن ، همیشه می توانند نظرات خود را اضافه کنند.
+email-enabled-help: برای ارسال اعلان و یادآوری ، همه ارسال ایمیل را روشن یا خاموش کنید. اگر سرور شما برای ارسال نامه به درستی تنظیم نشده است ، روی "نه" تنظیم کنید.
+Email enabled: ایمیل فعال است
+email-default-sender: آدرس ایمیل را مشخص می کند تا هنگام ارسال یادآوری به عنوان فرستنده مشخص شود.
+Default sender address: آدرس ارسال کننده پیش فرض
+email-mailer: نوع ایمیل را انتخاب کنید (SMTP ، نامه PHP ، نامه ارسال)
+Email Mailer: ارسال کننده ایمیل
+email-smtp-host: نام میزبان سرورهای SMTP با ویرگول از هم جدا شده است
+SMTP Host name(s): نام (های) میزبان SMTP
+email-smtp-port: شماره بندر SMTP (به طور معمول 25)
+SMTP Port Number: شماره بندر SMTP
+email-smtp-auth: از احراز هویت SMTP استفاده کنید
+SMTP Authentication: احراز هویت SMTP
+email-smtp-username: نام کاربری SMTP در صورت استفاده از احراز هویت
+SMTP Username: نام کاربری SMTP
+email-smtp-password: رمز عبور SMTP در صورت استفاده از احراز هویت
+SMTP Password: رمز عبور SMTP
+Default user settings: تنظیمات پیش فرض کاربر
+email-format: اولویت را برای HTML یا پیام های متنی ساده تعیین کنید
+Email format preference: اولویت قالب ایمیل
+HTML: =
+Plain Text: متن ساده
+email-include-ics: برای ارسال پیام الکترونیکی ، یک پرونده iCalendar ICS اضافه کنید
+Include iCalendar attachments: پیوست های iCalendar را وارد کنید
+email-event-reminders-help: ارسال یا یادآوری رویداد را مشخص می کند.
+Event reminders: یادآوری رویداد
+email-event-added: ارسال یا عدم ارسال اعلان های ایمیل هنگام افزودن رویدادی به تقویم شما را تعیین می کند.
+Events added to my calendar: رویدادها به تقویم من اضافه شدند
+email-event-updated: ارسال یا عدم ارسال اعلان های ایمیل هنگام بروزرسانی رویدادی در تقویم شما را تعیین می کند.
+Events updated on my calendar: رویدادها در تقویم من به روز شدند
+email-event-deleted: ارسال یا عدم ارسال اعلان های ایمیل هنگام حذف رویدادی از تقویم شما را تعیین می کند.
+Events removed from my calendar: رویدادهایی که از تقویم من برداشته شد
+email-event-rejected: مشخص می کند که اگر یک شرکت کننده رویدادی را که در تقویم شما است رد کند ، اعلان های ایمیل ارسال شود یا خیر.
+Event rejected by participant: رویداد توسط شرکت کننده رد شد
+email-event-create: مشخص می کند که آیا خالق ورودی ها ایمیلی دریافت می کند یا خیر
+Event that I create: رویدادی که من ایجاد می کنم
+Color options: گزینه های رنگ
+Allow user to customize colors: به کاربر اجازه دهید رنگها را سفارشی کند
+gradient-colors: در صورت فعال بودن از رنگهای شیب استفاده می شود. این می تواند عملکرد را بسیار تحت تأثیر قرار دهد.
+Enable gradient images for background colors: تصاویر شیب دار را برای رنگ پس زمینه فعال کنید
+Not available: در دسترس نیست
+Background Image options: گزینه های تصویر پس زمینه
+bgimage-help: URL تصویر پس زمینه مورد نظر. ممکن است پیوند نسبی باشد.
+Background Image: تصویر پس زمینه
+bgrepeat-help: رفتار تکراری تصویر پس زمینه را کنترل می کند.
+Background Repeat: تکرار پس زمینه
+
+########################################
+# Page: adminhome.php
+#
+Assistants: دستیارها
+Preferences: اولویت ها
+Control Panel: صفحه کنترل
+Users: کاربران
+Account: حساب
+Categories: دسته بندی ها
+Views: بازدیدها
+Layers: لایه های
+Reports: گزارش ها
+Delete Events: حذف رویدادها
+Activity Log: گزارش فعالیت
+System Log: ورود به سیستم
+Security Audit: حسابرسی امنیتی
+Public Preferences: تنظیمات عمومی
+Unapproved Public Events: رویدادهای عمومی تأیید نشده
+Administrative Tools: ابزار اداری
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: نام تکراری: "XXX".
+Username XXX already exists.: نام کاربری "XXX" از قبل وجود دارد.
+Email address XXX already exists.: آدرس ایمیل "XXX" از قبل وجود دارد.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): نظرات اضافی (اختیاری)
+Approve and Send: تأیید و ارسال کنید
+Approve and Exit: تأیید و خروج
+(Your comments will be emailed to the event creator.): (نظرات شما برای سازنده رویداد از طریق ایمیل ارسال می شود.)
+Hello, XXX.: سلام ، XXX.
+XXX has approved an appointment and added comments.: قرار ملاقات تأیید شده است و نظرات توسط XXX اضافه شده است.
+Subject XXX: موضوع: "XXX".
+Description XXX: توضیحات: "XXX".
+Date XXX: تاریخ: XXX
+Time XXX: زمان: XXX
+Comments XXX: نظرات: XXX
+Approved w/Comments by XXX.: تایید شده / نظرات توسط: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: حالت مدیر
+Your assistants: دستیاران شما
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: خطای ناشناخته.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: خطای برنامه: هیچ XXX مشخص نشده است!
+user: کاربر
+year: سال
+month: ماه
+day: روز
+
+########################################
+# Page: category.php
+#
+Category Icon: نماد دسته بندی
+Global: جهانی
+The permissions for the icons directory are set to read-only: مجوزهای فهرست آیکونها فقط برای خواندن تنظیم شده اند.
+Category Name: نام دسته:
+Color: رنگ
+Remove Icon: حذف نماد:
+Add Icon to Category: نماد را به دسته اضافه کنید
+Upload: بارگذاری
+GIF or PNG 6kb max: حداکثر GIF یا PNG 6 کیلوبایت
+Search for existing icons: نمادهای موجود را جستجو کنید
+Add: اضافه کردن
+Delete: حذف
+Are you sure you want to delete this entry?: آیا مطمئن هستید که می خواهید این ورودی را حذف کنید؟
+Make New Category: دسته جدید ایجاد کنید
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: نام دسته مورد نیاز است
+File size exceeds maximum.: اندازه پرونده از حداکثر بیشتر است.
+File is not a GIF or PNG image: پرونده یک تصویر GIF یا PNG نیست
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: دسته بندی های موجود
+ENTRY CATEGORIES: دسته بندی های ورود
+Remove: برداشتن
+Global Category: دسته جهانی
+Cancel: لغو
+
+########################################
+# Page: colors.php
+#
+Add Custom: سفارشی اضافه کنید
+Basic Colors: رنگهای اساسی
+Current Color: رنگ فعلی
+Custom Colors: رنگ های سفارشی
+Old Color: رنگ قدیمی
+
+########################################
+# Page: combo.php
+#
+Select None: هیچ کدام را انتخاب نکنید
+Agenda: دستور جلسه
+Add Task: افزودن کار
+Description: شرح
+Date: تاریخ
+Time: زمان
+Priority: اولویت
+Access: دسترسی
+Created by: خلق شده توسط
+Updated: به روز شده
+Participants: شركت كنندگان
+Attachments: پیوست ها
+Comments: نظرات
+Brief Description: توضیح مختصر
+Full Description: توضیحات کامل
+Category: دسته بندی
+Add event detail: جزئیات رویداد را اضافه کنید
+Start Date: تاریخ شروع
+Due Date: تاریخ سررسید
+Add task detail: جزئیات کار را اضافه کنید
+All: همه
+Error: خطا
+no response from server: بدون پاسخ از سرور
+JSON error: خطای JSON
+High: بالا
+Medium: متوسط
+Low: کم
+Today: امروز
+Add Entry: ورودی را اضافه کنید
+Unnamed Event: رویداد بی نام
+Unnamed Task: وظیفه بدون نام
+Refresh: تازه کردن
+Click to add entry: برای افزودن مطلب کلیک کنید
+Name: نام
+pm: بعد از ظهر
+am: صبح
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX قرار ملاقات را لغو کرده است.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: شناسه لکه نامعتبر است
+
+########################################
+# Page: docadd.php
+#
+Add Comment: افزودن نظر
+Add Attachment: پیوست را اضافه کنید
+Subject: موضوع
+Comment: اظهار نظر
+Upload file: آپلود فایل
+
+########################################
+# Page: docdel.php
+#
+Removed: حذف شده
+
+########################################
+# Page: edit_entry.php
+#
+days: روزها
+hours: ساعت ها
+minutes: دقایق
+You are not authorized to edit this task.: شما مجاز به ویرایش این کار نیستید.
+is in a different timezone than you are. Currently: در منطقه زمانی متفاوتی از شما قرار دارد. در حال حاضر
+hour ahead of you: یک ساعت جلوتر از شما
+hour behind you: یک ساعت پشت سرت
+hours ahead of you: ساعت ها جلوتر از شما
+hours behind you: ساعتها پشت سرت
+XXX is in a different timezone (ahead): (XXX در منطقه زمانی دیگری است ؛ YYY از شما جلوتر است.<br>& nbsp؛ ZZZ)
+XXX is in a different timezone (behind): (XXX در منطقه زمانی دیگری است ؛ YYY پشت سر شما است.<br>& nbsp؛ ZZZ)
+Time entered here is based on your Timezone.: زمان وارد شده در اینجا بر اساس منطقه زمانی شما است.
+Edit Entry: ویرایش ورودی
+Details: جزئیات
+Repeat: تکرار
+Reminders: یادآوری ها
+brief-description-help: این باید شرح مختصری (حدود 20 نویسه) از رویداد را ارائه دهد. این هنگام مشاهده تقویم رویداد را نشان می دهد.
+full-description-help: این باید جزئیات رویداد را کامل کند. این اطلاعات هنگام مشاهده کاربر توسط کاربر مشاهده می شود.
+access-help: سطح دسترسی رویداد را مشخص می کند. <ul> <li> عمومی: همه می توانند جزئیات کامل رویداد را ببینند.</li> <li> محرمانه: دیگران می توانند ببینند که شما برای آن تاریخ و زمان ورودی دارید ، اما نه جزئیات آنچه در آن است.</li></ul>
+priority-help: اولویت رویداد را مشخص می کند. رویدادهای با اولویت بالا به صورت پررنگ نمایش داده می شوند.
+category-help: دسته رویداد را مشخص می کند.
+completed-help: تاریخ انجام کار فقط درصورتی فعال می شود که درصد شرکت کنندگان برابر با 100٪ باشد.
+Date Completed: تاریخ اتمام
+percent-help: درصد تکمیل کار برای این کاربر
+Percent Complete: درصد تکمیل شد
+All Percentages: همه درصدها
+location-help: محل رویداد
+Location: محل
+url-help: URL رویداد
+URL: آدرس اینترنتی
+date-help: تاریخ رویداد را مشخص می کند.
+Untimed event: اتفاق بدون وقت
+Timed event: رویداد به موقع
+All day event: رویداد یک روز کامل
+Timezone Offset: جابجایی منطقه زمانی
+time-help: زمان رویداد را مشخص می کند. <ul> <li> "رویداد به موقع" (برای رویدادی که در آن روز برای زمان خاصی برنامه ریزی شده باشد)</li> <li> "رویداد بدون وقت" (برای رویدادی که این زمان ندارد (مانند تعطیلات) )</li> <li> "رویداد تمام روز" (برای رویدادی که کل روز طول می کشد (مانند بیرون از دفتر بودن)</li></ul>
+duration-help: مدت زمان (به ساعت و چند دقیقه) رویداد را مشخص می کند. <em>این قسمت را می توان خالی گذاشت.</em>
+end-time-help: زمان پایان رویداد را مشخص می کند.
+Start Time: زمان شروع
+Due Time: زمان مقرر
+Site Extras: موارد اضافی سایت
+avail_participants-help: شرکت کنندگان موجود در این مطلب را لیست می کند.
+Available: در دسترس
+Find Name: پیدا کردن نام
+Resources: منابع
+participants-help: شرکت کنندگان در این مطلب را لیست می کند.
+Selected: انتخاب شد
+Availability: دسترسی
+external-participants-help: لیستی از شرکت کنندگان در این رویداد را مشخص می کند که کاربر تقویم نیستند. کاربران باید یک لیست در هر خط داشته باشند و می توانند یک آدرس ایمیل داشته باشند. اگر آدرس ایمیل مشخص شده باشد ، کاربر واجد شرایط دریافت اعلان ها و یادآوری ها است.
+External Participants: شرکت کنندگان خارجی
+repeat-type-help: چند بار تکرار رویداد را انتخاب کنید.
+Daily: روزانه
+Weekly: هفتگی
+Monthly: ماهانه
+by day: توسط روز
+by date: بر اساس تاریخ
+by position: توسط موقعیت
+Monthly (by day): ماهانه (روزانه)
+Monthly (by date): ماهانه (براساس تاریخ)
+Monthly (by position): ماهانه (براساس موقعیت)
+Yearly: سالانه
+Manual: کتابچه راهنمای
+Expert Mode: حالت خبره
+repeat-end-date-help: تاریخی را که باید رویداد تکرار شود مشخص می کند.
+Ending: پایان دادن
+Forever: تا ابد
+Use end date: از تاریخ پایان استفاده کنید
+Number of times: تعداد دفعات
+repeat-frequency-help: مشخص می کند که رویداد باید چند بار تکرار شود.
+Frequency: فرکانس
+Weekdays Only: فقط روزهای هفته
+Week Start: شروع هفته
+repeat-bydayextended-help: انتخاب تاریخ براساس روز هفته را مجاز می کند.
+ByDay: =
+repeat-month-help: مشخص می کند که رویداد باید در چند ماه تکرار شود.
+ByMonth: ماه
+repeat-bysetpos-help: انتخاب تاریخ براساس موقعیت با ماه را مجاز می کند.
+BySetPos: =
+repeat-bymonthdayextended-help: انتخاب تاریخ براساس تاریخ را مجاز می کند.
+ByMonthDay: =
+repeat-byweekno-help: به کاربر اجازه می دهد لیستی از هفته های تکرار رویداد را مشخص کند (1،2 ... 53، -53، -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: به کاربر اجازه می دهد لیستی از روزهای سال برای تکرار رویداد را مشخص کند (1،2 ... 366 ، -366 ، -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: روزهای اضافی که این رویداد باید رخ دهد یا نباید رخ دهد.
+Exclusions: استثنا
+Inclusions: اجزا
+Add Exception: یک مورد استثنا اضافه کن
+Add Inclusion: گنجاندن را اضافه کنید
+Delete Selected: انتخاب شده را پاک کن
+Send Reminder: ارسال یادآوری
+When: چه زمانی
+Use Date/Time: از تاریخ / زمان استفاده کنید
+Use Offset: از افست استفاده کنید
+Before: قبل از
+After: بعد از
+Start: شروع کنید
+End/Due: پایان / سررسید
+Times: بار
+Every: هر
+CAPTCHA Warning: هشدار: نمی توان از CAPTCHA بدون پسوند GD PHP استفاده کرد!<br>
+Delete entry: ورودی را حذف کنید
+You are not authorized to edit this entry.: شما مجاز به ویرایش این مطلب نیستید.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX قرار جدیدی گذاشته است.
+XXX has updated an appointment.: XXX قرار ملاقات را به روز کرده است.
+Security violation!: نقض امنیتی!
+You must enter the anti-spam text on the previous page.: شما باید متن ضد هرزنامه را در صفحه قبلی وارد کنید.
+The following conflicts with the suggested time: موارد زیر با زمان پیشنهادی مغایرت دارد
+User removed from participants list.: کاربر از لیست شرکت کنندگان حذف شد.
+Please look on XXX to accept or reject this appointment.: لطفاً برای پذیرش یا رد این قرار ملاقات به XXX نگاه کنید.
+Please look on XXX to view this appointment.: لطفاً برای مشاهده این قرار ملاقات به XXX مراجعه کنید.
+Scheduling Conflict: برنامه ریزی درگیری
+Your suggested time of: زمان پیشنهادی شما از
+conflicts with the following existing calendar entries: با ورودی های تقویم موجود در زیر تضاد دارد
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX در "config.php" تنظیم نشده است.
+word characters only: (فقط می تواند حاوی نویسه های کلمه باشد ؛ [a-zA-Z_0-9])
+Add User: افزودن کاربر
+Edit User: ویرایش کاربر
+Calendar ID: شناسه تقویم
+First Name: نام کوچک
+Last Name: نام خانوادگی
+Is public calendar: تقویم عمومی است
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: خطای پایگاه داده
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: افزودن تقویم از راه دور
+Edit Remote Calendar: ویرایش تقویم از راه دور
+Create Layer: ایجاد لایه
+Reload: بارگیری مجدد
+Required to View Remote Calendar: برای مشاهده تقویم از راه دور لازم است
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: نتایج واردات
+Events successfully imported: رویدادها با موفقیت وارد شدند
+Create a new layer to view this calendar.: برای مشاهده این تقویم یک لایه جدید ایجاد کنید.
+Errors: خطاها
+There was an error parsing the import file or no events were returned.: در تجزیه پرونده واردات خطایی رخ داد یا هیچ رویدادی برگشت داده نشد.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: فردا
+Yesterday: دیروز
+Day before yesterday: پریروز
+Next week: هفته بعد
+This week: این هفته
+Last week: هفته گذشته
+Week before last: هفته قبل از گذشته
+Next week and week after: هفته بعد و هفته بعد
+This week and next week: این هفته و هفته آینده
+Last week and this week: هفته گذشته و این هفته
+Last two weeks: دو هفته گذشته
+Next month: ماه بعد
+This month: این ماه
+Last month: ماه گذشته
+Month before last: ماه قبل از آخرین
+Next year: سال آینده
+This year: امسال
+Last year: پارسال
+Year before last: سال قبل از گذشته
+Next 14 days: 14 روز آینده
+Next 30 days: 30 روز آینده
+Next 60 days: 60 روز آینده
+Next 90 days: 90 روز آینده
+Next 180 days: 180 روز آینده
+Next 365 days: 365 روز آینده
+Invalid report id XXX.: شناسه گزارش نامعتبر است: "XXX".
+Unnamed Report: گزارش بدون نام
+Add Report: افزودن گزارش
+Edit Report: ویرایش گزارش
+Report name: گزارش نام
+User: کاربر
+Current User: کاربر فعلی
+Include link in menu: پیوند را در فهرست قرار دهید
+Include standard header/trailer: عنوان / پیش پرده استاندارد را وارد کنید
+Include previous/next links: پیوندهای قبلی / بعدی را وارد کنید
+Include empty dates: تاریخ های خالی را وارد کنید
+Date range: محدوده زمانی
+Template variables: متغیرهای الگو
+Page template: الگوی صفحه
+Day template: الگوی روز
+Event template: الگوی رویداد
+Are you sure you want to delete this report?: آیا مطمئن هستید که می خواهید این گزارش را حذف کنید؟
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: شناسه چنین گزارشی وجود ندارد: "XXX".
+Variable XXX not found.: XXX متغیر یافت نشد.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: ویرایش سربرگ سفارشی
+Edit Custom Script/Stylesheet: ویرایش اسکریپت / صفحه سبک سفارشی
+Edit Custom Trailer: ویرایش پیش پرده سفارشی
+
+########################################
+# Page: edit_user.php
+#
+Username: نام کاربری
+E-mail address: آدرس ایمیل
+Password: کلمه عبور
+again: از نو
+Disabled for demo: برای نسخه ی نمایشی غیرفعال شده است
+Are you sure you want to delete this user?: آیا مطمئن هستید که می خواهید این کاربر را حذف کنید؟
+Change Password: رمز عبور را تغییر دهید
+New Password: رمز عبور جدید
+Set Password: گذاشتن رمز عبور
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: حذف کاربران پشتیبانی نمی شود.
+The passwords were not identical.: رمزهای عبور یکسان نبودند.
+You have not entered a password.: شما رمز عبوری وارد نکرده اید.
+Username cannot be blank.: نام کاربری نمی تواند خالی باشد.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: مجاز نیست
+
+########################################
+# Page: export.php
+#
+Export: صادرات
+Export format: قالب صادرات
+Include all layers: همه لایه ها را شامل کنید
+Include deleted entries: ورودی های حذف شده را وارد کنید
+Export all dates: صادرات همه خرما
+Start date: تاریخ شروع
+End date: تاریخ پایان
+Modified since: از زمان اصلاح شده
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: قالب صادرات تعریف نشده یا نادرست است.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: هیچ کاربری مشخص نشده است.
+
+########################################
+# Page: groups.php
+#
+Add New Group: افزودن گروه جدید
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: گروه بی نام
+Add Group: افزودن گروه
+Edit Group: ویرایش گروه
+Group name: اسم گروه
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: شما باید یک نام گروه مشخص کنید
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: تازه کردن خودکار تقویم ها
+auto-refresh-help: وقتی فعال شود ، نمای روز ، نمای هفته ، نمای ماه و لیست صفحات تأیید نشده به طور خودکار بطور دوره ای خود را تازه می کنند.
+Auto-refresh time: زمان تازه سازی خودکار
+auto-refresh-time-help: اگر بازخوانی خودکار فعال باشد ، این زمان بین هر بازخوانی را مشخص می کند.
+Display days with events in bold in year view: روزها را با نمای پررنگ در نمای سال نمایش دهید
+Display weekends in week view: آخر هفته ها را در نمای هفته نمایش دهید
+Time interval: فاصله زمانی
+time-interval-help: مشخص می کند که بلوک های زمانی در نمای هفته و نمای روز چه مدت طول می کشد.
+Nonuser: تقویم های غیر استفاده کننده
+user-customize-color: مشخص می کند که آیا کاربران مجاز به تغییر طرح رنگ خود هستند.
+enable-gradient-help: برای زمینه های سلول از رنگ های شیب دار استفاده کنید.
+Manually entering color values: وارد کردن مقادیر رنگی به صورت دستی
+colors-help: همه رنگها باید در قالب "#RRGGBB" هگزادسیمال در جایی که "RR" مقدار هگزس قرمز است ، "GG" مقدار هگزس برای سبز و "BB" مقدار هگزا برای آبی مشخص شده است.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: گزارش اشکال
+Please include all the information below when reporting a bug.: لطفاً هنگام گزارش یک اشکال ، تمام اطلاعات زیر را وارد کنید.
+Also, please use English rather than XXX.: همچنین ، لطفاً به جای XXX از  انگلیسی استفاده کنید.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: مستندات WebCalendar
+Currently in English only.: در حال حاضر فقط به زبان انگلیسی است.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: افزودن / ویرایش مطالب تقویم
+Repeat Type: تکرار کنید
+For More Information...: برای اطلاعات بیشتر...
+Repeat End Date: تاریخ پایان را تکرار کنید
+Repeat Day: روز تکرار
+repeat-day-help: مشخص می کند که کدام روز از هفته باید رویداد تکرار شود.
+
+########################################
+# Page: help_import.php
+#
+Import: وارد كردن
+Palm Desktop: دسکتاپ نخل
+allow you to import entries from the Palm...: این فرم به شما امکان می دهد ورودی ها را از دفترچه Palm Desktop Date وارد کنید. این باید در فهرست Palm شما در datebook / datebook.dat در یک زیر شاخه به نام کاربری شما قرار گیرد.
+The following entries will not be imported: ورودی های زیر وارد نمی شوند:
+Entries older than the current date: ورودی های قدیمی تر از تاریخ فعلی
+Entries created in the Palm Desktop...: ورودی های ایجاد شده در Palm Desktop که HotSync'd نشده است
+Anything imported from Palm...: هر آنچه از Palm وارد شده باشد ، در هنگام واردات بعدی رونویسی می شود (مگر اینکه تاریخ رویداد گذشته باشد). بنابراین ، باید به روزرسانی ها در Palm Desktop انجام شود.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: این فرم 1.0 رویداد vCalendar (.vcs) را وارد می کند.
+The following formats have been tested: قالب های زیر آزمایش شده است:
+This form will import iCalendar (.ics) events.: این فرم رویدادهای iCalendar (.ics) را وارد می کند.
+Enabling: را قادر می سازد
+Overwrite Prior Import: وارد کردن قبلی را بازنویسی کنید
+will cause events imported previously...: باعث می شود رویدادهایی که قبلاً وارد شده اند و از همان UID به عنوان یک رویداد از پرونده واردات جدید استفاده شده اند ، به عنوان حذف شده علامت گذاری شوند. این باید اجازه دهد یک پرونده iCalendar به روز شده بدون ایجاد نسخه های کپی وارد شود.
+
+########################################
+# Page: help_index.php
+#
+Help Index: فهرست راهنما
+About WebCalendar: درباره WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: لایه ها برای نمایش رویدادهای سایر کاربران در تقویم خود مفید هستند. شما می توانید کاربر و رنگی که رویدادها در آن نمایش داده می شوند را مشخص کنید.
+Add/Edit/Delete: افزودن / ویرایش / حذف
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: با کلیک بر روی پیوند ویرایش لایه ها در قسمت مدیر در پایین صفحه ، به شما امکان افزودن / ویرایش / حذف لایه ها را می دهد.
+The text color of the new layer that will be displayed in your calendar.: رنگ متن لایه جدیدی که در تقویم شما نمایش داده می شود.
+Disabling: غیرفعال کردن
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: برای خاموش کردن لایه ها ، پیوند غیرفعال کردن لایه ها را در بخش مدیر در پایین صفحه فشار دهید.
+Duplicates: تکراری
+If checked, events that are duplicates of your events will be shown.: در صورت علامت گذاری ، رویدادهایی که تکرار رویدادهای شما هستند نشان داده می شوند.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: برای روشن کردن لایه ها ، پیوند Enable Layers را در قسمت مدیر در پایین صفحه فشار دهید.
+Source: منبع
+Specifies the user that you would like to see displayed in your calendar.: کاربری را مشخص می کند که می خواهید در تقویم شما نمایش داده شود.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: دسته پیش فرض
+default-category-help: دسته ای را تعیین می کند که یک رویداد جدید باید در آن پیش فرض باشد.
+When I am the boss: وقتی من رئیس هستم
+Email me event notification: اعلان رویداد را برای من ایمیل کنید
+email-boss-notifications-help: مشخص می کند که کارفرمایان ایمیل را به عنوان اعلان رویداد دریافت می کنند.
+I want to approve events: من می خواهم رویدادها را تأیید کنم
+boss-approve-event-help: مشخص می کند آیا رئیس موظف به تأیید رویدادهای اضافه شده توسط دستیاران است یا خیر.
+Subscribe/Publish: اشتراک / انتشار
+Allow remote publishing: اجازه انتشار از راه دور را بدهید
+allow-remote-publishing-help: مشخص می کند که آیا یک مشتری از راه دور iCal می تواند رویدادها را دوباره به WebCalendar منتشر کند
+remote-publishing-url-help: URL را برای استفاده در برنامه مشتری iCal برای اشتراک و انتشار مجدد در WebCalendar نشان می دهد.
+allow-remote-subscriptions-help: مشخص می کند که آیا کاربران از راه دور می توانند در تقویم شما مشترک شوند ، به آنها امکان می دهد رویدادهای شما را در یک برنامه مجهز به iCal (مانند iCal یا Mozilla Calendar اپل) مشاهده کنند.
+remote-subscriptions-url-help: URL را نشان می دهد که کاربران از راه دور برای اشتراک در تقویم شما باید استفاده کنند.
+Enable FreeBusy publishing: انتشار FreeBusy را فعال کنید
+freebusy-enabled-help: مشخص می کند که آیا با استفاده از استاندارد iCal FreeBusy می توان زمان موجود کاربر را به دست آورد.
+freebusy-url-help: URL دسترسی به لیست FreeBusy کاربر
+rss-feed-url-help: URL برای دسترسی به خوراک RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: امکان کنترل دقیق دسترسی و مجوزهای کاربر را فراهم می کند. درصورت تأیید توسط سرپرست ، کاربران همچنین می توانند به طور پیش فرض و به ازای هر فرد اجازه دهند.
+If disabled, this user cannot send you emails.: در صورت غیرفعال بودن ، این کاربر نمی تواند برای شما ایمیل ارسال کند.
+If disabled, this user cannot see you in the participants list.: اگر غیرفعال باشد ، این کاربر نمی تواند شما را در لیست شرکت کنندگان ببیند.
+If enabled, this user cannot view the details of any of your entries.: در صورت فعال بودن ، این کاربر نمی تواند جزئیات ورودی های شما را مشاهده کند.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): انتشار غیرفعال (مدیر)
+Publishing Disabled (User): انتشار غیرفعال (کاربر)
+
+########################################
+# Page: icons.php
+#
+Click to Select: برای انتخاب کلیک کنید
+Current Icons on Server: نمادهای فعلی در سرور
+
+########################################
+# Page: import.php
+#
+import from file: وارد کردن از پرونده
+Disabled: معلول
+Import format: قالب را وارد کنید
+Exclude private records: سوابق خصوصی را حذف کنید
+Repeated items are imported separately. Prior imports are not overwritten.: موارد تکراری جداگانه وارد می شوند. واردات قبلی رونویسی نمی شود.
+
+########################################
+# Page: import_handler.php
+#
+No file: هیچ فایل
+Error deleting palm events from webcalendar.: خطا در حذف رویدادهای کف دست از تقویم وب.
+Events from prior import marked as deleted: رویدادهای واردات قبلی به عنوان حذف شده علامت گذاری شده اند
+Conflicting events: رویدادهای متناقض
+The import file contained no data.: پرونده واردات حاوی داده ای نبود.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: آیا مطمئن هستید که می خواهید این لایه را حذف کنید؟
+Delete layer: حذف لایه
+Edit layer: لایه را ویرایش کنید
+Enable layers: فعال کردن لایه ها
+Layer: لایه
+Layers are currently disabled.: لایه ها در حال حاضر غیرفعال هستند.
+Layers are currently enabled.: لایه ها در حال حاضر فعال هستند.
+Click to modify layers settings for XXX: برای اصلاح تنظیمات لایه های تقویم XXX اینجا را کلیک کنید.
+Disable Layers: لایه ها را غیرفعال کنید
+Add layer: لایه را اضافه کنید
+Add Layer: لایه را اضافه کنید
+Edit Layer: لایه را ویرایش کنید
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: تنظیمات ترجیحی امکان پذیر نیست
+Invalid entry id.: شناسه ورود نامعتبر است.
+You cannot create a layer for yourself.: نمی توانید لایه ای برای خود ایجاد کنید.
+You can only create one layer for each user.: برای هر کاربر فقط می توانید یک لایه ایجاد کنید.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: تأیید / تأیید
+Approve Selected: تأیید انتخاب شده
+Check All: بررسی همه
+Emails Will Not Be Sent: ایمیل ها ارسال نمی شوند
+Reject Selected: رد کردن انتخاب شد
+Reject: رد کردن
+Uncheck All: همه موارد را از حالت انتخاب خارج کنید
+View this entry: مشاهده این مطلب
+No unapproved entries for XXX.: هیچ ورودی تأیید نشده ای برای "XXX" وجود ندارد.
+Unapproved Entries: مطالب تأیید نشده
+Approve this entry?: این ورودی تأیید می شود؟
+Reject this entry?: این ورودی رد شود؟
+Approve Selected entries?: ورودی های انتخاب شده تأیید می شود؟
+Reject Selected entries?: ورودی های انتخاب شده رد شود؟
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: باید یک رمز ورود و رمز ورود وارد کنید.
+Save login via cookies so I dont have to login next time.: ورود به سیستم را از طریق کوکی ذخیره کنید تا دفعه دیگر مجبور به ورود به سیستم نشوم
+Login: وارد شدن
+public: عمومی
+Access XXX calendar: به تقویم XXX دسترسی پیدا کنید
+cookies-note: توجه: این برنامه نیاز به فعال کردن کوکی ها دارد.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: نویسه های غیرقانونی در ورود به سیستم XXX.
+Invalid login: ورود نامعتبر است
+Activity login failure: نام کاربری: "XXX" ، IP: "YYY".
+Error XXX: خطا: "XXX".
+You have been logged out.: شما خارج شده اید.
+Access public calendar: به تقویم عمومی دسترسی پیدا کنید
+Not yet registered? Register here!: هنوز ثبتنام نشده است؟ اینجا ثبت نام کنید!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: تقویم غیر استفاده کننده وجود ندارد: "XXX".
+This Calendar is not Public.: این تقویم عمومی نیست.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: افزودن تقویم جدید غیر کاربر
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: ورود به سیستم باید مشخص شود.
+No such nonuser calendar: چنین تقویمی بدون استفاده کننده وجود ندارد
+
+########################################
+# Page: pref.php
+#
+Invalid theme: طرح زمینه نامعتبر است
+Save Preferences: تنظیمات برگزیده را ذخیره کنید
+Public Access calendar: تقویم دسترسی عمومی
+Modify Non User Calendar Preferences: تنظیمات تقویم غیر کاربر را تغییر دهید
+Return to My Preferences: بازگشت به تنظیمات برگزیده من
+Custom Scripts: اسکریپتهای سفارشی
+Timezone Selection: انتخاب منطقه زمانی
+Multiview: چند نمای:
+entry-interval-help: هنگام ویرایش زمان ورود ، فاصله دقیقه را تنظیم می کند
+Entry interval: فاصله ورود
+hour: ساعت
+minute: دقیقه
+theme-reload-help: به دلیل ذخیره سازی CSS ، ممکن است بارگیری مجدد صفحه مورد نیاز باشد
+Page may need to be reloaded for new Theme to take effect: برای اثربخشی شاید لازم باشد صفحه بارگیری شود
+display_byproxy-help: خالق واقعی را در صفحه view_entry نمایش دهید
+Display if created by Assistant: اگر توسط دستیار ایجاد شده باشد نمایش دهید
+allow-view-subscriptions-help: محدود کردن دسترسی از راه دور به ورودی های خصوصی یا محرمانه
+Allow remote viewing of: اجازه مشاهده از راه دور از
+entries: ورودی های
+
+########################################
+# Page: purge.php
+#
+Purging events for: رویدادهای تمیز کردن برای
+Finished: تمام شده
+Back: بازگشت
+Check box to delete ALL events for a user: برای حذف  ALL  رویدادها برای یک کاربر علامت بزنید
+Delete all events before: همه رویدادها را قبلاً حذف کنید
+Purge deleted only: پاکسازی فقط حذف شد
+Preview delete: پیش نمایش حذف
+Are you sure you want to delete events for: آیا مطمئن هستید که می خواهید رویدادها را برای آن حذف کنید
+Records deleted from XXX: سوابق از "XXX" حذف شد.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: آدرس ایمیل نمی تواند خالی باشد.
+Username already exists.: نام کاربری از قبل وجود دارد.
+Email address already exists.: آدرس ایمیل از قبل وجود دارد.
+New user via self-registration.: کاربر جدید از طریق ثبت نام خودکار.
+A new WebCalendar account has been set up for you.: یک حساب WebCalendar جدید برای شما راه اندازی شده است.
+Your username is XXX.: نام کاربری شما: "XXX" است.
+Your password is XXX.: رمز ورود شما: "XXX" است.
+Please visit XXX to log in and start using your account!: لطفاً برای ورود به سیستم و استفاده از حساب خود به "XXX" مراجعه کنید!
+You may change your password after logging in the first time.: پس از ورود به سیستم در اولین بار می توانید رمز ورود خود را تغییر دهید.
+If you received this email in error: اگر این ایمیل را به اشتباه دریافت کرده اید و برای حساب WebCalendar ثبت نام نکرده اید ، می توانید این اعلان را نادیده بگیرید یا با یک یادداشت کوتاه پاسخ دهید
+Administrator: مدیر
+Welcome: خوش آمدی
+New user via email.: کاربر جدید از طریق ایمیل.
+Registration: ثبت
+Welcome to WebCalendar: به وب تقویم خوش آمدید
+Your email should arrive shortly.: ایمیل شما باید به زودی ارسال شود.
+Return to Login screen: بازگشت به صفحه ورود
+Password (again): رمز عبور دوباره):
+Your account information will be emailed to you.: اطلاعات حساب شما برای شما از طریق ایمیل ارسال می شود.
+Submit: ارسال
+
+########################################
+# Page: reject_entry.php
+#
+Continue: ادامه هید
+(Your comments will be emailed to the other participants.): (نظرات شما برای سایر شرکت کنندگان از طریق ایمیل ارسال می شود.)
+XXX has rejected an appointment.: XXX قرار ملاقات را رد کرده است.
+Rejected by XXX.: توسط XXX رد شد.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: افزودن تقویم از راه دور جدید
+
+########################################
+# Page: report.php
+#
+This event is confidential.: این رویداد محرمانه است.
+(Private): (خصوصی)
+(cont.): (ادامه)
+Approved: تایید شده
+Deleted: حذف شده
+Rejected: رد شد
+Waiting for approval: منتظر پذیرفته شدن
+Unknown: ناشناخته
+Invalid report id.: شناسه گزارش نامعتبر است.
+Click here to manage reports for the Public Access calendar.: برای مدیریت گزارش های تقویم دسترسی عمومی اینجا را کلیک کنید.
+Add new report: گزارش جدید اضافه کنید
+Manage Reports: گزارش ها را مدیریت کنید
+
+########################################
+# Page: search.php
+#
+Advanced Search: جستجوی پیشرفته
+Search: جستجو کردن
+Keywords: کلید واژه ها
+Enter % for all entries: ٪ را برای همه ورودی ها وارد کنید
+Include: عبارتند از
+Filter by Date: فیلتر براساس تاریخ
+All Dates: همه تاریخ ها
+Past: گذشته
+Upcoming: آینده
+Range: دامنه
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: باید یک یا چند کلمه کلیدی جستجو وارد کنید.
+Search Results: نتایج جستجو
+match found: مطابقت پیدا شد
+matches found: کبریت پیدا شد
+No matches found: جستجو حاصلی دربرنداشت
+New Search: جستجوی جدید
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: اطلاعات زیر مشکلات احتمالی مربوط به نصب WebCalendar شما را ذکر می کند که می تواند برای ایمن سازی نصب شما اصلاح شود.
+For questions about WebCalendar security see the forums: برای س questionsال در مورد هرگونه مشکل امنیتی WebCalendar ، لطفاً از تالارهای گفتمان WebCalendar که در GitHub.com میزبانی شده اند استفاده کنید ؛<br>XXX
+View your current PHP settings: تنظیمات PHP فعلی خود را مشاهده کنید
+Security Issue: مشکل امنیتی
+Status: وضعیت
+Default admin user password: رمز ورود کاربر پیش فرض مدیر
+You should change the password of the default admin user.: شما باید رمز ورود کاربر پیش فرض مدیر را تغییر دهید.
+File permissions XXX: مجوزهای پرونده: XXX
+item XXX should not be writable: مورد زیر قابل نوشتن نیست:<br><tt> XXX</tt>
+File exists XXX: پرونده وجود دارد: "XXX"
+Because you have email disabled, you should remove this file.: از آنجا که ایمیل شما غیرفعال است ، باید این پرونده را حذف کنید.
+File location XXX: مکان پرونده: "XXX"
+remove XXX if not using: اگر از پرونده "XXX" استفاده نمی کنید ، باید آن را حذف کنید. یا حداقل آن را به یک فهرست جدید منتقل کنید.
+System Settings XXX: تنظیمات سیستم: "XXX"
+consider enabling UAC: ممکن است بخواهید فعال کردن کنترل دسترسی کاربر را برای تنظیم امتیازات کاربر در نظر بگیرید.
+recommend approving new public events: ما توصیه می کنیم که همه موارد ارسالی برای رویدادهای عمومی تأیید شوند.
+recommend using CAPTCHA: CAPTCHA برای محافظت مجدد از ارسال رویدادهای خودکار توصیه می شود.
+Database cache directory location: محل دایرکتوری حافظه پنهان پایگاه داده
+db cache should be inaccessable: حافظه پنهان پایگاه داده باید در دایرکتوری باشد که با URL قابل دسترسی نیست.
+PHP Settings XXX: تنظیمات PHP: "XXX"
+recommend setting XXX Off: تنظیمات پیشنهادی برای "XXX" خاموش است.
+recommend setting allow_url_fopen Off: وقتی تقویم های از راه دور فعال نیستند ، تنظیمات توصیه شده برای "allow_url_fopen" خاموش است.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: تقویم کاربر دیگری را مشاهده کنید
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: شما هیچ دسته ای اضافه نکرده اید.
+Set Category: دسته را تنظیم کنید
+Global Categories cannot be changed.: دسته های جهانی قابل تغییر نیستند.
+
+########################################
+# Page: upcoming.php
+#
+more: بیشتر
+
+########################################
+# Page: users.php
+#
+Remote Calendars: تقویم های از راه دور
+denotes administrative user: کاربر اداری را نشان می دهد
+Add New User: کاربر جدید اضافه کنید
+
+########################################
+# Page: usersel.php
+#
+form: فرم
+Reset: تنظیم مجدد
+
+########################################
+# Page: views.php
+#
+Add New View: نمای جدید اضافه کنید
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: نمای بی نام
+Add View: نمای اضافه کنید
+Edit View: ویرایش نمای
+View Name: مشاهده نام
+View Type: نوع نمایش
+Day by Time: روز به روز
+Week (Users horizontal): هفته (کاربران افقی)
+Week by Time: هفته به وقت
+Week (Users vertical): هفته (کاربران عمودی)
+Week (Timebar): هفته (نوار زمان)
+Month (Timebar): ماه (نوار زمان)
+Month (side by side): ماه (کنار هم)
+Month (on same calendar): ماه (در همان تقویم)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: شما باید نام نمای را مشخص کنید
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: هیچ کاربری برای این نمایش وجود ندارد.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: درصد کار را به روز کنید
+Completed: تکمیل شده
+Assistant mode: حالت دستیار
+Declined: نپذیرفتن
+Needs-Action: نیازها-اقدام
+by: توسط
+Percentage Complete: درصد کامل است
+External User: کاربر خارجی
+Update: به روز رسانی
+at: در
+comments: نظرات
+Show: نشان دادن
+Hide: پنهان شدن
+Approve/Confirm entry: تأیید / تأیید ورود
+Reject entry: ورود را رد کنید
+Set category: دسته بندی را تنظیم کنید
+Add to My Calendar: افزودن به تقویم من
+Copy entry: ورودی را کپی کنید
+This will delete this entry for all users.: با این کار این ورودی برای همه کاربران حذف می شود.
+Edit entry: ورودی را ویرایش کنید
+Edit repeating entry for all dates: ورود تکراری را برای همه تاریخ ها ویرایش کنید
+Delete repeating event for all dates: تکرار رویداد را برای همه تاریخ ها حذف کنید
+Edit entry for this date: ورودی را برای این تاریخ ویرایش کنید
+Delete entry only for this date: فقط ورودی را برای این تاریخ حذف کنید
+Delete entry from calendar of XXX: ورودی را از تقویم XXX حذف کنید
+This will delete the entry from your XXX calendar.: با این کار ورودی از تقویم XXX شما حذف می شود.
+boss: رئیس
+This will delete the entry from your boss calendar.: با این کار ورودی از تقویم رئیس شما حذف می شود.
+This will delete the entry from your calendar.: با این کار ورودی از تقویم شما حذف می شود.
+from your boss calendar: از تقویم رئیس خود
+Do you want to add this entry to your calendar?: آیا می خواهید این ورودی را به تقویم خود اضافه کنید؟
+This will add the entry to your calendar.: با این کار ورودی به تقویم شما اضافه می شود.
+Email all participants: ارسال ایمیل به همه شرکت کنندگان
+Hide activity log: پنهان کردن گزارش فعالیت
+Show activity log: نمایش گزارش فعالیت
+Export this entry to: صادرات این ورودی به
+Palm Pilot: خلبان نخل
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: برای اضافه کردن ورودی جدید ، روی سلول خالی دوبار کلیک کنید.
+
+########################################
+# Page: week_details.php
+#
+New Entry: ورودی جدید
+cont.: ادامه
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: تقویم کاربر دیگر
+Category Management: مدیریت دسته بندی
+Day View: نمای روز
+Edit Event: ویرایش رویداد
+Month View: نمای ماه
+Common Trailer: تریلر مشترک
+User Management: مدیریت کاربر
+Manage Views: نماها را مدیریت کنید
+Week View: نمای هفته
+Year View: نمای سال
+Invalid function id: شناسه عملکرد نامعتبر است
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: پرونده "settings.php" پیدا نشد.<br>لطفا "settings.php.orig" را در "settings.php" کپی کرده و برای سایت خود ویرایش کنید.
+Incomplete settings.php file...: پرونده "settings.php" ناقص ...
+Could not find XXX defined in...: "XXX" تعریف شده در پرونده "settings.php" شما پیدا نشد.
+You must define XXX in: شما باید "XXX" را در پرونده "settings.php" تعریف کنید.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: دسامبر
+Dec: دسامبر
+LANGUAGE DEFINED: زبان تعریف شده
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: خطا در اتصال به پایگاه داده: "XXX".
+db_type not defined.: نوع db تعریف نشده است.
+invalid db_type XXX: db_type "" XXX "نامعتبر است.
+Cache cleared from previous SQL!: حافظه پنهان از SQL قبلی پاک شد!
+Error executing query.: خطا در اجرای سeryال.
+Unfortunately, XXX is not implemented for YYY: متأسفانه ، "XXX" برای (YYY) اجرا نشده است.
+Unknown ODBC error.: خطای ODBC ناشناخته
+Error opening cache dir XXX.: خطا در باز کردن حافظه پنهان "XXX".
+delete: حذف
+Cache error Could not XXX file YYY.: خطای حافظه پنهان: پرونده XXX "YYY" امکان پذیر نیست.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: خطای مهلک
+Invalid data format for: قالب داده نامعتبر برای
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: خطا: تایپ نشده برای ثبت فعالیت
+This event is XXX.: این رویداد XXX است.
+Conf.: محرمانه
+exceeds limit of XXX events per day: بیش از حد مجاز XXX رویداد در روز است
+on: بر
+All Attendees: همه حاضران
+Busy: مشغول
+Tentative: آزمایشی
+Schedule an appointment for XXX.: قرار ملاقات برای XXX: YYY.
+date_select: __dd__ __ Month__ __yyyy__
+Event approved: رویداد تأیید شد
+Journal approved: مجله تأیید شده است
+Task approved: کار تأیید شد
+Attachment: پیوست
+Event created: رویداد ایجاد شد
+Journal created: ژورنال ایجاد شد
+Task created: کار ایجاد شد
+Event deleted: رویداد حذف شد
+Journal deleted: ژورنال حذف شد
+Task deleted: وظیفه حذف شد
+New user via email (self registration): کاربر جدید از طریق ایمیل (ثبت نام خودکار)
+New user (self registration): کاربر جدید (ثبت نام خود)
+Notification sent: اعلان ارسال شد
+Event rejected: رویداد رد شد
+Journal rejected: ژورنال رد شد
+Task rejected: کار رد شد
+Reminder sent: یادآوری ارسال شد
+Event updated: رویداد به روز شد
+Journal updated: ژورنال به روز شد
+Task updated: کار به روز شد
+Delete User: حذف کاربر
+WK: =
+TASKS: وظایف
+Task_Title: عنوان
+Due: ناشی از
+Task Name: نام کار
+Task Due Date: تاریخ انجام وظیفه
+You have XXX unapproved entries: شما XXX ورودی تأیید نشده دارید 
+Changes successfully saved: تغییرات با موفقیت ذخیره شد
+Event: رویداد
+Action: عمل
+Printer Friendly: قابل چاپ
+Generate printer-friendly version: نسخه مناسب چاپگر ایجاد کنید
+after: بعد از
+before: قبل از
+end: پایان
+start: شروع کنید
+View this event: مشاهده این رویداد
+View this task: مشاهده این کار
+January: ژانویه
+February: فوریه
+March: مارس
+April: آوریل
+May_: ممکن است
+June: ژوئن
+July: جولای
+August: مرداد
+September: سپتامبر
+October: اکتبر
+November: نوامبر
+Jan: جان
+Feb: فوریه
+Mar: مارس
+Apr: آوریل
+May: ممکن است
+Jun: ژوئن
+Jul: ژوئیه
+Aug: اوت
+Sep: سپتامبر
+Oct: مهر
+Nov: نوامبر
+SU: =
+MO: =
+TU: =
+WE: ما
+TH: =
+FR: =
+SA: =
+unknown-month: ماه ناشناخته
+First Quarter Moon: ربع اول ماه
+Full Moon: ماه کامل
+Last Quarter Moon: ربع آخر ماه
+New Moon: ماه نو
+Error TIME_SLOTS undefined!: خطا: TIME_SLOTS تعریف نشده است!
+The following error occurred: خطای زیر رخ داده است
+You are not authorized.: شما مجاز نیستید
+Add N hours to: N ساعت به اضافه کنید
+Subtract N hours from: N ساعت از کم کنید
+same as: مثل
+server time: زمان سرور
+Cannot read timezone file XXX.: فایل منطقه زمانی قابل خواندن نیست: XXX.
+Your current GMT offset is XXX hours.: جابجایی GMT ​​GMT شما XXX ساعت است.
+Unauthorized: غیرمجاز
+Error approving event XXX.: خطا در تأیید رویداد: XXX.
+Error deleting event XXX.: خطا در حذف رویداد: XXX.
+Error rejecting event XXX.: خطا در رد رویداد: XXX.
+Sunday: یکشنبه
+Monday: دوشنبه
+Tuesday: سهشنبه
+Wednesday: چهار شنبه
+Thursday: پنج شنبه
+Friday: جمعه
+Saturday: شنبه
+Sun: آفتاب
+Mon: دوشنبه
+Tue: سه شنبه
+Wed: چهارشنبه
+Thu: پنجشنبه
+Fri: جمعه
+Sat: شنبه
+unknown-weekday: روز هفته ناشناخته
+Invalid referring URL: URL ارجاع نامعتبر است
+
+########################################
+# Page: includes/help_list.php
+#
+Index: فهرست مطالب
+Documentation: مستندات
+Page: صفحه
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: تقویم من
+Add New Entry: ورودی جدید اضافه کنید
+Add New Task: افزودن کار جدید
+Logout: خروج
+Home: خانه
+Back to My Calendar: بازگشت به تقویم من
+Go to: قابل اعتماد و متخصص
+Manage calendar of: تقویم را مدیریت کنید
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: زبان مرورگر یافت نشد
+(not supported): (پشتیبانی نشده)
+Abkhazian: آبخازی
+Acoli: آکولی
+Adangme: آدانگمه
+Adyghe: آدیگه
+Afar: دور
+Afrihili: افریحیلی
+Afrikaans: آفریقایی
+Ainu: آینو
+Akan: آکان
+Akkadian: اکدی
+Albanian: آلبانیایی
+Aleut: آلوت
+Algonquian: آلگونکیان
+Altai (Southern): آلتایی (جنوبی)
+Amharic: امهری
+Angika: آنژیکا
+Apache: آپاچی
+Arabic (Algeria): عربی (الجزایر)
+Arabic (Bahrain): عربی (بحرین)
+Arabic (Egypt): عربی (مصر)
+Arabic (Iraq): عربی (عراق)
+Arabic (Jordan): عربی (اردن)
+Arabic (Kuwait): عربی (کویت)
+Arabic (Lebanon): عربی (لبنان)
+Arabic (Libya): عربی (لیبی)
+Arabic (Morocco): عربی (مراکش)
+Arabic (Oman): عربی (عمان)
+Arabic (Qatar): عربی (قطر)
+Arabic (Saudi Arabia): عربی (عربستان سعودی)
+Arabic (Syria): عربی (سوریه)
+Arabic (Tunisia): عربی (تونس)
+Arabic (U.A.E.): عربی (امارات متحده عربی)
+Arabic (Yemen): عربی (یمن)
+Arabic: عربی
+Aragonese: آراگونی
+Aramaic: آرامی
+Arapaho: آراپاهو
+Arawak: آراواک
+Armenian: ارمنی
+Assamese: آسامی
+Asturian: استوریایی
+Athapascan: آتاپاسکان
+Avaric: آواریک
+Avestan: اوستایی
+Awadhi: عوضی
+Aymara: آیمارا
+Azerbaijani: آذربایجانی
+Balinese: بالی
+Baluchi: بلوچی
+Bambara: بامبارا
+Bamileke: بامیلکه
+Banda: باند
+Basa: باسا
+Bashkir: باشکیری
+Basque: باسکایی
+Beja: بیجا
+Belarusian: بلاروسی
+Bemba: بمبا
+Bengali: بنگالی
+Bhojpuri: بوژپوری
+Bihari: بیهاری
+Bikol: بیکول
+Bislama: بیسلاما
+Blackfoot: پای سیاه
+Blin: بولین
+Bliss: سعادت
+Bosnian: بوسنیایی
+Braj: برجام
+Breton: برتون
+Buginese: بوگینزی
+Bulgarian: بلغاری
+Buriat: بوریات
+Burmese: برمه ای
+Caddo: کادو
+Catalan: کاتالان
+Cebuano: سبوانو
+Chagatai: چاگاتای
+Chamorro: چامورو
+Chechen: چچنی
+Cherokee: چروکی
+Cheyenne: چيان
+Chibcha: چيبچا
+Chichewa: چیچوا
+Chinese (Hong Kong): چینی (هنگ کنگ)
+Chinese (PRC): چینی (PRC)
+Chinese (Simplified/GB2312): چینی (ساده شده / GB2312) 
+Chinese (Singapore): چینی (سنگاپور)
+Chinese (Taiwan): چینی (تایوان)
+Chinese (Traditional/Big5): چینی (سنتی / Big5)
+Chinook: چینوک
+Chipewyan: چیپویان
+Choctaw: =
+Chuukese: چوکی
+Chuvash: چوواش
+Coptic: قبطی
+Cornish: کورنیش
+Corsican: کورسیایی
+Cree: کری
+Creek: نهر
+Croatian: کرواتی
+Czech: کشور چک
+Dakota: داکوتا
+Danish: دانمارکی
+Dargwa: دارگو
+Delaware: دلاور
+Dinka: دینکا
+Dogri: دگری
+Dogrib: دوغریب
+Duala: دوالا
+Dutch (Belgium): هلندی (بلژیک)
+Dutch: هلندی
+Dyula: دیولا
+Dzongkha: دزونگا
+Edo: ادو
+Efik: افیک
+Ekajuk: ایکاوک
+Elamite: ایلامی
+English (Australia): انگلیسی (استرالیا)
+English (Belize): انگلیسی (بلیز)
+English (Canada): انگلیسی (کانادا)
+English (Ireland): انگلیسی (ایرلند)
+English (Jamaica): انگلیسی (جامائیکا)
+English (New Zealand): انگلیسی (نیوزیلند)
+English (Philippines): انگلیسی (فیلیپین)
+English (South Africa): انگلیسی (آفریقای جنوبی)
+English (Trinidad & Tobago): انگلیسی (ترینیداد و توباگو)
+English (United Kingdom): انگلیسی (انگلستان)
+English (United States): ایالات متحده انگلیسی)
+English (Zimbabwe): انگلیسی (زیمبابوه)
+English: انگلیسی ما
+Erzya: ارزیا
+Esperanto: اسپرانتو
+Estonian: استونیایی
+Ewe: میش
+Ewondo: اووندو
+Fang: نیش
+Fanti: فنتی
+Faroese: فاروئی
+Fijian: فیجیان
+Filipino: فیلیپینی
+Finnish: فنلاندی
+Fon: فون
+French (Belgium): فرانسوی (بلژیک)
+French (Canada): فرانسوی (کانادا)
+French (France): فرانسوی (فرانسه)
+French (Luxembourg): فرانسوی (لوکزامبورگ)
+French (Monaco): فرانسوی (موناکو)
+French (Switzerland): فرانسوی (سوئیس)
+French: فرانسوی
+Frisian (Eastern): فریزی (شرقی)
+Frisian (Northern): فریزی (شمالی)
+Frisian (Western): فریزی (غربی)
+Frisian: فریزی
+Friulian: فریولیان
+Fulah: فولاه
+Ga: GA
+Galibi: گالیبی
+Galician: گالیسیایی
+Ganda: گاندا
+Gayo: گایو
+Gbaya: گابایا
+Geez: عزیز
+Georgian: گرجی
+German (Austria): آلمانی (اتریش)
+German (Germany): آلمانی (آلمان)
+German (Liechtenstein): آلمانی (لیختن اشتاین)
+German (Luxembourg): آلمانی (لوکزامبورگ)
+German (Standard): آلمانی (استاندارد)
+German (Switzerland): آلمانی (سوئیس)
+German: آلمانی
+Gilbertese: گیلبرتی
+Gondi: گوندی
+Gorontalo: گورونتالو
+Gothic: گوتیک
+Grebo: گربو
+Greek: یونانی
+Greenlandic: گرینلندی
+Guarani: گوارانی
+Gujarati: گجراتی
+Gwich&#39;in: گویچین
+Haida: هایدا
+Haitian (Creole): کریول هائیتی)
+Haitian: هائیتی
+Hausa: هاوسا
+Hawaiian: هاوایی
+Hebrew: عبری
+Herero: هیررو
+Hiligaynon: هیلگی
+Hindi: هندی
+Hiri Motu: هیری موتو
+Hittite: هیتی
+Hmong: همونگ
+Holo (Taiwanese): هولو (تایوانی)
+Hungarian: مجارستانی
+Hupa: هوپا
+Iban: ایبان
+Icelandic: ایسلندی
+Ido: انجام میدهم
+Igbo: ایبو
+Iloko: ایلوکو
+Indonesian: اندونزیایی
+Ingush: اینگوش
+Inuktitut: اینوکتیتوت
+Inupiaq: اینوپیاک
+Iranian: ایرانی
+Irish (Gaelic): ایرلندی (گالیکی)
+Irish: ایرلندی
+Iroquoian: ایروکوویان
+Italian (Switzerland): ایتالیایی (سوئیس)
+Italian: ایتالیایی
+Japanese: ژاپنی
+Javanese: جاوه ای
+Judeo-Arabic: یهودی-عربی
+Judeo-Persian: یهودی-فارسی
+Kabardian: کابردی
+Kabyle: کابیل
+Kachin: کاچین
+Kalaallisut: کالالیسوت
+Kalmyk: کالمیک
+Kamba: کامبا
+Kannada: کانادا
+Kanuri: کانوری
+Kara-Kalpak: کارا-کالپاک
+Karachay-Balkar: کراچی-بالکارایی
+Karelian: کارلیان
+Kashmiri: کشمیری
+Kashubian: کاشوبیایی
+Kawi: کاوی
+Kazakh: قزاقی
+Khasi: خویی
+Khmer (Central): خمر (مرکزی)
+Khmer: خمر
+Khotanese: خوتانی
+Kikuyu: کیکویو
+Kimbundu: کیمبوندو
+Kinyarwanda: کینارواندا
+Kirghiz: قرقیزستان
+Klingon: کلینگون
+Komi: کومی
+Kongo: کنگو
+Konkani: کنکانی
+Korean (Johab): کره ای (یوهاب)
+Korean (North): کره ای (شمالی)
+Korean (South): کره ای (جنوبی)
+Korean: کره ای
+Kosraean: کسرائیان
+Kpelle: کپل
+Kuanyama: کویاناما
+Kumyk: کومیک
+Kurdish: کردی
+Kutenai: کوتینای
+Kyrgyz: قرقیزستان
+Ladino: لادینو
+Lahnda: لاهندا
+Lamba: لامبا
+Lao: لائو
+Latin: لاتین
+Latvian: لتونیایی
+Lezghian: لزقیان
+Limburgan: لیمبورگ
+Lingala: لینگالا
+Lithuanian: لیتوانیایی
+Lojban: لوژبان
+Lozi: لوزی
+Luba-Katanga: لوبا-کاتانگا
+Luba-Lulua: لوبا-لولوا
+Luiseno: لوئیزنو
+Lunda: لوندا
+Luo: لو
+Lushai: لوشایی
+Luxembourghish: لوکزامبورگی
+Macedonian: مقدونی
+Madurese: مدور
+Magahi: مگاهی
+Maithili: میثیلی
+Makasar: ماكاسار
+Malagasy: مالاگازی
+Malay: مالاییایی
+Malayalam: مالایایی
+Maldivian: مالدیو
+Maltese: مالتیایی
+Manchu: منچو
+Mandar: ماندار
+Mandingo: ماندینگو
+Manipuri: مانیپوری
+Manx: مانکسی
+Maori: مائوری
+Mapuche: ماپوچ
+Marathi: مراتی
+Mari: ماری
+Marshallese: مارشالی
+Marwari: مرواری
+Masai: ماسایی
+Mayan: مایان
+Mende: مند
+Mi&#39;kmaq: میقماق
+Minangkabau: مینانگ کابائو
+Mirandese: میراندیسی
+Mohawk: موهاک
+Moksha: موکشا
+Moldavian: مولداوی
+Mongo: مانگو
+Mongolian: مغولی
+Montenegrin: مونته نگرو
+Moroccan: مراکشی
+Mossi: موسي
+Myanmar: میانمار
+Māori: مائوری
+N&#39;Ko: نکو
+Nauru: نائورو
+Navajo: ناواهو
+Ndebele (North): ندبله (شمال)
+Ndebele (South): ندبله (جنوب)
+Ndebele: ندبله
+Ndonga: ندونگا
+Neapolitan: ناپلی
+Nepali: نپالی
+Nias: نیاس
+Niuean: نیویان
+Nogai: نوگای
+Norse: نورس
+Norwegian (Bokmål): نروژی (بوکمال)
+Norwegian (Nynorsk): نروژی (نینورسی)
+Norwegian: نروژی
+Nyamwezi: نیاموزی
+Nyankole: نیانکول
+Nyoro: نیورو
+Nzima: نزیما
+Occitan: اکسیتانی
+Odia: اودیا
+Ojibwa: اوجیبوا
+Oriyia: اوریا
+Oromo: اورومو
+Osage: اوساژ
+Ossetic: اوسی
+Pahlavi: پهلوی
+Palauan: پالائو
+Pali: پالی
+Pampanga: پامپانگا
+Pangasinan: پانگاسینان
+Panjabi: پنجابی
+Papiamento: پاپیمان
+Pashto: پشتو
+Pedi: پدی
+Persian (Farsi): فارسی (فارسی)
+Persian (Iran): فارسی (ایران)
+Persian: فارسی
+Phoenician: فنیقی
+Pohnpeian: =
+Polish: لهستانی
+Portuguese: پرتغالی
+Portuguese/Brazil: پرتغالی / برزیل 
+Punjabi (India): پنجابی (هند)
+Punjabi (Pakistan): پنجابی (پاکستان)
+Punjabi: پنجابی
+Quechua: کوچو
+Rajasthani: راجستانی
+Rapanui: راپانویی
+Rarotongan: راروتونگان
+Rhaeto-Romanic: =
+Romanian: رومانیایی
+Romansh: رومانشی
+Romany: رومیایی
+Rundi: رندی
+Russian (Moldavia: روسی (مولداوی)
+Russian (Republic of Moldova): روسیه (جمهوری مولداوی)
+Russian: روسی
+Sami (Inari): سامی (ایناری)
+Sami (Lappish): سامی (لاپیش)
+Sami (Lule): سامی (لول)
+Sami (Northern): سامی (شمالی)
+Sami (Skolt): سامی (اسکولت)
+Sami (Southern): سامی (جنوبی)
+Sami: سامی
+Samoan: ساموایی
+Samoli: سمولی
+Sandawe: سانداوه
+Sango: سانگو
+Sanskrit: سانسکریت
+Santali: سانتالی
+Sardinian: ساردینی
+Sasak: ساساک
+Scots (Gaelic): اسکاتلندی (گالیکی)
+Selkup: سلکوپ
+Serbian (Upper): صربی (بالا)
+Serbian: صربی
+Serer: سرر
+Sesotho: سسوتو
+Shan: شان
+Shona: شونا
+Sichuan Yi: سیچوان یی
+Sicilian: سیسیلی
+Sindhi: سندی
+Sinhala: سینهالی
+Slavic: اسلاوی
+Slovak: اسلواکیایی
+Slovenian: اسلوونیایی
+Sogdian: سغدیان
+Somali: سومالیایی
+Somani: سومانی
+Songhai: سونگهای
+Soninke: سونینکه
+Sorbian (Lower): سوربیایی (پایین)
+Sorbian (Upper): سوربیایی (بالا)
+Sorbian: سوربیایی
+Sotho: سوثو
+Spanish (Argentina): اسپانیایی (آرژانتین)
+Spanish (Bolivia): اسپانیایی (بولیوی)
+Spanish (Chile): اسپانیایی (شیلی)
+Spanish (Colombia): اسپانیایی (کلمبیا)
+Spanish (Costa Rica): اسپانیایی (کاستاریکا)
+Spanish (Dominican Republic): اسپانیایی (جمهوری دومنیکن)
+Spanish (Ecuador): اسپانیایی (اکوادور)
+Spanish (El Salvador): اسپانیایی (السالوادور)
+Spanish (Guatemala): اسپانیایی (گواتمالا)
+Spanish (Honduras): اسپانیایی (هندوراس)
+Spanish (Mexico): اسپانیایی (مکزیک)
+Spanish (Nicaragua): اسپانیایی (نیکاراگوئه)
+Spanish (Panama): اسپانیایی (پاناما)
+Spanish (Paraguay): اسپانیایی (پاراگوئه)
+Spanish (Peru): اسپانیایی (پرو)
+Spanish (Puerto Rico): اسپانیایی (پورتوریکو)
+Spanish (Spain): اسپانیایی (اسپانیا)
+Spanish (Uruguay): اسپانیایی (اروگوئه)
+Spanish (Venezuela): اسپانیایی (ونزوئلا)
+Spanish: اسپانیایی
+Sranan Tongo: =
+Sukuma: سوكوما
+Sumerian: سومری
+Sundanese: سوندانی
+Susu: سوسو
+Sutu: سو توو
+Swahili: سواحیلی
+Swati: سواتی
+Swedish (Finland): سوئدی (فنلاند)
+Swedish (Sweden): سوئدی (سوئد)
+Swedish: سوئدی
+Syriac: سریانی
+Tagalog: تاگالوگ
+Tahitian: تاهیتی
+Tai: تای
+Taiwan: تایوان
+Tajik: تاجیکی
+Tamashek: تامشک
+Tamil: تامیل
+Tatar: تاتار
+Telugu: تلوگو
+Tereno: ترنو
+Tetum: تتوم
+Thai: تایلندی
+Tibetan: تبتی
+Tigre: تیگر
+Tigrinya: تیگرینیا
+Timne: زمان
+Tlingit: تلینگیت
+Tok Pisin: توک پیسین
+Tokelau: توكلائو
+Tonga (Nytmhasa): تونگا (Nytmhasa)
+Tonga (Tonga Islands): تونگا (جزایر تونگا)
+Tonga: تونگا
+Tsimshian: تسیمشیان
+Tsonga: تسونگا
+Tswana: تسوانا
+Tumbuka: تومبوکا
+Turkish: ترکی
+Turkmen: ترکمن
+Tuvinian: تووینی
+Twi: توئی
+Udmurt: اودمورت
+Ugaritic: اوگاریتیک
+Ukrainian: اوکراینی
+Umbundu: امبوندو
+Urdu: اردو
+Uyghur: اویغور
+Uzbek: ازبکی
+Vai: وای
+Venda: وندا
+Vietnamese: ویتنامی
+Volapük: ولاکی
+Votic: عاشقانه
+Wakashan: واكاشان
+Walloon: والون
+Waray: وایری
+Washo: واشو
+Welsh: ولزی
+Wolaitta: ولایتا
+Wolof: ولوف
+Xhosa: خوسا
+Yakut: یاکوت
+Yao: یائو
+Yapese: یاپسی
+Yiddish: ییدیش
+Yorùbá: یوربا
+Yupik: یوپیک
+Zande: زنده
+Zapotec: زاپوتک
+Zaza: زازا
+Zenaga: زناگا
+Zhuang: ژوانگ
+Zulu: زولو
+Browser-defined: مرورگر تعریف شده است
+event: رویداد
+journal: مجله
+0: 0                                                  
+1: 1                                                  
+2: 2                                                  
+3: 3                                                  
+4: 4                                                  
+5: 5                                                  
+6: 6                                                  
+7: 7                                                  
+8: 8                                                  
+9: 9                                                  
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: ورود کاربر نامعتبر است
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: رمز عبور نادرست
+no such user: چنین کاربری وجود ندارد
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: حساب غیرفعال است
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: فاصله
+Months: ماه ها
+Month Days: روزهای ماه
+Days: روزها
+Weeks: هفته ها
+Position: موقعیت
+Until: تا زمان
+Count: شمردن
+Inclusion Dates: تاریخ های ورود
+Exclusion Dates: تاریخهای استثنا
+Event Imported: رویداد وارد شد
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: بایت
+kb: کیلوبایت
+Mb: MB
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: اطلاع
+authenticate: خطای SMTP: تأیید اعتبار امکان پذیر نیست
+connect_host: خطای SMTP: اتصال به میزبان SMTP امکان پذیر نیست:
+data_not_accepted: خطای SMTP: داده پذیرفته نیست
+encoding: رمزگذاری ناشناخته:
+execute: اجرا نمی شود:
+file_access: دسترسی به پرونده امکان پذیر نیست:
+file_open: خطای پرونده نمی تواند پرونده را باز کند:
+from_failed: آدرس زیر از کار افتاد:
+instantiate: عملکرد ایمیل فوری نیست
+mailer_not_supported: پست الکترونیکی پشتیبانی نمی شود
+provide_address: شما باید حداقل یک آدرس ایمیل گیرنده ارائه دهید.
+recipients_failed: خطای SMTP: گیرندگان زیر ناموفق بودند:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: شخصیت های دیده شده را به صورت گرافیکی وارد کنید
+Enter the correct letters and numbers...: حروف و اعداد صحیح تصویر را در جعبه متن وارد کنید. این تست کوچک به عنوان محدودیت دسترسی در برابر ربات های مخرب عمل می کند. اگر خواندن این گرافیک بسیار دشوار است ، صفحه را بارگیری کنید
+Challenge/Response: چالش / پاسخ
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: تاریخ و زمان این ورود تغییر می کند؟
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: شما شرح مختصری وارد نکرده اید
+time prior to work hours...: زمان قبل از ساعت کار ...
+Invalid Event Date: تاریخ رویداد نامعتبر است
+Please add a participant: لطفاً یک شرکت کننده اضافه کنید 
+Invalid Date: تاریخ نامعتبر است
+You have not entered a valid time of day: شما ساعت معتبری از روز را وارد نکرده اید. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: شناسه تقویم نمی تواند خالی باشد. 
+First and last names cannot both be blank.: نام و نام خانوادگی هر دو نمی توانند خالی باشند. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: رنگ نامعتبر است
+Color format should be RRGGBB.: قالب رنگ باید #RRGGBB باشد. 
+URL cannot be blank.: URL نمی تواند خالی باشد.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: نوع پرونده با قالب واردات مطابقت ندارد 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: رنگ پس زمینه سند نامعتبر است.
+Invalid color for document title.: رنگ عنوان نامعتبر است.
+Invalid color for table cell background.: رنگ پس زمینه سلول جدول نامعتبر است.
+Invalid color for table cell background for today.: رنگ پس زمینه سلول جدول برای امروز نامعتبر است.
+Invalid work hours.: ساعت کاری نامعتبر است.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL سرور باید با بریدگی (/) به پایان برسد.
+Invalid color for table grid.: رنگ برای شبکه جدول نامعتبر است.
+Invalid color for event popup background.: رنگ پس زمینه پنجره رویداد نامعتبر است.
+Invalid color for event popup text.: رنگ متن معتبر برای رویداد نامعتبر است.
+Invalid color for table header text.: رنگ متن معتبر جدول نیست.
+Invalid color for table header background.: رنگ نامعتبر برای پس زمینه هدر جدول.
+Server URL is required.: URL سرور لازم است.
+Invalid Color: رنگ نامعتبر است
+Database Name: نام پایگاه داده
+Full Path (no backslashes): مسیر کامل (بدون بازگشت عکس) 
+The password contains illegal characters.: رمز ورود دارای نویسه های غیرقانونی است.
+Error you must specify a Single-User Login: خطا: شما باید ورود به سیستم یک کاربر را مشخص کنید
+Could not find XXX.: XXX یافت نشد.
+Could not find XXX in DOM.: XXX در DOM پیدا نشد.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: این هفته
+This Month: این ماه
+This Year: امسال
+Exit: خروج
+Add New Event: رویداد جدید اضافه کنید
+Delete Entries: ورودی ها را حذف کنید
+My Views: دیدگاه های من
+Manage Calendar of: تقویم را مدیریت کنید
+My Reports: گزارش های من
+My Profile: پروفایل من
+Public Calendar: تقویم عمومی
+Unapproved Events: رویدادهای تأیید نشده
+User Manager: مدیر کاربر
+Help Contents: مطالب راهنما
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: دایرکتوری حافظه پنهان پایگاه داده
+Create New: ایجاد جدید
+Failure Reason: دلیل عدم موفقیت:
+You must manually create database: شما باید به صورت دستی پایگاه داده ایجاد کنید.
+Single-User: کاربر تک
+Test Settings: تنظیمات آزمون
+Timezone Conversion Successful: تبدیل منطقه زمانی موفقیت آمیز است
+WebCalendar Installation Wizard Step XXX: جادوگر نصب WebCalendar مرحله XXX
+Password Accepted: رمز عبور پذیرفته شد
+Successful Login: ورود موفقیت آمیز
+Password Incorrect: رمز عبور نادرست است
+Invalid Login: ورود نامعتبر است
+Display Errors: نمایش خطاها
+File Uploads: بارگذاری پرونده
+Allow URL fopen: اجازه باز کردن URL (فقط در صورت استفاده از تقویم از راه دور)
+Safe Mode: وضعیت ایمن
+Safe Mode Allowed Vars: Vars مجاز به حالت ایمن (فقط در صورت روشن بودن حالت Safe TZ لازم است)
+GD: GD (برای پس زمینه های تصویر گرادیان لازم است)
+Passwords do not match!: رمزهای ورود مطابقت ندارند!
+Unable to write password to settings.php file: نوشتن رمز ورود به پرونده "settings.php" امکان پذیر نیست.
+Password Updated: پسورد آپدیت شد
+Password has been set: گذرواژه تنظیم شده است
+Connection Successful...: اتصال موفقیت آمیز است لطفا برای ادامه نصب به صفحه بعدی بروید.
+Correct your entries or click the Create New...: برای ادامه نصب ، ورودی های خود را اصلاح کنید یا روی دکمه  ایجاد جدید کلیک کنید.
+Correct your entries and try again.: ورودی های خود را اصلاح کنید و دوباره امتحان کنید.
+XXX does not exist: XXX وجود ندارد
+XXX is not writable: XXX قابل نوشتن نیست
+Error Converting Timezone: خطا در تبدیل منطقه زمانی
+Error Unable to write to file XXX.: خطا نوشتن در پرونده XXX امکان پذیر نیست.
+Please change the file permissions of this file.: لطفاً مجوزهای پرونده را تغییر دهید.
+Please change includes dir permission: لطفاً اجازه پرونده در فهرست "شامل" خود را تغییر دهید تا اجازه نوشتن توسط کاربران دیگر را بدهید.
+Your settings have been saved.: تنظیمات شما ذخیره شده است.
+OFF: خاموش
+ON: بر
+WebCalendar Setup Wizard: جادوگر راه اندازی WebCalendar
+This installation wizard will guide you...: این جادوگر نصب شما را در راه اندازی نصب اولیه WebCalendar راهنمایی می کند.<br>برای راهنمایی و عیب یابی به:<br>
+System Administrators Guide: راهنمای مدیر سیستم
+Frequently Asked Questions: سوالات متداول
+FAQ: سالات متداول
+Troubleshooting: عیب یابی
+Getting Help: کمک گرفتن
+Upgrading Guide: راهنمای به روزرسانی
+User Supported Wiki: ویکی پشتیبانی شده توسط کاربر
+PHP Version Check: بررسی نسخه PHP
+Check to see if PHP 7.1.0 or greater is installed.: بررسی کنید که آیا PHP 7.1.0 یا بالاتر نصب شده است.
+PHP version: نسخه PHP
+PHP Settings: تنظیمات PHP
+Detailed PHP Info: اطلاعات دقیق PHP
+settings.php Status: "settings.php" وضعیت
+Session Check: بررسی جلسه
+To test the proper operation of sessions...: برای آزمایش عملکرد صحیح جلسات ، این صفحه را دوباره بارگیری کنید. هر بار باید افزایش شمارنده جلسه را مشاهده کنید.
+SESSION COUNTER: جلسه نشست
+The file permissions of settings.php are set...: مجوزهای پرونده "settings.php" طوری تنظیم شده اند که نصب کننده اجازه اصلاح آن را نداشته باشد. لطفاً برای ادامه مجوزهای پرونده زیر را تغییر دهید
+The file permissions of the includes directory are set...: مجوزهای پرونده در فهرست شامل تنظیم شده است تا نصب کننده اجازه ایجاد پرونده جدید را نداشته باشد. لطفاً برای ادامه مجوزهای فهرست زیر را تغییر دهید
+Your settings.php file appears to be valid.: به نظر می رسد پرونده "settings.php" شما معتبر است.
+Configuration Wizard Password: رمز عبور جادوگر پیکربندی
+Create Settings File Password: تنظیمات گذرواژه پرونده را ایجاد کنید
+db setup directions...: در این بخش اتصال به سرور پایگاه داده خود را راه اندازی و آزمایش می کنید. اطلاعات حساب ارائه شده باید دارای مجوزهای کامل برای ایجاد پایگاه داده ، جداول و کاربران باشد. اگر این امکان وجود ندارد یا دسترسی به پایگاه داده شما محدود است ، باید پایگاه داده خود را به صورت دستی پیکربندی کنید.
+Database Status: وضعیت پایگاه داده
+Supported databases for your PHP installation: پایگاه داده پشتیبانی شده برای نصب PHP شما
+Your current database settings are able to access the database.: تنظیمات پایگاه داده فعلی شما قادر به دسترسی به پایگاه داده است.
+Please Test Settings: لطفاً تنظیمات را امتحان کنید
+Your current database settings are not able...: تنظیمات پایگاه داده فعلی شما قادر به دسترسی به پایگاه داده نیستند یا هنوز آزمایش نشده اند.
+Database Settings: تنظیمات پایگاه داده
+Database Type: نوع پایگاه داده
+Server: سرور
+Connection Persistence: پایداری اتصال
+All your database tables appear to be up...: به نظر می رسد تمام جداول پایگاه داده شما به روز هستند. می توانید به صفحه بعدی بروید و تنظیمات WebCalendar خود را تکمیل کنید.
+This appears to be a new installation...: به نظر می رسد این یک نصب جدید است. اگر این درست نیست ، لطفاً به صفحه قبلی برگردید و تنظیمات خود را اصلاح کنید.
+This appears to be an upgrade...: به نظر می رسد این یک نسخه ارتقا یافته از نسخه & nbsp؛ XXX & nbsp؛ به & nbsp؛ YYY باشد.
+The database requires some data input...: پایگاه داده به برخی از داده های ورودی نیاز دارد تا برای تکمیل نسخه به روز رسانی ، روی پایگاه داده به روز رسانی کلیک کنید.
+In this section we will perform...: در این بخش ما تغییرات را انجام خواهیم داد تا پایگاه داده شما به سطح مورد نیاز برسد. اگر از یک پایگاه داده کاملاً پشتیبانی شده استفاده می کنید ، این مرحله به صورت خودکار برای شما انجام می شود. در غیر این صورت ، SQL مورد نیاز را می توان نمایش داد و باید بتوانید آن را در پنجره جستجوی سرور پایگاه داده خود برش داده و جایگذاری کنید.
+No database actions are required.: نیازی به اقدامات پایگاه داده نیست.
+The following database actions are required: اقدامات پایگاه داده زیر لازم است
+ODBC Underlying Database: بانک اطلاعاتی بنیادی ODBC:
+Automatic installation not supported: نصب خودکار برای نوع پایگاه داده شما به طور کامل اجرا نشده است. شما باید جداول مورد نیاز را با استفاده از SQL ارائه شده به صورت دستی ایجاد کنید. لطفاً برای ادامه  نمایش SQL  کلیک کنید. برش داده و در پنجره جستجوی پایگاه داده خود جای گذاری کنید.
+This may take several minutes to complete: انجام این کار ممکن است چند دقیقه طول بکشد.
+Install Database: پایگاه داده را نصب کنید
+Update Database: پایگاه داده را به روز کنید
+Display Required SQL: نمایش SQL مورد نیاز
+Return to previous page after processing SQL.: پس از پردازش دستی این SQL ، باید به صفحه قبلی برگردید و پایگاه داده خود را دوباره آزمایش کنید تا اسکریپت بتواند تغییرات را تشخیص دهد.
+This is the final step in setting up your WebCalendar Installation.: این مرحله آخر در تنظیم نصب WebCalendar است.
+Timezone Conversion: تبدیل منطقه زمانی
+It appears that you have NOT converted...: به نظر می رسد که شما داده های رویداد WebCalendar موجود خود را به GMT تبدیل نکرده اید. اگر دارید ، می توانید این اعلان را نادیده بگیرید و کار تبدیل را ادامه ندهید. اگر این نصب جدید است ، ممکن است این اعلان را نیز نادیده بگیرید.
+Convert Data to GMT: تبدیل داده به GMT
+Application Settings: تنظیمات برنامه
+HTTP-based authentication was not detected...: احراز هویت مبتنی بر HTTP شناسایی نشد. اگر می خواهید "وب سرور" را از گزینه های "تأیید اعتبار کاربر" در زیر انتخاب کنید ، باید وب سرور خود را دوباره پیکربندی کنید.
+HTTP-based authentication was detected...: احراز هویت مبتنی بر HTTP شناسایی شد. تأیید اعتبار کاربر توسط سرور وب شما انجام می شود. شما باید "وب سرور" را از لیست گزینه های "تأیید اعتبار کاربر" در زیر انتخاب کنید.
+Create Default Admin Account: حساب مدیر پیش فرض ایجاد کنید
+(Admin Account Not Found): (حساب مدیر یافت نشد)
+User Authentication: احراز هویت کاربر
+Web-based via WebCalendar (default): مبتنی بر وب از طریق WebCalendar (پیش فرض)
+Web Server (not detected): وب سرور (شناسایی نشده است)
+Web Server (detected): وب سرور (شناسایی شده)
+None (Single-User): هیچ (یک کاربر)
+Read-Only: فقط خواندنی
+Environment: محیط
+Production: تولید
+Development: توسعه
+Save Settings: تنظیمات را ذخیره کن
+Launch WebCalendar: WebCalendar را راه اندازی کنید
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: خطا در به روزرسانی جدول "XXX": YYY.
+Conversion Successful: تبدیل موفقیت آمیز
+Perl script required: نسخه قبلی WebCalendar برای تبدیل داده های شما به اجرای یک اسکریپت PERL نیاز دارد. لطفا /tools/upgrade_to_0.9.7.pl را اجرا کنید سپس برای ادامه به این صفحه برگردید.
+previous version requires updating several tables: نسخه قبلی WebCalendar شما نیاز به به روزرسانی چندین جدول پایگاه داده دارد.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: بدون پیش نمایش در دسترس است
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: خطا در اتصال به پایگاه داده
+Include Path: مسیر را وارد کنید
+Deleting events for: در حال حذف رویدادها برای
+Importing events for: وارد کردن رویدادها برای
+No data returned from: هیچ اطلاعاتی از
+for non-user calendar: برای تقویم غیر کاربر
+No Remote Calendars found: تقویم از راه دور یافت نشد
+Remote Calendars not enabled: تقویم از راه دور فعال نیست
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: شناسه رویداد پیدا نشد
+could not find event id XXX in database.: شناسه رویداد XXX را در پایگاه داده پیدا نکرد.
+task: وظیفه
+This is a reminder for the XXX detailed below.: این یک یادآوری برای XXX است که در زیر شرح داده شده است.
+Pecentage Complete: املاک کامل
+Reminder: یادآور
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: اقدام پشتیبانی نشده: XXX.
+No event id specified.: شناسه رویدادی مشخص نشده است.
+Not authorized (not admin).: مجاز نیست (مدیر نیست).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: بررسی رویدادهای XXX از تاریخ YYY تا تاریخ ZZZ.
+Found XXX events in time range.: XXX رویداد در محدوده زمانی پیدا شد.
+Event id=XXX YYY at ZZZ on AAA.: شناسه رویداد = XXX "YYY" در ZZZ در AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: به کاربر XXX امکان مشاهده تقویم کاربر دیگر را می دهد.
+Error Email reminders disabled for user XXX.: خطا: یادآوری های ایمیل برای کاربر "XXX" غیرفعال شده است.
+Number of site_extras XXX.: تعداد اضافات سایت: XXX.
+Reminder set for event.: یادآوری برای رویداد تنظیم شده است.
+Mins Before XXX.: موارد قبلی: XXX.
+Event time is XXX.: زمان رویداد: XXX.
+Remind time is XXX.: زمان یادآوری: XXX.
+Reminders for user XXX, login YYY.: یادآوری های کاربر "XXX" ، "YYY" وارد سیستم شوید.
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: برای کاربر "XXX" تأیید نمی شود.
+Event id=XXX YYY already sent.: شناسه رویداد = XXX "YYY" قبلاً ارسال شده است.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: برای حالت تک کاربر نیازی به ورود نیست.
+No login required for HTTP authentication.: برای تأیید اعتبار HTTP نیازی به ورود نیست.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: نویسه های نامعتبر در ورود به سیستم
+Username XXX does not exist.: نام کاربری "XXX" وجود ندارد.
+You cannot remove admin rights from yourself!: شما نمی توانید حقوق مدیر را از خود حذف کنید!
+Unknown error saving user: خطای ناشناخته در ذخیره کاربر.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: هیچ شرکت کننده ای برای شناسه رویداد پیدا نشد: XXX.
+Db error Could not find event id XXX.: خطای Db: شناسه رویداد XXX یافت نشد. 
+Error Could not find event id XXX in database.: خطا: شناسه رویداد XXX در پایگاه داده یافت نشد. 
