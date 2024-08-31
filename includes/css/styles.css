@@ -1186,6 +1186,18 @@ table#prevmonth {
 #viewt table.timebar {
   width:100%;
 }
+#viewt table.timebar th {
+  width:10%;
+}
+#ViewT div table th {
+  width:10%;
+}
+#ViewT div table td {
+  width:90%;
+}
+#viewt table.timebar dh {
+  width:90%;
+}
 #viewt td.timebar {
   width:90%;
   background-color:#FFF;
