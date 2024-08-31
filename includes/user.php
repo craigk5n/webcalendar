@@ -490,7 +490,7 @@ function user_get_users ( $publicOnly=false ) {
     "ORDER BY $order1 cal_login" );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( strlen ( $row[1] ) && strlen ( $row[2] ) )
+      if ( strlen($row[1] ?? '') && strlen($row[2] ?? '') )
         $fullname = "$row[2] $row[1]";
       else
         $fullname = $row[0];
