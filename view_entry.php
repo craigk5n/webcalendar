@@ -755,11 +755,13 @@ if ( access_is_enabled() )
 $can_email = access_user_calendar ( 'email', $templogin );
 
 echo '
-  <strike>' . ( strlen ( $tempemail ) > 0 && $can_email != 'N'
-? '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
- . $tempfullname . '</a>'
-: $tempfullname ) . '</strike> (' . translate ( 'Rejected' ) . ')<br>';
-}
+  <del>'
+  . ( strlen ( $tempemail ) > 0 && $can_email !== 'N'
+    ? '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
+      . $tempfullname . '</a>'
+    : $tempfullname )
+  . '</del> (' . translate ( 'Rejected' ) . ')<br>';
+  }
 }
 echo '</div><div class="w-100"></div></div>' . "\n";
 } // end participants
