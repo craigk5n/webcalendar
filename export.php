@@ -19,7 +19,7 @@ load_user_categories();
 
 $datem = date ( 'm' );
 $dateY = date ( 'Y' );
-$yearAgo = time () - 365 * 24 * 3600;
+$yearAgo = time () - 31536000; // 365 * 24 * 3600;
 $dateYearAgo = date('Ymd', $yearAgo);
 $selected = ' selected ';
 

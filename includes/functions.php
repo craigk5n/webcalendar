@@ -145,7 +145,7 @@ function add_duration ( $time, $duration ) {
   $minutes =
     intval ( $time / 10000 ) * 60 + ( ( $time / 100 ) % 100 ) + $duration;
   // If we ran past 240000, then roll back over to 000000.
-  $minutes %= ( 24 * 60 );
+  $minutes %= 1440;
 
   return sprintf ( "%d%02d00", $minutes / 60, $minutes % 60 );
 }
@@ -2581,9 +2581,9 @@ function get_groups($user, $includeUserlist=false)
       $res = dbi_execute($sql, [$groups[$i]['cal_group_id']]);
       while ($row = dbi_fetch_row($res)) {
         if (isset($users_by_name[$row[0]])){
-            // It is possible some users assigned to this group may not exist, 
-            // so we skip those that don't. For example, if users are fetched 
-            // from an external source via user-app-*.php, and one of those 
+            // It is possible some users assigned to this group may not exist,
+            // so we skip those that don't. For example, if users are fetched
+            // from an external source via user-app-*.php, and one of those
             // users is deleted externally.
             $users[] = $users_by_name[$row[0]];
         }
@@ -3426,8 +3426,8 @@ function getReminders ( $id, $display = false ) {
         $d = $h = $minutes = 0;
         if ( $reminder['offset'] > 0 ) {
           $minutes = $reminder['offset'];
-          $d = intval ( $minutes / (24*60) );
-          $minutes -= ( $d * (24*60) );
+          $d = intval ( $minutes / 1440 ); // (24*&60)
+          $minutes -= ( $d * 1440 ); // (24*60)
           $h = intval ( $minutes / 60 );
           $minutes -= ( $h * 60 );
         }
