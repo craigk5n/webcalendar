@@ -55,7 +55,7 @@ $prevdate = date ( 'Ymd', $now - 86400 );
 $matrixStr = daily_matrix ( $date, $participants );
 $partStr = implode ( ',', $participants );
 $trailerStr = print_trailer();
-$wday = strftime ( '%w', mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
+$wday = date('w', mktime(0, 0, 0, $thismonth, $thisday, $thisyear));
 
 $nextStr = translate ( 'Next' );
 $previousStr = translate ( 'Previous' );
