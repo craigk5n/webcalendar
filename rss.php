@@ -66,7 +66,7 @@ require_once 'includes/dbi4php.php';
 $WebCalendar->initializeFirstPhase();
 
 require_once "includes/$user_inc";
-include_once 'includes/validate.php';
+require_once 'includes/validate.php';
 require_once 'includes/site_extras.php';
 require_once 'includes/xcal.php';
 
