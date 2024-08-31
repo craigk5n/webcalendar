@@ -331,6 +331,11 @@ a#programname {
   margin-top:.4375rem;
   margin-right:.1875rem;
 }
+
+.tt {
+  font-family: 'Lucida Console', monospace";
+}
+
 #activitylog .next,
 #activitylog .prev {
   border:0;
