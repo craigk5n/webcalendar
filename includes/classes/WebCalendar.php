@@ -91,9 +91,9 @@ class WebCalendar {
   /**
    * WebCalendar constructor.
    *
-   * @param string $path Full path of file being viewed.
+   * @param  string  $path  full path of file being viewed
    *
-   * @return WebCalendar New WebCalendar object.
+   * @return WebCalendar new WebCalendar object
    *
    * @access public
    */
@@ -126,8 +126,7 @@ class WebCalendar {
     if ( empty ( $HTTP_POST_VARS ) )
       $HTTP_POST_VARS = $_POST;
 
-    if ( ! empty ( $HTTP_GET_VARS ) && empty ( $HTTP_GET_VARS['user'] ) && !
-        empty ( $HTTP_POST_VARS ) && empty ( $HTTP_POST_VARS['user'] ) &&
+    if ( ! empty ( $HTTP_GET_VARS ) && empty ( $HTTP_GET_VARS['user'] ) && ! empty ( $HTTP_POST_VARS ) && empty ( $HTTP_POST_VARS['user'] ) &&
         isset ( $GLOBALS['user'] ) )
       unset ( $GLOBALS['user'] );
 
@@ -234,10 +233,10 @@ class WebCalendar {
         if ( $PUBLIC_ACCESS_OTHERS != 'Y' )
           $user = ''; // Security precaution.
       }
-      if (!$is_admin && !$is_assistant && !$is_nonuser_admin) {
+      if ( ! $is_admin && ! $is_assistant && ! $is_nonuser_admin ) {
 	if ($is_nonuser)
           $can_add = false;
-	else if (!empty($user) && $user != $login && $user != '__public__')
+	elseif ( ! empty ( $user ) && $user !== $login && $user !== '__public__' )
 	  $can_add = false;
       }
 
@@ -258,7 +257,7 @@ class WebCalendar {
 
       if ( ! empty ( $user ) ) {
         $u_url = 'user=' . $user . '&amp;';
-        if (!user_load_variables ( $user, 'user_' ))
+        if ( ! user_load_variables ( $user, 'user_' ) )
           nonuser_load_variables($user, 'user_');
         if ( $user == '__public__' )
           $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
@@ -582,7 +581,7 @@ class WebCalendar {
             if ( empty($cookie_check[0]) || empty($cookie_check[1]))
               $session_not_found = true;
           }
-          if (! $session_not_found) {
+          if ( ! $session_not_found ) {
             $login_pw = explode('|', decode_string($encoded_login));
             $login = $login_pw[0];
             $cryptpw = $login_pw[1];
@@ -598,9 +597,9 @@ class WebCalendar {
               // The following deletes the bad cookie.
               // So, the user just needs to reload.
               sendCookie ( 'webcalendar_session', '', 0 );
-              die_miserable_death ( 'Illegal characters in login <tt>'
+              die_miserable_death ( 'Illegal characters in login <span class="tt">'
                  . htmlentities ( $login )
-                 . '</tt>. Press browser reload to clear bad cookie.' );
+                 . '</span>. Press browser reload to clear bad cookie.' );
             }
 
             // Make sure we are connected to the database for password check.
@@ -684,8 +683,8 @@ class WebCalendar {
     // make sure that the login selected is a valid login.
     if ( $single_user == 'Y' ) {
       if ( empty ( $single_user_login ) )
-        die_miserable_death ( 'You have not defined <tt>single_user_login</tt> '
-           . 'in <tt>includes/settings.php</tt>.' );
+        die_miserable_death ( 'You have not defined <span class="tt">single_user_login</span> '
+           . 'in <span class="tt">includes/settings.php</span>.' );
 
       $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_user
   WHERE cal_login = ?', [$single_user_login] );
@@ -699,8 +698,8 @@ class WebCalendar {
         if ( ! dbi_execute ( 'INSERT INTO webcal_user ( cal_login, cal_passwd,
           cal_is_admin ) VALUES ( ?, ?, ? )',
           [$single_user_login, md5 ( $single_user_login ), 'Y'] ) )
-          die_miserable_death ( 'User <tt>' . $single_user_login
-             . '</tt> does not exist in <tt>webcal_user</tt> table and we were '
+          die_miserable_death ( 'User <span class="tt">' . $single_user_login
+             . '</span> does not exist in <span class="tt">webcal_user</span> table and we were '
              . 'not able to add it for you:<br><blockquote>' . dbi_error()
              . '</blockquote>' );
 
@@ -941,7 +940,7 @@ class WebCalendar {
     if (extension_loaded('mbstring')) {
       $mb_lang = strtok($lang, '-');
       // Check the language against the map, default to 'neutral' if not found
-      $mapped_lang = isset($this->mb_language_map[$mb_lang]) ? $this->mb_language_map[$mb_lang] : 'neutral';
+      $mapped_lang = $this->mb_language_map[$mb_lang] ?? 'neutral';
       if (@mb_language($mapped_lang) && mb_internal_encoding(translate('charset'))) {
           $enable_mbstring = true;
       } else {
@@ -957,7 +956,7 @@ class WebCalendar {
   /**
    * Gets the initialization phases for the page being viewed.
    *
-   * @return array Array of initialization phases.
+   * @return array of initialization phases
    *
    * @access private
    */
@@ -975,9 +974,9 @@ class WebCalendar {
   /**
    * Gets the initialization steps for the current page and phase.
    *
-   * @param int $phase Initialization phase number
+   * @param  int  $phase  Initialization phase number
    *
-   * @return array Array of initialization steps.
+   * @return array of initialization steps
    *
    * @access private
    */
@@ -990,7 +989,7 @@ class WebCalendar {
   /**
    * Performs initialization steps.
    *
-   * @param int $phase Which step of initialization should we perform?
+   * @param  int  $phase  Which step of initialization should we perform?
    *
    * @access private
    */
@@ -1005,7 +1004,7 @@ class WebCalendar {
   /**
    * Begins initialization of WebCalendar.
    *
-   * @param string $path Full path of page being viewed
+   * @param  string  $path  Full path of page being viewed
    *
    * @access public
    */
@@ -1016,7 +1015,7 @@ class WebCalendar {
   /**
    * Continues initialization of WebCalendar.
    *
-   * @param string $path Full path of page being viewed
+   * @param  string  $path  Full path of page being viewed
    *
    * @access public
    */
@@ -1033,13 +1032,13 @@ class WebCalendar {
     $this->_initTranslate();
   }
 
- /**
-  * Construct an absolute path.
-  *
-  * @param string $path The path relative to the WebCalendar install directory
-  *
-  * @return string The absolute path
-  */
+  /**
+   * Construct an absolute path.
+   *
+   * @param  string  $path  relative to the WebCalendar install directory
+   *
+   * @return string The absolute path
+   */
   function absolutePath ( $path ) {
     return $this->_directory . $path;
   }
