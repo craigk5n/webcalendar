@@ -112,8 +112,8 @@ if ( $do_purge ) {
   <form><button class="btn btn-primary" type="button" onclick="history.back()">
  <?php etranslate ( 'Back' )?></button></form><?php
   if ( $purgeDebug ) {
-    echo '<div style="border: 1px solid #000;background-color: #FFF;"><tt>'
-      . "$sqlLog</tt></div>\n";
+    echo '<div style="border: 1px solid #000;background-color: #FFF;"><span class="tt">'
+      . "$sqlLog</span></div>\n";
   }
 } else {
 ?>
@@ -171,7 +171,9 @@ if ( $do_purge ) {
 
 <?php echo print_trailer();
 /**
- * purge_events (needs description)
+ * purge_events
+ *
+ * @param  mixed  $ids
  */
 function purge_events ( $ids ) {
   global $allStr, $c, // db connection
@@ -229,7 +231,10 @@ function purge_events ( $ids ) {
   }
 }
 /**
- * get_ids (needs description)
+ * get_ids
+ *
+ * @param  mixed  $sql
+ * @param  mixed  $ALL
  */
 function get_ids ( $sql, $ALL = '' ) {
   global $sqlLog;
