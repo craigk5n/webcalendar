@@ -1,0 +1,2387 @@
+# Esperanto eo
+#
+# La formato konsistas el laŭvola kaplinio:
+#
+# Tradukita per: via nomo kaj retpoŝto
+# Lasta ĝisdatigo: la dato de traduko
+# (Inkluzive de la ĉefa "#" kaj iuj komentoj faritaj de antaŭaj tradukistoj.
+# La UNUA malplena linio finas ĉi tiujn titolajn komentojn.)
+#
+# Sekvata de ĉiuj bezonataj:
+#
+# Angla frazo: traduko
+# (Unu al linio. SEN la ĉefa "#".
+# La "angla frazo:", inkluzive la dupunkton ":", estas provizita de la
+# Retejkalendaraj programistoj. Via parto estas la "traduko".)
+#
+# La iloj-dosierujo enhavas du perl-skriptojn por helpi vin:
+# - check_translation.pl
+# indikas ĉu la tuta teksto sukcese tradukiĝis.
+# - update_translation.pl
+# analizos la programajn dosierojn por trovi ĉiujn tradukojn ('frazon') kaj
+# konsileto ('frazo'). Ĝi aranĝos la frazojn laŭ la paĝo
+# (dosiero) kiu enhavas la unuan okazon. Laŭvole, ĝi povas etikedi la
+# frazoj, kiuj ankoraŭ ne estas tradukitaj per metado
+#  << MISSING >>
+# sur la linio super la frazo. Kaj, se la frazo estas mallongigo,
+# ĝi inkluzivos la plenan anglan tekston sur la linio sub la frazo.
+#
+# Noto: Mi provas malpliigi la ĝeneralan dosiergrandecon. Se la "traduko"
+# vorto / frazo identas en via lingvo kaj la angla, simple uzu signon "=".
+#
+# Noto: Vi rimarkos la eniron por "May_" sube. Estas kialo por ĉi tio.
+# Traduki "May_" al la kompleta monata nomo kaj "May" al la,
+# kutime tri-litera, monata mallongigo (kiel "Okt" por "Oktobro").
+#
+# Mi uzis Google-tradukon por ĉi tio.
+# Ĝi sufiĉus ĝis denaska parolanto povos kontroli ĝin.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: Retkalendaro
+version XXX: versio XXX
+WebCalendar is a PHP application used...: WebCalendar estas PHP-aplikaĵo uzata por konservi kalendaron por sola uzanto aŭ interreta / intrareta grupo de uzantoj. Ĝi ankaŭ povas esti agordita kiel eventokalendaro.
+Credits: Kreditoj
+About: Pri
+OK: bone
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Datumbaza eraro: XXX.
+DEFAULT CONFIGURATION: DEFAULT-KONFIGURO
+Go: Iru
+Save: Savi
+Undo: Malfari
+Public Access: Publika Aliro
+Admin: =
+User Access Control: Alira Kontrolo de Uzanto
+Allow Access to Other Users Calendar: Permesi Aliron al Kalendaro de Aliaj Uzantoj
+Grant This User Access to My Calendar: Donu Al Ĉi Tiu Uzanto Aliron Al Mia Kalendaro
+Type: Tajpu
+Calendar: Kalendaro
+View Event: Vidi Eventon
+View: Vido
+Edit: Redaktu
+Approve/Reject: Aprovi / Malakcepti
+Events: Eventoj
+Tasks: Taskoj
+Journals: Joururnaloj
+Can Invite: Povas Inviti
+Can Email: Povas Retpoŝti
+Can See Time Only: Povas Vidi Nur Tempo
+Assistant: Asistanto
+Select All: Elekti ĉiujn
+Clear All: Forigi Ĉion
+Public: Publika
+Confidential: Konfidenca
+Private: Privata
+
+########################################
+# Page: activity_log.php
+#
+Next: Poste
+Previous: Antaŭa
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Eventa XXX jam estas en via kalendaro.
+Invalid entry id XXX.: Nevalida enira identigilo: "XXX".
+a XXX event may not be added to your calendar: Ĉi tio estas XXX-evento kaj eble ne aldoniĝos al via kalendaro.
+confidential: konfidenca
+private: privata
+Error adding event XXX.: Eraro dum aldono de evento: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Nevalida agorda nomo "XXX".
+Select: Elektu
+Day: Tago
+Week: Semajno
+Month: Monato
+Year: Jaro
+Bottom: Malsupre
+Top: Supre
+Anyone: Iu ajn
+Participant: Partoprenanto
+Settings: Agordoj
+Groups: Grupoj
+NonUser Calendars: Neuzantaj Kalendaroj
+Other: Alia
+Email: Retpoŝto
+Colors: Koloroj
+Document background: Dokumenta fono
+Document title: Dokumentotitolo
+Document text: Dokumenta teksto
+My event text: Mia evento-teksto
+Table grid color: Tabla krada koloro
+Table header background: Tabela kapfono
+Table header text: Tabela kapteksto
+Table cell background: Tabela ĉela fono
+Table cell background for current day: Tabela ĉela fono por aktuala tago
+Table cell background for days with events: Tabela ĉela fono dum tagoj kun eventoj
+Table cell background for weekends: Tabela ĉela fono por semajnfinoj
+Table cell background for other month: Tabela ĉela fono por alia monato
+Week number color: Semajna koloro
+Event popup background: Eventa ŝprucfenestro
+Event popup text: Eventa ŝprucfenestra teksto
+System Settings: Sistemaj Agordoj
+Help: Helpu
+System options: Sistemaj elektoj
+app-name-help: Specifas la nomon de la aplikaĵo, kiu aperos en la titola stango de la retumilo por ĉiuj paĝoj kaj sur la ensaluta paĝo. La valoro, kiun vi specifas ĉi tie, estos serĉata en la tradukdosiero, kiu ebligas al vi doni malsamajn titolojn por diversaj lingvoj.
+Application Name: Aplika Nomo
+Translated Name (XXX): Tradukita Nomo (XXX)
+server-url-help: Specifas la bazan URL por la aplikaĵo. Ĉi tio estos inkluzivita kiam vi sendos retpoŝtajn memorigojn kaj sciigojn.
+Server URL: Servila URL
+home-url-help: Specifas la hejman URL por la aplikaĵo. Ĉi tio povas esti absoluta aŭ relativa
+Home URL: Hejma URL
+language-help: Specifas kiun lingvon uzi.
+Language: Lingvo
+Your browser default language is XXX.: Via apriora lingvo de via retumilo estas "XXX".
+Allow user to use themes: Permesu al uzanto uzi temojn
+themes-help: Permesas amasan ĝisdatigon de agordaj agordoj. Minusklaj etikedoj estas nur prefera uzanto.
+Themes: Temoj
+AVAILABLE THEMES: DISPONIBLE TEMOJ
+None: Neniu
+Preview: Antaŭrigardo
+Site customization: Reteja personigo
+custom-script-help: Permesas enskribon de laŭmenda Javaskripto aŭ stilfolio-teksto, kiu estos enmetita en la HTML-kapan sekcion de ĉiu paĝo.
+Custom script/stylesheet: Propra skripto / stilfolio
+custom-header-help: Permesas inkluzivigi propran HTML-fragmenton en la supro de ĉiu paĝo.
+Custom header: Propra kaplinio
+custom-trailer-help: Permesas inkluzivi kutiman HTML-fragmenton ĉe la fino de ĉiu paĝo.
+Custom trailer: Propra antaŭfilmo
+enable-external-header-help: Permesas al la laŭmenda antaŭfilmo esti ŝarĝita de ekstera dosiero
+Allow external file for header/script/trailer: Permesu eksteran dosieron por kaplinio / skripto / antaŭfilmo
+Allow user to override header/trailer: Permesu al uzanto anstataŭigi kaplinion / antaŭfilmon
+Date and Time: Dato kaj Tempo
+server-tz-help: Specifas kiom da horoj por ĝustigi la tempon de UTC al servila tempo.
+Server Timezone Selection: Servila Horzona Elekto
+tz-help: Specifas kiom da horoj por ĝustigi la tempon de UTC al loka tempo.
+Default Client Timezone Selection: Defaŭlta Klienta Horzona Elekto
+display-general-use-gmt-help: Se ebligita, oftaj datoj / horoj montriĝas kiel GMT
+Display Common Use Date/Times as GMT: Montru Daton / Tempojn de Komuna Uzo kiel GMT
+date-format-help: Specifas la preferatan datformaton.
+Date format: Datformato
+Small Task Date: Malgranda Taska Dato
+display-week-starts-on: Specifas tagon de semajno, en kiu la semajno komenciĝas. Se lundo estas specifita, tiam semajnaj nombroj estos ISO-semajnaj nombroj.
+Week starts on: Semajno komenciĝas
+display-weekend-starts-on: Agordas la semajnotagon por komenci semajnfinojn
+Weekend starts on: Semajnfino komenciĝas
+time-format-help: Specifas, kiun horformaton uzi:<br><em>12 horo:</em> Vidigu tempojn kiel 3am, 8:30 pm, ktp.<br><em>24 horo:</em> Vidigu fojojn kiel 300 , 2030, ktp.
+Time format: Tempo-formato
+12 hour: 12 horoj
+24 hour: 24 horoj
+timed-evt-len-help: Specifas enigan metodon por determini la longon de tempa evento.
+Specify timed event length by: Indiku tempan eventan longon per
+Duration: Daŭro
+End Time: Fina Tempo
+work-hours-help: Specifas la horaron por montri por la taga vido.
+Work hours: Laborhoroj
+From: De
+to: al
+Appearance: Aspekto
+preferred-view-help: Specifas la defaŭltan vidon (Tago, Semajno, Monato aŭ Jaro).
+Preferred view: Preferata vido
+Allow top menu: Permesu supran menuon
+Date Selectors position: Pozicio de Dataj Elektiloj
+menu-themes-help: Agordas la kolorojn kaj stilon de la supra menuo
+Menu theme: Menuo temo
+fonts-help: Specifas liston de uzotaj sistemaj tiparoj (kiel "Arial, Helvetica")
+Fonts: Tiparoj
+display-sm_month-help: Se ebligita, montras malgrandajn monatojn en monataj vidpunktoj
+Display small months: Montru malgrandajn monatojn
+display-weekends-help: Inkluzivi semajnfinojn dum spektado de semajno.
+Display weekends: Montru semajnfinojn
+display-long-daynames-help: Se ebligita, longaj tagaj nomoj montriĝas
+Display long day names: Montru longajn tagajn nomojn
+display-alldays-help: Montru antaŭajn kaj sekvajn monatojn tagojn en monataj vidpunktoj, plenigante ĉiujn ĉelojn.
+Display all days in month view: Montru ĉiujn tagojn en monata vido
+display-week-number-help: Specifas ĉu la semajna numero (1-52) devas esti montrata en la monata vido kaj la semajna vido.
+Display week number: Montru semajnan numeron
+display-desc-print-day-help: Inkluzivi eventajn priskribojn en presila versio de taga vido.
+Display description in printer day view: Montru priskribon en presila taga vido
+yearly-shows-events-help: En la jara vido, montru tagojn, kiuj enhavas eventojn en grasa tiparo.
+Display days with events in bold in month and year views: Montru tagojn kun eventoj grasaj laŭ monataj kaj jaraj vidpunktoj
+display-minutes-help: Se ebligita, minutoj finiĝantaj per: 00 ĉiam montriĝos
+Display 00 minutes always: Montru 00 minutojn ĉiam
+display-end-times-help: Montru eventajn finajn tempojn se tempokaza evento
+Display end times on calendars: Montru finajn tempojn en kalendaroj
+allow-view-add-help: Ikono '+' estos inkluzivita en vidpunktoj, permesante al uzantoj rapide aldoni eventojn al la kalendaroj de aliaj uzantoj.
+Include add event link in views: Inkluzivi aldoni eventan ligon en vidpunktoj
+lunar-help: Se ebligita, montros malgrandajn ikonojn reprezentantajn la lunajn fazojn ĉiumonate
+Display Lunar Phases in month view: Montru Lunajn Fazojn en monata vido
+Restrictions: Limigoj
+allow-view-other-help: Specifas ĉu unu uzanto povas vidi la kalendaron de alia uzanto.
+Allow viewing other users calendars: Permesu vidi la kalendarojn de aliaj uzantoj
+require-approvals-help: Kiam ĝi estas ebligita, uzanto devas aprobi eventon antaŭ ol ĝi montriĝos en sia kalendaro (krom se Vidiga neaprobita estas ebligita). Notu agordi ĉi tion al "Ne" ne malŝaltos aprobojn por la kalendaro pri publika aliro (se la kalendaro pri publika aliro estas ebligita).
+Require event approvals: Postuli aprobojn pri eventoj
+display-unapproved-help: Specifas ĉu neaprobitaj eventoj montriĝas en via kalendaro.<br>Se agordita al "Jes", tiam neaprobitaj eventoj montriĝos en via kalendaro (en alia teksta koloro).<br>Se agordita al "Ne", tiam neaprobitaj eventoj devas esti aprobitaj antaŭ ol ili montriĝas en via kalendaro.
+Display unapproved: Montriĝo neaprobita
+conflict-check-help: Kontrolu eventajn konfliktojn (du eventoj planitaj samtempe por la sama persono). Se vi agordas ĉi tion al "Jes", vi ankoraŭ povos plani du eventojn samtempe post konfirmi averton. Se vi agordas ĉi tion al "Ne", neniu kontrolo pri konfliktoj fariĝos. Vi probable volas agordi ĉi tion al "Jes", do konflikta kontrolo okazas.
+Check for event conflicts: Kontrolu eventajn konfliktojn
+Yes: Jes
+No: Ne
+conflict-months-help: Se konflikta kontrolo estas en loko ("Kontroli eventajn konfliktojn" estas agordita al "Ne", ĉi tio specifas kiom da monatoj en la estonteco ni devas kontroli pri konfliktoj. Se vi trovas, ke aldoni eventojn postulas multan tempon por procesi , reduktu ĉi tiun nombron.
+Conflict checking months: Konflikto kontrolanta monatojn
+conflict-check-override-help: Permesas al uzantoj superregi eventajn konfliktojn kaj plani du aŭ pli da eventoj samtempe.
+Allow users to override conflicts: Permesu al uzantoj superregi konfliktojn
+limit-appts-help: Permesas al la sistemadministranto starigi tutsisteman limon pri la nombro de rendevuoj, kiujn unu uzanto povas havi en iu ajn tago.
+Limit number of timed events per day: Limigu nombron de tempaj eventoj tage
+limit-appts-number-help: Specifas la maksimuman nombron de tempaj eventoj, kiujn uzanto povas havi en unu tago.
+Maximum timed events per day: Maksimumaj tempaj eventoj tage
+crossday-help: Se ebligita, eventoj kiuj daŭras tagojn montriĝos en apartaj tagoj
+Disable Cross-Day Events: Malŝalti Transtagajn Eventojn
+disable-location-field-help: Elektante "Jes" forigos la kampon "Loko" de eventaj informaj paĝoj
+Disable Location field: Malŝalti Lokan kampon
+disable-url-field-help: Elektante "Jes" forigos la kampon "URL" de eventaj informaj paĝoj
+Disable URL field: Malebligu URL-kampon
+disable-priority-field-help: Elektante "Jes" forigos la kampon "Prioritato" de eventaj informaj paĝoj, provizante pli simplan interfacon por novuloj.
+Disable Priority field: Malŝalti prioritatan kampon
+disable-access-field-help: Elektante "Jes" forigos la kampon "Aliro" de eventaj informaj paĝoj, provizante pli simplan interfacon por novuloj.
+Disable Access field: Malebligu Aliran kampon
+disable-participants-field-help: Elekti "Jes" forigos la kampon "Partoprenantoj" de eventaj informaj paĝoj, malebligante uzantojn aldoni aliajn uzantojn al iliaj eventoj. Se vi ebligas ĉi tiun opcion, vi eble ankaŭ volas malŝalti la kampon "Permesi vidi la kalendarojn de aliaj uzantoj".
+Disable Participants field: Malebligu kampon Partoprenantoj
+disable-repeating-field-help: Elekti "Jes" forigos la kampon "Ripeti" kiam vi aldonos eventojn. Ĉi tio provizos pli simplan interfacon por novuloj.
+Disable Repeating field: Malŝalti Ripetan kampon
+allow-html-description-help: Se ebligita, uzantoj povas enigi HTML en la priskribo de evento. Se ne ebligita, la HTML-etikedoj eskapos por aperi kiel simpla teksto. Averto: Ebligi ĉi tiun funkcion permesos al uzantoj referenci bildojn en aliaj retejoj.
+Allow HTML in Description: Permesu HTML en Priskribo
+Popups: Ŝprucfenestroj
+disable-popups-help: Malebligu ŝprucfenestrojn de kalendaraj vidpunktoj
+Disable Pop-Ups: Malŝalti Pop-Ups
+popup-includes-siteextras-help: Se ebligita, permesi agordojn de laŭmendaj eventaj kampoj en la dosiero site_extras.php montriĝos en eventaj ŝprucfenestroj.
+Display Site Extras in popup: Montri Retejajn Ekstraĵojn en ŝprucfenestro
+popup-includes-participants-help: Se ebligita, partoprenantoj montriĝas en eventaj ŝprucfenestroj.
+Display Participants in popup: Montru Partoprenantojn en ŝprucfenestro
+Miscellaneous: Diversaj
+remember-last-login-help: Se ebligita, la ensaluto de la uzanto plenumiĝos por ili sur la ensaluta paĝo (sed ne la pasvorto), kaj la preferoj de la uzanto estos ŝarĝitaj (inkluzive de iliaj preferataj koloroj kaj lingva elekto).
+Remember last login: Memoru lastan ensaluton
+summary_length-help: Maksimuma longo de Mallonga Priskribo en kalendaraj vidpunktoj
+Brief Description Length: Mallonga Priskribo Longo
+user_sort-help: Determinas ordigon por listoj de uzantoj, neuzantoj
+User Sort Order: Ordigo de Uzanto
+Lastname, Firstname: Familinomo, antaŭnomo
+Firstname, Lastname: Persona nomo familia nomo
+allow-public-access-help: Se ebligita, la kalendaro povas esti uzata kiel nurlegebla publika kalendaro, kiu ne devigas uzantojn ensaluti.
+Allow public access: Permesi publikan aliron
+public-access-default-visible: Eventoj de la publika kalendaro aŭtomate aperos en la kalendaroj de ĉiuj uzantoj
+Public access visible by default: Publika aliro videblas defaŭlte
+public-access-default-selected: Aldonante novan eventon, la publika uzanto estos elektita defaŭlte kiel partoprenanto.
+Public access is default participant: Publika aliro estas defaŭlta partoprenanto
+public-access-view-others-help: Alirinte la sistemon kun publika aliro, specifas ĉu la uzanto povas vidi la kalendaron de alia kalendara uzanto.
+Public access can view other users: Publika aliro povas vidi aliajn uzantojn
+public-access-can-add-help: Se ebligita, uzantoj, kiuj aliras la sistemon per Publika Aliro, povos aldoni novajn eventojn, sed ili ne aperos en la kalendaro ĝis administranto aprobos la novan eventon.
+Public access can add events: Publika aliro povas aldoni eventojn
+public-access-add-requires-approval-help: Specifas ĉu eventoj aldonitaj per la publika alira konto bezonas aprobon antaŭ ol montriĝi.
+Public access new events require approval: Novaj eventoj por publika aliro postulas aprobon
+public-access-sees-participants-help: Se ebligita, uzantoj alirantaj la kalendaron de la publika konto povos vidi partoprenantojn de evento se ili vidas detalojn pri evento.
+Public access can view participants: Publika aliro povas vidi partoprenantojn
+public-access-override-help: Permesas kaŝi nomojn kaj priskribojn de eventoj en la publika kalendaro
+Override event name/description for public access: Anstataŭigi eventan nomon / priskribon por publika aliro
+public-access-override-text-help: La teksto montrota se la supra opcio estas ebligita. Se 'Ne Havebla', ĝi estos tradukita.
+Text to display to public access: Teksto montrota al publika aliro
+public-access-captcha-help: Se ebligita, novaj eventoj aldonitaj de Publiko postulas pasigi CAPTCHA-validigon.
+Require CAPTCHA validation for public access new events: Postuli validigon de CAPTCHA por novaj aliroj al publika aliro
+uac-enabled-help: Ebligas uzantnivelan alirkontrolon
+User Access Control enabled: Alira Kontrolo de Uzanto ebligita
+groups-enabled-help: Ebligas subtenon de grupoj, permesante al uzantoj elekti uzantojn laŭ grupoj.
+Groups enabled: Grupoj ebligitaj
+user-sees-his-group-help: Se ebligita, uzantoj ne vidos uzantojn de kalendaro, kiuj ne estas almenaŭ en unu el iliaj grupoj.
+User sees only his groups: Uzanto vidas nur siajn grupojn
+nonuser-enabled-help: Se ebligita, administrantoj havos la eblon aldoni neuzantajn kalendarojn
+Nonuser enabled: Neuzataj Kalendaroj Ebligitaj
+nonuser-list-help: Kie montri la neuzantajn kalendarojn en la listo de partoprenantoj
+Nonuser list: Montru en listo de partoprenantoj ĉe
+Upcoming Events: Venontaj Eventoj
+upcoming-events-help: Ebligu suprenalvenon.php
+Enabled: Ebligita
+upcoming-events-allow-override: Permesu al uzanto-parametron por coming.php
+Allow user override: Permesu uzanton anstataŭigi
+upcoming-events-display-caticons: Inkluzivi kategoriojn piktogramojn en suprenalveno.php
+Display category icons: Montru kategoriojn piktogramojn
+upcoming-events-display-layers: Montru tavolojn en coming.php
+Display layers: Vidigi tavolojn
+upcoming-events-display-links: Montru ligojn en coming.php
+Display links to events: Montru ligojn al eventoj
+upcoming-events-display-popups: Montri eventajn ŝprucfenestrojn en coming.php
+Display event popups: Montri eventajn ŝprucfenestrojn
+reports-enabled-help: Se ebligita, uzantoj vidos sekcion "Raportoj" ĉe la fino de ĉiu paĝo kaj rajtos krei laŭmendajn raportojn. Aldone administrantoj povas krei tutmondajn raportojn, kiuj aperos sube de ĉiuj paĝoj de uzantoj.
+Reports enabled: Raportoj ebligitaj
+subscriptions-enabled-help: Specifas ĉu foraj uzantoj povas aboni al la kalendaro de uzanto de WebCalendar, permesante al ili vidi la eventojn de la uzanto de WebCalendar en sia iCal-ebligita aplikaĵo (kiel iCal de Apple aŭ Kalendaro Mozilla).
+Allow remote subscriptions: Permesi forajn abonojn
+remotes-enabled-help: Permesas al uzantoj ŝarĝi forajn IC-dosierojn per URL
+Allow remote calendars: Permesi forajn kalendarojn
+rss-enabled-help: Specifas ĉu la kalendaro de uzanto povas esti akirita de RSS-fluo.
+Enable RSS feed: Ebligu RSS-fluon
+categories-enabled-help: Ebligas subtenon por eventaj kategorioj.
+Categories enabled: Kategorioj ebligitaj
+icon_upload-enabled-help: Se ebligita, uzantoj povas alŝuti kategoriojn de ikonoj
+Category Icon Upload enabled: Kategoria Ikona Alŝuto ebligita
+(Requires XXX folder to exist.): (Postulas ke XXX-dosierujo ekzistu.)
+display-tasks-help: Montru etan taskon en monata kaj taga kalendaro
+Display small task list: Montri etan taskliston
+display-tasks-in-grid-help: Montru taskojn en kalendaroj kune kun eventoj
+Display tasks in Calendars: Montru taskojn en Kalendaroj
+allow-external-users-help: Specifas ĉu ne-kalendara uzanto povas esti aldonita al evento. Ĉi tio permesas al ne-kalendaraj uzantoj esti listigitaj kiel partoprenantoj de la evento.
+Allow external users: Permesi eksterajn uzantojn
+external-can-receive-notification-help: Kiam eksteraj uzantoj estas ebligitaj kaj retpoŝta uzado estas ebligita, eksteraj uzantoj povas ricevi retpoŝtajn sciigojn kiam la evento estas aldonita, ĝisdatigita aŭ forigita (se la retpoŝta adreso de la ekstera uzanto estas provizita).
+External users can receive email notifications: Eksteraj uzantoj povas ricevi retpoŝtajn sciigojn
+external-can-receive-reminder-help: Kiam eksteraj uzantoj estas ebligitaj kaj retpoŝta uzado estas ebligita, eksteraj uzantoj povas ricevi retpoŝtajn memorigilojn (se la retpoŝta adreso de la ekstera uzanto estas provizita).
+External users can receive email reminders: Eksteraj uzantoj povas ricevi retpoŝtajn memorigilojn
+allow-self-registration-help: Permesu al novaj uzantoj registri sin
+Allow self-registration: Permesu memregistradon
+use-blacklist-help: Limigu aliron al WebCalendar-funkcioj bazitaj sur IP-adreso
+Restrict self-registration to blacklist: Limigi memregistriĝon al nigra listo
+allow-self-registration-full-help: Permesu al novaj uzantoj kompletigi la memregistra procezo enrete
+Use self-registration email notifications: Kreu pasvortojn kaj sendu al novaj uzantoj
+allow-attachment-help: Permesu al uzantoj aldoni dosierajn aldonaĵojn al eventoj.
+Allow file attachments to events: Permesi dosierajn ligilojn al eventoj
+Admin and owner can always add attachments if enabled.: Administranto kaj posedanto ĉiam povas aldoni aldonaĵojn se ebligitaj.
+allow-comments-help: Permesu al uzantoj aldoni komentojn al eventoj.
+Allow comments to events: Permesi komentojn al eventoj
+Admin and owner can always add comments if enabled.: Administranto kaj posedanto ĉiam povas aldoni komentojn se ebligitaj.
+email-enabled-help: Ŝaltu aŭ malŝaltu ĉiujn sendojn de retpoŝto por sciigo kaj memorigiloj. Agordu al "ne", se via servilo ne taŭge agordas por sendi poŝton.
+Email enabled: Retpoŝto ebligita
+email-default-sender: Specifas la retpoŝtan adreson por sendi memorigilojn.
+Default sender address: Defaŭlta sendintadreso
+email-mailer: Elektu retpoŝtan tipon (SMTP, PHP-poŝto, sendmail)
+Email Mailer: Retpoŝti Poŝtilon
+email-smtp-host: Gastigaj nomoj de SMTP-servilo (j) apartigitaj per komoj
+SMTP Host name(s): SMTP-gastigaj nomoj
+email-smtp-port: SMTP-Havena Numero (kutime 25)
+SMTP Port Number: SMTP-Havena Numero
+email-smtp-auth: Uzu SMTP-Aŭtentikigon
+SMTP Authentication: SMTP-Aŭtentikigo
+email-smtp-username: SMTP-Uzantnomo se vi uzas Aŭtentikigon
+SMTP Username: SMTP-uzantnomo
+email-smtp-password: Pasvorto SMTP se vi uzas Aŭtentikigon
+SMTP Password: Pasvorto SMTP
+Default user settings: Defaŭlta uzanto-agordoj
+email-format: Indiku preferon por HTML aŭ simplaj tekstaj mesaĝoj
+Email format preference: Retpoŝta formato prefero
+HTML: =
+Plain Text: Simpla Teksto
+email-include-ics: Inkluzivi iCalendar ICS-dosieron por retpoŝti mesaĝon
+Include iCalendar attachments: Inkluzivi aldonaĵojn de iCalendar
+email-event-reminders-help: Specifas ĉu aŭ ne sendi eventajn memorigilojn.
+Event reminders: Memoraj eventoj
+email-event-added: Specifas ĉu aŭ ne sendi retpoŝtajn sciigojn kiam evento aldoniĝas al via kalendaro.
+Events added to my calendar: Eventoj aldonitaj al mia kalendaro
+email-event-updated: Specifas ĉu aŭ ne sendi retpoŝtajn sciigojn kiam evento estas ĝisdatigita en via kalendaro.
+Events updated on my calendar: Eventoj ĝisdatigitaj en mia kalendaro
+email-event-deleted: Specifas ĉu aŭ ne sendi retpoŝtajn sciigojn kiam evento estas forigita de via kalendaro.
+Events removed from my calendar: Eventoj forigitaj de mia kalendaro
+email-event-rejected: Specifas ĉu aŭ ne sendi retpoŝtajn sciigojn kiam partoprenanto malakceptas eventon en via kalendaro.
+Event rejected by participant: Evento malakceptita de partoprenanto
+email-event-create: Specifas ĉu la kreinto de eniroj ricevos retpoŝton
+Event that I create: Evento, kiun mi kreas
+Color options: Koloraj opcioj
+Allow user to customize colors: Permesu al uzanto agordi kolorojn
+gradient-colors: Se ebligita gradientaj koloroj estas uzataj. Ĉi tio ege povas efiki pri rendimento.
+Enable gradient images for background colors: Ebligu gradientajn bildojn por fonaj koloroj
+Not available: Ne disponebla
+Background Image options: Fonaj Bildaj opcioj
+bgimage-help: URL de la dezirata fonbildo. Povas esti relativa ligilo.
+Background Image: Fona Bildo
+bgrepeat-help: Kontrolas ripetan konduton de fonbildo.
+Background Repeat: Fona Ripeto
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Asistantoj
+Preferences: Preferoj
+Control Panel: Kontrola Panelo
+Users: Uzantoj
+Account: Konto
+Categories: Kategorioj
+Views: Vidoj
+Layers: Tavoloj
+Reports: Raportoj
+Delete Events: Forigi Eventojn
+Activity Log: Aktiva Registro
+System Log: Sistema Registro
+Security Audit: Sekureca Revizio
+Public Preferences: Publikaj Preferoj
+Unapproved Public Events: Neaprobitaj Publikaj Eventoj
+Administrative Tools: Administraj Iloj
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Duplikata Nomo: "XXX".
+Username XXX already exists.: Uzantnomo "XXX" jam ekzistas.
+Email address XXX already exists.: Retpoŝta adreso "XXX" jam ekzistas.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Pliaj Komentoj (nedeviga)
+Approve and Send: Aprobu kaj Sendu
+Approve and Exit: Aprobu kaj Eliru
+(Your comments will be emailed to the event creator.): (Viaj komentoj estos retpoŝtigitaj al la kreinto de la evento.)
+Hello, XXX.: Saluton, XXX.
+XXX has approved an appointment and added comments.: Rendevuo estis aprobita kaj komentoj aldonitaj de XXX.
+Subject XXX: Temo: "XXX".
+Description XXX: Priskribo: "XXX".
+Date XXX: Dato: XXX
+Time XXX: Tempo: XXX
+Comments XXX: Komentoj: XXX
+Approved w/Comments by XXX.: Aprobita kun komentoj de: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Administra reĝimo
+Your assistants: Viaj helpantoj
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Nekonata eraro.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Programeraro: Neniu XXX specifita!
+user: uzanto
+year: jaro
+month: monato
+day: tago
+
+########################################
+# Page: category.php
+#
+Category Icon: Kategoria Ikono
+Global: Tutmonda
+The permissions for the icons directory are set to read-only: La permesoj por la piktograma adresaro estas nurlegeblaj.
+Category Name: Kategoria nomo:
+Color: Koloro
+Remove Icon: Forigi piktogramon:
+Add Icon to Category: Aldonu Ikonon al Kategorio
+Upload: Alŝuti
+GIF or PNG 6kb max: GIF aŭ PNG 6kb maks
+Search for existing icons: Serĉu ekzistantajn ikonojn
+Add: Aldoni
+Delete: Forigi
+Are you sure you want to delete this entry?: Ĉu vi certas, ke vi volas forigi ĉi tiun eniron?
+Make New Category: Faru Novan Kategorion
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Kategoria nomo estas bezonata
+File size exceeds maximum.: Dosiera grandeco superas maksimumon.
+File is not a GIF or PNG image: Dosiero ne estas GIF aŭ PNG-bildo
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: DISPONIBLE KATEGORIOJ
+ENTRY CATEGORIES: ENIRKategorioj
+Remove: Forigi
+Global Category: Tutmonda Kategorio
+Cancel: Nuligi
+
+########################################
+# Page: colors.php
+#
+Add Custom: Aldoni Propran
+Basic Colors: Bazaj Koloroj
+Current Color: Nuna Koloro
+Custom Colors: Propraj Koloroj
+Old Color: Malnova Koloro
+
+########################################
+# Page: combo.php
+#
+Select None: Elektu Neniun
+Agenda: Tagordo
+Add Task: Aldoni Taskon
+Description: Priskribo
+Date: Dato
+Time: Tempo
+Priority: Prioritato
+Access: Aliro
+Created by: Kreita de
+Updated: Ĝisdatigita
+Participants: Partoprenantoj
+Attachments: Aldonaĵoj
+Comments: Komentoj
+Brief Description: Mallonga Priskribo
+Full Description: Plena Priskribo
+Category: Kategorio
+Add event detail: Aldoni eventan detalon
+Start Date: Komenca dato
+Due Date: Limdato
+Add task detail: Aldoni taskodetalon
+All: Ĉiuj
+Error: Eraro
+no response from server: neniu respondo de servilo
+JSON error: JSON-eraro
+High: Alta
+Medium: Meza
+Low: Malalta
+Today: Hodiaŭ
+Add Entry: Aldoni Eniron
+Unnamed Event: Nenomita Evento
+Unnamed Task: Sennoma Tasko
+Refresh: Refreŝigu
+Click to add entry: Alklaku por aldoni eniron
+Name: Nomo
+pm: =
+am: estas
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX nuligis rendevuon.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Nevalida blob-identigilo
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Aldoni Komenton
+Add Attachment: Aldoni Aldonaĵon
+Subject: Subjekto
+Comment: Komento
+Upload file: Alŝutu dosieron
+
+########################################
+# Page: docdel.php
+#
+Removed: Forigita
+
+########################################
+# Page: edit_entry.php
+#
+days: tagojn
+hours: horoj
+minutes: minutoj
+You are not authorized to edit this task.: Vi ne rajtas redakti ĉi tiun taskon.
+is in a different timezone than you are. Currently: estas en alia horzono ol vi. Nuntempe
+hour ahead of you: horon antaŭ vi
+hour behind you: horo malantaŭ vi
+hours ahead of you: horojn antaŭ vi
+hours behind you: horojn malantaŭ vi
+XXX is in a different timezone (ahead): (XXX estas en alia horzono; YYY antaŭ vi.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX estas en alia horzono; YYY malantaŭ vi.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: La tempo enigita ĉi tie baziĝas sur via horzono.
+Edit Entry: Redaktu Eniron
+Details: Detaloj
+Repeat: Ripetu
+Reminders: Memorigiloj
+brief-description-help: Ĉi tio devas doni mallongan priskribon (ĉirkaŭ 20 signoj) de la evento. Ĉi tio reprezentos la eventon vidante la kalendaron.
+full-description-help: Ĉi tio kompletigu detalojn pri la evento. Ĉi tiuj informoj videblas kiam uzanto vidas la eventon.
+access-help: Specifas la alirnivelon de la evento. <ul> <li> Publika: Ĉiuj povas vidi la plenajn detalojn de la evento.</li> <li> Konfidencaj: Aliaj povas vidi, ke vi havas eniron por tiu dato kaj horo, sed ne la detaloj de tio, kio ĝi estas.</li></ul>
+priority-help: Specifas la prioritaton de la evento. Altprioritaj eventoj montriĝos grasaj.
+category-help: Specifas la kategorion de la evento.
+completed-help: Data tasko estas finita. Ebligita nur kiam ĉiuj partoprenantoj procente egalas al 100%.
+Date Completed: Dato Finita
+percent-help: Procenta kompletiga procento por ĉi tiu uzanto
+Percent Complete: Procento Kompleta
+All Percentages: Ĉiuj Procentoj
+location-help: Loko de evento
+Location: Loko
+url-help: URL de evento
+URL: =
+date-help: Specifas la daton de la evento.
+Untimed event: Sentempa evento
+Timed event: Tempigita evento
+All day event: Tuttaga evento
+Timezone Offset: =
+time-help: Specifas la tempon de la evento. <ul> <li> "Tempa evento" (por evento planita por specifa tempo en tiu tago)</li> <li> "Sentempa evento" (por evento ĉi tio ne havas tempon (kiel festotago) )</li> <li> "Tuttaga evento" (por evento kiu daŭras tutan tagon (kiel esti ekster la oficejo)</li></ul>
+duration-help: Specifas la daŭron (en horoj; minutoj) de la evento. <em>Ĉi tiu kampo povas esti lasita malplena.</em>
+end-time-help: Specifas la tempon, kiam la evento finiĝos.
+Start Time: Komenca Tempo
+Due Time: Ĝustatempe
+Site Extras: Retejaj Ekstraĵoj
+avail_participants-help: Listigas la disponeblajn partoprenantojn de ĉi tiu eniro.
+Available: Disponebla
+Find Name: Trovu Nomon
+Resources: Rimedoj
+participants-help: Listigas la partoprenantojn de ĉi tiu eniro.
+Selected: Elektita
+Availability: Havebleco
+external-participants-help: Specifas liston de partoprenantoj por la evento, kiuj ne estas uzantoj de kalendaro. La uzantoj devas esti listigitaj po po linio kaj povas inkluzivi retpoŝtan adreson. Se retpoŝtadreso estas specifita, la uzanto rajtas ricevi sciigojn kaj memorigilojn.
+External Participants: Eksteraj Partoprenantoj
+repeat-type-help: Elektu kiom ofte la evento ripetu.
+Daily: Ĉiutage
+Weekly: Semajna
+Monthly: Monata
+by day: tage
+by date: antaŭ dato
+by position: laŭ pozicio
+Monthly (by day): Monata (tage)
+Monthly (by date): Monata (laŭ dato)
+Monthly (by position): Monata (laŭ pozicio)
+Yearly: Ĉiujare
+Manual: Manlibro
+Expert Mode: Fakula reĝimo
+repeat-end-date-help: Specifas la daton ĝis la evento devas ripeti ĝis.
+Ending: Fino
+Forever: Por ĉiam
+Use end date: Uzu finan daton
+Number of times: Nombro da fojoj
+repeat-frequency-help: Specifas kiom ofte la evento devas ripeti.
+Frequency: Ofteco
+Weekdays Only: Semajntagoj Nur
+Week Start: Semajna Komenco
+repeat-bydayextended-help: Permesas elekti daton laŭ tago de semajno.
+ByDay: Tagon
+repeat-month-help: Specifas en kiuj monatoj la evento devas ripeti.
+ByMonth: De Monato
+repeat-bysetpos-help: Permesas elekti daton laŭ pozicio kun la monato.
+BySetPos: =
+repeat-bymonthdayextended-help: Permesas datan elekton laŭ dato.
+ByMonthDay: DeMonthDay
+repeat-byweekno-help: Permesas al uzanto specifi liston de semajnoj por ripeti eventon (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Permesas al uzanto specifi liston de jaraj tagoj por ripeti eventon (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Pliaj tagoj, dum kiuj ĉi tiu evento devas aŭ ne okazu.
+Exclusions: Ekskludoj
+Inclusions: Inkludoj
+Add Exception: Aldoni Escepton
+Add Inclusion: Aldoni Inkluzivon
+Delete Selected: Forigi Elektitan
+Send Reminder: Sendu Rememorigilon
+When: Kiam
+Use Date/Time: Uzu Daton / Horon
+Use Offset: Uzu Offset
+Before: Antaŭe
+After: Post
+Start: Komencu
+End/Due: Fino / Due
+Times: Tempoj
+Every: Ĉiu
+CAPTCHA Warning: Averto:  Ne eblas uzi CAPTCHA sen la GD-etendaĵo de PHP!<br>
+Delete entry: Forigi eniron
+You are not authorized to edit this entry.: Vi ne rajtas redakti ĉi tiun eniron.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX faris novan rendevuon.
+XXX has updated an appointment.: XXX ĝisdatigis rendevuon.
+Security violation!: Sekureca malobservo!
+You must enter the anti-spam text on the previous page.: Vi devas enigi la kontraŭspaman tekston en la antaŭa paĝo.
+The following conflicts with the suggested time: La jenaj konfliktoj kun la proponita tempo
+User removed from participants list.: Uzanto forigita de listo de partoprenantoj.
+Please look on XXX to accept or reject this appointment.: Bonvolu rigardi XXX por akcepti aŭ malakcepti ĉi tiun rendevuon.
+Please look on XXX to view this appointment.: Bonvolu rigardi XXX por vidi ĉi tiun rendevuon.
+Scheduling Conflict: Plananta Konflikton
+Your suggested time of: Via proponita tempo de
+conflicts with the following existing calendar entries: konfliktas kun la jenaj ekzistantaj kalendaraj eniroj
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX ne estis agordita en "config.php".
+word characters only: (povas enhavi nur vortajn signojn; [a-zA-Z_0-9])
+Add User: Aldoni uzanton
+Edit User: Redaktu uzanton
+Calendar ID: Kalendara ID
+First Name: Antaŭnomo
+Last Name: Familia nomo
+Is public calendar: Ĉu publika kalendaro
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Datumbaza eraro
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Aldoni Foran Kalendaron
+Edit Remote Calendar: Redaktu Foran Kalendaron
+Create Layer: Kreu Tavolon
+Reload: Reŝargi
+Required to View Remote Calendar: Necesas Vidi Malproksiman Kalendaron
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Importi Rezultojn
+Events successfully imported: Eventoj sukcese importitaj
+Create a new layer to view this calendar.: Kreu novan tavolon por vidi ĉi tiun kalendaron.
+Errors: Eraroj
+There was an error parsing the import file or no events were returned.: Estis eraro dum analizado de la importa dosiero aŭ neniuj eventoj revenis.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Morgaŭ
+Yesterday: Hieraŭ
+Day before yesterday: Antaŭhieraŭ
+Next week: Venontsemajne
+This week: Ĉi-semajne
+Last week: Lasta semajno
+Week before last: Antaŭ la lasta semajno
+Next week and week after: Venontan semajnon kaj semajnon poste
+This week and next week: Ĉi-semajne kaj venontsemajne
+Last week and this week: Pasintsemajne kaj ĉi-semajne
+Last two weeks: Lastaj du semajnoj
+Next month: Venontmonate
+This month: Ĉi-monate
+Last month: Pasintmonate
+Month before last: Monato antaŭ la lasta
+Next year: Venonta jaro
+This year: Ĉijare
+Last year: Pasintjare
+Year before last: Jaro antaŭ la lasta
+Next 14 days: Venontaj 14 tagoj
+Next 30 days: Venontaj 30 tagoj
+Next 60 days: Venontaj 60 tagoj
+Next 90 days: Venontaj 90 tagoj
+Next 180 days: Venontaj 180 tagoj
+Next 365 days: Venontajn 365 tagojn
+Invalid report id XXX.: Nevalida raporta identigilo: "XXX".
+Unnamed Report: Nenomita Raporto
+Add Report: Aldoni Raporton
+Edit Report: Redakti Raporton
+Report name: Raportnomo
+User: Uzanto
+Current User: Nuna Uzanto
+Include link in menu: Inkluzivi ligon en menuo
+Include standard header/trailer: Inkluzivi norman kaplinion / antaŭfilmon
+Include previous/next links: Inkluzivi antaŭajn / sekvajn ligojn
+Include empty dates: Inkluzivi malplenajn datojn
+Date range: Datintervalo
+Template variables: Ŝablonaj variabloj
+Page template: Paĝa ŝablono
+Day template: Taga ŝablono
+Event template: Eventa ŝablono
+Are you sure you want to delete this report?: Ĉu vi certas, ke vi volas forigi ĉi tiun raporton?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Neniu raporta identigilo: "XXX".
+Variable XXX not found.: Variablo XXX ne trovita.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Redaktu Propran Titolon
+Edit Custom Script/Stylesheet: Redaktu Propran Skripton / Stilfolion
+Edit Custom Trailer: Redaktu Propran Antaŭfilmon
+
+########################################
+# Page: edit_user.php
+#
+Username: Uzantnomo
+E-mail address: Retpoŝta adreso
+Password: Pasvorto
+again: denove
+Disabled for demo: Malebligita por pruvo
+Are you sure you want to delete this user?: Ĉu vi certas, ke vi volas forigi ĉi tiun uzanton?
+Change Password: Ŝanĝi Pasvorton
+New Password: Nova pasvorto
+Set Password: Agordi Pasvorton
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Forigo de uzantoj ne subtenata.
+The passwords were not identical.: La pasvortoj ne estis identaj.
+You have not entered a password.: Vi ne enigis pasvorton.
+Username cannot be blank.: Uzantnomo ne povas esti malplena.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Ne rajtigita
+
+########################################
+# Page: export.php
+#
+Export: Eksporti
+Export format: Eksporta formato
+Include all layers: Inkluzivi ĉiujn tavolojn
+Include deleted entries: Inkluzivi forigitajn enirojn
+Export all dates: Eksporti ĉiujn datojn
+Start date: Komenca dato
+End date: Fina dato
+Modified since: Modifita ekde
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: eksporta formato ne difinita aŭ malĝusta.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Neniu uzanto specifis.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Aldoni Novan Grupon
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Sennoma Grupo
+Add Group: Aldonu grupon
+Edit Group: Redakta Grupo
+Group name: Grupnomo
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Vi devas specifi grupan nomon
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Aŭtomate refreŝigi kalendarojn
+auto-refresh-help: Se ebligite, la taga vido, semajna vido, monata vido kaj listaj neaprobitaj paĝoj ĉiuj aŭtomate refreŝiĝos periode.
+Auto-refresh time: Aŭtomata refreŝiga tempo
+auto-refresh-time-help: Se Aŭtomata refreŝiĝo estas ebligita, ĉi tio specifas la tempon inter ĉiu refreŝiĝo.
+Display days with events in bold in year view: Montru tagojn kun eventoj grasaj laŭ jara vido
+Display weekends in week view: Montru semajnfinojn en semajna vido
+Time interval: Tempintervalo
+time-interval-help: Specifas kiom longaj estos la tempoblokoj en la semajna vido kaj taga vido.
+Nonuser: Neuzantaj Kalendaroj
+user-customize-color: Specifas ĉu uzantoj rajtas modifi sian propran kolorskemon.
+enable-gradient-help: Uzu gradientajn kolorojn por ĉelaj fonoj.
+Manually entering color values: Mane enigi kolorajn valorojn
+colors-help: Ĉiuj koloroj devas esti specifitaj en deksesuma formato "#RRGGBB" kie "RR" estas la deksesuma valoro por ruĝo, "GG" estas la deksesuma valoro por verdo, kaj "BB" estas la deksesuma valoro por blua.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Raporti Cimon
+Please include all the information below when reporting a bug.: Bonvolu inkluzivi ĉiujn informojn sube kiam vi raportas cimon.
+Also, please use English rather than XXX.: Ankaŭ bonvolu uzi  anglan  anstataŭ XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Retkalendara Dokumentaro
+Currently in English only.: Nuntempe nur en la angla.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Aldono / Redaktado de Kalendaraj Eniroj
+Repeat Type: Ripetu Tipon
+For More Information...: Por Pliaj Informoj ...
+Repeat End Date: Ripetu Findaton
+Repeat Day: Ripetu Tagon
+repeat-day-help: Specifas kiujn semajnotagojn la evento devas ripeti.
+
+########################################
+# Page: help_import.php
+#
+Import: Importi
+Palm Desktop: Palm Labortablo
+allow you to import entries from the Palm...: Ĉi tiu formularo permesos al vi importi enirojn de la datlibro de Palm Desktop. Ĝi troviĝu en via Palm-adresaro en datlibro / datlibro.dat en subdosierujo nomata per via uzantnomo.
+The following entries will not be imported: La jenaj eniroj ne estos importitaj:
+Entries older than the current date: Eniroj pli malnovaj ol la nuna dato
+Entries created in the Palm Desktop...: Eniroj kreitaj en la Palm-Labortablo, kiuj ne estis HotSync'd
+Anything imported from Palm...: Ĉio importita de Palm estos anstataŭigita dum la sekva importado (krom se la evento-dato pasis). Tial ĝisdatigoj devas esti faritaj en la Palm-Labortablo.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Ĉi tiu formularo importos vCalendar (.vcs) 1.0-eventojn.
+The following formats have been tested: La jenaj formatoj estis provitaj:
+This form will import iCalendar (.ics) events.: Ĉi tiu formularo importos eventojn de iCalendar (.ics).
+Enabling: Ebligante
+Overwrite Prior Import: Anstataŭigi Antaŭan Importon
+will cause events imported previously...: kaŭzos, ke eventoj antaŭe importitaj, kiuj uzis la saman UID kiel evento de la nova importa dosiero, estu markitaj kiel forigitaj. Ĉi tio permesu importi ĝisdatigitan iCalendar-dosieron sen krei duplikatojn.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Helpa Indekso
+About WebCalendar: Pri ReteKalendaro
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Tavoloj utilas por montri la eventojn de aliaj uzantoj en via propra kalendaro. Vi povas specifi la uzanton kaj la koloron en kiu la eventoj estos montritaj.
+Add/Edit/Delete: Aldoni / Redakti / Forigi
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Alklakante la ligon Redakti tavolojn en la administra sekcio ĉe la fundo de la paĝo, vi permesos aldoni / redakti / forigi tavolojn.
+The text color of the new layer that will be displayed in your calendar.: La teksta koloro de la nova tavolo, kiu montriĝos en via kalendaro.
+Disabling: Malŝalti
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Premu la ligilon Malŝalti Tavolojn en la administra sekcio ĉe la fundo de la paĝo por malŝalti tavolojn.
+Duplicates: Duplikatoj
+If checked, events that are duplicates of your events will be shown.: Se markita, eventoj, kiuj estas duplikatoj de viaj eventoj, estos montritaj.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Premu la ligilon Ebligi Tavolojn en la administra sekcio ĉe la fundo de la paĝo por ŝalti tavolojn.
+Source: Fonto
+Specifies the user that you would like to see displayed in your calendar.: Specifas la uzanton, kiun vi ŝatus vidi montrata en via kalendaro.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Defaŭlta Kategorio
+default-category-help: Specifas la kategorion al kiu nova evento devas defaŭlte.
+When I am the boss: Kiam mi estas la estro
+Email me event notification: Retpoŝtu al mi eventan sciigon
+email-boss-notifications-help: Specifas ĉu estroj ricevas retpoŝtojn kiel eventajn sciigojn.
+I want to approve events: Mi volas aprobi eventojn
+boss-approve-event-help: Specifas ĉu la estro devos aprobi eventojn aldonitajn de asistantoj.
+Subscribe/Publish: Aboni / Eldoni
+Allow remote publishing: Permesu malproksiman eldonadon
+allow-remote-publishing-help: Specifas ĉu malproksima iCal-kliento povas publikigi eventojn reen al WebCalendar
+remote-publishing-url-help: Montras la URL-on uzi en la klienta aplikaĵo iCal por aboni kaj publikigi reen al WebCalendar.
+allow-remote-subscriptions-help: Specifas ĉu foraj uzantoj povas aboni vian kalendaron, permesante al ili vidi viajn eventojn en iCal-ebligita programo (kiel iCal de Apple aŭ Mozilla Kalendaro).
+remote-subscriptions-url-help: Montras la URL, kiujn uzantoj de fora uzantoj devas aboni al via kalendaro.
+Enable FreeBusy publishing: Ebligu eldonadon de FreeBusy
+freebusy-enabled-help: Specifas ĉu la disponebla tempo de uzanto povas esti akirita per la normo iCal FreeBusy.
+freebusy-url-help: La URL por aliri la liston FreeBusy de la uzanto
+rss-feed-url-help: La URL por aliri la RSS-fluon
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Permesas bonan kontrolon de uzaj aliroj kaj permesoj. Uzantoj ankaŭ povas doni defaŭltan kaj laŭ individua permeso se rajtigita de la administranto.
+If disabled, this user cannot send you emails.: Se malebligita, ĉi tiu uzanto ne povas sendi al vi retpoŝtojn.
+If disabled, this user cannot see you in the participants list.: Se malebligita, ĉi tiu uzanto ne povas vidi vin en la listo de partoprenantoj.
+If enabled, this user cannot view the details of any of your entries.: Se ebligita, ĉi tiu uzanto ne povas vidi la detalojn de iuj el viaj eniroj.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Eldonado Malebligita (Administranto)
+Publishing Disabled (User): Eldonado Malebligita (Uzanto)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Alklaku por Elekti
+Current Icons on Server: Aktualaj piktogramoj sur servilo
+
+########################################
+# Page: import.php
+#
+import from file: importi de dosiero
+Disabled: Malebligita
+Import format: Importa formato
+Exclude private records: Ekskludi privatajn diskojn
+Repeated items are imported separately. Prior imports are not overwritten.: Ripetaj eroj estas importitaj aparte. Antaŭaj importadoj ne estas anstataŭigitaj.
+
+########################################
+# Page: import_handler.php
+#
+No file: Neniu dosiero
+Error deleting palm events from webcalendar.: Eraro dum forigo de palmaj eventoj de retkalendaro.
+Events from prior import marked as deleted: Eventoj de antaŭa importado markitaj kiel forigitaj
+Conflicting events: Konfliktantaj eventoj
+The import file contained no data.: La importa dosiero ne enhavis datumojn.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Ĉu vi certas, ke vi volas forigi ĉi tiun tavolon?
+Delete layer: Forigi tavolon
+Edit layer: Redaktu tavolon
+Enable layers: Ebligu tavolojn
+Layer: Tavolo
+Layers are currently disabled.: Tavoloj estas nuntempe malebligitaj.
+Layers are currently enabled.: Tavoloj estas nuntempe ebligitaj.
+Click to modify layers settings for XXX: Alklaku ĉi tie por modifi la tavolajn agordojn por la XXX-kalendaro.
+Disable Layers: Malŝalti Tavolojn
+Add layer: Aldoni tavolon
+Add Layer: Aldonu Tavolon
+Edit Layer: Redaktu Tavolon
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Ne eblas ĝisdatigi preferon
+Invalid entry id.: Nevalida enira identigilo.
+You cannot create a layer for yourself.: Vi ne povas krei tavolon por vi mem.
+You can only create one layer for each user.: Vi povas krei nur unu tavolon por ĉiu uzanto.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Aprovi / Konfirmi
+Approve Selected: Aprobo Elektita
+Check All: Kontrolu Ĉion
+Emails Will Not Be Sent: Retpoŝtoj Ne Sendiĝos
+Reject Selected: Malakcepti Elektitan
+Reject: Malakcepti
+Uncheck All: Malmarku Ĉiujn
+View this entry: Rigardu ĉi tiun eniron
+No unapproved entries for XXX.: Neniuj neaprobitaj eniroj por: "XXX".
+Unapproved Entries: Neaprobitaj Eniroj
+Approve this entry?: Ĉu aprobi ĉi tiun eniron?
+Reject this entry?: Ĉu malakcepti ĉi tiun eniron?
+Approve Selected entries?: Ĉu aprobi Elektitajn enskribojn?
+Reject Selected entries?: Ĉu malakcepti elektitajn enirojn?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Vi devas enigi ensaluton kaj pasvorton.
+Save login via cookies so I dont have to login next time.: Konservu ensaluton per kuketoj do mi ne devas ensaluti la venontan fojon
+Login: Ensaluti
+public: publika
+Access XXX calendar: Aliru XXX-kalendaron
+cookies-note: Noto: Ĉi tiu aplikaĵo postulas ke kuketoj estu ebligitaj.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Kontraŭleĝaj signoj en ensaluto XXX.
+Invalid login: Nevalida ensaluto
+Activity login failure: Uzantnomo: "XXX", IP: "YYY".
+Error XXX: Eraro: "XXX".
+You have been logged out.: Vi estis elsalutita.
+Access public calendar: Aliru publikan kalendaron
+Not yet registered? Register here!: Ĉu vi ankoraŭ ne registris? Registriĝu ĉi tie!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Ne ekzistas tia neuzanta kalendaro: "XXX".
+This Calendar is not Public.: Ĉi tiu Kalendaro ne estas Publika.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Aldoni Novan Neuzantan Kalendaron
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Ensaluto devas esti specifita.
+No such nonuser calendar: Ne ekzistas tia neuzanta kalendaro
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Nevalida temo
+Save Preferences: Konservu Preferojn
+Public Access calendar: Kalendaro pri Publika Aliro
+Modify Non User Calendar Preferences: Ŝanĝu Agordojn de Ne-Uzanto-Kalendaro
+Return to My Preferences: Reiru al Miaj Preferoj
+Custom Scripts: Propraj Skriptoj
+Timezone Selection: Horzona Elekto
+Multiview: Multvido:
+entry-interval-help: Agordas minutintervalon dum redaktado de enirotempoj
+Entry interval: Enira intervalo
+hour: horo
+minute: minuto
+theme-reload-help: Pro CSS-konservado, paĝo reŝarĝas eble necesas
+Page may need to be reloaded for new Theme to take effect: Paĝo eble devos esti reŝargita por ke nova Temo ekvalidu
+display_byproxy-help: Montru la veran kreinton sur paĝo view_entry
+Display if created by Assistant: Vidigu se kreita de Asistanto
+allow-view-subscriptions-help: Permesas limigi foran aliron al Privataj aŭ Konfidencaj eniroj
+Allow remote viewing of: Permesi foran spektadon de
+entries: eniroj
+
+########################################
+# Page: purge.php
+#
+Purging events for: Purigado de eventoj por
+Finished: Finita
+Back: Reen
+Check box to delete ALL events for a user: Marku skatolon por forigi  ĈIUJ  eventojn por uzanto
+Delete all events before: Forigu ĉiujn eventojn antaŭe
+Purge deleted only: Purigo nur forigita
+Preview delete: Antaŭrigardo forigi
+Are you sure you want to delete events for: Ĉu vi certe volas forigi eventojn por
+Records deleted from XXX: Rekordoj forigitaj de "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Retpoŝta adreso ne povas esti malplena.
+Username already exists.: Uzantnomo jam ekzistas.
+Email address already exists.: Retpoŝta adreso jam ekzistas.
+New user via self-registration.: Nova uzanto per memregistrado.
+A new WebCalendar account has been set up for you.: Nova WebCalendar-konto estas kreita por vi.
+Your username is XXX.: Via salutnomo estas: "XXX".
+Your password is XXX.: Via pasvorto estas: "XXX".
+Please visit XXX to log in and start using your account!: Bonvolu viziti "XXX" por ensaluti kaj ekuzi vian konton!
+You may change your password after logging in the first time.: Vi povas ŝanĝi vian pasvorton post la unua ensaluto.
+If you received this email in error: Se vi ricevis ĉi tiun retpoŝton erare kaj ne aliĝis al konto de WebCalendar, vi eble ignoros ĉi tiun avizon aŭ respondos per mallonga noto
+Administrator: Administranto
+Welcome: Bonvenon
+New user via email.: Nova uzanto per retpoŝto.
+Registration: Aliĝo
+Welcome to WebCalendar: Bonvenon al Retkalendaro
+Your email should arrive shortly.: Via retpoŝto devas alveni baldaŭ.
+Return to Login screen: Revenu al Ensaluta ekrano
+Password (again): Pasvorto (denove):
+Your account information will be emailed to you.: Viaj kontaj informoj estos retpoŝtigitaj al vi.
+Submit: Sendu
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Daŭrigu
+(Your comments will be emailed to the other participants.): (Viaj komentoj estos retpoŝtigitaj al la aliaj partoprenantoj.)
+XXX has rejected an appointment.: XXX malakceptis rendevuon.
+Rejected by XXX.: Malakceptita de XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Aldoni Novan Foran Kalendaron
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Ĉi tiu evento estas konfidenca.
+(Private): (Privata)
+(cont.): (sekvo)
+Approved: Aprobita
+Deleted: Forigita
+Rejected: Malakceptita
+Waiting for approval: Atendante aprobon
+Unknown: Nekonata
+Invalid report id.: Nevalida raporta identigilo.
+Click here to manage reports for the Public Access calendar.: Alklaku ĉi tie por administri raportojn por la kalendaro pri Publika Aliro.
+Add new report: Aldonu novan raporton
+Manage Reports: Administri Raportojn
+
+########################################
+# Page: search.php
+#
+Advanced Search: Altnivela Serĉo
+Search: Serĉu
+Keywords: Ŝlosilvortoj
+Enter % for all entries: Enigu% por ĉiuj eniroj
+Include: Inkluzivi
+Filter by Date: Filtru laŭ dato
+All Dates: Ĉiuj Datoj
+Past: Pasinta
+Upcoming: Venonta
+Range: Gamo
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Vi devas enigi unu aŭ plurajn serĉvortojn.
+Search Results: Serĉrezultoj
+match found: matĉo trovita
+matches found: alumetoj trovitaj
+No matches found: Neniuj kongruaĵoj trovitaj
+New Search: Nova Serĉo
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: La ĉi-subaj informoj listigas eblajn problemojn kun via WebCalendar-instalado, kiuj povus esti modifitaj por fari vian instaladon pli sekura.
+For questions about WebCalendar security see the forums: Por demandoj pri iu sekureca problemo de WebCalendar, bonvolu uzi la forumojn de WebCalendar gastigitaj en GitHub.com;<br>XXX
+View your current PHP settings: Rigardu viajn nunajn PHP-agordojn
+Security Issue: Sekureca Temo
+Status: Statuso
+Default admin user password: Defaŭlta pasvorto de administranto
+You should change the password of the default admin user.: Vi devas ŝanĝi la pasvorton de la defaŭlta administranto-uzanto.
+File permissions XXX: Dosieraj permesoj: XXX
+item XXX should not be writable: La jena ero ne estu skribebla:<br><tt> XXX</tt>
+File exists XXX: Dosiero ekzistas: "XXX"
+Because you have email disabled, you should remove this file.: Ĉar vi havas retpoŝton malŝaltita, vi devas forigi ĉi tiun dosieron.
+File location XXX: Dosiera loko: "XXX"
+remove XXX if not using: Se vi ne uzas dosieron "XXX", vi devas forigi ĝin. Aŭ almenaŭ movu ĝin al nova adresaro.
+System Settings XXX: Sistemaj Agordoj: "XXX"
+consider enabling UAC: Vi eble volas konsideri ebligi Uzan Aliran Kontrolon agordi privilegiojn de uzanto.
+recommend approving new public events: Ni rekomendas, ke ĉiuj sendoj de publikaj eventoj estu aprobitaj.
+recommend using CAPTCHA: CAPTCHA rekomendas gardi aŭtomatajn eventajn sendojn.
+Database cache directory location: Datumbaza kaŝmemora adresara loko
+db cache should be inaccessable: La datumbaza kaŝmemoro devas esti en dosierujo, al kiu ne eblas aliri per URL.
+PHP Settings XXX: Agordoj de PHP: "XXX"
+recommend setting XXX Off: La rekomendinda agordo por "XXX" estas Malŝaltita.
+recommend setting allow_url_fopen Off: La rekomendinda agordo por "allow_url_fopen" estas Malŝaltita kiam foraj kalendaroj ne estas ebligitaj.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Vidi la Kalendaron de Alia Uzanto
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Vi ne aldonis iujn kategoriojn.
+Set Category: Agordi Kategorion
+Global Categories cannot be changed.: Tutmondaj Kategorioj ne ŝanĝeblas.
+
+########################################
+# Page: upcoming.php
+#
+more: pli
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Foraj Kalendaroj
+denotes administrative user: indikas administran uzanton
+Add New User: Aldoni Novan Uzanton
+
+########################################
+# Page: usersel.php
+#
+form: formo
+Reset: Restarigi
+
+########################################
+# Page: views.php
+#
+Add New View: Aldoni Novan Vidon
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Sennoma Vido
+Add View: Aldoni Vidon
+Edit View: Redakti Vidon
+View Name: Vidi Nomon
+View Type: Vidi Tipon
+Day by Time: Tagon post Tempo
+Week (Users horizontal): Semajno (Uzantoj horizontale)
+Week by Time: Semajno post Tempo
+Week (Users vertical): Semajno (vertikalaj uzantoj)
+Week (Timebar): Semajno (Tempobreto)
+Month (Timebar): Monato (Tempobreto)
+Month (side by side): Monato (flank-al-flanke)
+Month (on same calendar): Monato (en la sama kalendaro)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Vi devas specifi vidnomon
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Neniuj uzantoj por ĉi tiu vido.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Ĝisdatigi Taskan Procenton
+Completed: Kompletigita
+Assistant mode: Helpa reĝimo
+Declined: Malakceptis
+Needs-Action: Bezonoj-Ago
+by: de
+Percentage Complete: Procento Kompleta
+External User: Ekstera Uzanto
+Update: Ĝisdatigu
+at: ĉe
+comments: komentoj
+Show: Spektaklo
+Hide: Kaŝi
+Approve/Confirm entry: Aprovi / Konfirmi eniron
+Reject entry: Malakcepti eniron
+Set category: Ŝanĝu kategorion
+Add to My Calendar: Aldoni al Mia Kalendaro
+Copy entry: Kopiu eniron
+This will delete this entry for all users.: Ĉi tio forigos ĉi tiun eniron por ĉiuj uzantoj.
+Edit entry: Redaktu eniron
+Edit repeating entry for all dates: Redaktu ripetan eniron por ĉiuj datoj
+Delete repeating event for all dates: Forigu ripetantan eventon por ĉiuj datoj
+Edit entry for this date: Redaktu eniron por ĉi tiu dato
+Delete entry only for this date: Forigu eniron nur por ĉi tiu dato
+Delete entry from calendar of XXX: Forigi eniron de kalendaro de XXX
+This will delete the entry from your XXX calendar.: Ĉi tio forigos la eniron de via XXX-kalendaro.
+boss: estro '
+This will delete the entry from your boss calendar.: Ĉi tio forigos la eniron el la kalendaro de via estro.
+This will delete the entry from your calendar.: Ĉi tio forigos la eniron de via kalendaro.
+from your boss calendar: el la kalendaro de via estro
+Do you want to add this entry to your calendar?: Ĉu vi volas aldoni ĉi tiun eniron al via kalendaro?
+This will add the entry to your calendar.: Ĉi tio aldonos la eniron al via kalendaro.
+Email all participants: Retpoŝti ĉiujn partoprenantojn
+Hide activity log: Kaŝi agadregistron
+Show activity log: Montri agadregistron
+Export this entry to: Eksporti ĉi tiun eniron al
+Palm Pilot: Palm Piloto
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Duoble alklaku malplenan ĉelon por aldoni novan eniron.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Nova Eniro
+cont.: kont.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Kalendaro de Alia Uzanto
+Category Management: Kategoria Administrado
+Day View: Taga Vido
+Edit Event: Redaktu Eventon
+Month View: Monata Vido
+Common Trailer: Komuna Antaŭfilmo
+User Management: Uzanto-Administrado
+Manage Views: Administri Vidojn
+Week View: Semajna Vido
+Year View: Jara Vidado
+Invalid function id: Nevalida funkcio-identigilo
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Ne povis trovi dosieron "settings.php".<br>Bonvolu kopii "settings.php.orig" al "settings.php" kaj redakti por via retejo.
+Incomplete settings.php file...: Nekompleta dosiero "settings.php" ...
+Could not find XXX defined in...: Ne povis trovi "XXX" difinitan en via dosiero "settings.php".
+You must define XXX in: Vi devas difini "XXX" en la dosiero "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Decembro
+Dec: Dec.
+LANGUAGE DEFINED: LINGVO DEFINITA
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Eraro konektante al datumbazo: "XXX".
+db_type not defined.: db_tipo ne difinita.
+invalid db_type XXX: nevalida db_tipo "" XXX ".
+Cache cleared from previous SQL!: Kaŝmemoro malplenigita de antaŭa SQL!
+Error executing query.: Eraro dum plenumado de konsulto.
+Unfortunately, XXX is not implemented for YYY: Bedaŭrinde "XXX" ne estas efektivigita por (YYY).
+Unknown ODBC error.: Nekonata ODBC-eraro.
+Error opening cache dir XXX.: Eraro dum malfermo de kaŝmemoro dir "XXX".
+delete: forigi
+Cache error Could not XXX file YYY.: Kaŝmemora eraro: Ne povis XXX-dosiero "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fatala Eraro
+Invalid data format for: Nevalida datuma formato por
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Eraro: Tajpu ne agorditan por registrado de agado!
+This event is XXX.: Ĉi tiu evento estas XXX.
+Conf.: Konf.
+exceeds limit of XXX events per day: superas limon de XXX-eventoj tage
+on: plu
+All Attendees: Ĉiuj Ĉeestantoj
+Busy: Okupita
+Tentative: Provizora
+Schedule an appointment for XXX.: Aranĝu rendevuon por XXX: YYY.
+date_select: __dd__ __monato__ __yyyy__
+Event approved: Okazaĵo aprobita
+Journal approved: Journalurnalo aprobita
+Task approved: Tasko aprobita
+Attachment: Alligitaĵo
+Event created: Evento kreita
+Journal created: Revuo kreita
+Task created: Tasko kreita
+Event deleted: Evento forigita
+Journal deleted: Revuo forigita
+Task deleted: Tasko forigita
+New user via email (self registration): Nova uzanto per retpoŝto (memregistriĝo)
+New user (self registration): Nova uzanto (memregistrado)
+Notification sent: Sciigo sendita
+Event rejected: Evento malakceptita
+Journal rejected: Journalurnalo malakceptita
+Task rejected: Tasko malakceptita
+Reminder sent: Memorigo sendita
+Event updated: Evento ĝisdatigita
+Journal updated: Journalurnalo ĝisdatigita
+Task updated: Tasko ĝisdatigita
+Delete User: Forigi uzanton
+WK: =
+TASKS: TASKOJ
+Task_Title: Titolo
+Due: Venonta
+Task Name: Taska Nomo
+Task Due Date: Taska Limdato
+You have XXX unapproved entries: Vi havas XXX neaprobitajn enirojn 
+Changes successfully saved: Ŝanĝoj sukcese konservitaj
+Event: Evento
+Action: Ago
+Printer Friendly: Presilo
+Generate printer-friendly version: Generi presilon-amikan version
+after: post
+before: antaŭe
+end: fino
+start: komenci
+View this event: Rigardu ĉi tiun eventon
+View this task: Rigardu ĉi tiun taskon
+January: Januaro
+February: Februaro
+March: Marto
+April: Aprilo
+May_: Majo
+June: junio
+July: Julio
+August: Aŭgusto
+September: Septembro
+October: Oktobro
+November: Novembro
+Jan: Jan.
+Feb: Feb.
+Mar: =
+Apr: Apr.
+May: Majo
+Jun: =
+Jul: =
+Aug: Aŭg
+Sep: Sep.
+Oct: Okt.
+Nov: =
+SU: =
+MO: =
+TU: =
+WE: NI
+TH: =
+FR: =
+SA: =
+unknown-month: nekonata-monato
+First Quarter Moon: Unua Kvara Luno
+Full Moon: Plenluno
+Last Quarter Moon: Lasta Kvaronluno
+New Moon: Nova luno
+Error TIME_SLOTS undefined!: Eraro: TIME_SLOTS nedifinita!
+The following error occurred: La sekva eraro okazis
+You are not authorized.: Vi ne estas rajtigita.
+Add N hours to: Aldonu N horojn al
+Subtract N hours from: Subtrahi N horojn de
+same as: same kiel
+server time: servila tempo
+Cannot read timezone file XXX.: Ne povas legi horzono-dosieron: XXX.
+Your current GMT offset is XXX hours.: Via nuna GMT-ofseto estas XXX horoj.
+Unauthorized: Neaŭtorizita
+Error approving event XXX.: Eraro dum aprobado de evento: XXX.
+Error deleting event XXX.: Eraro dum forigo de evento: XXX.
+Error rejecting event XXX.: Eraro malakceptanta eventon: XXX.
+Sunday: dimanĉo
+Monday: Lundo
+Tuesday: Mardo
+Wednesday: Merkredon
+Thursday: Ĵaŭdo
+Friday: Vendredo
+Saturday: Sabaton
+Sun: sunon
+Mon: Lundo
+Tue: Mar
+Wed: Merkredo
+Thu: =
+Fri: Vendredo
+Sat: Sab
+unknown-weekday: nekonata-labortago
+Invalid referring URL: Nevalida referenca URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Indekso
+Documentation: Dokumentado
+Page: Paĝo
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Mia Kalendaro
+Add New Entry: Aldoni Novan Eniron
+Add New Task: Aldoni Novan Taskon
+Logout: Elsaluti
+Home: Hejmo
+Back to My Calendar: Reen al Mia Kalendaro
+Go to: Iru al
+Manage calendar of: Administri kalendaron de
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Retumilo-Lingvo Ne Trovita
+(not supported): (ne subtenata)
+Abkhazian: Abkaza
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Malproksime
+Afrihili: =
+Afrikaans: Afrikansa
+Ainu: =
+Akan: =
+Akkadian: Akada
+Albanian: Albana
+Aleut: =
+Algonquian: Algonkeno
+Altai (Southern): Altai (Suda)
+Amharic: Amhara
+Angika: =
+Apache: =
+Arabic (Algeria): Araba (Alĝerio)
+Arabic (Bahrain): Araba (Barejno)
+Arabic (Egypt): Araba (Egiptujo)
+Arabic (Iraq): Araba (Irako)
+Arabic (Jordan): Araba (Jordanio)
+Arabic (Kuwait): Araba (Kuvajto)
+Arabic (Lebanon): Araba (Libano)
+Arabic (Libya): Araba (Libio)
+Arabic (Morocco): Araba (Maroko)
+Arabic (Oman): Araba (omana)
+Arabic (Qatar): Araba (Kataro)
+Arabic (Saudi Arabia): Araba (Saud-Arabio)
+Arabic (Syria): Araba (Sirio)
+Arabic (Tunisia): Araba (Tunizio)
+Arabic (U.A.E.): Araba (U.A.E.)
+Arabic (Yemen): Araba (Jemeno)
+Arabic: la araba
+Aragonese: La aragona
+Aramaic: Aramea
+Arapaho: =
+Arawak: =
+Armenian: Armena
+Assamese: Asama
+Asturian: Asturia
+Athapascan: =
+Avaric: Avara
+Avestan: =
+Awadhi: =
+Aymara: Ajmaro
+Azerbaijani: Azera
+Balinese: Balianoj
+Baluchi: Baluki
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: Baŝkiro
+Basque: Eŭska
+Beja: =
+Belarusian: Belorusa
+Bemba: =
+Bengali: Bengala
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Nigra piedo
+Blin: =
+Bliss: Feliĉaĵo
+Bosnian: Bosnia
+Braj: =
+Breton: Bretona
+Buginese: =
+Bulgarian: Bulgaro
+Buriat: =
+Burmese: Birmanoj
+Caddo: =
+Catalan: Kataluna
+Cebuano: =
+Chagatai: Ĉagatai
+Chamorro: =
+Chechen: Ĉeĉeno
+Cherokee: Ĉerokoj
+Cheyenne: =
+Chibcha: Ĉibĉa
+Chichewa: =
+Chinese (Hong Kong): Ĉina (Honkongo)
+Chinese (PRC): Ĉina (PRC)
+Chinese (Simplified/GB2312): Ĉina (Simpligita / GB2312) 
+Chinese (Singapore): Ĉina (Singapuro)
+Chinese (Taiwan): Ĉina (Tajvano)
+Chinese (Traditional/Big5): Ĉina (Tradicia / Granda5)
+Chinook: Ĉinuk-helikoptero
+Chipewyan: =
+Choctaw: Ĉoktao
+Chuukese: =
+Chuvash: Ĉuvaŝa
+Coptic: Kopta
+Cornish: Kornvala
+Corsican: Korsika
+Cree: Krio-indiano
+Creek: =
+Croatian: Kroata
+Czech: Ĉe Czecha
+Dakota: Dakoto
+Danish: Dana
+Dargwa: =
+Delaware: Delavaro
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Nederlanda (Belgio)
+Dutch: Nederlanda
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Elamito
+English (Australia): La angla (Aŭstralio)
+English (Belize): La angla (Belizo)
+English (Canada): La angla (Kanado)
+English (Ireland): La angla (Irlando)
+English (Jamaica): La angla (Jamajko)
+English (New Zealand): La angla (Nov-Zelando)
+English (Philippines): La angla (Filipinoj)
+English (South Africa): La angla (Sudafriko)
+English (Trinidad & Tobago): La angla (Trinidado kaj Tobago)
+English (United Kingdom): La angla (Unuiĝinta Reĝlando)
+English (United States): La angla (Usono)
+English (Zimbabwe): La angla (Zimbabvo)
+English: Angla-Usona
+Erzya: =
+Esperanto: =
+Estonian: Estono
+Ewe: Ŝafino
+Ewondo: =
+Fang: Dentego
+Fanti: =
+Faroese: Feroa
+Fijian: Fiĝiano
+Filipino: Filipinano
+Finnish: Finna
+Fon: =
+French (Belgium): Franca (Belgio)
+French (Canada): Franca (Kanado)
+French (France): Franca (Francio)
+French (Luxembourg): Franca (Luksemburgio)
+French (Monaco): Franca (Monako)
+French (Switzerland): Franca (Svislando)
+French: Francoj
+Frisian (Eastern): Frisa (orienta)
+Frisian (Northern): Frisa (norda)
+Frisian (Western): Frisa (okcidenta)
+Frisian: Frisa
+Friulian: Friula
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galega
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Kartvela
+German (Austria): Germana (Aŭstrio)
+German (Germany): Germana (Germanio)
+German (Liechtenstein): Germana (Liechtenŝtejno)
+German (Luxembourg): Germana (Luksemburgio)
+German (Standard): Germana (normo)
+German (Switzerland): Germana (Svislando)
+German: Germana
+Gilbertese: Gilbertano
+Gondi: =
+Gorontalo: =
+Gothic: Gotika
+Grebo: =
+Greek: Greka
+Greenlandic: Gronlanda
+Guarani: Gvarania
+Gujarati: Gujaratio
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haitia (kreola)
+Haitian: Haitiano
+Hausa: =
+Hawaiian: Havaja
+Hebrew: Hebrea
+Herero: =
+Hiligaynon: =
+Hindi: Hinda
+Hiri Motu: =
+Hittite: Hitito
+Hmong: =
+Holo (Taiwanese): Holo (tajvana)
+Hungarian: Hungara
+Hupa: =
+Iban: =
+Icelandic: Islanda
+Ido: Mi faras
+Igbo: =
+Iloko: =
+Indonesian: Indonezia
+Ingush: Inguŝoj
+Inuktitut: =
+Inupiaq: =
+Iranian: Irana
+Irish (Gaelic): Irlanda (gaela)
+Irish: Irlandano
+Iroquoian: Irokvoian
+Italian (Switzerland): Itala (Svislando)
+Italian: Itala
+Japanese: Japano
+Javanese: Java
+Judeo-Arabic: Jude-araba
+Judeo-Persian: Jud-persa
+Kabardian: =
+Kabyle: Kabilo
+Kachin: =
+Kalaallisut: =
+Kalmyk: Kalmuk
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: Karaĉaj-Balkar
+Karelian: Karela
+Kashmiri: Kaŝmira
+Kashubian: Kaŝuba
+Kawi: =
+Kazakh: Kaza Kazakha
+Khasi: =
+Khmer (Central): Mermeroj (Centra)
+Khmer: Mermeroj
+Khotanese: =
+Kikuyu: Kikujo
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: Kirgiza
+Klingon: Klingono
+Komi: =
+Kongo: =
+Konkani: La konkana
+Korean (Johab): Korea (Johab)
+Korean (North): Korea (norda)
+Korean (South): Korea (suda)
+Korean: Korea
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: Kumik
+Kurdish: Kurda
+Kutenai: =
+Kyrgyz: Kirgizo
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Latina
+Latvian: Latva
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Litova
+Lojban: Loĵbano
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Luksemburgia
+Macedonian: Makedona
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Madagaskarano
+Malay: Malaja
+Malayalam: Malajala
+Maldivian: Maldivano
+Maltese: Maltano
+Manchu: Manĉura
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: Mankso
+Maori: Maora
+Mapuche: Mapuĉo
+Marathi: Maratio
+Mari: =
+Marshallese: Marŝala
+Marwari: =
+Masai: =
+Mayan: Majaa
+Mende: =
+Mi&#39;kmaq: Mikmakoj
+Minangkabau: =
+Mirandese: =
+Mohawk: Mohikano
+Moksha: =
+Moldavian: Moldava
+Mongo: =
+Mongolian: Mongolo
+Montenegrin: Montenegra
+Moroccan: Marokano
+Mossi: =
+Myanmar: Mjanmao
+Māori: Maora
+N&#39;Ko: N'Ko
+Nauru: Nauro
+Navajo: Navaho
+Ndebele (North): Ndebele (Norda)
+Ndebele (South): Ndebele (Suda)
+Ndebele: =
+Ndonga: =
+Neapolitan: Napola
+Nepali: Nepala
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Norena
+Norwegian (Bokmål): Norvega (Bokmål)
+Norwegian (Nynorsk): Norvega (nynorsk)
+Norwegian: Norvega
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Okcitana
+Odia: =
+Ojibwa: Oĝibvoj
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Oseta
+Pahlavi: =
+Palauan: =
+Pali: La palia
+Pampanga: Pampango
+Pangasinan: Pangasinano
+Panjabi: =
+Papiamento: =
+Pashto: Paŝto
+Pedi: =
+Persian (Farsi): Persa (persa)
+Persian (Iran): Persa (Irano)
+Persian: Persa
+Phoenician: Feniciano
+Pohnpeian: =
+Polish: Pola
+Portuguese: Portugala
+Portuguese/Brazil: Portugala / Brazila
+Punjabi (India): Panĝaba (Barato)
+Punjabi (Pakistan): Panĝaba (Pakistano)
+Punjabi: Panĝaba
+Quechua: Keĉua
+Rajasthani: Raĝasthano
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Retoromana
+Romanian: Rumana
+Romansh: Retoromanĉe
+Romany: =
+Rundi: =
+Russian (Moldavia: Rusa (Moldavio
+Russian (Republic of Moldova): Rusa (Respubliko Moldavio)
+Russian: Rusa
+Sami (Inari): Samea (Inari)
+Sami (Lappish): Samea (lapona)
+Sami (Lule): Samea (Lule)
+Sami (Northern): Samea (norda)
+Sami (Skolt): Samea (Skolt)
+Sami (Southern): Samea (suda)
+Sami: Samea
+Samoan: Samoano
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Sanskrito
+Santali: =
+Sardinian: Sardo
+Sasak: =
+Scots (Gaelic): Skotoj (gaele)
+Selkup: =
+Serbian (Upper): Serba (Supra)
+Serbian: Serbo
+Serer: =
+Sesotho: Sesoto
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Sicilia
+Sindhi: =
+Sinhala: =
+Slavic: Slava
+Slovak: Slovaka
+Slovenian: Slovena
+Sogdian: =
+Somali: Somalo
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorabo (Malsupra)
+Sorbian (Upper): Sorabo (Supra)
+Sorbian: Sorabo
+Sotho: Soto
+Spanish (Argentina): Hispana (Argentino)
+Spanish (Bolivia): Hispana (Bolivio)
+Spanish (Chile): Hispana (Ĉilio)
+Spanish (Colombia): Hispana (Kolombio)
+Spanish (Costa Rica): Hispana (Kostariko)
+Spanish (Dominican Republic): Hispana (Dominika Respubliko)
+Spanish (Ecuador): Hispana (Ekvadoro)
+Spanish (El Salvador): Hispana (Salvadoro)
+Spanish (Guatemala): Hispana (Gvatemalo)
+Spanish (Honduras): Hispana (Honduro)
+Spanish (Mexico): Hispana (Meksiko)
+Spanish (Nicaragua): Hispana (Nikaragvo)
+Spanish (Panama): Hispana (Panamo)
+Spanish (Paraguay): Hispana (Paragvajo)
+Spanish (Peru): Hispana (Peruo)
+Spanish (Puerto Rico): Hispana (Porto-Riko)
+Spanish (Spain): Hispana (Hispanio)
+Spanish (Uruguay): Hispana (Urugvajo)
+Spanish (Venezuela): Hispana (Venezuelo)
+Spanish: Hispana
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumera
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: Svahila
+Swati: Svati
+Swedish (Finland): Sveda (Finnlando)
+Swedish (Sweden): Sveda (Svedujo)
+Swedish: Sveda
+Syriac: Siria
+Tagalog: Tagaloga
+Tahitian: Tahitiano
+Tai: =
+Taiwan: Tajvano
+Tajik: Taĝiko
+Tamashek: =
+Tamil: Tamila
+Tatar: Tataro
+Telugu: La telugua
+Tereno: =
+Tetum: Tetumo
+Thai: Taja
+Tibetan: Tibetano
+Tigre: Tigro
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): Tongo (Nytmhasa)
+Tonga (Tonga Islands): Tongo (Tongaj Insuloj)
+Tonga: Tongo
+Tsimshian: =
+Tsonga: =
+Tswana: Cvano
+Tumbuka: =
+Turkish: Turka
+Turkmen: Turkmenoj
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: Ugarita
+Ukrainian: Ukraina
+Umbundu: =
+Urdu: Urdua
+Uyghur: Ujguro
+Uzbek: Uzbeka
+Vai: =
+Venda: Vendo
+Vietnamese: Vjetnama
+Volapük: Volapuko
+Votic: =
+Wakashan: =
+Walloon: Valona
+Waray: =
+Washo: =
+Welsh: Kimra lingvo
+Wolaitta: =
+Wolof: Volofa
+Xhosa: Kosa
+Yakut: Jakuto
+Yao: Jao
+Yapese: =
+Yiddish: Jida
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: Zapoteko
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: La zulua
+Browser-defined: Retumilo difinita
+event: evento
+journal: ĵurnalo
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Nevalida uzantnomo
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: malĝusta pasvorto
+no such user: ne tia uzanto
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Konto malaktivigita
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Intervalo
+Months: Monatoj
+Month Days: Monataj Tagoj
+Days: Tagoj
+Weeks: Semajnoj
+Position: Pozicio
+Until: Ĝis
+Count: Grafo
+Inclusion Dates: Inkludaj Datoj
+Exclusion Dates: Ekskludaj Datoj
+Event Imported: Evento Importita
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: bajtoj
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Sciigo
+authenticate: SMTP-Eraro: Ne povis aŭtentikigi
+connect_host: SMTP-Eraro: Ne povis konektiĝi al SMTP-gastiganto:
+data_not_accepted: SMTP-Eraro: Datumoj ne akceptitaj
+encoding: Nekonata kodigado:
+execute: Ne povis ekzekuti:
+file_access: Ne povis aliri dosieron:
+file_open: Dosiera Eraro Ne povis malfermi dosieron:
+from_failed: La sekva De-adreso malsukcesis:
+instantiate: Ne eblis krei retpoŝtan funkcion
+mailer_not_supported: poŝtilo ne estas subtenata
+provide_address: Vi devas doni almenaŭ unu adresan retpoŝtadreson.
+recipients_failed: SMTP-Eraro: La jenaj adresatoj malsukcesis:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Enigu Karakterojn Viditajn en Grafiko
+Enter the correct letters and numbers...: Enigu la ĝustajn literojn kaj ciferojn de la bildo en la tekstujon. Ĉi tiu malgranda testo funkcias kiel alira limigo kontraŭ malicaj robotoj. Simple reŝargu la paĝon se ĉi tiu grafikaĵo estas tro malfacile legebla
+Challenge/Response: Defio / Respondo
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Ĉu ŝanĝi la daton kaj horon de ĉi tiu eniro?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Vi ne enigis Mallongan Priskribon
+time prior to work hours...: tempo antaŭ laborhoroj ...
+Invalid Event Date: Nevalida Eventodato
+Please add a participant: Bonvolu aldoni partoprenanton
+Invalid Date: Nevalida Dato
+You have not entered a valid time of day: Vi ne eniris validan horon de la tago.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Kalendara ID ne povas esti malplena.
+First and last names cannot both be blank.: Unua kaj familia nomo ne povas esti malplenaj.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Nevalida koloro
+Color format should be RRGGBB.: Kolora formato devas esti #RRGGBB.
+URL cannot be blank.: URL ne povas esti malplena.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Dosiera tipo ne kongruas kun Importa Formato
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Nevalida koloro por dokumenta fono.
+Invalid color for document title.: Nevalida koloro por dokumenta titolo.
+Invalid color for table cell background.: Nevalida koloro por tabela ĉela fono.
+Invalid color for table cell background for today.: Nevalida koloro por fona tablo-ĉelo hodiaŭ.
+Invalid work hours.: Nevalidaj labortempoj.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Servila URL devas finiĝi per oblikvo (/).
+Invalid color for table grid.: Nevalida koloro por tabela krado.
+Invalid color for event popup background.: Nevalida koloro por fona ŝprucfono.
+Invalid color for event popup text.: Nevalida koloro por okazaĵa ŝprucfenestra teksto.
+Invalid color for table header text.: Nevalida koloro por tabela kapteksto.
+Invalid color for table header background.: Nevalida koloro por tabela kapfono.
+Server URL is required.: Servila URL necesas.
+Invalid Color: Nevalida Koloro
+Database Name: Datumbaza Nomo
+Full Path (no backslashes): Plena Vojo (sen kontraŭaj oblikvoj)
+The password contains illegal characters.: La pasvorto enhavas kontraŭleĝajn signojn.
+Error you must specify a Single-User Login: Eraro: Vi devas specifi Unuuzantan Ensaluton
+Could not find XXX.: Ne povis trovi XXX.
+Could not find XXX in DOM.: Ne povis trovi XXX en DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Ĉi-semajne
+This Month: Ĉi-Monate
+This Year: Ĉijare
+Exit: Eliru
+Add New Event: Aldoni Novan Eventon
+Delete Entries: Forigi Artikolojn
+My Views: Miaj Vidpunktoj
+Manage Calendar of: Administri Kalendaron de
+My Reports: Miaj Raportoj
+My Profile: Mia Profilo
+Public Calendar: Publika Kalendaro
+Unapproved Events: Neaprobitaj Eventoj
+User Manager: Uzanto-Administranto
+Help Contents: Helpa Enhavo
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Datumbaza Konservejo
+Create New: Kreu Novan
+Failure Reason: Malsukcesa Kialo:
+You must manually create database: Vi devas permane krei datumbazon.
+Single-User: Unusola
+Test Settings: Testaj Agordoj
+Timezone Conversion Successful: Horzona Konvertiĝo Sukcesa
+WebCalendar Installation Wizard Step XXX: RetejaKalendaro-Instala Sorĉisto Paŝo XXX
+Password Accepted: Pasvorto Akceptita
+Successful Login: Sukcesa Ensaluto
+Password Incorrect: Pasvorto Malĝusta
+Invalid Login: Nevalida Salutnomo
+Display Errors: Vidigi Erarojn
+File Uploads: Dosieraj Alŝutoj
+Allow URL fopen: Permesu URL-malfermon (necesa nur se Foraj Kalendaroj estas uzataj)
+Safe Mode: Sekuran modon
+Safe Mode Allowed Vars: Sendanĝeraj Permesitaj Varoj (TZ necesas nur se Sekura Reĝimo estas Enŝaltita)
+GD: GD (bezonata por Gradientaj Bildaj Fonoj)
+Passwords do not match!: Pasvortoj ne egalas!
+Unable to write password to settings.php file: Ne eblas skribi pasvorton al dosiero "settings.php".
+Password Updated: Pasvorto Ĝisdatigita
+Password has been set: Pasvorto estas agordita.
+Connection Successful...: Konekto Sukcesa  Bonvolu iri al sekva paĝo por daŭrigi instaladon.
+Correct your entries or click the Create New...: Korektu viajn enirojn aŭ alklaku la butonon  Krei Novan  por daŭrigi la instaladon.
+Correct your entries and try again.: Korektu viajn enskribojn kaj reprovu.
+XXX does not exist: XXX ne ekzistas
+XXX is not writable: XXX ne estas skribebla
+Error Converting Timezone: Eraro dum Konvertado de Horzono
+Error Unable to write to file XXX.: Eraro Ne eblas skribi al dosiero XXX.
+Please change the file permissions of this file.: Bonvolu ŝanĝi la dosierajn permesojn de ĉi tiu dosiero.
+Please change includes dir permission: Bonvolu ŝanĝi la dosierajn permesojn de via "inkluziva" dosierujo por permesi skribadon de aliaj uzantoj.
+Your settings have been saved.: Viaj agordoj estas konservitaj.
+OFF: =
+ON: SUR
+WebCalendar Setup Wizard: Sorĉisto por Agordi ReteKalendaron
+This installation wizard will guide you...: Ĉi tiu instalila sorĉisto gvidos vin agordi bazan instaladon de WebCalendar.<br>Por helpo kaj problemoj, vidu:<br>
+System Administrators Guide: Gvidilo de Sistema Administranto
+Frequently Asked Questions: Oftaj Demandoj
+FAQ: Oftaj Demandoj
+Troubleshooting: Problemoj
+Getting Help: Ricevante Helpon
+Upgrading Guide: Ĝisdatiga Gvidilo
+User Supported Wiki: Vikipediisto Subtenata de Uzanto
+PHP Version Check: PHP-Versio-Kontrolo
+Check to see if PHP 7.1.0 or greater is installed.: Kontrolu ĉu PHP 7.1.0 aŭ pli granda estas instalita.
+PHP version: PHP-versio
+PHP Settings: Agordoj de PHP
+Detailed PHP Info: Detalaj PHP-Informoj
+settings.php Status: Stato "settings.php"
+Session Check: Sesio-Kontrolo
+To test the proper operation of sessions...: Por testi la taŭgan funkciadon de kunsidoj, reŝargu ĉi tiun paĝon. Vi devas vidi la sesian nombrilon pliigi ĉiun fojon.
+SESSION COUNTER: SESIO-KONTRILO
+The file permissions of settings.php are set...: La dosieraj permesoj de "settings.php" estas agorditaj tiel ke la instalilo ne havas permeson modifi ĝin. Bonvolu ŝanĝi la dosierajn permesojn de la sekva dosiero por daŭrigi
+The file permissions of the includes directory are set...: La dosieraj permesoj de la inkluziva dosierujo estas agorditaj tiel ke la instalilo ne havas permeson krei novan dosieron. Bonvolu ŝanĝi la permesojn de la sekva dosierujo por daŭrigi
+Your settings.php file appears to be valid.: Via dosiero "settings.php" ŝajnas esti valida.
+Configuration Wizard Password: Agorda Sorĉisto-Pasvorto
+Create Settings File Password: Kreu Agordojn-Dosieran Pasvorton
+db setup directions...: En ĉi tiu sekcio vi starigos kaj provos konekton al via datumbaza servilo. La kontaj informoj provizitaj devas havi PLENajn permesojn krei datumbazojn, tabelojn kaj uzantojn. Se ĉi tio ne eblas, aŭ via aliro al datumbazo estas limigita, vi devos mane agordi vian datumbazon.
+Database Status: Datumbaza Stato
+Supported databases for your PHP installation: Subtenitaj datumbazoj por via PHP-instalado
+Your current database settings are able to access the database.: Viaj aktualaj agordoj de datumbazo povas aliri la datumbazon.
+Please Test Settings: Bonvolu Provi Agordojn
+Your current database settings are not able...: Viaj aktualaj datumbazaj agordoj ne povas aliri la datumbazon aŭ ankoraŭ ne estis provitaj.
+Database Settings: Datumbazaj Agordoj
+Database Type: Datumbaza Tipo
+Server: Servilo
+Connection Persistence: Konekta Persisto
+All your database tables appear to be up...: Ĉiuj viaj datumbazaj tabeloj ŝajnas esti ĝisdatigitaj. Vi povas iri al la sekva paĝo kaj kompletigi vian aranĝon de WebCalendar.
+This appears to be a new installation...: Ĉi tio ŝajnas esti nova instalado. Se ĉi tio ne ĝustas, bonvolu reiri al la antaŭa paĝo kaj korekti viajn agordojn.
+This appears to be an upgrade...: Ĉi tio ŝajnas esti ĝisdatigo de versio&nbsp;XXX&nbsp;al&nbsp;YYY.
+The database requires some data input...: La datumbazo bezonas iom da datuma enigo Alklaku Ĝisdatigi Datumbazon por kompletigi la ĝisdatigon.
+In this section we will perform...: En ĉi tiu sekcio ni plenumos la ŝanĝojn por altigi vian datumbazon al la bezonata nivelo. Se vi uzas plene subtenatan datumbazon, ĉi tiu paŝo plenumiĝos aŭtomate por vi. Se ne, la bezonata SQL povas esti montrata kaj vi devus povi tranĉi kaj englui ĝin en vian fenestran demandan fenestron.
+No database actions are required.: Neniuj datumbazaj agoj necesas.
+The following database actions are required: La jenaj datumbazaj agoj necesas
+ODBC Underlying Database: ODBC-Subesta Datumbazo:
+Automatic installation not supported: Aŭtomata instalado ne estis plene efektivigita por via datumbaza tipo. Vi devos permane krei la bezonatajn tabelojn per la SQL provizita. Bonvolu alklaki  Montru SQL  por daŭrigi. Tranĉi kaj Alglui en vian datumbazan demandan fenestron.
+This may take several minutes to complete: Ĉi tio eble daŭros kelkajn minutojn.
+Install Database: Instalu Datumbazon
+Update Database: Ĝisdatigu Datumbazon
+Display Required SQL: Vidigi Bezonatan SQL
+Return to previous page after processing SQL.: Post mane prilaborado de ĉi tiu SQL, vi devos reveni al la antaŭa paĝo kaj retesti vian datumbazon por ke la skripto povu detekti la ŝanĝojn.
+This is the final step in setting up your WebCalendar Installation.: Ĉi tio estas la fina paŝo por agordi vian instaladon de WebCalendar.
+Timezone Conversion: Horzona Konvertiĝo
+It appears that you have NOT converted...: Ŝajnas, ke vi NE konvertis viajn ekzistantajn WebCalendar-eventajn datumojn al GMT. Se vi havas, vi povas ignori ĉi tiun avizon kaj ne daŭrigi la konvertiĝon. Se temas pri nova instalado, vi eble ankaŭ ignoros ĉi tiun avizon.
+Convert Data to GMT: Konverti Datumojn al GMT
+Application Settings: Aplikaĵoj
+HTTP-based authentication was not detected...: HTTP-bazita aŭtentokontrolo ne estis detektita. Vi devos reagordi vian retservilon se vi volas elekti 'Retservilon' el la elektoj sube 'Uzanto-Aŭtentikigo'.
+HTTP-based authentication was detected...: HTTP-bazita aŭtentokontrolo estis detektita. Uzanta aŭtentikigo estas pritraktita de via retservilo. Vi devas elekti 'Retservilon' el la listo de elektoj 'Uzanta Aŭtentikigo' sube.
+Create Default Admin Account: Kreu Defaŭltan Administran Konton
+(Admin Account Not Found): (Admin-Konto Ne Trovita)
+User Authentication: Uzanto-Aŭtentikigo
+Web-based via WebCalendar (default): Rete bazita per WebCalendar (defaŭlte)
+Web Server (not detected): Retservilo (ne detektita)
+Web Server (detected): Retservilo (detektita)
+None (Single-User): Neniu (Unusola)
+Read-Only: Nurlegebla
+Environment: Medio
+Production: Produktado
+Development: Disvolviĝo
+Save Settings: Konservu Agordojn
+Launch WebCalendar: Lanĉu Retkalendaron
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Eraro dum ĝisdatigo de tablo "XXX": JJJ.
+Conversion Successful: Konvertiĝo Sukcesa 
+Perl script required: Via antaŭa versio de WebCalendar postulas ruli PERL-skripton por konverti viajn datumojn. Bonvolu ruli /tools/upgrade_to_0.9.7.pl kaj revenu al ĉi tiu paĝo por daŭrigi.
+previous version requires updating several tables: Via antaŭa versio de WebCalendar postulas ĝisdatigi plurajn datumbazajn tabelojn.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: SENA PREVIDO DISPONIBLE
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Eraro konektante al datumbazo
+Include Path: Inkluzivi Vojon
+Deleting events for: Forigado de eventoj por
+Importing events for: Importado de eventoj por
+No data returned from: Neniuj datumoj revenis de
+for non-user calendar: por neuzanta kalendaro
+No Remote Calendars found: Neniuj Foraj Kalendaroj troviĝis
+Remote Calendars not enabled: Malproksimaj Kalendaroj ne ebligitaj
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ne povis trovi eventan identigilon
+could not find event id XXX in database.: ne povis trovi eventan identigilon XXX en datumbazo.
+task: tasko
+This is a reminder for the XXX detailed below.: Ĉi tio estas memorigilo por la XXX detala sube.
+Pecentage Complete: Pecentage Kompleta
+Reminder: Rememorigilo
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Ne subtenata ago: XXX.
+No event id specified.: Neniu evento identigita.
+Not authorized (not admin).: Ne rajtigita (ne administranto).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Serĉante eventojn por XXX de la jaro YYY ĝis la dato ZZZ.
+Found XXX events in time range.: Trovis XXX-eventojn laŭ tempintervalo.
+Event id=XXX YYY at ZZZ on AAA.: Eventa identigilo = XXX "YYY" ĉe ZZZ ĉe AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Permesante al XXX-uzanto vidi la kalendaron de alia uzanto.
+Error Email reminders disabled for user XXX.: Eraro: Retpoŝtaj memorigiloj malebligitaj por uzanto "XXX".
+Number of site_extras XXX.: Nombro de retejekstraj: XXX.
+Reminder set for event.: Memoriga aranĝo por evento.
+Mins Before XXX.: Minoj Antaŭe: XXX.
+Event time is XXX.: Eventa tempo estas: XXX.
+Remind time is XXX.: Memorigi tempon estas: XXX.
+Reminders for user XXX, login YYY.: Memorigiloj por uzanto "XXX", ensalutu "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Akiri neaprobitan uzanton "XXX".
+Event id=XXX YYY already sent.: ID de evento = XXX "YYY" jam sendita.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Neniu ensaluto necesas por unusola reĝimo.
+No login required for HTTP authentication.: Neniu ensaluto necesas por HTTP-aŭtentikigo.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Nevalidaj signoj en ensaluto.
+Username XXX does not exist.: Uzantnomo "XXX" ne ekzistas.
+You cannot remove admin rights from yourself!: Vi ne povas forigi administrajn rajtojn de vi mem!
+Unknown error saving user: Nekonata eraro dum konservado de uzanto.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Neniuj partoprenantoj trovitaj por identiga evento: XXX.
+Db error Could not find event id XXX.: Db-eraro: Ne povis trovi eventan identigilon XXX.
+Error Could not find event id XXX in database.: Eraro: Ne povis trovi eventan identigilon XXX en datumbazo.

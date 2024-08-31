@@ -1,0 +1,2387 @@
+# Chichewa ny
+#
+# Mtunduwo uli ndi mutu wosankha:
+#
+# Yotanthauzidwa ndi: dzina lanu ndi imelo
+# Kusintha komaliza: tsiku lomasulira
+# (Kuphatikiza otsogola "#" ndi ndemanga zilizonse zoperekedwa ndi omasulira am'mbuyomu.
+# Mzere woyamba wopanda kanthu umatha ndemanga zamutu izi.)
+#
+# Wotsatira ambiri momwe angafunikire:
+#
+# Mawu achingerezi: kutanthauzira
+# (Chimodzi pamzere. POPANDA kutsogola "#".
+# Mawu oti "Chingerezi:", kuphatikiza colon ":", amaperekedwa ndi
+# Okonza # WebCalendar. Gawo lanu ndilo "kumasulira".)
+#
+# Chida chazida chimakhala ndi zolemba ziwiri za perl zokuthandizani:
+# - check_translation.pl
+# akuwonetsa ngati mawu onse atamasuliridwa bwino.
+# - update_translation.pl
+# ziwonetsa mafayilo amtunduwu kuti apeze zomasulira ('phrase') ndi
+# chida chothandizira ('phrase'). Idzakonza ziganizo malinga ndi tsambalo
+# (fayilo) yomwe ili ndi chochitika choyamba. Mwasankha, imatha kuyika
+# mawu omwe sanamasuliridwebe mwa kuyika
+#  << MISSING >>
+# pamzere pamwamba pa mawuwa. Ndipo, ngati mawuwo ndi chidule,
+# ziphatikiza mawu onse achingerezi pamzere pansipa mawuwo.
+#
+# Dziwani: Ndikuyesera kuchepetsa kukula kwamafayilo onse. Ngati "kutanthauzira"
+# mawu / mawu ndi ofanana mchilankhulo chanu ndi Chingerezi, ingogwiritsani ntchito chikwangwani "=".
+#
+# Dziwani: Mudzawona kulowa kwa "May_" pansipa. Pali chifukwa chake.
+# Tanthauzirani "May_" ku dzina lathunthu la mwezi ndi "May" mpaka,
+# kawirikawiri zilembo zitatu, chidule cha mwezi (monga "Oct" ya "Okutobala").
+#
+# Ndagwiritsa ntchito Google kumasulira pa izi.
+# Iyenera kukhala yokwanira mpaka wokamba nkhaniyo akatsimikizire.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: Mtundu wa XXX
+WebCalendar is a PHP application used...: WebCalendar ndi pulogalamu ya PHP yomwe imagwiritsidwa ntchito kusunga kalendala yogwiritsa ntchito kamodzi kapena gulu la ogwiritsa ntchito intaneti / intranet. Itha kukhazikitsidwa ngati kalendala ya zochitika.
+Credits: Zowonjezera
+About: Pafupi
+OK: Chabwino
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Vuto lazamasamba: XXX.
+DEFAULT CONFIGURATION: KUSINTHA KWABWINO
+Go: Pitani
+Save: Sungani
+Undo: Sinthani
+Public Access: Kufikira Pagulu
+Admin: Kuwongolera
+User Access Control: Kuwongolera Kwogwiritsa Ntchito
+Allow Access to Other Users Calendar: Lolani Kufikira Kalendala ya Ogwiritsa Ntchito Ena
+Grant This User Access to My Calendar: Perekani Wowerenga Kufikira Kalendala Yanga
+Type: Lembani
+Calendar: Kalendala
+View Event: Onani Zochitika
+View: Onani
+Edit: Sinthani
+Approve/Reject: Vomerezani / Kanani
+Events: Zochitika
+Tasks: Ntchito
+Journals: Zolemba
+Can Invite: Mungayitane
+Can Email: Mungatumize Imelo
+Can See Time Only: Mutha Kuwona Nthawi Yokha
+Assistant: Wothandizira
+Select All: Sankhani Zonse
+Clear All: Chotsani Zonse
+Public: Pagulu
+Confidential: Chinsinsi
+Private: Zachinsinsi
+
+########################################
+# Page: activity_log.php
+#
+Next: Ena
+Previous: Zakale
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Zochitika XXX zili kale kalendala yanu.
+Invalid entry id XXX.: ID yolakwika: "XXX".
+a XXX event may not be added to your calendar: Uwu ndi mwayi wa XXX ndipo sungawonjezeke pa kalendala yanu.
+confidential: zachinsinsi
+private: zachinsinsi
+Error adding event XXX.: Panali vuto lowonjezera chochitika: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Dzina losintha lenileni "XXX".
+Select: Sankhani
+Day: Tsiku
+Week: Mlungu
+Month: Mwezi
+Year: Chaka
+Bottom: Pansi
+Top: Pamwamba
+Anyone: Aliyense
+Participant: Wophunzira
+Settings: Zikhazikiko
+Groups: Magulu
+NonUser Calendars: Kalendala NonUser
+Other: Zina
+Email: Imelo
+Colors: Mitundu
+Document background: Mbiri yazolemba
+Document title: Mutu wazolemba
+Document text: Zolemba
+My event text: Zolemba zanga
+Table grid color: Mtundu wa tebulo
+Table header background: Mutu wamutu wazithunzi
+Table header text: Mutu wamutu patebulo
+Table cell background: Maselo a tebulo
+Table cell background for current day: Maselo patebulo lamasiku ano
+Table cell background for days with events: Maselo azithunzi zamasamba masiku ndi zochitika
+Table cell background for weekends: Ma tebulo akumbuyo kumapeto kwa sabata
+Table cell background for other month: Maselo apazithunzi amwezi wina
+Week number color: Mtundu wa sabata
+Event popup background: Mbiri yakudukiza kwa chochitika
+Event popup text: Zolemba pazomwe zachitika
+System Settings: Zikhazikiko Zamakina
+Help: Thandizeni
+System options: Zosankha zadongosolo
+app-name-help: Imatchula dzina la pulogalamuyo yomwe idzawonekere patsamba la msakatuli pamasamba onse ndi patsamba lolowera. Mtengo womwe mwatchula pano udzawoneka m'mafayilo omasulira omwe amakupatsani mwayi wopereka maudindo osiyanasiyana azilankhulo zosiyanasiyana.
+Application Name: Dzina Lofunsira
+Translated Name (XXX): Dzina Lomasuliridwa (XXX)
+server-url-help: Imatanthauzira ulalo woyambira wa pulogalamuyi. Izi ziphatikizidwa potumiza zikumbutso za imelo ndi zidziwitso.
+Server URL: Ulalo wa Seva
+home-url-help: Imafotokozera ulalo wakunyumba wa pulogalamuyi. Izi zitha kukhala mtheradi kapena pachibale
+Home URL: Ulalo Wanyumba
+language-help: Imatchula chilankhulo choti mugwiritse ntchito.
+Language: Chilankhulo
+Your browser default language is XXX.: Chiyankhulo chanu chosakira ndi "XXX".
+Allow user to use themes: Lolani wogwiritsa ntchito mitu
+themes-help: Ikuloleza kusinthanso kwamakonzedwe. Zolemba zazing'ono ndizosankha zokha.
+Themes: Mitu
+AVAILABLE THEMES: MALANGIZO OTHANDIZA
+None: Palibe
+Preview: Chithunzithunzi
+Site customization: Kusintha kwamasamba
+custom-script-help: Amalola kulowa kwa Javascript kapena mawonekedwe amtundu wamakalata omwe adzaikidwe mu gawo la "mutu" wa HTML patsamba lililonse.
+Custom script/stylesheet: Zolemba / zolemba
+custom-header-help: Imalola chizolowezi cha HTML kuti chiphatikizidwe kumtunda kwa tsamba lililonse.
+Custom header: Mutu wamakhalidwe
+custom-trailer-help: Imalola chizolowezi cha HTML kuti chiziphatikizidwa kumapeto kwa tsamba lililonse.
+Custom trailer: Makonda ngolo
+enable-external-header-help: Ikulola kuti ngoloyo izinyamula kuchokera kufayilo yakunja
+Allow external file for header/script/trailer: Lolani fayilo yakunja ya mutu / script / trailer
+Allow user to override header/trailer: Lolani wogwiritsa ntchito kunyalanyaza mutu / ngolo
+Date and Time: Tsiku ndi Nthawi
+server-tz-help: Imafotokozera maola angati kuti musinthe nthawi kuchokera ku UTC kupita nthawi ya seva.
+Server Timezone Selection: Kusankha Kwanthawi Yakanthawi ya Seva
+tz-help: Imafotokoza kuchuluka kwa maola kuti musinthe nthawi kuchokera ku UTC kupita nthawi yakomweko.
+Default Client Timezone Selection: Kusankha Kwanthawi Yomwe Kasitomala Amasankha
+display-general-use-gmt-help: Ngati zithandizidwa, masiku / nthawi wamba zimawonetsedwa ngati GMT
+Display Common Use Date/Times as GMT: Onetsani Tsiku Lomwe Timagwiritsa Ntchito / Times ngati GMT
+date-format-help: Imafotokozera mtundu wamasiku omwe mumakonda.
+Date format: Mtundu wamasiku
+Small Task Date: Tsiku Laling'ono Lantchito
+display-week-starts-on: Imafotokoza tsiku la sabata lomwe sabata liyambika. Ngati Lolemba lanenedwa, ndiye kuti manambala a sabata adzakhala manambala a sabata la ISO.
+Week starts on: Sabata ikuyamba
+display-weekend-starts-on: Ikani tsiku la sabata kumapeto kwa sabata kuyamba
+Weekend starts on: Sabata limayamba
+time-format-help: Imafotokoza mtundu wanthawi yogwiritsira ntchito:<br><em>12 ora:</em> Onetsani nthawi ngati 3am, 8:30 pm, ndi zina.<br><em>24 ora:</em> Onetsani nthawi ngati 300 , 2030, ndi zina.
+Time format: Mtundu wa nthawi
+12 hour: Maola 12
+24 hour: Maola 24
+timed-evt-len-help: Imafotokozera njira zolowetsera pozindikira kutalika kwa chochitika chakanthawi.
+Specify timed event length by: Tchulani kutalika kwa chochitika ndi
+Duration: Kutalika
+End Time: Nthawi Yotsiriza
+work-hours-help: Imafotokozera nthawi yomwe angawonetse masana.
+Work hours: Maola antchito
+From: Kuchokera
+to: kuti
+Appearance: Maonekedwe
+preferred-view-help: Imatanthauzira mawonekedwe osasintha (Tsiku, Sabata, Mwezi, kapena Chaka).
+Preferred view: Maganizo okondedwa
+Allow top menu: Lolani mndandanda wapamwamba
+Date Selectors position: Sankhani Tsiku
+menu-themes-help: Ikani mitundu ndi mawonekedwe a mndandanda wapamwamba
+Menu theme: Mutu wa menyu
+fonts-help: Imatchula mndandanda wamafonti amomwe mungagwiritsire ntchito (monga "Arial, Helvetica")
+Fonts: Zolemba
+display-sm_month-help: Ngati athandizidwa, awonetseni miyezi yaying'ono pakuwonera kwa mwezi
+Display small months: Onetsani miyezi yaying'ono
+display-weekends-help: Phatikizani kumapeto kwa sabata mukawona sabata.
+Display weekends: Onetsani kumapeto kwa sabata
+display-long-daynames-help: Ngati athandizidwa, mayina amasana awonetsedwa
+Display long day names: Onetsani mayina a tsiku lalitali
+display-alldays-help: Onetsani masiku am'mbuyomu ndi miyezi ikubwera pakuwona kwa mwezi, kudzaza maselo onse.
+Display all days in month view: Onetsani masiku onse pakuwona kwamwezi
+display-week-number-help: Imafotokoza ngati nambala ya sabata (1-52) iyenera kuwonetsedwa pakuwonera kwa mwezi ndikuwonera sabata.
+Display week number: Sonyezani nambala sabata
+display-desc-print-day-help: Phatikizanipo mafotokozedwe azomwe mungachite posindikiza tsiku.
+Display description in printer day view: Onetsani kufotokozera pakuwona tsiku la chosindikiza
+yearly-shows-events-help: Pamawonedwe apachaka, onetsani masiku omwe ali ndi zochitika mwachidwi.
+Display days with events in bold in month and year views: Onetsani masiku okhala ndi zochitika zakuda pamawonedwe amwezi ndi chaka
+display-minutes-help: Ngati athandizidwa, mphindi zotsiriza ndi: 00 nthawi zonse zimawonetsedwa
+Display 00 minutes always: Onetsani mphindi 00 nthawi zonse
+display-end-times-help: Onetsani nthawi yakumapeto kwa chochitika ngati mwanthawi yanthawi
+Display end times on calendars: Onetsani nthawi zomaliza pakalendala
+allow-view-add-help: Chizindikiro cha '+' chidzaphatikizidwa pamawonedwe, kulola ogwiritsa ntchito kuti aziwonjezera mwachangu zochitika makalendala a ena.
+Include add event link in views: Phatikizani zowonjezera ulalo wazowonera
+lunar-help: Ngati zithandizidwa, ziwonetsa zithunzi zing'onozing'ono zoyimira mwezi mwezi uliwonse
+Display Lunar Phases in month view: Onetsani Magawo a Lunar pakuwona kwamwezi
+Restrictions: Zoletsa
+allow-view-other-help: Imatchula ngati wogwiritsa ntchito angawone kalendala ya wina.
+Allow viewing other users calendars: Lolani kuwonera makalendala a ena
+require-approvals-help: Ngati chololedwa, wogwiritsa ntchito ayenera kuvomereza chochitika chisanachitike pa kalendala yawo (pokhapokha Kuwonetsera kovomerezeka sikuvomerezedwa). Dziwani kuti kuyika izi kuti "Ayi" sikuzimitsa kuvomereza kwa kalendala ya Public Access (ngati kalendala ya Public Access itavomerezedwa).
+Require event approvals: Amafuna kuvomerezedwa ndi zochitika
+display-unapproved-help: Imafotokoza ngati zochitika zosavomerezeka zimawonetsedwa mu kalendala yanu.<br>Ngati ayikidwa kuti "Inde", zochitika zosavomerezeka ziwonetsedwa mu kalendala yanu (mumtundu wina).<br>Ngati ayikidwa kuti "Ayi", ndiye zochitika zosavomerezeka ziyenera kuvomerezedwa zisanachitike mu kalendala yanu.
+Display unapproved: Onetsani zosavomerezeka
+conflict-check-help: Fufuzani za mikangano yazomwe zachitika (zochitika ziwiri zomwe zakonzedwa nthawi yofanana ndi munthu yemweyo). Mukakhazikitsa izi kuti "Inde", mudzatha kupanga zochitika ziwiri nthawi imodzi mutatsimikizira chenjezo. Mukakhazikitsa izi kuti "Ayi", palibe kuyang'anira mikangano komwe kudzachitike. Mwina mukufuna kuyika izi kuti "Inde", chifukwa chake kusanthula mikangano kumachitika.
+Check for event conflicts: Fufuzani ngati pali mikangano
+Yes: Inde
+No: Ayi
+conflict-months-help: Ngati kusanthula mikangano kulipo ("Yang'anani mikangano yochitika" yakhazikitsidwa kuti "Ayi" & # 41 ;, izi zikutanthawuza kuti ndi miyezi ingati mtsogolomu tiyenera kuwunika ngati pali zovuta. Ngati mungapeze kuti kuwonjezera zochitika kumatenga nthawi yayitali kuti zikonzeke , kuchepetsa nambala iyi.
+Conflict checking months: Miyezi yowunika mikangano
+conflict-check-override-help: Amalola ogwiritsa ntchito kuthana ndi mikangano ndikukhazikitsa zochitika ziwiri kapena zingapo nthawi yomweyo.
+Allow users to override conflicts: Lolani ogwiritsa ntchito kunyalanyaza mikangano
+limit-appts-help: Amalola woyang'anira makina kukhazikitsa malire pazomwe angathe kudzagwiritsa ntchito tsiku limodzi.
+Limit number of timed events per day: Chepetsani kuchuluka kwa zochitika zakanthawi patsiku
+limit-appts-number-help: Ikufotokozera kuchuluka kwakanthawi kanthawi komwe wogwiritsa ntchito angakhale nako tsiku limodzi.
+Maximum timed events per day: Zolemba nthawi zabwino patsiku
+crossday-help: Ngati zatheka, zochitika zomwe zimatenga masiku ziwonetsedwa masiku osiyana
+Disable Cross-Day Events: Thandizani Zochitika Zamasiku Otsutsana
+disable-location-field-help: Kusankha "Inde" kumachotsa gawo la "Malo" pamasamba azomwe zachitika
+Disable Location field: Letsani gawo la Malo
+disable-url-field-help: Kusankha "Inde" kumachotsa gawo la "URL" pamasamba azomwe zachitika
+Disable URL field: Thandizani gawo la URL
+disable-priority-field-help: Kusankha "Inde" kumachotsa gawo la "Patsogolo" pamasamba azidziwitso za zochitika, ndikupereka mawonekedwe osavuta a novices.
+Disable Priority field: Khutsani gawo loyambirira
+disable-access-field-help: Kusankha "Inde" kumachotsa gawo la "Access" pamasamba azidziwitso, ndikupereka mawonekedwe osavuta a novices.
+Disable Access field: Letsani gawo lofikira
+disable-participants-field-help: Kusankha "Inde" kumachotsa gawo la "Ophunzira" pamasamba azomwe zachitika, kuletsa ogwiritsa ntchito kuwonjezera owonjezera pazomwe zikuchitika. Ngati mungathandize njirayi, mungafune kulepheretsanso gawo la "Lolani kuwonera makalendala a ena".
+Disable Participants field: Letsani gawo la Ophunzira
+disable-repeating-field-help: Kusankha "Inde" kumachotsa gawo la "Kubwereza" mukawonjezera zochitika. Izi zipereka mawonekedwe osavuta a novices.
+Disable Repeating field: Letsani gawo lobwereza
+allow-html-description-help: Ngati athandizidwa, ogwiritsa ntchito atha kulowa mu HTML mu gawo lofotokozera zomwe zachitika. Ngati sizingaloledwe, ma tags a HTML adzathawa kuti awoneke ngati omveka bwino. Chenjezo: Kuyika izi kumathandiza ogwiritsa ntchito kujambula zithunzi patsamba lina.
+Allow HTML in Description: Lolani HTML Kufotokozera
+Popups: Zolemba
+disable-popups-help: Thandizani mapulogalamu kuchokera pamawonekedwe a kalendala
+Disable Pop-Ups: Thandizani Pop-Ups
+popup-includes-siteextras-help: Ngati zathandizidwa, lolani minda yazomwe mungakonzekere patsamba la_extras.php iwonetsedwa popups.
+Display Site Extras in popup: Onetsani Zowonjezera Zowonjezera popup
+popup-includes-participants-help: Ngati zithandizidwa, ophunzira amawonetsedwa pazomwe zachitika.
+Display Participants in popup: Onetsani Ophunzira pakupanga
+Miscellaneous: Zosiyanasiyana
+remember-last-login-help: Ngati chithandizidwa, kulowa kwa wogwiritsa ntchitoyo kudzadzazidwa ndi iwo patsamba lolowera (koma osati mawu achinsinsi), ndipo zomwe wosuta azisankha (kuphatikiza mitundu yomwe amasankha ndi kusankha kwawo chilankhulo).
+Remember last login: Kumbukirani kulowa komaliza
+summary_length-help: Kutalika kwakukulu kwa Kufotokozera Mwachidule pamawonekedwe a kalendala
+Brief Description Length: Kutalika Kwachidule
+user_sort-help: Imasankha mtundu wamndandanda wa Wosuta, Wosagwiritsa ntchito
+User Sort Order: Mtundu Wosuta
+Lastname, Firstname: Dzina, Dzina Loyamba
+Firstname, Lastname: Choyamba, dzina lomaliza
+allow-public-access-help: Ikayatsidwa, kalendala itha kugwiritsidwa ntchito ngati kalendala yowerengera anthu yomwe singafune kuti ogwiritsa ntchito alowemo.
+Allow public access: Lolani kufikira pagulu
+public-access-default-visible: Zochitika pakalendala yapagulu zidzawonekera zokha pa makalendala a ogwiritsa ntchito onse
+Public access visible by default: Kufikira pagulu kumawoneka kosasintha
+public-access-default-selected: Mukamawonjezera chochitika chatsopano, wogwiritsa ntchito pagulu amasankhidwa mwachisawawa ngati wochita nawo.
+Public access is default participant: Kufikira pagulu ndiwosachita nawo chilichonse
+public-access-view-others-help: Mukamagwiritsa ntchito pulogalamuyi ndi mwayi wopezeka pagulu, imafotokoza ngati wogwiritsa ntchito angawone kalendala ya wogwiritsa ntchito kalendala ina.
+Public access can view other users: Kufikira pagulu kumatha kuwona ogwiritsa ntchito ena
+public-access-can-add-help: Ngati athandizidwa, ogwiritsa ntchito omwe amagwiritsa ntchito pulogalamuyi kudzera mu Public Access athe kuwonjezera zochitika zatsopano, koma sadzawonekera kalendala mpaka woyang'anira atavomereza chochitika chatsopanocho.
+Public access can add events: Kufikira pagulu kumatha kuwonjezera zochitika
+public-access-add-requires-approval-help: Ikufotokozera ngati zochitika zomwe zawonjezedwa kudzera pa akaunti ya anthu zimafunikira kuvomerezedwa zisanachitike.
+Public access new events require approval: Zochitika zatsopano zopezeka pagulu zimafuna kuvomerezedwa
+public-access-sees-participants-help: Ngati zithandizidwa, ogwiritsa ntchito kalendala yochokera muakaunti ya anthu athe kuwona omwe akutenga nawo mbali ngati angawone mwatsatanetsatane chochitika.
+Public access can view participants: Kufikira pagulu kumatha kuwona ophunzira
+public-access-override-help: Imalola mayina amachitidwe ndi mafotokozedwe kubisidwa pa kalendala ya anthu
+Override event name/description for public access: Lembetsani dzina / mafotokozedwe azomwe zingachitike pagulu
+public-access-override-text-help: Mawu oti awonetsedwe ngati njira yapamwambayi yathandizidwa. Ngati 'Palibe', idzamasuliridwa.
+Text to display to public access: Malembo oti awonetseke kufikira pagulu
+public-access-captcha-help: Ngati zitha kuchitidwa, zochitika zatsopano zomwe zawonjezedwa ndi Public zimafuna kupititsa chitsimikiziro cha CAPTCHA.
+Require CAPTCHA validation for public access new events: Ikufuna kutsimikizika kwa CAPTCHA kuti anthu athe kupeza zochitika zatsopano
+uac-enabled-help: Ikuthandizira kuwongolera kolowera ogwiritsa ntchito
+User Access Control enabled: Wosuta Access Control chinathandiza
+groups-enabled-help: Imathandizira kuthandizira kwamagulu, kulola ogwiritsa ntchito kusankha ogwiritsa ntchito m'magulu.
+Groups enabled: Magulu athandizidwa
+user-sees-his-group-help: Ngati athandizidwa, ogwiritsa ntchito sadzawona ogwiritsa ntchito kalendala omwe sali mgulu lawo.
+User sees only his groups: Wogwiritsa amawona magulu ake okha
+nonuser-enabled-help: Ngati zithandizidwa, ma admin adzakhala ndi mwayi wowonjezera kalendala zosagwiritsa ntchito ntchito
+Nonuser enabled: Kalendala ya Nonuser Yathandizidwa
+nonuser-list-help: Komwe mungawonetse makalendala osagwiritsa ntchito pamndandanda wa omwe akutenga nawo mbali
+Nonuser list: Onetsani pamndandanda waomwe akutenga nawo mbali pa
+Upcoming Events: Zochitika Zotsatira
+upcoming-events-help: Thandizani ujao.php
+Enabled: Yathandiza
+upcoming-events-allow-override: Lolani tsamba la ogwiritsa ntchito likubwera.php
+Allow user override: Lolani kuti ogwiritsa ntchito anyalanyaze
+upcoming-events-display-caticons: Phatikizani zithunzi zamagulu pakubwera.php
+Display category icons: Onetsani zithunzi zamagulu
+upcoming-events-display-layers: Onetsani zigawo mu ujao.php
+Display layers: Onetsani zigawo
+upcoming-events-display-links: Onetsani maulalo akubwera.php
+Display links to events: Onetsani maulalo ku zochitika
+upcoming-events-display-popups: Onetsani ma popups azomwe zikuchitika.php
+Display event popups: Onetsani mapulogalamu otuluka
+reports-enabled-help: Ngati athandizidwa, ogwiritsa ntchito adzawona gawo la "Malipoti" kumapeto kwa tsamba lililonse ndipo adzaloledwa kupanga malipoti. Kuphatikiza apo, ogwiritsa ntchito admin amatha kupanga malipoti apadziko lonse lapansi omwe adzawonekere pansi pamasamba a ogwiritsa ntchito onse.
+Reports enabled: Malipoti athandizidwa
+subscriptions-enabled-help: Imafotokoza ngati ogwiritsa ntchito kutali atha kulembetsa kalendala ya wogwiritsa ntchito WebCalendar, kuwalola kuti awone zochitika za wogwiritsa ntchito WebCalendar mu pulogalamu yawo yolola iCal (monga iCal ya Apple kapena Mozilla Calendar)
+Allow remote subscriptions: Lolani kulembetsa kwakutali
+remotes-enabled-help: Amalola ogwiritsa ntchito kutsegula mafayilo akutali pogwiritsa ntchito URL
+Allow remote calendars: Lolani makalendala akutali
+rss-enabled-help: Imafotokoza ngati kalendala ya wogwiritsa ntchito ingapezeke kuchokera ku RSS feed.
+Enable RSS feed: Yambitsani RSS feed
+categories-enabled-help: Ikuthandizira magulu azomwe zikuchitika.
+Categories enabled: Magawo athandizidwa
+icon_upload-enabled-help: Ngati athandizidwa, ogwiritsa ntchito amatha kutsitsa zithunzi zamagulu
+Category Icon Upload enabled: Chizindikiro Chachizindikiro cha Gulu chimathandizidwa
+(Requires XXX folder to exist.): (Imafuna chikwatu cha XXX kuti chikhalepo.)
+display-tasks-help: Onetsani zenera laling'ono pa kalendala ya mwezi ndi tsiku
+Display small task list: Onetsani mndandanda wazinthu zazing'ono
+display-tasks-in-grid-help: Onetsani ntchito mu makalendala pamodzi ndi zochitika
+Display tasks in Calendars: Onetsani ntchito mu Makalendala
+allow-external-users-help: Imafotokoza ngati wosagwiritsa ntchito kalendala akhoza kuwonjezeredwa pamwambo. Izi zimalola ogwiritsa ntchito omwe sanali kalendala kuti alembedwe nawo pamisonkhano.
+Allow external users: Lolani ogwiritsa ntchito akunja
+external-can-receive-notification-help: Ogwiritsa ntchito kunja akathandizidwa ndikugwiritsa ntchito imelo, ogwiritsa ntchito akunja amatha kulandira zidziwitso za imelo mwambowu ukawonjezedwa, kusinthidwa kapena kufufutidwa (ngati imelo ya wogwiritsa ntchitoyo yaperekedwa).
+External users can receive email notifications: Ogwiritsa ntchito kunja amatha kulandira zidziwitso za imelo
+external-can-receive-reminder-help: Ogwiritsa ntchito kunja akathandizidwa ndikugwiritsa ntchito imelo, ogwiritsa ntchito kunja amatha kulandira zikumbutso za imelo (ngati imelo ya wogwiritsa ntchitoyo yaperekedwa).
+External users can receive email reminders: Ogwiritsa ntchito kunja amatha kulandira zikumbutso za imelo
+allow-self-registration-help: Lolani ogwiritsa ntchito kuti adzilembetse okha
+Allow self-registration: Lolani kudzilembetsa nokha
+use-blacklist-help: Chepetsani kufikira kwa WebCalendar ntchito kutengera adilesi ya IP
+Restrict self-registration to blacklist: Pewani kudzilembetsa nokha pamndandanda wakuda
+allow-self-registration-full-help: Lolani ogwiritsa ntchito atsopano kuti amalize kulembetsa pa intaneti
+Use self-registration email notifications: Pangani mapasiwedi ndi kutumiza kwa ogwiritsa ntchito atsopano
+allow-attachment-help: Lolani ogwiritsa ntchito kuwonjezera mafayilo pazithunzi pazochitika.
+Allow file attachments to events: Lolani mafayilo ophatikizika kuzinthu
+Admin and owner can always add attachments if enabled.: Admin ndi eni ake nthawi zonse amatha kuwonjezera zowonjezera ngati zingatheke.
+allow-comments-help: Lolani ogwiritsa ntchito kuwonjezera ndemanga pazomwe zachitika.
+Allow comments to events: Lolani ndemanga ku zochitika
+Admin and owner can always add comments if enabled.: Admin ndi eni ake nthawi zonse amatha kuwonjezera ndemanga ngati angathe.
+email-enabled-help: Tsekani kapena kuzimitsa kutumiza maimelo konsekonse kukudziwitsani kapena kukukumbutsani. Ikani ku "ayi", ngati seva yanu sinakhazikitsidwe bwino kuti izitumiza makalata.
+Email enabled: Imelo imathandizidwa
+email-default-sender: Imafotokozera imelo yomwe imafotokoza ngati omwe akutumiza akamatumiza zikumbutso.
+Default sender address: Adilesi yotumiza yokha
+email-mailer: Sankhani imelo (SMTP, PHP mail, sendmail)
+Email Mailer: Tumizani Imelo
+email-smtp-host: Mayina a alendo (ma seva) a SMTP opatukana ndi makasitomala
+SMTP Host name(s): Maina a Makasitomala a SMTP
+email-smtp-port: Nambala ya Port ya SMTP (nthawi zambiri 25)
+SMTP Port Number: Nambala ya Port ya SMTP
+email-smtp-auth: Gwiritsani Kutsimikizika kwa SMTP
+SMTP Authentication: Kutsimikizika kwa SMTP
+email-smtp-username: Dzina la SMTP ngati mukugwiritsa ntchito kutsimikizika
+SMTP Username: Dzina la SMTP
+email-smtp-password: Chinsinsi cha SMTP ngati mukugwiritsa ntchito kutsimikizika
+SMTP Password: Chinsinsi cha SMTP
+Default user settings: Makonda osintha ogwiritsa ntchito
+email-format: Tchulani zokonda za HTML kapena meseji yosavuta
+Email format preference: Makonda amtundu wa imelo
+HTML: =
+Plain Text: Malembo Oyera
+email-include-ics: Phatikizani fayilo ya ICalendar ICS kuti mutumize imelo
+Include iCalendar attachments: Phatikizani zowonjezera za iCalendar
+email-event-reminders-help: Imatchula ngati kutumiza kapena ayi kutumiza zikumbutso za chochitika.
+Event reminders: Zikumbutso za zochitika
+email-event-added: Imafotokoza ngati mungatumize zidziwitso za imelo kapena chochitika mukawonjezeredwa pakalendala yanu.
+Events added to my calendar: Zochitika zowonjezera pa kalendala yanga
+email-event-updated: Ikufotokozera ngati mungatumize zidziwitso za imelo kapena chochitika mukasinthidwa pakalendala yanu.
+Events updated on my calendar: Zochitika zasinthidwa pakalendala yanga
+email-event-deleted: Imafotokoza ngati mungatumize zidziwitso za imelo kapena chochitika mukachotsedwa pakalendala yanu.
+Events removed from my calendar: Zochitika zachotsedwa mu kalendala yanga
+email-event-rejected: Ikufotokozera ngati angatumize kapena kusatumiza zidziwitso za imelo ngati wophunzirayo akukana chochitika chomwe chili kalendala yanu.
+Event rejected by participant: Chochitika chakanidwa ndi omwe akutenga nawo mbali
+email-event-create: Imatchula ngati omwe adalemba adzalandira imelo
+Event that I create: Chochitika chomwe ndimapanga
+Color options: Zosankha zamitundu
+Allow user to customize colors: Lolani wogwiritsa ntchito kusintha mitundu
+gradient-colors: Ngati mitundu yoyeserera yamagetsi imagwiritsidwa ntchito. Izi zingakhudze kwambiri magwiridwe antchito.
+Enable gradient images for background colors: Yambitsani zithunzi zosanja za mitundu yakumbuyo
+Not available: Sakupezeka
+Background Image options: Zithunzi Zosintha Zithunzi
+bgimage-help: Ulalo wazithunzi zakumbuyo zomwe mukufuna. Kukhala wachibale.
+Background Image: Chithunzi Chakumbuyo
+bgrepeat-help: Kuwongolera kubwereza machitidwe azithunzi zakumbuyo.
+Background Repeat: Kubwereza Kumbuyo
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Othandizira
+Preferences: Zokonda zanu
+Control Panel: Gawo lowongolera
+Users: Ogwiritsa ntchito
+Account: Akaunti
+Categories: Magulu
+Views: Mawonedwe
+Layers: Zigawo
+Reports: Malipoti
+Delete Events: Chotsani Zochitika
+Activity Log: Ntchito Log
+System Log: Chida Chodulira
+Security Audit: Audit Yachitetezo
+Public Preferences: Zokonda Pagulu
+Unapproved Public Events: Zochitika Pagulu Losavomerezeka
+Administrative Tools: Zida Zoyang'anira
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Zobwerezedwa Dzina: "XXX".
+Username XXX already exists.: Dzinalo "XXX" lilipo kale.
+Email address XXX already exists.: Imelo adilesi ya "XXX" ilipo kale.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Ndemanga Zowonjezera (zosankha)
+Approve and Send: Vomerezani ndi Kutumiza
+Approve and Exit: Vomerezani ndi Kutuluka
+(Your comments will be emailed to the event creator.): (Ndemanga zanu zitumizidwa kwa imelo kwa wopanga zochitikazo.)
+Hello, XXX.: Moni, XXX.
+XXX has approved an appointment and added comments.: Msonkhano wavomerezedwa ndipo ndemanga zawonjezedwa ndi XXX.
+Subject XXX: Mutu: "XXX".
+Description XXX: Kufotokozera: "XXX".
+Date XXX: Tsiku: XXX
+Time XXX: Nthawi: XXX
+Comments XXX: Ndemanga: XXX
+Approved w/Comments by XXX.: Ovomerezeka w / Ndemanga ndi: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Mawonekedwe oyang'anira
+Your assistants: Othandizira anu
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Vuto losadziwika.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Vuto Lapulogalamu: Palibe XXX yomwe yatchulidwa!
+user: wosuta
+year: chaka
+month: mwezi
+day: tsiku
+
+########################################
+# Page: category.php
+#
+Category Icon: Chizindikiro cha Gulu
+Global: Padziko lonse lapansi
+The permissions for the icons directory are set to read-only: Zilolezo zazithunzi zazithunzi zimangowerengeredwa.
+Category Name: Dzina la Gulu:
+Color: Mtundu
+Remove Icon: Chotsani Chizindikiro:
+Add Icon to Category: Onjezani Chizindikiro Mgulu
+Upload: Kwezani
+GIF or PNG 6kb max: GIF kapena PNG 6kb max
+Search for existing icons: Sakani zithunzi zomwe zilipo kale
+Add: Onjezani
+Delete: Chotsani
+Are you sure you want to delete this entry?: Mukutsimikiza kuti mukufuna kufufuta izi?
+Make New Category: Pangani Gulu Latsopano
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Gulu la dzina likufunika
+File size exceeds maximum.: Kukula kwa fayilo kumapitilira pazipita.
+File is not a GIF or PNG image: Fayilo si chithunzi cha GIF kapena PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: MAGULU OTHANDIZA
+ENTRY CATEGORIES: MAGULU OLEMBEDWA
+Remove: Chotsani
+Global Category: Gulu Lapadziko Lonse
+Cancel: Kuletsa
+
+########################################
+# Page: colors.php
+#
+Add Custom: Onjezani Mwambo
+Basic Colors: Mitundu Yoyambira
+Current Color: Mtundu Watsopano
+Custom Colors: Mitundu Yachikhalidwe
+Old Color: Mtundu Wakale
+
+########################################
+# Page: combo.php
+#
+Select None: Sankhani Palibe
+Agenda: Mfundo
+Add Task: Onjezani Ntchito
+Description: Kufotokozera
+Date: Tsiku
+Time: Nthawi
+Priority: Chofunika kwambiri
+Access: Kufikira
+Created by: Yopangidwa ndi
+Updated: Kusinthidwa
+Participants: Ophunzira
+Attachments: Tumizani
+Comments: Ndemanga
+Brief Description: Kufotokozera Mwachidule
+Full Description: Kufotokozera Kwathunthu
+Category: Gulu
+Add event detail: Onjezani zambiri mwatsatanetsatane
+Start Date: Tsiku loyambira
+Due Date: Tsiku lomaliza
+Add task detail: Onjezani tsatanetsatane wa ntchito
+All: Zonse
+Error: Cholakwika
+no response from server: palibe yankho kuchokera ku seva
+JSON error: Cholakwika cha JSON
+High: Pamwamba
+Medium: Zamkatimu
+Low: Zochepa
+Today: Lero
+Add Entry: Onjezani Kulowa
+Unnamed Event: Chochitika Chosatchulidwe
+Unnamed Task: Ntchito Yosatchulidwe
+Refresh: Limbikitsani
+Click to add entry: Dinani kuwonjezera kulowa
+Name: Dzina
+pm: madzulo
+am: ndili
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX yaletsa msonkhano.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: ID yolakwika ya blob
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Onjezani Ndemanga
+Add Attachment: Onjezani Chophatikiza
+Subject: Mutu
+Comment: Ndemanga
+Upload file: Kwezani fayilo
+
+########################################
+# Page: docdel.php
+#
+Removed: Chachotsedwa
+
+########################################
+# Page: edit_entry.php
+#
+days: masiku
+hours: maola
+minutes: mphindi
+You are not authorized to edit this task.: Simukuloledwa kusintha ntchitoyi.
+is in a different timezone than you are. Currently: ili munthawi yina yosiyana ndi yomwe muli. Pakadali pano
+hour ahead of you: ola patsogolo panu
+hour behind you: ola kumbuyo kwanu
+hours ahead of you: maola patsogolo panu
+hours behind you: maola kumbuyo kwanu
+XXX is in a different timezone (ahead): (XXX ili munthawi ina; YYY patsogolo panu.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX ili munthawi ina; YYY kumbuyo kwanu.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Nthawi yolowetsedwa pano kutengera Timezone yanu.
+Edit Entry: Sinthani Kulowa
+Details: Zambiri
+Repeat: Bwerezani
+Reminders: Zikumbutso
+brief-description-help: Izi zikuyenera kufotokoza mwachidule (pafupifupi anthu 20) za mwambowu. Izi zikuyimira mwambowu mukawona kalendala.
+full-description-help: Izi ziyenera kumaliza mwatsatanetsatane za mwambowu. Izi zitha kuwonedwa pomwe wogwiritsa ntchito awona mwambowu.
+access-help: Imafotokoza kuchuluka kwa mwambowu. <ul> <li> Pagulu: Aliyense akhoza kuwona tsatanetsatane wa mwambowu.</li> <li> Chinsinsi: Ena atha kuwona kuti mungalembetse tsikulo ndi nthawiyo, koma osati tsatanetsatane wa zomwe zili.</li></ul>
+priority-help: Imafotokoza zoyambirira mwambowu. Zochitika zofunikira kwambiri ziziwonetsedwa molimba mtima.
+category-help: Imatchula gulu la mwambowu.
+completed-help: Ntchito yamasiku yatha. Zimangowonjezera pokhapokha kuchuluka kwa onse omwe akutenga nawo gawo ndikofanana 100%.
+Date Completed: Tsiku Lomaliza
+percent-help: Chiwerengero chomaliza cha wogwiritsa ntchito
+Percent Complete: Peresenti Yokwanira
+All Percentages: Miyeso yonse
+location-help: Malo a chochitika
+Location: Malo
+url-help: URL Yazochitika
+URL: Ulalo
+date-help: Imatchula tsiku la mwambowu.
+Untimed event: Chochitika chosadziwika
+Timed event: Chochitika chakanthawi
+All day event: Chochitika cha tsiku lonse
+Timezone Offset: Nthawi Yanyumba
+time-help: Imatchula nthawi ya mwambowu. <ul> <li> "Chochitika chakanthawi" (cha chochitika chomwe chikonzedweratu pa tsikulo)</li> <li> "Chochitika chosadziwika" (pamwambo womwe ulibe nthawi (ngati tchuthi )</li> <li> "Tsiku lonse" (pamwambo womwe umatenga tsiku lonse (monga kutuluka muofesi)</li></ul>
+duration-help: Imafotokozera kutalika kwa nthawiyo (mu maola; mphindi). <em>Mundawu ungasiyidwe wopanda kanthu.</em>
+end-time-help: Imatchula nthawi yomwe mwambowu ukuyembekezeka kutha.
+Start Time: Nthawi Yoyambira
+Due Time: Nthawi Yake
+Site Extras: Zowonjezera Tsamba
+avail_participants-help: Lembani omwe akupezeka pamalowa.
+Available: Ipezeka
+Find Name: Pezani Dzina
+Resources: Zothandizira
+participants-help: Ikulemba mndandanda wa omwe alowa nawo.
+Selected: Zosankhidwa
+Availability: Kupezeka
+external-participants-help: Ikufotokozera mndandanda wa omwe atenga nawo mbali pamwambowu omwe sali ogwiritsa ntchito kalendala. Ogwiritsa ntchito ayenera kulembedwa pamzere uliwonse ndipo atha kukhala ndi imelo. Ngati adilesi ya imelo yatchulidwa, wogwiritsa ntchito ayenera kulandira zidziwitso ndi zikumbutso.
+External Participants: Ophunzira Kwakunja
+repeat-type-help: Sankhani kuti mwambowu uyenera kubwerezedwa kangati.
+Daily: Tsiku lililonse
+Weekly: Mlungu uliwonse
+Monthly: Mwezi uliwonse
+by day: masana
+by date: ndi tsiku
+by position: ndi udindo
+Monthly (by day): Mwezi uliwonse (tsiku)
+Monthly (by date): Mwezi uliwonse (ndi tsiku)
+Monthly (by position): Mwezi uliwonse (ndi udindo)
+Yearly: Chaka chilichonse
+Manual: Bukuli
+Expert Mode: Mafilimu angaphunzitse Katswiri
+repeat-end-date-help: Ikufotokoza tsiku lomwe mwambowo uyenera kubwereza mpaka.
+Ending: Kutha
+Forever: Kwanthawizonse
+Use end date: Gwiritsani ntchito tsiku lomaliza
+Number of times: Chiwerengero cha nthawi
+repeat-frequency-help: Imatchula kuti mwambowu uyenera kubwerezedwa kangati.
+Frequency: Pafupipafupi
+Weekdays Only: Sabata lokha
+Week Start: Sabata Yoyambira
+repeat-bydayextended-help: Amalola kusankha masiku potengera tsiku la sabata.
+ByDay: =
+repeat-month-help: Imafotokoza miyezi yomwe mwambowu uyenera kubwerezedwanso.
+ByMonth: WolembaMwezi
+repeat-bysetpos-help: Amalola kusankha masiku potengera malo okhala ndi mweziwo.
+BySetPos: NdiSetPos
+repeat-bymonthdayextended-help: Amalola kusankha masiku potengera tsiku.
+ByMonthDay: WolembaMonthDay
+repeat-byweekno-help: Amalola wosuta kufotokoza mndandanda wamasabata obwereza chochitika (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: NdiWeekNo
+repeat-byyearday-help: Imalola wogwiritsa kufotokoza mndandanda wamasiku am'mbuyomu kubwereza chochitika (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: MwaYearDay
+repeat-exceptions-help: Masiku owonjezera omwe mwambowu uyenera kapena usachitike.
+Exclusions: Kupatula
+Inclusions: Kuphatikiza
+Add Exception: Onjezani Kupatula
+Add Inclusion: Onjezani Kuphatikiza
+Delete Selected: Chotsani Osankhidwa
+Send Reminder: Tumizani Chikumbutso
+When: Liti
+Use Date/Time: Gwiritsani Ntchito Tsiku / Nthawi
+Use Offset: Gwiritsani ntchito Offset
+Before: Asanachitike
+After: Pambuyo pake
+Start: Yambani
+End/Due: Mapeto / Chifukwa
+Times: Nthawi
+Every: Aliyense
+CAPTCHA Warning: Chenjezo:  Sitingagwiritse ntchito CAPTCHA popanda kuwonjezera kwa GD ya PHP!<br>
+Delete entry: Chotsani zolowera
+You are not authorized to edit this entry.: Simukuloledwa kusintha izi.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX yapanga msonkhano watsopano.
+XXX has updated an appointment.: XXX yasintha nthawi yokumana.
+Security violation!: Kuphwanya chitetezo!
+You must enter the anti-spam text on the previous page.: Muyenera kulemba mawu odana ndi sipamu patsamba lapitalo.
+The following conflicts with the suggested time: Zotsatirazi zikutsutsana ndi nthawi yomwe yaperekedwa
+User removed from participants list.: Wogwiritsa ntchito wachotsedwa pamndandanda wa omwe akutenga nawo mbali.
+Please look on XXX to accept or reject this appointment.: Chonde yang'anani pa XXX kuti muvomere kapena mukane kusankhidwa uku.
+Please look on XXX to view this appointment.: Chonde yang'anani pa XXX kuti muwone kusankhidwa uku.
+Scheduling Conflict: Kukonzekera Kusamvana
+Your suggested time of: Nthawi yomwe mwapereka ya
+conflicts with the following existing calendar entries: imatsutsana ndi zolembera zomwe zilipo kale
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX sinakhazikitsidwe mu "config.php".
+word characters only: (imangokhala ndi zilembo zamawu; [a-zA-Z_0-9])
+Add User: Onjezani Mtumiki
+Edit User: Sinthani Wogwiritsa
+Calendar ID: Kalendala ID
+First Name: Dzina loyamba
+Last Name: Dzina lomaliza
+Is public calendar: Ndi kalendala ya anthu onse
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Vuto lazamasamba
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Onjezani Kalendala Yakutali
+Edit Remote Calendar: Sinthani Kalendala Yakutali
+Create Layer: Pangani Gulu
+Reload: Tsegulaninso
+Required to View Remote Calendar: Ayenera Kuwona Kalendala Yakutali
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Zotsatira Zotsatira
+Events successfully imported: Zochitika zimatumizidwa kunja
+Create a new layer to view this calendar.: Pangani chosanjikiza chatsopano kuti muwone kalendala iyi.
+Errors: Zolakwa
+There was an error parsing the import file or no events were returned.: Panali vuto polongosola fayilo yotumiza kapena palibe zomwe zidabwezedwa.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Mawa
+Yesterday: Dzulo
+Day before yesterday: Dzulo
+Next week: Sabata lamawa
+This week: Sabata ino
+Last week: Sabata yatha
+Week before last: Sabata yatha
+Next week and week after: Sabata yamawa komanso sabata lotsatira
+This week and next week: Sabata ino ndi yamawa
+Last week and this week: Sabata yatha komanso sabata ino
+Last two weeks: Masabata awiri apitawa
+Next month: Mwezi wamawa
+This month: Mwezi uno
+Last month: Mwezi watha
+Month before last: Mwezi usanathe
+Next year: Chaka chamawa
+This year: Chaka chino
+Last year: Chaka chatha
+Year before last: Chaka chatha
+Next 14 days: Masiku 14 otsatira
+Next 30 days: Masiku 30 otsatira
+Next 60 days: Masiku 60 otsatira
+Next 90 days: Masiku 90 otsatira
+Next 180 days: Masiku 180 otsatira
+Next 365 days: Masiku 365 otsatira
+Invalid report id XXX.: ID yolakwika: "XXX".
+Unnamed Report: Lipoti Losatchulika
+Add Report: Onjezani Lipoti
+Edit Report: Sinthani Lipoti
+Report name: Nenani dzina
+User: Wosuta
+Current User: Wogwiritsa Ntchito Pano
+Include link in menu: Phatikizani ulalo pazosankha
+Include standard header/trailer: Phatikizani mutu / ngolo yofananira
+Include previous/next links: Phatikizani maulalo am'mbuyomu / otsatira
+Include empty dates: Phatikizani masiku opanda kanthu
+Date range: Mtundu wa masiku
+Template variables: Mitundu yazithunzi
+Page template: Tsamba la tsamba
+Day template: Chikhazikitso cha tsiku
+Event template: Chiwonetsero cha zochitika
+Are you sure you want to delete this report?: Mukutsimikiza kuti mukufuna kufufuta lipotili?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Palibe chidziwitso chotere: "XXX".
+Variable XXX not found.: Zosintha XXX sizinapezeke.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Sinthani Mutu Wamtundu
+Edit Custom Script/Stylesheet: Sinthani Mwambo Wolemba / Masitayilo
+Edit Custom Trailer: Sinthani Kanema Woyeserera
+
+########################################
+# Page: edit_user.php
+#
+Username: Lolowera
+E-mail address: Imelo adilesi
+Password: Chinsinsi
+again: kachiwiri
+Disabled for demo: Yalemekezedwa pachiwonetsero
+Are you sure you want to delete this user?: Mukutsimikiza kuti mukufuna kuchotsa wogwiritsa uyu?
+Change Password: Sinthani mawu achinsinsi
+New Password: Mawu Achinsinsi Atsopano
+Set Password: Khazikitsani Chinsinsi
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Kuchotsa ogwiritsa sikuthandizidwa.
+The passwords were not identical.: Mawu achinsinsi sanali ofanana.
+You have not entered a password.: Simunalowemo mawu achinsinsi.
+Username cannot be blank.: Lolowera sangathe
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Osaloledwa
+
+########################################
+# Page: export.php
+#
+Export: Tumizani
+Export format: Mtundu wotumizira
+Include all layers: Phatikizani zigawo zonse
+Include deleted entries: Phatikizani zolemba zomwe zachotsedwa
+Export all dates: Tumizani masiku onse
+Start date: Tsiku loyambira
+End date: Tsiku lomaliza
+Modified since: Kusinthidwa kuyambira
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: mtundu wotumiza kunja sunatanthauzidwe kapena kulondola.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Palibe amene watchulidwa.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Onjezani Gulu Latsopano
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Gulu Losatchulidwe
+Add Group: Onjezani Gulu
+Edit Group: Sinthani Gulu
+Group name: Dzina la gulu
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Muyenera kutchula dzina la gulu
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Konzanso makalendala
+auto-refresh-help: Zikathandizidwa, kuwonera masana, kuwonera sabata, kuwonera mwezi, ndi mindandanda yamasamba osavomerezeka zonse zimadzitsitsimutsa nthawi ndi nthawi.
+Auto-refresh time: Yotsitsimutsani nthawi
+auto-refresh-time-help: Ngati Kutsitsimula kwathandizidwa, izi zimatanthauzira nthawi pakati pakutsitsimutsa kulikonse.
+Display days with events in bold in year view: Onetsani masiku okhala ndi zochitika molimba mtima pakuwona kwa chaka
+Display weekends in week view: Onetsani kumapeto kwa sabata pakuwona sabata
+Time interval: Nthawi yayitali
+time-interval-help: Imafotokozera kutalika kwa nthawi yomwe masabata akuwonetsedwa komanso mawonekedwe amasana adzakhala.
+Nonuser: Kalendala Nonuser
+user-customize-color: Imafotokoza ngati ogwiritsa ntchito aloledwa kusintha mtundu wawo.
+enable-gradient-help: Gwiritsani ntchito mitundu yoyang'ana bwino yamaselo.
+Manually entering color values: Kulowetsa pamanja mitundu yamitundu
+colors-help: Mitundu yonse iyenera kufotokozedwa mu "#RRGGBB" hexadecimal mtundu pomwe "RR" ndi hex mtengo wofiira, "GG" ndiye hex wobiriwira, ndipo "BB" ndiye hex mtengo wabuluu.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Nenani Bug
+Please include all the information below when reporting a bug.: Chonde lembani zonse zomwe zili pansipa mukamafotokozera cholakwika.
+Also, please use English rather than XXX.: Komanso, chonde gwiritsani ntchito  Chingerezi  osati XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Zolemba pa WebCalendar
+Currently in English only.: Pakadali pano mu Chingerezi chokha.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Kuwonjezera / Mukusintha Zolemba Pakalendala
+Repeat Type: Bwerezani Mtundu
+For More Information...: Kuti mudziwe zambiri ...
+Repeat End Date: Bwerezani Tsiku Lomaliza
+Repeat Day: Bwerezani Tsiku
+repeat-day-help: Imafotokoza masiku ati a sabata omwe mwambowo uyenera kubwereza.
+
+########################################
+# Page: help_import.php
+#
+Import: Tengani
+Palm Desktop: Kompyuta ya Palm
+allow you to import entries from the Palm...: Fomuyi ikulolani kuti mulowetse zolemba kuchokera ku Palm Desktop Datebook. Iyenera kupezeka patsamba lanu la Palm mu bukhu la datebook / datebook.dat mu kalozera kakang'ono kotchulidwa ndi dzina lanu.
+The following entries will not be imported: Zolemba zotsatirazi sizidzatumizidwa kunja:
+Entries older than the current date: Zolembera zakale kuposa masiku ano
+Entries created in the Palm Desktop...: Zolembera zopangidwa mu Kompyuta ya Palm yomwe sinakhale HotSync'd
+Anything imported from Palm...: Chilichonse chotumizidwa kuchokera ku Palm chidzalembedwanso nthawi yotsatira (pokhapokha tsiku lomwelo lidutsa). Chifukwa chake, zosintha ziyenera kupangidwa mu Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Fomuyi ilowetsa zochitika za vCalendar (.vcs) 1.0.
+The following formats have been tested: Mafomu otsatirawa ayesedwa:
+This form will import iCalendar (.ics) events.: Fomuyi ilowetsa zochitika za iCalendar (.ics).
+Enabling: Kulowetsa
+Overwrite Prior Import: Lembetsani Kutumiza Koyamba
+will cause events imported previously...: zipangitsa kuti zochitika zomwe zidalowetsedwa kale, zomwe zimagwiritsa ntchito UID yomweyo ngati chochitika kuchokera mu fayilo yatsopano, kuti zidziwike ngati zachotsedwa. Izi zikuyenera kuloleza fayilo yosinthidwa ya iCalendar kuti ilowetsedwe popanda kupanga zobwereza.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Index Yothandiza
+About WebCalendar: =
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Zingwe ndizothandiza kuwonetsa zochitika za ogwiritsa ntchito ena mu kalendala yanu. Mutha kutchula wosuta ndi utoto zomwe zochitikazo ziziwonetsedwa.
+Add/Edit/Delete: Onjezani / Sinthani / Chotsani
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Kusindikiza ulalo wa Sinthani Gulu mu gawo la admin kumapeto kwa tsambalo kumakuthandizani kuti muwonjezere / kusintha / kuchotsa zigawo.
+The text color of the new layer that will be displayed in your calendar.: Mtundu wa zenera latsopanolo lomwe liziwonetsedwa mu kalendala yanu.
+Disabling: Kulemetsa
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Dinani ulalo wa Disable Layers mgawo la admin lomwe lili pansi patsamba kuti muzimitse zigawo.
+Duplicates: Zobwerezedwa
+If checked, events that are duplicates of your events will be shown.: Ngati zayang'aniridwa, zochitika zomwe zibwereza zochitika zanu ziwonetsedwa.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Dinani kulumikizana kwa Layers mu gawo la admin kumapeto kwa tsamba kuti mutsegule zigawo.
+Source: Gwero
+Specifies the user that you would like to see displayed in your calendar.: Imatanthauzira wosuta yemwe mungafune kuti awoneke pakalendala yanu.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Gulu Losasintha
+default-category-help: Ikufotokozera m'gulu chochitika chatsopano chomwe chiyenera kusinthidwa.
+When I am the boss: Ndikakhala bwana
+Email me event notification: Nditumizireni imelo zidziwitso za zochitika
+email-boss-notifications-help: Imafotokoza ngati mabwana amalandila maimelo ngati zidziwitso za zochitika.
+I want to approve events: Ndikufuna kuvomereza zochitika
+boss-approve-event-help: Imafotokoza ngati abwana adzafunika kuvomereza zochitika zomwe owonjezera athandiza.
+Subscribe/Publish: Lembetsani / Sindikizani
+Allow remote publishing: Lolani kusindikiza kwakutali
+allow-remote-publishing-help: Imafotokoza ngati kasitomala wakutali wa iCal atha kusindikiza zochitika ku WebCalendar
+remote-publishing-url-help: Ikuwonetsa ulalowu kuti mugwiritse ntchito pulogalamu ya makasitomala ya iCal polemba ndi kusindikiza ku WebCalendar.
+allow-remote-subscriptions-help: Imafotokoza ngati ogwiritsa ntchito kutali atha kulembetsa kalendala yanu, kuwalola kuti awone zochitika zanu mu pulogalamu yothandizidwa ndi iCal (monga iCal ya Apple kapena Kalendala ya Mozilla).
+remote-subscriptions-url-help: Ikuwonetsa ulalo omwe ogwiritsa ntchito akutali akuyenera kugwiritsa ntchito kuti azilembetsa kalendala yanu.
+Enable FreeBusy publishing: Thandizani kusindikiza kwa FreeBusy
+freebusy-enabled-help: Imafotokoza ngati nthawi yomwe wogwiritsa ntchito angapezeke pogwiritsa ntchito muyezo wa iCal FreeBusy.
+freebusy-url-help: Ulalo wopeza mndandanda wa FreeBusy wogwiritsa ntchito
+rss-feed-url-help: Ulalo wopeza RSS feed
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Ikulola kuwongolera kwabwino kwa ogwiritsa ntchito ndi zilolezo. Ogwiritsanso ntchito amathanso kupatsa chilolezo ngati chilolezo chololedwa ndi woyang'anira.
+If disabled, this user cannot send you emails.: Ngati walemala, wosuta uyu sangakutumizireni maimelo.
+If disabled, this user cannot see you in the participants list.: Ngati ali wolumala, wogwiritsa ntchito uyu sangathe kukuwonani pagulu la omwe akutenga nawo mbali.
+If enabled, this user cannot view the details of any of your entries.: Ngati athandizidwa, wosuta uyu sangathe kuwona tsatanetsatane wa zolemba zanu zilizonse.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Kusindikiza Olemala (Admin)
+Publishing Disabled (User): Kusindikiza Wolemala (Wogwiritsa)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Dinani kuti Sankhani
+Current Icons on Server: Zithunzi Zamakono pa Seva
+
+########################################
+# Page: import.php
+#
+import from file: tumizani ku fayilo
+Disabled: Wolemala
+Import format: Tumizani mtundu
+Exclude private records: Sankhani zolemba zanu zachinsinsi
+Repeated items are imported separately. Prior imports are not overwritten.: Zinthu zobwerezedwa zimatumizidwa padera. Zogulitsa zisanachitike sizinalembedwe.
+
+########################################
+# Page: import_handler.php
+#
+No file: Palibe fayilo
+Error deleting palm events from webcalendar.: Panali vuto lochotsa zochitika zakanjedza pa kakalendala yanu.
+Events from prior import marked as deleted: Zochitika kuchokera ku kulandila koyambirira zidatchulidwa kuti zachotsedwa
+Conflicting events: Zochitika zotsutsana
+The import file contained no data.: Fayilo yoitanitsa ilibe chilichonse.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Mukutsimikiza kuti mukufuna kuchotsa tsambali?
+Delete layer: Chotsani wosanjikiza
+Edit layer: Sinthani wosanjikiza
+Enable layers: Yambitsani zigawo
+Layer: Gulu
+Layers are currently disabled.: Zosanjikiza pakali pano ndizolumala.
+Layers are currently enabled.: Zoyala tsopano zathandizidwa.
+Click to modify layers settings for XXX: Dinani apa kuti musinthe zosintha za kalendala ya XXX.
+Disable Layers: Letsani Magawo
+Add layer: Onjezani wosanjikiza
+Add Layer: Onjezani Gulu
+Edit Layer: Sinthani Gulu
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Takanika kusintha zomwe mumakonda
+Invalid entry id.: ID yolakwika yolowera.
+You cannot create a layer for yourself.: Simungathe kudzipangira nokha.
+You can only create one layer for each user.: Mutha kupanga gawo limodzi la wosuta aliyense.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Vomerezani / Tsimikizani
+Approve Selected: Vomerezani Zosankhidwa
+Check All: Fufuzani Zonse
+Emails Will Not Be Sent: Maimelo Sadzatumizidwa
+Reject Selected: Kanani Osankhidwa
+Reject: Kanani
+Uncheck All: Chotsani Zonse
+View this entry: Onani kulowa uku
+No unapproved entries for XXX.: Palibe zolemba zosavomerezeka pa: "XXX".
+Unapproved Entries: Zolemba Zosavomerezeka
+Approve this entry?: Mukuvomereza izi?
+Reject this entry?: Kanani izi?
+Approve Selected entries?: Vomerezani zolemba zosankhidwa?
+Reject Selected entries?: Mukukana Zolemba Zosankhidwa?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Muyenera kulowa malowedwe achinsinsi.
+Save login via cookies so I dont have to login next time.: Sungani zolowera kudzera pama cookie kotero kuti sindiyenera kulowa nthawi ina
+Login: Lowani muakaunti
+public: pagulu
+Access XXX calendar: Pezani kalendala ya XXX
+cookies-note: Chidziwitso: Pulogalamuyi imafuna kuti ma cookie azithandizidwa.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Zilembo zosavomerezeka polowera XXX.
+Invalid login: Kulowera kolakwika
+Activity login failure: Lolowera: "XXX", IP: "YYY".
+Error XXX: Vuto: "XXX".
+You have been logged out.: Mwatulutsidwa.
+Access public calendar: Pezani kalendala ya anthu onse
+Not yet registered? Register here!: Simunalembetsedwe? Lembetsani apa!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Palibe kalendala yotereyi: "XXX".
+This Calendar is not Public.: Kalendala iyi siyapagulu.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Onjezani Kalendala Yatsopano Yosagwiritsa Ntchito
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Kulowera kuyenera kutchulidwa.
+No such nonuser calendar: Palibe kalendala yotereyi
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Mutu wolakwika
+Save Preferences: Sungani Zokonda
+Public Access calendar: Kalendala ya Public Access
+Modify Non User Calendar Preferences: Sinthani Zokonda Zosagwiritsa Ntchito Kalendala
+Return to My Preferences: Bwererani ku Zokonda Zanga
+Custom Scripts: Zolemba Mwambo
+Timezone Selection: Kusankha Nthawi
+Multiview: Zambiri:
+entry-interval-help: Ikani nthawi yayitali pakusintha nthawi yolowera
+Entry interval: Nthawi yolowera
+hour: ola
+minute: miniti
+theme-reload-help: Chifukwa chosunga CSS, kutsitsa tsamba kungafunike
+Page may need to be reloaded for new Theme to take effect: Tsamba lingafunike kutsegulidwanso kuti Mutu watsopano ugwire ntchito
+display_byproxy-help: Onetsani Mlengi weniweni patsamba lowonera_ntry
+Display if created by Assistant: Onetsani ngati idapangidwa ndi Wothandizira
+allow-view-subscriptions-help: Ikuloleza kuletsa kulowa kwakutali pazachinsinsi kapena zachinsinsi
+Allow remote viewing of: Lolani kuwonera kutali kwa
+entries: zolemba
+
+########################################
+# Page: purge.php
+#
+Purging events for: Kukonza zochitika za
+Finished: Zatha
+Back: Kubwerera
+Check box to delete ALL events for a user: Chongani bokosi kuti muchotse  ZONSE  zochitika za wogwiritsa ntchito
+Delete all events before: Chotsani zochitika zonse zisanachitike
+Purge deleted only: Kuchotsa kuchotsedwa kokha
+Preview delete: Chithunzithunzi Chotsani
+Are you sure you want to delete events for: Mukutsimikiza kuti mukufuna kufufuta zochitika za
+Records deleted from XXX: Zolemba zochotsedwa mu "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Imelo sangakhale opanda kanthu.
+Username already exists.: Dzina lolowera lilipo kale.
+Email address already exists.: Imelo adilesi ilipo kale.
+New user via self-registration.: Wogwiritsa ntchito watsopano podzilembetsa yekha.
+A new WebCalendar account has been set up for you.: Akaunti yatsopano ya WebCalendar yakonzedwera inu.
+Your username is XXX.: Dzina lanu lolowera ndi: "XXX".
+Your password is XXX.: Mawu anu achinsinsi ndi: "XXX".
+Please visit XXX to log in and start using your account!: Chonde pitani ku "XXX" kuti mulowe muakaunti yanu ndikuyamba kugwiritsa ntchito akaunti yanu!
+You may change your password after logging in the first time.: Mutha kusintha mawu achinsinsi mutangolowa mitengo koyamba.
+If you received this email in error: Ngati mwalandira imeloyi molakwitsa ndipo simunalembere akaunti ya WebCalendar, munganyalanyaze zidziwitsozi, kapena kuyankha ndi kolemba kakang'ono
+Administrator: Woyang'anira
+Welcome: Takulandilani
+New user via email.: Wogwiritsa ntchito watsopano kudzera pa imelo.
+Registration: Kulembetsa
+Welcome to WebCalendar: Takulandirani ku WebCalendar
+Your email should arrive shortly.: Imelo yanu iyenera kufika posachedwa.
+Return to Login screen: Bwererani pazenera la Login
+Password (again): Chinsinsi (kachiwiri):
+Your account information will be emailed to you.: Zambiri za akaunti yanu zidzakutumizirani imelo.
+Submit: Tumizani
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Pitirizani
+(Your comments will be emailed to the other participants.): (Ndemanga zanu zidzatumizidwa kwa ena onse.)
+XXX has rejected an appointment.: XXX yakana kusankhidwa.
+Rejected by XXX.: Yakanidwa ndi XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Onjezani Kalendala Yatsopano Yakutali
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Chochitikachi ndichachinsinsi.
+(Private): (Zachinsinsi)
+(cont.): (pitani.)
+Approved: Zavomerezedwa
+Deleted: Chachotsedwa
+Rejected: Wakanidwa
+Waiting for approval: Kudikirira kuvomerezedwa
+Unknown: Zosadziwika
+Invalid report id.: ID yolakwika.
+Click here to manage reports for the Public Access calendar.: Dinani apa kuti muyang'ane malipoti a kalendala ya Public Access.
+Add new report: Onjezani lipoti latsopano
+Manage Reports: Sinthani Malipoti
+
+########################################
+# Page: search.php
+#
+Advanced Search: Kusaka Kwapamwamba
+Search: Sakani
+Keywords: Mawu osakira
+Enter % for all entries: Lowetsani% pazolowa zonse
+Include: Phatikizani
+Filter by Date: Sefa ndi Tsiku
+All Dates: Madeti Onse
+Past: Zakale
+Upcoming: Zotsatira
+Range: Zosiyanasiyana
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Muyenera kulemba mawu osakira amodzi kapena angapo.
+Search Results: Zotsatira zakusaka
+match found: masewera apezeka
+matches found: machesi apezeka
+No matches found: Palibe macheza omwe apezeka
+New Search: Kusaka Chatsopano
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Zomwe zili pansipa zikulemba zovuta zomwe zingachitike mukamapanga WebCalendar yanu zomwe zingasinthidwe kuti makina anu akhale otetezeka.
+For questions about WebCalendar security see the forums: Pamafunso okhudzana ndi chitetezo chilichonse pa WebCalendar, chonde gwiritsani ntchito masamba a WebCalendar omwe amapezeka pa GitHub.com;<br>XXX
+View your current PHP settings: Onani makonda anu apano a PHP
+Security Issue: Nkhani Yachitetezo
+Status: Mkhalidwe
+Default admin user password: Chinsinsi chogwiritsa ntchito admin
+You should change the password of the default admin user.: Muyenera kusintha mawu achinsinsi a wogwiritsa ntchito wa default.
+File permissions XXX: Zilolezo za fayilo: XXX
+item XXX should not be writable: Katundu wotsatira sayenera kulembedwa:<br><tt> XXX</tt>
+File exists XXX: Fayilo ilipo: "XXX"
+Because you have email disabled, you should remove this file.: Chifukwa muli ndi imelo yolumala, muyenera kuchotsa fayiloyi.
+File location XXX: Malo opezeka: "XXX"
+remove XXX if not using: Ngati simugwiritsa ntchito fayilo "XXX", muyenera kufufuta. Kapena, osunthira ku chikwatu chatsopano.
+System Settings XXX: Zokonda Kwadongosolo: "XXX"
+consider enabling UAC: Mungafune kulingalira zololeza kugwiritsa ntchito mwayi wogwiritsa ntchito mwayi wogwiritsa ntchito mwayi wogwiritsa ntchito.
+recommend approving new public events: Tikukulimbikitsani kuti zovomerezeka zonse zapagulu zivomerezedwe.
+recommend using CAPTCHA: CAPTCHA ikulimbikitsidwa kuti isamalire zopereka za zochitika zodziwikiratu.
+Database cache directory location: Malo osungira posungira malo
+db cache should be inaccessable: Cache yachinsinsi iyenera kukhala munkhokwe yomwe singapezeke ndi URL.
+PHP Settings XXX: Zikhazikiko za PHP: "XXX"
+recommend setting XXX Off: Makonzedwe olimbikitsidwa a "XXX" azimitsidwa.
+recommend setting allow_url_fopen Off: Makonzedwe olimbikitsidwa a "allow_url_fopen" ndi Ozima ngati kalendala yakutali sili oyatsidwa.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Onani Kalendala ya Wina Wina
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Simunawonjezere magulu aliwonse.
+Set Category: Khazikitsani Gulu
+Global Categories cannot be changed.: Magulu apadziko lonse lapansi sangasinthidwe.
+
+########################################
+# Page: upcoming.php
+#
+more: Zambiri
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Makalendala Akutali
+denotes administrative user: amatanthauza wogwiritsa ntchito woyang'anira
+Add New User: Onjezani Watsopano Wogwiritsa
+
+########################################
+# Page: usersel.php
+#
+form: mawonekedwe
+Reset: Bwezeretsani
+
+########################################
+# Page: views.php
+#
+Add New View: Onjezani New View
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Maonekedwe Osatchulidwa
+Add View: Onjezani Onani
+Edit View: Sinthani Onani
+View Name: Onani Dzina
+View Type: Onani Mtundu
+Day by Time: Tsiku ndi Nthawi
+Week (Users horizontal): Sabata (Ogwiritsa ntchito mopingasa)
+Week by Time: Sabata ndi Nthawi
+Week (Users vertical): Sabata (Ogwiritsa ntchito ofukula)
+Week (Timebar): Sabata (Timebar)
+Month (Timebar): Mwezi (Timebar)
+Month (side by side): Mwezi (mbali ndi mbali)
+Month (on same calendar): Mwezi (pa kalendala yomweyo)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Muyenera kutchula dzina loyang'ana
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Palibe ogwiritsa ntchitowa.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Sinthani Ntchito Peresenti
+Completed: Zatsirizidwa
+Assistant mode: Njira yothandizira
+Declined: Anasiya
+Needs-Action: Zosowa-Ntchito
+by: =
+Percentage Complete: Peresenti Yokwanira
+External User: Wogwiritsa Kunja
+Update: Kusintha
+at: pa
+comments: ndemanga
+Show: Onetsani
+Hide: Bisani
+Approve/Confirm entry: Vomerezani / Tsimikizani kulowa
+Reject entry: Kanani kulowa
+Set category: Khazikitsani gulu
+Add to My Calendar: Onjezani ku Kalendala yanga
+Copy entry: Lembani kulowa
+This will delete this entry for all users.: Izi zichotsa kulowa uku kwa ogwiritsa ntchito onse.
+Edit entry: Sinthani kulowa
+Edit repeating entry for all dates: Sinthani zolowanso zobwereza zamasiku onse
+Delete repeating event for all dates: Chotsani chochitika chobwereza masiku onse
+Edit entry for this date: Sinthani zolowera tsikuli
+Delete entry only for this date: Chotsani zolowera patsikuli
+Delete entry from calendar of XXX: Chotsani zolowera pa kalendala ya XXX
+This will delete the entry from your XXX calendar.: Izi zichotsa zolemba mu kalendala yanu ya XXX.
+boss: bwana '
+This will delete the entry from your boss calendar.: Izi zichotsa zolembedwazo mu kalendala ya bwana wanu.
+This will delete the entry from your calendar.: Izi zichotsa zolembedwazo pa kalendala yanu.
+from your boss calendar: kuchokera ku kalendala ya bwana wanu
+Do you want to add this entry to your calendar?: Kodi mukufuna kuwonjezera izi mu kalendala yanu?
+This will add the entry to your calendar.: Izi ziziwonjezera kulowa kwanu pa kalendala yanu.
+Email all participants: Imelo onse omwe akutenga nawo mbali
+Hide activity log: Bisani chipika cha ntchito
+Show activity log: Onetsani chipika cha ntchito
+Export this entry to: Tumizani izi kulowa ku
+Palm Pilot: Woyendetsa Palm
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Dinani kawiri pa selo yopanda kanthu kuti muwonjezere zatsopano.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Kulowera Kwatsopano
+cont.: pitani.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Kalendala ya Wina Wina
+Category Management: Gulu Loyang'anira
+Day View: Kuwona Tsiku
+Edit Event: Sinthani Chochitika
+Month View: Kuwona kwa Mwezi
+Common Trailer: Kanema Wanzeru Wonse
+User Management: Wogwiritsa Ntchito
+Manage Views: Sinthani Maganizo
+Week View: Kuwona Sabata
+Year View: Kuwona Chaka
+Invalid function id: ID yolakwika
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Sitinapeze fayilo ya "settings.php".<br>Chonde lembani "settings.php.orig" kupita ku "settings.php" ndikusintha tsamba lanu.
+Incomplete settings.php file...: Fayilo ya "settings.php" yosakwanira ...
+Could not find XXX defined in...: Sitinapeze "XXX" yotanthauzidwa mu fayilo yanu ya "settings.php".
+You must define XXX in: Mukuyenera kutanthauzira "XXX" mu fayilo ya "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Disembala
+Dec: Disembala
+LANGUAGE DEFINED: CHINENERO CHIMATanthauzidwa
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Cholakwika polumikizana ndi nkhokwe yachidziwitso: "XXX".
+db_type not defined.: db_type sanatanthauzidwe.
+invalid db_type XXX: mtundu db_type wosavomerezeka "" XXX ".
+Cache cleared from previous SQL!: Cache idachotsedwa ku SQL yapitayi!
+Error executing query.: Panali vuto pofufuza.
+Unfortunately, XXX is not implemented for YYY: Tsoka ilo, "XXX" siyikwaniritsidwa pa (YYY).
+Unknown ODBC error.: Vuto losadziwika la ODBC.
+Error opening cache dir XXX.: Cholakwika potsegula cache dir "XXX".
+delete: kufufuta
+Cache error Could not XXX file YYY.: Cholakwika posungira: Sitinathe fayilo ya XXX "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Cholakwika Chowopsa
+Invalid data format for: Maonekedwe olakwika a
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Cholakwika: Sakani osayikidwa log log!
+This event is XXX.: Chochitika ichi ndi XXX.
+Conf.: =
+exceeds limit of XXX events per day: ipitilira malire a zochitika za XXX patsiku
+on: kuyatsa
+All Attendees: Onse Opezekapo
+Busy: Tanganidwa
+Tentative: Kukonzekera
+Schedule an appointment for XXX.: Sanjani nthawi yokumana ndi XXX: YYY.
+date_select: =
+Event approved: Chochitika chovomerezeka
+Journal approved: Zolemba zivomerezedwa
+Task approved: Ntchito yavomerezedwa
+Attachment: Chophatikiza
+Event created: Chochitika chidapangidwa
+Journal created: Zolemba zidapangidwa
+Task created: Ntchito yapangidwa
+Event deleted: Chochitika chachotsedwa
+Journal deleted: Zolemba zachotsedwa
+Task deleted: Ntchito yachotsedwa
+New user via email (self registration): Wogwiritsa ntchito watsopano kudzera pa imelo (kudzilembetsa)
+New user (self registration): Wogwiritsa ntchito watsopano (kudzilembetsa)
+Notification sent: Chidziwitso chatumizidwa
+Event rejected: Chochitika chakanidwa
+Journal rejected: Journal adakana
+Task rejected: Ntchito yakanidwa
+Reminder sent: Chikumbutso chatumizidwa
+Event updated: Chochitika kusinthidwa
+Journal updated: Zolemba zasinthidwa
+Task updated: Ntchito yasinthidwa
+Delete User: Chotsani Wosuta
+WK: =
+TASKS: NTCHITO
+Task_Title: Mutu
+Due: Chifukwa
+Task Name: Dzina la Ntchito
+Task Due Date: Tsiku Loyenera Kugwira
+You have XXX unapproved entries: Muli ndi zolemba zosavomerezeka za XXX 
+Changes successfully saved: Zosintha zasungidwa bwino
+Event: Chochitika
+Action: Ntchito
+Printer Friendly: Printer Wokonda
+Generate printer-friendly version: Pangani mtundu wosavuta wosindikiza
+after: pambuyo
+before: kale
+end: TSIRIZA
+start: kuyamba
+View this event: Onani chochitika ichi
+View this task: Onani ntchitoyi
+January: Januware
+February: =
+March: Marichi
+April: Epulo
+May_: Mulole
+June: Juni
+July: Julayi
+August: Ogasiti
+September: Seputembala
+October: Okutobala
+November: Novembala
+Jan: =
+Feb: Feb.
+Mar: =
+Apr: Epulo
+May: Mulole
+Jun: =
+Jul: =
+Aug: =
+Sep: =
+Oct: Okutobala
+Nov: Novembala
+SU: =
+MO: =
+TU: =
+WE: =
+TH: =
+FR: =
+SA: =
+unknown-month: mwezi wosadziwika
+First Quarter Moon: Mwezi woyamba kotala
+Full Moon: Mwezi Wathunthu
+Last Quarter Moon: Mwezi wathawu watha
+New Moon: Mwezi Watsopano
+Error TIME_SLOTS undefined!: Cholakwika: TIME_SLOTS osadziwika!
+The following error occurred: Vuto lotsatirali lidachitika
+You are not authorized.: Simukuvomerezeka.
+Add N hours to: Onjezani maola a N kuti
+Subtract N hours from: Chotsani maola N kuchokera
+same as: chimodzimodzi
+server time: nthawi ya seva
+Cannot read timezone file XXX.: Sindingathe kuwerenga fayilo ya nthawi: XXX.
+Your current GMT offset is XXX hours.: Zomwe muli nazo pakadali pano za GMT ndi maola XXX.
+Unauthorized: Osaloledwa
+Error approving event XXX.: Cholakwika pakuvomereza chochitika: XXX.
+Error deleting event XXX.: Panali vuto lochotsa chochitika: XXX.
+Error rejecting event XXX.: Panali vuto pokana chochitika: XXX.
+Sunday: Lamlungu
+Monday: Lolemba
+Tuesday: Lachiwiri
+Wednesday: Lachitatu
+Thursday: Lachinayi
+Friday: Lachisanu
+Saturday: Loweruka
+Sun: Dzuwa
+Mon: Lolemba
+Tue: Lachiwiri
+Wed: =
+Thu: =
+Fri: =
+Sat: Anakhala
+unknown-weekday: osadziwika-sabata
+Invalid referring URL: URL yolakwika si yolondola
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Cholozera
+Documentation: Zolemba
+Page: Tsamba
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Kalendala yanga
+Add New Entry: Onjezani Kulowa Kwatsopano
+Add New Task: Onjezani Ntchito Yatsopano
+Logout: Tulukani
+Home: Kunyumba
+Back to My Calendar: Bwererani Kalendala Yanga
+Go to: Pitani ku
+Manage calendar of: Sinthani kalendala ya
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Chilankhulo cha Msakatuli Sichipeze
+(not supported): (sichidathandizidwa)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Kutali
+Afrihili: =
+Afrikaans: Chiafrikaana
+Ainu: Zowonjezera
+Akan: =
+Akkadian: Chiakadi
+Albanian: Chialubaniya
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Kumwera)
+Amharic: Chiamhariki
+Angika: =
+Apache: =
+Arabic (Algeria): Chiarabu (Algeria)
+Arabic (Bahrain): Chiarabu (Bahrain)
+Arabic (Egypt): Chiarabu (Egypt)
+Arabic (Iraq): Chiarabu (Iraq)
+Arabic (Jordan): Chiarabu (Jordan)
+Arabic (Kuwait): Chiarabu (Kuwait)
+Arabic (Lebanon): Chiarabu (Lebanon)
+Arabic (Libya): Chiarabu (Libya)
+Arabic (Morocco): Chiarabu (Morocco)
+Arabic (Oman): Chiarabu (Oman)
+Arabic (Qatar): Chiarabu (Qatar)
+Arabic (Saudi Arabia): Chiarabu (Saudi Arabia)
+Arabic (Syria): Chiarabu (Syria)
+Arabic (Tunisia): Chiarabu (Tunisia)
+Arabic (U.A.E.): Chiarabu (U.A.E.)
+Arabic (Yemen): Chiarabu (Yemen)
+Arabic: Chiarabu
+Aragonese: =
+Aramaic: Chiaramu
+Arapaho: =
+Arawak: =
+Armenian: Chiameniya
+Assamese: =
+Asturian: Wolemba Asturian
+Athapascan: =
+Avaric: Chivavaric
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Chiazebajani
+Balinese: =
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: =
+Beja: =
+Belarusian: Chibelarusi
+Bemba: =
+Bengali: Chibengali
+Bhojpuri: =
+Bihari: Zamgululi
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: Dulani
+Bliss: Chisangalalo
+Bosnian: Chi Bosnia
+Braj: Zamgululi
+Breton: Chibretoni
+Buginese: Chi Buginese
+Bulgarian: Chibugariya
+Buriat: =
+Burmese: Chibama
+Caddo: =
+Catalan: Chikatalani
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Chitchainizi (Hong Kong)
+Chinese (PRC): Chitchainizi (PRC)
+Chinese (Simplified/GB2312): Chitchaina (Chosavuta / GB2312) 
+Chinese (Singapore): Chitchainizi (Singapore)
+Chinese (Taiwan): Chitchainizi (Taiwan)
+Chinese (Traditional/Big5): Chitchaina (Zachikhalidwe / Chachikulu)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: Chikoputiki
+Cornish: Chimanga
+Corsican: Chikosikani
+Cree: =
+Creek: Mtsinje
+Croatian: Chiroatia
+Czech: =
+Dakota: Dakota, PA
+Danish: Chidanishi
+Dargwa: =
+Delaware: Zowonjezera
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Chidatchi (Belgium)
+Dutch: Chidatchi
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Achielamu
+English (Australia): Chingerezi (Australia)
+English (Belize): Chingerezi (Belize)
+English (Canada): Chingerezi (Canada)
+English (Ireland): Chingerezi (Ireland)
+English (Jamaica): Chingerezi (Jamaica)
+English (New Zealand): Chingerezi (New Zealand)
+English (Philippines): Chingerezi (Philippines)
+English (South Africa): Chingerezi (South Africa)
+English (Trinidad & Tobago): Chingerezi (Trinidad & Tobago)
+English (United Kingdom): Chingerezi (United Kingdom)
+English (United States): Chingerezi (United States)
+English (Zimbabwe): Chingerezi (Zimbabwe)
+English: Chingerezi-US
+Erzya: =
+Esperanto: Chiesperanto
+Estonian: ChiEstonia
+Ewe: =
+Ewondo: =
+Fang: Chiwawa
+Fanti: =
+Faroese: Chifaroese
+Fijian: Chifijian
+Filipino: Chifilipino
+Finnish: Chifinishi
+Fon: =
+French (Belgium): Chifalansa (Belgium)
+French (Canada): Chifalansa (Canada)
+French (France): Chifalansa (France)
+French (Luxembourg): Chifalansa (Luxembourg)
+French (Monaco): Chifalansa (Monaco)
+French (Switzerland): Chifalansa (Switzerland)
+French: Chifalansa
+Frisian (Eastern): Chifarisi (Kum'mawa)
+Frisian (Northern): Frisian (Kumpoto)
+Frisian (Western): Chifarisiya (Kumadzulo)
+Frisian: Chi Frisian
+Friulian: Wachifuliliya
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Chigalicia
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Chijojiya
+German (Austria): Chijeremani (Austria)
+German (Germany): Chijeremani (Germany)
+German (Liechtenstein): Chijeremani (Liechtenstein)
+German (Luxembourg): Chijeremani (Luxembourg)
+German (Standard): Chijeremani (Chokhazikika)
+German (Switzerland): Chijeremani (Switzerland)
+German: Chijeremani
+Gilbertese: Chitchainizi
+Gondi: =
+Gorontalo: =
+Gothic: Chi Gothic
+Grebo: =
+Greek: Chi Greek
+Greenlandic: Chi Greenland
+Guarani: Chiguarani
+Gujarati: Chigujarati
+Gwich&#39;in: Gwich'in
+Haida: Dzina Haida
+Haitian (Creole): Chi Haiti (Chikiliyo)
+Haitian: Chaku Haiti
+Hausa: Chihausa
+Hawaiian: Wachi Hawaii
+Hebrew: Chihebri
+Herero: =
+Hiligaynon: =
+Hindi: Chihindi
+Hiri Motu: =
+Hittite: Mhiti
+Hmong: Chihmong
+Holo (Taiwanese): =
+Hungarian: Chihangare
+Hupa: =
+Iban: =
+Icelandic: Chi Icelandic
+Ido: =
+Igbo: Chiigbo
+Iloko: =
+Indonesian: Chiindoneziya
+Ingush: =
+Inuktitut: =
+Inupiaq: Chidwi
+Iranian: Irani
+Irish (Gaelic): Chiairishi (Chi Gaelic)
+Irish: Chiairishi
+Iroquoian: Wachimereka
+Italian (Switzerland): Chiitaliya (Switzerland)
+Italian: Chitaliyana
+Japanese: Chijapani
+Javanese: Chijava
+Judeo-Arabic: Chiyuda-Chiarabu
+Judeo-Persian: Yudao-Persian
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: Chikannada
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: Chikazaki
+Khasi: =
+Khmer (Central): Chilankhulo (Central)
+Khmer: =
+Khotanese: =
+Kikuyu: Chikikuyu
+Kimbundu: =
+Kinyarwanda: Chikinyarwanda
+Kirghiz: Chikirizi
+Klingon: Chikilingoni
+Komi: =
+Kongo: Chikongo
+Konkani: =
+Korean (Johab): Chikoreya (Johab)
+Korean (North): Korea (Kumpoto)
+Korean (South): Chi Korea (South)
+Korean: Korea
+Kosraean: Chososela
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Chikurdi
+Kutenai: =
+Kyrgyz: Chikigizi
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Chilao
+Latin: Chilatini
+Latvian: Chilativiya
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Chilithuania
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: Chiluo
+Lushai: =
+Luxembourghish: Kukongola
+Macedonian: Chimakedoniya
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Chimalagase
+Malay: Chimalay
+Malayalam: Malayalam Kambikatha
+Maldivian: Chaku Maldivian
+Maltese: Chimalta
+Manchu: Chimanchu
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: Chimaori
+Mapuche: =
+Marathi: Chimarathi
+Mari: =
+Marshallese: Chitundu
+Marwari: =
+Masai: Chimasai
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Chimoldavia
+Mongo: =
+Mongolian: Chimongoliya
+Montenegrin: Anthu a ku Montenegine
+Moroccan: =
+Mossi: =
+Myanmar: =
+Māori: Maori
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: Chivavajo
+Ndebele (North): Ndebele (Kumpoto)
+Ndebele (South): =
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: Chinepali
+Nias: =
+Niuean: Chi Niuean
+Nogai: =
+Norse: Chi Norse
+Norwegian (Bokmål): Chinorway (Bokmål)
+Norwegian (Nynorsk): Chinorway (Nynorsk)
+Norwegian: Chinorway
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Chi Occitan
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: Kugwiritsa ntchito
+Ossetic: Chiossetiki
+Pahlavi: =
+Palauan: Chisipanishi
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: Chipapiamento
+Pashto: Chiashto
+Pedi: =
+Persian (Farsi): Chiperezi (Farsi)
+Persian (Iran): =
+Persian: =
+Phoenician: Afoinike
+Pohnpeian: Wachinyamata
+Polish: Chipolishi
+Portuguese: Chipwitikizi
+Portuguese/Brazil: Chipwitikizi / Brazil
+Punjabi (India): Chipunjabi (India)
+Punjabi (Pakistan): Chipunjabi (Pakistan)
+Punjabi: Chipunjabi
+Quechua: Chiquechua
+Rajasthani: Chithu
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Chikhalidwe cha Chiroma
+Romanian: Chiromani
+Romansh: Chiroma
+Romany: Chiromani
+Rundi: =
+Russian (Moldavia: Chirasha (Moldavia
+Russian (Republic of Moldova): Chirasha (Republic of Moldova)
+Russian: Chirasha
+Sami (Inari): Chisami (Inari)
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Kumpoto)
+Sami (Skolt): Dzina Sami.
+Sami (Southern): Sami (Kumwera)
+Sami: Dzina Sami
+Samoan: Chisamoa
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Chisanskiriti
+Santali: =
+Sardinian: Wachisardinia
+Sasak: =
+Scots (Gaelic): Chi Scots (Chi Gaelic)
+Selkup: Kugulitsa
+Serbian (Upper): Chiseruya (Kumtunda)
+Serbian: Chiserbia
+Serer: =
+Sesotho: =
+Shan: =
+Shona: Chishona
+Sichuan Yi: =
+Sicilian: Chisilili
+Sindhi: Chisindhi
+Sinhala: =
+Slavic: Asilavo
+Slovak: Chislovak
+Slovenian: Chisiloveniya
+Sogdian: =
+Somali: Wachisomali
+Somani: Wachisomali
+Songhai: Nyimbo
+Soninke: =
+Sorbian (Lower): Chisorbiya (Kumunsi)
+Sorbian (Upper): Chisorbiya (Kumtunda)
+Sorbian: Achi Sorbi
+Sotho: =
+Spanish (Argentina): Chisipanishi (Argentina)
+Spanish (Bolivia): Chisipanishi (Bolivia)
+Spanish (Chile): Chisipanishi (Chile)
+Spanish (Colombia): Chisipanishi (Colombia)
+Spanish (Costa Rica): Chisipanishi (Costa Rica)
+Spanish (Dominican Republic): Chisipanishi (Dominican Republic)
+Spanish (Ecuador): Chisipanishi (Ecuador)
+Spanish (El Salvador): Chisipanishi (El Salvador)
+Spanish (Guatemala): Chisipanishi (Guatemala)
+Spanish (Honduras): Chisipanishi (Honduras)
+Spanish (Mexico): Chisipanishi (Mexico)
+Spanish (Nicaragua): Chisipanishi (Nicaragua)
+Spanish (Panama): Chisipanishi (Panama)
+Spanish (Paraguay): Chisipanishi (Paraguay)
+Spanish (Peru): Chisipanishi (Peru)
+Spanish (Puerto Rico): Chisipanishi (Puerto Rico)
+Spanish (Spain): Chisipanishi (Spain)
+Spanish (Uruguay): Chisipanishi (Uruguay)
+Spanish (Venezuela): Chisipanishi (Venezuela)
+Spanish: Chisipanishi
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Chi Sumeriya
+Sundanese: Chisunda
+Susu: =
+Sutu: =
+Swahili: Chiswahili
+Swati: =
+Swedish (Finland): Chisweden (Finland)
+Swedish (Sweden): Chisweden (Sweden)
+Swedish: Chiswedwe
+Syriac: Chisiriya
+Tagalog: Chitagalogi
+Tahitian: Chitahiti
+Tai: =
+Taiwan: =
+Tajik: Chitajik
+Tamashek: =
+Tamil: =
+Tatar: Chitata
+Telugu: Chilankhulo
+Tereno: =
+Tetum: =
+Thai: Chi Thai
+Tibetan: Chitibeta
+Tigre: =
+Tigrinya: Chitigrinya
+Timne: =
+Tlingit: Kulimbana
+Tok Pisin: Chitokini
+Tokelau: =
+Tonga (Nytmhasa): Distance Mwinilunga-Tonga (Nytmhasa)
+Tonga (Tonga Islands): =
+Tonga: Chitonga
+Tsimshian: Zamgululi
+Tsonga: Chitsonga
+Tswana: Chitswana
+Tumbuka: =
+Turkish: Chituruki
+Turkmen: Anthu aku Turkmen
+Tuvinian: Chinyanja
+Twi: =
+Udmurt: =
+Ugaritic: Chiugariti
+Ukrainian: Chiyukireniya
+Umbundu: =
+Urdu: Chiurdu
+Uyghur: =
+Uzbek: Chiuzbeki
+Vai: =
+Venda: ChiVenda
+Vietnamese: Chivietinamu
+Volapük: Mpweya
+Votic: Zosokoneza
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: Chiwelsh
+Wolaitta: =
+Wolof: Chiwolofu
+Xhosa: Chixhosa
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: Chiyidi
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: Zapoteki
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: Chizulu
+Browser-defined: Kutanthauzira msakatuli
+event: chochitika
+journal: nkhani
+0: =
+1: =
+2: =
+3: 3 
+4: 4 
+5: 5 
+6: 6 
+7: 7 
+8: 8 
+9: 9 
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Kulowera kolowera kosavomerezeka
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: mawu achinsinsi olakwika
+no such user: palibe wogwiritsa ntchito wotere
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Akaunti yayimitsidwa
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Nthawi
+Months: Miyezi
+Month Days: Masiku Amwezi
+Days: Masiku
+Weeks: Masabata
+Position: Udindo
+Until: Mpaka
+Count: Werengani
+Inclusion Dates: Madeti Ophatikizira
+Exclusion Dates: Madeti Opatula
+Event Imported: Chochitika Kunja
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: mabayiti
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Chidziwitso
+authenticate: Vuto la SMTP: Silingathe kutsimikizira
+connect_host: Vuto la SMTP: Silingagwirizane ndi wolandila SMTP:
+data_not_accepted: Vuto la SMTP: Zambiri sizilandiridwa
+encoding: Kusimba kosadziwika:
+execute: Sitinathe kuchita:
+file_access: Simungapeze fayilo:
+file_open: Cholakwika Cha Fayilo Simungathe kutsegula fayilo:
+from_failed: Zotsatirazi Kuchokera ku adilesi zalephera:
+instantiate: Sitinathe kukhazikitsa makalata kuti agwire ntchito
+mailer_not_supported: mailer sathandizidwa
+provide_address: Muyenera kupereka imelo imelo osachepera amodzi.
+recipients_failed: Vuto la SMTP: Olandirawa alephera:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Lowetsani Makhalidwe Owonetsedwa muzojambula
+Enter the correct letters and numbers...: Lowetsani zilembo ndi manambala olondola kuchokera pa chithunzicho mu bokosilo. Chiyeso chaching'ono ichi chimakhala choletsa kufikira ma bots oyipa. Ingotsegulaninso tsambalo ngati chithunzi ichi ndi chovuta kuwerenga
+Challenge/Response: Zovuta / Kuyankha
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Kusintha tsiku ndi nthawi yolowera?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Simunalembedwe mwachidule
+time prior to work hours...: nthawi yogwirira ntchito ...
+Invalid Event Date: Tsiku Losavomerezeka Losakhalitsa
+Please add a participant: Chonde onjezani nawo
+Invalid Date: Tsiku Losavomerezeka
+You have not entered a valid time of day: Simunalembetse nthawi yoyenera.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Chiphaso cha Kalendala sichingasoweke.
+First and last names cannot both be blank.: Maina oyamba ndi omaliza sangakhale opanda kanthu.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Mtundu wolakwika
+Color format should be RRGGBB.: Mtundu wamitundu uyenera kukhala #RRGGBB.
+URL cannot be blank.: Ulalo sungakhale wopanda kanthu.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Mtundu wa fayilo sukugwirizana ndi Fomu Yogulitsa
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Mtundu wolakwika wazambiri zakumbuyo.
+Invalid color for document title.: Mtundu wolakwika wa chikalata.
+Invalid color for table cell background.: Mtundu wosalondola wakuseri kwa tebulo.
+Invalid color for table cell background for today.: Mtundu wosakwanira wakuseri kwa tebulo lero.
+Invalid work hours.: Maola olakwika.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL ya seva iyenera kutha ndi slash (/).
+Invalid color for table grid.: Mtundu wolakwika wa gridi ya tebulo.
+Invalid color for event popup background.: Mtundu wolakwika pazowonekera pazowonekera.
+Invalid color for event popup text.: Mtundu wolakwika pazowonekera pazomwe zachitika.
+Invalid color for table header text.: Mtundu wolakwika wazolemba pamutu.
+Invalid color for table header background.: Mtundu wolakwika wakumbuyo kwa mutu wa tebulo.
+Server URL is required.: URL ya seva ndiyofunikira.
+Invalid Color: Mtundu Wolakwika
+Database Name: Dzinalo Losungira
+Full Path (no backslashes): Njira Yathunthu (osabwerera m'mbuyo)
+The password contains illegal characters.: Mawu achinsinsi ali ndi zilembo zosaloledwa.
+Error you must specify a Single-User Login: Cholakwika: Muyenera kutanthauzira Login Yogwiritsa Ntchito Mmodzi
+Could not find XXX.: Sitinapeze XXX.
+Could not find XXX in DOM.: Sitinapeze XXX mu DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Sabata ino
+This Month: Mwezi uno
+This Year: Chaka chino
+Exit: Potulukira
+Add New Event: Onjezani Chochitika Chatsopano
+Delete Entries: Chotsani Zolemba
+My Views: Maganizo Anga
+Manage Calendar of: Sinthani Kalendala ya
+My Reports: Malipoti Anga
+My Profile: Mbiri Yanga
+Public Calendar: Kalendala Yapagulu
+Unapproved Events: Zochitika Zosavomerezeka
+User Manager: Wogwiritsa Ntchito
+Help Contents: Thandizani Zamkatimu
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Tsamba Losungira Nawo
+Create New: Pangani Chatsopano
+Failure Reason: Kulephera Chifukwa:
+You must manually create database: Muyenera kupanga pamanja database.
+Single-User: Wogwiritsa Wokha
+Test Settings: Zoyeserera
+Timezone Conversion Successful: Kutembenuka Kwanthawi
+WebCalendar Installation Wizard Step XXX: Wowonjezera Wowonjezera WebCalendar Gawo XXX
+Password Accepted: Mawu Achinsinsi Alandiridwa
+Successful Login: Kulowa Bwino
+Password Incorrect: Mawu achinsinsi siolondola
+Invalid Login: Kulowa Kwolakwika
+Display Errors: Onetsani Zolakwa
+File Uploads: Sungani Zotsatsa
+Allow URL fopen: Lolani ma fopen a URL (amafunikira pokhapokha ngati kalendala yakutali ikugwiritsidwa ntchito)
+Safe Mode: Mafilimu angaphunzitse Safe
+Safe Mode Allowed Vars: Njira Zotetezedwa Zogulitsa Zogulitsa (TZ zimafunikira pokhapokha ngati Njira Yotetezeka Yatsegulidwa)
+GD: GD (yofunikira pazithunzi za Gradient Image)
+Passwords do not match!: Mawu achinsinsi sakugwirizana!
+Unable to write password to settings.php file: Sitinathe kulemba mawu achinsinsi ku fayilo ya "settings.php".
+Password Updated: Chinsinsi Chasinthidwa
+Password has been set: Mawu achinsinsi akhazikitsidwa.
+Connection Successful...: Kulumikizana Kuli Bwino  Chonde pitani patsamba lotsatira kuti mupitilize kuyika.
+Correct your entries or click the Create New...: Konzani zolemba zanu kapena dinani batani  Pangani Chatsopano  kuti mupitirize kuyika.
+Correct your entries and try again.: Konzani zolemba zanu ndikuyesanso.
+XXX does not exist: XXX kulibe
+XXX is not writable: XXX sichilembedwa
+Error Converting Timezone: Cholakwika Kutembenuza Nthawi
+Error Unable to write to file XXX.: Zalakwitsa Kulephera kulemba fayilo XXX.
+Please change the file permissions of this file.: Chonde sinthani zilolezo za fayilo.
+Please change includes dir permission: Chonde sinthani zilolezo za fayilo yanu ya "zikuphatikiza" kuti mulole kulembedwa ndi ogwiritsa ntchito ena.
+Your settings have been saved.: Makonda anu asungidwa.
+OFF: WOZIMA
+ON: YAMBA
+WebCalendar Setup Wizard: Wizard Yokonza WebCalendar
+This installation wizard will guide you...: Wizard iyi ikuthandizani pakukhazikitsa pulogalamu yoyambira pa WebCalendar.<br>Kuti muthandizidwe ndikuthana ndi mavuto onani:<br>
+System Administrators Guide: Maupangiri a Woyang'anira Dongosolo
+Frequently Asked Questions: Mafunso Ofunsidwa Kawirikawiri
+FAQ: =
+Troubleshooting: Kusaka zolakwika
+Getting Help: Kupeza Thandizo
+Upgrading Guide: Kupititsa patsogolo Upangiri
+User Supported Wiki: Wiki Wothandizira
+PHP Version Check: Fufuzani Mtundu wa PHP
+Check to see if PHP 7.1.0 or greater is installed.: Onani ngati PHP 7.1.0 kapena yayikika.
+PHP version: Mtundu wa PHP
+PHP Settings: Zikhazikiko za PHP
+Detailed PHP Info: Zambiri za PHP Info
+settings.php Status: Mkhalidwe wa "settings.php"
+Session Check: Kufufuza Gawo
+To test the proper operation of sessions...: Kuti muyese magawo oyenera, tsegulaninso tsambali. Muyenera kuwona gawo lachiwonetsero nthawi zonse.
+SESSION COUNTER: MALANGIZO OTHANDIZA
+The file permissions of settings.php are set...: Chilolezo cha fayilo cha "settings.php" chayikidwa kotero kuti okhazikitsa alibe chilolezo choti asinthe. Chonde sinthani zilolezo za fayilo yotsatirayi kuti mupitirize
+The file permissions of the includes directory are set...: Chilolezo chazifayilo zamakalatawo chimakhazikitsidwa kotero kuti womangayo alibe chilolezo chopanga fayilo yatsopano. Chonde sinthani zilolezo zamndandandawu kuti mupitirize
+Your settings.php file appears to be valid.: Fayilo yanu ya "settings.php" ikuwoneka ngati yovomerezeka.
+Configuration Wizard Password: Chinsinsi cha Wizard Yosintha
+Create Settings File Password: Pangani Zida Fayilo Achinsinsi
+db setup directions...: M'chigawo chino mudzakhazikitsa ndikuyesa kulumikizana ndi seva yanu yachinsinsi. Zambiri zaakaunti zomwe zimaperekedwa ziyenera kukhala ndi zilolezo ZONSE zopanga nkhokwe, matebulo ndi ogwiritsa ntchito. Ngati izi sizingatheke, kapena mwayi wanu wachinsinsi sungakwanitse, muyenera kusanja manambala anu.
+Database Status: Mkhalidwe Wosungikira
+Supported databases for your PHP installation: Masamba othandizidwa pakukhazikitsa kwanu kwa PHP
+Your current database settings are able to access the database.: Zosintha zanu zamasamba zomwe muli nazo zitha kupeza nkhokwezi.
+Please Test Settings: Chonde Yesani Zikhazikiko
+Your current database settings are not able...: Makonda anu apano sangakhale ndi database kapena sanayesedwebe.
+Database Settings: Zikhazikiko Zamtundu
+Database Type: Mtundu Wosungitsa
+Server: Seva
+Connection Persistence: Kulumikizana Kulimbikira
+All your database tables appear to be up...: Ma tebulo anu onse azamasamba akuwoneka kuti ndi aposachedwa. Mutha kupita patsamba lotsatira ndikumaliza kukhazikitsa kwanu pa WebCalendar.
+This appears to be a new installation...: Izi zikuwoneka ngati kukhazikitsa kwatsopano. Ngati izi sizolondola, chonde bwererani patsamba lakale ndikukonza makonda anu.
+This appears to be an upgrade...: Izi zikuwoneka ngati zosintha kuchokera ku&nbsp;XXX&nbsp;mpaka&nbsp;YYY.
+The database requires some data input...: Nawonso achichepere amafuna kulowetsa kwina Dinani Dinani Kusintha kuti mumalize kukweza.
+In this section we will perform...: M'chigawo chino tidzasintha kuti tibweretse nkhokwe yanu pamlingo woyenera. Ngati mukugwiritsa ntchito nkhokwe yokhazikika, izi zidzakuthandizani zokha. Ngati sichoncho, SQL yofunikira imatha kuwonetsedwa ndipo muyenera kudula ndi kuyiyika pazenera lanu lofunsira seva.
+No database actions are required.: Palibe zochitika zachinsinsi zomwe zimafunikira.
+The following database actions are required: Zotsatira zotsatirazi ndizofunikira
+ODBC Underlying Database: Database Yoyambira ya ODBC:
+Automatic installation not supported: Kukhazikitsa kokha sikunakwaniritsidwe kwathunthu pamtundu wanu wachinsinsi. Muyenera kupanga pamanja matebulo ofunikira pogwiritsa ntchito SQL yomwe yaperekedwa. Chonde dinani  Onetsani SQL  kuti mupitilize. Dulani ndi Matani pazenera lanu lofunsira.
+This may take several minutes to complete: Izi zitha kutenga mphindi zingapo kuti mumalize.
+Install Database: Sakani Database
+Update Database: Sinthani Zambiri
+Display Required SQL: Onetsani SQL Yofunika
+Return to previous page after processing SQL.: Pambuyo pokonza SQL pamanja, muyenera kubwerera patsamba lapitalo ndikuyesanso nkhokwe yanu kuti script izitha kuzindikira zosinthazo.
+This is the final step in setting up your WebCalendar Installation.: Ili ndiye gawo lomaliza lokhazikitsa Kukhazikitsa WebCalendar yanu.
+Timezone Conversion: Kutembenuka Kwanthawi
+It appears that you have NOT converted...: Zikuwoneka kuti simunasinthe zomwe mwapeza kale pa WebCalendar kukhala GMT. Ngati mwatero, munganyalanyaze chidziwitsochi osapitiliza ndi kutembenuka. Ngati uku ndikupanga kwatsopano, mutha kunyalanyaza zidziwitsozi.
+Convert Data to GMT: Sinthani Dongosolo kukhala GMT
+Application Settings: Zikhazikiko za Ntchito
+HTTP-based authentication was not detected...: Kutsimikizika kokhazikitsidwa ndi HTTP sikunapezeke. Muyenera kusinthanso seva yanu ngati mukufuna kusankha 'Web Server' kuchokera pazosankha za 'Kutsimikizira Kwaogwiritsa' pansipa.
+HTTP-based authentication was detected...: Kutsimikizika kokhazikitsidwa ndi HTTP kwapezeka. Kutsimikizika kwa ogwiritsa ntchito kukuyendetsedwa ndi seva yanu. Muyenera kusankha 'Web Server' pamndandanda wazosankha 'Kutsimikizika Kwogwiritsa Ntchito' pansipa.
+Create Default Admin Account: Pangani Akaunti Yokhazikika Yoyang'anira
+(Admin Account Not Found): (Akaunti Yoyang'anira Sanapezeke)
+User Authentication: Kutsimikizira Kwa Mtumiki
+Web-based via WebCalendar (default): Webusayiti kudzera pa WebCalendar (chosasintha)
+Web Server (not detected): Web Server (sinapezeke)
+Web Server (detected): Web Server (yapezeka)
+None (Single-User): Palibe (Wosagwiritsa Ntchito Mmodzi)
+Read-Only: Werengani-Pokha
+Environment: Chilengedwe
+Production: Kupanga
+Development: Chitukuko
+Save Settings: Sungani Zikhazikiko
+Launch WebCalendar: Yambitsani WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Cholakwika posintha tebulo "XXX": YYY.
+Conversion Successful: Kutembenuka Kwakwaniritsidwa 
+Perl script required: WebCalendar yanu yam'mbuyomu imafuna kugwiritsa ntchito PERL script kuti musinthe data yanu. Chonde thamangani /tools/upgrade_to_0.9.7.pl kenako mubwerere patsamba lino kuti mupitirize.
+previous version requires updating several tables: Mtundu wanu wakale wa WebCalendar umafunika kusinthitsa matebulo angapo achinsinsi.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: PALIBE KUWONETSERA KUKHALA
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Cholakwika polumikizana ndi database
+Include Path: Phatikizani Path
+Deleting events for: Kuchotsa zochitika za
+Importing events for: Kulowetsa zochitika za
+No data returned from: Palibe deta yomwe yabwerera kuchokera
+for non-user calendar: kalendala yosagwiritsa ntchito
+No Remote Calendars found: Palibe Makalendala Akutali omwe apezeka
+Remote Calendars not enabled: Makalendala akutali sanathandizidwe
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: sindinapeze chidziwitso cha chochitika
+could not find event id XXX in database.: sitinapeze chochitika cha id XXX mudatabase.
+task: ntchito
+This is a reminder for the XXX detailed below.: Ichi ndi chikumbutso cha XXX chomwe chili pansipa.
+Pecentage Complete: Pecentage Yathunthu
+Reminder: Chikumbutso
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Zochita zosagwirizana: XXX.
+No event id specified.: Palibe chidziwitso chochitika.
+Not authorized (not admin).: Osavomerezeka (osati admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Kuyang'ana zochitika za XXX kuyambira tsiku YYY mpaka tsiku ZZZ.
+Found XXX events in time range.: Tapeza zochitika za XXX munthawi.
+Event id=XXX YYY at ZZZ on AAA.: Id id = XXX "YYY" ku ZZZ pa AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Kulola wogwiritsa wa XXX kuwona kalendala ya wina.
+Error Email reminders disabled for user XXX.: Cholakwika: Zikumbutso za imelo zayimitsidwa pa "XXX" wosuta.
+Number of site_extras XXX.: Chiwerengero cha tsamba_zolemba: XXX.
+Reminder set for event.: Chikumbutso chakonzedwa chochitika.
+Mins Before XXX.: Mphindi Zisanachitike: XXX.
+Event time is XXX.: Nthawi yochitika ndi: XXX.
+Remind time is XXX.: Nthawi yokumbutsani ndi: XXX.
+Reminders for user XXX, login YYY.: Zikumbutso za wogwiritsa ntchito "XXX", lowetsani "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Kusavomerezeka kwa ogwiritsa "XXX".
+Event id=XXX YYY already sent.: Chochitika id = XXX "YYY" chatumizidwa kale.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Palibe cholowera chofunikira pamachitidwe osagwiritsa ntchito osakwatira.
+No login required for HTTP authentication.: Palibe zolowera zofunika kutsimikizika kwa HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Zilembo zolakwika polowera.
+Username XXX does not exist.: Dzinalo "XXX" kulibe.
+You cannot remove admin rights from yourself!: Simungathe kuchotsa ufulu wa admin nokha!
+Unknown error saving user: Wosadziwika wosunga vuto.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Palibe omwe atenga nawo mbali pa id ya chochitika: XXX.
+Db error Could not find event id XXX.: Db vuto: Simunapeze id ya chochitika XXX.
+Error Could not find event id XXX in database.: Vuto: Simunapeze id ya chochitika mu database.

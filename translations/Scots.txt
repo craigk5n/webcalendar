@@ -1,0 +1,2387 @@
+# Scots (Gaelic) gd
+#
+# Tha an cruth air a dhèanamh suas le bann-cinn roghainneil:
+#
+# Eadar-theangaichte le: d ’ainm agus post-d
+# Ùrachadh mu dheireadh: ceann-latha an eadar-theangachaidh
+# (A ’toirt a-steach na prìomh" # "agus beachdan sam bith a rinn eadar-theangairean roimhe.
+# Tha an loidhne bàn A ’CHIAD a’ crìochnachadh na beachdan cinn seo.)
+#
+# Air a leantainn le uimhir de fheum:
+#
+# Abairt Beurla: eadar-theangachadh
+# (Aon gu loidhne. LEIS na prìomh "#".
+# Tha an "abairt Beurla:", a ’toirt a-steach an colon": ", air a thoirt seachad leis an
+# Luchd-leasachaidh # WebCalendar. Is e do phàirt an "eadar-theangachadh".)
+#
+# Ann an eòlaire nan innealan tha dà sgriobt perl gus do chuideachadh:
+# - check_translation.pl
+# a ’comharrachadh an deach an teacsa gu lèir eadar-theangachadh gu soirbheachail.
+# - update_translation.pl
+# sgapaidh mi faidhlichean a ’phrògraim gus gach eadar-theangachadh (‘ abairt ’) agus
+# tooltip ('abairt'). Cuiridh e air dòigh na h-abairtean a rèir na duilleige
+# (faidhle) anns a bheil a ’chiad ghairm. Roghainneil, faodaidh e tagadh air an
+# abairtean nach deach eadar-theangachadh fhathast le bhith a ’cur
+#  << MISSING >>
+# air an loidhne os cionn na h-abairt. Agus, mas e giorrachadh a th ’anns an abairt,
+# bheir e a-steach an teacsa slàn Beurla air an loidhne fon abairt.
+#
+# Nòta: Tha mi a ’feuchainn ri gearradh sìos air meud iomlan an fhaidhle. Ma tha an "eadar-theangachadh"
+# tha facal / abairt co-ionann sa chànan agus sa Bheurla agad, dìreach cleachd soidhne "=".
+#
+# Nòta: Mothaichidh tu an inntrigeadh airson "May_" gu h-ìosal. Tha adhbhar ann airson seo.
+# Eadar-theangachadh "May_" gu ainm làn na mìos agus "May" Gus an,
+# mar as trice giorrachadh trì-litir, mìos (mar "Dàmhair" airson "Dàmhair").
+#
+# Chleachd mi eadar-theangachadh Google airson seo.
+# Bu chòir dha gu leòr gus an urrainn do neach-labhairt dùthchasach dearbhadh a dhèanamh air.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: dreach XXX
+WebCalendar is a PHP application used...: Is e WebPalendar aplacaid PHP a thathar a ’cleachdadh gus mìosachan a chumail airson aon neach-cleachdaidh no buidheann luchd-cleachdaidh eadar-lìn / eadra-lìon. Faodar a rèiteachadh cuideachd mar mhìosachan tachartais.
+Credits: Creideasan
+About: Mu dheidhinn
+OK: Ceart gu leòr
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Mearachd stòr-dàta: XXX.
+DEFAULT CONFIGURATION: CO-DHÙNADH DEFAULT
+Go: Rach
+Save: Sàbhail
+Undo: =
+Public Access: Ruigsinneachd Poblach
+Admin: Rianachd
+User Access Control: Smachd ruigsinneachd neach-cleachdaidh
+Allow Access to Other Users Calendar: Leig le ruigsinneachd air Mìosachan Luchd-cleachdaidh eile
+Grant This User Access to My Calendar: Thoir cead don neach-cleachdaidh seo faighinn chun mhìosachan agam
+Type: Seòrsa
+Calendar: Mìosachan
+View Event: Faic Tachartas
+View: Sealladh
+Edit: Deasaich
+Approve/Reject: Aontachadh / diùltadh
+Events: Tachartasan
+Tasks: Gnìomhachdan
+Journals: Irisean
+Can Invite: Faodaidh cuireadh a thoirt
+Can Email: An urrainn post-d
+Can See Time Only: Chì thu ùine a-mhàin
+Assistant: Neach-taic
+Select All: Tagh Uile
+Clear All: Soilleir Uile
+Public: Poblach
+Confidential: Dìomhaireachd
+Private: Prìobhaideach
+
+########################################
+# Page: activity_log.php
+#
+Next: An ath rud
+Previous: Roimhe seo
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Tha Tachartas XXX mu thràth air a ’mhìosachan agad.
+Invalid entry id XXX.: Id inntrigidh neo-dhligheach: "XXX".
+a XXX event may not be added to your calendar: Is e tachartas XXX a tha seo agus is dòcha nach tèid a chur ris a ’mhìosachan agad.
+confidential: dìomhair
+private: prìobhaideach
+Error adding event XXX.: Mearachd le tachartas a chuir ris: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Ainm suidheachadh mì-dhligheach "XXX".
+Select: Tagh
+Day: Latha
+Week: Seachdain
+Month: Mìos
+Year: Bliadhna
+Bottom: Sìos
+Top: =
+Anyone: Duine sam bith
+Participant: Com-pàirtiche
+Settings: Suidhichidhean
+Groups: Buidhnean
+NonUser Calendars: Mìosachain NonUser
+Other: Eile
+Email: Post-d
+Colors: Dathan
+Document background: Cùl-fhiosrachadh sgrìobhainnean
+Document title: Tiotal na sgrìobhainn
+Document text: Teacs sgrìobhainn
+My event text: Teacs an tachartais agam
+Table grid color: Dath clèithe bùird
+Table header background: Cùl-cinn cinn bùird
+Table header text: Teacs header clàr
+Table cell background: Cùl-fhiosrachadh cealla bùird
+Table cell background for current day: Cùl-fhiosrachadh cealla bùird airson an latha an-diugh
+Table cell background for days with events: Cùl-fhiosrachadh cealla bùird airson làithean le tachartasan
+Table cell background for weekends: Cùl-fhiosrachadh cealla bùird airson deireadh-sheachdainean
+Table cell background for other month: Cùl-fhiosrachadh cealla bùird airson mìos eile
+Week number color: Dath àireamh seachdain
+Event popup background: Cùl-fhiosrachadh popup tachartais
+Event popup text: Teacs popup tachartais
+System Settings: Roghainnean an t-siostaim
+Help: Cuideachadh
+System options: Roghainnean siostaim
+app-name-help: Sònraich ainm an tagraidh a nochdas ann am bàr tiotal a ’bhrobhsair airson a h-uile duilleag agus air a
+Application Name: Ainm an Iarrtais
+Translated Name (XXX): Ainm eadar-theangaichte (XXX)
+server-url-help: Sònraich URL bunaiteach airson an tagraidh. Bidh seo air a ghabhail a-steach nuair a chuireas tu a-mach cuimhneachain post-d agus brathan.
+Server URL: URL an fhrithealaiche
+home-url-help: Sònraich URL dachaigh airson an tagraidh. Faodaidh seo a bhith gu tur no càirdeach
+Home URL: URL dachaigh
+language-help: Sònraich dè an cànan a bu chòir a chleachdadh.
+Language: Cànan
+Your browser default language is XXX.: Is e "XXX" cànan bunaiteach do bhrobhsair.
+Allow user to use themes: Leig leis an neach-cleachdaidh cuspairean a chleachdadh
+themes-help: A ’ceadachadh ùrachadh mòr air na roghainnean rèiteachaidh. Tha bileagan cùise nas ìsle mar neach-cleachdaidh a-mhàin.
+Themes: Cuspairean
+AVAILABLE THEMES: CUSPAIREAN GU FAIGHINN
+None: Chan eil gin
+Preview: Ro-shealladh
+Site customization: Gnàthachadh làraich
+custom-script-help: A ’ceadachadh teacsa gnàthaichte Javascript no duilleag stoidhle a chuir a-steach don roinn“ ceann ”HTML de gach duilleag.
+Custom script/stylesheet: Sgriobt àbhaisteach / duilleag stoidhle
+custom-header-help: A ’ceadachadh criomag HTML gnàthaichte a thoirt a-steach aig mullach gach duilleig.
+Custom header: Ceann-cinn gnàthaichte
+custom-trailer-help: A ’ceadachadh criomag HTML gnàthaichte a thoirt a-steach aig deireadh gach duilleig.
+Custom trailer: Trèilear gnàthaichte
+enable-external-header-help: A ’ceadachadh an trèilear àbhaisteach a luchdachadh bho fhaidhle a-muigh
+Allow external file for header/script/trailer: Leig le faidhle a-muigh airson bann-cinn / sgriobt / trèilear
+Allow user to override header/trailer: Leig leis an neach-cleachdaidh faighinn thairis air bann-cinn / trèilear
+Date and Time: Ceann-latha agus uair
+server-tz-help: A ’sònrachadh cia mheud uair a thìde gus an ùine atharrachadh bho UTC gu àm an fhrithealaiche.
+Server Timezone Selection: Taghadh Timezone an fhrithealaiche
+tz-help: A ’sònrachadh cia mheud uair a thìde gus an ùine atharrachadh bho UTC gu àm ionadail.
+Default Client Timezone Selection: Taghadh Timezone Client bunaiteach
+display-general-use-gmt-help: Ma tha e air a chomasachadh, tha cinn-latha / amannan cumanta air an taisbeanadh mar GMT
+Display Common Use Date/Times as GMT: Taisbean ceann-latha / amannan cleachdaidh cumanta mar GMT
+date-format-help: Sònraich an cruth ceann-latha as fheàrr leat.
+Date format: Cruth ceann-latha
+Small Task Date: Ceann-latha gnìomh beag
+display-week-starts-on: Sònraich latha na seachdain a thòisicheas an t-seachdain. Ma tha Diluain air a shònrachadh, is e àireamhan seachdain ISO a bhios ann an àireamhan seachdain.
+Week starts on: Tòisichidh an t-seachdain
+display-weekend-starts-on: A ’suidheachadh latha na seachdain airson deireadh-sheachdainean gus tòiseachadh
+Weekend starts on: Deireadh-seachdain a ’tòiseachadh
+time-format-help: Sònraich dè an cruth ùine airson a chleachdadh:<br><em>12 uair:</em> Amannan taisbeanaidh mar 3m, 8: 30f, msaa.<br><em>24 uair:</em> Amannan taisbeanaidh mar 300 , 2030, msaa.
+Time format: Cruth ùine
+12 hour: 12 uairean                                                   
+24 hour: 24 uairean                                                   
+timed-evt-len-help: A ’sònrachadh modh inntrigidh airson fad tachartas le ùine a dhearbhadh.
+Specify timed event length by: Sònraich fad tachartais tìmeil le
+Duration: Faid
+End Time: Ùine crìochnachaidh
+work-hours-help: Sònraich an raon ùine airson a thaisbeanadh airson sealladh an latha.
+Work hours: Uairean obrach
+From: Bho
+to: gu
+Appearance: Coltas
+preferred-view-help: Sònraich an sealladh bunaiteach (Latha, Seachdain, Mìos, no Bliadhna).
+Preferred view: An sealladh as fheàrr leam
+Allow top menu: Leig leis a ’chlàr gu h-àrd
+Date Selectors position: Suidheachadh Tagh Ceann-latha
+menu-themes-help: A ’suidheachadh dathan agus stoidhle a’ phrìomh chlàr
+Menu theme: Cuspair clàr
+fonts-help: Sònraich liosta de chlàran siostaim ri chleachdadh (leithid "Arial, Helvetica")
+Fonts: Cruthan
+display-sm_month-help: Ma tha e air a chomasachadh, nochdaidh seallaidhean beaga mìosan ann am mìos
+Display small months: Taisbeanadh mìosan beaga
+display-weekends-help: Cuir a-steach deireadh-sheachdainean nuair a choimheadas tu air seachdain.
+Display weekends: Taisbeanaidhean deireadh-sheachdain
+display-long-daynames-help: Ma tha e air a chomasachadh, tha ainmean latha fada air an taisbeanadh
+Display long day names: Seall ainmean latha fada
+display-alldays-help: Dèan taisbeanadh de làithean roimhe agus an ath mhìosan ann am beachdan mìos, a ’lìonadh a h-uile cealla.
+Display all days in month view: Dèan taisbeanadh fad an latha ann an sealladh mìos
+display-week-number-help: A ’sònrachadh am bu chòir àireamh na seachdain (1-52) a bhith air a thaisbeanadh ann an sealladh na mìos agus sealladh na seachdain.
+Display week number: Àireamh seachdain taisbeanaidh
+display-desc-print-day-help: Cuir a-steach tuairisgeulan tachartais ann an dreach a tha càirdeil do chlò-bhualadair de shealladh latha.
+Display description in printer day view: Tuairisgeul taisbeanaidh ann an sealladh latha clò-bhualadair
+yearly-shows-events-help: Air an t-sealladh bliadhnail, làithean taisbeanaidh anns a bheil tachartasan ann an clò trom.
+Display days with events in bold in month and year views: Làithean taisbeanaidh le tachartasan ann an clò trom ann an seallaidhean mìos is bliadhna
+display-minutes-help: Ma tha e air a chomasachadh, thèid mionaidean a ’crìochnachadh le: 00 an-còmhnaidh a thaisbeanadh
+Display 00 minutes always: Taisbeanadh 00 mionaid an-còmhnaidh
+display-end-times-help: Taisbeanaidh amannan crìochnachaidh an tachartais ma tha an t-àm ann
+Display end times on calendars: Taisbeanaidh amannan crìochnachaidh air mìosachain
+allow-view-add-help: Bidh ìomhaigh ‘+’ air a ghabhail a-steach ann an seallaidhean, a ’leigeil le luchd-cleachdaidh tacharta
+Include add event link in views: Cuir a-steach cuir ceangal tachartais ann an seallaidhean
+lunar-help: Ma tha e air a chomasachadh, seallaidh e ìomhaighean beaga a ’riochdachadh ìrean na gealaich gach mìos
+Display Lunar Phases in month view: Taisbeanaidh Ceumannan Lunar ann an sealladh mìos
+Restrictions: Cuingeachaidhean
+allow-view-other-help: A ’sònrachadh am faod aon neach-cleachdaidh mìosachan cleachdaiche eile fhaicinn.
+Allow viewing other users calendars: Leig le bhith a ’coimhead air mìosachain cleachdaiche eile
+require-approvals-help: Nuair a tha e air a chomasachadh, feumaidh neach-cleachdaidh tachartas a cheadachadh mus tèid a thaisbeanadh air a ’mhìosachan aca (mura h-eil Taisbeanadh neo-aontaichte air a chomasachadh). Cha chuir nota le bhith a ’suidheachadh seo gu“ Chan eil ”dheth aontaidhean airson a’ mhìosachan Ruigsinneachd Poblach (ma tha am mìosachan Ruigsinneachd Poblach air a chomasachadh).
+Require event approvals: Feumar cead tachartais
+display-unapproved-help: A ’sònrachadh a bheil tachartasan neo-aontaichte air an taisbeanadh sa mhìosachan agad.<br>Ma thèid an suidheachadh gu“ Tha ”, thèid tachartasan neo-aontaichte a thaisbeanadh sa mhìosachan agad (ann an dath teacsa eadar-dhealaichte).<br>Ma thèid a shuidheachadh gu“ Chan eil ”, an uairsin feumar cead a thoirt do thachartasan neo-aontaichte mus tèid an taisbeanadh sa mhìosachan agad.
+Display unapproved: Taisbeanadh neo-aontaichte
+conflict-check-help: Thoir sùil airson còmhstri tachartais (dà thachartas air an clàradh airson an aon àm airson an aon neac
+Check for event conflicts: Thoir sùil airson còmhstri tachartais
+Yes: Tha
+No: Chan eil
+conflict-months-help: Ma tha sgrùdadh còmhstri ann (tha "Thoir sùil airson còmhstri tachartais" air a shuidheachadh gu "Chan 
+Conflict checking months: Mìosan sgrùdaidh còmhstri
+conflict-check-override-help: A ’leigeil le luchd-cleachdaidh faighinn thairis air còmhstri tachartais agus dà thachartas no barrachd
+Allow users to override conflicts: Leig le luchd-cleachdaidh faighinn thairis air còmhstri
+limit-appts-help: A ’leigeil le rianaire an t-siostaim crìoch a chuir air feadh an t-siostaim air an àireamh de dhreuchdan a dh’ fhaodas aon neach-cleachdaidh a bhith aca air aon latha.
+Limit number of timed events per day: Cuir crìoch air an àireamh de thachartasan tìmeil gach latha
+limit-appts-number-help: A ’sònrachadh an àireamh as motha de thachartasan tìmeil a dh’ fhaodas neach-cleachdaidh a bhith ann an aon latha.
+Maximum timed events per day: Tachartasan ùine as motha san latha
+crossday-help: Ma tha e air a chomasachadh, thèid tachartasan a mhaireas làithean a thaisbeanadh air làithean air leth
+Disable Cross-Day Events: Cuir à comas tachartasan thar-latha
+disable-location-field-help: Bidh taghadh "Tha" a ’toirt air falbh an raon" Suidheachadh "bho dhuilleagan fiosrachaidh tachartais
+Disable Location field: Cuir à comas raon
+disable-url-field-help: Bidh taghadh "Tha" a ’toirt air falbh an raon" URL "bho dhuilleagan fiosrachaidh tachartais
+Disable URL field: Cuir à comas raon URL
+disable-priority-field-help: Bidh taghadh "Tha" a ’toirt air falbh an raon" Prìomhachas "bho dhuilleagan fiosrachaidh tachartais, a’ toirt seachad eadar-aghaidh nas sìmplidh airson luchd-tòiseachaidh.
+Disable Priority field: Cuir à comas raon prìomhachais
+disable-access-field-help: Bidh taghadh "Tha" a ’toirt air falbh an raon" Ruigsinneachd "bho dhuilleagan fiosrachaidh tachartais, a’ toirt seachad eadar-aghaidh nas sìmplidh airson luchd-tòiseachaidh.
+Disable Access field: Cuir à comas raon ruigsinneachd
+disable-participants-field-help: Bidh taghadh "Tha" a ’toirt air falbh an raon" Com-pàirtichean "bho dhuilleagan fiosrachaidh tachartais, a’ cur casg air luchd-cleachdaidh bho bhith a ’cur luchd-cleachdaidh eile ris na tachartasan aca. Ma bheir thu comas don roghainn seo, is dòcha gum bi thu airson an raon "Ceadaich coimhead air mìosachain cleachdaiche eile" a dhì-cheadachadh cuideachd.
+Disable Participants field: Cuir à comas raon com-pàirtichean
+disable-repeating-field-help: Bidh taghadh "Tha" a ’toirt air falbh an raon" Ath-aithris "nuair a chuireas tu tachartasan ris. Bheir seo seachad eadar-aghaidh nas sìmplidh airson luchd-tòiseachaidh.
+Disable Repeating field: Cuir à comas an raon ath-aithris
+allow-html-description-help: Ma tha e air a chomasachadh, faodaidh luchd-cleachdaidh HTML a chuir a-steach ann an raon tuairisgeul a
+Allow HTML in Description: Ceadaich HTML ann an Tuairisgeul
+Popups: =
+disable-popups-help: Cuir dheth popups bho sheallaidhean mìosachain
+Disable Pop-Ups: Cuir à comas Pop-ups
+popup-includes-siteextras-help: Ma tha e air a chomasachadh, leig le raointean tachartais gnàthaichte a chaidh a stèidheachadh anns an fhaidhle site_extras.php a thaisbeanadh ann am popups tachartais.
+Display Site Extras in popup: Taisbeanaidhean làraich taisbeanaidh ann am popup
+popup-includes-participants-help: Ma tha e air a chomasachadh, thèid com-pàirtichean a thaisbeanadh ann am popups tachartais.
+Display Participants in popup: Taisbeanaidh Com-pàirtichean ann am popup
+Miscellaneous: Measgachadh
+remember-last-login-help: Nuair a bhios e air a chomasachadh, thèid logadh a-steach an neach-cleachdaidh a lìonadh a-steach dhaibh air an duilleag logadh a-steach (ach chan e am facal-faire), agus thèid roghainnean an neach-cleachdaidh a luchdachadh (a ’toirt a-steach na dathan as fheàrr leotha agus an taghadh cànain).
+Remember last login: Cuimhnich air logadh a-steach mu dheireadh
+summary_length-help: An fhad as motha de thuairisgeul goirid ann an seallaidhean mìosachain
+Brief Description Length: Tuairisgeul goirid Fad
+user_sort-help: A ’dearbhadh òrdugh òrdugh airson liostaichean Cleachdaiche, Nonuser
+User Sort Order: Òrdugh Deasachadh Cleachdaiche
+Lastname, Firstname: Ainm mu dheireadh, Ciad ainm
+Firstname, Lastname: Ciad ainm ainm deiridh
+allow-public-access-help: Nuair a tha e air a chomasachadh, faodar am mìosachan a chleachdadh mar mhìosachan poblach a-mhàin nach
+Allow public access: Leig le ruigsinneachd poblach
+public-access-default-visible: Nochdaidh tachartasan bhon mhìosachan poblach gu fèin-ghluasadach air mìosachain gach neach-cleachdaidh
+Public access visible by default: Cothrom poblach ri fhaicinn mar bhunait
+public-access-default-selected: Nuair a chuireas tu tachartas ùr ris, thèid an neach-cleachdaidh poblach a thaghadh gu bunaiteach mar chom-pàirtiche.
+Public access is default participant: Is e ruigsinneachd poblach an com-pàirtiche àbhaisteach
+public-access-view-others-help: Nuair a gheibh thu cothrom air an t-siostam le ruigsinneachd poblach, a ’sònrachadh an urrainn don neach-cleachdaidh mìosachan cleachdaiche mìosachain eile fhaicinn.
+Public access can view other users: Faodaidh ruigsinneachd poblach sealltainn air luchd-cleachdaidh eile
+public-access-can-add-help: Nuair a bhios e air a chomasachadh, bidh e comasach do luchd-cleachdaidh a gheibh cothrom air an t-siostam tro ruigsinneachd poblach tachartasan ùra a chuir ris, ach cha nochd iad sa mhìosachan gus an toir rianaire aonta don tachartas ùr.
+Public access can add events: Faodaidh ruigsinneachd poblach tachartasan a chuir ris
+public-access-add-requires-approval-help: A ’sònrachadh a bheil feum air cead a thoirt do thachartasan a thèid a chur ris tron ​​chunntas ruigsinneachd poblach mus tèid an taisbeanadh.
+Public access new events require approval: Feumaidh ruigsinneachd poblach tachartasan ùra aontachadh
+public-access-sees-participants-help: Ma tha e air a chomasachadh, bidh e comasach do luchd-cleachdaidh a gheibh cothrom air a ’mhìosachan bhon chunntas phoblach com-pàirtichean tachartais fhaicinn ma chì iad mion-fhiosrachadh mu thachartas.
+Public access can view participants: Faodaidh ruigsinneachd poblach sealltainn do chom-pàirtichean
+public-access-override-help: A ’leigeil le ainmean thachartasan agus tuairisgeulan a bhith falaichte air a’ mhìosachan poblach
+Override event name/description for public access: Thoir thairis ainm / tuairisgeul an tachartais airson ruigsinneachd poblach
+public-access-override-text-help: An teacsa ri thaisbeanadh ma tha an roghainn gu h-àrd air a chomasachadh. Mura h-eil e ri fhaighinn, thèid eadar-theangachadh.
+Text to display to public access: Teacs airson a thaisbeanadh don phoball
+public-access-captcha-help: Ma tha e air a chomasachadh, feumaidh tachartasan ùra a chuir am poball seachad dearbhadh CAPTCHA.
+Require CAPTCHA validation for public access new events: Feum air dearbhadh CAPTCHA airson ruigsinneachd poblach air tachartasan ùra
+uac-enabled-help: A ’comasachadh smachd ruigsinneachd aig ìre neach-cleachdaidh
+User Access Control enabled: Smachd ruigsinneachd cleachdaiche air a chomasachadh
+groups-enabled-help: A ’comasachadh taic buidhne, a’ leigeil le luchd-cleachdaidh luchd-cleachdaidh a thaghadh le buidhnean.
+Groups enabled: Buidhnean air an comasachadh
+user-sees-his-group-help: Ma tha e air a chomasachadh, chan fhaic luchd-cleachdaidh luchd-cleachdaidh mìosachain nach eil ann an co-dhiù aon de na buidhnean aca.
+User sees only his groups: Chan eil an cleachdaiche a ’faicinn ach na buidhnean aige
+nonuser-enabled-help: Ma tha e air a chomasachadh, bidh roghainn aig admins mìosachain nonuser a chur ris
+Nonuser enabled: Mìosachain Nonuser air an comasachadh
+nonuser-list-help: Far am bu chòir dhut na mìosachain nonuser a thaisbeanadh air liosta nan com-pàirtichean
+Nonuser list: Taisbeanadh air liosta nan com-pàirtichean aig
+Upcoming Events: Tachartasan ri thighinn
+upcoming-events-help: Dèan comas air tighinn.php
+Enabled: Air a chomasachadh
+upcoming-events-allow-override: Leig le paramter cleachdaiche airson coming.php
+Allow user override: Leig leis an neach-cleachdaidh faighinn seachad air
+upcoming-events-display-caticons: Cuir a-steach ìomhaighean roinn-seòrsa ann an coming.php
+Display category icons: Deilbh ìomhaighean roinn
+upcoming-events-display-layers: Sreathan taisbeanaidh ann an ri thighinn.php
+Display layers: Sreathan taisbeanaidh
+upcoming-events-display-links: Ceanglaichean taisbeanaidh ann an coming.php
+Display links to events: Taisbeanaidh ceanglaichean gu tachartasan
+upcoming-events-display-popups: Taisbeanadh popups tachartas ann an coming.php
+Display event popups: Taisbeanadh popups tachartas
+reports-enabled-help: Ma tha e air a chomasachadh, chì luchd-cleachdaidh roinn “Aithisgean” aig bonn gach duilleig agus bidh cead aca aithisgean àbhaisteach a chruthachadh. A bharrachd air an sin, faodaidh luchd-cleachdaidh rianachd aithisgean cruinneil a chruthachadh a nochdas aig bonn duilleagan gach neach-cleachdaidh.
+Reports enabled: Aithisgean air an comasachadh
+subscriptions-enabled-help: A ’sònrachadh an urrainn do luchd-cleachdaidh iomallach fo-sgrìobhadh a dhèanamh air mìosachan neach-cleachdaidh WebCalendar, a’ toirt cothrom dhaibh tachartasan cleachdaiche WebCalendar fhaicinn san tagradh aca le comas iCal (leithid iCal Apple no Mìosachan Mozilla).
+Allow remote subscriptions: Leig le fo-sgrìobhaidhean iomallach
+remotes-enabled-help: A ’leigeil le luchd-cleachdaidh faidhlichean ics iomallach a luchdachadh le bhith a’ cleachdadh URL
+Allow remote calendars: Leig le mìosachain iomallach
+rss-enabled-help: A ’sònrachadh an urrainnear mìosachan neach-cleachdaidh fhaighinn bho bhiadh RSS.
+Enable RSS feed: Dèan comas air RSS feed
+categories-enabled-help: A ’comasachadh taic airson roinnean tachartais.
+Categories enabled: Roinnean air an comasachadh
+icon_upload-enabled-help: Ma tha e air a chomasachadh, faodaidh luchd-cleachdaidh ìomhaighean roinn-seòrsa a luchdachadh suas
+Category Icon Upload enabled: Luchdaich suas ìomhaigh ìomhaigh
+(Requires XXX folder to exist.): (Feumaidh pasgan XXX a bhith ann.)
+display-tasks-help: Seall uinneag gnìomh beag air mìosachan mìos is latha
+Display small task list: Seall liosta ghnìomhan beaga
+display-tasks-in-grid-help: Taisbeanaidh gnìomhan ann am mìosachain còmhla ri tachartasan
+Display tasks in Calendars: Taisbeanaidh gnìomhan ann am Mìosachain
+allow-external-users-help: A ’sònrachadh an urrainnear cleachdaiche neo-mhìosachain a chuir ri tachartas. Leigidh seo le luchd-cle
+Allow external users: Leig le luchd-cleachdaidh taobh a-muigh
+external-can-receive-notification-help: Nuair a bhios luchd-cleachdaidh taobh a-muigh air an comasachadh agus cleachdadh post-d air a chomasachadh, faodaidh luchd-cleachdaidh taobh a-muigh fiosan post-d fhaighinn nuair a thèid an tachartas a chuir ris, ùrachadh no cuir às (ma tha seòladh puist-d an neach-cleachdaidh taobh a-muigh air a thoirt seachad).
+External users can receive email notifications: Faodaidh luchd-cleachdaidh taobh a-muigh fiosan post-d fhaighinn
+external-can-receive-reminder-help: Nuair a bhios luchd-cleachdaidh taobh a-muigh air an comasachadh agus cleachdadh post-d air a chomasachadh, faodaidh luchd-cleachdaidh taobh a-muigh cuimhneachain puist-d fhaighinn (ma tha seòladh puist-d an neach-cleachdaidh taobh a-muigh air a thoirt seachad).
+External users can receive email reminders: Faodaidh luchd-cleachdaidh taobh a-muigh cuimhneachain post-d fhaighinn
+allow-self-registration-help: Leig le luchd-cleachdaidh ùr iad fhèin a chlàradh
+Allow self-registration: Leig le fèin-chlàradh
+use-blacklist-help: Cuir casg air ruigsinneachd air gnìomhan WebCalendar stèidhichte air seòladh IP
+Restrict self-registration to blacklist: Cuir casg air fèin-chlàradh chun liosta dhubh
+allow-self-registration-full-help: Leig le luchd-cleachdaidh ùr am pròiseas fèin-chlàraidh a chrìochnachadh air-loidhne
+Use self-registration email notifications: Cruthaich faclan-faire agus cuir gu luchd-cleachdaidh ùr
+allow-attachment-help: Leig le luchd-cleachdaidh ceanglachan faidhle a chuir ri tachartasan.
+Allow file attachments to events: Leig le ceanglachan faidhle ri tachartasan
+Admin and owner can always add attachments if enabled.: Faodaidh rianachd agus sealbhadair an-còmhnaidh ceanglachan a chuir ris ma tha sin air a chomasachadh.
+allow-comments-help: Leig le luchd-cleachdaidh beachdan a chuir ri tachartasan.
+Allow comments to events: Leig beachdan gu tachartasan
+Admin and owner can always add comments if enabled.: Faodaidh an neach-rianachd agus an sealbhadair beachdan a chuir ris ma tha sin air a chomasachadh.
+email-enabled-help: Cuir air no cuir dheth gach post-d airson fios agus cuimhneachain. Suidhich gu "chan eil", mura h-eil an frithealaiche agad air a stèidheachadh gu ceart gus post a chuir.
+Email enabled: Post-d air a chomasachadh
+email-default-sender: Sònraich an seòladh puist-d gus sònrachadh mar an neach a chuir e nuair a chuireas tu a-mach cuimhneachain.
+Default sender address: Seòladh seòlaidh bunaiteach
+email-mailer: Tagh seòrsa post-d (SMTP, post PHP, sendmail)
+Email Mailer: Post-d Mailer
+email-smtp-host: Ainm (ean) frithealaiche (ean) SMTP air an sgaradh le cromagan
+SMTP Host name(s): Ainm (ean) aoigheachd SMTP
+email-smtp-port: Àireamh port SMTP (25 mar as trice)
+SMTP Port Number: Àireamh port SMTP
+email-smtp-auth: Cleachd Dearbhadh SMTP
+SMTP Authentication: Dearbhadh SMTP
+email-smtp-username: Ainm-cleachdaidh SMTP ma tha thu a ’cleachdadh Dearbhadh
+SMTP Username: Ainm-cleachdaidh SMTP
+email-smtp-password: Facal-faire SMTP ma tha thu a ’cleachdadh Dearbhadh
+SMTP Password: Facal-faire SMTP
+Default user settings: Roghainnean cleachdaiche bunaiteach
+email-format: Sònraich roghainn airson HTML no teachdaireachdan teacsa sìmplidh
+Email format preference: Roghainn cruth post-d
+HTML: =
+Plain Text: Teacs soilleir
+email-include-ics: Cuir a-steach faidhle iCalendar ICS gus teachdaireachd post-d a chuir a-steach
+Include iCalendar attachments: Cuir a-steach ceanglachan iCalendar
+email-event-reminders-help: A ’sònrachadh am bu chòir dhut cuimhneachain tachartais a chuir air falbh.
+Event reminders: Cuimhneachain tachartais
+email-event-added: A ’sònrachadh am bu chòir dhut fiosan post-d a chuir no nach cuir nuair a thèid tachartas a chur ris a’ mhìosachan agad.
+Events added to my calendar: Tachartasan air an cur ris a ’mhìosachan agam
+email-event-updated: A ’sònrachadh am bu chòir dhut fiosan post-d a chuir no nach cuir nuair a thèid tachartas ùrachadh air a’ mhìosachan agad.
+Events updated on my calendar: Tachartasan air an ùrachadh air a ’mhìosachan agam
+email-event-deleted: A ’sònrachadh am bu chòir dhut fiosan post-d a chuir no nach cuir nuair a thèid tachartas a thoirt air falbh bhon mhìosachan agad.
+Events removed from my calendar: Tachartasan air an toirt air falbh bhon mhìosachan agam
+email-event-rejected: A ’sònrachadh am bu chòir dhut fiosan post-d a chuir no nach cuir nuair a dhiùltas com-pàirtiche tachartas a tha air a’ mhìosachan agad.
+Event rejected by participant: Tachartas air a dhiùltadh leis a ’chom-pàirtiche
+email-event-create: A ’sònrachadh am faigh neach-cruthachaidh nan tagraidhean post-d
+Event that I create: Tachartas a chruthaicheas mi
+Color options: Roghainnean dath
+Allow user to customize colors: Leig leis an neach-cleachdaidh dathan a ghnàthachadh
+gradient-colors: Ma thèid dathan caisead comasach a chleachdadh. Faodaidh seo buaidh mhòr a thoirt air coileanadh.
+Enable gradient images for background colors: Dèan comas air ìomhaighean caisead airson dathan cùl-raoin
+Not available: Chan eil e ri fhaighinn
+Background Image options: Cùl-fhiosrachadh Roghainnean ìomhaigh
+bgimage-help: URL den ìomhaigh cùl a tha thu ag iarraidh. Is dòcha gu bheil ceangal dàimheach ann.
+Background Image: Ìomhaigh cùl-fhiosrachaidh
+bgrepeat-help: A ’cumail smachd air giùlan ath-aithris air ìomhaigh cùil.
+Background Repeat: Ath-aithris Cùl-fhiosrachadh
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Luchd-cuideachaidh
+Preferences: Roghainnean
+Control Panel: Pannal Smachd
+Users: Luchd-cleachdaidh
+Account: Cunntas
+Categories: Roinnean-seòrsa
+Views: Seallaidhean
+Layers: Sreathan
+Reports: Aithisgean
+Delete Events: Cuir às do thachartasan
+Activity Log: Log gnìomhachd
+System Log: Log an t-siostaim
+Security Audit: Sgrùdadh Tèarainteachd
+Public Preferences: Roghainnean poblach
+Unapproved Public Events: Tachartasan poblach neo-aontaichte
+Administrative Tools: Innealan rianachd
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Ainm dùblaichte: "XXX".
+Username XXX already exists.: Tha ainm-cleachdaidh "XXX" ann mu thràth.
+Email address XXX already exists.: Tha seòladh puist-d "XXX" ann mu thràth.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Beachdan a bharrachd (roghainneil)
+Approve and Send: Aontachadh agus cuir
+Approve and Exit: Aontachadh agus fàgail
+(Your comments will be emailed to the event creator.): (Thèid na beachdan agad a chuir air post-d gu neach-cruthachaidh an tachartais.)
+Hello, XXX.: Halò, XXX.
+XXX has approved an appointment and added comments.: Chaidh coinneamh aontachadh agus tha XXX air beachdan a chuir ris.
+Subject XXX: Cuspair: "XXX".
+Description XXX: Tuairisgeul: "XXX".
+Date XXX: Ceann-latha: XXX
+Time XXX: Ùine: XXX
+Comments XXX: Beachdan: XXX
+Approved w/Comments by XXX.: Aontaichte w / Beachdan le: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Modh rianachd
+Your assistants: Do luchd-cuideachaidh
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Mearachd neo-aithnichte.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Mearachd a ’phrògraim: Chan eil XXX air a shònrachadh!
+user: neach-cleachdaidh
+year: bliadhna
+month: mìos
+day: latha
+
+########################################
+# Page: category.php
+#
+Category Icon: Ìomhaigh roinn-seòrsa
+Global: Cruinneil
+The permissions for the icons directory are set to read-only: Bidh na ceadan airson eòlaire nan ìomhaighean air an leughadh a-mhàin.
+Category Name: Ainm roinn-seòrsa:
+Color: Dath
+Remove Icon: Thoir air falbh an ìomhaigh:
+Add Icon to Category: Cuir Ìomhaigh ris an roinn-seòrsa
+Upload: Luchdaich suas
+GIF or PNG 6kb max: GIF no PNG 6kb max
+Search for existing icons: Lorg airson na h-ìomhaighean a tha ann
+Add: Cuir ris
+Delete: Cuir às
+Are you sure you want to delete this entry?: A bheil thu cinnteach gu bheil thu airson an inntrigeadh seo a dhubhadh às?
+Make New Category: Dèan Roinn Ùr
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Tha feum air ainm roinn-seòrsa
+File size exceeds maximum.: Tha meud faidhle nas àirde na a ’char as àirde.
+File is not a GIF or PNG image: Chan e faidhle ìomhaigh GIF no PNG a th ’ann am faidhle
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: CATEGORIES AVAILABLE
+ENTRY CATEGORIES: CATEGORIES IOMRADH
+Remove: Thoir air falbh
+Global Category: Roinn-seòrsa cruinne
+Cancel: Sguir dheth
+
+########################################
+# Page: colors.php
+#
+Add Custom: Cuir Custom ris
+Basic Colors: Dathan bunaiteach
+Current Color: Dath gnàthach
+Custom Colors: Dathan Custom
+Old Color: Seann dath
+
+########################################
+# Page: combo.php
+#
+Select None: Tagh gin
+Agenda: Clàr-gnothaich
+Add Task: Cuir gnìomh ris
+Description: Tuairisgeul
+Date: Ceann-latha
+Time: Ùine
+Priority: Prìomhachas
+Access: Ruigsinneachd
+Created by: Air a chruthachadh le
+Updated: Ùraichte
+Participants: Com-pàirtichean
+Attachments: Ceangail
+Comments: Beachdan
+Brief Description: Tuairisgeul goirid
+Full Description: Tuairisgeul slàn
+Category: Roinn-seòrsa
+Add event detail: Cuir mion-fhiosrachadh an tachartais ris
+Start Date: Ceann-latha tòiseachaidh
+Due Date: An latha ri thighinn
+Add task detail: Cuir mion-fhiosrachadh gnìomh ris
+All: Uile
+Error: Mearachd
+no response from server: gun fhreagairt bhon t-seirbheisiche
+JSON error: Mearachd JSON
+High: Àrd
+Medium: Meadhanach
+Low: Ìosal
+Today: An-diugh
+Add Entry: Cuir a-steach inntrigeadh
+Unnamed Event: Tachartas gun ainm
+Unnamed Task: Tasg gun ainm
+Refresh: Ùraich
+Click to add entry: Cliog gus cuir a-steach
+Name: Ainm
+pm: =
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: Tha XXX air cuir às do dhreuchd.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Id blob mì-dhligheach
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Cuir beachd ris
+Add Attachment: Cuir ceangal ris
+Subject: Cuspair
+Comment: Thoir beachd
+Upload file: Luchdaich suas faidhle
+
+########################################
+# Page: docdel.php
+#
+Removed: Air a thoirt air falbh
+
+########################################
+# Page: edit_entry.php
+#
+days: làithean
+hours: uairean
+minutes: mionaidean
+You are not authorized to edit this task.: Chan eil ùghdarras agad an gnìomh seo a dheasachadh.
+is in a different timezone than you are. Currently: ann an raon-ama eadar-dhealaichte na tha thu. An-dràsta
+hour ahead of you: uair air thoiseach ort
+hour behind you: uair air do chùlaibh
+hours ahead of you: uairean air thoiseach ort
+hours behind you: uairean air do chùlaibh
+XXX is in a different timezone (ahead): (Tha XXX ann an raon-ama eadar-dhealaichte; YYY air thoiseach ort.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (Tha XXX ann an raon-ama eadar-dhealaichte; YYY air do chùlaibh.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Tha an ùine a chuirear a-steach an seo stèidhichte air an Timezone agad.
+Edit Entry: Deasaich inntrigeadh
+Details: Mion-fhiosrachadh
+Repeat: Dèan a-rithist
+Reminders: Cuimhneachain
+brief-description-help: Bu chòir seo tuairisgeul goirid a thoirt seachad (timcheall air 20 caractar) den tachartas. Bidh seo a 
+full-description-help: Bu chòir seo mion-fhiosrachadh mun tachartas a lìonadh. Chithear am fiosrachadh seo nuair a chì neach-cleachdaidh an tachartas.
+access-help: Sònraich ìre ruigsinneachd an tachartais. <ul> <li> Poblach: Chì a h-uile duine làn fhiosrachadh an tac
+priority-help: Sònraich prìomhachas an tachartais. Thèid tachartasan le prìomhachas àrd a thaisbeanadh ann an clò trom.
+category-help: Sònraich roinn an tachartais.
+completed-help: Ceann-latha gnìomh crìochnaichte. Air a chomasachadh a-mhàin nuair a tha ceudad nan com-pàirtichean uil
+Date Completed: Ceann-latha crìochnaichte
+percent-help: Ceudad crìochnachaidh gnìomh airson an neach-cleachdaidh seo
+Percent Complete: Ceudad crìochnaichte
+All Percentages: Gach ceudad
+location-help: Suidheachadh tachartais
+Location: Àite
+url-help: URL tachartais
+URL: =
+date-help: Sònraich ceann-latha an tachartais.
+Untimed event: Tachartas gun cheangal
+Timed event: Tachartas tìmeil
+All day event: Tachartas fad an latha
+Timezone Offset: Frith-ùine Timezone
+time-help: Sònraich àm an tachartais. <ul> <li> "Tachartas tìmeil" (airson tachartas a tha clàraichte airson àm sònraichte air an latha sin)</li> <li> "Tachartas gun cheangal" (airson tachartas chan eil ùine aig seo (mar shaor-làithean )</li> <li> "Tachartas fad an latha" (airson tachartas a bheir fad an latha (mar a bhith a-mach às an oifis)</li></ul>
+duration-help: A ’sònrachadh fad (ann an uairean; mionaidean) an tachartais. <em>Faodar an raon seo fhàgail bàn.</em>
+end-time-help: Sònraichidh seo an ùine a thathar an dùil a thig an tachartas gu crìch.
+Start Time: Ùine tòiseachaidh
+Due Time: Ùine ri phàigheadh
+Site Extras: Extras làraich
+avail_participants-help: Tha liosta de na com-pàirtichean a tha rim faighinn sa chlàradh seo.
+Available: Ri fhaighinn
+Find Name: Lorg ainm
+Resources: Goireasan
+participants-help: Tha e a ’liostadh com-pàirtichean an inntrig seo.
+Selected: Air an taghadh
+Availability: Cothrom
+external-participants-help: Sònraich liosta de chom-pàirtichean airson an tachartais nach eil nan luchd-cleachdaidh mìosachain. Bu chòir an luchd-cleachdaidh a bhith air an liostadh aon airson gach loidhne agus faodaidh iad seòladh puist-d a thoirt a-steach. Ma tha seòladh puist-d air a shònrachadh, tha an neach-cleachdaidh airidh air fiosan agus cuimhneachain fhaighinn.
+External Participants: Com-pàirtichean taobh a-muigh
+repeat-type-help: Tagh dè cho tric sa bu chòir an tachartas ath-aithris.
+Daily: Gach latha
+Weekly: Gach seachdain
+Monthly: Mìos
+by day: a latha
+by date: a rèir ceann-latha
+by position: a rèir suidheachadh
+Monthly (by day): Mìos (tron latha)
+Monthly (by date): Mìos (a rèir ceann-latha)
+Monthly (by position): Mìos (a rèir suidheachadh)
+Yearly: Gach bliadhna
+Manual: Stiùireadh
+Expert Mode: Modh eòlach
+repeat-end-date-help: Sònraich an ceann-latha air am bu chòir an tachartas ath-aithris gu.
+Ending: A ’tighinn gu crìch
+Forever: Gu bràth
+Use end date: Cleachd ceann-latha crìochnachaidh
+Number of times: Àireamh de thursan
+repeat-frequency-help: A ’sònrachadh dè cho tric sa bu chòir an tachartas ath-aithris.
+Frequency: Tricead
+Weekdays Only: Làithean na seachdain a-mhàin
+Week Start: Toiseach seachdain
+repeat-bydayextended-help: A ’ceadachadh taghadh ceann-latha stèidhichte air latha na seachdain.
+ByDay: =
+repeat-month-help: Sònraichidh seo dè na mìosan a bu chòir an tachartas ath-aithris.
+ByMonth: =
+repeat-bysetpos-help: A ’ceadachadh taghadh ceann-latha stèidhichte air suidheachadh leis a’ mhìos.
+BySetPos: =
+repeat-bymonthdayextended-help: A ’ceadachadh taghadh ceann-latha stèidhichte air ceann-latha.
+ByMonthDay: =
+repeat-byweekno-help: A ’leigeil leis a’ chleachdaiche liosta de sheachdainean a shònrachadh airson tachartas ath-aithris (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: A ’leigeil leis an neach-cleachdaidh liosta de làithean bliadhna a shònrachadh gus tachartas ath-aithris (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Làithean a bharrachd a bu chòir no nach bu chòir don tachartas seo tachairt.
+Exclusions: Toirmeasg
+Inclusions: In-ghabhail
+Add Exception: Cuir ris Eisgeachd
+Add Inclusion: Cuir in-ghabhail
+Delete Selected: Cuir às do thaghadh
+Send Reminder: Cuiribh cuimhneachan
+When: Cuin
+Use Date/Time: Cleachd Ceann-latha / Ùine
+Use Offset: Cleachd Offset
+Before: Roimhe seo
+After: Às deidh
+Start: Tòisich
+End/Due: Deireadh / ri phàigheadh
+Times: Amannan
+Every: A h-uile
+CAPTCHA Warning: Rabhadh:  Cha ghabh CAPTCHA a chleachdadh às aonais leudachadh GP aig PHP!<br>
+Delete entry: Cuir às do inntrigeadh
+You are not authorized to edit this entry.: Chan eil ùghdarras agad an inntrigeadh seo a dheasachadh.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: Tha XXX air dreuchd ùr a dhèanamh.
+XXX has updated an appointment.: Tha XXX air òrdachadh ùrachadh.
+Security violation!: Briseadh tèarainteachd!
+You must enter the anti-spam text on the previous page.: Feumaidh tu an teacsa anti-spam a chuir a-steach air an duilleag roimhe.
+The following conflicts with the suggested time: Tha na leanas a ’dol an-aghaidh na h-ùine a chaidh a mholadh
+User removed from participants list.: Cleachdaiche air a thoirt air falbh bho liosta nan com-pàirtichean.
+Please look on XXX to accept or reject this appointment.: Feuch an toir thu sùil air XXX gus gabhail ris an dreuchd seo no a dhiùltadh.
+Please look on XXX to view this appointment.: Feuch an toir thu sùil air XXX gus an dreuchd seo fhaicinn.
+Scheduling Conflict: Còmhstri Clàraidh
+Your suggested time of: An ùine a tha thu a ’moladh de
+conflicts with the following existing calendar entries: a ’dol an-aghaidh na clàran mìosachain a leanas
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: Cha deach NONUSER_PREFIX a shuidheachadh ann an "config.php".
+word characters only: (chan urrainn ach caractaran facal a bhith ann; [a-zA-Z_0-9])
+Add User: Cuir cleachdaiche ris
+Edit User: Deasaich an cleachdaiche
+Calendar ID: ID a ’mhìosachain
+First Name: A 'chiad ainm
+Last Name: Ainm deireannach
+Is public calendar: A bheil mìosachan poblach
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Mearachd stòr-dàta
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Cuir ris a ’mhìosachan iomallach
+Edit Remote Calendar: Deasaich Mìosachan Iomallach
+Create Layer: Cruthaich Layer
+Reload: Ath-luchdaich
+Required to View Remote Calendar: Riatanach gus coimhead air a ’mhìosachan iomallach
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Toraidhean in-mhalairt
+Events successfully imported: Chaidh tachartasan a thoirt a-steach gu soirbheachail
+Create a new layer to view this calendar.: Cruthaich còmhdach ùr gus am mìosachan seo fhaicinn.
+Errors: Mearachdan
+There was an error parsing the import file or no events were returned.: Bha mearachd ann a ’parsadh an fhaidhle in-mhalairt no cha deach tachartasan sam bith a thilleadh.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: A-màireach
+Yesterday: An-dè
+Day before yesterday: Latha ron an-dè
+Next week: An-ath-sheachdain
+This week: An t-seachdain seo
+Last week: An t-seachdan sa chaidh
+Week before last: Seachdain ron àm mu dheireadh
+Next week and week after: An ath sheachdain agus seachdain às deidh
+This week and next week: An t-seachdain seo agus an ath sheachdain
+Last week and this week: An t-seachdain sa chaidh agus an t-seachdain seo
+Last two weeks: Dà sheachdain mu dheireadh
+Next month: An ath mhìos
+This month: A ’mhìos seo
+Last month: A ’mhìos a chaidh
+Month before last: Mìos ron àm mu dheireadh
+Next year: An ath-bhliadhna
+This year: Am-bliadhna
+Last year: An-uiridh
+Year before last: Bliadhna ron an-uiridh
+Next 14 days: An ath 14 latha
+Next 30 days: An ath 30 latha
+Next 60 days: An ath 60 latha
+Next 90 days: An ath 90 latha
+Next 180 days: An ath 180 latha
+Next 365 days: An ath 365 latha
+Invalid report id XXX.: Aithisg neo-dhligheach id: "XXX".
+Unnamed Report: Aithisg gun ainm
+Add Report: Cuir aithisg ris
+Edit Report: Deasaich an aithisg
+Report name: Ainm na h-aithisg
+User: Cleachdaiche
+Current User: Cleachdaiche gnàthach
+Include link in menu: Cuir a-steach ceangal sa chlàr-taice
+Include standard header/trailer: Cuir a-steach bann-cinn / trèilear àbhaisteach
+Include previous/next links: Cuir a-steach ceanglaichean roimhe / ath
+Include empty dates: Cuir a-steach cinn-latha falamh
+Date range: Raon ceann-latha
+Template variables: Caochlaidhean teamplaid
+Page template: Teamplaid duilleag
+Day template: Teamplaid latha
+Event template: Teamplaid tachartais
+Are you sure you want to delete this report?: A bheil thu cinnteach gu bheil thu airson an aithisg seo a dhubhadh às?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Chan eil aithisg mar sin id: "XXX".
+Variable XXX not found.: Cha deach XXX caochlaideach a lorg.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Deasaich Custom Header
+Edit Custom Script/Stylesheet: Deasaich Custom Script / Duilleag Stoidhle
+Edit Custom Trailer: Deasaich Custom Trailer
+
+########################################
+# Page: edit_user.php
+#
+Username: Ainm-cleachdaidh
+E-mail address: Seòladh puist-d
+Password: Facal-faire
+again: a-rithist
+Disabled for demo: Ciorramach airson demo
+Are you sure you want to delete this user?: A bheil thu cinnteach gu bheil thu airson an cleachdaiche seo a dhubhadh às?
+Change Password: Atharraich facal-faire
+New Password: Facal-faire ùr
+Set Password: Suidhich facal-faire
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: A ’cur às do luchd-cleachdaidh nach eil a’ faighinn taic.
+The passwords were not identical.: Cha robh na faclan-faire co-ionann.
+You have not entered a password.: Cha do chuir thu a-steach facal-faire.
+Username cannot be blank.: Chan fhaod ainm-cleachdaiche a bhith bàn.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Gun chead
+
+########################################
+# Page: export.php
+#
+Export: Às-mhalairt
+Export format: Cruth às-mhalairt
+Include all layers: Cuir a-steach na sreathan uile
+Include deleted entries: Cuir a-steach inntrigidhean air an toirt às
+Export all dates: Às-mhalairt a h-uile ceann-latha
+Start date: Ceann-latha tòiseachaidh
+End date: Ceann-latha crìochnachaidh
+Modified since: Atharrachadh bhon uair sin
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: cruth às-mhalairt gun mhìneachadh no ceàrr.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Cha deach cleachdaiche a shònrachadh.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Cuir buidheann ùr ris
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Buidheann gun ainm
+Add Group: Cuir buidheann ris
+Edit Group: Deasaich Buidheann
+Group name: Ainm buidhne
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Feumaidh tu ainm buidhne a shònrachadh
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Mìosachain fèin-ùrachadh
+auto-refresh-help: Nuair a bhios e air a chomasachadh, bidh an sealladh latha, sealladh seachdain, sealladh mìos, agus lio
+Auto-refresh time: Ùine fèin-ùrachadh
+auto-refresh-time-help: Ma tha Auto-ùrachadh air a chomasachadh, bidh seo a ’sònrachadh na h-ùine eadar gach ùrachadh.
+Display days with events in bold in year view: Làithean taisbeanaidh le tachartasan ann an clò trom ann am bliadhna
+Display weekends in week view: Taisbeanaidh deireadh-sheachdainean ann an sealladh na seachdain
+Time interval: Ùine ùine
+time-interval-help: A ’sònrachadh dè cho fada‘ s a bhios na blocaichean ùine ann an sealladh na seachdain agus sealladh an latha.
+Nonuser: Mìosachain Nonuser
+user-customize-color: A ’sònrachadh a bheil cead aig luchd-cleachdaidh an sgeama dath aca fhèin atharrachadh.
+enable-gradient-help: Cleachd dathan caisead airson cùl-fhiosrachadh cealla.
+Manually entering color values: A ’dol a-steach do luachan dath
+colors-help: Bu chòir a h-uile dath a bhith air a shònrachadh ann an cruth hexadecimal "#RRGGBB" far a bheil "RR" an
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Dèan aithris air Bug
+Please include all the information below when reporting a bug.: Feuch an cuir thu a-steach am fiosrachadh gu h-ìosal nuair a bhios tu ag aithris air bug.
+Also, please use English rather than XXX.: Cuideachd, cleachd  Beurla  seach XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Sgrìobhainnean WebCalendar
+Currently in English only.: An-dràsta sa Bheurla a-mhàin.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: A ’cur / a’ deasachadh inntrigidhean mìosachain
+Repeat Type: Seòrsa ath-aithris
+For More Information...: Airson tuilleadh fiosrachaidh ...
+Repeat End Date: Ceann-latha crìochnachaidh a-rithist
+Repeat Day: Latha ath-aithris
+repeat-day-help: Sònraichidh seo dè na làithean den t-seachdain air am bu chòir an tachartas ath-aithris.
+
+########################################
+# Page: help_import.php
+#
+Import: =
+Palm Desktop: Deasg Palm
+allow you to import entries from the Palm...: Leigidh am foirm seo leat inntrigidhean a thoirt a-steach bho Leabhar-latha Palm Desktop. Bu chòir dha 
+The following entries will not be imported: Cha tèid na h-inntrigidhean a leanas a thoirt a-steach:
+Entries older than the current date: Inntrigidhean nas sine na an ceann-latha làithreach
+Entries created in the Palm Desktop...: Inntrigidhean air an cruthachadh anns an Palm Desktop nach deach a thoirt a-steach HotSync'd
+Anything imported from Palm...: Thèid rud sam bith a thèid a thoirt a-steach bho Palm a sgrìobhadh thairis air an ath in-mhalairt (mura h-eil ceann-latha an tachartais seachad). Mar sin, bu chòir ùrachaidhean a dhèanamh anns an Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Bidh am foirm seo a ’toirt a-steach tachartasan vCalendar (.vcs) 1.0.
+The following formats have been tested: Chaidh deuchainn a dhèanamh air na cruthan a leanas:
+This form will import iCalendar (.ics) events.: Bidh am foirm seo a ’toirt a-steach tachartasan iCalendar (.ics).
+Enabling: A ’comasachadh
+Overwrite Prior Import: Thoir thairis air Import Ro-làimh
+will cause events imported previously...: bidh e ag adhbhrachadh tachartasan a chaidh a thoirt a-steach roimhe, a chleachd an aon UID mar thachartas bhon fhaidhle in-mhalairt ùr, a bhith air a chomharrachadh mar dhubhadh às. Bu chòir seo leigeil le faidhle iCalendar ùraichte a thoirt a-steach gun a bhith a ’cruthachadh dùblaidhean.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Clàr-cuideachaidh
+About WebCalendar: Mu dheidhinn WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Tha sreathan feumail airson tachartasan luchd-cleachdaidh eile a thaisbeanadh anns a ’mhìosachan agad fhèin. Faodaidh tu an neach-cleachdaidh a shònrachadh agus an dath a thèid na tachartasan a thaisbeanadh.
+Add/Edit/Delete: Cuir ris / Deasaich / Cuir às
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Le bhith a ’brùthadh air a’ cheangal Edit Layers anns an roinn rianachd aig bonn na duilleige leigidh sin leat sreathan a chur ris / a dheasachadh / a dhubhadh às.
+The text color of the new layer that will be displayed in your calendar.: Dath teacsa na còmhdach ùir a thèid a thaisbeanadh sa mhìosachan agad.
+Disabling: A ’comasachadh
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Brùth air a ’cheangal Disable Layers anns an roinn rianachd aig bonn na duilleige gus sreathan a chuir dheth.
+Duplicates: Dùblaidhean
+If checked, events that are duplicates of your events will be shown.: Ma thèid a sgrùdadh, thèid tachartasan a tha nan dùblaidhean de na tachartasan agad a shealltainn.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Brùth air a ’cheangal Enable Layers anns an roinn rianachd aig bonn na duilleige gus sreathan a thionndadh.
+Source: Stòr
+Specifies the user that you would like to see displayed in your calendar.: Sònraich an neach-cleachdaidh a bu mhath leat fhaicinn air a thaisbeanadh sa mhìosachan agad.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Roinn bunaiteach
+default-category-help: Sònraich an roinn air am bu chòir tachartas ùr a chleachdadh.
+When I am the boss: Nuair a bhios mi nam cheannard
+Email me event notification: Cuir post-d thugam fios tachartais
+email-boss-notifications-help: Sònraichidh am faigh ceannardan puist-d mar bhrathan tachartais.
+I want to approve events: Tha mi airson tachartasan aontachadh
+boss-approve-event-help: A ’sònrachadh am feum an ceannard cead a thoirt do thachartasan a chuireas luchd-cuideachaidh ris.
+Subscribe/Publish: Subscribe / Publish
+Allow remote publishing: Leig le foillseachadh iomallach
+allow-remote-publishing-help: A ’sònrachadh an urrainn do neach-dèiligidh iomallach iCal tachartasan fhoillseachadh air ais gu WebCal
+remote-publishing-url-help: A ’taisbeanadh an URL airson a chleachdadh anns an tagradh teachdaiche iCal airson an dà chuid fo-sgrìobhadh agus foillseachadh air ais gu WebCalendar.
+allow-remote-subscriptions-help: A ’sònrachadh an urrainn do luchd-cleachdaidh iomallach fo-sgrìobhadh don mhìosachan agad, a’ leigeil l
+remote-subscriptions-url-help: A ’taisbeanadh an URL bu chòir do luchd-cleachdaidh iomallach a chleachdadh gus fo-sgrìobhadh don mhìosachan agad.
+Enable FreeBusy publishing: Dèan comas air foillseachadh FreeBusy
+freebusy-enabled-help: A ’sònrachadh an urrainnear an ùine a tha ri fhaighinn aig neach-cleachdaidh fhaighinn le bhith a’ cleachdadh inbhe iCal FreeBusy.
+freebusy-url-help: An URL airson faighinn gu liosta FreeBusy an neach-cleachdaidh
+rss-feed-url-help: An URL gus faighinn gu biadh RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: A ’ceadachadh smachd ceart a chumail air ruigsinneachd agus ceadan luchd-cleachdaidh. Faodaidh luchd-cleachdaidh cuideachd cead bunaiteach agus gach cead fa leth a thoirt seachad ma tha iad ùghdarraichte leis an rianadair.
+If disabled, this user cannot send you emails.: Ma tha e ciorramach, chan urrainn don neach-cleachdaidh seo puist-d a chuir thugad.
+If disabled, this user cannot see you in the participants list.: Ma tha e ciorramach, chan fhaic an neach-cleachdaidh seo thu air liosta nan com-pàirtichean.
+If enabled, this user cannot view the details of any of your entries.: Ma tha e air a chomasachadh, chan urrainn don neach-cleachdaidh seo mion-fhiosrachadh gin de na tagraidhean agad fhaicinn.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Foillseachadh Ciorramach (Rianachd)
+Publishing Disabled (User): Foillseachadh Ciorramach (Cleachdaiche)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Cliog air Tagh
+Current Icons on Server: Icons gnàthach air frithealaiche
+
+########################################
+# Page: import.php
+#
+import from file: ion-phortadh bhon fhaidhle
+Disabled: Ciorramach
+Import format: Cruth ion-phortadh
+Exclude private records: Na cuir a-mach clàran prìobhaideach
+Repeated items are imported separately. Prior imports are not overwritten.: Tha nithean air an ath-aithris air an toirt a-steach air leth. Chan eilear a ’sgrìobhadh a-steach ro-làimh.
+
+########################################
+# Page: import_handler.php
+#
+No file: Gun fhaidhle
+Error deleting palm events from webcalendar.: Mearachd a ’cuir às do thachartasan pailme bho webcalendar.
+Events from prior import marked as deleted: Tachartasan bho in-mhalairt ro-làimh air an comharrachadh mar dhubhadh às
+Conflicting events: Tachartasan connspaideach
+The import file contained no data.: Cha robh dàta sam bith anns an fhaidhle in-mhalairt.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: A bheil thu cinnteach gu bheil thu airson an ìre seo a dhubhadh às?
+Delete layer: Cuir às do fhilleadh
+Edit layer: Deasaich còmhdach
+Enable layers: Dèan comas air sreathan
+Layer: Sreath
+Layers are currently disabled.: Tha sreathan ciorramach an-dràsta.
+Layers are currently enabled.: Tha sreathan air an comasachadh an-dràsta.
+Click to modify layers settings for XXX: Cliog an seo gus na roghainnean sreathan airson mìosachan XXX atharrachadh.
+Disable Layers: Cuir dheth sreathan
+Add layer: Cuir còmhdach ris
+Add Layer: Cuir Layer ris
+Edit Layer: Deasaich Cruth
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Cha ghabh an roghainn ùrachadh
+Invalid entry id.: Id inntrigidh neo-dhligheach.
+You cannot create a layer for yourself.: Chan urrainn dhut còmhdach a chruthachadh dhut fhèin.
+You can only create one layer for each user.: Chan urrainn dhut ach aon fhilleadh a chruthachadh airson gach neach-cleachdaidh.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Aontachadh / Dearbhaich
+Approve Selected: Aontaichte taghte
+Check All: Thoir sùil air na h-uile
+Emails Will Not Be Sent: Cha tèid puist-d a chuir
+Reject Selected: Thoir diùltadh taghte
+Reject: Dhiùlt
+Uncheck All: =
+View this entry: Faic an inntrigeadh seo
+No unapproved entries for XXX.: Gun inntrigidhean neo-aontaichte airson: "XXX".
+Unapproved Entries: Inntrigidhean neo-aontaichte
+Approve this entry?: An cuir thu a-steach an inntrigeadh seo?
+Reject this entry?: An diùlt thu an inntrigeadh seo?
+Approve Selected entries?: Aontachadh inntrigidhean taghte?
+Reject Selected entries?: A bheil thu a ’diùltadh tagraidhean taghte?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Feumaidh tu logadh a-steach agus facal-faire a chuir a-steach.
+Save login via cookies so I dont have to login next time.: Sàbhail logadh a-steach tro bhriosgaidean gus nach fheum mi logadh a-steach an ath thuras
+Login: Log a-steach
+public: poblach
+Access XXX calendar: Cothrom air mìosachan XXX
+cookies-note: Nota: Feumaidh an aplacaid seo briosgaidean a chomasachadh.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Caractaran mì-laghail ann an logadh a-steach XXX.
+Invalid login: Log a-steach mì-dhligheach
+Activity login failure: Ainm-cleachdaidh: "XXX", IP: "YYY".
+Error XXX: Mearachd: "XXX".
+You have been logged out.: Chaidh do logadh a-mach.
+Access public calendar: Faigh cothrom air mìosachan poblach
+Not yet registered? Register here!: Gun chlàradh fhathast? Clàraich an seo!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Chan eil mìosachan nonuser mar sin: "XXX".
+This Calendar is not Public.: Chan eil am Mìosachan seo Poblach.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Cuir Mìosachan Ùr NonUser ris
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Feumar logadh a-steach a shònrachadh.
+No such nonuser calendar: Chan eil mìosachan nonuser mar sin
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Cuspair mì-dhligheach
+Save Preferences: Sàbhail Roghainnean
+Public Access calendar: Mìosachan ruigsinneachd poblach
+Modify Non User Calendar Preferences: Atharraich Roghainnean Mìosachan Neo-chleachdaiche
+Return to My Preferences: Till air ais gu na roghainnean agam
+Custom Scripts: Sgrìobhaidhean gnàthaichte
+Timezone Selection: Taghadh Timezone
+Multiview: =
+entry-interval-help: A ’suidheachadh eadar amannan mionaid nuair a bhios tu a’ deasachadh amannan inntrigidh
+Entry interval: Eadar-àm inntrigidh
+hour: uair
+minute: mionaid
+theme-reload-help: Mar thoradh air tasgadan CSS, is dòcha gum feumar ath-luchdachadh duilleag
+Page may need to be reloaded for new Theme to take effect: Is dòcha gu feumar an duilleag ath-luchdachadh gus an tig Cuspair ùr gu buil
+display_byproxy-help: Dèan taisbeanadh den fhìor neach-cruthachaidh air duilleag view_entry
+Display if created by Assistant: Taisbeanadh ma thèid a chruthachadh le Neach-taic
+allow-view-subscriptions-help: A ’ceadachadh ruigsinneachd iomallach a chuingealachadh gu inntrigidhean prìobhaideach no dìomhaireachd
+Allow remote viewing of: Leig le coimhead air astar
+entries: inntrigidhean
+
+########################################
+# Page: purge.php
+#
+Purging events for: Tachartasan glanaidh airson
+Finished: Crìochnaichte
+Back: Air ais
+Check box to delete ALL events for a user: Thoir sùil air bogsa gus cuir às do  ALL  tachartas airson neach-cleachdaidh
+Delete all events before: Cuir às do gach tachartas roimhe seo
+Purge deleted only: Purge air a dhubhadh às a-mhàin
+Preview delete: Ro-shealladh cuir às
+Are you sure you want to delete events for: A bheil thu cinnteach gu bheil thu airson tachartasan a dhubhadh às
+Records deleted from XXX: Clàran air an toirt às "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Chan urrainn do sheòladh post-d a bhith bàn.
+Username already exists.: Tha ainm-cleachdaidh ann mu thràth.
+Email address already exists.: Tha seòladh puist-d ann mu thràth.
+New user via self-registration.: Cleachdaiche ùr tro fhèin-chlàradh.
+A new WebCalendar account has been set up for you.: Chaidh cunntas WebCalendar ùr a stèidheachadh dhut.
+Your username is XXX.: Is e an t-ainm-cleachdaidh agad: "XXX".
+Your password is XXX.: Is e am facal-faire agad: "XXX".
+Please visit XXX to log in and start using your account!: Feuch an tadhal thu air "XXX" gus logadh a-steach agus tòiseachadh air do chunntas a chleachdadh!
+You may change your password after logging in the first time.: Faodaidh tu am facal-faire agad atharrachadh an dèidh dhut logadh a-steach a ’chiad uair.
+If you received this email in error: Ma fhuair thu am post-d seo le mearachd agus nach do chuir thu d ’ainm a-steach airson cunntas WebCalendar, faodaidh tu dìmeas a dhèanamh air an rabhadh seo, no freagairt le nota goirid
+Administrator: Rianadair
+Welcome: Fàilte
+New user via email.: Cleachdaiche ùr tro phost-d.
+Registration: Clàradh
+Welcome to WebCalendar: Fàilte gu WebCalendar
+Your email should arrive shortly.: Bu chòir don phost-d agad ruighinn a dh ’aithghearr.
+Return to Login screen: Till air ais gu scrion Login
+Password (again): Facal-faire (a-rithist):
+Your account information will be emailed to you.: Thèid fiosrachadh a ’chunntais agad a chuir thugad tro phost-d.
+Submit: Cuir a-steach
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Lean air adhart
+(Your comments will be emailed to the other participants.): (Thèid na beachdan agad a chuir air post-d gu na com-pàirtichean eile.)
+XXX has rejected an appointment.: Tha XXX air dreuchd a dhiùltadh.
+Rejected by XXX.: Air a dhiùltadh le XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Cuir ris a ’mhìosachan iomallach ùr
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Tha an tachartas seo dìomhair.
+(Private): (Prìobhaideach)
+(cont.): (a ’leantainn.)
+Approved: Aontaichte
+Deleted: =
+Rejected: Air a dhiùltadh
+Waiting for approval: A ’feitheamh ri aonta
+Unknown: Neo-aithnichte
+Invalid report id.: Aithisg neo-dhligheach id.
+Click here to manage reports for the Public Access calendar.: Cliog an seo gus aithisgean airson mìosachan Ruigsinneachd Poblach a riaghladh.
+Add new report: Cuir aithisg ùr ris
+Manage Reports: Stiùirich aithisgean
+
+########################################
+# Page: search.php
+#
+Advanced Search: Rannsachadh adhartach
+Search: Rannsaich
+Keywords: Faclan-luirg
+Enter % for all entries: Cuir a-steach% airson gach tagradh
+Include: Cuir a-steach
+Filter by Date: Filter a rèir ceann-latha
+All Dates: Gach ceann-latha
+Past: Seachad
+Upcoming: Ri thighinn
+Range: Raon
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Feumaidh tu aon no barrachd phrìomh fhaclan rannsachaidh a chuir a-steach.
+Search Results: Toraidhean rannsachaidh
+match found: maids a chaidh a lorg
+matches found: maidsean rim faighinn
+No matches found: Cha deach maidsean a lorg
+New Search: Rannsachadh ùr
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Tha am fiosrachadh gu h-ìosal a ’liostadh cùisean a dh’ fhaodadh a bhith ann leis an stàladh WebCalendar agad a dh ’fhaodadh a bhith air atharrachadh gus an stàladh agad a dhèanamh nas tèarainte.
+For questions about WebCalendar security see the forums: Airson ceistean mu chùis tèarainteachd WebCalendar sam bith, cleachd na fòraman WebCalendar air aoigheachd air GitHub.com;<br>XXX
+View your current PHP settings: Thoir sùil air na roghainnean PHP gnàthach agad
+Security Issue: Cuspair tèarainteachd
+Status: Inbhe
+Default admin user password: Facal-faire cleachdaiche bunaiteach bunaiteach
+You should change the password of the default admin user.: Bu chòir dhut facal-faire an neach-cleachdaidh bunaiteach rianachd atharrachadh.
+File permissions XXX: Ceadan faidhle: XXX
+item XXX should not be writable: Cha bu chòir an rud a leanas a sgrìobhadh:<br><tt> XXX</tt>
+File exists XXX: Tha faidhle ann: "XXX"
+Because you have email disabled, you should remove this file.: Leis gu bheil thu air post-d a chiorramachadh, bu chòir dhut am faidhle seo a thoirt air falbh.
+File location XXX: Suidheachadh faidhle: "XXX"
+remove XXX if not using: Mura h-eil thu a ’cleachdadh faidhle“ XXX ”, bu chòir dhut a dhubhadh às. No co-dhiù, gluais e gu eòlaire ùr.
+System Settings XXX: Roghainnean an t-siostaim: "XXX"
+consider enabling UAC: Is dòcha gum bi thu airson beachdachadh air comas a thoirt do Smachd Ruigsinneachd Cleachdaiche sochair
+recommend approving new public events: Tha sinn a ’moladh gun deidheadh ​​gabhail ri tagraidhean tachartais poblach.
+recommend using CAPTCHA: Thathas a ’moladh CAPTCHA gus tagraidhean tachartais fèin-ghluasadach a dhìon.
+Database cache directory location: Suidheachadh eòlaire tasgadan stòr-dàta
+db cache should be inaccessable: Bu chòir tasgadan an stòr-dàta a bhith ann an eòlaire nach fhaighear le URL.
+PHP Settings XXX: Roghainnean PHP: "XXX"
+recommend setting XXX Off: Tha an suidheachadh a thathar a ’moladh airson" XXX "dheth.
+recommend setting allow_url_fopen Off: Tha an suidheachadh a thathar a ’moladh airson“ allow_url_fopen ”air a chuir dheth nuair nach eil mìosachain iomallach air an comasachadh.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Faic Mìosachan Cleachdaiche Eile
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Cha do chuir thu roinnean sam bith ris.
+Set Category: Suidhich roinn-seòrsa
+Global Categories cannot be changed.: Chan urrainnear roinnean cruinne atharrachadh.
+
+########################################
+# Page: upcoming.php
+#
+more: tuilleadh
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Mìosachain iomallach
+denotes administrative user: a ’comharrachadh cleachdaiche rianachd
+Add New User: Cuir cleachdaiche ùr ris
+
+########################################
+# Page: usersel.php
+#
+form: fhoirm
+Reset: Ath-shuidhich
+
+########################################
+# Page: views.php
+#
+Add New View: Cuir sealladh ùr ris
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Sealladh gun ainm
+Add View: Cuir View ris
+Edit View: Deasaich View
+View Name: Faic Ainm
+View Type: Faic Seòrsa
+Day by Time: Latha ri ùine
+Week (Users horizontal): Seachdain (Luchd-cleachdaidh gu còmhnard)
+Week by Time: Seachdain ri ùine
+Week (Users vertical): Seachdain (Cleachdaichean dìreach)
+Week (Timebar): Seachdain (Bàr-ùine)
+Month (Timebar): Mìos (Bàr-ùine)
+Month (side by side): Mìos (taobh ri taobh)
+Month (on same calendar): Mìos (air an aon mhìosachan)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Feumaidh tu ainm seallaidh a shònrachadh
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Chan eil luchd-cleachdaidh ann airson a ’bheachd seo.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Ùraich ceudad gnìomh
+Completed: Crìochnaichte
+Assistant mode: Modh cuideachaidh
+Declined: Air a dhol sìos
+Needs-Action: Feumalachdan-Gnìomh
+by: le
+Percentage Complete: Àireamh sa cheud deiseil
+External User: Cleachdaiche taobh a-muigh
+Update: Ùrachadh
+at: aig
+comments: beachdan
+Show: Seall
+Hide: Falaich
+Approve/Confirm entry: Aontachadh / Dearbhaich inntrigeadh
+Reject entry: Thoir diùltadh inntrigeadh
+Set category: Suidhich roinn-seòrsa
+Add to My Calendar: Cuir ris a ’mhìosachan agam
+Copy entry: Leth-bhreac inntrigidh
+This will delete this entry for all users.: Sguabaidh seo às an inntrigeadh seo airson a h-uile neach-cleachdaidh.
+Edit entry: Deasaich inntrigeadh
+Edit repeating entry for all dates: Deasaich ath-aithris inntrigidh airson a h-uile ceann-latha
+Delete repeating event for all dates: Cuir às do thachartas ath-aithris airson gach ceann-latha
+Edit entry for this date: Deasaich inntrigeadh airson a ’cheann-latha seo
+Delete entry only for this date: Cuir às do inntrigeadh a-mhàin airson a ’cheann-latha seo
+Delete entry from calendar of XXX: Thoir às inntrigeadh bho mhìosachan XXX
+This will delete the entry from your XXX calendar.: Sguabaidh seo às an inntrig bhon mhìosachan XXX agad.
+boss: boss '
+This will delete the entry from your boss calendar.: Sguabaidh seo às an inntrigeadh bho mhìosachan do cheannard.
+This will delete the entry from your calendar.: Sguabaidh seo às an inntrigeadh bhon mhìosachan agad.
+from your boss calendar: bho mhìosachan do cheannard
+Do you want to add this entry to your calendar?: A bheil thu airson an inntrig seo a chur ris a ’mhìosachan agad?
+This will add the entry to your calendar.: Cuiridh seo an inntrig don mhìosachan agad.
+Email all participants: Cuir post-d chun a h-uile com-pàirtiche
+Hide activity log: Cuir am falach gnìomhachd
+Show activity log: Seall log gnìomhachd
+Export this entry to: Às-mhalairt an inntrig seo gu
+Palm Pilot: Pìleat pailme
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Dèan dà bhriog air cealla falamh gus inntrigeadh ùr a chur ris.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Inntrigeadh ùr
+cont.: a ’leantainn.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Mìosachan cleachdaiche eile
+Category Management: Riaghladh roinn-seòrsa
+Day View: Sealladh latha
+Edit Event: Deasaich Tachartas
+Month View: Sealladh Mìos
+Common Trailer: Trèilear cumanta
+User Management: Stiùireadh Cleachdaiche
+Manage Views: Stiùirich seallaidhean
+Week View: Sealladh seachdain
+Year View: Sealladh bliadhna
+Invalid function id: Gnìomh mì-dhligheach id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Cha b ’urrainn dhut faidhle" settings.php "a lorg.<br>Dèan lethbhreac de" settings.php.orig "gu" settings.php "agus deasaich airson do làrach.
+Incomplete settings.php file...: Faidhle neo-chrìochnach "settings.php" ...
+Could not find XXX defined in...: Cha b ’urrainnear“ XXX ”a lorg air a mhìneachadh san fhaidhle“ settings.php ”agad.
+You must define XXX in: Feumaidh tu "XXX" a mhìneachadh anns an fhaidhle "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: An Dùbhlachd
+Dec: Dùbhlachd
+LANGUAGE DEFINED: CÀNAN DÙTHCHAIL
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Mearachd a ’ceangal ris an stòr-dàta:" XXX ".
+db_type not defined.: db_type gun mhìneachadh.
+invalid db_type XXX: db_type neo-dhligheach "" XXX ".
+Cache cleared from previous SQL!: Cache air a ghlanadh bho SQL roimhe!
+Error executing query.: Mearachd a ’cur an gnìomh ceist.
+Unfortunately, XXX is not implemented for YYY: Gu mì-fhortanach, chan eil "XXX" air a bhuileachadh airson (YYY).
+Unknown ODBC error.: Mearachd ODBC neo-aithnichte.
+Error opening cache dir XXX.: Mearachd a ’fosgladh cache dir" XXX ".
+delete: cuir às
+Cache error Could not XXX file YYY.: Mearachd tasgadan: Cha b ’urrainn dhut faidhle XXX“ YYY ”a chlàradh.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Mearachd marbhtach
+Invalid data format for: Cruth dàta neo-dhligheach airson
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Mearachd: Seòrsa nach eil air a shuidheachadh airson log gnìomhachd!
+This event is XXX.: Is e an tachartas seo XXX.
+Conf.: =
+exceeds limit of XXX events per day: nas àirde na crìoch air tachartasan XXX gach latha
+on: air
+All Attendees: Gach neach-frithealaidh
+Busy: Trang
+Tentative: =
+Schedule an appointment for XXX.: Clàraich coinneamh airson XXX: BBBB.
+date_select: =
+Event approved: Tachartas air aontachadh
+Journal approved: Iris air aontachadh
+Task approved: Gnìomh air aontachadh
+Attachment: Ceangal
+Event created: Tachartas air a chruthachadh
+Journal created: Iris air a chruthachadh
+Task created: Tasg air a chruthachadh
+Event deleted: Tachartas air a dhubhadh às
+Journal deleted: Iris air a dhubhadh às
+Task deleted: Tasg air a dhubhadh às
+New user via email (self registration): Cleachdaiche ùr tro phost-d (fèin-chlàradh)
+New user (self registration): Cleachdaiche ùr (fèin-chlàradh)
+Notification sent: Chaidh fios a chuir
+Event rejected: Tachartas air a dhiùltadh
+Journal rejected: Iris air a dhiùltadh
+Task rejected: Tasg air a dhiùltadh
+Reminder sent: Cuimhne air a chuir
+Event updated: Tachartas air ùrachadh
+Journal updated: Iris air ùrachadh
+Task updated: Tasg ùrachadh
+Delete User: Cuir às do chleachdaiche
+WK: =
+TASKS: TASGAIDHEAN
+Task_Title: Tiotal
+Due: Ri phàigheadh
+Task Name: Ainm Gnìomha
+Task Due Date: Ceann-latha ri phàigheadh
+You have XXX unapproved entries: Tha inntrigidhean neo-aontaichte XXX agad 
+Changes successfully saved: Chaidh atharrachaidhean a shàbhaladh gu soirbheachail
+Event: Tachartas
+Action: Gnìomh
+Printer Friendly: Clò-bhualadair càirdeil
+Generate printer-friendly version: Cruthaich dreach a tha càirdeil do chlò-bhualadair
+after: às deidh
+before: roimhe seo
+end: deireadh
+start: tòiseachadh
+View this event: Thoir sùil air an tachartas seo
+View this task: Thoir sùil air a ’ghnìomh seo
+January: Am Faoilleach
+February: An Gearran
+March: Am Màrt
+April: A 'Ghiblean
+May_: A 'Chèitean
+June: An t-Ògmhios
+July: An t-Iuchar
+August: An Lùnastal
+September: An t-Sultain
+October: An Dàmhair
+November: An t-Samhain
+Jan: Jan.
+Feb: Gearran
+Mar: Mar.
+Apr: Aib
+May: A 'Chèitean
+Jun: =
+Jul: =
+Aug: Lùnastal
+Sep: Septembar
+Oct: Dàmhair
+Nov: Samhain
+SU: =
+MO: =
+TU: =
+WE: =
+TH: =
+FR: =
+SA: =
+unknown-month: neo-aithnichte-mìos
+First Quarter Moon: Gealach a ’Chiad Cheathramh
+Full Moon: Gealach Làn
+Last Quarter Moon: Gealach an ceathramh mu dheireadh
+New Moon: Gealach Ùr
+Error TIME_SLOTS undefined!: Mearachd: TIME_SLOTS neo-mhìnichte!
+The following error occurred: Thachair a ’mhearachd a leanas
+You are not authorized.: Chan eil ùghdarras agad.
+Add N hours to: Cuir N uairean ris
+Subtract N hours from: Thoir air falbh N uairean bho
+same as: an aon rud ri
+server time: ùine frithealaiche
+Cannot read timezone file XXX.: Cha ghabh am faidhle clàr-ama a leughadh: XXX.
+Your current GMT offset is XXX hours.: Is e XXX uairean an cothromachadh gnàthach GMT agad.
+Unauthorized: Gun chead
+Error approving event XXX.: Mearachd a ’ceadachadh tachartas: XXX.
+Error deleting event XXX.: Mearachd cuir às do thachartas: XXX.
+Error rejecting event XXX.: Mearachd a ’diùltadh tachartas: XXX.
+Sunday: Didòmhnaich
+Monday: Diluain
+Tuesday: Dimàirt
+Wednesday: Diciadain
+Thursday: Diardaoin
+Friday: Dihaoine
+Saturday: Disathairne
+Sun: Grian
+Mon: =
+Tue: =
+Wed: Diciadain
+Thu: =
+Fri: Dihaoine
+Sat: Disathairne
+unknown-weekday: latha neo-aithnichte
+Invalid referring URL: URL iomraidh mì-dhligheach
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Clàr-amais
+Documentation: Sgrìobhainnean
+Page: Duilleag
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Mìosachan
+Add New Entry: Cuir a-steach ùr
+Add New Task: Cuir gnìomh ùr ris
+Logout: Log a-mach
+Home: Dachaigh
+Back to My Calendar: Air ais chun mhìosachan agam
+Go to: Rach gu
+Manage calendar of: Stiùirich mìosachan de
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Cànan Brabhsair Cha deach a lorg
+(not supported): (gun taic)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: Afrikaanach
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: Albànianach
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Deas)
+Amharic: =
+Angika: =
+Apache: =
+Arabic (Algeria): Arabais (Algeria)
+Arabic (Bahrain): Arabais (Bahrain)
+Arabic (Egypt): Arabais (an Èiphit)
+Arabic (Iraq): Arabais (Iorac)
+Arabic (Jordan): Arabais (Iòrdan)
+Arabic (Kuwait): Arabais (Kuwait)
+Arabic (Lebanon): Arabais (Lebanon)
+Arabic (Libya): Arabais (Libia)
+Arabic (Morocco): Arabais (Morocco)
+Arabic (Oman): Arabais (Oman)
+Arabic (Qatar): Arabais (Catar)
+Arabic (Saudi Arabia): Arabais (Saudi Arabia)
+Arabic (Syria): Arabais (Syria)
+Arabic (Tunisia): Arabais (Tunisia)
+Arabic (U.A.E.): Arabais (U.A.E.)
+Arabic (Yemen): Arabais (Yemen)
+Arabic: Arabach
+Aragonese: Aragonais
+Aramaic: =
+Arapaho: =
+Arawak: =
+Armenian: Armenianach
+Assamese: Asamese
+Asturian: =
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: =
+Balinese: =
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: Basgach
+Beja: =
+Belarusian: Belarusianach
+Bemba: =
+Bengali: Bengàlach
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: =
+Bliss: Blàth
+Bosnian: Bosnianach
+Braj: =
+Breton: Breatannais
+Buginese: =
+Bulgarian: Bulgàrianach
+Buriat: =
+Burmese: =
+Caddo: =
+Catalan: Catalanach
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Sìneach (Hong Kong)
+Chinese (PRC): Sìneach (PRC)
+Chinese (Simplified/GB2312): Sìneach (Simplified / GB2312) 
+Chinese (Singapore): Sìneach (Singapore)
+Chinese (Taiwan): Sìneach (Taiwan)
+Chinese (Traditional/Big5): Sìneach (Traidiseanta / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: =
+Cornish: Còrnais
+Corsican: Corsicanach
+Cree: =
+Creek: =
+Croatian: Croatianach
+Czech: Seacach
+Dakota: =
+Danish: Dànach
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Duitseach (A ’Bheilg)
+Dutch: Duitseach
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Beurla (Astràilia)
+English (Belize): Beurla (Belize)
+English (Canada): Beurla (Canada)
+English (Ireland): Beurla (Èirinn)
+English (Jamaica): Beurla (Jamaica)
+English (New Zealand): Beurla (Sealan Nuadh)
+English (Philippines): Beurla (Philippines)
+English (South Africa): Beurla (Afraga a Deas)
+English (Trinidad & Tobago): Beurla (Trinidad & Tobago)
+English (United Kingdom): Beurla (An Rìoghachd Aonaichte)
+English (United States): Beurla (Na Stàitean Aonaichte)
+English (Zimbabwe): Beurla (Zimbabwe)
+English: Beurla-SA
+Erzya: =
+Esperanto: =
+Estonian: Estòinianach
+Ewe: Iùbh
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: =
+Fijian: =
+Filipino: Filipineach
+Finnish: Fionnlaineach
+Fon: =
+French (Belgium): Fraingis (a ’Bheilg)
+French (Canada): Frangach (Canada)
+French (France): Frangach (An Fhraing)
+French (Luxembourg): Fraingis (Lucsamburg)
+French (Monaco): Fraingis (Monaco)
+French (Switzerland): Fraingis (An Eilbheis)
+French: Frangach
+Frisian (Eastern): Frisian (an Ear)
+Frisian (Northern): Frisian (Tuath)
+Frisian (Western): Frisian (Taobh an Iar)
+Frisian: Frisealach
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galicianach
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Georgianach
+German (Austria): Gearmailtis (An Ostair)
+German (Germany): Gearmailtis (A ’Ghearmailt)
+German (Liechtenstein): Gearmailtis (Liechtenstein)
+German (Luxembourg): Gearmailtis (Lucsamburg)
+German (Standard): Gearmailtis (Coitcheann)
+German (Switzerland): Gearmailtis (An Eilbheis)
+German: Gearmailteach
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: =
+Grebo: =
+Greek: Grèigeach
+Greenlandic: =
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haitian Creole)
+Haitian: =
+Hausa: =
+Hawaiian: Hawaiianach
+Hebrew: Eabhrach
+Herero: =
+Hiligaynon: =
+Hindi: Indeach
+Hiri Motu: =
+Hittite: =
+Hmong: =
+Holo (Taiwanese): =
+Hungarian: Hungàrianach
+Hupa: =
+Iban: =
+Icelandic: Innis Tìleach
+Ido: Tha mi
+Igbo: =
+Iloko: =
+Indonesian: And-Innseach
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Ioranach
+Irish (Gaelic): Gaeilge (Gàidhlig)
+Irish: Èireannach
+Iroquoian: =
+Italian (Switzerland): Eadailtis (An Eilbheis)
+Italian: Eadailteach
+Japanese: Iapanach
+Javanese: Iabhaininnseach
+Judeo-Arabic: Judeo-Arabais
+Judeo-Persian: =
+Kabardian: Kabardianach
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: Kasakh
+Khasi: =
+Khmer (Central): Khmer (Meadhan)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Coirèanais (Johab)
+Korean (North): Coirèanais (Tuath)
+Korean (South): Coirèanais (Deas)
+Korean: Corèanach
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Curdach
+Kutenai: =
+Kyrgyz: =
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Laidinn
+Latvian: Latbhianach
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Lithuanianach
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Lucsamburg
+Macedonian: Macedonianach
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: =
+Malay: Malaidheach
+Malayalam: Malayalamach
+Maldivian: =
+Maltese: Malteseach
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: Manainneach
+Maori: =
+Mapuche: =
+Marathi: Marathiach
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: =
+Mongo: =
+Mongolian: Mongolianach
+Montenegrin: =
+Moroccan: =
+Mossi: =
+Myanmar: =
+Māori: Maori
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Tuath)
+Ndebele (South): Ndebele (Deas)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: Nepalach
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Lochlannach
+Norwegian (Bokmål): Nirribhidh (Bokmål)
+Norwegian (Nynorsk): Nirribhidh (Nynorsk)
+Norwegian: Lochlannach
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: =
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: =
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: =
+Pedi: =
+Persian (Farsi): Phersia (Farsi)
+Persian (Iran): =
+Persian: Persianach
+Phoenician: =
+Pohnpeian: =
+Polish: Pòlainneach
+Portuguese: Portugalach
+Portuguese/Brazil: Portuguese / Brazil 
+Punjabi (India): Punjabi (na h-Innseachan)
+Punjabi (Pakistan): Punjabi (Pacastan)
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Rhaeto-Ròmanach
+Romanian: Romànianach
+Romansh: =
+Romany: =
+Rundi: =
+Russian (Moldavia: Ruiseanach (Moldavia
+Russian (Republic of Moldova): Ruiseanach (Poblachd Moldova)
+Russian: Ruiseanach
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Tuath)
+Sami (Skolt): =
+Sami (Southern): Sami (Deas)
+Sami: Samaidh
+Samoan: =
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: =
+Sasak: =
+Scots (Gaelic): Albannaich (Gàidhlig)
+Selkup: =
+Serbian (Upper): Serbian (Uarach)
+Serbian: Serbianach
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: =
+Sindhi: Sindeach
+Sinhala: =
+Slavic: Slàbhach
+Slovak: Slovacanach
+Slovenian: Slobhenianach
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbian (Ìosal)
+Sorbian (Upper): Sorbian (Uarach)
+Sorbian: =
+Sotho: =
+Spanish (Argentina): Spàinntis (Argentina)
+Spanish (Bolivia): Spàinntis (Bolivia)
+Spanish (Chile): Spàinntis (Chile)
+Spanish (Colombia): Spàinntis (Coloimbia)
+Spanish (Costa Rica): Spàinntis (Costa Rica)
+Spanish (Dominican Republic): Spàinntis (Poblachd Dominican)
+Spanish (Ecuador): Spàinntis (Ecuador)
+Spanish (El Salvador): Spàinntis (El Salvador)
+Spanish (Guatemala): Spàinntis (Guatemala)
+Spanish (Honduras): Spàinntis (Honduras)
+Spanish (Mexico): Spàinntis (Mexico)
+Spanish (Nicaragua): Spàinntis (Nicaragua)
+Spanish (Panama): Spàinntis (Panama)
+Spanish (Paraguay): Spàinntis (Paraguay)
+Spanish (Peru): Spàinntis (Peru)
+Spanish (Puerto Rico): Spàinntis (Puerto Rico)
+Spanish (Spain): Spàinntis (An Spàinn)
+Spanish (Uruguay): Spàinntis (Uruguaidh)
+Spanish (Venezuela): Spàinntis (Venezuela)
+Spanish: Spàinneach
+Sranan Tongo: =
+Sukuma: =
+Sumerian: =
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: Swahilieach
+Swati: =
+Swedish (Finland): Suainis (Fionnlainn)
+Swedish (Sweden): Suainis (An t-Suain)
+Swedish: Suaineach
+Syriac: Sioriac
+Tagalog: Tagalogach
+Tahitian: =
+Tai: =
+Taiwan: =
+Tajik: =
+Tamashek: =
+Tamil: Tamileach
+Tatar: =
+Telugu: Telugach
+Tereno: =
+Tetum: =
+Thai: Thaidheach
+Tibetan: Tibeatach
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Eileanan Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Turcais
+Turkmen: =
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: =
+Ukrainian: Ucràinis
+Umbundu: =
+Urdu: =
+Uyghur: =
+Uzbek: =
+Vai: =
+Venda: =
+Vietnamese: Bhietnam
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: Ballachan
+Waray: =
+Washo: =
+Welsh: Cuimris
+Wolaitta: =
+Wolof: =
+Xhosa: Zhosa
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Brabhsair air a mhìneachadh
+event: tachartas
+journal: iris
+0: 0                                                   
+1: 1                                                   
+2: 2                                                   
+3: 3                                                   
+4: 4                                                   
+5: 5                                                   
+6: 6                                                   
+7: 7                                                   
+8: 8                                                   
+9: 9                                                   
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Log a-steach cleachdaiche mì-dhligheach
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: facal-faire ceàrr
+no such user: chan eil neach-cleachdaidh mar sin ann
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Cunntas ciorramach
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Eadar-ama
+Months: Mìosan
+Month Days: Làithean Mìos
+Days: Làithean
+Weeks: Seachdainean
+Position: Dreuchd
+Until: Gu ruige
+Count: Cunnt
+Inclusion Dates: Cinn-latha in-ghabhail
+Exclusion Dates: Cinn-latha toirmeasg
+Event Imported: Tachartas air a thoirt a-steach
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Fios
+authenticate: Mearachd SMTP: Cha b ’urrainnear dearbhadh
+connect_host: Mearachd SMTP: Cha b ’urrainn dhuinn ceangal ri aoigheachd SMTP:
+data_not_accepted: Mearachd SMTP: Cha ghabhar ri dàta
+encoding: Còdachadh neo-aithnichte:
+execute: Cha b 'urrainn dhuinn a chuir gu bàs:
+file_access: Cha b ’urrainn faighinn chun fhaidhle:
+file_open: Mearachd faidhle Cha b ’urrainn dhuinn am faidhle fhosgladh:
+from_failed: Dh'fhàillig an seòladh Bho:
+instantiate: Cha b ’urrainn dha gnìomh puist a chuir sa bhad
+mailer_not_supported: chan eil taic ri mailer
+provide_address: Feumaidh tu co-dhiù aon seòladh puist-d fhaighinn.
+recipients_failed: Mearachd SMTP: Dh'fhàillig an luchd-faighinn a leanas:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Cuir a-steach caractaran a chithear ann an grafaigeach
+Enter the correct letters and numbers...: Cuir a-steach na litrichean agus na h-àireamhan ceart bhon ìomhaigh a-steach don bhogsa teacsa. Tha an deuchainn bheag seo a ’frithealadh mar chuingealachadh ruigsinneachd an aghaidh botaichean droch-rùnach. Dìreach ath-luchdaich an duilleag ma tha an grafaigeach seo ro dhoirbh a leughadh
+Challenge/Response: Dùbhlan / Freagairt
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Atharraich ceann-latha agus uair a ’chlàir seo?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Cha do chuir thu a-steach tuairisgeul goirid
+time prior to work hours...: ùine ro uairean obrach ...
+Invalid Event Date: Ceann-latha Tachartas Neo-dhligheach
+Please add a participant: Feuch an cuir thu com-pàirtiche ann 
+Invalid Date: Ceann-latha neo-dhligheach
+You have not entered a valid time of day: Cha do chuir thu a-steach àm dligheach den latha. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Chan urrainn ID a ’mhìosachain a bhith bàn. 
+First and last names cannot both be blank.: Chan fhaod a ’chiad ainm agus an t-ainm mu dheireadh a bhith bàn. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Dath mì-dhligheach
+Color format should be RRGGBB.: Bu chòir cruth dath a bhith #RRGGBB. 
+URL cannot be blank.: Chan urrainn URL a bhith bàn.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Chan eil an seòrsa faidhle a ’freagairt ri Import Format 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Dath mì-dhligheach airson cùl-fhiosrachadh sgrìobhainn.
+Invalid color for document title.: Dath mì-dhligheach airson tiotal sgrìobhainn.
+Invalid color for table cell background.: Dath mì-dhligheach airson cùl-raon cealla bùird.
+Invalid color for table cell background for today.: Dath mì-dhligheach airson cùl-raon cealla bùird airson an-diugh.
+Invalid work hours.: Uairean obrach neo-dhligheach.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Feumaidh URL an fhrithealaiche crìochnachadh le slaise (/).
+Invalid color for table grid.: Dath mì-dhligheach airson cliath bùird.
+Invalid color for event popup background.: Dath mì-dhligheach airson cùl-fhiosrachadh popup tachartais.
+Invalid color for event popup text.: Dath mì-dhligheach airson teacsa popup tachartais.
+Invalid color for table header text.: Dath mì-dhligheach airson teacsa ceann-bùird.
+Invalid color for table header background.: Dath mì-dhligheach airson cùl-cinn ceann bùird.
+Server URL is required.: Tha feum air URL an fhrithealaiche.
+Invalid Color: Dath neo-dhligheach
+Database Name: Ainm stòr-dàta
+Full Path (no backslashes): Slighe làn (gun backslashes) 
+The password contains illegal characters.: Tha caractaran mì-laghail anns an fhacal-fhaire.
+Error you must specify a Single-User Login: Mearachd: Feumaidh tu Log a-steach Cleachdaiche Singilte a shònrachadh
+Could not find XXX.: Cha b ’urrainn XXX a lorg.
+Could not find XXX in DOM.: Cha b ’urrainn XXX a lorg ann an DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: An t-seachdain seo
+This Month: A ’mhìos seo
+This Year: Am-bliadhna
+Exit: Ar-a-mach
+Add New Event: Cuir tachartas ùr ris
+Delete Entries: Thoir às inntrigidhean
+My Views: Mo sheallaidhean
+Manage Calendar of: Stiùirich Mìosachan de
+My Reports: Na h-aithisgean agam
+My Profile: Mo Phròifil
+Public Calendar: Mìosachan Poblach
+Unapproved Events: Tachartasan neo-aontaichte
+User Manager: Manaidsear Cleachdaiche
+Help Contents: Clàr-innse cuideachaidh
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Directory stòr-dàta stòr-dàta
+Create New: Cruthaich Ùr
+Failure Reason: Adhbhar fàilligeadh:
+You must manually create database: Feumaidh tu stòr-dàta a chruthachadh le làimh.
+Single-User: Cleachdaiche singilte
+Test Settings: Roghainnean deuchainn
+Timezone Conversion Successful: Tionndadh Timezone soirbheachail
+WebCalendar Installation Wizard Step XXX: Ceum stàlaidh WebCalendar Ceum XXX
+Password Accepted: Glacadh le facal-faire
+Successful Login: Log a-steach soirbheachail
+Password Incorrect: Facal-faire mearachdach
+Invalid Login: Log a-steach mì-dhligheach
+Display Errors: Mearachdan Taisbeanaidh
+File Uploads: Luchdaich suas faidhle
+Allow URL fopen: Leig le URL fopen (riatanach a-mhàin ma thèid Mìosachain Iomallach a chleachdadh)
+Safe Mode: Modh sàbhailte
+Safe Mode Allowed Vars: Vars ceadaichte le modh sàbhailte (feumar TZ a-mhàin ma tha am modh sàbhailte air)
+GD: GD (a dhìth airson Cùl-fhiosrachadh Ìomhaigh Gradient)
+Passwords do not match!: Chan eil faclan-faire a ’maidseadh!
+Unable to write password to settings.php file: Cha ghabh facal-faire a sgrìobhadh gu faidhle "settings.php".
+Password Updated: Facal-faire air ùrachadh
+Password has been set: Chaidh facal-faire a shuidheachadh.
+Connection Successful...: Ceangal soirbheachail  Rach don ath dhuilleag gus leantainn air adhart leis an stàladh.
+Correct your entries or click the Create New...: Ceartaich na tagraidhean agad no cliog air a ’phutan  Cruthaich Ùr  gus leantainn air adhart leis an stàladh.
+Correct your entries and try again.: Ceartaich na tagraidhean agad agus feuch ris a-rithist.
+XXX does not exist: Chan eil XXX ann
+XXX is not writable: Chan eil XXX comasach a sgrìobhadh
+Error Converting Timezone: Mearachd le tionndadh clàr-ama
+Error Unable to write to file XXX.: Mearachd Cha ghabh sgrìobhadh gu faidhle XXX.
+Please change the file permissions of this file.: Feuch an atharraich thu ceadan faidhle an fhaidhle seo.
+Please change includes dir permission: Feuch an atharraich thu ceadan faidhle an eòlaire "toirt a-steach" agad gus leigeil le luchd-cleachdaidh eile sgrìobhadh.
+Your settings have been saved.: Chaidh na roghainnean agad a shàbhaladh.
+OFF: =
+ON: AIR
+WebCalendar Setup Wizard: Draoidh rèiteachaidh WebCalendar
+This installation wizard will guide you...: Bidh an draoidh stàlaidh seo gad stiùireadh tro bhith a ’stèidheachadh stàladh bunaiteach WebCalendar.<br>Airson cuideachadh agus fuasgladh dhuilgheadasan faic:<br>
+System Administrators Guide: Stiùireadh Rianadair Siostam
+Frequently Asked Questions: Ceistean Bitheanta
+FAQ: Ceistean Cumanta
+Troubleshooting: A ’dèanamh trioblaid
+Getting Help: A ’faighinn cuideachadh
+Upgrading Guide: Stiùireadh ùrachadh
+User Supported Wiki: Wiki le taic neach-cleachdaidh
+PHP Version Check: Sgrùdadh Tionndadh PHP
+Check to see if PHP 7.1.0 or greater is installed.: Thoir sùil a-mach a bheil PHP 7.1.0 no nas motha air a chuir a-steach.
+PHP version: Tionndadh PHP
+PHP Settings: Roghainnean PHP
+Detailed PHP Info: Fiosrachadh mionaideach PHP
+settings.php Status: Inbhe "settings.php"
+Session Check: Sgrùdadh seisean
+To test the proper operation of sessions...: Gus obrachadh ceart nan seiseanan a dhearbhadh, ath-luchdaich an duilleag seo. Bu chòir dhut àrdachadh an aghaidh seisean fhaicinn gach uair.
+SESSION COUNTER: URNUIGH FHEASGAIR
+The file permissions of settings.php are set...: Tha na ceadan faidhle de "settings.php" air an suidheachadh gus nach bi cead aig an stàlaichear atharrachadh. Feuch an atharraich thu ceadan faidhle an fhaidhle a leanas gus leantainn air adhart
+The file permissions of the includes directory are set...: Tha ceadan faidhle an eòlaire a-steach air an suidheachadh gus nach bi cead aig an stàlaichear faidhle ùr a chruthachadh. Feuch an atharraich thu ceadan an eòlaire a leanas gus leantainn air adhart
+Your settings.php file appears to be valid.: Tha e coltach gu bheil am faidhle "settings.php" agad dligheach.
+Configuration Wizard Password: Facal-faire draoidh rèiteachaidh
+Create Settings File Password: Cruthaich Facal-faire faidhle Settings
+db setup directions...: Anns an earrainn seo stèidhichidh tu agus nì thu deuchainn air ceangal ris an t-seirbheisiche stòr-dàta agad. Bu chòir cead FULL a bhith aig an fhiosrachadh cunntais a chaidh a thoirt seachad gus stòran-dàta, clàran agus luchd-cleachdaidh a chruthachadh. Mura h-eil seo comasach, no ma tha ruigsinneachd an stòr-dàta agad cuibhrichte, feumaidh tu an stòr-dàta agad a dhealbhadh le làimh.
+Database Status: Inbhe stòr-dàta
+Supported databases for your PHP installation: Stòr-dàta le taic airson an stàladh PHP agad
+Your current database settings are able to access the database.: Bidh na roghainnean gnàthach stòr-dàta agad comasach air faighinn chun stòr-dàta.
+Please Test Settings: Feuch an dèan thu deuchainn air Roghainnean
+Your current database settings are not able...: Chan eil na roghainnean gnàthach stòr-dàta agad comasach air faighinn chun stòr-dàta no cha deach an de
+Database Settings: Roghainnean stòr-dàta
+Database Type: Seòrsa stòr-dàta
+Server: Frithealaiche
+Connection Persistence: Seasmhachd ceangail
+All your database tables appear to be up...: Tha coltas gu bheil na clàran stòr-dàta agad ùraichte. Faodaidh tu a dhol air adhart chun ath dhuilleag agus crìoch a chur air an stèidheachadh WebCalendar agad.
+This appears to be a new installation...: Tha e coltach gur e stàladh ùr a tha seo. Mura h-eil seo ceart, till air ais chun duilleag roimhe agus ceartaich na roghainnean agad.
+This appears to be an upgrade...: Tha e coltach gur e ùrachadh a tha seo bho dreach&nbsp;XXX&nbsp;gu&nbsp;YYY.
+The database requires some data input...: Feumaidh an stòr-dàta beagan cuir a-steach dàta Cliog air Stòr-dàta Ùrachadh gus an ùrachadh a chrìochnachadh.
+In this section we will perform...: Anns an earrainn seo nì sinn na h-atharrachaidhean gus an stòr-dàta agad a thoirt suas chun ìre riatanach. Ma tha thu a ’cleachdadh stòr-dàta làn thaic, thèid an ceum seo a dhèanamh gu fèin-ghluasadach dhut. Mura h-eil, faodar an SQL a tha a dhìth a thaisbeanadh agus bu chòir dhut a bhith comasach air a ghearradh agus a phasgadh a-steach do uinneag ceist an fhrithealaiche stòr-dàta agad.
+No database actions are required.: Chan eil feum air gnìomhan stòr-dàta.
+The following database actions are required: Feumar na gnìomhan stòr-dàta a leanas
+ODBC Underlying Database: Stòr-dàta bunaiteach ODBC:
+Automatic installation not supported: Cha deach stàladh fèin-ghluasadach a chuir an gnìomh gu h-iomlan airson an seòrsa stòr-dàta agad. Feumaidh tu na bùird a tha a dhìth a chruthachadh le làimh a ’cleachdadh an SQL a chaidh a thoirt seachad. Clioc air  Taisbeanadh SQL  gus leantainn air adhart. Gearr agus cuir a-steach air uinneag ceist an stòr-dàta agad.
+This may take several minutes to complete: Faodaidh gun toir seo grunn mhionaidean airson a chrìochnachadh.
+Install Database: Stòr-dàta a stàladh
+Update Database: Stòr-dàta ùrachaidh
+Display Required SQL: Taisbeanadh SQL a tha a dhìth
+Return to previous page after processing SQL.: An dèidh a bhith a ’giullachd an SQL seo le làimh, feumaidh tu tilleadh chun duilleag roimhe agus ath-aithris a dhèanamh air an stòr-dàta agad gus an lorg an sgriobt na h-atharrachaidhean.
+This is the final step in setting up your WebCalendar Installation.: Is e seo an ceum mu dheireadh ann a bhith a ’stèidheachadh an stàladh WebCalendar agad.
+Timezone Conversion: Tionndadh Timezone
+It appears that you have NOT converted...: Tha e coltach nach do thionndaidh thu an dàta tachartais WebCalendar a tha agad gu GMT. Ma tha, faodaidh tu dearmad a dhèanamh air an rabhadh seo agus gun a dhol air adhart leis an tionndadh. Mas e stàladh ùr a tha seo, faodaidh tu dearmad a dhèanamh air a ’bhrath seo.
+Convert Data to GMT: Tionndadh dàta gu GMT
+Application Settings: Roghainnean tagraidh
+HTTP-based authentication was not detected...: Cha deach dearbhadh stèidhichte air HTTP a lorg. Feumaidh tu an frithealaiche lìn agad ath-dhealbhadh ma tha thu airson 'Web Server' a thaghadh bho na roghainnean 'Dearbhadh Cleachdaiche' gu h-ìosal.
+HTTP-based authentication was detected...: Chaidh dearbhadh stèidhichte air HTTP a lorg. Tha dearbhadh cleachdaiche ga làimhseachadh leis an t-seirbheisiche lìn agad. Bu chòir dhut ‘Web Server’ a thaghadh bhon liosta de roghainnean ‘Dearbhadh Cleachdaiche’ gu h-ìosal.
+Create Default Admin Account: Cruthaich cunntas rianachd bunaiteach
+(Admin Account Not Found): (Cha deach an cunntas rianachd a lorg)
+User Authentication: Dearbhadh Cleachdaiche
+Web-based via WebCalendar (default): Stèidhichte air an lìon tro WebCalendar (àbhaisteach)
+Web Server (not detected): Frithealaiche lìn (cha deach a lorg)
+Web Server (detected): Frithealaiche lìn (air a lorg)
+None (Single-User): Chan eil gin (Cleachdaiche Singilte)
+Read-Only: Leugh-a-mhàin
+Environment: Àrainneachd
+Production: Riochdachadh
+Development: Leasachadh
+Save Settings: Sàbhail roghainnean
+Launch WebCalendar: Cuir air bhog WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Mearachd ag ùrachadh clàr "XXX": YYY.
+Conversion Successful: Còmhradh soirbheachail 
+Perl script required: Feumaidh an dreach roimhe seo de WebCalendar sgriobt PERL a ruith gus an dàta agad a thionndadh. Feuch an ruith thu /tools/upgrade_to_0.9.7.pl agus an uairsin till air ais chun duilleag seo gus leantainn air adhart.
+previous version requires updating several tables: Feumaidh an dreach roimhe seo de WebCalendar ùrachadh air grunn chlàran stòr-dàta.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: CHAN EIL FAIGHINN
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Mearachd a ’ceangal ris an stòr-dàta
+Include Path: Cuir a-steach slighe
+Deleting events for: A ’cuir às do thachartasan airson
+Importing events for: Tachartasan cudromach airson
+No data returned from: Cha do thill dàta sam bith
+for non-user calendar: airson mìosachan neo-chleachdaiche
+No Remote Calendars found: Cha deach Mìosachain Iomallach a lorg
+Remote Calendars not enabled: Mìosachain iomallach nach eil air an comasachadh
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: cha b ’urrainn tachartas id a lorg
+could not find event id XXX in database.: cha b ’urrainn dhaibh tachartas id XXX a lorg san stòr-dàta.
+task: ghnìomh
+This is a reminder for the XXX detailed below.: Tha seo na chuimhneachan airson an XXX a chaidh a mhìneachadh gu h-ìosal.
+Pecentage Complete: Pecentage air a chrìochnachadh
+Reminder: Cuimhneachan
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Gnìomh gun taic: XXX.
+No event id specified.: Cha deach tachartas sam bith a shònrachadh.
+Not authorized (not admin).: Gun chead (chan eil rianachd).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: A ’cumail sùil air tachartasan airson XXX bho cheann-latha YYY gu ruige seo ZZZ.
+Found XXX events in time range.: Fhuaras tachartasan XXX ann an raon ùine.
+Event id=XXX YYY at ZZZ on AAA.: Tachartas id = XXX "YYY" aig ZZZ air AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: A ’leigeil le neach-cleachdaidh XXX mìosachan cleachdaiche eile fhaicinn.
+Error Email reminders disabled for user XXX.: Mearachd: Cuimhneachain post-d ciorramach airson neach-cleachdaidh "XXX".
+Number of site_extras XXX.: Àireamh de làrach_extras: XXX.
+Reminder set for event.: Cuimhneachan air a shuidheachadh airson an tachartais.
+Mins Before XXX.: Mins Ro: XXX.
+Event time is XXX.: Is e àm an tachartais: XXX.
+Remind time is XXX.: Is e àm cuimhne: XXX.
+Reminders for user XXX, login YYY.: Cuimhneachain airson neach-cleachdaidh "XXX", log a-steach "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: A ’faighinn neo-aontaichte airson neach-cleachdaidh" XXX ".
+Event id=XXX YYY already sent.: Tachartas id = XXX "YYY" air a chuir mu thràth.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Chan eil feum air logadh a-steach airson modh aon-chleachdaiche.
+No login required for HTTP authentication.: Chan eil feum air logadh a-steach airson dearbhadh HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Caractaran mì-dhligheach ann an logadh a-steach.
+Username XXX does not exist.: Chan eil ainm-cleachdaiche "XXX" ann.
+You cannot remove admin rights from yourself!: Chan urrainn dhut còraichean rianachd a thoirt air falbh bhuat fhèin!
+Unknown error saving user: Cleachdaiche sàbhalaidh mearachd neo-aithnichte.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Cha do lorgar com-pàirtichean airson tachartas id: XXX.
+Db error Could not find event id XXX.: Mearachd Db: Cha b ’urrainn dhuinn tachartas id XXX a lorg. 
+Error Could not find event id XXX in database.: Mearachd: Cha b ’urrainn dhuinn tachartas id XXX a lorg san stòr-dàta. 

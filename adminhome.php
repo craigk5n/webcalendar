@@ -149,18 +149,7 @@ if ( $is_nonuser_admin ) {
 
 $_SESSION['webcal_tmp_login'] = 'SheIsA1Fine!';
 
-print_header( '',
-/*
-  '<style>
-      #adminhome table,
-      #adminhome td a {
-        background:' . $CELLBG . '
-      }
-    </style>
- If this is the proper way to call css_cacher.php from here?
- */
-    '<link href="css_cacher.php" rel="stylesheet">
-    <link href="includes/css/styles.css" rel="stylesheet">' );
+print_header();
 
 echo '
     <h2>' . translate( 'Administrative Tools' ) . '</h2>

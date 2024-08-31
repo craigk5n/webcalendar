@@ -130,7 +130,7 @@ if ( ! empty ( $reload ) ) {
   $errorStr = '<br><br>
     <b>' . translate ( 'Error' ) . ':</b> ';
 
-  print_header ( '', '', '', true, false, true );
+  print_header ( [], '', '', true, false, true );
   if ( count ( $data ) && empty ( $errormsg ) ) {
     // Delete existing events.
     delete_events ( $nid );

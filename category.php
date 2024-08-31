@@ -86,7 +86,7 @@ if ((($add == '1') || (!empty($id))) && empty($error)) {
     . '<a href="category.php" class="form-control btn btn-secondary ml-1">Cancel</a> '
     . (!empty($id) ? '
       <button class="form-control btn btn-danger ml-1" name="delete" '
-      . 'type="submit" onclick="return confirm('
+      . 'type="submit" value="delete" onclick="return confirm(\''
       . translate ( 'Are you sure you want to delete this entry?', true )
       . '\')">' . translate ( 'Delete' ) . '</button>' : '' ) . '
           </div>
@@ -116,7 +116,7 @@ if (empty($error)) {
 
       if (!empty($V['cat_icon_mime'])) {
         echo '<img src="getIcon.php?cat_id=' . $K . '" alt="'
-        . $catIconStr . '" title="' . $catIconStr . '">';
+        . $catIconStr . '">';
       }
       echo '</li>';
     }

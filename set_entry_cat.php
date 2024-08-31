@@ -120,7 +120,7 @@ else {
   echo <<<EOT
     <h2>{$setCatStr}</h2>
     <form action="set_entry_cat.php" method="post" name="selectcategory">
-      ${formKey}
+      {$formKey}
       <input type="hidden" name="date" value="{$date}">
       <input type="hidden" name="id" value="{$id}">
       <table cellpadding="5">

@@ -1,0 +1,2387 @@
+# Somali so
+#
+# Qaabku wuxuu ka kooban yahay madax xulasho:
+#
+# Waxaa tarjumay: magacaaga iyo emaylkaaga
+# Cusbooneysiintii ugu dambeysay: taariikhda tarjumaadda
+# (Oo ay ku jiraan hogaaminta "#" iyo wixii faallooyin ah ee ay bixiyeen turjubaano hore.
+# Sadarka ugu horeeya ee madhan ayaa soo afjaraya faallooyinkan cinwaanka ah.)
+#
+# Waxaa ku raacay inta loo baahan yahay:
+#
+# Weedh Ingiriisi ah: turjumaad
+# (Mid ilaa saf ah. LA'AAN hoggaanka "#".
+# "Weedha Ingiriisiga:", oo ay ku jiraan xiidanka ":", waxaa bixiya kan
+# Horumarinta WebCalendar. Qaybtaadu waa "tarjumaadda".)
+#
+# Buugga agabka wuxuu ka kooban yahay laba qoraal oo perl ah oo kaa caawinaya:
+# - check_translation.pl
+# wuxuu muujinayaa haddii dhammaan qoraalka si guul leh loo tarjumay
+# - update_translation.pl
+# wuxuu kala saari doonaa feylasha barnaamijka si loo helo dhamaan tarjumida ('weedh') iyo
+# tooltip ('weedh'). Waxay kuu habeyn doontaa weedhaha sida ku xusan bogga
+# (faylka) oo ay kujirto ugudambaynta koowaad. Ikhtiyaar ahaan, waxay calaamadeyn kartaa
+# jumlado aan wali turjumin adoo gelinaya
+#  << MISSING >>
+# xariiqa kore jumlada. Iyo, haddii weedha la soo gaabiyey,
+# waxaa ku jiri doona qoraalka Ingiriisiga oo buuxa sadarka hoose ee weedha.
+#
+# Xusuusin: Waxaan isku dayayaa inaan yareeyo cabirka guud ee faylka. Haddii "tarjumaadda"
+# eray / weedh waa isku mid luqadaada iyo ingiriisiga, kaliya isticmaal calaamadda "=".
+#
+# Xusuusin: Waxaad ogaan doontaa gelitaanka "May_" hoose. Sabab baa jirta tan.
+# Tarjum "May_" magaca bisha oo buuxa iyo "May" ku,
+# badiyaa saddex-xaraf, soo gaabinta bisha (sida "Oct" ee "Oktoobar").
+#
+# Waxaan u isticmaalay Google translate tan.
+# Waa inay kufilan tahay ilaa qof kuhadla afka hooyo uu xaqiijiyo.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: Kalandarka
+version XXX: nooca XXX
+WebCalendar is a PHP application used...: WebCalendar waa codsi loo yaqaan 'PHP' oo loo isticmaalo in lagu ilaaliyo jadwalka hal isticmaale ama koox internet / intranet ah oo isticmaaleyaal ah. Waxaa sidoo kale loo qaabeyn karaa kalandarka dhacdada.
+Credits: Heerarka
+About: Ku saabsan
+OK: =
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Cilad keydka xogta: XXX.
+DEFAULT CONFIGURATION: ISKU DUKAANKA DEFAULT
+Go: Tag
+Save: Keydso
+Undo: Ka noqo
+Public Access: Gaaritaanka Dadweynaha
+Admin: Maamulka
+User Access Control: Xakamaynta Isticmaalka Isticmaalaha
+Allow Access to Other Users Calendar: U oggolow marinka Kalandarka Isticmaalayaasha Kale
+Grant This User Access to My Calendar: Sii U-hel Isticmaalahan Isticmaalka Jadwalkayga
+Type: Nooca
+Calendar: Kalandarka
+View Event: Daawo Dhacdada
+View: Muuqaal
+Edit: Tafatir
+Approve/Reject: Ansixin / diid
+Events: Dhacdooyinka
+Tasks: Hawlaha
+Journals: Joornaalada
+Can Invite: Marti qaadi kara
+Can Email: Email U diri kara
+Can See Time Only: Waqti Kaliya Ayuu Arki Karaa
+Assistant: Caawiye
+Select All: Xulo Dhamaan
+Clear All: Nadiifi Dhamaan
+Public: Dadweynaha
+Confidential: Qarsoodi
+Private: Gaar ah
+
+########################################
+# Page: activity_log.php
+#
+Next: Xiga
+Previous: Hore
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Dhacdada XXX horeyba ayay ugu jirtay kaalandarkaaga.
+Invalid entry id XXX.: Aqoonsiga gelitaanka aan ansax ahayn: "XXX".
+a XXX event may not be added to your calendar: Tani waa dhacdo XXX ah lagumana dari karo kalandarkaaga.
+confidential: qarsoodi ah
+private: gaar ah
+Error adding event XXX.: Cilad ku darista dhacdo: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Magaca dejinta aan ansax ahayn "XXX"
+Select: Xullo
+Day: Maalinta
+Week: Toddobaad
+Month: Bisha
+Year: Sanadka
+Bottom: Hoose
+Top: Sare
+Anyone: Qof kasta
+Participant: Ka qaybqaataha
+Settings: Dejinta
+Groups: Kooxaha
+NonUser Calendars: Jadwalka aan Isticmaalka ahayn
+Other: Kale
+Email: =
+Colors: Midabada
+Document background: Asalka dukumiintiga
+Document title: Cinwaanka dukumintiga
+Document text: Qoraal qoraal ah
+My event text: Qoraalkeyga dhacdo
+Table grid color: Jadwalka shaxda midabka
+Table header background: Shaxda asalka cinwaanka
+Table header text: Jadwalka qoraalka qoraalka
+Table cell background: Tusmada unugga miiska
+Table cell background for current day: Tusaalaha unugyada miiska maalinta maanta
+Table cell background for days with events: Miiska miiska asalka maalmo leh dhacdooyin
+Table cell background for weekends: Tusmada unugyada miiska sabtida iyo axada
+Table cell background for other month: Tusaalaha unugyada miiska bisha kale
+Week number color: Midab lambarka Toddobaadka
+Event popup background: Dhacdooyinka asalka ah ee soo baxa
+Event popup text: Qoraalka soo-baxa Dhacdada
+System Settings: Dejinta Nidaamka
+Help: I caawi
+System options: Fursadaha nidaamka
+app-name-help: Wuxuu qeexayaa magaca arjiga oo ka muuqan doona baalka cinwaanka biraawsarka ee bogagga oo dhan iyo bogga galitaanka. Qiimaha aad ku qeexday halkan waxaa laga eegi doonaa feylasha tarjumaada oo kuu oggolaaneysa inaad bixiso cinwaano kala duwan oo luqado kala duwan ah.
+Application Name: Magaca Codsiga
+Translated Name (XXX): Magaca la Tarjumay (XXX)
+server-url-help: Wuxuu cadeynayaa saldhiga URL ee arjiga. Tan waxaa lagu dari doonaa marka la dirayo xusuusinta emaylka iyo ogeysiisyada.
+Server URL: URL adeege
+home-url-help: Wuxuu cadeynayaa cinwaanka guriga ee arjiga. Tani waxay noqon kartaa mid dhammaystiran ama qaraabo ah
+Home URL: Cinwaanka guriga
+language-help: Wuxuu qeexayaa luqadda la isticmaalayo.
+Language: Luqadda
+Your browser default language is XXX.: Luqadda asalka ah ee biraawsarkaagu waa "XXX".
+Allow user to use themes: U oggolow isticmaalaha inuu adeegsado mowduucyada
+themes-help: Kuu ogolaanayaa cusboonaysiinta ballaaran ee qaabeynta qaabeynta. Calaamadaha kiiska hoose waa kuwa isticmaalaha kaliya.
+Themes: Dulucda
+AVAILABLE THEMES: MAWDUUCA LA HELI KARO
+None: Midna
+Preview: Falanqeynta
+Site customization: Habaynta goobta
+custom-script-help: Kuu ogolaanayaa soo gelitaanka caadada Javascript ama qoraalka qaabab qoraal ah oo lagu dhex galin doono HTML "madaxa" qeybta bog kasta.
+Custom script/stylesheet: Qoraal / qaabab khaas ah
+custom-header-help: Kuu ogolaanayaa guntin HTML u gaar ah in lagu daro dusha sare ee bog kasta.
+Custom header: Custom madax
+custom-trailer-help: Kuu ogolaanayaa guntin HTML u gaar ah in lagu daro dhamaadka bog kasta.
+Custom trailer: Gawaarida gaarka ah
+enable-external-header-help: Kuu ogolaanayaa isjiidka gaarka ah in laga soo raro fayl dibedda ah
+Allow external file for header/script/trailer: U oggolow faylka dibedda cinwaanka / qoraalka / isjiidka
+Allow user to override header/trailer: U oggolow isticmaale inuu ka takhaluso cinwaanka / jilaaha
+Date and Time: Taariikhda iyo Waqtiga
+server-tz-help: Wuxuu cayimayaa imisa saacadood oo uu ku jaangooyo waqtiga UTC ilaa waqtiga serverka.
+Server Timezone Selection: Xulashada Wakhtiga Adeegga
+tz-help: Wuxuu cayimayaa imisa saacadood oo lagu jaangooyo waqtiga UTC iyo waqtiga maxalliga ah.
+Default Client Timezone Selection: Xulashada Waqtiga Macaamilka ee Ugu Haboon
+display-general-use-gmt-help: Haddii la hawlgeliyo, taariikhaha / xilliyada caadiga ah waxaa loo soo bandhigaa sidii GMT
+Display Common Use Date/Times as GMT: Muuji Taariikhda Isticmaalka Guud / Waqtiyada sida GMT
+date-format-help: Qeexaa qaabka taariikhda la doorbiday.
+Date format: Qaabka taariikhda
+Small Task Date: Taariikhda Hawsha Yar
+display-week-starts-on: Wuxuu cayimaa maalinta usbuuca ee toddobaadku bilaabmayo. Haddii Isniinta la cayimo, markaa lambarrada toddobaadku waxay noqon doonaan lambarrada usbuucii ISO.
+Week starts on: Toddobaadka ayaa bilaabmaya
+display-weekend-starts-on: Waxay dejisaa maalinta usbuuca dhammaadka usbuuca inay bilaabmaan
+Weekend starts on: Toddobaadka dhammaadkiisu wuxuu bilaabmaa
+time-format-help: Waxay cadeyneysaa nooca waqtiga la isticmaalayo:<br><em>12 saac:</em> Wakhtiyada muujinta sida 3am, 8:30 pm, iwm.<br><em>24 saac:</em> Wakhtiyada muujinta oo ah 300 , 2030, iwm.
+Time format: Qaabka waqtiga
+12 hour: 12 saacadood
+24 hour: 24 saacadood
+timed-evt-len-help: Wuxuu qeexayaa habka soo gelinta ee lagu go'aaminayo dhererka dhacdo waqtiyeysan.
+Specify timed event length by: Sheeg dhererka dhacdada waqtiga leh adoo
+Duration: Muddada
+End Time: Waqtiga Dhamaadka
+work-hours-help: Wuxuu cayimaa xadka waqtiga loo soo bandhigayo muuqaalka maalinta.
+Work hours: Saacadaha shaqada
+From: Ka soo
+to: ku
+Appearance: Muuqaal
+preferred-view-help: Wuxuu qeexayaa aragtida caadiga ah (Maalinta, Toddobaadka, Bisha, ama Sannadka).
+Preferred view: Muuqaal la doorbiday
+Allow top menu: U oggolow liiska kore
+Date Selectors position: Taariikhda Xulista booska
+menu-themes-help: Dajisaa midabada iyo qaabka meeniska sare
+Menu theme: Mawduuca menu
+fonts-help: Wuxuu qeexayaa liistada noocyada farta loo adeegsado (sida "Arial, Helvetica")
+Fonts: Fonte
+display-sm_month-help: Haddii la karti galiyo, waxay soo bandhigaysaa bilo yar bilaha aragtida ah
+Display small months: Muuji bilo yar
+display-weekends-help: Ku dar dhamaadka usbuuca markaad daawaneyso toddobaad.
+Display weekends: Muuji dhamaadka usbuuca
+display-long-daynames-help: Haddii karti loo yeesho, magacyada maalinta dheer ayaa la soo bandhigaa
+Display long day names: Muuji magacyada maalinta dheer
+display-alldays-help: Muuji bilaha hore iyo kuwa soo socda ee muuqaalka bisha, adoo buuxinaya dhammaan unugyada.
+Display all days in month view: Muuji maalmaha oo dhan aragtida bisha
+display-week-number-help: Wuxuu cadeynayaa in lambarka usbuuca (1-52) lagu soo bandhigo muuqaalka bisha iyo muuqaalka toddobaadlaha.
+Display week number: Tirada usbuuca
+display-desc-print-day-help: Ku dar sharraxaadda dhacdada nooca daabacaadda-saaxiibtinimada leh ee muuqaalka maalinta.
+Display description in printer day view: Ku muuji sharraxaadda aragtida maalinta daabacaha
+yearly-shows-events-help: Aragtida sanadlaha ah, soo bandhig maalmo ay ku jiraan dhacdooyin ku yaal far waaweyn.
+Display days with events in bold in month and year views: Ku soo bandhig maalmo iyaga oo leh dhacdooyin si geesinimo leh u muuqda bilaha iyo sanadka
+display-minutes-help: Haddii la hawlgaliyo, daqiiqadaha ku dhammaanaya: 00 had iyo jeer waa la soo bandhigi doonaa
+Display 00 minutes always: Muuji 00 daqiiqo had iyo jeer
+display-end-times-help: Muuji waqtiyada dhammaadka dhacdada haddii dhacdo dhacdo
+Display end times on calendars: Ku muuji wakhtiyada dhammaadka jadwalka taariikhda
+allow-view-add-help: A '+' astaamaha ayaa lagu dari doonaa aragtiyada, taas oo u oggolaanaysa isticmaaleyaasha in ay si deg deg ah ugu darto dhacdooyinka kalandarka isticmaalayaasha kale.
+Include add event link in views: Ku dar kudheer iskuxirka muuqaalka
+lunar-help: Haddii la hawlgaliyo, waxay soo bandhigi doontaa astaamo yaryar oo matalaya wejiyada dayaxa bil kasta
+Display Lunar Phases in month view: Ku muuji Wejiyada Dayax ee muuqaalka bisha
+Restrictions: Xaddidaadda
+allow-view-other-help: Waxay cadeyneysaa in hal isticmaale uu arki karo jadwalka isticmaale kale.
+Allow viewing other users calendars: U oggolow inaad aragto kalandarka isticmaalaha kale
+require-approvals-help: Marka la kartiyeeyo, isticmaale waa inuu ansixiyaa dhacdo kahor intaan lagu soo bandhigin kalandarkooda (haddii Display aan la ansixin la awoodin mooyee). Ogeysiiska u dhigaya "Maya" ma damin doono oggolaanshaha kalandarka Helitaanka Dadweynaha (haddii kalandarka Helitaanka Dadweynaha la shaqeysiiyo).
+Require event approvals: U baahan oggolaanshaha dhacdada
+display-unapproved-help: Wuxuu qeexayaa in dhacdooyinka aan la ansixin lagu muujiyo kalandarkaaga. dhacdooyinka aan la ansixin waa in la ansixiyaa ka hor inta aan lagu soo bandhigin kalandarkaaga.
+Display unapproved: Muuji aan la ansixin
+conflict-check-help: Hubi isku dhacyada dhacdooyinka (laba dhacdo oo isku waqti loo qorsheeyay isla hal qof). Haddii aad tan uga dhigto "Haa", weli waad awoodi doontaa inaad jadwal u sameyso laba dhacdo isla waqti isku mid ah ka dib markaad xaqiijiso digniinta. Haddii aad tan ka dhigto "Maya", wax hubinta khilaafaadka ah lama sameyn doono. Waxay u badan tahay inaad rabto inaad tan ka dhigto "Haa", markaa hubinta khilaafku way dhacdaa.
+Check for event conflicts: Hubi khilaafaadka dhacdada
+Yes: Haa
+No: Maya
+conflict-months-help: Haddii hubinta khilaafku ay jirto ("Hubi dhacdooyinka isku dhaca" waxaa loo qoondeeyay "Maya" & # 41 ;, tani waxay qeexaysaa inta bilood ee mustaqbalka ee ay tahay inaan iska hubinno isku dhacyada. , yaree lambarkan.
+Conflict checking months: Iska hubinta bilaha
+conflict-check-override-help: Waxay u ogolaataa adeegsadayaasha inay ka takhalusaan isku dhacyada dhacdooyinka oo ay jadwal u sameeyaan laba ama in ka badan oo dhacdooyin isku wakhti ah.
+Allow users to override conflicts: U oggolow isticmaaleyaasha in ay tirtiraan khilaafaadka
+limit-appts-help: Waxay u oggolaaneysaa maamulaha nidaamka inuu dejiyo xaddid ballaadhan oo ku saabsan tirada ballamaha uu hal isticmaale yeelan karo maalin kasta.
+Limit number of timed events per day: Xaddid tirada dhacdooyinka waqtiga ku habboon maalintii
+limit-appts-number-help: Waxay cadeyneysaa tirada ugu badan ee dhacdooyinka waqtiga ku habboon ee isticmaalehu yeelan karo hal maalin gudaheed.
+Maximum timed events per day: Dhacdooyinka waqtiga ugu badan la qabto maalintii
+crossday-help: Haddii la kartiyeeyo, dhacdooyinka maalmaha dhexdooda ah waxaa lagu soo bandhigi doonaa maalmo gooni ah
+Disable Cross-Day Events: Jooji Dhacdooyinka Maalinta-Dheer
+disable-location-field-help: Xulashada "Haa" waxay ka saari doontaa aagga "Goobta" bogagga macluumaadka dhacdada
+Disable Location field: Demin goobta goobta
+disable-url-field-help: Xulashada "Haa" waxay ka saari doontaa aagga "URL" bogagga macluumaadka dhacdada
+Disable URL field: Demin goobta URL
+disable-priority-field-help: Xulashada "Haa" waxay ka saari doontaa aagga "Mudnaanta" bogagga macluumaadka dhacdada, iyadoo siineysa is-dhexgal ka fudud kuwa cusub.
+Disable Priority field: Jooji mudnaanta
+disable-access-field-help: Xulashada "Haa" waxay ka saari doontaa aagga "Helitaanka" bogagga macluumaadka dhacdada, iyadoo siineysa is-dhexgal ka fudud kuwa cusub.
+Disable Access field: Jooji goobta gelitaanka
+disable-participants-field-help: Xulashada "Haa" waxay ka saari doontaa aagga "Ka-qaybgalayaasha" bogagga macluumaadka dhacdooyinka, iyagoo ka hor istaagaya isticmaalayaasha inay ku daraan isticmaaleyaasha kale dhacdooyinkooda. Haddii aad karti u yeelato ikhtiyaarkan, waxaad u baahan kartaa inaad sidoo kale gab ka dhigto "U oggolow inaad aragto jadwalka kale ee isticmaalaha" sidoo kale.
+Disable Participants field: Naafada ka qaybgalayaasha
+disable-repeating-field-help: Xulashada "Haa" waxay ka saari doontaa berrinka "Ku celcelinta" marka lagu daro dhacdooyinka. Tani waxay ku siin doontaa is-dhexgal ka fudud kuwa cusub.
+Disable Repeating field: Jooji ku celcelinta goobta
+allow-html-description-help: Haddii karti loo yeesho, isticmaaleyaashu waxay geli karaan HTML qaybta sharraxaadda dhacdada. Haddii aan karti loo helin, HTML tags waa laga baxsanayaa si ay ugu muuqdaan qoraal cad. Digniin: Awood siinta muuqaalkan ayaa u oggolaan doonta dadka isticmaala inay tixraacaan sawirrada bogagga kale.
+Allow HTML in Description: U oggolow HTML Sharaxaad
+Popups: Gujisid
+disable-popups-help: Ka jooji popup-ka aragga kalandarka
+Disable Pop-Ups: Jooji Pop-Ups
+popup-includes-siteextras-help: Haddii karti loo yeesho, u oggolow astaamaha munaasabadaha munaasabadaha faylka bogga_extras.php lagu soo bandhigi doono dhacdooyinka soo baxa.
+Display Site Extras in popup: Muuji Dheeraad Dheeraad ah oo popup ah
+popup-includes-participants-help: Hadday karti yeelato, kaqeybgalayaasha waxaa lagu soo bandhigayaa soo bixida dhacdada
+Display Participants in popup: Muuji Kaqeybgalayaasha popup
+Miscellaneous: Kaladuwan
+remember-last-login-help: Markii la kartiyeeyo, soo gelitaanka isticmaalaha ayaa loogu buuxin doonaa iyaga bogga galitaanka (laakiin maahan erayga sirta ah), iyo dookha isticmaalaha waa la rari doonaa (oo ay ku jiraan midabada ay doorbidayaan iyo xulashada luqadda).
+Remember last login: Xusuusnow galitaankii ugu dambeeyay
+summary_length-help: Dhererka ugu badan ee Sharax kooban ee aragtida kalandarka
+Brief Description Length: Dhererka Sharaxaada oo Kooban
+user_sort-help: Waxay go'aamisaa kala-soocida kala-sooca Isticmaalaha, Liisaska Aan Isticmaalka lahayn
+User Sort Order: Amarka Sortiga Isticmaalaha
+Lastname, Firstname: Magaca hore magaca DAMBE
+Firstname, Lastname: Magaca hore, Magaca dambe
+allow-public-access-help: Markii la hawlgaliyo, kalandarka waxaa loo isticmaali karaa kalandar guud oo akhris-keliya ah oo aan u baahnayn dadka isticmaala inay soo galaan.
+Allow public access: U oggolow marinka dadweynaha
+public-access-default-visible: Dhacdooyinka kalandarka dadweynaha ayaa si otomaatig ah uga muuqan doona dhammaan kalandarka isticmaaleyaasha
+Public access visible by default: Gaaritaanka dadweynaha ayaa u muuqda markii hore
+public-access-default-selected: Markaad kudareyso dhacdo cusub, isticmaalaha guud waxaa loo dooran doonaa asal ahaan kaqeybgale ahaan.
+Public access is default participant: Gaaritaanka dadweynaha ayaa ah kaqeyb galayaasha caadiga ah
+public-access-view-others-help: Markaad marin uhesho nidaamka marin uhelka dadweynaha, wuxuu qeexayaa inuu isticmaalehu arki karo jadwalka isticmaaleha kalenda kale.
+Public access can view other users: Gaaritaanka dadweynaha ayaa daawan kara isticmaaleyaasha kale
+public-access-can-add-help: Markii la hawlgeliyo, isticmaaleyaasha ka soo gala nidaamka iyada oo loo marayo Helitaanka Dadweynaha waxay awoodi doonaan inay ku daraan dhacdooyin cusub, laakiin ma soo muuqan doonaan kalandarka illaa maamule ka oggolaado dhacdada cusub.
+Public access can add events: Gaaritaanka dadweynaha ayaa ku dari kara dhacdooyin
+public-access-add-requires-approval-help: Wuxuu cadeynayaa haddii dhacdooyinka lagu daray koontada marin u helka dadweynaha ay u baahan yihiin oggolaansho ka hor inta aan la soo bandhigin.
+Public access new events require approval: Helitaanka dadweynaha munaasabadaha cusub waxay u baahan yihiin oggolaansho
+public-access-sees-participants-help: Haddii la hawlgeliyo, adeegsadayaasha kalandarka ka soo galaya koontada dadweynaha waxay awoodi doonaan inay arkaan kaqeybgalayaasha dhacdada haddii ay arkaan faahfaahinta dhacdo.
+Public access can view participants: Gaaritaanka dadweynaha ayaa daawan kara kaqeybgalayaasha
+public-access-override-help: Kuu ogolaanayaa magacyada dhacdooyinka iyo sharaxaada in lagu qariyo kalandarka guud
+Override event name/description for public access: Ka takhalus magaca dhacdada / sharraxaadda marin u helka dadweynaha
+public-access-override-text-help: Qoraalka si loo muujiyo haddii ikhtiyaarka kor ku xusan la karti leeyahay. Haddii 'Aan La Heli karin', waa la tarjumi doonaa.
+Text to display to public access: Qoraal si loo muujiyo marin u helitaanka dadweynaha
+public-access-captcha-help: Haddii la kartiyeeyo, dhacdooyinka cusub ee lagu daray Dadweynaha waxay u baahan yihiin gudbinta ansaxinta CAPTCHA.
+Require CAPTCHA validation for public access new events: Ubaahan ansaxinta CAPTCHA ee marin u helka dhacdooyinka cusub ee dadweynaha
+uac-enabled-help: Waxay awood u siinaysaa xakamaynta marin u helka heerka isticmaalaha
+User Access Control enabled: Xakamaynta Isticmaalka Isticmaalaha
+groups-enabled-help: Awood siineysa taageerada kooxda, u oggolaaneysa isticmaaleyaasha inay ku xulan karaan isticmaaleyaasha kooxo.
+Groups enabled: Kooxuhu way hawl galeen
+user-sees-his-group-help: Haddii la hawlgeliyo, isticmaaleyaashu ma arki doonaan kuwa isticmaala kalandarka ee aan ugu yaraan mid ka mid ah kooxahooda ahayn.
+User sees only his groups: Isticmaaluhu wuxuu arkayaa oo keliya kooxiisa
+nonuser-enabled-help: Haddii la hawlgaliyo, maamulladu waxay yeelan doonaan ikhtiyaar ay ku daraan jadwalka taariikhda aan adeegsiga lahayn
+Nonuser enabled: Kalandarrada aan la adeegsan karin
+nonuser-list-help: Halkee lagu soo bandhigayaa jadwalada aan la isticmaalin ee ku jira liiska ka qaybgalayaasha
+Nonuser list: Ku muuji liistada kaqeybgalayaasha
+Upcoming Events: Dhacdooyinka soo socda
+upcoming-events-help: Daar soo socda.php
+Enabled: Daarmay
+upcoming-events-allow-override: U oggolow aaladda isticmaalaha soo socda .php
+Allow user override: U oggolow isticmaale dulsaarka
+upcoming-events-display-caticons: Ku dar astaamaha noocyada soo socda.php
+Display category icons: Muuji astaamaha qaybaha
+upcoming-events-display-layers: Muuji lakabyada soo socda.php
+Display layers: Muuji lakabyada
+upcoming-events-display-links: Muuji xiriiriyeyaasha soo socda.php
+Display links to events: Muuji iskuxirka dhacdooyinka
+upcoming-events-display-popups: Muuji soo-baxa dhacdooyinka soo socda .php
+Display event popups: Muuji astaamaha soo baxa
+reports-enabled-help: Haddii la hawlgeliyo, isticmaaleyaashu waxay arki doonaan qaybta "Warbixinnada" ee bog kasta hoostiisa waxaana loo oggolaan doonaa inay abuuraan warbixino caadaysan Intaa waxaa sii dheer, adeegsadayaasha maamulku waxay abuuri karaan warbixinno caalami ah oo ka soo muuqan doona salka dhammaan bogagga isticmaaleyaasha.
+Reports enabled: Warbixinnada waa la awoodsiiyay
+subscriptions-enabled-help: Wuxuu cadeynayaa haddii dadka isticmaala meelaha fog ay iska diiwaan gelin karaan kalandarka isticmaalaha WebCalendar, iyaga oo u oggolaanaya inay arkaan dhacdooyinka isticmaalaha WebCalendar ee ku jira codsigooda iCal-karti u leh (sida Apple's iCal ama Mozilla Calendar).
+Allow remote subscriptions: U oggolow rukummada fog
+remotes-enabled-help: Waxay u ogolaataa dadka isticmaala inay soo rogaan feylasha ics fog iyagoo isticmaalaya URL
+Allow remote calendars: U oggolow jadwalada fog
+rss-enabled-help: Wuxuu cadeynayaa haddii jadwalka isticmaalaha laga heli karo quudinta RSS.
+Enable RSS feed: Daar quudinta RSS
+categories-enabled-help: Awood siisaa qaybaha dhacdooyinka.
+Categories enabled: Qeybaha waa la shaqeeyay
+icon_upload-enabled-help: Haddii la hawlgeliyo, isticmaaleyaashu way soo rogi karaan astaamaha noocyada
+Category Icon Upload enabled: Qeybta Icon Upload-ka waa la shaqeeyay
+(Requires XXX folder to exist.): (Waxay ubaahantahay galka XXX inuu jiro.)
+display-tasks-help: Muuji daaqad yar oo hawl ah bisha iyo kalandarka maalinta
+Display small task list: Muuji liistada hawl yar
+display-tasks-in-grid-help: Ku soo bandhig shaqooyinka jadwalka taariikhda iyo dhacdooyinka
+Display tasks in Calendars: Ku muuji howlaha Jadwalka
+allow-external-users-help: Wuxuu cadeynayaa haddii isticmaale aan kalandarka ahayn lagu dari karo dhacdo. Tani waxay u oggolaaneysaa dadka aan kalandarka ahayn in loo qoro ka-qaybgalayaasha dhacdada.
+Allow external users: U oggolow isticmaaleyaasha dibedda
+external-can-receive-notification-help: Marka isticmaaleyaasha dibedda la kartiyeeyo adeegsiga e-maylkana loo daciifiyo, isticmaaleyaasha dibedda waxay heli karaan ogeysiisyo emayl ah marka dhacdada lagu daro, la cusbooneysiiyo ama la tirtiro (haddii cinwaanka emaylka ee isticmaaleha dibadda)
+External users can receive email notifications: Isticmaalayaasha dibedda waxay heli karaan ogeysiis emayl ah
+external-can-receive-reminder-help: Marka isticmaaleyaasha dibedda la kartiyeeyo oo adeegsiga iimaylka la hawlgaliyo, isticmaaleyaasha dibedda waxay heli karaan xusuusinta iimaylka (haddii cinwaanka emaylka isticmaalaha dibadda la bixiyo).
+External users can receive email reminders: Isticmaalayaasha dibedda waxay heli karaan xusuusinta emaylka
+allow-self-registration-help: U oggolow isticmaaleyaasha cusub inay isdiiwaangaliyaan
+Allow self-registration: U ogolow is-diiwaangelin
+use-blacklist-help: Xaddid helitaanka howlaha WebCalendar ee ku saleysan cinwaanka IP
+Restrict self-registration to blacklist: Xaddid is-diiwaangelinta liiska madow
+allow-self-registration-full-help: U oggolow isticmaaleyaasha cusub inay ku dhammaystiraan nidaamka is-diiwaangelinta khadka tooska ah
+Use self-registration email notifications: Abuur ereyada sirta ah una dir isticmaaleyaasha cusub
+allow-attachment-help: U oggolow isticmaalayaasha inay kudarista lifaaqyada faylasha kudarsadaan dhacdooyinka.
+Allow file attachments to events: U oggolow lifaaqyada faylka dhacdooyinka
+Admin and owner can always add attachments if enabled.: Maamulka iyo milkiiluhu had iyo jeer way ku dari karaan lifaaqyo haddii ay karti yeeshaan.
+allow-comments-help: U oggolow isticmaalayaasha inay kudariyaan faallooyinka dhacdooyinka.
+Allow comments to events: U oggolow faallooyinka dhacdooyinka
+Admin and owner can always add comments if enabled.: Maamulka iyo milkiiluhu had iyo jeer way ku dari karaan faallooyin haddii ay karti yeeshaan.
+email-enabled-help: Daar ama dami dhammaan diritaanka emaylka ogeysiis iyo xusuusin ah. U deji "maya", haddii adeegahaagu uusan si fiican u dejisanayn inuu u soo diro boostada.
+Email enabled: Iimaylku wuu shaqeeyay
+email-default-sender: Wuxuu cayimayaa cinwaanka emaylka si loo caddeeyo inuu yahay soo diraha markuu dirayo xusuusinta.
+Default sender address: Cinwaanka diraha asalka ah
+email-mailer: Xulo nooca iimaylka (SMTP, boostada PHP, boostada)
+Email Mailer: Boostada Emailka
+email-smtp-host: Magaca martida (yada) server-yada (SM) ee ay kala soocaan koomayaasha
+SMTP Host name(s): Magaca (yada) martigeliyaha SMTP
+email-smtp-port: Lambarka Dekedda SMTP (caadi ahaan 25)
+SMTP Port Number: Lambarka Dekedda SMTP
+email-smtp-auth: Adeegso Xaqiijinta SMTP
+SMTP Authentication: Xaqiijinta SMTP
+email-smtp-username: Magaca isticmaalaha 'SMTP' haddii aad isticmaaleysid HUBIN
+SMTP Username: Magaca isticmaalaha 'SMTP'
+email-smtp-password: Passwordka SMTP haddii aad isticmaaleyso HUBIN
+SMTP Password: Furaha SMTP
+Default user settings: Dejimaha isticmaalaha asalka ah
+email-format: Sheeg doorbidka HTML ama fariimaha qoraalka ah ee tooska ah
+Email format preference: Xulashada qaabka Email
+HTML: =
+Plain Text: Qoraal cad
+email-include-ics: Ku dar feylka iCalendar ICS si aad ugu dirto farriin
+Include iCalendar attachments: Ku dar lifaaqyada iCalendar
+email-event-reminders-help: Wuxuu qeexayaa inuu diro xusuusinta dhacdada iyo haddii kale.
+Event reminders: Xusuusinta dhacdada
+email-event-added: Wuxuu qeexayaa inuu diro ama u diro ogeysiisyada emaylka marka dhacdo lagu daro kalandarkaaga.
+Events added to my calendar: Dhacdooyinkii lagu daray jadwalkayga
+email-event-updated: Wuxuu qeexayaa inuu diro ama u diro ogeysiisyada emaylka marka dhacdo lagu cusbooneysiiyo kalandarkaaga.
+Events updated on my calendar: Dhacdooyinka la cusbooneysiiyay kalandarkayga
+email-event-deleted: Wuxuu qeexayaa inuu diro iyo in kale ogeysiis emayl markii dhacdo laga saaray kalandarkaaga.
+Events removed from my calendar: Dhacdooyinka laga saaray kalandarkayga
+email-event-rejected: Wuxuu qeexayaa inuu diro ama u diro ogeysiisyada iimaylka marka kaqeybgalayaashu ay diidaan dhacdo kalandarkaaga ah.
+Event rejected by participant: Dhacdo uu diiday ka qayb galahu
+email-event-create: Wuxuu cadeynayaa haddii abuuraha waxyaabaha la soo galayaa uu helayo emayl
+Event that I create: Dhacdo aan abuuro
+Color options: Fursadaha midabka
+Allow user to customize colors: U oggolow isticmaalaha inuu u habeeyo midabada
+gradient-colors: Haddii midableyda dartiis loo adeegsaday Tani waxay si weyn u saameyn kartaa waxqabadka.
+Enable gradient images for background colors: U oggolow sawirrada wehliyaha midabbada asalka ah
+Not available: Lama heli karo
+Background Image options: Fursadaha sawirka asalka
+bgimage-help: URL sawirka asalka la doonayo. Wuxuu noqon karaa xiriir qaraabo ah.
+Background Image: Sawirka Taariikhda
+bgrepeat-help: Waxay xakameysaa dhaqanka ku celcelinta sawirka asalka.
+Background Repeat: Soo Celinta Asalka
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Caawiyeyaasha
+Preferences: Doorbidka
+Control Panel: Guddiga Xakamaynta
+Users: Isticmaalayaasha
+Account: Xisaab
+Categories: Qaybaha
+Views: Aragtiyo
+Layers: Lakabyada
+Reports: Warbixinno
+Delete Events: Tirtir Dhacdooyinka
+Activity Log: Diiwaanka Waxqabadka
+System Log: Nidaamka Diiwaanka
+Security Audit: Hantidhowrka Amniga
+Public Preferences: Rabitaanka Dadweynaha
+Unapproved Public Events: Dhacdooyinka Dadweynaha ee aan la Ansixin
+Administrative Tools: Qalabka Maamulka
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Magaca Nuqul: "XXX".
+Username XXX already exists.: Magaca isticmaale "XXX" horeyba wuu u jiray.
+Email address XXX already exists.: Cinwaanka emaylka "XXX" horay ayuu u jiray.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Faallooyin Dheeraad ah (ikhtiyaari ah)
+Approve and Send: Ansixin oo dir
+Approve and Exit: Ansixin iyo Bixitaan
+(Your comments will be emailed to the event creator.): (Faallooyinkaaga waxaa loo soo diri doonaa emaylka munaasabadda abuure.)
+Hello, XXX.: Waad salaaman tahay, XXX.
+XXX has approved an appointment and added comments.: Ballanta waa la ansixiyay oo faallooyinka ayaa lagu daray XXX.
+Subject XXX: Mawduuca: "XXX".
+Description XXX: Faahfaahin: "XXX"
+Date XXX: Taariikh: XXX
+Time XXX: Waqtiga: XXX
+Comments XXX: Faallooyin: XXX
+Approved w/Comments by XXX.: Wuu ogolaaday w / Faallooyinka: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Habka maamulka
+Your assistants: Kaaliyeyaashaada
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Cilad aan la aqoon
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Cillada Barnaamijka: Majiro XXX lagu qeexay!
+user: isticmaale
+year: sanadka
+month: bil
+day: maalin
+
+########################################
+# Page: category.php
+#
+Category Icon: Icon Nooca
+Global: Caalamka
+The permissions for the icons directory are set to read-only: Oggolaanshaha galka astaamaha ayaa lagu wadaa in la akhriyo oo keliya.
+Category Name: Magaca Qeybta:
+Color: Midab
+Remove Icon: Ka saar Astaamaha:
+Add Icon to Category: Kudar Icon Qeybta
+Upload: Geli
+GIF or PNG 6kb max: GIF ama PNG 6kb max
+Search for existing icons: Raadi astaamaha jira
+Add: Ku dar
+Delete: Tirtir
+Are you sure you want to delete this entry?: Ma hubtaa inaad rabto inaad tirtirto galintan?
+Make New Category: Samee Qayb Cusub
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Magaca qaybta ayaa loo baahan yahay
+File size exceeds maximum.: Cabirka feylku wuxuu dhaafey ugu badnaan
+File is not a GIF or PNG image: Faylku maahan sawir GIF ama PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: QAYBAHA LA HELI KARO
+ENTRY CATEGORIES: KOOXAHA GALKA
+Remove: Ka saar
+Global Category: Qeybta Caalamka
+Cancel: Jooji
+
+########################################
+# Page: colors.php
+#
+Add Custom: Ku dar Custom
+Basic Colors: Midabada Aasaasiga ah
+Current Color: Midabka Hadda
+Custom Colors: Midabada Custom
+Old Color: Midab Duug ah
+
+########################################
+# Page: combo.php
+#
+Select None: Xullo Midna
+Agenda: Ajandaha
+Add Task: Ku dar Task
+Description: Sharaxaad
+Date: Taariikhda
+Time: Waqti
+Priority: Mudnaanta
+Access: Helitaanka
+Created by: Waxaa abuuray
+Updated: La cusbooneysiiyay
+Participants: Kaqeybgalayaasha
+Attachments: Lifaaqyo
+Comments: Faallooyin
+Brief Description: Sharax kooban
+Full Description: Faahfaahin buuxda
+Category: Qeybta
+Add event detail: Ku dar faahfaahinta dhacdada
+Start Date: Taariikhda billowga
+Due Date: Taariikhda La Dhaafay
+Add task detail: Ku dar faahfaahinta hawsha
+All: Dhammaan
+Error: Cilad
+no response from server: jawaab kama helin serverka
+JSON error: Khalad JSON
+High: Sare
+Medium: Dhexdhexaad
+Low: Hooseeya
+Today: Maanta
+Add Entry: Kudar Gelitaan
+Unnamed Event: Dhacdo aan la magacaabin
+Unnamed Task: Hawsha aan la magacaabin
+Refresh: Cusbooneysii
+Click to add entry: Guji si aad ugu darto gelitaanka
+Name: Magaca
+pm: galabnimo
+am: ahay
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX baajiyay ballan.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Id khaldan id
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Kudar Faalo
+Add Attachment: Kudar Lifaaq
+Subject: Mawduuca
+Comment: Faallo
+Upload file: Geli faylka
+
+########################################
+# Page: docdel.php
+#
+Removed: Laga saaray
+
+########################################
+# Page: edit_entry.php
+#
+days: maalmood
+hours: saacadood
+minutes: daqiiqado
+You are not authorized to edit this task.: Adigu awood uma lihid inaad wax ka beddesho hawshan.
+is in a different timezone than you are. Currently: wuxuu ku jiraa waqti ka duwan waqtiga aad ku jirto. Xilligan
+hour ahead of you: saacad kaa horeysa
+hour behind you: saacad gadaashaada
+hours ahead of you: saacadaha kaa horeeya
+hours behind you: saacado kaa dambeeya
+XXX is in a different timezone (ahead): (XXX waxay ku jirtaa aagag wakhti ah oo kala duwan; YYY ayaa kaa horaysa.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX waxay ku jirtaa aagag waqti ka duwan; HAA gadaashaada.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Waqtiga halkan lagu soo galay wuxuu ku saleysan yahay waqtigaaga.
+Edit Entry: Wax ka beddel
+Details: Faahfaahin
+Repeat: Ku celi
+Reminders: Xusuusin
+brief-description-help: Tani waa inay bixisaa sharaxaad kooban (oo ku saabsan 20 xaraf) dhacdada. Tani waxay matali doontaa dhacdada markaad daawaneyso jadwalka.
+full-description-help: Tani waa inay dhammaystirtaa faahfaahinta dhacdada. Macluumaadkan waa la arki karaa marka isticmaaluhu arko dhacdada.
+access-help: Waxay cadeyneysaa heerka gelitaanka ee munaasabadda. <ul> <li> Dadweynaha: Qof kastaa wuu arki karaa faahfaahinta buuxda ee dhacdada.</li> <li> Qarsoodi: Kuwa kale waxay arki karaan inaad haysato irid laga galo taariikhdaas iyo waqtigaas, laakiin ma aha faahfaahinta waxa ay tahay.</li></ul>
+priority-help: Waxay qeexaysaa mudnaanta dhacdada. Dhacdooyinka mudnaanta sare leh ayaa lagu soo bandhigi doonaa si geesinimo leh.
+category-help: Wuxuu qeexayaa nooca ay tahay dhacdada.
+completed-help: Taariikhda hawsha ayaa la dhammaystiray. Kaliya waa la awoodsiiyay markay dhammaan kaqeybgalayaashu boqolkiiba u dhigmaan 100%.
+Date Completed: Taariikhda oo Dhameystiran
+percent-help: Boqolkiiba hawsha dhammaystirka isticmaalehan
+Percent Complete: Boqolkiiba oo Dhameystiran
+All Percentages: Dhamaan Boqolleyda
+location-help: Goobta dhacdo
+Location: Goobta
+url-help: Dhacdada URL
+URL: =
+date-help: Wuxuu cayimaa taariikhda dhacdada.
+Untimed event: Dhacdo aan laga fiirsan
+Timed event: Dhacdo waqtigeedii ku dhacday
+All day event: Dhacdada maalinta oo dhan
+Timezone Offset: Waqtiga loo yaqaan 'Timezone Offset'
+time-help: Wuxuu cayimaa waqtiga dhacdada. <ul> <li> "Dhacdo Waqti leh" (dhacdo loo qorsheeyay wakhti cayiman maalintaas)</li> <li> "Dhacdo aan la sugin" (dhacdo aan tan waqti lahayn (sida ciida oo kale) )</li> <li> "Dhacdada maalinta oo dhan" (dhacdo dhacdo qaadata maalinta oo dhan (sida in xafiiska laga baxo)</li></ul>
+duration-help: Wuxuu qeexayaa muddada (saacadaha; daqiiqadaha) ee dhacdada. <em>Goobtan waa laga tagi karaa iyadoo maran.</em>
+end-time-help: Wuxuu cayimayaa waqtiga la filayo inay dhacdadu dhammaato.
+Start Time: Waqtiga Bilowga
+Due Time: Waqtiga La Dhaafay
+Site Extras: Meelaha Dheeraadka ah
+avail_participants-help: Liisaska kaqeybgalayaasha la heli karo ee gelitaankan.
+Available: La heli karo
+Find Name: Raadi Magaca
+Resources: Kheyraadka
+participants-help: Liisaska kaqeybgalayaasha gelitaankan.
+Selected: La xushay
+Availability: Helitaanka
+external-participants-help: Wuxuu qeexayaa liistada kaqeybgalayaasha dhacdada aan ahayn kuwa isticmaala kalandarka. Isticmaalayaasha waa in lagu qoraa hal saf sadar oo ay ku jiri karaan cinwaan emayl. Haddii cinwaanka emaylka la cayimay, isticmaalaha ayaa u qalma inuu helo ogeysiisyo iyo xusuusin.
+External Participants: Kaqeybgalayaasha Dibadda
+repeat-type-help: Xullo inta jeer ee ay tahay inay dhacdo ku celiso.
+Daily: Maalin kasta
+Weekly: Toddobaadle ah
+Monthly: Bil kasta
+by day: maalin
+by date: taariikhda
+by position: boos ahaan
+Monthly (by day): Bille ah (maalinti)
+Monthly (by date): Bille ah (taariikh ahaan)
+Monthly (by position): Bil kasta (boos ahaan)
+Yearly: Sannadle
+Manual: Buugga
+Expert Mode: Habka Khabiirka
+repeat-end-date-help: Wuxuu cayimaa taariikhda ay dhacdadu ku celcelinayso ilaa.
+Ending: Dhammaad
+Forever: Weligaaba
+Use end date: Adeegso taariikhda dhamaadka
+Number of times: Inta jeer
+repeat-frequency-help: Waxay cadeyneysaa inta jeer ee ay tahay inay dhacdo ku celiso.
+Frequency: Joogtaynta
+Weekdays Only: Maalmaha-Toddobaadka Kaliya
+Week Start: Bilowga Toddobaadka
+repeat-bydayextended-help: Kuu ogolaanaya xulashada taariikhda ku saleysan maalinta usbuuca.
+ByDay: =
+repeat-month-help: Waxay cadeyneysaa bilaha ay munaasabadu ku soo noqoneyso.
+ByMonth: =
+repeat-bysetpos-help: Kuu ogolaanayaa xulashada taariikhda oo ku saleysan booska bilaha.
+BySetPos: =
+repeat-bymonthdayextended-help: Kuu ogolaanayaa xulashada taariikhda ku saleysan taariikhda.
+ByMonthDay: =
+repeat-byweekno-help: Waxay u oggolaaneysaa isticmaale inuu cadeeyo liistada toddobaadyada si loogu celiyo dhacdada (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Waxay u ogolaataa isticmaale inuu cadeeyo liistada maalmaha sanadka inuu ku celiyo dhacdo (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Maalmo dheeraad ah oo dhacdadan ay tahay inay dhacdo ama aysan dhicin.
+Exclusions: Ka-reebitaannada
+Inclusions: Ka mid noqoshada
+Add Exception: Ku dar Ka Reeb
+Add Inclusion: Ku dar Ku dar
+Delete Selected: Tirtir xulashada
+Send Reminder: Xusuusin dir
+When: Goorma
+Use Date/Time: Adeegso Taariikh / Waqti
+Use Offset: Adeegso Offset
+Before: Kahor
+After: Kadib
+Start: Bilow
+End/Due: Dhamaad / Muddo
+Times: Waqtiyada
+Every: Mid kasta
+CAPTCHA Warning: Digniin:  Lama isticmaali karo CAPTCHA la'aanteed kordhinta GD ee PHP!<br>
+Delete entry: Tirtir soo galida
+You are not authorized to edit this entry.: Adigu awood uma lihid inaad wax ka beddesho galitaankan.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX waxay samaysay ballan cusub.
+XXX has updated an appointment.: XXX cusbooneysiisay ballan.
+Security violation!: Amni xumo!
+You must enter the anti-spam text on the previous page.: Waa inaad gashaa qoraalka anti-spam ee bogga hore.
+The following conflicts with the suggested time: Khilaafyada soo socda ee wakhtiga la soo jeediyey
+User removed from participants list.: Isticmaalaha ayaa laga saaray liiska kaqeybgalayaasha.
+Please look on XXX to accept or reject this appointment.: Fadlan fiiri XXX si aad u aqbasho ama u diiddo ballantan.
+Please look on XXX to view this appointment.: Fadlan fiiri XXX si aad u aragto ballantan.
+Scheduling Conflict: Jadwalka isku dhaca
+Your suggested time of: Waqtiga aad soo jeedisay ee
+conflicts with the following existing calendar entries: khilaafyo soo socda kalandarka soo socda jira
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX laguma hagaajin "config.php".
+word characters only: (waxaa ku jiri kara oo keliya jilayaal eray; [a-zA-Z_0-9])
+Add User: Ku dar isticmaale
+Edit User: Wax ka beddel isticmaale
+Calendar ID: Aqoonsiga Kalandarka
+First Name: Magaca koowaad
+Last Name: Magaca Dambe
+Is public calendar: Waa jadwalka dadweynaha
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Cilad keydka xogta
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Ku dar Kalandarka Fog
+Edit Remote Calendar: Tafatir Kalandarka Fog
+Create Layer: Abuur Lakab
+Reload: Dib u rar
+Required to View Remote Calendar: Loobaahan Yahay Inaad Aragto Kalandarka Fog
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Natiijooyinka Soo Deji
+Events successfully imported: Dhacdooyin si guul leh looga keenay
+Create a new layer to view this calendar.: Samee lakab cusub si aad u aragto jadwalkaan.
+Errors: Khaladaadka
+There was an error parsing the import file or no events were returned.: Khalad ayaa jiray baaritaanka feylka soo dejinta ama dhacdooyin lama soo celin.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Berri
+Yesterday: Shalay
+Day before yesterday: Maalin ka hor shalay
+Next week: Toddobaadka dambe
+This week: Isbuucaan
+Last week: Toddobaadkii hore
+Week before last: Toddobaadkii ka horreeyay
+Next week and week after: Toddobaadka dambe iyo usbuuca ka dambeeya
+This week and next week: Toddobaadkan iyo toddobaadka dambe
+Last week and this week: Toddobaadkii hore iyo toddobaadkan
+Last two weeks: Labadii usbuuc ee la soo dhaafay
+Next month: Bisha soo socota
+This month: Bishaan
+Last month: Bishii hore
+Month before last: Bishii ka hor
+Next year: Sanadka dambe
+This year: Sanadkan
+Last year: Sanadkii la soo dhaafay
+Year before last: Sannad ka hor
+Next 14 days: 14 maalmood ee soo socda
+Next 30 days: 30 maalmood ee soo socda
+Next 60 days: 60 maalmood ee soo socda
+Next 90 days: 90 maalmood ee xiga
+Next 180 days: 180 maalmood ee soo socda
+Next 365 days: Xiga 365 maalmood
+Invalid report id XXX.: ID aan sax ahayn id: "XXX".
+Unnamed Report: Warbixin aan la magacaabin
+Add Report: Ku dar Warbixin
+Edit Report: Wax ka beddel Warbixinta
+Report name: Magaca warbixin
+User: Isticmaalaha
+Current User: Isticmaale hada
+Include link in menu: Ku dar iskuxirka liiska
+Include standard header/trailer: Ku dar madax / jilitaan caadi ah
+Include previous/next links: Ku dar xiriiriyeyaal hore / soo socda
+Include empty dates: Ku dar taariikho madhan
+Date range: Taariikhda kala duwan
+Template variables: Doorsoomayaasha Template
+Page template: Qaabka bogga
+Day template: Template maalin
+Event template: Muunad dhacdo
+Are you sure you want to delete this report?: Ma hubtaa inaad rabto inaad tirtirto warbixintan?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Ma jiro warbixin noocaas ah: "XXX".
+Variable XXX not found.: Kala badalka XXX lama helin.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Tafatir Madaxa Cinwaanka
+Edit Custom Script/Stylesheet: Tafatir Qoraalka Gaarka ah / Xaashida
+Edit Custom Trailer: Tafatir Gawaarida Gawaarida
+
+########################################
+# Page: edit_user.php
+#
+Username: Magaca isticmaalaha
+E-mail address: Cinwaanka emailka
+Password: Furaha
+again: markale
+Disabled for demo: Naafada demo
+Are you sure you want to delete this user?: Ma hubtaa inaad rabto inaad tirtirto isticmaalehan?
+Change Password: Badalida Lambarka sirta ah
+New Password: Password Cusub
+Set Password: Calan Password
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Tirtirida isticmaaleyaasha lama taageerin.
+The passwords were not identical.: Furaha sirta ahi isku mid may ahayn.
+You have not entered a password.: Ma galin sirta.
+Username cannot be blank.: Magaca isticmaale ma banaana
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Lama ogola
+
+########################################
+# Page: export.php
+#
+Export: Dhoofinta
+Export format: Qaabka dhoofinta
+Include all layers: Ku dar dhammaan lakabyada
+Include deleted entries: Ku dar qoraallada la tirtiray
+Export all dates: Dhoofinta taariikhaha oo dhan
+Start date: Taariikhda billowga
+End date: Taariikhda dhammaadka
+Modified since: Wax laga badalay tan iyo
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: Qaabka dhoofinta oo aan la qeexin ama qaldan.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Ma jiro isticmaale cayiman.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Kudar Kooxda Cusub
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Kooxda aan la magacaabin
+Add Group: Ku dar koox
+Edit Group: Kooxda wax ka bedel
+Group name: Magaca kooxda
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Waa inaad sheegto magac kooxeed
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Kalandarrada otomaatigga ah u cusboonaysii
+auto-refresh-help: Markii la hawlgeliyo, aragtida maalinta, aragtida toddobaadlaha, aragtida bisha, iyo liistada bogagga aan la oggolaan dhammaantood si otomaatig ah ayey isu cusbooneysiiyaan xilliyo.
+Auto-refresh time: Waqti otomaatig ah
+auto-refresh-time-help: Haddii otomaatiga dib-u-cusbooneysiinta loo shaqeysiiyo, kani wuxuu cayimayaa waqtiga u dhexeeya Refresh kasta.
+Display days with events in bold in year view: Ku soo bandhig maalmo iyaga oo leh dhacdooyin si geesinimo leh u muuqda sanadka
+Display weekends in week view: Muuji dhammaadka usbuuca aragtida usbuuca
+Time interval: Waqtiga udhaxeeya
+time-interval-help: Wuxuu qeexaa inta ay goori goor tahay aragtida usbuuca iyo aragtida maalinta.
+Nonuser: Jadwalka aan la adeegsan
+user-customize-color: Waxay cadeyneysaa haddii isticmaaleyaasha loo oggol yahay inay wax ka beddelaan nidaamka midabkooda.
+enable-gradient-help: U isticmaal midabbada kala-soocidda asalka unugyada.
+Manually entering color values: Adoo gacanta ku galaya qiimaha midabada
+colors-help: Dhammaan midabada waa in lagu qeexaa qaabka "#RRGGBB" hexadecimal halkaasoo "RR" uu yahay qiimaha hex ee casaanka, "GG" waa qiimaha hex ee cagaarka, iyo "BB" waa qiimaha hex ee buluuga
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Warbixin Cajiib ah
+Please include all the information below when reporting a bug.: Fadlan ku soo dar dhammaan macluumaadka hoose markaad ka warbixineyso cillad.
+Also, please use English rather than XXX.: Sidoo kale, fadlan isticmaal  Ingiriis  halkii aad ka isticmaali lahayd XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Diiwaangelinta WebCalendar
+Currently in English only.: Waqtigan xaadirka ah oo kaliya Ingiriis.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Ku darista / Tafatirka Kalandarka Gelitaankiisa
+Repeat Type: Nooca ku celi
+For More Information...: Macluumaad Dheeraad ah ...
+Repeat End Date: Ku celi Taariikhda Dhammaadka
+Repeat Day: Ku celi Maalinta
+repeat-day-help: Wuxuu cayimaa maalmaha toddobaadka ay dhacdadu ku celcelinayso.
+
+########################################
+# Page: help_import.php
+#
+Import: Soo Deji
+Palm Desktop: Miisaanka Timirta
+allow you to import entries from the Palm...: Foomkani wuxuu kuu oggolaanayaa inaad ka soo dejiso waxyaabaha ka soo baxa Taariikhda Palm Desktop. Waa inay ku yaalliin tusahaaga Palm ee ku yaal buugga taariikhda / datebook.dat ee cinwaan hoosaad ku magacaabay magacaaga isticmaale.
+The following entries will not be imported: Waxyaabaha soo socda lama soo dejin doono:
+Entries older than the current date: Gelitaanka ka weyn taariikhda hadda
+Entries created in the Palm Desktop...: Gelitaanno lagu sameeyay Palm Desktop-ka oo aan ahayn HotSync'd
+Anything imported from Palm...: Wax kasta oo laga soo dhoofiyo Palm ayaa dib loo qori doonaa inta lagu jiro soo dejinta soo socota (illaa taariikhda dhacdada ay dhaaftay mooyee). Sidaa darteed, cusbooneysiinta waa in lagu sameeyaa Palm Desktop-ka.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Foomkani wuxuu soo dejin doonaa vCalendar (.vcs) 1.0 dhacdo.
+The following formats have been tested: Noocyada soo socda ayaa la tijaabiyay:
+This form will import iCalendar (.ics) events.: Foomkani wuxuu soo dejin doonaa dhacdooyinka iCalendar (.ics).
+Enabling: Awood siinaya
+Overwrite Prior Import: Dib-u-qor Dib-u-dejinta Hore
+will cause events imported previously...: waxay sababi doontaa dhacdooyin horey loo soo dhoofiyay, oo isla UID u isticmaalay dhacdo ka timid feylka cusub ee soo dejinta, si loogu calaamadiyo in la tirtiray. Tani waa inay u oggolaataa feyl casri ah iCalendar in la soo dejiyo iyada oo aan la abuurin nuqullo.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Tusmada Caawinta
+About WebCalendar: Ku saabsan WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Lakabyadu waxay faa'iido u leeyihiin soo bandhigida dhacdooyinka isticmaaleyaasha kale ee kaalandarkaaga. Waad cayimi kartaa isticmaaleha iyo midabka dhacdooyinka lagu soo bandhigi doono.
+Add/Edit/Delete: Kudar / Tafatir / Tirtir
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Gujinaya isku xirka Tafatirka Lakabyada qeybta maamulka qeybta hoose ee bogga ayaa kuu oggolaaneysa inaad ku darto / tifatirto / tirtirto lakabyada.
+The text color of the new layer that will be displayed in your calendar.: Midabka qoraalka lakabka cusub ee lagu soo bandhigi doono kaalandarkaaga.
+Disabling: Naafo
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Guji xiriiriyaha 'Disable Layers' qaybta qaybta hoose ee bogga si aad u damiso lakabyada.
+Duplicates: Nuqullo
+If checked, events that are duplicates of your events will be shown.: Haddii la hubiyo, dhacdooyinka nuqul ka mid ah dhacdooyinkaaga ayaa la soo bandhigi doonaa.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Guji xiriiriyaha 'Enable Layers' qeybta qeybta hoose ee bogga si aad u daarto lakabyada.
+Source: Xigasho
+Specifies the user that you would like to see displayed in your calendar.: Wuxuu cayimayaa isticmaaleha aad jeclaan lahayd inaad ku aragto kalandarkaaga.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Qeybta Asalka
+default-category-help: Wuxuu qeexayaa qaybta dhacdo cusub ay tahay inuu ka baxo.
+When I am the boss: Markaan madax ahay
+Email me event notification: Ii soo dir ogeysiiska dhacdada
+email-boss-notifications-help: Wuxuu qeexayaa haddii madaxdu u helaan emayl ahaan ogeysiis dhacdo.
+I want to approve events: Waxaan rabaa inaan ansixiyo dhacdooyinka
+boss-approve-event-help: Wuxuu cadeynayaa haddii madaxu looga baahan yahay inuu ogolaado dhacdooyinka ay ku dareen kaaliyeyaashu.
+Subscribe/Publish: Subscribe / Daabac
+Allow remote publishing: U oggolow daabacaadda fog
+allow-remote-publishing-help: Wuxuu cadeynayaa haddii macmiilka fog ee 'iCal' uu daabici karo dhacdooyinka WebCalendar
+remote-publishing-url-help: Muujiya URL-ka si loogu adeegsado arjiga iCal ee macmiilka labada is-qoritaan iyo daabacaad labadaba WebCalendar.
+allow-remote-subscriptions-help: Waxay cadeyneysaa haddii isticmaaleyaasha fog-fog ay ku qori karaan kalandarkaaga, iyaga oo u oggolaanaya inay ku arkaan dhacdooyinkaaga barnaamij iCal karti u leh (sida Apple's iCal ama Mozilla Calendar).
+remote-subscriptions-url-help: Muujiya URL isticmaalayaasha fog waa inay adeegsadaan si ay ugu qormaan jadwalkaaga.
+Enable FreeBusy publishing: Awoodi daabacaadda FreeBusy
+freebusy-enabled-help: Wuxuu qeexayaa haddii la heli karo waqtiga la heli karo ee isticmaalaha iyadoo la adeegsanayo istaandarka 'iCal FreeBusy'.
+freebusy-url-help: URL-ka ee marin u helka liiska isticmaalaha 'FreeBusy'
+rss-feed-url-help: URL-ka si loo helo quudinta RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Kuu ogolaanayaa xakamaynta ganaax ee marin u helka isticmaalaha iyo rukhsadaha. Isticmaalayaashu sidoo kale waxay ku siin karaan ogolaansho iyo ogolaansho shaqsi kasta haddii uu oggolaado maamulka.
+If disabled, this user cannot send you emails.: Haddii uu naafo yahay, isticmaalehani kumuu soo diri karo emayl.
+If disabled, this user cannot see you in the participants list.: Haddii uu naafo yahay, isticmaalehan kuma arki karo liiska kaqeybgalayaasha.
+If enabled, this user cannot view the details of any of your entries.: Haddii la shaqeysiiyo, isticmaalehan ma arki karo faahfaahinta mid ka mid ah waxyaabaha aad gelisay.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Daabacaadda Naafada (Maamulka)
+Publishing Disabled (User): Daabacaan Naafo (Isticmaalaha)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Guji si aad u Xulo
+Current Icons on Server: Icons-ka hadda jira ee Server-ka ah
+
+########################################
+# Page: import.php
+#
+import from file: ka soo dhoofso faylka
+Disabled: Naafo
+Import format: Nooca soo dejinta
+Exclude private records: Ka reeb diiwaanada gaarka ah
+Repeated items are imported separately. Prior imports are not overwritten.: Waxyaabaha soo noqnoqda ayaa si gooni ah loo soo dejiyaa. Soo dejinta hore looma qorin.
+
+########################################
+# Page: import_handler.php
+#
+No file: Fayl malahan
+Error deleting palm events from webcalendar.: Khalad ayaa ka tirtirka dhacdooyinka timirta kalandarka.
+Events from prior import marked as deleted: Dhacdooyinka ka soo dejinta hore ayaa lagu calaamadeeyay inay yihiin kuwa la tirtiray
+Conflicting events: Dhacdooyinka iska hor imanaya
+The import file contained no data.: Faylka soo dejinta wax xog ah kuma jirin.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Ma hubtaa inaad rabto inaad tirtirto lakabkan?
+Delete layer: Tirtir lakabka
+Edit layer: Lakabka wax ka beddel
+Enable layers: Daar lakabyada
+Layer: Lakabka
+Layers are currently disabled.: Lakabyada hadda waa naafo yihiin.
+Layers are currently enabled.: Lakabyada hadda waa la shaqeeyaa.
+Click to modify layers settings for XXX: Halkan guji si aad wax uga beddesho hababka lakabyada kalandarka XXX.
+Disable Layers: Jooji Lakabyada
+Add layer: Ku dar lakabka
+Add Layer: Ku dar Lakabka
+Edit Layer: Lakabka Tafatirka
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Lama awoodin in la cusbooneysiiyo dookha
+Invalid entry id.: Aqoonsiga gelitaanka aan ansax ahayn
+You cannot create a layer for yourself.: Ma abuuri kartid lakab naftaada ah.
+You can only create one layer for each user.: Waxaad kaliya u abuuri kartaa hal lakab isticmaale kasta.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Ansixin / Xaqiiji
+Approve Selected: Ansixi Xul
+Check All: Hubi Dhammaan
+Emails Will Not Be Sent: Emailada Lama Dirayo
+Reject Selected: Diido Xul
+Reject: Diid
+Uncheck All: Calaamadee Dhamaan
+View this entry: Eeg soo galkan
+No unapproved entries for XXX.: Ma jiraan wax galin ah oo aan la ansixin: "XXX".
+Unapproved Entries: Waxyaabaha aan la ansixin
+Approve this entry?: Ansixiyaan gelitaankan?
+Reject this entry?: Ma diidaysaa soo galintan?
+Approve Selected entries?: Ansixiyaan galitaanno xul ah
+Reject Selected entries?: Diido galinta la xushay?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Waa inaad gashaa login iyo password.
+Save login via cookies so I dont have to login next time.: Kaydso galitaanka adoo adeegsanaya buskudka sidaa darteed uma baahnin inaan galo waqtiga soo socda
+Login: Soo gal
+public: dadweynaha
+Access XXX calendar: Soo gal kalandarka XXX
+cookies-note: Xusuusin: Codsigan wuxuu ubaahanyahay cookies si loo shaqeysiiyo.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Jilayaasha sharci darrada ah ee kujira galitaanka XXX.
+Invalid login: Soo gal aan ansax ahayn
+Activity login failure: Magaca isticmaale: "XXX", IP: "YYY"
+Error XXX: Cilad: "XXX".
+You have been logged out.: Waa lagaa saaray
+Access public calendar: Soo gal jadwalka taariikhda
+Not yet registered? Register here!: Weli lama diiwaangelin? Halkan iska diiwaangeli!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Ma jiro kalandarka noocan ah ee aan isticmaaleyaasha ahayn: "XXX".
+This Calendar is not Public.: Kalandarkaani maahan mid Dadweyne.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Ku dar Kalandarka Cusub ee aan Isticmaalaha ahayn
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Soo galitaanka waa in la cayimo.
+No such nonuser calendar: Ma jiro kalandarka noocan oo kale ah
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Mawduuc aan ansax ahayn
+Save Preferences: Keydso dookhyada
+Public Access calendar: Kalandarka Helitaanka Dadweynaha
+Modify Non User Calendar Preferences: Wax ka beddel doorbidyada Kalandarka Aan Isticmaalaha ahayn
+Return to My Preferences: Ku noqo dookhayga
+Custom Scripts: Qoraallada Gaarka ah
+Timezone Selection: Xulashada Waqtiga
+Multiview: =
+entry-interval-help: Dajisaa daqiiqad u dhaxeysa markay wax ka badaleyso waqtiyada gelitaanka
+Entry interval: Waqtiga gelitaanka
+hour: saac
+minute: daqiiqad
+theme-reload-help: Sababtoo ah xajinta CSS, dib u soo kabashada bogga ayaa loo baahan karaa
+Page may need to be reloaded for new Theme to take effect: Bogga waxaa laga yaabaa inuu u baahdo in dib loo cusbooneysiiyo Mawduuca cusub inuu dhaqan galo
+display_byproxy-help: Ku muuji abuuraha dhabta ah bogga aragtida_entry
+Display if created by Assistant: Muuji haddii uu abuuray Kaaliyaha
+allow-view-subscriptions-help: Kuu ogolaanayaa xaddidaadda gelitaanka fog ee gelitaanka khaaska ah ama Qarsoodiga ah
+Allow remote viewing of: U oggolow daawashada fog
+entries: galinta
+
+########################################
+# Page: purge.php
+#
+Purging events for: Dhacdooyinka nadiifinta loogu talagalay
+Finished: Dhamaaday
+Back: Dib u laabo
+Check box to delete ALL events for a user: Calaamee sanduuqa si aad u tirtirto dhacdooyinka  ALL  dhacdooyinka isticmaalaha
+Delete all events before: Tirtir dhamaan dhacdooyinka kahor
+Purge deleted only: Saafi tirtir oo kaliya
+Preview delete: Tirtireyn horudhac ah
+Are you sure you want to delete events for: Ma hubtaa inaad rabto inaad tirtirto dhacdooyinka
+Records deleted from XXX: Diiwaanada waa laga tirtiray "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Cinwaanka emaylka ma noqon karo mid banaan.
+Username already exists.: Magaca isticmaale ayaa horay u jiray.
+Email address already exists.: Cinwaanka emaylka horeyba wuu u jiray
+New user via self-registration.: Isticmaalaha cusub ee isdiwaangalinta.
+A new WebCalendar account has been set up for you.: Xisaab cusub oo WebCalendar ah ayaa laguu diyaariyey.
+Your username is XXX.: Magacaaga isticmaale waa: "XXX".
+Your password is XXX.: Furahaaga sirta ahi waa: "XXX".
+Please visit XXX to log in and start using your account!: Fadlan booqo "XXX" si aad u gasho oo aad u bilowdo isticmaalka koontadaada!
+You may change your password after logging in the first time.: Waad beddeli kartaa lambarkaaga sirta ah ka dib markaad gasho markii ugu horreysay.
+If you received this email in error: Haddii aad ku heshay emaylkan qalad oo aadan iska qorin xisaab WebCalendar ah, waad iska indha tiri kartaa ogeysiiskan, ama waxaad ku soo jawaabi kartaa qoraal gaaban
+Administrator: Maamulaha
+Welcome: Soo dhawow
+New user via email.: Isticmaalaha cusub e-mayl.
+Registration: Diiwaangelinta
+Welcome to WebCalendar: Ku soo dhawow WebCalendar
+Your email should arrive shortly.: Emailkaagu waa inuu yimaaddaa waxyar.
+Return to Login screen: Ku noqo shaashadda galitaanka
+Password (again): Furaha (mar labaad):
+Your account information will be emailed to you.: Macluumaadka koontadaada ayaa email laguugu soo diri doonaa.
+Submit: Gudbi
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Sii wad
+(Your comments will be emailed to the other participants.): (Faallooyinkaaga waxaa lagu soo diri doonaa emayl ahaan ka-qaybgalayaasha kale.)
+XXX has rejected an appointment.: XXX way diiday ballan.
+Rejected by XXX.: Waxaa diiday XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Ku dar Kalandarka Cusub ee Fog
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Dhacdadani waa mid sir ah.
+(Private): (Gaar ah)
+(cont.): (raac.)
+Approved: La ogolaaday
+Deleted: Tirtiray
+Rejected: Waa la diiday
+Waiting for approval: Sugitaanka ogolaanshaha
+Unknown: Lama yaqaan
+Invalid report id.: Warbixin aan ansax ahayn
+Click here to manage reports for the Public Access calendar.: Halkan guji si aad u maamusho warbixinnada kalandarka Helitaanka Dadweynaha.
+Add new report: Kudar warbixin cusub
+Manage Reports: Maamul Warbixinnada
+
+########################################
+# Page: search.php
+#
+Advanced Search: Raadin Sareysa
+Search: Raadi
+Keywords: Erayo fure ah
+Enter % for all entries: Gali% wixii soo galaya oo dhan
+Include: Ku dar
+Filter by Date: Sifee Taariikhda
+All Dates: Dhammaan Taariikhaha
+Past: Soo dhaafay
+Upcoming: Soo socda
+Range: =
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Waa inaad gashaa hal ama in ka badan oo ereyo fure ah.
+Search Results: Natiijooyinka Raadinta
+match found: ciyaar la helay
+matches found: tartamo la helay
+No matches found: Tartan looma helin
+New Search: Raadin Cusub
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Macluumaadka hoose wuxuu liis garayaa arrimaha suurtagalka ah ee rakibidda WebCalendar-kaaga oo wax laga beddeli karo si rakibiddaadu uga dhigto mid ammaan ah.
+For questions about WebCalendar security see the forums: Wixii su'aalo ah ee ku saabsan wixii nabadgelyo WebCalendar ah, fadlan isticmaal goleyaasha websaydhka ee lagu martigaliyo GitHub.com;<br>XXX
+View your current PHP settings: Arag dejimahaaga PHP ee hadda jira
+Security Issue: Arrin Amni
+Status: Xaaladda
+Default admin user password: Furaha isticmaalaha isticmaalaha ee caadiga ah
+You should change the password of the default admin user.: Waa inaad bedesho erayga sirta ah ee isticmaalaha isticmaalaha caadiga ah.
+File permissions XXX: Oggolaanshaha faylka: XXX
+item XXX should not be writable: Shayga soosocda yaanu noqonin wax laqoro:<br><tt> XXX</tt>
+File exists XXX: Faylka wuu jiraa: "XXX"
+Because you have email disabled, you should remove this file.: Sababtoo ah emayl ayaa kugu curyaamay, waa inaad faylka ka saartaa.
+File location XXX: Goobta faylka: "XXX"
+remove XXX if not using: Haddii aadan isticmaalin faylka "XXX", waa inaad tirtirtaa. Ama, ugu yaraan, u wareeji tusaha cusub.
+System Settings XXX: Dejinta Nidaamka: "XXX"
+consider enabling UAC: Waxaa laga yaabaa inaad rabto inaad tixgeliso awood siinta Isticmaalka Isticmaalka si aad u dejiso mudnaanta isticmaalaha.
+recommend approving new public events: Waxaan kugula talineynaa in dhamaan waxyaabaha bulshada loo soo gudbiyo la ansixiyo.
+recommend using CAPTCHA: CAPTCHA waxaa lagula talinayaa inay ilaaliso mar labaad soo gudbinta dhacdooyinka otomaatiga ah.
+Database cache directory location: Meesha kaydka xogta
+db cache should be inaccessable: Keydadka keydka keydku waa inay ku jiraan diiwaanka aan laga geli karin URL.
+PHP Settings XXX: Dejinta PHP: "XXX"
+recommend setting XXX Off: Dejinta lagu taliyay ee "XXX" way xidhantahay.
+recommend setting allow_url_fopen Off: Dejinta lagu taliyay ee "allow_url_fopen" ayaa Dansan marka kalandarrada fog fog aan la kicin.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Arag Jadwalka Isticmaalaha Kale
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Waxba maad soo darin.
+Set Category: Calan Qeybta
+Global Categories cannot be changed.: Qaybaha Caalamiga ah lama beddeli karo.
+
+########################################
+# Page: upcoming.php
+#
+more: dheeraad ah
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Jadwalka fog
+denotes administrative user: waxay tilmaamaysaa isticmaale maamul
+Add New User: Kudar isticmaale cusub
+
+########################################
+# Page: usersel.php
+#
+form: qaab
+Reset: Dib u celi
+
+########################################
+# Page: views.php
+#
+Add New View: Kudar Muuqaal Cusub
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Muuqaal aan la magacaabin
+Add View: Kudar Muuqaal
+Edit View: Tafatir Muuqaalka
+View Name: Eeg Magaca
+View Type: Nooca Muuqaalka
+Day by Time: Maalinba Waqti
+Week (Users horizontal): Toddobaadka (Isticmaalayaasha jiifa)
+Week by Time: Usbuucii Waqtiga
+Week (Users vertical): Usbuuca (Isticmaalayaasha taagan)
+Week (Timebar): Usbuuca (Waqtiga saacadda)
+Month (Timebar): Bisha (Waqtiga saacadda)
+Month (side by side): Bisha (dhinac dhinac ah)
+Month (on same calendar): Bisha (isla taariikhda kale)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Waa inaad sheegtaa magaca muuqaalka
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Majiraan isticmaaleyaal aragtidan
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Cusbooneysii Boqolleyda Hawsha
+Completed: Dhameystiray
+Assistant mode: Habka caawiye
+Declined: Diiday
+Needs-Action: Baahida-Waxqabadka
+by: =
+Percentage Complete: Boqolley Dhameystiran
+External User: Isticmaalaha Dibadda
+Update: Cusboonaysiinta
+at: =
+comments: faallooyinka
+Show: Muuji
+Hide: Qari
+Approve/Confirm entry: Oggolow / Xaqiiji gelitaanka
+Reject entry: Diid soo gal
+Set category: Qaybta u deji
+Add to My Calendar: Ku dar Kalandarkayga
+Copy entry: Nuqul soo gal
+This will delete this entry for all users.: Tani waxay tirtiri doontaa gelitaankan dhammaan isticmaaleyaasha.
+Edit entry: Tafatir gal
+Edit repeating entry for all dates: Tafatir soo celinta ku soo celinta dhammaan taariikhaha
+Delete repeating event for all dates: Tirtir dhacdo ku celcelin taariikhaha oo dhan
+Edit entry for this date: Tafatir gelitaanka taariikhdaan
+Delete entry only for this date: Tirtir gelitaanka kaliya ee taariikhdan
+Delete entry from calendar of XXX: Ka tirtir gelitaanka kalandarka XXX
+This will delete the entry from your XXX calendar.: Tani waxay tirtiri doontaa gelitaanka kalandarkaaga XXX.
+boss: madax '
+This will delete the entry from your boss calendar.: Tani waxay tirtiri doontaa gelitaanka kalandarka maamulahaaga.
+This will delete the entry from your calendar.: Tani waxay tirtiri doontaa gelitaanka kalandarkaaga.
+from your boss calendar: kalandarka maamulahaaga
+Do you want to add this entry to your calendar?: Ma rabtaa inaad ku darto galitaankan kalandarkaaga?
+This will add the entry to your calendar.: Tani waxay ku dari doontaa gelitaanka kalandarkaaga.
+Email all participants: U dir dhammaan kaqeybgalayaasha
+Hide activity log: Qari qoraalka waxqabadka
+Show activity log: Muuji qoraalka waxqabadka
+Export this entry to: Dhoofinta gelitaankaan
+Palm Pilot: Duuliyaha Palm
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Laba-guji qolka maran si aad ugu darto soo galid cusub.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Gelitaan Cusub
+cont.: ka hor
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Jadwalka Kale ee Isticmaalaha
+Category Management: Maareynta Qeybta
+Day View: Muuqaalka Maalinta
+Edit Event: Tafatir Dhacdo
+Month View: Muuqaalka Bisha
+Common Trailer: Trailer Guud
+User Management: Maareynta Isticmaalaha
+Manage Views: Maamul Aragtida
+Week View: Muuqaalka Toddobaadka
+Year View: Muuqaalka Sanadka
+Invalid function id: F id function function
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Waan heli kari waayey faylasha "settings.php"
+Incomplete settings.php file...: Faylka "settings.php" oo aan dhameystirneyn ...
+Could not find XXX defined in...: Waan heli kari waayey "XXX" oo lagu qeexay feylkaaga "settings.php".
+You must define XXX in: Waa inaad ku qeexdaa "XXX" faylka "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Diisambar
+Dec: Diis
+LANGUAGE DEFINED: LUQADDA OO LA QEEXAY
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Cilad ku xirida keydka macluumaadka: "XXX".
+db_type not defined.: nooca db_ma qeexin.
+invalid db_type XXX: db_type aan ansax ahayn "" XXX ".
+Cache cleared from previous SQL!: Khasnadda ayaa laga nadiifiyey SQL-tii hore!
+Error executing query.: Khalad fulinta su'aasha
+Unfortunately, XXX is not implemented for YYY: Nasiib darrose, "XXX" looma hirgelin (YYY).
+Unknown ODBC error.: Khalad ODBC aan la garanayn.
+Error opening cache dir XXX.: Cilad ayaa ahayd furitaanka kaydka dir "XXX".
+delete: tirtir
+Cache error Could not XXX file YYY.: Khaladka khasnadda: Ma fileyn kari waayey faylka XXX "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Khalad Dhimasho
+Invalid data format for: Nooca xogta aan ansax ahayn ee
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Cilad: Nooca aan loogu talagalin diiwaan gelinta waxqabadka!
+This event is XXX.: Dhacdadani waa XXX.
+Conf.: Wareysi
+exceeds limit of XXX events per day: dhaaftay xadka dhacdooyinka XXX maalintii
+on: =
+All Attendees: Dhamaan Kaqeybgalayaasha
+Busy: Mashquul
+Tentative: Adkaysi
+Schedule an appointment for XXX.: Ballan u sameyso XXX: YYY.
+date_select: __dd__ __ bishii________yy__
+Event approved: Dhacdada waa la ogolaaday
+Journal approved: Joornaal waa la ogolaaday
+Task approved: Hawsha waa la oggolaaday
+Attachment: Lifaaq
+Event created: Dhacdo ayaa abuurtay
+Journal created: Joornaal ayaa la abuuray
+Task created: Hawsha ayaa la abuuray
+Event deleted: Dhacdadii waa la tirtiray
+Journal deleted: Joornaalka waa la tirtiray
+Task deleted: Hawshii waa la tirtiray
+New user via email (self registration): Isticmaalaha cusub e-mayl (is-diiwaangelin)
+New user (self registration): Isticmaalaha cusub (isdiwaangelinta)
+Notification sent: Ogeysiis ayaa la diray
+Event rejected: Dhacdadii waa la diiday
+Journal rejected: Joornaal ayaa diiday
+Task rejected: Hawshii waa la diiday
+Reminder sent: Xusuusin ayaa ladiray
+Event updated: Dhacdada waa la cusbooneysiiyay
+Journal updated: Joornaal la cusbooneysiiyay
+Task updated: Hawsha waa la cusbooneysiiyay
+Delete User: Tirtir Isticmaalaha
+WK: =
+TASKS: HAWLAHA
+Task_Title: Cinwaanka
+Due: Sababtoo ah
+Task Name: Magaca Hawsha
+Task Due Date: Taariikhda Shaqada La Qabanayo
+You have XXX unapproved entries: Waxaad haysaa xayeysiisyo aan la ansixin oo XXX ah 
+Changes successfully saved: Isbedelada si guul leh ayaa loo keydiyay
+Event: Dhacdo
+Action: Ficil
+Printer Friendly: Daabacaha Saaxiibtinimada
+Generate printer-friendly version: Abuur nooc daabacan-saaxiibtinimo ah
+after: kadib
+before: ka hor
+end: dhamaadka
+start: bilow
+View this event: Eeg dhacdadan
+View this task: Eeg hawshan
+January: Janaayo
+February: Febraayo
+March: Maarso
+April: Abriil
+May_: Laga yaabaa
+June: Juunyo
+July: Luulyo
+August: Ogosto
+September: Sebtember
+October: Oktoobar
+November: Nofeembar
+Jan: =
+Feb: Febraayo
+Mar: =
+Apr: Abriil
+May: Laga yaabaa
+Jun: =
+Jul: =
+Aug: Agoosto
+Sep: =
+Oct: Oktoobar
+Nov: Nofeembar
+SU: =
+MO: =
+TU: =
+WE: ANAGA
+TH: =
+FR: =
+SA: =
+unknown-month: aan la aqoon-bil
+First Quarter Moon: Dayaxa Koowaad
+Full Moon: Dayax Buuxi
+Last Quarter Moon: Dayaxa Ugu Dambeeya
+New Moon: Dayax Cusub
+Error TIME_SLOTS undefined!: Cilad: TIME_SLOTS aan la qeexin!
+The following error occurred: Khaladka soosocda ayaa dhacay
+You are not authorized.: Adigu ma lihid.
+Add N hours to: Ku dar saacadaha N
+Subtract N hours from: Ka jar saacadaha N
+same as: la mid ah
+server time: waqtiga serverka
+Cannot read timezone file XXX.: Lama aqrinkaro feylka waqtiga, XXX.
+Your current GMT offset is XXX hours.: Isugeyntaada hadda ee GMT waa saacadaha XXX.
+Unauthorized: Aan la fasaxin
+Error approving event XXX.: Cilad ansaxinta dhacdada: XXX.
+Error deleting event XXX.: Cilad baajinta dhacdada: XXX.
+Error rejecting event XXX.: Cilad diidis dhacdo: XXX.
+Sunday: Axad
+Monday: Isniinta
+Tuesday: Talaado
+Wednesday: Arbaco
+Thursday: Khamiis
+Friday: Jimcaha
+Saturday: Sabti
+Sun: Cadceed
+Mon: Isniin
+Tue: Talaado
+Wed: Arbaco
+Thu: Khamiis
+Fri: Jimco
+Sat: Sabti
+unknown-weekday: lama oga-maalin-isbuuc
+Invalid referring URL: URL tixraac aan ansax ahayn
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Tusmo
+Documentation: Dukumiinti
+Page: Bog
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Jadwalkayga
+Add New Entry: Kudar Gal Cusub
+Add New Task: Ku dar Hawsha Cusub
+Logout: Ka bax
+Home: Guri
+Back to My Calendar: Ku noqo Jadwalkayga
+Go to: Tag
+Manage calendar of: Maamul jadwalka taariikhda
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Luuq Browser lama helin
+(not supported): (lama taageerin)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Canfarta
+Afrihili: =
+Afrikaans: =
+Ainu: =
+Akan: =
+Akkadian: Akkiyaan
+Albanian: Albaaniyaan
+Aleut: Digniin
+Algonquian: =
+Altai (Southern): Altai (Koonfurta)
+Amharic: Amxaar
+Angika: =
+Apache: =
+Arabic (Algeria): Carabi (Aljeeriya)
+Arabic (Bahrain): Carabi (Baxrayn)
+Arabic (Egypt): Carabi (Masar)
+Arabic (Iraq): Carabi (Ciraaq)
+Arabic (Jordan): Carabi (Jordan)
+Arabic (Kuwait): Carabi (Kuweyt)
+Arabic (Lebanon): Carabi (Lubnaan)
+Arabic (Libya): Carabi (Liibiya)
+Arabic (Morocco): Carabi (Marooko)
+Arabic (Oman): Carabi (Cumaan)
+Arabic (Qatar): Carabi (Qatar)
+Arabic (Saudi Arabia): Carabi (Sacuudi Carabiya)
+Arabic (Syria): Carabi (Suuriya)
+Arabic (Tunisia): Carabi (Tuniisiya)
+Arabic (U.A.E.): Carabi (U.A.E.)
+Arabic (Yemen): Carabi (Yemen)
+Arabic: Carabi
+Aragonese: =
+Aramaic: Aramaig
+Arapaho: =
+Arawak: =
+Armenian: Armeniyaan
+Assamese: Asamese
+Asturian: Asturiyaan
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Azerbaijan
+Balinese: =
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: =
+Beja: =
+Belarusian: Belarusiyaan
+Bemba: =
+Bengali: Bengaali
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Madow
+Blin: =
+Bliss: Naciimo
+Bosnian: Boosniyaan
+Braj: =
+Breton: =
+Buginese: =
+Bulgarian: Bulgaariya
+Buriat: =
+Burmese: Burma
+Caddo: =
+Catalan: =
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: Jejniya
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Shiinees (Hong Kong)
+Chinese (PRC): Shiinees (PRC)
+Chinese (Simplified/GB2312): Shiinees (La Fududeeyay / GB2312) 
+Chinese (Singapore): Shiinees (Singabuur)
+Chinese (Taiwan): Shiinees (Taaywaan)
+Chinese (Traditional/Big5): Shiinees (Dhaqameed / Weyn 5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: =
+Cornish: Kornayl
+Corsican: Koorsiyaan
+Cree: =
+Creek: =
+Croatian: Reer Croatia
+Czech: =
+Dakota: =
+Danish: Dheenish
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Dutch (Biljam)
+Dutch: Nederland
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Ceelaam
+English (Australia): Ingiriis (Ustaraaliya)
+English (Belize): Ingiriisi (Belize)
+English (Canada): Ingiriis (Kanada)
+English (Ireland): Ingiriis (Ireland)
+English (Jamaica): Ingiriisi (Jamaica)
+English (New Zealand): Ingiriis (Niyuusiilaan)
+English (Philippines): Ingiriis (Filibiin)
+English (South Africa): Ingiriis (Koonfur Afrika)
+English (Trinidad & Tobago): Ingiriis (Trinidad & Tobago)
+English (United Kingdom): Ingiriis (Boqortooyada Ingiriiska)
+English (United States): Ingiriis (Mareykanka)
+English (Zimbabwe): Ingiriis (Zimbabwe)
+English: Ingiriis-Mareykan
+Erzya: =
+Esperanto: =
+Estonian: Istooniyaan
+Ewe: =
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: =
+Fijian: =
+Filipino: Filibiin
+Finnish: =
+Fon: =
+French (Belgium): Faransiis (Biljim)
+French (Canada): Faransiis (Kanada)
+French (France): Faransiis (Faransiis)
+French (Luxembourg): Faransiis (Luxembourg)
+French (Monaco): Faransiis (Monaco)
+French (Switzerland): Faransiis (Switzerland)
+French: Faransiis
+Frisian (Eastern): Frisian (Bari)
+Frisian (Northern): Frisian (Waqooyiga)
+Frisian (Western): Frisian (Reer Galbeed)
+Frisian: Frisiyaan
+Friulian: =
+Fulah: Fulax
+Ga: =
+Galibi: =
+Galician: Galiis
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Joorjiyaanka
+German (Austria): Jarmal (Awstaria)
+German (Germany): Jarmal (Jarmal)
+German (Liechtenstein): Jarmal (Liechtenstein)
+German (Luxembourg): Jarmal (Luxembourg)
+German (Standard): Jarmal (Standard)
+German (Switzerland): Jarmal (Switzerland)
+German: Jarmal
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: =
+Grebo: =
+Greek: Giriig
+Greenlandic: =
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haitiyaan (Creole)
+Haitian: Haitiyaan
+Hausa: =
+Hawaiian: =
+Hebrew: Cibraaniga
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Reer Xeed
+Hmong: =
+Holo (Taiwanese): Holo (Taiwan)
+Hungarian: Hungary
+Hupa: =
+Iban: =
+Icelandic: =
+Ido: Waan sameeyaa
+Igbo: =
+Iloko: =
+Indonesian: Indooniisiyaan
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Iiraaniyiin
+Irish (Gaelic): =
+Irish: =
+Iroquoian: =
+Italian (Switzerland): Talyaani (Switzerland)
+Italian: Talyaani
+Japanese: Jabbaan
+Javanese: =
+Judeo-Arabic: Yuhuud-Carabi
+Judeo-Persian: Yuhuudda-Beershiya
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): Khmer (Badhtamaha)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Kuuriyaan (Johab)
+Korean (North): Kuuriya (Woqooyi)
+Korean (South): Kuuriyaan (Koofur)
+Korean: Kuuriyaan
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kurdi
+Kutenai: =
+Kyrgyz: =
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Laatiin
+Latvian: Latvia
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Lituwaaniyaan
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: =
+Macedonian: Macedonia
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: =
+Malay: Malaay
+Malayalam: =
+Maldivian: =
+Maltese: Malta
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: =
+Mongo: =
+Mongolian: Mongoliyaan
+Montenegrin: =
+Moroccan: Marooko
+Mossi: =
+Myanmar: =
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Waqooyiga)
+Ndebele (South): Ndebele (Koonfurta)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Noorwejiyan (Bokmål)
+Norwegian (Nynorsk): Noorwejiyan (Nynorsk)
+Norwegian: Norweji
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: =
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Ossetik
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: Panjabiil
+Papiamento: =
+Pashto: Baasto
+Pedi: =
+Persian (Farsi): Beershiyan (Farsi)
+Persian (Iran): Beershi (Iiraan)
+Persian: Beershiyaan
+Phoenician: Foosiya
+Pohnpeian: =
+Polish: Boolish
+Portuguese: Boortaqiis
+Portuguese/Brazil: Boortaqiis / Baraasiil 
+Punjabi (India): Punjabi (Hindiya)
+Punjabi (Pakistan): Punjabi (Baakistaan)
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: Romaniyaan
+Romansh: Romanh
+Romany: =
+Rundi: =
+Russian (Moldavia: Ruushka (Moldavia
+Russian (Republic of Moldova): Ruushka (Jamhuuriyadda Moldova)
+Russian: Ruush
+Sami (Inari): Saami (Inari)
+Sami (Lappish): Saami (Lappish)
+Sami (Lule): Saami (Lule)
+Sami (Northern): Sami (Waqooyiga)
+Sami (Skolt): =
+Sami (Southern): Sami (Koonfurta)
+Sami: Saami
+Samoan: =
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: Sardiyaan
+Sasak: =
+Scots (Gaelic): Iskotishka (Gaelic)
+Selkup: =
+Serbian (Upper): Seerbiya (Sare)
+Serbian: Seerbiya
+Serer: Iibiye
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Sisiiliyaan
+Sindhi: =
+Sinhala: =
+Slavic: =
+Slovak: Islofaak
+Slovenian: Islofiyaaniyaan
+Sogdian: =
+Somali: Soomaali
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbian (Hoose)
+Sorbian (Upper): Sorbian (Sare)
+Sorbian: =
+Sotho: =
+Spanish (Argentina): Isbaanish (Arjantiin)
+Spanish (Bolivia): Isbaanish (Bolivia)
+Spanish (Chile): Isbaanish (Chile)
+Spanish (Colombia): Isbaanish (Kolombiya)
+Spanish (Costa Rica): Isbaanish (Costa Rica)
+Spanish (Dominican Republic): Isbaanish (Dominican Republic)
+Spanish (Ecuador): Isbaanish (Ecuador)
+Spanish (El Salvador): Isbaanish (El Salvador)
+Spanish (Guatemala): Isbaanish (Guatemala)
+Spanish (Honduras): Isbaanish (Honduras)
+Spanish (Mexico): Isbaanish (Mexico)
+Spanish (Nicaragua): Isbaanish (Nicaragua)
+Spanish (Panama): Isbaanish (Panama)
+Spanish (Paraguay): Isbaanish (Paraguay)
+Spanish (Peru): Isbaanish (Peru)
+Spanish (Puerto Rico): Isbaanish (Puerto Rico)
+Spanish (Spain): Isbaanish (Isbaanish)
+Spanish (Uruguay): Isbaanish (Uruguay)
+Spanish (Venezuela): Isbaanish (Venezuela)
+Spanish: Isbaanish
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumeriyaan
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: Sawaaxili
+Swati: =
+Swedish (Finland): Iswidish (Finland)
+Swedish (Sweden): Iswidish (Iswidhan)
+Swedish: Iswidhish
+Syriac: =
+Tagalog: =
+Tahitian: Tahitiyaan
+Tai: =
+Taiwan: =
+Tajik: =
+Tamashek: =
+Tamil: Taamil
+Tatar: Tataar
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: =
+Tigre: Tigree
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Jasiiradaha Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Turki
+Turkmen: =
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: Ugaritiga
+Ukrainian: Yukreeniyaan
+Umbundu: =
+Urdu: =
+Uyghur: =
+Uzbek: Uzbekiga
+Vai: =
+Venda: =
+Vietnamese: Fiyatnaamiis
+Volapük: =
+Votic: Codad
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: =
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: Yaydh
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Browser lagu qeexay
+event: dhacdo
+journal: Joornaal
+0: 0                                                          
+1: 1                                                         
+2: 2                                                        
+3: 3                                                       
+4: 4                                                      
+5: 5                                                     
+6: 6                                                    
+7: 7                                                   
+8: 8                                                  
+9: 9                                                 
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Soo gal isticmaale aan ansax ahayn
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: kalmadda sirta ahi waa khalad
+no such user: ma jiro isticmaale noocaas ah
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Koontada waa la damiyay
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Waqtiga
+Months: Bilaha
+Month Days: Maalmaha Bisha
+Days: Maalmaha
+Weeks: Toddobaadyada
+Position: Jagada
+Until: Ilaa
+Count: Tiri
+Inclusion Dates: Taariikhaha ka mid noqoshada
+Exclusion Dates: Taariikhaha Ka-saarista
+Event Imported: Dhacdo La Soo Dhoofiyey
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Ogeysiis
+authenticate: Cillad SMTP: Waa la xaqiijin kari waayey
+connect_host: Cillad SMTP: Lama xiriiri karin martigaliyaha SMTP:
+data_not_accepted: Khaladka SMTP: Xogta lama aqbalo
+encoding: Furo aan la aqoon:
+execute: Waan fulin kari waayey:
+file_access: Waan heli kari waayey faylka:
+file_open: Cilad Fayl ah ma furi kari waayey faylka:
+from_failed: Cinwaanka soo socda ee Cinwaanku wuu fashilmay:
+instantiate: Ma dhaqaajin karo shaqada boostada
+mailer_not_supported: boostada lama taageerayo
+provide_address: Waa inaad bixisaa ugu yaraan hal cinwaan e-mayl qaata.
+recipients_failed: Khaladka SMTP: Kuwa qaata soo socda ayaa ku guuldaraystay:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Gali Calaamadaha Lagu Arkay Sawirka
+Enter the correct letters and numbers...: Gali xarfaha saxda ah iyo lambarrada sawirka sanduuqa qoraalka. Tijaabadani yar waxay u adeegtaa sidii xaddidaadda marin u helka botika xun. Si fudud dib ugu soo celi bogga haddii jaantuskani uu aad u adag yahay in la akhriyo
+Challenge/Response: Caqabad / Jawaab
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Beddel taariikhda iyo waqtiga gelitaanka?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Maadan galin Sharax kooban
+time prior to work hours...: waqtiga ka hor saacadaha shaqada ...
+Invalid Event Date: Taariikhda Dhacdada aan ansax ahayn
+Please add a participant: Fadlan ku dar ka qayb gale 
+Invalid Date: Taariikh aan ansax ahayn
+You have not entered a valid time of day: Ma aadan galin waqti sax ah oo maalintii ah. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Aqoonsiga Kalandarka ma banaana. 
+First and last names cannot both be blank.: Magacyada hore iyo kan dambe labaduba ma banaana. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Midab aan ansax ahayn
+Color format should be RRGGBB.: Qaabka midabku waa inuu noqdaa #RRGGBB. 
+URL cannot be blank.: URL ma noqon karo mid banaan.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Nooca feylku isma waafaqsana Qaabka Soo Dejinta 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Midab aan ansax ahayn oo ku saabsan asalka dukumiintiga
+Invalid color for document title.: Midab aan sax ahayn oo cinwaanka dukumintiga ah
+Invalid color for table cell background.: Midab aan ansax ahayn asalka unugga miiska.
+Invalid color for table cell background for today.: Midab aan ansax ahayn asalka unugga miiska maanta.
+Invalid work hours.: Saacadaha shaqada ee aan ansax ahayn
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL-ka adeegaha waa inuu kudhamaadaa dharbaaxo (/).
+Invalid color for table grid.: Midab aan sax ahayn oo loogu talagalay shaxda miiska.
+Invalid color for event popup background.: Midab aan ansax ahayn oo loogu talagalay asalka soo shaac bixida dhacdada
+Invalid color for event popup text.: Midab aan ansax ahayn oo loogu talagalay qoraalka soo baxa dhacdada.
+Invalid color for table header text.: Midab aan sax ahayn qoraalka miiska qoraalka.
+Invalid color for table header background.: Midab aan ansax ahayn oo ku saabsan asalka cinwaanka miiska.
+Server URL is required.: URL adeege ayaa loo baahan yahay.
+Invalid Color: Midab aan ansax ahayn
+Database Name: Magaca Database
+Full Path (no backslashes): Dariiqa Buuxa (gadaal uma laabo) 
+The password contains illegal characters.: Furaha sirta ah waxaa ku jira astaamo sharci darro ah.
+Error you must specify a Single-User Login: Cilad: Waa inaad sheegto Soo-gal Hal-Isticmaal ah
+Could not find XXX.: Waan heli kari waayey XXX.
+Could not find XXX in DOM.: Waan ka heli kari waayey XXX gudaha DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Isbuucaan
+This Month: Bishaan
+This Year: Sanadkan
+Exit: Ka bax
+Add New Event: Kudar Dhacdo Cusub
+Delete Entries: Tirtir galinta
+My Views: Aragtidayda
+Manage Calendar of: Maamul Jadwalka taariikhda
+My Reports: Warbixinadayda
+My Profile: =
+Public Calendar: Kalandarka Dadweynaha
+Unapproved Events: Dhacdooyinka aan la Ansixin
+User Manager: Maamulaha Isticmaalaha
+Help Contents: Ka caawi waxyaabaha ku jira
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Diiwaanka Kaydka Database
+Create New: Abuur Cusub
+Failure Reason: Sababta Fashilka:
+You must manually create database: Waa inaad gacantaada ku sameysato keyd.
+Single-User: Hal-Isticmaal
+Test Settings: Dejinta Tijaabada
+Timezone Conversion Successful: Beddelka Waqtiga Guusha
+WebCalendar Installation Wizard Step XXX: Wizard Rakibaadda WebCalendar Tallaabada XXX
+Password Accepted: Password La Aqbalay
+Successful Login: Soo Gal Guul leh
+Password Incorrect: Sirta khaldan
+Invalid Login: Soo gal aan ansax ahayn
+Display Errors: Khaladaadka Muujinta
+File Uploads: Fayl soo rar
+Allow URL fopen: U oggolow URL fopen (waa loo baahan yahay oo keliya haddii Jadwalka Fog la isticmaalo)
+Safe Mode: Hab Ammaan ah
+Safe Mode Allowed Vars: Muuqaal Ammaan ah oo La Oggol yahay
+GD: GD (waxaa loogu baahan yahay Aasaaska Sawirka Wehliyaha)
+Passwords do not match!: Furaha sirta ah isma waafaqsana!
+Unable to write password to settings.php file: Awoodin in lagu qoro erayga sirta ah faylka "settings.php".
+Password Updated: Password Cusbooneysiiyay
+Password has been set: Password ayaa loo dhigay
+Connection Successful...: Xiriirki Waa Lagu guuleystay  Fadlan aad bogga xiga si aad u sii wadato rakibiddiisa.
+Correct your entries or click the Create New...: Sax wixii aad gashey ama dhagsii badhanka  Abuur Cusub  si aad u sii wadato rakibideeda.
+Correct your entries and try again.: Sax wixii aad gashey iskuna day markale.
+XXX does not exist: XXX ma jiro
+XXX is not writable: XXX lama qori karo
+Error Converting Timezone: Khalad Beddel Waqtiga
+Error Unable to write to file XXX.: Cilad Lama awoodin in la qoro si loo xareeyo XXX.
+Please change the file permissions of this file.: Fadlan beddel rukhsadda faylka faylkaan.
+Please change includes dir permission: Fadlan beddel rukhsadda faylka ee galkaaga "ku jira" si aad ugu oggolaato qorista isticmaaleyaasha kale.
+Your settings have been saved.: Dejintaada ayaa la keydiyay
+OFF: DAMAN
+ON: DAAR
+WebCalendar Setup Wizard: Wizard Setup WebCalendar
+This installation wizard will guide you...: Saaxirkan rakibida ayaa kugu hagi doona adiga oo dejiya rakibaadda aasaasiga ah ee WebCalendar.<br>Wixii caawimaad iyo dhib ah arag:
+System Administrators Guide: Tilmaamaha Maamulaha Nidaamka
+Frequently Asked Questions: Su'aalaha Badanaa La Is Weydiiyo
+FAQ: Su'aalaha
+Troubleshooting: Cilad bixinta
+Getting Help: Caawinaad Helid
+Upgrading Guide: Hagaha Casriyeynta
+User Supported Wiki: Isticmaalaha la Taageero Wiki
+PHP Version Check: Hubinta Nooca PHP
+Check to see if PHP 7.1.0 or greater is installed.: Hubi si aad u aragto haddii PHP 7.1.0 ama ka weyn la rakibay.
+PHP version: Nooca PHP
+PHP Settings: Dejinta PHP
+Detailed PHP Info: Faahfaahin Faahfaahinta PHP
+settings.php Status: "settings.php" Xaaladda
+Session Check: Hubinta Fadhiga
+To test the proper operation of sessions...: Si aad u tijaabiso hawlgalka saxda ah ee kalfadhiyada, dib u cusbooneysii boggan. Waa inaad aragto kororka kal-fadhiga markasta.
+SESSION COUNTER: KOOBKA KALFUFKA
+The file permissions of settings.php are set...: Oggolaanshaha faylka ee "settings.php" ayaa loo dejiyay si rakibuhu uusan u haysan rukhsad uu wax kaga beddelo. Fadlan beddel rukhsadda faylka faylka soo socda si aad u sii wadato
+The file permissions of the includes directory are set...: Oggolaanshaha faylka ee ka mid ah galka ayaa loo dejiyay si rakiyuhu uusan u haysan rukhsad uu ku abuuro feylal cusub. Fadlan beddel rukhsadaha galka soo socda si aad u sii wado
+Your settings.php file appears to be valid.: Faylkaaga "settings.php" wuxuu umuuqdaa inuu ansax yahay.
+Configuration Wizard Password: Furaha Saaxirka Qaab dhismeedka
+Create Settings File Password: Abuur Furaha Furaha Faylasha
+db setup directions...: Qeybtaan waxaad dejin doontaa oo tijaabin doontaa isku xirnaanta keydka macluumaadkaaga. Macluumaadka koontada la bixiyay waa inuu lahaadaa FULL rukhsad si loo abuuro keydka macluumaadka, miisaska iyo isticmaalayaasha. Haddii tani aysan suurta gal ahayn, ama helitaanka keydkaaga xogtu uu xadidan yahay, waa inaad gacantaada ku habeysaa keydka macluumaadkaaga.
+Database Status: Xaaladda Macluumaadka
+Supported databases for your PHP installation: Macluumaadka la taageeray ee rakibiddaada PHP
+Your current database settings are able to access the database.: Dejinta xogtaada hadda waxay awood u leeyihiin inay galaan xogta.
+Please Test Settings: Fadlan Tijaabi Dejinta
+Your current database settings are not able...: Dejinta xogtaada hadda ma awoodo inay gasho keydka ama weli lama tijaabin.
+Database Settings: Dejinta Macluumaadka
+Database Type: Nooca Xogta
+Server: =
+Connection Persistence: Ku Adkeysiga Xiriirka
+All your database tables appear to be up...: Dhammaan miisaska keydka macluumaadkaaga waxay u muuqdaan kuwo la socda. Waxaad usii gudbi kartaa bogga xiga oo aad dhammaystiri kartaa dejinta WebCalendar-kaaga.
+This appears to be a new installation...: Tani waxay u muuqataa rakibo cusub. Haddii tani aysan sax ahayn, fadlan dib ugu laabo boggii hore oo sax goobahaaga.
+This appears to be an upgrade...: Tani waxay umuuqataa inay tahay casriyayn laga sooqaaday nooca&nbsp;XXX&nbsp;to&nbsp;YYY.
+The database requires some data input...: Diiwaanka wuxuu ubaahan yahay xoogaa xog galin ah Guji Cusbooneysiinta Xogta si loo dhameystiro casriyeynta.
+In this section we will perform...: Qeybtaan waxaan ku sameyn doonnaa isbeddelada si aan u gaarsiino keydkaaga xogta heerka loo baahan yahay. Haddii aad isticmaaleyso xog-ururin buuxda oo la taageeray, talaabadan si toos ah ayaa adiga loogu sameeyaa Haddii kale, SQL-ga loo baahan yahay waa la soo bandhigi karaa waana inaad awood u leedahay inaad jarto oo ku dhejiso daaqada weyddiinta adeegahaaga.
+No database actions are required.: Looma baahna ficilada keydka macluumaadka.
+The following database actions are required: Tallaabooyinka soo socda ee xog-ururinta ayaa loo baahan yahay
+ODBC Underlying Database: Macluumaadka Xogta ee ODBC:
+Automatic installation not supported: Rakibaadda otomaatiga ah si buuxda looma hirgelin nooca xogtaada. Waxaad u baahan doontaa inaad gacanta ku sameysato miisaska loo baahan yahay adoo adeegsanaya SQL-ga la keenay. Fadlan dhagsii  Muuji SQL  si aad usii wado. Iska yaree oo ku dhaji daaqada weydiinta xogtaada.
+This may take several minutes to complete: Tani waxay qaadan kartaa dhowr daqiiqo in la dhammaystiro.
+Install Database: Ku rakib Database
+Update Database: Cusbooneysii Database
+Display Required SQL: Muuqaal Loo Baahan Yahay SQL
+Return to previous page after processing SQL.: Ka dib markaad gacanta ku qabato SQL, waxaad u baahan doontaa inaad ku noqoto boggii hore oo aad dib u tijaabiso xogtaada si qoraalku u ogaado isbeddelada.
+This is the final step in setting up your WebCalendar Installation.: Tani waa talaabada ugu dambeysa ee dejinta Rakibaaddaada WebCalendar.
+Timezone Conversion: Beddelka Waqtiga
+It appears that you have NOT converted...: Waxay umuuqataa inaadan UBADDAL xogta dhacdada WebCalendar-kaaga jira GMT. Haddii aad heshay, waad iska indha tiri kartaa ogeysiiskan oo aadan ku sii wadin beddelaadda. Haddii kani yahay rakibaad cusub, sidoo kale waad iska indha tiri kartaa ogeysiiskan.
+Convert Data to GMT: Xogta ugu beddel GMT
+Application Settings: Dejinta Codsiga
+HTTP-based authentication was not detected...: Hubinta ku saleysan HTTP lama ogaanin. Waxaad u baahan doontaa inaad dib u qaabeysid server-kaaga haddii aad rabto inaad ka doorato 'Server Server' xulashada 'Authentication User' ee hoos ku xusan.
+HTTP-based authentication was detected...: Hubinta ku saleysan HTTP ayaa la ogaaday. Aqoonsiga isticmaalaha waxaa gacanta ku haya adeegahaaga shabakadda. Waa inaad 'Server Server' ka xulataa liiska xulashada 'Authentication Authentication' ee hoos ku yaal.
+Create Default Admin Account: Abuur Koontada Maamulka ee Default
+(Admin Account Not Found): (Koontada Maamulka lama helin)
+User Authentication: Xaqiijinta Isticmaalaha
+Web-based via WebCalendar (default): Web-ku saleysan adoo adeegsanaya WebCalendar (default)
+Web Server (not detected): Server Web (lama oga)
+Web Server (detected): Server Server (la ogaaday)
+None (Single-User): Midna (Hal-isticmaale)
+Read-Only: Akhriso-Kaliya
+Environment: Deegaanka
+Production: Soo saar
+Development: Horumarin
+Save Settings: Keydso Dejinta
+Launch WebCalendar: Burcad WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Cilad ayaa ah cusboonaysiinta miiska "XXX": YYY.
+Conversion Successful: Beddelaadda Beddelaadda Guusha 
+Perl script required: Noocaagii hore ee WebCalendar wuxuu u baahan yahay socodsiinta qoraalka PERL si loogu beddelo xogtaada. Fadlan ordi /tools/upgrade_to_0.9.7.pl ka dib ku noqo boggan si aad u sii wado.
+previous version requires updating several tables: Noocaagii hore ee WebCalendar wuxuu u baahan yahay cusbooneysiin dhowr miisas xog-ururin ah.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: MAYA HORE LOO HELI KARO
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Cilad ku xirida keydka macluumaadka
+Include Path: Ku dar dariiqa
+Deleting events for: Tirtirida dhacdooyinka loogu talagalay
+Importing events for: Dhacdooyinka soo dhoofinta loogu talagalay
+No data returned from: Wax data ah lagama soo celin
+for non-user calendar: kalandarka aan isticmaaleha ahayn
+No Remote Calendars found: Lama helin Kalandarrada fog
+Remote Calendars not enabled: Kalandarrada fog lama shaqeysiin
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ma heli karin dhacdo id
+could not find event id XXX in database.: kama heli karin dhacdada id id XXX keydka xogta.
+task: hawl
+This is a reminder for the XXX detailed below.: Tani waa xusuusin XXX-ga oo faahfaahsan hoosta.
+Pecentage Complete: Boqolkiiba oo Dhameystiran
+Reminder: Xusuusin
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Tallaabo aan la taageerin: XXX.
+No event id specified.: Lama cayimin dhacdo dhacdo.
+Not authorized (not admin).: Lama ogola (maahan maamulka).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Hubinta dhacdooyinka XXX laga bilaabo taariikhda YYY illaa taariikhda ZZZ.
+Found XXX events in time range.: Lagu helay dhacdooyinka XXX ee muddada u dhexeysa.
+Event id=XXX YYY at ZZZ on AAA.: Dhacdada id = XXX "YYY" at ZZZ on AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: U oggolow isticmaaleha XXX inuu arko jadwalka kale ee isticmaalaha.
+Error Email reminders disabled for user XXX.: Cilad: Xusuusiyeyaasha emaylka ayaa naafan u ah isticmaale "XXX".
+Number of site_extras XXX.: Tirada goobta_extras: XXX.
+Reminder set for event.: Xusuusin loogu talagalay dhacdo.
+Mins Before XXX.: Miinooyinka Kahor: XXX.
+Event time is XXX.: Waqtiga dhacdada waa: XXX.
+Remind time is XXX.: Xusuusintu waa: XXX.
+Reminders for user XXX, login YYY.: Xusuusiyeyaasha isticmaalaha "XXX", gal "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Ansixin la'aanta isticmaale "XXX".
+Event id=XXX YYY already sent.: Dhacdada id = XXX "YYY" horaa loo diray.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Login looma baahna qaabka hal isticmaale.
+No login required for HTTP authentication.: Login looma baahna xaqiijinta HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Xuruuf aan sax ahayn oo galaya goobta
+Username XXX does not exist.: Magaca isticmaale "XXX" ma jiro
+You cannot remove admin rights from yourself!: Xuquuqda maamulka kama saari kartid naftaada!
+Unknown error saving user: Badbaadiyaha isticmaale khalad lama yaqaan.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Kaqeybgalayaasha looma helin dhacdada id: XXX.
+Db error Could not find event id XXX.: Cillad Db: Waan la heli kari waayey dhacdo id XXX. 
+Error Could not find event id XXX in database.: Cillad: Ma heli kari wayday id id XXX xogta. 
