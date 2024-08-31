@@ -20,6 +20,7 @@
  * (except for nonuser calendars... which we allow regardless of group).
  */
 // $start = microtime();
+require_once 'includes/init.php';
 require_once 'includes/views.php';
 
 $error = '';
@@ -62,11 +63,11 @@ $previousStr = translate ( 'Previous' );
 $formKey = csrf_form_key();
 echo <<<EOT
     <div class="viewnav">
-      <a title="{$previousStr}" class="prev"
+      <a class="prev"
         href="view_d.php?id={$id}&amp;date={$prevdate}">
         <img src="images/bootstrap-icons/arrow-left-circle.svg" class="prev"
           alt="{$previousStr}"></a>
-      <a title="{$nextStr}" class="next"
+      <a class="next"
         href="view_d.php?id={$id}&amp;date={$nextdate}">
         <img src="images/bootstrap-icons/arrow-right-circle.svg" class="next"
           alt="{$nextStr}"></a>
@@ -79,7 +80,7 @@ echo <<<EOT
 
     <!-- Hidden form for booking events -->
     <form action="edit_entry.php" method="post" name="schedule">
-      ${formKey}
+      {$formKey}
       <input type="hidden" name="date"
         value="{$thisyear}{$thismonth}{$thisday}">
       <input type="hidden" name="defusers" value="{$partStr}">

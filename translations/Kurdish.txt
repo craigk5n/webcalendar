@@ -1,0 +1,2387 @@
+# Kurdish ku
+#
+# Format ji sernavek vebijarkî pêk tê:
+#
+# Wergerandin: nav û e-nameya we
+# Nûvekirina paşîn: dîroka wergerandinê
+# (Digel pêşeng "#" û her şîroveyên ku ji hêla wergêrên berê ve hatine kirin.
+# XETA vala ya FIRST van şîroveyên sernav bidawî dike.)
+#
+# Bi qasî ku hewce dike ji hêla wî ve têne şopandin:
+#
+# Hevoka Englishngilîzî: werger
+# (Yek ji rêzê re. BELT "#" yê sereke.
+# "Hevoka Englishngilîzî:", di nav de kolon ":", ji hêla ve tête peyda kirin
+# Pêşdebirên WebCalendar. Beşa we "werger" e.)
+#
+# Di peldanka amûran de du nivîsên perl hene ku ji we re bibin alîkar:
+# - check_translation.pl
+# nîşan dide ku hemî nivîs bi serfirazî hatiye wergerandin.
+# - update.translation.pl
+# dê pelên bernameyê parsek bike da ku hemî werger ('hevok') û
+# tooltip ('hevok'). Ew ê hevokan li gorî rûpelê rêz bike
+# (pel) ku rûdana yekem vedigire. Bijarî, ew dikare etîketê bike
+# bêjeyên ku hêj bi danînê nehatine wergerandin
+#  << MISSING >>
+# li ser xeta jorîn hevokê. ,, Heke hevok kurtahî be,
+# ew ê tevaya nivîsa Englishngilîzî li ser rêza binî hevokê bigire nav xwe.
+#
+# Têbînî: Ez hewl didim ku mezinahiya pelê ya tevahî bibirim. Heke "werger"
+# peyv / hevok di zimanê we û îngilîzî de yeksan e, tenê nîşanek "=" bikar bînin.
+#
+# Têbînî: Hûn ê têkevin ji bo "May_" jêrîn. Sedemek vê heye.
+# Wergerandin "May_" bi navê mehê tam û "May" bo,
+# bi gelemperî kurtkirina sê tîpan, mehê (wekî "Çirî" ji bo "Cotmeh").
+#
+# Min ji bo vê yekê wergerandina Google bikar anî.
+# Pêdivî ye ku heya ku axaftvanek xwemalî rast neke wê têr bike.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: guhertoya XXX
+WebCalendar is a PHP application used...: WebCalendar serlêdanek PHP-ê ye ku ji bo domandina salnameyek ji bo bikarhênerek tenê an komek bikarhêneran a înternet / intranet tê bikar anîn. Her weha dikare wekî salnameyek bûyerê jî were vesaz kirin.
+Credits: =
+About: Ji dor
+OK: Baş e
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Çewtiya danegehê: XXX.
+DEFAULT CONFIGURATION: FANDA XWEANDIN
+Go: Çûyin
+Save: Rizgarkirin
+Undo: Betal bike
+Public Access: Gihîştina Giştî
+Admin: =
+User Access Control: Kontrola Gihîştina Bikarhêner
+Allow Access to Other Users Calendar: Destûrê bidin Têketina Salnameya Bikarhênerên Din
+Grant This User Access to My Calendar: Destûra Vê Bikarhênerê bidin Salnameya Min
+Type: Awa
+Calendar: Salname
+View Event: Bûyerê Dîtin
+View: Dîtinî
+Edit: Weşandin
+Approve/Reject: Pejirandin / Redkirin
+Events: Bûyerên
+Tasks: Erkên
+Journals: Kovar
+Can Invite: Can Vexwendin
+Can Email: =
+Can See Time Only: Dikare Tenê Dem Bibîne
+Assistant: Alîkar
+Select All: Hemî hilbijêrin
+Clear All: Hemî Paqij Bikin
+Public: Alenî
+Confidential: Bawerane
+Private: Taybet
+
+########################################
+# Page: activity_log.php
+#
+Next: Piştî
+Previous: Pêşî
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Bûyer XXX jixwe li ser salnameya we ye.
+Invalid entry id XXX.: Nasnameya ketinê ya nederbasdar: "XXX".
+a XXX event may not be added to your calendar: Ev bûyerek XXX e û dibe ku li salnameya we neyê zêdekirin.
+confidential: bawerane
+private: taybet
+Error adding event XXX.: Çewtiya lê zêde kirina bûyerê: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Navê mîhengê nederbasdar "XXX".
+Select: Neqandin
+Day: Roj
+Week: Hefte
+Month: Meh
+Year: Sal
+Bottom: Erd
+Top: Lûtik
+Anyone: Her kes
+Participant: Beşdar
+Settings: Mîhengên
+Groups: Koman
+NonUser Calendars: Salnameyên NonUser
+Other: Yên din
+Email: E-nameyê bişînin
+Colors: Rengîn
+Document background: Paşxaneya belgeyê
+Document title: Sernavê belgeyê
+Document text: Nivîsara belgeyê
+My event text: Nivîsa bûyera min
+Table grid color: Rengê tevna maseyê
+Table header background: Paşxaneya sernavê sifrê
+Table header text: Sernavê sernavê maseyê
+Table cell background: Paşxaneya hucreya maseyê
+Table cell background for current day: Paşxaneya hucreya maseyê ji bo roja îro
+Table cell background for days with events: Paşxaneya hucreya sifrê bi rojan bi bûyeran re
+Table cell background for weekends: Ji bo dawiya hefteyê paşnavê hucreya maseyê
+Table cell background for other month: Paşxaneya hucreya maseyê ji bo meha din
+Week number color: Rengê jimareya hefteyê
+Event popup background: Paşiya popupê ya bûyerê
+Event popup text: Nivîsa popupê ya bûyerê
+System Settings: Mîhengên Pergalê
+Help: Alîkarî
+System options: Vebijarkên pergalê
+app-name-help: Navê sepanê ku dê di barê sernavê gerokê de ji bo hemî rûpelan û di rûpelê têketinê de xuya bike diyar dike. Nirxa ku hûn li vir diyar dikin dê di pelê wergerandinan de were lêgerîn ku dihêle hûn ji bo zimanên cihêreng sernavên cûda peyda bikin.
+Application Name: Navê Serlêdanê
+Translated Name (XXX): Navê Wergerandî (XXX)
+server-url-help: Ji bo serîlêdanê URL-ya bingehîn diyar dike. Ev dê di dema şandina bîranîn û notifications email.
+Server URL: URL-ya serverê
+home-url-help: Ji bo serîlêdanê URL-ya malê diyar dike. Ev dikare mutleq an têkildar be
+Home URL: URL-ya malê
+language-help: Kîjan ziman bikar tîne diyar dike.
+Language: Ziman
+Your browser default language is XXX.: Zimanê default ê geroka we "XXX" e.
+Allow user to use themes: Destûrê bide bikarhêner ku mijaran bikar bîne
+themes-help: Destûrê dide nûvekirina girseyî ya mîhengên vesazkirinê. Labelên piçûk Dibe ku tenê bikarhêner prefî ye.
+Themes: Mijar
+AVAILABLE THEMES: TEMAN AVAILABLE
+None: Netû
+Preview: Pêşnerîn
+Site customization: Takekeskirina malperê
+custom-script-help: Navnîşa xwerû Javascript an şêwaza pelê ya ku dê di her beşa HTML "serî" de were hiştin dihêle.
+Custom script/stylesheet: Skrîpta / şêwaza xwerû
+custom-header-help: Destûrê dide ku perçeyek HTML-ya xwerû di serê her rûpelî de hebe.
+Custom header: Sernavê xwerû
+custom-trailer-help: Destûrê dide ku perçeyek HTML-ya xwerû di dawiya her rûpelî de were vegirtin.
+Custom trailer: Trailer xwerû
+enable-external-header-help: Destûrê dide ku trayla xwerû ji pelê derveyî were barkirin
+Allow external file for header/script/trailer: Pelê derveyî ji bo sernav / nivîs / pêşnumayê bihêlin
+Allow user to override header/trailer: Destûrê bide bikarhêner ku sernavê / trailer-ê derbas bike
+Date and Time: Dem û Dem
+server-tz-help: Diyar dike ka çend demjimêr ji bo dema ku ji UTC heya dema server verast dike verast bike.
+Server Timezone Selection: Hilbijartina Zona Demê ya Server
+tz-help: Diyar dike ku çend demjimêr wextê ji UTC li gorî dema herêmî verast bike.
+Default Client Timezone Selection: Hilbijartina Qada Demê ya Xerîdar a Default
+display-general-use-gmt-help: Heke çalak be, tarîx / demên hevpar wekî GMT têne nîşandan
+Display Common Use Date/Times as GMT: Dîrok / Demên Bikaranîna Hevpar wekî GMT nîşan bidin
+date-format-help: Formata dîroka bijarte diyar dike.
+Date format: Formata tarîxê
+Small Task Date: Dîroka Karê Piçûk
+display-week-starts-on: Roja hefteyê diyar dike ku heftê dest pê dike. Ger Duşem were diyar kirin, wê hingê hejmarên hefteyê dê hejmar hefta ISO bin.
+Week starts on: Hefte dest pê dike
+display-weekend-starts-on: Ji bo dawiya hefteyê roja hefteyê destnîşan dike
+Weekend starts on: Dawiya hefteyê dest pê dike
+time-format-help: Diyar dike ka kîjan formata demjimêr were bikar anîn:<br><em>12 demjimêr:</em> Demên wekî 3am, 8:30 danê êvarê, û hwd.<br><em>24 demjimêr:</em> Demên nîşandanê wekî 300 , 2030, û hwd.
+Time format: Formata demê
+12 hour: 12 demjimêr
+24 hour: 24 demjimêr
+timed-evt-len-help: Ji bo destnîşankirina dirêjahiya bûyerek demjimêr rêbaza ketinê diyar dike.
+Specify timed event length by: Dirêjahiya bûyerê ya demjimêr ji hêla ve diyar bikin
+Duration: Demajok
+End Time: Dema Dawî
+work-hours-help: Rêjeya demê diyar dike ku ji bo dîtina rojê nîşan bide.
+Work hours: Demjimêrên xebatê
+From: Ji
+to: ber
+Appearance: Xuyabûnî
+preferred-view-help: Dîmena pêşdibistanê diyar dike (Roj, Heft, Meh, an Sal).
+Preferred view: Dîtina bijarte
+Allow top menu: Destûrê bide menuya jor
+Date Selectors position: Rewşa Hilbijêrên Dîrokê
+menu-themes-help: Reng û şêwaza pêşeka jorîn saz dike
+Menu theme: Mijara menuyê
+fonts-help: Navnîşek tîpên pergalê yên bikar tîne diyar dike (wekî "Arial, Helvetica")
+Fonts: =
+display-sm_month-help: Ger çalak be, di dîmenên mehê de mehên piçûk nîşan dide
+Display small months: Mehên piçûk nîşan bidin
+display-weekends-help: Dema ku hefteyekê temaşe dikin dawiya hefteyê têde bikin.
+Display weekends: Dawiya hefteyan nîşan bide
+display-long-daynames-help: Ger çalak be, navên rojên dirêj têne xuyang kirin
+Display long day names: Navên rojên dirêj nîşan bikin
+display-alldays-help: Rojên mehên berê û yên din di dîmenên mehê de nîşan bidin, hemî şaneyan dagirin.
+Display all days in month view: Hemî rojan di dîmena mehê de nîşan bidin
+display-week-number-help: Diyar dike ka divê hejmara heftê (1-52) di dîmena mehê û dîmena hefteyê de were nîşandan.
+Display week number: Hejmara hefteyê nîşan bide
+display-desc-print-day-help: Danasînên bûyerê di guhertoya dîtbarê ya-çapker-heval de têxin nav.
+Display description in printer day view: Danasîna di dîmena roja çapker de nîşan bikin
+yearly-shows-events-help: Li ser dîmena salane, rojên ku bûyeran bi tîpek qelew vedigirin pêşan.
+Display days with events in bold in month and year views: Rojan bi dîmenên meh û salê bi qalind bi qalind nîşan bikin
+display-minutes-help: Ger çalak be, dê hûrdemên ku bi: 00-an diqedin dê her dem werin xuyang kirin
+Display 00 minutes always: Her dem 00 hûrdeman nîşan bikin
+display-end-times-help: Ger bûyerek demborî demên dawiya bûyerê nîşan bidin
+Display end times on calendars: Demên dawîyê li ser salnameyan nîşan bidin
+allow-view-add-help: Dê îkona '+' di nav dîmenan de be, da ku bikarhêner bilez bûyerên li salnameyên bikarhênerên din zêde bikin.
+Include add event link in views: Zencîreya bûyerê têxin nav dîmenan
+lunar-help: Heke were çalak kirin, dê her meh îkonên piçûk ên qonaxên heyvê temsîl dikin nîşan bide
+Display Lunar Phases in month view: Di dîtina mehê de Qonaxên Heyvê nîşan bidin
+Restrictions: Sînorkirin
+allow-view-other-help: Diyar dike ka yek bikarhêner dikare salnameya bikarhênerek din bibîne.
+Allow viewing other users calendars: Destûr bidin salnameyên bikarhênerê din
+require-approvals-help: Gava ku çalak be, pêdivî ye ku bikarhênerek bûyerek bipejirîne berî ku ew li ser salnameya wî were xuyang kirin (heke Display Unapproved neyê çalak kirin). Nîşe danîna vê yekê ji bo "Na" dê pejirandinên ji bo salnameya Giştpirsî venagerîne (heke salnameya Gihîştina Gelemperî çalak be).
+Require event approvals: Pêdiviyên erêkirinê hewce dike
+display-unapproved-help: Diyar dike ka bûyerên ne pejirandî di salnameya we de têne xuyang kirin.<br>Heke li ser "Erê" were saz kirin, wê hingê bûyerên ne pejirandî dê di salnameya we de bêne xuyang kirin (bi rengek nivîskî cuda).<br>Heke li ser "Na" were saz kirin, hingê bûyerên ne pejirandî divê werin pejirandin berî ku ew di salnameya we de werin xuyandin.
+Display unapproved: Pêşnîyar ne pejirandî
+conflict-check-help: Pevçûnên bûyerê kontrol bikin (du bûyerên ku di heman demê de ji bo heman kes hatine plan kirin). Heke we ev danî ser "Erê", hûn ê dîsa jî karibin piştî pejirandina hişyariyekê du bûyeran di heman demê de plansaz bikin. Ger hûn vê yekê bikin "Na", dê kontrola pevçûnan neyê kirin. Dibe ku hûn dixwazin vê yekê bikin "Erê", ji ber vê yekê kontrola pevçûnê çêdibe.
+Check for event conflicts: Ji bo pevçûnên bûyerê kontrol bikin
+Yes: Erê
+No: Na
+conflict-months-help: Ger venêrana pevçûnê li cî ye ("Ji bo pevçûnên bûyerê kontrol bike" wekî "Na" hate saz kirin&#41;, ev diyar dike ka di pêşerojê de çend meh divê em pevçûnan kontrol bikin. Ger hûn bibînin ku lê zêde kirina bûyeran pêvajoyek dirêj digire , vê hejmarê kêm bikin.
+Conflict checking months: Mehên kontrolkirina pevçûnê
+conflict-check-override-help: Destûrê dide bikarhêneran ku nakokiyên bûyerê ji holê rabikin û du an jî zêdetir bûyeran di heman demê de destnîşan bikin.
+Allow users to override conflicts: Destûrê bide bikarhêneran ku pevçûnan ji holê rabikin
+limit-appts-help: Destûrê dide rêvebirê pergalê ku li ser hejmarek randevûyên ku bikarhênerek tenê dikare her roj hebe sînorek pergalê-fireh destnîşan bike.
+Limit number of timed events per day: Rojane hejmara bûyerên demborî bisînor bikin
+limit-appts-number-help: Pirjimara bûyerên demborî yên ku bikarhênerek dikare di yek rojê de hebe diyar dike.
+Maximum timed events per day: Her roj bûyerên demdirêjî yên herî zêde
+crossday-help: Ger çalak be, bûyerên ku bi rojan dirêj dibin dê di rojên cihê de werin xuyandin
+Disable Cross-Day Events: Bûyerên Xaçerojê Neçalak bikin
+disable-location-field-help: Hilbijartina "Erê" dê qada "Cih" ji rûpelên agahdariya bûyerê derxîne
+Disable Location field: Qada Cihê neçalak bikin
+disable-url-field-help: Hilbijartina "Erê" dê qada "URL" ji rûpelên agahdariya bûyerê derxîne
+Disable URL field: Zeviya URL-ê neçalak bikin
+disable-priority-field-help: Hilbijartina "Erê" dê qada "Priority" ji rûpelên agahdariya bûyerê derxîne, ji bo nûsewanan navnîşek hêsantir peyda bike.
+Disable Priority field: Qada Pêşengiyê neçalak bikin
+disable-access-field-help: Hilbijartina "Erê" dê qada "Gihîştin" ê ji rûpelên agahdariya bûyerê derxîne, ji bo nûsewanan navnîşek hêsantir peyda bike.
+Disable Access field: Qada Accessê neçalak bike
+disable-participants-field-help: Hilbijartina "Erê" dê qada "Beşdarvan" ji rûpelên agahdariya bûyerê derxe, nahêle bikarhêner bikarhênerên din li bûyerên xwe zêde bikin. Heke hûn vê vebijarkê çalak bikin, dibe ku hûn bixwazin ku qada "Destûrê bidin pêşandana salnameyên bikarhênerê din" jî neçalak bikin.
+Disable Participants field: Qada Beşdaran neçalak bike
+disable-repeating-field-help: Dema hilbijartina "Erê" hilbijêrin dê qada "Dubarekirin" ê zêde bikin. Ev dê ji bo nûseran navgînek hêsantir peyda bike.
+Disable Repeating field: Qada Dubarekirinê Neçalak bike
+allow-html-description-help: Ger çalak be, bikarhêner dikarin HTML-ê têkevin nav qada ravekirina bûyerê. Heke neyê çalak kirin, dê tagên HTML-ê werin xilas kirin da ku wekî nivîsek zelal xuya bibin. Hişyarî: Bi çalakkirina vê taybetmendiyê dê bikarhêner bikaribin li ser malperên din wêneyan bişînin.
+Allow HTML in Description: Di Danasînê de Destûrê bide HTML
+Popups: =
+disable-popups-help: Popupên ji dîmenên salnameyê veqetînin
+Disable Pop-Ups: Pop-Ups neçalak bikin
+popup-includes-siteextras-help: Heke çalak be, destûrê bide sazkirina qadên bûyerê yên xwerû di pelê site_extras.php de dê di pêşekên bûyerê de werin xuyang kirin.
+Display Site Extras in popup: Zêdebûna Malperê di popupê de nîşan bidin
+popup-includes-participants-help: Ger çalak be, beşdaran di popupên bûyerê de têne xuyang kirin.
+Display Participants in popup: Beşdaran di popupê de nîşan bidin
+Miscellaneous: Lihevket
+remember-last-login-help: Dema ku çalak be, têketina bikarhêner dê ji bo wan di rûpela têketinê de were dagirtin (lê ne şîfre), û tercîhên bikarhêner dê werin barkirin (rengên bijartî û hilbijartina ziman jî tê de).
+Remember last login: Têketina paşîn ji bîr mekin
+summary_length-help: Di nêrînên salnameyê de dirêjahiya herî zêde ya Danasîna Kurt
+Brief Description Length: Kurtasî Danasîn Dirêjahî
+user_sort-help: Ji bo navnîşên Bikarhêner, Nonuser rêza rêzkirinê diyar dike
+User Sort Order: Rêzkirina Rêzdar Bikarhêner
+Lastname, Firstname: Paşnav, Nav
+Firstname, Lastname: Pêşnav paşnav
+allow-public-access-help: Gava ku çalak be, salname dikare wekî salnameyek gelemperî-tenê-xwendî were bikar anîn ku ji bo bikarhêneran hewce nake ku têkevin.
+Allow public access: Destûra giştpirsiyê bidin
+public-access-default-visible: Bûyerên ji salnameya giştî dê bixweber li ser salnameyên hemî bikarhêneran xuya bibin
+Public access visible by default: Gihîştina gi .tî bi xwerû xuya dike
+public-access-default-selected: Dema ku bûyerek nû zêde dikin, dê bikarhênerê gelemperî ji hêla default ve wekî beşdarek were hilbijartin.
+Public access is default participant: Gihîştina gelemperî beşdarê nazik e
+public-access-view-others-help: Dema ku pergalê bi gihîştina gelemperî re bigihîjin, diyar dike ka bikarhêner dikare salnameya bikarhênerek din a salnameyê bibîne.
+Public access can view other users: Gihîştina giştî dikare bikarhênerên din bibîne
+public-access-can-add-help: Dema ku çalak be, bikarhênerên ku bi Riya Giştî ve digihîjin pergalê dê bikaribin bûyerên nû lê zêde bikin, lê ew ê di salnameyê de neyê xuyang kirin heya ku rêveberek bûyera nû erê neke.
+Public access can add events: Gihîştina gelemperî dikare bûyeran zêde bike
+public-access-add-requires-approval-help: Diyar dike ka bûyerên ku bi navgîniya têketina giştpirsiyê ve hatine zêdekirin berî ku werin nîşan kirin pejirandinê dixwazin.
+Public access new events require approval: Gihîştina giştî ya bûyerên nû erêkirinê hewce dike
+public-access-sees-participants-help: Heke çalak be, bikarhênerên ku ji hesabê giştî salname digihînin dê karibin beşdarên bûyerê bibînin, ger ew hûrguliyên bûyerekê bibînin.
+Public access can view participants: Gihîştina giştî dikare beşdaran bibîne
+public-access-override-help: Destûrê dide ku nav û salixdanên bûyerê li salnameya giştî werin veşartin
+Override event name/description for public access: Ji bo gihiştina gelemperî navê bûyerê / danasînê hilînin
+public-access-override-text-help: Nivîsara ku heke vebijarka jorîn were bikar anîn nîşan bide. Heke 'Nabe', ew ê were wergerandin.
+Text to display to public access: Nivîsar ku ji bo gihîştina gelemperî were nîşandan
+public-access-captcha-help: Ger çalak be, bûyerên nû yên ji hêla Giştî ve hatine zêdekirin hewce dike ku pejirandina CAPTCHA derbas bibe.
+Require CAPTCHA validation for public access new events: Ji bo gihiştina giştî ji bûyerên nû re erêkirina CAPTCHA hewce dike
+uac-enabled-help: Kontrola gihîştina asta bikarhêner çalak dike
+User Access Control enabled: Kontrola Gihîştina Bikarhêner çalak e
+groups-enabled-help: Piştgiriya komê çalak dike, dihêle bikarhêner bikarhêneran ji hêla koman ve hilbijêrin.
+Groups enabled: Koman çalak kirin
+user-sees-his-group-help: Heke çalak be, bikarhêner bikarhênerên salnameyê yên ku ne bi kêmî yek ji komên wan in nabînin.
+User sees only his groups: Bikarhêner tenê komên xwe dibîne
+nonuser-enabled-help: Heke were çalak kirin, dê rêveber xwedî vebijarkê bin ku salnameyên ne bikarhêner zêde bikin
+Nonuser enabled: Salnameyên Ne Bikarhêner Çalak kirin
+nonuser-list-help: Li ku derê salnameyên ne bikarhêner di navnîşa beşdar de têne xuya kirin
+Nonuser list: Di navnîşa beşdaran de li nîşan bide
+Upcoming Events: Bûyerên Pêşerojê
+upcoming-events-help: آینده.php çalak bike
+Enabled: Çalak kirin
+upcoming-events-allow-override: Ji bo pêşerojê bikarhênerê bihêlin.php
+Allow user override: Destûrê bide serjimara bikarhêner
+upcoming-events-display-caticons: Di dahatû.php de îkonên kategoriyê bigirin
+Display category icons: Îkonên kategoriyê nîşan bide
+upcoming-events-display-layers: Qatên li dahatû.php nîşan bide
+Display layers: Qatên nîşan bide
+upcoming-events-display-links: Di pêşerojê de.php zencîran nîşan bidin
+Display links to events: Zencîreyên bûyeran nîşan bidin
+upcoming-events-display-popups: Popupên bûyerê di pêşerojê de bin.php
+Display event popups: Popupên bûyerê nîşan bidin
+reports-enabled-help: Heke çalak be, dê bikarhêner di binê her rûpelê de beşa "Rapor" bibînin û destûr bê dayîn ku raporên xwerû çêbikin. Wekî din, bikarhênerên rêveber dikarin raporên gerdûnî biafirînin ku dê di binê rûpelên hemî bikarhêneran de xuya bibin.
+Reports enabled: Raport çalak kirin
+subscriptions-enabled-help: Diyar dike ku ka bikarhênerên ji dûr ve dikarin bi salnameya bikarhênerek WebCalendar-ê re bibin abone, bihêle ew bûyerên bikarhênerê-WebCalendar-ê di serîlêdana xweya iCal-aktîfkirî de bibînin (mînakî iCal an Mozilla Calendar ya Apple).
+Allow remote subscriptions: Destûrê bidin aboneyên dûr
+remotes-enabled-help: Destûrê dide bikarhêneran ku pelên ics yên ji dûr ve bi karanîna URL bar bikin
+Allow remote calendars: Destûr bidin salnameyên dûr
+rss-enabled-help: Diyar dike ka salnameya bikarhênerek dikare ji RSS-ê bête girtin.
+Enable RSS feed: RSS-ê çalak bikin
+categories-enabled-help: Piştgiriya ji bo kategoriyên bûyerê çalak dike.
+Categories enabled: Kategorî çalak kirin
+icon_upload-enabled-help: Ger çalak be, bikarhêner dikarin îkonên kategoriyê bar bikin
+Category Icon Upload enabled: Icon Kategorî Upload çalak kirin
+(Requires XXX folder to exist.): (Pêdivî ye ku peldanka XXX hebe.)
+display-tasks-help: Li salnameya meh û rojê paceya peywira piçûk nîşan bidin
+Display small task list: Lîsteya karê piçûk nîşan bide
+display-tasks-in-grid-help: Di salnameyan de digel bûyeran peywiran nîşan bidin
+Display tasks in Calendars: Di Salnameyan de peywiran nîşan bidin
+allow-external-users-help: Diyar dike ka bikarhênerek ne-salname dikare li bûyerek were zêdekirin. Ev dihêle bikarhênerên ne-salname wekî beşdarên bûyerê werin navnîş kirin.
+Allow external users: Destûrê bide bikarhênerên derveyî
+external-can-receive-notification-help: Gava ku bikarhênerên derveyî têne çalak kirin û karanîna e-nameyê jî tête çalak kirin, bikarhênerên derveyî dema ku bûyer zêde dibe, nûve dibe an jê dibe (heke navnîşana e-nameya bikarhênerê derveyî tête peyda kirin) dikarin agahdariyên e-nameyê bigirin.
+External users can receive email notifications: Bikarhênerên derveyî dikarin agahdariyên e-nameyê bistînin
+external-can-receive-reminder-help: Gava ku bikarhênerên derveyî têne çalak kirin û karanîna e-nameyê tête çalak kirin, bikarhênerên derveyî dikarin bîranînên e-nameyê bistînin (heke navnîşana e-nameya bikarhênerê derveyî peyda kirin).
+External users can receive email reminders: Bikarhênerên derveyî dikarin bîranînên e-nameyê bistînin
+allow-self-registration-help: Destûrê bide bikarhênerên nû ku xwe tomar bikin
+Allow self-registration: Destûrê bide xwe-tomarkirinê
+use-blacklist-help: Li ser bingeha navnîşana IP-yê gihîştina karûbarên WebCalendar-ê sînor bikin
+Restrict self-registration to blacklist: Xwe-tomarkirinê bi navnîşa reş ve teng bikin
+allow-self-registration-full-help: Destûrê bide bikarhênerên nû ku pêvajoya xwe-tomarkirinê on-line biqedînin
+Use self-registration email notifications: Passwordîfreyan çêbikin û ji bikarhênerên nû re bişînin
+allow-attachment-help: Destûrê bide bikarhêneran ku pêvekên pelan li bûyeran zêde bikin.
+Allow file attachments to events: Destûrê bidin pêvekên pelan ji bûyeran re
+Admin and owner can always add attachments if enabled.: Ger çalak be rêveber û xwedan her dem dikarin pêvekan zêde bikin.
+allow-comments-help: Destûrê bide bikarhêneran ku li ser bûyeran şîroveyan zêde bikin.
+Allow comments to events: Destûrê bide şîroveyên bûyeran
+Admin and owner can always add comments if enabled.: Ger çalak be rêveber û xwedan her dem dikarin şîroveyan zêde bikin.
+email-enabled-help: Hemî şandina e-nameyê ji bo agahdarî û bîranînan vemirînin an vemirînin. Heke "servera we ji bo şandina nameyê ne baş sazkirî be" na "saz bike.
+Email enabled: E-nameyê çalak kirin
+email-default-sender: Navnîşana e-nameyê diyar dike ku dema şîyariyan dişîne wekî şande diyar bike.
+Default sender address: Navnîşana şanderê default
+email-mailer: Tîpa e-nameyê hilbijêrin (SMTP, PHP name, sendmail)
+Email Mailer: =
+email-smtp-host: Navê (navên) server (ên) SMTP-yê bi kumikan ji hev veqetandî
+SMTP Host name(s): Nav (navên) hostê SMTP
+email-smtp-port: Hejmara Porta SMTP (bi gelemperî 25)
+SMTP Port Number: Hejmara Porta SMTP
+email-smtp-auth: Nasnameya SMTP bikar bînin
+SMTP Authentication: Rastkirina SMTP
+email-smtp-username: Ger Nasname bikar bîne navê bikarhêner SMTP ye
+SMTP Username: Navê SMTP
+email-smtp-password: Heke Nasnameyê bikar bînin şîfreya SMTP-yê
+SMTP Password: TPîfreya SMTP
+Default user settings: Mîhengên bikarhênerê yên neraza
+email-format: Hilbijartinê ji bo HTML-an peyamên nivîskî yên zelal diyar bikin
+Email format preference: Tercîha formatê e-nameyê
+HTML: =
+Plain Text: Nivîsara Rast
+email-include-ics: Pelê iCalendar ICS têxin navnîşana e-nameyê
+Include iCalendar attachments: Pêvekên iCalendar tevlî bikin
+email-event-reminders-help: Diyar dike ka dê bîranînên bûyerê bişînin an na.
+Event reminders: Bîranînên bûyerê
+email-event-added: Diyar dike ka dema ku bûyerek li salnameya we tê zêdekirin notifications email bişînin an na.
+Events added to my calendar: Bûyer li salnameya min zêde kirin
+email-event-updated: Diyar dike ka dema ku bûyerek li ser salnameya we were nûvekirin dê notifications email bişînin an na.
+Events updated on my calendar: Bûyerên li ser salnameya min nûve kirin
+email-event-deleted: Diyar dike ka dema ku bûyerek ji salnameya we tê rakirin notifications email bişînin an na.
+Events removed from my calendar: Bûyerên ji salnameya min hatine derxistin
+email-event-rejected: Dema beşdarvanek bûyera ku di salnameya we de ye red dike diyar dike ka dê notifications email bişînin an na.
+Event rejected by participant: Bûyer ji hêla beşdarekî ve hate red kirin
+email-event-create: Diyar dike ka afirînerê navnîşan dê e-nameyek bistîne
+Event that I create: Bûyera ku ez diafirînim
+Color options: Vebijarkên rengîn
+Allow user to customize colors: Destûrê bide bikarhêner ku rengan xwerû bike
+gradient-colors: Ger çalak be rengên gradient têne bikar anîn. Ev dikare pir bandor li performansê bike.
+Enable gradient images for background colors: Ji bo rengên paşpirtûkê wêneyên gradient çalak bikin
+Not available: Nabe
+Background Image options: Vebijarkên Wêneya Paşê
+bgimage-help: URL ya wêneya paşnavê xwestin. Dibe ku zencîre têkildar be.
+Background Image: Wêneyê Paşê
+bgrepeat-help: Tevgerên dubare yên wêneyê paşnavê kontrol dike.
+Background Repeat: =
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Alîkar
+Preferences: =
+Control Panel: Panela Kontrolê
+Users: Bikarhêner
+Account: Konto
+Categories: Kategorî
+Views: Dîtin
+Layers: =
+Reports: Rapor
+Delete Events: Bûyeran Jêbirin
+Activity Log: Têketina Çalakiyê
+System Log: Log System
+Security Audit: Kontrola Ewlekariyê
+Public Preferences: Bijareyên Giştî
+Unapproved Public Events: Bûyerên Giştî yên Nepejirandî
+Administrative Tools: Amûrên Administrativedarî
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Navê Dûbare: "XXX".
+Username XXX already exists.: Navê bikarhêner "XXX" jixwe heye.
+Email address XXX already exists.: Navnîşana e-nameyê "XXX" jixwe heye.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Commentsîroveyên Zêdetir (vebijarkî)
+Approve and Send: Pejirandin û Sendandin
+Approve and Exit: Pejirandin û Derkeftin
+(Your comments will be emailed to the event creator.): (Dê şîroveyên we ji afirînerê bûyerê re bi e-nameyê werin şandin.)
+Hello, XXX.: Silav, XXX.
+XXX has approved an appointment and added comments.: Hevdîtinek hat pejirandin û şîroveyên ku ji hêla XXX ve hatine zêdekirin.
+Subject XXX: Mijar: "XXX".
+Description XXX: Danasîn: "XXX".
+Date XXX: Dîrok: XXX
+Time XXX: Dem: XXX
+Comments XXX: Commentsîrove: XXX
+Approved w/Comments by XXX.: W / Commentsîroveyên pejirandî ji hêla: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Moda rêveberê
+Your assistants: Arîkarên we
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Çewtiya nenas.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Çewtiya Bernameyê: Ne XXX diyar kirî ye!
+user: bikaranîvan
+year: sal
+month: meh
+day: roj
+
+########################################
+# Page: category.php
+#
+Category Icon: Ikona kategoriyê
+Global: Cîhane
+The permissions for the icons directory are set to read-only: Destûrên ji bo peldanka îkonan tenê-xwendî têne saz kirin.
+Category Name: Navê Kategorî:
+Color: Reng
+Remove Icon: Icon-ê hilînin:
+Add Icon to Category: Ikonê li Kategorî zêde bikin
+Upload: =
+GIF or PNG 6kb max: GIF an PNG 6kb max
+Search for existing icons: Li îkonên heyî bigerin
+Add: Lêzêdekirin
+Delete: Jêbirin
+Are you sure you want to delete this entry?: Ma hûn pê ewle ne ku hûn dixwazin vê navnîşê jêbirin?
+Make New Category: Kategoriyek Nû çêbikin
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Navê kategoriyê pêdivî ye
+File size exceeds maximum.: Mezinahiya pelê ji ya herî zêde.
+File is not a GIF or PNG image: Pel ne wêneyek GIF an PNG ye
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: KATEGORIYAN HELBEST
+ENTRY CATEGORIES: KATEGORIY ENN DINTIN
+Remove: Dûrxistin
+Global Category: Kategoriya gerdûnî
+Cancel: Bişûndekirin
+
+########################################
+# Page: colors.php
+#
+Add Custom: Xwerû zêde bikin
+Basic Colors: Rengên Bingehîn
+Current Color: Rengê heyî
+Custom Colors: Rengên xwerû
+Old Color: Rengê Kevn
+
+########################################
+# Page: combo.php
+#
+Select None: Hilbijêre Yek
+Agenda: Naverok
+Add Task: Task zêde bikin
+Description: Terîf
+Date: Rojek
+Time: Dem
+Priority: Pêşeyî
+Access: Navketin
+Created by: Ji hêla ve hatî afirandin
+Updated: Nûvekirî
+Participants: Beşdaran
+Attachments: =
+Comments: Îrove
+Brief Description: Danasîna Kurt
+Full Description: Danasîna Tevde
+Category: Liq
+Add event detail: Hûrguliya bûyerê zêde bikin
+Start Date: Dîroka Destpêkê
+Due Date: Serdem
+Add task detail: Berfirehiya peywirê zêde bikin
+All: Gişt
+Error: Şaşî
+no response from server: tu bersiv ji serverê tune
+JSON error: Çewtiya JSON
+High: Bilind
+Medium: Medya
+Low: Nizm
+Today: Îro
+Add Entry: Têketinê Zêdekirin
+Unnamed Event: Bûyera Bê Nav
+Unnamed Task: Wezîfeya Bê Nav
+Refresh: Hênikkirin
+Click to add entry: Ji bo zêdekirina navnîşê bikirtînin
+Name: Nav
+pm: danê êvarê
+am: im
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX randevûyek betal kir.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Nasnameya bilûrê nederbasdar e
+
+########################################
+# Page: docadd.php
+#
+Add Comment: =
+Add Attachment: Pêvekê Zêde bikin
+Subject: Mijar
+Comment: Agahkişî
+Upload file: Pelê bar bikin
+
+########################################
+# Page: docdel.php
+#
+Removed: Rakirin
+
+########################################
+# Page: edit_entry.php
+#
+days: rojan
+hours: saetan
+minutes: deqîqe
+You are not authorized to edit this task.: Hûn ne rayedar in ku vî karî sererast bikin.
+is in a different timezone than you are. Currently: li we ji we demek cuda ye. Evdem
+hour ahead of you: saet li pêşiya we ye
+hour behind you: saet li paş te
+hours ahead of you: demjimêrên pêşiya we
+hours behind you: bi saetan li paş we
+XXX is in a different timezone (ahead): (XXX li herêmek demjimêrek cûda ye; YYY li pêşiya we ye.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX li herêmek demjimêrê cuda ye; YYY li pişta te ye.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Dema ku ketî vir li gorî Demjimara we ye.
+Edit Entry: Têketinê Biguherîne
+Details: Hûrgulî
+Repeat: Dûbare
+Reminders: Bîranîn
+brief-description-help: Divê ev şiroveyek kurt (nêzîkê 20 tîpên) bûyerê bide. Ev dê dema temaşekirina salnameyê bûyerê temsîl bike.
+full-description-help: Divê ev hûrguliyên bûyerê temam bike. Dema ku bikarhêner li bûyerê dinêre ev agahdarî dikare were dîtin.
+access-help: Asta gihîştina bûyerê diyar dike. <ul> <li> Giştî: Her kes dikare hûrguliyên bûyerê bi tevahî bibîne.</li> <li> Bawerî: Yên din dikarin bibînin ku ji bo wê dîrok û demê navnîşek we heye, lê ne hûrguliyên ku ew e.</li></ul>
+priority-help: Pêşengiya bûyerê diyar dike. Bûyerên pêşengiya bilind dê bi qelew werin nîşan dan.
+category-help: Kategoriya bûyerê diyar dike.
+completed-help: Karê tarîxê qediya. Tenê dema ku hemî beşdaran ji sedî 100% yek be çalak dibe.
+Date Completed: Dîroka Temamkirinê
+percent-help: Ji bo vê bikarhênerê ji sedî qedandina erkê
+Percent Complete: =
+All Percentages: Hemî Sedî
+location-help: Cihê bûyerê
+Location: Cîh
+url-help: URL-ya bûyerê
+URL: =
+date-help: Dîroka bûyerê diyar dike.
+Untimed event: Bûyera nediyar
+Timed event: Bûyera demborî
+All day event: Bûyera tevahiya rojê
+Timezone Offset: Destpêka Zona Demê
+time-help: Dema bûyerê diyar dike. <ul> <li> "Bûyera demjimêr" (ji bo bûyerek ku di wê rojê de ji bo demek diyarkirî tê plan kirin)</li> <li> "Bûyerek nediyar" (ji bo bûyerek dema wê tune (mîna betlaneyê )</li> <li> "Bûyera tevahiya rojê" (ji bo bûyerek ku tevahiya rojê digire (mîna derketina derveyî ofîsê)</li></ul>
+duration-help: Dirêjiya (bi saetan; hûrdeman) bûyerê diyar dike. <em>Ev zev dikare vala bimîne.</em>
+end-time-help: Dema ku tê payîn bûyer bi dawî bibe diyar dike.
+Start Time: Dema Destpêkê
+Due Time: Dema Danê
+Site Extras: Zêdeyên Malperê
+avail_participants-help: Beşdarên vê navnîşê navnîş dike.
+Available: Berdeste
+Find Name: Navê Bibînin
+Resources: Çavkaniyên
+participants-help: Beşdarên vê navnîşê navnîş dike.
+Selected: Hilbijartin
+Availability: Berdestbûnî
+external-participants-help: Ji bo bûyerê navnîşek beşdaran diyar dike ku ne bikarhênerên salnameyê ne. Divê bikarhêner her rêzikek yek werin navnîş kirin û dikarin navnîşanek e-nameyê tê de bin. Ger navnîşanek e-nameyê tête diyar kirin, bikarhêner mafdar e ku agahdarî û bîranînan bistîne.
+External Participants: Beşdarên Derveyî
+repeat-type-help: Vebijêrin ka çiqas bûyer divê dubare bibe.
+Daily: Rojane
+Weekly: Heftane
+Monthly: Mehane
+by day: bi roj
+by date: bi tarîxê
+by position: bi helwest
+Monthly (by day): Mehane (bi roj)
+Monthly (by date): Mehane (bi tarîx)
+Monthly (by position): Mehane (bi helwest)
+Yearly: Salane
+Manual: Destî
+Expert Mode: Moda Pispor
+repeat-end-date-help: Dîroka ku bûyer divê dubare bike diyar dike.
+Ending: Dawî
+Forever: Herdem
+Use end date: Dîroka bidawîbûnê bikar bînin
+Number of times: Hejmara caran
+repeat-frequency-help: Diyar dike ku bûyer çiqas caran divê dubare bibe.
+Frequency: Pircarînî
+Weekdays Only: Tenê rojên hefteyê
+Week Start: Hefteya Destpêkê
+repeat-bydayextended-help: Li gorî roja hefteyê destûrê dide hilbijartinê.
+ByDay: =
+repeat-month-help: Diyar dike ku bûyer bi mehan divê dubare bibe.
+ByMonth: =
+repeat-bysetpos-help: Destûrê dide hilbijartina tarîxê ya li gorî pozîsyona bi mehê re.
+BySetPos: =
+repeat-bymonthdayextended-help: Li gorî dîrokê hilbijartina dîrokê dihêle.
+ByMonthDay: =
+repeat-byweekno-help: Destûrê dide bikarhêner ku navnîşa hefteyên dubarekirina bûyerê diyar bike (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Destûrê dide bikarhêner ku navnîşa rojên salê diyar bike ku bûyerê dubare bike (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Rojên pêvek ku divê ev bûyer çêbibe an nabe.
+Exclusions: Veqetandin
+Inclusions: Tevlêbûn
+Add Exception: Awarteyê zêde bikin
+Add Inclusion: Tevlêbûnê Zêdekirin
+Delete Selected: Hilbijartî Jêbirin
+Send Reminder: =
+When: Heke
+Use Date/Time: Dîrok / Demjimêr bikar bînin
+Use Offset: Offset bikar bînin
+Before: Berî
+After: Piştî
+Start: Destpêkirin
+End/Due: Dawî / Dane
+Times: =
+Every: Herkes
+CAPTCHA Warning: Hişyarî:  CAPTCHA bêyî pêveka GD ya PHP nayê bikar anîn!<br>
+Delete entry: Navnîşê jêbirin
+You are not authorized to edit this entry.: Hûn ne rayedar in ku vê navnîşê sererast bikin.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX randevûyek nû çêkir.
+XXX has updated an appointment.: XXX randevûyek nû kir.
+Security violation!: Binpêkirina ewlehiyê!
+You must enter the anti-spam text on the previous page.: Divê hûn li ser rûpela berê têkevin nivîsa dijî-spam.
+The following conflicts with the suggested time: Pevçûnên jêrîn bi dema pêşniyarkirî re nakok in
+User removed from participants list.: Bikarhêner ji navnîşa beşdaran hate derxistin.
+Please look on XXX to accept or reject this appointment.: Ji kerema xwe li XXX binêrin ku vê randevûyê qebûl bikin an red bikin.
+Please look on XXX to view this appointment.: Ji bo dîtina vê hevdîtinê ji kerema xwe li XXX binêrin.
+Scheduling Conflict: Rêzkirina Pevçûnê
+Your suggested time of: Wextê we pêşniyar ji
+conflicts with the following existing calendar entries: bi navnîşên salnameya heyî ya jêrîn re nakokî dike
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX di "config.php" de nehatîye saz kirin.
+word characters only: (tenê dikare tîpên bêjeyê vehewîne; [a-zA-Z_0-9])
+Add User: Bikarhêner lê zêde bike
+Edit User: Bikarhêner Biguherîne
+Calendar ID: Nasnameya salnameyê
+First Name: Nav
+Last Name: Paşnav
+Is public calendar: Salnameya giştî ye
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Çewtiya databasê
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Salnameya Remote Zêdekirin
+Edit Remote Calendar: Salnameya Dûr Remote
+Create Layer: Layer çêbikin
+Reload: Ji nû ve barkirin
+Required to View Remote Calendar: Ji bo Dîtina Calendarya Dûr Pêdivî ye
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Encamên Import
+Events successfully imported: Bûyerên bi serfirazî hatine îthal kirin
+Create a new layer to view this calendar.: Ji bo dîtina vê salnameyê qatek nû çêbikin.
+Errors: Çewtî
+There was an error parsing the import file or no events were returned.: Di parsekirina pelê importê de çewtiyek çêbû an jî bûyer nehatin vegerandin.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Sibê
+Yesterday: Do
+Day before yesterday: Berî doh
+Next week: Hefteya borî
+This week: Vê hefteyê
+Last week: Hefteya çûyî
+Week before last: Hefteya berî ya paşîn
+Next week and week after: Hefteya din û hefteya piştî
+This week and next week: Vê heftê û hefteya din
+Last week and this week: Hefteya çûyî û vê heftê
+Last two weeks: Du hefteyên dawî
+Next month: Meha bê
+This month: Vê mehê
+Last month: Meha çûyî
+Month before last: Mehek berî ya dawî
+Next year: Sala bê
+This year: Sal
+Last year: Sala borî
+Year before last: Sala berî ya paşîn
+Next 14 days: 14 rojên din
+Next 30 days: 30 rojên din
+Next 60 days: 60 rojên din
+Next 90 days: 90 rojên din
+Next 180 days: 180 rojên din
+Next 365 days: 365 rojên din
+Invalid report id XXX.: Nasnameya rapora nederbasdar: "XXX".
+Unnamed Report: Rapora Navdêr
+Add Report: Raporê zêde bikin
+Edit Report: Raporê Biguherîne
+Report name: Navê rapor bikin
+User: Bikaranîvan
+Current User: Bikarhênerê heyî
+Include link in menu: Zencîreyê têxin menuyê
+Include standard header/trailer: Sernav / trailer-a standard tê de bikin
+Include previous/next links: Zencîreyên berê / paşîn têxin nav
+Include empty dates: Dîrokên vala têxin nav xwe
+Date range: Dîroka rojê
+Template variables: Guherbarên şablonê
+Page template: Rûpelê şablonê
+Day template: Şablonê rojê
+Event template: Templateablona bûyerê
+Are you sure you want to delete this report?: Ma hûn pê ewle ne ku hûn dixwazin vê raporê jêbirin?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Nasnameyek raporê tune: "XXX".
+Variable XXX not found.: XXX guhêrbar nehat dîtin.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Serê Custom-yê biguherînin
+Edit Custom Script/Stylesheet: Nivîsar / ylesêwaza Xwerû ya Xwerû Biguherînin
+Edit Custom Trailer: Trailer-a Custom-ê biguherînin
+
+########################################
+# Page: edit_user.php
+#
+Username: Navê bikarhêner
+E-mail address: Navnîşana emailê
+Password: Şîfre
+again: dîsa
+Disabled for demo: Ji bo demo seqet e
+Are you sure you want to delete this user?: Ma hûn pê ewle ne ku hûn dixwazin vê bikarhênerê jê bibin?
+Change Password: .Îfreyê biguherînin
+New Password: Passwordîfreya nû
+Set Password: Passwordîfreyê saz bikin
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Vemirandina bikarhêneran nayê piştgirî kirin.
+The passwords were not identical.: Theîfre ne yek bûn.
+You have not entered a password.: We şîfreyek nexistî.
+Username cannot be blank.: Navê bikarhêner nikare vala be.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Destûr nadin
+
+########################################
+# Page: export.php
+#
+Export: Eksport
+Export format: Formata hinardeyê
+Include all layers: Hemî tebeqan têxin nav xwe
+Include deleted entries: Navnîşên jêbirî têxin nav
+Export all dates: Hemî xurmeyan hinarde bikin
+Start date: Dîroka destpêkirinê
+End date: Dîroka bidawîbûnê
+Modified since: Ji ber ku hate guherandin
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: teşeya hinardeyê ne diyarkirî an çewt e.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Bikarhêner diyar nekiriye.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Koma Nû zêde bikin
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Koma Bênavkirî
+Add Group: Komê zêde bikin
+Edit Group: Koma Biguherîne
+Group name: Navê komê
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Divê hûn navê komek diyar bikin
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Salnameyên nûvekirinê bixweber bikin
+auto-refresh-help: Dema ku were çalaki kirin, dê dîmena rojê, dîmena hefteyê, dîmena mehê û rûpelên ne pejirandî yên navnîşê bixweber bixwe bi awayekî periyodîk xwe nûve bikin.
+Auto-refresh time: Dema nûvekirina xweser
+auto-refresh-time-help: Ger nûvekirina xweser çalak be, ev dema navbera her nûvekirinê diyar dike.
+Display days with events in bold in year view: Rojan bi dîmenên salê bi qalind bi qalind nîşan bikin
+Display weekends in week view: Di pêşangeha hefteyê de dawiya hefteyan nîşan bidin
+Time interval: Navbera demê
+time-interval-help: Diyar dike ku dê blokên demjimêr di dîmena heftê û dîmena rojê de çiqas dirêj bibin.
+Nonuser: Salnameyên Ne Bikarhêner
+user-customize-color: Diyar dike ka destûr heye ku bikarhêner nexşeya xweya rengîn biguherînin.
+enable-gradient-help: Ji bo paşmayên hucreyê rengên gradient bikar bînin.
+Manually entering color values: Bi destan têkevin nirxên rengîn
+colors-help: Pêdivî ye ku hemî reng di "#RRGGBB" forma hexadecimal de ku "RR" ji bo sor hejmar e, "GG" ji bo kesk hêjeya hex e, û "BB" ji bo şînê hêjeya hex e.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Bug Report
+Please include all the information below when reporting a bug.: Dema ku çewtiyek radigihînin ji kerema xwe hemî agahdariyên jêrîn binivîsin.
+Also, please use English rather than XXX.: Di heman demê de, ji kerema xwe ji <XXX> ratherngilîzî  bikar bînin.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Belgekirinên WebCalendar
+Currently in English only.: Naha tenê bi Englishngilîzî.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Zêdekirin / Guhertina Navnîşên Salnameyê
+Repeat Type: Tîpa Dubare
+For More Information...: Ji bo Agahdariya Zêdetir ...
+Repeat End Date: Dîroka Dawiyê Dubare bikin
+Repeat Day: Roja Dubare
+repeat-day-help: Diyar dike ku rojên hefteyê bûyer divê dubare bibe.
+
+########################################
+# Page: help_import.php
+#
+Import: Malanîn
+Palm Desktop: =
+allow you to import entries from the Palm...: Ev form dê bihêle ku hûn navnîşanan ji Pirtûka Pirtûkê ya Palm Desktop-ê bikin. Pêdivî ye ku ew di nav pelrêça Palm a we de di pirtûka datebook / datebook.dat de di binê rêbernameyek ku bi navê bikarhêner navê we tê de ye were bicîh kirin.
+The following entries will not be imported: Navnîşên jêrîn dê neyên şandin:
+Entries older than the current date: Têketinên ji dîroka heyî kevintir
+Entries created in the Palm Desktop...: Navnîşên di Sermaseya Palm de hatine çêkirin ku nehatine HotSync'd kirin
+Anything imported from Palm...: Her tiştê ku ji Palm hatîye vexwendin dê di dema îthalata paşîn de ji nû ve were nivîsandin (heya ku dîroka bûyerê derbas nebûbe). Ji ber vê yekê, pêdivî ye ku nûvekirin di Sermaseya Palmiyê de werin çêkirin.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Ev form dê bûyerên vCalendar (.vcs) 1.0 bîne.
+The following formats have been tested: Formatên jêrîn hatine ceribandin:
+This form will import iCalendar (.ics) events.: Ev form dê bûyerên iCalendar (.ics) îthal bike.
+Enabling: Çêdibe
+Overwrite Prior Import: .Xracata Berê Ji Nûve Bikin
+will cause events imported previously...: dê bibe sedem ku bûyerên berê hatine îtxal kirin, ên ku heman UID-ê wekî bûyerek ji pela nû ya importê bikar anîne, wekî jêbirin werin nîşankirin. Pêdivî ye ku ev destûrê bide ku pelê iCalendar-ê nûvekirî bêyî afirandina dupliceyan were îthal kirin.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Indeksa Alîkariyê
+About WebCalendar: =
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Layer ji bo nîşandanê bûyerên bikarhênerên din di salnameya xwe de kêrhatî ne. Hûn dikarin bikarhêner û rengê bûyerên dê werin nîşandin diyar bikin.
+Add/Edit/Delete: Zêdekirin / Serastkirin / Jêbirin
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Bişkojka Zêdekirina Layers di beşa rêveber de li biniya rûpelê bikirtîne dê bihêle ku hûn qatan zêde bikin / sererast bikin.
+The text color of the new layer that will be displayed in your calendar.: Rengê nivîsê yê tebeqeya nû ku dê di salnameya we de were xuyandin.
+Disabling: Neçalak kirin
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Zencîreya Astengdaran Layers di beşa rêveber de li binê rûpelê bikişînin da ku hûn qatan vemirînin.
+Duplicates: =
+If checked, events that are duplicates of your events will be shown.: Heke were seh kirin, bûyerên ku duçel ên bûyerên we ne, dê werin xuyandin.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Di binê rûpelê de zencîra Enable Layers di beşa rêveber de bişkînin da ku hûn qatan vemirînin.
+Source: Kanî
+Specifies the user that you would like to see displayed in your calendar.: Bikarhênerê ku hûn dixwazin bibînin di salnameya xwe de diyar dike diyar dike.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Kategorî Default
+default-category-help: Kategoriyê diyar dike ku bûyerek nû divê neçê bibe.
+When I am the boss: Gava ku ez serleşkerim
+Email me event notification: Ji min re agahdariya bûyerê bişînin
+email-boss-notifications-help: Diyar dike ka serokên e-nameyan wekî agahdariyên bûyerê bistînin.
+I want to approve events: Ez dixwazim bûyeran bipejirînim
+boss-approve-event-help: Diyar dike ka dê ji patron bê xwestin ku bûyerên ji hêla asîstan ve hatine zêdekirin bipejirîne.
+Subscribe/Publish: Abonekirin / Weşandin
+Allow remote publishing: Destûrê bidin weşana ji dûr
+allow-remote-publishing-help: Diyar dike heke kiriyarek iCal ji dûr ve dikare bûyeran vegerîne WebCalendar-ê
+remote-publishing-url-help: URL-ya ku di sepana mişterî iCal-ê de bikar tîne hem ji bo abonetiyê û hem jî weşana ji bo WebCalendar-ê bikar tîne nîşan dike.
+allow-remote-subscriptions-help: Diyar dike ku ka bikarhênerên dûr dikarin li salnameya xwe bibin abone, bihêle ku ew bûyerên we di serîlêdanek-i-çalak-çalak de bibînin (mînakî iCal an Mozilla Calendar ya Apple).
+remote-subscriptions-url-help: Nîşan dide ku bikarhênerên ji dûr ve divê bikarhêner ji bo abonebûna salnameya xwe bikar bînin.
+Enable FreeBusy publishing: Belavkirina FreeBusy-ê çalak bike
+freebusy-enabled-help: Diyar dike ka dema berdest a bikarhênerek bi karanîna standarda iCal FreeBusy dikare were peyda kirin.
+freebusy-url-help: URL-ya gihîştina navnîşa FreeBusy-ya bikarhêner
+rss-feed-url-help: URL-yê ku bigihîje RSS-ê
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Destûrê dide kontrola xweş a destûr û destûrên bikarhêner. Ger ku ji hêla rêvebir ve were destûrdayîn bikarhêner dikarin destûrnameyek xwerû û ferdî jî bidin.
+If disabled, this user cannot send you emails.: Ger seqet be, ev bikarhêner nikare e-nameyan ji we re bişîne.
+If disabled, this user cannot see you in the participants list.: Ger seqet be, ev bikarhêner nikare we di nav lîsteya beşdaran de bibîne.
+If enabled, this user cannot view the details of any of your entries.: Ger çalak be, ev bikarhêner nikare hûrguliyên yek ji navnîşên we bibîne.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Weşandina Astengdar (Admin)
+Publishing Disabled (User): Weşandina Neçalak (Bikarhêner)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Vebijêrin Vebijêrin
+Current Icons on Server: Ckonên heyî yên li Pêşkêşkerê
+
+########################################
+# Page: import.php
+#
+import from file: ji pelê îthal bikin
+Disabled: Bêmecel
+Import format: Formata îthalê
+Exclude private records: Qeydên xwerû derxînin
+Repeated items are imported separately. Prior imports are not overwritten.: Tiştên dubare ji hev cuda têne anîn. Importxracatên berê ji nû ve nayên nivîsandin.
+
+########################################
+# Page: import_handler.php
+#
+No file: Pel tune
+Error deleting palm events from webcalendar.: Xelet di jêkirina bûyerên xurmeyê de ji webcalendar.
+Events from prior import marked as deleted: Bûyerên ji îtxala pêşîn wekî jêbirin hatine nîşankirin
+Conflicting events: Bûyerên nakok
+The import file contained no data.: Di pela îtxalatê de daneyek tune.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Ma hûn pê ewle ne ku hûn dixwazin vê tebeqeyê jê bikin?
+Delete layer: Qata jêbirin
+Edit layer: Qata sererast bikin
+Enable layers: Qatan çalak bikin
+Layer: Pel
+Layers are currently disabled.: Tebeqeyên aniha seqet in.
+Layers are currently enabled.: Layers niha hatine çalak kirin.
+Click to modify layers settings for XXX: Vira bikirtînin da ku mîhengên tebeqeyan ên ji bo salnameya XXX biguherînin.
+Disable Layers: Layers neçalak bikin
+Add layer: Qatê zêde bikin
+Add Layer: Layer Zêdekirin
+Edit Layer: Layer Biguherîne
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Nikare tercîhê nûve bike
+Invalid entry id.: Nasnameya ketinê ya nederbasdar.
+You cannot create a layer for yourself.: Hûn nikarin ji xwe re qatek biafirînin.
+You can only create one layer for each user.: Hûn dikarin tenê ji bo her bikarhênerek qatek çêbikin.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Pejirandin / Piştrastkirin
+Approve Selected: Hilbijartî Pejirandin
+Check All: Hemî Kontrol bikin
+Emails Will Not Be Sent: Dê E-name Nayên andin
+Reject Selected: Redkirin Hilbijartî
+Reject: Refzkirin
+Uncheck All: Paqijkirina Hemî hilbijêrin
+View this entry: Vê navnîşê bibînin
+No unapproved entries for XXX.: Ji bo "XXX" navnîşên ne pejirandî tune.
+Unapproved Entries: Têketinên Nepejirandî
+Approve this entry?: Vê navnîşê bipejirînin?
+Reject this entry?: Vê navnîşê red bikin?
+Approve Selected entries?: Navnîşên Hilbijartî Bipejirînin?
+Reject Selected entries?: Navnîşên Hilbijartî red bikin?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Divê hûn têkevin û şîfreyek têkevinê.
+Save login via cookies so I dont have to login next time.: Bi navgîniya çerezan têketinê tomar bikin da ku ne hewce be ku ez carek din têkevim
+Login: Têkevin
+public: alenî
+Access XXX calendar: Bi salnameya XXX re bigihîjin
+cookies-note: Nîşe: Ji bo vê sepanê pêdivî ye ku çerez werin çalak kirin.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Karakterên neqanûnî di têketinê de XXX.
+Invalid login: Têketinek nederbasdar
+Activity login failure: Navê bikarhêner: "XXX", IP: "YYY".
+Error XXX: Çewtî: "XXX".
+You have been logged out.: Hûn derketin.
+Access public calendar: Têkevin salnameya giştî
+Not yet registered? Register here!: Hê nehatî tomar kirin? Li vir xwe qeyd bikin!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Salnameyek wusa ne-bikarhêner tune: "XXX".
+This Calendar is not Public.: Ev Salname ne Giştî ye.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Salnameya Nû-Bikarhêner Nû Bikin
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Divê navnîşek were diyar kirin.
+No such nonuser calendar: Salnameyek wusa ne-bikarhêner tune
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Mijara nederbasdar
+Save Preferences: Vebijarkên Biparêze
+Public Access calendar: Salnameya Têketina Giştî
+Modify Non User Calendar Preferences: Vebijarkên Salnameya Ne Bikarhêner Guherîne
+Return to My Preferences: Vedigerin Vebijarkên Min
+Custom Scripts: Nivîsarên Xweser
+Timezone Selection: Hilbijartina Zona Demê
+Multiview: =
+entry-interval-help: Dema ku demên ketinê sererast dike navberê hûrdem saz dike
+Entry interval: Navbera navnîşê
+hour: seet
+minute: deqqe
+theme-reload-help: Ji ber caching css, dibe ku ji nû ve rûpelek hewce be
+Page may need to be reloaded for new Theme to take effect: Dibe ku rûpel hewce bike ku ji bo Mijara nû bandor bike ji nû ve were barkirin
+display_byproxy-help: Afirînerê rastîn li ser rûpelê view_entry nîşan bide
+Display if created by Assistant: Heke ji hêla Alîkar ve were afirandin nîşan bide
+allow-view-subscriptions-help: Destûrê dide ku sînorkirina gihîştina ji dûr ve ya têketinên Taybet an Nehênî
+Allow remote viewing of: Destûrê bide dîtina ji dûr ve
+entries: navnîşan
+
+########################################
+# Page: purge.php
+#
+Purging events for: Bûyerên paqijkirinê ji bo
+Finished: Qediya
+Back: Paş
+Check box to delete ALL events for a user: Ji bo jêbirinê  HEM ​​  bûyeran ji bo bikarhênerek qutîkê vekin
+Delete all events before: Berê hemî bûyerên jêbirin
+Purge deleted only: Paqij tenê hate jêbirin
+Preview delete: Pêşdîtin jêbirin
+Are you sure you want to delete events for: Ma hûn pê ewle ne ku hûn dixwazin bûyerên ji bo jê bibin
+Records deleted from XXX: Tomarên ji "XXX" hatine jêbirin.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Navnîşana e-nameyê vala nabe.
+Username already exists.: Ev nav tê bikaranîn.
+Email address already exists.: Navnîşana e-nameyê jixwe heye.
+New user via self-registration.: Bikarhênerê nû bi xwe-tomarkirinê.
+A new WebCalendar account has been set up for you.: Ji bo we hesabek nû ya WebCalendar hate saz kirin.
+Your username is XXX.: Navê bikarhênerê we ev e: "XXX".
+Your password is XXX.: Passwordîfreya we ev e: "XXX".
+Please visit XXX to log in and start using your account!: Ji kerema xwe biçin "XXX" ku têkevinê û dest bi karanîna hesabê xwe bikin!
+You may change your password after logging in the first time.: Hûn dikarin cara yekem piştî têketinê şîfra xwe biguherînin.
+If you received this email in error: Heke we vê e-nameyê bi xeletî stendibe û ji bo hesabek WebCalendar-ê xwe qeyd nekiribe, hûn dikarin vê agahdariyê paşguh bikin, an jî bi têbîniyek kurt bersîvê bidin
+Administrator: Birêvebir
+Welcome: Bi xêr hatî
+New user via email.: Bikarhênerê nû bi e-nameyê.
+Registration: Qeydkirinî
+Welcome to WebCalendar: =
+Your email should arrive shortly.: Divê e-nameya we di demek kurt de were.
+Return to Login screen: Vegere dîmendera têketinê
+Password (again): Passwordîfre (dîsa):
+Your account information will be emailed to you.: Agahdariya hesabê we dê ji we re bi e-nameyê were şandin.
+Submit: Nermijîn
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Berdewamkirin
+(Your comments will be emailed to the other participants.): (Dê şîroveyên we ji beşdarên din re bi e-nameyê werin şandin.)
+XXX has rejected an appointment.: XXX randevûyek red kir.
+Rejected by XXX.: Ji hêla XXX ve hate red kirin.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Salnameya Nû ya Dûr Zêdekirin
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Ev bûyer nepenî ye.
+(Private): (Taybet)
+(cont.): (berdewam)
+Approved: Pejirandin
+Deleted: Paqij kirin
+Rejected: Red kirin
+Waiting for approval: Li benda pejirandinê ne
+Unknown: Nenas
+Invalid report id.: Nasnameya rapora nederbasdar.
+Click here to manage reports for the Public Access calendar.: Ji bo birêvebirina raporan ji bo salnameya Têketina Giştî li vir bikirtînin.
+Add new report: Raporek nû zêde bikin
+Manage Reports: Raporên Birêvebirin
+
+########################################
+# Page: search.php
+#
+Advanced Search: Lêgerîna Pêşkeftî
+Search: Gerr
+Keywords: =
+Enter % for all entries: Ji bo hemî navnîşan% binivîse
+Include: Linavxistin
+Filter by Date: Parzûn bi Dîrokê
+All Dates: Hemî Dîrok
+Past: Borî
+Upcoming: Hatin
+Range: Dirêjahî
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Pêdivî ye ku hûn yek an çend bêjeyên lêgerînê binivîsin.
+Search Results: Encamên Lêgerînê
+match found: maç hat dîtin
+matches found: maç hatin dîtin
+No matches found: Maç nehat dîtin
+New Search: Lêgerîna Nû
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Agahdariya jêrîn pirsgirêkên potansiyel ên sazkirina WebCalendar-a weya ku dikare werin guherandin ji bo ku sazkirina we ewletir be navnîş dike.
+For questions about WebCalendar security see the forums: Ji bo pirsên li ser her pirsgirêkek ewlehiya WebCalendar, ji kerema xwe forûmên WebCalendar ku li GitHub.com hatine mazûvan kirin bikar bînin;<br>XXX
+View your current PHP settings: Mîhengên PHP-ya xweya nuha bibînin
+Security Issue: Mijara Ewlekariyê
+Status: Cî
+Default admin user password: Default şîfreya bikarhêner admin
+You should change the password of the default admin user.: Pêdivî ye ku hûn şîfreya bikarhênerê rêveberê xwerû biguherînin.
+File permissions XXX: Destûrên pelê: XXX
+item XXX should not be writable: Tişta jêrîn divê neyê nivîsandin:<br><tt> XXX</tt>
+File exists XXX: Pel heye: "XXX"
+Because you have email disabled, you should remove this file.: Ji ber ku e-nameya we neçalak e, divê hûn vê pelê jê bibin.
+File location XXX: Cihê pelê: "XXX"
+remove XXX if not using: Heke hûn pelê "XXX" bikar nakin, divê hûn wê jê bibin. An jî, qe nebe, wê veguherînin navnîşek nû.
+System Settings XXX: Mîhengên Pergalê: "XXX"
+consider enabling UAC: Hûn dikarin bixwazin ku çalakkirina Kontrola Bikaranîna Bikarhêner ji bo danîna îmtiyazên bikarhêner bifikirin.
+recommend approving new public events: Em pêşniyar dikin ku hemî radestkirinên bûyera giştî werin pejirandin.
+recommend using CAPTCHA: CAPTCHA tête pêşniyar kirin ku ji nû ve şandinên bûyerên otomatîk biparêze.
+Database cache directory location: Database cache directory directory
+db cache should be inaccessable: Pêdivî ye ku şîfreya danegehê di nav pelrêçek de be ku bi URL-ê re çênabe.
+PHP Settings XXX: Mîhengên PHP: "XXX"
+recommend setting XXX Off: Mîhenga ku ji bo "XXX" tê pêşniyar kirin Off e.
+recommend setting allow_url_fopen Off: Dema salnameyên ji dûr ve neyên çalak kirin mîhengê pêşniyarbûyî ji bo "allow_url_fopen" Dakêşe.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Salnameya Bikarhênerek Din Dîtin
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: We kategoriyek zêde nekiriye.
+Set Category: Kategorî danîn
+Global Categories cannot be changed.: Kategoriyên Gloverî nayê guhertin.
+
+########################################
+# Page: upcoming.php
+#
+more: zêde
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Salnameyên Dûr
+denotes administrative user: bikarhênerê rêveberiyê destnîşan dike
+Add New User: Bikarhênerek Nû Bikin
+
+########################################
+# Page: usersel.php
+#
+form: şikil
+Reset: Reset bikin
+
+########################################
+# Page: views.php
+#
+Add New View: Dîtina Nû Bikin
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Dîtina Bêav
+Add View: Dîtinê Zêde bikin
+Edit View: Dîtinê Biguherînin
+View Name: Navê Dîtin
+View Type: Type View
+Day by Time: Roj bi Dem
+Week (Users horizontal): Hefte (Bikarhênerên xerîb)
+Week by Time: Hefta Bi Wext
+Week (Users vertical): Hefte (Bikarhênerên vertical)
+Week (Timebar): Hefte (Demjimêr)
+Month (Timebar): Meh (Rêzeya Demê)
+Month (side by side): Meh (li tenişta hev)
+Month (on same calendar): Meh (li ser heman salname)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Divê hûn navekî dîmenê diyar bikin
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Ji bo vê dîtinê bikarhêner tune.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Nûvekirina Task Percentage
+Completed: Temam kirin
+Assistant mode: Modeya alîkar
+Declined: Red kirin
+Needs-Action: Pêdivî-Çalakî
+by: ji
+Percentage Complete: Ji sedî Temam
+External User: Bikarhênerê Derve
+Update: Rojanekirin
+at: ba
+comments: şîroveyan
+Show: Rêdan
+Hide: Veşartin
+Approve/Confirm entry: Ketinê dipejirînin / piştrast dikin
+Reject entry: Ketinê red bikin
+Set category: Kategorî danîn
+Add to My Calendar: Li Salnameya Min Zêde bikin
+Copy entry: Navnîşê kopî bikin
+This will delete this entry for all users.: Ev ê vê navnîşê ji bo hemî bikarhêneran hilweşîne.
+Edit entry: Têketinê biguherînin
+Edit repeating entry for all dates: Ji bo hemî tarîxên navnîşê dubare biguherînin
+Delete repeating event for all dates: Ji bo hemî tarîxan bûyerê dubare bikin
+Edit entry for this date: Ji bo vê tarîxê navnîşê biguherînin
+Delete entry only for this date: Ji bo vê dîrokê tenê navnîşê jêbirin
+Delete entry from calendar of XXX: Ji salnameya XXX-ê têketinê jêbirin
+This will delete the entry from your XXX calendar.: Ev ê navnîşê ji salnameya we XXX paqij bike.
+boss: şef'
+This will delete the entry from your boss calendar.: Ev ê navnîşê ji salnameya patronê xwe jê bibe.
+This will delete the entry from your calendar.: Ev ê navnîşê ji salnameya we jê bibe.
+from your boss calendar: ji salnameya patronê xwe
+Do you want to add this entry to your calendar?: Ma hûn dixwazin vê navnîşê li salnameya xwe zêde bikin?
+This will add the entry to your calendar.: Ev ê navnîşê li salnameya xwe zêde bike.
+Email all participants: Ji hemî beşdaran re bi e-nameyê bişînin
+Hide activity log: Têketina çalakiyê veşêre
+Show activity log: Têketina çalakiyê nîşan bide
+Export this entry to: Vê navnîşê bişînin derve
+Palm Pilot: Pîlotê Palmê
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Li ser şaneya vala du-klîk bikin ku navnîşa nû zêde bikin.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Têketina Nû
+cont.: domandin
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Salnameya Bikarhênerek Din
+Category Management: Rêveberiya Kategorî
+Day View: =
+Edit Event: Bûyerê Biguherîne
+Month View: Dîtina Mehê
+Common Trailer: Trailer hevpar
+User Management: Rêveberiya Bikarhêner
+Manage Views: Dîtinan Birêvebirin
+Week View: Dîmena Hefteyê
+Year View: Dîtina Salê
+Invalid function id: Nasnameya fonksiyonê nederbasdar
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Pelê "settings.php" nehat dîtin.<br>Ji kerema xwe "settings.php.orig" li "settings.php" kopî bikin û ji bo malpera xwe sererast bikin.
+Incomplete settings.php file...: Pelê "settings.php" neqediya ...
+Could not find XXX defined in...: "XXX" di pela "settings.php" ya we de hatî diyarkirin nedît.
+You must define XXX in: Divê hûn "XXX" di pela "settings.php" de diyar bikin.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Berfanbar
+Dec: Kanûn
+LANGUAGE DEFINED: ZIMAN P DENAS
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Çewtiya girêdana bi danegehê: "XXX".
+db_type not defined.: db_type nayê diyarkirin.
+invalid db_type XXX: db_type "" XXX "nederbasdar e.
+Cache cleared from previous SQL!: Cache ji SQL-ya berê hate paqij kirin!
+Error executing query.: Di pêkanîna pirsê de çewtî.
+Unfortunately, XXX is not implemented for YYY: Mixabin, "XXX" ji bo (YYY) nayê sepandin.
+Unknown ODBC error.: Çewtiya ODBC-ya nenas.
+Error opening cache dir XXX.: Di vekirina cache dir "XXX" de çewtî.
+delete: jêbirin
+Cache error Could not XXX file YYY.: Çewtiya kaşeyê: Pelê XXX nikare "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Çewtiya Fatal
+Invalid data format for: Formata daneyê ya nederbasdar ji bo
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Çewtî: Tîpa ji bo têketina çalakiyê nehatî danîn!
+This event is XXX.: Ev bûyer XXX ye.
+Conf.: =
+exceeds limit of XXX events per day: her roj ji sînorê XXX bûyeran derbas dike
+on: li
+All Attendees: Hemî Beşdarvan
+Busy: Bikar
+Tentative: Demok
+Schedule an appointment for XXX.: Ji bo XXX randevûyekê plansaz bikin: YYY.
+date_select: =
+Event approved: Bûyer hate pejirandin
+Journal approved: Kovar pejirand
+Task approved: Erk hate pejirandin
+Attachment: =
+Event created: Bûyer afirandin
+Journal created: Kovar afirandin
+Task created: Task hat afirandin
+Event deleted: Bûyer hate jêbirin
+Journal deleted: Kovar hate jêbirin
+Task deleted: Erk hate jêbirin
+New user via email (self registration): Bikarhênerê nû bi e-nameyê (xwe tomarkirin)
+New user (self registration): Bikarhênerê nû (xwe tomarkirin)
+Notification sent: Notification şandin
+Event rejected: Bûyerê red kir
+Journal rejected: Kovar red kir
+Task rejected: Erk hate red kirin
+Reminder sent: Bîranîn şandin
+Event updated: Bûyer nûve kir
+Journal updated: Kovar nûve kir
+Task updated: Erk hate nûve kirin
+Delete User: Bikarhêner Jêbirin
+WK: =
+TASKS: KARAN
+Task_Title: Nav
+Due: Ji ber
+Task Name: Navê Wezîfeyê
+Task Due Date: Mêjûya Biryarê
+You have XXX unapproved entries: XXX navnîşên ne pejirandî yên we hene 
+Changes successfully saved: Guherandinên bi serfirazî hatin tomarkirin
+Event: Bûyer
+Action: Çalakî
+Printer Friendly: =
+Generate printer-friendly version: Guhertoyek çap-heval biafirînin
+after: piştî
+before: berî
+end: dawî
+start: destpêkirin
+View this event: Vê bûyerê bibînin
+View this task: Vê peywirê bibînin
+January: Rêbendan
+February: Reşemî
+March: Adar
+April: Avrêl
+May_: Gulan
+June: Pûşper
+July: Tîrmeh
+August: Tebax
+September: Îlon
+October: Cotmeh
+November: Mijdar
+Jan: =
+Feb: Sibat
+Mar: =
+Apr: Nîsan
+May: Gulan
+Jun: =
+Jul: Tîrmeh
+Aug: Tebax
+Sep: =
+Oct: Cotmeh
+Nov: =
+SU: =
+MO: =
+TU: =
+WE: EM
+TH: =
+FR: =
+SA: =
+unknown-month: mehê nediyar
+First Quarter Moon: Heyva Çaryeka Yekem
+Full Moon: Heyva Têr
+Last Quarter Moon: Heyva Çaryeka Dawîn
+New Moon: Heyva Nû
+Error TIME_SLOTS undefined!: Çewtî: TIME_SLOTS nehat diyarkirin!
+The following error occurred: Xeletiya jêrîn çêbû
+You are not authorized.: Hûn ne rayedar in.
+Add N hours to: N demjimêran lê zêde bikin
+Subtract N hours from: N saetan jê bikin
+same as: heman wekî
+server time: dema server
+Cannot read timezone file XXX.: Pelê zona demî nayê xwendin: XXX.
+Your current GMT offset is XXX hours.: Tezmînata we ya GMT GMT demjimêrên XXX e.
+Unauthorized: Bêmaf
+Error approving event XXX.: Çewtiya pesendkirina bûyerê: XXX.
+Error deleting event XXX.: Xelet di jêkirina bûyerê de: XXX.
+Error rejecting event XXX.: Çewtiya redkirina bûyerê: XXX.
+Sunday: Yekşem
+Monday: Duşem
+Tuesday: Sêşem
+Wednesday: Çarşem
+Thursday: Pêncşem
+Friday: În
+Saturday: Şemî
+Sun: Tav
+Mon: =
+Tue: Sêşem
+Wed: =
+Thu: Pêncşem
+Fri: =
+Sat: =
+unknown-weekday: roja-hefteyê nayê zanîn
+Invalid referring URL: URL-a referansê nederbasdar e
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Naverok
+Documentation: Belgekirin
+Page: Rûpel
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Salnameya min
+Add New Entry: Têketina Nû Bikin
+Add New Task: Peywira Nû zêde bikin
+Logout: Derkeve
+Home: Xane
+Back to My Calendar: Vegere Salnameya Min
+Go to: Biçe
+Manage calendar of: Salnameyê birêve bibin
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Zimanê Gerokê Nedît
+(not supported): (nayê piştgirî kirin)
+Abkhazian: Abxazî
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: Afrîkansî
+Ainu: =
+Akan: =
+Akkadian: Akadî
+Albanian: Albanî
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Başûr)
+Amharic: Amharîkî
+Angika: =
+Apache: =
+Arabic (Algeria): Erebî (Cezayîr)
+Arabic (Bahrain): Erebî (Behreyn)
+Arabic (Egypt): Erebî (Misir)
+Arabic (Iraq): Erebî (Iraq)
+Arabic (Jordan): Erebî (Urdun)
+Arabic (Kuwait): Erebî (Kuweyt)
+Arabic (Lebanon): Erebî (Libnan)
+Arabic (Libya): Erebî (Lîbya)
+Arabic (Morocco): Erebî (Fas)
+Arabic (Oman): Erebî (Oman)
+Arabic (Qatar): Erebî (Qatar)
+Arabic (Saudi Arabia): Erebî (Erebistana Saûdî)
+Arabic (Syria): Erebî (Sûriye)
+Arabic (Tunisia): Erebî (Tûnis)
+Arabic (U.A.E.): Erebî (U.A.E.)
+Arabic (Yemen): Erebî (Yemen)
+Arabic: Erebî
+Aragonese: =
+Aramaic: Aramî
+Arapaho: =
+Arawak: =
+Armenian: Ermenî
+Assamese: =
+Asturian: Astûrî
+Athapascan: =
+Avaric: =
+Avestan: Avestayî
+Awadhi: =
+Aymara: =
+Azerbaijani: Azerî
+Balinese: Balînî
+Baluchi: Belûçî
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: Baskî
+Beja: =
+Belarusian: Belarûsî
+Bemba: =
+Bengali: Bengalî
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: =
+Bliss: Xwezî
+Bosnian: Bosnayî
+Braj: =
+Breton: Bretonî
+Buginese: =
+Bulgarian: Bûlgarî
+Buriat: =
+Burmese: Bîrmanî
+Caddo: =
+Catalan: Katalanî
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: Çeçen
+Cherokee: Çerokî
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Çînî (Hong Kong)
+Chinese (PRC): Çînî (PRC)
+Chinese (Simplified/GB2312): Çînî (Hêsankirî / GB2312) 
+Chinese (Singapore): Çînî (Singapûr)
+Chinese (Taiwan): Çînî (Taywan)
+Chinese (Traditional/Big5): Çînî (Kevneşopî / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: Koptî
+Cornish: Kornîşî
+Corsican: Korsîkayî
+Cree: =
+Creek: =
+Croatian: Xirwatî
+Czech: Çekî
+Dakota: =
+Danish: Danîmarkî
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Hollandî (Belçîka)
+Dutch: Holandî
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Elamîtî
+English (Australia): Englishngilîzî (Avusturalya)
+English (Belize): Englishngilîzî (Belîze)
+English (Canada): Englishngilîzî (Kanada)
+English (Ireland): Englishngilîzî (Irelandrlanda)
+English (Jamaica): Englishngilîzî (Jamaîka)
+English (New Zealand): Englishngilîzî (Zelanda Nû)
+English (Philippines): Englishngilîzî (Fîlîpîn)
+English (South Africa): Englishngilîzî (Afrîkaya Başûr)
+English (Trinidad & Tobago): Englishngilîzî (Trinidad & Tobago)
+English (United Kingdom): Englishngilîzî (Keyaniya Yekbûyî)
+English (United States): Englishngilîzî (Dewletên Yekbûyî)
+English (Zimbabwe): Englishngilîzî (Zimbabwe)
+English: Englishngilîzî-DY
+Erzya: =
+Esperanto: =
+Estonian: Estonî
+Ewe: =
+Ewondo: =
+Fang: Diranê çêkirî
+Fanti: =
+Faroese: Farisî
+Fijian: =
+Filipino: Fîlîpînî
+Finnish: Fînlandî
+Fon: =
+French (Belgium): Fransî (Belçîka)
+French (Canada): Fransî (Kanada)
+French (France): Fransî (Fransa)
+French (Luxembourg): Fransî (Luksembûrg)
+French (Monaco): Fransî (Monako)
+French (Switzerland): Frensî (swîsre)
+French: Fransî
+Frisian (Eastern): Frisî (rojhilatî)
+Frisian (Northern): Frîsî (bakûrî)
+Frisian (Western): Frîsî (rojavayî)
+Frisian: =
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galîsyayî
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Gurcî
+German (Austria): German (Avusturya)
+German (Germany): Germanî (Almanya)
+German (Liechtenstein): =
+German (Luxembourg): German (Luksembûrg)
+German (Standard): =
+German (Switzerland): German (Swîsre)
+German: Almanî
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gotikî
+Grebo: =
+Greek: Yewnanî
+Greenlandic: Grînlandî
+Guarani: =
+Gujarati: Gujaratî
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Kreoliya Haîtiyî)
+Haitian: Haîtî
+Hausa: =
+Hawaiian: Hawaiyî
+Hebrew: Îbranî
+Herero: =
+Hiligaynon: =
+Hindi: Hindî
+Hiri Motu: =
+Hittite: Hîtît
+Hmong: Hmongî
+Holo (Taiwanese): Holo (Taywanî)
+Hungarian: Macarî
+Hupa: =
+Iban: =
+Icelandic: Îzlandî
+Ido: Ez dikim
+Igbo: =
+Iloko: =
+Indonesian: Îndonezî
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Îranî
+Irish (Gaelic): Îrlandî (galîkî)
+Irish: Irlandî
+Iroquoian: =
+Italian (Switzerland): Îtalî (Swîsre)
+Italian: Îtalî
+Japanese: Japonî
+Javanese: Javanesî
+Judeo-Arabic: Cihû-Erebî
+Judeo-Persian: Cihû-Farisî
+Kabardian: Kabardinî
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: Kanadayî
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: Qazakî
+Khasi: Kasî
+Khmer (Central): Khmer (Navendî)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Koreyî (Johab)
+Korean (North): Koreyî (Bakur)
+Korean (South): Koreyî (Başûr)
+Korean: Koreyî
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kurdî
+Kutenai: =
+Kyrgyz: Qirgizî
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Laoyî
+Latin: Latînî
+Latvian: Letonî
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Lîtvanyayî
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Luksembûrgî
+Macedonian: Makedonî
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: =
+Malay: Malayî
+Malayalam: Malayalamî
+Maldivian: =
+Maltese: Maltezî
+Manchu: Mançû
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: Mankî
+Maori: Maorîyî
+Mapuche: =
+Marathi: Maratî
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Moldavî
+Mongo: =
+Mongolian: Moxolî
+Montenegrin: Montenegro
+Moroccan: Marokî
+Mossi: =
+Myanmar: Mîyanmar
+Māori: Maorîyî
+N&#39;Ko: N'Ko
+Nauru: Naûrû
+Navajo: =
+Ndebele (North): Ndebele (Bakur)
+Ndebele (South): Ndebele (Başûr)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: Nepalî
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Nûrî
+Norwegian (Bokmål): Norwegian (Norwegian)
+Norwegian (Nynorsk): Norwegian (Norwegian)
+Norwegian: Norwêcî
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Oksîtanî
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Osetî
+Pahlavi: Pehlewî
+Palauan: =
+Pali: Palî
+Pampanga: =
+Pangasinan: =
+Panjabi: Panjabî
+Papiamento: =
+Pashto: Peştûyî
+Pedi: =
+Persian (Farsi): Farisî (Farisî)
+Persian (Iran): Farisî (Iranran)
+Persian: Farsî
+Phoenician: Fenîkî
+Pohnpeian: =
+Polish: Polandî
+Portuguese: Portekizî
+Portuguese/Brazil: Portekîzî / Brezîlya
+Punjabi (India): Pencabî (Hindistan)
+Punjabi (Pakistan): Pencabî (Pakistan)
+Punjabi: Pencabî
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: Romanyayî
+Romansh: =
+Romany: Romanyayî
+Rundi: =
+Russian (Moldavia: Rûsî (Moldavia)
+Russian (Republic of Moldova): Rûsî (Komara Moldova)
+Russian: Rûsî
+Sami (Inari): Samî (arinarî)
+Sami (Lappish): Samî (Lappish)
+Sami (Lule): Samî (Lule)
+Sami (Northern): Samî (Bakur)
+Sami (Skolt): Samî (Skolt)
+Sami (Southern): Samî (Başûrî)
+Sami: Samî
+Samoan: =
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Sanskrîtî
+Santali: =
+Sardinian: Sardî
+Sasak: =
+Scots (Gaelic): Skotlandî (Galîkî)
+Selkup: =
+Serbian (Upper): Sirbî (Jorîn)
+Serbian: Sirbî
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: =
+Sindhi: Sindî
+Sinhala: Haengal
+Slavic: Slavî
+Slovak: Slovakî
+Slovenian: Slovenî
+Sogdian: =
+Somali: Somalîkî
+Somani: Somanî
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbî (jêrîn)
+Sorbian (Upper): Sorbî (jorîn)
+Sorbian: Sorbî
+Sotho: =
+Spanish (Argentina): Spanî (arjantînî)
+Spanish (Bolivia): Spanî (Bolîvya)
+Spanish (Chile): Spanî (ileîlî)
+Spanish (Colombia): Spanî (kolombiya)
+Spanish (Costa Rica): Spanî (Kosta Rîka)
+Spanish (Dominican Republic): Spanî (Komara Domînîkî)
+Spanish (Ecuador): Spanî (ekvador)
+Spanish (El Salvador): Spanî (El Salvador)
+Spanish (Guatemala): Spanî (Guatemala)
+Spanish (Honduras): Spanî (Honduras)
+Spanish (Mexico): Spanî (meksîkî)
+Spanish (Nicaragua): Spanî (Nîkaragua)
+Spanish (Panama): Spanî (Panama)
+Spanish (Paraguay): Spanî (Paraguay)
+Spanish (Peru): Spanî (Perû)
+Spanish (Puerto Rico): Spanî (Porto Rîko)
+Spanish (Spain): Spanî (spanya)
+Spanish (Uruguay): Spanî (urûgua)
+Spanish (Venezuela): Spanî (Venezuela)
+Spanish: Îspanyolî
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumerî
+Sundanese: Sundanî
+Susu: =
+Sutu: =
+Swahili: Swahîlîyî
+Swati: =
+Swedish (Finland): Swêdî (Fînlandî)
+Swedish (Sweden): Swêdî (Swêd)
+Swedish: Swêdî
+Syriac: Suryanî
+Tagalog: Tagalogî
+Tahitian: Tahîtî
+Tai: =
+Taiwan: Taywan
+Tajik: Tacîkî
+Tamashek: =
+Tamil: Tamîlî
+Tatar: Tatarî
+Telugu: Teluguyî
+Tereno: =
+Tetum: =
+Thai: Thayîkî
+Tibetan: Tîbetî
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Giravên Tonga)
+Tonga: Toga
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Tirkî
+Turkmen: Tirkmenî
+Tuvinian: Tuvînî
+Twi: =
+Udmurt: =
+Ugaritic: Ûgarîtî
+Ukrainian: Ûkraynî
+Umbundu: =
+Urdu: Ûrdûyî
+Uyghur: Uygurî
+Uzbek: Ozbekî
+Vai: =
+Venda: =
+Vietnamese: Vîetnamî
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: Galerkî
+Wolaitta: =
+Wolof: Wolofî
+Xhosa: Xhosayî
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: Yîddîşî
+Yorùbá: Yorûbayî
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: Zûlûtî
+Browser-defined: Browser-danasîn
+event: bûyer
+journal: rojname
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Têketina bikarhênerê nederbasdar e
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: şîfreya çewt
+no such user: bikarhênerek wusa tune
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Hesab seqet e
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Navber
+Months: Mehan
+Month Days: Rojên Mehê
+Days: Rojan
+Weeks: Heftan
+Position: Rewş
+Until: Ta
+Count: Jimartin
+Inclusion Dates: Dîrokên Tevlêbûnê
+Exclusion Dates: Tarîxên Veqetandinê
+Event Imported: Bûyer Importdxe kirin
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: byte
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Agahdayin
+authenticate: Çewtiya SMTP: Nikare rast bike
+connect_host: Çewtiya SMTP: Nikare bi mêvandarê SMTP ve girêbide:
+data_not_accepted: Çewtiya SMTP: Daneyên nayê qebûl kirin
+encoding: Kodkirina nenas:
+execute: Nikare bicîh bîne:
+file_access: Pelê negihîne:
+file_open: Çewtiya Pelê Nikare Pelê veke:
+from_failed: Navnîşana jêrîn têk çû:
+instantiate: Fonksiyona nameya yekser nekare
+mailer_not_supported: mailer nayê piştgirî kirin
+provide_address: Divê hûn bi kêmanî yek navnîşana e-nameya wergir bidin.
+recipients_failed: Çewtiya SMTP: Wergirên jêrîn têk çûn:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Karakterên ku di Grafîkê de Dîtin Têkevinê
+Enter the correct letters and numbers...: Tîp û hejmarên rast ji wêneyê rast têxin hundurê qutiya nivîsarê. Vê ceribandina piçûk li dijî botên xirabker wekî sînorkirina gihîştinê kar dike. Heke ev grafîk xwendin pir dijwar e, bi hêsanî rûpelê ji nû ve bar bikin
+Challenge/Response: Dijwar / Bersiv
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Dîrok û dema vê navnîşê biguherin?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Hûn neketine Danasînek Kurt
+time prior to work hours...: dema berî demjimêrên xebatê ...
+Invalid Event Date: Dîroka Bûyerê nederbasdar e
+Please add a participant: Ji kerema xwe beşdarek zêde bikin
+Invalid Date: Dîroka nederbasdar
+You have not entered a valid time of day: Hûn rojek ne ketine demek derbasdar.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Nasnameya salnameyê vala nabe.
+First and last names cannot both be blank.: Nav û paşnav nikarin her du jî vala bin.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Rengê nederbasdar
+Color format should be RRGGBB.: Divê formata rengîn #RRGGBB be.
+URL cannot be blank.: URL nikare vala be.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Tîpa pelê ne li gorî Formata Importmportê ye
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Ji bo paşnavê belgeyê rengê nederbasdar.
+Invalid color for document title.: Ji bo sernavê belgeyê rengê nederbasdar.
+Invalid color for table cell background.: Ji bo paşnavê hucreya maseyê rengê nederbasdar.
+Invalid color for table cell background for today.: Ji bo îroj ji bo bingeha hucreya maseyê rengê nederbasdar.
+Invalid work hours.: Demjimêrên kar nederbasdar in.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Pêdivî ye ku URL-ya serverê bi qirkirinê (/) biqede.
+Invalid color for table grid.: Ji bo tevna maseyê rengê nederbasdar.
+Invalid color for event popup background.: Ji bo paşperdeya rûpela bûyerê rengê nederbasdar.
+Invalid color for event popup text.: Ji bo nivîsa popupê ya bûyerê rengê nederbasdar e.
+Invalid color for table header text.: Ji bo nivîsa sernavê maseyê rengê nederbasdar.
+Invalid color for table header background.: Ji bo paşnavê sernavê maseyê rengê nederbasdar.
+Server URL is required.: URL-ya server hewce ye.
+Invalid Color: Rengê nederbasdar
+Database Name: Navê Databasê
+Full Path (no backslashes): Riya Tevahî (bê paşguhxistin)
+The password contains illegal characters.: Di şîfreyê de tîpên neqanûnî hene.
+Error you must specify a Single-User Login: Çewtî: Divê hûn Têketinek Yek-Bikarhêner diyar bikin
+Could not find XXX.: XXX nedît.
+Could not find XXX in DOM.: XXX li DOM nehat dîtin.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Vê Heftê
+This Month: Vê mehê
+This Year: Yearsal
+Exit: Derî
+Add New Event: Bûyera Nû zêde bikin
+Delete Entries: Navnîşan Jêbirin
+My Views: Dîtinên min
+Manage Calendar of: Salnameyê birêve bibin
+My Reports: Raporên min
+My Profile: Profîla min
+Public Calendar: Salnameya Giştî
+Unapproved Events: Bûyerên Nepejirandî
+User Manager: Gerînendeyê Bikarhêner
+Help Contents: Naverokên Alîkariyê
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Directory Directory Cache
+Create New: Nû biafirîne
+Failure Reason: Sedema Têkçûnê:
+You must manually create database: Divê hûn bi destan danegehê biafirînin.
+Single-User: Yek-Bikarhêner
+Test Settings: Mîhengên Testê
+Timezone Conversion Successful: Veguherîna Zona Demê Serkeftî ye
+WebCalendar Installation Wizard Step XXX: Sêrbazê Sazkirina WebCalendar Pêngava XXX
+Password Accepted: Passwordîfre Qebûl kirin
+Successful Login: Têketina Serkeftî
+Password Incorrect: Passwordîfre nerast e
+Invalid Login: Têketina nederbasdar
+Display Errors: Xeletên Dîmender
+File Uploads: =
+Allow URL fopen: Destûrê bidin fopen URL (tenê heke salnameyên ji dûr ve têne bikar anîn pêwîst e)
+Safe Mode: Moda Ewle
+Safe Mode Allowed Vars: Varsa Destûrdayîna Moda Ewlehî (TZ heke Tenê Moda Ewlehî hewce ye pêdivî ye)
+GD: GD (ji bo Wêneyên Gradient Wêne pêdivî ye)
+Passwords do not match!: Passwordîfre li hev nakin!
+Unable to write password to settings.php file: Nikare şîfreyê li pelê "settings.php" binivîse.
+Password Updated: Passwordîfre Nûvekirî
+Password has been set: Passwordîfre hate danîn.
+Connection Successful...: Girêdana Serkeftî  Ji kerema xwe biçin rûpelê din da ku sazkirinê bidomînin.
+Correct your entries or click the Create New...: Navnîşên xwe rast bikin an jî bişkoja  Çêkirina Nû  bikin da ku sazkirinê bidomînin.
+Correct your entries and try again.: Navnîşên xwe rast bikin û dîsa biceribînin.
+XXX does not exist: XXX tune
+XXX is not writable: XXX nayê nivîsandin
+Error Converting Timezone: Çewtiya veguheztina Zona Demê
+Error Unable to write to file XXX.: Çewtî Çênabe ku ji pelê XXX re binivîse.
+Please change the file permissions of this file.: Ji kerema xwe destûrên pelê vê pelê biguherînin.
+Please change includes dir permission: Ji kerema xwe destûrên pelê pelrêça xwe "tê de" biguherînin da ku ji hêla bikarhênerên din ve nivîsandinê bihêle.
+Your settings have been saved.: Mîhengên we hatin hilanîn.
+OFF: JI
+ON: LI
+WebCalendar Setup Wizard: Sêrbazê Sazkirina WebCalendar
+This installation wizard will guide you...: Vê sêrbazê sazkirinê dê di sazkirina sazkirina bingehîn a WebCalendar-ê de rêberiya we bike.<br>Ji bo alîkarî û çareserkirina pirsgirêkan binihêrin:<br>
+System Administrators Guide: Rêbernameya Rêvebirê Pergalê
+Frequently Asked Questions: Pirsên Pir Pirsî
+FAQ: =
+Troubleshooting: Çareserkirina pirsgirêkan
+Getting Help: Alîkariyê digirin
+Upgrading Guide: Rêbernameya nûvekirinê
+User Supported Wiki: Wiki-ya Piştevaniya Bikarhêner
+PHP Version Check: Kontrolkirina Guhertoya PHP-yê
+Check to see if PHP 7.1.0 or greater is installed.: Vebijêrin ka PHP 7.1.0 an mezintir sazkirî ye.
+PHP version: Guhertoya PHP
+PHP Settings: Mîhengên PHP
+Detailed PHP Info: Agahdariya PHP-ya Berfireh
+settings.php Status: "settings.php" Rewş
+Session Check: Danişîna Kontrolê
+To test the proper operation of sessions...: Ji bo ceribandina xebata dirust a danişînan, vê rûpelê ji nû ve bar bikin. Pêdivî ye ku hûn her carê zêdebûna jimarvanê danişînê bibînin.
+SESSION COUNTER: KONSERA RESSS
+The file permissions of settings.php are set...: Destûrên pelê yên "settings.php" têne saz kirin da ku sazkar destûra guhertina wê tune. Ji kerema xwe destûrên pelê pelê jêrîn biguherînin da ku berdewam bikin
+The file permissions of the includes directory are set...: Destûrên pelê pelrêça navnîşê têne saz kirin da ku sazker destûr nede ku pelê nû çêbike. Ji kerema xwe destûrên pelrêça jêrîn biguherînin ku berdewam bikin
+Your settings.php file appears to be valid.: Pelê we "settings.php" derbasdar xuya dike.
+Configuration Wizard Password: Configuration Wizard Passwordîfre
+Create Settings File Password: Mîhengên Pelê Passwordîfre çêbikin
+db setup directions...: Di vê beşê de hûn ê pêwendiyek bi servera databasa xwe re saz bikin û test bikin. Divê agahdariya hesabê hatî peyda kirin xwediyê destûrên FULL be ku databases, tablo û bikarhêneran çêbikin. Heke ev ne gengaz be, an jî gihîştina databasa we bi sînor be, hûn ê neçar bimînin ku bi destan danegeha xwe saz bikin.
+Database Status: Rewşa Databasê
+Supported databases for your PHP installation: Ji bo sazkirina PHP-ya we databas piştgirî kirin
+Your current database settings are able to access the database.: Mîhengên databasa weya heyî karibin xwe bigihînin danegehê.
+Please Test Settings: Ji kerema xwe Mîhengên Test bikin
+Your current database settings are not able...: Mîhengên databasa weya nuha nekarin xwe bigihînin danegehê an hêj nehatine ceribandin.
+Database Settings: Mîhengên Databasê
+Database Type: Type Database
+Server: =
+Connection Persistence: Berdewamiya Girêdanê
+All your database tables appear to be up...: Hemî maseyên databasa we rojane xuya dikin. Hûn dikarin biçin rûpela din û sazkirina xweya WebCalendar-ê biqedînin.
+This appears to be a new installation...: Ev xuya dike ku sazkirinek nû ye. Heke ev ne rast e, ji kerema xwe vegerin rûpelê berê û mîhengên xwe rast bikin.
+This appears to be an upgrade...: Ev xuya dike ku ji guhertoya&nbsp;XXX&nbsp;ya&nbsp;YYY nûvekirinek e.
+The database requires some data input...: Databasa pêdivî ye ku hin daneyên danûstandinê Ji bo xilaskirina nûvekirinê bidawî bikin Database Datate Update bitikînin.
+In this section we will perform...: Di vê beşê de em ê guherînan pêk bînin da ku danegeha we bigihîne asta hewce. Heke hûn danegehek bi tevahî piştgirî bikar tînin, ev gav dê ji bo we bixweber were çêkirin. Heke ne be, SQL-ya pêdivî dikare were xuyang kirin û divê hûn karibin wê di pencereya pirsiyariya servera databasa xwe re birrîn û bicîh bikin.
+No database actions are required.: Çalakiyên databasê hewce ne.
+The following database actions are required: Çalakiyên danegeha jêrîn hewce ne
+ODBC Underlying Database: Databaza Bingehîn a ODBC:
+Automatic installation not supported: Sazkirina otomatîkî ji bo celebê databasa we bi tevahî nehatiye sepandin. Hûn ê hewce ne ku bi destan maseyên hewce bi karanîna SQL-ya peydakirî biafirînin. Ji bo berdewamiyê ji kerema xwe  SQL nîşan bide  bikirtînin. Pencereya lêpirsîna danegeha xwe birrîn û Paste bikin.
+This may take several minutes to complete: Dibe ku ev çend hûrdeman bikişîne.
+Install Database: Database saz bikin
+Update Database: Database Rojanekirin
+Display Required SQL: SQL-ya Pêdivî Dîtin
+Return to previous page after processing SQL.: Piştî ku vê SQL-ê bi desta pêvajoyê kir, hûn ê hewce bibin ku vegerin ser rûpela berê û databasa xwe ji nû ve biceribînin da ku skrîpt bikaribe guhertinan bibîne.
+This is the final step in setting up your WebCalendar Installation.: Ev gava dawîn a sazkirina Sazkirina WebCalendar-a we ye.
+Timezone Conversion: Zivirandina Zona Demjimêr
+It appears that you have NOT converted...: Wusa dixuye ku we daneyên bûyera weya heyî ya WebCalendar-ê li GMT-ê veguherandiye. Heke we heye, hûn dikarin vê ragihînê paşguh bikin û bi veguherînê pêş nekevin. Ger ev sazkirinek nû ye, hûn dikarin vê pêzanînê jî paşguh bikin.
+Convert Data to GMT: Daneyê veguherînin GMT
+Application Settings: Mîhengên Serîlêdanê
+HTTP-based authentication was not detected...: Piştrastkirina li ser-bingeha HTTP nehat dîtin. Heke hûn dixwazin ji nav bijareyên 'Piştrastkirina Bikarhêner' a li jêr 'Serveroka Webê' hilbijêrin hûn ê hewce bikin ku servera xweya xwe ji nû ve saz bikin.
+HTTP-based authentication was detected...: Piştrastkirina li ser-bingeha HTTP hate dîtin. Nasnameya bikarhêner ji hêla servera weya we ve tête rêve kirin. Pêdivî ye ku hûn ji navnîşa vebijarkên li jêr 'Piştrastkirina Bikarhêner' ji bo 'Serveroka Web' hilbijêrin.
+Create Default Admin Account: Hesabê Admin a Default biafirînin
+(Admin Account Not Found): (Hesabê Admin nehat dîtin)
+User Authentication: Nasnameya Bikarhêner
+Web-based via WebCalendar (default): Bi navgîniya WebCalendar-ê ve-bingeh-bingeh
+Web Server (not detected): Pêşkêşkara malperê (nehat tespît kirin)
+Web Server (detected): Pêşkêşkara Tevneyê
+None (Single-User): Qet (Bikarhêner-yek)
+Read-Only: Tenê-xwendî
+Environment: Dor
+Production: Çêkerî
+Development: Pêşveçûnî
+Save Settings: Mîhengan hilanînê
+Launch WebCalendar: WebCalendar-ê dest pê bikin
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Çewtiya nûvekirina maseya "XXX": YYY.
+Conversion Successful: Zivirandin Serkeftî 
+Perl script required: Guhertoya weya berê ya WebCalendar-ê pêdivî ye ku nivîskarek PERL-ê bimeşîne da ku daneyên we veguherîne. Ji kerema xwe /tools/upgrade_to_0.9.7.pl bimeşînin paşê vegerin ser vê rûpelê ku berdewam bikin.
+previous version requires updating several tables: Guhertoya weya berê ya WebCalendar hewce dike ku çend tabloyên danegehê nûve bikin.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: B PXWNE B NOXWNE
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Çewtiya girêdana bi danegehê re
+Include Path: Riyê Têxin
+Deleting events for: Bûyerên jêbirin ji bo
+Importing events for: Importing bûyerên ji bo
+No data returned from: Tu dane ji ku venegeriyaye
+for non-user calendar: ji bo salnameya ne-bikarhêner
+No Remote Calendars found: Salnameyên Dûr nehat dîtin
+Remote Calendars not enabled: Salnameyên Dûr nehatî çalakirin
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: id-ê bûyerê nedît
+could not find event id XXX in database.: di danegehê de id bûyerê XXX nedît.
+task: karî
+This is a reminder for the XXX detailed below.: Ev bîranînek ji bo XXX bi jêrîn bi detayîn e.
+Pecentage Complete: Pecentage Temam
+Reminder: Bîranîn
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Çalakiya bê piştgirî: XXX.
+No event id specified.: Nasnameya bûyerê tune.
+Not authorized (not admin).: Ne rayedar e (ne rêvebir).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Ji bo XXX ji dîroka YYY heya roja ZZZ ve kontrol dikin.
+Found XXX events in time range.: Di bûyerê de XXX bûyer dîtin.
+Event id=XXX YYY at ZZZ on AAA.: Nasnameya bûyer = XXX "YYY" li ZZZ li AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Destûrê dide bikarhênerê XXX ku salnameya bikarhênerê din bibîne.
+Error Email reminders disabled for user XXX.: Çewtî: Bîranînên e-nameyê ji bo bikarhêner "XXX" neçalak kirin.
+Number of site_extras XXX.: Hejmara malperên_extras: XXX.
+Reminder set for event.: Bîranîn ji bo bûyerê hate saz kirin.
+Mins Before XXX.: Mehên Berê: XXX.
+Event time is XXX.: Dema bûyerê: XXX.
+Remind time is XXX.: Dema bîranînê ev e: XXX.
+Reminders for user XXX, login YYY.: Bîranînên ji bo bikarhêner "XXX", têkevin "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Ji bo bikarhêner "XXX" nayê pejirandin.
+Event id=XXX YYY already sent.: Nasnameya bûyerê = XXX "YYY" jixwe şandiye.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: No login ji bo moda yek-bikarhêner hewce dike.
+No login required for HTTP authentication.: Ji bo pejirandina HTTP-ê têketinek hewce nake.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Di têketinê de tîpên nederbasdar.
+Username XXX does not exist.: Navê bikarhêner "XXX" tune.
+You cannot remove admin rights from yourself!: Hûn nikarin mafên rêveberê ji xwe derxînin!
+Unknown error saving user: Di tomarkirina bikarhêner de çewtiyek nenas.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Beşdarvan ji bo nasnameya bûyerê nehatin dîtin: XXX.
+Db error Could not find event id XXX.: Çewtiya Db: Nasnameya bûyerê XXX nayê dîtin.
+Error Could not find event id XXX in database.: Çewtî: Di danegehê de nasnameya bûyerê XXX nehat dîtin.

@@ -1,0 +1,2387 @@
+# Uyghur ug
+#
+# فورماتى ئىختىيارى ماۋزۇدىن تەركىب تاپىدۇ:
+#
+# تەرجىمە قىلغان: ئىسمىڭىز ۋە ئېلېكترونلۇق خەت
+# ئاخىرقى يېڭىلاش: تەرجىمە قىلىنغان ۋاقىت
+# (ئالدىنقى قاتاردىكى «#» ۋە ئىلگىرىكى تەرجىمانلار بەرگەن باھالارنى ئۆز ئىچىگە ئالىدۇ.
+# بىرىنچى قۇرۇق قۇر بۇ ماۋزۇلارنىڭ باھاسىنى ئاخىرلاشتۇرىدۇ.)
+#
+# ئېھتىياجغا ئاساسەن نۇرغۇن كىشىلەر ئەگىشىدۇ:
+#
+# ئىنگلىزچە سۆز: تەرجىمە
+# (بىر قۇرغا. ئالدىنقى قاتاردىكى "#" يوق.
+# «ئىنگلىزچە ئىبارىسى:» ، جۈملىنى ئۆز ئىچىگە ئالىدۇ »:« ، تەمىنلىگەن
+# WebCalendar ئاچقۇچىلار. سىزنىڭ قىسمىڭىز «تەرجىمە».)
+#
+# قوراللار مۇندەرىجىسىدە سىزگە ياردەم بېرىدىغان ئىككى perl ئورگىنال بار:
+# - check_translation.pl
+# بارلىق تېكىستلەرنىڭ مۇۋەپپەقىيەتلىك تەرجىمە قىلىنغان ياكى قىلىنمىغانلىقىنى كۆرسىتىدۇ.
+# - update_translation.pl
+# پروگرامما ھۆججەتلىرىنى تەھلىل قىلىپ ، بارلىق تەرجىمە ('جۈملە') ۋە
+# tooltip ('جۈملە'). ئۇ ئىبارىلەرنى بەت بويىچە رەتلەيدۇ
+# (ھۆججەت) تۇنجى ھادىسىنى ئۆز ئىچىگە ئالىدۇ. ئىختىيارىي ھالدا ، ئۇ خەتكۈچنى بەلگە قىلالايدۇ
+# قويۇش ئارقىلىق تېخى تەرجىمە قىلىنمىغان # ئىبارىلەر
+#  << MISSING >>
+# جۈملىنىڭ ئۈستىدىكى قۇر. ھەمدە ، بۇ جۈملە قىسقارتىلمىسى بولسا ،
+# ئۇ جۈملىنىڭ ئاستىدىكى قۇردىكى تولۇق ئىنگلىزچە تېكىستنى ئۆز ئىچىگە ئالىدۇ.
+#
+# ئەسكەرتىش: مەن ھۆججەتنىڭ ئومۇمىي چوڭ-كىچىكلىكىنى قىسقارتماقچى بولۇۋاتىمەن. ئەگەر «تەرجىمە» بولسا
+# سۆز / ئىبارىلەر تىلىڭىز ۋە ئىنگلىز تىلىڭىزدا ئوخشاش ، پەقەت "=" بەلگىسىنى ئىشلىتىڭ.
+#
+# ئەسكەرتىش: كىرىشكە دىققەت قىلىسىز "May_" تۆۋەندە. بۇنىڭ سەۋەبى بار.
+# تەرجىمە "May_" پۈتۈن ئاي نامىغا ۋە «May» to,
+# ئادەتتە ئۈچ ھەرىپلىك ، ئاي قىسقارتىلمىسى («ئۆكتەبىر» نىڭ «ئۆكتەبىر» گە ئوخشاش).
+#
+# مەن بۇنىڭ ئۈچۈن Google تەرجىمىسىنى ئىشلەتتىم.
+# ئانا تىلدا دەلىللىگۈچە يېتەرلىك بولۇشى كېرەك.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: rtl
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: XXX نەشرى
+WebCalendar is a PHP application used...: WebCalendar بولسا بىر ئىشلەتكۈچى ياكى ئىنتېرنېت / ئىنتېرنېت تورى توپى ئۈچۈن بىر كالېندارنى ساقلاش ئۈچۈن ئىشلىتىلىدىغان PHP قوللىنىشچان پروگراممىسى. ئۇنى پائالىيەت كالېندارى قىلىپ تەڭشەشكە بولىدۇ.
+Credits: =
+About: ھەققىدە
+OK: ماقۇل
+
+########################################
+# Page: access.php
+#
+Database error XXX.: ساندان خاتالىقى: XXX.
+DEFAULT CONFIGURATION: =
+Go: كەت
+Save: ساقلاش
+Undo: ئەمەلدىن قالدۇرۇش
+Public Access: ئاممىۋى زىيارەت
+Admin: باشقۇرغۇچى
+User Access Control: ئىشلەتكۈچى زىيارەت كونترول
+Allow Access to Other Users Calendar: باشقا ئىشلەتكۈچىلەرنىڭ كالېندارىنى زىيارەت قىلىشقا يول قويۇڭ
+Grant This User Access to My Calendar: بۇ ئىشلەتكۈچىنى مېنىڭ كالېندارىمغا زىيارەت قىلىڭ
+Type: تىپ
+Calendar: كالېندار
+View Event: ھادىسىنى كۆرۈش
+View: كۆرۈش
+Edit: تەھرىر
+Approve/Reject: تەستىق / رەت قىلىش
+Events: =
+Tasks: ۋەزىپە
+Journals: =
+Can Invite: تەكلىپ قىلالايدۇ
+Can Email: ئېلخەت يوللىيالايدۇ
+Can See Time Only: پەقەت ۋاقىتنىلا كۆرەلەيدۇ
+Assistant: ياردەمچى
+Select All: ھەممىنى تاللاڭ
+Clear All: ھەممىنى تازىلاش
+Public: جامائەت
+Confidential: مەخپىي
+Private: شەخسىي
+
+########################################
+# Page: activity_log.php
+#
+Next: كېيىنكى
+Previous: ئالدىنقى
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: XXX پائالىيىتى ئاللىقاچان كالېندارىڭىزدا.
+Invalid entry id XXX.: ئىناۋەتسىز كىرىش ID: "XXX".
+a XXX event may not be added to your calendar: بۇ XXX پائالىيىتى بولۇپ ، كالېندارىڭىزغا قوشۇلماسلىقى مۇمكىن.
+confidential: مەخپىي
+private: شەخسىي
+Error adding event XXX.: ھادىسە قوشۇشتا خاتالىق: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: «XXX» تەڭشەك نامى ئىناۋەتسىز.
+Select: تاللاڭ
+Day: كۈن
+Week: ھەپتە
+Month: ئاي
+Year: يىل
+Bottom: ئاستى
+Top: ئۈستى
+Anyone: =
+Participant: قاتناشقۇچى
+Settings: تەڭشەك
+Groups: گۇرۇپپىلار
+NonUser Calendars: ئىشلەتكۈچىلەر كالېندارى
+Other: باشقىلىرى
+Email: ئېلخەت
+Colors: رەڭلەر
+Document background: ھۆججەت تەگلىكى
+Document title: ھۆججەت ئىسمى
+Document text: ھۆججەت تېكىستى
+My event text: پائالىيەت تېكىستىم
+Table grid color: جەدۋەلنىڭ رەڭگى
+Table header background: جەدۋەل ماۋزۇ تەگلىكى
+Table header text: جەدۋەل بەت تېكىستى
+Table cell background: جەدۋەل كاتەكچىسى
+Table cell background for current day: ھازىرقى كۈندىكى جەدۋەل كاتەكچىسى
+Table cell background for days with events: ۋەقەلەر بىلەن نەچچە كۈن جەدۋەل كاتەكچىسى
+Table cell background for weekends: ھەپتە ئاخىرىدىكى جەدۋەل كاتەكچىسى
+Table cell background for other month: باشقا ئايدىكى جەدۋەل كاتەكچىسى
+Week number color: ھەپتە نومۇرى
+Event popup background: پائالىيەتنىڭ ئارقا كۆرۈنۈشى
+Event popup text: ھادىسە سەكرەش تېكىستى
+System Settings: سىستېما تەڭشىكى
+Help: ياردەم
+System options: سىستېما تاللانمىلىرى
+app-name-help: بارلىق بەتلەرنىڭ توركۆرگۈ ماۋزۇ بالدىقىدا ۋە كىرىش بېتىدە كۆرۈنىدىغان پروگراممىنىڭ نامىنى بەلگىلەيدۇ. بۇ يەردە سىز بەلگىلىگەن قىممەت تەرجىمە ھۆججىتىدىن ئىزدەپ ، ئوخشىمىغان تىللارغا ئوخشىمىغان ماۋزۇلارنى تەمىنلەيدۇ.
+Application Name: ئىلتىماس ئىسمى
+Translated Name (XXX): تەرجىمە ئىسمى (XXX)
+server-url-help: پروگراممىنىڭ ئاساسى URL نى بەلگىلەيدۇ. ئېلېكترونلۇق خەت ئەسكەرتىش ۋە ئۇقتۇرۇش ئەۋەتكەندە بۇ ئۆز ئىچىگە ئالىدۇ.
+Server URL: مۇلازىمېتىر URL
+home-url-help: قوللىنىشچان پروگراممىنىڭ ئائىلە ئادرېسىنى بەلگىلەيدۇ. بۇ مۇتلەق ياكى تۇغقان بولالايدۇ
+Home URL: باش بەت URL
+language-help: قايسى تىلنى ئىشلىتىشنى بەلگىلەيدۇ.
+Language: تىل
+Your browser default language is XXX.: توركۆرگۈڭىزنىڭ سۈكۈتتىكى تىلى «XXX».
+Allow user to use themes: ئىشلەتكۈچىنىڭ باشتېمىلارنى ئىشلىتىشىگە يول قويۇڭ
+themes-help: سەپلىمە تەڭشەكلىرىنى كەڭ كۆلەمدە يېڭىلاشقا يول قويىدۇ. كىچىك ھەرپ بەلگىسى پەقەت ئىشلەتكۈچىنىڭ ئالدىن تاللىشى.
+Themes: باشتېمىلار
+AVAILABLE THEMES: =
+None: ياق
+Preview: ئالدىن كۆرۈش
+Site customization: بېكەت خاسلاشتۇرۇش
+custom-script-help: ھەر بىر بەتنىڭ HTML «باش» بۆلىكىگە قىستۇرۇلىدىغان خاس Javascript ياكى ئۇسلۇب جەدۋىلى تېكىستىنىڭ كىرىشىگە يول قويىدۇ.
+Custom script/stylesheet: ئىختىيارى قوليازما / ئۇسلۇب جەدۋىلى
+custom-header-help: خاس HTML پارچىسىنىڭ ھەر بىر بەتنىڭ ئۈستىگە قويۇلۇشىغا يول قويىدۇ.
+Custom header: =
+custom-trailer-help: ھەر بىر بەتنىڭ ئاخىرىدا ئىختىيارى HTML پارچىسىنى ئۆز ئىچىگە ئالىدۇ.
+Custom trailer: =
+enable-external-header-help: ئىختىيارى يۈك ماشىنىسىنىڭ سىرتقى ھۆججەتتىن يۈكلىنىشىگە يول قويىدۇ
+Allow external file for header/script/trailer: ماۋزۇ / script / trailer نىڭ سىرتقى ھۆججىتىگە يول قويۇڭ
+Allow user to override header/trailer: ئىشلەتكۈچىنىڭ ماۋزۇ / يۈك ماشىنىسىنى قاپلىۋېلىشىغا يول قويۇڭ
+Date and Time: چېسلا ۋە ۋاقىت
+server-tz-help: ۋاقىتنى UTC دىن مۇلازىمېتىر ۋاقتىغا تەڭشەش ئۈچۈن قانچە سائەت بەلگىلەيدۇ.
+Server Timezone Selection: مۇلازىمېتىر ۋاقىت رايونىنى تاللاش
+tz-help: ۋاقىتنى UTC دىن يەرلىك ۋاقىتقا تەڭشەش ئۈچۈن قانچە سائەت بەلگىلەيدۇ.
+Default Client Timezone Selection: كۆڭۈلدىكى خېرىدارلار ۋاقىت رايونىنى تاللاش
+display-general-use-gmt-help: ئەگەر قوزغىتىلسا ، ئادەتتىكى چېسلا / ۋاقىت GMT شەكلىدە كۆرسىتىلىدۇ
+Display Common Use Date/Times as GMT: ئادەتتىكى ئىشلىتىش ۋاقتى / ۋاقىتنى GMT قىلىپ كۆرسىتىڭ
+date-format-help: ياقتۇرىدىغان چېسلا فورماتىنى بەلگىلەيدۇ.
+Date format: چېسلا فورماتى
+Small Task Date: كىچىك ۋەزىپە ۋاقتى
+display-week-starts-on: ھەپتە باشلىنىدىغان ھەپتە كۈنىنى بەلگىلەيدۇ. ئەگەر دۈشەنبە بەلگىلەنسە ، ئۇنداقتا ھەپتە سانى ISO ھەپتىلىك سان بولىدۇ.
+Week starts on: ھەپتە باشلىنىدۇ
+display-weekend-starts-on: ھەپتە ئاخىرىنى ھەپتە ئاخىرى باشلايدۇ
+Weekend starts on: ھەپتە ئاخىرى باشلىنىدۇ
+time-format-help: قايسى ۋاقىت فورماتىنى ئىشلىتىشنى بەلگىلەيدۇ:<br><em>12 سائەت:</em> كۆرسىتىش ۋاقتى ئەتىگەن سائەت 3 ، كەچ سائەت 8:30 قاتارلىقلار.<br><em>24 سائەت:</em> كۆرسىتىش ۋاقتى 300 , 2030, etc.
+Time format: ۋاقىت فورماتى
+12 hour: 12 سائەت                                                   
+24 hour: 24 سائەت                                                   
+timed-evt-len-help: ۋاقىت ھادىسىسىنىڭ ئۇزۇنلۇقىنى بەلگىلەيدىغان كىرگۈزۈش ئۇسۇلىنى بەلگىلەيدۇ.
+Specify timed event length by: ۋاقىت ھادىسىنىڭ ئۇزۇنلۇقىنى بەلگىلەڭ
+Duration: =
+End Time: ئاخىرلىشىش ۋاقتى
+work-hours-help: كۈن كۆرۈنۈشى ئۈچۈن كۆرسىتىلىدىغان ۋاقىت دائىرىسىنى بەلگىلەيدۇ.
+Work hours: خىزمەت ۋاقتى
+From: =
+to: =
+Appearance: كۆرۈنۈش
+preferred-view-help: سۈكۈتتىكى كۆرۈنۈشنى بەلگىلەيدۇ (كۈن ، ھەپتە ، ئاي ياكى يىل).
+Preferred view: ياقتۇرىدىغان كۆرۈنۈش
+Allow top menu: ئۈستىدىكى تىزىملىككە يول قويۇڭ
+Date Selectors position: چېسلا تاللىغۇچىلارنىڭ ئورنى
+menu-themes-help: ئۈستى تىزىملىكنىڭ رەڭگى ۋە ئۇسلۇبىنى بەلگىلەيدۇ
+Menu theme: تىزىملىك ​​تېمىسى
+fonts-help: ئىشلىتىدىغان سىستېما خەت نۇسخىسىنىڭ تىزىملىكىنى بەلگىلەيدۇ (مەسىلەن «Arial, Helvetica»)
+Fonts: خەت نۇسخىسى
+display-sm_month-help: ئەگەر قوزغىتىلسا ، ئاي كۆرۈنۈشىدە كىچىك ئايلارنى كۆرسىتىدۇ
+Display small months: كىچىك ئايلارنى كۆرسىتىش
+display-weekends-help: ھەپتەنى كۆرگەندە ھەپتە ئاخىرىنى ئۆز ئىچىگە ئالىدۇ.
+Display weekends: ھەپتە ئاخىرىنى كۆرسىتىش
+display-long-daynames-help: قوزغىتىلسا ئۇزۇن كۈنلۈك ئىسىملار كۆرسىتىلىدۇ
+Display long day names: ئۇزۇن كۈنلۈك ئىسىملارنى كۆرسىتىڭ
+display-alldays-help: ئالدىنقى ۋە كېيىنكى ئاي كۈنلىرىنى ئاي كۆرۈنۈشىدە كۆرسىتىڭ ، بارلىق كاتەكچىلەرنى تولدۇرۇڭ.
+Display all days in month view: ئاينى پۈتۈن كۈن كۆرسىتىش
+display-week-number-help: ھەپتە سانى (1-52) نىڭ ئاي كۆرۈنۈشى ۋە ھەپتە كۆرۈنۈشىدە كۆرسىتىلىشى كېرەكلىكىنى بەلگىلەيدۇ.
+Display week number: ھەپتە نومۇرىنى كۆرسىتىش
+display-desc-print-day-help: كۈندىلىك كۆرۈنۈشنىڭ پرىنتېرغا قولايلىق نۇسخىسىدىكى پائالىيەت تەسۋىرىنى ئۆز ئىچىگە ئالىدۇ.
+Display description in printer day view: پرىنتېرنىڭ كۈندىلىك كۆرۈنۈشىدە تەسۋىرنى كۆرسىتىش
+yearly-shows-events-help: يىللىق كۆرۈنۈشتە ، توم خەت شەكلىدە ۋەقەلەرنى ئۆز ئىچىگە ئالغان كۈنلەرنى كۆرسىتىڭ.
+Display days with events in bold in month and year views: ئاي ۋە يىل كۆرۈنۈشىدە ۋەقەلەر بىلەن كۈنلەرنى كۆرسىتىڭ
+display-minutes-help: ئەگەر قوزغىتىلسا: 00 بىلەن ئاخىرلاشقان مىنۇتلار ھەمىشە كۆرۈنىدۇ
+Display 00 minutes always: ھەمىشە 00 مىنۇت كۆرسىتىڭ
+display-end-times-help: ئەگەر ۋاقىت ھادىسىسى بولسا پائالىيەتنىڭ ئاخىرقى ۋاقتىنى كۆرسىتىڭ
+Display end times on calendars: كالېنداردا ئاخىرقى ۋاقىتنى كۆرسىتىڭ
+allow-view-add-help: «+» سىنبەلگىسى كۆرۈنۈشكە كىرگۈزۈلۈپ ، ئابونتلارنىڭ كالېندارىغا تېزلىكتە ۋەقەلەر قوشالايدۇ.
+Include add event link in views: كۆرۈنۈش ئۇلانمىسىنى قوشۇڭ
+lunar-help: ئەگەر قوزغىتىلسا ، ھەر ئايدا ئاي باسقۇچىغا ۋەكىللىك قىلىدىغان كىچىك سىنبەلگىلەرنى كۆرسىتىدۇ
+Display Lunar Phases in month view: ئاي باسقۇچىنى ئاي كۆرۈنۈشىدە كۆرسىتىڭ
+Restrictions: چەكلىمىلەر
+allow-view-other-help: بىر ئىشلەتكۈچىنىڭ باشقا ئىشلەتكۈچىنىڭ كالېندارىنى كۆرەلەيدىغان ياكى كۆرمەيدىغانلىقىنى بەلگىلەيدۇ.
+Allow viewing other users calendars: باشقا ئىشلەتكۈچىنىڭ كالېندارىنى كۆرۈشكە يول قويۇڭ
+require-approvals-help: قوزغىتىلغاندا ، ئىشلەتكۈچى كالېندارىدا كۆرسىتىلىشتىن بۇرۇن چوقۇم بىر ۋەقەنى تەستىقلىشى كېرەك (ئەگەر تەستىق تەستىقلانمىغان بولسا). بۇنى «ياق» قىلىپ تەڭشىسىڭىز ، ئاممىۋى زىيارەت كالېندارى (ئەگەر ئاممىۋى زىيارەت كالېندارى قوزغىتىلغان بولسا) تەستىقنى ئۆچۈرمەيدۇ.
+Require event approvals: پائالىيەت تەستىقلىرىنى تەلەپ قىلىڭ
+display-unapproved-help: كالېندارىڭىزدا تەستىقلانمىغان ۋەقەلەرنىڭ كۆرسىتىلىدىغان-كۆرۈنمەيدىغانلىقىنى بەلگىلەيدۇ. تەستىقلانمىغان ۋەقەلەر كالېندارىڭىزدا كۆرسىتىلىشتىن بۇرۇن چوقۇم تەستىقلىنىشى كېرەك.
+Display unapproved: تەستىقلانمىغان كۆرسىتىش
+conflict-check-help: ۋەقە توقۇنۇشىنى تەكشۈرۈڭ (ئوخشاش بىر ئادەم ئۈچۈن بىرلا ۋاقىتتا پىلانلانغان ئىككى پائالىيەت). ئەگەر بۇنى «ھەئە» قىلىپ تەڭشىسىڭىز ، ئاگاھلاندۇرۇشنى جەزملەشتۈرگەندىن كېيىن يەنىلا بىرلا ۋاقىتتا ئىككى پائالىيەتنى ئورۇنلاشتۇرالايسىز. بۇنى «ياق» قىلىپ تەڭشىسىڭىز ، زىددىيەتلەرنى تەكشۈرگىلى بولمايدۇ. بەلكىم بۇنى «ھەئە» قىلىپ تەڭشىمەكچى بولۇشىڭىز مۇمكىن ، شۇڭا توقۇنۇشنى تەكشۈرۈش يۈز بېرىدۇ.
+Check for event conflicts: ۋەقە توقۇنۇشىنى تەكشۈرۈڭ
+Yes: ھەئە
+No: ياق
+conflict-months-help: ئەگەر توقۇنۇشنى تەكشۈرۈش جايىدا بولسا («ھادىسە توقۇنۇشىنى تەكشۈرۈش» «ياق» قىلىپ بېكىتىلدى & # 41; ، بۇ كەلگۈسىدە قانچە ئاي ئىچىدە توقۇنۇشنى تەكشۈرۈشىمىز كېرەكلىكىنى بەلگىلەيدۇ. ، بۇ ساننى ئازايتىڭ.
+Conflict checking months: توقۇنۇشنى تەكشۈرۈش ئايلىرى
+conflict-check-override-help: ئىشلەتكۈچىلەرنىڭ ۋەقە توقۇنۇشىنى تۈگىتىپ ، بىرلا ۋاقىتتا ئىككى ياكى ئۇنىڭدىن ئارتۇق پائالىيەتنى ئورۇنلاشتۇرۇشىغا يول قويىدۇ.
+Allow users to override conflicts: ئابونتلارنىڭ زىددىيەتنى تۈگىتىشىگە يول قويۇڭ
+limit-appts-help: سىستېما باشقۇرغۇچىنىڭ بىر ئىشلەتكۈچىنىڭ ھەر بىر كۈندە تەيىنلەش قېتىم سانىغا سىستېمىلىق چەكلىمە قويۇشىغا يول قويىدۇ.
+Limit number of timed events per day: ھەر كۈنى يۈز بەرگەن ۋەقەلەرنىڭ سانىنى چەكلەڭ
+limit-appts-number-help: ئىشلەتكۈچىنىڭ بىر كۈندە ئەڭ كۆپ بولىدىغان ۋاقىت سانىنى بەلگىلەيدۇ.
+Maximum timed events per day: ھەر كۈنى ئەڭ كۆپ ۋاقىت ھادىسىسى
+crossday-help: ئەگەر قوزغىتىلسا ، بىر نەچچە كۈننى ئۆز ئىچىگە ئالغان ۋەقەلەر ئايرىم كۈنلەردە كۆرسىتىلىدۇ 
+Disable Cross-Day Events: كۈن ھالقىغان پائالىيەتلەرنى چەكلەڭ
+disable-location-field-help: «ھەئە» نى تاللىسىڭىز پائالىيەت ئورنى بېتىدىن «ئورۇن» بۆلىكىنى ئۆچۈرۈۋېتىدۇ
+Disable Location field: ئورۇن مەيدانىنى چەكلەڭ
+disable-url-field-help: «ھەئە» نى تاللىغاندا پائالىيەت ئۇچۇر بېتىدىن «URL» بۆلىكىنى ئۆچۈرۈۋېتىدۇ
+Disable URL field: URL بۆلىكىنى چەكلەڭ
+disable-priority-field-help: «ھەئە» نى تاللىسىڭىز پائالىيەت ئۇچۇرلىرى بېتىدىن «ئەۋزەللىك» مەيدانىنى چىقىرىپ تاشلاپ ، يېڭى خىزمەتچىلەر ئۈچۈن تېخىمۇ ئاددىي كۆرۈنمە يۈزى بىلەن تەمىنلەيدۇ.
+Disable Priority field: ئەۋزەللىك مەيدانىنى چەكلەڭ
+disable-access-field-help: «ھەئە» نى تاللىغاندا پائالىيەت ئۇچۇر بېتىدىن «زىيارەت» مەيدانىنى چىقىرىپ تاشلاپ ، يېڭى خىزمەتچىلەر ئۈچۈن تېخىمۇ ئاددىي كۆرۈنمە يۈزى بىلەن تەمىنلەيدۇ.
+Disable Access field: زىيارەت مەيدانىنى چەكلەڭ
+disable-participants-field-help: «ھەئە» نى تاللىغاندا «قاتناشقۇچىلار» مەيدانى پائالىيەت ئۇچۇر بېتىدىن ئۆچۈرۈلۈپ ، ئىشلەتكۈچىلەرنىڭ پائالىيىتىگە باشقا ئىشلەتكۈچىلەر قوشۇلۇشىنىڭ ئالدىنى ئالىدۇ. ئەگەر بۇ تاللانمىنى قوزغىتىپ قويسىڭىز ، «باشقا ئىشلەتكۈچىنىڭ كالېندارىنى كۆرۈشكە رۇخسەت قىلىش» دېگەن بۆلەكنىمۇ چەكلىسىڭىز بولىدۇ.
+Disable Participants field: قاتناشقۇچىلار مەيدانىنى چەكلەڭ
+disable-repeating-field-help: «ھەئە» نى تاللىغاندا ، ۋەقەلەرنى قوشقاندا «تەكرارلاش» مەيدانى ئۆچۈرۈلىدۇ. بۇ يېڭى خىزمەتچىلەر ئۈچۈن تېخىمۇ ئاددىي كۆرۈنمە يۈزى بىلەن تەمىنلەيدۇ.
+Disable Repeating field: تەكرارلاش مەيدانىنى چەكلەڭ
+allow-html-description-help: ئەگەر قوزغىتىلسا ، ئىشلەتكۈچىلەر پائالىيەت چۈشەندۈرۈش بۆلىكىگە HTML كىرەلەيدۇ. ئەگەر قوزغىتىلمىسا ، HTML خەتكۈچلىرى قېچىپ قۇتۇلۇپ ، تېكىست شەكلىدە كۆرۈنىدۇ. ئاگاھلاندۇرۇش: بۇ ئىقتىدارنى قوزغىتىش ئىشلەتكۈچىلەرنىڭ باشقا تور بېكەتلەردىكى رەسىملەرنى پايدىلىنىشىغا يول قويىدۇ.
+Allow HTML in Description: HTML نىڭ چۈشەندۈرۈشىگە يول قويۇڭ
+Popups: پوپلار
+disable-popups-help: كالېندار كۆرۈنۈشىدىن چىققان كۆزنەكلەرنى چەكلەڭ
+Disable Pop-Ups: Pop-Ups نى چەكلەڭ
+popup-includes-siteextras-help: ئەگەر قوزغىتىلغان بولسا ، site_extras.php ھۆججىتىدىكى ئىختىيارى پائالىيەت مەيدانلىرىنى تەڭشەشكە يول قويۇڭ.
+Display Site Extras in popup: قاڭقىش كۆزنىكىدە بېكەت قوشۇمچە ماتېرىياللىرىنى كۆرسىتىڭ
+popup-includes-participants-help: ئەگەر قوزغىتىلسا ، قاتناشقۇچىلار پائالىيەت كۆزنىكىدە كۆرسىتىلىدۇ.
+Display Participants in popup: سەكرىمە قاتناشقۇچىلارنى كۆرسىتىش
+Miscellaneous: ھەرخىل
+remember-last-login-help: قوزغىتىلغاندا ، ئىشلەتكۈچىنىڭ كىرىش بېتى ئۇلارغا كىرىش بېتىدە تولدۇرۇلىدۇ (ئەمما پارول ئەمەس) ، ئىشلەتكۈچىنىڭ مايىللىقى يۈكلىنىدۇ (ئۇلارنىڭ ياقتۇرىدىغان رەڭلىرى ۋە تىل تاللىشىنى ئۆز ئىچىگە ئالىدۇ).
+Remember last login: ئاخىرقى كىرىشنى ئېسىڭىزدە تۇتۇڭ
+summary_length-help: كالېندار كۆرۈنۈشىدىكى قىسقىچە چۈشەندۈرۈشنىڭ ئەڭ ئۇزۇن ئۇزۇنلۇقى
+Brief Description Length: قىسقىچە چۈشەندۈرۈش ئۇزۇنلۇقى
+user_sort-help: ئىشلەتكۈچى ، ئىشلەتكۈچىلەر تىزىملىكىنىڭ رەت تەرتىپىنى بەلگىلەيدۇ
+User Sort Order: ئىشلەتكۈچى تەرتىپلەش تەرتىپى
+Lastname, Firstname: فامىلىسى ، ئىسمى
+Firstname, Lastname: فامىلىسى ، فامىلىسى
+allow-public-access-help: قوزغىتىلغاندا ، بۇ كالىندارنى پەقەت ئوقۇشقا بولىدىغان ئاممىۋى كالېندار قىلىپ ئىشلىتىشكە بولىدۇ ، بۇ ئىشلەتكۈچىنىڭ تىزىملىتىپ كىرىشىنى تەلەپ قىلمايدۇ.
+Allow public access: ئاممىۋى زىيارەتكە يول قويۇڭ
+public-access-default-visible: ئاممىۋى كالېنداردىكى ئىشلار بارلىق ئىشلەتكۈچىلەرنىڭ كالېندارىدا ئاپتوماتىك كۆرۈنىدۇ
+Public access visible by default: سۈكۈتتىكى ھالەتتە ئاممىۋى زىيارەت
+public-access-default-selected: يېڭى پائالىيەت قوشقاندا ، ئاممىۋى ئىشلەتكۈچى سۈكۈتتىكى قاتناشقۇچى سۈپىتىدە تاللىنىدۇ.
+Public access is default participant: ئاممىۋى زىيارەت سۈكۈتتىكى قاتناشقۇچى
+public-access-view-others-help: ئاممىۋى زىيارەت بىلەن سىستېمىغا كىرگەندە ، ئىشلەتكۈچىنىڭ باشقا كالېندار ئىشلەتكۈچىنىڭ كالېندارىنى كۆرەلەيدىغان ياكى كۆرمەيدىغانلىقىنى بەلگىلەيدۇ.
+Public access can view other users: ئاممىۋى زىيارەت باشقا ئىشلەتكۈچىلەرنى كۆرەلەيدۇ
+public-access-can-add-help: قوزغىتىلغاندا ، ئاممىۋى زىيارەت ئارقىلىق سىستېمىغا كىرگەن ئابونتلار يېڭى ۋەقەلەرنى قوشالايدۇ ، ئەمما باشقۇرغۇچى يېڭى پائالىيەتنى تەستىقلىمىغۇچە ئۇلار كالېنداردا كۆرۈنمەيدۇ.
+Public access can add events: ئاممىۋى زىيارەت پائالىيەتلەرنى قوشالايدۇ
+public-access-add-requires-approval-help: ئاممىۋى زىيارەت ھېساباتى ئارقىلىق قوشۇلغان ۋەقەلەر كۆرسىتىشتىن بۇرۇن تەستىقلاشقا ئېھتىياجلىق ياكى ئەمەسلىكىنى بەلگىلەيدۇ.
+Public access new events require approval: ئاممىۋى پائالىيەتلەر يېڭى پائالىيەتلەر تەستىقلاشنى تەلەپ قىلىدۇ
+public-access-sees-participants-help: ئەگەر قوزغىتىلسا ، ئاممىۋى ھېساباتتىن كالېندارنى زىيارەت قىلغان ئىشلەتكۈچىلەر پائالىيەتنىڭ تەپسىلاتلىرىنى كۆرسە ، پائالىيەتكە قاتناشقۇچىلارنى كۆرەلەيدۇ.
+Public access can view participants: ئاممىۋى زىيارەت قاتناشقۇچىلارنى كۆرەلەيدۇ
+public-access-override-help: پائالىيەت نامى ۋە چۈشەندۈرۈشىنىڭ ئاممىۋى كالېندارغا يوشۇرۇلۇشىغا يول قويىدۇ
+Override event name/description for public access: ئاممىۋى زىيارەت ئۈچۈن پائالىيەت ئىسمى / چۈشەندۈرۈشىنى قاپلىۋېلىڭ
+public-access-override-text-help: ئەگەر يۇقارقى تاللاش قوزغىتىلغان بولسا كۆرسىتىلىدىغان تېكىست. ئەگەر «ئىشلەتكىلى بولمىسا» تەرجىمە قىلىنىدۇ.
+Text to display to public access: ئاممىۋى زىيارەتتە كۆرسىتىلىدىغان تېكىست
+public-access-captcha-help: ئەگەر قوزغىتىلسا ، ئاممىۋى قوشۇلغان يېڭى ۋەقەلەر CAPTCHA دەلىللەشتىن ئۆتۈشنى تەلەپ قىلىدۇ.
+Require CAPTCHA validation for public access new events: ئاممىۋى پائالىيەتلەرگە يېڭى زىيارەت قىلىش ئۈچۈن CAPTCHA دەلىللەشنى تەلەپ قىلىڭ
+uac-enabled-help: ئىشلەتكۈچى دەرىجىلىك زىيارەتنى كونترول قىلىشنى قوزغىتىدۇ
+User Access Control enabled: ئىشلەتكۈچى زىيارەت قىلىش كونتروللۇقى قوزغىتىلدى
+groups-enabled-help: گۇرۇپپا قوللىشىنى قوزغىتىپ ، ئىشلەتكۈچىلەرنى گۇرۇپپىلار بويىچە تاللىيالايدۇ.
+Groups enabled: گۇرۇپپىلار قوزغىتىلدى
+user-sees-his-group-help: ئەگەر قوزغىتىلسا ، ئىشلەتكۈچىلەر كەم دېگەندە بىر گۇرۇپپىدا بولمىغان كالېندار ئىشلەتكۈچىلەرنى كۆرمەيدۇ.
+User sees only his groups: ئىشلەتكۈچى پەقەت ئۇنىڭ گۇرۇپپىلىرىنىلا كۆرىدۇ
+nonuser-enabled-help: ئەگەر قوزغىتىلسا ، باشقۇرغۇچى ئىشلەتكۈچىلەرگە كالېندار قوشۇش ھوقۇقى بولىدۇ
+Nonuser enabled: ئىشلەتكۈچىلەر كالېندارى قوزغىتىلدى
+nonuser-list-help: قاتناشقۇچىلار تىزىملىكىدە ئىشلەتمىگەن كالېندارنى قەيەردە كۆرسىتىش كېرەك
+Nonuser list: قاتناشقۇچىلار تىزىملىكىدە كۆرسىتىلىدۇ
+Upcoming Events: ئالدىمىزدىكى ئىشلار
+upcoming-events-help: Upcoming.php نى قوزغىتىڭ
+Enabled: قوزغىتىلدى
+upcoming-events-allow-override: ئىشلەتكۈچىنىڭ پارامېتىرغا كېلىشىگە يول قويۇڭ .php
+Allow user override: ئىشلەتكۈچىنىڭ قاپلاپ كېتىشىگە يول قويۇڭ
+upcoming-events-display-caticons: كەلگۈسى. Php غا سەھىپە سىنبەلگىسىنى قوشۇڭ
+Display category icons: سەھىپە سىنبەلگىسىنى كۆرسىتىش
+upcoming-events-display-layers: كەلگۈسى. Php دا قاتلاملارنى كۆرسىتىش
+Display layers: قاتلاملارنى كۆرسىتىش
+upcoming-events-display-links: كەلگۈسى. Php دىكى ئۇلىنىشلارنى كۆرسىتىڭ
+Display links to events: ۋەقەلەرگە ئۇلىنىش كۆرسىتىڭ
+upcoming-events-display-popups: كەلگۈسىدىكى. Php دىكى پائالىيەت كۆزنەكلىرىنى كۆرسىتىڭ
+Display event popups: پائالىيەت كۆزنىكىنى كۆرسىتىدۇ
+reports-enabled-help: ئەگەر قوزغىتىلسا ، ئىشلەتكۈچىلەر ھەر بىر بەتنىڭ ئاستىدىكى «دوكلات» بۆلىكىنى كۆرىدۇ ۋە ئىختىيارى دوكلات تەييارلاشقا يول قويىدۇ. بۇنىڭدىن باشقا ، باشقۇرغۇچى ئىشلەتكۈچىلەر بارلىق ئابونتلارنىڭ بېتىنىڭ ئاستىدا كۆرۈنىدىغان دۇنياۋى دوكلاتلارنى قۇرالايدۇ.
+Reports enabled: دوكلات قوزغىتىلدى
+subscriptions-enabled-help: يىراقتىكى ئىشلەتكۈچىلەرنىڭ WebCalendar ئىشلەتكۈچى كالېندارىغا مۇشتەرى بولالايدىغانلىقىنى بەلگىلەيدۇ ، بۇ ئارقىلىق ئۇلارنىڭ iCal قوزغىتىلغان قوللىنىشچان پروگراممىسىدا (ئالما شىركىتىنىڭ iCal ياكى Mozilla كالېندارىغا ئوخشاش) WebCalendar ئىشلەتكۈچىنىڭ ھادىسىلىرىنى كۆرەلەيدۇ.
+Allow remote subscriptions: يىراقتىن مۇشتەرى بولۇشقا يول قويۇڭ
+remotes-enabled-help: ئىشلەتكۈچىلەرنىڭ URL ئارقىلىق يىراقتىكى رەسىملەرنى يۈكلىشىگە يول قويىدۇ
+Allow remote calendars: يىراق كالېندارلارغا يول قويۇڭ
+rss-enabled-help: ئىشلەتكۈچى كالېندارىنى RSS تەمىناتىدىن ئېرىشكىلى بولىدىغان-بولمايدىغانلىقىنى بەلگىلەيدۇ.
+Enable RSS feed: RSS تەمىناتىنى قوزغىتىڭ
+categories-enabled-help: پائالىيەت تۈرلىرىنى قوللايدۇ.
+Categories enabled: تۈرلەر قوزغىتىلدى
+icon_upload-enabled-help: ئەگەر قوزغىتىلسا ، ئىشلەتكۈچىلەر سەھىپە سىنبەلگىسىنى يۈكلىيەلەيدۇ
+Category Icon Upload enabled: سەھىپە سىنبەلگىسى يۈكلەنگەن
+(Requires XXX folder to exist.): (XXX ھۆججەت قىسقۇچىنىڭ بولۇشىنى تەلەپ قىلىدۇ.)
+display-tasks-help: ئاي ۋە كۈن كالېندارىدا كىچىك ۋەزىپە كۆزنىكىنى كۆرسىتىڭ
+Display small task list: كىچىك ۋەزىپە تىزىملىكىنى كۆرسىتىڭ
+display-tasks-in-grid-help: ۋەزىپىلەرنى كالېنداردا ۋەقەلەر بىلەن بىللە كۆرسىتىش
+Display tasks in Calendars: كالېنداردىكى ۋەزىپىلەرنى كۆرسىتىش
+allow-external-users-help: كالېندار بولمىغان ئىشلەتكۈچىنىڭ مەلۇم بىر پائالىيەتكە قوشۇلىدىغان ياكى قوشۇلمايدىغانلىقىنى بەلگىلەيدۇ. بۇ كالېندار بولمىغان ئىشلەتكۈچىلەرنى پائالىيەتكە قاتناشقۇچىلار قاتارىغا كىرەلەيدۇ.
+Allow external users: سىرتقى ئىشلەتكۈچىلەرگە يول قويۇڭ
+external-can-receive-notification-help: سىرتقى ئىشلەتكۈچىلەر قوزغىتىلغاندا ۋە ئېلېكترونلۇق خەت ئىشلىتىش قوزغىتىلغاندا ، سىرتقى ئىشلەتكۈچىلەر پائالىيەت قوشۇلغان ، يېڭىلانغان ياكى ئۆچۈرۈلگەندە (سىرتقى ئىشلەتكۈچىنىڭ ئېلېكترونلۇق خەت ئادرېسى تەمىنلەنگەن بولسا) ئېلېكترونلۇق خەت ئۇقتۇرۇشىنى تاپشۇرۇۋالىدۇ.
+External users can receive email notifications: سىرتقى ئىشلەتكۈچىلەر ئېلېكترونلۇق خەت ئۇقتۇرۇشىنى تاپشۇرۇۋالالايدۇ
+external-can-receive-reminder-help: سىرتقى ئىشلەتكۈچىلەر قوزغىتىلغاندا ۋە ئېلېكترونلۇق خەت ئىشلىتىش قوزغىتىلغاندا ، سىرتقى ئىشلەتكۈچىلەر ئېلېكترونلۇق خەت ئەسكەرتمىسىنى تاپشۇرۇۋالىدۇ (ئەگەر سىرتقى ئىشلەتكۈچىنىڭ ئېلېكترونلۇق خەت ئادرېسى تەمىنلەنگەن بولسا).
+External users can receive email reminders: سىرتقى ئىشلەتكۈچىلەر ئېلېكترونلۇق خەت ئەسكەرتمىسىنى تاپشۇرۇۋالالايدۇ
+allow-self-registration-help: يېڭى ئىشلەتكۈچىلەرنىڭ ئۆزىنى تىزىملىتىشىغا رۇخسەت قىلىڭ
+Allow self-registration: ئۆزىنى تىزىمغا ئالدۇرۇڭ
+use-blacklist-help: IP ئادرېسىغا ئاساسەن WebCalendar ئىقتىدارلىرىنى زىيارەت قىلىشنى چەكلەڭ
+Restrict self-registration to blacklist: قارا تىزىملىككە ئۆزىنى تىزىملاشنى چەكلەڭ
+allow-self-registration-full-help: يېڭى ئىشلەتكۈچىلەرنىڭ توردا تىزىملىتىش جەريانىنى تاماملىشىغا يول قويۇڭ
+Use self-registration email notifications: پارول ھاسىل قىلىپ يېڭى ئىشلەتكۈچىگە ئەۋەتىڭ
+allow-attachment-help: ئىشلەتكۈچىلەرنىڭ ۋەقەلەرگە ھۆججەت قوشۇمچە ھۆججەتلىرىنى قوشۇشىغا يول قويۇڭ.
+Allow file attachments to events: ۋەقەلەرگە ھۆججەت قوشۇمچە ھۆججەتلىرىگە يول قويۇڭ
+Admin and owner can always add attachments if enabled.: باشقۇرغۇچى ۋە ئىگىسى قوزغىتىلسا ھەمىشە قوشۇمچە ھۆججەت قوشالايدۇ.
+allow-comments-help: ئىشلەتكۈچىلەرنىڭ ۋەقەلەرگە باھا قوشۇشىغا يول قويۇڭ.
+Allow comments to events: ۋەقەلەرگە باھا بېرىشكە يول قويۇڭ
+Admin and owner can always add comments if enabled.: باشقۇرغۇچى ۋە ئىگىسى قوزغىتىلغان بولسا ھەمىشە باھا قوشالايدۇ.
+email-enabled-help: ئۇقتۇرۇش ۋە ئەسكەرتىش ئۈچۈن ئېلېكترونلۇق خەت ئەۋەتىشنىڭ ھەممىسىنى ئېچىڭ ياكى ئېتىڭ. ئەگەر مۇلازىمېتىرىڭىز خەت ئەۋەتىش ئۈچۈن مۇۋاپىق تەڭشەلمىگەن بولسا ، «ياق» قىلىپ تەڭشەڭ.
+Email enabled: ئېلېكترونلۇق خەت قوزغىتىلدى
+email-default-sender: ئەسكەرتىش ئەۋەتكەندە ئەۋەتكۈچى قىلىپ بەلگىلەيدىغان ئېلېكترونلۇق خەت ئادرېسىنى بەلگىلەيدۇ.
+Default sender address: كۆڭۈلدىكى ئەۋەتكۈچى ئادرېسى
+email-mailer: ئېلېكترونلۇق خەت تۈرىنى تاللاڭ (SMTP ، PHP خەت ، ئەۋەتىش)
+Email Mailer: ئېلېكترونلۇق خەت ساندۇقى
+email-smtp-host: پەش ئارقىلىق ئايرىلغان SMTP مۇلازىمېتىرنىڭ مۇلازىمېتىر ئىسمى
+SMTP Host name(s): SMTP ساھىبجامال ئىسمى
+email-smtp-port: SMTP ئېغىز نومۇرى (ئادەتتە 25)
+SMTP Port Number: SMTP ئېغىز نومۇرى
+email-smtp-auth: SMTP دەلىللەشنى ئىشلىتىڭ
+SMTP Authentication: SMTP دەلىللەش
+email-smtp-username: دەلىللەشنى ئىشلەتسىڭىز SMTP ئىشلەتكۈچى ئىسمى
+SMTP Username: SMTP ئىشلەتكۈچى ئىسمى
+email-smtp-password: دەلىللەشنى ئىشلەتسىڭىز SMTP پارول
+SMTP Password: SMTP پارول
+Default user settings: كۆڭۈلدىكى ئىشلەتكۈچى تەڭشىكى
+email-format: HTML ياكى ئاددىي تېكىست ئۇچۇرلىرىنىڭ مايىللىقىنى بەلگىلەڭ
+Email format preference: ئېلخەت فورماتى
+HTML: =
+Plain Text: تۈزلەڭلىك تېكىست
+email-include-ics: ئېلېكترونلۇق خەت ئۇچۇرىغا iCalendar ICS ھۆججىتىنى قوشۇڭ
+Include iCalendar attachments: ICalendar قوشۇمچە ھۆججەتلىرىنى ئۆز ئىچىگە ئالىدۇ
+email-event-reminders-help: پائالىيەت ئەسكەرتىشلىرىنى ئەۋەتىش ياكى ئەۋەتمەسلىكنى بەلگىلەيدۇ.
+Event reminders: پائالىيەت ئەسكەرتىشلىرى
+email-event-added: كالېندارىڭىزغا بىرەر ئىش قوشۇلغاندا ئېلېكترونلۇق خەت ئۇقتۇرۇشى ئەۋەتىش ياكى ئەۋەتمەسلىكنى بەلگىلەيدۇ.
+Events added to my calendar: كالېندارىمغا ئىشلار قوشۇلدى
+email-event-updated: كالېندارىڭىزدا بىرەر ئىش يېڭىلانغاندا ئېلېكترونلۇق خەت ئۇقتۇرۇشى ئەۋەتىش ياكى ئەۋەتمەسلىكنى بەلگىلەيدۇ.
+Events updated on my calendar: كالېندارىمدا يېڭىلانغان ئىشلار
+email-event-deleted: كالېندارىڭىزدىن بىرەر پائالىيەت ئۆچۈرۈلگەندە ئېلېكترونلۇق خەت ئۇقتۇرۇشى ئەۋەتىش ياكى ئەۋەتمەسلىكنى بەلگىلەيدۇ.
+Events removed from my calendar: كالېندارىمدىن ئۆچۈرۈلگەن ئىشلار
+email-event-rejected: ئىشتىراكچى كالېندارىڭىزدىكى پائالىيەتنى رەت قىلغاندا ئېلېكترونلۇق خەت ئۇقتۇرۇشى ئەۋەتىش ياكى ئەۋەتمەسلىكنى بەلگىلەيدۇ.
+Event rejected by participant: پائالىيەت قاتناشقۇچى تەرىپىدىن رەت قىلىندى
+email-event-create: ئەسەر قۇرغۇچىنىڭ ئېلېكترونلۇق خەت تاپشۇرۇۋالىدىغان ياكى ئالمايدىغانلىقىنى بەلگىلەيدۇ
+Event that I create: مەن قۇرغان ھادىسە
+Color options: رەڭ تاللانمىلىرى
+Allow user to customize colors: ئىشلەتكۈچىنىڭ رەڭلەرنى خاسلاشتۇرۇشىغا يول قويۇڭ
+gradient-colors: ئەگەر قوزغىتىلغان تەدرىجىي رەڭ ئىشلىتىلگەن بولسا. بۇ ئىقتىدارغا زور تەسىر كۆرسىتىدۇ.
+Enable gradient images for background colors: تەگلىك رەڭلىرى ئۈچۈن تەدرىجىي رەسىملەرنى قوزغىتىڭ
+Not available: ئىشلەتكىلى بولمايدۇ
+Background Image options: تەگلىك رەسىم تاللانمىلىرى
+bgimage-help: لازىملىق تەگلىك رەسىمىنىڭ URL. نىسپىي ئۇلىنىش بولۇشى مۇمكىن.
+Background Image: تەگلىك رەسىمى
+bgrepeat-help: تەگلىك رەسىمنىڭ تەكرار ھەرىكىتىنى كونترول قىلىدۇ.
+Background Repeat: تەگلىك تەكرارلاش
+
+########################################
+# Page: adminhome.php
+#
+Assistants: ياردەمچى
+Preferences: مايىللىق
+Control Panel: كونترول تاختىسى
+Users: ئىشلەتكۈچى
+Account: ھېسابات
+Categories: سەھىپىلەر
+Views: كۆرۈنۈشلەر
+Layers: قەۋەت
+Reports: دوكلات
+Delete Events: ۋەقەلەرنى ئۆچۈرۈڭ
+Activity Log: پائالىيەت خاتىرىسى
+System Log: سىستېما خاتىرىسى
+Security Audit: بىخەتەرلىك تەكشۈرۈشى
+Public Preferences: ئاممىۋى مايىللىق
+Unapproved Public Events: تەستىقلانمىغان ئاممىۋى پائالىيەتلەر
+Administrative Tools: مەمۇرىي قوراللار
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: كۆپەيتىلگەن ئىسمى: "XXX".
+Username XXX already exists.: ئىشلەتكۈچى ئىسمى «XXX» ئاللىبۇرۇن مەۋجۇت.
+Email address XXX already exists.: ئېلېكترونلۇق خەت ئادرېسى «XXX» ئاللىبۇرۇن مەۋجۇت.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): قوشۇمچە باھا (ئىختىيارى)
+Approve and Send: تەستىق ۋە ئەۋەتىش
+Approve and Exit: تەستىق ۋە چېكىنىش
+(Your comments will be emailed to the event creator.): (ئىنكاسلىرىڭىز پائالىيەت قۇرغۇچىغا ئەۋەتىلىدۇ.)
+Hello, XXX.: ياخشىمۇسىز ، XXX.
+XXX has approved an appointment and added comments.: ئۇچرىشىش تەستىقلاندى ۋە باھا XXX تەرىپىدىن قوشۇلدى.
+Subject XXX: تېما: "XXX".
+Description XXX: چۈشەندۈرۈش: "XXX".
+Date XXX: چېسلا: XXX
+Time XXX: ۋاقتى: XXX
+Comments XXX: باھا: XXX
+Approved w/Comments by XXX.: تەستىقلانغان w / باھا: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: باشقۇرۇش ھالىتى
+Your assistants: ياردەمچىلىرىڭىز
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: نامەلۇم خاتالىق.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: پروگرامما خاتالىقى: XXX بەلگىلەنمىدى!
+user: ئىشلەتكۈچى
+year: يىل
+month: ئاي
+day: كۈن
+
+########################################
+# Page: category.php
+#
+Category Icon: سەھىپە سىنبەلگىسى
+Global: =
+The permissions for the icons directory are set to read-only: سىنبەلگە مۇندەرىجىسىنىڭ ئىجازەتلىرى پەقەت ئوقۇشقىلا تەڭشەلدى.
+Category Name: تۈر ئىسمى:
+Color: رەڭ
+Remove Icon: سىنبەلگىنى ئېلىۋېتىڭ:
+Add Icon to Category: تۈرگە سىنبەلگە قوشۇڭ
+Upload: يۈكلەش
+GIF or PNG 6kb max: GIF ياكى PNG 6kb max
+Search for existing icons: مەۋجۇت سىنبەلگىلەرنى ئىزدەڭ
+Add: قوش
+Delete: ئۆچۈرۈش
+Are you sure you want to delete this entry?: بۇ يازمىنى ئۆچۈرمەكچىمۇ؟
+Make New Category: يېڭى سەھىپە قىلىڭ
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: سەھىپە ئىسمى تەلەپ قىلىنىدۇ
+File size exceeds maximum.: ھۆججەت چوڭلۇقى ئەڭ چوڭ چەكتىن ئېشىپ كەتتى.
+File is not a GIF or PNG image: ھۆججەت GIF ياكى PNG رەسىم ئەمەس
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: =
+ENTRY CATEGORIES: =
+Remove: ئۆچۈرۈڭ
+Global Category: =
+Cancel: بىكار قىلىش
+
+########################################
+# Page: colors.php
+#
+Add Custom: Custom نى قوشۇڭ
+Basic Colors: =
+Current Color: نۆۋەتتىكى رەڭ
+Custom Colors: =
+Old Color: كونا رەڭ
+
+########################################
+# Page: combo.php
+#
+Select None: None نى تاللاڭ
+Agenda: كۈن تەرتىپى
+Add Task: ۋەزىپە قوشۇڭ
+Description: چۈشەندۈرۈش
+Date: چېسلا
+Time: ۋاقىت
+Priority: ھەممىدىن مۇھىم
+Access: زىيارەت
+Created by: ئىجاد قىلغان
+Updated: يېڭىلاندى
+Participants: قاتناشقۇچىلار
+Attachments: قوشۇمچە ھۆججەتلەر
+Comments: باھا
+Brief Description: قىسقىچە چۈشەندۈرۈش
+Full Description: تولۇق چۈشەندۈرۈش
+Category: سەھىپە
+Add event detail: پائالىيەت تەپسىلاتلىرىنى قوشۇڭ
+Start Date: باشلىنىش ۋاقتى
+Due Date: قەرەلى توشقان ۋاقىت
+Add task detail: ۋەزىپە تەپسىلاتىنى قوشۇڭ
+All: ھەممىسى
+Error: خاتالىق
+no response from server: مۇلازىمېتىردىن ھېچقانداق جاۋاب يوق
+JSON error: JSON خاتالىقى
+High: ئېگىز
+Medium: ئوتتۇراھال
+Low: تۆۋەن
+Today: بۈگۈن
+Add Entry: كىرىش
+Unnamed Event: نامسىز ھادىسە
+Unnamed Task: نامسىز ۋەزىپە
+Refresh: يېڭىلاش
+Click to add entry: كىرگۈزۈش ئۈچۈن چېكىڭ
+Name: ئىسمى
+pm: =
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX ئۇچرىشىشنى ئەمەلدىن قالدۇردى.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: ئىناۋەتسىز blob id
+
+########################################
+# Page: docadd.php
+#
+Add Comment: باھا قوشۇڭ
+Add Attachment: قوشۇمچە ھۆججەت قوشۇڭ
+Subject: تېما
+Comment: باھا
+Upload file: ھۆججەت يۈكلەڭ
+
+########################################
+# Page: docdel.php
+#
+Removed: چىقىرىۋېتىلدى
+
+########################################
+# Page: edit_entry.php
+#
+days: كۈن
+hours: سائەت
+minutes: مىنۇت
+You are not authorized to edit this task.: بۇ ۋەزىپىنى تەھرىرلەش ھوقۇقىڭىز يوق.
+is in a different timezone than you are. Currently: سىز بىلەن ئوخشىمايدىغان ۋاقىت رايونىدا. نۆۋەتتە
+hour ahead of you: بىر سائەت ئالدىدا
+hour behind you: بىر سائەت ئارقىڭىزدا
+hours ahead of you: نەچچە سائەت ئالدىدا
+hours behind you: نەچچە سائەت ئارقىڭىزدا
+XXX is in a different timezone (ahead): (XXX باشقىچە ۋاقىت رايونىدا ؛ YYY ئالدىڭىزدا.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX ئوخشىمىغان ۋاقىت رايونىدا ؛ YYY كەينىڭىزدە.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: بۇ يەرگە كىرگۈزۈلگەن ۋاقىت سىزنىڭ ۋاقىت رايونىڭىزنى ئاساس قىلىدۇ.
+Edit Entry: كىرگۈزۈشنى تەھرىرلەش
+Details: تەپسىلاتى
+Repeat: تەكرارلاڭ
+Reminders: ئەسكەرتىش
+brief-description-help: بۇ پائالىيەتنىڭ قىسقىچە چۈشەندۈرۈشى (تەخمىنەن 20 ھەرپ) بىلەن تەمىنلىشى كېرەك. بۇ كالېندارنى كۆرگەندە پائالىيەتكە ۋەكىللىك قىلىدۇ.
+full-description-help: بۇ پائالىيەتنىڭ تەپسىلاتلىرىنى تولۇقلىشى كېرەك. ئىشلەتكۈچى بۇ پائالىيەتنى كۆرگەندە بۇ ئۇچۇرلارنى كۆرگىلى بولىدۇ.
+access-help: پائالىيەتنىڭ زىيارەت دەرىجىسىنى بەلگىلەيدۇ. <ul> <li> ئاممىۋى: كۆپچىلىك پائالىيەتنىڭ تولۇق تەپسىلاتلىرىنى كۆرەلەيدۇ.</li> <li> مەخپىيەتلىك: باشقىلار سىزنىڭ شۇ چېسلا ۋە ۋاقىت ئۈچۈن يازغانلىقىڭىزنى كۆرەلەيدۇ ، ئەمما ئۇنىڭ تەپسىلاتى ئەمەس.</li></ul>
+priority-help: پائالىيەتنىڭ مۇھىم نۇقتىسىنى بەلگىلەيدۇ. يۇقىرى مۇھىم ئىشلار دادىل كۆرسىتىلىدۇ.
+category-help: پائالىيەتنىڭ تۈرىنى بەلگىلەيدۇ.
+completed-help: چېسلا ۋەزىپىسى تاماملاندى. بارلىق قاتناشقۇچىلارنىڭ نىسبىتى% 100 كە يەتكەندىلا ئاندىن قوزغىتىلىدۇ.
+Date Completed: چېسلا تاماملاندى
+percent-help: بۇ ئىشلەتكۈچىنىڭ ۋەزىپە تاماملاش نىسبىتى
+Percent Complete: پىرسەنت تولۇق
+All Percentages: بارلىق پىرسەنت
+location-help: پائالىيەت ئورنى
+Location: ئورنى
+url-help: پائالىيەت URL
+URL: =
+date-help: پائالىيەتنىڭ ۋاقتىنى بەلگىلەيدۇ.
+Untimed event: ۋاقىتسىز ھادىسە
+Timed event: ۋاقىت ھادىسىسى
+All day event: پۈتۈن كۈنلۈك پائالىيەت
+Timezone Offset: =
+time-help: پائالىيەت ۋاقتىنى بەلگىلەيدۇ. <ul> <li> «ۋاقىت ھادىسىسى» (شۇ كۈنى مەلۇم ۋاقىتقا ئورۇنلاشتۇرۇلغان پائالىيەت ئۈچۈن)</li> <li> «ۋاقىتسىز پائالىيەت» (پائالىيەت ئۈچۈن بۇنىڭ ۋاقتى يوق (بايرامغا ئوخشاش) )</li> <li> "پۈتۈن كۈنلۈك پائالىيەت" (پۈتۈن كۈن ئۆتكۈزۈلىدىغان پائالىيەت ئۈچۈن (ئىشخانىدىن چىققانغا ئوخشاش)</li></ul>
+duration-help: پائالىيەتنىڭ داۋاملىشىش ۋاقتىنى (سائەتتە ؛ مىنۇتتا) بەلگىلەيدۇ. <em>بۇ يەرنى بوش قالدۇرغىلى بولىدۇ.</em>
+end-time-help: پائالىيەتنىڭ ئاخىرلىشىدىغان ۋاقىتنى بەلگىلەيدۇ.
+Start Time: باشلاش ۋاقتى
+Due Time: مۇۋاپىق ۋاقىت
+Site Extras: بېكەت قوشۇمچە ماتېرىياللىرى
+avail_participants-help: بۇ يازمىغا قاتناشقۇچىلارنىڭ تىزىملىكى.
+Available: ئىشلەتكىلى بولىدۇ
+Find Name: ئىسىم تېپىش
+Resources: بايلىق
+participants-help: بۇ ئەسەرگە قاتناشقۇچىلارنىڭ تىزىملىكى.
+Selected: تاللانغان
+Availability: ئىشلەتكىلى بولىدۇ
+external-participants-help: كالېندار ئىشلەتكۈچىلەر بولمىغان پائالىيەتكە قاتناشقۇچىلارنىڭ تىزىملىكىنى بەلگىلەيدۇ. ئىشلەتكۈچىلەر ھەر بىر قۇرغا تىزىپ قويۇلۇشى ھەمدە ئېلېكترونلۇق خەت ئادرېسىنى ئۆز ئىچىگە ئالىدۇ. ئەگەر ئېلېكترونلۇق خەت ئادرېسى بېكىتىلگەن بولسا ، ئىشلەتكۈچى ئۇقتۇرۇش ۋە ئەسكەرتىشلەرنى تاپشۇرۇۋالىدۇ.
+External Participants: سىرتقى قاتناشقۇچىلار
+repeat-type-help: پائالىيەتنىڭ قانچە قېتىم تەكرارلىنىشى كېرەكلىكىنى تاللاڭ.
+Daily: كۈندىلىك
+Weekly: ھەپتىلىك
+Monthly: ئايلىق
+by day: كۈندىن كۈنگە
+by date: =
+by position: ئورنى بويىچە
+Monthly (by day): ئايلىق (كۈن بويىچە)
+Monthly (by date): ئايلىق (ۋاقتى بويىچە)
+Monthly (by position): ئايلىق (ئورۇن بويىچە)
+Yearly: يىللىق
+Manual: =
+Expert Mode: مۇتەخەسسىسلەر ھالىتى
+repeat-end-date-help: پائالىيەتنىڭ تەكرارلىنىدىغان ۋاقتىنى بەلگىلەيدۇ.
+Ending: ئاخىرلاشتى
+Forever: مەڭگۈ
+Use end date: ئاخىرلىشىش ۋاقتىنى ئىشلىتىڭ
+Number of times: قېتىم سانى
+repeat-frequency-help: پائالىيەتنىڭ قانچە قېتىم تەكرارلىنىشى كېرەكلىكىنى بەلگىلەيدۇ.
+Frequency: چاستوتىسى
+Weekdays Only: پەقەت ھەپتە كۈنلىرى
+Week Start: ھەپتە باشلاش
+repeat-bydayextended-help: ھەپتە كۈنىگە ئاساسەن چېسلا تاللاشقا يول قويىدۇ.
+ByDay: =
+repeat-month-help: پائالىيەتنىڭ قايسى ئايلاردا تەكرارلىنىشى كېرەكلىكىنى بەلگىلەيدۇ.
+ByMonth: =
+repeat-bysetpos-help: ئاي بىلەن بولغان ئورۇنغا ئاساسەن چېسلا تاللاشقا يول قويىدۇ.
+BySetPos: =
+repeat-bymonthdayextended-help: چېسلاغا ئاساسەن چېسلا تاللاشقا يول قويىدۇ.
+ByMonthDay: =
+repeat-byweekno-help: ئىشلەتكۈچىنىڭ پائالىيەتنى تەكرارلايدىغان ھەپتىلىك تىزىملىكىنى بەلگىلىشىگە يول قويىدۇ (1,2 ... 53 ، -53 ، -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: ئىشلەتكۈچىنىڭ پائالىيەتنى تەكرارلايدىغان يىل كۈنلىرىنىڭ تىزىملىكىنى بەلگىلىشىگە يول قويىدۇ (1,2 ... 366 ، -366 ، -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: بۇ پائالىيەت يۈز بېرىشكە تېگىشلىك ياكى يۈز بەرمەيدىغان قوشۇمچە كۈنلەر.
+Exclusions: بۇنىڭ سىرتىدا
+Inclusions: ئۆز ئىچىگە ئالىدۇ
+Add Exception: Exception نى قوشۇڭ
+Add Inclusion: قوشۇش
+Delete Selected: تاللانغاننى ئۆچۈرۈڭ
+Send Reminder: ئەسكەرتىش ئەۋەتىڭ
+When: قاچان
+Use Date/Time: چېسلا / ۋاقىتنى ئىشلىتىڭ
+Use Offset: Offset نى ئىشلىتىڭ
+Before: ئىلگىرى
+After: =
+Start: باشلاش
+End/Due: ئاخىرلىشىش / تېگىشلىك
+Times: =
+Every: ھەر
+CAPTCHA Warning: ئاگاھلاندۇرۇش:  PHP نىڭ GD كېڭەيتىلمىسى بولمىسا CAPTCHA نى ئىشلەتكىلى بولمايدۇ!<br>
+Delete entry: كىرگۈزۈشنى ئۆچۈرۈڭ
+You are not authorized to edit this entry.: بۇ يازمىنى تەھرىرلەش ھوقۇقىڭىز يوق.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX يېڭى تەيىنلىدى.
+XXX has updated an appointment.: XXX ئۇچرىشىشنى يېڭىلىدى.
+Security violation!: بىخەتەرلىككە خىلاپلىق قىلىش!
+You must enter the anti-spam text on the previous page.: ئالدىنقى بەتتىكى ئەخلەت خەتكە قارشى تېكىستنى كىرگۈزۈشىڭىز كېرەك.
+The following conflicts with the suggested time: تەكلىپ قىلىنغان ۋاقىت بىلەن تۆۋەندىكى توقۇنۇشلار
+User removed from participants list.: ئىشلەتكۈچى قاتناشقۇچىلار تىزىملىكىدىن ئۆچۈرۈلدى.
+Please look on XXX to accept or reject this appointment.: بۇ ئۇچرىشىشنى قوبۇل قىلىش ياكى رەت قىلىش ئۈچۈن XXX دىن كۆرۈڭ.
+Please look on XXX to view this appointment.: بۇ ئۇچرىشىشنى كۆرۈش ئۈچۈن XXX نى كۆرۈڭ.
+Scheduling Conflict: ۋاقىت جەدۋىلى
+Your suggested time of: تەۋسىيە قىلغان ۋاقتىڭىز
+conflicts with the following existing calendar entries: تۆۋەندىكى كالېندار تۈرلىرى بىلەن توقۇنۇشتى
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX "config.php" دا تەڭشەلمىدى.
+word characters only: (پەقەت سۆز ھەرپلىرىنىلا ئۆز ئىچىگە ئالىدۇ ؛ [a-zA-Z_0-9])
+Add User: ئىشلەتكۈچى قوشۇڭ
+Edit User: ئىشلەتكۈچىنى تەھرىرلەش
+Calendar ID: كالېندار كىملىكى
+First Name: بىرىنچى ئىسمى
+Last Name: فامىلىسى
+Is public calendar: ئاممىۋى كالېندار
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: ساندان خاتالىقى
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: يىراق كالېندار قوشۇڭ
+Edit Remote Calendar: يىراق كالېندارنى تەھرىرلەڭ
+Create Layer: قەۋەت قۇرۇش
+Reload: قايتا يۈكلەڭ
+Required to View Remote Calendar: يىراق كالېندارنى كۆرۈش تەلەپ قىلىنىدۇ
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: نەتىجىنى ئەكىرىش
+Events successfully imported: ۋەقەلەر مۇۋەپپەقىيەتلىك ئىمپورت قىلىندى
+Create a new layer to view this calendar.: بۇ كالېندارنى كۆرۈش ئۈچۈن يېڭى بىر قەۋەت قۇرۇڭ.
+Errors: خاتالىق
+There was an error parsing the import file or no events were returned.: ئىمپورت ھۆججىتىنى تەھلىل قىلىشتا خاتالىق كۆرۈلدى ياكى ھېچقانداق ۋەقە قايتۇرۇلمىدى.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: ئەتە
+Yesterday: تۈنۈگۈن
+Day before yesterday: تۈنۈگۈن
+Next week: كېلەر ھەپتە
+This week: بۇ ھەپتە
+Last week: ئالدىنقى ھەپتە
+Week before last: ئالدىنقى ھەپتە
+Next week and week after: كېلەر ھەپتە ۋە بىر ھەپتە
+This week and next week: بۇ ھەپتە ۋە كېلەر ھەپتە
+Last week and this week: ئالدىنقى ھەپتە ۋە بۇ ھەپتە
+Last two weeks: يېقىنقى ئىككى ھەپتە
+Next month: كېلەر ئاي
+This month: بۇ ئاي
+Last month: ئالدىنقى ئاي
+Month before last: ئالدىنقى ئاي
+Next year: كېلەر يىلى
+This year: بۇ يىل
+Last year: ئۆتكەن يىلى
+Year before last: ئالدىنقى يىل
+Next 14 days: كېيىنكى 14 كۈن
+Next 30 days: كەلگۈسى 30 كۈن
+Next 60 days: كېيىنكى 60 كۈن
+Next 90 days: كېيىنكى 90 كۈن
+Next 180 days: كېيىنكى 180 كۈن
+Next 365 days: كېيىنكى 365 كۈن
+Invalid report id XXX.: ئىناۋەتسىز دوكلات id: "XXX".
+Unnamed Report: نامسىز دوكلات
+Add Report: دوكلات قوشۇڭ
+Edit Report: دوكلاتنى تەھرىرلەش
+Report name: دوكلات ئىسمى
+User: ئىشلەتكۈچى
+Current User: نۆۋەتتىكى ئىشلەتكۈچى
+Include link in menu: تىزىملىككە ئۇلانمىنى قوشۇڭ
+Include standard header/trailer: ئۆلچەملىك ماۋزۇ / يۈك ماشىنىسىنى ئۆز ئىچىگە ئالىدۇ
+Include previous/next links: ئالدىنقى / كېيىنكى ئۇلىنىشلارنى ئۆز ئىچىگە ئالىدۇ
+Include empty dates: قۇرۇق چېسلانى ئۆز ئىچىگە ئالىدۇ
+Date range: چېسلا دائىرىسى
+Template variables: قېلىپ ئۆزگەرگۈچى مىقدار
+Page template: بەت قېلىپى
+Day template: كۈن ئەندىزىسى
+Event template: پائالىيەت قېلىپى
+Are you sure you want to delete this report?: بۇ دوكلاتنى ئۆچۈرمەكچىمۇ؟
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: بۇنداق دوكلات id: "XXX".
+Variable XXX not found.: ئۆزگەرگۈچى مىقدار XXX تېپىلمىدى.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Custom Header نى تەھرىرلەڭ
+Edit Custom Script/Stylesheet: ئىختىيارى قوليازما / ئۇسلۇب جەدۋىلىنى تەھرىرلەڭ
+Edit Custom Trailer: Custom Trailer نى تەھرىرلەڭ
+
+########################################
+# Page: edit_user.php
+#
+Username: ئىشلەتكۈچى ئىسمى
+E-mail address: ئېلېكترونلۇق خەت ئادرېسى
+Password: پارول
+again: يەنە
+Disabled for demo: كۆرسىتىش ئۈچۈن چەكلەنگەن
+Are you sure you want to delete this user?: بۇ ئىشلەتكۈچىنى ئۆچۈرمەكچىمۇ؟
+Change Password: پارولنى ئۆزگەرتىش
+New Password: يېڭى پارول
+Set Password: پارول بەلگىلەڭ
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: ئىشلەتكۈچىلەرنى ئۆچۈرمەيدۇ.
+The passwords were not identical.: پارول ئوخشاش ئەمەس.
+You have not entered a password.: پارول كىرگۈزمىدىڭىز.
+Username cannot be blank.: ئىشلەتكۈچى ئىسمى بوش بولمايدۇ.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: ھوقۇق بېرىلمىگەن
+
+########################################
+# Page: export.php
+#
+Export: ئېكسپورت
+Export format: چىقىرىش شەكلى
+Include all layers: ھەممە قەۋەتنى ئۆز ئىچىگە ئالىدۇ
+Include deleted entries: ئۆچۈرۈلگەن تۈرلەرنى ئۆز ئىچىگە ئالىدۇ
+Export all dates: بارلىق چېسلانى چىقىرىڭ
+Start date: باشلىنىش ۋاقتى
+End date: ئاخىرلىشىش ۋاقتى
+Modified since: شۇنىڭدىن باشلاپ ئۆزگەرتىلدى
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: ئېكسپورت شەكلى ئېنىق ئەمەس ياكى توغرا ئەمەس.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: ئىشلەتكۈچى يوق.
+
+########################################
+# Page: groups.php
+#
+Add New Group: يېڭى گۇرۇپپا قوشۇڭ
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: نامسىز گۇرۇپپا
+Add Group: گۇرۇپپا قوشۇڭ
+Edit Group: گۇرۇپپا تەھرىرلەش
+Group name: گۇرۇپپا ئىسمى
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: گۇرۇپپا نامىنى بەلگىلىشىڭىز كېرەك
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: كالېندارنى ئاپتوماتىك يېڭىلاش
+auto-refresh-help: قوزغىتىلغاندا ، كۈن كۆرۈنۈشى ، ھەپتە كۆرۈنۈشى ، ئاي كۆرۈنۈشى ۋە تەستىقلانمىغان بەتلەرنىڭ تىزىملىكى ئاپتوماتىك ھالدا ئۆزىنى قەرەللىك يېڭىلايدۇ.
+Auto-refresh time: ئاپتوماتىك يېڭىلاش ۋاقتى
+auto-refresh-time-help: ئەگەر ئاپتوماتىك يېڭىلاش قوزغىتىلغان بولسا ، بۇ ھەر قېتىملىق يېڭىلاشنىڭ ۋاقتىنى بەلگىلەيدۇ.
+Display days with events in bold in year view: يىل كۆرۈنۈشىدە دادىللىق بىلەن ۋەقەلەر بىلەن كۈنلەرنى كۆرسىتىڭ
+Display weekends in week view: ھەپتە ئاخىرىدىكى ھەپتە ئاخىرىنى كۆرسىتىڭ
+Time interval: ۋاقىت ئارىلىقى
+time-interval-help: ھەپتىلىك كۆرۈنۈش ۋە كۈن كۆرۈنۈشىدىكى ۋاقىت چەكلىمىسىنىڭ قانچىلىك بولىدىغانلىقىنى بەلگىلەيدۇ.
+Nonuser: =
+user-customize-color: ئىشلەتكۈچىلەرنىڭ ئۆزىنىڭ رەڭ لايىھىسىنى ئۆزگەرتىشكە رۇخسەت قىلىنغان-قىلىنمىغانلىقىنى بەلگىلەيدۇ.
+enable-gradient-help: كاتەكچە تەگلىكى ئۈچۈن تەدرىجىي رەڭ ئىشلىتىڭ.
+Manually entering color values: رەڭ قىممىتىنى قولدا كىرگۈزۈڭ
+colors-help: بارلىق رەڭلەر «#RRGGBB» ئالتە ئۆلچەملىك فورماتتا كۆرسىتىلىشى كېرەك ، بۇ يەردە «RR» قىزىل رەڭنىڭ ئالتە ھەسسىلىك قىممىتى ، «GG» يېشىل رەڭنىڭ ئالتە ھەسسىلىك قىممىتى ، «BB» بولسا كۆكنىڭ ئالتە ھەسسىلىك قىممىتى.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: دوكلات Bug
+Please include all the information below when reporting a bug.: كەمتۈكنى مەلۇم قىلغاندا تۆۋەندىكى بارلىق ئۇچۇرلارنى قوشۇڭ.
+Also, please use English rather than XXX.: ئۇنىڭدىن باشقا ، XXX نى ئەمەس ،  ئىنگلىزچە  نى ئىشلىتىڭ.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar پۈتۈك
+Currently in English only.: ھازىر پەقەت ئىنگلىز تىلىدا.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: كالېندار تۈرلىرىنى قوشۇش / تەھرىرلەش
+Repeat Type: تەكرارلاش تىپى
+For More Information...: تېخىمۇ كۆپ ئۇچۇرلار ئۈچۈن ...
+Repeat End Date: ئاخىرلىشىش ۋاقتىنى تەكرارلاڭ
+Repeat Day: تەكرار كۈن
+repeat-day-help: پائالىيەتنىڭ قايسى كۈنلەردە تەكرارلىنىشى كېرەكلىكىنى بەلگىلەيدۇ.
+
+########################################
+# Page: help_import.php
+#
+Import: ئەكىرىش
+Palm Desktop: پەلەمپەي ئۈستەل يۈزى
+allow you to import entries from the Palm...: بۇ جەدۋەل پالما ئۈستەلئۈستى ۋاقىت جەدۋىلىدىن تۈرلەرنى ئىمپورتلىيالايسىز. ئۇ سىزنىڭ قوللانما ئىسمىڭىز بىلەن ئاتالغان تارماق مۇندەرىجەدىكى datebook / datebook.dat دىكى Palm مۇندەرىجىسىڭىزگە جايلاشقان بولۇشى كېرەك.
+The following entries will not be imported: تۆۋەندىكى مەزمۇنلار ئىمپورت قىلىنمايدۇ:
+Entries older than the current date: ھازىرقى چېسلادىن كونا ئەسەرلەر
+Entries created in the Palm Desktop...: Palm ئۈستەل يۈزىدە HotSync'd بولمىغان تۈرلەر
+Anything imported from Palm...: پالمادىن ئىمپورت قىلىنغان ھەر قانداق نەرسە كېيىنكى قېتىملىق ئىمپورت جەريانىدا (پائالىيەت ۋاقتى ئۆتۈپ كەتمىسىلا) يېزىلىدۇ. شۇڭلاشقا ، پالما ئۈستەل يۈزىدە يېڭىلاش ئېلىپ بېرىش كېرەك.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: بۇ جەدۋەل vCalendar (.vcs) 1.0 ھادىسىسىنى ئەكىرىدۇ.
+The following formats have been tested: تۆۋەندىكى فورماتلار سىناق قىلىندى:
+This form will import iCalendar (.ics) events.: بۇ جەدۋەل iCalendar (.ics) ھادىسىلىرىنى ئىمپورت قىلىدۇ.
+Enabling: قوزغىتىش
+Overwrite Prior Import: ئالدىنقى ئىمپورتنى قاپلاڭ
+will cause events imported previously...: ئىلگىرى ئىمپورت قىلىنغان ۋەقەلەرگە ئوخشاش UID نى يېڭى ئىمپورت ھۆججىتىدىكى ھادىسە بىلەن ئۆچۈرۈلگەن دەپ بەلگە قويىدۇ. بۇنىڭدا يېڭىلانغان iCalendar ھۆججىتىنىڭ كۆپەيتىلمەي ئىمپورت قىلىنىشىغا يول قويۇشى كېرەك.
+
+########################################
+# Page: help_index.php
+#
+Help Index: ياردەم كۆرسەتكۈچى
+About WebCalendar: WebCalendar ھەققىدە
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: قاتلاملار باشقا ئىشلەتكۈچىلەرنىڭ پائالىيەتلىرىنى ئۆز كالېندارىڭىزدا كۆرسىتىشكە پايدىلىق. ئىشلەتكۈچى ۋە ۋەقەلەرنىڭ رەڭگىنى كۆرسىتىپ بېرەلەيسىز.
+Add/Edit/Delete: قوشۇش / تەھرىرلەش / ئۆچۈرۈش
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: بەتنىڭ ئاستىدىكى باشقۇرۇش بۆلىكىدىكى قاتلاملارنى تەھرىرلەش ئۇلانمىسىنى چەكسىڭىز ، قەۋەت قوشۇش / تەھرىرلەش / ئۆچۈرۈشكە يول قويىدۇ.
+The text color of the new layer that will be displayed in your calendar.: كالېندارىڭىزدا كۆرسىتىلىدىغان يېڭى قەۋەتنىڭ تېكىست رەڭگى.
+Disabling: چەكلەش
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: بەتنىڭ ئاستىدىكى باشقۇرۇش بۆلىكىدىكى قەۋەتلەرنى چەكلەش ئۇلانمىسىنى بېسىڭ.
+Duplicates: =
+If checked, events that are duplicates of your events will be shown.: تەكشۈرۈلسە ، ۋەقەلەرنىڭ كۆپەيتىلگەن نۇسخىسى كۆرسىتىلىدۇ.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: قەۋەتنى قوزغىتىش ئۈچۈن بەتنىڭ ئاستىدىكى باشقۇرۇش بۆلىكىدىكى قاتلاملارنى قوزغىتىش ئۇلانمىسىنى بېسىڭ.
+Source: مەنبە
+Specifies the user that you would like to see displayed in your calendar.: كالېندارىڭىزدا كۆرۈنمەكچى بولغان ئىشلەتكۈچىنى بەلگىلەيدۇ.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: سۈكۈتتىكى تۈر
+default-category-help: يېڭى ھادىسە سۈكۈتتىكى سەھىپىنى بەلگىلەيدۇ.
+When I am the boss: مەن خوجايىن بولغاندا
+Email me event notification: ماڭا پائالىيەت ئۇقتۇرۇشى ئەۋەتىڭ
+email-boss-notifications-help: خوجايىنلارنىڭ پائالىيەت ئۇقتۇرۇشى سۈپىتىدە ئېلېكترونلۇق خەت تاپشۇرۇۋالغان-ئالمىغانلىقىنى بەلگىلەيدۇ.
+I want to approve events: مەن ۋەقەلەرنى تەستىقلىماقچى
+boss-approve-event-help: خوجايىننىڭ ياردەمچىلەر قوشقان ۋەقەلەرنى تەستىقلاش تەلەپ قىلىنىدىغان-قىلىنمايدىغانلىقىنى بەلگىلەيدۇ.
+Subscribe/Publish: مۇشتەرى بولۇش / ئېلان قىلىش
+Allow remote publishing: يىراقتىن نەشر قىلىشقا يول قويۇڭ
+allow-remote-publishing-help: يىراقتىكى iCal خېرىدارى ۋەقەلەرنى WebCalendar غا قايتا ئېلان قىلالايدىغان ياكى قىلالمايدىغانلىقىنى بەلگىلەيدۇ
+remote-publishing-url-help: WebCalendar غا مۇشتەرى بولۇش ۋە قايتا نەشر قىلىش ئۈچۈن iCal خېرىدارلار پروگراممىسىدا ئىشلىتىدىغان URL نى كۆرسىتىدۇ.
+allow-remote-subscriptions-help: يىراقتىكى ئىشلەتكۈچىلەر سىزنىڭ كالېندارىڭىزغا مۇشتەرى بولالايدىغانلىقىنى بەلگىلەيدۇ ، بۇ ئارقىلىق iCal قوزغىتىلغان پروگراممىدا (ئالما شىركىتىنىڭ iCal ياكى Mozilla كالېندارىغا ئوخشاش) پائالىيەتلىرىڭىزنى كۆرەلەيدۇ.
+remote-subscriptions-url-help: يىراقتىكى ئىشلەتكۈچىلەر كالېندارىڭىزغا مۇشتەرى بولۇش ئۈچۈن ئىشلىتىدىغان URL نى كۆرسىتىدۇ.
+Enable FreeBusy publishing: FreeBusy نەشرىنى قوزغىتىڭ
+freebusy-enabled-help: ICal FreeBusy ئۆلچىمى ئارقىلىق ئىشلەتكۈچىنىڭ ئىشلەتكىلى بولىدىغان ۋاقتىغا ئېرىشكىلى بولىدىغان-بولمايدىغانلىقىنى بەلگىلەيدۇ.
+freebusy-url-help: ئىشلەتكۈچىنىڭ FreeBusy تىزىملىكىنى زىيارەت قىلىدىغان URL
+rss-feed-url-help: RSS يەملىرىنى زىيارەت قىلىدىغان URL
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: ئىشلەتكۈچىنىڭ زىيارەت قىلىش ۋە ئىجازەتلىرىنى ياخشى كونترول قىلىشقا يول قويىدۇ. ئەگەر باشقۇرغۇچى ھوقۇق بەرگەن بولسا ، ئىشلەتكۈچىلەر يەنە سۈكۈتتىكى ۋە ھەر بىر ئىجازەتنى بېرىدۇ.
+If disabled, this user cannot send you emails.: ئەگەر چەكلەنگەن بولسا ، بۇ ئىشلەتكۈچى سىزگە ئېلېكترونلۇق خەت ئەۋەتەلمەيدۇ.
+If disabled, this user cannot see you in the participants list.: ئەگەر چەكلەنگەن بولسا ، بۇ ئىشلەتكۈچى سىزنى قاتناشقۇچىلار تىزىملىكىدە كۆرەلمەيدۇ.
+If enabled, this user cannot view the details of any of your entries.: ئەگەر قوزغىتىلغان بولسا ، بۇ ئىشلەتكۈچى يازمىلىرىڭىزنىڭ تەپسىلاتلىرىنى كۆرەلمەيدۇ.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): نەشر قىلىش مېيىپ (باشقۇرغۇچى)
+Publishing Disabled (User): نەشر قىلىش چەكلەنگەن (ئىشلەتكۈچى)
+
+########################################
+# Page: icons.php
+#
+Click to Select: «تاللاش» نى چېكىڭ
+Current Icons on Server: مۇلازىمېتىردىكى نۆۋەتتىكى سىنبەلگىلەر
+
+########################################
+# Page: import.php
+#
+import from file: ھۆججەتتىن ئەكىرىش
+Disabled: چەكلەنگەن
+Import format: فورماتنى ئەكىرىش
+Exclude private records: شەخسىي خاتىرىلەرنى چىقىرىۋېتىڭ
+Repeated items are imported separately. Prior imports are not overwritten.: تەكرارلانغان بۇيۇملار ئايرىم ئىمپورت قىلىنىدۇ. ئىلگىرىكى ئىمپورتلار يېزىلمايدۇ.
+
+########################################
+# Page: import_handler.php
+#
+No file: ھۆججەت يوق
+Error deleting palm events from webcalendar.: توركۆرگۈدىن پەلەمپەي ھادىسىلىرىنى ئۆچۈرۈش.
+Events from prior import marked as deleted: ئۆچۈرۈلگەن دەپ بەلگە قويۇلغان ئالدىنقى ئىمپورتتىكى ئىشلار
+Conflicting events: زىددىيەتلىك ۋەقەلەر
+The import file contained no data.: ئىمپورت ھۆججىتىدە ھېچقانداق سانلىق مەلۇمات يوق.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: بۇ قەۋەتنى ئۆچۈرمەكچىمۇ؟
+Delete layer: قەۋەتنى ئۆچۈرۈڭ
+Edit layer: قەۋەتنى تەھرىرلەش
+Enable layers: قاتلاملارنى قوزغىتىش
+Layer: =
+Layers are currently disabled.: قاتلاملار ھازىر چەكلەنگەن.
+Layers are currently enabled.: قاتلاملار ھازىر قوزغىتىلدى.
+Click to modify layers settings for XXX: بۇ يەرنى چېكىپ XXX كالېندارىنىڭ قاتلام تەڭشىكىنى ئۆزگەرتىڭ.
+Disable Layers: قاتلاملارنى چەكلەش
+Add layer: قەۋەت قوشۇڭ
+Add Layer: قەۋەت قوشۇڭ
+Edit Layer: قاتلامنى تەھرىرلەش
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: مايىللىقنى يېڭىلاشقا ئامالسىز
+Invalid entry id.: ئىناۋەتسىز كىرىش ID.
+You cannot create a layer for yourself.: ئۆزىڭىز ئۈچۈن بىر قەۋەت قۇرالمايسىز.
+You can only create one layer for each user.: ھەر بىر ئىشلەتكۈچى ئۈچۈن پەقەت بىرلا قەۋەت قۇرالايسىز.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: تەستىق / جەزملەشتۈرۈڭ
+Approve Selected: تاللانغاننى تەستىقلاڭ
+Check All: ھەممىنى تەكشۈرۈڭ
+Emails Will Not Be Sent: ئېلېكترونلۇق خەت ئەۋەتىلمەيدۇ
+Reject Selected: تاللانغاننى رەت قىلىش
+Reject: رەت قىلىش
+Uncheck All: ھەممىنى تاللاڭ
+View this entry: بۇ يازمىنى كۆرۈڭ
+No unapproved entries for XXX.: تەستىقلانمىغان تۈرلەر: "XXX".
+Unapproved Entries: تەستىقتىن ئۆتمىگەن تۈرلەر
+Approve this entry?: بۇ تۈرنى تەستىقلامسىز؟
+Reject this entry?: بۇ يازمىنى رەت قىلامسىز؟
+Approve Selected entries?: تاللانغان تۈرلەرنى تەستىقلامسىز؟
+Reject Selected entries?: تاللانغان تۈرلەرنى رەت قىلامسىز؟
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: چوقۇم كىرىش ۋە پارول كىرگۈزۈشىڭىز كېرەك.
+Save login via cookies so I dont have to login next time.: ساقلانمىلار ئارقىلىق كىرىشنى ساقلاڭ ، كېلەر قېتىم كىرمەسلىكىم كېرەك
+Login: كىرىش
+public: جامائەت
+Access XXX calendar: XXX كالېندارىغا كىرىڭ
+cookies-note: ئەسكەرتىش: بۇ پروگرامما ساقلانمىلارنى قوزغىتىشنى تەلەپ قىلىدۇ.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: XXX كىرىشتىكى قانۇنسىز ھەرپلەر.
+Invalid login: كىرىش ئىناۋەتسىز
+Activity login failure: ئىشلەتكۈچى ئىسمى: "XXX", IP: "YYY".
+Error XXX: خاتالىق: "XXX".
+You have been logged out.: سىز چىقىپ كەتتىڭىز.
+Access public calendar: ئاممىۋى كالېندارنى زىيارەت قىلىڭ
+Not yet registered? Register here!: تېخى تىزىملاتمىدىڭىزمۇ؟ بۇ يەرگە تىزىملىتىڭ!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: بۇنداق ئىشلەتمەيدىغان كالېندار يوق: "XXX".
+This Calendar is not Public.: بۇ كالېندار ئاممىۋى ئەمەس.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: يېڭى ئىشلەتكۈچىلەر كالېندارىنى قوشۇڭ
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: تىزىملىتىشى كېرەك.
+No such nonuser calendar: بۇنداق ئىشلەتمەيدىغان كالېندار يوق
+
+########################################
+# Page: pref.php
+#
+Invalid theme: باشتېما ئىناۋەتسىز
+Save Preferences: مايىللىقنى ساقلاش
+Public Access calendar: ئاممىۋى زىيارەت كالېندارى
+Modify Non User Calendar Preferences: ئىشلەتكۈچى بولمىغان كالېندار مايىللىقىنى ئۆزگەرتىڭ
+Return to My Preferences: مايىللىقىمغا قايتىڭ
+Custom Scripts: =
+Timezone Selection: ۋاقىت رايونىنى تاللاش
+Multiview: =
+entry-interval-help: كىرىش ۋاقتىنى تەھرىرلىگەندە مىنۇت ئارىلىقىنى بەلگىلەيدۇ
+Entry interval: كىرىش ئارىلىقى
+hour: سائەت
+minute: مىنۇت
+theme-reload-help: CSS غەملەك سەۋەبىدىن ، بەتنى قايتا يۈكلەش تەلەپ قىلىنىشى مۇمكىن
+Page may need to be reloaded for new Theme to take effect: يېڭى ئۇسلۇبنىڭ كۈچكە ئىگە بولۇشى ئۈچۈن بەتنى قايتا يۈكلەشكە توغرا كېلىشى مۇمكىن
+display_byproxy-help: View_entry بېتىدە ھەقىقىي ئىجادكارنى كۆرسىتىڭ
+Display if created by Assistant: ياردەمچى قۇرغان بولسا كۆرسىتىڭ
+allow-view-subscriptions-help: شەخسىي ياكى مەخپىي تۈرلەرنى يىراقتىن زىيارەت قىلىشقا چەك قويىدۇ
+Allow remote viewing of: يىراقتىن كۆرۈشكە يول قويۇڭ
+entries: تۈرلەر
+
+########################################
+# Page: purge.php
+#
+Purging events for: پائالىيەتلەرنى تازىلاش
+Finished: تاماملاندى
+Back: قايتىش
+Check box to delete ALL events for a user: ئىشلەتكۈچى ئۈچۈن  ALL  ھادىسىلىرىنى ئۆچۈرۈڭ
+Delete all events before: ئىلگىرى بارلىق ۋەقەلەرنى ئۆچۈرۈڭ
+Purge deleted only: تازىلاش پەقەت ئۆچۈرۈلدى
+Preview delete: ئالدىن ئۆچۈرۈش
+Are you sure you want to delete events for: ۋەقەلەرنى ئۆچۈرمەكچىمۇ؟
+Records deleted from XXX: خاتىرىلەر «XXX» دىن ئۆچۈرۈلدى.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: ئېلېكترونلۇق خەت ئادرېسى بوش بولمايدۇ.
+Username already exists.: ئىشلەتكۈچى ئىسمى مەۋجۇت.
+Email address already exists.: ئېلخەت ئادرېسى مەۋجۇت.
+New user via self-registration.: ئۆزىنى تىزىملاش ئارقىلىق يېڭى ئىشلەتكۈچى.
+A new WebCalendar account has been set up for you.: سىز ئۈچۈن يېڭى WebCalendar ھېساباتى قۇرۇلدى.
+Your username is XXX.: ئىشلەتكۈچى ئىسمىڭىز: "XXX".
+Your password is XXX.: پارولىڭىز: "XXX".
+Please visit XXX to log in and start using your account!: «XXX» نى زىيارەت قىلىپ ، ھېساباتىڭىزنى ئىشلىتىشنى باشلاڭ.
+You may change your password after logging in the first time.: تۇنجى قېتىم كىرگەندىن كېيىن پارولىڭىزنى ئۆزگەرتەلەيسىز.
+If you received this email in error: ئەگەر بۇ ئېلېكترونلۇق خەتنى خاتا تاپشۇرۇۋالغان بولسىڭىز ھەمدە WebCalendar ھېساباتىغا تىزىملاتمىغان بولسىڭىز ، بۇ ئۇقتۇرۇشقا پەرۋا قىلماسلىقىڭىز ياكى قىسقا خاتىرە بىلەن جاۋاب قايتۇرۇشىڭىز مۇمكىن.
+Administrator: باشقۇرغۇچى
+Welcome: خۇش كەپسىز
+New user via email.: ئېلېكترونلۇق خەت ئارقىلىق يېڭى ئىشلەتكۈچى.
+Registration: تىزىملىتىش
+Welcome to WebCalendar: WebCalendar غا خۇش كەپسىز
+Your email should arrive shortly.: ئېلېكترونلۇق خەت قىسقا ۋاقىت ئىچىدە كېلىشى كېرەك.
+Return to Login screen: كىرىش ئېكرانىغا قايتىڭ
+Password (again): پارول (يەنە):
+Your account information will be emailed to you.: ھېسابات ئۇچۇرلىرىڭىز سىزگە ئەۋەتىلىدۇ.
+Submit: يوللاڭ
+
+########################################
+# Page: reject_entry.php
+#
+Continue: داۋاملاشتۇر
+(Your comments will be emailed to the other participants.): (ئىنكاسلىرىڭىز باشقا قاتناشقۇچىلارغا ئەۋەتىلىدۇ.)
+XXX has rejected an appointment.: XXX ئۇچرىشىشنى رەت قىلدى.
+Rejected by XXX.: XXX تەرىپىدىن رەت قىلىندى.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: يېڭى يىراق كالېندار قوشۇڭ
+
+########################################
+# Page: report.php
+#
+This event is confidential.: بۇ پائالىيەت مەخپىي.
+(Private): (شەخسىي)
+(cont.): =
+Approved: تەستىقلاندى
+Deleted: ئۆچۈرۈلدى
+Rejected: رەت قىلىندى
+Waiting for approval: تەستىقنى كۈتمەكتە
+Unknown: نامەلۇم
+Invalid report id.: ئىناۋەتسىز دوكلات id.
+Click here to manage reports for the Public Access calendar.: بۇ يەرنى چېكىپ ئاممىۋى زىيارەت كالېندارىنىڭ دوكلاتىنى باشقۇرۇڭ.
+Add new report: يېڭى دوكلات قوشۇڭ
+Manage Reports: دوكلاتلارنى باشقۇرۇش
+
+########################################
+# Page: search.php
+#
+Advanced Search: =
+Search: ئىزدەش
+Keywords: ئاچقۇچلۇق سۆزلەر
+Enter % for all entries: بارلىق تۈرلەرگە% كىرگۈزۈڭ
+Include: ئۆز ئىچىگە ئالىدۇ
+Filter by Date: ۋاقىت بويىچە سۈزگۈچ
+All Dates: بارلىق چېسلا
+Past: ئۆتمۈش
+Upcoming: كەلۋ
+Range: =
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: سىز چوقۇم بىر ياكى بىر نەچچە ئىزدەش ھالقىلىق سۆزنى كىرگۈزۈشىڭىز كېرەك.
+Search Results: ئىزدەش نەتىجىسى
+match found: =
+matches found: match found
+No matches found: ماس كەلمىدى
+New Search: يېڭى ئىزدەش
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: تۆۋەندىكى ئۇچۇرلار سىزنىڭ WebCalendar نى ئورنىتىشىڭىزدىكى يوشۇرۇن مەسىلىلەرنى كۆرسىتىپ بېرىدۇ ، قاچىلاشنى تېخىمۇ بىخەتەر قىلىدۇ.
+For questions about WebCalendar security see the forums: ھەر قانداق WebCalendar بىخەتەرلىك مەسىلىسىگە مۇناسىۋەتلىك سوئاللارنى GitHub.com دا ساھىبخانلىق قىلغان WebCalendar مۇنبىرىنى ئىشلىتىڭ ؛<br>XXX
+View your current PHP settings: نۆۋەتتىكى PHP تەڭشىكىڭىزنى كۆرۈڭ
+Security Issue: بىخەتەرلىك مەسىلىسى
+Status: ھالەت
+Default admin user password: كۆڭۈلدىكى باشقۇرغۇچى ئىشلەتكۈچى پارولى
+You should change the password of the default admin user.: سۈكۈتتىكى باشقۇرغۇچى ئىشلەتكۈچىنىڭ پارولىنى ئۆزگەرتىشىڭىز كېرەك.
+File permissions XXX: ھۆججەت ئىجازەتنامىسى: XXX
+item XXX should not be writable: تۆۋەندىكى تۈرنى يېزىشقا بولمايدۇ:<br><tt> XXX</tt>
+File exists XXX: ھۆججەت مەۋجۇت: "XXX"
+Because you have email disabled, you should remove this file.: ئېلېكترونلۇق خەت چەكلەنگەنلىكى ئۈچۈن ، بۇ ھۆججەتنى ئۆچۈرۈشىڭىز كېرەك.
+File location XXX: ھۆججەت ئورنى: "XXX"
+remove XXX if not using: ئەگەر «XXX» ھۆججىتىنى ئىشلەتمىسىڭىز ، ئۇنى ئۆچۈرۈشىڭىز كېرەك. ياكى ھېچ بولمىغاندا ئۇنى يېڭى مۇندەرىجىگە يۆتكەڭ.
+System Settings XXX: سىستېما تەڭشىكى: "XXX"
+consider enabling UAC: ئىشلەتكۈچىلەرنىڭ ئىمتىيازىنى تەڭشەش ئۈچۈن ئىشلەتكۈچى زىيارەت كونتروللۇقىنى قوزغىتىشنى ئويلاشسىڭىز بولىدۇ.
+recommend approving new public events: بارلىق ئاممىۋى پائالىيەتلەرنىڭ يوللىنىشىنىڭ تەستىقلىنىشىنى تەۋسىيە قىلىمىز.
+recommend using CAPTCHA: CAPTCHA قايتا ئاپتوماتىك پائالىيەت يوللاشنى قوغداشنى تەۋسىيە قىلىدۇ.
+Database cache directory location: ساندان غەملەك مۇندەرىجىسى ئورنى
+db cache should be inaccessable: ساندان ساقلىغۇچ URL بىلەن زىيارەت قىلغىلى بولمايدىغان مۇندەرىجىدە بولۇشى كېرەك.
+PHP Settings XXX: PHP تەڭشىكى: "XXX"
+recommend setting XXX Off: «XXX» نىڭ تەۋسىيە قىلىنغان تەڭشىكى ئېتىۋېتىلدى.
+recommend setting allow_url_fopen Off: يىراقتىكى كالېندار قوزغىتىلمىغاندا "allow_url_fopen" نىڭ تەۋسىيە قىلىنغان تەڭشىكى ئېتىلىدۇ.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: باشقا ئىشلەتكۈچى كالېندارىنى كۆرۈڭ
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: ھېچقانداق سەھىپە قوشمىدىڭىز.
+Set Category: سەھىپىنى بەلگىلەڭ
+Global Categories cannot be changed.: يەرشارى تۈرلىرىنى ئۆزگەرتىشكە بولمايدۇ.
+
+########################################
+# Page: upcoming.php
+#
+more: تېخىمۇ كۆپ
+
+########################################
+# Page: users.php
+#
+Remote Calendars: يىراق كالېندار
+denotes administrative user: مەمۇرىي ئىشلەتكۈچىنى كۆرسىتىدۇ
+Add New User: يېڭى ئىشلەتكۈچى قوشۇڭ
+
+########################################
+# Page: usersel.php
+#
+form: شەكىل
+Reset: ئەسلىگە قايتۇرۇش
+
+########################################
+# Page: views.php
+#
+Add New View: يېڭى كۆرۈنۈش قوشۇڭ
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: نامسىز كۆرۈنۈش
+Add View: كۆرۈش قوشۇش
+Edit View: كۆرۈنۈشنى تەھرىرلەش
+View Name: ئىسىمنى كۆرۈش
+View Type: تىپنى كۆرۈش
+Day by Time: كۈندىن كۈنگە
+Week (Users horizontal): ھەپتە (ئابونتلار توغرىسىغا)
+Week by Time: ھەپتىلىك ۋاقىت
+Week (Users vertical): ھەپتە (ئىشلەتكۈچىلەر تىك)
+Week (Timebar): ھەپتە (ۋاقىت ستونى)
+Month (Timebar): ئاي (ۋاقىت ستونى)
+Month (side by side): ئاي (يانمۇ-يان)
+Month (on same calendar): ئاي (ئوخشاش كالېنداردا)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: چوقۇم بىر كۆرۈنۈش نامىنى بەلگىلىشىڭىز كېرەك
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: بۇ كۆرۈنۈشنى ئىشلەتكۈچىلەر يوق.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: ۋەزىپە نىسبىتىنى يېڭىلاش
+Completed: تاماملاندى
+Assistant mode: ياردەمچى ھالىتى
+Declined: رەت قىلىندى
+Needs-Action: =
+by: =
+Percentage Complete: پىرسەنت تولۇق
+External User: سىرتقى ئىشلەتكۈچى
+Update: يېڭىلاش
+at: =
+comments: باھا
+Show: =
+Hide: يوشۇر
+Approve/Confirm entry: كىرگۈزۈشنى تەستىقلاش / جەزملەشتۈرۈش
+Reject entry: كىرىشنى رەت قىلىڭ
+Set category: سەھىپە بەلگىلەڭ
+Add to My Calendar: كالېندارىمغا قوشۇڭ
+Copy entry: كۆچۈرۈش
+This will delete this entry for all users.: بۇ بارلىق ئىشلەتكۈچىلەر ئۈچۈن بۇ يازمىنى ئۆچۈرۈۋېتىدۇ.
+Edit entry: كىرگۈزۈشنى تەھرىرلەڭ
+Edit repeating entry for all dates: بارلىق چېسلا ئۈچۈن تەكرارلانغان تەھرىرلەشنى تەھرىرلەڭ
+Delete repeating event for all dates: بارلىق چېسلادىكى تەكرارلاش پائالىيىتىنى ئۆچۈرۈڭ
+Edit entry for this date: بۇ چېسلانى كىرگۈزۈڭ
+Delete entry only for this date: بۇ چېسلا ئۈچۈنلا ئۆچۈرۈڭ
+Delete entry from calendar of XXX: XXX كالېندارىدىن كىرگۈزۈشنى ئۆچۈرۈڭ
+This will delete the entry from your XXX calendar.: بۇ سىزنىڭ XXX كالېندارىڭىزدىكى مەزمۇننى ئۆچۈرۈۋېتىدۇ.
+boss: خوجايىن '
+This will delete the entry from your boss calendar.: بۇ سىزنىڭ خوجايىنىڭىزنىڭ كالېندارىدىكى مەزمۇننى ئۆچۈرۈۋېتىدۇ.
+This will delete the entry from your calendar.: بۇ كالېندارىڭىزدىكى مەزمۇننى ئۆچۈرۈۋېتىدۇ.
+from your boss calendar: باشلىقىڭىزنىڭ كالېندارىدىن
+Do you want to add this entry to your calendar?: بۇ يازمىنى كالېندارىڭىزغا قوشماقچىمۇ؟
+This will add the entry to your calendar.: بۇ سىزنىڭ كالېندارىڭىزغا كىرىشنى قوشىدۇ.
+Email all participants: بارلىق قاتناشقۇچىلارغا ئېلخەت يوللاڭ
+Hide activity log: پائالىيەت خاتىرىسىنى يوشۇرۇش
+Show activity log: پائالىيەت خاتىرىسىنى كۆرسەت
+Export this entry to: بۇ تۈرنى ئېكسپورت قىلىڭ
+Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: قۇرۇق كاتەكچىگە قوش چېكىپ يېڭى تۈر قوشۇڭ.
+
+########################################
+# Page: week_details.php
+#
+New Entry: يېڭى كىرىش
+cont.: =
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: باشقا بىر ئىشلەتكۈچى كالېندارى
+Category Management: تۈر باشقۇرۇش
+Day View: كۈن كۆرۈنۈشى
+Edit Event: ۋەقەنى تەھرىرلەش
+Month View: ئاي كۆرۈنۈشى
+Common Trailer: =
+User Management: ئىشلەتكۈچى باشقۇرۇش
+Manage Views: كۆرۈنۈشلەرنى باشقۇرۇش
+Week View: ھەپتىلىك كۆرۈنۈش
+Year View: يىل كۆرۈنۈشى
+Invalid function id: ئىناۋەتسىز ئىقتىدار id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: "Settings.php" ھۆججىتىنى تاپالمىدى.<br>"settings.php.orig" نى "settings.php" غا كۆچۈرۈپ تور بېتىڭىزنى تەھرىرلەڭ.
+Incomplete settings.php file...: تولۇق بولمىغان «settings.php» ھۆججىتى ...
+Could not find XXX defined in...: «Setings.php» ھۆججىتىڭىزدە ئېنىقلانغان «XXX» نى تاپالمىدىڭىز.
+You must define XXX in: سىز چوقۇم «settings.php» ھۆججىتىدىكى «XXX» غا ئېنىقلىما بېرىشىڭىز كېرەك.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: دېكابىر
+Dec: =
+LANGUAGE DEFINED: تىل ئېنىقلاندى
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: ساندانغا ئۇلىنىشتا خاتالىق: "XXX".
+db_type not defined.: db_type ئېنىق ئەمەس.
+invalid db_type XXX: ئىناۋەتسىز db_type "" XXX ".
+Cache cleared from previous SQL!: ئالدىنقى SQL دىن غەملەك تازىلاندى!
+Error executing query.: سوئالنى ئىجرا قىلىشتا خاتالىق.
+Unfortunately, XXX is not implemented for YYY: بەختكە قارشى ، «XXX» (YYY) ئۈچۈن يولغا قويۇلمىدى.
+Unknown ODBC error.: نامەلۇم ODBC خاتالىقى.
+Error opening cache dir XXX.: Cache dir "XXX" نى ئېچىشتا خاتالىق.
+delete: ئۆچۈرۈش
+Cache error Could not XXX file YYY.: غەملەك خاتالىقى: XXY ھۆججىتىنى «YYY» قىلالمىدى.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: ئەجەللىك خاتالىق
+Invalid data format for: ئۈچۈن ئىناۋەتسىز سانلىق مەلۇمات فورماتى
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: خاتالىق: پائالىيەت خاتىرىسىگە تەڭشەلمىگەن!
+This event is XXX.: بۇ پائالىيەت XXX.
+Conf.: =
+exceeds limit of XXX events per day: ھەر كۈنى XXX ھادىسىسىنىڭ چېكىدىن ئېشىپ كەتتى
+on: =
+All Attendees: بارلىق قاتناشقۇچىلار
+Busy: ئالدىراش
+Tentative: =
+Schedule an appointment for XXX.: XXX: YYY ئۈچۈن ئۇچرىشىشنى ئورۇنلاشتۇرۇڭ.
+date_select: __dd__ __ ئاي __yyy__
+Event approved: پائالىيەت تەستىقلاندى
+Journal approved: ژۇرنال تەستىقلاندى
+Task approved: ۋەزىپە تەستىقلاندى
+Attachment: =
+Event created: پائالىيەت قۇرۇلدى
+Journal created: ژۇرنال قۇرۇلدى
+Task created: ۋەزىپە قۇرۇلدى
+Event deleted: ھادىسە ئۆچۈرۈلدى
+Journal deleted: ژۇرنال ئۆچۈرۈلدى
+Task deleted: ۋەزىپە ئۆچۈرۈلدى
+New user via email (self registration): ئېلېكترونلۇق خەت ئارقىلىق يېڭى ئىشلەتكۈچى (ئۆزىنى تىزىملاش)
+New user (self registration): يېڭى ئىشلەتكۈچى (ئۆزىنى تىزىملاش)
+Notification sent: ئۇقتۇرۇش ئەۋەتىلدى
+Event rejected: پائالىيەت رەت قىلىندى
+Journal rejected: ژۇرنال رەت قىلىندى
+Task rejected: ۋەزىپە رەت قىلىندى
+Reminder sent: ئەسكەرتىش ئەۋەتىلدى
+Event updated: پائالىيەت يېڭىلاندى
+Journal updated: ژۇرنال يېڭىلاندى
+Task updated: ۋەزىپە يېڭىلاندى
+Delete User: ئىشلەتكۈچىنى ئۆچۈرۈڭ
+WK: =
+TASKS: =
+Task_Title: ماۋزۇ
+Due: تېگىشلىك
+Task Name: ۋەزىپە ئىسمى
+Task Due Date: ۋەزىپە ۋاقتى
+You have XXX unapproved entries: سىزدە XXX تەستىقلانمىغان تۈرلەر بار
+Changes successfully saved: ئۆزگەرتىش مۇۋەپپەقىيەتلىك ساقلاندى
+Event: =
+Action: ھەرىكەت
+Printer Friendly: پرىنتېر دوستانە
+Generate printer-friendly version: پرىنتېرغا ماس كېلىدىغان نەشرىنى ھاسىل قىلىڭ
+after: =
+before: ئىلگىرى
+end: =
+start: باشلاش
+View this event: بۇ پائالىيەتنى كۆرۈڭ
+View this task: بۇ ۋەزىپىنى كۆرۈڭ
+January: يانۋار
+February: 2-ئاي
+March: مارت
+April: ئاپرېل
+May_: ماي
+June: ئىيۇن
+July: 7-ئاي
+August: ئاۋغۇست
+September: سېنتەبىر
+October: ئۆكتەبىر
+November: نويابىر
+Jan: =
+Feb: 2-ئاي
+Mar: Mar.
+Apr: =
+May: ماي
+Jun: =
+Jul: =
+Aug: ئاۋغۇست
+Sep: سېنتەبىر
+Oct: ئۆكتەبىر
+Nov: 11-ئاي
+SU: =
+MO: =
+TU: =
+WE: =
+TH: =
+FR: =
+SA: =
+unknown-month: نامەلۇم ئاي
+First Quarter Moon: بىرىنچى چارەك ئاي
+Full Moon: تولۇن ئاي
+Last Quarter Moon: ئاخىرقى چارەك ئاي
+New Moon: يېڭى ئاي
+Error TIME_SLOTS undefined!: خاتالىق: TIME_SLOTS ئېنىقلانمىدى!
+The following error occurred: تۆۋەندىكى خاتالىق كۆرۈلدى
+You are not authorized.: ھوقۇق بېرىلمىگەن.
+Add N hours to: ئۇنىڭغا N سائەت قوشۇڭ
+Subtract N hours from: N سائەتتىن ئېلىڭ
+same as: ئوخشاش
+server time: مۇلازىمېتىر ۋاقتى
+Cannot read timezone file XXX.: ۋاقىت رايونى ھۆججىتىنى ئوقۇيالمايدۇ: XXX.
+Your current GMT offset is XXX hours.: سىزنىڭ ھازىرقى GMT ۋاقتىڭىز XXX سائەت.
+Unauthorized: ئىجازەتسىز
+Error approving event XXX.: ھادىسىنى تەستىقلاشتا خاتالىق: XXX.
+Error deleting event XXX.: ئۆچۈرۈش ھادىسىسى: XXX.
+Error rejecting event XXX.: ۋەقەنى رەت قىلىشتىكى خاتالىق: XXX.
+Sunday: يەكشەنبە
+Monday: دۈشەنبە
+Tuesday: سەيشەنبە
+Wednesday: چارشەنبە
+Thursday: پەيشەنبە
+Friday: جۈمە
+Saturday: شەنبە
+Sun: قۇياش
+Mon: =
+Tue: =
+Wed: =
+Thu: =
+Fri: جۈمە
+Sat: =
+unknown-weekday: نامەلۇم ھەپتە
+Invalid referring URL: ئىناۋەتسىز URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: كۆرسەتكۈچ
+Documentation: پۈتۈك
+Page: بەت
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: مېنىڭ كالېندارىم
+Add New Entry: يېڭى تۈر قوشۇڭ
+Add New Task: يېڭى ۋەزىپە قوشۇڭ
+Logout: =
+Home: ئۆي
+Back to My Calendar: كالېندارىمغا قايتىڭ
+Go to: بارىڭ
+Manage calendar of: كالېندارنى باشقۇرۇش
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: توركۆرگۈ تىلى تېپىلمىدى
+(not supported): (قوللىمايدۇ)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: ئافرىقا
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: ئالبانىيە
+Aleut: =
+Algonquian: =
+Altai (Southern): ئالتاي (جەنۇب)
+Amharic: =
+Angika: =
+Apache: =
+Arabic (Algeria): ئەرەبچە (ئالجىرىيە)
+Arabic (Bahrain): ئەرەبچە (بەھرەيىن)
+Arabic (Egypt): ئەرەبچە (مىسىر)
+Arabic (Iraq): ئەرەبچە (ئىراق)
+Arabic (Jordan): ئەرەبچە (ئىئوردانىيە)
+Arabic (Kuwait): ئەرەبچە (كۇۋەيت)
+Arabic (Lebanon): ئەرەبچە (لىۋان)
+Arabic (Libya): ئەرەبچە (لىۋىيە)
+Arabic (Morocco): ئەرەبچە (ماراكەش)
+Arabic (Oman): ئەرەبچە (ئومان)
+Arabic (Qatar): ئەرەبچە (قاتار)
+Arabic (Saudi Arabia): ئەرەبچە (سەئۇدى ئەرەبىستان)
+Arabic (Syria): ئەرەب (سۈرىيە)
+Arabic (Tunisia): ئەرەبچە (تۇنىس)
+Arabic (U.A.E.): =
+Arabic (Yemen): ئەرەبچە (يەمەن)
+Arabic: ئەرەبچە
+Aragonese: =
+Aramaic: ئارام تىلى
+Arapaho: =
+Arawak: =
+Armenian: ئەرمىنىيە
+Assamese: =
+Asturian: =
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: ئەزەربەيجان
+Balinese: =
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: باندا
+Basa: =
+Bashkir: بەشىر
+Basque: =
+Beja: =
+Belarusian: بېلورۇسىيە
+Bemba: =
+Bengali: =
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: قارا ئاياغ
+Blin: =
+Bliss: بەخت
+Bosnian: =
+Braj: =
+Breton: =
+Buginese: =
+Bulgarian: بۇلغارىيە
+Buriat: =
+Burmese: بېرما
+Caddo: كاددو
+Catalan: =
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: چېچەن
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: چىچېۋا
+Chinese (Hong Kong): خەنزۇچە (شياڭگاڭ)
+Chinese (PRC): خەنزۇچە (PRC)
+Chinese (Simplified/GB2312): خەنزۇچە (ئاددىيلاشتۇرۇلغان / GB2312) 
+Chinese (Singapore): خەنزۇچە (سىنگاپور)
+Chinese (Taiwan): خەنزۇچە (تەيۋەن)
+Chinese (Traditional/Big5): خەنزۇچە (ئەنئەنىۋى / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: كوپتىك
+Cornish: قوناق
+Corsican: كورسىكان
+Cree: =
+Creek: =
+Croatian: كىرودىيە
+Czech: چېخ
+Dakota: =
+Danish: =
+Dargwa: =
+Delaware: =
+Dinka: دىنكا
+Dogri: دوگرى
+Dogrib: =
+Duala: =
+Dutch (Belgium): گوللاندىيە (بېلگىيە)
+Dutch: گوللاندىيە
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): =
+English (Belize): =
+English (Canada): =
+English (Ireland): =
+English (Jamaica): ئىنگىلىزچە (يامايكا)
+English (New Zealand): ئىنگىلىزچە (يېڭى زېلاندىيە)
+English (Philippines): ئىنگلىز تىلى (فىلىپپىن)
+English (South Africa): =
+English (Trinidad & Tobago): ئىنگىلىزچە (Trinidad & Tobago)
+English (United Kingdom): =
+English (United States): =
+English (Zimbabwe): ئىنگىلىزچە (زىمبابۋې)
+English: English-US
+Erzya: =
+Esperanto: =
+Estonian: ئېستونىيە
+Ewe: =
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: =
+Fijian: =
+Filipino: فىلىپپىنلىق
+Finnish: فىنلاندىيە
+Fon: =
+French (Belgium): فىرانسۇزچە (بېلگىيە)
+French (Canada): =
+French (France): =
+French (Luxembourg): فىرانسۇزچە (لىيۇكسېمبۇرگ)
+French (Monaco): فىرانسۇزچە (موناكو)
+French (Switzerland): فىرانسۇزچە (شىۋىتسارىيە)
+French: فىرانسۇزچە
+Frisian (Eastern): فرىسيان (شەرق)
+Frisian (Northern): =
+Frisian (Western): =
+Frisian: =
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: =
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: گرۇزىيە
+German (Austria): =
+German (Germany): =
+German (Liechtenstein): گېرمان تىلى (Liechtenstein)
+German (Luxembourg): گېرمان (لىيۇكسېمبۇرگ)
+German (Standard): =
+German (Switzerland): گېرمان (شىۋىتسارىيە)
+German: =
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: =
+Grebo: =
+Greek: گرېتسىيە
+Greenlandic: =
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): ھايتى (كرېئول)
+Haitian: ھايتى
+Hausa: =
+Hawaiian: =
+Hebrew: ئىبرانىي
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: خىتتاي
+Hmong: =
+Holo (Taiwanese): خولو (تەيۋەنلىك)
+Hungarian: ۋېنگرىيە
+Hupa: =
+Iban: =
+Icelandic: ئىسلاندىيە
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: ھىندونېزىيە
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: ئىرانلىق
+Irish (Gaelic): ئىرېلاندىيە (گال تىلى)
+Irish: ئىرېلاندىيە
+Iroquoian: =
+Italian (Switzerland): ئىتالىيە (شىۋىتسارىيە)
+Italian: =
+Japanese: ياپون
+Javanese: =
+Judeo-Arabic: يەھۇدى-ئەرەب تىلى
+Judeo-Persian: يەھۇدى-پارس تىلى
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: قارا-كالپاك
+Karachay-Balkar: قاراقاي-بالقار
+Karelian: =
+Kashmiri: كەشمىر
+Kashubian: =
+Kawi: =
+Kazakh: قازاق
+Khasi: =
+Khmer (Central): =
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: كومى
+Kongo: كونگو
+Konkani: =
+Korean (Johab): كورېيە (Johab)
+Korean (North): كورېيە (شىمالىي)
+Korean (South): كورېيە (جەنۇب)
+Korean: كورېيە
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: كۇرد
+Kutenai: =
+Kyrgyz: قىرغىزىستان
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: لائوس
+Latin: لاتىنچە
+Latvian: =
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: لىتۋانىيە
+Lojban: =
+Lozi: لوزى
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: لىيۇكسېمبۇرگ
+Macedonian: ماكېدونىيە
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: =
+Malay: مالايسىيا
+Malayalam: =
+Maldivian: =
+Maltese: =
+Manchu: مانچۇ
+Mandar: ماندار
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: مايان
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: مولداۋىيان
+Mongo: =
+Mongolian: موڭغۇل
+Montenegrin: قاراتاغ
+Moroccan: ماراكەش
+Mossi: =
+Myanmar: بېرما
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): =
+Ndebele (South): =
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: نېپال
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): نورۋېگچە (Bokmål)
+Norwegian (Nynorsk): نورۋېگچە (Nynorsk)
+Norwegian: نورۋېگچە
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: =
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: =
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: پۇشتۇ
+Pedi: =
+Persian (Farsi): پارسچە (فارسىچە)
+Persian (Iran): پارسچە (ئىران)
+Persian: پارسچە
+Phoenician: فىنلاندىيەلىك
+Pohnpeian: =
+Polish: پولشا
+Portuguese: پورتۇگال تىلى
+Portuguese/Brazil: پورتۇگالىيە / بىرازىلىيە 
+Punjabi (India): =
+Punjabi (Pakistan): =
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: =
+Romansh: =
+Romany: =
+Rundi: =
+Russian (Moldavia: رۇسچە (مولداۋىيە)
+Russian (Republic of Moldova): رۇس (مولدوۋا جۇمھۇرىيىتى)
+Russian: رۇسچە
+Sami (Inari): سامى (Inari)
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): سامى (شىمالىي)
+Sami (Skolt): سامى (Skolt)
+Sami (Southern): سامى (جەنۇب)
+Sami: سامى
+Samoan: =
+Samoli: سامولى
+Sandawe: =
+Sango: =
+Sanskrit: سانسكرىت تىلى
+Santali: سانتالى
+Sardinian: ساردىيان
+Sasak: =
+Scots (Gaelic): =
+Selkup: =
+Serbian (Upper): سېربىيە (ئۈستى)
+Serbian: سېربىيە
+Serer: =
+Sesotho: =
+Shan: شەن
+Shona: =
+Sichuan Yi: سىچۈەن يى
+Sicilian: =
+Sindhi: سىندى
+Sinhala: =
+Slavic: سىلاۋىيان
+Slovak: سلوۋاكىيە
+Slovenian: سىلوۋېنىيە
+Sogdian: =
+Somali: سومالى
+Somani: =
+Songhai: سوڭخەي
+Soninke: =
+Sorbian (Lower): Sorbian (تۆۋەن)
+Sorbian (Upper): Sorbian (ئۈستى)
+Sorbian: =
+Sotho: =
+Spanish (Argentina): ئىسپانىيە (ئارگېنتىنا)
+Spanish (Bolivia): ئىسپانىيە (بولىۋىيە)
+Spanish (Chile): ئىسپانىيە (چىلى)
+Spanish (Colombia): ئىسپانىيە (كولۇمبىيە)
+Spanish (Costa Rica): ئىسپانچە (كوستارىكا)
+Spanish (Dominican Republic): ئىسپانىيە (دومىنىكا جۇمھۇرىيىتى)
+Spanish (Ecuador): ئىسپانىيە (ئېكۋادور)
+Spanish (El Salvador): ئىسپانچە (سالۋادور)
+Spanish (Guatemala): ئىسپانچە (گۋاتېمالا)
+Spanish (Honduras): ئىسپانچە (گوندۇراس)
+Spanish (Mexico): ئىسپانىيە (مېكسىكا)
+Spanish (Nicaragua): ئىسپانچە (نىكاراگۇئا)
+Spanish (Panama): ئىسپانىيە (پاناما)
+Spanish (Paraguay): ئىسپانچە (پاراگۋاي)
+Spanish (Peru): ئىسپانىيە (پېرۇ)
+Spanish (Puerto Rico): ئىسپانچە (پورتو رىكو)
+Spanish (Spain): ئىسپانىيە (ئىسپانىيە)
+Spanish (Uruguay): ئىسپانچە (ئۇرۇگۋاي)
+Spanish (Venezuela): ئىسپانچە (ۋېنېزۇئېلا)
+Spanish: ئىسپانچە
+Sranan Tongo: =
+Sukuma: =
+Sumerian: =
+Sundanese: =
+Susu: سۇسۇ
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): شىۋىتسىيە (فىنلاندىيە)
+Swedish (Sweden): شىۋىتسىيە (شىۋىتسىيە)
+Swedish: شىۋىتسىيە
+Syriac: =
+Tagalog: =
+Tahitian: =
+Tai: =
+Taiwan: تەيۋەن
+Tajik: تاجىك
+Tamashek: =
+Tamil: تامىل
+Tatar: تاتار
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: تايلاند
+Tibetan: زاڭزۇ
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): تونگا (Nytmhasa)
+Tonga (Tonga Islands): تونگا (تونگا تاقىم ئاراللىرى)
+Tonga: تونگا
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: تۈرك
+Turkmen: تۈركمەنلەر
+Tuvinian: تۇۋىن
+Twi: =
+Udmurt: =
+Ugaritic: =
+Ukrainian: ئۇكرائىنا
+Umbundu: =
+Urdu: ئوردۇچە
+Uyghur: ئۇيغۇر
+Uzbek: ئۆزبېك
+Vai: =
+Venda: =
+Vietnamese: ۋېيتنام
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: ۋاللون
+Waray: =
+Washo: =
+Welsh: =
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: ياۋ
+Yapese: =
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: جۇاڭ
+Zulu: =
+Browser-defined: توركۆرگۈ ئېنىقلانغان
+event: پائالىيەت
+journal: ژۇرنال
+0: 0                                                   
+1: 1                                                   
+2: 2                                                   
+3: 3                                                   
+4: 4                                                   
+5: 5                                                   
+6: 6                                                   
+7: 7                                                   
+8: 8                                                   
+9: 9                                                   
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: ئىشلەتكۈچى كىرىش ئىناۋەتسىز
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: پارول خاتا
+no such user: بۇنداق ئىشلەتكۈچى يوق
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: ھېسابات چەكلەنگەن
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: ئارىلىق
+Months: ئايلار
+Month Days: ئاي كۈنلىرى
+Days: كۈنلەر
+Weeks: ھەپتە
+Position: ئورنى
+Until: تاكى ھازىرغىچە
+Count: ساناپ بېقىڭ
+Inclusion Dates: ئۆز ئىچىگە ئېلىش ۋاقتى
+Exclusion Dates: چەكلەش ۋاقتى
+Event Imported: ھادىسە ئىمپورت قىلىندى
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: ئۇقتۇرۇش
+authenticate: SMTP خاتالىقى: دەلىللىيەلمىدى
+connect_host: SMTP خاتالىقى: SMTP مۇلازىمېتىرىغا ئۇلىنالمىدى:
+data_not_accepted: SMTP خاتالىقى: سانلىق مەلۇمات قوبۇل قىلىنمىدى
+encoding: نامەلۇم كودلاش:
+execute: ئىجرا قىلالمىدى:
+file_access: ھۆججەتنى زىيارەت قىلالمىدى:
+file_open: ھۆججەت خاتالىقى ھۆججەتنى ئاچالمىدى:
+from_failed: تۆۋەندىكى ئادرېستىن مەغلۇپ بولدى:
+instantiate: خەت ئىقتىدارىنى دەرھال قوزغىتالمىدى
+mailer_not_supported: خەت ساندۇقى قوللىمايدۇ
+provide_address: كەم دېگەندە بىر تاپشۇرۇۋالغۇچىنىڭ ئېلېكترونلۇق خەت ئادرېسى بىلەن تەمىنلىشىڭىز كېرەك.
+recipients_failed: SMTP خاتالىقى: تۆۋەندىكى تاپشۇرۇۋالغۇچىلار مەغلۇپ بولدى:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: گرافىكتا كۆرۈلىدىغان ھەرپلەرنى كىرگۈزۈڭ
+Enter the correct letters and numbers...: رەسىم رامكىسىغا رەسىمدىن توغرا ھەرپ ۋە سانلارنى كىرگۈزۈڭ. بۇ كىچىك سىناق يامان غەرەزلىك بوتۇلكىلارغا كىرىش چەكلىمىسى رولىنى ئوينايدۇ. بۇ گرافىكنى ئوقۇش بەك تەس بولسا بەتنى قايتا يۈكلەڭ
+Challenge/Response: رىقابەت / جاۋاب
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: بۇ كىرىش ۋاقتى ۋە ۋاقتىنى ئۆزگەرتەمسىز؟
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: قىسقىچە چۈشەندۈرۈشنى كىرگۈزمىدىڭىز
+time prior to work hours...: خىزمەت ۋاقتىدىن بۇرۇنقى ۋاقىت ...
+Invalid Event Date: ئىناۋەتسىز پائالىيەت ۋاقتى
+Please add a participant: قاتناشقۇچى قوشۇڭ 
+Invalid Date: ئىناۋەتسىز چېسلا
+You have not entered a valid time of day: سىز ئۈنۈملۈك بىر كۈننى كىرگۈزمىدىڭىز. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: كالېندار كىملىكى قۇرۇق بولمايدۇ. 
+First and last names cannot both be blank.: ئىسىم ۋە فامىلىسى ھەر ئىككىسى قۇرۇق بولالمايدۇ. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: ئىناۋەتسىز رەڭ
+Color format should be RRGGBB.: رەڭ فورماتى #RRGGBB بولۇشى كېرەك. 
+URL cannot be blank.: URL بوش بولالمايدۇ.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: ھۆججەت تىپى ئىمپورت فورماتىغا ماس كەلمەيدۇ 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: ھۆججەت تەگلىكى ئۈچۈن ئىناۋەتسىز.
+Invalid color for document title.: ھۆججەت ماۋزۇسىنىڭ ئىناۋەتسىز رەڭ.
+Invalid color for table cell background.: جەدۋەل كاتەكچىسى تەگلىكى ئىناۋەتسىز.
+Invalid color for table cell background for today.: بۈگۈنكى جەدۋەل كاتەكچىسى تەگلىكى ئىناۋەتسىز.
+Invalid work hours.: خىزمەت ۋاقتى ئىناۋەتسىز.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: مۇلازىمېتىر URL چوقۇم چاتما (/) بىلەن ئاخىرلىشىشى كېرەك.
+Invalid color for table grid.: جەدۋەل تورى ئۈچۈن ئىناۋەتسىز.
+Invalid color for event popup background.: ھادىسە يۈز بەرگەن تەگلىك ئۈچۈن ئىناۋەتسىز.
+Invalid color for event popup text.: ۋەقە يۈز بەرگەن تېكىستنىڭ ئىناۋەتسىز رەڭ.
+Invalid color for table header text.: جەدۋەل ماۋزۇ تېكىستىنىڭ ئىناۋەتسىز رەڭ.
+Invalid color for table header background.: جەدۋەل بەت تەگلىكى ئۈچۈن ئىناۋەتسىز.
+Server URL is required.: مۇلازىمېتىر URL تەلەپ قىلىنىدۇ.
+Invalid Color: ئىناۋەتسىز رەڭ
+Database Name: ساندان ئىسمى
+Full Path (no backslashes): تولۇق يول (كەينىگە ياندۇرۇش يوق) 
+The password contains illegal characters.: پارولدا قانۇنسىز ھەرپلەر بار.
+Error you must specify a Single-User Login: خاتالىق: چوقۇم بىرلا ئىشلەتكۈچى تىزىملىكىنى بەلگىلىشىڭىز كېرەك
+Could not find XXX.: XXX نى تاپالمىدى.
+Could not find XXX in DOM.: DOM دا XXX نى تاپالمىدى.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: بۇ ھەپتە
+This Month: بۇ ئاي
+This Year: بۇ يىل
+Exit: چىقىش
+Add New Event: يېڭى پائالىيەت قوشۇڭ
+Delete Entries: تۈرلەرنى ئۆچۈرۈڭ
+My Views: مېنىڭ كۆز قارىشىم
+Manage Calendar of: كالېندارنى باشقۇرۇش
+My Reports: مېنىڭ دوكلاتلىرىم
+My Profile: مېنىڭ ئارخىپىم
+Public Calendar: ئاممىۋى كالېندار
+Unapproved Events: تەستىقلانمىغان ئىشلار
+User Manager: ئىشلەتكۈچى باشقۇرغۇچى
+Help Contents: ياردەم مەزمۇنى
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: ساندان غەملەك مۇندەرىجىسى
+Create New: يېڭى قۇر
+Failure Reason: مەغلۇبىيەت سەۋەبى:
+You must manually create database: سانداننى قولدا قۇرۇشىڭىز كېرەك.
+Single-User: يەككە ئىشلەتكۈچى
+Test Settings: سىناق تەڭشەكلىرى
+Timezone Conversion Successful: ۋاقىت رايونىنى ئۆزگەرتىش مۇۋەپپەقىيەتلىك بولدى
+WebCalendar Installation Wizard Step XXX: WebCalendar ئورنىتىش يېتەكچىسى XXX قەدەم
+Password Accepted: پارول قوبۇل قىلىندى
+Successful Login: مۇۋەپپەقىيەتلىك كىرىش
+Password Incorrect: پارول خاتا
+Invalid Login: ئىناۋەتسىز كىرىش
+Display Errors: خاتالىقلارنى كۆرسىتىش
+File Uploads: ھۆججەت يۈكلەش
+Allow URL fopen: URL fopen غا يول قويۇڭ (پەقەت يىراق كالېندار ئىشلىتىلگەندىلا تەلەپ قىلىنىدۇ)
+Safe Mode: بىخەتەر ھالەت
+Safe Mode Allowed Vars: بىخەتەر ھالەت رۇخسەت قىلىنغان Vars (پەقەت بىخەتەر ھالەت ئېچىلغاندىلا TZ تەلەپ قىلىنىدۇ)
+GD: GD (Gradient Image تەگلىكى ئۈچۈن لازىم)
+Passwords do not match!: پارول ماس كەلمەيدۇ!
+Unable to write password to settings.php file: پارولنى "settings.php" ھۆججىتىگە يازالمىدى.
+Password Updated: پارول يېڭىلاندى
+Password has been set: پارول بېكىتىلدى.
+Connection Successful...: ئۇلىنىش مۇۋەپپەقىيەتلىك قاچىلاشنى داۋاملاشتۇرۇش ئۈچۈن كېيىنكى بەتكە كىرىڭ.
+Correct your entries or click the Create New...: يازمىلىرىڭىزنى توغرىلاڭ ياكى  يېڭى قۇرۇش  كۇنۇپكىسىنى چېكىپ قاچىلاشنى داۋاملاشتۇرۇڭ.
+Correct your entries and try again.: يازمىلىرىڭىزنى تۈزىتىپ قايتا سىناڭ.
+XXX does not exist: XXX مەۋجۇت ئەمەس
+XXX is not writable: XXX يازغىلى بولمايدۇ
+Error Converting Timezone: ۋاقىت رايونىنى ئۆزگەرتىشتە خاتالىق
+Error Unable to write to file XXX.: خاتالىق XXX ھۆججىتىنى يېزىشقا ئامالسىز.
+Please change the file permissions of this file.: بۇ ھۆججەتنىڭ ھۆججەت ئىجازەتنامىسىنى ئۆزگەرتىڭ.
+Please change includes dir permission: «ئىشلەتكۈچى» مۇندەرىجىسىدىكى ھۆججەت ئىجازەتنامىسىنى باشقا ئىشلەتكۈچىلەرنىڭ يېزىشىغا رۇخسەت قىلىڭ.
+Your settings have been saved.: تەڭشەكلىرىڭىز ساقلاندى.
+OFF: =
+ON: =
+WebCalendar Setup Wizard: WebCalendar تەڭشەش يېتەكچىسى
+This installation wizard will guide you...: بۇ قاچىلاش يېتەكچىسى سىزنى ئاساسىي WebCalendar قاچىلاش ئارقىلىق يېتەكلەيدۇ.<br>ياردەم ۋە مەسىلىلەرنى ھەل قىلىش ئۈچۈن:<br>
+System Administrators Guide: سىستېما باشقۇرغۇچى قوللانمىسى
+Frequently Asked Questions: دائىم سورايدىغان سوئاللار
+FAQ: سوئال
+Troubleshooting: كاشىلا
+Getting Help: ياردەمگە ئېرىشىش
+Upgrading Guide: يېڭىلاش قوللانمىسى
+User Supported Wiki: ئىشلەتكۈچى قوللايدىغان Wiki
+PHP Version Check: PHP نەشرىنى تەكشۈرۈش
+Check to see if PHP 7.1.0 or greater is installed.: PHP 7.1.0 ياكى ئۇنىڭدىن چوڭ نەشرىنىڭ قاچىلانغان ياكى ئەمەسلىكىنى تەكشۈرۈڭ.
+PHP version: PHP نەشرى
+PHP Settings: PHP تەڭشىكى
+Detailed PHP Info: تەپسىلىي PHP ئۇچۇرى
+settings.php Status: "settings.php" ھالەت
+Session Check: يىغىن تەكشۈرۈشى
+To test the proper operation of sessions...: ئولتۇرۇشلارنىڭ مۇۋاپىق مەشغۇلاتىنى سىناش ئۈچۈن بۇ بەتنى قايتا يۈكلەڭ. ھەر قېتىم يىغىن ھېساباتىنىڭ كۆپىيىشىنى كۆرۈشىڭىز كېرەك.
+SESSION COUNTER: SESION COUNTER
+The file permissions of settings.php are set...: «تەڭشەكلەر. Php» نىڭ ھۆججەت ھوقۇقى ئورنىتىلغان بولۇپ ، قاچىلاش پروگراممىسىنىڭ ئۇنى ئۆزگەرتىش ھوقۇقى بولمايدۇ. داۋاملاشتۇرۇش ئۈچۈن تۆۋەندىكى ھۆججەتنىڭ ھۆججەت ئىجازەتنامىسىنى ئۆزگەرتىڭ
+The file permissions of the includes directory are set...: مۇندەرىجەنىڭ ھۆججەت ھوقۇقى قاچىلاش پروگراممىسىنىڭ يېڭى ھۆججەت قۇرۇشقا ئىجازەت بەرمەسلىكى ئۈچۈن تەڭشەلدى. داۋاملاشتۇرۇش ئۈچۈن تۆۋەندىكى مۇندەرىجىنىڭ ئىجازەتنامىسىنى ئۆزگەرتىڭ
+Your settings.php file appears to be valid.: سىزنىڭ «settings.php» ھۆججىتىڭىز ئىناۋەتلىكتەك قىلىدۇ.
+Configuration Wizard Password: سەپلىمە يېتەكچى پارولى
+Create Settings File Password: تەڭشەك ھۆججەت پارولى قۇرۇش
+db setup directions...: بۇ بۆلەكتە ساندان مۇلازىمېتىرىڭىزغا ئۇلىنىشنى تەڭشەيسىز. تەمىنلەنگەن ھېسابات ئۇچۇرلىرىدا ساندان ، جەدۋەل ۋە ئىشلەتكۈچى قۇرۇش ئۈچۈن تولۇق ئىجازەت بولۇشى كېرەك. ئەگەر بۇ مۇمكىن بولمىسا ياكى سانداننى زىيارەت قىلىش چەكلىك بولسا ، سانداننى قولدا تەڭشىشىڭىز لازىم.
+Database Status: ساندان ھالىتى
+Supported databases for your PHP installation: PHP قاچىلاش ئۈچۈن قوللايدىغان ساندان
+Your current database settings are able to access the database.: نۆۋەتتىكى ساندان تەڭشىكىڭىز سانداننى زىيارەت قىلالايدۇ.
+Please Test Settings: تەڭشەكلەرنى سىناپ بېقىڭ
+Your current database settings are not able...: نۆۋەتتىكى ساندان تەڭشىكىڭىز سانداننى زىيارەت قىلالمايدۇ ياكى تېخى سىناقتىن ئۆتمىدى.
+Database Settings: ساندان تەڭشىكى
+Database Type: ساندان تىپى
+Server: مۇلازىمېتىر
+Connection Persistence: ئۇلىنىشتا چىڭ تۇرۇش
+All your database tables appear to be up...: ساندان جەدۋىلىڭىزنىڭ ھەممىسى يېڭىلانغاندەك قىلىدۇ. كېيىنكى بەتكە يۆتكىلىپ ، WebCalendar تەڭشىكىڭىزنى تاماملىيالايسىز.
+This appears to be a new installation...: بۇ يېڭى قاچىلاشتەك قىلىدۇ. ئەگەر بۇ توغرا بولمىسا ، ئالدىنقى بەتكە قايتىپ تەڭشەكلىرىڭىزنى تۈزىتىڭ.
+This appears to be an upgrade...: بۇ نەشرى&nbsp;XXX&nbsp;YYY غا يېڭىلانغاندەك قىلىدۇ.
+The database requires some data input...: ساندان يېڭىلاشنى تاماملاش ئۈچۈن بىر قىسىم سانلىق مەلۇمات كىرگۈزۈشنى تەلەپ قىلىدۇ.
+In this section we will perform...: بۇ بۆلەكتە سانداننى تەلەپتىكى سەۋىيىگە يەتكۈزۈش ئۈچۈن ئۆزگەرتىش ئېلىپ بارىمىز. ئەگەر تولۇق قوللايدىغان سانداننى ئىشلىتىۋاتقان بولسىڭىز ، بۇ باسقۇچ سىز ئۈچۈن ئاپتوماتىك ئىجرا قىلىنىدۇ. ئەگەر ئۇنداق بولمىسا ، تەلەپ قىلىنغان SQL نى كۆرسەتكىلى بولىدۇ ھەمدە ئۇنى ساندان مۇلازىمېتىر سوئال كۆزنىكىگە چاپلاپ چاپلىسىڭىز بولىدۇ.
+No database actions are required.: ساندان ھەرىكىتى تەلەپ قىلىنمايدۇ.
+The following database actions are required: تۆۋەندىكى ساندان ھەرىكىتى تەلەپ قىلىنىدۇ
+ODBC Underlying Database: ODBC ئاساسى ساندان:
+Automatic installation not supported: ساندان تىپىڭىز ئۈچۈن ئاپتوماتىك قاچىلاش تولۇق ئىجرا قىلىنمىدى. تەمىنلەنگەن SQL ئارقىلىق لازىملىق جەدۋەللەرنى قولدا قۇرۇشىڭىز كېرەك. داۋاملاشتۇرۇش ئۈچۈن  كۆرسىتىش SQL  نى چېكىڭ. ساندان سوئال كۆزنىكىگە كېسىڭ ۋە چاپلاڭ.
+This may take several minutes to complete: تاماملاشقا بىر قانچە مىنۇت ۋاقىت كېتىشى مۇمكىن.
+Install Database: سانداننى قاچىلاڭ
+Update Database: سانداننى يېڭىلاش
+Display Required SQL: لازىملىق SQL نى كۆرسىتىش
+Return to previous page after processing SQL.: بۇ SQL نى قولدا بىر تەرەپ قىلغاندىن كېيىن ، ئالدىنقى بەتكە قايتىپ ، سانداننى قايتا تەكشۈرۈشىڭىز كېرەك ، بۇنداق بولغاندا قوليازما ئۆزگىرىشلەرنى بايقىيالايدۇ.
+This is the final step in setting up your WebCalendar Installation.: بۇ سىزنىڭ WebCalendar نى ئورنىتىشنىڭ ئاخىرقى قەدىمى.
+Timezone Conversion: ۋاقىت رايونىنى ئۆزگەرتىش
+It appears that you have NOT converted...: قارىغاندا سىز ھازىر بار بولغان WebCalendar پائالىيەت سانلىق مەلۇماتلىرىنى GMT غا ئايلاندۇرمىدىڭىز. ئەگەر بار بولسا ، بۇ ئۇقتۇرۇشقا پەرۋا قىلماي ، ئۆزگەرتىشنى داۋاملاشتۇرمايسىز. ئەگەر بۇ يېڭى قاچىلاش بولسا ، بۇ ئۇقتۇرۇشقا پەرۋا قىلماسلىقىڭىز مۇمكىن.
+Convert Data to GMT: سانلىق مەلۇماتنى GMT غا ئايلاندۇرۇش
+Application Settings: قوللىنىشچان تەڭشەكلەر
+HTTP-based authentication was not detected...: HTTP ئاساسىدىكى دەلىللەش بايقالمىدى. تۆۋەندىكى «ئىشلەتكۈچى دەلىللەش» تاللىشىدىن «تور مۇلازىمېتىرى» نى تاللىماقچى بولسىڭىز ، تور مۇلازىمېتىرىڭىزنى قايتا تەڭشىشىڭىز لازىم.
+HTTP-based authentication was detected...: HTTP ئاساسىدىكى دەلىللەش بايقالدى. ئىشلەتكۈچى دەلىللەش تور مۇلازىمېتىرىڭىز تەرىپىدىن بىر تەرەپ قىلىنىدۇ. تۆۋەندىكى «ئىشلەتكۈچى دەلىللەش» تاللاش تىزىملىكىدىن «تور مۇلازىمېتىرى» نى تاللىشىڭىز كېرەك.
+Create Default Admin Account: كۆڭۈلدىكى باشقۇرۇش ھېساباتى قۇرۇش
+(Admin Account Not Found): (باشقۇرغۇچى ھېساباتى تېپىلمىدى)
+User Authentication: ئىشلەتكۈچى دەلىللەش
+Web-based via WebCalendar (default): WebCalendar ئارقىلىق تورنى ئاساس قىلغان (سۈكۈتتىكى)
+Web Server (not detected): تور مۇلازىمېتىرى (بايقالمىدى)
+Web Server (detected): تور مۇلازىمېتىرى (بايقالدى)
+None (Single-User): ھېچكىم (يەككە ئىشلەتكۈچى)
+Read-Only: پەقەت ئوقۇشقىلا بولىدۇ
+Environment: مۇھىت
+Production: ئىشلەپچىقىرىش
+Development: تەرەققىيات
+Save Settings: تەڭشەكلەرنى ساقلاڭ
+Launch WebCalendar: WebCalendar نى قوزغىتىڭ
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: جەدۋەل «XXX» نى يېڭىلاشتا خاتالىق: YYY.
+Conversion Successful: ئايلاندۇرۇش مۇۋەپپەقىيەتلىك
+Perl script required: ئالدىنقى نەشرىدىكى WebCalendar سانلىق مەلۇماتلىرىڭىزنى ئۆزگەرتىش ئۈچۈن PERL قوليازمىسىنى ئىجرا قىلىشنى تەلەپ قىلىدۇ. /Tools/upgrade_to_0.9.7.pl نى ئىجرا قىلىپ ئاندىن بۇ بەتكە قايتىپ داۋاملاشتۇرۇڭ.
+previous version requires updating several tables: ئالدىنقى نەشرىدىكى WebCalendar بىر قانچە ساندان جەدۋىلىنى يېڭىلاشنى تەلەپ قىلىدۇ.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: ئالدىن كۆرۈشكە بولمايدۇ
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: ساندانغا ئۇلىنىش خاتا
+Include Path: يولنى ئۆز ئىچىگە ئالىدۇ
+Deleting events for: ئۈچۈن ۋەقەلەرنى ئۆچۈرۈش
+Importing events for: ئۈچۈن ۋەقەلەرنى ئەكىرىش
+No data returned from: ھېچقانداق سانلىق مەلۇمات قايتۇرۇلمىدى
+for non-user calendar: ئىشلەتكۈچى بولمىغان كالېندار ئۈچۈن
+No Remote Calendars found: يىراق كالېندار تېپىلمىدى
+Remote Calendars not enabled: يىراق كالېندار قوزغىتىلمىدى
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ھادىسە id نى تاپالمىدى
+could not find event id XXX in database.: سانداندا ھادىسە id XXX نى تاپالمىدى.
+task: ۋەزىپە
+This is a reminder for the XXX detailed below.: بۇ تۆۋەندە تەپسىلىي بايان قىلىنغان XXX ئۈچۈن ئەسكەرتىش.
+Pecentage Complete: =
+Reminder: ئەسكەرتىش
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: قوللىمايدىغان ھەرىكەت: XXX.
+No event id specified.: ھېچقانداق پائالىيەت كىملىكى كۆرسىتىلمىگەن.
+Not authorized (not admin).: ھوقۇق بېرىلمىگەن (باشقۇرغۇچى ئەمەس).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: YYY دىن ZZZ دىن بۈگۈنگە قەدەر XXX دىكى ۋەقەلەرنى تەكشۈرۈش.
+Found XXX events in time range.: ۋاقىت دائىرىسىدە XXX ھادىسىلىرى بايقالدى.
+Event id=XXX YYY at ZZZ on AAA.: AAA دىكى ZZZ دىكى پائالىيەت id = XXX "YYY".
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: XXX ئىشلەتكۈچىنىڭ باشقا ئىشلەتكۈچىنىڭ كالېندارىنى كۆرۈشىگە يول قويۇش.
+Error Email reminders disabled for user XXX.: خاتالىق: ئىشلەتكۈچى «XXX» ئۈچۈن ئېلېكترونلۇق خەت ئەسكەرتمىسى چەكلەنگەن.
+Number of site_extras XXX.: بېكەت_ تېكىستلەرنىڭ سانى: XXX.
+Reminder set for event.: پائالىيەت ئۈچۈن ئەسكەرتىش.
+Mins Before XXX.: =
+Event time is XXX.: پائالىيەت ۋاقتى: XXX.
+Remind time is XXX.: ئەسكەرتىش ۋاقتى: XXX.
+Reminders for user XXX, login YYY.: ئىشلەتكۈچى «XXX» ، «YYY» غا كىرىش ئەسكەرتىشلىرى.
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: ئىشلەتكۈچى «XXX» نى تەستىقلىماسلىق.
+Event id=XXX YYY already sent.: پائالىيەت id = XXX "YYY" ئاللىبۇرۇن ئەۋەتىلدى.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: يەككە ئىشلەتكۈچى ھالىتىگە كىرىش تەلەپ قىلىنمايدۇ.
+No login required for HTTP authentication.: HTTP دەلىللەش ئۈچۈن كىرىش تەلەپ قىلىنمايدۇ.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: كىرىشتىكى ئىناۋەتسىز ھەرپلەر
+Username XXX does not exist.: ئىشلەتكۈچى ئىسمى «XXX» مەۋجۇت ئەمەس.
+You cannot remove admin rights from yourself!: باشقۇرۇش ھوقۇقىنى ئۆزىڭىزدىن ئۆچۈرەلمەيسىز!
+Unknown error saving user: ئىشلەتكۈچى نامەلۇم خاتالىق.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: پائالىيەت كىملىكى ئۈچۈن قاتناشقۇچىلار تېپىلمىدى: XXX.
+Db error Could not find event id XXX.: Db خاتالىقى: ھادىسە id XXX نى تاپالمىدى. 
+Error Could not find event id XXX in database.: خاتالىق: سانداندا ھادىسە id XXX نى تاپالمىدى. 

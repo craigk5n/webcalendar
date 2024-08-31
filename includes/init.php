@@ -155,7 +155,7 @@ function send_http_headers () {
  * @param bool   $IGNORED      Parameter not used (ignored)
  * @param bool   $disableUTIL  Do not include the util.js link
  */
-function print_header( $includes = '', $HeadX = '', $BodyX = '',
+function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $disableCustom = false, $disableStyle = false, $disableRSS = false,
   $IGNORED = false, $disableUTIL = false ) {
   global $BGCOLOR, $browser, $charset, $CSP, $CUSTOM_HEADER, $CUSTOM_SCRIPT,
@@ -164,6 +164,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $POPUP_FG, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $REQUEST_URI, $SCRIPT,
   $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG,
   $ASSETS;
+
+  $id = '';
 
   ob_start ();
 
@@ -218,9 +220,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 
   if( ! empty( $js_ar ) )
     foreach( $js_ar as $j ) {
-      $i = 'includes/' . $j;
       $ret .= '
-    <script src="' . $i . '"></script>';
+    <script src="includes/' . $j . '" defer></script>';
     }
 
   // Any other includes?
@@ -231,11 +232,10 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
         // Ignore since we handled it above
         //$cs_ret .= '<!-- JQUERY INCLUDED -->' . "\n";
       } if( stristr( $inc, '.css' ) ) {
-        $i = 'includes/' . $inc;
         // Not added to $cs_ar because I think we want these,
         // even if $disableStyle.
         $cs_ret .= '
-    <link href="' . $i . '" rel="stylesheet">';
+    <link href="includes/' . $inc . '" rel="stylesheet">';
       } elseif( substr( $inc, 0, 12 ) == 'js/popups.js'
           && ! empty( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
         // Don't load popups.js if DISABLE_POPUPS.
@@ -256,7 +256,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
         } else {
           $ret .= 'js_cacher.php?inc=' . $inc;
         }
-        $ret .= '"></script>';
+        $ret .= '" defer></script>';
       }
     }
   }
@@ -325,21 +325,28 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
      . '" rel="alternate" title="' . $appStr . ' [RSS 2.0]">' : '' )
   // Do we need anything else inside the header tag?
   // $HeadX moved here because linked CSS may override standard styles.
-   . ( $HeadX ? '
-     ' . $HeadX : '' ) . '
+   . "
+    $HeadX" . '
     <link type="image/x-icon" href="favicon.ico?'
    . filemtime( 'favicon.ico' ) . '" rel="shortcut icon">
   </head>
-  <body'
-  // Determine the page direction (left-to-right or right-to-left).
-  . ( translate( 'direction' ) == 'rtl' ? ' dir="rtl"' : '' )
-  /* Add <body> id. */ . ' id="' . preg_replace( '/(_|.php)/', '',
-    substr( $self, strrpos( $self, '/' ) + 1 ) ) . '"'
-  // Add any extra parts to the <body> tag.
-  . ( empty( $BodyX ) ? '' : " $BodyX" ) . '>' . "\n"
-  // Add custom header if enabled.
-  . ( $CUSTOM_HEADER == 'Y' && ! $disableCustom
-    ? load_template( $login, 'H' ) : '' );
+  <body id="';
+
+  $id = preg_replace ( '/.php/', '',
+    substr ( $self, strrpos ( $self, '/' ) + 1 ) );
+  $id_ar = explode ( '_', $id );
+
+  // classes and ids are supposed to be UpperCamelCase, per Developer Guide
+  $id = array_map ( 'ucfirst', $id_ar );
+
+  echo implode ( '', $id ) .
+    ( translate ( 'direction' ) === 'rtl' ? '" dir="rtl"' : '"' )
+    // Add any extra parts to the <body> tag.
+    . " $BodyX>\n"
+    // Add custom header if enabled.
+    . ( $CUSTOM_HEADER === 'Y' && ! $disableCustom
+      ? load_template ( $login, 'H' ) : '' );
+
   // HTML includes needed for the top menu.
   if( $MENU_ENABLED == 'Y' ) {
     require_once 'menu.php';

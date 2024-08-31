@@ -149,9 +149,8 @@ function list_unapproved ( $user ) {
       <tr>
         <td colspan="5" nowrap>&nbsp;
           <img src="images/bootstrap-icons/arrow-90deg-up.svg" alt="">
-          <label><a title="' . $checkAllStr . '" onclick="check_all( \''
-       . $user . '\' );">' . $checkAllStr . '</a> / <a title="' . $uncheckAllStr
-       . '" onclick="uncheck_all( \'' . $user . '\' );">' . $uncheckAllStr
+          <label><a onclick="check_all( \''
+       . $user . '\' );">' . $checkAllStr . '</a> / <a onclick="uncheck_all( \'' . $user . '\' );">' . $uncheckAllStr
        . '</a></label>&nbsp;&nbsp;&nbsp;
           <input type="image" src="images/bootstrap-icons/check-circle.svg" title="' . $appSelStr
        . '" onclick="return do_confirm( \'approveSelected\', \'' . $cal_user

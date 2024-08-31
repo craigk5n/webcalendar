@@ -1,0 +1,2392 @@
+# Hmong hmn
+#
+# Daim ntawv muaj hom taub hau xaiv:
+# #Ntxawm
+# Txhais los ntawm: koj lub npe thiab email
+# Hloov kho hloov tshiab: hnub txhais lus
+# (Nrog rau tus coj "#" thiab cov lus pom hais los ntawm cov neeg txhais lus yav dhau los.
+# THAWJ kab ntawv tom qab xaus cov lus no.)
+#
+# Ntxawm
+# Txoj kev uas muaj coob leej xav tau:
+#
+# Ntxawm
+# Kab lus Askiv: txhais lus
+# (Ib txog kab. TSIS TXHOB coj tus "#".
+# "Cov lus Askiv hais tias:", suav nrog cov nyuv ":", yog muab los ntawm tus
+# WebCalendar kev tsim tawm. Koj ib feem yog "tus neeg txhais lus".)
+#
+# Ntxawm
+# Cov cuab yeej sau npe muaj ob daim ntawv sau perl los pab koj:
+# - check_translation.pl
+# qhia yog tias txhua cov ntawv nyeem tau muab txhais ua tiav.
+# - update_translation.pl
+# yuav faib cov ntaub ntawv program mus nrhiav txhua qhov txhais lus ('kab lus') thiab
+# tooltip ('kab lus'). Nws yuav npaj cov nqe lus raws li nplooj ntawv
+# (file) uas muaj cov thawj tshwm sim. Xaiv, nws tuaj yeem sau qhov
+# kab lus uas tseem tsis tau txhais los ntawm kev tso
+#  << MISSING >>
+# ntawm kab ntawv saum toj ntawm kab lus. Thiab, yog hais tias cov kab lus yog ib qho kev luv luv,
+# nws yuav suav nrog tag nrho cov lus Askiv ntawm kab hauv qab kab lus.
+#
+# Ntxawm
+# Ceeb Toom: Kuv sim txo tus nqi ntawm daim ntawv dav. Yog hais tias "translation"
+# lo lus / kab lus zoo ib yam koj hom lus thiab lus Askiv, tsuas siv "" = "cim.
+#
+# Ntxawm
+# Ceebtoom: Koj yuav pom kev nkag mus rau "May_"  hauv qab. Muaj ib lub laj thawj rau qhov no.
+# Txhais lus "May_" rau lub npe puv hli thiab "May" rau,
+# feem ntau peb tsab ntawv, lub hli luv (zoo li "Oct" rau "Kaum Hli").
+#
+# Kuv siv Google txhais lus rau qhov no.
+# Nws yuav tsum txaus kom txog thaum cov neeg ib txwm hais lus thiaj paub tseeb nws.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: =
+WebCalendar is a PHP application used...: WebCalendar yog PHP daim ntawv thov siv los tswj daim ntawv qhia hnub rau tus neeg siv ib leeg lossis hauv internet / intranet pawg ntawm cov neeg siv. Nws tuaj yeem raug teeb tsa raws li lub caij nyoog teem.
+Credits: Khab nias
+About: Txog
+OK: =
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Cov ntaub ntawv tsis raug: XXX.
+DEFAULT CONFIGURATION: TXHEEJ TXHEEM LOOJ CEEB
+Go: Mus
+Save: Txuag
+Undo: =
+Public Access: Pej Xeem Nkag Mus Nkag
+Admin: Cov thawj coj
+User Access Control: Cov Kev Tswj Xyuas Cov Neeg Siv
+Allow Access to Other Users Calendar: Tso Cai Nkag Mus Saib Lwm Tus Neeg Siv Sijhawm
+Grant This User Access to My Calendar: Muab Cov Neeg Siv Nkag Mus Saib Hauv Kuv Daim Ntawv Thov Kev Pab
+Type: Hom
+Calendar: Meem
+View Event: Saib Lub Caij
+View: Saib
+Edit: Kho kom raug
+Approve/Reject: Pomzoo / Txwv
+Events: Txheej xwm
+Tasks: Cov haujlwm
+Journals: Txhua hnub
+Can Invite: Tuaj Caw
+Can Email: Tau Email
+Can See Time Only: Tsuas Pom Lub Sij Hawm Xwb
+Assistant: Pab
+Select All: Xaiv Txhua Tus
+Clear All: Ntshiab Txhua
+Public: Pej xeem
+Confidential: Tsis pub leej twg paub
+Private: Lwm tus
+
+########################################
+# Page: activity_log.php
+#
+Next: Ntxiv mus
+Previous: Yav dhau los
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Qhov tshwm sim XXX twb nyob hauv koj daim ntawv thov raws.
+Invalid entry id XXX.: Tus ID nkag tsis raug: "XXX".
+a XXX event may not be added to your calendar: Qhov no yog XXX lub sijhawm thiab tsis tuaj yeem txuas ntxiv rau koj daim ntawv qhia hnub.
+confidential: tsis pub lwm tus paub
+private: ntiag tug
+Error adding event XXX.: Yuam kev ntxiv qhov tshwm sim: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Kev siv lub npe tsis raug "XXX".
+Select: Xaiv
+Day: Hnub
+Week: Lub Limtiam
+Month: Lub Hlis
+Year: Xyoo
+Bottom: Hauv qab
+Top: Saum
+Anyone: Leej twg
+Participant: Cov Neeg Koom Tes
+Settings: Chaw
+Groups: Pawg
+NonUser Calendars: NonUser Daim Ntawv Qhia Kev
+Other: Lwm yam
+Email: =
+Colors: Xim
+Document background: Cov ntaub ntawv keeb kwm yav dhau
+Document title: Ntawv npe
+Document text: Ntawv ntawv
+My event text: Kuv zaj ntawv nyeem
+Table grid color: Daim phiaj xim
+Table header background: Cov ntawv tom qab rooj
+Table header text: Cov ntawv ntim cov lus
+Table cell background: Tom qab ntawm tes
+Table cell background for current day: Rooj ntawm tes keeb kwm yav dhau los rau hnub no
+Table cell background for days with events: Tom qab ntawm tes rau hnub nrog rau xwm txheej
+Table cell background for weekends: Cov ntawv keeb kwm ntawm tes rau ob hnub so
+Table cell background for other month: Tom qab ntawm tes lub rooj rau lwm lub hlis
+Week number color: Lub lim tiam naj npawb xim
+Event popup background: Qhov xwm txheej popup tom qab
+Event popup text: Cov ntawv xov tshwm sim
+System Settings: Lawv Chaw
+Help: Pab
+System options: Txheej txheem xaiv
+app-name-help: Qhia meej lub npe ntawm daim ntawv thov uas yuav tshwm nyob rau hauv browser npe bar rau txhua nplooj thiab nplooj nkag. Tus nqi koj sau ntawm no yuav raug saib hauv cov ntawv txhais lus uas cia koj muab cov npe txawv rau cov lus sib txawv.
+Application Name: Npe Npe
+Translated Name (XXX): Lub Npe Txhais (XXX)
+server-url-help: Qhia meej txog lub hauv paus URL rau daim ntawv thov. Qhov no yuav suav nrog thaum xa tawm email ceeb toom thiab ceeb toom.
+Server URL: Neeg rau zaub mov URL
+home-url-help: Qhia meej meej lub tsev URL rau daim ntawv thov. Qhov no tuaj yeem yog tus neeg tsis txheeb lossis tus txheeb ze
+Home URL: URL Tsev
+language-help: Qhia meej tias yuav siv hom lus twg.
+Language: Lus
+Your browser default language is XXX.: Koj lub browser ua neej neeg lus yog "XXX".
+Allow user to use themes: Tso cai rau tus neeg siv siv cov ntsiab lus
+themes-help: Tso cai rau huab hwm coj hloov kho ntawm cov chaw teeb tsa. Cov tsiaj ntawv qis dua yog tus neeg siv khoom ua ntej.
+Themes: Cov Ntxhais
+AVAILABLE THEMES: MUAJ LWM YAM
+None: Tsis muaj
+Preview: Saib ua ntej
+Site customization: Site kho kom zoo
+custom-script-help: Tso cai nkag ntawm kev cai Javascript lossis stylesheet ntawv uas yuav muab tso rau hauv ntu HTML "taub hau" ntawm txhua nplooj ntawv.
+Custom script/stylesheet: Kev cai ntawv sau / stylesheet
+custom-header-help: Tso cai rau kev cai HTML me me kom muab suav nrog txhua sab.
+Custom header: Kev cai header
+custom-trailer-help: Tso cai rau kev cai HTML me me kom muab suav nrog qhov kawg ntawm txhua nplooj ntawv.
+Custom trailer: Kev cai trailer
+enable-external-header-help: Tso cai rau cov neeg coj kev cai thauj khoom los ntawm cov ntaub ntawv sab nraud
+Allow external file for header/script/trailer: Tso cai rau cov ntaub ntawv sab nraud rau header / tsab ntawv / trailer
+Allow user to override header/trailer: Tso cai rau tus neeg siv hla ntawm header / trailer
+Date and Time: Hnub Tim thiab Sijhawm
+server-tz-help: Qhia kom meej cov sij hawm ntau npaum li cas los kho lub sijhawm ntawm UTC rau lub sijhawm server.
+Server Timezone Selection: Server Timezone Xaiv
+tz-help: Qhia kom meej cov xuab moos ntau npaum li cas los kho lub sijhawm ntawm UTC rau lub sijhawm hauv nroog.
+Default Client Timezone Selection: Default Client Lub Sijhawm Xaiv
+display-general-use-gmt-help: Yog tias siv tau, hnub / sijhawm yog pom raws li GMT
+Display Common Use Date/Times as GMT: Cov Hnub Siv / Hnub Siv raws li GMT
+date-format-help: Qhia txog hom hnub tim uas koj nyiam.
+Date format: Hnub tim hom ntawv
+Small Task Date: Hnub Ua Haujlwm Me
+display-week-starts-on: Qhia hnub ntawm lub limtiam uas pib hnub pib. Yog hnub Monday tau teev tseg, tom qab ntawv lub lim piam yuav yog ISO lub lis piam.
+Week starts on: Lub lim tiam pib
+display-weekend-starts-on: Teem lub hnub ntawm lub lim tiam rau hnub so pib
+Weekend starts on: Lis xaus rau hnub pib
+time-format-help: Qhia meej lub sijhawm twg siv:<br><em>12 teev:</em> Cov sijhawm tso tawm li 3 teev, 8:30 tsaus ntuj, thiab lwm yam.<br><em>24 teev:</em> Cov sijhawm pom ua 300 tawm , 2030, thiab lwm yam.
+Time format: Lub sijhawm sijhawm
+12 hour: 12 teev
+24 hour: 24 teev
+timed-evt-len-help: Qhia meej meej cov tswv yim txoj kev txiav txim siab qhov ntev ntawm lub sijhawm ua haujlwm.
+Specify timed event length by: Qhia kom meej qhov teem sij hawm ntev los ntawm
+Duration: Ntev
+End Time: Sij Hawm Kawg
+work-hours-help: Qhia txog lub sijhawm siv coj los tsim rau hnub pom.
+Work hours: Sijhawm ua haujlwm
+From: Ntawm
+to: rau
+Appearance: Tsos
+preferred-view-help: Qhia txog lub neej ntawd saib (Hnub, Limtiam, Hli, lossis Xyoo).
+Preferred view: Xum saib
+Allow top menu: Pub rau cov zaub mov saum toj kawg nkaus
+Date Selectors position: Hnub Xaiv Haujlwm txoj hauj lwm
+menu-themes-help: Teev cov xim thiab cov style ntawm cov ntawv qhia saum toj kawg nkaus
+Menu theme: Cov ntawv qhia zaub mov ntsiab lus
+fonts-help: Qhia meej meej cov kab ke fonts siv (xws li "Arial, Helvetica")
+Fonts: =
+display-sm_month-help: Yog tias siv tau, qhia me me nyob rau lub hli pom
+Display small months: Tso saib lub hli me me
+display-weekends-help: Xws li cov hnub so thaum saib lub lim tiam.
+Display weekends: Muab cov hnub so
+display-long-daynames-help: Yog tias qhib, pom cov npe hnub ntev ntev
+Display long day names: Cov npe hnub nyob ntev
+display-alldays-help: Tso saib lub hli dhau los thiab lwm hnub hnub ntawm lub hli saib, sau tag nrho cov hlwb.
+Display all days in month view: Tso saib txhua hnub nyob rau lub hli saib
+display-week-number-help: Qhia seb tus lej lub lim tiam (1-52) yuav tsum tshwm nyob hauv lub hli saib thiab lub limtiam saib.
+Display week number: Qhia tus naj npawb rau lub lim tiam
+display-desc-print-day-help: Xws li cov ntawv piav qhia yam nyob hauv lub tshuab luam ntawv-phooj ywg version ntawm pom hnub.
+Display description in printer day view: Cov lus piav qhia nyob hauv lub tshuab luam ntawv hnub pom
+yearly-shows-events-help: Hauv kev pom txhua xyoo, muab cov hnub uas muaj cov ntawv sau ua qauv xim dub.
+Display days with events in bold in month and year views: Nthuav cov hnub nrog cov xwm txheej hauv lub hlis thiab xyoo pom
+display-minutes-help: Yog tias siv, feeb thaum xaus nrog: 00 yuav ib txwm tshwm
+Display 00 minutes always: Tso saib 00 feeb tas li
+display-end-times-help: Muab kev tshwm sim rau thaum xaus yog tias muaj sijhawm tshwm sim
+Display end times on calendars: Muab sijhawm xaus rau ntawm daim qhia hnub nyoog
+allow-view-add-help: A '+' icon yuav suav nrog hauv kev pom, pub rau cov neeg siv kom sai cov xwm txheej rau lwm tus neeg siv 'daim qhia hnub nyoog.
+Include add event link in views: Muab ntxiv qhov kev sib txuas ua ke hauv views
+lunar-help: Yog tias siv tau, nws yuav tso cov cim me me sawv cev rau lub hli lunar qib
+Display Lunar Phases in month view: Tso saib lub hli theem hauv lub hli saib
+Restrictions: Kev Txwv
+allow-view-other-help: Qhia meej seb ib tus siv puas saib lwm tus neeg siv daim ntawv qhia hnub.
+Allow viewing other users calendars: Tso cai saib ntawm lwm tus neeg siv daim qhia hnub hli
+require-approvals-help: Thaum qhib siv, tus neeg siv yuav tsum pom zoo ib qho kev tshwm sim ua ntej nws tau muab tso tawm rau hauv lawv daim ntawv qhia hnub (tshwj tsis yog Cov zaub tsis tau tso cai yog qhib). Nco tseg qhov teeb tsa qhov no "Tsis Yog" yuav tsis thim kev pom zoo rau Daim Ntawv Thov Kev Nkag Mus Siv (yog tias Daim Ntawv Thov Pej Xeem Nkag Mus Siv tau).
+Require event approvals: Yuav tsum muaj kev pom zoo cov kev tshwm sim
+display-unapproved-help: Qhia tseeb seb puas tsim nyog cov xwm txheej tsis pom zoo hauv koj daim ntawv qhia hnub. Cov xwm txheej tsis raug tso cai yuav tsum tau pom zoo ua ntej lawv tau ua kom pom hauv koj daim ntawv qhia hnub.
+Display unapproved: Tso saib tsis raug
+conflict-check-help: Txheeb xyuas qhov teeb meem tsis sib haum xeeb (ob qho kev tshwm sim tau teem rau tib lub sijhawm ntawm tib tus neeg). Yog tias koj tau teeb tsa qhov no mus rau "Yog", koj tseem yuav tuaj yeem teem sijhawm ob qho kev tshwm sim rau tib lub sijhawm tom qab lees tias ceeb toom. Yog koj teev qhov no "Tsis Yog", tsis muaj kev tshuaj xyuas txog kev tsis sib haum xeeb yuav ua tau. Tej zaum koj yuav tau teeb tsa qhov no "Yog", yog li kev tsis sib haum xeeb tshwm sim.
+Check for event conflicts: Kuaj rau qhov xwm txheej tsis sib haum xeeb
+Yes: Yog lawm
+No: Tsis yog
+conflict-months-help: Yog tias qhov teeb meem tshawb xyuas qhov teeb meem nyob hauv qhov chaw ("Tshawb rau cov xwm txheej tsis sib haum" yog tsim los "Tsis Yog"&#41;, qhov no qhia tau tias muaj pes tsawg lub hlis rau yav tom ntej peb yuav tsum tshawb xyuas cov kev tsis sib haum xeeb. , txo tus lej no.
+Conflict checking months: Teeb meem xyuas lub hlis
+conflict-check-override-help: Tso cai rau cov neeg siv hla dhau qhov kev tsis sib haum xeeb thiab teem sijhawm ob lossis ntau qhov xwm txheej rau tib lub sijhawm.
+Allow users to override conflicts: Tso cai rau cov neeg siv hla txoj kev tsis sib haum
+limit-appts-help: Tso cai rau tus thawj tswj hwm teeb tsa qhov kev txwv tsis pub tshaj qhov ntau ntawm cov sijhawm teem ib tus neeg siv tau tuaj yeem muaj nyob rau ib hnub.
+Limit number of timed events per day: Txwv txiav cov sijhawm tsis pub dhau sijhawm ib hnub
+limit-appts-number-help: Qhia kom meej ntau ntawm cov sijhawm ua tiav cov neeg siv tau tuaj yeem nyob hauv ib hnub.
+Maximum timed events per day: Muaj sijhawm ntau tshaj plaws nyob rau ib hnub
+crossday-help: Yog tias siv tau, cov hnub uas ncua sijhawm yuav muab tso tawm kom pom cov hnub sib txawv
+Disable Cross-Day Events: Lov Kev Tawm Hla-Hnub Tej Xwm Txheej
+disable-location-field-help: Xaiv "Yes" yuav tshem tawm "Qhov chaw" teb los ntawm nplooj ntawv cov ntaub ntawv tshwm sim
+Disable Location field: Lov Tawm Thaj Chaw Teb
+disable-url-field-help: Xaiv "Yes" yuav tshem tawm "URL" los ntawm cov nplooj ntawv cov ntsiab lus
+Disable URL field: Lov URL teb
+disable-priority-field-help: Xaiv "Yes" yuav tshem tawm "Qhov Muaj Peev Xwm Ua Haujlwm" teb los ntawm nplooj ntawv cov xwm txheej, muab qhov kev sib txig sib luag rau cov nov.
+Disable Priority field: Lov Tawm Kev Nyab Xeeb Ua Ntej
+disable-access-field-help: Xaiv "Yes" yuav tshem tawm "Mus Saib" daim teb los ntawm nplooj ntawv cov xwm txheej, muab qhov kev sib txig sib luag rau cov nov.
+Disable Access field: Lov tes taw nkag teb
+disable-participants-field-help: Xaiv "Yes" yuav tshem tawm cov "Cov Neeg Koom Tes" hauv cov nplooj ntawv xov xwm kev tshwm sim, tiv thaiv cov neeg siv los ntawm kev ntxiv lwm tus neeg siv rau lawv cov xwm txheej. Yog tias koj qhib qhov kev xaiv no, koj tuaj yeem xav tso tawm "Cia saib lwm tus neeg siv daim qhia hnub hli" kuj.
+Disable Participants field: Lov Tawm Cov neeg koom teb
+disable-repeating-field-help: Xaiv "Yes" yuav tshem tawm "Rov Ua Dua" teb thaum ntxiv sijhawm xwm txheej. Qhov no yuav muab kev sib txig sib luag rau cov novices.
+Disable Repeating field: Lov Tawm Teb Rov
+allow-html-description-help: Yog tias qhib, cov neeg siv tuaj yeem nkag mus rau HTML hauv qhov chaw piav qhia. Yog tias tsis qhib, lub cim npe HTML yuav raug khiav tawm thiaj li pom cov ntawv yoojyim. Ceeb Toom: Qhib cov yam ntxwv no yuav ua rau cov neeg siv txheeb cov duab ntawm lwm lub vev xaib.
+Allow HTML in Description: Cia HTML hauv Kev Piav Qhia
+Popups: Cov popup
+disable-popups-help: Lov tes taw cov popups los ntawm cov views views
+Disable Pop-Ups: Lov Khoom Rau Pop-Ups
+popup-includes-siteextras-help: Yog tias qhib, tso cai cov kev cai tshwm sim teb cov teeb tsa hauv site_extras.php cov ntaub ntawv yuav muab tso rau hauv cov xwm txheej tshwm sim.
+Display Site Extras in popup: Cov Vev Xaib ntawm Cov Khoom Siv Tshaj Plaws hauv popup
+popup-includes-participants-help: Yog tias qhib, cov neeg tuaj koom yuav tshwm tawm hauv cov kev tshwm sim.
+Display Participants in popup: Cov Neeg Koom Tes Saib rau hauv popup
+Miscellaneous: Lwm Yam
+remember-last-login-help: Thaum qhib nkag, tus neeg siv lub npe yuav nkag rau hauv lawv ntawm nplooj ntawv nkag (tab sis tsis yog tus password), thiab cov neeg siv kev nyiam yuav raug thauj khoom (suav nrog lawv cov xim nyiam thiab xaiv lus).
+Remember last login: Nco qab tus ID nkag mus
+summary_length-help: Qhov ntev kawg ntawm qhov Luv Piav Qhia nyob rau hauv daim ntawv qhia hnub pom
+Brief Description Length: Luv Luv Lus Qhia Looj Ceeb
+user_sort-help: Txiav txim siab qhov kev txiav txim rau Tus Neeg Siv, Nonuser npe
+User Sort Order: Tus Neeg Siv Muab Kev Txiav Txim
+Lastname, Firstname: Lub Xeem, Lub Npe
+Firstname, Lastname: Lub Npe, Xeem
+allow-public-access-help: Thaum qhib tau, lub caij nyoog yuav raug siv los ua kev nyeem tsuas yog ib daim ntawv teev pej xeem uas tsis tas yuav siv cov neeg siv nkag mus.
+Allow public access: Tso cai rau pej xeem siv
+public-access-default-visible: Cov xwm txheej los ntawm pej xeem daim ntawv qhia hnub yuav cia li tshwm sim rau txhua tus neeg siv daim ntawv qhia hnub
+Public access visible by default: Pej xeem siv tau pom los ntawm lub neej ntawd
+public-access-default-selected: Thaum ntxiv qhov kev tshwm sim tshiab, tus neeg siv rau pej xeem yuav raug xaiv los ntawm lub neej ntawd raws li tus neeg tuaj koom.
+Public access is default participant: Kev nkag rau pej xeem yog cov neeg koom
+public-access-view-others-help: Thaum nkag mus rau hauv lub system nrog kev nkag mus rau pej xeem, qhia meej seb tus neeg siv puas tuaj yeem saib daim ntawv qhia hnub ntawm lwm tus neeg siv.
+Public access can view other users: Kev nkag rau pej xeem tuaj yeem saib lwm tus siv
+public-access-can-add-help: Thaum qhib siv, cov neeg siv uas nkag mus rau hauv qhov system los ntawm Public Access yuav tuaj yeem ntxiv cov xwm txheej tshiab, tab sis lawv yuav tsis tshwm hauv daim ntawv qhia hnub kom txog thaum tus thawj tswj hwm pom zoo qhov xwm txheej tshiab.
+Public access can add events: Kev nkag rau pej xeem tuaj yeem ntxiv cov xwm txheej
+public-access-add-requires-approval-help: Qhia meej tias cov xwm txheej tau ntxiv ntawm tus lej nyiaj nkag mus rau hauv ib tus neeg xav tau kev pom zoo ua ntej muab tso tawm.
+Public access new events require approval: Cov neeg pej xeem mus saib cov xwm txheej tshiab yuav tsum tau kev pom zoo
+public-access-sees-participants-help: Yog tias siv tau, cov neeg siv nkag mus rau hauv daim ntawv qhia hnub los ntawm cov neeg siv nyiaj pej xeem tuaj yeem pom cov neeg tuaj koom kev sib tham yog tias lawv pom cov ntsiab lus ntawm qhov kev tshwm sim.
+Public access can view participants: Kev nkag rau pej xeem tuaj yeem pom cov neeg tuaj koom
+public-access-override-help: Tso cai rau cov npe thiab cov lus piav qhia raug muab zais rau hauv cov pej xeem daim ntawv qhia hnub
+Override event name/description for public access: Kev hla lub npe / kev piav qhia rau pej xeem
+public-access-override-text-help: Cov ntawv nyeem los tso saib yog xaiv kev xaiv saum toj no. Yog tias 'Tsis Muaj', nws yuav tau muab txhais.
+Text to display to public access: Cov ntawv nyeem los tshaj tawm rau pej xeem saib
+public-access-captcha-help: Yog tias siv tau, cov xwm txheej tshiab ntxiv los ntawm Pej Xeem xav tau hla CAPTCHA kev siv tau.
+Require CAPTCHA validation for public access new events: Xav tau CAPTCHA kev siv tau rau pej xeem mus saib cov xwm txheej tshiab
+uac-enabled-help: Ua kom cov neeg siv-qib nkag mus tswj
+User Access Control enabled: Cov Neeg Siv Tau Nkag Mus Saib tau
+groups-enabled-help: Pab cov pawg sib txhawb, ua kom cov neeg siv xaiv cov neeg siv los ntawm pab pawg.
+Groups enabled: Pawg qhib
+user-sees-his-group-help: Yog tias qhib tawm, cov neeg siv yuav tsis pom cov neeg siv daim ntawv thov uas tsis nyob hauv tsawg kawg ib ntawm lawv pawg.
+User sees only his groups: Tus neeg siv pom tsuas yog nws pawg
+nonuser-enabled-help: Yog tias ua kom tiav, admins yuav muaj kev xaiv los ntxiv cov nonuser daim qhia hnub hli
+Nonuser enabled: Nonuser Daim Ntawv Qhia Kev Caij
+nonuser-list-help: Qhov twg los tso ua daim qhia hnub nonuser nyob rau hauv cov koom nrog npe
+Nonuser list: Muab tso rau cov npe koom
+Upcoming Events: Yavtom ntej txheej xwm
+upcoming-events-help: Pab kom upcoming.php
+Enabled: Siv tau
+upcoming-events-allow-override: Tso cai rau tus neeg siv paramter rau upcoming.php
+Allow user override: Cia cov neeg siv hla dhau
+upcoming-events-display-caticons: Xws li cov cim kab lus hauv upcoming.php
+Display category icons: Tso saib cov cim qeb
+upcoming-events-display-layers: Tso saib cov khaubncaws sab nraud povtseg hauv upcoming.php
+Display layers: Tso saib cov khaubncaws sab nraud povtseg
+upcoming-events-display-links: Tso saib txuas rau hauv upcoming.php
+Display links to events: Tso saib rau txuas rau cov xwm txheej
+upcoming-events-display-popups: Tso saib popup kev tshwm sim hauv upcoming.php
+Display event popups: Tso saib popup kev tshwm sim
+reports-enabled-help: Yog tias qhib nkag, cov neeg siv yuav pom ib feem "Cov Ntawv Tshaj Tawm" hauv qab ntawm txhua nplooj ntawv thiab yuav raug tso cai los tsim cov ntawv ceeb toom. Txuas ntxiv, cov neeg siv admin tuaj yeem tsim cov ntawv qhia thoob ntiaj teb uas yuav tshwm rau hauv qab ntawm txhua tus neeg siv cov nplooj ntawv.
+Reports enabled: Cov ntawv ceeb toom tau lees paub
+subscriptions-enabled-help: Qhia tseeb yog tias cov neeg siv hluav taws xob tuaj yeem sau npe rau WebCalendar tus neeg siv daim ntawv qhia hnub, tso cai rau lawv pom WebCalendar cov neeg siv xwm txheej hauv lawv cov ntawv thov iCal (xws li Apple iCal lossis Mozilla Calendar).
+Allow remote subscriptions: Tso cai subscriptions tej thaj chaw deb
+remotes-enabled-help: Tso cai rau cov neeg siv thauj khoom ntawm tej thaj chaw deb ics siv URL
+Allow remote calendars: Tso cai rau tej thaj chaw deb
+rss-enabled-help: Qhia tawm yog tias tus neeg siv daim ntawv qhia hnub tuaj yeem tau los ntawm RSS pub.
+Enable RSS feed: Pab kom RSS pub
+categories-enabled-help: Pab txhawb rau cov txheej xwm.
+Categories enabled: Pawg qhib
+icon_upload-enabled-help: Yog tias siv tau, cov neeg siv tuaj yeem tso qeb cim
+Category Icon Upload enabled: Qeb Icon Upload ua kom
+(Requires XXX folder to exist.): (Xav kom muaj XXX nplaub tshev nyob ua ib ke.)
+display-tasks-help: Muab cov haujlwm me me tso ua ntej lub hli thiab hnub
+Display small task list: Muab cov npe ua haujlwm me
+display-tasks-in-grid-help: Muab cov haujlwm sau hauv daim qhia hnub nyoog nrog rau cov xwm txheej
+Display tasks in Calendars: Muab haujlwm rau hauv Calendars
+allow-external-users-help: Qhia meej meej seb tus neeg siv tsis siv daim ntawv yuav ntxiv tau rau ib qho kev tshwm sim. Qhov no tso cai rau cov neeg siv tsis siv sijhawm los muab teev cia ua cov neeg tuaj koom kev lom zem.
+Allow external users: Tso cai rau cov neeg siv sab nraud
+external-can-receive-notification-help: Thaum cov neeg siv sab nraud qhib thiab kev siv email tau qhib, cov neeg siv sab nraud tuaj yeem tau txais email ceeb toom thaum muaj kev tshwm sim ntxiv, kho lossis rho tawm (yog tias tus neeg siv sab nraud email chaw nyob).
+External users can receive email notifications: Cov neeg siv sab nraud tuaj yeem txais email ceeb toom
+external-can-receive-reminder-help: Thaum cov neeg siv sab nraud tau qhib thiab kev siv email tau qhib, cov neeg siv sab nraud tuaj yeem tau txais kev ceeb toom email (yog tias tus neeg siv sab nraud email chaw nyob).
+External users can receive email reminders: Cov neeg siv sab nraud tuaj yeem txais email ceeb toom
+allow-self-registration-help: Tso cai rau cov neeg siv tshiab sau npe lawv tus kheej
+Allow self-registration: Tso npe rau tus kheej
+use-blacklist-help: Txwv tsis pub nkag mus rau WebCalendar ua haujlwm raws li IP chaw nyob
+Restrict self-registration to blacklist: Txwv tsis pub rau npe tus kheej rau blacklist
+allow-self-registration-full-help: Tso cai rau cov neeg siv tshiab ua tiav txoj kev tso npe tus kheej on-line
+Use self-registration email notifications: Tsim cov lej zais thiab xa mus rau cov neeg siv tshiab
+allow-attachment-help: Tso cai rau cov neeg siv ntxiv cov ntawv txuas rau cov xwm txheej.
+Allow file attachments to events: Cia cov ntawv txuas rau cov xwm txheej
+Admin and owner can always add attachments if enabled.: Cov tswj hwm thiab tus tswv tau ib txwm ntxiv txuas ntxiv yog tias siv tau.
+allow-comments-help: Tso cai rau cov neeg siv ntxiv cov lus pom rau cov xwm txheej.
+Allow comments to events: Tso lus rau cov xwm txheej
+Admin and owner can always add comments if enabled.: Cov tswj hwm thiab tus tswv tau ib txwm ntxiv lus lus yog tias siv tau.
+email-enabled-help: Qhib lossis tawm ntawm txhua qhov kev xa email ntawm kev ceeb toom thiab kev ceeb toom. Teem rau "tsis muaj", yog tias koj tus neeg rau zaub mov tsis teeb tsa zoo xa cov ntawv xa.
+Email enabled: Email puas
+email-default-sender: Qhia kom meej email chaw nyob kom qhia meej raws li tus neeg xa ntawv thaum xa tawm ceeb toom.
+Default sender address: Qhov chaw nyob xa neeg xa ntawv
+email-mailer: Xaiv hom email (SMTP, PHP mail, xa mail)
+Email Mailer: =
+email-smtp-host: Hostname (s) ntawm SMTP server (s) sib cais los ntawm commas
+SMTP Host name(s): SMTP Tus Tswv Tsev Npe
+email-smtp-port: SMTP Chaw nres nkoj tus naj npawb (ib txwm 25)
+SMTP Port Number: SMTP Chaw Nres Nkoj
+email-smtp-auth: Siv SMTP Authentication
+SMTP Authentication: SMTP Kev Pom Zoo
+email-smtp-username: SMTP Username yog siv cov Kev Pom Zoo
+SMTP Username: =
+email-smtp-password: SMTP Lo Lus zais yog siv Kev Pom Zoo
+SMTP Password: SMTP Lo Lus zais
+Default user settings: Vim neeg siv tej chaw
+email-format: Qhia kom meej qhov nyiam ntawm cov ntawv HTML lossis cov ntawv sau yooj yim
+Email format preference: Email hom xav tau
+HTML: =
+Plain Text: Lub tiaj ntawv nyeem
+email-include-ics: Muab ib iCalendar ICS ua ntaub ntawv thov email
+Include iCalendar attachments: Xws li iCalendar attachments
+email-event-reminders-help: Qhia meej tias yuav tsum xa cov ntawv ceeb toom kev tshwm sim.
+Event reminders: Tej yam tshwm sim nco
+email-event-added: Qhia seb puas los yog tsis xa email ceeb toom thaum muaj kev tshwm sim ntxiv rau koj daim ntawv qhia hnub nyoog.
+Events added to my calendar: Txheej xwm ntxiv rau kuv daim ntawv qhia hnub nyoog
+email-event-updated: Qhia seb puas los yog tsis xa email ceeb toom thaum qhov xwm txheej tau hloov kho ntawm koj daim ntawv qhia hnub.
+Events updated on my calendar: Txheej xwm kho tshiab ntawm kuv daim ntawv qhia hnub nyoog
+email-event-deleted: Qhia seb puas los yog tsis xa email ceeb toom thaum qhov kev tshwm sim raug tshem tawm ntawm koj daim ntawv qhia hnub.
+Events removed from my calendar: Cov txheej xwm tshem tawm ntawm kuv daim ntawv qhia hnub
+email-event-rejected: Qhia meej seb puas yuav tsum tau xa email ceeb toom thaum tus neeg koom nrog tsis lees txais qhov kev tshwm sim uas muaj nyob hauv koj daim ntawv qhia hnub.
+Event rejected by participant: Kev tawm tsam muab pov tseg los ntawm tus neeg koom
+email-event-create: Qhia meej seb tus tsim ntawm kev nkag yuav tau txais email
+Event that I create: Kev tshwm sim uas kuv tsim
+Color options: Kev xaiv xim
+Allow user to customize colors: Tso cai rau cov neeg siv kom haum xim
+gradient-colors: Yog tias qhib cov xim gradient. Qhov no tuaj yeem cuam tshuam kev ua tau zoo.
+Enable gradient images for background colors: Pab kom cov duab gradient rau cov xim tom qab
+Not available: Tsis muaj
+Background Image options: Cov Kev Xaiv Duab Tom Qab
+bgimage-help: URL ntawm yam duab tom qab. Yuav yog tus txheeb ze txuas.
+Background Image: Duab Tom Qab
+bgrepeat-help: Tswj rov qab ua dua tus cwj pwm ntawm cov duab tom qab.
+Background Repeat: Rov Qab Mus Dua
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Cov neeg pab
+Preferences: Nyiam Zoo Li Cas
+Control Panel: Tswj Vaj Huam Sib Luag
+Users: Cov Neeg Siv
+Account: Nyiaj
+Categories: Pawg
+Views: Saib
+Layers: Txheej Txheej
+Reports: Cov ntawv ceeb toom
+Delete Events: Rho Cov Xwm Txheej
+Activity Log: Kev Ua Haujlwm Log
+System Log: System Cav
+Security Audit: Kev Suam Xyuas Ruaj Ntseg
+Public Preferences: Pej Xeem Nyiam
+Unapproved Public Events: Tsis pom zoo Cov Txheej Txheem Zej Zog
+Administrative Tools: Cov Cuab Yeej Tswj
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Theej tawm Npe: "XXX".
+Username XXX already exists.: Lub npe "XXX" twb muaj.
+Email address XXX already exists.: Email chaw nyob "XXX" twb muaj lawm.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Cov Lus Ntxiv (yeem)
+Approve and Send: Pom zoo thiab xa
+Approve and Exit: Pom Zoo thiab Tawm Kev
+(Your comments will be emailed to the event creator.): (Koj cov lus yuav xa email nrog tus neeg tsim xwm txheej.)
+Hello, XXX.: Nyob zoo, XXX.
+XXX has approved an appointment and added comments.: Kev teem caij tau pom zoo thiab cov lus pom ntxiv los ntawm XXX.
+Subject XXX: Lub ntsiab lus: "XXX".
+Description XXX: Cov lus piav qhia: "XXX".
+Date XXX: Hnub Tim: XXX
+Time XXX: Lub Sij Hawm: XXX
+Comments XXX: Cov lus: XXX
+Approved w/Comments by XXX.: Pom zoo w / Lus ntawm: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Admin hom
+Your assistants: Koj cov neeg pab
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Kev paub tsis paub.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Program Tsis Yog: Tsis muaj tus XXX teev!
+user: neeg siv
+year: xyoo
+month: lub hli
+day: hnub
+
+########################################
+# Page: category.php
+#
+Category Icon: Qeb Icon
+Global: Thoob Ntiaj Teb
+The permissions for the icons directory are set to read-only: Qhov kev tso cai rau cov cim kab npe tau tsim los nyeem nkaus xwb.
+Category Name: Hom Lub Npe:
+Color: Xim
+Remove Icon: Tshem Tawm Icon:
+Add Icon to Category: Ntxiv Icon rau qeb
+Upload: =
+GIF or PNG 6kb max: GIF lossis PNG 6kb max
+Search for existing icons: Nrhiav rau cov cim uas twb muaj lawm
+Add: Ntxiv
+Delete: Rho tawm
+Are you sure you want to delete this entry?: Koj puas paub tseeb tias koj xav lwv qhov kev nkag no?
+Make New Category: Ua Yam Tshiab
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Yuav tsum tau muaj npe lub npe
+File size exceeds maximum.: Cov ntaub ntawv loj tshaj qhov siab tshaj plaws.
+File is not a GIF or PNG image: Cov ntaub ntawv tsis yog GIF lossis PNG duab
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: MUAJ SIB THAM
+ENTRY CATEGORIES: LAUS CEEV
+Remove: Tshem tawm
+Global Category: Qeb Ntiaj Teb
+Cancel: Ntawv cia Suam teb
+
+########################################
+# Page: colors.php
+#
+Add Custom: Ntxiv Nchuav
+Basic Colors: Xim Xaus
+Current Color: Khuv Xim Tam Sim No
+Custom Colors: Kev Cai Xim
+Old Color: Xim Qub
+
+########################################
+# Page: combo.php
+#
+Select None: Xaiv Tsis Muaj
+Agenda: Cov txheej txheem
+Add Task: Ntxiv Ua Haujlwm
+Description: Kev piav qhia
+Date: Hnub Tim
+Time: Sijhawm
+Priority: Kev Nyab Xeeb Ua Ntej
+Access: Kev Nkag
+Created by: Tsim los ntawm
+Updated: Hloov tshiab
+Participants: Cov Neeg Koom Tes
+Attachments: Daim Ntawv Txuas
+Comments: Cov lus
+Brief Description: Cov lus piav qhia luv luv
+Full Description: Puv Puv
+Category: Qeb
+Add event detail: Ntxiv qhov xwm txheej nthuav dav
+Start Date: Hnub Pib
+Due Date: Txog Hnub
+Add task detail: Ntxiv cov ncauj lus qhia ua haujlwm
+All: Txhua
+Error: Yuam Kev
+no response from server: tsis teb los ntawm neeg rau zaub mov
+JSON error: JSON yuam kev
+High: Siab
+Medium: Nruab Nrab
+Low: Tsawg
+Today: Hnub no
+Add Entry: Ntxiv Nkag
+Unnamed Event: Tsis muaj npe tshwm sim
+Unnamed Task: Kev Ua Haujlwm Tsis Muaj Npe
+Refresh: Kho Siab
+Click to add entry: Nyem rau ntxiv nkag
+Name: Npe
+pm: tsaus ntuj
+am: aws
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX tau lawb lub sijhawm teem tseg.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Tsis yog blob id
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Ntxiv Saib
+Add Attachment: Txuas Ntxiv
+Subject: Cov Ntsiab Lus
+Comment: Tswv yim
+Upload file: Upload ntaub ntawv
+
+########################################
+# Page: docdel.php
+#
+Removed: Muab tshem tawm
+
+########################################
+# Page: edit_entry.php
+#
+days: hnub
+hours: cov sij hawm
+minutes: feeb
+You are not authorized to edit this task.: Koj tsis raug tso cai kom kho cov dej num no.
+is in a different timezone than you are. Currently: yog nyob rau hauv lub sij hawm sib txawv dua li koj muaj. Tam sim no
+hour ahead of you: teev ua ntej ntawm koj
+hour behind you: teev nyob tom qab koj
+hours ahead of you: teev ua ntej ntawm koj
+hours behind you: teev tom qab koj
+XXX is in a different timezone (ahead): (XXX yog nyob rau lub sij hawm sib txawv; YYY ua ntej ntawm koj. (&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX yog nyob rau lub sij hawm sib txawv; YYY qab koj.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Lub sijhawm nkag ntawm no yog nce raws koj li Timezone.
+Edit Entry: Kho kom raug nkag
+Details: Cov ntsiab lus
+Repeat: Rov Ua Dua
+Reminders: Nco nco
+brief-description-help: Qhov no yuav tsum muab cov lus qhia luv luv (txog 20 cim) ntawm qhov kev tshwm sim. Qhov no yuav sawv cev rau qhov kev tshwm sim thaum saib daim ntawv qhia hnub nyoog.
+full-description-help: Qhov no yuav tsum ua tiav cov ntsiab lus ntawm qhov kev tshwm sim. Cov ntaub ntawv no tuaj yeem pom thaum ib tus neeg siv pom qhov kev tshwm sim.
+access-help: Qhia txog qib nkag mus ntawm qhov kev tshwm sim. <ul> <li> Pej xeem: Txhua tus tuaj yeem pom tag nrho cov ntsiab lus ntawm qhov kev tshwm sim.</li> <li> Tsis pub lwm tus paub: Lwm tus tuaj yeem pom tias koj muaj kev nkag mus rau hnub ntawd thiab sijhawm, tab sis tsis paub meej tias nws yog dab tsi.</li></ul>
+priority-help: Qhia txog qhov xwm txheej ua ntej. Cov xwm txheej ua ntej yuav tau ua tib zoo saib.
+category-help: Qhia txog qeb ntawm hom tshwm sim.
+completed-help: Hnub ua haujlwm tiav. Tsuas yog qhib thaum txhua tus neeg koom nrog qhov sib npaug 100%.
+Date Completed: Hnub Ua Tiav
+percent-help: Feem pua ​​ua tiav ntawm cov neeg siv ntawm no
+Percent Complete: Feem pua ​​Ua Kom tiav
+All Percentages: Txhua Feem Thib
+location-help: Qhov chaw nyob muaj chaw
+Location: Qhov chaw nyob
+url-help: URL xwm txheej
+URL: =
+date-help: Qhia txog hnub ntawm qhov kev tshwm sim.
+Untimed event: Tsis muaj qhov xwm txheej
+Timed event: Timed sijhawm
+All day event: Cov kev tshwm sim txhua hnub
+Timezone Offset: Lub Sijhawm Teev
+time-help: Qhia txog lub sijhawm ntawm qhov kev tshwm sim. <ul> <li> "Kev Sib Ntsib Sijhawm" (rau lub sijhawm uas tau teem rau lub sijhawm tshwj xeeb rau hnub ntawd)</li> <li> "kev tshwm sim tsis muaj sijhawm" (rau qhov xwm txheej no tsis muaj sijhawm (zoo li hnub so )</li> <li> "Txhua hnub kev tshwm sim" (rau ib qho kev tshwm sim uas siv sijhawm txhua hnub (zoo li tawm hauv chaw ua haujlwm)</li></ul>
+duration-help: Qhia txog lub sijhawm ua haujlwm (hauv teev; feeb) ntawm kev tshwm sim. <em>Daim teb no tuaj yeem nyob sab laug.</em>
+end-time-help: Qhia txog lub sijhawm uas yuav tsum tau xaus.
+Start Time: Sij Hawm Pib
+Due Time: Txog Sijhawm
+Site Extras: Cov xaib ntawm qhov chaw
+avail_participants-help: Sau npe cov neeg tuaj koom nrog rau cov khoom nkag no.
+Available: Muaj
+Find Name: Nrhiav Lub Npe
+Resources: Cov peev txheej
+participants-help: Sau cov neeg koom nrog rau ntawm qhov khoom nkag no.
+Selected: Xaiv Tau
+Availability: Qhov Txaj Muag
+external-participants-help: Qhia kom meej cov npe ntawm cov neeg tuaj koom rau qhov kev tshwm sim uas tsis siv cov neeg siv daim ntawv thov raws. Cov siv yuav tsum muaj npe ib kab thiab tuaj yeem suav nrog email chaw nyob. Yog tias email chaw nyob tau teev tseg, tus neeg siv tau txais kev ceeb toom thiab ceeb toom.
+External Participants: Cov Neeg Koom Tes Sab Nraud
+repeat-type-help: Xaiv ntau npaum li cas qhov kev tshwm sim yuav tsum rov ua dua.
+Daily: Niaj Hnub
+Weekly: Lub lim tiam
+Monthly: Hli
+by day: los ntawm hnub
+by date: los txog rau hnub tim
+by position: los ntawm txoj hauj lwm
+Monthly (by day): Txhua hli (los ntawm hnub)
+Monthly (by date): Hli (los ntawm hnub tim)
+Monthly (by position): Txhua hli (los ntawm txoj haujlwm)
+Yearly: Xyoo
+Manual: Phau Ntawv
+Expert Mode: Hom Kws Muaj Txuj
+repeat-end-date-help: Qhia txog hnub uas qhov kev tshwm sim yuav tsum rov ua kom txog thaum.
+Ending: Xaus
+Forever: Ib si
+Use end date: Siv hnub xaus
+Number of times: Cov naj npawb ntawm cov sij hawm
+repeat-frequency-help: Qhia hais tias ntau npaum li cas qhov kev tshwm sim yuav tsum rov hais dua.
+Frequency: Zaus
+Weekdays Only: Hnub Lim Tiam Xwb
+Week Start: Lub lim tiam Pib
+repeat-bydayextended-help: Tso cai xaiv hnub raws hnub ntawm lub lim tiam.
+ByDay: =
+repeat-month-help: Qhia hais tias lub hlis twg qhov kev tshwm sim yuav tsum tau ua dua.
+ByMonth: =
+repeat-bysetpos-help: Tso cai xaiv hnub tim raws li txoj hauj lwm nrog lub hli.
+BySetPos: =
+repeat-bymonthdayextended-help: Tso cai xaiv hnub raws hnub.
+ByMonthDay: =
+repeat-byweekno-help: Tso cai rau tus neeg siv teev cov npe ntawm lub lis piam kom rov ua qhov kev tshwm sim (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Tso cai rau tus neeg siv los sau cov npe ntawm lub hnub ua kom rov ua tau tshwm sim (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Hnub ntxiv uas qhov kev tshwm sim yuav tsum lossis tsis txhob tshwm sim rau.
+Exclusions: Tsis suav
+Inclusions: Kev suav
+Add Exception: Ntxiv Zam
+Add Inclusion: Txuas Ntxiv Hauv
+Delete Selected: Rho Tawm Xaiv
+Send Reminder: Xa Xa Ceeb Toom
+When: Thaum
+Use Date/Time: Siv Hnub / Sijhawm
+Use Offset: Siv Offset
+Before: Ua ntej
+After: Tom qab
+Start: Pib
+End/Due: Xaus / Vim Xaus
+Times: Lub Sijhawm
+Every: Txhua tus
+CAPTCHA Warning: Ceeb Toom:  Tsis tuaj yeem siv CAPTCHA yam tsis muaj PHP ntxiv GD!<br>
+Delete entry: Rho tawm nkag
+You are not authorized to edit this entry.: Koj tsis raug tso cai kom hloov cov lus nkag no.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX tau teem sijhawm tshiab.
+XXX has updated an appointment.: XXX tau hloov kho lub sijhawm teem sijhawm.
+Security violation!: Kev ruaj ntseg ua txhaum!
+You must enter the anti-spam text on the previous page.: Koj yuav tsum sau cov ntawv sau tawm tsam-ntawv ntawm nplooj ntawv dhau los.
+The following conflicts with the suggested time: Cov lus hauv qab no tsis sib haum nrog lub sijhawm tau hais tawm
+User removed from participants list.: Tus neeg siv raug tshem tawm ntawm cov npe koom.
+Please look on XXX to accept or reject this appointment.: Thov saib rau XXX kom lees txais lossis tsis lees txais qhov teem caij no.
+Please look on XXX to view this appointment.: Thov saib rau XXX mus saib lub sijhawm teem sijhawm no.
+Scheduling Conflict: Teem Sij Hawm Teeb Meem
+Your suggested time of: Koj hais tias lub sij hawm ntawm
+conflicts with the following existing calendar entries: tsis sib haum xeeb nrog cov nram qab no daim phiaj xwm hnub nyoog nkag
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX tsis tau teev nyob rau hauv "config.php".
+word characters only: (tsuas yog muaj cov cim lus xwb; [a-zA-Z_0-9])
+Add User: Ntxiv Neeg Siv
+Edit User: Kho kom raug neeg siv
+Calendar ID: Meem ID
+First Name: Lub Npe
+Last Name: Lub Xeem
+Is public calendar: Yog daim ntawv thov pej xeem
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Database yuam kev
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Ntxiv Daim Ntawv Qhia Teev Chaw Taws Teeb
+Edit Remote Calendar: Kho kom raug thaj chaw deb
+Create Layer: Tsim Txheej
+Reload: Tsua
+Required to View Remote Calendar: Yuav Tsum Mus Saib Cov Meem Sijhawm
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Ntshuam Ntsuas
+Events successfully imported: Tej xwm txheej tau ua tiav tiav
+Create a new layer to view this calendar.: Tsim tshiab txheej los saib daim ntawv qhia hnub no.
+Errors: Kom raug
+There was an error parsing the import file or no events were returned.: Muaj qhov yuam kev xav ntshuam cov ntawv ntshuam lossis tsis muaj cov xwm txheej rov qab los.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Tag kis
+Yesterday: Nag hmo
+Day before yesterday: Hnub ua ntej nag hmo
+Next week: Lub lim tiam tom ntej
+This week: Lub lim tiam no
+Last week: Lub lim tiam dhau los no
+Week before last: Lub limtiam dhau los uantej
+Next week and week after: Lwm lub lim tiam thiab lub lim tiam tom qab
+This week and next week: Lub lim tiam no thiab lwm lub lim tiam
+Last week and this week: Lub lim tiam dhau los thiab lub lim tiam no
+Last two weeks: Ob lub asthiv dhau los
+Next month: Lwm lub hli
+This month: Lub hli no
+Last month: Lub hli tas los
+Month before last: Hli ua ntej kawg
+Next year: Lwm xyoo
+This year: Xyoo no
+Last year: Xyoo tas los
+Year before last: Xyoo ua ntej thaum kawg
+Next 14 days: Tom ntej 14 hnub
+Next 30 days: Tom ntej 30 hnub
+Next 60 days: Tom ntej 60 hnub
+Next 90 days: Tom ntej no 90 hnub
+Next 180 days: Tom ntej no 180 hnub
+Next 365 days: Tom ntej no 365 hnub
+Invalid report id XXX.: Daim ntawv tshaj tawm tsis muaj tseeb: "XXX".
+Unnamed Report: Ceeb Toom Tsis Muaj Npe
+Add Report: Daim Ntawv Qhia Ntxiv Ntxiv
+Edit Report: Xov Xwm Tshaj Tawm
+Report name: Qhia lub npe
+User: Tus Neeg Siv
+Current User: Tus Neeg Siv Tam Sim No
+Include link in menu: Muab kab ntawv txuas rau hauv ntawv qhia zaub mov
+Include standard header/trailer: Xws li tus qauv header / trailer
+Include previous/next links: Xws li cov ntawv sib txuas dhau los / tom ntej
+Include empty dates: Sau hnub tsis txaus ntseeg
+Date range: Hnub tim
+Template variables: Template hloov tau
+Page template: Nplooj ntawv template
+Day template: Hnub template
+Event template: Kev tshwm sim template
+Are you sure you want to delete this report?: Koj puas paub tseeb tias koj xav lawb tawm cov ntawv tshaj xo no?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Tsis muaj daim ntawv ceeb toom id: "XXX".
+Variable XXX not found.: Kuj tsis pom muaj XXX.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Kho kom raug Lub Taub Hau Kev Cai
+Edit Custom Script/Stylesheet: Kho kom raug Daim Ntawv Sau Ntawv / Stylesheet
+Edit Custom Trailer: Kho kom raug nchuav Trailer
+
+########################################
+# Page: edit_user.php
+#
+Username: Lub npe neeg siv
+E-mail address: E-mail chaw nyob
+Password: Lo lus zais
+again: dua
+Disabled for demo: Kev xiam rau qhov demo
+Are you sure you want to delete this user?: Koj puas paub tseeb tias koj xav rho tawm tus neeg siv no?
+Change Password: Hloov Password
+New Password: Lo lus zais tshiab
+Set Password: Teev Tus password
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Kev siv cov neeg siv tsis txaus siab.
+The passwords were not identical.: Tus password tsis zoo ib yam.
+You have not entered a password.: Koj tsis tau sau ib tus password.
+Username cannot be blank.: Lub npe neeg siv yuav tsis tau dawb paug.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Tsis tau tso cai
+
+########################################
+# Page: export.php
+#
+Export: Xa khoom
+Export format: Hom ntawv export
+Include all layers: Suav txhua txheej
+Include deleted entries: Xws li cov ncauj lus raug tshem tawm
+Export all dates: Tshaj tawm txhua lub sijhawm
+Start date: Hnub pib
+End date: Hnub xaus
+Modified since: Hloov txij li
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: export hom tsis txhais los yog tsis raug.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Tsis muaj tus neeg siv teev.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Ntxiv Ib Pawg Tshiab
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Pab pawg tsis muaj npe
+Add Group: Ntxiv Ib Pawg
+Edit Group: Kho Pawg
+Group name: Pab pawg npe
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Koj yuav tsum qhia ib pawg npe
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Rov pib kho tshiab daim qhia hnub hli
+auto-refresh-help: Thaum qhib, saib lub hnub, saib lub lim tiam, pom lub hli, thiab sau npe cov nplooj ntawv tsis tau tso cai txhua tus yuav rov kho lawv tus kheej tsis tseg.
+Auto-refresh time: Lub sijhawm rov pib kho dua
+auto-refresh-time-help: Yog Auto rov ua haujlwm tshiab, qhov no tau qhia meej lub sijhawm ntawm txhua lub refresh.
+Display days with events in bold in year view: Nthuav cov hnub nrog cov xwm txheej hauv bold hauv xyoo saib
+Display weekends in week view: Muab cov hnub so hauv lub lim tiam saib
+Time interval: Lub sijhawm sib nrug
+time-interval-help: Qhia meej ntev npaum li cas cov sij hawm thaiv hauv lub lim tiam saib thiab hnub pom yuav muaj.
+Nonuser: Nonuser Daim Calendars
+user-customize-color: Qhia tseeb seb cov neeg siv puas raug tso cai hloov kho lawv cov phiaj xwm xim.
+enable-gradient-help: Siv cov xim gradient rau cov keeb kwm ntawm tes.
+Manually entering color values: Nqa tes nkag mus rau cov xim muaj nuj nqis
+colors-help: Txhua lub xim yuav tsum tau teev nyob rau hauv "#RRGGBB" hexadecimal format qhov twg "RR" yog tus nqi hex rau xim liab, "GG" yog tus nqi hex rau ntsuab, thiab "BB" yog tus nqi hex rau xiav.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Ceeb toom kab laum
+Please include all the information below when reporting a bug.: Thov sau txhua yam nyob hauv qab no thaum qhia txog kab laum.
+Also, please use English rather than XXX.: Ib qho ntxiv, thov siv  lus Askiv  es tsis yog XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar Cov Ntaub Ntawv
+Currently in English only.: Tam sim no nyob rau hauv lus Askiv nkaus xwb.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Ntxiv / Hloov Daim Ntawv Nkag Mus Nkag
+Repeat Type: Rov Ntaus Dua
+For More Information...: Rau Ntau Cov Lus Qhia ...
+Repeat End Date: Rov Ua Hnub Kawg
+Repeat Day: Rov Ua Dua Hnub
+repeat-day-help: Qhia hnub twg ntawm lub limtiam yuav rov ua dua.
+
+########################################
+# Page: help_import.php
+#
+Import: Ntshuam
+Palm Desktop: Xibtes Duab
+allow you to import entries from the Palm...: Daim foos no yuav tso cai koj kom nkag los nkag ntawm Palm Desktop Hnub. Nws yuav tsum tau nyob hauv koj phau ntawv qhia phau Ntawv Teev Npe hauv phau ntawv qhia hnub tim / datebook.dat nyob rau hauv cov ntawv qhia me uas muaj npe los ntawm koj lub npe siv.
+The following entries will not be imported: Cov npe hauv qab no yuav tsis raug ntshuam:
+Entries older than the current date: Nkag laus dua hnub tim tam sim no
+Entries created in the Palm Desktop...: Nkag uas tsim nyob rau hauv xibtes Desktop uas tsis tau yog HotSync yuav
+Anything imported from Palm...: Txhua yam khoom txawv ntawm Xibtes yuav muab sau cia thaum lub ntshuam tom ntej (tshwj tsis yog hnub ntawv dhau los). Yog li ntawd, cov ntaub ntawv tshiab yuav tsum ua hauv Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Daim foos no yuav import vCalendar (.vcs) 1.0 txheej xwm.
+The following formats have been tested: Cov qauv hauv qab no tau sim:
+This form will import iCalendar (.ics) events.: Daim foos no yuav import cov txheej xwm iCalendar (.ics).
+Enabling: Rov qab los
+Overwrite Prior Import: Overwrite Cov Ntshuam Ua ntej
+will cause events imported previously...: yuav ua rau cov xwm txheej tau raug tuaj yav tas los, uas tau siv tib lub UID raws li ib qho kev tshwm sim los ntawm cov ntaub ntawv ntshuam tshiab, kom raug cim tias raug tshem tawm. Qhov no yuav tsum tso cai rau iCalendar kho tshiab cov ntaub ntawv kom raug thov yam tsis tsim cov ntawv luam ntxiv.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Pab Index
+About WebCalendar: Hais txog WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Cov khaubncaws sab nraud povtseg muaj txiaj ntsig zoo rau kev nthuav qhia lwm tus neeg siv cov xwm txheej hauv koj daim ntawv qhia hnub. Koj tuaj yeem qhia tus neeg siv thiab xim qhov xwm txheej yuav tshwm hauv.
+Add/Edit/Delete: Ntxiv / Hloov / Rho Tawm
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Nyem Nyem Kho Cov Kab Ntawv Txuas nyob rau sab admin hauv qab ntawm nplooj ntawv yuav tso cai rau koj ntxiv / hloov / tua cov khaubncaws sab nraud povtseg.
+The text color of the new layer that will be displayed in your calendar.: Cov ntawv nyeem xim ntawm txheej tshiab uas yuav tshwm hauv koj lub caij nyoog.
+Disabling: Xuas tes taw
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Nias lub Disable khaubncaws sab nraud povtseg txuas hauv ntu haujlwm admin hauv qab ntawm nplooj ntawv kom tua cov khaubncaws sab nraud povtseg.
+Duplicates: Ob yam
+If checked, events that are duplicates of your events will be shown.: Yog tias khij, qhov xwm txheej uas luam tawm ntawm koj cov xwm txheej yuav raug ua kom pom.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Nias lub Enable Layers txuas hauv seem admin hauv qab ntawm nplooj ntawv tig rau cov khaubncaws sab nraud povtseg.
+Source: Qhov chaw
+Specifies the user that you would like to see displayed in your calendar.: Qhia kom meej tus neeg siv uas koj xav pom kom pom nyob hauv koj daim ntawv qhia hnub.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Cov qeb Default
+default-category-help: Qhia txog qeb ib qho kev tshwm sim tshiab yuav tsum tsis txhob nyob rau.
+When I am the boss: Thaum kuv yog tus thawj
+Email me event notification: Sau email qhia rau kuv qhov kev tshwm sim
+email-boss-notifications-help: Qhia meej yog tias cov thawj coj txais email raws li kev ceeb toom.
+I want to approve events: Kuv xav pom zoo sijhawm xwm txheej
+boss-approve-event-help: Qhia seb tus thawj coj puas yuav tsum pom zoo cov koom txoos tau ntxiv los ntawm cov pabcuam.
+Subscribe/Publish: Sau npe / Tshaj Tawm
+Allow remote publishing: Tso cai rau kev tshaj tawm cov chaw taws teeb
+allow-remote-publishing-help: Qhia meej tias yog iCal tus neeg siv chaw taws teeb tuaj yeem tshaj tawm cov xwm txheej rov qab rau WebCalendar
+remote-publishing-url-help: Qhia txog qhov URL siv nyob rau hauv iCal neeg thov kev pabcuam rau ob leeg ua haujlwm thiab tshaj tawm rov qab rau WebCalendar.
+allow-remote-subscriptions-help: Qhia tseeb yog tias cov neeg siv hluav taws xob tuaj yeem ua npe nkag rau koj daim ntawv qhia hnub, tso cai rau lawv kom pom koj cov xwm txheej hauv iCal-thov daim ntawv thov (xws li Apple iCal lossis Mozilla Calendar).
+remote-subscriptions-url-help: Qhia txog qhov URL cov neeg siv yuav tsum tau siv los tso npe yuav ua rau koj daim ntawv qhia hnub.
+Enable FreeBusy publishing: Pab FreeBusy tshaj tawm
+freebusy-enabled-help: Qhia meej yog tias tus neeg siv khoom muaj sijhawm tuaj yeem tau txais los ntawm iCal FreeBusy tus qauv.
+freebusy-url-help: Qhov URL rau nkag mus rau tus neeg siv daim ntawv teev npe FreeBusy
+rss-feed-url-help: Qhov URL kom nkag mus rau RSS pub
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Tso cai rau kev tswj hwm zoo rau cov neeg siv khoom thiab kev tso cai. Cov neeg siv khoom kuj tuaj yeem tso cai vim thiab qhov kev tso cai ib leeg yog tias kev tso cai los ntawm cov tswj hwm.
+If disabled, this user cannot send you emails.: Yog tias xiam oob qhab, tus neeg siv no tsis tuaj yeem xa email rau koj.
+If disabled, this user cannot see you in the participants list.: Yog tias xiam oob qhab, tus neeg siv no tsis tuaj yeem pom koj hauv cov npe koom.
+If enabled, this user cannot view the details of any of your entries.: Yog tias siv tau, tus neeg siv no tsis tuaj yeem saib cov ntsiab lus ntawm koj cov kev nkag.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Kev Tawm Cov Ntawv Xiam Oob Qhab (Admin)
+Publishing Disabled (User): Kev nthuav tawm Cov Neeg Xiam Oob Qhab (Tus Neeg Siv)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Nyem rau Xaiv
+Current Icons on Server: Daim Icons tam sim no ntawm Server
+
+########################################
+# Page: import.php
+#
+import from file: ntshuam los ntawm cov ntaub ntawv
+Disabled: Xiam oob qhab
+Import format: Hom ntawv ntshuam
+Exclude private records: Tsis suav cov ntaub ntawv ntiag tug
+Repeated items are imported separately. Prior imports are not overwritten.: Cov khoom siv rov ua dua tshiab tau muab cais nyias. Cov khoom siv ua ntej cov khoom tseem tsis tau muab sau.
+
+########################################
+# Page: import_handler.php
+#
+No file: Tsis muaj ntaub ntawv
+Error deleting palm events from webcalendar.: Yuam kev tshem xibtes tawm ntawm webcalendar.
+Events from prior import marked as deleted: Txheej xwm los ntawm kev ua ntej ntshuam cim li deleted
+Conflicting events: Cov xwm txheej tsis sib haum xeeb
+The import file contained no data.: Cov ntaub ntawv ntshuam tsis muaj cov ntaub ntawv.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Koj puas paub tseeb tias koj xav rho tawm cov txheej no?
+Delete layer: Rho tawm txheej
+Edit layer: Kho kom raug txheej
+Enable layers: Pab kom txheej
+Layer: Txheej
+Layers are currently disabled.: Txheej yog tam sim no neeg xiam.
+Layers are currently enabled.: Txheej tau siv tam sim no.
+Click to modify layers settings for XXX: Nyem qhov no los hloov kho cov khaubncaws sab nraud povtseg nqis rau lub XXX calendar.
+Disable Layers: Lov Tawm Txheej
+Add layer: Ntxiv txheej
+Add Layer: Ntxiv Txheej
+Edit Layer: Kho kom raug txheej
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Tsis tuaj yeem hloov kho cov nyiam
+Invalid entry id.: Kev nkag teb chaws tsis yog id.
+You cannot create a layer for yourself.: Koj tsis tuaj yeem tsim ib txheej rau koj tus kheej.
+You can only create one layer for each user.: Koj tsuas tuaj yeem tsim ib txheej rau txhua tus neeg siv.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Pomzoo / Kabke
+Approve Selected: Pom Zoo Xaiv
+Check All: Kos Txhua
+Emails Will Not Be Sent: Emails Yuav Tsis Xa
+Reject Selected: Tso Tseg Xaiv
+Reject: Xyeej
+Uncheck All: Uncheck Tag Nrho
+View this entry: Saib cov khoom no
+No unapproved entries for XXX.: Tsis muaj kev pom zoo nkag rau: "XXX".
+Unapproved Entries: Tsis pom zoo nkag
+Approve this entry?: Pom zoo cov khoom nkag no?
+Reject this entry?: Tsis kam lees qhov kev nkag mus no?
+Approve Selected entries?: Pom zoo Xaiv cov lus nkag?
+Reject Selected entries?: Xyeej Xaiv cov khoom nkag?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Koj yuav tsum sau tus ID nkag mus thiab tus password.
+Save login via cookies so I dont have to login next time.: Txuag nkag rau hauv lub ncuav qab zib kom kuv tsis txhob nkag mus rau lwm zaus
+Login: ID nkag mus
+public: laj mej pej xeem
+Access XXX calendar: Nkag mus rau XXX calendar
+cookies-note: Nco tseg: Daim ntawv thov no xav kom ncuav qab zib yuav tsum tau qhib.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Cov cim tsis raug cai hauv tus ID nkag mus XXX.
+Invalid login: Tus ID nkag mus tsis raug
+Activity login failure: Lub npe neeg siv: "XXX", IP: "YYY".
+Error XXX: Yuam kev: "XXX".
+You have been logged out.: Koj tau tawm ntawm koj.
+Access public calendar: Nkag mus rau hauv daim ntawv qhia hnub pej xeem
+Not yet registered? Register here!: Tseem tsis tau sau npe? Sau npe ntawm no!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Tsis muaj lub sijhawm tsis siv neeg xws li: "XXX".
+This Calendar is not Public.: Daim Meem No tsis rau Pej Xeem.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Ntxiv Tshiab NonUser Meem
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Yuav tsum muaj kev nkag mus nkag.
+No such nonuser calendar: Tsis muaj daim ntawv qhia hnub tsis siv neeg no
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Cov ntsiab lus tsis raug
+Save Preferences: Txuag nyiam
+Public Access calendar: Pej xeem siv caij nyoog
+Modify Non User Calendar Preferences: Hloov Kho Tsis Siv Cov Neeg Siv Ntawv Li Cas
+Return to My Preferences: Rov Los Rau Kuv Nyiam
+Custom Scripts: Cov Ntawv Kev Cai
+Timezone Selection: Lub Sijhawm Xaiv
+Multiview: =
+entry-interval-help: Teev feeb luv thaum kho lub sij hawm nkag
+Entry interval: Nkag luv
+hour: teev
+minute: feeb
+theme-reload-help: Vim yog CSS caching, ib nplooj ntawv nplooj ntawv yuav tsum muaj
+Page may need to be reloaded for new Theme to take effect: Nplooj ntawv tej zaum yuav tsum tau rov ua dua tshiab rau Cov Ntsiab Lus tshiab los siv
+display_byproxy-help: Tso saib tus tsim lub tiag ntawm view_entry nplooj ntawv
+Display if created by Assistant: Cov zaub yog tsim los ntawm Pab
+allow-view-subscriptions-help: Tso cai rau kev txwv kev nkag tau rau kev nkag mus rau Ntiag Tug lossis Tsis pub lwm tus paub
+Allow remote viewing of: Tso cai rau tej thaj chaw deb saib ntawm
+entries: nkag
+
+########################################
+# Page: purge.php
+#
+Purging events for: Purging txheej xwm rau
+Finished: Tiav lawm
+Back: Tom qab
+Check box to delete ALL events for a user: Khij lub npov rho tawm  TXHUA  cov txheej xwm rau tus neeg siv
+Delete all events before: Rho tawm txhua qhov xwm txheej ua ntej
+Purge deleted only: Limtiam tshem tawm xwb
+Preview delete: Saib ua ntej rho tawm
+Are you sure you want to delete events for: Koj puas paub tseeb tias koj xav lawb tawm cov txheej xwm rau
+Records deleted from XXX: Cov ntaub ntawv muab tshem tawm ntawm "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Email chaw nyob tsis tau dawb.
+Username already exists.: Cov npe twb muaj lawm.
+Email address already exists.: Email chaw nyob twb muaj lawm.
+New user via self-registration.: Tus neeg siv tshiab ntawm kev sau npe tus kheej.
+A new WebCalendar account has been set up for you.: Lub Vev Xaib WebCalendar tshiab tau teeb tsa koj.
+Your username is XXX.: Koj lub npe nkag yog: "XXX".
+Your password is XXX.: Koj lo lus zais yog: "XXX".
+Please visit XXX to log in and start using your account!: Thov mus saib "XXX" txhawm rau nkag mus thiab pib siv koj tus account!
+You may change your password after logging in the first time.: Koj tuaj yeem hloov koj lo lus zais tom qab nkag mus thawj zaug.
+If you received this email in error: Yog tias koj tau txais cov email no yuam kev thiab tsis kos npe rau hauv WebCalendar account, koj tuaj yeem tsis quav ntsej tsab ntawv ceeb toom no, lossis teb nrog ib tsab ntawv luv luv
+Administrator: Cov Thawj Tswj
+Welcome: Zoo Siab Tos Txais
+New user via email.: Tus neeg siv tshiab ntawm email.
+Registration: Sau npe
+Welcome to WebCalendar: Zoo siab txais tos rau WebCalendar
+Your email should arrive shortly.: Koj email yuav tsum tuaj txog sai sai.
+Return to Login screen: Rov qab rau Tus ID nkag mus tshuaj ntsuam
+Password (again): Lo lus zais (dua):
+Your account information will be emailed to you.: Koj cov ntaub ntawv siv nyiaj hauv email yuav xa email rau koj.
+Submit: Muab Xa
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Txuas ntxiv mus
+(Your comments will be emailed to the other participants.): (Koj cov lus yuav xa email mus rau lwm tus neeg koom nrog.)
+XXX has rejected an appointment.: XXX tau tsis lees paub lub sijhawm teem tseg.
+Rejected by XXX.: Tso tseg los ntawm XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Ntxiv Daim Ntawv Maum Sijhawm Tshiab
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Qhov xwm txheej no yog pub leej twg paub.
+(Private): (Ntiav)
+(cont.): (txuas ntxiv mus)
+Approved: Pom zoo
+Deleted: Lwv
+Rejected: Thim lawm
+Waiting for approval: Tos kom pom zoo tso cai
+Unknown: Tsis paub
+Invalid report id.: Daim ntawv qhia tsis yog id.
+Click here to manage reports for the Public Access calendar.: Nyem rau ntawm no los tswj cov ntawv qhia rau Kev Siv Ntaub Ntawv Luam Ntawv Pej Xeem.
+Add new report: Ntxiv cov ntawv ceeb toom tshiab
+Manage Reports: Tswj cov Ntawv Tshaj Tawm
+
+########################################
+# Page: search.php
+#
+Advanced Search: Kev Tshawb Fawb
+Search: Tshawb Fawb
+Keywords: Cov ntsiab lus
+Enter % for all entries: Sau% rau txhua qhov kev nkag
+Include: Xws li
+Filter by Date: Lim Hnub Tim
+All Dates: Txhua Hnub
+Past: Yav tag los
+Upcoming: Yuav los txog
+Range: Khwv
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Koj yuav tsum sau ib lossis ntau cov ntsiab lus tshawb nrhiav.
+Search Results: Nrhiav tau
+match found: phim pom
+matches found: qhov yuam kev pom
+No matches found: Tsis muaj qhov yuam kev pom
+New Search: Tshiab Nrhiav
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Cov ntaub ntawv hauv qab no teev cov teeb meem muaj peev xwm nrog koj lub WebCalendar kev teeb tsa uas tuaj yeem hloov kho los ua kom koj kev teeb tsa zoo dua.
+For questions about WebCalendar security see the forums: Yog muaj lus nug txog qee qhov WebCalendar qhov teeb meem kev nyab xeeb, thov siv WebCalendar cov rooj sib tham tuav ntawm GitHub.com;<br>XXX
+View your current PHP settings: Saib koj cov nqis PHP tam sim no
+Security Issue: Qhov Teeb Meem Nyab Xeeb
+Status: Cov xwm txheej
+Default admin user password: Default admin neeg siv tus password
+You should change the password of the default admin user.: Koj yuav tsum tau hloov tus password ntawm lub neej ntawd admin neeg siv.
+File permissions XXX: Cov ntaub ntawv tso cai: XXX
+item XXX should not be writable: Cov hauv qab no yuav tsum tsis txhob sau tawm:<br><tt> XXX</tt>
+File exists XXX: Cov ntaub ntawv tshwm sim: "XXX"
+Because you have email disabled, you should remove this file.: Vim tias koj muaj email xiam oob qhab, koj yuav tsum tshem tawm cov ntawv no.
+File location XXX: Cov ntaub ntawv chaw: "XXX"
+remove XXX if not using: Yog tias koj tsis siv "file" XXX, koj yuav tsum rho tawm nws. Los yog, tsawg kawg, txav nws mus rau qhov kev qhia tshiab.
+System Settings XXX: Txheej Txheem Chaw: "XXX"
+consider enabling UAC: Koj tuaj yeem xav txiav txim siab txog Kev Nkag Mus Siv Cov Neeg Txuas Siv los teeb tsa tus neeg siv txoj cai.
+recommend approving new public events: Peb pom zoo tias txhua qhov kev xa tawm ntawm pej xeem sawv daws tau pom zoo.
+recommend using CAPTCHA: CAPTCHA raug nquahu los saib xyuas dua ib zaug tso suab raws li kev xa khoom.
+Database cache directory location: Cov chaw khaws ntaub ntawv npog cov chaw
+db cache should be inaccessable: Lub chaw khaws ntaub ntawv yuav tsum nyob hauv qhov chaw khaws cia tsis tuaj yeem nkag mus nrog qhov URL.
+PHP Settings XXX: PHP Chaw: "XXX"
+recommend setting XXX Off: Qhov chaw pom zoo rau "XXX" Puas Tawm.
+recommend setting allow_url_fopen Off: Qhov kev pom zoo tsim rau "allow_url_fopen" tau tawm thaum cov sijhawm qhia hnub poob hauv lub sijhawm.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Saib Lwm Tus Kheej Daim Ntawv Qhia
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Koj tsis tau ntxiv ib pawg twg.
+Set Category: Teeb Hom
+Global Categories cannot be changed.: Ntiaj teb Cov Pawg tsis tuaj yeem hloov pauv.
+
+########################################
+# Page: upcoming.php
+#
+more: ntxiv
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Tej thaj chaw deb daim qhia hnub hli
+denotes administrative user: txhais tau cov neeg siv khoom thawj coj
+Add New User: Ntxiv Tus Neeg Siv Tshiab
+
+########################################
+# Page: usersel.php
+#
+form: daim ntawv
+Reset: Rov qab pib dua
+
+########################################
+# Page: views.php
+#
+Add New View: Ntxiv Tshiab Saib
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Unnamed Saib
+Add View: Ntxiv Saib
+Edit View: Kho kom raug Saib
+View Name: Saib Npe
+View Type: Saib Yam
+Day by Time: Hnub Txog Sij Hawm
+Week (Users horizontal): Lub Limtiam (Cov Neeg Siv Kab Rov Tav)
+Week by Time: Lub lim tiam los ntawm Sijhawm
+Week (Users vertical): Lub Limtiam (Cov neeg siv khoom siv ntsug)
+Week (Timebar): Lub Limtiam (Timebar)
+Month (Timebar): Hli (Timebar)
+Month (side by side): Hli (sab ib sab)
+Month (on same calendar): Lub hli (nyob rau tib daim ntawv qhia hnub)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Koj yuav tsum qhia lub npe saib
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Tsis muaj tus neeg siv rau qhov pom no.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Hloov Feem Ntau Cov Neeg Ua Haujlwm
+Completed: Tiav los
+Assistant mode: Pab hom
+Declined: Txwv tsis pub
+Needs-Action: Xav Tau-nkaus
+by: los ntawm
+Percentage Complete: Feem pua ​​Ua tiav
+External User: Cov Neeg Siv Sab Nraud
+Update: Hloov tshiab
+at: ntawm
+comments: lus
+Show: Qhia
+Hide: Nkaum
+Approve/Confirm entry: Pom zoo / Tshaj tawm nkag
+Reject entry: Txwv tsis pub nkag mus
+Set category: Teeb qeb
+Add to My Calendar: Ntxiv rau Kuv Daim Ntawv Qhia
+Copy entry: Luam nkag
+This will delete this entry for all users.: Qhov no yuav rho tawm cov khoom nkag no rau txhua tus neeg siv.
+Edit entry: Kho kom raug nkag
+Edit repeating entry for all dates: Hloov kho kev nkag ntxiv rau txhua lub sijhawm
+Delete repeating event for all dates: Rho tawm cov kev tshwm sim rov qab rau txhua lub sijhawm
+Edit entry for this date: Kho kom raug nkag mus txog hnub no
+Delete entry only for this date: Rho tawm nkag tsuas yog rau hnub no xwb
+Delete entry from calendar of XXX: Rho tawm nkag los ntawm daim ntawv qhia hnub ntawm XXX
+This will delete the entry from your XXX calendar.: Qhov no yuav rho tawm kev nkag los ntawm koj lub XXX calendar.
+boss: tus thawj coj '
+This will delete the entry from your boss calendar.: Qhov no yuav rho tawm kev nkag los ntawm koj tus thawj coj 'daim ntawv qhia hnub.
+This will delete the entry from your calendar.: Qhov no yuav rho tawm kev nkag los ntawm koj daim ntawv qhia hnub.
+from your boss calendar: ntawm koj tus thawj coj daim calendar
+Do you want to add this entry to your calendar?: Koj puas xav ntxiv qhov kev nkag no rau koj daim ntawv qhia hnub?
+This will add the entry to your calendar.: Qhov no yuav ntxiv qhov nkag mus rau hauv koj daim ntawv qhia hnub.
+Email all participants: Sau npe rau txhua tus neeg tuaj koom
+Hide activity log: Nkaum kev ua si cav
+Show activity log: Qhia cov cav ua si
+Export this entry to: Export tus nkag teb chaws no rau
+Palm Pilot: Xibtes Tsav
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Nyem ob npaug rau nyem lub xov tooj ntawm tes ntxiv rau txoj kev nkag tshiab.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Nkag Tshiab
+cont.: ntawv cog lus.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Lwm Tus Siv Sijhawm
+Category Management: Kev Tswj Xyuas Pawg
+Day View: Hnub Saib
+Edit Event: Kho Koom Tes
+Month View: Hli Saib
+Common Trailer: Ib qho Trailer
+User Management: Kev Tswj Xyuas Cov Neeg Siv
+Manage Views: Tswj Saib
+Week View: Lub Limtiam Saib
+Year View: Xyoo Saib
+Invalid function id: Tus id tsis ua haujlwm
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Tsis tuaj yeem nrhiav cov ntaub ntawv "settings.php".<br>Thov luam "settings.php.orig" rau "settings.php" thiab hloov kho rau koj lub xaib.
+Incomplete settings.php file...: Tiav tsis tiav "settings.php" cov ntaub ntawv ...
+Could not find XXX defined in...: Yuav tsis pom "XXX" txhais hauv koj cov "settings.php".
+You must define XXX in: Koj yuav tsum txhais "XXX" hauv "settings.php" cov ntaub ntawv.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Lub Kaum Ob Hlis
+Dec: =
+LANGUAGE DEFINED: LUS YEEJ YUAV POM ZOO
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Yuam kev txuas rau lub chaw khaws ntaub ntawv: "XXX".
+db_type not defined.: db_type tsis txhais.
+invalid db_type XXX: tsis yog db_type "" XXX ".
+Cache cleared from previous SQL!: Cache tshem tawm ntawm SQL dhau los!
+Error executing query.: Yuam kev nug lus.
+Unfortunately, XXX is not implemented for YYY: Hmoov tsis zoo, "XXX" tsis tau siv rau (YYY).
+Unknown ODBC error.: Tsis paub ODBC yuam kev.
+Error opening cache dir XXX.: Yuam kev qhib cache dir "XXX".
+delete: rho tawm
+Cache error Could not XXX file YYY.: Cache yuam kev: Tsis tuaj yeem ua XXX cov ntaub ntawv "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Tuag Yuam Kev Lawm
+Invalid data format for: Cov ntaub ntawv tsis raug rau
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Yuam kev: Hom tsis teeb tsa rau kev ua log!
+This event is XXX.: Qhov kev tshwm sim yog XXX.
+Conf.: Keej.
+exceeds limit of XXX events per day: tshaj qhov txwv tsis pub muaj XXX cov koom txoos ib hnub
+on: rau
+All Attendees: Txhua Tus Neeg Tuaj Koom
+Busy: Tibneeg hu tauj coob
+Tentative: Suab Nkauj Kho Siab
+Schedule an appointment for XXX.: Teem caij sib tham rau XXX: YYY.
+date_select: dd ____ __ th__monmonmon __ __ __ __, __yyyy______ __yy__, yyyy________________, yy________________, yy___thth__________, yy_thth____,.
+Event approved: Kev pom zoo pom zoo
+Journal approved: Phau ntawv pom zoo raug
+Task approved: Ua haujlwm pom zoo
+Attachment: Ntawv Txuas
+Event created: Tsim kev tshwm sim
+Journal created: Phau ntawv sau tsim
+Task created: Ua hauj lwm tsim
+Event deleted: Raug tshem tawm
+Journal deleted: Cov xov xwm raug tshem tawm
+Task deleted: Ua hauj lwm muab tshem tawm
+New user via email (self registration): Tus neeg siv tshiab ntawm email (rau npe rau tus kheej)
+New user (self registration): Tus neeg siv tshiab (rau npe rau tus kheej)
+Notification sent: Kev tshaj tawm xa tawm
+Event rejected: Qhov kev tshwm sim tsis lees paub
+Journal rejected: ဂျာနယ် tsis lees txais
+Task rejected: Ua hauj lwm tsis lees txais
+Reminder sent: Ceeb toom xa
+Event updated: Kev tshwm sim tshiab
+Journal updated: Cov xov xwm hloov tshiab
+Task updated: Ua hauj lwm hloov tshiab
+Delete User: Rho Tawm Tus Neeg Siv
+WK: =
+TASKS: PAUB
+Task_Title: Npe
+Due: Vim Kev
+Task Name: Nom Tswv Lub Npe
+Task Due Date: Ua Haujlwm Hnub Tas
+You have XXX unapproved entries: Koj muaj XXX tsis pom zoo nkag 
+Changes successfully saved: Hloov pauv tau zoo
+Event: Kev tshwm sim
+Action: Nkaus
+Printer Friendly: Tshuab Luam Ntawv Zoo
+Generate printer-friendly version: Tsim cov tshuab luam ntawv-phooj ywg version
+after: tom qab
+before: ua ntej
+end: kawg
+start: pib
+View this event: Saib cov kev tshwm sim
+View this task: Saib lub luag haujlwm no
+January: Lub Ib Hlis
+February: Lub ob hlis ntuj
+March: Lub peb hlis ntuj
+April: Plaub Hlis Ntuj
+May_: Lub 5 Hlis
+June: Lub Rau Hli
+July: Lub Xya Hli
+August: Lub yim hli ntuj
+September: Lub Cuaj Hli
+October: Lub kaum hli ntuj
+November: Lub Kaum Ib Hlis
+Jan: Lub Ib Hlis
+Feb: Lub ob hlis ntuj
+Mar: Lub peb hlis ntuj
+Apr: Plaub Hlis Ntuj
+May: Lub 5 Hlis
+Jun: Lub Rau Hli
+Jul: =
+Aug: Lub yim hli ntuj
+Sep: Nthuav
+Oct: Lub kaum hli ntuj
+Nov: =
+SU: =
+MO: =
+TU: =
+WE: PEB
+TH: =
+FR: =
+SA: =
+unknown-month: tsis paub lub hlis
+First Quarter Moon: Xub Thawj Peb Hli
+Full Moon: Tag nrho lub hli
+Last Quarter Moon: Xeem Lub Hli
+New Moon: Ntuj Tshiab
+Error TIME_SLOTS undefined!: Yuam kev: TIME_SLOTS tsis muaj peev xwm txwv!
+The following error occurred: Cov nram qab no yuam kev tshwm sim
+You are not authorized.: Koj tsis raug tso cai.
+Add N hours to: Ntxiv N teev rau
+Subtract N hours from: Rho tawm N teev ntawm
+same as: tib yam li
+server time: lub sijhawm server
+Cannot read timezone file XXX.: Tsis tuaj yeem nyeem cov ntawv sau teev sijhawm: XXX.
+Your current GMT offset is XXX hours.: Koj qhov kev txhaum GMT tam sim no yog XXX teev.
+Unauthorized: Tsis tau tso cai
+Error approving event XXX.: Yuam kev pom qhov teeb meem: XXX.
+Error deleting event XXX.: Yuam kev tshem tawm cov kev tshwm sim: XXX.
+Error rejecting event XXX.: Yuam kev tsis lees paub qhov teeb meem: XXX.
+Sunday: Hnub Sunday
+Monday: Hnub Monday
+Tuesday: Hnub Tuesday
+Wednesday: Hnub Wednesday
+Thursday: Hnub Thursday
+Friday: Hnub Friday
+Saturday: Hnub Saturday
+Sun: Tshav
+Mon: =
+Tue: =
+Wed: =
+Thu: =
+Fri: Hnub Tsib
+Sat: =
+unknown-weekday: tsis paub hnub-haujlwm
+Invalid referring URL: URL siv tsis raug
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Qhov ntsuas
+Documentation: Cov Ntaub Ntawv
+Page: Nplooj
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Kuv meem
+Add New Entry: Ntxiv Tshiab Nkag
+Add New Task: Ntxiv Tshiab Ua Haujlwm
+Logout: Teev Npe
+Home: Tsev
+Back to My Calendar: Rov Los Rau Hauv Kuv Lub Caij
+Go to: Mus rau
+Manage calendar of: Tswj daim qhia hnub hli
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Browser Nkaum Tsis Pom
+(not supported): (tsis txaus siab)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: =
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: Albanian ntseeg
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Yav Qab Teb)
+Amharic: =
+Angika: =
+Apache: =
+Arabic (Algeria): =
+Arabic (Bahrain): =
+Arabic (Egypt): Arabic (tim lyiv teb chaws)
+Arabic (Iraq): =
+Arabic (Jordan): =
+Arabic (Kuwait): =
+Arabic (Lebanon): =
+Arabic (Libya): =
+Arabic (Morocco): =
+Arabic (Oman): =
+Arabic (Qatar): =
+Arabic (Saudi Arabia): =
+Arabic (Syria): =
+Arabic (Tunisia): =
+Arabic (U.A.E.): =
+Arabic (Yemen): =
+Arabic: =
+Aragonese: =
+Aramaic: =
+Arapaho: =
+Arawak: Txhawj Xeeb
+Armenian: =
+Assamese: =
+Asturian: Npaslis
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: =
+Balinese: Neej neeg Balinese
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: =
+Beja: =
+Belarusian: =
+Bemba: =
+Bengali: =
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Dubfoot
+Blin: =
+Bliss: =
+Bosnian: =
+Braj: =
+Breton: Pob Txhawv Nyiaj
+Buginese: Neej Neeg Buginese
+Bulgarian: =
+Buriat: =
+Burmese: Ntawv Hmoob
+Caddo: =
+Catalan: =
+Cebuano: Khwv
+Chagatai: =
+Chamorro: =
+Chechen: Xauj
+Cherokee: Suav teb
+Cheyenne: =
+Chibcha: Txheeb
+Chichewa: =
+Chinese (Hong Kong): Suav (Hong Kong)
+Chinese (PRC): Suav (PRC)
+Chinese (Simplified/GB2312): Suav (Yooj Yim / GB2312) 
+Chinese (Singapore): Suav (Singapore)
+Chinese (Taiwan): Suav (Taiwan)
+Chinese (Traditional/Big5): Suav (Tsoos / Loj5)
+Chinook: Kwvtxhiaj
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: Txhuas
+Coptic: Tooj liab
+Cornish: Ntxhoo
+Corsican: =
+Cree: Ncig
+Creek: =
+Croatian: =
+Czech: =
+Dakota: =
+Danish: =
+Dargwa: =
+Delaware: Meej Vaj
+Dinka: =
+Dogri: Quav dev
+Dogrib: Quav dev
+Duala: =
+Dutch (Belgium): =
+Dutch: =
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Askiv (Australia)
+English (Belize): Askiv (Belize)
+English (Canada): Askiv (Canada)
+English (Ireland): Askiv (Ireland)
+English (Jamaica): Lus Askiv (Jamaica)
+English (New Zealand): Askiv (New Zealand)
+English (Philippines): Askiv (Philippines)
+English (South Africa): Askiv (South Africa)
+English (Trinidad & Tobago): Lus Askiv (Trinidad & Tobago)
+English (United Kingdom): Askiv (United Kingdom)
+English (United States): Askiv (United States)
+English (Zimbabwe): Askiv (Zimbabwe)
+English: Askiv-Asmeskas
+Erzya: =
+Esperanto: =
+Estonian: =
+Ewe: =
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: Pheej Cai
+Fijian: =
+Filipino: Txhiaj Foom
+Finnish: Ntawv Finnish
+Fon: Npuas
+French (Belgium): Fabkis (Belgium)
+French (Canada): Fabkis (Canada)
+French (France): Fabkis (Fabkis)
+French (Luxembourg): Fabkis (Luxembourg)
+French (Monaco): Fabkis (Monaco)
+French (Switzerland): Fabkis (Switzerland)
+French: Fab Kis
+Frisian (Eastern): Cov Haiv Neeg (Eastern)
+Frisian (Northern): Cov Haiv Neeg (Northern)
+Frisian (Western): Cov Haiv Neeg (Western)
+Frisian: Phooj ywg
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: =
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: =
+German (Austria): =
+German (Germany): German (Yelemees)
+German (Liechtenstein): =
+German (Luxembourg): =
+German (Standard): German (Txuj)
+German (Switzerland): =
+German: =
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: =
+Grebo: =
+Greek: =
+Greenlandic: Ntsuab Vaj
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): =
+Haitian: =
+Hausa: =
+Hawaiian: Hawaii
+Hebrew: =
+Herero: =
+Hiligaynon: Kev Tu Siab
+Hindi: =
+Hiri Motu: =
+Hittite: Dab neeg
+Hmong: =
+Holo (Taiwanese): =
+Hungarian: =
+Hupa: Cov Huab Tais
+Iban: =
+Icelandic: =
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: =
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: =
+Irish (Gaelic): Irish (Scottish)
+Irish: =
+Iroquoian: =
+Italian (Switzerland): Italis (Switzerland)
+Italian: =
+Japanese: =
+Javanese: =
+Judeo-Arabic: =
+Judeo-Persian: Yudia-Persian
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: Kev pabcuam-pabcuam
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: =
+Khasi: Kev daws
+Khmer (Central): Hmoob (Nruab Nrab)
+Khmer: Hmoob
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: Pub
+Kongo: =
+Konkani: =
+Korean (Johab): Kauslim (Johab)
+Korean (North): Kauslim (Qaum Teb)
+Korean (South): Kauslim (Qab Teb)
+Korean: Kauslim
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: =
+Kutenai: =
+Kyrgyz: =
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Nplog
+Latin: =
+Latvian: =
+Lezghian: =
+Limburgan: Ntsuas
+Lingala: =
+Lithuanian: =
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: =
+Macedonian: =
+Madurese: Ntawv Ntsha
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: =
+Malay: =
+Malayalam: =
+Maldivian: =
+Maltese: =
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: Lub Neej
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: Cuav
+Marwari: =
+Masai: Mas
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Qhuas
+Mongo: Moobsib
+Mongolian: Moob os
+Montenegrin: =
+Moroccan: Fas Ntshis Kus
+Mossi: =
+Myanmar: =
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Qaum Teb)
+Ndebele (South): Ndebele (Sab Qab Teb)
+Ndebele: =
+Ndonga: =
+Neapolitan: Dhuav
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Lub Norse
+Norwegian (Bokmål): Norwegian (Norwegian)
+Norwegian (Nynorsk): Norwegian (Norwegian)
+Norwegian: =
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Lub yeej
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: =
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: Txawv
+Pashto: =
+Pedi: =
+Persian (Farsi): =
+Persian (Iran): =
+Persian: Persian ntawv
+Phoenician: =
+Pohnpeian: =
+Polish: =
+Portuguese: =
+Portuguese/Brazil: Portugal / Brazil
+Punjabi (India): Punjabi (Is Nrias teb)
+Punjabi (Pakistan): =
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: =
+Romansh: Ruam
+Romany: Hlub
+Rundi: =
+Russian (Moldavia: Lavxias (Moldavia
+Russian (Republic of Moldova): Lavxias (Koom pheej ntawm Moldova)
+Russian: Lavxias
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Sab Qaum Teb)
+Sami (Skolt): =
+Sami (Southern): Sami (Yav Qab Teb)
+Sami: =
+Samoan: Lub zos Samoan
+Samoli: Suav teb
+Sandawe: =
+Sango: =
+Sanskrit: Lus Sanskrit
+Santali: =
+Sardinian: Kev Piav Txog
+Sasak: =
+Scots (Gaelic): Scots (Scottish)
+Selkup: Txhawj
+Serbian (Upper): Serbian (Qaum)
+Serbian: Seev
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Khiab
+Sindhi: =
+Sinhala: =
+Slavic: Cov neeg Slavic
+Slovak: =
+Slovenian: =
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: Kev koom tes
+Soninke: =
+Sorbian (Lower): Hlub (Qis)
+Sorbian (Upper): Hlub (Sab Nrauv)
+Sorbian: Koobhmoob
+Sotho: Lub Sotho
+Spanish (Argentina): =
+Spanish (Bolivia): =
+Spanish (Chile): =
+Spanish (Colombia): =
+Spanish (Costa Rica): =
+Spanish (Dominican Republic): Cov Lus Mev (Dominican Republic)
+Spanish (Ecuador): =
+Spanish (El Salvador): =
+Spanish (Guatemala): =
+Spanish (Honduras): =
+Spanish (Mexico): =
+Spanish (Nicaragua): =
+Spanish (Panama): =
+Spanish (Paraguay): =
+Spanish (Peru): =
+Spanish (Puerto Rico): =
+Spanish (Spain): =
+Spanish (Uruguay): =
+Spanish (Venezuela): =
+Spanish: Lus Mev
+Sranan Tongo: =
+Sukuma: =
+Sumerian: =
+Sundanese: =
+Susu: Tub Xis
+Sutu: =
+Swahili: Cov Khwb
+Swati: =
+Swedish (Finland): =
+Swedish (Sweden): =
+Swedish: =
+Syriac: =
+Tagalog: =
+Tahitian: =
+Tai: =
+Taiwan: =
+Tajik: Tajik me
+Tamashek: =
+Tamil: =
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: Thaib
+Tibetan: Nkauj Hmoob Tibetan
+Tigre: =
+Tigrinya: =
+Timne: Sijhawm
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): =
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: =
+Turkmen: =
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: =
+Ukrainian: =
+Umbundu: =
+Urdu: =
+Uyghur: =
+Uzbek: Uzbekistan
+Vai: =
+Venda: =
+Vietnamese: Nyab Laj
+Volapük: Neejneeg
+Votic: =
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: Washaha
+Welsh: =
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: Yoos
+Yapese: =
+Yiddish: Tub Yaj
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Browser txhais
+event: kev tshwm sim
+journal: phau ntawv ceev xwm txheej
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Siv tus ID nkag mus tsis raug
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: lo lus zais tsis raug
+no such user: tsis muaj cov neeg siv li
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Nyiaj tsis taus
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Nis
+Months: Lub Hlis
+Month Days: Lub Hlis
+Days: Hnub
+Weeks: Lub lis piam
+Position: Txoj haujlwm
+Until: Txog
+Count: Suav
+Inclusion Dates: Xam nrog Cov Hnub
+Exclusion Dates: Cov Hnub Qhib
+Event Imported: Txawv Teb Chaws Tuaj Lawm
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Kev Ceeb Toom
+authenticate: SMTP Yuam Kev: Tsis lees paub
+connect_host: SMTP yuam kev: Tsis tuaj yeem txuas rau SMTP party:
+data_not_accepted: SMTP Yuam Kev: Cov ntaub ntawv tsis txais
+encoding: Paub tsis paub encoding:
+execute: Yuav tsis muaj txim:
+file_access: Saib tsis tau cov ntaub ntawv:
+file_open: Cov Ntaub Ntawv Yuam Kev Tsis tuaj yeem qhib cov ntaub ntawv:
+from_failed: Cov hauv qab no Los ntawm qhov chaw nyob tsis ua tiav:
+instantiate: Tsis tuaj yeem tsis muaj nuj nqi xa ntawv
+mailer_not_supported: tus xa ntawv tsis txaus siab
+provide_address: Koj yuav tsum muab tsawg kawg ib tus email chaw nyob.
+recipients_failed: SMTP Yuam Kev: Cov neeg tau txais hauv qab no ua tsis tiav:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Sau cov Cim Pom Hauv Duab
+Enter the correct letters and numbers...: Ntaus cov tsiaj ntawv raug thiab naj npawb los ntawm cov duab tso rau hauv lub thawv ntawv. Qhov kev ntsuam xyuas me me no ua rau nkag mus txwv tsis pub tawm tsam bots phem. Tsuas rov nthuav nplooj ntawv yog tias daim duab no nyuaj dhau los nyeem
+Challenge/Response: Kev sib tw / teb
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Hloov cov hnub thiab sijhawm ntawm cov khoom no?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Koj tsis tau sau cov lus piav qhia luv luv
+time prior to work hours...: lub sijhawm ua ntej mus ua haujlwm ...
+Invalid Event Date: Hnub Hnub Qhov Tsis Yog
+Please add a participant: Thov ntxiv ib tus neeg koom
+Invalid Date: Hnub Tuaj Tsis Tau
+You have not entered a valid time of day: Koj tsis tau siv lub sijhawm ntawm lub sijhawm.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Meem daim ID tsis tuaj yeem sau tseg tau.
+First and last names cannot both be blank.: Npe thiab npe tsis yog ob leeg sau npe tau.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Cov xim tsis raug
+Color format should be RRGGBB.: Xim hom ntawv yuav tsum yog #RRGGBB.
+URL cannot be blank.: URL tsis tau seem.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Hom ntaub ntawv tsis phim hom ntawv ntshuam
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Xim tsis raug rau cov ntaub ntawv keeb kwm yav dhau.
+Invalid color for document title.: Tsis muaj xim rau cov ntaub ntawv npe.
+Invalid color for table cell background.: Cov xim tsis raug rau cov keeb kwm yav dhau ntawm tes.
+Invalid color for table cell background for today.: Xim tsis raug rau cov xov tooj ntawm tes tom qab rau hnub no.
+Invalid work hours.: Cov sijhawm ua haujlwm tsis raug.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Server URL yuav tsum xaus nrog tus swb (/).
+Invalid color for table grid.: Cov xim tsis raug rau cov kab sib chaws.
+Invalid color for event popup background.: Xim tsis raug rau cov keeb kwm kev nthuav tawm.
+Invalid color for event popup text.: Xim tsis raug rau cov ntawv xov xwm tshwm sim.
+Invalid color for table header text.: Cov xim tsis raug rau lub rooj ntawv xov xwm.
+Invalid color for table header background.: Cov xim tsis raug rau lub hau keeb kwm yav dhau.
+Server URL is required.: Tus neeg rau zaub mov URL tsim nyog.
+Invalid Color: Tsis Xim
+Database Name: Npe Database
+Full Path (no backslashes): Tag nrho txoj kev (tsis muaj backslashes)
+The password contains illegal characters.: Tus password nkag nrog cov cim tsis raug cai.
+Error you must specify a Single-User Login: Yuam Kev: Koj yuav tsum sau qhia Nkag Tus Kheej Nkag Nkag Nkag Nkag Rau Tus Kheej
+Could not find XXX.: Yuav tsis pom XXX.
+Could not find XXX in DOM.: Yuav tsis pom XXX hauv DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Lub Lim Tiam no
+This Month: Lub Hlis no
+This Year: Xyoo No
+Exit: Tawm
+Add New Event: Ntxiv Tshiab Lom Zem
+Delete Entries: Rho tawm Nkag
+My Views: Kuv Saib
+Manage Calendar of: Tswj raws daim ntawm
+My Reports: Kuv Qhia Tshaj
+My Profile: Kuv Profile
+Public Calendar: Daim Moos Meem Rau Toj
+Unapproved Events: Cov Txheej Xwm Tsis Tawm
+User Manager: Tus Saib Xyuas Tus Neeg Siv
+Help Contents: Pab Txheej Txheem
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Cov Ntaub Ntawv Cov Ntawv Pov Tseg
+Create New: Tsim Tus Tshiab
+Failure Reason: Vim li cas tsis ua hauj lwm:
+You must manually create database: Koj yuav tsum tsim manually.
+Single-User: Ib Leeg-Neeg Siv
+Test Settings: Kuaj Cov Chaw
+Timezone Conversion Successful: Timezone Conversion Zoo heev
+WebCalendar Installation Wizard Step XXX: WebCalendar Qhov Txhim Kho Ntawm Ib Qho Zaum XXX
+Password Accepted: Lo Lus Cim Txais
+Successful Login: Kev Nkag Mus Zoo
+Password Incorrect: Lo Lus zais Tsis Yog
+Invalid Login: ID nkag mus tsis raug
+Display Errors: Cov Teeb Meem Raug
+File Uploads: Cov Ntaub Ntawv uploads
+Allow URL fopen: Pub URL fopen (xav tau yog tias Daim Ntawv Cuam Cuam Siv los siv)
+Safe Mode: Hom Muaj Kev Nyab Xeeb
+Safe Mode Allowed Vars: Muaj Kev Nyab Xeeb Txoj Kev Tso Cai Vars (TZ xav tau tsuas yog muaj Kev Nyab Xeeb yog nyob rau)
+GD: GD (xav tau rau keeb kwm ntawm Gradient Image)
+Passwords do not match!: Lo lus zais tsis phim!
+Unable to write password to settings.php file: Tsis tuaj yeem sau password rau "settings.php" cov ntaub ntawv.
+Password Updated: Lo lus zais hloov tshiab
+Password has been set: Lo lus zais tau teeb tsa.
+Connection Successful...: Kev Sib Txuas Ua tiav  Thov mus rau lwm nplooj ntawv txuas ntxiv txhawm rau teeb tsa.
+Correct your entries or click the Create New...: Kho koj cov lus nkag lossis nyem lub  Tsim Tshiab  khawm txuas ntxiv txuas ntxiv.
+Correct your entries and try again.: Kho koj cov lus nkag thiab sim dua.
+XXX does not exist: XXX tsis muaj
+XXX is not writable: XXX tsis tau sau
+Error Converting Timezone: Yuam Kev Hloov Hauv Lub Sij Hawm
+Error Unable to write to file XXX.: Qhov Tsis Yuam Kev Sau tsis tau sau ua ntawv XXX.
+Please change the file permissions of this file.: Thov hloov cov ntawv tso cai ntawm cov ntaub ntawv no.
+Please change includes dir permission: Thov hloov cov ntawv tso cai ntawm koj cov "suav nrog" cov ntawv tso cai cia sau ntawv los ntawm lwm cov neeg siv.
+Your settings have been saved.: Koj kev hloov chaw tau txais kev cawmdim.
+OFF: TAWM
+ON: =
+WebCalendar Setup Wizard: WebCalendar teeb tsa Cov Kev Txawj Ntse
+This installation wizard will guide you...: Cov cuab yeej teeb tsa no yuav taw qhia koj los ntawm kev teeb tsa WebCalendar yooj yim teeb tsa.<br>Xav tau kev pab thiab kev daws teebmeem:
+System Administrators Guide: Cov Kws Qhia Tawm Tsa Cov Lus Qhia
+Frequently Asked Questions: Cov Lus Nquag Nug
+FAQ: Cov FAQ
+Troubleshooting: Kev daws teeb meem
+Getting Help: Txais Kev Pab
+Upgrading Guide: Daim Ntawv Qhia Qhia Kho Kom Zoo Dua Qub
+User Supported Wiki: Cov Neeg Siv Txhawb Wikipedia
+PHP Version Check: PHP Version Tshawb xyuas
+Check to see if PHP 7.1.0 or greater is installed.: Txheeb xyuas seb yog PHP 7.1.0 lossis ntau dua puas tau nruab.
+PHP version: =
+PHP Settings: PHP Chaw
+Detailed PHP Info: Cov ncauj lus kom ntxaws PHP Lus
+settings.php Status: "settings.php" xwm txheej
+Session Check: Kev Tshawb Kev Kawm
+To test the proper operation of sessions...: Txhawm rau kuaj xyuas cov haujlwm tau zoo ntawm cov qib, rov xa nplooj ntawv no. Koj yuav tsum pom qhov kev sib kho txee nce ntxiv txhua zaus.
+SESSION COUNTER: NTUJ DAIM NEEG
+The file permissions of settings.php are set...: Cov ntawv tso cai ntawm "settings.php" tau teeb tsa kom tus installer tsis muaj kev tso cai los hloov nws. Thov hloov cov ntawv tso cai ntawm cov ntaub ntawv txuas ntxiv mus txuas ntxiv
+The file permissions of the includes directory are set...: Cov ntawv tso cai ntawm cov ntaub ntawv suav nrog cov teeb tsa yog li ntawd lub chaw nruab tsis muaj kev tso cai los tsim daim ntawv tshiab. Thov hloov cov kev tso cai ntawm cov npe hauv qab no los txuas ntxiv
+Your settings.php file appears to be valid.: Koj cov "settings.php" cov ntaub ntawv pom tias siv tau.
+Configuration Wizard Password: Configuration Wizard Lo lus zais
+Create Settings File Password: Tsim Chaw Cov Ntaub Ntawv Password
+db setup directions...: Hauv ntu no koj yuav teeb tsa thiab sim ua qhov txuas rau koj cov database server. Cov ntaub ntawv tus as khauj muab yuav tsum muaj THAWJ tso cai los tsim cov ntaub ntawv, cov ntxhuav thiab cov neeg siv. Yog tias qhov no ua tsis tau, lossis koj lub chaw nkag siv database tsuas yog siv tau, koj yuav tsum tswj hwm koj lub chaw khaws ntaub ntawv.
+Database Status: Cov Ntaub Ntawv Li Cas
+Supported databases for your PHP installation: Txhawb cov databases rau koj lub installation PHP
+Your current database settings are able to access the database.: Koj cov chaw khaws ntaub ntawv tam sim no tuaj yeem nkag mus rau hauv lub database.
+Please Test Settings: Thov Xeem Chaw
+Your current database settings are not able...: Koj cov chaw khaws ntaub ntawv tam sim no tsis muaj peev xwm nkag mus rau cov ntaub ntawv lossis tsis tau sim.
+Database Settings: Cov Chaw Database
+Database Type: Cov Ntaub Ntawv Ntaus
+Server: Neeg rau zaub mov
+Connection Persistence: Txuas Txuas Ntxiv
+All your database tables appear to be up...: Koj cov ntxhuav database tau tshwm sim txog hnub. Koj tuaj yeem txuas mus rau nplooj ntawv tom ntej thiab ua tiav koj li WebCalendar teeb tsa.
+This appears to be a new installation...: Qhov no zoo li yog kev teeb tsa tshiab. Yog tias qhov no tsis raug, thov rov qab mus rau nplooj dhau los thiab kho koj lub chaw.
+This appears to be an upgrade...: Qhov no zoo li yog qhov hloov kho tshiab los ntawm version&nbsp;XXX&nbsp;kom&nbsp;YYY.
+The database requires some data input...: Cov ntaub ntawv yuav tsum tau qee cov ntaub ntawv tawm tswv yim Nyem Hloov kho Cov Ntaub Ntawv kom tiav cov kev hloov kho tshiab.
+In this section we will perform...: Hauv seem no peb yuav ua qhov kev hloov pauv los nqa koj cov ntaub ntawv khaws cia txog qib. Yog tias koj tab tom siv cov ntaub ntawv pov thawj puv siab, cov kauj ruam no yuav ua haujlwm rau koj tus kheej. Yog tias tsis yog, qhov yuav tsum tau SQL tuaj yeem tshwm thiab koj yuav tsum muaj peev xwm txiav thiab muab tshuaj txhuam nws rau hauv koj lub database server nug qhov rai.
+No database actions are required.: Yuav tsum tsis muaj kev nqis tes ua database.
+The following database actions are required: Cov hauv qab no kev txheeb xyuas cov haujlwm yuav tsum tau ua
+ODBC Underlying Database: ODBC Lwm Cov Ntaub Ntawv:
+Automatic installation not supported: Tsis siv neeg installation tsis tau ua tiav tag nrho rau koj hom database. Koj yuav tsum tau tsim cov ntawv tsim uas siv cov SQL uas tau muab los. Thov nyem  Muab SQL  los txuas ntxiv. Txiav thiab muab tshuaj txhuam rau hauv koj lub qhov rai nug.
+This may take several minutes to complete: Qhov no yuav siv sijhawm li ob peb feeb los ua kom tiav.
+Install Database: Nruab Database
+Update Database: Hloov Cov Ntaub Ntawv
+Display Required SQL: Cov Khoom Yuav Tsum Muaj SQL
+Return to previous page after processing SQL.: Tom qab koj ua ntaub ntawv rau SQL no, koj yuav tsum tau rov qab mus rau nplooj ntawv dhau los thiab rov qab kuaj koj cov ntaub ntawv pov thawj kom cov ntawv sau tuaj yeem pom cov kev hloov pauv.
+This is the final step in setting up your WebCalendar Installation.: Nov yog theem kawg ntawm kev teeb tsa koj WebCalendar Installation.
+Timezone Conversion: Sij hawm tig rov los
+It appears that you have NOT converted...: Nws zoo nkaus li tias koj TSIS tau hloov koj lub WebCalendar cov xwm txheej uas twb muaj lawm mus rau GMT. Yog tias koj muaj, tej zaum koj yuav tsis quav ntsej tsab ntawv ceeb toom no thiab tsis ua raws li qhov hloov dua siab tshiab. Yog tias qhov no yog qhov teeb tsa tshiab, koj kuj tseem tuaj yeem tsis lees paub tsab ntawv ceeb toom no.
+Convert Data to GMT: Hloov Cov Ntaub Ntawv rau GMT
+Application Settings: Cov Chaw Thov
+HTTP-based authentication was not detected...: HTTP-based authentication tsis pom. Koj yuav tsum tau rov ua dua koj lub web server yog tias koj xav xaiv 'Web Server' los ntawm xaiv 'Tus Neeg Siv Tus Txheej Txheem' hauv qab no.
+HTTP-based authentication was detected...: HTTP-raws li kev txheeb xyuas tau tshawb pom. Cov neeg siv kev txheeb xyuas tau raug tswj xyuas los ntawm koj lub web server. Koj yuav tsum xaiv 'Web Server' los ntawm cov npe ntawm 'Neeg Siv Yeem Xaiv' cov kev xaiv hauv qab no.
+Create Default Admin Account: Tsim Tus Account Tso Cai Saib Xyuas
+(Admin Account Not Found): (Tsis Pom Tus Account Tso)
+User Authentication: Tus Neeg Siv Ntawv Pov Thawj
+Web-based via WebCalendar (default): Web-based ntawm WebCalendar (lub neej ntawd)
+Web Server (not detected): Web Server (tsis tau kuaj)
+Web Server (detected): Web Server (kuaj)
+None (Single-User): All (Ib Leeg-Tus Neeg Siv)
+Read-Only: Nyeem-Tsuas
+Environment: Ib puag ncig
+Production: Kev Tsim Khoom
+Development: Kev Loj Hlob
+Save Settings: Txuag Chaw
+Launch WebCalendar: Tshaj Tawm WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Yuam kev hloov kho cov lus "XXX": YYY.
+Conversion Successful: Kev Hloov Siab Mus Rau Qhov Zoo 
+Perl script required: Koj yav dhau los ntawm WebCalendar yuav tsum khiav ib PERL tsab ntawv los hloov koj cov ntaub ntawv. Thov khiav /tools/upgrade_to_0.9.7.pl ces rov qab mus rau nplooj ntawv no mus txuas ntxiv.
+previous version requires updating several tables: Koj yav dhau los ntawm WebCalendar yuav tsum hloov kho ob peb lub rooj database.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: TSIS PUB SAIB RAWS LI
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Yuam kev txuas rau lub chaw khaws ntaub ntawv
+Include Path: Xws Li Txoj Kev
+Deleting events for: Xa cov xwm txheej rau
+Importing events for: Txheeb cov xwm txheej rau
+No data returned from: Tsis muaj ntaub ntawv rov qab los ntawm
+for non-user calendar: rau daim ntawv tsis siv neeg siv
+No Remote Calendars found: Tsis muaj Cov Meem Saib Xyuas Chaw Taws Teeb
+Remote Calendars not enabled: Tej thaj chaw deb ua tau tsis qhib
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: yuav tsis pom daim npav kev tshwm sim
+could not find event id XXX in database.: yuav tsis pom muaj id xwm txheej nyob rau hauv database.
+task: hauj lwm
+This is a reminder for the XXX detailed below.: Nov yog qhia ceeb toom rau tus XXX tau ntxaws hauv qab no.
+Pecentage Complete: Pecentage Tiav
+Reminder: Nco ntsoov
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Kev tsis txhawb: XXX.
+No event id specified.: Tsis muaj kev tshwm sim daim ID sau tseg.
+Not authorized (not admin).: Tsis tso cai (tsis yog admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Kev txheeb xyuas cov xwm txheej rau XXX txij hnub YYY mus txog hnub ZZZ.
+Found XXX events in time range.: Pom XXX cov xwm txheej hauv lub sijhawm.
+Event id=XXX YYY at ZZZ on AAA.: Kev tshwm sim id = XXX "YYY" ntawm ZZZ ntawm AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Tso cai rau XXX tus neeg siv los saib lwm tus neeg siv daim ntawv qhia hnub.
+Error Email reminders disabled for user XXX.: Cov kev ua yuam kev: Email nco kev xiam rau cov neeg siv "XXX".
+Number of site_extras XXX.: Tus naj npawb ntawm site_extras: XXX.
+Reminder set for event.: Kev ceeb toom teeb tsa rau qhov xwm txheej.
+Mins Before XXX.: Mins Ua Ntej: XXX.
+Event time is XXX.: Lub sijhawm sijhawm yog: XXX.
+Remind time is XXX.: Sijhawm nco txog yog: XXX.
+Reminders for user XXX, login YYY.: Nco ntsoov rau cov neeg siv "XXX", ID nkag mus "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Kev tsis pom zoo rau cov neeg siv "XXX".
+Event id=XXX YYY already sent.: Daim id xwm txheej = XXX "YYY" twb raug xa mus.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Tsis muaj tus ID nkag mus siv rau hom siv tus kheej.
+No login required for HTTP authentication.: Tsis muaj tus ID nkag mus siv rau HTTP authentication.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Cov cim tsis raug ntawm tus ID nkag mus.
+Username XXX does not exist.: Lub npe "XXX" tsis muaj.
+You cannot remove admin rights from yourself!: Koj tsis tuaj yeem tshem txoj cai admin ntawm koj tus kheej!
+Unknown error saving user: Kev paub tsis raug yuam kev txuag cov neeg siv.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Tsis pom muaj neeg tuaj koom kev tshwm sim rau tus id: XXX.
+Db error Could not find event id XXX.: Db yuam kev: Tsis pom qhov tshwm sim id XXX.
+Error Could not find event id XXX in database.: Yuam Kev: Tsis pom qhov tshwm sim tus id XXX hauv cov hauv paus.
