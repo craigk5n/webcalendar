@@ -1,0 +1,2387 @@
+# Sesotho 
+#
+# Sebopeho se na le hlooho ea boikhethelo:
+#
+# E fetoletsoe ke: lebitso la hau le lengolo tsoibila
+# Ntlafatso ea hoqetela: letsatsi la phetolelo
+#
+# Mohala oa PELE o se nang letho o phethela litlhaloso tsena tsa hlooho.)
+#
+# E lateloa ke ba bangata kamoo ho hlokahalang.
+#
+# Polelo ea Senyesemane: phetolelo
+# (E 'ngoe ho ea moleng. Kantle ho "#" e etellang pele.
+# Poleloana ea "Senyesemane:", ho kenyeletsoa le kolone ":", e fanoe ke
+# Bahlahisi ba # WebCalendar. Karolo ea hau ke "phetolelo".)
+#
+# Sesebelisoa sa lisebelisoa se na le lingoloa tse peli tsa perl ho u thusa:
+# - check_translation.pl
+# e bontša haeba mongolo ohle o fetolelitsoe ka katleho.
+# - update_translation.pl
+# e tla lekola lifaele tsa lenaneo ho fumana phetolelo eohle ('phrase') le
+# Keletso ea # ('phrase'). E tla hlophisa lipolelo ho latela leqephe
+# (file) e nang le ketsahalo ea pele. Ka boikhethelo, e ka tšoaea
+# lipoleloana tse # tse so fetoleloe ka ho beha
+#  << MISSING >>
+# moleng o kaholimo ho polelo. Mme, haeba polelo ke khutsufatso,
+# e tla kenyelletsa mongolo o felletseng oa Senyesemane moleng o ka tlase ho polelo.
+#
+# Tlhokomeliso: Ke leka ho fokotsa boholo ba file. Haeba "phetolelo"
+# lentsoe / polelo e ts'oana ka puo ea hau le Senyesemane, sebelisa feela "=" letšoao.
+#
+# Tlhokomeliso: U tla hlokomela ho kena ha "May_" ka tlase. Ho na le lebaka la sena.
+# Fetolela "May_" ho lebitso la khoeli e felletseng le "May" ho,
+# hangata litlhaku tse tharo, khutsufatso ea khoeli (joalo ka "Oct" bakeng sa "Mphalane").
+#
+# Ke sebelisitse phetolelo ea Google bakeng sa sena.
+# E lokela ho lekana ho fihlela sebui sa letsoalloa se ka e netefatsa.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: K'halendara ea webo
+version XXX: mofuta XXX
+WebCalendar is a PHP application used...: WebCalendar ke sesebelisoa sa PHP se sebelisetsoang ho boloka khalendara bakeng sa mosebelisi a le mong kapa sehlopha sa basebelisi ba inthanete / intranet. E ka hlophisoa hape joalo ka khalendara ea ketsahalo.
+Credits: Litlhophiso
+About: Mabapi le
+OK: =
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Phoso ea database: XXX.
+DEFAULT CONFIGURATION: TS'IRELETSO MATSOSO
+Go: Tsamaea
+Save: Boloka
+Undo: Etsolla
+Public Access: Phihlello ea Sechaba
+Admin: Tsamaiso
+User Access Control: Taolo ea phihlello ea mosebelisi
+Allow Access to Other Users Calendar: Lumella Phihlelo ho Khalendara ea Basebetsi ba Bang
+Grant This User Access to My Calendar: Fana ka phihlello ena ea mosebelisi khalendareng ea ka
+Type: Tlanya
+Calendar: Khalendara
+View Event: Sheba Ketsahalo
+View: Sheba
+Edit: Edita
+Approve/Reject: Amohela / Hana
+Events: Liketsahalo
+Tasks: Mesebetsi
+Journals: Limakasine
+Can Invite: O ka Mema
+Can Email: Ka Imeile
+Can See Time Only: O Ka Bona Nako Feela
+Assistant: Mothusi
+Select All: Kgetha Tsohle
+Clear All: Tlosa Tsohle
+Public: Ea sechaba
+Confidential: Lekunutu
+Private: Lekunutu
+
+########################################
+# Page: activity_log.php
+#
+Next: E 'ngoe
+Previous: E fetileng
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Ketsahalo XXX e se e le khalendareng ea hau.
+Invalid entry id XXX.: ID ea ho kena e fosahetseng: "XXX".
+a XXX event may not be added to your calendar: Ena ke ketsahalo ea XXX mme e kanna ea se keng ea kenyelletsoa khalendareng ea hau.
+confidential: lekunutu
+private: poraefete
+Error adding event XXX.: Phoso ho kenya ketsahalo: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Lebitso la tlhophiso le fosahetseng "XXX".
+Select: Kgetha
+Day: Letsatsi
+Week: Beke
+Month: Khoeli
+Year: Selemo
+Bottom: Ka tlase
+Top: Holimo
+Anyone: Mang kapa mang
+Participant: Morupeluoa
+Settings: Litlhophiso
+Groups: Lihlopha
+NonUser Calendars: Lik'halendara tse sa sebeliseng
+Other: Tse ling
+Email: Imeile
+Colors: Mebala
+Document background: Semelo sa tokomane
+Document title: Sehlooho sa tokomane
+Document text: Tokomane ea tokomane
+My event text: Mongolo oa ketsahalo ea ka
+Table grid color: 'Mala oa gridi ea tafole
+Table header background: Semelo sa hlooho ea tafole
+Table header text: Mongolo oa hlooho ea tafole
+Table cell background: Semelo sa lisele tsa tafole
+Table cell background for current day: Semelo sa lisele tsa tafole bakeng sa letsatsi la hajoale
+Table cell background for days with events: Semelo sa lisele tsa tafole bakeng sa matsatsi le liketsahalo
+Table cell background for weekends: Semelo sa lisele tsa tafole mafelo-beke
+Table cell background for other month: Semelo sa lisele tsa tafole bakeng sa khoeli e ngoe
+Week number color: Mmala oa nomoro ea beke
+Event popup background: Semelo sa popup ea ketsahalo
+Event popup text: Mongolo o hlahang oa ketsahalo
+System Settings: Litlhophiso tsa Sisteme
+Help: Thusa
+System options: Likhetho tsa sistimi
+app-name-help: E totobatsa lebitso la ts'ebeliso e tla hlaha ka bareng ea sehlooho sa sebatli bakeng sa maqephe ohle le leqepheng la ho kena. Theko eo u e hlalosang mona e tla shejoa faeleng ea phetolelo e u lumellang ho fana ka litlotla tse fapaneng bakeng sa lipuo tse fapaneng.
+Application Name: Lebitso la Kopo
+Translated Name (XXX): Lebitso le fetoletsoeng (XXX)
+server-url-help: E totobatsa setsi sa URL sa ts'ebeliso. Sena se tla kenyelletsoa ha ho romelloa likhopotso tsa imeile le litsebiso.
+Server URL: URL ea seva
+home-url-help: E totobatsa URL ea lapeng bakeng sa ts'ebeliso. Sena e kanna ea ba se felletseng kapa se amanang
+Home URL: URL ea Lehae
+language-help: E totobatsa hore na u ka sebelisa puo efe.
+Language: Puo
+Your browser default language is XXX.: Puo ea hau ea sebatli ke "XXX".
+Allow user to use themes: Lumella mosebelisi ho sebelisa meralo
+themes-help: E lumella ntlafatso ea boima ba litlhophiso tsa phetolo. Mabokose a mabenyane a tlase ke khetho ea mosebelisi feela.
+Themes: Meralo
+AVAILABLE THEMES: LITABA TSE FUMANEHANG
+None: Ha ho letho
+Preview: Selelekela
+Site customization: Boits'oaro ba sebaka
+custom-script-help: E lumella ho kena ha Javascript e tloaelehileng kapa mongolo oa setaele o tla kenngoa karolong ea "hlooho" ea HTML ea leqephe le leng le le leng.
+Custom script/stylesheet: Script / setaele sa moetlo
+custom-header-help: E lumella snippet e tloaelehileng ea HTML hore e kenyellelitsoe kaholimo ho leqephe le leng le le leng.
+Custom header: Hlooho ea moetlo
+custom-trailer-help: E lumella snippet e tloaelehileng ea HTML hore e kenyelletsoe qetellong ea leqephe le leng le le leng.
+Custom trailer: Tarela e tloaelehileng
+enable-external-header-help: E lumella k'haravene e tloaetsoeng ho jarisoa ho tsoa faeleng e kantle
+Allow external file for header/script/trailer: Lumella faele e kantle bakeng sa hlooho / script / k'haravene
+Allow user to override header/trailer: Lumella mosebelisi ho hatella hlooho / k'haravene
+Date and Time: Letsatsi le Nako
+server-tz-help: E totobatsa hore na ke lihora tse kae ho fetola nako ho tloha UTC ho isa nakong ea seva.
+Server Timezone Selection: Khetho ea Sebaka sa Nako ea Server
+tz-help: E totobatsa hore na ke lihora tse kae ho fetola nako ho tloha UTC ho ea ho nako ea lehae.
+Default Client Timezone Selection: Khetho ea Mehlala ea Bareki e Ikhethileng
+display-general-use-gmt-help: Haeba e nolofalitsoe, matsatsi / linako tse tloaelehileng li hlahisoa e le GMT
+Display Common Use Date/Times as GMT: Bontša Letsatsi le Tloaelehileng la Ts'ebeliso e le GMT
+date-format-help: E totobatsa mofuta oa letsatsi o khethiloeng.
+Date format: Sebopeho sa letsatsi
+Small Task Date: Letsatsi le lenyenyane la mosebetsi
+display-week-starts-on: E totobatsa letsatsi la beke leo beke e qalang ka lona. Haeba Mantaha o boletsoe, linomoro tsa beke e tla ba linomoro tsa beke ea ISO.
+Week starts on: Beke e qala ka
+display-weekend-starts-on: E beha letsatsi la beke bakeng sa mafelo-beke ho qala
+Weekend starts on: Mafelo-beke a qala ka
+time-format-help: E totobatsa hore na ke mofuta ofe oa nako o lokelang ho sebelisoa:<br><em>12 hora:</em> Bontsha linako e le 3am, 8:30 pm, jj.<br><em>Hora ea 24:</em> Linako tsa ho bontša e le 300 , 2030, jj.
+Time format: Sebopeho sa nako
+12 hour: Lihora tse 12                                                 
+24 hour: Lihora tse 24                                                 
+timed-evt-len-help: E totobatsa mokhoa oa ho kenya oa ho fumana bolelele ba ketsahalo e behiloeng ka nako.
+Specify timed event length by: Hlalosa bolelele ba nako ea ketsahalo ka
+Duration: Nako
+End Time: Nako ea ho Qetela
+work-hours-help: E totobatsa bolelele ba nako bo tla hlahisoa bakeng sa chebo ea letsatsi.
+Work hours: Lihora tsa mosebetsi
+From: Ho tloha
+to: ho
+Appearance: Ponahalo
+preferred-view-help: E totobatsa chebo ea kamehla (Letsatsi, Beke, Khoeli, kapa Selemo).
+Preferred view: Pono e khethiloeng
+Allow top menu: Lumella menyetla e holimo
+Date Selectors position: Boemo ba Khetho ea Letsatsi
+menu-themes-help: E beha mebala le setaele sa lenane la holimo
+Menu theme: Sehlooho sa menyu
+fonts-help: E totobatsa lenane la li-fonte tsa sistimi tse ka sebelisoang (joalo ka "Arial, Helvetica")
+Fonts: Mehala
+display-sm_month-help: Haeba e lumelloa, bonts'a likhoeli tse nyane ponong ea khoeli
+Display small months: Hlahisa likhoeli tse nyane
+display-weekends-help: Kenyelletsa mafelo-beke ha u shebile beke.
+Display weekends: Bontša mafelo-beke
+display-long-daynames-help: Haeba e lumelloa, mabitso a letsatsi le lelelele a hlahisoa
+Display long day names: Hlahisa mabitso a letsatsi le lelelele
+display-alldays-help: Bontša matsatsi a fetileng le a latelang likhoeling tsa khoeli, ho tlatsa lisele tsohle.
+Display all days in month view: Hlahisa matsatsi ohle ka chebo ea khoeli
+display-week-number-help: E totobatsa hore na nomoro ea beke (1-52) e lokela ho bonts'oa ponong ea khoeli le ponong ea beke.
+Display week number: Bontša nomoro ea beke
+display-desc-print-day-help: Kenyelletsa litlhaloso tsa ketsahalo mofuteng o bonolo oa khatiso oa pono ea letsatsi.
+Display description in printer day view: Hlahisa tlhaloso ponong ea letsatsi la khatiso
+yearly-shows-events-help: Ponong ea selemo le selemo, bonts'a matsatsi a nang le liketsahalo ka mongolo o motenya.
+Display days with events in bold in month and year views: Bontša matsatsi a nang le liketsahalo tse ngotsoeng ka mongolo o motenya khoeling le selemong
+display-minutes-help: Haeba e lumelloa, metsotso e qetellang ka: 00 e tla lula e bonts'oa
+Display 00 minutes always: Hlahisa metsotso e 00 kamehla
+display-end-times-help: Hlahisa linako tsa ketsahalo ha ketsahalo e behiloe ka nako
+Display end times on calendars: Bontša linako tsa ho qetela khalendareng
+allow-view-add-help: Letšoao la '+' le tla kenyelletsoa ponong, ho lumella basebelisi ho kenya liketsahalo kapele ho khalendara ea basebelisi ba bang.
+Include add event link in views: Kenyelletsa khokahano ea ketsahalo liponong
+lunar-help: Haeba e nolofalitsoe, e tla bonts'a litšoantšo tse nyane tse emelang mekhahlelo ea khoeli le khoeli khoeli le khoeli
+Display Lunar Phases in month view: Hlahisa Mekhahlelo ea Lunar ka pono ea khoeli
+Restrictions: Lithibelo
+allow-view-other-help: E totobatsa hore na mosebelisi a le mong a ka sheba khalendara ea motho e mong.
+Allow viewing other users calendars: Lumella ho sheba khalendara ea mosebelisi e mong
+require-approvals-help: Ha e lumelloa, mosebelisi o tlameha ho amohela ketsahalo pele e bonts'oa khalendareng ea bona (ntle le haeba Display e sa lumelloa e lumelloa). Tlhokomeliso ho beha sena "Che" ho ke ke ha tima tumello ea khalendara ea Phihlello ea Sechaba (haeba khalendara ea Phihlello ea Sechaba e lumelletsoe).
+Require event approvals: E hloka tumello ea ketsahalo
+display-unapproved-help: E totobatsa hore na liketsahalo tse sa amoheloang li hlahisitsoe khalendareng ea hau.<br>Haeba e behiloe ho "Ee", liketsahalo tse sa amoheloang li tla hlahisoa khalendareng ea hau (ka 'mala o fapaneng).<br>Haeba e behiloe ho "Che" diketsahalo tse sa ananeloang li tlameha ho amoheloa pele li hlahisoa khalendareng ea hau.
+Display unapproved: Bontša e sa amoheloe
+conflict-check-help: Lekola likhohlano tsa liketsahalo (liketsahalo tse peli tse lokiselitsoeng motho a le mong ka nako e le ngoe). Haeba o beha "E" ena, o ntse o tla khona ho hlophisa liketsahalo tse peli ka nako e le ngoe kamora ho netefatsa tlhokomeliso. Haeba u beha "Che" ha ho na ho lekola likhohlano ho tla etsoa. Mohlomong u batla ho beha sena ho "Ee", ka hona ho hlahloba likhohlano ho etsahala.
+Check for event conflicts: Lekola likhohlano tsa liketsahalo
+Yes: Ho joalo
+No: Che
+conflict-months-help: Haeba ho hlahloba likhohlano ho teng ("Hlahloba likhohlano tsa ketsahalo" e behiloe ho "Che" & # 41 ;, sena se supa hore na ke likhoeli tse kae tse tlang re lokelang ho lekola likhohlano. Haeba u fumana hore ho eketsa liketsahalo ho nka nako e telele ho sebetsana , fokotsa palo ena.
+Conflict checking months: Likhoeli tsa ho hlahloba likhohlano
+conflict-check-override-help: E lumella basebelisi ho phahamisa likhohlano tsa ketsahalo le ho hlophisa liketsahalo tse peli kapa ho feta ka nako e le 'ngoe.
+Allow users to override conflicts: Lumella basebelisi ho hatella likhohlano
+limit-appts-help: E lumella motsamaisi oa sistimi ho beha moeli o pharalletseng tsamaisong ea palo ea likopano tseo mosebelisi a le mong a ka bang le tsona ka letsatsi lefe kapa lefe.
+Limit number of timed events per day: Fokotsa palo ea liketsahalo tse behiloeng ka letsatsi ka letsatsi
+limit-appts-number-help: E totobatsa palo e kahodimodimo ea liketsahalo tse behiloeng ka nako eo mosebelisi a ka bang le eona ka letsatsi le le leng.
+Maximum timed events per day: Liketsahalo tse behiloeng ka bongata ka letsatsi
+crossday-help: Haeba e lumelletsoe, liketsahalo tse nkang matsatsi li tla bonts'oa ka matsatsi a arohaneng
+Disable Cross-Day Events: Thibela Liketsahalo tsa Letsatsi le Letsatsi
+disable-location-field-help: Ho khetha "E" ho tla tlosa tšimo ea "Sebaka" maqepheng a tlhahisoleseling ea ketsahalo
+Disable Location field: Thibela sebaka sa Sebaka
+disable-url-field-help: Ho khetha "Ee" ho tla tlosa tšimo ea "URL" maqepheng a tlhahiso-leseling ea ketsahalo
+Disable URL field: Thibela tšimo ea URL
+disable-priority-field-help: Ho khetha "Ee" ho tla tlosa tšimo ea "Pele" ho maqephe a tlhahisoleseling ea ketsahalo, ho fana ka sebopeho se bonolo bakeng sa li-novices.
+Disable Priority field: Thibela tšimo ea lintho tse tlang pele pele
+disable-access-field-help: Ho khetha "E" ho tla tlosa tšimo ea "Phihlelo" maqepheng a tlhahiso-leseling ea ketsahalo, ho fana ka sebopeho se bonolo bakeng sa li-novices.
+Disable Access field: Thibela tšimo ea phihlello
+disable-participants-field-help: Ho khetha "E" ho tla tlosa tšimo ea "Barupeluoa" maqepheng a tlhahiso-leseling ea ketsahalo, ho thibela basebelisi ho eketsa basebelisi ba bang liketsahalong tsa bona. Haeba u nolofalletsa khetho ena, u kanna ua batla ho tima tšimo ea "lumella ho shebella khalendara tsa mosebelisi e mong" hape.
+Disable Participants field: Thibela karolo ea Barupeluoa
+disable-repeating-field-help: Ho khetha "Ee" ho tla tlosa tšimo ea "Ho pheta" ha o eketsa liketsahalo. Sena se tla fana ka sebopeho se bonolo bakeng sa li-novices.
+Disable Repeating field: Thibela tšimo e pheta-phetoang
+allow-html-description-help: Haeba e nolofalitsoe, basebelisi ba ka kenya HTML sebakeng sa tlhaloso ea ketsahalo. Haeba e sa lumelloe, li-tag tsa HTML li tla phonyoha hore li bonahale li hlakile. Tlhokomeliso: Ho nolofalletsa karolo ena ho tla lumella basebelisi ho supa litšoantšo liwebosaeteng tse ling.
+Allow HTML in Description: Lumella HTML ka Tlhaloso
+Popups: Popup
+disable-popups-help: Thibela li-popup ho tsoa ponong ea khalendara
+Disable Pop-Ups: Thibela li-Pop-Up
+popup-includes-siteextras-help: Haeba e lumelletsoe, lumella likarolo tsa mekete ea moetlo ho seta file ea site_extras.php e tla hlahisoa ho li-popups tsa ketsahalo.
+Display Site Extras in popup: Bontša Tse ling tsa Seteishene ka popup
+popup-includes-participants-help: Haeba e lumelletsoe, bankakarolo ba bonts'oa liketsahalong tse ikhethileng.
+Display Participants in popup: Hlahisa Barupeluoa ho popup
+Miscellaneous: Fapakaneng
+remember-last-login-help: Ha e nolofalitsoe, ho kena ha mosebelisi ho tla tlatsoa bakeng sa bona leqepheng la ho kena (empa eseng phasewete), 'me likhetho tsa mosebelisi li tla laeloa (ho kenyeletsoa mebala eo ba e ratang le khetho ea puo).
+Remember last login: Hopola ho kena ha ho qetela
+summary_length-help: Bolelele bo boholo ba Tlhaloso e Khuts'oane ho chebo ea khalendara
+Brief Description Length: Tlhaloso e Khutšoanyane Bolelele
+user_sort-help: E khetholla mofuta oa tatellano bakeng sa manane a mosebelisi, ao e seng a mosebelisi
+User Sort Order: Tlhophiso ea Basebelisi
+Lastname, Firstname: Fane, Fane
+Firstname, Lastname: Lebitso, fane
+allow-public-access-help: Ha e nolofalitsoe, khalendara e ka sebelisoa e le khalendara ea sechaba e balang feela e sa hlokeng hore basebelisi ba kene.
+Allow public access: Lumella sechaba ho fihlella
+public-access-default-visible: Liketsahalo tse tsoang khalendareng ea sechaba li tla hlaha ka boiketsetso khalendareng tsa basebelisi bohle
+Public access visible by default: Phihlello ea sechaba e bonahala ka boikhethelo
+public-access-default-selected: Ha o eketsa ketsahalo e ncha, mosebelisi oa sechaba o tla khethoa ka mokhoa o ikhethileng e le morupeluoa.
+Public access is default participant: Phihlello ea sechaba ke bankakarolo ba kamehla
+public-access-view-others-help: Ha o fihlella sistimi ka phihlello ea sechaba, e totobatsa hore na mosebelisi a ka bona khalendara ea mosebelisi e mong oa khalendara.
+Public access can view other users: Phihlello ea sechaba e ka sheba basebelisi ba bang
+public-access-can-add-help: Ha e nolofalitsoe, basebelisi ba fihlelang sistimi ka Phihlello ea Sechaba ba tla khona ho eketsa liketsahalo tse ncha, empa ba ke ke ba hlaha khalendareng ho fihlela motsamaisi a amohela ketsahalo e ncha.
+Public access can add events: Phihlello ea sechaba e ka eketsa liketsahalo
+public-access-add-requires-approval-help: E bolela hore na liketsahalo tse kenyellelitsoeng ka akhaonto ea phihlello ea sechaba li hloka tumello pele li bonts'oa.
+Public access new events require approval: Liketsahalo tse ncha tsa phihlello ea sechaba li hloka tumello
+public-access-sees-participants-help: Haeba e lumelletsoe, basebelisi ba fihlelang khalendara ho tsoa ak'haonteng ea sechaba ba tla khona ho bona bankakarolo ba ketsahalo haeba ba sheba lintlha tsa ketsahalo.
+Public access can view participants: Phihlello ea sechaba e ka sheba bankakarolo
+public-access-override-help: E lumella mabitso a liketsahalo le litlhaloso ho patoa khalendareng ea sechaba
+Override event name/description for public access: Ngola lebitso / tlhaloso ea ketsahalo bakeng sa phihlello ea sechaba
+public-access-override-text-help: Sengoloa se tla bonts'oa haeba khetho e kaholimo e lumelloa. Haeba e sa fumanehe, e tla fetoleloa.
+Text to display to public access: Mongolo o hlahisoang ho fihlella sechaba
+public-access-captcha-help: Haeba e lumelletsoe, liketsahalo tse ncha tse kenyellelitsoeng ke Sechaba li hloka ho fetisa netefatso ea CAPTCHA.
+Require CAPTCHA validation for public access new events: E hloka netefatso ea CAPTCHA bakeng sa liketsahalo tse ncha tsa phihlello ea sechaba
+uac-enabled-help: E nolofalletsa taolo ea phihlello ea basebelisi
+User Access Control enabled: Taolo ea phihlello ea mosebelisi
+groups-enabled-help: E nolofalletsa tšehetso ea sehlopha, e lumella basebelisi ho khetha basebelisi ka lihlopha.
+Groups enabled: Lihlopha li lumelletsoe
+user-sees-his-group-help: Haeba e nolofalitsoe, basebelisi ba ke ke ba bona basebelisi ba khalendara ba seng bonyane sehlopheng sa bona.
+User sees only his groups: Mosebelisi o bona feela lihlopha tsa hae
+nonuser-enabled-help: Haeba e lumelloa, baokameli ba tla ba le khetho ea ho eketsa lik'halendara tse se nang thuso
+Nonuser enabled: Lik'halendara tse sa sebetseng li nolofalitsoe
+nonuser-list-help: Moo u ka hlahisang khalendara tse sa sebetseng lenaneng la bankakarolo
+Nonuser list: Hlahisa lenaneng la bankakarolo ho
+Upcoming Events: Liketsahalo tse Tlang
+upcoming-events-help: Numella tlang.php
+Enabled: E nolofalitsoe
+upcoming-events-allow-override: Lumella parameter ea mosebelisi bakeng sa ujao.php
+Allow user override: Lumella tšebeliso ea mosebelisi
+upcoming-events-display-caticons: Kenyelletsa litšoantšo tsa mekhahlelo tse tlang.php
+Display category icons: Bontša litšoantšo tsa sehlopha
+upcoming-events-display-layers: Bontša mekhahlelo e tlang.php
+Display layers: Bontša likarolo
+upcoming-events-display-links: Hlahisa lihokela ho ujao.php
+Display links to events: Hlahisa lihokela tsa liketsahalo
+upcoming-events-display-popups: Hlahisa li-popup tsa ketsahalo e tlang.php
+Display event popups: Hlahisa li-popup tsa ketsahalo
+reports-enabled-help: Haeba e lumelletsoe, basebelisi ba tla bona karolo ea "Litlaleho" botlaaseng ba leqephe ka leng mme ba tla lumelloa ho etsa litlaleho tsa moetlo. Ntle le moo, basebelisi ba admin ba ka etsa litlaleho tsa lefats'e tse tla hlaha botlaaseng ba maqephe a basebelisi bohle.
+Reports enabled: Litlaleho li nolofalitsoe
+subscriptions-enabled-help: E totobatsa haeba basebelisi ba hole ba ka ingolisa ho khalendara ea mosebelisi oa WebCalendar, e ba lumellang ho bona liketsahalo tsa mosebelisi oa WebCalendar ts'ebelisong ea bona e lumellang iCal (joalo ka iCal ea Apple kapa Mozilla Calendar).
+Allow remote subscriptions: Lumella lipeeletso tse hole
+remotes-enabled-help: E lumella basebelisi ho kenya lifaele tsa ics tse hole ba sebelisa URL
+Allow remote calendars: Lumella khalendara tse hole
+rss-enabled-help: E totobatsa hore na khalendara ea mosebelisi e ka fumanoa ho tsoa ho RSS feed.
+Enable RSS feed: Numella RSS feed
+categories-enabled-help: E thusa ts'ehetso bakeng sa mekhahlelo ea ketsahalo.
+Categories enabled: Likarolo li nolofalitsoe
+icon_upload-enabled-help: Haeba e lumelloa, basebelisi ba ka kenya li-icon tsa sehlopha
+Category Icon Upload enabled: Ho beha Icon ea Sehlopha ho nolofalitsoe
+(Requires XXX folder to exist.): (E hloka fensetere ea XXX hore e be teng.)
+display-tasks-help: Bontša fensetere e nyane ea mosebetsi ka khalendara ea khoeli le letsatsi
+Display small task list: Hlahisa lenane le lenyenyane la mesebetsi
+display-tasks-in-grid-help: Bontša mesebetsi ka khalendara hammoho le liketsahalo
+Display tasks in Calendars: Hlahisa mesebetsi khalendareng
+allow-external-users-help: E totobatsa hore na mosebelisi eo e seng oa khalendara a ka eketsoa ketsahalong. Sena se lumella basebelisi bao e seng khalendara hore ba thathamisoe e le bankakarolo ba ketsahalo.
+Allow external users: Lumella basebelisi ba kantle
+external-can-receive-notification-help: Ha basebelisi ba kantle ba lumelloa le tšebeliso ea lengolo-tsoibila e lumelloa, basebelisi ba kantle ba ka fumana tsebiso ea lengolo tsoibila ha ketsahalo e eketsoa, ​​e nchafatsoa kapa e hlakoloa (haeba aterese ea lengolo-tsoibila ea mosebelisi ea kantle e fanoe)
+External users can receive email notifications: Basebelisi ba kantle ba ka fumana tsebiso ka lengolo-tsoibila
+external-can-receive-reminder-help: Ha basebelisi ba kantle ba lumelloa le tšebeliso ea lengolo-tsoibila e lumelloa, basebelisi ba kantle ba ka fumana likhopotso tsa lengolo-tsoibila (haeba aterese ea lengolo-tsoibila ea mosebelisi ea kantle e fanoe).
+External users can receive email reminders: Basebelisi ba kantle ba ka fumana likhopotso tsa lengolo tsoibila
+allow-self-registration-help: Lumella basebelisi ba bacha ho ingolisa
+Allow self-registration: Lumella ho ingolisa
+use-blacklist-help: Fokotsa ho fihlella mesebetsi ea WebCalendar ho ipapisitsoe le aterese ea IP
+Restrict self-registration to blacklist: Thibela ho ingolisa ho lenaneng le letšo
+allow-self-registration-full-help: Lumella basebelisi ba bacha ho phethela ts'ebetso ea bona ea ho ingolisa inthaneteng
+Use self-registration email notifications: Hlahisa li-password mme o li romelle ho basebelisi ba bacha
+allow-attachment-help: Lumella basebelisi ho kenya li-attachments tsa faele liketsahalong.
+Allow file attachments to events: Lumella li-attachments tsa faele liketsahalong
+Admin and owner can always add attachments if enabled.: Tsamaiso le mong'a ntlo ba ka lula ba kenya likhakanyo ha li lumelloa.
+allow-comments-help: Lumella basebelisi ho eketsa litlhaloso liketsahalong.
+Allow comments to events: Lumella maikutlo ho liketsahalo
+Admin and owner can always add comments if enabled.: Tsamaiso le mong'a ntlo ba ka lula ba kenya litlhaloso haeba li lumelloa.
+email-enabled-help: Bulela kapa tima melaetsa eohle ea lengolo-tsoibila bakeng sa tsebiso le likhopotso. Behela "che", haeba seva ea hau e sa seta hantle hore e romelle mangolo.
+Email enabled: Imeile e nolofalitsoe
+email-default-sender: E totobatsa aterese ea lengolo tsoibila eo o ka e hlalosang e le moromelli ha o romella likhopotso.
+Default sender address: Aterese ea kamehla ea moromelli
+email-mailer: Khetha mofuta oa lengolo-tsoibila (SMTP, mangolo a PHP, sendmail)
+Email Mailer: Romella Imeile
+email-smtp-host: Hostname (s) ea li-server (li) SMTP tse arohantsoeng ke likomisi
+SMTP Host name(s): Mabitso a mabitso a SMTP
+email-smtp-port: Nomoro ea Port ea SMTP (hangata 25)
+SMTP Port Number: Nomoro ea Port Port ea SMTP
+email-smtp-auth: Sebelisa Bopaki ba SMTP
+SMTP Authentication: Bopaki ba SMTP
+email-smtp-username: Lebitso la mosebelisi la SMTP haeba u sebelisa Netefatso
+SMTP Username: Lebitso la mosebedisi la SMTP
+email-smtp-password: SMTP Password haeba u sebelisa Bopaki
+SMTP Password: Netefete ea SMTP
+Default user settings: Litlhophiso tsa mosebelisi tsa kamehla
+email-format: Hlalosa khetho ea HTML kapa melaetsa e hlakileng
+Email format preference: Khetho ea sebopeho sa lengolo-tsoibila
+HTML: =
+Plain Text: Mongolo o hlakileng
+email-include-ics: Kenyelletsa faele ea iCalendar ICS ho romella molaetsa ka lengolo-tsoibila
+Include iCalendar attachments: Kenyelletsa li-attachments tsa iCalendar
+email-event-reminders-help: E totobatsa hore na romella likhopotso tsa ketsahalo kapa che.
+Event reminders: Likhopotso tsa ketsahalo
+email-event-added: E totobatsa hore na o romella litsebiso tsa lengolo-tsoibila ha ketsahalo e eketsoa khalendareng ea hau.
+Events added to my calendar: Liketsahalo li kentsoe khalendareng ea ka
+email-event-updated: E totobatsa hore na o tla romela litsebiso tsa lengolo-tsoibila ha ketsahalo e nchafatsoa khalendareng ea hau.
+Events updated on my calendar: Liketsahalo li nchafalitsoe khalendareng ea ka
+email-event-deleted: E totobatsa hore na o tla romela litsebiso tsa lengolo-tsoibila ha ketsahalo e tlosoa khalendareng ea hau.
+Events removed from my calendar: Liketsahalo li tlositsoe khalendareng ea ka
+email-event-rejected: E totobatsa hore na o tla romela litsebiso tsa lengolo-tsoibila ha motho ea kenang sekolo a hana ketsahalo e khalendareng ea hau.
+Event rejected by participant: Ketsahalo e lahliloe ke monkakarolo
+email-event-create: E totobatsa hore na moetsi oa litlatsetso o tla fumana lengolo tsoibila
+Event that I create: Ketsahalo eo ke e bōpang
+Color options: Khetho ea mebala
+Allow user to customize colors: Lumella mosebedisi ho fetola mebala
+gradient-colors: Haeba ho sebelisoa mebala e hlophisitsoeng hantle. Sena se ka ama ts'ebetso haholo.
+Enable gradient images for background colors: Numella litšoantšo tse hlakileng bakeng sa mebala e ka morao
+Not available: Ha e fumanehe
+Background Image options: Likhetho tsa setšoantšo sa morao
+bgimage-help: URL ea setšoantšo se ka morao. E kanna ea ba khokahano e amanang.
+Background Image: Setšoantšo se ka morao
+bgrepeat-help: Taolo e pheta boits'oaro ba sets'oants'o sa semelo.
+Background Repeat: Pheta ka morao
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Bathusi
+Preferences: Likhetho
+Control Panel: Lekhotla la Taolo
+Users: Basebedisi
+Account: Ak'haonte
+Categories: Lihlopha
+Views: Maikutlo
+Layers: Lera
+Reports: Litlaleho
+Delete Events: Tlosa Liketsahalo
+Activity Log: Ketsahalo ea Log
+System Log: Sesebelisoa sa Log
+Security Audit: Tlhahlobo ea Ts'ireletso
+Public Preferences: Likhetho tsa sechaba
+Unapproved Public Events: Liketsahalo tsa Sechaba tse sa amoheloang
+Administrative Tools: Lisebelisoa tsa Tsamaiso
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Lebitso le kopitsitsoeng: "XXX".
+Username XXX already exists.: Lebitso la mosebedisi "XXX" le se ntse le le teng.
+Email address XXX already exists.: Aterese ea lengolo-tsoibila "XXX" e se ntse e le teng.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Maikutlo a Eketsehileng (ka boikhethelo)
+Approve and Send: Amohela le ho Romela
+Approve and Exit: Amohela 'me u tsoe
+(Your comments will be emailed to the event creator.): (Maikutlo a hau a tla romelloa ka imeile ho moetsi oa ketsahalo.)
+Hello, XXX.: Lumela, XXX.
+XXX has approved an appointment and added comments.: Kopano e amohetsoe mme litlatsetso li kentsoe ke XXX.
+Subject XXX: Sehlooho: "XXX".
+Description XXX: Tlhaloso: "XXX".
+Date XXX: Letsatsi: XXX
+Time XXX: Nako: XXX
+Comments XXX: Maikutlo: XXX
+Approved w/Comments by XXX.: E ananetsoe w / Maikutlo ka: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Mokhoa oa tsamaiso
+Your assistants: Bathusi ba hau
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Phoso e sa tsejoeng.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Phoso ea Lenaneo: Ha ho na XXX e boletsoeng!
+user: mosebelisi
+year: selemo
+month: khoeli
+day: letsatsi
+
+########################################
+# Page: category.php
+#
+Category Icon: Setšoantšo sa Sehlopha
+Global: Lefatshe ka bophara
+The permissions for the icons directory are set to read-only: Litumello tsa sesebelisoa sa litšoantšo li hlophiselitsoe ho bala feela.
+Category Name: Lebitso la Sehlopha:
+Color: Mala
+Remove Icon: Tlosa Letšoao:
+Add Icon to Category: Kenya Letšoao ho Sehlopha
+Upload: Kenya
+GIF or PNG 6kb max: GIF kapa PNG 6kb max
+Search for existing icons: Batla litšoantšo tse teng
+Add: Eketsa
+Delete: Tlosa
+Are you sure you want to delete this entry?: U na le bonnete ba hore u batla ho hlakola molaetsa ona?
+Make New Category: Etsa Sehlopha se secha
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Lebitso la sehlopha lea hlokahala
+File size exceeds maximum.: Saese ya faele e feta boholo bo hodimo
+File is not a GIF or PNG image: Faele ha se setšoantšo sa GIF kapa PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: LITLHAKU TSE FUMANEHANG
+ENTRY CATEGORIES: LIEKETSO LITLHAKI
+Remove: Tlosa
+Global Category: Sehlopha sa Lefatše
+Cancel: Hlakola
+
+########################################
+# Page: colors.php
+#
+Add Custom: Eketsa Tloaelo
+Basic Colors: Mebala ea Motheo
+Current Color: Mobala oa Hajoale
+Custom Colors: Mebala ea Tloaelo
+Old Color: Mobala oa Khale
+
+########################################
+# Page: combo.php
+#
+Select None: Khetha Ha ho letho
+Agenda: Lenaneo
+Add Task: Kenya Mosebetsi
+Description: Tlhaloso
+Date: Letsatsi
+Time: Nako
+Priority: Ntho ea pele
+Access: Phihlello
+Created by: E entsoe ke
+Updated: Ntjhafaditswe
+Participants: Barupeluoa
+Attachments: Lihokelo
+Comments: Maikutlo
+Brief Description: Tlhaloso e Khutšoanyane
+Full Description: Tlhaloso e felletseng
+Category: Sehlopha
+Add event detail: Kenya lintlha tsa ketsahalo
+Start Date: Letsatsi la qalo
+Due Date: Letsatsi la tebello
+Add task detail: Kenya lintlha tsa mosebetsi
+All: Kaofela
+Error: Phoso
+no response from server: ha ho karabo ho tsoa ho seva
+JSON error: Phoso ea JSON
+High: Holimo
+Medium: Mahareng
+Low: Tlaase
+Today: Kajeno
+Add Entry: Kenya Kena
+Unnamed Event: Ketsahalo e sa boleloang ka lebitso
+Unnamed Task: Mosebetsi o sa boleloang ka lebitso
+Refresh: Khatholla
+Click to add entry: Tobetsa ho eketsa ho kena
+Name: Lebitso
+pm: thapama
+am: ke
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX e hlakotse kopano.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Id ea blob e fosahetseng
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Kenya maikutlo
+Add Attachment: Kenya sehokelo
+Subject: Sehlooho
+Comment: Fana ka maikutlo
+Upload file: Kenya file
+
+########################################
+# Page: docdel.php
+#
+Removed: E tlositsoe
+
+########################################
+# Page: edit_entry.php
+#
+days: matsatsi
+hours: lihora
+minutes: metsotso
+You are not authorized to edit this task.: Ha ua fuoa matla a ho fetola mosebetsi ona.
+is in a different timezone than you are. Currently: e sebakeng sa nako e fapaneng ho u feta. Hajoale
+hour ahead of you: hora e kapele ho uena
+hour behind you: hora kamora hao
+hours ahead of you: lihora tse ka pele ho uena
+hours behind you: lihora tse ngata ka mor'a hao
+XXX is in a different timezone (ahead): (XXX e sebakeng sa nako e fapaneng; YYY e kapele ho uena.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX e sebakeng sa nako e fapaneng; YYY e ka mor'a hao.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Nako e kentsoeng mona e ipapisitse le Timezone ea hau.
+Edit Entry: Fetola ho kena
+Details: Lintlha
+Repeat: Pheta
+Reminders: Likhopotso
+brief-description-help: Sena se lokela ho fana ka tlhaloso e khuts'oane (litlhaku tse ka bang 20) tsa ketsahalo eo. Sena se tla emela ketsahalo ha u sheba khalendara.
+full-description-help: Sena se lokela ho tlatsa lintlha tsa ketsahalo. Tlhahisoleseling ena e ka bonoa ha mosebelisi a sheba ketsahalo eo.
+access-help: E totobatsa boemo ba phihlello ba ketsahalo. <ul> <li> Sechaba: Motho e mong le e mong a ka bona lintlha kaofela tsa ketsahalo eo.</li> <li> Lekunutu: Ba bang ba ka bona hore u na le se u ka kenyang letsatsi leo le nako eo, empa eseng lintlha tsa hore na ke eng.</li></ul>
+priority-help: E totobatsa tse tlang pele ketsahalong eo. Liketsahalo tse tlang pele haholo li tla bontšoa ka mongolo o motenya.
+category-help: E totobatsa sehlopha sa ketsahalo.
+completed-help: Mosebetsi oa letsatsi o phethiloe. E nolofalitsoe feela ha liperesente tsohle tsa bankakarolo li lekana 100%.
+Date Completed: Letsatsi le phethiloeng
+percent-help: Phesente ea ho phethela mosebetsi bakeng sa mosebelisi
+Percent Complete: Liphesente li Felile
+All Percentages: Liphesente tsohle
+location-help: Sebaka sa ketsahalo
+Location: Sebaka
+url-help: URL ea Ketsahalo
+URL: =
+date-help: E totobatsa letsatsi la ketsahalo.
+Untimed event: Ketsahalo e sa tsejoeng
+Timed event: Ketsahalo e behiloeng ka nako
+All day event: Ketsahalo ea letsatsi lohle
+Timezone Offset: Koala ea Nako
+time-help: E totobatsa nako ea ketsahalo. <ul> <li> "Ketsahalo e behiloeng nako" (bakeng sa ketsahalo e hlophiselitsoeng nako e itseng ka letsatsi leo)</li> <li> "Ketsahalo e sa tsejoeng" (bakeng sa ketsahalo ena ha e na nako (joalo ka letsatsi la phomolo )</li> <li> "Ketsahalo ea letsatsi lohle" (bakeng sa ketsahalo e nkang letsatsi lohle (joalo ka ho tsoa ka ofising)</li></ul>
+duration-help: E totobatsa bolelele ba nako (ka lihora; metsotso) ea ketsahalo. <em>Tšimo ena e ka sala e se na letho.</em>
+end-time-help: E totobatsa nako eo ketsahalo e lebelletsoeng ho fela ka eona.
+Start Time: Nako ea Qalo
+Due Time: Nako e Loketseng
+Site Extras: Tse ling tsa sebaka
+avail_participants-help: E thathamisa bankakarolo ba fumanehang ba mofuta ona.
+Available: Fumaneha
+Find Name: Fumana Lebitso
+Resources: Lisebelisoa
+participants-help: Thathamisa litho tsa karolo ena.
+Selected: E khethiloe
+Availability: Ho fumaneha
+external-participants-help: E totobatsa lenane la bankakarolo bakeng sa ketsahalo eo e seng basebelisi ba khalendara. Basebelisi ba lokela ho thathamisoa moleng o le mong mme ba ka kenyelletsa aterese ea lengolo-tsoibila. Haeba aterese ea lengolo-tsoibila e boletsoe, mosebelisi o tšoaneleha ho amohela tsebiso le likhopotso.
+External Participants: Barupeluoa ba kantle
+repeat-type-help: Khetha hore na ketsahalo e lokela ho pheta makhetlo a makae.
+Daily: Letsatsi le letsatsi
+Weekly: Beke le beke
+Monthly: Khoeli le khoeli
+by day: motshehare
+by date: ka letsatsi
+by position: ka boemo
+Monthly (by day): Khoeli le khoeli (ka letsatsi)
+Monthly (by date): Khoeli le khoeli (ka letsatsi)
+Monthly (by position): Khoeli le khoeli (ka boemo)
+Yearly: Selemo le selemo
+Manual: Buka ea litaelo
+Expert Mode: Mokhoa oa Setsebi
+repeat-end-date-help: E totobatsa letsatsi leo ketsahalo e lokelang ho phetoa ho fihlela.
+Ending: Qetellong
+Forever: Ka ho sa feleng
+Use end date: Sebelisa letsatsi la ho qetela
+Number of times: Palo ea makhetlo
+repeat-frequency-help: E bontša hore na ketsahalo e lokela ho pheta hangata hakae.
+Frequency: Maqhubu
+Weekdays Only: Matsatsing a beke feela
+Week Start: Qalo ea beke
+repeat-bydayextended-help: E lumella khetho ea letsatsi ho latela letsatsi la beke.
+ByDay: =
+repeat-month-help: E bolela hore na ketsahalo e lokela ho phetoa ka likhoeli life.
+ByMonth: Khoeling
+repeat-bysetpos-help: E lumella khetho ea letsatsi ho latela boemo ba khoeli.
+BySetPos: KaSetPos
+repeat-bymonthdayextended-help: E lumella khetho ea letsatsi ho latela letsatsi.
+ByMonthDay: KaMonthDay
+repeat-byweekno-help: E lumella mosebelisi ho hlakisa lenane la libeke ho pheta ketsahalo (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: KaBekengNo
+repeat-byyearday-help: E lumella mosebelisi ho hlakisa lenane la matsatsi a selemo ho pheta ketsahalo (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Matsatsi a mang ao ketsahalo ena e lokelang ho etsahala kapa e sa lokelang ho etsahala ka ona.
+Exclusions: Tse sa kenyellelitsoeng
+Inclusions: Kenyelletso
+Add Exception: Kenya mokhelo
+Add Inclusion: Eketsa Kenyelletso
+Delete Selected: Hlakola tse Khethiloeng
+Send Reminder: Romella Khopotso
+When: Neng
+Use Date/Time: Sebelisa Letsatsi / Nako
+Use Offset: Sebelisa Offset
+Before: Pele
+After: Kamora
+Start: Qala
+End/Due: End / Ka lebaka la
+Times: Linako
+Every: E mong le e mong
+CAPTCHA Warning: Tlhokomeliso:  Ha e khone ho sebelisa CAPTCHA ntle le katoloso ea GD ea PHP!<br>
+Delete entry: Hlakola ho kena
+You are not authorized to edit this entry.: Ha o na matla a ho fetola se ngotsoeng.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX e entse kopano e ncha.
+XXX has updated an appointment.: XXX e ntlafalitse kopano.
+Security violation!: Tlolo ea molao!
+You must enter the anti-spam text on the previous page.: U tlameha ho kenya mongolo o khahlanong le spam leqepheng le fetileng.
+The following conflicts with the suggested time: Likhohlano tse latelang le nako e boletsoeng
+User removed from participants list.: Mosebedisi o tlositsoe lenaneng la bankakarolo.
+Please look on XXX to accept or reject this appointment.: Ka kopo sheba ho XXX ho amohela kapa ho hana tumellano ena.
+Please look on XXX to view this appointment.: Ka kopo sheba ho XXX ho bona kopano ena.
+Scheduling Conflict: Ho hlophisa Khohlano
+Your suggested time of: Nako ea hau ea tlhahiso ea
+conflicts with the following existing calendar entries: e thulana le dikenyo tsa khalendara tse latelang
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX ha e so beoe ka "config.php".
+word characters only: (e ka ba le litlhaku tsa mantsoe feela; [a-zA-Z_0-9])
+Add User: Eketsa mosebelisi
+Edit User: Edita mosebelisi
+Calendar ID: K'halendara ID
+First Name: Lebitso la pele
+Last Name: Fane
+Is public calendar: Ke khalendara ea sechaba
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Phoso ea database
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Kenya Khalendara e hole
+Edit Remote Calendar: Fetola Khalendara ea Remote
+Create Layer: Theha lera
+Reload: Khutlisetsa hape
+Required to View Remote Calendar: E hlokahala ho bona Khalendara e hole
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Kenya Liphetho
+Events successfully imported: Liketsahalo li tlisitsoe ka katleho
+Create a new layer to view this calendar.: Theha lera le lecha ho bona khalendara ena.
+Errors: Liphoso
+There was an error parsing the import file or no events were returned.: Ho bile le phoso ea ho hlalohanya faele ea ho kenya kapa ha ho liketsahalo tse khutlisitsoeng.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Hosane
+Yesterday: Maobane
+Day before yesterday: Letsatsi pele ho maobane
+Next week: Bekeng e tlang
+This week: Bekeng ena
+Last week: Bekeng e fetileng
+Week before last: Beke pele ho ho qetela
+Next week and week after: Bekeng e tlang le bekeng e tlang
+This week and next week: Bekeng ena le bekeng e tlang
+Last week and this week: Bekeng e fetileng le bekeng ena
+Last two weeks: Libeke tse peli tse fetileng
+Next month: Khoeli e tlang
+This month: Khoeling ena
+Last month: Khoeling e fetileng
+Month before last: Khoeli pele ho ho qetela
+Next year: Selemong se tlang
+This year: Selemong sena
+Last year: Selemong se fetileng
+Year before last: Selemo pele ho ho qetela
+Next 14 days: Matsatsi a latelang a 14
+Next 30 days: Matsatsi a 30 a latelang
+Next 60 days: Matsatsi a latelang a 60
+Next 90 days: Matsatsi a latelang a 90
+Next 180 days: Matsatsi a latelang a 180
+Next 365 days: Matsatsi a latelang a 365
+Invalid report id XXX.: ID ea tlaleho e fosahetseng: "XXX".
+Unnamed Report: Tlaleho e sa boleloang ka lebitso
+Add Report: Kenya Tlaleho
+Edit Report: Fetola Tlaleho
+Report name: Tlaleha lebitso
+User: Mosebelisi
+Current User: Mosebelisi oa Hajoale
+Include link in menu: Kenyelletsa sehokela ho menu
+Include standard header/trailer: Kenyeletsa hlooho / terene e tloaelehileng
+Include previous/next links: Kenyelletsa lihokela tse fetileng / tse latelang
+Include empty dates: Kenyelletsa matsatsi a se nang letho
+Date range: Meeli ea matsatsi
+Template variables: Liphetoho tsa template
+Page template: Setšoantšo sa leqephe
+Day template: Setšoantšo sa letsatsi
+Event template: Template ea ketsahalo
+Are you sure you want to delete this report?: U na le bonnete ba hore u batla ho hlakola tlaleho ee?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Ha ho na id e joalo ea tlaleho: "XXX".
+Variable XXX not found.: Variable XXX ha e fumanehe.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Fetola Sehlooho sa Tloaelo
+Edit Custom Script/Stylesheet: Fetola Custom Script / Stylesheet
+Edit Custom Trailer: Fetola Custom Trailer
+
+########################################
+# Page: edit_user.php
+#
+Username: Lebitso la mosebedisi
+E-mail address: Aterese ea imeile
+Password: Phasewete
+again: hape
+Disabled for demo: E holofetse moemo
+Are you sure you want to delete this user?: U na le bonnete ba hore u batla ho hlakola mosebelisi enoa?
+Change Password: Fetola senotlolo
+New Password: Phasewete e Ntjha
+Set Password: Seta phasewete
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Ho hlakola basebelisi ha ho tšehetsoe.
+The passwords were not identical.: Liphasewete li ne li sa tšoane.
+You have not entered a password.: Ha o so kenye phasewete.
+Username cannot be blank.: Lebitso la mosebedisi le ke ke la koaloa.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Ha ea lumelloa
+
+########################################
+# Page: export.php
+#
+Export: Romella kantle ho naha
+Export format: Sebopeho sa kantle ho naha
+Include all layers: Kenyelletsa likarolo tsohle
+Include deleted entries: Kenyelletsa litlhakiso tse tlositsoeng
+Export all dates: Romella matsatsi ohle
+Start date: Letsatsi la qalo
+End date: Letsatsi la ho qetela
+Modified since: E fetotsoe esale
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: fomate ea kantle ho naha ha e hlalosoa kapa e fosahetse.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Ha ho mosebelisi ea boletsoeng.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Kenya Sehlopha se secha
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Sehlopha se sa boleloang ka lebitso
+Add Group: Eketsa Sehlopha
+Edit Group: Fetola Sehlopha
+Group name: Lebitso la sehlopha
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: O tlameha ho hlakisa lebitso la sehlopha
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Khalendara ea ho ikhatholla ka bo eona
+auto-refresh-help: Ha e nolofalitsoe, chebo ea letsatsi, chebo ea beke, pono ea khoeli, le lethathamo la maqephe a sa amoheloang kaofela li tla ikhatholla nako le nako.
+Auto-refresh time: Auto-khatholla nako
+auto-refresh-time-help: Haeba Auto-refresh e lumelloa, sena se hlakisa nako lipakeng tsa khathollo ka 'ngoe.
+Display days with events in bold in year view: Bontša matsatsi a nang le liketsahalo tse ngotsoeng ka mongolo o motenya ka pono ea selemo
+Display weekends in week view: Bontša mafelo-beke ka pono ea beke
+Time interval: Nako ea nako
+time-interval-help: E totobatsa hore na li-block tsa nako ponong ea beke le chebo ea letsatsi li tla ba telele hakae.
+Nonuser: Lialmanaka tse sa sebetseng
+user-customize-color: E hlalosa hore na basebelisi ba lumelloa ho fetola leano la bona la mebala.
+enable-gradient-help: Sebelisa mebala e hlophisitsoeng hantle bakeng sa limelo tsa lisele.
+Manually entering color values: Ho kenya letsoho boleng ba mmala
+colors-help: Mebala eohle e lokela ho hlalosoa ka sebopeho sa "#RRGGBB" hexadecimal moo "RR" e leng boleng ba hex bakeng sa bofubelu, "GG" ke boleng ba hex bakeng sa botala, mme "BB" ke boleng ba hex bakeng sa putsoa.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Tlaleha Bug
+Please include all the information below when reporting a bug.: Ka kopo kenyelletsa tlhaiso-leseling e ka tlase ha u tlaleha bothata.
+Also, please use English rather than XXX.: Hape, ka kopo sebelisa  Senyesemane  ho fapana le XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Litokomane tsa WebCalendar
+Currently in English only.: Hajoale ka Senyesemane feela.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Ho eketsa / ho hlophisa likenyelletso tsa khalendara
+Repeat Type: Pheta Mofuta
+For More Information...: Bakeng sa tlhaiso-leseling e batsi ...
+Repeat End Date: Pheta Letsatsi la ho Qetela
+Repeat Day: Pheta Letsatsi
+repeat-day-help: E bolela hore na ketsahalo e lokela ho phetoa ka matsatsi afe a beke.
+
+########################################
+# Page: help_import.php
+#
+Import: Kenya
+Palm Desktop: Desktop ea Palm
+allow you to import entries from the Palm...: Foromo ena e tla u lumella ho kenya lintlha tse tsoang ho Palm Desktop Datebook. E lokela ho fumaneha bukeng ea hau ea Palm bukeng ea datebook / datebook.dat bukaneng e ka tlase e ngotsoeng ka lebitso la hau la mosebelisi.
+The following entries will not be imported: Likenyelletso tse latelang li ke ke tsa tlisoa kantle ho naha:
+Entries older than the current date: Menyako ea khale ho feta letsatsi la hajoale
+Entries created in the Palm Desktop...: Menyako e entsoe ho Palm Desktop e neng e se HotSync'd
+Anything imported from Palm...: Ntho efe kapa efe e tlisitsoeng kantle ho Palm e tla ngoloa nakong ea keno e latelang (ntle le haeba letsatsi la ketsahalo le fetile). Ka hona, lintlafatso li lokela ho etsoa ho Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Foromo ena e tla kenya liketsahalo tsa vCalendar (.vcs) 1.0.
+The following formats have been tested: Mefuta e latelang e lekiloe:
+This form will import iCalendar (.ics) events.: Foromo ena e tla kenya liketsahalo tsa iCalendar (.ics).
+Enabling: E nolofalletsa
+Overwrite Prior Import: Ngola pele ho Import
+will cause events imported previously...: e tla etsa hore liketsahalo tse kenngoeng pele pejana, tse sebelisitseng UID e le ketsahalo e tsoang faeleng e ncha ea ho kenya, li tšoauoe li hlakotsoe. Sena se lokela ho lumella faele ea iCalendar e ntlafalitsoeng hore e kenngoe ntle le ho etsa likopi.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Index ea Thuso
+About WebCalendar: Mabapi le WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Lilaele li na le thuso bakeng sa ho bonts'a liketsahalo tsa basebelisi ba bang khalendareng ea hau. O ka hlakisa mosebelisi le 'mala liketsahalo tseo li tla hlahisoa ho tsona.
+Add/Edit/Delete: Eketsa / Edita / Phumula
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Ho tobetsa sehokela sa Edita Layers karolong ea admin e ka tlase ho leqephe ho tla u lumella ho eketsa / ho hlophisa / ho hlakola likarolo.
+The text color of the new layer that will be displayed in your calendar.: 'Mala oa lera le lecha o tla hlahisoa khalendareng ea hau.
+Disabling: Ho holofatsa
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Tobetsa konopo ea "Disable Layers" karolong e ka tlase ea leqephe ho tima likarolo.
+Duplicates: Mafahla
+If checked, events that are duplicates of your events will be shown.: Haeba li hlahlojoa, ho tla bontšoa liketsahalo tse tšoanang le tsa hao.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Tobetsa konopo ea Enable Layers karolong ea admin e ka tlase ho leqephe ho bulela likarolo.
+Source: Mohloli
+Specifies the user that you would like to see displayed in your calendar.: E totobatsa mosebelisi eo u ka ratang ho mo bona a bontšitsoe khalendareng ea hau.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Sehlopha se ikhethileng
+default-category-help: E hlakisa mokhahlelo ketsahalo e ncha e lokelang ho ba teng ho.
+When I am the boss: Ha ke le mookameli
+Email me event notification: Nthomelle lengolo-tsoibila la ketsahalo
+email-boss-notifications-help: E totobatsa haeba baokameli ba amohela mangolo-tsoibila e le tsebiso ea ketsahalo.
+I want to approve events: Ke batla ho amohela liketsahalo
+boss-approve-event-help: E bolela hore na mookameli o tla kopuoa ho amohela liketsahalo tse ekelitsoeng ke bathusi.
+Subscribe/Publish: Ingolise / Phatlalatsa
+Allow remote publishing: Lumella khatiso e hole
+allow-remote-publishing-help: E totobatsa haeba moreki oa iCal ea hole a ka phatlalatsa liketsahalo ho WebCalendar
+remote-publishing-url-help: E bonts'a URL eo u ka e sebelisang ts'ebelisong ea moreki ea iCal bakeng sa ho ngolisa le ho phatlalatsa ho khutlela ho WebCalendar.
+allow-remote-subscriptions-help: E totobatsa haeba basebelisi ba hole ba ka ingolisa ho khalendara ea hau, e ba lumella ho bona liketsahalo tsa hau ts'ebelisong e lumelletsoeng ea iCal (joalo ka iCal ea Apple kapa Khalendara ea Mozilla).
+remote-subscriptions-url-help: E bonts'a basebelisi ba hole ba lokela ho e sebelisa ho ingolisa ho khalendara ea hau.
+Enable FreeBusy publishing: Numella khatiso ea FreeBusy
+freebusy-enabled-help: E totobatsa haeba nako e fumanehang ea mosebelisi e ka fumaneha ho sebelisoa standard ea iCal FreeBusy.
+freebusy-url-help: URL ea ho fihlella lenane la mosebelisi la FreeBusy
+rss-feed-url-help: URL ea ho fumana phepelo ea RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: E lumella taolo e ntle ea phihlello ea mosebelisi le litumello. Basebelisi ba ka fana ka tumello ea kamehla le ea motho ka mong haeba a lumelloa ke motsamaisi
+If disabled, this user cannot send you emails.: Haeba a holofetse, mosebelisi enoa a ke ke a u romella mangolo-tsoibila.
+If disabled, this user cannot see you in the participants list.: Haeba a holofetse, mosebelisi enoa a ke ke au bona lenaneng la bankakarolo.
+If enabled, this user cannot view the details of any of your entries.: Haeba e nolofalitsoe, mosebelisi enoa a ke ke a sheba lintlha tsa lintlha tsohle tsa hau.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Ho Hatisa Bokooa (Botsamaisi)
+Publishing Disabled (User): Ho Hatisa Bokooa (Mosebedisi)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Tobetsa ho Khetha
+Current Icons on Server: Litšoantšo tsa Hajoale ho Server
+
+########################################
+# Page: import.php
+#
+import from file: import ho tloha faeleng
+Disabled: E holofalitsoe
+Import format: Fomata ea ho tlisa
+Exclude private records: Se kenyeletse litlaleho tsa lekunutu
+Repeated items are imported separately. Prior imports are not overwritten.: Lintho tse phetoang li tlisoa kantle ho naha ka thoko. Pele ho kena kantle ho naha ha ho ngolisoe.
+
+########################################
+# Page: import_handler.php
+#
+No file: Ha ho faele
+Error deleting palm events from webcalendar.: Phoso ea ho hlakola liketsahalo tsa palema ho tsoa ho almanaka ea webo.
+Events from prior import marked as deleted: Liketsahalo tsa keno ea pele li tšoailoe li hlakotsoe
+Conflicting events: Liketsahalo tse loantšanang
+The import file contained no data.: Faele ea ho tlisa e ne e sena data.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: U na le bonnete ba hore u batla ho hlakola lera lena?
+Delete layer: Tlosa lera
+Edit layer: Fetola lera
+Enable layers: Numella lihlopha
+Layer: Lera
+Layers are currently disabled.: Lekhahla hajoale le holofetse.
+Layers are currently enabled.: Lekhahla ha joale le lumelloa.
+Click to modify layers settings for XXX: Tobetsa mona ho fetola li-setting tsa mokhahlelo oa khalendara ea XXX.
+Disable Layers: Thibela Lisebelisoa
+Add layer: Kenya lera
+Add Layer: Kenya Lera
+Edit Layer: Fetola Lera
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Ha e khone ho nchafatsa khetho
+Invalid entry id.: ID ya ho kena e fosahetseng.
+You cannot create a layer for yourself.: U ke ke ua iketsetsa mokato.
+You can only create one layer for each user.: U ka theha lera le le leng feela bakeng sa mosebelisi ka mong.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Amohela / Netefatsa
+Approve Selected: Amohela tse Khethiloeng
+Check All: Lekola Tsohle
+Emails Will Not Be Sent: Li-imeile li ke ke tsa romelloa
+Reject Selected: Hana Tse Khethiloeng
+Reject: Hana
+Uncheck All: =
+View this entry: Sheba kenyelletso ena
+No unapproved entries for XXX.: Ha ho lipolelo tse sa lumelloang bakeng la: "XXX".
+Unapproved Entries: Menyako e sa Amoheloang
+Approve this entry?: Netefatsa monyako ona?
+Reject this entry?: U hana ho kena hona?
+Approve Selected entries?: Amohela lipehelo tse khethiloeng?
+Reject Selected entries?: Hana Likenyelletso tse khethiloeng?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: U tlameha ho kenya ho kena le phasewete.
+Save login via cookies so I dont have to login next time.: Boloka ho kena ka li-cookie kahoo ha ke na ho kena nakong e tlang
+Login: Kena
+public: setjhaba
+Access XXX calendar: Fumana khalendara ea XXX
+cookies-note: Tlhokomeliso: Kopo ena e hloka hore li-cookies li lumelloe.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Litlhaku tse seng molaong tsa ho kena XXX.
+Invalid login: Ho kena ho fosahetseng
+Activity login failure: Lebitso la mosebedisi: "XXX", IP: "YYY".
+Error XXX: Phoso: "XXX".
+You have been logged out.: O tswile ka ntle.
+Access public calendar: Fumana khalendara ea sechaba
+Not yet registered? Register here!: Ha e so ngolisoe? Ngodisa mona!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Ha ho na khalendara e joalo e seng ea mosebelisi: "XXX".
+This Calendar is not Public.: Khalendara ena ha e ea sechaba.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Kenya Khalendara e Ncha e sa Sebeliseng
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Ho kena ho tlameha ho boleloa.
+No such nonuser calendar: Ha ho na khalendara e joalo e seng ea mosebelisi
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Sehlooho se fosahetse
+Save Preferences: Boloka Likhetho
+Public Access calendar: Khalendara ea Phihlello ea Sechaba
+Modify Non User Calendar Preferences: Fetola Likhetho tsa Khalendara ea Basebelisi
+Return to My Preferences: Khutlela Likhethong Tsa Ka
+Custom Scripts: Mengolo ea Tloaelo
+Timezone Selection: Khetho ea Nako
+Multiview: =
+entry-interval-help: E beha karohano ea metsotso ha e hlophisa linako tsa ho kena
+Entry interval: Nako ea ho kena
+hour: hora
+minute: motsotso
+theme-reload-help: Ka lebaka la caching ea CSS, ho ka hlokahala leqephe le lecha hape
+Page may need to be reloaded for new Theme to take effect: Leqephe le kanna la hloka ho jarisoa hape hore Sehlooho se secha se qale ho sebetsa
+display_byproxy-help: Bontša moetsi oa 'nete leqepheng la pono_entry
+Display if created by Assistant: Bontša haeba e entsoe ke Mothusi
+allow-view-subscriptions-help: E lumella ho thibela phihlello ea hole ho ngoliso ea lekunutu kapa ea lekunutu
+Allow remote viewing of: Lumella ho shebella hole
+entries: litlatsetso
+
+########################################
+# Page: purge.php
+#
+Purging events for: Ho hloekisa liketsahalo tsa
+Finished: E felile
+Back: Ka morao
+Check box to delete ALL events for a user: Tšoaea lebokose ho hlakola  TSOHLE  liketsahalo tsa mosebelisi
+Delete all events before: Hlakola liketsahalo tsohle pele
+Purge deleted only: Phumulo e tlositsoe feela
+Preview delete: Preview hlakola
+Are you sure you want to delete events for: Na u na le bonnete ba hore u batla ho hlakola liketsahalo tsa
+Records deleted from XXX: Lirekoto li hlakotsoe ho "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Aterese ea lengolo-tsoibila e ka se be letho.
+Username already exists.: Lebitso la mosebedisi le se ntse le le teng.
+Email address already exists.: Aterese ea lengolo-tsoibila e se ntse e le teng.
+New user via self-registration.: Mosebelisi e mocha ka ho ingolisa.
+A new WebCalendar account has been set up for you.: U lokiselitsoe ak'haonte e ncha ea WebCalendar.
+Your username is XXX.: Lebitso la hau ke: "XXX".
+Your password is XXX.: Phasewete ya hao ke "XXX".
+Please visit XXX to log in and start using your account!: Ka kopo etela "XXX" ho kena ebe u qala ho sebelisa ak'haonte ea hau!
+You may change your password after logging in the first time.: U ka fetola phasewete ea hau kamora ho kena ka lekhetlo la pele.
+If you received this email in error: Haeba u fumane lengolo-tsoibila lena ka phoso 'me u sa ingolisa bakeng sa ak'haonte ea WebCalendar, u kanna oa se natse tsebiso ena, kapa ua araba ka lengolo le lekhuts'oane
+Administrator: Motsamaisi
+Welcome: Amoheloa
+New user via email.: Mosebelisi e mocha ka lengolo-tsoibila.
+Registration: Ngoliso
+Welcome to WebCalendar: Rea u amohela ho WebCalendar
+Your email should arrive shortly.: Imeile ea hau e lokela ho fihla haufinyane.
+Return to Login screen: Khutlela skrineng sa Login
+Password (again): Phasewete (hape):
+Your account information will be emailed to you.: Lintlha tsa akhaonto ea hau li tla romelloa ho uena.
+Submit: Ikokobelletsa
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Tsoela pele
+(Your comments will be emailed to the other participants.): (Maikutlo a hau a tla romelloa ka imeile ho bankakarolo ba bang.)
+XXX has rejected an appointment.: XXX e hanne tumellano ea kopano.
+Rejected by XXX.: E hanoe ke XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Kenya Khalendara e Ncha ea Remote
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Ketsahalo ena ke ea lekunutu.
+(Private): (Lekunutu)
+(cont.): (Etsa.)
+Approved: E amohetse
+Deleted: E hlakotsoe
+Rejected: E lahliloe
+Waiting for approval: E emetse tumello
+Unknown: Ha e tsejoe
+Invalid report id.: ID e fosahetseng.
+Click here to manage reports for the Public Access calendar.: Tlanya mona ho laola litlaleho tsa khalendara ea Phihlello ea Sechaba.
+Add new report: Kenya tlaleho e ncha
+Manage Reports: Laola Litlaleho
+
+########################################
+# Page: search.php
+#
+Advanced Search: Patlo e tsoetseng pele
+Search: Batla
+Keywords: Mantsoe a bohlokoa
+Enter % for all entries: Kenya% bakeng sa litlatsetso tsohle
+Include: Kenyelletsa
+Filter by Date: Sefa ka Letsatsi
+All Dates: Matsatsi 'Ohle
+Past: Nako e fetileng
+Upcoming: E tlang
+Range: Boholo
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: U tlameha ho kenya mantsoe a ho batla a le mong kapa a mangata.
+Search Results: Liphetho tsa Patlo
+match found: papali e fumanoe
+matches found: lipapali li fumanoe
+No matches found: Ha ho lipapali tse fumanoeng
+New Search: Patlo e Ncha
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Tlhahisoleseling e ka tlase e thathamisa mathata a ka bang teng ka ho kenya WebCalendar ea hau e ka fetoloang ho etsa hore ts'ebetso ea hau e sireletsehe haholoanyane.
+For questions about WebCalendar security see the forums: Bakeng sa lipotso mabapi le bothata bofe kapa bofe ba ts'ireletso ea WebCalendar, ka kopo sebelisa liforamu tsa WebCalendar tse tšoaretsoeng ho GitHub.com;<br>XXX
+View your current PHP settings: Bona litlhophiso tsa hau tsa hajoale tsa PHP
+Security Issue: Taba ea Ts'ireletso
+Status: Boemo
+Default admin user password: Phasewete ya mosebedisi ya kamehla ya admin
+You should change the password of the default admin user.: U lokela ho fetola phasewete ea mosebelisi oa kamehla oa admin.
+File permissions XXX: Litumello tsa faele: XXX
+item XXX should not be writable: Ntho e latelang ha ea lokela ho ngoloa:<br><tt> XXX</tt>
+File exists XXX: Faele e teng: "XXX"
+Because you have email disabled, you should remove this file.: Hobane imeile e holofetse, o lokela ho tlosa faele ena.
+File location XXX: Sebaka sa faele: "XXX"
+remove XXX if not using: Haeba u sa sebelise file "XXX", u lokela ho e hlakola. Kapa, ​​bonyane, e fetisetse bukaneng e ncha.
+System Settings XXX: Litlhophiso tsa Sisteme: "XXX"
+consider enabling UAC: U kanna ua batla ho nahana ka ho nolofalletsa Phihlello ea Phihlello ea Basebelisi ho beha litokelo tsa mosebelisi.
+recommend approving new public events: Re khothaletsa hore litlhahiso tsohle tsa ketsahalo ea sechaba li ananeloe.
+recommend using CAPTCHA: CAPTCHA e khothaletsoa ho lebela litlatsetso tse ikhethileng tsa ketsahalo.
+Database cache directory location: Sebaka sa polokelo ea polokelo ea polokelo ea polokelo
+db cache should be inaccessable: Cache ea database e lokela ho ba bukeng e ke keng ea fumaneha ka URL.
+PHP Settings XXX: Litlhophiso tsa PHP: "XXX"
+recommend setting XXX Off: Peakanyo e khothalletsoang ea "XXX" ha e sebetse.
+recommend setting allow_url_fopen Off: Peakanyo e kgothaletswang ya "allow_url_fopen" ea Tima ha khalendara tse hole li sa lumelloa.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Sheba K'halendara ea Motho e Mong
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Ha ua kenya mekhahlelo efe kapa efe.
+Set Category: Beha Sehlopha
+Global Categories cannot be changed.: Likarolo tsa lefats'e ha li khone ho fetoloa.
+
+########################################
+# Page: upcoming.php
+#
+more: Hape
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Lialmanaka tse hole
+denotes administrative user: e bolela mosebelisi oa tsamaiso
+Add New User: Kenya mosebelisi e mocha
+
+########################################
+# Page: usersel.php
+#
+form: foromo
+Reset: Seta bocha
+
+########################################
+# Page: views.php
+#
+Add New View: Kenya New View
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Pono e sa boleloang ka lebitso
+Add View: Kenya Pono
+Edit View: Fetola Ponahalo
+View Name: Sheba Lebitso
+View Type: Mofuta oa Pono
+Day by Time: Letsatsi le Nako
+Week (Users horizontal): Beke (Basebelisi ba rapameng)
+Week by Time: Beke le Nako
+Week (Users vertical): Beke (Basebelisi ba eme hantle)
+Week (Timebar): Beke (Timebar)
+Month (Timebar): Khoeli (Timebar)
+Month (side by side): Khoeli (ka mahlakore)
+Month (on same calendar): Khoeli (khalendareng e tšoanang)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: O tlameha ho hlakisa lebitso la pono
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Ha ho basebelisi ba pono ena.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Ntlafatsa Liphesente tsa Mosebetsi
+Completed: E phethiloe
+Assistant mode: Mokhoa oa mothusi
+Declined: Qhelela ka thoko
+Needs-Action: Litlhoko-Ketso
+by: =
+Percentage Complete: Liphesente li Felile
+External User: Mosebelisi oa kantle
+Update: Nchafatsa
+at: nakong
+comments: litlhaloso
+Show: Bontša
+Hide: Pata
+Approve/Confirm entry: Amohela / Netefatsa ho kena
+Reject entry: Hana ho kena
+Set category: Seta sehlopha
+Add to My Calendar: Kenya Khalendareng ea Ka
+Copy entry: Kopitsa ho kena
+This will delete this entry for all users.: Sena se tla hlakola kenyelletso ena bakeng sa basebelisi bohle.
+Edit entry: Fetola ho kena
+Edit repeating entry for all dates: Fetola ho pheta-pheta bakeng sa matsatsi ohle
+Delete repeating event for all dates: Hlakola ketsahalo e phetoang bakeng sa matsatsi ohle
+Edit entry for this date: Fetola ho kena bakeng sa letsatsi lena
+Delete entry only for this date: Hlakola ho kena feela bakeng sa letsatsi lena
+Delete entry from calendar of XXX: Tlosa ho kena khalendareng ea XXX
+This will delete the entry from your XXX calendar.: Sena se tla hlakola kenyelletso khalendareng ea hau ea XXX.
+boss: mookameli '
+This will delete the entry from your boss calendar.: Sena se tla hlakola se kenang khalendareng ea mookameli oa hau.
+This will delete the entry from your calendar.: Sena se tla hlakola se kenang khalendareng ea hau.
+from your boss calendar: ho tsoa khalendareng ea mookameli oa hau
+Do you want to add this entry to your calendar?: O batla ho kenya kenyelletso ena khalendareng ea hau?
+This will add the entry to your calendar.: Sena se tla eketsa ho kena khalendareng ea hau.
+Email all participants: Romella bohle ba nkang karolo
+Hide activity log: Pata lenane la mesebetsi
+Show activity log: Bontša lenane la liketsahalo
+Export this entry to: Romella keno ena ho
+Palm Pilot: Pilot ea maoto
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Tobetsa habeli seleng e se nang letho ho kenya kenyelletso e ncha.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Keno e Ncha
+cont.: ts.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Khalendara ea mosebelisi e mong
+Category Management: Sehlopha sa Tsamaiso
+Day View: Pono ea Letsatsi
+Edit Event: Fetola Ketsahalo
+Month View: Pono ea Khoeli
+Common Trailer: Trailer e Tloaelehileng
+User Management: Tsamaiso ea Basebelisi
+Manage Views: Laola Pono
+Week View: Pono ea Beke
+Year View: Pono ea Selemo
+Invalid function id: ID ya mosebetsi e fosahetseng
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Ha e fumane file ea "settings.php"
+Incomplete settings.php file...: Faele ea "settings.php" e sa phethahalang ...
+Could not find XXX defined in...: Ha e fumane "XXX" e hlalositsoeng ho file ea "settings.php" ea hau.
+You must define XXX in: U tlameha ho hlalosa "XXX" ka file ea "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Tšitoe
+Dec: Tšitoe
+LANGUAGE DEFINED: PUO E HLALOSITSOE
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Phoso ho hokela ho database: "XXX".
+db_type not defined.: db_type ha e hlalosoe.
+invalid db_type XXX: mofuta o sa sebetseng oa db_ "" XXX ".
+Cache cleared from previous SQL!: Cache e hlakotsoe ho SQL e fetileng!
+Error executing query.: Phoso nakong ea ho kenya kopo
+Unfortunately, XXX is not implemented for YYY: Ka bomalimabe "XXX" ha e sebelisoe bakeng sa (YYY).
+Unknown ODBC error.: Phoso e sa tsejoeng ea ODBC.
+Error opening cache dir XXX.: Phoso ha e bula cache cache "XXX".
+delete: hlakola
+Cache error Could not XXX file YYY.: Phoso ea cache: Ha e khone ho faela XXX "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Phoso e Bolaeang
+Invalid data format for: Sebopeho sa data se fosahetseng bakeng sa
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Phoso: Tlanya ha e ea seteloa log ea tšebetso!
+This event is XXX.: Ketsahalo ena ke XXX.
+Conf.: =
+exceeds limit of XXX events per day: e feta moeli oa liketsahalo tsa XXX ka letsatsi
+on: bulela
+All Attendees: Batho bohle ba tlileng kopanong
+Busy: Phathahane
+Tentative: Ho ikoetlisa
+Schedule an appointment for XXX.: Rera nako ea kopano bakeng sa XXX: YYY.
+date_select: =
+Event approved: Ketsahalo e amohetsoe
+Journal approved: Sengoloa se amohetsoe
+Task approved: Mosebetsi o amohetse
+Attachment: Sephuthelwana
+Event created: Ketsahalo e entsoe
+Journal created: Sengoliloeng se entsoe
+Task created: Mosebetsi o entsoe
+Event deleted: Ketsahalo e hlakotsoe
+Journal deleted: Sengoloa se hlakotsoe
+Task deleted: Mosebetsi o hlakotsoe
+New user via email (self registration): Mosebelisi e mocha ka imeile (ho ingolisa)
+New user (self registration): Mosebelisi e mocha (ho ingolisa)
+Notification sent: Tsebiso e rometsoe
+Event rejected: Ketsahalo e lahliloe
+Journal rejected: Lenaneo le lahliloe
+Task rejected: Mosebetsi o lahliloe
+Reminder sent: Khopotso e rometsoe
+Event updated: Ketsahalo e nchafalitsoe
+Journal updated: Lenaneo le ntlafalitsoe
+Task updated: Mosebetsi o ntlafalitsoe
+Delete User: Tlosa mosebelisi
+WK: =
+TASKS: SEBETSA
+Task_Title: Sehlooho
+Due: Ka lebaka
+Task Name: Lebitso la Mosebetsi
+Task Due Date: Letsatsi la Mosebetsi
+You have XXX unapproved entries: U na le likeno tse sa lumelloang tsa XXX 
+Changes successfully saved: Liphetoho li bolokiloe ka katleho
+Event: Ketsahalo
+Action: Khato
+Printer Friendly: =
+Generate printer-friendly version: Hlahisa mofuta o bonolo oa khatiso
+after: ka mora
+before: pele ho
+end: qeta
+start: qala
+View this event: Sheba ketsahalo ena
+View this task: Sheba mosebetsi ona
+January: Pherekhong
+February: Hlakola
+March: Hlakubele
+April: Mmesa
+May_: Mots'eanong
+June: Phuptjane
+July: Phupu
+August: Phato
+September: Loetse
+October: Mphalane
+November: Pulungoana
+Jan: Pherekhong
+Feb: Hlakola
+Mar: =
+Apr: 'Mesa
+May: Mots'eanong
+Jun: =
+Jul: Phupu
+Aug: Phato
+Sep: =
+Oct: Mphalane
+Nov: Mantaha
+SU: =
+MO: =
+TU: =
+WE: RONA
+TH: =
+FR: =
+SA: =
+unknown-month: khoeli e sa tsejoeng
+First Quarter Moon: Khoeli ea Pele ea Khoeli
+Full Moon: Khoeli e Tletseng
+Last Quarter Moon: Khoeli ea Khoeli ea Khoeli
+New Moon: Khoeli e Ncha
+Error TIME_SLOTS undefined!: Phoso: TIME_SLOTS ha e hlalosehe!
+The following error occurred: Phoso e latelang e etsahetse
+You are not authorized.: Ha ua lumelloa.
+Add N hours to: Kenya lihora tsa N ho
+Subtract N hours from: Tlosa lihora tsa N ho tloha
+same as: tshoanang le
+server time: nako ea seva
+Cannot read timezone file XXX.: Ha e khone ho bala faele ea sebaka sa nako: XXX.
+Your current GMT offset is XXX hours.: Phokotso ea hau ea hona joale ea GMT ke lihora tse XXX.
+Unauthorized: E sa lumelloa
+Error approving event XXX.: Phoso ho amohela ketsahalo: XXX.
+Error deleting event XXX.: Phoso ho hlakoleng ketsahalo: XXX.
+Error rejecting event XXX.: Phoso ho hana ketsahalo: XXX.
+Sunday: Sontaha
+Monday: Mantaha
+Tuesday: Labobeli
+Wednesday: Laboraro
+Thursday: Labone
+Friday: Labohlano
+Saturday: Moqebelo
+Sun: Letsatsi
+Mon: =
+Tue: Labobeli
+Wed: Lumela
+Thu: Lumela
+Fri: Labo
+Sat: Lumela
+unknown-weekday: letsatsi le sa tsejoeng-beke
+Invalid referring URL: URL e lebisang e fosahetseng
+
+########################################
+# Page: includes/help_list.php
+#
+Index: =
+Documentation: Litokomane
+Page: Leqephe
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Khalendara ea ka
+Add New Entry: Kenya Keno e Ncha
+Add New Task: Kenya Mosebetsi o Mocha
+Logout: Ho tsoa
+Home: Lapeng
+Back to My Calendar: Khutlela Khalendareng ea Ka
+Go to: E ea ho
+Manage calendar of: Laola khalendara ea
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Puo ea sebatli ha e fumanehe
+(not supported): (ha e tšehetsoe)
+Abkhazian: =
+Acoli: Maholi
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: Seafrikanse
+Ainu: Tsoela pele
+Akan: SeAkan
+Akkadian: SeAkadian
+Albanian: Sealbania
+Aleut: Molemo
+Algonquian: =
+Altai (Southern): Altai (Boroa)
+Amharic: Seamharic
+Angika: =
+Apache: =
+Arabic (Algeria): Searabia (Algeria)
+Arabic (Bahrain): Searabia (Bahrain)
+Arabic (Egypt): Searabia (Egypt)
+Arabic (Iraq): Searabia (Iraq)
+Arabic (Jordan): Searabia (Jordan)
+Arabic (Kuwait): Searabia (Kuwait)
+Arabic (Lebanon): Searabia (Lebanon)
+Arabic (Libya): Searabia (Libya)
+Arabic (Morocco): Searabia (Morocco)
+Arabic (Oman): Searabia (Oman)
+Arabic (Qatar): Searabia (Qatar)
+Arabic (Saudi Arabia): Searabia (Saudi Arabia)
+Arabic (Syria): Searabia (Syria)
+Arabic (Tunisia): Searabia (Tunisia)
+Arabic (U.A.E.): Searabia (U.A.E.)
+Arabic (Yemen): Searabia (Yemen)
+Arabic: Searabia
+Aragonese: SeAragon
+Aramaic: Searame
+Arapaho: =
+Arawak: =
+Armenian: Searmenia
+Assamese: Seassamese
+Asturian: Setsebi
+Athapascan: =
+Avaric: Sevarvar
+Avestan: Mongolo wa Avestan
+Awadhi: =
+Aymara: =
+Azerbaijani: =
+Balinese: =
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: Se-basque
+Beja: =
+Belarusian: Sebelarusi
+Bemba: =
+Bengali: Sebengali
+Bhojpuri: =
+Bihari: Se-bihari
+Bikol: =
+Bislama: =
+Blackfoot: Monyane
+Blin: =
+Bliss: Boitumelo
+Bosnian: Sebosnia
+Braj: =
+Breton: Sebreton
+Buginese: SeBuginese
+Bulgarian: Sebulgaria
+Buriat: =
+Burmese: Seburmese
+Caddo: =
+Catalan: SeCatalan
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Sechaena (Hong Kong)
+Chinese (PRC): Se-china (PRC)
+Chinese (Simplified/GB2312): Se-china (Simplified / GB2312) 
+Chinese (Singapore): Sechaena (Singapore)
+Chinese (Taiwan): Sechaena (Taiwan)
+Chinese (Traditional/Big5): Sechaena (Setso / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: Khetho
+Chuukese: Se-Chuukese
+Chuvash: =
+Coptic: Sekoptiki
+Cornish: =
+Corsican: =
+Cree: =
+Creek: Phororo
+Croatian: Kroatia
+Czech: =
+Dakota: =
+Danish: Sedanishe
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: Ntja
+Dogrib: =
+Duala: =
+Dutch (Belgium): Sedache (Belgium)
+Dutch: Sedache
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Baelame
+English (Australia): Senyesemane (Australia)
+English (Belize): Senyesemane (Belize)
+English (Canada): Senyesemane (Canada)
+English (Ireland): Senyesemane (Ireland)
+English (Jamaica): Senyesemane (Jamaica)
+English (New Zealand): Senyesemane (New Zealand)
+English (Philippines): Senyesemane (Philippines)
+English (South Africa): Setswana (Aforika Borwa)
+English (Trinidad & Tobago): Senyesemane (Trinidad & Tobago)
+English (United Kingdom): Setswana (Aforika Borwa)
+English (United States): Setswana (Aforika Borwa)
+English (Zimbabwe): Senyesemane (Zimbabwe)
+English: Senyesemane-US
+Erzya: =
+Esperanto: Seesperanto
+Estonian: Seestonia
+Ewe: =
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: Sefaroese
+Fijian: Sefijian
+Filipino: Sefilipino
+Finnish: Sefinnishe
+Fon: =
+French (Belgium): Sefora (Belgium)
+French (Canada): Sefora (Canada)
+French (France): Sefora (France)
+French (Luxembourg): Sefora (Luxembourg)
+French (Monaco): Sefora (Monaco)
+French (Switzerland): Sefora (Switzerland)
+French: Sefora
+Frisian (Eastern): Frisian (Bochabela)
+Frisian (Northern): Frisian (Leboea)
+Frisian (Western): Sefrisia (Bophirimela)
+Frisian: Sefora
+Friulian: Friulia
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Segalicia
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Segeorgia
+German (Austria): Sejeremane (Austria)
+German (Germany): Sejeremane (Jeremane)
+German (Liechtenstein): Sejeremane (Liechtenstein)
+German (Luxembourg): Sejeremane (Luxembourg)
+German (Standard): Sejeremane (Standard)
+German (Switzerland): Sejeremane (Switzerland)
+German: Sejeremane
+Gilbertese: Se-Gilbertese
+Gondi: =
+Gorontalo: =
+Gothic: Se-Gothic
+Grebo: =
+Greek: Segerike
+Greenlandic: SeGreenland
+Guarani: Se-guarani
+Gujarati: Segujarati
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Sehaiti (Secreole)
+Haitian: Sehaiti
+Hausa: Sehausa
+Hawaiian: Sehawaii
+Hebrew: Seheberu
+Herero: =
+Hiligaynon: =
+Hindi: Sehindi
+Hiri Motu: =
+Hittite: Bahethe
+Hmong: SeHmong
+Holo (Taiwanese): Holo (Taiwan)
+Hungarian: Sehungary
+Hupa: =
+Iban: =
+Icelandic: SeIcelandic
+Ido: =
+Igbo: Segbo
+Iloko: =
+Indonesian: Seindonesia
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: MoIran
+Irish (Gaelic): Seaerishe (Gaelic)
+Irish: Ireland
+Iroquoian: =
+Italian (Switzerland): Setaliana (Switzerland)
+Italian: Setaliana
+Japanese: Sejapane
+Javanese: Sejava
+Judeo-Arabic: Judeo-Searabia
+Judeo-Persian: Judao-Persia
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: Sekannada
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: Sekazakh
+Khasi: =
+Khmer (Central): Khmer (Bohareng)
+Khmer: =
+Khotanese: =
+Kikuyu: Sekikuyu
+Kimbundu: =
+Kinyarwanda: Sekinyarwanda
+Kirghiz: Sekirghiz
+Klingon: SeKlingon
+Komi: =
+Kongo: Sekongo
+Konkani: =
+Korean (Johab): Sekorea (Johab)
+Korean (North): Sekorea (Leboea)
+Korean (South): Sekorea (Boroa)
+Korean: Sekorea
+Kosraean: Sekosrae
+Kpelle: =
+Kuanyama: =
+Kumyk: Mofumahali
+Kurdish: Sekurdi
+Kutenai: =
+Kyrgyz: Sekyrgyz
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Selatine
+Latvian: SeLatvia
+Lezghian: =
+Limburgan: =
+Lingala: Selingala
+Lithuanian: Se-Lithuania
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Boitumelo
+Macedonian: Semasedonia
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Semalagasy
+Malay: Semalay
+Malayalam: Semalayalam
+Maldivian: =
+Maltese: Semalta
+Manchu: =
+Mandar: Semandar
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: Semoriori
+Mapuche: =
+Marathi: =
+Mari: Se-Mari
+Marshallese: Se-Marshallese
+Marwari: =
+Masai: =
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Semoldavia
+Mongo: =
+Mongolian: Semongolia
+Montenegrin: Montenegro
+Moroccan: Moroko
+Mossi: =
+Myanmar: =
+Māori: Maori
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: Senavajo
+Ndebele (North): Ndebele (Leboya)
+Ndebele (South): Ndebele (Borwa)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: =
+Nias: =
+Niuean: SeNiue
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Senorway (Bokmål)
+Norwegian (Nynorsk): Senorway (Nynorsk)
+Norwegian: Senorway
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Se-occitan
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: Ho sebedisa
+Ossetic: SeOssetiki
+Pahlavi: =
+Palauan: SePalauan
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: Sepapiamento
+Pashto: =
+Pedi: Bapedi
+Persian (Farsi): Sepersia (Farsi)
+Persian (Iran): Sepersia (Iran)
+Persian: Sepersia
+Phoenician: Mofenisia
+Pohnpeian: =
+Polish: Sepolishe
+Portuguese: Sepotoketsi
+Portuguese/Brazil: Sepotoketsi / Brazil 
+Punjabi (India): Sepunjabi (India)
+Punjabi (Pakistan): Sepunjabi (Pakistan)
+Punjabi: Sepunjabi
+Quechua: Sequechua
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: Seromania
+Romansh: Seromani
+Romany: Seromani
+Rundi: =
+Russian (Moldavia: Serussia (Moldavia
+Russian (Republic of Moldova): Serussia (Rephabliki ea Moldova)
+Russian: Serussia
+Sami (Inari): Sesami (Inari)
+Sami (Lappish): Sesami (Lappish)
+Sami (Lule): Sesami (Lule)
+Sami (Northern): Sami (Leboea)
+Sami (Skolt): Sesami (Skolt)
+Sami (Southern): Sami (Boroa)
+Sami: =
+Samoan: Sesamoa
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: =
+Sasak: =
+Scots (Gaelic): Scots (Se-Gaelic)
+Selkup: =
+Serbian (Upper): Seserbia (Holimo)
+Serbian: Seserbia
+Serer: =
+Sesotho: =
+Shan: =
+Shona: Seshona
+Sichuan Yi: =
+Sicilian: =
+Sindhi: Sesindhi
+Sinhala: =
+Slavic: Seslav
+Slovak: Seslovak
+Slovenian: Seslovenia
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sesorbia (Ka tlase)
+Sorbian (Upper): Sesorbia (Holimo)
+Sorbian: Sesorbia
+Sotho: Sesotho
+Spanish (Argentina): Sepanish (Argentina)
+Spanish (Bolivia): Sepanish (Bolivia)
+Spanish (Chile): Sepanish (Chile)
+Spanish (Colombia): Sepanishe (Colombia)
+Spanish (Costa Rica): Sepanish (Costa Rica)
+Spanish (Dominican Republic): Sepanish (Rephabliki ea Dominican)
+Spanish (Ecuador): Sepanishe (Ecuador)
+Spanish (El Salvador): Sepanish (El Salvador)
+Spanish (Guatemala): Sepanish (Guatemala)
+Spanish (Honduras): Sepanish (Honduras)
+Spanish (Mexico): Sepanish (Mexico)
+Spanish (Nicaragua): Sepanishe (Nicaragua)
+Spanish (Panama): Sepanish (Panama)
+Spanish (Paraguay): Sepanish (Paraguay)
+Spanish (Peru): Sepanish (Peru)
+Spanish (Puerto Rico): Sepanish (Puerto Rico)
+Spanish (Spain): Sepanish (Spain)
+Spanish (Uruguay): Sepanish (Uruguay)
+Spanish (Venezuela): Sepanish (Venezuela)
+Spanish: Sepanishe
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumeria
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: Seswahili
+Swati: =
+Swedish (Finland): Seswedishe (Finland)
+Swedish (Sweden): Seswedishe (Sweden)
+Swedish: Seswedishe
+Syriac: Sesyria
+Tagalog: Setagalog
+Tahitian: Setahiti
+Tai: =
+Taiwan: =
+Tajik: Se-tajik
+Tamashek: =
+Tamil: Setamile
+Tatar: Setatare
+Telugu: Setelugu
+Tereno: =
+Tetum: Setetum
+Thai: Sethai
+Tibetan: Setibetan
+Tigre: Tiger
+Tigrinya: Setigrinya
+Timne: =
+Tlingit: =
+Tok Pisin: Setok Pisin
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Lihlekehleke tsa Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Seturkey
+Turkmen: MaTurkmen
+Tuvinian: Setuvinian
+Twi: =
+Udmurt: Tlhompho
+Ugaritic: SeUgarit
+Ukrainian: Seukraine
+Umbundu: =
+Urdu: Seurdu
+Uyghur: SeUghur
+Uzbek: Seuzbek
+Vai: Monghali Vai
+Venda: SeVenda
+Vietnamese: Sevietnam
+Volapük: Sekolo sa Volapük
+Votic: E mahlonoko
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: Se-Welsh
+Wolaitta: =
+Wolof: =
+Xhosa: Sexhosa
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: SeYiddish
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: Sezulu
+Browser-defined: Se hlalositsoeng ke sebatli
+event: ketsahalo
+journal: koranta
+0: 0                                                  
+1: 1                                                 
+2: 2                                                 
+3: 3                                                 
+4: 4                                                 
+5: 5                                                 
+6: 6                                                 
+7: 7                                                 
+8: 8                                                 
+9: 9                                                 
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Ho kena ha mosebelisi ka phoso
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: phasewete e fosahetseng
+no such user: ha ho mosebelisi ea joalo
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Akhaonte e holofetse
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Karohano
+Months: Likhoeli
+Month Days: Matsatsi a Khoeli
+Days: Matsatsi
+Weeks: Libeke
+Position: Boemo
+Until: Ho fihlela
+Count: Bala
+Inclusion Dates: Matsatsi a Kenyelletso
+Exclusion Dates: Matsatsi a Khethollo
+Event Imported: Ketsahalo e Tlisitsoe
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: li-byte
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Tsebiso
+authenticate: Phoso ea SMTP: Ha e khone ho netefatsa
+connect_host: Phoso ea SMTP: Ha e khone ho hokela ho moamoheli oa SMTP:
+data_not_accepted: Phoso ea SMTP: Lintlha ha lia amoheloa
+encoding: Khouto e sa tsejoeng:
+execute: E hloleha ho phethisa:
+file_access: Ha e khone ho fumana faele:
+file_open: Phoso ea Faele ha e khone ho bula faele:
+from_failed: Lintlha tse latelang tse tsoang atereseng li hlolehile:
+instantiate: E sitoa ho tiisa tšebetso ea mangolo
+mailer_not_supported: mailer ha e tšehetsoe
+provide_address: U tlameha ho fana ka aterese ea lengolo-tsoibila ea moamoheli a le mong.
+recipients_failed: Phoso ea SMTP: Bahiri ba latelang ba hlotsoe:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Kenya Litlhaku Tse Bonoang ka Setšoantšo
+Enter the correct letters and numbers...: Kenya litlhaku le linomoro tse nepahetseng ho tloha setšoantšong ka lebokoseng la mongolo. Teko ena e nyane e sebetsa e le thibelo ea phihlello khahlano le bots e kotsi. Kenya leqephe hape bocha haeba ho thata haholo ho bala graphic ena
+Challenge/Response: Phephetso / Karabo
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Fetola letsatsi le nako ea ho kena hona?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Ha o so kenye Tlhaloso e Khuts'oane
+time prior to work hours...: nako pele ho lihora tsa mosebetsi ...
+Invalid Event Date: Letsatsi la Ketsahalo le sa nepahalang
+Please add a participant: Ka kopo kenya motho ea nkang karolo 
+Invalid Date: Letsatsi le fosahetseng
+You have not entered a valid time of day: Ha oa kenya nako e nepahetseng ea letsatsi. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: K'halendara ea ID e ke ke ea koaloa. 
+First and last names cannot both be blank.: Mabitso le lifane li ka se be letho. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: 'Mala o fosahetseng
+Color format should be RRGGBB.: Mofuta oa mebala e lokela ho ba #RRGGBB. 
+URL cannot be blank.: URL ha e na letho.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Mofuta oa faele ha o lumellane le Fomate ea ho Reka 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: 'Mala o fosahetseng oa semelo sa tokomane.
+Invalid color for document title.: 'Mala o fosahetseng oa sehlooho sa tokomane.
+Invalid color for table cell background.: 'Mala o fosahetseng oa semelo sa lisele tsa tafole.
+Invalid color for table cell background for today.: 'Mala o fosahetseng oa semelo sa lisele tsa tafole kajeno.
+Invalid work hours.: Lihora tsa mosebetsi tse fosahetseng.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL ea seva e tlameha ho fela ka slash (/).
+Invalid color for table grid.: 'Mala o fosahetseng oa grid ea tafole.
+Invalid color for event popup background.: 'Mala o fosahetseng bakeng sa semelo sa popup ea ketsahalo.
+Invalid color for event popup text.: 'Mala o fosahetseng bakeng sa mongolo o hlahang oa ketsahalo.
+Invalid color for table header text.: 'Mala o fosahetseng bakeng sa taba ea hlooho ea tafole.
+Invalid color for table header background.: 'Mala o fosahetseng oa semelo sa hlooho ea tafole.
+Server URL is required.: URL ea seva ea hlokahala.
+Invalid Color: Mmala o fosahetseng
+Database Name: Lebitso la database
+Full Path (no backslashes): Tsela e Felletseng (ha ho backslashes) 
+The password contains illegal characters.: Phasewete e na le litlhaku tse seng molaong.
+Error you must specify a Single-User Login: Phoso: O tlameha ho hlakisa ho kena ha mosebelisi a le mong
+Could not find XXX.: Ha e fumane XXX.
+Could not find XXX in DOM.: Ha re fumane XXX ho DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Bekeng ena
+This Month: Khoeling ena
+This Year: Selemong sena
+Exit: Etsoa
+Add New Event: Kenya Ketsahalo e Ncha
+Delete Entries: Hlakola Likenyelletso
+My Views: Maikutlo a Ka
+Manage Calendar of: Laola Khalendara ea
+My Reports: Litlaleho tsa ka
+My Profile: Boemo ba ka
+Public Calendar: Khalendara ea Sechaba
+Unapproved Events: Liketsahalo tse sa Amoheloang
+User Manager: Motsamaisi oa mosebelisi
+Help Contents: Thusa Tse ka Hare
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Directory ea Cache ea database
+Create New: Theha Ncha
+Failure Reason: Lebaka la ho hloleha:
+You must manually create database: O tlameha ho iketsetsa database.
+Single-User: Mosebelisi a le mong
+Test Settings: Litlhophiso tsa Teko
+Timezone Conversion Successful: Phetoho ea Timezone e atlehile
+WebCalendar Installation Wizard Step XXX: Mohato oa Wizard oa ho kenya WebCalendar
+Password Accepted: Netefete e Amohetsoe
+Successful Login: Ho kena ka katleho
+Password Incorrect: Phasewete fosahetse
+Invalid Login: Ho kena ka phoso
+Display Errors: Hlahisa Liphoso
+File Uploads: Faele uploads
+Allow URL fopen: Lumella URL fopen (e hlokahala ha feela ho sebelisoa Lialmanaka tse hole)
+Safe Mode: Mokhoa o Sireletsehileng
+Safe Mode Allowed Vars: Mokhoa o bolokehileng o lumelletsoeng Vars (TZ e hlokahala feela ha Safe Mode e le On)
+GD: GD (e hlokahala bakeng sa Gradient Image Background)
+Passwords do not match!: Liphasewete ha li tšoane!
+Unable to write password to settings.php file: E hloleha ho ngola phasewete faeleng ea "settings.php".
+Password Updated: Nchafatso e ntlafalitsoe
+Password has been set: Phasewete e setilwe.
+Connection Successful...: Khokelo e Atlehile  Ka kopo e ea leqepheng le latelang ho tsoela pele ho kenya.
+Correct your entries or click the Create New...: Lokisa likenyelletso tsa hau kapa tlanya konopo ea  Etsa Ncha  ho tsoelapele ho kenya.
+Correct your entries and try again.: Lokisa lintlha tsa hau 'me u leke hape.
+XXX does not exist: XXX ha e eo
+XXX is not writable: XXX ha e ngoloe
+Error Converting Timezone: Phoso ha re fetola sebaka sa nako
+Error Unable to write to file XXX.: Phoso ha e khone ho ngolla faele XXX.
+Please change the file permissions of this file.: Ka kopo fetola litumello tsa faele ena.
+Please change includes dir permission: Ka kopo fetola litumello tsa faele ea sesebelisoa sa hau "se kenyeletsang" ho lumella ho ngoloa ke basebelisi ba bang.
+Your settings have been saved.: Litlhophiso tsa hau li bolokiloe.
+OFF: TIMA
+ON: BULELA
+WebCalendar Setup Wizard: Wizate ea ho seta WebCalendar
+This installation wizard will guide you...: Setsi sena sa ho kenya se tla u tataisa ka ho hloma setsi sa motheo sa K'halendara ea Web
+System Administrators Guide: Tataiso ea Motsamaisi oa Sisteme
+Frequently Asked Questions: Lipotso Tse Atisang ho Botsoa
+FAQ: LBH
+Troubleshooting: Ho batle phoso
+Getting Help: Ho Fumana Thuso
+Upgrading Guide: Ntlafatso ea Tataiso
+User Supported Wiki: Wiki e ts'ehetsoeng ke mosebelisi
+PHP Version Check: Hlahloba mofuta oa PHP
+Check to see if PHP 7.1.0 or greater is installed.: Lekola ho bona hore na PHP 7.1.0 kapa e kholo e kentsoe.
+PHP version: Mofuta oa PHP
+PHP Settings: Litlhophiso tsa PHP
+Detailed PHP Info: Tlhahisoleseling e qaqileng ea PHP
+settings.php Status: "settings.php" Boemo
+Session Check: Ho hlahloba seboka
+To test the proper operation of sessions...: Ho leka ts'ebetso e nepahetseng ea linako, kenya leqephe lena bocha. U lokela ho bona keketso ea khauta ea kopano nako le nako.
+SESSION COUNTER: KHOTHATSO MOHLOMI
+The file permissions of settings.php are set...: Litumello tsa faele tsa "settings.php" li behiloe molemong oa hore se kenyang se se na tumello ea ho se fetola. Ka kopo fetola litumello tsa faele e latelang ho tsoela pele
+The file permissions of the includes directory are set...: Lumello tsa faele tsa sesebelisoa li kenyelelitsoe hore se kenyang se se na tumello ea ho etsa faele e ncha. Ka kopo fetola litumello tsa sesebelisoa se latelang ho tsoela pele
+Your settings.php file appears to be valid.: Faele ea hau ea "settings.php" e bonahala e nepahetse.
+Configuration Wizard Password: Netefatso ea Wizard ea Tlhophiso
+Create Settings File Password: Theha Lisebelisoa tsa Faele Password
+db setup directions...: Karolong ena u tla qala 'me u leke ho hokahanya le seva sa hau sa database. Tlhahisoleseling ea ak'haonte e fanoeng e lokela ho ba le litumello tse FULL ho theha marang-rang, litafole le basebelisi. Haeba sena se sa khonehe, kapa phihlello ea database ea hau e lekantsoe, o tla tlameha ho hlophisa database ea hau ka letsoho.
+Database Status: Boemo ba database
+Supported databases for your PHP installation: Boitsebiso bo tšehetsoeng bakeng sa kopo ea hau ea PHP
+Your current database settings are able to access the database.: Litlhophiso tsa hau tsa database li khona ho fihlella database.
+Please Test Settings: Ka kopo Lekola Litlhophiso
+Your current database settings are not able...: Litlhophiso tsa hau tsa hajoale tsa database ha li khone ho fihlella database kapa ha li so ka li lekoa.
+Database Settings: Litlhophiso tsa database
+Database Type: Mofuta oa database
+Server: Seva
+Connection Persistence: Khokahano
+All your database tables appear to be up...: Litafole tsohle tsa hau tsa database li bonahala li le nakong. U ka fetela leqepheng le latelang ebe u qeta ho seta WebCalendar ea hau.
+This appears to be a new installation...: Sena se bonahala e le kenyelletso e ncha. Haeba hona ho sa nepahala, ka kopo khutlela ho leqephe le fetileng mme o lokise litlhophiso tsa hau.
+This appears to be an upgrade...: Sena se bonahala e le ntlafatso ho tloha ho mofuta&nbsp;XXX&nbsp;ho ea ho&nbsp;YYY.
+The database requires some data input...: Polokelongtshedimosetso hloka hore ba bang ba input ya data Click Update Database ho tlatsa apkreite eo.
+In this section we will perform...: Karolong ena re tla etsa liphetoho ho tlisa database ea hau boemong bo hlokahalang. Haeba u sebelisa database e tšehelitsoeng ka botlalo, mohato ona o tla etsoa ka boiketsetso bakeng sa hau. Haeba ho se joalo, SQL e hlokahalang e ka bonts'oa 'me o lokela ho khona ho e seha le ho e beha ka har'a fensetere ea lipotso tsa seva ea database.
+No database actions are required.: Ha ho na liketso tsa database tse hlokehang.
+The following database actions are required: Ho hlokahala liketso tse latelang tsa database
+ODBC Underlying Database: Database ea Motheo ea ODBC:
+Automatic installation not supported: Ho kenya ka boiketsetso ha ho so sebelisoe ka botlalo bakeng sa mofuta oa database ea hau. U tla tlameha ho iketsetsa litafole tse hlokahalang u sebelisa SQL e fanoeng. Ka kopo tlanya  Bontša SQL  ho tsoela pele. Khaola ebe u Penya ka har'a fensetere ea lipotso tsa hau ea database.
+This may take several minutes to complete: Sena se ka nka metsotso e mmalwa ho phethela.
+Install Database: Kenya database
+Update Database: Ntlafatsa database
+Display Required SQL: Bontša SQL e Hlokahalang
+Return to previous page after processing SQL.: Kamora ho sebetsa SQL ka letsoho, o tla hloka ho khutlela leqepheng le fetileng ebe o leka database ea hau hape hore script e tsebe ho bona liphetoho.
+This is the final step in setting up your WebCalendar Installation.: Ona ke mohato oa hoqetela oa ho hloma Kopo ea hau ea WebCalendar.
+Timezone Conversion: Phetoho ea Nako
+It appears that you have NOT converted...: Ho bonahala eka HA O SEKETSE data ea hau ea ketsahalo ea WebCalendar ho GMT. Haeba u na le eona, u kanna oa hlokomoloha tsebiso ena 'me ua se tsoele pele ka phetoho. Haeba hona ke kenyelletso e ncha, u kanna oa hlokomoloha tsebiso ena.
+Convert Data to GMT: Fetolela data ho GMT
+Application Settings: Litlhophiso tsa Kopo
+HTTP-based authentication was not detected...: Netefatso e thehiloeng ho HTTP ha ea fumanoa. U tla hloka ho hlophisa sebopeho sa hau sa marang-rang haeba u lakatsa ho khetha 'Web Server' ho tsoa ho khetho ea 'netefatso ea mosebelisi' ka tlase.
+HTTP-based authentication was detected...: Bopaki bo thehiloeng ho HTTP bo fumanoe. Netefatso ea mosebelisi e sebetsoa ke seva sa hau sa webo. U lokela ho khetha 'Web Server' lenaneng la likhetho tsa 'netefatso ea mosebelisi' ka tlase.
+Create Default Admin Account: Theha Akhaonte ea Tsamaiso e Ikemetseng
+(Admin Account Not Found): (Ak'haonte ea Tsamaiso ha e Fumane)
+User Authentication: Bopaki ba mosebelisi
+Web-based via WebCalendar (default): Webosaete ka WebCalendar (ea mantlha)
+Web Server (not detected): Web Server (ha e fumanoe)
+Web Server (detected): Web Server (e fumanoe)
+None (Single-User): Ha ho na (Single-User)
+Read-Only: Bala-Feela
+Environment: Tikoloho
+Production: Tlhahiso
+Development: Nts'etsopele
+Save Settings: Boloka Lisebelisoa
+Launch WebCalendar: Qala K'halendara ea Tepo
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Phoso nakong ea ho nchafatsa tafole "XXX": YYY.
+Conversion Successful: Phetoho e atlehile 
+Perl script required: Mofuta oa hau oa pejana oa K'halendara o hloka ho sebelisa mongolo oa PERL ho fetola data ea hau. Ka kopo matha /tools/upgrade_to_0.9.7.pl ebe u khutlela leqepheng lena ho tsoela pele.
+previous version requires updating several tables: Mofuta oa hau oa khale oa WebCalendar o hloka ho ntlafatsa litafole tse 'maloa tsa database.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: HA HO PELELETSO E FUMANEHANG
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Phoso e hokahanya le database
+Include Path: Kenyelletsa Path
+Deleting events for: Ho hlakola liketsahalo bakeng sa
+Importing events for: Ho kenya liketsahalo bakeng sa
+No data returned from: Ha ho data e khutlisitsoeng ho tsoa
+for non-user calendar: bakeng sa khalendara eo e seng ea mosebelisi
+No Remote Calendars found: Ha ho Almanaka ea Remote e fumanoeng
+Remote Calendars not enabled: Lik'halendara tse hōle ha lia lumelloa
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ha e fumane id ea ketsahalo
+could not find event id XXX in database.: e sitoa ho fumana id ea ketsahalo ho database.
+task: mosebetsi
+This is a reminder for the XXX detailed below.: Sena ke khopotso bakeng sa XXX e hlalositsoeng ka tlase.
+Pecentage Complete: Pente e Felletseng
+Reminder: Khopotso
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Ketso e sa tšehetsoeng: XXX.
+No event id specified.: Ha ho id ya ketsahalo e boletsweng.
+Not authorized (not admin).: Ha e lumelloe (eseng admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Ho lekola liketsahalo bakeng sa XXX ho tloha ka letsatsi YYY ho fihlela joale ZZZ.
+Found XXX events in time range.: E fumane liketsahalo tsa XXX ka nako.
+Event id=XXX YYY at ZZZ on AAA.: ID ea ketsahalo = XXX "YYY" ho ZZZ ho AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Ho lumella mosebelisi oa XXX ho sheba khalendara ea motho e mong.
+Error Email reminders disabled for user XXX.: Phoso: Likhopotso tsa imeile li holofalitsoe bakeng sa mosebelisi "XXX".
+Number of site_extras XXX.: Palo ea site_extras: XXX.
+Reminder set for event.: Khopotso e hlophiselitsoe ketsahalo.
+Mins Before XXX.: Mets Pele: XXX.
+Event time is XXX.: Nako ea ketsahalo ke: XXX.
+Remind time is XXX.: Nako ea khopotso ke: XXX.
+Reminders for user XXX, login YYY.: Likhopotso tsa mosebelisi "XXX", kena "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Ho se lumelloe bakeng sa mosebelisi "XXX".
+Event id=XXX YYY already sent.: ID ea ketsahalo = XXX "YYY" e se e rometsoe.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Ha ho hlokahale ho kena bakeng sa mokhoa oa motho a le mong.
+No login required for HTTP authentication.: Ha ho hlokahale ho kena bakeng sa netefatso ea HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Litlhaku li fosahetse ha u kena.
+Username XXX does not exist.: Lebitso la mosebedisi "XXX" ha le eo.
+You cannot remove admin rights from yourself!: U ke ke ua tlosa litokelo tsa admin ho uena!
+Unknown error saving user: Phoso e sa tsejoeng e boloka mosebelisi.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Ha ho barupeluoa ba fumanoeng bakeng sa id ea ketsahalo: XXX.
+Db error Could not find event id XXX.: Phoso ea Db: Ha e fumane id ea ketsahalo XXX. 
+Error Could not find event id XXX in database.: Phoso: Ha re fumane id ea ketsahalo ho database. 

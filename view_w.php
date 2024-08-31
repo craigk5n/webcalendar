@@ -56,11 +56,11 @@ if ( ! empty ( $error ) ) {
 }
 echo '
     <div style="width:99%;">
-      <a title="' . $prevStr . '" class="prev" href="view_w.php?id=' . $id
+      <a class="prev" href="view_w.php?id=' . $id
  . '&amp;date=' . sprintf ( "%04d%02d%02d", date ( 'Y', $prev ),
   date ( 'm', $prev ), date ( 'd', $prev ) ) . '">
         <img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '"></a>
-      <a title="' . $nextStr . '" class="next" href="view_w.php?id=' . $id
+      <a class="next" href="view_w.php?id=' . $id
  . '&amp;date=' . sprintf ( "%04d%02d%02d", date ( 'Y', $next ),
   date ( 'm', $next ), date ( 'd', $next ) ) . '">
         <img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '"></a>

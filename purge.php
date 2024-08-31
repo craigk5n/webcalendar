@@ -193,11 +193,9 @@ function purge_events ( $ids ) {
     ['webcal_entry', 'cal_id']];
 
   //var_dump($tables);exit;
-  $num = [];
   $cnt = count ( $tables );
-  for ( $i = 0; $i < $cnt; $i++ ) {
-    $num[$i] = 0;
-  }
+  $num = array_fill ( 0, $cnt, 0 );
+  
   foreach ( $ids as $cal_id ) {
     for ( $i = 0; $i < $cnt; $i++ ) {
       $clause = ( $cal_id == 'ALL' ? '' :

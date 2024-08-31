@@ -14,8 +14,8 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
  * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
- * @package WebCalendar
- * @subpackage Authentication
+ *
+ * @package WebCalendar\Authentication
  */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
@@ -188,7 +188,7 @@ function user_load_variables ( $login, $prefix ) {
     $GLOBALS[$prefix . 'lastname'] = $row[1];
     $GLOBALS[$prefix . 'is_admin'] = $row[2];
     $GLOBALS[$prefix . 'email'] = empty ( $row[3] ) ? '' : $row[3];
-    if ( strlen ( $row[0] ) && strlen ( $row[1] ) )
+    if ( strlen($row[0] ?? '') && strlen($row[1] ?? '') )
       $GLOBALS[$prefix . 'fullname'] = "$row[0] $row[1]";
     else
       $GLOBALS[$prefix . 'fullname'] = $login;
@@ -490,7 +490,7 @@ function user_get_users ( $publicOnly=false ) {
     "ORDER BY $order1 cal_login" );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( strlen ( $row[1] ) && strlen ( $row[2] ) )
+      if ( strlen($row[1] ?? '') && strlen($row[2] ?? '') )
         $fullname = "$row[2] $row[1]";
       else
         $fullname = $row[0];
