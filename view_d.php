@@ -20,6 +20,7 @@
  * (except for nonuser calendars... which we allow regardless of group).
  */
 // $start = microtime();
+require_once 'includes/init.php';
 require_once 'includes/views.php';
 
 $error = '';
@@ -79,7 +80,7 @@ echo <<<EOT
 
     <!-- Hidden form for booking events -->
     <form action="edit_entry.php" method="post" name="schedule">
-      ${formKey}
+      {$formKey}
       <input type="hidden" name="date"
         value="{$thisyear}{$thismonth}{$thisday}">
       <input type="hidden" name="defusers" value="{$partStr}">

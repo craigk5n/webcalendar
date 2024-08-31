@@ -21,8 +21,9 @@
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
 
+require_once 'includes/init.php';
 require_once 'includes/views.php';
-
+$id=getValue('id');
 view_init ( $id );
 
 $error = $printerStr = $unapprovedStr = '';
