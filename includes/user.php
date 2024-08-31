@@ -188,7 +188,7 @@ function user_load_variables ( $login, $prefix ) {
     $GLOBALS[$prefix . 'lastname'] = $row[1];
     $GLOBALS[$prefix . 'is_admin'] = $row[2];
     $GLOBALS[$prefix . 'email'] = empty ( $row[3] ) ? '' : $row[3];
-    if ( strlen ( $row[0] ) && strlen ( $row[1] ) )
+    if ( strlen($row[0] ?? '') && strlen($row[1] ?? '') )
       $GLOBALS[$prefix . 'fullname'] = "$row[0] $row[1]";
     else
       $GLOBALS[$prefix . 'fullname'] = $login;
