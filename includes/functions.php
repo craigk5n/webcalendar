@@ -1758,7 +1758,7 @@ function error_check ( $nextURL, $redirect = true ) {
 
   $ret = '';
   if ( ! empty ( $error ) ) {
-    print_header ( '', '', '', true );
+    print_header ( [], '', '', true );
     $ret .= '
     <h2>' . print_error ( $error ) . '</h2>';
   } else {
