@@ -84,20 +84,7 @@ if ( ! $error ) {
   // Make sure globals values passed to styles.php are for this user.
   // Makes the demo calendar and Page title accurate.
   $GLOBALS['APPLICATION_NAME'] = $s['APPLICATION_NAME'];
-  $GLOBALS['BGCOLOR'] = $s['BGCOLOR'];
-  $GLOBALS['CELLBG'] = $s['CELLBG'];
   $GLOBALS['FONTS'] = $s['FONTS'];
-  $GLOBALS['H2COLOR'] = $s['H2COLOR'];
-  $GLOBALS['HASEVENTSBG'] = $s['HASEVENTSBG'];
-  $GLOBALS['MYEVENTS'] = $s['MYEVENTS'];
-  $GLOBALS['OTHERMONTHBG'] = $s['OTHERMONTHBG'];
-  $GLOBALS['TABLEBG'] = $s['TABLEBG'];
-  $GLOBALS['TEXTCOLOR'] = $s['TEXTCOLOR'];
-  $GLOBALS['THBG'] = $s['THBG'];
-  $GLOBALS['THFG'] = $s['THFG'];
-  $GLOBALS['TODAYCELLBG'] = $s['TODAYCELLBG'];
-  $GLOBALS['WEEKENDBG'] = $s['WEEKENDBG'];
-  $GLOBALS['WEEKNUMBER'] = $s['WEEKNUMBER'];
 
   define_languages(); // Load the language list.
   reset ( $languages );
@@ -127,8 +114,9 @@ if ( ! $error ) {
 
   $option = '
                 <option value="';
-  $color_sets = $datestyle_md = $datestyle_my = $datestyle_tk = '';
-  $datestyle_ymd = $lang_list = $prefer_vu = '';
+
+  $cch = $color_sets = $datestyle_md = $datestyle_my = $datestyle_tk = '';
+  $datestyle_ymd = $lang_list = $prefer_vu = $rc = '';
   $start_wk_on = $start_wkend_on = $tabs = $user_vu = '';
   $work_hr_end = $work_hr_start = '';
 
@@ -225,10 +213,15 @@ if ( ! $error ) {
     'POPUP_BG' => translate('Event popup background'),
     'POPUP_FG' => translate('Event popup text')
   ];
+
   foreach ( $colors as $k => $v ) {
-    $handler = 'color_change_handler_' . $k;
-    $color_sets .= print_color_input_html ( $k, $v, '', '', 'p', '', $handler );
+    $GLOBALS[$k] = $s[$k];
+    // Change the color in the current page
+    $cch .= "      function color_change_handler_$k() {\n        var color = $('#admin_' + $k).val();\n\n        $('body').get(0).style.setProperty('--' + $k.toLowerCase, color);\n      }\n";
+    $color_sets .= print_color_input_html ( $k, $v, '', '', 'p', '', 'color_change_handler_' . $k );
+    $rc .= "\n        $('#admin_' + $k).val(" . $GLOBALS[$k] . ");\n        $('body').get(0).style.setProperty('--' + $k.toLowerCase, '" . $GLOBALS[$k] . "');\n";
   }
+
   $csp = ( $s['CSP'] ?: 'none' );
 
   set_today ( date ( 'Ymd' ) );
@@ -852,36 +845,13 @@ if ( ! $error ) {
       </div>
       <div style="clear:both;">
         <button class="btn btn-primary" name="" type="submit">'
-    . $saveStr . '</button>
+    . $saveStr . "</button>
       </div>
     </form>
-  </div>
-</div>
-</div>';
-
-echo "\n<script>\n";
-
-// Change the color in the current page
-foreach ( $colors as $k => $v ) {
-  echo "function color_change_handler_$k() {\n";
-    echo "  var color = $('#admin_" . $k . "').val();\n";
-    echo "  $('body').get(0).style.setProperty('--" . strtolower($k) . "', color);\n";
-  echo "}\n";
-}
-
-?>
-function reset_colors() {
-  <?php
-    foreach ( $colors as $k => $v ) {
-      echo "  $('body').get(0).style.setProperty('--" . strtolower($k) . "', '$GLOBALS[$k]');\n";
-      echo "  $('#admin_" . $k . "').val('$GLOBALS[$k]');\n";
-    }
-  ?>
-}
-
-</script>
-<?php
-
+    <script>\n" . $cch . "
+      function reset_colors() {" . $rc . '
+      }
+    </script>';
 } else {
   // if $error
   echo print_error ( $error, true );

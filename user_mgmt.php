@@ -35,11 +35,7 @@ $noPasswordError = translate('You have not entered a password.');
 $invalidFirstName = translate('Invalid first name.');
 $invalidLastName = translate('Invalid last name.');
 
-print_header(
-    '',
-    '',
-    'onload="load_users();"'
-);
+print_header ( [], '', 'onload="load_users();"' );
 
 ?>
 
@@ -418,12 +414,12 @@ print_header(
         if (add == "1") {
             isAdd = 1;
             if (login.length == 0) {
-                $('#errorMessage').html('<?php echo  $noLoginError; ?>');
+                $('#errorMessage').html('<?php echo $noLoginError; ?>');
                 $('#edit-user-dialog-alert').show();
                 return;
             }
             if (password1.length == 0) {
-                $('#errorMessage').html('<?php echo  $noPasswordError; ?>');
+                $('#errorMessage').html('<?php echo $noPasswordError; ?>');
                 $('#edit-user-dialog-alert').show();
                 return;
             }
@@ -519,7 +515,7 @@ print_header(
         var password1 = $('#setPassword1').val();
         var password2 = $('#setPassword2').val();
         if (password1.length == 0) {
-            $('#changePasswordErrorMessage').html('<?php echo  $noPasswordError; ?>');
+            $('#changePasswordErrorMessage').html('<?php echo $noPasswordError; ?>');
             $('#edit-password-dialog-alert').show();
             return;
         }

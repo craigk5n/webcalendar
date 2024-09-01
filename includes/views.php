@@ -7,6 +7,7 @@
  * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
  * @package WebCalendar
  */
+require_once 'includes/init.php';
 
 /**
   * Initialize view variables and check permissions.
