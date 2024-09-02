@@ -220,15 +220,6 @@ function load_translation_text() {
     if ( ! is_dir ( $cache_tran_dir ) ) {
       @mkdir ( $cache_tran_dir, 0777 );
       @chmod ( $cache_tran_dir, 0777 );
-      /*
-      // Do we really want to die if we can't save the cache file?
-      // Or should we just run without it?
-      if ( ! is_dir ( $cache_tran_dir ) )
-        die_miserable_death ( 'Error creating translation cache directory: "'
-           . $cache_tran_dir
-           . '"<br><br>Please check the permissions of the directory: "'
-           . $cachedir . '"' );
- */
     }
 
     $can_save = ( is_writable ( $cache_tran_dir ) );
@@ -351,21 +342,23 @@ function translate ( $str, $decode = '', $type = '' ) {
     if ( $type == 'D' ) {
       for ( $i = 0; $i < 12; $i++ ) {
         // Translate month names. Full then abbreviation.
-        $tmp = date ( 'F', mktime ( 0, 0, 0, $i + 1 ) );
+        $f = mktime ( 0, 0, 0, $i + 1 );
+        $tmp = date ( 'F', $f );
         if ( $tmp != $translations[$tmp] )
           $str = str_replace ( $tmp, $translations[$tmp], $str );
 
-        $tmp = date ( 'M', mktime ( 0, 0, 0, $i + 1 ) );
+        $tmp = date ( 'M', $f );
         if ( $tmp != $translations[$tmp] )
           $str = str_replace ( $tmp, $translations[$tmp], $str );
 
         if ( $i < 7 ) {
           // Might as well translate day names while we're here.
-          $tmp = date ( 'l', mktime ( 0, 0, 0, 1, $i + 1 ) );
+          $f = mktime ( 0, 0, 0, 1, $i + 1 );
+          $tmp = date ( 'l', $f );
           if ( $tmp != $translations[$tmp] )
             $str = str_replace ( $tmp, $translations[$tmp], $str );
 
-          $tmp = date ( 'D', mktime ( 0, 0, 0, 1, $i + 1 ) );
+          $tmp = date ( 'D', $f );
           if ( $tmp != $translations[$tmp] )
             $str = str_replace ( $tmp, $translations[$tmp], $str );
         }
@@ -394,12 +387,11 @@ function translate ( $str, $decode = '', $type = '' ) {
  * @param string   $str     Text to translate and print
  * @param string   $decode  Do we want to invoke html_entity_decode
  * @param string   $type    (A = alphabetic, D = date, N = numeric)
- * @param integer  $date    Default date()
  *
  * @uses translate
  */
-function etranslate ( $str, $decode = '', $type = 'A', $date = '' ) {
-  echo translate ( $str, $decode, $type, $date );
+function etranslate ( $str, $decode = '', $type = 'A' ) {
+  echo translate ( $str, $decode, $type );
 }
 
 /**
@@ -461,6 +453,7 @@ function define_languages() {
     translate ( 'Bengali' ) => 'Bengali',
     translate ( 'Bosnian' ) => 'Bosnian',
     translate ( 'Bulgarian' ) => 'Bulgarian',
+    translate ( 'Burmese' ) => 'Burmese',
     translate ( 'Catalan' ) => 'Catalan',
     translate ( 'Cebuano' ) => 'Cebuano',
     translate ( 'Chichewa' ) => 'Chichewa',
@@ -503,6 +496,7 @@ function define_languages() {
     translate ( 'Kazakh' ) => 'Kazakh',
     translate ( 'Khmer' ) => 'Khmer',
     translate ( 'Kinyarwanda' ) => 'Kinyarwanda',
+    translate ( 'Kiswahili' ) => 'Kiswahili',
     translate ( 'Korean' ) => 'Korean',
     translate ( 'Kurdish' ) => 'Kurdish',
     translate ( 'Kyrgyz' ) => 'Kyrgyz',
@@ -519,7 +513,6 @@ function define_languages() {
     translate ( 'Maori' ) => 'Maori',
     translate ( 'Marathi' ) => 'Marathi',
     translate ( 'Mongolian' ) => 'Mongolian',
-    translate ( 'Myanmar' ) => 'Myanmar',
     translate ( 'Nepali' ) => 'Nepali',
     translate ( 'Norwegian' ) => 'Norwegian',
     translate ( 'Odia' ) => 'Odia',
@@ -543,7 +536,6 @@ function define_languages() {
     translate ( 'Somali' ) => 'somali',
     translate ( 'Spanish' ) => 'Spanish',
     translate ( 'Sundanese' ) => 'Sundanese',
-    translate ( 'Swahili' ) => 'Swahili',
     translate ( 'Swedish' ) => 'Swedish',
     translate ( 'Tajik' ) => 'Tajik',
     translate ( 'Tamil' ) => 'Tamil',
@@ -563,12 +555,12 @@ function define_languages() {
     translate ( 'Yoruba' ) => 'Yoruba',
     translate ( 'Zulu' ) => 'Zulu',
     // Add new languages here!
-    ];
-    //Sort languages in translated order
-    asort ( $languages );
-    //make sure Browser Defined is first in list
-    $browser_defined = [translate ( 'Browser-defined' ) => 'none'];
-    $languages = array_merge ( $browser_defined, $languages );
+  ];
+  //Sort languages in translated order
+  asort ( $languages );
+  //make sure Browser Defined is first in list
+  $browser_defined = [translate ( 'Browser-defined' ) => 'none'];
+  $languages = array_merge ( $browser_defined, $languages );
 }
 
 /**
@@ -879,7 +871,7 @@ function languageToAbbrev ( $name ) {
   'he'    => 'Hebrew',
   'hi-IN' => 'Hindi', //               (India)
   'hi'    => 'Hindi',
-  'hif-FJ' => 'Hindi', //         (Fiji)
+  'hif-FJ' => 'Hindi', //              (Fiji)
   'hif'   => 'Hindi',
   'hmn'   => 'Hmong',
   'hr-BA' => 'Croatian', //            (Bosnia and Herzegovina)
@@ -965,8 +957,8 @@ function languageToAbbrev ( $name ) {
   'my'    => 'Burmese',
   // 'na-NR' => 'Nauruan', //             (Nauru)
   // 'na'    => 'Nauruan',
-  'nb-BV' => 'Norwegian', // Bokmål (Bouvet Island)
-  'nb-NO' => 'Norwegian', // Bokmål (Norway)
+  'nb-BV' => 'Norwegian', // Bokmål    (Bouvet Island)
+  'nb-NO' => 'Norwegian', // Bokmål    (Norway)
   'nb'    => 'Norwegian',
   // 'nd-ZW' => 'Northern Ndebele', //    (Zimbabwe)
   // 'nd'    => 'Northern Ndebele',
@@ -1076,11 +1068,11 @@ function languageToAbbrev ( $name ) {
   'sv-FI' => 'Swedish', //             (Finland)
   'sv-SE' => 'Swedish', //             (Sweden)
   'sv'    => 'Swedish',
-  'sw-CD' => 'Swahili', //             (Democratic Republic of the Congo)
-  'sw-KE' => 'Swahili', //             (Kenya)
-  'sw-TZ' => 'Swahili', //             (Tanzania)
-  'sw-UG' => 'Swahili', //             (Uganda)
-  'sw'    => 'Swahili',
+  'sw-CD' => 'Kiswahili', //           (Democratic Republic of the Congo)
+  'sw-KE' => 'Kiswahili', //           (Kenya)
+  'sw-TZ' => 'Kiswahili', //           (Tanzania)
+  'sw-UG' => 'Kiswahili', //           (Uganda)
+  'sw'    => 'Kiswahili',
   'ta-LK' => 'Tamil', //               (Sri Lanka)
   'ta-SG' => 'Tamil', //               (Singapore)
   'ta'    => 'Tamil',
