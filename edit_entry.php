@@ -1093,8 +1093,6 @@ $tabI = 0;
             ? $selected : '') . '>' . translate('Weekly') . '</option>
               <option value="monthlyByDay"'
           . (strcmp($rpt_type, 'monthlyByDay') == 0 ? $selected : '')
-          // translate ( 'Monthly' ) translate ( 'by day' ) translate ( 'by date' )
-          // translate ( 'by position' )
           . '>' . translate('Monthly (by day)') . '</option>
               <option value="monthlyByDate"'
           . (strcmp($rpt_type, 'monthlyByDate') == 0 ? $selected : '')
@@ -1198,7 +1196,7 @@ $tabI = 0;
           $rpt_byday_mod = $rpt_byday_label % 7;
           $class = ( is_weekend ( $rpt_byday_mod ) ? 'class="weekend" ' : '' );
           echo "
-                <th $class" . 'width="50px"><label>' . 
+                <th $class" . 'width="50px"><label>' .
             $weekday_names[$rpt_byday_mod] . '</label></th>';
         }
         echo '
