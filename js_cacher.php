@@ -46,6 +46,7 @@ header( 'Pragma: Public' );
 
 send_no_cache_header();
 load_global_settings();
+session_name(getSessionName());
 @session_start();
 
 $login = ( empty( $_SESSION['webcal_login'] )

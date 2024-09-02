@@ -21,8 +21,9 @@
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
 
+require_once 'includes/init.php';
 require_once 'includes/views.php';
-
+$id=getValue('id');
 view_init ( $id );
 
 $error = $printerStr = $unapprovedStr = '';
@@ -32,9 +33,7 @@ if ( empty ( $friendly ) ) {
   $printerStr = generate_printer_friendly ( 'month.php' );
 }
 set_today ( $date );
-print_header ( ['js/popups.js/true'],
-  '<script src="includes/js/weekHover.js?'
- . filemtime( 'includes/js/weekHover.js' ) . '"></script>' );
+print_header ( ['js/popups.js/true', 'js/weekHover.js'] );
 $trailerStr = print_trailer();
 
 $next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );

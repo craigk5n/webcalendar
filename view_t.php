@@ -296,10 +296,10 @@ $prevStr = translate ( 'Previous' );
 
 echo '
     <div style="width:99%;">
-      <a title="' . $prevStr . '" class="prev" href="view_t.php?id=' . $id .
+      <a class="prev" href="view_t.php?id=' . $id .
   '&amp;date=' . $prevdate
  . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '"></a>
-      <a title="' . $nextStr . '" class="next" href="view_t.php?id=' . $id .
+      <a class="next" href="view_t.php?id=' . $id .
   '&amp;date=' . $nextdate
  . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '"></a>
       <div class="title">

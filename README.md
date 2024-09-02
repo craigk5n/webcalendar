@@ -56,12 +56,12 @@ install script that the web service process has write permissions to.
 ### Option 2: Environment Variables
 
 Instead of using the `includes/settings.php` file for your settings, you can use environment
-variables instead. 
+variables instead.
 This is primarily targeted towards those running WebCalendar in containers (docker, AWS Fargate, etc)
-where it's easier to pass in environment settings than to write to a config file on a container. 
+where it's easier to pass in environment settings than to write to a config file on a container.
 You can do this with the docker-compose file if you are using docker.
 If you want to do this with a standard Web Server,
-you can set the evironment variables within your web server's configuration. 
+you can set the evironment variables within your web server's configuration.
 Depending on your web server, there may be more than one way to do this.  You could
 do this in your `php.ini` file, but those env vars would be available to all PHP apps
 on the server.  A better solution would be to setup a `.htaccess` file in your
@@ -93,19 +93,6 @@ and MariaDb running that is setup with the `docker-compose` command.
 
 - Start the containers:
   `docker-compose -f docker/docker-compose-php8.yml up`
-- In order to grant the proper permissions inside of MariaDb, you
-  will need to run a few MySQL commands.  First shell into the mariadb
-  container: `docker-compose -f docker/docker-compose-php8.yml exec db /bin/sh`
-- Start up the db client: `/bin/mariadb -p` (the password will be
-  "Webcalendar.1" as specified in the `docker-compose-php8.yml' file.  You
-  can change it to make your dev environment more secure (before you
-  build the containers in step above).
-- Run the following db commands:
-  ```
-  GRANT ALL PRIVILEGES ON *.* TO webcalendar_php8@localhost IDENTIFIED BY 'Webcalendar.1' WITH GRANT OPTION;
-  FLUSH PRIVILEGES;
-  QUIT
-  ```
 - Start up your web browser and go to:
   [http://localhost:8080/](http://localhost:8080/).
 - Follow the guided web-based setup and choose "mysqli" as the database
@@ -125,19 +112,6 @@ files in the container.
   `docker-compose -f docker/docker-compose-php8-dev.yml build`
 - Start the containers with
   `docker-compose -f docker/docker-compose-php8-dev.yml up`
-- In order to grant the proper permissions inside of MariaDb, you
-  will need to run a few MySQL commands.  First shell into the mariadb
-  container: `docker-compose -f docker/docker-compose-php8-dev.yml exec db /bin/sh`
-- Start up the db client: `/bin/mariadb -p` (the password will be
-  "Webcalendar.1" as specified in the `docker-compose-php8-dev.yml' file.  You
-  can change it to make your dev environment more secure (before you
-  build the containers in step above).
-- Run the following db commands:
-  ```
-  GRANT ALL PRIVILEGES ON *.* TO webcalendar_php8@localhost IDENTIFIED BY 'Webcalendar.1' WITH GRANT OPTION;
-  FLUSH PRIVILEGES;
-  QUIT
-  ```
 - Start up your web browser and go to:
   [http://localhost:8080/](http://localhost:8080/).
 - Follow the guided web-based setup and choose "mysqli" as the database

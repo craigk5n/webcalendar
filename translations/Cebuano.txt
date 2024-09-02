@@ -1,0 +1,2386 @@
+# Cebuano ceb
+#
+# Gihubad sa: imong ngalan ug email
+# Katapusan nga pag-update: ang petsa sa paghubad
+# (Kauban ang nanguna nga "#" ug bisan unsang mga komentaryo nga gihimo sa mga nangaging maghuhubad.
+# Ang UNANG blangko nga linya nagtapos sa mga komentaryo sa header.)
+#
+# Gisundan sa kadaghanan kung kinahanglan:
+#
+# Ingles nga hugpong sa mga pulong: hubad
+# (Usa sa usa ka linya. WALA ang nanguna nga "#".
+# Ang "Ingles nga hugpong sa mga pulong:", lakip ang colon ":", gihatag sa
+# Mga taghimo sa WebCalendar. Ang imong bahin mao ang "hubad".)
+#
+# Ang direktoryo sa mga himan adunay sulud nga duha nga mga script nga makatabang kanimo:
+# - check_translation.pl
+#  Gipakita sa kung ang tanan nga teksto malampuson nga nahubad.
+# - update_translation.pl
+# parse ang mga file sa programa aron makapangita ang tanan paghubad ('hugpong sa mga pulong') ug
+# tooltip ('hugpong sa mga pulong'). Kini ang maghikay sa mga hugpong sa mga pulong sumala sa panid
+# (file) nga adunay sulud nga una nga panghitabo. Sa kapilian, mahimo’g tag ang
+# mga hugpong sa mga pulong nga wala pa mahubad pinaagi sa pagbutang
+# << MISSING  >>
+# sa linya sa taas sa hugpong sa mga pulong. Ug, kung ang hugpong sa mga pulong usa ka pagmobu,
+# ilakip niini ang tibuuk nga teksto sa Ingles sa linya sa ubus sa hugpong sa mga pulong.
+#
+# Hinumdomi: Gisulayan nako nga putlon ang kinatibuk-ang gidak-on sa file. Kung ang "hubad"
+# Ang pulong / hugpong sa mga pulong parehas sa imong sinultian ug Ingles, gamit lang usa ka karatula nga "=".
+#
+# Hinumdomi: Mamatikdan nimo ang entry alang sa "May_" sa ubus. Adunay hinungdan niini.
+# Paghubad sa "May_" sa tibuuk nga ngalan sa bulan ug "May" sa,
+# kasagaran tulo nga letra, pagmubo sa bulan (sama sa "Okt" alang sa "Oktubre").
+#
+# Gigamit nako ang paghubad sa Google alang niini.
+# Kinahanglan igo na kini hangtod mapamatud-an kini sa usa ka lumad nga mamumulong.
+# Ang pormat naglangkob sa usa ka kapilian nga ulohan:
+# Bruce Bannnon <wdDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: bersyon XXX
+WebCalendar is a PHP application used...: Ang WebCalendar usa ka aplikasyon sa PHP nga gigamit aron mapadayon ang usa ka kalendaryo alang sa usa ka naggamit o usa ka grupo sa mga ninggamit sa internet / intranet. Mahimo usab kini ma-configure ingon usa ka kalendaryo sa kalihokan.
+Credits: Mga Kredito
+About: Mahitungod sa
+OK: OK ra
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Sayup sa database: XXX.
+DEFAULT CONFIGURATION: =
+Go: Lakaw
+Save: Pagtipig
+Undo: Pagtangtang
+Public Access: Pag-access sa Publiko
+Admin: =
+User Access Control: Pagpugong sa Pag-access sa Gumagamit
+Allow Access to Other Users Calendar: Tugoti ang Pagsulud sa Kalendaryo sa Ubang mga Gumagamit
+Grant This User Access to My Calendar: Hatagi Kini nga Paggamit Access sa Akong Kalendaryo
+Type: Matang
+Calendar: Kalendaryo
+View Event: Tan-awa ang Hinabo
+View: Tan-awa
+Edit: Pag-edit
+Approve/Reject: Aprobahan / Isalikway
+Events: Mga panghitabo
+Tasks: Mga Buluhaton
+Journals: Mga Panaw
+Can Invite: Mahimo Pagdapit
+Can Email: Mahimo Email
+Can See Time Only: Makita ra ang Oras
+Assistant: Katabang
+Select All: Pilia ang Tanan
+Clear All: Tin-aw ang Tanan
+Public: Publiko
+Confidential: Kompidensyal
+Private: Pribado
+
+########################################
+# Page: activity_log.php
+#
+Next: Sunod
+Previous: Kaniadto
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Ang kalihokan nga XXX naa na sa imong kalendaryo.
+Invalid entry id XXX.: Dili balido nga id sa pagsulud: "XXX".
+a XXX event may not be added to your calendar: Kini usa ka kalihokan sa XXX ug mahimong dili madugang sa imong kalendaryo.
+confidential: kompidensyal
+private: pribado
+Error adding event XXX.: Sayup sa pagdugang hitabo: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Dili husto nga ngalan sa setting nga "XXX".
+Select: Pagpili
+Day: Adlaw
+Week: Semana
+Month: Bulan
+Year: Tuig
+Bottom: Ubos
+Top: Taas
+Anyone: Bisan kinsa
+Participant: Sumasalmot
+Settings: Mga setting
+Groups: Mga grupo
+NonUser Calendars: Mga Kalendaryo nga Dili Gumamit
+Other: Uban pa
+Email: =
+Colors: Mga kolor
+Document background: Kasayuran sa dokumento
+Document title: Ulohan sa dokumento
+Document text: Teksto sa dokumento
+My event text: Akong text sa panghitabo
+Table grid color: Kulay sa grid sa lamesa
+Table header background: Ang background sa header sa lamesa
+Table header text: Teksto sa header sa lamesa
+Table cell background: Kasayuran sa background sa cell
+Table cell background for current day: Ang background sa lamesa sa cell alang sa karon nga adlaw
+Table cell background for days with events: Ang background sa lamesa sa cell sa mga adlaw nga adunay mga hitabo
+Table cell background for weekends: Ang background sa lamesa sa cell sa katapusan sa semana
+Table cell background for other month: Ang background sa lamesa sa cell alang sa uban pang bulan
+Week number color: Kulay sa numero sa semana
+Event popup background: Ang background popup sa kalihokan
+Event popup text: Teks sa popup nga panghitabo
+System Settings: Mga setting sa System
+Help: Tabang
+System options: Mga kapilian sa sistema
+app-name-help: Gitino ang ngalan sa aplikasyon nga makita sa ulohan sa browser browser alang sa tanan nga mga panid ug sa panid sa pag-login. Ang kantidad nga imong gipiho dinhi makita sa mga file nga gihubad nga nagtugot kanimo sa paghatag lainlaing mga titulo alang sa lainlaing mga sinultian.
+Application Name: Ngalan sa Paggamit
+Translated Name (XXX): Gihubad nga Ngalan (XXX)
+server-url-help: Gitino ang base URL alang sa aplikasyon. Ilakip kini kung nagpadala mga email nga pahinumdom ug pahibalo.
+Server URL: =
+home-url-help: Gitino ang home URL alang sa aplikasyon. Mahimo kini usa ka hingpit o paryente
+Home URL: URL sa balay
+language-help: Gitino kung unsang sinultian ang gamiton.
+Language: Sinultian
+Your browser default language is XXX.: Ang imong sinultian nga default sa browser mao ang "XXX".
+Allow user to use themes: Tugoti ang gumagamit nga mogamit mga tema
+themes-help: Gitugotan ang daghang pag-update sa mga setting sa pagsasaayos. Ang mga label nga labi ka gamay ang gigamit nga pref sa gumagamit.
+Themes: Mga tema
+AVAILABLE THEMES: MAKITA NGA TEMA
+None: Wala
+Preview: =
+Site customization: Pagpahiangay sa site
+custom-script-help: Nagtugot sa pagsulud sa pinasahi nga teksto sa Javascript o styleheet nga igsulud sa seksyon nga "ulohan" sa HTML sa matag panid.
+Custom script/stylesheet: Pasadya nga script / styleheet
+custom-header-help: Nagtugot sa usa ka gipasadya nga HTML nga snippet nga iupod sa taas sa matag panid.
+Custom header: Pasadya nga ulohan
+custom-trailer-help: Nagtugot sa usa ka gipasadya nga HTML nga snippet nga iupod sa katapusan sa matag panid.
+Custom trailer: Pasadya nga trailer
+enable-external-header-help: Gitugotan ang custom nga trailer nga ma-load gikan sa usa ka external file
+Allow external file for header/script/trailer: Tugoti ang external file alang sa header / script / trailer
+Allow user to override header/trailer: Tugoti ang tiggamit nga i-override ang header / trailer
+Date and Time: Petsa ug Oras
+server-tz-help: Gitino kung pila ka oras aron ma-adjust ang oras gikan sa UTC hangtod sa oras sa server.
+Server Timezone Selection: Pagpili sa Timezone sa Server
+tz-help: Gitino kung pila ka oras aron ma-adjust ang oras gikan sa UTC hangtod sa lokal nga oras.
+Default Client Timezone Selection: Default nga Pagpili sa Timezone sa Client
+display-general-use-gmt-help: Kung nakaya, ang kasagarang mga petsa / oras gipakita ingon GMT
+Display Common Use Date/Times as GMT: Ipakita ang Kasagaran nga Petsa sa Paggamit / Panahon ingon GMT
+date-format-help: Gitino ang gusto nga pormat sa petsa.
+Date format: Pormat sa petsa
+Small Task Date: Gamay nga Petsa sa Buluhaton
+display-week-starts-on: Gitino ang adlaw sa semana nga magsugod ang semana. Kung gitakda ang Lunes, ang mga numero sa semana mahimong mga numero sa semana sa ISO.
+Week starts on: Nagsugod ang semana sa
+display-weekend-starts-on: Gitakda ang adlaw sa semana alang sa pagsugod sa katapusan sa semana
+Weekend starts on: Ang katapusan sa semana magsugod sa
+time-format-help: Gitino kung unsang format sa oras ang gamiton:<br><em>12 oras:</em> Ipakita ang mga oras ingon kaadlawon, 8:30 pm, ug uban pa.<br><em>24 oras:</em> Ipakita ang mga oras ingon 300 , 2030, ug uban pa.
+Time format: Pormat sa oras
+12 hour: 12 ka oras
+24 hour: 24 oras
+timed-evt-len-help: Gitino ang pamaagi sa pag-input alang sa pagtino sa gitas-on sa usa ka takdang kalihokan.
+Specify timed event length by: Ipatino ang gitas-on sa oras nga hitabo pinaagi sa
+Duration: Kadugayon
+End Time: Katapusan nga Oras
+work-hours-help: Gitino ang range sa oras aron ipakita alang sa pagtan-aw sa adlaw.
+Work hours: Mga oras sa trabaho
+From: Gikan sa
+to: sa
+Appearance: Panagway
+preferred-view-help: Gitino ang default view (Adlaw, Semana, Bulan, o Tuig).
+Preferred view: Gipalabi nga panan-aw
+Allow top menu: Tugoti ang top menu
+Date Selectors position: Petsa sa posisyon sa mga Pumili
+menu-themes-help: Gitakda ang mga kolor ug istilo sa top menu
+Menu theme: Tema sa menu
+fonts-help: Gitino ang usa ka lista sa mga font sa sistema nga gamiton (sama sa "Arial, Helvetica")
+Fonts: Mga font
+display-sm_month-help: Kung nakaya, ipakita ang gagmay nga mga bulan sa mga pagtan-aw sa bulan
+Display small months: Ipakita ang gagmay nga mga bulan
+display-weekends-help: Ilakip ang mga katapusan sa semana kung nagtan-aw sa usa ka semana.
+Display weekends: Ipakita ang katapusan sa semana
+display-long-daynames-help: Kung nakaya, daghang mga ngalan sa adlaw ang gipakita
+Display long day names: Ipakita ang mga ngalan sa taas nga adlaw
+display-alldays-help: Ipakita ang miaging ug sunod nga mga bulan adlaw sa mga pagtan-aw sa bulan, nga pun-on ang tanan nga mga selyula.
+Display all days in month view: Ipakita ang tanan nga mga adlaw sa pagtan-aw sa bulan
+display-week-number-help: Gitino kung ang numero sa semana (1-52) kinahanglan ipakita sa pagtan-aw sa bulan ug pagtan-aw sa semana.
+Display week number: Ipakita ang numero sa semana
+display-desc-print-day-help: Ilakip ang mga paghulagway sa hitabo sa bersyon nga mahigalaon sa printer sa pagtan-aw sa adlaw.
+Display description in printer day view: Ipakita ang paghulagway sa pagtan-aw sa adlaw sa tig-imprinta
+yearly-shows-events-help: Sa tinuig nga pagtan-aw, ipakita ang mga adlaw nga adunay sulud nga mga hitabo sa usa ka maisugon nga font.
+Display days with events in bold in month and year views: Ipakita ang mga adlaw nga adunay mga hitabo nga maisugon sa pagtan-aw sa bulan ug tuig
+display-minutes-help: Kung nakaya, ang mga minuto nga natapos sa: 00 kanunay ipakita
+Display 00 minutes always: Ipakita ang 00 minuto kanunay
+display-end-times-help: Ipakita ang mga oras sa pagtapos sa hitabo kung gitakda ang hitabo
+Display end times on calendars: Ipakita ang mga oras sa pagtapos sa mga kalendaryo
+allow-view-add-help: Ang usa ka icon nga '+' iupod sa mga panan-aw, nga gitugotan ang mga mogamit nga dali nga makadugang mga hitabo sa mga kalendaryo sa ubang mga tiggamit.
+Include add event link in views: Ilakip ang pagdugang link sa hitabo sa mga panan-aw
+lunar-help: Kung nakaya, magpakita gamay nga mga icon nga nagrepresentar sa mga lunar phase matag bulan
+Display Lunar Phases in month view: Ipakita ang Lunar Phases sa pagtan-aw sa bulan
+Restrictions: Mga Pagdili
+allow-view-other-help: Gitino kung ang usa ka tiggamit mahimong makatan-aw sa kalendaryo sa lain nga tiggamit.
+Allow viewing other users calendars: Tugoti ang pagtan-aw sa mga kalendaryo sa ubang mga tiggamit
+require-approvals-help: Kung gipaandar, kinahanglan aprubahan sa usa ka ninggamit ang usa ka hitabo sa wala pa kini ipakita sa ilang kalendaryo (gawas kung gipakita ang dili aprubado nga Display). Hinumdomi nga ang pagbutang niini sa "Dili" dili makapatay sa mga pag-apruba alang sa kalendaryo sa Public Access (kung gipaandar ang kalendaryo sa Public Access).
+Require event approvals: Kinahanglan ang mga pag-apruba sa hitabo
+display-unapproved-help: Gitino kung ang mga dili naaprubahan nga hitabo gipakita sa imong kalendaryo. ang dili aprubadong mga hitabo kinahanglan aprubahan sa wala pa kini ipakita sa imong kalendaryo.
+Display unapproved: Ipakita nga wala aprubahi
+conflict-check-help: Susihon kung adunay mga panagsumpaki sa hitabo (duha nga mga hitabo ang nakaiskedyul alang sa parehas nga oras alang sa parehas nga tawo). Kung itakda mo kini sa "Oo", makahimo ka pa usab sa eskedyul nga duha nga mga hitabo sa parehas nga oras pagkahuman pagkumpirma sa usa ka pasidaan. Kung itakda mo kini sa "Dili", wala’y pagsusi sa mga panagbangi ang himuon. Tingali gusto nimo nga ibutang kini sa "Oo", busa adunay pagsusi sa panagbangi.
+Check for event conflicts: Susihon kung adunay mga panagsumpaki sa hitabo
+Yes: Oo
+No: Dili
+conflict-months-help: Kung ang pagsusi sa panagsumpaki naa sa lugar ("Susihon ang mga panagbangi sa hitabo" gitakda sa "Dili" & # 41 ;, gipiho niini kung pila ka bulan sa umaabot kinahanglan namon nga susihon ang mga panagsumpaki. Kung mahibal-an nimo nga ang pagdugang mga hitabo dugay nga magproseso , minusan kini nga numero.
+Conflict checking months: Mga bulan sa pagsusi sa panagsumpaki
+conflict-check-override-help: Gitugotan ang mga tiggamit nga magpatigbabaw sa mga panagsumpaki sa hitabo ug mag-iskedyul sa duha o labaw pa nga mga hitabo alang sa parehas nga oras.
+Allow users to override conflicts: Tugoti ang mga ninggamit nga magpatigbabaw sa mga panagsumpaki
+limit-appts-help: Gitugotan ang tagdumala sa sistema nga magtakda usa ka kinutuban sa kinatibuk-ang sistema sa ihap sa mga pagtudlo nga mahimo adunay usa ka tiggamit sa bisan unsang solong adlaw.
+Limit number of timed events per day: Limitahan ang ihap sa mga gitakda nga hitabo matag adlaw
+limit-appts-number-help: Gitino ang labing kadaghan nga mga hitabo nga natakda sa oras nga mahimo sa usa ka tiggamit sa usa ka adlaw.
+Maximum timed events per day: Maximum nga natalana nga mga hitabo matag adlaw
+crossday-help: Kung gipaandar, ang mga hitabo nga naglibot sa mga adlaw ipakita sa managlahi nga mga adlaw
+Disable Cross-Day Events: I-disable ang mga Hitabo sa Cross-Day
+disable-location-field-help: Ang pagpili sa "Oo" magtangtang sa natad nga "Lokasyon" gikan sa mga panid sa kasayuran sa hitabo
+Disable Location field: I-disable ang uma sa Lokasyon
+disable-url-field-help: Ang pagpili sa "Oo" magtangtang sa natad nga "URL" gikan sa mga panid sa kasayuran sa hitabo
+Disable URL field: I-disable ang natad sa URL
+disable-priority-field-help: Ang pagpili sa "Oo" magtangtang sa natad nga "Priority" gikan sa mga panid sa kasayuran sa hitabo, maghatag usa ka labi ka yano nga interface alang sa mga bag-ohan.
+Disable Priority field: Dili paganahon ang Priority nga natad
+disable-access-field-help: Ang pagpili sa "Oo" magtangtang sa natad nga "Access" gikan sa mga panid sa kasayuran sa hitabo, maghatag usa ka labi ka yano nga interface alang sa mga bag-ohan.
+Disable Access field: I-disable ang uma sa Pag-access
+disable-participants-field-help: Ang pagpili sa "Oo" magtangtang sa natad nga "Mga Sumasalmot" gikan sa mga panid sa kasayuran sa hitabo, mapugngan ang mga tiggamit sa pagdugang ubang mga tiggamit sa ilang mga hitabo. Kung gipalihok nimo kini nga kapilian, mahimo nimo nga gusto usab nga pag-disable ang uma nga "Tugoti ang pagtan-aw usab sa mga kalendaryo sa ubang mga gumagamit."
+Disable Participants field: Dili paganahon ang uma sa mga Sumasalmot
+disable-repeating-field-help: Ang pagpili sa "Oo" makatangtang sa natad nga "Balik-balik" kung nagdugang mga hitabo. Maghatag kini usa ka labi ka yano nga interface alang sa mga bag-ohan.
+Disable Repeating field: I-disable ang balikbalik nga natad
+allow-html-description-help: Kung nakaya, ang mga ninggamit mahimong makasulud HTML sa natad sa paghulagway sa kalihokan. Kung dili mapagan, ang mga HTML tag makagawas aron makita ingon yano nga teksto. Pasidaan: Ang pagpadagan sa kini nga dagway magtugot sa mga ninggamit nga maghisgot mga imahe sa ubang mga website.
+Allow HTML in Description: Tugoti ang HTML sa Paghulagway
+Popups: Mga Popup
+disable-popups-help: I-disable ang mga popup gikan sa mga panan-aw sa kalendaryo
+Disable Pop-Ups: I-disable ang mga Pop-Up
+popup-includes-siteextras-help: Kung nakaya, tugoti ang pag-setup sa mga kostumbre nga kustombre sa site_extras.php file nga makita sa mga popup sa kalihokan.
+Display Site Extras in popup: Ipakita ang mga Extra sa Site sa pag-popup
+popup-includes-participants-help: Kung gipaandar, ang mga sumasalmot gipakita sa mga popup sa kalihokan.
+Display Participants in popup: Ipakita ang mga Sumasalmot sa pag-popup
+Miscellaneous: =
+remember-last-login-help: Kung mahimo, ang pag-login sa gumagamit mapuno alang sa kanila sa panid sa pag-login (apan dili ang password), ug ang mga gusto sa gumagamit mag-load (lakip ang ilang gusto nga mga kolor ug pagpili sa sinultian).
+Remember last login: Hinumdomi ang katapusan nga pag-login
+summary_length-help: Maximum nga gitas-on sa Mubo nga Paghulagway sa mga panan-aw sa kalendaryo
+Brief Description Length: Mubo nga Paghubit sa gitas-on
+user_sort-help: Gitino ang pagkahan-ay sa pagkahan-ay alang sa mga lista sa Gumagamit, Nonuser
+User Sort Order: Order sa Pag-sort sa Gumagamit
+Lastname, Firstname: Apelyido, Apelyido
+Firstname, Lastname: Apelyido, Apelyido
+allow-public-access-help: Kung mahimo, ang kalendaryo mahimong magamit ingon usa ra ka mabasa nga publiko nga kalendaryo nga dili kinahanglan nga mag-login ang mga ninggamit.
+Allow public access: Tugoti ang pagsulud sa publiko
+public-access-default-visible: Ang mga panghitabo gikan sa publiko nga kalendaryo awtomatikong makita sa mga kalendaryo sa tanan nga mga tiggamit
+Public access visible by default: Makita sa publiko ang pag-access sa publiko pinaagi sa default
+public-access-default-selected: Kung nagdugang usa ka bag-ong kalihokan, ang ninggamit sa publiko mapili ingon default ingon usa ka sumasalmot.
+Public access is default participant: Ang publiko nga pag-access default nga sumasalmot
+public-access-view-others-help: Kung gi-access ang sistema nga adunay publikong pag-access, gipiho kung ang makagamit makatan-aw sa kalendaryo sa usa pa nga gigamit nga kalendaryo.
+Public access can view other users: Makita sa publiko ang ubang mga ninggamit
+public-access-can-add-help: Kung mahimo, ang mga ninggamit nga maka-access sa sistema pinaagi sa Public Access makahimo sa pagdugang bag-ong mga panghitabo, apan dili sila magpakita sa kalendaryo hangtod nga aprubahan sa usa ka tagdumala ang bag-ong hitabo.
+Public access can add events: Ang pag-access sa publiko mahimong makadugang mga hitabo
+public-access-add-requires-approval-help: Gitino kung ang mga hitabo nga gidugang pinaagi sa account sa publiko nga pag-access nanginahanglan pagtugot sa wala pa ipakita.
+Public access new events require approval: Ang pag-access sa publiko bag-ong mga hitabo nanginahanglan pagtugot
+public-access-sees-participants-help: Kung gipaandar, ang mga ninggamit nga naga-access sa kalendaryo gikan sa publikong account mahimong makita ang mga partisipante sa kalihokan kung makita nila ang mga detalye sa usa ka hitabo.
+Public access can view participants: Makita sa publiko ang mga partisipante
+public-access-override-help: Gitugotan ang mga ngalan ug paghulagway sa hitabo nga matago sa publikong kalendaryo
+Override event name/description for public access: Pagpatigbabaw sa ngalan / paghulagway sa panghitabo alang sa pag-access sa publiko
+public-access-override-text-help: Ang teksto aron ipakita kung gipili ang kapilian sa taas. Kung 'Dili Magamit', mahubad kini.
+Text to display to public access: Text aron ipakita sa publiko nga pag-access
+public-access-captcha-help: Kung gipaandar, ang mga bag-ong panghitabo nga gidugang sa Publiko nagkinahanglan pagpasa sa usa ka pagpalig-on sa CAPTCHA.
+Require CAPTCHA validation for public access new events: Gikinahanglan ang pagpanghimatuud sa CAPTCHA alang sa publiko nga pag-access sa mga bag-ong hitabo
+uac-enabled-help: Gipalihok ang pagpugong sa pag-access sa lebel sa gumagamit
+User Access Control enabled: Gihimo ang Pagkontrol sa Pag-access sa User
+groups-enabled-help: Gipalihok ang suporta sa grupo, gitugotan ang mga mogamit nga mapili ang mga mogamit pinaagi sa mga grupo.
+Groups enabled: Gihimo ang mga grupo
+user-sees-his-group-help: Kung gipaandar, dili makita sa mga mogamit ang mga tiggamit sa kalendaryo nga wala bisan usa sa ilang mga grupo.
+User sees only his groups: Ang iyang mga grupo ra ang makita sa tiggamit
+nonuser-enabled-help: Kung gipaandar, ang mga admin adunay kapilian nga magdugang mga kalendaryo nga dili gigamit
+Nonuser enabled: Gipalihok ang mga Kalendaryo sa Nonuser
+nonuser-list-help: Kung diin ipakita ang mga kalendaryo nga dili gigamit sa lista sa mga partisipante
+Nonuser list: Ipakita sa lista sa mga partisipante sa
+Upcoming Events: Umaabot nga mga hitabo
+upcoming-events-help: Pagpalihok sa umaabot.php
+Enabled: Gipalihok
+upcoming-events-allow-override: Tugoti ang tiggamit sa paramter alang sa umaabot.php
+Allow user override: Tugoti ang pag-override sa tiggamit
+upcoming-events-display-caticons: Ilakip ang mga icon sa kategorya sa umaabot.php
+Display category icons: Ipakita ang mga icon sa kategorya
+upcoming-events-display-layers: Ipakita ang mga sapaw sa umaabot.php
+Display layers: Ipakita ang mga sapaw
+upcoming-events-display-links: Ipakita ang mga link sa umaabot.php
+Display links to events: Ipakita ang mga link sa mga hitabo
+upcoming-events-display-popups: Ipakita ang mga popup sa hitabo sa umaabot.php
+Display event popups: Ipakita ang mga popup sa kalihokan
+reports-enabled-help: Kung gipaandar, makita sa mga mogamit ang usa ka seksyon nga "Mga Report" sa ubus sa matag panid ug tugotan nga makahimo og mga naandan nga mga ulat. Ingon kadugangan, ang mga tiggamit sa admin mahimong makahimo mga tibuuk kalibutan nga mga report nga makita sa ilawom sa mga panid sa tanan nga mga ninggamit.
+Reports enabled: Gihimo ang mga report
+subscriptions-enabled-help: Gitino kung ang mga hilit nga tiggamit mahimong mag-subscribe sa kalendaryo sa usa ka WebCalendar nga nagtugot kanila nga makita ang mga hitabo sa taggamit sa WebCalendar sa ilang aplikasyon nga gipaandar sa iCal (sama sa iCal o Mozilla Calendar sa Apple)
+Allow remote subscriptions: Tugoti ang hilit nga mga suskrisyon
+remotes-enabled-help: Gitugotan ang mga ninggamit mag-load sa mga hilit nga file sa ics gamit ang URL
+Allow remote calendars: Tugoti ang mga hilit nga kalendaryo
+rss-enabled-help: Gitino kung ang kalendaryo sa usa ka mogamit mahimong makuha gikan sa usa ka RSS feed.
+Enable RSS feed: Pagpalihok sa RSS feed
+categories-enabled-help: Gipalihok ang suporta alang sa mga kategorya sa panghitabo.
+Categories enabled: Gibuhat ang mga kategorya
+icon_upload-enabled-help: Kung gipaandar, mahimo mag-upload ang mga taggamit mga kategorya sa kategorya
+Category Icon Upload enabled: Gihimo ang Pag-upload sa Icon sa kategorya
+(Requires XXX folder to exist.): (Gikinahanglan nga maglungtad ang XXX folder.)
+display-tasks-help: Pagpakita gamay nga bintana sa buluhaton sa kalendaryo bulan ug adlaw
+Display small task list: Ipakita ang gamay nga lista sa buluhaton
+display-tasks-in-grid-help: Ipakita ang mga buluhaton sa mga kalendaryo kauban ang mga hitabo
+Display tasks in Calendars: Ipakita ang mga buluhaton sa mga Kalendaryo
+allow-external-users-help: Gitino kung ang usa ka dili tiggamit sa kalendaryo mahimong madugang sa usa ka hitabo. Gitugotan niini ang mga tiggamit nga dili kalendaryo nga malista isip mga partisipante sa kalihokan.
+Allow external users: Tugoti ang mga mogamit sa gawas
+external-can-receive-notification-help: Kung gipaandar ang mga panggawas nga ninggamit ug gipaandar ang paggamit sa email, ang mga panggawas nga tiggamit makadawat mga pahibalo sa email kung ang kalihokan nahidugang, na-update o gitangtang (kung gihatag ang email address sa gawas nga taggamit).
+External users can receive email notifications: Ang mga panggawas nga mogamit makadawat mga pahibalo sa email
+external-can-receive-reminder-help: Kung gipaandar ang mga panggawas nga ninggamit ug gipaandar ang paggamit sa email, ang mga panggawas nga tiggamit makadawat mga pahinumdom sa email (kung gihatag ang email address sa taggamit sa gawas).
+External users can receive email reminders: Ang mga panggawas nga mogamit makadawat mga pahinumdom sa email
+allow-self-registration-help: Tugoti ang mga bag-ong mogamit nga magparehistro sa ilang kaugalingon
+Allow self-registration: Tugoti ang pagparehistro sa kaugalingon
+use-blacklist-help: Limitahan ang pag-access sa mga gimbuhaton sa WebCalendar pinauyon sa IP address
+Restrict self-registration to blacklist: Pagdili sa pagparehistro sa kaugalingon sa blacklist
+allow-self-registration-full-help: Tugoti ang mga bag-ong mogamit nga makumpleto ang proseso sa pagrehistro sa kaugalingon nga online
+Use self-registration email notifications: Paghimo password ug ipadala sa bag-ong mga ninggamit
+allow-attachment-help: Tugoti ang mga ninggamit nga magdugang file file sa mga hitabo.
+Allow file attachments to events: Tugoti ang mga pagdugtong sa file sa mga hitabo
+Admin and owner can always add attachments if enabled.: Ang tagdumala ug tag-iya kanunay makadugang mga pagdugang kung gipaandar.
+allow-comments-help: Tugoti ang mga ninggamit nga magdugang mga komento sa mga hitabo.
+Allow comments to events: Tugoti ang mga komento sa mga hitabo
+Admin and owner can always add comments if enabled.: Ang tagdumala ug tag-iya kanunay makadugang mga komentaryo kung gipaandar.
+email-enabled-help: I-on o i-off ang tanan nga pagpadala sa email alang sa pahibalo ug mga pahinumdom. Itakda sa "dili", kung ang imong server dili husto nga pag-setup aron ipadala ang mail.
+Email enabled: Gipadagan ang email
+email-default-sender: Gitino ang email address aron matino ingon ang nagpadala kung nagpadala mga pahinumdom.
+Default sender address: Default nga adres sa nagpadala
+email-mailer: Pilia ang tipo sa email (SMTP, PHP mail, sendmail)
+Email Mailer: =
+email-smtp-host: Ang (mga) hostname sa (mga) server sa SMTP nga gibulag sa mga kuwit
+SMTP Host name(s): Ngalan sa (mga) SMTP Host
+email-smtp-port: SMTP Port Number (kasagaran 25)
+SMTP Port Number: Numerong sa SMTP Port
+email-smtp-auth: Paggamit SMTP Pagpanghimatuud
+SMTP Authentication: Pag-ila sa SMTP
+email-smtp-username: SMTP Username kung mogamit Authentication
+SMTP Username: =
+email-smtp-password: Ang SMTP Password kung gigamit ang Pag-ila
+SMTP Password: Password sa SMTP
+Default user settings: Mga setting sa default nga tiggamit
+email-format: Gitino ang pagpalabi alang sa HTML o yano nga mga text message
+Email format preference: Gusto sa format sa email
+HTML: =
+Plain Text: Plain nga Teksto
+email-include-ics: Paglakip us aka iCalendar ICS file aron i-email ang mensahe
+Include iCalendar attachments: Pag-upod sa mga pag-apil sa iCalendar
+email-event-reminders-help: Gitino kung ipadala ba o dili ang mga pahinumdom sa hitabo.
+Event reminders: Mga pahinumdom sa hitabo
+email-event-added: Gitino kung ipadala o dili ang mga pahibalo sa email kung ang usa ka kalihokan gidugang sa imong kalendaryo.
+Events added to my calendar: Mga hitabo nga gidugang sa akong kalendaryo
+email-event-updated: Gitino kung ipadala o dili ang mga pahibalo sa email kung ang usa ka hitabo gi-update sa imong kalendaryo.
+Events updated on my calendar: Mga panghitabo gi-update sa akong kalendaryo
+email-event-deleted: Gitino kung ipadala o dili ang mga pahibalo sa email kung ang usa ka kalihokan gikuha sa imong kalendaryo.
+Events removed from my calendar: Gikuha ang mga hitabo sa akong kalendaryo
+email-event-rejected: Gitino kung ipadala o dili ang mga pahibalo sa email kung ang usa ka partisipante isalikway ang usa ka kalihokan nga naa sa imong kalendaryo.
+Event rejected by participant: Ang kalihokan gisalikway sa mga sumasalmot
+email-event-create: Gitino kung ang naghimo sa mga entry makadawat usa ka email
+Event that I create: Hinabo nga akong gihimo
+Color options: Mga kapilian sa kolor
+Allow user to customize colors: Tugoti ang tiggamit nga ipasadya ang mga kolor
+gradient-colors: Kung gigamit ang mga kolor sa gradient gigamit. Kini makaapektar pag-ayo sa pagbuhat.
+Enable gradient images for background colors: Paglihok sa gradient nga mga imahe alang sa mga kolor sa background
+Not available: Dili magamit
+Background Image options: Mga kapilian sa Larawan sa Background
+bgimage-help: URL sa gitinguha nga hulagway sa background. Mahimong relatibo nga link.
+Background Image: Hulagway sa Background
+bgrepeat-help: Gikontrol ang gisubli nga kinaiya sa imahe sa background.
+Background Repeat: Balika sa Background
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Mga katabang
+Preferences: Mga gusto
+Control Panel: =
+Users: Mga ninggamit
+Account: =
+Categories: Mga kategorya
+Views: Mga panan-aw
+Layers: Mga sapaw
+Reports: Mga taho
+Delete Events: Pagtangtang sa mga Hitabo
+Activity Log: Log sa kalihokan
+System Log: Pag-log sa Sistema
+Security Audit: =
+Public Preferences: Mga Kagustuhan sa Publiko
+Unapproved Public Events: Wala aprubahi nga mga Hinabo sa Publiko
+Administrative Tools: Mga Himan sa Pagdumala
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Dobleng Ngalan: "XXX".
+Username XXX already exists.: Naa na ang username nga "XXX".
+Email address XXX already exists.: Adunay na email address nga "XXX".
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Dugang nga mga Komento (kapilian)
+Approve and Send: Aprobahan ug Ipadala
+Approve and Exit: Pag-uyon ug Paggawas
+(Your comments will be emailed to the event creator.): (Ang imong mga komento i-email sa taghimo sa hitabo.)
+Hello, XXX.: Kumusta, XXX.
+XXX has approved an appointment and added comments.: Usa ka appointment ang naaprubahan ug mga komento nga gidugang ni XXX.
+Subject XXX: Paksa: "XXX".
+Description XXX: Paghulagway: "XXX".
+Date XXX: Petsa: XXX
+Time XXX: Oras: XXX
+Comments XXX: Mga Komento: XXX
+Approved w/Comments by XXX.: Gi-aprubahan w / Mga Komento ni: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: =
+Your assistants: Imong mga katabang
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Wala mahibal-an nga sayup.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Kasaypanan sa Programa: Wala gipiho nga XXX!
+user: tiggamit
+year: tuig
+month: bulan
+day: adlaw
+
+########################################
+# Page: category.php
+#
+Category Icon: Icon sa kategorya
+Global: Tibuok kalibutan
+The permissions for the icons directory are set to read-only: Ang mga pagtugot alang sa direktoryo sa mga icon gitakda sa pagbasa ra.
+Category Name: Ngalan sa kategorya:
+Color: Kolor
+Remove Icon: Kuhaa ang Icon:
+Add Icon to Category: Idugang ang Icon sa Category
+Upload: Pag-upload
+GIF or PNG 6kb max: GIF o PNG 6kb max
+Search for existing icons: Pagpangita alang sa adunay mga icon
+Add: Idugang
+Delete: Pagtangtang
+Are you sure you want to delete this entry?: Sigurado ka nga gusto nimong tangtangon ang kini nga entry?
+Make New Category: Paghimo Bag-ong kategorya
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Gikinahanglan ang ngalan sa kategorya
+File size exceeds maximum.: Labaw sa maximum ang kadako sa file.
+File is not a GIF or PNG image: Ang file dili usa ka imahen nga GIF o PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: KINAHANGLAN NGA KATEGORYA
+ENTRY CATEGORIES: KATEGORYA SA PAGSULOD
+Remove: Kuhaa
+Global Category: Kalibutan nga kategorya
+Cancel: Kanselahon
+
+########################################
+# Page: colors.php
+#
+Add Custom: Idugang ang Pasadya
+Basic Colors: Panguna nga Mga Kolor
+Current Color: Karon nga Kolor
+Custom Colors: Pasadya nga mga Kolor
+Old Color: Daang Kolor
+
+########################################
+# Page: combo.php
+#
+Select None: Pagpili Wala
+Agenda: =
+Add Task: Idugang ang Buluhaton
+Description: Paghulagway
+Date: Petsa
+Time: Panahon
+Priority: Unahon
+Access: Pag-access
+Created by: Gibuhat ni
+Updated: Gi-update
+Participants: Mga sumasalmot
+Attachments: Mga dugtong
+Comments: Mga Komento
+Brief Description: Mubo nga Paghulagway
+Full Description: Tibuok nga Paghulagway
+Category: Kategoryang
+Add event detail: Pagdugang detalye sa hitabo
+Start Date: Petsa sa Pagsugod
+Due Date: Takdang Petsa
+Add task detail: Idugang ang detalye sa buluhaton
+All: Tanan
+Error: Sayup
+no response from server: walay tubag gikan sa server
+JSON error: Sayup ni JSON
+High: Taas
+Medium: =
+Low: Ubos
+Today: Karon
+Add Entry: Idugang Entry
+Unnamed Event: Wala Ngalan nga Hinabo
+Unnamed Task: Wala nganli nga Buluhaton
+Refresh: =
+Click to add entry: Pag-klik aron makadugang pagsulud
+Name: Ngalan
+pm: =
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: Gikanselar sa XXX ang usa ka pakigsabot.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Dili balido nga blob id
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Pagdugang Komento
+Add Attachment: Pagdugang Attachment
+Subject: Hilisgutan
+Comment: Komento
+Upload file: Pag-upload sa file
+
+########################################
+# Page: docdel.php
+#
+Removed: Gikuha
+
+########################################
+# Page: edit_entry.php
+#
+days: mga adlaw
+hours: oras
+minutes: minuto
+You are not authorized to edit this task.: Wala ka gitugotan sa pag-edit sa kini nga buluhaton.
+is in a different timezone than you are. Currently: naa sa lahi nga timezone kaysa kanimo. Karon
+hour ahead of you: oras sa unahan nimo
+hour behind you: oras sa imong likud
+hours ahead of you: mga oras sa unahan nimo
+hours behind you: mga oras sa imong likud
+XXX is in a different timezone (ahead): (Ang XXX naa sa lainlaing timezone; nauna ang YYY sa imo.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (Ang XXX naa sa lainlaing timezone; YYY sa imong likud.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Ang oras nga gisulud dinhi gibase sa imong Timezone.
+Edit Entry: Pag-edit sa Entry
+Details: Mga Detalye
+Repeat: Pag-usab
+Reminders: Mga Pahinumdom
+brief-description-help: Kinahanglan kini maghatag usa ka mubu nga paghulagway (mga 20 ka karakter) sa hitabo. Kini magrepresentar sa hitabo kung magtan-aw sa kalendaryo.
+full-description-help: Kinahanglan kini makumpleto ang mga detalye sa hitabo. Makita kini nga kasayuran kung tan-awon sa usa ka ninggamit ang hitabo.
+access-help: Gitino ang lebel sa pag-access sa hitabo. <ul> <li> Publiko: Makita sa tanan ang bug-os nga detalye sa hitabo.</li> <li> Confidential: Makita sa uban nga adunay ka entry alang sa kana nga petsa ug oras, apan dili ang mga detalye kung unsa kini.</li></ul>
+priority-help: Gitino ang prayoridad sa hitabo. Ang mga hinabo nga labing hinungdanon igpakita sa maisugon.
+category-help: Gitino ang kategorya sa hitabo.
+completed-help: Nahuman ang buluhaton sa petsa. Gipalihok ra kung ang tanan nga porsyento sa mga partisipante katumbas sa 100%.
+Date Completed: Petsa Nahuman
+percent-help: Porsyento sa pagkompleto sa buluhaton alang sa kini nga ninggamit
+Percent Complete: Nahuman ang Porsyento
+All Percentages: Tanan nga Porsyento
+location-help: Lokasyon sa kalihokan
+Location: Lokasyon
+url-help: URL sa Hinabo
+URL: =
+date-help: Gitino ang petsa sa hitabo.
+Untimed event: Wala’y untat nga hitabo
+Timed event: Natalana nga hitabo
+All day event: Hingpit nga adlaw nga hitabo
+Timezone Offset: Ang Offset sa Timezone
+time-help: Gitino ang oras sa hitabo. <ul> <li> "Ordinado nga hitabo" (alang sa usa ka hitabo nga nakaiskedyul alang sa usa ka piho nga oras sa kana nga adlaw)</li> <li> "Wala’y panahon nga hitabo" (alang sa usa ka hitabo wala kini oras (sama sa piyesta opisyal )</li> <li> "Tibuok adlaw nga hitabo" (alang sa usa ka hitabo nga molungtad sa tibuok adlaw (sama sa paggawas sa opisina)</li></ul>
+duration-help: Gitino ang gidugayon (sa mga oras; minuto) sa hitabo. <em>Kini nga uma mahimong mahabilin nga blangko.</em>
+end-time-help: Gitino ang oras nga gilauman nga matapos ang hitabo.
+Start Time: Oras sa Pagsugod
+Due Time: Takdang Panahon
+Site Extras: Mga Extra sa Site
+avail_participants-help: Gilista ang magamit nga mga partisipante sa kini nga entry.
+Available: Magamit
+Find Name: Pagpangita Ngalan
+Resources: Mga Kapanguhaan
+participants-help: Gilista ang mga partisipante sa kini nga entry.
+Selected: Gipili
+Availability: Pagkuha
+external-participants-help: Gitino ang usa ka lista sa mga partisipante alang sa kalihokan nga dili mga tiggamit sa kalendaryo. Ang mga mogamit kinahanglan nga gilista usa matag linya ug mahimo maglakip sa usa ka email address. Kung ang usa ka email address gipiho, ang mogamit kwalipikado nga makadawat mga pahibalo ug pahinumdom.
+External Participants: Mga Nag-apil sa gawas
+repeat-type-help: Pilia kung unsa ka kanunay kinahanglan nga sublion ang hitabo.
+Daily: Adlaw-adlaw
+Weekly: Matag semana
+Monthly: Binulan
+by day: sa adlaw
+by date: pinaagi sa petsa
+by position: pinaagi sa posisyon
+Monthly (by day): Binulan (sa adlaw)
+Monthly (by date): Binulan (pinaagi sa petsa)
+Monthly (by position): Binulan (pinaagi sa posisyon)
+Yearly: Tinuig
+Manual: Manwal
+Expert Mode: Eksperto nga Mode
+repeat-end-date-help: Gitino ang petsa kung kanus-a kinahanglan balikon ang hitabo hangtod.
+Ending: Pagtapos
+Forever: Hangtod sa hangtod
+Use end date: Paggamit petsa sa pagtapos
+Number of times: Kadaghan sa mga oras
+repeat-frequency-help: Gitino kung unsa ka sagad nga kinahanglan nga sublion ang hitabo.
+Frequency: Kasagaran
+Weekdays Only: Weekday ra
+Week Start: Pagsugod sa Semana
+repeat-bydayextended-help: Gitugotan ang pagpili sa petsa pinasukad sa adlaw sa semana.
+ByDay: =
+repeat-month-help: Gitino kung unsang mga bulan ang kalihokan nga kinahanglan sublion.
+ByMonth: Pinaagi saBulan
+repeat-bysetpos-help: Gitugotan ang pagpili sa petsa pinauyon sa posisyon nga kauban ang bulan.
+BySetPos: NiSetPos
+repeat-bymonthdayextended-help: Gitugotan ang pagpili sa petsa pinahiuyon sa petsa.
+ByMonthDay: NiadtongMonthDay
+repeat-byweekno-help: Gitugotan ang tiggamit nga magtino sa usa ka lista sa mga semana aron masubli ang hitabo (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: NiWeekNo
+repeat-byyearday-help: Gitugotan ang tiggamit nga magtino sa us aka lista sa mga tuig nga adlaw aron masubli ang hitabo (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Dugang nga mga adlaw nga kini nga hitabo kinahanglan o dili kinahanglan mahinabo.
+Exclusions: Wala’y labot
+Inclusions: Paglakip
+Add Exception: Idugang ang Exception
+Add Inclusion: Pagdugang Paglakip
+Delete Selected: Gipili ang Gipili
+Send Reminder: Magpadala Pagpahinumdom
+When: Kanus-a
+Use Date/Time: Paggamit Petsa / Oras
+Use Offset: Paggamit Offset
+Before: Kaniadto
+After: Pagkahuman
+Start: Pagsugod
+End/Due: Katapusan / Tungod
+Times: Panahon
+Every: Matag
+CAPTCHA Warning: Pasidaan:  Dili magamit CAPTCHA nga wala ang extension nga GD sa PHP!<br>
+Delete entry: I-delete ang entry
+You are not authorized to edit this entry.: Wala ka gitugotan sa pag-edit sa kini nga entry.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: Naghimo bag-o nga appointment si XXX.
+XXX has updated an appointment.: Gibag-o ni XXX ang usa ka pakigsabot.
+Security violation!: Paglapas sa seguridad!
+You must enter the anti-spam text on the previous page.: Kinahanglan nimo nga isulud ang anti-spam nga teksto sa miaging panid.
+The following conflicts with the suggested time: Ang mosunud nga panagsumpaki sa gisugyot nga oras
+User removed from participants list.: Gikuha ang tiggamit gikan sa lista sa mga partisipante.
+Please look on XXX to accept or reject this appointment.: Palihug pagtan-aw sa XXX aron madawat o isalikway kini nga appointment.
+Please look on XXX to view this appointment.: Palihug pagtan-aw sa XXX aron matan-aw kini nga appointment.
+Scheduling Conflict: Pag-iskedyul sa Panagsumpaki
+Your suggested time of: Imong gisugyot nga oras sa
+conflicts with the following existing calendar entries: mga panagsumpaki sa mga mosunud nga naa sa talaan sa kalendaryo
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: Ang NONUSER_PREFIX wala gibutang sa "config.php".
+word characters only: (mahimo ra sulud ang mga karakter sa pulong; [a-zA-Z_0-9])
+Add User: Pagdugang Gumagamit
+Edit User: Pag-edit sa Gumagamit
+Calendar ID: Kalendaryo ID
+First Name: Unang Ngalan
+Last Name: Katapusan nga Ngalan
+Is public calendar: Ang publiko nga kalendaryo
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Sayup sa database
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Pagdugang Remote nga Kalendaryo
+Edit Remote Calendar: Pag-edit sa Remote nga Kalendaryo
+Create Layer: Paghimo Layer
+Reload: Pag-usab
+Required to View Remote Calendar: Gikinahanglan nga Makita ang Layo nga Kalendaryo
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Mga Resulta sa Pag-import
+Events successfully imported: Malampuson nga na-import ang mga hitabo
+Create a new layer to view this calendar.: Paghimo usa ka bag-ong layer aron matan-aw kini nga kalendaryo.
+Errors: Mga sayup
+There was an error parsing the import file or no events were returned.: Adunay usa ka sayup nga pag-parse sa file sa pag-import o wala’y mga hitabo nga nabalik.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Ugma
+Yesterday: Kagahapon
+Day before yesterday: Kagahapon sa wala pa
+Next week: Sunod semana
+This week: Karong semanaha
+Last week: Kaniadtong miaging semana
+Week before last: Semana sa wala pa ang katapusan
+Next week and week after: Sunod semana ug semana pagkahuman
+This week and next week: Karong semanaha ug sunod semana
+Last week and this week: Sa miaging semana ug niining semana
+Last two weeks: Katapusan nga duha ka semana
+Next month: Sunod bulan
+This month: Karong bulana
+Last month: Niaging bulan
+Month before last: Buwan sa wala pa ang katapusan
+Next year: Sunod tuig
+This year: Karong tuiga
+Last year: Niaging tuig
+Year before last: Tuig sa wala pa ang katapusan
+Next 14 days: Sunod nga 14 ka adlaw
+Next 30 days: Sunod nga 30 ka adlaw
+Next 60 days: Sunod 60 ka adlaw
+Next 90 days: Sunod nga 90 ka adlaw
+Next 180 days: Sunod nga 180 ka adlaw
+Next 365 days: Sunod nga 365 ka adlaw
+Invalid report id XXX.: Dili balido nga report id: "XXX".
+Unnamed Report: Wala’y Ngalan nga Taho
+Add Report: Pagdugang Report
+Edit Report: Pag-edit sa Report
+Report name: Ngalan sa report
+User: Gigamit
+Current User: Karon nga Gigamit
+Include link in menu: Ilakip ang link sa menu
+Include standard header/trailer: Ilakip ang sukaranan nga header / trailer
+Include previous/next links: Ilakip ang naagi / sunod nga mga link
+Include empty dates: Ilakip ang mga wala’y sulod nga petsa
+Date range: Sakup sa petsa
+Template variables: Mga variable sa template
+Page template: Template sa panid
+Day template: Template sa Adlaw
+Event template: Template sa panghitabo
+Are you sure you want to delete this report?: Sigurado ka nga gusto nimong matangtang kini nga report?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Wala’y ingon nga report id: "XXX".
+Variable XXX not found.: Wala makita ang variable nga XXX.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Pag-edit sa Custom Header
+Edit Custom Script/Stylesheet: Pag-edit sa Custom Script / Stylesheet
+Edit Custom Trailer: Pag-edit sa Custom Trailer
+
+########################################
+# Page: edit_user.php
+#
+Username: =
+E-mail address: =
+Password: Ang password
+again: pag-usab
+Disabled for demo: Na-disable alang sa demo
+Are you sure you want to delete this user?: Sigurado ka nga gusto nimong matangtang kini nga tiggamit?
+Change Password: Pagbag-o sa Password
+New Password: Bag-ong Password
+Set Password: Ibutang ang Password
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Ang pagtangtang sa mga ninggamit dili gisuportahan.
+The passwords were not identical.: Ang mga password dili managsama.
+You have not entered a password.: Wala ka gisulud nga password.
+Username cannot be blank.: Ang username dili blangko.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Dili gitugotan
+
+########################################
+# Page: export.php
+#
+Export: I-export
+Export format: Pag-eksport nga pormat
+Include all layers: Ilakip ang tanan nga mga sapaw
+Include deleted entries: Apil ang gitangtang nga mga entry
+Export all dates: I-export ang tanan nga mga petsa
+Start date: Petsa sa pagsugod
+End date: Petsa sa pagtapos
+Modified since: Gibag-o sukad
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: wala gipasabut o sayup ang format sa pag-export
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Wala gitino nga tiggamit.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Pagdugang Bag-ong Grupo
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Wala Ngalan nga Grupo
+Add Group: Pagdugang Grupo
+Edit Group: Pag-edit sa Grupo
+Group name: Ngalan sa grupo
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Kinahanglan nimo ipiho ang ngalan sa grupo
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Awtomatiko nga pag-refresh sa mga kalendaryo
+auto-refresh-help: Kung mahimo, ang pagtan-aw sa adlaw, pagtan-aw sa semana, pagtan-aw sa bulan, ug paglista sa wala pa aprubahang mga panid awtomatiko nga mag-refresh matag-usa sa ilang kaugalingon.
+Auto-refresh time: Awtomatikong pag-refresh sa oras
+auto-refresh-time-help: Kung gipaandar ang Auto-refresh, gipiho niini ang oras taliwala sa matag pag-refresh.
+Display days with events in bold in year view: Ipakita ang mga adlaw nga adunay mga hitabo nga maisugon sa pagtan-aw sa tuig
+Display weekends in week view: Ipakita ang katapusan sa semana sa pagtan-aw sa semana
+Time interval: Gintang sa oras
+time-interval-help: Gitino kung unsa katagal ang oras sa mga bloke sa oras sa pagtan-aw sa semana ug pagtan-aw sa adlaw.
+Nonuser: Mga Kalendaryo sa Nonuser
+user-customize-color: Gitino kung gitugotan ang mga mogamit nga magbag-o sa ilang kaugalingon nga laraw sa kolor.
+enable-gradient-help: Paggamit gradient nga mga kolor alang sa mga background sa cell.
+Manually entering color values: Kinamut nga pagsulud sa mga kantidad sa kolor
+colors-help: Ang tanan nga mga kolor kinahanglan nga ipiho sa "#RRGGBB" hexadecimal format diin ang "RR" ang hex nga kantidad alang sa pula, ang "GG" ang hex nga kantidad alang sa berde, ug ang "BB" ang hex nga kantidad alang sa asul.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Pagreport sa Bug
+Please include all the information below when reporting a bug.: Palihug iupod ang tanan nga kasayuran sa ubus kung nagtaho sa usa ka bug.
+Also, please use English rather than XXX.: Ingon usab, palihug gamita ang  English  kaysa XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Dokumentasyon sa WebCalendar
+Currently in English only.: Karon sa English ra.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Pagdugang / Pag-edit sa mga Entries sa Kalendaryo
+Repeat Type: Usba nga Matang
+For More Information...: Alang sa Dugang nga Impormasyon ...
+Repeat End Date: Balika ang Petsa sa Pagtapos
+Repeat Day: Balika ang Adlaw
+repeat-day-help: Gitino kung unsang mga adlaw sa semana ang hitabo kinahanglan ipadayon.
+
+########################################
+# Page: help_import.php
+#
+Import: Pag-import
+Palm Desktop: =
+allow you to import entries from the Palm...: Tugotan ka sa kini nga form nga mag-import og mga entry gikan sa Palm Desktop Datebook. Kinahanglan kini mahimutang sa imong direktoryo sa Palm sa datebook / datebook.dat sa usa ka subdirectory nga ginganlan sa imong username.
+The following entries will not be imported: Ang mosunud nga mga entry dili i-import:
+Entries older than the current date: Ang mga entry mas tigulang kaysa karon nga petsa
+Entries created in the Palm Desktop...: Ang mga gisulat gihimo sa Palm Desktop nga wala mahimo’g HotSync'd
+Anything imported from Palm...: Ang bisan unsang gi-import gikan sa Palm igpapatong sa sunod nga pag-import (gawas kung ang petsa sa hitabo milabay). Busa, kinahanglan buhaton ang mga pag-update sa Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Kini nga porma mag-import sa vCalendar (.vcs) 1.0 nga mga hitabo.
+The following formats have been tested: Ang mga mosunud nga format gisulayan:
+This form will import iCalendar (.ics) events.: Ang kini nga form mag-import sa mga hitabo sa iCalendar (.ics).
+Enabling: Makapahimo
+Overwrite Prior Import: Igpasulabi ang Nauna nga Pag-import
+will cause events imported previously...: hinungdan sa mga hitabo nga na-import kaniadto, nga gigamit ang parehas nga UID ingon usa ka hitabo gikan sa bag-ong file sa pag-import, nga gimarkahan nga gitangtang. Kinahanglan kini tugotan nga ma-import ang usa ka gi-update nga file sa iCalendar nga wala maghimo mga duplicate.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Indeks sa Tabang
+About WebCalendar: Bahin sa WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Mapuslanon ang mga layer alang sa pagpakita sa mga hitabo sa ubang mga ninggamit sa imong kaugalingon nga kalendaryo. Mahimo nimong ipiho ang mogamit ug ang kolor nga igpakita ang mga hitabo.
+Add/Edit/Delete: Pagdugang / Pag-edit / Pagtangtang
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Ang pag-klik sa link sa Edit Layers sa seksyon sa admin sa ubus sa panid magtugot kanimo nga makadugang / mag-edit / magtangtang sa mga sapaw.
+The text color of the new layer that will be displayed in your calendar.: Ang kolor sa teksto sa bag-ong layer nga ipakita sa imong kalendaryo.
+Disabling: Dili mahimo
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Pagpadayon sa link nga Disable Layers sa seksyon sa admin sa ilawom sa panid aron mapalong ang mga sapaw.
+Duplicates: Nagdoble
+If checked, events that are duplicates of your events will be shown.: Kung gisusi, ang mga hitabo nga mga duplicate sa imong mga hitabo ipakita.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Pagpadayon sa link nga Enable Layers sa seksyon sa admin sa ilawom sa panid aron maablihan ang mga sapaw.
+Source: Gigikanan
+Specifies the user that you would like to see displayed in your calendar.: Gitino ang mogamit nga gusto nimo makita nga gipakita sa imong kalendaryo.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Default nga kategorya
+default-category-help: Gitino ang kategorya ang usa ka bag-ong hitabo nga kinahanglan default sa.
+When I am the boss: Kung ako ang boss
+Email me event notification: I-email kanako ang pahibalo sa hitabo
+email-boss-notifications-help: Gitino kung ang mga boss nakadawat mga email ingon mga abiso sa panghitabo.
+I want to approve events: Gusto nako aprubahan ang mga hitabo
+boss-approve-event-help: Gitino kung kinahanglan ba nga aprubahan sa boss ang mga hitabo nga gidugang sa mga katabang.
+Subscribe/Publish: Pag-subscribe / Pagmantala
+Allow remote publishing: Tugoti ang hilit nga pagmantala
+allow-remote-publishing-help: Gitino kung ang usa ka hilit nga kliyente sa iCal mahimo mag-publish sa mga hitabo balik sa WebCalendar
+remote-publishing-url-help: Gipakita ang URL nga gamiton sa aplikasyon sa kliyente sa iCal alang sa parehas nga pag-subscribe ug pagmantala balik sa WebCalendar.
+allow-remote-subscriptions-help: Gitino kung ang mga hilit nga tiggamit mahimong mag-subscribe sa imong kalendaryo, gitugotan sila nga makita ang imong mga hitabo sa usa ka aplikasyon nga gipaandar sa iCal (sama sa Apple's iCal o Mozilla Calendar).
+remote-subscriptions-url-help: Gipakita ang mga hilit nga tiggamit sa URL nga kinahanglan gamiton aron mag-subscribe sa imong kalendaryo.
+Enable FreeBusy publishing: Paglihok sa pagpatik sa FreeBusy
+freebusy-enabled-help: Gitino kung ang oras nga magamit sa usa ka mogamit mahimong makuha gamit ang sukaranan sa iCal FreeBusy.
+freebusy-url-help: Ang URL alang sa pag-access sa lista sa FreeBusy sa naggamit
+rss-feed-url-help: Ang URL aron ma-access ang RSS feed
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Nagtugot alang sa maayong pagkontrol sa pag-access ug pagtugot sa gumagamit. Mahimo usab hatagan ang mga ninggamit default ug matag pagtugot kung gitugotan sa tagdumala.
+If disabled, this user cannot send you emails.: Kung adunay kakulangan, dili mahimong magpadala kanimo kini nga mga email.
+If disabled, this user cannot see you in the participants list.: Kung adunay kakulangan, dili ka makita sa kini nga gumagamit sa lista sa mga partisipante.
+If enabled, this user cannot view the details of any of your entries.: Kung nakaya, kini nga gumagamit dili makatan-aw sa mga detalye sa bisan unsa sa imong mga entry.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Gi-disable ang Pagmantala (Admin)
+Publishing Disabled (User): Gi-disable ang Pagmantala (Gumamit)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Pag-klik aron Pagpili
+Current Icons on Server: Mga Karon nga Icon sa Server
+
+########################################
+# Page: import.php
+#
+import from file: import gikan sa file
+Disabled: Wala’y mahimo
+Import format: Pag-import sa format
+Exclude private records: Dili iapil ang mga pribadong rekord
+Repeated items are imported separately. Prior imports are not overwritten.: Ang gisubli nga mga butang gilain nga gi-import. Ang mga naunang pag-import dili mapiho.
+
+########################################
+# Page: import_handler.php
+#
+No file: Wala’y file
+Error deleting palm events from webcalendar.: Sayup nga gitangtang ang mga hinabo sa palma gikan sa webcalendar.
+Events from prior import marked as deleted: Ang mga hitabo gikan sa nahauna nga pag-import gimarkahan nga gitangtang
+Conflicting events: Mga panagsumpaki nga hitabo
+The import file contained no data.: Wala’y datos ang file sa pag-import.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Sigurado ka nga gusto nimong tangtangon kini nga layer?
+Delete layer: Pagtangtang sa sapaw
+Edit layer: Pag-edit layer
+Enable layers: Pagpalihok mga sapaw
+Layer: Sapaw
+Layers are currently disabled.: Ang mga layer karon kakulangan.
+Layers are currently enabled.: Ang mga layer gipalihok karon.
+Click to modify layers settings for XXX: Pag-klik dinhi aron mausab ang mga setting sa mga layer alang sa XXX nga kalendaryo.
+Disable Layers: I-disable ang mga Layer
+Add layer: Pagdugang sapaw
+Add Layer: Pagdugang Layer
+Edit Layer: Pag-edit sa Layer
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Dili ma-update ang gusto
+Invalid entry id.: Dili husto nga id sa pagsulod
+You cannot create a layer for yourself.: Dili ka makahimo usa ka layer alang sa imong kaugalingon.
+You can only create one layer for each user.: Mahimo ka lang makahimo usa ka layer alang sa matag ninggamit.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Aprobahan / Kumpirmahon
+Approve Selected: Giuyon ang Napili
+Check All: Susiha ang Tanan
+Emails Will Not Be Sent: Dili Ipadala ang mga Email
+Reject Selected: Gisalikway ang Napili
+Reject: Isalikway
+Uncheck All: Uncheck ang Tanan
+View this entry: Tan-awa kini nga entry
+No unapproved entries for XXX.: Wala maaprobahan nga mga entry alang sa: "XXX".
+Unapproved Entries: Wala Aprobahi nga mga Entries
+Approve this entry?: Aprubahan kini nga entry?
+Reject this entry?: Isalikway ang kini nga entry?
+Approve Selected entries?: Aprubahan ang Napili nga mga entry?
+Reject Selected entries?: Isalikway ang gipili nga mga entry?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Kinahanglan nga magsulud ka us aka login ug password.
+Save login via cookies so I dont have to login next time.: I-save ang pag-login pinaagi sa cookies aron dili na ako mag-login sa sunod
+Login: Sulod
+public: publiko
+Access XXX calendar: Pag-access sa XXX nga kalendaryo
+cookies-note: Hinumdomi: Gihangyo niini nga aplikasyon ang cookies aron mapadagan.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Ilegal nga mga karakter sa pag-login XXX.
+Invalid login: Dili husto nga pag-login
+Activity login failure: =
+Error XXX: Sayup: "XXX".
+You have been logged out.: Gi-log out ka.
+Access public calendar: Pag-access sa publiko nga kalendaryo
+Not yet registered? Register here!: Wala pa magparehistro? Pagrehistro dinhi!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Wala’y ingon nga kalendaryo nga dili gigamit: "XXX".
+This Calendar is not Public.: Kini nga Kalendaryo dili Publiko.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Pagdugang Bag-ong Kalendaryo nga NonUser
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Ang usa ka pag-login kinahanglan nga gipiho.
+No such nonuser calendar: Wala’y ingon nga dili paggamit nga kalendaryo
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Dili balido nga tema
+Save Preferences: Luwasa ang mga Gusto
+Public Access calendar: Kalendaryo sa Public Access
+Modify Non User Calendar Preferences: Pagbag-o Mga Kagustuhan sa Dili Maggamit sa Kalendaryo
+Return to My Preferences: Pagbalik sa Akong Mga Labi
+Custom Scripts: Mga Pasadyang Sinulat
+Timezone Selection: Pagpili sa Timezone
+Multiview: =
+entry-interval-help: Nagtakda minuto nga agwat sa pag-edit sa mga oras sa pagsulud
+Entry interval: Gintang sa pagsulod
+hour: oras
+minute: minuto
+theme-reload-help: Tungod sa CSS caching, mahimong kinahanglan ang usa ka pag-reload sa panid
+Page may need to be reloaded for new Theme to take effect: Ang panid mahimong kinahanglan nga i-reload alang sa bag-ong Tema nga moepekto
+display_byproxy-help: Ipakita ang tinuud nga magbubuhat sa panid sa view_entry
+Display if created by Assistant: Ipakita kung gihimo ni Assistant
+allow-view-subscriptions-help: Gitugotan ang pagpugong sa hilit nga pag-access sa Pribado o Confidential nga mga entry
+Allow remote viewing of: Tugoti ang hilit nga pagtan-aw sa
+entries: mga entry
+
+########################################
+# Page: purge.php
+#
+Purging events for: Paghinlo sa mga hitabo alang sa
+Finished: Nahuman
+Back: Balik
+Check box to delete ALL events for a user: Susiha ang kahon aron matanggal ang  TANAN  nga mga hitabo alang sa usa ka ninggamit
+Delete all events before: I-delete ang tanan nga hitabo kaniadto
+Purge deleted only: Ang pagpaputli gitangtang ra
+Preview delete: Pag-preview sa pag-delete
+Are you sure you want to delete events for: Sigurado ka nga gusto nimong tangtangon ang mga panghitabo alang sa
+Records deleted from XXX: Gitangtang ang mga tala gikan sa "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Ang email address dili mahimo’g blangko.
+Username already exists.: Username anaa na.
+Email address already exists.: Adunay na email address.
+New user via self-registration.: Bag-ong ninggamit pinaagi sa pagrehistro sa kaugalingon.
+A new WebCalendar account has been set up for you.: Usa ka bag-ong WebCalendar account ang giandam alang kanimo.
+Your username is XXX.: Ang imong username mao ang: "XXX".
+Your password is XXX.: Ang imong password mao ang: "XXX".
+Please visit XXX to log in and start using your account!: Palihug bisitaha ang "XXX" aron mag-log in ug magsugod sa paggamit sa imong account!
+You may change your password after logging in the first time.: Mahimo nimong mabag-o ang imong password pagkahuman sa pag-log in sa una nga higayon.
+If you received this email in error: Kung nadawat nimo kini nga email nga sayup ug wala magpalista alang sa usa ka account sa WebCalendar, mahimo nimo balewalaon kini nga pahibalo, o pagtubag nga adunay usa ka mubo nga sulat
+Administrator: Tigdumala
+Welcome: Malipayong pag-abut
+New user via email.: Bag-ong ninggamit pinaagi sa email.
+Registration: Pagrehistro
+Welcome to WebCalendar: Malipayon nga pag-abut sa WebCalendar
+Your email should arrive shortly.: Kinahanglan moabut dayon ang imong email.
+Return to Login screen: Pagbalik sa screen sa Login
+Password (again): Password (pag-usab):
+Your account information will be emailed to you.: Ang kasayuran sa imong account i-email kanimo.
+Submit: Isumite
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Padayon
+(Your comments will be emailed to the other participants.): (Ang imong mga komento i-email sa ubang mga partisipante.)
+XXX has rejected an appointment.: Gisalikway ni XXX ang usa ka pakigsabot.
+Rejected by XXX.: Gisalikway ni XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Pagdugang Bag-ong Kalayo sa Kalayo
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Kumpidensyal kini nga hitabo.
+(Private): (Pribado)
+(cont.): =
+Approved: Giuyonan
+Deleted: Gipapas
+Rejected: Gisalikway
+Waiting for approval: Naghulat alang sa pag-uyon
+Unknown: Wala mailhi
+Invalid report id.: Dili husto nga report id.
+Click here to manage reports for the Public Access calendar.: Pag-klik dinhi aron madumala ang mga ulat alang sa kalendaryo sa Public Access.
+Add new report: Pagdugang bag-ong ulat
+Manage Reports: Igdumala ang mga Report
+
+########################################
+# Page: search.php
+#
+Advanced Search: Advanced nga Pagpangita
+Search: Pagpangita
+Keywords: Mga keyword
+Enter % for all entries: Pagsulud% alang sa tanan nga mga entry
+Include: Iapil
+Filter by Date: Pagsala pinaagi sa Petsa
+All Dates: Tanan nga Petsa
+Past: Kaniadto
+Upcoming: Moabut na
+Range: Sakup
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Kinahanglan nimo isulud ang usa o daghang mga keyword sa pagpangita.
+Search Results: Mga Resulta sa Pagpangita
+match found: nakit-an nga posporo
+matches found: nakit-an nga posporo
+No matches found: Wala nakit-an nga posporo
+New Search: Bag-ong Pagpangita
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Ang kasayuran sa ubus gilista ang mga potensyal nga isyu sa imong pagbutang sa WebCalendar nga mahimong mabag-o aron mahimo’g luwas ang imong pag-install.
+For questions about WebCalendar security see the forums: Alang sa mga pangutana bahin sa bisan unsang isyu sa seguridad sa WebCalendar, palihug gamita ang mga forum sa WebCalendar nga gi-host sa GitHub.com;<br>XXX
+View your current PHP settings: Tan-awa ang imong mga setting karon nga PHP
+Security Issue: Isyu sa Kaluwasan
+Status: Kahimtang
+Default admin user password: Default nga password sa tiggamit admin
+You should change the password of the default admin user.: Kinahanglan nimo nga baylohan ang password sa default nga tiggamit sa admin.
+File permissions XXX: Mga pagtugot sa file: XXX
+item XXX should not be writable: Ang mosunud nga aytem dili angay isulat:<br><tt> XXX</tt>
+File exists XXX: Adunay file: "XXX"
+Because you have email disabled, you should remove this file.: Tungod kay adunay ka kakulangan sa email, kinahanglan nimong tangtangon kini nga file.
+File location XXX: Lokasyon sa file: "XXX"
+remove XXX if not using: Kung wala ka naggamit file nga "XXX", kinahanglan nimo kini tangtangon. O, labing menos, ibalhin kini sa usa ka bag-ong direktoryo.
+System Settings XXX: Mga setting sa System: "XXX"
+consider enabling UAC: Mahimo nimong hunahunaon ang pagpaandar sa User Access Control aron itakda ang mga pribilehiyo sa gumagamit.
+recommend approving new public events: Girekomenda namon nga aprubahan ang tanan nga pagsumite sa kalihokan sa publiko.
+recommend using CAPTCHA: Girekomenda ang CAPTCHA nga magbantay pag-usab sa mga awtomatiko nga pagsumite sa kalihokan.
+Database cache directory location: Ang lokasyon sa direktoryo sa cache sa database
+db cache should be inaccessable: Ang cache sa database kinahanglan naa sa usa ka direktoryo nga dili ma-access gamit ang usa ka URL.
+PHP Settings XXX: Mga setting sa PHP: "XXX"
+recommend setting XXX Off: Ningsira ang girekomenda nga setting alang sa "XXX".
+recommend setting allow_url_fopen Off: Ang girekomenda nga setting alang sa "allow_url_fopen" Patay kung wala gipagan ang mga hilit nga kalendaryo.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Tan-awa ang Kalendaryo sa Laing Gumagamit
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Wala ka makadugang bisan unsang mga kategorya.
+Set Category: Ibutang ang Category
+Global Categories cannot be changed.: Dili mabag-o ang mga Global nga kategorya.
+
+########################################
+# Page: upcoming.php
+#
+more: labi pa
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Layo nga mga Kalendaryo
+denotes administrative user: nagpasabut nga tiggamit sa administratiba
+Add New User: Pagdugang Bag-ong Gumagamit
+
+########################################
+# Page: usersel.php
+#
+form: porma
+Reset: Pag-usab
+
+########################################
+# Page: views.php
+#
+Add New View: Pagdugang Bag-ong Pagtan-aw
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Wala Ngalan nga Panan-aw
+Add View: Pagdugang Pagtan-aw
+Edit View: Pag-edit sa Tan-awa
+View Name: Tan-awa ang Ngalan
+View Type: Tan-awa ang Matang
+Day by Time: Adlaw-adlaw
+Week (Users horizontal): Semana (Pahigda sa mga naggamit)
+Week by Time: Semana sa Oras
+Week (Users vertical): Semana (Patindog ang mga ninggamit)
+Week (Timebar): Semana (Timebar)
+Month (Timebar): Bulan (Timebar)
+Month (side by side): Bulan (magkatabi)
+Month (on same calendar): Bulan (sa parehas nga kalendaryo)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Kinahanglan nimo ipiho ang usa ka ngalan sa pagtan-aw
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Wala’y mga mogamit alang sa kini nga panan-aw.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Pag-update sa Porsyento sa Buluhaton
+Completed: Nahuman
+Assistant mode: Katabang nga mode
+Declined: Gibalibaran
+Needs-Action: Kinahanglan-lihok
+by: pinaagi sa
+Percentage Complete: Nakompleto ang porsyento
+External User: Gawas nga Gigamit
+Update: Pagbag-o
+at: sa
+comments: mga komento
+Show: Ipakita
+Hide: Tagoa
+Approve/Confirm entry: Aprobahan / Kumpirmahon ang pagsulud
+Reject entry: Isalikway ang pagsulud
+Set category: Ibutang ang kategorya
+Add to My Calendar: Idugang sa Akong Kalendaryo
+Copy entry: =
+This will delete this entry for all users.: Kini tangtangon ang kini nga entry alang sa tanan nga mga ninggamit.
+Edit entry: Pag-edit sa entry
+Edit repeating entry for all dates: Pag-edit sa pagsubli sa pagsulud alang sa tanan nga mga petsa
+Delete repeating event for all dates: Pagtangtang sa gisubli nga kalihokan alang sa tanan nga mga petsa
+Edit entry for this date: Pag-edit sa entry alang sa kini nga petsa
+Delete entry only for this date: Tangtanga ang pagsulud ra alang sa kini nga petsa
+Delete entry from calendar of XXX: Pagtangtang sa pagsulud gikan sa kalendaryo nga XXX
+This will delete the entry from your XXX calendar.: Kini matangtang ang entry gikan sa imong XXX nga kalendaryo.
+boss: boss '
+This will delete the entry from your boss calendar.: Kini matangtang ang entry gikan sa kalendaryo sa imong boss.
+This will delete the entry from your calendar.: Kini matangtang ang entry gikan sa imong kalendaryo.
+from your boss calendar: gikan sa kalendaryo sa imong boss
+Do you want to add this entry to your calendar?: Gusto ba nimo idugang kini nga entry sa imong kalendaryo?
+This will add the entry to your calendar.: Idugang niini ang pagsulud sa imong kalendaryo.
+Email all participants: I-email ang tanan nga mga partisipante
+Hide activity log: Itago ang log sa kalihokan
+Show activity log: Ipakita ang log sa kalihokan
+Export this entry to: I-export kini nga entry sa
+Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Pag-double click sa walay sulod nga cell aron makadugang bag-ong entry.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Bag-ong Entry
+cont.: cont
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Kalendaryo sa Usa pa nga Taggamit
+Category Management: Pagdumala sa kategorya
+Day View: Pagtan-aw sa Adlaw
+Edit Event: Pag-edit sa Hinabo
+Month View: Pagtan-aw sa Bulan
+Common Trailer: Kasagaran nga Trailer
+User Management: Pagdumala sa Gumagamit
+Manage Views: Igdumala ang mga Panan-aw
+Week View: Pagtan-aw sa Semana
+Year View: Pagtan-aw sa Tuig
+Invalid function id: Dili husto nga function id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Wala makit-an ang file nga "setting.php".<br>Palihug kopyaha ang "setting.php.orig" sa "setting.php" ug i-edit alang sa imong site.
+Incomplete settings.php file...: Dili kompleto ang "setting.php" file ...
+Could not find XXX defined in...: Wala makita ang gihubit nga "XXX" sa imong file nga "setting.php".
+You must define XXX in: Kinahanglan nimo nga ipasabut ang "XXX" sa file nga "setting.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Disyembre
+Dec: Dis
+LANGUAGE DEFINED: GITIN-AN NGA WIKA
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Sayup nga pagkonektar sa database: "XXX".
+db_type not defined.: Wala gipasabut ang db_type.
+invalid db_type XXX: dili balido nga db_type nga "" XXX ".
+Cache cleared from previous SQL!: Ang Cache gihawan gikan sa miaging SQL!
+Error executing query.: Sayup sa pagpatuman sa pangutana.
+Unfortunately, XXX is not implemented for YYY: Intawon, ang "XXX" wala ipatuman alang sa (YYY).
+Unknown ODBC error.: Wala mailhi nga sayup sa ODBC.
+Error opening cache dir XXX.: Sayup sa pagbukas sa cache dir "XXX".
+delete: tangtangon
+Cache error Could not XXX file YYY.: Sayup sa cache: Dili mahimo nga XXX file nga "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Kamatayon nga Namatay
+Invalid data format for: Dili husto nga format sa datos alang sa
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Sayup: Wala gibutang ang klase alang sa kalihokan log!
+This event is XXX.: Kini nga hitabo mao ang XXX.
+Conf.: =
+exceeds limit of XXX events per day: milapas sa limitasyon sa XXX nga mga panghitabo matag adlaw
+on: sa
+All Attendees: Tanan nga Nagtambong
+Busy: =
+Tentative: =
+Schedule an appointment for XXX.: Pag-eskedyul sa usa ka appointment alang sa XXX: YYY.
+date_select: =
+Event approved: Giaprubahan ang kalihokan
+Journal approved: Giuyonan ang journal
+Task approved: Giuyonan ang buluhaton
+Attachment: Kasuod
+Event created: Gihimo ang kalihokan
+Journal created: Gibuhat ang journal
+Task created: Gihimo ang buluhaton
+Event deleted: Natangtang ang kalihokan
+Journal deleted: Natangtang ang journal
+Task deleted: Gitangtang ang buluhaton
+New user via email (self registration): Bag-ong ninggamit pinaagi sa email (pagrehistro sa kaugalingon)
+New user (self registration): Bag-ong ninggamit (pagparehistro sa kaugalingon)
+Notification sent: Gipadala ang pahibalo
+Event rejected: Gisalikway ang kalihokan
+Journal rejected: Gisalikway ang journal
+Task rejected: Gisalikway ang buluhaton
+Reminder sent: Gipadala ang pahinumdom
+Event updated: Gibag-o ang kalihokan
+Journal updated: Gi-update ang journal
+Task updated: Gibag-o ang buluhaton
+Delete User: Pagtangtang sa Gumagamit
+WK: =
+TASKS: MGA PAGBUHAT
+Task_Title: Titulo
+Due: Tungod
+Task Name: Ngalan sa Buluhaton
+Task Due Date: Petsa sa Takdang Takda sa Buluhaton
+You have XXX unapproved entries: Adunay ka XXX wala maaprobahan nga mga entry 
+Changes successfully saved: Malampuson nga natipig ang mga pagbag-o
+Event: Hinabo
+Action: Aksyon
+Printer Friendly: Mahigalaon sa Tig-imprinta
+Generate printer-friendly version: Paghimo bersyon nga mahigala sa tig-imprinta
+after: pagkahuman
+before: kaniadto
+end: katapusan
+start: pagsugod
+View this event: Tan-awa kini nga hitabo
+View this task: Tan-awa kini nga buluhaton
+January: Enero
+February: Pebrero
+March: Marso
+April: Abril
+May_: Mayo
+June: Hunyo
+July: Hulyo
+August: Agosto
+September: Septyembre
+October: Oktubre
+November: Nobyembre
+Jan: Ene
+Feb: Peb
+Mar: =
+Apr: Abr
+May: Mayo
+Jun: Si Jun
+Jul: Hul
+Aug: Ago
+Sep: =
+Oct: Okt.
+Nov: Nob
+SU: =
+MO: =
+TU: =
+WE: KAMI
+TH: =
+FR: =
+SA: =
+unknown-month: wala mailhi-bulan
+First Quarter Moon: =
+Full Moon: Tibuok Bulan
+Last Quarter Moon: Kataposang Bulan sa Bulan
+New Moon: Bag-ong Bulan
+Error TIME_SLOTS undefined!: Sayup: TIME_SLOTS wala matino!
+The following error occurred: Ang mosunud nga sayup nahinabo
+You are not authorized.: Wala ka gitugotan.
+Add N hours to: Idugang N oras sa
+Subtract N hours from: Kuhaa N oras gikan sa
+same as: parehas sa
+server time: oras sa server
+Cannot read timezone file XXX.: Dili mabasa ang file nga timezone: XXX.
+Your current GMT offset is XXX hours.: Ang imong karon nga offset sa GMT mao ang XXX ka oras.
+Unauthorized: Wala gitugotan
+Error approving event XXX.: Sayup sa pag-aprobar sa hitabo: XXX.
+Error deleting event XXX.: Sayup nga pagtangtang sa panghitabo: XXX.
+Error rejecting event XXX.: Sayup nga gisalikway ang hitabo: XXX.
+Sunday: Domingo
+Monday: Lunes
+Tuesday: Martes
+Wednesday: Miyerkules
+Thursday: Huwebes
+Friday: Biyernes
+Saturday: Sabado
+Sun: Adlaw
+Mon: Lun
+Tue: =
+Wed: =
+Thu: Kaniadto
+Fri: Biyernes
+Sat: =
+unknown-weekday: wala mahibal-an
+Invalid referring URL: Dili husto nga naghisgot nga URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Indeks
+Documentation: Dokumentasyon
+Page: Panid
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Akong Kalendaryo
+Add New Entry: Pagdugang Bag-ong Pagsulod
+Add New Task: Pagdugang Bag-ong Buluhaton
+Logout: Pag-logout
+Home: Puy-anan
+Back to My Calendar: Balik sa Akong Kalendaryo
+Go to: Adto sa
+Manage calendar of: Igdumala ang kalendaryo sa
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Wala Makita ang Sinultian sa Browser
+(not supported): (dili gisuportahan)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Sa halayo
+Afrihili: =
+Afrikaans: Mga afrikaans
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: Albaniano
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Habagatan)
+Amharic: =
+Angika: =
+Apache: =
+Arabic (Algeria): Arabiko (Algeria)
+Arabic (Bahrain): Arabiko (Bahrain)
+Arabic (Egypt): Arabiko (Ehipto)
+Arabic (Iraq): Arabiko (Iraq)
+Arabic (Jordan): Arabiko (Jordan)
+Arabic (Kuwait): Arabiko (Kuwait)
+Arabic (Lebanon): Arabiko (Lebanon)
+Arabic (Libya): Arabiko (Libya)
+Arabic (Morocco): Arabiko (Morocco)
+Arabic (Oman): Arabiko (Oman)
+Arabic (Qatar): Arabiko (Qatar)
+Arabic (Saudi Arabia): Arabiko (Saudi Arabia)
+Arabic (Syria): Arabiko (Syria)
+Arabic (Tunisia): Arabiko (Tunisia)
+Arabic (U.A.E.): Arabiko (U.A.E.)
+Arabic (Yemen): Arabiko (Yemen)
+Arabic: Arabe
+Aragonese: =
+Aramaic: Aramaiko
+Arapaho: =
+Arawak: =
+Armenian: =
+Assamese: =
+Asturian: =
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: =
+Balinese: Balaynon
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: =
+Beja: =
+Belarusian: =
+Bemba: =
+Bengali: =
+Bhojpuri: Bhare
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: =
+Bliss: Kalipayan
+Bosnian: =
+Braj: =
+Breton: =
+Buginese: =
+Bulgarian: =
+Buriat: =
+Burmese: =
+Caddo: =
+Catalan: =
+Cebuano: Sugbuanon
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Intsik (Hong Kong)
+Chinese (PRC): Intsik (PRC)
+Chinese (Simplified/GB2312): Intsik (Pinasimple / GB2312) 
+Chinese (Singapore): Intsik (Singapore)
+Chinese (Taiwan): Intsik (Taiwan)
+Chinese (Traditional/Big5): Intsik (Tradisyonal / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: =
+Cornish: =
+Corsican: =
+Cree: =
+Creek: =
+Croatian: Kroatiano
+Czech: =
+Dakota: =
+Danish: Taga-Denmark
+Dargwa: =
+Delaware: Nahibal-an
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Olandes (Belhika)
+Dutch: =
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): =
+English (Belize): =
+English (Canada): =
+English (Ireland): =
+English (Jamaica): =
+English (New Zealand): =
+English (Philippines): English (Pilipinas)
+English (South Africa): =
+English (Trinidad & Tobago): =
+English (United Kingdom): =
+English (United States): English (Tinipong Bansa)
+English (Zimbabwe): =
+English: English-US
+Erzya: =
+Esperanto: =
+Estonian: =
+Ewe: =
+Ewondo: =
+Fang: Pangilngig
+Fanti: =
+Faroese: =
+Fijian: =
+Filipino: Pilipino
+Finnish: =
+Fon: =
+French (Belgium): Pranses (Belhika)
+French (Canada): Pranses (Canada)
+French (France): Pranses (Pransya)
+French (Luxembourg): Pranses (Luxembourg)
+French (Monaco): Pranses (Monaco)
+French (Switzerland): Pranses (Switzerland)
+French: Pransiya
+Frisian (Eastern): Frisian (Silangan)
+Frisian (Northern): Frisian (Amihanan)
+Frisian (Western): Frisian (Kasadpan)
+Frisian: =
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: =
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: Sus
+Georgian: =
+German (Austria): Aleman (Austria)
+German (Germany): Aleman (Alemanya)
+German (Liechtenstein): Aleman (Liechtenstein)
+German (Luxembourg): Aleman (Luxembourg)
+German (Standard): Aleman (Sumbanan)
+German (Switzerland): Aleman (Switzerland)
+German: Aleman
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: =
+Grebo: =
+Greek: =
+Greenlandic: =
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): =
+Haitian: =
+Hausa: =
+Hawaiian: =
+Hebrew: Hebreohanon
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Hitite
+Hmong: =
+Holo (Taiwanese): =
+Hungarian: =
+Hupa: =
+Iban: =
+Icelandic: Islandiko
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: =
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: =
+Irish (Gaelic): Irish (Gaeliko)
+Irish: =
+Iroquoian: =
+Italian (Switzerland): Italyano (Switzerland)
+Italian: Italyano
+Japanese: Hapon
+Javanese: Java
+Judeo-Arabic: Judeo-Arabiko
+Judeo-Persian: =
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): Khmer (Sentral)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: Kalamundu
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Koreano (Johab)
+Korean (North): Koreano (Amihanan)
+Korean (South): Koreano (Habagatan)
+Korean: Koreano
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: =
+Kutenai: =
+Kyrgyz: =
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: =
+Latvian: =
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: =
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: =
+Macedonian: =
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Malakanyang
+Malay: =
+Malayalam: =
+Maldivian: =
+Maltese: =
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Taga-Moldavian
+Mongo: =
+Mongolian: =
+Montenegrin: =
+Moroccan: =
+Mossi: =
+Myanmar: =
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Amihanan)
+Ndebele (South): Ndebele (Habagatan)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Noruwega (Bokmål)
+Norwegian (Nynorsk): Norwega (Nynorsk)
+Norwegian: =
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: =
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: =
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: =
+Pedi: =
+Persian (Farsi): =
+Persian (Iran): =
+Persian: Persianhon
+Phoenician: =
+Pohnpeian: =
+Polish: kahamis
+Portuguese: Portuges
+Portuguese/Brazil: Portuges / Brazil
+Punjabi (India): =
+Punjabi (Pakistan): =
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: Romaniano
+Romansh: Mga Romano
+Romany: =
+Rundi: =
+Russian (Moldavia: Ruso (Moldavia
+Russian (Republic of Moldova): Ruso (Republika sa Moldova)
+Russian: Ruso
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Amihanan)
+Sami (Skolt): =
+Sami (Southern): Sami (Habagatan)
+Sami: =
+Samoan: Samoa
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: =
+Sasak: =
+Scots (Gaelic): Scots (Gaeliko)
+Selkup: =
+Serbian (Upper): Serbiano (Ibabaw)
+Serbian: Serbiano
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: =
+Sindhi: =
+Sinhala: =
+Slavic: =
+Slovak: =
+Slovenian: =
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbiano (Mas ubos)
+Sorbian (Upper): Sorbiano (Taas)
+Sorbian: Sorbiano
+Sotho: =
+Spanish (Argentina): Espanyol (Argentina)
+Spanish (Bolivia): Espanyol (Bolivia)
+Spanish (Chile): Espanyol (Chile)
+Spanish (Colombia): Espanyol (Colombia)
+Spanish (Costa Rica): Espanyol (Costa Rica)
+Spanish (Dominican Republic): Espanyol (Dominican Republic)
+Spanish (Ecuador): Espanyol (Ecuador)
+Spanish (El Salvador): Espanyol (El Salvador)
+Spanish (Guatemala): Espanyol (Guatemala)
+Spanish (Honduras): Espanyol (Honduras)
+Spanish (Mexico): Espanyol (Mexico)
+Spanish (Nicaragua): Espanyol (Nicaragua)
+Spanish (Panama): Espanyol (Panama)
+Spanish (Paraguay): Espanyol (Paraguay)
+Spanish (Peru): Espanyol (Peru)
+Spanish (Puerto Rico): Espanyol (Puerto Rico)
+Spanish (Spain): Espanyol (Espanya)
+Spanish (Uruguay): Espanyol (Uruguay)
+Spanish (Venezuela): Espanyol (Venezuela)
+Spanish: Kinatsila
+Sranan Tongo: =
+Sukuma: =
+Sumerian: =
+Sundanese: Sundalo
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Suweko (Pinlandes)
+Swedish (Sweden): Suweko (Sweden)
+Swedish: Suweko
+Syriac: =
+Tagalog: =
+Tahitian: =
+Tai: =
+Taiwan: =
+Tajik: =
+Tamashek: =
+Tamil: =
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: =
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): =
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Turko
+Turkmen: Mga Turko
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: =
+Ukrainian: =
+Umbundu: =
+Urdu: =
+Uyghur: =
+Uzbek: =
+Vai: =
+Venda: =
+Vietnamese: =
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: =
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Gihubit sa browser
+event: hitabo
+journal: =
+0: =
+1: =
+2: =
+3: 3 
+4: 4 
+5: 5 
+6: 6 
+7: 7 
+8: 8 
+9: 9 
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Dili husto nga pag-login sa gumagamit
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: sayup nga password
+no such user: walay ingon nga tiggamit
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Na-disable ang account
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Agianan
+Months: Mga bulan
+Month Days: Mga Adlaw sa Bulan
+Days: Mga adlaw
+Weeks: Mga semana
+Position: Posisyon
+Until: Hangtod sa
+Count: Pag-ihap
+Inclusion Dates: Mga Petsa sa Paglakip
+Exclusion Dates: Mga Petsa sa Pagluwas
+Event Imported: Hinabo nga Gi-import
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: =
+Mb: Si Mb
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Pagpahibalo
+authenticate: SMTP Error: Dili mapamatud-an
+connect_host: SMTP Error: Dili makakonek sa host sa SMTP:
+data_not_accepted: SMTP Error: Dili gidawat ang datos
+encoding: Wala mailhi nga pag-encode:
+execute: Dili mahimo:
+file_access: Dili ma-access ang file:
+file_open: Ang file nga sayup dili maablihan ang file:
+from_failed: Ang mosunud gikan sa adres napakyas:
+instantiate: Dili masugdan ang pagpaandar sa mail
+mailer_not_supported: dili gisuportahan ang mailer
+provide_address: Kinahanglan nimo nga hatagan labing menos usa ka email address ang makadawat.
+recipients_failed: SMTP Error: Ang mga mosunud nga makadawat napakyas:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Pagsulud sa Mga Character nga Nakita sa Grapiko
+Enter the correct letters and numbers...: Isulud ang tama nga mga letra ug numero gikan sa imahe sa text box. Ang kini nga gamay nga pagsulay nagsilbing restriction sa pag-access batok sa makadaot nga mga bot. I-load pag-usab ang panid kung kini nga graphic lisud kaayo basahon
+Challenge/Response: Hagit / Tubag
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Usba ang petsa ug oras sa kini nga entry?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Wala ka makasulud sa usa ka Mubo nga Paghulagway
+time prior to work hours...: oras sa wala pa ang oras sa pagtrabaho ...
+Invalid Event Date: Dili husto nga Petsa sa Hinabo
+Please add a participant: Palihug pagdugang us aka partisipante
+Invalid Date: Dili Balido nga Petsa
+You have not entered a valid time of day: Wala ka makasulud usa ka balido nga oras sa adlaw.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Ang kalendaryo nga ID dili blangko.
+First and last names cannot both be blank.: Ang una ug apelyido nga ngalan dili parehas nga blangko.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Dili balido nga kolor
+Color format should be RRGGBB.: Ang pormat sa kolor kinahanglan #RRGGBB.
+URL cannot be blank.: Ang URL dili blangko.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Ang tipo sa file dili parehas sa Format sa Pag-import
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Dili balido nga kolor alang sa background sa dokumento.
+Invalid color for document title.: Dili balido nga kolor alang sa ulohan sa dokumento.
+Invalid color for table cell background.: Dili balido nga kolor alang sa background sa lamesa cell.
+Invalid color for table cell background for today.: Dili balido nga kolor alang sa background sa lamesa cell alang karon.
+Invalid work hours.: Dili husto nga oras sa pagtrabaho.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Ang server URL kinahanglan matapos sa usa ka slash (/).
+Invalid color for table grid.: Dili balido nga kolor alang sa grid sa lamesa.
+Invalid color for event popup background.: Dili balido nga kolor alang sa background sa popup sa kalihokan.
+Invalid color for event popup text.: Dili balido nga kolor alang sa teksto sa pag-popup sa hitabo.
+Invalid color for table header text.: Dili balido nga kolor alang sa teksto sa header sa lamesa.
+Invalid color for table header background.: Dili balido nga kolor alang sa background sa header sa lamesa.
+Server URL is required.: Gikinahanglan ang server URL.
+Invalid Color: Dili Balido nga Kolor
+Database Name: Ngalan sa Database
+Full Path (no backslashes): Hingpit nga Dalan (wala’y backslashes)
+The password contains illegal characters.: Ang password adunay sulud nga iligal nga mga karakter.
+Error you must specify a Single-User Login: Kasaypanan: Kinahanglan nimo ipiho ang us aka Pag-login sa Us aka Taggamit
+Could not find XXX.: Wala makit-an ang XXX.
+Could not find XXX in DOM.: Wala makit-an ang XXX sa DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Karong semanaha
+This Month: Karong Buwan
+This Year: Karong tuiga
+Exit: Paggawas
+Add New Event: Pagdugang Bag-ong Hinabo
+Delete Entries: Pagtangtang sa mga Entries
+My Views: Akong Mga Panan-aw
+Manage Calendar of: Igdumala ang Kalendaryo sa
+My Reports: Akong Mga Reporter
+My Profile: Akong Profile
+Public Calendar: Public Kalendaryo
+Unapproved Events: Wala Aprobahi nga mga Hitabo
+User Manager: Tigdumala sa Taggamit
+Help Contents: Mga Sulod sa Tabang
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Direktoryo sa Database Cache
+Create New: Paghimo Bag-o
+Failure Reason: Pakyas nga Rason:
+You must manually create database: Kamo kinahanglan nga mano-mano nga maghimo database.
+Single-User: Usa nga Gigamit
+Test Settings: Mga setting sa Pagsulay
+Timezone Conversion Successful: Malampuson ang Pagbag-o sa Timezone
+WebCalendar Installation Wizard Step XXX: WebCalendar Wizard Installation Lakang XXX
+Password Accepted: Gidawat ang Password
+Successful Login: Malampuson nga Pag-login
+Password Incorrect: Sayup ang password
+Invalid Login: Dili balido nga Pag-login
+Display Errors: Mga Sayop sa Pagpakita
+File Uploads: Mga Pag-upload sa File
+Allow URL fopen: Tugoti ang URL fopen (kinahanglan ra kung gigamit ang mga Remote nga Kalendaryo)
+Safe Mode: Luwas nga Mode
+Safe Mode Allowed Vars: Gitugotan ang Safe Mode nga mga Vars (gikinahanglan lang ang TZ kung Naa ang Safe Mode)
+GD: GD (kinahanglan alang sa Gradient Image Backgrounds)
+Passwords do not match!: Ang mga password dili managsama!
+Unable to write password to settings.php file: Dili makasulat password sa file nga "setting.php".
+Password Updated: Gi-update ang password
+Password has been set: Ang password gitakda na.
+Connection Successful...: Malampuson nga koneksyon  Palihug adto sa sunod nga panid aron mapadayon ang pag-instalar.
+Correct your entries or click the Create New...: Itul-id ang imong mga entry o i-klik ang button nga  Paghimo Bag-o  aron mapadayon ang pag-instalar.
+Correct your entries and try again.: Itul-id ang imong mga entry ug pagsulay usab.
+XXX does not exist: Wala si XXX
+XXX is not writable: Ang XXX dili masulat
+Error Converting Timezone: Sayup nga Pagkakabig sa Timezone
+Error Unable to write to file XXX.: Sayup Dili makasulat sa file nga XXX.
+Please change the file permissions of this file.: Palihug usba ang mga pagtugot sa file sa kini nga file.
+Please change includes dir permission: Palihug usba ang mga pagtugot sa file sa imong direktoryo nga "nag-upod" aron pagtugot sa pagsulat sa ubang mga ninggamit.
+Your settings have been saved.: Ang imong mga setting gitipigan.
+OFF: NAPUNOL
+ON: SA
+WebCalendar Setup Wizard: Wizard sa Pag-setup sa WebCalendar
+This installation wizard will guide you...: Kini nga wizard sa pag-instalar mogiya kanimo pinaagi sa pag-set up sa usa ka sukaranan nga pag-instalar sa WebCalendar.<br>Alang sa tabang ug pag-troubleshoot, tan-awa ang:<br>
+System Administrators Guide: Giya sa Administrador sa Sistema
+Frequently Asked Questions: Mga Daghang Pangutana
+FAQ: =
+Troubleshooting: Pagsulbad sa problema
+Getting Help: Pagkuha og Tabang
+Upgrading Guide: Pag-upgrade sa Giya
+User Supported Wiki: Gisuportahan sa Gumamit Wiki
+PHP Version Check: Pagsusi sa Bersyon sa PHP
+Check to see if PHP 7.1.0 or greater is installed.: Susihon kung nahibal-an ba ang PHP 7.1.0 o labi pa.
+PHP version: Bersyon sa PHP
+PHP Settings: Mga setting sa PHP
+Detailed PHP Info: Detalyado nga Impormasyon sa PHP
+settings.php Status: Kahimtang sa "setting.php"
+Session Check: Pagsusi sa Sisyon
+To test the proper operation of sessions...: Aron masulayan ang husto nga operasyon sa mga sesyon, i-reload kini nga panid. Kinahanglan nimo nga makita ang pagdugang sa counter sa sesyon matag higayon.
+SESSION COUNTER: KONSETO SA SESYON
+The file permissions of settings.php are set...: Ang mga pagtugot sa file nga "setting.php" gitakda aron ang installer wala’y pagtugot nga kini usbon. Palihug usba ang mga pagtugot sa file sa mosunud nga file aron magpadayon
+The file permissions of the includes directory are set...: Ang mga pagtugot sa file sa lakip nga direktoryo gitakda aron ang tig-install wala’y pagtugot sa paghimo usa ka bag-ong file. Palihug usba ang mga pagtugot sa mosunud nga direktoryo aron magpadayon
+Your settings.php file appears to be valid.: Ang imong "setting.php" nga file ingon nga balido.
+Configuration Wizard Password: Pag-configure sa Wizard Password
+Create Settings File Password: Paghimo Mga setting sa File Password
+db setup directions...: Niini nga seksyon mag-set up ka ug sulayan ang usa ka koneksyon sa imong database server. Ang gihatag nga kasayuran sa account kinahanglan adunay TAPOS nga mga pagtugot aron makahimo mga database, lamesa ug mga ninggamit. Kung dili mahimo, o limitado ang pag-access sa imong database, kinahanglan nimo nga manu-mano nga i-configure ang imong database.
+Database Status: Kahimtang sa Database
+Supported databases for your PHP installation: Mga gisuportahan nga mga database alang sa imong pag-instalar sa PHP
+Your current database settings are able to access the database.: Ang imong karon mga setting sa database makahimo sa pag-access sa database.
+Please Test Settings: Palihug Pagsulay sa Mga setting
+Your current database settings are not able...: Ang imong karon mga setting sa database dili ma-access ang database o wala pa masulay.
+Database Settings: Mga setting sa Database
+Database Type: Matang sa Database
+Server: =
+Connection Persistence: Pagpadayon sa Koneksyon
+All your database tables appear to be up...: Ang tanan nimong mga lamesa sa database makita nga bag-o. Mahimo ka magpadayon sa sunod nga panid ug makumpleto ang imong pag-setup sa WebCalendar.
+This appears to be a new installation...: Kini makita nga usa ka bag-ong instalar. Kung dili kini tama, palihug balik sa miaging panid ug itul-id ang imong mga setting.
+This appears to be an upgrade...: Kini makita ingon usa ka pag-upgrade gikan sa bersyon&nbsp;XXX&nbsp;ngadto sa&nbsp;YYY.
+The database requires some data input...: Ang database nanginahanglan pipila nga input sa data Pag-update sa Database aron makompleto ang pag-upgrade.
+In this section we will perform...: Niini nga seksyon buhaton namon ang mga pagbag-o aron madala ang imong database sa gikinahanglan nga lebel. Kung naggamit ka usa ka hingpit nga gisuportahan nga database, kini nga lakang awtomatikong ipatuman alang kanimo. Kung dili, ang kinahanglan nga SQL mahimong ipakita ug kinahanglan nimo nga maputol ug i-paste kini sa imong window server query window.
+No database actions are required.: Dili kinahanglan mga aksyon sa database.
+The following database actions are required: Gikinahanglan ang mosunud nga mga aksyon sa database
+ODBC Underlying Database: Nahiuyon nga Database sa ODBC:
+Automatic installation not supported: Ang awtomatikong pag-instalar wala pa hingpit nga gipatuman alang sa imong tipo sa database. Kinahanglan nimo nga paghimo sa kamut ang mga kinahanglan nga mga lamesa gamit ang gihatag nga SQL. Palihug i-klik ang  Ipakita ang SQL  aron magpadayon. Guntinga ug I-paste sa imong window sa query sa database.
+This may take several minutes to complete: Mahimo kini daghang minuto aron mahuman.
+Install Database: Pag-instalar sa Database
+Update Database: Pag-update sa Database
+Display Required SQL: Ipakita ang Gikinahanglan nga SQL
+Return to previous page after processing SQL.: Pagkahuman sa mano-mano nga pagproseso sa kini nga SQL, kinahanglan nimo nga mobalik sa miaging panid ug sulayan usab ang imong database aron mahibal-an sa script ang mga pagbag-o.
+This is the final step in setting up your WebCalendar Installation.: Kini ang katapusan nga lakang sa pag-set up sa imong Pag-install sa WebCalendar.
+Timezone Conversion: Pagbag-o sa Timezone
+It appears that you have NOT converted...: Makita nga WALA nimo nabag-o ang imong naa nga datos sa hitabo sa WebCalendar sa GMT. Kung adunay ka, mahimo nimo ibaliwala kini nga pahibalo ug dili mopadayon sa pagkakabig. Kung kini usa ka bag-ong instalar, mahimo mo usab nga ibaliwala kini nga pahibalo.
+Convert Data to GMT: Pag-usab sa Data sa GMT
+Application Settings: Mga setting sa aplikasyon
+HTTP-based authentication was not detected...: Ang pag-ila nga nakabase sa HTTP wala mamatikdi. Kinahanglan nimo nga ayohon pag-usab ang imong web server kung gusto nimo pilion ang 'Web Server' gikan sa mga kapilian nga 'User Authentication' sa ubus.
+HTTP-based authentication was detected...: Nakita ang panghimatuud nga nakabase sa HTTP. Ang pagpanghimatuud sa taggamit gidumala sa imong web server. Kinahanglan nimo nga pilion ang 'Web Server' gikan sa lista sa mga kapilian nga 'User Authentication' sa ubus.
+Create Default Admin Account: Paghimo Default nga Admin Account
+(Admin Account Not Found): (Dili Nakit-an ang Admin Account)
+User Authentication: Pagpatotoo sa Gumagamit
+Web-based via WebCalendar (default): Base sa Web pinaagi sa WebCalendar (default)
+Web Server (not detected): Web Server (dili mamatikdan)
+Web Server (detected): Web Server (namatikdan)
+None (Single-User): Wala (Usa nga Gigamit)
+Read-Only: Basaha ra
+Environment: Kalikopan
+Production: Paghimo
+Development: Pagpalambo
+Save Settings: I-save ang Mga setting
+Launch WebCalendar: Ilunsad ang WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Sayup sa pag-update sa lamesa nga "XXX": YYY.
+Conversion Successful: Malampuson nga Pagkakabig 
+Perl script required: Ang imong miaging bersyon sa WebCalendar nagkinahanglan nga magpadagan usa ka PERL script aron mabalhin ang imong datos. Palihug pagdagan /tools/upgrade_to_0.9.7.pl pagkahuman mobalik sa kini nga panid aron magpadayon.
+previous version requires updating several tables: Ang imong miaging bersyon sa WebCalendar nanginahanglan pagbag-o sa daghang mga lamesa sa database.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: WALA MAAYONG PAGPANGANDAM
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Sayup nga pagkonektar sa database
+Include Path: Kauban ang Dalan
+Deleting events for: Pagtangtang sa mga hitabo alang sa
+Importing events for: Pag-import sa mga hitabo alang sa
+No data returned from: Wala ibalik ang datos gikan sa
+for non-user calendar: alang sa dili kalendaryo sa gumagamit
+No Remote Calendars found: Wala nakit-an ang mga Remote nga Kalendaryo
+Remote Calendars not enabled: Wala mapagan ang mga Remote nga Kalendaryo
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: wala makit-an ang event id
+could not find event id XXX in database.: wala makit-i ang event id XXX sa database.
+task: buluhaton
+This is a reminder for the XXX detailed below.: Kini usa ka pahinumdom alang sa XXX nga detalyado sa ubus.
+Pecentage Complete: Nahuman ang Pecentage
+Reminder: Pahinumdom
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Dili gisuportahan nga aksyon: XXX.
+No event id specified.: Wala gipiho nga event id.
+Not authorized (not admin).: Dili gitugotan (dili admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Pagsusi alang sa mga hitabo alang sa XXX gikan sa petsa nga YYY hangtod sa petsa ZZZ.
+Found XXX events in time range.: Nakit-an ang mga hitabo nga XXX sa han-ay sa oras.
+Event id=XXX YYY at ZZZ on AAA.: Event id = XXX "YYY" sa ZZZ sa AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Gitugotan ang tiggamit sa XXX nga tan-awon ang kalendaryo sa uban pa nga tiggamit.
+Error Email reminders disabled for user XXX.: Sayup: Ang mga pahinumdom sa email gipadagan alang sa tiggamit nga "XXX".
+Number of site_extras XXX.: Gidaghan sa site_extras: XXX.
+Reminder set for event.: Gipahimutang ang pahinumdom alang sa hitabo.
+Mins Before XXX.: Minson sa wala pa: XXX.
+Event time is XXX.: Ang oras sa hitabo mao ang: XXX.
+Remind time is XXX.: Ang oras sa pagpahinumdom mao ang: XXX.
+Reminders for user XXX, login YYY.: Mga pahinumdom alang sa mogamit nga "XXX", pag-login sa "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Dili naaprubahan alang sa tiggamit nga "XXX".
+Event id=XXX YYY already sent.: Gipadala na ang event id = XXX "YYY".
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Wala’y kinahanglan nga pag-login alang sa mode nga usa ra ang mogamit.
+No login required for HTTP authentication.: Dili kinahanglan nga pag-login alang sa panghimatuud sa HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Dili balido nga mga karakter sa pag-login.
+Username XXX does not exist.: Wala ang username "XXX".
+You cannot remove admin rights from yourself!: Dili nimo makuha ang mga katungod sa admin gikan sa imong kaugalingon!
+Unknown error saving user: Wala mailhi nga nagdagan sa sayup.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Wala makit-an nga mga sumasalmot alang sa event id: XXX.
+Db error Could not find event id XXX.: Sayup sa db: Dili makapangita nga hitabo id XXX.
+Error Could not find event id XXX in database.: Sayup: Wala makit-i ang event id XXX sa database.

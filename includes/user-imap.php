@@ -13,8 +13,8 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
  * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
- * @package WebCalendar
- * @subpackage IMAPAuthentication
+ *
+ * @package WebCalendar\IMAPAuthentication
  */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
