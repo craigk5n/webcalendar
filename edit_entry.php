@@ -368,7 +368,7 @@ else if (!empty($id) && $id > 0) {
   if (!empty($cat_id)) {
     $res = dbi_execute(
       'SELECT cat_name FROM webcal_categories ' .
-        'WHERE cat_id = ? AND ( cat_owner = ? OR cat_owner IS NULL )',
+        'WHERE cat_id = ? AND ( cat_owner = ? OR cat_owner = \'\' )',
       [$cat_id, $real_user]
     );
     if ($res) {
