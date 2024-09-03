@@ -142,7 +142,7 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ): array {
  * Unloads $translations so we can translate a different language.
  *
  * @param string $new_language New language file to load (just the base filename,
- *                             no directory or file suffix. Example:  "French")
+ *                             no directory or file suffix. Example: "French")
  */
 function reset_language ( $new_language ) {
   global $fullname, $lang, $lang_file,
@@ -220,15 +220,6 @@ function load_translation_text() {
     if ( ! is_dir ( $cache_tran_dir ) ) {
       @mkdir ( $cache_tran_dir, 0777 );
       @chmod ( $cache_tran_dir, 0777 );
-      /*
-      // Do we really want to die if we can't save the cache file?
-      // Or should we just run without it?
-      if ( ! is_dir ( $cache_tran_dir ) )
-        die_miserable_death ( 'Error creating translation cache directory: "'
-           . $cache_tran_dir
-           . '"<br><br>Please check the permissions of the directory: "'
-           . $cachedir . '"' );
- */
     }
 
     $can_save = ( is_writable ( $cache_tran_dir ) );
@@ -351,21 +342,23 @@ function translate ( $str, $decode = '', $type = '' ) {
     if ( $type == 'D' ) {
       for ( $i = 0; $i < 12; $i++ ) {
         // Translate month names. Full then abbreviation.
-        $tmp = date ( 'F', mktime ( 0, 0, 0, $i + 1 ) );
+        $f = mktime ( 0, 0, 0, $i + 1 );
+        $tmp = date ( 'F', $f );
         if ( $tmp != $translations[$tmp] )
           $str = str_replace ( $tmp, $translations[$tmp], $str );
 
-        $tmp = date ( 'M', mktime ( 0, 0, 0, $i + 1 ) );
+        $tmp = date ( 'M', $f );
         if ( $tmp != $translations[$tmp] )
           $str = str_replace ( $tmp, $translations[$tmp], $str );
 
         if ( $i < 7 ) {
           // Might as well translate day names while we're here.
-          $tmp = date ( 'l', mktime ( 0, 0, 0, 1, $i + 1 ) );
+          $f = mktime ( 0, 0, 0, 1, $i + 1 );
+          $tmp = date ( 'l', $f );
           if ( $tmp != $translations[$tmp] )
             $str = str_replace ( $tmp, $translations[$tmp], $str );
 
-          $tmp = date ( 'D', mktime ( 0, 0, 0, 1, $i + 1 ) );
+          $tmp = date ( 'D', $f );
           if ( $tmp != $translations[$tmp] )
             $str = str_replace ( $tmp, $translations[$tmp], $str );
         }
@@ -394,12 +387,11 @@ function translate ( $str, $decode = '', $type = '' ) {
  * @param string   $str     Text to translate and print
  * @param string   $decode  Do we want to invoke html_entity_decode
  * @param string   $type    (A = alphabetic, D = date, N = numeric)
- * @param integer  $date    Default date()
  *
  * @uses translate
  */
-function etranslate ( $str, $decode = '', $type = 'A', $date = '' ) {
-  echo translate ( $str, $decode, $type, $date );
+function etranslate ( $str, $decode = '', $type = 'A' ) {
+  echo translate ( $str, $decode, $type );
 }
 
 /**
@@ -453,59 +445,122 @@ function define_languages() {
     translate ( 'English' ) => 'English-US', // translate ( 'English-US' )
     translate ( 'Afrikaans' ) => 'Afrikaans',
     translate ( 'Albanian' ) => 'Albanian',
-    translate ( 'Arabic' ) . ' (UTF8)' => 'Arabic_utf8',
+    translate ( 'Amharic' ) => 'Amharic',
+    translate ( 'Arabic' ) => 'Arabic',
+    translate ( 'Azerbaijani' ) => 'Azerbaijani',
     translate ( 'Basque' ) => 'Basque',
+    translate ( 'Belarusian' ) => 'Belarusian',
+    translate ( 'Bengali' ) => 'Bengali',
+    translate ( 'Bosnian' ) => 'Bosnian',
     translate ( 'Bulgarian' ) => 'Bulgarian',
+    translate ( 'Burmese' ) => 'Burmese',
     translate ( 'Catalan' ) => 'Catalan',
-    translate ( 'Chinese (Simplified/GB2312)' ) => 'Chinese-GB2312',
-    translate ( 'Chinese (Traditional/Big5)' ) => 'Chinese-Big5',
-    translate ( 'Croatian' ) . ' (UTF8)' => 'Croatian_utf8',
+    translate ( 'Cebuano' ) => 'Cebuano',
+    translate ( 'Chichewa' ) => 'Chichewa',
+    translate ( 'Chinese (Simplified/GB2312)' ) => 'Chinese-Simplified',
+    translate ( 'Chinese (Traditional/Big5)' ) => 'Chinese-Traditional',
+    translate ( 'Corsican' ) => 'Corsican',
+    translate ( 'Croatian' ) => 'Croatian',
     translate ( 'Czech' ) => 'Czech',
-    translate ( 'Czech' ) . ' (UTF8)' => 'Czech_utf8',
     translate ( 'Danish' ) => 'Danish',
     translate ( 'Dutch' ) => 'Dutch',
-    translate ( 'Elven' ) => 'Elven',
+    translate ( 'Esperanto' ) => 'Esperanto',
     translate ( 'Estonian' ) => 'Estonian',
+    translate ( 'Filipino' ) => 'Filipino',
     translate ( 'Finnish' ) => 'Finnish',
-    translate ( 'French' ) . ' (UTF8)' => 'French-UTF8',
     translate ( 'French' ) => 'French',
+    translate ( 'Frisian' ) => 'Frisian',
     translate ( 'Galician' ) => 'Galician',
+    translate ( 'Georgian' ) => 'Georgian',
     translate ( 'German' ) => 'German',
-    translate ( 'German' ) . ' (UTF-8)' => 'German_utf8',
     translate ( 'Greek' ) => 'Greek',
-    translate ( 'Hebrew' ) . ' (UTF-8)' => 'Hebrew_utf8',
-    translate ( 'Holo (Taiwanese)' ) => 'Holo-Big5',
+    translate ( 'Gujarati' ) => 'Gujarati',
+    translate ( 'Haitian' ) => 'Haitian',
+    translate ( 'Hausa' ) => 'Hausa',
+    translate ( 'Hawaiian' ) => 'Hawaiian',
+    translate ( 'Hebrew' ) => 'Hebrew',
+    translate ( 'Hindi' ) => 'Hindi',
+    translate ( 'Hmong' ) => 'Hmong',
+    // translate ( 'Holo (Taiwanese)' ) => 'Holo-Big5',
     translate ( 'Hungarian' ) => 'Hungarian',
     translate ( 'Icelandic' ) => 'Icelandic',
-    translate ( 'Indonesian' ) => 'Bahasa_Indonesia',
+    translate ( 'Igbo' ) => 'Igbo',
+    translate ( 'Indonesian' ) => 'Indonesian',
+    translate ( 'Irish' ) => 'Irish',
     translate ( 'Italian' ) => 'Italian',
-    translate ( 'Japanese' ) . ' (EUC-JP)' => 'Japanese-eucjp',
-    translate ( 'Japanese' ) . ' (SHIFT JIS)' => 'Japanese-sjis',
-    translate ( 'Japanese' ) . ' (UTF-8)' => 'Japanese',
+    // translate ( 'Japanese' ) . ' (EUC-JP)' => 'Japanese-eucjp',
+    // translate ( 'Japanese' ) . ' (SHIFT JIS)' => 'Japanese-sjis',
+    translate ( 'Japanese' ) => 'Japanese',
+    translate ( 'Javanese' ) => 'Javanese',
+    translate ( 'Kannada' ) => 'Kannada',
+    translate ( 'Kazakh' ) => 'Kazakh',
+    translate ( 'Khmer' ) => 'Khmer',
+    translate ( 'Kinyarwanda' ) => 'Kinyarwanda',
+    translate ( 'Kiswahili' ) => 'Kiswahili',
     translate ( 'Korean' ) => 'Korean',
+    translate ( 'Kurdish' ) => 'Kurdish',
+    translate ( 'Kyrgyz' ) => 'Kyrgyz',
+    translate ( 'Lao' ) => 'Lao',
+    translate ( 'Latin' ) => 'Latin',
+    translate ( 'Latvian' ) => 'Latvian',
     translate ( 'Lithuanian' ) => 'Lithuanian',
+    translate ( 'Luxembourgish' ) => 'Luxembourgish',
+    translate ( 'Macedonian' ) => 'Macedonian',
+    translate ( 'Malagasy' ) => 'Malagasy',
+    translate ( 'Malay' ) => 'Malay',
+    translate ( 'Malayalam' ) => 'Malayalam',
+    translate ( 'Maltese' ) => 'Maltese',
+    translate ( 'Maori' ) => 'Maori',
+    translate ( 'Marathi' ) => 'Marathi',
+    translate ( 'Mongolian' ) => 'Mongolian',
+    translate ( 'Nepali' ) => 'Nepali',
     translate ( 'Norwegian' ) => 'Norwegian',
+    translate ( 'Odia' ) => 'Odia',
+    translate ( 'Pashto' ) => 'Pashto',
+    translate ( 'Persian' ) => 'Persian',
     translate ( 'Polish' ) => 'Polish',
     translate ( 'Portuguese' ) => 'Portuguese',
     translate ( 'Portuguese/Brazil' ) => 'Portuguese_BR',
-    translate ( 'Portuguese/Brazil' ) . ' (UTF-8)' => 'Portuguese_BR_utf8',
+    translate ( 'Punjabi' ) => 'Punjabi',
     translate ( 'Romanian' ) => 'Romanian',
-    translate ( 'Russian' ) . ' (UTF-8)' => 'Russian_utf8',
     translate ( 'Russian' ) => 'Russian',
-    translate ( 'Serbian' ) . ' (UTF-8)' => 'Serbian_utf8',
-    translate ( 'Slovak' ) . ' (UTF-8)' => 'Slovak_utf8',
+    translate ( 'Samoan' ) => 'Samoan',
+    translate ( 'Scots' ) => 'Scots',
+    translate ( 'Serbian' ) => 'Serbian',
+    translate ( 'Sesotho' ) => 'Sesotho',
+    translate ( 'Shona' ) => 'Shona',
+    translate ( 'Sindhi' ) => 'Sindhi',
+    translate ( 'Sinhala' ) => 'Sinhala',
+    translate ( 'Slovak' ) => 'Slovak',
     translate ( 'Slovenian' ) => 'Slovenian',
+    translate ( 'Somali' ) => 'somali',
     translate ( 'Spanish' ) => 'Spanish',
+    translate ( 'Sundanese' ) => 'Sundanese',
     translate ( 'Swedish' ) => 'Swedish',
+    translate ( 'Tajik' ) => 'Tajik',
+    translate ( 'Tamil' ) => 'Tamil',
+    translate ( 'Tatar' ) => 'Tatar',
+    translate ( 'Telugu' ) => 'Telugu',
+    translate ( 'Thai' ) => 'Thai',
     translate ( 'Turkish' ) => 'Turkish',
-    translate ( 'Welsh' ) => 'Welsh'
+    translate ( 'Turkmen' ) => 'Turkmen',
+    translate ( 'Ukrainian' ) => 'Ukrainian',
+    translate ( 'Urdu' ) => 'Urdu',
+    translate ( 'Uyghur' ) => 'Uyghur',
+    translate ( 'Uzbek' ) => 'Uzbek',
+    translate ( 'Vietnamese' ) => 'Vietnamese',
+    translate ( 'Welsh' ) => 'Welsh',
+    translate ( 'Xhosa' ) => 'Xhosa',
+    translate ( 'Yiddish' ) => 'Yiddish',
+    translate ( 'Yoruba' ) => 'Yoruba',
+    translate ( 'Zulu' ) => 'Zulu',
     // Add new languages here!
-    ];
-    //Sort languages in translated order
-    asort ( $languages );
-    //make sure Browser Defined is first in list
-    $browser_defined = [translate ( 'Browser-defined' ) => 'none'];
-    $languages = array_merge ( $browser_defined, $languages );
+  ];
+  //Sort languages in translated order
+  asort ( $languages );
+  //make sure Browser Defined is first in list
+  $browser_defined = [translate ( 'Browser-defined' ) => 'none'];
+  $languages = array_merge ( $browser_defined, $languages );
 }
 
 /**
@@ -529,67 +584,547 @@ function languageToAbbrev ( $name ) {
  * If the user sets "Browser-defined" as their language setting, then use the
  * $HTTP_ACCEPT_LANGUAGE settings to determine the language. The array below
  * maps browser language abbreviations into our available language files.
- * NOTE:  These should all be lowercase on the left side even though the proper
- * listing is like "en-US"!  Not sure what the abbreviation is?  Check out:
+ *
+ * Not sure what the 2-letter abbreviation is? Check out:
  * https://w3schools.com/tags/ref_language_codes.asp
+ *
+ * List of all locale codes (??-??) with country and language details,
+ * including ISO 3166 and ISO 639 codes, timezones, capital, currency, and more.
+ * https://cdn.simplelocalize.io
  */
-// Craig. Why not just have the translation/*.txt files named 'de-at.txt' or whatever?
-// Would eliminate this whole array. And the function that calls it.
-$browser_languages = [
-  'af' => 'Afrikaans',
-  'ar' => 'Arabic',
-  'bg' => 'Bulgarian',
-  'ca' => 'Catalan',
-  'cs' => 'Czech',
-  'cy' => 'Welsh',
-  'da' => 'Danish',
-  'de' => 'German',
-  'de-at' => 'German', // German/Austria
-  'de-ch' => 'German', // German/Switzerland
-  'de-de' => 'German', // German/German
-  // 'Elven' doesn't have a code abbreviation.
-  'ee' => 'Estonian',
-  'el' => 'Greek',
-  'en' => 'English-US',
-  'en-ca' => 'English-US',
-  'en-gb' => 'English-US',
-  'en-us' => 'English-US',
-  'es' => 'Spanish',
-  'eu' => 'Basque',
-  'fi' => 'Finnish',
-  'fr' => 'French',
-  'fr-ca' => 'French', // French/Canada
-  'fr-ch' => 'French', // French/Swiss
-  'gl' => 'Galician',
-  'he' => 'Hebrew',
-  'hr' => 'Croatian',
-  'hu' => 'Hungarian',
-  'id' => 'Bahasa_Indonesia',
-  'is' => 'Icelandic',
-  'it' => 'Italian',
-  'it-ch' => 'Italian', // Italian/Switzerland
-  'ja' => 'Japanese',
-  'ko' => 'Korean',
-  'lt' => 'Lithuanian',
-  'nl' => 'Dutch',
-  'no' => 'Norwegian',
-  'pl' => 'Polish',
-  'pt' => 'Portuguese',
-  'pt-br' => 'Portuguese_BR', // Portuguese/Brazil
-  'ro' => 'Romanian',
-  'ru' => 'Russian',
-  'ru-ru' => 'Russian', // Safari reports this
-  'sk' => 'Slovak',
-  'sl' => 'Slovenian',
-  'sq' => 'Albanian',
-  'sr' => 'Serbian',
-  'sv' => 'Swedish',
-  'tr' => 'Turkish',
-  'zh' => 'Chinese-GB2312', // Simplified Chinese
-  'zh-cn' => 'Chinese-GB2312',
-  'zh-min-nan-tw' => 'Holo-Big5',
-  'zh-tw' => 'Chinese-Big5', // Traditional Chinese
-  ];
+
+ /* These are code => language file // (country) */
+ $browser_languages = [
+  // 'aa-ER' => 'Afar', //                (Nakfa)
+  // 'aa'    => 'Afar',
+  'af-NA' => 'Afrikaans', //           (Namibia)
+  'af-ZA' => 'Afrikaans', //           (South Africa)
+  'af'    => 'Afrikaans',
+  'am-ET' => 'Amharic', //             (Ethiopia)
+  'am'    => 'Amharic',
+  'ar-AE' => 'Arabic', //              (United Arab Emirates)
+  'ar-BH' => 'Arabic', //              (Bahrain)
+  'ar-DJ' => 'Arabic', //              (Djibouti)
+  'ar-DZ' => 'Arabic', //              (Algeria)
+  'ar-EG' => 'Arabic', //              (Egypt)
+  'ar-ER' => 'Arabic', //              (Eritrea)
+  'ar-IL' => 'Arabic', //              (Israel)
+  'ar-IQ' => 'Arabic', //              (Iraq)
+  'ar-JO' => 'Arabic', //              (Jordan)
+  'ar-KM' => 'Arabic', //              (Comoros)
+  'ar-KW' => 'Arabic', //              (Kuwait)
+  'ar-LB' => 'Arabic', //              (Lebanon)
+  'ar-LY' => 'Arabic', //              (Libya)
+  'ar-MA' => 'Arabic', //              (Morocco)
+  'ar-MR' => 'Arabic', //              (Mauritania)
+  'ar-OM' => 'Arabic', //              (Oman)
+  'ar-PS' => 'Arabic', //              (Palestine)
+  'ar-QA' => 'Arabic', //              (Qatar)
+  'ar-SA' => 'Arabic', //              (Saudi Arabia)
+  'ar-SD' => 'Arabic', //              (Sudan)
+  'ar-SO' => 'Arabic', //              (Somalia)
+  'ar-SY' => 'Arabic', //              (Syria)
+  'ar-TD' => 'Arabic', //              (Chad)
+  'ar-TN' => 'Arabic', //              (Tunisia)
+  'ar-YE' => 'Arabic', //              (Yemen)
+  'ar'    => 'Arabic',
+  // 'ay-BO' => 'Aymara', //              (Bolivia)
+  // 'ay'    => 'Aymara',
+  'az-AZ' => 'Azerbaijani', //         (Azerbaijan)
+  'az'    => 'Azerbaijani',
+  'be-BY' => 'Belarusian', //          (Belarus)
+  'be'    => 'Belarusian',
+  'bg-BG' => 'Bulgarian', //           (Bulgaria)
+  'bg'    => 'Bulgarian',
+  // 'bi-VU' => 'Bislama', //             (Vanuatu)
+  // 'bi'    => 'Bislama',
+  'bn-BD' => 'Bengali', //             (Bangladesh)
+  'bn'    => 'Bengali',
+  'bs-BA' => 'Bosnian', //             (Bosnia and Herzegovina)
+  'bs-ME' => 'Bosnian', //             (Montenegro)
+  'bs'    => 'Bosnian',
+  // 'byn-ER' => 'Bilen', //              (Eritrea)
+  // 'byn'   => 'Bilen',
+  'ca-AD' => 'Catalan', //             (Andorra)
+  'ca'    => 'Catalan',
+  'ceb'   => 'Cebuano',
+  // 'ch-GU' => 'Chamorro', //            (Guam)
+  // 'ch-MP' => 'Chamorro', //            (Northern Mariana Islands)
+  // 'ch'    => 'Chamorro',
+  'co'    => 'Corsican',
+  'cs-CZ' => 'Czech', //               (Czechia)
+  'cs'    => 'Czech',
+  'cy'    => 'Welsh',
+  'da-DK' => 'Danish', //              (Denmark)
+  'da'    => 'Danish',
+  'de-AT' => 'German', //              (Austria)
+  'de-BE' => 'German', //              (Belgium)
+  'de-CH' => 'German', //              (Switzerland)
+  'de-DE' => 'German', //              (Germany)
+  'de-LI' => 'German', //              (Liechtenstein)
+  'de-LU' => 'German', //              (Luxembourg)
+  'de-VA' => 'German', //              (Vatican City)
+  'de'    => 'German',
+  // 'dv-MV' => 'Divehi', //              (Maldives)
+  // 'dv'    => 'Divehi',
+  // 'dz-BT' => 'Dzongkha', //            (Bhutan)
+  // 'dz'    => 'Dzongkha',
+  'ee'    => 'Estonian',
+  'el-CY' => 'Greek', //               (Cyprus)
+  'el-GR' => 'Greek', //               (Greece)
+  'el'    => 'Greek',
+  'en-AG' => 'English-US', //          (Antigua and Barbuda)
+  'en-AI' => 'English-US', //          (Anguilla)
+  'en-AQ' => 'English-US', //          (Antarctica)
+  'en-AS' => 'English-US', //          (American Samoa)
+  'en-AU' => 'English-US', //          (Australia)
+  'en-BB' => 'English-US', //          (Barbados)
+  'en-BM' => 'English-US', //          (Bermuda)
+  'en-BS' => 'English-US', //          (Bahamas)
+  'en-BW' => 'English-US', //          (Botswana)
+  'en-BZ' => 'English-US', //          (Belize)
+  'en-CA' => 'English-US', //          (Canada)
+  'en-CC' => 'English-US', //          (Cocos 'Keeling' Islands)
+  'en-CK' => 'English-US', //          (Cook Islands)
+  'en-CM' => 'English-US', //          (Cameroon)
+  'en-CW' => 'English-US', //          (Curacao)
+  'en-CX' => 'English-US', //          (Christmas Island)
+  'en-DM' => 'English-US', //          (Dominica)
+  'en-ER' => 'English-US', //          (Eritrea)
+  'en-FJ' => 'English-US', //          (Fiji)
+  'en-FK' => 'English-US', //          (Falkland Islands)
+  'en-FM' => 'English-US', //          (Federated States of Micronesia)
+  'en-GB' => 'English-US', //          (United Kingdom)
+  'en-GD' => 'English-US', //          (Grenada)
+  'en-GG' => 'English-US', //          (Guernsey)
+  'en-GH' => 'English-US', //          (Ghana)
+  'en-GI' => 'English-US', //          (Gibraltar)
+  'en-GM' => 'English-US', //          (Gambia)
+  'en-GS' => 'English-US', //          (South Georgia and South Sandwich Islands)
+  'en-GU' => 'English-US', //          (Guam)
+  'en-GY' => 'English-US', //          (Guyana)
+  'en-HK' => 'English-US', //          (Hong Kong)
+  'en-HM' => 'English-US', //          (Heard Island and McDonald Islands)
+  'en-IE' => 'English-US', //          (Ireland)
+  'en-IM' => 'English-US', //          (Isle of Man)
+  'en-IN' => 'English-US', //          (India)
+  'en-IO' => 'English-US', //          (British Indian Ocean Territory)
+  'en-JE' => 'English-US', //          (Jersey)
+  'en-JM' => 'English-US', //          (Jamaica)
+  'en-KE' => 'English-US', //          (Kenya)
+  'en-KI' => 'English-US', //          (Kiribati)
+  'en-KN' => 'English-US', //          (Saint Kitts and Nevis)
+  'en-KY' => 'English-US', //          (Cayman Islands)
+  'en-LC' => 'English-US', //          (Saint Lucia)
+  'en-LR' => 'English-US', //          (Liberia)
+  'en-LS' => 'English-US', //          (Lesotho)
+  'en-MF' => 'English-US', //          (Saint Martin)
+  'en-MH' => 'English-US', //          (Marshall Islands)
+  'en-MP' => 'English-US', //          (Northern Mariana Islands)
+  'en-MS' => 'English-US', //          (Montserrat)
+  'en-MT' => 'English-US', //          (Malta)
+  'en-MU' => 'English-US', //          (Mauritius)
+  'en-MW' => 'English-US', //          (Malawi)
+  'en-NA' => 'English-US', //          (Namibia)
+  'en-NF' => 'English-US', //          (Norfolk Island)
+  'en-NG' => 'English-US', //          (Nigeria)
+  'en-NR' => 'English-US', //          (Nauru)
+  'en-NU' => 'English-US', //          (Niue)
+  'en-NZ' => 'English-US', //          (New Zealand)
+  'en-PG' => 'English-US', //          (Papua New Guinea)
+  'en-PH' => 'English-US', //          (Philippines)
+  'en-PK' => 'English-US', //          (Pakistan)
+  'en-PN' => 'English-US', //          (Pitcairn Islands)
+  'en-PR' => 'English-US', //          (Puerto Rico)
+  'en-PW' => 'English-US', //          (Palau)
+  'en-RW' => 'English-US', //          (Rwanda)
+  'en-SB' => 'English-US', //          (Solomon Islands)
+  'en-SC' => 'English-US', //          (Seychelles)
+  'en-SD' => 'English-US', //          (Sudan)
+  'en-SG' => 'English-US', //          (Singapore)
+  'en-SH' => 'English-US', //          (Saint Helena, Ascension and Tristan da Cunha)
+  'en-SL' => 'English-US', //          (Sierra Leone)
+  'en-SS' => 'English-US', //          (South Sudan)
+  'en-SX' => 'English-US', //          (Sint Maarten)
+  'en-SZ' => 'English-US', //          (Eswatini)
+  'en-TC' => 'English-US', //          (Turks and Caicos Islands)
+  'en-TK' => 'English-US', //          (Tokelau)
+  'en-TO' => 'English-US', //          (Tonga)
+  'en-TT' => 'English-US', //          (Trinidad and Tobago)
+  'en-TV' => 'English-US', //          (Tuvalu)
+  'en-TZ' => 'English-US', //          (Tanzania)
+  'en-UG' => 'English-US', //          (Uganda)
+  'en-UM' => 'English-US', //          (United States Minor Outlying Islands)
+  'en-US' => 'English-US', //          (United States of America)
+  'en-VC' => 'English-US', //          (Saint Vincent and the Grenadines)
+  'en-VG' => 'English-US', //          (British Virgin Islands)
+  'en-VI' => 'English-US', //          (Virgin Islands)
+  'en-VU' => 'English-US', //          (Vanuatu)
+  'en-WS' => 'English-US', //          (Samoa)
+  'en-ZA' => 'English-US', //          (South Africa)
+  'en-ZM' => 'English-US', //          (Zambia)
+  'en-ZW' => 'English-US', //          (Zimbabwe)
+  'en'    => 'English-US',
+  'eo'    => 'Esperanto',
+  'es-AR' => 'Spanish', //             (Argentina)
+  'es-BO' => 'Spanish', //             (Bolivia)
+  'es-BZ' => 'Spanish', //             (Belize)
+  'es-CL' => 'Spanish', //             (Chile)
+  'es-CO' => 'Spanish', //             (Colombia)
+  'es-CR' => 'Spanish', //             (Costa Rica)
+  'es-CU' => 'Spanish', //             (Cuba)
+  'es-DO' => 'Spanish', //             (Dominican Republic)
+  'es-EC' => 'Spanish', //             (Ecuador)
+  'es-EH' => 'Spanish', //             (Western Sahara)
+  'es-ES' => 'Spanish', //             (Spain)
+  'es-GQ' => 'Spanish', //             (Equatorial Guinea)
+  'es-GT' => 'Spanish', //             (Guatemala)
+  'es-GU' => 'Spanish', //             (Guam)
+  'es-HN' => 'Spanish', //             (Honduras)
+  'es-MX' => 'Spanish', //             (Mexico)
+  'es-NI' => 'Spanish', //             (Nicaragua)
+  'es-PA' => 'Spanish', //             (Panama)
+  'es-PE' => 'Spanish', //             (Peru)
+  'es-PR' => 'Spanish', //             (Puerto Rico)
+  'es-PY' => 'Spanish', //             (Paraguay)
+  'es-SV' => 'Spanish', //             (El Salvador)
+  'es-UY' => 'Spanish', //             (Uruguay)
+  'es-VE' => 'Spanish', //             (Venezuela)
+  'es'    => 'Spanish',
+  'et-EE' => 'Estonian', //            (Estonia)
+  'et'    => 'Estonian',
+  'eu'    => 'Basque',
+  'fa-IR' => 'Persian', //             (Iran)
+  'fa'    => 'Persian',
+  // 'fan-GQ' => 'Fang', //               (Equatorial Guinea)
+  // 'fan'   => 'Fang',
+  // 'ff-BF' => 'Fula', //                (Burkina Faso)
+  // 'ff-GN' => 'Fula', //                (Guinea)
+  // 'ff'    => 'Fula',
+  'fi-FI' => 'Finnish', //             (Finland)
+  'fi'    => 'Finnish',
+  'fil'   => 'Filipino',
+  'fj-FJ' => 'Fijian', //              (Fiji)
+  'fj'    => 'Fijian',
+  // 'fo-FO' => 'Faroese', //             (Faroe Islands)
+  // 'fo'    => 'Faroese',
+  'fr-BE' => 'French', //              (Belgium)
+  'fr-BF' => 'French', //              (Burkina Faso)
+  'fr-BI' => 'French', //              (Burundi)
+  'fr-BJ' => 'French', //              (Benin)
+  'fr-BL' => 'French', //              (Saint Barthelemy)
+  'fr-CA' => 'French', //              (Canada)
+  'fr-CD' => 'French', //              (Democratic Republic of the Congo)
+  'fr-CF' => 'French', //              (Central African Republic)
+  'fr-CG' => 'French', //              (Republic of the Congo)
+  'fr-CH' => 'French', //              (Switzerland)
+  'fr-CI' => 'French', //              (Ivory Coast)
+  'fr-CM' => 'French', //              (Cameroon)
+  'fr-DJ' => 'French', //              (Djibouti)
+  'fr-FR' => 'French', //              (France)
+  'fr-GA' => 'French', //              (Gabon)
+  'fr-GF' => 'French', //              (French Guiana)
+  'fr-GG' => 'French', //              (Guernsey)
+  'fr-GN' => 'French', //              (Guinea)
+  'fr-GP' => 'French', //              (Guadeloupe)
+  'fr-GQ' => 'French', //              (Equatorial Guinea)
+  'fr-HT' => 'French', //              (Haiti)
+  'fr-JE' => 'French', //              (Jersey)
+  'fr-KM' => 'French', //              (Comoros)
+  'fr-LB' => 'French', //              (Lebanon)
+  'fr-LU' => 'French', //              (Luxembourg)
+  'fr-MC' => 'French', //              (Principality of Monaco)
+  'fr-MF' => 'French', //              (Saint Martin)
+  'fr-MG' => 'French', //              (Madagascar)
+  'fr-ML' => 'French', //              (Mali)
+  'fr-MQ' => 'French', //              (Martinique)
+  'fr-NC' => 'French', //              (New Caledonia)
+  'fr-NE' => 'French', //              (Niger)
+  'fr-PF' => 'French', //              (French Polynesia)
+  'fr-PM' => 'French', //              (Saint Pierre and Miquelon)
+  'fr-RE' => 'French', //              (Reunion)
+  'fr-RW' => 'French', //              (Rwanda)
+  'fr-SC' => 'French', //              (Seychelles)
+  'fr-SN' => 'French', //              (Senegal)
+  'fr-TD' => 'French', //              (Chad)
+  'fr-TF' => 'French', //              (French Southern and Antarctic Lands)
+  'fr-TG' => 'French', //              (Togo)
+  'fr-VA' => 'French', //              (Vatican City)
+  'fr-VU' => 'French', //              (Vanuatu)
+  'fr-WF' => 'French', //              (Wallis and Futuna)
+  'fr-YT' => 'French', //              (Mayotte)
+  'fr'    => 'French',
+  'fy'    => 'Frisian',
+  'ga-IE' => 'Irish', //               (Ireland)
+  'ga'    => 'Irish',
+  'gd'    => 'Scots',
+  'gl'    => 'Galician',
+  // 'gn-AR' => 'Guaraní', //             (Argentina)
+  // 'gn-PY' => 'Guaraní', //             (Paraguay)
+  // 'gn'    => 'Guaraní',
+  'gu'    => 'Gujarati',
+  // 'gv-IM' => 'Manx', //                (Isle of Man)
+  // 'gv'    => 'Manx',
+  'ha'    => 'Hausa',
+  'haw'   => 'Hawaiian',
+  'he-IL' => 'Hebrew', //              (Israel)
+  'he'    => 'Hebrew',
+  'hi-IN' => 'Hindi', //               (India)
+  'hi'    => 'Hindi',
+  'hif-FJ' => 'Hindi', //              (Fiji)
+  'hif'   => 'Hindi',
+  'hmn'   => 'Hmong',
+  'hr-BA' => 'Croatian', //            (Bosnia and Herzegovina)
+  'hr-HR' => 'Croatian', //            (Croatia)
+  'hr-ME' => 'Croatian', //            (Montenegro)
+  'hr'    => 'Croatian',
+  'ht-HT' => 'Haitian', //             (Haiti)
+  'ht'    => 'Haitian',
+  'hu-HU' => 'Hungarian', //           (Hungary)
+  'hu'    => 'Hungarian',
+  // 'hy-AM' => 'Armenian', //            (Armenia)
+  // 'hy-CY' => 'Armenian', //            (Cyprus)
+  // 'hy'    => 'Armenian',
+  'id-ID' => 'Indonesian', //          (Indonesia)
+  'id'    => 'Indonesia',
+  'id'    => 'Indonesian',
+  'ig'    => 'Igbo',
+  'is-IS' => 'Icelandic', //           (Iceland)
+  'is'    => 'Icelandic',
+  'it-CH' => 'Italian', //             (Switzerland)
+  'it-IT' => 'Italian', //             (Italy)
+  'it-SM' => 'Italian', //             (San Marino)
+  'it-VA' => 'Italian', //             (Vatican City)
+  'it'    => 'Italian',
+  'ja-JP' => 'Japanese', //            (Japan)
+  'ja'    => 'Japanese',
+  'ji'    => 'Yiddish',
+  'jv'    => 'Javanese',
+  'ka-GE' => 'Georgian', //            (Georgia)
+  'ka'    => 'Georgian',
+  // 'kg-CD' => 'Kongo', //               (Democratic Republic of the Congo)
+  // 'kg'    => 'Kongo',
+  'kk-KZ' => 'Kazakh', //              (Kazakhstan)
+  'kk'    => 'Kazakh',
+  // 'kl-GL' => 'Greenlandic', //         (Greenland)
+  // 'kl'    => 'Greenlandic',
+  'km-KH' => 'Khmer', //               (Cambodia)
+  'km'    => 'Khmer',
+  'kn'    => 'Kannada',
+  'ko-KP' => 'Korean', //              (North Korea)
+  'ko-KR' => 'Korean', //              (South Korea)
+  'ko'    => 'Korean',
+  'ku-IQ' => 'Kurdish', //             (Iraq)
+  'ku'    => 'Kurdish',
+  // 'kun-ER' => 'Kunama', //             (Eritrea)
+  // 'kun'   => 'Kunama',
+  'ky-KG' => 'Kyrgyz', //              (Kyrgyzstan)
+  'ky'    => 'Kyrgyz',
+  'la-VA' => 'Latin', //               (Vatican City)
+  'la'    => 'Latin',
+  'lb-LU' => 'Luxembourgish', //       (Luxembourg)
+  'lb'    => 'Luxembourgish',
+  // 'ln-CD' => 'Lingala', //             (Democratic Republic of the Congo)
+  // 'ln-CG' => 'Lingala', //             (Republic of the Congo)
+  // 'ln'    => 'Lingala',
+  'lo-LA' => 'Lao', //                 (Laos)
+  'lo'    => 'Lao',
+  'lt-LT' => 'Lithuanian', //          (Lithuania)
+  'lt'    => 'Lithuanian',
+  // 'lu-CD' => 'Luba-Katanga', //        (Democratic Republic of the Congo)
+  // 'lu'    => 'Luba-Katanga',
+  'lv-LV' => 'Latvian', //             (Latvia)
+  'lv'    => 'Latvian',
+  'mg-MG' => 'Malagasy', //            (Madagascar)
+  'mg'    => 'Malagasy',
+  // 'mh-MH' => 'Marshallese', //         (Marshall Islands)
+  // 'mh'    => 'Marshallese',
+  'mi-NZ' => 'Maori', //               (New Zealand)
+  'mi'    => 'Maori',
+  'mk-MK' => 'Macedonian', //          (North Macedonia)
+  'mk'    => 'Macedonian',
+  'ml'    => 'Malayalam',
+  'mn-MN' => 'Mongolian', //           (Mongolia)
+  'mn'    => 'Mongolian',
+  'mr'    => 'Marathi',
+  'ms-BN' => 'Malay', //               (Brunei)
+  'ms-MY' => 'Malay', //               (Malaysia)
+  'ms-SG' => 'Malay', //               (Singapore)
+  'ms'    => 'Malay',
+  'mt-MT' => 'Maltese', //             (Malta)
+  'mt'    => 'Maltese',
+  'my-MM' => 'Burmese', //             (Myanmar)
+  'my'    => 'Burmese',
+  // 'na-NR' => 'Nauruan', //             (Nauru)
+  // 'na'    => 'Nauruan',
+  'nb-BV' => 'Norwegian', // Bokmål    (Bouvet Island)
+  'nb-NO' => 'Norwegian', // Bokmål    (Norway)
+  'nb'    => 'Norwegian',
+  // 'nd-ZW' => 'Northern Ndebele', //    (Zimbabwe)
+  // 'nd'    => 'Northern Ndebele',
+  'ne-NP' => 'Nepali', //              (Nepal)
+  'ne'    => 'Nepali',
+  'nl-AW' => 'Dutch', //               (Aruba)
+  'nl-BE' => 'Dutch', //               (Belgium)
+  'nl-BQ' => 'Dutch', //               (Caribbean Netherlands)
+  'nl-CW' => 'Dutch', //               (Curacao)
+  'nl-MF' => 'Dutch', //               (Saint Martin)
+  'nl-NL' => 'Dutch', //               (Netherlands)
+  'nl-SR' => 'Dutch', //               (Suriname)
+  'nl-SX' => 'Dutch', //               (Sint Maarten)
+  'nl'    => 'Dutch',
+  'nn-BV' => 'Norwegian', // Nynorsk   (Bouvet Island)
+  'nn-NO' => 'Norwegian', // Nynorsk   (Norway)
+  'nn'    => 'Norwegian',
+  'no-BV' => 'Norwegian', //           (Bouvet Island)
+  'no-NO' => 'Norwegian', //           (Norway)
+  'no-SJ' => 'Norwegian', //           (Svalbard)
+  'no'    => 'Norwegian',
+  // 'nr-ZA' => 'Southern Ndebele', //    (South Africa)
+  // 'nr'    => 'Southern Ndebele',
+  // 'nrb-ER' => 'Nara', //               (Eritrea)
+  // 'nrb'   => 'Nara',
+  'ny-MW' => 'Chichewa', //            (Malawi)
+  'ny'    => 'Chichewa',
+  'or'    => 'Odia',
+  'pa-AW' => 'Punjabi', //             (Aruba)
+  'pa-CW' => 'Punjabi', //             (Curacao)
+  'pa'    => 'Punjabi',
+  'pl-PL' => 'Polish', //              (Poland)
+  'pl'    => 'Polish',
+  'ps-AF' => 'Pashto', //              (Afghanistan)
+  'ps'    => 'Pashto',
+  'pt-AO' => 'Portuguese', //          (Angola)
+  'pt-BR' => 'Portuguese_BR', //       (Brazil)
+  'pt-CV' => 'Portuguese', //          (Cape Verde)
+  'pt-GQ' => 'Portuguese', //          (Equatorial Guinea)
+  'pt-GW' => 'Portuguese', //          (Guinea-Bissau)
+  'pt-MO' => 'Portuguese', //          (Macao)
+  'pt-MZ' => 'Portuguese', //          (Mozambique)
+  'pt-PT' => 'Portuguese', //          (Portugal)
+  'pt-ST' => 'Portuguese', //          (Sao Tome and Principe)
+  'pt-TL' => 'Portuguese', //          (East Timor)
+  'pt'    => 'Portuguese',
+  // 'qu-BO' => 'Quechua', //             (Bolivia)
+  // 'qu'    => 'Quechua',
+  'rar-CK' => 'Maori', //              (Cook Islands)
+  'rar'   => 'Maori',
+  // 'rm-CH' => 'Romansh', //             (Switzerland)
+  // 'rm'    => 'Romansh',
+  // 'rn-BI' => 'Kirundi', //             (Burundi)
+  // 'rn'    => 'Kirundi',
+  'ro-MD' => 'Romanian', //            (Moldova)
+  'ro-RO' => 'Romanian', //            (Romania)
+  'ro'    => 'Romanian',
+  // 'rtm-FJ' => 'Rotuman', //            (Fiji)
+  // 'rtm'   => 'Rotuman',
+  'ru-AQ' => 'Russian', //             (Antarctica)
+  'ru-BY' => 'Russian', //             (Belarus)
+  'ru-KG' => 'Russian', //             (Kyrgyzstan)
+  'ru-KZ' => 'Russian', //             (Kazakhstan)
+  'ru-RU' => 'Russian', //             (Russia)
+  'ru-TJ' => 'Russian', //             (Tajikistan)
+  'ru-TM' => 'Russian', //             (Turkmenistan)
+  'ru-UZ' => 'Russian', //             (Uzbekistan)
+  'ru'    => 'Russian',
+  'rw-RW' => 'Kinyarwanda', //         (Rwanda)
+  'rw'    => 'Kinyarwanda',
+  'sd'    => 'Sindhi',
+  // 'sg-CF' => 'Sango', //               (Central African Republic)
+  // 'sg'    => 'Sango',
+  'si-LK' => 'Sinhala', //             (Sri Lanka)
+  'si'    => 'Sinhala',
+  'sk-CZ' => 'Slovak', //              (Czechia)
+  'sk-SK' => 'Slovak', //              (Slovakia)
+  'sk'    => 'Slovak',
+  'sl-SI' => 'Slovenian', //           (Slovenia)
+  'sl'    => 'Slovenian',
+  'sm-AS' => 'Samoan', //              (American Samoa)
+  'sm-WS' => 'Samoan', //              (Samoa)
+  'sm'    => 'Samoan',
+  'sn-ZW' => 'Shona', //               (Zimbabwe)
+  'sn'    => 'Shona',
+  'so-SO' => 'Somali', //              (Somalia)
+  'so'    => 'Somali',
+  'sq-AL' => 'Albanian', //            (Albania)
+  'sq-ME' => 'Albanian', //            (Montenegro)
+  'sq-XK' => 'Albanian', //            (Kosovo)
+  'sq'    => 'Albanian',
+  'sr-BA' => 'Serbian', //             (Bosnia and Herzegovina)
+  'sr-ME' => 'Serbian', //             (Montenegro)
+  'sr-RS' => 'Serbian', //             (Serbia)
+  'sr-XK' => 'Serbian', //             (Kosovo)
+  'sr'    => 'Serbian',
+  // 'ss-SZ' => 'Swati', //               (Eswatini)
+  // 'ss-ZA' => 'Swati', //               (South Africa)
+  // 'ss'    => 'Swati',
+  // 'ssy-ER' => 'Saho', //               (Eritrea)
+  // 'ssy'   => 'Saho',
+  // 'st-LS' => 'Southern Sotho', //      (Lesotho)
+  // 'st-ZA' => 'Southern Sotho', //      (South Africa)
+  // 'st'    => 'Southern Sotho',
+  'su'    => 'Sundanese',
+  'sv-AX' => 'Swedish', //             (Åland Islands)
+  'sv-FI' => 'Swedish', //             (Finland)
+  'sv-SE' => 'Swedish', //             (Sweden)
+  'sv'    => 'Swedish',
+  'sw-CD' => 'Kiswahili', //           (Democratic Republic of the Congo)
+  'sw-KE' => 'Kiswahili', //           (Kenya)
+  'sw-TZ' => 'Kiswahili', //           (Tanzania)
+  'sw-UG' => 'Kiswahili', //           (Uganda)
+  'sw'    => 'Kiswahili',
+  'ta-LK' => 'Tamil', //               (Sri Lanka)
+  'ta-SG' => 'Tamil', //               (Singapore)
+  'ta'    => 'Tamil',
+  'te'    => 'Telugu',
+  'tg-TJ' => 'Tajik', //               (Tajikistan)
+  'tg'    => 'Tajik',
+  'th-TH' => 'Thai', //                (Thailand)
+  'th'    => 'Thai',
+  // 'ti-ER' => 'Tigrinya', //            (Eritrea)
+  // 'ti'    => 'Tigrinya',
+  // 'tig-ER' => 'Tigre', //              (Eritrea)
+  // 'tig'   => 'Tigre',
+  'tk-AF' => 'Turkmen', //             (Afghanistan)
+  'tk-TM' => 'Turkmen', //             (Turkmenistan)
+  'tk'    => 'Turkmen',
+  // 'tn-BW' => 'Tswana', //              (Botswana)
+  // 'tn-ZA' => 'Tswana', //              (South Africa)
+  // 'tn'    => 'Tswana',
+  // 'to-TO' => 'Tonga', //               (Tonga Islands)
+  // 'to'    => 'Tonga',
+  'tr-CY' => 'Turkish', //             (Cyprus)
+  'tr-TR' => 'Turkish', //             (Turkey)
+  'tr'    => 'Turkish',
+  // 'ts-ZA' => 'Tsonga', //              (South Africa)
+  // 'ts'    => 'Tsonga',
+  'tt'    => 'Tatar',
+  'ug'    => 'Uyghur',
+  'uk-UA' => 'Ukrainian', //           (Ukraine)
+  'uk'    => 'Ukrainian',
+  'ur-PK' => 'Urdu', //                (Pakistan)
+  'ur'    => 'Urdu',
+  'uz-AF' => 'Uzbek', //               (Afghanistan)
+  'uz-UZ' => 'Uzbek', //               (Uzbekistan)
+  'uz'    => 'Uzbek',
+  // 've-ZA' => 'Venda', //               (South Africa)
+  // 've'    => 'Venda',
+  'vi-VN' => 'Vietnamese', //          (Vietnam)
+  'vi'    => 'Vietnamese',
+  'vo'    => 'Yoruba',
+  'xh-ZA' => 'Xhosa', //               (South Africa)
+  'xh'    => 'Xhosa',
+  'zh-min-nan-TW' => 'Chinese-Traditional', // (Taiwan)
+  'zh-TW' => 'Chinese-Traditional', // (Taiwan)
+  'zh'    => 'Chinese-Simplified',
+  'zu-ZA' => 'Zulu', //                (South Africa)
+  'zu'    => 'Zulu',
+// I am guessing about these. May be 'Traditional'.
+  'zh-CN' => 'Chinese-Simplified', // (China)
+  'zh-HK' => 'Chinese-Simplified', // (Hong Kong)
+  'zh-MO' => 'Chinese-Simplified', // (Macao)
+  'zh-SG' => 'Chinese-Simplified'  // (Singapore)
+];
 
 /*
 General purpose translations that may be used elsewhere
@@ -597,10 +1132,39 @@ as variables and not picked up by update_translation.pl
 
 translate ( 'event' ) translate ( 'journal' )
 
+I want to get the 2-letter codes accessable in each tranlations/*.txt
+translate ( 'ISO Language Code' )
+
 Because not everyone uses these symbols for numbers:
 translate ( '0' ) translate ( '1' ) translate ( '2' ) translate ( '3' )
 translate ( '4' ) translate ( '5' ) translate ( '6' ) translate ( '7' )
 translate ( '8' ) translate ( '9' )
-*/
 
+These are for Latin and Saudi Arabic. Maybe others.
+translate ( '10' ) translate ( '11' ) translate ( '12' ) translate ( '13' )
+translate ( '14' ) translate ( '15' ) translate ( '16' ) translate ( '17' )
+translate ( '18' ) translate ( '19' ) translate ( '20' ) translate ( '21' )
+translate ( '22' ) translate ( '23' ) translate ( '24' ) translate ( '25' )
+translate ( '26' ) translate ( '27' ) translate ( '28' ) translate ( '29' )
+translate ( '30' ) translate ( '31' ) translate ( '40' ) translate ( '50' )
+translate ( '60' ) translate ( '70' ) translate ( '80' ) translate ( '90' )
+translate ( '100' ) translate ( '200' ) translate ( '300' ) translate ( '400' )
+translate ( '500' ) translate ( '600' ) translate ( '700' ) translate ( '800' )
+translate ( '900' ) translate ( '1000' ) translate ( '2000' )
+translate ( '2023' ) translate ( '2024' ) translate ( '2025' )
+translate ( '3000' ) translate ( '3999' ) translate ( '4000' )
+translate ( '5000' ) translate ( '6000' ) translate ( '7000' )
+translate ( '8000' )  translate ( '9000' )translate ( '10000' )
+translate ( '20000' ) translate ( '30000' ) translate ( '40000' )
+translate ( '50000' ) translate ( '60000' ) translate ( '70000' )
+translate ( '80000' ) translate ( '90000' ) translate ( '100000' )
+translate ( '200000' ) translate ( '300000' ) translate ( '400000' )
+translate ( '500000' ) translate ( '600000' ) translate ( '700000' )
+translate ( '800000' ) translate ( '900000' ) translate ( '1000000' )
+
+Will be using these in the translations/*.txt files to better organize things
+translate ( 'Date Formats' ) translate ( 'ISO Language Code' )
+translate ( 'Number Symbols' ) translate ( 'Names (and Abbreviations)' )
+translate ( 'Old phrases not currently in the code' )
+*/
 ?>

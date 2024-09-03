@@ -3121,7 +3121,7 @@ function get_categories_id_byname ( $cat_names ) {
   $categories = explode ( ',', $cat_names );
   foreach ( $categories as $cat_name ) {
     $res = dbi_execute ( 'SELECT cat_id FROM webcal_categories
-      WHERE cat_name  = ? AND ( cat_owner = ? OR cat_owner IS NULL )',
+      WHERE cat_name  = ? AND ( cat_owner = ? OR cat_owner = \'\' )',
         [$cat_name, $login] );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {

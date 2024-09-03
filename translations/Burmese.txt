@@ -35,54 +35,33 @@
 #
 # ငါဒီအတွက် Google Translate ကိုသုံးသည်။
 # မိခင်ဘာသာစကားပြောသူမှအတည်မပြုနိုင်သေးပါ။
-# Bruce Bannon <wcDev@bbannon.net>
+# Bruce Bannon <webcalendar.v5oan@simplelogin.com>
 #
 # Translation last updated on 05-01-2021
-
-
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-
 # A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-
 # Specify a charset (will be sent within meta tag for each page).
-
-charset: =
-
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
-
-direction: =
-
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
-
 #  Select elements for date specification.
 #  ex)2008-10-13
 #     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
-
-__mm__/__dd__/__yyyy__: =
-__month__ __dd__: =
-__month__ __dd__, __yyyy__: =
-__month__ __yyyy__: =
-
 ################################################################################
 ################################################################################
-
-
 ########################################
 # Page: about.php
 #
-Title: =
 version XXX: ဗားရှင်း XXX
-WebCalendar is a PHP application used...: WebCalendar ဆိုသည်မှာ PHP application တစ်ခုဖြစ်သည်။ အသုံးပြုသူတစ် ဦး သို့မဟုတ်အင်တာနက် / အင်ထရာနက်အုပ်စုအသုံးပြုသူများအတွက်ပြက္ခဒိန်ကိုထိန်းသိမ်းရန်အသုံးပြုသည်။ ၎င်းကိုအဖြစ်အပျက်ပြက္ခဒိန်တစ်ခုအနေဖြင့်လည်းပြုပြင်နိုင်သည်။
+WebCalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.: WebCalendar ဆိုသည်မှာ PHP application တစ်ခုဖြစ်သည်။ အသုံးပြုသူတစ် ဦး သို့မဟုတ်အင်တာနက် / အင်ထရာနက်အုပ်စုအသုံးပြုသူများအတွက်ပြက္ခဒိန်ကိုထိန်းသိမ်းရန်အသုံးပြုသည်။ ၎င်းကိုအဖြစ်အပျက်ပြက္ခဒိန်တစ်ခုအနေဖြင့်လည်းပြုပြင်နိုင်သည်။
 Credits: ချေးငွေ
 About: အကြောင်း
 OK: အဆင်ပြေလား
-
 ########################################
 # Page: access.php
 #
@@ -114,13 +93,11 @@ Clear All: အားလုံးကိုရှင်း
 Public: အများပြည်သူ
 Confidential: လျှို့ဝှက်
 Private: သီးသန့်
-
 ########################################
 # Page: activity_log.php
 #
 Next: နောက်တစ်ခု
 Previous: ရှေ့
-
 ########################################
 # Page: add_entry.php
 #
@@ -130,7 +107,6 @@ a XXX event may not be added to your calendar: ဤသည်သည် XXX ဖြ�
 confidential: လျှို့ဝှက်
 private: သီးသန့်ဖြစ်သည်
 Error adding event XXX.: အဖြစ်အပျက်ထည့်သွင်းမှုအမှား - XXX ။
-
 ########################################
 # Page: admin.php
 #
@@ -183,7 +159,6 @@ themes-help: configuration settings ကို၏အစုလိုက်အပ�
 Themes: ခေါင်းစဉ်များ
 AVAILABLE THEMES: ရရှိနိုင်အကြောင်းအရာများ
 None: မဟုတ်ဘူး
-Preview: =
 Site customization: ဆိုဒ်စိတ်ကြိုက်ပြင်ဆင်ခြင်း
 custom-script-help: စာမျက်နှာတိုင်း၏ HTML ခေါင်းစဉ်တွင်ထည့်သွင်းမည့်စိတ်ကြိုက် Javascript (သို့) styleheet စာသားများကိုရေးထည့်ခွင့်ပြုသည်။
 Custom script/stylesheet: စိတ်ကြိုက် script / stylesheet
@@ -208,10 +183,10 @@ display-week-starts-on: ရက်သတ္တပတ်၏စတင်ရက်�
 Week starts on: အပတ်စတင်သည်
 display-weekend-starts-on: စဖွင့်ရန်သီတင်းပတ်ကုန်ရက်၏နေ့ကိုသတ်မှတ်သည်
 Weekend starts on: စနေ၊
-time-format-help: မည်သည့်အချိန်အမျိုးအစားကိုအသုံးပြုရန်သတ်မှတ်သည်။<br><em>၁၂ နာရီ:</em> ၃ နာရီ၊ ၈:၃၀ နာရီစသည်တို့ကိုပြသပါ။<br><em>၂၄ နာရီ:</em> ဖော်ပြချိန် ၃၀၀ အဖြစ် , 2030, etc
+time-format-help: မည်သည့်အချိန်အမျိုးအစားကိုအသုံးပြုရန်သတ်မှတ်သည်။<br><em>၁၂ နာရီ:</em> ၃ နာရီ၊ ၈:၃၀ နာရီစသည်တို့ကိုပြသပါ။<br><em>၂၄ နာရီ:</em> ဖော်ပြချိန် ၃၀၀ အဖြစ်, 2030, etc
 Time format: အချိန်ပုံစံ
-12 hour: ၁၂ နာရီ                                                  
-24 hour: 24 နာရီ                                                  
+12 hour: ၁၂ နာရီ
+24 hour: 24 နာရီ
 timed-evt-len-help: အချိန်အပိုင်းအခြားတစ်ခု၏အရှည်ကိုဆုံးဖြတ်ရန်အတွက် input method ကိုသတ်မှတ်သည်။
 Specify timed event length by: အားဖြင့်သတ်မှတ်ထားသောအဖြစ်အပျက်အရှည်ကိုသတ်မှတ်ပါ
 Duration: ကြာချိန်
@@ -256,7 +231,7 @@ allow-view-other-help: အသုံးပြုသူတစ် ဦး သည်�
 Allow viewing other users calendars: အခြားအသုံးပြုသူ၏ပြက္ခဒိန်များကိုကြည့်ရှုရန်ခွင့်ပြုသည်
 require-approvals-help: ဖွင့်ထားပါကအသုံးပြုသူသည်၎င်းတို့ပြက္ခဒိန်တွင်ပြသခြင်းမပြုမီဖြစ်ရပ်တစ်ခုကိုအတည်ပြုရမည်။ ဤအရာအား“ မဟုတ်ပါ” ဟုသတ်မှတ်ခြင်းသည် Public Access ပြက္ခဒိန်အတွက်ခွင့်ပြုချက်ကိုပိတ်ထားမည်မဟုတ်ပါ (Public Access ပြက္ခဒိန်ဖွင့်ပါက) ။
 Require event approvals: အဖြစ်အပျက်ခွင့်ပြုချက်လိုအပ်သည်
-display-unapproved-help: <br>ဟုတ်ကဲ့ဟုသတ်မှတ်ပါကအတည်ပြုပြီးမဟုတ်သောဖြစ်ရပ်များကိုသင်၏ပြက္ခဒိန်တွင်ပြသပါမည်။<br>အကယ်၍ "မဟုတ်ပါ" ဟုသတ်မှတ်ပါက၊ အတည်မပြုရသေးသောဖြစ်ရပ်များကိုသင်၏ပြက္ခဒိန်တွင်မပြမီအတည်ပြုရမည်။
+display-unapproved-help:<br>ဟုတ်ကဲ့ဟုသတ်မှတ်ပါကအတည်ပြုပြီးမဟုတ်သောဖြစ်ရပ်များကိုသင်၏ပြက္ခဒိန်တွင်ပြသပါမည်။<br>အကယ်၍ "မဟုတ်ပါ" ဟုသတ်မှတ်ပါက၊ အတည်မပြုရသေးသောဖြစ်ရပ်များကိုသင်၏ပြက္ခဒိန်တွင်မပြမီအတည်ပြုရမည်။
 Display unapproved: ဖော်ပြချက်မရပါ
 conflict-check-help: အဖြစ်အပျက်ဆိုင်ရာပconflictsိပက္ခများကိုစစ်ဆေးပါ (တူညီသောလူအတွက်တစ်ချိန်တည်းတွင်စီစဉ်ထားသောဖြစ်ရပ်နှစ်ခု) ကိုစစ်ဆေးပါ။ အကယ်၍ ဤအရာကို“ Yes” ဟုသတ်မှတ်ပါကသင်သတိပေးချက်ကိုအတည်ပြုပြီးနောက်ဖြစ်ရပ်နှစ်ခုကိုတစ်ချိန်တည်းတွင်စီစဉ်နိုင်ပါလိမ့်မည်။ အကယ်၍ သင်သည်ဤအရာကို“ မဟုတ်ဘူး” ဟုသတ်မှတ်ပါကပconflictsိပက္ခများကိုစစ်ဆေးမှုမပြုရ။ ဤအရာကို“ ဟုတ်ကဲ့” ဟုသင်သတ်မှတ်လိုသောကြောင့်ပconflictိပက္ခစစ်ခြင်းများဖြစ်ပွားနိုင်သည်။
 Check for event conflicts: အဖြစ်အပျက်ပconflictsိပက္ခများကိုစစ်ဆေးပါ
@@ -286,7 +261,6 @@ disable-repeating-field-help: ဖြစ်ရပ်များကိုထည�
 Disable Repeating field: Repeating Field ကို Disable
 allow-html-description-help: အကယ်၍ ဖွင့်ထားလျှင်အသုံးပြုသူများသည်ဖြစ်ရပ်ဖော်ပြချက်နယ်ပယ်တွင် HTML ကိုထည့်နိုင်သည်။ မဖွင့်ပါကသာမာန်စာသားအတိုင်းပေါ်လာစေရန် HTML tags များသည်လွတ်လိမ့်မည်။ သတိပေးချက် - ဤအင်္ဂါရပ်ကိုအသုံးပြုခြင်းသည်အခြားဝက်ဘ်ဆိုက်များမှဓာတ်ပုံများကိုကိုးကားရန်ခွင့်ပြုလိမ့်မည်။
 Allow HTML in Description: ဖော်ပြချက်တွင် HTML ကိုခွင့်ပြုပါ
-Popups: =
 disable-popups-help: Popups များကိုပြက္ခဒိန်မြင်ကွင်းများမှပိတ်ပါ
 Disable Pop-Ups: Pop-Ups ကိုပိတ်ပါ
 popup-includes-siteextras-help: ဖွင့်ထားပါက site_extras.php ဖိုင်ရှိစိတ်ကြိုက်ဖြစ်ရပ်နယ်ပယ်များတည်ဆောက်ခြင်းကိုဖွင့်ပွဲအစီအစဉ်တွင်ဖော်ပြလိမ့်မည်။
@@ -334,8 +308,7 @@ nonuser-list-help: ပါဝင်သူစာရင်းတွင် nonuser �
 Nonuser list: သင်တန်းသားများကိုစာရင်းမှာပြသပါ
 Upcoming Events: လာမည့်ဖြစ်ရပ်များ
 upcoming-events-help: upcoming.php ကိုဖွင့်ပါ
-Enabled: =
-upcoming-events-allow-override: upcoming.php အတွက် user paramter ကိုခွင့်ပြုပါ
+upcoming-events-allow-override: upcoming.php အတွက် user parameter ကိုခွင့်ပြုပါ
 Allow user override: အသုံးပြုသူကို Override ခွင့်ပြုသည်
 upcoming-events-display-caticons: upcoming.php တွင်အမျိုးအစားသင်္ကေတများထည့်သွင်းပါ
 Display category icons: အမျိုးအစားပုံသင်္ကေတများကိုပြပါ
@@ -357,7 +330,7 @@ categories-enabled-help: ဖြစ်ရပ်အမျိုးအစားမ�
 Categories enabled: အမျိုးအစားများကို enabled
 icon_upload-enabled-help: ဖွင့်ထားလျှင်အသုံးပြုသူများသည်အမျိုးအစားအိုင်ကွန်များကိုတင်နိုင်သည်
 Category Icon Upload enabled: အမျိုးအစားအိုင်ကွန်တင်ယူမှုဖွင့်ထားသည်
-(Requires XXX folder to exist.): (XXX ဖိုင်တွဲတည်ရှိရန်လိုအပ်သည်။ )
+Requires XXX folder to exist.: (XXX ဖိုင်တွဲတည်ရှိရန်လိုအပ်သည်။ )
 display-tasks-help: အလုပ်ပြတင်းပေါက်များကိုလနှင့်နေ့ပြက္ခဒိန်တွင်ပြပါ
 Display small task list: သေးငယ်တဲ့အလုပ်စာရင်းပြပါ
 display-tasks-in-grid-help: လုပ်ဆောင်ချက်များကိုပြက္ခဒိန်များနှင့်ပြသပါ
@@ -399,7 +372,6 @@ SMTP Password: SMTP စကားဝှက်
 Default user settings: ပုံမှန်အသုံးပြုသူဆက်တင်များ
 email-format: HTML သို့မဟုတ်ရိုးရိုးစာသားမက်ဆေ့ခ်ျများ ဦး စားပေးသတ်မှတ်ပါ
 Email format preference: အီးမေးလ်ပုံစံ preference ကို
-HTML: =
 Plain Text: ရိုးရိုးစာသား
 email-include-ics: အီးမေးလ်သို့ iCalendar ICS ဖိုင်တစ်ခုထည့်ပါ
 Include iCalendar attachments: iCalendar ပူးတွဲဖိုင်များပါဝင်သည်
@@ -425,7 +397,6 @@ bgimage-help: လိုချင်သောနောက်ခံပုံ၏ UR
 Background Image: နောက်ခံပုံ
 bgrepeat-help: နောက်ခံပုံ၏အပြုအမူကိုထိန်းချုပ်သည်။
 Background Repeat: နောက်ခံပြန်လုပ်ပါ
-
 ########################################
 # Page: adminhome.php
 #
@@ -445,14 +416,12 @@ Security Audit: လုံခြုံရေးစာရင်းစစ်
 Public Preferences: ပြည်သူ့ ဦး စားပေးမှုများ
 Unapproved Public Events: အတည်မပြုရသေးသောအများပြည်သူဆိုင်ရာပွဲများ
 Administrative Tools: ထိန်းချုပ်စီမံမှုကိရိယာများ
-
 ########################################
 # Page: ajax.php
 #
 Duplicate Name XXX: မိတ္တူပွား: "XXX" ။
 Username XXX already exists.: သုံးစွဲသူအမည် "XXX" ရှိပြီးသား
 Email address XXX already exists.: "XXX" အီးမေးလ်လိပ်စာရှိပြီးသား
-
 ########################################
 # Page: approve_entry.php
 #
@@ -468,18 +437,15 @@ Date XXX: ရက်စွဲ - XXX
 Time XXX: အချိန် - XXX
 Comments XXX: မှတ်ချက်များ - XXX
 Approved w/Comments by XXX.: XXX မှမှတ်ချက်ပေးရန်။
-
 ########################################
 # Page: assistant_edit.php
 #
 Admin mode: အက်မင်မုဒ်
 Your assistants: သင့်ရဲ့လက်ထောက်
-
 ########################################
 # Page: autocomplete_ajax.php
 #
 Unknown error.: မသိသောအမှား။
-
 ########################################
 # Page: availability.php
 #
@@ -488,7 +454,6 @@ user: အသုံးပြုသူကို
 year: နှစ်
 month: လ
 day: နေ့
-
 ########################################
 # Page: category.php
 #
@@ -506,14 +471,12 @@ Add: ထည့်ပါ
 Delete: ဖျက်ပါ
 Are you sure you want to delete this entry?: ဒီ entry ကိုသင်ဖျက်ချင်ပါသလား။
 Make New Category: အမျိုးအစားအသစ်လုပ်ပါ
-
 ########################################
 # Page: category_handler.php
 #
 Category name is required: အမျိုးအစားအမည်လိုအပ်ပါသည်
 File size exceeds maximum.: ဖိုင်အရွယ်အစားသည်အများဆုံးထက်ပိုသည်
 File is not a GIF or PNG image: ဖိုင်သည် GIF သို့မဟုတ် PNG ပုံမဟုတ်ပါ
-
 ########################################
 # Page: catsel.php
 #
@@ -522,7 +485,6 @@ ENTRY CATEGORIES: စာရင်းအမျိုးအစားများ
 Remove: ဖယ်ရှားပါ
 Global Category: ကမ္ဘာလုံးဆိုင်ရာအမျိုးအစား
 Cancel: ပယ်ဖျက်ပါ
-
 ########################################
 # Page: colors.php
 #
@@ -531,7 +493,6 @@ Basic Colors: အခြေခံအရောင်များ
 Current Color: လက်ရှိအရောင်
 Custom Colors: စိတ်ကြိုက်အရောင်များ
 Old Color: အရောင်ဟောင်း
-
 ########################################
 # Page: combo.php
 #
@@ -566,22 +527,18 @@ Today: ဒီနေ့
 Add Entry: ထည့်သွင်းပါ
 Unnamed Event: အမည်မဖော်ပြထားသောဖြစ်ရပ်
 Unnamed Task: အမည်မပေး Task ကို
-Refresh: =
 Click to add entry: ထည့်သွင်းဖို့ကိုနှိပ်ပါ
 Name: နာမည်
 pm: ည
 am: နံနက်
-
 ########################################
 # Page: del_entry.php
 #
 XXX has canceled an appointment.: XXX ကရက်ချိန်းကိုဖျက်သိမ်းလိုက်ပြီ။
-
 ########################################
 # Page: doc.php
 #
 Invalid blob id: မမှန်ကန်သော blob အိုင်ဒီ
-
 ########################################
 # Page: docadd.php
 #
@@ -590,12 +547,10 @@ Add Attachment: ပူးတွဲပါထည့်ပါ
 Subject: ဘာသာရပ်
 Comment: မှတ်ချက်
 Upload file: ဖိုင်တင်ပါ
-
 ########################################
 # Page: docdel.php
 #
 Removed: ဖယ်ရှားခဲ့သည်
-
 ########################################
 # Page: edit_entry.php
 #
@@ -617,7 +572,7 @@ Repeat: ပြန်လုပ်ပါ
 Reminders: သတိပေးချက်များ
 brief-description-help: ၎င်းသည်ဖြစ်ရပ်၏ဖော်ပြချက် (ဇာတ်ကောင် ၂၀ ခန့်) ကိုဖော်ပြသင့်သည်။ ပြက္ခဒိန်ကိုကြည့်သည့်အခါ၎င်းသည်ဖြစ်ရပ်ကိုကိုယ်စားပြုလိမ့်မည်။
 full-description-help: ဤသည်ဖြစ်ရပ်၏အသေးစိတျဖြည့်စွက်သင့်ပါတယ်။ အသုံးပြုသူသည်အဖြစ်အပျက်ကိုကြည့်သောအခါဤအချက်အလက်ကိုတွေ့နိုင်သည်။
-access-help: အဖြစ်အပျက်၏ဝင်ရောက်ခွင့်အဆင့်ကိုသတ်မှတ်သည်။ <ul> <li> အများဆိုင်: အဖြစ်အပျက်ရဲ့အသေးစိတ်အချက်အလက်အားလုံးကိုလူတိုင်းတွေ့နိုင်သည်။</li> <li> လျှို့ဝှက်: သင့်နေ့စွဲနှင့်အချိန်အတွက်သင်၌စာရင်းသွင်းထားသည်ကိုအခြားသူများကတွေ့နိုင်သည်၊ သို့သော် အသေးစိတ်မဟုတ်ပါ။</li></ul>
+access-help: အဖြစ်အပျက်၏ဝင်ရောက်ခွင့်အဆင့်ကိုသတ်မှတ်သည်။ <ul><li> အများဆိုင်: အဖြစ်အပျက်ရဲ့အသေးစိတ်အချက်အလက်အားလုံးကိုလူတိုင်းတွေ့နိုင်သည်။</li><li> လျှို့ဝှက်: သင့်နေ့စွဲနှင့်အချိန်အတွက်သင်၌စာရင်းသွင်းထားသည်ကိုအခြားသူများကတွေ့နိုင်သည်၊ သို့သော် အသေးစိတ်မဟုတ်ပါ။</li></ul>
 priority-help: ဖြစ်ရပ်၏ ဦး စားပေးဖေါ်ပြသည်။ မြင့်မားသော ဦး စားပေးဖြစ်ရပ်များကို bold ဖြင့်ပြလိမ့်မည်။
 category-help: အဖြစ်အပျက်အမျိုးအစားကိုဖေါ်ပြသည်။
 completed-help: နေ့စွဲအလုပ်ပြီးပြီ အားလုံးပါဝင်သူများရာခိုင်နှုန်း 100% ညီမျှသည့်အခါသာ enabled ။
@@ -628,13 +583,12 @@ All Percentages: ရာခိုင်နှုန်းအားလုံး
 location-help: ဖြစ်ရပ်တည်နေရာ
 Location: တည်နေရာ
 url-help: အဖြစ်အပျက် URL
-URL: =
 date-help: အဖြစ်အပျက်၏နေ့စွဲကိုသတ်မှတ်ပါတယ်။
 Untimed event: untimed ဖြစ်ရပ်
 Timed event: အချိန်ကိုက်ဖြစ်ရပ်
 All day event: တစ်နေ့တာအဖြစ်အပျက်
 Timezone Offset: အချိန်ဇုန် Offset
-time-help: အဖြစ်အပျက်၏အချိန်ကိုဖေါ်ပြသည်။ <ul> <li> "အချိန်ကာလ" (ထိုနေ့အတွက်သတ်မှတ်ထားသောအချိန်အတွက်စီစဉ်ထားသောဖြစ်ရပ်တစ်ခုအတွက်)</li> <li> "Untimed event" (အဖြစ်အပျက်တစ်ခုအတွက်ဒီအချိန်ဟာအားလပ်ရက်လိုမျိုးမဟုတ်ပါ) )</li> <li> "တစ်နေကုန်အဖြစ်အပျက်" (တနေ့လုံးဖြစ်ပျက်သောအဖြစ်အပျက်အတွက် (ရုံးပြင်ပတွင်ရှိနေခြင်းကဲ့သို့)</li></ul>
+time-help: အဖြစ်အပျက်၏အချိန်ကိုဖေါ်ပြသည်။ <ul><li> "အချိန်ကာလ" (ထိုနေ့အတွက်သတ်မှတ်ထားသောအချိန်အတွက်စီစဉ်ထားသောဖြစ်ရပ်တစ်ခုအတွက်)</li><li> "Untimed event" (အဖြစ်အပျက်တစ်ခုအတွက်ဒီအချိန်ဟာအားလပ်ရက်လိုမျိုးမဟုတ်ပါ) )</li><li> "တစ်နေကုန်အဖြစ်အပျက်" (တနေ့လုံးဖြစ်ပျက်သောအဖြစ်အပျက်အတွက် (ရုံးပြင်ပတွင်ရှိနေခြင်းကဲ့သို့)</li></ul>
 duration-help: ဖြစ်ရပ်၏ကြာချိန် (နာရီ၊ မိနစ်) တွင်သတ်မှတ်သည်။ <em>ဒီအကွက်ကိုကွက်လပ်ထားနိုင်သည်။</em>
 end-time-help: ဖြစ်ရပ်အဆုံးသတ်ရန်မျှော်လင့်ထားသည့်အချိန်ကိုသတ်မှတ်သည်။
 Start Time: စတင်ချိန်
@@ -697,12 +651,10 @@ Before: မပြုမီ
 After: ပြီးနောက်
 Start: စတင်ပါ
 End/Due: အဆုံး / ကြောင့်
-Times: =
 Every: တိုင်း
-CAPTCHA Warning: သတိပေးချက်:  PHP ၏ GD တိုးချဲ့ခြင်းမရှိပဲ CAPTCHA ကို သုံး၍ မရပါ!<br>
+CAPTCHA Warning: သတိပေးချက်: PHP ၏ GD တိုးချဲ့ခြင်းမရှိပဲ CAPTCHA ကို သုံး၍ မရပါ!<br>
 Delete entry: entry ကိုဖျက်ပါ
 You are not authorized to edit this entry.: ဤစာမူကိုတည်းဖြတ်ရန်သင်ခွင့်မပြုပါ။
-
 ########################################
 # Page: edit_entry_handler.php
 #
@@ -717,7 +669,6 @@ Please look on XXX to view this appointment.: ကျေးဇူးပြု၍ 
 Scheduling Conflict: အချိန်ဇယားဆွဲရန်
 Your suggested time of: သင့်ရဲ့အကြံပြုအချိန်
 conflicts with the following existing calendar entries: အောက်ပါရှိပြီးသားပြက္ခဒိန် entries တွေကိုနှင့်အတူပconflictsိပက္ခများ
-
 ########################################
 # Page: edit_nonusers.php
 #
@@ -729,12 +680,10 @@ Calendar ID: ပြက္ခဒိန် ID
 First Name: နာမည်
 Last Name: မျိုးနွယ်အမည်
 Is public calendar: အများဆိုင်ပြက္ခဒိန်ဖြစ်သည်
-
 ########################################
 # Page: edit_nonusers_handler.php
 #
 Database error: ဒေတာဘေ့စအမှား
-
 ########################################
 # Page: edit_remotes.php
 #
@@ -743,7 +692,6 @@ Edit Remote Calendar: ဝေးလံသောပြက္ခဒိန်ကိ�
 Create Layer: Layer ဖန်တီးခြင်း
 Reload: ပြန်တင်ပါ
 Required to View Remote Calendar: ဝေးလံသောပြက္ခဒိန်ကိုကြည့်ရန်လိုအပ်သည်
-
 ########################################
 # Page: edit_remotes_handler.php
 #
@@ -752,7 +700,6 @@ Events successfully imported: အောင်မြင်စွာတင်သ�
 Create a new layer to view this calendar.: ဤပြက္ခဒိန်ကိုကြည့်ရန်အလွှာအသစ်တစ်ခုဖန်တီးပါ။
 Errors: အမှားများ
 There was an error parsing the import file or no events were returned.: တင်သွင်းမှုဖိုင်ကိုခွဲခြမ်းစိတ်ဖြာသည့်အမှားတစ်ခုသို့မဟုတ်ဖြစ်ရပ်များပြန်လာခဲ့ကြသည်။
-
 ########################################
 # Page: edit_report.php
 #
@@ -795,23 +742,19 @@ Include empty dates: အချည်းနှီးသောရက်စွဲ�
 Date range: ရက်စွဲအကွာအဝေး
 Template variables: Template variable များ
 Page template: စာမျက်နှာပုံစံ
-Day template: =
 Event template: အဖြစ်အပျက်ပုံစံ
 Are you sure you want to delete this report?: သင်ဤအစီရင်ခံစာကိုဖျက်ချင်ပါသလား။
-
 ########################################
 # Page: edit_report_handler.php
 #
 No such report id XXX.: ထိုကဲ့သို့သောအစီရင်ခံစာ id: "XXX" မရှိပါ။
 Variable XXX not found.: Variable XXX ကိုရှာမတွေ့ပါ။
-
 ########################################
 # Page: edit_template.php
 #
 Edit Custom Header: Custom Header ကိုတည်းဖြတ်ပါ
 Edit Custom Script/Stylesheet: Custom Script / Stylesheet ကိုတည်းဖြတ်ပါ
 Edit Custom Trailer: စိတ်တိုင်းကျ Trailer တည်းဖြတ်ပါ
-
 ########################################
 # Page: edit_user.php
 #
@@ -824,7 +767,6 @@ Are you sure you want to delete this user?: ဤအသုံးပြုသူအ
 Change Password: စကားဝှက်ကိုပြောင်းရန်
 New Password: စကားဝှကိအသစ်
 Set Password: စကားဝှက်ကိုသတ်မှတ်ပါ
-
 ########################################
 # Page: edit_user_handler.php
 #
@@ -832,12 +774,10 @@ Deleting users not supported.: အသုံးပြုသူများအာ�
 The passwords were not identical.: စကားဝှက်များတူညီကြသည်မဟုတ်
 You have not entered a password.: သင်စကားဝှက်ကိုမဖြည့်ပါ။
 Username cannot be blank.: သုံးစွဲသူအမည်အလွတ်မရနိုင်ပါ။
-
 ########################################
 # Page: events_ajax.php
 #
 Not authorized: ခွင့်မပြုပါ
-
 ########################################
 # Page: export.php
 #
@@ -849,22 +789,18 @@ Export all dates: ရက်စွဲအားလုံးကိုတင်ပ�
 Start date: စတင်သည့်ရက်စွဲ
 End date: အဆုံးရက်
 Modified since: ကတည်းကပြုပြင်မွမ်းမံခဲ့သည်
-
 ########################################
 # Page: export_handler.php
 #
 export format not defined or incorrect.: တင်ပို့ပုံစံကိုသတ်မှတ်သို့မဟုတ်မမှန်ကန်ဘူး။
-
 ########################################
 # Page: freebusy.php
 #
 No user specified.: အသုံးပြုသူမရှိပါ။
-
 ########################################
 # Page: groups.php
 #
 Add New Group: အုပ်စုအသစ်ထည့်ပါ
-
 ########################################
 # Page: group_edit.php
 #
@@ -872,12 +808,10 @@ Unnamed Group: အမည်မဖော်လိုသောအုပ်စု
 Add Group: အုပ်စုထည့်ပါ
 Edit Group: အုပ်စုဖွဲ့တည်းဖြတ်ပါ
 Group name: အဖွဲ့နာမည်
-
 ########################################
 # Page: group_edit_handler.php
 #
 You must specify a group name: အုပ်စုအမည်ကိုသင်သတ်မှတ်ရမည်
-
 ########################################
 # Page: help_admin.php
 #
@@ -894,20 +828,17 @@ user-customize-color: အသုံးပြုသူများသည်သူ�
 enable-gradient-help: ဆဲလ်နောက်ခံအတွက် gradient အရောင်များကိုသုံးပါ။
 Manually entering color values: ကိုယ်တိုင်အရောင်တန်ဖိုးများကိုထည့်သွင်း
 colors-help: အရောင်အားလုံးကို "#RRGGBB" hexadecimal format ဖြင့်သတ်မှတ်သင့်သည်။ "RR" သည်အနီရောင်အတွက် hex value၊ "GG" သည်အစိမ်းအတွက် hex value နှင့် "BB" သည်အပြာရောင်အတွက် hex value ဖြစ်သည်။
-
 ########################################
 # Page: help_bug.php
 #
 Report Bug: Bug ကိုသတင်းပို့ပါ
 Please include all the information below when reporting a bug.: bug ကိုသတင်းပို့သောအခါအောက်ဖော်ပြပါအချက်အလက်အားလုံးကိုထည့်ပါ။
 Also, please use English rather than XXX.: ဒါ့အပြင် XXX ထက်  အင်္ဂလိပ်  ကိုသုံးပါ။
-
 ########################################
 # Page: help_docs.php
 #
 WebCalendar Documentation: WebCalendar မှတ်တမ်းတင်ခြင်း
 Currently in English only.: လောလောဆယ်အင်္ဂလိပ်လိုသာ
-
 ########################################
 # Page: help_edit_entry.php
 #
@@ -917,31 +848,26 @@ For More Information...: ပိုမိုသိရှိလိုပါက ...
 Repeat End Date: အဆုံးနေ့စွဲကိုပြန်လုပ်ပါ
 Repeat Day: ထပ်ခါတလဲလဲနေ့
 repeat-day-help: ဖြစ်ရပ်အပေါ်မည်သည့်ရက်များထပ်ခါတလဲလဲပြုလုပ်သင့်သည်ကိုသတ်မှတ်သည်။
-
 ########################################
 # Page: help_import.php
 #
 Import: သွင်းကုန်
-Palm Desktop: =
 allow you to import entries from the Palm...: ဤပုံစံကသင့်အား Palm Desktop Datebook မှတင်သွင်းရန်ခွင့်ပြုလိမ့်မည်။ ၎င်းသည်သင်၏အသုံးပြုသူအမည်အမည်ပေးသောပုဒ်မခွဲတွင် datebook / datebook.dat ရှိသင်၏ Palm လမ်းညွှန်၌တည်ရှိသင့်သည်။
 The following entries will not be imported: အောက်ပါအချက်အလက်များကိုတင်သွင်းမည်မဟုတ်ပါ။
 Entries older than the current date: လက်ရှိရက်စွဲအဟောင်းများ
 Entries created in the Palm Desktop...: HotSync'd မဟုတ်သော Palm Desktop တွင်ဖန်တီးထားသောအရာများ
 Anything imported from Palm...: Palm မှတင်သွင်းသည့်မည်သည့်အရာကိုမဆိုလာမည့်တင်သွင်းမှုအတွင်း (ဖြစ်ရပ်ရက်စွဲမကုန်ဆုံးလျှင်) ပြန်လည်ရေးသွင်းလိမ့်မည်။ ထို့ကြောင့်၊ အသစ်ပြောင်းခြင်းများကို Palm Desktop တွင်ပြုလုပ်သင့်သည်။
-vCal: =
 This form will import vCalendar (.vcs) 1.0 events.: ဤပုံစံသည် vCalendar (.vcs) ၁.၀ ဖြစ်ရပ်များကိုတင်သွင်းမည်။
 The following formats have been tested: အောက်ပါပုံစံများကိုစမ်းသပ်ပြီးဖြစ်သည်။
 This form will import iCalendar (.ics) events.: ဤပုံစံသည် iCalendar (.ics) ဖြစ်ရပ်များကိုတင်သွင်းမည်။
 Enabling: ဖွင့်သည်
 Overwrite Prior Import: ကြိုတင်တင်သွင်းမှုကို Overwrite
 will cause events imported previously...: အသစ်တင်သွင်းသည့်ဖိုင်မှဖြစ်ရပ်နှင့် UID ကိုအသုံးပြုသောယခင်ကတင်သွင်းခဲ့သောဖြစ်ရပ်များကိုဖျက်ပစ်ခြင်းအဖြစ်မှတ်သားပါလိမ့်မည်။ ၎င်းသည်အသစ်ထပ်လုပ်ထားသော iCalendar ဖိုင်ကိုထပ်ခါထပ်ခါမဖန်တီးဘဲတင်သွင်းခွင့်ပြုသင့်သည်။
-
 ########################################
 # Page: help_index.php
 #
 Help Index: အကူအညီညွှန်းကိန်း
 About WebCalendar: WebCalendar အကြောင်း
-
 ########################################
 # Page: help_layers.php
 #
@@ -956,7 +882,6 @@ If checked, events that are duplicates of your events will be shown.: အကယ�
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: အလွှာများကိုဖွင့်ရန်စာမျက်နှာအောက်ခြေရှိ admin အပိုင်းရှိ Enable Layers link ကိုနှိပ်ပါ။
 Source: ရင်းမြစ်
 Specifies the user that you would like to see displayed in your calendar.: သင်၏ပြက္ခဒိန်တွင်သင်ကြည့်ချင်သောအသုံးပြုသူကိုသတ်မှတ်သည်။
-
 ########################################
 # Page: help_pref.php
 #
@@ -977,7 +902,6 @@ Enable FreeBusy publishing: FreeBusy ထုတ်ဝေမှုကိုဖွ�
 freebusy-enabled-help: iCal FreeBusy စံကို အသုံးပြု၍ သုံးစွဲသူ၏အချိန်ကိုရနိုင်သည်။
 freebusy-url-help: အသုံးပြုသူ FreeBusy စာရင်းကိုကြည့်ရှုရန် URL
 rss-feed-url-help: RSS feed ကိုရယူရန် URL
-
 ########################################
 # Page: help_uac.php
 #
@@ -985,19 +909,16 @@ Allows for fine control of user access and permissions. Users can also grant def
 If disabled, this user cannot send you emails.: အကယ်၍ ပိတ်ထားပါကဤအသုံးပြုသူသည်သင်၏အီးမေးလ်များကိုမပို့နိုင်ပါ။
 If disabled, this user cannot see you in the participants list.: အကယ်၍ ပိတ်ထားပါကဤအသုံးပြုသူသည်သင်ပါဝင်သူများစာရင်းတွင်မတွေ့ရပါ။
 If enabled, this user cannot view the details of any of your entries.: ဖွင့်ထားပါကဤအသုံးပြုသူသည်သင်ထည့်သွင်းထားသောမည်သည့်အသေးစိတ်အချက်အလက်ကိုမဆိုကြည့်နိုင်ပါ။
-
 ########################################
 # Page: icalclient.php
 #
 Publishing Disabled (Admin): ပုံနှိပ်ထုတ်ဝြေခင်းမသန်စွမ်းသူ (အုပ်ချုပ်သူ)
 Publishing Disabled (User): ပုံနှိပ်ထုတ်ဝြေခင်းမသန်စွမ်းသူ (အသုံးပြုသူ)
-
 ########################################
 # Page: icons.php
 #
 Click to Select: Select ကိုနှိပ်ပါ
 Current Icons on Server: ဆာဗာပေါ်ရှိလက်ရှိအိုင်ကွန်များ
-
 ########################################
 # Page: import.php
 #
@@ -1006,7 +927,6 @@ Disabled: ပိတ်ထားသည်
 Import format: သွင်းကုန်ပုံစံ
 Exclude private records: ပုဂ္ဂလိကမှတ်တမ်းများဖယ်ထုတ်ပါ
 Repeated items are imported separately. Prior imports are not overwritten.: ထပ်ခါတလဲလဲပစ္စည်းများသီးခြားစီတင်သွင်းနေကြသည်။ ကြိုတင်တင်သွင်းမှုကိုပြန်လည်ရေးမထားပါ။
-
 ########################################
 # Page: import_handler.php
 #
@@ -1015,7 +935,6 @@ Error deleting palm events from webcalendar.: webcalendar မှစွန်ပ�
 Events from prior import marked as deleted: ကြိုတင်တင်သွင်းမှုမှဖြစ်ရပ်များကိုဖျက်ပစ်သည်
 Conflicting events: ပeventsိပက္ခဖြစ်ဖြစ်ရပ်များ
 The import file contained no data.: တင်သွင်းမှုဖိုင်တွင်အချက်အလက်မရှိပါ
-
 ########################################
 # Page: layers.php
 #
@@ -1031,7 +950,6 @@ Disable Layers: အလွှာများကိုပိတ်ပါ
 Add layer: အလွှာထည့်ပါ
 Add Layer: Layer ထည့်ပါ
 Edit Layer: အလွှာတည်းဖြတ်ပါ
-
 ########################################
 # Page: layers_ajax.php
 #
@@ -1039,7 +957,6 @@ Unable to update preference: preference ကို update လုပ်၍ မရ�
 Invalid entry id.: မမှန်ကန်သော entry ID ။
 You cannot create a layer for yourself.: သင်ကိုယ်တိုင်အလွှာတစ်ခု ဖန်တီး၍ မရပါ။
 You can only create one layer for each user.: အသုံးပြုသူတစ် ဦး ချင်းစီအတွက်အလွှာတစ်ခုသာဖန်တီးနိုင်သည်။
-
 ########################################
 # Page: list_unapproved.php
 #
@@ -1057,7 +974,6 @@ Approve this entry?: ဒီ entry ကိုအတည်ပြုပါသလာ�
 Reject this entry?: ဒီ entry ကိုငြင်းပယ်?
 Approve Selected entries?: ရွေးချယ်ထားသည့်အချက်အလက်များကိုအတည်ပြုပါ။
 Reject Selected entries?: Selected entries တွေကိုငြင်းပါ။
-
 ########################################
 # Page: login-app.php
 #
@@ -1067,7 +983,6 @@ Login: လော့ဂ်အင်
 public: အများပြည်သူ
 Access XXX calendar: XXX ပြက္ခဒိန်ကိုသုံးပါ
 cookies-note: မွတ္စု: ဤ application သည် cookies များကိုဖွင့်ရန်လိုအပ်သည်။
-
 ########################################
 # Page: login.php
 #
@@ -1078,24 +993,20 @@ Error XXX: အမှား - "XXX"
 You have been logged out.: သင်ထွက်သွားပြီ
 Access public calendar: အများသုံးပြက္ခဒိန်ကိုသုံးပါ
 Not yet registered? Register here!: စာရင်းမသွင်းရသေးလား ဒီမှာမှတ်ပုံတင်ပါ။
-
 ########################################
 # Page: minical.php
 #
 No such nonuser calendar XXX.: ထိုကဲ့သို့သောအသုံးပြုသူပြက္ခဒိန်မရှိပါ "XXX" ။
 This Calendar is not Public.: ဤပြက္ခဒိန်သည်အများသုံးမဟုတ်ပါ
-
 ########################################
 # Page: nonusers.php
 #
 Add New NonUser Calendar: အသစ် NonUser ပြက္ခဒိန်ထည့်ပါ
-
 ########################################
 # Page: nulogin.php
 #
 A login must be specified.: တစ် ဦး က login ကိုသတ်မှတ်ရမည်ဖြစ်သည်။
 No such nonuser calendar: ထိုကဲ့သို့သော nonuser ပြက္ခဒိန်မရှိပါ
-
 ########################################
 # Page: pref.php
 #
@@ -1106,7 +1017,6 @@ Modify Non User Calendar Preferences: အသုံးပြုသူမဟုတ
 Return to My Preferences: My Preferences သို့ပြန်သွားပါ
 Custom Scripts: စိတ်ကြိုက် script များ
 Timezone Selection: အချိန်ဇုန်ရွေးချယ်မှု
-Multiview: =
 entry-interval-help: entry ကိုကြိမ်တည်းဖြတ်သည့်အခါမိနစ်ကြားကာလသတ်မှတ်သည်
 Entry interval: ဝင်ပေါက်ကြားကာလ
 hour: နာရီ
@@ -1118,7 +1028,6 @@ Display if created by Assistant: Assistant မှဖန်တီးလျှင�
 allow-view-subscriptions-help: သီးသန့် (သို့) လျှို့ဝှက်အချက်အလက်များကိုဝေးကွာစွာသွားလာခွင့်ကိုကန့်သတ်ထားသည်
 Allow remote viewing of: အဝေးကြည့်ရှုခြင်းကိုခွင့်ပြုသည်
 entries: entries များ
-
 ########################################
 # Page: purge.php
 #
@@ -1131,7 +1040,6 @@ Purge deleted only: Purge ကိုသာဖျက်လိုက်သည်
 Preview delete: preview ဖျက်ပစ်သည်
 Are you sure you want to delete events for: ဖြစ်ရပ်များကိုသင်ဖျက်ချင်သည်သေချာသည်
 Records deleted from XXX: "XXX" မှဖျက်ထားသောမှတ်တမ်းများ
-
 ########################################
 # Page: register.php
 #
@@ -1155,7 +1063,6 @@ Return to Login screen: Login မျက်နှာပြင်သို့ပ�
 Password (again): လျှို့ဝှက်နံပါတ် (နောက်တစ်ကြိမ်):
 Your account information will be emailed to you.: သင်၏အကောင့်အချက်အလက်ကိုသင့်ထံအီးမေးလ်ပို့လိမ့်မည်။
 Submit: တင်သွင်းပါ
-
 ########################################
 # Page: reject_entry.php
 #
@@ -1163,12 +1070,10 @@ Continue: ဆက်လက်
 (Your comments will be emailed to the other participants.): (သင်၏ထင်မြင်ချက်များကိုအခြားပါဝင်သူများထံအီးမေးလ်ပို့လိမ့်မည်။ )
 XXX has rejected an appointment.: XXX ကရက်ချိန်းကိုငြင်းပယ်လိုက်သည်။
 Rejected by XXX.: XXX ကငြင်းပယ်ခဲ့သည်။
-
 ########################################
 # Page: remotes.php
 #
 Add New Remote Calendar: Remote Calendar အသစ်ကိုထည့်ပါ
-
 ########################################
 # Page: report.php
 #
@@ -1184,11 +1089,9 @@ Invalid report id.: မမှန်ကန်သောအစီရင်ခံစ
 Click here to manage reports for the Public Access calendar.: Public Access ပြက္ခဒိန်အတွက်အစီရင်ခံစာများကိုဒီမှာနှိပ်ပါ။
 Add new report: အစီရင်ခံစာအသစ်ထည့်ပါ
 Manage Reports: အစီရင်ခံစာများကိုစီမံပါ
-
 ########################################
 # Page: search.php
 #
-Advanced Search: =
 Search: ရှာပါ
 Keywords: သော့ချက်စာလုံးများ
 Enter % for all entries: အားလုံး entries တွေကိုများအတွက်% ကိုရိုက်ထည့်ပါ
@@ -1197,8 +1100,6 @@ Filter by Date: နေ့စွဲဖြင့်စစ်ထုတ်ပါ
 All Dates: ရက်များအားလုံး
 Past: အတိတ်
 Upcoming: လာမည့်
-Range: =
-
 ########################################
 # Page: search_handler.php
 #
@@ -1208,7 +1109,6 @@ match found: ပွဲစဉ်ကိုတွေ့
 matches found: ကိုက်ညီမှုများ
 No matches found: ကိုက်ညီမှုမရှိပါ
 New Search: ရှာဖွေမှုအသစ်
-
 ########################################
 # Page: security_audit.php
 #
@@ -1230,46 +1130,39 @@ consider enabling UAC: User Access Control ကိုအသုံးပြုသ�
 recommend approving new public events: အများပြည်သူဆိုင်ရာအဖြစ်အပျက်များတင်ပြမှုအားလုံးကိုအတည်ပြုရန်ကျွန်ုပ်တို့အကြံပြုပါသည်။
 recommend using CAPTCHA: CAPTCHA သည်အလိုအလျောက်ဖြစ်ရပ်များတင်ပြခြင်းကိုထပ်မံကာကွယ်ရန်အကြံပြုပါသည်။
 Database cache directory location: Database ကိုသိုလှောင်နေရာလမ်းညွှန်တည်နေရာ
-db cache should be inaccessable: Database cache သည် URL နှင့်ဆက်သွယ်မရနိုင်သောလမ်းညွှန်တစ်ခုရှိသင့်သည်။
+db cache should be inaccessible: Database cache သည် URL နှင့်ဆက်သွယ်မရနိုင်သောလမ်းညွှန်တစ်ခုရှိသင့်သည်။
 PHP Settings XXX: PHP ဆက်တင်များ - "XXX"
 recommend setting XXX Off: "XXX" အတွက်အကြံပြုထားသည့် setting သည်ပိတ်ထားသည်။
 recommend setting allow_url_fopen Off: ဝေးလံသောပြက္ခဒိန်များမဖွင့်ပါက "allow_url_fopen" အတွက်အကြံပြုထားသည့် setting သည်ပိတ်ထားသည်။
-
 ########################################
 # Page: select_user.php
 #
 View Another Users Calendar: အခြားအသုံးပြုသူ၏ပြက္ခဒိန်ကိုကြည့်ပါ
-
 ########################################
 # Page: set_entry_cat.php
 #
 You have not added any categories.: သင်မည်သည့်အမျိုးအစားကိုမျှမထည့်ပါ။
 Set Category: အမျိုးအစားသတ်မှတ်မည်
 Global Categories cannot be changed.: ကမ္ဘာလုံးဆိုင်ရာအမျိုးအစားများကိုပြောင်းလဲလို့မရပါ။
-
 ########################################
 # Page: upcoming.php
 #
 more: နောက်ထပ်
-
 ########################################
 # Page: users.php
 #
 Remote Calendars: ဝေးလံသောပြက္ခဒိန်များ
 denotes administrative user: အုပ်ချုပ်ရေးဆိုင်ရာအသုံးပြုသူကိုဆိုလိုသည်
 Add New User: အသုံးပြုသူအသစ်ထည့်ပါ
-
 ########################################
 # Page: usersel.php
 #
 form: ပုံစံ
 Reset: ပြန်လည်စတင်
-
 ########################################
 # Page: views.php
 #
 Add New View: ကြည့်ရန်အသစ်ထည့်ပါ
-
 ########################################
 # Page: views_edit.php
 #
@@ -1286,17 +1179,14 @@ Week (Timebar): သီတင်းပတ်
 Month (Timebar): လ (တိဘဘား)
 Month (side by side): လ (ဘေးချင်းယှဉ်။ )
 Month (on same calendar): လ (ပြက္ခဒိန်တွင်)
-
 ########################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: သင်မြင်ကွင်းအမည်ကိုသတ်မှတ်ရမည်
-
 ########################################
 # Page: view_d.php
 #
 No users for this view.: ဤအမြင်အတွက်အသုံးပြုသူများမရှိပါ
-
 ########################################
 # Page: view_entry.php
 #
@@ -1336,19 +1226,15 @@ Email all participants: ပါဝင်သူအားလုံးကိုအ�
 Hide activity log: လှုပ်ရှားမှုမှတ်တမ်းကိုဖျောက်ထားပါ
 Show activity log: လှုပ်ရှားမှုမှတ်တမ်းပြပါ
 Export this entry to: ဤ entry ကိုတင်ပို့ပါ
-Palm Pilot: =
-
 ########################################
 # Page: view_m.php
 #
 Double-click on empty cell to add new entry: ထည့်သွင်းမှုအသစ်ထည့်ရန်ဗလာဆဲလ်ပေါ်တွင်နှစ်ချက်နှိပ်ပါ။
-
 ########################################
 # Page: week_details.php
 #
 New Entry: အသစ် Entry
 cont.: ဆက်ပြောသည်
-
 ########################################
 # Page: includes/access.php
 #
@@ -1356,14 +1242,12 @@ Another Users Calendar: အခြားသုံးစွဲသူပြက္�
 Category Management: အမျိုးအစားစီမံခန့်ခွဲမှု
 Day View: နေ့မြင်ကွင်း
 Edit Event: Edit ကိုဖြစ်ရပ်
-Month View: =
 Common Trailer: ဘုံနောက်တွဲယာဉ်
 User Management: အသုံးပြုသူစီမံခန့်ခွဲမှု
 Manage Views: Views ကိုစီမံပါ
 Week View: အပတ်မြင်ကွင်း
 Year View: နှစ်မြင်ကွင်း
 Invalid function id: မမှန်ကန်သောလုပ်ဆောင်ချက်အိုင်ဒီ
-
 ########################################
 # Page: includes/config.php
 #
@@ -1371,14 +1255,12 @@ Could not find settings.php file...: "settings.php" ဖိုင်ကိုရ�
 Incomplete settings.php file...: "settings.php" ဖိုင်မပြည့်စုံပါ ...
 Could not find XXX defined in...: သင်၏ "settings.php" ဖိုင်တွင်သတ်မှတ်ထားသော "XXX" ကိုရှာမရပါ။
 You must define XXX in: "settings.php" ဖိုင်တွင် "XXX" ကိုသတ်မှတ်ရမည်။
-
 ########################################
 # Page: includes/date_formats.php
 #
 December: ဒီဇင်ဘာ
 Dec: ဒီဇင်ဘာ
 LANGUAGE DEFINED: ဘာသာစကားသတ်မှတ်သည်
-
 ########################################
 # Page: includes/dbi4php.php
 #
@@ -1392,13 +1274,11 @@ Unknown ODBC error.: ODBC အမှားမသိပါ။
 Error opening cache dir XXX.: cache dir "XXX" ဖွင့်လှစ်သောအမှား။
 delete: ဖျက်ပါ
 Cache error Could not XXX file YYY.: Cache အမှား - "YYY" XXX ဖိုင်ကိုမရပါ။
-
 ########################################
 # Page: includes/formvars.php
 #
 Fatal Error: Fatal error
 Invalid data format for: မမှန်ကန်သောအချက်အလက်ပုံစံ
-
 ########################################
 # Page: includes/functions.php
 #
@@ -1411,7 +1291,6 @@ All Attendees: တက်ရောက်သူအားလုံး
 Busy: အလုပ်ရှုပ်သည်
 Tentative: သဘော
 Schedule an appointment for XXX.: XXX: YYY အတွက်ရက်ချိန်းယူရန်စီစဉ်ပါ။
-date_select: =
 Event approved: ဖြစ်ရပ်အတည်ပြုခဲ့သည်
 Journal approved: ဂျာနယ်အတည်ပြုခဲ့သည်
 Task approved: Task အတည်ပြုခဲ့သည်
@@ -1422,8 +1301,8 @@ Task created: Task ဖန်တီးပြီး
 Event deleted: ဖြစ်ရပ်ဖျက်လိုက်သည်
 Journal deleted: ဂျာနယ်ဖျက်လိုက်သည်
 Task deleted: Task ကိုဖျက်လိုက်သည်
-New user via email (self registration): အီးမေးလ်မှတဆင့်အသုံးပြုသူအသစ်
-New user (self registration): အသုံးပြုသူအသစ် (ကိုယ်ပိုင်မှတ်ပုံတင်ခြင်း)
+New user via email self registration: အီးမေးလ်မှတဆင့်အသုံးပြုသူအသစ်
+New user self registration: အသုံးပြုသူအသစ် (ကိုယ်ပိုင်မှတ်ပုံတင်ခြင်း)
 Notification sent: အသိပေးစာပို့ခဲ့သည်
 Event rejected: အဖြစ်အပျက်ကိုငြင်းပယ်ခဲ့သည်
 Journal rejected: ဂျာနယ်ပယ်ချ
@@ -1433,17 +1312,15 @@ Event updated: အဖြစ်အပျက်နောက်ဆုံးပေ�
 Journal updated: ဂျာနယ် updated
 Task updated: Task ကို updated
 Delete User: အသုံးပြုသူကိုဖျက်သည်
-WK: =
 TASKS: လုပ်ငန်းတာဝန်များ
 Task_Title: ခေါင်းစဥ်
 Due: ကြောင့်
 Task Name: Task အမည်
 Task Due Date: Task ကိုနေ့စွဲ
-You have XXX unapproved entries: သင့်တွင် XXX ခွင့်ပြုချက်မရှိပါ 
+You have XXX unapproved entries: သင့်တွင် XXX ခွင့်ပြုချက်မရှိပါ
 Changes successfully saved: ပြောင်းလဲမှုများကိုအောင်မြင်စွာသိမ်းဆည်းပြီး
 Event: အဖြစ်အပျက်
 Action: လှုပ်ရှားမှု
-Printer Friendly: =
 Generate printer-friendly version: ပရင်တာ - ဖော်ရွေဗားရှင်းထုတ်လုပ်ရန်
 after: နောက်မှ
 before: မတိုင်မီ
@@ -1473,13 +1350,7 @@ Aug: Augဂုတ်
 Sep: စက်တင်ဘာ
 Oct: အောက်တိုဘာ
 Nov: နိုဝင်ဘာ
-SU: =
-MO: =
 TU: တူး
-WE: =
-TH: =
-FR: =
-SA: =
 unknown-month: မသိ - လ
 First Quarter Moon: လတစ်လ
 Full Moon: လပြည့်
@@ -1514,14 +1385,12 @@ Fri: နေ
 Sat: နေ
 unknown-weekday: မသိသောရက်သတ္တပတ်
 Invalid referring URL: မမှန်ကန်သောရည်ညွှန်း URL
-
 ########################################
 # Page: includes/help_list.php
 #
 Index: အညွှန်းကိန်း
 Documentation: စာရွက်စာတမ်း
 Page: စာမျက်နှာ
-
 ########################################
 # Page: includes/trailer.php
 #
@@ -1533,29 +1402,15 @@ Home: နေအိမ်
 Back to My Calendar: ကျွန်ုပ်၏ပြက္ခဒိန်သို့ပြန်သွားသည်
 Go to: သွားပါ
 Manage calendar of: ၏ပြက္ခဒိန်ကိုစီမံပါ
-
 ########################################
 # Page: includes/translate.php
 #
 Browser Language Not Found: Browser ဘာသာစကားမတွေ့ပါ
-(not supported): (မထောက်ပံ့ပါ)
-Abkhazian: =
-Acoli: =
-Adangme: =
-Adyghe: =
-Afar: =
-Afrihili: =
+not supported: (မထောက်ပံ့ပါ)
 Afrikaans: အာဖရိကန်
-Ainu: =
-Akan: =
-Akkadian: =
 Albanian: အယ်လ်ဘေးနီးယန်း
-Aleut: =
-Algonquian: =
 Altai (Southern): Altai (တောင်ပိုင်း)
 Amharic: အမ်ဟာရစ်
-Angika: =
-Apache: =
 Arabic (Algeria): အာရဗီ (အယ်လ်ဂျီးရီးယား)
 Arabic (Bahrain): အာရဗီ (ဘာရိန်း)
 Arabic (Egypt): အာရဗီ (အီဂျစ်)
@@ -1573,88 +1428,47 @@ Arabic (Tunisia): အာရဗီ (တူနီးရှား)
 Arabic (U.A.E.): အာရဗီ (U.A.E. )
 Arabic (Yemen): အာရဗီ (ယီမင်)
 Arabic: အာရဗီ
-Aragonese: =
 Aramaic: အာရမိတ်
 Arapaho: အာရာဟိုး
-Arawak: =
 Armenian: အာမေနီယန်
 Assamese: အက်စမီဈ
-Asturian: =
-Athapascan: =
-Avaric: =
-Avestan: =
-Awadhi: =
-Aymara: =
 Azerbaijani: အျောဇောဘိုငျဂြောနီ
 Balinese: ဘာလီ
-Baluchi: =
 Bambara: ဘန်ဘာ
-Bamileke: =
-Banda: =
-Basa: =
-Bashkir: =
-Basque: =
-Beja: =
 Belarusian: ဘီလာရုစကား
-Bemba: =
 Bengali: ဘင်္ဂလီ
-Bhojpuri: =
-Bihari: =
-Bikol: =
-Bislama: =
 Blackfoot: ဘိလပ်မြေ
 Blin: blin
 Bliss: ချမ်းသာ
 Bosnian: ဘော့စျနီးယား
-Braj: =
 Breton: ဘရီတွန်
-Buginese: =
 Bulgarian: ဘူဂေးရီးယား
-Buriat: =
 Burmese: ဗမာ
-Caddo: =
 Catalan: ကက်တလန်
-Cebuano: =
-Chagatai: =
 Chamorro: ချင်းမိုင်
 Chechen: ခြခေငျြး
 Cherokee: ခြာရိုကီ
 Cheyenne: ချိုင်းနား
-Chibcha: =
-Chichewa: =
 Chinese (Hong Kong): တရုတ် (ဟောင်ကောင်)
 Chinese (PRC): တရုတ် (PRC)
-Chinese (Simplified/GB2312): တရုတ် (ရိုးရှင်းသော / GB2312) 
+Chinese (Simplified/GB2312): တရုတ် (ရိုးရှင်းသော / GB2312)
 Chinese (Singapore): တရုတ် (စင်္ကာပူ)
 Chinese (Taiwan): တရုတ် (တိုင်ဝမ်)
 Chinese (Traditional/Big5): တရုတ် (ရိုးရာ / Big5)
 Chinook: ချင်းတွင်း
 Chipewyan: ချစ်သူ
 Choctaw: ကော့တ်
-Chuukese: =
-Chuvash: =
 Coptic: ကွမ်းခြံကုန်း
-Cornish: =
-Corsican: =
 Cree: ခရီး
-Creek: =
 Croatian: ခရိုအေရှန်
 Czech: ချက်
 Dakota: ဒါကိုတာ
 Danish: ဒိန်းမတ်
-Dargwa: =
 Delaware: ဝဲ
-Dinka: =
-Dogri: =
-Dogrib: =
-Duala: =
 Dutch (Belgium): ဒတ်ခ်ျ (ဘယ်လ်ဂျီယံ)
 Dutch: ဒတ်ချ်
-Dyula: =
 Dzongkha: ဒွန်ချာ
 Edo: အဲဒို
-Efik: =
-Ekajuk: =
 Elamite: am လမန
 English (Australia): အင်္ဂလိပ် (Australiaစတြေးလျ)
 English (Belize): အင်္ဂလိပ် (ဘီလီဇ်)
@@ -1669,14 +1483,10 @@ English (United Kingdom): အင်္ဂလိပ် (ယူနိုက်တ�
 English (United States): အင်္ဂလိပ် (အမေရိကန်)
 English (Zimbabwe): အင်္ဂလိပ် (ဇင်ဘာဘွေ)
 English: အင်္ဂလိပ် - ယူအက်စ်
-Erzya: =
 Esperanto: အက်စပရန်တို
 Estonian: အက်စ်တိုးနီးယားဘာသာစကား
 Ewe: သိုး
-Ewondo: =
 Fang: ဖန်
-Fanti: =
-Faroese: =
 Fijian: ဖီဂျီ
 Filipino: ဖိလစ်ပိုင်
 Finnish: ဖင်နစ်ရှ်
@@ -1691,16 +1501,9 @@ French: ပြင်သစ်
 Frisian (Eastern): ဖရီစီရန် (အရှေ့)
 Frisian (Northern): Frisian (မြောက်ပိုင်း)
 Frisian (Western): Frisian (အနောက်ပိုင်း)
-Frisian: =
-Friulian: =
-Fulah: =
 Ga: ဂါ
-Galibi: =
 Galician: ဂါလာစီယံ
 Ganda: ဂန်ဒါ
-Gayo: =
-Gbaya: =
-Geez: =
 Georgian: ဂျြောဂြီယနျ
 German (Austria): ဂျာမန် (သြစတြီးယား)
 German (Germany): ဂျာမန် (ဂျာမနီ)
@@ -1709,40 +1512,27 @@ German (Luxembourg): ဂျာမန် (လူဇင်ဘတ်)
 German (Standard): ဂျာမန် (Standard)
 German (Switzerland): ဂျာမန် (ဆွစ်ဇာလန်)
 German: ဂျာမန်
-Gilbertese: =
-Gondi: =
-Gorontalo: =
-Gothic: =
 Grebo: ဂရိ
 Greek: ဂရိ
 Greenlandic: ဂရင်းလန်း
 Guarani: ဂူအာရာနီ
 Gujarati: ဂူဂျာရသီ
 Gwich&#39;in: Gwich'in
-Haida: =
-Haitian (Creole): =
 Haitian: ဟာအီတီ
 Hausa: ဟာဆာ
 Hawaiian: ဟာဝယေံ
 Hebrew: ဟီဘရူး
 Herero: ဒီနေရာ
-Hiligaynon: =
 Hindi: ဟိန္ဒီ
-Hiri Motu: =
 Hittite: ဟိတ္တိ
 Hmong: မုံ
 Holo (Taiwanese): ဟိုလို (ထိုင်ဝမ်)
 Hungarian: ဟနျဂရေီ
 Hupa: ဟားဝါ
-Iban: =
 Icelandic: အိုက်စလန်
-Ido: =
 Igbo: အစ်ဂဘို
 Iloko: အီလိုကို
 Indonesian: အင်ဒိုနီးရှား
-Ingush: =
-Inuktitut: =
-Inupiaq: =
 Iranian: အီရန်
 Irish (Gaelic): အိုင်းရစ် (Gaelic)
 Irish: အိုင်းရစ်ရှ်
@@ -1754,197 +1544,108 @@ Javanese: ဂျာဗားနီးယား
 Judeo-Arabic: ယုဒအာရဗီ
 Judeo-Persian: ယုဒ - ပါရှန်း
 Kabardian: ကဘူးဒီးယား
-Kabyle: =
 Kachin: ကချင်လူမျိုး
-Kalaallisut: =
-Kalmyk: =
-Kamba: =
 Kannada: ကန်နာဒါ
-Kanuri: =
-Kara-Kalpak: =
 Karachay-Balkar: Karachay-Balkar-Karachay-Balkar အဘိဓါန်မှလှိုက်လှဲစွာကြိုဆိုပါသည်
-Karelian: =
 Kashmiri: ကကျရျှမီရီ
 Kashubian: ကက်ရှဘီးယား
 Kawi: ကဝီ
-Kazakh: =
 Khasi: ခါး
 Khmer (Central): ခမာ (အလယ်ပိုင်း)
 Khmer: ခမာ
-Khotanese: =
-Kikuyu: =
-Kimbundu: =
 Kinyarwanda: ကင်ညာ
-Kirghiz: =
-Klingon: =
-Komi: =
 Kongo: ကွန်ဂို
-Konkani: =
 Korean (Johab): ကိုးရီးယား (ယိုဘ)
 Korean (North): ကိုးရီးယား (မြောက်)
 Korean (South): ကိုးရီးယား (တောင်)
 Korean: ကိုရီးယား
 Kosraean: ကိုရီးယား
-Kpelle: =
 Kuanyama: ကွမ်းခြံကုန်း
-Kumyk: =
 Kurdish: ကဒ်
 Kutenai: ကူနိုင်း
 Kyrgyz: ခရူဂ
-Ladino: =
-Lahnda: =
-Lamba: =
 Lao: လာအို
 Latin: လက်တင်
 Latvian: လက်ဘီအံ
-Lezghian: =
-Limburgan: =
 Lingala: လင်ဂါလာ
 Lithuanian: လစ်သူ
-Lojban: =
-Lozi: =
-Luba-Katanga: =
-Luba-Lulua: =
-Luiseno: =
-Lunda: =
 Luo: လူအို
 Lushai: လူရှိုင်း
 Luxembourghish: လူဇင်ဘတ်
-Macedonian: =
 Madurese: မလေးရှား
 Magahi: မဂ္ဂီ
-Maithili: =
-Makasar: =
 Malagasy: အာလာဂါစီ
 Malay: မလေး
 Malayalam: မလေးရာလမ်
 Maldivian: မော်လဒိုက်
-Maltese: =
 Manchu: မနျခြူး
-Mandar: =
 Mandingo: မန်ဒီဂို
 Manipuri: မဏိပူရ
-Manx: =
-Maori: =
-Mapuche: =
 Marathi: မာရသီ
-Mari: =
-Marshallese: =
 Marwari: မာဝါရီ
-Masai: =
 Mayan: မာယာ
-Mende: =
 Mi&#39;kmaq: Mi'kmaq
 Minangkabau: မင်းangkabau
-Mirandese: =
-Mohawk: =
-Moksha: =
 Moldavian: မော်လ်ဒီးယား
-Mongo: =
 Mongolian: မွန်ဂို
-Montenegrin: =
 Moroccan: မော်ရိုကို
 Mossi: မော့စီ
 Myanmar: မြန်မာ
 Māori: မာရီ
 N&#39;Ko: N'Ko
-Nauru: =
 Navajo: Navajo အဘိဓါန်
 Ndebele (North): Ndebele (မြောက်)
 Ndebele (South): Ndebele (တောင်ပိုင်း)
 Ndebele: ရေဒီယို
-Ndonga: =
 Neapolitan: Neapolitan အဘိဓါန်
 Nepali: နီပေါ
-Nias: =
 Niuean: နီယွန်
-Nogai: =
-Norse: =
 Norwegian (Bokmål): နော်ဝေး
 Norwegian (Nynorsk): နော်ဝေ (နော်ဝေး)
 Norwegian: နော်ဝေ
-Nyamwezi: =
-Nyankole: =
-Nyoro: =
-Nzima: =
-Occitan: =
-Odia: =
-Ojibwa: =
-Oriyia: =
-Oromo: =
 Osage: တောင်ကြီးမြို့
 Ossetic: အော်စကာ
-Pahlavi: =
 Palauan: ပလောင်
 Pali: ပါ.ိ
-Pampanga: =
-Pangasinan: =
 Panjabi: ပန်ဂျီဘီ
-Papiamento: =
 Pashto: ပါရှ်တို
 Pedi: ခြေထောက်
-Persian (Farsi): =
 Persian (Iran): ပါရှန်း (အီရန်)
 Persian: ပါရှန်း
 Phoenician: ဖိုနီးရှား
-Pohnpeian: =
 Polish: ပိုလန်
 Portuguese: ပေါ်တူဂီ
-Portuguese/Brazil: ပေါ်တူဂီ / ဘရာဇီး 
+Portuguese/Brazil: ပေါ်တူဂီ / ဘရာဇီး
 Punjabi (India): ပန်ချာပီ (အိန္ဒိယ)
 Punjabi (Pakistan): ပနျဂြာပီ (ပါကစ္စတန်)
 Punjabi: ပနျခြာပီ
-Quechua: =
-Rajasthani: =
-Rapanui: =
-Rarotongan: =
-Rhaeto-Romanic: =
 Romanian: ရိုမေးနီးယား
 Romansh: ရောမ
-Romany: =
-Rundi: =
 Russian (Moldavia: ရုရှား (မော်လ်ဒီးယား
 Russian (Republic of Moldova): ရုရှား (မော်လ်ဒိုဗာသမ္မတနိုင်ငံ)
 Russian: ရုရှား
-Sami (Inari): =
-Sami (Lappish): =
 Sami (Lule): ဆာမီ (လူးလူး)
-Sami (Northern): =
-Sami (Skolt): =
 Sami (Southern): Sami (တောင်ပိုင်း)
 Sami: Sami အဘိဓါန်
-Samoan: =
-Samoli: =
 Sandawe: စန္ဒီ
 Sango: စန်းဂို
-Sanskrit: =
-Santali: =
-Sardinian: =
-Sasak: =
 Scots (Gaelic): စကော့ (Gaelic)
-Selkup: =
 Serbian (Upper): ဆားဗီးယား (အထက်)
 Serbian: ဆားဗီးယား
-Serer: =
 Sesotho: နှမ်း
 Shan: ရှမ်း
-Shona: =
 Sichuan Yi: စီချွမ်ရီ
-Sicilian: =
 Sindhi: စင်ဒီ
 Sinhala: ဆငျဟာလ
 Slavic: ဆလာဗစ်
 Slovak: စလိုဗက်
 Slovenian: စလိုဗေးနီးယန်း
-Sogdian: =
 Somali: ဆိုမာလီ
 Somani: ဆိုမာလီ
 Songhai: ရတယ်
 Soninke: နေမင်း
 Sorbian (Lower): Sorbian (အောက်ပိုင်း)
 Sorbian (Upper): Sorbian (အထက်)
-Sorbian: =
-Sotho: =
 Spanish (Argentina): စပိန် (အာဂျင်တီးနား)
 Spanish (Bolivia): စပိန် (ဘိုလီးဗီးယား)
 Spanish (Chile): စပိန်ဘာသာစကား (ချီလီ)
@@ -1965,11 +1666,8 @@ Spanish (Spain): စပိန် (စပိန်)
 Spanish (Uruguay): စပိန် (ဥရုဂွေး)
 Spanish (Venezuela): စပိန် (ဗင်နီဇွဲလား)
 Spanish: စပိန်ဘာသာစကား
-Sranan Tongo: =
-Sukuma: =
 Sumerian: ဆူမားရီးယား
 Sundanese: ဆူဒန်
-Susu: =
 Sutu: သီတဂူ
 Swahili: ဆွာဟီလီ
 Swati: ဆွာတီ
@@ -1979,96 +1677,61 @@ Swedish: ဆွီဒင်
 Syriac: ဆီးရီးယား
 Tagalog: တဂါးလော့ဂ်
 Tahitian: တဟီတီ
-Tai: =
 Taiwan: ထိုင်ဝမ်
 Tajik: တာဂျစ်ကစ္စတန်
-Tamashek: =
 Tamil: တမီးလ်
-Tatar: =
 Telugu: တီလီဂု
-Tereno: =
-Tetum: =
 Thai: ထိုင်း
 Tibetan: တိဘက်
 Tigre: ကျား
 Tigrinya: တီဂ်ရင်ယား
 Timne: ချစ်သူ
-Tlingit: =
 Tok Pisin: တိုကျို
 Tokelau: တိုကျို
 Tonga (Nytmhasa): Tonga (နီမတ်ဆာ)
 Tonga (Tonga Islands): တွန်ဂါ (တွန်ဂါကျွန်းများ)
-Tonga: =
-Tsimshian: =
-Tsonga: =
-Tswana: =
 Tumbuka: မြဝတီ
 Turkish: တူရကီ
 Turkmen: တခ်မင်
-Tuvinian: =
 Twi: နှစ်ထပ်
-Udmurt: =
-Ugaritic: =
 Ukrainian: ယူကရိန်း
-Umbundu: =
 Urdu: အူဒူ
 Uyghur: ဥဂါးရး
-Uzbek: =
-Vai: =
-Venda: =
 Vietnamese: ဗီယက်နမ်လူမျိုး
 Volapük: မှော်
-Votic: =
-Wakashan: =
-Walloon: =
-Waray: =
-Washo: =
 Welsh: ဝလေ
-Wolaitta: =
 Wolof: ဝူလို
 Xhosa: ဇို
-Yakut: =
 Yao: ရပါတယ်
-Yapese: =
-Yiddish: =
-Yorùbá: =
-Yupik: =
 Zande: ဇန်ဒါ
-Zapotec: =
-Zaza: =
-Zenaga: =
 Zhuang: Zhuang က
 Zulu: ဇူလူ
 Browser-defined: ဘရောင်ဇာ - သတ်မှတ်ထားသော
 event: အဖြစ်အပျက်
 journal: ဂျာနယ်
-0: 0                                                  
-1: ၁                                                  
-2: ၂                                                  
-3: ၃                                                  
-4: ၄                                                  
-5: ၅                                                  
-6: ၆                                                  
-7: ၇                                                  
-8: ၈                                                  
-9: ၉                                                  
-
+0: 0
+1: ၁
+2: ၂
+3: ၃
+4: ၄
+5: ၅
+6: ၆
+7: ၇
+8: ၈
+9: ၉
 ########################################
 # Page: includes/user-imap.php
 #
 Invalid user login: မမှန်ကန်သောအသုံးပြုသူဝင်ပါ
-
 ########################################
 # Page: includes/user-nis.php
 #
 incorrect password: မမှန်ကန်သောစကားဝှက်
 no such user: ထိုကဲ့သို့သောအသုံးပြုသူမရှိပါ
-
 ########################################
 # Page: includes/user.php
 #
 Account disabled: စာရင်းပယ်ဖျက်သည်
-
 ########################################
 # Page: includes/xcal.php
 #
@@ -2083,14 +1746,9 @@ Count: ရေတွက်
 Inclusion Dates: အားလုံးပါ ၀ င်သောနေ့ရက်များ
 Exclusion Dates: ချန်လှပ်ရက်စွဲများ
 Event Imported: ဖြစ်ရပ်တင်သွင်းမှု
-
 ########################################
 # Page: includes/classes/Doc.class
 #
-bytes: =
-kb: =
-Mb: =
-
 ########################################
 # Page: includes/classes/WebCalMailer.class
 #
@@ -2107,47 +1765,40 @@ instantiate: မေးလ်လုပ်ငန်းလည်ပတ်မှု�
 mailer_not_supported: စာပို့သူအားမထောက်ပံ့ပါ
 provide_address: လက်ခံသူအနည်းဆုံးအီးမေးလ်တစ်ခုပေးရပါမည်။
 recipients_failed: SMTP အမှား - အောက်ပါလက်ခံသူများမအောင်မြင်ပါ -
-
 ########################################
 # Page: includes/classes/captcha/captcha.php
 #
 Enter Characters Seen in Graphic: ဂရပ်ဖစ်တွင်ကြည့်ရှုသောစာလုံးများရိုက်ထည့်ပါ
 Enter the correct letters and numbers...: ပုံမှမှန်ကန်သောအက္ခရာများနှင့်နံပါတ်များကိုစာသားအကွက်ထဲသို့ထည့်ပါ။ ဒီသေးငယ်တဲ့စမ်းသပ်မှုအန္တရာယ်ရှိတဲ့ bot များဝင်ရောက်ခွင့်ကန့်သတ်အဖြစ်ဆောင်ရွက်ပါသည်။ ဤဂရပ်ဖစ်သည်ဖတ်ရန်ခက်ခဲလွန်းပါကစာမျက်နှာကိုပြန်ဖွင့်ပါ
 Challenge/Response: စိန်ခေါ်မှု / တုံ့ပြန်မှု
-
 ########################################
 # Page: includes/js/availability.php
 #
 Change the date and time of this entry?: ဒီ entry ၏နေ့စွဲနှင့်အချိန်ကိုပြောင်းလဲ?
-
 ########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: သငျသညျအတိုချုပ်ဖော်ပြချက်မဝင်ရ
 time prior to work hours...: အလုပ်ချိန်မတိုင်မီအချိန် ...
 Invalid Event Date: မမှန်ကန်သောဖြစ်ရပ်ရက်
-Please add a participant: ကျေးဇူးပြုပြီးပါဝင်သူထည့်ပါ 
+Please add a participant: ကျေးဇူးပြုပြီးပါဝင်သူထည့်ပါ
 Invalid Date: မမှန်ကန်သောနေ့စွဲ
-You have not entered a valid time of day: မှန်ကန်သောနေ့အချိန်ကိုသင်မသွင်းရသေးပါ။ 
-
+You have not entered a valid time of day: မှန်ကန်သောနေ့အချိန်ကိုသင်မသွင်းရသေးပါ။
 ########################################
 # Page: includes/js/edit_nonuser.php
 #
-Calendar ID cannot be blank.: ပြက္ခဒိန် ID သည်ကွက်လပ်မဖြစ်နိုင်ပါ။ 
-First and last names cannot both be blank.: ပထမနှင့်နောက်ဆုံးအမည်နှစ်ခုလုံးသည်ကွက်လပ်မဖြစ်နိုင်ပါ။ 
-
+Calendar ID cannot be blank.: ပြက္ခဒိန် ID သည်ကွက်လပ်မဖြစ်နိုင်ပါ။
+First and last names cannot both be blank.: ပထမနှင့်နောက်ဆုံးအမည်နှစ်ခုလုံးသည်ကွက်လပ်မဖြစ်နိုင်ပါ။
 ########################################
 # Page: includes/js/edit_remotes.php
 #
 Invalid color: မမှန်ကန်သောအရောင်
-Color format should be RRGGBB.: အရောင်အမျိုးအစား #RRGGBB ဖြစ်သင့်သည်။ 
+Color format should be RRGGBB.: အရောင်အမျိုးအစား #RRGGBB ဖြစ်သင့်သည်။
 URL cannot be blank.: URL ကအလွတ်မဖြစ်နိုင်ဘူး။
-
 ########################################
 # Page: includes/js/export_import.php
 #
-File type does not match Import Format: ဖိုင်အမျိုးအစားသည်တင်သွင်းမှုပုံစံနှင့်မကိုက်ညီပါ 
-
+File type does not match Import Format: ဖိုင်အမျိုးအစားသည်တင်သွင်းမှုပုံစံနှင့်မကိုက်ညီပါ
 ########################################
 # Page: includes/js/pref.php
 #
@@ -2156,7 +1807,6 @@ Invalid color for document title.: စာရွက်စာတမ်းခေါ
 Invalid color for table cell background.: Table Cell နောက်ခံအတွက်မမှန်ကန်သောအရောင်။
 Invalid color for table cell background for today.: ယနေ့စားပွဲတင်ဆဲလ်နောက်ခံအတွက်မမှန်ကန်သောအရောင်။
 Invalid work hours.: မမှန်ကန်သောအလုပ်ချိန်။
-
 ########################################
 # Page: includes/js/translate.js.php
 #
@@ -2169,12 +1819,11 @@ Invalid color for table header background.: Table header နောက်ခံ�
 Server URL is required.: ဆာဗာလိပ်စာလိုအပ်သည်
 Invalid Color: မမှန်ကန်သောအရောင်
 Database Name: ဒေတာဘေ့စအမည်
-Full Path (no backslashes): လမ်းကြောင်းအပြည့် (နောက်ပြန်မပါ) 
+Full Path (no backslashes): လမ်းကြောင်းအပြည့် (နောက်ပြန်မပါ)
 The password contains illegal characters.: ဒီစကားဝှက်မှာတရားမဝင်သောစာလုံးများပါရှိသည်။
 Error you must specify a Single-User Login: ချို့ယွင်းချက် - သင်သည်အသုံးပြုသူတစ် ဦး တည်းဝင်ရန်သတ်မှတ်ရမည်
 Could not find XXX.: XXX ကိုရှာမရပါ။
 Could not find XXX in DOM.: DOM တွင် XXX ကိုရှာမရပါ။
-
 ########################################
 # Page: includes/menu/index.php
 #
@@ -2192,7 +1841,6 @@ Public Calendar: လူထုပြက္ခဒိန်
 Unapproved Events: အတည်မပြုရသေးသောဖြစ်ရပ်များ
 User Manager: အသုံးပြုသူမန်နေဂျာ
 Help Contents: မာတိကာ
-
 ########################################
 # Page: install/index.php
 #
@@ -2211,7 +1859,6 @@ Invalid Login: မမှန်ကန်သောဝင်ခ
 Display Errors: ပြသမှုအမှားများ
 File Uploads: တင်ယူပါဖိုင်
 Allow URL fopen: URL fopen ခွင့်ပြုပါ (အဝေးပြက္ခဒိန်များအသုံးပြုမှသာလျှင်လိုအပ်သည်)
-Safe Mode: =
 Safe Mode Allowed Vars: Safe Mode Allow Vars (Safe Mode ဖွင့်မှသာ TZ လိုအပ်သည်)
 GD: GD (Gradient Image နောက်ခံအတွက်လိုအပ်သည်)
 Passwords do not match!: စကားဝှက်များမကိုက်ညီပါ
@@ -2229,7 +1876,6 @@ Please change the file permissions of this file.: ကျေးဇူးပြု
 Please change includes dir permission: ကျေးဇူးပြု၍ သင့်ရဲ့ "ပါဝင်သည်" လမ်းညွှန်၏ဖိုင်ခွင့်ပြုချက်ကိုအခြားအသုံးပြုသူများမှခွင့်ပြုချက်ကိုပြောင်းပါ။
 Your settings have been saved.: သင်၏ချိန်ညှိချက်များကိုသိမ်းဆည်းပြီးပါပြီ
 OFF: ပိတ်
-ON: =
 WebCalendar Setup Wizard: WebCalendar Setup Wizard ကို
 This installation wizard will guide you...: ဒီ installation wizard သည်အခြေခံ WebCalendar installation ကိုတည်ဆောက်ခြင်းအားဖြင့်သင့်အားလမ်းပြလိမ့်မည်။<br>အကူအညီနှင့်ပြသနာဖြေရှင်းခြင်းများအတွက်ကြည့်ပါ
 System Administrators Guide: System Administrator ၏လမ်းညွှန်
@@ -2285,7 +1931,7 @@ Application Settings: လျှောက်လွှာချိန်ညှိ�
 HTTP-based authentication was not detected...: HTTP အခြေပြုစစ်မှန်ကြောင်းစစ်ဆေးခြင်းကိုရှာမတွေ့ပါ။ အောက်ဖော်ပြပါ 'User Authentication' ရွေးချယ်မှုများမှ 'Web Server' ကိုရွေးချယ်လိုပါကသင်၏ ၀ က်ဘ်ဆာဗာကိုပြန်လည်ပြင်ဆင်ရန်လိုအပ်သည်။
 HTTP-based authentication was detected...: HTTP-based authentication ကိုရှာဖွေတွေ့ရှိခဲ့သည်။ သင်၏ဝက်ဘ်ဆာဗာမှအသုံးပြုသူအားစစ်မှန်ကြောင်းအတည်ပြုခြင်း အောက်ပါ 'User Authentication' ရွေးချယ်မှုများထဲမှ 'Web Server' ကိုရွေးချယ်သင့်သည်။
 Create Default Admin Account: ပုံမှန်အက်မင်အကောင့်ကိုဖန်တီးပါ
-(Admin Account Not Found): (အဒ်မင်အကောင့်မတွေ့ပါ)
+Admin Account Not Found: (အဒ်မင်အကောင့်မတွေ့ပါ)
 User Authentication: အသုံးပြုသူ၏စစ်မှန်ကြောင်းအတည်ပြုခြင်း
 Web-based via WebCalendar (default): WebCalendar မှတဆင့် Web-based (ပုံမှန်)
 Web Server (not detected): ဝဘ်ဆာဗာ (မတွေ့ပါ)
@@ -2297,20 +1943,17 @@ Production: ထုတ်လုပ်မှု
 Development: ဖွံ့ဖြိုးတိုးတက်မှု
 Save Settings: ချိန်ညှိချက်များကိုသိမ်းပါ
 Launch WebCalendar: WebCalendar စတင်ရန်
-
 ########################################
 # Page: install/install_functions.php
 #
 Error updating table XXX: ဇယား "XXX" မွမ်းမံမှုအမှား - YYY ။
-Conversion Successful: ကူးပြောင်းခြင်းအောင်မြင်သည် 
+Conversion Successful: ကူးပြောင်းခြင်းအောင်မြင်သည်
 Perl script required: သင်၏ယခင် WebCalendar မူကွဲသည်သင်၏အချက်အလက်များကိုပြောင်းလဲရန် PERL script တစ်ခုလိုအပ်သည်။ ကျေးဇူးပြု၍ /tools/upgrade_to_0.9.7.pl ကိုနှိပ်ပြီးနောက်စာမျက်နှာသို့ပြန်သွားရန်
 previous version requires updating several tables: သင်၏ယခင် WebCalendar ဗားရှင်းသည် database ဇယားကွက်အသစ်များလိုအပ်သည်။
-
 ########################################
 # Page: themes/theme_inc.php
 #
 NO PREVIEW AVAILABLE: ကြိုတင်သုံးသပ်ချက်မရှိပါ
-
 ########################################
 # Page: tools/reload_remotes.php
 #
@@ -2322,7 +1965,6 @@ No data returned from: ဒေတာမှပြန်လာမရှိပါ
 for non-user calendar: အသုံးပြုသူမဟုတ်သောပြက္ခဒိန်အတွက်
 No Remote Calendars found: အဝေးမှပြက္ခဒိန်များမတွေ့ပါ
 Remote Calendars not enabled: အဝေးမှပြက္ခဒိန်များမဖွင့်ထားပါ
-
 ########################################
 # Page: tools/send_reminders.php
 #
@@ -2330,23 +1972,20 @@ could not find event id: အဖြစ်အပျက်အိုင်ဒီက�
 could not find event id XXX in database.: ဒေတာဗေ့စ်တွင်ဖြစ်ရပ်အိုင်ဒီ XXX ကိုရှာမတွေ့ပါ။
 task: တာဝန်
 This is a reminder for the XXX detailed below.: ၎င်းသည်အောက်တွင်ဖော်ပြထားသော XXX အတွက်သတိပေးချက်ဖြစ်သည်။
-Pecentage Complete: Pecentage အပြီး
+Percentage Complete: Percentage အပြီး
 Reminder: သတိပေးချက်
-
 ########################################
 # Page: ws/event_mod.php
 #
 Unsupported action XXX.: မထောက်ပံ့သောလုပ်ဆောင်ချက် - XXX ။
 No event id specified.: အဘယ်သူမျှမဖြစ်ရပ်အိုင်ဒီသတ်မှတ်ထားသော။
 Not authorized (not admin).: ခွင့်ပြုချက်မရ (admin မပါ) ။
-
 ########################################
 # Page: ws/get_events.php
 #
 Checking for events for XXX from date YYY to date ZZZ.: YYY မှနေ့စွဲ ZZZ အထိ XXX အတွက်ဖြစ်ရပ်များကိုစစ်ဆေးခြင်း။
 Found XXX events in time range.: XXX ဖြစ်ရပ်များကိုအချိန်အတိုင်းအတာအတွင်းတွေ့ရှိနိုင်သည်။
 Event id=XXX YYY at ZZZ on AAA.: AAA ရှိ ZZZ တွင်ဖြစ်ရပ် ID = XXX "YYY" ။
-
 ########################################
 # Page: ws/get_reminders.php
 #
@@ -2358,19 +1997,16 @@ Mins Before XXX.: မင်္ဂလာပါ: XXX ။
 Event time is XXX.: ပွဲအချိန် - XXX
 Remind time is XXX.: သတိပေးအချိန်သည် XXX ဖြစ်သည်။
 Reminders for user XXX, login YYY.: အသုံးပြုသူအတွက် "XXX" အတွက်သတိပေးချက်များ၊ "YYY" ကို login လုပ်ပါ။
-
 ########################################
 # Page: ws/get_unapproved.php
 #
 Getting unapproved for user XXX.: အသုံးပြုသူ "XXX" အတွက်ခွင့်ပြုချက်မရပဲ။
 Event id=XXX YYY already sent.: ဖြစ်ရပ် id = XXX "YYY" ကိုပို့ပြီးပါပြီ
-
 ########################################
 # Page: ws/login.php
 #
 No login required for single-user mode.: Single-user mode အတွက် login မလိုအပ်ပါ။
 No login required for HTTP authentication.: HTTP authentication ကိုအတွက် login မလိုအပ်ပါ။
-
 ########################################
 # Page: ws/user_mod.php
 #
@@ -2378,10 +2014,9 @@ Invalid characters in login: လော့အင်ထဲမှမမှန်က
 Username XXX does not exist.: သုံးစွဲသူအမည် "XXX" မရှိပါ။
 You cannot remove admin rights from yourself!: သငျသညျ admin ရဲ့အခွင့်အရေးများကိုကိုယ့်ကိုကိုယ်မှမဖယ်ရှားနိုင်သည်!
 Unknown error saving user: အသုံးပြုသူအမည်ချွေတာခြင်းမသိပါ
-
 ########################################
 # Page: ws/ws.php
 #
 No participants found for event id XXX.: ဖြစ်ရပ်အိုင်ဒီအတွက်ပါ ၀ င်သူများမရှိပါ - XXX ။
-Db error Could not find event id XXX.: Db အမှား - ဖြစ်ရပ်အိုင်ဒီ XXX ကိုရှာမရပါ။ 
-Error Could not find event id XXX in database.: ချို့ယွင်းချက် - event id XXX ကိုဒေတာဘေ့စ်တွင်ရှာမတွေ့ပါ။ 
+Db error Could not find event id XXX.: Db အမှား - ဖြစ်ရပ်အိုင်ဒီ XXX ကိုရှာမရပါ။
+Error Could not find event id XXX in database.: ချို့ယွင်းချက် - event id XXX ကိုဒေတာဘေ့စ်တွင်ရှာမတွေ့ပါ။
