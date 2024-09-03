@@ -2471,7 +2471,7 @@ function get_categories_by_id ( $id, $user, $asterisk = false ) {
 
   $res = dbi_execute ( 'SELECT wc.cat_name, wc.cat_id, wec.cat_owner
     FROM webcal_categories wc, webcal_entry_categories wec WHERE wec.cal_id = ?
-    AND wec.cat_id = wc.cat_id AND ( wc.cat_owner = ? OR wc.cat_owner IS NULL )
+    AND wec.cat_id = wc.cat_id AND ( wc.cat_owner = ? OR wc.cat_owner = \'\' )
   ORDER BY wec.cat_order', [$id, ( empty ( $user ) ? $login : $user )] );
   while ( $row = dbi_fetch_row ( $res ) ) {
     $categories[ ( empty ( $row[2] ) ? - $row[1] : $row[1] ) ] = $row[0]
@@ -4209,7 +4209,7 @@ function load_user_categories ( $ex_global = '' ) {
       ( $is_assistant || $is_admin ) ? $user : $login );
     $rows = dbi_get_cached_rows ( 'SELECT cat_id, cat_name, cat_owner, cat_color, cat_icon_mime
       FROM webcal_categories WHERE ( cat_owner = ? ) ' . ( $ex_global == ''
-        ? 'OR ( cat_owner IS NULL ) ORDER BY cat_owner,' : 'ORDER BY' )
+        ? 'OR ( cat_owner = \'\' ) ORDER BY cat_owner,' : 'ORDER BY' )
        . ' cat_name', $query_params );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {

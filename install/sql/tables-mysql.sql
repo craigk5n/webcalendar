@@ -414,7 +414,7 @@ CREATE TABLE webcal_entry_log (
 
 /**
  * Defines user categories.  Categories can be specific to a user or global.
- * When a category is global, the cat_owner field will be NULL.
+ * When a category is global, the cat_owner field will be an empty string.
  * (Only an admin user can create a global category.)
  */
 CREATE TABLE webcal_categories (

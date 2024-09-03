@@ -766,12 +766,12 @@ if ( ! $error ) {
                 <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-smtp-username' ) . '">'
    . translate ( 'SMTP Username' )
    . ':</label><input type="text" size="30" name="admin_SMTP_USERNAME" value="'
-   . ( $s['SMTP_USERNAME'] ?: '' )
+   . ( $s['SMTP_USERNAME'] ??= '' )
    . '"></div>
                 <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-smtp-password' ) . '">'
    . translate ( 'SMTP Password' )
    . ':</label><input type="text" size="30" name="admin_SMTP_PASSWORD" value="'
-   . ( $s['SMTP_PASSWORD'] ?: '' )
+   . ( $s['SMTP_PASSWORD'] ??= '' )
    . '"></div>
               </div>
             </div>
