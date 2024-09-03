@@ -40,11 +40,18 @@ class RepeatingEvent extends Event {
    * @access private
    */
   var $_repeatEndDateTime;
+  /**
+   * The UNIX timestamp for the end date/time of the repetition.
+   * @var int
+   * @access private
+   */
+  var $_repeatEndDateTimeTS;
  /**
    * The frequency of the repetition.
    * @var int
    * @access private
    */
+  
   var $_repeatFrequency;
   /**
    * The days each week the event occurs

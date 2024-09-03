@@ -1,11 +1,43 @@
-# See translations/English-US.txt for instructions.
+# Afrikaans af
 #
-# Translations anonymous, November 2003,
-# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
-# http://sourceforge.net/projects/jscalendar/
+# Die formaat bestaan ​​uit 'n opsionele kopskrif:
 #
-# Translation last updated on 11-27-2023
-
+# Vertaal deur: jou naam en e-posadres
+# Laaste opdatering: die datum van vertaling
+#  (Insluitend die voorste "" en enige opmerkings wat deur vorige vertalers gemaak is.
+#  Die EERSTE leë reël eindig hierdie kopopmerkings.)
+#
+# Gevolg deur soveel as wat nodig is:
+#
+# Engelse frase: vertaling
+#  (Een na 'n reël. SONDER die voorste "".
+#  Die "Engelse frase: ", insluitend die dubbelpunt ":", word verskaf deur die
+#  WebCalendar ontwikkelaars. Jou deel is die "vertaling".)
+#
+# Die gereedskapgids bevat twee perl-skrifte om jou te help:
+#  - check_translation.pl
+#  dui aan of alle teks suksesvol vertaal is.
+#  - update_translation.pl
+#  sal die programlêers ontleed om alle translate ( 'frase' ) en
+#  tooltip ( 'frase'). Dit sal die frases volgens die bladsy rangskik
+#  (lêer) wat die eerste voorkoms bevat. Opsioneel kan dit merk die
+#  frases wat nog nie deur putting vertaal is nie
+#  << MISSING >>
+#  op die reël bokant die frase. En as die frase 'n afkorting is,
+#  dit sal die volledige Engelse teks op die reël onder die frase insluit.
+#
+# Let wel: Ek probeer om die algehele lêergrootte te verminder. As die "vertaling"
+#  woord / frase is identies in jou taal en Engels, gebruik net 'n "="-teken.
+#
+# Let wel: Jy sal die inskrywing vir "Mei_" hieronder opmerk. Daar is 'n rede hiervoor.
+#  Vertaal "Mei_" na die volle maandnaam en "Mei" na die,
+#  gewoonlik drie-letter, maand afkorting (soos "Okt" vir "Oktober").
+#
+# Ek het Google translate hiervoor gebruik.
+# Dit behoort voldoende te wees totdat 'n moedertaalspreker dit kan nagaan.
+# Bruce Bannon <webcalendar.v5oan@simplelogin.com>
+#
+# Translation last updated on 2-Sep-2024
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
@@ -16,7 +48,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-1
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -39,83 +71,1423 @@ __month__ __yyyy__: =
 ################################################################################
 ################################################################################
 
-
-########################################
-# Page: edit_entry.php
-#
-Date: Datum
-
-########################################
-# Page: report.php
-#
-Next: Volgende
-Previous: Vorige
-
-########################################
-# Page: pref.php
-#
-Month: Maand
-Year: Jaar
-
-########################################
-# Page: edit_report.php
-#
-Today: Vandag
-Next month: Volgende maand
-Next year: Volgende jaar
-
-########################################
-# Page: includes/xcal.php
-#
-MO: MA
-TU: DI
-WE: WO
-TH: DO
-FR: VR
-SU: SO
-
-########################################
-# Page: includes/date_formats.php
-#
-December: Desember
-Dec: Des
-
-########################################
-# Page: includes/functions.php
-#
-January: Januarie
-February: Februarie
-March: Maart
-April: =
-May_: Mei
-June: Junie
-July: Julie
+(cont.): (vervolg)
+(not supported): (nie ondersteun nie)
+(Private): (Privaat)
+(Your comments will be emailed to the event creator.): (Jou opmerkings sal per e-pos aan die gebeurtenisskepper gestuur word.)
+(Your comments will be emailed to the other participants.): (Jou opmerkings sal aan die ander deelnemers per e-pos gestuur word.)
+0: 0
+1: 1
+12 hour: 12 uur
+2: 2
+24 hour: 24 uur
+3: 3
+4: 4
+5: 5
+6: 6
+7: 7
+8: 8
+9: 9
+A login must be specified.: 'n Aanmelding moet gespesifiseer word.
+A new WebCalendar account has been set up for you.: 'n Nuwe WebCalendar-rekening is vir jou opgestel.
+a XXX event may not be added to your calendar: Hierdie is 'n XXX-geleentheid en mag nie by jou kalender gevoeg word nie.
+About WebCalendar: Oor WebCalendar
+About: Oor
+Access XXX calendar: Toegang tot XXX-kalender
+access-help: Ander kan sien dat jy 'n inskrywing vir daardie datum en tyd het, maar nie die besonderhede van wat dit is nie.</li></ul>
+Access: Toegang
+Account disabled: Rekening gedeaktiveer
+Account: Rekening
+Acknowledge: Erken
+Action: Aksie
+Activity Log: Aktiwiteitslogboek
+Activity login failure: Gebruikersnaam: "XXX", IP: "JJJ".
+Add Attachment: Voeg aanhangsel by
+Add Comment: Voeg opmerking by
+Add Entry: Voeg inskrywing by
+Add Exception: Voeg uitsondering by
+Add Group: Voeg groep by
+Add Icon to Category: Voeg ikoon by kategorie
+Add Inclusion: Voeg insluiting by
+Add layer: Voeg laag by
+Add Layer: Voeg laag by
+Add N hours to: Voeg N uur by
+Add New Entry: Voeg nuwe inskrywing by
+Add New Event: Voeg nuwe gebeurtenis by
+Add new report: Voeg nuwe verslag by
+Add New Task: Voeg nuwe taak by
+Add New View: Voeg nuwe aansig by
+Add Remote Calendar: Voeg afstandskalender by
+Add Report: Voeg verslag by
+Add Resource Calendar: Voeg hulpbronkalender by
+Add to My Calendar: Voeg by My Kalender
+Add User: Voeg gebruiker by
+Add View: Voeg aansig by
+Add: Voeg by
+Add/Edit/Delete: Voeg by / wysig / skrap
+Adding/Editing Calendar Entries: Byvoeging/redigeer van kalenderinskrywings
+Additional Comments (optional): Bykomende opmerkings (opsioneel)
+Admin and owner can always add attachments if enabled.: Admin en eienaar kan altyd aanhegsels byvoeg as dit geaktiveer is.
+Admin and owner can always add comments if enabled.: Admin en eienaar kan altyd opmerkings byvoeg as dit geaktiveer is.
+Admin mode: Admin modus
+Admin of this resource calendar: Administrateur van hierdie hulpbronkalender
+Admin Settings: Admin instellings
+Admin: Admin
+Administrative Tools: Administratiewe gereedskap
+Administrator: Administrateur
+Advanced Search: Gevorderde soektog
+Afrikaans: Afrikaans
+after: na
+After: Na
+Albanian: Albanees
+All Attendees: Alle deelnemers
+All Dates: Alle datums
+All day event: Heeldag gebeurtenis
+All Percentages: Alle persentasies
+All: Almal
+Allow Access to Other Users Calendar: Laat toegang tot ander gebruikers se kalender toe
+Allow comments to events: Laat opmerkings oor gebeurtenisse toe
+Allow external file for header/script/trailer: Laat eksterne lêer toe vir kopskrif/skrif/voorskou
+Allow external users: Laat eksterne gebruikers toe
+Allow file attachments to events: Laat lêeraanhegsels by gebeurtenisse toe
+Allow File Uploads: Laat lêeroplaaie toe
+Allow HTML in Description: Laat HTML toe in beskrywing
+Allow public access: Laat publieke toegang toe
+Allow remote calendars: Laat afgeleë kalenders toe
+Allow remote publishing: Laat afgeleë publisering toe
+Allow remote subscriptions: Laat afstandintekeninge toe
+Allow remote viewing of: Laat afstandbesigtiging toe van
+Allow self-registration: Laat selfregistrasie toe
+Allow top menu: Laat topkieslys toe
+Allow URL fopen: Laat URL fopen toe (slegs vereis as afstandkalenders gebruik word)
+Allow user override: Laat gebruiker ignoreer toe
+Allow user to customize colors: Laat gebruiker toe om kleure aan te pas
+Allow user to override header/trailer: Laat gebruiker toe om opskrif/sleepwa te ignoreer
+Allow users to override conflicts: Laat gebruikers toe om konflikte te ignoreer
+Allow viewing other users calendars: Laat toe dat ander gebruiker se kalenders bekyk word
+allow you to import entries from the Palm...: Hierdie vorm sal jou toelaat om inskrywings vanaf die Palm Desktop Datumboek in te voer. Dit moet geleë wees in jou Palm-gids in <tt>datebook/datebook.dat</tt> in 'n subgids wat deur jou gebruikersnaam genoem word.
+allow-attachment-help: Laat gebruikers toe om lêeraanhegsels by geleenthede te voeg.
+allow-comments-help: Laat gebruikers toe om opmerkings by geleenthede te voeg.
+allow-external-users-help: Spesifiseer of 'n nie-kalendergebruiker by 'n geleentheid gevoeg kan word. Dit laat nie-kalendergebruikers toe om as gebeurtenisdeelnemers gelys te word.
+allow-html-description-help: As dit geaktiveer is, kan gebruikers HTML in die gebeurtenisbeskrywingsveld invoer. As dit nie geaktiveer is nie, sal die HTML-etikette ontsnap word sodat dit as gewone teks verskyn. Waarskuwing: Deur hierdie kenmerk te aktiveer, sal gebruikers na prente op ander webwerwe kan verwys.
+allow-public-access-help: Wanneer dit geaktiveer is, kan die kalender gebruik word as 'n leesalleen publieke kalender wat nie vereis dat gebruikers moet aanmeld nie.
+allow-remote-publishing-help: Spesifiseer of 'n afgeleë iCal-kliënt gebeurtenisse terug na WebCalendar kan publiseer
+allow-remote-subscriptions-help: Spesifiseer of afgeleë gebruikers op jou kalender kan inteken, sodat hulle jou gebeure in 'n iCal-geaktiveerde toepassing kan sien (soos Apple se iCal of Mozilla Calendar).
+allow-self-registration-full-help: Laat nuwe gebruikers toe om die selfregistrasieproses aanlyn te voltooi
+allow-self-registration-help: Laat nuwe gebruikers toe om hulself te registreer
+allow-view-add-help: 'n '+'-ikoon sal by aansigte ingesluit word, wat gebruikers in staat stel om geleenthede vinnig by ander gebruikers se kalenders te voeg.
+allow-view-other-help: Spesifiseer of een gebruiker 'n ander gebruiker se kalender mag bekyk.
+allow-view-subscriptions-help: Laat beperking van afstandtoegang tot privaat of vertroulike inskrywings toe
+Allowing XXX user to view other users calendar.: Laat XXX gebruiker toe om ander gebruiker se kalender te bekyk.
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Laat toe vir fyn beheer van gebruikerstoegang en -toestemmings. Gebruikers kan ook verstek en per individuele toestemming verleen indien dit deur die administrateur gemagtig word.:
+Also, please use English rather than XXX.: Gebruik asseblief ook <strong>Engels</strong> eerder as XXX.
+Also, please use English rather than: Gebruik ook asseblief eerder Engels as
+am: vm
+Another Users Calendar: 'n Ander gebruiker se kalender
+Any site can frame the content: Enige webwerf kan die inhoud raam
+Anyone: Enigiemand
+Anything imported from Palm...: Enigiets wat vanaf Palm ingevoer word, sal tydens die volgende invoer oorgeskryf word (tensy die gebeurtenisdatum verby is). Daarom moet opdaterings in die Palm Desktop gemaak word.
+app-name-help: Spesifiseer die naam van die toepassing wat in die blaaiertitelbalk vir alle bladsye en op die aanmeldbladsy sal verskyn. Die waarde wat jy hier spesifiseer, sal in die vertalingslêer opgesoek word sodat jy verskillende titels vir verskillende tale kan verskaf.
+Appearance: Voorkoms
+Application Name: Aansoek Naam
+Approve and Exit: Keur goed en verlaat
+Approve and Send: Keur goed en stuur
+Approve Selected entries?: Keur geselekteerde inskrywings goed?
+Approve Selected: Keur geselekteerde goed
+Approve this entry?: Keur hierdie inskrywing goed?
+Approve/Confirm entry: Keur inskrywing goed/bevestig
+Approve/Confirm: Keur goed/Bevestig
+Approve/Reject: Keur goed/verwerp
+Approved w/Comments by XXX.: Goedgekeur met opmerkings deur: XXX.
+Approved: Goedgekeur
+Apr: Apr
+April: April
+Arabic: Arabies
+Are you sure you want to delete events for: Is jy seker jy wil geleenthede uitvee vir
+Are you sure you want to delete this entry?: Is jy seker jy wil hierdie inskrywing uitvee?
+Are you sure you want to delete this group?: Is jy seker jy wil hierdie groep uitvee?
+Are you sure you want to delete this layer?: Is jy seker jy wil hierdie laag uitvee?
+Are you sure you want to delete this remote calendar?: Is jy seker jy wil hierdie afgeleë kalender uitvee?
+Are you sure you want to delete this report?: Is jy seker jy wil hierdie verslag uitvee?
+Are you sure you want to delete this resource calendar?: Is jy seker jy wil hierdie hulpbronkalender uitvee?
+Are you sure you want to delete this user?: Is jy seker jy wil hierdie gebruiker uitvee?
+Are you sure you want to reset preferences for XXX?: Is jy seker jy wil voorkeure vir XXX terugstel?
+Assistant mode: Assistentmodus
+Assistant: Assistent
+Assistants: Assistente
+at: by
+Attachment: Aanhegsel
+Attachments: Aanhegsels
+Aug: Aug
 August: Augustus
-September: =
-October: Oktober
-November: =
-Jan: =
-Feb: =
-Mar: Maa
-Apr: =
-May: Mei
-Jun: =
-Jul: =
-Aug: =
-Sep: =
-Oct: Okt
-Nov: =
-Sunday: Sondag
-Monday: Maandag
-Tuesday: Dinsdag
-Wednesday: Woensdag
-Thursday: Donderdag
+authenticate: SMTP-fout: kon nie staaf nie
+Auto-refresh calendars: Herlaai kalenders outomaties
+Auto-refresh time: Outo-verversingstyd
+auto-refresh-help: Wanneer dit geaktiveer is, sal die dagaansig, weekaansig, maandaansig en lys nie-goedgekeurde bladsye almal outomaties periodiek verfris.
+auto-refresh-time-help: As Outo-herlaai geaktiveer is, spesifiseer dit die tyd tussen elke herlaai.
+Availability: Beskikbaarheid
+AVAILABLE CATEGORIES: BESKIKBARE KATEGORIEë
+Back to My Calendar: Terug na My Kalender
+Back: Terug
+Background Image options: Agtergrondprentopsies
+Background Image: Agtergrond beeld
+Background Repeat: Agtergrond Herhaal
+Basque: Baskies
+Because environment variables are being used to configure WebCalendar, you cannot alter the settings on this page.  You must do this externally.: Omdat omgewingsveranderlikes gebruik word om WebCalendar op te stel, kan jy nie die instellings op hierdie bladsy verander nie. Jy moet dit ekstern doen.
+Because you have email disabled, you should remove this file.: Omdat jy e-pos gedeaktiveer het, moet jy hierdie lêer verwyder.
+before: voor
+Before: Voorheen
+bgimage-help: URL van verlangde agtergrondprent. Kan 'n relatiewe skakel wees.
+bgrepeat-help: Beheer herhaalde gedrag van agtergrondprent.
+boss-approve-event-help: Spesifiseer of die baas vereis sal word om geleenthede wat deur assistente bygevoeg is, goed te keur.
+boss: baas'
+Bottom: Onderkant
+Brief Description Length: Kort beskrywing Lengte
+Brief Description: Kort beskrywing
+brief-description-help: Dit moet 'n kort beskrywing (ongeveer 20 karakters) van die gebeurtenis verskaf. Dit sal die gebeurtenis verteenwoordig wanneer die kalender bekyk word.
+Browser Language Not Found: Blaaiertaal nie gevind nie
+Browser-defined: Blaaier-gedefinieer
+Bulgarian: Bulgaars
+Busy: Besig
+by date: volgens datum
+by day: deur die dag
+by position: volgens posisie
+by: deur
+ByDay: Teen Dag
+ByMonth: Teen Maand
+ByMonthDay: Teen Maanddag
+BySetPos: BySetPos
+bytes: grepe
+ByWeekNo: Deur WeekNo
+ByYearDay: Teen JaarDag
+Cache cleared from previous SQL!: Kas is skoongemaak van vorige SQL!
+Cache error Could not XXX file YYY.: Kasfout: Kon nie "YYY" lêer XXX nie.
+Calendar ID already in use: Kalender-ID is reeds in gebruik
+Calendar ID cannot be blank.: Kalender-ID kan nie leeg wees nie.
+Calendar ID: Kalender ID
+Calendar URL: Kalender URL
+Calendar user who created this remote calendar: Kalendergebruiker wat hierdie afgeleë kalender geskep het
+Calendar: Kalender
+Can Email: Kan e-pos
+Can Invite: Kan nooi
+Can See Time Only: Kan slegs tyd sien
+Cancel: Kanselleer
+Cannot read timezone file XXX.: Kan nie tydsonelêer lees nie: XXX.
+CAPTCHA Warning: <b>Waarskuwing:</b> Kan nie CAPTCHA gebruik sonder PHP se GD-uitbreiding nie!<br>
+Catalan: Katalaans
+Categories enabled: Kategorieë geaktiveer
+categories-enabled-help: Aktiveer ondersteuning vir gebeurteniskategorieë.
+Categories: Kategorieë
+Category Icon Upload enabled: Kategorie-ikoonoplaai geaktiveer
+Category Icon: Kategorie-ikoon
+Category Management: Kategoriebestuur
+Category name is required: Kategorienaam word vereis
+Category Name: Kategorie Naam:
+category-help: Spesifiseer die kategorie van die geleentheid.
+Category: Kategorie
+Change Password: Verander wagwoord
+Change the date and time of this entry?: Verander die datum en tyd van hierdie inskrywing?
+Changes successfully saved: Veranderinge is suksesvol gestoor
+Check All: Kontroleer Alles
+Check box to delete ALL events for a user: Merk blokkie om <b>ALLE</b> gebeurtenisse vir 'n gebruiker uit te vee
+Check for event conflicts: Kyk vir gebeurteniskonflik
+Checking for events for XXX from date YYY to date ZZZ.: Soek tans vir gebeure vir XXX vanaf datum YYY tot datum ZZZ.
+Chinese (Simplified/GB2312): Chinees (Vereenvoudig/GB2312)
+Chinese (Traditional/Big5): Chinees (Tradisioneel/Groot5)
+Clear All: Vee alles uit
+Click here to manage reports for the Public Access calendar.: Klik hier om verslae vir die Openbare Toegang-kalender te bestuur.
+Click to modify layers settings for XXX: Klik hier om die lae-instellings vir die XXX-kalender te verander.
+Click to Select: Klik om te kies
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Deur op die Wysig lae-skakel in die admin-afdeling onderaan die bladsy te klik, kan jy lae byvoeg/redigeer/vee.
+Close: Maak toe
+Color format should be RRGGBB.: Kleurformaat moet #RRGGBB wees.
+Color options: Kleur opsies
+Color: Kleur
+colors-help: Alle kleure moet gespesifiseer word in "#RRGGBB" heksadesimale formaat waar "RR" die hekswaarde vir rooi is, "GG" die hekswaarde vir groen is en "BB" die hekswaarde vir blou is.
+Colors: Kleure
+Comment: Lewer kommentaar
+Comments XXX: Opmerkings: XXX
+comments: kommentaar
+Comments: Kommentaar
+Common Trailer: Algemene sleepwa
+completed-help: Datum taak is voltooi. Slegs geaktiveer wanneer alle deelnemers persentasie gelyk is aan 100%.
+Completed: Voltooi
+Conf.: Konf.
+confidential: vertroulik
+Confidential: Vertroulik
+Conflict checking months: Konflikkontrole maande
+conflict-check-help: Kyk vir gebeurteniskonflikte (twee gebeurtenisse wat vir dieselfde tyd vir dieselfde persoon geskeduleer is). As jy dit op "Ja" stel, sal jy steeds twee gebeurtenisse op dieselfde tyd kan skeduleer nadat jy 'n waarskuwing bevestig het. As jy dit op "Nee" stel, sal geen nagaan vir konflikte gedoen word nie. Jy wil dit waarskynlik op "Ja" stel, so konflikkontrolering vind plaas.
+conflict-check-override-help: Laat gebruikers toe om gebeurteniskonflikte te ignoreer en twee of meer gebeurtenisse vir dieselfde tyd te skeduleer.
+conflict-months-help: As konflikkontrolering in plek is ("Kontroleer vir gebeurteniskonflikte" is op "Nee gestel"), spesifiseer dit hoeveel maande in die toekoms ons vir konflikte moet kyk. As jy vind dat dit lank neem om geleenthede by te voeg om te verwerk, verminder hierdie getal.
+Conflicting events: Botsende gebeure
+conflicts with the following existing calendar entries: bots met die volgende bestaande kalenderinskrywings
+connect_host: SMTP-fout: kon nie aan SMTP-gasheer koppel nie:
+Connection not yet configured: Verbinding nog nie opgestel nie
+consider enabling UAC: Jy sal dalk wil oorweeg om Gebruikerstoegangsbeheer te aktiveer om gebruikervoorregte te stel.
+cont.: vervolg.
+Content Security Policy: Inhoud sekuriteitsbeleid
+Continue: Gaan voort
+Control Panel: Beheerpaneel
+Conversion Successful: <b>Omskakeling suksesvol</b>
+cookies-note: <b>Let wel:</b> Hierdie toepassing vereis dat koekies geaktiveer word.
+Copy entry: Kopieer inskrywing
+Copy: Kopieer
+Correct: Korrek
+could not find event id XXX in database.: kon nie gebeurtenis-ID XXX in databasis vind nie.
+could not find event id: kon nie gebeurtenis-ID vind nie
+Could not find settings.php file...: Kon nie "settings.php"-lêer vind nie.<br>Kopieer asseblief "settings.php.orig" na "settings.php" en wysig vir jou werf.
+Could not find XXX defined in...: Kon nie "XXX" vind wat in jou "settings.php"-lêer gedefinieer is nie.
+Could not find XXX in DOM.: Kon nie XXX in DOM vind nie.
+Could not find XXX.: Kon nie XXX kry nie.
+Count: Tel
+Create a new layer to view this calendar.: Skep 'n nuwe laag om hierdie kalender te sien.
+Create Database Tables: Skep databasistabelle
+Create Database: Skep databasis
+Create Default Admin User: Skep verstek admin gebruiker
+Created by: Geskep deur
+Created By: Geskep deur
+Created database XXX: Geskep databasis XXX
+Credits: Krediete
+Croatian: Kroaties
+crossday-help: Indien geaktiveer, sal gebeurtenisse wat oor dae strek, op afsonderlike dae vertoon word
+Current Icons: Huidige ikone
+Current Setting: Huidige instelling
+Current User: Huidige gebruiker
+Currently in English only.: Tans slegs in Engels.
+Custom header: Gepasmaakte kopskrif
+Custom script/stylesheet: Pasgemaakte skrif/stylblad
+Custom Scripts: Pasgemaakte skrifte
+Custom trailer: Pasgemaakte sleepwa
+custom-header-help: Laat toe dat 'n gepasmaakte HTML-brokkie boaan elke bladsy ingesluit word.
+custom-script-help: Laat toe om gepasmaakte Javascript- of stylbladteks in te voer wat in die HTML "kop"-afdeling van elke bladsy ingevoeg sal word.
+custom-trailer-help: Laat toe dat 'n gepasmaakte HTML-brokkie aan die einde van elke bladsy ingesluit word.
+Czech: Tsjeggies
+Daily: Daagliks
+Danish: Deens
+data_not_accepted: SMTP-fout: Data word nie aanvaar nie
+Database Cache Directory (Optional): Databasiskasgids (opsioneel)
+Database cache directory location: Databasiskasgidsligging
+Database Debugging: Databasis ontfouting
+Database error XXX.: Databasisfout: XXX.
+Database error: Databasis fout
+Database Login: Databasis Aanmelding
+Database Name: Databasis Naam
+Database Password: Databasis wagwoord
+Database Server: Databasis bediener
+Database successfully migrated from XXX to YYY: Databasis is suksesvol van XXX na YYY gemigreer
+Database tables successfully created: Databasistabelle suksesvol geskep
+Database XXX already exists.: Databasis XXX bestaan ​​reeds.
+Date and Time: Datum en Tyd
+Date Completed: Datum voltooi
+Date format: Datum formaat
+Date range: Datumreeks
+Date Selectors position: Datum Kiesers posisie
+Date the remote calendar was last checked for an update.  The update may have been skipped if it the remote calendar had not changes since the last update.: Datum waarop die afgeleë kalender laas nagegaan is vir 'n opdatering. Die opdatering is dalk oorgeslaan as die afgeleë kalender nie verander het sedert die laaste opdatering nie.
+Date the remote calendar was last updated: Datum waarop die afgeleë kalender laas opgedateer is
+Date XXX: Datum: XXX
+date-format-help: Spesifiseer die voorkeur datumformaat.
+date-help: Spesifiseer die datum van die geleentheid.
+Date: Datum
+Day before yesterday: Eergister
+Day by Time: Dag vir Tyd
+Day template: Dag sjabloon
+Day View: Dag Uitsig
+day: dag
+Day: Dag
+days: dae
+Days: Dae
+db cache should be inaccessible: Die databasiskas moet in 'n gids wees wat nie met 'n URL verkry kan word nie.
+Db error Could not find event id XXX.: Db-fout: kon nie gebeurtenis-ID XXX vind nie.
+db_type not defined.: db_tipe nie gedefinieer nie.
+Dec: Des
+December: Desember
+Declined: Geweier
+Default admin account created with login "admin" and password "admin".: Verstek admin rekening geskep met login "admin" en wagwoord "admin".
+Default admin user password: Verstek admin gebruiker wagwoord
+Default Category: Verstek kategorie
+Default Client Timezone Selection: Verstek Kliënt Tydsone Keuse
+DEFAULT CONFIGURATION: VERSTAND KONFIGURASIE
+Default sender address: Verstek sender adres
+Default user settings: Verstek gebruiker instellings
+Default Visibility: Versteksigbaarheid
+default-category-help: Spesifiseer die kategorie waarna 'n nuwe gebeurtenis verstek moet word.
+Delete all events before: Vee alle geleenthede voor
+Delete Entries: Vee inskrywings uit
+Delete entry from calendar of XXX: Vee inskrywing uit kalender van XXX uit
+Delete entry only for this date: Vee inskrywing slegs vir hierdie datum uit
+Delete entry: Vee inskrywing uit
+Delete Events: Vee gebeurtenisse uit
+Delete Group: Vee groep uit
+Delete layer: Vee laag uit
+Delete Remote Calendar: Vee afstandskalender uit
+Delete repeating event for all dates: Vee herhalende gebeurtenis vir alle datums uit
+Delete Resource Calendar: Vee hulpbronkalender uit
+Delete Selected: Vee geselekteerde uit
+Delete User: Vee gebruiker uit
+delete: skrap
+Delete: Vee uit
+Deleted: Geskrap
+Deleting users not supported.: Die verwydering van gebruikers word nie ondersteun nie.
+Description XXX: Beskrywing: "XXX".
+Description: Beskrywing
+Detailed PHP Info: Gedetailleerde PHP inligting
+Details: Besonderhede
+Disable Access field: Deaktiveer toegangsveld
+Disable Cross-Day Events: Deaktiveer kruisdaggebeurtenisse
+Disable Layers: Deaktiveer lae
+Disable Location field: Deaktiveer liggingveld
+Disable Participants field: Deaktiveer Deelnemers-veld
+Disable Pop-Ups: Deaktiveer opspringers
+Disable Priority field: Deaktiveer Prioriteit-veld
+Disable Repeating field: Deaktiveer herhalende veld
+Disable URL field: Deaktiveer URL-veld
+disable-access-field-help: As u "Ja" kies, sal die "Toegang"-veld van gebeurtenisinligtingbladsye verwyder word, wat 'n eenvoudiger koppelvlak vir beginners bied.
+disable-location-field-help: As jy "Ja" kies, sal die "Ligging"-veld van gebeurtenisinligtingbladsye verwyder word
+disable-participants-field-help: As u "Ja" kies, sal die "Deelnemers"-veld van gebeurtenisinligtingbladsye verwyder word, wat gebruikers verhoed om ander gebruikers by hul gebeurtenisse te voeg. As jy hierdie opsie aktiveer, wil jy dalk ook die veld "Laat toe om ander gebruiker se kalenders te bekyk" deaktiveer.
+disable-popups-help: Deaktiveer opspringers vanaf kalenderaansigte
+disable-priority-field-help: As u "Ja" kies, sal die "Prioriteit"-veld van gebeurtenisinligtingbladsye verwyder word, wat 'n eenvoudiger koppelvlak vir beginners bied.
+disable-repeating-field-help: As jy "Ja" kies, sal die "Herhaal"-veld verwyder word wanneer gebeurtenisse bygevoeg word. Dit sal 'n eenvoudiger koppelvlak vir beginners bied.
+disable-url-field-help: As jy "Ja" kies, sal die "URL"-veld van gebeurtenisinligtingbladsye verwyder word
+Disabled (recommended): Gedeaktiveer (aanbeveel)
+Disabled: Gestrem
+Disabling: Deaktiveer
+Display 00 minutes always: Wys altyd 00 minute
+Display all days in month view: Wys alle dae in maandaansig
+Display category icons: Vertoon kategorie-ikone
+Display Common Use Date/Times as GMT: Vertoon Algemene Gebruik Datum/Tye as GMT
+Display days with events in bold in month and year views: Vertoon dae met gebeure in vetdruk in maand- en jaaraansigte
+Display days with events in bold in year view: Vertoon dae met gebeurtenisse in vetdruk in jaaraansig
+Display description in printer day view: Vertoon beskrywing in drukker dagaansig
+Display end times on calendars: Vertoon eindtye op kalenders
+Display event popups: Wys gebeurtenis-opspringers
+Display if created by Assistant: Vertoon as dit deur Assistent geskep is
+Display in participants list at: Vertoon in deelnemerslys by
+Display layers: Vertoon lae
+Display links to events: Vertoon skakels na gebeurtenisse
+Display long day names: Vertoon lang dag name
+Display Lunar Phases in month view: Vertoon maanfases in maandaansig
+Display Participants in popup: Vertoon Deelnemers in opspringer
+Display Site Extras in popup: Wys werfekstras in opspringer
+Display small months: Vertoon klein maande
+Display small task list: Vertoon klein taaklys
+Display SQL: Wys SQL
+Display tasks in Calendars: Vertoon take in kalenders
+Display unapproved: Vertoon nie goedgekeur nie
+Display week number: Wys weeknommer
+Display weekends in week view: Vertoon naweke in weekaansig
+Display weekends: Vertoon naweke
+display_byproxy-help: Vertoon die ware skepper op view_entry bladsy
+display-alldays-help: Vertoon vorige en volgende maande dae in maandaansigte, en vul alle selle.
+display-desc-print-day-help: Sluit gebeurtenisbeskrywings in in drukkervriendelike weergawe van dagaansig.
+display-end-times-help: Vertoon gebeurtenis eindtye as tydgebeure gebeurtenis
+display-general-use-gmt-help: As dit geaktiveer is, word algemene datums/tye as GMT vertoon
+display-long-daynames-help: As dit geaktiveer is, word langdagname vertoon
+display-minutes-help: Indien geaktiveer, sal minute wat eindig met :00 altyd vertoon word
+display-sm_month-help: Indien geaktiveer, vertoon klein maande in maandaansigte
+display-tasks-help: Vertoon klein taakvenster op maand- en dagkalender
+display-tasks-in-grid-help: Vertoon take in kalenders saam met gebeurtenisse
+display-unapproved-help: Spesifiseer of nie-goedgekeurde geleenthede in jou kalender vertoon word.<br> As dit op "Ja" gestel is, sal nie-goedgekeurde geleenthede in jou kalender vertoon word (in 'n ander tekskleur).<br> As dit op "Nee gestel is", dan nie-goedgekeurde geleenthede moet goedgekeur word voordat dit in jou kalender vertoon word.
+display-week-number-help: Spesifiseer of die weeknommer (1-52) in die maandaansig en die weekaansig vertoon moet word.
+display-week-starts-on: Spesifiseer die dag van die week waarop die week begin. As Maandag gespesifiseer word, sal weeknommers ISO-weeknommers wees.
+display-weekend-starts-on: Stel die dag van die week vir naweke om te begin
+display-weekends-help: Sluit naweke in wanneer jy 'n week kyk.
+Do you want to add this entry to your calendar?: Wil jy hierdie inskrywing by jou kalender voeg?
+Document background: Dokument agtergrond
+Document text: Dokument teks
+Document title: Dokument titel
+Documentation: Dokumentasie
+Double-click on empty cell to add new entry: Dubbelklik op leë sel om nuwe inskrywing by te voeg.
+Due Date: Sperdatum
+Due Time: Betyds
+Due: Verskuldig
+Duplicate Name XXX: Duplikaatnaam: "XXX".
+Duplicates: Duplikate
+duration-help: Spesifiseer die duur (in ure;minute) van die geleentheid. <em>Hierdie veld kan leeg gelaat word.</em>
+Duration: Duur
+Dutch: Nederlands
+E-mail address: E-pos adres
+Edit Categories: Wysig kategorieë
+Edit Custom Header: Wysig pasgemaakte kopskrif
+Edit Custom Script/Stylesheet: Wysig pasgemaakte skrip/stylblad
+Edit Custom Trailer: Wysig pasgemaakte sleepwa
+Edit entry for this date: Wysig inskrywing vir hierdie datum
+Edit entry: Wysig inskrywing
+Edit Entry: Wysig inskrywing
+Edit Event: Wysig gebeurtenis
+Edit Group: Wysig groep
+Edit layer: Wysig laag
+Edit Layer: Wysig laag
+Edit repeating entry for all dates: Wysig herhalende inskrywing vir alle datums
+Edit Report: Wysig verslag
+Edit User: Wysig gebruiker
+Edit View: Wysig Aansig
+Edit: Wysig
+Email address already exists.: E-posadres bestaan ​​reeds.
+Email address cannot be blank.: E-posadres kan nie leeg wees nie.
+Email address XXX already exists.: E-posadres "XXX" bestaan ​​reeds.
+Email all participants: E-pos alle deelnemers
+Email cannot be blank.: E-pos kan nie leeg wees nie.
+Email enabled: E-pos geaktiveer
+Email format preference: E-pos formaat voorkeur
+Email Mailer: E-pos Mailer
+Email me event notification: E-pos my gebeurteniskennisgewing
+email-boss-notifications-help: Spesifiseer of base e-posse as gebeurteniskennisgewings ontvang.
+email-default-sender: Spesifiseer die e-posadres wat as die sender gespesifiseer moet word wanneer aanmanings uitgestuur word.
+email-enabled-help: Skakel alle stuur van e-pos aan of af vir kennisgewings en onthounotas. Stel op "nee", as jou bediener nie behoorlik opgestel is om pos te stuur nie.
+email-event-added: Spesifiseer of e-poskennisgewings gestuur moet word wanneer 'n gebeurtenis by jou kalender gevoeg word.
+email-event-create: Spesifiseer of die skepper van inskrywings 'n e-pos sal ontvang
+email-event-deleted: Spesifiseer of e-poskennisgewings gestuur moet word wanneer 'n gebeurtenis van jou kalender verwyder word.
+email-event-rejected: Spesifiseer of e-poskennisgewings gestuur moet word of nie wanneer 'n deelnemer 'n geleentheid wat op jou kalender is, verwerp.
+email-event-reminders-help: Spesifiseer of gebeurtenisherinneringe gestuur moet word of nie.
+email-event-updated: Spesifiseer of e-poskennisgewings gestuur moet word wanneer 'n gebeurtenis op jou kalender opgedateer word.
+email-format: Spesifiseer voorkeur vir HTML of gewone teksboodskappe
+email-include-ics: Sluit 'n iCalendar ICS-lêer in om 'n e-posboodskap te stuur
+email-mailer: Kies e-postipe (SMTP, PHP-pos, stuurpos)
+email-smtp-auth: Gebruik SMTP-verifikasie
+email-smtp-host: Gasheernaam(e) van SMTP-bediener(s) geskei deur kommas
+email-smtp-password: SMTP-wagwoord as u verifikasie gebruik
+email-smtp-port: SMTP-poortnommer (gewoonlik 25)
+email-smtp-tls: Gebruik TLS om die SMTP-verbinding te beveilig
+email-smtp-username: SMTP-gebruikersnaam as jy stawing gebruik
+Email: E-pos
+Emails Will Not Be Sent: E-posse sal nie gestuur word nie
+Enable FreeBusy publishing: Aktiveer FreeBusy-publisering
+Enable gradient images for background colors: Aktiveer gradiëntbeelde vir agtergrondkleure
+Enable layers: Aktiveer lae
+Enable RSS feed: Aktiveer RSS-feed
+enable-external-header-help: Laat toe dat die pasgemaakte sleepwa vanaf 'n eksterne lêer gelaai word
+enable-gradient-help: Gebruik gradiëntkleure vir selagtergronde.
+Enabled: Geaktiveer
+Enabling allows this remote calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.: Aktivering laat toe dat hierdie afgeleë kalender as 'n publieke kalender gebruik word, en 'n skakel direk daarna sal op die aanmeldbladsy vertoon word.
+Enabling allows this resource calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.: Aktivering laat toe dat hierdie hulpbronkalender as 'n publieke kalender gebruik word, en 'n skakel direk daarna sal op die aanmeldbladsy vertoon word.
+Enabling: Aktiveer
+encoding: Onbekende enkodering:
+End date: Einddatum
+End Time: Eindtyd
+end-time-help: Spesifiseer die tyd waarop die geleentheid na verwagting sal eindig.
+end: einde
+End/Due: Einde / Verval
+Ending: Einde
+English-US: Engels-VS
+English: Engels
+Enter % for all entries: Voer % in vir alle inskrywings
+Enter a hint to remember your password: Voer 'n wenk in om jou wagwoord te onthou
+Enter login for single user mode.: Voer aanmelding vir enkelgebruikermodus in.
+Enter your passphrase again: Voer weer jou wagwoordfrase in
+Enter your passphrase: Voer jou wagwoordfrase in
+Entries created in the Palm Desktop...: Inskrywings geskep in die Palm Desktop wat nie HotSync'd is nie
+Entries older than the current date: Inskrywings ouer as die huidige datum
+entries: inskrywings
+ENTRY CATEGORIES: INSKRYWINGSKATEGORIEë
+Entry interval: Toegangsinterval
+entry-interval-help: Stel minuut-interval in wanneer toegangstye gewysig word
+Environment variables: Omgewingsveranderlikes
+Error adding event XXX.: Kon nie geleentheid byvoeg nie: XXX.
+Error approving event XXX.: Kon nie geleentheid goedkeur nie: XXX.
+Error connecting to database XXX: Kon nie aan databasis XXX koppel nie
+Error connecting to database: Kon nie aan databasis koppel nie
+Error Could not find event id XXX in database.: Fout: Kon nie gebeurtenis-ID XXX in databasis vind nie.
+Error deleting event XXX.: Kon nie gebeurtenis uitvee nie: XXX.
+Error deleting palm events from webcalendar.: Kon nie palmgebeurtenisse van webkalender uitvee nie.
+Error Email reminders disabled for user XXX.: Fout: E-posherinnerings gedeaktiveer vir gebruiker "XXX".
+Error executing query.: Kon nie navraag uitvoer nie.
+Error opening cache dir XXX.: Kon nie kasaanwyser "XXX" oopmaak nie.
+Error rejecting event XXX.: Kon nie gebeurtenis verwerp nie: XXX.
+Error TIME_SLOTS undefined!: Fout: TIME_SLOTS ongedefinieerd!
+Error Type not set for activity log!: Fout: Tipe nie gestel vir aktiwiteitlogboek nie!
+Error updating table XXX: Kon nie tabel "XXX" opdateer nie: YYY.
+Error you must specify a Single-User Login: Fout: Jy moet 'n\nEnkelgebruikeraanmelding spesifiseer.
+Error: Fout
+Errors: Foute
+Estonian: Estnies
+Event approved: Geleentheid goedgekeur
+Event created: Gebeurtenis geskep
+Event deleted: Gebeurtenis is uitgevee
+Event id=XXX YYY already sent.: Gebeurtenis-ID=XXX "YYY" reeds gestuur.
+Event id=XXX YYY at ZZZ on AAA.: Gebeurtenis-ID=XXX "YYY" by ZZZ op AAA.
+Event Imported: Gebeurtenis ingevoer
+Event popup background: Gebeurtenis pop-up agtergrond
+Event popup text: Gebeurtenis pop-up teks
+Event rejected by participant: Gebeurtenis verwerp deur deelnemer
+Event rejected: Gebeurtenis is afgekeur
+Event reminders: Gebeurtenisherinnerings
+Event template: Gebeurtenis sjabloon
+Event that I create: Gebeurtenis wat ek skep
+Event time is XXX.: Gebeurtenistyd is: XXX.
+Event updated: Geleentheid is opgedateer
+Event XXX is already on your calendar.: Geleentheid XXX is reeds op jou kalender.
+event: gebeurtenis
+Event: Gebeurtenis
+Events added to my calendar: Gebeurtenisse is by my kalender gevoeg
+events added: gebeure bygevoeg
+events deleted: gebeure uitgevee
+Events from prior import marked as deleted: Gebeurtenisse van vorige invoer gemerk as uitgevee
+Events removed from my calendar: Gebeurtenisse verwyder uit my kalender
+Events successfully imported: Geleenthede is suksesvol ingevoer
+Events updated on my calendar: Gebeurtenisse opgedateer op my kalender
+Events: Gebeurtenisse
+Every: Elke
+exceeds limit of XXX events per day: oorskry limiet van XXX gebeurtenisse per dag
+Exclude private records: Sluit privaat rekords uit
+Exclusion Dates: Uitsluitingsdatums
+Exclusions: Uitsluitings
+execute: Kon nie uitvoer nie:
+Expert Mode: Deskundige modus
+Export all dates: Voer alle datums uit
+export format not defined or incorrect.: uitvoerformaat nie gedefinieer nie of verkeerd.
+Export format: Uitvoer formaat
+Export this entry to: Voer hierdie inskrywing uit na
+Export: Uitvoer
+External Participants: Eksterne Deelnemers
+External User: Eksterne gebruiker
+External users can receive email notifications: Eksterne gebruikers kan e-poskennisgewings ontvang
+External users can receive email reminders: Eksterne gebruikers kan e-posherinnerings ontvang
+external-can-receive-notification-help: Wanneer eksterne gebruikers geaktiveer is en e-posgebruik geaktiveer is, kan eksterne gebruikers e-poskennisgewings ontvang wanneer die gebeurtenis bygevoeg, opgedateer of uitgevee word (indien die eksterne gebruiker se e-posadres verskaf word).
+external-can-receive-reminder-help: Wanneer eksterne gebruikers geaktiveer is en e-posgebruik geaktiveer is, kan eksterne gebruikers e-posherinnerings ontvang (indien die eksterne gebruiker se e-posadres verskaf word).
+external-participants-help: Spesifiseer 'n lys deelnemers vir die geleentheid wat nie kalendergebruikers is nie. Die gebruikers moet een per reël gelys word en kan 'n e-posadres insluit. As 'n e-posadres gespesifiseer word, is die gebruiker in aanmerking om kennisgewings en aanmanings te ontvang.
+Failed to connect to the database. Please check your settings.: Kon nie aan die databasis koppel nie. Gaan asseblief jou instellings na.
+Fatal Error: Noodlottige fout
+Feb: Feb
+February: Februarie
+File exists XXX: Lêer bestaan: "XXX"
+File is not a GIF or PNG image: Lêer is nie 'n GIF- of PNG-prent nie
+File location XXX: Lêerligging: "XXX"
+File permissions XXX: Lêertoestemmings: XXX
+File size exceeds maximum.: Lêergrootte oorskry maksimum.
+File type does not match Import Format: Lêertipe stem nie ooreen met invoerformaat nie
+File uploads are required to upload category icons: Lêeroplaaie word vereis om kategorie-ikone op te laai
+file_access: Kon nie toegang tot lêer kry nie:
+file_open: Lêerfout Kon nie lêer oopmaak nie:
+Filter by Date: Filtreer volgens datum
+Find Name: Soek Naam
+Finished: Klaar
+Finnish: Fins
+First and last names cannot both be blank.: Voor- en van kan nie albei leeg wees nie.
+First Name: Voornaam
+First Quarter Moon: Eerste Kwartmaan
+Firstname, Lastname: Voornaam, Van
+fonts-help: Spesifiseer 'n lys stelsellettertipes om te gebruik (soos "Arial, Helvetica")
+Fonts: Lettertipes
+For More Information...: Vir meer inligting...
+Forever: Vir altyd
+Found XXX events in time range.: XXX geleenthede in tydreeks gevind.
+FR: FR
+freebusy-enabled-help: Spesifiseer of 'n gebruiker se beskikbare tyd verkry kan word deur die iCal FreeBusy-standaard te gebruik.
+freebusy-url-help: Die URL vir toegang tot die gebruiker se FreeBusy-lys
+French: Frans
+Frequency: Frekwensie
+Fri: Vr
 Friday: Vrydag
+from your boss calendar: vanaf jou baas se kalender
+from_failed: Die volgende van-adres het misluk:
+From: Van
+Full Description: Volledige beskrywing
+Full Moon: Volmaan
+Full Path (no backslashes): Volledige pad (geen skuinsstreepies nie)
+full-description-help: Dit moet besonderhede van die geleentheid voltooi. Hierdie inligting kan gesien word wanneer 'n gebruiker die gebeurtenis bekyk.
+Galician: Galisies
+GD module required for gradient background colors: GD-module benodig vir gradiënt-agtergrondkleure
+GD Module: GD Module
+Generate printer-friendly version: Genereer drukkervriendelike weergawe
+German: Duits
+Getting unapproved for user XXX.: Word nie goedgekeur vir gebruiker "XXX".
+GIF or PNG 6kb max: GIF of PNG 6kb maksimum
+Global Categories cannot be changed.: Globale kategorieë kan nie verander word nie.
+Global Category: Globale Kategorie
+Global: Wêreldwyd
+Go to: Gaan na
+Go: Gaan
+gradient-colors: Indien geaktiveer word gradiëntkleure gebruik. Dit kan prestasie grootliks beïnvloed.
+Grant This User Access to My Calendar: Gee hierdie gebruiker toegang tot my kalender
+Greek: Grieks
+Group Name cannot be blank.: Groepnaam kan nie leeg wees nie.
+Group name: Groepnaam
+Group successfully added.: Groep suksesvol bygevoeg.
+Group successfully deleted.: Groep suksesvol uitgevee.
+Group successfully updated.: Groep suksesvol opgedateer.
+Groups enabled: Groepe geaktiveer
+groups-enabled-help: Aktiveer groepondersteuning, sodat gebruikers gebruikers volgens groepe kan kies.
+Groups: Groepe
+Hebrew: Hebreeus
+Hello, XXX.: Hallo, XXX.
+Help Contents: Hulp inhoud
+Help Index: Hulp-indeks
+Help: Help
+Hide activity log: Versteek aktiwiteitlogboek
+Hide: Versteek
+High: Hoog
+Holo (Taiwanese): Holo (Taiwanees)
+Home URL: Tuis-URL
+home-url-help: Spesifiseer die tuis-URL vir die toepassing. Dit kan absoluut of relatief wees
+Home: Tuis
+hour ahead of you: uur voor jou
+hour behind you: uur agter jou
+hour: uur
+hours ahead of you: ure voor jou
+hours behind you: ure agter jou
+hours: ure
+HTML: HTML
+Hungarian: Hongaars
+I want to approve events: Ek wil geleenthede goedkeur
+Icelandic: Yslands
+icon_upload-enabled-help: As dit geaktiveer is, kan gebruikers kategorie-ikone oplaai
+If checked, events that are duplicates of your events will be shown.: Indien gemerk, sal gebeurtenisse wat duplikate van jou gebeurtenisse is, gewys word.
+If disabled, this user cannot see you in the participants list.: Indien gedeaktiveer, kan hierdie gebruiker jou nie in die deelnemerslys sien nie.
+If disabled, this user cannot send you emails.: Indien gedeaktiveer, kan hierdie gebruiker nie vir jou e-posse stuur nie.
+If enabled, this user cannot view the details of any of your entries.: As dit geaktiveer is, kan hierdie gebruiker nie die besonderhede van enige van jou inskrywings sien nie.
+If you received this email in error: As jy hierdie e-pos verkeerdelik ontvang het en nie vir 'n WebCalendar-rekening aangesluit het nie, kan jy hierdie kennisgewing ignoreer, of met 'n kort nota antwoord
+If your installation is accessible to anyone untrusted, you should secure the installation pages by restricting access. The easiest way to do this is by providing a passphrase.: As jou installasie toeganklik is vir enigiemand wat nie vertrou word nie, moet jy die installasiebladsye beveilig deur toegang te beperk. Die maklikste manier om dit te doen is deur 'n wagwoordfrase te verskaf.
+Illegal characters in login XXX.: Onwettige karakters in login <span class="tt">XXX</span>.
+Import format: Voer formaat in
+import from file: invoer vanaf lêer
+Import Results: Voer resultate in
+Import: Invoer
+Include add event link in views: Sluit voeg gebeurtenisskakel by aansigte in
+Include all layers: Sluit alle lae in
+Include deleted entries: Sluit verwyderde inskrywings in
+Include empty dates: Sluit leë datums in
+Include iCalendar attachments: Sluit iCalendar-aanhangsels in
+Include link in menu: Sluit skakel in spyskaart in
+Include Path: Sluit pad in
+Include previous/next links: Sluit vorige/volgende skakels in
+Include standard header/trailer: Sluit standaard opskrif/sleepwa in
+Include: Sluit in
+Inclusion Dates: Insluitingsdatums
+Inclusions: Insluitings
+Incomplete settings.php file...: Onvolledige instellings.php-lêer...
+incorrect password: verkeerde wagwoord
+Incorrect: Verkeerd
+Index: Indeks
+Indonesian: Indonesies
+Info: Inligting
+Install password saved.  Login with password to continue.: Installeer wagwoord gestoor. Meld aan met wagwoord om voort te gaan.
+Install/Upgrade process is now complete.: Die installering/opgraderingsproses is nou voltooi.
+Installation passphrase: Installasie wagfrase
+Installed: Geïnstalleer
+instantiate: Kon nie posfunksie instansieer nie
+Interval: Interval
+Invalid Application Settings: Ongeldige toepassinginstellings
+Invalid blob id: Ongeldige blob-ID
+Invalid characters in login: Ongeldige karakters in aanmelding.
+Invalid color for document background.: Ongeldige kleur vir dokumentagtergrond.
+Invalid color for document title.: Ongeldige kleur vir dokumenttitel.
+Invalid color for event popup background.: Ongeldige kleur vir gebeurtenis-opspring-agtergrond.
+Invalid color for event popup text.: Ongeldige kleur vir gebeurtenisopspringteks.
+Invalid color for table cell background for today.: Ongeldige kleur vir tafelsel-agtergrond vir vandag.
+Invalid color for table cell background.: Ongeldige kleur vir tabelsel-agtergrond.
+Invalid color for table grid.: Ongeldige kleur vir tabelrooster.
+Invalid color for table header background.: Ongeldige kleur vir tabelkop-agtergrond.
+Invalid color for table header text.: Ongeldige kleur vir tabelkopteks.
+Invalid color: Ongeldige kleur
+Invalid Color: Ongeldige kleur
+Invalid data format for: Ongeldige dataformaat vir
+Invalid Date: Ongeldige datum
+invalid db_type XXX: ongeldige db_tipe XXX
+Invalid email address: Ongeldige e-posadres
+Invalid entry id XXX.: Ongeldige inskrywing-ID: "XXX".
+Invalid entry id.: Ongeldige inskrywing-ID.
+Invalid Event Date: Ongeldige gebeurtenisdatum
+Invalid first name.: Ongeldige voornaam.:
+Invalid form request: Ongeldige vormversoek
+Invalid function id: Ongeldige funksie-ID
+Invalid last name.: Ongeldige van.
+Invalid login: Ongeldige aanmelding
+Invalid passphrase.: Ongeldige wagwoordfrase.
+Invalid report id XXX.: Ongeldige verslag-ID: "XXX".
+Invalid report id.: Ongeldige verslag-ID.
+Invalid setting name XXX.: Ongeldige instellingnaam "XXX".
+Invalid test connection request: Ongeldige toetsverbindingversoek
+Invalid user login: Ongeldige gebruikeraanmelding
+Invalid work hours.: Ongeldige werksure.
+is in a different timezone than you are. Currently: is in 'n ander tydsone as wat jy is. Tans
+ISO Language Code: af
+Italian: Italiaans
+item XXX should not be writable: Die volgende item moet nie skryfbaar wees nie:<br><span class="tt">XXX</span>
+Jan: Jan
+January: Januarie
+Japanese: Japannese
+Journal approved: Joernaal goedgekeur
+Journal created: Joernaal geskep
+Journal deleted: Joernaal uitgevee
+Journal rejected: Joernaal verwerp
+Journal updated: Joernaal opgedateer
+journal: joernaal
+Journals: Joernale
+JSON error: JSON-fout
+Jul: Jul
+July: Julie
+Jun: Jun
+June: Junie
+kb: kb
+Keywords: Sleutelwoorde
+Korean: Koreaans
+LANGUAGE DEFINED: TAAL GEDEFINEERD
+language-help: Spesifiseer watter taal om te gebruik.
+Language: Taal
+Last Checked: Laas nagegaan
+Last month: Verlede maand
+Last Name: Van
+Last Quarter Moon: Laaste Kwartmaan
+Last two weeks: Laaste twee weke
+Last Updated: Laas opgedateer
+Last week and this week: Verlede week en hierdie week
+Last week: Verlede week
+Last year: Verlede jaar
+Lastname, Firstname: Van, Voornaam
+Launch WebCalendar: Begin WebCalendar
+Layer: Laag
+Layers are currently disabled.: Lae is tans <strong>gedeaktiveer</strong>.
+Layers are currently enabled.: Lae is tans <strong>geaktiveer</strong>.
+Layers are useful for displaying...: Lae is nuttig om ander gebruikers se gebeure in jou eie kalender te vertoon. Jy kan die gebruiker spesifiseer en die kleur waarin die gebeure vertoon sal word.
+Layers: Lae
+Limit number of timed events per day: Beperk die aantal tydgebeure per dag
+limit-appts-help: Laat die stelseladministrateur toe om 'n stelselwye limiet te stel op die aantal afsprake wat 'n enkele gebruiker op enige enkele dag kan hê.
+limit-appts-number-help: Spesifiseer die maksimum aantal tydgebeurtenisse wat 'n gebruiker in 'n enkele dag kan hê.
+list potential security issues: Die inligting hieronder lys potensiële probleme met jou WebCalendar-installasie wat gewysig kan word om jou installasie veiliger te maak.
+Lithuanian: Litaus
+location-help: Geleentheid ligging
+Location: Ligging
+Login: Teken in
+Logout: Teken uit
+Low: Laag
+lunar-help: As dit geaktiveer is, sal klein ikone vertoon wat die maanfases elke maand voorstel
+mailer_not_supported: e-pos word nie ondersteun nie
+Make New Category: Maak nuwe kategorie
+Manage calendar of: Bestuur kalender van
+Manage Calendar of: Bestuur Kalender van
+Manage Preferences for Resource, Remote and Public Calendars: Bestuur voorkeure vir hulpbron-, afstand- en publieke kalenders
+Manage Reports: Bestuur verslae
+Manage Views: Bestuur aansigte
+Manual: Handleiding
+Manually entering color values: Handmatig invoer van kleurwaardes
+Mar: Mrt
+March: Maart
+match found: pasmaat gevind
+matches found: passings gevind
+Maximum timed events per day: Maksimum tydgebeure per dag
+May_: Mei
+May: Mei
+Mb: Mb
+Medium: Medium
+Mins Before XXX.: Minute voor: XXX.
+minute: minuut
+minutes: minute
+Miscellaneous: Diverse
+MO: MO
+Mode selection (Production or Development). Default is Production. Development mode will enable verbose errors in the browser.: Modekeuse (Produksie of Ontwikkeling). Verstek is Produksie. Ontwikkelingsmodus sal verbose foute in die blaaier aktiveer.
+Modified since: Gewysig sedert
+Mon: Ma
+Monday: Maandag
+Month (on same calendar): Maand (op dieselfde kalender)
+Month (side by side): Maand (naas mekaar)
+Month (Timebar): Maand (tydbalk)
+Month before last: Voorverlede maand
+Month Days: Maand Dae
+Month View: Maandaansig
+month: maand
+Month: Maand
+Monthly (by date): Maandeliks (volgens datum)
+Monthly (by day): Maandeliks (deur dag)
+Monthly (by position): Maandeliks (volgens posisie)
+Monthly: Maandeliks
+Months: Maande
+more: meer
+My Calendar: My Kalender
+My event text: My gebeurtenis teks
+My Profile: My profiel
+My Reports: My verslae
+My Views: My sienings
+Name is required: Naam word vereis
+Name: Naam
+Needs-Action: Behoeftes-aksie
+New Entry: Nuwe inskrywing
+New group name: Nuwe groepnaam
+New ID: Nuwe ID
+New Moon: Nuwe Maan
+New Search: Nuwe soektog
+New user (self registration): Nuwe gebruiker (selfregistrasie)
+New user via email (self registration): Nuwe gebruiker via e-pos (selfregistrasie)
+New user via email.: Nuwe gebruiker via e-pos.
+New user via self-registration.: Nuwe gebruiker via selfregistrasie.
+New username: Nuwe gebruikersnaam
+Next 14 days: Volgende 14 dae
+Next 180 days: Volgende 180 dae
+Next 30 days: Volgende 30 dae
+Next 365 days: Volgende 365 dae
+Next 60 days: Volgende 60 dae
+Next 90 days: Volgende 90 dae
+Next month: Volgende maand
+Next week and week after: Volgende week en week daarna
+Next week: Volgende week
+Next year: Volgende jaar
+Next: Volgende
+No event id specified.: Geen gebeurtenis-ID gespesifiseer nie.
+No file: Geen lêer nie
+No login required for HTTP authentication.: Geen aanmelding nodig vir HTTP-verifikasie nie.
+No login required for single-user mode.: Geen aanmelding nodig vir enkelgebruikermodus nie.
+No matches found: Geen passings gevind nie
+No participants found for event id XXX.: Geen deelnemers gevind vir geleentheid-ID: XXX nie.
+No Remote Calendars found: Geen afstandskalenders gevind nie
+No site can frame the content: Geen webwerf kan die inhoud raam nie
+No such nonuser calendar XXX.: Geen so 'n hulpbronkalender nie: "XXX".
+No such nonuser calendar: Geen so 'n hulpbronkalender nie
+No such report id XXX.: Geen sodanige verslag-ID: "XXX" nie.
+no such user: nie so 'n gebruiker nie
+No unapproved entries for XXX.: Geen ongoedgekeurde inskrywings vir: "XXX".
+No user specified.: Geen gebruiker gespesifiseer nie.
+No users for this view.: Geen gebruikers vir hierdie aansig nie.
+No: Nee
+None: Geen
+NonUser Calendars: Nie-gebruiker-kalenders
+Nonuser enabled: Hulpbronkalenders geaktiveer
+Nonuser list: Vertoon in deelnemerslys by
+nonuser-enabled-help: As dit geaktiveer is, sal admins die opsie hê om nie-gebruiker-kalenders by te voeg
+nonuser-list-help: Waar om die hulpbronkalenders in die deelnemerslys te vertoon
+Nonuser: Hulpbron kalenders
+Norwegian: Noors
+Not authorized (not admin).: Nie gemagtig nie (nie admin nie).
+Not authorized: Nie gemagtig nie
+Not available: Nie beskikbaar nie
+Not found: Nie gevind nie
+Not yet registered? Register here!: Nog nie geregistreer nie? Registreer hier!
+Notification sent: Kennisgewing gestuur
+Notification: Kennisgewing
+Nov: Nov
+November: November
+Number of events currently in the remote calendar: Aantal gebeurtenisse tans in die afgeleë kalender
+Number of events currently in the resource calendar: Aantal gebeurtenisse tans in die hulpbronkalender
+Number of site_extras XXX.: Aantal werf_ekstras: XXX.
+Number of times: Aantal kere
+Oct: Okt
+October: Oktober
+OK: OK
+on: aan
+Once the installation is complete, you will need not this passphrase again until you want to upgrade your installation. Please take note of your password because there is no way to recover it.: Sodra die installasie voltooi is, sal jy nie weer hierdie wagwoordfrase nodig hê nie totdat jy jou installasie wil opgradeer. Neem asseblief kennis van jou wagwoord, want daar is geen manier om dit te herstel nie.
+Other: Ander
+Override event name/description for public access: Ignoreer gebeurtenisnaam/beskrywing vir publieke toegang
+Overwrite Prior Import: Oorskryf vorige invoer
+Page template: Bladsy sjabloon
+Page: Bladsy
+Palm Desktop: Palm Desktop
+Palm Pilot: Palm Pilot
+Participant: Deelnemer
+participants-help: Lys die deelnemers van hierdie inskrywing.
+Participants: Deelnemers
+Password (again): Wagwoord (weereens):
+Password hint: Wagwoordwenk
+Password successfully updated.: Wagwoord suksesvol opgedateer.
+Password: Wagwoord
+Past: Verlede
+Percent Complete: Persent voltooi
+percent-help: Taakvoltooiingspersentasie vir hierdie gebruiker
+Percentage Complete: Persentasie voltooi
+PHP Info: PHP inligting
+PHP Settings XXX: PHP-instellings: "XXX"
+PHP Version: PHP weergawe
+Plain Text: Gewone teks
+Please add a participant: Voeg asseblief 'n deelnemer by
+Please include all the information below when reporting a bug.: Sluit asseblief al die inligting hieronder in wanneer u 'n fout rapporteer.
+Please look on XXX to accept or reject this appointment.: Kyk asseblief op XXX om hierdie afspraak te aanvaar of te verwerp.
+Please look on XXX to view this appointment.: Kyk asseblief op XXX om hierdie afspraak te sien.
+Please visit XXX to log in and start using your account!: Besoek asseblief "XXX" om aan te meld en jou rekening te begin gebruik!
+pm: nm
+Polish: Pools
+popup-includes-participants-help: As dit geaktiveer is, word deelnemers in gebeurtenisopspringers vertoon.
+popup-includes-siteextras-help: As dit geaktiveer is, laat pasgemaakte gebeurtenisvelde opstelling toe in die site_extras.php-lêer sal in gebeurtenis-opspringers vertoon word.
+Popups: Opspringers
+Portuguese: Portugees
+Portuguese/Brazil: Portugees/Brasilië
+Position: Posisie
+Preferences reset to system defaults.: Voorkeure teruggestel na stelsel verstek.
+Preferences: Voorkeure
+Preferred view: Voorkeur aansig
+preferred-event-visibility: Versteksigbaarheid vir nuwe geleenthede
+preferred-view-help: Spesifiseer die verstekaansig (Dag, Week, Maand of Jaar).
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Druk die skakel deaktiveer lae in die admin-afdeling onderaan die bladsy om lae af te skakel.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Druk die Aktiveer lae-skakel in die admin-afdeling onderaan die bladsy om lae aan te skakel.
+Preview delete: Voorskou uitvee
+Preview: Voorskou
+Previous: Vorige
+Printer Friendly: Drukkervriendelik
+priority-help: Spesifiseer die prioriteit van die geleentheid. Hoë prioriteit gebeurtenisse sal in vetdruk vertoon word.
+Priority: Prioriteit
+private: privaat
+Private: Privaat
+Program Error No XXX specified!: Programfout: Geen "XXX" gespesifiseer nie!
+provide_address: Jy moet ten minste een ontvanger-e-posadres verskaf.
+Public Access calendar: Openbare toegang kalender
+Public access can add events: Publieke toegang kan geleenthede byvoeg
+Public access can view other users: Publieke toegang kan ander gebruikers sien
+Public access can view participants: Publieke toegang kan deelnemers bekyk
+Public access is default participant: Publieke toegang is verstek deelnemer
+Public access new events require approval: Publieke toegang tot nuwe geleenthede vereis goedkeuring
+Public access visible by default: Publieke toegang sigbaar by verstek
+Public Access: Publieke Toegang
+Public Calendar: Openbare Kalender
+Public Preferences: Openbare Voorkeure
+public-access-add-requires-approval-help: Spesifiseer of gebeurtenisse wat via die publieke toegangsrekening bygevoeg is goedkeuring vereis voordat dit vertoon word.
+public-access-can-add-help: Wanneer dit geaktiveer is, sal gebruikers wat toegang tot die stelsel deur publieke toegang verkry, nuwe gebeurtenisse kan byvoeg, maar hulle sal nie in die kalender verskyn totdat 'n administrateur die nuwe gebeurtenis goedkeur nie.
+public-access-captcha-help: As dit geaktiveer is, vereis nuwe gebeurtenisse wat deur Publiek bygevoeg word dat 'n CAPTCHA-bekragtiging geslaag word.
+public-access-default-selected: Wanneer 'n nuwe geleentheid bygevoeg word, sal die publieke gebruiker by verstek as 'n deelnemer gekies word.
+public-access-default-visible: Gebeurtenisse vanaf die publieke kalender sal outomaties op alle gebruikers se kalenders verskyn
+public-access-override-help: Laat gebeurtenisname en beskrywings toe om op die publieke kalender versteek te word
+public-access-override-text-help: Die teks om te vertoon as die bogenoemde opsie geaktiveer is. As 'Nie beskikbaar nie', sal dit vertaal word.
+public-access-sees-participants-help: As dit geaktiveer is, sal gebruikers wat vanaf die publieke rekening toegang tot die kalender verkry, gebeurtenisdeelnemers kan sien as hulle besonderhede van 'n gebeurtenis sien.
+public-access-view-others-help: Wanneer toegang tot die stelsel met publieke toegang verkry word, spesifiseer of die gebruiker die kalender van 'n ander kalendergebruiker kan bekyk.
+public: publiek
+Public: Publiek
+Publishing Disabled (Admin): Publisering gedeaktiveer (Admin)
+Publishing Disabled (User): Publisering gedeaktiveer (gebruiker)
+Purge deleted only: Suiwering is slegs uitgevee
+Purging events for: Suiwering gebeure vir
+Range: Reeks
+Read-Only: Leesalleen
+recipients_failed: SMTP-fout: Die volgende ontvangers het misluk:
+recommend approving new public events: Ons beveel aan dat alle openbare geleentheidvoorleggings goedgekeur word.
+recommend setting allow_url_fopen Off: Die aanbevole instelling vir "allow_url_fopen" is Af wanneer afgeleë kalenders nie geaktiveer is nie.
+recommend setting XXX Off: Die aanbevole instelling vir "XXX" is Af.
+recommend setting XXX On: beveel aan om XXX Aan te stel
+recommend using CAPTCHA: CAPTCHA word aanbeveel om te waak teen outomatiese gebeurtenisvoorleggings.
+Records deleted from XXX: Rekords is uit "XXX" uitgevee.
+Registration: Registrasie
+Reject entry: Verwerp inskrywing
+Reject Selected entries?: Verwerp geselekteerde inskrywings?
+Reject Selected: Verwerp gekies
+Reject this entry?: Verwerp hierdie inskrywing?
+Reject: Verwerp
+Rejected by XXX.: Verwerp deur XXX.
+Rejected: Verwerp
+Reload: Herlaai
+Remember last login: Onthou laaste aanmelding
+remember-last-login-help: Wanneer dit geaktiveer is, sal die gebruiker se aanmelding vir hulle op die aanmeldbladsy ingevul word (maar nie die wagwoord nie), en die gebruiker se voorkeure sal gelaai word (insluitend hul voorkeurkleure en taalkeuse).
+Remind time is XXX.: Herinner tyd is: XXX.
+Reminder sent: Herinnering gestuur
+Reminder set for event.: Herinnering gestel vir geleentheid.
+Reminder: Herinnering
+Reminders for user XXX, login YYY.: Herinneringe vir gebruiker "XXX", meld aan "JJJ".
+Reminders: Herinneringe
+Remote Calendar successfully added. You must add a new layer to your calendar to view the events from this remote calendar on your calendar.: Afgeleë kalender suksesvol bygevoeg. Jy moet 'n nuwe laag by jou kalender voeg om die gebeure vanaf hierdie afgeleë kalender op jou kalender te sien.
+Remote calendar successfully deleted.: Afgeleë kalender is suksesvol uitgevee.
+Remote Calendar successfully reloaded: Afgeleë kalender is suksesvol herlaai
+Remote Calendar successfully updated.: Afgeleë kalender is suksesvol opgedateer.
+Remote Calendars not enabled: Afgeleë kalenders nie geaktiveer nie
+Remote Calendars: Afgeleë kalenders
+Remote URL fopen is required to load remote calendars: Afgeleë URL fopen word vereis om afgeleë kalenders te laai
+remote-publishing-url-help: Vertoon die URL om in die iCal-kliënttoepassing te gebruik vir beide inteken en publisering terug na WebCalendar.
+remote-subscriptions-url-help: Vertoon die URL wat afgeleë gebruikers moet gebruik om op jou kalender in te teken.
+remotes-enabled-help: Laat gebruikers toe om afgeleë ics-lêers met URL te laai
+Remove Icon: Verwyder ikoon:
+remove XXX if not using: As jy nie lêer "XXX" gebruik nie, moet jy dit uitvee. Of, ten minste, skuif dit na 'n nuwe gids.
+Remove: Verwyder
+Removed: Verwyder
+Repeat Day: Herhaal dag
+Repeat End Date: Herhaal Einddatum
+Repeat Type: Herhaal Tipe
+repeat-bydayextended-help: Laat datumkeuse toe gebaseer op dag van die week.
+repeat-bymonthdayextended-help: Laat datumkeuse op grond van datum toe.
+repeat-bysetpos-help: Laat datumkeuse toe gebaseer op posisie binne die maand.
+repeat-byweekno-help: Laat gebruiker toe om 'n lys weke te spesifiseer om gebeurtenis te herhaal (1,2...53,-53,-52...-1).
+repeat-byyearday-help: Laat gebruiker toe om 'n lys van jaardae te spesifiseer om gebeurtenis te herhaal (1,2...366,-366,-365...-1).
+repeat-day-help: Spesifiseer op watter dae van die week die geleentheid moet herhaal.
+repeat-end-date-help: Spesifiseer die datum waarop die gebeurtenis moet herhaal.
+repeat-exceptions-help: Bykomende dae waarop hierdie gebeurtenis behoort of nie moet plaasvind nie.
+repeat-frequency-help: Spesifiseer hoe gereeld die gebeurtenis moet herhaal.
+repeat-month-help: Spesifiseer in watter maande die geleentheid moet herhaal.
+repeat-type-help: Kies hoe gereeld die gebeurtenis moet herhaal.
+Repeat: Herhaal
+Repeated items are imported separately. Prior imports are not overwritten.: Herhaalde items word afsonderlik ingevoer. Vorige invoere word nie oorskryf nie.
+Report Bug: Rapporteer fout
+Report Name: Verslag Naam
+Reports enabled: Verslae geaktiveer
+reports-enabled-help: As dit geaktiveer is, sal gebruikers 'n "Verslae"-afdeling aan die onderkant van elke bladsy sien en sal toegelaat word om gepasmaakte verslae te skep. Admin-gebruikers kan ook globale verslae skep wat onderaan alle gebruikers se bladsye sal verskyn.
+Reports: Verslae
+Require CAPTCHA validation for public access new events: Vereis CAPTCHA-bekragtiging vir nuwe geleenthede vir publieke toegang
+Require event approvals: Vereis geleentheidgoedkeurings
+require-approvals-help: Wanneer dit geaktiveer is, moet 'n gebruiker 'n gebeurtenis goedkeur voordat dit op hul kalender vertoon word (tensy Wys nie goedgekeur is geaktiveer). Let daarop dat om dit op "Nee" te stel, sal nie goedkeurings vir die Openbare Toegang-kalender afskakel nie (indien die Openbare Toegang-kalender geaktiveer is).
+Required Setting: Vereiste instelling
+required: vereis word
+Reset Colors: Stel kleure terug
+Reset Preferences: Stel voorkeure terug
+Reset: Stel terug
+Resource Calendar successfully added.: Hulpbronkalender suksesvol bygevoeg.
+Resource calendar successfully deleted.: Hulpbronkalender is suksesvol uitgevee.
+Resource Calendar successfully updated.: Hulpbronkalender suksesvol opgedateer.
+Resource Calendars enabled: Hulpbronkalenders geaktiveer
+Resource Calendars: Hulpbron kalenders
+resource-enabled-help: As dit geaktiveer is, sal admins die opsie hê om hulpbronkalenders by te voeg
+resource-list-help: Waar om die hulpbronkalenders in die deelnemerslys te vertoon
+Resources: Hulpbronne
+Restrict self-registration to blacklist: Beperk selfregistrasie tot swartlys
+Restrictions: Beperkings
+Return to Login screen: Keer terug na aanmeldskerm
+Return to My Preferences: Keer terug na My Voorkeure
+Romanian: Roemeens
+rss-enabled-help: Spesifiseer of 'n gebruiker se kalender van 'n RSS-stroom verkry kan word.
+rss-feed-url-help: Die URL om toegang tot die RSS-feed te verkry
+Run Environment: Hardloop omgewing
+Russian: Russies
+SA: SA
+Safe Mode needs to be disabled to allow setting env variables to specify the timezone: Veilige modus moet gedeaktiveer word sodat die instelling van env-veranderlikes die tydsone kan spesifiseer
+Safe Mode: Veilige modus
+same as: dieselfde as
+Sat: Sat
 Saturday: Saterdag
+Save login via cookies so I dont have to login next time.: Stoor aanmelding via koekies sodat ek nie volgende keer hoef aan te meld nie
+Save Preferences: Stoor voorkeure
+Save Settings: Stoor instellings
+Save: Stoor
+Schedule an appointment for XXX.: Skeduleer 'n afspraak vir XXX:YYY.
+Scheduling Conflict: Skeduleer konflik
+Search for existing icons...: Soek vir bestaande ikone...
+Search Results: Soekresultate
+Search: Soek
+Security Audit: Sekuriteitsoudit
+Security Issue: Sekuriteitskwessie
+Security violation!: Sekuriteitskending!
+Select All: Kies Alles
+Select: Kies
+Selected Participants: Geselekteerde deelnemers
+Send Reminder: Stuur herinnering
+Sep: Sep
+September: September
+Serbian: Serwies
+server time: bediener tyd
+Server Timezone Selection: Bediener Tydsone Keuse
+Server URL is required.: Bediener-URL word vereis.
+Server URL must end with /.: Bediener-URL moet eindig met 'n skuinsstreep(/).
+Server URL: Bediener URL
+server-tz-help: Spesifiseer hoeveel ure om die tyd van UTC na bedienertyd aan te pas.
+server-url-help: Spesifiseer die basis-URL vir die toepassing. Dit sal ingesluit word wanneer e-posherinneringe en kennisgewings uitgestuur word.
+Set calendar to readonly mode. Default is false.: Stel kalender op leesalleen-modus. Verstek is vals.
+Set category: Stel kategorie in
+Set Category: Stel kategorie in
+Set Password: Stel wagwoord in
+Setting Description: Instelling Beskrywing
+Settings for: Instellings vir
+Settings: Instellings
+Show activity log: Wys aktiwiteitlogboek
+Show: Wys
+Single User Login: Enkelgebruikeraanmelding
+Single-User Mode: Enkelgebruikermodus
+Site customization: Aanpassing van die webwerf
+Site Extras: Site Ekstras
+Site security: Site sekuriteit
+Slovak: Slowaaks
+Slovenian: Sloweens
+Small Task Date: Klein Taak Datum
+SMTP Authentication: SMTP-verifikasie
+SMTP Host name(s): SMTP-gasheernaam(e)
+SMTP Password: SMTP-wagwoord
+SMTP Port Number: SMTP-poortnommer
+SMTP Username: SMTP-gebruikersnaam
+Some WebCalendar function may be limited.  Are you sure?: Sommige WebCalendar-funksies kan beperk wees. Is jy seker?
+Source: Bron
+Spanish: Spaans
+Specifies the user that you would like to see displayed in your calendar.: Spesifiseer die gebruiker wat jy graag in jou kalender wil sien vertoon.
+Specify how users will be prompted for username and password.: Spesifiseer hoe gebruikers gevra sal word vir gebruikersnaam en wagwoord.
+Specify timed event length by: Spesifiseer tydsbepaalde gebeurtenislengte deur
+Specify where the user login and password will be verified against.  If an option is disabled, the required PHP module was not found.: Spesifiseer waarteen die gebruikeraanmelding en wagwoord geverifieer sal word. As 'n opsie gedeaktiveer is, is die vereiste PHP-module nie gevind nie.
+SQL content copied to clipboard: SQL-inhoud na knipbord gekopieer
+SQLite3 File Path: SQLite3-lêerpad
+Start date: Begin datum
+Start Date: Begindatum
+Start Time: Begin Tyd
+start: begin
+Start: Begin
+Status: Status
+SU: US
+Subject XXX: Onderwerp: "XXX".
+Subject: Onderwerp
+Submit: Dien in
+Subscribe/Publish: Teken in / Publiseer
+subscriptions-enabled-help: Spesifiseer of afgeleë gebruikers kan inteken op 'n WebCalendar-gebruiker se kalender, wat hulle in staat stel om die WebCalendar-gebruiker se gebeure in hul iCal-geaktiveerde toepassing (soos Apple se iCal of Mozilla Calendar) te sien.
+Subtract N hours from: Trek N uur af van
+Successful database connection: Suksesvolle databasisverbinding
+Successful login: Suksesvolle aanmelding
+summary_length-help: Maksimum lengte van kort beskrywing in kalenderaansigte
 Sun: Son
-Mon: Maa
-Tue: Din
-Wed: Woe
-Thu: Don
-Fri: Vry
-Sat: =
+Sunday: Sondag
+Swedish: Sweeds
+System Log: Stelsellogboek
+System Message: Stelselboodskap
+System options: Stelsel opsies
+System Settings XXX: Stelselinstellings: "XXX"
+System Settings: Stelselinstellings
+Table cell background for current day: Tabel sel agtergrond vir huidige dag
+Table cell background for days with events: Tabel sel agtergrond vir dae met gebeure
+Table cell background for other month: Tabel sel agtergrond vir ander maand
+Table cell background for weekends: Tafelsel agtergrond vir naweke
+Table cell background: Tabel sel agtergrond
+Table grid color: Tabel rooster kleur
+Table header background: Tabelkop-agtergrond
+Table header text: Tabelkopteks
+Task approved: Taak goedgekeur
+Task created: Taak geskep
+Task deleted: Taak uitgevee
+Task Due Date: Taak Sperdatum
+Task Name: Taaknaam
+Task rejected: Taak afgekeur
+Task updated: Taak opgedateer
+Task_Title: Titel
+task: taak
+Tasks: Take
+TASKS: TAKE
+Template variables: Sjabloon veranderlikes
+Tentative: Tentatief
+Test Connection: Toets verbinding
+Text to display to public access: Teks om te wys vir publieke toegang
+TH: TH
+The following conflicts with the suggested time: Die volgende bots met die voorgestelde tyd
+The following entries will not be imported: Die volgende inskrywings sal nie ingevoer word nie:
+The following error occurred: Die volgende fout het voorgekom
+The following formats have been tested: Die volgende formate is getoets:
+The ID is limited to letters, numbers and underscore only.: Die ID is slegs tot letters, syfers en onderstreep beperk.
+The import file contained no data.: Die invoerlêer het geen data bevat nie.
+The password contains illegal characters.: Die wagwoord bevat onwettige karakters.
+The passwords were not identical.: Die wagwoorde was nie identies nie.
+The permissions for the icons directory are set to read-only: Die toestemmings vir die ikonegids is op leesalleen gestel
+The same site can frame the content: Dieselfde webwerf kan die inhoud raam
+The text color of the new layer that will be displayed in your calendar.: Die tekskleur van die nuwe laag wat in jou kalender vertoon sal word.
+Themes: Temas
+There was an error parsing the import file or no events were returned.: Daar was 'n fout met die ontleed van die invoerlêer of geen gebeurtenisse is teruggestuur nie.
+This action cannot be undone.: Hierdie handeling kan nie ontdoen word nie.
+This Calendar is not Public.: Hierdie kalender is nie publiek nie.
+This event is confidential.: Hierdie geleentheid is vertroulik.
+This event is XXX.: Hierdie geleentheid is XXX.
+This form will import iCalendar (.ics) events.: Hierdie vorm sal iCalendar (.ics)-geleenthede invoer.
+This form will import vCalendar (.vcs) 1.0 events.: Hierdie vorm sal vCalendar (.vcs) 1.0-geleenthede invoer.
+This is a reminder for the XXX detailed below.: Dit is 'n herinnering vir die XXX wat hieronder uiteengesit word.
+This month: Hierdie maand
+This Month: Hierdie Maand
+This passphrase was provided during the initial installation.: Hierdie wagwoordfrase is tydens die aanvanklike installasie verskaf.
+This password hint was provided when the password was set.: Hierdie wagwoordwenk is verskaf toe die wagwoord gestel is.
+This password hint will be provided when the you login at a later time.: Hierdie wagwoordwenk sal verskaf word wanneer jy op 'n later tydstip aanmeld.
+This remote calendar does not have a layer.  Add a layer for this calendar to view it in your calendar.: Hierdie afgeleë kalender het nie 'n laag nie. Voeg 'n laag vir hierdie kalender by om dit in jou kalender te sien.
+This week and next week: Hierdie week en volgende week
+This week: Hierdie week
+This Week: Hierdie week
+This will add the entry to your calendar.: Dit sal die inskrywing by jou kalender voeg.
+This will delete all events for this user.: Dit sal alle gebeurtenisse vir hierdie gebruiker uitvee.
+This will delete the entry from your boss calendar.: Dit sal die inskrywing van jou baas se kalender uitvee.
+This will delete the entry from your calendar.: Dit sal die inskrywing uit jou kalender uitvee.
+This will delete the entry from your XXX calendar.: Dit sal die inskrywing uit jou XXX-kalender uitvee.
+This will delete this entry for all users.: Dit sal hierdie inskrywing vir alle gebruikers uitvee.
+This will remove all events for this remote calendar.: Dit sal alle geleenthede vir hierdie afgeleë kalender verwyder.
+This will remove all events for this resource calendar.: Dit sal alle geleenthede vir hierdie hulpbronkalender verwyder.
+This wizard will guide you through the XXX process.: Hierdie towenaar sal jou deur die XXX-proses lei.
+This year: Hierdie jaar
+This Year: Hierdie jaar
+Thu: Do
+Thursday: Donderdag
+Time entered here is based on your Timezone: Tyd wat hier ingevoer word, is gebaseer op jou Tydsone
+Time entered here is based on your Timezone.: Tyd wat hier ingevoer word, is gebaseer op <b>jou</b> tydsone.
+Time format: Tydformaat
+Time interval: Tydsinterval
+time prior to work hours...: Die tyd wat jy ingevoer het, begin voor jou voorkeur werksure. Is dit korrek?
+Time XXX: Tyd: XXX
+time-format-help: Spesifiseer watter tydformaat om te gebruik:<br><em>12 uur:</em> Wys tye as 03:00, 20:30, ens.<br><em>24 uur:</em> Wys tye as 300, 2030 , ens.
+time-help: Spesifiseer die tyd van die gebeurtenis. <ul><li>"Tydbepaalde gebeurtenis" (vir 'n gebeurtenis wat vir 'n spesifieke tyd op daardie dag geskeduleer is)</li><li>"Ontydbepaalde gebeurtenis" (vir 'n geleentheid het dit nie 'n tyd nie (soos 'n vakansiedag) )</li><li>"Gehele dag gebeurtenis" (vir 'n geleentheid wat die hele dag duur (soos om uit die kantoor te wees)</li></ul>
+time-interval-help: Spesifiseer hoe lank die tydblokke in die weekaansig en dagaansig sal wees.
+Time: Tyd
+Timed event: Tydige gebeurtenis
+timed-evt-len-help: Spesifiseer invoermetode vir die bepaling van die lengte van 'n tydgebeurtenis.
+Times: Tye
+Timezone Offset: Tydsone-afset
+Timezone Selection: Tydsone seleksie
+Title: Webkalender
+to: aan
+Today: Vandag
+Tomorrow: Môre
+Top: Top
+Translated Name (XXX): Vertaalde naam (XXX)
+TU: TU
+Tue: Di
+Tuesday: Dinsdag
+Turkish: Turks
+Type: Tik
+tz-help: Spesifiseer hoeveel ure om die tyd van UTC na plaaslike tyd aan te pas.
+uac-enabled-help: Aktiveer toegangsbeheer op gebruikervlak
+Unable to determine current database version.: Kan nie huidige databasisweergawe bepaal nie.
+Unable to update preference: Kan nie voorkeur opdateer nie
+Unapproved Entries: Ongegoedgekeurde inskrywings
+Unapproved Events: Ongegoedgekeurde geleenthede
+Unapproved Public Events: Ongoedgekeurde publieke geleenthede
+Unauthorized: Ongemagtig
+Uncheck All: Ontmerk Alles
+Undo: Ontdoen
+Unfortunately, XXX is not implemented for YYY: Ongelukkig is "XXX" nie vir (JJJ) geïmplementeer nie.
+Unique Calendar ID for remote calendar: Unieke kalender-ID vir afgeleë kalender
+Unique Calendar ID for resource calendar: Unieke kalender-ID vir hulpbronkalender
+Unknown error saving user: Onbekende fout met die stoor van gebruiker.
+Unknown error: Onbekende fout
+Unknown error.: Onbekende fout.
+Unknown ODBC error.: Onbekende ODBC-fout.
+unknown-month: onbekende-maand
+unknown-weekday: onbekend-weekdag
+Unknown: Onbekend
+Unnamed Event: Naamlose gebeurtenis
+Unnamed Report: Naamlose Verslag
+Unnamed View: Naamloos Uitsig
+Unnamed: Naamloos
+Unsupported action XXX.: Ongesteunde handeling: XXX.
+Unsupported action: Ongesteunde handeling
+Unsupported db_type.: Ongesteunde db_type.
+Until: Tot
+Untimed event: Ontydse gebeurtenis
+Upcoming Events: Komende gebeure
+upcoming-events-allow-override: Laat gebruikerparameter toe vir upcoming.php
+upcoming-events-display-caticons: Sluit kategorie-ikone in upcoming.php in
+upcoming-events-display-layers: Vertoon lae in upcoming.php
+upcoming-events-display-links: Wys skakels in upcoming.php
+upcoming-events-display-popups: Vertoon gebeurtenis-opspringers in upcoming.php
+upcoming-events-help: Aktiveer komende.php
+Upcoming: Komende
+Update Task Percentage: Dateer taakpersentasie op
+Update: Dateer op
+Updated: Opgedateer
+Upgrade Database: Gradeer databasis op
+Upgrade SQL Commands: Gradeer SQL-opdragte op
+Upload file: Laai lêer op
+URL cannot be blank.: URL kan nie leeg wees nie.
+URL for the ICS file used to import events for this remote calendar: URL vir die ICS-lêer wat gebruik word om gebeurtenisse vir hierdie afgeleë kalender in te voer
+url-help: Gebeurtenis-URL
+URL: URL
+Use Cross-Site Request Forgery Protection: Gebruik Cross-Site Request Vervalsing Beskerming
+Use Date/Time: Gebruik Datum/Tyd
+Use end date: Gebruik einddatum
+Use Offset: Gebruik Offset
+Use self-registration email notifications: Genereer wagwoorde en stuur aan nuwe gebruikers
+Use STARTTLS: Moet STARTTLS geaktiveer wees vir SMTP om oor te skakel na 'n geënkripteerde verbinding
+use-blacklist-help: Beperk toegang tot WebCalendar-funksies gebaseer op IP-adres
+User Access Control enabled: Gebruikertoegangsbeheer geaktiveer
+User Access Control: Gebruikerstoegangsbeheer
+User Authentication: Gebruikersverifikasie
+User Database: Gebruikersdatabasis
+User Management: Gebruikersbestuur
+User removed from participants list.: Gebruiker verwyder van deelnemerslys.
+User sees only his groups: Gebruiker sien net sy groepe
+User Sort Order: Gebruikerssorteervolgorde
+User successfully added.: Gebruiker suksesvol bygevoeg.
+User successfully deleted.: Gebruiker is suksesvol uitgevee.
+User successfully updated.: Gebruiker suksesvol opgedateer.
+user_sort-help: Bepaal sorteervolgorde vir Gebruiker, Hulpbronlyste
+user-customize-color: Spesifiseer of gebruikers toegelaat word om hul eie kleurskema te wysig.
+user-sees-his-group-help: As dit geaktiveer is, sal gebruikers nie kalendergebruikers sien wat nie in ten minste een van hul groepe is nie.
+user: gebruiker
+User: Gebruiker
+Username already exists.: Gebruikersnaam bestaan ​​reeds.
+Username cannot be blank.: Gebruikersnaam kan nie leeg wees nie.
+Username XXX already exists.: Gebruikernaam "XXX" bestaan ​​reeds.
+Username XXX does not exist.: Gebruikernaam "XXX" bestaan ​​nie.
+Username: Gebruikersnaam
+Users: Gebruikers
+Variable XXX not found.: Veranderlike <span class="tt">XXX</span> nie gevind nie.
+vCal: vCal
+version XXX: weergawe XXX
+View Another Users Calendar: Bekyk 'n ander gebruiker se kalender
+View Event: Bekyk gebeurtenis
+View explanation at OWASP: Sien verduideliking by OWASP
+View Name: Bekyk Naam
+View this entry: Bekyk hierdie inskrywing
+View this event: Bekyk hierdie geleentheid
+View this task: Bekyk hierdie taak
+View Type: Kyk Tipe
+View your current PHP settings: Kyk na jou huidige PHP-instellings
+View: Uitsig
+Views: Uitsigte
+Waiting for approval: Wag vir goedkeuring
+WE: ONS
+Web Server (detected): Webbediener (bespeur)
+Web Server (not detected): Webbediener (nie bespeur nie)
+Web-based via WebCalendar (default): Webgebaseer via WebCalendar (verstek)
+WebCalendar Documentation: Webkalenderdokumentasie
+WebCalendar is a PHP application used...: WebCalendar is 'n PHP-toepassing wat gebruik word om 'n kalender vir 'n enkele gebruiker of 'n internet / intranet groep gebruikers in stand te hou. Dit kan ook as 'n gebeurteniskalender gekonfigureer word.
+WebCalendar User Database (default): WebCalendar-gebruikerdatabasis (verstek)
+Wed: Wo
+Wednesday: Woensdag
+Week (Timebar): Week (tydbalk)
+Week (Users horizontal): Week (Gebruikers horisontaal)
+Week (Users vertical): Week (gebruikers vertikaal)
+Week before last: Voorverlede week
+Week by Time: Week vir Tyd
+Week number color: Weeknommer kleur
+Week Start: Week begin
+Week starts on: Week begin op
+Week View: Week View
+Week: Week
+Weekdays Only: Slegs weeksdae
+Weekend starts on: Naweek begin
+Weekly: Weekliks
+Weeks: Weke
+Welcome to WebCalendar: Welkom by WebCalendar
+Welcome: Welkom
+Welsh: Wallies
+When choosing XXX, changes will need to be made to the file auth-settings.php before user authentication will work properly.: Wanneer XXX gekies word, sal veranderinge aan die lêer auth-settings.php gemaak moet word voordat gebruikersverifikasie behoorlik sal werk.
+When I am the boss: Wanneer ek die baas is
+When: Wanneer
+will cause events imported previously...: sal veroorsaak dat gebeure wat voorheen ingevoer is, wat dieselfde UID as 'n gebeurtenis van die nuwe invoerlêer gebruik het, as uitgevee gemerk word. Dit behoort 'n opgedateerde iCalendar-lêer in te voer sonder om duplikate te skep.
+WK: WK
+word characters only: (kan slegs woordkarakters bevat; [a-zA-Z_0-9])
+Work hours: Werksure
+work-hours-help: Spesifiseer die tydreeks om vir die dagaansig te vertoon.
+XXX has approved an appointment and added comments.: 'n Afspraak is goedgekeur en opmerkings is deur XXX bygevoeg.
+XXX has canceled an appointment.: XXX het 'n afspraak gekanselleer.
+XXX has made a new appointment.: XXX het 'n nuwe afspraak gemaak.
+XXX has rejected an appointment.: XXX het 'n afspraak verwerp.
+XXX has updated an appointment.: XXX het 'n afspraak opgedateer.
+XXX is in a different timezone (ahead): (XXX is in 'n ander tydsone; JJJ voor jou.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX is in 'n ander tydsone; JJJ agter jou.<br>&nbsp;ZZZ)
+Year before last: Voorverlede jaar
+Year View: Jaaruitsig
+year: jaar
+Year: Jaar
+yearly-shows-events-help: Op die jaarlikse aansig, vertoon dae wat gebeurtenisse bevat in 'n vet lettertipe.
+Yearly: Jaarliks
+Yes: Ja
+Yesterday: Gister
+You are not authorized to edit this entry.: Jy is nie gemagtig om hierdie inskrywing te wysig nie.
+You are not authorized to edit this task.: Jy is nie gemagtig om hierdie taak te wysig nie.
+You are not authorized.: Jy is nie gemagtig nie.
+You are using environment variables for your settings and must make changes externally.: Jy gebruik omgewingsveranderlikes vir jou instellings en moet ekstern veranderinge aanbring.
+You can only create one layer for each user.: Jy kan net een laag vir elke gebruiker skep.
+You can re-add the default admin user.: Jy kan die verstek admin gebruiker weer byvoeg.
+You can use these pages to change your settings and to re-add the default admin user.: Jy kan hierdie bladsye gebruik om jou instellings te verander en om die verstek admin gebruiker weer by te voeg.
+You cannot continue until you set the proper environment variables.: Jy kan nie voortgaan totdat jy die regte omgewingsveranderlikes ingestel het nie.
+You cannot create a layer for yourself.: Jy kan nie vir jouself 'n laag skep nie.
+You cannot remove admin rights from yourself!: Jy kan nie admin regte van jouself verwyder nie!
+You have been logged out.: Jy is afgemeld.
+You have not added any categories.: Jy het geen kategorieë bygevoeg nie.
+You have not entered a Brief Description: Jy het nie 'n kort beskrywing ingevoer nie.
+You have not entered a password.: Jy het nie 'n wagwoord ingevoer nie.
+You have not entered a URL.: Jy het nie 'n URL ingevoer nie.
+You have not entered a valid time of day: Jy het nie 'n geldige tyd van die dag ingevoer nie.
+You have XXX unapproved entries: Jy het XXX nie-goedgekeurde inskrywings
+You may change your password after logging in the first time.: Jy kan jou wagwoord verander nadat jy die eerste keer aangemeld het.
+You must define XXX in: Jy moet "XXX" in die "settings.php" lêer definieer.
+You must enter a login and password.: Jy moet 'n login en wagwoord invoer.
+You must enter one or more search keywords.: Jy moet een of meer soeksleutelwoorde invoer.
+You must enter the anti-spam text on the previous page.: Jy moet die anti-spam-teks op die vorige bladsy invoer.
+You must provide a password.: Jy moet 'n wagwoord verskaf.
+You must select a file to import: Jy moet 'n lêer kies om in te voer
+You must selected one or more users.: Jy moet een of meer gebruikers gekies het.
+You must specify a view name: Jy moet 'n aansignaam spesifiseer
+You should change the password of the default admin user.: Jy moet die wagwoord van die verstek admin gebruiker verander.
+Your account information will be emailed to you.: Jou rekeninginligting sal per e-pos aan jou gestuur word.
+Your assistants: Jou assistente
+Your browser default language is XXX.: Jou blaaier se verstektaal is "XXX".
+Your current GMT offset is XXX hours.: Jou huidige GMT-afset is XXX uur.
+Your email should arrive shortly.: Jou e-pos behoort binnekort te arriveer.
+Your form post was either missing a required session token or timed out.: Jou vormplasing het óf 'n vereiste sessietoken ontbreek óf het uitgetel.
+Your have XXX admin accounts.: Jy het XXX admin rekeninge.
+Your password is XXX.: Jou wagwoord is: "XXX".
+Your passwords must match.: Jou wagwoorde moet ooreenstem.
+Your PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.: Jou PHP-instelling vir allow_url_fopen sal nie toelaat dat 'n afgeleë kalender gelaai word nie.
+Your Settings: Jou instellings
+Your suggested time of: Jou voorgestelde tyd van
+Your username is XXX.: Jou gebruikersnaam is: "XXX".
+Your WebCalendar database is configured and current with the installed version of WebCalendar.: Jou WebCalendar-databasis is gekonfigureer en op datum met die geïnstalleerde weergawe van WebCalendar.
+Your XXX database named 'YYY' does not exist yet.: Jou XXX databasis genaamd 'YYY' bestaan ​​nog nie.
+Your XXX database named 'YYY' exists.  You may go on to the next step.: Jou XXX databasis genaamd 'YYY' bestaan. Jy kan voortgaan na die volgende stap.
+Your XXX database named 'YYY' is empty and needs tables created.: Jou XXX databasis genaamd 'YYY' is leeg en moet tabelle geskep.
+Your XXX database named 'YYY' is up to date.  You may go on to the next step.: Jou XXX-databasis genaamd 'YYY' is op datum. Jy kan voortgaan na die volgende stap.
+Your XXX database named 'YYY' needs upgrading from version ZZZ.: Jou XXX-databasis genaamd 'YYY' moet vanaf weergawe ZZZ opgegradeer word.
