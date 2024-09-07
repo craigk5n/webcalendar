@@ -1,0 +1,31 @@
+# Save this file as UTF-8, or at least, plain ASCII text.
+# These are considered current best practice.
+# Don't change them unless you're having problems on your site.
+php_flag auto_detect_line_endings on
+php_value default_charset UTF-8
+
+# Change all below to reflect your needs
+
+# 'register_globals' was removed in PHP 5.4
+# Remove this line if you're using PHP >= 5.4.
+php_flag register_globals off
+
+# 'magic_quotes' were removed in PHP 7.
+# Remove these lines if you're using PHP >= 7.
+php_flag magic_quotes_gpc Off
+php_flag magic_quotes_runtime Off
+php_flag magic_quotes_sybase Off
+
+php_value date.default_latitude 43.133
+php_value date.default_longitude -115.6912
+php_value date.timezone America/Boise
+
+# "http://mysite.com/common/" is where I installed third party programs
+# that we at WebCalendar do not maintain, such as phpmailer and smarty.
+# On MY system, there are no other directories to look for.
+# YOUR system may be different.
+php_value include_path includes;includes/css;includes/js;/common;
+
+# default is 4k. I want 10k on MY system.
+#php_value zlib.output_compression 4096
+php_value zlib.output_compression 10240
