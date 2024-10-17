@@ -251,12 +251,10 @@ function do_config($callingFromInstall=false)
   $db_password = $settings['db_password'] ?? '';
   $db_persistent = (preg_match(
     '/(1|yes|true|on)/i',
-    $settings['db_persistent']
-  ) ? true : false );
+    $settings['db_persistent'] ) );
   $db_debug = (preg_match(
     '/(1|yes|true|on)/i',
-    $settings['db_debug']
-  ) ? true : false);
+    $settings['db_debug'] ) );
   $db_type = $settings['db_type'] ?? '';
 
   // If no db settings, then user has likely started install but not yet

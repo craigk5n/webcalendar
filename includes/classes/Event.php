@@ -644,7 +644,7 @@ class Event {
    * @access public
    */
   function isAllDay() {
-   $this->_allDay = ( $this->_time == 0 && $this->_duration == 1440? true : false);
+   $this->_allDay = ( $this->_time === 0 && $this->_duration === 1440 );
     return $this->_allDay;
   }
 
@@ -657,7 +657,7 @@ class Event {
    */
   function isTimed() {
    $this->_timed = ( $this->_time > 0 || ( $this->_time == 0
-     && $this->_duration != 1440 )? true : false);
+     && $this->_duration !== 1440 ) );
     return $this->_timed;
   }
 
@@ -669,7 +669,7 @@ class Event {
    * @access public
    */
   function isUntimed() {
-   $this->_untimed = ( $this->_time == -1 && $this->_duration == 0? true : false);
+   $this->_untimed = ( $this->_time === -1 && $this->_duration === 0 );
     return $this->_untimed;
   }
 
