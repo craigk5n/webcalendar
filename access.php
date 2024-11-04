@@ -27,7 +27,8 @@ require_once 'includes/init.php';
 global $ALLOW_VIEW_OTHER;
 
 // This
-$ALLOW_VIEW_OTHER ??= ( ! $ALLOW_VIEW_OTHER || trim ( $ALLOW_VIEW_OTHER ) === 'Y' ? 'Y' : 'N' );
+$ALLOW_VIEW_OTHER ??= 'Y';
+$ALLOW_VIEW_OTHER = ( ! $ALLOW_VIEW_OTHER || trim ( $ALLOW_VIEW_OTHER ) === 'Y' ? 'Y' : 'N' );
 
 // is shorthand for:
 // $ALLOW_VIEW_OTHER =
