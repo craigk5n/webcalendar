@@ -1,0 +1,2387 @@
+# Yiddish ji
+#
+# די פֿאָרמאַט באשטייט פון אַ אַפּשאַנאַל כעדער:
+#
+# איבערגעזעצט דורך: דיין נאָמען און E- בריוו
+# לעצטע דערהייַנטיקן: די דאַטע פון ​​איבערזעצונג
+# (אריינגערעכנט די פירנדיקע "#" און אלע באמערקונגען פון פריערדיקע איבערזעצער.
+# די FIRST ליידיק שורה ענדס די כעדערז באַמערקונגען.)
+#
+# נאכגעגאנגען דורך ווי פילע ווי דארף:
+#
+# ענגליש פֿראַזע: איבערזעצונג
+# (איינער צו אַ שורה. אָן די לידינג "#".
+# די "ענגליש פראַזע:", כולל די צווייפּינטל ":", איז צוגעשטעלט דורך די
+# וועבקאַלענדאַר דעוועלאָפּערס. דיין טייל איז די "איבערזעצונג".)
+#
+# די מכשירים וועגווייַזער כּולל צוויי פּערל סקריפּס צו העלפן איר:
+# - check_translation.pl
+# ינדיקייץ אויב אַלע טעקסט זענען הצלחה איבערגעזעצט.
+# - update_translation.pl
+# וועט פּאַרס די פּראָגראַם טעקעס צו געפֿינען אַלע איבערזעצן ('פראַזע') און
+# טאָאָלטיפּ ('פראַזע'). די פראַסעס וועט זיין עריינדזשד לויט די בלאַט
+# (טעקע) אַז כּולל דער ערשטער פּאַסירונג. אָפּטיאָנאַללי, עס קענען פאַרבינדן די
+# פראַסעס וואָס זענען נישט נאָך איבערגעזעצט דורך פּאַטינג
+#  << MISSING >>
+# אויף די שורה אויבן די פראַזע. און אויב די פראַזע איז אַ אַבריווייישאַן,
+# עס וועט אַרייַננעמען די פול ענגליש טעקסט אויף די שורה ונטער דער פֿראַזע.
+#
+# באַמערקונג: איך פּרוּווט צו שניידן די קוילעלדיק טעקע גרייס. אויב די "איבערזעצונג"
+# וואָרט / פראַזע איז יידעניקאַל אין דיין שפּראַך און ענגליש, נאָר נוצן אַן "=" צייכן.
+#
+# באַמערקונג: איר וועט באַמערקן די פּאָזיציע פֿאַר "May_" אונטן. עס איז אַ סיבה פֿאַר דעם.
+# זעץ "May_" צו די פול חודש נאָמען און "May" צו די,
+# יוזשאַוואַלי אַבריווייישאַן פון דריי-בריוו (ווי "אקטאבער" פֿאַר "אקטאבער").
+#
+# איך געוויינט Google זעץ פֿאַר דעם.
+# עס זאָל זיין גענוג ביז אַ געבוירן רעדנער קען באַשטעטיקן עס.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: rtl
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: וועבקאַלענדאַר
+version XXX: ווערסיע XXX
+WebCalendar is a PHP application used...: וועבקאַלענדאַר איז אַ PHP אַפּלאַקיישאַן געניצט צו האַלטן אַ קאַלענדאַר פֿאַר איין באַניצער אָדער אַן אינטערנעץ / ינטראַנעט גרופּע פון ​​וסערס. עס קען אויך זיין קאַנפיגיערד ווי אַ געשעעניש קאַלענדאַר.
+Credits: קרעדיץ
+About: וועגן
+OK: אקעי
+
+########################################
+# Page: access.php
+#
+Database error XXX.: דאַטאַבייס טעות: קסקסקס.
+DEFAULT CONFIGURATION: דעפאַולט קאַנפיגיעריישאַן
+Go: גיי
+Save: היט
+Undo: ופמאַכן
+Public Access: פּובליק אַקסעס
+Admin: אַדמיניסטראַטאָר
+User Access Control: באַניצער אַקסעס קאָנטראָל
+Allow Access to Other Users Calendar: לאָזן אַקסעס צו קאַלענדאַר פון אנדערע וסערס
+Grant This User Access to My Calendar: שענקען דעם באַניצער אַקסעס צו מיין קאַלענדאַר
+Type: טיפּ
+Calendar: קאַלענדאַר
+View Event: View עווענט
+View: =
+Edit: רעדאַגירן
+Approve/Reject: באשטעטיקן / אָפּוואַרפן
+Events: געשעענישן
+Tasks: טאַסקס
+Journals: דזשאָורנאַלס
+Can Invite: קענען לאַדן
+Can Email: קענען Email
+Can See Time Only: קענען זען בלויז צייט
+Assistant: אַסיסטאַנט
+Select All: וועל אויס אלע
+Clear All: מעק אויס אלע
+Public: עפנטלעך
+Confidential: פארטרוילעך
+Private: פּריוואַט
+
+########################################
+# Page: activity_log.php
+#
+Next: ווייַטער
+Previous: פֿריִערדיקע
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: געשעעניש XXX איז שוין אויף דיין קאַלענדאַר.
+Invalid entry id XXX.: אונגילטיג איינטריט ID: "XXX".
+a XXX event may not be added to your calendar: דאָס איז אַ קסקסקס געשעעניש און קען ניט זיין מוסיף צו דיין קאַלענדאַר.
+confidential: געהיים
+private: פּריוואַט
+Error adding event XXX.: טעות ביי לייגן געשעעניש: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: אונגילטיג באַשטעטיקן נאָמען "XXX".
+Select: סעלעקטירן
+Day: טאָג
+Week: וואָך
+Month: חודש
+Year: יאָר
+Bottom: דנאָ
+Top: אויבן
+Anyone: ווער עס יז
+Participant: פּאַרטיסיפּאַנט
+Settings: סעטטינגס
+Groups: גרופּעס
+NonUser Calendars: נאָנוסער קאַלענדאַרס
+Other: אנדערע
+Email: אימעיל
+Colors: פארבן
+Document background: דאָקומענט הינטערגרונט
+Document title: דאָקומענט טיטל
+Document text: דאָקומענט טעקסט
+My event text: מייַן געשעעניש טעקסט
+Table grid color: טיש גריד קאָליר
+Table header background: טיש כעדער הינטערגרונט
+Table header text: טיש כעדער טעקסט
+Table cell background: טיש צעל הינטערגרונט
+Table cell background for current day: טיש צעל הינטערגרונט פֿאַר קראַנט טאָג
+Table cell background for days with events: טיש צעל הינטערגרונט פֿאַר טעג מיט געשעענישן
+Table cell background for weekends: טיש צעל הינטערגרונט פֿאַר וויקענדז
+Table cell background for other month: טיש צעל הינטערגרונט פֿאַר אנדערע חדשים
+Week number color: וואָך נומער קאָליר
+Event popup background: געשעעניש אויפֿשפּרינג הינטערגרונט
+Event popup text: געשעעניש אויפֿשפּרינג טעקסט
+System Settings: סיסטעם סעטטינגס
+Help: הילף
+System options: סיסטעם אָפּציעס
+app-name-help: ספּעציפיצירט די נאָמען פון די אַפּלאַקיישאַן וואָס וועט זיין געוויזן אין די בלעטערער טיטל באַר פֿאַר אַלע בלעטער און אויף די לאָגין בלאַט. די ווערט איר ספּעציפיצירן דאָ וועט ווערן אָפּגעקוקט אין די איבערזעצונג טעקע, אַזוי אַז איר קענען צושטעלן פאַרשידענע טיטלען פֿאַר פאַרשידענע שפּראַכן.
+Application Name: אַפּפּליקאַטיאָן נאָמען
+Translated Name (XXX): איבערזעצונג נאָמען (XXX)
+server-url-help: ספּעציפיצירט די באַזע URL פֿאַר די אַפּלאַקיישאַן. דאָס איז אַרייַנגערעכנט ווען שיקט E- בריוו רימיינדערז און נאָוטאַפאַקיישאַנז.
+Server URL: סערווער URL
+home-url-help: ספּעציפיצירט די היים URL פֿאַר די אַפּלאַקיישאַן. דאָס קען זיין אַן אַבסאָלוט אָדער קאָרעוו
+Home URL: היים URL
+language-help: ספּעציפיצירט וועלכע שפּראַך צו נוצן.
+Language: שפּראַך
+Your browser default language is XXX.: דיין בלעטערער פעליקייַט שפּראַך איז "XXX".
+Allow user to use themes: לאָזן באַניצער נוצן טעמעס
+themes-help: אַלאַוז מאַסע דערהייַנטיקן קאַנפיגיעריישאַן סעטטינגס. לאַבעלס מיט קליין אותיות זענען בלויז באַניצער פּרעפֿער.
+Themes: טעמעס
+AVAILABLE THEMES: פאַראַנען טעמעס
+None: קיינער
+Preview: פאָרויסיקע ווייַזונג
+Site customization: פּלאַץ קוסטאָמיזאַטיאָן
+custom-script-help: אַלאַוז פּאָזיציע פון ​​קאַסטאַמייזד דזשאַוואַסקריפּט אָדער סטילעשעעט טעקסט וואָס וועט זיין ינסערטאַד אין די HTML "קאָפּ" אָפּטיילונג פון יעדער בלאַט.
+Custom script/stylesheet: קאַסטאַם שריפט / סטילעשעעט
+custom-header-help: אַלאַוז אַ מנהג HTML סניפּאַט צו זיין אַרייַנגערעכנט אין די שפּיץ פון יעדער בלאַט.
+Custom header: מנהג כעדער
+custom-trailer-help: אַלאַוז אַ מנהג HTML סניפּאַט צו זיין אַרייַנגערעכנט אין די סוף פון יעדער בלאַט.
+Custom trailer: מנהג טריילער
+enable-external-header-help: אַלאַוז די קאַסטאַמייזד טריילער צו זיין לאָודיד פֿון אַ פונדרויסנדיק טעקע
+Allow external file for header/script/trailer: לאָזן פונדרויסנדיק טעקע פֿאַר כעדער / שריפט / טריילער
+Allow user to override header/trailer: לאָזן באַניצער צו אָווועררייד כעדער / טריילער
+Date and Time: טאָג און צייט
+server-tz-help: ספּעציפיצירט ווי פילע שעה צו סטרויערן די צייט פֿון UTC צו סערווער צייט.
+Server Timezone Selection: סערווירער צייט זאָנע סעלעקציע
+tz-help: ספּעציפיצירט ווי פילע שעה צו סטרויערן די צייט פֿון UTC צו היגע צייט.
+Default Client Timezone Selection: פעליקייַט קליענט צייט זאָנע סעלעקציע
+display-general-use-gmt-help: אויב ענייבאַלד, פּראָסט דאַטעס / צייט זענען געוויזן ווי GMT
+Display Common Use Date/Times as GMT: אַרויסווייַזן טאָג / טייפּס פֿאַר פּראָסט נוצן ווי GMT
+date-format-help: ספּעציפיצירט די בילכער דאַטע פֿאָרמאַט.
+Date format: טאָג פֿאָרמאַט
+Small Task Date: קליין טאַסק טאָג
+display-week-starts-on: ספּעציפיצירט טאָג פון וואָך אַז די וואָך סטאַרץ אויף. אויב מאנטיק איז ספּעציפיצירט, די וואָך נומערן זענען ISO וואָך נומערן.
+Week starts on: וואָך סטאַרץ אויף
+display-weekend-starts-on: שטעלט דעם טאָג פון דער וואָך פֿאַר די אָנהייב פון וויקענדז
+Weekend starts on: אָפּרוטעג סטאַרץ אויף
+time-format-help: ספּעציפיצירט וואָס מאָל פֿאָרמאַט צו נוצן:<br><em>12 שעה:</em> ווייַז מאָל ווי 3:00, 8:30 PM, אאז"ו ו.<br><em>24 שעה:</em> ווייַז מאָל ווי 300 , 2030, אאז"ו ו.
+Time format: צייט פֿאָרמאַט
+12 hour: 12 שעה                                                  
+24 hour: 24 שעה                                                  
+timed-evt-len-help: ספּעציפיצירט אַרייַנשרייַב אופֿן פֿאַר דיטערמאַנינג די לענג פון אַ טיימד געשעעניש.
+Specify timed event length by: ספּעציפיצירן טיימד געשעעניש לענג דורך
+Duration: געדויער
+End Time: סוף צייט
+work-hours-help: ספּעציפיצירט די צייט קייט צו אַרויסווייַזן פֿאַר די טאָג מיינונג.
+Work hours: אַרבעט שעה
+From: פון
+to: צו
+Appearance: אויסזען
+preferred-view-help: ספּעציפיצירט די פעליקייַט מיינונג (טאָג, וואָך, חודש אָדער יאָר).
+Preferred view: בילכער מיינונג
+Allow top menu: לאָזן שפּיץ מעניו
+Date Selectors position: דאַטע סעלעקטאָרס שטעלע
+menu-themes-help: שטעלט די פארבן און סטיל פון די שפּיץ מעניו
+Menu theme: מעניו טעמע
+fonts-help: ספּעציפיצירט אַ רשימה פון סיסטעם פאַנץ צו נוצן (אַזאַ ווי "Arial, Helvetica")
+Fonts: פאַנץ
+display-sm_month-help: אויב ענייבאַלד, דיספּלייז קליין חדשים אין חודש קוקן
+Display small months: אַרויסווייַזן קליין חדשים
+display-weekends-help: אַרייַננעמען וויקענדז ווען איר קוק אַ וואָך.
+Display weekends: ווייַז וויקענדז
+display-long-daynames-help: אויב ענייבאַלד, נעמען לאַנג טאָג נעמען זענען געוויזן
+Display long day names: ווייַז נעמען לאַנג טאָג
+display-alldays-help: ווייַז טעג און טעג צוריק אין חודש קוקן, פּלאָמבירן אַלע סעלז.
+Display all days in month view: ווייַז אַלע טעג אין חודש מיינונג
+display-week-number-help: ספּעציפיצירט צי די וואָך נומער (1-52) זאָל זיין געוויזן אין די חודש מיינונג און די וואָך מיינונג.
+Display week number: ווייַז וואָך נומער
+display-desc-print-day-help: אַרייַננעמען געשעעניש דיסקריפּשאַנז אין פּרינטער-פרייַנדלעך ווערסיע פון ​​טאָג מיינונג.
+Display description in printer day view: ווייַז באַשרייַבונג אין דרוקער טאָג מיינונג
+yearly-shows-events-help: אויף די יאָריק מיינונג, אַרויסווייַזן טעג וואָס אַנטהאַלטן געשעענישן אין אַ דרייסט שריפֿט.
+Display days with events in bold in month and year views: ווייַזן טעג מיט דרייסט געשעענישן אין חודש און יאָר קוקן
+display-minutes-help: אויב ענייבאַלד, מינוט ענדיקן מיט: 00 וועט שטענדיק זיין געוויזן
+Display 00 minutes always: אַרויסווייַזן 00 מינוט שטענדיק
+display-end-times-help: ווייַזן ענדס פון געשעעניש אויב טיימד געשעעניש
+Display end times on calendars: ווייַז סוף מאָל אויף קאַלענדאַרס
+allow-view-add-help: א '+' ייקאַן וועט זיין אַרייַנגערעכנט אין קוקן, אַלאַוינג וסערס צו געשווינד לייגן געשעענישן צו די אנדערע קאַלענדאַרס.
+Include add event link in views: אַרייַננעמען לייגן געשעעניש לינק אין קוקן
+lunar-help: אויב ענייבאַלד, עס וועט אַרויסווייַזן קליין ייקאַנז וואָס פאָרשטעלן די לונער פאַסעס יעדער חודש
+Display Lunar Phases in month view: ווייַז די לונאַר פאַסעס אין די חודש מיינונג
+Restrictions: ריסטריקשאַנז
+allow-view-other-help: ספּעציפיצירט צי איין באַניצער קען זען די קאַלענדאַר פון אן אנדערן באַניצער.
+Allow viewing other users calendars: לאָזן וויוינג אנדערע באַניצער קאַלענדאַרס
+require-approvals-help: ווען ער איז ענייבאַלד, אַ באַניצער דאַרף אַפּרווו אַ געשעעניש איידער עס איז געוויזן אין זיין קאַלענדאַר (סייַדן Display Unapproved איז ענייבאַלד). באַמערקונג באַשטעטיקן דעם צו "ניין" וועט נישט קער אַוועק אַפּרווואַלז פֿאַר די פּובליק אַקסעס קאַלענדאַר (אויב די פּובליק אַקסעס קאַלענדאַר איז ענייבאַלד).
+Require event approvals: דאַרפן געשעעניש אַפּרווואַלז
+display-unapproved-help: ספּעציפיצירט צי ניט-באוויליקט געשעענישן זענען געוויזן אין דיין קאַלענדאַר.<br>אויב דאָס איז באַשטימט צו "יא", די ניט-באוויליקט געשעענישן וועט זיין געוויזן אין דיין קאַלענדאַר (אין אַ אַנדערש טעקסט קאָליר).<br>אויב דאָס איז באַשטימט צו "ניין", דאַן אַנאַפּפּראָוועד געשעענישן מוזן זיין באוויליקט איידער זיי זענען געוויזן אין דיין קאַלענדאַר.
+Display unapproved: ווייַז אַנאַפּרוווד
+conflict-check-help: טשעק פֿאַר געשעעניש קאָנפליקט (צוויי געשעענישן סקעדזשולד פֿאַר דער זעלביקער צייַט פֿאַר דער זעלביקער מענטש). אויב איר שטעלן דעם צו "יא", איר וועט נאָך קענען צו פּלאַן צוויי געשעענישן אין דער זעלביקער צייַט נאָך באַשטעטיקן אַ ווארענונג. אויב איר שטעלן דעם צו "ניין", קיין קאָנטראָלירונג פון קאָנפליקט וועט זיין דורכגעקאָכט. איר מיסטאָמע ווילן צו שטעלן דעם צו "יאָ", אַזוי קאָנפליקט קאָנטראָלירונג אַקערז.
+Check for event conflicts: טשעק פֿאַר געשעעניש קאָנפליקט
+Yes: יאָ
+No: ניין
+conflict-months-help: אויב קאָנפליקט קאָנטראָלירונג איז אין פּלאַץ ("טשעק פֿאַר געשעעניש קאָנפליקט" איז באַשטימט צו "ניין" & # 41; דאָס ספּעציפיצירן ווי פילע חדשים אין דער צוקונפֿט מיר זאָל טשעק פֿאַר קאָנפליקט. אויב איר געפֿינען צו לייגן געשעענישן עס נעמט אַ לאַנג צייַט צו פּראָצעס , רעדוצירן דעם נומער.
+Conflict checking months: קאָנפליקט קאָנטראָלירונג חדשים
+conflict-check-override-help: אַלאַוז וסערס צו אָווועררייד געשעעניש קאנפליקטן און פּלאַן צוויי אָדער מער געשעענישן פֿאַר דער זעלביקער צייט.
+Allow users to override conflicts: לאָזן וסערס אָווועררייד קאָנפליקט
+limit-appts-help: אַלאַוז די סיסטעם אַדמיניסטראַטאָר צו שטעלן אַ סיסטעם-ברייט שיעור אויף די נומער פון אַפּוינטמאַנץ אַ איין באַניצער קענען האָבן אויף אַ איין טאָג.
+Limit number of timed events per day: שיעור נומער פון טיימד געשעענישן פּער טאָג
+limit-appts-number-help: ספּעציפיצירט די מאַקסימום נומער פון טיימד געשעענישן אַ באַניצער קענען האָבן אין אַ איין טאָג.
+Maximum timed events per day: מאַקסימום טיימד געשעענישן פּער טאָג
+crossday-help: אויב ענייבאַלד, געשעענישן וואָס שפּאַן טעג וועט זיין געוויזן אויף באַזונדער טעג
+Disable Cross-Day Events: דיסייבאַל קראָס-טאָג עווענץ
+disable-location-field-help: סעלעקטירן "יא" וועט אַראָפּנעמען דעם "אָרט" פעלד פון געשעעניש אינפֿאָרמאַציע בלעטער
+Disable Location field: דיסייבאַל פעלד פעלד
+disable-url-field-help: סעלעקטירן "יא" וועט אַראָפּנעמען דעם "URL" פעלד פון געשעעניש אינפֿאָרמאַציע בלעטער
+Disable URL field: דיסייבאַל URL פעלד
+disable-priority-field-help: סעלעקטירן "יא" וועט אַראָפּנעמען דעם "בילכערקייַט" פעלד פון געשעעניש אינפֿאָרמאַציע בלעטער, פּראַוויידינג אַ סימפּלער צובינד פֿאַר אָנהייבער.
+Disable Priority field: דיסייבאַל פּרייאָראַטי פעלד
+disable-access-field-help: סעלעקטירן "יא" וועט באַזייַטיקן דעם "אַקסעס" פעלד פון געשעעניש אינפֿאָרמאַציע בלעטער, וואָס אָפפערס אַ סימפּלער צובינד פֿאַר אָנהייבער.
+Disable Access field: דיסייבאַל אַקסעס פעלד
+disable-participants-field-help: סעלעקטירן "יא" וועט באַזייַטיקן די "פּאַרטיסאַפּאַנץ" פעלד פון געשעעניש אינפֿאָרמאַציע בלעטער, פּרעווענטינג וסערס צו לייגן אנדערע וסערס צו זייער געשעענישן. אויב איר געבן דעם אָפּציע, איר קענט אויך דיסייבאַל די פעלד "לאָזן וויוינג אנדערע באַניצער קאַלענדאַרס".
+Disable Participants field: דיסייבאַל פעלד
+disable-repeating-field-help: סעלעקטירן "יא" וועט אַראָפּנעמען דעם "ריפּיטינג" פעלד ווען אַדינג געשעענישן. דאָס וועט צושטעלן אַ סימפּלער צובינד פֿאַר אָנהייבער.
+Disable Repeating field: דיסייבאַל ריפּיטינג פעלד
+allow-html-description-help: אויב ענייבאַלד, ניצערס קענען אַרייַן HTML אין די פעלד פון די געשעעניש באַשרייַבונג. אויב נישט ענייבאַלד, די HTML טאַגס וועט זיין אנטרונען צו דערשייַנען ווי קלאָר טעקסט. ווארענונג: געבן דעם שטריך קענען וסערס דערמאָנען בילדער אויף אנדערע וועבסיטעס.
+Allow HTML in Description: לאָזן HTML אין באַשרייַבונג
+Popups: אויפֿשפּרינג
+disable-popups-help: דיסייבאַל פּאָפּופּס פֿון קאַלענדאַר קוקן
+Disable Pop-Ups: דיסייבאַל פּאָפּ-אַפּס
+popup-includes-siteextras-help: אויב ענייבאַלד, דערלויבעניש סעטטינגס צו שטעלן קאַסטאַמערז אין דעם פּלאַץ_עקסטראַס.פפּ טעקע וועט זיין געוויזן אין געשעעניש פּאָפּופּס.
+Display Site Extras in popup: אַרויסווייַזן מאַפּע עקסטראַז אין אויפֿשפּרינג
+popup-includes-participants-help: אויב ענייבאַלד, פּאַרטיסאַפּאַנץ זענען געוויזן אין געשעעניש פּאָפּופּס.
+Display Participants in popup: ווייַז פּאַרטיסאַפּאַנץ אין אויפֿשפּרינג
+Miscellaneous: פאַרשיידן
+remember-last-login-help: אויב ער איז ענייבאַלד, די לאָגין פון דעם באַניצער וועט זיין אָנגעפילט אויף די לאָגין בלאַט (אָבער נישט די פּאַראָל) און די פּרעפֿערענצן פון די באַניצער וועט זיין לאָודיד (אַרייַנגערעכנט זייער בילכער קאָלאָרס און שפּראַך סעלעקציע).
+Remember last login: געדענק לעצטע לאָגין
+summary_length-help: מאַקסימום לענג פון קורץ באַשרייַבונג אין קאַלענדאַר קוקן
+Brief Description Length: קורץ באַשרייַבונג לענג
+user_sort-help: דיטערמאַנז סאָרט סדר פֿאַר באַניצער, נאָנוסער רשימות
+User Sort Order: באַניצער סאָרט אָרדער
+Lastname, Firstname: לעצטע נאמען, ערשטע נאמען
+Firstname, Lastname: ערשטע נאמען לעצטע נאמען
+allow-public-access-help: ווען די קאַלענדאַר איז ענייבאַלד, די קאַלענדאַר קענען זיין געוויינט ווי אַ לייענען-בלויז ציבור קאַלענדאַר וואָס דאַרף נישט צו זיין לאָגין פון די וסערס.
+Allow public access: לאָזן ציבור אַקסעס
+public-access-default-visible: געשעענישן פון די עפנטלעך קאַלענדאַר וועט אויטאָמאַטיש דערשייַנען אויף אַלע וסערס קאַלענדאַרס
+Public access visible by default: עפנטלעך אַקסעס קענטיק דורך פעליקייַט
+public-access-default-selected: ווען מוסיף אַ נייַע געשעעניש, דער ציבור באַניצער וועט ווערן אויסגעקליבן דורך פעליקייַט ווי אַ באַטייליקטער.
+Public access is default participant: עפנטלעך אַקסעס איז ניט ויסצאָלן באַטייליקטער
+public-access-view-others-help: ווען אַקסעס צו די סיסטעם מיט עפנטלעך אַקסעס, ספּעציפיצירט צי דער באַניצער קענען זען די קאַלענדאַר פון אן אנדער קאַלענדאַר באַניצער.
+Public access can view other users: פּובליק אַקסעס קענען זען אנדערע וסערס
+public-access-can-add-help: ווען ערלויבט, ניצערס וואָס אַקסעס די סיסטעם דורך פּובליק אַקסעס קענען לייגן נייַע געשעענישן, אָבער זיי וועלן נישט ווייַזן אין די קאַלענדאַר ביז אַ אַדמיניסטראַטאָר אַפּרווו די נייַע געשעעניש.
+Public access can add events: עפנטלעך אַקסעס קענען לייגן געשעענישן
+public-access-add-requires-approval-help: ספּעציפיצירט צי געשעענישן צוגעלייגט דורך די עפנטלעך אַקסעס אקאונט דאַרפן האַסקאָמע איידער זיי געוויזן.
+Public access new events require approval: עפֿנטלעכע אַקסעס פֿאַר נייַע געשעענישן דאַרפן האַסקאָמע
+public-access-sees-participants-help: אויב ענייבאַלד, וסערס וואָס אַקסעס די קאַלענדאַר פֿון די עפנטלעך חשבון קענען זען געשעעניש פּאַרטיסאַפּאַנץ אויב זיי זען דעטאַילס פון אַ געשעעניש.
+Public access can view participants: פּובליק אַקסעס קענען זען פּאַרטיסאַפּאַנץ
+public-access-override-help: אַלאַוז די נעמען און דיסקריפּשאַנז פון געשעענישן צו זיין פאַרבאָרגן אין די עפנטלעך קאַלענדאַר
+Override event name/description for public access: אָווועררייד נאָמען / באַשרייַבונג פֿאַר געשעעניש אַקסעס
+public-access-override-text-help: די טעקסט צו אַרויסווייַזן אויב די אויבן אָפּציע איז ענייבאַלד. אויב 'ניט בנימצא', עס וועט זיין איבערגעזעצט.
+Text to display to public access: טעקסט צו אַרויסווייַזן צו עפנטלעך אַקסעס
+public-access-captcha-help: אויב ענייבאַלד, נייַע געשעענישן צוגעלייגט דורך פּובליק דאַרפן דורכפירן אַ קאַפּטטשאַ וואַלאַדיישאַן.
+Require CAPTCHA validation for public access new events: דאַרפן קאַפּטטשאַ וואַלאַדיישאַן פֿאַר עפנטלעך אַקסעס נייַ געשעענישן
+uac-enabled-help: ינייבאַלז באַניצער-מדרגה אַקסעס קאָנטראָל
+User Access Control enabled: באַניצער אַקסעס קאָנטראָל ענייבאַלד
+groups-enabled-help: ענייבאַלז גרופּע שטיצן, אַלאַוינג וסערס צו סעלעקטירן ניצערס דורך גרופּעס.
+Groups enabled: גרופּעס ענייבאַלד
+user-sees-his-group-help: אויב ענייבאַלד, וסערס וועלן נישט זען קאַלענדאַר ניצערס וואָס זענען נישט אין מינדסטער איינער פון זייער גרופּעס.
+User sees only his groups: באַניצער זעט בלויז זיין גרופּעס
+nonuser-enabled-help: אויב ענייבאַלד, אַדמין קענען האָבן די מעגלעכקייט צו לייגן ניט-באַניצער קאַלענדאַרס
+Nonuser enabled: נאָנוסער קאַלענדאַרס ענייבאַלד
+nonuser-list-help: וווּ צו ווייַזן די נאָנוסער קאַלענדאַרס אין דער רשימה פון די פּאַרטיסאַפּאַנץ
+Nonuser list: ווייַזן אין די פּאַרטיסאַפּאַנץ רשימה ביי
+Upcoming Events: אַפּקאַמינג געשעענישן
+upcoming-events-help: געבן אַפּקאַמינג.פפּ
+Enabled: ערמעגליכט
+upcoming-events-allow-override: לאָזן באַניצער פּאַראַמעטער פֿאַר אַפּקאַמינג.פפּ
+Allow user override: לאָזן באַניצער אָווועררייד
+upcoming-events-display-caticons: אַרייַננעמען קאַטעגאָריע ייקאַנז אין אַפּקאַמינג.פפּ
+Display category icons: ווייַז קאַטעגאָריע ייקאַנז
+upcoming-events-display-layers: ווייַז לייַערס אין אַפּקאַמינג.פפּ
+Display layers: ווייַז לייַערס
+upcoming-events-display-links: ווייַזן לינקס אין אַפּקאַמינג.פפּ
+Display links to events: ווייַז לינקס צו געשעענישן
+upcoming-events-display-popups: ווייַזן געשעעניש פּאָפּופּס אין אַפּקאַמינג.פפּ
+Display event popups: ווייַז געשעעניש פּאָפּופּס
+reports-enabled-help: אויב ענייבאַלד, ניצערס וועלן זען אַ "רעפּאָרץ" אָפּטיילונג אין די דנאָ פון יעדער בלאַט און וועט זיין ערלויבט צו שאַפֿן קאַסטאַמייזד ריפּאָרץ. אַדדיטיאָנאַל ניצערס קענען אויך שאַפֿן גלאבאלע ריפּאָרץ וואָס וועט זיין געוויזן אין די דנאָ פון די בלעטער פון אַלע וסערס.
+Reports enabled: רעפּאָרץ ענייבאַלד
+subscriptions-enabled-help: ספּעציפיצירט אויב ווייַט ניצערס קענען אַבאָנירן צו אַ קאַלענדאַר פון אַ וועבקאַלענדאַר באַניצער, אַזוי זיי קענען זען די געשעענישן פון די וועבקאַלענדאַר אין זייער יקאַל-ענייבאַלד אַפּלאַקיישאַן (אַזאַ ווי עפּל ס יקאַל אָדער מאָזיללאַ קאַלענדאַר).
+Allow remote subscriptions: לאָזן ווייַט סאַבסקריפּשאַנז
+remotes-enabled-help: אַלאַוז וסערס צו לאָדן ווייַט יקס טעקעס ניצן URL
+Allow remote calendars: לאָזן ווייַט קאַלענדאַרס
+rss-enabled-help: ספּעציפיצירט אויב אַ באַניצער ס קאַלענדאַר קענען זיין באקומען פֿון אַ RSS קאָרמען.
+Enable RSS feed: געבן RSS קאָרמען
+categories-enabled-help: ענייבאַלז שטיצן פֿאַר געשעעניש קאַטעגאָריעס.
+Categories enabled: קאַטעגאָריעס ענייבאַלד
+icon_upload-enabled-help: אויב ענייבאַלד, וסערס קענען צופֿעליקער קאַטעגאָריע ייקאַנז
+Category Icon Upload enabled: קאַטעגאָריע יקאָן ופּלאָאַד ענייבאַלד
+(Requires XXX folder to exist.): (ריקווייערז קסקסקס טעקע צו זיין.)
+display-tasks-help: אַרויסווייַזן קליין אַרבעט פֿענצטער אויף חודש און טאָג קאַלענדאַר
+Display small task list: אַרויסווייַזן קליין אַרבעט רשימה
+display-tasks-in-grid-help: ווייַז טאַסקס אין קאַלענדאַרס צוזאמען מיט געשעענישן
+Display tasks in Calendars: ווייַז טאַסקס אין קאַלענדאַרס
+allow-external-users-help: ספּעציפיצירט צי אַ ניט-קאַלענדאַר באַניצער קענען זיין מוסיף צו אַ געשעעניש. דאָס אַלאַוז ניט-קאַלענדאַר ניצערס צו זיין ליסטעד ווי פּאַרטיסאַפּאַנץ פון געשעעניש.
+Allow external users: לאָזן פונדרויסנדיק וסערס
+external-can-receive-notification-help: ווען פונדרויסנדיק וסערס זענען ענייבאַלד און E- בריוו באַניץ איז ענייבאַלד, פונדרויסנדיק וסערס קענען באַקומען E- בריוו נאָוטאַפאַקיישאַנז ווען די געשעעניש איז מוסיף, דערהייַנטיקט אָדער ויסמעקן (אויב די E- בריוו אַדרעס פון די פונדרויסנדיק באַניצער איז צוגעשטעלט)
+External users can receive email notifications: פונדרויסנדיק וסערס קענען באַקומען E- בריוו נאָוטאַפאַקיישאַנז
+external-can-receive-reminder-help: ווען פונדרויסנדיק וסערס זענען ענייבאַלד און E- בריוו נוצן איז ענייבאַלד, פונדרויסנדיק וסערס קענען באַקומען E- בריוו רימיינדערז (אויב די E- בריוו אַדרעס פון די פונדרויסנדיק באַניצער איז צוגעשטעלט).
+External users can receive email reminders: פונדרויסנדיק וסערס קענען באַקומען רימיינדערז דורך E- בריוו
+allow-self-registration-help: דערלויבן נייַע ניצערס צו פאַרשרייַבן זיך
+Allow self-registration: לאָזן זיך-רעגיסטראַציע
+use-blacklist-help: באַגרענעצן אַקסעס צו וועבקאַלענדאַר פאַנגקשאַנז באזירט אויף IP אַדרעס
+Restrict self-registration to blacklist: באַגרענעצן זיך-רעגיסטראַציע צו בלאַקליסט
+allow-self-registration-full-help: לאָזן נייַע ניצערס צו פאַרענדיקן די זעלבסט-רעגיסטראַציע פּראָצעס אָנליין
+Use self-registration email notifications: דזשענערייט פּאַסווערדז און שיקן צו נייַע ניצערס
+allow-attachment-help: לאָזן וסערס צוגעבן טעקע אַטאַטשמאַנץ צו געשעענישן.
+Allow file attachments to events: לאָזן טעקע אַטאַטשמאַנץ צו געשעענישן
+Admin and owner can always add attachments if enabled.: אַדמיניסטראַטאָר און באַזיצער קענען שטענדיק לייגן אַטאַטשמאַנץ אויב ענייבאַלד.
+allow-comments-help: לאָזן וסערס צוגעבן באַמערקונגען צו געשעענישן.
+Allow comments to events: לאָזן באַמערקונגען צו געשעענישן
+Admin and owner can always add comments if enabled.: אַדמיניסטראַטאָר און באַזיצער קענען שטענדיק לייגן באַמערקונגען אויב ענייבאַלד.
+email-enabled-help: קער אויף אָדער אַוועק אַלע שיקן פון E- בריוו פֿאַר אָנזאָג און רימיינדערז. באַשטעטיק צו "קיין" אויב דיין סערווירער איז נישט רעכט סעטאַפּ צו שיקן פּאָסט.
+Email enabled: אימעיל ענייבאַלד
+email-default-sender: ספּעציפיצירט די E- בריוו אַדרעס צו ספּעציפיצירן ווי די סענדער ווען איר שיקן רימיינדערז.
+Default sender address: פעליקייַט סענדער אַדרעס
+email-mailer: קלייַבן טיפּ E- בריוו (סמטפּ, פפּ פּאָסט, סענדמאַיל)
+Email Mailer: בליצפּאָסט מיילער
+email-smtp-host: האָסטנאַמע (ס) פון סמטפּ סערווער (s) צעשיידט דורך קאָמעס
+SMTP Host name(s): סמטפּ באַלעבאָס נאָמען
+email-smtp-port: סמטפּ פּאָרט נומער (נאָרמאַלי 25)
+SMTP Port Number: סמטפּ פּאָרט נומער
+email-smtp-auth: ניצן סמטפּ אָטענטאַקיישאַן
+SMTP Authentication: סמטפּ אָטענטאַקיישאַן
+email-smtp-username: סמטפּ נאמען אויב איר נוצן אָטענטאַקיישאַן
+SMTP Username: סמטפּ נאמען
+email-smtp-password: סמטפּ שפּריכוואָרט אויב איר נוצן אָטענטאַקיישאַן
+SMTP Password: סמטפּ שפּריכוואָרט
+Default user settings: ניט ויסצאָלן באַניצער סעטטינגס
+email-format: ספּעציפיצירן ייבערהאַנט פֿאַר HTML אָדער קלאָר טעקסט אַרטיקלען
+Email format preference: אימעיל פֿאָרמאַט ייבערהאַנט
+HTML: =
+Plain Text: בלויזע טעקסט
+email-include-ics: אַרייַננעמען אַן iCalendar ICS טעקע צו E- בריוו אָנזאָג
+Include iCalendar attachments: אַרייַננעמען יקאַלענדאַר אַטאַטשמאַנץ
+email-event-reminders-help: ספּעציפיצירן צי צו שיקן געשעעניש רימיינדערז אָדער ניט.
+Event reminders: געשעעניש רימיינדערז
+email-event-added: ספּעציפיצירט צי שיקן E- בריוו נאָטיפיקאַטיאָנס אויב אַ געשעעניש איז מוסיף צו דיין קאַלענדאַר.
+Events added to my calendar: געשעענישן צוגעגעבן צו מיין קאַלענדאַר
+email-event-updated: ספּעציפיצירט צי שיקן E- בריוו נאָטיפיקאַטיאָנס אויב אַ געשעעניש איז דערהייַנטיקט אין דיין קאַלענדאַר אָדער ניט.
+Events updated on my calendar: געשעענישן דערהייַנטיקט אויף מיין קאַלענדאַר
+email-event-deleted: ספּעציפיצירט צי שיקן E- בריוו נאָטיפיקאַטיאָנס אָדער ניט אויב אַ געשעעניש איז אַוועקגענומען פון דיין קאַלענדאַר.
+Events removed from my calendar: געשעענישן אַוועקגענומען פון מיין קאַלענדאַר
+email-event-rejected: ספּעציפיצירט צי שיקן E- בריוו נאָטיפיקאַטיאָנס אָדער ניט ווען אַ באַטייליקטער רעדזשעקץ אַ געשעעניש אין דיין קאַלענדאַר.
+Event rejected by participant: געשעעניש פארווארפן דורך באַטייליקטער
+email-event-create: ספּעציפיצירט צי דער באשעפער פון איינסן וועט באַקומען אַ E- בריוו
+Event that I create: געשעעניש אַז איך מאַכן
+Color options: קאָליר אָפּציעס
+Allow user to customize colors: לאָזן באַניצער צו קאַסטאַמייז פארבן
+gradient-colors: אויב ענייבאַלד גראַדיענט פארבן זענען געניצט. דאָס קען זייער פּראַל אויף פאָרשטעלונג.
+Enable gradient images for background colors: געבן גראַדיענט בילדער פֿאַר הינטערגרונט פארבן
+Not available: נישט עוועלעבעל
+Background Image options: הינטערגרונט בילד אָפּציעס
+bgimage-help: URL פון געוואלט הינטערגרונט בילד. קען זיין קאָרעוו לינק.
+Background Image: הינטערגרונט בילד
+bgrepeat-help: קאָנטראָלס איבערחזרן נאַטור פון הינטערגרונט בילד.
+Background Repeat: הינטערגרונט איבערחזרן
+
+########################################
+# Page: adminhome.php
+#
+Assistants: אַסיסטאַנץ
+Preferences: פּרעפֿערענצן
+Control Panel: קאָנטראָל פּאַנעל
+Users: וסערס
+Account: קאנטע
+Categories: קאַטעגאָריעס
+Views: קוקן
+Layers: לייַערס
+Reports: רעפּאָרץ
+Delete Events: ויסמעקן עווענץ
+Activity Log: אַקטיוויטי קלאָץ
+System Log: סיסטעם קלאָץ
+Security Audit: זיכערהייט אַודיט
+Public Preferences: עפנטלעך פּרעפֿערענצן
+Unapproved Public Events: אַנאַפּרייזד עפנטלעך געשעענישן
+Administrative Tools: אַדמיניסטראַטיווע מכשירים
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: דופּליקאַט נאָמען: "קסקסקס".
+Username XXX already exists.: באנוצער נאמען "XXX" עקזיסטירט שוין.
+Email address XXX already exists.: אימעיל אדרעס "XXX" עקזיסטירט שוין.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): נאָך באַמערקונגען (אַפּשאַנאַל)
+Approve and Send: אַפּפּראָוועד און שיקן
+Approve and Exit: אַפּפּראָוועד און עקסיט
+(Your comments will be emailed to the event creator.): (דיין באַמערקונגען וועט זיין E- בריוו צו דער געשעעניש שאַפֿער.)
+Hello, XXX.: העלא, קסקסקס.
+XXX has approved an appointment and added comments.: אַ אַפּוינטמאַנט איז באוויליקט און די באַמערקונגען זענען צוגעגעבן דורך XXX.
+Subject XXX: טעמע: "XXX".
+Description XXX: באַשרייַבונג: "XXX".
+Date XXX: דאַטע: XXX
+Time XXX: צייט: קסקסקס
+Comments XXX: באַמערקונגען: XXX
+Approved w/Comments by XXX.: באוויליקט וו / באַמערקונגען דורך: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: אַדמין מאָדע
+Your assistants: דיין אַסיסטאַנץ
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: אומבאַקאַנט טעות.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: פּראָגראַם טעות: קיין קסקסקס ספּעסאַפייד!
+user: באַניצער
+year: יאָר
+month: חודש
+day: טאָג
+
+########################################
+# Page: category.php
+#
+Category Icon: קאַטעגאָריע יקאָן
+Global: גלאבאלע
+The permissions for the icons directory are set to read-only: די פּערמישאַנז פֿאַר די ייקאַנז וועגווייַזער זענען באַשטימט צו לייענען בלויז.
+Category Name: קאַטעגאָריע נאָמען:
+Color: פאַרב
+Remove Icon: נעם ייקאַן:
+Add Icon to Category: לייג יקאָן צו קאַטעגאָריע
+Upload: צופֿעליקער
+GIF or PNG 6kb max: GIF אָדער PNG 6 קב מאַקס
+Search for existing icons: זוכן פֿאַר יגזיסטינג נוליקע
+Add: לייג צו
+Delete: ויסמעקן
+Are you sure you want to delete this entry?: זענט איר זיכער איר ווילט צו ויסמעקן דעם פּאָזיציע?
+Make New Category: מאַכן ניו קאַטעגאָריע
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: קאַטעגאָריע נאָמען איז פארלאנגט
+File size exceeds maximum.: טעקע גרייס יקסיד מאַקסימום.
+File is not a GIF or PNG image: טעקע איז נישט אַ GIF אָדער PNG בילד
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: =
+ENTRY CATEGORIES: פּאָזיציע קאַטעגאָריעס
+Remove: אַראָפּנעמען
+Global Category: גלאבאלע קאַטעגאָריע
+Cancel: באָטל מאַכן
+
+########################################
+# Page: colors.php
+#
+Add Custom: לייג קאַסטאַם
+Basic Colors: באַסיק קאָלאָרס
+Current Color: קראַנט קאָליר
+Custom Colors: מנהג קאָלאָרס
+Old Color: אַלטע קאָליר
+
+########################################
+# Page: combo.php
+#
+Select None: סעלעקטירן גאָרניט
+Agenda: אַגענדאַ
+Add Task: לייג טאַסק
+Description: באַשרייַבונג
+Date: טאָג
+Time: צייַט
+Priority: בילכערקייַט
+Access: אַקסעס
+Created by: געמאכט דורך
+Updated: דערהייַנטיקט
+Participants: פּאַרטיסיפּאַנץ
+Attachments: אַטאַטשמאַנץ
+Comments: באַמערקונגען
+Brief Description: קורץ באַשרייַבונג
+Full Description: גאַנץ באַשרייַבונג
+Category: קאַטעגאָריע
+Add event detail: לייג געשעעניש דעטאַל
+Start Date: אנהייב דאטום
+Due Date: רעכט דאַטע
+Add task detail: לייג אַרבעט דעטאַל
+All: אַלע
+Error: טעות
+no response from server: קיין ענטפער פון סערווער
+JSON error: JSON טעות
+High: הויך
+Medium: מיטל
+Low: נידעריק
+Today: היינט
+Add Entry: לייג פּאָזיציע
+Unnamed Event: אָן נאָמען
+Unnamed Task: אָן נאָמען
+Refresh: דערפרישן
+Click to add entry: גיט צו לייגן פּאָזיציע
+Name: נאָמען
+pm: נאָכמיטאָג
+am: בין
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX האט קאַנסאַלד אַ אַפּוינטמאַנט.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: אונגילטיג BLOB ID
+
+########################################
+# Page: docadd.php
+#
+Add Comment: לייג קאַמענט
+Add Attachment: לייג אַטטאַטשמענט
+Subject: ונטערטעניק
+Comment: באַמערקונג
+Upload file: צופֿעליקער טעקע
+
+########################################
+# Page: docdel.php
+#
+Removed: אַוועקגענומען
+
+########################################
+# Page: edit_entry.php
+#
+days: טעג
+hours: שעהען
+minutes: מינוט
+You are not authorized to edit this task.: איר זענט נישט אָטערייזד צו רעדאַגירן די אַרבעט.
+is in a different timezone than you are. Currently: איז אין אַ אַנדערש צייט זאָנע ווי איר זענט. דערווייַל
+hour ahead of you: שעה פאָרויס פון איר
+hour behind you: שעה הינטער איר
+hours ahead of you: שעה פאָרויס פון איר
+hours behind you: שעה הינטער איר
+XXX is in a different timezone (ahead): (XXX איז אין אַ אַנדערש צייט זאָנע; ייי פאָרויס פון דיר.<br>& נבספּ; זזז)
+XXX is in a different timezone (behind): (XXX איז אין אַ אַנדערש צייט זאָנע; ייי הינטער דיר.<br>& נבספּ; זזז)
+Time entered here is based on your Timezone.: די צייט אריין דאָ איז באזירט אויף דיין צייט זאָנע.
+Edit Entry: רעדאַגירן פּאָזיציע
+Details: דעטאַילס
+Repeat: איבערחזרן
+Reminders: רימיינדערז
+brief-description-help: דאָס זאָל צושטעלן אַ קורץ באַשרייַבונג (וועגן 20 אותיות) פון די געשעעניש. דאָס וועט פאָרשטעלן די געשעעניש ווען איר זען די קאַלענדאַר.
+full-description-help: אין דעם פאַל, די פרטים פון דער געשעעניש זאָל זיין גאַנץ. די אינפֿאָרמאַציע איז קענטיק ווען דער באַניצער זעט די געשעעניש.
+access-help: ספּעציפיצירט די אַקסעס מדרגה פון די געשעעניש. <ul> <li> עפנטלעך: אַלעמען קענען זען די פול דעטאַילס פון די געשעעניש.</li> <li> קאַנפאַדענשאַל: אנדערע קענען זען אַז איר האָבן אַ פּאָזיציע פֿאַר די דאַטע און צייט, אָבער ניט די דעטאַילס פון וואָס עס איז.</li></ul>
+priority-help: ספּעציפיצירט די בילכערקייַט פון די געשעעניש. געשעענישן מיט הויך בילכערקייַט וועט זיין געוויזן מיט דרייסט.
+category-help: ספּעציפיצירט די קאַטעגאָריע פון ​​דער געשעעניש.
+completed-help: דאַטע אַרבעט איז געענדיקט. בלויז ענייבאַלד ווען אַלע פּאַרטיסאַפּאַנץ פּאַרטיסאַפּאַנץ יקוואַלז 100%.
+Date Completed: טאָג געענדיקט
+percent-help: אַרבעט קאַמפּלישאַן פּראָצענט פֿאַר דעם באַניצער
+Percent Complete: פּראָצענט גאַנץ
+All Percentages: כל פּראָצענט
+location-help: געשעעניש אָרט
+Location: אָרט
+url-help: געשעעניש URL
+URL: =
+date-help: ספּעציפיצירט די דאַטע פון ​​דער געשעעניש.
+Untimed event: אַנטימד געשעעניש
+Timed event: טיימד געשעעניש
+All day event: אַלע טאָג געשעעניש
+Timezone Offset: צייט זאָנע אָפסעט
+time-help: ספּעציפיצירט די צייט פון דער געשעעניש. <ul> <li> "טיימד געשעעניש" (פֿאַר אַ געשעעניש וואָס איז סקעדזשולד פֿאַר אַ ספּעציפיש צייט אויף דעם טאָג)</li> <li> "אַנטימד געשעעניש" (פֿאַר אַ געשעעניש דאָס האט נישט אַ צייט (ווי אַ יום טוּב</li> <li> "א גאַנצן טאָג געשעעניש" (פֿאַר אַ געשעעניש וואָס נעמט אַ גאַנצן טאָג (ווי זייַענדיק אויס פון די אָפיס)</li></ul>
+duration-help: ספּעציפיצירט די געדויער (אין שעה; מינוט) פון דער געשעעניש. <em>דאָס פעלד קען זיין ליידיק.</em>
+end-time-help: ספּעציפיצירט די צייט וואָס די געשעעניש איז דערוואַרט צו ענדיקן.
+Start Time: אָנהייב צייט
+Due Time: רעכט צייט
+Site Extras: מאַפּע עקסטראַז
+avail_participants-help: ליסטעד די פאַראַנען פּאַרטיסאַפּאַנץ פון דעם פּאָזיציע.
+Available: בנימצא
+Find Name: געפֿינען נאָמען
+Resources: רעסורסן
+participants-help: רשימה די פּאַרטיסאַפּאַנץ פון דעם פּאָזיציע.
+Selected: סעלעקטעד
+Availability: אַוואַילאַביליטי
+external-participants-help: ספּעציפיצירט אַ רשימה פון פּאַרטיסאַפּאַנץ פֿאַר די געשעעניש וואָס זענען נישט קאַלענדאַר ניצערס. די ניצערס זאָל זיין ליסטעד איינער פּער שורה און קענען אַרייַננעמען אַן E- בריוו אַדרעס. אויב אַ E- בריוו אַדרעס איז ספּעסאַפייד, דער באַניצער איז בארעכטיגט צו באַקומען נאָוטאַפאַקיישאַנז און רימיינדערז.
+External Participants: פונדרויסנדיק פּאַרטיסאַפּאַנץ
+repeat-type-help: סעלעקטירן ווי אָפט די געשעעניש זאָל איבערחזרן.
+Daily: טעגלעך
+Weekly: וואכנשריפט
+Monthly: כוידעשלעך
+by day: ביי טאג
+by date: לויט דאַטע
+by position: לויט שטעלע
+Monthly (by day): כוידעשלעך (דורך טאָג)
+Monthly (by date): כוידעשלעך (לויט דאַטע)
+Monthly (by position): כוידעשלעך (דורך שטעלע)
+Yearly: יערלעך
+Manual: מאַנואַל
+Expert Mode: עקספּערט מאָדע
+repeat-end-date-help: ספּעציפיצירט די דאַטע פון ​​וואָס די געשעעניש זאָל איבערחזרן ביז.
+Ending: סאָף
+Forever: אויף אייביק
+Use end date: ניצן סוף טאָג
+Number of times: נומער פון מאל
+repeat-frequency-help: ספּעציפיצירט ווי אָפט די געשעעניש זאָל איבערחזרן.
+Frequency: אָפטקייַט
+Weekdays Only: בלויז וויקדייז
+Week Start: וואָך אָנהייב
+repeat-bydayextended-help: אַלאַוז דאַטע סעלעקציע באזירט אויף טאָג פון וואָך.
+ByDay: ביידיי
+repeat-month-help: ספּעציפיצירט אין וועלכע חדשים די געשעעניש זאָל איבערחזרן.
+ByMonth: =
+repeat-bysetpos-help: אַלאַוז דאַטע סעלעקציע באזירט אויף שטעלע אין דעם חודש.
+BySetPos: =
+repeat-bymonthdayextended-help: אַלאַוז דאַטע סעלעקציע באזירט אויף דאַטע.
+ByMonthDay: =
+repeat-byweekno-help: אַלאַוז באַניצער צו ספּעציפיצירן אַ רשימה פון וואָכן צו איבערחזרן די געשעעניש (1,2 ... 53, -53, -52 ... -1).
+ByWeekNo: =
+repeat-byyearday-help: אַלאַוז באַניצער צו ספּעציפיצירן אַ רשימה פון יאָר טעג צו איבערחזרן די געשעעניש (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: דורךYearDay
+repeat-exceptions-help: נאָך טעג וואָס די געשעעניש זאָל אָדער זאָל נישט פּאַסירן אויף.
+Exclusions: יקסקלוזשאַנז
+Inclusions: ינקלוזשאַנז
+Add Exception: לייג ויסנעם
+Add Inclusion: לייג ינקלוזשאַן
+Delete Selected: ויסמעקן סעלעקטעד
+Send Reminder: שיקן רימיינדער
+When: ווען
+Use Date/Time: ניצן טאָג / צייט
+Use Offset: ניצן פאָטאָ
+Before: איידער
+After: נאָך
+Start: אָנהייב
+End/Due: ענד / דו
+Times: =
+Every: יעדער
+CAPTCHA Warning: ווארענונג: קען נישט נוצן CAPTCHA אָן PHP ס GD פאַרלענגערונג!<br>
+Delete entry: ויסמעקן פּאָזיציע
+You are not authorized to edit this entry.: איר זענט נישט אָטערייזד צו רעדאַגירן דעם פּאָזיציע.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX האט געמאכט אַ נייַע אַפּוינטמאַנט.
+XXX has updated an appointment.: XXX האט דערהייַנטיקט אַ אַפּוינטמאַנט.
+Security violation!: זיכערהייט הילעל!
+You must enter the anti-spam text on the previous page.: איר מוזן אַרייַן די אַנטי-ספּאַם טעקסט אויף די פריערדיקע בלאַט.
+The following conflicts with the suggested time: די פאלגענדע קאַנפליקץ מיט די סאַגדזשעסטיד צייט
+User removed from participants list.: באַניצער אַוועקגענומען פון די פּאַרטיסאַפּאַנץ רשימה.
+Please look on XXX to accept or reject this appointment.: ביטע קוק אויף XXX צו אָננעמען אָדער אָפּוואַרפן דעם אַפּוינטמאַנט.
+Please look on XXX to view this appointment.: ביטע קוק אויף XXX צו זען דעם אַפּוינטמאַנט.
+Scheduling Conflict: סטשעדולינג קאָנפליקט
+Your suggested time of: דיין סאַגדזשעסטיד צייט פון
+conflicts with the following existing calendar entries: קאנפליקטן מיט די פאלגענדע יגזיסטינג קאַלענדאַר איינסן
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX איז נישט באַשטימט אין "config.php".
+word characters only: (קען נאר אנטהאלטן ווערטער אותיות; [a-zA-Z_0-9])
+Add User: לייג באַניצער
+Edit User: רעדאַגירן באַניצער
+Calendar ID: קאַלענדאַר שייַן
+First Name: ערשטע נאמען
+Last Name: לעצטע נאמען
+Is public calendar: איז עפנטלעך קאַלענדאַר
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: דאַטאַבייס טעות
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: לייג רימאָוט קאַלענדאַר
+Edit Remote Calendar: רעדאַגירן רימאָוט קאַלענדאַר
+Create Layer: שאַפֿן לייַער
+Reload: =
+Required to View Remote Calendar: פארלאנגט צו זען רימאָוט קאַלענדאַר
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: אַרייַנפיר רעזולטאַטן
+Events successfully imported: געשעענישן הצלחה ימפּאָרטיד
+Create a new layer to view this calendar.: שאַפֿן אַ נייַע שיכטע צו זען דעם קאַלענדאַר.
+Errors: ערראָרס
+There was an error parsing the import file or no events were returned.: עס איז געווען אַ טעות ביי פּאַריזירן די אַרייַנפיר טעקע אָדער קיין געשעענישן זענען אומגעקערט.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: מאָרגן
+Yesterday: נעכטן
+Day before yesterday: טאָג איידער נעכטן
+Next week: נעקסטע וואך
+This week: די וואך
+Last week: לעצטע וואָך
+Week before last: וואָך איידער לעצט
+Next week and week after: ווייַטער וואָך און וואָך נאָך
+This week and next week: די וואָך און ווייַטער וואָך
+Last week and this week: לעצטע וואָך און די וואָך
+Last two weeks: לעצטע צוויי וואָכן
+Next month: קומענדיגן מאנאט
+This month: דעם חודש
+Last month: לעצטע מאנאט
+Month before last: חודש איידער לעצט
+Next year: קומענדיגע יאר
+This year: דאס יאר
+Last year: לעצטע יאר
+Year before last: יאָר איידער לעצט
+Next 14 days: קומעדיקע 14 טעג
+Next 30 days: קומענדיקע 30 טעג
+Next 60 days: קומענדיקע 60 טעג
+Next 90 days: קומענדיקע 90 טעג
+Next 180 days: קומענדיקע 180 טעג
+Next 365 days: קומענדיקע 365 טעג
+Invalid report id XXX.: אונגילטיג באריכט ID: "XXX".
+Unnamed Report: אָן נאָמען באַריכט
+Add Report: לייג באריכט
+Edit Report: רעדאַגירן באריכט
+Report name: באריכט נאָמען
+User: באַניצער
+Current User: קראַנט באַניצער
+Include link in menu: אַרייַננעמען לינק אין מעניו
+Include standard header/trailer: אַרייַננעמען נאָרמאַל כעדער / טריילער
+Include previous/next links: אַרייַננעמען פרייַערדיק / ווייַטער לינקס
+Include empty dates: אַרייַננעמען ליידיק דאַטעס
+Date range: דאַטע קייט
+Template variables: מוסטער וועריאַבאַלז
+Page template: בלאַט מוסטער
+Day template: טאָג מוסטער
+Event template: געשעעניש מוסטער
+Are you sure you want to delete this report?: ביסטו זיכער אז דו ווילסט אויסמעקן דעם באריכט?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: ניט אַזאַ באַריכט שייַן: "XXX".
+Variable XXX not found.: וואַריאַבלע XXX ניט געפֿונען.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: רעדאַגירן קאַסטאַם כעדער
+Edit Custom Script/Stylesheet: רעדאַגירן קאַסטאַם סקריפּט / סטילעשעעט
+Edit Custom Trailer: רעדאַגירן קאַסטאַם טריילער
+
+########################################
+# Page: edit_user.php
+#
+Username: נאמען
+E-mail address: אימעיל אדרעס
+Password: שפּריכוואָרט
+again: ווידער
+Disabled for demo: דיסאַבלעד פֿאַר דעמאָ
+Are you sure you want to delete this user?: ביסטו זיכער אז דו ווילסט אויסמעקן דעם באנוצער?
+Change Password: טוישן שפּריכוואָרט
+New Password: ניו שפּריכוואָרט
+Set Password: באַשטעטיקט שפּריכוואָרט
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: דעלעטינג וסערס ניט געשטיצט.
+The passwords were not identical.: די פּאַסווערדז זענען נישט יידעניקאַל.
+You have not entered a password.: דו האסט נישט אריינגעגעבן א פעסווארד.
+Username cannot be blank.: נאמען קען נישט זיין פּוסט.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: נישט אָטערייזד
+
+########################################
+# Page: export.php
+#
+Export: אַרויספירן
+Export format: אַרויספירן פֿאָרמאַט
+Include all layers: אַרייַננעמען אַלע לייַערס
+Include deleted entries: אַרייַננעמען אויסגעמעקט איינסן
+Export all dates: אַרויספירן אַלע דאַטעס
+Start date: אנהייב דאטום
+End date: סוף טאָג
+Modified since: מאַדאַפייד זינט
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: אַרויספירן פֿאָרמאַט ניט דיפיינד אָדער פאַלש.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: קיין באַניצער ספּעסאַפייד.
+
+########################################
+# Page: groups.php
+#
+Add New Group: לייג New גרופע
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: אָן נאָמען גרופּע
+Add Group: לייג גרופע
+Edit Group: רעדאַגירן גרופע
+Group name: גרופע נאָמען
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: איר מוזן ספּעציפיצירן אַ גרופּע נאָמען
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: אַוטאָ-דערפרישן קאַלענדאַרס
+auto-refresh-help: אויב ענייבאַלד, די טאָג מיינונג, וואָך מיינונג, חודש מיינונג, און רשימה אַנאַפּרוווד בלעטער אַלע אויטאָמאַטיש דערפרישן זיך פּיריאַדיקלי.
+Auto-refresh time: אַוטאָ-דערפרישן צייט
+auto-refresh-time-help: אויב אַוטאָ-דערפרישן איז ענייבאַלד, דאָס ספּעציפיצירן די צייט צווישן יעדער דערפרישן.
+Display days with events in bold in year view: ווייַז טעג מיט געשעענישן מיט דרייסט אין יאָר מיינונג
+Display weekends in week view: ווייַז וויקענדז אין וואָך מיינונג
+Time interval: צייט מעהאַלעך
+time-interval-help: ספּעציפיצירט ווי לאַנג די צייט בלאַקס אין די וואָך מיינונג און טאָג מיינונג וועט זיין.
+Nonuser: נאָנוסער קאַלענדאַרס
+user-customize-color: ספּעציפיצירט צי וסערס זענען ערלויבט צו מאָדיפיצירן זייער אייגענע קאָליר סכעמע.
+enable-gradient-help: ניצן גראַדיענט פארבן פֿאַר צעל באַקגראַונדז.
+Manually entering color values: מאַניואַלי אַרייַן קאָליר וואַלועס
+colors-help: כל פארבן זאָל זיין ספּעסיפיעד אין "#RRGGBB" העקסאַדעסימאַל פֿאָרמאַט וווּ "RR" איז די העקס ווערט פֿאַר רויט, "GG" איז די העקס ווערט פֿאַר גרין, און "BB" איז די העקס ווערט פֿאַר בלוי.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: באריכט באַג
+Please include all the information below when reporting a bug.: ביטע אַרייַן אַלע די אונטן אינפֿאָרמאַציע ווען ריפּאָרטינג אַ זשוק.
+Also, please use English rather than XXX.: ביטע נוצן  ענגליש אלא ווי XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: וועבקאַלענדאַר דאָקומענטאַטיאָן
+Currently in English only.: דערווייַל בלויז אין ענגליש.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: אַדדינג / עדיטינג קאַלענדאַר ענטריעס
+Repeat Type: איבערחזרן טיפּ
+For More Information...: פֿאַר מער אינפֿאָרמאַציע ...
+Repeat End Date: איבערחזרן סוף טאָג
+Repeat Day: איבערחזרן טאָג
+repeat-day-help: ספּעציפיצירט אויף וואָס טעג פון דער וואָך די געשעעניש זאָל איבערחזרן.
+
+########################################
+# Page: help_import.php
+#
+Import: אַרייַנפיר
+Palm Desktop: פאלם דעסקטאָפּ
+allow you to import entries from the Palm...: מיט דעם פאָרעם איר קענען אַרייַנפיר איינסן פון די Palm Desktop Datebook. עס זאָל זיין ליגן אין דיין פאלם וועגווייַזער אין דאַטעבאָאָק / דאַטעבאָאָק.דאַט אין אַ סובדירעקטאָרי געהייסן דורך דיין נאמען.
+The following entries will not be imported: די פאלגענדע איינסן וועלן נישט ימפּאָרטיד:
+Entries older than the current date: איינסן עלטער ווי די קראַנט דאַטע
+Entries created in the Palm Desktop...: ענטריעס באשאפן אין די פאלם דעסקטאָפּ וואָס זענען נישט האָצינק'ד
+Anything imported from Palm...: עפּעס ימפּאָרטיד פון פּאַלם וועט זיין אָוווערריטאַן בעשאַס דער ווייַטער אַרייַנפיר (סייַדן די געשעעניש דאַטע איז דורכגעגאנגען). דעריבער, דערהייַנטיקונגען זאָל זיין געמאכט אין די Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: דער פאָרעם וועט אַרייַנפיר ווקאַלענדאַר (. ווקס) 1.0 events.
+The following formats have been tested: די פאלגענדע פֿאָרמאַטירונגען זענען טעסטעד:
+This form will import iCalendar (.ics) events.: דער פאָרעם ימפּאָרץ יקאַלענדאַר (.יקס) געשעענישן.
+Enabling: ענייבאַלינג
+Overwrite Prior Import: אָווועררייט פריער ימפּאָרט
+will cause events imported previously...: וועט פאַרשאַפן געשעענישן ימפּאָרטיד ביז אַהער, וואָס געוויינט די זעלבע UID ווי אַ געשעעניש פון די נייַע אַרייַנפיר טעקע, צו זיין אנגעצייכנט ווי אויסגעמעקט. דאָס זאָל לאָזן אַ דערהייַנטיקט יקאַלענדאַר טעקע ימפּאָרטיד אָן קריייטינג דופּליקאַטן.
+
+########################################
+# Page: help_index.php
+#
+Help Index: הילף אינדעקס
+About WebCalendar: וועגן וועבקאַלענדאַר
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: לייַערס זענען נוציק פֿאַר ווייַזנדיק געשעענישן פון אנדערע ניצערס אין דיין אייגענע קאַלענדאַר. איר קענען ספּעציפיצירן דער באַניצער און די קאָליר אין וואָס די געשעענישן וועט זיין געוויזן.
+Add/Edit/Delete: לייג / רעדאַגירן / ויסמעקן
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: קליקינג אויף די רעדאַגירן לייַערס לינק אין דער אַדמין אָפּטיילונג אין די דנאָ פון די בלאַט, איר קענען לייגן / רעדאַגירן / ויסמעקן לייַערס.
+The text color of the new layer that will be displayed in your calendar.: די טעקסט קאָליר פון די נייַ שיכטע וואָס וועט זיין געוויזן אין דיין קאַלענדאַר.
+Disabling: דיסאַבלינג
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: דרוק דעם דיסייבאַל לייַערס לינק אין דער אַדמין אָפּטיילונג אין די דנאָ פון די בלאַט צו קער אַוועק לייַערס.
+Duplicates: דופּליקאַטן
+If checked, events that are duplicates of your events will be shown.: אויב אָפּגעשטעלט, געשעענישן וואָס זענען דופּליקאַטן פון דיין געשעענישן וועט זיין געוויזן.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: דרוק דעם לינק ענאַבלע לייַערס אין דער אַדמין אָפּטיילונג אין די דנאָ פון די בלאַט צו אָנמאַכן לייַערס.
+Source: מקור
+Specifies the user that you would like to see displayed in your calendar.: ספּעציפיצירט דער באַניצער וואָס איר ווילט צו ווייַזן אין דיין קאַלענדאַר.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: פעליקייַט קאַטעגאָריע
+default-category-help: ספּעציפיצירט די קאַטעגאָריע וואָס אַ נייַע געשעעניש זאָל זיין פעליק צו.
+When I am the boss: ווען איך בין דער באַלעבאָס
+Email me event notification: בליצפּאָסט מיר געשעעניש אָנזאָג
+email-boss-notifications-help: ספּעציפיצירט אויב באָססעס באַקומען ימיילז ווי געשעעניש נאָוטאַפאַקיישאַנז.
+I want to approve events: איך ווילן צו אַפּרווו געשעענישן
+boss-approve-event-help: ספּעציפיצירט צי דער באַלעבאָס וועט זיין פארלאנגט צו אַפּפּראָוועד געשעענישן צוגעגעבן דורך אַסיסטאַנץ.
+Subscribe/Publish: אַבאָנירן / אַרויסגעבן
+Allow remote publishing: לאָזן ווייַט ארויסגעבן
+allow-remote-publishing-help: ספּעציפיצירט אויב אַ ווייַט יקאַל קליענט קענען אַרויסגעבן געשעענישן צוריק צו וועבקאַלענדאַר
+remote-publishing-url-help: דיספּלייז די URL צו נוצן אין די iCal קליענט אַפּלאַקיישאַן פֿאַר סאַבסקרייבינג און ארויסגעבן צוריק צו וועבקאַלענדאַר.
+allow-remote-subscriptions-help: ספּעציפיצירט אויב ווייַט וסערס קענען אַבאָנירן צו דיין קאַלענדאַר און לאָזן זיי זען דיין געשעענישן אין אַ יקאַל-ענייבאַלד אַפּלאַקיישאַן (אַזאַ ווי עפּל ס iCal אָדער מאָזיללאַ קאַלענדאַר).
+remote-subscriptions-url-help: דיספּלייז URL רימאָוט וסערס זאָל זיין אַבאָנעמענט צו דיין קאַלענדאַר.
+Enable FreeBusy publishing: געבן פרעעבוסי ארויסגעבן
+freebusy-enabled-help: ספּעציפיצירט אויב די פאַראַנען צייט פון אַ באַניצער קענען זיין באקומען מיט די iCal FreeBusy נאָרמאַל.
+freebusy-url-help: URL פֿאַר אַקסעס FreeBusy רשימה פון באַניצער
+rss-feed-url-help: די URL צו אַקסעס די RSS קאָרמען
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: אַלאַוז פייַן קאָנטראָל פון באַניצער אַקסעס און פּערמישאַנז. וסערס קענען אויך שענקען פעליקייַט און פּער יחיד דערלויבעניש אויב אָטערייזד דורך דער אַדמיניסטראַטאָר.
+If disabled, this user cannot send you emails.: אויב די פאַרקריפּלט, דער באַניצער קען נישט שיקן איר ימיילז.
+If disabled, this user cannot see you in the participants list.: אויב די פאַרקריפּלט, דער באַניצער קען נישט זען איר אין די פּאַרטיסאַפּאַנץ רשימה.
+If enabled, this user cannot view the details of any of your entries.: אויב ענייבאַלד, דער באַניצער קען נישט זען די דעטאַילס פון דיין איינסן.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): פּובלישינג דיסאַבלעד (אַדמין)
+Publishing Disabled (User): פּובלישינג דיסאַבלעד (באַניצער)
+
+########################################
+# Page: icons.php
+#
+Click to Select: גיט צו סעלעקטירן
+Current Icons on Server: קראַנט יקאָנס אויף סערווירער
+
+########################################
+# Page: import.php
+#
+import from file: אַרייַנפיר פון טעקע
+Disabled: דיסאַבלעד
+Import format: אַרייַנפיר פֿאָרמאַט
+Exclude private records: ויסשליסן פּריוואַט רעקאָרדס
+Repeated items are imported separately. Prior imports are not overwritten.: ריפּיטיד ייטאַמז זענען ימפּאָרטיד סעפּעראַטלי. פריערדיק ימפּאָרץ זענען נישט אָוווערריטאַן.
+
+########################################
+# Page: import_handler.php
+#
+No file: קיין טעקע
+Error deleting palm events from webcalendar.: טעות ביי ויסמעקן פאלם געשעענישן פון וועבקאַלענדאַר.
+Events from prior import marked as deleted: געשעענישן פון פריערדיקן אַרייַנפיר אָפּגעמערקט ווי אויסגעמעקט
+Conflicting events: קאַנפליקטינג געשעענישן
+The import file contained no data.: די אַרייַנפיר טעקע כּולל קיין דאַטן.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: ביסטו זיכער אז דו ווילסט אויסמעקן די שיכטע?
+Delete layer: ויסמעקן שיכטע
+Edit layer: רעדאַגירן שיכטע
+Enable layers: געבן לייַערס
+Layer: שיכט
+Layers are currently disabled.: לייַערס זענען דערווייַל פאַרקריפּלט.
+Layers are currently enabled.: לייַערס זענען דערווייַל ענייבאַלד.
+Click to modify layers settings for XXX: דריקט דאָ צו מאָדיפיצירן די לייַערס סעטטינגס פֿאַר די קסקסקס קאַלענדאַר.
+Disable Layers: דיסייבאַל לייַערס
+Add layer: לייג שיכטע
+Add Layer: לייג לייַער
+Edit Layer: רעדאַגירן לייַער
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: ניט געקענט צו דערהייַנטיקן ייבערהאַנט
+Invalid entry id.: אונגילטיג איינטריט ID.
+You cannot create a layer for yourself.: איר קענט נישט מאַכן אַ שיכטע פֿאַר זיך.
+You can only create one layer for each user.: איר קענט בלויז שאַפֿן איין שיכטע פֿאַר יעדער באַניצער.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: באַשטעטיקן / באַשטעטיקן
+Approve Selected: אַפּפּראָוועד סעלעקטעד
+Check All: קוק אַלע
+Emails Will Not Be Sent: עמאַילס וועט נישט ווערן געשיקט
+Reject Selected: אָפּוואַרפן סעלעקטעד
+Reject: אָפּוואַרפן
+Uncheck All: =
+View this entry: View דעם פּאָזיציע
+No unapproved entries for XXX.: קיין אַנאַפּפּראָוועד איינסן פֿאַר: "XXX".
+Unapproved Entries: אַנאַפּרייזד ענטריעס
+Approve this entry?: באַשטעטיקן דעם פּאָזיציע?
+Reject this entry?: אָפּוואַרפן דעם פּאָזיציע?
+Approve Selected entries?: אַפּפּראָוועד סעלעקטעד איינסן?
+Reject Selected entries?: אָפּוואַרפן סעלעקטעד איינסן?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: איר מוזן אַרייַן אַ לאָגין און פּאַראָל.
+Save login via cookies so I dont have to login next time.: היט לאָגין דורך קיכלעך אַזוי איך טאָן ניט האָבן צו לאָגין ווייַטער צייַט
+Login: צייכן אריין
+public: עפנטלעך
+Access XXX calendar: אַקסעס קסקסקס קאַלענדאַר
+cookies-note: באַמערקונג: די אַפּלאַקיישאַן ריקווייערז קיכלעך צו זיין ענייבאַלד.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: ומלעגאַל אותיות אין לאָגין קסקסקס.
+Invalid login: פאַרקריפּלט לאָגין
+Activity login failure: נאמען: "XXX", IP: "YYY".
+Error XXX: טעות: "XXX".
+You have been logged out.: איר האָט שוין לאָגד אויס.
+Access public calendar: אַקסעס עפנטלעך קאַלענדאַר
+Not yet registered? Register here!: נישט נאָך רעגיסטרירט? פאַרשרייַבן דאָ!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: ניט אַזאַ ניט-ניוזער קאַלענדאַר: "קסקסקס".
+This Calendar is not Public.: דער קאַלענדאַר איז ניט עפנטלעך.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: לייג New נאָנוסער קאַלענדאַר
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: א לאָגין מוזן זיין ספּעסאַפייד.
+No such nonuser calendar: ניט אַזאַ נאָנוסער קאַלענדאַר
+
+########################################
+# Page: pref.php
+#
+Invalid theme: אונגילטיג טעמע
+Save Preferences: היט פּרעפֿערענצן
+Public Access calendar: פּובליק אַקסעס קאַלענדאַר
+Modify Non User Calendar Preferences: מאָדיפיצירן ניט-באַניצער קאַלענדאַר פּרעפֿערענצן
+Return to My Preferences: צוריקקומען צו מיין פּרעפֿערענצן
+Custom Scripts: מנהג סקריפּס
+Timezone Selection: צייט זאָנע סעלעקציע
+Multiview: מולטיוויעוו:
+entry-interval-help: שטעלט מינוט מעהאַלעך ווען עדיטינג פּאָזיציע מאָל
+Entry interval: פּאָזיציע מעהאַלעך
+hour: שעה
+minute: מינוט
+theme-reload-help: רעכט צו CSS קאַטשינג, אַ בלאַט רילאָוד קען זיין פארלאנגט
+Page may need to be reloaded for new Theme to take effect: די בלאַט קען זיין רילאָודיד פֿאַר די נייַע טעמע
+display_byproxy-help: ווייַז די פאַקטיש באשעפער אויף וויעוו_ענטרי בלאַט
+Display if created by Assistant: אַרויסווייַזן אויב באשאפן דורך אַססיסטאַנט
+allow-view-subscriptions-help: אַלאַוז ריסטריקטינג ווייַט צוטריט צו פּריוואַט אָדער קאָנפידענטיאַל איינסן
+Allow remote viewing of: לאָזן ווייַט וויוינג פון
+entries: איינסן
+
+########################################
+# Page: purge.php
+#
+Purging events for: פּערדזשינג events פֿאַר
+Finished: געענדיקט
+Back: צוריק
+Check box to delete ALL events for a user: קעסטל קעסטל צו ויסמעקן  ALL  געשעענישן פֿאַר אַ באַניצער
+Delete all events before: ויסמעקן אַלע געשעענישן איידער
+Purge deleted only: רייניקונג אויסגעמעקט בלויז
+Preview delete: פּריוויו ויסמעקן
+Are you sure you want to delete events for: זענט איר זיכער אַז איר ווילן צו ויסמעקן events פֿאַר
+Records deleted from XXX: רעקאָרדס אויסגעמעקט פֿון "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: E- בריוו אַדרעס קען נישט זיין פּוסט.
+Username already exists.: נאמען שוין יגזיסץ.
+Email address already exists.: בליצפּאָסט אַדרעס שוין יגזיסץ.
+New user via self-registration.: נייַע באַניצער דורך זיך-רעגיסטראַציע.
+A new WebCalendar account has been set up for you.: א נייַע וועבקאַלענדאַר חשבון איז באַשטימט פֿאַר איר.
+Your username is XXX.: דיין נאמען איז: "XXX".
+Your password is XXX.: דיין שפּריכוואָרט איז: "XXX".
+Please visit XXX to log in and start using your account!: ביטע באַזוכן "קסקסקס" צו קלאָץ אין און אָנהייבן ניצן דיין חשבון!
+You may change your password after logging in the first time.: איר קען טוישן דיין פּאַראָל נאָך לאָגינג אין די ערשטער מאָל.
+If you received this email in error: אויב איר האָט באקומען דעם E- בריוו אין טעות און איר האָט נישט זיך איינגעשריבן פֿאַר אַ וועבקאַלענדאַר אקאונט, איר קענט דיסריגאַרד דעם באַמערקן אָדער ענטפֿערן מיט אַ קורץ טאָן.
+Administrator: אַדמיניסטראַטאָר
+Welcome: באַגריסונג
+New user via email.: ניו באַניצער דורך E- בריוו.
+Registration: רעגיסטראַציע
+Welcome to WebCalendar: ברוכים הבאים צו וועבקאַלענדאַר
+Your email should arrive shortly.: דיין אימעיל זאָל אָנקומען באַלד.
+Return to Login screen: צוריקקומען צו לאָגין פאַרשטעלן
+Password (again): שפּריכוואָרט (ווידער):
+Your account information will be emailed to you.: אייער חשבון אינפֿאָרמאַציע וועט זיין ימיילד צו איר.
+Submit: פאָרלייגן
+
+########################################
+# Page: reject_entry.php
+#
+Continue: פאָרזעצן
+(Your comments will be emailed to the other participants.): (דיין באַמערקונגען וועט זיין ימיילד צו די אנדערע פּאַרטיסאַפּאַנץ.)
+XXX has rejected an appointment.: XXX האט אפגעווארפן אַ אַפּוינטמאַנט.
+Rejected by XXX.: אפגעווארפן פון XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: לייג New רימאָוט קאַלענדאַר
+
+########################################
+# Page: report.php
+#
+This event is confidential.: די געשעעניש איז קאַנפאַדענשאַל.
+(Private): (פּריוואַט)
+(cont.): (ווייטער.)
+Approved: באשטעטיקט
+Deleted: אויסגעמעקט
+Rejected: אפגעװארפן
+Waiting for approval: ווארטן פֿאַר האַסקאָמע
+Unknown: אומבאַקאַנט
+Invalid report id.: אונגילטיג באַריכט שייַן.
+Click here to manage reports for the Public Access calendar.: דריקט דאָ צו פירן ריפּאָרץ פֿאַר די פּובליק אַקסעס קאַלענדאַר.
+Add new report: לייג נייַ באַריכט
+Manage Reports: אויפֿפּאַסן רעפּאָרץ
+
+########################################
+# Page: search.php
+#
+Advanced Search: אַוואַנסירטע זוכעניש
+Search: זוך
+Keywords: טערמינען
+Enter % for all entries: אַרייַן% פֿאַר אַלע איינסן
+Include: אַרייַננעמען
+Filter by Date: פילטער דורך טאָג
+All Dates: כל דאַטעס
+Past: פאַרגאַנגענהייט
+Upcoming: אַפּקאַמינג
+Range: קייט
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: איר מוזן אַרייַן איין אָדער מער זוכן טערמינען.
+Search Results: זוך רעזולטאַטן
+match found: גלייַכן געפונען
+matches found: שוועבעלעך געפונען
+No matches found: קיין שוועבעלעך געפונען
+New Search: ניו זוך
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: די אינפֿאָרמאַציע אונטן ליסטעד פּאָטענציעל ישוז מיט דיין וועבקאַלענדאַר ינסטאַלירונג וואָס קען זיין מאַדאַפייד צו מאַכן דיין ינסטאַלירונג מער זיכער.
+For questions about WebCalendar security see the forums: פֿאַר פֿראגן וועגן קיין זיכערקייט פון WebCalendar, ביטע נוצן די WebCalendar גרופּעס כאָוסטיד אויף GitHub.com;<br>XXX
+View your current PHP settings: View דיין קראַנט פפּ סעטטינגס
+Security Issue: זיכערהייט ישו
+Status: סטאַטוס
+Default admin user password: פעליקייַט אַדמין באַניצער פּאַראָל
+You should change the password of the default admin user.: איר זאָל טוישן די פּאַראָל פון די פעליקייַט אַדמין באַניצער.
+File permissions XXX: טעקע פּערמישאַנז: XXX
+item XXX should not be writable: די פאלגענדע נומער זאָל נישט זיין שרייבן:<br><tt> XXX</tt>
+File exists XXX: טעקע יגזיסץ: "XXX"
+Because you have email disabled, you should remove this file.: ווייַל איר האָט פאַרקריפּלט email, איר זאָל אַראָפּנעמען דעם טעקע.
+File location XXX: טעקע אָרט: "XXX"
+remove XXX if not using: אויב איר טאָן ניט נוצן די טעקע "קסקסקס", איר זאָל ויסמעקן עס. אָדער, לפּחות, מאַך עס צו אַ נייַ וועגווייַזער.
+System Settings XXX: סיסטעם סעטטינגס: "XXX"
+consider enabling UAC: איר זאל וועלן צו באַטראַכטן געבן User אַקסעס קאָנטראָל צו שטעלן באַניצער פּריווילאַדזשאַז.
+recommend approving new public events: מיר רעקאָמענדירן אַז אַלע סאַבמישאַנז פֿאַר עפנטלעך געשעענישן זענען באוויליקט.
+recommend using CAPTCHA: קאַפּטטשאַ איז רעקאַמענדיד צו היטן די אָטאַמייטיד סאַבמישאַן פון געשעענישן.
+Database cache directory location: דאַטאַבאַסע קאַש וועגווייַזער אָרט
+db cache should be inaccessable: די דאַטאַבייס קאַש זאָל זיין אין אַ וועגווייַזער וואָס קענען ניט זיין אַקסעסט מיט אַ URL.
+PHP Settings XXX: PHP סעטטינגס: "XXX"
+recommend setting XXX Off: די רעקאַמענדיד באַשטעטיקן פֿאַר "XXX" איז אויסגעלאשן.
+recommend setting allow_url_fopen Off: די רעקאַמענדיד באַשטעטיקן פֿאַר "allow_url_fopen" איז אויסגעלאשן ווען ווייַט קאַלענדאַרס זענען נישט ענייבאַלד.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: View קאַלענדאַר פון אן אנדער באַניצער
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: איר האָט ניט צוגעגעבן קיין קאַטעגאָריעס.
+Set Category: שטעלן קאַטעגאָריע
+Global Categories cannot be changed.: גלאבאלע קאַטעגאָריעס קענען ניט זיין טשיינדזשד.
+
+########################################
+# Page: upcoming.php
+#
+more: מער
+
+########################################
+# Page: users.php
+#
+Remote Calendars: ווייַט קאַלענדאַרס
+denotes administrative user: דינאָוץ אַדמיניסטראַטיווע באַניצער
+Add New User: לייג New User
+
+########################################
+# Page: usersel.php
+#
+form: פאָרעם
+Reset: באַשטעטיק
+
+########################################
+# Page: views.php
+#
+Add New View: לייג New View
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: אָן נאָמען
+Add View: לייג View
+Edit View: רעדאַגירן View
+View Name: View נאָמען
+View Type: View טיפּ
+Day by Time: טאָג דורך צייט
+Week (Users horizontal): וואָך (האָריזאָנטאַל וסערס)
+Week by Time: וואָך דורך צייט
+Week (Users vertical): וואָך (ווערטיקאַל וסערס)
+Week (Timebar): וואָך (צייט באַר)
+Month (Timebar): חודש (צייט באַר)
+Month (side by side): חודש (זייַט ביי זייַט)
+Month (on same calendar): חודש (אין זעלביקער קאַלענדאַר)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: איר מוזן ספּעציפיצירן אַ מיינונג נאָמען
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: ניט קיין וסערס פֿאַר דעם מיינונג.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: דערהייַנטיקן אַרבעט פּראָצענט
+Completed: געענדיקט
+Assistant mode: אַסיסטאַנט מאָדע
+Declined: אפגעזאגט
+Needs-Action: נידז-אַקשאַן
+by: דורך
+Percentage Complete: פּראָצענט גאַנץ
+External User: פונדרויסנדיק באַניצער
+Update: דערהייַנטיקן
+at: ביי
+comments: באַמערקונגען
+Show: ווייַזן
+Hide: באַהאַלט
+Approve/Confirm entry: באַשטעטיקן / באַשטעטיקן פּאָזיציע
+Reject entry: אָפּוואַרפן פּאָזיציע
+Set category: שטעלן קאַטעגאָריע
+Add to My Calendar: לייג צו מיין קאַלענדאַר
+Copy entry: קאָפּיע פּאָזיציע
+This will delete this entry for all users.: דאָס וועט ויסמעקן דעם פּאָזיציע פֿאַר אַלע וסערס.
+Edit entry: רעדאַגירן פּאָזיציע
+Edit repeating entry for all dates: רעדאַגירן ריפּיטינג פּאָזיציע פֿאַר אַלע דאַטעס
+Delete repeating event for all dates: ויסמעקן ריפּיטינג געשעעניש פֿאַר אַלע דאַטעס
+Edit entry for this date: רעדאַגירן פּאָזיציע פֿאַר דעם טאָג
+Delete entry only for this date: ויסמעקן די פּאָזיציע בלויז פֿאַר דעם טאָג
+Delete entry from calendar of XXX: ויסמעקן פּאָזיציע פון ​​קאַלענדאַר פון XXX
+This will delete the entry from your XXX calendar.: דאָס וועט ויסמעקן די פּאָזיציע פון ​​דיין קסקסקס קאַלענדאַר.
+boss: באַלעבאָס '
+This will delete the entry from your boss calendar.: דאָס וועט ויסמעקן די פּאָזיציע פון ​​דיין באַלעבאָס קאַלענדאַר.
+This will delete the entry from your calendar.: דאָס וועט ויסמעקן די פּאָזיציע פון ​​דיין קאַלענדאַר.
+from your boss calendar: פֿון דיין באַלעבאָס קאַלענדאַר
+Do you want to add this entry to your calendar?: צי איר ווילן צו לייגן דעם פּאָזיציע צו דיין קאַלענדאַר?
+This will add the entry to your calendar.: דאָס וועט לייגן די פּאָזיציע צו דיין קאַלענדאַר.
+Email all participants: בליצפּאָסט צו אַלע פּאַרטיסאַפּאַנץ
+Hide activity log: באַהאַלטן אַקטיוויטעט קלאָץ
+Show activity log: ווייַזן אַקטיוויטעט קלאָץ
+Export this entry to: אַרויספירן דעם פּאָזיציע צו
+Palm Pilot: פאלם פּילאָט
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: טאָפּל-גיט אויף ליידיק צעל צו לייגן נייַ פּאָזיציע.
+
+########################################
+# Page: week_details.php
+#
+New Entry: ניו פּאָזיציע
+cont.: קאָנט.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: אן אנדער באַניצער קאַלענדאַר
+Category Management: קאַטעגאָריע פאַרוואַלטונג
+Day View: טאָג View
+Edit Event: רעדאַגירן עווענט
+Month View: חודש View
+Common Trailer: פּראָסט טריילער
+User Management: באַניצער מאַנאַגעמענט
+Manage Views: אויפֿפּאַסן קוקן
+Week View: וואָך View
+Year View: יאָר View
+Invalid function id: אונגילטיג פונקציע ID
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: קען ניט געפֿינען די "סעטטינגס.פפּ" טעקע.<br>ביטע נאָכמאַכן "סעטטינגס.פפּ.אָריג" צו "סעטטינגס.פפּ" און רעדאַגירן פֿאַר דיין פּלאַץ.
+Incomplete settings.php file...: דערענדיקט "סעטטינגס.פפּ" טעקע ...
+Could not find XXX defined in...: קען נישט געפֿינען "XXX" דיפיינד אין דיין "סעטטינגס.פפּ" טעקע.
+You must define XXX in: איר מוזן דעפינירן "קסקסקס" אין די "סעטטינגס.פפּ" טעקע.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: דעצעמבער
+Dec: דעצ
+LANGUAGE DEFINED: =
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: טעות אין קאַנעקטינג צו דאַטאַבייס: "XXX".
+db_type not defined.: דב_טיפּע נישט דיפיינד.
+invalid db_type XXX: פאַרקריפּלט דב_טיפּע "" קסקסקס ".
+Cache cleared from previous SQL!: קאַש קלירד פון פרייַערדיק סקל!
+Error executing query.: טעות דורכפירונג אָנפֿרעג.
+Unfortunately, XXX is not implemented for YYY: צום באַדויערן, "XXX" איז ניט ימפּלאַמענאַד פֿאַר (ייי).
+Unknown ODBC error.: אומבאַקאַנט ODBC טעות.
+Error opening cache dir XXX.: טעות ביי עפֿענען דעם קאַש פֿון "XXX".
+delete: ויסמעקן
+Cache error Could not XXX file YYY.: קאַש טעות: קען נישט קסקסקס טעקע "יייי".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: פאַטאַל טעות
+Invalid data format for: אינוואַליד דאַטן פֿאָרמאַט פֿאַר
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: טעות: טיפּ ניט באַשטימט פֿאַר אַקטיוויטעט קלאָץ!
+This event is XXX.: די געשעעניש איז קסקסקס.
+Conf.: =
+exceeds limit of XXX events per day: יקסידז די שיעור פון קסקסקס געשעענישן פּער טאָג
+on: אויף
+All Attendees: כל אַטענדיז
+Busy: פאַרנומען
+Tentative: טענטאַטיוו
+Schedule an appointment for XXX.: פּלאַן אַ אַפּוינטמאַנט פֿאַר XXX: YYY.
+date_select: =
+Event approved: געשעעניש באוויליקט
+Journal approved: זשורנאַל באוויליקט
+Task approved: אַרבעט באוויליקט
+Attachment: אַטאַטשמאַנט
+Event created: געשעעניש באשאפן
+Journal created: זשורנאַל באשאפן
+Task created: אַרבעט באשאפן
+Event deleted: געשעעניש אויסגעמעקט
+Journal deleted: זשורנאַל אויסגעמעקט
+Task deleted: אַרבעט אויסגעמעקט
+New user via email (self registration): נייַע באַניצער דורך E- בריוו (זעלבסט רעגיסטראַציע)
+New user (self registration): ניו באַניצער (זעלבסט רעגיסטראַציע)
+Notification sent: מעלדונג געשיקט
+Event rejected: געשעעניש פארווארפן
+Journal rejected: זשורנאַל פארווארפן
+Task rejected: אַרבעט פארווארפן
+Reminder sent: דערמאָנונג געשיקט
+Event updated: געשעעניש דערהייַנטיקט
+Journal updated: זשורנאַל דערהייַנטיקט
+Task updated: אַרבעט דערהייַנטיקט
+Delete User: ויסמעקן באַניצער
+WK: =
+TASKS: טאַסקס
+Task_Title: טיטל
+Due: רעכט
+Task Name: אַרבעט נאָמען
+Task Due Date: אַרבעט טאָג
+You have XXX unapproved entries: איר האָט XXX אַנאַפּפּראָוועד איינסן
+Changes successfully saved: ענדערונגען הצלחה געראטעוועט
+Event: געשעעניש
+Action: קאַמף
+Printer Friendly: דרוקער פרענדלי
+Generate printer-friendly version: גענעראַטע פּרינטער-פרייַנדלעך ווערסיע
+after: נאָך
+before: איידער
+end: ענדיקן
+start: אָנהייב
+View this event: View דעם געשעעניש
+View this task: View דעם אַרבעט
+January: יאנואר
+February: פעברואר
+March: מאַרץ
+April: אפריל
+May_: מאי
+June: יוני
+July: יולי
+August: אויגוסט
+September: סעפּטעמבער
+October: אקטאבער
+November: נאָוועמבער
+Jan: Jan.
+Feb: פעברואר
+Mar: Mar.
+Apr: Apr.
+May: מאי
+Jun: יוני
+Jul: יולי
+Aug: אויגוסט
+Sep: סעפטעמבער
+Oct: אקטאבער
+Nov: נאָוועמבער
+SU: =
+MO: =
+TU: טו
+WE: מיר
+TH: =
+FR: =
+SA: =
+unknown-month: אומבאַקאַנט-חודש
+First Quarter Moon: ערשטער פערטל לבנה
+Full Moon: א גאנצע לבנה
+Last Quarter Moon: לעצטע קאָרטער לבנה
+New Moon: נייע לבנה
+Error TIME_SLOTS undefined!: טעות: TIME_SLOTS undefined!
+The following error occurred: די פאלגענדע טעות איז פארגעקומען
+You are not authorized.: איר זענט נישט אָטערייזד.
+Add N hours to: לייג N שעה צו
+Subtract N hours from: אַראָפּרעכענען N שעה פון
+same as: זעלבע ווי
+server time: סערווער צייט
+Cannot read timezone file XXX.: קען נישט לייענען צייטזאָנע טעקע: XXX.
+Your current GMT offset is XXX hours.: אייער קראַנט GMT פאָטאָ איז קסקסקס שעה.
+Unauthorized: אַנאָטערייזד
+Error approving event XXX.: טעות ביי באוויליקן געשעעניש: XXX.
+Error deleting event XXX.: טעות ביי אויסמעקן געשעעניש: XXX.
+Error rejecting event XXX.: טעות ביי רידזשעקטינג געשעעניש: XXX.
+Sunday: זונטיק
+Monday: מאנטיק
+Tuesday: דינסטיק
+Wednesday: מיטוואך
+Thursday: דאנערשטאג
+Friday: פרייטאג
+Saturday: שבת
+Sun: זון
+Mon: מאנטיק
+Tue: דינסטיק
+Wed: וועד
+Thu: =
+Fri: פרייטיק
+Sat: =
+unknown-weekday: אומבאַקאַנט-וויקדיי
+Invalid referring URL: אונגילטיג רעפערירינג URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: אינדעקס
+Documentation: דאָקומענטאַטיאָן
+Page: זייַט
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: מייַן קאַלענדאַר
+Add New Entry: לייג נייַ פּאָזיציע
+Add New Task: לייג New טאַסק
+Logout: לאָגאָוט
+Home: היים
+Back to My Calendar: צוריק צו מייַן קאַלענדאַר
+Go to: גיי צו
+Manage calendar of: אויפֿפּאַסן קאַלענדאַר פון
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: בלעטערער שפּראַך ניט געפֿונען
+(not supported): (נישט געשטיצט)
+Abkhazian: אַבכאַזיאַן
+Acoli: אַקאָלי
+Adangme: אַדאַנגמע
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: אפריקאנס
+Ainu: =
+Akan: =
+Akkadian: אַקאַדיאַן
+Albanian: אַלבאַניש
+Aleut: אלעוט
+Algonquian: אַלגאָנקוויאַן
+Altai (Southern): אַלטאַי (סאָוטהערן)
+Amharic: אַמהאַריש
+Angika: =
+Apache: אַפּאַטשי
+Arabic (Algeria): אַראַביש (אַלדזשיריאַ)
+Arabic (Bahrain): אַראַביש (באַהראַין)
+Arabic (Egypt): אַראַביש (מצרים)
+Arabic (Iraq): אַראַביש (יראַק)
+Arabic (Jordan): אַראַביש (ירדן)
+Arabic (Kuwait): אַראַביש (קוווייט)
+Arabic (Lebanon): אַראַביש (לעבאַנאָן)
+Arabic (Libya): אַראַביש (ליביע)
+Arabic (Morocco): אַראַביש (מאָראָקקאָ)
+Arabic (Oman): אַראַביש (אומאַן)
+Arabic (Qatar): אַראַביש (קאַטאַר)
+Arabic (Saudi Arabia): אַראַביש (סאַודי אַראַביאַ)
+Arabic (Syria): אַראַביש (סיריע)
+Arabic (Tunisia): אַראַביש (טוניסיאַ)
+Arabic (U.A.E.): אַראַביש (UAE)
+Arabic (Yemen): אַראַביש (יעמען)
+Arabic: אַראַביש
+Aragonese: אַראַגאָנעסע
+Aramaic: אראמיש
+Arapaho: אַראַפּאַהאָ
+Arawak: אַראַוואַק
+Armenian: ארמאניש
+Assamese: אסאמיש
+Asturian: אַסטוריש
+Athapascan: אַטהאַפּאַסקאַן
+Avaric: אַוואַריק
+Avestan: =
+Awadhi: =
+Aymara: אַימאַראַ
+Azerbaijani: אַזערבײַדזשאַני
+Balinese: באַלינעסע
+Baluchi: באַלוטשי
+Bambara: =
+Bamileke: =
+Banda: באַנדאַ
+Basa: =
+Bashkir: באַשקיר
+Basque: באַסקיש
+Beja: =
+Belarusian: בעלארוסיש
+Bemba: =
+Bengali: בענגאַליש
+Bhojpuri: בהאָדזשפּורי
+Bihari: ביהאַרי
+Bikol: ביקאָל
+Bislama: =
+Blackfoot: בלאַקקפאָאָט
+Blin: בלין
+Bliss: גרעסטער
+Bosnian: באסניש
+Braj: =
+Breton: ברעטאן
+Buginese: בוגינעסע
+Bulgarian: בולגאַריש
+Buriat: בוריאַט
+Burmese: בורמעסע
+Caddo: =
+Catalan: קאַטאַלאניש
+Cebuano: סעבואַנאָ
+Chagatai: טשאַגאַטאַי
+Chamorro: טשאַמאָרראָ
+Chechen: טשעטשני
+Cherokee: טשעראַקי
+Cheyenne: שייאַן
+Chibcha: טשיבטשאַ
+Chichewa: טשיטשעוואַ
+Chinese (Hong Kong): כינעזיש (האָנג קאָנג)
+Chinese (PRC): כינעזיש (PRC)
+Chinese (Simplified/GB2312): כינעזיש (פאראיינפאכט / GB2312)
+Chinese (Singapore): כינעזיש (סינגאפור)
+Chinese (Taiwan): כינעזיש (טייוואַן)
+Chinese (Traditional/Big5): כינעזיש (טראַדיציאָנעל / ביג 5)
+Chinook: =
+Chipewyan: טשיפּעוויאַן
+Choctaw: =
+Chuukese: טשוקעסע
+Chuvash: טשווואַש
+Coptic: קאָפּטיק
+Cornish: קאָרניש
+Corsican: קאָרסיקאַן
+Cree: קרי
+Creek: =
+Croatian: קראָאַטיש
+Czech: טשעכיש
+Dakota: דעקאטע
+Danish: דאַניש
+Dargwa: =
+Delaware: דעלאַווער
+Dinka: דינקאַ
+Dogri: דאָגרי
+Dogrib: דאָגריב
+Duala: =
+Dutch (Belgium): האָלענדיש (בעלגיע)
+Dutch: האָלענדיש
+Dyula: =
+Dzongkha: =
+Edo: עדאָ
+Efik: עפיק
+Ekajuk: עקאַדזשוק
+Elamite: עלאַמייטע
+English (Australia): אנגליש (אויסטראליע)
+English (Belize): אנגליש (בעליז)
+English (Canada): ענגליש (קאַנאַדע)
+English (Ireland): אנגליש (אירלאנד)
+English (Jamaica): ענגליש (דזשאַמאַיקאַ)
+English (New Zealand): ענגליש (ניו זילאַנד)
+English (Philippines): אנגליש (פיליפינען)
+English (South Africa): ענגליש (דרום אפריקע)
+English (Trinidad & Tobago): אנגליש (טרינידאד און טאבאגא)
+English (United Kingdom): אנגליש (פאראייניגטע קעניגרייך)
+English (United States): אנגליש (פארייניקטע שטאטן)
+English (Zimbabwe): ענגליש (זימבאַבווע)
+English: ענגליש
+Erzya: ערזיאַ
+Esperanto: עספעראנטא
+Estonian: עסטיש
+Ewe: ייוו
+Ewondo: עוואָנדאָ
+Fang: פאַנג
+Fanti: =
+Faroese: פאראיער
+Fijian: פידזשיאַן
+Filipino: פיליפּינאָ
+Finnish: פיניש
+Fon: =
+French (Belgium): פראנצויזיש (בעלגיע)
+French (Canada): פראנצויזיש (קאַנאַדע)
+French (France): פראנצויזיש (פֿראַנקרייַך)
+French (Luxembourg): פראנצויזיש (לוקסעמבאָורג)
+French (Monaco): פראנצויזיש (מאָנאַקאָ)
+French (Switzerland): פראנצויזיש (שווייץ)
+French: פראנצויזיש
+Frisian (Eastern): פריזיש (מזרח)
+Frisian (Northern): פֿריזיש (נאָרדערן)
+Frisian (Western): פריזיש (מערב)
+Frisian: פריזיש
+Friulian: פריוליאַן
+Fulah: =
+Ga: =
+Galibi: גאַליבי
+Galician: גאליציאנער
+Ganda: =
+Gayo: =
+Gbaya: גבאיא
+Geez: געעז
+Georgian: גרוזיניש
+German (Austria): דייַטש (עסטרייַך)
+German (Germany): דייַטש (דייַטשלאַנד)
+German (Liechtenstein): דייַטש (ליכטנשטיין)
+German (Luxembourg): דייַטש (לוקסעמבאָורג)
+German (Standard): דייַטש (סטאַנדאַרד)
+German (Switzerland): דייַטש (שווייץ)
+German: דײַטש
+Gilbertese: גילבערטעסע
+Gondi: גאָנדי
+Gorontalo: גאָראָנטאַלאָ
+Gothic: גאָטהיק
+Grebo: =
+Greek: גריכיש
+Greenlandic: גרינלענדיש
+Guarani: גואַראַני
+Gujarati: גודזשאַראַטי
+Gwich&#39;in: גוויטש אין
+Haida: האַידאַ
+Haitian (Creole): =
+Haitian: האיטי
+Hausa: האַוסאַ
+Hawaiian: האַוואַייאַן
+Hebrew: העברעיש
+Herero: הערעראָ
+Hiligaynon: =
+Hindi: הינדיש
+Hiri Motu: =
+Hittite: היטיטיטע
+Hmong: המאָנג
+Holo (Taiwanese): האָלאָ (טייוואַן)
+Hungarian: אונגעריש
+Hupa: =
+Iban: יבאַן
+Icelandic: איסלענדיש
+Ido: איך טוה
+Igbo: יגבאָ
+Iloko: =
+Indonesian: אינדאָנעזיש
+Ingush: ינגוש
+Inuktitut: ינוקטיטוט
+Inupiaq: ינופּיאַק
+Iranian: יראַניאַן
+Irish (Gaelic): איריש (Gaelic)
+Irish: איריש
+Iroquoian: יראָקוואָיאַן
+Italian (Switzerland): איטאַליעניש (שווייץ)
+Italian: איטאַליעניש
+Japanese: יאַפּאַניש
+Javanese: יאַוואַנעזיש
+Judeo-Arabic: יידיש-אַראַביש
+Judeo-Persian: יידיש-פּערסיש
+Kabardian: קאַבאַרדיאַן
+Kabyle: קאבילע
+Kachin: קאַטשין
+Kalaallisut: קאַלאַאַליסוט
+Kalmyk: קאלמיק
+Kamba: =
+Kannada: קאַנאַדאַ
+Kanuri: קאַנורי
+Kara-Kalpak: קאַראַ-קאַלפּאַק
+Karachay-Balkar: קאַראַטשייַ-באַלקאַר
+Karelian: קאַרעליאַן
+Kashmiri: קאשמירי
+Kashubian: קאשוביש
+Kawi: =
+Kazakh: קאַזאַק
+Khasi: =
+Khmer (Central): כמער (סענטראַל)
+Khmer: כמער
+Khotanese: כאָטאַנעסע
+Kikuyu: קיקויו
+Kimbundu: קימבונדו
+Kinyarwanda: קיניאַרוואַנדאַ
+Kirghiz: קירגהיז
+Klingon: קלינגאניש
+Komi: קאָמי
+Kongo: =
+Konkani: קאָנקאַני
+Korean (Johab): קאָרעיִש (Johab)
+Korean (North): קאָרעיִש (צפון)
+Korean (South): קאָרעיִש (דרום)
+Korean: קאָרעיִש
+Kosraean: קאָסראַעאַן
+Kpelle: =
+Kuanyama: קואַניאַמאַ
+Kumyk: קומיק
+Kurdish: קורדיש
+Kutenai: קוטענאַי
+Kyrgyz: קירגיז
+Ladino: לאַדינאָ
+Lahnda: =
+Lamba: לאַמבאַ
+Lao: לאַו
+Latin: לאַטייַן
+Latvian: לעטיש
+Lezghian: לעזגהיאַן
+Limburgan: לימבורגאַן
+Lingala: לינגאַלאַ
+Lithuanian: ליטוויש
+Lojban: לאָדזשבאַן
+Lozi: לאָזי
+Luba-Katanga: לובאַ-קאַטאַנגאַ
+Luba-Lulua: לובאַ-לולואַ
+Luiseno: לויסענאָ
+Lunda: לונדאַ
+Luo: =
+Lushai: =
+Luxembourghish: לוקסעמבאָורג
+Macedonian: מאַקעדאָניש
+Madurese: מאַדורעסע
+Magahi: =
+Maithili: מאַיטהילי
+Makasar: מאַקאַסאַר
+Malagasy: מאלאגאסיש
+Malay: מאליייש
+Malayalam: =
+Maldivian: מאַלדיוויאַן
+Maltese: מאַלטעזיש
+Manchu: מאַנטשו
+Mandar: מאַנדאַר
+Mandingo: מאַנדינגאָ
+Manipuri: מאַניפּורי
+Manx: מאַנקס
+Maori: =
+Mapuche: =
+Marathi: מאַראַטהי
+Mari: =
+Marshallese: מאַרשאַלעסע
+Marwari: =
+Masai: =
+Mayan: מייַאַן
+Mende: =
+Mi&#39;kmaq: Mi & # 39; קמאַק
+Minangkabau: מינאַנגקאַבאַו
+Mirandese: מיראַנדעסע
+Mohawk: מאָהאַווק
+Moksha: מאָקשאַ
+Moldavian: מאָלדאַוויש
+Mongo: מאָנגאָ
+Mongolian: מאנגאליש
+Montenegrin: מאָנטענעגרין
+Moroccan: מאָראָקקאַן
+Mossi: מאָססי
+Myanmar: מיאַנמאַר
+Māori: מאַאָרי
+N&#39;Ko: N & # 39; קאָ
+Nauru: =
+Navajo: =
+Ndebele (North): נדעבעלע (צפון)
+Ndebele (South): נדעבעלע (דרום)
+Ndebele: נדעבעלע
+Ndonga: נדאָנגאַ
+Neapolitan: נעאַפּאָליטאַן
+Nepali: נעפּאַליש
+Nias: ניאַס
+Niuean: ניועאַן
+Nogai: נאָגאַי
+Norse: נאָרס
+Norwegian (Bokmål): נאָרוועגיש (באָק)
+Norwegian (Nynorsk): נאָרוועגיש (נינאָרסק)
+Norwegian: נאָרוועגיש
+Nyamwezi: =
+Nyankole: ניאַנקאָלע
+Nyoro: =
+Nzima: =
+Occitan: אָקסיטאַן
+Odia: =
+Ojibwa: =
+Oriyia: אָריייאַ
+Oromo: אָראָמאָ
+Osage: =
+Ossetic: אָסעטיק
+Pahlavi: פּאַהלאַווי
+Palauan: פּאַלאַואַן
+Pali: פּאַלי
+Pampanga: =
+Pangasinan: =
+Panjabi: פּאַנדזשאַבי
+Papiamento: פּאַפּיאַמענטאָ
+Pashto: פּאַשטאָ
+Pedi: =
+Persian (Farsi): פּערסיש (פֿאַרסי)
+Persian (Iran): פּערסיש (איראַן)
+Persian: פערסיש
+Phoenician: פעניקישער
+Pohnpeian: פּאָהנפּעיאַן
+Polish: פּויליש
+Portuguese: פארטוגעזיש
+Portuguese/Brazil: פּאָרטוגעזיש / Brazil
+Punjabi (India): פּונדזשאַבי (ינדיאַ)
+Punjabi (Pakistan): פּונדזשאַבי (פּאַקיסטאַן)
+Punjabi: פּונדזשאַבי
+Quechua: קוועטשואַ
+Rajasthani: ראַדזשאַסטהאַני
+Rapanui: =
+Rarotongan: ראַראָטאָנגאַן
+Rhaeto-Romanic: =
+Romanian: רומעניש
+Romansh: ראָמאַנש
+Romany: ראָמאַני
+Rundi: רונדי
+Russian (Moldavia: רוסיש (מאָלדאַוויע
+Russian (Republic of Moldova): רוסיש (רעפובליק פון מאָלדאָוואַ)
+Russian: רוסיש
+Sami (Inari): סאמי (אינארי)
+Sami (Lappish): סאמי (לאפיש)
+Sami (Lule): סאמי (לולע)
+Sami (Northern): סאמי (צפון)
+Sami (Skolt): =
+Sami (Southern): סאמי (דרום)
+Sami: סאַמי
+Samoan: סאַמאָאַן
+Samoli: סאַמאָלי
+Sandawe: סאַנדאַווע
+Sango: סאַנגאָ
+Sanskrit: סאַנסקריט
+Santali: סאַנטאַלי
+Sardinian: סאַרדיניאַן
+Sasak: סאַסאַק
+Scots (Gaelic): סקאָטיש (Gaelic)
+Selkup: סעלקופּ
+Serbian (Upper): סערביש (אויבערשטער)
+Serbian: סערביש
+Serer: סערער
+Sesotho: סעסאָטהאָ
+Shan: שאַן
+Shona: שאָנאַ
+Sichuan Yi: סיטשואַן יי
+Sicilian: סיסיליאַן
+Sindhi: סינדי
+Sinhala: סינהאַלאַ
+Slavic: סלאווישע
+Slovak: סלאָוואַקיש
+Slovenian: סלאוועניש
+Sogdian: סאָגדיאַן
+Somali: סאָמאַליש
+Somani: סאָמאַני
+Songhai: סאָנגהאַי
+Soninke: סאינינקע
+Sorbian (Lower): סאָרביש (אונטער)
+Sorbian (Upper): סאָרביש (אויבערשטער)
+Sorbian: סאָרביש
+Sotho: סאָטהאָ
+Spanish (Argentina): ספאניש (ארגענטינע)
+Spanish (Bolivia): ספאניש (באליוויע)
+Spanish (Chile): ספאניש (טשילע)
+Spanish (Colombia): שפּאַניש (קאָלאָמביאַ)
+Spanish (Costa Rica): שפּאַניש (קאָסטאַ ריקאַ)
+Spanish (Dominican Republic): שפּאַניש (דאָמיניקאַן רעפובליק)
+Spanish (Ecuador): שפּאַניש (עקוואַדאָר)
+Spanish (El Salvador): שפּאַניש (על סאַלוואַדאָר)
+Spanish (Guatemala): שפּאַניש (גואַטעמאַלאַ)
+Spanish (Honduras): שפּאַניש (האָנדוראַס)
+Spanish (Mexico): ספאניש (מעקסיקא)
+Spanish (Nicaragua): שפּאַניש (ניקאַראַגואַ)
+Spanish (Panama): שפּאַניש (פּאַנאַמאַ)
+Spanish (Paraguay): ספאניש (פאראגוויי)
+Spanish (Peru): ספאניש (פּערו)
+Spanish (Puerto Rico): שפּאַניש (פּאָרטאַ ריקאָ)
+Spanish (Spain): שפּאַניש (ספּאַין)
+Spanish (Uruguay): ספאניש (אורוגוויי)
+Spanish (Venezuela): ספאניש (ווענעזועלע)
+Spanish: שפּאַניש
+Sranan Tongo: =
+Sukuma: סוקומאַ
+Sumerian: סומעריאַן
+Sundanese: סונדאַנע
+Susu: =
+Sutu: סוטו
+Swahili: סוואַהילי
+Swati: סוואַטי
+Swedish (Finland): שוועדיש (פינלאַנד)
+Swedish (Sweden): שוועדיש (שוועדן)
+Swedish: שוועדיש
+Syriac: סיריאַק
+Tagalog: טאגאלאג
+Tahitian: טאַהיטיאַן
+Tai: טיי
+Taiwan: טייוואַן
+Tajik: טאַדזשיק
+Tamashek: טאַמאַשעק
+Tamil: טאַמיל
+Tatar: טאַטאַר
+Telugu: טעלוגו
+Tereno: =
+Tetum: =
+Thai: טאי
+Tibetan: טיבעטאַן
+Tigre: טיגרע
+Tigrinya: טיגריניע
+Timne: טימנע
+Tlingit: טלינגיט
+Tok Pisin: טאָק פּיסין
+Tokelau: =
+Tonga (Nytmhasa): טאָנגאַ (Nytmhasa)
+Tonga (Tonga Islands): טאָנגאַ (טאָנגאַ אינזלען)
+Tonga: טאָנגאַ
+Tsimshian: צימשיאַן
+Tsonga: =
+Tswana: צוואַנאַ
+Tumbuka: =
+Turkish: טערקיש
+Turkmen: טורקמען
+Tuvinian: טוביניאַן
+Twi: טווי
+Udmurt: ודמורט
+Ugaritic: אוגאַריטיש
+Ukrainian: אוקראיניש
+Umbundu: ומבונדו
+Urdu: אורדו
+Uyghur: ויגור
+Uzbek: אוזבעקיש
+Vai: =
+Venda: =
+Vietnamese: וויעטנאַמעזיש
+Volapük: =
+Votic: וואָטיש
+Wakashan: וואַקאַשאַן
+Walloon: וואַלאָאָן
+Waray: וואַרייַ
+Washo: וואַשאָ
+Welsh: וועלש
+Wolaitta: =
+Wolof: וואָלאָף
+Xhosa: =
+Yakut: יאַקוט
+Yao: =
+Yapese: יאַפּעסע
+Yiddish: יידיש
+Yorùbá: =
+Yupik: יופּיק
+Zande: =
+Zapotec: זאַפּאָטעק
+Zaza: =
+Zenaga: זענאַגאַ
+Zhuang: זשואַנג
+Zulu: זולו
+Browser-defined: בלעטערער-דיפיינד
+event: געשעעניש
+journal: זשורנאַל
+0: 0                                                  
+1: 1                                                  
+2: 2                                                  
+3: 3                                                  
+4: 4                                                  
+5: 5                                                  
+6: 6                                                  
+7: 7                                                  
+8: 8                                                  
+9: 9                                                  
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: פאַרקריפּלט באַניצער לאָגין
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: פאַלש פּאַראָל
+no such user: ניט אַזאַ באַניצער
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: חשבון פאַרקריפּלט
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: מעהאַלעך
+Months: חדשים
+Month Days: חודש טעג
+Days: טעג
+Weeks: וואָכן
+Position: שטעלע
+Until: ביז
+Count: גראף
+Inclusion Dates: ינקלוסיוו דאַטעס
+Exclusion Dates: עקסקלוסיאָן דאַטעס
+Event Imported: ימפּאָרטעד געשעעניש
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: ביטעס
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: אָנזאָג
+authenticate: סמטפּ טעות: קען נישט אָטענטאַקייט
+connect_host: סמטפּ טעות: קען נישט פאַרבינדן צו סמטפּ באַלעבאָס:
+data_not_accepted: סמטפּ טעות: דאַטן ניט אנגענומען
+encoding: אומבאַקאַנט קאָדירונג:
+execute: קען נישט דורכפירן:
+file_access: ניט געקענט אַקסעס טעקע:
+file_open: טעקע טעות קען נישט עפענען טעקע:
+from_failed: די פאלגענדע פון ​​אַדרעס איז ניט אַנדערש:
+instantiate: קען נישט ינסטאַנטירן פּאָסט פונקציע
+mailer_not_supported: מיילער איז ניט געשטיצט
+provide_address: איר מוזן צושטעלן לפּחות איין באַקומער E- בריוו אַדרעס.
+recipients_failed: SMTP טעות: די פאלגענדע ריסיפּיאַנץ אַנדערש:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: אַרייַן אותיות געזען אין גראַפיק
+Enter the correct letters and numbers...: אַרייַן די ריכטיק אותיות און נומערן פון די בילד אין די טעקסט קעסטל. דעם קליין פּראָבע באדינט ווי אַקסעס ריסטריקשאַן קעגן בייזע באָץ. סימפּלי רילאָוד די בלאַט אויב די גראַפיק איז צו שווער צו לייענען
+Challenge/Response: אַרויסרופן / ענטפער
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: טוישן די דאַטע און צייט פון דעם פּאָזיציע?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: איר האָט ניט אריין קיין קורץ באַשרייַבונג
+time prior to work hours...: צייט פריערדיק צו אַרבעט שעה ...
+Invalid Event Date: אונגילטיגע געשעעניש דאטום
+Please add a participant: ביטע לייגן אַ באַטייליקטער
+Invalid Date: אונגילטיג דאַטע
+You have not entered a valid time of day: איר האָט ניט אַרייַן אַ גילטיק צייט פון טאָג.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: קאַלענדאַר שייַן קען נישט זיין פּוסט.
+First and last names cannot both be blank.: ערשטע און לעצטע נעמען קענען ניט זיין פּוסט.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: אונגילטיג קאָליר
+Color format should be RRGGBB.: קאָליר פֿאָרמאַט זאָל זיין #RRGGBB.
+URL cannot be blank.: URL קען נישט זיין פּוסט.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: טעקע טיפּ איז ניט גלייך צו ימפּאָרט פֿאָרמאַט
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: פאַרקריפּלט קאָליר פֿאַר דאָקומענט הינטערגרונט.
+Invalid color for document title.: פאַרקריפּלט קאָליר פֿאַר דאָקומענט טיטל.
+Invalid color for table cell background.: אונגילטיג קאָליר פאר טיש צעל הינטערגרונט.
+Invalid color for table cell background for today.: פאַרקריפּלט קאָליר פֿאַר די טיש צעל הינטערגרונט פֿאַר הייַנט.
+Invalid work hours.: אינוואַליד אַרבעט שעה.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: סערווער URL דאַרף ענדיקן מיט אַ סלאַש (/).
+Invalid color for table grid.: אונגילטיג קאָליר פאר טיש גריד.
+Invalid color for event popup background.: אונגילטיג קאָליר פאר אויפֿשפּרינג הינטערגרונט פון געשעעניש.
+Invalid color for event popup text.: אונגילטיג קאָליר פאר געשעעניש אויפֿשפּרינג טעקסט.
+Invalid color for table header text.: אונגילטיג קאָליר פאר טיש קעפל טעקסט.
+Invalid color for table header background.: פאַרקריפּלט קאָליר פֿאַר הינטערגרונט פון טיש כעדער.
+Server URL is required.: סערווער URL איז פארלאנגט.
+Invalid Color: אונגילטיג קאָליר
+Database Name: דאַטאַבייס נאָמען
+Full Path (no backslashes): גאַנץ וועג (קיין באַקסלאַש)
+The password contains illegal characters.: די שפּריכוואָרט כּולל ומלעגאַל אותיות.
+Error you must specify a Single-User Login: טעות: איר מוזן ספּעציפיצירן אַ איין-באַניצער לאָגין
+Could not find XXX.: ניט געקענט געפֿינען XXX.
+Could not find XXX in DOM.: ניט געקענט געפֿינען XXX אין DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: די וואך
+This Month: דעם חודש
+This Year: דאס יאר
+Exit: אַרויסגאַנג
+Add New Event: לייג New עווענט
+Delete Entries: ויסמעקן ענטריעס
+My Views: מיין קוקן
+Manage Calendar of: אויפֿפּאַסן קאַלענדאַר פון
+My Reports: מייַן רעפּאָרץ
+My Profile: מיין פּראָפיל
+Public Calendar: פּובליק קאַלענדאַר
+Unapproved Events: אַנאַפּרייזד עווענץ
+User Manager: באַניצער מאַנאַגער
+Help Contents: הילף אינהאַלט
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: דאַטאַבאַסע קאַש וועגווייַזער
+Create New: שאַפֿן ניו
+Failure Reason: דורכפאַל סיבה:
+You must manually create database: איר מוזן מאַניואַלי שאַפֿן דייטאַבייס.
+Single-User: איין-באַניצער
+Test Settings: טעסט סעטטינגס
+Timezone Conversion Successful: צייט זאָנע קאָנווערסיאָן געראָטן
+WebCalendar Installation Wizard Step XXX: וועבקאַלענדאַר ינסטאַללאַטיאָן וויזערד שריט קסקסקס
+Password Accepted: שפּריכוואָרט אַקסעפּטעד
+Successful Login: מצליח לאָגין
+Password Incorrect: שפּריכוואָרט פאַלש
+Invalid Login: פאַרקריפּלט לאָגין
+Display Errors: ווייַז ערראָרס
+File Uploads: טעקע ופּלאָאַדס
+Allow URL fopen: לאָזן URL פאָפּען (פארלאנגט בלויז אויב רימאָוט קאַלענדאַרס זענען געניצט)
+Safe Mode: זיכערע וועג
+Safe Mode Allowed Vars: זיכער מאָדע ערלויבט וואַרס (טז פארלאנגט בלויז אויב סאַפע מאָדע איז אויף)
+GD: אויבערשטער (דארף פֿאַר גראַדיענט בילד באַקגראַונדז)
+Passwords do not match!: פּאַסווערדז טאָן ניט גלייַכן!
+Unable to write password to settings.php file: ניט געקענט שרייַבן פּאַראָל צו "סעטטינגס.פפּ" טעקע.
+Password Updated: שפּריכוואָרט דערהייַנטיקט
+Password has been set: שפּריכוואָרט איז באַשטימט.
+Connection Successful...: פֿאַרבינדונג געראָטן ביטע גיין צו די ווייַטער בלאַט צו פאָרזעצן ינסטאַלירונג.
+Correct your entries or click the Create New...: ריכטיק דיין איינסן אָדער גיט די  שאַפֿן נייַ קנעפּל צו פאָרזעצן ינסטאַלירונג.
+Correct your entries and try again.: ריכטיק דיין איינסן און פּרובירן ווידער.
+XXX does not exist: XXX טוט נישט עקסיסטירן
+XXX is not writable: XXX איז ניט שרייבט
+Error Converting Timezone: טעות קאָנווערטינג צייט זאָנע
+Error Unable to write to file XXX.: טעות קען נישט שרייַבן צו טעקע XXX.
+Please change the file permissions of this file.: ביטע טוישן די טעקע פּערמישאַנז פון דעם טעקע.
+Please change includes dir permission: ביטע טוישן די טעקע פּערמישאַנז פון דיין "כולל" וועגווייַזער צו לאָזן שרייבן דורך אנדערע וסערס.
+Your settings have been saved.: דיין סעטטינגס זענען געראטעוועט.
+OFF: =
+ON: אויף
+WebCalendar Setup Wizard: וועבקאַלענדאַר סעטאַפּ וויזערד
+This installation wizard will guide you...: דער אינסטאלירונג וויזערד וועט אייך פירן דורך איינשטעלן א גרונטיקע WebCalendar אינסטאלאציע.<br>פאר הילף און טראָובלעשאָאָטינג זען:<br>
+System Administrators Guide: סיסטעם אַדמיניסטראַטאָר ס גייד
+Frequently Asked Questions: אָפֿט געשטעלטע פֿראגן
+FAQ: =
+Troubleshooting: טראָובלעשאָאָטינג
+Getting Help: געטינג הילף
+Upgrading Guide: אַפּגריידינג גייד
+User Supported Wiki: באַניצער שטיצט Wiki
+PHP Version Check: פפּ ווערסיע טשעק
+Check to see if PHP 7.1.0 or greater is installed.: קוק צי PHP 7.1.0 אָדער גרעסער איז אינסטאַלירן.
+PHP version: פפּ ווערסיע
+PHP Settings: פפּ סעטטינגס
+Detailed PHP Info: דעטאַילעד פפּ אינפֿאָרמאַציע
+settings.php Status: "סעטטינגס.פפּ" סטאַטוס
+Session Check: סעסיע טשעק
+To test the proper operation of sessions...: רילאָוד דעם בלאַט צו פּרובירן די געהעריק אָפּעראַציע פון ​​סעשאַנז. איר זאָל זען די סעסיע טאָמבאַנק ינקראַמאַנט יעדער מאָל.
+SESSION COUNTER: סעסיע טאָמבאַנק
+The file permissions of settings.php are set...: די טעקע פּערמישאַנז פון "סעטטינגס.פפּ" זענען באַשטימט אַזוי אַז די ינסטאַללער האט נישט דערלויבעניש צו מאָדיפיצירן עס. ביטע טוישן די טעקע פּערמישאַנז פון די פאלגענדע טעקע צו פאָרזעצן
+The file permissions of the includes directory are set...: די טעקע פּערמישאַנז פון די כולל וועגווייַזער זענען באַשטימט אַזוי אַז די ינסטאַללער האט נישט דערלויבעניש צו שאַפֿן אַ נייַע טעקע. ביטע טוישן די פּערמישאַנז פון די ווייַטערדיקע וועגווייַזער צו פאָרזעצן
+Your settings.php file appears to be valid.: דיין "סעטטינגס.פפּ" טעקע איז גילטיק.
+Configuration Wizard Password: קאַנפיגיעריישאַן וויזערד פּאַראָל
+Create Settings File Password: שאַפֿן פּאַראָל טעקע סעטטינגס
+db setup directions...: אין דעם אָפּטיילונג, איר וועט שטעלן אַרויף און פּרובירן אַ קשר צו דיין דאַטאַבייס סערווער. די אַקאַונט אינפֿאָרמאַציע סאַפּלייד זאָל האָבן גאַנץ פּערמישאַנז צו שאַפֿן דאַטאַבייסיז, טישן און ניצערס. אויב דאָס איז ניט מעגלעך, אָדער דיין דאַטאַבייס אַקסעס איז לימיטעד, איר מוזן מאַניואַלי קאַנפיגיער דיין דאַטאַבייס.
+Database Status: דאַטאַבאַסע סטאַטוס
+Supported databases for your PHP installation: שטיצט דאַטאַבייסיז פֿאַר דיין PHP ינסטאַלירונג
+Your current database settings are able to access the database.: אייער איצטיקע דאַטאַבייס סעטטינגס קענען אַקסעס די דאַטאַבייס.
+Please Test Settings: ביטע טעסט סעטטינגס
+Your current database settings are not able...: אייער איצטיקע דאַטאַבייס סעטטינגס זענען נישט ביכולת צו אַקסעס די דאַטאַבייס אָדער זענען נישט נאָך טעסטעד.
+Database Settings: דאַטאַבאַסע סעטטינגס
+Database Type: דאַטאַבייס טיפּ
+Server: סערווירער
+Connection Persistence: קאַנעקשאַן פּערסיסטענסע
+All your database tables appear to be up...: אַלע דיין דאַטאַבייס טישן זייַנען דערהייַנטיקט. איר קענט גיין צו די ווייַטער בלאַט און פאַרענדיקן דיין וועבקאַלענדאַר סעטאַפּ.
+This appears to be a new installation...: דאָס איז אַ נייַע ינסטאַלירונג. אויב דאָס איז נישט ריכטיק, ביטע גיין צוריק צו די פריערדיקע בלאַט און ריכטיק דיין סעטטינגס.
+This appears to be an upgrade...: דאָס איז אַ אַפּגרייד פון ווערסיע & נבספּ; קסקסקס & נבספּ; צו & נבספּ; ייי.
+The database requires some data input...: די דאַטאַבייס ריקווייערז עטלעכע דאַטן אַרייַנשרייַב. גיט דערהייַנטיקן דאַטאַבאַסע צו פאַרענדיקן די אַפּגרייד.
+In this section we will perform...: אין דעם אָפּטיילונג, מיר וועלן דורכפירן די ענדערונגען צו ברענגען דיין דאַטאַבייס צו די פארלאנגט מדרגה. אויב איר נוצן אַ גאָר געשטיצט דאַטאַבייס, דער שריט וועט זיין אויטאָמאַטיש פֿאַר איר. אויב ניט, די פארלאנגט סקל קענען זיין געוויזן און איר זאָל קענען צו שנייַדן און פּאַפּ עס אין דיין פֿענצטער דאַטאַבייס סערווער.
+No database actions are required.: ניט קיין דאַטאַבייס אַקשאַנז זענען פארלאנגט.
+The following database actions are required: די ווייַטערדיקע דאַטאַבייס אַקשאַנז זענען פארלאנגט
+ODBC Underlying Database: ODBC אַנדערלייינג דאַטאַבייס:
+Automatic installation not supported: אָטאַמאַטיק ינסטאַלירונג איז נישט גאָר ימפּלאַמענאַד פֿאַר דיין דאַטאַבייס טיפּ. איר דאַרפֿן צו מאַניואַלי מאַכן די פארלאנגט טישן מיט די סקל סאַפּלייד. ביטע גיט  ווייַז סקל צו פאָרזעצן. שנייַדן און פּאַפּ אין דיין פֿענצטער דאַטאַבייס אָנפֿרעג.
+This may take several minutes to complete: עס קען נעמען עטלעכע מינוט צו פאַרענדיקן.
+Install Database: ינסטאַלירן דאַטאַבייס
+Update Database: דערהייַנטיקן דאַטאַבייס
+Display Required SQL: אַרויסווייַזן פארלאנגט סקל
+Return to previous page after processing SQL.: נאָך מאַנואַל פּראַסעסינג פון דעם סקל, איר דאַרפֿן צו צוריקקומען צו די פריערדיקע בלאַט און טעסט דיין דאַטאַבייס אַזוי אַז די שריפט קענען דיטעקט די ענדערונגען.
+This is the final step in setting up your WebCalendar Installation.: דאָס איז די לעצט שריט אין באַשטעטיקן דיין וועבקאַלענדאַר ינסטאַללאַטיאָן.
+Timezone Conversion: צייט זאָנ קאָנווערסיאָן
+It appears that you have NOT converted...: עס אויס אַז איר האָט ניט קאָנווערטעד דיין יגזיסטינג וועבקאַלענדאַר געשעעניש דאַטן צו GMT. אויב איר האָט, איר קען איגנאָרירן דעם באַמערקן און נישט פאָרזעצן מיט די קאַנווערזשאַן. אויב דאָס איז אַ נייַע ינסטאַלירונג, איר קען אויך איגנאָרירן דעם באַמערקן.
+Convert Data to GMT: גער דאַטן צו GMT
+Application Settings: אַפּפּליקאַטיאָן סעטטינגס
+HTTP-based authentication was not detected...: הטטפּ-באזירט אָטענטאַקיישאַן איז נישט דיטעקטאַד. איר וועט דאַרפֿן צו קאַנפיגיער דיין וועב סערווער אויב איר ווילן צו סעלעקטירן 'וועב סערווירער' פֿון די 'באַניצער אַוטהענטיקאַטיאָן' ברירות אונטן.
+HTTP-based authentication was detected...: הטטפּ-באזירט אָטענטאַקיישאַן איז געווען דיטעקטאַד. באַניצער אָטענטאַקיישאַן איז כאַנדאַלד דורך דיין וועב סערווער. איר זאָל סעלעקטירן 'וועב סערווירער' פון די רשימה פון 'ברירות אַוטהענטיקאַטיאָן' ברירות אונטן.
+Create Default Admin Account: שאַפֿן פעליקייַט אַדמיניסטראַטאָר אַקאַונט
+(Admin Account Not Found): (אַדמין אַקאַונט ניט געפֿונען)
+User Authentication: באַניצער אַוטהענטיקאַטיאָן
+Web-based via WebCalendar (default): וועב-באזירט דורך וועבקאַלענדאַר (פעליקייַט)
+Web Server (not detected): וועב סערווער (ניט דיטעקטאַד)
+Web Server (detected): וועב סערווער (דיטעקטאַד)
+None (Single-User): קיינער (איין באַניצער)
+Read-Only: נאר צום ליינען
+Environment: סביבה
+Production: פּראָדוקציע
+Development: אנטוויקלונג
+Save Settings: היט סעטטינגס
+Launch WebCalendar: קאַטער וועבקאַלענדאַר
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: טעות ביי דערהייַנטיקן טיש "XXX": YYY.
+Conversion Successful: געראָטן מצליח
+Perl script required: דיין פריערדיקע ווערסיע פון ​​WebCalendar ריקווייערז אַ פּערל שריפט צו קאָנווערט דיין דאַטן. ביטע לויפן /טאָאָלס / ופּגראַדע_טאָ_0.9.7.pl און צוריקקומען צו דעם בלאַט צו פאָרזעצן.
+previous version requires updating several tables: דיין פריערדיקע ווערסיע פון ​​WebCalendar ריקווייערז דערהייַנטיקן עטלעכע דאַטאַבייס טישן.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: קיין פּריוויו בנימצא
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: טעות קאָננעקטעד צו דייטאַבייס
+Include Path: אַרייַננעמען פּאַט
+Deleting events for: דעלעטינג געשעענישן פֿאַר
+Importing events for: ימפּאָרטינג געשעענישן פֿאַר
+No data returned from: קיין דאַטן אומגעקערט פֿון
+for non-user calendar: פֿאַר ניט-באַניצער קאַלענדאַר
+No Remote Calendars found: קיין ווייַט קאַלענדאַרס געפֿונען
+Remote Calendars not enabled: ווייַט קאַלענדאַרס נישט ענייבאַלד
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: קען ניט געפֿינען געשעעניש שייַן
+could not find event id XXX in database.: קען נישט געפֿינען געשעעניש שייַן XXX אין דייטאַבייס.
+task: אַרבעט
+This is a reminder for the XXX detailed below.: דאָס איז אַ דערמאָנונג פֿאַר די XXX דיטיילד אונטן.
+Pecentage Complete: פּעסענטאַגע גאַנץ
+Reminder: דערמאָנונג
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: נישט געשטיצטע אקציע: XXX.
+No event id specified.: קיין געשעעניש שייַן
+Not authorized (not admin).: ניט אָטערייזד (ניט אַדמין).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: טשעק פֿאַר געשעענישן פֿאַר קסקסקס פֿון טאָג ייי ביז דאַטע זזז.
+Found XXX events in time range.: געפֿונען XXX געשעענישן אין צייט קייט.
+Event id=XXX YYY at ZZZ on AAA.: געשעעניש שייַן = קסקסקס "יייי" ביי זזז אויף אַאַאַ.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: אַלאַוינג XXX באַניצער צו זען אנדערע באַניצער קאַלענדאַר.
+Error Email reminders disabled for user XXX.: טעות: אימעיל רימיינדערז פאַרקריפּלט פֿאַר באַניצער "XXX".
+Number of site_extras XXX.: נומער פון פּלאַץ_עקסטראַס: XXX.
+Reminder set for event.: דערמאָנונג שטעלן פֿאַר געשעעניש.
+Mins Before XXX.: מינס איידער: XXX.
+Event time is XXX.: געשעעניש צייט איז: XXX.
+Remind time is XXX.: דערמאָנען צייט איז: קסקסקס.
+Reminders for user XXX, login YYY.: דערמאָנונג פֿאַר באַניצער "XXX", לאָגין "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: ניט באוויליקט פֿאַר באַניצער "XXX".
+Event id=XXX YYY already sent.: געשעעניש שייַן = קסקסקס "YYY" שוין געשיקט.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: קיין לאָגין פארלאנגט פֿאַר איין-באַניצער מאָדע.
+No login required for HTTP authentication.: ניט לאָגין פארלאנגט פֿאַר הטטפּ אָטענטאַקיישאַן.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: פאַרקריפּלט אותיות אין לאָגין.
+Username XXX does not exist.: באנוצער נאמען "XXX" עקזיסטירט נישט.
+You cannot remove admin rights from yourself!: איר קענט נישט אַראָפּנעמען אַדמין רעכט פון זיך!
+Unknown error saving user: אומבאַקאַנט טעות שפּאָרן באַניצער.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: קיין פּאַרטיסאַפּאַנץ געפֿונען פֿאַר געשעעניש שייַן: XXX.
+Db error Could not find event id XXX.: דב טעות: קען נישט געפינען געשעעניש שייַן XXX.
+Error Could not find event id XXX in database.: טעות: קען נישט געפֿינען געשעעניש שייַן XXX אין דייטאַבייס.

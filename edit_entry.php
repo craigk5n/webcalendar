@@ -150,7 +150,7 @@ $wkst = 'MO';
 $real_user = ((!empty($user) && strlen($user)) &&
   ($is_assistant || $is_admin)) ? $user : $login;
 
-print_header($INC, $HEAD, $BodyX);
+print_header ( $INC, $HEAD, $BodyX );
 
 if ($readonly == 'Y' || $is_nonuser)
   $can_edit = false;
@@ -368,7 +368,7 @@ else if (!empty($id) && $id > 0) {
   if (!empty($cat_id)) {
     $res = dbi_execute(
       'SELECT cat_name FROM webcal_categories ' .
-        'WHERE cat_id = ? AND ( cat_owner = ? OR cat_owner IS NULL )',
+        'WHERE cat_id = ? AND ( cat_owner = ? OR cat_owner = \'\' )',
       [$cat_id, $real_user]
     );
     if ($res) {

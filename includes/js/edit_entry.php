@@ -2,8 +2,7 @@
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
 
-$user = $arinc[3];
-
+load_user_categories();
 ?>
 var bydayAr = bymonthdayAr = bysetposAr = [];
 
@@ -602,7 +601,6 @@ function editCats ( evt ) {
   var selected_ids = cat_ids.split ( ',' );
 
 <?php
-  load_user_categories();
   foreach ( $categories as $catid => $cat ) {
     if ( $catid == 0 || $catid == -1 )
       continue; // Ignore these special cases (0=All, -1=None)
@@ -632,6 +630,7 @@ function catOkHandler () {
   var catIds = '', catNames = '';
 <?php
   foreach ( $categories as $catid => $cat ) {
+    echo ' // Processing catid=' . $catid . "\n";
     if ( $catid == 0 || $catid == -1 )
       continue; // Ignore these special cases (0=All, -1=None)
     ?>
@@ -665,7 +664,7 @@ function catOkHandler () {
   cats.val(catNames);
   var catId = $('#cat_id');
   catId.val(catIds);
-  console.log("cat_id.value = " + catId.value);
+  //console.log("cat_id.value = " + catId.value);
   $('#catModal').modal('hide');
   return true;
 }

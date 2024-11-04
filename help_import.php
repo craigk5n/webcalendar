@@ -2,7 +2,7 @@
 require_once 'includes/init.php';
 require_once 'includes/help_list.php';
 
-print_header ( '', '', '', true );
+print_header ( [], '', '', true );
 echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Import' ) . '</h2>
     <h3>' . translate ( 'Palm Desktop' ) . '</h3>

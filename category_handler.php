@@ -62,16 +62,16 @@ if (empty($error) && !empty($delete)) {
   if (!dbi_execute(
     'DELETE FROM webcal_categories
     WHERE cat_id = ? AND ( cat_owner = ?'
-      . ($is_admin ? ' OR cat_owner IS NULL )' : ' )'),
+      . ($is_admin ? ' OR cat_owner = \'\' )' : ' )'),
     [$id, $login]
   )) {
     $error = db_error();
   }
 
-  if (!dbi_execute(
-    'DELETE FROM webcal_entry_categories
-    WHERE cat_id = ? AND ( cat_owner = ?'
-      . ($is_admin ? ' OR cat_owner = '' )' : ' )'),
+  if (!dbi_execute("
+    DELETE FROM `webcal_entry_categories`
+    WHERE `cat_id` = ? AND ( `cat_owner` = ?"
+      . ($is_admin ? " OR `cat_owner` = '' )" : " )"),
     [$id, $login]
   )) {
     $error = db_error();
@@ -95,16 +95,18 @@ if (empty($error) && !empty($delete)) {
       $row = dbi_fetch_row($res);
       $id = $row[0] + 1;
       dbi_free_result($res);
-      // Set catowner to NULL for global category
-      $catowner = ($is_admin ? ($isglobal == 'Y' ? null : $login) : $login);
+      // Set catowner to empty string for global category
+      $catowner = ($is_admin ? ($isglobal == 'Y' ? '' : $login) : $login);
       if (!dbi_execute(
         'INSERT INTO webcal_categories ( cat_id, cat_owner,
         cat_name, cat_color ) VALUES ( ?, ?, ?, ? )',
         [$id, $catowner, $catname, $catcolor]
-      ))
+      )) {
         $error = db_error();
-    } else
+      }
+    } else {
       $error = db_error();
+    }
   }
   if (empty($delIcon) && (!empty($ENABLE_ICON_UPLOADS) && $ENABLE_ICON_UPLOADS == 'Y' || $is_admin)) {
     // Save icon if uploaded.

@@ -65,7 +65,7 @@ if ( empty ( $friendly ) ) {
 $eventinfo = ( empty ( $eventinfo ) ? '' : $eventinfo );
 $trailerStr = print_trailer();
 print_header ( ['js/popups.js/true', 'js/dblclick_add.js/true'],
-  generate_refresh_meta(), '', false, false, false, false );
+  generate_refresh_meta() );
 
 echo <<<EOT
 

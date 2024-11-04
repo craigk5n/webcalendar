@@ -1,0 +1,1986 @@
+# Slovak sk
+#
+# Formát sa skladá z voliteľnej hlavičky:
+#
+# Preložil: vaše meno a e-mail
+# Posledná aktualizácia: dátum prekladu
+# (Vrátane vedúceho „#“ a akýchkoľvek komentárov predchádzajúcich prekladateľov.
+# PRVÝ prázdny riadok končí tieto komentáre v záhlaví.)
+#
+# Nasleduje toľko, koľko je potrebné:
+#
+# Anglická fráza: preklad
+# (Jeden na riadok. BEZ úvodného „#“.
+# „Anglickú frázu:“, vrátane dvojbodky „:“, poskytuje
+# Vývojári WebCalendar. Tvojou súčasťou je „preklad“.)
+#
+# Adresár nástrojov obsahuje dva skripty Perl, ktoré vám pomôžu:
+# - check_translation.pl
+# označuje, či bol celý text úspešne preložený.
+# - update_translation.pl
+# analyzuje programové súbory, aby našiel všetky preklady („frázy“) a
+# tooltip ('phrase'). Zoradí frázy podľa stránky
+# (súbor), ktorý obsahuje prvý výskyt. Voliteľne môže označiť
+# frázy, ktoré zatiaľ nie sú preložené uvedením
+#  << MISSING >>
+# v riadku nad frázou. A ak je fráza skratkou,
+# bude obsahovať celý anglický text na riadku pod frázou.
+#
+# Poznámka: Pokúšam sa znížiť celkovú veľkosť súboru. Ak je „preklad“
+# slovo / fráza je vo vašom jazyku a angličtine identické, stačí použiť znak „=“.
+#
+# Poznámka: Všimnete si záznam pre "May_" nižšie. Má to svoj dôvod.
+# Preložiť "May_" na celý mesiac a "May" do,
+# zvyčajne trojpísmenová skratka mesiaca (napríklad „október“ pre „október“).
+#
+# Použil som na to prekladač Google.
+# Malo by to stačiť, kým to rodený hovorca nebude môcť overiť.
+# Bruce Bannon <webcalendar.v5oan@simplelogin.com>
+#
+# Translation last updated on 05-01-2021
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+# Specify a charset (will be sent within meta tag for each page).
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+################################################################################
+################################################################################
+########################################
+# Page: about.php
+#
+Title: Webový kalendár
+version XXX: verzia XXX
+WebCalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.: WebCalendar je aplikácia PHP, ktorá sa používa na správu kalendára pre jedného používateľa alebo skupinu používateľov internetu / intranetu. Môže byť tiež nakonfigurovaný ako kalendár udalostí.
+Credits: Úvery
+About: O
+OK: Ok
+########################################
+# Page: access.php
+#
+Database error XXX.: Chyba databázy: XXX.
+DEFAULT CONFIGURATION: VÝCHODNÁ KONFIGURÁCIA
+Go: Choď
+Save: Uložiť
+Undo: Vrátenie späť
+Public Access: Verejný prístup
+User Access Control: Kontrola prístupu používateľov
+Allow Access to Other Users Calendar: Povoliť prístup do kalendára ostatných používateľov
+Grant This User Access to My Calendar: Udeliť tomuto používateľovi prístup k môjmu kalendáru
+Type: Typ
+Calendar: Kalendár
+View Event: Zobraziť udalosť
+View: vyhliadka
+Edit: Upraviť
+Approve/Reject: Schváliť / Odmietnuť
+Events: Diania
+Tasks: Úlohy
+Journals: Časopisy
+Can Invite: Môže pozvať
+Can Email: Môže e-mailom
+Can See Time Only: Vidí iba čas
+Assistant: Asistent
+Select All: Vybrať všetko
+Clear All: Zmazať všetko
+Public: Verejné
+Confidential: Dôverné
+Private: Súkromné
+########################################
+# Page: activity_log.php
+#
+Next: Ďalšie
+Previous: Predchádzajúce
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Udalosť XXX je už vo vašom kalendári.
+Invalid entry id XXX.: Neplatné ID záznamu: „XXX“.
+a XXX event may not be added to your calendar: Toto je udalosť XXX a nemusí byť pridaná do vášho kalendára.
+confidential: dôverné
+private: súkromné
+Error adding event XXX.: Chyba pri pridávaní udalosti: XXX.
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Neplatný názov nastavenia „XXX“.
+Select: Vyberte
+Day: Deň
+Week: Týždeň
+Month: Mesiac
+Year: Rok
+Bottom: Dole
+Anyone: Ktokoľvek
+Participant: Účastník
+Settings: nastavenie
+Groups: Skupiny
+NonUser Calendars: NonUser kalendáre
+Other: Iné
+Colors: Farby
+Document background: Pozadie dokumentu
+Document title: Názov dokumentu
+Document text: Text dokumentu
+My event text: Môj text udalosti
+Table grid color: Farba mriežky stola
+Table header background: Pozadie hlavičky tabuľky
+Table header text: Text hlavičky tabuľky
+Table cell background: Pozadie bunky tabuľky
+Table cell background for current day: Pozadie bunky tabuľky pre aktuálny deň
+Table cell background for days with events: Pozadie buniek tabuľky pre dni s udalosťami
+Table cell background for weekends: Pozadie buniek tabuľky na víkendy
+Table cell background for other month: Pozadie bunky tabuľky pre iný mesiac
+Week number color: Farba čísla týždňa
+Event popup background: Kontextové okno udalosti
+Event popup text: Vyskakovací text udalosti
+System Settings: Systémové nastavenia
+Help: Pomoc
+System options: Možnosti systému
+app-name-help: Určuje názov aplikácie, ktorá sa zobrazí v záhlaví prehľadávača pre všetky stránky a na prihlasovacej stránke. Hodnota, ktorú tu zadáte, sa vyhľadá v súbore prekladov, čo vám umožní zadať rôzne názvy pre rôzne jazyky.
+Application Name: Názov aplikácie
+Translated Name (XXX): Preložené meno (XXX)
+server-url-help: Určuje základnú adresu URL aplikácie. Toto bude zahrnuté pri odosielaní e-mailových pripomenutí a upozornení.
+Server URL: URL servera
+home-url-help: Určuje domovskú adresu URL aplikácie. Môže to byť absolútna alebo relatívna
+Home URL: Domovská adresa URL
+language-help: Určuje, ktorý jazyk sa má použiť.
+Language: Jazyk
+Your browser default language is XXX.: Predvolený jazyk vášho prehliadača je „XXX“.
+Allow user to use themes: Umožniť používateľovi používať témy
+themes-help: Umožňuje hromadnú aktualizáciu nastavení konfigurácie. Menovky sú určené iba pre používateľov.
+Themes: Témy
+AVAILABLE THEMES: DOSTUPNÉ TÉMY
+None: Žiadne
+Preview: Náhľad
+Site customization: Prispôsobenie stránok
+custom-script-help: Umožňuje zadanie vlastného textu Javascript alebo šablóny so štýlmi, ktorý sa vloží do sekcie HTML „head“ na každej stránke.
+Custom script/stylesheet: Vlastný skript / šablóna so štýlmi
+custom-header-help: Umožňuje zahrnúť vlastný útržok kódu HTML do hornej časti každej stránky.
+Custom header: Vlastná hlavička
+custom-trailer-help: Umožňuje zahrnúť vlastný útržok kódu HTML na koniec každej stránky.
+Custom trailer: Príves na mieru
+enable-external-header-help: Umožňuje načítanie vlastnej upútavky z externého súboru
+Allow external file for header/script/trailer: Povoliť externý súbor pre hlavičku / skript / upútavku
+Allow user to override header/trailer: Umožniť používateľovi prepísať hlavičku / príves
+Date and Time: Dátum a čas
+server-tz-help: Určuje, koľko hodín sa má upraviť čas z UTC na čas servera.
+Server Timezone Selection: Výber časového pásma servera
+tz-help: Určuje, koľko hodín sa má upraviť čas z UTC na miestny čas.
+Default Client Timezone Selection: Predvolený výber časového pásma klienta
+display-general-use-gmt-help: Ak je táto možnosť povolená, bežné dátumy a časy sa zobrazia ako GMT
+Display Common Use Date/Times as GMT: Zobraziť bežné dátumy a časy ako GMT
+date-format-help: Určuje preferovaný formát dátumu.
+Date format: Formát dátumu
+Small Task Date: Malý dátum úlohy
+display-week-starts-on: Určuje deň v týždni, ktorým sa týždeň začína. Ak je zadaný pondelok, potom čísla týždňov budú čísla týždňov ISO.
+Week starts on: Týždeň začína
+display-weekend-starts-on: Nastavuje začiatok týždňa na víkend
+Weekend starts on: Víkend sa začína
+time-format-help: Určuje, aký formát času sa má použiť:<br><em>12 hodín:</em> Zobraziť časy ako 3:00, 20:30 atď.<br><em>24 hodín:</em> Zobraziť časy ako 300, 2030 atď.
+Time format: Formát času
+12 hour: 12 hodín
+24 hour: 24 hodín
+timed-evt-len-help: Určuje metódu vstupu na určenie dĺžky časovanej udalosti.
+Specify timed event length by: Zadajte dĺžku časovanej udalosti o
+Duration: Trvanie
+End Time: Čas ukončenia
+work-hours-help: Určuje časový rozsah, ktorý sa má zobraziť pre denné zobrazenie.
+Work hours: Pracovný čas
+From: Od
+to: do
+Appearance: Vzhľad
+preferred-view-help: Určuje predvolené zobrazenie (deň, týždeň, mesiac alebo rok).
+Preferred view: Preferované zobrazenie
+Allow top menu: Povoliť horné menu
+Date Selectors position: Pozícia selektorov dátumu
+menu-themes-help: Nastavuje farby a štýl horného menu
+Menu theme: Téma ponuky
+fonts-help: Určuje zoznam systémových fontov, ktoré sa majú použiť (napríklad „Arial, Helvetica“)
+Fonts: Písma
+display-sm_month-help: Ak je táto možnosť povolená, zobrazuje v zobrazeniach mesiacov malé mesiace
+Display small months: Zobraziť malé mesiace
+display-weekends-help: Pri prezeraní týždňa zahrňte aj víkendy.
+Display weekends: Zobraziť víkendy
+display-long-daynames-help: Ak je táto možnosť povolená, zobrazujú sa názvy dlhých dní
+Display long day names: Zobraziť názvy dlhých dní
+display-alldays-help: Zobrazte predchádzajúci a nasledujúci mesiac dni v zobrazení mesiaca a vyplňte všetky bunky.
+Display all days in month view: Zobraziť všetky dni v mesačnom zobrazení
+display-week-number-help: Určuje, či sa má číslo týždňa (1-52) zobraziť v mesačnom a týždennom zobrazení.
+Display week number: Zobraziť číslo týždňa
+display-desc-print-day-help: Zahrňte popisy udalostí do tlačenej verzie denného zobrazenia.
+Display description in printer day view: Zobraziť popis v zobrazení dňa tlačiarne
+yearly-shows-events-help: V ročnom zobrazení sú dni, ktoré obsahujú udalosti, zobrazené tučným písmom.
+Display days with events in bold in month and year views: Zobrazujte dni s udalosťami tučným písmom v mesačnom a ročnom zobrazení
+display-minutes-help: Ak je táto možnosť povolená, budú sa vždy zobrazovať minúty končiace na: 00
+Display 00 minutes always: Vždy zobraziť 00 minút
+display-end-times-help: Zobraziť čas ukončenia udalosti, ak je časovaná
+Display end times on calendars: Zobraziť koncové časy v kalendároch
+allow-view-add-help: V zobrazeniach bude ikona „+“, ktorá umožní používateľom rýchlo pridávať udalosti do kalendárov ostatných používateľov.
+Include add event link in views: Zahrnúť odkaz na pridanie udalosti do zobrazení
+lunar-help: Ak je táto možnosť povolená, každý mesiac sa budú zobrazovať malé ikony predstavujúce mesačné fázy
+Display Lunar Phases in month view: Zobrazte mesačné fázy v mesačnom zobrazení
+Restrictions: Obmedzenia
+allow-view-other-help: Určuje, či môže jeden používateľ zobraziť kalendár iného používateľa.
+Allow viewing other users calendars: Povoliť prezeranie kalendárov iných používateľov
+require-approvals-help: Ak je táto možnosť povolená, používateľ musí schváliť udalosť skôr, ako sa zobrazí v jeho kalendári (pokiaľ nie je povolená možnosť Zobraziť neschválené). Upozorňujeme, že nastavením tohto nastavenia na „Nie“ nevypnete schvaľovanie kalendára verejného prístupu (ak je povolený kalendár verejného prístupu).
+Require event approvals: Vyžadovať schválenie udalosti
+display-unapproved-help: Určuje, či sa vo vašom kalendári zobrazia neschválené udalosti.<br>Ak je nastavená na „Áno“, potom sa neschválené udalosti zobrazia vo vašom kalendári (v inej farbe textu).<br>Ak je nastavená na „Nie“, potom neschválené udalosti musia byť pred zobrazením vo vašom kalendári schválené.
+Display unapproved: Zobrazenie neschválené
+conflict-check-help: Skontrolujte, či nedochádza ku konfliktom udalostí (dve udalosti sú naplánované na rovnaký čas pre tú istú osobu). Ak nastavíte túto možnosť na „Áno“, po potvrdení varovania budete môcť naplánovať dve udalosti naraz. Ak nastavíte možnosť „Nie“, nebude sa vykonávať kontrola konfliktov. Pravdepodobne to chcete nastaviť na „Áno“, aby došlo ku kontrole konfliktov.
+Check for event conflicts: Skontrolujte konflikty udalostí
+Yes: Áno
+No: Nie
+conflict-months-help: Ak je kontrola konfliktov na mieste (možnosť „Skontrolovať konflikty udalostí“ je nastavená na hodnotu „Nie“ & # 41;), táto hodnota určuje, o koľko mesiacov v budúcnosti by sme mali konflikty skontrolovať. Ak zistíte, že pridávanie udalostí trvá spracovanie dlho, znížte tento počet.
+Conflict checking months: Mesiace na kontrolu konfliktov
+conflict-check-override-help: Umožňuje používateľom prekonať konflikty udalostí a naplánovať dve alebo viac udalostí naraz.
+Allow users to override conflicts: Umožnite používateľom prekonať konflikty
+limit-appts-help: Umožňuje správcovi systému nastaviť celosystémové obmedzenie počtu udalostí, ktoré môže mať jeden používateľ v ktorýkoľvek deň.
+Limit number of timed events per day: Obmedzte počet načasovaných udalostí za deň
+limit-appts-number-help: Určuje maximálny počet časovaných udalostí, ktoré môže mať používateľ za jeden deň.
+Maximum timed events per day: Maximálny počet načasovaných udalostí za deň
+crossday-help: Ak je povolené, udalosti, ktoré trvajú dni, sa zobrazia v samostatných dňoch
+Disable Cross-Day Events: Zakázať cezhraničné udalosti
+disable-location-field-help: Výberom možnosti Áno odstránite pole „Poloha“ zo stránok s informáciami o udalostiach
+Disable Location field: Zakázať pole Poloha
+disable-url-field-help: Výberom možnosti Áno odstránite pole „URL“ zo stránok s informáciami o udalostiach
+Disable URL field: Zakázať pole URL
+disable-priority-field-help: Výberom možnosti „Áno“ sa odstráni pole „Priorita“ zo stránok s informáciami o udalostiach, čo pre nováčikov predstavuje jednoduchšie rozhranie.
+Disable Priority field: Zakázať pole Priorita
+disable-access-field-help: Výberom možnosti „Áno“ odstránite pole „Prístup“ zo stránok s informáciami o udalostiach, čím získate jednoduchšie rozhranie pre nováčikov.
+Disable Access field: Zakázať pole prístupu
+disable-participants-field-help: Výberom možnosti „Áno“ odstránite pole „Účastníci“ zo stránok s informáciami o udalostiach, čo zabráni používateľom pridávať k ich udalostiam ďalších používateľov. Ak povolíte túto možnosť, môžete tiež zakázať pole „Povoliť prezeranie kalendárov iných používateľov“.
+Disable Participants field: Zakázať pole Účastníci
+disable-repeating-field-help: Výberom možnosti Áno odstránite pole „Opakovanie“ pri pridávaní udalostí. To poskytne nováčikom jednoduchšie rozhranie.
+Disable Repeating field: Zakázať opakujúce sa pole
+allow-html-description-help: Ak je táto možnosť povolená, používatelia môžu do poľa s popisom udalosti zadať kód HTML. Pokiaľ to nie je povolené, bude HTML značkám uniknuté, aby vyzerali ako obyčajný text. Varovanie: Povolenie tejto funkcie umožní používateľom odkazovať na obrázky na iných webových stránkach.
+Allow HTML in Description: V popise povoľte HTML
+Popups: Vyskakovacie okná
+disable-popups-help: Zakázať vyskakovacie okná v zobrazeniach kalendára
+Disable Pop-Ups: Zakázať vyskakovacie okná
+popup-includes-siteextras-help: Ak je to povolené, povoľte nastavenie vlastných polí udalostí v súbore site_extras.php, ktoré sa zobrazia vo vyskakovacích oknách udalostí.
+Display Site Extras in popup: Zobraziť doplnky webu vo vyskakovacom okne
+popup-includes-participants-help: Ak je táto možnosť povolená, účastníci sa zobrazujú vo vyskakovacích oknách udalostí.
+Display Participants in popup: Zobraziť účastníkov v kontextovom okne
+Miscellaneous: Zmiešaný
+remember-last-login-help: Ak je táto možnosť povolená, na prihlasovacej stránke sa im vyplní prihlásenie používateľa (nie však heslo) a načítajú sa predvoľby používateľa (vrátane preferovaných farieb a výberu jazyka).
+Remember last login: Zapamätať si posledné prihlásenie
+summary_length-help: Maximálna dĺžka Stručného popisu v zobrazeniach kalendára
+Brief Description Length: Stručný popis Dĺžka
+user_sort-help: Určuje poradie triedenia pre zoznamy používateľov a používateľov
+User Sort Order: Poradie zoradenia používateľov
+Lastname, Firstname: Priezvisko meno
+Firstname, Lastname: Meno Priezvisko
+allow-public-access-help: Ak je táto možnosť povolená, kalendár sa dá použiť ako verejný kalendár iba na čítanie, ktorý nevyžaduje prihlásenie používateľov.
+Allow public access: Povoliť prístup verejnosti
+public-access-default-visible: Udalosti z verejného kalendára sa automaticky zobrazia v kalendároch všetkých používateľov
+Public access visible by default: Verejný prístup je predvolene viditeľný
+public-access-default-selected: Pri pridávaní novej udalosti bude predvolene vybraný verejný používateľ ako účastník.
+Public access is default participant: Verejný prístup je predvoleným účastníkom
+public-access-view-others-help: Pri prístupe do systému s verejným prístupom určuje, či môže používateľ zobraziť kalendár iného používateľa kalendára.
+Public access can view other users: Verejný prístup si môže zobraziť ďalších používateľov
+public-access-can-add-help: Ak je táto možnosť povolená, používatelia, ktorí pristupujú do systému prostredníctvom verejného prístupu, budú môcť pridávať nové udalosti, avšak v kalendári sa nebudú zobrazovať, kým správca neschváli novú udalosť.
+Public access can add events: Prístup verejnosti môže pridávať udalosti
+public-access-add-requires-approval-help: Určuje, či udalosti pridané prostredníctvom účtu verejného prístupu vyžadujú schválenie pred zobrazením.
+Public access new events require approval: Prístup nových udalostí pre verejnosť si vyžaduje schválenie
+public-access-sees-participants-help: Ak je táto možnosť povolená, používatelia pristupujúci k kalendáru z verejného účtu budú môcť vidieť účastníkov udalosti, ak si zobrazia podrobnosti udalosti.
+Public access can view participants: Prístup verejnosti si môžu zobraziť účastníci
+public-access-override-help: Umožňuje skryť názvy a popisy udalostí vo verejnom kalendári
+Override event name/description for public access: Prepísať názov / popis udalosti pre verejný prístup
+public-access-override-text-help: Text, ktorý sa má zobraziť, ak je povolená vyššie uvedená možnosť. Ak nie je k dispozícii, bude preložený.
+Text to display to public access: Text na zobrazenie verejnému prístupu
+public-access-captcha-help: Ak je povolené, nové udalosti pridané verejnosťou vyžadujú absolvovanie overenia CAPTCHA.
+Require CAPTCHA validation for public access new events: Vyžadovať overenie CAPTCHA pre verejné udalosti s novými udalosťami
+uac-enabled-help: Umožňuje kontrolu prístupu na úrovni používateľa
+User Access Control enabled: Kontrola prístupu používateľov je povolená
+groups-enabled-help: Povolí podporu skupín a umožní používateľom vyberať používateľov podľa skupín.
+Groups enabled: Skupiny sú povolené
+user-sees-his-group-help: Ak je táto možnosť povolená, používatelia neuvidia používateľov kalendára, ktorí nie sú aspoň v jednej z ich skupín.
+User sees only his groups: Používateľ vidí iba svoje skupiny
+nonuser-enabled-help: Ak je táto možnosť povolená, správcovia budú mať možnosť pridať kalendáre, ktoré nepoužívajú používatelia
+Nonuser enabled: Kalendáre nepoužívané sú povolené
+nonuser-list-help: Kam zobraziť kalendáre, ktoré nie sú používateľmi, v zozname účastníkov
+Nonuser list: Zobraziť v zozname účastníkov na
+Upcoming Events: Pripravované akcie
+upcoming-events-help: Povoliť coming.php
+Enabled: Povolené
+upcoming-events-allow-override: Povoliť používateľský parameter pre coming.php
+Allow user override: Povoliť prepísanie používateľom
+upcoming-events-display-caticons: Zahrňte ikony kategórií do nadchádzajúceho.php
+Display category icons: Zobraziť ikony kategórií
+upcoming-events-display-layers: Zobraziť vrstvy v nadchádzajúcom.php
+Display layers: Zobraziť vrstvy
+upcoming-events-display-links: Zobraziť odkazy v coming.php
+Display links to events: Zobraziť odkazy na udalosti
+upcoming-events-display-popups: Zobraziť kontextové okná udalostí v coming.php
+Display event popups: Zobraziť kontextové okná udalostí
+reports-enabled-help: Ak je táto možnosť povolená, používateľom sa v dolnej časti každej stránky zobrazí časť „Prehľady“ a bude im umožnené vytvárať vlastné prehľady. Okrem toho môžu správcovia vytvárať globálne prehľady, ktoré sa zobrazia v dolnej časti stránok všetkých používateľov.
+Reports enabled: Prehľady sú povolené
+subscriptions-enabled-help: Určuje, či sa môžu vzdialení používatelia prihlásiť na odber kalendára používateľa WebCalendar, čo im umožňuje vidieť udalosti používateľov WebCalendar v ich aplikáciách podporujúcich iCal (napríklad Apple iCal alebo Mozilla Calendar).
+Allow remote subscriptions: Povoliť vzdialené predplatné
+remotes-enabled-help: Umožňuje používateľom načítať vzdialené súbory ics pomocou adresy URL
+Allow remote calendars: Povoliť vzdialené kalendáre
+rss-enabled-help: Určuje, či je možné kalendár používateľa získať z informačného kanála RSS.
+Enable RSS feed: Povoliť kanál RSS
+categories-enabled-help: Povolí podporu pre kategórie udalostí.
+Categories enabled: Kategórie sú povolené
+icon_upload-enabled-help: Ak je táto možnosť povolená, používatelia môžu nahrať ikony kategórií
+Category Icon Upload enabled: Nahrávanie ikon kategórie je povolené
+Requires XXX folder to exist.: (Vyžaduje sa, aby existoval priečinok XXX.)
+display-tasks-help: Zobraziť malé okno úlohy v mesačnom a dennom kalendári
+Display small task list: Zobraziť malý zoznam úloh
+display-tasks-in-grid-help: Zobrazujte úlohy v kalendároch spolu s udalosťami
+Display tasks in Calendars: Zobraziť úlohy v kalendároch
+allow-external-users-help: Určuje, či je možné k udalosti pridať iného používateľa ako kalendára. To umožňuje používateľom, ktorí nie sú kalendármi, byť uvedení ako účastníci udalosti.
+Allow external users: Povoliť externých používateľov
+external-can-receive-notification-help: Ak sú povolení externí používatelia a je povolené používanie e-mailov, môžu externí používatelia dostávať e-mailové upozornenia po pridaní, aktualizácii alebo odstránení udalosti (ak je uvedená e-mailová adresa externého používateľa).
+External users can receive email notifications: Externí používatelia môžu dostávať e-mailové upozornenia
+external-can-receive-reminder-help: Ak sú povolení externí používatelia a je povolené používanie e-mailov, môžu externí používatelia dostávať e-mailové upozornenia (ak je uvedená e-mailová adresa externého používateľa).
+External users can receive email reminders: Externí používatelia môžu dostávať e-mailové pripomienky
+allow-self-registration-help: Povoliť novým používateľom registráciu
+Allow self-registration: Povoliť vlastnú registráciu
+use-blacklist-help: Obmedzte prístup k funkciám WebCalendar na základe adresy IP
+Restrict self-registration to blacklist: Obmedzte vlastnú registráciu na čiernu listinu
+allow-self-registration-full-help: Umožnite novým používateľom dokončiť proces vlastnej registrácie online
+Use self-registration email notifications: Generujte heslá a posielajte ich novým používateľom
+allow-attachment-help: Umožnite používateľom pridávať k udalostiam prílohy súborov.
+Allow file attachments to events: Povoliť prílohy súborov k udalostiam
+Admin and owner can always add attachments if enabled.: Správca a vlastník môžu kedykoľvek pridať prílohy, ak je to povolené.
+allow-comments-help: Umožnite používateľom pridávať komentáre k udalostiam.
+Allow comments to events: Povoliť komentáre k udalostiam
+Admin and owner can always add comments if enabled.: Správca a vlastník môžu kedykoľvek pridávať komentáre, ak sú povolené.
+email-enabled-help: Zapnite alebo vypnite všetky odosielanie e-mailov s upozornením a pripomienkami. Nastavte na „nie“, ak váš server nie je správne nastavený na odosielanie pošty.
+Email enabled: E-mail povolený
+email-default-sender: Určuje e-mailovú adresu, ktorú chcete určiť ako odosielateľa pri odosielaní pripomenutí.
+Default sender address: Predvolená adresa odosielateľa
+email-mailer: Vyberte typ e-mailu (SMTP, pošta PHP, sendmail)
+email-smtp-host: Názov hostiteľa serverov SMTP oddelený čiarkami
+SMTP Host name(s): Názov hostiteľa SMTP
+email-smtp-port: Číslo portu SMTP (zvyčajne 25)
+SMTP Port Number: Číslo portu SMTP
+email-smtp-auth: Použite overenie SMTP
+SMTP Authentication: SMTP autentifikácia
+email-smtp-username: Používateľské meno SMTP, ak používa autentifikáciu
+SMTP Username: Používateľské meno SMTP
+email-smtp-password: Heslo SMTP, ak sa používa autentifikácia
+SMTP Password: Heslo SMTP
+Default user settings: Predvolené používateľské nastavenia
+email-format: Zadajte predvoľbu správ HTML alebo obyčajného textu
+Email format preference: Predvoľba formátu e-mailu
+Plain Text: Obyčajný text
+email-include-ics: Do e-mailovej správy zahrňte súbor ICS iCalendar
+Include iCalendar attachments: Zahrňte prílohy iCalendar
+email-event-reminders-help: Určuje, či sa majú alebo nemajú odosielať pripomienky udalostí.
+Event reminders: Pripomienky udalostí
+email-event-added: Určuje, či sa majú alebo nemajú odosielať e-mailové upozornenia na pridanie udalosti do vášho kalendára.
+Events added to my calendar: Udalosti pridané do môjho kalendára
+email-event-updated: Určuje, či sa majú alebo nemajú odosielať e-mailové upozornenia na aktualizáciu udalosti v kalendári.
+Events updated on my calendar: Udalosti aktualizované v mojom kalendári
+email-event-deleted: Určuje, či sa majú alebo nemajú odosielať e-mailové upozornenia na odstránenie udalosti z vášho kalendára.
+Events removed from my calendar: Udalosti odstránené z môjho kalendára
+email-event-rejected: Určuje, či sa majú alebo nemajú odosielať e-mailové upozornenia, keď účastník odmietne udalosť, ktorá je vo vašom kalendári.
+Event rejected by participant: Udalosť odmietnutá účastníkom
+email-event-create: Určuje, či tvorca záznamov dostane e-mail
+Event that I create: Udalosť, ktorú vytvorím
+Color options: Farebné možnosti
+Allow user to customize colors: Umožniť používateľovi prispôsobiť farby
+gradient-colors: Ak je povolené, použijú sa farby prechodu. To môže výrazne ovplyvniť výkon.
+Enable gradient images for background colors: Povoliť prechodové obrázky pre farby pozadia
+Not available: Nie je k dispozícií
+Background Image options: Možnosti obrázka na pozadí
+bgimage-help: URL požadovaného obrázka na pozadí. Môže to byť relatívny odkaz.
+Background Image: Obrázok na pozadí
+bgrepeat-help: Riadi opakovanie správania sa pozadia.
+Background Repeat: Opakovanie pozadia
+########################################
+# Page: adminhome.php
+#
+Assistants: Asistenti
+Preferences: Predvoľby
+Control Panel: Ovládací panel
+Users: Používatelia
+Account: Účet
+Categories: Kategórie
+Views: Názory
+Layers: Vrstvy
+Reports: Správy
+Delete Events: Odstrániť udalosti
+Activity Log: Denník aktivít
+System Log: Systémový denník
+Security Audit: Bezpečnostný audit
+Public Preferences: Verejné preferencie
+Unapproved Public Events: Neschválené verejné udalosti
+Administrative Tools: Administratívne nástroje
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Duplicitný názov: „XXX“.
+Username XXX already exists.: Používateľské meno „XXX“ už existuje.
+Email address XXX already exists.: E-mailová adresa „XXX“ už existuje.
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Ďalšie poznámky (voliteľné)
+Approve and Send: Schváliť a odoslať
+Approve and Exit: Schváliť a ukončiť
+(Your comments will be emailed to the event creator.): (Vaše komentáre budú e-mailom zaslané tvorcovi udalosti.)
+Hello, XXX.: Dobrý deň, XXX.
+XXX has approved an appointment and added comments.: Stretnutie bolo schválené a komentáre boli pridané používateľom XXX.
+Subject XXX: Predmet: „XXX“.
+Description XXX: Popis: „XXX“.
+Date XXX: Dátum: XXX
+Time XXX: Čas: XXX
+Comments XXX: Komentáre: XXX
+Approved w/Comments by XXX.: Schválené s / komentármi od: XXX.
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Režim správcu
+Your assistants: Vaši asistenti
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Neznáma chyba.
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Chyba programu: Nie je zadané XXX!
+user: používateľ
+year: rok
+month: mesiac
+day: deň
+########################################
+# Page: category.php
+#
+Category Icon: Ikona kategórie
+Global: Globálne
+The permissions for the icons directory are set to read-only: Povolenia pre adresár ikon sú nastavené iba na čítanie.
+Category Name: Meno kategórie:
+Color: Farba
+Remove Icon: Odstrániť ikonu:
+Add Icon to Category: Pridajte ikonu do kategórie
+Upload: Nahrať
+GIF or PNG 6kb max: GIF alebo PNG max. 6 kB
+Search for existing icons: Vyhľadajte existujúce ikony
+Add: Pridať
+Delete: Odstrániť
+Are you sure you want to delete this entry?: Naozaj chcete odstrániť tento záznam?
+Make New Category: Vytvoriť novú kategóriu
+########################################
+# Page: category_handler.php
+#
+Category name is required: Názov kategórie je povinný údaj
+File size exceeds maximum.: Veľkosť súboru presahuje maximum.
+File is not a GIF or PNG image: Súbor nie je obrázok GIF alebo PNG
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: DOSTUPNÉ KATEGÓRIE
+ENTRY CATEGORIES: VSTUPNÉ KATEGÓRIE
+Remove: Odstrániť
+Global Category: Globálna kategória
+Cancel: Zrušiť
+########################################
+# Page: colors.php
+#
+Add Custom: Pridať vlastné
+Basic Colors: Základné farby
+Current Color: Aktuálna farba
+Custom Colors: Vlastné farby
+Old Color: Stará farba
+########################################
+# Page: combo.php
+#
+Select None: Nevyber nič
+Add Task: Pridať úlohu
+Description: Popis
+Date: Dátum
+Time: Čas
+Priority: Priorita
+Access: Prístup
+Created by: Vytvoril
+Updated: Aktualizované
+Participants: Účastníci
+Attachments: Prílohy
+Comments: Pripomienky
+Brief Description: Stručný popis
+Full Description: Kompletný popis
+Category: Kategória
+Add event detail: Pridajte detail udalosti
+Start Date: Dátum začiatku
+Due Date: Do dátumu
+Add task detail: Pridajte detail úlohy
+All: Všetky
+Error: Chyba
+no response from server: žiadna odpoveď zo servera
+JSON error: Chyba JSON
+High: Vysoký
+Medium: Stredná
+Low: Nízka
+Today: Dnes
+Add Entry: Pridať záznam
+Unnamed Event: Nepomenovaná udalosť
+Unnamed Task: Nepomenovaná úloha
+Refresh: Obnoviť
+Click to add entry: Kliknite a pridajte záznam
+Name: názov
+pm: popoludnie
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX zrušil schôdzku.
+########################################
+# Page: doc.php
+#
+Invalid blob id: Neplatné ID objektu blob
+########################################
+# Page: docadd.php
+#
+Add Comment: Pridať komentár
+Add Attachment: Pridať prílohu
+Subject: Predmet
+Comment: Komentovať
+Upload file: Nahrajte súbor
+########################################
+# Page: docdel.php
+#
+Removed: Odstránený
+########################################
+# Page: edit_entry.php
+#
+days: dni
+hours: hodín
+minutes: minút
+You are not authorized to edit this task.: Nemáte oprávnenie na úpravu tejto úlohy.
+is in a different timezone than you are. Currently: je v inom časovom pásme ako vy. Momentálne
+hour ahead of you: hodinu pred vami
+hour behind you: hodinu za tebou
+hours ahead of you: hodiny pred vami
+hours behind you: hodiny za vami
+XXX is in a different timezone (ahead): (XXX je v inom časovom pásme; RRRR pred vami.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX je v inom časovom pásme; RRRR za vami.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Tu zadaný čas vychádza z vašej časovej zóny.
+Edit Entry: Upraviť záznam
+Details: Detaily
+Repeat: Opakujte
+Reminders: Pripomienky
+brief-description-help: To by malo poskytnúť krátky popis (asi 20 znakov) udalosti. Toto bude predstavovať udalosť pri prezeraní kalendára.
+full-description-help: Mali by sa tak dokončiť podrobnosti o udalosti. Tieto informácie sa zobrazia, keď si používateľ pozrie udalosť.
+access-help: Určuje úroveň prístupu k udalosti. <ul><li> Verejné: Všetci si môžu pozrieť všetky podrobnosti udalosti.</li><li> Dôverné: Ostatní môžu vidieť, že máte záznam pre daný dátum a čas, ale nie podrobnosti o tom, čo to je.</li></ul>
+priority-help: Určuje prioritu udalosti. Udalosti s vysokou prioritou sa zobrazia tučne.
+category-help: Určuje kategóriu udalosti.
+completed-help: Dátumová úloha je splnená. Povolené, iba ak sa percento všetkých účastníkov rovná 100%.
+Date Completed: Dátum dokončený
+percent-help: Percento dokončenia úlohy pre tohto používateľa
+Percent Complete: Percento dokončené
+All Percentages: Všetky percentá
+location-help: Miesto konania
+Location: Poloha
+url-help: URL udalosti
+date-help: Určuje dátum udalosti.
+Untimed event: Nečasovaná udalosť
+Timed event: Časovaná udalosť
+All day event: Celodenná udalosť
+Timezone Offset: Ofset časového pásma
+time-help: Určuje čas udalosti. <ul><li> „Časovaná udalosť“ (pre udalosť, ktorá je naplánovaná na konkrétny čas v daný deň)</li><li> „Nečasovaná udalosť“ (pre udalosť, ktorá nemá čas (napríklad sviatok) )</li><li> „Celodenná udalosť“ (pre udalosť, ktorá trvá celý deň (napríklad mimo kancelárie)</li></ul>
+duration-help: Určuje trvanie udalosti (v hodinách; minútach). <em>Toto pole môže zostať prázdne.</em>
+end-time-help: Určuje čas, kedy sa má udalosť skončiť.
+Start Time: Doba spustenia
+Due Time: Patričný čas
+Site Extras: Doplnkové stránky
+avail_participants-help: Uvádza zoznam dostupných účastníkov tohto záznamu.
+Available: K dispozícii
+Find Name: Nájsť meno
+Resources: Zdroje
+participants-help: Uvádza zoznam účastníkov tohto záznamu.
+Selected: Vybraný
+Availability: Dostupnosť
+external-participants-help: Určuje zoznam účastníkov udalosti, ktorí nie sú používateľmi kalendára. Používatelia by mali byť uvedení na jednom riadku a môžu obsahovať e-mailovú adresu. Ak je zadaná e-mailová adresa, používateľ je oprávnený dostávať oznámenia a pripomienky.
+External Participants: Externí účastníci
+repeat-type-help: Vyberte, ako často sa má udalosť opakovať.
+Daily: Denne
+Weekly: Každý týždeň
+Monthly: Mesačne
+by day: cez deň
+by date: podľa dátumu
+by position: podľa polohy
+Monthly (by day): Mesačne (cez deň)
+Monthly (by date): Mesačne (podľa dátumu)
+Monthly (by position): Mesačne (podľa pozície)
+Yearly: Ročne
+Manual: Manuálny
+Expert Mode: Expertný režim
+repeat-end-date-help: Určuje dátum, do ktorého sa má udalosť opakovať do.
+Ending: Končiaci
+Forever: Navždy
+Use end date: Použite dátum ukončenia
+Number of times: Počet opakovaní
+repeat-frequency-help: Určuje, ako často sa má udalosť opakovať.
+Frequency: Frekvencia
+Weekdays Only: Iba pracovné dni
+Week Start: Začiatok týždňa
+repeat-bydayextended-help: Umožňuje výber dátumu na základe dňa v týždni.
+ByDay: Do dňa
+repeat-month-help: Určuje, v ktorých mesiacoch sa má udalosť opakovať.
+ByMonth: Do mesiaca
+repeat-bysetpos-help: Umožňuje výber dátumu na základe pozície v mesiaci.
+repeat-bymonthdayextended-help: Umožňuje výber dátumu na základe dátumu.
+repeat-byweekno-help: Umožňuje používateľovi určiť zoznam týždňov na opakovanie udalosti (1,2 ... 53, -53, -52 ...- 1).
+repeat-byyearday-help: Umožňuje používateľovi určiť zoznam dní v roku, ktoré sa majú opakovať (1,2 ... 366, -366, -365 ...- 1).
+repeat-exceptions-help: Ďalšie dni, kedy by sa táto udalosť mala alebo nemala vyskytnúť.
+Exclusions: Vylúčenia
+Inclusions: Inklúzie
+Add Exception: Pridať výnimku
+Add Inclusion: Pridať zahrnutie
+Delete Selected: Zmaž označené
+Send Reminder: Poslať pripomienku
+When: Kedy
+Use Date/Time: Použite dátum a čas
+Use Offset: Použite posun
+Before: Predtým
+After: Po
+Start: Štart
+End/Due: Koniec / splatnosť
+Times: Časy
+Every: Každý
+CAPTCHA Warning: Varovanie: Nie je možné použiť CAPTCHA bez prípony GD pre PHP!<br>
+Delete entry: Odstrániť záznam
+You are not authorized to edit this entry.: Nie ste oprávnení upravovať tento záznam.
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX si vytvoril nové stretnutie.
+XXX has updated an appointment.: XXX aktualizoval stretnutie.
+Security violation!: Porušenie bezpečnosti!
+You must enter the anti-spam text on the previous page.: Antispamový text musíte zadať na predchádzajúcej stránke.
+The following conflicts with the suggested time: Nasledujúce konflikty s navrhovaným časom
+User removed from participants list.: Používateľ bol odstránený zo zoznamu účastníkov.
+Please look on XXX to accept or reject this appointment.: Ak chcete prijať alebo odmietnuť túto schôdzku, pozrite sa na XXX.
+Please look on XXX to view this appointment.: Ak si chcete pozrieť túto schôdzku, pozrite sa na XXX.
+Scheduling Conflict: Plánovanie konfliktu
+Your suggested time of: Vami navrhovaný čas
+conflicts with the following existing calendar entries: je v konflikte s nasledujúcimi existujúcimi položkami kalendára
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX nebol nastavený v súbore „config.php“.
+word characters only: (môže obsahovať iba slovné znaky; [a-zA-Z_0-9])
+Add User: Pridať používateľa
+Edit User: Upraviť používateľa
+Calendar ID: ID kalendára
+First Name: Krstné meno
+Last Name: Priezvisko
+Is public calendar: Je verejný kalendár
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Chyba databázy
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Pridajte vzdialený kalendár
+Edit Remote Calendar: Upraviť vzdialený kalendár
+Create Layer: Vytvorte vrstvu
+Reload: Znova načítať
+Required to View Remote Calendar: Vyžaduje sa na zobrazenie vzdialeného kalendára
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Výsledky importu
+Events successfully imported: Udalosti sa úspešne importovali
+Create a new layer to view this calendar.: Vytvorte novú vrstvu na zobrazenie tohto kalendára.
+Errors: Chyby
+There was an error parsing the import file or no events were returned.: Pri analýze súboru importu sa vyskytla chyba alebo sa nevrátili žiadne udalosti.
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Zajtra
+Yesterday: Včera
+Day before yesterday: Predvčerom
+Next week: Budúci týždeň
+This week: Tento týždeň
+Last week: Minulý týždeň
+Week before last: Predminulý týždeň
+Next week and week after: Budúci týždeň a týždeň potom
+This week and next week: Tento týždeň a budúci týždeň
+Last week and this week: Minulý týždeň a tento týždeň
+Last two weeks: Posledné dva týždne
+Next month: Ďalší mesiac
+This month: Tento mesiac
+Last month: Minulý mesiac
+Month before last: Predminulý mesiac
+Next year: Ďalší rok
+This year: Tento rok
+Last year: Minulý rok
+Year before last: Predminulý rok
+Next 14 days: Nasledujúcich 14 dní
+Next 30 days: Nasledujúcich 30 dní
+Next 60 days: Nasledujúcich 60 dní
+Next 90 days: Nasledujúcich 90 dní
+Next 180 days: Ďalších 180 dní
+Next 365 days: Nasledujúcich 365 dní
+Invalid report id XXX.: Neplatné ID prehľadu: „XXX“.
+Unnamed Report: Nepomenovaná správa
+Add Report: Pridať správu
+Edit Report: Upraviť prehľad
+Report name: Názov správy
+User: Používateľ
+Current User: Súčasný užívateľ
+Include link in menu: Zahrnúť odkaz do ponuky
+Include standard header/trailer: Zahrňte štandardnú hlavičku / príves
+Include previous/next links: Zahrňte predchádzajúce / nasledujúce odkazy
+Include empty dates: Zahrňte prázdne dátumy
+Date range: Rozsah dátumov
+Template variables: Premenné šablón
+Page template: Šablóna stránky
+Day template: Šablóna dňa
+Event template: Šablóna udalosti
+Are you sure you want to delete this report?: Naozaj chcete odstrániť tento prehľad?
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Žiadne takéto ID prehľadu: „XXX“.
+Variable XXX not found.: Premenná XXX sa nenašla.
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Upravte vlastnú hlavičku
+Edit Custom Script/Stylesheet: Upravte vlastný skript / šablónu so štýlmi
+Edit Custom Trailer: Upraviť vlastný príves
+########################################
+# Page: edit_user.php
+#
+Username: Užívateľské meno
+E-mail address: Emailová adresa
+Password: Heslo
+again: ešte raz
+Disabled for demo: Zakázané pre ukážku
+Are you sure you want to delete this user?: Naozaj chcete tohto používateľa odstrániť?
+Change Password: Zmeniť heslo
+New Password: Nové heslo
+Set Password: Nastaviť heslo
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Odstránenie používateľov nie je podporované.
+The passwords were not identical.: Heslá neboli totožné.
+You have not entered a password.: Nezadali ste heslo.
+Username cannot be blank.: Meno používateľa nemôže byť prázdne.
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Nie je autorizovaný
+########################################
+# Page: export.php
+#
+Export format: Exportný formát
+Include all layers: Zahrnúť všetky vrstvy
+Include deleted entries: Zahrňte odstránené položky
+Export all dates: Exportovať všetky dátumy
+Start date: Dátum začiatku
+End date: Dátum ukončenia
+Modified since: Upravené od
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: formát exportu nie je definovaný alebo nesprávny.
+########################################
+# Page: freebusy.php
+#
+No user specified.: Nie je zadaný žiadny používateľ.
+########################################
+# Page: groups.php
+#
+Add New Group: Pridať novú skupinu
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Nepomenovaná skupina
+Add Group: Pridať skupinu
+Edit Group: Upraviť skupinu
+Group name: Názov skupiny
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Musíte zadať názov skupiny
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Automaticky obnovovať kalendáre
+auto-refresh-help: Ak je táto možnosť povolená, denné, týždenné, mesačné a zoznamy neschválených stránok sa budú automaticky pravidelne obnovovať.
+Auto-refresh time: Čas automatického obnovenia
+auto-refresh-time-help: Ak je povolené automatické obnovovanie, určuje sa čas medzi jednotlivými obnoveniami.
+Display days with events in bold in year view: Zobrazujte dni s udalosťami tučným písmom v ročnom zobrazení
+Display weekends in week view: Zobraziť víkendy v týždennom zobrazení
+Time interval: Časový interval
+time-interval-help: Určuje, aké dlhé budú časové bloky v týždennom a dennom zobrazení.
+Nonuser: Nonuser kalendáre
+user-customize-color: Určuje, či môžu používatelia upravovať svoje vlastné farebné schémy.
+enable-gradient-help: Pre pozadie buniek použite farby prechodu.
+Manually entering color values: Ručné zadanie farebných hodnôt
+colors-help: Všetky farby by mali byť uvedené v hexadecimálnom formáte „#RRGGBB“, kde „RR“ je hexadecimálna hodnota pre červenú farbu, „GG“ je hexadecimálna hodnota pre zelenú farbu a „BB“ je hexadecimálna hodnota pre modrú farbu.
+########################################
+# Page: help_bug.php
+#
+Report Bug: Nahlásiť chybu
+Please include all the information below when reporting a bug.: Pri hlásení chyby uveďte všetky informácie uvedené nižšie.
+Also, please use English rather than XXX.: Namiesto XXX používajte tiež  angličtinu .
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Dokumentácia WebCalendar
+Currently in English only.: Momentálne iba v angličtine.
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Pridávanie / úprava záznamov v kalendári
+Repeat Type: Opakujte typ
+For More Information...: Pre viac informácií...
+Repeat End Date: Opakujte dátum ukončenia
+Repeat Day: Opakujte deň
+repeat-day-help: Určuje, v ktoré dni v týždni sa má udalosť opakovať.
+########################################
+# Page: help_import.php
+#
+allow you to import entries from the Palm...: Tento formulár umožňuje importovať záznamy z diára Palm Desktop. Mal by byť umiestnený vo vašom adresári Palm v datebook / datebook.dat v podadresári pomenovanom podľa vášho používateľského mena.
+The following entries will not be imported: Nebudú sa importovať nasledujúce položky:
+Entries older than the current date: Záznamy staršie ako aktuálny dátum
+Entries created in the Palm Desktop...: Záznamy vytvorené na Palm Desktop, ktoré neboli HotSync'd
+Anything imported from Palm...: Čokoľvek importované z Palm bude prepísané počas nasledujúceho importu (pokiaľ neuplynul dátum udalosti). Preto by sa mali aktualizácie robiť na Palm Desktop.
+This form will import vCalendar (.vcs) 1.0 events.: Tento formulár importuje udalosti vCalendar (.vcs) 1.0.
+The following formats have been tested: Boli testované nasledujúce formáty:
+This form will import iCalendar (.ics) events.: Tento formulár importuje udalosti iCalendar (.ics).
+Enabling: Povolenie
+Overwrite Prior Import: Prepísať predchádzajúci import
+will cause events imported previously...: spôsobí, že udalosti importované predtým, ktoré používali rovnaké UID ako udalosť z nového importovaného súboru, budú označené ako odstránené. To by malo umožniť importovanie aktualizovaného súboru iCalendar bez vytvárania duplikátov.
+########################################
+# Page: help_index.php
+#
+Help Index: Register pomoci
+About WebCalendar: O aplikácii WebCalendar
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Vrstvy sú užitočné na zobrazenie udalostí iných používateľov vo vašom vlastnom kalendári. Môžete určiť používateľa a farbu, v ktorej sa udalosti zobrazia.
+Add/Edit/Delete: Pridať / Upraviť / Odstrániť
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Kliknutím na odkaz Upraviť vrstvy v sekcii správcu v dolnej časti stránky budete môcť pridávať, upravovať a odstraňovať vrstvy.
+The text color of the new layer that will be displayed in your calendar.: Farba textu novej vrstvy, ktorá sa zobrazí vo vašom kalendári.
+Disabling: Zakazuje sa
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Stlačením odkazu Zakázať vrstvy v sekcii správcu v dolnej časti stránky vrstvy vypnete.
+Duplicates: Duplikáty
+If checked, events that are duplicates of your events will be shown.: Ak je začiarknuté, zobrazia sa udalosti, ktoré sú duplikátmi vašich udalostí.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Kliknutím na odkaz Povoliť vrstvy v sekcii správcu v dolnej časti stránky zapnete vrstvy.
+Source: Zdroj
+Specifies the user that you would like to see displayed in your calendar.: Určuje používateľa, ktorého chcete vidieť vo svojom kalendári.
+########################################
+# Page: help_pref.php
+#
+Default Category: Predvolená kategória
+default-category-help: Určuje kategóriu, pre ktorú by mala byť predvolená nová udalosť.
+When I am the boss: Keď som šéf
+Email me event notification: Oznámenie o udalosti e-mailom
+email-boss-notifications-help: Určuje, či budú šéfovia dostávať e-maily ako oznámenia o udalostiach.
+I want to approve events: Chcem schvaľovať udalosti
+boss-approve-event-help: Určuje, či bude šéf musieť schvaľovať udalosti pridané asistentmi.
+Subscribe/Publish: Prihlásiť sa na odber / Zverejniť
+Allow remote publishing: Povoliť vzdialené publikovanie
+allow-remote-publishing-help: Určuje, či môže vzdialený klient iCal publikovať udalosti späť do WebCalendar
+remote-publishing-url-help: Zobrazuje adresu URL, ktorá sa má použiť v klientskej aplikácii iCal na prihlásenie na odber a zverejnenie späť do WebCalendar.
+allow-remote-subscriptions-help: Určuje, či sa vzdialení používatelia môžu prihlásiť na odber vášho kalendára, a umožniť im tak zobraziť vaše udalosti v aplikácii podporujúcej iCal (napríklad Apple iCal alebo Mozilla Calendar).
+remote-subscriptions-url-help: Zobrazuje adresu URL, ktorú by mali vzdialení používatelia používať na prihlásenie na odber vášho kalendára.
+Enable FreeBusy publishing: Povoliť publikovanie FreeBusy
+freebusy-enabled-help: Určuje, či je možné získať dostupný čas používateľa pomocou štandardu iCal FreeBusy.
+freebusy-url-help: URL na prístup k zoznamu používateľov FreeBusy
+rss-feed-url-help: URL na prístup k informačnému kanálu RSS
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Umožňuje jemnú kontrolu nad prístupom a povoleniami používateľov. Používatelia môžu tiež udeliť predvolené a individuálne povolenie, ak to autorizuje správca.
+If disabled, this user cannot send you emails.: Ak je zakázané, tento používateľ vám nebude môcť posielať e-maily.
+If disabled, this user cannot see you in the participants list.: Ak je zakázané, tento používateľ vás nebude vidieť v zozname účastníkov.
+If enabled, this user cannot view the details of any of your entries.: Ak je táto možnosť povolená, tento používateľ nemôže zobraziť podrobnosti žiadneho z vašich záznamov.
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Publikovanie zakázané (správca)
+Publishing Disabled (User): Publikovanie zakázané (používateľ)
+########################################
+# Page: icons.php
+#
+Click to Select: Kliknutím vyberte
+Current Icons on Server: Aktuálne ikony na serveri
+########################################
+# Page: import.php
+#
+import from file: import zo súboru
+Disabled: Zakázané
+Import format: Formát importu
+Exclude private records: Vylúčte súkromné ​​záznamy
+Repeated items are imported separately. Prior imports are not overwritten.: Opakované položky sa importujú osobitne. Predchádzajúce dovozy sa neprepisujú.
+########################################
+# Page: import_handler.php
+#
+No file: Žiadny súbor
+Error deleting palm events from webcalendar.: Chyba pri odstraňovaní udalostí dlane z webcalendar.
+Events from prior import marked as deleted: Udalosti z predchádzajúceho importu označené ako odstránené
+Conflicting events: Konfliktné udalosti
+The import file contained no data.: Súbor na import neobsahoval žiadne údaje.
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Naozaj chcete odstrániť túto vrstvu?
+Delete layer: Odstrániť vrstvu
+Edit layer: Upraviť vrstvu
+Enable layers: Povoliť vrstvy
+Layer: Vrstva
+Layers are currently disabled.: Vrstvy sú momentálne zakázané.
+Layers are currently enabled.: Vrstvy sú momentálne povolené.
+Click to modify layers settings for XXX: Kliknutím sem upravíte nastavenia vrstiev pre kalendár XXX.
+Disable Layers: Zakázať vrstvy
+Add layer: Pridajte vrstvu
+Add Layer: Pridajte vrstvu
+Edit Layer: Upraviť vrstvu
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Predvoľbu sa nepodarilo aktualizovať
+Invalid entry id.: Neplatné ID záznamu.
+You cannot create a layer for yourself.: Nemôžete vytvoriť vrstvu pre seba.
+You can only create one layer for each user.: Pre každého používateľa môžete vytvoriť iba jednu vrstvu.
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Schváliť / potvrdiť
+Approve Selected: Schváliť vybraté
+Check All: Začiarknuť všetko
+Emails Will Not Be Sent: E-maily nebudú odosielané
+Reject Selected: Odmietnuť vybraté
+Reject: Odmietnuť
+Uncheck All: Odznačiť všetky
+View this entry: Zobraziť tento záznam
+No unapproved entries for XXX.: Žiadne neschválené položky pre: „XXX“.
+Unapproved Entries: Neschválené položky
+Approve this entry?: Schváliť tento záznam?
+Reject this entry?: Odmietnuť tento záznam?
+Approve Selected entries?: Schváliť vybrané položky?
+Reject Selected entries?: Odmietnuť vybrané záznamy?
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Musíte zadať prihlasovacie meno a heslo.
+Save login via cookies so I dont have to login next time.: Uložte si prihlásenie pomocou cookies, aby som sa nemusel prihlasovať nabudúce
+Login: Prihlásiť sa
+public: verejné
+Access XXX calendar: Prístup k kalendáru XXX
+cookies-note: Poznámka: Táto aplikácia vyžaduje povolenie súborov cookie.
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Neplatné znaky v prihlasovacom čísle XXX.
+Invalid login: Nesprávne prihlásenie
+Activity login failure: Používateľské meno: „XXX“, IP: „YYY“.
+Error XXX: Chyba: „XXX“.
+You have been logged out.: Boli ste odhlásený.
+Access public calendar: Prístup k verejnému kalendáru
+Not yet registered? Register here!: Ešte nie ste zaregistrovaní? Zaregistrujte sa tu!
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Žiadny iný nežužívateľský kalendár: „XXX“.
+This Calendar is not Public.: Tento kalendár nie je verejný.
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Pridajte nový kalendár, ktorý sa nepoužíva
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Musí byť zadané prihlásenie.
+No such nonuser calendar: Žiadny taký nepoužívateľský kalendár
+########################################
+# Page: pref.php
+#
+Invalid theme: Neplatný motív
+Save Preferences: Uložiť predvoľby
+Public Access calendar: Verejný prístupový kalendár
+Modify Non User Calendar Preferences: Upravte predvoľby kalendára, ktoré nie sú používateľmi
+Return to My Preferences: Späť na Moje predvoľby
+Custom Scripts: Vlastné skripty
+Timezone Selection: Výber časového pásma
+Multiview: Viacnásobné zobrazenie:
+entry-interval-help: Nastavuje minútový interval pri úprave časov zadávania
+Entry interval: Interval vstupu
+hour: hodinu
+minute: minútu
+theme-reload-help: Z dôvodu ukladania do vyrovnávacej pamäte CSS môže byť potrebné opätovné načítanie stránky
+Page may need to be reloaded for new Theme to take effect: Možno bude potrebné znova načítať stránku, aby sa nová téma prejavila
+display_byproxy-help: Zobraziť skutočného tvorcu na stránke view_entry
+Display if created by Assistant: Zobraziť, ak ich vytvoril Asistent
+allow-view-subscriptions-help: Umožňuje obmedziť vzdialený prístup k súkromným alebo dôverným položkám
+Allow remote viewing of: Povoliť vzdialené prezeranie
+entries: záznamy
+########################################
+# Page: purge.php
+#
+Purging events for: Očisťovacie udalosti pre
+Finished: Hotovo
+Back: späť
+Check box to delete ALL events for a user: Začiarkavacie políčko na odstránenie  VŠETKÝCH  udalostí pre používateľa
+Delete all events before: Odstrániť všetky udalosti predtým
+Purge deleted only: Vymazať iba odstránené
+Preview delete: Zobraziť ukážku odstránenia
+Are you sure you want to delete events for: Naozaj chcete odstrániť udalosti pre
+Records deleted from XXX: Záznamy odstránené z priečinka „XXX“.
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: E-mailová adresa nemôže byť prázdna.
+Username already exists.: Užívateľské meno už existuje.
+Email address already exists.: Emailová adresa už existuje.
+New user via self-registration.: Nový užívateľ prostredníctvom samoregistrácie.
+A new WebCalendar account has been set up for you.: Bol pre vás zriadený nový účet WebCalendar.
+Your username is XXX.: Vaše používateľské meno je: „XXX“.
+Your password is XXX.: Vaše heslo je: „XXX“.
+Please visit XXX to log in and start using your account!: Navštívte stránku „XXX“, prihláste sa a začnite používať svoj účet!
+You may change your password after logging in the first time.: Po prvom prihlásení môžete svoje heslo zmeniť.
+If you received this email in error: Ak ste tento e-mail dostali omylom a nezaregistrovali ste si účet WebCalendar, môžete toto oznámenie ignorovať alebo môžete odpovedať krátkou poznámkou
+Administrator: Správca
+Welcome: Vitajte
+New user via email.: Nový používateľ prostredníctvom e-mailu.
+Registration: Registrácia
+Welcome to WebCalendar: Vitajte vo WebCalendar
+Your email should arrive shortly.: Váš e-mail by mal doraziť čoskoro.
+Return to Login screen: Vráťte sa na obrazovku Prihlásenie
+Password (again): Heslo (znova):
+Your account information will be emailed to you.: Informácie o vašom účte vám pošleme e-mailom.
+Submit: Predložiť
+########################################
+# Page: reject_entry.php
+#
+Continue: ďalej
+(Your comments will be emailed to the other participants.): (Vaše komentáre budú e-mailom zaslané ďalším účastníkom.)
+XXX has rejected an appointment.: XXX odmietol stretnutie.
+Rejected by XXX.: Odmietnuté používateľom XXX.
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Pridajte nový vzdialený kalendár
+########################################
+# Page: report.php
+#
+This event is confidential.: Táto udalosť je dôverná.
+(Private): (Súkromné)
+(cont.): (pokračovanie)
+Approved: Schválené
+Deleted: Vymazané
+Rejected: Zamietnuté
+Waiting for approval: Čakanie na schválenie
+Unknown: Neznáme
+Invalid report id.: Neplatné ID prehľadu.
+Click here to manage reports for the Public Access calendar.: Kliknite sem, aby ste spravovali prehľady pre kalendár verejného prístupu.
+Add new report: Pridať nový prehľad
+Manage Reports: Spravovať prehľady
+########################################
+# Page: search.php
+#
+Advanced Search: pokročilé vyhľadávanie
+Search: Vyhľadávanie
+Keywords: Kľúčové slová
+Enter % for all entries: Zadajte% pre všetky položky
+Include: Zahrnúť
+Filter by Date: Filtrovať podľa dátumu
+All Dates: Všetky dátumy
+Past: Minulosť
+Upcoming: Pripravované
+Range: Rozsah
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Musíte zadať jedno alebo viac kľúčových slov pre hľadanie.
+Search Results: Výsledky vyhľadávania
+match found: nájdený zápas
+matches found: nájdené zápasy
+No matches found: Žiadne zhody nenájdené
+New Search: Nové hľadanie
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Nasledujúce informácie uvádzajú možné problémy s inštaláciou WebCalendar, ktoré je možné upraviť, aby bola inštalácia bezpečnejšia.
+For questions about WebCalendar security see the forums: Ak máte otázky týkajúce sa akýchkoľvek problémov so zabezpečením WebCalendar, použite fóra WebCalendar hostené na GitHub.com;<br>XXX
+View your current PHP settings: Zobraziť vaše súčasné nastavenie PHP
+Security Issue: Problém so zabezpečením
+Status: Postavenie
+Default admin user password: Predvolené heslo používateľa správcu
+You should change the password of the default admin user.: Mali by ste zmeniť heslo predvoleného používateľa správcu.
+File permissions XXX: Povolenia súborov: XXX
+item XXX should not be writable: Nasledujúca položka by nemala byť zapisovateľná:<br><tt> XXX</tt>
+File exists XXX: Súbor existuje: „XXX“
+Because you have email disabled, you should remove this file.: Pretože ste zakázali e-mail, mali by ste tento súbor odstrániť.
+File location XXX: Umiestnenie súboru: „XXX“
+remove XXX if not using: Ak súbor „XXX“ nepoužívate, mali by ste ho odstrániť. Alebo ho prinajmenšom presuňte do nového adresára.
+System Settings XXX: Systémové nastavenia: „XXX“
+consider enabling UAC: Možno budete chcieť zvážiť povolenie prístupu používateľa na nastavenie oprávnení používateľa.
+recommend approving new public events: Odporúčame, aby boli schválené všetky verejné príspevky na udalosti.
+recommend using CAPTCHA: Na automatické zasielanie automatických udalostí sa odporúča strážiť CAPTCHA.
+Database cache directory location: Umiestnenie adresára medzipamäte databázy
+db cache should be inaccessible: Vyrovnávacia pamäť databázy by mala byť v adresári, ku ktorému nie je možné získať prístup pomocou adresy URL.
+PHP Settings XXX: Nastavenia PHP: „XXX“
+recommend setting XXX Off: Odporúčané nastavenie pre „XXX“ je Vypnuté.
+recommend setting allow_url_fopen Off: Odporúčané nastavenie pre „allow_url_fopen“ je Vypnuté, ak nie sú povolené vzdialené kalendáre.
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Zobraziť kalendár iného používateľa
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Nepridali ste žiadne kategórie.
+Set Category: Nastaviť kategóriu
+Global Categories cannot be changed.: Globálne kategórie nemožno zmeniť.
+########################################
+# Page: upcoming.php
+#
+more: viac
+########################################
+# Page: users.php
+#
+Remote Calendars: Vzdialené kalendáre
+denotes administrative user: označuje administratívneho používateľa
+Add New User: Pridať nového používateľa
+########################################
+# Page: usersel.php
+#
+form: formulár
+Reset: Resetovať
+########################################
+# Page: views.php
+#
+Add New View: Pridať nové zobrazenie
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Nepomenovaný pohľad
+Add View: Pridať pohľad
+Edit View: Upraviť zobrazenie
+View Name: Zobraziť meno
+View Type: Typ zobrazenia
+Day by Time: Deň od času
+Week (Users horizontal): Týždeň (používatelia horizontálne)
+Week by Time: Týždeň podľa času
+Week (Users vertical): Týždeň (vertikálne používatelia)
+Week (Timebar): Týždeň (časový panel)
+Month (Timebar): Mesiac (časová lišta)
+Month (side by side): Mesiac (vedľa seba)
+Month (on same calendar): Mesiac (v rovnakom kalendári)
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Musíte určiť názov zobrazenia
+########################################
+# Page: view_d.php
+#
+No users for this view.: Pre toto zobrazenie nie sú používatelia.
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Aktualizujte percento úloh
+Completed: Dokončené
+Assistant mode: Režim pomocníka
+Declined: Odmietnuté
+Needs-Action: Potreby - akcia
+by: od
+Percentage Complete: Percento dokončené
+External User: Externý používateľ
+Update: Aktualizácia
+at: o
+comments: komentáre
+Show: Šou
+Hide: Skryť
+Approve/Confirm entry: Schváliť / potvrdiť zadanie
+Reject entry: Odmietnuť vstup
+Set category: Nastaviť kategóriu
+Add to My Calendar: Pridať do môjho kalendára
+Copy entry: Skopírovať záznam
+This will delete this entry for all users.: Týmto sa odstráni tento záznam pre všetkých používateľov.
+Edit entry: Upraviť záznam
+Edit repeating entry for all dates: Upravte opakujúci sa záznam pre všetky dátumy
+Delete repeating event for all dates: Odstrániť opakujúcu sa udalosť pre všetky dátumy
+Edit entry for this date: Upravte položku pre tento dátum
+Delete entry only for this date: Vymazať záznam iba pre tento dátum
+Delete entry from calendar of XXX: Odstrániť záznam z kalendára XXX
+This will delete the entry from your XXX calendar.: Týmto sa odstráni položka z vášho kalendára XXX.
+boss: šéf
+This will delete the entry from your boss calendar.: Týmto sa odstráni položka z kalendára vášho šéfa.
+This will delete the entry from your calendar.: Týmto sa vymaže záznam z vášho kalendára.
+from your boss calendar: z kalendára vášho šéfa
+Do you want to add this entry to your calendar?: Chcete si pridať tento záznam do svojho kalendára?
+This will add the entry to your calendar.: Týmto sa pridá záznam do vášho kalendára.
+Email all participants: Pošlite e-mail všetkým účastníkom
+Hide activity log: Skryť denník aktivít
+Show activity log: Zobraziť denník aktivít
+Export this entry to: Exportovať túto položku do
+Palm Pilot: palmový pilot
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Dvojitým kliknutím na prázdnu bunku pridáte nový záznam.
+########################################
+# Page: week_details.php
+#
+New Entry: Nový vstup
+cont.: pokr.
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Kalendár iného používateľa
+Category Management: Správa kategórií
+Day View: Denný pohľad
+Edit Event: Upraviť udalosť
+Month View: Mesačný pohľad
+Common Trailer: Spoločný príves
+User Management: správa užívateľov
+Manage Views: Spravovať zobrazenia
+Week View: Pohľad na týždeň
+Year View: Pohľad na rok
+Invalid function id: Neplatné ID funkcie
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Nepodarilo sa nájsť súbor „settings.php“.<br>Skopírujte súbor „settings.php.orig“ do súboru „settings.php“ a upravte ho pre svoj web.
+Incomplete settings.php file...: Neúplný súbor „settings.php“ ...
+Could not find XXX defined in...: Nepodarilo sa nájsť súbor „XXX“ definovaný v súbore „settings.php“.
+You must define XXX in: Musíte definovať „XXX“ v súbore „settings.php“.
+########################################
+# Page: includes/date_formats.php
+#
+LANGUAGE DEFINED: DEFINOVANÝ JAZYK
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Chyba pri pripájaní k databáze: „XXX“.
+db_type not defined.: db_type nie je definovaný.
+invalid db_type XXX: neplatný typ_db "" XXX ".
+Cache cleared from previous SQL!: Cache vymazaná z predchádzajúceho SQL!
+Error executing query.: Chyba pri vykonávaní dotazu.
+Unfortunately, XXX is not implemented for YYY: Aplikácia „XXX“ nie je pre (YYY) bohužiaľ implementovaná.
+Unknown ODBC error.: Neznáma chyba ODBC.
+Error opening cache dir XXX.: Chyba pri otváraní medzipamäte adresár „XXX“.
+delete: vymazať
+Cache error Could not XXX file YYY.: Chyba medzipamäte: Nepodarilo sa XXX súbor „RRRR“.
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fatálna chyba
+Invalid data format for: Neplatný formát údajov pre
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Chyba: Typ nie je nastavený pre denník aktivít!
+This event is XXX.: Táto udalosť je XXX.
+Conf.: Konf.
+exceeds limit of XXX events per day: prekračuje limit XXX udalostí za deň
+on: na
+All Attendees: Všetci účastníci
+Busy: Zaneprázdnený
+Tentative: Predbežne
+Schedule an appointment for XXX.: Naplánujte si schôdzku na XXX: RRRR.
+date_select: __dd__ __month__ __rrrr__
+Event approved: Udalosť schválená
+Journal approved: Časopis bol schválený
+Task approved: Úloha schválená
+Attachment: Príloha
+Event created: Udalosť bola vytvorená
+Journal created: Denník bol vytvorený
+Task created: Úloha bola vytvorená
+Event deleted: Udalosť bola odstránená
+Journal deleted: Denník bol odstránený
+Task deleted: Úloha bola odstránená
+New user via email self registration: Nový používateľ prostredníctvom e-mailu (samostatná registrácia)
+New user self registration: Nový užívateľ (vlastná registrácia)
+Notification sent: Oznámenie bolo odoslané
+Event rejected: Udalosť zamietnutá
+Journal rejected: Denník odmietnutý
+Task rejected: Úloha odmietnutá
+Reminder sent: Pripomenutie bolo odoslané
+Event updated: Udalosť bola aktualizovaná
+Journal updated: Denník bol aktualizovaný
+Task updated: Úloha bola aktualizovaná
+Delete User: Odstrániť používateľa
+TASKS: ÚLOHY
+Task_Title: Názov
+Due: Termín
+Task Name: Názov úlohy
+Task Due Date: Termín splnenia úlohy
+You have XXX unapproved entries: Máte XXX neschválených záznamov
+Changes successfully saved: Zmeny sa úspešne uložili
+Event: Udalosť
+Action: Akcia
+Printer Friendly: Vhodné pre tlač
+Generate printer-friendly version: Vytvorte verziu pre tlač
+after: po
+before: predtým
+end: koniec
+start: začať
+View this event: Zobraziť túto udalosť
+View this task: Zobraziť túto úlohu
+January: Januára
+February: Februára
+March: Marca
+April: Apríla
+May_: Smieť
+June: Júna
+July: Júla
+August: Augusta
+October: Októbra
+November: Novembra
+Feb: Február
+May: Smieť
+Jun: Jún
+Sep: Sept
+Oct: Okt
+WE: MY
+unknown-month: neznámy mesiac
+First Quarter Moon: Prvý štvrťrok
+Full Moon: Spln
+Last Quarter Moon: Posledný štvrťrok
+New Moon: Nový mesiac
+Error TIME_SLOTS undefined!: Chyba: TIME_SLOTS nedefinované!
+The following error occurred: Vyskytla sa nasledujúca chyba
+You are not authorized.: Nemáte oprávnenie.
+Add N hours to: Pridajte N hodín k
+Subtract N hours from: Odpočítajte N hodín od
+same as: rovnaké ako
+server time: čas servera
+Cannot read timezone file XXX.: Nie je možné prečítať súbor časového pásma: XXX.
+Your current GMT offset is XXX hours.: Váš súčasný offset GMT je XXX hodín.
+Unauthorized: Neoprávnené
+Error approving event XXX.: Chyba pri schvaľovaní udalosti: XXX.
+Error deleting event XXX.: Chyba pri odstraňovaní udalosti: XXX.
+Error rejecting event XXX.: Chyba pri odmietnutí udalosti: XXX.
+Sunday: Nedeľa
+Monday: Pondelok
+Tuesday: Utorok
+Wednesday: Streda
+Thursday: Štvrtok
+Friday: Piatok
+Saturday: Sobota
+Sun: slnko
+Mon: Pon
+Tue: Ut
+Wed: St
+Thu: Št
+Fri: Pia
+Sat: Sob
+unknown-weekday: neznámy-všedný deň
+Invalid referring URL: Neplatná sprostredkujúca adresa URL
+########################################
+# Page: includes/help_list.php
+#
+Index: Register
+Documentation: Dokumentácia
+Page: Strana
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Môj kalendár
+Add New Entry: Pridať nový záznam
+Add New Task: Pridať novú úlohu
+Logout: Odhlásiť sa
+Home: Domov
+Back to My Calendar: Späť na Môj kalendár
+Go to: Ísť do
+Manage calendar of: Spravovať kalendár používateľa
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Jazyk prehliadača sa nenašiel
+not supported: (nie je podporované)
+Abkhazian: Abcházsky
+Adyghe: Adygej
+Afar: Na diaľku
+Afrikaans: Afrikánčina
+Akkadian: Akkadský
+Albanian: Albánsky
+Altai (Southern): Altaj (južná oblasť)
+Amharic: Amharčina
+Arabic (Algeria): Arabčina (Alžírsko)
+Arabic (Bahrain): Arabčina (Bahrajn)
+Arabic (Egypt): Arabčina (Egypt)
+Arabic (Iraq): Arabčina (Irak)
+Arabic (Jordan): Arabčina (Jordánsko)
+Arabic (Kuwait): Arabčina (Kuvajt)
+Arabic (Lebanon): Arabčina (Libanon)
+Arabic (Libya): Arabčina (Líbya)
+Arabic (Morocco): Arabčina (Maroko)
+Arabic (Oman): Arabčina (Omán)
+Arabic (Qatar): Arabčina (Katar)
+Arabic (Saudi Arabia): Arabčina (Saudská Arábia)
+Arabic (Syria): Arabčina (Sýria)
+Arabic (Tunisia): Arabčina (Tunisko)
+Arabic (U.A.E.): Arabčina (Spojené arabské emiráty)
+Arabic (Yemen): Arabčina (Jemen)
+Arabic: Arabsky
+Aragonese: Aragónsky
+Aramaic: Aramejsky
+Armenian: Arménsky
+Azerbaijani: Azerbajdžan
+Balinese: Balijské
+Baluchi: Baluči
+Bashkir: Baškir
+Basque: Baskičtina
+Belarusian: Bieloruský
+Bengali: Bengálsky
+Bliss: Blaho
+Bosnian: Bosniansky
+Buginese: Bugínčina
+Bulgarian: Bulharský
+Burmese: Birmovanci
+Catalan: Katalánsky
+Chechen: Čečenský
+Cherokee: Čerokí
+Cheyenne: Čejen
+Chinese (Hong Kong): Čínština (Hongkong)
+Chinese (PRC): Čínština (ČĽR)
+Chinese (Simplified/GB2312): Čínština (zjednodušená / GB2312)
+Chinese (Singapore): Čínština (Singapur)
+Chinese (Taiwan): Čínština (Taiwan)
+Chinese (Traditional/Big5): Čínština (tradičná / veľká 5)
+Chuukese: Čuukese
+Chuvash: Čuvaš
+Coptic: Koptský
+Corsican: Korzický
+Creek: Potok
+Croatian: Chorvátsky
+Czech: Česky
+Danish: Dánsky
+Dutch (Belgium): Holandčina (Belgicko)
+Dutch: Holandsky
+Elamite: Elamit
+English (Australia): Angličtina (Austrália)
+English (Belize): Angličtina (Belize)
+English (Canada): Angličtina (Kanada)
+English (Ireland): Angličtina (Írsko)
+English (Jamaica): Angličtina (Jamajka)
+English (New Zealand): Angličtina (Nový Zéland)
+English (Philippines): Angličtina (Filipíny)
+English (South Africa): Angličtina (Južná Afrika)
+English (Trinidad & Tobago): Angličtina (Trinidad a Tobago)
+English (United Kingdom): Angličtina (Spojené kráľovstvo)
+English (United States): Anglické Spojené štáty)
+English (Zimbabwe): Angličtina (Zimbabwe)
+English: Angličtina-USA
+Estonian: Estónsky
+Ewe: Bahnica
+Fang: Tesák
+Faroese: Faersky
+Filipino: Filipínsky
+Finnish: Fínsky
+French (Belgium): Francúzština (Belgicko)
+French (Canada): Francúzština (Kanada)
+French (France): Francúzština (Francúzsko)
+French (Luxembourg): Francúzština (Luxembursko)
+French (Monaco): Francúzština (Monako)
+French (Switzerland): Francúzština (Švajčiarsko)
+French: Francúzsky
+Frisian (Eastern): Frízština (východná)
+Frisian (Northern): Frízština (severná)
+Frisian (Western): Frízština (západná)
+Galician: Galícijčina
+Georgian: Gruzínsky
+German (Austria): Nemčina (Rakúsko)
+German (Germany): Nemčina (Nemecko)
+German (Liechtenstein): Nemčina (Lichtenštajnsko)
+German (Luxembourg): Nemčina (Luxembursko)
+German (Standard): Nemčina (štandardná)
+German (Switzerland): Nemčina (Švajčiarsko)
+German: Nemecky
+Gothic: Gotický
+Greek: Grécky
+Greenlandic: Grónsky
+Gwich&#39;in: Gwich'in
+Haitian (Creole): Haitčina (kreolčina)
+Haitian: Haitský
+Hawaiian: Havajský
+Hebrew: Hebrejsky
+Hindi: Hindčina
+Hiri Motu: Ahoj Motu
+Hittite: Chetita
+Holo (Taiwanese): Holo (taiwančina)
+Hungarian: Maďarský
+Icelandic: Islandský
+Indonesian: Indonézsky
+Ingush: Inguš
+Iranian: Iránsky
+Irish (Gaelic): Írčina (gaelčina)
+Irish: Írsky
+Italian (Switzerland): Taliančina (Švajčiarsko)
+Italian: Taliansky
+Japanese: Japončina
+Javanese: Jávsky
+Judeo-Arabic: Žido-arabčina
+Judeo-Persian: Židovsko-perzský
+Kannada: Kannadčina
+Kashmiri: Kašmír
+Kashubian: Kašubian
+Kazakh: Kazašský
+Khmer (Central): Khmérčina (stred)
+Khmer: Khméri
+Kirghiz: Kirgiz
+Korean (Johab): Kórejčina (Johab)
+Korean (North): Kórejčina (severná)
+Korean (South): Kórejčina (juh)
+Korean: Kórejský
+Kurdish: Kurdsky
+Kyrgyz: Kirgizsko
+Latin: Latinsky
+Latvian: Lotyšský
+Lingala: Lingalčina
+Lithuanian: Litovský
+Luxembourghish: Luxembursko
+Macedonian: Macedónsky
+Malagasy: Malgaština
+Malay: Malajčina
+Malayalam: Malajálamčina
+Maldivian: Maldivčan
+Maltese: Maltčina
+Manx: Manský
+Marathi: Maráthčina
+Mayan: Mayov
+Mi&#39;kmaq: Mi'kmaq
+Moksha: Mokša
+Moldavian: Moldavský
+Mongolian: Mongolský
+Montenegrin: Čiernohorský
+Moroccan: Marocký
+Myanmar: Mjanmarsko
+N&#39;Ko: N'Ko
+Ndebele (North): Ndebele (sever)
+Ndebele (South): Ndebele (juh)
+Neapolitan: Neapolčan
+Nepali: Nepálsky
+Norse: Severský
+Norwegian (Bokmål): Nórčina (Bokmål)
+Norwegian (Nynorsk): Nórčina (Nynorsk)
+Norwegian: Nórsky
+Ossetic: Osetický
+Pashto: Pašto
+Persian (Farsi): Perzština (perzština)
+Persian (Iran): Perzština (Irán)
+Persian: Perzský
+Phoenician: Fénický
+Polish: Poľský
+Portuguese: Portugalčina
+Portuguese/Brazil: Portugalsko / Brazília
+Punjabi (India): Pandžábčina (India)
+Punjabi (Pakistan): Pandžábčina (Pakistan)
+Punjabi: Pandžábsky
+Quechua: Kečuánčina
+Rhaeto-Romanic: Rétorománčina
+Romanian: Rumunský
+Romany: Rómčina
+Russian (Moldavia: Ruština (Moldavsko
+Russian (Republic of Moldova): Ruština (Moldavská republika)
+Russian: Rusky
+Sami (Lappish): Sami (lapončina)
+Sami (Northern): Sami (severná)
+Sami (Southern): Sami (južná)
+Sanskrit: Sanskrt
+Sardinian: Sardínsky
+Scots (Gaelic): Škóti (gaelčina)
+Serbian (Upper): Srbčina (horná)
+Serbian: Srbsky
+Sichuan Yi: S'-čchuan Yi
+Sicilian: Sicílsky
+Sinhala: Sinhálčina
+Slavic: Slovanské
+Slovak: Slovák
+Slovenian: Slovinsky
+Somali: Somálsky
+Sorbian (Lower): Lužicka (nižšie)
+Sorbian (Upper): Lužicka (horná)
+Sorbian: Lužicka
+Spanish (Argentina): Španielčina (Argentína)
+Spanish (Bolivia): Španielčina (Bolívia)
+Spanish (Chile): Španielčina (Čile)
+Spanish (Colombia): Španielčina (Kolumbia)
+Spanish (Costa Rica): Španielčina (Kostarika)
+Spanish (Dominican Republic): Španielčina (Dominikánska republika)
+Spanish (Ecuador): Španielčina (Ekvádor)
+Spanish (El Salvador): Španielčina (Salvádor)
+Spanish (Guatemala): Španielčina (Guatemala)
+Spanish (Honduras): Španielčina (Honduras)
+Spanish (Mexico): Španielčina (Mexiko)
+Spanish (Nicaragua): Španielčina (Nikaragua)
+Spanish (Panama): Španielčina (Panama)
+Spanish (Paraguay): Španielčina (Paraguay)
+Spanish (Peru): Španielčina (Peru)
+Spanish (Puerto Rico): Španielčina (Portoriko)
+Spanish (Spain): Španielčina (Španielsko)
+Spanish (Uruguay): Španielčina (Uruguaj)
+Spanish (Venezuela): Španielčina (Venezuela)
+Spanish: Španielsky
+Sumerian: Sumerský
+Sundanese: Sundančina
+Swahili: Svahilčina
+Swedish (Finland): Švédčina (Fínsko)
+Swedish (Sweden): Švédčina (Švédsko)
+Swedish: Švédsky
+Syriac: Sýrska
+Tajik: Tadžický
+Telugu: Telugčina
+Tibetan: Tibetský
+Turkish: Turecké
+Turkmen: Turkménsky
+Ugaritic: Ugaritický
+Ukrainian: Ukrajinský
+Urdu: Urdčina
+Uyghur: Ujgur
+Uzbek: Uzbecky
+Vietnamese: Vietnamci
+Walloon: Valónsky
+Welsh: Waleština
+Yakut: Jakut
+Yao: Jao
+Yiddish: Jidiš
+Zhuang: Čuang
+Browser-defined: Definované prehliadačom
+event: udalosť
+journal: denník
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Neplatné prihlásenie používateľa
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: nesprávne heslo
+no such user: žiadny použivatel
+########################################
+# Page: includes/user.php
+#
+Account disabled: Účet zablokovaný
+########################################
+# Page: includes/xcal.php
+#
+Months: Mesiace
+Month Days: Dni mesiaca
+Days: Dni
+Weeks: Týždne
+Position: Pozícia
+Until: Až do
+Count: Gróf
+Inclusion Dates: Dátumy začlenenia
+Exclusion Dates: Dátumy vylúčenia
+Event Imported: Udalosť bola importovaná
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: bajtov
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Oznámenie
+authenticate: Chyba SMTP: Nepodarilo sa overiť
+connect_host: Chyba SMTP: Nepodarilo sa pripojiť k hostiteľovi SMTP:
+data_not_accepted: Chyba SMTP: Údaje nie sú akceptované
+encoding: Neznáme kódovanie:
+execute: Nepodarilo sa vykonať:
+file_access: Nepodarilo sa získať prístup k súboru:
+file_open: Chyba súboru Nepodarilo sa otvoriť súbor:
+from_failed: Nasledujúca adresa odosielateľa zlyhala:
+instantiate: Nepodarilo sa vytvoriť inštanciu funkcie pošty
+mailer_not_supported: mailer nie je podporovaný
+provide_address: Musíte zadať aspoň jednu e-mailovú adresu príjemcu.
+recipients_failed: Chyba SMTP: Nasledujúci príjemcovia zlyhali:
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Zadajte znaky, ktoré vidíte v grafike
+Enter the correct letters and numbers...: Do textového poľa zadajte správne písmená a číslice z obrázka. Tento malý test slúži ako obmedzenie prístupu proti škodlivým robotom. Ak je tento obrázok príliš ťažko čitateľný, jednoducho ho znovu načítajte
+Challenge/Response: Výzva / odpoveď
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Ali želite spremeniti datum in čas tega vnosa?
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Niste vnesli kratkega opisa
+time prior to work hours...: čas pred pracovnou dobou ...
+Invalid Event Date: Neplatný dátum udalosti
+Please add a participant: Pridajte účastníka
+Invalid Date: Neplatný dátum
+You have not entered a valid time of day: Nezadali ste platný čas
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: ID kalendára nemôže byť prázdne.
+First and last names cannot both be blank.: Meno a priezvisko nemôžu byť prázdne.
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Neplatná farba
+Color format should be RRGGBB.: Farebný formát by mal byť „#RRGGBB“.
+URL cannot be blank.: Adresa URL nemôže byť prázdna.
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Typ súboru sa nezhoduje s formátom importu
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Neplatná farba pozadia dokumentu.
+Invalid color for document title.: Neplatná farba názvu dokumentu.
+Invalid color for table cell background.: Neplatná farba pre pozadie bunky tabuľky.
+Invalid color for table cell background for today.: Neplatná farba pre pozadie bunky tabuľky pre dnešok.
+Invalid work hours.: Neplatná pracovná doba.
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Adresa URL servera musí končiť lomkou (/).
+Invalid color for table grid.: Neveljavna barva mreže tabele.
+Invalid color for event popup background.: Neveljavna barva za pojavno ozadje dogodka.
+Invalid color for event popup text.: Neveljavna barva pojavnega besedila dogodka.
+Invalid color for table header text.: Neveljavna barva besedila v glavi tabele.
+Invalid color for table header background.: Neveljavna barva ozadja glave tabele.
+Server URL is required.: Vyžaduje sa adresa URL servera.
+Invalid Color: Neplatná farba
+Database Name: Názov databázy
+Full Path (no backslashes): Celá cesta (bez spätných lomítok)
+The password contains illegal characters.: Heslo obsahuje nepovolené znaky.
+Error you must specify a Single-User Login: Chyba: Musíte určiť prihlásenie jedného používateľa
+Could not find XXX.: XXX ni bilo mogoče najti.
+Could not find XXX in DOM.: V DOM-u ni bilo mogoče najti XXX.
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Tento týždeň
+This Month: Tento mesiac
+This Year: Tento rok
+Exit: Východ
+Add New Event: Pridať novú udalosť
+Delete Entries: Odstrániť záznamy
+My Views: Moje pohľady
+Manage Calendar of: Spravovať kalendár používateľa
+My Reports: Moje správy
+My Profile: Môj profil
+Public Calendar: Verejný kalendár
+Unapproved Events: Neschválené udalosti
+User Manager: Správca používateľov
+Help Contents: Obsah pomoci
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Adresár databázy Cache
+Create New: Vytvor nový
+Failure Reason: Dôvod zlyhania:
+You must manually create database: Databázu musíte vytvoriť manuálne.
+Single-User: Jeden používateľ
+Test Settings: Nastavenia testu
+Timezone Conversion Successful: Konverzia časovej zóny bola úspešná
+WebCalendar Installation Wizard Step XXX: Sprievodca inštaláciou WebCalendar Krok XXX
+Password Accepted: Heslo akceptované
+Successful Login: Úspešné prihlásenie
+Password Incorrect: Nesprávne heslo
+Invalid Login: Nesprávne prihlásenie
+Display Errors: Chyby zobrazenia
+File Uploads: Nahrávanie súborov
+Allow URL fopen: Povoliť fopen adresy URL (povinné, iba ak sa používajú vzdialené kalendáre)
+Safe Mode: Bezpečnostný mód
+Safe Mode Allowed Vars: Varianty povoleného núdzového režimu (TZ sa vyžaduje, iba ak je zapnutý bezpečný režim)
+GD: GD (potrebné pre pozadie s prechodovým obrázkom)
+Passwords do not match!: Heslá sa nezhodujú!
+Unable to write password to settings.php file: Nie je možné zapísať heslo do súboru „settings.php“.
+Password Updated: Heslo bolo aktualizované
+Password has been set: Heslo bolo nastavené.
+Connection Successful...: Pripojenie úspešné  Pokračujte v inštalácii na ďalšej stránke.
+Correct your entries or click the Create New...: Opravte zadania alebo pokračujte v inštalácii kliknutím na tlačidlo  Vytvoriť nový .
+Correct your entries and try again.: Opravte zadané údaje a skúste to znova.
+XXX does not exist: XXX neexistuje
+XXX is not writable: XXX nie je možné zapisovať
+Error Converting Timezone: Chyba pri prevode časovej zóny
+Error Unable to write to file XXX.: Chyba Nie je možné zapísať do súboru XXX.
+Please change the file permissions of this file.: Zmeňte oprávnenie tohto súboru.
+Please change includes dir permission: Zmeňte oprávnenie súborov vo vašom adresári „includes“, aby ste umožnili zápis iným používateľom.
+Your settings have been saved.: Vaše nastavenia boli uložené.
+OFF: VYPNUTÉ
+ON: ZAP
+WebCalendar Setup Wizard: Sprievodca nastavením webového kalendára
+This installation wizard will guide you...: Tento sprievodca inštaláciou vás prevedie nastavením základnej inštalácie WebCalendar.<br>Pomoc a riešenie problémov nájdete na tejto stránke:<br>
+System Administrators Guide: Sprievodca správcom systému
+Frequently Asked Questions: často kladené otázky
+Troubleshooting: Riešenie problémov
+Getting Help: Získanie pomoci
+Upgrading Guide: Sprievodca aktualizáciou
+User Supported Wiki: Užívateľom podporovaná Wiki
+PHP Version Check: Kontrola verzie PHP
+Check to see if PHP 7.1.0 or greater is installed.: Skontrolujte, či je nainštalovaný PHP 7.1.0 alebo vyšší.
+PHP version: Verzia PHP
+PHP Settings: Nastavenia PHP
+Detailed PHP Info: Podrobné informácie o PHP
+settings.php Status: Stav "settings.php"
+Session Check: Kontrola relácie
+To test the proper operation of sessions...: Na otestovanie správneho fungovania relácií znovu načítajte túto stránku. Zakaždým by sa mal zobraziť prírastok počítadla relácie.
+SESSION COUNTER: POČÍTAČ ZASADNUTIA
+The file permissions of settings.php are set...: Povolenia súborov súboru „settings.php“ sú nastavené tak, aby inštalačný program nemal povolenie na ich úpravu. Ak chcete pokračovať, zmeňte povolenia nasledujúceho súboru
+The file permissions of the includes directory are set...: Povolenia súborov v adresári includes sú nastavené tak, aby inštalačný program nemal povolenie na vytvorenie nového súboru. Ak chcete pokračovať, zmeňte povolenia nasledujúceho adresára
+Your settings.php file appears to be valid.: Váš súbor „settings.php“ sa javí ako platný.
+Configuration Wizard Password: Heslo sprievodcu konfiguráciou
+Create Settings File Password: Vytvorte heslo súboru nastavení
+db setup directions...: V tejto časti nastavíte a otestujete pripojenie k vášmu databázovému serveru. Poskytnuté informácie o účte by mali mať FULL oprávnenie na vytváranie databáz, tabuliek a používateľov. Ak to nie je možné alebo je obmedzený prístup k databáze, budete musieť databázu nakonfigurovať manuálne.
+Database Status: Stav databázy
+Supported databases for your PHP installation: Podporované databázy pre vašu inštaláciu PHP
+Your current database settings are able to access the database.: Vaše súčasné nastavenie databázy má prístup k databáze.
+Please Test Settings: Vyskúšajte nastavenie
+Your current database settings are not able...: Vaše súčasné nastavenie databázy nemá prístup k databáze alebo ešte nebolo testované.
+Database Settings: Nastavenia databázy
+Database Type: Typ databázy
+Connection Persistence: Perzistencia spojenia
+All your database tables appear to be up...: Všetky vaše databázové tabuľky sa zdajú byť aktuálne. Môžete prejsť na ďalšiu stránku a dokončiť nastavenie WebCalendar.
+This appears to be a new installation...: Toto sa javí ako nová inštalácia. Ak to nie je správne, vráťte sa na predchádzajúcu stránku a opravte svoje nastavenia.
+This appears to be an upgrade...: Zdá sa, že ide o inováciu z verzie „XXX“ na & rbsp; RRRR.
+The database requires some data input...: Databáza vyžaduje určité zadanie údajov. Kliknite na Aktualizovať databázu a dokončite aktualizáciu.
+In this section we will perform...: V tejto časti vykonáme zmeny, aby sa vaša databáza dostala na požadovanú úroveň. Ak používate plne podporovanú databázu, tento krok sa vykoná automaticky za vás. Ak nie, je možné zobraziť požadovaný SQL a mali by ste byť schopní vystrihnúť a vložiť ho do dotazovacieho okna databázového servera.
+No database actions are required.: Nevyžadujú sa žiadne činnosti databázy.
+The following database actions are required: Vyžadujú sa nasledujúce akcie s databázou
+ODBC Underlying Database: Základná databáza ODBC:
+Automatic installation not supported: Automatická inštalácia nebola pre váš typ databázy implementovaná úplne. Potrebné tabuľky budete musieť vytvoriť ručne pomocou dodaného SQL. Pokračujte kliknutím na tlačidlo  Zobraziť SQL . Vystrihnite a vložte do okna dotazu na databázu.
+This may take several minutes to complete: Dokončenie môže trvať niekoľko minút.
+Install Database: Inštalovať databázu
+Update Database: Aktualizácia databázy
+Display Required SQL: Zobraziť požadovaný SQL
+Return to previous page after processing SQL.: Po manuálnom spracovaní tohto SQL sa budete musieť vrátiť na predchádzajúcu stránku a znova otestovať svoju databázu, aby skript mohol zistiť zmeny.
+This is the final step in setting up your WebCalendar Installation.: Toto je posledný krok v nastavení vašej inštalácie WebCalendar.
+Timezone Conversion: Konverzia časovej zóny
+It appears that you have NOT converted...: Zdá sa, že ste NEDOSTAVILI svoje existujúce údaje udalostí WebCalendar na GMT. Ak máte, môžete toto oznámenie ignorovať a v konverzii nepokračovať. Ak ide o novú inštaláciu, môžete toto oznámenie tiež ignorovať.
+Convert Data to GMT: Prevod údajov na GMT
+Application Settings: Nastavenia aplikácie
+HTTP-based authentication was not detected...: Nebolo zistené overenie založené na protokole HTTP. Ak si želáte zvoliť „Webový server“ z možností „Autentifikácia užívateľa“ nižšie, budete musieť prekonfigurovať váš webový server.
+HTTP-based authentication was detected...: Zistilo sa overenie založené na protokole HTTP. Overovanie používateľov spracováva váš webový server. Mali by ste zvoliť „Webový server“ zo zoznamu možností „Overenie užívateľa“ nižšie.
+Create Default Admin Account: Vytvorte si predvolený účet správcu
+Admin Account Not Found: (Správcovský účet sa nenašiel)
+User Authentication: Autentifikácia užívateľa
+Web-based via WebCalendar (default): Webové prostredníctvom WebCalendar (predvolené)
+Web Server (not detected): Webový server (nezistený)
+Web Server (detected): Webový server (zistený)
+None (Single-User): Žiadne (pre jedného používateľa)
+Read-Only: Iba na čítanie
+Environment: Životné prostredie
+Production: Výroba
+Development: Rozvoj
+Save Settings: Uložiť nastavenia
+Launch WebCalendar: Spustite WebCalendar
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Chyba pri aktualizácii tabuľky „XXX“: RRRR.
+Conversion Successful: Konverzia bola úspešná
+Perl script required: Vaša predchádzajúca verzia WebCalendar vyžaduje na prevod vašich údajov spustenie skriptu PERL. Spustite /tools/upgrade_to_0.9.7.pl, potom sa vráťte na túto stránku a pokračujte.
+previous version requires updating several tables: Vaša predchádzajúca verzia WebCalendar vyžaduje aktualizáciu niekoľkých databázových tabuliek.
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: ŽIADEN NÁHĽAD K DISPOZÍCII
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Chyba pri pripájaní k databáze
+Include Path: Zahrnúť cestu
+Deleting events for: Odstraňujú sa udalosti pre
+Importing events for: Importujú sa udalosti pre
+No data returned from: Z účtu sa nevrátili žiadne údaje
+for non-user calendar: pre kalendár, ktorý sa nepoužíva
+No Remote Calendars found: Neboli nájdené žiadne vzdialené kalendáre
+Remote Calendars not enabled: Vzdialené kalendáre nie sú povolené
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: Nepodarilo sa nájsť ID udalosti
+could not find event id XXX in database.: Nepodarilo sa nájsť ID udalosti XXX v databáze.
+task: úloha
+This is a reminder for the XXX detailed below.: Toto je pripomienka pre XXX, ktoré je podrobne uvedené nižšie.
+Reminder: Pripomienka
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Nepodporovaná akcia: XXX.
+No event id specified.: Nie je zadané žiadne ID udalosti.
+Not authorized (not admin).: Nie je autorizovaný (nie je správcom).
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Prebieha kontrola udalostí pre XXX od dátumu RRRR do dátumu ZZZ.
+Found XXX events in time range.: Našlo sa XXX udalostí v časovom rozsahu.
+Event id=XXX YYY at ZZZ on AAA.: ID udalosti = XXX „RRRR“ pri ZZZ na AAA.
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Umožnenie používateľovi XXX zobraziť kalendár iného používateľa.
+Error Email reminders disabled for user XXX.: Chyba: E-mailové pripomenutia sú pre používateľa „XXX“ zakázané.
+Number of site_extras XXX.: Počet site_extras: XXX.
+Reminder set for event.: Pripomenutie bolo nastavené na udalosť.
+Mins Before XXX.: Min. Pred: XXX.
+Event time is XXX.: Čas udalosti je: XXX.
+Remind time is XXX.: Čas pripomenutia je: XXX.
+Reminders for user XXX, login YYY.: Pripomienky pre používateľa „XXX“, prihlásenie „RRRR“.
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Získanie neschválenia pre používateľa „XXX“.
+Event id=XXX YYY already sent.: ID udalosti = XXX „YYY“ už bolo odoslané.
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Pre režim pre jedného používateľa nie je potrebné prihlásenie.
+No login required for HTTP authentication.: Na autentifikáciu HTTP nie je potrebné prihlásenie.
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Prihlasovacie údaje sú neplatné.
+Username XXX does not exist.: Používateľské meno „XXX“ neexistuje.
+You cannot remove admin rights from yourself!: Nemôžete zo seba odobrať administrátorské práva!
+Unknown error saving user: Neznáma chyba pri ukladaní používateľa.
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Pre ID udalosti: XXX sa nenašli nijakí účastníci.
+Db error Could not find event id XXX.: Database error: Chyba databázy: Nepodarilo sa nájsť ID udalosti XXX.
+Error Could not find event id XXX in database.: Chyba: V databáze sa nepodarilo nájsť identifikáciu udalosti XXX.
+April: AprĂ­l
+Calendar: kalendĂˇri
+charset: UTF-8
+Date: dĂˇtum
+February: FebruĂˇr
+Fri: Pia
+Friday: Piatok
+January: JanuĂˇr
+Jul: JĂşl
+July: JĂşl
+Jun: JĂşn
+June: JĂşn
+March: Marec
+May_: MĂˇj
+May: MĂˇj
+Mon: Pon
+Monday: Pondelok
+Next month: Nasl. mesiac
+Next year: Nasl. rok
+Oct: Okt
+October: OktĂłber
+Sat: Sob
+Saturday: Sobota
+Sun: Ned
+Sunday: NedeÄľa
+Thu: Ĺ tv
+Thursday: Ĺ tvrtok
+Today: Dnes
+Tue: Uto
+Tuesday: Utorok
+Wed: Str
+Wednesday: Streda
+WK: tĂ˝Ĺľ

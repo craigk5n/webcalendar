@@ -27,6 +27,7 @@ chdir(__WC_BASEDIR);
 // We need the $_SESSION superglobal to pass data to and from some of the update
 // functions. Sessions are basically useless in CLI mode, but technically the
 // session functions *do* work.
+session_name(getSessionName());
 session_start();
 
 // Load the settings.php file or get settings from env vars.

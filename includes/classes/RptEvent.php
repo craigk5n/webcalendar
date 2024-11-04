@@ -5,8 +5,8 @@
  * @author Adam Roben <adam.roben@gmail.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
  * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
- * @package WebCalendar
- * @subpackage Events
+ *
+ * @package WebCalendar\Events
  */
 
 /**
@@ -40,11 +40,18 @@ class RepeatingEvent extends Event {
    * @access private
    */
   var $_repeatEndDateTime;
+  /**
+   * The UNIX timestamp for the end date/time of the repetition.
+   * @var int
+   * @access private
+   */
+  var $_repeatEndDateTimeTS;
  /**
    * The frequency of the repetition.
    * @var int
    * @access private
    */
+  
   var $_repeatFrequency;
   /**
    * The days each week the event occurs
