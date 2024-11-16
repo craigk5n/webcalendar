@@ -48,7 +48,7 @@ if ($show_advanced) {
 
 $INC[] = 'js/search.js/true';
 
-print_header($INC, '', 'onload="toggleDateRange();"' );
+print_header ( $INC, '', 'onload="toggleDateRange();"' );
 ?>
 <h2><?php echo ($show_advanced ? $advSearchStr : $searchStr);?></h2>
 
@@ -92,8 +92,8 @@ if (count($site_extras) > 0) {
           </td></tr>';
 }
 if ($show_advanced) {
-  $startDateYmd = date('Ymd', time() - (90 * 24 * 3600)); // 90 days ago
-  $endDateYmd = date('Y-m-d', time() + (90 * 24 * 3600)); // 90 days from now
+  $startDateYmd = date ( 'Ymd', time() - 7776000 ); // 90 days ago
+  $endDateYmd = date ( 'Y-m-d', time() + 7776000 ); // 90 days from now
   echo '<tr id="datefilter">
           <td><label for="date_filter" class="colon">' . translate('Filter by Date')
    . ':</label></td>
@@ -140,8 +140,8 @@ if ($show_others) {
     $size = $cnt;
 
   if (! $show_advanced) {
-    echo '<tr id="advlink"><td colspan="2"><a title="' . $advSearchStr
-      . '" href="search.php?adv=1">'
+    echo '<tr id="advlink"><td colspan="2"><a' 
+      . ' href="search.php?adv=1">'
       . $advSearchStr . '</a></td></tr>';
   }
   echo '<tr  id="adv" style="visibility:' . $avdStyle[$show_advanced]

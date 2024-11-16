@@ -150,24 +150,13 @@ if ( empty ( $error ) ) {
     $names[] = 'cal_report_id';
     $values[] = $newid;
 
-    $sql = 'INSERT INTO webcal_report ( ';
-    $sql_v = '';
-
-    $namecnt = count ( $names );
-    for ( $i = 0; $i < $namecnt; $i++ ) {
-      $sql .= ( $i > 0 ? ', ' : '' ) . $names[$i];
-      $sql_v .= ( $i > 0 ? ', ' : '' ) . '?';
-    }
-    $sql .= ' ) VALUES ( ' . $sql_v . ' )';
+    $sql = 'INSERT INTO webcal_report ( ' . implode ( ',', $names )
+     . ' ) VALUES ( ?' . str_repeat ( ',?', count ( $names ) - 1 ) . ' )';
     $report_id = $newid;
   } else {
-    $sql = 'UPDATE webcal_report SET ';
-    $namecnt = count ( $names );
-    for ( $i = 0; $i < $namecnt; $i++ ) {
-      $sql .= ( $i > 0 ? ', ' : '' ) . "$names[$i] = ?";
-    }
-    $sql .= ' WHERE cal_report_id = ?';
-    $values[] = $report_id; // Push the $report_id to $values.
+    $sql = 'UPDATE webcal_report SET ' . implode ( ' = ?,', $names )
+     . ' = ? WHERE cal_report_id = ?';
+    $values[] = $report_id;
   }
 }
 

@@ -1,0 +1,2387 @@
+# Maori mi
+#
+# Ko te whakatakotoranga he pane taapiri:
+#
+# I whakamaorihia e: to ingoa me to imeera
+# Whakahoutanga whakamutunga: te ra o te whakamaoritanga
+# (Tae atu ki te "#" me nga korero a nga kaiwhakamaori o mua.
+# Ko te raarangi Whaimarie Tuatahi ka mutu enei korero pane.)
+#
+# Whaia ana e te hunga e hiahiatia ana:
+#
+# Kupu Ingarihi: whakamaoritanga
+# (Kotahi ki te raina. KAORE te mea nui "#".
+# Ko te "rerenga Ingarihi:", tae atu ki te koroni ":", na te
+# Kaiwhakawhanake Paetukutuku Ko to waahanga ko te "whakamaoritanga".)
+#
+# Kei roto i te raarangi taputapu nga tuhinga e rua perl hei awhina i a koe:
+# - check_translation.pl
+# tohu mena kua pai te whakamaoritanga o nga tuhinga.
+# - update_translation.pl
+# ka whawhati i nga konae o te papatono kia kitea nga whakamaori katoa ('kupu') me
+# taputapu taputapu ('kupu'). Ka whakariterite i nga kianga ki ta te whaarangi
+# (konae) kei roto i te kaupapa tuatahi. Te tikanga, ka taea te tohu i te
+# kīanga kāhore anō kia whakamāorihia mā te maka
+#  << MISSING >>
+# kei te raina i runga ake o te rerenga. Ana, ki te mea he kupu whakarapopototanga,
+# ka whakauru i te katoa o nga korero Ingarihi i runga i te raina i raro ake o te rerenga.
+#
+# Panui: Kei te tarai ahau ki te tapahi i te rahi o te rahi o te konae. Mena te "whakamaoritanga"
+# kupu / rerenga korero he rite ki to reo me te reo Ingarihi, whakamahia noa he tohu "=".
+#
+# Panui: Ka kite koe i te urunga mo "May_" i raro. He take ano tenei.
+# Whakamaori "May_" ki te ingoa marama tonu me "May" ki te,
+# te tikanga ko te toru-reta, ko te marama haapoto (penei "Oct" mo "Oketopa").
+#
+# I whakamahia e ahau a Google whakamaori mo tenei.
+# Ka ea kia tae noa ki te wa e whakamatauhia ai e te kaikorero maori.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: PaetukutukuCalendar
+version XXX: putanga XXX
+WebCalendar is a PHP application used...: Ko te WebCalendar he tono PHP e whakamahia ana hei pupuri i tetahi maramataka mo te kaiwhakamahi kotahi, mo te roopu ipurangi / ipurangi / kaiwhakamahi ranei. Ka taea hoki te whirihora hei maramataka takahanga.
+Credits: Whiwhinga
+About: Mō
+OK: =
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Hapa pātengi raraunga: XXX.
+DEFAULT CONFIGURATION: WHAKAPONO KORE
+Go: Haere
+Save: Penapena
+Undo: Wetekina
+Public Access: Urunga a Te Katoa
+Admin: Kaiwhakahaere
+User Access Control: Mana Whakauru Kaiwhakamahi
+Allow Access to Other Users Calendar: Whakaaetia te Whakauru ki te Maramataka a etahi Atu
+Grant This User Access to My Calendar: Tukua tenei Kaiwhakamahi Uru ki taku Maramataka
+Type: Momo
+Calendar: Maramataka
+View Event: Tirohia te Takahanga
+View: Tirohanga
+Edit: Whakatika
+Approve/Reject: Whakaae / Whakakahore
+Events: Nga Takahanga
+Tasks: Nga Mahi
+Journals: Pukapuka Hekenga
+Can Invite: Ka taea te tono
+Can Email: Ka taea te imeera
+Can See Time Only: Ka Kite I Te Wa Anoa
+Assistant: Kaiawhina
+Select All: Tīpakohia Katoa
+Clear All: Maama Katoa
+Public: Tūmatanui
+Confidential: He muna
+Private: Tūmataiti
+
+########################################
+# Page: activity_log.php
+#
+Next: Panuku
+Previous: Tuhinga o mua
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Ko te Takahanga XXX kei runga i to maramataka.
+Invalid entry id XXX.: Id whakauru urunga muhu: "XXX".
+a XXX event may not be added to your calendar: He huihuinga XXX tenei a kaore pea e tapirihia ki to maramataka.
+confidential: muna
+private: tūmataiti
+Error adding event XXX.: I hapa te whakauru huihuinga: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Ko te ingoa tautuhi muhu "XXX".
+Select: Tohua
+Day: Ra
+Week: Wiki
+Month: Marama
+Year: Tau
+Bottom: Raro
+Top: Runga
+Anyone: Ahakoa ko wai
+Participant: Kaiuru
+Settings: Tautuhinga
+Groups: Rōpū
+NonUser Calendars: Maramataka Kore Kaiwhakamahi
+Other: Tētahi atu
+Email: Imeera
+Colors: Tae
+Document background: Papamuri tuhinga
+Document title: Taitara tuhinga
+Document text: Tuhinga tuhinga
+My event text: Taku tuhinga korero
+Table grid color: Tae mātiti teepu
+Table header background: Papamuri pane pane
+Table header text: Kuputuhi pane pane
+Table cell background: Papamuri pūtau papamuri
+Table cell background for current day: Papamuri papa ripanga mo tenei ra
+Table cell background for days with events: Papamuri pūtau papa mo nga ra me nga huihuinga
+Table cell background for weekends: Papamuri pūtau ripanga mo nga ra whakataa
+Table cell background for other month: Papamuri pūtau ripanga mo tetahi atu marama
+Week number color: Tae tau wiki
+Event popup background: Takahanga pahū-ake papamuri
+Event popup text: Kupu pakū ake
+System Settings: Tautuhinga Pūnaha
+Help: Awhina
+System options: Kōwhiringa punaha
+app-name-help: He whakarite i te ingoa o te tono ka puta i te pae taitara tirotiro mo nga whaarangi katoa me te whaarangi takiuru. Ko te uara e tohua e koe i konei ka tirohia i roto i nga konae whakamaoritanga e tuku ana i a koe ki te whakarato taitara rereke mo nga reo rereke.
+Application Name: Ingoa Tono
+Translated Name (XXX): Ingoa Whakamaori (XXX)
+server-url-help: He whakarite i te turanga URL mo te tono. Ka whakauruhia tenei ka tukuna atu nga whakamaharatanga me nga whakamohio imeera.
+Server URL: Tūmau URL
+home-url-help: He whakarite i te URL kaainga mo te tono. He tino whanaunga, he whanaunga ranei tenei
+Home URL: URL Kaainga
+language-help: Ka whakarite i tehea reo hei whakamahi.
+Language: Reo
+Your browser default language is XXX.: Ko to reo taunoa te tirotiro he "XXX".
+Allow user to use themes: Tukuna te kaiwhakamahi ki te whakamahi kaupapa
+themes-help: Ka taea te whakahou papatipu o nga tautuhinga whirihoranga Ko nga tapanga kee iti iho ko nga kaiwhakamahi anake.
+Themes: Kaupapa
+AVAILABLE THEMES: KAUPAPA KAUPAPA
+None: Kore
+Preview: Arokite
+Site customization: Whakarite pae
+custom-script-help: Whakaaetia te urunga o te tuhingaJavascript ritenga, te tuhinga raihana taatai ​​ranei ka uru ki te waahanga "upoko" HTML o ia whaarangi.
+Custom script/stylesheet: Hōtuhi ritenga / pepa kāhua
+custom-header-help: Ka taea te whakauru i tetahi waahanga HTML ritenga ki te tihi o ia whaarangi.
+Custom header: Pane ritenga
+custom-trailer-help: Ka taea te whakauru i tetahi waahanga HTML ritenga i te mutunga o nga whaarangi.
+Custom trailer: Tauaru Ritenga
+enable-external-header-help: Ka taea te utaina o te tauaru ritenga mai i tetahi konae o waho
+Allow external file for header/script/trailer: Whakaaetia te konae o-waho mo te pane / tuhinga tuhi / tauaru
+Allow user to override header/trailer: Tukuna te kaiwhakamahi ki te turaki i te pane / tauaru
+Date and Time: Te Ra me te Waa
+server-tz-help: Ka whakaputahia kia hia nga haora hei whakatika i te waa mai i te UTC ki te waa o te kaituku.
+Server Timezone Selection: Tīpakonga Rohe Whaa Tūmau
+tz-help: Ka whakaputahia kia hia nga haora hei whakatika i te waa mai i te UTC ki te waa rohe.
+Default Client Timezone Selection: Te Whiringa Rohe Rohe Taonga Taunoa
+display-general-use-gmt-help: Ki te whakahohea, ka whakaatuhia nga ra / wa noa hei GMT
+Display Common Use Date/Times as GMT: Whakaatuhia te Ra whakamahi / Waa mo te GMT
+date-format-help: Ka whakarite i te whakatakotoranga o te ra pai.
+Date format: Te whakatakotoranga o te Ra
+Small Task Date: Te Ra Mahi iti
+display-week-starts-on: Ka tau te ra o te wiki ka tiimata te wiki. Mena kua tohua te Mane, ko nga tau wiki ko nga tau wiki ISO.
+Week starts on: Ka tiimata te Wiki
+display-weekend-starts-on: Ka whakatauhia te ra o te wiki kia tiimata nga wiki mutunga
+Weekend starts on: Ka tiimata te mutunga o te wiki
+time-format-help: Ka tauwhāiti ko tehea te waa hei whakamahi:<br><em>12 haora:</em> Nga wa whakaatu mai i te 3am, 8:30 pm, me etahi atu.<br><em>24 haora:</em> Nga wa whakaatu hei 300 , 2030, etc.
+Time format: Te whakatakotoranga waa
+12 hour: 12 haora
+24 hour: 24 haora
+timed-evt-len-help: He whakarite i te tikanga whakauru mo te whakatau i te roa o te waa kua whakaritea.
+Specify timed event length by: Tauwhāitihia te roa o te huihuinga kua whakaritea e
+Duration: Roanga
+End Time: Wā Whakamutunga
+work-hours-help: Ka tauwhāiti i te awhe waahi hei whakaatu mo te tirohanga o te ra.
+Work hours: Nga haora mahi
+From: Tuhinga ka whai mai
+to: ki
+Appearance: Te Ahua
+preferred-view-help: He whakarite i te tirohanga taunoa (Ra, Wiki, Marama, Tau ranei).
+Preferred view: Tirohanga pai
+Allow top menu: Tukua te tahua runga
+Date Selectors position: Te Raa Kaitohu
+menu-themes-help: Ka tautuhia nga tae me te taera o te raarangi runga
+Menu theme: Kaupapa Tahua
+fonts-help: He whakarite i te raarangi momotuhi punaha hei whakamahi (penei i te "Arial, Helvetica")
+Fonts: Momotuhi
+display-sm_month-help: Ki te whakahohea, whakaatuhia nga marama iti i nga tirohanga marama
+Display small months: Whakaatuhia nga marama iti
+display-weekends-help: Whakauru atu ki nga ra whakataa ka tiro ana koe i te wiki.
+Display weekends: Whakaatu i nga ra whakataa
+display-long-daynames-help: Ki te whakahohea, ka whakaatuhia nga ra roa
+Display long day names: Whakaatuhia nga ra roa
+display-alldays-help: Whakaatuhia nga marama o mua me nga marama e whai ake nei i nga tirohanga marama, ka whakakii i nga waahanga katoa.
+Display all days in month view: Whakaatuhia nga ra katoa i te tirohanga marama
+display-week-number-help: Ka whakaatu mena ko te nama wiki (1-52) me whakaatu i te tirohanga marama me te tirohanga wiki.
+Display week number: Whakaatu tau wiki
+display-desc-print-day-help: Whakauruhia nga whakaahuatanga takahanga ki te tuhinga-pai a te tirohanga ra.
+Display description in printer day view: Whakaatu whakaahuatanga kei te tirohanga a te ra taarua
+yearly-shows-events-help: I te tirohanga a tau, whakaatuhia nga ra e whakaatu ana i nga huihuinga kei roto i te momotuhi maia.
+Display days with events in bold in month and year views: Whakaatuhia nga ra me nga huihuinga o te marama me te tau
+display-minutes-help: Ki te whakahohea, ka mutu nga meneti: 00 ka whakaatuhia i nga wa katoa
+Display 00 minutes always: Whakaatu 00 meneti i nga wa katoa
+display-end-times-help: Whakaatuhia nga wa mutunga huihuinga mena ka whai waahi te waa
+Display end times on calendars: Whakaatuhia nga wa mutunga ki nga maramataka
+allow-view-add-help: Ka whakauruhia he tohu '+' ki nga tirohanga, ka taea ai e nga kaiwhakamahi te whakauru wawe i nga maramataka ki etahi atu kaiwhakamahi.
+Include add event link in views: Whakauruhia te taapiri hono hono ki nga tirohanga
+lunar-help: Mena ka taea, ka whakaatuhia nga tohu iti hei tohu i nga waahanga marama i ia marama
+Display Lunar Phases in month view: Whakaatuhia nga Waahanga Rama i te tirohanga o te marama
+Restrictions: Whakawhāititanga
+allow-view-other-help: Ka tautuhi mena ka tiro tetahi kaiwhakamahi ki te maramataka a tetahi atu.
+Allow viewing other users calendars: Tukuna kia tirohia nga maramataka a etahi atu
+require-approvals-help: Ka taea ana, me whakaae te kaiwhakamahi ki tetahi kaupapa i mua i tana whakaaturanga ki tana maramataka (ki te kore e whakahohea te Whakaaturanga kaore i whakaaetia). Kia mahara ki te whakarite i tenei ki "Kaore" e kore e whakakore i nga whakaaetanga mo te maramataka Uru a te Katoa (mena ka whakahohea te maramataka Uru a te Katoa).
+Require event approvals: Hiahia whakaaetanga takahanga
+display-unapproved-help: Ka tauwhāitihia mena ka whakaatuhia nga mahi kaore i whakaaetia i roto i to maramataka. me whakaae nga huihuinga kaore i whakaaetia i mua i te whakaatuhia i to maramataka.
+Display unapproved: Whakaatu kaore i whakaaetia
+conflict-check-help: Tirohia nga pakanga o nga huihuinga (e rua nga huihuinga kua whakaritea mo te wa kotahi mo te tangata kotahi). Mena ka whakatauhia e koe ki te "Ae", ka taea tonu e koe te whakarite i nga huihuinga e rua i te wa kotahi i muri i te whakaū i tetahi whakatupato. Mena ka whakatauhia e koe ki te "Kaore", kaore e tirohia nga pakanga. Akene ka hiahia koe ki te tautuhi i tenei ki "Ae", na reira ka tirohia nga tautohetohe.
+Check for event conflicts: Tirohia nga pakanga o nga huihuinga
+Yes: Ae
+No: No.
+conflict-months-help: Mena kua tau te tirotirohia o tautohetohe ("Tirohia nga tautohetohe takahanga" kua whakatauhia ki te "No" & # 41 ;, e tohu ana tenei mo nga marama kei te heke mai me tirotiro e maatau nga pakanga. Mena ka kite koe he roa te wa e tapahi ana nga huihuinga. , whakaitihia tenei tau.
+Conflict checking months: Nga marama tirotiro totohe
+conflict-check-override-help: Whakaaetia ai nga kaiwhakamahi ki te whakakore i nga pakanga huihuinga me te whakariterite kia rua, neke atu ranei nga huihuinga mo te wa kotahi.
+Allow users to override conflicts: Tukua nga kaiwhakamahi ki te takahi i nga pakanga
+limit-appts-help: Ka ahei te kaiwhakahaere punaha ki te whakarite i te rohe-whanui mo te maha o nga waa whakarite ka taea e te kaiwhakamahi kotahi i nga ra katoa.
+Limit number of timed events per day: Whakaitihia te maha o nga huihuinga kua whakaritea i ia ra
+limit-appts-number-help: He whakarite i te maha o nga huihuinga kua whakaritea e tetahi kaiwhakamahi i roto i te ra kotahi.
+Maximum timed events per day: Nga waahanga nui kua whakaritea mo ia ra
+crossday-help: Ki te whakahohea, ka whakaatuhia nga huihuinga e roa ana nga ra i nga ra motuhake
+Disable Cross-Day Events: Monokia nga Takahanga Ra-Whakawhiti
+disable-location-field-help: Ko te kowhiri i te "Ae" ka tangohia te mara "Tauwāhi" mai i nga whaarangi korero huihuinga
+Disable Location field: Monokia te waahi Wāhi
+disable-url-field-help: Ko te tohu i te "Ae" ka tangohia te mara "URL" mai i nga whaarangi korero huihuinga
+Disable URL field: Monokia te mara URL
+disable-priority-field-help: Ko te kowhiri i te "Ae" ka tangohia te mara "Matua" mai i nga whaarangi korero huihuinga, ka whakarato i tetahi atanga ngawari ake mo nga tauhou.
+Disable Priority field: Monokia te mara Matua
+disable-access-field-help: Ko te kowhiri i te "Ae" ka tangohia te mara "Uru" mai i nga whaarangi korero huihuinga, ka whakarato i tetahi waahanga ngawari ake mo nga tauhou.
+Disable Access field: Monokia te Uru Uru
+disable-participants-field-help: Ko te kowhiri i te "Ae" ka tangohia te mara "Kaiuru" mai i nga whaarangi korero huihuinga, ka aukati i nga kaiwhakamahi ki te whakauru i etahi atu kaiwhakamahi ki a raatau kaupapa. Mena ka whakaahei koe i tenei waahanga, ka hiahia pea koe ki te mono i te mara "Whakaaetia kia tirohia nga maramataka a etahi atu".
+Disable Participants field: Monokia te mara a nga Kaihono
+disable-repeating-field-help: Ko te kowhiri i te "Ae" ka tangohia te mara "Whakahou" ka taapiri i nga kaupapa. Ma tenei ka maarama ngawari ake mo nga tauhou.
+Disable Repeating field: Monokia te Awhina i te mara
+allow-html-description-help: Ki te whakahohea, ka taea e nga kaiwhakamahi te whakauru HTML ki te waahi whakaahuatanga takahanga. Mena kaore i te whakahohea, ka mawhiti nga tohu HTML kia kitea ai he tuhinga noa. Whakatūpato: Ma te whakahohe i tenei ahuatanga ka ahei nga kaiwhakamahi ki te whakahua whakaahua i etahi atu paetukutuku.
+Allow HTML in Description: Tukua te HTML ki te Whakaahuatanga
+Popups: Pahūake
+disable-popups-help: Monokia nga pahū-ake mai i nga tirohanga maramataka
+Disable Pop-Ups: Monokia nga Pahū-Up
+popup-includes-siteextras-help: Ki te whakahohea, tukua kia whakatu mara mara takahanga ki te konae site_extras.php ka whakaatuhia i roto i nga pahuatanga takahanga.
+Display Site Extras in popup: Whakaatu Taapiringa Pae kei te pakūake
+popup-includes-participants-help: Ki te whakahohea, ka whakaatuhia nga kaiuru ki nga popup popup.
+Display Participants in popup: Whakaatuhia nga Kaihono ki te pahū-ake
+Miscellaneous: Rerekē
+remember-last-login-help: Ka taea ana, ka whakakiia te takiuru a te kaiwhakamahi ma raatau ki te whaarangi takiuru (engari kaore ko te kupuhipa), ka utaina nga manakohanga a te kaiwhakamahi (tae atu ki a ratau tae pai ki te kohinga reo).
+Remember last login: Kia mahara ki te takiuru whakamutunga
+summary_length-help: Te roa o te roa o te Whakaahuatanga Poto i nga tirohanga maramataka
+Brief Description Length: Roa Whakaahuatanga Poto
+user_sort-help: Ka whakatau i te raupapa raupapa mo te Kaiwhakamahi, raarangi Nonuser
+User Sort Order: Raupapa Whakaraupapa Kaiwhakamahi
+Lastname, Firstname: Ingoa Whakamutunga, Ingoa Tuatahi
+Firstname, Lastname: Ingoa Tuatahi, Ingoa Whakahau
+allow-public-access-help: Ka taea ana, ka taea te maramataka hei whakamahi i te maramataka panui-anake kaore e hiahia ana nga kaiwhakamahi ki te takiuru.
+Allow public access: Whakaaetia te urunga a te iwi
+public-access-default-visible: Ko nga huihuinga mai i te maramataka a te iwi ka puta noa ki nga maramataka a nga kaiwhakamahi
+Public access visible by default: Urunga a-iwi ka kitea taunoa
+public-access-default-selected: Ka taapiri ana i tetahi huihuinga hou, ka tohua taunoa te kaiwhakamahi o te iwi hei kaiuru.
+Public access is default participant: He urunga taunoa te urunga a te iwi
+public-access-view-others-help: Ka uru ana ki te punaha me te urunga ma te iwi, ka tohu mena ka taea e te kaiwhakamahi te tiro i te maramataka o tetahi atu kaiwhakamahi maramataka.
+Public access can view other users: Ka taea e te urunga a te iwi te tiro ki etahi atu kaiwhakamahi
+public-access-can-add-help: Ka taea ana, ka taea e nga kaiwhakamahi ka uru atu ki te punaha na roto i te Uru Katoa te taapiri i nga kaupapa hou, engari kaore e puta i te maramataka kia whakaae ra ano te kaiwhakahaere mo te kaupapa hou.
+Public access can add events: Ka taea e te urunga a te iwi te whakauru i nga huihuinga
+public-access-add-requires-approval-help: He whakarite mena he huihuinga ma te kaute whakauru a te iwi whanui me whakaae i mua o te whakaaturanga.
+Public access new events require approval: Whakauru ki nga huihuinga hou ka hiahiatia he whakaaetanga
+public-access-sees-participants-help: Mena ka whakahohea, ka uru nga kaiwhakamahi ki te whakauru i te maramataka mai i te kaute a te iwi ki nga kaiuru kaupapa mena ka kite i nga korero mo tetahi kaupapa.
+Public access can view participants: Ka taea e te iwi whanui te tiro atu ki nga kaiuru
+public-access-override-help: Whakaaetia nga ingoa o nga huihuinga me nga whakaahuatanga kia huna i runga i te maramataka a te iwi
+Override event name/description for public access: Whakakahoretia te ingoa huihuinga / whakamaarama mo te urunga a te iwi
+public-access-override-text-help: Ko te tuhinga hei whakaatu mena kua whakahohea te waahanga i runga ake nei. Mena 'Kaore Watea', ka whakamaorihia.
+Text to display to public access: Kuputuhi hei whakaatu ki te urunga a te iwi
+public-access-captcha-help: Ki te whakahohea, ko nga huihuinga hou e taapirihia ana e te Katoa, me tuku he whakamana CAPTCHA.
+Require CAPTCHA validation for public access new events: Me tono CAPTCHA whakamanatanga kia uru mai te iwi ki nga huihuinga hou
+uac-enabled-help: Whakahohe ai i te mana urunga taumata-kaiwhakamahi
+User Access Control enabled: Whakahaerehia te Uru Kaiwhakamahi
+groups-enabled-help: Whakahohea ai te tautoko roopu, kia ahei nga kaiwhakamahi ki te kowhiri i nga kaiwhakamahi ma ia roopu.
+Groups enabled: Kua whakahohea nga roopu
+user-sees-his-group-help: Ki te whakahohea, kaore e kitea e nga kaiwhakamahi nga maramataka kaore i te kotahi o a raatau roopu.
+User sees only his groups: Ka kitea e te Kaiwhakamahi ana roopu anake
+nonuser-enabled-help: Mena kua whakahohea, ka taea e nga kaiwhakahaere te whakauru ki te taapiri i nga maramataka kore whakamahi
+Nonuser enabled: Maramataka Nonuser Kua Whakahohea
+nonuser-list-help: Me whakaatu nga maramataka kore ki te raarangi kaiuru
+Nonuser list: Whakaatu ki te raarangi kaiuru i
+Upcoming Events: Nga Takahanga Ka Haere Mai
+upcoming-events-help: Whakahohea.php
+Enabled: Whakahohea
+upcoming-events-allow-override: Whakaaetia te kaitohu a te kaiwhakamahi mo te haere mai.php
+Allow user override: Whakaaetia te turaki a te kaiwhakamahi
+upcoming-events-display-caticons: Whakauruhia nga tohu waahanga ki te haere mai.php
+Display category icons: Whakaatu tohu waahanga
+upcoming-events-display-layers: Whakaatuhia nga paparanga kei te heke mai.php
+Display layers: Whakaatu papa
+upcoming-events-display-links: Whakaatu hononga i roto i te haere mai.php
+Display links to events: Whakaatu hononga ki nga huihuinga
+upcoming-events-display-popups: Whakaatuhia nga pahupahu takahanga i roto i te haere mai.php
+Display event popups: Whakaatu pahū-ake huihuinga
+reports-enabled-help: Mena ka whakahohea, ka kite nga kaiwhakamahi i tetahi waahanga "Ripoata" kei raro o ia whaarangi ka whakaaetia ki te hanga ripoata ritenga. Hei taapiri, ka taea e nga kaiwhakamahi kaiwhakahaere te hanga purongo ao ka kitea i raro o nga wharangi kaiwhakamahi.
+Reports enabled: Kua whakahohea nga purongo
+subscriptions-enabled-help: Ka tautuhi mena ka ahei nga kaiwhakamahi mamao ki te ohauru ki te maramataka a te Kaiwhakarato Paetukutuku, kia ahei ratou ki te tiro i nga mahi a te kaiwhakamahi WebCalendar i roto i a raatau tono whakahoahoahoahoahoahoaho (penei i te iCal a Apple, Mozilla Maramataka ranei)
+Allow remote subscriptions: Tukua nga ohauru mamao
+remotes-enabled-help: Ka taea e nga kaiwhakamahi te uta i nga konae ics mamao ma te whakamahi i te URL
+Allow remote calendars: Tukuna nga maramataka mamao
+rss-enabled-help: Ka whakarite mena ka taea te maramataka a te kaiwhakamahi mai i te RSS whangai.
+Enable RSS feed: Whakahohea te whangai RSS
+categories-enabled-help: Whakahohea te tautoko mo nga waahanga huihuinga.
+Categories enabled: Kua whakahohea nga waahanga
+icon_upload-enabled-help: Ki te whakahohea, ka taea e nga kaiwhakamahi te tuku ake i nga tohu o te waahanga
+Category Icon Upload enabled: Category Icon Tukuake whakahohea
+(Requires XXX folder to exist.): (Titauina kia noho mai te kōpaki XXX.)
+display-tasks-help: Whakaatuhia te matapihi mahi iti i te maramataka marama me te ra
+Display small task list: Whakaatu i te raarangi mahi iti
+display-tasks-in-grid-help: Whakaatuhia nga mahi ki nga maramataka me nga huihuinga
+Display tasks in Calendars: Whakaatuhia nga mahi ki nga Maramataka
+allow-external-users-help: He whakarite mena ka taea te taapiri i tetahi kaiwhakamahi kore-maramataka ki tetahi huihuinga. Ma tenei ka ahei nga kaiwhakamahi maramataka-kore ki te rarangi hei kaiuru ki nga huihuinga.
+Allow external users: Tukua nga kaiwhakamahi o waho
+external-can-receive-notification-help: Ka whakahohea nga kaiwhakamahi o waho ka whakahoahoahia te whakamahinga imeera, ka taea e nga kaiwhakamahi o waho te tango i nga whakamohio imeera ka tapirihia te kaupapa, ka whakahouhia ka whakakorea ranei (mena ka tukuna he wahitau imeera a te kaiwhakamahi o waho)
+External users can receive email notifications: Ka taea e nga kaiwhakamahi o waho te tango i nga whakamohiotanga imeera
+external-can-receive-reminder-help: Ka whakahohea nga kaiwhakamahi o waho ka whakahohehia te whakamahi i te imeera, ka taea e nga kaiwhakamahi o waho te whakawhiwhi i nga whakamahara imeera (mena ka tukuna he wahitau imeera a te kaiwhakamahi o waho).
+External users can receive email reminders: Ka taea e nga kaiwhakamahi o waho te whiwhi whakamaumahara i te imeera
+allow-self-registration-help: Whakaaetia nga kaiwhakamahi hou ki te rehita i a raatau ano
+Allow self-registration: Whakaaetia te rehitatanga-ake
+use-blacklist-help: Whakawhāitihia te uru atu ki nga mahi Paetukutuku i runga i te IP IP
+Restrict self-registration to blacklist: Whakawhāiti te rehitatanga-a-tangata ki te raarangi pango
+allow-self-registration-full-help: Tukuna nga kaiwhakamahi hou ki te whakaoti i te raarangi rehitatanga-a-ipurangi
+Use self-registration email notifications: Hangaia nga kupuhipa ka tuku ki nga kaiwhakamahi hou
+allow-attachment-help: Tukua nga kaiwhakamahi ki te taapiri i nga taapiri kōnae ki nga huihuinga.
+Allow file attachments to events: Whakaaetia nga taapiri konae ki nga huihuinga
+Admin and owner can always add attachments if enabled.: Ka taea e te kaiwhakahaere me te rangatira te taapiri i nga taapiri mena ka whakahohea.
+allow-comments-help: Tukuna nga kaiwhakamahi ki te taapiri korero ki nga huihuinga.
+Allow comments to events: Tukuna nga korero ki nga huihuinga
+Admin and owner can always add comments if enabled.: Ka taea e te kaiwhakahaere me te rangatira te taapiri i nga korero ki te whakahohea.
+email-enabled-help: Whakakāhia ka whakaweto ranei i te katoa o te tuku imeera mo te panui me nga whakamaumahara. Whakatakotoria ki te "kaore", mena kaore i te tika te whakarite a to kaituku ki te tuku i nga meera.
+Email enabled: Kua whakahohea te imeera
+email-default-sender: Ka whakaputahia te wahitau imeera hei tohu hei kaituku i a koe e tuku whakamaumahara ana.
+Default sender address: Wāhitau kaituku taunoa
+email-mailer: Whiriwhiria te momo imeera (SMTP, PHP meera, meera meera)
+Email Mailer: Kaituku Imeera
+email-smtp-host: Ingoa Kaihautū (s) o te kaiwhakarato SMTP i wehea e nga piko
+SMTP Host name(s): Ingoa Kaihautū SMTP (s)
+email-smtp-port: Tauanga Tauranga SMTP (tikanga 25)
+SMTP Port Number: Tau Tauranga SMTP
+email-smtp-auth: Whakamahia te Motuhēhēnga SMTP
+SMTP Authentication: SMTP Motuhēhēnga
+email-smtp-username: Ingoa Kaiwhakamahi SMTP ki te whakamahi i te Motuhēhēnga
+SMTP Username: SMTP Ingoa Kaiwhakamahi
+email-smtp-password: Kupuhipa SMTP mēnā e whakamahi ana i te Motuhēhēnga
+SMTP Password: Kupuhipa SMTP
+Default user settings: Tautuhinga kaiwhakamahi taunoa
+email-format: Tauwhāitihia te manakohanga mō te HTML, te karere kuputuhi noa ranei
+Email format preference: Manakohanga whakatakotoranga imeera
+HTML: =
+Plain Text: Kupu Maama
+email-include-ics: Whakauruhia he konae ICS iCalendar ki te tuku imeera
+Include iCalendar attachments: Whakauruhia nga taapiri iCalendar
+email-event-reminders-help: He whakarite mena ka tuku whakamaumahara ranei i nga huihuinga.
+Event reminders: Whakamaumahara Takahanga
+email-event-added: Tauwhāiti ai ka tukuna atu ranei nga whakamohiotanga imeera ka tapiritia ana he kaupapa ki to maramataka.
+Events added to my calendar: Nga huihuinga kua taapirihia ki taku maramataka
+email-event-updated: Ka whakarite mena ka tukuna atu ranei nga whakamohio imeera ka whakahoutia tetahi kaupapa ki to maramataka.
+Events updated on my calendar: Nga mahi i whakahoutia i taku maramataka
+email-event-deleted: Ka whakarite mena ka tukuna atu ranei nga whakamohio imeera ka tangohia ana tetahi huihuinga mai i to maramataka.
+Events removed from my calendar: I tangohia nga huihuinga mai i taku maramataka
+email-event-rejected: Tauwhāiti ai ka tukuna atu ranei nga whakamohiotanga imeera ka paopao te kaiwhakauru ki tetahi kaupapa kei runga i to maramataka.
+Event rejected by participant: Takahia e te kaiuru
+email-event-create: He whakarite mena ka whiwhi imeera te kaihanga o nga urunga
+Event that I create: Takahanga ka hangaia e au
+Color options: Kōwhiringa tae
+Allow user to customize colors: Tukuna te kaiwhakamahi ki te whakarite i nga tae
+gradient-colors: Mena ka whakamahia nga karaehe ngawari ka whakamahia. Ka tino pa tenei ki nga mahi.
+Enable gradient images for background colors: Whakahohea nga whakaahua muramura mo nga tae papamuri
+Not available: Kaore i te waatea
+Background Image options: Papamuri Kōwhiringa atahanga
+bgimage-help: URL o te ahua papamuri e hiahiatia ana. Akene he hononga hono.
+Background Image: Atahanga Papamuri
+bgrepeat-help: Whakahaerehia ai te whanonga tuarua o te ahua papamuri.
+Background Repeat: Papamuri Whakahoki
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Kaiawhina
+Preferences: Manakohanga
+Control Panel: Paewhiri Mana
+Users: Kaiwhakamahi
+Account: Kaute
+Categories: Kāwai
+Views: Tirohanga
+Layers: Paparanga
+Reports: Nga Ripoata
+Delete Events: Mukua Nga Takahanga
+Activity Log: Rangahau Mahi
+System Log: Rangitaki Punaha
+Security Audit: Arotake Haumaru
+Public Preferences: Manakohanga a te Katoa
+Unapproved Public Events: Nga Takahanga a te Katoa kaore i Whakaaetia
+Administrative Tools: Taputapu Whakahaerenga
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Ingoa Tuarua: "XXX".
+Username XXX already exists.: Kei te kitea noa te ingoa kaiwhakamahi "XXX".
+Email address XXX already exists.: Kei te noho mai tetahi wahitau imeera "XXX".
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): He Korero Ano (he kowhiringa)
+Approve and Send: Whakaaetia ka tuku
+Approve and Exit: Whakaae me te Putaatu
+(Your comments will be emailed to the event creator.): (Ka imeahia o korero ki te kaihanga kaupapa.)
+Hello, XXX.: Kia ora, XXX.
+XXX has approved an appointment and added comments.: Kua whakaaetia tetahi waa whakarite kua taapirihia e XXX nga korero.
+Subject XXX: Kaupapa: "XXX".
+Description XXX: Whakaahuatanga: "XXX".
+Date XXX: Rā: XXX
+Time XXX: Wā: XXX
+Comments XXX: He Korero: XXX
+Approved w/Comments by XXX.: Whakaaetia w / Nga korero a: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Aratau kaiwhakahaere
+Your assistants: Ko o kaiawhina
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Hapa tē mōhio
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Hapa Papatono: Kaore he XXX i tohua!
+user: kaiwhakamahi
+year: tau
+month: marama
+day: rā
+
+########################################
+# Page: category.php
+#
+Category Icon: Kwai Ataata
+Global: Ao
+The permissions for the icons directory are set to read-only: Ko nga whakaaetanga mo te raarangi tohu kua tautuhia ki te panui-anake.
+Category Name: Ingoa Kāwai:
+Color: Tae
+Remove Icon: Tango Ata:
+Add Icon to Category: Taapirihia te ata ki te waahanga
+Upload: Tukuatu
+GIF or PNG 6kb max: GIF, PNG ranei 6kb max
+Search for existing icons: Rapua nga tohu kei mua
+Add: Taapirihia
+Delete: Mukua
+Are you sure you want to delete this entry?: E tino hiahia ana koe ki te whakakore i tenei urunga?
+Make New Category: Hanga Kāwai Hou
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Ingoa kāwai e hiahiatia ana
+File size exceeds maximum.: Nui ake te rahinga o te konae.
+File is not a GIF or PNG image: Ko te konae ehara i te ahua GIF, PNG ranei
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: NGĀ TOHUWHITANGA WAIATA
+ENTRY CATEGORIES: NGA WHAKARITENGA KAUPAPA
+Remove: Tango
+Global Category: Kāwai Ao
+Cancel: Whakakore
+
+########################################
+# Page: colors.php
+#
+Add Custom: Taapirihia he Ritenga
+Basic Colors: Nga Tae Taketake
+Current Color: Tae o Naianei
+Custom Colors: Nga Tae Ritenga
+Old Color: Tae Tawhito
+
+########################################
+# Page: combo.php
+#
+Select None: Tohua Kore
+Agenda: =
+Add Task: Taapirihia te Mahi
+Description: Whakaahuatanga
+Date: Te Ra
+Time: Wā
+Priority: Mea Matua
+Access: Whakauru
+Created by: I hangaia e
+Updated: Whakahoutia
+Participants: Nga Kaiuru
+Attachments: Āpitihanga
+Comments: Nga korero
+Brief Description: Whakaahuatanga Poto
+Full Description: Whakaahuatanga Katoa
+Category: Kāwai
+Add event detail: Taapirihia nga taipitopito takahanga
+Start Date: Ra Timata
+Due Date: Te Ra Tuturu
+Add task detail: Taapirihia te taipitopito mahi
+All: Katoa
+Error: Hapa
+no response from server: kaore he whakautu mai i te kaituku
+JSON error: Hapa JSON
+High: Runga
+Medium: Waenga
+Low: Iti
+Today: I tenei ra
+Add Entry: Taapirihia te Whakauru
+Unnamed Event: Takahanga Kore Ingoa
+Unnamed Task: Tūmahi Ingoa Kore
+Refresh: Whakahouhia
+Click to add entry: Paatohia hei taapiri whakauru
+Name: Ingoa
+pm: =
+am: =
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: Kua whakakorehia e XXX tetahi taima.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Id putiputi muhu
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Taapiri Tākupu
+Add Attachment: Taapirihia te Taapiri
+Subject: Kaupapa
+Comment: Korero
+Upload file: Tukuna te konae
+
+########################################
+# Page: docdel.php
+#
+Removed: Kua tangohia
+
+########################################
+# Page: edit_entry.php
+#
+days: ra
+hours: haora
+minutes: meneti
+You are not authorized to edit this task.: Kaore koe i te mana ki te whakatika i tenei mahi.
+is in a different timezone than you are. Currently: kei i roto i te rohe wa ke atu i a koe. I tenei wa
+hour ahead of you: Tuhinga o mua
+hour behind you: haora i muri i a koe
+hours ahead of you: Tuhinga o mua
+hours behind you: haora i muri i a koe
+XXX is in a different timezone (ahead): (Kei roto a XXX i tetahi waahi waahi rereke; YYY kei mua i a koe.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (Kei roto a XXX i tetahi waahi waahi rereke; YYY kei muri i a koe.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Ko te wa i uru mai ki konei e pa ana ki to Rohe Rohe.
+Edit Entry: Whakatika Whakauru
+Details: Taipitopito
+Repeat: Tukuruatia
+Reminders: Whakamaumahara
+brief-description-help: Ma tenei e tika ai te whakaatu poto (tata ki te 20 nga kiripuaki) o te kaupapa. Hei tohu tenei mo te huihuinga ina tirohia te maramataka.
+full-description-help: Ma tenei e oti ai nga korero mo te kaupapa. Ka kitea enei korero ka tirohia e te kaiwhakamahi te kaupapa.
+access-help: He whakarite i te taumata uru o te huihuinga. <ul> <li> Katoa: Ka taea e te katoa te kite i nga korero katoa mo te huihuinga. <li> <li> He muna: Ka mohio etahi atu he urunga taau mo taua ra me te waa, engari kaua ko nga korero mo te mea.</li></ul>
+priority-help: Ka tauwhāiti te kaupapa matua o te kaupapa. Ka whakaatuhia nga kaupapa matua nui ma te maia.
+category-help: Ka tauwhāiti i te kāwai o te kaupapa.
+completed-help: Te ra mahi kua oti. Ka whakahohea noa ka rite ki te 100% te ōrau o te hunga whakauru.
+Date Completed: Ra Kua Oti
+percent-help: Te ōrau otinga mahi mo tenei kaiwhakamahi
+Percent Complete: Kua oti te entrau
+All Percentages: Nga Percrau Katoa
+location-help: Tauwāhi Takahanga
+Location: Tauwāhi
+url-help: URL Takahanga
+URL: =
+date-help: Ka whakarite i te ra o te huihuinga.
+Untimed event: Takahanga korekore
+Timed event: Takahanga kua whakaritea
+All day event: Takahanga mo te ra katoa
+Timezone Offset: Wāhanga Wāhikē
+time-help: Ka whakarite i te waa o te huihuinga. <ul> <li> "Takahanga kua whakaritea" (mo tetahi huihuinga kua whakaritea mo tetahi wa motuhake i taua ra) )</li> <li> "Katoa te huihuinga o te ra" (mo tetahi huihuinga e roa ana te ra (penei i waho o te tari)</li></li>
+duration-help: Ka whakarite i te roanga (i roto i nga haora; meneti) o te huihuinga. <em>Ka waihohia te mara nei.</em>
+end-time-help: Ka whakarite i te waa e tika ana kia mutu te huihuinga.
+Start Time: Wā Timata
+Due Time: Te Wā Whakatika
+Site Extras: Painga Taapiringa
+avail_participants-help: Rarangi i nga kaiuru o tenei urunga.
+Available: Wātea
+Find Name: Rapua te Ingoa
+Resources: Rauemi
+participants-help: Rarangi i nga kaiuru o tenei urunga.
+Selected: Kua kowhiria
+Availability: Wātea
+external-participants-help: He whakarite i te raarangi o nga kaiuru mo te huihuinga kaore i te hunga maramataka. Me rarangi nga kaiwhakamahi mo ia raina ka taea te whakauru i tetahi wahitau imeera. Mena kua tohua he wahitau imeera, ka ahei te kaiwhakamahi ki te tango panui me nga whakamaumahara.
+External Participants: Nga Kaiuru o waho
+repeat-type-help: Tohua kia hia nga wa ka takatu ano te kaupapa.
+Daily: Ia Ra
+Weekly: Wiki
+Monthly: Marama
+by day: i te awatea
+by date: mā te rā
+by position: ma te tuunga
+Monthly (by day): Marama (ia ra)
+Monthly (by date): Marama (i te raa)
+Monthly (by position): Marama (ma te tuunga)
+Yearly: Tau
+Manual: =
+Expert Mode: Aratau Tohunga
+repeat-end-date-help: Tauwhāiti ai i te rā me mahi ano te kaupapa kia tae ra ano ki.
+Ending: Whakamutu
+Forever: Ake Ake
+Use end date: Whakamahia te ra mutunga
+Number of times: Te maha o nga waa
+repeat-frequency-help: Ka whakarite i nga waa e tika ana kia tuaruatia te kaupapa.
+Frequency: Auautanga
+Weekdays Only: Ra Wiki Anake
+Week Start: Timata Wiki
+repeat-bydayextended-help: Whakaaetia ai te kowhiringa ra i runga i te ra o te wiki.
+ByDay: Paeatea
+repeat-month-help: Ka tauwhāiti ko ēhea nga marama me tuuru ano te kaupapa.
+ByMonth: NaMonama
+repeat-bysetpos-help: Whakaaetia ai te kowhiringa o te ra i runga i te waahanga mo te marama.
+BySetPos: NaTaePae
+repeat-bymonthdayextended-help: Whakaaetia ai te kowhiringa ra i runga i te ra.
+ByMonthDay: RaaWhirama
+repeat-byweekno-help: Ka āhei te kaiwhakamahi ki te whakarite rārangi o nga wiki ki te whakahou i te kaupapa (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: NaWeekNo
+repeat-byyearday-help: Whakaaetia te kaiwhakamahi ki te whakarite i te raarangi o nga ra mo te whakahou i te kaupapa (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: PaeHoro
+repeat-exceptions-help: Nga ra taapiri e kore ai e tupu tenei huihuinga.
+Exclusions: Whakakahoretanga
+Inclusions: Nga whakauru
+Add Exception: Taapirihia te Okotahi
+Add Inclusion: Taapiri Whakauru
+Delete Selected: Mukua te Mea i Tangi
+Send Reminder: Tukuna Whakamaumahara
+When: Ahea
+Use Date/Time: Whakamahia te Ra / Waa
+Use Offset: Whakamahia Wāhikē
+Before: I mua
+After: Whai muri
+Start: Timata
+End/Due: Mutu / Kua Tutuki
+Times: Nga Taima
+Every: Ia
+CAPTCHA Warning: Whakatūpato:  Kaore e taea te whakamahi i te CAPTCHA ki te kore te toronga GD o PHP!<br>
+Delete entry: Mukua te urunga
+You are not authorized to edit this entry.: Kaore koe i te mana ki te whakatika i tenei urunga.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: Kua whakatauhia e XXX he taima hou.
+XXX has updated an appointment.: Kua whakahoutia e XXX tetahi taima.
+Security violation!: Takahi Haumarutanga!
+You must enter the anti-spam text on the previous page.: Me matua whakauru e koe te panui anti-spam i te whaarangi o mua.
+The following conflicts with the suggested time: Ko enei e taupatupatu ana ki te waa kua whakaarohia
+User removed from participants list.: Kua tangohia te Kaiwhakamahi mai i te raarangi kaiuru.
+Please look on XXX to accept or reject this appointment.: Titiro koa ki a XXX ki te whakaae ki te paopao ranei i tenei whakaritenga.
+Please look on XXX to view this appointment.: Tena koa tirohia te XXX kia kite i tenei whakaritenga.
+Scheduling Conflict: Te Whakahonohono Taupatupatu
+Your suggested time of: Tuhinga o mua
+conflicts with the following existing calendar entries: he papā ki nga urunga maramataka e whai ake nei
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX kaore ano kia tautuhia ki te "config.php".
+word characters only: (ka taea noa iho nga kupu taatai; [a-zA-Z_0-9])
+Add User: Taapiri Kaiwhakamahi
+Edit User: Whakatika Kaiwhakamahi
+Calendar ID: ID Maramataka
+First Name: Ingoa Tuatahi
+Last Name: Ingoa Whakamutunga
+Is public calendar: He maramataka mo te iwi
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Hapa pātengi raraunga
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Taapirihia te Maramataka Mamao
+Edit Remote Calendar: Whakatika Maramataka Mamao
+Create Layer: Hangaia te Apa
+Reload: Uta ano
+Required to View Remote Calendar: E hiahiatia ana kia Tirohia te Maramataka Mamao
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Nga Hua Kawemai
+Events successfully imported: I kawemai te kawe mai i nga huihuinga
+Create a new layer to view this calendar.: Waihangahia he papa hou hei tiro i tenei maramataka.
+Errors: Hapa
+There was an error parsing the import file or no events were returned.: I puta he he i te whara i te konae kawemai kaore ano kia hoki mai etahi huihuinga.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Apopo
+Yesterday: Inanahi
+Day before yesterday: Nō mua inanahi
+Next week: Ā tērā wiki
+This week: I tenei wiki
+Last week: I tera wiki
+Week before last: Wiki i mua o muri
+Next week and week after: A tera wiki me tera wiki whai muri
+This week and next week: I tenei wiki me tera wiki
+Last week and this week: I tera wiki me tenei wiki
+Last two weeks: E rua wiki kua hipa
+Next month: A tērā marama
+This month: I tenei marama
+Last month: I tera marama
+Month before last: Marama i mua o muri
+Next year: Ā tērā tau
+This year: I tenei tau
+Last year: I tera tau
+Year before last: Tau i mua o muri
+Next 14 days: 14 rā ā muri
+Next 30 days: 30 ra e whai ake nei
+Next 60 days: 60 ra e whai ake nei
+Next 90 days: 90 nga ra e whai ake nei
+Next 180 days: 180 nga ra e whai ake nei
+Next 365 days: Whai muri i nga ra 365
+Invalid report id XXX.: ID ripoata muhu: "XXX".
+Unnamed Report: Ripoata Kore Ingoa
+Add Report: Taapirihia te Ripoata
+Edit Report: Whakatika Ripoata
+Report name: Ingoa Pūrongo
+User: Kaiwhakamahi
+Current User: Kaiwhakamahi o Naianei
+Include link in menu: Whakauruhia te hono ki te raarangi
+Include standard header/trailer: Whakauruhia he pane / tauaru paerewa
+Include previous/next links: Whakauruhia nga hononga o mua / o muri
+Include empty dates: Whakauruhia nga ra waatea
+Date range: Awhe rā
+Template variables: Taurangi Tauira
+Page template: Tauira Wharangi
+Day template: Tauira ra
+Event template: Tauira takahanga
+Are you sure you want to delete this report?: E tino hiahia ana koe ki te whakakore i tenei purongo?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Kaore he ripoata penei: "XXX".
+Variable XXX not found.: Kaore i kitea te XXX taurangi.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Whakatika Pane Ritenga
+Edit Custom Script/Stylesheet: Whakatika Huringa Hōtuhi / Kāhua Kāhua
+Edit Custom Trailer: Whakatika Katorika Ritenga
+
+########################################
+# Page: edit_user.php
+#
+Username: Ingoa Kaiwhakamahi
+E-mail address: Wāhitau ī-mēra
+Password: Kupuhipa
+again: ano
+Disabled for demo: Kua monokia mo te demo
+Are you sure you want to delete this user?: Me muku tonu tenei kaiwhakamahi?
+Change Password: Huri Kupuhipa
+New Password: Kupuhipa Hou
+Set Password: Whakatakotoria te Kupuhipa
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Ko te whakakore i nga kaiwhakamahi kaore i te tautokohia.
+The passwords were not identical.: Kare i rite nga kupuhipa.
+You have not entered a password.: Kaore ano koe kia whakauruhia he kupuhipa.
+Username cannot be blank.: Kaore e taea te korero ma te ingoa kaiwhakamahi.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Kaore i whakamanahia
+
+########################################
+# Page: export.php
+#
+Export: Kaweake
+Export format: Hōputu kaweake
+Include all layers: Whakauruhia nga paparanga katoa
+Include deleted entries: Whakauruhia nga urunga kua mukua
+Export all dates: Kaweake i nga ra katoa
+Start date: Ra timatanga
+End date: Ra mutunga
+Modified since: Whakakētia mai
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: te whakatakotoranga kaweake kaore i tautuhia kaore i te tika.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Kaore he kaiwhakamahi i tau.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Taapirihia he Roopu Hou
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Rōpū Ingoa Kore
+Add Group: Taapirihia te Roopu
+Edit Group: Whakatika Rōpū
+Group name: Ingoa roopu
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Me tohu e koe he ingoa roopu
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Whakahoutia-aunoa nga maramataka
+auto-refresh-help: Ka taea ana, ko te tirohanga o te ra, te tirohanga wiki, te tirohanga marama, me te raarangi o nga whaarangi kaore i whakaaetia ka whakahouhia i a raatau ano ia waa.
+Auto-refresh time: Te wa whakahou-aunoa
+auto-refresh-time-help: Mena kua whakahohea te Whakahoutanga-Aunoa, ka tohu tenei i te wa i waenga i ia whakahoutanga.
+Display days with events in bold in year view: Whakaatuhia nga ra me nga huihuinga ka kitea maia i te tirohanga o te tau
+Display weekends in week view: Whakaatuhia nga ra whakataa i te tirohanga wiki
+Time interval: Waatea wa
+time-interval-help: He whakarite kia pehea te roa o nga poraka waa i te tirohanga wiki me te tirohanga o te ra.
+Nonuser: Maramataka Nonuser
+user-customize-color: Ka whakarite mena ka ahei nga kaiwhakamahi ki te whakarereke i a raatau ake kaupapa tae.
+enable-gradient-help: Whakamahia nga karaehe ngawari mo nga papanga pūtau.
+Manually entering color values: Te whakauru a-ringa i nga uara tae
+colors-help: Ko nga tae katoa me tau ki te takotoranga hexadecimal "#RRGGBB" kei reira te "RR" te uara hex mo te whero, "GG" te uara hex mo te karaehe, ana ko "BB" te uara hex mo te kikorangi.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Pūrongo Pepeke
+Please include all the information below when reporting a bug.: Tena koa whakauruhia nga korero katoa i raro ake nei i te wa e ripoata ana i te hapa.
+Also, please use English rather than XXX.: Ano hoki, whakamahia koa te  Ingarihi  kaua ki te XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Tuhinga WebCalendar
+Currently in English only.: I tenei wa i te reo Ingarihi anake.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Te Taapiri / Te Whakatika I Nga Whakauru Maramataka
+Repeat Type: Whakahoki Momo
+For More Information...: Mo etahi atu korero ...
+Repeat End Date: Tukuruatia te Ra Whakamutunga
+Repeat Day: Ra Whakahoki
+repeat-day-help: Ka whakarite ko nga ra o te wiki ka mahi ano te kaupapa.
+
+########################################
+# Page: help_import.php
+#
+Import: Kawemai
+Palm Desktop: Papamahi Papamahi
+allow you to import entries from the Palm...: Ma tenei pepa ka ahei koe ki te kawemai i nga whakauru mai i te Papamahi Papamahi Papamuri. Me noho ki to raarangi nikau i roto i te pukamuka / pukamahi.dat i roto i te raarangiaronga kua tapaina e to ingoa kaiwhakamahi.
+The following entries will not be imported: Ko nga whakauru e whai ake nei kaore e kawemai:
+Entries older than the current date: Ko nga urunga he pakeke ake i te ra onaianei
+Entries created in the Palm Desktop...: Nga urunga i hangaia i te Papamahi nikau kaore ano kia HotSync'd
+Anything imported from Palm...: Ko nga mea katoa ka kawemai mai i te nikau ka tuhirua i te wa o te kawemai a muri ake nei (mena ka pahemo te ra kaupapa). No reira, me whakahou nga korero ki te Papamahi Papamahi.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Ka kawemai tenei puka i nga kaupapa vCalendar (.vcs) 1.0.
+The following formats have been tested: Ko nga whakatakotoranga e whai ake nei kua whakamatautauria:
+This form will import iCalendar (.ics) events.: Ka kawemai tenei puka iCalendar (.ics) kaupapa.
+Enabling: Whakahohe ana
+Overwrite Prior Import: Tuhihia te Kawemai o mua
+will cause events imported previously...: ka meinga nga huihuinga i kawemai i mua, i whakamahia te UID ano hei huihuinga mai i te konae kawemai hou, me te tohu kua mukua. Ma tenei ka ahei te kawemai i tetahi konae iCalendar me te kore e hanga taarua.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Tohu Awhina
+About WebCalendar: Mo te PaetukutukuTukutuku
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: He pai nga paparanga hei whakaatu i nga huihuinga a etahi atu ki taau ake maramataka. Ka taea e koe te whakarite i te kaiwhakamahi me te tae e whakaatuhia ai nga huihuinga.
+Add/Edit/Delete: Taapirihia / Whakatika / Muku
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Ko te paatene i te hononga Whakatika I nga Apa ki te waahanga kaiwhakahaere kei raro o te whaarangi ka ahei koe ki te taapiri / whakatika / whakakore i nga papa.
+The text color of the new layer that will be displayed in your calendar.: Ko te tae tuhinga o te papa hou ka whakaatuhia i to maramataka.
+Disabling: Whakakorea
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Patohia te hono Whakakorea nga Apa ki te waahanga kaiwhakahaere kei raro o te whaarangi ki te whakaweto i nga papa.
+Duplicates: Ruarua
+If checked, events that are duplicates of your events will be shown.: Mena kua tirohia, ka whakaatuhia nga huihuinga taarua o o kaupapa.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Patohia te hono Whakahohea nga Apa ki te waahanga kaiwhakahaere i te raro o te whaarangi ki te huri i nga papa.
+Source: Puna
+Specifies the user that you would like to see displayed in your calendar.: He whakarite i te kaiwhakamahi e hiahia ana koe ki te whakaatu i to maramataka.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Kāwai Taunoa
+default-category-help: Ka tauwhāiti i te kāwai hei takahanga mo tetahi huihuinga hou.
+When I am the boss: A, no te rangatira ahau
+Email me event notification: Imeahia ki ahau he panui kaupapa
+email-boss-notifications-help: Ka whakarite mena ka whiwhi imeahia nga rangatira hei panui mo nga huihuinga.
+I want to approve events: Kei te hiahia ahau ki te whakaae ki nga huihuinga
+boss-approve-event-help: Ka whakarite mena ka hiahiatia e te rangatira te whakaae ki nga kaupapa kua taapirihia e nga kaiawhina.
+Subscribe/Publish: Ohauru / Panui
+Allow remote publishing: Whakaaetia te whakaputa mamao
+allow-remote-publishing-help: Ka whakarite mena ka taea e te kaitono iCal mamao te whakaputa i nga kaupapa ki te PaetukutukuTukutuku
+remote-publishing-url-help: Whakaatuhia ai te URL hei whakamahi i te tono a te kaitono iCal mo te ohauru me te whakaputa hoki ki te PaetukutukuWhakaaturanga.
+allow-remote-subscriptions-help: Ka whakaputahia mena ka ahei nga kaiwhakamahi mamao ki te ohauru ki to maramataka, kia kite i o huihuinga i roto i te tono iCal-whakahohea (penei i te Apple iCal, te Maramataka Mozilla ranei).
+remote-subscriptions-url-help: Whakaatuhia ai te URL me whakamahi e nga kaiwhakamahi mamao ki te ohauru ki to maramataka.
+Enable FreeBusy publishing: Whakahohea te whakaputa FreeBusy
+freebusy-enabled-help: Ka whakatauhia mena ka waatea te wa o te kaiwhakamahi ma te whakamahi i te paerewa iCal FreeBusy.
+freebusy-url-help: Ko te URL hei whakauru ki te raarangi FreeBusy a te kaiwhakamahi
+rss-feed-url-help: Ko te URL ki te whakauru ki te RSS whangai
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Ka taea te whakahaere pai i te urunga me nga whakaaetanga a te kaiwhakamahi. Ka taea hoki e nga kaiwhakamahi te tuku taunoa me te whakaaetanga takitahi ki te whakamanahia e te kaiwhakahaere.
+If disabled, this user cannot send you emails.: Mena kua monokia, kaore e taea e tenei kaiwhakamahi te tuku imeera ki a koe.
+If disabled, this user cannot see you in the participants list.: Mena kua monokia, kaore e kitea e tenei kaiwhakamahi koe i te raarangi o nga kaiuru.
+If enabled, this user cannot view the details of any of your entries.: Mena kua whakahohea, kaore e taea e tenei kaiwhakamahi te tiro i nga korero mo o tuhinga katoa.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Whakakorea te Whakaputa (Kaiwhakahaere)
+Publishing Disabled (User): Whakakorea te Whakaputa (Kaiwhakamahi)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Patohia ki te Tohua
+Current Icons on Server: Nga Ata Onaianei i runga i te Tūmau
+
+########################################
+# Page: import.php
+#
+import from file: kawemai i te konae
+Disabled: Kua Monokia
+Import format: Hōputu Kawemai
+Exclude private records: Waiho nga rekoata takitahi
+Repeated items are imported separately. Prior imports are not overwritten.: Ko nga taonga taapiri e kawemai wehe ana. Ko nga kawemai o mua kaore i te tuhirua.
+
+########################################
+# Page: import_handler.php
+#
+No file: Kaore he konae
+Error deleting palm events from webcalendar.: I hapa te whakakore i nga huihuinga nikau mai i te tari tari tukutuku.
+Events from prior import marked as deleted: Ko nga huihuinga mai i te kawemai o mua i tohua kua mukua
+Conflicting events: Nga taupatupatu
+The import file contained no data.: Kare he raraunga o te konae kawemai.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: E tino hiahia ana koe ki te whakakore i tenei paparanga?
+Delete layer: Mukua te paparanga
+Edit layer: Whakatika apa
+Enable layers: Whakahohea nga papa
+Layer: Paparanga
+Layers are currently disabled.: Kua monokia nga paparanga i tenei wa.
+Layers are currently enabled.: Kei te whakahohea nga papa.
+Click to modify layers settings for XXX: Patohia a konei ki te whakarereke i nga waahanga papa mo te maramataka XXX.
+Disable Layers: Monokia nga Apa
+Add layer: Taapirihia te paparanga
+Add Layer: Taapirihia te Apa
+Edit Layer: Whakatika Apa
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Kaore e taea te whakahou i te manakohanga
+Invalid entry id.: Id urunga muhu.
+You cannot create a layer for yourself.: Kaore e taea e koe te hanga papanga maau.
+You can only create one layer for each user.: Kotahi noa te papanga e taea ana e koe ki ia kaiwhakamahi.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Whakaae / Whakaaetia
+Approve Selected: Whakaaetia Whiringa
+Check All: Tirohia Katoa
+Emails Will Not Be Sent: Kaore e tukuna nga imeera
+Reject Selected: Whakakahoretia Whiringa
+Reject: Whakakahore
+Uncheck All: Tangohia te Katoa
+View this entry: Tirohia tenei urunga
+No unapproved entries for XXX.: Kaore he urunga kaore i whakaaetia mo: "XXX".
+Unapproved Entries: Nga Whakaurunga Kaore i Whakaaetia
+Approve this entry?: Whakaaetia tenei urunga?
+Reject this entry?: Ka paopao ki tenei urunga?
+Approve Selected entries?: Whakaaetia nga urunga kua tohua?
+Reject Selected entries?: Ka paopao i nga urunga kua tohua?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Me whakauru e koe he takiuru me te kupuhipa.
+Save login via cookies so I dont have to login next time.: Tiakina te takiuru ma te pihikete na kaua au e takiuru a muri ake nei
+Login: Takiuru
+public: tūmatanui
+Access XXX calendar: Whakauru ki te maramataka XXX
+cookies-note: Panui: Ko tenei tono me whakahohe i nga pihikete.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Pūāhua kore ture i te takiuru XXX.
+Invalid login: Takiuru muhu
+Activity login failure: Ingoa Kaiwhakamahi: "XXX", IP: "YYY".
+Error XXX: Hapa: "XXX".
+You have been logged out.: Kua oti te waehere atu.
+Access public calendar: Whakauru ki te maramataka a te iwi
+Not yet registered? Register here!: Kaore ano kia rehitatia? Rēhita konei!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Kaore he maramataka kore penei: "XXX".
+This Calendar is not Public.: Ehara tenei Maramataka i te Katoa.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Taapirihia te Maramataka NonUser Hou
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Me whakaatu mai he takiuru.
+No such nonuser calendar: Kaore he maramataka kore pera
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Kaupapa muhu
+Save Preferences: Tiaki Manakohanga
+Public Access calendar: Maramataka Whakauru Katoa
+Modify Non User Calendar Preferences: Whakakēhia Manakohanga Maramataka Kaiwhakamahi
+Return to My Preferences: Hoki ki Aku Manakohanga
+Custom Scripts: Hōtuhi Ritenga
+Timezone Selection: Selection Rohe Rohe
+Multiview: Tirohanga Maha:
+entry-interval-help: Ka tautuhia te waahanga meneti ka whakatika ana i nga waa whakauru
+Entry interval: Wā urunga
+hour: haora
+minute: meneti
+theme-reload-help: Na te CSS CSS, ka hiahiatia he utaina whaarangi
+Page may need to be reloaded for new Theme to take effect: Akene me utaina ano he whaarangi kia whai mana te Kaupapa Hou
+display_byproxy-help: Whakaatuhia te kaihanga tuuturu ki te whaarangi view_entry
+Display if created by Assistant: Whakaatu mena na te Kaiawhina i hanga
+allow-view-subscriptions-help: Ka āhei ki te aukati i te urunga mamao ki nga urunga Motuhake, muna ranei
+Allow remote viewing of: Tuhinga o mua
+entries: ngā urunga
+
+########################################
+# Page: purge.php
+#
+Purging events for: Purging kaupapa mo
+Finished: Kua Oti
+Back: Hoki
+Check box to delete ALL events for a user: Pouaka taki hei muku i nga huihuinga  KATOA  ma te kaiwhakamahi
+Delete all events before: Mukua nga huihuinga katoa i mua
+Purge deleted only: Mukua noa te muku
+Preview delete: Arokite muku
+Are you sure you want to delete events for: Me muku tonu nga kaupapa
+Records deleted from XXX: I mukua nga rekoata mai i te "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Kaore e taea te noho waatea te imeera imeera.
+Username already exists.: Kua puta kē te ingoa kaiwhakamahi.
+Email address already exists.: Kei te noho ke te wahitau imeera.
+New user via self-registration.: Kaiwhakamahi hou ma te rehitatanga-a-ake.
+A new WebCalendar account has been set up for you.: Kua whakaritea he pūkete WebCalendar hou maau.
+Your username is XXX.: Ko to ingoa kaiwhakamahi: "XXX".
+Your password is XXX.: Ko to kupuhipa ko: "XXX".
+Please visit XXX to log in and start using your account!: Tirohia koa a "XXX" ki te whakauru me te tiimata ki te whakamahi i to kaute!
+You may change your password after logging in the first time.: Ka taea e koe te whakarereke i to kupu huna i muri i te whakauru i te wa tuatahi.
+If you received this email in error: Mena kua he taau i whiwhi ai i tenei imeera me te kore i haina mo te kaute Paetukutuku, ka kore koe e aro ki tenei panui, me whakautu ranei me tetahi tuhinga poto
+Administrator: Kaiwhakahaere
+Welcome: Nau mai haere mai
+New user via email.: Kaiwhakamahi hou ma te imeera.
+Registration: Rehitatanga
+Welcome to WebCalendar: Nau mai ki WebCalendar
+Your email should arrive shortly.: Kia tae taera mai to imeera.
+Return to Login screen: Hoki ki te mata Whakauru
+Password (again): Kupuhipa (ano):
+Your account information will be emailed to you.: Ka imeeraahia to korero korero kaute ki a koe.
+Submit: Tukuna
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Haere tonu
+(Your comments will be emailed to the other participants.): (Ka imeahia o korero ki etahi atu o nga kaiuru.)
+XXX has rejected an appointment.: Kua paopao a XXX ki tetahi waa whakarite.
+Rejected by XXX.: Kua paopao e XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Taapirihia te Maramataka Mamao Hou
+
+########################################
+# Page: report.php
+#
+This event is confidential.: He muna tenei kaupapa.
+(Private): (Tūmataiti)
+(cont.): =
+Approved: Whakaaetia
+Deleted: Kua Mukua
+Rejected: Whakakahoretia
+Waiting for approval: Kei te tatari kia whakaaetia
+Unknown: Kaore e mohiotia
+Invalid report id.: Id ripoata muhu.
+Click here to manage reports for the Public Access calendar.: Patohia a konei ki te whakahaere ripoata mo te maramataka Uru a te Katoa.
+Add new report: Taapirihia he purongo hou
+Manage Reports: Whakahaerehia nga Ripoata
+
+########################################
+# Page: search.php
+#
+Advanced Search: Rapu Arā Atu Anō
+Search: Rapu
+Keywords: Kupu matua
+Enter % for all entries: Whakauruhia% mo nga whakauru katoa
+Include: Whakauruhia
+Filter by Date: Taria ma te Ra
+All Dates: Nga Ra Katoa
+Past: Tuhinga o mua
+Upcoming: Ka Haere Mai
+Range: Awhe
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Me whakauru e koe tetahi atu ranei kupu rapu.
+Search Results: Nga Hua Rapu
+match found: kēmu i kitea
+matches found: kēmu i kitea
+No matches found: Kaore i kitea
+New Search: Rapunga Hou
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Ko nga korero i raro ake nei kei te whakariterite i nga raru ka pa mai ki to whakaurungaTohuTukutuku ka taea te whakarereke kia pai ai to whakaurunga.
+For questions about WebCalendar security see the forums: Mo nga paatai ​​mo tetahi take haumarutanga Paetukutuku, whakamahia koa nga wananga Paetukutuku i runga i GitHub.com;<br>XXX
+View your current PHP settings: Tirohia o tautuhinga PHP o naianei
+Security Issue: Putanga Haumaru
+Status: Tūnga
+Default admin user password: Kupuhipa kaiwhakamahi taunoa
+You should change the password of the default admin user.: Me huri e koe te kupuhipa a te kaiwhakamahi kaiwhakahaere taunoa.
+File permissions XXX: Whakaaetanga konae: XXX
+item XXX should not be writable: Ko nga mea e whai ake nei kaua e taea te tuhi:<br><tt> XXX</tt>
+File exists XXX: Kei kona tetahi konae: "XXX"
+Because you have email disabled, you should remove this file.: Na te mea kua hau to imeera, me tango e koe tenei konae.
+File location XXX: Tauwāhi o te konae: "XXX"
+remove XXX if not using: Mena kaore koe i te whakamahi i te konae "XXX", me whakakore e koe. Ko te mea iti ranei, neke ki tetahi raarangi hou.
+System Settings XXX: Tautuhinga Pūnaha: "XXX"
+consider enabling UAC: Ka hiahia pea koe ki te whakaaro kia taea ai e te Mana Whakauru Kaiwhakamahi te whakarite i nga painga o nga kaiwhakamahi.
+recommend approving new public events: Ka tūtohu mātou kia whakaaetia nga tono katoa i nga huihuinga a te iwi.
+recommend using CAPTCHA: E taunakitia ana te CAPTCHA ki te tiaki ano i nga tukunga kaupapa aunoatanga.
+Database cache directory location: Tauwāhi kopae pātengi raraunga
+db cache should be inaccessable: Me waiho te keteroki putunga korero ki te raarangi whaiaronga kaore e taea te uru atu me tetahi URL.
+PHP Settings XXX: Tautuhinga PHP: "XXX"
+recommend setting XXX Off: Ko te waahi e manakohia ana mo "XXX" kua Weto.
+recommend setting allow_url_fopen Off: Ko te waahi e manakohia ana mo "allow_url_fopen" Ka Weto ka kore e taea nga maramataka mamao.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Tirohia te Maramataka a Tetahi Kaiwhakamahi
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Kaore ano kia taapirihia e koe tetahi waahanga.
+Set Category: Whakatakotoria te Kāwai
+Global Categories cannot be changed.: Kaore e taea te whakarereke nga waahanga o te ao.
+
+########################################
+# Page: upcoming.php
+#
+more: atu
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Maramataka Mamao
+denotes administrative user: he tohu ki te kaiwhakamahi whakahaere
+Add New User: Taapirihia Kaiwhakamahi Hou
+
+########################################
+# Page: usersel.php
+#
+form: puka
+Reset: Tautuhi Anō
+
+########################################
+# Page: views.php
+#
+Add New View: Taapirihia he Tiro Hou
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Tiro Kore Ingoa
+Add View: Taapirihia Tiro
+Edit View: Whakatika Tiro
+View Name: Tirohia te Ingoa
+View Type: Momo Tirohanga
+Day by Time: Ra ia Wahanga
+Week (Users horizontal): Wiki (Kaiwhakamahi whakapae)
+Week by Time: Wiki i te Taima
+Week (Users vertical): Wiki (Kaiwhakamahi poutū)
+Week (Timebar): Wiki (Paetawā)
+Month (Timebar): Marama (Paetewā)
+Month (side by side): Marama (i te taha o te taha)
+Month (on same calendar): Marama (i runga i te maramataka kotahi)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Me tohu e koe he ingoa tiro
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Kaore he kaiwhakamahi mo tenei tirohanga.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Whakahou i te Taskrau Mahi
+Completed: Kua Oti
+Assistant mode: Aratau Kaiāwhina
+Declined: Kua Whakakahoretia
+Needs-Action: Hiahia-Mahi
+by: e
+Percentage Complete: Kua oti te entrau
+External User: Kaiwhakamahi o Waho
+Update: Whakahou
+at: i
+comments: korero
+Show: Whakaatu
+Hide: Huna
+Approve/Confirm entry: Whakaaetia / Whakaaetia te urunga
+Reject entry: Whakakahoretia te urunga
+Set category: Whakatakotoria te waahanga
+Add to My Calendar: Taapirihia ki taku Maramataka
+Copy entry: Tārua tāurunga
+This will delete this entry for all users.: Ma tenei ka whakakore i tenei urunga ma nga kaiwhakamahi katoa.
+Edit entry: Whakatika urunga
+Edit repeating entry for all dates: Whakatika tukurua tukurua mo nga ra katoa
+Delete repeating event for all dates: Mukua te mahi tukurua mo nga ra katoa
+Edit entry for this date: Whakatika urunga mo tenei ra
+Delete entry only for this date: Mukua te urunga anake mo tenei ra
+Delete entry from calendar of XXX: Mukua te urunga mai i te maramataka o XXX
+This will delete the entry from your XXX calendar.: Ma tenei ka muku te urunga mai i to maramataka XXX.
+boss: rangatira '
+This will delete the entry from your boss calendar.: Ma tenei ka muku te urunga mai i te maramataka a to rangatira.
+This will delete the entry from your calendar.: Ma tenei ka muku te urunga mai i to maramataka.
+from your boss calendar: mai i te maramataka a to rangatira
+Do you want to add this entry to your calendar?: Kei te hiahia koe ki te taapiri i tenei urunga ki to maramataka?
+This will add the entry to your calendar.: Ma tenei ka taapiri te urunga ki to maramataka.
+Email all participants: Imeera i nga kaiuru katoa
+Hide activity log: Hunaia te raina ngohe
+Show activity log: Whakaatuhia te roko ngohe
+Export this entry to: Kaweake i tenei urunga ki
+Palm Pilot: Paerata Paerata
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Paatohia-taarua i runga i te pūtau kau hei whakauru i te urunga hou.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Whakauru Hou
+cont.: cont
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Maramataka a tetahi Kaiwhakamahi
+Category Management: Whakahaerenga Kaupapa
+Day View: Tirohanga o te Ra
+Edit Event: Whakatika Takahanga
+Month View: Tirohanga Marama
+Common Trailer: Tauaru Tauira noa
+User Management: Whakahaeretanga Kaiwhakamahi
+Manage Views: Whakahaerehia nga Tirohanga
+Week View: Tirohanga Wiki
+Year View: Tirohanga Tau
+Invalid function id: Id mahi muhu
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Kaore i kitea te konae "setting.php".<br>Tena koa kape "setting.php.orig" ki te "setting.php" ka whakatika mo to papanga.
+Incomplete settings.php file...: Whakaoti i te konae "setting.php" ...
+Could not find XXX defined in...: Kaore i kitea te "XXX" kua tautuhia ki to konae "setting.php".
+You must define XXX in: Me tautuhi e koe te "XXX" ki te konae "setting.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Tihema
+Dec: Tihema
+LANGUAGE DEFINED: WHAKATAKI I TE REO
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Hapa i honoa ki te paatai: "XXX".
+db_type not defined.: db_momo kaore i tautuhia.
+invalid db_type XXX: db_type koretake "" XXX ".
+Cache cleared from previous SQL!: Kua tangohia te Keteroki mai i te SQL o mua!
+Error executing query.: I hapa te kawe i te patai.
+Unfortunately, XXX is not implemented for YYY: Heoi, kaore i te whakamahia te "XXX" mo (YYY).
+Unknown ODBC error.: Hapa ODBC e kore e mohiotia.
+Error opening cache dir XXX.: I hapa te whakatuwhera keteroki dir "XXX".
+delete: muku
+Cache error Could not XXX file YYY.: Hapa Keteroki: Kaore i taea e XXX te konae "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Hapa Mate
+Invalid data format for: Hōpututanga raraunga muhu mō
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Hapa: Kaore i te tautuhia te momo mo te rangitaki ngohe!
+This event is XXX.: Ko tenei huihuinga ko XXX.
+Conf.: =
+exceeds limit of XXX events per day: neke atu i te rohe o XXX kaupapa i ia ra
+on: i runga i
+All Attendees: Katoa nga Kaitono
+Busy: Riu
+Tentative: =
+Schedule an appointment for XXX.: Whakaritehia he wa whakarite mo XXX: YYY.
+date_select: =
+Event approved: Kua whakaaetia te takahanga
+Journal approved: Whakaaetia te Tuhipoka
+Task approved: Kua whakaaetia te mahi
+Attachment: Āpitihanga
+Event created: I hangaia te Takahanga
+Journal created: Pukapuka i hangaia
+Task created: Kua hangaia te mahi
+Event deleted: Kua mukua te takahanga
+Journal deleted: Kua mukua te pukaiti
+Task deleted: Kua mukua te mahi
+New user via email (self registration): Kaiwhakamahi hou ma te imeera (rēhita whaiaro)
+New user (self registration): Kaiwhakamahi hou (rēhita whaiaro)
+Notification sent: Kua tukuna te panui
+Event rejected: I whakakahoretia te kaupapa
+Journal rejected: Kua whakakahoretia te pukapuka aipo
+Task rejected: Kua whakakorehia te mahi
+Reminder sent: Kua tukuna te whakamaumahara
+Event updated: Takahanga whakahoutia
+Journal updated: Pukapuka kua whakahoutia
+Task updated: Kua whakahoutia te mahi
+Delete User: Mukua te Kaiwhakamahi
+WK: =
+TASKS: NGA MAHI
+Task_Title: Taitara
+Due: Nā te mea tika
+Task Name: Ingoa Tūmahi
+Task Due Date: Te Ra Mahi Kua Tutuki
+You have XXX unapproved entries: He XXX nga urunga kaore i whakaaetia 
+Changes successfully saved: I angitu te whakaora
+Event: Takahanga
+Action: Mahi
+Printer Friendly: Kaituhi Hoa
+Generate printer-friendly version: Hangaia he putanga ratarata-taarua
+after: i muri
+before: Tuhinga o mua
+end: mutunga
+start: timatanga
+View this event: Tirohia tenei kaupapa
+View this task: Tirohia tenei mahi
+January: Hanuere
+February: Pepuere
+March: Poutu-te-rangi
+April: Paenga-whāwhā
+May_: Mei
+June: Hune
+July: Hurae
+August: Akuhata
+September: Hepetema
+October: Oketopa
+November: Noema
+Jan: Hanuere
+Feb: Pepuere
+Mar: Maehe
+Apr: Paenga-whāwhā
+May: Mei
+Jun: Hune
+Jul: Hurae
+Aug: Akuhata
+Sep: Hepetema
+Oct: Atopa
+Nov: Nowema
+SU: =
+MO: =
+TU: =
+WE: =
+TH: =
+FR: =
+SA: =
+unknown-month: marama-marama
+First Quarter Moon: Marama Tuatahi Tuatahi
+Full Moon: Marama Katoa
+Last Quarter Moon: Marama Katata o Mutunga
+New Moon: Marama Hou
+Error TIME_SLOTS undefined!: Hapa: TIME_SLOTS kaore i tautuhia!
+The following error occurred: I puta tenei he
+You are not authorized.: Kaore koe i te mana.
+Add N hours to: Taapirihia he N haora ki
+Subtract N hours from: Tango N haora mai i
+same as: rite ki
+server time: wā tūmau
+Cannot read timezone file XXX.: Kaore e taea te panui i te konae rohe: XXX.
+Your current GMT offset is XXX hours.: Ko to urunga GMT o tenei wa ko XXX haora.
+Unauthorized: Kaore he mana
+Error approving event XXX.: Hapa i te whakaaetanga takahanga: XXX.
+Error deleting event XXX.: Hapa muku huihuinga: XXX.
+Error rejecting event XXX.: Hapa ki te whakakore i te kaupapa: XXX.
+Sunday: Ratapu
+Monday: Mane
+Tuesday: Turei
+Wednesday: Wenerei
+Thursday: Taite
+Friday: Paraire
+Saturday: Rahoroi
+Sun: Ra
+Mon: =
+Tue: Turei
+Wed: =
+Thu: =
+Fri: Paraire
+Sat: =
+unknown-weekday: kore-mohiotia
+Invalid referring URL: He muhu te korero URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Tauputanga
+Documentation: Tuhinga
+Page: Wharangi
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Taku Maramataka
+Add New Entry: Taapirihia te Whakauru Hou
+Add New Task: Taapirihia he Mahi Hou
+Logout: Putaara
+Home: Kaainga
+Back to My Calendar: Hoki ki taku Maramataka
+Go to: Haere ki
+Manage calendar of: Whakahaerehia te maramataka o
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Kaore i Kitea te Reo Tirotiro
+(not supported): (kaore i te tautokohia)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Tawhiti
+Afrihili: =
+Afrikaans: Awherika
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: =
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Tonga)
+Amharic: =
+Angika: =
+Apache: =
+Arabic (Algeria): Arāpi (Algeria)
+Arabic (Bahrain): Arāpi (Bahrain)
+Arabic (Egypt): Arāpi (Ihipa)
+Arabic (Iraq): Arāpi (Iraq)
+Arabic (Jordan): Arāpi (Horano)
+Arabic (Kuwait): Arāpi (Kuwait)
+Arabic (Lebanon): Arāpi (Repanona)
+Arabic (Libya): Arāpi (Libya)
+Arabic (Morocco): Arāpi (Moroko)
+Arabic (Oman): Arāpi (Omana)
+Arabic (Qatar): Arāpi (Qatar)
+Arabic (Saudi Arabia): Arāpi (Saudi Arapia)
+Arabic (Syria): Arāpi (Hiria)
+Arabic (Tunisia): Arāpi (Tunisia)
+Arabic (U.A.E.): Arāpi (U.A.E.)
+Arabic (Yemen): Arāpi (Yemen)
+Arabic: Arapi
+Aragonese: =
+Aramaic: Arame
+Arapaho: =
+Arawak: =
+Armenian: Armenia
+Assamese: =
+Asturian: =
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: =
+Balinese: Hainamana
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: =
+Beja: =
+Belarusian: =
+Bemba: =
+Bengali: =
+Bhojpuri: Behia
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Takirua
+Blin: =
+Bliss: Manaakitanga
+Bosnian: Bosnia
+Braj: =
+Breton: Peretana
+Buginese: Bugina
+Bulgarian: =
+Buriat: =
+Burmese: =
+Caddo: =
+Catalan: =
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Hainamana (Hong Kong)
+Chinese (PRC): Hainamana (PRC)
+Chinese (Simplified/GB2312): Hainamana (Maama / GB2312) 
+Chinese (Singapore): Hainamana (Singapore)
+Chinese (Taiwan): Hainamana (Taiwan)
+Chinese (Traditional/Big5): Hainamana (Taketake / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: Kopata
+Chuukese: =
+Chuvash: =
+Coptic: Kopiti
+Cornish: Kornihi
+Corsican: Korsikana
+Cree: =
+Creek: =
+Croatian: Kroatii
+Czech: =
+Dakota: =
+Danish: Tenimana
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Tatimana (Belgium)
+Dutch: Tatimana
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Ingarihi (Ahitereiria)
+English (Belize): Ingarihi (Belize)
+English (Canada): Ingarihi (Kanata)
+English (Ireland): Ingarihi (Ireland)
+English (Jamaica): Ingarihi (Jamaica)
+English (New Zealand): Ingarihi (Aotearoa)
+English (Philippines): Ingarihi (Philippines)
+English (South Africa): Ingarihi (Awherika ki te Tonga)
+English (Trinidad & Tobago): Ingarihi (Trinidad & Tobago)
+English (United Kingdom): Ingarihi (United Kingdom)
+English (United States): Ingarihi (United States)
+English (Zimbabwe): Ingarihi (Zimbabwe)
+English: Ingarihi-US
+Erzya: =
+Esperanto: =
+Estonian: =
+Ewe: =
+Ewondo: =
+Fang: Koretake
+Fanti: =
+Faroese: =
+Fijian: Whitiana
+Filipino: =
+Finnish: =
+Fon: =
+French (Belgium): Parani (Belgium)
+French (Canada): Wīwī (Canada)
+French (France): Wīwī (Parani)
+French (Luxembourg): Wīwī (Luxembourg)
+French (Monaco): Wīwī (Monako)
+French (Switzerland): Wīwī (Switzerland)
+French: Wiwi
+Frisian (Eastern): Frisian (Tawhiti)
+Frisian (Northern): Frisian (Raki)
+Frisian (Western): Frisian (Hauauru)
+Frisian: =
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Karikiana
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: Aue
+Georgian: =
+German (Austria): Tiamana (Ateria)
+German (Germany): Tiamana (Tiamana)
+German (Liechtenstein): Tiamana (Liechtenstein)
+German (Luxembourg): Tiamana (Luxembourg)
+German (Standard): Tiamana (Paerewa)
+German (Switzerland): Tiamana (Switzerland)
+German: Tiamana
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: =
+Grebo: =
+Greek: Kiriki
+Greenlandic: =
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): =
+Haitian: =
+Hausa: =
+Hawaiian: =
+Hebrew: Hiperu
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Hiti
+Hmong: =
+Holo (Taiwanese): =
+Hungarian: Hanekaria
+Hupa: =
+Iban: =
+Icelandic: Tiorangi
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: =
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: =
+Irish (Gaelic): =
+Irish: =
+Iroquoian: =
+Italian (Switzerland): Itari (Switzerland)
+Italian: Itari
+Japanese: Hapanihi
+Javanese: Java
+Judeo-Arabic: Hura-Arapi
+Judeo-Persian: Hura-Pahia
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): Khmer (Waenganui)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: Ko Kemehuru
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Koreana (Iarapa)
+Korean (North): Koreana (Raki)
+Korean (South): Koreana (Tonga)
+Korean: Koreana
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kurihi
+Kutenai: =
+Kyrgyz: =
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Rao
+Latin: Latina
+Latvian: =
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Riwaiana
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: =
+Macedonian: Maketonia
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Maori
+Malay: =
+Malayalam: =
+Maldivian: =
+Maltese: =
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: Maya
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Mooritana
+Mongo: =
+Mongolian: =
+Montenegrin: =
+Moroccan: =
+Mossi: =
+Myanmar: =
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Raki)
+Ndebele (South): Ndebele (Tonga)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Nōwei (Bokmål)
+Norwegian (Nynorsk): Nōwei (Nynorsk)
+Norwegian: Nōwei
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Hinituana
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: =
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: =
+Pedi: =
+Persian (Farsi): Pahia (Farsi)
+Persian (Iran): Pahia (Iran)
+Persian: Pahia
+Phoenician: Poikene
+Pohnpeian: =
+Polish: Pōrana
+Portuguese: Potukara
+Portuguese/Brazil: Potukara / Brazil 
+Punjabi (India): =
+Punjabi (Pakistan): =
+Punjabi: Pāniora
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Rhaeto-Romana
+Romanian: =
+Romansh: Romana
+Romany: =
+Rundi: =
+Russian (Moldavia: Ruhia (Moldavia
+Russian (Republic of Moldova): Ruhia (Republic of Moldova)
+Russian: Ruhia
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Raki)
+Sami (Skolt): =
+Sami (Southern): Sami (Tonga)
+Sami: =
+Samoan: Hāmoa
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Hainamana
+Santali: =
+Sardinian: Harariniana
+Sasak: =
+Scots (Gaelic): =
+Selkup: =
+Serbian (Upper): Serbian (Runga)
+Serbian: =
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: =
+Sindhi: =
+Sinhala: =
+Slavic: =
+Slovak: Korowhai
+Slovenian: =
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbian (Raro)
+Sorbian (Upper): Sorbian (Runga)
+Sorbian: Torimana
+Sotho: =
+Spanish (Argentina): Paniora (Argentina)
+Spanish (Bolivia): Paniora (Bolivia)
+Spanish (Chile): Paniora (Chile)
+Spanish (Colombia): Paniora (Colombia)
+Spanish (Costa Rica): Paniora (Costa Rica)
+Spanish (Dominican Republic): Paniora (Dominican Republic)
+Spanish (Ecuador): Paniora (Ecuador)
+Spanish (El Salvador): Paniora (El Salvador)
+Spanish (Guatemala): Paniora (Guatemala)
+Spanish (Honduras): Paniora (Honduras)
+Spanish (Mexico): Paniora (Mexico)
+Spanish (Nicaragua): Paniora (Nicaragua)
+Spanish (Panama): Paniora (Panamana)
+Spanish (Paraguay): Paniora (Paraguay)
+Spanish (Peru): Paniora (Peru)
+Spanish (Puerto Rico): Paniora (Puerto Rico)
+Spanish (Spain): Paniora (Spain)
+Spanish (Uruguay): Paniora (Uruguay)
+Spanish (Venezuela): Paniora (Venezuela)
+Spanish: Paniora
+Sranan Tongo: =
+Sukuma: =
+Sumerian: =
+Sundanese: Sundana
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Huitene (Pinetana)
+Swedish (Sweden): Huitene (Sweden)
+Swedish: Huitene
+Syriac: Hiriani
+Tagalog: =
+Tahitian: Tahiti
+Tai: =
+Taiwan: =
+Tajik: =
+Tamashek: =
+Tamil: =
+Tatar: =
+Telugu: Hinuka
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: Tibetana
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Nga Moutere o Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Korukure
+Turkmen: =
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: =
+Ukrainian: Iukereiniana
+Umbundu: =
+Urdu: =
+Uyghur: =
+Uzbek: =
+Vai: =
+Venda: =
+Vietnamese: =
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: Wales
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: Hapanihi
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Kua tautuhia e te Kaitirotiro
+event: kaupapa
+journal: hautaka
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Takiuru kaiwhakamahi muhu
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: kupuhipa hē
+no such user: kaore he kaiwhakamahi penei
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Kua monokia te kaute
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Waatea
+Months: Marama
+Month Days: Ra Ra
+Days: Ra
+Weeks: Wiki
+Position: Tuunga
+Until: Kia tae ra ano
+Count: Kaute
+Inclusion Dates: Rā Whakauru
+Exclusion Dates: Rā Whakakore
+Event Imported: Takahanga Kawemai
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: paita
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Whakakitenga
+authenticate: Hapa SMTP: Kaore i taea te whakamana
+connect_host: Hapa SMTP: Kaore i taea te hono atu ki te kaihautu SMTP:
+data_not_accepted: Hapa SMTP: Kaore i whakaaehia nga raraunga
+encoding: Whakawaeherehia e kore e mohiotia:
+execute: Kaore i taea te whakahaere:
+file_access: Kaore i taea te whakauru ki te konae:
+file_open: Hapa Kōnae Kaore i taea te whakatuwhera i te konae:
+from_failed: I rahua te whai ake Mai i te wahitau:
+instantiate: Kaore i taea te whakaoho i te mahi mēra
+mailer_not_supported: kaore i te tautokohia te mēra
+provide_address: Me whakarato e koe i te iti rawa kia kotahi te wāhitau īmēra kaiwhiwhi.
+recipients_failed: Hapa SMTP: Ko nga kaiwhiwhi e whai ake nei i rahua:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Whakauruhia nga Tohu e Kite ana i te Whakairoiro
+Enter the correct letters and numbers...: Whakauruhia nga reta tika me nga nama mai i te ahua ki te pouaka tuhinga. Ko tenei whakamatautau iti ko te aukati whakauru atu ki nga potae kino. Me uta noa te whaarangi mena he uaua ki te panui tenei whakairoiro
+Challenge/Response: Wero / Whakautu
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Hurihia te ra me te waa o tenei urunga?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Kaore ano koe kia whakauru i tetahi Whakaahuatanga Poto
+time prior to work hours...: wa i mua o nga haora mahi ...
+Invalid Event Date: Te Ra Takahanga Muhu
+Please add a participant: Tena taapirihia he kaiuru 
+Invalid Date: Rā Muhu
+You have not entered a valid time of day: Kaore ano kia whakauruhia e koe he waa tika o te ra. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Kaore e taea te waatea te Maramataka ID. 
+First and last names cannot both be blank.: Ko nga ingoa tuatahi me nga ingoa whakamutunga kaore e taea te noho humarie. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Tae muhu
+Color format should be RRGGBB.: Ko te whakatakotoranga tae kia #RRGGBB. 
+URL cannot be blank.: Kaore e taea te noho humarie URL.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Kaore te momo konae e taurite ki te Hōputu Kawemai 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Tae muhu mō te papamuri o te tuhinga.
+Invalid color for document title.: Te tae muhu mo te taitara tuhinga.
+Invalid color for table cell background.: Tae muhu mō te papamuri pūtau ripanga.
+Invalid color for table cell background for today.: Tae muhu mō te papamuri pūtau ripanga mo tenei ra.
+Invalid work hours.: Nga haora mahi muhu.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Me mutu te URL Tūmau me te wehenga (/).
+Invalid color for table grid.: Tae muhu mō te mātiti teepu.
+Invalid color for event popup background.: Tae muhu hei papamuri papake takahanga.
+Invalid color for event popup text.: Tae muhu mō te tuhinga pahū-ake takahanga.
+Invalid color for table header text.: Tika muhu mō te kupu pane pane.
+Invalid color for table header background.: Te tae muhu mo te pane pane o te teepu.
+Server URL is required.: Tūmau URL te hiahiatia.
+Invalid Color: Tae muhu
+Database Name: Ingoa Paetukutuku
+Full Path (no backslashes): Ara Katoa (kaore he tuauru) 
+The password contains illegal characters.: Kei roto i te kupuhipa he tohu kore ture.
+Error you must specify a Single-User Login: Hapa: Me tohu e koe he Takiuru-Kaiwhakamahi Tuatahi
+Could not find XXX.: Kīhai i kitea ko XXX.
+Could not find XXX in DOM.: Kīhai i kitea te XXX i DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Tenei Wiki
+This Month: Tenei Marama
+This Year: Tenei Tau
+Exit: Putanga
+Add New Event: Taapirihia he Takahanga Hou
+Delete Entries: Mukua nga Whakaurunga
+My Views: Aku Tiro
+Manage Calendar of: Whakahaerehia te Maramataka o
+My Reports: Aku Ripoata
+My Profile: Taku Kōtaha
+Public Calendar: Maramataka a te Katoa
+Unapproved Events: Nga Takahanga Kaore i Whakamanahia
+User Manager: Kaiwhakahaere Kaiwhakamahi
+Help Contents: Ihirangi Awhina
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Whaiaronga Keteroki Pātengi Rauemi
+Create New: Hanga Hou
+Failure Reason: Take Rahua:
+You must manually create database: Me matua hanga e koe te paatai.
+Single-User: Kaiwhakamahi Kotahi
+Test Settings: Tautuhinga Whakamatau
+Timezone Conversion Successful: Angitu te Hurihanga o te Rohe Rohe
+WebCalendar Installation Wizard Step XXX: Ruānuku Whakauru TukuWhakaataa Tuatahi XXX
+Password Accepted: Whakaae Kupuhipa
+Successful Login: Whakauru angitu
+Password Incorrect: Hē Kupuhipa
+Invalid Login: Takiuru muhu
+Display Errors: Whakaatu Hapa
+File Uploads: Tukunga Kōnae
+Allow URL fopen: Whakaaetia te whakatuwherahia te URL (ka hiahiatia mena ka whakamahia nga Maramataka Mamao)
+Safe Mode: Aratau Ahuru
+Safe Mode Allowed Vars: Aratau Haumaru Whakaae Vars (TZ hiahiatia noa mena kei te Kei te Aratau Haumaru)
+GD: GD (e hiahiatia ana mo nga Papamuri Atahanga Rite)
+Passwords do not match!: Kare e rite nga kupuhipa!
+Unable to write password to settings.php file: Kaore e taea te tuhi kupu huna ki te konae "setting.php".
+Password Updated: Kua Whakahoutia te Kupuhipa
+Password has been set: Kua whakatauhia te Kupuhipa.
+Connection Successful...: Angitu te Hononga  Tena, haere ki te whaarangi ka haere tonu ki te whakauru.
+Correct your entries or click the Create New...: Whakatikahia o whakauru ka paato i te paatene  Waihanga Hou  kia haere tonu ai te whakaurunga.
+Correct your entries and try again.: Whakatikahia o whakauru ka ngana ano.
+XXX does not exist: Kaore he XXX
+XXX is not writable: Kaore e taea te tuhi i te XXX
+Error Converting Timezone: Hapa Tahuri Rohe Rohe
+Error Unable to write to file XXX.: Hapa Kaore e taea te tuhi ki te konae XXX.
+Please change the file permissions of this file.: Hurihia nga whakaaetanga konae o tenei konae.
+Please change includes dir permission: Tena koa hurihia nga whakaaetanga konae o to raarangi "whakauru" kia taea ai e nga kaiwhakamahi te tuhi.
+Your settings have been saved.: Kua tiakina o tautuhinga.
+OFF: PANUITANGA
+ON: =
+WebCalendar Setup Wizard: Ruānuku Tatūnga PaetukutukuCalendar
+This installation wizard will guide you...: Ma te ruānuku whakauru koe e awhina i roto i te whakatikatika i tetahi taunga WebCalendar.<br>Mo te awhina me te rapurongoā tirohia:<br>
+System Administrators Guide: Aratohu Kaiwhakahaere punaha
+Frequently Asked Questions: Nga Patai e Patai Ana
+FAQ: =
+Troubleshooting: Raparongoā
+Getting Help: Te Awhina
+Upgrading Guide: Aratohu Whakapai ake
+User Supported Wiki: Wiki Tautoko Kaiwhakamahi
+PHP Version Check: PHP Putanga Tirohia
+Check to see if PHP 7.1.0 or greater is installed.: Tirohia mēnā kua whakauruhia te PHP 7.1.0 neke atu ranei.
+PHP version: Putanga PHP
+PHP Settings: Tautuhinga PHP
+Detailed PHP Info: Mōhiohio PHP Taipitopito
+settings.php Status: "setting.php" Tūnga
+Session Check: Tirohanga Wahanga
+To test the proper operation of sessions...: Hei whakamatautau i te mahinga tika o nga huihuinga, whakawaha ano i tenei whaarangi. Me kite koe i te taapiringa taapiringa utu ia wa.
+SESSION COUNTER: PANUITANGA WAIATA
+The file permissions of settings.php are set...: Ko nga whakaaetanga konae o "setting.php" kua whakatauhia kia kore ai e whakaaetia te kaituku ki te whakarereke. Tena koa hurihia nga whakaaetanga konae o te konae e whai ake nei kia haere tonu
+The file permissions of the includes directory are set...: Ko nga whakaaetanga konae o te raarangi whakauru kua tautuhia kia kore ai e whakaaetia te kaituku ki te hanga i tetahi konae hou. Tena koa hurihia nga whakaaetanga o te whaiaronga e whai ake nei kia haere tonu
+Your settings.php file appears to be valid.: Ko to konae "setting.php" e tika ana.
+Configuration Wizard Password: Kupuhipa Ruānuku Whirihoranga
+Create Settings File Password: Hangaia te Kupuhipa Kupu Whakatau
+db setup directions...: I roto i tenei waahanga ka whakaarahia e koe ka whakamatautau i tetahi hononga ki to kaitoha paataka. Ko nga korero kaute kua tohaina kia KATOA nga mana ki te hanga paerewa raraunga, teepu me nga kaiwhakamahi. Mena kaore e taea tenei, ka iti ranei to urunga paatai, me whirihora e koe to papaarangi.
+Database Status: Tūnga Paetukutuku
+Supported databases for your PHP installation: He paepae tautoko mo to whakauru PHP
+Your current database settings are able to access the database.: Ka taea e o tautuhinga papaanga korero o inaianei te uru atu ki te putunga korero.
+Please Test Settings: Tena koa Whakamatauhia nga Tautuhinga
+Your current database settings are not able...: Kaore i taea e o tautuhinga papaanga korero inaianei te uru atu ki te papaarangi kaore ano kia whakamatautauria.
+Database Settings: Tautuhinga Paetukutuku
+Database Type: Momo Paetukutuku
+Server: Tūmau
+Connection Persistence: Hononga Tuturu
+All your database tables appear to be up...: Katoa o teepu papaanga raraunga he mea hou. Akene ka haere koe ki te whaarangi ka whai ake ka whakaotihia to tautuhi Paetukutuku.
+This appears to be a new installation...: Ko te ahua nei he whakauru hou. Mena kaore tenei i te tika, tena koa hoki ki te whaarangi o mua ka whakatika i o tautuhinga.
+This appears to be an upgrade...: Ko te ahua nei he whakahoutanga mai i te putanga&nbsp;XXX&nbsp;ki te&nbsp;YYY.
+The database requires some data input...: Ko te paataka raraunga he whakauru raraunga Paatohia te Paetukutuku Whakahou hei whakaoti i te whakahoutanga.
+In this section we will perform...: I tenei waahanga ka mahia e matou nga whakarereke kia piki ake ai to papaarangi ki te taumata e hiahiatia ana. Mena kei te whakamahi koe i te papaarangi tautoko, ka mahi aunoa tenei mahi. Ki te kore, ka taea te whakaatu i te SQL e hiahiatia ana me taea e koe te tapahi me te whakapiri ki to matapihi pātai o te kaituku pātengi raraunga.
+No database actions are required.: Kaore e hiahiatia nga mahi paataka.
+The following database actions are required: Ko nga mahi papaanga korero e whai ake nei e hiahiatia ana
+ODBC Underlying Database: ODBC Raupaparorohiko Taketake:
+Automatic installation not supported: Kaore ano kia oti te whakauru i te taunga aunoa mo to momo taatai. Me hanga e koe nga tepu e hiahiatia ana ma te whakamahi i te SQL kua tohaina. Tena koa paatohia te  Whakaatu SQL  ki te haere tonu. Tapahia ka Whakapiri ki to matapihi pātai pātengi raraunga.
+This may take several minutes to complete: Ka roa pea etahi meneti ka oti.
+Install Database: Whakauruhia te Paetukutuku
+Update Database: Whakahoutanga Paetukutuku
+Display Required SQL: Whakaatu hiahiatia SQL
+Return to previous page after processing SQL.: Whai muri i te tukatuka a ringa i tenei SQL, me hoki koe ki te whaarangi o mua ka whakamatautau ano i to papaarangi kia maarama ai te tuhinga.
+This is the final step in setting up your WebCalendar Installation.: Koinei te mahi whakamutunga ki te whakatu i to Whakauru TukutukuTauira.
+Timezone Conversion: Tahuringa Rohe Rohe
+It appears that you have NOT converted...: Te ahua nei Kare ano i hurihia e koe to raupaputanga huihuinga WebCalendar ki te GMT. Mena kua penei koe, kaore pea koe e aro ki tenei panui kaore e haere tonu me te hurihanga. Mena he mea hou tenei, kaore pea koe e aro ki tenei panui.
+Convert Data to GMT: Hurihia te Raraunga ki te GMT
+Application Settings: Tautuhinga Taupānga
+HTTP-based authentication was not detected...: Kare i kitea te motuhēhēnga HTTP- Me whakatika e koe to kaitohu paetukutuku mena kei te hiahia koe ki te tohu i te 'Kaiwhakahaere Paetukutuku' mai i nga whiringa 'Motuhēhēnga Kaiwhakamahi' i raro.
+HTTP-based authentication was detected...: I kitea te motuhēhēnga HTTP- Ko to kaitohu paetukutuku te whakahaere i te motuhēhēnga kaiwhakamahi. Me kowhiri e koe te 'Kaiwhakarato Paetukutuku' mai i te raarangi o nga whiringa 'Motuhēhēnga Kaiwhakamahi' i raro.
+Create Default Admin Account: Hangaia te Pūkete Whakahaere Taunoa
+(Admin Account Not Found): (Pūkete Kaiwhakahaere Kaore i Kitea)
+User Authentication: Motuhēhēnga Kaiwhakamahi
+Web-based via WebCalendar (default): Tukutuku- hangai ma te WebCalendar (taunoa)
+Web Server (not detected): Tūmau Paetukutuku (kaore i kitea)
+Web Server (detected): Tūmau Tukutuku (kua kitea)
+None (Single-User): Kore (Kaiwhakamahi Kotahi)
+Read-Only: Panui-Ano
+Environment: Taiao
+Production: Whakaputa
+Development: Whanaketanga
+Save Settings: Tiaki Tautuhinga
+Launch WebCalendar: Whakarewahia WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: I hapa te whakahou i te teepu "XXX": YYY.
+Conversion Successful: Angitu te Hurihanga 
+Perl script required: Ko to putanga o te PaetukutukuWhakaatu o mua ka mahi i te tuhinga PERL hei huri i o raraunga. Whakahaerehia te /tools/upgrade_to_0.9.7.pl ka hoki ki tenei whaarangi kia haere tonu.
+previous version requires updating several tables: Ko taau whakaaturanga o mua o te PaetukutukuWhakaahua te whakahou i nga teepu papaarangi maha.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: KAORE KORE I KORE WAIHIA
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: I hapa te hono atu ki te putunga paatai
+Include Path: Whakauruhia te Ara
+Deleting events for: Te whakakore i nga kaupapa ma
+Importing events for: Te kawemai i nga huihuinga ma
+No data returned from: Kaore he raraunga i whakahokia mai i
+for non-user calendar: mo te maramataka kore-kaiwhakamahi
+No Remote Calendars found: Kaore he Maramataka Mamao i kitea
+Remote Calendars not enabled: Maramataka Mamao i kore e whakahohea
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: kaore i kitea te kaupapa id
+could not find event id XXX in database.: kaore i kitea te kaupapa id XXX i roto i te paatai.
+task: mahi
+This is a reminder for the XXX detailed below.: He whakamaumahara tenei mo te XXX taipitopito i raro nei.
+Pecentage Complete: Kua Oti te Pecentage
+Reminder: Whakamaumahara
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Mahinga tautoko: XXX.
+No event id specified.: Kaore he kaupapa huihuinga i tohua.
+Not authorized (not admin).: Kaore i whakamanahia (kaore i te kaiwhakahaere).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Te tirotiro i nga kaupapa mo XXX mai i te ra YYY ki te ZZZ.
+Found XXX events in time range.: I kitea nga mahinga XXX i te waa waahi.
+Event id=XXX YYY at ZZZ on AAA.: Takahanga id = XXX "YYY" i ZZZ i runga i te AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Whakaaetia te kaiwhakamahi XXX ki te tiro i te maramataka a etahi atu.
+Error Email reminders disabled for user XXX.: Hapa: Kua monokia nga whakamaumahara imeera mo te kaiwhakamahi "XXX".
+Number of site_extras XXX.: Tau o te papaanga_extras: XXX.
+Reminder set for event.: Kua whakaritea he whakamaumaharatanga mo te kaupapa.
+Mins Before XXX.: Mins I Mua: XXX.
+Event time is XXX.: Ko te waa takahanga ko: XXX.
+Remind time is XXX.: Whakamaumahara ko te: XXX.
+Reminders for user XXX, login YYY.: Nga whakamaumahara mo te kaiwhakamahi "XXX", takiuru "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Kaore e whakaaetia mo te kaiwhakamahi "XXX".
+Event id=XXX YYY already sent.: Takahanga id = Kua tukuna a XXX "YYY".
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Kaore he takiuru e hiahiatia ana mo te aratau-kaiwhakamahi takitahi.
+No login required for HTTP authentication.: Kaore he takiuru e hiahiatia ana hei motuhēhēnga HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Pūāhua muhu i te takiuru
+Username XXX does not exist.: Ingoa Kaiwhakamahi "XXX".
+You cannot remove admin rights from yourself!: Kaore e taea e koe te tango i nga mana whakahaere mai i a koe ano!
+Unknown error saving user: Kaiwhakamahi hapa hapa pohehe.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Kaore he kaiuru i kitea mo te huihuinga id: XXX.
+Db error Could not find event id XXX.: Hapa db: Kaore i kitea te kaupapa id XXX. 
+Error Could not find event id XXX in database.: Hapa: Kare i kitea te kaupapa id XXX i te paerewa korero. 

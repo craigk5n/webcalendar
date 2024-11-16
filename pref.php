@@ -174,7 +174,7 @@ $_SESSION['webcal_tmp_login'] = $prefuser;
 $openStr ="\"window.open( 'edit_template.php?type=%s&user=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520' );\"";
 
 $INC = [];
-print_header($INC, '', '');
+print_header();
 ?>
 
 <h2><?php
@@ -400,7 +400,7 @@ etranslate ('Default Visibility')?>:</label></td><td>
        $prefarray['DEFAULT_VISIBILITY'] == 'R') {
          echo " selected ";
        }
-      echo  ">" . translate('Private');
+      echo ">" . translate('Private');
     ?> </option>
   <option value="C"
    <?php if (isset($prefarray['DEFAULT_VISIBILITY']) &&
@@ -805,7 +805,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
       'rss.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
   <tr><td height="0.5 em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
-<?php 
+<?php
 } /* $RSS_ENABLED */ ?>
 
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("freebusy-enabled-help");?>">

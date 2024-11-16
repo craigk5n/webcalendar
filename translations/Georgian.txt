@@ -1,0 +1,2387 @@
+# Georgian ka
+#
+# ფორმატი შედგება დამატებითი სათაურისგან:
+#
+# თარგმნა: თქვენი სახელი და ელ
+# ბოლო განახლება: თარგმანის თარიღი
+# (მათ შორის წამყვანი "#" და წინა თარჯიმნების მიერ გაკეთებული ნებისმიერი კომენტარი.
+# პირველი ცარიელი ხაზი ამთავრებს ამ სათაურის კომენტარებს.)
+#
+# მიჰყვება რამდენიც საჭიროა:
+#
+# ინგლისური ფრაზა: თარგმანი
+# (ერთი სტრიქონიდან. წამყვანი "#" გარეშე.
+# "ინგლისური ფრაზა:", მსხვილი ნაწლავის ჩათვლით ":", მოწოდებულია
+# WebCalendar დეველოპერები. თქვენი ნაწილია "თარგმანი".)
+#
+# ინსტრუმენტების დირექტორია შეიცავს ორ perl სკრიპტს, რომლებიც დაგეხმარებათ:
+# - check_translation.pl
+# მიუთითებს, არის თუ არა ყველა ტექსტი წარმატებით ნათარგმნი.
+# - update_translation.pl
+# გააანალიზებს პროგრამის ფაილებს, რომ იპოვოთ ყველა თარგმანი ("ფრაზა") და
+# tooltip ('ფრაზა'). ის ფრაზებს დაალაგებს გვერდის შესაბამისად
+# (ფაილი), რომელიც შეიცავს პირველ შემთხვევას. სურვილისამებრ, მას შეუძლია მონიშნოს
+# ფრაზები, რომლებიც ჯერ არ არის ნათარგმნი ჩასმით
+#  << MISSING >>
+# ფრაზაზე ზემოთ მოცემულ სტრიქონზე. და, თუ ფრაზა არის აბრევიატურა,
+# იგი მოიცავს ინგლისურ ტექსტს ამ ფრაზის ქვემოთ მოცემულ სტრიქონზე.
+#
+# შენიშვნა: ვცდილობ ფაილის მთლიანი ზომა შევამცირო. თუ "თარგმანი"
+# სიტყვა / ფრაზა იდენტურია თქვენს ენაზე და ინგლისურში, უბრალოდ გამოიყენეთ ნიშანი "=".
+#
+# შენიშვნა: თქვენ შეამჩნევთ "May_" ჩანაწერს ქვემოთ. ამას აქვს მიზეზი.
+#  თარგმნეთ "May_" მთლიანი თვის სახელზე და "May",
+#  ჩვეულებრივ, სამწერტიანი, თვის აბრევიატურა (როგორიცაა "ოქტომბერი" "ოქტომბრისთვის").
+#
+# ამისათვის გამოვიყენე Google translate.
+# ეს საკმარისი იქნება მანამ, სანამ მშობლიური ენა შეძლებს მისი გადამოწმებას.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ლტრ
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: ვებ კალენდარი
+version XXX: ვერსია XXX
+WebCalendar is a PHP application used...: WebCalendar არის PHP პროგრამა, რომელიც გამოიყენება ერთი მომხმარებლის ან ინტერნეტის / ინტრანეტის მომხმარებლების ჯგუფის კალენდრის შესანარჩუნებლად. მისი კონფიგურაცია შესაძლებელია როგორც ღონისძიების კალენდარი.
+Credits: კრედიტები
+About: დაახლოებით
+OK: კარგი
+
+########################################
+# Page: access.php
+#
+Database error XXX.: მონაცემთა ბაზის შეცდომა: XXX.
+DEFAULT CONFIGURATION: დეფოლტის კონფიგურაცია
+Go: წადი
+Save: Გადარჩენა
+Undo: გაუქმება
+Public Access: საზოგადოების წვდომა
+Admin: ადმინ
+User Access Control: მომხმარებლის წვდომის კონტროლი
+Allow Access to Other Users Calendar: სხვა მომხმარებელთა კალენდარზე წვდომის დაშვება
+Grant This User Access to My Calendar: მიანიჭეთ ამ მომხმარებელს ჩემი კალენდარი
+Type: ტიპი
+Calendar: Კალენდარი
+View Event: ივენთის ნახვა
+View: ხედი
+Edit: რედაქტირება
+Approve/Reject: დამტკიცება / უარყოფა
+Events: Ივენთი
+Tasks: Დავალებები
+Journals: ჟურნალები
+Can Invite: შეიძლება მოწვევა
+Can Email: შეგიძლიათ ელ.ფოსტით გაგზავნა
+Can See Time Only: მხოლოდ დროის ნახვა შეუძლია
+Assistant: ასისტენტი
+Select All: Მონიშნე ყველა
+Clear All: Ყველაფრის გასუფთავება
+Public: საზოგადოებრივი
+Confidential: Კონფიდენციალური
+Private: პირადი
+
+########################################
+# Page: activity_log.php
+#
+Next: შემდეგი
+Previous: წინა
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: XXX ღონისძიება უკვე თქვენს კალენდარშია.
+Invalid entry id XXX.: შეყვანის ID არასწორია: "XXX".
+a XXX event may not be added to your calendar: ეს არის XXX მოვლენა და შეიძლება არ დაემატოს თქვენს კალენდარს.
+confidential: კონფიდენციალური
+private: კერძო
+Error adding event XXX.: შეცდომა ღონისძიების დამატებისას: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: პარამეტრი არასწორია "XXX".
+Select: აირჩიეთ
+Day: Დღეს
+Week: კვირა
+Month: თვე
+Year: წელი
+Bottom: ქვედა
+Top: ყველაზე
+Anyone: ვინმეს
+Participant: Მონაწილე
+Settings: პარამეტრები
+Groups: ჯგუფები
+NonUser Calendars: NonUser კალენდარი
+Other: სხვა
+Email: ელ.წერილი
+Colors: Ფერები
+Document background: დოკუმენტის ფონი
+Document title: დოკუმენტის სათაური
+Document text: დოკუმენტის ტექსტი
+My event text: ჩემი ღონისძიების ტექსტი
+Table grid color: მაგიდის ბადის ფერი
+Table header background: ცხრილის სათაურის ფონი
+Table header text: ცხრილის სათაურის ტექსტი
+Table cell background: მაგიდის უჯრედის ფონი
+Table cell background for current day: მაგიდის უჯრედის ფონი მიმდინარე დღისთვის
+Table cell background for days with events: ცხრილის უჯრედის ფონი დღის განმავლობაში ღონისძიებებით
+Table cell background for weekends: შაბათ-კვირის მაგიდის უჯრედის ფონი
+Table cell background for other month: მაგიდის უჯრედის ფონი სხვა თვისთვის
+Week number color: კვირის ნომრის ფერი
+Event popup background: ღონისძიების ამომხტარი ფონი
+Event popup text: ღონისძიების popup ტექსტი
+System Settings: Სისტემის პარამეტრები
+Help: დახმარება
+System options: სისტემის პარამეტრები
+app-name-help: განსაზღვრავს პროგრამის სახელს, რომელიც გამოჩნდება ბრაუზერის სათაურის ზოლში ყველა გვერდისთვის და შესვლის გვერდზე. თქვენს მიერ მითითებული მნიშვნელობა მოიძებნება თარგმანების ფაილში, რომლის საშუალებითაც შეგიძლიათ სხვადასხვა სათაურის მიწოდება სხვადასხვა ენაზე.
+Application Name: განაცხადის სახელი
+Translated Name (XXX): თარგმნილი სახელი (XXX)
+server-url-help: განსაზღვრავს პროგრამის ძირითად URL- ს. ეს შედის ელ.ფოსტის შეხსენებების და შეტყობინებების გაგზავნისას.
+Server URL: სერვერის URL
+home-url-help: განსაზღვრავს სახლის URL აპლიკაციისთვის. ეს შეიძლება იყოს აბსოლუტური ან ფარდობითი
+Home URL: სახლის URL
+language-help: განსაზღვრავს რომელი ენის გამოყენება.
+Language: Ენა
+Your browser default language is XXX.: თქვენი ბრაუზერის ნაგულისხმევი ენაა "XXX".
+Allow user to use themes: მომხმარებლებს მიეცით საშუალება გამოიყენონ თემები
+themes-help: საშუალებას იძლევა კონფიგურაციის პარამეტრების მასობრივი განახლება. მცირე ზომის ეტიკეტები მხოლოდ მომხმარებლის პრეფისაა.
+Themes: თემები
+AVAILABLE THEMES: ხელმისაწვდომი თემები
+None: არცერთი
+Preview: გადახედვა
+Site customization: საიტის პერსონალიზაცია
+custom-script-help: საშუალებას გაძლევთ შეიტანოთ პერსონალური Javascript ან სტილის ფურცლის ტექსტი, რომელიც ჩასმული იქნება ყველა გვერდის HTML განყოფილებაში.
+Custom script/stylesheet: მორგებული სკრიპტი / სტილის ფურცელი
+custom-header-help: საშუალებას აძლევს პერსონალური HTML ნაწყვეტი შეიტანოს ყველა გვერდის ზედა ნაწილში.
+Custom header: მორგებული სათაური
+custom-trailer-help: საშუალებას აძლევს მორგებულ HTML ნაწყვეტს შეიტანოს ყველა გვერდის ბოლოს.
+Custom trailer: მორგებული ტრეილერი
+enable-external-header-help: საშუალებას აძლევს პერსონალური ტრეილერი ჩაიტვირთოს გარე ფაილიდან
+Allow external file for header/script/trailer: გარე ფაილის დაშვება სათაურის / სკრიპტის / ტრეილერისთვის
+Allow user to override header/trailer: მიეცით მომხმარებელს უფლება, შეცვალოს სათაური / ტრეილერი
+Date and Time: Თარიღი და დრო
+server-tz-help: მიუთითებს რამდენი საათის განმავლობაში შეცვალოს დრო UTC სერვერის დროზე.
+Server Timezone Selection: სერვერის დროის სარტყელის შერჩევა
+tz-help: განსაზღვრავს რამდენ საათს შეცვლის დრო UTC ადგილობრივი დროიდან.
+Default Client Timezone Selection: ნაგულისხმევი კლიენტის დროის სარტყელის შერჩევა
+display-general-use-gmt-help: ჩართვის შემთხვევაში, საერთო თარიღები / დროები ნაჩვენებია GMT- ით
+Display Common Use Date/Times as GMT: საერთო გამოყენების თარიღის / დროის ჩვენება GMT– ზე
+date-format-help: განსაზღვრავს თარიღის სასურველი ფორმატს.
+Date format: Თარიღის ფორმატი
+Small Task Date: მცირე დავალების თარიღი
+display-week-starts-on: განსაზღვრავს კვირის დღეს, რომლითაც იწყება კვირა. თუ ორშაბათია მითითებული, მაშინ კვირის ნომრები იქნება ISO კვირის ნომრები.
+Week starts on: კვირა იწყება
+display-weekend-starts-on: ადგენს კვირის დღეს შაბათ-კვირის დასაწყებად
+Weekend starts on: შაბათ-კვირა იწყება
+time-format-help: განსაზღვრავს დროის რომელი ფორმატის გამოყენება:<br><em>12 საათი:</em> ჩვენების დრო 3 საათზე, საღამოს 8:30 საათზე და ა.შ.<br><em>24 საათი:</em> ჩვენების დრო 300 , 2030 და ა.შ.
+Time format: Დროის ფორმატი
+12 hour: 12 საათი
+24 hour: 24 საათი
+timed-evt-len-help: განსაზღვრავს შეყვანის მეთოდს დროული მოვლენის ხანგრძლივობის დასადგენად.
+Specify timed event length by: მიუთითეთ მოვლენის დროული ხანგრძლივობა შემდეგის მიხედვით
+Duration: ხანგრძლივობა
+End Time: Დროის დასასრული
+work-hours-help: განსაზღვრავს დროის დიაპაზონს დღის სანახაობისთვის.
+Work hours: Სამუშაო საათები
+From: დან
+to: რომ
+Appearance: გარეგნობა
+preferred-view-help: განსაზღვრავს ნაგულისხმევ ხედს (დღე, კვირა, თვე ან წელი).
+Preferred view: სასურველი ხედი
+Allow top menu: ზედა მენიუს დაშვება
+Date Selectors position: თარიღის არჩევის პოზიცია
+menu-themes-help: ზედა მენიუს ფერები და სტილი ადგენს
+Menu theme: მენიუს თემა
+fonts-help: განსაზღვრავს სისტემის შრიფტების გამოყენებას (როგორიცაა "Arial, Helvetica")
+Fonts: შრიფტები
+display-sm_month-help: ჩართვის შემთხვევაში, აჩვენებს მცირე თვეებს თვის ნახვებში
+Display small months: მცირე თვეების ჩვენება
+display-weekends-help: ჩართეთ შაბათ – კვირა კვირაში.
+Display weekends: უქმეების ჩვენება
+display-long-daynames-help: ჩართვის შემთხვევაში, ნაჩვენებია გრძელი დღის სახელები
+Display long day names: გრძელი დღის სახელების ჩვენება
+display-alldays-help: წინა და შემდეგი თვეების ჩვენება თვის ნახვებში, ყველა უჯრის შევსებით.
+Display all days in month view: ყველა დღის ჩვენება თვის ხედით
+display-week-number-help: განსაზღვრავს, უნდა გამოჩნდეს თუ არა კვირის ნომერი (1-52) თვის და კვირის ხედში.
+Display week number: კვირის ნომრის ჩვენება
+display-desc-print-day-help: ჩართეთ მოვლენების აღწერილობები დღის ხედვის პრინტერულ ვერსიაში.
+Display description in printer day view: აღწერილობის ჩვენება პრინტერის დღის ხედში
+yearly-shows-events-help: ყოველწლიურ ხედზე აჩვენეთ დღეები, რომლებიც შეიცავს მოვლენებს თამამი შრიფტით.
+Display days with events in bold in month and year views: აჩვენეთ დღეები მოვლენებით თამამი თვის და წლის ხედებით
+display-minutes-help: ჩართვის შემთხვევაში, ყოველთვის გამოჩნდება წუთები: 00-ით დამთავრებული
+Display 00 minutes always: ყოველთვის აჩვენეთ 00 წუთი
+display-end-times-help: მოვლენის დასრულების დროის ჩვენება, თუ დროული მოვლენაა
+Display end times on calendars: კალენდრების ბოლო დროის ჩვენება
+allow-view-add-help: '+' ხატულა შევა ხედებში, რაც მომხმარებლებს საშუალებას მისცემს სწრაფად დაამატონ მოვლენები სხვა მომხმარებლების კალენდრებში.
+Include add event link in views: ჩართეთ ღონისძიების ბმულის ხედებში
+lunar-help: ჩართვის შემთხვევაში, ყოველთვიურად გამოჩნდება მთვარის ფაზების ამსახველი პატარა ხატები
+Display Lunar Phases in month view: მთვარის ფაზების ჩვენება თვის ხედში
+Restrictions: შეზღუდვები
+allow-view-other-help: განსაზღვრავს, ნახავს თუ არა ერთმა მომხმარებელმა სხვა მომხმარებლის კალენდარი.
+Allow viewing other users calendars: სხვა მომხმარებლის კალენდრების ნახვის დაშვება
+require-approvals-help: ჩართვის შემთხვევაში, მომხმარებელმა უნდა დაადასტუროს ღონისძიება, სანამ იგი არ გამოჩნდება მის კალენდარში (თუ არ არის ჩართული Display unapproved). გაითვალისწინეთ, რომ ამას "არა" მიუთითებთ, არ გამორთულია საზოგადოებრივი წვდომის კალენდრის დამტკიცებები (თუ ჩართულია საზოგადოებრივი წვდომის კალენდარი).
+Require event approvals: მოითხოვეთ ღონისძიების დამტკიცება
+display-unapproved-help: განსაზღვრავს, არის თუ არა დადასტურებული მოვლენები თქვენს კალენდარში.<br>თუ მითითებულია "დიახ", მაშინ დაუდასტურებელი მოვლენები გამოჩნდება თქვენს კალენდარში (ტექსტის სხვა ფერით).<br>თუ მითითებულია "არა", მაშინ დაუდასტურებელი მოვლენები უნდა დამტკიცდეს, სანამ ისინი თქვენს კალენდარში გამოჩნდება.
+Display unapproved: ჩვენება არ არის დამტკიცებული
+conflict-check-help: შეამოწმეთ მოვლენათა კონფლიქტი (ერთი და იგივე ადამიანისთვის დაგეგმილი ორი ღონისძიება ერთდროულად). თუ ამას დააყენებთ "დიახ", გაფრთხილების დადასტურების შემდეგ კვლავ შეძლებთ ერთდროულად დანიშნოთ ორი ღონისძიება. თუ ამას დააყენებთ "არა" -ზე, კონფლიქტების შემოწმება არ გაკეთდება. თქვენ ალბათ გსურთ დააყენოთ ეს "დიახ", ასე რომ ხდება კონფლიქტის შემოწმება.
+Check for event conflicts: შეამოწმეთ მოვლენების კონფლიქტები
+Yes: დიახ
+No: არა
+conflict-months-help: თუ კონფლიქტის შემოწმება ადგილზეა ("მოვლენების კონფლიქტის შემოწმება" არის მითითებული "არა" & # 41;), ეს განსაზღვრავს მომავალში რამდენი თვის განმავლობაში უნდა შეამოწმოთ კონფლიქტები. თუ თქვენთვის მოვლენების დამატება დიდხანს დგება , შეამცირეთ ეს რიცხვი.
+Conflict checking months: კონფლიქტის შემოწმება თვეები
+conflict-check-override-help: მომხმარებლებს საშუალებას აძლევს უგულებელყონ მოვლენების კონფლიქტები და ერთდროულად დანიშნონ ორი ან მეტი ღონისძიება.
+Allow users to override conflicts: მომხმარებლებს მიეცით საშუალება, უგულებელყონ კონფლიქტები
+limit-appts-help: საშუალებას აძლევს სისტემის ადმინისტრატორს დაადგინოს სისტემის მასშტაბით შეზღუდვა ერთი მომხმარებლის დანიშვნების რაოდენობაზე, ერთ დღეს.
+Limit number of timed events per day: შეზღუდეთ დროული მოვლენების რაოდენობა დღეში
+limit-appts-number-help: განსაზღვრავს დროული მოვლენების მაქსიმალურ რაოდენობას, რაც მომხმარებელს შეუძლია ჰქონდეს ერთ დღეში.
+Maximum timed events per day: მაქსიმალური დროული მოვლენები დღეში
+crossday-help: ჩართვის შემთხვევაში, მოვლენები, რომლებიც მოიცავს დღეებს, ნაჩვენები იქნება ცალკეულ დღეებში
+Disable Cross-Day Events: გამორთეთ კროსდღიანი ღონისძიებები
+disable-location-field-help: "დიახ" -ის არჩევით, "მდებარეობის" ველი წაიშლება მოვლენების ინფორმაციის გვერდებიდან
+Disable Location field: გამორთეთ მდებარეობის ველი
+disable-url-field-help: "დიახ" არჩევით, "URL" ველი წაიშლება მოვლენების ინფორმაციის გვერდებიდან
+Disable URL field: გამორთეთ URL ველი
+disable-priority-field-help: "დიახ" -ის არჩევით, "პრიორიტეტი" ველი წაიშლება მოვლენების ინფორმაციის გვერდებიდან, რაც ახალბედათათვის უფრო მარტივი ინტერფეისითაა უზრუნველყოფილი.
+Disable Priority field: პრიორიტეტული ველის გამორთვა
+disable-access-field-help: "დიახ" -ის არჩევით, "წვდომის" ველი წაიშლება მოვლენების შესახებ ინფორმაციის გვერდებიდან, დამწყებთათვის უფრო მარტივი ინტერფეისით.
+Disable Access field: გამორთეთ წვდომის ველი
+disable-participants-field-help: "დიახ" -ის არჩევით, ღონისძიების ინფორმაციის გვერდებიდან ამოიშლება "მონაწილეები" ველიდან, რაც ხელს შეუშლის მომხმარებლებს დაამატონ სხვა მომხმარებლები თავიანთ ღონისძიებებში. თუ ამ ვარიანტს ჩართავთ, შეიძლება ასევე გამორთოთ ველი „სხვა მომხმარებლის კალენდრების ნახვის დაშვება“.
+Disable Participants field: გამორთე მონაწილეთა ველი
+disable-repeating-field-help: "დიახ" -ის არჩევით, მოვლენების დამატებისას წაიშლება "გამეორება" ველი. ეს უზრუნველყოფს უფრო მარტივ ინტერფეისს დამწყებთათვის.
+Disable Repeating field: გამეორების ველის გამორთვა
+allow-html-description-help: ჩართვის შემთხვევაში მომხმარებლებს შეუძლიათ HTML შეიტანონ ღონისძიების აღწერილობის ველში. თუ ჩართული არ არის, HTML ტეგებს გაქცევა მოხდება ისე, რომ უბრალო ტექსტად გამოიყურებოდეს. გაფრთხილება: ამ ფუნქციის ჩართვა მომხმარებლებს საშუალებას მისცემს მიმართონ სურათებს სხვა ვებსაიტებზე.
+Allow HTML in Description: HTML- ის დაშვება აღწერილობაში
+Popups: ამომხტარი ფანჯრები
+disable-popups-help: კალენდრის ხედებიდან ამომხტარი ფანჯრების გამორთვა
+Disable Pop-Ups: გამორთეთ Pop-Ups
+popup-includes-siteextras-help: თუ ჩართულია, დაუშვით ღონისძიების მორგებული ველების დაყენება site_extras.php ფაილში გამოჩნდება ღონისძიების გახსნაში.
+Display Site Extras in popup: საიტის დამატებების ჩვენება ახალ ფანჯარაში
+popup-includes-participants-help: ჩართვის შემთხვევაში, მონაწილეები ნაჩვენებია ღონისძიების ფანჯარაში.
+Display Participants in popup: მონაწილეების ჩვენება ახალ ფანჯარაში
+Miscellaneous: სხვადასხვა
+remember-last-login-help: ჩართვის შემთხვევაში, მომხმარებლის შესვლის შესახებ სისტემაში შევა შესვლის გვერდი (მაგრამ არა პაროლი) და ჩატვირთვა მომხმარებლის პარამეტრები (მათ შორის სასურველი ფერები და ენის შერჩევა).
+Remember last login: დაიმახსოვრე ბოლო შესვლა
+summary_length-help: მოკლე აღწერილობის მაქსიმალური სიგრძე კალენდრის ხედებში
+Brief Description Length: მოკლე აღწერა სიგრძე
+user_sort-help: განსაზღვრავს დალაგების წესრიგს მომხმარებლების, არა მომხმარებლების სიებისთვის
+User Sort Order: მომხმარებლის დალაგების შეკვეთა
+Lastname, Firstname: Გვარი სახელი
+Firstname, Lastname: Სახელი გვარი
+allow-public-access-help: ჩართვის შემთხვევაში, კალენდარი შეიძლება გამოყენებულ იქნას როგორც მხოლოდ კითხვადი საჯარო კალენდარი, რომელიც მომხმარებლებს არ საჭიროებს სისტემაში შესვლას.
+Allow public access: საზოგადოების დაშვების დაშვება
+public-access-default-visible: ღონისძიებები საჯარო კალენდრიდან ავტომატურად გამოჩნდება ყველა მომხმარებლის კალენდარში
+Public access visible by default: ნაგულისხმევი ჩანს საზოგადოებრივი წვდომა
+public-access-default-selected: ახალი ღონისძიების დამატებისას, როგორც მომხმარებლის მონაწილე, სტანდარტულად შეირჩევა საჯარო მომხმარებელი.
+Public access is default participant: საზოგადოების წვდომა ნაგულისხმევი მონაწილეა
+public-access-view-others-help: საზოგადოებაზე წვდომის სისტემაში შესვლისას განსაზღვრავს, შეუძლია თუ არა მომხმარებელს სხვა კალენდარული მომხმარებლის კალენდრის ნახვა.
+Public access can view other users: საზოგადოების წვდომას შეუძლია სხვა მომხმარებლების ნახვა
+public-access-can-add-help: ჩართვის შემთხვევაში, მომხმარებლებს, რომლებსაც სისტემაში აქვთ წვდომა საზოგადოებრივი წვდომის საშუალებით, შეეძლებათ ახალი მოვლენების დამატება, მაგრამ ისინი არ გამოჩნდებიან კალენდარში, სანამ ადმინისტრატორი არ დაამტკიცებს ახალ ღონისძიებას.
+Public access can add events: საზოგადოებრივმა წვდომამ შეიძლება დაამატოს მოვლენები
+public-access-add-requires-approval-help: განსაზღვრავს, საჭიროა თუ არა საზოგადოებრივი წვდომის ანგარიშის საშუალებით დამატებული მოვლენების დამტკიცება ჩვენებამდე.
+Public access new events require approval: ახალ ღონისძიებებზე საზოგადოების დაშვება საჭიროებს დამტკიცებას
+public-access-sees-participants-help: ჩართვის შემთხვევაში, მომხმარებლები, რომლებსაც კალენდარი აქვთ საჯარო ანგარიშიდან, ნახავენ ღონისძიების მონაწილეებს, თუ მოვლენის დეტალებს ნახავენ.
+Public access can view participants: საზოგადოების წვდომას შეუძლია მონაწილის ნახვა
+public-access-override-help: საშუალებას აძლევს ღონისძიებების სახელებს და აღწერებს დაიმალოს საჯარო კალენდარი
+Override event name/description for public access: საზოგადოების შესასვლელად გადახედეთ ღონისძიების სახელს / აღწერას
+public-access-override-text-help: ტექსტი, თუ ზემოხსენებული ვარიანტი ჩართულია. თუ "არ არის ხელმისაწვდომი", ის ითარგმნება.
+Text to display to public access: ტექსტი საზოგადოების ხელმისაწვდომობის სანახავად
+public-access-captcha-help: ჩართვის შემთხვევაში, საზოგადოების მიერ დამატებული ახალი მოვლენები მოითხოვს CAPTCHA დადასტურებას.
+Require CAPTCHA validation for public access new events: მოითხოვეთ CAPTCHA დადასტურება საზოგადოებისთვის ახალი მოვლენების შესასვლელად
+uac-enabled-help: ჩართავს მომხმარებლის დონის წვდომის კონტროლს
+User Access Control enabled: მომხმარებელზე წვდომის კონტროლი ჩართულია
+groups-enabled-help: საშუალებას აძლევს ჯგუფს, მომხმარებლებს საშუალებას აძლევს მომხმარებლები აირჩიონ ჯგუფების მიხედვით.
+Groups enabled: ჯგუფები ჩართულია
+user-sees-his-group-help: ჩართვის შემთხვევაში, მომხმარებლები ვერ ნახავენ კალენდრის მომხმარებლებს, რომლებიც არ არიან მათი ჯგუფების მინიმუმ ერთ ჯგუფში.
+User sees only his groups: მომხმარებელი ხედავს მხოლოდ მის ჯგუფებს
+nonuser-enabled-help: ჩართვის შემთხვევაში, ადმინისტრატორებს ექნებათ შესაძლებლობა, დაამატონ არა მომხმარებლების კალენდარი
+Nonuser enabled: არამომხმარებელთა კალენდარი ჩართულია
+nonuser-list-help: მონაწილეთა სიაში სად გამოაქვეყნოთ არასამთავრობო მომხმარებლის კალენდარი
+Nonuser list: მონაწილეთა სიაში ჩვენება შემდეგზე:
+Upcoming Events: მომავალი ღონისძიებები
+upcoming-events-help: მომავალი.php ჩართვა
+Enabled: ჩართულია
+upcoming-events-allow-override: მომხმარებლის paramter- ის დაშვება آینده.php- სთვის
+Allow user override: მომხმარებლის შეცვლის დაშვება
+upcoming-events-display-caticons: ჩასვით კატეგორიის ხატულები მომავალში. Php
+Display category icons: ეკრანის კატეგორიის ხატულების ჩვენება
+upcoming-events-display-layers: მომავალი ფენების ჩვენება. Php
+Display layers: ფენების ჩვენება
+upcoming-events-display-links: ბმულების ჩვენება მომავალში. Php
+Display links to events: მოვლენების ბმულების ჩვენება
+upcoming-events-display-popups: ღონისძიების popup- ების ჩვენება آینده.php- ში
+Display event popups: ღონისძიების ფანჯრების ჩვენება
+reports-enabled-help: ჩართვის შემთხვევაში, მომხმარებლები დაინახავენ "ანგარიშების" განყოფილებას თითოეული გვერდის ბოლოში და შეეძლებათ შექმნან მორგებული ანგარიშები. გარდა ამისა, ადმინისტრატორის მომხმარებლებს შეუძლიათ შექმნან გლობალური ანგარიშები, რომლებიც გამოჩნდება ყველა მომხმარებლის გვერდების ბოლოში.
+Reports enabled: ანგარიშები ჩართულია
+subscriptions-enabled-help: განსაზღვრავს, თუ დისტანციურ მომხმარებლებს შეუძლიათ გამოიწერონ WebCalendar მომხმარებლის კალენდარი, რაც მათ საშუალებას მისცემს დაინახონ WebCalendar მომხმარებლის მოვლენები მათ iCal- ით გააქტიურებულ პროგრამაში (მაგალითად, Apple- ის iCal ან Mozilla Calendar).
+Allow remote subscriptions: დისტანციური გამოწერების დაშვება
+remotes-enabled-help: მომხმარებლებს საშუალებას აძლევს, ჩატვირთონ დისტანციური ics ფაილები URL– ის გამოყენებით
+Allow remote calendars: დისტანციური კალენდრების დაშვება
+rss-enabled-help: განსაზღვრავს, თუ რამდენად შესაძლებელია მომხმარებლის კალენდრის მიღება RSS არხიდან.
+Enable RSS feed: ჩართეთ RSS არხი
+categories-enabled-help: საშუალებას აძლევს ღონისძიებების კატეგორიების მხარდაჭერას.
+Categories enabled: კატეგორიები ჩართულია
+icon_upload-enabled-help: ჩართვის შემთხვევაში მომხმარებლებს შეუძლიათ ატვირთონ კატეგორიის ხატები
+Category Icon Upload enabled: კატეგორიის ხატულა ატვირთულია
+(Requires XXX folder to exist.): (საჭიროებს XXX საქაღალდის არსებობას.)
+display-tasks-help: თვის და დღის კალენდარზე მცირე დავალების ფანჯრის ჩვენება
+Display small task list: მცირე ამოცანების სიის ჩვენება
+display-tasks-in-grid-help: ამოცანების კალენდარი კალენდრებში ღონისძიებებთან ერთად
+Display tasks in Calendars: ამოცანების კალენდარი კალენდრებში
+allow-external-users-help: განსაზღვრავს, შეიძლება თუ არა კალენდრის მომხმარებელი დაემატოს ღონისძიებას. ეს საშუალებას აძლევს არა კალენდარული მომხმარებლებს ჩამოთვალონ ღონისძიების მონაწილეები.
+Allow external users: გარე მომხმარებლების დაშვება
+external-can-receive-notification-help: როდესაც გარე მომხმარებლები ჩართულია და ელ.ფოსტის გამოყენება ჩართულია, გარე მომხმარებლებს შეუძლიათ მიიღონ ელ.ფოსტის შეტყობინებები ღონისძიების დამატების, განახლების ან წაშლის დროს (თუ მითითებულია გარე მომხმარებლის ელ.ფოსტის მისამართი).
+External users can receive email notifications: გარე მომხმარებლებს შეუძლიათ მიიღონ ელ.ფოსტის შეტყობინებები
+external-can-receive-reminder-help: როდესაც გარე მომხმარებლები ჩართულია და ელ.ფოსტის გამოყენება ჩართულია, გარე მომხმარებლებს შეუძლიათ ელ.ფოსტის შეხსენებების მიღება (თუ გარე მომხმარებლის ელ.ფოსტის მისამართია მითითებული).
+External users can receive email reminders: გარე მომხმარებლებს შეუძლიათ ელ.ფოსტის შეხსენებების მიღება
+allow-self-registration-help: ნება დართეთ ახალ მომხმარებლებს თავად დარეგისტრირდნენ
+Allow self-registration: თვითრეგისტრირების დაშვება
+use-blacklist-help: შეზღუდეთ წვდომა WebCalendar ფუნქციებზე IP მისამართის საფუძველზე
+Restrict self-registration to blacklist: შეზღუდეთ თვითრეგისტრაცია შავ სიაში
+allow-self-registration-full-help: ახალ მომხმარებლებს მიეცით საშუალება, დაასრულონ თვითრეგისტრირების პროცესი ონლაინ რეჟიმში
+Use self-registration email notifications: შექმენით პაროლები და გაუგზავნეთ ახალ მომხმარებლებს
+allow-attachment-help: მომხმარებლებს მიეცით საშუალება, დაამატონ მოვლენებს ფაილის დანართები.
+Allow file attachments to events: დაუშვით ფაილების მიმაგრება მოვლენებთან
+Admin and owner can always add attachments if enabled.: ჩართვის შემთხვევაში, ადმინისტრატორს და მფლობელს ყოველთვის შეუძლიათ დანართების დამატება.
+allow-comments-help: მომხმარებლებს მიეცით საშუალება, კომენტარების დამატება დაამატონ მოვლენებს.
+Allow comments to events: მოვლენებზე კომენტარების დაშვება
+Admin and owner can always add comments if enabled.: ჩართვის შემთხვევაში, ადმინისტრატორს და მფლობელს ყოველთვის შეუძლიათ კომენტარების დამატება.
+email-enabled-help: ჩართეთ ან გამორთეთ ელ.ფოსტის გაგზავნა შეტყობინებებისა და შეხსენებების მისაღებად. დააყენეთ "არა", თუ თქვენი სერვერი არ არის სწორად დაყენებული ფოსტის გასაგზავნად.
+Email enabled: ელ.წერილი ჩართულია
+email-default-sender: ახდენს ელ.ფოსტის მისამართის მითითებას, რომლითაც მითითებულია გამგზავნი, როგორც შეხსენებები.
+Default sender address: გამგზავნის ნაგულისხმევი მისამართი
+email-mailer: აირჩიეთ ელ.ფოსტის ტიპი (SMTP, PHP ფოსტა, sendmail)
+Email Mailer: ელ.ფოსტის ფოსტა
+email-smtp-host: SMTP სერვერ (ებ) ის მასპინძლის სახელი გამოყოფილია მძიმით
+SMTP Host name(s): SMTP მასპინძლის სახელი (ებ) ი
+email-smtp-port: SMTP პორტის ნომერი (ჩვეულებრივ 25)
+SMTP Port Number: SMTP პორტის ნომერი
+email-smtp-auth: გამოიყენეთ SMTP ავთენტიფიკაცია
+SMTP Authentication: SMTP ავთენტიფიკაცია
+email-smtp-username: ავთენტიფიკაციის გამოყენების SMTP მომხმარებლის სახელი
+SMTP Username: SMTP მომხმარებლის სახელი
+email-smtp-password: SMTP პაროლი ავთენტიფიკაციის გამოყენების შემთხვევაში
+SMTP Password: SMTP პაროლი
+Default user settings: მომხმარებლის ნაგულისხმევი პარამეტრები
+email-format: მიუთითეთ HTML ან ჩვეულებრივი ტექსტური შეტყობინებების უპირატესობა
+Email format preference: ელ.ფოსტის ფორმატის უპირატესობა
+HTML: =
+Plain Text: Ჩვეულებრივი ტექსტი
+email-include-ics: ჩართეთ iCalendar ICS ფაილი ელ.ფოსტის გაგზავნისთვის
+Include iCalendar attachments: ჩართეთ iCalendar დანართები
+email-event-reminders-help: განსაზღვრავს იგზავნება თუ არა ღონისძიების შეხსენებები.
+Event reminders: ღონისძიების შეხსენებები
+email-event-added: განსაზღვრავს გაგზავნოთ თუ არა ელ.ფოსტის შეტყობინებები, როდესაც ღონისძიებას დაემატება თქვენი კალენდარი.
+Events added to my calendar: ჩემს კალენდარს დაემატა მოვლენები
+email-event-updated: განსაზღვრავს გაგზავნოთ თუ არა ელ.ფოსტის შეტყობინებები, როდესაც ღონისძიება განახლდება თქვენს კალენდარში.
+Events updated on my calendar: ჩემს კალენდარში განახლებული მოვლენები
+email-event-deleted: განსაზღვრავს გაგზავნოთ თუ არა ელ.ფოსტის შეტყობინებები, როდესაც ღონისძიება ამოღებულია თქვენი კალენდრიდან.
+Events removed from my calendar: მოვლენები ამოღებულია ჩემი კალენდრიდან
+email-event-rejected: განსაზღვრავს გაუგზავნოთ თუ არა ელ.ფოსტის შეტყობინებები, როდესაც მონაწილე უარყოფს თქვენს კალენდარში მოცემულ მოვლენას.
+Event rejected by participant: მონაწილემ უარყო ღონისძიება
+email-event-create: განსაზღვრავს მიიღებს თუ არა ჩანაწერების შემქმნელი ელ.წერილს
+Event that I create: ღონისძიება, რომელსაც მე ვქმნი
+Color options: ფერის პარამეტრები
+Allow user to customize colors: მიეცით მომხმარებელს საშუალება, მოირგოს ფერები
+gradient-colors: თუ ჩართულია გრადიენტური ფერები. ამან შეიძლება მნიშვნელოვნად იმოქმედოს შესრულებაზე.
+Enable gradient images for background colors: გრადიენტური სურათების ჩართვა ფონის ფერებისათვის
+Not available: Მიუწვდომელია
+Background Image options: ფონის სურათის ვარიანტები
+bgimage-help: სასურველი ფონის სურათის URL. ეს შეიძლება იყოს შედარებით რგოლი.
+Background Image: ფონის სურათი
+bgrepeat-help: აკონტროლებს ფონის სურათის განმეორებით ქცევას.
+Background Repeat: ფონის გამეორება
+
+########################################
+# Page: adminhome.php
+#
+Assistants: თანაშემწეები
+Preferences: პრეფერენციები
+Control Panel: Მართვის პანელი
+Users: მომხმარებლები
+Account: ანგარიში
+Categories: კატეგორიები
+Views: Დათვალიერება
+Layers: შრეები
+Reports: რეპორტები
+Delete Events: ღონისძიებების წაშლა
+Activity Log: აქტივობის ჟურნალი
+System Log: სისტემის ჟურნალი
+Security Audit: უსაფრთხოების აუდიტი
+Public Preferences: საზოგადოებრივი შეღავათები
+Unapproved Public Events: დაუდასტურებელი საზოგადოებრივი ღონისძიებები
+Administrative Tools: Ადმინისტრაციული ხელსაწყოები
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: დუბლიკატის სახელი: "XXX".
+Username XXX already exists.: ნიკი "XXX" უკვე არსებობს.
+Email address XXX already exists.: ელ.ფოსტის მისამართი "XXX" უკვე არსებობს.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): დამატებითი კომენტარები (არასავალდებულო)
+Approve and Send: დამტკიცება და გაგზავნა
+Approve and Exit: დამტკიცება და გასვლა
+(Your comments will be emailed to the event creator.): (თქვენი კომენტარები ელ.ფოსტით გაიგზავნება ღონისძიების შემქმნელისთვის.)
+Hello, XXX.: გამარჯობა, XXX.
+XXX has approved an appointment and added comments.: დანიშვნა დამტკიცდა და კომენტარები დაამატა XXX- მა.
+Subject XXX: თემა: "XXX".
+Description XXX: აღწერა: "XXX".
+Date XXX: თარიღი: XXX
+Time XXX: დრო: XXX
+Comments XXX: კომენტარები: XXX
+Approved w/Comments by XXX.: დამტკიცებულია w / კომენტარები ავტორი: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: ადმინისტრატორის რეჟიმი
+Your assistants: თქვენი თანაშემწეები
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Უცნობი შეცდომა.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: პროგრამის შეცდომა: არ არის მითითებული XXX!
+user: მომხმარებელი
+year: წელი
+month: თვე
+day: დღეს
+
+########################################
+# Page: category.php
+#
+Category Icon: კატეგორიის ხატულა
+Global: გლობალური
+The permissions for the icons directory are set to read-only: ხატულების დირექტორიის ნებართვები მითითებულია მხოლოდ წაკითხვისთვის.
+Category Name: კატეგორიის სახელი:
+Color: ფერი
+Remove Icon: ხატულის წაშლა:
+Add Icon to Category: ხატულის დამატება კატეგორიაში
+Upload: ატვირთვა
+GIF or PNG 6kb max: GIF ან PNG 6 კბ მაქს
+Search for existing icons: არსებული ხატების ძებნა
+Add: დამატება
+Delete: წაშლა
+Are you sure you want to delete this entry?: დარწმუნებული ხართ, რომ გსურთ ამ ჩანაწერის წაშლა?
+Make New Category: ახალი კატეგორიის შექმნა
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: კატეგორიის დასახელება აუცილებელია
+File size exceeds maximum.: ფაილის ზომა აღემატება მაქსიმუმს.
+File is not a GIF or PNG image: ფაილი არ არის GIF ან PNG სურათი
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: ხელმისაწვდომი კატეგორიები
+ENTRY CATEGORIES: შესვლის კატეგორიები
+Remove: ამოღება
+Global Category: გლობალური კატეგორია
+Cancel: გაუქმება
+
+########################################
+# Page: colors.php
+#
+Add Custom: დაამატეთ მორგებული
+Basic Colors: ძირითადი ფერები
+Current Color: მიმდინარე ფერი
+Custom Colors: მორგებული ფერები
+Old Color: ძველი ფერი
+
+########################################
+# Page: combo.php
+#
+Select None: აირჩიეთ არცერთი
+Agenda: დღის წესრიგი
+Add Task: დავალების დამატება
+Description: აღწერა
+Date: თარიღი
+Time: დრო
+Priority: პრიორიტეტი
+Access: წვდომა
+Created by: Შექმნილია მიერ
+Updated: განახლებულია
+Participants: Მონაწილეები
+Attachments: მიმაგრებული
+Comments: კომენტარები
+Brief Description: Მოკლე აღწერა
+Full Description: სრული აღწერა
+Category: კატეგორია
+Add event detail: დაამატეთ ღონისძიების დეტალები
+Start Date: Დაწყების თარიღი
+Due Date: Თარიღის თანახმად
+Add task detail: დავალების დეტალების დამატება
+All: ყველა
+Error: შეცდომა
+no response from server: პასუხი არ აქვს სერვერს
+JSON error: JSON შეცდომა
+High: მაღალი
+Medium: საშუალო
+Low: დაბალი
+Today: დღეს
+Add Entry: ჩანაწერის დამატება
+Unnamed Event: უსახელო ღონისძიება
+Unnamed Task: უსახელო დავალება
+Refresh: განახლება
+Click to add entry: დააჭირეთ ჩანაწერის დასამატებლად
+Name: სახელი
+pm: საღამოს
+am: ვარ
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX- მა გააუქმა შეხვედრა.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: არასწორი ბლოკის ID
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Დაამატე კომენტარი
+Add Attachment: დანართის დამატება
+Subject: საგანი
+Comment: კომენტარი
+Upload file: Ატვირთეთ ფაილი
+
+########################################
+# Page: docdel.php
+#
+Removed: ამოღებულია
+
+########################################
+# Page: edit_entry.php
+#
+days: დღეები
+hours: საათები
+minutes: წუთები
+You are not authorized to edit this task.: თქვენ არ ხართ უფლებამოსილი შეცვალოთ ეს დავალება.
+is in a different timezone than you are. Currently: არის სხვა დროის სარტყელში, ვიდრე თქვენ ხართ. ამჟამად
+hour ahead of you: შენზე საათით ადრე
+hour behind you: საათის უკან
+hours ahead of you: შენზე საათებით ადრე
+hours behind you: შენს უკან საათები უკან
+XXX is in a different timezone (ahead): (XXX სხვა დროის სარტყელშია; YYY თქვენს წინაშეა.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX სხვა დროის სარტყელშია; YYY თქვენ უკან.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: აქ შემოსული დრო ეფუძნება თქვენს დროის ზონას.
+Edit Entry: შესვლის რედაქტირება
+Details: დეტალები
+Repeat: გამეორება
+Reminders: შეხსენებები
+brief-description-help: ეს უნდა მოიცავდეს ღონისძიების მოკლე აღწერას (დაახლოებით 20 სიმბოლო). ეს წარმოადგენს მოვლენას კალენდრის ნახვისას.
+full-description-help: ამით უნდა დასრულდეს ღონისძიების დეტალები. ეს ინფორმაცია ჩანს, როდესაც მომხმარებელი ათვალიერებს მოვლენას.
+access-help: განსაზღვრავს ღონისძიების წვდომის დონეს. <ul> <li> საზოგადოება: ყველას შეუძლია ნახოს ღონისძიების სრული დეტალები.</li> <li> კონფიდენციალური: სხვები ხედავენ, რომ თქვენ გაქვთ ჩანაწერი ამ თარიღისა და დროისთვის, მაგრამ და არა იმის დეტალები, თუ რა არის ეს.</li></ul>
+priority-help: განსაზღვრავს ღონისძიების პრიორიტეტს. მაღალი პრიორიტეტული მოვლენები ნაჩვენები იქნება სქელით.
+category-help: განსაზღვრავს ღონისძიების კატეგორიას.
+completed-help: დავალების დასრულების თარიღი ჩართულია მხოლოდ მაშინ, როდესაც ყველა მონაწილის პროცენტი უდრის 100% -ს.
+Date Completed: დასრულების თარიღი
+percent-help: დავალების შესრულების პროცენტი ამ მომხმარებლისთვის
+Percent Complete: პროცენტი დასრულებულია
+All Percentages: ყველა პროცენტი
+location-help: ღონისძიების ადგილმდებარეობა
+Location: ადგილმდებარეობა
+url-help: ღონისძიების URL
+URL: =
+date-help: განსაზღვრავს ღონისძიების თარიღს.
+Untimed event: უდროო ღონისძიება
+Timed event: დროული მოვლენა
+All day event: მთელი დღის ღონისძიება
+Timezone Offset: დროის ზონის კომპენსაცია
+time-help: განსაზღვრავს ღონისძიების დროს. <ul> <li> "დროული მოვლენა" (იმ დღისთვის დაგეგმილი ღონისძიებისთვის)</li> <li> "დაუგროვებელი ღონისძიება" (ღონისძიებისთვის, რომელსაც დრო არ აქვს (შვებულების მსგავსად) )</li> <li> "მთელი დღის ღონისძიება" (ღონისძიებისთვის, რომელიც მთელი დღის განმავლობაში მიმდინარეობს (მაგალითად, ოფისში ყოფნა)</li></ul>
+duration-help: განსაზღვრავს ღონისძიების ხანგრძლივობას (საათებში; წუთებში). <em>ეს ველი შეიძლება ცარიელი დარჩეს.</em>
+end-time-help: განსაზღვრავს ღონისძიების დასრულების დროს.
+Start Time: დაწყების დრო
+Due Time: Დანიშნულ დროს
+Site Extras: საიტის დამატებითი ინფორმაცია
+avail_participants-help: ჩამოთვლის ამ ჩანაწერის შესაძლო მონაწილეებს.
+Available: ხელმისაწვდომია
+Find Name: იპოვნეთ სახელი
+Resources: რესურსები
+participants-help: ჩამოთვლის ამ ჩანაწერის მონაწილეებს.
+Selected: არჩეულია
+Availability: ხელმისაწვდომობა
+external-participants-help: განსაზღვრავს ღონისძიების მონაწილეთა სიას, რომლებიც არ არიან კალენდრის მომხმარებლები. მომხმარებლები უნდა იყოს ჩამოთვლილი თითო სტრიქონზე და მათში შეიძლება იყოს ელექტრონული ფოსტის მისამართი. თუ ელ.ფოსტის მისამართია მითითებული, მომხმარებელს უფლება აქვს მიიღოს შეტყობინებები და შეხსენებები.
+External Participants: გარე მონაწილეები
+repeat-type-help: აირჩიეთ რამდენჯერ უნდა განმეორდეს ღონისძიება.
+Daily: ყოველდღიურად
+Weekly: ყოველკვირეული
+Monthly: ყოველთვიურად
+by day: დღისით
+by date: თარიღის მიხედვით
+by position: პოზიციით
+Monthly (by day): ყოველთვიურად (დღეში)
+Monthly (by date): ყოველთვიურად (თარიღის მიხედვით)
+Monthly (by position): ყოველთვიურად (პოზიციის მიხედვით)
+Yearly: ყოველწლიურად
+Manual: სახელმძღვანელო
+Expert Mode: ექსპერტი რეჟიმი
+repeat-end-date-help: განსაზღვრავს თარიღს, როდესაც ღონისძიება უნდა განმეორდეს.
+Ending: დამთავრებული
+Forever: სამუდამოდ
+Use end date: გამოიყენეთ დასრულების თარიღი
+Number of times: Სიხშირის რაოდენობა
+repeat-frequency-help: განსაზღვრავს რამდენჯერ უნდა განმეორდეს ღონისძიება.
+Frequency: სიხშირე
+Weekdays Only: მხოლოდ სამუშაო დღეებში
+Week Start: კვირის დასაწყისი
+repeat-bydayextended-help: საშუალებას იძლევა თარიღის შერჩევა კვირის დღის მიხედვით.
+ByDay: =
+repeat-month-help: განსაზღვრავს რომელ თვეებში უნდა განმეორდეს ღონისძიება.
+ByMonth: თვე
+repeat-bysetpos-help: საშუალებას აძლევს თარიღის შერჩევას თვის მიხედვით მდებარეობის მიხედვით.
+BySetPos: =
+repeat-bymonthdayextended-help: საშუალებას იძლევა თარიღის მიხედვით თარიღის შერჩევა.
+ByMonthDay: =
+repeat-byweekno-help: მომხმარებელს საშუალებას აძლევს მიუთითოს ღონისძიების განმეორების კვირების სია (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: კვირის არა
+repeat-byyearday-help: მომხმარებელს საშუალებას აძლევს მიუთითოს ღონისძიების განმეორების წლის დღეების სია (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: ByDearDay
+repeat-exceptions-help: დამატებითი დღეები, როდესაც ეს მოვლენა უნდა მოხდეს ან არ უნდა მოხდეს.
+Exclusions: გამონაკლისები
+Inclusions: ჩანართები
+Add Exception: გამონაკლისის დამატება
+Add Inclusion: ჩართვის დამატება
+Delete Selected: Მონიშნულის წაშლა
+Send Reminder: შეხსენების გაგზავნა
+When: Როდესაც
+Use Date/Time: გამოიყენეთ თარიღი / დრო
+Use Offset: გამოიყენეთ ოფსეტური
+Before: მანამდე
+After: შემდეგ
+Start: დაწყება
+End/Due: დასრულება / ვადა
+Times: ჯერ
+Every: ყველა
+CAPTCHA Warning: გაფრთხილება: შეუძლებელია CAPTCHA გამოიყენოთ PHP- ის GD გაფართოების გარეშე!<br>
+Delete entry: ჩანაწერის წაშლა
+You are not authorized to edit this entry.: თქვენ არ ხართ უფლებამოსილი შეცვალოთ ეს ჩანაწერი.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX- მა დანიშნა ახალი შეხვედრა.
+XXX has updated an appointment.: XXX- მა განაახლა შეხვედრა.
+Security violation!: უსაფრთხოების დარღვევა!
+You must enter the anti-spam text on the previous page.: თქვენ უნდა მიუთითოთ სპამის საწინააღმდეგო ტექსტი წინა გვერდზე.
+The following conflicts with the suggested time: შემდეგი წინააღმდეგობებია შემოთავაზებულ დროსთან
+User removed from participants list.: მომხმარებელი ამოღებულია მონაწილეთა სიიდან.
+Please look on XXX to accept or reject this appointment.: გთხოვთ, გადახედოთ XXX- ს, რომ მიიღოთ ან დანიშნოთ ეს დანიშვნა.
+Please look on XXX to view this appointment.: გთხოვთ, გადახედოთ XXX- ს ამ დანიშვნის სანახავად.
+Scheduling Conflict: კონფლიქტის დაგეგმვა
+Your suggested time of: თქვენი შემოთავაზებული დრო
+conflicts with the following existing calendar entries: ეწინააღმდეგება კალენდრის შემდეგ არსებულ ჩანაწერებს
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX არ არის მითითებული "config.php" - ში.
+word characters only: (შეიძლება შეიცავდეს მხოლოდ სიტყვის სიმბოლოებს; [a-zA-Z_0-9])
+Add User: მომხმარებლის დამატება
+Edit User: მომხმარებლის რედაქტირება
+Calendar ID: კალენდრის ID
+First Name: Სახელი
+Last Name: Გვარი
+Is public calendar: არის საჯარო კალენდარი
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: მონაცემთა ბაზის შეცდომა
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: დისტანციური კალენდრის დამატება
+Edit Remote Calendar: დისტანციური კალენდრის რედაქტირება
+Create Layer: შრის შექმნა
+Reload: გადატვირთეთ
+Required to View Remote Calendar: საჭიროა დისტანციური კალენდარის სანახავად
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: იმპორტის შედეგები
+Events successfully imported: ღონისძიებების წარმატებით იმპორტირება
+Create a new layer to view this calendar.: შექმენით ახალი ფენა ამ კალენდრის სანახავად.
+Errors: შეცდომები
+There was an error parsing the import file or no events were returned.: იმპორტის ფაილის გარჩევისას მოხდა შეცდომა, ან არანაირი მოვლენა არ დაბრუნებულა.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: ხვალ
+Yesterday: Გუშინ
+Day before yesterday: Გუშინწინ
+Next week: Შემდეგი კვირა
+This week: Ამ კვირაში
+Last week: Წინა კვირა
+Week before last: გასულამდე ერთი კვირით ადრე
+Next week and week after: შემდეგ კვირას და შემდეგ კვირას
+This week and next week: ამ კვირაში და შემდეგ კვირაში
+Last week and this week: გასულ კვირას და ამ კვირაში
+Last two weeks: ბოლო ორი კვირა
+Next month: Შემდეგი თვე
+This month: Ეს თვე
+Last month: Გასული თვე
+Month before last: ბოლო თვემდე
+Next year: Მომავალ წელს
+This year: Ამ წელს
+Last year: Გასულ წელს
+Year before last: გასულ წლამდე
+Next 14 days: შემდეგი 14 დღე
+Next 30 days: შემდეგი 30 დღე
+Next 60 days: შემდეგი 60 დღე
+Next 90 days: შემდეგი 90 დღე
+Next 180 days: შემდეგი 180 დღე
+Next 365 days: შემდეგი 365 დღე
+Invalid report id XXX.: ანგარიშის ID არასწორია: "XXX".
+Unnamed Report: უსახელო ანგარიში
+Add Report: ანგარიშის დამატება
+Edit Report: რედაქტირების რედაქტირება
+Report name: მოხსენება სახელი
+User: მომხმარებელი
+Current User: Მიმდინარე მომხმარებელი
+Include link in menu: ჩართეთ ბმული მენიუში
+Include standard header/trailer: ჩართეთ სტანდარტული სათაური / ტრეილერი
+Include previous/next links: ჩართეთ წინა / შემდეგი ბმულები
+Include empty dates: ჩართეთ ცარიელი თარიღები
+Date range: თარიღის დიაპაზონი
+Template variables: შაბლონის ცვლადები
+Page template: გვერდის შაბლონი
+Day template: დღის შაბლონი
+Event template: ღონისძიების შაბლონი
+Are you sure you want to delete this report?: დარწმუნებული ხართ, რომ გსურთ წაშალოთ ეს ანგარიში?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: ასეთი შეტყობინების ID არ არის: "XXX".
+Variable XXX not found.: ცვლადი XXX ვერ მოიძებნა.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: შეცვალეთ მორგებული სათაური
+Edit Custom Script/Stylesheet: შეცვალეთ მორგებული სკრიპტი / სტილის ფურცელი
+Edit Custom Trailer: მორგებული ტრეილერის რედაქტირება
+
+########################################
+# Page: edit_user.php
+#
+Username: მომხმარებლის სახელი
+E-mail address: Ელექტრონული მისამართი
+Password: პაროლი
+again: ისევ
+Disabled for demo: გამორთულია დემო
+Are you sure you want to delete this user?: დარწმუნებული ხართ, რომ გსურთ ამ მომხმარებლის წაშლა?
+Change Password: Პაროლის შეცვლა
+New Password: ახალი პაროლი
+Set Password: Პაროლის დაყენება
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: მომხმარებლების წაშლა არ არის მხარდაჭერილი.
+The passwords were not identical.: პაროლები არ იყო იდენტური.
+You have not entered a password.: თქვენ არ შეიყვანეთ პაროლი.
+Username cannot be blank.: მომხმარებლის სახელი არ შეიძლება იყოს ცარიელი.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: არ არის უფლებამოსილი
+
+########################################
+# Page: export.php
+#
+Export: ექსპორტი
+Export format: ექსპორტის ფორმატი
+Include all layers: ჩართეთ ყველა ფენა
+Include deleted entries: ჩართეთ წაშლილი ჩანაწერები
+Export all dates: ექსპორტის ყველა თარიღი
+Start date: Დაწყების თარიღი
+End date: Დასრულების თარიღი
+Modified since: შეცვლილია მას შემდეგ
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: ექსპორტის ფორმატი არ არის განსაზღვრული ან არასწორი.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: მომხმარებელი მითითებული არ არის.
+
+########################################
+# Page: groups.php
+#
+Add New Group: ახალი ჯგუფის დამატება
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: უსახელო ჯგუფი
+Add Group: ჯგუფის დამატება
+Edit Group: ჯგუფის რედაქტირება
+Group name: Ჯგუფის სახელი
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: თქვენ უნდა მიუთითოთ ჯგუფის სახელი
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: კალენდრების ავტომატური განახლება
+auto-refresh-help: ჩართვის შემთხვევაში, დღის ხედი, კვირის ხედი, თვის კალენდარი და დაუშვებელი გვერდების სია ავტომატურად განახლდება პერიოდულად.
+Auto-refresh time: ავტომატური განახლების დრო
+auto-refresh-time-help: თუ ჩართულია ავტომატური განახლება, ეს განსაზღვრავს დროს თითოეულ განახლებას შორის.
+Display days with events in bold in year view: აჩვენეთ დღეები ღონისძიებებით თამამად წელიწადში
+Display weekends in week view: უქმეების ჩვენება კვირის ხედით
+Time interval: Დროის ინტერვალი
+time-interval-help: მიუთითებს, თუ რამდენი ხანი იქნება დროის ბლოკები კვირაში და დღის ხედში.
+Nonuser: გამოუყენებელი კალენდარი
+user-customize-color: განსაზღვრავს, აქვთ თუ არა მომხმარებლებს უფლება შეცვალონ საკუთარი ფერის სქემა.
+enable-gradient-help: გამოიყენეთ გრადიენტური ფერები უჯრედის ფონზე.
+Manually entering color values: ხელით შეიყვანეთ ფერის მნიშვნელობები
+colors-help: ყველა ფერი უნდა იყოს მითითებული "#RRGGBB" თექვსმეტობითი ფორმატით, სადაც "RR" არის თექვსმეტსი მნიშვნელობა წითლისთვის, "GG" არის ექვსკუთხა მნიშვნელობა მწვანესთვის, და "BB" არის ექვსკუთხა მნიშვნელობა ლურჯისთვის.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: შეცდომის შესახებ შეტყობინება
+Please include all the information below when reporting a bug.: შეცდომის შესახებ გთხოვთ, შეიტანოთ ქვემოთ მოცემული ინფორმაცია.
+Also, please use English rather than XXX.: ასევე, გთხოვთ გამოიყენოთ  ინგლისური ვიდრე XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: ვებ კალენდრის დოკუმენტაცია
+Currently in English only.: ამჟამად მხოლოდ ინგლისურ ენაზე.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: კალენდრის ჩანაწერების დამატება / რედაქტირება
+Repeat Type: გამეორება ტიპი
+For More Information...: დამატებითი ინფორმაციისთვის ...
+Repeat End Date: გაიმეორეთ დასრულების თარიღი
+Repeat Day: გამეორება დღე
+repeat-day-help: განსაზღვრავს კვირის რომელ დღეებს უნდა განმეორდეს ღონისძიება.
+
+########################################
+# Page: help_import.php
+#
+Import: იმპორტი
+Palm Desktop: პალმის სამუშაო მაგიდა
+allow you to import entries from the Palm...: ეს ფორმა საშუალებას მოგცემთ შეიტანოთ მასალები Palm Desktop Datebook– დან. ის უნდა განთავსდეს თქვენს Palm– ის დირექტორიაში datebook / datebook.dat– ში თქვენი მომხმარებლის სახელით დასახელებულ ქვე დირექტორიაში.
+The following entries will not be imported: არ შეიტანება შემდეგი ჩანაწერები:
+Entries older than the current date: მიმდინარე თარიღზე ძველი ჩანაწერები
+Entries created in the Palm Desktop...: Palm Desktop- ში შექმნილი ჩანაწერები, რომლებიც HotSync'd არ ყოფილა
+Anything imported from Palm...: Palm- დან იმპორტირებული ყველაფრის გადაწერა მოხდება შემდეგი იმპორტის დროს (თუ ღონისძიების თარიღი არ გასულია). ამიტომ, განახლებები უნდა გაკეთდეს Palm Desktop- ში.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: ამ ფორმით შემოვა vCalendar (.vcs) 1.0 ღონისძიება.
+The following formats have been tested: ტესტირებულია შემდეგი ფორმატები:
+This form will import iCalendar (.ics) events.: ამ ფორმით შემოვა iCalendar (.ics) ღონისძიებები.
+Enabling: საშუალებას აძლევს
+Overwrite Prior Import: წინა იმპორტის გადაწერა
+will cause events imported previously...: გამოიწვევს ადრე იმპორტირებულ მოვლენებს, რომლებიც იყენებდა იმავე UID– ს, როგორც ახალ იმპორტის ფაილიდან მოვლენას, აღინიშნებოდა, როგორც წაშლილი. ამით უნდა მოხდეს განახლებული iCalendar ფაილის იმპორტი, დუბლიკატების შექმნის გარეშე.
+
+########################################
+# Page: help_index.php
+#
+Help Index: დახმარების ინდექსი
+About WebCalendar: ვებ – კალენდრის შესახებ
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: ფენები სასარგებლოა სხვა მომხმარებლების მოვლენების თქვენს საკუთარ კალენდარში საჩვენებლად. შეგიძლიათ მიუთითოთ მომხმარებელი და ფერი, რომელშიც მოვლენები გამოჩნდება.
+Add/Edit/Delete: დამატება / რედაქტირება / წაშლა
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: გვერდის ბოლოში ადმინისტრატორის განყოფილებაში რედაქტირების ფენების ბმულზე დაჭერით საშუალებას მოგცემთ დაამატოთ / შეცვალოთ / წაშალოთ ფენები.
+The text color of the new layer that will be displayed in your calendar.: ახალი ფენის ტექსტის ფერი, რომელიც თქვენს კალენდარში გამოჩნდება.
+Disabling: გამორთვა
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: დააჭირეთ შრის გამორთვას ბმულზე, გვერდის ბოლოში ადმინისტრატორის განყოფილებაში, რომ გამორთოთ ფენები.
+Duplicates: დუბლიკატები
+If checked, events that are duplicates of your events will be shown.: თუ მონიშნეთ, ნაჩვენები იქნება თქვენი მოვლენების დუბლირებული მოვლენები.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: ფენების ჩართვისთვის დააჭირეთ გვერდის ბოლოში ადმინისტრატორის განყოფილებაში ჩართეთ შრეების ჩართვა.
+Source: წყარო
+Specifies the user that you would like to see displayed in your calendar.: განსაზღვრავს მომხმარებელს, რომლის ნახვაც გსურთ თქვენს კალენდარში.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: ნაგულისხმევი კატეგორია
+default-category-help: განსაზღვრავს კატეგორიას, რომელზეც უნდა იყოს ნაგულისხმევი ახალი ღონისძიება.
+When I am the boss: როდესაც მე ვარ უფროსი
+Email me event notification: ელ.ფოსტით გამომიგზავნე ღონისძიების შეტყობინება
+email-boss-notifications-help: განსაზღვრავს, თუ მიიღებენ უფროსები ელ.წერილს ღონისძიების შეტყობინებების სახით.
+I want to approve events: მინდა ღონისძიებების დამტკიცება
+boss-approve-event-help: განსაზღვრავს, მოეთხოვება თუ არა უფროსს დამხმარეების მიერ დამატებული მოვლენების დამტკიცება.
+Subscribe/Publish: გამოწერა / გამოქვეყნება
+Allow remote publishing: დისტანციური გამოქვეყნების დაშვება
+allow-remote-publishing-help: განსაზღვრავს, თუ დისტანციურ iCal კლიენტს შეუძლია მოვლენების გამოქვეყნება WebCalendar- ში
+remote-publishing-url-help: აჩვენებს URL- ს, რომელიც უნდა გამოვიყენოთ iCal კლიენტის პროგრამაში, როგორც გამოწერა და ასევე ვებ-კალენდარში გამოქვეყნება.
+allow-remote-subscriptions-help: განსაზღვრავს, თუ დისტანციურ მომხმარებლებს შეუძლიათ გამოიწერონ თქვენი კალენდარი, რაც მათ საშუალებას მისცემს იხილონ თქვენი მოვლენები iCal- ის პროგრამით (მაგალითად, Apple- ის iCal ან Mozilla Calendar).
+remote-subscriptions-url-help: აჩვენებს URL- ს, რომელსაც დისტანციური მომხმარებლები უნდა იყენებდნენ თქვენი კალენდრის გამოსაწერად.
+Enable FreeBusy publishing: FreeBusy გამოქვეყნების ჩართვა
+freebusy-enabled-help: განსაზღვრავს, შესაძლებელია თუ არა მომხმარებლის ხელმისაწვდომი დროის მიღება iCal FreeBusy სტანდარტის გამოყენებით.
+freebusy-url-help: მომხმარებლის FreeBusy სიაში შესვლის URL
+rss-feed-url-help: URL, RSS feed– ზე შესასვლელად
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: საშუალებას გაძლევთ აკონტროლოთ მომხმარებლის წვდომა და უფლებები. მომხმარებელს ასევე შეუძლია დაუშვას ნაგულისხმევი და ინდივიდუალური ნებართვა, თუ ადმინისტრატორი უფლებამოსილია.
+If disabled, this user cannot send you emails.: თუ გამორთულია, ამ მომხმარებელს არ შეუძლია ელ.ფოსტის გაგზავნა.
+If disabled, this user cannot see you in the participants list.: თუ გამორთულია, ეს მომხმარებელი ვერ ხედავს თქვენ მონაწილეთა სიაში.
+If enabled, this user cannot view the details of any of your entries.: ჩართვის შემთხვევაში, ამ მომხმარებელს არ შეუძლია დაინახოს თქვენი ჩანაწერების დეტალები.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): გამოქვეყნება გამორთულია (ადმინ)
+Publishing Disabled (User): გამოქვეყნება გამორთულია (მომხმარებელი)
+
+########################################
+# Page: icons.php
+#
+Click to Select: დააჭირეთ ასარჩევად
+Current Icons on Server: მიმდინარე ხატები სერვერზე
+
+########################################
+# Page: import.php
+#
+import from file: იმპორტი ფაილიდან
+Disabled: ინვალიდი
+Import format: იმპორტის ფორმატი
+Exclude private records: გამორიცხეთ პირადი ჩანაწერები
+Repeated items are imported separately. Prior imports are not overwritten.: განმეორებითი საგნების იმპორტი ცალკე ხდება. წინა იმპორტის გადაწერა არ ხდება.
+
+########################################
+# Page: import_handler.php
+#
+No file: ფაილი არ არის
+Error deleting palm events from webcalendar.: შეცვლილია ვებ – კალენდრიდან პალმის მოვლენების წაშლისას.
+Events from prior import marked as deleted: წინასწარი იმპორტიდან მოვლენები წაიშალა
+Conflicting events: ურთიერთსაწინააღმდეგო მოვლენები
+The import file contained no data.: იმპორტის ფაილი არ შეიცავს მონაცემებს.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: დარწმუნებული ხართ, რომ გსურთ ამ ფენის წაშლა?
+Delete layer: ფენის წაშლა
+Edit layer: შრის რედაქტირება
+Enable layers: ფენების ჩართვა
+Layer: Ფენა
+Layers are currently disabled.: ფენები ამჟამად გამორთულია.
+Layers are currently enabled.: ფენები ამჟამად ჩართულია.
+Click to modify layers settings for XXX: დააჭირეთ აქ, რომ შეცვალოთ ფენების პარამეტრები XXX კალენდრისთვის.
+Disable Layers: გამორთეთ ფენები
+Add layer: ფენის დამატება
+Add Layer: შრის დამატება
+Edit Layer: შრის რედაქტირება
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: პარამეტრის განახლება შეუძლებელია
+Invalid entry id.: არასწორია შესვლის ID.
+You cannot create a layer for yourself.: თქვენ ვერ შექმნით ფენას თქვენთვის.
+You can only create one layer for each user.: თითოეული მომხმარებლისთვის შეგიძლიათ შექმნათ მხოლოდ ერთი ფენა.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: დამტკიცება / დადასტურება
+Approve Selected: მოწონებული მოწონება
+Check All: შეამოწმეთ ყველა
+Emails Will Not Be Sent: ელ.ფოსტა არ გაიგზავნება
+Reject Selected: უარყოფილია არჩეული
+Reject: Უარყოს
+Uncheck All: მონიშნეთ ყველას
+View this entry: იხილეთ ეს ჩანაწერი
+No unapproved entries for XXX.: დაუშვებელი ჩანაწერები არ არის: "XXX" - ისთვის.
+Unapproved Entries: დაუდასტურებელი ჩანაწერები
+Approve this entry?: გსურთ ამ ჩანაწერის დამტკიცება?
+Reject this entry?: უარყოს ეს ჩანაწერი?
+Approve Selected entries?: გსურთ მონიშნოთ ჩანაწერები?
+Reject Selected entries?: უარვყოთ არჩეული ჩანაწერები?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: თქვენ უნდა მიუთითოთ შესვლა და პაროლი.
+Save login via cookies so I dont have to login next time.: შესანახად შეინახეთ ქუქი – ფაილების საშუალებით, რომ შემდეგ ჯერზე შესვლა აღარ მომიხდეს
+Login: Შესვლა
+public: საზოგადოებრივი
+Access XXX calendar: XXX კალენდარზე წვდომა
+cookies-note: შენიშვნა: ეს პროგრამა მოითხოვს ქუქი – ფაილების ჩართვას.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: არალეგალური სიმბოლოები შესასვლელად XXX.
+Invalid login: Არასწორი ლოგინი
+Activity login failure: ნიკი: "XXX", IP: "YYY".
+Error XXX: შეცდომა: "XXX".
+You have been logged out.: თქვენ გამოხვედით
+Access public calendar: საჯარო კალენდარზე წვდომა
+Not yet registered? Register here!: ჯერ არ ხართ დარეგისტრირებული? დარეგისტრირდით აქ!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: მომხმარებელთა ასეთი კალენდარი არ არის: "XXX".
+This Calendar is not Public.: ეს კალენდარი არ არის საჯარო.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: დაამატეთ ახალი NonUser Calendar
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: შესვლა უნდა იყოს მითითებული.
+No such nonuser calendar: არ არის ისეთი მომხმარებელთა კალენდარი
+
+########################################
+# Page: pref.php
+#
+Invalid theme: თემა არასწორია
+Save Preferences: პარამეტრების შენახვა
+Public Access calendar: საზოგადოების წვდომის კალენდარი
+Modify Non User Calendar Preferences: შეცვალეთ არა მომხმარებლის კალენდრის პარამეტრები
+Return to My Preferences: დავუბრუნდეთ ჩემს პარამეტრებს
+Custom Scripts: მორგებული სკრიპტები
+Timezone Selection: დროის სარტყელის შერჩევა
+Multiview: მულტივიუ:
+entry-interval-help: ადგენს წუთის ინტერვალს შესვლის დროების რედაქტირებისას
+Entry interval: შესვლის ინტერვალი
+hour: საათი
+minute: წუთი
+theme-reload-help: CSS ქეშირების გამო, შეიძლება საჭირო გახდეს გვერდის გადატვირთვა
+Page may need to be reloaded for new Theme to take effect: გვერდის გადატვირთვა შეიძლება დაგჭირდეთ ახალი თემის ამოქმედებისათვის
+display_byproxy-help: რეალური შემქმნელის ჩვენება view_entry გვერდზე
+Display if created by Assistant: აჩვენეთ, თუ ასისტენტი შექმნა
+allow-view-subscriptions-help: საშუალებას გაძლევთ შეზღუდოთ დისტანციური წვდომა პირად ან კონფიდენციალურ მასალაში
+Allow remote viewing of: დისტანციური ნახვის დაშვება
+entries: ჩანაწერები
+
+########################################
+# Page: purge.php
+#
+Purging events for: განწმენდის ღონისძიებები
+Finished: დასრულდა
+Back: უკან
+Check box to delete ALL events for a user: მონიშნეთ ველი მომხმარებლისთვის  ALL  ღონისძიებების წასაშლელად
+Delete all events before: მანამდე წაშალეთ ყველა ღონისძიება
+Purge deleted only: წმენდა მხოლოდ წაშლილია
+Preview delete: გადახედვის წაშლა
+Are you sure you want to delete events for: დარწმუნებული ხართ, რომ გსურთ ღონისძიებების წაშლა
+Records deleted from XXX: ჩანაწერები წაიშალა "XXX" - დან.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: ელ.ფოსტის მისამართი არ შეიძლება იყოს ცარიელი.
+Username already exists.: სახელი უკვე არსებობს.
+Email address already exists.: ელ.ფოსტის მისამართი უკვე არსებობს.
+New user via self-registration.: ახალი მომხმარებელი თვითრეგისტრირების გზით.
+A new WebCalendar account has been set up for you.: თქვენთვის შეიქმნა ახალი WebCalendar ანგარიში.
+Your username is XXX.: თქვენი მომხმარებლის სახელია: "XXX".
+Your password is XXX.: თქვენი პაროლია: "XXX".
+Please visit XXX to log in and start using your account!: გთხოვთ, ეწვიოთ "XXX" - ს სისტემაში შესასვლელად და დაიწყეთ თქვენი ანგარიშის გამოყენება!
+You may change your password after logging in the first time.: შეგიძლიათ შეცვალოთ თქვენი პაროლი პირველად შესვლის შემდეგ.
+If you received this email in error: თუ ეს ელ.წერილი შეცდომით მიიღეთ და არ დარეგისტრირდით WebCalendar ანგარიშზე, შეგიძლიათ უგულებელყოთ ეს ცნობა, ან უპასუხოთ მოკლე შენიშვნით
+Administrator: ადმინისტრატორი
+Welcome: მოგესალმებით
+New user via email.: ახალი მომხმარებელი ელ.ფოსტით.
+Registration: რეგისტრაცია
+Welcome to WebCalendar: კეთილი იყოს თქვენი მობრძანება ვებ კალენდარში
+Your email should arrive shortly.: თქვენი ელ.ფოსტა მალე უნდა ჩამოვიდეს.
+Return to Login screen: შესვლის ეკრანზე დაბრუნება
+Password (again): პაროლი (ისევ):
+Your account information will be emailed to you.: თქვენი ანგარიშის ინფორმაცია ელ.ფოსტით გამოგიგზავნით.
+Submit: წარუდგინეთ
+
+########################################
+# Page: reject_entry.php
+#
+Continue: გაგრძელება
+(Your comments will be emailed to the other participants.): (თქვენი კომენტარები ელექტრონული ფოსტით გაგზავნის სხვა მონაწილეებს.)
+XXX has rejected an appointment.: XXX- მა უარყო დანიშვნა.
+Rejected by XXX.: უარყო XXX- მა.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: დაამატეთ ახალი დისტანციური კალენდარი
+
+########################################
+# Page: report.php
+#
+This event is confidential.: ეს ღონისძიება კონფიდენციალურია.
+(Private): (პირადი)
+(cont.): (გაგრძელება)
+Approved: დამტკიცებულია
+Deleted: წაიშალა
+Rejected: უარყოფილია
+Waiting for approval: ველოდები დასამტკიცებლად
+Unknown: უცნობი
+Invalid report id.: ანგარიშის ID არასწორია.
+Click here to manage reports for the Public Access calendar.: დააჭირეთ აქ, რომ მართოთ საზოგადოებრივი წვდომის კალენდრის ანგარიშები.
+Add new report: ახალი მოხსენების დამატება
+Manage Reports: ანგარიშების მართვა
+
+########################################
+# Page: search.php
+#
+Advanced Search: გაფართოებული ძებნა
+Search: ძებნა
+Keywords: საკვანძო სიტყვები
+Enter % for all entries: ყველა ჩანაწერისთვის შეიყვანეთ%
+Include: ჩართეთ
+Filter by Date: გაფილტვრა თარიღის მიხედვით
+All Dates: ყველა თარიღი
+Past: წარსული
+Upcoming: მომავალი
+Range: Დიაპაზონი
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: თქვენ უნდა შეიყვანოთ ერთი ან მეტი საძიებო საკვანძო სიტყვა.
+Search Results: ძიების შედეგები
+match found: ნაპოვნია შესატყვისი
+matches found: ნაპოვნია ასანთები
+No matches found: Შესაფერისი არ მოიძებნა
+New Search: Ახალი ძებნა
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: ქვემოთ მოცემულია თქვენი WebCalendar ინსტალაციის პოტენციური პრობლემები, რომელთა შეცვლაც შეიძლება თქვენი ინსტალაციის უფრო უსაფრთხოდ.
+For questions about WebCalendar security see the forums: კითხვებისთვის WebCalendar უსაფრთხოების ნებისმიერ საკითხსთან დაკავშირებით, გთხოვთ, გამოიყენოთ WebCalendar ფორუმები, განთავსებული GitHub.com- ზე;<br>XXX
+View your current PHP settings: იხილეთ თქვენი ამჟამინდელი PHP პარამეტრები
+Security Issue: უსაფრთხოების საკითხი
+Status: სტატუსი
+Default admin user password: მომხმარებლის ნაგულისხმევი პაროლი
+You should change the password of the default admin user.: თქვენ უნდა შეცვალოთ ნაგულისხმევი ადმინისტრატორის მომხმარებლის პაროლი.
+File permissions XXX: ფაილის ნებართვები: XXX
+item XXX should not be writable: შემდეგი ელემენტი არ უნდა იყოს დაწერილი:<br><tt> XXX</tt>
+File exists XXX: ფაილი არსებობს: "XXX"
+Because you have email disabled, you should remove this file.: რადგან ელ.წერილი გათიშეთ, ეს ფაილი უნდა წაშალოთ.
+File location XXX: ფაილის ადგილმდებარეობა: "XXX"
+remove XXX if not using: თუ არ იყენებთ ფაილს "XXX", უნდა წაშალოთ იგი. ან, მინიმუმ, გადაიტანეთ იგი ახალ დირექტორიაში.
+System Settings XXX: სისტემის პარამეტრები: "XXX"
+consider enabling UAC: შეიძლება გაითვალისწინოთ მომხმარებლის პრივილეგიების დაყენების შესახებ, მომხმარებლის წვდომის კონტროლის ჩართვა.
+recommend approving new public events: ჩვენ გირჩევთ, რომ დამტკიცდეს ყველა საჯარო ღონისძიების წარდგენა.
+recommend using CAPTCHA: CAPTCHA რეკომენდებულია ავტომატიზირებული ღონისძიებების წარდგენების დასაცავად.
+Database cache directory location: მონაცემთა ბაზის ქეშის დირექტორია
+db cache should be inaccessable: მონაცემთა ბაზის ქეში უნდა იყოს დირექტორიაში, რომლიდანაც ვერ მიიღებთ URL– ით.
+PHP Settings XXX: PHP პარამეტრები: "XXX"
+recommend setting XXX Off: "XXX" - ისთვის რეკომენდებული პარამეტრი გამორთულია.
+recommend setting allow_url_fopen Off: "Allow_url_fopen" - ის რეკომენდებული პარამეტრი გამორთულია, როდესაც დისტანციური კალენდარი არ არის ჩართული.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: იხილეთ სხვა მომხმარებლის კალენდარი
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: თქვენ არ დაამატეთ კატეგორიები.
+Set Category: დააყენეთ კატეგორია
+Global Categories cannot be changed.: გლობალური კატეგორიების შეცვლა შეუძლებელია.
+
+########################################
+# Page: upcoming.php
+#
+more: მეტი
+
+########################################
+# Page: users.php
+#
+Remote Calendars: დისტანციური კალენდარი
+denotes administrative user: აღნიშნავს ადმინისტრაციულ მომხმარებელს
+Add New User: ახალი მომხმარებლის დამატება
+
+########################################
+# Page: usersel.php
+#
+form: ფორმა
+Reset: გადატვირთვის
+
+########################################
+# Page: views.php
+#
+Add New View: დაამატეთ ახალი ხედი
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: უსახელო ხედი
+Add View: ხედის დამატება
+Edit View: რედაქტირების ხედი
+View Name: სახელის ნახვა
+View Type: ხედვის ტიპი
+Day by Time: დღითიდღე
+Week (Users horizontal): კვირა (მომხმარებლები ჰორიზონტალურად)
+Week by Time: კვირა დროით
+Week (Users vertical): კვირა (მომხმარებლების ვერტიკალური)
+Week (Timebar): კვირა (დროის ზოლი)
+Month (Timebar): თვე (დროის ზოლი)
+Month (side by side): თვე (გვერდიგვერდ)
+Month (on same calendar): თვე (იმავე კალენდარში)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: თქვენ უნდა მიუთითოთ ხედვის სახელი
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: ამ ხედვის მომხმარებლები არ არიან.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: განაახლეთ დავალების პროცენტი
+Completed: დასრულებულია
+Assistant mode: ასისტენტის რეჟიმი
+Declined: უარყოფილია
+Needs-Action: საჭიროებს მოქმედებას
+by: ავტორი
+Percentage Complete: პროცენტი დასრულებულია
+External User: გარე მომხმარებელი
+Update: განახლება
+at: საათზე
+comments: კომენტარები
+Show: შოუ
+Hide: დამალვა
+Approve/Confirm entry: შესვლის დამტკიცება / დადასტურება
+Reject entry: შესვლის უარყოფა
+Set category: მითითებული კატეგორია
+Add to My Calendar: ჩემს კალენდარში დამატება
+Copy entry: ჩანაწერის კოპირება
+This will delete this entry for all users.: ეს წაშლის ამ ჩანაწერს ყველა მომხმარებლისთვის.
+Edit entry: შესვლის რედაქტირება
+Edit repeating entry for all dates: რედაქტირება განმეორებითი ჩანაწერი ყველა თარიღისთვის
+Delete repeating event for all dates: წაშალეთ განმეორებითი ღონისძიება ყველა თარიღისთვის
+Edit entry for this date: შეცვალეთ ჩანაწერი ამ თარიღისთვის
+Delete entry only for this date: წაშალეთ ჩანაწერი მხოლოდ ამ თარიღისთვის
+Delete entry from calendar of XXX: წაშალეთ ჩანაწერი XXX კალენდრიდან
+This will delete the entry from your XXX calendar.: ეს წაშლის ჩანაწერს თქვენი XXX კალენდრიდან.
+boss: უფროსი
+This will delete the entry from your boss calendar.: ეს წაშლის ჩანაწერს თქვენი უფროსის კალენდარიდან.
+This will delete the entry from your calendar.: ეს წაშლის ჩანაწერს თქვენი კალენდრიდან.
+from your boss calendar: თქვენი უფროსის კალენდარიდან
+Do you want to add this entry to your calendar?: გსურთ ამ ჩანაწერის დამატება თქვენს კალენდარში?
+This will add the entry to your calendar.: ეს დაამატებს ჩანაწერს თქვენს კალენდარს.
+Email all participants: გაუგზავნეთ ელ.წერილი ყველა მონაწილეს
+Hide activity log: აქტივობის ჟურნალის დამალვა
+Show activity log: აქტივობის ჟურნალის ჩვენება
+Export this entry to: ექსპორტი ამ ჩანაწერში
+Palm Pilot: პალმის პილოტი
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: ორჯერ დააწკაპუნეთ ცარიელ უჯრედზე ახალი ჩანაწერის დასამატებლად.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Ახალი ჩანაწერი
+cont.: კონტ.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: სხვა მომხმარებლის კალენდარი
+Category Management: კატეგორიის მენეჯმენტი
+Day View: დღის ხედი
+Edit Event: რედაქტირება ღონისძიება
+Month View: თვის ხედი
+Common Trailer: საერთო ტრეილერი
+User Management: მომხმარებლის მენეჯმენტი
+Manage Views: ნახვების მართვა
+Week View: კვირის ხედი
+Year View: წლის ხედი
+Invalid function id: არასწორი ფუნქციის ID
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: ვერ მოიძებნა ფაილი "settings.php".<br>გთხოვთ, გადაწეროთ "settings.php.orig" "პარამეტრებში. Php" და შეცვალოთ თქვენი საიტისთვის.
+Incomplete settings.php file...: "Settings.php" არასრული ფაილი ...
+Could not find XXX defined in...: თქვენს "settings.php" ფაილში განსაზღვრული "XXX" ვერ მოიძებნა.
+You must define XXX in: თქვენ უნდა განსაზღვროთ "XXX" ფაილში "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: დეკემბერი
+Dec: დეკემბერი
+LANGUAGE DEFINED: ენა განისაზღვრა
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: შეცდომა მონაცემთა ბაზასთან დაკავშირებისას: "XXX".
+db_type not defined.: db_type არ არის განსაზღვრული.
+invalid db_type XXX: db_type არასწორია "" XXX ".
+Cache cleared from previous SQL!: ქეში გაწმენდილია წინა SQL– სგან!
+Error executing query.: შეკითხვის შესრულებისას მოხდა შეცდომა.
+Unfortunately, XXX is not implemented for YYY: სამწუხაროდ, "XXX" არ არის დანერგილი (წწ).
+Unknown ODBC error.: უცნობი ODBC შეცდომა.
+Error opening cache dir XXX.: შეცდომა მეხსიერებაში გახსნის რეჟიმის "XXX".
+delete: წაშლა
+Cache error Could not XXX file YYY.: ქეშის შეცდომა: XXX ფაილი "YYY" ვერ ხერხდება.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Ფატალური შეცდომა
+Invalid data format for: მონაცემთა არასწორი ფორმატისთვის
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: შეცდომა: ტიპი არ არის მითითებული აქტივობის ჟურნალისთვის!
+This event is XXX.: ეს ღონისძიება არის XXX.
+Conf.: კონფ.
+exceeds limit of XXX events per day: აჭარბებს დღეში XXX ღონისძიების ლიმიტს
+on: ჩართული
+All Attendees: ყველა დამსწრე
+Busy: Დაკავებული
+Tentative: სავარაუდო
+Schedule an appointment for XXX.: დანიშნეთ შეხვედრა დანიშვნისთვის XXX: YYY.
+date_select: __dd__ __ თვე__ __yyyy__
+Event approved: ღონისძიება დამტკიცებულია
+Journal approved: ჟურნალი დამტკიცებულია
+Task approved: დავალება დამტკიცებულია
+Attachment: დანართი
+Event created: ღონისძიება შეიქმნა
+Journal created: ჟურნალი შეიქმნა
+Task created: დავალება შეიქმნა
+Event deleted: ღონისძიება წაიშალა
+Journal deleted: ჟურნალი წაიშალა
+Task deleted: ამოცანა წაიშალა
+New user via email (self registration): ახალი მომხმარებელი ელ.ფოსტით (თვითრეგისტრირება)
+New user (self registration): ახალი მომხმარებელი (თვითრეგისტრირება)
+Notification sent: შეტყობინება გაგზავნილია
+Event rejected: ღონისძიება უარყოფილია
+Journal rejected: ჟურნალი უარყოფილია
+Task rejected: დავალება უარყოფილია
+Reminder sent: შეხსენება გაიგზავნა
+Event updated: ღონისძიება განახლდა
+Journal updated: ჟურნალი განახლდა
+Task updated: ამოცანა განახლდა
+Delete User: მომხმარებლის წაშლა
+WK: =
+TASKS: ᲓᲐᲕᲐᲚᲔᲑᲔᲑᲘ
+Task_Title: სათაური
+Due: Იმის გამო
+Task Name: დავალების სახელი
+Task Due Date: დავალების შესრულების თარიღი
+You have XXX unapproved entries: თქვენ გაქვთ XXX დაუდასტურებელი ჩანაწერი 
+Changes successfully saved: ცვლილებები წარმატებით შეინახება
+Event: ღონისძიება
+Action: მოქმედება
+Printer Friendly: ამობეჭდოთ
+Generate printer-friendly version: შექმენით პრინტერის მოსახერხებელი ვერსია
+after: შემდეგ
+before: მანამდე
+end: დასასრული
+start: დაწყება
+View this event: იხილეთ ეს ღონისძიება
+View this task: იხილეთ ეს ამოცანა
+January: იანვარი
+February: თებერვალი
+March: მარტი
+April: აპრილი
+May_: მაისი
+June: ივნისი
+July: ივლისი
+August: აგვისტო
+September: სექტემბერი
+October: ოქტომბერი
+November: ნოემბერი
+Jan: იან
+Feb: თებერვალი
+Mar: მარ
+Apr: აპრ
+May: მაისი
+Jun: ივნისი
+Jul: ივლისი
+Aug: აგვისტო
+Sep: სექტემბერი
+Oct: ოქტომბერი
+Nov: ნოემბერი
+SU: სუ
+MO: =
+TU: ტუ
+WE: ჩვენ
+TH: თ
+FR: =
+SA: =
+unknown-month: უცნობი თვე
+First Quarter Moon: პირველი კვარტალი მთვარე
+Full Moon: Სავსე მთვარე
+Last Quarter Moon: ბოლო კვარტალი მთვარე
+New Moon: Ახალი მთვარე
+Error TIME_SLOTS undefined!: შეცდომა: TIME_SLOTS განუსაზღვრელი!
+The following error occurred: შემდეგი შეცდომა მოხდა
+You are not authorized.: თქვენ არ ხართ უფლებამოსილი.
+Add N hours to: დაამატეთ N საათი
+Subtract N hours from: გამოაკლებ N საათს
+same as: იგივე რაც
+server time: სერვერის დრო
+Cannot read timezone file XXX.: დროის სარტყელის ფაილის წაკითხვა შეუძლებელია: XXX.
+Your current GMT offset is XXX hours.: თქვენი ამჟამინდელი GMT კომპენსაციაა XXX საათი.
+Unauthorized: უნებართვო
+Error approving event XXX.: შეცდომა ღონისძიების დამტკიცებისას: XXX.
+Error deleting event XXX.: ღონისძიების წაშლის შეცდომა: XXX.
+Error rejecting event XXX.: შეცდომა ღონისძიებაზე უარის თქმის შესახებ: XXX.
+Sunday: კვირა
+Monday: ორშაბათს
+Tuesday: სამშაბათს
+Wednesday: ოთხშაბათს
+Thursday: ხუთშაბათი
+Friday: პარასკევი
+Saturday: შაბათი
+Sun: მზე
+Mon: ორშაბათი
+Tue: სამშაბათს
+Wed: ოთხ
+Thu: ხუთ
+Fri: პარ
+Sat: შაბათს
+unknown-weekday: უცნობი-კვირის დღე
+Invalid referring URL: მითითებული URL არასწორია
+
+########################################
+# Page: includes/help_list.php
+#
+Index: ინდექსი
+Documentation: დოკუმენტაცია
+Page: გვერდი
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: ჩემი კალენდარი
+Add New Entry: ახალი ჩანაწერის დამატება
+Add New Task: ახალი ამოცანის დამატება
+Logout: გასვლა
+Home: მთავარი
+Back to My Calendar: დავუბრუნდეთ ჩემს კალენდარს
+Go to: Წადი
+Manage calendar of: მართეთ კალენდარი
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: ბრაუზერის ენა ვერ მოიძებნა
+(not supported): (არ არის მხარდაჭერილი)
+Abkhazian: აფხაზი
+Acoli: აკოლი
+Adangme: ადანგმე
+Adyghe: ადიღეური
+Afar: შორიდან
+Afrihili: აფრიჰილი
+Afrikaans: აფრიკული
+Ainu: აინუ
+Akan: აკანი
+Akkadian: აქადური
+Albanian: ალბანური
+Aleut: ალეუტი
+Algonquian: ალგონკიანი
+Altai (Southern): ალთაური (სამხრეთი)
+Amharic: ამჰარული
+Angika: ანგიკა
+Apache: აპაჩის
+Arabic (Algeria): არაბული (ალჟირი)
+Arabic (Bahrain): არაბული (ბაჰრეინი)
+Arabic (Egypt): არაბული (ეგვიპტე)
+Arabic (Iraq): არაბული (ერაყი)
+Arabic (Jordan): არაბული (იორდანია)
+Arabic (Kuwait): არაბული (ქუვეითი)
+Arabic (Lebanon): არაბული (ლიბანი)
+Arabic (Libya): არაბული (ლიბია)
+Arabic (Morocco): არაბული (მაროკო)
+Arabic (Oman): არაბული (ომანი)
+Arabic (Qatar): არაბული (კატარი)
+Arabic (Saudi Arabia): არაბული (საუდის არაბეთი)
+Arabic (Syria): არაბული (სირია)
+Arabic (Tunisia): არაბული (ტუნისი)
+Arabic (U.A.E.): არაბული (U.A.E.)
+Arabic (Yemen): არაბული (იემენი)
+Arabic: არაბული
+Aragonese: არაგონული
+Aramaic: არამეული
+Arapaho: არაპაჰო
+Arawak: არავაკი
+Armenian: სომხური
+Assamese: ასამური
+Asturian: ასტურიული
+Athapascan: ათაფასკანი
+Avaric: ავარიული
+Avestan: ავესტური
+Awadhi: ავაჰი
+Aymara: აიმარა
+Azerbaijani: აზერბაიჯანული
+Balinese: ბალინური
+Baluchi: ბალუჩი
+Bambara: ბამბარა
+Bamileke: ბამილეკე
+Banda: ბანდა
+Basa: ბასა
+Bashkir: ბაშკირული
+Basque: ბასკური
+Beja: ბეჟა
+Belarusian: ბელორუსული
+Bemba: ბემბა
+Bengali: ბენგალური
+Bhojpuri: ბოჯპური
+Bihari: ბიჰარი
+Bikol: ბიკოლი
+Bislama: ბისლამა
+Blackfoot: შავი ფეხით
+Blin: ბლინი
+Bliss: ნეტარება
+Bosnian: ბოსნიური
+Braj: ბრაჟი
+Breton: ბრეტონული
+Buginese: ბუგინეზი
+Bulgarian: ბულგარული
+Buriat: ბურიატი
+Burmese: ბირმული
+Caddo: კადო
+Catalan: კატალანური
+Cebuano: სებუანო
+Chagatai: ჩაგათაი
+Chamorro: ჩამორო
+Chechen: ჩეჩნური
+Cherokee: ჩეროკი
+Cheyenne: ჩეიანი
+Chibcha: ჩიბჩა
+Chichewa: ჩიჩევა
+Chinese (Hong Kong): ჩინური (ჰონგ კონგი)
+Chinese (PRC): ჩინური (PRC)
+Chinese (Simplified/GB2312): ჩინური (გამარტივებული / GB2312) 
+Chinese (Singapore): ჩინური (სინგაპური)
+Chinese (Taiwan): ჩინური (ტაივანი)
+Chinese (Traditional/Big5): ჩინური (ტრადიციული / დიდი 5)
+Chinook: ჩინუკი
+Chipewyan: ჩიფევიანი
+Choctaw: ჩოქტავ
+Chuukese: ჩუუკესე
+Chuvash: ჩუვაშური
+Coptic: კოპტური
+Cornish: კორნული
+Corsican: კორსიკელი
+Cree: კრი
+Creek: კრიკი
+Croatian: ხორვატული
+Czech: ჩეხური
+Dakota: დაკოტა
+Danish: დანიური
+Dargwa: დარგვა
+Delaware: დელავერი
+Dinka: დინკა
+Dogri: დოგრი
+Dogrib: დოგრიბი
+Duala: დუალა
+Dutch (Belgium): ჰოლანდიური (ბელგია)
+Dutch: ჰოლანდიური
+Dyula: დიულა
+Dzongkha: ძონგხა
+Edo: ედო
+Efik: ეფიკი
+Ekajuk: ეკაჯუკი
+Elamite: ელამიტი
+English (Australia): ინგლისური (ავსტრალია)
+English (Belize): ინგლისური (ბელიზი)
+English (Canada): ინგლისური (კანადა)
+English (Ireland): ინგლისური (ირლანდია)
+English (Jamaica): ინგლისური (იამაიკა)
+English (New Zealand): ინგლისური (ახალი ზელანდია)
+English (Philippines): ინგლისური (ფილიპინები)
+English (South Africa): ინგლისური (სამხრეთ აფრიკა)
+English (Trinidad & Tobago): ინგლისური (ტრინიდადი და ტობაგო)
+English (United Kingdom): ინგლისური (გაერთიანებული სამეფო)
+English (United States): ინგლისური (შეერთებული შტატები)
+English (Zimbabwe): ინგლისური (ზიმბაბვე)
+English: ინგლისურ-აშშ
+Erzya: ერზია
+Esperanto: ესპერანტო
+Estonian: ესტონური
+Ewe: ევე
+Ewondo: ევონდო
+Fang: კანკალი
+Fanti: ფანტი
+Faroese: ფარერული
+Fijian: ფიჯიანი
+Filipino: ფილიპინური
+Finnish: ფინური
+Fon: ფონ
+French (Belgium): ფრანგული (ბელგია)
+French (Canada): ფრანგული (კანადა)
+French (France): ფრანგული (საფრანგეთი)
+French (Luxembourg): ფრანგული (ლუქსემბურგი)
+French (Monaco): ფრანგული (მონაკო)
+French (Switzerland): ფრანგული (შვეიცარია)
+French: ფრანგული
+Frisian (Eastern): ფრიზიული (აღმოსავლეთი)
+Frisian (Northern): ფრიზიული (ჩრდილოეთი)
+Frisian (Western): ფრიზიული (დასავლური)
+Frisian: ფრიზიული
+Friulian: ფრიულიანი
+Fulah: ფულა
+Ga: გა
+Galibi: გალიბი
+Galician: გალისიური
+Ganda: განდა
+Gayo: გაიო
+Gbaya: გბაია
+Geez: გეზი
+Georgian: ქართველი
+German (Austria): გერმანული (ავსტრია)
+German (Germany): გერმანული (გერმანია)
+German (Liechtenstein): გერმანული (ლიხტენშტეინი)
+German (Luxembourg): გერმანული (ლუქსემბურგი)
+German (Standard): გერმანული (სტანდარტული)
+German (Switzerland): გერმანული (შვეიცარია)
+German: გერმანული
+Gilbertese: გილბერტელი
+Gondi: გონდი
+Gorontalo: გორონატო
+Gothic: გოთური
+Grebo: გრებო
+Greek: ბერძნული
+Greenlandic: გრენლანდიური
+Guarani: გუარანი
+Gujarati: გუჯარათი
+Gwich&#39;in: გვიჩინი
+Haida: ჰაიდა
+Haitian (Creole): ჰაიტიური (კრეოლური)
+Haitian: ჰაიტიური
+Hausa: ჰაუსა
+Hawaiian: ჰავაური
+Hebrew: ებრაული
+Herero: ჰერერო
+Hiligaynon: ჰილიგური
+Hindi: ჰინდი
+Hiri Motu: ჰირი მოტუ
+Hittite: ხეთური
+Hmong: ჰომონგი
+Holo (Taiwanese): ჰოლო (ტაივანური)
+Hungarian: უნგრული
+Hupa: ჰუპა
+Iban: იბანი
+Icelandic: ისლანდიური
+Ido: Თანახმა ვარ
+Igbo: იგბო
+Iloko: ილოკო
+Indonesian: ინდონეზიური
+Ingush: ინგუში
+Inuktitut: ინუკტიტუტი
+Inupiaq: ინუპიაკი
+Iranian: ირანელი
+Irish (Gaelic): ირლანდიური (გალური)
+Irish: ირლანდიელი
+Iroquoian: იროქვოიანი
+Italian (Switzerland): იტალიური (შვეიცარია)
+Italian: იტალიური
+Japanese: იაპონელი
+Javanese: იავური
+Judeo-Arabic: იუდეო-არაბული
+Judeo-Persian: იუდეო-სპარსული
+Kabardian: ყაბარდოელი
+Kabyle: კაბილე
+Kachin: კაჩინი
+Kalaallisut: კალაალისუტი
+Kalmyk: ყალმუხური
+Kamba: კამბა
+Kannada: კანადა
+Kanuri: კანური
+Kara-Kalpak: ყარა-კალპაკი
+Karachay-Balkar: ყარაჩაულ-ბალყარული
+Karelian: კარელიური
+Kashmiri: ქაშმირული
+Kashubian: კაშუბური
+Kawi: კავი
+Kazakh: ყაზახური
+Khasi: ხასიათიანი
+Khmer (Central): ქმერული (ცენტრალური)
+Khmer: ქმერული
+Khotanese: ხოტანესი
+Kikuyu: კიკუიუ
+Kimbundu: კიმბუნდუ
+Kinyarwanda: კინიარვანდა
+Kirghiz: ყირგიზული
+Klingon: კლინგონი
+Komi: კომი
+Kongo: კონგო
+Konkani: კონკანი
+Korean (Johab): კორეული (იოჰაბ)
+Korean (North): კორეული (ჩრდილოეთი)
+Korean (South): კორეული (სამხრეთი)
+Korean: კორეული
+Kosraean: კოსრაული
+Kpelle: კპელი
+Kuanyama: კუანიამა
+Kumyk: კუმიკი
+Kurdish: ქურთული
+Kutenai: კუტენაი
+Kyrgyz: ყირგიზული
+Ladino: ლადინო
+Lahnda: ლაჰნდა
+Lamba: ლამბა
+Lao: ლაოსი
+Latin: ლათინური
+Latvian: ლატვიური
+Lezghian: ლეზგიანი
+Limburgan: ლიმბურგული
+Lingala: ლინგალა
+Lithuanian: ლიტვური
+Lojban: ლოჟბანი
+Lozi: ლოზი
+Luba-Katanga: ლუბა-კატანგა
+Luba-Lulua: ლუბა-ლულუა
+Luiseno: ლუისენო
+Lunda: ლუნდა
+Luo: ლუო
+Lushai: ლუშაი
+Luxembourghish: ლუქსემბურგული
+Macedonian: მაკედონური
+Madurese: მადურესი
+Magahi: მაგათი
+Maithili: მაიტილი
+Makasar: მაკასარი
+Malagasy: მალაგასიური
+Malay: მალაიზიური
+Malayalam: მალაიალამი
+Maldivian: მალდივიური
+Maltese: მალტური
+Manchu: მანჯური
+Mandar: მანდარი
+Mandingo: მანდინგო
+Manipuri: მანიპური
+Manx: მანკური
+Maori: მაორი
+Mapuche: მაპუჩი
+Marathi: მარათული
+Mari: მარი
+Marshallese: მარშალელი
+Marwari: მარვარი
+Masai: მასაი
+Mayan: მაიას
+Mende: მენდე
+Mi&#39;kmaq: მიქმაქ
+Minangkabau: მინანგკაბაუ
+Mirandese: მირანდესელი
+Mohawk: მოჰავკი
+Moksha: მოქშა
+Moldavian: მოლდავური
+Mongo: მონგო
+Mongolian: მონღოლური
+Montenegrin: მონტენეგროელი
+Moroccan: მაროკოელი
+Mossi: მოსი
+Myanmar: მიანმარის
+Māori: მაორი
+N&#39;Ko: ნ'კო
+Nauru: ნაურუ
+Navajo: ნავახო
+Ndebele (North): ნდებელი (ჩრდილოეთი)
+Ndebele (South): ნდებელე (სამხრეთი)
+Ndebele: ნდებელი
+Ndonga: ნდონგა
+Neapolitan: ნეაპოლიტანური
+Nepali: ნეპალური
+Nias: ნიასი
+Niuean: ნიუელი
+Nogai: ნოღაი
+Norse: ნორვეგიული
+Norwegian (Bokmål): ნორვეგიული (ბოკმალური)
+Norwegian (Nynorsk): ნორვეგიული (ნორვეგიული)
+Norwegian: ნორვეგიელი
+Nyamwezi: ნიამვეზი
+Nyankole: ნიანკოლე
+Nyoro: ნიორო
+Nzima: ნზიმა
+Occitan: ოქსიტანური
+Odia: ოდია
+Ojibwa: ოჯიბვა
+Oriyia: ორიია
+Oromo: ორომო
+Osage: ოსაგე
+Ossetic: ოსური
+Pahlavi: ფაჰლავი
+Palauan: პალაუანი
+Pali: პალი
+Pampanga: პამპანგა
+Pangasinan: პანგანასინანი
+Panjabi: პანჯაბური
+Papiamento: პაპიმატული
+Pashto: პუშტუ
+Pedi: პედი
+Persian (Farsi): სპარსული (სპარსული)
+Persian (Iran): სპარსული (ირანი)
+Persian: სპარსული
+Phoenician: ფინიკიური
+Pohnpeian: პონპეიანი
+Polish: პოლონური
+Portuguese: პორტუგალიური
+Portuguese/Brazil: პორტუგალიური / ბრაზილია
+Punjabi (India): პენჯაბური (ინდოეთი)
+Punjabi (Pakistan): პენჯაბური (პაკისტანი)
+Punjabi: პენჯაბური
+Quechua: კეჩუა
+Rajasthani: რაჯასტანი
+Rapanui: რაპანუი
+Rarotongan: რაროტონგანი
+Rhaeto-Romanic: =
+Romanian: რუმინული
+Romansh: რეტორომანული
+Romany: ბოშური
+Rundi: რუნდი
+Russian (Moldavia: რუსული (მოლდოვა)
+Russian (Republic of Moldova): რუსული (მოლდოვის რესპუბლიკა)
+Russian: რუსული
+Sami (Inari): სამი (ინარი)
+Sami (Lappish): სამი (ლაპური)
+Sami (Lule): =
+Sami (Northern): სამი (ჩრდილოეთი)
+Sami (Skolt): =
+Sami (Southern): Sami (სამხრეთ)
+Sami: სამი
+Samoan: სამოა
+Samoli: სამოლი
+Sandawe: სანდავე
+Sango: სანგო
+Sanskrit: სანსკრიტი
+Santali: სანტალი
+Sardinian: სარდინიული
+Sasak: სასაკი
+Scots (Gaelic): შოტლანდიური (გალური)
+Selkup: სელკუპს
+Serbian (Upper): სერბული (ზემო)
+Serbian: სერბული
+Serer: სერერი
+Sesotho: სესოტო
+Shan: შანი
+Shona: შონა
+Sichuan Yi: სიჭუან იი
+Sicilian: სიცილიური
+Sindhi: სინდი
+Sinhala: სინჰალური
+Slavic: სლავური
+Slovak: სლოვაკური
+Slovenian: სლოვენური
+Sogdian: სოგდიანი
+Somali: სომალელი
+Somani: სომენი
+Songhai: სონგაი
+Soninke: სონინკე
+Sorbian (Lower): სორბიული (ქვედა)
+Sorbian (Upper): სორბიული (ზემო)
+Sorbian: სორბული
+Sotho: სოთო
+Spanish (Argentina): ესპანური (არგენტინა)
+Spanish (Bolivia): ესპანური (ბოლივია)
+Spanish (Chile): ესპანური (ჩილე)
+Spanish (Colombia): ესპანური (კოლუმბია)
+Spanish (Costa Rica): ესპანური (კოსტა რიკა)
+Spanish (Dominican Republic): ესპანური (დომინიკის რესპუბლიკა)
+Spanish (Ecuador): ესპანური (ეკვადორი)
+Spanish (El Salvador): ესპანური (სალვადორი)
+Spanish (Guatemala): ესპანური (გვატემალა)
+Spanish (Honduras): ესპანური (ჰონდურასი)
+Spanish (Mexico): ესპანური (მექსიკა)
+Spanish (Nicaragua): ესპანური (ნიკარაგუა)
+Spanish (Panama): ესპანური (პანამა)
+Spanish (Paraguay): ესპანური (პარაგვაი)
+Spanish (Peru): ესპანური (პერუ)
+Spanish (Puerto Rico): ესპანური (პუერტო რიკო)
+Spanish (Spain): ესპანური (ესპანეთი)
+Spanish (Uruguay): ესპანური (ურუგვაი)
+Spanish (Venezuela): ესპანური (ვენესუელა)
+Spanish: ესპანური
+Sranan Tongo: სრანული ტონგო
+Sukuma: სუკუმა
+Sumerian: შუმერული
+Sundanese: სუნდური
+Susu: სუსუ
+Sutu: სუტუ
+Swahili: სუაჰილი
+Swati: სვატი
+Swedish (Finland): შვედური (ფინეთი)
+Swedish (Sweden): შვედური (შვედეთი)
+Swedish: შვედური
+Syriac: სირიული
+Tagalog: ტაგალური
+Tahitian: ტაიტური
+Tai: ტაი
+Taiwan: ტაივანი
+Tajik: ტაჯიკური
+Tamashek: თამაშეკი
+Tamil: ტამილური
+Tatar: თათრული
+Telugu: ტელუგუ
+Tereno: ტერენო
+Tetum: ტეტუმი
+Thai: ტაილანდური
+Tibetan: ტიბეტური
+Tigre: ტიგრე
+Tigrinya: თიგრინია
+Timne: დრო
+Tlingit: ტლინგიტი
+Tok Pisin: ტოკ პისინი
+Tokelau: ტოკელაუ
+Tonga (Nytmhasa): ტონგა (ნიტმჰასა)
+Tonga (Tonga Islands): ტონგა (ტონგას კუნძულები)
+Tonga: ტონგა
+Tsimshian: ციმშიანი
+Tsonga: ცონგა
+Tswana: ტსვანა
+Tumbuka: ტუმბუკა
+Turkish: თურქული
+Turkmen: თურქმენული
+Tuvinian: ტუვიანი
+Twi: თუი
+Udmurt: უდმურტული
+Ugaritic: უგარიტული
+Ukrainian: უკრაინელი
+Umbundu: უმბუნდუ
+Urdu: ურდუ
+Uyghur: უიგურული
+Uzbek: უზბეკური
+Vai: ვაი
+Venda: ვენდა
+Vietnamese: ვიეტნამური
+Volapük: ვოლაპური
+Votic: =
+Wakashan: ვაკაშანი
+Walloon: ვალონური
+Waray: ვრეი
+Washo: ვაშო
+Welsh: უელსური
+Wolaitta: ვოლაიტა
+Wolof: ვოლოფი
+Xhosa: ქოსა
+Yakut: იაკუტი
+Yao: იაო
+Yapese: იაპეზი
+Yiddish: იდიში
+Yorùbá: იორბა
+Yupik: იუპიკი
+Zande: ზანდე
+Zapotec: ზაპოტეკი
+Zaza: ზაზა
+Zenaga: ზენაგა
+Zhuang: ჟუანგი
+Zulu: ზულუ
+Browser-defined: ბრაუზერის მიერ განსაზღვრული
+event: ღონისძიება
+journal: ჟურნალი
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: მომხმარებლის არასწორი შესვლა
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: არასწორი პაროლი
+no such user: მსგავსი მომხმარებელი არ არსებობს
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: ანგარიში გამორთულია
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: ინტერვალი
+Months: თვეები
+Month Days: თვის დღეები
+Days: დღეები
+Weeks: კვირები
+Position: პოზიცია
+Until: Მანამდე
+Count: გრაფი
+Inclusion Dates: ჩართვის თარიღები
+Exclusion Dates: გამორიცხვის თარიღები
+Event Imported: ღონისძიება იმპორტირებულია
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: ბაიტი
+kb: კბ
+Mb: მბ
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: შეტყობინება
+authenticate: SMTP შეცდომა: ავტორიზაცია ვერ ხერხდება
+connect_host: SMTP შეცდომა: SMTP მასპინძელთან დაკავშირება ვერ ხერხდება:
+data_not_accepted: SMTP შეცდომა: მონაცემები მიუღებელია
+encoding: უცნობი კოდირება:
+execute: ვერ შესრულდა:
+file_access: ფაილზე წვდომა ვერ მოხერხდა:
+file_open: ფაილის შეცდომა ვერ გახსნა ფაილი:
+from_failed: მისამართიდან ვერ მოხერხდა შემდეგი:
+instantiate: ფოსტის ფუნქციის დაუყოვნებლად შესრულება ვერ მოხერხდა
+mailer_not_supported: ფოსტა არ არის მხარდაჭერილი
+provide_address: თქვენ უნდა მიუთითოთ მინიმუმ ერთი ადრესატის ელ.ფოსტის მისამართი.
+recipients_failed: SMTP შეცდომა: შემდეგი მიმღებები ვერ შესრულდა:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: შეიყვანეთ გრაფიკული ნახული სიმბოლოები
+Enter the correct letters and numbers...: შეიყვანეთ სურათის სწორი ასოები და ციფრები ტექსტურ ველში. ეს პატარა ტესტი წარმოადგენს მავნე ბოტების წინააღმდეგ წვდომის შეზღუდვას. უბრალოდ გადატვირთეთ გვერდი, თუ ამ გრაფიკის წაკითხვა ძალიან რთულია
+Challenge/Response: გამოწვევა / რეაგირება
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: შეიცვალოს ამ ჩანაწერის თარიღი და დრო?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: თქვენ არ გაქვთ შეყვანილი მოკლე აღწერა
+time prior to work hours...: დრო სამუშაო საათებამდე ...
+Invalid Event Date: ღონისძიების არასწორი თარიღი
+Please add a participant: გთხოვთ დაამატოთ მონაწილე
+Invalid Date: Არასწორი თარიღი
+You have not entered a valid time of day: თქვენ არ გაქვთ შეყვანილი დღის სწორი დრო.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: კალენდრის ID არ შეიძლება იყოს ცარიელი.
+First and last names cannot both be blank.: სახელი და გვარი არ შეიძლება იყოს ცარიელი.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: არასწორი ფერი
+Color format should be RRGGBB.: ფერის ფორმატი უნდა იყოს # RRGGBB.
+URL cannot be blank.: URL არ შეიძლება იყოს ცარიელი.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: ფაილის ტიპი არ ემთხვევა იმპორტის ფორმატს
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: არასწორი ფერია დოკუმენტის ფონისთვის.
+Invalid color for document title.: დოკუმენტის სათაურისთვის არასწორი ფერი.
+Invalid color for table cell background.: არასწორი ფერი მაგიდის უჯრედის ფონისთვის.
+Invalid color for table cell background for today.: დღეს მაგიდის უჯრედის ფონისთვის არასწორი ფერია.
+Invalid work hours.: სამუშაო საათები არასწორია.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: სერვერის URL უნდა დასრულდეს ხაზი (/).
+Invalid color for table grid.: არასწორი ფერი მაგიდის ქსელისთვის.
+Invalid color for event popup background.: არასწორი ფერია ღონისძიების popup ფონზე.
+Invalid color for event popup text.: ღონისძიების popup ტექსტისთვის არასწორი ფერია.
+Invalid color for table header text.: არასწორი ფერი ცხრილის სათაურის ტექსტისთვის.
+Invalid color for table header background.: არასწორი ფერი მაგიდის სათაურის ფონისთვის.
+Server URL is required.: საჭიროა სერვერის URL.
+Invalid Color: არასწორი ფერი
+Database Name: მონაცემთა ბაზის სახელი
+Full Path (no backslashes): სრული გზა (უკანა ხაზების გარეშე)
+The password contains illegal characters.: პაროლი შეიცავს უკანონო სიმბოლოებს.
+Error you must specify a Single-User Login: შეცდომა: თქვენ უნდა მიუთითოთ ერთი მომხმარებლის შესვლა
+Could not find XXX.: ვერ მოიძებნა XXX.
+Could not find XXX in DOM.: XXX ვერ მოიძებნა DOM- ში.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Ამ კვირაში
+This Month: Ეს თვე
+This Year: Ამ წელს
+Exit: გასვლა
+Add New Event: ახალი ღონისძიების დამატება
+Delete Entries: ჩანაწერების წაშლა
+My Views: ჩემი შეხედულებები
+Manage Calendar of: მართეთ კალენდარი
+My Reports: ჩემი რეპორტები
+My Profile: Ჩემი პროფილი
+Public Calendar: საზოგადოებრივი კალენდარი
+Unapproved Events: დაუდასტურებელი მოვლენები
+User Manager: მომხმარებლის მენეჯერი
+Help Contents: დახმარების შინაარსი
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: მონაცემთა ბაზის ქეშის დირექტორია
+Create New: Შექმენი ახალი
+Failure Reason: წარუმატებლობის მიზეზი:
+You must manually create database: ხელით უნდა შექმნათ მონაცემთა ბაზა.
+Single-User: მარტოხელა მომხმარებელი
+Test Settings: ტესტის პარამეტრები
+Timezone Conversion Successful: დროის სარტყელის კონვერტაცია წარმატებით დასრულდა
+WebCalendar Installation Wizard Step XXX: WebCalendar ინსტალაციის ოსტატი ნაბიჯი XXX
+Password Accepted: პაროლი მიღებულია
+Successful Login: წარმატებული შესვლა
+Password Incorrect: პაროლი არასწორია
+Invalid Login: Არასწორი ლოგინი
+Display Errors: ჩვენების შეცდომები
+File Uploads: ფაილის ატვირთვები
+Allow URL fopen: დაუშვით URL fopen (საჭიროა მხოლოდ იმ შემთხვევაში, თუ დისტანციური კალენდარი გამოიყენება)
+Safe Mode: Უსაფრთხო რეჟიმი
+Safe Mode Allowed Vars: უსაფრთხო რეჟიმი დაშვებული Vars (TZ საჭიროა მხოლოდ თუ უსაფრთხო რეჟიმი ჩართულია)
+GD: GD (საჭიროა გრადიენტული სურათის ფონისთვის)
+Passwords do not match!: Პაროლები არ ემთხვევა!
+Unable to write password to settings.php file: პაროლის დაწერა შეუძლებელია "settings.php" ფაილზე.
+Password Updated: პაროლი განახლდა
+Password has been set: პაროლი დაყენებულია.
+Connection Successful...: კავშირი წარმატებულია გადადით შემდეგ გვერდზე ინსტალაციის გასაგრძელებლად.
+Correct your entries or click the Create New...: შეასწორეთ თქვენი ჩანაწერები ან დააჭირეთ ღილაკს  შექმნა ახალი ინსტალაციის გასაგრძელებლად.
+Correct your entries and try again.: შეასწორეთ ჩანაწერები და ხელახლა ცადეთ.
+XXX does not exist: XXX არ არსებობს
+XXX is not writable: XXX არ არის დაწერილი
+Error Converting Timezone: შეცვალა დროის სარტყელი
+Error Unable to write to file XXX.: შეცდომა ვერ შეიქმნა XXX ფაილზე.
+Please change the file permissions of this file.: გთხოვთ, შეცვალოთ ამ ფაილის ფაილის ნებართვები.
+Please change includes dir permission: გთხოვთ, შეცვალოთ თქვენი "მოიცავს" დირექტორიის ფაილის ნებართვები, რათა სხვა მომხმარებლების მიერ დაწეროთ.
+Your settings have been saved.: თქვენი პარამეტრები შენახულია.
+OFF: გამორთულია
+ON: ჩართულია
+WebCalendar Setup Wizard: =
+This installation wizard will guide you...: ინსტალაციის ეს ოსტატი დაგეხმარებათ WebCalendar– ის ძირითადი ინსტალაციის დაყენებაში.<br>დახმარებისა და პრობლემების გადასაჭრელად იხილეთ:<br>
+System Administrators Guide: სისტემის ადმინისტრატორის სახელმძღვანელო
+Frequently Asked Questions: ხშირად დასმული შეკითხვები
+FAQ: ხშირად დასმული კითხვები
+Troubleshooting: Დიაგნოსტიკა
+Getting Help: დახმარების მიღება
+Upgrading Guide: სახელმძღვანელოს განახლება
+User Supported Wiki: მომხმარებლის მიერ მხარდაჭერილი ვიკი
+PHP Version Check: PHP ვერსიის შემოწმება
+Check to see if PHP 7.1.0 or greater is installed.: შეამოწმეთ, დაინსტალირებულია თუ არა PHP 7.1.0 ან მეტი.
+PHP version: PHP ვერსია
+PHP Settings: PHP პარამეტრები
+Detailed PHP Info: PHP დეტალური ინფორმაცია
+settings.php Status: "settings.php" სტატუსი
+Session Check: სესიის შემოწმება
+To test the proper operation of sessions...: სესიების გამართული მუშაობის შესამოწმებლად, გადატვირთეთ ეს გვერდი. ყოველ ჯერზე უნდა ნახოთ სესიის მრიცხველის ნამატი.
+SESSION COUNTER: სესიის აგენტი
+The file permissions of settings.php are set...: "Settings.php" ფაილის ნებართვები დაყენებულია ისე, რომ ინსტალატორს არ აქვს მისი შეცვლის ნებართვა. გასაგრძელებლად გთხოვთ შეცვალოთ შემდეგი ფაილის ფაილის უფლებები
+The file permissions of the includes directory are set...: მოიცავს დირექტორიის ფაილის ნებართვებს ისე, რომ ინსტალატორს არ აქვს ახალი ფაილის შექმნის ნებართვა. გასაგრძელებლად გთხოვთ შეცვალოთ შემდეგი დირექტორიის უფლებები
+Your settings.php file appears to be valid.: თქვენი ფაილი "settings.php", როგორც ჩანს, მართებულია.
+Configuration Wizard Password: კონფიგურაციის ოსტატის პაროლი
+Create Settings File Password: შექმენით პარამეტრები ფაილის პაროლი
+db setup directions...: ამ სექციაში თქვენ დააყენებთ და შეამოწმებთ კავშირს თქვენს მონაცემთა ბაზის სერვერთან. მოწოდებული ანგარიშის ინფორმაციას უნდა ჰქონდეს სრული უფლებები მონაცემთა ბაზების, ცხრილებისა და მომხმარებლების შესაქმნელად. თუ ეს შეუძლებელია, ან თქვენს მონაცემთა ბაზაში წვდომა შეზღუდულია, თქვენ უნდა ხელით მოახდინოთ თქვენი მონაცემთა ბაზის კონფიგურაცია.
+Database Status: მონაცემთა ბაზის სტატუსი
+Supported databases for your PHP installation: თქვენი PHP ინსტალაციის მონაცემთა ბაზების მხარდაჭერა
+Your current database settings are able to access the database.: თქვენს მონაცემთა ბაზის ამჟამინდელ პარამეტრებს შეუძლიათ მონაცემთა ბაზაში შესვლა.
+Please Test Settings: გთხოვთ, შეამოწმოთ პარამეტრები
+Your current database settings are not able...: თქვენს მონაცემთა ბაზის ამჟამინდელ პარამეტრებს არ აქვთ წვდომა მონაცემთა ბაზაში ან ჯერ კიდევ არ გამოსცადეს.
+Database Settings: მონაცემთა ბაზის პარამეტრები
+Database Type: მონაცემთა ბაზის ტიპი
+Server: სერვერი
+Connection Persistence: კავშირი გამძლეობა
+All your database tables appear to be up...: თქვენი მონაცემთა ბაზის ყველა ცხრილი განახლებული ჩანს. თქვენ შეგიძლიათ გადახვიდეთ შემდეგ გვერდზე და დაასრულოთ თქვენი ვებ კალენდრის დაყენება.
+This appears to be a new installation...: როგორც ჩანს, ეს არის ახალი ინსტალაცია. თუ ეს არ არის სწორი, გთხოვთ, დაბრუნდეთ წინა გვერდზე და შეასწოროთ თქვენი პარამეტრები.
+This appears to be an upgrade...: როგორც ჩანს, ეს არის ვერსია&nbsp;XXX&nbsp;წლიდან განახლებული ვერსიაზე.
+The database requires some data input...: მონაცემთა ბაზა მოითხოვს მონაცემთა გარკვეულ შეტანას. დააჭირეთ განახლების მონაცემთა ბაზის განახლებას, რომ დასრულდეს განახლება.
+In this section we will perform...: ამ სექციაში ჩვენ შევასრულებთ ცვლილებებს, რომ თქვენი მონაცემთა ბაზა საჭირო დონეზე აიყვანოს. თუ სრულად მხარდაჭერილ მონაცემთა ბაზას იყენებთ, ეს ნაბიჯი ავტომატურად შესრულდება თქვენთვის. თუ არა, საჭირო SQL შეიძლება გამოისახოს და თქვენ უნდა შეძლოთ მისი დაჭრა და ჩასმა თქვენს მონაცემთა ბაზის სერვერის მოთხოვნის ფანჯარაში.
+No database actions are required.: მონაცემთა ბაზის მოქმედებები არ არის საჭირო.
+The following database actions are required: მონაცემთა ბაზის შემდეგი მოქმედებები საჭიროა
+ODBC Underlying Database: ODBC ძირითადი მონაცემთა ბაზა:
+Automatic installation not supported: ავტომატური ინსტალაცია სრულად არ განხორციელებულა თქვენი მონაცემთა ბაზის ტიპისთვის. თქვენ მოგიწევთ ხელით შექმნათ საჭირო ცხრილები მოწოდებული SQL– ის გამოყენებით. გასაგრძელებლად დააწკაპუნეთ  SQL- ის ჩვენებაზე დაჭრილი და ჩასვით თქვენი მონაცემთა ბაზის მოთხოვნის ფანჯარაში.
+This may take several minutes to complete: ამის დასრულებას შეიძლება რამდენიმე წუთი დასჭირდეს.
+Install Database: დააინსტალირეთ მონაცემთა ბაზა
+Update Database: Მონაცემთა ბაზის განახლება
+Display Required SQL: ჩვენების საჭირო SQL
+Return to previous page after processing SQL.: ამ SQL ხელით დამუშავების შემდეგ, თქვენ უნდა დაბრუნდეთ წინა გვერდზე და ხელახლა შეამოწმოთ თქვენი მონაცემთა ბაზა, რომ სკრიპტმა შეძლოს ცვლილებების დადგენა.
+This is the final step in setting up your WebCalendar Installation.: ეს თქვენი WebCalendar ინსტალაციის დაყენების ბოლო ეტაპია.
+Timezone Conversion: დროის სარტყლის კონვერტაცია
+It appears that you have NOT converted...: როგორც ჩანს, თქვენ არ გადააკეთეთ თქვენი არსებული WebCalendar მოვლენის მონაცემები GMT- ზე. თუ გაქვთ, შეგიძლიათ უგულებელყოთ ეს ცნობა და არ განაგრძოთ გარდაქმნა. თუ ეს არის ახალი ინსტალაცია, თქვენ ასევე შეგიძლიათ უგულებელყოთ ეს ცნობა.
+Convert Data to GMT: მონაცემთა გადაყვანა GMT- ზე
+Application Settings: განაცხადის პარამეტრები
+HTTP-based authentication was not detected...: HTTP დაფუძნებული ავთენტიფიკაცია ვერ იქნა ნაპოვნი. თქვენ მოგიწევთ თქვენი სერვერის ხელახლა კონფიგურაცია, თუ გსურთ აირჩიოთ "ვებ სერვერი" ქვემოთ მოყვანილი "მომხმარებლის ავთენტიფიკაციის" არჩევანიდან.
+HTTP-based authentication was detected...: დაფიქსირდა HTTP- ზე დაფუძნებული ავტორიზაცია. მომხმარებლის ავტორიზაციას მართავს თქვენი ვებ სერვერი. თქვენ უნდა აირჩიოთ "ვებ სერვერი" ქვემოთ მოყვანილი "მომხმარებლის ავთენტიფიკაციის" სიიდან.
+Create Default Admin Account: შექმენით ნაგულისხმევი ადმინისტრატორის ანგარიში
+(Admin Account Not Found): (ადმინისტრატორის ანგარიში ვერ მოიძებნა)
+User Authentication: მომხმარებლის ავთენტიფიკაცია
+Web-based via WebCalendar (default): ინტერნეტით დაფუძნებული WebCalendar– ის საშუალებით (ნაგულისხმევი)
+Web Server (not detected): ვებ სერვერი (არ არის აღმოჩენილი)
+Web Server (detected): ვებ სერვერი (აღმოჩენილია)
+None (Single-User): არა (ერთი მომხმარებელი)
+Read-Only: Წაიკითხეთ მხოლოდ
+Environment: გარემო
+Production: წარმოება
+Development: განვითარება
+Save Settings: Პარამეტრების შენახვა
+Launch WebCalendar: ვებ – კალენდრის გაშვება
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: შეცდომა ცხრილის "XXX" განახლებისას: YYY.
+Conversion Successful: კონვერტაცია წარმატებულია
+Perl script required: WebCalendar- ის თქვენი წინა ვერსია მოითხოვს PERL სკრიპტის გაშვებას თქვენი მონაცემების გადასაკეთებლად. გთხოვთ, აწარმოოთ /tools/upgrade_to_0.9.7.pl, შემდეგ კი ამ გვერდზე დაბრუნდეთ გასაგრძელებლად.
+previous version requires updating several tables: WebCalendar- ის თქვენი წინა ვერსია მოითხოვს მონაცემთა ბაზის რამდენიმე ცხრილის განახლებას.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: ᲩᲕᲔᲜᲔᲑᲐ ᲐᲠᲐᲐ ᲨᲔᲡᲐᲫᲚᲔᲑᲔᲚᲘ
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: მოხდა მონაცემთა ბაზასთან დაკავშირების შეცდომა
+Include Path: ჩართეთ გზა
+Deleting events for: ღონისძიებების წაშლა
+Importing events for: ღონისძიებების იმპორტი
+No data returned from: მონაცემები არ დაბრუნებულა
+for non-user calendar: არა მომხმარებელი კალენდრისთვის
+No Remote Calendars found: დისტანციური კალენდარი ვერ მოიძებნა
+Remote Calendars not enabled: დისტანციური კალენდარი ჩართული არ არის
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ვერ მოიძებნა ღონისძიების ID
+could not find event id XXX in database.: მონაცემთა ბაზაში ვერ მოიძებნა ღონისძიების ID XXX.
+task: ამოცანა
+This is a reminder for the XXX detailed below.: ქვემოთ მოცემული XXX შეხსენება.
+Pecentage Complete: Pententage დასრულებულია
+Reminder: შეხსენება
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: მხარდაჭერილი ქმედება: XXX.
+No event id specified.: არ არის მითითებული ღონისძიების ID.
+Not authorized (not admin).: არ არის უფლებამოსილი (არ არის ადმინისტრატორი).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: იძიებს მოვლენებს XXX თარიღისთვის YYY დღიდან ZZZ თარიღამდე.
+Found XXX events in time range.: ნაპოვნია XXX მოვლენა დროის დიაპაზონში.
+Event id=XXX YYY at ZZZ on AAA.: ღონისძიების ID = XXX "YYY" ZZZ- ზე AAA- ზე.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: XXX მომხმარებლისთვის სხვა მომხმარებლის კალენდრის ნახვის შესაძლებლობა.
+Error Email reminders disabled for user XXX.: შეცდომა: ელ.ფოსტის შეხსენებები გამორთულია მომხმარებლისთვის "XXX".
+Number of site_extras XXX.: საიტის_ექსტრასის რაოდენობა: XXX.
+Reminder set for event.: შეხსენება დაყენებულია ღონისძიებისთვის.
+Mins Before XXX.: მანამდე: XXX.
+Event time is XXX.: ღონისძიების დროა: XXX.
+Remind time is XXX.: შეხსენების დროა: XXX.
+Reminders for user XXX, login YYY.: შეხსენებები მომხმარებლისთვის "XXX", შედით სისტემაში "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: იძენს მომხმარებელს "XXX".
+Event id=XXX YYY already sent.: ღონისძიების ID = XXX "YYY" უკვე გაგზავნილია.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: შესვლა არ არის საჭირო ერთი მომხმარებლის რეჟიმისთვის.
+No login required for HTTP authentication.: შესვლა არ არის საჭირო HTTP ავთენტიფიკაციისთვის.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: სისტემაში არასწორი სიმბოლოა.
+Username XXX does not exist.: ნიკი "XXX" არ არსებობს.
+You cannot remove admin rights from yourself!: თქვენ არ შეგიძლიათ წაშალოთ თქვენი ადმინისტრატორის უფლებები!
+Unknown error saving user: მომხმარებლის შენახვის უცნობი შეცდომა.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: მონაწილისთვის ღონისძიების ID არ იქნა ნაპოვნი: XXX.
+Db error Could not find event id XXX.: დბ შეცდომა: ღონისძიების ID XXX ვერ მოიძებნა.
+Error Could not find event id XXX in database.: შეცდომა: მონაცემთა ბაზაში ვერ მოიძებნა ღონისძიების ID.

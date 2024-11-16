@@ -1,0 +1,2387 @@
+# Khmer km
+#
+# ទ្រង់ទ្រាយមានបឋមកថាស្រេចចិត្ត៖
+#
+# ប្រែសម្រួលដោយ៖ ឈ្មោះនិងអ៊ីមែលរបស់អ្នក
+# បច្ចុប្បន្នភាពចុងក្រោយ៖ កាលបរិច្ឆេទនៃការបកប្រែ
+# (រាប់បញ្ចូលការនាំមុខ "#" និងយោបល់ណាមួយដែលធ្វើឡើងដោយអ្នកបកប្រែមុន ៗ ។
+# បន្ទាត់ទទេដំបូងគេបញ្ចប់យោបល់បឋមកថាទាំងនេះ។ )
+#
+# អមដោយមនុស្សជាច្រើនតាមតំរូវការ៖
+#
+# ឃ្លាជាភាសាអង់គ្លេស៖ ការបកប្រែ
+# (ពីមួយជួរទៅមួយជួរដោយមិននាំមុខ "#" ។
+# "ឃ្លាអង់គ្លេស៖" រួមទាំងពោះវៀនធំ ":" ត្រូវបានផ្តល់ជូនដោយគេហទំព័រ
+# អ្នកអភិវឌ្ឍន៍ WebCalendar ។ ផ្នែករបស់អ្នកគឺ“ ការបកប្រែ” ។ )
+#
+# ឯកសារឧបករណ៍មានស្គ្រីប perl ពីរដើម្បីជួយអ្នក៖
+# - check_translation.pl
+# ចង្អុលបង្ហាញប្រសិនបើអត្ថបទទាំងអស់ត្រូវបានបកប្រែដោយជោគជ័យ។
+# - update_translation.pl
+# នឹងញែកឯកសារកម្មវិធីដើម្បីស្វែងរកការបកប្រែទាំងអស់ ('ឃ្លា') និង
+# ព័ត៌មានជំនួយ ('ឃ្លា') ។ វានឹងរៀបចំឃ្លាយោងតាមទំព័រ
+# (ឯកសារ) ដែលមានការកើតឡើងជាលើកដំបូង។ ជាជម្រើសវាអាចដាក់ស្លាក
+# ឃ្លាដែលមិនទាន់ត្រូវបានបកប្រែដោយដាក់
+#  << MISSING >>
+# នៅលើបន្ទាត់ខាងលើឃ្លា។ ហើយបើឃ្លានេះជាអក្សរកាត់
+# វានឹងរួមបញ្ចូលទាំងអត្ថបទជាភាសាអង់គ្លេសពេញលេញនៅលើឃ្លាខាងក្រោមឃ្លា។
+#
+# សំគាល់ៈខ្ញុំព្យាយាមកាត់បន្ថយទំហំឯកសារទាំងមូល។ ប្រសិនបើ "ការបកប្រែ"
+# ពាក្យ / ឃ្លាគឺដូចគ្នាបេះបិទនឹងភាសានិងអង់គ្លេសរបស់អ្នកដោយគ្រាន់តែប្រើសញ្ញា "=" ។
+#
+# សំគាល់ៈអ្នកនឹងកត់សំគាល់ការចូល "May_" ខាងក្រោម។ មានហេតុផលសម្រាប់រឿងនេះ។
+# បកប្រែ "May_" ទៅឈ្មោះពេញមួយខែនិង "May" ទៅ​ដល់,
+# ជាធម្មតាមានបីអក្សរ, អក្សរកាត់ខែ (ដូចជា "តុលា" សម្រាប់ "ខែតុលា") ។
+#
+# ខ្ញុំបានប្រើហ្គូហ្គលបកប្រែសម្រាប់រឿងនេះ។
+# វាគួរតែគ្រប់គ្រាន់រហូតដល់អ្នកនិយាយភាសាដើមអាចផ្ទៀងផ្ទាត់វាបាន។
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: កំណែ XXX
+WebCalendar is a PHP application used...: WebCalendar គឺជាកម្មវិធី PHP ដែលត្រូវបានប្រើដើម្បីថែរក្សាប្រតិទិនសម្រាប់អ្នកប្រើប្រាស់តែមួយឬក្រុមអ៊ិនធឺណិត / ក្រុមអ៊ិនធឺណេតនៃអ្នកប្រើប្រាស់។ វាក៏អាចត្រូវបានកំណត់ជាប្រតិទិនព្រឹត្តិការណ៍ផងដែរ។
+Credits: សេវាឥណទាន
+About: អំពី
+OK: យល់ព្រម
+
+########################################
+# Page: access.php
+#
+Database error XXX.: កំហុសមូលដ្ឋានទិន្នន័យ៖ XXX ។
+DEFAULT CONFIGURATION: ការការពារនិយមន័យ
+Go: ទៅ
+Save: រក្សាទុក
+Undo: មិនធ្វើវិញ
+Public Access: ការចូលប្រើជាសាធារណៈ
+Admin: រដ្ឋបាល
+User Access Control: ការគ្រប់គ្រងការចូលប្រើរបស់អ្នកប្រើប្រាស់
+Allow Access to Other Users Calendar: អនុញ្ញាតឱ្យចូលប្រើប្រតិទិនអ្នកប្រើផ្សេងទៀត
+Grant This User Access to My Calendar: ផ្តល់សិទ្ធិដល់អ្នកប្រើប្រាស់នេះចូលក្នុងប្រតិទិនរបស់ខ្ញុំ
+Type: ប្រភេទ
+Calendar: ប្រតិទិន
+View Event: មើលព្រឹត្តិការណ៍
+View: មើល
+Edit: កែសម្រួល
+Approve/Reject: យល់ព្រម / បដិសេធ
+Events: ព្រឹត្តិការណ៍
+Tasks: ភារកិច្ច
+Journals: ទិនានុប្បវត្តិ
+Can Invite: អាចអញ្ជើញបាន
+Can Email: អាចអ៊ីមែល
+Can See Time Only: អាចមើលឃើញពេលវេលាតែប៉ុណ្ណោះ
+Assistant: ជំនួយការ
+Select All: ជ្រើស​យក​ទាំងអស់
+Clear All: លុបចេញ​ទាំងអស់
+Public: សាធារណៈ
+Confidential: ការសម្ងាត់
+Private: ឯកជន
+
+########################################
+# Page: activity_log.php
+#
+Next: បន្ទាប់
+Previous: មុន
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: ព្រឹត្តិការណ៍ XXX មានរួចហើយនៅលើប្រតិទិនរបស់អ្នក។
+Invalid entry id XXX.: លេខសម្គាល់ធាតុមិនត្រឹមត្រូវ៖ "XXX" ។
+a XXX event may not be added to your calendar: នេះជាព្រឹត្តិការណ៍ XXX ហើយមិនអាចបន្ថែមទៅប្រតិទិនរបស់អ្នកទេ។
+confidential: រក្សាការសម្ងាត់
+private: ឯកជន
+Error adding event XXX.: កំហុសក្នុងការបន្ថែមព្រឹត្តិការណ៍៖ XXX ។
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: ឈ្មោះកំណត់មិនត្រឹមត្រូវ "XXX" ។
+Select: ជ្រើសរើស
+Day: ថ្ងៃ
+Week: សប្តាហ៍
+Month: ខែ
+Year: ឆ្នាំ
+Bottom: បាត
+Top: ខាងលើ
+Anyone: នរណាម្នាក់
+Participant: អ្នកចូលរួម
+Settings: ការកំណត់
+Groups: ក្រុម
+NonUser Calendars: ប្រតិទិនអ្នកមិនប្រើ
+Other: ផ្សេងទៀត
+Email: អ៊ីមែល
+Colors: ពណ៌
+Document background: សាវតាឯកសារ
+Document title: ចំណងជើងឯកសារ
+Document text: អត្ថបទឯកសារ
+My event text: អត្ថបទព្រឹត្តិការណ៍របស់ខ្ញុំ
+Table grid color: ពណ៌ក្រឡាចត្រង្គតារាង
+Table header background: ផ្ទៃខាងក្រោយក្បាលតារាង
+Table header text: អត្ថបទក្បាលតារាង
+Table cell background: ផ្ទៃខាងក្រោយក្រឡាតារាង
+Table cell background for current day: ផ្ទៃខាងក្រោយក្រឡាតារាងសម្រាប់ថ្ងៃបច្ចុប្បន្ន
+Table cell background for days with events: ផ្ទៃខាងក្រោយក្រឡាតារាងសម្រាប់ថ្ងៃជាមួយព្រឹត្តិការណ៍
+Table cell background for weekends: ផ្ទៃខាងក្រោយក្រឡាតារាងសម្រាប់ចុងសប្តាហ៍
+Table cell background for other month: ផ្ទៃខាងក្រោយក្រឡាតារាងសម្រាប់ខែផ្សេងទៀត
+Week number color: ពណ៌លេខសប្តាហ៍
+Event popup background: ផ្ទៃខាងក្រោយនៃការលេចឡើងនៃព្រឹត្តិការណ៍
+Event popup text: អត្ថបទលេចឡើងព្រឹត្តិការណ៍
+System Settings: ការកំណត់ប្រព័ន្ធ
+Help: ជំនួយ
+System options: ជម្រើសប្រព័ន្ធ
+app-name-help: បញ្ជាក់ឈ្មោះកម្មវិធីដែលនឹងបង្ហាញនៅក្នុងរបារចំណងជើងកម្មវិធីអ៊ីនធឺណិតសម្រាប់ទំព័រទាំងអស់និងនៅលើទំព័រចូល។ តម្លៃដែលអ្នកបញ្ជាក់នៅទីនេះនឹងត្រូវរកមើលនៅក្នុងឯកសារបកប្រែដែលអនុញ្ញាតឱ្យអ្នកផ្តល់ចំណងជើងផ្សេងៗគ្នាសម្រាប់ភាសាផ្សេងៗគ្នា។
+Application Name: ឈ្មោះពាក្យសុំ
+Translated Name (XXX): ឈ្មោះដែលបានបកប្រែ (XXX)
+server-url-help: បញ្ជាក់ URL មូលដ្ឋានសម្រាប់កម្មវិធី។ នេះនឹងត្រូវរាប់បញ្ចូលនៅពេលផ្ញើការរំលឹកអ៊ីមែលនិងការជូនដំណឹង។
+Server URL: URL ម៉ាស៊ីនមេ
+home-url-help: បញ្ជាក់ URL ផ្ទះសំរាប់កម្មវិធី។ នេះអាចជាដាច់ខាតឬទាក់ទង
+Home URL: គេហទំព័រ URL
+language-help: បញ្ជាក់ភាសាដែលត្រូវប្រើ។
+Language: ភាសា
+Your browser default language is XXX.: ភាសាលំនាំដើមរបស់កម្មវិធីរុករករបស់អ្នកគឺ "XXX" ។
+Allow user to use themes: អនុញ្ញាតឱ្យអ្នកប្រើប្រើស្បែក
+themes-help: អនុញ្ញាតឱ្យមានការធ្វើបច្ចុប្បន្នភាពនៃការកំណត់រចនាសម្ព័ន្ធ។ ស្លាកអក្សរតូចជាបុព្វបទអ្នកប្រើប្រាស់។
+Themes: ស្បែក
+AVAILABLE THEMES: ប្រធានបទដែលអាចប្រើបាន
+None: គ្មាន
+Preview: មើលជាមុន
+Site customization: ការប្តូរវេបសាយ
+custom-script-help: អនុញ្ញាតឱ្យបញ្ចូលអត្ថបទ Javascript ផ្ទាល់ខ្លួនឬសន្លឹករចនាប័ទ្មដែលនឹងត្រូវបញ្ចូលទៅក្នុងផ្នែក "ក្បាល" HTML នៃទំព័រទាំងអស់។
+Custom script/stylesheet: ស្គ្រីប / សន្លឹករចនាប័ទ្មផ្ទាល់ខ្លួន
+custom-header-help: អនុញ្ញាត ឲ្យ ឈុតខ្លីៗ HTML ផ្ទាល់ខ្លួនដាក់បញ្ចូលនៅផ្នែកខាងលើនៃទំព័រទាំងអស់។
+Custom header: បឋមកថាផ្ទាល់ខ្លួន
+custom-trailer-help: អនុញ្ញាត ឲ្យ បញ្ចូលអត្ថបទខ្លីៗតាម HTML នៅខាងចុងទំព័រនីមួយៗ។
+Custom trailer: ឈុតខ្លីផ្ទាល់ខ្លួន
+enable-external-header-help: អនុញ្ញាតឱ្យផ្ទុកឈុតខ្លីៗពីឯកសារខាងក្រៅ
+Allow external file for header/script/trailer: អនុញ្ញាតឯកសារខាងក្រៅសម្រាប់បឋមកថា / ស្គ្រីប / ឈុតខ្លីៗ
+Allow user to override header/trailer: អនុញ្ញាតឱ្យអ្នកប្រើបដិសេធបឋមកថា / ឈុតខ្លីៗ
+Date and Time: កាលបរិច្ឆេទ​និង​ពេលវេលា
+server-tz-help: បញ្ជាក់ចំនួនម៉ោងដើម្បីកែពេលវេលាពី UTC ទៅពេលវេលារបស់ម៉ាស៊ីនមេ។
+Server Timezone Selection: ការជ្រើសរើសតំបន់ពេលវេលារបស់ម៉ាស៊ីនមេ
+tz-help: បញ្ជាក់ចំនួនម៉ោងដើម្បីកែពេលវេលាពី UTC ទៅម៉ោងក្នុងស្រុក។
+Default Client Timezone Selection: ជម្រើសតំបន់ពេលវេលារបស់អតិថិជនលំនាំដើម
+display-general-use-gmt-help: ប្រសិនបើបានបើកដំណើរការកាលបរិច្ឆេទ / ពេលវេលាទូទៅត្រូវបានបង្ហាញជា GMT
+Display Common Use Date/Times as GMT: បង្ហាញកាលបរិច្ឆេទ / ពេលវេលាប្រើប្រាស់ទូទៅជា GMT
+date-format-help: បញ្ជាក់ទ្រង់ទ្រាយកាលបរិច្ឆេទដែលពេញចិត្ត។
+Date format: ទ្រង់ទ្រាយកាលបរិច្ឆេទ
+Small Task Date: កាលបរិច្ឆេទកិច្ចការតូច
+display-week-starts-on: បញ្ជាក់ថ្ងៃនៃសប្តាហ៍ដែលសប្តាហ៍ចាប់ផ្តើម។ ប្រសិនបើថ្ងៃច័ន្ទត្រូវបានបញ្ជាក់បន្ទាប់មកលេខសប្តាហ៍នឹងជាលេខសប្តាហ៍អាយអេសអូ។
+Week starts on: សប្តាហ៍ចាប់ផ្តើម
+display-weekend-starts-on: កំណត់ថ្ងៃនៃសប្តាហ៍សម្រាប់ចុងសប្តាហ៍ដើម្បីចាប់ផ្តើម
+Weekend starts on: ចុងសប្តាហ៍ចាប់ផ្តើម
+time-format-help: បញ្ជាក់ទ្រង់ទ្រាយពេលវេលាណាដែលត្រូវប្រើ៖<br><em>១២ ម៉ោង៖</em> បង្ហាញម៉ោង ៣:០០ ៨:៣០ ល្ងាច។<br><em>២៤ ម៉ោង៖</em> បង្ហាញ ៣០០ ដង , ឆ្នាំ ២០៣០ ។ ល។
+Time format: ទ្រង់ទ្រាយពេលវេលា
+12 hour: ១២ ម៉ោង
+24 hour: 24 ម៉ោង
+timed-evt-len-help: បញ្ជាក់វិធីសាស្ត្របញ្ចូលសម្រាប់កំណត់រយៈពេលនៃព្រឹត្តិការណ៍ដែលបានកំណត់ពេល។
+Specify timed event length by: បញ្ជាក់រយៈពេលព្រឹត្តិការណ៍ដែលបានកំណត់ពេលត្រឹម
+Duration: រយៈពេល
+End Time: ពេលវេលាបញ្ចប់
+work-hours-help: បញ្ជាក់ជួរពេលវេលាដើម្បីបង្ហាញសម្រាប់ទិដ្ឋភាពថ្ងៃ។
+Work hours: ម៉ោងធ្វើការ
+From: ពី
+to: ទៅ
+Appearance: រូបរាង
+preferred-view-help: បញ្ជាក់ទិដ្ឋភាពលំនាំដើម (ថ្ងៃសប្តាហ៍ខែឬឆ្នាំ) ។
+Preferred view: ទិដ្ឋភាពដែលចូលចិត្ត
+Allow top menu: អនុញ្ញាតអោយមានបញ្ជីមុខទំនិញខាងលើ
+Date Selectors position: ទីតាំងឧបករណ៍ជ្រើសរើសកាលបរិច្ឆេទ
+menu-themes-help: កំណត់ពណ៌និងរចនាប័ទ្មនៃម៉ឺនុយកំពូល
+Menu theme: ស្បែកម៉ឺនុយ
+fonts-help: បញ្ជាក់បញ្ជីពុម្ពអក្សរប្រព័ន្ធដែលត្រូវប្រើ (ដូចជា "Arial, Helvetica")
+Fonts: ពុម្ពអក្សរ
+display-sm_month-help: ប្រសិនបើបើកដំណើរការបង្ហាញទិដ្ឋភាពខែតូចៗនៅក្នុងខែ
+Display small months: បង្ហាញខែតូចៗ
+display-weekends-help: រួមបញ្ចូលចុងសប្តាហ៍នៅពេលមើលមួយសប្តាហ៍។
+Display weekends: បង្ហាញចុងសប្តាហ៍
+display-long-daynames-help: ប្រសិនបើបានបើកដំណើរការឈ្មោះថ្ងៃវែងត្រូវបានបង្ហាញ
+Display long day names: បង្ហាញឈ្មោះថ្ងៃវែង
+display-alldays-help: បង្ហាញថ្ងៃមុននិងខែបន្ទាប់ក្នុងទិដ្ឋភាពខែដោយបំពេញក្រឡាទាំងអស់។
+Display all days in month view: បង្ហាញថ្ងៃទាំងអស់នៅក្នុងទិដ្ឋភាពខែ
+display-week-number-help: បញ្ជាក់ថាតើលេខសប្តាហ៍ (១-៥២) គួរត្រូវបានបង្ហាញនៅក្នុងទិដ្ឋភាពខែនិងទិដ្ឋភាពសប្ដាហ៍។
+Display week number: បង្ហាញលេខសប្តាហ៍
+display-desc-print-day-help: រាប់បញ្ចូលទាំងការពិពណ៌នាព្រឹត្តិការណ៍នៅក្នុងកំណែនៃការមើលប្រចាំថ្ងៃរបស់ម៉ាស៊ីនបោះពុម្ព។
+Display description in printer day view: បង្ហាញការពិពណ៌នានៅក្នុងទិដ្ឋភាពថ្ងៃម៉ាស៊ីនព្រីន
+yearly-shows-events-help: នៅលើទិដ្ឋភាពប្រចាំឆ្នាំសូមបង្ហាញថ្ងៃដែលមានព្រឹត្តិការណ៍ជាពុម្ពអក្សរដិត។
+Display days with events in bold in month and year views: បង្ហាញថ្ងៃជាមួយព្រឹត្តិការណ៍ជាទិដ្ឋភាពដិតក្នុងខែនិងឆ្នាំ
+display-minutes-help: ប្រសិនបើបើកដំណើរការនាទីដែលបញ្ចប់ដោយ៖ ០០ នឹងត្រូវបានបង្ហាញជានិច្ច
+Display 00 minutes always: បង្ហាញ 00 នាទីជានិច្ច
+display-end-times-help: បង្ហាញពេលវេលាបញ្ចប់ព្រឹត្តិការណ៍ប្រសិនបើព្រឹត្តិការណ៍បានកំណត់ពេល
+Display end times on calendars: បង្ហាញពេលវេលាបញ្ចប់នៅលើប្រតិទិន
+allow-view-add-help: រូបតំណាង '+' នឹងត្រូវបានរាប់បញ្ចូលក្នុងការមើលដែលអនុញ្ញាតឱ្យអ្នកប្រើប្រាស់បន្ថែមព្រឹត្តិការណ៍ផ្សេងៗទៅក្នុងប្រតិទិនរបស់អ្នកប្រើប្រាស់ដ៏ទៃ។
+Include add event link in views: រួមបញ្ចូលបន្ថែមតំណព្រឹត្តិការណ៍នៅក្នុងទិដ្ឋភាព
+lunar-help: ប្រសិនបើបើកដំណើរការនឹងបង្ហាញរូបតំណាងតូចៗដែលតំណាងឱ្យដំណាក់កាលតាមច័ន្ទគតិរៀងរាល់ខែ
+Display Lunar Phases in month view: បង្ហាញដំណាក់កាលតាមច័ន្ទគតិនៅក្នុងទិដ្ឋភាពខែ
+Restrictions: ការដាក់កម្រិត
+allow-view-other-help: បញ្ជាក់ថាតើអ្នកប្រើម្នាក់អាចមើលប្រតិទិនអ្នកប្រើផ្សេងទៀត។
+Allow viewing other users calendars: អនុញ្ញាតឱ្យមើលប្រតិទិនអ្នកប្រើផ្សេងទៀត
+require-approvals-help: នៅពេលបើកដំណើរការអ្នកប្រើប្រាស់ត្រូវយល់ព្រមលើព្រឹត្តិការណ៍មុនពេលវាត្រូវបានបង្ហាញនៅលើប្រតិទិនរបស់ពួកគេ (លើកលែងតែការបង្ហាញមិនអនុញ្ញាតត្រូវបានបើក) ។ ការកំណត់កំណត់សម្គាល់នេះទៅ“ ទេ” នឹងមិនបិទការយល់ព្រមសម្រាប់ប្រតិទិនចូលដំណើរការសាធារណៈទេ (ប្រសិនបើប្រតិទិនចូលដំណើរការសាធារណៈត្រូវបានបើក) ។
+Require event approvals: ទាមទារការយល់ព្រមពីព្រឹត្តិការណ៍
+display-unapproved-help: បញ្ជាក់ថាតើព្រឹត្តិការណ៍ដែលមិនមានការយល់ព្រមត្រូវបានបង្ហាញនៅក្នុងប្រតិទិនរបស់អ្នកទេ។<br>ប្រសិនបើកំណត់ទៅ "បាទ / ចាស" នោះព្រឹត្តិការណ៍ដែលមិនត្រូវបានអនុម័តនឹងត្រូវបានបង្ហាញនៅក្នុងប្រតិទិនរបស់អ្នក (ជាពណ៌អត្ថបទខុសគ្នា) ។<br>ប្រសិនបើកំណត់ទៅ "ទេ" ពេលនោះ ព្រឹត្តិការណ៍ដែលមិនមានការអនុញ្ញាតត្រូវតែមានការយល់ព្រមមុនពេលដែលវាត្រូវបានបង្ហាញនៅក្នុងប្រតិទិនរបស់អ្នក។
+Display unapproved: បង្ហាញមិនអនុញ្ញាត
+conflict-check-help: ពិនិត្យមើលការប៉ះទង្គិចនៃព្រឹត្តិការណ៍ (ព្រឹត្តិការណ៍ពីរដែលបានគ្រោងទុកក្នុងពេលតែមួយសម្រាប់មនុស្សតែមួយ) ។ ប្រសិនបើអ្នកកំណត់វា "បាទ / ចាស" អ្នកនៅតែអាចកំណត់ពេលព្រឹត្តិការណ៍ពីរក្នុងពេលតែមួយបន្ទាប់ពីបានបញ្ជាក់ការព្រមាន។ ប្រសិនបើអ្នកកំណត់វាទៅ“ ទេ” នោះគ្មានការត្រួតពិនិត្យមើលទំនាស់ណាមួយនឹងត្រូវធ្វើឡើងទេ។ អ្នកប្រហែលជាចង់កំណត់វាទៅ "បាទ / ចាស" ដូច្នេះការត្រួតពិនិត្យជម្លោះកើតឡើង។
+Check for event conflicts: ពិនិត្យមើលជម្លោះព្រឹត្តិការណ៍
+Yes: ត្រូវហើយ
+No: ទេ
+conflict-months-help: ប្រសិនបើការពិនិត្យមើលជម្លោះកើតឡើងហើយ ("ពិនិត្យមើលជម្លោះព្រឹត្តិការណ៍" ត្រូវបានកំណត់ជា "ទេ" នោះទេនេះបញ្ជាក់ថាតើប៉ុន្មានខែទៀតទៅអនាគតយើងគួរតែពិនិត្យមើលជម្លោះប្រសិនបើអ្នករកឃើញព្រឹត្តិការណ៍បន្ថែមចំណាយពេលយូរដើម្បីដំណើរការ , កាត់បន្ថយចំនួននេះ។
+Conflict checking months: ខែពិនិត្យមើលជម្លោះ
+conflict-check-override-help: អនុញ្ញាតឱ្យអ្នកប្រើប្រាស់បដិសេធការប៉ះទង្គិចព្រឹត្តិការណ៍និងកំណត់ពេលព្រឹត្តិការណ៍ពីរឬច្រើនក្នុងពេលតែមួយ។
+Allow users to override conflicts: អនុញ្ញាតឱ្យអ្នកប្រើបដិសេធជម្លោះ
+limit-appts-help: អនុញ្ញាតឱ្យអ្នកគ្រប់គ្រងប្រព័ន្ធកំណត់ដែនកំណត់ប្រព័ន្ធលើចំនួននៃការណាត់ជួបដែលអ្នកប្រើតែមួយអាចមាននៅថ្ងៃតែមួយ។
+Limit number of timed events per day: កំណត់ចំនួនព្រឹត្តិការណ៍ដែលបានកំណត់ពេលក្នុងមួយថ្ងៃ
+limit-appts-number-help: បញ្ជាក់ចំនួនពេលវេលាអតិបរមានៃព្រឹត្តិការណ៍ដែលអ្នកប្រើប្រាស់អាចមានក្នុងមួយថ្ងៃ។
+Maximum timed events per day: ព្រឹត្តិការណ៍ពេលវេលាអតិបរមាក្នុងមួយថ្ងៃ
+crossday-help: ប្រសិនបើបានបើកដំណើរការព្រឹត្តិការណ៍ដែលមានរយៈពេលជាច្រើនថ្ងៃនឹងត្រូវបានបង្ហាញនៅថ្ងៃផ្សេងគ្នា
+Disable Cross-Day Events: បិទព្រឹត្តិការណ៍ឆ្លងថ្ងៃ
+disable-location-field-help: ការជ្រើសរើស "បាទ / ចាស" នឹងលុបវាល "ទីតាំង" ចេញពីទំព័រព័ត៌មានព្រឹត្តិការណ៍
+Disable Location field: បិទវាលទីតាំង
+disable-url-field-help: ការជ្រើសរើស "បាទ / ចាស" នឹងលុបវាល "URL" ចេញពីទំព័រព័ត៌មានព្រឹត្តិការណ៍
+Disable URL field: បិទវាល URL
+disable-priority-field-help: ការជ្រើសរើស "បាទ / ចាស" នឹងលុបវាល "អាទិភាព" ចេញពីទំព័រព័ត៌មានព្រឹត្តិការណ៍ដោយផ្តល់នូវចំណុចប្រទាក់សាមញ្ញសម្រាប់អ្នកថ្មី។
+Disable Priority field: បិទវាលអាទិភាព
+disable-access-field-help: ការជ្រើសរើស "បាទ / ចាស" នឹងលុបវាល "ចូលប្រើ" ចេញពីទំព័រព័ត៌មានព្រឹត្តិការណ៍ដោយផ្តល់នូវចំណុចប្រទាក់សាមញ្ញសម្រាប់អ្នកថ្មី។
+Disable Access field: បិទដំណើរការ Access field
+disable-participants-field-help: ការជ្រើសរើស "បាទ / ចាស" នឹងលុបវាល "អ្នកចូលរួម" ចេញពីទំព័រព័ត៌មានព្រឹត្តិការណ៍ដោយរារាំងអ្នកប្រើប្រាស់មិនឱ្យបន្ថែមអ្នកប្រើប្រាស់ផ្សេងទៀតទៅព្រឹត្តិការណ៍របស់ពួកគេ។ ប្រសិនបើអ្នកបើកជម្រើសនេះអ្នកប្រហែលជាចង់បិទដំណើរការ "អនុញ្ញាតឱ្យមើលប្រតិទិនអ្នកប្រើផ្សេងទៀត" ផងដែរ។
+Disable Participants field: បិទវាលអ្នកចូលរួម
+disable-repeating-field-help: ការជ្រើសរើស "បាទ / ចាស" នឹងលុបវាល "ធ្វើម្តងទៀត" នៅពេលបន្ថែមព្រឹត្តិការណ៍។ នេះនឹងផ្តល់នូវចំណុចប្រទាក់ងាយសម្រាប់អ្នកថ្មី។
+Disable Repeating field: បិទវាលដដែលៗ
+allow-html-description-help: ប្រសិនបើបានបើកដំណើរការអ្នកប្រើអាចបញ្ចូល HTML នៅក្នុងប្រអប់ពិពណ៌នាព្រឹត្តិការណ៍។ ប្រសិនបើមិនបានបើកទេស្លាក HTML នឹងត្រូវបានរត់ចេញដើម្បីបង្ហាញជាអត្ថបទធម្មតា។ ការព្រមាន៖ ការបើកដំណើរការមុខងារនេះនឹងអនុញ្ញាតឱ្យអ្នកប្រើប្រាស់យោងរូបភាពនៅលើគេហទំព័រផ្សេងទៀត។
+Allow HTML in Description: អនុញ្ញាត HTML នៅក្នុងការពិពណ៌នា
+Popups: ការលេចឡើង
+disable-popups-help: បិទការលេចឡើងពីការមើលប្រតិទិន
+Disable Pop-Ups: បិទ Pop -Ups
+popup-includes-siteextras-help: ប្រសិនបើបានបើកដំណើរការអនុញ្ញាតឱ្យរៀបចំកន្លែងព្រឹត្តិការណ៍ផ្ទាល់ខ្លួននៅក្នុងឯកសារ site_extras.php នឹងត្រូវបានបង្ហាញនៅក្នុងប្រអប់ព្រឹត្តិការណ៍។
+Display Site Extras in popup: បង្ហាញបណ្តាញបន្ថែមនៅលើលេចឡើង
+popup-includes-participants-help: ប្រសិនបើបានបើកអ្នកចូលរួមត្រូវបានបង្ហាញនៅក្នុងផ្ទាំងលេចឡើងនៃព្រឹត្តិការណ៍។
+Display Participants in popup: បង្ហាញអ្នកចូលរួមក្នុងការលេចឡើង
+Miscellaneous: ផ្សេងៗ
+remember-last-login-help: នៅពេលបើកដំណើរការការចូលរបស់អ្នកប្រើប្រាស់នឹងត្រូវបានបំពេញសម្រាប់ពួកគេនៅលើទំព័រចូល (ប៉ុន្តែមិនមែនពាក្យសម្ងាត់ទេ) ហើយចំណូលចិត្តរបស់អ្នកប្រើប្រាស់នឹងត្រូវបានផ្ទុក (រាប់បញ្ចូលទាំងពណ៌ដែលពួកគេពេញចិត្តនិងការជ្រើសរើសភាសា) ។
+Remember last login: ចងចាំការចូលចុងក្រោយ
+summary_length-help: រយៈពេលខ្លីបំផុតនៃការពិពណ៌នាសង្ខេបនៅក្នុងទិដ្ឋភាពប្រតិទិន
+Brief Description Length: ប្រវែងការពិពណ៌នាសង្ខេប
+user_sort-help: កំណត់លំដាប់តម្រៀបសម្រាប់អ្នកប្រើនិងបញ្ជីអ្នកប្រើ
+User Sort Order: លំដាប់តម្រៀបអ្នកប្រើ
+Lastname, Firstname: នាម​គោត្តនាម
+Firstname, Lastname: នាម​គោត្តនាម
+allow-public-access-help: នៅពេលបើកដំណើរការប្រតិទិនអាចត្រូវបានប្រើជាប្រតិទិនសាធារណៈដែលបានតែអានដែលមិនតម្រូវឱ្យអ្នកប្រើប្រាស់ចូល។
+Allow public access: អនុញ្ញាតឱ្យចូលប្រើជាសាធារណៈ
+public-access-default-visible: ព្រឹត្តិការណ៍ពីប្រតិទិនសាធារណៈនឹងបង្ហាញដោយស្វ័យប្រវត្តិលើប្រតិទិនរបស់អ្នកប្រើប្រាស់
+Public access visible by default: ការចូលប្រើជាសាធារណៈអាចមើលឃើញតាមលំនាំដើម
+public-access-default-selected: នៅពេលបន្ថែមព្រឹត្តិការណ៍ថ្មីអ្នកប្រើសាធារណៈនឹងត្រូវបានជ្រើសរើសតាមលំនាំដើមជាអ្នកចូលរួម។
+Public access is default participant: ការចូលប្រើជាសាធារណៈគឺជាអ្នកចូលរួមលំនាំដើម
+public-access-view-others-help: នៅពេលចូលប្រើប្រព័ន្ធដោយការចូលប្រើជាសាធារណៈបញ្ជាក់ថាតើអ្នកប្រើអាចមើលប្រតិទិនរបស់អ្នកប្រើប្រតិទិនផ្សេងទៀត។
+Public access can view other users: ការចូលប្រើជាសាធារណៈអាចមើលអ្នកប្រើប្រាស់ផ្សេងទៀត
+public-access-can-add-help: នៅពេលបើកដំណើរការអ្នកប្រើដែលចូលប្រើប្រព័ន្ធតាមរយៈការចូលដំណើរការសាធារណៈនឹងអាចបន្ថែមព្រឹត្តិការណ៍ថ្មីៗប៉ុន្តែពួកគេនឹងមិនបង្ហាញនៅក្នុងប្រតិទិនរហូតដល់អ្នកគ្រប់គ្រងយល់ព្រមលើព្រឹត្តិការណ៍ថ្មី។
+Public access can add events: ការចូលប្រើជាសាធារណៈអាចបន្ថែមព្រឹត្តិការណ៍ផ្សេងៗ
+public-access-add-requires-approval-help: បញ្ជាក់ថាតើព្រឹត្តិការណ៍ដែលបានបន្ថែមតាមរយៈគណនីចូលដំណើរការសាធារណៈតម្រូវឱ្យមានការយល់ព្រមមុនពេលបង្ហាញ។
+Public access new events require approval: ព្រឹត្តិការណ៍ថ្មីៗចូលដំណើរការជាសាធារណៈទាមទារការយល់ព្រម
+public-access-sees-participants-help: ប្រសិនបើបានបើកដំណើរការអ្នកប្រើប្រាស់ចូលមើលប្រតិទិនពីគណនីសាធារណៈនឹងអាចមើលឃើញអ្នកចូលរួមព្រឹត្តិការណ៍ប្រសិនបើពួកគេមើលព័ត៌មានលម្អិតនៃព្រឹត្តិការណ៍។
+Public access can view participants: ការចូលប្រើជាសាធារណៈអាចមើលអ្នកចូលរួម
+public-access-override-help: អនុញ្ញាតឱ្យលាក់ឈ្មោះព្រឹត្តិការណ៍និងការពិពណ៌នានៅលើប្រតិទិនសាធារណៈ
+Override event name/description for public access: បដិសេធឈ្មោះ / ការពិពណ៌នាព្រឹត្តិការណ៍សម្រាប់ការចូលប្រើជាសាធារណៈ
+public-access-override-text-help: អត្ថបទដែលត្រូវបង្ហាញប្រសិនបើជម្រើសខាងលើត្រូវបានបើក។ ប្រសិនបើ 'មិនមាន' វានឹងត្រូវបានបកប្រែ។
+Text to display to public access: អត្ថបទដើម្បីបង្ហាញដើម្បីចូលប្រើជាសាធារណៈ
+public-access-captcha-help: ប្រសិនបើបានបើកដំណើរការព្រឹត្តិការណ៍ថ្មីបន្ថែមដោយសាធារណៈតំរូវអោយឆ្លងកាត់សុពលភាព CAPTCHA ។
+Require CAPTCHA validation for public access new events: តម្រូវឱ្យមានសុពលភាព CAPTCHA សម្រាប់ការចូលដំណើរការព្រឹត្តិការណ៍ថ្មីៗជាសាធារណៈ
+uac-enabled-help: បើកដំណើរការការគ្រប់គ្រងកម្រិតអ្នកប្រើ
+User Access Control enabled: ការគ្រប់គ្រងការចូលប្រើរបស់អ្នកប្រើប្រាស់ត្រូវបានបើកដំណើរការ
+groups-enabled-help: បើកដំណើរការគាំទ្រក្រុមដែលអនុញ្ញាតឱ្យអ្នកប្រើជ្រើសរើសអ្នកប្រើតាមក្រុម។
+Groups enabled: បានបើកក្រុម
+user-sees-his-group-help: ប្រសិនបើបានបើកអ្នកប្រើនឹងមិនឃើញអ្នកប្រើប្រាស់ប្រតិទិនដែលមិននៅក្នុងក្រុមរបស់ពួកគេទេ។
+User sees only his groups: អ្នកប្រើប្រាស់មើលឃើញតែក្រុមរបស់គាត់ប៉ុណ្ណោះ
+nonuser-enabled-help: ប្រសិនបើបានបើកដំណើរការអ្នកគ្រប់គ្រងអាចមានជម្រើសក្នុងការបន្ថែមប្រតិទិនមិនមែនអ្នកប្រើ
+Nonuser enabled: បានបើកប្រតិទិនអ្នកប្រើ
+nonuser-list-help: កន្លែងដែលត្រូវបង្ហាញប្រតិទិនមិនប្រើនៅក្នុងបញ្ជីអ្នកចូលរួម
+Nonuser list: បង្ហាញនៅក្នុងបញ្ជីអ្នកចូលរួមនៅ
+Upcoming Events: ព្រឹត្តិការណ៍ជិតមកដល់
+upcoming-events-help: បើកដំណើរការ upcoming.php
+Enabled: បានបើកដំណើរការ
+upcoming-events-allow-override: អនុញ្ញាតឱ្យអ្នកប្រើប៉ារ៉ាវ៉ាន់សម្រាប់ upcoming.php
+Allow user override: អនុញ្ញាតឱ្យអ្នកប្រើបដិសេធ
+upcoming-events-display-caticons: រួមបញ្ចូលរូបតំណាងប្រភេទនៅក្នុង upcoming.php
+Display category icons: បង្ហាញរូបតំណាងប្រភេទ
+upcoming-events-display-layers: បង្ហាញស្រទាប់នៅក្នុង upcoming.php
+Display layers: បង្ហាញស្រទាប់
+upcoming-events-display-links: បង្ហាញតំណនៅក្នុង upcoming.php
+Display links to events: បង្ហាញតំណភ្ជាប់ទៅព្រឹត្តិការណ៍
+upcoming-events-display-popups: បង្ហាញការលេចឡើងនៃព្រឹត្តិការណ៍នៅក្នុង upcoming.php
+Display event popups: បង្ហាញការលេចឡើងនៃព្រឹត្តិការណ៍
+reports-enabled-help: ប្រសិនបើបានបើកអ្នកប្រើនឹងឃើញផ្នែក "របាយការណ៍" នៅផ្នែកខាងក្រោមនៃទំព័រនីមួយៗហើយនឹងត្រូវបានអនុញ្ញាតឱ្យបង្កើតរបាយការណ៍ផ្ទាល់ខ្លួន។ លើសពីនេះទៅទៀតអ្នកប្រើប្រាស់រដ្ឋបាលអាចបង្កើតរបាយការណ៍សកលដែលនឹងបង្ហាញនៅផ្នែកខាងក្រោមនៃទំព័រអ្នកប្រើប្រាស់ទាំងអស់។
+Reports enabled: បានបើករបាយការណ៍
+subscriptions-enabled-help: បញ្ជាក់ប្រសិនបើអ្នកប្រើប្រាស់ពីចម្ងាយអាចជាវប្រតិទិនអ្នកប្រើ WebCalendar ដែលអនុញ្ញាតឱ្យពួកគេមើលឃើញព្រឹត្តិការណ៍របស់អ្នកប្រើ WebCalendar នៅក្នុងកម្មវិធីដែលអាចប្រើបានរបស់ iCal របស់ពួកគេ (ដូចជាប្រតិទិនរបស់ Apple របស់ iCal ឬ Mozilla) ។
+Allow remote subscriptions: អនុញ្ញាតការជាវពីចម្ងាយ
+remotes-enabled-help: អនុញ្ញាតឱ្យអ្នកប្រើផ្ទុកឯកសារ ics ពីចម្ងាយដោយប្រើ URL
+Allow remote calendars: អនុញ្ញាតប្រតិទិនពីចម្ងាយ
+rss-enabled-help: បញ្ជាក់ប្រសិនបើប្រតិទិនរបស់អ្នកប្រើអាចទទួលបានពីមតិព័ត៌មាន RSS ។
+Enable RSS feed: បើកដំណើរការមតិព័ត៌មាន RSS
+categories-enabled-help: បើកដំណើរការគាំទ្រសម្រាប់ប្រភេទព្រឹត្តិការណ៍។
+Categories enabled: បានបើកប្រភេទ
+icon_upload-enabled-help: ប្រសិនបើបានបើកអ្នកប្រើអាចផ្ទុកឡើងរូបតំណាងប្រភេទ
+Category Icon Upload enabled: បានផ្ទុកការផ្ទុករូបតំណាងប្រភេទ
+(Requires XXX folder to exist.): (តម្រូវឲ្យ មានថត XXX ។ )
+display-tasks-help: បង្ហាញបង្អួចភារកិច្ចតូចនៅលើប្រតិទិនខែនិងថ្ងៃ
+Display small task list: បង្ហាញបញ្ជីកិច្ចការតូច
+display-tasks-in-grid-help: បង្ហាញភារកិច្ចនៅក្នុងប្រតិទិនរួមជាមួយព្រឹត្តិការណ៍
+Display tasks in Calendars: បង្ហាញភារកិច្ចនៅក្នុងប្រតិទិន
+allow-external-users-help: បញ្ជាក់ថាតើអ្នកប្រើដែលមិនប្រតិទិនអាចត្រូវបានបន្ថែមទៅព្រឹត្តិការណ៍។ នេះអនុញ្ញាតឱ្យអ្នកប្រើដែលមិនមែនជាប្រតិទិនត្រូវបានចុះបញ្ជីជាអ្នកចូលរួមព្រឹត្តិការណ៍។
+Allow external users: អនុញ្ញាតឱ្យអ្នកប្រើខាងក្រៅ
+external-can-receive-notification-help: នៅពេលអ្នកប្រើប្រាស់ខាងក្រៅត្រូវបានបើកនិងការប្រើប្រាស់អ៊ីមែលត្រូវបានបើកអ្នកប្រើខាងក្រៅអាចទទួលបានការជូនដំណឹងតាមអ៊ីមែលនៅពេលព្រឹត្តិការណ៍ត្រូវបានបន្ថែមធ្វើបច្ចុប្បន្នភាពឬលុបចោល (ប្រសិនបើអាសយដ្ឋានអ៊ីមែលរបស់អ្នកប្រើខាងក្រៅត្រូវបានផ្តល់ជូន) ។
+External users can receive email notifications: អ្នកប្រើប្រាស់ខាងក្រៅអាចទទួលបានការជូនដំណឹងតាមអ៊ីមែល
+external-can-receive-reminder-help: នៅពេលអ្នកប្រើប្រាស់ខាងក្រៅត្រូវបានបើកនិងការប្រើប្រាស់អ៊ីមែលត្រូវបានបើកអ្នកប្រើខាងក្រៅអាចទទួលបានការរំលឹកអ៊ីមែល (ប្រសិនបើអាសយដ្ឋានអ៊ីម៉ែលរបស់អ្នកប្រើខាងក្រៅត្រូវបានផ្តល់ជូន) ។
+External users can receive email reminders: អ្នកប្រើប្រាស់ខាងក្រៅអាចទទួលបានការរំលឹកតាមអ៊ីមែល
+allow-self-registration-help: អនុញ្ញាតឱ្យអ្នកប្រើប្រាស់ថ្មីចុះឈ្មោះដោយខ្លួនឯង
+Allow self-registration: អនុញ្ញាតឱ្យចុះឈ្មោះដោយខ្លួនឯង
+use-blacklist-help: កំណត់ការចូលប្រើមុខងារ WebCalendar ផ្អែកលើអាសយដ្ឋាន IP
+Restrict self-registration to blacklist: ដាក់កម្រិតការចុះឈ្មោះដោយខ្លួនឯងទៅក្នុងបញ្ជីខ្មៅ
+allow-self-registration-full-help: អនុញ្ញាតឱ្យអ្នកប្រើប្រាស់ថ្មីបំពេញដំណើរការចុះឈ្មោះដោយខ្លួនឯងតាមអ៊ិនធរណេត
+Use self-registration email notifications: បង្កើតពាក្យសម្ងាត់ហើយផ្ញើទៅអ្នកប្រើប្រាស់ថ្មី
+allow-attachment-help: អនុញ្ញាតឱ្យអ្នកប្រើបន្ថែមឯកសារភ្ជាប់ទៅនឹងព្រឹត្តិការណ៍។
+Allow file attachments to events: អនុញ្ញាតឱ្យភ្ជាប់ឯកសារទៅនឹងព្រឹត្តិការណ៍
+Admin and owner can always add attachments if enabled.: អ្នកគ្រប់គ្រងនិងម្ចាស់តែងតែអាចបន្ថែមឯកសារភ្ជាប់ប្រសិនបើបើកដំណើរការ។
+allow-comments-help: អនុញ្ញាតឱ្យអ្នកប្រើបន្ថែមមតិយោបល់ទៅព្រឹត្តិការណ៍។
+Allow comments to events: អនុញ្ញាតឱ្យយោបល់ទៅព្រឹត្តិការណ៍
+Admin and owner can always add comments if enabled.: អ្នកគ្រប់គ្រងនិងម្ចាស់តែងតែអាចបន្ថែមមតិយោបល់ប្រសិនបើបើកដំណើរការ។
+email-enabled-help: បើកឬបិទរាល់ការផ្ញើអ៊ីមែលសម្រាប់ការជូនដំណឹងនិងរំលឹក។ កំណត់យក "ទេ" ប្រសិនបើម៉ាស៊ីនមេរបស់អ្នកមិនបានរៀបចំត្រឹមត្រូវដើម្បីផ្ញើសំបុត្រ។
+Email enabled: បានបើកអ៊ីមែល
+email-default-sender: បញ្ជាក់អាសយដ្ឋានអ៊ីមែលដើម្បីបញ្ជាក់ជាអ្នកផ្ញើនៅពេលផ្ញើការរំលឹក។
+Default sender address: អាសយដ្ឋានអ្នកផ្ញើលំនាំដើម
+email-mailer: ជ្រើសរើសប្រភេទអ៊ីមែល (SMTP, PHP PHP, mailmail)
+Email Mailer: អ្នកផ្ញើអ៊ីមែល
+email-smtp-host: ឈ្មោះម៉ាស៊ីនរបស់ម៉ាស៊ីនមេ SMTP ដែលបំបែកដោយសញ្ញាក្បៀស
+SMTP Host name(s): ឈ្មោះម៉ាស៊ីន SMTP
+email-smtp-port: លេខច្រក SMTP (ធម្មតា ២៥)
+SMTP Port Number: លេខច្រក SMTP
+email-smtp-auth: ប្រើការផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវ SMTP
+SMTP Authentication: ការផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវ SMTP
+email-smtp-username: ឈ្មោះអ្នកប្រើ SMTP ប្រសិនបើប្រើការផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវ
+SMTP Username: ឈ្មោះអ្នកប្រើ SMTP
+email-smtp-password: ពាក្យសម្ងាត់ SMTP ប្រសិនបើប្រើការផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវ
+SMTP Password: លេខសម្ងាត់ SMTP
+Default user settings: ការកំណត់អ្នកប្រើលំនាំដើម
+email-format: បញ្ជាក់ចំណូលចិត្តសម្រាប់ HTML ឬសារអត្ថបទធម្មតា
+Email format preference: ចំណូលចិត្តទ្រង់ទ្រាយអ៊ីមែល
+HTML: =
+Plain Text: អត្ថបទ​ធម្មតា
+email-include-ics: រួមបញ្ចូលឯកសារអាយស៊ី។ អាយ។ អេស។ អាយ។ អេសដើម្បីសារអ៊ីមែល
+Include iCalendar attachments: រួមបញ្ចូលឯកសារភ្ជាប់ iCalendar
+email-event-reminders-help: បញ្ជាក់ថាតើត្រូវផ្ញើការរំលឹកព្រឹត្តិការណ៍ឬអត់។
+Event reminders: កម្មវិធីរំលឹកព្រឹត្តិការណ៍
+email-event-added: បញ្ជាក់ថាតើត្រូវផ្ញើការជូនដំណឹងតាមអ៊ីមែលនៅពេលព្រឹត្តិការណ៍ត្រូវបានបន្ថែមទៅប្រតិទិនរបស់អ្នក។
+Events added to my calendar: ព្រឹត្តិការណ៍ត្រូវបានបន្ថែមទៅប្រតិទិនរបស់ខ្ញុំ
+email-event-updated: បញ្ជាក់ថាតើត្រូវផ្ញើការជូនដំណឹងតាមអ៊ីមែលដែរឬទេនៅពេលព្រឹត្តិការណ៍ត្រូវបានធ្វើបច្ចុប្បន្នភាពលើប្រតិទិនរបស់អ្នក។
+Events updated on my calendar: ព្រឹត្តិការណ៍បានធ្វើបច្ចុប្បន្នភាពលើប្រតិទិនខ្ញុំ
+email-event-deleted: បញ្ជាក់ថាតើត្រូវផ្ញើការជូនដំណឹងតាមអ៊ីមែលនៅពេលព្រឹត្តិការណ៍មួយត្រូវបានយកចេញពីប្រតិទិនរបស់អ្នក។
+Events removed from my calendar: ព្រឹត្តិការណ៍បានលុបចេញពីប្រតិទិនរបស់ខ្ញុំ
+email-event-rejected: បញ្ជាក់ថាតើត្រូវផ្ញើការជូនដំណឹងតាមអ៊ីមែលនៅពេលអ្នកចូលរួមបដិសេធព្រឹត្តិការណ៍ដែលមាននៅលើប្រតិទិនរបស់អ្នក។
+Event rejected by participant: ព្រឹត្តិការណ៍ត្រូវបានបដិសេធដោយអ្នកចូលរួម
+email-event-create: បញ្ជាក់ថាតើអ្នកបង្កើតធាតុនឹងទទួលបានអ៊ីមែលដែរឬទេ
+Event that I create: ព្រឹត្តិការណ៍ដែលខ្ញុំបង្កើត
+Color options: ជម្រើសពណ៌
+Allow user to customize colors: អនុញ្ញាតឱ្យអ្នកប្រើប្តូរពណ៌តាមបំណង
+gradient-colors: ប្រសិនបើបានបើកពណ៌ជម្រាលត្រូវបានប្រើ។ នេះអាចប៉ះពាល់យ៉ាងខ្លាំងដល់ការអនុវត្ត។
+Enable gradient images for background colors: បើកដំណើរការរូបភាពជម្រាលសម្រាប់ពណ៌ផ្ទៃខាងក្រោយ
+Not available: មិនអាច
+Background Image options: ជម្រើសរូបភាពផ្ទៃខាងក្រោយ
+bgimage-help: URL នៃរូបភាពផ្ទៃខាងក្រោយដែលចង់បាន។ អាចជាតំណភ្ជាប់ដែលទាក់ទង។
+Background Image: រូបភាព​ផ្ទៃ​ខាង​ក្រោយ
+bgrepeat-help: គ្រប់គ្រងឥរិយាបថនៃរូបភាពផ្ទៃខាងក្រោយម្តងទៀត។
+Background Repeat: សាឡើងវិញផ្ទៃខាងក្រោយ
+
+########################################
+# Page: adminhome.php
+#
+Assistants: ជំនួយការ
+Preferences: ចំណូលចិត្ត
+Control Panel: ផ្ទាំងបញ្ជា
+Users: អ្នកប្រើប្រាស់
+Account: គណនី
+Categories: ប្រភេទ
+Views: ទស្សនៈ
+Layers: ស្រទាប់
+Reports: របាយការណ៍
+Delete Events: លុបព្រឹត្តិការណ៍
+Activity Log: របាយការណ៍​សកម្មភាព
+System Log: កំណត់ហេតុប្រព័ន្ធ
+Security Audit: សវនកម្មសន្តិសុខ
+Public Preferences: ចំណូលចិត្តសាធារណៈ
+Unapproved Public Events: ព្រឹត្តិការណ៍សាធារណៈដែលមិនមានការយល់ព្រម
+Administrative Tools: ឧបករណ៍រដ្ឋបាល
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: ឈ្មោះស្ទួន៖ "XXX" ។
+Username XXX already exists.: ឈ្មោះអ្នកប្រើ "XXX" មានរួចហើយ។
+Email address XXX already exists.: អាសយដ្ឋានអ៊ីមែល "XXX" មានរួចហើយ។
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): យោបល់បន្ថែម (ជាជម្រើស)
+Approve and Send: អនុម័តនិងផ្ញើ
+Approve and Exit: អនុម័តនិងចាកចេញ
+(Your comments will be emailed to the event creator.): (យោបល់របស់អ្នកនឹងត្រូវបានផ្ញើតាមអ៊ីមែលទៅអ្នកបង្កើតព្រឹត្តិការណ៍។ )
+Hello, XXX.: សួស្តី XXX ។
+XXX has approved an appointment and added comments.: ការណាត់ជួបត្រូវបានអនុម័តនិងយោបល់បន្ថែមដោយ XXX ។
+Subject XXX: ប្រធានបទ៖ "XXX" ។
+Description XXX: ការពិពណ៌នា: "XXX" ។
+Date XXX: កាលបរិច្ឆេទ៖ XXX
+Time XXX: ពេលវេលា៖ XXX
+Comments XXX: យោបល់៖ XXX
+Approved w/Comments by XXX.: យល់ស្របលើ w / យោបល់ដោយ៖ XXX ។
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: របៀបគ្រប់គ្រង
+Your assistants: ជំនួយការរបស់អ្នក
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: កំហុសមិនស្គាល់។
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: កំហុសកម្មវិធី៖ មិនមានបញ្ជាក់ XXX ទេ!
+user: អ្នក​ប្រើ
+year: ឆ្នាំ
+month: ខែ
+day: ថ្ងៃ
+
+########################################
+# Page: category.php
+#
+Category Icon: រូបតំណាងប្រភេទ
+Global: សកល
+The permissions for the icons directory are set to read-only: ការអនុញ្ញាតសម្រាប់ថតរូបសញ្ញាត្រូវបានកំណត់អោយអានតែប៉ុណ្ណោះ។
+Category Name: ឈ្មោះប្រភេទ:
+Color: ពណ៌
+Remove Icon: យករូបតំណាងចេញ៖
+Add Icon to Category: បន្ថែមរូបតំណាងទៅប្រភេទ
+Upload: ផ្ទុកឡើង
+GIF or PNG 6kb max: GIF ឬ PNG ៦ គ។ កអតិបរមា
+Search for existing icons: ស្វែងរករូបតំណាងដែលមានស្រាប់
+Add: បន្ថែម
+Delete: លុប
+Are you sure you want to delete this entry?: តើអ្នកពិតជាចង់លុបធាតុនេះឬ?
+Make New Category: បង្កើតប្រភេទថ្មី
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: ទាមទារឈ្មោះប្រភេទ
+File size exceeds maximum.: ទំហំឯកសារលើសពីអតិបរមា។
+File is not a GIF or PNG image: ឯកសារមិនមែនជារូបភាព GIF ឬ PNG ទេ
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: ប្រភេទដែលអាចប្រើបាន
+ENTRY CATEGORIES: ប្រភេទវិទូ
+Remove: យកចេញ
+Global Category: ប្រភេទសកល
+Cancel: បោះបង់
+
+########################################
+# Page: colors.php
+#
+Add Custom: បន្ថែមផ្ទាល់ខ្លួន
+Basic Colors: ពណ៌មូលដ្ឋាន
+Current Color: ពណ៌បច្ចុប្បន្ន
+Custom Colors: ពណ៌ផ្ទាល់ខ្លួន
+Old Color: ពណ៌ចាស់
+
+########################################
+# Page: combo.php
+#
+Select None: ជ្រើសរើសគ្មាន
+Agenda: របៀបវារៈ
+Add Task: បន្ថែមភារកិច្ច
+Description: ការពិពណ៌នា
+Date: កាលបរិច្ឆេទ
+Time: ពេលវេលា
+Priority: អាទិភាព
+Access: ការចូលប្រើ
+Created by: បង្កើត​ឡើង​ដោយ
+Updated: បានធ្វើបច្ចុប្បន្នភាព
+Participants: អ្នកចូលរួម
+Attachments: ឯកសារភ្ជាប់
+Comments: យោបល់
+Brief Description: ការពិពណ៌នាសង្ខេប
+Full Description: ការពិពណ៌នាពេញលេញ
+Category: ប្រភេទ
+Add event detail: បន្ថែមលម្អិតព្រឹត្តិការណ៍
+Start Date: ថ្ងៃ​ចាប់ផ្តើម
+Due Date: កាលបរិច្ឆេទ​កំណត់
+Add task detail: បន្ថែមលម្អិតភារកិច្ច
+All: ទាំងអស់
+Error: កំហុស
+no response from server: គ្មានការឆ្លើយតបពីម៉ាស៊ីនមេ
+JSON error: កំហុស JSON
+High: ខ្ពស់
+Medium: មធ្យម
+Low: ទាប
+Today: ថ្ងៃនេះ
+Add Entry: បន្ថែមធាតុ
+Unnamed Event: ព្រឹត្តិការណ៍គ្មានឈ្មោះ
+Unnamed Task: ភារកិច្ចដែលមិនមានឈ្មោះ
+Refresh: ធ្វើ​ឱ្យ​ស្រស់
+Click to add entry: ចុចដើម្បីបន្ថែមធាតុ
+Name: ឈ្មោះ
+pm: ល្ងាច
+am: ខ្ញុំ
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX បានលុបចោលការណាត់ជួប។
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: លេខសម្គាល់ប៊្លុកមិនត្រឹមត្រូវ
+
+########################################
+# Page: docadd.php
+#
+Add Comment: បន្ថែមមតិយោបល់
+Add Attachment: បន្ថែមឯកសារភ្ជាប់
+Subject: មុខវិជ្ជា
+Comment: វិចារ
+Upload file: ផ្ទុកឯកសារឡើង
+
+########################################
+# Page: docdel.php
+#
+Removed: បានយកចេញ
+
+########################################
+# Page: edit_entry.php
+#
+days: ថ្ងៃ
+hours: ម៉ោង
+minutes: នាទី
+You are not authorized to edit this task.: អ្នកមិនត្រូវបានអនុញ្ញាតឱ្យកែសម្រួលភារកិច្ចនេះទេ។
+is in a different timezone than you are. Currently: គឺស្ថិតនៅក្នុងតំបន់ពេលវេលាខុសពីអ្នក។ បច្ចុប្បន្ន
+hour ahead of you: ម៉ោងមុនអ្នក
+hour behind you: ម៉ោងនៅពីក្រោយអ្នក
+hours ahead of you: ម៉ោងមុនអ្នក
+hours behind you: ម៉ោងនៅពីក្រោយអ្នក
+XXX is in a different timezone (ahead): (XXX ស្ថិតនៅក្នុងតំបន់ពេលវេលាខុសគ្នា។ YYY នៅពីមុខអ្នក។ -&nbsp;ហ្ស៊ីហ្ស៊ីហ្ស)
+XXX is in a different timezone (behind): (XXX ស្ថិតនៅក្នុងតំបន់ពេលវេលាខុសគ្នា។ យ៉យយនៅពីក្រោយអ្នក។<br>
+Time entered here is based on your Timezone.: ពេលវេលាដែលបានបញ្ចូលនៅទីនេះគឺផ្អែកលើពេលវេលារបស់អ្នក។
+Edit Entry: កែសម្រួលធាតុ
+Details: ព័ត៌មានលម្អិត
+Repeat: ធ្វើម្តងទៀត
+Reminders: កម្មវិធីរំលឹក
+brief-description-help: នេះគួរតែផ្តល់នូវការពិពណ៌នាខ្លី (ប្រហែល 20 តួអក្សរ) នៃព្រឹត្តិការណ៍។ នេះនឹងតំណាងឱ្យព្រឹត្តិការណ៍នៅពេលមើលប្រតិទិន។
+full-description-help: នេះគួរតែបំពេញព័ត៌មានលម្អិតនៃព្រឹត្តិការណ៍។ ព័ត៌មាននេះអាចត្រូវបានគេមើលឃើញនៅពេលអ្នកប្រើប្រាស់មើលព្រឹត្តិការណ៍។
+access-help: បញ្ជាក់ពីកម្រិតចូលដំណើរការនៃព្រឹត្តិការណ៍។ <ul> <li> សាធារណៈជនៈគ្រប់គ្នាអាចមើលឃើញព័ត៌មានលំអិតនៃព្រឹត្តិការណ៍នេះ។</li> <li> ការសម្ងាត់៖ អ្នកផ្សេងទៀតអាចដឹងថាអ្នកមានធាតុសម្រាប់កាលបរិច្ឆេទនិងពេលវេលានោះប៉ុន្តែ មិនមែនជាព័ត៌មានលំអិតអំពីអ្វីនោះទេ។</li></ul>
+priority-help: បញ្ជាក់អាទិភាពនៃព្រឹត្តិការណ៍។ ព្រឹត្តិការណ៍អាទិភាពខ្ពស់នឹងត្រូវបានបង្ហាញជាអក្សរដិត។
+category-help: បញ្ជាក់ប្រភេទនៃព្រឹត្តិការណ៍។
+completed-help: ភារកិច្ចកាលបរិច្ឆេទត្រូវបានបញ្ចប់។ អាចប្រើបាននៅពេលដែលភាគរយអ្នកចូលរួមស្មើ ១០០% ។
+Date Completed: កាលបរិច្ឆេទបញ្ចប់
+percent-help: ភាគរយនៃការបំពេញភារកិច្ចសម្រាប់អ្នកប្រើប្រាស់នេះ
+Percent Complete: ភាគរយបានបញ្ចប់
+All Percentages: ភាគរយទាំងអស់
+location-help: ទីតាំងព្រឹត្តិការណ៍
+Location: ទីតាំង
+url-help: URL ព្រឹត្តិការណ៍
+URL: =
+date-help: បញ្ជាក់កាលបរិច្ឆេទនៃព្រឹត្តិការណ៍។
+Untimed event: ព្រឹត្តិការណ៍ដែលមិនបានគ្រោងទុក
+Timed event: ព្រឹត្តិការណ៍ពេលវេលា
+All day event: ព្រឹត្តិការណ៍ពេញមួយថ្ងៃ
+Timezone Offset: អុហ្វសិតតំបន់ពេលវេលា
+time-help: បញ្ជាក់ពេលវេលានៃព្រឹត្តិការណ៍។ <ul> <li> "ព្រឹត្តិការណ៍ដែលបានកំណត់ពេលវេលា" (សម្រាប់ព្រឹត្តិការណ៍ដែលត្រូវបានកំណត់ពេលវេលាជាក់លាក់នៅថ្ងៃនោះ)</li> <li> "ព្រឹត្តិការណ៍ដែលមិនបានកំណត់ពេលវេលា" (សម្រាប់ព្រឹត្តិការណ៍មួយនេះមិនមានពេលវេលា (ដូចជាថ្ងៃសម្រាក )</li> <li> "ព្រឹត្តិការណ៍ពេញមួយថ្ងៃ" (សម្រាប់ព្រឹត្តិការណ៍ដែលចំណាយពេលពេញមួយថ្ងៃ (ដូចជានៅក្រៅការិយាល័យ)</li></ul>
+duration-help: បញ្ជាក់រយៈពេល (គិតជាម៉ោងនាទី) នៃព្រឹត្តិការណ៍។ <em>វាលនេះអាចទុកចោលបាន។</em>
+end-time-help: បញ្ជាក់ពីពេលវេលាដែលព្រឹត្តិការណ៍រំពឹងថានឹងបញ្ចប់។
+Start Time: ពេលវេលាចាប់ផ្តើម
+Due Time: ពេលកំណត់
+Site Extras: បណ្តាញបន្ថែម
+avail_participants-help: រាយឈ្មោះអ្នកចូលរួមដែលមាននៃធាតុនេះ។
+Available: មាន
+Find Name: រកឈ្មោះ
+Resources: ធនធាន
+participants-help: រាយឈ្មោះអ្នកចូលរួមនៃធាតុនេះ។
+Selected: បានជ្រើសរើស
+Availability: ភាពអាចរកបាន
+external-participants-help: បញ្ជាក់បញ្ជីអ្នកចូលរួមសម្រាប់ព្រឹត្តិការណ៍ដែលមិនមែនជាអ្នកប្រើប្រាស់ប្រតិទិន។ អ្នកប្រើប្រាស់គួរតែត្រូវបានរាយក្នុងមួយជួរហើយអាចបញ្ចូលអាសយដ្ឋានអ៊ីមែល។ ប្រសិនបើអាសយដ្ឋានអ៊ីមែលត្រូវបានបញ្ជាក់អ្នកប្រើមានសិទ្ធិទទួលការជូនដំណឹងនិងការរំលឹក។
+External Participants: អ្នកចូលរួមខាងក្រៅ
+repeat-type-help: ជ្រើសរើសពេលវេលាដែលព្រឹត្តិការណ៍គួរធ្វើឡើងវិញ។
+Daily: រាល់ថ្ងៃ
+Weekly: ប្រចាំសប្តាហ៍
+Monthly: ប្រចាំខែ
+by day: ដោយថ្ងៃ
+by date: តាមកាលបរិច្ឆេទ
+by position: តាមទីតាំង
+Monthly (by day): ប្រចាំខែ (តាមថ្ងៃ)
+Monthly (by date): ប្រចាំខែ (តាមកាលបរិច្ឆេទ)
+Monthly (by position): ប្រចាំខែ (តាមទីតាំង)
+Yearly: ប្រចាំឆ្នាំ
+Manual: ហត្ថកម្ម
+Expert Mode: របៀបជំនាញ
+repeat-end-date-help: បញ្ជាក់កាលបរិច្ឆេទដែលព្រឹត្តិការណ៍គួរធ្វើឡើងវិញរហូតដល់។
+Ending: បញ្ចប់
+Forever: ជារៀងរហូត
+Use end date: ប្រើកាលបរិច្ឆេទបញ្ចប់
+Number of times: ចំនួនដង
+repeat-frequency-help: បញ្ជាក់ចំនួនពេលវេលាដែលព្រឹត្តិការណ៍គួរធ្វើឡើងវិញ។
+Frequency: ភាពញឹកញាប់
+Weekdays Only: ថ្ងៃធ្វើការតែប៉ុណ្ណោះ
+Week Start: សប្តាហ៍ចាប់ផ្តើម
+repeat-bydayextended-help: អនុញ្ញាតឱ្យជ្រើសរើសកាលបរិច្ឆេទផ្អែកលើថ្ងៃនៃសប្តាហ៍។
+ByDay: ដោយដាយ
+repeat-month-help: បញ្ជាក់ខែណាដែលព្រឹត្តិការណ៍គួរធ្វើឡើងវិញ។
+ByMonth: ដោយៈមួន
+repeat-bysetpos-help: អនុញ្ញាតឱ្យជ្រើសរើសកាលបរិច្ឆេទដោយផ្អែកលើទីតាំងដែលត្រូវនឹងខែ។
+BySetPos: ដោយសុតផុស
+repeat-bymonthdayextended-help: អនុញ្ញាតឱ្យជ្រើសរើសកាលបរិច្ឆេទដោយផ្អែកលើកាលបរិច្ឆេទ។
+ByMonthDay: =
+repeat-byweekno-help: អនុញ្ញាតឱ្យអ្នកប្រើបញ្ជាក់បញ្ជីនៃសប្តាហ៍ដើម្បីធ្វើព្រឹត្តិការណ៍ម្តងទៀត (1,2 ... 53, -53, -52 ...- 1) ។
+ByWeekNo: ដោយៈវ៉ែនណេន
+repeat-byyearday-help: អនុញ្ញាតឱ្យអ្នកប្រើបញ្ជាក់ពីថ្ងៃនៃឆ្នាំដើម្បីធ្វើព្រឹត្តិការណ៍ម្តងទៀត (1,2 ... 366, -366, -365 ...- 1) ។
+ByYearDay: ដោយយូឌីដាយ
+repeat-exceptions-help: ថ្ងៃបន្ថែមដែលព្រឹត្តិការណ៍នេះគួរឬមិនគួរកើតឡើង។
+Exclusions: ការលើកលែង
+Inclusions: ការរាប់បញ្ចូល
+Add Exception: បន្ថែមករណីលើកលែង
+Add Inclusion: បន្ថែមការដាក់បញ្ចូល
+Delete Selected: លុបបានជ្រើសរើស
+Send Reminder: ផ្ញើការរំលឹក
+When: ពេលណា​
+Use Date/Time: ប្រើកាលបរិច្ឆេទ / ពេលវេលា
+Use Offset: ប្រើអុហ្វសិត
+Before: មុន
+After: បន្ទាប់ពី
+Start: ចាប់ផ្តើម
+End/Due: បញ្ចប់ / ដល់កំណត់
+Times: ដង
+Every: រាល់
+CAPTCHA Warning: ការព្រមាន៖  មិនអាចប្រើ CAPTCHA ដោយគ្មានផ្នែកបន្ថែម GD របស់ PHP បានទេ!<br>
+Delete entry: លុបធាតុ
+You are not authorized to edit this entry.: អ្នកមិនត្រូវបានអនុញ្ញាតឱ្យកែសម្រួលធាតុនេះទេ។
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX បានធ្វើការណាត់ជួបថ្មី។
+XXX has updated an appointment.: XXX បានធ្វើបច្ចុប្បន្នភាពការណាត់ជួប។
+Security violation!: ការរំលោភសន្តិសុខ!
+You must enter the anti-spam text on the previous page.: អ្នកត្រូវតែបញ្ចូលអត្ថបទប្រឆាំងនឹងសារឥតបានការនៅលើទំព័រមុន។
+The following conflicts with the suggested time: ជម្លោះខាងក្រោមជាមួយពេលវេលាដែលបានណែនាំ
+User removed from participants list.: អ្នកប្រើប្រាស់ត្រូវបានដកចេញពីបញ្ជីអ្នកចូលរួម។
+Please look on XXX to accept or reject this appointment.: សូមមើល XXX ដើម្បីទទួលយកឬបដិសេធការណាត់ជួបនេះ។
+Please look on XXX to view this appointment.: សូមមើល XXX ដើម្បីមើលការណាត់ជួបនេះ។
+Scheduling Conflict: ទំនាស់តាមកាលវិភាគ
+Your suggested time of: ពេលវេលាដែលបានស្នើរបស់អ្នក
+conflicts with the following existing calendar entries: ប៉ះទង្គិចជាមួយធាតុប្រតិទិនដែលមានស្រាប់ដូចខាងក្រោម
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX មិនបានកំណត់នៅក្នុង "config.php" ទេ។
+word characters only: (អាចមានតែអក្សរពាក្យប៉ុណ្ណោះ; [a-zA-Z_0-9])
+Add User: បន្ថែមអ្នកប្រើប្រាស់
+Edit User: កែសម្រួលអ្នកប្រើប្រាស់
+Calendar ID: លេខសម្គាល់ប្រតិទិន
+First Name: នាមខ្លួន
+Last Name: នាមត្រកូល
+Is public calendar: គឺជាប្រតិទិនសាធារណៈ
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: កំហុសមូលដ្ឋានទិន្នន័យ
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: បន្ថែមប្រតិទិនពីចម្ងាយ
+Edit Remote Calendar: កែសម្រួលប្រតិទិនពីចម្ងាយ
+Create Layer: បង្កើតស្រទាប់
+Reload: ផ្ទុកឡើងវិញ
+Required to View Remote Calendar: ចាំបាច់ដើម្បីមើលប្រតិទិនពីចម្ងាយ
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: លទ្ធផលនាំចូល
+Events successfully imported: ព្រឹត្តិការណ៍បាននាំចូលដោយជោគជ័យ
+Create a new layer to view this calendar.: បង្កើតស្រទាប់ថ្មីដើម្បីមើលប្រតិទិននេះ។
+Errors: កំហុស
+There was an error parsing the import file or no events were returned.: មានកំហុសក្នុងការវិភាគឯកសារនាំចូលឬមិនមានព្រឹត្តិការណ៍ត្រឡប់មកវិញ។
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: ថ្ងៃស្អែក
+Yesterday: ម្សិលមិញ
+Day before yesterday: ម្សិល​ម្ងៃ
+Next week: ស​ប្តា​ហ៍​ក្រោយ
+This week: ស​ប្តា​ហ៍​នេះ
+Last week: សប្ដាហ៍​មុន
+Week before last: សប្តាហ៍មុនពេលចុងក្រោយ
+Next week and week after: សប្តាហ៍ក្រោយនិងមួយសប្តាហ៍បន្ទាប់
+This week and next week: សប្តាហ៍នេះនិងសប្តាហ៍ក្រោយ
+Last week and this week: សប្តាហ៍មុននិងសប្តាហ៍នេះ
+Last two weeks: ពីរសប្តាហ៍ចុងក្រោយ
+Next month: ខែក្រោយ
+This month: ខែ​នេះ
+Last month: ខែមុន
+Month before last: មួយខែមុនពេលចុងក្រោយ
+Next year: ឆ្នាំក្រោយ
+This year: ឆ្នាំ​នេះ
+Last year: ឆ្នាំមុន
+Year before last: មួយឆ្នាំមុនពេលចុងក្រោយ
+Next 14 days: ១៤ ថ្ងៃបន្ទាប់
+Next 30 days: ៣០ ថ្ងៃក្រោយ
+Next 60 days: ៦០ ថ្ងៃបន្ទាប់
+Next 90 days: ៩០ ថ្ងៃបន្ទាប់
+Next 180 days: ១៨០ ថ្ងៃបន្ទាប់
+Next 365 days: ៣៦៥ ថ្ងៃបន្ទាប់
+Invalid report id XXX.: លេខសម្គាល់របាយការណ៍មិនត្រឹមត្រូវ៖ "XXX" ។
+Unnamed Report: របាយការណ៍គ្មានឈ្មោះ
+Add Report: បន្ថែមរបាយការណ៍
+Edit Report: កែសម្រួលរបាយការណ៍
+Report name: ឈ្មោះរបាយការណ៍
+User: អ្នក​ប្រើ
+Current User: អ្នកប្រើប្រាស់បច្ចុប្បន្ន
+Include link in menu: រួមបញ្ចូលតំណនៅក្នុងម៉ឺនុយ
+Include standard header/trailer: រួមបញ្ចូលបឋមកថា / ឈុតខ្លីៗ
+Include previous/next links: រួមបញ្ចូលតំណភ្ជាប់មុន / បន្ទាប់
+Include empty dates: រួមបញ្ចូលកាលបរិច្ឆេទទទេ
+Date range: ចន្លោះកាលបរិច្ឆេទ
+Template variables: អថេរគំរូ
+Page template: ទំព័រគំរូ
+Day template: ពុម្ពថ្ងៃ
+Event template: គំរូព្រឹត្តិការណ៍
+Are you sure you want to delete this report?: តើអ្នកពិតជាចង់លុបរបាយការណ៍នេះមែនទេ?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: គ្មានលេខសម្គាល់របាយការណ៍បែបនេះទេ៖ "XXX" ។
+Variable XXX not found.: រកមិនឃើញ XXX អថេរ។
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: កែសម្រួលបឋមកថាផ្ទាល់ខ្លួន
+Edit Custom Script/Stylesheet: កែសម្រួលស្គ្រីបផ្ទាល់ខ្លួន / សន្លឹករចនាប័ទ្ម
+Edit Custom Trailer: កែឈុតភាពយន្តផ្ទាល់ខ្លួន
+
+########################################
+# Page: edit_user.php
+#
+Username: ឈ្មោះ​អ្នកប្រើប្រាស់
+E-mail address: អាស័យ​ដ្ឋាន​អ៊ី​ម៉េ​ល
+Password: ពាក្យសម្ងាត់
+again: ម្តងទៀត
+Disabled for demo: បានបិទសម្រាប់ការបង្ហាញ
+Are you sure you want to delete this user?: តើអ្នកប្រាកដជាចង់លុបអ្នកប្រើនេះឬ?
+Change Password: ផ្លាស់ប្តូរពាក្យសម្ងាត់
+New Password: ពាក្យសម្ងាត់​ថ្មី
+Set Password: កំណត់ពាក្យសម្ងាត់
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: ការលុបអ្នកប្រើប្រាស់មិនត្រូវបានគាំទ្រ។
+The passwords were not identical.: លេខសម្ងាត់មិនដូចគ្នាទេ។
+You have not entered a password.: អ្នកមិនបានបញ្ចូលពាក្យសម្ងាត់ទេ។
+Username cannot be blank.: ឈ្មោះអ្នកប្រើមិនអាចទទេបានទេ។
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: មិនត្រូវបានអនុញ្ញាត
+
+########################################
+# Page: export.php
+#
+Export: នាំចេញ
+Export format: ទ្រង់ទ្រាយនាំចេញ
+Include all layers: រួមបញ្ចូលស្រទាប់ទាំងអស់
+Include deleted entries: រួមបញ្ចូលធាតុដែលបានលុប
+Export all dates: នាំចេញកាលបរិច្ឆេទទាំងអស់
+Start date: ថ្ងៃ​ចាប់ផ្តើម
+End date: កាលបរិច្ឆេទបញ្ចប់
+Modified since: បានកែប្រែចាប់តាំងពី
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: ទ្រង់ទ្រាយនាំចេញមិនត្រូវបានកំណត់ឬមិនត្រឹមត្រូវ។
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: គ្មានអ្នកប្រើបញ្ជាក់។
+
+########################################
+# Page: groups.php
+#
+Add New Group: បន្ថែមក្រុមថ្មី
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: ក្រុមគ្មានឈ្មោះ
+Add Group: បន្ថែមក្រុម
+Edit Group: កែក្រុម
+Group name: ឈ្មោះ​ក្រុម
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: អ្នកត្រូវតែបញ្ជាក់ឈ្មោះក្រុម
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: ដំណើរការប្រតិទិនឡើងវិញដោយស្វ័យប្រវត្តិ
+auto-refresh-help: នៅពេលបើកដំណើរការទិដ្ឋភាពថ្ងៃទិដ្ឋភាពសប្តាហ៍ទិដ្ឋភាពខែនិងបញ្ជីទំព័រដែលមិនត្រូវបានយល់ព្រមនឹងធ្វើឱ្យស្រស់ដោយខ្លួនឯងដោយស្វ័យប្រវត្តិជាទៀងទាត់។
+Auto-refresh time: ធ្វើឱ្យស្រស់ពេលវេលាដោយស្វ័យប្រវត្តិ
+auto-refresh-time-help: ប្រសិនបើការធ្វើឱ្យស្រស់ឡើងវិញដោយស្វ័យប្រវត្តិត្រូវបានបើកវាបញ្ជាក់ពីពេលវេលារវាងការធ្វើឱ្យស្រស់នីមួយៗ។
+Display days with events in bold in year view: បង្ហាញថ្ងៃជាមួយព្រឹត្តិការណ៍ជាទិដ្ឋភាពដិតនៅក្នុងឆ្នាំ
+Display weekends in week view: បង្ហាញចុងសប្តាហ៍នៅក្នុងទិដ្ឋភាពសប្តាហ៍
+Time interval: ចន្លោះ​ពេល
+time-interval-help: បញ្ជាក់ពីរយៈពេលនៃការបិទក្នុងទិដ្ឋភាពសប្តាហ៍និងការមើលថ្ងៃ។
+Nonuser: ប្រតិទិនអ្នកប្រើមិនប្រើ
+user-customize-color: បញ្ជាក់ថាតើអ្នកប្រើប្រាស់ត្រូវបានអនុញ្ញាតឱ្យកែប្រែពណ៌ចម្រុះរបស់ពួកគេដែរឬទេ។
+enable-gradient-help: ប្រើពណ៌ជម្រាលសម្រាប់ផ្ទៃខាងក្រោយកោសិកា។
+Manually entering color values: បញ្ចូលតម្លៃពណ៌ដោយដៃ
+colors-help: ពណ៌ទាំងអស់គួរតែត្រូវបានបញ្ជាក់ជាទ្រង់ទ្រាយលេខគោលដប់ប្រាំមួយ "# RRGGBB" ដែលលេខ RR គឺជាតម្លៃគោលដប់ប្រាំមួយសម្រាប់ពណ៌ក្រហម "GG" គឺជាតម្លៃគោលដប់ប្រាំមួយសម្រាប់ពណ៌បៃតងហើយ "ប៊ីប៊ី" គឺជាតម្លៃគោលដប់ប្រាំមួយសម្រាប់ពណ៌ខៀវ។
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: រាយការណ៍កំហុស
+Please include all the information below when reporting a bug.: សូមបញ្ចូលព័ត៌មានទាំងអស់ខាងក្រោមនៅពេលរាយការណ៍អំពីកំហុស។
+Also, please use English rather than XXX.: សូមប្រើ  អង់គ្លេស  ជាជាង XXX ។
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: ឯកសារ WebCalendar
+Currently in English only.: បច្ចុប្បន្ននេះមានតែភាសាអង់គ្លេសប៉ុណ្ណោះ។
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: បន្ថែម / កែសម្រួលធាតុប្រតិទិន
+Repeat Type: វាយម្តងទៀត
+For More Information...: សម្រាប់ព័ត៌មានបន្ថែម ...
+Repeat End Date: ធ្វើកាលបរិច្ឆេទបញ្ចប់ម្តងទៀត
+Repeat Day: ធ្វើម្តងទៀតថ្ងៃ
+repeat-day-help: បញ្ជាក់ថាតើថ្ងៃណាមួយនៃសប្តាហ៍ដែលព្រឹត្តិការណ៍គួរកើតឡើងម្តងទៀត។
+
+########################################
+# Page: help_import.php
+#
+Import: នាំចូល
+Palm Desktop: ដូងដេសថប
+allow you to import entries from the Palm...: សំណុំបែបបទនេះនឹងអនុញ្ញាតឱ្យអ្នកនាំចូលធាតុពីសៀវភៅកាលបរិច្ឆេទផ្ទៃតុដូង។ វាគួរតែមាននៅក្នុងថតដូងរបស់អ្នកនៅក្នុងសៀវភៅកាលបរិច្ឆេទ / datebook.dat នៅក្នុងថតរងមួយដែលមានឈ្មោះដោយឈ្មោះអ្នកប្រើរបស់អ្នក។
+The following entries will not be imported: ធាតុខាងក្រោមនឹងមិនត្រូវបាននាំចូលទេ។
+Entries older than the current date: ធាតុចាស់ជាងកាលបរិច្ឆេទបច្ចុប្បន្ន
+Entries created in the Palm Desktop...: ធាតុដែលបានបង្កើតនៅលើផ្ទៃតូចដូងដែលមិនទាន់ត្រូវបានគេហៅថា HotSync
+Anything imported from Palm...: រាល់ទំនិញដែលនាំចូលពីដូងនឹងត្រូវសរសេរជាន់លើក្នុងពេលនាំចូលបន្ទាប់ (លើកលែងតែកាលបរិច្ឆេទព្រឹត្តិការណ៍បានកន្លងផុតទៅ) ។ ដូច្នេះការធ្វើបច្ចុប្បន្នភាពគួរតែត្រូវបានធ្វើឡើងនៅក្នុងផ្ទៃតូចដូង។
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: សំណុំបែបបទនេះនឹងនាំចូលព្រឹត្តិការណ៍ vCalendar (.vcs) ១.០ ។
+The following formats have been tested: ទ្រង់ទ្រាយខាងក្រោមត្រូវបានសាកល្បង៖
+This form will import iCalendar (.ics) events.: សំណុំបែបបទនេះនឹងនាំចូលព្រឹត្តិការណ៍អាយ។ ខេ។ អាយ។ ស៊ី។ (ព្រឹត្តិការណ៍) ។
+Enabling: បើកដំណើរការ
+Overwrite Prior Import: សរសេរជាន់លើការនាំចូលមុន
+will cause events imported previously...: នឹងធ្វើឱ្យព្រឹត្តិការណ៍ដែលបាននាំចូលពីមុនដែលប្រើ UID ដូចព្រឹត្តិការណ៍ពីឯកសារនាំចូលថ្មីដែលត្រូវបានសម្គាល់ថាបានលុប។ នេះគួរតែអនុញ្ញាតឱ្យនាំចូលឯកសារ iCalendar ដែលបានធ្វើបច្ចុប្បន្នភាពដោយមិនចាំបាច់បង្កើតស្ទួន។
+
+########################################
+# Page: help_index.php
+#
+Help Index: សន្ទស្សន៍ជំនួយ
+About WebCalendar: អំពី WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: ស្រទាប់មានប្រយោជន៍សម្រាប់បង្ហាញព្រឹត្តិការណ៍របស់អ្នកប្រើផ្សេងទៀតនៅក្នុងប្រតិទិនផ្ទាល់ខ្លួនរបស់អ្នក។ អ្នកអាចបញ្ជាក់អ្នកប្រើប្រាស់និងពណ៌ព្រឹត្តិការណ៍នឹងត្រូវបានបង្ហាញ។
+Add/Edit/Delete: បន្ថែម / កែសម្រួល / លុប
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: ការចុចលើតំណកែសម្រួលស្រទាប់នៅក្នុងផ្នែកគ្រប់គ្រងនៅផ្នែកខាងក្រោមនៃទំព័រនឹងអនុញ្ញាតឱ្យអ្នកបន្ថែម / កែសម្រួល / លុបស្រទាប់។
+The text color of the new layer that will be displayed in your calendar.: ពណ៌អត្ថបទនៃស្រទាប់ថ្មីដែលនឹងត្រូវបានបង្ហាញនៅក្នុងប្រតិទិនរបស់អ្នក។
+Disabling: ការបិទដំណើរការ
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: ចុចតំណបិទដំណើរការស្រទាប់នៅក្នុងផ្នែកគ្រប់គ្រងនៅផ្នែកខាងក្រោមនៃទំព័រដើម្បីបិទស្រទាប់។
+Duplicates: ស្ទួន
+If checked, events that are duplicates of your events will be shown.: ប្រសិនបើបានធីកព្រឹត្តិការណ៍ដែលស្ទួននឹងព្រឹត្តិការណ៍របស់អ្នកនឹងត្រូវបានបង្ហាញ។
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: ចុចបើកតំណភ្ជាប់ស្រទាប់នៅក្នុងផ្នែកគ្រប់គ្រងនៅផ្នែកខាងក្រោមនៃទំព័រដើម្បីបើកស្រទាប់។
+Source: ប្រភព
+Specifies the user that you would like to see displayed in your calendar.: បញ្ជាក់អ្នកប្រើប្រាស់ដែលអ្នកចង់ឃើញបង្ហាញក្នុងប្រតិទិនរបស់អ្នក។
+
+########################################
+# Page: help_pref.php
+#
+Default Category: ប្រភេទលំនាំដើម
+default-category-help: បញ្ជាក់ប្រភេទព្រឹត្តិការណ៍ថ្មីគួរតែត្រូវបានកំណត់។
+When I am the boss: នៅពេលខ្ញុំជាចៅហ្វាយ
+Email me event notification: សូមផ្ញើការជូនដំណឹងអំពីព្រឹត្តិការណ៍មកខ្ញុំ
+email-boss-notifications-help: បញ្ជាក់ប្រសិនបើថៅកែទទួលអ៊ីមែលជាការជូនដំណឹងអំពីព្រឹត្តិការណ៍។
+I want to approve events: ខ្ញុំចង់អនុម័តព្រឹត្តិការណ៍
+boss-approve-event-help: បញ្ជាក់ថាតើចៅហ្វាយនឹងត្រូវបានតម្រូវឱ្យអនុម័តព្រឹត្តិការណ៍ដែលបន្ថែមដោយជំនួយការដែរឬទេ។
+Subscribe/Publish: ជាវ / បោះពុម្ពផ្សាយ
+Allow remote publishing: អនុញ្ញាតឱ្យបោះពុម្ពផ្សាយពីចម្ងាយ
+allow-remote-publishing-help: បញ្ជាក់ប្រសិនបើអតិថិជនអាយស៊ីអេលពីចម្ងាយអាចផ្សាយព្រឹត្តិការណ៍ត្រឡប់ទៅ WebCalendar
+remote-publishing-url-help: បង្ហាញ URL ដែលត្រូវប្រើក្នុងកម្មវិធីម៉ាស៊ីនភ្ញៀវអាយ។ ស៊ី។ សសម្រាប់ការជាវនិងបោះពុម្ពផ្សាយត្រឡប់ទៅ WebCalendar ។
+allow-remote-subscriptions-help: បញ្ជាក់ប្រសិនបើអ្នកប្រើពីចម្ងាយអាចចុះឈ្មោះជាវប្រតិទិនរបស់អ្នកដែលអនុញ្ញាតឱ្យពួកគេមើលឃើញព្រឹត្តិការណ៍របស់អ្នកនៅក្នុងកម្មវិធីដែលអាចប្រើបានអាយអូខេ (ដូចជាអាយខេអេសឬប្រតិទិនម៉ូហ្សីឡារបស់ Apple) ។
+remote-subscriptions-url-help: បង្ហាញអ្នកប្រើពីចម្ងាយ URL គួរតែប្រើដើម្បីជាវប្រតិទិនរបស់អ្នក។
+Enable FreeBusy publishing: បើកដំណើរការបោះពុម្ពផ្សាយសេរី
+freebusy-enabled-help: បញ្ជាក់ថាតើពេលវេលាទំនេររបស់អ្នកប្រើអាចទទួលបានដោយប្រើស្តង់ដារអាយខេអេហ្វសេរី។
+freebusy-url-help: URL សម្រាប់ចូលប្រើបញ្ជីឥតគិតថ្លៃរបស់អ្នកប្រើ
+rss-feed-url-help: URL ដើម្បីចូលប្រើអត្ថបទ RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: អនុញ្ញាតឱ្យមានការត្រួតពិនិត្យយ៉ាងល្អនៃការចូលប្រើនិងសិទ្ធិអ្នកប្រើប្រាស់។ អ្នកប្រើក៏អាចផ្តល់សិទ្ធិតាមលំនាំដើមនិងតាមការអនុញ្ញាតិរបស់បុគ្គលបើមានការអនុញ្ញាតពីអ្នកគ្រប់គ្រង។
+If disabled, this user cannot send you emails.: ប្រសិនបើបានបិទអ្នកប្រើប្រាស់នេះមិនអាចផ្ញើអ៊ីមែលមកអ្នកបានទេ។
+If disabled, this user cannot see you in the participants list.: ប្រសិនបើបានបិទអ្នកប្រើប្រាស់នេះមិនអាចមើលឃើញអ្នកនៅក្នុងបញ្ជីអ្នកចូលរួមបានទេ។
+If enabled, this user cannot view the details of any of your entries.: ប្រសិនបើបើកដំណើរការអ្នកប្រើនេះមិនអាចមើលព័ត៌មានលំអិតនៃធាតុរបស់អ្នកទេ។
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): ការបោះពុម្ពផ្សាយជនពិការ (រដ្ឋបាល)
+Publishing Disabled (User): ជនពិការបោះពុម្ពផ្សាយ (អ្នកប្រើប្រាស់)
+
+########################################
+# Page: icons.php
+#
+Click to Select: ចុចដើម្បីជ្រើស
+Current Icons on Server: រូបតំណាងបច្ចុប្បន្ននៅលើម៉ាស៊ីនមេ
+
+########################################
+# Page: import.php
+#
+import from file: នាំចូលពីឯកសារ
+Disabled: ជនពិការ
+Import format: នាំចូលទ្រង់ទ្រាយ
+Exclude private records: មិនរាប់បញ្ចូលកំណត់ត្រាឯកជន
+Repeated items are imported separately. Prior imports are not overwritten.: វត្ថុដដែលៗត្រូវបាននាំចូលដាច់ដោយឡែក។ ការនាំចូលមុនមិនត្រូវបានសរសេរជាន់ពីលើទេ។
+
+########################################
+# Page: import_handler.php
+#
+No file: គ្មានឯកសារ
+Error deleting palm events from webcalendar.: មានកំហុសក្នុងការលុបព្រឹត្តិការណ៍ដូងចេញពីវិបសាយ។
+Events from prior import marked as deleted: ព្រឹត្តិការណ៍ពីការនាំចូលមុនបានសម្គាល់ថាបានលុប
+Conflicting events: ព្រឹត្តិការណ៍ទំនាស់
+The import file contained no data.: ឯកសារនាំចូលមិនមានទិន្នន័យទេ។
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: តើអ្នកពិតជាចង់លុបស្រទាប់នេះមែនទេ?
+Delete layer: លុបស្រទាប់
+Edit layer: កែសម្រួលស្រទាប់
+Enable layers: បើកដំណើរការស្រទាប់
+Layer: ស្រទាប់
+Layers are currently disabled.: ស្រទាប់ត្រូវបានបិទបច្ចុប្បន្ន។
+Layers are currently enabled.: ស្រទាប់ត្រូវបានអនុញ្ញាតបច្ចុប្បន្ន។
+Click to modify layers settings for XXX: ចុចត្រង់នេះដើម្បីកែប្រែការកំនត់ស្រទាប់សំរាប់ប្រតិទិន XXX ។
+Disable Layers: បិទដំណើរការស្រទាប់
+Add layer: បន្ថែមស្រទាប់
+Add Layer: បន្ថែមស្រទាប់
+Edit Layer: កែសម្រួលស្រទាប់
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: មិនអាចធ្វើបច្ចុប្បន្នភាពចំណូលចិត្តបានទេ
+Invalid entry id.: លេខសម្គាល់ធាតុមិនត្រឹមត្រូវ។
+You cannot create a layer for yourself.: អ្នកមិនអាចបង្កើតស្រទាប់សម្រាប់ខ្លួនអ្នកបានទេ។
+You can only create one layer for each user.: អ្នកអាចបង្កើតបានតែស្រទាប់មួយសំរាប់អ្នកប្រើប្រាស់ម្នាក់ៗ។
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: យល់ព្រម / បញ្ជាក់
+Approve Selected: អនុម័តការជ្រើសរើស
+Check All: ពិនិត្យ​ទាំងអស់
+Emails Will Not Be Sent: អ៊ីមែលនឹងមិនត្រូវបានផ្ញើទេ
+Reject Selected: ច្រានចោលការជ្រើសរើស
+Reject: បដិសេធ
+Uncheck All: ដោះធីកទាំងអស់
+View this entry: មើលធាតុនេះ
+No unapproved entries for XXX.: គ្មានធាតុដែលមិនត្រូវបានអនុញ្ញាតសម្រាប់៖ "XXX" ។
+Unapproved Entries: ធាតុដែលមិនមានការយល់ព្រម
+Approve this entry?: យល់ព្រមការបញ្ចូលនេះ?
+Reject this entry?: បដិសេធការបញ្ចូលនេះ?
+Approve Selected entries?: អនុម័តធាតុដែលបានជ្រើសរើស?
+Reject Selected entries?: បដិសេធធាតុដែលបានជ្រើសរើស?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: អ្នកត្រូវតែបញ្ចូលការចូលនិងពាក្យសម្ងាត់។
+Save login via cookies so I dont have to login next time.: រក្សាទុកការចូលតាមរយៈខូឃីដូច្នេះខ្ញុំមិនចាំបាច់ចូលលើកក្រោយទេ
+Login: ចូល
+public: សាធារណៈ
+Access XXX calendar: ចូលប្រើប្រតិទិន XXX
+cookies-note: សម្គាល់ៈកម្មវិធីនេះ តម្រូវឲ្យ បើកខូឃីស៍។
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: តួអក្សរមិនត្រឹមត្រូវក្នុងការចូល XXX ។
+Invalid login: ការចូលមិនត្រឹមត្រូវ
+Activity login failure: ឈ្មោះអ្នកប្រើ៖ "XXX", IP: "YYY" ។
+Error XXX: កំហុស៖ "XXX" ។
+You have been logged out.: អ្នកបានចេញហើយ។
+Access public calendar: ចូលប្រើប្រតិទិនសាធារណៈ
+Not yet registered? Register here!: មិនទាន់បានចុះឈ្មោះទេ? ចុះឈ្មោះនៅទីនេះ!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: មិនមានប្រតិទិនប្រើមិនមែនបែបនេះទេ៖ "XXX" ។
+This Calendar is not Public.: ប្រតិទិននេះមិនត្រូវបានផ្សព្វផ្សាយជាសាធារណៈទេ។
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: បន្ថែមប្រតិទិនមិនមែនអ្នកប្រើថ្មី
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: ការចូលត្រូវតែបញ្ជាក់។
+No such nonuser calendar: មិនមានប្រតិទិនប្រើមិនមែនបែបនេះទេ
+
+########################################
+# Page: pref.php
+#
+Invalid theme: ស្បែកមិនត្រឹមត្រូវ
+Save Preferences: រក្សាទុកចំណូលចិត្ត
+Public Access calendar: ប្រតិទិនចូលដំណើរការសាធារណៈ
+Modify Non User Calendar Preferences: កែប្រែចំណូលចិត្តប្រតិទិនមិនមែនអ្នកប្រើ
+Return to My Preferences: ត្រឡប់ទៅចំណូលចិត្តរបស់ខ្ញុំ
+Custom Scripts: ស្គ្រីបផ្ទាល់ខ្លួន
+Timezone Selection: ការជ្រើសរើសតំបន់ពេលវេលា
+Multiview: ពហុទិដ្ឋភាព៖
+entry-interval-help: កំណត់ចន្លោះពេលនាទីនៅពេលកែសម្រួលពេលវេលាចូល
+Entry interval: ចន្លោះពេលចូល
+hour: ម៉ោង
+minute: នាទី
+theme-reload-help: ដោយសារឃ្លាំងសម្ងាត់ CSS ការផ្ទុកទំព័រឡើងវិញអាចត្រូវបានទាមទារ
+Page may need to be reloaded for new Theme to take effect: ទំព័រអាចត្រូវបានផ្ទុកឡើងវិញសម្រាប់ធីមថ្មីដើម្បីឱ្យមានប្រសិទ្ធភាព
+display_byproxy-help: បង្ហាញអ្នកបង្កើតពិតនៅលើទំព័រ view_entry
+Display if created by Assistant: បង្ហាញប្រសិនបើបង្កើតដោយជំនួយការ
+allow-view-subscriptions-help: អនុញ្ញាតឱ្យមានការរឹតត្បិតការចូលប្រើពីចម្ងាយទៅធាតុឯកជនឬសម្ងាត់
+Allow remote viewing of: អនុញ្ញាតឱ្យមើលពីចម្ងាយ
+entries: ធាតុ
+
+########################################
+# Page: purge.php
+#
+Purging events for: ព្រឹត្តិការណ៍លុបបំបាត់សម្រាប់
+Finished: ចប់ហើយ
+Back: ថយក្រោយ
+Check box to delete ALL events for a user: ប្រអប់ធីកដើម្បីលុបព្រឹត្តិការណ៍  ទាំងអស់  សម្រាប់អ្នកប្រើប្រាស់
+Delete all events before: លុបព្រឹត្តិការណ៍ទាំងអស់ពីមុន
+Purge deleted only: លុបចោលតែប៉ុណ្ណោះ
+Preview delete: លុបការមើលជាមុន
+Are you sure you want to delete events for: តើអ្នកពិតជាចង់លុបព្រឹត្តិការណ៍នេះចោលហើយឬ?
+Records deleted from XXX: កំណត់ត្រាត្រូវបានលុបចេញពី "XXX" ។
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: អាស័យដ្ឋានអ៊ីមែលមិនអាចទទេបានទេ។
+Username already exists.: ឈ្មោះ​របស់​អ្នកប្រើប្រាស់​ធ្លាប់​មាន​ហើយ។
+Email address already exists.: អាសយដ្ឋានអ៊ីមែលមានរួចហើយ។
+New user via self-registration.: អ្នកប្រើប្រាស់ថ្មីតាមរយៈការចុះឈ្មោះដោយខ្លួនឯង។
+A new WebCalendar account has been set up for you.: គណនី WebCalendar ថ្មីត្រូវបានបង្កើតឡើងសម្រាប់អ្នក។
+Your username is XXX.: ឈ្មោះអ្នកប្រើរបស់អ្នកគឺ "XXX" ។
+Your password is XXX.: ពាក្យសម្ងាត់របស់អ្នកគឺ៖ "XXX" ។
+Please visit XXX to log in and start using your account!: សូមទស្សនា "XXX" ដើម្បីចូលនិងចាប់ផ្តើមប្រើប្រាស់គណនីរបស់អ្នក!
+You may change your password after logging in the first time.: អ្នកអាចផ្លាស់ប្តូរពាក្យសម្ងាត់របស់អ្នកបន្ទាប់ពីចូលលើកដំបូង។
+If you received this email in error: ប្រសិនបើអ្នកបានទទួលអ៊ីមែលនេះដោយមានកំហុសហើយមិនបានចុះឈ្មោះប្រើគណនី WebCalendar អ្នកអាចបដិសេធការជូនដំណឹងនេះឬឆ្លើយតបដោយប្រើកំណត់សម្គាល់ខ្លី
+Administrator: អ្នកគ្រប់គ្រង
+Welcome: សូមស្វាគមន៍
+New user via email.: អ្នកប្រើប្រាស់ថ្មីតាមរយៈអ៊ីមែល។
+Registration: ការចុះឈ្មោះ
+Welcome to WebCalendar: សូមស្វាគមន៍មកកាន់ WebCalendar
+Your email should arrive shortly.: អ៊ីមែលរបស់អ្នកគួរមកដល់ឆាប់ៗនេះ។
+Return to Login screen: ត្រឡប់ទៅអេក្រង់ចូលវិញ
+Password (again): ពាក្យ​សម្ងាត់​ជា​ថ្មី​ម្តង​ទៀត):
+Your account information will be emailed to you.: ព័ត៌មានគណនីរបស់អ្នកនឹងត្រូវបានផ្ញើតាមអ៊ីមែលទៅអ្នក។
+Submit: ដាក់ស្នើ
+
+########################################
+# Page: reject_entry.php
+#
+Continue: បន្ត
+(Your comments will be emailed to the other participants.): (យោបល់របស់អ្នកនឹងត្រូវបានផ្ញើតាមអ៊ីមែលទៅអ្នកចូលរួមផ្សេងទៀត។ )
+XXX has rejected an appointment.: XXX បានបដិសេធការណាត់ជួប។
+Rejected by XXX.: បានបដិសេធដោយ XXX ។
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: បន្ថែមប្រតិទិនពីចម្ងាយថ្មី
+
+########################################
+# Page: report.php
+#
+This event is confidential.: ព្រឹត្តិការណ៍នេះគឺជាការសម្ងាត់។
+(Private): (ឯកជន)
+(cont.): (ត)
+Approved: អនុម័ត
+Deleted: បានលុបចោល
+Rejected: បានបដិសេធ
+Waiting for approval: រង់ចាំការយល់ព្រម
+Unknown: មិនស្គាល់
+Invalid report id.: លេខសម្គាល់របាយការណ៍មិនត្រឹមត្រូវ។
+Click here to manage reports for the Public Access calendar.: ចុចត្រង់នេះដើម្បីគ្រប់គ្រងរបាយការណ៍សំរាប់ប្រតិទិនសាធារណៈ។
+Add new report: បន្ថែមរបាយការណ៍ថ្មី
+Manage Reports: គ្រប់គ្រងរបាយការណ៍
+
+########################################
+# Page: search.php
+#
+Advanced Search: ស្វែងរកកំរិតខ្ពស់
+Search: ស្វែងរក
+Keywords: ពាក្យគន្លឹះ
+Enter % for all entries: បញ្ចូល% សម្រាប់ធាតុទាំងអស់
+Include: រួមបញ្ចូល
+Filter by Date: ត្រងតាមកាលបរិច្ឆេទ
+All Dates: កាលបរិច្ឆេទទាំងអស់
+Past: អតីតកាល
+Upcoming: ជិតមកដល់ហើយ
+Range: ជួរ
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: អ្នកត្រូវតែបញ្ចូលពាក្យគន្លឹះស្វែងរកមួយរឺច្រើន។
+Search Results: លទ្ធផលស្វែងរក
+match found: បានរកឃើញការប្រកួត
+matches found: បានរកឃើញការប្រកួត
+No matches found: រកមិនឃើញភាពត្រូវគ្នាទេ
+New Search: ស្វែងរកថ្មី
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: ព័ត៌មានខាងក្រោមបង្ហាញពីបញ្ហាសក្តានុពលជាមួយនឹងការតំឡើង WebCalendar របស់អ្នកដែលអាចត្រូវបានកែប្រែដើម្បីធ្វើឱ្យការតំឡើងរបស់អ្នកកាន់តែមានសុវត្ថិភាព។
+For questions about WebCalendar security see the forums: ចំពោះសំណួរទាក់ទងនឹងបញ្ហាសុវត្ថិភាព WebCalendar សូមប្រើវេទិកាវេបសាយត៍ដែលបានបង្ហោះនៅលើគេហទំព័រ GitHub.com ។<br>XXX
+View your current PHP settings: មើលការកំណត់ PHP បច្ចុប្បន្នរបស់អ្នក
+Security Issue: បញ្ហាសុវត្ថិភាព
+Status: ស្ថានភាព
+Default admin user password: ពាក្យសម្ងាត់អ្នកប្រើរបស់អ្នកគ្រប់គ្រងរដ្ឋបាលលំនាំដើម
+You should change the password of the default admin user.: អ្នកគួរតែផ្លាស់ប្តូរលេខសម្ងាត់របស់អ្នកប្រើប្រាស់រដ្ឋបាលលំនាំដើម។
+File permissions XXX: ការអនុញ្ញាតឯកសារ៖ XXX
+item XXX should not be writable: ធាតុខាងក្រោមមិនគួរអាចសរសេរបានទេ។<br><tt> XXX</tt>
+File exists XXX: មានឯកសារ៖ "XXX"
+Because you have email disabled, you should remove this file.: ដោយសារអ្នកមានអ៊ីមែលត្រូវបានបិទអ្នកគួរតែលុបឯកសារនេះចេញ។
+File location XXX: ទីតាំងឯកសារ៖ "XXX"
+remove XXX if not using: ប្រសិនបើអ្នកមិនប្រើឯកសារ "XXX" ទេអ្នកគួរតែលុបវាចោល។ ឬយ៉ាងហោចណាស់ផ្លាស់ទីវាទៅថតថ្មី។
+System Settings XXX: ការកំណត់ប្រព័ន្ធ៖ "XXX"
+consider enabling UAC: អ្នកប្រហែលជាចង់ពិចារណាធ្វើឱ្យការគ្រប់គ្រងការចូលប្រើអ្នកប្រើកំណត់សិទ្ធិអ្នកប្រើ។
+recommend approving new public events: យើងសូមណែនាំថារាល់ការដាក់ស្នើព្រឹត្តិការណ៍សាធារណៈត្រូវបានអនុម័ត។
+recommend using CAPTCHA: CAPTCHA ត្រូវបានផ្ដល់អនុសាសន៍ឱ្យការពារការដាក់ស្នើព្រឹត្តិការណ៍ដោយស្វ័យប្រវត្តិឡើងវិញ។
+Database cache directory location: ទីតាំងឃ្លាំងទិន្នន័យឃ្លាំងទិន្នន័យ
+db cache should be inaccessable: ឃ្លាំងទិន្នន័យគួរតែស្ថិតនៅក្នុងថតឯកសារដែលមិនអាចចូលប្រើជាមួយ URL ។
+PHP Settings XXX: ការកំណត់ PHP៖ "XXX"
+recommend setting XXX Off: ការកំណត់ដែលបានណែនាំសម្រាប់ "XXX" ត្រូវបានបិទ។
+recommend setting allow_url_fopen Off: ការកំណត់ដែលបានណែនាំសម្រាប់ "allow_url_fopen" ត្រូវបានបិទនៅពេលដែលប្រតិទិនពីចម្ងាយមិនត្រូវបានបើក។
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: មើលប្រតិទិនអ្នកប្រើផ្សេងទៀត
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: អ្នកមិនបានបន្ថែមប្រភេទណាមួយទេ។
+Set Category: កំណត់ប្រភេទ
+Global Categories cannot be changed.: ប្រភេទសកលមិនអាចផ្លាស់ប្តូរបានទេ។
+
+########################################
+# Page: upcoming.php
+#
+more: ច្រើនទៀត
+
+########################################
+# Page: users.php
+#
+Remote Calendars: ប្រតិទិនពីចម្ងាយ
+denotes administrative user: តំណាងឱ្យអ្នកប្រើប្រាស់រដ្ឋបាល
+Add New User: បន្ថែមអ្នកប្រើប្រាស់ថ្មី
+
+########################################
+# Page: usersel.php
+#
+form: សំណុំបែបបទ
+Reset: កំណត់ឡើងវិញ
+
+########################################
+# Page: views.php
+#
+Add New View: បន្ថែមទិដ្ឋភាពថ្មី
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: ទិដ្ឋភាពគ្មានឈ្មោះ
+Add View: បន្ថែមទិដ្ឋភាព
+Edit View: កែសម្រួលទិដ្ឋភាព
+View Name: ឈ្មោះមើល
+View Type: ប្រភេទមើល
+Day by Time: ពីមួយថ្ងៃទៅមួយថ្ងៃ
+Week (Users horizontal): សប្ដាហ៍ (អ្នកប្រើផ្ដេក)
+Week by Time: សប្តាហ៍តាមពេលវេលា
+Week (Users vertical): សប្តាហ៍ (អ្នកប្រើប្រាស់បញ្ឈរ)
+Week (Timebar): សប្ដាហ៍ (របារពេលវេលា)
+Month (Timebar): ខែ (របារពេលវេលា)
+Month (side by side): ខែ (ក្បែរគ្នា)
+Month (on same calendar): ខែ (នៅលើប្រតិទិនតែមួយ)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: អ្នកត្រូវតែបញ្ជាក់ឈ្មោះមើល
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: គ្មានអ្នកប្រើប្រាស់សម្រាប់ការមើលនេះទេ។
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: ធ្វើឱ្យទាន់សម័យភាគរយការងារ
+Completed: បានបញ្ចប់
+Assistant mode: របៀបជំនួយការ
+Declined: បដិសេធ
+Needs-Action: តំរូវការ - សកម្មភាព
+by: ដោយ
+Percentage Complete: ភាគរយបញ្ចប់
+External User: អ្នកប្រើប្រាស់ខាងក្រៅ
+Update: ធ្វើបច្ចុប្បន្នភាព
+at: នៅ
+comments: យោបល់
+Show: បង្ហាញ
+Hide: លាក់
+Approve/Confirm entry: អនុម័ត / បញ្ជាក់ការចូល
+Reject entry: បដិសេធការចូល
+Set category: កំណត់ប្រភេទ
+Add to My Calendar: បន្ថែមទៅប្រតិទិនខ្ញុំ
+Copy entry: ចម្លងចូល
+This will delete this entry for all users.: វានឹងលុបធាតុនេះសម្រាប់អ្នកប្រើប្រាស់ទាំងអស់។
+Edit entry: កែសម្រួលធាតុ
+Edit repeating entry for all dates: កែសម្រួលធាតុដដែលៗសម្រាប់កាលបរិច្ឆេទទាំងអស់
+Delete repeating event for all dates: លុបព្រឹត្តិការណ៍ដដែលៗសម្រាប់កាលបរិច្ឆេទទាំងអស់
+Edit entry for this date: កែសម្រួលធាតុសម្រាប់កាលបរិច្ឆេទនេះ
+Delete entry only for this date: លុបការចូលសម្រាប់កាលបរិច្ឆេទនេះ
+Delete entry from calendar of XXX: លុបធាតុពីប្រតិទិន XXX
+This will delete the entry from your XXX calendar.: វានឹងលុបធាតុចេញពីប្រតិទិន XXX របស់អ្នក។
+boss: ថៅកែ '
+This will delete the entry from your boss calendar.: វានឹងលុបធាតុចេញពីប្រតិទិនរបស់ចៅហ្វាយអ្នក។
+This will delete the entry from your calendar.: វានឹងលុបធាតុចេញពីប្រតិទិនរបស់អ្នក។
+from your boss calendar: ពីប្រតិទិនរបស់ចៅហ្វាយរបស់អ្នក
+Do you want to add this entry to your calendar?: តើអ្នកចង់បន្ថែមធាតុនេះទៅក្នុងប្រតិទិនរបស់អ្នកទេ?
+This will add the entry to your calendar.: វានឹងបន្ថែមធាតុទៅប្រតិទិនរបស់អ្នក។
+Email all participants: អ៊ីមែលអ្នកចូលរួមទាំងអស់
+Hide activity log: លាក់កំណត់ហេតុសកម្មភាព
+Show activity log: បង្ហាញកំណត់ហេតុសកម្មភាព
+Export this entry to: នាំចេញធាតុនេះទៅ
+Palm Pilot: ដូងសាកល្បង
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: ចុចទ្វេដងលើក្រឡាទទេដើម្បីបន្ថែមធាតុថ្មី។
+
+########################################
+# Page: week_details.php
+#
+New Entry: ការចូលថ្មី
+cont.: cont ។
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: ប្រតិទិនអ្នកប្រើផ្សេងទៀត
+Category Management: ការគ្រប់គ្រងប្រភេទ
+Day View: ទិដ្ឋភាពថ្ងៃ
+Edit Event: កែសម្រួលព្រឹត្តិការណ៍
+Month View: ទិដ្ឋភាពខែ
+Common Trailer: ឈុតខ្លីៗទូទៅ
+User Management: ការគ្រប់គ្រងអ្នកប្រើប្រាស់
+Manage Views: គ្រប់គ្រងការមើល
+Week View: ទិដ្ឋភាពសប្ដាហ៍
+Year View: ទិដ្ឋភាពឆ្នាំ
+Invalid function id: លេខសម្គាល់មុខងារមិនត្រឹមត្រូវ
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: មិនអាចរកឃើញឯកសារ "settings.php" ។<br>សូមចម្លង "settings.php.orig" ទៅ "settings.php" និងកែសម្រួលសម្រាប់គេហទំព័ររបស់អ្នក។
+Incomplete settings.php file...: ឯកសារ "settings.php" មិនពេញលេញ ...
+Could not find XXX defined in...: មិនអាចរកឃើញ "XXX" ដែលបានកំណត់នៅក្នុងឯកសារ "settings.php" របស់អ្នកទេ។
+You must define XXX in: អ្នកត្រូវតែកំណត់ "XXX" នៅក្នុងឯកសារ "settings.php" ។
+
+########################################
+# Page: includes/date_formats.php
+#
+December: ធ្នូ
+Dec: ធ្នូ
+LANGUAGE DEFINED: ភាសាបានកំណត់
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: កំហុសក្នុងការភ្ជាប់ទៅប្រព័ន្ធទិន្នន័យ៖ "XXX" ។
+db_type not defined.: db_type មិនបានកំណត់។
+invalid db_type XXX: db_type មិនត្រឹមត្រូវ "" XXX "។
+Cache cleared from previous SQL!: សម្អាតឃ្លាំងសម្ងាត់ពី SQL មុន!
+Error executing query.: កំហុសក្នុងការប្រតិបត្តិសំណួរ។
+Unfortunately, XXX is not implemented for YYY: ជាអកុសល "XXX" មិនត្រូវបានអនុវត្តសម្រាប់ (YYY) ។
+Unknown ODBC error.: កំហុសអូឌីស៊ីមិនស្គាល់។
+Error opening cache dir XXX.: កំហុសក្នុងការបើកឃ្លាំងសម្ងាត់ dir "XXX" ។
+delete: លុប
+Cache error Could not XXX file YYY.: កំហុសក្នុងឃ្លាំងសម្ងាត់៖ មិនអាច XXX ឯកសារ "YYY" ទេ។
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: កំហុស​ធ្ងន់ធ្ងរ
+Invalid data format for: ទ្រង់ទ្រាយទិន្នន័យមិនត្រឹមត្រូវសម្រាប់
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: កំហុស៖ វាយបញ្ចូលមិនបានកំណត់សម្រាប់កំណត់ហេតុសកម្មភាព!
+This event is XXX.: ព្រឹត្តិការណ៍នេះគឺ XXX ។
+Conf.: Conf ។
+exceeds limit of XXX events per day: លើសចំនួនកំណត់នៃព្រឹត្តិការណ៍ XXX ក្នុងមួយថ្ងៃ
+on: បើក
+All Attendees: អ្នកចូលរួមទាំងអស់
+Busy: រវល់
+Tentative: ការសងសឹក
+Schedule an appointment for XXX.: កំណត់ពេលណាត់ជួបសម្រាប់ XXX: YYY ។
+date_select: __ ថែម __ __ ថ្ងៃទី __ __ ឆ្នាំទី __
+Event approved: បានអនុម័តព្រឹត្តិការណ៍
+Journal approved: ទិនានុប្បវត្តិត្រូវបានអនុម័ត
+Task approved: កិច្ចការត្រូវបានអនុម័ត
+Attachment: ឯកសារ​ភ្ជាប់
+Event created: ព្រឹត្តិការណ៍បានបង្កើត
+Journal created: បង្កើតទិនានុប្បវត្តិ
+Task created: បានបង្កើតភារកិច្ច
+Event deleted: បានលុបព្រឹត្តិការណ៍
+Journal deleted: បានលុបទិនានុប្បវត្តិ
+Task deleted: បានលុបភារកិច្ច
+New user via email (self registration): អ្នកប្រើប្រាស់ថ្មីតាមរយៈអ៊ីម៉ែល (ការចុះឈ្មោះដោយខ្លួនឯង)
+New user (self registration): អ្នកប្រើប្រាស់ថ្មី (ការចុះឈ្មោះដោយខ្លួនឯង)
+Notification sent: បានផ្ញើការជូនដំណឹង
+Event rejected: បានច្រានចោលព្រឹត្តិការណ៍
+Journal rejected: សារព័ត៌មានបានច្រានចោល
+Task rejected: បានបដិសេធភារកិច្ច
+Reminder sent: បានផ្ញើការរំលឹក
+Event updated: ព្រឹត្តិការណ៍បានធ្វើបច្ចុប្បន្នភាព
+Journal updated: ទិនានុប្បវត្តិបានធ្វើបច្ចុប្បន្នភាព
+Task updated: កិច្ចការត្រូវបានធ្វើបច្ចុប្បន្នភាព
+Delete User: លុបអ្នកប្រើប្រាស់
+WK: =
+TASKS: ភារកិច្ច
+Task_Title: ចំណងជើង
+Due: ដោយសារ
+Task Name: ឈ្មោះភារកិច្ច
+Task Due Date: កាលបរិច្ឆេទដល់ពេលកំណត់
+You have XXX unapproved entries: អ្នកមានធាតុមិនទាន់អនុម័ត XXX
+Changes successfully saved: បានរក្សាទុកការផ្លាស់ប្តូរដោយជោគជ័យ
+Event: ព្រឹត្តិការណ៍
+Action: សកម្មភាព
+Printer Friendly: ម៉ាស៊ីនព្រីនដ៍រាក់ទាក់
+Generate printer-friendly version: បង្កើតកំណែដែលងាយស្រួលសម្រាប់ម៉ាស៊ីនបោះពុម្ព
+after: បន្ទាប់ពី
+before: មុន
+end: បញ្ចប់
+start: ចាប់ផ្តើម
+View this event: មើលព្រឹត្តិការណ៍នេះ
+View this task: មើលភារកិច្ចនេះ
+January: មករា
+February: ខែកុម្ភៈ
+March: មីនា
+April: ខែមេសា
+May_: ឧសភា
+June: មិថុនា
+July: ខែកក្កដា
+August: សីហា
+September: ខែកញ្ញា
+October: តុលា
+November: វិច្ឆិកា
+Jan: មករា
+Feb: ខែកុម្ភៈ
+Mar: មីនា
+Apr: មេសា
+May: ឧសភា
+Jun: មិថុនា
+Jul: ខែកក្កដា
+Aug: សីហា
+Sep: កញ្ញា
+Oct: តុលា
+Nov: វិច្ឆិកា
+SU: ស៊ូ
+MO: អេម
+TU: =
+WE: យើង
+TH: ថ
+FR: =
+SA: =
+unknown-month: មិនស្គាល់ខែ
+First Quarter Moon: ត្រីមាសទី ១ ច័ន្ទ
+Full Moon: ព្រះ​ច័ន្ទ​ពេញ​វង្ស
+Last Quarter Moon: ត្រីមាសចុងក្រោយច័ន្ទ
+New Moon: ព្រះច័ន្ទថ្មី
+Error TIME_SLOTS undefined!: កំហុស៖ TIME_SLOTS មិនបានកំណត់!
+The following error occurred: កំហុសដូចខាងក្រោមកើតឡើង
+You are not authorized.: អ្នកមិនត្រូវបានអនុញ្ញាតទេ។
+Add N hours to: បន្ថែម N ម៉ោងទៅ
+Subtract N hours from: ដក N ម៉ោងពី
+same as: ដូចគ្នានឹង
+server time: ពេលវេលាម៉ាស៊ីនមេ
+Cannot read timezone file XXX.: មិនអាចអានឯកសារតំបន់ពេលវេលា៖ XXX ។
+Your current GMT offset is XXX hours.: អុហ្វសិត GMT បច្ចុប្បន្នរបស់អ្នកគឺ XXX ម៉ោង។
+Unauthorized: គ្មានការអនុញ្ញាត
+Error approving event XXX.: កំហុសក្នុងការអនុម័តព្រឹត្តិការណ៍៖ XXX ។
+Error deleting event XXX.: កំហុសក្នុងការលុបព្រឹត្តិការណ៍៖ XXX ។
+Error rejecting event XXX.: កំហុសក្នុងការបដិសេធព្រឹត្តិការណ៍៖ XXX ។
+Sunday: ថ្ងៃអាទិត្យ
+Monday: ថ្ងៃច័ន្ទ
+Tuesday: ថ្ងៃអង្គារ
+Wednesday: ថ្ងៃពុធ
+Thursday: ថ្ងៃព្រហស្បតិ៍
+Friday: ថ្ងៃសុក្រ
+Saturday: ថ្ងៃសៅរ៍
+Sun: ព្រះអាទិត្យ
+Mon: មន
+Tue: អ៊ី
+Wed: ថ្ងៃពុធ
+Thu: ធ
+Fri: ថ្ងៃសុក្រ
+Sat: សៅរ៍
+unknown-weekday: មិនស្គាល់ថ្ងៃធ្វើការ
+Invalid referring URL: URL យោងមិនត្រឹមត្រូវ
+
+########################################
+# Page: includes/help_list.php
+#
+Index: សន្ទស្សន៍
+Documentation: ឯកសារ
+Page: ទំព័រ
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: ប្រតិទិនរបស់ខ្ញុំ
+Add New Entry: បន្ថែមធាតុថ្មី
+Add New Task: បន្ថែមភារកិច្ចថ្មី
+Logout: ចាកចេញ
+Home: ផ្ទះ
+Back to My Calendar: ត្រលប់ទៅប្រតិទិនខ្ញុំ
+Go to: ទៅ
+Manage calendar of: គ្រប់គ្រងប្រតិទិននៃ
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: ភាសារុករកមិនត្រូវបានរកឃើញ
+(not supported): (មិន​គាំទ្រ)
+Abkhazian: អាបាខាហ្សៀន
+Acoli: អាគ្រីលី
+Adangme: អាដៀងមី
+Adyghe: អាឌីជី
+Afar: អាហ្វា
+Afrihili: =
+Afrikaans: អាហ្រ្វិក
+Ainu: អាហ្សី
+Akan: អាកាន
+Akkadian: អាកាកាឌី
+Albanian: អាល់បានី
+Aleut: អាឡូតូ
+Algonquian: =
+Altai (Southern): Altai (ខាងត្បូង)
+Amharic: អាម៉ារី
+Angika: អែនកាកា
+Apache: =
+Arabic (Algeria): អារ៉ាប់ (អាល់ហ្សេរី)
+Arabic (Bahrain): អារ៉ាប់ (បារ៉ែន)
+Arabic (Egypt): អារ៉ាប់ (អេហ្ស៊ីប)
+Arabic (Iraq): អារ៉ាប់ (អ៊ីរ៉ាក់)
+Arabic (Jordan): អារ៉ាប់ (ហ្ស៊កដានី)
+Arabic (Kuwait): អារ៉ាប់ (គុយវ៉ែត)
+Arabic (Lebanon): អារ៉ាប់ (លីបង់)
+Arabic (Libya): អារ៉ាប់ (លីប៊ី)
+Arabic (Morocco): អារ៉ាប់ (ម៉ារ៉ុក)
+Arabic (Oman): អារ៉ាប់ (អូម៉ង់)
+Arabic (Qatar): អារ៉ាប់ (កាតា)
+Arabic (Saudi Arabia): អារ៉ាប់ (អារ៉ាប់ប៊ីសាអូឌីត)
+Arabic (Syria): អារ៉ាប់ (ស៊ីរី)
+Arabic (Tunisia): អារ៉ាប់ (ទុយនីស៊ី)
+Arabic (U.A.E.): អារ៉ាប់ (យូ។ អេ។ អេ។ អេ។ )
+Arabic (Yemen): អារ៉ាប់ (យេម៉ែន)
+Arabic: អារ៉ាប់
+Aragonese: អាហ្កានី
+Aramaic: អារ៉ាប់
+Arapaho: =
+Arawak: អារ៉ាក់
+Armenian: អាមេនី
+Assamese: =
+Asturian: អេននីស
+Athapascan: អាតូតាស្កាស្កាន
+Avaric: អាវីវ៉ា
+Avestan: អាវ៉ាន
+Awadhi: =
+Aymara: អារ៉ាស
+Azerbaijani: អាស៊ែបៃហ្សង់
+Balinese: បាលី
+Baluchi: បាលូជី
+Bambara: បាបារ៉ា
+Bamileke: =
+Banda: ដាន់ដា
+Basa: បាសា
+Bashkir: បាស្កាស
+Basque: បាស
+Beja: ប៊េកា
+Belarusian: បេឡារុស្ស
+Bemba: បាមៀ
+Bengali: បង់ក្លាដែស
+Bhojpuri: =
+Bihari: ប៊ីហារ
+Bikol: ប៊ីកូល
+Bislama: ប៊ីស៊ីឡា
+Blackfoot: ស្បែកជើងខ្មៅ
+Blin: ប្លីន
+Bliss: សុខៈ
+Bosnian: បូស្នី
+Braj: =
+Breton: ប៊្រីក
+Buginese: =
+Bulgarian: ប៊ុលហ្គារី
+Buriat: ប៊ឺរឌី
+Burmese: ជនជាតិភូមា
+Caddo: ខាដូដូ
+Catalan: កាតាឡាន
+Cebuano: ខារីស
+Chagatai: ឆាហ្គាតាយ
+Chamorro: =
+Chechen: ឈិន
+Cherokee: =
+Cheyenne: =
+Chibcha: ឈីបឆា
+Chichewa: =
+Chinese (Hong Kong): ចិន (ហុងកុង)
+Chinese (PRC): ចិន (PRC)
+Chinese (Simplified/GB2312): ចិន (អក្សរកាត់ / GB2312) 
+Chinese (Singapore): ចិន (សិង្ហបុរី)
+Chinese (Taiwan): ចិន (តៃវ៉ាន់)
+Chinese (Traditional/Big5): ចិន (ប្រពៃណី / ធំ ៥)
+Chinook: ឈិនហ្គូ
+Chipewyan: ឈីបវ៉ាយយ៉ាន
+Choctaw: ចូវ
+Chuukese: =
+Chuvash: ខាច់
+Coptic: ស្ពាន់
+Cornish: ខូនីស
+Corsican: =
+Cree: ដំណើរ
+Creek: ក្រេក
+Croatian: ក្រូអាត
+Czech: ឆែក
+Dakota: ដាកូតា
+Danish: ដាណឺម៉ាក
+Dargwa: ដាហ្គាវ៉ា
+Delaware: ដេឡាវ៉ាយ
+Dinka: ឌិញ
+Dogri: ឌីអាទ្រី
+Dogrib: =
+Duala: ឌឺដា
+Dutch (Belgium): ហុល្លង់ (បែលហ្ស៊ិក)
+Dutch: ហូឡង់
+Dyula: ឌីដូលូ
+Dzongkha: ដុងកា
+Edo: អេដូ
+Efik: អ៊ីហ្វក
+Ekajuk: =
+Elamite: អេឡៃ
+English (Australia): អង់គ្លេស (អូស្ត្រាលី)
+English (Belize): អង់គ្លេស (បេលីស)
+English (Canada): អង់គ្លេស (កាណាដា)
+English (Ireland): អង់គ្លេស (អៀរឡង់)
+English (Jamaica): អង់គ្លេស (ហ្សាម៉ាអ៊ីកា)
+English (New Zealand): អង់គ្លេស (នូវែលសេឡង់)
+English (Philippines): អង់គ្លេស (ហ្វីលីពីន)
+English (South Africa): អង់គ្លេស (អាហ្វ្រិកខាងត្បូង)
+English (Trinidad & Tobago): អង់គ្លេស (ទ្រីនីដាដនិងតូបាបា)
+English (United Kingdom): អង់គ្លេស (ចក្រភពអង់គ្លេស)
+English (United States): អង់គ្លេស (សហរដ្ឋអាមេរិក)
+English (Zimbabwe): អង់គ្លេស (ហ្ស៊ីមបាវេ)
+English: អង់គ្លេស - អាមេរិក
+Erzya: អេហ្សីយ៉ា
+Esperanto: =
+Estonian: អេស្តូនី
+Ewe: អេវ៉ា
+Ewondo: អេវុនដូ
+Fang: ចាង
+Fanti: ហ្វាទី
+Faroese: ហ្វារ៉ូស
+Fijian: ហ្វីជី
+Filipino: ហ្វីលីពីន
+Finnish: ហ្វាំងឡង់
+Fon: ហ្វុន
+French (Belgium): បារាំង (បែលហ្ស៊ិក)
+French (Canada): បារាំង (កាណាដា)
+French (France): បារាំង (បារាំង)
+French (Luxembourg): បារាំង (លុចសំបួ)
+French (Monaco): បារាំង (ម៉ូណាកូ)
+French (Switzerland): បារាំង (ស្វ៊ីស)
+French: បារាំង
+Frisian (Eastern): ហ្វ្រីស៊ាន (បូព៌ា)
+Frisian (Northern): ហ្វ្រីស៊ាន (ខាងជើង)
+Frisian (Western): ហ្វ្រីស៊ាន (ខាងលិច)
+Frisian: ហ្វ្រីស៊ាន
+Friulian: =
+Fulah: ហ្វូហ្វា
+Ga: ហ្គា
+Galibi: ហ្គាលីប៊ី
+Galician: ហ្គាលីស្យាន
+Ganda: ហ្គន់ដា
+Gayo: ហ្គីតា
+Gbaya: ហ្គីបា
+Geez: ហ្គេស
+Georgian: ហ្សកហ្ស៊ី
+German (Austria): អាល្លឺម៉ង់ (អូទ្រីស)
+German (Germany): អាល្លឺម៉ង់ (អាល្លឺម៉ង់)
+German (Liechtenstein): អាល្លឺម៉ង់ (Liechtenstein)
+German (Luxembourg): អាល្លឺម៉ង់ (លុចសំបួ)
+German (Standard): អាល្លឺម៉ង់ (ស្តង់ដារ)
+German (Switzerland): អាល្លឺម៉ង់ (ស្វ៊ីស)
+German: អាឡឺម៉ង់
+Gilbertese: ហ្គីលប៊ឺរ
+Gondi: ហ្គូដូ
+Gorontalo: ហ្គ័រវីនតូ
+Gothic: ហ្គោធិក
+Grebo: ហ្គីបូ
+Greek: ក្រិក
+Greenlandic: ហ្គ្រីនឡែន
+Guarani: ហ្គ័រនីន
+Gujarati: ហ្គូចាហ្គោ
+Gwich&#39;in: Gwich'in
+Haida: ហៃដា
+Haitian (Creole): ហៃទី (ក្រេអូល)
+Haitian: ហៃទី
+Hausa: ហូសា
+Hawaiian: ហាវ៉ៃ
+Hebrew: ហេប្រ៊ូ
+Herero: ទីនេះ
+Hiligaynon: ភាសាហឺស
+Hindi: ហិណ្ឌូ
+Hiri Motu: ហ៊ីរីម៉ូតូ
+Hittite: ហ៊ីតធីត
+Hmong: ភាសា Hmoob
+Holo (Taiwanese): ហូឡូ (ជនជាតិតៃវ៉ាន់)
+Hungarian: ហុងគ្រី
+Hupa: ហូវ
+Iban: =
+Icelandic: អ៊ីស្លង់
+Ido: ខ្ញុំ​ធ្វើ
+Igbo: អ៊ីកបូ
+Iloko: អ៊ីឡូកូ
+Indonesian: ឥណ្ឌូនេស៊ី
+Ingush: =
+Inuktitut: អ៊ិនធុទីធ
+Inupiaq: អ៊ិនពៀក
+Iranian: អ៊ីរ៉ង់
+Irish (Gaelic): ភាសាអៀរឡង់
+Irish: អៀរឡង់
+Iroquoian: អ៊ីរ៉ូសៀន
+Italian (Switzerland): អ៊ីតាលី (ស្វីស)
+Italian: អ៊ីតាលី
+Japanese: ជនជាតិជប៉ុន
+Javanese: ជ្វា
+Judeo-Arabic: យូដាស - អារ៉ាប់
+Judeo-Persian: យូដាស - ពែរ្ស
+Kabardian: កាប៊ុល
+Kabyle: គីប
+Kachin: កាឈិន
+Kalaallisut: កាឡាលលីស
+Kalmyk: =
+Kamba: ខាំបា
+Kannada: កន្នដា
+Kanuri: ខារីន
+Kara-Kalpak: ការ៉ាកាលីក
+Karachay-Balkar: សេវាកម្ម - សេវាកម្ម
+Karelian: =
+Kashmiri: កាស្មៀរី
+Kashubian: កាស្មៀរ
+Kawi: កាគី
+Kazakh: កាហ្សាក់ស្ថាន
+Khasi: ការដោះស្រាយ
+Khmer (Central): ខ្មែរ (កណ្ដាល)
+Khmer: ខ្មែរ
+Khotanese: =
+Kikuyu: គីគុយ
+Kimbundu: គីមប៊ូឌូ
+Kinyarwanda: គីនីវ៉ាន់ដា
+Kirghiz: គៀរហ្គីច
+Klingon: ឃីងដុន
+Komi: កូមី
+Kongo: កុងហ្គោ
+Konkani: ខនឃីនី
+Korean (Johab): កូរ៉េ (យ៉ូហាប់)
+Korean (North): កូរ៉េ (ខាងជើង)
+Korean (South): កូរ៉េ (ខាងត្បូង)
+Korean: កូរ៉េ
+Kosraean: កូសារ៉េន
+Kpelle: កបិល
+Kuanyama: គុយយ៉ាម៉ា
+Kumyk: =
+Kurdish: ឃឺដ
+Kutenai: =
+Kyrgyz: គីជី
+Ladino: ឡាឌីណូ
+Lahnda: ឡៃដា
+Lamba: ឡាំបា
+Lao: ឡាវ
+Latin: ឡាតាំង
+Latvian: ឡាតវីយ៉ា
+Lezghian: =
+Limburgan: ណុច
+Lingala: លីនដាឡា
+Lithuanian: លីទុយអានី
+Lojban: ឡាក់ប៊ីន
+Lozi: ឡូស៊ី
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: លូស៊ីណូ
+Lunda: លីនដា
+Luo: លូ
+Lushai: លូសៃ
+Luxembourghish: លុចសំបួ
+Macedonian: ម៉ាសេដ្យាន
+Madurese: =
+Magahi: ម៉ាហៃ
+Maithili: =
+Makasar: ម៉ាកា
+Malagasy: ម៉ាឡាកា
+Malay: ម៉ាឡេ
+Malayalam: ម៉ាឡាយ៉ាល់
+Maldivian: ម៉ាល់ឌីវ
+Maltese: ម៉ាល់តា
+Manchu: ម៉ាន់ជូ
+Mandar: មេនដាយ
+Mandingo: មេនឌីណូ
+Manipuri: =
+Manx: ឧបករណ៏
+Maori: ម៉ារី
+Mapuche: =
+Marathi: ម៉ារ៉ាធី
+Mari: ម៉ារី
+Marshallese: =
+Marwari: ម៉ារៀរី
+Masai: ម៉ាសា
+Mayan: ម៉ាយ៉ាន
+Mende: មេនដេ
+Mi&#39;kmaq: មីលកាម៉ាក
+Minangkabau: មីងហ្គោបាប
+Mirandese: =
+Mohawk: មហាម៉ាត់
+Moksha: ម៉ុសសា
+Moldavian: ម៉ុលដាវី
+Mongo: ម៉ុងហ្គោ
+Mongolian: ម៉ុងហ្គោលី
+Montenegrin: ម៉ុងតេណេហ្គីន
+Moroccan: ម៉ារ៉ុក
+Mossi: ម៉ូសស៊ី
+Myanmar: មីយ៉ាន់ម៉ា
+Māori: ម៉ូរី
+N&#39;Ko: ណោកូ
+Nauru: ណៅរូ
+Navajo: ណាវ៉ា
+Ndebele (North): ណឺបេឡេ (ខាងជើង)
+Ndebele (South): ដាប់ប៊ែល (ខាងត្បូង)
+Ndebele: ដាប់ប៊ែល
+Ndonga: ណុនដា
+Neapolitan: =
+Nepali: នេប៉ាល់
+Nias: សូមចុច
+Niuean: នីណាន
+Nogai: ណៅកៃ
+Norse: បែលហ្សិក
+Norwegian (Bokmål): ន័រវេស
+Norwegian (Nynorsk): ន័រវែស (នីហ្សេរីយ៉ា)
+Norwegian: ន័រវេស
+Nyamwezi: =
+Nyankole: =
+Nyoro: នីរ៉ូ
+Nzima: នីហ្សីម៉ា
+Occitan: អាក់ហ្ស៊ីស
+Odia: អូឌី
+Ojibwa: =
+Oriyia: អូរីយ៉ា
+Oromo: អូម៉ូណូ
+Osage: =
+Ossetic: អុកស៊ីដ
+Pahlavi: =
+Palauan: =
+Pali: ភាសាបាលី
+Pampanga: ផាំប៉ាហ្គាន
+Pangasinan: ផាំងសាស៊ីណាន
+Panjabi: =
+Papiamento: ជំនួយ
+Pashto: ផាសតូតូ
+Pedi: ភីឌី
+Persian (Farsi): ភឺសៀន (ហ្វាស៊ី)
+Persian (Iran): ភឺសៀន (អ៊ីរ៉ង់)
+Persian: ពែរ្ស
+Phoenician: =
+Pohnpeian: ផិនផេន
+Polish: ប៉ូឡូញ
+Portuguese: ព័រទុយហ្កាល់
+Portuguese/Brazil: ព័រទុយហ្កាល់ / ប្រេស៊ីល
+Punjabi (India): ពុនចូចា (ឥណ្ឌា)
+Punjabi (Pakistan): ពុនចូចា (ប៉ាគីស្ថាន)
+Punjabi: ពុនចាជ
+Quechua: គុ
+Rajasthani: រ៉ាហ្សាស្យានី
+Rapanui: =
+Rarotongan: រ៉ារតុងណាន់
+Rhaeto-Romanic: =
+Romanian: រ៉ូម៉ានី
+Romansh: រ៉ូម៉ាំង
+Romany: រ៉ូមែនទិក
+Rundi: រុនឌី
+Russian (Moldavia: រុស្ស៊ី (ម៉ុលដាវី
+Russian (Republic of Moldova): រុស្ស៊ី (សាធារណរដ្ឋម៉ុលដាវី)
+Russian: រុស្ស៊ី
+Sami (Inari): សាន់ (អ៊ីរីរី)
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): សាមី (ខាងជើង)
+Sami (Skolt): =
+Sami (Southern): សាមី (ខាងត្បូង)
+Sami: =
+Samoan: សាម៉ាន
+Samoli: សាមលី
+Sandawe: សាន់វ៉ា
+Sango: សាងហ្គ
+Sanskrit: សំស្ក្រឹត
+Santali: =
+Sardinian: ការផ្សព្វផ្សាយ
+Sasak: សាសា
+Scots (Gaelic): ស្កុតឡេន
+Selkup: =
+Serbian (Upper): សើប (លើ)
+Serbian: ស៊ែប៊ី
+Serer: ស៊ឺរ
+Sesotho: សេសូថូ
+Shan: សាន
+Shona: សូណា
+Sichuan Yi: ស៊ីឈួនយី
+Sicilian: =
+Sindhi: ស៊ីនឌី
+Sinhala: ស៊ីនហាឡា
+Slavic: ស្លាវីក
+Slovak: ស្លូវ៉ាគី
+Slovenian: ស្លូវេនី
+Sogdian: សូហ្គេន
+Somali: សូម៉ាលី
+Somani: សូម៉ាលី
+Songhai: ប៉ូលីស
+Soninke: សុននីក
+Sorbian (Lower): រស្មីរី (ក្រោម)
+Sorbian (Upper): រ៉ូលីស្យាន (លើ)
+Sorbian: រស្មី
+Sotho: សូថូ
+Spanish (Argentina): អេស្ប៉ាញ (អាហ្សង់ទីន)
+Spanish (Bolivia): អេស្ប៉ាញ (បូលីវី)
+Spanish (Chile): អេស្ប៉ាញ (ឈីលី)
+Spanish (Colombia): អេស្ប៉ាញ (កូឡុំប៊ី)
+Spanish (Costa Rica): អេស្ប៉ាញ (កូស្តារីកា)
+Spanish (Dominican Republic): អេស្ប៉ាញ (សាធារណរដ្ឋដូមីនីកែន)
+Spanish (Ecuador): អេស្ប៉ាញ (អេក្វាឌ័រ)
+Spanish (El Salvador): អេស្ប៉ាញ (អែលសាវ៉ាឌ័រ)
+Spanish (Guatemala): អេស្ប៉ាញ (ហ្គាតេម៉ាឡា)
+Spanish (Honduras): អេស្ប៉ាញ (ហុងឌូរ៉ាស)
+Spanish (Mexico): អេស្ប៉ាញ (ម៉ិកស៊ិក)
+Spanish (Nicaragua): អេស្ប៉ាញ (នីការ៉ាហ្គាវ៉ា)
+Spanish (Panama): អេស្ប៉ាញ (ប៉ាណាម៉ា)
+Spanish (Paraguay): អេស្ប៉ាញ (ប៉ារ៉ាហ្គាយ)
+Spanish (Peru): អេស្ប៉ាញ (ប៉េរូ)
+Spanish (Puerto Rico): អេស្ប៉ាញ (ព័រតូរីកូ)
+Spanish (Spain): អេស្ប៉ាញ (អេស្ប៉ាញ)
+Spanish (Uruguay): អេស្ប៉ាញ (អ៊ុយរូហ្គាយ)
+Spanish (Venezuela): អេស្ប៉ាញ (វ៉េណេស៊ុយអេឡា)
+Spanish: អេស្ប៉ាញ
+Sranan Tongo: សារណាន់តុងហ្គោ
+Sukuma: ស៊ូគូម៉ា
+Sumerian: =
+Sundanese: ស៊ូដង់
+Susu: ស៊ូស៊ូ
+Sutu: ស៊ូស៊ូ
+Swahili: ស្វាហ៊ីលី
+Swati: ស្វាទី
+Swedish (Finland): ស៊ុយអែត (ហ្វាំងឡង់)
+Swedish (Sweden): ស៊ុយអែត (ស៊ុយអែត)
+Swedish: ស៊ុយអែត
+Syriac: ស៊ីរីកា
+Tagalog: តាហ្គាល
+Tahitian: តាហ៊ីទី
+Tai: តៃ
+Taiwan: តៃវ៉ាន់
+Tajik: តាជិក
+Tamashek: =
+Tamil: តាមិល
+Tatar: តាតាស
+Telugu: តេលូហ្គូ
+Tereno: តេរេណូ
+Tetum: តេត
+Thai: ថៃ
+Tibetan: ទីបេ
+Tigre: =
+Tigrinya: ទីទីរិនយ៉ា
+Timne: ធីមណេ
+Tlingit: =
+Tok Pisin: ថុកពិសិដ្ឋ
+Tokelau: តូកូឡូ
+Tonga (Nytmhasa): តុងហ្គា (នីថាមសា)
+Tonga (Tonga Islands): តុងហ្គា (កោះតុងហ្គា)
+Tonga: តុងហ្គា
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: តាប៊ូកា
+Turkish: ទួរគី
+Turkmen: តូមិននីស្ថាន
+Tuvinian: តូវទីន
+Twi: ធ្វី
+Udmurt: យូឌីត
+Ugaritic: អ៊ូហ្គីឌីស
+Ukrainian: អ៊ុយក្រែន
+Umbundu: អ៊ូកុនឌូ
+Urdu: អ៊ូរឌូ
+Uyghur: អៃហួ
+Uzbek: អ៊ូសបេគីស
+Vai: វៃ
+Venda: វណ្ណដា
+Vietnamese: ជនជាតិវៀតណាម
+Volapük: សាមញ្ញ
+Votic: វល្លិ
+Wakashan: វ៉ាកាសាន់
+Walloon: =
+Waray: វ៉ារ៉ា
+Washo: វ៉ាហូ
+Welsh: វែល
+Wolaitta: =
+Wolof: វូហ្វ
+Xhosa: ហ្សូសា
+Yakut: យ៉ាយុត
+Yao: យ៉ៅ
+Yapese: យ៉ាប៉ាយ
+Yiddish: ភាសា Yiddish
+Yorùbá: យូជូបា
+Yupik: យូប៉ូក
+Zande: ហ្សាដ
+Zapotec: ហ្សីហ្សា
+Zaza: ហ្សាហ្សា
+Zenaga: ហ្សេនហ្គា
+Zhuang: ហ្សាំង
+Zulu: ហ្សូលូ
+Browser-defined: កម្មវិធីរុករកកំណត់
+event: ព្រឹត្តិការណ៍
+journal: ទិនានុប្បវត្តិ
+0: ០
+1: ១
+2: ២
+3: ៣
+4: ៤
+5: ៥
+6: ៦
+7: ៧
+8: ៨
+9: ៩
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: ការចូលរបស់អ្នកប្រើមិនត្រឹមត្រូវ
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: ពាក្យសម្ងាត់មិនត្រឹមត្រូវ
+no such user: គ្មាន​អ្នក​ប្រើ​បែប​នេះ
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: បាន​បិទ​គណនី
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: ចន្លោះពេល
+Months: ខែ
+Month Days: ថ្ងៃខែ
+Days: ថ្ងៃ
+Weeks: សប្តាហ៍
+Position: ទីតាំង
+Until: រហូតដល់
+Count: រាប់
+Inclusion Dates: កាលបរិច្ឆេទបញ្ចូល
+Exclusion Dates: កាលបរិច្ឆេទលើកលែង
+Event Imported: ព្រឹត្តិការណ៍ដែលបាននាំចូល
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: បៃ
+kb: =
+Mb: ម
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: ការជូនដំណឹង
+authenticate: កំហុស SMTP៖ មិនអាចផ្ទៀងផ្ទាត់បានទេ
+connect_host: កំហុស SMTP៖ មិនអាចភ្ជាប់ទៅម៉ាស៊ីន SMTP បានទេ៖
+data_not_accepted: កំហុស SMTP៖ ទិន្នន័យមិនត្រូវបានទទួល
+encoding: ការអ៊ិនកូដមិនស្គាល់៖
+execute: មិនអាចប្រតិបត្តិបាន៖
+file_access: មិនអាចចូលប្រើឯកសារ៖
+file_open: កំហុសឯកសារមិនអាចបើកឯកសារបានទេ៖
+from_failed: អាសយដ្ឋានពីខាងក្រោមបានបរាជ័យ៖
+instantiate: មិនអាចដំណើរការមុខងារអ៊ីមែលភ្លាមៗបានទេ
+mailer_not_supported: អ៊ីមែលមិនត្រូវបានគាំទ្រទេ
+provide_address: អ្នកត្រូវផ្តល់អាសយដ្ឋានអ៊ីមែលអ្នកទទួលយ៉ាងហោចណាស់មួយ។
+recipients_failed: កំហុស SMTP៖ អ្នកទទួលខាងក្រោមបានបរាជ័យ៖
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: បញ្ចូលតួអក្សរដែលបានឃើញនៅក្នុងក្រាហ្វិក
+Enter the correct letters and numbers...: បញ្ចូលអក្សរនិងលេខត្រឹមត្រូវពីរូបភាពទៅក្នុងប្រអប់អក្សរ។ ការសាកល្បងតូចនេះមានមុខងារជាការរឹតត្បិតការចូលប្រើរូបយន្តព្យាបាទ។ ផ្ទុកទំព័រឡើងវិញដោយងាយប្រសិនបើក្រាហ្វិចពិបាកអាន
+Challenge/Response: ការប្រកួតប្រជែង / ការឆ្លើយតប
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: ផ្លាស់ប្តូរកាលបរិច្ឆេទនិងពេលវេលានៃធាតុនេះ?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: អ្នកមិនបានបញ្ចូលការពិពណ៌នាសង្ខេបទេ
+time prior to work hours...: ពេលវេលាមុនម៉ោងធ្វើការ ...
+Invalid Event Date: កាលបរិច្ឆេទព្រឹត្តិការណ៍មិនត្រឹមត្រូវ
+Please add a participant: សូមបន្ថែមអ្នកចូលរួម
+Invalid Date: កាលបរិច្ឆេទមិនត្រឹមត្រូវ
+You have not entered a valid time of day: អ្នកមិនបានបញ្ចូលពេលវេលាត្រឹមត្រូវនៃថ្ងៃទេ។
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: លេខសម្គាល់ប្រតិទិនមិនអាចទុកទទេបានទេ។
+First and last names cannot both be blank.: ឈ្មោះទីមួយនិងនាមត្រកូលទាំងពីរមិនអាចទទេបានទេ។
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: ពណ៌មិនត្រឹមត្រូវ
+Color format should be RRGGBB.: ទ្រង់ទ្រាយពណ៌គួរតែជា #RRGGBB ។
+URL cannot be blank.: URL មិនអាចទទេ។
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: ប្រភេទឯកសារមិនត្រូវគ្នានឹងទ្រង់ទ្រាយនាំចូលទេ
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: ពណ៌មិនត្រឹមត្រូវសម្រាប់ផ្ទៃខាងក្រោយឯកសារ។
+Invalid color for document title.: ពណ៌មិនត្រឹមត្រូវសម្រាប់ចំណងជើងឯកសារ។
+Invalid color for table cell background.: ពណ៌មិនត្រឹមត្រូវសម្រាប់ផ្ទៃខាងក្រោយក្រឡាតារាង។
+Invalid color for table cell background for today.: ពណ៌មិនត្រឹមត្រូវសម្រាប់ផ្ទៃខាងក្រោយក្រឡាតារាងសម្រាប់ថ្ងៃនេះ។
+Invalid work hours.: ម៉ោងធ្វើការមិនត្រឹមត្រូវ។
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL របស់ម៉ាស៊ីនមេត្រូវតែបញ្ចប់ដោយសញ្ញា (/) ។
+Invalid color for table grid.: ពណ៌មិនត្រឹមត្រូវសម្រាប់ក្រឡាចត្រង្គតារាង។
+Invalid color for event popup background.: ពណ៌មិនត្រឹមត្រូវសម្រាប់ផ្ទៃខាងក្រោយលេចឡើងនៃព្រឹត្តិការណ៍។
+Invalid color for event popup text.: ពណ៌មិនត្រឹមត្រូវសម្រាប់អត្ថបទលេចឡើងនៃព្រឹត្តិការណ៍។
+Invalid color for table header text.: ពណ៌មិនត្រឹមត្រូវសម្រាប់អត្ថបទក្បាលតារាង។
+Invalid color for table header background.: ពណ៌មិនត្រឹមត្រូវសម្រាប់ផ្ទៃខាងក្រោយក្បាលតារាង។
+Server URL is required.: ទាមទារ URL ម៉ាស៊ីនមេ។
+Invalid Color: ពណ៌មិនត្រឹមត្រូវ
+Database Name: ឈ្មោះមូលដ្ឋានទិន្នន័យ
+Full Path (no backslashes): ផ្លូវពេញ (គ្មានសញ្ញាថយក្រោយ)
+The password contains illegal characters.: ពាក្យសម្ងាត់មានតួអក្សរខុសច្បាប់។
+Error you must specify a Single-User Login: កំហុស៖ អ្នកត្រូវតែបញ្ជាក់ការចូលអ្នកប្រើប្រាស់តែមួយ
+Could not find XXX.: មិនអាចរក XXX ។
+Could not find XXX in DOM.: មិនអាចរក XXX នៅក្នុង DOM ។
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: ស​ប្តា​ហ៍​នេះ
+This Month: ខែ​នេះ
+This Year: ឆ្នាំ​នេះ
+Exit: ចេញ
+Add New Event: បន្ថែមព្រឹត្តិការណ៍ថ្មី
+Delete Entries: លុបធាតុ
+My Views: ទស្សនៈខ្ញុំ
+Manage Calendar of: គ្រប់គ្រងប្រតិទិនរបស់
+My Reports: របាយការណ៍របស់ខ្ញុំ
+My Profile: ពត៌មានផ្ទាល់ខ្លួនរបស់ខ្ញុំ
+Public Calendar: ប្រតិទិនសាធារណៈ
+Unapproved Events: ព្រឹត្តិការណ៍ដែលមិនត្រូវបានអនុម័ត
+User Manager: អ្នកគ្រប់គ្រងអ្នកប្រើប្រាស់
+Help Contents: មាតិកាជំនួយ
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: ថតឃ្លាំងសម្ងាត់មូលដ្ឋានទិន្នន័យ
+Create New: បង្កើត​ថ្មី
+Failure Reason: ហេតុផលបរាជ័យ៖
+You must manually create database: អ្នកត្រូវតែបង្កើតមូលដ្ឋានទិន្នន័យដោយដៃ។
+Single-User: អ្នកប្រើទោល
+Test Settings: កំណត់តេស្ត
+Timezone Conversion Successful: ការផ្លាស់ប្តូរតំបន់ពេលវេលាប្រកបដោយជោគជ័យ
+WebCalendar Installation Wizard Step XXX: អ្នកជំនួយការតំឡើង WebCalendar ជំហានទី XXX
+Password Accepted: បានទទួលយកពាក្យសម្ងាត់
+Successful Login: ចូលដោយជោគជ័យ
+Password Incorrect: ពាក្យសម្ងាត់មិនត្រឹមត្រូវ
+Invalid Login: ការចូលមិនត្រឹមត្រូវ
+Display Errors: បង្ហាញកំហុស
+File Uploads: ផ្ទុកឯកសារឡើង
+Allow URL fopen: អនុញ្ញាតឱ្យ URL ត្រូវបានបើក (តម្រូវឱ្យមានប្រសិនបើប្រតិទិនពីចម្ងាយត្រូវបានប្រើ)
+Safe Mode: ចំណុច​សុវត្ថិភាព
+Safe Mode Allowed Vars: វ៉ែនតាសុវត្ថិភាពត្រូវបានអនុញ្ញាត (TZ ត្រូវការប្រសិនបើបើករបៀបសុវត្ថិភាព)
+GD: GD (ត្រូវការសម្រាប់ផ្ទៃខាងក្រោយរូបភាពជម្រាល)
+Passwords do not match!: លេខសម្ងាត់មិនត្រូវគ្នាទេ!
+Unable to write password to settings.php file: មិនអាចសរសេរពាក្យសម្ងាត់ទៅឯកសារ "settings.php" ។
+Password Updated: ពាក្យសម្ងាត់ត្រូវបានធ្វើបច្ចុប្បន្នភាព
+Password has been set: ពាក្យសម្ងាត់ត្រូវបានកំណត់។
+Connection Successful...: ការតភ្ជាប់ជោគជ័យ  សូមចូលទៅកាន់ទំព័របន្ទាប់ដើម្បីបន្តតំឡើង។
+Correct your entries or click the Create New...: កែធាតុរបស់អ្នកឬចុចប៊ូតុង  បង្កើតថ្មី  ដើម្បីបន្តការដំឡើង។
+Correct your entries and try again.: កែធាតុរបស់អ្នកហើយព្យាយាមម្តងទៀត។
+XXX does not exist: XXX មិនមានទេ
+XXX is not writable: XXX មិនអាចសរសេរបាន
+Error Converting Timezone: កំហុសក្នុងការបំលែងតំបន់ពេលវេលា
+Error Unable to write to file XXX.: កំហុសមិនអាចសរសេរទៅឯកសារ XXX ។
+Please change the file permissions of this file.: សូមផ្លាស់ប្តូរសិទ្ធិឯកសារនៃឯកសារនេះ។
+Please change includes dir permission: សូមផ្លាស់ប្តូរសិទ្ធិឯកសារនៃថតឯកសារ“ រួមបញ្ចូល” របស់អ្នកដើម្បីអនុញ្ញាតឱ្យសរសេរដោយអ្នកប្រើប្រាស់ផ្សេងទៀត។
+Your settings have been saved.: ការកំណត់របស់អ្នកត្រូវបានរក្សាទុក។
+OFF: បិទ
+ON: បើក
+WebCalendar Setup Wizard: អ្នកជំនួយការដំឡើង WebCalendar
+This installation wizard will guide you...: អ្នកជំនួយការតំឡើងនេះនឹងណែនាំអ្នកតាមរយៈការរៀបចំតំឡើង WebCalendar ជាមូលដ្ឋាន។<br>សម្រាប់ជំនួយនិងការដោះស្រាយបញ្ហាសូមមើល៖<br>
+System Administrators Guide: ការណែនាំរបស់អ្នកគ្រប់គ្រងប្រព័ន្ធ
+Frequently Asked Questions: សំណួរ​ដែល​សួរ​ញឹកញាប់
+FAQ: សំណួរគេសួរញឹកញាប់
+Troubleshooting: ការ​ដោះស្រាយ​បញ្ហា
+Getting Help: ទទួលជំនួយ
+Upgrading Guide: ការណែនាំធ្វើឱ្យប្រសើរឡើង
+User Supported Wiki: អ្នកប្រើវីគីគាំទ្រ
+PHP Version Check: ការពិនិត្យមើលកំណែ PHP
+Check to see if PHP 7.1.0 or greater is installed.: ពិនិត្យមើលថាតើត្រូវដំឡើងកម្មវិធី PHP 7.1.0 ឬធំជាងនេះ។
+PHP version: កំណែ PHP
+PHP Settings: ការកំណត់ PHP
+Detailed PHP Info: ពត៌មានលំអិតរបស់ PHP
+settings.php Status: ស្ថានភាព "settings.php"
+Session Check: ពិនិត្យវេន
+To test the proper operation of sessions...: ដើម្បីសាកល្បងប្រតិបត្តិការត្រឹមត្រូវនៃវគ្គសូមផ្ទុកទំព័រនេះឡើងវិញ។ អ្នកគួរតែមើលចំនួនវគ្គបន្ថែមរាល់ពេល។
+SESSION COUNTER: សម័យប្រជុំ
+The file permissions of settings.php are set...: ការអនុញ្ញាតឯកសារនៃ "settings.php" ត្រូវបានកំណត់ដូច្នេះអ្នកដំឡើងមិនមានការអនុញ្ញាតដើម្បីកែប្រែវាទេ។ សូមផ្លាស់ប្តូរសិទ្ធិឯកសារនៃឯកសារខាងក្រោមដើម្បីបន្ត
+The file permissions of the includes directory are set...: ការអនុញ្ញាតឯកសារនៃថតរួមបញ្ចូលត្រូវបានកំណត់ដូច្នេះអ្នកដំឡើងមិនមានការអនុញ្ញាតឱ្យបង្កើតឯកសារថ្មីទេ។ សូមផ្លាស់ប្តូរសិទ្ធិរបស់ថតខាងក្រោមដើម្បីបន្ត
+Your settings.php file appears to be valid.: ឯកសារ "settings.php" របស់អ្នកបង្ហាញថាត្រឹមត្រូវ។
+Configuration Wizard Password: ពាក្យសម្ងាត់អ្នកជំនួយការកំណត់រចនាសម្ព័ន្ធ
+Create Settings File Password: បង្កើតការកំណត់ឯកសារពាក្យសម្ងាត់
+db setup directions...: នៅក្នុងផ្នែកនេះអ្នកនឹងតំឡើងនិងសាកល្បងការភ្ជាប់ទៅនឹងប្រព័ន្ធទិន្នន័យរបស់អ្នក។ ព័ត៌មានគណនីដែលបានផ្គត់ផ្គង់គួរតែមានសិទ្ធិពេញលេញដើម្បីបង្កើតមូលដ្ឋានទិន្នន័យតារាងនិងអ្នកប្រើប្រាស់។ ប្រសិនបើមិនអាចធ្វើទៅបានឬការចូលប្រើមូលដ្ឋានទិន្នន័យរបស់អ្នកមានកំណត់អ្នកនឹងត្រូវកំណត់រចនាសម្ព័ន្ធមូលដ្ឋានទិន្នន័យរបស់អ្នកដោយដៃ។
+Database Status: ស្ថានភាពមូលដ្ឋានទិន្នន័យ
+Supported databases for your PHP installation: មូលដ្ឋានទិន្នន័យដែលបានគាំទ្រសម្រាប់ការដំឡើង PHP របស់អ្នក
+Your current database settings are able to access the database.: ការកំណត់មូលដ្ឋានទិន្នន័យបច្ចុប្បន្នរបស់អ្នកអាចចូលដំណើរការមូលដ្ឋានទិន្នន័យ។
+Please Test Settings: សូមសាកល្បងកំណត់ការកំណត់
+Your current database settings are not able...: ការកំណត់មូលដ្ឋានទិន្នន័យបច្ចុប្បន្នរបស់អ្នកមិនអាចចូលដំណើរការមូលដ្ឋានទិន្នន័យឬមិនទាន់បានសាកល្បងនៅឡើយទេ។
+Database Settings: ការកំណត់មូលដ្ឋានទិន្នន័យ
+Database Type: ប្រភេទមូលដ្ឋានទិន្នន័យ
+Server: ម៉ាស៊ីនមេ
+Connection Persistence: ការតស៊ូការតភ្ជាប់
+All your database tables appear to be up...: តារាងឃ្លាំងទិន្នន័យរបស់អ្នកបង្ហាញថាទាន់សម័យ។ អ្នកអាចបន្តទៅទំព័របន្ទាប់និងបញ្ចប់ការរៀបចំ WebCalendar របស់អ្នក។
+This appears to be a new installation...: នេះហាក់ដូចជាការតំឡើងថ្មី។ ប្រសិនបើវាមិនត្រឹមត្រូវសូមត្រលប់ទៅទំព័រមុនហើយកែការកំណត់របស់អ្នក។
+This appears to be an upgrade...: វាបង្ហាញថាជាការធ្វើឱ្យប្រសើរឡើងពីកំណែ XXX ទៅ nYYY ។
+The database requires some data input...: មូលដ្ឋានទិន្នន័យទាមទារការបញ្ចូលទិន្នន័យមួយចំនួនចុចធ្វើបច្ចុប្បន្នភាពមូលដ្ឋានទិន្នន័យដើម្បីបញ្ចប់ការធ្វើបច្ចុប្បន្នភាព។
+In this section we will perform...: នៅក្នុងផ្នែកនេះយើងនឹងធ្វើការផ្លាស់ប្តូរដើម្បីនាំយកទិន្នន័យរបស់អ្នកដល់កម្រិតដែលត្រូវការ។ ប្រសិនបើអ្នកកំពុងប្រើមូលដ្ឋានទិន្នន័យដែលគាំទ្រពេញលេញជំហាននេះនឹងត្រូវបានអនុវត្តដោយស្វ័យប្រវត្តិសម្រាប់អ្នក។ បើមិនដូច្នោះទេ SQL ដែលត្រូវការអាចត្រូវបានបង្ហាញហើយអ្នកគួរតែអាចកាត់និងបិទភ្ជាប់វាទៅក្នុងបង្អួចសំណួររបស់ម៉ាស៊ីនមេទិន្នន័យ។
+No database actions are required.: មិនចាំបាច់មានសកម្មភាពទិន្នន័យទេ។
+The following database actions are required: សកម្មភាពមូលដ្ឋានទិន្នន័យខាងក្រោមត្រូវបានទាមទារ
+ODBC Underlying Database: ទិន្នន័យមូលដ្ឋានអូឌីស៊ីប៊ែងៈ
+Automatic installation not supported: ការដំឡើងដោយស្វ័យប្រវត្តិមិនត្រូវបានអនុវត្តពេញលេញសម្រាប់ប្រភេទមូលដ្ឋានទិន្នន័យរបស់អ្នកទេ។ អ្នកនឹងត្រូវបង្កើតតារាងដែលត្រូវការដោយដៃដោយប្រើ SQL ដែលបានផ្គត់ផ្គង់។ សូមចុច  បង្ហាញ SQL  ដើម្បីបន្ត។ កាត់និងបិទភ្ជាប់ទៅក្នុងបង្អួចសំណួរទិន្នន័យរបស់អ្នក។
+This may take several minutes to complete: វាអាចចំណាយពេលច្រើននាទីដើម្បីបញ្ចប់។
+Install Database: តំឡើងប្រព័ន្ធទិន្នន័យ
+Update Database: ធ្វើបច្ចុប្បន្នភាពមូលដ្ឋានទិន្នន័យ
+Display Required SQL: បង្ហាញ SQL ដែលត្រូវការ
+Return to previous page after processing SQL.: បន្ទាប់ពីដំណើរការ SQL នេះដោយដៃអ្នកនឹងត្រូវត្រលប់ទៅទំព័រមុនហើយពិនិត្យមើលទិន្នន័យរបស់អ្នកឡើងវិញដើម្បីឱ្យស្គ្រីបអាចរកឃើញការផ្លាស់ប្តូរ។
+This is the final step in setting up your WebCalendar Installation.: នេះគឺជាជំហានចុងក្រោយក្នុងការរៀបចំតំឡើង WebCalendar របស់អ្នក។
+Timezone Conversion: ការផ្លាស់ប្តូរតំបន់ពេលវេលា
+It appears that you have NOT converted...: វាបង្ហាញថាអ្នកមិនបានប្តូរទិន្នន័យព្រឹត្តិការណ៍ WebCalendar ដែលមានស្រាប់របស់អ្នកទៅជា GMT ទេ។ ប្រសិនបើអ្នកមានអ្នកអាចមិនអើពើនឹងសេចក្តីជូនដំណឹងនេះហើយមិនបន្តការប្រែចិត្តជឿទេ។ ប្រសិនបើនេះជាការតំឡើងថ្មីអ្នកក៏អាចមិនអើពើនឹងសេចក្តីជូនដំណឹងនេះដែរ។
+Convert Data to GMT: បំលែងទិន្នន័យទៅ GMT
+Application Settings: ការកំណត់កម្មវិធី
+HTTP-based authentication was not detected...: ការសម្គាល់អត្តសញ្ញាណផ្អែកលើ HTTP មិនត្រូវបានរកឃើញទេ។ អ្នកត្រូវកំណត់រចនាសម្ព័ន្ធម៉ាស៊ីនមេគេហទំព័ររបស់អ្នកឡើងវិញប្រសិនបើអ្នកចង់ជ្រើសរើស“ Web Server” ពីជំរើស“ ការផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវរបស់អ្នកប្រើប្រាស់” ខាងក្រោម។
+HTTP-based authentication was detected...: ការសម្គាល់អត្តសញ្ញាណផ្អែកលើ HTTP ត្រូវបានរកឃើញ។ ការផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវរបស់អ្នកប្រើប្រាស់កំពុងត្រូវបានគ្រប់គ្រងដោយម៉ាស៊ីនមេគេហទំព័ររបស់អ្នក។ អ្នកគួរតែជ្រើសរើស 'Web Server' ពីបញ្ជីជម្រើស 'ការផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវរបស់អ្នកប្រើប្រាស់' ខាងក្រោម។
+Create Default Admin Account: បង្កើតគណនីគ្រប់គ្រងលំនាំដើម
+(Admin Account Not Found): (រកមិនឃើញគណនីអ្នកគ្រប់គ្រងទេ)
+User Authentication: ការផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវរបស់អ្នកប្រើ
+Web-based via WebCalendar (default): គេហទំព័រផ្អែកលើ WebCalendar (លំនាំដើម)
+Web Server (not detected): ម៉ាស៊ីនមេគេហទំព័រ (រកមិនឃើញ)
+Web Server (detected): ម៉ាស៊ីនមេគេហទំព័រ (រកឃើញ)
+None (Single-User): គ្មាន (អ្នកប្រើប្រាស់តែមួយ)
+Read-Only: អាច​បាន​តែ​អាន
+Environment: បរិស្ថាន
+Production: ផលិតផល
+Development: ការអភិវឌ្ឍន៍
+Save Settings: រក្សាទុកការកំណត់
+Launch WebCalendar: បើកដំណើរការ WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: កំហុសក្នុងការធ្វើបច្ចុប្បន្នភាពតារាង "XXX"៖ យ៉យ។
+Conversion Successful: ការប្រែចិត្តជឿជោគជ័យ 
+Perl script required: WebCalendar កំណែមុនរបស់អ្នក តម្រូវឲ្យ ដំណើរការស្គ្រីប PERL ដើម្បីបំលែងទិន្នន័យរបស់អ្នក។ សូមដំណើរការ /tools/upgrade_to_0.9.7.pl បន្ទាប់មកត្រឡប់ទៅទំព័រនេះវិញដើម្បីបន្ត។
+previous version requires updating several tables: កំណែ WebCalendar មុនរបស់អ្នក តម្រូវឲ្យ ធ្វើបច្ចុប្បន្នភាពតារាងទិន្នន័យជាច្រើន។
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: គ្មានការមើលជាមុនអាចប្រើបាន
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: មានកំហុសក្នុងការភ្ជាប់ទៅប្រព័ន្ធទិន្នន័យ
+Include Path: រួមបញ្ចូលផ្លូវ
+Deleting events for: ការលុបព្រឹត្តិការណ៍សម្រាប់
+Importing events for: នាំចូលព្រឹត្តិការណ៍សម្រាប់
+No data returned from: មិនមានទិន្នន័យត្រឡប់ពី
+for non-user calendar: សម្រាប់ប្រតិទិនមិនមែនអ្នកប្រើ
+No Remote Calendars found: រកមិនឃើញប្រតិទិនពីចម្ងាយ
+Remote Calendars not enabled: មិនបើកប្រតិទិនពីចម្ងាយ
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: មិនអាចរកឃើញលេខសម្គាល់ព្រឹត្តិការណ៍ទេ
+could not find event id XXX in database.: មិនអាចរកឃើញលេខសម្គាល់ព្រឹត្តិការណ៍ XXX នៅក្នុងមូលដ្ឋានទិន្នន័យទេ។
+task: ភារកិច្ច
+This is a reminder for the XXX detailed below.: នេះជាការរំលឹកសម្រាប់ XXX លម្អិតខាងក្រោម។
+Pecentage Complete: បញ្ចប់ការបញ្ចប់
+Reminder: ការ​រំលឹក
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: សកម្មភាពដែលមិនបានគាំទ្រ៖ XXX ។
+No event id specified.: គ្មានលេខសម្គាល់ព្រឹត្តិការណ៍បានបញ្ជាក់។
+Not authorized (not admin).: មិនត្រូវបានអនុញ្ញាត (មិនគ្រប់គ្រង) ។
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: ពិនិត្យមើលព្រឹត្តិការណ៍សម្រាប់ XXX ចាប់ពីកាលបរិច្ឆេទយ៉េសអេរហូតដល់កាលបរិច្ឆេទហ្ស៊ីហ្ស។
+Found XXX events in time range.: រកឃើញព្រឹត្តិការណ៍ XXX នៅក្នុងចន្លោះពេលវេលា។
+Event id=XXX YYY at ZZZ on AAA.: លេខសម្គាល់ព្រឹត្តិការណ៍ = XXX "YYY" នៅហ្ស៊ីហ្សេហ្ស៊ីលើអេអេអេស។
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: អនុញ្ញាតឱ្យអ្នកប្រើ XXX មើលប្រតិទិនរបស់អ្នកប្រើផ្សេងទៀត។
+Error Email reminders disabled for user XXX.: កំហុស៖ កម្មវិធីរំលឹកអ៊ីមែលត្រូវបានបិទសម្រាប់អ្នកប្រើ "XXX" ។
+Number of site_extras XXX.: ចំនួនគេហទំព័រ _extras៖ XXX ។
+Reminder set for event.: កំណត់កម្មវិធីរំលឹកសម្រាប់ព្រឹត្តិការណ៍។
+Mins Before XXX.: មីនមុន៖ XXX ។
+Event time is XXX.: ពេលវេលាព្រឹត្តិការណ៍គឺ៖ XXX ។
+Remind time is XXX.: រំលឹកពេលវេលាគឺ៖ XXX ។
+Reminders for user XXX, login YYY.: ការរំលឹកសម្រាប់អ្នកប្រើ "XXX" ចូល "YYY" ។
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: ការមិនយល់ព្រមសម្រាប់អ្នកប្រើប្រាស់ "XXX" ។
+Event id=XXX YYY already sent.: លេខសម្គាល់ព្រឹត្តិការណ៍ = XXX "YYY" បានផ្ញើរួចហើយ។
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: មិនតម្រូវឱ្យមានការចូលសម្រាប់របៀបអ្នកប្រើតែមួយទេ។
+No login required for HTTP authentication.: មិនចាំបាច់ចូលសម្រាប់ការផ្ទៀងផ្ទាត់អត្តសញ្ញាណ HTTP ទេ។
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: តួអក្សរមិនត្រឹមត្រូវក្នុងការចូល។
+Username XXX does not exist.: ឈ្មោះអ្នកប្រើ "XXX" មិនមានទេ។
+You cannot remove admin rights from yourself!: អ្នកមិនអាចដកសិទ្ធិគ្រប់គ្រងពីខ្លួនឯងបានទេ!
+Unknown error saving user: មិនស្គាល់កំហុសក្នុងការរក្សាទុកអ្នកប្រើប្រាស់។
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: រកមិនឃើញអ្នកចូលរួមសម្រាប់លេខសម្គាល់ព្រឹត្តិការណ៍៖ XXX ។
+Db error Could not find event id XXX.: កំហុស Db៖ មិនអាចរកឃើញលេខសម្គាល់ព្រឹត្តិការណ៍ XXX ។
+Error Could not find event id XXX in database.: កំហុស៖ មិនអាចរកឃើញលេខសម្គាល់ព្រឹត្តិការណ៍ XXX នៅក្នុងមូលដ្ឋានទិន្នន័យទេ។
