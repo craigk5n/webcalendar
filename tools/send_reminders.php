@@ -528,6 +528,8 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
 
   // Get reminders array.
   $reminder = getReminders ( $id );
+  // Is Daylight saving time (DST) on server
+  $dst = date("I");
 
   if ( ! empty ( $reminder ) ) {
     if ( $debug )
@@ -547,6 +549,10 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
           $times_sent = 0;
       }
       $new_offset = date_to_epoch ( $new_date ) - ( $start - ( $start % 86400 ) );
+      // Add one hour if the date stuck with dst set
+      $new_offset += ((date ('m', $start) * 1)>=3 && (date ('m', $start) * 1) < 11 && !$dst) * 60 * 60;
+      // Substract one hour if the date stuck with dst not set
+      $new_offset -= ((date ('m', $start) * 1)>=11 && (date ('m', $start) * 1) < 3 && $dst) * 60 * 60;
       $start += $new_offset;
       $end += $new_offset;
     }
