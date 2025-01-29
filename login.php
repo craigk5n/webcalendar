@@ -219,7 +219,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
       <input type="password" name="password" id="password" class="form-control">
     </div>
     <div class="form-group form-check row">
-      <input type="checkbox" class="form-check-input" id="remember-me">
+      <input type="checkbox" class="form-check-input" id="remember-me" name="remember" value="yes">
       <label class="form-check-label" for="exampleCheck1">Remember me</label>
     </div>
     <div class="form-group row justify-content-md-center">
