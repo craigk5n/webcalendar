@@ -4801,7 +4801,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
     <table class="main glance">'
    . ( empty ( $hour_arr[9999] ) ? '' : '
       <tr>
-        <th class="empty">&nbsp;</th>
+        <th class="day_glance_time">&nbsp;XXX</th>
         <td class="hasevents">' . $hour_arr[9999] . '</td>
       </tr>' );
 
