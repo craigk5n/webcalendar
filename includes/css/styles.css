@@ -13,7 +13,6 @@ html {
   /* These are to prevent some 'spam site' complaints. */
   background-color: #FFFFFE;
   color: #000001;
-  color-scheme: dark light;
   hanging-punctuation: first last;
 }
 *,
@@ -148,6 +147,12 @@ ul a {
   border-left: 1px solid var(--tablebg);
   vertical-align:top;
 }
+.main th.empty {
+  width:1%;
+  border-top: 1px solid var(--tablebg);
+  border-left: 1px solid var(--tablebg);
+  vertical-align:top;
+}
 .minical td.weekend,
 #editentry th.weekend {
    background-color: var(--weekendbg);
@@ -178,11 +183,16 @@ ul a {
 #cat, #day dl.desc {
   display:none;
 }
+
 td.weekcell {
   background-color: var(--weeknumber);
   font-size:.625rem;
   text-decoration:none;
+  width: 1%;
+  text-align: center;
+  vertical-align: middle;
 }
+
 img {
   max-inline-size: 100%;
   block-size: auto;
@@ -288,11 +298,12 @@ a#programname {
 }
 .entry {
   color: var(--myevents);
+  font-size: 0.75em;
 }
 .entry,
 .layerentry {
   padding-right:.1875rem;
-  /*font-size:.75rem;*/
+  font-size:.75rem;
   text-decoration:none;
 }
 .layerentry {
@@ -801,6 +812,13 @@ tr.highlight td {
   padding-left:.1875rem;
   vertical-align:top;
 }
+th.day_glance_time {
+  width: 5% !important;
+  height:2.5rem;
+  border-top:1px solid var(--tablebg);
+  border-left:1px solid var(--tablebg);
+  vertical-align:middle;
+}
 #day .glance td {
   width:86%;
   height:2.5rem;
@@ -929,8 +947,7 @@ tr.highlight td {
   font-size:.75rem;
 }
 #viewl .main td,
-#contentMonth .main td,
-#month .main td {
+#month .main td, #Month #month_main td {
   height:6.0rem;
   font-size:.75rem;
   vertical-align:top;
@@ -969,175 +986,6 @@ table#prevmonth {
 #month .minical {
   margin:0 .25rem;
   border:0;
-}
-#combo div.headerinfo, #month2 div.headerinfo {
-  margin:.9375rem;
-  border:1px solid #000;
-  padding:.625rem;
-  background-color:#FFF;
-  color:#000;
-}
-#combo div.headerinfo .username, #month2 div.headerinfo .username {
-  font-weight:bold;
-  font-size:16pt;
-}
-#combo div.headerinfo #categoryselection, #month2 div.headerinfo #categoryselection {
-  padding-left:1.875rem;
-  font-weight:normal;
-  font-size:12pt;
-}
-#combo div.headerinfo #selectedcategories, #month2 div.headerinfo #selectedcategories {
-  font-weight:normal;
-  font-size:12pt;
-}
-#combo #categorylist, #month2 #categorylist {
-  border:1px solid #CCC;
-  background-color:#FFA;
-}
-#contentMonth #monthstatus {
-  margin-left:1.25rem;
-}
-#month2 td.displayYear { font-size: 1.2rem !important; }
-#contentMonth .monthtitle,
-#contentYear .yeartitle,
-#contentDay .daytitle {
-  margin:0 0 0 .3125rem;
-  padding:0;
-  font-size:18pt;
-  text-align:center;
-}
-#combo #contentMonth #month_main, #month2 #contentMonth #month_main {
-  margin-top: 10px;
-}
-#combo #contentMonth #month_main td, #month2 #contentMonth #month_main td {
-  height:90px;
-}
-#combo .event, #month2 .event {
-  margin-top:.0625rem;
-  overflow:hidden;
-}
-#combo #contentMonth .eventname, #month2 #contentMonth .eventname {
-  vertical-align: top;
-}
-#combo #contentMonth .event, #month2 #contentMonth .event {
-  vertical-align: middle;
-}
-#contentYear #year_main,
-#contentYear .monthblock {
-  background-color: #FFF;
-  border: 0;
-}
-#contentYear .monthtable {
-  margin-bottom: 10px;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
-}
-#contentYear .empty {
-  background-color: #E0E0E0;
-}
-#contentYear th {
-  font-size: 70%;
-  padding: 2px;
-}
-#contentYear .dom {
-  font-size: 70%;
-  text-align: center;
-}
-#contentAgenda #agendastatus {
-  margin-left:1.25rem;
-}
-#contentAgenda td {
-  background-color:#E0E0E0;
-  font-size:10pt;
-}
-#contentAgenda td.even {
-  background-color:#FFFFFF;
-}
-#contentDay #daystatus {
-  margin-left:1.25rem;
-}
-#contentDay .timeofday {
-  float:right;
-  margin-right:.125rem;
-  font-size:.5625rem;
-}
-#contentDay #daydiv {
-  height:25rem;
-  scrollTop:400;
-  overflow:auto;
-}
-#contentDay #dayuntimed {
-  background-color:#FFFFFF;
-  color: var(--myevents);
-  margin-top:.25rem;
-  margin-bottom:.25rem;
-  margin-left:3.125rem;
-  border:1px solid;
-  border-color:#A0A0A0 #E0E0E0 #E0E0E0 #A0A0A0;
-  font-size:.625rem;
-}
-#contentDay .daytimedevent {
-  width:15.625rem;
-  background-color: var(--haseventsbg);
-  color: var(--myevents);
-  border:1px solid;
-  border-color:#E0E0E0 #A0A0A0 #A0A0A0 #E0E0E0;
-  font-size:.625rem;
-}
-#contentDay #dayinnerdiv {
-  position:relative;
-  height:75rem;
-}
-#contentDay .hourblockleft {
-  position:absolute;
-  left:0;
-  width:3.125rem;
-  height:3.125rem;
-  margin:0;
-  border:1px solid #E0E0E0;
-  padding:0;
-}
-#contentDay .hourblockright {
-  position:absolute;
-  left:3.125rem;
-  width:100%;
-  height:3.125rem;
-  margin:0;
-  border-right:1px solid #E0E0E0;
-  border-left:1px solid #E0E0E0;
-  padding:0;
-  background-image:url( images/hour_in_day.gif );
-  /*overflow:auto;*/
-}
-#combo #contentTasks #tasktable th {
-  background-color: #000080;
-  border: 2px outset #000060;
-  color: #ffffff;
-  font-size: 1.0rem;
-  padding: 4px;
-  padding-left: 20px;
-}
-#combo #contentTasks #tasktable td.odd {
-  background-color: #C0C0C0;
-  border: 2px outset #C0C0C0;
-  color: #000000;
-  font-size: 1.0rem;
-  padding: 4px;
-}
-#combo #contentTasks #tasktable td.even {
-  background-color: #D8D8D8;
-  border: 2px outset #D8D8D8;
-  color: #000000;
-  font-size: 1.0rem;
-  padding: 4px;
-}
-#combo #viewEventDiv table, #month2 #viewEventDiv table {
-  padding: 10px;
-  margin: 10px;
-}
-#combo #taskAddDiv .fakebutton,
-#combo #quickAddDiv .fakebutton, #month2 #quickAddDiv .fakebutton {
-  padding: 0;
 }
 .dateselIcon {
   cursor: pointer;
@@ -1423,65 +1271,6 @@ table#prevmonth {
 .fakebutton:hover {
    background-color:#a0a0a0;
    border:2px #c0c0c0 outset;
-}
-#combo #nextmonth,
-#combo #refresh,
-#combo #nextyear,
-#combo #nextday,
-#combo #nextmonthdayview,
-#month2 #nextmonth,
-#month2 #refresh,
-#month2 #nextyear,
-#month2 #nextday,
-#month2 #nextmonthdayview {
-  margin-right:.1875rem;
-}
-#month2 #nextmonth, #month2 #prevmonth { font-size: 0.7rem; }
-#combo .monthnavlinks td, #month2 .monthnavlinks td {
-  background-color: #e0e0e0;
-  border: 2px #e0e0e0 outset;
-  font-size: .80rem;
-}
-#combo .monthnavlinks .currentMonthLink, #month2 .monthnavlinks .currentMonthLink {
-  background-color: #c0c0c0;
-}
-#combo #quickAddDiv, #month2 #quickAddDiv {
-  border:1px solid;
-  border-color:#e0e0e0 #808080 #808080 #e0e0e0;
-  background-color:#ffffff;
-  padding: 5px;
-}
-#combo #viewEventDiv, #month2 #viewEventDiv {
-  border:1px solid;
-  border-color:#e0e0e0 #808080 #808080 #e0e0e0;
-  background-color:#ffffff;
-}
-#combo .event, #month2 .event {
-  /*background-color: #a00;*/
-}
-#combo #contentMonth div.event, #month2 #contentMonth div.event {
-  margin-bottom: 2px;
-  padding-left: 2px;
-}
-#combo #contentMonth div.event img, #month2 #contentMonth div.event img {
-  float: left;
-}
-#combo .participant, #month2 .participant {
-  font-size: 80%;
-  background-color: #d0d0d0;
-  border: 1px solid #b0b0b0;
-  padding: 2px;
-}
-#combo #quickAddDiv #quickAddParticipantList .partX,
-#month2 #quickAddDiv #quickAddParticipantList .partX {
-  padding: 0;
-  cursor:pointer;
-}
-#combo #quickAddDiv #quickAddParticipantList .partX img,
-#month2 #quickAddDiv #quickAddParticipantList .partX img {
-  vertical-align: top;
-  margin-top: 3px;
-  margin-left: 2px;
 }
 .eventattachment {
   background-color: var(--cellbg);
