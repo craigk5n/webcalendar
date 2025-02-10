@@ -156,12 +156,10 @@ echo '
     <table>';
 
 for ( $i = 0, $cnt = count( $names ); $i < $cnt; $i++ ) {
-  $empLink = empty( $links[$i] );
-  echo ( $i % COLUMNS == 0 ? '
+  echo ( $i % COLUMNS === 0 ? '
       <tr>' : '' ) . '
-        <td>' . ( $empLink ? '' : '<a href="' . $links[$i] . '">' )
-   . $names[$i] . ( $empLink ? '' : '</a>' ) . '</td>'
-   . ( $i % COLUMNS == COLUMNS - 1 ? '
+        <td><a href="' . $links[$i] . '">'. $names[$i] . '</a></td>' . 
+    ( $i % COLUMNS === COLUMNS - 1 ? '
       </tr>' : '' );
 }
 
