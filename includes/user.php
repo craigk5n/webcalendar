@@ -64,7 +64,7 @@ function user_valid_login ( $login, $password, $silent=false ) {
         $sql = 'UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?';
         dbi_execute ( $sql, [$new_hash, $login] );
       }
-      $enabled = ( $row[1] == 'Y' ? true : false );
+      $enabled = ( $row[1] === 'Y' );
       // MySQL seems to do case insensitive matching, so double-check the login.
       if ( $okay && $row[0] == $login )
         $ret = true; // found login/password

@@ -14,11 +14,6 @@
  */
 require_once 'includes/init.php';
 
-// Set this to true do show the SQL at the bottom of the page
-$purgeDebug = false;
-
-$sqlLog = '';
-
 if ( ! $is_admin ) {
   // must be admin...
   do_redirect ( 'index.php' );
@@ -26,6 +21,9 @@ if ( ! $is_admin ) {
 }
 
 $ALL = 0;
+// Set this to true do show the SQL at the bottom of the page
+$purgeDebug = false;
+$sqlLog     = '';
 
 $previewStr = translate ( 'Preview' );
 $allStr = translate ( 'All' );
@@ -33,10 +31,7 @@ $purgingStr = translate ( 'Purging events for' );
 $deleteStr = translate ( 'Delete' );
 
 $delete = getPostValue ( 'delete' );
-$do_purge = false;
-if ( ! empty ( $delete ) ) {
- $do_purge = true;
-}
+$do_purge = ( ! empty ( $delete ) );
 
 $purge_all = getPostValue ( 'purge_all' );
 $purge_deleted = getPostValue ( 'purge_deleted' );
@@ -44,8 +39,7 @@ $end_year = getPostValue ( 'end_year' );
 $end_month = getPostValue ( 'end_month' );
 $end_day = getPostValue ( 'end_day' );
 $username = getPostValue ( 'username' );
-$preview = getPostValue ( 'preview' );
-$preview = ( empty ( $preview ) ? false : true );
+$preview = ( ! empty ( getPostValue ( 'preview' ) ) );
 
 $INC = ['js/visible.php'];
 
@@ -110,7 +104,7 @@ if ( $do_purge ) {
   echo '<h2>...' . translate ( 'Finished' ) . ".</h2>\n";
 ?>
   <form><button class="btn btn-primary" type="button" onclick="history.back()">
- <?php etranslate ( 'Back' )?></button></form><?php
+<?php etranslate ( 'Back' )?></button></form><?php
   if ( $purgeDebug ) {
     echo '<div style="border: 1px solid #000;background-color: #FFF;"><span class="tt">'
       . "$sqlLog</span></div>\n";
@@ -118,10 +112,10 @@ if ( $do_purge ) {
 } else {
 ?>
 <form id="purgeform" action="purge.php" method="post" name="purgeform">
- <?php echo csrf_form_key(); ?>
+<?php echo csrf_form_key(); ?>
 <table>
  <tr><td><label for="user" class="colon">
-  <?php echo translate ( 'User' );?></label></td>
+<?php echo translate ( 'User' );?></label></td>
  <td><select class="form-control" name="username">
 <?php
   $userlist = get_my_users();
@@ -140,21 +134,21 @@ if ( $do_purge ) {
   </select>
  </td></tr>
  <tr><td><label for="purge_all" class="colon">
-  <?php etranslate ( 'Check box to delete ALL events for a user' )?></label></td>
+<?php etranslate ( 'Check box to delete ALL events for a user' )?></label></td>
   <td class="alignbottom">
   <input class="form-control-sm" type="checkbox" name="purge_all" value="Y" id="purge_all" onclick="toggle_datefields( 'dateArea', this );">
  </td></tr>
  <tr id="dateArea"><td><label class="colon">
-  <?php etranslate ( 'Delete all events before' );?></label></td><td>
-  <?php echo date_selection ( 'end_', date ( 'Ymd' ) ) ?>
+<?php etranslate ( 'Delete all events before' );?></label></td><td>
+<?php echo date_selection ( 'end_', date ( 'Ymd' ) ) ?>
  </td></tr>
  <tr><td><label for="purge_deleted" class="colon">
-  <?php etranslate ( 'Purge deleted only' )?></label></td>
+<?php etranslate ( 'Purge deleted only' )?></label></td>
   <td class="alignbottom">
   <input class="form-control-sm" type="checkbox" name="purge_deleted" value="Y">
  </td></tr>
  <tr><td><label for="preview" class="colon">
-  <?php etranslate ( 'Preview delete' )?></label></td>
+<?php etranslate ( 'Preview delete' )?></label></td>
   <td class="alignbottom">
   <input class="form-control-sm" type="checkbox" name="preview" value="Y" checked>
  </td></tr>
@@ -195,7 +189,7 @@ function purge_events ( $ids ) {
   //var_dump($tables);exit;
   $cnt = count ( $tables );
   $num = array_fill ( 0, $cnt, 0 );
-  
+
   foreach ( $ids as $cal_id ) {
     for ( $i = 0; $i < $cnt; $i++ ) {
       $clause = ( $cal_id == 'ALL' ? '' :
