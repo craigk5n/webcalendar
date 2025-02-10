@@ -6,6 +6,7 @@
  *
  * @package WebCalendar
  */
+
 /**
  * Include the basics.
  *
@@ -27,9 +28,10 @@ if ( empty ( $data ) ) {
   $replacements[] = '';
   $data = preg_replace ( $patterns, $replacements, $data );
 }
+
 print_header ( ['css/about.css'], '', '', true, false, true );
 echo '
-    <div id="creds">'
+    <div id="Creds">'
   . ( empty ( $credits ) ? '
       <a href="' . $PROGRAM_URL
     . '" target="_blank" title="' . $PROGRAM_NAME . '">
@@ -39,7 +41,7 @@ echo '
       <br>
       <p>' . translate ( 'WebCalendar is a PHP application used...' ) . '</p>' : '' ) . '
     </div>
-    <form id="aboutform" name="aboutform" action="about.php" method="post">';
+    <form id="AboutForm" name="aboutform" action="about.php" method="post">';
 print_form_key();
 echo '
       <button type="submit" name="'
@@ -47,14 +49,14 @@ echo '
     ? 'Credits">' . translate ( 'Credits' )
     : 'About">' . translate ( 'About' ) )
   . '</button>
-      <button id="ok" name="ok" type="button" onclick="window.close()">'
+      <button id="OK" name="ok" type="button" onclick="window.close()">'
   . translate ( 'OK' ) . '</button>
     </form>'
   . ( empty ( $credits ) ? '' : "
     <script src=\"includes/js/v_h_scrolls.js\"></script>
     <script>
       function start() {
-        startScroll('creds', '$data');
+        startScroll('Creds', '$data');
       }
     </script>
 " ) . print_trailer ( false,true,true );
