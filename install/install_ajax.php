@@ -78,7 +78,24 @@ function testDbConnection($host, $login, $password, $database)
 
 $response = array();
 ini_set('session.cookie_lifetime', 3600);  // 3600 seconds = 1 hour
-session_name('WebCalendar-Install-' . __DIR__);
+
+$sessionName = 'WebCalendar-Install-' . str_replace(
+        [
+            '=',
+            ',',
+            ';',
+            '.',
+            '[',
+            "\t",
+            "\r",
+            "\n",
+            "\013",
+            "\014",
+        ],
+        '_',
+        __DIR__);
+session_name($sessionName);
+
 session_start();
 
 $errorResponse = array();

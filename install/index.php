@@ -40,7 +40,21 @@ require_once 'sql/upgrade_matrix.php';
 
 $debugInstaller = false; // Set to true to get more details on the installer pages (but breaks redirects)
 $includeLogoutButton = false; // Can be helpful testing installer
-$sessionName = 'WebCalendar-Install-' . __DIR__;
+$sessionName = 'WebCalendar-Install-' . str_replace(
+    [
+        '=',
+        ',',
+        ';',
+        '.',
+        '[',
+        "\t",
+        "\r",
+        "\n",
+        "\013",
+        "\014",
+    ],
+    '_',
+    __DIR__);
 
 if ($debugInstaller && isset($_GET['action']) && $_GET['action'] == 'logout') {
     session_name($sessionName);
