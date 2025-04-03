@@ -162,10 +162,15 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     // Note: we only search approved/waiting events (not deleted).
     $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date, weu.cal_login '
       . ( empty( $extra_filter ) ? '' : ', wse.cal_data ' )
-      . 'FROM webcal_entry_user weu LEFT JOIN  webcal_entry we '
+      . 'FROM webcal_entry_user weu LEFT JOIN ( webcal_entry we '
       . ( empty( $cat_filter ) ? '' : ', webcal_entry_categories wec ' )
       . ( empty( $extra_filter ) ? '' : ', webcal_site_extras wse ' )
-      . 'ON weu.cal_id = we.cal_id WHERE weu.cal_status in ( \'A\',\'W\' )
+      . ') ON ( '
+      . 'weu.cal_id = we.cal_id '
+      . ( empty( $cat_filter ) ? '' : 'AND wec.cal_id = we.cal_id ' )
+      . ( empty( $extra_filter ) ? '' : 'AND wse.cal_id = we.cal_id ' )
+      . ') '
+      . 'WHERE weu.cal_status in ( \'A\',\'W\' )
        AND weu.cal_login IN ( ?';
     if ( $search_others ) {
       if ( empty ( $users[0] ) )
