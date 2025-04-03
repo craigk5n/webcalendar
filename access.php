@@ -60,7 +60,8 @@ $saved = '';
 // Are we handling the access form?
 // If so, do that, then redirect.
 // Handle function access first.
-if( getPostValue( 'auser' ) != '' && getPostValue( 'submit' ) == $saveStr ) {
+$action = getPostValue('action');
+if (getPostValue('auser') != '' && $action == "save") {
   $auser = getPostValue( 'auser' );
   $perm = '';
   for( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ) {
@@ -75,10 +76,14 @@ if( getPostValue( 'auser' ) != '' && getPostValue( 'submit' ) == $saveStr ) {
     die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrStr ) );
 
   $saved = true;
+} elseif (getPostValue('auser') != '' && $action == 'undo') {
+  // Undo: Simply reload the page with the current user, no save
+  header("Location: access.php?guser=" . urlencode(getPostValue('auser')));
+  exit;
 }
 
 // Are we handling the other user form? If so, do that, then redirect.
-if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) {
+if (getPostValue('otheruser') != '' && $action == 'save') {
   $puser = getPostValue( 'guser' );
   $pouser = getPostValue( 'otheruser' );
 
@@ -119,16 +124,20 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
 
     $saved = true;
   }
+} elseif (getPostValue('otheruser') != '' && $action == 'undo') {
+  // Undo: Reload the page with the current guser and otheruser, no save
+  header("Location: access.php?guser=" . urlencode(getPostValue('guser')) . "&otheruser=" . urlencode(getPostValue('otheruser')));
+  exit;
 }
 $checked = ' checked';
-$guser = getPostValue( 'guser' );
+$guser = getValue( 'guser' );
 $selected = ' selected';
 
 if( $guser == '__default__' ) {
   $otheruser = $guser;
   $user_fullname = $defConfigStr;
 } else
-  $otheruser = getPostValue( 'otheruser' );
+  $otheruser = getValue( 'otheruser' );
 
 if( $otheruser == '__default__' ) {
   $otheruser_fullname = $defConfigStr;
@@ -267,9 +276,10 @@ if( ! empty( $guser ) || ! $is_admin ) {
           </tr>
         </tbody>
       </table>
-      <button class="btn btn-secondary" type="submit">' . $undoStr . '</button>
-      <button class="btn btn-primary" name="submit" type="submit">'
-      . $saveStr . '</button>
+      <button class="btn btn-secondary" name="action" value="undo" type="submit">'
+        . $undoStr . '</button>
+      <button class="btn btn-primary" name="action" value="save" type="submit">'
+        . $saveStr . '</button>
     </form>';
 
     $pagetitle = translate( 'Allow Access to Other Users Calendar' );
@@ -447,10 +457,10 @@ if( ! empty( $otheruser ) ) {
   echo '
           <tr>
             <td colspan="11" class="boxleft boxbottom boxright">
-              <button class="btn btn-secondary" type="submit">'
-    . $undoStr . '</button>
-              <button class="btn btn-primary" name="submit" type="submit">'
-    . $saveStr . '</button>
+              <button class="btn btn-secondary" name="action" value="undo" type="submit">'
+                . $undoStr . '</button>
+              <button class="btn btn-primary" name="action" value="save" type="submit">'
+                . $saveStr . '</button>
             </td>
           </tr>
         </tbody>
