@@ -93,7 +93,7 @@ if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
 $date_in_title = false; //Can override with "rss.php?showdate=1|true".
 $showdate = getValue ( 'showdate' );
 if ( ! empty ( $showdate ) )
-  $date_in_title = ( $showdate == 'true' || $showdate == 1 ? true : false );
+  $date_in_title = ( $showdate == 'true' || $showdate == 1 );
 
 $date_format = 'M jS'; //Aug 10th, 8/10
 $time_format = 'g:ia'; //4:30pm, 16:30

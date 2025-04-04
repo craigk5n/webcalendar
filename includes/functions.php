@@ -6079,8 +6079,7 @@ function weekday_name ( $w, $format = 'l' ) {
  */
 function boss_must_approve_event ( $assistant, $boss ) {
   if ( user_is_assistant ( $assistant, $boss ) )
-    return ( get_pref_setting ( $boss, 'APPROVE_ASSISTANT_EVENT' ) == 'Y'
-      ? true : false );
+    return ( get_pref_setting ( $boss, 'APPROVE_ASSISTANT_EVENT' ) === 'Y' );
 
   return true;
 }
@@ -6096,8 +6095,7 @@ function boss_must_approve_event ( $assistant, $boss ) {
  */
 function boss_must_be_notified ( $assistant, $boss ) {
   if ( user_is_assistant ( $assistant, $boss ) )
-    return ( get_pref_setting ( $boss, 'EMAIL_ASSISTANT_EVENTS' ) == 'Y'
-      ? true : false );
+    return ( get_pref_setting ( $boss, 'EMAIL_ASSISTANT_EVENTS' ) === 'Y' );
 
   return true;
 }

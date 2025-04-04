@@ -93,7 +93,7 @@ if ($action == 'userlist') {
   }
   if (empty($error)) {
     save_user(
-      getPostValue('add') == '1' ? true : false,
+      getPostValue('add') === '1',
       getPostValue('login'),
       getPostValue('lastname'),
       getPostValue('firstname'),
@@ -204,7 +204,7 @@ if ($action == 'userlist') {
   }
   if (empty($error)) {
     $error = save_remote_calendar(
-      getPostValue('add') == '1' ? true : false,
+      getPostValue('add') === '1',
       getPostValue('login'),
       getPostValue('lastname'),
       getPostValue('firstname'),
@@ -308,7 +308,7 @@ if ($action == 'userlist') {
   }
   if (empty($error)) {
     $error = save_resource_calendar(
-      getPostValue('add') == '1' ? true : false,
+      getPostValue('add') === '1',
       getPostValue('login'),
       getPostValue('lastname'),
       getPostValue('firstname'),
@@ -336,7 +336,7 @@ if ($action == 'userlist') {
   ajax_send_object('groups', $ret_groups, $sendPlainText);
 } else if ($action == 'save-group') {
   $ret = save_group(
-    getPostValue('add') == '1' ? true : false,
+    getPostValue('add') === '1',
     getPostValue('id'),
     getPostValue('name'),
     getPostValue('users')

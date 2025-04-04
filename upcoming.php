@@ -271,11 +271,11 @@ $link_target = '_top';
 $numDays = getIntValue ( 'numDays' );
 if (empty ($numDays))  $numDays = 30;
 $showTitle = ( getGetValue ( 'showTitle', "[01]", true ) == '1' );
-$showTitle = ( ! empty ( $showTitle ) && $showTitle !== false ? true : false );
+$showTitle = ( ! empty ( $showTitle ) && $showTitle !== false );
 $showMore = getGetValue ( 'showMore', "[01]", true );
-$showMore = ( ! empty ( $showMore ) && $showMore !== false ? true : false );
+$showMore = ( ! empty ( $showMore ) && $showMore !== false );
 $showTime = getGetValue ( 'showTime', "[01]", true );
-$showTime = ( ! empty ( $showTime ) && $showTime !== false ? true : false );
+$showTime = ( ! empty ( $showTime ) && $showTime !== false );
 
 //sets the URL used in the (optional) page title and
 //(optional) "...more" tag at the end. If you want them to
@@ -393,7 +393,7 @@ if ( $error == '' ) {
 
     $x = getGetValue ( 'showTitle', true );
     if ( strlen( $x ) > 0 ) {
-      $showTitle = $x; 
+      $showTitle = $x;
     }
 
   if ( $load_layers ) {
@@ -534,13 +534,13 @@ a:hover {
 .rrule {
   visibility: hidden;
 }
-</style> <?php
+</style><?php
 if ( ! empty ( $showPopups ) && empty ( $error ) ) {
   echo '<script src="includes/js/util.js"></script>
     <script src="includes/js/popups.js"></script>';
 }
 ?> </head>
-<body> <?php } //end test for direct call
+<body><?php } //end test for direct call
 
 if ( ! empty ( $error ) ) {
   echo print_error ( $error );
@@ -553,7 +553,7 @@ if ( ! empty ( $error ) ) {
 }
 
 if ($showTitle) echo '<h3 class="cal_upcoming_title">'. translate ($upcoming_title) . '</h3>';
-?> <div class="vcalendar"> <?php
+?> <div class="vcalendar"><?php
 echo "<dl>\n";
 
 echo "<!-- \nstartTime: $startDate (" . date('Ymd H:i:s', $startDate ) . ")\n" .
@@ -597,7 +597,7 @@ echo "</dl>\n";
 
 if ( $showMore ) echo '<center><i><a href="'. $title_more_url . '"> . . . ' .
    translate ( 'more' ) . '</a></i></center>';
-?> </div> <?php
+?> </div><?php
 echo $eventinfo;
 if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) {
   echo "</body>\n</html>";
