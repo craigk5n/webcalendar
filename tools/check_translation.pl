@@ -21,7 +21,7 @@ sub find_pgm_files {
 # if the filename ends in .class or .php, add it to @files.
   push( @files, "$File::Find::name" )
     if ( $_ =~ /\.(class|php)$/i
-    && $File::Find::dir !~ /(captcha|ckeditor|hkit|htmlarea|phpmailer|pub|vendor)/i );
+    && $File::Find::dir !~ /(captcha|tinymce|hkit|phpmailer|pub|vendor)/i );
 }
 
 $trans_dir = '../translations';
