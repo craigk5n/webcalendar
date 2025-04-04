@@ -12,6 +12,7 @@
  * TODO: hide private events of other users.
  */
 require_once 'includes/translate.php';
+require_once 'includes/functions.php';
 require_once 'includes/classes/WebCalendar.php';
 require_once 'includes/classes/Event.php';
 require_once 'includes/classes/RptEvent.php';
@@ -21,7 +22,6 @@ $WebCalendar = new WebCalendar( __FILE__ );
 require_once 'includes/config.php';
 require_once 'includes/dbi4php.php';
 require_once 'includes/formvars.php';
-require_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
@@ -33,8 +33,8 @@ require_once 'includes/validate.php';
 // Load Doc classes for attachments and comments
 require_once 'includes/classes/Doc.php';
 require_once 'includes/classes/DocList.php';
-require_once 'includes/classes/CommentList.php';
 require_once 'includes/classes/AttachmentList.php';
+require_once 'includes/classes/CommentList.php';
 
 $WebCalendar->initializeSecondPhase();
 
