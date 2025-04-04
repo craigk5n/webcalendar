@@ -403,7 +403,7 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
   // Only enable CKEditor on the following pages.  Some pages are expecting plain
   // text and HTML will cause issues.
   $pagesWithFullEditor = [ 'edit_entry.php', 'docadd.php' ];
-  $includeCkeditor = ( ! empty ( $GLOBALS['ALLOW_HTML_DESCRIPTION'] ) ) &&
+  $includeHtmlEditor = ( ! empty ( $GLOBALS['ALLOW_HTML_DESCRIPTION'] ) ) &&
     $GLOBALS['ALLOW_HTML_DESCRIPTION'] == 'Y' &&
     in_array ( $GLOBALS['SCRIPT'], $pagesWithFullEditor );
 
@@ -422,13 +422,17 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
   }
   return $ret .
     '<!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->' .
-    ( $includeCkeditor ?
-    /* Load local copy of ckeditor */ '
-    <script src="pub/ckeditor/ckeditor.js"></script>
-    <script>' .
-    /* Use CKEditor for ALL <textarea>. */ '
-      CKEDITOR.replaceAll();
-    </script>' : '' ) .
+    ( $includeHtmlEditor ?
+    "\n" . '<script src="pub/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+    tinymce.init({
+      selector: \'textarea\',
+      promotion: false,
+      plugins: \'lists link table  code autolink\',
+      toolbar: \'undo redo styles bold italic alignleft aligncenter alignright outdent indent numlist bullist link table code\',
+      license_key: \'gpl\'
+    });
+    </script>' . "\n" : '' ) .
 
     // Adds an easy link to validate the pages.
     ( $DEMO_MODE == 'Y' ? '
