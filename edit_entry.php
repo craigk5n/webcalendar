@@ -4,11 +4,8 @@
  * Presents page to edit/add an event/task/journal
  *
  * Notes:
- * A SysAdmin can enable HTML for event full descriptions. If one of the
- * supported HTML edit widgets is also installed, users can use WYSIWYG editing.
- * See the WebCalendar page at
- * http://k5n.us/webcalendar.php?topic=Add-Ons
- * for download and install instructions for these packages.
+ * A SysAdmin can enable HTML for event full descriptions.
+ * TinyMCE is used for rich text.
  */
 require_once 'includes/init.php';
 
