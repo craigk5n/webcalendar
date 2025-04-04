@@ -19,12 +19,12 @@ PHPMAILER_VENDOR_DIR = vendor/phpmailer/phpmailer/src
 BOOTSTRAP_ICON_DIR = images/bootstrap-icons
 BOOTSTRAP_ICON_VENDOR_DIR = vendor/twbs/bootstrap-icons/icons
 
-CKEDITOR_VENDOR_DIR = vendor/ckeditor
+TINYMCE_VENDOR_DIR = vendor/tinymce
 
 SHA384SUM = /usr/bin/sha384sum
 
 _DEFAULT: _phpmailer includes/load_assets.php \
-	_ICONS pub/ckeditor/CHANGES.md
+	_ICONS pub/tinymce/CHANGELOG.md
 
 _phpmailer: $(PHPMAILER_DIR)/PHPMailer.php \
 	$(PHPMAILER_DIR)/Exception.php \
@@ -168,147 +168,116 @@ pub/jquery.min.js: vendor/components/jquery/jquery.min.js
 pub/jquery.min.js.sha: pub/jquery.min.js $(SHA384SUM)
 	$(SHA384SUM) $< | head -c 96 | xxd -r -p | base64 > $@
 
-# CKEDITOR 4.X stuff
-# To get the list of files we need for the "basic" install of ckeditor,
-# I downloaded the "basic package" from the website:
-#   https://ckeditor.com/ckeditor-4/download
-# Then I looked at what was included to make the list of files
-# we need to copy over from the 'vendor/ckeditor' directory
-# (which includes enough for the "full package" of 72 plugins
-# and adds about 15Mb instead of the 2Mb for basic).
-# To create this list from the unzipped ckeditor download,
-# cd into the unzipped 'ckeditor' dir and use this command:
-#
-#  find * -type f | grep -v samples | grep -v config.js | grep -v 'adapters/' | sed 's/^/\t/' | sed 's/$/ \\/' | sed 's/promise.js ./promise.js/'
-#
-# NOTE: We do not include the 'config.js' provided by composer
-#       because it defaults to the full ckeditor distribution
-#       with all plugins (15+ Mb).
-#       Instead, I've downloaded the 'config.js' from the 4.18 basic build
-#       and copied it manually into pub/ckeditor.
-#       It's possible we may need to update the 'pub/ckeditor/config.js' file
-#       manually if a new 4.X release requires updates to this file.
-# NOTE #2: This Makefile is assuming that the 'README.md' file gets
-#          updated with each CKEditor update (seems like a safe assumption)
-CKEDITOR_FILES = \
-	pub/ckeditor/CHANGES.md \
-	pub/ckeditor/LICENSE.md \
-	pub/ckeditor/README.md \
-	pub/ckeditor/SECURITY.md \
-	pub/ckeditor/bender-runner.config.json \
-	pub/ckeditor/ckeditor.js \
-	pub/ckeditor/contents.css \
-	pub/ckeditor/lang/sr-latn.js \
-	pub/ckeditor/lang/pt.js \
-	pub/ckeditor/lang/vi.js \
-	pub/ckeditor/lang/lv.js \
-	pub/ckeditor/lang/gl.js \
-	pub/ckeditor/lang/pl.js \
-	pub/ckeditor/lang/mn.js \
-	pub/ckeditor/lang/en-ca.js \
-	pub/ckeditor/lang/el.js \
-	pub/ckeditor/lang/et.js \
-	pub/ckeditor/lang/is.js \
-	pub/ckeditor/lang/sl.js \
-	pub/ckeditor/lang/ko.js \
-	pub/ckeditor/lang/hr.js \
-	pub/ckeditor/lang/ms.js \
-	pub/ckeditor/lang/fi.js \
-	pub/ckeditor/lang/th.js \
-	pub/ckeditor/lang/ru.js \
-	pub/ckeditor/lang/eu.js \
-	pub/ckeditor/lang/mk.js \
-	pub/ckeditor/lang/no.js \
-	pub/ckeditor/lang/sq.js \
-	pub/ckeditor/lang/gu.js \
-	pub/ckeditor/lang/si.js \
-	pub/ckeditor/lang/tt.js \
-	pub/ckeditor/lang/ja.js \
-	pub/ckeditor/lang/ka.js \
-	pub/ckeditor/lang/he.js \
-	pub/ckeditor/lang/ug.js \
-	pub/ckeditor/lang/bg.js \
-	pub/ckeditor/lang/af.js \
-	pub/ckeditor/lang/id.js \
-	pub/ckeditor/lang/az.js \
-	pub/ckeditor/lang/en-au.js \
-	pub/ckeditor/lang/ca.js \
-	pub/ckeditor/lang/cy.js \
-	pub/ckeditor/lang/nb.js \
-	pub/ckeditor/lang/zh-cn.js \
-	pub/ckeditor/lang/de-ch.js \
-	pub/ckeditor/lang/pt-br.js \
-	pub/ckeditor/lang/oc.js \
-	pub/ckeditor/lang/da.js \
-	pub/ckeditor/lang/fa.js \
-	pub/ckeditor/lang/de.js \
-	pub/ckeditor/lang/en.js \
-	pub/ckeditor/lang/bs.js \
-	pub/ckeditor/lang/ku.js \
-	pub/ckeditor/lang/sv.js \
-	pub/ckeditor/lang/zh.js \
-	pub/ckeditor/lang/hi.js \
-	pub/ckeditor/lang/uk.js \
-	pub/ckeditor/lang/cs.js \
-	pub/ckeditor/lang/km.js \
-	pub/ckeditor/lang/fr.js \
-	pub/ckeditor/lang/nl.js \
-	pub/ckeditor/lang/fr-ca.js \
-	pub/ckeditor/lang/en-gb.js \
-	pub/ckeditor/lang/sr.js \
-	pub/ckeditor/lang/hu.js \
-	pub/ckeditor/lang/lt.js \
-	pub/ckeditor/lang/fo.js \
-	pub/ckeditor/lang/ar.js \
-	pub/ckeditor/lang/es-mx.js \
-	pub/ckeditor/lang/sk.js \
-	pub/ckeditor/lang/it.js \
-	pub/ckeditor/lang/es.js \
-	pub/ckeditor/lang/bn.js \
-	pub/ckeditor/lang/eo.js \
-	pub/ckeditor/lang/ro.js \
-	pub/ckeditor/lang/tr.js \
-	pub/ckeditor/plugins/about/dialogs/about.js \
-	pub/ckeditor/plugins/about/dialogs/hidpi/logo_ckeditor.png \
-	pub/ckeditor/plugins/about/dialogs/logo_ckeditor.png \
-	pub/ckeditor/plugins/dialog/styles/dialog.css \
-	pub/ckeditor/plugins/dialog/dialogDefinition.js \
-	pub/ckeditor/plugins/icons.png \
-	pub/ckeditor/plugins/link/images/hidpi/anchor.png \
-	pub/ckeditor/plugins/link/images/anchor.png \
-	pub/ckeditor/plugins/link/dialogs/link.js \
-	pub/ckeditor/plugins/link/dialogs/anchor.js \
-	pub/ckeditor/plugins/icons_hidpi.png \
-	pub/ckeditor/plugins/clipboard/dialogs/paste.js \
-	pub/ckeditor/skins/moono-lisa/editor_iequirks.css \
-	pub/ckeditor/skins/moono-lisa/editor.css \
-	pub/ckeditor/skins/moono-lisa/images/lock.png \
-	pub/ckeditor/skins/moono-lisa/images/spinner.gif \
-	pub/ckeditor/skins/moono-lisa/images/arrow.png \
-	pub/ckeditor/skins/moono-lisa/images/lock-open.png \
-	pub/ckeditor/skins/moono-lisa/images/hidpi/lock.png \
-	pub/ckeditor/skins/moono-lisa/images/hidpi/lock-open.png \
-	pub/ckeditor/skins/moono-lisa/images/hidpi/refresh.png \
-	pub/ckeditor/skins/moono-lisa/images/hidpi/close.png \
-	pub/ckeditor/skins/moono-lisa/images/refresh.png \
-	pub/ckeditor/skins/moono-lisa/images/close.png \
-	pub/ckeditor/skins/moono-lisa/editor_ie.css \
-	pub/ckeditor/skins/moono-lisa/editor_ie8.css \
-	pub/ckeditor/skins/moono-lisa/dialog_iequirks.css \
-	pub/ckeditor/skins/moono-lisa/readme.md \
-	pub/ckeditor/skins/moono-lisa/icons.png \
-	pub/ckeditor/skins/moono-lisa/editor_gecko.css \
-	pub/ckeditor/skins/moono-lisa/dialog_ie.css \
-	pub/ckeditor/skins/moono-lisa/dialog.css \
-	pub/ckeditor/skins/moono-lisa/icons_hidpi.png \
-	pub/ckeditor/skins/moono-lisa/dialog_ie8.css \
-	pub/ckeditor/styles.js \
-	pub/ckeditor/vendor/promise.js
+# TINYMCE files
+# NOTE: This Makefile is assuming that the 'CHANGELOG.md' file gets
+# updated with each TinyMCE update (seems like a safe assumption)
+TINYMCE_FILES = \
+	pub/tinymce/models/dom/model.js \
+	pub/tinymce/models/dom/model.min.js \
+	pub/tinymce/models/dom/index.js \
+	pub/tinymce/icons/default/icons.js \
+	pub/tinymce/icons/default/icons.min.js \
+	pub/tinymce/icons/default/index.js \
+	pub/tinymce/plugins/autoresize/plugin.min.js \
+	pub/tinymce/plugins/autoresize/plugin.js \
+	pub/tinymce/plugins/autoresize/index.js \
+	pub/tinymce/plugins/link/plugin.min.js \
+	pub/tinymce/plugins/link/plugin.js \
+	pub/tinymce/plugins/link/index.js \
+	pub/tinymce/plugins/advlist/plugin.min.js \
+	pub/tinymce/plugins/advlist/plugin.js \
+	pub/tinymce/plugins/advlist/index.js \
+	pub/tinymce/plugins/autolink/plugin.min.js \
+	pub/tinymce/plugins/autolink/plugin.js \
+	pub/tinymce/plugins/autolink/index.js \
+	pub/tinymce/plugins/code/plugin.min.js \
+	pub/tinymce/plugins/code/plugin.js \
+	pub/tinymce/plugins/code/index.js \
+	pub/tinymce/plugins/lists/plugin.min.js \
+	pub/tinymce/plugins/lists/plugin.js \
+	pub/tinymce/plugins/lists/index.js \
+	pub/tinymce/skins/ui/oxide-dark/skin.shadowdom.js \
+	pub/tinymce/skins/ui/oxide-dark/content.inline.css \
+	pub/tinymce/skins/ui/oxide-dark/content.css \
+	pub/tinymce/skins/ui/oxide-dark/content.inline.js \
+	pub/tinymce/skins/ui/oxide-dark/content.min.css \
+	pub/tinymce/skins/ui/oxide-dark/content.js \
+	pub/tinymce/skins/ui/oxide-dark/skin.shadowdom.css \
+	pub/tinymce/skins/ui/oxide-dark/skin.min.css \
+	pub/tinymce/skins/ui/oxide-dark/skin.shadowdom.min.css \
+	pub/tinymce/skins/ui/oxide-dark/content.inline.min.css \
+	pub/tinymce/skins/ui/oxide-dark/skin.js \
+	pub/tinymce/skins/ui/oxide-dark/skin.css \
+	pub/tinymce/skins/ui/tinymce-5-dark/skin.shadowdom.js \
+	pub/tinymce/skins/ui/tinymce-5-dark/content.inline.css \
+	pub/tinymce/skins/ui/tinymce-5-dark/content.css \
+	pub/tinymce/skins/ui/tinymce-5-dark/content.inline.js \
+	pub/tinymce/skins/ui/tinymce-5-dark/content.min.css \
+	pub/tinymce/skins/ui/tinymce-5-dark/content.js \
+	pub/tinymce/skins/ui/tinymce-5-dark/skin.shadowdom.css \
+	pub/tinymce/skins/ui/tinymce-5-dark/skin.min.css \
+	pub/tinymce/skins/ui/tinymce-5-dark/skin.shadowdom.min.css \
+	pub/tinymce/skins/ui/tinymce-5-dark/content.inline.min.css \
+	pub/tinymce/skins/ui/tinymce-5-dark/skin.js \
+	pub/tinymce/skins/ui/tinymce-5-dark/skin.css \
+	pub/tinymce/skins/ui/oxide/skin.shadowdom.js \
+	pub/tinymce/skins/ui/oxide/content.inline.css \
+	pub/tinymce/skins/ui/oxide/content.css \
+	pub/tinymce/skins/ui/oxide/content.inline.js \
+	pub/tinymce/skins/ui/oxide/content.min.css \
+	pub/tinymce/skins/ui/oxide/content.js \
+	pub/tinymce/skins/ui/oxide/skin.shadowdom.css \
+	pub/tinymce/skins/ui/oxide/skin.min.css \
+	pub/tinymce/skins/ui/oxide/skin.shadowdom.min.css \
+	pub/tinymce/skins/ui/oxide/content.inline.min.css \
+	pub/tinymce/skins/ui/oxide/skin.js \
+	pub/tinymce/skins/ui/oxide/skin.css \
+	pub/tinymce/skins/ui/tinymce-5/skin.shadowdom.js \
+	pub/tinymce/skins/ui/tinymce-5/content.inline.css \
+	pub/tinymce/skins/ui/tinymce-5/content.css \
+	pub/tinymce/skins/ui/tinymce-5/content.inline.js \
+	pub/tinymce/skins/ui/tinymce-5/content.min.css \
+	pub/tinymce/skins/ui/tinymce-5/content.js \
+	pub/tinymce/skins/ui/tinymce-5/skin.shadowdom.css \
+	pub/tinymce/skins/ui/tinymce-5/skin.min.css \
+	pub/tinymce/skins/ui/tinymce-5/skin.shadowdom.min.css \
+	pub/tinymce/skins/ui/tinymce-5/content.inline.min.css \
+	pub/tinymce/skins/ui/tinymce-5/skin.js \
+	pub/tinymce/skins/ui/tinymce-5/skin.css \
+	pub/tinymce/skins/content/tinymce-5-dark/content.css \
+	pub/tinymce/skins/content/tinymce-5-dark/content.min.css \
+	pub/tinymce/skins/content/tinymce-5-dark/content.js \
+	pub/tinymce/skins/content/document/content.css \
+	pub/tinymce/skins/content/document/content.min.css \
+	pub/tinymce/skins/content/document/content.js \
+	pub/tinymce/skins/content/default/content.css \
+	pub/tinymce/skins/content/default/content.min.css \
+	pub/tinymce/skins/content/default/content.js \
+	pub/tinymce/skins/content/dark/content.css \
+	pub/tinymce/skins/content/dark/content.min.css \
+	pub/tinymce/skins/content/dark/content.js \
+	pub/tinymce/skins/content/writer/content.css \
+	pub/tinymce/skins/content/writer/content.min.css \
+	pub/tinymce/skins/content/writer/content.js \
+	pub/tinymce/skins/content/tinymce-5/content.css \
+	pub/tinymce/skins/content/tinymce-5/content.min.css \
+	pub/tinymce/skins/content/tinymce-5/content.js \
+	pub/tinymce/tinymce.min.js \
+	pub/tinymce/themes/silver/theme.min.js \
+	pub/tinymce/themes/silver/theme.js \
+	pub/tinymce/themes/silver/index.js
 
-# CKEDITOR
-pub/ckeditor/CHANGES.md: $(CKEDITOR_VENDOR_DIR)/ckeditor/CHANGES.md
-	for f in $(CKEDITOR_FILES); do\
-	  a="$(CKEDITOR_VENDOR_DIR)/"`echo $${f} | sed 's?pub/??'`; \
+# TINYMCE
+pub/tinymce/CHANGELOG.md: $(TINYMCE_VENDOR_DIR)/tinymce/CHANGELOG.md
+	(cd pub/tinymce; mkdir -p models models/dom icons icons/default plugins plugins/autoresize \
+	plugins/link plugins/advlist plugins/autolink plugins/code plugins/lists \
+	skins skins/ui skins/ui/oxide-dark skins/ui/tinymce-5-dark skins/ui/oxide \
+	skins/ui/tinymce-5 skins/content skins/content/tinymce-5-dark skins/content/document \
+	skins/content/default skins/content/dark skins/content/writer skins/content/tinymce-5 \
+	themes themes/silver)
+	cp $(TINYMCE_VENDOR_DIR)/tinymce/CHANGELOG.md pub/tinymce/CHANGELOG.md
+	for f in $(TINYMCE_FILES); do\
+	  a="$(TINYMCE_VENDOR_DIR)/"`echo $${f} | sed 's?pub/??'`; \
 	  echo "Copying file: $${f}"; \
 	  cp $${a} $${f}; \
 	done
