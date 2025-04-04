@@ -1,4 +1,4 @@
-/* This function needs to be seperate for each page that has scrollers.
+/* This function needs to be separate for each page that has scrollers.
 function start() {
   // Code each vertical scroller as follows:
   // startScroll( 'id of scroller div', 'scroll content' );

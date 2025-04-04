@@ -1,6 +1,6 @@
 <p>
   <?php
-  $msg = translate("Your have XXX admin accounts.");
+  $msg = translate("You have XXX admin accounts.");
   $msg = str_replace('XXX', $adminUserCount, $msg);
   $defaultAdminExists = false;
   $res = dbi_execute("SELECT COUNT(*) FROM webcal_user WHERE cal_login = 'admin'", [], false, true);

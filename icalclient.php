@@ -142,9 +142,9 @@ if ( empty( $_SERVER['PHP_AUTH_USER'] ) && ! empty( $_ENV['REMOTE_USER'] ) ) {
 if ( ( empty( $_SERVER['PHP_AUTH_USER'] )
     or empty( $_SERVER['PHP_AUTH_PW'] ) )
     and isset( $_REQUEST['BAD_HOSTING'] )
-    and preg_match( '/Basic\s+(.*)$/i', $_REQUEST['BAD_HOSTING'], $matc ) )
+    AND preg_match ( '/Basic\s+(.*)$/i', $_REQUEST['BAD_HOSTING'], $match ) )
   list( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) =
-    explode( ':', base64_decode( $matc[1] ) );
+    explode ( ':', base64_decode ( $match[1] ) );
 
 unset( $_ENV['REMOTE_USER'] );
 
