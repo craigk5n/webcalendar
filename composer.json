@@ -17,7 +17,7 @@
     "components/jquery": "3.5.*",
     "tinymce/tinymce": "7.7.*",
     "twbs/bootstrap": "4.6.*",
-    "twbs/bootstrap-icons": "1.10.*",
+    "twbs/bootstrap-icons": "1.11.*",
     "phpunit/phpunit": "9.6.*"
   },
   "license": "GPL-2.0-only"
