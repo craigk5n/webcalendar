@@ -12,6 +12,10 @@
       "role": "Project Maintainer / Developer"
     }
   ],
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
   "require": {
     "phpmailer/phpmailer": "6.8.*",
     "components/jquery": "3.5.*",
