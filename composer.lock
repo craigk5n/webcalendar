@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9c2de02f38750e76ee0077ee6c5dfff",
+    "content-hash": "22bf056b52298ce9e18dc0ec2bcd5610",
     "packages": [
         {
             "name": "components/jquery",
@@ -1992,16 +1992,16 @@
         },
         {
             "name": "twbs/bootstrap-icons",
-            "version": "v1.10.5",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/icons.git",
-                "reference": "648aa8238437d9da9227f6273cc163ec5841382d"
+                "reference": "ce0e49dd063243118a115f17ad1fe1fe7576d552"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/icons/zipball/648aa8238437d9da9227f6273cc163ec5841382d",
-                "reference": "648aa8238437d9da9227f6273cc163ec5841382d",
+                "url": "https://api.github.com/repos/twbs/icons/zipball/ce0e49dd063243118a115f17ad1fe1fe7576d552",
+                "reference": "ce0e49dd063243118a115f17ad1fe1fe7576d552",
                 "shasum": ""
             },
             "type": "library",
@@ -2025,9 +2025,9 @@
             ],
             "support": {
                 "issues": "https://github.com/twbs/icons/issues",
-                "source": "https://github.com/twbs/icons/tree/v1.10.5"
+                "source": "https://github.com/twbs/icons/tree/v1.13.1"
             },
-            "time": "2023-04-26T19:56:04+00:00"
+            "time": "2025-05-09T23:01:19+00:00"
         }
     ],
     "packages-dev": [],
@@ -2038,5 +2038,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
