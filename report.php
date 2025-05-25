@@ -32,6 +32,8 @@
  * Public user cannot edit/list reports.
  */
 
+use App\Helpers\DateDisplay;
+
 require_once 'includes/init.php';
 
 /**
