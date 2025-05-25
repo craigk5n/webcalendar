@@ -32,9 +32,9 @@
  * Public user cannot edit/list reports.
  */
 
-use App\Helpers\DateDisplay;
-
 require_once 'includes/init.php';
+
+use App\Helpers\DateDisplay;
 
 /**
  * Replaces all site_extras placeholders in a template with the actual data.
