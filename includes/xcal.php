@@ -299,7 +299,8 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
       $utc_end = export_ts_utc_date ( $eventend );
       $ret .= "DTEND:$utc_end\r\n";
   } else {
-    $ret .= "DURATION:P$str_duration\r\n";
+    // Should not happen since $texport should be either 'ical' or 'vcal'.
+    $ret .= "DURATION:P$duration\r\n";
   }
 
   return $ret;
