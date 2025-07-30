@@ -32,6 +32,10 @@ class Event {
    */
   private $_localDate;
   /**
+   * The event's computed end date (YYYYMMDD format)
+   */
+  private $_endDate;
+  /**
    * The event's time (in HHMMSS format).
    */
   private string $_time;
@@ -122,6 +126,10 @@ class Event {
    * The event's due date and time.
    */
   private string $_due;
+ /**
+   * The computed due date/time as a timestamp.
+   */
+  private $_DueDateTime;
  /**
    * The event's percent.
    */
@@ -330,18 +338,20 @@ class Event {
    * @access public
    */
   function getDueDateTimeTS() {
-    $year = substr ( $this->_dueDate, 0, 4 );
-    $month = substr ( $this->_dueDate, 4, 2 );
-    $day = substr ( $this->_dueDate, 6, 2 );
-  if ( $this->_time > 0 ) {
-    $h = (int) ( $this->_dueTime / 10000 );
-    $m = ( $this->_dueTime / 100 ) % 100;
-  } else {
-   $h = $m = 0;
-  }
-    $this->_DueDateTime = gmmktime ( $h, $m, 0, $month, $day, $year );
+    $year = (int) substr($this->_dueDate, 0, 4);
+    $month = (int) substr($this->_dueDate, 4, 2);
+    $day = (int) substr($this->_dueDate, 6, 2);
+
+    if ($this->_time > 0) {
+        $h = (int) ($this->_dueTime / 10000);
+        $m = (int) (($this->_dueTime / 100) % 100);
+    } else {
+        $h = $m = 0;
+    }
+
+    $this->_DueDateTime = gmmktime($h, $m, 0, $month, $day, $year);
     return $this->_DueDateTime;
-  }
+}
 
     /**
    * Gets the event's date/time
@@ -365,12 +375,12 @@ class Event {
   function getDateTimeTS()
   {
     $ret = null;
-    $year = substr($this->_date, 0, 4);
-    $month = substr($this->_date, 4, 2);
-    $day = substr($this->_date, 6, 2);
+    $year = (int) substr($this->_date, 0, 4);
+    $month = (int) substr($this->_date, 4, 2);
+    $day = (int) substr($this->_date, 6, 2);
     if ($this->isTimed()) {
       $h = (int) ($this->_time / 10000);
-      $m = ($this->_time / 100) % 100;
+      $m = (int) (($this->_time / 100) % 100);
       $ret = gmmktime($h, $m, 0, $month, $day, $year);
     } else {
       $h = $m = 0;
@@ -540,7 +550,7 @@ class Event {
   /**
    * Gets the event's due date and time
    *
-   * @return int The event's due date time
+   * @return string The event's due date time
    *
    * @access public
    */
