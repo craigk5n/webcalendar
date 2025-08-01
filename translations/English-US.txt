@@ -1917,7 +1917,7 @@ recipients_failed: SMTP Error: The following recipients failed:
 ########################################
 # Page: install/install_adminuser.php
 #
-Your have XXX admin accounts.: Your have XXX admin accounts.
+You have XXX admin accounts.: You have XXX admin accounts.
 Create Default Admin User: Create Default Admin User
 
 ########################################
