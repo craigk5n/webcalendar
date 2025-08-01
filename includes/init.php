@@ -42,6 +42,8 @@
  * @package WebCalendar
  */
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
  if( empty( $_SERVER['PHP_SELF'] )
      || ( ! empty( $_SERVER['PHP_SELF'] )
        && preg_match( '/\/includes\//', $_SERVER['PHP_SELF'] ) ) ) {
