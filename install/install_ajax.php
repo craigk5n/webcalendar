@@ -76,7 +76,7 @@ function testDbConnection($host, $login, $password, $database)
 }
 
 
-$response = array();
+$response = [];
 ini_set('session.cookie_lifetime', 3600);  // 3600 seconds = 1 hour
 
 $sessionName = 'WebCalendar-Install-' . str_replace(
@@ -98,7 +98,7 @@ session_name($sessionName);
 
 session_start();
 
-$errorResponse = array();
+$errorResponse = [];
 $errorResponse['status'] = "error";
 $errorResponse['error'] = translate('Invalid test connection request');
 
@@ -120,7 +120,8 @@ if (empty($_SESSION['initialized'])) {
   echo json_encode($errorResponse);
   exit;
 }
-$validUser = (isset($_SESSION['validUser']) && !empty($_SESSION['validUser'])) ? true : false;
+$validUser = ( isset ( $_SESSION['validUser'] ) && ! empty ( $_SESSION['validUser'] ) );
+
 if (!$validUser) { // User must be logged in to install pages
   $errorResponse['error'] .= "\n" . 'Not logged in';
   echo json_encode($errorResponse);
