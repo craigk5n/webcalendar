@@ -796,41 +796,31 @@ function date_selection($prefix, $date, $trigger = false, $num_years = 20)
 }
 
 /**
- * Converts a date to a timestamp.
+ * date_to_epoch
  *
- * @param string $d   Date in YYYYMMDD or YYYYMMDDHHIISS format
- * @param bool   $gmt Whether to use GMT or LOCAL
+ * Converts a date to a timestamp
  *
- * @return int  Timestamp representing, in UTC or LOCAL time.
+ * @param  mixed  $d    Date in YYYYMMDD or YYYYMMDDHHIISS format
+ * @param  bool   $gmt  Whether to use GMT or LOCAL
+ *
+ * @return int timestamp representing, in UTC or LOCAL time
  */
-function date_to_epoch( $d, $gmt = true ) {
-  if ( $d == 0 || $d === '' )
+function date_to_epoch ( $d, $gmt = true ) {
+  if ( ! $d ) {
     return 0;
-
-  $dH = $di = $ds = 0;
-  if ( strlen ( $d ) == 13 ) { // Hour value is single digit.
-    $dH = substr ( $d, 8, 1 );
-    $di = substr ( $d, 9, 2 );
-    $ds = substr ( $d, 11, 2 );
-  }
-  if ( strlen ( $d ) == 14 ) {
-    $dH = substr ( $d, 8, 2 );
-    $di = substr ( $d, 10, 2 );
-    $ds = substr ( $d, 12, 2 );
   }
 
-  if ( $gmt )
-    return gmmktime ( $dH, $di, $ds,
-      (int)substr ( $d, 4, 2 ),
-      (int)substr ( $d, 6, 2 ),
-      (int)substr ( $d, 0, 4 ) );
-  else
-    return mktime ( $dH, $di, $ds,
-      (int)substr ( $d, 4, 2 ),
-      (int)substr ( $d, 6, 2 ),
-      (int)substr ( $d, 0, 4 ) );
+  $f = ( $gmt ? 'gm' : '' ) . 'mktime';
+
+  return $f (
+    (int) mb_substr ( $d, 8, ( mb_strlen ( $d ) === 13 ? 1 : 2 ) ),
+    (int) mb_substr ( $d, -4, 2 ),
+    (int) mb_substr ( $d, -2, 2 ),
+    (int) mb_substr ( $d, 4, 2 ),
+    (int) mb_substr ( $d, 6, 2 ),
+    (int) mb_substr ( $d, 0, 4 )
+  );
 }
-
 
 /**
  * Converts a date in YYYYMMDD format into "Friday, December 31, 1999",
