@@ -4,5 +4,7 @@
 
 ../vendor/bin/phpunit --bootstrap ../includes/functions.php functionsTest.php
 ../vendor/bin/phpunit EventTest.php
+../vendor/bin/phpunit DocTest.php
+../vendor/bin/phpunit DocListTest.php
 
 exit 0
