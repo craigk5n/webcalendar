@@ -562,7 +562,6 @@ echo $pubAccStr;
 echo $proxy_fullname;
 }
 echo '</div><div class="w-100"></div></div>' . "\n";
-}
 
 if (!empty($mod_date)) {
 echo '<div class="row"><div class="col-3">' . translate('Updated') . "</div>\n";
