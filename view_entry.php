@@ -542,13 +542,15 @@ dbi_free_result ( $res );
 if ($single_user == 'N' && !empty($createby_fullname)) {
 echo '<div class="row"><div class="col-3">' . translate('Created by') . "</div>\n";
 echo '<div class="col-9">';
-if ($is_private && !access_is_enabled()) {
-echo '[' . translate('Private') . ']';
-} else if ($is_confidential && !access_is_enabled()) {
-echo '[' . translate('Confidential') . ']';
+
+if ( ! access_is_enabled() ) {
+  if ( $is_private ) {
+    echo '[' . translate ( 'Private' ) . ']';
+  } elseif ( $is_confidential ) {
+    echo '[' . translate ( 'Confidential' ) . ']';
+  }
 } else {
-if (access_is_enabled()) {
-$can_email = access_user_calendar('email', $create_by);
+  $can_email = access_user_calendar ( 'email', $create_by );
 }
 $pubAccStr = ($row[0] == '__public__') ? translate('Public Access') : $createby_fullname;
 if (strlen($email_addr) && $can_email != 'N') {
