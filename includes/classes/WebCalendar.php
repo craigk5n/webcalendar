@@ -568,10 +568,10 @@ class WebCalendar {
             // Invalid session cookie.
             $session_not_found = true;
           } else {
-            $cooie_check = explode('|', decode_string($encoded_login));
+            $cookie_check = explode('|', decode_string($encoded_login));
             // First time after switching to PHP8 you may have
             // incompatible cookies here.
-            if ( empty($cooie_check[0]) || empty($cooie_check[1]))
+            if ( empty($cookie_check[0]) || empty($cookie_check[1]))
               $session_not_found = true;
           }
           if ( ! $session_not_found ) {
@@ -777,8 +777,7 @@ class WebCalendar {
           $lastname = $login_lastname;
           $fullname = $login_fullname;
           $is_admin = ( $login_is_admin == 'Y' );
-          $is_nonuser = ( ! empty ( $GLOBALS['login_is_nonuser'] )
-              && $GLOBALS['login_is_nonuser'] );
+          $is_nonuser = ! empty ( $GLOBALS['login_is_nonuser'] );
           $user_email = $login_email;
         } else {
           // Invalid login.

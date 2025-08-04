@@ -491,12 +491,11 @@ if ($debugInstaller) {
                     $priorStepsTrue = true;
                     for ($i = 0; $i < count($steps); $i++) {
                         $astep = $steps[$i];
-                        echo "<li> ";
-                        if ($astep['complete']) {
-                            echo ' <img src="../images/bootstrap-icons/check-circle.svg" alt="X"> ';
-                        } else {
-                            echo ' <img src="../images/bootstrap-icons/circle.svg" alt="-"> ';
-                        }
+                        echo '<li><img src="../images/bootstrap-icons/' .
+                            ($astep['complete'] 
+                                ? 'check-circle.svg" alt="X">'
+                                : 'circle.svg" alt="-">');
+                        
                         if ($astep['step'] == $action) {
                             $step = $astep;
                             echo '<strong>';
