@@ -18,8 +18,8 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1' # Matches WebCalendar's roadmap
-          extensions: sqlite3, pdo_sqlite # Ensure SQLite support
+          php-version: '8.1' # Use PHP 8.1 for sqlite3 support
+          extensions: sqlite3, pdo_sqlite # sqlite3 is sufficient
           tools: none # No Composer needed
 
       - name: Create SQLite database
@@ -32,7 +32,7 @@ jobs:
 
       - name: Configure WebCalendar for SQLite
         run: |
-          sed -i 's|db_type:.*|db_type: sqlite|' includes/settings.php
+          sed -i 's|db_type:.*|db_type: sqlite3|' includes/settings.php
           sed -i 's|db_database:.*|db_database: /var/www/html/webcalendar/database/webcalendar.sqlite|' includes/settings.php
           sed -i 's|db_host:.*|db_host: localhost|' includes/settings.php
           sed -i 's|db_login:.*|db_login: ""|' includes/settings.php
@@ -43,9 +43,18 @@ jobs:
           sed -i 's|user_inc:.*|user_inc: user.php|' includes/settings.php
           echo "CSRF_PROTECTION: N" >> includes/settings.php # Disable CSRF for login test
 
+      - name: Create run_install.php
+        run: |
+          cat << 'EOF' > run_install.php
+          <?php
+          require 'install/headless.php';
+          $_SESSION['install_file'] = 'tables-sqlite3.php';
+          ?>
+          EOF
+
       - name: Run WebCalendar installation
         run: |
-          php -r "session_start(); \$_SESSION['install_file'] = 'tables-sqlite3.php'; require 'install/headless.php';" | tee install.log
+          php run_install.php | tee install.log
           grep -q "Success" install.log || { echo "Installation failed"; cat install.log; exit 1; }
 
       - name: Verify database installation
