@@ -1,0 +1,71 @@
+name: Test WebCalendar Installation and Login
+
+on:
+  push:
+    branches: [ master, release ]
+  pull_request:
+  release:
+    types: [ published ]
+
+jobs:
+  test_installation:
+    name: Test WebCalendar installation with SQLite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1' # Matches WebCalendar's roadmap
+          extensions: sqlite3, pdo_sqlite # Ensure SQLite support
+          tools: none # No Composer needed
+
+      - name: Create SQLite database
+        run: |
+          mkdir -p database
+          sqlite3 database/webcalendar.sqlite "VACUUM;" # Create empty SQLite DB
+
+      - name: Create settings.php from settings.php.orig
+        run: cp includes/settings.php.orig includes/settings.php
+
+      - name: Configure WebCalendar for SQLite
+        run: |
+          sed -i 's|db_type:.*|db_type: sqlite|' includes/settings.php
+          sed -i 's|db_database:.*|db_database: /var/www/html/webcalendar/database/webcalendar.sqlite|' includes/settings.php
+          sed -i 's|db_host:.*|db_host: localhost|' includes/settings.php
+          sed -i 's|db_login:.*|db_login: ""|' includes/settings.php
+          sed -i 's|db_password:.*|db_password: ""|' includes/settings.php
+          sed -i 's|install_password:.*|install_password: test123|' includes/settings.php
+          sed -i 's|single_user:.*|single_user: false|' includes/settings.php
+          sed -i 's|use_http_auth:.*|use_http_auth: false|' includes/settings.php
+          sed -i 's|user_inc:.*|user_inc: user.php|' includes/settings.php
+          echo "CSRF_PROTECTION: N" >> includes/settings.php # Disable CSRF for login test
+
+      - name: Run WebCalendar installation
+        run: |
+          php -r "session_start(); \$_SESSION['install_file'] = 'tables-sqlite3.php'; require 'install/headless.php';" | tee install.log
+          grep -q "Success" install.log || { echo "Installation failed"; cat install.log; exit 1; }
+
+      - name: Verify database installation
+        run: |
+          # Check if core tables exist
+          sqlite3 database/webcalendar.sqlite "SELECT name FROM sqlite_master WHERE type='table' AND name='webcal_config';" | grep webcal_config
+          sqlite3 database/webcalendar.sqlite "SELECT name FROM sqlite_master WHERE type='table' AND name='webcal_entry';" | grep webcal_entry
+          sqlite3 database/webcalendar.sqlite "SELECT name FROM sqlite_master WHERE type='table' AND name='webcal_user';" | grep webcal_user
+          # Verify version in database
+          sqlite3 database/webcalendar.sqlite "SELECT cal_value FROM webcal_config WHERE cal_setting='WEBCAL_PROGRAM_VERSION';" | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+'
+
+      - name: Test web-based login
+        run: |
+          # Start PHP server in background
+          php -S localhost:8000 -t . & sleep 5
+          # Simulate login with admin credentials
+          http_code=$(curl -L -c cookies.txt -b cookies.txt -o login_response.html -w "%{http_code}" -X POST http://localhost:8000/login.php -d "login=admin&password=admin")
+          # Verify login success (HTTP 302 for redirect)
+          [ "$http_code" = "302" ] || { echo "Login failed, expected HTTP 302, got $http_code"; cat login_response.html; exit 1; }
+          # Verify response contains WebCalendar
+          grep -q "WebCalendar" login_response.html || { echo "WebCalendar not found in response"; cat login_response.html; exit 1; }
+          # Clean up
+          kill $(pgrep -f "php -S localhost:8000") || true
