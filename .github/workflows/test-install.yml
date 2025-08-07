@@ -21,11 +21,13 @@ jobs:
           php-version: '8.1' # Use PHP 8.1 for sqlite3 support
           extensions: sqlite3, pdo_sqlite # sqlite3 is sufficient
           tools: none # No Composer needed
+          ini-values: display_errors=On, error_reporting=E_ALL # Enable error reporting
 
       - name: Create SQLite database
         run: |
           mkdir -p database
           sqlite3 database/webcalendar.sqlite "VACUUM;" # Create empty SQLite DB
+          ls -l database/webcalendar.sqlite # Debug: Verify DB file
 
       - name: Create settings.php from settings.php.orig
         run: cp includes/settings.php.orig includes/settings.php
@@ -33,7 +35,7 @@ jobs:
       - name: Configure WebCalendar for SQLite
         run: |
           sed -i 's|db_type:.*|db_type: sqlite3|' includes/settings.php
-          sed -i 's|db_database:.*|db_database: /var/www/html/webcalendar/database/webcalendar.sqlite|' includes/settings.php
+          sed -i 's|db_database:.*|db_database: database/webcalendar.sqlite|' includes/settings.php
           sed -i 's|db_host:.*|db_host: localhost|' includes/settings.php
           sed -i 's|db_login:.*|db_login: ""|' includes/settings.php
           sed -i 's|db_password:.*|db_password: ""|' includes/settings.php
@@ -42,20 +44,238 @@ jobs:
           sed -i 's|use_http_auth:.*|use_http_auth: false|' includes/settings.php
           sed -i 's|user_inc:.*|user_inc: user.php|' includes/settings.php
           echo "CSRF_PROTECTION: N" >> includes/settings.php # Disable CSRF for login test
+          cat includes/settings.php # Debug: Show settings.php
+
+      - name: Verify required files
+        run: |
+          ls -l install/sql/tables-sqlite3.php || { echo "Missing tables-sqlite3.php"; exit 1; }
+          ls -l install/headless.php || { echo "Missing headless.php"; exit 1; }
+          ls -l includes/dbi4php.php || { echo "Missing dbi4php.php"; exit 1; }
+          ls -l includes/translate.php || { echo "Missing translate.php"; exit 1; }
+          ls -l install/default_config.php || { echo "Missing default_config.php"; exit 1; }
+          ls -l install/install_functions.php || { echo "Missing install_functions.php"; exit 1; }
+          ls -l install/sql/upgrade_matrix.php || { echo "Missing upgrade_matrix.php"; exit 1; }
+
+      - name: Create headless_debug.php
+        run: |
+          cat << 'EOF' > install/headless_debug.php
+          <?php
+          /* This script can be used to update the database headlessly rather than using the
+           * installation script.
+           *
+           * You must copy the settings.php file from your original installation, or create it
+           * yourself in the case of a new install. This script will not prompt you for any of
+           * your settings; and requires settings.php to be present and complete.
+           */
+          ini_set('display_errors', 1);
+          ini_set('display_startup_errors', 1);
+          error_reporting(E_ALL);
+          if (php_sapi_name() !== 'cli') {
+              echo 'Error: This is a CLI script and should not be invoked via the web server' . PHP_EOL;
+              exit(1);
+          }
+          $required_files = [
+              __DIR__ . '/../includes/translate.php',
+              __DIR__ . '/../includes/dbi4php.php',
+              __DIR__ . '/../includes/config.php',
+              __DIR__ . '/default_config.php',
+              __DIR__ . '/install_functions.php',
+              __DIR__ . '/sql/upgrade_matrix.php',
+              __DIR__ . '/sql/tables-sqlite3.php'
+          ];
+          foreach ($required_files as $file) {
+              if (!file_exists($file)) {
+                  echo "Error: Missing required file: $file" . PHP_EOL;
+                  exit(1);
+              }
+              echo "Including file: $file" . PHP_EOL;
+              include_once $file;
+          }
+          define('__WC_BASEDIR', __DIR__ . '/../');
+          $fileDir = __WC_BASEDIR . 'includes';
+          $file    = $fileDir . '/settings.php';
+          chdir(__WC_BASEDIR);
+          if (!file_exists($file)) {
+              echo "Error: settings.php not found at $file" . PHP_EOL;
+              exit(1);
+          }
+          echo "Starting session..." . PHP_EOL;
+          session_name(getSessionName());
+          session_start();
+          echo "Loading configuration..." . PHP_EOL;
+          do_config(true);
+          $db_database = $settings['db_database'] ?? '';
+          $db_host     = $settings['db_host'] ?? '';
+          $db_login    = $settings['db_login'] ?? '';
+          $db_password = (empty($settings['db_password']) ? '' : $settings['db_password']);
+          $db_persistent = false;
+          $db_type       = $settings['db_type'] ?? '';
+          $real_db       = ($db_type == 'sqlite' || $db_type == 'sqlite3'
+              ? get_full_include_path($db_database) : $db_database);
+          if (empty($db_type)) {
+              echo "Error: db_type not set in settings.php" . PHP_EOL;
+              exit(1);
+          }
+          echo "Attempting database connection (db_type: $db_type, db: $real_db)..." . PHP_EOL;
+          $c = null;
+          $dbVersion = null;
+          $detectedDbVersion = 'Unknown';
+          $canConnectDb = false;
+          $connectError = '';
+          try {
+              $c = dbi_connect($db_host, $db_login, $db_password, $real_db, false);
+              if ($c) {
+                  $dbVersion = $detectedDbVersion = getDatabaseVersionFromSchema();
+                  $canConnectDb = true;
+                  echo "Database connection successful. Detected version: $detectedDbVersion" . PHP_EOL;
+              } else {
+                  $connectError = dbi_error();
+                  echo "Error: Failed to connect to database: $connectError" . PHP_EOL;
+                  exit(1);
+              }
+          } catch (Exception $e) {
+              $connectError = $e->getMessage();
+              echo "Error: Database connection exception: $connectError" . PHP_EOL;
+              exit(1);
+          }
+          $emptyDatabase = $canConnectDb ? isEmptyDatabase() : true;
+          $reportedDbVersion = 'Unknown';
+          $adminUserCount = 0;
+          $databaseExists = false;
+          $databaseCurrent = false;
+          if ($c && !empty($_SESSION['install_file'])) {
+              $install_filename = (str_starts_with($dbVersion, "v")) ? "upgrade-" : "tables-";
+              switch ($db_type) {
+                  case 'ibase':
+                  case 'mssql':
+                  case 'oracle':
+                      $install_filename .= $db_type . '.sql';
+                      break;
+                  case 'ibm_db2':
+                      $install_filename .= 'db2.sql';
+                      break;
+                  case 'odbc':
+                      $install_filename .= $_SESSION['odbc_db'] . '.sql';
+                      break;
+                  case 'postgresql':
+                      $install_filename .= 'postgres.sql';
+                      break;
+                  case 'sqlite3':
+                      $install_filename = $_SESSION['install_file'];
+                      echo "Executing SQLite3 installation: $install_filename" . PHP_EOL;
+                      if (!file_exists($install_filename)) {
+                          echo "Error: Install file $install_filename not found" . PHP_EOL;
+                          exit(1);
+                      }
+                      include_once $install_filename;
+                      populate_sqlite_db($real_db, $c);
+                      $install_filename = '';
+                      break;
+                  default:
+                      $install_filename .= 'mysql.sql';
+              }
+              if (!empty($install_filename)) {
+                  echo "Executing SQL from file: $install_filename" . PHP_EOL;
+                  executeSqlFromFile($install_filename);
+              }
+          }
+          echo "Checking passwords..." . PHP_EOL;
+          $res = dbi_execute(
+              'SELECT cal_login, cal_passwd FROM webcal_user',
+              [],
+              false,
+              true
+          );
+          if ($res) {
+              while ($row = dbi_fetch_row($res)) {
+                  if (strlen($row[1]) < 30) {
+                      echo "Updating password for user: {$row[0]}" . PHP_EOL;
+                      dbi_execute('UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?',
+                          [password_hash($row[1], PASSWORD_DEFAULT), $row[0]]);
+                  }
+              }
+              dbi_free_result($res);
+          } else {
+              echo "Error: Failed to query webcal_user: " . dbi_error() . PHP_EOL;
+          }
+          require_once "sql/upgrade-sql.php";
+          $error = '';
+          echo "Detected database schema version: $detectedDbVersion" . PHP_EOL;
+          try {
+              $success = true;
+              if (empty($error)) {
+                  if ($emptyDatabase) {
+                      echo "Empty database -> creating all tables" . PHP_EOL;
+                      if (!empty($install_filename)) {
+                          executeSqlFromFile($install_filename);
+                      }
+                  } else {
+                      if (empty($detectedDbVersion) || $detectedDbVersion == 'Unknown') {
+                          $error = translate('Unable to determine current database version.');
+                          echo "Error: $error" . PHP_EOL;
+                      } else {
+                          $sqlLines = getSqlUpdates($detectedDbVersion, $db_type, true);
+                          foreach ($sqlLines as $sql) {
+                              if (str_starts_with($sql, "function:")) {
+                                  list(, $functionName) = explode(':', $sql);
+                                  if (function_exists($functionName)) {
+                                      echo "Executing function: $functionName" . PHP_EOL;
+                                      $functionName();
+                                  } else {
+                                      $error = "Function $functionName does not exist.";
+                                      echo "Error: $error" . PHP_EOL;
+                                      $success = false;
+                                  }
+                              } else {
+                                  echo "Executing SQL: $sql" . PHP_EOL;
+                                  $ret = dbi_execute($sql, [], false, true);
+                                  if (!$ret) {
+                                      $success = false;
+                                      $error = dbi_error();
+                                      echo "Error: SQL execution failed: $error" . PHP_EOL;
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          } catch (Exception $e) {
+              $error = $e->getMessage();
+              echo "Error: Exception during SQL updates: $error" . PHP_EOL;
+          }
+          if (empty($error)) {
+              updateVersionInDatabase();
+              $msg = translate('Database successfully migrated from XXX to YYY');
+              $msg = str_replace('XXX', $detectedDbVersion, $msg);
+              $msg = str_replace('YYY', $PROGRAM_VERSION, $msg);
+              echo $msg . PHP_EOL;
+          }
+          if (empty($error)) {
+              echo "Success" . PHP_EOL;
+          } else {
+              echo "Error: $error" . PHP_EOL;
+              exit(1);
+          }
+          ?>
+          EOF
 
       - name: Create run_install.php
         run: |
           cat << 'EOF' > run_install.php
           <?php
-          require 'install/headless.php';
-          $_SESSION['install_file'] = 'tables-sqlite3.php';
+          ini_set('display_errors', 1);
+          ini_set('display_startup_errors', 1);
+          error_reporting(E_ALL);
+          require 'install/headless_debug.php';
+          $_SESSION['install_file'] = 'install/sql/tables-sqlite3.php';
           ?>
           EOF
 
       - name: Run WebCalendar installation
         run: |
-          php run_install.php | tee install.log
-          grep -q "Success" install.log || { echo "Installation failed"; cat install.log; exit 1; }
+          php run_install.php | tee install.log || { echo "PHP execution failed"; cat install.log; exit 1; }
+          cat install.log # Debug: Always show install.log
+          grep -q "Success" install.log || { echo "Installation failed: 'Success' not found"; cat install.log; exit 1; }
 
       - name: Verify database installation
         run: |
