@@ -295,7 +295,7 @@ $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
 echo '
-    <div style="width:99%;">
+    <div style="inline-size: 99%;">
       <a class="prev" href="view_t.php?id=' . $id .
   '&amp;date=' . $prevdate
  . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '"></a>

@@ -24,10 +24,10 @@ html {
 html,
 body {
   position:relative;
-  width:100%;
+  inline-size: 100%;
   margin:0;
   padding:0;
-  padding-bottom: 0.5em;
+  padding-block-end: 0.5em;
 }
 body{
   background-color: var(--bgcolor);
@@ -46,17 +46,17 @@ div.container-fluid, div.container, nav.navbar,
   color: var(--textcolor)!important;
 }
 div.dropdown-divider {
-  border-top: 1px solid var(--box-default-color)!important;
+  border-block-start: 1px solid var(--box-default-color)!important;
 }
 li.nav-link {
-  border-top: 1px solid var(--box-default-color)!important;
+  border-block-start: 1px solid var(--box-default-color)!important;
 }
 /*
 Can't recall why this was added, but it makes the save button appear too far down
 to be seen in some forms.  For now, commenting out.  Probably delete this later...
 body, div.container-fluid, div.container {
-  min-height: 100%;
-  min-height: 100vh;
+  min-block-size: 100%;
+  min-block-size: 100vh;
 }
 */
 label.text-info {
@@ -87,7 +87,7 @@ h3 {
   font-size:1.500rem;
 }
 fieldset {
-  width:96%;
+  inline-size: 96%;
 }
 label {
   font-weight:bold;
@@ -135,22 +135,22 @@ ul a {
   background-color: var(--cellbg);
 }
 .main {
-  clear:both;
-  width:100%;
-  border-right:1px solid var(--tablebg);
-  border-bottom:1px solid var(--tablebg);
+  clear: both;
+  inline-size: 100%;
+  border-inline-end: 1px solid var(--tablebg);
+  border-block-end: 1px solid var(--tablebg);
 }
 .main th,
 .main td {
-  width:14%;
-  border-top: 1px solid var(--tablebg);
-  border-left: 1px solid var(--tablebg);
+  inline-size: 14%;
+  border-block-start: 1px solid var(--tablebg);
+  border-inline-start: 1px solid var(--tablebg);
   vertical-align:top;
 }
 .main th.empty {
-  width:1%;
-  border-top: 1px solid var(--tablebg);
-  border-left: 1px solid var(--tablebg);
+  inline-size: 1%;
+  border-block-start: 1px solid var(--tablebg);
+  border-inline-start: 1px solid var(--tablebg);
   vertical-align:top;
 }
 .minical td.weekend,
@@ -165,8 +165,8 @@ ul a {
  text-decoration:underline;
 }
 .fixed {
-  width:10rem;
-  margin-right:0;
+  inline-size: 10rem;
+  margin-inline-end: 0;
 }
 .cursoradd a, .clickable {
   cursor:pointer;
@@ -185,10 +185,10 @@ ul a {
 }
 
 td.weekcell {
+  inline-size: 1%;
   background-color: var(--weeknumber);
   font-size:.625rem;
   text-decoration:none;
-  width: 1%;
   text-align: center;
   vertical-align: middle;
 }
@@ -196,7 +196,7 @@ td.weekcell {
 img {
   max-inline-size: 100%;
   block-size: auto;
-  
+
   /* These 2 presume pre-load a low-res image in an inline style="" on each img. */
   /* We probably don't need them. Yet. */
   /*
@@ -204,13 +204,13 @@ img {
   background-size: cover;
   */
 
-  shape-margin: 1rem;  
+  shape-margin: 1rem;
   border: 0;
   vertical-align: middle;
 }
 img.color {
-  width:.9375rem;
-  height:.9375rem;
+  inline-size: .9375rem;
+  block-size: .9375rem;
 }
 #cat {
   font-size:1.125rem;
@@ -221,11 +221,10 @@ img.color {
   padding:0;
 }
 #dateselector form {
-  float:left;
-  width:33%;
-  margin-top:.3125rem;
-  margin-bottom:1.5625rem;
-  padding-top:.3125rem;
+  float: inline-start;
+  inline-size: 33%;
+  margin-block: .3125rem 1.5625rem;
+  padding-block-start: .3125rem;
 }
 #dateselector label,
 #trailer label {
@@ -233,19 +232,19 @@ img.color {
   padding:0;
 }
 #monthform {
-  clear:left;
-  margin-bottom:0;
+  clear: inline-start;
+  margin-block-end: 0;
 }
 #weekform {
-  margin-bottom:0;
+  margin-block-end: 0;
   text-align:center;
 }
 #weekmenu,
 #monthmenu,
 #yearmenu {
-  margin-bottom:0;
+  margin-block-end: 0;
   /*font-size: small;*/
-  text-align:right;
+  text-align: end;
 }
 #viewr .main th a,
 #week .main th a,
@@ -253,12 +252,12 @@ img.color {
   color: var(--thfg);
 }
 #yearform {
-  clear:right;
-  margin-bottom:0;
-  text-align:right;
+  clear: inline-end;
+  margin-block-end: 0;
+  text-align: end;
 }
 #menu {
-  clear:both;
+  clear: both;
 }
 #menu,
 #menu a,
@@ -271,21 +270,21 @@ img.color {
   font-weight:bold;
 }
 a#programname {
-  margin-top:.625rem;
+  margin-block-start: .625rem;
   font-size:.625rem;
 }
 .printer {
-  clear:both;
-  width:15ex;
+  clear: both;
+  inline-size: 15ex;
   display:block;
   text-decoration:none;
 }
 .new {
-  float:right;
+  float: inline-end;
 }
 .unapprovedentry {
-  padding-right:.1875rem;
   color:#800000;
+  padding-inline-end: .1875rem;
 /* Remove comments to set unapproved in italics.
   font-style:italic;
 */
@@ -302,7 +301,7 @@ a#programname {
 }
 .entry,
 .layerentry {
-  padding-right:.1875rem;
+  padding-inline-end: .1875rem;
   font-size:.75rem;
   text-decoration:none;
 }
@@ -312,8 +311,7 @@ a#programname {
 .entry img,
 .layerentry img,
 .unapprovedentry img {
-  margin-right:.125rem;
-  margin-left:.125rem;
+  margin-inline: .125rem;
 }
 .dayofmonth {
   color: var(--tablebg);
@@ -326,25 +324,25 @@ a#programname {
   vertical-align:top;
 }
 .dayofmonth:hover {
-  border-right:1px solid #00F;
-  border-bottom:1px solid #00F;
+  border-inline-end: 1px solid #00F;
+  border-block-end: 1px solid #00F;
 }
 .next img,
 #activitylog .next {
-  float:right;
+  float: inline-end;
 }
 .prev img,
 #activitylog .prev {
-  float:left;
+  float: inline-start;
 }
 .next img,
 .prev img {
-  margin-top:.4375rem;
-  margin-right:.1875rem;
+  margin-block-start: .4375rem;
+  margin-inline-end: .1875rem;
 }
 
 .tt {
-  font-family: 'Lucida Console', monospace";
+  font-family: 'Lucida Console', monospace;
 }
 
 #activitylog .next,
@@ -355,7 +353,7 @@ a#programname {
 }
 #day .next img,
 #day .prev img {
-  margin-top:2.3125rem;
+  margin-block-start: 2.3125rem;
 }
 #day .monthnav .next img,
 #day .monthnav .prev img {
@@ -365,59 +363,56 @@ a#programname {
   background-color: var(--thbg);
   cursor:pointer;
   font-size:.75rem;
-  text-align:right;
+  text-align: end;
   text-decoration:none;
 }
 .dailymatrix:hover {
   background-color:#CFC;
 }
 td.matrixappts {
-  width:0;
+  inline-size: 0;
   background-color: var(--cellbg);
   cursor:pointer;
-  text-align:left;
+  text-align: start;
   vertical-align:middle;
 }
 td.matrixappts:hover {
   background-color:#CFC;
 }
 td.matrix {
-  height:1px !important;
+  block-size: 1px !important;
   background-color:#000;
 }
 .matrix img {
-  width:100%;
-  height:1px;
+  inline-size: 100%;
+  block-size: 1px;
 }
 a.matrix img {
-  width:100%;
-  height:.5rem;
+  inline-size: 100%;
+  block-size: .5rem;
 }
 .matrixd {
-  margin-right:auto;
-  margin-left:auto;
-  border-right:1px solid var(--tablebg);
-  border-left:1px solid var(--tablebg);
-  border-bottom:1px solid var(--tablebg);
+  margin-inline: auto;
+  border-inline: 1px solid var(--tablebg);
+  border-block-end: 1px solid var(--tablebg);
 }
 .matrixd td {
-  border-bottom: 1px solid var(--tablebg);
+  border-block-end: 1px solid var(--tablebg);
 }
 .matrixledge {
-  border-left:1px solid #000;
+  border-inline-start: 1px solid #000;
 }
 .matrixlegend {
-  margin-top:1.5625rem;
-  margin-right:auto;
-  margin-left:auto;
+  margin-block-start: 1.5625rem;
+  margin-inline: auto;
   border:1px solid #000;
   padding:.3125rem;
   background-color:#FFF;
   text-align:center;
 }
 .matrixlegend img {
-  width:.625rem;
-  height:.625rem;
+  inline-size: .625rem;
+  block-size: .625rem;
 }
 .nav {
   color: var(--textcolor);
@@ -426,8 +421,8 @@ a.matrix img {
 }
 .popup {
   position:absolute;
-  top:0;
-  left:0;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   color: var(--popupfg);
   border:2px solid var(--popupfg);
   background-color: var(--popupbg);
@@ -449,7 +444,7 @@ a.matrix img {
   font-weight:bold;
 }
 .popup dd {
-  margin-left:1.25rem;
+  margin-inline-start: 1.25rem;
 }
 .tooltip,
 .tooltipselect {
@@ -459,7 +454,7 @@ a.matrix img {
   text-decoration:none;
 }
 .tooltip {
-  width:7.5rem;
+  inline-size: 7.5rem;
 }
 .tooltipselect {
   vertical-align:top;
@@ -480,7 +475,7 @@ a.matrix img {
   vertical-align:top;
 }
 .helpbody {
-  margin-bottom:1rem;
+  margin-block-end: 1rem;
   font-weight:normal;
   vertical-align:top;
 }
@@ -509,12 +504,12 @@ a.matrix img {
   text-decoration:none;
 }
 #helpbug form {
-  margin-bottom:1rem;
+  margin-block-end: 1rem;
 }
 #helpbug label {
-  clear:left;
-  float:left;
-  width:32%;
+  clear: inline-start;
+  float: inline-start;
+  inline-size: 32%;
 }
 #helpbug p {
   margin:0 1rem;
@@ -523,8 +518,8 @@ img.help {
   cursor:help;
 }
 .sample {
-  text-align:left;
-  width:1rem;
+  inline-size: 1rem;
+  text-align: start;
 }
 .standard {
   background-color: var(--cellbg);
@@ -533,7 +528,7 @@ img.help {
 }
 .standard th {
   border:0;
-  border-bottom:1px solid var(--tablebg);
+  border-block-end: 1px solid var(--tablebg);
   padding:0;
   font-size:1.125rem;
 }
@@ -581,46 +576,46 @@ tr.highlight td {
   font-weight:bold;
 }
 .minitask {
-  width:98%;
-  margin-left:1px;
+  inline-size: 98%;
+  margin-inline-start: 1px;
   border:1px solid #000;
 }
 .minitask tr.header th,
 .minitask tr.header td {
   background-color: var(--cellbg);
-  border-bottom:.125rem solid #000;
+  border-block-end: .125rem solid #000;
   padding:0;
   font-size:.75rem;
   text-align:center;
 }
 .minitask tr.header td {
   margin:0;
-  border-bottom:0;
-  text-align:right;
+  border-block-end: 0;
+  text-align: end;
 }
 .sorter {
   margin:0;
-  border-bottom:0;
+  border-block-end: 0;
   cursor:pointer;
-  text-align:left !important;
+  text-align: start !important;
 }
 .sorterbottom {
- border-bottom:1px solid #000 !important;
+ border-block-end: 1px solid #000 !important;
 }
 .minitask td {
   color: var(--textcolor);
-  border-bottom:1px solid #000;
+  border-block-end: 1px solid #000;
   padding:0;
   font-size:.75rem;
   text-align:center;
 }
 .minitask td.filler {
-  border-bottom:0;
+  border-block-end: 0;
   padding:0;
 }
 
 #pref form-group {
-  text-align: left;
+  text-align: start;
 }
 /* Settings/Preferences month preview for color.
  * We have to override the values set in styles.php for
@@ -670,7 +665,7 @@ tr.highlight td {
 }
 #admin .main td,
 #pref .main td {
-  height:1.875rem;
+  block-size: 1.875rem;
 }
 #admin .main td,
 #admin .main th,
@@ -679,13 +674,13 @@ tr.highlight td {
   font-size:.75rem;
 }
 #admin #month_main, #monthtitle {
-  width: 45%;
-  float: right;
+  inline-size: 45%;
+  float: inline-end;
 }
 #admin .empty,
 #pref .empty {
-  border-top:transparent !important;
-  border-left:transparent !important;
+  border-block-start: transparent !important;
+  border-inline-start: transparent !important;
 }
 #admin .main td.weekcell,
 #pref .main td.weekcell {
@@ -709,15 +704,15 @@ tr.highlight td {
 #pref .main td.weekcell,
 #pref .main th.empty,
 #pref .main th.weekcell {
-  width:1%;
+  inline-size: 1%;
 }
 #admin #saver {
-  clear:both;
-  margin-top:1rem;
+  clear: both;
+  margin-block-start: 1rem;
 }
 #example_month {
-  float:right;
-  width:45%;
+  float: inline-end;
+  inline-size: 45%;
   background-color: var(--bgcolor);
   margin:3rem 1rem 0;
 }
@@ -727,13 +722,13 @@ tr.highlight td {
   text-align:center;
 }
 #pref .tooltip {
-  width:14.6875rem;
+  inline-size: 14.6875rem;
   vertical-align:top;
 }
 .embactlog {
-  width:100%;
-  border-right:1px solid var(--tablebg);
-  border-bottom:1px solid var(--tablebg);
+  inline-size: 100%;
+  border-inline-end: 1px solid var(--tablebg);
+  border-block-end: 1px solid var(--tablebg);
   border-spacing:0;
 }
 .embactlog tr {
@@ -743,19 +738,18 @@ tr.highlight td {
   background-color:#EEE;
 }
 .embactlog th {
-  width:14%;
-  border-top:1px solid var(--tablebg);
-  border-bottom:1px solid var(--tablebg);
-  border-left:1px solid var(--tablebg);
+  inline-size: 14%;
+  border-block: 1px solid var(--tablebg);
+  border-inline-start: 1px solid var(--tablebg);
   padding:.0625rem .1875rem;
 }
 .embactlog th.action,
 .embactlog th.cal,
 .embactlog th.usr {
-  width:7%;
+  inline-size: 7%;
 }
 .embactlog td {
-  border-left:1px solid var(--tablebg);
+  border-inline-start: 1px solid var(--tablebg);
   padding:.0625rem .1875rem;
 }
 #day div.minicalcontainer {
@@ -764,14 +758,12 @@ tr.highlight td {
   vertical-align:top;
 }
 #day table.minical {
-  margin-right:auto;
-  margin-left:auto;
+  margin-inline: auto;
 }
 #day .minical caption {
   background-color: var(--thbg);
   color: var(--thfg);
-  margin-right:auto;
-  margin-left:auto;
+  margin-inline: auto;
   font-weight:bold;
   font-size:2.9375rem;
 }
@@ -790,38 +782,38 @@ tr.highlight td {
   font-size:.75rem;
 }
 .glance {
-  width:100%;
-  border-right:1px solid var(--tablebg);
-  border-bottom:1px solid var(--tablebg);
+  inline-size: 100%;
+  border-inline-end: 1px solid var(--tablebg);
+  border-block-end: 1px solid var(--tablebg);
 }
 .glance th.empty {
   background-color: var(--bgcolor) !important;
-  border-top:1px solid var(--bgcolor) !important;
-  border-left:1px solid var(--bgcolor) !important;
+  border-block-start: 1px solid var(--bgcolor) !important;
+  border-inline-start: 1px solid var(--bgcolor) !important;
 }
 .glance th.row {
-  width:14%;
-  height:2.5rem;
-  border-top:1px solid var(--tablebg);
-  border-left:1px solid var(--tablebg);
+  inline-size: 14%;
+  block-size: 2.5rem;
+  border-block-start: 1px solid var(--tablebg);
+  border-inline-start: 1px solid var(--tablebg);
   vertical-align:middle;
 }
 .glance td {
-  border-top:1px solid var(--tablebg);
-  border-left:1px solid var(--tablebg);
-  padding-left:.1875rem;
+  border-block-start: 1px solid var(--tablebg);
+  border-inline-start: 1px solid var(--tablebg);
+  padding-inline-start: .1875rem;
   vertical-align:top;
 }
 th.day_glance_time {
-  width: 5% !important;
-  height:2.5rem;
-  border-top:1px solid var(--tablebg);
-  border-left:1px solid var(--tablebg);
+  inline-size: 5% !important;
+  block-size: 2.5rem;
+  border-block-start: 1px solid var(--tablebg);
+  border-inline-start: 1px solid var(--tablebg);
   vertical-align:middle;
 }
 #day .glance td {
-  width:86%;
-  height:2.5rem;
+  inline-size: 86%;
+  block-size: 2.5rem;
 }
 #day dl.desc {
   margin:0;
@@ -832,7 +824,7 @@ th.day_glance_time {
 }
 #day dl.desc dd {
   margin:0;
-  padding-left:1.25rem;
+  padding-inline-start: 1.25rem;
 }
 #year #monthgrid td {
   padding:0 .3125rem;
@@ -845,33 +837,33 @@ th.day_glance_time {
 #viewv .main th,
 #viewl .main th,
 #month .main th {
-  width:14%;
+  inline-size: 14%;
 }
 #vieww .main th,
 #week .main th {
-  width:12%;
+  inline-size: 12%;
 }
 #viewr th.small {
   background-color:none;
   font-size:.5rem;
 }
 #viewd .main th {
-  border-right:1px solid var(--tablebg);;
+  border-inline-end: 1px solid var(--tablebg);;
   padding:.0625rem;
 }
 #day .main th.empty,
 #month .main th.empty,
 #pref .main th.weekcell,
 #viewl .main th.empty {
-  width:1%;
-  border-top:0;
-  border-left:0;
+  inline-size: 1%;
   background-color:transparent !important;
+  border-block-start: 0;
+  border-inline-start: 0;
 }
 #month .main td.weekcell,
 #pref .main td.weekcell,
 #viewl .main td.weekcell {
-  width:1%;
+  inline-size: 1%;
   color: var(--h2color);
   margin:0;
   font-size:.75rem;
@@ -881,28 +873,28 @@ th.day_glance_time {
 }
 #pref .main td.empty,
 #pref .main th.empty {
-  width:1%;
-  border-top-color:transparent !important;
-  border-left-color:transparent !important;
+  inline-size: 1%;
+  border-block-start-color: transparent !important;
+  border-inline-start-color: transparent !important;
 }
 #pref .main td.weekcell,
 #pref .main th.weekcell {
-  width:1%;
+  inline-size: 1%;
 }
 #viewv .main th.empty,
 #viewm .main th.empty,
 #vieww .main th.empty,
 #viewr .main th.empty,
 #week .main th.empty {
-  width:5%;
-  border-top:1px solid var(--bgcolor) !important;
-  border-left:1px solid var(--bgcolor) !important;
+  inline-size: 5%;
+  border-block-start: 1px solid var(--bgcolor) !important;
+  border-inline-start: 1px solid var(--bgcolor) !important;
   background-color:transparent !important;
   background: none;
 }
 #week .main th.row {
-  width:5%;
-  height:2.5rem;
+  inline-size: 5%;
+  block-size: 2.5rem;
   vertical-align:top;
 }
 #viewt.main {
@@ -913,42 +905,42 @@ th.day_glance_time {
 #viewv .main th.row,
 #viewm .main th.row,
 #viewt .main th {
-  width:10%;
+  inline-size: 10%;
   vertical-align:top;
 }
 #viewv .main th.row {
   padding:0 .3125rem;
-  text-align:left;
+  text-align: start;
 }
 #viewd .main th.row {
-  border-right-width:0;
-  text-align:left;
+  border-inline-end-width: 0;
+  text-align: start;
 }
 #viewr th.row {
-  height:2.5rem;
+  block-size: 2.5rem;
   vertical-align:top;
 }
 #vieww .main th.today,
 #viewm .main th.today,
 #viewv .main th.today {
-  width:10%;
+  inline-size: 10%;
 }
 #pref .main th.today,
 #viewr .main th.today,
 #week .main th.today {
-  width:14%;
+  inline-size: 14%;
 }
 #year .minical td {
   text-align:center;
   vertical-align:top;
 }
 #pref .main td {
-  height:1.875rem;
+  block-size: 1.875rem;
   font-size:.75rem;
 }
 #viewl .main td,
 #month .main td, #Month #month_main td {
-  height:6.0rem;
+  block-size: 6rem;
   font-size:.75rem;
   vertical-align:top;
 }
@@ -958,23 +950,23 @@ th.day_glance_time {
 #viewm .main td,
 #viewv .main td {
   font-size:.75rem;
-  padding-left:.1875rem;
+  padding-inline-start: .1875rem;
 }
 #viewl #prevmonth {
-  float:left;
+  float: inline-start;
 }
 #viewl #nextmonth {
-  float:right;
+  float: inline-end;
 }
 table#nextmonth {
-  float: right;
+  float: inline-end;
 }
 table#prevmonth {
-  float: left;
+  float: inline-start;
 }
 #month .minical caption,
 #viewl .minical caption {
-  margin-left:4ex;
+  margin-inline-start: 4ex;
 }
 #year .minical {
   display:block;
@@ -989,17 +981,17 @@ table#prevmonth {
 }
 .dateselIcon {
   cursor: pointer;
-  margin-left: 5px;
+  margin-inline-start: 5px;
 }
 .topnav {
   border:0;
 }
 .title {
-  width:99%;
+  inline-size: 99%;
   text-align:center;
 }
 #day .title {
-  margin-top:.1875rem;
+  margin-block-start: .1875rem;
   text-align:center;
 }
 .title .date,
@@ -1022,32 +1014,32 @@ table#prevmonth {
   text-align:center;
 }
 #weekdetails .main {
-  width:90%;
+  inline-size: 90%;
 }
 #weekdetails .main th {
-  width:100%;
+  inline-size: 100%;
   padding:.125rem;
 }
 #weekdetails .main td {
-  height:4.6875rem;
+  block-size: 4.6875rem;
 }
 #viewt table.timebar {
-  width:100%;
+  inline-size: 100%;
 }
 #viewt table.timebar th {
-  width:10%;
+  inline-size: 10%;
 }
 #ViewT div table th {
-  width:10%;
+  inline-size: 10%;
 }
 #ViewT div table td {
-  width:90%;
+  inline-size: 90%;
 }
 #viewt table.timebar dh {
-  width:90%;
+  inline-size: 90%;
 }
 #viewt td.timebar {
-  width:90%;
+  inline-size: 90%;
   background-color:#FFF;
   color:#999;
   font-size:.625rem;
@@ -1064,7 +1056,7 @@ table#prevmonth {
   text-align:inherit !important;
 }
 .viewnav {
-  width:99%;
+  inline-size: 99%;
   border:0;
 }
 #login table,
@@ -1095,24 +1087,24 @@ table#prevmonth {
   text-align:center;
 }
 .boxtop {
-  border-top:1px solid var(--box-default-color);
+  border-block-start: 1px solid var(--box-default-color);
 }
 .boxright {
-  border-right:1px solid var(--box-default-color);
+  border-inline-end: 1px solid var(--box-default-color);
 }
 .boxbottom {
-  border-bottom:1px solid var(--box-default-color);
+  border-block-end: 1px solid var(--box-default-color);
 }
 .boxleft {
-  border-left:1px solid var(--box-default-color);
+  border-inline-start: 1px solid var(--box-default-color);
 }
 .boxall {
   border:1px solid var(--box-default-color);
-  padding-left:.1875rem;
+  padding-inline-start: .1875rem;
 }
 .leftpadded {
-  padding-left:3.125rem;
-  text-align:left;
+  padding-inline-start: 3.125rem;
+  text-align: start;
 }
 .location {
  font-size:.625rem;
@@ -1122,8 +1114,8 @@ table#prevmonth {
   text-align:center;
 }
 .icon_text {
-  width:.625rem;
-  height:.625rem;
+  inline-size: .625rem;
+  block-size: .625rem;
   border:0;
 }
 .alignbottom {
@@ -1134,14 +1126,14 @@ table#prevmonth {
 }
 .alignleft,
 .minitask td.name {
-  text-align:left;
+  text-align: start;
 }
 .alignmiddle {
   vertical-align:middle;
 }
 .alignright,
 .minitask td.pct {
-  text-align:right;
+  text-align: end;
 }
 .aligntop {
   vertical-align:top;
@@ -1154,10 +1146,10 @@ table#prevmonth {
 }
 #scroller {
   position:absolute;
-  width:100%;
+  inline-size: 100%;
 }
 .layers {
-  float:left;
+  float: inline-start;
   background-color: var(--cellbg);
   margin:.125rem .0625rem;
   padding:.3125rem;
@@ -1167,7 +1159,7 @@ table#prevmonth {
 }
 .layers p {
   margin:0;
-  padding-left:.3125rem;
+  padding-inline-start: .3125rem;
   font-size:.75rem;
 }
 .layers p label {
@@ -1187,19 +1179,18 @@ table#prevmonth {
   border:1px solid var(--tablebg);
 }
 #securityAuditNotes li {
-  margin-top:.25rem;
-  margin-bottom:.25rem;
+  margin-block: .25rem;
 }
 #accountiframe,
 #useriframe {
-  width:90%;
+  inline-size: 90%;
   border:0;
 }
 #accountiframe {
-  height:13.125rem;
+  block-size: 13.125rem;
 }
 #useriframe {
-  height:17.5rem;
+  block-size: 17.5rem;
 }
 .note {
   color: var(--tablebg);
@@ -1208,10 +1199,10 @@ table#prevmonth {
   padding:.625rem;
 }
 .rightsidetip {
-  float:right;
-  width:15.625rem;
-  margin-top:.625rem;
-  margin-right:1.5625rem;
+  float: inline-end;
+  inline-size: 15.625rem;
+  margin-block-start: .625rem;
+  margin-inline-end: 1.5625rem;
   border:1px solid var(--tablebg);
   padding:.3125rem;
   font-size:.6875rem;
@@ -1233,7 +1224,7 @@ table#prevmonth {
   color: #ffffff;
   font-size: 1.0rem;
   padding: 4px;
-  /*padding-left: 20px;*/
+  /*padding-inline-start: 20px;*/
 }
 #layers #layertable td.odd {
   background-color: #c0c0c0;
@@ -1252,20 +1243,18 @@ table#prevmonth {
   cursor:pointer;
 }
 #layers #layertable .colorsample {
-  margin-left: 5px;
-  padding-left: 10px;
-  width: 20px;
-  height: 20px;
+  inline-size: 20px;
+  block-size: 20px;
+  margin-inline-start: 5px;
   border: 1px solid #000000;
+  padding-inline-start: 10px;
 }
 .fakebutton {
    border:2px #d0d0d0 outset;
    /*border-color:#e0e0e0 #808080 #808080 #e0e0e0;*/
-   padding-right:.3125rem;
-   padding-left:.3125rem;
-   padding:.25rem;
    background-color:#d0d0d0;
    color:#000;
+   padding:.25rem .3125rem;
    font-size:11pt;
 }
 .fakebutton:hover {
@@ -1330,11 +1319,11 @@ table.ThemeMenubar {
 /*date selection "popup"*/
 #dateselOverlay {
   position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 100%;
   margin: auto;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   z-index: 10001;
 /*
   background-color: #fff;
@@ -1344,8 +1333,8 @@ table.ThemeMenubar {
 
 #dateselDiv {
   display: none;
-  width: 150px;
-  /*height: 300px;*/
+  inline-size: 150px;
+  /*block-size: 300px;*/
   /*background-color: #d0d0d0;*/
   /*padding: 10px;*/
   padding: 0;
@@ -1354,8 +1343,8 @@ table.ThemeMenubar {
 
 #dateselDiv #cancelImage {
   position: relative;
-  left: -20px;
-  top: 10px;
+  inset-block-start: 10px;
+  inset-inline-start: -20px;
 }
 
 .dateselTable #dateselMonthName {
@@ -1366,8 +1355,7 @@ table.ThemeMenubar {
   color: #ffffff;
 }
 .dateselTable #dateselMonthName img.clickable {
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-inline: 5px;
 }
 
 .dateselTable td {
@@ -1384,26 +1372,25 @@ table.ThemeMenubar {
   background-color: #00ff00;
 }
 .dateselTable td.wdayname {
+  padding-inline: 2px;
   font-size: 8pt;
-  padding-left: 2px;
-  padding-right: 2px;
 }
 
 .button-icon {
-  width: 14px;
-  height: 14px;
+  inline-size: 14px;
+  block-size: 14px;
+  margin-inline-end: 10px;
   filter: invert(1);
-  margin-right: 10px;
 }
 .button-icon-inverse {
-  width: 14px;
-  height: 14px;
-  margin-right: 10px;
+  inline-size: 14px;
+  block-size: 14px;
+  margin-inline-end: 10px;
 }
 
 .bullet {
-  width: 0.3em;
-  height: 0.3em;
+  inline-size: 0.3em;
+  block-size: 0.3em;
 }
 
 <?php
@@ -1418,15 +1405,14 @@ table.ThemeMenubar {
 .dropdown-submenu a::after {
   transform: rotate(-90deg);
   position: absolute;
-  right: 6px;
-  top: .8em;
+  inset-block-start: .8em;
+  inset-inline-end: 6px;
 }
 
 .dropdown-submenu .dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-left: .1rem;
-  margin-right: .1rem;
+  inset-block-start: 0;
+  inset-inline-start: 100%;
+  margin-inline: .1rem;
 }
 @media(prefers-reduced-motion: no-preference) {
   :has(:target) {

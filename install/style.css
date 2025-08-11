@@ -4,8 +4,8 @@
 }
 
 .titlecontainer img {
-    display: block;         /* Remove any default spacing below the image */
-    margin-right: 20px;     /* Space between image and text */
+    margin-inline-end: 20px; /* Space between image and text */
+    display: block;          /* Remove any default spacing below the image */
 }
 
 .heading {
@@ -16,11 +16,10 @@
 li {
     display: flex;           /* Use flexbox layout */
     align-items: center;     /* Center items vertically */
-    margin-bottom: 0.3em;
+    margin-block-end: 0.3em;
 }
 
 li img {
-    display: block;         /* Remove any default spacing below the image */
-    margin-right: 10px;      /* Space between text and image */
+    display: block;          /* Remove any default spacing below the image */
+    margin-inline-end: 10px; /* Space between text and image */
 }
-

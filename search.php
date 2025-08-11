@@ -52,7 +52,7 @@ print_header ( $INC, '', 'onload="toggleDateRange();"' );
 ?>
 <h2><?php echo ($show_advanced ? $advSearchStr : $searchStr);?></h2>
 
-<form action="search_handler.php" method="GET" id="searchformentry" name="searchformentry" style="margin-left: 13px;">
+<form action="search_handler.php" method="GET" id="searchformentry" name="searchformentry" style="margin-inline-start: 13px;">
 
   <input type="hidden" name="advanced" value="' . $show_advanced . '">
   <table class="table table-responsive">
@@ -140,7 +140,7 @@ if ($show_others) {
     $size = $cnt;
 
   if (! $show_advanced) {
-    echo '<tr id="advlink"><td colspan="2"><a' 
+    echo '<tr id="advlink"><td colspan="2"><a'
       . ' href="search.php?adv=1">'
       . $advSearchStr . '</a></td></tr>';
   }

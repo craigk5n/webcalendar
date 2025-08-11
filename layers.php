@@ -98,11 +98,11 @@ else {
 
     <br><br>
 
-    <div id="layerlist" style="margin-left: 25px;"> <?php echo $LOADING; ?> </div>
+    <div id="layerlist" style="margin-inline-start: 25px;"> <?php echo $LOADING; ?> </div>
 
     <br>
 
-    <div class="layerButtons" style="margin-left: 25px;">
+    <div class="layerButtons" style="margin-inline-start: 25px;">
       <button class="btn btn-primary" type="button"
  onclick="return edit_layer(-1)"><?php etranslate ( 'Add layer' ) ?>...</button>
     </div>

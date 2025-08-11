@@ -56,7 +56,7 @@ printSubmitButton($action, $html, $buttonLabel);
       </div>
       <div class="modal-body">
         <!-- Iframe with full width and height -->
-        <iframe src="index.php?action=phpinfo" style="width: 100%; height: 500px;" frameborder="0"></iframe>
+        <iframe src="index.php?action=phpinfo" style="inline-size: 100%; block-size: 500px;" frameborder="0"></iframe>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php etranslate('Close'); ?></button>

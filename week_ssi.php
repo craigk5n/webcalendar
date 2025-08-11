@@ -71,7 +71,7 @@ for ( $i = 0; $i < 7; $i++ ) {
   $date = date ( 'Ymd', $days[$i] );
 
   $tmpOut1 .= '
-              <th style="width: 13%; background: '
+              <th style="inline-size: 13%; background: '
    . ( date ( 'Ymd', $days[$i] ) == date ( 'Ymd', $today )
     ? $TODAYCELLBG : $THBG )
    . ';">' . weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS )
@@ -79,7 +79,7 @@ for ( $i = 0; $i < 7; $i++ ) {
    . date ( 'd', $days[$i] ) . '</th>';
 
   $tmpOut2 .= '
-              <td style="vertical-align: top; width: 75px; height: 75px; '
+              <td style="vertical-align: top; inline-size: 75px; block-size: 75px; '
    . 'background: ' . ( $date == date ( 'Ymd' ) ? $TODAYCELLBG : $CELLBG )
    . print_date_entries ( $date, $login, true, true ) . '&nbsp;</td>';
 }

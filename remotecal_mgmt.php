@@ -204,12 +204,12 @@ if (!ini_get('allow_url_fopen')) { ?>
                     <input type="hidden" name="addLayerRemoteCalendarLogin" id="addLayerRemoteCalendarLogin" value="">
                     <table>
                         <tr>
-                            <td style="padding-right: 2em" data-toggle="tooltip" data-placement="top" title="<?php etranslate('The text color of the new layer that will be displayed in your calendar.'); ?>"><label><?php echo $colorStr; ?>:</label></td>
+                            <td style="padding-inline-end: 2em" data-toggle="tooltip" data-placement="top" title="<?php etranslate('The text color of the new layer that will be displayed in your calendar.'); ?>"><label><?php echo $colorStr; ?>:</label></td>
                             <td><?php echo print_color_input_html('editLayerColor', '', '#000000'); ?>
                             </td>
                         </tr>
                         <tr>
-                            <td style="padding-right: 2em" data-toggle="tooltip" data-placement="top" title="<?php etranslate('If checked, events that are duplicates of your events will be shown.'); ?>"><label><?php echo $duplicatesStr; ?>:</label></td>
+                            <td style="padding-inline-end: 2em" data-toggle="tooltip" data-placement="top" title="<?php etranslate('If checked, events that are duplicates of your events will be shown.'); ?>"><label><?php echo $duplicatesStr; ?>:</label></td>
                             <td><input class="form-control" type="checkbox" name="editLayerDups" id="editLayerDups">
                             </td>
                         </tr>

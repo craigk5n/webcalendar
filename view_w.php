@@ -55,7 +55,7 @@ if ( ! empty ( $error ) ) {
   exit;
 }
 echo '
-    <div style="width:99%;">
+    <div style="inline-size: 99%;">
       <a class="prev" href="view_w.php?id=' . $id
  . '&amp;date=' . sprintf ( "%04d%02d%02d", date ( 'Y', $prev ),
   date ( 'm', $prev ), date ( 'd', $prev ) ) . '">
@@ -118,7 +118,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, 'temp' );
     echo '
-        <th style="width:' . $tdw . '%;">' . $tempfullname . '</th>';
+        <th style="inline-size: ' . $tdw . '%;">' . $tempfullname . '</th>';
   }
   echo '
       </tr>';
@@ -152,7 +152,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       else if ( $is_weekend )
         $class = 'class="weekend"';
       echo '
-        <td ' . $class . ' style="width:' . $tdw . '%;"';
+        <td ' . $class . ' style="inline-size: ' . $tdw . '%;"';
       if ( $can_add )
         echo " ondblclick=\"dblclick_add( '$dateYmd', '$user', 0, 0 )\"";
       echo '>' . $entryStr . '</td>';

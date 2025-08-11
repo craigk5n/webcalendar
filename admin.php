@@ -577,7 +577,7 @@ if ( ! $error ) {
             <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'public-access-captcha-help' ) . '">'
    . translate ( 'Require CAPTCHA validation for public access new events' )
    . ':</label>' . print_radio ( 'ENABLE_CAPTCHA' ) . '</div>
-           <div style="clear:both;"></div>
+           <div style="clear: both;"></div>
           </div>
         </div>
       </div>
@@ -713,17 +713,17 @@ if ( ! $error ) {
    . tooltip ( 'allow-attachment-help' ) . '">'
    . translate ( 'Allow file attachments to events' ) . ':</label>'
    . print_radio ( 'ALLOW_ATTACH', '', 'attach_handler' )
-    . '</p><p class="form-inline mt-1 mb-2" id="at1" style="margin-left:25%"><strong>Note: </strong>'
+    . '</p><p class="form-inline mt-1 mb-2" id="at1" style="margin-inline-start: 25%"><strong>Note: </strong>'
    . translate ( 'Admin and owner can always add attachments if enabled.' )
-   . '</p><p class="form-inline mt-1 mb-2" id="at1a" style="margin-left:25%">' . print_checkbox ( ['ALLOW_ATTACH_PART', 'Y', $partyStr] )
+   . '</p><p class="form-inline mt-1 mb-2" id="at1a" style="margin-inline-start: 25%">' . print_checkbox ( ['ALLOW_ATTACH_PART', 'Y', $partyStr] )
    . print_checkbox ( ['ALLOW_ATTACH_ANY', 'Y', $anyoneStr] )
    . '</p><br><p class="form-inline mt-1 mb-2"><label title="'
    . tooltip ( 'allow-comments-help' ) . '">'
    . translate ( 'Allow comments to events' ) . ':</label>'
    . print_radio ( 'ALLOW_COMMENTS', '', 'comment_handler' )
-   . '</p><p id="com1" style="margin-left:25%"><strong>Note: </strong>'
+   . '</p><p id="com1" style="margin-inline-start: 25%"><strong>Note: </strong>'
    . translate ( 'Admin and owner can always add comments if enabled.' )
-   . '</p><p class="form-inline mt-1 mb-2" id="com1a" style="margin-left:25%">' . print_checkbox ( ['ALLOW_COMMENTS_PART', 'Y', $partyStr] )
+   . '</p><p class="form-inline mt-1 mb-2" id="com1a" style="margin-inline-start: 25%">' . print_checkbox ( ['ALLOW_COMMENTS_PART', 'Y', $partyStr] )
    . print_checkbox ( ['ALLOW_COMMENTS_ANY', 'Y', $anyoneStr] )
    . '</p></div></div>
 
@@ -813,7 +813,7 @@ if ( ! $error ) {
           <fieldset class="border p-2">
             <legend>' . translate ( 'Color options' ) . '</legend>
 <!-- BEGIN EXAMPLE MONTH -->
-            <p style="float:right; width:45%; margin:0; background: var(--background)">
+            <p style="float: inline-end; inline-size: 45%; margin:0; background: var(--background)">
               <p id="monthtitle" class="bold" style="text-align:center; color: var(--h2color)">' . date_to_str ( date ( 'Ymd' ), $DATE_FORMAT_MY, false ) . '</p>'
    . display_month ( date ( 'm' ), date ( 'Y' ), true ) . '
 
@@ -843,7 +843,7 @@ if ( ! $error ) {
         </div>
       </div>
       </div>
-      <div style="clear:both;">
+      <div style="clear: both;">
         <button class="btn btn-primary" name="" type="submit">'
     . $saveStr . "</button>
       </div>

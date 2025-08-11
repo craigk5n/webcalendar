@@ -39,7 +39,7 @@ a {
   border-color: black !important;
 }
 #printarea {
- width: 100% !important;
+ inline-size: 100% !important;
 }
 .noprint {
   display: none !important;

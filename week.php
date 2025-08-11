@@ -249,7 +249,7 @@ print_header (
 echo <<<EOT
     <table cellpadding="1">
       <tr>
-        <td id="printarea" style="vertical-align:top; width:{$tableWidth};">
+        <td id="printarea" style="vertical-align: top; inline-size: {$tableWidth};">
         {$navStr}
         </td>
         {$filler}
