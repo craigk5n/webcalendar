@@ -56,7 +56,7 @@ if ($databaseCurrent) {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+      <div class="modal-body" style="max-block-size: 70vh; overflow-y: auto;">
         <pre id="sqlContent">SQL commands will be populated here.</pre>
       </div>
       <div class="modal-footer">

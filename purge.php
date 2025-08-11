@@ -53,7 +53,7 @@ print_header ( $INC );
 ?>
 <table>
   <tr>
-    <td style="vertical-align:top; width:50%;">
+    <td style="vertical-align: top; inline-size: 50%;">
       <h2><?php etranslate ( 'Delete Events' );
 
 if ( $preview )
@@ -195,7 +195,7 @@ function purge_events ( $ids ) {
   //var_dump($tables);exit;
   $cnt = count ( $tables );
   $num = array_fill ( 0, $cnt, 0 );
-  
+
   foreach ( $ids as $cal_id ) {
     for ( $i = 0; $i < $cnt; $i++ ) {
       $clause = ( $cal_id == 'ALL' ? '' :

@@ -294,7 +294,7 @@ if( ! empty( $guser ) || ! $is_admin ) {
   if( $allow_view_other ) {
     $userlist = get_list_of_users( $guser );
     echo '
-    <h2 style="margin-bottom: 2px;">' . $pagetitle . '</h2>
+    <h2 style="margin-block-end: 2px;">' . $pagetitle . '</h2>
     <form action="access.php" method="post" name="SelectOther">';
     print_form_key();
     echo '

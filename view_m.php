@@ -47,7 +47,7 @@ $prevStr = translate ( 'Previous' );
 print_header ( ['js/popups.js/true', 'js/dblclick_add.js/true'] );
 
 echo '
-    <div style="width:99%;">
+    <div style="inline-size: 99%;">
       <a class="prev" href="view_m.php?id=' . $id
  . '&amp;date=' . $prevdate . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="'
  . $prevStr . '"></a>
@@ -124,7 +124,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, 'temp' );
     echo '
-        <th style="width:' . $tdw . '%;">' . $tempfullname . '</th>';
+        <th style="inline-size: ' . $tdw . '%;">' . $tempfullname . '</th>';
   } //end for
   echo '
       </tr>';
@@ -174,7 +174,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       if ( $is_weekend )
         $class = 'class="weekend"';
 
-      echo '<td ' . $class . ' style="width:' . $tdw . '%;"';
+      echo '<td ' . $class . ' style="inline-size: ' . $tdw . '%;"';
       if ( $can_add )
         echo " ondblclick=\"dblclick_add( '$dateYmd', '$user', 0, 0 )\"";
       echo '>' . $entryStr . '</td>';

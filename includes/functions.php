@@ -556,19 +556,19 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $hours = $last_hour - $first_hour;
   $interval = intval ( 60 / $increment );
   $cell_pct = intval ( 80 / ( $hours * $interval ) );
-  $style_width = ( $cell_pct > 0 ? 'style="width:' . $cell_pct . '%;"' : '' );
+  $style_width = ( $cell_pct > 0 ? 'style="inline-size: ' . $cell_pct . '%;"' : '' );
   $thismonth = date ( 'm', $dateTS );
   $thisyear = date ( 'Y', $dateTS );
   $cols = ( ( $hours * $interval ) + 1 );
   $ret = <<<EOT
     <br>
-    <table class="aligncenter matrixd" style="width:'80%';"
+    <table class="aligncenter matrixd" style="inline-size: 80%;"
      >
       <tr>
         <td class="matrix" colspan="{$cols}"></td>
       </tr>
       <tr>
-        <th style="width:{$participant_pct};">
+        <th style="inline-size: {$participant_pct};">
 EOT;
    $ret .= translate ( 'Participants' ) . '</th>';
   $tentative = translate ( 'Tentative' );
@@ -579,7 +579,7 @@ EOT;
   $interval = intval ( 60 / $increment );
   $cell_pct = intval ( 80 / ( $hours * $interval ) );
   $cols = ( ( $hours * $interval ) + 1 );
-  $style_width = ( $cell_pct > 0 ? 'style="width:' . $cell_pct . '%;"' : '' );
+  $style_width = ( $cell_pct > 0 ? 'style="inline-size: ' . $cell_pct . '%;"' : '' );
   $thismonth = date ( 'm', $dateTS );
   $thisyear = date ( 'Y', $dateTS );
 
@@ -659,12 +659,12 @@ EOT;
       switch ( $j ) {
         case $halfway:
           $k = ( $hour <= 9 ? '0' : substr ( $hour, 0, 1 ) );
-          $str .= 'style="width:' . $cell_pct . '%; text-align:right;" '
+          $str .= 'style="inline-size: ' . $cell_pct . '%; text-align: end;" '
            . $tmpTitle . $k . '</td>';
           break;
         case $halfway + 1:
           $k = ( $hour <= 9 ? substr ( $hour, 0, 1 ) : substr ( $hour, 1, 2 ) );
-          $str .= 'style="width:' . $cell_pct . '%; text-align:left;" '
+          $str .= 'style="inline-size: ' . $cell_pct . '%; text-align: start;" '
            . $tmpTitle . $k . '</td>';
           break;
         default:
@@ -694,7 +694,7 @@ EOT;
 
     $ret .= '
       <tr>
-        <th class="weekday" style="width:' . $participant_pct . ';">'
+        <th class="weekday" style="inline-size: ' . $participant_pct . ';">'
      . $user_nospace . '</th>';
     $col = 1;
 
@@ -1905,7 +1905,7 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
           // Added TZ conversion
           ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y' ? 3 : 2 ) )
          . '</td>
-        <td>' . ( ! $sys && ! $id ? '<a' 
+        <td>' . ( ! $sys && ! $id ? '<a'
            . ' href="view_entry.php?id=' . $l_eid . '">'
            . htmlspecialchars ( $l_ename ) . '</a></td>
         <td>' : '' ) . display_activity_log ( $l_type, $l_text ) . '</td>
@@ -4617,7 +4617,7 @@ function print_color_input_html ($varname, $title, $varval = '', $id='', $tag='d
   // TODO: Get the text input box working so users can input RGB values.
   //$textId = $id . 'RGB';
   //return '<div class="form-inline"><input class="form-control" id="' . $textId . '" type="text" size="7" value="' . $varval . '">' .
-  //  '<input class="form-control" style="height: 2em; width: 4em;" name="' . $varname . '" id="' . $id .
+  //  '<input class="form-control" style="inline-size: 4em; block-size: 2em;" name="' . $varname . '" id="' . $id .
   //  '" type="color" class="form-control" value="' . $varval . '"' .
   //  'onchange="var c = $(\'#' . $id . '\').val();' .
   //  'console.log(\'color=\'+c); var x=$(\'' . $textId . '\'); console.log(\'textId=\'+x); x.attr(\'value\',c); x.trigger(\'change\'); console.log(\'x.val=\'+x.val());"></div>';
@@ -4634,7 +4634,7 @@ function print_color_input_html ($varname, $title, $varval = '', $id='', $tag='d
 
   return '<' . $tag . ' class="form-inline">' .
   (empty($title) ? '' : ('<label class="' . $class . '" for="' . $prefix . $varname . '">' . $title . '</label>')) .
-    '<input class="form-control" style="height: 2em; width: 4em;" name="' . $prefix . $varname . '" id="' . $prefix . $id .
+    '<input class="form-control" style="inline-size: 4em; block-size: 2em;" name="' . $prefix . $varname . '" id="' . $prefix . $id .
     '" type="color" value="' . $setting . '"' . (empty($onchange) ? '' : ' onchange="' . $onchange . '()"') .
     '></' . $tag . '>';
   }

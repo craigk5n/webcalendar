@@ -153,7 +153,7 @@ defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
   --h2color: <?php echo$GLOBALS['H2COLOR']; ?>;
   --haseventsbg: <?php echo$GLOBALS['HASEVENTSBG']; ?>;
   --minicalfont: <?php echo empty($GLOBALS['MINICALFONT']) ? '11px' : $GLOBALS['MINICALFONT']; ?>;
-  --minicalwidth: <?php echo empty($GLOBALS['MINICALWIDTH']) ? '160px' : $GLOBALS['MINICALWIDTH']; ?>;
+  --minicalwidth : <?php echo empty($GLOBALS['MINICALWIDTH']) ? '160px' : $GLOBALS['MINICALWIDTH']; ?>;
   --myevents: <?php echo$GLOBALS['MYEVENTS']; ?>;
   --othermonthbg: <?php echo$GLOBALS['OTHERMONTHBG']; ?>;
   --popupfg: <?php echo$GLOBALS['POPUP_FG']; ?>;
@@ -172,21 +172,21 @@ defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 // And, instead of IDs "#nextmonth" and "#prevmonth", would classes ".next" and ".prev" work?
 if ( $DISPLAY_TASKS != 'Y' ) { ?>
 #month #nextmonth {
-  float: right;
+  float: inline-end;
 }
 #month #prevmonth {
-  float: left;
+  float: inline-start;
 }
 <?php } ?>
 
 #minicalendar table {
-  width: <?php echo empty( $GLOBALS['MINICALWIDTH'] )
+  inline-size: <?php echo empty( $GLOBALS['MINICALWIDTH'] )
   ? '10em' : $GLOBALS['MINICALWIDTH']; ?>;
 }
 
 <?php if (  $MENU_ENABLED == 'N' ) { ?>
 #dateselector form {
-  border-top: 0.0625em solid <?php echo $GLOBALS['TABLEBG'];?>;
+  border-block-start: 0.0625em solid <?php echo $GLOBALS['TABLEBG'];?>;
 }
 <?php } ?>
 

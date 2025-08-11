@@ -39,7 +39,7 @@ echo '
     </script>
     <center>
       <form action="#" name="userselform">
-        <table style="border: 0; width: 100%;">
+        <table style="border: 0; inline-size: 100%;">
           <tr>
             <td class="aligntop colon">
               <b>' . translate ( 'Users' ) . '</b><br>

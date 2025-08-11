@@ -65,7 +65,7 @@ $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
 echo '
-    <div style="width:99%;">
+    <div style="inline-size: 99%;">
       <a class="prev" href="' . $prev_url
  . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" class="prev" alt="'
  . $prevStr . '"></a>

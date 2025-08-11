@@ -393,7 +393,7 @@ if ( $error == '' ) {
 
     $x = getGetValue ( 'showTitle', true );
     if ( strlen( $x ) > 0 ) {
-      $showTitle = $x; 
+      $showTitle = $x;
     }
 
   if ( $load_layers ) {
@@ -500,8 +500,8 @@ a:hover {
   position: absolute;
   z-index: 20;
   visibility: hidden;
-  top: 0px;
-  left: 0px;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   border: 1px solid #000000;
   padding: 3px;
 }
@@ -521,7 +521,7 @@ a:hover {
 
 .popup dd {
   font-size: 10px;
-  margin-left: 20px;
+  margin-inline-start: 20px;
   color: #ffffff;
 }
 

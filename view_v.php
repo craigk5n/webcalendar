@@ -44,7 +44,7 @@ $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
 print_header ( ['js/popups.js/true', 'js/dblclick_add.js/true'] );
 echo '
-    <div style="width:99%;">
+    <div style="inline-size: 99%;">
       <a class="prev" href="view_v.php?id=' . $id
  . '&amp;date=' . $prevdate . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="'
  . $prevStr . '"></a>
@@ -110,7 +110,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     user_load_variables ( $user, 'temp' );
     $body .= '
       <tr>
-        <th class="weekday" style="width:' . $tdw . '%;">' . $tempfullname . '</th>';
+        <th class="weekday" style="inline-size: ' . $tdw . '%;">' . $tempfullname . '</th>';
     for ( $date = $wkstart; $date <= $wkend;
      $date = bump_local_timestamp( $date, 0, 0, 0, 0, 1, 0 ) ) {
       $is_weekend = is_weekend( $date );
@@ -125,7 +125,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
         : ( ! empty ( $entryStr ) && $entryStr != '&nbsp;'
           ? ' class="hasevents"'
           : ( $is_weekend ? ' class="weekend"' : '' ) ) )
-       . ' style="width:' . $tdw . '%;"';
+       . ' style="inline-size: ' . $tdw . '%;"';
 
       // Build header row.
       if ( $i == 0 ) {
