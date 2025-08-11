@@ -15,7 +15,7 @@
 /* mandatory */
   position:absolute;
 /* change to suit */
-  inset-block-start: 4px;
+  inset-inline-start: 4px;
 }
 h2 {
   margin:0;
