@@ -6,7 +6,7 @@ if( ! access_can_access_function( ACCESS_WEEK )
     || ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
   send_to_preferred_view();
 
-load_user_layers ( ( $user != $login ) && $is_nonuser_admin ? $user : '' );
+load_user_layers ( $user != $login && $is_nonuser_admin ? $user : '' );
 load_user_categories();
 
 $nextYmd =
@@ -165,13 +165,13 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 }
 $untimedStr = ( $untimed_found ? '
             <tr>
-              <th class="empty">&nbsp;</th>' . $untimedStr . '
+              <th class="day_glance_time">&nbsp;</th>' . $untimedStr . '
             </tr>' : '' );
 for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = intval ( ( $i * $interval ) / 60 );
   $time_m = ( $i * $interval ) % 60;
   // Do not apply TZ offset.
-  $eventsStr .= '<tr><th class="row">' .
+  $eventsStr .= '<tr><th class="day_glance_time">' .
     display_time ( ( $time_h * 100 + $time_m ) * 100, 1 ) . '</th>';
 
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
@@ -258,7 +258,7 @@ echo <<<EOT
         <td>
           <table class="main"{$help}>
             <tr>
-              <th class="empty">&nbsp;</th>{$headerStr}
+              <th class="day_glance_time">&nbsp;</th>{$headerStr}
             </tr>{$untimedStr}{$eventsStr}
           </table>
         </td>{$minical_tasks}

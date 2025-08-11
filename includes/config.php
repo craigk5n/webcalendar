@@ -88,9 +88,23 @@ EOT;
  * Give the PHP session a name unique to this install, allowing multiple WebCalendar installs
  * on the same server.
  */
-function getSessionName()
+function getSessionName(): string
 {
-  return 'WebCalendar-' . __DIR__;
+  return 'WebCalendar-Install-' . str_replace(
+          [
+              '=',
+              ',',
+              ';',
+              '.',
+              '[',
+              "\t",
+              "\r",
+              "\n",
+              "\013",
+              "\014",
+          ],
+          '_',
+          __DIR__);
 }
 
 function db_error($doExit = false, $sql = '')
@@ -251,12 +265,10 @@ function do_config($callingFromInstall=false)
   $db_password = $settings['db_password'] ?? '';
   $db_persistent = (preg_match(
     '/(1|yes|true|on)/i',
-    $settings['db_persistent']
-  ) ? true : false );
+    $settings['db_persistent'] ) );
   $db_debug = (preg_match(
     '/(1|yes|true|on)/i',
-    $settings['db_debug']
-  ) ? true : false);
+    $settings['db_debug'] ) );
   $db_type = $settings['db_type'] ?? '';
 
   // If no db settings, then user has likely started install but not yet

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Declares the Event class.
  *
@@ -14,7 +15,8 @@
  *
  * This is a parameter object. It only has simple accessors.
  */
-class Event {
+class Event
+{
   /**
    * The event's name.
    */
@@ -31,6 +33,10 @@ class Event {
    * The event's date in the local user's timezone
    */
   private $_localDate;
+  /**
+   * The event's computed end date (YYYYMMDD format)
+   */
+  private $_endDate;
   /**
    * The event's time (in HHMMSS format).
    */
@@ -92,37 +98,41 @@ class Event {
    */
   private string $_login;
 
- /**
+  /**
    * The event's type.
    */
   private $_calType;
- /**
+  /**
    * The event's type name.
    */
   private $_calTypeName;
- /**
+  /**
    * The event's location.
    * @var mixed
    * @access private
    */
   private $_location;
- /**
+  /**
    * The event's url.
    */
   private mixed $_url;
- /**
+  /**
    * The event's dueDate.
    */
   private ?string $_dueDate;
- /**
+  /**
    * The event's dueTime.
    */
   private $_dueTime;
-   /**
+  /**
    * The event's due date and time.
    */
   private string $_due;
- /**
+  /**
+   * The computed due date/time as a timestamp.
+   */
+  private $_DueDateTime;
+  /**
    * The event's percent.
    */
   private $_percent;
@@ -131,23 +141,23 @@ class Event {
    * The event's end time .
    */
   private $_endTime;
- /**
+  /**
    * The event's end datetime .
    */
   private $_endDateTime;
- /**
+  /**
    * Is this an All Day event?
    */
   private $_allDay;
- /**
+  /**
    * Is this an Timed event?
    */
   private $_timed;
- /**
+  /**
    * Is this an Untimed event?
    */
   private $_untimed;
- /**
+  /**
    * Flag to record a cloned event
    */
   private $_clone;
@@ -181,9 +191,29 @@ class Event {
    * @access public
    */
 
-  function __construct ( $name, $description, $date, $time, $id, $extForID,
-          $priority, $access, $duration, $status, $owner, $category, $login,
-          $calType, $location, $url, $dueDate, $dueTime, $percent, $moddate, $modtime ) {
+  function __construct(
+    $name,
+    $description,
+    $date,
+    $time,
+    $id,
+    $extForID,
+    $priority,
+    $access,
+    $duration,
+    $status,
+    $owner,
+    $category,
+    $login,
+    $calType,
+    $location,
+    $url,
+    $dueDate,
+    $dueTime,
+    $percent,
+    $moddate,
+    $modtime
+  ) {
     $this->_name = $name;
     $this->_description = $description;
     $this->_date = $date;
@@ -203,16 +233,18 @@ class Event {
     $this->_location = $location;
     $this->_url = $url;
     $this->_dueDate  = empty($dueDate) ? '' : $dueDate;
-    $this->_dueTime  = sprintf ( "%06d", $dueTime );
-    $this->_due = $dueDate . sprintf ( "%06d", $dueTime );
+    $this->_dueTime  = sprintf("%06d", $dueTime);
+    $this->_due = $dueDate . sprintf("%06d", $dueTime);
     $this->_percent = $percent;
     $this->_clone = '';
 
     // If public access override event name/description is enabled, then
     // hide the event name and description
-    if ( $GLOBALS['login'] == '__public__' &&
-      ! empty ( $GLOBALS['override_public'] ) &&
-      $GLOBALS['override_public'] == 'Y' ) {
+    if (
+      $GLOBALS['login'] == '__public__' &&
+      ! empty($GLOBALS['override_public']) &&
+      $GLOBALS['override_public'] == 'Y'
+    ) {
       $this->_name = $GLOBALS['override_public_text'];
       $this->_description = $GLOBALS['override_public_text'];
     }
@@ -225,7 +257,8 @@ class Event {
    *
    * @access public
    */
-  function getName() {
+  function getName()
+  {
     return $this->_name;
   }
 
@@ -236,7 +269,8 @@ class Event {
    *
    * @access public
    */
-  function getDescription() {
+  function getDescription()
+  {
     return $this->_description;
   }
 
@@ -247,7 +281,8 @@ class Event {
    *
    * @access public
    */
-  function getDate() {
+  function getDate()
+  {
     return $this->_date;
   }
 
@@ -258,8 +293,8 @@ class Event {
     $day = substr($this->_date, 6, 2);
     $ret = null;
     if ($this->isTimed()) {
-      $h = (int) ($this->_time / 10000);
-      $m = ($this->_time / 100) % 100;
+      $h = (int) ((int)$this->_time / 10000);
+      $m = (int) (((int)$this->_time / 100) % 100);
       $ret = date('Ymd', gmmktime($h, $m, 0, $month, $day, $year));
     } else {
       $h = $m = 0;
@@ -274,7 +309,8 @@ class Event {
    *
    * @access public
    */
-  function getTime() {
+  function getTime()
+  {
     return $this->_time;
   }
 
@@ -285,7 +321,8 @@ class Event {
    *
    * @access public
    */
-  function getModDate() {
+  function getModDate()
+  {
     return $this->_moddate;
   }
 
@@ -296,7 +333,8 @@ class Event {
    *
    * @access public
    */
-  function getModTime() {
+  function getModTime()
+  {
     return $this->_modtime;
   }
 
@@ -307,8 +345,9 @@ class Event {
    *
    * @access public
    */
-  function getDueTime() {
-      return $this->_dueTime;
+  function getDueTime()
+  {
+    return $this->_dueTime;
   }
 
   /**
@@ -318,44 +357,49 @@ class Event {
    *
    * @access public
    */
-  function getDueDate() {
-      return $this->_dueDate;
+  function getDueDate()
+  {
+    return $this->_dueDate;
   }
 
-     /**
+  /**
    * Gets the task's due date/time as a Unix timestamp
    *
    * @return integer The task's due date/time as a timestamp
    *
    * @access public
    */
-  function getDueDateTimeTS() {
-    $year = substr ( $this->_dueDate, 0, 4 );
-    $month = substr ( $this->_dueDate, 4, 2 );
-    $day = substr ( $this->_dueDate, 6, 2 );
-  if ( $this->_time > 0 ) {
-    $h = (int) ( $this->_dueTime / 10000 );
-    $m = ( $this->_dueTime / 100 ) % 100;
-  } else {
-   $h = $m = 0;
-  }
-    $this->_DueDateTime = gmmktime ( $h, $m, 0, $month, $day, $year );
+  function getDueDateTimeTS()
+  {
+    $year = (int) substr($this->_dueDate, 0, 4);
+    $month = (int) substr($this->_dueDate, 4, 2);
+    $day = (int) substr($this->_dueDate, 6, 2);
+
+    if ((int)$this->_time > 0) {
+      $h = (int) ($this->_dueTime / 10000);
+      $m = (int) (($this->_dueTime / 100) % 100);
+    } else {
+      $h = $m = 0;
+    }
+
+    $this->_DueDateTime = gmmktime($h, $m, 0, $month, $day, $year);
     return $this->_DueDateTime;
   }
 
-    /**
+  /**
    * Gets the event's date/time
    *
    * @return string The event's date/time (in YYYYMMDDHHMMSS format)
    *
    * @access public
    */
-  function getDateTime() {
-    $time = ($this->_time > 0? $this->_time: 0);
-    return $this->_date . sprintf ( "%06d", $time );
+  function getDateTime()
+  {
+    $time = ((int)$this->_time > 0 ? (int)$this->_time : 0);
+    return $this->_date . sprintf("%06d", $time);
   }
 
-    /**
+  /**
    * Gets the event's date/time as a Unix timestamp
    *
    * @return integer The event's date/time as a timestamp
@@ -365,12 +409,12 @@ class Event {
   function getDateTimeTS()
   {
     $ret = null;
-    $year = substr($this->_date, 0, 4);
-    $month = substr($this->_date, 4, 2);
-    $day = substr($this->_date, 6, 2);
+    $year = (int) substr($this->_date, 0, 4);
+    $month = (int) substr($this->_date, 4, 2);
+    $day = (int) substr($this->_date, 6, 2);
     if ($this->isTimed()) {
       $h = (int) ($this->_time / 10000);
-      $m = ($this->_time / 100) % 100;
+      $m = (int) (($this->_time / 100) % 100);
       $ret = gmmktime($h, $m, 0, $month, $day, $year);
     } else {
       $h = $m = 0;
@@ -386,7 +430,8 @@ class Event {
    *
    * @access public
    */
-  function getID() {
+  function getID()
+  {
     return $this->_id;
   }
 
@@ -397,7 +442,8 @@ class Event {
    *
    * @access public
    */
-  function getExtForID() {
+  function getExtForID()
+  {
     return $this->_extForID;
   }
 
@@ -408,7 +454,8 @@ class Event {
    *
    * @access public
    */
-  function getPriority() {
+  function getPriority()
+  {
     return $this->_priority;
   }
 
@@ -419,7 +466,8 @@ class Event {
    *
    * @access public
    */
-  function getAccess() {
+  function getAccess()
+  {
     return $this->_access;
   }
 
@@ -430,7 +478,8 @@ class Event {
    *
    * @access public
    */
-  function getDuration() {
+  function getDuration()
+  {
     return $this->_duration;
   }
 
@@ -441,7 +490,8 @@ class Event {
    *
    * @access public
    */
-  function getStatus() {
+  function getStatus()
+  {
     return $this->_status;
   }
 
@@ -452,7 +502,8 @@ class Event {
    *
    * @access public
    */
-  function getOwner() {
+  function getOwner()
+  {
     return $this->_owner;
   }
 
@@ -463,16 +514,18 @@ class Event {
    *
    * @access public
    */
-  function getCategory() {
+  function getCategory()
+  {
     return $this->_category;
   }
 
-  function setCategories ( $cats )
+  function setCategories($cats)
   {
     $this->_categories = $cats;
   }
 
-  function getCategories() {
+  function getCategories()
+  {
     return $this->_categories;
   }
 
@@ -483,7 +536,8 @@ class Event {
    *
    * @access public
    */
-  function getLogin() {
+  function getLogin()
+  {
     return $this->_login;
   }
 
@@ -494,7 +548,8 @@ class Event {
    *
    * @access public
    */
-  function getCalType() {
+  function getCalType()
+  {
     return $this->_calType;
   }
 
@@ -505,14 +560,15 @@ class Event {
    *
    * @access public
    */
-  function getCalTypeName() {
-    if ( isset ( $this->_calTypeName ) )
+  function getCalTypeName()
+  {
+    if (isset($this->_calTypeName))
       return $this->_calTypeName;
-    if ( $this->_calType == 'E' || $this->_calType == 'M' )
+    if ($this->_calType == 'E' || $this->_calType == 'M')
       $this->_calTypeName = 'event';
-    if ( $this->_calType == 'T' || $this->_calType == 'N' )
+    if ($this->_calType == 'T' || $this->_calType == 'N')
       $this->_calTypeName = 'task';
-    if ( $this->_calType == 'J' || $this->_calType == 'O' )
+    if ($this->_calType == 'J' || $this->_calType == 'O')
       $this->_calTypeName = 'journal';
     return $this->_calTypeName;
   }
@@ -524,7 +580,8 @@ class Event {
    *
    * @access public
    */
-  function getLocation() {
+  function getLocation()
+  {
     return $this->_location;
   }
   /**
@@ -534,17 +591,19 @@ class Event {
    *
    * @access public
    */
-  function getUrl() {
+  function getUrl()
+  {
     return $this->_url;
   }
   /**
    * Gets the event's due date and time
    *
-   * @return int The event's due date time
+   * @return string The event's due date time
    *
    * @access public
    */
-  function getDue() {
+  function getDue()
+  {
     return $this->_due;
   }
   /**
@@ -554,200 +613,214 @@ class Event {
    *
    * @access public
    */
-  function getPercent() {
+  function getPercent()
+  {
     return $this->_percent;
   }
 
- /**
+  /**
    * Gets the event's end date
    *
    * @return string The event's end date YYYYMM Format
    *
    * @access public
    */
-  function getEndDate() {
-    $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 );
-    $day = substr ( $this->_date, 6, 2 );
-    if ( $this->_time > 0 ) {
-      $h = (int) ( $this->_time / 10000 );
-      $m = ( $this->_time / 100 ) % 100;
+  function getEndDate()
+  {
+    $year = substr($this->_date, 0, 4);
+    $month = substr($this->_date, 4, 2);
+    $day = substr($this->_date, 6, 2);
+    if ($this->_time > 0) {
+      $h = (int) ($this->_time / 10000);
+      $m = ($this->_time / 100) % 100;
     } else {
       $h = $m = 0;
     }
-    $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
-    $this->_endDate = gmdate ( "Ymd", gmmktime ( $h, $m + $dur, 0, $month, $day, $year ) );
+    $dur = ($this->_duration > 0 ? $this->_duration : 0);
+    $this->_endDate = gmdate("Ymd", gmmktime($h, $m + $dur, 0, $month, $day, $year));
     return $this->_endDate;
   }
 
-   /**
+  /**
    * Gets the event's end time
    *
    * @return string The event's end time HHMMSS Format
    *
    * @access public
    */
-  function getEndTime() {
-    $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 );
-    $day = substr ( $this->_date, 6, 2 );
-    if ( $this->_time > 0 ) {
-      $h = (int) ( $this->_time / 10000 );
-      $m = ( $this->_time / 100 ) % 100;
+  function getEndTime()
+  {
+    $year = substr($this->_date, 0, 4);
+    $month = substr($this->_date, 4, 2);
+    $day = substr($this->_date, 6, 2);
+    if ($this->_time > 0) {
+      $h = (int) ($this->_time / 10000);
+      $m = ($this->_time / 100) % 100;
     } else {
       $h = $m = 0;
     }
-    $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
-    $this->_endTime = gmdate ( "His", gmmktime ( $h, $m + $dur, 0, $month, $day, $year ) );
+    $dur = ($this->_duration > 0 ? $this->_duration : 0);
+    $this->_endTime = gmdate("His", gmmktime($h, $m + $dur, 0, $month, $day, $year));
     return $this->_endTime;
   }
 
- /**
+  /**
    * Gets the event's end datetime
    *
    * @return string The event's end datetime YYYYMMSSHHMMSS Format
    *
    * @access public
    */
-  function getEndDateTime() {
-    $this->_endDateTime = gmdate ( 'YmdHis', $this->getEndDateTimeTS() );
+  function getEndDateTime()
+  {
+    $this->_endDateTime = gmdate('YmdHis', $this->getEndDateTimeTS());
     return $this->_endDateTime;
   }
 
- /**
+  /**
    * Gets the event's end datetime as UNIX timestamp
    *
    * @return string The event's end datetime UNIX timestamp Format
    *
    * @access public
    */
-  function getEndDateTimeTS() {
-    $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 );
-    $day = substr ( $this->_date, 6, 2 );
-    if ( $this->_time > 0 ) {
-      $h = (int) ( $this->_time / 10000 );
-      $m = ( $this->_time / 100 ) % 100;
+  function getEndDateTimeTS()
+  {
+    $year = substr($this->_date, 0, 4);
+    $month = substr($this->_date, 4, 2);
+    $day = substr($this->_date, 6, 2);
+    if ($this->_time > 0) {
+      $h = (int) ($this->_time / 10000);
+      $m = ($this->_time / 100) % 100;
     } else {
       $h = $m = 0;
     }
-    $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
-    $this->_endDateTime = gmmktime ( $h, $m + $dur, 0, $month, $day, $year );
+    $dur = ($this->_duration > 0 ? $this->_duration : 0);
+    $this->_endDateTime = gmmktime($h, $m + $dur, 0, $month, $day, $year);
     return $this->_endDateTime;
   }
 
- /**
+  /**
    * Determine if event is All Day
    *
    * @return bool True if event is All Day
    *
    * @access public
    */
-  function isAllDay() {
-   $this->_allDay = ( $this->_time == 0 && $this->_duration == 1440? true : false);
+  function isAllDay()
+  {
+    $this->_allDay = ((int)$this->_time === 0 && $this->_duration === 1440);
     return $this->_allDay;
   }
 
- /**
+  /**
    * Determine if event is Timed
    *
    * @return bool True if event is Timed
    *
    * @access public
    */
-  function isTimed() {
-   $this->_timed = ( $this->_time > 0 || ( $this->_time == 0
-     && $this->_duration != 1440 )? true : false);
+  function isTimed()
+  {
+    $this->_timed = ((int)$this->_time > 0 || ((int)$this->_time === 0 && (int)$this->_duration !== 1440));
     return $this->_timed;
   }
 
- /**
+  /**
    * Determine if event is Untimed
    *
    * @return bool True if event is Untimed
    *
    * @access public
    */
-  function isUntimed() {
-   $this->_untimed = ( $this->_time == -1 && $this->_duration == 0? true : false);
+  function isUntimed()
+  {
+    $this->_untimed = ((int)$this->_time === -1 && (int)$this->_duration === 0);
     return $this->_untimed;
   }
 
- /**
+  /**
    * Set cal_duration
    *
    *
    * @access public
    */
-  function setDuration ( $duration ) {
+  function setDuration($duration)
+  {
     $this->_duration = $duration;
   }
 
- /**
+  /**
    * Set cal_time
    *
    *
    * @access public
    */
-  function setTime ( $time ) {
+  function setTime($time)
+  {
     $this->_time = $time;
   }
 
- /**
+  /**
    * Set cal_date
    *
    *
    * @access public
    */
-  function setDate ( $date ) {
+  function setDate($date)
+  {
     $this->_date = $date;
   }
 
- /**
+  /**
    * Set _localDate
    *
    *
    * @access public
    */
-  function setLocalDate ( $localDate ) {
+  function setLocalDate($localDate)
+  {
     $this->_localDate = $localDate;
   }
 
- /**
+  /**
    * Set _localTime (in HHMM format)
    *
    *
    * @access public
    */
-  function setLocalTime ( $localTime ) {
+  function setLocalTime($localTime)
+  {
     $this->_localTime = $localTime;
   }
- /**
+  /**
    * Set cal_name
    *
    *
    * @access public
    */
-  function setName ( $name ) {
+  function setName($name)
+  {
     $this->_name = $name;
   }
- /**
+  /**
    * Get clone
    *
    *
    * @access public
    */
-  function getClone() {
+  function getClone()
+  {
     return $this->_clone;
   }
- /**
+  /**
    * Set clone
    *
    *
    * @access public
    */
-  function setClone ( $date ) {
+  function setClone($date)
+  {
     $this->_clone = $date;
   }
 }
-?>

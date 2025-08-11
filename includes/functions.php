@@ -249,7 +249,7 @@ function build_entry_label ( $event, $popupid,
  * @param string $time        Input time in HHMMSS format
  * @param bool   $round_down  Should we change 1100 to 1059?
  *                            (This will make sure a 10AM-100AM appointment just
- *                            shows up in the 10AM slow and not in the 11AM slot
+ *                            shows up in the 10AM slot and not in the 11AM slot
  *                            also.)
  *
  * @return int  The time slot index.
@@ -1633,7 +1633,7 @@ function display_unapproved_events ( $user ) {
     if ( $row && $row[0] > 0 )
       $ret .= ( $MENU_ENABLED == 'N'
         ? '<a class="nav" href="list_unapproved.php'
-         . ( $user != $login ? '?user=' . $user . '"' : '' )
+         . ( $user != $login ? '?user=' . $user : '' )
          . '">' . str_replace ( 'XXX', $row[0],
           translate ( 'You have XXX unapproved entries' ) ) . "</a><br>\n"
         : // Return something that won't display in bottom menu
@@ -2471,7 +2471,7 @@ function get_categories_by_id ( $id, $user, $asterisk = false ) {
 
   $res = dbi_execute ( 'SELECT wc.cat_name, wc.cat_id, wec.cat_owner
     FROM webcal_categories wc, webcal_entry_categories wec WHERE wec.cal_id = ?
-    AND wec.cat_id = wc.cat_id AND ( wc.cat_owner = ? OR wc.cat_owner = \'\' )
+    AND wec.cat_id = wc.cat_id AND ( wc.cat_owner = ? OR (wc.cat_owner = \'\' OR wc.cat_owner IS NULL) )
   ORDER BY wec.cat_order', [$id, ( empty ( $user ) ? $login : $user )] );
   while ( $row = dbi_fetch_row ( $res ) ) {
     $categories[ ( empty ( $row[2] ) ? - $row[1] : $row[1] ) ] = $row[0]
@@ -4117,7 +4117,7 @@ function load_nonuser_preferences ( $nonuser ) {
 }
 
 /**
- * Returns a custom header, stylesheet or tailer.
+ * Returns a custom header, stylesheet or trailer.
  *
  * The data will be loaded from the webcal_user_template table.
  * If the global variable $ALLOW_EXTERNAL_HEADER is set to 'Y',
@@ -4207,10 +4207,11 @@ function load_user_categories ( $ex_global = '' ) {
     $query_params = [];
     $query_params[] = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
       ( $is_assistant || $is_admin ) ? $user : $login );
-    $rows = dbi_get_cached_rows ( 'SELECT cat_id, cat_name, cat_owner, cat_color, cat_icon_mime
+    $sql = 'SELECT cat_id, cat_name, cat_owner, cat_color, cat_icon_mime
       FROM webcal_categories WHERE ( cat_owner = ? ) ' . ( $ex_global == ''
-        ? 'OR ( cat_owner = \'\' ) ORDER BY cat_owner,' : 'ORDER BY' )
-       . ' cat_name', $query_params );
+        ? 'OR ( cat_owner = \'\' OR cat_owner IS NULL ) ORDER BY cat_owner,' : 'ORDER BY' )
+       . ' cat_name';
+    $rows = dbi_get_cached_rows ($sql, $query_params);
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
@@ -4632,7 +4633,7 @@ function print_color_input_html ($varname, $title, $varval = '', $id='', $tag='d
   }
 
   return '<' . $tag . ' class="form-inline">' .
-  (empty($title) ? '' : ('<label class="' . $class . '" for="' . $prefix . $varname . '">' . $title . '</label>')) .
+  (empty($title) ? '' : ('<label class="' . $class . '" for="' . $prefix . $id . '">' . $title . '</label>')) .
     '<input class="form-control" style="height: 2em; width: 4em;" name="' . $prefix . $varname . '" id="' . $prefix . $id .
     '" type="color" value="' . $setting . '"' . (empty($onchange) ? '' : ' onchange="' . $onchange . '()"') .
     '></' . $tag . '>';
@@ -4801,7 +4802,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
     <table class="main glance">'
    . ( empty ( $hour_arr[9999] ) ? '' : '
       <tr>
-        <th class="empty">&nbsp;</th>
+        <th class="day_glance_time">&nbsp;XXX</th>
         <td class="hasevents">' . $hour_arr[9999] . '</td>
       </tr>' );
 
@@ -6078,8 +6079,7 @@ function weekday_name ( $w, $format = 'l' ) {
  */
 function boss_must_approve_event ( $assistant, $boss ) {
   if ( user_is_assistant ( $assistant, $boss ) )
-    return ( get_pref_setting ( $boss, 'APPROVE_ASSISTANT_EVENT' ) == 'Y'
-      ? true : false );
+    return ( get_pref_setting ( $boss, 'APPROVE_ASSISTANT_EVENT' ) === 'Y' );
 
   return true;
 }
@@ -6095,8 +6095,7 @@ function boss_must_approve_event ( $assistant, $boss ) {
  */
 function boss_must_be_notified ( $assistant, $boss ) {
   if ( user_is_assistant ( $assistant, $boss ) )
-    return ( get_pref_setting ( $boss, 'EMAIL_ASSISTANT_EVENTS' ) == 'Y'
-      ? true : false );
+    return ( get_pref_setting ( $boss, 'EMAIL_ASSISTANT_EVENTS' ) === 'Y' );
 
   return true;
 }

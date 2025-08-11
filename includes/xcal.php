@@ -299,7 +299,8 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
       $utc_end = export_ts_utc_date ( $eventend );
       $ret .= "DTEND:$utc_end\r\n";
   } else {
-    $ret .= "DURATION:P$str_duration\r\n";
+    // Should not happen since $texport should be either 'ical' or 'vcal'.
+    $ret .= "DURATION:P$duration\r\n";
   }
 
   return $ret;
@@ -2208,7 +2209,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
         $event[$substate] = $match[1];
       } elseif ( preg_match ( '/^EXDATE.*:(.+)$/i', $buff, $match ) ) {
         $substate = 'exdate';
-        // allows multiple ocurrances of EXDATE to be processed
+        // allows multiple occurrences of EXDATE to be processed
         if ( isset ( $event[$substate] ) )
           $event[$substate] .= ',' . $match[1];
          else
@@ -2216,7 +2217,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
 
       } elseif ( preg_match ( '/^RDATE.*:(.+)$/i', $buff, $match ) ) {
         $substate = 'rdate';
-        // allows multiple ocurrances of RDATE to be processed
+        // allows multiple occurrences of RDATE to be processed
         if ( isset ( $event[$substate] ) )
           $event[$substate] .= ',' . $match[1];
          else
@@ -2224,7 +2225,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
 
       } elseif ( preg_match ( '/^CATEGORIES.*:(.+)$/i', $buff, $match ) ) {
         $substate = 'categories';
-        // allows multiple ocurrances of CATEGORIES to be processed
+        // allows multiple occurrences of CATEGORIES to be processed
         if ( isset ( $event[$substate] ) )
           $event[$substate] .= ',' . $match[1];
          else
@@ -2429,7 +2430,7 @@ function parse_hcal ( $hcal_array ) {
         $event[$substate] = $value;
       } elseif ( $key == 'EXDATE' ) {
         $substate = 'exdate';
-        // allows multiple ocurrances of EXDATE to be processed
+        // allows multiple occurrences of EXDATE to be processed
         if ( isset ( $event[$substate] ) )
           $event[$substate] .= ',' . $value;
          else
@@ -2437,7 +2438,7 @@ function parse_hcal ( $hcal_array ) {
 
       } elseif ( $key == 'RDATE' ) {
         $substate = 'rdate';
-        // allows multiple ocurrances of RDATE to be processed
+        // allows multiple occurrences of RDATE to be processed
         if ( isset ( $event[$substate] ) )
           $event[$substate] .= ',' . $value;
          else
@@ -2445,7 +2446,7 @@ function parse_hcal ( $hcal_array ) {
 
       } elseif ( $key == 'CATEGORIES' ) {
         $substate = 'categories';
-        // allows multiple ocurrances of CATEGORIES to be processed
+        // allows multiple occurrences of CATEGORIES to be processed
         if ( isset ( $event[$substate] ) )
           $event[$substate] .= ',' . $value;
          else

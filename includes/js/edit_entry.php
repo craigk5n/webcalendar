@@ -4,7 +4,7 @@ global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
 
 load_user_categories();
 ?>
-var bydayAr = bymonthdayAr = bysetposAr = [];
+var bydayAr = [], bymonthdayAr = [], bysetposAr = [];
 
 var byday_labels = ['SU','MO','TU','WE','TH','FR','SA'];
 var byday_names = [
