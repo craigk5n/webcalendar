@@ -76,13 +76,13 @@ print_header ( [], '', 'onload="load_groups();"' );
             <div class="modal-body">
                 <!-- Error Alert -->
                 <div id="edit-group-dialog-alert" class="alert alert-danger" style="display: none">
-                    <strong><?php etranslate("Error"); ?>!</strong>&nbsp;<span id="errorMessage">A problem has been occurred while submitting your data.</span>
+                    <strong><?php etranslate("Error"); ?>!</strong>&nbsp;<span id="errorMessage">A problem has occurred while submitting your data.</span>
                     <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
                 </div>
                 <form name="editGroupForm" id="editGroupForm">
                     <input type="hidden" name="editGroupAdd" id="editGroupAdd" value="0">
                     <input type="hidden" name="editGroupId" id="editGroupId" value="0">
-                    <div class="form-inline" is="divEditName">
+                    <div class="form-inline" id="divEditName">
                         <label class="col-5" for="editName"><?php etranslate('Group name') ?>: </label>
                         <input required type="text" class="col-7 form-control" id="editName" name="editName" placeholder="<?php echo translate('New group name') . ' (' . translate('required') . ')'; ?>">
                         <div id="invalid-name-error" class="invalid-feedback text-right">

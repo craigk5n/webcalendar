@@ -547,6 +547,12 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
           $times_sent = 0;
       }
       $new_offset = date_to_epoch ( $new_date ) - ( $start - ( $start % 86400 ) );
+      // Adjust for DST transition between original and new dates
+      $dst_start = date("I", $start);
+      $dst_new = date("I", date_to_epoch($new_date));
+      if ($dst_start != $dst_new) {
+        $new_offset += ($dst_new - $dst_start) * 3600;
+      }
       $start += $new_offset;
       $end += $new_offset;
     }

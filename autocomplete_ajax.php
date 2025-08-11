@@ -49,13 +49,10 @@ $query = getValue('q');
 if (empty($query))
   $query = getValue('query');
 
-$sendPlainText = false;
 $format = getValue('format');
-if (
-  !empty($format) &&
-  ($format == 'text' || $format == 'plain')
-);
-$sendPlainText = true;
+$sendPlainText = (! empty ( $format ) &&
+  ( $format === 'text' || $format === 'plain' ) );
+
 if ($sendPlainText) {
   Header('Content-Type: text/plain');
 } else {
