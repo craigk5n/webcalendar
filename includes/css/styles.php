@@ -18,7 +18,7 @@
  * while its declaration is 'color: red;'.
  * Each declaration has two parts: 'property' & 'value'.
  *
- * In the example above, there is only one declaraion ("color: red;").
+ * In the example above, there is only one declaration ("color: red;").
  * For that declaration, the PROPERTY is "color" and the VALUE is "red".
  *
  * NOTE: Each property must be followed by a colon (:),
