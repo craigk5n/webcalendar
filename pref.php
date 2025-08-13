@@ -328,7 +328,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
    echo print_timezone_select_html ( 'pref_', $prefarray['TIMEZONE']);
   ?>
 </td></tr>
-<tr><td height="0.5 em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
+<tr><td height="0.5em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
 
  <?php } //end $can_set_timezone ?>
 
@@ -383,7 +383,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
   date_to_str( $dateYmd, $DATE_FORMAT_TASK, false, false );?>
 </td></tr>
 
-<tr><td height="0.5 em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
+<tr><td height="0.5em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
 
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("preferred-event-visibility");?>"><label for="pref_DEFAULT_VISIBILITY"><?php
 etranslate ('Default Visibility')?>:</label></td><td>
@@ -772,7 +772,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
     echo htmlspecialchars ( getServerUrl() ) .
       'publish.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
-  <tr><td height="0.5 em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
+  <tr><td height="0.5em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
 
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("allow-remote-publishing-help");?>">
   <label for="pref_USER_PUBLISH_RW_ENABLED"><?php etranslate ( 'Allow remote publishing' )?>:</label></td>
@@ -786,7 +786,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
     echo htmlspecialchars ( getServerUrl() ) .
       'icalclient.php';
   ?></td></tr>
-  <tr><td height="0.5 em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
+  <tr><td height="0.5em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
 <?php
 
 } /* $PUBLISH_ENABLED */
@@ -804,7 +804,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
     echo htmlspecialchars ( getServerUrl() ) .
       'rss.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
-  <tr><td height="0.5 em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
+  <tr><td height="0.5em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
 <?php
 } /* $RSS_ENABLED */ ?>
 
@@ -823,7 +823,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
     echo htmlspecialchars ( getServerUrl() ) .
       'freebusy.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
-  <tr><td height="0.5 em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
+  <tr><td height="0.5em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
 </table>
 </div></div>
 <!-- END SUBSCRIBE -->
