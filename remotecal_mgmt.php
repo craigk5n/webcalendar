@@ -123,7 +123,7 @@ if (!ini_get('allow_url_fopen')) { ?>
                         </div>
                     </div>
                     <div class="form-inline mt-1" id="div-Name">
-                        <label class="col-5 for=" editName"><?php etranslate('Name') ?>: </label>
+                        <label class="col-5" for="editName"><?php etranslate('Name') ?>: </label>
                         <input required type="text" class="col-7 form-control" id="editName" name="editName">
                         <div id="invalid-name-error" class="invalid-feedback text-right">
                             <?php echo $noNameError; ?>
@@ -131,12 +131,12 @@ if (!ini_get('allow_url_fopen')) { ?>
                     </div>
                     <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
                         <div class="form-inline mt-1" id="div-editPublic">
-                            <label class="col-5 for=" editPublic" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Enabling allows this remote calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?>: </label>
+                            <label class="col-5" for="editPublic" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Enabling allows this remote calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?>: </label>
                             <?php echo print_radio('editPublic'); ?>
                         </div>
                     <?php } ?>
                     <div class="form-inline mt-1" id="div-editURL">
-                        <label class="col-5 for=" editURL" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('URL for the ICS file used to import events for this remote calendar') ?>"><?php etranslate('URL') ?>: </label>
+                        <label class="col-5" for="editURL" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('URL for the ICS file used to import events for this remote calendar') ?>"><?php etranslate('URL') ?>: </label>
                         <input required type="email" class="col-7 form-control" id="editURL" name="editURL">
                         <div id="invalid-url-error" class="invalid-feedback text-right">
                             <?php echo $noUrlError; ?>
