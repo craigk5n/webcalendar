@@ -193,19 +193,13 @@ if( $is_admin ) {
    . ( $guser == '__default__' ? $selected : '' )
    . '>' . $defConfigStr . '</option>';
 
-  foreach ( $userlist as $i ) {
+  foreach ( array_merge ( $userlist, $nonuserlist ) as $i ) {
     echo '
-        <option value="' . $i['cal_login'] .
-      ( $guser === $i['cal_login'] ? '" selected>' : '">' ) .
-      $i['cal_fullname'] . '</option>';
-  }
-
-  foreach ( $nonuserlist as $i ) {
-    echo '
-        <option value="' . $i['cal_login'] .
-      ( $guser === $i['cal_login'] ? '" selected>' : '">' ) .
-      $i['cal_fullname'] . ' ' .
-      ( $i['cal_is_public'] === 'Y' ? '*' : '' ) . '</option>';
+        <option value="' . $i['cal_login'] . '"' .
+      ( $guser == $i['cal_login'] ? ' selected>' : '>' ) .
+      $i['cal_fullname'] .
+      ( in_array ( $i, $nonuserlist ) && $i['cal_is_public'] === 'Y' ? ' *' : '' ) .
+      '</option>';
   }
 
   echo $goStr;
