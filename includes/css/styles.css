@@ -196,7 +196,7 @@ td.weekcell {
 img {
   max-inline-size: 100%;
   block-size: auto;
-  
+
   /* These 2 presume pre-load a low-res image in an inline style="" on each img. */
   /* We probably don't need them. Yet. */
   /*
@@ -204,7 +204,7 @@ img {
   background-size: cover;
   */
 
-  shape-margin: 1rem;  
+  shape-margin: 1rem;
   border: 0;
   vertical-align: middle;
 }
@@ -619,7 +619,7 @@ tr.highlight td {
   padding:0;
 }
 
-#pref form-group {
+#pref .form-group {
   text-align: left;
 }
 /* Settings/Preferences month preview for color.
