@@ -63,7 +63,7 @@ if ($debugInstaller && isset($_GET['action']) && $_GET['action'] == 'logout') {
 }
 
 do_config(true);
-ini_set('session.cookie_lifetime', 3600);  // 3600 seconds = 1 hour
+ini_set('session.cookie_lifetime', 3600); // 3600 seconds = 1 hour
 session_name($sessionName);
 session_start();
 if (empty($_SESSION['initialized'])) {
@@ -72,8 +72,8 @@ if (empty($_SESSION['initialized'])) {
     setSettingsInSession();
     $_SESSION['initialized'] = 1;
 }
-$validUser = (isset($_SESSION['validUser']) && !empty($_SESSION['validUser'])) ? true : false;
-$phpSettingsAcked = (isset($_SESSION['phpSettingsAcked']) && !empty($_SESSION['phpSettingsAcked'])) ? true : false;
+$validUser = (isset($_SESSION['validUser']) && !empty($_SESSION['validUser']));
+$phpSettingsAcked = (isset($_SESSION['phpSettingsAcked']) && !empty($_SESSION['phpSettingsAcked']));
 
 function tryDbConnect()
 {
@@ -250,7 +250,7 @@ function redirectToFurthestAvailableAction()
 // Note: That button is not available when using env vars since those settings must be
 // changed outside of the WebCalendar file system.
 
-$usingEnv = getenv('WEBCALENDAR_USE_ENV') ? true : false;
+$usingEnv = getenv('WEBCALENDAR_USE_ENV');
 $versionTooltip = str_replace('XXX', '8.0', 'Only PHP XXX or later is supported by WebCalendar');
 $php_settings = [
     // Description, required setting/value, found value, is-correct, tooltip explanation
@@ -492,10 +492,10 @@ if ($debugInstaller) {
                     for ($i = 0; $i < count($steps); $i++) {
                         $astep = $steps[$i];
                         echo '<li><img src="../images/bootstrap-icons/' .
-                            ($astep['complete'] 
+                            ($astep['complete']
                                 ? 'check-circle.svg" alt="X">'
                                 : 'circle.svg" alt="-">');
-                        
+
                         if ($astep['step'] == $action) {
                             $step = $astep;
                             echo '<strong>';

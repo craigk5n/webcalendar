@@ -1076,7 +1076,7 @@ $tabI = 0;
       <div class="tab-pane container fade" id="' . $tabs_name[$tabI++] . '">
       <table cellpadding="3">
         <tr>
-          <td class="align-top">
+          <td class="aligntop">
           <label for="rpttype" data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-type-help') . '">'
           . translate('Type') . ':</label></td>
           <td colspan="2">
@@ -1253,7 +1253,7 @@ $tabI = 0;
           <td colspan="4"></td>
         </tr>
         <tr id="rptbymonth" style="visibility:hidden;">
-          <td class="align-top">
+          <td class="aligntop">
           <label for="entry_freq" data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-month-help') . '">'
           . translate('ByMonth') . '</label>:&nbsp;</td>
           <td colspan="2" class="boxall">'
@@ -1398,7 +1398,7 @@ $tabI = 0;
           . 'size="50" maxlength="100" value="' . $byyearday . '"></td>
       </tr>
       <tr id="rptexceptions" style="visibility:visible;">
-        <td><label class="align-top" data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-exceptions-help') . '">'
+        <td><label class="aligntop" data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-exceptions-help') . '">'
           . translate('Exclusions') . '/<br>'
           . translate('Inclusions') . ':</label></td>
         <td colspan="2" class="boxtop boxright boxbottom boxleft">
