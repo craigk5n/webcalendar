@@ -89,7 +89,7 @@ echo '
     <table>
       <tr>
         <td style="background: ' . $TABLEBG . ';">
-          <table cellspacing="1" cellpadding="2">
+          <table style="border-collapse: separate; border-spacing: 1px; padding: 2px;">
             <tr>' . $tmpOut1 . '
             </tr>
             <tr>' . $tmpOut2 . '

@@ -562,8 +562,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $cols = ( ( $hours * $interval ) + 1 );
   $ret = <<<EOT
     <br>
-    <table class="aligncenter matrixd" style="width:'80%';"
-     >
+    <table class="aligncenter matrixd" style="inline-size: 80%;">
       <tr>
         <td class="matrix" colspan="{$cols}"></td>
       </tr>
@@ -1431,7 +1430,7 @@ function display_small_tasks ( $cat_id ) {
       </tr>
       <tr class="header">
         <td rowspan="2" class="sorterbottom">!&nbsp;</td>' . $ajax[0] . '
-        <td rowspan="2" width="20%" class="sorterbottom">'
+        <td class="sorterbottom" rowspan="2" style="inline-size: 20%">'
    . translate ( 'Task_Title' )
    . '&nbsp;</td>' . $ajax[1] . '
         <td rowspan="2" class="sorterbottom">' . translate ( 'Due' )
@@ -1462,7 +1461,7 @@ function display_small_tasks ( $cat_id ) {
      . rgb_luminance( $GLOBALS['BGCOLOR'], $E->getPriority() ) . '">
         <td colspan="2">' . $link . ' title="' . $priorityStr . '">'
      . $E->getPriority() . '</a></td>
-        <td class="name" colspan="2" width="50%">&nbsp;' . $link . ' title="'
+        <td class="name" colspan="2" style="inline-size: 50%">&nbsp;' . $link . ' title="'
      . translate( 'Task Name' ) . ': ' . $E->getName() . '">'
      . substr( $E->getName(), 0, 15 )
      . ( strlen( $E->getName() ) > 15 ? '...' : '' ) . '</a></td>
@@ -1847,7 +1846,7 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
   $ret = "<$size>"
    . ( $sys ? translate ( 'System Log' ) : translate ( 'Activity Log' ) )
    . ( $sys ? '' : ' &nbsp;<a href="rss_activity_log.php">'
-   . '<img src="images/bootstrap-icons/rss-fill.svg" width="14" height="14" alt="RSS 2.0 - '
+   . '<img src="images/bootstrap-icons/rss-fill.svg" style="inline-size: 14px; block-size: 14px;" alt="RSS 2.0 - '
    . translate( 'Activity Log' ) . '"></a>' )
    . "</$size>" . display_admin_link(false) . '
     <table class="table table-striped mt-2 table-responsive">
@@ -1905,7 +1904,7 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
           // Added TZ conversion
           ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y' ? 3 : 2 ) )
          . '</td>
-        <td>' . ( ! $sys && ! $id ? '<a' 
+        <td>' . ( ! $sys && ! $id ? '<a'
            . ' href="view_entry.php?id=' . $l_eid . '">'
            . htmlspecialchars ( $l_ename ) . '</a></td>
         <td>' : '' ) . display_activity_log ( $l_type, $l_text ) . '</td>
@@ -4859,7 +4858,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
 function get_category_icon_url($cat_id) {
   global $categories;
 
-  if ($cat_id > 0 &&  !empty($categories[$cat_id]['cat_icon_mime'])) {
+  if ($cat_id > 0 && !empty($categories[$cat_id]['cat_icon_mime'])) {
     return 'getIcon.php?cat_id=' . $cat_id;
   }
   return '';
@@ -4952,7 +4951,7 @@ function print_entry ( $event, $date ) {
 
   if ( empty ( $catIcon ) )
     $ret .= 'images/' . $icon . '" class="bullet" alt="' . $view_text
-     . '" width="5" height="7">';
+     . '" style="inline-size: 5px; block-size: 7px;">';
   else {
     // Use category icon.
     $catAlt = ( empty ( $categories[$catNum] )
@@ -6431,7 +6430,7 @@ function print_error_box ( $msg )
 {
   echo '<div class="warningBox">' .
     '<table><tr><td class="alignmiddle">' .
-    '<img src="images/bootstrap-icons/exclamation-triangle-fill.svg" width="40" height="40" class="alignmiddle" alt="' .
+    '<img src="images/bootstrap-icons/exclamation-triangle-fill.svg" class="alignmiddle" style="inline-size: 40px; block-size: 40px;" alt="' .
     translate ( 'Error' ) . '"></td><td class="alignmiddle">' .
     translate('The permissions for the icons directory are set to read-only') .
     "</td></tr></table></div>\n";

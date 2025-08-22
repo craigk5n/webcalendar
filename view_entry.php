@@ -664,7 +664,7 @@ db_error() . '<br>';
 }
 if ( $eType == 'task' ) {
 echo '
-  <table border="1" width="80%" cellpadding="1">
+  <table style="inline-size: 80% border: 1px; padding: 1px;">
     <th class="aligncenter">' . translate ( 'Participants' ) . '</th>
     <th class="aligncenter" colspan="2">'
 . translate ( 'Percentage Complete' ) . '</th>';
@@ -683,7 +683,7 @@ $others_complete = 'no';
 
 echo '
     <tr>
-      <td width="30%">';
+      <td style="inline-size: 30%">';
 if ( strlen ( $tempemail ) && $can_email != 'N' ) {
 echo '<a href="mailto:' . $tempemail . '?subject=' . $subject
  . '">&nbsp;' . $tempfullname . '</a>';
@@ -692,12 +692,10 @@ $allmails[] = $tempemail;
 echo '&nbsp;' . $tempfullname;
 
 echo '</td>
-      <td width="5%" class="aligncenter">' . $percentage . '%</td>
-      <td width="65%">
-	<img src="images/pix.gif" width="' . $percentage
-. '%" height="10">
-	<img src="images/spacer.gif" width="' . $spacer
-. '" height="10">
+      <td class="aligncenter" style="inline-size: 5%">' . $percentage . '%</td>
+      <td style="inline-size: 65%">
+	<img src="images/pix.gif" style="inline-size: ' . $percentage . '%; block-size: 10px;">
+	<img src="images/spacer.gif" style="inline-size: ' . $spacer . 'px; block-size: 10px;">
       </td>
     </tr>';
 }
@@ -793,7 +791,7 @@ echo '<div class="col-9"><select name="upercent" id="task_percent">';
 for ( $i = 0; $i <= 100; $i += 10 ) {
 echo '
       <option value="' . "$i\" " . ( $login_percentage == $i
-? ' selected':'' ) . ' >' . $i . '</option>';
+? ' selected':'' ) . '>' . $i . '</option>';
 }
 echo '
     </select>&nbsp;
@@ -962,7 +960,7 @@ if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve )
   if ( $event_status != 'A' ) {
     $approveStr = translate( 'Approve/Confirm entry' );
     echo '
-        <li><a' 
+        <li><a'
      . ' class="nav" href="approve_entry.php?id=' . $id . $u_url
      . '&amp;type=E" onclick="return confirm( \''
      . translate( 'Approve this entry?', true ) . '\' );">'

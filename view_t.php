@@ -235,7 +235,7 @@ function print_header_timebar() {
             <tr class="yardstick">';
   for ( $i = 0; $i < ( $totalSlots ); $i++ ) {
     $ret .= '
-              <td width="' . $yardWidth . '%">&nbsp;</td>';
+              <td style="inline-size: ' . $yardWidth . '%">&nbsp;</td>';
   }
   // We'll close the table later.
   return $ret . '

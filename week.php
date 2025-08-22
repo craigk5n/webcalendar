@@ -247,7 +247,7 @@ print_header (
   generate_refresh_meta() );
 
 echo <<<EOT
-    <table cellpadding="1">
+    <table style="padding: 1px;">
       <tr>
         <td id="printarea" style="vertical-align:top; width:{$tableWidth};">
         {$navStr}

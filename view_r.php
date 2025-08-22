@@ -220,7 +220,7 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
   $events = read_events( $viewusers[$i], $wkstart - 604800, $wkend );
   $e_save[$i] = $events;
   user_load_variables ( $viewusers[$i], 'temp' );
-  $uheader .= "<th class=\"small\" width=\"$uwf\" style=\"width:$uwf;\">" .
+  $uheader .= '<th class="small" style="inline-size: ' . $uwf . ';">' .
     $tempfullname . "</th>\n";
   //echo "$viewusers[$i]: loaded " . count ( $events ) . " events<br>\n";
 }
@@ -262,14 +262,14 @@ $help = ( $can_add ? 'title="' .
     translate ( 'Double-click on empty cell to add new entry' ) . '"' : '' );
 
 if ( ! $fit_to_window ) { ?>
-<table <?php echo $help;?> class="main" style="width:<?php
-  echo $table_width;?>px;" width="<?php echo $table_width;?>">
+<table <?php echo $help;?> class="main" style="inline-size: <?php
+  echo $table_width;?>px;">
 <?php } else { ?>
 <table <?php echo $help;?> class="main">
 <?php } ?>
 
 <!-- table header -->
-<tr><th class="empty" width="<?php echo $time_w;?>" style="width:<?php echo $time_w;?>;">&nbsp;</th>
+<tr><th class="empty" style="inline-size:<?php echo $time_w;?>;">&nbsp;</th>
 <?php
   // heading row that displays day of week and date
   if ( ! $fit_to_window )
@@ -292,7 +292,7 @@ if ( ! $fit_to_window ) { ?>
 ?>
 </tr>
 
-<tr><th class="empty" width="<?php echo $time_w;?>" style="width:<?php echo $time_w;?>;">&nbsp;</th>
+<tr><th class="empty" style="inline-size: <?php echo $time_w;?>;">&nbsp;</th>
 <?php
   for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
     echo $uheader;
@@ -448,7 +448,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 
 // untimed events first
 if ( $untimed_found || $show_untimed_row_always ) {
-  echo '<tr><th class="empty" width="' .$time_w. '" style="width:'
+  echo '<tr><th class="empty" style="inline-size: '
    . $time_w . ';">&nbsp;</th>' . "\n";
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $dateYmd = date ( 'Ymd', $days[$d] );
@@ -495,8 +495,8 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = ( int ) ( ( $i * $interval ) / 60 );
   $time_m = ( $i * $interval ) % 60;
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100, 1 );
-  echo "<tr>\n<th class=\"aligntop weekday\" width=\"$time_w" .
-    '">' . $time . "</th>\n";
+  echo "<tr>\n<th class=" . '"aligntop weekday" style="inline-size: ' .
+    $time_w . '">' . $time . "</th>\n";
 
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $dateYmd = date ( 'Ymd', $days[$d] );

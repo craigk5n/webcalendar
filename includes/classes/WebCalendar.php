@@ -209,7 +209,7 @@ class WebCalendar {
   <head>
     <title>' . generate_application_name() . ' ' . translate ( 'Error' ) . '</title>
   </head>
-  <body bgcolor="' . $user_BGCOLOR . '">
+  <body style="background-color: ' . $user_BGCOLOR . '">
     ' . print_not_auth ( true ) . '
   </body>
 </html>';

@@ -120,7 +120,7 @@ function list_unapproved ( $user ) {
         <td colspan="5"><h3>' . $temp_fullname . '&nbsp;' . $rssLink . '</h3></td>
       </tr>' : '' ) . '
       <tr ' . ( $count % 2 == 0 ? '' : 'class="odd"' ) . '>
-        <td width="5%" class="alignright"><input type="checkbox" name="'
+        <td class="alignright" style="inline-size: 5%"><input type="checkbox" name="'
        . $entryID . '" value="' . $user . '"></td>
         <td><a title="' . $viewStr . '" class="entry" id="' . $linkid
        . '" href="' . $view_link . '.php?id=' . $id . '&amp;user=' . $cal_user

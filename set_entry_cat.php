@@ -123,7 +123,7 @@ else {
       {$formKey}
       <input type="hidden" name="date" value="{$date}">
       <input type="hidden" name="id" value="{$id}">
-      <table cellpadding="5">
+      <table style="padding: 5px;">
         <tr class="aligntop">
           <td class="bold colon">{$briefStr}</td>
           <td>{$event_name}</td>

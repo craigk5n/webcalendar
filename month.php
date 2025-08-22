@@ -95,9 +95,9 @@ print_header(
   $HeadX, '', false, false, false, false );
 
 echo <<<EOT
-    <table cellpadding="1">
+    <table style="padding: 1px;">
       <tr>
-        <td id="printarea" class="aligntop" width="{$tableWidth}" rowspan="2">
+        <td class="aligntop" id="printarea" rowspan="2" style="inline-size: {$tableWidth}">
           {$prevMonth1}{$nextMonth1}
           {$navStr}
           {$monthStr}
