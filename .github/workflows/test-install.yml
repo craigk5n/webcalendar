@@ -74,6 +74,8 @@ jobs:
               echo 'Error: This is a CLI script and should not be invoked via the web server' . PHP_EOL;
               exit(1);
           }
+          // Start output buffering to prevent headers-sent warnings
+          ob_start();
           $required_files = [
               __DIR__ . '/../includes/translate.php',
               __DIR__ . '/../includes/dbi4php.php',
@@ -86,6 +88,7 @@ jobs:
           foreach ($required_files as $file) {
               if (!file_exists($file)) {
                   echo "Error: Missing required file: $file" . PHP_EOL;
+                  ob_end_flush();
                   exit(1);
               }
               include_once $file;
@@ -96,14 +99,18 @@ jobs:
           chdir(__WC_BASEDIR);
           if (!file_exists($file)) {
               echo "Error: settings.php not found at $file" . PHP_EOL;
+              ob_end_flush();
               exit(1);
           }
           echo "Starting session..." . PHP_EOL;
           session_name(getSessionName());
           session_start();
+          // Output included files after session start
           foreach ($required_files as $file) {
               echo "Included file: $file" . PHP_EOL;
           }
+          // Flush output buffer after session start
+          ob_end_flush();
           echo "Loading configuration..." . PHP_EOL;
           do_config(true);
           $db_database = $settings['db_database'] ?? '';
@@ -141,6 +148,7 @@ jobs:
               exit(1);
           }
           $emptyDatabase = $canConnectDb ? isEmptyDatabase() : true;
+          echo "Empty database check: $emptyDatabase, db_type: $db_type, install_file: " . ($_SESSION['install_file'] ?? 'not set') . PHP_EOL;
           if ($emptyDatabase && $db_type === 'sqlite3' && !empty($_SESSION['install_file'])) {
               $install_filename = $_SESSION['install_file'];
               echo "Executing SQLite3 installation: $install_filename" . PHP_EOL;
@@ -153,11 +161,22 @@ jobs:
                   echo "Starting table creation..." . PHP_EOL;
                   populate_sqlite_db($real_db, $c);
                   echo "SQLite database tables created successfully" . PHP_EOL;
+                  // Verify table creation
+                  $tables = dbi_query("SELECT name FROM sqlite_master WHERE type='table' AND name='webcal_user';");
+                  if ($tables && dbi_fetch_row($tables)) {
+                      echo "Verified: webcal_user table exists" . PHP_EOL;
+                  } else {
+                      echo "Error: webcal_user table not created" . PHP_EOL;
+                      exit(1);
+                  }
               } catch (Exception $e) {
                   echo "Error: Failed to populate SQLite database: " . $e->getMessage() . PHP_EOL;
                   echo "Last SQL error: " . dbi_error() . PHP_EOL;
                   exit(1);
               }
+          } else {
+              echo "Error: Table creation skipped. Reasons: emptyDatabase=$emptyDatabase, db_type=$db_type, install_file=" . ($_SESSION['install_file'] ?? 'not set') . PHP_EOL;
+              exit(1);
           }
           echo "Checking passwords..." . PHP_EOL;
           $res = dbi_execute(
@@ -238,6 +257,7 @@ jobs:
           }
           ?>
           EOF
+      
       - name: Create run_install.php
         run: |
           cat << 'EOF' > run_install.php
