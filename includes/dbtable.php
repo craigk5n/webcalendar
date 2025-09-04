@@ -45,7 +45,7 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
     <table>
       <tr>
         <td style="background-color:#000000;">
-          <table style="width:100%;" cellspacing="1" cellpadding="2">
+          <table style="inline-size: 100%; border-collapse: separate; border-spacing: 1px; padding: 2px;">
             <tr>
               <td style="width:100%; background-color:' . $CELLBG . ';">
                 <table style="border:0; width:100%;">';
@@ -174,7 +174,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
     <table>
       <tr>
         <td style="background-color:#000000;">
-          <table style="border:0; width:100%;" cellspacing="1" cellpadding="2">
+          <table style="inline-size: 100%; border: 0; border-collapse: separate; border-spacing: 1px; padding: 2px;">
             <tr>
               <td style="width:100%; background-color:' . $CELLBG . ';">
                 <table style="border:0; width:100%;">

@@ -27,7 +27,7 @@ if ( strlen ( $entryCatStr ) < 30 )
 print_header ( ['js/catsel.php/false/' . $form, 'js/catsel.js'],
   '', '', true, false, true );
 echo '
-    <table class="aligncenter" width="90%">
+    <table class="aligncenter" style="inline-size: 90%">
       <tr>
         <th colspan="3">' . translate ( 'Categories' ) . '</th>
       </tr>
