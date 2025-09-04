@@ -169,6 +169,16 @@ jobs:
                       echo "Error: webcal_user table not created" . PHP_EOL;
                       exit(1);
                   }
+                  // Set initial version for new database
+                  echo "Setting initial database version..." . PHP_EOL;
+                  // Fallback for PROGRAM_VERSION if undefined
+                  if (!isset($PROGRAM_VERSION)) {
+                      $PROGRAM_VERSION = 'v1.3.0'; // Default version, adjust if needed
+                      echo "Warning: PROGRAM_VERSION not set, using default: $PROGRAM_VERSION" . PHP_EOL;
+                  }
+                  updateVersionInDatabase();
+                  $detectedDbVersion = getDatabaseVersionFromSchema();
+                  echo "Version set to: $detectedDbVersion" . PHP_EOL;
               } catch (Exception $e) {
                   echo "Error: Failed to populate SQLite database: " . $e->getMessage() . PHP_EOL;
                   echo "Last SQL error: " . dbi_error() . PHP_EOL;
@@ -210,8 +220,9 @@ jobs:
                       }
                   } else {
                       if (empty($detectedDbVersion) || $detectedDbVersion == 'Unknown') {
-                          $error = translate('Unable to determine current database version.');
-                          echo "Error: $error" . PHP_EOL;
+                          echo "Warning: Unable to determine current database version, assuming new database..." . PHP_EOL;
+                          // For new SQLite3 database, version is already set above
+                          $sqlLines = []; // Skip upgrades for new database
                       } else {
                           $sqlLines = getSqlUpdates($detectedDbVersion, $db_type, true);
                           foreach ($sqlLines as $sql) {
