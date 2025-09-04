@@ -173,7 +173,7 @@ jobs:
                   echo "Setting initial database version..." . PHP_EOL;
                   // Fallback for PROGRAM_VERSION if undefined
                   if (!isset($PROGRAM_VERSION)) {
-                      $PROGRAM_VERSION = 'v1.3.0'; // Default version, adjust if needed
+                      $PROGRAM_VERSION = 'v1.9.12'; // Match latest version
                       echo "Warning: PROGRAM_VERSION not set, using default: $PROGRAM_VERSION" . PHP_EOL;
                   }
                   updateVersionInDatabase();
@@ -213,37 +213,34 @@ jobs:
           try {
               $success = true;
               if (empty($error)) {
-                  if ($emptyDatabase && $db_type !== 'sqlite3') {
-                      echo "Empty database -> creating all tables" . PHP_EOL;
-                      if (!empty($install_filename)) {
-                          executeSqlFromFile($install_filename);
-                      }
+                  if ($emptyDatabase && $db_type === 'sqlite3') {
+                      echo "New SQLite3 database, skipping upgrades..." . PHP_EOL;
+                      // Version already set, no upgrades needed
                   } else {
-                      if (empty($detectedDbVersion) || $detectedDbVersion == 'Unknown') {
-                          echo "Warning: Unable to determine current database version, assuming new database..." . PHP_EOL;
-                          // For new SQLite3 database, version is already set above
-                          $sqlLines = []; // Skip upgrades for new database
-                      } else {
-                          $sqlLines = getSqlUpdates($detectedDbVersion, $db_type, true);
-                          foreach ($sqlLines as $sql) {
-                              if (str_starts_with($sql, "function:")) {
-                                  list(, $functionName) = explode(':', $sql);
-                                  if (function_exists($functionName)) {
-                                      echo "Executing function: $functionName" . PHP_EOL;
-                                      $functionName();
-                                  } else {
-                                      $error = "Function $functionName does not exist.";
-                                      echo "Error: $error" . PHP_EOL;
-                                      $success = false;
-                                  }
+                      $sqlLines = getSqlUpdates($detectedDbVersion, $db_type, true);
+                      foreach ($sqlLines as $sql) {
+                          if (str_starts_with($sql, "function:")) {
+                              list(, $functionName) = explode(':', $sql);
+                              if (function_exists($functionName)) {
+                                  echo "Executing function: $functionName" . PHP_EOL;
+                                  $functionName();
                               } else {
-                                  echo "Executing SQL: $sql" . PHP_EOL;
-                                  $ret = dbi_execute($sql, [], false, true);
-                                  if (!$ret) {
-                                      $success = false;
-                                      $error = dbi_error();
-                                      echo "Error: SQL execution failed: $error" . PHP_EOL;
-                                  }
+                                  $error = "Function $functionName does not exist.";
+                                  echo "Error: $error" . PHP_EOL;
+                                  $success = false;
+                              }
+                          } else {
+                              // Skip MySQL-specific MODIFY COLUMN for SQLite
+                              if ($db_type === 'sqlite3' && preg_match('/ALTER TABLE.*MODIFY COLUMN/i', $sql)) {
+                                  echo "Skipping MySQL-specific SQL for SQLite: $sql" . PHP_EOL;
+                                  continue;
+                              }
+                              echo "Executing SQL: $sql" . PHP_EOL;
+                              $ret = dbi_execute($sql, [], false, true);
+                              if (!$ret) {
+                                  $success = false;
+                                  $error = dbi_error();
+                                  echo "Error: SQL execution failed: $error" . PHP_EOL;
                               }
                           }
                       }
