@@ -31,9 +31,10 @@ jobs:
           parameters:
               level: 1
               paths:
-                  - admin/
+                  - *.php
                   - includes/
                   - install/
+                  - tools/
               ignoreErrors:
                   - '#Undefined array key "QUERY_STRING"#'
           EOF
