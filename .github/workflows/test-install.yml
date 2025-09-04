@@ -35,7 +35,7 @@ jobs:
       - name: Configure WebCalendar for SQLite
         run: |
           sed -i 's|db_type:.*|db_type: sqlite3|' includes/settings.php
-          sed -i 's|db_database:.*|db_database: database/webcalendar.sqlite|' includes/settings.php
+          sed -i 's|db_database:.*|db_database: ../database/webcalendar.sqlite|' includes/settings.php
           sed -i 's|db_host:.*|db_host: localhost|' includes/settings.php
           sed -i 's|db_login:.*|db_login: ""|' includes/settings.php
           sed -i 's|db_password:.*|db_password: ""|' includes/settings.php
