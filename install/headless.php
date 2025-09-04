@@ -117,8 +117,10 @@ $emptyDatabase = $canConnectDb ? isEmptyDatabase() : true;
 debug_echo("Empty database check: $emptyDatabase, db_type: $db_type, install_file: " . ($_SESSION['install_file'] ?? 'not set'));
 
 if ($c && $emptyDatabase && $db_type === 'sqlite3') {
-    $install_filename = $_SESSION['install_file'] ?? 'sql/tables-sqlite3.php';
+    $install_filename = $_SESSION['install_file'] ?? 'install/sql/tables-sqlite3.php';
     echo "Executing SQLite3 installation: $install_filename" . PHP_EOL;
+    $resolved_path = realpath($install_filename) ?: $install_filename;
+    debug_echo("Resolved install file path: $resolved_path");
     if (!file_exists($install_filename)) {
         echo "Error: Install file $install_filename not found" . PHP_EOL;
         ob_end_flush();

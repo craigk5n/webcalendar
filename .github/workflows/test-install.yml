@@ -61,6 +61,7 @@ jobs:
           ini_set('display_errors', 1);
           ini_set('display_startup_errors', 1);
           error_reporting(E_ALL);
+          define('DEBUG', true); // Enable debug output
           require 'install/headless.php';
           $_SESSION['install_file'] = 'install/sql/tables-sqlite3.php';
           ?>
