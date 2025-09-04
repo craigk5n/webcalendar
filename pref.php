@@ -290,8 +290,8 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
  <div class="tab-pane container active" id="settings"><div class="form-group">
 <fieldset class="border p-2">
  <legend><?php etranslate ('Language')?></legend>
-<table cellspacing="1" cellpadding="2">
-<tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("language-help");?>" valign="top">
+<table style="border-collapse: separate; border-spacing: 1px; padding: 2px;">
+<tr><td class="aligntop" data-toggle="tooltip" data-placement="top" title="<?php etooltip ("language-help");?>">
  <label for="pref_lang"><?php etranslate ('Language')?>:</label></td><td>
  <select class="form-control" name="pref_LANGUAGE" id="pref_lang">
 <?php
@@ -319,20 +319,20 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 </fieldset>
 <fieldset class="border p-2">
  <legend><?php etranslate ('Date and Time')?></legend>
-<table cellspacing="1" cellpadding="2">
+<table style="border-collapse: separate; border-spacing: 1px; padding: 2px;">
 <?php if ( $can_set_timezone == true ) { ?>
-<tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("tz-help");?>" valign="top">
+<tr><td class="aligntop" data-toggle="tooltip" data-placement="top" title="<?php etooltip ("tz-help");?>">
   <label for="pref_TIMEZONE" class="colon"><?php etranslate ('Timezone Selection')?>:</label></td><td>
   <?php
    if ( empty ( $prefarray['TIMEZONE'] ) ) $prefarray['TIMEZONE'] = $SERVER_TIMEZONE;
    echo print_timezone_select_html ( 'pref_', $prefarray['TIMEZONE']);
   ?>
 </td></tr>
-<tr><td height="0.5em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
+<tr><td style="block-size: 0.5em"><!-- small vertical spacing --><span style="font-size: 25%">&nbsp;</span></td></tr>
 
  <?php } //end $can_set_timezone ?>
 
-<tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("date-format-help");?>" valign="top">
+<tr><td class="aligntop" data-toggle="tooltip" data-placement="top" title="<?php etooltip ("date-format-help");?>">
  <label for="pref_DATE_FORMAT"><?php etranslate ('Date format')?>:</label></td><td>
  <select class="form-control" name="pref_DATE_FORMAT">
   <?php
@@ -383,7 +383,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
   date_to_str( $dateYmd, $DATE_FORMAT_TASK, false, false );?>
 </td></tr>
 
-<tr><td height="0.5em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
+<tr><td style="block-size: 0.5em"><!-- small vertical spacing --><span style="font-size: 25%">&nbsp;</span></td></tr>
 
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("preferred-event-visibility");?>"><label for="pref_DEFAULT_VISIBILITY"><?php
 etranslate ('Default Visibility')?>:</label></td><td>
@@ -470,7 +470,7 @@ etranslate ('Default Visibility')?>:</label></td><td>
 </fieldset>
 <fieldset class="border p-2">
  <legend><?php etranslate ('Appearance')?></legend>
-<table cellspacing="1" cellpadding="2">
+<table style="border-collapse: separate; border-spacing: 1px; padding: 2px;">
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("preferred-view-help");?>"><label for="pref_STARTVIEW"><?php
 etranslate ('Preferred view')?>:</label></td><td>
 <select class="form-control" name="pref_STARTVIEW" id="pref_STARTVIEW">
@@ -500,7 +500,7 @@ for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
   echo '<option value="' . $choices[$i] . '" ';
   if ( $prefarray['STARTVIEW'] == $choices[$i] )
     echo $selected;
-  echo ' >' . htmlspecialchars ( $choices_text[$i] ) . "</option>\n";
+  echo '>' . htmlspecialchars ( $choices_text[$i] ) . "</option>\n";
 }
 // Allow user to select a view also
 for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
@@ -570,7 +570,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 </fieldset>
 <fieldset class="border p-2">
  <legend><?php etranslate ('Events')?></legend>
-<table cellspacing="1" cellpadding="2">
+<table style="border-collapse: separate; border-spacing: 1px; padding: 2px;">
 
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("display-unapproved-help");?>">
  <label for="pref_DISPLAY_UNAPPROVED"><?php etranslate ( 'Display unapproved' )?>:</label></td><td class="form-inline mt-1">
@@ -647,7 +647,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 </fieldset>
 <fieldset class="border p-2">
  <legend><?php etranslate ('Miscellaneous')?></legend>
-<table cellspacing="1" cellpadding="2">
+<table style="border-collapse: separate; border-spacing: 1px; padding: 2px;">
 
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("auto-refresh-help");?>">
  <label for="pref_AUTO_REFRESH"><?php etranslate ( 'Auto-refresh calendars' )?>:</label></td><td class="form-inline mt-1">
@@ -668,7 +668,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 if ( ! $updating_public ) {
 if ( $SEND_EMAIL == 'Y' ) { ?>
 <div class="tab-pane container fade" id="email"><div class="form-group">
-<table cellspacing="1" cellpadding="2">
+<table style="border-collapse: separate; border-spacing: 1px; padding: 2px;">
 <tr><td class="tooltip">
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("email-format");?>">
  <label for="pref_EMAIL_HTML"><?php etranslate ( 'Email format preference' )?>:</label></td><td class="form-inline mt-1">
@@ -716,7 +716,7 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 <?php } ?>
 
 <div class="tab-pane container fade" id="boss"><div class="form-group">
-<table cellspacing="1" cellpadding="2">
+<table style="border-collapse: separate; border-spacing: 1px; padding: 2px;">
 <?php if ( $SEND_EMAIL == 'Y' ) { ?>
 <tr><td><label for="pref_EMAIL_ASSISTANT_EVENTS"><?php etranslate ( 'Email me event notification' )?>:</label></td><td class="form-inline mt-1">
  <?php echo print_radio ( 'EMAIL_ASSISTANT_EVENTS' ) ?>
@@ -737,7 +737,7 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 
 <?php } /* if ( ! $updating_public ) */ ?>
 <div class="tab-pane container fade" id="subscribe"><div class="form-group">
-<table cellspacing="1" cellpadding="2">
+<table style="border-collapse: separate; border-spacing: 1px; padding: 2px;">
 <?php if ( $PUBLISH_ENABLED == 'Y' || $RSS_ENABLED == 'Y') { ?>
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("allow-view-subscriptions-help");?>">
 <label for="pref_USER_REMOTE_ACCESS"><?php etranslate ( 'Allow remote viewing of' );
@@ -746,13 +746,13 @@ $publish_access = ( empty( $prefarray['USER_REMOTE_ACCESS'] )
 ?>:</label></td><td>
   <select class="form-control" name="pref_USER_REMOTE_ACCESS" id="pref_USER_REMOTE_ACCESS">
    <option value="0" <?php echo ( $publish_access == '0' ?
-     $selected : '' ) . ' >' . translate ( 'Public' ) . ' ' .
+     $selected : '' ) . '>' . translate ( 'Public' ) . ' ' .
      translate ( 'entries' )?></option>
    <option value="1" <?php echo ( $publish_access == '1' ?
-     $selected : '' ) . ' >' . translate ( 'Public' ) . ' &amp; ' .
+     $selected : '' ) . '>' . translate ( 'Public' ) . ' &amp; ' .
       translate ( 'Confidential' ) . ' ' . translate ( 'entries' )?></option>
    <option value="2" <?php echo ( $publish_access == '2' ?
-     $selected : '' ) . ' >' . translate ( 'All' ) . ' ' .
+     $selected : '' ) . '>' . translate ( 'All' ) . ' ' .
      translate ( 'entries' )?></option>
   </select>
   </td></tr>
@@ -772,7 +772,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
     echo htmlspecialchars ( getServerUrl() ) .
       'publish.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
-  <tr><td height="0.5em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
+  <tr><td style="block-size: 0.5em"><!-- small vertical spacing --><span style="font-size: 25%">&nbsp;</span></td></tr>
 
 <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("allow-remote-publishing-help");?>">
   <label for="pref_USER_PUBLISH_RW_ENABLED"><?php etranslate ( 'Allow remote publishing' )?>:</label></td>
@@ -786,7 +786,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
     echo htmlspecialchars ( getServerUrl() ) .
       'icalclient.php';
   ?></td></tr>
-  <tr><td height="0.5em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
+  <tr><td style="block-size: 0.5em"><!-- small vertical spacing --><span style="font-size: 25%">&nbsp;</span></td></tr>
 <?php
 
 } /* $PUBLISH_ENABLED */
@@ -804,7 +804,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
     echo htmlspecialchars ( getServerUrl() ) .
       'rss.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
-  <tr><td height="0.5em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
+  <tr><td style="block-size: 0.5em"><!-- small vertical spacing --><span style="font-size: 25%">&nbsp;</span></td></tr>
 <?php
 } /* $RSS_ENABLED */ ?>
 
@@ -823,14 +823,14 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
     echo htmlspecialchars ( getServerUrl() ) .
       'freebusy.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
-  <tr><td height="0.5em"><!-- small vertical spacing--><span style="font-size: 25%">&nbsp;</span> </td></tr>
+  <tr><td style="block-size: 0.5em"><!-- small vertical spacing --><span style="font-size: 25%">&nbsp;</span></td></tr>
 </table>
 </div></div>
 <!-- END SUBSCRIBE -->
 
 <?php if ( $ALLOW_USER_HEADER == 'Y' ) { ?>
   <div class="tab-pane container fade" id="header"><div class="form-group">
-<table cellspacing="1" cellpadding="2">
+<table style="border-collapse: separate; border-spacing: 1px; padding: 2px;">
 <?php if ( $CUSTOM_SCRIPT == 'Y' ) { ?>
  <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("custom-script-help");?>">
   <label><?php etranslate ( 'Custom script/stylesheet' )?>:</label></td><td>
@@ -867,12 +867,12 @@ if ( $CUSTOM_TRAILER == 'Y' ) { ?>
 <?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
   <div class="tab-pane container fade" id="colors"><div class="form-group">
 <table>
-<tr class="ignore"><td class="aligntop" width="50%">
+<tr class="ignore"><td class="aligntop" style="inline-size: 50%">
 <?php echo $color_sets;?>
 <div><a href="#" class="btn btn-secondary" onclick="reset_colors(); return false;"><?php etranslate('Reset Colors');?></a></div>
 
 
-</td><td class="aligncenter aligntop" width="50%">
+</td><td class="aligncenter aligntop" style="inline-size: 50%">
 <br>
 <!-- BEGIN EXAMPLE MONTH -->
 <p class="bold" style="text-align:center; color: var(--h2color)">

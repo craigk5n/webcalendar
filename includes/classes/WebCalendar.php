@@ -139,14 +139,14 @@ class WebCalendar {
     $SCRIPT = $match[1];
     // Security precaution.  Don't allow <script> to be included in
     // a URL in any way.  This includes the directory names as well.
-    if ( preg_match ( '/\s*script/i', $_SERVER['QUERY_STRING'] . $self ) ) {
+    if ( preg_match ( '/\s*script/i', (isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '') . $self ) ) {
       // No need to have a graceful exit for this since it should only
       // happen to malicious crapweasels.
       echo "<html><body><h2>User Error</h2><p>Bite me.</p></html>\n";
       exit;
     }
     // Don't allow "img src" to be in the URL either.
-    if ( preg_match ( '/\s*img.*src/i', $_SERVER['QUERY_STRING'] . $self ) ) {
+    if ( preg_match ( '/\s*img.*src/i', (isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '') . $self ) ) {
       // No need to have a graceful exit for this since it should only
       // happen to malicious crapweasels.
       echo "<html><body><h2>User Error</h2><p>Bite me.</p></html>\n";
@@ -209,7 +209,7 @@ class WebCalendar {
   <head>
     <title>' . generate_application_name() . ' ' . translate ( 'Error' ) . '</title>
   </head>
-  <body bgcolor="' . $user_BGCOLOR . '">
+  <body style="background-color: ' . $user_BGCOLOR . '">
     ' . print_not_auth ( true ) . '
   </body>
 </html>';

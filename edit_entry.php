@@ -675,7 +675,7 @@ $tabI = 0;
             <?php if (!empty($overall_percent)) { ?>
               <tr>
                 <td colspan="2">
-                  <table cellpadding="2" cellspacing="5">
+                  <table style="border-collapse: separate; border-spacing: 5px; padding: 2px;">
                     <tr>
                       <td colspan="2"><?php etranslate('All Percentages'); ?></td>
                     </tr>
@@ -997,7 +997,7 @@ $tabI = 0;
     ?>
       <!-- PARTICIPANTS -->
       <div class="tab-pane container fade" id="<?php echo $tabs_name[$tabI++]; ?>">
-        <table width="100%" id="participantTable">
+        <table id="participantTable" style="inline-size: 100%">
           <tr>
             <td colspan="3">
               <fieldset class="form-group border p-2">
@@ -1074,7 +1074,7 @@ $tabI = 0;
       if ($DISABLE_REPEATING_FIELD != 'Y') {
         echo "\n" . '<!-- REPEAT -->
       <div class="tab-pane container fade" id="' . $tabs_name[$tabI++] . '">
-      <table cellpadding="3">
+      <table style="padding: 3px;">
         <tr>
           <td class="aligntop">
           <label for="rpttype" data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-type-help') . '">'
@@ -1177,8 +1177,7 @@ $tabI = 0;
           . (empty($bymonthdayStr) ? '' : $bymonthdayStr) . '">
             <input type="hidden" name="bysetposList" value="'
           . (empty($bysetposStr) ? '' : $bysetposStr) . '">
-            <table class="byxxx" cellpadding="2" cellspacing="2" '
-          . 'border="1">
+            <table class="byxxx" style="border-collapse: separate; border-spacing: 2px; border: 1px; padding: 2px;">
               <tr>
                 <td></td>';
         // Display byday extended selection.
@@ -1193,7 +1192,7 @@ $tabI = 0;
           $rpt_byday_mod = $rpt_byday_label % 7;
           $class = ( is_weekend ( $rpt_byday_mod ) ? 'class="weekend" ' : '' );
           echo "
-                <th $class" . 'width="50px"><label>' .
+                <th $class" . 'style="inline-size: 50px"><label>' .
             $weekday_names[$rpt_byday_mod] . '</label></th>';
         }
         echo '
@@ -1258,7 +1257,7 @@ $tabI = 0;
           . translate('ByMonth') . '</label>:&nbsp;</td>
           <td colspan="2" class="boxall">'
           /* Display bymonth selection. */ . '
-            <table cellpadding="5">
+            <table style="padding: 5px;">
               <tr>';
         for ($rpt_month = 1; $rpt_month < 13; $rpt_month++) {
           echo '
@@ -1285,8 +1284,7 @@ $tabI = 0;
           . ':&nbsp;</td>
           <td colspan="2" class="boxall">'
           /* Display bysetpos selection. */ . '
-            <table class="byxxx" cellpadding="2" '
-          . 'border="1">
+            <table class="byxxx" style="border: 1px; padding: 2px;">
               <tr>
                 <td></td>';
         for (
@@ -1295,7 +1293,7 @@ $tabI = 0;
           $rpt_bysetpos_label++
         ) {
           echo '
-                <th width="37px"><label>' . $rpt_bysetpos_label
+                <th style="inline-size: 37px"><label>' . $rpt_bysetpos_label
             . '</label></th>';
         }
         echo '
@@ -1330,8 +1328,7 @@ $tabI = 0;
           . ':&nbsp;</label></td>
         <td colspan="2" class="boxall">'
           /* Display bymonthday extended selection. */ . '
-          <table class="byxxx" cellpadding="2" '
-          . 'border="1">
+          <table class="byxxx" style="border: 1px; padding: 2px;">
             <tr>
               <td></td>';
         for (
@@ -1340,7 +1337,7 @@ $tabI = 0;
           $rpt_bymonthday_label++
         ) {
           echo '
-              <th width="37px"><label>' . $rpt_bymonthday_label
+              <th style="inline-size: 37px"><label>' . $rpt_bymonthday_label
             . '</label></th>';
         }
         echo '
@@ -1391,7 +1388,7 @@ $tabI = 0;
         <td colspan="2"><input type="text" name="byweekno" id="byweekno" '
           . 'size="50" maxlength="100" value="' . $byweekno . '"></td>
       </tr>
-      <tr id="rptbyyearday" style="visibility:hidden;" >
+      <tr id="rptbyyearday" style="visibility:hidden;">
         <td><label data-toggle="tooltip" data-placement="top" title="' .
         tooltip('repeat-byyearday-help') . '">' . translate('ByYearDay') . ':</label></td>
         <td colspan="2"><input type="text" name="byyearday" id="byyearday" '
@@ -1402,14 +1399,14 @@ $tabI = 0;
           . translate('Exclusions') . '/<br>'
           . translate('Inclusions') . ':</label></td>
         <td colspan="2" class="boxtop boxright boxbottom boxleft">
-          <table width="250px">
+          <table style="inline-size: 250px">
             <tr>
               <td colspan="2">'
           . date_selection('except_', $rpt_end_date ? $rpt_end_date : $cal_date)
           . '</td>
             </tr>
             <tr>
-              <td class="alignright aligntop" width="100">
+              <td class="aligntop alignright" style="inline-size: 100px">
                 <label id="select_exceptions_not" style="visibility:'
           . (empty($excepts) ? 'visible' : 'hidden') . ';"></label>
                 <select id="select_exceptions" name="exceptions[]" '
@@ -1466,7 +1463,7 @@ $tabI = 0;
         $rem_rep_minutes -= ($rem_rep_hours * 60);
 
         echo '<div class="tab-pane container fade" id="' . $tabs_name[$tabI++] . '">' . '
-      <table cellpadding="3">
+      <table style="padding: 3px;">
         <thead>
           <tr>
           <td><label data-toggle="tooltip" data-placement="top" title="' .
@@ -1495,7 +1492,7 @@ $tabI = 0;
           <tr>
             <td rowspan="6"><label>' . translate('When')
           . ':</label></td>
-            <td class="boxtop boxleft" width="20%"><label><input type="radio" '
+            <td class="boxtop boxleft" style="inline-size: 20%"><label><input type="radio" '
           . 'name="rem_when" id="rem_when_date" value="Y" '
           . ($rem_use_date ? $checked : '') . ' onclick="toggle_rem_when()">'
           . translate('Use Date/Time') . '&nbsp;</label></td>
@@ -1510,7 +1507,7 @@ $tabI = 0;
             ? $cal_time : $reminder['time'])) . '</td>
           </tr>
           <tr>
-            <td class="boxright boxleft" height="20px" colspan="3">&nbsp;</td>
+            <td class="boxright boxleft" style="block-size: 20px" colspan="3">&nbsp;</td>
           </tr>
           <tr>
             <td class="boxleft"><label><input type="radio" name="rem_when" '
