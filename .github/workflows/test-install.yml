@@ -149,14 +149,14 @@ jobs:
           }
           $emptyDatabase = $canConnectDb ? isEmptyDatabase() : true;
           echo "Empty database check: $emptyDatabase, db_type: $db_type, install_file: " . ($_SESSION['install_file'] ?? 'not set') . PHP_EOL;
-          if ($emptyDatabase && $db_type === 'sqlite3' && !empty($_SESSION['install_file'])) {
-              $install_filename = $_SESSION['install_file'];
+          if ($emptyDatabase && $db_type === 'sqlite3') {
+              $install_filename = 'install/sql/tables-sqlite3.php';
               echo "Executing SQLite3 installation: $install_filename" . PHP_EOL;
               if (!file_exists($install_filename)) {
                   echo "Error: Install file $install_filename not found" . PHP_EOL;
                   exit(1);
               }
-              include_once $install_filename;
+              // File is already included, so just call the function
               try {
                   echo "Starting table creation..." . PHP_EOL;
                   populate_sqlite_db($real_db, $c);
@@ -257,7 +257,7 @@ jobs:
           }
           ?>
           EOF
-      
+
       - name: Create run_install.php
         run: |
           cat << 'EOF' > run_install.php
