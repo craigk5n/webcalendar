@@ -531,8 +531,8 @@
       <dt>Display Participants in popup</dt>
       <dd>If enabled, event participants will be included in popup details.</dd>
       <dt>Allow HTML in Description</dt>
-      <dd>Allow the use of HTML in the description field when creating events. The open source TinyMCE package is used
-          to provide rich text.</dd>
+      <dd>Allow the use of HTML in the description field when creating events.
+          The open source TinyMCE package is used to provide rich text.</dd>
       <dt>Allow viewing other user's calendars</dt>
       <dd>If enabled, users will be able to view the calendar of another user</dd>
       <dt>Include add event link in views</dt>
@@ -849,7 +849,7 @@
       <dt>How do I change the title "Public Access" at the top of the calendar?</dt>
       <dd>In the file <span class="tt">translations/English-US.txt</span>, change the line that says "Public Access" to what you want it to say on the right side.<br><br>Example:<pre>Public Access: Foobar Event Calendar</pre></dd>
       <dt>Can I embed WebCalendar as a component on another web page?</dt>
-      <dd>WebCalendar is meant to be run as a standalone web application. You can customize the appearance of WebCalendar to match your existing site. To do this, In System Settings, set both "Custom header" and "Custom trailer" to "Yes" and press the "Edit" button to enter the header and trailer content.<br>If you are looking to just include a list of upcoming events in one of your web pages, you can use the <span class="tt">upcoming.php</span> page in WebCalendar to do this. Edit the top of this file to configure options. (These settings will likely move into System Settings in subsequent release.) You can then use an <span class="tt">iframe</span> elsewhere on your web site as in the example below: <pre>&lt;iframe src="upcoming.php" width="300" height="250" scrolling="yes"&gt;&lt;/iframe&gt;</pre> Include this HTML anywhere on any of your pages. By default, the events from the public calendar will be loaded (so you must have "Public Access" enabled in System Settings). You can override this with another user's calendar. (See <span class="tt">upcoming.php</span> for instructions on this.)<br><br>If you would like to display a small calendar (like the ones on the month view), you can add the following example. There are some configuration options available in the top of this file as well. You can then use an <span class="tt">iframe</span> elsewhere on your web site as in the example below: <pre>&lt;iframe src="minical.php" width="180" height="200" scrolling="yes"&gt;&lt;/iframe&gt;</pre></dd>
+      <dd>WebCalendar is meant to be run as a standalone web application. You can customize the appearance of WebCalendar to match your existing site. To do this, In System Settings, set both "Custom header" and "Custom trailer" to "Yes" and press the "Edit" button to enter the header and trailer content.<br>If you are looking to just include a list of upcoming events in one of your web pages, you can use the <span class="tt">upcoming.php</span> page in WebCalendar to do this. Edit the top of this file to configure options. (These settings will likely move into System Settings in subsequent release.) You can then use an <span class="tt">iframe</span> elsewhere on your web site as in the example below: <pre>&lt;iframe src="upcoming.php" style="inline-size: 300px; block-size: 250px;" scrolling="yes"&gt;&lt;/iframe&gt;</pre> Include this HTML anywhere on any of your pages. By default, the events from the public calendar will be loaded (so you must have "Public Access" enabled in System Settings). You can override this with another user's calendar. (See <span class="tt">upcoming.php</span> for instructions on this.)<br><br>If you would like to display a small calendar (like the ones on the month view), you can add the following example. There are some configuration options available in the top of this file as well. You can then use an <span class="tt">iframe</span> elsewhere on your web site as in the example below: <pre>&lt;iframe src="minical.php" style="inline-size: 180px; block-size: 200px;" scrolling="yes"&gt;&lt;/iframe&gt;</pre></dd>
       <dt>How do I customize the appearance of WebCalendar so that it matches the rest of my site?</dt>
       <dd>You can customize the appearance of WebCalendar to match your existing site. To do this, In System Settings, set both "Custom header" and "Custom trailer" to "Yes", and press the "Save" button. Then click on the "Edit" button to enter your site content. The custom header will be included after the document's HTML <code>&lt;body&gt;</code> tag but before any WebCalendar content. The custom trailer will be included after the WebCalendar content and before the document's HTML <code>&lt;/body&gt;</code> tag. If you want to add JavaScript or Stylesheet data, you can use the "Custom script/stylesheet" option on the same System Settings page. Any content entered will be included within the document's HTML <code>&lt;head&gt;</code> section.</dd>
       <dt>How do I add a new translation?</dt>
@@ -1188,7 +1188,7 @@ input path/table-ibase.sql;
     &lt;h2&gt;News&lt;/h2&gt;
     &lt;p&gt;No news....&lt;/p&gt;
     &lt;h2&gt;Upcoming Events&lt;/h2&gt;
-    &lt;iframe src="upcoming.php" name="califrame" width="400" height="400"&gt;&lt;/iframe&gt;
+    &lt;iframe src="upcoming.php" name="califrame" style="inline-size: 400px; block-size: 400px;"&gt;&lt;/iframe&gt;
   &lt;/body&gt;
 &lt;/html&gt;
       </pre>
