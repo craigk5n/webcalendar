@@ -19,6 +19,19 @@ jobs:
           extensions: sqlite3, pdo_sqlite
           ini-values: display_errors=On, error_reporting=E_ALL
 
+      - name: Debug directory structure
+        run: |
+          echo "Listing repository contents:"
+          ls -lR
+          echo "Checking top-level PHP files:"
+          ls -l *.php || echo "No PHP files in root directory"
+          echo "Checking includes directory:"
+          ls -ld includes || echo "No includes directory found"
+          echo "Checking install directory:"
+          ls -ld install || echo "No install directory found"
+          echo "Checking tools directory:"
+          ls -ld tools || echo "No tools directory found"
+
       - name: Download PHPStan PHAR
         run: |
           curl -sSL https://github.com/phpstan/phpstan/releases/download/1.10.14/phpstan.phar -o phpstan.phar
@@ -31,7 +44,6 @@ jobs:
           parameters:
               level: 1
               paths:
-                  - *.php
                   - includes/
                   - install/
                   - tools/
@@ -42,7 +54,17 @@ jobs:
 
       - name: Run PHPStan
         run: |
-          ./phpstan.phar analyse --configuration=phpstan.neon --memory-limit=1G | tee phpstan.log
+          ./phpstan.phar analyse --configuration=phpstan.neon --paths=includes/,install/,tools/,*.php --memory-limit=1G --error-format=github | tee phpstan.log
+          if [ $? -ne 0 ]; then
+            echo "PHPStan failed, see phpstan.log"
+            cat phpstan.log
+            exit 1
+          fi
+          if ! grep -q "files analyzed" phpstan.log; then
+            echo "PHPStan did not analyze any files, see phpstan.log"
+            cat phpstan.log
+            exit 1
+          fi
           if grep -q "Errors found" phpstan.log; then
             echo "PHPStan found errors, see phpstan.log"
             cat phpstan.log
