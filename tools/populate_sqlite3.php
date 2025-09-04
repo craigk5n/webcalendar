@@ -1,94 +1,354 @@
 <?php
 /**
  * Description:
- * This script will create a SQLite v3 database for use with WebCalendar and will include the
- * default 'admin' user with 'admin' password.
- *
- * Usage:
- * php populate_sqlite3.php
+ * This file will create a SQLite3 database.
  */
-
-$outputFile = "webcalendar.salite";
-$createAdminAccount = true;
-$adminUsername = 'admin';
-$adminPassword = 'admin';
-$db_type = 'sqlite3';
-
-// Load include files.
-// If you have moved this script out of the WebCalendar directory, which you
-// probably should do since it would be better for security reasons, you would
-// need to change __WC_INCLUDEDIR to point to the webcalendar include directory.
-define( '__WC_BASEDIR', '../' ); // Points to the base WebCalendar directory
-                 // relative to current working directory.
-define( '__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/' );
-define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
-$old_path = ini_get ( 'include_path' );
-$delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
-ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
-
-require_once __WC_INCLUDEDIR . 'translate.php';
-require_once __WC_INCLUDEDIR . 'config.php';
-require_once __WC_INCLUDEDIR . 'dbi4php.php';
-require_once __WC_INCLUDEDIR . 'formvars.php';
-require_once __WC_INCLUDEDIR . 'functions.php';
-
-$debug = false;// Set to true to print debug info...
-$only_testing = false; // Just pretend to send -- for debugging.
-
-require_once __WC_INCLUDEDIR . '../install/sql/tables-sqlite3.php';
-require_once __WC_INCLUDEDIR . '../install/default_config.php';
-
-function fatal($msg) {
-  print "Error: $msg\n";
-  exit;
-}
-
-for ($i = 1; $i < count($argv); $i++) {
-  if ($argv[$i] == "-file" || $argv[$i] == "-f") {
-    if (count($argv) > $i + 1) {
-      $outputFile = $argv[$i+1];
-      $i++;
-    } else {
-      fatal("Error: -f param requires a file.");
+function populate_sqlite_db($database, $db, $createAdmin = true) {
+    #$c = new SQLite3($database, SQLITE3_OPEN_CREATE);
+    $db->query("CREATE TABLE webcal_user (
+        cal_login VARCHAR(25) NOT NULL,
+        cal_passwd VARCHAR(255) DEFAULT NULL,
+        cal_lastname VARCHAR(25),
+        cal_firstname VARCHAR(25),
+        cal_is_admin CHAR(1) DEFAULT 'N',
+        cal_email VARCHAR(75) NULL,
+        cal_enabled CHAR(1) DEFAULT 'Y',
+        cal_telephone VARCHAR(50) NULL,
+        cal_address VARCHAR(75) NULL,
+        cal_title VARCHAR(75) NULL,
+        cal_birthday INT,
+        cal_last_login INT,
+        cal_type ENUM('A','N','S','U') DEFAULT 'U',
+        PRIMARY KEY (cal_login)
+    )");
+    if ($createAdmin) {
+        $db->query("INSERT INTO webcal_user (
+            cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin, cal_type
+        ) VALUES (
+            'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'Default', 'Y', 'A'
+        );");
     }
-  } else if ($argv[$i] == '-noadmin') {
-    $createAdminAccount = false;
-  } else {
-    fatal("Error: unrecognized parameter $argv[$i]");
-  }
+    $db->query("CREATE TABLE webcal_entry (
+        cal_id INT NOT NULL,
+        cal_group_id INT NULL,
+        cal_ext_for_id INT NULL,
+        cal_create_by VARCHAR(25) NOT NULL,
+        cal_date INT NOT NULL,
+        cal_time INT NULL,
+        cal_mod_date INT,
+        cal_mod_time INT,
+        cal_mod TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        cal_duration INT NOT NULL,
+        cal_due_date INT DEFAULT NULL,
+        cal_due_time INT DEFAULT NULL,
+        cal_due DATETIME DEFAULT NULL,
+        cal_datetime DATETIME NOT NULL,
+        cal_location VARCHAR(100) DEFAULT NULL,
+        cal_url VARCHAR(255) DEFAULT NULL,
+        cal_completed INT DEFAULT NULL,
+        cal_priority INT DEFAULT 5,
+        cal_type CHAR(1) DEFAULT 'E',
+        cal_access CHAR(1) DEFAULT 'P',
+        cal_name VARCHAR(80) NOT NULL,
+        cal_description TEXT,
+        PRIMARY KEY (cal_id)
+    )");
+    $db->query("CREATE TABLE webcal_entry_repeats (
+        cal_id INT DEFAULT 0 NOT NULL,
+        cal_type VARCHAR(20),
+        cal_end INT,
+        cal_frequency INT DEFAULT 1,
+        cal_days CHAR(7),
+        cal_endtime INT DEFAULT NULL,
+        cal_bymonth VARCHAR(50) DEFAULT NULL,
+        cal_bymonthday VARCHAR(100) DEFAULT NULL,
+        cal_byday VARCHAR(100) DEFAULT NULL,
+        cal_bysetpos VARCHAR(50) DEFAULT NULL,
+        cal_byweekno VARCHAR(50) DEFAULT NULL,
+        cal_byyearday VARCHAR(50) DEFAULT NULL,
+        cal_wkst CHAR(2) DEFAULT 'MO',
+        cal_count INT DEFAULT NULL,
+        cal_enddt DATETIME DEFAULT NULL,
+        PRIMARY KEY (cal_id)
+    )");
+    $db->query("CREATE TABLE webcal_entry_repeats_not (
+        cal_id INT NOT NULL,
+        cal_date INT NOT NULL,
+        cal_exdate INT NOT NULL DEFAULT '1',
+        PRIMARY KEY (cal_id, cal_date)
+    )");
+    $db->query("CREATE TABLE webcal_entry_user (
+        cal_id INT DEFAULT 0 NOT NULL,
+        cal_login VARCHAR(25) NOT NULL,
+        cal_status CHAR(1) DEFAULT 'A',
+        cal_category INT DEFAULT NULL,
+        cal_percent INT NOT NULL DEFAULT '0',
+        PRIMARY KEY (cal_id, cal_login)
+    )");
+    $db->query("CREATE TABLE webcal_entry_ext_user (
+        cal_id INT DEFAULT 0 NOT NULL,
+        cal_fullname VARCHAR(50) NOT NULL,
+        cal_email VARCHAR(75) NULL,
+        PRIMARY KEY (cal_id, cal_fullname)
+    )");
+    $db->query("CREATE TABLE webcal_user_pref (
+        cal_login VARCHAR(25) NOT NULL,
+        cal_setting VARCHAR(50) NOT NULL,
+        cal_value VARCHAR(100) NOT NULL,
+        PRIMARY KEY (cal_login, cal_setting, cal_value)
+    )");
+    $db->query("CREATE TABLE webcal_user_layers (
+        cal_layerid INT DEFAULT 0 NOT NULL,
+        cal_login VARCHAR(25) NOT NULL,
+        cal_layeruser VARCHAR(25) NOT NULL,
+        cal_color VARCHAR(25) NULL,
+        cal_dups CHAR(1) DEFAULT 'N',
+        PRIMARY KEY (cal_login, cal_layeruser)
+    )");
+    $db->query("CREATE TABLE webcal_site_extras (
+        cal_id INT DEFAULT 0 NOT NULL,
+        cal_name VARCHAR(25) NOT NULL,
+        cal_type INT NOT NULL,
+        cal_date INT DEFAULT 0,
+        cal_remind INT DEFAULT 0,
+        cal_data TEXT
+    )");
+    $db->query("CREATE TABLE webcal_reminders (
+        cal_id INT DEFAULT 0 NOT NULL,
+        cal_date INT DEFAULT 0 NOT NULL,
+        cal_offset INT DEFAULT 0 NOT NULL,
+        cal_related CHAR(1) DEFAULT 'S' NOT NULL,
+        cal_before CHAR(1) DEFAULT 'Y' NOT NULL,
+        cal_last_sent INT DEFAULT NULL,
+        cal_repeats INT DEFAULT 0 NOT NULL,
+        cal_duration INT DEFAULT 0 NOT NULL,
+        cal_times_sent INT DEFAULT 0 NOT NULL,
+        cal_action VARCHAR(12) DEFAULT 'EMAIL' NOT NULL,
+        PRIMARY KEY (cal_id)
+    )");
+    $db->query("CREATE TABLE webcal_group (
+        cal_group_id INT NOT NULL,
+        cal_owner VARCHAR(25) NULL,
+        cal_name VARCHAR(50) NOT NULL,
+        cal_last_update INT NOT NULL,
+        PRIMARY KEY (cal_group_id)
+    )");
+    $db->query("CREATE TABLE webcal_group_user (
+        cal_group_id INT NOT NULL,
+        cal_login VARCHAR(25) NOT NULL,
+        PRIMARY KEY (cal_group_id, cal_login)
+    )");
+    $db->query("CREATE TABLE webcal_view (
+        cal_view_id INT NOT NULL,
+        cal_owner VARCHAR(25) NOT NULL,
+        cal_name VARCHAR(50) NOT NULL,
+        cal_view_type CHAR(1),
+        cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
+        PRIMARY KEY (cal_view_id)
+    )");
+    $db->query("CREATE TABLE webcal_view_user (
+        cal_view_id INT NOT NULL,
+        cal_login VARCHAR(25) NOT NULL,
+        PRIMARY KEY (cal_view_id, cal_login)
+    )");
+    $db->query("CREATE TABLE webcal_config (
+        cal_setting VARCHAR(50) NOT NULL,
+        cal_value VARCHAR(100) NULL,
+        PRIMARY KEY (cal_setting)
+    )");
+    $db->query("CREATE TABLE webcal_entry_log (
+        cal_log_id INT NOT NULL,
+        cal_entry_id INT NOT NULL,
+        cal_login VARCHAR(25) NOT NULL,
+        cal_user_cal VARCHAR(25) NULL,
+        cal_type CHAR(1) NOT NULL,
+        cal_date INT NOT NULL,
+        cal_time INT NULL,
+        cal_text TEXT,
+        PRIMARY KEY (cal_log_id)
+    )");
+    $db->query("CREATE TABLE webcal_categories (
+        cat_id INT NOT NULL,
+        cat_owner VARCHAR(25) DEFAULT '' NOT NULL,
+        cat_name VARCHAR(80) NOT NULL,
+        cat_color VARCHAR(8) NULL,
+        cat_status CHAR DEFAULT 'A',
+        cat_icon_mime VARCHAR(32) DEFAULT NULL,
+        cat_icon_blob BLOB DEFAULT NULL,
+        PRIMARY KEY (cat_id)
+    )");
+    $db->query("CREATE TABLE webcal_asst (
+        cal_boss VARCHAR(25) NOT NULL,
+        cal_assistant VARCHAR(25) NOT NULL,
+        PRIMARY KEY (cal_boss, cal_assistant)
+    )");
+    $db->query("CREATE TABLE webcal_nonuser_cals (
+        cal_login VARCHAR(25) NOT NULL,
+        cal_lastname VARCHAR(25) NULL,
+        cal_firstname VARCHAR(25) NULL,
+        cal_admin VARCHAR(25) NOT NULL,
+        cal_is_public CHAR(1) DEFAULT 'N' NOT NULL,
+        cal_url VARCHAR(255) DEFAULT NULL,
+        cal_displayname VARCHAR(50) DEFAULT NULL,
+        PRIMARY KEY (cal_login)
+    )");
+    $db->query("CREATE TABLE webcal_import (
+        cal_import_id INT NOT NULL,
+        cal_name VARCHAR(50) NULL,
+        cal_date INT NOT NULL,
+        cal_check_date INT NULL,
+        cal_type VARCHAR(10) NOT NULL,
+        cal_login VARCHAR(25) NULL,
+        cal_md5 VARCHAR(32) NULL,
+        PRIMARY KEY (cal_import_id)
+    )");
+    $db->query("CREATE TABLE webcal_import_data (
+        cal_import_id INT NOT NULL,
+        cal_id INT NOT NULL,
+        cal_login VARCHAR(25) NOT NULL,
+        cal_import_type VARCHAR(15) NOT NULL,
+        cal_external_id VARCHAR(200) NULL,
+        PRIMARY KEY (cal_id, cal_login)
+    )");
+    $db->query("CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type)");
+    $db->query("CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id)");
+    $db->query("CREATE TABLE webcal_report (
+        cal_login VARCHAR(25) NOT NULL,
+        cal_report_id INT NOT NULL,
+        cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
+        cal_report_type VARCHAR(20) NOT NULL,
+        cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
+        cal_report_name VARCHAR(50) NOT NULL,
+        cal_time_range INT NOT NULL,
+        cal_user VARCHAR(25) NULL,
+        cal_allow_nav CHAR(1) DEFAULT 'Y',
+        cal_cat_id INT NULL,
+        cal_include_empty CHAR(1) DEFAULT 'N',
+        cal_show_in_trailer CHAR(1) DEFAULT 'N',
+        cal_update_date INT NOT NULL,
+        PRIMARY KEY (cal_report_id)
+    )");
+    $db->query("CREATE TABLE webcal_report_template (
+        cal_report_id INT NOT NULL,
+        cal_template_type CHAR(1) NOT NULL,
+        cal_template_text TEXT,
+        PRIMARY KEY (cal_report_id, cal_template_type)
+    )");
+    $db->query("CREATE TABLE webcal_access_user (
+        cal_login VARCHAR(25) NOT NULL,
+        cal_other_user VARCHAR(25) NOT NULL,
+        cal_can_view INT NOT NULL DEFAULT '0',
+        cal_can_edit INT NOT NULL DEFAULT '0',
+        cal_can_approve INT NOT NULL DEFAULT '0',
+        cal_can_invite CHAR(1) NOT NULL DEFAULT 'Y',
+        cal_can_email CHAR(1) NOT NULL DEFAULT 'Y',
+        cal_see_time_only CHAR(1) NOT NULL DEFAULT 'N',
+        PRIMARY KEY (cal_login, cal_other_user)
+    )");
+    $db->query("CREATE TABLE webcal_access_function (
+        cal_login VARCHAR(25) NOT NULL,
+        cal_permissions VARCHAR(64) NOT NULL,
+        PRIMARY KEY (cal_login)
+    )");
+    $db->query("CREATE TABLE webcal_user_template (
+        cal_login VARCHAR(25) NOT NULL DEFAULT '',
+        cal_type CHAR(1) NOT NULL DEFAULT '',
+        cal_template_text TEXT,
+        PRIMARY KEY (cal_login, cal_type)
+    )");
+    $db->query("CREATE TABLE webcal_entry_categories (
+        cal_id INT NOT NULL DEFAULT '0',
+        cat_id INT NOT NULL DEFAULT '0',
+        cat_order INT NOT NULL DEFAULT '0',
+        cat_owner VARCHAR(25) DEFAULT '' NOT NULL,
+        PRIMARY KEY (cal_id, cat_id, cat_order, cat_owner)
+    )");
+    $db->query("CREATE INDEX webcal_entry_categories_cat_id ON webcal_entry_categories(cat_id)");
+    $db->query("CREATE INDEX webcal_entry_categories_cal_id ON webcal_entry_categories(cal_id)");
+    $db->query("CREATE TABLE webcal_blob (
+        cal_blob_id INT NOT NULL,
+        cal_id INT NULL,
+        cal_login VARCHAR(25) NULL,
+        cal_name VARCHAR(30) NULL,
+        cal_description VARCHAR(128) NULL,
+        cal_size INT NULL,
+        cal_mime_type VARCHAR(50) NULL,
+        cal_type CHAR(1) NOT NULL,
+        cal_mod_date INT NOT NULL,
+        cal_mod_time INT NOT NULL,
+        cal_blob BLOB,
+        PRIMARY KEY (cal_blob_id)
+    )");
+    $db->query("CREATE TABLE webcal_timezones (
+        tzid VARCHAR(100) NOT NULL DEFAULT '',
+        dtstart VARCHAR(25) DEFAULT NULL,
+        dtend VARCHAR(25) DEFAULT NULL,
+        vtimezone TEXT,
+        PRIMARY KEY (tzid)
+    )");
+    $db->query("CREATE TABLE webcal_translations (
+        phrase VARCHAR(300) NOT NULL,
+        on_page VARCHAR(50) NOT NULL,
+        English_US VARCHAR(300) NOT NULL,
+        Afrikaans VARCHAR(300) NOT NULL,
+        Albanian VARCHAR(300) NOT NULL,
+        Arabic VARCHAR(300) NOT NULL,
+        Armenian VARCHAR(300) NOT NULL,
+        Azerbaijan VARCHAR(300) NOT NULL,
+        Basque VARCHAR(300) NOT NULL,
+        Belarusian VARCHAR(300) NOT NULL,
+        Bulgarian VARCHAR(300) NOT NULL,
+        Catalan VARCHAR(300) NOT NULL,
+        Chamorro VARCHAR(300) NOT NULL,
+        Chinese_Big5 VARCHAR(300) NOT NULL,
+        Chinese_GB2312 VARCHAR(300) NOT NULL,
+        Croatian VARCHAR(300) NOT NULL,
+        Czech VARCHAR(300) NOT NULL,
+        Danish VARCHAR(300) NOT NULL,
+        Dutch VARCHAR(300) NOT NULL,
+        Elven VARCHAR(300) NOT NULL,
+        Esperanto VARCHAR(300) NOT NULL,
+        Estonian VARCHAR(300) NOT NULL,
+        Faroese VARCHAR(300) NOT NULL,
+        Farsi VARCHAR(300) NOT NULL,
+        Finnish VARCHAR(300) NOT NULL,
+        French VARCHAR(300) NOT NULL,
+        Galician VARCHAR(300) NOT NULL,
+        Georgian VARCHAR(300) NOT NULL,
+        German VARCHAR(300) NOT NULL,
+        Greek VARCHAR(300) NOT NULL,
+        Hebrew VARCHAR(300) NOT NULL,
+        Hungarian VARCHAR(300) NOT NULL,
+        Icelandic VARCHAR(300) NOT NULL,
+        Indonesian VARCHAR(300) NOT NULL,
+        Italian VARCHAR(300) NOT NULL,
+        Japanese VARCHAR(300) NOT NULL,
+        Klingon VARCHAR(300) NOT NULL,
+        Korean VARCHAR(300) NOT NULL,
+        Latvian VARCHAR(300) NOT NULL,
+        Lithuanian VARCHAR(300) NOT NULL,
+        Malaysian VARCHAR(300) NOT NULL,
+        Myanmar VARCHAR(300) NOT NULL,
+        Norwegian VARCHAR(300) NOT NULL,
+        Persian VARCHAR(300) NOT NULL,
+        Polish VARCHAR(300) NOT NULL,
+        Portuguese VARCHAR(300) NOT NULL,
+        Portuguese_BR VARCHAR(300) NOT NULL,
+        Romanian VARCHAR(300) NOT NULL,
+        Russian VARCHAR(300) NOT NULL,
+        Serbian VARCHAR(300) NOT NULL,
+        Sinhala VARCHAR(300) NOT NULL,
+        Slovakian VARCHAR(300) NOT NULL,
+        Slovenian VARCHAR(300) NOT NULL,
+        Spanish VARCHAR(300) NOT NULL,
+        Swedish VARCHAR(300) NOT NULL,
+        Taiwanese VARCHAR(300) NOT NULL,
+        Turkish VARCHAR(300) NOT NULL,
+        Ukrainian VARCHAR(300) NOT NULL,
+        Vietnamese VARCHAR(300) NOT NULL,
+        Welsh VARCHAR(300) NOT NULL,
+        PRIMARY KEY (phrase)
+    )");
+    #$c->close();
 }
-#var_dump($argv);
-
-echo "SQLite3 output file: $outputFile\n";
-
-$db_type = 'sqlite3';
-$db_name = $outputFile;
-$db_host = 'n/a';
-$db_login = 'n/a';
-$db_password = 'n/a';
-$db_persistent = false;
-
-$c = dbi_connect( $db_host, $db_login, $db_password, $db_name, false );
-
-populate_sqlite_db($db_name, $c, false);
-
-echo "SQLite3 database created and populated.\n";
-
-if ($createAdminAccount) {
-  $password = password_hash ( $adminPassword, PASSWORD_DEFAULT );
-  $sql = 'INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin ) ' .
-    ' VALUES ( ?, ?, ?, ?, ? )';
-  $values = [$adminUsername, $password, 'Administrator', 'Default', 'Y'];
-  if (! dbi_execute ($sql, $values)) {
-    $error = db_error();
-    echo "Error: $error\n";
-    exit;
-  }
-  echo "Admin user created: $adminUsername\n";
-}
-
-// Add default settings
-db_load_config();
-echo "Default settings saved in database.\n";
-
 ?>
