@@ -332,23 +332,23 @@ if( ! empty( $otheruser ) ) {
     echo '
       <input type="hidden" name="guser" value="' . $guser . '">
       <input type="hidden" name="otheruser" value="' . $otheruser . '"><br>
-      <table cellpadding="5">
+      <table style="padding: 5px;">
         <tbody>
           <tr>
             <th class="'
       . ( $guser === '__public__'
-        ? 'aligncenter" width="60%">' . translate ( 'Calendar' ) . '</th>
-            <th class="boxtop boxbottom" width="20%">' . $typeStr . '</th>
-            <th class="boxtop boxright boxbottom" colspan="3" width="20%">'
+        ? 'aligncenter" style="inline-size: 60%">' . translate ( 'Calendar' ) . '</th>
+            <th class="boxtop boxbottom" style="inline-size: 20%">' . $typeStr . '</th>
+            <th class="boxtop boxright boxbottom" colspan="3" style="inline-size: 20%">'
           . translate ( 'View Event' )
-        : 'boxtop boxbottom boxleft" width="25%">'
+        : 'boxtop boxbottom boxleft" style="inline-size: 25%">'
           . $otheruser_fullname . '</th>
-            <th class="boxtop boxbottom" width="15%">' . $typeStr . '</th>
-            <th class="boxtop boxbottom" colspan="3" width="15%">'
+            <th class="boxtop boxbottom" style="inline-size: 15%">' . $typeStr . '</th>
+            <th class="boxtop boxbottom" colspan="3" style="inline-size: 15%">'
           . translate ( 'View' ) . '</th>
-            <th class="boxtop boxbottom" colspan="3" width="15%">'
+            <th class="boxtop boxbottom" colspan="3" style="inline-size: 15%">'
           . translate ( 'Edit' ) . '</th>
-            <th class="boxtop boxright boxbottom" colspan="3" width="15%">'
+            <th class="boxtop boxright boxbottom" colspan="3" style="inline-size: 15%">'
           . translate ( 'Approve/Reject' ) ) . '</th>
           </tr>';
 
@@ -443,7 +443,7 @@ if( ! empty( $otheruser ) ) {
       . 'onclick="selectAll(0);">' . translate ( 'Clear All' ) . '</button>
             </td>
             <td colspan="9" class="boxright">
-              <table class="aligncenter" cellpadding="5" cellspacing="2">
+              <table class="aligncenter" style="border-collapse: separate; border-spacing: 2px; padding: 5px;">
                 <tr>
                   <td class="pub">' . translate( 'Public' ) . '</td>
                   <td class="conf">' . translate( 'Confidential' ) . '</td>

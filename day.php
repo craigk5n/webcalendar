@@ -69,9 +69,9 @@ print_header ( ['js/popups.js/true', 'js/dblclick_add.js/true'],
 
 echo <<<EOT
 
-    <table cellpadding="1">
+    <table style="padding: 1px;">
       <tr>
-        <td width="80%">
+        <td style="inline-size: 80%">
           {$navStr}
         </td>
         <td class="aligntop" rowspan="2">

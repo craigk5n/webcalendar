@@ -3,7 +3,7 @@
  * Description:
  * This script is intended to be used inside an IFRAME on another website
  * It can be embedded like so
- * <iframe name="minical" frameborder="0" height="190" width="250"
+ * <iframe name="minical" frameborder="0" style="inline-size: 250px; block-size: 190px;"
  *   src="http://cal/minical.php";>
  *
  * You must have public access enabled in System Settings to use this page
