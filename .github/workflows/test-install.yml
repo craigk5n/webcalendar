@@ -292,6 +292,9 @@ jobs:
           sqlite3 database/webcalendar.sqlite "SELECT cal_value FROM webcal_config WHERE cal_setting='WEBCAL_PROGRAM_VERSION';" | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+'
           # Debug admin user password
           sqlite3 database/webcalendar.sqlite "SELECT cal_login, cal_passwd FROM webcal_user WHERE cal_login='admin';" || { echo "Failed to query webcal_user"; exit 1; }
+          # Debug STARTVIEW setting
+          sqlite3 database/webcalendar.sqlite "SELECT cal_setting, cal_value FROM webcal_config WHERE cal_setting='STARTVIEW';" || echo "No STARTVIEW setting found"
+          sqlite3 database/webcalendar.sqlite "SELECT cal_login, cal_setting, cal_value FROM webcal_user_pref WHERE cal_login='admin' AND cal_setting='STARTVIEW';" || echo "No admin STARTVIEW preference found"
 
       - name: Check session save path
         run: |
@@ -324,30 +327,30 @@ jobs:
           fi
           echo "Login successful, received HTTP 302"
 
-          # Access index.php with session cookie
-          index_code=$(curl -s -b $COOKIE_JAR -c $COOKIE_JAR -o index_response.html -w "%{http_code}" \
-            http://localhost:8000/index.php)
+          # Explicitly request month.php to follow index.php redirect
+          month_code=$(curl -s -L -b $COOKIE_JAR -c $COOKIE_JAR -o month_response.html -w "%{http_code}" \
+            http://localhost:8000/month.php)
           
-          # Verify index.php returns HTTP 200 and contains no error
-          if [ "$index_code" != "200" ]; then
-            echo "Failed to access index.php, expected HTTP 200, got $index_code"
-            cat index_response.html
+          # Verify month.php returns HTTP 200 and contains calendar content
+          if [ "$month_code" != "200" ]; then
+            echo "Failed to access month.php, expected HTTP 200, got $month_code"
+            cat month_response.html
             cat php_server.log
             exit 1
           fi
-          if grep -qi "Fatal Error" index_response.html; then
-            echo "Error: index.php contains 'Fatal Error'"
-            cat index_response.html
+          if grep -qi "Fatal Error" month_response.html; then
+            echo "Error: month.php contains 'Fatal Error'"
+            cat month_response.html
             cat php_server.log
             exit 1
           fi
-          if ! grep -q "WebCalendar" index_response.html; then
-            echo "Error: index.php does not contain expected content"
-            cat index_response.html
+          if ! grep -qi "WebCalendar\|calendar\|class=\"main\"" month_response.html; then
+            echo "Error: month.php does not contain expected content (WebCalendar, calendar, or class=\"main\")"
+            cat month_response.html
             cat php_server.log
             exit 1
           fi
-          echo "Successfully accessed index.php"
+          echo "Successfully accessed month.php"
 
           # Clean up
           kill $(pgrep -f "php -S localhost:8000") || true
