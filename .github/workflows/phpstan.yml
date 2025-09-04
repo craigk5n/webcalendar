@@ -47,14 +47,38 @@ jobs:
                   - includes/
                   - install/
                   - tools/
-              ignoreErrors:
-                  - '#Undefined array key "QUERY_STRING"#'
           EOF
           cat phpstan.neon # Debug: Show phpstan.neon
 
-      - name: Run PHPStan
+      - name: Generate PHPStan baseline
         run: |
-          ./phpstan.phar analyse --configuration=phpstan.neon includes/ install/ tools/ *.php --memory-limit=1G --error-format=table | tee phpstan.log
+          ./phpstan.phar analyse --configuration=phpstan.neon includes/ install/ tools/ *.php --memory-limit=1G --error-format=raw --generate-baseline | tee phpstan-baseline.log
+          if [ $? -ne 0 ]; then
+            echo "Baseline generation failed, see phpstan-baseline.log"
+            cat phpstan-baseline.log
+            exit 1
+          fi
+          if [ -f phpstan-baseline.neon ]; then
+            echo "Baseline generated: phpstan-baseline.neon"
+            cat phpstan-baseline.neon
+          else
+            echo "Error: Baseline file not generated"
+            cat phpstan-baseline.log
+            exit 1
+          fi
+
+      - name: Upload PHPStan baseline as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: phpstan-baseline
+          path: |
+            phpstan-baseline.log
+            phpstan-baseline.neon
+          retention-days: 5
+
+      - name: Run PHPStan with baseline
+        run: |
+          ./phpstan.phar analyse --configuration=phpstan.neon --baseline=phpstan-baseline.neon includes/ install/ tools/ *.php --memory-limit=1G --error-format=raw | tee phpstan.log
           if [ $? -ne 0 ]; then
             echo "PHPStan failed, see phpstan.log"
             cat phpstan.log
@@ -76,4 +100,4 @@ jobs:
         with:
           name: phpstan-report
           path: phpstan.log
-          retention-days: 5 # Keep artifact for 5 days
+          retention-days: 60
