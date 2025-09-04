@@ -10,6 +10,15 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Enable debug output (set to true for verbose logging)
+define('DEBUG', false);
+
+function debug_echo($message) {
+    if (DEBUG) {
+        echo $message . PHP_EOL;
+    }
+}
+
 if (php_sapi_name() !== 'cli') {
     echo 'This is a CLI script and should not be invoked via the web server' . PHP_EOL;
     exit(1);
@@ -34,6 +43,7 @@ foreach ($required_files as $file) {
         ob_end_flush();
         exit(1);
     }
+    debug_echo("Including file: $file");
     include_once $file;
 }
 
@@ -51,10 +61,12 @@ if (!file_exists($file)) {
 // We need the $_SESSION superglobal to pass data to and from some of the update
 // functions. Sessions are basically useless in CLI mode, but technically the
 // session functions *do* work.
+debug_echo("Starting session...");
 session_name(getSessionName());
 session_start();
 
 // Load the settings.php file or get settings from env vars.
+debug_echo("Loading configuration...");
 do_config(true);
 
 // We'll grab database settings from settings.php.
@@ -73,6 +85,8 @@ if (empty($db_type)) {
     exit(1);
 }
 
+debug_echo("Database settings: type=$db_type, db=$real_db, host=$db_host, login=$db_login");
+
 // Can we connect?
 $c = null;
 $dbVersion = null;
@@ -80,10 +94,12 @@ $detectedDbVersion = 'Unknown';
 $canConnectDb = false;
 $connectError = '';
 try {
+    debug_echo("Attempting database connection...");
     $c = dbi_connect($db_host, $db_login, $db_password, $real_db, false);
     if ($c) {
         $dbVersion = $detectedDbVersion = getDatabaseVersionFromSchema();
         $canConnectDb = true;
+        debug_echo("Database connection successful. Detected version: $detectedDbVersion");
     } else {
         $connectError = dbi_error();
         echo "Error: Failed to connect to database: $connectError" . PHP_EOL;
@@ -98,9 +114,10 @@ try {
 }
 
 $emptyDatabase = $canConnectDb ? isEmptyDatabase() : true;
+debug_echo("Empty database check: $emptyDatabase, db_type: $db_type, install_file: " . ($_SESSION['install_file'] ?? 'not set'));
 
-if ($c && !empty($_SESSION['install_file']) && $emptyDatabase && $db_type === 'sqlite3') {
-    $install_filename = 'sql/tables-sqlite3.php';
+if ($c && $emptyDatabase && $db_type === 'sqlite3') {
+    $install_filename = $_SESSION['install_file'] ?? 'sql/tables-sqlite3.php';
     echo "Executing SQLite3 installation: $install_filename" . PHP_EOL;
     if (!file_exists($install_filename)) {
         echo "Error: Install file $install_filename not found" . PHP_EOL;
@@ -108,17 +125,20 @@ if ($c && !empty($_SESSION['install_file']) && $emptyDatabase && $db_type === 's
         exit(1);
     }
     try {
+        debug_echo("Starting table creation...");
         populate_sqlite_db($real_db, $c);
+        echo "SQLite database tables created successfully" . PHP_EOL;
         // Verify table creation
         $tables = dbi_query("SELECT name FROM sqlite_master WHERE type='table' AND name='webcal_user';");
         if ($tables && dbi_fetch_row($tables)) {
-            echo "Verified: webcal_user table exists" . PHP_EOL;
+            debug_echo("Verified: webcal_user table exists");
         } else {
             echo "Error: webcal_user table not created" . PHP_EOL;
             ob_end_flush();
             exit(1);
         }
         // Set initial version for new database
+        debug_echo("Setting initial database version...");
         if (!isset($PROGRAM_VERSION)) {
             $PROGRAM_VERSION = 'v1.9.12'; // Match latest version
             echo "Warning: PROGRAM_VERSION not set, using default: $PROGRAM_VERSION" . PHP_EOL;
@@ -152,6 +172,7 @@ if ($c && !empty($_SESSION['install_file']) && $emptyDatabase && $db_type === 's
         default:
             $install_filename .= 'mysql.sql';
     }
+    debug_echo("Executing SQL file: $install_filename");
     executeSqlFromFile($install_filename);
 }
 
@@ -167,7 +188,7 @@ $res = dbi_execute(
 if ($res) {
     while ($row = dbi_fetch_row($res)) {
         if (strlen($row[1]) < 30) {
-            echo "Updating password for user: {$row[0]}" . PHP_EOL;
+            debug_echo("Updating password for user: {$row[0]}");
             dbi_execute('UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?',
                 [password_hash($row[1], PASSWORD_DEFAULT), $row[0]]);
         }
@@ -201,7 +222,7 @@ try {
                 if (str_starts_with($sql, "function:")) {
                     list(, $functionName) = explode(':', $sql);
                     if (function_exists($functionName)) {
-                        echo "Executing function: $functionName\n";
+                        debug_echo("Executing function: $functionName");
                         $functionName();
                     } else {
                         $error = "Function $functionName does not exist.";
@@ -211,10 +232,10 @@ try {
                 } else {
                     // Skip MySQL-specific MODIFY COLUMN for SQLite
                     if ($db_type === 'sqlite3' && preg_match('/ALTER TABLE.*MODIFY COLUMN/i', $sql)) {
-                        echo "Skipping MySQL-specific SQL for SQLite: $sql\n";
+                        debug_echo("Skipping MySQL-specific SQL for SQLite: $sql");
                         continue;
                     }
-                    echo "Executing SQL: $sql\n";
+                    debug_echo("Executing SQL: $sql");
                     $ret = dbi_execute($sql, [], false, true);
                     if (!$ret) {
                         $success = false;
