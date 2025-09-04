@@ -54,7 +54,7 @@ jobs:
 
       - name: Run PHPStan
         run: |
-          ./phpstan.phar analyse --configuration=phpstan.neon includes/ install/ tools/ *.php --memory-limit=1G --error-format=table
+          ./phpstan.phar analyse --configuration=phpstan.neon includes/ install/ tools/ *.php --memory-limit=1G --error-format=table | tee phpstan.log
           if [ $? -ne 0 ]; then
             echo "PHPStan failed, see phpstan.log"
             cat phpstan.log
@@ -70,3 +70,10 @@ jobs:
             cat phpstan.log
             exit 1
           fi
+
+      - name: Upload PHPStan report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: phpstan-report
+          path: phpstan.log
+          retention-days: 5 # Keep artifact for 5 days
