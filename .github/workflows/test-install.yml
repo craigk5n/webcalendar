@@ -30,10 +30,8 @@ jobs:
           ls -l database/webcalendar.sqlite # Debug: Verify DB file
 
       - name: Create settings.php from settings.php.orig
-        run: cp includes/settings.php.orig includes/settings.php
-
-      - name: Configure WebCalendar for SQLite
         run: |
+          cp includes/settings.php.orig includes/settings.php
           sed -i 's|db_type:.*|db_type: sqlite3|' includes/settings.php
           sed -i 's|db_database:.*|db_database: ../database/webcalendar.sqlite|' includes/settings.php
           sed -i 's|db_host:.*|db_host: localhost|' includes/settings.php
@@ -292,16 +290,64 @@ jobs:
           sqlite3 database/webcalendar.sqlite "SELECT name FROM sqlite_master WHERE type='table' AND name='webcal_user';" | grep webcal_user
           # Verify version in database
           sqlite3 database/webcalendar.sqlite "SELECT cal_value FROM webcal_config WHERE cal_setting='WEBCAL_PROGRAM_VERSION';" | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+'
+          # Debug admin user password
+          sqlite3 database/webcalendar.sqlite "SELECT cal_login, cal_passwd FROM webcal_user WHERE cal_login='admin';" || { echo "Failed to query webcal_user"; exit 1; }
+
+      - name: Check session save path
+        run: |
+          php -r 'echo "Session save path: " . session_save_path() . "\n";'
+          if [ ! -w "$(php -r 'echo session_save_path();')" ]; then
+            echo "Error: Session save path is not writable"
+            exit 1
+          fi
 
       - name: Test web-based login
         run: |
           # Start PHP server in background
-          php -S localhost:8000 -t . & sleep 5
-          # Simulate login with admin credentials
-          http_code=$(curl -L -c cookies.txt -b cookies.txt -o login_response.html -w "%{http_code}" -X POST http://localhost:8000/login.php -d "login=admin&password=admin")
+          php -S localhost:8000 -t . > php_server.log 2>&1 &
+          sleep 5  # Wait for server to start
+
+          # Create a cookie jar to store session cookies
+          COOKIE_JAR=cookies.txt
+          touch $COOKIE_JAR
+
+          # POST to login.php with admin credentials and action=login
+          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o login_response.html -w "%{http_code}" -X POST \
+            http://localhost:8000/login.php -d "login=admin&password=admin&action=login")
+          
           # Verify login success (HTTP 302 for redirect)
-          [ "$http_code" = "302" ] || { echo "Login failed, expected HTTP 302, got $http_code"; cat login_response.html; exit 1; }
-          # Verify response contains WebCalendar
-          grep -q "WebCalendar" login_response.html || { echo "WebCalendar not found in response"; cat login_response.html; exit 1; }
+          if [ "$http_code" != "302" ]; then
+            echo "Login failed, expected HTTP 302, got $http_code"
+            cat login_response.html
+            cat php_server.log
+            exit 1
+          fi
+          echo "Login successful, received HTTP 302"
+
+          # Access index.php with session cookie
+          index_code=$(curl -s -b $COOKIE_JAR -c $COOKIE_JAR -o index_response.html -w "%{http_code}" \
+            http://localhost:8000/index.php)
+          
+          # Verify index.php returns HTTP 200 and contains no error
+          if [ "$index_code" != "200" ]; then
+            echo "Failed to access index.php, expected HTTP 200, got $index_code"
+            cat index_response.html
+            cat php_server.log
+            exit 1
+          fi
+          if grep -qi "Fatal Error" index_response.html; then
+            echo "Error: index.php contains 'Fatal Error'"
+            cat index_response.html
+            cat php_server.log
+            exit 1
+          fi
+          if ! grep -q "WebCalendar" index_response.html; then
+            echo "Error: index.php does not contain expected content"
+            cat index_response.html
+            cat php_server.log
+            exit 1
+          fi
+          echo "Successfully accessed index.php"
+
           # Clean up
           kill $(pgrep -f "php -S localhost:8000") || true
