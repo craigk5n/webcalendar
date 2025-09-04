@@ -1,0 +1,17 @@
+name: PHPStan Static Analysis
+
+on:
+  push:
+    branches: [ master, release ]
+  pull_request:
+
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+      - run: composer install --no-interaction --prefer-dist
+      - run: vendor/bin/phpstan analyse --level=max --no-progress src/ || vendor/bin/phpstan analyse --level=max --no-progress .
