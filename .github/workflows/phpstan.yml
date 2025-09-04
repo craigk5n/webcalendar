@@ -54,7 +54,7 @@ jobs:
 
       - name: Run PHPStan
         run: |
-          ./phpstan.phar analyse --configuration=phpstan.neon includes/ install/ tools/ *.php --memory-limit=1G --error-format=github | tee phpstan.log
+          ./phpstan.phar analyse --configuration=phpstan.neon includes/ install/ tools/ *.php --memory-limit=1G --error-format=table
           if [ $? -ne 0 ]; then
             echo "PHPStan failed, see phpstan.log"
             cat phpstan.log
