@@ -15,8 +15,7 @@ jobs:
           php-version: '8.1'
       - run: composer install --no-interaction --prefer-dist
       - name: Run PHPStan
-        uses: phpstan/phpstan-action@v1
+        uses: phpstan/github-action@v1
         with:
           level: max
-          configuration: phpstan.neon
           path: src
