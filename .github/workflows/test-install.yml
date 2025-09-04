@@ -88,7 +88,6 @@ jobs:
                   echo "Error: Missing required file: $file" . PHP_EOL;
                   exit(1);
               }
-              echo "Including file: $file" . PHP_EOL;
               include_once $file;
           }
           define('__WC_BASEDIR', __DIR__ . '/../');
@@ -102,6 +101,9 @@ jobs:
           echo "Starting session..." . PHP_EOL;
           session_name(getSessionName());
           session_start();
+          foreach ($required_files as $file) {
+              echo "Included file: $file" . PHP_EOL;
+          }
           echo "Loading configuration..." . PHP_EOL;
           do_config(true);
           $db_database = $settings['db_database'] ?? '';
@@ -139,44 +141,22 @@ jobs:
               exit(1);
           }
           $emptyDatabase = $canConnectDb ? isEmptyDatabase() : true;
-          $reportedDbVersion = 'Unknown';
-          $adminUserCount = 0;
-          $databaseExists = false;
-          $databaseCurrent = false;
-          if ($c && !empty($_SESSION['install_file'])) {
-              $install_filename = (str_starts_with($dbVersion, "v")) ? "upgrade-" : "tables-";
-              switch ($db_type) {
-                  case 'ibase':
-                  case 'mssql':
-                  case 'oracle':
-                      $install_filename .= $db_type . '.sql';
-                      break;
-                  case 'ibm_db2':
-                      $install_filename .= 'db2.sql';
-                      break;
-                  case 'odbc':
-                      $install_filename .= $_SESSION['odbc_db'] . '.sql';
-                      break;
-                  case 'postgresql':
-                      $install_filename .= 'postgres.sql';
-                      break;
-                  case 'sqlite3':
-                      $install_filename = $_SESSION['install_file'];
-                      echo "Executing SQLite3 installation: $install_filename" . PHP_EOL;
-                      if (!file_exists($install_filename)) {
-                          echo "Error: Install file $install_filename not found" . PHP_EOL;
-                          exit(1);
-                      }
-                      include_once $install_filename;
-                      populate_sqlite_db($real_db, $c);
-                      $install_filename = '';
-                      break;
-                  default:
-                      $install_filename .= 'mysql.sql';
+          if ($emptyDatabase && $db_type === 'sqlite3' && !empty($_SESSION['install_file'])) {
+              $install_filename = $_SESSION['install_file'];
+              echo "Executing SQLite3 installation: $install_filename" . PHP_EOL;
+              if (!file_exists($install_filename)) {
+                  echo "Error: Install file $install_filename not found" . PHP_EOL;
+                  exit(1);
               }
-              if (!empty($install_filename)) {
-                  echo "Executing SQL from file: $install_filename" . PHP_EOL;
-                  executeSqlFromFile($install_filename);
+              include_once $install_filename;
+              try {
+                  echo "Starting table creation..." . PHP_EOL;
+                  populate_sqlite_db($real_db, $c);
+                  echo "SQLite database tables created successfully" . PHP_EOL;
+              } catch (Exception $e) {
+                  echo "Error: Failed to populate SQLite database: " . $e->getMessage() . PHP_EOL;
+                  echo "Last SQL error: " . dbi_error() . PHP_EOL;
+                  exit(1);
               }
           }
           echo "Checking passwords..." . PHP_EOL;
@@ -204,7 +184,7 @@ jobs:
           try {
               $success = true;
               if (empty($error)) {
-                  if ($emptyDatabase) {
+                  if ($emptyDatabase && $db_type !== 'sqlite3') {
                       echo "Empty database -> creating all tables" . PHP_EOL;
                       if (!empty($install_filename)) {
                           executeSqlFromFile($install_filename);
@@ -258,7 +238,6 @@ jobs:
           }
           ?>
           EOF
-
       - name: Create run_install.php
         run: |
           cat << 'EOF' > run_install.php
