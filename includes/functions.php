@@ -20,6 +20,8 @@
  *    Retrieve preferences from the webcal_user_pref table.
  */
 
+use App\Helpers\DateDisplay;
+
 $tzInitSet = false;
 
 /**
@@ -3452,20 +3454,6 @@ translate ( 'minutes' )
 }
 
 /**
- * Remove :00 from times based on $DISPLAY_MINUTES value.
- *
- * @param string $timestr  time value to shorten
- *
- * @global string (Y/N)  Display 00 if on the hour
- */
-function getShortTime ( $timestr ) {
-  global $DISPLAY_MINUTES;
-
-  return ( empty ( $DISPLAY_MINUTES ) || $DISPLAY_MINUTES == 'N'
-    ? preg_replace ( '/(:00)/', '', $timestr ) : $timestr );
-}
-
-/**
  * Converts from Gregorian Year-Month-Day to ISO YearNumber-WeekNumber-WeekDay.
  *
  * @internal JGH borrowed gregorianToISO from PEAR Date_Calc Class and added
@@ -4991,7 +4979,7 @@ function print_entry ( $event, $date ) {
       $timestr = $popup_timestr;
 
     if ( $cal_type == 'event' )
-      $ret .= getShortTime ( $timestr )
+      $ret .= DateDisplay::getShortTime($timestr)
        . ( $time_only == 'Y' ? '' : $TIME_SPACER );
   }
   return $ret . build_entry_label ( $event, 'eventinfo-' . $linkid, $can_access,

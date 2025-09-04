@@ -34,6 +34,8 @@
 
 require_once 'includes/init.php';
 
+use App\Helpers\DateDisplay;
+
 /**
  * Replaces all site_extras placeholders in a template with the actual data.
  *
@@ -86,7 +88,7 @@ function event_to_text ( $event, $date ) {
     $time_str = translate ( 'Untimed event' );
   else {
     $start_time_str = $time_str = display_time ( $event->getDateTime() );
-    $time_short = getShortTime ( $time_str );
+    $time_short = DateDisplay::getShortTime($time_str);
     if ( $tempDurStr > 0 ) {
       if ( $tempAllDay )
         $time_str = $allDayStr;
