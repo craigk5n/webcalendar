@@ -53,6 +53,7 @@ jobs:
           ls -l install/default_config.php || { echo "Missing default_config.php"; exit 1; }
           ls -l install/install_functions.php || { echo "Missing install_functions.php"; exit 1; }
           ls -l install/sql/upgrade_matrix.php || { echo "Missing upgrade_matrix.php"; exit 1; }
+          ls -l install/install_auth_handler.php || { echo "Missing install_auth_handler.php"; exit 1; }
 
       - name: Start PHP server
         run: |
@@ -75,41 +76,58 @@ jobs:
           fi
           echo "Extracted CSRF token: $CSRF_TOKEN"
 
-          # Step 2: POST to welcome/action (assuming it's the first form)
-          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step2_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=welcome&csrf_form_key=$CSRF_TOKEN")
-          if [ "$http_code" != "302" ]; then
-            echo "Failed welcome step, expected HTTP 302, got $http_code"
+          # Step 2: GET auth page (welcome links to auth via GET)
+          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=auth -o step2_response.html)
+          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step2_response.html -w "%{http_code}" http://localhost:8000/install/index.php?action=auth)
+          if [ "$http_code" != "200" ]; then
+            echo "Failed auth GET, expected HTTP 200, got $http_code"
             cat step2_response.html
             cat php_server.log
             exit 1
           fi
 
-          # Step 3: POST to phpsettings/action
-          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=phpsettings -o step3_response.html)
-          CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step3_response.html || echo "")
-          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step3_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=phpsettings&csrf_form_key=$CSRF_TOKEN")
+          # Step 3: POST to auth/action
+          CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step2_response.html || echo "")
+          if [ -z "$CSRF_TOKEN" ]; then
+            echo "Error: Could not extract CSRF token from auth step"
+            cat step2_response.html
+            cat php_server.log
+            exit 1
+          fi
+          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step3_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=auth&install_password=test123&csrf_form_key=$CSRF_TOKEN")
           if [ "$http_code" != "302" ]; then
-            echo "Failed phpsettings step, expected HTTP 302, got $http_code"
+            echo "Failed auth POST, expected HTTP 302, got $http_code"
             cat step3_response.html
             cat php_server.log
             exit 1
           fi
 
-          # Step 4: POST to appsettings/action
-          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=appsettings -o step4_response.html)
+          # Step 4: POST to phpsettings/action
+          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=phpsettings -o step4_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step4_response.html || echo "")
-          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step4_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=appsettings&user_inc=user.php&csrf_form_key=$CSRF_TOKEN")
+          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step4_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=phpsettings&csrf_form_key=$CSRF_TOKEN")
           if [ "$http_code" != "302" ]; then
-            echo "Failed appsettings step, expected HTTP 302, got $http_code"
+            echo "Failed phpsettings step, expected HTTP 302, got $http_code"
             cat step4_response.html
             cat php_server.log
             exit 1
           fi
 
-          # Step 5: POST to dbsettings/action (main DB config, simulate AJAX test)
-          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=dbsettings -o step5_response.html)
+          # Step 5: POST to appsettings/action
+          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=appsettings -o step5_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step5_response.html || echo "")
-          # Simulate AJAX DB test (optional, but to mimic)
+          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step5_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=appsettings&user_inc=user.php&mode=prod&single_user_login=admin&readonly=N&csrf_form_key=$CSRF_TOKEN")
+          if [ "$http_code" != "302" ]; then
+            echo "Failed appsettings step, expected HTTP 302, got $http_code"
+            cat step5_response.html
+            cat php_server.log
+            exit 1
+          fi
+
+          # Step 6: POST to dbsettings/action (main DB config, simulate AJAX test)
+          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=dbsettings -o step6_response.html)
+          CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step6_response.html || echo "")
+          # Simulate AJAX DB test
           ajax_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o ajax_response.json -w "%{http_code}" -X POST http://localhost:8000/install/install_ajax.php -d "dbType=sqlite3&server=localhost&login=&password=&dbName=../database/webcalendar.sqlite&dbCacheDir=&request=test-db-connection&csrf_form_key=$CSRF_TOKEN")
           if [ "$ajax_code" != "200" ]; then
             echo "Failed AJAX DB test, expected HTTP 200, got $ajax_code"
@@ -118,58 +136,58 @@ jobs:
             exit 1
           fi
           # Submit DB config form
-          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step5_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=dbsettings&db_type=sqlite3&db_host=localhost&db_login=&db_password=&db_database=../database/webcalendar.sqlite&db_cachedir=&db_debug=N&csrf_form_key=$CSRF_TOKEN")
+          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step6_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=dbsettings&db_type=sqlite3&db_host=localhost&db_login=&db_password=&db_database=../database/webcalendar.sqlite&db_cachedir=&db_debug=N&dbaction=save&csrf_form_key=$CSRF_TOKEN")
           if [ "$http_code" != "302" ]; then
             echo "Failed dbsettings step, expected HTTP 302, got $http_code"
-            cat step5_response.html
-            cat php_server.log
-            exit 1
-          fi
-
-          # Step 6: POST to createdb/action
-          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=createdb -o step6_response.html)
-          CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step6_response.html || echo "")
-          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step6_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=createdb&csrf_form_key=$CSRF_TOKEN")
-          if [ "$http_code" != "302" ]; then
-            echo "Failed createdb step, expected HTTP 302, got $http_code"
             cat step6_response.html
             cat php_server.log
             exit 1
           fi
 
-          # Step 7: POST to dbtables/action
-          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=dbtables -o step7_response.html)
+          # Step 7: POST to createdb/action
+          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=createdb -o step7_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step7_response.html || echo "")
-          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step7_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=dbtables&csrf_form_key=$CSRF_TOKEN")
+          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step7_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=createdb&csrf_form_key=$CSRF_TOKEN")
           if [ "$http_code" != "302" ]; then
-            echo "Failed dbtables step, expected HTTP 302, got $http_code"
+            echo "Failed createdb step, expected HTTP 302, got $http_code"
             cat step7_response.html
             cat php_server.log
             exit 1
           fi
 
-          # Step 8: POST to adminuser/action
-          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=adminuser -o step8_response.html)
+          # Step 8: POST to dbtables/action
+          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=dbtables -o step8_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step8_response.html || echo "")
-          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step8_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=adminuser&csrf_form_key=$CSRF_TOKEN")
+          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step8_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=dbtables&csrf_form_key=$CSRF_TOKEN")
           if [ "$http_code" != "302" ]; then
-            echo "Failed adminuser step, expected HTTP 302, got $http_code"
+            echo "Failed dbtables step, expected HTTP 302, got $http_code"
             cat step8_response.html
             cat php_server.log
             exit 1
           fi
 
-          # Step 9: GET finish page
-          finish_code=$(curl -s -L -b $COOKIE_JAR -c $COOKIE_JAR -o step9_response.html -w "%{http_code}" http://localhost:8000/install/index.php?action=finish)
-          if [ "$finish_code" != "200" ]; then
-            echo "Failed finish step, expected HTTP 200, got $finish_code"
+          # Step 9: POST to adminuser/action
+          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=adminuser -o step9_response.html)
+          CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step9_response.html || echo "")
+          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step9_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=adminuser&csrf_form_key=$CSRF_TOKEN")
+          if [ "$http_code" != "302" ]; then
+            echo "Failed adminuser step, expected HTTP 302, got $http_code"
             cat step9_response.html
             cat php_server.log
             exit 1
           fi
-          if ! grep -qi "Launch WebCalendar" step9_response.html; then
+
+          # Step 10: GET finish page
+          finish_code=$(curl -s -L -b $COOKIE_JAR -c $COOKIE_JAR -o step10_response.html -w "%{http_code}" http://localhost:8000/install/index.php?action=finish)
+          if [ "$finish_code" != "200" ]; then
+            echo "Failed finish step, expected HTTP 200, got $finish_code"
+            cat step10_response.html
+            cat php_server.log
+            exit 1
+          fi
+          if ! grep -qi "Launch WebCalendar" step10_response.html; then
             echo "Error: finish page does not contain expected content"
-            cat step9_response.html
+            cat step10_response.html
             cat php_server.log
             exit 1
           fi
@@ -183,9 +201,21 @@ jobs:
           sqlite3 database/webcalendar.sqlite "SELECT name FROM sqlite_master WHERE type='table' AND name='webcal_user';" | grep webcal_user
           # Verify version in database
           sqlite3 database/webcalendar.sqlite "SELECT cal_value FROM webcal_config WHERE cal_setting='WEBCAL_PROGRAM_VERSION';" | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+'
-          # Debug admin user password
-          sqlite3 database/webcalendar.sqlite "SELECT cal_login, cal_passwd FROM webcal_user WHERE cal_login='admin';" || { echo "Failed to query webcal_user"; exit 1; }
+          # Debug admin user
+          sqlite3 database/webcalendar.sqlite "SELECT cal_login, cal_is_admin FROM webcal_user WHERE cal_login='admin' AND cal_is_admin='Y';" || { echo "Failed to query admin user"; exit 1; }
+
+      - name: Upload installer logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: installer-logs
+          path: |
+            *.html
+            *.log
+            *.json
+          retention-days: 5
 
       - name: Clean up
         run: |
           kill $(pgrep -f "php -S localhost:8000") || true
+          
