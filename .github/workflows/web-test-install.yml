@@ -21,7 +21,7 @@ jobs:
           php-version: '8.1' # Use PHP 8.1 for sqlite3 support
           extensions: sqlite3, pdo_sqlite # sqlite3 is sufficient
           tools: none # No Composer needed
-          ini-values: display_errors=On, error_reporting=E_ALL # Enable error reporting
+          ini-values: display_errors=On, error_reporting=E_ALL, session.gc_maxlifetime=3600 # Enable error reporting, increase session timeout
 
       - name: Create SQLite database
         run: |
@@ -29,20 +29,11 @@ jobs:
           sqlite3 database/webcalendar.sqlite "VACUUM;" # Create empty SQLite DB
           ls -l database/webcalendar.sqlite # Debug: Verify DB file
 
-      - name: Create settings.php from settings.php.orig
+      - name: Create empty settings.php
         run: |
-          cp includes/settings.php.orig includes/settings.php
-          sed -i 's|db_type:.*|db_type: sqlite3|' includes/settings.php
-          sed -i 's|db_database:.*|db_database: ../database/webcalendar.sqlite|' includes/settings.php
-          sed -i 's|db_host:.*|db_host: localhost|' includes/settings.php
-          sed -i 's|db_login:.*|db_login: ""|' includes/settings.php
-          sed -i 's|db_password:.*|db_password: ""|' includes/settings.php
-          sed -i 's|install_password:.*|install_password: test123|' includes/settings.php
-          sed -i 's|single_user:.*|single_user: false|' includes/settings.php
-          sed -i 's|use_http_auth:.*|use_http_auth: false|' includes/settings.php
-          sed -i 's|user_inc:.*|user_inc: user.php|' includes/settings.php
-          echo "CSRF_PROTECTION: N" >> includes/settings.php # Disable CSRF for installer
-          cat includes/settings.php # Debug: Show settings.php
+          touch includes/settings.php
+          echo "" > includes/settings.php # Ensure empty settings.php
+          ls -l includes/settings.php # Debug: Verify file
 
       - name: Verify required files
         run: |
@@ -62,11 +53,15 @@ jobs:
 
       - name: Run web-based installer with cURL
         run: |
+          set -x # Enable debug output
           COOKIE_JAR=cookies.txt
           touch $COOKIE_JAR
+          echo "Cookie jar created: $COOKIE_JAR"
+          REDIRECT_COUNT=0
+          MAX_REDIRECTS=5
 
           # Step 1: GET install/index.php to start installer and capture CSRF token
-          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php -o step1_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" http://localhost:8000/install/index.php -o step1_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step1_response.html || echo "")
           if [ -z "$CSRF_TOKEN" ]; then
             echo "Error: Could not extract CSRF token from install/index.php"
@@ -75,9 +70,11 @@ jobs:
             exit 1
           fi
           echo "Extracted CSRF token: $CSRF_TOKEN"
+          echo "Cookie jar contents after index.php:"
+          cat $COOKIE_JAR
 
           # Step 2: GET auth page (welcome links to auth via GET)
-          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step2_response.html -w "%{http_code}" http://localhost:8000/install/index.php?action=auth --dump-header headers.txt)
+          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" http://localhost:8000/install/index.php?action=auth -o step2_response.html -w "%{http_code}" --dump-header headers.txt)
           if [ "$http_code" != "200" ]; then
             echo "Failed auth GET, expected HTTP 200, got $http_code"
             cat step2_response.html
@@ -86,6 +83,8 @@ jobs:
             exit 1
           fi
           echo "Auth GET redirect: $(grep -i location headers.txt || echo 'No redirect')"
+          echo "Cookie jar contents after auth GET:"
+          cat $COOKIE_JAR
 
           # Step 3: POST to auth/action
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step2_response.html || echo "")
@@ -96,7 +95,7 @@ jobs:
             cat php_server.log
             exit 1
           fi
-          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step3_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=auth&password=test123&password2=test123&hint=TestPass&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
+          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" -o step3_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=auth&password=test123&password2=test123&hint=&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$http_code" != "302" ]; then
             echo "Failed auth POST, expected HTTP 302, got $http_code"
             cat step3_response.html
@@ -105,11 +104,22 @@ jobs:
             exit 1
           fi
           echo "Auth POST redirect: $(grep -i location headers.txt)"
+          echo "Cookie jar contents after auth POST:"
+          cat $COOKIE_JAR
+
+          # Check for redirect loop
+          REDIRECT_COUNT=$((REDIRECT_COUNT + 1))
+          if [ "$REDIRECT_COUNT" -ge "$MAX_REDIRECTS" ]; then
+            echo "Error: Detected redirect loop (exceeded $MAX_REDIRECTS redirects)"
+            cat headers.txt
+            cat php_server.log
+            exit 1
+          fi
 
           # Step 4: POST to phpsettings/action
-          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=phpsettings -o step4_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" http://localhost:8000/install/index.php?action=phpsettings -o step4_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step4_response.html || echo "")
-          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step4_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=phpsettings&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
+          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" -o step4_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=phpsettings&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$http_code" != "302" ]; then
             echo "Failed phpsettings step, expected HTTP 302, got $http_code"
             cat step4_response.html
@@ -119,10 +129,19 @@ jobs:
           fi
           echo "Phpsettings POST redirect: $(grep -i location headers.txt)"
 
+          # Check for redirect loop
+          REDIRECT_COUNT=$((REDIRECT_COUNT + 1))
+          if [ "$REDIRECT_COUNT" -ge "$MAX_REDIRECTS" ]; then
+            echo "Error: Detected redirect loop (exceeded $MAX_REDIRECTS redirects)"
+            cat headers.txt
+            cat php_server.log
+            exit 1
+          fi
+
           # Step 5: POST to appsettings/action
-          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=appsettings -o step5_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" http://localhost:8000/install/index.php?action=appsettings -o step5_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step5_response.html || echo "")
-          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step5_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=appsettings&user_inc=user.php&mode=prod&single_user_login=admin&readonly=N&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
+          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" -o step5_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=appsettings&user_inc=user.php&mode=prod&single_user_login=admin&readonly=N&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$http_code" != "302" ]; then
             echo "Failed appsettings step, expected HTTP 302, got $http_code"
             cat step5_response.html
@@ -133,10 +152,10 @@ jobs:
           echo "Appsettings POST redirect: $(grep -i location headers.txt)"
 
           # Step 6: POST to dbsettings/action (main DB config, simulate AJAX test)
-          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=dbsettings -o step6_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" http://localhost:8000/install/index.php?action=dbsettings -o step6_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step6_response.html || echo "")
           # Simulate AJAX DB test
-          ajax_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o ajax_response.json -w "%{http_code}" -X POST http://localhost:8000/install/install_ajax.php -d "dbType=sqlite3&server=localhost&login=&password=&dbName=../database/webcalendar.sqlite&dbCacheDir=&request=test-db-connection&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
+          ajax_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" -o ajax_response.json -w "%{http_code}" -X POST http://localhost:8000/install/install_ajax.php -d "dbType=sqlite3&server=localhost&login=&password=&dbName=../database/webcalendar.sqlite&dbCacheDir=&request=test-db-connection&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$ajax_code" != "200" ]; then
             echo "Failed AJAX DB test, expected HTTP 200, got $ajax_code"
             cat ajax_response.json
@@ -145,7 +164,7 @@ jobs:
             exit 1
           fi
           # Submit DB config form
-          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step6_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=dbsettings&db_type=sqlite3&db_host=localhost&db_login=&db_password=&db_database=../database/webcalendar.sqlite&db_cachedir=&db_debug=N&dbaction=save&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
+          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" -o step6_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=dbsettings&db_type=sqlite3&db_host=localhost&db_login=&db_password=&db_database=../database/webcalendar.sqlite&db_cachedir=&db_debug=N&dbaction=save&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$http_code" != "302" ]; then
             echo "Failed dbsettings step, expected HTTP 302, got $http_code"
             cat step6_response.html
@@ -156,9 +175,9 @@ jobs:
           echo "Dbsettings POST redirect: $(grep -i location headers.txt)"
 
           # Step 7: POST to createdb/action
-          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=createdb -o step7_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" http://localhost:8000/install/index.php?action=createdb -o step7_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step7_response.html || echo "")
-          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step7_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=createdb&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
+          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" -o step7_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=createdb&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$http_code" != "302" ]; then
             echo "Failed createdb step, expected HTTP 302, got $http_code"
             cat step7_response.html
@@ -169,9 +188,9 @@ jobs:
           echo "Createdb POST redirect: $(grep -i location headers.txt)"
 
           # Step 8: POST to dbtables/action
-          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=dbtables -o step8_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" http://localhost:8000/install/index.php?action=dbtables -o step8_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step8_response.html || echo "")
-          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step8_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=dbtables&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
+          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" -o step8_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=dbtables&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$http_code" != "302" ]; then
             echo "Failed dbtables step, expected HTTP 302, got $http_code"
             cat step8_response.html
@@ -182,9 +201,9 @@ jobs:
           echo "Dbtables POST redirect: $(grep -i location headers.txt)"
 
           # Step 9: POST to adminuser/action
-          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=adminuser -o step9_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" http://localhost:8000/install/index.php?action=adminuser -o step9_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step9_response.html || echo "")
-          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step9_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=adminuser&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
+          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" -o step9_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=adminuser&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$http_code" != "302" ]; then
             echo "Failed adminuser step, expected HTTP 302, got $http_code"
             cat step9_response.html
@@ -195,7 +214,7 @@ jobs:
           echo "Adminuser POST redirect: $(grep -i location headers.txt)"
 
           # Step 10: GET finish page
-          finish_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step10_response.html -w "%{http_code}" http://localhost:8000/install/index.php?action=finish --dump-header headers.txt)
+          finish_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR --cookie "PHPSESSID=install_session;path=/install" -o step10_response.html -w "%{http_code}" http://localhost:8000/install/index.php?action=finish --dump-header headers.txt)
           echo "Finish HTTP status: $finish_code"
           echo "Finish redirect: $(grep -i location headers.txt || echo 'No redirect')"
           if [ "$finish_code" != "200" ]; then
@@ -205,7 +224,7 @@ jobs:
             cat php_server.log
             exit 1
           fi
-          if ! grep -qi -E "Launch WebCalendar|Success|Complete" step10_response.html; then
+          if ! grep -qi -E "The installation is complete|launch WebCalendar" step10_response.html; then
             echo "Error: finish page does not contain expected content"
             cat step10_response.html
             cat headers.txt
@@ -235,6 +254,7 @@ jobs:
             *.log
             *.json
             headers.txt
+            cookies.txt
           retention-days: 5
 
       - name: Clean up
