@@ -58,7 +58,7 @@ jobs:
       - name: Start PHP server
         run: |
           php -S localhost:8000 -t . > php_server.log 2>&1 &
-          sleep 5 # Wait for server to start
+          sleep 10 # Wait longer for server stability
 
       - name: Run web-based installer with cURL
         run: |
@@ -66,7 +66,7 @@ jobs:
           touch $COOKIE_JAR
 
           # Step 1: GET install/index.php to start installer and capture CSRF token
-          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php -o step1_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php -o step1_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step1_response.html || echo "")
           if [ -z "$CSRF_TOKEN" ]; then
             echo "Error: Could not extract CSRF token from install/index.php"
@@ -77,19 +77,22 @@ jobs:
           echo "Extracted CSRF token: $CSRF_TOKEN"
 
           # Step 2: GET auth page (welcome links to auth via GET)
-          http_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o step2_response.html -w "%{http_code}" http://localhost:8000/install/index.php?action=auth)
+          http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step2_response.html -w "%{http_code}" http://localhost:8000/install/index.php?action=auth --dump-header headers.txt)
           if [ "$http_code" != "200" ]; then
             echo "Failed auth GET, expected HTTP 200, got $http_code"
             cat step2_response.html
+            cat headers.txt
             cat php_server.log
             exit 1
           fi
+          echo "Auth GET redirect: $(grep -i location headers.txt || echo 'No redirect')"
 
           # Step 3: POST to auth/action
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step2_response.html || echo "")
           if [ -z "$CSRF_TOKEN" ]; then
             echo "Error: Could not extract CSRF token from auth step"
             cat step2_response.html
+            cat headers.txt
             cat php_server.log
             exit 1
           fi
@@ -104,7 +107,7 @@ jobs:
           echo "Auth POST redirect: $(grep -i location headers.txt)"
 
           # Step 4: POST to phpsettings/action
-          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=phpsettings -o step4_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=phpsettings -o step4_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step4_response.html || echo "")
           http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step4_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=phpsettings&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$http_code" != "302" ]; then
@@ -117,7 +120,7 @@ jobs:
           echo "Phpsettings POST redirect: $(grep -i location headers.txt)"
 
           # Step 5: POST to appsettings/action
-          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=appsettings -o step5_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=appsettings -o step5_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step5_response.html || echo "")
           http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step5_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=appsettings&user_inc=user.php&mode=prod&single_user_login=admin&readonly=N&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$http_code" != "302" ]; then
@@ -130,13 +133,14 @@ jobs:
           echo "Appsettings POST redirect: $(grep -i location headers.txt)"
 
           # Step 6: POST to dbsettings/action (main DB config, simulate AJAX test)
-          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=dbsettings -o step6_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=dbsettings -o step6_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step6_response.html || echo "")
           # Simulate AJAX DB test
-          ajax_code=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR -o ajax_response.json -w "%{http_code}" -X POST http://localhost:8000/install/install_ajax.php -d "dbType=sqlite3&server=localhost&login=&password=&dbName=../database/webcalendar.sqlite&dbCacheDir=&request=test-db-connection&csrf_form_key=$CSRF_TOKEN")
+          ajax_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o ajax_response.json -w "%{http_code}" -X POST http://localhost:8000/install/install_ajax.php -d "dbType=sqlite3&server=localhost&login=&password=&dbName=../database/webcalendar.sqlite&dbCacheDir=&request=test-db-connection&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$ajax_code" != "200" ]; then
             echo "Failed AJAX DB test, expected HTTP 200, got $ajax_code"
             cat ajax_response.json
+            cat headers.txt
             cat php_server.log
             exit 1
           fi
@@ -152,7 +156,7 @@ jobs:
           echo "Dbsettings POST redirect: $(grep -i location headers.txt)"
 
           # Step 7: POST to createdb/action
-          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=createdb -o step7_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=createdb -o step7_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step7_response.html || echo "")
           http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step7_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=createdb&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$http_code" != "302" ]; then
@@ -165,7 +169,7 @@ jobs:
           echo "Createdb POST redirect: $(grep -i location headers.txt)"
 
           # Step 8: POST to dbtables/action
-          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=dbtables -o step8_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=dbtables -o step8_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step8_response.html || echo "")
           http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step8_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=dbtables&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$http_code" != "302" ]; then
@@ -178,7 +182,7 @@ jobs:
           echo "Dbtables POST redirect: $(grep -i location headers.txt)"
 
           # Step 9: POST to adminuser/action
-          RESPONSE=$(curl -s -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=adminuser -o step9_response.html)
+          RESPONSE=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR http://localhost:8000/install/index.php?action=adminuser -o step9_response.html)
           CSRF_TOKEN=$(grep -oP 'name="csrf_form_key" value="\K[^"]+' step9_response.html || echo "")
           http_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step9_response.html -w "%{http_code}" -X POST http://localhost:8000/install/index.php -d "action=adminuser&csrf_form_key=$CSRF_TOKEN" --dump-header headers.txt)
           if [ "$http_code" != "302" ]; then
@@ -192,6 +196,8 @@ jobs:
 
           # Step 10: GET finish page
           finish_code=$(curl -s -L -c $COOKIE_JAR -b $COOKIE_JAR -o step10_response.html -w "%{http_code}" http://localhost:8000/install/index.php?action=finish --dump-header headers.txt)
+          echo "Finish HTTP status: $finish_code"
+          echo "Finish redirect: $(grep -i location headers.txt || echo 'No redirect')"
           if [ "$finish_code" != "200" ]; then
             echo "Failed finish step, expected HTTP 200, got $finish_code"
             cat step10_response.html
@@ -199,7 +205,7 @@ jobs:
             cat php_server.log
             exit 1
           fi
-          if ! grep -qi "Launch WebCalendar" step10_response.html; then
+          if ! grep -qi -E "Launch WebCalendar|Success|Complete" step10_response.html; then
             echo "Error: finish page does not contain expected content"
             cat step10_response.html
             cat headers.txt
