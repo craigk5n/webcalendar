@@ -26,7 +26,7 @@ if (empty($error)) {
       break;
     case 'sqlite3':
       require_once 'sql/tables-sqlite3.php';
-      populate_sqlite_db($real_db, $c);
+      populate_sqlite3_db($real_db, $c);
       $install_filename = '';
       break;
     default:

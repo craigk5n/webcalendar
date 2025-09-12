@@ -1,36 +1,47 @@
 <?php
-/* This script can be used to update the database headlessly rather than using the
- * installation script.
+/* This script performs a headless installation or upgrade of the WebCalendar database, 
+ * bypassing the web-based installer. It is used for automated setups, such as in CI/CD 
+ * pipelines like GitHub Actions, or for command-line database initialization.
  *
- * You must copy the settings.php file from your original installation, or create it
- * yourself in the case of a new install. This script will not prompt you for any of
- * your settings; and requires settings.php to be present and complete.
+ * Configuration is loaded from includes/settings.php or environment variables if 
+ * WEBCALENDAR_USE_ENV is set to 'true'. The script supports SQLite and MySQL databases, 
+ * creating or updating tables as needed, and ensures the database schema matches the 
+ * WebCalendar version (e.g., v1.9.12). Use the --debug flag for verbose output.
+ *
+ * Requirements:
+ * - For settings.php usage, the file must exist in includes/ with complete settings.
+ * - For environment variable usage, set WEBCALENDAR_USE_ENV=true and provide required 
+ *   variables (e.g., WEBCALENDAR_DB_TYPE, WEBCALENDAR_DB_DATABASE).
+ * - The database file or server must be accessible with appropriate permissions.
  */
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Enable debug output (set to true for verbose logging)
-define('DEBUG', false);
+// Parse command-line arguments for --debug
+$debug = in_array('--debug', $argv);
 
 function debug_echo($message) {
-    if (DEBUG) {
+    global $debug;
+    if ($debug) {
         echo $message . PHP_EOL;
     }
 }
 
-if (php_sapi_name() !== 'cli') {
-    echo 'This is a CLI script and should not be invoked via the web server' . PHP_EOL;
-    exit(1);
-}
+// Include config.php early to define getSessionName()
+require_once __DIR__ . '/../includes/config.php';
 
-// Start output buffering to prevent headers-sent warnings
+// Start session before any output to prevent headers-sent warnings
+session_name(getSessionName());
+session_start();
+debug_echo("Starting session...");
+
+// Start output buffering to capture output for debugging
 ob_start();
 
 $required_files = [
     __DIR__ . '/../includes/translate.php',
     __DIR__ . '/../includes/dbi4php.php',
-    __DIR__ . '/../includes/config.php',
     __DIR__ . '/default_config.php',
     __DIR__ . '/install_functions.php',
     __DIR__ . '/sql/upgrade_matrix.php',
@@ -50,26 +61,24 @@ foreach ($required_files as $file) {
 define('__WC_BASEDIR', __DIR__ . '/../');
 $fileDir = __WC_BASEDIR . 'includes';
 $file = $fileDir . '/settings.php';
-chdir(__WC_BASEDIR);
 
-if (!file_exists($file)) {
-    echo "Error: settings.php not found at $file" . PHP_EOL;
-    ob_end_flush();
-    exit(1);
+// Skip settings.php check if WEBCALENDAR_USE_ENV is true
+$use_env = getenv('WEBCALENDAR_USE_ENV');
+if (!$use_env || strtolower($use_env) !== 'true') {
+    if (!file_exists($file)) {
+        echo "Error: settings.php not found at $file" . PHP_EOL;
+        ob_end_flush();
+        exit(1);
+    }
 }
 
-// We need the $_SESSION superglobal to pass data to and from some of the update
-// functions. Sessions are basically useless in CLI mode, but technically the
-// session functions *do* work.
-debug_echo("Starting session...");
-session_name(getSessionName());
-session_start();
+chdir(__WC_BASEDIR);
 
 // Load the settings.php file or get settings from env vars.
 debug_echo("Loading configuration...");
 do_config(true);
 
-// We'll grab database settings from settings.php.
+// We'll grab database settings from settings.php or env vars.
 $db_database = $settings['db_database'] ?? '';
 $db_host     = $settings['db_host'] ?? '';
 $db_login    = $settings['db_login'] ?? '';
@@ -77,15 +86,16 @@ $db_password = (empty($settings['db_password']) ? '' : $settings['db_password'])
 $db_persistent = false;
 $db_type       = $settings['db_type'] ?? '';
 $real_db       = ($db_type == 'sqlite' || $db_type == 'sqlite3'
-    ? get_full_include_path($db_database) : $db_database);
+    ? (substr($db_database, 0, 1) === '/' ? $db_database : get_full_include_path($db_database))
+    : $db_database);
 
 if (empty($db_type)) {
-    echo "Error: db_type not set in settings.php" . PHP_EOL;
+    echo "Error: db_type not set in settings.php or environment variables" . PHP_EOL;
     ob_end_flush();
     exit(1);
 }
 
-debug_echo("Database settings: type=$db_type, db=$real_db, host=$db_host, login=$db_login");
+debug_echo("Database settings: type=$db_type, db=$real_db, host=$db_host, login=" . ($db_login ?: 'empty'));
 
 // Can we connect?
 $c = null;
@@ -128,7 +138,7 @@ if ($c && $emptyDatabase && $db_type === 'sqlite3') {
     }
     try {
         debug_echo("Starting table creation...");
-        populate_sqlite_db($real_db, $c);
+        populate_sqlite3_db($real_db, $c);
         echo "SQLite database tables created successfully" . PHP_EOL;
         // Verify table creation
         $tables = dbi_query("SELECT name FROM sqlite_master WHERE type='table' AND name='webcal_user';");
