@@ -493,7 +493,6 @@ function getDatabaseVersionFromSchema($silent = true)
   global $database_upgrade_matrix, $PROGRAM_VERSION, $settings, $show_all_errors;
   $dbVersion = null;
   $success = true;
-  $silent = true;
 
   // Suppress errors based on $show_all_errors.
   if (!$show_all_errors)
@@ -671,13 +670,52 @@ function getSqlFile($dbType, $isUpgrade = false)
       break;
     case 'sqlite3':
       require_once 'sql/tables-sqlite3.php';
-      populate_sqlite_db($real_db, $c);
+      populate_sqlite3_db($real_db, $c);
       $install_filename = '';
       break;
     default:
       $install_filename .= 'mysql.sql';
   }
   return $install_filename;
+}
+
+function populate_sqlite3_db($db_file, $db_connection = null) {
+    $install_filename = $_SESSION['install_file'] ?? 'install/sql/tables-sqlite3.php';
+    error_log("populate_sqlite3_db: Using database file: $db_file");
+    error_log("populate_sqlite3_db: Loading SQL file: $install_filename");
+    if (!file_exists($install_filename)) {
+        error_log("populate_sqlite3_db: SQL file not found: $install_filename");
+        throw new Exception("SQL file not found: $install_filename");
+    }
+    $sqlStatements = require $install_filename;
+    if (!is_array($sqlStatements)) {
+        error_log("populate_sqlite3_db: Invalid SQL file format: $install_filename");
+        throw new Exception("Invalid SQL file format: $install_filename");
+    }
+    error_log("populate_sqlite3_db: Number of SQL statements: " . count($sqlStatements));
+    if (!$db_connection) {
+        error_log("populate_sqlite3_db: No database connection provided");
+        throw new Exception("No database connection provided");
+    }
+    foreach ($sqlStatements as $index => $statement) {
+        if (!empty($statement)) {
+            error_log("populate_sqlite3_db: Executing SQL statement $index: " . substr($statement, 0, 100) . "...");
+            try {
+                if (!$db_connection->exec($statement)) {
+                    $error = $db_connection->lastErrorMsg();
+                    error_log("populate_sqlite3_db: Error executing SQL statement $index: $error");
+                    throw new Exception($error);
+                }
+                error_log("populate_sqlite3_db: Successfully executed SQL statement $index");
+            } catch (Exception $e) {
+                error_log("populate_sqlite3_db: Exception executing SQL statement $index: " . $e->getMessage());
+                throw $e;
+            }
+        } else {
+            error_log("populate_sqlite3_db: Skipping empty SQL statement at index $index");
+        }
+    }
+    error_log("populate_sqlite3_db: Completed SQL execution");
 }
 
 function removeWhitespaceOnlyLines($inputStr)
