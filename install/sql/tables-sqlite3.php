@@ -11,15 +11,14 @@ return [
         cal_telephone VARCHAR(50) NULL,
         cal_address VARCHAR(75) NULL,
         cal_title VARCHAR(75) NULL,
-        cal_birthday INT,
-        cal_last_login INT,
+        cal_birthday INT NULL,
+        cal_last_login INT NULL,
         PRIMARY KEY (cal_login)
     )",
-    "INSERT INTO webcal_user (
-        cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin
-    ) VALUES (
-        'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'Default', 'Y'
-    )",
+    "INSERT INTO webcal_user
+        ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin )
+        VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator',
+        'Default', 'Y' )",
     "CREATE TABLE webcal_entry (
         cal_id INT NOT NULL,
         cal_group_id INT NULL,
@@ -42,6 +41,14 @@ return [
         cal_description TEXT,
         PRIMARY KEY (cal_id)
     )",
+    "CREATE TABLE webcal_entry_categories (
+        cal_id INT DEFAULT 0 NOT NULL,
+        cat_id INT DEFAULT 0 NOT NULL,
+        cat_order INT DEFAULT 0 NOT NULL,
+        cat_owner VARCHAR(25) DEFAULT '' NOT NULL,
+        PRIMARY KEY (cal_id, cat_id, cat_order, cat_owner)
+    )",
+    "CREATE INDEX webcal_entry_categories_cat_id ON webcal_entry_categories(cat_id)",
     "CREATE TABLE webcal_entry_repeats (
         cal_id INT DEFAULT 0 NOT NULL,
         cal_type VARCHAR(20),
@@ -62,7 +69,7 @@ return [
     "CREATE TABLE webcal_entry_repeats_not (
         cal_id INT NOT NULL,
         cal_date INT NOT NULL,
-        cal_exdate INT NOT NULL DEFAULT '1',
+        cal_exdate INT NOT NULL DEFAULT 1,
         PRIMARY KEY (cal_id, cal_date)
     )",
     "CREATE TABLE webcal_entry_user (
@@ -70,7 +77,7 @@ return [
         cal_login VARCHAR(25) NOT NULL,
         cal_status CHAR(1) DEFAULT 'A',
         cal_category INT DEFAULT NULL,
-        cal_percent INT NOT NULL DEFAULT '0',
+        cal_percent INT DEFAULT 0 NOT NULL,
         PRIMARY KEY (cal_id, cal_login)
     )",
     "CREATE TABLE webcal_entry_ext_user (
@@ -102,16 +109,16 @@ return [
         cal_data TEXT
     )",
     "CREATE TABLE webcal_reminders (
-        cal_id INT DEFAULT 0 NOT NULL,
-        cal_date INT DEFAULT 0 NOT NULL,
-        cal_offset INT DEFAULT 0 NOT NULL,
-        cal_related CHAR(1) DEFAULT 'S' NOT NULL,
-        cal_before CHAR(1) DEFAULT 'Y' NOT NULL,
+        cal_id INT NOT NULL DEFAULT 0,
+        cal_date INT NOT NULL DEFAULT 0,
+        cal_offset INT NOT NULL DEFAULT 0,
+        cal_related CHAR(1) NOT NULL DEFAULT 'S',
+        cal_before CHAR(1) NOT NULL DEFAULT 'Y',
         cal_last_sent INT DEFAULT NULL,
-        cal_repeats INT DEFAULT 0 NOT NULL,
-        cal_duration INT DEFAULT 0 NOT NULL,
-        cal_times_sent INT DEFAULT 0 NOT NULL,
-        cal_action VARCHAR(12) DEFAULT 'EMAIL' NOT NULL,
+        cal_repeats INT NOT NULL DEFAULT 0,
+        cal_duration INT NOT NULL DEFAULT 0,
+        cal_times_sent INT NOT NULL DEFAULT 0,
+        cal_action VARCHAR(12) NOT NULL DEFAULT 'EMAIL',
         PRIMARY KEY (cal_id)
     )",
     "CREATE TABLE webcal_group (
@@ -144,6 +151,7 @@ return [
         cal_value VARCHAR(100) NULL,
         PRIMARY KEY (cal_setting)
     )",
+    "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCALENDAR_PROGRAM_VERSION', 'v1.9.12')",
     "CREATE TABLE webcal_entry_log (
         cal_log_id INT NOT NULL,
         cal_entry_id INT NOT NULL,
@@ -160,7 +168,7 @@ return [
         cat_owner VARCHAR(25) DEFAULT '' NOT NULL,
         cat_name VARCHAR(80) NOT NULL,
         cat_color VARCHAR(8) NULL,
-        cat_status CHAR DEFAULT 'A',
+        cat_status CHAR(1) DEFAULT 'A',
         cat_icon_mime VARCHAR(32) DEFAULT NULL,
         cat_icon_blob BLOB DEFAULT NULL,
         PRIMARY KEY (cat_id, cat_owner)
@@ -186,7 +194,7 @@ return [
         cal_check_date INT NULL,
         cal_type VARCHAR(10) NOT NULL,
         cal_login VARCHAR(25) NULL,
-        cal_md5 VARCHAR(32) NULL,
+        cal_md5 VARCHAR(32) NULL DEFAULT NULL,
         PRIMARY KEY (cal_import_id)
     )",
     "CREATE TABLE webcal_import_data (
@@ -224,9 +232,9 @@ return [
     "CREATE TABLE webcal_access_user (
         cal_login VARCHAR(25) NOT NULL,
         cal_other_user VARCHAR(25) NOT NULL,
-        cal_can_view INT NOT NULL DEFAULT '0',
-        cal_can_edit INT NOT NULL DEFAULT '0',
-        cal_can_approve INT NOT NULL DEFAULT '0',
+        cal_can_view INT NOT NULL DEFAULT 0,
+        cal_can_edit INT NOT NULL DEFAULT 0,
+        cal_can_approve INT NOT NULL DEFAULT 0,
         cal_can_invite CHAR(1) NOT NULL DEFAULT 'Y',
         cal_can_email CHAR(1) NOT NULL DEFAULT 'Y',
         cal_see_time_only CHAR(1) NOT NULL DEFAULT 'N',
@@ -243,15 +251,6 @@ return [
         cal_template_text TEXT,
         PRIMARY KEY (cal_login, cal_type)
     )",
-    "CREATE TABLE webcal_entry_categories (
-        cal_id INT NOT NULL DEFAULT '0',
-        cat_id INT NOT NULL DEFAULT '0',
-        cat_order INT NOT NULL DEFAULT '0',
-        cat_owner VARCHAR(25) DEFAULT NULL,
-        PRIMARY KEY (cal_id, cat_id)
-    )",
-    "CREATE INDEX webcal_entry_categories_cat_id ON webcal_entry_categories(cat_id)",
-    "CREATE INDEX webcal_entry_categories_cal_id ON webcal_entry_categories(cal_id)",
     "CREATE TABLE webcal_blob (
         cal_blob_id INT NOT NULL,
         cal_id INT NULL,

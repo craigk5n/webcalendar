@@ -201,6 +201,7 @@ function do_config($callingFromInstall=false)
   // Decide the source based on the WEBCALENDAR_USE_ENV env variable
   $use_env = getenv('WEBCALENDAR_USE_ENV');
   if ($use_env && strtolower($use_env) === "true") {
+    $settings['WEBCALENDAR_USE_ENV'] = 'true';
     // Load from environment variables
     foreach ($possible_settings as $key => $type) {
       $env_key = 'WEBCALENDAR_' . strtoupper($key);
