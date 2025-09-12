@@ -615,10 +615,12 @@ function dbi_free_result($res)
   }
 }
 
+$db_sqlite_error_str = ''; // Initialize to avoid undefined variable warning
 
 function dbi_error()
 {
   $dbType = $GLOBALS['db_type'] ?? 'undefined';
+  global $db_sqlite_error_str;
 
   switch ($dbType) {
     case 'ibase':
@@ -653,11 +655,15 @@ function dbi_error()
       }
 
     case 'sqlite3':
+      if (!empty($GLOBALS['sqlite3_c'])) {
+        $db_sqlite_error_str = $GLOBALS['sqlite3_c']->lastErrorMsg();
+        return $db_sqlite_error_str;
+      }
       try {
-        if (empty($GLOBALS['sqlite3_c']) || !empty($GLOBALS['db_sqlite_error_str'])) {
+        if (!empty($GLOBALS['db_sqlite_error_str'])) {
           return $GLOBALS['db_sqlite_error_str'];
         } else {
-          return $GLOBALS['sqlite3_c']->lastErrorMsg();
+          return 'No SQLite3 connection established';
         }
       } catch (Exception $e) {
         $GLOBALS['db_sqlite_error_str'] = $e->getMessage();
@@ -671,7 +677,6 @@ function dbi_error()
       return 'dbi_error(): ' . translate('Unsupported db_type.') . ' (' . htmlentities($dbType) . ')';
   }
 }
-
 
 /**
  * Displays a fatal database error and aborts execution.
