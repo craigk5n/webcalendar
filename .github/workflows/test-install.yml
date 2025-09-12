@@ -61,15 +61,25 @@ jobs:
           ini_set('display_errors', 1);
           ini_set('display_startup_errors', 1);
           error_reporting(E_ALL);
-          define('DEBUG', true); // Enable debug output
-          require 'install/headless.php';
+
+          // Include config.php for getSessionName()
+          require_once 'includes/config.php';
+
+          // Start session to set install_file
+          session_name(getSessionName());
+          session_start();
+
+          // Set install_file for SQLite
           $_SESSION['install_file'] = 'install/sql/tables-sqlite3.php';
+
+          require_once 'install/headless.php';
+          echo "Success\n";
           ?>
           EOF
 
       - name: Run WebCalendar installation
         run: |
-          php run_install.php | tee install.log || { echo "PHP execution failed"; cat install.log; exit 1; }
+          php -d display_errors=Off run_install.php --debug | tee install.log || { echo "PHP execution failed"; cat install.log; exit 1; }
           cat install.log # Debug: Always show install.log
           grep -q "Success" install.log || { echo "Installation failed: 'Success' not found"; cat install.log; exit 1; }
 
