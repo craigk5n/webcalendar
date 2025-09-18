@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "431a3e34ed73bd16e944731c8fd7167f",
+    "content-hash": "45a3dcdc965b9d0491326fa15a7143df",
     "packages": [
         {
             "name": "components/jquery",
@@ -137,16 +137,16 @@
         },
         {
             "name": "tinymce/tinymce",
-            "version": "7.7.2",
+            "version": "8.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tinymce/tinymce-dist.git",
-                "reference": "841a2f73ed89df874d5abca7286c344353098f14"
+                "reference": "18b9387d799663ebb9a4631e87bbd8727f4a8656"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/841a2f73ed89df874d5abca7286c344353098f14",
-                "reference": "841a2f73ed89df874d5abca7286c344353098f14",
+                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/18b9387d799663ebb9a4631e87bbd8727f4a8656",
+                "reference": "18b9387d799663ebb9a4631e87bbd8727f4a8656",
                 "shasum": ""
             },
             "type": "component",
@@ -190,9 +190,9 @@
                 "wysiwyg"
             ],
             "support": {
-                "source": "https://github.com/tinymce/tinymce-dist/tree/7.7.2"
+                "source": "https://github.com/tinymce/tinymce-dist/tree/8.1.1"
             },
-            "time": "2025-03-19T03:36:58+00:00"
+            "time": "2025-09-17T15:22:02+00:00"
         },
         {
             "name": "twbs/bootstrap",
