@@ -357,18 +357,18 @@ if ( ! $error ) {
   echo '<div class="form-inline mt-1 mb-2" id="default_visibility_div"><label title="' . tooltip("preferred-event-visibility")
     . '">' . translate('Default Visibility') . ':</label>';
   echo '<select name="admin_DEFAULT_VISIBILITY" id="pref_DEFAULT_VISIBILITY"><option value="P"';
-  if (isset($prefarray['DEFAULT_VISIBILITY']) &&
-    $prefarray['DEFAULT_VISIBILITY'] == 'P') {
+  if (isset($s['DEFAULT_VISIBILITY']) &&
+    $s['DEFAULT_VISIBILITY'] == 'P') {
     echo " selected ";
   }
   echo ">" . translate('Public') . "</option>\n";
   echo '<option value="R"';
-  if (empty($prefarray['DEFAULT_VISIBILITY'] ) || $prefarray['DEFAULT_VISIBILITY'] == 'R') {
+  if (empty($s['DEFAULT_VISIBILITY'] ) || $s['DEFAULT_VISIBILITY'] == 'R') {
     echo " selected ";
   }
   echo  ">" . translate('Private') . "</option>\n";
   echo '<option value="C"';
-  if (isset($prefarray['DEFAULT_VISIBILITY']) && $prefarray['DEFAULT_VISIBILITY'] == 'C') {
+  if (isset($s['DEFAULT_VISIBILITY']) && $s['DEFAULT_VISIBILITY'] == 'C') {
     echo " selected ";
   }
   echo ">" . translate('Confidential') . "</option>\n";
