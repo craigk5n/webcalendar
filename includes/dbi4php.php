@@ -362,7 +362,8 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
     $res = sqlite_query( $GLOBALS['sqlite_c'], $sql, SQLITE_NUM );
   } elseif ( strcmp ( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
     $found_db_type = true;
-    $res = $GLOBALS['sqlite3_c']->query ( $sql );
+    // Query method returns false on failure. Suppress warnings.
+    $res = @$GLOBALS['sqlite3_c']->query ( $sql );
   }
 
   if( $found_db_type ) {
