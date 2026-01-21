@@ -33,6 +33,7 @@
  */
 
 require_once 'includes/translate.php';
+require_once 'includes/functions.php';
 require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
@@ -41,7 +42,6 @@ require_once 'includes/access.php';
 require_once 'includes/config.php';
 require_once 'includes/dbi4php.php';
 require_once 'includes/formvars.php';
-require_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
