@@ -210,29 +210,22 @@ if ($single_user == 'N') {
   // Set the LAYER_STATUS value in webcal_user_pref for either the current
   // user or the public user ('__public__') with an AJAX call to
   // layers_ajax.php.
-  function set_layer_status(enable) {
-    var layerstatus = (enable ? 'enable' : 'disable');
+   function set_layer_status(enable) {
+     var layerstatus = (enable ? 'enable' : 'disable');
 
-    $.post('layers_ajax.php', {
-        action: layerstatus,
-        csrf_form_key: '<?php echo getFormKey(); ?>'
-        <?php
-        if ($updating_public) {
-          echo ', public: "1"';
-        }
-        ?>
-      },
-      function(data, status) {
-        var stringified = JSON.stringify(data);
-        console.log("set_layer_status Data: " + stringified + "\nStatus: " + status);
-        try {
-          var response = jQuery.parseJSON(stringified);
-          console.log('set_layer_status response=' + response);
-        } catch (err) {
-          alert('<?php etranslate('Error'); ?>: <?php etranslate('JSON error'); ?> - ' + err);
-          return;
-        }
-        if (response.error) {
+     $.post('layers_ajax.php', {
+         action: layerstatus,
+         csrf_form_key: '<?php echo getFormKey(); ?>'
+         <?php
+         if ($updating_public) {
+           echo ', public: "1"';
+         }
+         ?>
+       },
+        function(data, status) {
+          console.log("set_layer_status Data: " + JSON.stringify(data) + "\nStatus: " + status);
+          var response = data;
+          if (response.error) {
           console.log('Ajax error: ' + response);
           alert('<?php etranslate("Error"); ?>:\n\n' + response.message);
         } else {
@@ -265,13 +258,8 @@ if ($single_user == 'N') {
         ?>
       },
       function(data, status) {
-        console.log("Data: " + data + "\nStatus: " + status);
-        try {
-          var response = jQuery.parseJSON(data);
-        } catch (err) {
-          alert('<?php etranslate('Error'); ?>: <?php etranslate('JSON error'); ?> - ' + err);
-          return;
-        }
+        console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+        var response = data;
         if (response.error) {
           alert('<?php etranslate('Error'); ?>: ' + response.message);
           return;
@@ -320,17 +308,10 @@ if ($single_user == 'N') {
         color: color,
         dups: dups,
         csrf_form_key: '<?php echo getFormKey(); ?>'
-      },
-      function(data, status) {
-        var stringified = JSON.stringify(data);
-        console.log("set_layer_status Data: " + stringified + "\nStatus: " + status);
-        try {
-          var response = jQuery.parseJSON(stringified);
-          console.log('set_layer_status response=' + response);
-        } catch (err) {
-          alert('<?php etranslate('Error'); ?>: <?php etranslate('JSON error'); ?> - ' + err);
-          return;
-        }
+       },
+       function(data, status) {
+         console.log("edit_window_closed Data: " + JSON.stringify(data) + "\nStatus: " + status);
+         var response = data;
         if (response.error) {
           alert('<?php etranslate('Error'); ?>: ' + response.message);
           return;
