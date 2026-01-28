@@ -40,7 +40,7 @@ if (empty($_SESSION['user_inc'])) {
             <td>
                 <select class="form-control" id="user_inc" name="user_inc" <?php echo $disabled; ?>>
                     <option value="user.php" <?php
-                                                if ($_SESSION['user_inc'] == 'user.php' && $_SESSION['use_http_auth'] != 'true') {
+                                                if ($_SESSION['user_inc'] == 'user.php' && ($_SESSION['use_http_auth']??'') != 'true') {
                                                     echo ' selected ';
                                                 }
                                                 ?>>
@@ -49,7 +49,7 @@ if (empty($_SESSION['user_inc'])) {
                         ?>
                     </option>
                     <option value="http" <?php
-                                            if ($_SESSION['user_inc'] == 'user.php' && $_SESSION['use_http_auth'] == 'true') {
+                                            if ($_SESSION['user_inc'] == 'user.php' && ($_SESSION['use_http_auth']??'') == 'true') {
                                                 echo " selected ";
                                             }
                                             ?>>
@@ -63,7 +63,7 @@ if (empty($_SESSION['user_inc'])) {
                     </option>
 
                     <option value="none" <?php
-                                            if ($_SESSION['single_user'] == 'Y') {
+                                            if (($_SESSION['single_user']??'') == 'Y') {
                                                 echo " selected ";
                                             }
                                             ?>>
