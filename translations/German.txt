@@ -526,6 +526,7 @@ display-week-starts-on: Gibt an ob die Wochenansicht am Sonntag oder Montag begi
 Week starts on: Wochenbeginn am
 display-weekend-starts-on: Setzt den Tag an dem das Wochenende beginnt
 Weekend starts on: Das Wochenende beginnt am
+Default Visibility: Standard-Zugang
 work-hours-help: Zeitabschnitt f&uuml;r die Anzeige der Tagessicht.
 Work hours: Arbeitszeit
 From: Von
