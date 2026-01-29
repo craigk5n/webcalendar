@@ -25,7 +25,7 @@
   "require": {
     "components/jquery": "3.5.*",
     "phpmailer/phpmailer": "6.8.*",
-    "tinymce/tinymce": "7.7.*",
+    "tinymce/tinymce": "8.2.*",
     "twbs/bootstrap": "4.6.*",
     "twbs/bootstrap-icons": "1.10.*"
   },
