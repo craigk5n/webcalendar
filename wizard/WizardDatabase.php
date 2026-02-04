@@ -548,7 +548,14 @@ class WizardDatabase
       // Try with .php extension for dynamic SQL generation
       $phpFile = __DIR__ . '/shared/tables-' . $this->state->dbType . '.php';
       if (file_exists($phpFile)) {
-        include $phpFile;
+        $commands = include $phpFile;
+        if (is_array($commands)) {
+          foreach ($commands as $command) {
+            if (!empty(trim($command)) && !$this->executeSql($command)) {
+              return false;
+            }
+          }
+        }
         $this->updateVersionInDb();
         return true;
       }
@@ -668,11 +675,27 @@ class WizardDatabase
   public function createAdminUser(string $login, string $password, string $email = ''): bool
   {
     $hashedPassword = md5($password);
-    
+
     try {
-      $sql = "INSERT INTO webcal_user (cal_login, cal_passwd, cal_email, cal_firstname, cal_lastname, cal_is_admin) 
+      // Remove default admin inserted by schema file (if any)
+      $delSql = "DELETE FROM webcal_user WHERE cal_login = ?";
+      if ($this->state->dbType === 'mysqli') {
+        $del = $this->connection->prepare($delSql);
+        $del->bind_param('s', $login);
+        $del->execute();
+      } elseif ($this->state->dbType === 'postgresql') {
+        pg_query_params($this->connection, $delSql, [$login]);
+      } elseif ($this->state->dbType === 'sqlite3') {
+        $del = $this->connection->prepare(
+          "DELETE FROM webcal_user WHERE cal_login = :login"
+        );
+        $del->bindValue(':login', $login);
+        $del->execute();
+      }
+
+      $sql = "INSERT INTO webcal_user (cal_login, cal_passwd, cal_email, cal_firstname, cal_lastname, cal_is_admin)
               VALUES (?, ?, ?, 'Administrator', 'Default', 'Y')";
-      
+
       if ($this->state->dbType === 'mysqli') {
         $stmt = $this->connection->prepare($sql);
         $stmt->bind_param('sss', $login, $hashedPassword, $email);
