@@ -3,7 +3,7 @@
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . "/../includes/functions.php";
-require_once __DIR__ . "/../install/sql/upgrade_matrix.php";
+require_once __DIR__ . "/../wizard/shared/upgrade_matrix.php";
 
 /**
  * Unit tests for includes/functions.php
