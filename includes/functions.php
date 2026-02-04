@@ -6630,4 +6630,99 @@ function update_webcalendar_version_in_db($old_version, $new_version) {
     return true;
   }
 }
+
+/**
+ * Validates an MCP API token and returns the associated user login.
+ *
+ * @param string $token The API token to validate
+ * @return string|null The user login if token is valid, null otherwise
+ */
+function validate_mcp_token($token) {
+  if (empty($token)) {
+    return null;
+  }
+
+  $res = dbi_execute('SELECT cal_login FROM webcal_user WHERE cal_api_token = ? AND cal_enabled = \'Y\'', [$token]);
+  if ($res) {
+    $row = dbi_fetch_row($res);
+    dbi_free_result($res);
+    return $row[0] ?? null;
+  }
+  return null;
+}
+
+/**
+ * Checks if MCP server is enabled in system settings.
+ *
+ * @return bool True if MCP server is enabled
+ */
+/**
+ * Load system settings into an array
+ *
+ * @return array Associative array of setting name => value
+ */
+function load_settings() {
+  static $settings_cache = null;
+
+  if ($settings_cache !== null) {
+    return $settings_cache;
+  }
+
+  $settings_cache = [];
+  $rows = dbi_get_cached_rows('SELECT cal_setting, cal_value FROM webcal_config');
+  for ($i = 0, $cnt = count($rows); $i < $cnt; $i++) {
+    $row = $rows[$i];
+    $settings_cache[$row[0]] = $row[1];
+  }
+
+  return $settings_cache;
+}
+
+function is_mcp_enabled() {
+  $settings = load_settings();
+  return isset($settings['MCP_SERVER_ENABLED']) && $settings['MCP_SERVER_ENABLED'] == 'Y';
+}
+
+/**
+ * Check if MCP write access is enabled
+ *
+ * @return bool True if MCP write operations are allowed
+ */
+function is_mcp_write_enabled() {
+  $settings = load_settings();
+  return isset($settings['MCP_WRITE_ACCESS']) && $settings['MCP_WRITE_ACCESS'] == 'Y';
+}
+
+/**
+ * Gets the MCP rate limit from system settings.
+ *
+ * @return int The rate limit (requests per hour), default 100
+ */
+function get_mcp_rate_limit() {
+  $settings = load_settings();
+  return isset($settings['MCP_RATE_LIMIT']) ? (int)$settings['MCP_RATE_LIMIT'] : 100;
+}
+
+/**
+ * Checks if a user has exceeded the MCP rate limit.
+ *
+ * @param string $user_login The user login to check
+ * @return bool True if rate limit exceeded
+ */
+function check_mcp_rate_limit($user_login) {
+  $rate_limit = get_mcp_rate_limit();
+  if ($rate_limit <= 0) {
+    return false; // No limit
+  }
+
+  // Simple implementation: check activity log for MCP actions in the last hour
+  $one_hour_ago = time() - 3600;
+  $res = dbi_execute("SELECT COUNT(*) FROM webcal_entry_log WHERE cal_login = ? AND cal_type = 'M' AND cal_text LIKE 'MCP:%' AND cal_date >= ?", [$user_login, $one_hour_ago]);
+  if ($res) {
+    $row = dbi_fetch_row($res);
+    dbi_free_result($res);
+    return ($row[0] ?? 0) >= $rate_limit;
+  }
+  return false;
+}
 ?>

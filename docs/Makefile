@@ -2,7 +2,7 @@
 # If you have phpdoc installed, you can use that to
 # generate additional documentation.
 
-all: WebCalendar-Database.html faqs.html
+all: WebCalendar-Database.html WebCalendar-Database.md faqs.html
 
 # List include files that will be searched for function documentation
 INCLUDES = \
@@ -68,8 +68,11 @@ INCLUDES = \
  ../view_t.php \
  ../week_details.php
 
-WebCalendar-Database.html: ../install/sql/tables-mysql.sql sql2html.pl
-	perl sql2html.pl < ../install/sql/tables-mysql.sql > WebCalendar-Database.html
+WebCalendar-Database.html: ../wizard/shared/tables-mysql.sql sql2html.pl
+	perl sql2html.pl < ../wizard/shared/tables-mysql.sql > WebCalendar-Database.html
+
+WebCalendar-Database.md: ../wizard/shared/tables-mysql.sql sql2md.py
+	python3 sql2md.py < ../wizard/shared/tables-mysql.sql > WebCalendar-Database.md
 
 # You need phpdoc to generate the following documentation.
 phpdoc/index.html: $(INCLUDES)

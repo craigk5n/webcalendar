@@ -4,10 +4,10 @@
  * sets up some needed variables.
  *
  * The settings.php file is created during installation using the web-based db
- * setup page (install/index.php).
+ * setup page (wizard/index.php).
  *
  * To update the WebCalendar version (in order to make a new release or to
- * mark a db change), see the comments in install/index.php.
+ * mark a db change), see bump.sh.
  *
  * @author Craig Knudsen <craig@k5n.us>
  * @copyright Craig Knudsen, <craig@k5n.us>, https://k5n.us/
@@ -187,10 +187,10 @@ function do_config($callingFromInstall=false)
   // Define possible app settings and their types
   $possible_settings = $config_possible_settings;
 
-  // When changing PROGRAM VERSION, also change it in install/default_config.php
-  $PROGRAM_VERSION = 'v1.9.12';
+  // When changing PROGRAM VERSION, also change it in wizard/shared/default_config.php
+  $PROGRAM_VERSION = 'v1.9.13';
   // Update PROGRAM_DATE with official release data
-  $PROGRAM_DATE = '03 Nov 2023';
+  $PROGRAM_DATE = '04 Feb 2026';
 
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://k5n.us/wp/webcalendar/';
@@ -217,8 +217,8 @@ function do_config($callingFromInstall=false)
     }
   } else if (!file_exists(__DIR__ . '/settings.php') && !$callingFromInstall) {
     // Redirect to installer
-    if (file_exists(__DIR__ . '/../install/index.php')) {
-      header('Location: install/index.php');
+    if (file_exists(__DIR__ . '/../wizard/index.php')) {
+      header('Location: wizard/index.php');
       exit;
     } else {
       die_miserable_death(translate('Could not find settings.php file...'));
@@ -232,8 +232,8 @@ function do_config($callingFromInstall=false)
       }
       // There is no settings.php file.
       // Redirect user to install page if it exists.
-      if (file_exists('install/index.php')) {
-        header('Location: install/index.php');
+      if (file_exists('wizard/index.php')) {
+        header('Location: wizard/index.php');
         exit;
       } else {
         die_miserable_death(translate('Could not find settings.php file...'));
@@ -278,8 +278,8 @@ function do_config($callingFromInstall=false)
     if ($callingFromInstall) {
       return; // not an error during install
     }
-    if (file_exists('install/index.php')) {
-      header('Location: install/index.php');
+    if (file_exists('wizard/index.php')) {
+      header('Location: wizard/index.php');
       exit;
     } else
       die_miserable_death(translate('Incomplete settings.php file...'));
@@ -351,7 +351,7 @@ function do_config($callingFromInstall=false)
       $db_database = get_full_include_path($db_database);
   }
 
-  $locateStr = 'Location: install/index.php';
+  $locateStr = 'Location: wizard/index.php';
 
   // Check the current installation version.
   // Redirect user to install page if it is different from stored value.

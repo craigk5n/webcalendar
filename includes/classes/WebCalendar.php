@@ -54,10 +54,10 @@ class WebCalendar {
     [
       ['Config', 'PHPDBI', 'Functions'],
       ['User', 'Connect']],
-    '/^(ajax|layers_ajax|events_ajax|users_ajax|autocomplete_ajax|css_cacher|js_cacher|icalclient|freebusy|publish|rss|rss_unapproved|rss_activity_log|get_reminders|get_events|ws)\.php$/' =>
-    [
-      ['Config', 'PHPDBI', 'Functions'],
-      ['User', 'Validate', 'Connect', 'SiteExtras', 'Access']],
+     '/^(ajax|layers_ajax|events_ajax|users_ajax|autocomplete_ajax|css_cacher|js_cacher|icalclient|freebusy|publish|rss|rss_unapproved|rss_activity_log|get_reminders|get_events|ws|mcp)\.php$/' =>
+     [
+       ['Config', 'PHPDBI', 'Functions'],
+       ['User', 'Validate', 'Connect', 'SiteExtras', 'Access']],
     '/^convert_passwords\.php$/' =>
     [
       ['Config', 'PHPDBI'],

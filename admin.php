@@ -128,6 +128,7 @@ if ( ! $error ) {
     'groups', translate ( 'Groups' ),
     'nonuser', translate ( 'Resource Calendars' ),
     'other', translate ( 'Other' ),
+    'mcp', translate ( 'MCP Server' ),
     'email', translate ( 'Email' ),
     'colors', translate ( 'Colors' )];
   $tabs = '<ul class="nav nav-tabs">';
@@ -643,8 +644,8 @@ if ( ! $error ) {
 
      <div class="form-inline mt-1 mb-2"><label title="' . tooltip( 'upcoming-events-display-popups' ) . '">'
    . translate ( 'Display event popups' ) . ':</label>'
-   . print_radio ( 'UPCOMING_DISPLAY_POPUPS', '', '', 'Y' ) . '</div>
-   </fieldset>
+    . print_radio ( 'UPCOMING_DISPLAY_POPUPS', '', '', 'Y' ) . '</div>
+    </fieldset>
 
 <!-- BEGIN REPORTS -->
           <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'reports-enabled-help' ) . '">'
@@ -724,11 +725,42 @@ if ( ! $error ) {
    . '</p><p id="com1" style="margin-left:25%"><strong>Note: </strong>'
    . translate ( 'Admin and owner can always add comments if enabled.' )
    . '</p><p class="form-inline mt-1 mb-2" id="com1a" style="margin-left:25%">' . print_checkbox ( ['ALLOW_COMMENTS_PART', 'Y', $partyStr] )
-   . print_checkbox ( ['ALLOW_COMMENTS_ANY', 'Y', $anyoneStr] )
-   . '</p></div></div>
+    . print_checkbox ( ['ALLOW_COMMENTS_ANY', 'Y', $anyoneStr] )
+    . '</p></div></div>
+
+<!-- BEGIN MCP SERVER -->
+  <div class="tab-pane container fade" id="' . $tabs_ar[12] . '">
+  <div class="form-group">
+    <fieldset class="border p-2"><legend>' . translate('MCP Server Configuration') . '</legend>
+    <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'mcp-server-enabled-help' ) . '">'
+    . translate ( 'MCP Server enabled' ) . ':</label>'
+    . print_radio ( 'MCP_SERVER_ENABLED', '', '', 'N' ) . '</div>
+
+    <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'mcp-write-access-help' ) . '">'
+    . translate ( 'MCP Write Access' ) . ':</label>'
+    . print_radio ( 'MCP_WRITE_ACCESS', '', '', 'N' ) . '</div>
+
+    <div class="form-inline mt-1 mb-2"><label for="admin_MCP_RATE_LIMIT" title="' . tooltip ( 'mcp-rate-limit-help' ) . '">'
+    . translate ( 'MCP Rate Limit (requests/hour)' ) . ':</label>
+    <input type="number" size="10" name="admin_MCP_RATE_LIMIT" id="admin_MCP_RATE_LIMIT" value="'
+    . htmlspecialchars ( $s['MCP_RATE_LIMIT'] ?? '100' ) . '" min="1" max="1000"></div>
+
+    <div class="form-inline mt-1 mb-2"><label for="admin_MCP_CORS_ORIGINS" title="' . tooltip ( 'mcp-cors-origins-help' ) . '">'
+    . translate ( 'MCP CORS Allowed Origins' ) . ':</label>
+    <select name="admin_MCP_CORS_ORIGINS" id="admin_MCP_CORS_ORIGINS">
+    <option value=""' . (empty($s['MCP_CORS_ORIGINS']) ? ' selected' : '') . '>' . translate('Disabled') . '</option>
+    <option value="*" ' . (($s['MCP_CORS_ORIGINS'] ?? '') === '*' ? 'selected' : '') . '>Allow All (*)</option>
+    <option value="custom"' . ((!empty($s['MCP_CORS_ORIGINS']) && $s['MCP_CORS_ORIGINS'] !== '*' && strpos($s['MCP_CORS_ORIGINS'], ',') !== false) ? ' selected' : '') . '>Custom Origins</option>
+    </select></div>
+    <div class="form-inline mt-1 mb-2"><label for="admin_MCP_CORS_CUSTOM" title="' . tooltip ( 'mcp-cors-custom-help' ) . '">'
+    . translate ( 'Custom Origins (comma-separated)' ) . ':</label>
+    <input type="text" size="40" name="admin_MCP_CORS_CUSTOM" id="admin_MCP_CORS_CUSTOM" value="'
+    . htmlspecialchars ( (!empty($s['MCP_CORS_ORIGINS']) && $s['MCP_CORS_ORIGINS'] !== '*' && strpos($s['MCP_CORS_ORIGINS'], ',') !== false) ? $s['MCP_CORS_ORIGINS'] : '' ) . '" placeholder="https://example.com,https://another.com"></div>
+    </fieldset>
+  </div></div>
 
 <!-- BEGIN EMAIL -->
-  <div class="tab-pane container fade" id="' . $tabs_ar[12] . '">
+   <div class="tab-pane container fade" id="' . $tabs_ar[14] . '">
   <div class="form-group">
           <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-enabled-help' ) . '">'
    . translate ( 'Email enabled' ) . ':</label>'
@@ -808,7 +840,7 @@ if ( ! $error ) {
         </div>
 
 <!-- BEGIN COLORS -->
-  <div class="tab-pane container fade" id="' . $tabs_ar[14] . '">
+   <div class="tab-pane container fade" id="' . $tabs_ar[16] . '">
   <div class="form-group">
           <fieldset class="border p-2">
             <legend>' . translate ( 'Color options' ) . '</legend>
@@ -851,6 +883,37 @@ if ( ! $error ) {
     <script>\n" . $cch . "
       function reset_colors() {" . $rc . '
       }
+
+      // Handle CORS origin selection
+      document.getElementById("admin_MCP_CORS_ORIGINS").addEventListener("change", function() {
+        var customField = document.getElementById("admin_MCP_CORS_CUSTOM");
+        if (this.value === "*" || this.value === "") {
+          customField.value = "";
+          customField.disabled = true;
+        } else if (this.value === "custom") {
+          customField.disabled = false;
+        }
+      });
+
+      // Before form submission, set the actual CORS value
+      document.querySelector("form[name=\"prefform\"]").addEventListener("submit", function(e) {
+        var corsSelect = document.getElementById("admin_MCP_CORS_ORIGINS");
+        var customField = document.getElementById("admin_MCP_CORS_CUSTOM");
+
+        if (corsSelect.value === "custom") {
+          // Use the custom field value
+          corsSelect.value = customField.value;
+        }
+        // For "*" and "", keep the select value as-is
+      });
+
+      // Initialize CORS field state on page load
+      document.addEventListener("DOMContentLoaded", function() {
+        var corsSelect = document.getElementById("admin_MCP_CORS_ORIGINS");
+        var customField = document.getElementById("admin_MCP_CORS_CUSTOM");
+        // Trigger change handler to set initial state
+        corsSelect.onchange();
+      });
     </script>';
 } else {
   // if $error

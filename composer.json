@@ -4,7 +4,7 @@
   "homepage": "https://k5n.us/webcalendar/",
   "license": "GPL-2.0-only",
   "type": "project",
-  "version": "1.9.12",
+  "version": "1.9.13",
   "authors": [
     {
       "name": "Craig Knudsen",
@@ -24,6 +24,7 @@
   "prefer-stable": true,
   "require": {
     "components/jquery": "3.5.*",
+    "mcp/sdk": "^0.3",
     "phpmailer/phpmailer": "6.8.*",
     "tinymce/tinymce": "7.7.*",
     "twbs/bootstrap": "4.6.*",
