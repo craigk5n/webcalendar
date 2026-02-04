@@ -46,42 +46,17 @@ jobs:
 
       - name: Verify required files
         run: |
-          ls -l install/sql/tables-sqlite3.php || { echo "Missing tables-sqlite3.php"; exit 1; }
-          ls -l install/headless.php || { echo "Missing headless.php"; exit 1; }
+          ls -l wizard/headless.php || { echo "Missing wizard/headless.php"; exit 1; }
+          ls -l wizard/WizardState.php || { echo "Missing WizardState.php"; exit 1; }
+          ls -l wizard/WizardDatabase.php || { echo "Missing WizardDatabase.php"; exit 1; }
+          ls -l wizard/WizardValidator.php || { echo "Missing WizardValidator.php"; exit 1; }
           ls -l includes/dbi4php.php || { echo "Missing dbi4php.php"; exit 1; }
-          ls -l includes/translate.php || { echo "Missing translate.php"; exit 1; }
-          ls -l install/default_config.php || { echo "Missing default_config.php"; exit 1; }
-          ls -l install/install_functions.php || { echo "Missing install_functions.php"; exit 1; }
-          ls -l install/sql/upgrade_matrix.php || { echo "Missing upgrade_matrix.php"; exit 1; }
-
-      - name: Create run_install.php
-        run: |
-          cat << 'EOF' > run_install.php
-          <?php
-          ini_set('display_errors', 1);
-          ini_set('display_startup_errors', 1);
-          error_reporting(E_ALL);
-
-          // Include config.php for getSessionName()
-          require_once 'includes/config.php';
-
-          // Start session to set install_file
-          session_name(getSessionName());
-          session_start();
-
-          // Set install_file for SQLite
-          $_SESSION['install_file'] = 'install/sql/tables-sqlite3.php';
-
-          require_once 'install/headless.php';
-          echo "Success\n";
-          ?>
-          EOF
 
       - name: Run WebCalendar installation
         run: |
-          php -d display_errors=Off run_install.php --debug | tee install.log || { echo "PHP execution failed"; cat install.log; exit 1; }
+          php wizard/headless.php --db-type=sqlite3 --db-database=database/webcalendar.sqlite --admin-login=admin --admin-password=admin --install-password=test123 --force | tee install.log || { echo "PHP execution failed"; cat install.log; exit 1; }
           cat install.log # Debug: Always show install.log
-          grep -q "Success" install.log || { echo "Installation failed: 'Success' not found"; cat install.log; exit 1; }
+          grep -q "Installation Complete" install.log || { echo "Installation failed: 'Installation Complete' not found"; cat install.log; exit 1; }
 
       - name: Verify database installation
         run: |

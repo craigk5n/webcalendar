@@ -86,6 +86,16 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 if ( ! empty ( $_POST ) && empty ( $error )) {
   save_pref ( $_POST, 'post' );
 
+  // Handle MCP API token
+  if ( isset ( $_POST['mcp_api_token'] ) ) {
+    $token = $_POST['mcp_api_token'];
+    if ( ! empty ( $token ) ) {
+      dbi_execute ( 'UPDATE webcal_user SET cal_api_token = ? WHERE cal_login = ?', [$token, $prefuser] );
+    } else {
+      dbi_execute ( 'UPDATE webcal_user SET cal_api_token = NULL WHERE cal_login = ?', [$prefuser] );
+    }
+  }
+
   // Reload preferences
   load_user_preferences();
 }
@@ -114,6 +124,15 @@ if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $prefarray[$row[0]] = $row[1];
   }
+  dbi_free_result ( $res );
+}
+
+// Load API token from user table
+$mcp_api_token = '';
+$res = dbi_execute ( 'SELECT cal_api_token FROM webcal_user WHERE cal_login = ?', [$prefuser] );
+if ( $res ) {
+  $row = dbi_fetch_row ( $res );
+  $mcp_api_token = $row[0] ?? '';
   dbi_free_result ( $res );
 }
 
@@ -654,11 +673,17 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <?php echo print_radio ( 'AUTO_REFRESH' ) ?>
 </td></tr>
 
-<tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("auto-refresh-time-help");?>">
- &nbsp;&nbsp;&nbsp;&nbsp;<label for="pref_AUTO_REFRESH_TIME"><?php etranslate ( 'Auto-refresh time' )?>:</label></td><td class="form-inline mt-1">
- <nobr><input class="form-control" type="text" name="pref_AUTO_REFRESH_TIME" size="3" value="<?php echo ( empty ( $prefarray['AUTO_REFRESH_TIME'] ) ? 0 : $prefarray['AUTO_REFRESH_TIME'] ); ?>"> <?php etranslate ( 'minutes' )?></nobr>
-</td></tr>
-</table>
+ <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("auto-refresh-time-help");?>">
+  &nbsp;&nbsp;&nbsp;&nbsp;<label for="pref_AUTO_REFRESH_TIME"><?php etranslate ( 'Auto-refresh time' )?>:</label></td><td class="form-inline mt-1">
+  <nobr><input class="form-control" type="text" name="pref_AUTO_REFRESH_TIME" size="3" value="<?php echo ( empty ( $prefarray['AUTO_REFRESH_TIME'] ) ? 0 : $prefarray['AUTO_REFRESH_TIME'] ); ?>"> <?php etranslate ( 'minutes' )?></nobr>
+ </td></tr>
+
+ <tr><td data-toggle="tooltip" data-placement="top" title="<?php etooltip ("mcp-api-token-help");?>">
+  <label for="mcp_api_token"><?php etranslate ( 'MCP API Token' )?>:</label></td><td class="form-inline mt-1">
+  <input class="form-control" type="text" name="mcp_api_token_display" id="mcp_api_token_display" size="40" readonly value="<?php echo htmlspecialchars($mcp_api_token ?? ''); ?>">
+  <button type="button" class="btn btn-secondary ml-2" onclick="generateApiToken()"><?php etranslate('Generate New Token');?></button>
+ </td></tr>
+ </table>
 </fieldset>
 </div>
 </div>
@@ -916,6 +941,23 @@ function reset_colors() {
       echo "  $('#pref_" . $k . "').val('$GLOBALS[$k]');\n";
     }
   ?>
+}
+
+function generateApiToken() {
+  // Generate a random token
+  const token = Array.from(crypto.getRandomValues(new Uint8Array(32)), byte => byte.toString(16).padStart(2, '0')).join('');
+  $('#mcp_api_token_display').val(token);
+  // Add a hidden input to submit the token
+  if (!$('#mcp_api_token').length) {
+    $('<input>').attr({
+      type: 'hidden',
+      id: 'mcp_api_token',
+      name: 'mcp_api_token',
+      value: token
+    }).appendTo('form[name="prefform"]');
+  } else {
+    $('#mcp_api_token').val(token);
+  }
 }
 
 $(document).ready(function(){

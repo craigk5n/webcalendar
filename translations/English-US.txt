@@ -757,6 +757,20 @@ External users can receive email reminders: External users can receive email rem
 external-can-receive-reminder-help: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
 Reports enabled: Reports enabled
 reports-enabled-help: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports. Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
+MCP Server: MCP Server
+MCP Server enabled: MCP Server enabled
+mcp-server-enabled-help: Enable the Model Context Protocol server to allow AI assistants to query WebCalendar data using API tokens.
+MCP Write Access: MCP Write Access
+mcp-write-access-help: Allow MCP clients to perform write operations (add events, modify data). Disable for read-only access.
+MCP Rate Limit (requests/hour): MCP Rate Limit (requests/hour)
+mcp-rate-limit-help: Maximum number of MCP requests allowed per user per hour to prevent abuse.
+MCP CORS Allowed Origins: MCP CORS Allowed Origins
+mcp-cors-origins-help: Configure which origins are allowed to make cross-origin MCP requests. Use * to allow all origins, or specify custom origins below.
+Custom Origins (comma-separated): Custom Origins (comma-separated)
+mcp-cors-custom-help: Specify allowed origins as a comma-separated list (e.g., https://example.com,https://another.com). Leave empty to disable CORS.
+MCP API Token: MCP API Token
+mcp-api-token-help: API token for accessing WebCalendar data via Model Context Protocol. Generate a new token to replace the current one.
+Generate New Token: Generate New Token
 Default sender address: Default sender address
 email-default-sender: Specifies the email address to specify as the sender when sending out reminders.
 Email enabled: Email enabled

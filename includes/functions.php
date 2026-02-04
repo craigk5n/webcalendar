@@ -6493,114 +6493,41 @@ function sendCookie($name, $value, $expiration=0, $path='', $sensitive=true) {
 }
 
 /**
- * Finds the next version greater than the specified version from a given file content.
- *
- * The function scans the provided file content to detect version patterns like "upgrade_v1.9.5".
- * It then compares the found versions to the provided version and returns the immediate next version
- * greater than the provided one.
- *
- * @param string $fileContent  The content of the file containing version upgrade markers.
- * @param string $version      The version to be compared against.
- *
- * @return string              The next version greater than the provided version, or an empty string if not found.
- */
-function findNextVersion($fileContent, $version) {
-  // Extract all versions from the file content
-  preg_match_all('/\/\*upgrade_(v\d+\.\d+\.\d+)\*\//', $fileContent, $matches);
-  $versions = $matches[1];
-
-  // Removing the "v" prefix from versions
-  $version_trimmed = ltrim($version, "v");
-
-  for ($i = 0; $i < count($versions); $i++) {
-    $version2 = ltrim($versions[$i], "v");
-    if (version_compare($version_trimmed, $version2, '<')) {
-      return "v$version2";
-    }
-  }
-  return ''; // Not found
-}
-
-/**
  * Determines if a software upgrade requires database changes based on the database type and version range.
  *
- * The function inspects the SQL upgrade file associated with the specified database type to find SQL changes
- * between the provided old and new version. If there's any significant SQL content between these version
- * markers, it indicates that database changes are required.
- *
- * For some database types where the SQL upgrade file might not exist, it falls back to checking the MySQL
- * upgrade file as a general reference.
+ * Uses the upgrade-sql.php data to check if there are any SQL commands between the
+ * old and new versions for the specified database type.
  *
  * @param string $db_type      The type of the database (e.g., 'mysql', 'mysqli', 'postgres').
  * @param string $old_version  The starting version to check for changes from (e.g., 'v1.9.0').
  * @param string $new_version  The ending version to check for changes up to (e.g., 'v1.9.5').
  *
  * @return bool                True if SQL changes are found between the versions, false otherwise.
- *
- * @throws Exception           Throws an exception if the SQL file for the specified database type doesn't exist.
  */
 function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
-  // File path
+  global $updates;
+  require_once __DIR__ . '/../wizard/shared/upgrade-sql.php';
+
   if ($db_type == 'mysqli')
     $db_type = 'mysql';
-  $file_path = __DIR__ . "/../install/sql/upgrade-$db_type.sql";
-  if (!file_exists($file_path)) {
-    // For example, we don't have one for SQLite yet.  Check the mysql file as a fallback.
-    $file_path = __DIR__ . "/../install/sql/upgrade-mysql.sql";
-  }
 
-  // Check if the file exists
-  if (!file_exists($file_path)) {
-    throw new Exception("The SQL file for $db_type does not exist.");
-  }
+  $normalizedOld = str_replace('v', '', strtolower($old_version));
+  $normalizedNew = str_replace('v', '', strtolower($new_version));
 
-  // Get the file content
-  $content = file_get_contents($file_path);
-
-  // Get the SQL content between this version and the next
-  $start_token = "/*upgrade_$old_version*/";
-  $start_pos = strpos($content, "$start_token");
-  if ($start_pos) {
-    $start_pos += strlen($start_token);
-  } else {
-    // Not found.  Find the next version up.
-    $next_version = findNextVersion($content, $old_version);
-    if (empty($next_version)) { // shouldn't happen unless file is messed up
+  foreach ($updates as $update) {
+    $ver = str_replace('v', '', strtolower($update['version']));
+    // Skip versions at or before old_version
+    if (version_compare($ver, $normalizedOld, '<='))
+      continue;
+    // Stop after new_version
+    if (version_compare($ver, $normalizedNew, '>'))
+      break;
+    $key = isset($update[$db_type . '-sql']) ? $db_type . '-sql' : 'default-sql';
+    $sql = trim($update[$key] ?? '');
+    if (!empty($sql))
       return true;
-    }
-    $start_token = "/*upgrade_$next_version*/";
-    $start_pos = strpos($content, "$start_token");
-    if (!$start_pos) {
-      return true;
-    }
-    $start_pos += strlen($start_token);
   }
-  $end_token = "/*upgrade_$new_version*/";
-  $end_pos = strpos($content, "$end_token");
-  if ($end_pos)
-    $end_pos += strlen($end_token);
-  else {
-    // Not found.  Find the next version up.  This is not likely to
-    // happen except from the unit tests.
-    $next_version = findNextVersion($content, $new_version);
-    if (empty($next_version)) { // shouldn't happen unless file is messed up
-      return true;
-    }
-    $end_token = "/*upgrade_$next_version*/";
-    $end_pos = strpos($content, "$end_token");
-    if (!$end_pos) {
-      return true;
-    }
-    $end_pos += strlen($end_token);
-  }
-  $sql_content = trim(substr($content, $start_pos, $end_pos - $start_pos));
-  $no_comments = preg_replace('/\/\*upgrade_v\d+\.\d+\.\d+\*\/\n?/', '', $sql_content);
-
-  // Check if for ';' which will indicate a SQL command
-  if (strpos($no_comments, ';')) {
-    return true; // Found SQL changes
-  };
-  return false; // No SQL changes found
+  return false;
 }
 
 /**
@@ -6629,5 +6556,100 @@ function update_webcalendar_version_in_db($old_version, $new_version) {
       " to " . $new_version);
     return true;
   }
+}
+
+/**
+ * Validates an MCP API token and returns the associated user login.
+ *
+ * @param string $token The API token to validate
+ * @return string|null The user login if token is valid, null otherwise
+ */
+function validate_mcp_token($token) {
+  if (empty($token)) {
+    return null;
+  }
+
+  $res = dbi_execute('SELECT cal_login FROM webcal_user WHERE cal_api_token = ? AND cal_enabled = \'Y\'', [$token]);
+  if ($res) {
+    $row = dbi_fetch_row($res);
+    dbi_free_result($res);
+    return $row[0] ?? null;
+  }
+  return null;
+}
+
+/**
+ * Checks if MCP server is enabled in system settings.
+ *
+ * @return bool True if MCP server is enabled
+ */
+/**
+ * Load system settings into an array
+ *
+ * @return array Associative array of setting name => value
+ */
+function load_settings() {
+  static $settings_cache = null;
+
+  if ($settings_cache !== null) {
+    return $settings_cache;
+  }
+
+  $settings_cache = [];
+  $rows = dbi_get_cached_rows('SELECT cal_setting, cal_value FROM webcal_config');
+  for ($i = 0, $cnt = count($rows); $i < $cnt; $i++) {
+    $row = $rows[$i];
+    $settings_cache[$row[0]] = $row[1];
+  }
+
+  return $settings_cache;
+}
+
+function is_mcp_enabled() {
+  $settings = load_settings();
+  return isset($settings['MCP_SERVER_ENABLED']) && $settings['MCP_SERVER_ENABLED'] == 'Y';
+}
+
+/**
+ * Check if MCP write access is enabled
+ *
+ * @return bool True if MCP write operations are allowed
+ */
+function is_mcp_write_enabled() {
+  $settings = load_settings();
+  return isset($settings['MCP_WRITE_ACCESS']) && $settings['MCP_WRITE_ACCESS'] == 'Y';
+}
+
+/**
+ * Gets the MCP rate limit from system settings.
+ *
+ * @return int The rate limit (requests per hour), default 100
+ */
+function get_mcp_rate_limit() {
+  $settings = load_settings();
+  return isset($settings['MCP_RATE_LIMIT']) ? (int)$settings['MCP_RATE_LIMIT'] : 100;
+}
+
+/**
+ * Checks if a user has exceeded the MCP rate limit.
+ *
+ * @param string $user_login The user login to check
+ * @return bool True if rate limit exceeded
+ */
+function check_mcp_rate_limit($user_login) {
+  $rate_limit = get_mcp_rate_limit();
+  if ($rate_limit <= 0) {
+    return false; // No limit
+  }
+
+  // Simple implementation: check activity log for MCP actions in the last hour
+  $one_hour_ago = time() - 3600;
+  $res = dbi_execute("SELECT COUNT(*) FROM webcal_entry_log WHERE cal_login = ? AND cal_type = 'M' AND cal_text LIKE 'MCP:%' AND cal_date >= ?", [$user_login, $one_hour_ago]);
+  if ($res) {
+    $row = dbi_fetch_row($res);
+    dbi_free_result($res);
+    return ($row[0] ?? 0) >= $rate_limit;
+  }
+  return false;
 }
 ?>

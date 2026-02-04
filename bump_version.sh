@@ -1,4 +1,19 @@
 #!/bin/bash
+#
+# bump_version.sh - Update WebCalendar version number across all project files
+#
+# Usage:
+#   ./bump_version.sh              # Auto-increment patch version (e.g. v1.9.13 -> v1.9.14)
+#   ./bump_version.sh v1.9.14     # Set a specific version
+#   ./bump_version.sh -p          # Print current version and exit
+#
+# Run this script before making a release. It updates the version number in:
+#   - wizard/shared/default_config.php  (WEBCAL_PROGRAM_VERSION)
+#   - wizard/shared/upgrade_matrix.php  (PROGRAM_VERSION)
+#   - includes/config.php               (PROGRAM_VERSION and PROGRAM_DATE)
+#   - UPGRADING.html                    (version table)
+#   - composer.json                     (version field)
+#   - .npmrc                            (init-version)
 
 # Function to bump version number
 bump_version() {
@@ -12,60 +27,26 @@ bump_version() {
     echo "v$major.$minor.$patch"
 }
 
-# Function to update version in install/default_config.php
+# Function to update version in wizard/shared/default_config.php
 update_default_config_version() {
     local new_version="$1"
-    sed -i -E "s/('WEBCAL_PROGRAM_VERSION' => ')[^']*(')/\1$new_version\2/" install/default_config.php
+    sed -i -E "s/('WEBCAL_PROGRAM_VERSION' => ')[^']*(')/\1$new_version\2/" wizard/shared/default_config.php
 }
-
-update_sql_version() {
-    local file_path="$1"
-    local new_version="$2"
-    
-    # Get the last two lines of the file
-    local last_two_lines=$(tail -n 2 "$file_path")
-    
-    # Check if the last two lines contain version strings.
-    if [[ $(echo "$last_two_lines" | head -n 1) == *upgrade* && $(echo "$last_two_lines" | tail -n 1) == *upgrade* ]]; then
-        # If both lines are versions, replace the version in the last line.
-        sed -i "$ s/.*/\/\*upgrade_${new_version}\*\//g" "$file_path"
-    else
-        # If not, append a new line with the version.
-        echo "/*upgrade_${new_version}*/" >> "$file_path"
-    fi
-
-    echo "Updated $file_path to version $new_version"
-}
-
-
-
-# SQL files to update
-declare -a sql_files=(
-    "install/sql/upgrade-db2.sql"
-    "install/sql/upgrade-ibase.sql"
-    "install/sql/upgrade-mssql.sql"
-    "install/sql/upgrade-mysql.sql"
-    "install/sql/upgrade-oracle.sql"
-    "install/sql/upgrade-postgres.sql"
-    "install/sql/upgrade.sql"
-)
 
 # Function to update version and date in includes/config.php
 update_config_php() {
     local file_path="includes/config.php"
     local new_version="$1"
     local new_date=$(date +"%d %b %Y")
-    
+
     # Update version
     sed -i "/^ *\$PROGRAM_VERSION\s*=\s*/s/'[^']*'/'$new_version'/" "$file_path"
-    
+
     # Update date
     sed -i "/^ *\$PROGRAM_DATE =\s*/s/'[^']*'/'$new_date'/" "$file_path"
-    
+
     echo "Updated $file_path to version $new_version and date $new_date"
 }
-
-
 
 # Function to update version in UPGRADING.html
 update_upgrading_html() {
@@ -98,15 +79,17 @@ update_composer_json() {
     echo "Updated $file_path to version $new_version"
 }
 
+# Function to update version in wizard/shared/upgrade_matrix.php
 function update_upgrade_matrix() {
     local NEW_VERSION="$1"
-    local file_path="install/sql/upgrade_matrix.php"
+    local file_path="wizard/shared/upgrade_matrix.php"
 
     # Using sed to replace the version
     sed -i "3s/\$PROGRAM_VERSION = '.*';/\$PROGRAM_VERSION = '$NEW_VERSION';/" "$file_path"
-    echo "Updated $file_path to version $new_version"
+    echo "Updated $file_path to version $NEW_VERSION"
 }
 
+# Function to update version in .npmrc
 update_npmrc_version() {
     local new_version="$1"
     sed -i -E "s/(init-version = )[^ ]+/\1$new_version/" .npmrc
@@ -115,7 +98,7 @@ update_npmrc_version() {
 # Function to print current version
 print_version() {
     local version
-    version=$(grep 'WEBCAL_PROGRAM_VERSION' install/default_config.php | sed -E "s/.*'WEBCAL_PROGRAM_VERSION' => '([^']*)'.*/\1/")
+    version=$(grep 'WEBCAL_PROGRAM_VERSION' wizard/shared/default_config.php | sed -E "s/.*'WEBCAL_PROGRAM_VERSION' => '([^']*)'.*/\1/")
     echo "$version" | tr -d v
 }
 
@@ -126,7 +109,7 @@ if [ "$1" == "-p" ]; then
     exit 0
 elif [ "$#" -eq 0 ]; then
     # No arguments provided, bump the version
-    current_version=$(grep 'WEBCAL_PROGRAM_VERSION' install/default_config.php | sed -E "s/.*'WEBCAL_PROGRAM_VERSION' => '([^']*)'.*/\1/")
+    current_version=$(grep 'WEBCAL_PROGRAM_VERSION' wizard/shared/default_config.php | sed -E "s/.*'WEBCAL_PROGRAM_VERSION' => '([^']*)'.*/\1/")
     new_version=$(bump_version "$current_version")
 else
     # Argument provided, use it as the new version
@@ -134,12 +117,6 @@ else
 fi
 
 update_default_config_version "$new_version"
-
-for file in "${sql_files[@]}"; do
-    update_sql_version "$file" "$new_version"
-    echo "Updated $file to version $new_version"
-done
-
 update_config_php "$new_version"
 update_upgrading_html "$new_version"
 update_composer_json "$new_version"
@@ -148,4 +125,3 @@ update_npmrc_version "$new_version"
 
 echo ""
 echo "Files updated to version $new_version"
-
