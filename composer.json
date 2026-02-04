@@ -19,7 +19,10 @@
       "*": "source"
     },
     "process-timeout": 0,
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
   },
   "prefer-stable": true,
   "require": {
