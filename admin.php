@@ -731,32 +731,35 @@ if ( ! $error ) {
 <!-- BEGIN MCP SERVER -->
   <div class="tab-pane container fade" id="' . $tabs_ar[12] . '">
   <div class="form-group">
-    <fieldset class="border p-2"><legend>' . translate('MCP Server Configuration') . '</legend>
-    <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'mcp-server-enabled-help' ) . '">'
-    . translate ( 'MCP Server enabled' ) . ':</label>'
-    . print_radio ( 'MCP_SERVER_ENABLED', '', '', 'N' ) . '</div>
+    <fieldset class="border p-2"><legend>' . translate('MCP Server Configuration') . '</legend>'
+    . ( ! is_mcp_available()
+      ? '<p class="bold"><span style="color: #cc0000;">' . translate( 'MCP Server is not available.' ) . '</span></p><p>'
+        . translate( 'The MCP SDK PHP package must be installed. Run: composer require mcp/sdk' ) . '</p>'
+      : '<div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'mcp-server-enabled-help' ) . '">'
+        . translate ( 'MCP Server enabled' ) . ':</label>'
+        . print_radio ( 'MCP_SERVER_ENABLED', '', '', 'N' ) . '</div>
 
-    <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'mcp-write-access-help' ) . '">'
-    . translate ( 'MCP Write Access' ) . ':</label>'
-    . print_radio ( 'MCP_WRITE_ACCESS', '', '', 'N' ) . '</div>
+        <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'mcp-write-access-help' ) . '">'
+        . translate ( 'MCP Write Access' ) . ':</label>'
+        . print_radio ( 'MCP_WRITE_ACCESS', '', '', 'N' ) . '</div>
 
-    <div class="form-inline mt-1 mb-2"><label for="admin_MCP_RATE_LIMIT" title="' . tooltip ( 'mcp-rate-limit-help' ) . '">'
-    . translate ( 'MCP Rate Limit (requests/hour)' ) . ':</label>
-    <input type="number" size="10" name="admin_MCP_RATE_LIMIT" id="admin_MCP_RATE_LIMIT" value="'
-    . htmlspecialchars ( $s['MCP_RATE_LIMIT'] ?? '100' ) . '" min="1" max="1000"></div>
+        <div class="form-inline mt-1 mb-2"><label for="admin_MCP_RATE_LIMIT" title="' . tooltip ( 'mcp-rate-limit-help' ) . '">'
+        . translate ( 'MCP Rate Limit (requests/hour)' ) . ':</label>
+        <input type="number" size="10" name="admin_MCP_RATE_LIMIT" id="admin_MCP_RATE_LIMIT" value="'
+        . htmlspecialchars ( $s['MCP_RATE_LIMIT'] ?? '100' ) . '" min="1" max="1000"></div>
 
-    <div class="form-inline mt-1 mb-2"><label for="admin_MCP_CORS_ORIGINS" title="' . tooltip ( 'mcp-cors-origins-help' ) . '">'
-    . translate ( 'MCP CORS Allowed Origins' ) . ':</label>
-    <select name="admin_MCP_CORS_ORIGINS" id="admin_MCP_CORS_ORIGINS">
-    <option value=""' . (empty($s['MCP_CORS_ORIGINS']) ? ' selected' : '') . '>' . translate('Disabled') . '</option>
-    <option value="*" ' . (($s['MCP_CORS_ORIGINS'] ?? '') === '*' ? 'selected' : '') . '>Allow All (*)</option>
-    <option value="custom"' . ((!empty($s['MCP_CORS_ORIGINS']) && $s['MCP_CORS_ORIGINS'] !== '*' && strpos($s['MCP_CORS_ORIGINS'], ',') !== false) ? ' selected' : '') . '>Custom Origins</option>
-    </select></div>
-    <div class="form-inline mt-1 mb-2"><label for="admin_MCP_CORS_CUSTOM" title="' . tooltip ( 'mcp-cors-custom-help' ) . '">'
-    . translate ( 'Custom Origins (comma-separated)' ) . ':</label>
-    <input type="text" size="40" name="admin_MCP_CORS_CUSTOM" id="admin_MCP_CORS_CUSTOM" value="'
-    . htmlspecialchars ( (!empty($s['MCP_CORS_ORIGINS']) && $s['MCP_CORS_ORIGINS'] !== '*' && strpos($s['MCP_CORS_ORIGINS'], ',') !== false) ? $s['MCP_CORS_ORIGINS'] : '' ) . '" placeholder="https://example.com,https://another.com"></div>
-    </fieldset>
+        <div class="form-inline mt-1 mb-2"><label for="admin_MCP_CORS_ORIGINS" title="' . tooltip ( 'mcp-cors-origins-help' ) . '">'
+        . translate ( 'MCP CORS Allowed Origins' ) . ':</label>
+        <select name="admin_MCP_CORS_ORIGINS" id="admin_MCP_CORS_ORIGINS">
+        <option value=""' . (empty($s['MCP_CORS_ORIGINS']) ? ' selected' : '') . '>' . translate('Disabled') . '</option>
+        <option value="*" ' . (($s['MCP_CORS_ORIGINS'] ?? '') === '*' ? 'selected' : '') . '>Allow All (*)</option>
+        <option value="custom"' . ((!empty($s['MCP_CORS_ORIGINS']) && $s['MCP_CORS_ORIGINS'] !== '*' && strpos($s['MCP_CORS_ORIGINS'], ',') !== false) ? ' selected' : '') . '>Custom Origins</option>
+        </select></div>
+        <div class="form-inline mt-1 mb-2"><label for="admin_MCP_CORS_CUSTOM" title="' . tooltip ( 'mcp-cors-custom-help' ) . '">'
+        . translate ( 'Custom Origins (comma-separated)' ) . ':</label>
+        <input type="text" size="40" name="admin_MCP_CORS_CUSTOM" id="admin_MCP_CORS_CUSTOM" value="'
+        . htmlspecialchars ( (!empty($s['MCP_CORS_ORIGINS']) && $s['MCP_CORS_ORIGINS'] !== '*' && strpos($s['MCP_CORS_ORIGINS'], ',') !== false) ? $s['MCP_CORS_ORIGINS'] : '' ) . '" placeholder="https://example.com,https://another.com"></div>' )
+    . '</fieldset>
   </div></div>
 
 <!-- BEGIN EMAIL -->

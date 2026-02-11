@@ -47,8 +47,10 @@ function getSqlUpdates($currentVersion, $dbType = 'default', $includeFunctions =
       $s = explode(';', rtrim($updates[$i][$key], ';'));
       for ($j = 0; $j < count($s); $j++) {
         $s[$j] = trim($s[$j]);
-        //echo "$j => '" . $s[$j] . "'\n";
       }
+      // Filter out empty strings
+      $s = array_filter($s, fn($cmd) => !empty($cmd));
+      
       $sql = array_merge($sql, $s);
       // Add any upgrade function after the SQL changes
       if (isset($updates[$i]['upgrade-function'])) {
@@ -527,5 +529,9 @@ ALTER TABLE webcal_nonuser_cals MODIFY COLUMN cal_url VARCHAR(255);
 ALTER TABLE webcal_entry MODIFY COLUMN cal_url VARCHAR(255);
 ALTER TABLE webcal_user ADD cal_api_token VARCHAR(255) DEFAULT NULL;
 SQL
+  ],
+  [
+    'version' => 'v1.9.14',
+    'default-sql' => ''
   ],
 ];

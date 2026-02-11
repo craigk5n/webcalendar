@@ -41,8 +41,34 @@ class WizardState
   public bool $databaseExists = false;
   public bool $databaseIsEmpty = false;
   public ?string $detectedDbVersion = null;
-  public string $programVersion = 'v1.9.13';
+  public string $programVersion = '';
   public int $adminUserCount = 0;
+
+  /**
+   * Constructor - initializes program version
+   */
+  public function __construct()
+  {
+    $this->loadProgramVersion();
+  }
+
+  /**
+   * Load program version from upgrade_matrix.php
+   */
+  private function loadProgramVersion(): void
+  {
+    $matrixFile = __DIR__ . '/shared/upgrade_matrix.php';
+    if (file_exists($matrixFile)) {
+      include $matrixFile;
+      if (isset($PROGRAM_VERSION)) {
+        $this->programVersion = $PROGRAM_VERSION;
+      }
+    }
+
+    if (empty($this->programVersion)) {
+      $this->programVersion = 'v1.9.14'; // Fallback
+    }
+  }
   
   // Upgrade/install status
   public bool $isUpgrade = false;
@@ -73,10 +99,12 @@ class WizardState
       
       // Load all properties from session data
       foreach ($data as $key => $value) {
+        if ($key === 'programVersion') continue; // Always use current version from file
         if (property_exists($this, $key)) {
           $this->$key = $this->castValue($key, $value);
         }
       }
+      $this->loadProgramVersion(); // Ensure it's set correctly
     }
   }
   

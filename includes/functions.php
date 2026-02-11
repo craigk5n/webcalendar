@@ -6522,10 +6522,11 @@ function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
     // Stop after new_version
     if (version_compare($ver, $normalizedNew, '>'))
       break;
-    $key = isset($update[$db_type . '-sql']) ? $db_type . '-sql' : 'default-sql';
-    $sql = trim($update[$key] ?? '');
-    if (!empty($sql))
-      return true;
+    
+    // Always return true if we find a version > old_version.
+    // This ensures the wizard is triggered for every version bump
+    // to update the WEBCAL_PROGRAM_VERSION in the database.
+    return true;
   }
   return false;
 }
@@ -6620,14 +6621,18 @@ function is_mcp_write_enabled() {
   return isset($settings['MCP_WRITE_ACCESS']) && $settings['MCP_WRITE_ACCESS'] == 'Y';
 }
 
-/**
- * Gets the MCP rate limit from system settings.
- *
- * @return int The rate limit (requests per hour), default 100
- */
 function get_mcp_rate_limit() {
   $settings = load_settings();
   return isset($settings['MCP_RATE_LIMIT']) ? (int)$settings['MCP_RATE_LIMIT'] : 100;
+}
+
+/**
+ * Checks if MCP SDK dependencies are available.
+ *
+ * @return bool True if MCP SDK is installed
+ */
+function is_mcp_available() {
+  return class_exists( 'Mcp\Server', true );
 }
 
 /**

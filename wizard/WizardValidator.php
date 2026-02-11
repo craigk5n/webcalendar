@@ -184,10 +184,23 @@ class WizardValidator
         
       case 'password':
       case 'install_password':
+      case 'admin_password':
         if (empty($value)) {
           $this->addFieldError($field, 'Password is required');
         } elseif (strlen((string)$value) < 8) {
           $this->addFieldError($field, 'Password must be at least 8 characters');
+        }
+        break;
+
+      case 'password2':
+        if ($value !== ($context['password'] ?? '')) {
+          $this->addFieldError($field, 'Passwords do not match');
+        }
+        break;
+
+      case 'admin_password2':
+        if ($value !== ($context['admin_password'] ?? '')) {
+          $this->addFieldError($field, 'Passwords do not match');
         }
         break;
         

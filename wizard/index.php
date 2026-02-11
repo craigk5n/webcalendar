@@ -13,9 +13,10 @@ if (!defined('WIZARD_ENTRY')) {
 // Load required files
 require_once __DIR__ . '/WizardState.php';
 require_once __DIR__ . '/WizardValidator.php';
+require_once __DIR__ . '/shared/upgrade_matrix.php'; // Load $PROGRAM_VERSION
 
 // Constants
-const PROGRAM_VERSION = 'v1.9.13';
+const PROGRAM_VERSION = 'v1.9.14'; // Fallback will be updated by bump_version.sh
 const WIZARD_NAME = 'WebCalendar Install Wizard';
 
 // Initialize session
@@ -125,7 +126,19 @@ function routeAfterAuth(WizardState $state, WizardValidator $validator): string
         return 'dbtables';
       } elseif ($state->adminUserCount < 1) {
         return 'adminuser';
-      } else {
+      } else { // If no upgrade needed and admin user exists, go to finish
+        // Ensure the current program version is written to the database,
+        // even if no SQL commands are pending. This covers cases where
+        // the detectedDbVersion might already match programVersion, but
+        // the entry in webcal_config might be missing or need explicit update.
+        // The executeUpgrade() method handles the updateVersionInDb() call
+        // when upgradeSqlCommands is empty.
+        $db->reconnect();
+        if (!$db->executeUpgrade()) {
+          // Log an error if the version update fails, but still proceed to finish
+          // as it's not a critical blocking issue for an already "up-to-date" system.
+          error_log("Wizard: Failed to ensure program version in DB during quick upgrade finish: " . $db->getError());
+        }
         return 'finish';
       }
     } else {
@@ -154,6 +167,9 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
       $field = $_POST['field'] ?? '';
       $value = $_POST['value'] ?? '';
       $context = $_POST['context'] ?? [];
+      if ( is_string ( $context ) ) {
+        $context = json_decode ( $context, true ) ?: [];
+      }
       $result = $validator->validateField($field, $value, $context);
       $response = [
         'success' => $result['valid'],
@@ -292,7 +308,23 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
       if (!$state->databaseExists || $state->databaseIsEmpty) {
         $nextStep = 'createdb';
       } elseif ($state->isUpgrade) {
-        $nextStep = 'dbtables';
+        if (empty($state->upgradeSqlCommands)) {
+          // No-op upgrade (only version bump), execute directly
+          $db->reconnect();
+          if ($db->executeUpgrade()) {
+            $db->checkDatabase();
+            if ($state->adminUserCount < 1) {
+              $nextStep = 'adminuser';
+            } else {
+              $nextStep = 'summary';
+            }
+          } else {
+            $nextStep = 'dbtables'; // Fallback if executeUpgrade fails
+          }
+          $db->closeConnection();
+        } else {
+          $nextStep = 'dbtables';
+        }
       } elseif ($state->adminUserCount < 1) {
         $nextStep = 'adminuser';
       } else {
@@ -319,7 +351,23 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
       if (!$state->databaseExists || $state->databaseIsEmpty) {
         $nextStep = 'createdb';
       } elseif ($state->isUpgrade) {
-        $nextStep = 'dbtables';
+        if (empty($state->upgradeSqlCommands)) {
+          // No-op upgrade (only version bump), execute directly
+          $db->reconnect();
+          if ($db->executeUpgrade()) {
+            $db->checkDatabase();
+            if ($state->adminUserCount < 1) {
+              $nextStep = 'adminuser';
+            } else {
+              $nextStep = 'summary';
+            }
+          } else {
+            $nextStep = 'dbtables'; // Fallback if executeUpgrade fails
+          }
+          $db->closeConnection();
+        } else {
+          $nextStep = 'dbtables';
+        }
       } elseif ($state->adminUserCount < 1) {
         $nextStep = 'adminuser';
       } else {

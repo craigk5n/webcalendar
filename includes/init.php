@@ -60,6 +60,7 @@ require_once 'includes/config.php';
 require_once 'includes/dbi4php.php';
 require_once 'includes/formvars.php';
 require_once 'includes/functions.php';
+require_once 'includes/mcp-loader.php';
 
 $WebCalendar->initializeFirstPhase();
 
@@ -70,9 +71,6 @@ require_once 'includes/site_extras.php';
 require_once 'includes/validate.php';
 
 $WebCalendar->initializeSecondPhase();
-
-// TODO: Start using composer for dependency management...
-//require_once 'vendor/autoload.php';
 
 // Return the toplevel URL (no path) of the current URL.
 function get_server_top_url () {

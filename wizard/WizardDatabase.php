@@ -22,6 +22,41 @@ class WizardDatabase
   }
   
   /**
+   * Re-establish database connection
+   */
+  public function reconnect(): bool
+  {
+    if ($this->testConnection()) {
+      if ($this->state->databaseExists && !empty($this->state->dbDatabase)) {
+        $this->selectDatabase($this->state->dbDatabase);
+      }
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Select a database
+   */
+  public function selectDatabase(string $dbName): bool
+  {
+    if (!$this->connection) {
+      return false;
+    }
+
+    try {
+      if ($this->state->dbType === 'mysqli' || $this->state->dbType === 'mysql') {
+        return $this->connection->select_db($dbName);
+      }
+      // PostgreSQL selects database during connection
+      return true;
+    } catch (Exception $e) {
+      $this->error = $e->getMessage();
+      return false;
+    }
+  }
+  
+  /**
    * Try to connect to database with current settings
    * @return bool True if connection successful
    */
@@ -503,6 +538,7 @@ class WizardDatabase
       if ($this->state->databaseIsEmpty) {
         return $this->createTablesFromScratch();
       }
+      $this->updateVersionInDb();
       return true;
     }
     
@@ -590,56 +626,91 @@ class WizardDatabase
   private function updateVersionInDb(): bool
   {
     $version = $this->state->programVersion;
+    error_log("Attempting to update WEBCAL_PROGRAM_VERSION to {$version}");
 
     try {
-      // Try UPDATE first (for upgrades where the row already exists)
-      $updated = false;
-      if ($this->state->dbType === 'mysqli') {
-        $stmt = $this->connection->prepare(
-          "UPDATE webcal_config SET cal_value = ? WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'"
-        );
-        $stmt->bind_param('s', $version);
-        $stmt->execute();
-        $updated = $stmt->affected_rows > 0;
-      } elseif ($this->state->dbType === 'postgresql') {
-        $result = pg_query_params($this->connection,
-          "UPDATE webcal_config SET cal_value = \$1 WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'",
-          [$version]);
-        $updated = $result && pg_affected_rows($result) > 0;
-      } elseif ($this->state->dbType === 'sqlite3') {
-        $stmt = $this->connection->prepare(
-          "UPDATE webcal_config SET cal_value = :version WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'"
-        );
-        $stmt->bindValue(':version', $version);
-        $stmt->execute();
-        $updated = $this->connection->changes() > 0;
-      }
-
-      // If no row was updated, insert a new one (new installation)
-      if (!$updated) {
-        if ($this->state->dbType === 'mysqli') {
-          $stmt = $this->connection->prepare(
-            "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', ?)"
-          );
-          $stmt->bind_param('s', $version);
-          return $stmt->execute();
-        } elseif ($this->state->dbType === 'postgresql') {
-          $result = pg_query_params($this->connection,
-            "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', \$1)",
-            [$version]);
-          return $result !== false;
-        } elseif ($this->state->dbType === 'sqlite3') {
-          $stmt = $this->connection->prepare(
-            "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', :version)"
-          );
-          $stmt->bindValue(':version', $version);
-          return $stmt->execute() !== false;
+      // Ensure database is selected for MySQL if not already
+      if (($this->state->dbType === 'mysqli' || $this->state->dbType === 'mysql') && $this->connection) {
+        if (is_object($this->connection) && method_exists($this->connection, 'select_db')
+          && $this->connection->real_escape_string($this->state->dbDatabase) !== $this->connection->current_db ) {
+             error_log("Selecting database " . $this->state->dbDatabase);
+             if (!$this->connection->select_db($this->state->dbDatabase)) {
+                $this->error = "Failed to select database '{$this->state->dbDatabase}': " . $this->connection->error;
+                error_log($this->error);
+                return false;
+             }
         }
       }
 
-      return true;
+      $delSql = "DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'";
+      $insSql = "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', ?)";
+
+      if ($this->state->dbType === 'mysqli' || $this->state->dbType === 'mysql') {
+        if (!$this->connection->query($delSql)) {
+          $this->error = "Failed to delete old version: " . $this->connection->error;
+          error_log($this->error);
+          return false;
+        }
+        $stmt = $this->connection->prepare($insSql);
+        if (!$stmt) {
+          $this->error = "Failed to prepare INSERT statement: " . $this->connection->error;
+          error_log($this->error);
+          return false;
+        }
+        $stmt->bind_param('s', $version);
+        if (!$stmt->execute()) {
+          $this->error = "Failed to execute INSERT statement: " . $stmt->error;
+          error_log($this->error);
+          return false;
+        }
+        error_log("Successfully updated WEBCAL_PROGRAM_VERSION for mysqli/mysql.");
+        return true;
+      } elseif ($this->state->dbType === 'postgresql' || $this->state->dbType === 'postgres') {
+        if (!pg_query($this->connection, $delSql)) {
+          $this->error = "Failed to delete old version: " . pg_last_error($this->connection);
+          error_log($this->error);
+          return false;
+        }
+        $result = pg_query_params($this->connection,
+          "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', \$1)",
+          [$version]);
+        if (!$result) {
+          $this->error = "Failed to insert new version: " . pg_last_error($this->connection);
+          error_log($this->error);
+          return false;
+        }
+        error_log("Successfully updated WEBCAL_PROGRAM_VERSION for postgresql.");
+        return true;
+      } elseif ($this->state->dbType === 'sqlite3' || $this->state->dbType === 'sqlite') {
+        if (!$this->connection->exec($delSql)) {
+          $this->error = "Failed to delete old version: " . $this->connection->lastErrorMsg();
+          error_log($this->error);
+          return false;
+        }
+        $stmt = $this->connection->prepare(
+          "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', :version)"
+        );
+        if (!$stmt) {
+          $this->error = "Failed to prepare INSERT statement: " . $this->connection->lastErrorMsg();
+          error_log($this->error);
+          return false;
+        }
+        $stmt->bindValue(':version', $version);
+        if (!$stmt->execute()) {
+          $this->error = "Failed to execute INSERT statement: " . $this->connection->lastErrorMsg();
+          error_log($this->error);
+          return false;
+        }
+        error_log("Successfully updated WEBCAL_PROGRAM_VERSION for sqlite3.");
+        return true;
+      }
+
+      $this->error = "Unsupported database type for version update: " . $this->state->dbType;
+      error_log($this->error);
+      return false;
     } catch (Exception $e) {
       $this->error = 'Failed to update version in database: ' . $e->getMessage();
+      error_log($this->error);
       return false;
     }
   }
