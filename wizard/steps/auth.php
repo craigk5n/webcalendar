@@ -54,7 +54,11 @@ $hasPassword = !empty($state->installPassword);
              id="password2" 
              name="password2" 
              required
+<<<<<<< HEAD
              data-validate="password">
+=======
+             data-validate="password2">
+>>>>>>> dev
     </div>
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">

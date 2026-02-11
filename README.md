@@ -1,149 +1,208 @@
-WebCalendar README
-------------------
+# WebCalendar
 
-Project Home Page: https://k5n.us/webcalendar/
-Project Owner: Craig Knudsen, &#99;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;
-Documentation:
-- [System Administrator's Guide](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-SysAdmin.html) (Installation instructions, FAQ)
-- [Upgrading Instructions](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/UPGRADING.html)
-- License: [GPLv2](https://github.com/craigk5n/webcalendar/blob/master/LICENSE)
-- [Online Demo at SF](http://webcalendar.sourceforge.net/demo/)
+[![Version](https://img.shields.io/badge/version-v1.9.13-blue.svg)](https://github.com/craigk5n/webcalendar/releases)
+[![License](https://img.shields.io/badge/license-GPL%20v2-green.svg)](LICENSE)
+[![PHP](https://img.shields.io/badge/php-8.0%2B-8892BF.svg)](https://php.net)
+[![CI](https://github.com/craigk5n/webcalendar/workflows/CI/badge.svg)](https://github.com/craigk5n/webcalendar/actions)
+[![GitHub stars](https://img.shields.io/github/stars/craigk5n/webcalendar.svg?style=social&label=Star)](https://github.com/craigk5n/webcalendar)
+[![Downloads](https://img.shields.io/github/downloads/craigk5n/webcalendar/total.svg)](https://github.com/craigk5n/webcalendar/releases)
 
-Developer Resources:
-- [WebCalendar-Database.html](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-Database.html)
-- [WebCalendar-DeveloperGuide.html](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-DeveloperGuide.html)
+WebCalendar is a **multi-user, web-based calendar application** built with PHP. It supports multiple database backends, features event management, user groups, access controls, and integrates with external applications. Designed for both personal and enterprise use, WebCalendar can be deployed on any web server with PHP support.
 
-## Roadmap
+![WebCalendar Screenshot](https://www.k5n.us/wp-content/gallery/webcalendar/wcss-month.png)
 
-### v1.9.X
-- Clean up bugs
-- Resolve any PHP 8 issues
-- New installer
-- Better support for running as a container
-- Improve translations for most popular languages (using new tools/complete-translation.py.)
-- Testing/validation of databases other than MySQL (which has received most of the attention)
+## ✨ Features
 
-### v2.0.X
-- Stable release based on the v1.9 releases
+- **📅 Multiple Calendar Views** - Month, week, day, year, and agenda views
+- **👥 Multi-User Support** - User management with groups and permissions
+- **🔄 Recurring Events** - Support for complex event repetition patterns
+- **🔐 Access Control** - Granular permissions for viewing and editing events
+- **📧 Email Notifications** - Event reminders and updates via email
+- **📱 Responsive Design** - Works on desktop and mobile devices
+- **🌐 Multi-Language** - Available in 30+ languages
+- **📤 iCal Import/Export** - Import and export calendar data in iCalendar format
+- **🔗 External Integration** - LDAP, IMAP, and custom authentication bridges
+- **🐳 Docker Ready** - Pre-built Docker images for easy deployment
+- **🤖 MCP Server** - Model Context Protocol support for AI assistant integration
 
-### v2.1.X
-- Add support for database caching with Redis
+## 🚀 Quick Start
 
-## Installation Instructions
+### Using Docker (Recommended)
 
-After unzipping your files (or transferring the files to your hosting
-provider), you will need to go to the web-based install script.
-If your files are installed in a "webcalendar" folder under your parent
-web server document root, you can access the script by going to:
+```bash
+# Clone the repository
+git clone https://github.com/craigk5n/webcalendar.git
+cd webcalendar
 
-    https://yourserverhere/webcalendar/
+# Start with Docker Compose
+docker-compose -f docker/docker-compose-php8.yml up
 
-(Obviously, put the correct server name in above.)  The toplevel URL will
-automatically redirect to the installation wizard.
-
-Alternatively, there is a headless installation/update script you can run from
-the shell:
-
-```shell
-php webcalendar/install/headless.php
+# Access at http://localhost:8080
 ```
 
-### Option 1: settings.php
+### Manual Installation
 
-You should create an empty `includes/settings.php` yourself before running the headless
-install script that the web service process has write permissions to.
+1. **Download** the latest release or clone the repository:
+   ```bash
+   git clone https://github.com/craigk5n/webcalendar.git
+   ```
 
-### Option 2: Environment Variables
+2. **Point your web server** to the WebCalendar directory
 
-Instead of using the `includes/settings.php` file for your settings, you can use environment
-variables instead.
-This is primarily targeted towards those running WebCalendar in containers (docker, AWS Fargate, etc)
-where it's easier to pass in environment settings than to write to a config file on a container.
-You can do this with the docker-compose file if you are using docker.
-If you want to do this with a standard Web Server,
-you can set the evironment variables within your web server's configuration.
-Depending on your web server, there may be more than one way to do this.  You could
-do this in your `php.ini` file, but those env vars would be available to all PHP apps
-on the server.  A better solution would be to setup a `.htaccess` file in your
-WebCalendar directory that looked something like:
+3. **Run the web-based installer** by visiting your WebCalendar URL:
+   ```
+   https://yourserver.com/webcalendar/
+   ```
+   The installer will automatically redirect to the setup wizard.
 
+4. **Follow the guided setup** to configure your database and admin user
+
+### Headless Installation
+
+For automated deployments, use the headless installer:
+
+```bash
+php wizard/headless.php
 ```
+
+See the [Installation Guide](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-SysAdmin.html) for detailed instructions.
+
+## 🐳 Docker Development
+
+Build and run a development environment with live file mounting:
+
+```bash
+# Build the development container
+docker-compose -f docker/docker-compose-php8-dev.yml build
+
+# Start the containers
+docker-compose -f docker/docker-compose-php8-dev.yml up
+
+# Access at http://localhost:8080
+```
+
+Changes to your local files are immediately reflected in the container.
+
+## ⚙️ Configuration
+
+### Environment Variables
+
+WebCalendar supports containerized deployments via environment variables:
+
+```apache
 SetEnv WEBCALENDAR_USE_ENV true
-SetEnv WEBCALENDAR_INSTALL_PASSWORD "da1437a2c74ee0b35eed71e27d00c618"
 SetEnv WEBCALENDAR_DB_TYPE mysqli
+SetEnv WEBCALENDAR_DB_HOST localhost
 SetEnv WEBCALENDAR_DB_DATABASE webcalendar
 SetEnv WEBCALENDAR_DB_LOGIN webcalendar
-SetEnv WEBCALENDAR_DB_PASSWORD "ChangeThisPassword"
-SetEnv WEBCALENDAR_DB_HOST db
-SetEnv WEBCALENDAR_DB_PERSISTENT true
-SetEnv WEBCALENDAR_USER_INC user.php
+SetEnv WEBCALENDAR_DB_PASSWORD "your_secure_password"
 SetEnv WEBCALENDAR_MODE prod
 ```
 
-Note: Don't forget to enable mod_env for Apache for this to work, and to allow access to environment variables from PHP:
-```
-php_value expose_php ON
-```
+Add these to your `.htaccess` file or web server configuration.
 
-## Running WebCalendar with Docker
-You can use a prebuilt WebCalendar image rather than building it yourself locally.
-You will need to shell into the MariaDb container to grant access.
-Because we also need a database, we use a local network with WebCalendar
-and MariaDb running that is setup with the `docker-compose` command.
+### Database Support
 
-- Start the containers:
-  `docker-compose -f docker/docker-compose-php8.yml up`
-- Start up your web browser and go to:
-  [http://localhost:8080/](http://localhost:8080/).
-- Follow the guided web-based setup and choose "mysqli" as the database
-  type.
-  Be sure to use the same MariaDb credentials specified above
-  (Password _WebCalendar.1_ and Database Name _webcalendar_php8_.)
+- ✅ MySQL / MariaDB (recommended)
+- ✅ PostgreSQL
+- ✅ SQLite3
+- ✅ Oracle
+- ✅ IBM DB2
+- ✅ ODBC
 
-## Setting Up a Docker Dev Environment (PHP 8.1)
+## 🧪 Testing
 
-You can setup a docker environment with PHP 8.1 and MariaDb with a few
-steps.  This docker setup differs from the normal WebCalendar docker image
-in that the local WebCalendar files are mounted into the container so
-that changes to your local filesystem will also apply to the WebCalanedar
-files in the container.
+Run the test suite with PHPUnit:
 
-- Build the docker container with
-  `docker-compose -f docker/docker-compose-php8-dev.yml build`
-- Start the containers with
-  `docker-compose -f docker/docker-compose-php8-dev.yml up`
-- Start up your web browser and go to:
-  [http://localhost:8080/](http://localhost:8080/).
-- Follow the guided web-based setup and choose "mysqli" as the database
-  type.
-  Be sure to use the same MariaDb credentials specified above
-  (Password _WebCalendar.1_ and Database Name _webcalendar_php8_.)
+```bash
+# Install dependencies
+composer install
 
-## Integrating WebCalendar with External Applications
+# Run PHPUnit tests
+cd tests; ./run_unit_tests.sh; cd ..
 
-Web Calendar can be configured to pull user and configuration data from an external application. This
-allows tighter integration when using Web Calendar alongside your own website or application.
-
-The user integration is accomplished by creating a "bridge" script in the `includes` directory, for example,
-`includes/user-app-myapp.php`. There are several functions you will need to define in this script. See the
-built-in integrations for [Joomla](https://github.com/craigk5n/webcalendar/blob/master/includes/user-app-joomla.php)
-and [LDAP](https://github.com/craigk5n/webcalendar/blob/master/includes/user-ldap.php) as examples for the interface
-you'll need to implement.
-
-Once the script is created, add the following line to `includes/settings.php`:
-
-```
-user_inc: user-app-myapp.php
+# Syntax check all PHP files
+cd tests; ./compile_test.sh; cd ..
 ```
 
-The process is much the same for external configs. Create a script such as `includes/config-app-myapp.php` and define
-a single function in that script called `do_external_configs`. This function receives an associative array of all
-the settings defined in `includes/settings.php`, and should return a new associated array that overrides those settings.
-Then, simply add this line to `includes/settings.php`:
+## 🏗️ Building from Source
 
-```
-config_inc: config-app-myapp.php
+WebCalendar includes all required dependencies in the release (primarily in the `pub/` directory). You **do not need to run Composer** unless you are adding or updating dependencies.
+
+If you need to modify dependencies:
+
+```bash
+# Install PHP dependencies (only needed for adding/updating dependencies)
+composer install
+
+# Copy vendor assets to project directories
+make
 ```
 
-External configs will allow your application to supply, for example, database credentials to Web Calendar, rather than
-these needing to be stored in plain text in the webcalendar directory.
+Note: The Makefile requires Linux (uses `sha384sum`).
+
+## 🔌 External Application Integration
+
+WebCalendar can integrate with external systems for user authentication and configuration:
+
+### User Integration
+
+Create a bridge script in `includes/user-app-yourapp.php`:
+
+```php
+// Implement required functions for authentication
+function user_valid_login($login, $password) { ... }
+function user_get_users() { ... }
+```
+
+See [user-ldap.php](includes/user-ldap.php) and [user-app-joomla.php](includes/user-app-joomla.php) for examples.
+
+### Configuration Integration
+
+Create `includes/config-app-yourapp.php` to override settings dynamically.
+
+## 🗺️ Roadmap
+
+### v1.9.X (Current)
+- Bug fixes and PHP 8.x compatibility
+- Improved Docker support
+- Translation improvements
+- New web-based installer
+
+### v2.0 (In Progress)
+- Modernized codebase with PHP 8+ features
+- Namespace implementation
+- Enhanced security
+
+## 📚 Documentation
+
+- [📖 System Administrator's Guide](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-SysAdmin.html) - Installation, configuration, and FAQ
+- [⬆️ Upgrading Instructions](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/UPGRADING.html)
+- [🗄️ Database Schema](docs/WebCalendar-Database.md)
+- [💻 Developer Guide](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-DeveloperGuide.html)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+WebCalendar is licensed under the [GNU General Public License v2.0](LICENSE).
+
+## 🔗 Links
+
+- 🌐 **Website**: https://k5n.us/webcalendar/
+- 🐛 **Issues**: https://github.com/craigk5n/webcalendar/issues
+- 💾 **Releases**: https://github.com/craigk5n/webcalendar/releases
+
+## 👨‍💻 Maintainer
+
+**Craig Knudsen** - [craig@k5n.us](mailto:craig@k5n.us) - [https://k5n.us](https://k5n.us)
+
+See [AUTHORS](AUTHORS) for a complete list of contributors.

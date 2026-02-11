@@ -95,6 +95,48 @@ update_npmrc_version() {
     sed -i -E "s/(init-version = )[^ ]+/\1$new_version/" .npmrc
 }
 
+# Function to update version in SQL and PHP schema files
+update_sql_files() {
+    local new_version="$1"
+    # Update .sql files
+    sed -i -E "s/('WEBCAL_PROGRAM_VERSION',\s*)'[^']*'/\1'$new_version'/g" wizard/shared/tables-*.sql
+    # Update .php schema files (SQLite)
+    sed -i -E "s/('WEBCAL_PROGRAM_VERSION',\s*)'[^']*'/\1'$new_version'/g" wizard/shared/tables-sqlite*.php
+    echo "Updated SQL and PHP schema files to version $new_version"
+}
+
+# Function to update wizard/shared/upgrade-sql.php
+update_upgrade_sql_file() {
+    local new_version="$1"
+    local file_path="wizard/shared/upgrade-sql.php"
+    
+    # Check if version already exists in the file
+    if grep -q "'version' => '$new_version'" "$file_path"; then
+        echo "Version $new_version already exists in $file_path"
+        return
+    fi
+
+    # Add new version placeholder before the final ];
+    sed -i "/^];/i \  [\n    'version' => '$new_version',\n    'default-sql' => ''\n  ]," "$file_path"
+    echo "Added version $new_version placeholder to $file_path"
+}
+
+# Function to update wizard related files
+update_wizard_files() {
+    local new_version="$1"
+    
+    # Update wizard/index.php
+    sed -i "s/const PROGRAM_VERSION = '.*';/const PROGRAM_VERSION = '$new_version';/" wizard/index.php
+    
+    # Update wizard/headless.php
+    sed -i "s/const PROGRAM_VERSION = '.*';/const PROGRAM_VERSION = '$new_version';/" wizard/headless.php
+    
+    # Update wizard/wizard.js
+    sed -i "s/this.programVersion = options.programVersion || '.*';/this.programVersion = options.programVersion || '$new_version';/" wizard/wizard.js
+    
+    echo "Updated wizard files to version $new_version"
+}
+
 # Function to print current version
 print_version() {
     local version
@@ -122,6 +164,9 @@ update_upgrading_html "$new_version"
 update_composer_json "$new_version"
 update_upgrade_matrix "$new_version"
 update_npmrc_version "$new_version"
+update_sql_files "$new_version"
+update_upgrade_sql_file "$new_version"
+update_wizard_files "$new_version"
 
 echo ""
 echo "Files updated to version $new_version"

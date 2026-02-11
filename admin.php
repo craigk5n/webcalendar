@@ -129,6 +129,7 @@ if ( ! $error ) {
     'nonuser', translate ( 'Resource Calendars' ),
     'other', translate ( 'Other' ),
     'mcp', translate ( 'MCP Server' ),
+    'mcp', translate ( 'MCP Server' ),
     'email', translate ( 'Email' ),
     'colors', translate ( 'Colors' )];
   $tabs = '<ul class="nav nav-tabs">';
@@ -646,6 +647,8 @@ if ( ! $error ) {
    . translate ( 'Display event popups' ) . ':</label>'
     . print_radio ( 'UPCOMING_DISPLAY_POPUPS', '', '', 'Y' ) . '</div>
     </fieldset>
+    . print_radio ( 'UPCOMING_DISPLAY_POPUPS', '', '', 'Y' ) . '</div>
+    </fieldset>
 
 <!-- BEGIN REPORTS -->
           <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'reports-enabled-help' ) . '">'
@@ -727,7 +730,10 @@ if ( ! $error ) {
    . '</p><p class="form-inline mt-1 mb-2" id="com1a" style="margin-left:25%">' . print_checkbox ( ['ALLOW_COMMENTS_PART', 'Y', $partyStr] )
     . print_checkbox ( ['ALLOW_COMMENTS_ANY', 'Y', $anyoneStr] )
     . '</p></div></div>
+    . print_checkbox ( ['ALLOW_COMMENTS_ANY', 'Y', $anyoneStr] )
+    . '</p></div></div>
 
+<!-- BEGIN MCP SERVER -->
 <!-- BEGIN MCP SERVER -->
   <div class="tab-pane container fade" id="' . $tabs_ar[12] . '">
   <div class="form-group">
@@ -841,6 +847,7 @@ if ( ! $error ) {
 
 <!-- BEGIN COLORS -->
    <div class="tab-pane container fade" id="' . $tabs_ar[16] . '">
+   <div class="tab-pane container fade" id="' . $tabs_ar[16] . '">
   <div class="form-group">
           <fieldset class="border p-2">
             <legend>' . translate ( 'Color options' ) . '</legend>
@@ -883,6 +890,37 @@ if ( ! $error ) {
     <script>\n" . $cch . "
       function reset_colors() {" . $rc . '
       }
+
+      // Handle CORS origin selection
+      document.getElementById("admin_MCP_CORS_ORIGINS").addEventListener("change", function() {
+        var customField = document.getElementById("admin_MCP_CORS_CUSTOM");
+        if (this.value === "*" || this.value === "") {
+          customField.value = "";
+          customField.disabled = true;
+        } else if (this.value === "custom") {
+          customField.disabled = false;
+        }
+      });
+
+      // Before form submission, set the actual CORS value
+      document.querySelector("form[name=\"prefform\"]").addEventListener("submit", function(e) {
+        var corsSelect = document.getElementById("admin_MCP_CORS_ORIGINS");
+        var customField = document.getElementById("admin_MCP_CORS_CUSTOM");
+
+        if (corsSelect.value === "custom") {
+          // Use the custom field value
+          corsSelect.value = customField.value;
+        }
+        // For "*" and "", keep the select value as-is
+      });
+
+      // Initialize CORS field state on page load
+      document.addEventListener("DOMContentLoaded", function() {
+        var corsSelect = document.getElementById("admin_MCP_CORS_ORIGINS");
+        var customField = document.getElementById("admin_MCP_CORS_CUSTOM");
+        // Trigger change handler to set initial state
+        corsSelect.onchange();
+      });
 
       // Handle CORS origin selection
       document.getElementById("admin_MCP_CORS_ORIGINS").addEventListener("change", function() {

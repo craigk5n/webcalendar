@@ -120,7 +120,11 @@ if ($state->dbConnectionSuccess) {
                  id="admin_password2" 
                  name="admin_password2"
                  required
+<<<<<<< HEAD
                  data-validate="admin_password"
+=======
+                 data-validate="admin_password2"
+>>>>>>> dev
                  placeholder="Re-enter password">
         </div>
       </div>
