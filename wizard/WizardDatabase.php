@@ -381,12 +381,14 @@ class WizardDatabase
    */
   private function getDatabaseVersionFromSchema(): string
   {
-    global $database_upgrade_matrix;
-    require_once __DIR__ . '/shared/upgrade_matrix.php';
-    
+    // Use include (not require_once) since WizardState.php may have
+    // already loaded this file, and we need $database_upgrade_matrix
+    // in this local scope
+    include __DIR__ . '/shared/upgrade_matrix.php';
+
     $version = 'Unknown';
     $success = true;
-    
+
     for ($i = 0; $i < count($database_upgrade_matrix); $i++) {
       $testSql = $database_upgrade_matrix[$i][0];
       
