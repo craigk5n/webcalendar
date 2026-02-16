@@ -1,0 +1,79 @@
+name: PHPStan Static Analysis
+
+on:
+  push:
+    branches: [ master, release ]
+  pull_request:
+
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: sqlite3, pdo_sqlite
+          ini-values: display_errors=On, error_reporting=E_ALL
+
+      - name: Debug directory structure
+        run: |
+          echo "Listing repository contents:"
+          ls -lR
+          echo "Checking top-level PHP files:"
+          ls -l *.php || echo "No PHP files in root directory"
+          echo "Checking includes directory:"
+          ls -ld includes || echo "No includes directory found"
+          echo "Checking install directory:"
+          ls -ld install || echo "No install directory found"
+          echo "Checking tools directory:"
+          ls -ld tools || echo "No tools directory found"
+
+      - name: Download PHPStan PHAR
+        run: |
+          curl -sSL https://github.com/phpstan/phpstan/releases/download/1.10.14/phpstan.phar -o phpstan.phar
+          chmod +x phpstan.phar
+          ls -l phpstan.phar # Debug: Verify download
+
+      - name: Create PHPStan configuration
+        run: |
+          cat << 'EOF' > phpstan.neon
+          parameters:
+              level: 1
+              paths:
+                  - includes/
+                  - install/
+                  - tools/
+              ignoreErrors:
+                  - '#Undefined array key "QUERY_STRING"#'
+          EOF
+          cat phpstan.neon # Debug: Show phpstan.neon
+
+      - name: Run PHPStan
+        run: |
+          ./phpstan.phar analyse --configuration=phpstan.neon includes/ install/ tools/ *.php --memory-limit=1G --error-format=table | tee phpstan.log
+          if [ $? -ne 0 ]; then
+            echo "PHPStan failed, see phpstan.log"
+            cat phpstan.log
+            exit 1
+          fi
+          if ! grep -q "files analyzed" phpstan.log; then
+            echo "PHPStan did not analyze any files, see phpstan.log"
+            cat phpstan.log
+            exit 1
+          fi
+          if grep -q "Errors found" phpstan.log; then
+            echo "PHPStan found errors, see phpstan.log"
+            cat phpstan.log
+            exit 1
+          fi
+
+      - name: Upload PHPStan report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: phpstan-report
+          path: phpstan.log
+          retention-days: 60
