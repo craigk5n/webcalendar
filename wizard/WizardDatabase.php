@@ -580,11 +580,13 @@ class WizardDatabase
    */
   private function createTablesFromScratch(): bool
   {
-    $sqlFile = __DIR__ . '/shared/tables-' . $this->state->dbType . '.sql';
+    // Map PHP driver names to SQL file names (e.g. mysqli -> mysql, postgresql -> postgres)
+    $dbType = $this->state->dbType === 'mysqli' ? 'mysql'
+      : ($this->state->dbType === 'postgresql' ? 'postgres' : $this->state->dbType);
+    $sqlFile = __DIR__ . '/shared/tables-' . $dbType . '.sql';
 
     if (!file_exists($sqlFile)) {
-      // Try with .php extension for dynamic SQL generation
-      $phpFile = __DIR__ . '/shared/tables-' . $this->state->dbType . '.php';
+      $phpFile = __DIR__ . '/shared/tables-' . $dbType . '.php';
       if (file_exists($phpFile)) {
         $commands = include $phpFile;
         if (is_array($commands)) {
