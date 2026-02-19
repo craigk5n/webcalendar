@@ -3962,7 +3962,7 @@ function getServerUrl($checkDatabase = true): string
   global $SERVER_URL, $HTTP_HOST, $REQUEST_URI;
   $ret = null;
 
-  if (false&&$checkDatabase) {
+  if ($checkDatabase) {
     $rows = dbi_get_cached_rows('SELECT cal_value FROM webcal_config WHERE cal_setting = ?', ['SERVER_URL']);
     if (!empty($rows) && !empty($rows[0]) && !empty($rows[0][0])) {
       $ret = $rows[0][0];
