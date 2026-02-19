@@ -1290,7 +1290,7 @@ if( ! empty( $conflicts ) ) {
   echo
   // Allow them to override a conflict if server settings allow it.
    ( ! empty( $ALLOW_CONFLICT_OVERRIDE ) && $ALLOW_CONFLICT_OVERRIDE == 'Y' ? '
-      <button name="confirm_conflicts" type="submit">'
+      <button name="confirm_conflicts" type="submit" value="' . translate( 'Save' ) . '">'
     . translate ( 'Save' ) . '</button>' : '' ) . '
       <button type="button" onclick="history.back()">'
     . translate ( 'Cancel' ) . '</button>
