@@ -105,27 +105,3 @@ jobs:
         run: |
           chmod +x tests/run-sqlite-install-tests.sh
           ./tests/run-sqlite-install-tests.sh
-
-  test_web_wizard_docker:
-    name: Test WebCalendar wizard in Docker
-    runs-on: ubuntu-latest
-    if: false  # Set to true to enable Docker-based testing
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v6
-
-      - name: Test in Docker container
-        run: |
-          docker run --rm \
-            -v $(pwd):/var/www/html \
-            -w /var/www/html \
-            php:8.2-cli \
-            bash -c "apt-get update && apt-get install -y jq sqlite3 curl net-tools && ./tests/web-install-test.sh --cleanup"
-
-      - name: Test upgrade in Docker container
-        run: |
-          docker run --rm \
-            -v $(pwd):/var/www/html \
-            -w /var/www/html \
-            php:8.2-cli \
-            bash -c "apt-get update && apt-get install -y jq sqlite3 curl net-tools && ./tests/web-upgrade-test.sh --cleanup"
