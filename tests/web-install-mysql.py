@@ -193,49 +193,43 @@ def test_new_installation(driver):
         print(f"FAILED on page: {driver.current_url}")
         raise
 
-def test_upgrade_installation(driver):
+def _run_upgrade_test(driver, fixture_path):
+    """Shared upgrade test logic: load fixture, run wizard, verify finish."""
     try:
         reset_db()
-        load_fixture("tests/fixtures/v1.3.0-schema-mysql.sql")
-        # Add a small delay to ensure the fixture data is fully committed and visible
+        load_fixture(fixture_path)
         time.sleep(2)
-        
-        # Start clean: clear cookies and navigate to wizard
+
         driver.delete_all_cookies()
         driver.get(f"{BASE_URL}/wizard/index.php")
-        
-        # Properly logout using Start Over button if it exists to clear server-side session
+
         try:
             start_over_btn = driver.find_element(By.ID, "logoutBtn")
             driver.execute_script("arguments[0].click();", start_over_btn)
             time.sleep(1)
         except Exception:
             pass
-            
+
         wait_for_text(driver, "stepTitle", "Welcome")
         click_button(driver, "button[data-action='welcome-continue']")
         wait_for_text(driver, "stepTitle", "Authentication")
         driver.find_element(By.ID, "password").send_keys("Test123!")
         click_button(driver, "form[data-action='login'] button[type='submit']")
-        
-        # Wait for either Tables (upgrade path) or Database (fallback path)
+
         try:
             wait_for_text(driver, "stepTitle", "Tables")
         except TimeoutException:
-            # If we land on Database Settings instead, click Continue
             wait_for_text(driver, "stepTitle", "Database")
             click_button(driver, "button[data-action='continue-db-readonly']")
             wait_for_text(driver, "stepTitle", "Tables")
-        
-        print("SUCCESS: Login successful - reached Tables step")
+
+        print(f"SUCCESS: Login successful - reached Tables step (fixture: {fixture_path})")
         click_button(driver, "button[data-action='execute-upgrade']")
-        
-        # Wait for either Summary or Finish
+
         for i in range(20):
             try:
                 title = driver.find_element(By.ID, "stepTitle").text
                 if "Summary" in title:
-                    # Try save-settings-file first; if it doesn't exist (ENV mode), use Continue
                     save_btns = driver.find_elements(By.CSS_SELECTOR, "button[data-action='save-settings-file']")
                     if save_btns:
                         click_button(driver, "button[data-action='save-settings-file']")
@@ -246,18 +240,26 @@ def test_upgrade_installation(driver):
             except Exception:
                 pass
             time.sleep(1)
-            
+
         wait_for_text(driver, "stepTitle", "Finish")
         assert "Complete" in driver.page_source
     except Exception:
         print(f"FAILED on page: {driver.current_url}")
-        # Log page source for debugging
         try:
             print(f"Page Title: {driver.title}")
             print(f"Step Title: {driver.find_element(By.ID, 'stepTitle').text if driver.find_elements(By.ID, 'stepTitle') else 'N/A'}")
         except Exception:
             pass
         raise
+
+def test_upgrade_installation(driver):
+    _run_upgrade_test(driver, "tests/fixtures/v1.3.0-schema-mysql.sql")
+
+def test_upgrade_from_v1_9_10(driver):
+    _run_upgrade_test(driver, "tests/fixtures/v1.9.10-schema-mysql.sql")
+
+def test_upgrade_from_v1_9_12(driver):
+    _run_upgrade_test(driver, "tests/fixtures/v1.9.12-schema-mysql.sql")
 
 def get_expected_version():
     """Get expected version from bump_version.sh or fallback to parsing config file"""
