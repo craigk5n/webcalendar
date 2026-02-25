@@ -1,0 +1,7 @@
+FROM python:3.8
+WORKDIR /tests
+COPY requirements-tests.txt .
+COPY tests/* tests/
+RUN pip install --no-cache-dir -r requirements-tests.txt
+#CMD ["pytest"]
+CMD ["sleep", "99999"]

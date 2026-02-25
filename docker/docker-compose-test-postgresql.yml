@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: webcalendar
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: webcalendar_test
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U webcalendar -d webcalendar_test"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile-php8-dev
+    volumes:
+      - ..:/var/www/html
+    environment:
+      - WEBCALENDAR_USE_ENV=true
+      - WEBCALENDAR_DB_TYPE=postgresql
+      - WEBCALENDAR_DB_HOST=db
+      - WEBCALENDAR_DB_LOGIN=webcalendar
+      - WEBCALENDAR_DB_PASSWORD=password
+      - WEBCALENDAR_DB_DATABASE=webcalendar_test
+      - WEBCALENDAR_INSTALL_PASSWORD=2168ad5e463d9accb215edaafa31c8d9 # md5 of 'Test123!'
+      - WEBCALENDAR_MODE=dev
+    depends_on:
+      db:
+        condition: service_healthy
+
+  chrome:
+    image: selenium/standalone-chrome:latest
+    shm_size: 2gb
+    depends_on:
+      - web
+
+  pytest:
+    image: python:3.9
+    volumes:
+      - ..:/work
+    working_dir: /work
+    environment:
+      - BASE_URL=http://web
+      - SELENIUM_URL=http://chrome:4444/wd/hub
+      - WEBCALENDAR_DB_HOST=db
+      - WEBCALENDAR_DB_LOGIN=webcalendar
+      - WEBCALENDAR_DB_PASSWORD=password
+      - WEBCALENDAR_DB_DATABASE=webcalendar_test
+    depends_on:
+      - chrome
+    command: >
+      bash -c "apt-get update && apt-get install -y postgresql-client && pip install pytest selenium psycopg2-binary && pytest tests/web-install-postgresql.py"

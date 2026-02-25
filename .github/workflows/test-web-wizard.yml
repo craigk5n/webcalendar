@@ -1,0 +1,131 @@
+name: Test WebCalendar Web-Based Installer
+
+on:
+  push:
+    branches: [ master, release ]
+  pull_request:
+  release:
+    types: [ published ]
+  workflow_dispatch:
+
+jobs:
+  test_web_wizard_install:
+    name: Test WebCalendar wizard fresh installation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v6
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: sqlite3, pdo_sqlite
+          tools: none
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq sqlite3 curl net-tools
+
+      - name: Verify required files exist
+        run: |
+          test -f wizard/index.php || { echo "Missing wizard/index.php"; exit 1; }
+          test -f tests/web-install-test.sh || { echo "Missing tests/web-install-test.sh"; exit 1; }
+          echo "All required files present."
+
+      - name: Run web-based installer test
+        run: |
+          chmod +x tests/web-install-test.sh
+          ./tests/web-install-test.sh --cleanup
+
+  test_web_wizard_upgrade:
+    name: Test WebCalendar wizard upgrade from v1.3.0
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v6
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: sqlite3, pdo_sqlite
+          tools: none
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq sqlite3 curl net-tools
+
+      - name: Verify required files exist
+        run: |
+          test -f wizard/index.php || { echo "Missing wizard/index.php"; exit 1; }
+          test -f tests/web-upgrade-test.sh || { echo "Missing tests/web-upgrade-test.sh"; exit 1; }
+          test -f tests/fixtures/v1.3.0-schema-sqlite3.sql || { echo "Missing SQL fixture"; exit 1; }
+          echo "All required files present."
+
+      - name: Run web-based upgrade test
+        run: |
+          chmod +x tests/web-upgrade-test.sh
+          ./tests/web-upgrade-test.sh --cleanup
+
+  test_web_wizard_mysql:
+    name: Test WebCalendar wizard MySQL (Selenium)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v6
+
+      - name: Run MySQL installation and upgrade tests
+        run: |
+          chmod +x tests/run-mysql-install-tests.sh
+          ./tests/run-mysql-install-tests.sh
+
+  test_web_wizard_postgresql:
+    name: Test WebCalendar wizard PostgreSQL (Selenium)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v6
+
+      - name: Run PostgreSQL installation and upgrade tests
+        run: |
+          chmod +x tests/run-postgresql-install-tests.sh
+          ./tests/run-postgresql-install-tests.sh
+
+  test_web_wizard_sqlite:
+    name: Test WebCalendar wizard SQLite (Selenium)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v6
+
+      - name: Run SQLite installation and upgrade tests
+        run: |
+          chmod +x tests/run-sqlite-install-tests.sh
+          ./tests/run-sqlite-install-tests.sh
+
+  test_web_wizard_docker:
+    name: Test WebCalendar wizard in Docker
+    runs-on: ubuntu-latest
+    if: false  # Set to true to enable Docker-based testing
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v6
+
+      - name: Test in Docker container
+        run: |
+          docker run --rm \
+            -v $(pwd):/var/www/html \
+            -w /var/www/html \
+            php:8.2-cli \
+            bash -c "apt-get update && apt-get install -y jq sqlite3 curl net-tools && ./tests/web-install-test.sh --cleanup"
+
+      - name: Test upgrade in Docker container
+        run: |
+          docker run --rm \
+            -v $(pwd):/var/www/html \
+            -w /var/www/html \
+            php:8.2-cli \
+            bash -c "apt-get update && apt-get install -y jq sqlite3 curl net-tools && ./tests/web-upgrade-test.sh --cleanup"
