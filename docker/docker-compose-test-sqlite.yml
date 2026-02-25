@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   web:
     build:
@@ -7,7 +5,6 @@ services:
       dockerfile: docker/Dockerfile-php8-dev
     volumes:
       - ..:/var/www/html
-      - sqlite-data:/var/www/html/data
     environment:
       - WEBCALENDAR_USE_ENV=true
       - WEBCALENDAR_DB_TYPE=sqlite3
@@ -17,6 +14,9 @@ services:
       - WEBCALENDAR_DB_DATABASE=/var/www/html/data/webcalendar_test.db
       - WEBCALENDAR_INSTALL_PASSWORD=2168ad5e463d9accb215edaafa31c8d9 # md5 of 'Test123!'
       - WEBCALENDAR_MODE=dev
+    # Create writable data directory before starting Apache
+    command: >
+      bash -c "mkdir -p /var/www/html/data && chmod 777 /var/www/html/data && apache2-foreground"
 
   chrome:
     image: selenium/standalone-chrome:latest
@@ -28,7 +28,6 @@ services:
     image: python:3.9
     volumes:
       - ..:/work
-      - sqlite-data:/work/data
     working_dir: /work
     environment:
       - BASE_URL=http://web
@@ -37,7 +36,4 @@ services:
     depends_on:
       - chrome
     command: >
-      bash -c "apt-get update && apt-get install -y sqlite3 && pip install pytest selenium && pytest -s tests/web-install-sqlite.py"
-
-volumes:
-  sqlite-data:
+      bash -c "pip install pytest selenium && pytest -s tests/web-install-sqlite.py"
