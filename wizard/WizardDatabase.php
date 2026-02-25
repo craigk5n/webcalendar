@@ -233,9 +233,19 @@ class WizardDatabase
 
     for ($i = 0; $i < count($database_upgrade_matrix); $i++) {
       $testSql = $database_upgrade_matrix[$i][0];
-      
+
+      if (empty($testSql)) {
+        continue;
+      }
+
       if ($this->executeTestQuery($testSql)) {
-        $version = $database_upgrade_matrix[$i][1];
+        $version = $database_upgrade_matrix[$i][2];
+        // Clean up test data
+        $cleanupSql = $database_upgrade_matrix[$i][1];
+        if (!empty($cleanupSql)) {
+          $this->executeTestQuery($cleanupSql);
+        }
+      } else {
         break;
       }
     }
@@ -365,12 +375,19 @@ class WizardDatabase
   }
 
   /**
-   * Execute upgrade SQL commands
+   * Execute upgrade SQL commands (or base schema for new installs)
    */
   public function executeUpgrade(): bool
   {
     if (!$this->connection) {
       return false;
+    }
+
+    // For new installations, load base schema first
+    if ($this->state->databaseIsEmpty) {
+      if (!$this->loadBaseSchema()) {
+        return false;
+      }
     }
 
     foreach ($this->state->upgradeSqlCommands as $sql) {
@@ -381,6 +398,55 @@ class WizardDatabase
 
     // After successful upgrade, update version in webcal_config
     return $this->updateVersionInDb();
+  }
+
+  /**
+   * Load base schema for new installations from tables-*.sql / tables-*.php
+   */
+  private function loadBaseSchema(): bool
+  {
+    if ($this->state->dbType === 'sqlite3') {
+      $statements = include __DIR__ . '/shared/tables-sqlite3.php';
+      if (!is_array($statements)) {
+        $this->error = 'Failed to load SQLite base schema';
+        return false;
+      }
+      foreach ($statements as $sql) {
+        $sql = trim($sql);
+        if (empty($sql)) continue;
+        if (!$this->executeCommand($sql)) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    // MySQL or PostgreSQL: load from .sql file
+    $dbType = $this->state->dbType === 'mysqli' ? 'mysql' : 'postgres';
+    $sqlFile = __DIR__ . "/shared/tables-{$dbType}.sql";
+
+    if (!file_exists($sqlFile)) {
+      $this->error = "Base schema file not found: tables-{$dbType}.sql";
+      return false;
+    }
+
+    $content = file_get_contents($sqlFile);
+
+    // Strip block comments /* ... */
+    $content = preg_replace('/\/\*.*?\*\//s', '', $content);
+    // Strip line comments starting with #
+    $content = preg_replace('/^#.*$/m', '', $content);
+
+    $statements = explode(';', $content);
+    foreach ($statements as $sql) {
+      $sql = trim($sql);
+      if (empty($sql)) continue;
+      if (!$this->executeCommand($sql)) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   private function executeCommand(string $sql): bool
@@ -420,23 +486,16 @@ class WizardDatabase
   private function updateVersionInDb(): bool
   {
     $version = $this->state->programVersion;
-    $sql = "UPDATE webcal_config SET cal_value = '$version' WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'";
-    
+
     if ($this->state->dbType === 'mysqli') {
+      $sql = "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version') "
+        . "ON DUPLICATE KEY UPDATE cal_value = '$version'";
       $this->connection->query($sql);
-      if ($this->connection->affected_rows === 0) {
-        $sql = "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version')";
-        $this->connection->query($sql);
-      }
     } elseif ($this->state->dbType === 'postgresql') {
-      $res = pg_query($this->connection, $sql);
-      if (pg_affected_rows($res) === 0) {
-        $sql = "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version')";
-        pg_query($this->connection, $sql);
-      }
+      $sql = "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version') "
+        . "ON CONFLICT (cal_setting) DO UPDATE SET cal_value = '$version'";
+      pg_query($this->connection, $sql);
     } elseif ($this->state->dbType === 'sqlite3') {
-      $this->connection->exec($sql);
-      // SQLite affected_rows check is different, but for simplicity:
       $sql = "INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version')";
       $this->connection->exec($sql);
     }
