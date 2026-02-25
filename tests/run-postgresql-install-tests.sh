@@ -6,7 +6,7 @@
 set -e
 
 # Configuration
-COMPOSE_FILE="docker/docker compose-test-postgresql.yml"
+COMPOSE_FILE="docker/docker-compose-test-postgresql.yml"
 
 log() {
   echo "[$(date '+%H:%M:%S')] $*"

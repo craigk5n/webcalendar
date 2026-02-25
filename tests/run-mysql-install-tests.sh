@@ -6,7 +6,7 @@
 set -e
 
 # Configuration
-COMPOSE_FILE="docker/docker compose-test-mysql.yml"
+COMPOSE_FILE="docker/docker-compose-test-mysql.yml"
 
 log() {
   echo "[$(date '+%H:%M:%S')] $*"
