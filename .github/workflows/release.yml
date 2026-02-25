@@ -6,7 +6,21 @@ on:
       - release
 
 jobs:
+  # Run all test suites before creating a release
+  php-lint:
+    uses: ./.github/workflows/php-syntax-check.yml
+
+  phpunit:
+    uses: ./.github/workflows/ci.yml
+
+  test-install:
+    uses: ./.github/workflows/test-install.yml
+
+  test-web-wizard:
+    uses: ./.github/workflows/test-web-wizard.yml
+
   build:
+    needs: [php-lint, phpunit, test-install, test-web-wizard]
     runs-on: ubuntu-latest
 
     steps:
