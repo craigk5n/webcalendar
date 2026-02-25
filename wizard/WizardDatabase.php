@@ -464,23 +464,66 @@ class WizardDatabase
       return true;
     }
 
-    if ($this->state->dbType === 'mysqli') {
-      if (!$this->connection->query($sql)) {
-        $this->error = $this->connection->error;
-        return false;
+    try {
+      if ($this->state->dbType === 'mysqli') {
+        if (!$this->connection->query($sql)) {
+          $error = $this->connection->error;
+          if ($this->isIgnorableSchemaError($error)) {
+            return true;
+          }
+          $this->error = $error;
+          return false;
+        }
+      } elseif ($this->state->dbType === 'postgresql') {
+        if (!@pg_query($this->connection, $sql)) {
+          $error = pg_last_error($this->connection);
+          if ($this->isIgnorableSchemaError($error)) {
+            return true;
+          }
+          $this->error = $error;
+          return false;
+        }
+      } elseif ($this->state->dbType === 'sqlite3') {
+        if (!$this->connection->exec($sql)) {
+          $error = $this->connection->lastErrorMsg();
+          if ($this->isIgnorableSchemaError($error)) {
+            return true;
+          }
+          $this->error = $error;
+          return false;
+        }
       }
-    } elseif ($this->state->dbType === 'postgresql') {
-      if (!pg_query($this->connection, $sql)) {
-        $this->error = pg_last_error($this->connection);
-        return false;
+    } catch (\Exception $e) {
+      // PHP 8.1+ throws exceptions for DB errors (e.g. mysqli_sql_exception).
+      // Treat expected schema errors as non-fatal during upgrades.
+      if ($this->isIgnorableSchemaError($e->getMessage())) {
+        return true;
       }
-    } elseif ($this->state->dbType === 'sqlite3') {
-      if (!$this->connection->exec($sql)) {
-        $this->error = "SQLite error";
-        return false;
-      }
+      $this->error = $e->getMessage();
+      return false;
     }
     return true;
+  }
+
+  /**
+   * Check if a database error is an expected, non-fatal schema error
+   * that occurs during idempotent upgrade operations (e.g. adding a
+   * column that already exists).
+   */
+  private function isIgnorableSchemaError(string $error): bool
+  {
+    $ignorable = [
+      'Duplicate column name',    // MySQL: ALTER TABLE ADD on existing column
+      'Duplicate key name',       // MySQL: ADD INDEX on existing index
+      'already exists',           // PostgreSQL/SQLite: column/table already exists
+      'duplicate column name',    // SQLite: ALTER TABLE ADD on existing column
+    ];
+    foreach ($ignorable as $pattern) {
+      if (stripos($error, $pattern) !== false) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private function updateVersionInDb(): bool

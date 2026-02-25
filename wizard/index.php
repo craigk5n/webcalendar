@@ -316,7 +316,18 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
       $db->checkDatabase();
       // Don't close connection - executeUpgrade needs it
 
-      if ($db->executeUpgrade()) {
+      try {
+        $upgradeOk = $db->executeUpgrade();
+      } catch (Exception $e) {
+        $upgradeOk = false;
+        $response = [
+          'success' => false,
+          'message' => 'Upgrade failed: ' . $e->getMessage(),
+        ];
+        break;
+      }
+
+      if ($upgradeOk) {
         $db->checkDatabase();
         $db->closeConnection();
         $state->detectedDbVersion = $state->programVersion;
@@ -531,9 +542,11 @@ function routeAfterAuth(WizardState $state, WizardValidator $validator): string
         return 'adminuser';
       } else { // If no upgrade needed and admin user exists, go to finish
         if ($state->quickUpgrade) {
-          $db->reconnect();
-          if (!$db->executeUpgrade()) {
-            // Failed to ensure program version in DB
+          try {
+            $db->reconnect();
+            $db->executeUpgrade();
+          } catch (Exception $e) {
+            // Non-fatal: failed to ensure program version in DB
           }
         }
         return 'finish';
