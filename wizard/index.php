@@ -9,10 +9,11 @@
 if (!defined('WIZARD_ENTRY')) {
   define('WIZARD_ENTRY', true);
 }
-
 // Load required files
 require_once __DIR__ . '/WizardState.php';
 require_once __DIR__ . '/WizardValidator.php';
+require_once __DIR__ . '/WizardDatabase.php';
+require_once __DIR__ . '/shared/upgrade-sql.php';
 require_once __DIR__ . '/shared/upgrade_matrix.php'; // Load $PROGRAM_VERSION
 
 // Constants
@@ -28,22 +29,19 @@ session_start();
 // Initialize state
 $state = new WizardState();
 
-// On first visit (no session yet), load existing settings.php if present.
-// This ensures the wizard knows about the existing install password and
-// database configuration so it can prompt for login instead of creating
-// a new password.
+// Load existing settings and environment variables
 $settingsPath = __DIR__ . '/../includes/settings.php';
-if (!isset($_SESSION['wizard_state'])) {
-  $state->loadFromSettingsFile($settingsPath);
-  $state->saveToSession();
-} else {
+$state->loadFromSettingsFile($settingsPath);
+
+if (isset($_SESSION['wizard_state'])) {
   $state->loadFromSession();
-  // If session exists but installPassword is empty, re-check settings.php
-  // in case the session was created before settings.php existed.
-  if (empty($state->installPassword)) {
-    $state->loadFromSettingsFile($settingsPath);
-    $state->saveToSession();
-  }
+}
+
+// Environment variables should always take precedence
+$state->loadFromEnv();
+
+if (!isset($_SESSION['wizard_state'])) {
+  $state->saveToSession();
 }
 
 // Initialize validator
@@ -65,94 +63,6 @@ if (!$state->isValidUser && !in_array($currentStep, ['welcome', 'auth'])) {
 if (isset($_GET['action']) && $_GET['action'] === 'phpinfo') {
   phpinfo();
   exit;
-}
-
-// Handle AJAX API requests
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
-  header('Content-Type: application/json');
-  handleApiRequest($_POST['action'], $state, $validator);
-  exit;
-}
-
-// Handle AJAX GET requests for step content
-if (isset($_GET['ajax']) && $_GET['ajax'] === 'step') {
-  header('Content-Type: text/html');
-  $stepFile = __DIR__ . '/steps/' . $currentStep . '.php';
-  if (file_exists($stepFile)) {
-    include $stepFile;
-  } else {
-    echo "<div class='alert alert-danger'>Step not found: " . htmlspecialchars($currentStep) . "</div>";
-  }
-  exit;
-}
-
-// Handle AJAX GET requests for wizard state
-if (isset($_GET['ajax']) && $_GET['ajax'] === 'state') {
-  header('Content-Type: application/json');
-  echo json_encode([
-    'success' => true,
-    'state' => $state->toArray(),
-    'phpSettings' => $validator->getPhpSettings(),
-  ]);
-  exit;
-}
-
-/**
- * Determine the next step after successful authentication.
- *
- * For quick upgrades: connect to DB using existing settings, check the
- * schema version, and route directly to the appropriate step (dbtables,
- * adminuser, or finish) — skipping app/db settings and summary.
- *
- * For full setup: route through phpsettings or appsettings as before.
- */
-function routeAfterAuth(WizardState $state, WizardValidator $validator): string
-{
-  if ($state->quickUpgrade) {
-    // Quick upgrade: use existing DB settings from settings.php
-    require_once __DIR__ . '/WizardDatabase.php';
-    $db = new WizardDatabase($state);
-
-    if ($db->testConnection()) {
-      $state->dbConnectionSuccess = true;
-      $db->checkDatabase();
-      $db->closeConnection();
-
-      if (!$state->databaseExists || $state->databaseIsEmpty) {
-        // No database to upgrade — fall back to full setup
-        $state->quickUpgrade = false;
-        return 'dbsettings';
-      } elseif ($state->isUpgrade) {
-        return 'dbtables';
-      } elseif ($state->adminUserCount < 1) {
-        return 'adminuser';
-      } else { // If no upgrade needed and admin user exists, go to finish
-        // Ensure the current program version is written to the database,
-        // even if no SQL commands are pending. This covers cases where
-        // the detectedDbVersion might already match programVersion, but
-        // the entry in webcal_config might be missing or need explicit update.
-        // The executeUpgrade() method handles the updateVersionInDb() call
-        // when upgradeSqlCommands is empty.
-        $db->reconnect();
-        if (!$db->executeUpgrade()) {
-          // Log an error if the version update fails, but still proceed to finish
-          // as it's not a critical blocking issue for an already "up-to-date" system.
-          error_log("Wizard: Failed to ensure program version in DB during quick upgrade finish: " . $db->getError());
-        }
-        return 'finish';
-      }
-    } else {
-      // DB connection failed — fall back to full setup
-      $state->dbConnectionError = $db->getError();
-      $state->quickUpgrade = false;
-      return 'dbsettings';
-    }
-  }
-
-  // Full setup: skip phpsettings if all requirements are already met
-  $nextStep = $validator->arePhpSettingsCorrect() ? 'appsettings' : 'phpsettings';
-  $state->phpSettingsAcked = $state->phpSettingsAcked || ($nextStep === 'appsettings');
-  return $nextStep;
 }
 
 /**
@@ -252,7 +162,6 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
       
       $result = $validator->validateDbSettings($data);
       if ($result['valid']) {
-        require_once __DIR__ . '/WizardDatabase.php';
         $state->setDbSettings($data);
         $db = new WizardDatabase($state);
         
@@ -296,7 +205,6 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
 
       // Re-verify database state so routing uses fresh data
       // rather than potentially stale session flags.
-      require_once __DIR__ . '/WizardDatabase.php';
       $db = new WizardDatabase($state);
       if ($db->testConnection()) {
         $state->dbConnectionSuccess = true;
@@ -339,7 +247,6 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
       
     case 'continue-db-readonly':
       // For env-var mode: test connection using existing state settings
-      require_once __DIR__ . '/WizardDatabase.php';
       $db = new WizardDatabase($state);
       if ($db->testConnection()) {
         $state->dbConnectionSuccess = true;
@@ -350,24 +257,8 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
       // Determine next step based on database state
       if (!$state->databaseExists || $state->databaseIsEmpty) {
         $nextStep = 'createdb';
-      } elseif ($state->isUpgrade) {
-        if (empty($state->upgradeSqlCommands)) {
-          // No-op upgrade (only version bump), execute directly
-          $db->reconnect();
-          if ($db->executeUpgrade()) {
-            $db->checkDatabase();
-            if ($state->adminUserCount < 1) {
-              $nextStep = 'adminuser';
-            } else {
-              $nextStep = 'summary';
-            }
-          } else {
-            $nextStep = 'dbtables'; // Fallback if executeUpgrade fails
-          }
-          $db->closeConnection();
-        } else {
-          $nextStep = 'dbtables';
-        }
+      } elseif ($state->isUpgrade || $state->databaseIsEmpty) {
+        $nextStep = 'dbtables';
       } elseif ($state->adminUserCount < 1) {
         $nextStep = 'adminuser';
       } else {
@@ -380,7 +271,6 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
       break;
 
     case 'create-database':
-      require_once __DIR__ . '/WizardDatabase.php';
       $db = new WizardDatabase($state);
       
       if ($db->createDatabase()) {
@@ -402,9 +292,8 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
       break;
       
     case 'execute-upgrade':
-      require_once __DIR__ . '/WizardDatabase.php';
       $db = new WizardDatabase($state);
-      
+
       // Re-establish connection
       if (!$db->testConnection()) {
         $response = [
@@ -413,7 +302,11 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
         ];
         break;
       }
-      
+
+      // After connection is established, check database to select it
+      $db->checkDatabase();
+      // Don't close connection - executeUpgrade needs it
+
       if ($db->executeUpgrade()) {
         $db->checkDatabase();
         $db->closeConnection();
@@ -445,7 +338,6 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
       break;
       
     case 'get-upgrade-sql':
-      require_once __DIR__ . '/WizardDatabase.php';
       $db = new WizardDatabase($state);
       $commands = $db->getUpgradeSqlCommands();
       $response = [
@@ -455,7 +347,7 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
       break;
       
     case 'create-admin-user':
-      require_once __DIR__ . '/WizardDatabase.php';
+  
       $db = new WizardDatabase($state);
       
       // Re-establish connection
@@ -501,7 +393,7 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
         $response = ['success' => false, 'message' => 'Cannot save settings file when using environment variables'];
         break;
       }
-      
+
       $settingsContent = generateSettingsFile($state);
       $settingsPath = __DIR__ . '/../includes/settings.php';
       
@@ -551,6 +443,105 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
   }
   
   echo json_encode($response);
+}
+
+// Handle AJAX API requests
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+  ini_set('display_errors', '0');
+  while (ob_get_level()) {
+    ob_end_clean();
+  }
+  ob_start();
+  handleApiRequest($_POST['action'], $state, $validator);
+  $output = ob_get_clean();
+  
+  // Clean up any leading/trailing junk
+  $output = trim($output);
+  $jsonStart = strpos($output, '{');
+  if ($jsonStart !== 0 && $jsonStart !== false) {
+    $output = substr($output, $jsonStart);
+  }
+
+  header('Content-Type: application/json');
+  echo $output;
+  exit;
+}
+
+// Handle AJAX GET requests for step content
+if (isset($_GET['ajax']) && $_GET['ajax'] === 'step') {
+  header('Content-Type: text/html');
+  $stepFile = __DIR__ . '/steps/' . $currentStep . '.php';
+  if (file_exists($stepFile)) {
+    include $stepFile;
+  } else {
+    echo "<div class='alert alert-danger'>Step not found: " . htmlspecialchars($currentStep) . "</div>";
+  }
+  exit;
+}
+
+// Handle AJAX GET requests for wizard state
+if (isset($_GET['ajax']) && $_GET['ajax'] === 'state') {
+  header('Content-Type: application/json');
+  echo json_encode([
+    'success' => true,
+    'state' => $state->toArray(),
+    'phpSettings' => $validator->getPhpSettings(),
+  ]);
+  exit;
+}
+
+/**
+ * Determine the next step after successful authentication.
+ *
+ * For quick upgrades: connect to DB using existing settings, check the
+ * schema version, and route directly to the appropriate step (dbtables,
+ * adminuser, or finish) — skipping app/db settings and summary.
+ *
+ * For full setup: route through phpsettings or appsettings as before.
+ */
+function routeAfterAuth(WizardState $state, WizardValidator $validator): string
+{
+  if ($state->quickUpgrade || $state->usingEnv) {
+    // For quick upgrades or ENV-based config: use existing/provided DB settings
+    // Reset stale database state flags before checking - don't trust session data
+    $state->resetDbConnection();
+    $db = new WizardDatabase($state);
+
+    if ($db->testConnection()) {
+      $state->dbConnectionSuccess = true;
+      $db->checkDatabase();
+      $db->closeConnection();
+
+      if ($state->quickUpgrade && (!$state->databaseExists || $state->databaseIsEmpty)) {
+        // No database to upgrade — fall back to full setup
+        $state->quickUpgrade = false;
+        return 'dbsettings';
+      } elseif ($state->isUpgrade || $state->databaseIsEmpty) {
+        return 'dbtables';
+      } elseif ($state->adminUserCount < 1) {
+        return 'adminuser';
+      } else { // If no upgrade needed and admin user exists, go to finish
+        if ($state->quickUpgrade) {
+          $db->reconnect();
+          if (!$db->executeUpgrade()) {
+            // Failed to ensure program version in DB
+          }
+        }
+        return 'finish';
+      }
+    } elseif ($state->quickUpgrade) {
+      // DB connection failed during quick upgrade — fall back to full setup
+      $state->dbConnectionError = $db->getError();
+      $state->quickUpgrade = false;
+      return 'dbsettings';
+    }
+    // If usingEnv but connection failed, proceed to dbsettings to show the error
+  }
+
+  // Full setup: skip phpsettings if all requirements are already met
+  $nextStep = $validator->arePhpSettingsCorrect() ? 'appsettings' : 'phpsettings';
+  $state->phpSettingsAcked = $state->phpSettingsAcked || ($nextStep === 'appsettings');
+  return $nextStep;
 }
 
 /**

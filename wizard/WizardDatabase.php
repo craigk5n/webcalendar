@@ -1,128 +1,73 @@
 <?php
 /**
- * WizardDatabase - Database operations for the WebCalendar install wizard
- * 
- * Handles database connections, version detection, upgrades, and table creation
- * Uses PHP8 typed properties and return types
+ * Wizard Database helper class
  */
+
+require_once __DIR__ . '/WizardState.php';
+require_once __DIR__ . '/shared/upgrade-sql.php';
 
 class WizardDatabase
 {
   private WizardState $state;
-  /** @var resource|object|null */
   private $connection = null;
-  private string $error = '';
-  
-  /**
-   * Constructor
-   */
+  private ?string $error = null;
+
   public function __construct(WizardState $state)
   {
     $this->state = $state;
   }
-  
-  /**
-   * Re-establish database connection
-   */
-  public function reconnect(): bool
+
+  public function getError(): ?string
   {
-    if ($this->testConnection()) {
-      if ($this->state->databaseExists && !empty($this->state->dbDatabase)) {
-        $this->selectDatabase($this->state->dbDatabase);
-      }
-      return true;
-    }
-    return false;
+    return $this->error;
   }
 
-  /**
-   * Select a database
-   */
-  public function selectDatabase(string $dbName): bool
-  {
-    if (!$this->connection) {
-      return false;
-    }
-
-    try {
-      if ($this->state->dbType === 'mysqli' || $this->state->dbType === 'mysql') {
-        return $this->connection->select_db($dbName);
-      }
-      // PostgreSQL selects database during connection
-      return true;
-    } catch (Exception $e) {
-      $this->error = $e->getMessage();
-      return false;
-    }
-  }
-  
-  /**
-   * Try to connect to database with current settings
-   * @return bool True if connection successful
-   */
   public function testConnection(): bool
   {
-    $this->error = '';
-    
-    try {
-      // Close any existing connection
-      $this->closeConnection();
-      
-      $dbType = $this->state->dbType;
-      
-      // Special handling for different database types
-      switch ($dbType) {
-        case 'mysqli':
-          return $this->connectMysqli();
-          
-        case 'postgresql':
-          return $this->connectPostgresql();
-          
-        case 'sqlite3':
-          return $this->connectSqlite3();
-          
-        case 'oracle':
-          return $this->connectOracle();
-          
-        case 'ibm_db2':
-          return $this->connectDb2();
-          
-        case 'odbc':
-          return $this->connectOdbc();
-          
-        case 'ibase':
-          return $this->connectInterbase();
-          
-        default:
-          // Fall back to dbi_connect
-          return $this->connectViaDbi();
-      }
-    } catch (Exception $e) {
-      $this->error = $e->getMessage();
-      return false;
+    switch ($this->state->dbType) {
+      case 'mysqli':
+        return $this->connectMysqli();
+      case 'postgresql':
+        return $this->connectPostgresql();
+      case 'sqlite3':
+        return $this->connectSqlite3();
+      default:
+        $this->error = "Unsupported database type: " . $this->state->dbType;
+        return false;
     }
   }
-  
-  /**
-   * Connect to MySQLi
-   */
+
+  public function reconnect(): bool
+  {
+    $this->closeConnection();
+    return $this->testConnection();
+  }
+
+  public function closeConnection(): void
+  {
+    if ($this->connection) {
+      if ($this->state->dbType === 'mysqli') {
+        $this->connection->close();
+      } elseif ($this->state->dbType === 'postgresql') {
+        pg_close($this->connection);
+      } elseif ($this->state->dbType === 'sqlite3') {
+        $this->connection->close();
+      }
+      $this->connection = null;
+    }
+  }
+
   private function connectMysqli(): bool
   {
     $mysqli = @new mysqli($this->state->dbHost, $this->state->dbLogin, $this->state->dbPassword);
-    
     if ($mysqli->connect_error) {
       $this->error = $mysqli->connect_error;
       return false;
     }
-    
-    // Don't require database to exist for initial connection test
     $this->connection = $mysqli;
     return true;
   }
-  
-  /**
-   * Connect to PostgreSQL
-   */
+
   private function connectPostgresql(): bool
   {
     // Try connecting to the specified database first
@@ -139,152 +84,56 @@ class WizardDatabase
       $this->connection = $c;
       return true;
     }
-    
-    // If that fails, try connecting to the postgres database
-    $connString = sprintf(
+
+    // Fallback: connect to 'postgres' to see if DB needs to be created
+    $connStringFallback = sprintf(
       "host=%s dbname=postgres user=%s password=%s",
       $this->state->dbHost,
       $this->state->dbLogin,
       $this->state->dbPassword
     );
-    
-    $c = @pg_connect($connString);
+    $c = @pg_connect($connStringFallback);
     if ($c) {
       $this->connection = $c;
       return true;
     }
-    
-    $this->error = 'Unable to connect to PostgreSQL server';
+
+    $this->error = "PostgreSQL connection failed";
     return false;
   }
-  
-  /**
-   * Connect to SQLite3
-   */
+
   private function connectSqlite3(): bool
   {
     try {
-      // SQLite3 just needs the file path
-      $sqlite = new SQLite3($this->state->dbDatabase);
-      if ($sqlite) {
-        $this->connection = $sqlite;
-        return true;
+      $dbPath = $this->state->dbDatabase;
+      if ($dbPath[0] !== '/') {
+        $dbPath = __DIR__ . '/../' . $dbPath;
       }
+
+      $dir = dirname($dbPath);
+      if (!is_dir($dir)) {
+        if (!@mkdir($dir, 0777, true)) {
+          $this->error = "Cannot create database directory: {$dir}";
+          return false;
+        }
+      }
+
+      if (!is_writable($dir)) {
+        $this->error = "Database directory is not writable: {$dir}";
+        return false;
+      }
+
+      $db = new SQLite3($dbPath);
+      $this->connection = $db;
+      return true;
     } catch (Exception $e) {
       $this->error = $e->getMessage();
-    }
-    return false;
-  }
-  
-  /**
-   * Connect to Oracle
-   */
-  private function connectOracle(): bool
-  {
-    $c = @oci_connect(
-      $this->state->dbLogin,
-      $this->state->dbPassword,
-      $this->state->dbDatabase
-    );
-    
-    if ($c) {
-      $this->connection = $c;
-      return true;
-    }
-    
-    $this->error = 'Unable to connect to Oracle database';
-    return false;
-  }
-  
-  /**
-   * Connect to IBM DB2
-   */
-  private function connectDb2(): bool
-  {
-    $c = @db2_connect(
-      $this->state->dbDatabase,
-      $this->state->dbLogin,
-      $this->state->dbPassword
-    );
-    
-    if ($c) {
-      $this->connection = $c;
-      return true;
-    }
-    
-    $this->error = 'Unable to connect to DB2 database';
-    return false;
-  }
-  
-  /**
-   * Connect via ODBC
-   */
-  private function connectOdbc(): bool
-  {
-    $dsn = $this->state->dbDatabase; // For ODBC, db_database is the DSN
-    $c = @odbc_connect($dsn, $this->state->dbLogin, $this->state->dbPassword);
-    
-    if ($c) {
-      $this->connection = $c;
-      return true;
-    }
-    
-    $this->error = 'Unable to connect via ODBC';
-    return false;
-  }
-  
-  /**
-   * Connect to InterBase/Firebird
-   */
-  private function connectInterbase(): bool
-  {
-    $c = @ibase_connect(
-      $this->state->dbDatabase,
-      $this->state->dbLogin,
-      $this->state->dbPassword
-    );
-    
-    if ($c) {
-      $this->connection = $c;
-      return true;
-    }
-    
-    $this->error = 'Unable to connect to InterBase database';
-    return false;
-  }
-  
-  /**
-   * Connect via dbi4php abstraction layer
-   */
-  private function connectViaDbi(): bool
-  {
-    // This requires the dbi4php functions to be available
-    global $dbi4phpLoaded;
-    
-    if (!$dbi4phpLoaded) {
-      $this->error = 'Database abstraction layer not available';
       return false;
     }
-    
-    $c = @dbi_connect(
-      $this->state->dbHost,
-      $this->state->dbLogin,
-      $this->state->dbPassword,
-      $this->state->dbDatabase,
-      false
-    );
-    
-    if ($c) {
-      $this->connection = $c;
-      return true;
-    }
-    
-    $this->error = dbi_error();
-    return false;
   }
-  
+
   /**
-   * Check if database exists and determine its version
+   * Inspect the database to determine its current state
    */
   public function checkDatabase(): void
   {
@@ -292,18 +141,13 @@ class WizardDatabase
       return;
     }
 
-    $this->state->databaseExists = false;
-    $this->state->databaseIsEmpty = true;
-    $this->state->detectedDbVersion = null;
-
-    // For MySQL, the initial connection is made without selecting a
-    // database so that we can test credentials independently.  We need
-    // to select the database now before we can inspect its tables.
+    // Select database if needed
     if ($this->state->dbType === 'mysqli') {
-      if (!$this->connection->select_db($this->state->dbDatabase)) {
-        // Database itself does not exist yet.
+      if (!@$this->connection->select_db($this->state->dbDatabase)) {
         return;
       }
+      $this->state->databaseExists = true;
+    } elseif ($this->state->dbType === 'postgresql') {
       $this->state->databaseExists = true;
     }
 
@@ -355,17 +199,18 @@ class WizardDatabase
   {
     try {
       if ($this->state->dbType === 'mysqli') {
-        $result = $this->connection->query("SELECT cal_value FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
+        if (!@$this->connection->select_db($this->state->dbDatabase)) return null;
+        $result = @$this->connection->query("SELECT cal_value FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
         if ($result && $row = $result->fetch_row()) {
           return $row[0];
         }
       } elseif ($this->state->dbType === 'postgresql') {
-        $result = pg_query($this->connection, "SELECT cal_value FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
+        $result = @pg_query($this->connection, "SELECT cal_value FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
         if ($result && $row = pg_fetch_row($result)) {
           return $row[0];
         }
       } elseif ($this->state->dbType === 'sqlite3') {
-        $result = $this->connection->query("SELECT cal_value FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
+        $result = @$this->connection->query("SELECT cal_value FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
         if ($result && $row = $result->fetchArray(SQLITE3_NUM)) {
           return $row[0];
         }
@@ -381,9 +226,6 @@ class WizardDatabase
    */
   private function getDatabaseVersionFromSchema(): string
   {
-    // Use include (not require_once) since WizardState.php may have
-    // already loaded this file, and we need $database_upgrade_matrix
-    // in this local scope
     include __DIR__ . '/shared/upgrade_matrix.php';
 
     $version = 'Unknown';
@@ -392,34 +234,15 @@ class WizardDatabase
     for ($i = 0; $i < count($database_upgrade_matrix); $i++) {
       $testSql = $database_upgrade_matrix[$i][0];
       
-      if (empty($testSql)) {
-        if ($success) {
-          $version = $database_upgrade_matrix[$i][2];
-        }
-        break;
-      }
-      
-      try {
-        if ($this->executeTestQuery($testSql)) {
-          $version = $database_upgrade_matrix[$i][2];
-          // Clean up test data
-          $cleanupSql = $database_upgrade_matrix[$i][1];
-          if (!empty($cleanupSql)) {
-            $this->executeTestQuery($cleanupSql);
-          }
-        } else {
-          $success = false;
-          break;
-        }
-      } catch (Exception $e) {
-        $success = false;
+      if ($this->executeTestQuery($testSql)) {
+        $version = $database_upgrade_matrix[$i][1];
         break;
       }
     }
-    
+
     return $version;
   }
-  
+
   /**
    * Execute a test query (for schema detection)
    */
@@ -427,11 +250,21 @@ class WizardDatabase
   {
     try {
       if ($this->state->dbType === 'mysqli') {
-        return $this->connection->query($sql) !== false;
+        $result = @$this->connection->query($sql);
+        if ($result === false) {
+          $this->error = $this->connection->error;
+          return false;
+        }
+        return true;
       } elseif ($this->state->dbType === 'postgresql') {
-        return pg_query($this->connection, $sql) !== false;
+        $result = @pg_query($this->connection, $sql);
+        if ($result === false) {
+          $this->error = pg_last_error($this->connection);
+          return false;
+        }
+        return true;
       } elseif ($this->state->dbType === 'sqlite3') {
-        return $this->connection->query($sql) !== false;
+        return @$this->connection->query($sql) !== false;
       }
     } catch (Exception $e) {
       return false;
@@ -446,17 +279,22 @@ class WizardDatabase
   {
     try {
       if ($this->state->dbType === 'mysqli') {
-        $result = $this->connection->query("SELECT COUNT(*) FROM webcal_config");
-        if ($result && $row = $result->fetch_row()) {
+        if (!@$this->connection->select_db($this->state->dbDatabase)) return true;
+        $result = @$this->connection->query("SELECT COUNT(*) FROM webcal_config");
+        if ($result) {
+          $row = $result->fetch_row();
           return $row[0] == 0;
         }
+        return true;
       } elseif ($this->state->dbType === 'postgresql') {
-        $result = pg_query($this->connection, "SELECT COUNT(*) FROM webcal_config");
-        if ($result && $row = pg_fetch_row($result)) {
+        $result = @pg_query($this->connection, "SELECT COUNT(*) FROM webcal_config");
+        if ($result) {
+          $row = pg_fetch_row($result);
           return $row[0] == 0;
         }
+        return true;
       } elseif ($this->state->dbType === 'sqlite3') {
-        $result = $this->connection->query("SELECT COUNT(*) FROM webcal_config");
+        $result = @$this->connection->query("SELECT COUNT(*) FROM webcal_config");
         if ($result && $row = $result->fetchArray(SQLITE3_NUM)) {
           return $row[0] == 0;
         }
@@ -474,17 +312,18 @@ class WizardDatabase
   {
     try {
       if ($this->state->dbType === 'mysqli') {
-        $result = $this->connection->query("SELECT COUNT(*) FROM webcal_user WHERE cal_is_admin = 'Y'");
+        if (!@$this->connection->select_db($this->state->dbDatabase)) return 0;
+        $result = @$this->connection->query("SELECT COUNT(*) FROM webcal_user WHERE cal_is_admin = 'Y'");
         if ($result && $row = $result->fetch_row()) {
           return (int) $row[0];
         }
       } elseif ($this->state->dbType === 'postgresql') {
-        $result = pg_query($this->connection, "SELECT COUNT(*) FROM webcal_user WHERE cal_is_admin = 'Y'");
+        $result = @pg_query($this->connection, "SELECT COUNT(*) FROM webcal_user WHERE cal_is_admin = 'Y'");
         if ($result && $row = pg_fetch_row($result)) {
           return (int) $row[0];
         }
       } elseif ($this->state->dbType === 'sqlite3') {
-        $result = $this->connection->query("SELECT COUNT(*) FROM webcal_user WHERE cal_is_admin = 'Y'");
+        $result = @$this->connection->query("SELECT COUNT(*) FROM webcal_user WHERE cal_is_admin = 'Y'");
         if ($result && $row = $result->fetchArray(SQLITE3_NUM)) {
           return (int) $row[0];
         }
@@ -494,335 +333,113 @@ class WizardDatabase
     }
     return 0;
   }
-  
-  /**
-   * Load upgrade SQL commands
-   */
+
   private function loadUpgradeCommands(string $fromVersion): void
   {
-    require_once __DIR__ . '/shared/upgrade-sql.php';
-    
     $dbType = $this->state->dbType === 'mysqli' ? 'mysql' : $this->state->dbType;
     $this->state->upgradeSqlCommands = getSqlUpdates($fromVersion, $dbType, true);
   }
-  
+
   /**
    * Create database (if needed)
    */
   public function createDatabase(): bool
   {
-    if ($this->state->databaseExists) {
-      return true;
-    }
-    
-    try {
-      if ($this->state->dbType === 'mysqli') {
-        return $this->connection->query("CREATE DATABASE IF NOT EXISTS {$this->state->dbDatabase}");
-      } elseif ($this->state->dbType === 'postgresql') {
-        $result = pg_query($this->connection, "CREATE DATABASE {$this->state->dbDatabase}");
-        return $result !== false;
-      }
-      // SQLite3 and other databases don't need separate database creation
-      return true;
-    } catch (Exception $e) {
-      $this->error = $e->getMessage();
+    if (!$this->connection) {
       return false;
     }
-  }
-  
-  /**
-   * Execute SQL commands to create/upgrade tables
-   */
-  public function executeUpgrade(): bool
-  {
-    if (empty($this->state->upgradeSqlCommands)) {
-      // Check if we need to create tables from scratch
-      if ($this->state->databaseIsEmpty) {
-        return $this->createTablesFromScratch();
+
+    if ($this->state->dbType === 'mysqli') {
+      $sql = "CREATE DATABASE IF NOT EXISTS " . $this->state->dbDatabase;
+      if ($this->connection->query($sql)) {
+        return $this->connection->select_db($this->state->dbDatabase);
       }
-      $this->updateVersionInDb();
+      $this->error = $this->connection->error;
+      return false;
+    } elseif ($this->state->dbType === 'postgresql') {
+      // Postgres database creation usually happens outside or via 'postgres' connection
+      // For now, assume it exists or fail
       return true;
     }
-    
-    foreach ($this->state->upgradeSqlCommands as $sql) {
-      if (str_starts_with($sql, 'function:')) {
-        // Execute PHP upgrade function
-        $functionName = substr($sql, 9);
-        if (function_exists($functionName)) {
-          try {
-            $functionName();
-          } catch (Exception $e) {
-            $this->error = "Upgrade function {$functionName} failed: " . $e->getMessage();
-            return false;
-          }
-        }
-      } else {
-        // Execute SQL
-        try {
-          if (!$this->executeSql($sql)) {
-            return false;
-          }
-        } catch (Exception $e) {
-          $this->error = "SQL execution failed: " . $e->getMessage();
-          return false;
-        }
-      }
-    }
-    
-    $this->state->upgradeComplete = true;
-    // Update version in DB so config.php won't redirect back to installer
-    $this->updateVersionInDb();
     return true;
   }
 
   /**
-   * Create tables from scratch (new installation)
+   * Execute upgrade SQL commands
    */
-  private function createTablesFromScratch(): bool
+  public function executeUpgrade(): bool
   {
-    // Map PHP driver names to SQL file names (e.g. mysqli -> mysql, postgresql -> postgres)
-    $dbType = $this->state->dbType === 'mysqli' ? 'mysql'
-      : ($this->state->dbType === 'postgresql' ? 'postgres' : $this->state->dbType);
-    $sqlFile = __DIR__ . '/shared/tables-' . $dbType . '.sql';
-
-    if (!file_exists($sqlFile)) {
-      $phpFile = __DIR__ . '/shared/tables-' . $dbType . '.php';
-      if (file_exists($phpFile)) {
-        $commands = include $phpFile;
-        if (is_array($commands)) {
-          foreach ($commands as $command) {
-            if (!empty(trim($command)) && !$this->executeSql($command)) {
-              return false;
-            }
-          }
-        }
-        $this->updateVersionInDb();
-        return true;
-      }
-      $this->error = "SQL file not found: {$sqlFile}";
+    if (!$this->connection) {
       return false;
     }
 
-    try {
-      $sql = file_get_contents($sqlFile);
-      $commands = array_filter(array_map('trim', explode(';', $sql)));
+    foreach ($this->state->upgradeSqlCommands as $sql) {
+      if (!$this->executeCommand($sql)) {
+        return false;
+      }
+    }
 
-      foreach ($commands as $command) {
-        if (!empty($command) && !$this->executeSql($command)) {
+    // After successful upgrade, update version in webcal_config
+    return $this->updateVersionInDb();
+  }
+
+  private function executeCommand(string $sql): bool
+  {
+    if (str_starts_with($sql, 'function:')) {
+      $func = substr($sql, 9);
+      if (function_exists($func)) {
+        try {
+          return $func($this->connection, $this->state);
+        } catch (Exception $e) {
+          $this->error = "Error executing upgrade function $func: " . $e->getMessage();
           return false;
         }
       }
-
-      // Set version in DB so config.php won't redirect back to installer
-      $this->updateVersionInDb();
       return true;
-    } catch (Exception $e) {
-      $this->error = $e->getMessage();
-      return false;
     }
+
+    if ($this->state->dbType === 'mysqli') {
+      if (!$this->connection->query($sql)) {
+        $this->error = $this->connection->error;
+        return false;
+      }
+    } elseif ($this->state->dbType === 'postgresql') {
+      if (!pg_query($this->connection, $sql)) {
+        $this->error = pg_last_error($this->connection);
+        return false;
+      }
+    } elseif ($this->state->dbType === 'sqlite3') {
+      if (!$this->connection->exec($sql)) {
+        $this->error = "SQLite error";
+        return false;
+      }
+    }
+    return true;
   }
 
-  /**
-   * Insert or update WEBCAL_PROGRAM_VERSION in webcal_config.
-   * This is critical — without it, config.php redirects users back
-   * to the installer on every page load.
-   */
   private function updateVersionInDb(): bool
   {
     $version = $this->state->programVersion;
-    error_log("Attempting to update WEBCAL_PROGRAM_VERSION to {$version}");
-
-    try {
-      // Ensure database is selected for MySQL if not already
-      if (($this->state->dbType === 'mysqli' || $this->state->dbType === 'mysql') && $this->connection) {
-        if (is_object($this->connection) && method_exists($this->connection, 'select_db')
-          && $this->connection->real_escape_string($this->state->dbDatabase) !== $this->connection->current_db ) {
-             error_log("Selecting database " . $this->state->dbDatabase);
-             if (!$this->connection->select_db($this->state->dbDatabase)) {
-                $this->error = "Failed to select database '{$this->state->dbDatabase}': " . $this->connection->error;
-                error_log($this->error);
-                return false;
-             }
-        }
-      }
-
-      $delSql = "DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'";
-      $insSql = "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', ?)";
-
-      if ($this->state->dbType === 'mysqli' || $this->state->dbType === 'mysql') {
-        if (!$this->connection->query($delSql)) {
-          $this->error = "Failed to delete old version: " . $this->connection->error;
-          error_log($this->error);
-          return false;
-        }
-        $stmt = $this->connection->prepare($insSql);
-        if (!$stmt) {
-          $this->error = "Failed to prepare INSERT statement: " . $this->connection->error;
-          error_log($this->error);
-          return false;
-        }
-        $stmt->bind_param('s', $version);
-        if (!$stmt->execute()) {
-          $this->error = "Failed to execute INSERT statement: " . $stmt->error;
-          error_log($this->error);
-          return false;
-        }
-        error_log("Successfully updated WEBCAL_PROGRAM_VERSION for mysqli/mysql.");
-        return true;
-      } elseif ($this->state->dbType === 'postgresql' || $this->state->dbType === 'postgres') {
-        if (!pg_query($this->connection, $delSql)) {
-          $this->error = "Failed to delete old version: " . pg_last_error($this->connection);
-          error_log($this->error);
-          return false;
-        }
-        $result = pg_query_params($this->connection,
-          "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', \$1)",
-          [$version]);
-        if (!$result) {
-          $this->error = "Failed to insert new version: " . pg_last_error($this->connection);
-          error_log($this->error);
-          return false;
-        }
-        error_log("Successfully updated WEBCAL_PROGRAM_VERSION for postgresql.");
-        return true;
-      } elseif ($this->state->dbType === 'sqlite3' || $this->state->dbType === 'sqlite') {
-        if (!$this->connection->exec($delSql)) {
-          $this->error = "Failed to delete old version: " . $this->connection->lastErrorMsg();
-          error_log($this->error);
-          return false;
-        }
-        $stmt = $this->connection->prepare(
-          "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', :version)"
-        );
-        if (!$stmt) {
-          $this->error = "Failed to prepare INSERT statement: " . $this->connection->lastErrorMsg();
-          error_log($this->error);
-          return false;
-        }
-        $stmt->bindValue(':version', $version);
-        if (!$stmt->execute()) {
-          $this->error = "Failed to execute INSERT statement: " . $this->connection->lastErrorMsg();
-          error_log($this->error);
-          return false;
-        }
-        error_log("Successfully updated WEBCAL_PROGRAM_VERSION for sqlite3.");
-        return true;
-      }
-
-      $this->error = "Unsupported database type for version update: " . $this->state->dbType;
-      error_log($this->error);
-      return false;
-    } catch (Exception $e) {
-      $this->error = 'Failed to update version in database: ' . $e->getMessage();
-      error_log($this->error);
-      return false;
-    }
-  }
-  
-  /**
-   * Execute a single SQL command
-   */
-  private function executeSql(string $sql): bool
-  {
-    if (empty($sql)) {
-      return true;
-    }
+    $sql = "UPDATE webcal_config SET cal_value = '$version' WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'";
     
-    try {
-      if ($this->state->dbType === 'mysqli') {
-        return $this->connection->query($sql) !== false;
-      } elseif ($this->state->dbType === 'postgresql') {
-        return pg_query($this->connection, $sql) !== false;
-      } elseif ($this->state->dbType === 'sqlite3') {
-        return $this->connection->exec($sql) !== false;
+    if ($this->state->dbType === 'mysqli') {
+      $this->connection->query($sql);
+      if ($this->connection->affected_rows === 0) {
+        $sql = "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version')";
+        $this->connection->query($sql);
       }
-    } catch (Exception $e) {
-      $this->error = $e->getMessage();
-      return false;
+    } elseif ($this->state->dbType === 'postgresql') {
+      $res = pg_query($this->connection, $sql);
+      if (pg_affected_rows($res) === 0) {
+        $sql = "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version')";
+        pg_query($this->connection, $sql);
+      }
+    } elseif ($this->state->dbType === 'sqlite3') {
+      $this->connection->exec($sql);
+      // SQLite affected_rows check is different, but for simplicity:
+      $sql = "INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version')";
+      $this->connection->exec($sql);
     }
-    
-    return false;
-  }
-  
-  /**
-   * Create default admin user
-   */
-  public function createAdminUser(string $login, string $password, string $email = ''): bool
-  {
-    $hashedPassword = md5($password);
-
-    try {
-      // Remove default admin inserted by schema file (if any)
-      $delSql = "DELETE FROM webcal_user WHERE cal_login = ?";
-      if ($this->state->dbType === 'mysqli') {
-        $del = $this->connection->prepare($delSql);
-        $del->bind_param('s', $login);
-        $del->execute();
-      } elseif ($this->state->dbType === 'postgresql') {
-        pg_query_params($this->connection, $delSql, [$login]);
-      } elseif ($this->state->dbType === 'sqlite3') {
-        $del = $this->connection->prepare(
-          "DELETE FROM webcal_user WHERE cal_login = :login"
-        );
-        $del->bindValue(':login', $login);
-        $del->execute();
-      }
-
-      $sql = "INSERT INTO webcal_user (cal_login, cal_passwd, cal_email, cal_firstname, cal_lastname, cal_is_admin)
-              VALUES (?, ?, ?, 'Administrator', 'Default', 'Y')";
-
-      if ($this->state->dbType === 'mysqli') {
-        $stmt = $this->connection->prepare($sql);
-        $stmt->bind_param('sss', $login, $hashedPassword, $email);
-        return $stmt->execute();
-      } elseif ($this->state->dbType === 'postgresql') {
-        $result = pg_query_params($this->connection, $sql, [$login, $hashedPassword, $email]);
-        return $result !== false;
-      } elseif ($this->state->dbType === 'sqlite3') {
-        $stmt = $this->connection->prepare($sql);
-        $stmt->bindValue(1, $login);
-        $stmt->bindValue(2, $hashedPassword);
-        $stmt->bindValue(3, $email);
-        return $stmt->execute();
-      }
-    } catch (Exception $e) {
-      $this->error = $e->getMessage();
-      return false;
-    }
-    
-    return false;
-  }
-  
-  /**
-   * Close database connection
-   */
-  public function closeConnection(): void
-  {
-    if ($this->connection) {
-      if ($this->state->dbType === 'mysqli') {
-        $this->connection->close();
-      } elseif ($this->state->dbType === 'postgresql') {
-        pg_close($this->connection);
-      } elseif ($this->state->dbType === 'sqlite3') {
-        $this->connection->close();
-      }
-      $this->connection = null;
-    }
-  }
-  
-  /**
-   * Get last error message
-   */
-  public function getError(): string
-  {
-    return $this->error;
-  }
-  
-  /**
-   * Get upgrade SQL commands for display
-   */
-  public function getUpgradeSqlCommands(): array
-  {
-    return $this->state->upgradeSqlCommands;
+    return true;
   }
 }

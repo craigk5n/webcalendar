@@ -3941,7 +3941,7 @@ function is_weekend ( $date ) {
  *
  * @ignore
  */
-function isLeapYear(int $year = null): bool {
+function isLeapYear(?int $year = null): bool {
   // If no year is provided, use the current year
   if ($year === null) {
       $year = (int) date('Y');

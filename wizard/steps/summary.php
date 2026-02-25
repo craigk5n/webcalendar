@@ -96,7 +96,7 @@ $settingsMatch = $existingFileExists && compareSettingsWithExisting($state);
     onclick="window.wizard.navigateToStep('adminuser')">
     <i class="bi bi-arrow-left me-2"></i>Back
   </button>
-  <button type="button" class="btn btn-success btn-lg"
+  <button type="button" class="btn btn-success btn-lg" id="continueToFinishBtn"
     onclick="window.wizard.navigateToStep('finish')">
     <i class="bi bi-arrow-right me-2"></i>Continue
   </button>
@@ -110,7 +110,7 @@ $settingsMatch = $existingFileExists && compareSettingsWithExisting($state);
 </div>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   <button type="button" class="btn btn-outline-secondary me-auto" onclick="window.wizard.navigateToStep('adminuser')"><i class="bi bi-arrow-left me-2"></i>Back</button>
-  <button type="button" class="btn btn-success btn-lg" onclick="if (window.wizard) window.wizard.navigateToStep('finish')">
+  <button type="button" class="btn btn-success btn-lg" id="continueToFinishBtn" onclick="if (window.wizard) window.wizard.navigateToStep('finish')">
     <i class="bi bi-arrow-right me-2"></i>Continue
   </button>
 </div>

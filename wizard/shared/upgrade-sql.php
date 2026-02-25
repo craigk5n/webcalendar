@@ -5,7 +5,7 @@
  * This file was introducted in v1.9.12 as part of the new installer.
  * The intent of this file is that by default the SQL for the upgrade will be
  * in the 'default-sql' field.  However, if any database needs different SQL,
- * there should be a db-specific key in the array like 'postgres-sql' or 'sqlite3-sql'.
+ * there should be a db-specific key in the array like 'postgresql-sql' or 'sqlite3-sql'.
  * NOTE: Currently only tested with MySQL.
  */
 
@@ -67,6 +67,19 @@ $updates = [
     'default-sql' => <<<'SQL'
 UPDATE webcal_entry SET cal_time = -1 WHERE cal_time IS NULL;
 ALTER TABLE webcal_entry MODIFY cal_time INT NOT NULL DEFAULT -1;
+CREATE TABLE webcal_entry_repeats (
+  cal_id INT NOT NULL,
+  cal_days CHAR(7),
+  cal_end INT,
+  cal_frequency INT DEFAULT 1,
+  cal_type VARCHAR(20),
+  PRIMARY KEY (cal_id)
+);
+SQL
+    ,
+    'sqlite3-sql' => <<<'SQL'
+UPDATE webcal_entry SET cal_time = -1 WHERE cal_time IS NULL;
+-- SQLite does not support ALTER TABLE MODIFY, but column types are dynamic
 CREATE TABLE webcal_entry_repeats (
   cal_id INT NOT NULL,
   cal_days CHAR(7),
@@ -158,7 +171,7 @@ CREATE TABLE webcal_entry_repeats_not (
   PRIMARY KEY (cal_id,cal_date)
 );
 SQL,
-    'posgresql-sql' => <<<'SQL'
+    'postgresql-sql' => <<<'SQL'
 ALTER TABLE webcal_user ALTER COLUMN cal_passwd TYPE VARCHAR(32);
 CREATE TABLE webcal_entry_repeats_not (
   cal_id INT NOT NULL,
@@ -259,6 +272,27 @@ CREATE TABLE webcal_import_data (
   PRIMARY KEY (cal_id,cal_login)
 );
 SQL
+    ,
+    'sqlite3-sql' => <<<'SQL'
+-- SQLite does not support ALTER TABLE MODIFY, but column types are dynamic
+DROP TABLE IF EXISTS webcal_import_data;
+CREATE TABLE webcal_import (
+  cal_import_id INT NOT NULL,
+  cal_date INT NOT NULL,
+  cal_login VARCHAR(25),
+  cal_name VARCHAR(50),
+  cal_type VARCHAR(10) NOT NULL,
+  PRIMARY KEY (cal_import_id)
+);
+CREATE TABLE webcal_import_data (
+  cal_id INT NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  cal_external_id VARCHAR(200),
+  cal_import_id INT NOT NULL,
+  cal_import_type VARCHAR(15) NOT NULL,
+  PRIMARY KEY (cal_id,cal_login)
+);
+SQL
   ],
   [
     'version' => 'v1.1.0-CVS',
@@ -273,7 +307,7 @@ SQL
   ],
   [
     'version' => 'v1.1.0a-CVS',
-    'postresql-sql' => <<<'SQL'
+    'postgresql-sql' => <<<'SQL'
 CREATE TABLE webcal_access_function (
   cal_login VARCHAR(25) NOT NULL,
   cal_permissions VARCHAR(64) NOT NULL,
@@ -376,7 +410,7 @@ CREATE TABLE webcal_blob (
   PRIMARY KEY ( cal_blob_id )
 );
 SQL,
-    'postgres-sql' => <<<'SQL'
+    'postgresql-sql' => <<<'SQL'
 CREATE TABLE webcal_blob (
   cal_blob_id INT NOT NULL,
   cal_id INT NULL,
@@ -474,7 +508,7 @@ SQL
   [
     'version' => 'v1.9.0',
     'postgresql-sql' => <<<'SQL'
-CREATE INDEX webcal_entry_categories ON webcal_entry_categories(cat_id);
+CREATE INDEX idx_webcal_entry_categories ON webcal_entry_categories(cat_id);
 ALTER TABLE webcal_import ADD COLUMN cal_check_date INTEGER DEFAULT NULL;
 ALTER TABLE webcal_import ADD COLUMN cal_md5 VARCHAR(32) DEFAULT NULL;
 CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type);
@@ -482,12 +516,21 @@ CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
 ALTER TABLE webcal_user ALTER COLUMN cal_passwd TYPE VARCHAR(255);
 SQL,
     'default-sql' => <<<'SQL'
-CREATE INDEX webcal_entry_categories ON webcal_entry_categories(cat_id);
+CREATE INDEX idx_webcal_entry_categories ON webcal_entry_categories(cat_id);
 ALTER TABLE webcal_import ADD cal_check_date INT NULL;
 ALTER TABLE webcal_import ADD cal_md5 VARCHAR(32) NULL DEFAULT NULL;
 CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type);
 CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
 ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);
+SQL
+    ,
+    'sqlite3-sql' => <<<'SQL'
+CREATE INDEX idx_webcal_entry_categories ON webcal_entry_categories(cat_id);
+ALTER TABLE webcal_import ADD COLUMN cal_check_date INTEGER DEFAULT NULL;
+ALTER TABLE webcal_import ADD COLUMN cal_md5 VARCHAR(32) DEFAULT NULL;
+CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type);
+CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
+-- SQLite does not support ALTER TABLE MODIFY, but column types are dynamic
 SQL
   ],
   [
@@ -499,6 +542,12 @@ SQL,
     'default-sql' => <<<'SQL'
 UPDATE webcal_entry_categories SET cat_owner = '' WHERE cat_owner IS NULL;
 ALTER TABLE webcal_entry_categories ADD PRIMARY KEY (cal_id, cat_id, cat_order, cat_owner);
+SQL
+    ,
+    'sqlite3-sql' => <<<'SQL'
+UPDATE webcal_entry_categories SET cat_owner = '' WHERE cat_owner IS NULL;
+-- SQLite does not support ALTER TABLE ADD PRIMARY KEY on existing tables
+-- This would require recreating the table with the proper primary key
 SQL
   ],
   [
@@ -516,10 +565,17 @@ ALTER TABLE webcal_categories ADD COLUMN cat_icon_mime VARCHAR(32) DEFAULT NULL;
 ALTER TABLE webcal_categories ADD COLUMN cat_icon_blob BYTEA DEFAULT NULL;
 ALTER TABLE webcal_categories ALTER COLUMN cat_owner TYPE VARCHAR(25);
 SQL
+    ,
+    'sqlite3-sql' => <<<'SQL'
+ALTER TABLE webcal_categories ADD COLUMN cat_status CHAR(1) DEFAULT 'A';
+ALTER TABLE webcal_categories ADD COLUMN cat_icon_mime VARCHAR(32) DEFAULT NULL;
+ALTER TABLE webcal_categories ADD COLUMN cat_icon_blob BLOB DEFAULT NULL;
+-- SQLite does not support ALTER TABLE MODIFY, but column types are dynamic
+SQL
   ],
   [
     'version' => 'v1.9.13',
-    'postgres-sql' => <<<'SQL'
+    'postgresql-sql' => <<<'SQL'
 ALTER TABLE webcal_nonuser_cals ALTER COLUMN cal_url TYPE VARCHAR(255);
 ALTER TABLE webcal_entry ALTER COLUMN cal_url TYPE VARCHAR(255);
 ALTER TABLE webcal_user ADD cal_api_token VARCHAR(255) DEFAULT NULL;
@@ -528,6 +584,11 @@ SQL,
 ALTER TABLE webcal_nonuser_cals MODIFY COLUMN cal_url VARCHAR(255);
 ALTER TABLE webcal_entry MODIFY COLUMN cal_url VARCHAR(255);
 ALTER TABLE webcal_user ADD cal_api_token VARCHAR(255) DEFAULT NULL;
+SQL
+    ,
+    'sqlite3-sql' => <<<'SQL'
+-- SQLite does not support ALTER TABLE MODIFY COLUMN, but column types are dynamic
+ALTER TABLE webcal_user ADD COLUMN cal_api_token VARCHAR(255) DEFAULT NULL;
 SQL
   ],
   [

@@ -343,7 +343,7 @@ function do_config($callingFromInstall=false)
   }
 
   // Type of user authentication.
-  $user_inc = $settings['user_inc'];
+  $user_inc = $settings['user_inc'] ?? 'user.php';
 
   // If SQLite, the db file is in the includes directory.
   if ($db_type == 'sqlite' || $db_type == 'sqlite3') {

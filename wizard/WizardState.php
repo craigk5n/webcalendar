@@ -90,6 +90,62 @@ class WizardState
   public ?string $successMessage = null;
   
   /**
+   * Load settings from environment variables if WEBCALENDAR_USE_ENV is set.
+   */
+  public function loadFromEnv(): void
+  {
+    if (empty(getenv('WEBCALENDAR_USE_ENV'))) {
+      return;
+    }
+
+    $this->usingEnv = true;
+    $this->isInitialized = true;
+    
+    $map = [
+      'WEBCALENDAR_INSTALL_PASSWORD' => 'installPassword',
+      'WEBCALENDAR_INSTALL_PASSWORD_HINT' => 'installPasswordHint',
+      'WEBCALENDAR_DB_TYPE' => 'dbType',
+      'WEBCALENDAR_DB_HOST' => 'dbHost',
+      'WEBCALENDAR_DB_LOGIN' => 'dbLogin',
+      'WEBCALENDAR_DB_PASSWORD' => 'dbPassword',
+      'WEBCALENDAR_DB_DATABASE' => 'dbDatabase',
+      'WEBCALENDAR_DB_CACHEDIR' => 'dbCacheDir',
+      'WEBCALENDAR_USER_INC' => 'userDb',
+    ];
+
+    foreach ($map as $envKey => $prop) {
+      $val = getenv($envKey);
+      if ($val !== false) {
+        $this->$prop = $val;
+      }
+    }
+
+    // Special handling for booleans and complex types
+    if (($val = getenv('WEBCALENDAR_DB_DEBUG')) !== false) {
+      $this->dbDebug = filter_var($val, FILTER_VALIDATE_BOOLEAN);
+    }
+    if (($val = getenv('WEBCALENDAR_READONLY')) !== false) {
+      $this->readonly = filter_var($val, FILTER_VALIDATE_BOOLEAN);
+    }
+    if (($val = getenv('WEBCALENDAR_USE_HTTP_AUTH')) !== false) {
+      if (filter_var($val, FILTER_VALIDATE_BOOLEAN)) {
+        $this->userAuth = 'http';
+      }
+    }
+    if (($val = getenv('WEBCALENDAR_SINGLE_USER')) !== false) {
+      if (filter_var($val, FILTER_VALIDATE_BOOLEAN)) {
+        $this->userAuth = 'none';
+        if (($val2 = getenv('WEBCALENDAR_SINGLE_USER_LOGIN')) !== false) {
+          $this->singleUserLogin = $val2;
+        }
+      }
+    }
+    if (($val = getenv('WEBCALENDAR_MODE')) !== false) {
+      $this->runMode = $val === 'dev' ? 'dev' : 'prod';
+    }
+  }
+
+  /**
    * Load state from PHP session
    */
   public function loadFromSession(): void
