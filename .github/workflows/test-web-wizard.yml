@@ -83,6 +83,14 @@ jobs:
           chmod +x tests/run-mysql-install-tests.sh
           ./tests/run-mysql-install-tests.sh
 
+      - name: Upload failure screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: selenium-screenshots-mysql
+          path: tests/screenshots/
+          if-no-files-found: ignore
+
   test_web_wizard_postgresql:
     name: Test WebCalendar wizard PostgreSQL (Selenium)
     runs-on: ubuntu-latest
@@ -95,6 +103,14 @@ jobs:
           chmod +x tests/run-postgresql-install-tests.sh
           ./tests/run-postgresql-install-tests.sh
 
+      - name: Upload failure screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: selenium-screenshots-postgresql
+          path: tests/screenshots/
+          if-no-files-found: ignore
+
   test_web_wizard_sqlite:
     name: Test WebCalendar wizard SQLite (Selenium)
     runs-on: ubuntu-latest
@@ -106,3 +122,11 @@ jobs:
         run: |
           chmod +x tests/run-sqlite-install-tests.sh
           ./tests/run-sqlite-install-tests.sh
+
+      - name: Upload failure screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: selenium-screenshots-sqlite
+          path: tests/screenshots/
+          if-no-files-found: ignore

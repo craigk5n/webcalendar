@@ -18,13 +18,21 @@ DB_USER = os.environ.get('WEBCALENDAR_DB_LOGIN', 'webcalendar')
 DB_PASS = os.environ.get('WEBCALENDAR_DB_PASSWORD', 'password')
 DB_NAME = os.environ.get('WEBCALENDAR_DB_DATABASE', 'webcalendar_test')
 
+SCREENSHOT_DIR = os.environ.get('SCREENSHOT_DIR', '/work/tests/screenshots')
+
 @pytest.fixture
-def driver():
+def driver(request):
     chrome_options = Options()
     driver = webdriver.Remote(command_executor=SELENIUM_URL, options=chrome_options)
     driver.set_window_size(1920, 1080)
     driver.implicitly_wait(10)
     yield driver
+    # Save screenshot on test failure
+    if hasattr(request.node, 'rep_call') and request.node.rep_call.failed:
+        os.makedirs(SCREENSHOT_DIR, exist_ok=True)
+        path = f"{SCREENSHOT_DIR}/mysql-{request.node.name}.png"
+        driver.save_screenshot(path)
+        print(f"Screenshot saved: {path}")
     driver.quit()
 
 def wait_for_text(driver, selector, text, timeout=15):

@@ -15,13 +15,20 @@ BASE_URL = os.environ.get('BASE_URL', 'http://web')
 SELENIUM_URL = os.environ.get('SELENIUM_URL', 'http://chrome:4444/wd/hub')
 DB_PATH = os.environ.get('WEBCALENDAR_DB_DATABASE', '/work/data/webcalendar_test.db')
 
+SCREENSHOT_DIR = os.environ.get('SCREENSHOT_DIR', '/work/tests/screenshots')
+
 @pytest.fixture
-def driver():
+def driver(request):
     chrome_options = Options()
     driver = webdriver.Remote(command_executor=SELENIUM_URL, options=chrome_options)
     driver.set_window_size(1920, 1080)
     driver.implicitly_wait(10)
     yield driver
+    if hasattr(request.node, 'rep_call') and request.node.rep_call.failed:
+        os.makedirs(SCREENSHOT_DIR, exist_ok=True)
+        path = f"{SCREENSHOT_DIR}/sqlite-{request.node.name}.png"
+        driver.save_screenshot(path)
+        print(f"Screenshot saved: {path}")
     driver.quit()
 
 def wait_for_text(driver, selector, text, timeout=15):
