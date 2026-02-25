@@ -6,7 +6,7 @@
 set -e
 
 # Configuration
-COMPOSE_FILE="docker/docker-compose-test-mysql.yml"
+COMPOSE_FILE="docker/docker compose-test-mysql.yml"
 
 log() {
   echo "[$(date '+%H:%M:%S')] $*"
@@ -14,18 +14,18 @@ log() {
 
 cleanup() {
   log "Cleaning up Docker containers..."
-  docker-compose -f "$COMPOSE_FILE" down -v --remove-orphans 2>/dev/null || true
+  docker compose -f "$COMPOSE_FILE" down -v --remove-orphans 2>/dev/null || true
 }
 
 # Trap cleanup on exit
 trap cleanup EXIT
 
 log "Starting Docker environment..."
-docker-compose -f "$COMPOSE_FILE" up -d db web chrome
+docker compose -f "$COMPOSE_FILE" up -d db web chrome
 
 log "Waiting for MySQL to be ready..."
-# Use docker-compose exec to wait for health
-until docker-compose -f "$COMPOSE_FILE" exec -T db mysqladmin ping -h localhost -u root -proot > /dev/null 2>&1; do
+# Use docker compose exec to wait for health
+until docker compose -f "$COMPOSE_FILE" exec -T db mysqladmin ping -h localhost -u root -proot > /dev/null 2>&1; do
   echo -n "."
   sleep 1
 done
@@ -34,9 +34,9 @@ log "MySQL is ready."
 
 log "Running tests..."
 # Run the pytest container
-if ! docker-compose -f "$COMPOSE_FILE" up --exit-code-from pytest pytest; then
+if ! docker compose -f "$COMPOSE_FILE" up --exit-code-from pytest pytest; then
   log "Tests failed! Showing container logs..."
-  docker-compose -f "$COMPOSE_FILE" logs web
+  docker compose -f "$COMPOSE_FILE" logs web
   exit 1
 fi
 

@@ -272,7 +272,16 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
 
     case 'create-database':
       $db = new WizardDatabase($state);
-      
+
+      // Re-establish connection
+      if (!$db->testConnection()) {
+        $response = [
+          'success' => false,
+          'message' => 'Database connection failed: ' . $db->getError(),
+        ];
+        break;
+      }
+
       if ($db->createDatabase()) {
         $db->checkDatabase();
         $db->closeConnection();
