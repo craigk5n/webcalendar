@@ -127,6 +127,10 @@ def test_new_installation(driver):
                 title = driver.find_element(By.ID, "stepTitle").text
                 last_title = title
                 if "Tables" in title: break
+                # Handle Create Database step explicitly
+                if "Create" in title:
+                    click_button(driver, "button[data-action='create-database']")
+                    continue
                 btns = driver.find_elements(By.CSS_SELECTOR, "button.btn-primary, button.btn-success")
                 clicked = False
                 for btn in btns:
@@ -134,18 +138,19 @@ def test_new_installation(driver):
                         driver.execute_script("arguments[0].click();", btn)
                         clicked = True
                         break
+                if not clicked:
+                    # Try DB readonly continue as fallback
+                    action_btns = driver.find_elements(By.CSS_SELECTOR, "button[data-action='continue-db-readonly']")
+                    for btn in action_btns:
+                        if btn.is_displayed():
+                            driver.execute_script("arguments[0].click();", btn)
+                            clicked = True
+                            break
                 if not clicked: break
             except Exception: break
 
-        # Wait for either Tables (upgrade path) or Database (new install path)
-        try:
-            wait_for_text(driver, "stepTitle", "Tables")
-            click_button(driver, "button[data-action='execute-upgrade']")
-        except TimeoutException:
-            wait_for_text(driver, "stepTitle", "Database")
-            click_button(driver, "button[data-action='continue-db-readonly']")
-            wait_for_text(driver, "stepTitle", "Tables")
-            click_button(driver, "button[data-action='execute-upgrade']")
+        wait_for_text(driver, "stepTitle", "Tables")
+        click_button(driver, "button[data-action='execute-upgrade']")
 
         # Click through Admin User / Summary / Finish
         for i in range(10):
@@ -196,14 +201,35 @@ def test_upgrade_installation(driver):
         driver.find_element(By.ID, "password").send_keys("Test123!")
         click_button(driver, "form[data-action='login'] button[type='submit']")
 
-        # Wait for either Tables (upgrade path) or Database (fallback path)
-        try:
-            wait_for_text(driver, "stepTitle", "Tables")
-        except TimeoutException:
-            wait_for_text(driver, "stepTitle", "Database")
-            click_button(driver, "button[data-action='continue-db-readonly']")
-            wait_for_text(driver, "stepTitle", "Tables")
+        # Walk through intermediate steps until Tables
+        last_title = "Authentication"
+        for i in range(10):
+            try:
+                WebDriverWait(driver, 10).until(lambda d: d.find_element(By.ID, "stepTitle").text != last_title)
+                title = driver.find_element(By.ID, "stepTitle").text
+                last_title = title
+                if "Tables" in title: break
+                if "Create" in title:
+                    click_button(driver, "button[data-action='create-database']")
+                    continue
+                btns = driver.find_elements(By.CSS_SELECTOR, "button.btn-primary, button.btn-success")
+                clicked = False
+                for btn in btns:
+                    if btn.is_displayed() and ("Continue" in btn.text or "Acknowledge" in btn.text):
+                        driver.execute_script("arguments[0].click();", btn)
+                        clicked = True
+                        break
+                if not clicked:
+                    action_btns = driver.find_elements(By.CSS_SELECTOR, "button[data-action='continue-db-readonly']")
+                    for btn in action_btns:
+                        if btn.is_displayed():
+                            driver.execute_script("arguments[0].click();", btn)
+                            clicked = True
+                            break
+                if not clicked: break
+            except Exception: break
 
+        wait_for_text(driver, "stepTitle", "Tables")
         print("SUCCESS: Login successful - reached Tables step")
         click_button(driver, "button[data-action='execute-upgrade']")
 
