@@ -15,9 +15,17 @@ on:
 jobs:
   build-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ['8.1', '8.2', '8.3', '8.4']
 
+    name: PHPUnit (PHP ${{ matrix.php-version }})
     steps:
       - uses: actions/checkout@v6
+      - name: Set up PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
       - name: Install dependencies
         run: composer install
       - name: PHPUnit Tests

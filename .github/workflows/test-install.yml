@@ -10,19 +10,22 @@ on:
 
 jobs:
   test_installation:
-    name: Test WebCalendar installation with SQLite
+    name: Test install + login (PHP ${{ matrix.php-version }})
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ['8.1', '8.2', '8.3', '8.4']
     steps:
       - name: Check out the repo
         uses: actions/checkout@v6
 
-      - name: Set up PHP
+      - name: Set up PHP ${{ matrix.php-version }}
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1' # Use PHP 8.1 for sqlite3 support
-          extensions: sqlite3, pdo_sqlite # sqlite3 is sufficient
-          tools: none # No Composer needed
-          ini-values: display_errors=On, error_reporting=E_ALL # Enable error reporting
+          php-version: ${{ matrix.php-version }}
+          extensions: sqlite3, pdo_sqlite
+          tools: none
+          ini-values: display_errors=On, error_reporting=E_ALL
 
       - name: Create SQLite database
         run: |
