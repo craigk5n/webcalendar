@@ -8,16 +8,16 @@ parameters:
   excludePaths:
     - vendor
     - pub
-    - install
     - tests
     - tools
-    - contrib
     - docs
-    - docs-new
-    - aws
-    - terraform
     - docker
-    - database
-    - includes/settings.php
     - includes/classes/phpmailer
     - includes/classes/captcha
+    - install (?)
+    - contrib (?)
+    - docs-new (?)
+    - aws (?)
+    - terraform (?)
+    - database (?)
+    - includes/settings.php (?)
