@@ -4043,7 +4043,7 @@ function load_global_settings() {
 
   // Set SERVER TIMEZONE.
   if ( empty ( $GLOBALS['TIMEZONE'] ) )
-    $GLOBALS['TIMEZONE'] = $GLOBALS['SERVER_TIMEZONE'];
+    $GLOBALS['TIMEZONE'] = $GLOBALS['SERVER_TIMEZONE'] ?? date_default_timezone_get();
 
   set_env ( 'TZ', $GLOBALS['TIMEZONE'] );
   if ( empty ( $tzInitSet ) ) {
