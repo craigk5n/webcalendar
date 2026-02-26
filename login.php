@@ -43,7 +43,7 @@ if ( ! empty ( $last_login ) )
 if ( empty ( $webcalendar_login ) )
   $webcalendar_login = '';
 
-if ( $REMEMBER_LAST_LOGIN == 'Y' && empty ( $login ) )
+if ( ! empty ( $REMEMBER_LAST_LOGIN ) && $REMEMBER_LAST_LOGIN == 'Y' && empty ( $login ) )
   $last_login = $login = $webcalendar_login;
 
 load_user_preferences ( 'guest' );
