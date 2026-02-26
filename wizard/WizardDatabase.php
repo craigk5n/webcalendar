@@ -383,9 +383,12 @@ class WizardDatabase
       return false;
     }
 
-    // For new installations, load base schema first
+    // For new installations, load base schema and default config
     if ($this->state->databaseIsEmpty) {
       if (!$this->loadBaseSchema()) {
+        return false;
+      }
+      if (!$this->loadDefaultConfig()) {
         return false;
       }
     }
@@ -446,6 +449,27 @@ class WizardDatabase
       }
     }
 
+    return true;
+  }
+
+  /**
+   * Insert default config values for fresh installs.
+   * Reads from shared/default_config.php (single source of truth).
+   * Skips WEBCAL_PROGRAM_VERSION since loadBaseSchema already inserts it.
+   */
+  private function loadDefaultConfig(): bool
+  {
+    require __DIR__ . '/shared/default_config.php';
+
+    foreach ($webcalConfig as $key => $val) {
+      if ($key === 'WEBCAL_PROGRAM_VERSION') continue;
+      $escapedVal = str_replace("'", "''", $val);
+      $sql = "INSERT INTO webcal_config (cal_setting, cal_value) "
+        . "VALUES ('$key', '$escapedVal')";
+      if (!$this->executeCommand($sql)) {
+        return false;
+      }
+    }
     return true;
   }
 
