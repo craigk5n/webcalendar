@@ -301,7 +301,11 @@ function do_config($callingFromInstall=false)
     dbi_set_debug(true);
 
   if (!$callingFromInstall) {
-    foreach ( ['db_type', 'db_host', 'db_login'] as $s) {
+    // SQLite/SQLite3 don't require db_host or db_login
+    $required = ($db_type == 'sqlite' || $db_type == 'sqlite3')
+      ? ['db_type']
+      : ['db_type', 'db_host', 'db_login'];
+    foreach ($required as $s) {
       if (empty($settings[$s]))
         die_miserable_death(str_replace(
           'XXX',
