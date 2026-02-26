@@ -1,0 +1,259 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Path in require_once\(\) "install/default_config\.php" is not a file or it does not exist\.$#'
+			identifier: requireOnce.fileNotFound
+			count: 1
+			path: admin.php
+
+		-
+			message: '#^Path in require_once\(\) "includes/classes/Event\.class" is not a file or it does not exist\.$#'
+			identifier: requireOnce.fileNotFound
+			count: 1
+			path: ajax.php
+
+		-
+			message: '#^Path in require_once\(\) "includes/classes/RptEvent\.class" is not a file or it does not exist\.$#'
+			identifier: requireOnce.fileNotFound
+			count: 1
+			path: ajax.php
+
+		-
+			message: '#^Call to static method form\(\) on an unknown class captcha\.$#'
+			identifier: class.notFound
+			count: 1
+			path: edit_entry.php
+
+		-
+			message: '#^Undefined variable\: \$time$#'
+			identifier: variable.undefined
+			count: 1
+			path: edit_entry.php
+
+		-
+			message: '#^Call to static method check\(\) on an unknown class captcha\.$#'
+			identifier: class.notFound
+			count: 1
+			path: edit_entry_handler.php
+
+		-
+			message: '#^Undefined variable\: \$difference_hours$#'
+			identifier: variable.undefined
+			count: 1
+			path: import_outlookcsv.php
+
+		-
+			message: '#^Function access_get_function_description\(\) should return string but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: includes/access.php
+
+		-
+			message: '#^Access to an undefined property DocList\:\:\$_description\.$#'
+			identifier: property.notFound
+			count: 1
+			path: includes/classes/DocList.php
+
+		-
+			message: '#^Access to an undefined property WebCalMailer\:\:\$error_count\.$#'
+			identifier: property.notFound
+			count: 2
+			path: includes/classes/WebCalMailer.php
+
+		-
+			message: '#^Instantiated class phpmailer\\PHPMailer\\PHPMailer not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: includes/classes/WebCalMailer.php
+
+		-
+			message: '#^Undefined variable\: \$SMTP_STARTTLS$#'
+			identifier: variable.undefined
+			count: 1
+			path: includes/classes/WebCalMailer.php
+
+		-
+			message: '#^Method WebCalendar\:\:_getPhases\(\) should return array but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: includes/classes/WebCalendar.php
+
+		-
+			message: '#^Undefined variable\: \$AUTH_USER$#'
+			identifier: variable.undefined
+			count: 1
+			path: includes/classes/WebCalendar.php
+
+		-
+			message: '#^Undefined variable\: \$login_return_path$#'
+			identifier: variable.undefined
+			count: 1
+			path: includes/classes/WebCalendar.php
+
+		-
+			message: '#^Function do_external_configs not found\.$#'
+			identifier: function.notFound
+			count: 1
+			path: includes/config.php
+
+		-
+			message: '#^Function dbi_affected_rows\(\) should return int but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: includes/dbi4php.php
+
+		-
+			message: '#^Function dbi_close\(\) should return bool but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: includes/dbi4php.php
+
+		-
+			message: '#^Function dbi_connect\(\) should return resource but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: includes/dbi4php.php
+
+		-
+			message: '#^Function dbi_free_result\(\) should return bool but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: includes/dbi4php.php
+
+		-
+			message: '#^Function dbi_update_blob\(\) should return bool but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: includes/dbi4php.php
+
+		-
+			message: '#^Result of function mysqli_free_result \(void\) is used\.$#'
+			identifier: function.void
+			count: 1
+			path: includes/dbi4php.php
+
+		-
+			message: '#^Result of function odbc_close \(void\) is used\.$#'
+			identifier: function.void
+			count: 1
+			path: includes/dbi4php.php
+
+		-
+			message: '#^Result of function sqlite_close \(void\) is used\.$#'
+			identifier: function.void
+			count: 1
+			path: includes/dbi4php.php
+
+		-
+			message: '#^Undefined variable\: \$cat_id$#'
+			identifier: variable.undefined
+			count: 1
+			path: includes/functions.php
+
+		-
+			message: '#^Undefined variable\: \$location$#'
+			identifier: variable.undefined
+			count: 1
+			path: includes/functions.php
+
+		-
+			message: '#^Undefined variable\: \$user$#'
+			identifier: variable.undefined
+			count: 2
+			path: includes/functions.php
+
+		-
+			message: '#^Undefined variable\: \$tret$#'
+			identifier: variable.undefined
+			count: 1
+			path: includes/init.php
+
+		-
+			message: '#^Call to sprintf contains 2 placeholders, 3 values given\.$#'
+			identifier: argument.sprintf
+			count: 1
+			path: includes/menu.php
+
+		-
+			message: '#^Array has 2 duplicate keys with value ''id'' \(''id'', ''id''\)\.$#'
+			identifier: array.duplicateKey
+			count: 1
+			path: includes/translate.php
+
+		-
+			message: '#^Regex pattern is invalid\: The /e modifier is no longer supported, use preg_replace_callback instead in pattern\: ~&\#\(\[0\-9\]\+\);~e$#'
+			identifier: regexp.pattern
+			count: 1
+			path: includes/translate.php
+
+		-
+			message: '#^Regex pattern is invalid\: The /e modifier is no longer supported, use preg_replace_callback instead in pattern\: ~&\#x\(\[0\-9a\-f\]\+\);~ei$#'
+			identifier: regexp.pattern
+			count: 1
+			path: includes/translate.php
+
+		-
+			message: '#^Function ldap_sort not found\.$#'
+			identifier: function.notFound
+			count: 1
+			path: includes/user-ldap.php
+
+		-
+			message: '#^Undefined variable\: \$PUBLIC_ACCESS_FULLNAME$#'
+			identifier: variable.undefined
+			count: 1
+			path: includes/user-ldap.php
+
+		-
+			message: '#^Cannot unset offset ''Until'' on array\{Exceptions\: array\{\}, Inclusions\: array\{\}\}\|array\{Exceptions\: list, Inclusions\: list, Frequency\: 7\}\.$#'
+			identifier: unset.offset
+			count: 1
+			path: includes/xcal.php
+
+		-
+			message: '#^Undefined variable\: \$LIMIT_DESCRIPTION_SIZE$#'
+			identifier: variable.undefined
+			count: 1
+			path: includes/xcal.php
+
+		-
+			message: '#^Undefined variable\: \$freebusycount$#'
+			identifier: variable.undefined
+			count: 1
+			path: includes/xcal.php
+
+		-
+			message: '#^Undefined variable\: \$category$#'
+			identifier: variable.undefined
+			count: 1
+			path: rss_unapproved.php
+
+		-
+			message: '#^Undefined variable\: \$d$#'
+			identifier: variable.undefined
+			count: 1
+			path: rss_unapproved.php
+
+		-
+			message: '#^Undefined variable\: \$invalidFirstName$#'
+			identifier: variable.undefined
+			count: 1
+			path: users_ajax.php
+
+		-
+			message: '#^Undefined variable\: \$invalidLastName$#'
+			identifier: variable.undefined
+			count: 1
+			path: users_ajax.php
+
+		-
+			message: '#^Undefined variable\: \$DISPLAY_UNAPPROVED$#'
+			identifier: variable.undefined
+			count: 1
+			path: week_details.php
+
+		-
+			message: '#^Undefined variable\: \$DISABLE_ACCESS_FIELD$#'
+			identifier: variable.undefined
+			count: 1
+			path: ws/ws.php

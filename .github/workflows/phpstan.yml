@@ -1,0 +1,26 @@
+name: PHPStan Static Analysis
+
+on:
+  push:
+    branches: [ master, release ]
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+    name: PHPStan (Level 0)
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse --no-progress

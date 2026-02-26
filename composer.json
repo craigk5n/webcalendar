@@ -36,6 +36,7 @@
   "require-dev": {
     "components/normalize.css": "^3.0",
     "friendsofphp/php-cs-fixer": "^3.86",
+    "phpstan/phpstan": "^2.0",
     "phpunit/phpunit": "9.6.*",
     "squizlabs/php_codesniffer": "^3.13"
   }

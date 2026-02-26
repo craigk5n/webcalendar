@@ -19,8 +19,11 @@ jobs:
   test-web-wizard:
     uses: ./.github/workflows/test-web-wizard.yml
 
+  phpstan:
+    uses: ./.github/workflows/phpstan.yml
+
   build:
-    needs: [php-lint, phpunit, test-install, test-web-wizard]
+    needs: [php-lint, phpunit, test-install, test-web-wizard, phpstan]
     runs-on: ubuntu-latest
 
     steps:

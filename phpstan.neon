@@ -1,0 +1,23 @@
+includes:
+  - phpstan-baseline.neon
+
+parameters:
+  level: 0
+  paths:
+    - .
+  excludePaths:
+    - vendor
+    - pub
+    - install
+    - tests
+    - tools
+    - contrib
+    - docs
+    - docs-new
+    - aws
+    - terraform
+    - docker
+    - database
+    - includes/settings.php
+    - includes/classes/phpmailer
+    - includes/classes/captcha
