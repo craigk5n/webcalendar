@@ -110,24 +110,60 @@ def load_fixture(fixture_path):
         print("No WEBCAL_PROGRAM_VERSION found in webcal_config!")
     conn.close()
 
-def _post_install_smoke_test(driver):
-    """After wizard completes, verify the app serves pages without errors."""
+def _try_login(driver, password):
+    """Attempt to login as admin with the given password. Returns True if successful."""
     driver.delete_all_cookies()
     driver.get(f"{BASE_URL}/login.php")
     time.sleep(2)
 
-    # Verify login page renders without fatal errors
-    title = driver.title
-    print(f"Smoke test: login page title='{title}', URL={driver.current_url}")
-    assert "Fatal" not in title, f"Smoke test: fatal error on login page (title={title})"
-    assert "wizard" not in driver.current_url, f"Smoke test: redirected to wizard ({driver.current_url})"
+    if "Fatal" in driver.title or "Error" in driver.title:
+        body = driver.find_element(By.TAG_NAME, "body").text[:500]
+        print(f"Smoke test: error page title='{driver.title}', body={body}")
+        return False
+    if "wizard" in driver.current_url:
+        print(f"Smoke test: redirected to wizard ({driver.current_url})")
+        return False
 
-    # Verify the login form has expected elements
-    user_field = driver.find_elements(By.ID, "user")
-    password_field = driver.find_elements(By.ID, "password")
-    assert user_field, "Smoke test: login form missing username field"
-    assert password_field, "Smoke test: login form missing password field"
-    print("SUCCESS: Post-install smoke test passed — login page renders correctly")
+    try:
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "user")))
+    except TimeoutException:
+        print(f"Smoke test: login form not found (title={driver.title})")
+        return False
+
+    driver.find_element(By.ID, "user").send_keys("admin")
+    driver.find_element(By.ID, "password").send_keys(password)
+    driver.find_element(By.CSS_SELECTOR, "#login-form button[type='submit']").click()
+    time.sleep(3)
+
+    if "login" in driver.current_url:
+        body = driver.find_element(By.TAG_NAME, "body").text[:500]
+        print(f"Smoke test: login with '{password}' failed. body={body}")
+        return False
+
+    print(f"Smoke test: login with '{password}' succeeded. URL={driver.current_url}")
+    return True
+
+
+def _post_install_smoke_test(driver):
+    """After wizard completes, verify the app works: login, view calendar, create event."""
+    logged_in = _try_login(driver, "admin")
+    if not logged_in:
+        logged_in = _try_login(driver, "admin123")
+
+    assert logged_in, f"Smoke test: login failed with both passwords. URL={driver.current_url}"
+    print(f"SUCCESS: Logged in as admin, landed on {driver.current_url}")
+
+    # Create an event
+    driver.get(f"{BASE_URL}/edit_entry.php")
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "entry_brief")))
+    driver.find_element(By.ID, "entry_brief").send_keys("Smoke Test Event")
+    driver.find_element(By.CSS_SELECTOR, "button[onclick*='validate_and_submit']").click()
+    time.sleep(3)
+
+    WebDriverWait(driver, 10).until(
+        lambda d: "edit_entry" not in d.current_url
+    )
+    print(f"SUCCESS: Event created, redirected to {driver.current_url}")
 
 
 def test_new_installation(driver):
