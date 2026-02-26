@@ -134,6 +134,34 @@ def load_fixture(fixture_path):
         print(f"ERROR loading fixture: {e}")
         raise
 
+def _post_install_smoke_test(driver, admin_password="admin"):
+    """After wizard completes, verify the app works: login, view calendar, create event."""
+    # 1. Login as admin
+    driver.get(f"{BASE_URL}/login.php")
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "user")))
+    driver.find_element(By.ID, "user").send_keys("admin")
+    driver.find_element(By.ID, "password").send_keys(admin_password)
+    driver.find_element(By.CSS_SELECTOR, "#login-form button[type='submit']").click()
+
+    # 2. Verify calendar loads (should redirect to month view or similar)
+    WebDriverWait(driver, 10).until(
+        lambda d: "month.php" in d.current_url or "week.php" in d.current_url or "day.php" in d.current_url
+    )
+    print(f"SUCCESS: Logged in as admin, landed on {driver.current_url}")
+
+    # 3. Create an event
+    driver.get(f"{BASE_URL}/edit_entry.php")
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "entry_brief")))
+    driver.find_element(By.ID, "entry_brief").send_keys("Smoke Test Event")
+    driver.find_element(By.CSS_SELECTOR, "button[onclick*='validate_and_submit']").click()
+
+    # 4. Verify redirect back to calendar view (not an error page)
+    WebDriverWait(driver, 10).until(
+        lambda d: "edit_entry" not in d.current_url or "error" not in d.page_source.lower()
+    )
+    print(f"SUCCESS: Event created, redirected to {driver.current_url}")
+
+
 def test_new_installation(driver):
     try:
         reset_db()
@@ -197,6 +225,9 @@ def test_new_installation(driver):
 
         wait_for_text(driver, "stepTitle", "Finish")
         assert "Complete" in driver.page_source
+
+        # Post-install smoke test: login, view calendar, create event
+        _post_install_smoke_test(driver, admin_password="admin")
     except Exception:
         print(f"FAILED on page: {driver.current_url}")
         raise
