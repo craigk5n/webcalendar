@@ -181,15 +181,9 @@ parameters:
 			path: includes/translate.php
 
 		-
-			message: '#^Regex pattern is invalid\: The /e modifier is no longer supported, use preg_replace_callback instead in pattern\: ~&\#\(\[0\-9\]\+\);~e$#'
+			message: '#^Regex pattern is invalid\:#'
 			identifier: regexp.pattern
-			count: 1
-			path: includes/translate.php
-
-		-
-			message: '#^Regex pattern is invalid\: The /e modifier is no longer supported, use preg_replace_callback instead in pattern\: ~&\#x\(\[0\-9a\-f\]\+\);~ei$#'
-			identifier: regexp.pattern
-			count: 1
+			count: 2
 			path: includes/translate.php
 
 		-
