@@ -134,47 +134,48 @@ def load_fixture(fixture_path):
         print(f"ERROR loading fixture: {e}")
         raise
 
-def _post_install_smoke_test(driver, admin_password="admin"):
-    """After wizard completes, verify the app works: login, view calendar, create event."""
-    # Clear wizard session before testing the app
+def _try_login(driver, password):
+    """Attempt to login as admin with the given password. Returns True if successful."""
     driver.delete_all_cookies()
-
-    # 1. Login as admin
     driver.get(f"{BASE_URL}/login.php")
-    time.sleep(2)
-    print(f"Smoke test: login page URL={driver.current_url}, title={driver.title}")
-
-    # If redirected to wizard, the app isn't ready
+    time.sleep(1)
     if "wizard" in driver.current_url:
-        print("WARNING: Redirected to wizard — app may need version sync")
-        assert False, f"Login page redirected to wizard: {driver.current_url}"
-
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "user")))
+        return False
+    try:
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "user")))
+    except TimeoutException:
+        print(f"Smoke test: login page did not render (title={driver.title})")
+        return False
     driver.find_element(By.ID, "user").send_keys("admin")
-    driver.find_element(By.ID, "password").send_keys(admin_password)
+    driver.find_element(By.ID, "password").send_keys(password)
     driver.find_element(By.CSS_SELECTOR, "#login-form button[type='submit']").click()
     time.sleep(2)
+    return "login" not in driver.current_url
 
-    # 2. Verify calendar loads (should redirect to month view or similar)
-    print(f"Smoke test: after login URL={driver.current_url}")
-    if "login" in driver.current_url:
-        # Login failed — dump page for debugging
-        print(f"Smoke test: login may have failed. Page source length={len(driver.page_source)}")
 
-    WebDriverWait(driver, 10).until(
-        lambda d: "month.php" in d.current_url or "week.php" in d.current_url
-                  or "day.php" in d.current_url or "view" in d.current_url
-    )
+def _post_install_smoke_test(driver):
+    """After wizard completes, verify the app works: login, view calendar, create event."""
+    # Try default SQL password first, then wizard-created password
+    logged_in = _try_login(driver, "admin")
+    if not logged_in:
+        print("Smoke test: password 'admin' failed, trying 'admin123'")
+        logged_in = _try_login(driver, "admin123")
+
+    assert logged_in, f"Smoke test: login failed with both passwords. URL={driver.current_url}, title={driver.title}"
     print(f"SUCCESS: Logged in as admin, landed on {driver.current_url}")
 
-    # 3. Create an event
+    # Verify we're on a calendar page
+    assert any(v in driver.current_url for v in ["month.php", "week.php", "day.php", "view"]), \
+        f"Smoke test: unexpected page after login: {driver.current_url}"
+
+    # Create an event
     driver.get(f"{BASE_URL}/edit_entry.php")
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "entry_brief")))
     driver.find_element(By.ID, "entry_brief").send_keys("Smoke Test Event")
     driver.find_element(By.CSS_SELECTOR, "button[onclick*='validate_and_submit']").click()
     time.sleep(2)
 
-    # 4. Verify redirect back to calendar view (not an error page)
+    # Verify redirect back to calendar view
     print(f"Smoke test: after event create URL={driver.current_url}")
     WebDriverWait(driver, 10).until(
         lambda d: "edit_entry" not in d.current_url
@@ -247,7 +248,7 @@ def test_new_installation(driver):
         assert "Complete" in driver.page_source
 
         # Post-install smoke test: login, view calendar, create event
-        _post_install_smoke_test(driver, admin_password="admin")
+        _post_install_smoke_test(driver)
     except Exception:
         print(f"FAILED on page: {driver.current_url}")
         raise
