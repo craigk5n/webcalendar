@@ -121,8 +121,8 @@ if ($single_user == 'Y' || $use_http_auth) {
     } else if (user_valid_login($login, $password)) {
       user_load_variables($login, '');
 
-      $salt = chr(rand(ord('A'), ord('z')))
-        . chr(rand(ord('A'), ord('z')));
+      $salt = chr(rand(ord('A'), ord('Z')))
+        . chr(rand(ord('A'), ord('Z')));
       $encoded_login = encode_string($login . '|' . crypt($password, $salt));
       // If $remember, set login to expire in 365 days.
       $timeStr = (!empty($remember) && $remember == 'yes'
