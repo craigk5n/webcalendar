@@ -141,7 +141,7 @@ CREATE TABLE webcal_config (
   cal_value VARCHAR(100) NOT NULL,
   PRIMARY KEY ( cal_setting )
 );
-INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( 'WEBCAL_PROGRAM_VERSION', 'v1.9.14' );
+INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( 'WEBCAL_PROGRAM_VERSION', 'v1.9.15' );
 CREATE TABLE webcal_entry_log (
   cal_log_id INT NOT NULL,
   cal_entry_id INT NOT NULL,

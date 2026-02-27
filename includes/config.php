@@ -188,9 +188,9 @@ function do_config($callingFromInstall=false)
   $possible_settings = $config_possible_settings;
 
   // When changing PROGRAM VERSION, also change it in wizard/shared/default_config.php
-  $PROGRAM_VERSION = 'v1.9.14';
+  $PROGRAM_VERSION = 'v1.9.15';
   // Update PROGRAM_DATE with official release data
-  $PROGRAM_DATE = '10 Feb 2026';
+  $PROGRAM_DATE = '27 Feb 2026';
 
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://k5n.us/wp/webcalendar/';

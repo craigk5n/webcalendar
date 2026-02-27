@@ -17,7 +17,7 @@ require_once __DIR__ . '/shared/upgrade-sql.php';
 require_once __DIR__ . '/shared/upgrade_matrix.php'; // Load $PROGRAM_VERSION
 
 // Constants
-const PROGRAM_VERSION = 'v1.9.14'; // Fallback will be updated by bump_version.sh
+const PROGRAM_VERSION = 'v1.9.15'; // Fallback will be updated by bump_version.sh
 const WIZARD_NAME = 'WebCalendar Install Wizard';
 
 // Initialize session

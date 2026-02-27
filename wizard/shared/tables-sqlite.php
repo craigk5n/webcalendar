@@ -20,7 +20,7 @@
    sqlite_query($db, "CREATE TABLE webcal_view ( cal_view_id INT NOT NULL, cal_owner VARCHAR(25) NOT NULL, cal_name VARCHAR(50) NOT NULL, cal_view_type CHAR(1), cal_is_global CHAR(1) DEFAULT 'N' NOT NULL, PRIMARY KEY ( cal_view_id ))");
    sqlite_query($db, "CREATE TABLE webcal_view_user ( cal_view_id INT NOT NULL, cal_login VARCHAR(25) NOT NULL, PRIMARY KEY ( cal_view_id, cal_login ))");
    sqlite_query($db, "CREATE TABLE webcal_config ( cal_setting VARCHAR(50) NOT NULL, cal_value VARCHAR(100) NULL, PRIMARY KEY ( cal_setting ))");
-   sqlite_query($db, "INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( 'WEBCAL_PROGRAM_VERSION', 'v1.9.14' );");
+   sqlite_query($db, "INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( 'WEBCAL_PROGRAM_VERSION', 'v1.9.15' );");
    sqlite_query($db, "CREATE TABLE webcal_entry_log ( cal_log_id INT NOT NULL, cal_entry_id INT NOT NULL, cal_login VARCHAR(25) NOT NULL, cal_user_cal VARCHAR(25) NULL, cal_type CHAR(1) NOT NULL, cal_date INT NOT NULL, cal_time INT NULL, cal_text TEXT, PRIMARY KEY ( cal_log_id ))");
    sqlite_query($db, "CREATE TABLE webcal_categories ( cat_id INT NOT NULL, cat_owner VARCHAR(25) NULL, cat_name VARCHAR(80) NOT NULL,cat_color VARCHAR(8) NULL, PRIMARY KEY ( cat_id ))");
    sqlite_query($db, "CREATE TABLE webcal_asst ( cal_boss VARCHAR(25) NOT NULL, cal_assistant VARCHAR(25) NOT NULL, PRIMARY KEY ( cal_boss, cal_assistant ))");

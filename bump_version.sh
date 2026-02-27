@@ -14,6 +14,13 @@
 #   - UPGRADING.html                    (version table)
 #   - composer.json                     (version field)
 #   - .npmrc                            (init-version)
+#   - wizard/shared/tables-*.sql        (WEBCAL_PROGRAM_VERSION INSERT)
+#   - wizard/shared/tables-sqlite*.php  (WEBCAL_PROGRAM_VERSION INSERT)
+#   - wizard/shared/upgrade-sql.php     (new version entry)
+#   - wizard/index.php                  (PROGRAM_VERSION const)
+#   - wizard/headless.php               (PROGRAM_VERSION const)
+#   - wizard/wizard.js                  (programVersion fallback)
+#   - wizard/WizardState.php            (programVersion fallback)
 
 # Function to bump version number
 bump_version() {
@@ -133,7 +140,10 @@ update_wizard_files() {
     
     # Update wizard/wizard.js
     sed -i "s/this.programVersion = options.programVersion || '.*';/this.programVersion = options.programVersion || '$new_version';/" wizard/wizard.js
-    
+
+    # Update wizard/WizardState.php
+    sed -i "s/\$this->programVersion = '.*'; \/\/ Fallback/\$this->programVersion = '$new_version'; \/\/ Fallback/" wizard/WizardState.php
+
     echo "Updated wizard files to version $new_version"
 }
 
