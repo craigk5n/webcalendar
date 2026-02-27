@@ -1,11 +1,13 @@
 <?php
 require_once 'includes/init.php';
+ob_start();
 require_once 'includes/classes/WebCalMailer.php';
 $mail = new WebCalMailer;
 
 load_user_categories();
 
 $do_override = false;
+$dberror = '';
 $error = '';
 $old_id = -1;
 
@@ -56,6 +58,7 @@ if( ! empty( $override ) && ! empty( $override_date ) ) {
   $old_id = $id;
 }
 
+$old_percent = [];
 $old_status = [];
 
 // Pass all string values through getPostValue.
