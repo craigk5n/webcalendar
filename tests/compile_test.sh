@@ -27,10 +27,20 @@ done
 
 rm -f $tmp
 
+# Check composer.lock is in sync with composer.json
+if command -v composer &> /dev/null; then
+  if composer update --lock --dry-run 2>&1 | grep -q "Nothing to modify in lock file"; then
+    echo "composer.lock is up to date"
+  else
+    echo "ERROR: composer.lock is out of date. Run 'composer update --lock' to fix."
+    nerr=$((nerr+1))
+  fi
+fi
+
 echo ""
 echo "Results:"
 echo "  $nok files ok"
 echo "  $nerr files with errors"
 
-exit 0
+exit $nerr
 

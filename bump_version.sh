@@ -178,5 +178,13 @@ update_sql_files "$new_version"
 update_upgrade_sql_file "$new_version"
 update_wizard_files "$new_version"
 
+# Keep composer.lock in sync with composer.json
+if command -v composer &> /dev/null; then
+    composer update --lock --quiet 2>/dev/null
+    echo "Updated composer.lock"
+else
+    echo "WARNING: composer not found, composer.lock may be out of date"
+fi
+
 echo ""
 echo "Files updated to version $new_version"
