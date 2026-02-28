@@ -76,9 +76,9 @@ $e_save = $re_save = [];
 $events = $repeated_events = [];
 foreach ( $viewusers as $i ) {
   /* Pre-Load the repeated events for quicker access */
-  $re_save = read_repeated_events ( $i, $startdate, $enddate, '' );
+  $re_save = array_merge ( $re_save, read_repeated_events ( $i, $startdate, $enddate, '' ) );
   /* Pre-load the non-repeating events for quicker access */
-  $e_save = read_events ( $i, $startdate, $enddate );
+  $e_save = array_merge ( $e_save, read_events ( $i, $startdate, $enddate ) );
 }
 
 for ( $i = 0, $cnt = count ( $e_save ); $i < $cnt; $i++ ) {
