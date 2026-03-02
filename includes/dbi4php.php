@@ -126,6 +126,7 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
         return false;
       }
 
+      $c->set_charset('utf8mb4');
       $db_connection_info['connected'] = true;
       $db_connection_info['connection'] = $GLOBALS['db_connection'] = $c;
       $db_connection_info['last_error'] = '';
@@ -167,6 +168,7 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
     if( ! $c )
       return false;
 
+    pg_set_client_encoding($c, 'UTF8');
     $db_connection_info['connected']  = true;
     $db_connection_info['connection'] = $c;
     return $c;

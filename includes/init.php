@@ -129,12 +129,10 @@ function send_http_headers () {
   //Header("Content-Security-Policy: default-src " . get_server_top_url() .
   //  "; img-src *; style-src *");
 
-  // Set charset to match what is defined in translation file's "charset" definition.
-  $charset = translate('charset');
-  if ($charset == '=') {
-    $charset = 'UTF-8'; // default
-  }
-  header('Content-Type: text/html; charset=' . $charset);
+  // Always use UTF-8 for Content-Type. Many translation files still declare
+  // iso-8859-1 but all database connections now use utf8mb4, so the browser
+  // must interpret the output as UTF-8 to display characters correctly.
+  header('Content-Type: text/html; charset=UTF-8');
 }
 
 /**
