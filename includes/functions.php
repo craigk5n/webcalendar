@@ -5607,7 +5607,7 @@ function send_doctype ( $doc_title = '' ) {
   if ( empty ( $lang ) )
     $lang = 'en';
 
-  $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
+  $charset = 'UTF-8';
 
   return "<!DOCTYPE html>
   <html lang=\"$lang\">
