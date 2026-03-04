@@ -19,15 +19,20 @@ function findUpgradeStartIndex($currentVersion)
   // Normalize the version string to make it compatible with version_compare
   $normalizedCurrentVersion = str_replace('v', '', strtolower($currentVersion));
 
+  // Find the last entry with version <= currentVersion.
+  // getSqlUpdates() starts from startIndex + 1, so we need the index of
+  // the entry matching (or just before) the current version, not after it.
+  $lastIndex = null;
   foreach ($updates as $index => $update) {
     $normalizedUpdateVersion = str_replace('v', '', strtolower($update['version']));
-    if (version_compare($normalizedUpdateVersion, $normalizedCurrentVersion, '>=')) {
-      return $index;
+    if (version_compare($normalizedUpdateVersion, $normalizedCurrentVersion, '<=')) {
+      $lastIndex = $index;
+    } else {
+      break;
     }
   }
 
-  // If no update is found, return null
-  return null;
+  return $lastIndex;
 }
 
 function getSqlUpdates($currentVersion, $dbType = 'default', $includeFunctions = false)
