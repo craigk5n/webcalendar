@@ -69,6 +69,18 @@ if (!empty($action) && $action == 'logout') {
   }
   $logout = true;
   $return_path = '';
+  // Delete this device's remember-me token from the DB.
+  if (!empty($_COOKIE['webcalendar_session'])) {
+    $parts = explode('|', decode_string($_COOKIE['webcalendar_session']));
+    if (!empty($parts[1]) && strpos($parts[1], 'tok:') === 0) {
+      $token = substr($parts[1], 4);
+      $token_hash = hash('sha256', $token);
+      $pref_name = 'REMEMBER_TOKEN_' . substr($token_hash, 0, 8);
+      dbi_execute('DELETE FROM webcal_user_pref WHERE cal_login = ?'
+        . ' AND cal_setting = ?', [$parts[0], $pref_name]);
+    }
+  }
+  sendCookie('webcalendar_session', '', 0);
   sendCookie('webcalendar_login', '', 0);
   sendCookie('webcalendar_last_view', '', 0);
   $message = translate('You have been logged out.');
@@ -121,9 +133,15 @@ if ($single_user == 'Y' || $use_http_auth) {
     } else if (user_valid_login($login, $password)) {
       user_load_variables($login, '');
 
-      $salt = chr(rand(ord('A'), ord('Z')))
-        . chr(rand(ord('A'), ord('Z')));
-      $encoded_login = encode_string($login . '|' . crypt($password, $salt));
+      // Generate a random remember-me token and store its hash in the DB.
+      // Each login (device) gets its own token so they can be
+      // independently revoked without affecting other sessions.
+      $token = bin2hex(random_bytes(32));
+      $token_hash = hash('sha256', $token);
+      $pref_name = 'REMEMBER_TOKEN_' . substr($token_hash, 0, 8);
+      dbi_execute('INSERT INTO webcal_user_pref (cal_login, cal_setting, cal_value)'
+        . ' VALUES (?, ?, ?)', [$login, $pref_name, $token_hash]);
+      $encoded_login = encode_string($login . '|tok:' . $token);
       // If $remember, set login to expire in 365 days.
       $timeStr = (!empty($remember) && $remember == 'yes'
         ? time() + 31536000 : 0);

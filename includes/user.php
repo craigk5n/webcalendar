@@ -119,18 +119,43 @@ function user_valid_crypt ( $login, $crypt_password ) {
   global $error;
   $ret = false;
 
+  // Token-based cookie (tok:random_hex_token)
+  if ( strpos ( $crypt_password, 'tok:' ) === 0 ) {
+    $token = substr ( $crypt_password, 4 );
+    $token_hash = hash ( 'sha256', $token );
+    $pref_name = 'REMEMBER_TOKEN_' . substr ( $token_hash, 0, 8 );
+    $sql = 'SELECT cal_value FROM webcal_user_pref'
+      . ' WHERE cal_login = ? AND cal_setting = ?';
+    $res = dbi_execute ( $sql, [$login, $pref_name] );
+    if ( $res ) {
+      $row = dbi_fetch_row ( $res );
+      if ( $row && hash_equals ( $row[0], $token_hash ) )
+        $ret = true;
+      else
+        $error = 'Invalid login';
+      dbi_free_result ( $res );
+    } else {
+      $error = 'Database error: ' . dbi_error();
+    }
+    return $ret;
+  }
+
+  // Legacy cookie formats (DES crypt or bcrypt hash)
   $sql = 'SELECT cal_login, cal_passwd FROM webcal_user WHERE cal_login = ?';
   $res = dbi_execute ( $sql, [$login] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row && $row[0] != '' ) {
-      // MySQL seems to do case insensitive matching, so double-check
-      // the login.
-      // also check if password matches
-      if ( ($row[0] == $login) && ( (crypt($row[1], $crypt_password) == $crypt_password) ) )
-        $ret = true; // found login/password
-      else
+      if ( $row[0] == $login ) {
+        if ( hash_equals ( $row[1], $crypt_password ) )
+          $ret = true;
+        else if ( crypt ( $row[1], $crypt_password ) == $crypt_password )
+          $ret = true;
+        else
+          $error = 'Invalid login';
+      } else {
         $error = 'Invalid login';
+      }
     } else {
       $error = 'Invalid login';
     }
