@@ -34,18 +34,23 @@ class WebCalMailer {
 
     $this->mail = new PHPMailer\PHPMailer(false);
     $mailerError = '';
-    $this->mail->Host = $SMTP_HOST;
-    $this->mail->Port = $SMTP_PORT;
-    #$this->mail->Mailer = $EMAIL_MAILER;
-    $this->mail->isSMTP ();
     $this->mail->CharSet = translate( 'charset' );
-    // Turn on SMTP authentication.
-    $this->mail->SMTPAuth = ( $SMTP_AUTH == 'Y' );
-    $this->mail->SMTPSecure = ( isset($SMTP_STARTTLS) && $SMTP_STARTTLS == 'Y' ) ? "tls" : "";
-    $this->mail->SMTPDebug = 0;
-    $this->mail->Username = $SMTP_USERNAME; // SMTP username.
-    $this->mail->Password = $SMTP_PASSWORD; // SMTP password.
-    //$this->mail->SMTPDebug = 4;
+
+    if ( $EMAIL_MAILER == 'smtp' ) {
+      $this->mail->isSMTP();
+      $this->mail->Host = $SMTP_HOST;
+      $this->mail->Port = $SMTP_PORT;
+      $this->mail->SMTPAuth = ( $SMTP_AUTH == 'Y' );
+      $this->mail->SMTPSecure = ( isset($SMTP_STARTTLS)
+        && $SMTP_STARTTLS == 'Y' ) ? 'tls' : '';
+      $this->mail->SMTPDebug = 0;
+      $this->mail->Username = $SMTP_USERNAME;
+      $this->mail->Password = $SMTP_PASSWORD;
+    } elseif ( $EMAIL_MAILER == 'sendmail' ) {
+      $this->mail->isSendmail();
+    } else {
+      $this->mail->isMail();
+    }
     // TODO: Support OAuth so we can use Gmail when 2FA is enabled.
   }
 
