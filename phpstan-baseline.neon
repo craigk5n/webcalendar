@@ -25,12 +25,6 @@ parameters:
 			path: edit_entry.php
 
 		-
-			message: '#^Undefined variable\: \$time$#'
-			identifier: variable.undefined
-			count: 1
-			path: edit_entry.php
-
-		-
 			message: '#^Call to static method check\(\) on an unknown class captcha\.$#'
 			identifier: class.notFound
 			count: 1
@@ -227,18 +221,6 @@ parameters:
 			identifier: variable.undefined
 			count: 1
 			path: rss_unapproved.php
-
-		-
-			message: '#^Undefined variable\: \$invalidFirstName$#'
-			identifier: variable.undefined
-			count: 1
-			path: users_ajax.php
-
-		-
-			message: '#^Undefined variable\: \$invalidLastName$#'
-			identifier: variable.undefined
-			count: 1
-			path: users_ajax.php
 
 		-
 			message: '#^Undefined variable\: \$DISPLAY_UNAPPROVED$#'
