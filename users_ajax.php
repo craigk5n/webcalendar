@@ -378,7 +378,7 @@ function strip_tags_content($text) {
 // for updating passwords.
 function save_user($add, $user, $lastname, $firstname, $is_admin, $enabled, $email, $password)
 {
-  global $blankUserStr, $error, $login;
+  global $blankUserStr, $error, $invalidFirstName, $invalidLastName, $login;
 
   if (addslashes($user) != $user || strip_tags_content($user) != $user) {
     $error = 'Invalid characters in login.';
