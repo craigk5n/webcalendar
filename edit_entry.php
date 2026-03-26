@@ -762,9 +762,9 @@ $tabI = 0;
               &nbsp;(<label for="duration_h"><?php echo $hoursStr; ?></label>: <label for="duration_m"><?php echo $minuteStr; ?></label>)
             </div>
           <?php } else { ?>
-            <div id="timeentryend"><label data-toggle="tooltip" data-placement="top" title="<?php etooltip('end-time-help'); ?>">
-                &nbsp;-&nbsp;
-                <?php echo time_selection('end_', ($id ? add_duration($cal_time, $duration) : $cal_time)); ?>
+            <div class="form-inline" id="timeentryend" style="visibility:hidden;">
+              <label data-toggle="tooltip" data-placement="top" title="<?php etooltip('end-time-help'); ?>">&nbsp;-&nbsp;</label>
+              <?php echo time_selection('end_', ($id ? add_duration($cal_time, $duration) : $cal_time)); ?>
             </div>
           <?php } ?>
 
