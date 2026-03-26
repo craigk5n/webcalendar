@@ -49,7 +49,8 @@ function time_selection($prefix, $time = '', $trigger = false)
     $hour = sprintf("%02d", $hour);
   }
   $minute = sprintf("%02d", $minute);
-  $ret .= '<select class="form-control col-auto" ' . 'name="' . $prefix . 'hour" id="' . $prefix . 'hour" '
+  $ret .= '<span class="form-inline">'
+    . '<select class="form-control col-auto" ' . 'name="' . $prefix . 'hour" id="' . $prefix . 'hour" '
     . $trigger_str . '>';
   for ($i = 0; $i < $maxhour; $i++) {
     $ihour = ($TIME_FORMAT == '24' ? sprintf("%02d", $i) : $i);
@@ -82,7 +83,8 @@ function time_selection($prefix, $time = '', $trigger = false)
       . $prefix . 'ampmA" value="0" ' . $amsel . '>&nbsp;' . translate('am')
       . '&nbsp;</label><label><input class="form-control" type="radio" name="' . $prefix . 'ampm" id="'
       . $prefix . 'ampmP" value="12" ' . $pmsel . '>&nbsp;' . translate('pm')
-      . '</label>&nbsp;' : '<input type="hidden" name="' . $prefix . 'ampm" value="0">');
+      . '</label>&nbsp;' : '<input type="hidden" name="' . $prefix . 'ampm" value="0">')
+    . '</span>';
 }
 
 $daysStr = translate('days');
