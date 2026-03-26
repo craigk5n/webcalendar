@@ -26,12 +26,13 @@ function time_selection($prefix, $time = '', $trigger = false)
   $amsel = $pmsel = $ret = '';
   $trigger_str = ($trigger ? 'onchange="' . $prefix . 'timechanged() ' : '');
 
-  if (!isset($time) && $time != 0) {
+  if (!isset($time) || $time == 0) {
     $hour = $WORK_DAY_START_HOUR;
     $minute = 0;
   } else {
-    $hour = floor($time / 10000);
-    $minute = (($time / 100) % 100) % 60;
+    $time = (int) $time;
+    $hour = intdiv($time, 10000);
+    $minute = intdiv($time % 10000, 100);
   }
   if ($TIME_FORMAT == '12') {
     $maxhour = 12;
