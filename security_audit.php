@@ -57,6 +57,15 @@ print_header();
     translate('You should change the password of the default admin user.')
   );
 
+  // Is the wizard directory still present?
+  print_issue(
+    translate('Wizard directory exists'),
+    (!is_dir('wizard')),
+    translate('The wizard/ directory is still present. It is password-protected, but you may restrict access for extra security.') . ' '
+    . translate('Options: restrict permissions') . ' (<code>chmod 000 wizard/</code>), '
+    . translate('move outside web root, or remove it') . ' (<code>rm -rf wizard/</code>).'
+  );
+
   // Is the main directory still writable?
   // Just see if we get an error trying to append to it.
   $wcDir = '.';

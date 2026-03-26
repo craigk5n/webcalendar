@@ -369,8 +369,13 @@ function do_config($callingFromInstall=false)
 
     //echo "<pre>"; print_r($rows); echo "</pre>"; exit;
     if (!$rows || empty($rows) || empty($rows[0])) {
-      header($locateStr);
-      exit;
+      if (file_exists('wizard/index.php')) {
+        header($locateStr);
+        exit;
+      } else {
+        die_miserable_death(
+          'Database version not found. Please re-install the wizard/ directory and run the upgrade.');
+      }
     } else {
       $versionInDb = $rows[0][0];
       if ($versionInDb != $PROGRAM_VERSION) {
@@ -379,8 +384,15 @@ function do_config($callingFromInstall=false)
         // (only an option when there are no database schema changes between
         // the version and the new version.)
         if (upgrade_requires_db_changes($db_type, $versionInDb, $PROGRAM_VERSION)) {
-          header($locateStr);
-          exit;
+          if (file_exists('wizard/index.php')) {
+            header($locateStr);
+            exit;
+          } else {
+            die_miserable_death(
+              'Database upgrade required (version ' . htmlspecialchars($versionInDb)
+              . ' → ' . htmlspecialchars($PROGRAM_VERSION)
+              . '). Please re-install the wizard/ directory and run the upgrade.');
+          }
         } else {
           // We can just update the version in the database and move on.
           if (!update_webcalendar_version_in_db($versionInDb, $PROGRAM_VERSION)) {
@@ -393,8 +405,13 @@ function do_config($callingFromInstall=false)
   } else {
     if (!$callingFromInstall) {
       // Must mean we don't have a settings.php file or env variables.
-      header($locateStr);
-      exit;
+      if (file_exists('wizard/index.php')) {
+        header($locateStr);
+        exit;
+      } else {
+        die_miserable_death(
+          'Could not connect to database. Please check includes/settings.php.');
+      }
     }
   }
 

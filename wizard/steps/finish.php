@@ -70,27 +70,9 @@ $settingsWritable = is_writable(dirname($settingsPath));
   <div class="card-body">
     <ol class="mb-0">
       <li class="mb-2">
-        <strong>Secure the wizard:</strong> Remove the <code>wizard/</code> directory to prevent unauthorized access.
-        <pre class="mt-1 mb-2 bg-light p-2 rounded"><code>rm -rf wizard/</code></pre>
-        <a class="small" data-bs-toggle="collapse" href="#securityAlternatives" role="button" aria-expanded="false" aria-controls="securityAlternatives">
-          <i class="bi bi-chevron-down me-1"></i>Other options
-        </a>
-        <div class="collapse mt-2" id="securityAlternatives">
-          <div class="card card-body bg-light small">
-            <p class="mb-2">If you prefer to keep the wizard for future upgrades, these alternatives can restrict access:</p>
-            <ol class="mb-0">
-              <li class="mb-2">
-                <strong>Restrict permissions</strong> &mdash; Prevents the web server from reading the directory.
-                <pre class="mt-1 mb-0 p-2 rounded bg-dark text-light"><code>chmod 000 wizard/</code></pre>
-                <span class="text-muted">Restore with <code>chmod 755 wizard/</code> when needed.</span>
-              </li>
-              <li>
-                <strong>Move outside web root</strong> &mdash; Most secure alternative to deletion.
-                <pre class="mt-1 mb-0 p-2 rounded bg-dark text-light"><code>mv wizard/ /path/outside/webroot/wizard-backup/</code></pre>
-              </li>
-            </ol>
-          </div>
-        </div>
+        <strong>Run the Security Audit:</strong> After logging in, go to
+        <strong>Admin &gt; Security Audit</strong> to check for potential security issues,
+        including the presence of the wizard directory.
       </li>
       <li class="mb-2">
         <strong>Access WebCalendar:</strong> Click the button below to launch WebCalendar.
