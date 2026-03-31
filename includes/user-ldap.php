@@ -368,7 +368,7 @@ function user_get_users ( $publicOnly=false ) {
     if (!$sr) {
       $error = 'Error searching LDAP server: ' . ldap_error( $ds );
     } else {
-      if ( (float)substr (PHP_VERSION,0,3) >= 4.2 ) ldap_sort ( $ds, $sr, $ldap_user_attr[3]);
+      // ldap_sort() was removed in PHP 8.0; results are sorted by usort() below.
       $info = @ldap_get_entries( $ds, $sr );
       for ( $i = 0; $i < $info['count']; $i++ ) {
         $ret[$count++] = [

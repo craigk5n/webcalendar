@@ -181,12 +181,6 @@ parameters:
 			path: includes/translate.php
 
 		-
-			message: '#^Function ldap_sort not found\.$#'
-			identifier: function.notFound
-			count: 1
-			path: includes/user-ldap.php
-
-		-
 			message: '#^Undefined variable\: \$PUBLIC_ACCESS_FULLNAME$#'
 			identifier: variable.undefined
 			count: 1
