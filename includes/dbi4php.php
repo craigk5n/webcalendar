@@ -813,13 +813,13 @@ function dbi_get_cached_rows ( $sql, $params = [],
       $fd = @fopen( $file, 'w+b', false );
 
       if( empty( $fd ) ) {
-        die_miserable_death ( "Cache Error.<br><br>The permissions for the db_cachedir will not allow creation of the following file:<br><blockquote>" .
-          $file . "</blockquote>", 'dbCacheError' );
+        // Cannot write cache file; disable caching and continue.
+        $db_connection_info['cachedir'] = '';
+      } else {
+        fwrite( $fd, serialize( $rows ) );
+        fclose( $fd );
+        chmod( $file, 0666 );
       }
-
-      fwrite( $fd, serialize( $rows ) );
-      fclose( $fd );
-      chmod( $file, 0666 );
     }
     return $rows;
   } else
@@ -836,7 +836,8 @@ function dbi_init_cache( $dir ) {
   if( ! isset( $db_connection_info ) )
     $db_connection_info = [];
 
-  $db_connection_info['cachedir'] = $dir;
+  if( ! empty( $dir ) && is_dir( $dir ) && is_writable( $dir ) )
+    $db_connection_info['cachedir'] = $dir;
 }
 
 /**
