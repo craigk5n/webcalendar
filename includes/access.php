@@ -114,7 +114,7 @@ $GLOBALS['page_lookup'] = [
   ACCESS_SEARCH => 'search',
   ACCESS_ADVANCED_SEARCH => 'search',
   ACCESS_ACTIVITY_LOG => 'activity_log.php',
-  ACCESS_USER_MANAGEMENT => '(edit.*user.*.php|nonusers.*php|group.*php|users.php)',
+  ACCESS_USER_MANAGEMENT => '(edit.*user.*.php|nonusers.*php|group.*php|users.php|user_mgmt.php|resourcecal_mgmt.php|remotecal_mgmt.php)',
   ACCESS_ACCOUNT_INFO => '(users.php|XYZXYZ_special_case)',
   ACCESS_ACCESS_MANAGEMENT => '(access.*php)',
   ACCESS_PREFERENCES => 'pref.*php',
@@ -433,6 +433,7 @@ function access_can_view_page( $page = '', $user = '' ) {
   if( ! empty( $page_lookup_ex[$page] ) )
     return true;
 
+  $page_id = 0;
   for( $i = 0; $i <= ACCESS_NUMBER_FUNCTIONS; $i++ ) {
     if( ! empty( $page_lookup[$i] ) && preg_match( "/$page_lookup[$i]/", $page ) )
       $page_id = $i;
