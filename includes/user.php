@@ -59,10 +59,22 @@ function user_valid_login ( $login, $password, $silent=false ) {
         $rehash = password_needs_rehash ( $expected_hash, PASSWORD_DEFAULT );
       }
       // Upgrade insecurely stored passwords
-      if ( $okay && $rehash ){
+      if ( $okay && $rehash ) {
         $new_hash = password_hash ( $password, PASSWORD_DEFAULT );
         $sql = 'UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?';
         dbi_execute ( $sql, [$new_hash, $login] );
+        // Verify the hash was stored correctly (column may be too narrow).
+        $res2 = dbi_execute (
+          'SELECT cal_passwd FROM webcal_user WHERE cal_login = ?', [$login] );
+        if ( $res2 ) {
+          $row2 = dbi_fetch_row ( $res2 );
+          dbi_free_result ( $res2 );
+          if ( ! $row2 || $row2[0] !== $new_hash ) {
+            // Hash was truncated; revert to the old hash to avoid lockout.
+            dbi_execute ( 'UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?',
+              [$expected_hash, $login] );
+          }
+        }
       }
       $enabled = ( $row[1] === 'Y' );
       // MySQL seems to do case insensitive matching, so double-check the login.
