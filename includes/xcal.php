@@ -710,7 +710,7 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
     // calendars, particularly non-user calendars.
     // "webcal_entry_user.cal_id = '$id'";
     // there may be a better to do this
-    if ( $attachment == true && empty ( $login ) ) {
+    if ( $attachment == true ) {
       $sql .= ' OR weu.cal_login = we.cal_create_by';
     } else if ( ! empty ( $user ) && $user != $login ) {
       $sql .= ' OR weu.cal_login = ?';
