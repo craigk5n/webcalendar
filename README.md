@@ -183,7 +183,7 @@ Create `includes/config-app-yourapp.php` to override settings dynamically.
 - [💻 Developer Guide](docs/developer-guide.md) - Architecture, coding standards, testing
 - [🤖 MCP Server](docs/mcp-server.md) - AI assistant integration
 
-See the [full documentation index](docs/index.md) for all guides.
+Browse the [full documentation](https://craigk5n.github.io/webcalendar/) or see the [docs index](docs/index.md) on GitHub.
 
 ## 🤝 Contributing
 

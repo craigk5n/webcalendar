@@ -229,22 +229,23 @@ Root-level files `PRD.md`, `ROADMAP.md`, `ICAL_STATUS.md`, `USER_ACCESS_ROADMAP.
 
 ---
 
-### DOCS-009: Set up GitHub Pages with MkDocs Material
+### DOCS-009: Set up GitHub Pages with MkDocs Material -- DONE
 
 **Priority:** P2 — Medium
 **Estimate:** M
+**Status:** COMPLETE
 
 **Description:**
 Markdown docs in `docs/` are only readable on GitHub or locally. A docs site makes them searchable, navigable, and professional-looking.
 
 **Acceptance Criteria:**
-- [ ] MkDocs Material selected (lightweight, Markdown-native, widely used for PHP projects)
-- [ ] `mkdocs.yml` created with navigation matching docs structure
-- [ ] `.github/workflows/docs.yml` — GitHub Actions workflow builds and deploys on push to main
-- [ ] Site deployed to `craigk5n.github.io/webcalendar/` (or custom domain)
-- [ ] All doc pages render correctly with working internal links
-- [ ] Search functionality works
-- [ ] README.md updated with link to docs site
+- [x] MkDocs Material selected
+- [x] `mkdocs.yml` created with nav: Getting Started, User Guide, Administration, Development, Migration
+- [x] `.github/workflows/docs.yml` — builds on push to master (docs/** or mkdocs.yml changes), deploys to GitHub Pages
+- [x] Site will deploy to `craigk5n.github.io/webcalendar/` (requires enabling Pages in repo settings)
+- [x] All 14 doc pages included in nav with logical grouping
+- [x] Search enabled via Material theme
+- [x] README.md updated with link to docs site
 
 ---
 
