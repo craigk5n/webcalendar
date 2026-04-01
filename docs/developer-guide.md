@@ -13,6 +13,7 @@ Version: v1.9.16
 - [Testing](#testing)
 - [Database Abstraction](#database-abstraction)
 - [Extension Points](#extension-points)
+- [Translations](#translations)
 
 ## Architecture Overview
 
@@ -222,3 +223,82 @@ Additional event fields can be configured through the admin UI without code chan
 ### MCP server
 
 `mcp.php` in the project root exposes calendar operations as MCP tools for AI assistant integration. It uses STDIO transport and requires an API token set via the `MCP_TOKEN` environment variable. Available tools: `list_events`, `get_user_info`, `search_events`, `add_event`.
+
+## Translations
+
+WebCalendar supports 100+ languages via translation files in the
+`translations/` directory.
+
+### File Format
+
+Translation files are plain text with the format:
+
+```
+English phrase: translated phrase
+```
+
+Lines starting with `#` are comments. A blank line ends the header
+comment block. If the translation is identical to English, use `=`:
+
+```
+January: =
+```
+
+The reference file is `translations/English-US.txt`.
+
+### Adding a New Language
+
+1. Copy `English-US.txt` to your new language file:
+   ```bash
+   cp translations/English-US.txt translations/YourLanguage.txt
+   ```
+2. Translate all text to the **right** of the `: `. Do not modify text
+   to the left.
+3. For the month "May", note the special entry `May_` which should be
+   the full month name, while `May` is the abbreviation.
+4. Run the check tool to find missing translations:
+   ```bash
+   perl tools/check_translation.pl YourLanguage
+   ```
+5. Register the new language in `includes/translate.php`:
+   - Add an entry to the `$languages` array
+   - Add an entry to the `$browser_languages` array
+6. Test by selecting the language in user Preferences.
+7. Submit a pull request.
+
+### Updating an Existing Translation
+
+1. Run the update tool to find missing entries:
+   ```bash
+   perl tools/update_translation.pl YourLanguage
+   ```
+   This scans all PHP files for `translate()` calls and marks missing
+   entries with `<< MISSING >>` in the translation file.
+2. Open the translation file and search for `MISSING`. Translate each
+   marked entry.
+3. Run the check tool to verify completeness:
+   ```bash
+   perl tools/check_translation.pl YourLanguage
+   ```
+
+### AI-Assisted Translation
+
+For bulk translation of missing entries, a Python script using OpenAI
+is available:
+
+```bash
+cd tools
+OPENAI_API_KEY=your-key python3 complete-translation.py YourLanguage > ../translations/YourLanguage.txt
+perl update_translation.pl YourLanguage
+```
+
+Review the output — AI translations may have minor issues like extra
+quotes. This tool works best with UTF-8 translation files.
+
+### Translation Tools Summary
+
+| Tool | Purpose |
+|------|---------|
+| `tools/check_translation.pl` | Report missing translations |
+| `tools/update_translation.pl` | Scan code and update translation file with missing entries |
+| `tools/complete-translation.py` | Use OpenAI to auto-translate missing entries |
