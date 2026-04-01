@@ -2153,6 +2153,14 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
       $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
       $mdate = $cdate;
       while ( $cdate <= $realend && $n < $Count ) {
+          // Check if this month is in the BYMONTH list (if specified).
+          if ( ! empty ( $bymonth ) &&
+            ! in_array ( date ( 'n', $cdate ), $bymonth ) ) {
+            $thismonth += $interval;
+            $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
+            $mdate = mktime ( $hour, $minute, 0, $thismonth, 1, $thisyear );
+            continue;
+          }
           $bydayvalues = $bymonthdayvalues = $yret = [];
           if ( isset ( $byday ) )
             $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
