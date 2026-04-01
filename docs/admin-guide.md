@@ -11,6 +11,7 @@
 - [User Preferences](#user-preferences)
 - [Email Reminders](#email-reminders)
 - [Key Admin Settings](#key-admin-settings)
+- [Custom Event Fields (Site Extras)](#custom-event-fields-site-extras)
 - [Backup and Restore](#backup-and-restore)
 
 ---
@@ -90,9 +91,95 @@ The following categories of settings are available through the admin interface:
 - **Public access calendar** -- Allow anonymous (unauthenticated) users to view a public calendar.
 - **Event approval workflow** -- Require admin approval before events appear on shared calendars.
 - **Categories** -- Define event categories for organization and filtering.
-- **Custom event fields (site extras)** -- Add custom fields to the event entry form.
+- **Custom event fields (site extras)** -- Add custom fields to the event entry form. See [Custom Event Fields](#custom-event-fields-site-extras) below.
 - **Nonuser calendars** -- Create calendars for rooms, resources, or other non-person entities.
 - **MCP server** -- Enable or disable the Model Context Protocol server for AI assistant integration. Controlled by the `MCP_SERVER_ENABLED` and `MCP_RATE_LIMIT` settings.
+
+## Custom Event Fields (Site Extras)
+
+WebCalendar supports adding custom fields to the event entry form.
+These are configured by editing `includes/site_extras.php` and are
+stored in the `webcal_site_extras` database table.
+
+### Configuration
+
+Edit `includes/site_extras.php` and define entries in the `$site_extras`
+array. Each entry is an array with these elements:
+
+| Index | Purpose | Example |
+|-------|---------|---------|
+| 0 | Unique field name (used in DB) | `"RoomLocation"` |
+| 1 | Display label shown to users | `"Location"` |
+| 2 | Field type constant | `EXTRA_SELECTLIST` |
+| 3 | Arg 1 (type-dependent, see below) | `["Room A", "Room B"]` |
+| 4 | Arg 2 (type-dependent, see below) | `0` |
+| 5 | Display visibility flags | `EXTRA_DISPLAY_ALL` |
+
+The special value `'FIELDSET'` as the first array entry wraps all
+custom fields in an HTML fieldset on the edit form.
+
+### Field Types
+
+| Type | Description | Arg 1 | Arg 2 |
+|------|-------------|-------|-------|
+| `EXTRA_TEXT` | Single line text input | Input size | (unused) |
+| `EXTRA_MULTILINETEXT` | Multi-line textarea | Columns | Rows |
+| `EXTRA_URL` | Text input displayed as a link | Link target (`_blank`, etc.) | (unused) |
+| `EXTRA_DATE` | Date picker | (unused) | (unused) |
+| `EXTRA_EMAIL` | Text input displayed as mailto link | (unused) | (unused) |
+| `EXTRA_USER` | Dropdown of calendar users | (unused) | (unused) |
+| `EXTRA_RADIO` | Radio button group | Associative array of options | Default key |
+| `EXTRA_SELECTLIST` | Selection dropdown | Array of options | 0=single, >0=multi+max size |
+| `EXTRA_CHECKBOX` | Checkbox | Checked value | Default state |
+
+### Display Visibility
+
+Control where each field appears using bitmask flags:
+
+| Flag | Where it displays |
+|------|-------------------|
+| `EXTRA_DISPLAY_POPUP` | Mouse-over popups |
+| `EXTRA_DISPLAY_VIEW` | Event detail page |
+| `EXTRA_DISPLAY_EMAIL` | Email notifications |
+| `EXTRA_DISPLAY_REMINDER` | Reminders |
+| `EXTRA_DISPLAY_REPORT` | Reports |
+| `EXTRA_DISPLAY_WS` | Web services |
+| `EXTRA_DISPLAY_ALL` | All of the above |
+
+Combine flags with `|` (bitwise OR):
+```php
+EXTRA_DISPLAY_POPUP | EXTRA_DISPLAY_VIEW  // popups and detail page only
+```
+
+### Example
+
+```php
+$site_extras = [
+  'FIELDSET',
+  [
+    "RoomLocation",
+    "Location",
+    EXTRA_SELECTLIST,
+    ["None", "Room 101", "Room 102", "Conf Room 8"],
+    0,
+    EXTRA_DISPLAY_ALL
+  ],
+  [
+    "NeedLunch",
+    "Lunch",
+    EXTRA_CHECKBOX,
+    'Y',
+    'Y',
+    EXTRA_DISPLAY_POPUP | EXTRA_DISPLAY_VIEW
+  ],
+];
+```
+
+### Translation
+
+If your installation supports multiple languages, add the display
+labels to the appropriate translation files. Use
+`tools/check_translation.pl` to verify completeness.
 
 ## Backup and Restore
 
