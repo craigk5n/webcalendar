@@ -2442,6 +2442,12 @@ function get_bymonthday ( $bymonthday, $cdate, $date, $realend ) {
   $hour = substr ( $dateYmHi, 6, 2 );
   $minute = substr ( $dateYmHi, 8, 2 );
   foreach ( $bymonthday as $monthday ) {
+    // Skip positive days that exceed the number of days in this month
+    // (e.g., day 31 in a 30-day month) per RFC 5545.
+    if ( $monthday > 0 && $monthday > $dim )
+      continue;
+    if ( $monthday < 0 && abs ( $monthday ) > $dim )
+      continue;
     $byxxxDay = mktime ( $hour, $minute, 0, $mth,
       ( $monthday > 0 ? $monthday : $dim + $monthday + 1 ), $yr );
     if ( $byxxxDay > $date )
