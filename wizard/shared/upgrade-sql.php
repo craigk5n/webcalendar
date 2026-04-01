@@ -411,7 +411,7 @@ CREATE TABLE webcal_blob (
   cal_type CHAR(1) NOT NULL,
   cal_mod_date INT NOT NULL,
   cal_mod_time INT NOT NULL,
-  cal_blob BYTEA,
+  cal_blob LONGBLOB,
   PRIMARY KEY ( cal_blob_id )
 );
 SQL,
@@ -427,7 +427,7 @@ CREATE TABLE webcal_blob (
   cal_type CHAR(1) NOT NULL,
   cal_mod_date INT NOT NULL,
   cal_mod_time INT NOT NULL,
-  cal_blob LONGBLOB,
+  cal_blob BYTEA,
   PRIMARY KEY ( cal_blob_id )
 );
 SQL

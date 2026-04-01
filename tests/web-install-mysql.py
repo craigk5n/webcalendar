@@ -70,7 +70,8 @@ def reset_db():
         except Exception as e:
             print(f"Warning: Could not remove {settings_path}: {e}")
 
-    conn = pymysql.connect(host=DB_HOST, user='root', password='root')
+    conn = pymysql.connect(host=DB_HOST, user='root', password='root',
+                           ssl_disabled=True)
     with conn.cursor() as cursor:
         # Check if database exists
         cursor.execute(f"SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{DB_NAME}'")
@@ -102,23 +103,17 @@ def load_fixture(fixture_path):
         # Use mysql CLI with redirection - very reliable
         with open(fixture_path, 'r') as f:
             result = subprocess.run([
-                "mysql", "-h", DB_HOST, "-u", "root", DB_NAME
+                "mysql", "-h", DB_HOST, "-u", "root",
+                "--ssl-mode=DISABLED", DB_NAME
             ], env=env, stdin=f, capture_output=True, text=True)
-        
+
         if result.returncode != 0:
             print(f"Error loading fixture: {result.stderr}")
-            # Try without SSL just in case
-            with open(fixture_path, 'r') as f:
-                result = subprocess.run([
-                    "mysql", "-h", DB_HOST, "-u", "root", "--skip-ssl", DB_NAME
-                ], env=env, stdin=f, capture_output=True, text=True)
-            
-            if result.returncode != 0:
-                print(f"Error loading fixture (retry without SSL): {result.stderr}")
-                raise Exception(f"mysql CLI failed with return code {result.returncode}")
+            raise Exception(f"mysql CLI failed with return code {result.returncode}")
         
         # Verify data was loaded using pymysql
-        conn = pymysql.connect(host=DB_HOST, user=DB_USER, password=DB_PASS, database=DB_NAME)
+        conn = pymysql.connect(host=DB_HOST, user=DB_USER, password=DB_PASS, database=DB_NAME,
+                               ssl_disabled=True)
         with conn.cursor() as cursor:
             cursor.execute("SELECT COUNT(*) FROM webcal_config")
             count = cursor.fetchone()[0]
@@ -373,7 +368,8 @@ def test_version_check(driver):
         assert expected_version, "Could not determine expected version"
 
         # 1. Verify version in database directly
-        conn = pymysql.connect(host=DB_HOST, user=DB_USER, password=DB_PASS, database=DB_NAME)
+        conn = pymysql.connect(host=DB_HOST, user=DB_USER, password=DB_PASS, database=DB_NAME,
+                               ssl_disabled=True)
         with conn.cursor() as cursor:
             cursor.execute("SELECT cal_value FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'")
             result = cursor.fetchone()
