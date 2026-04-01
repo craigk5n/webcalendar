@@ -55,7 +55,7 @@ $actionLabel = $needsUpgrade ? 'Upgrade' : 'Create';
 <div class="card mb-4">
   <div class="card-header bg-light d-flex justify-content-between align-items-center">
     <span><i class="bi bi-code-square me-2"></i>SQL Preview</span>
-    <button class="btn btn-sm btn-outline-primary" onclick="copySqlToClipboard()">
+    <button class="btn btn-sm btn-outline-primary" onclick="copySqlToClipboard(this)">
       <i class="bi bi-clipboard me-1"></i>Copy
     </button>
   </div>
@@ -124,18 +124,38 @@ $actionLabel = $needsUpgrade ? 'Upgrade' : 'Create';
 </div>
 
 <script>
-  function copySqlToClipboard() {
+  function copySqlToClipboard(btn) {
     const sqlText = document.getElementById('sqlPreview').textContent;
-    navigator.clipboard.writeText(sqlText).then(function() {
-      // Show success feedback
-      const btn = event.target.closest('button');
-      const originalText = btn.innerHTML;
-      btn.innerHTML = '<i class="bi bi-check me-1"></i>Copied!';
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-      }, 2000);
-    }).catch(function(err) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(sqlText).then(function() {
+        showCopySuccess(btn);
+      }).catch(function() {
+        fallbackCopy(sqlText, btn);
+      });
+    } else {
+      fallbackCopy(sqlText, btn);
+    }
+  }
+  function fallbackCopy(text, btn) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showCopySuccess(btn);
+    } catch (err) {
       console.error('Failed to copy: ', err);
-    });
+    }
+    document.body.removeChild(ta);
+  }
+  function showCopySuccess(btn) {
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="bi bi-check me-1"></i>Copied!';
+    setTimeout(function() {
+      btn.innerHTML = originalText;
+    }, 2000);
   }
 </script>
