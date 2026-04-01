@@ -719,19 +719,19 @@ function print_year_menu_item($name, $date)
 {
   global $login, $user;
   echo '<a class="dropdown-item" href="year.php?date=' . $date .
-    ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a>\n";
+    ((!empty($user) && $user != $login) ? "&user=$user" : "") . '">' . $name . "</a>\n";
 }
 
 function print_month_menu_item($name, $date)
 {
   global $login, $user;
-  echo '<li><a class="dropdown-item" href="month.php?date=' . $date . ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
+  echo '<li><a class="dropdown-item" href="month.php?date=' . $date . ((!empty($user) && $user != $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
 }
 
 function print_week_menu_item($name, $date)
 {
   global $login, $user;
-  echo '<li><a class="dropdown-item" href="week.php?date=' . $date . ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
+  echo '<li><a class="dropdown-item" href="week.php?date=' . $date . ((!empty($user) && $user != $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
 }
 
 function print_menu_item($name, $url, $testCondition = true, $target = '')

@@ -273,7 +273,12 @@ dbi_free_result ( $res );
 
 $printerStr = generate_printer_friendly ( 'view_entry.php' );
 
+// Temporarily clear $user so navigation menu links point back to the
+// logged-in user's own calendar, not the event owner's calendar (#159).
+$save_user = $user;
+$user = '';
 print_header();
+$user = $save_user;
 
 if ( ! empty ( $error ) ) {
 echo print_error ( $error ) . print_trailer();
