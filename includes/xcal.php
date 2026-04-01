@@ -245,7 +245,9 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
   global $TIMEZONE, $use_vtimezone, $vtimezone_data;
 
   $ret = $vtimezone_exists = '';
-  $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ), $time>0 );
+  // Use mktime (not gmmktime) so the server timezone and DST are applied
+  // when converting to UTC. Stored times are in server-local time.
+  $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ), false );
   $eventend = $eventstart + ( $duration * 60 );
   if ( $time == 0 && $duration == 1440 && strcmp( $texport, 'ical' ) == 0 ) {
     // all day.
