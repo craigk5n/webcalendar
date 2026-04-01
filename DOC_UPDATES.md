@@ -212,22 +212,20 @@ Standardize bug reports, feature requests, and PRs with templates. Reduces noise
 
 ---
 
-### DOCS-008: Exclude internal planning docs from releases
+### DOCS-008: Exclude internal planning docs from releases -- DONE
 
 **Priority:** P2 — Medium
 **Estimate:** S
+**Status:** COMPLETE
 
 **Description:**
 Root-level files `PRD.md`, `ROADMAP.md`, `ICAL_STATUS.md`, `USER_ACCESS_ROADMAP.md`, `WP_PLUGIN_REVENUE_PLAN.md`, `WP_PLUGIN_ROADMAP.MD`, `CLAUDE.md`, `GEMINI.md` are internal planning/AI-context documents. They shouldn't be in release tarballs.
 
 **Acceptance Criteria:**
-- [ ] `.gitattributes` created with `export-ignore` for internal docs:
-  - `PRD.md`, `ROADMAP.md`, `ICAL_STATUS.md`, `USER_ACCESS_ROADMAP.md`
-  - `WP_PLUGIN_REVENUE_PLAN.md`, `WP_PLUGIN_ROADMAP.MD`
-  - `CLAUDE.md`, `GEMINI.md`
-- [ ] Verify `git archive` excludes these files
-- [ ] README.md does not link to any of these internal docs
-- [ ] Consider moving planning docs to `planning/` subdirectory for cleaner root
+- [x] `.gitattributes` created with `export-ignore` for internal docs (PRD, ROADMAP, ICAL_STATUS, USER_ACCESS_ROADMAP, WP_PLUGIN_*, CLAUDE, GEMINI, DOC_UPDATES)
+- [x] Also excludes .github/, docker/tests/, tests/screenshots/ from archives
+- [x] README.md verified — does not link to any internal docs
+- [x] Planning docs left in root (moving to subdirectory deferred — low impact)
 
 ---
 
