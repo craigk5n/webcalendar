@@ -68,16 +68,40 @@ Access import at `import.php` from the navigation menu.
 - Import data is logged in the `webcal_import` and `webcal_import_data`
   tables for reference.
 
-## Remote Subscriptions
+## Remote Calendars (Inbound)
 
-WebCalendar can subscribe to external iCalendar feeds and display them
-on your calendar. This is configured per-user in preferences.
+WebCalendar can consume external iCalendar or hCalendar feeds and
+display them on your calendar. This works through nonuser calendars:
 
-Remote calendar data can be refreshed manually or via the cron tool:
+1. An admin enables **Allow remote calendars** in System Settings.
+2. Under **Admin** > **NonUser Calendars**, create a nonuser calendar
+   and provide the remote iCalendar URL.
+3. Users add the nonuser calendar as a **layer** to see the remote
+   events on their own calendar.
+
+Remote calendars can be refreshed manually from the admin interface
+or automatically via cron:
 
 ```bash
-php tools/reload_remotes.php
+# Reload all remote calendars every hour
+0 * * * * /usr/bin/php /path/to/webcalendar/tools/reload_remotes.php
 ```
+
+The calendar format (iCalendar or hCalendar) is auto-detected from the
+URL and content.
+
+## Remote Subscriptions (Outbound)
+
+WebCalendar can publish calendar data for external applications to
+subscribe to. An admin must enable **Allow remote subscriptions** in
+System Settings.
+
+- **`publish.php`** — provides a read-only iCalendar feed that
+  external calendar clients can subscribe to. See
+  [User Guide: Remote Subscriptions](user-guide.md#remote-subscriptions)
+  for the feed URL format.
+- **`icalclient.php`** — provides two-way iCalendar synchronization
+  with desktop calendar applications.
 
 ## Programmatic Access
 

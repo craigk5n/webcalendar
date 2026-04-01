@@ -185,13 +185,18 @@ alternative:
 
 ### Remote Calendar Sync Cron Job
 
-If you use remote (subscribed) iCalendar feeds via nonuser calendars,
+If you use remote iCalendar feeds via nonuser calendars (see
+[Import & Export: Remote Calendars](import-export.md#remote-calendars-inbound)),
 set up a cron job to refresh them periodically:
 
 ```bash
-# Reload remote calendars every hour
+# Reload all remote calendars every hour
 0 * * * * /usr/bin/php /var/www/html/webcalendar/tools/reload_remotes.php
 ```
+
+This requires **Allow remote calendars** to be enabled in System
+Settings, and at least one nonuser calendar configured with a remote
+URL.
 
 ## Key Admin Settings
 
