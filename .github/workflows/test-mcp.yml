@@ -1,0 +1,52 @@
+name: Test MCP Server
+
+on:
+  push:
+    branches: [ master, release ]
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  mcp_unit_tests:
+    name: MCP Unit Tests (PHP ${{ matrix.php-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ['8.2', '8.3', '8.4']
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Run MCP unit tests
+        run: vendor/bin/phpunit tests/McpTest.php
+
+  mcp_integration_test:
+    name: MCP Integration Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: sqlite3, pdo_sqlite
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq sqlite3 curl
+          composer install
+
+      - name: Run MCP integration tests
+        run: |
+          chmod +x tests/mcp-integration-test.sh
+          ./tests/mcp-integration-test.sh --cleanup
