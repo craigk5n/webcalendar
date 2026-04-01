@@ -607,9 +607,37 @@ SQL
   [
     'version' => 'v1.9.16',
     'default-sql' => <<<'SQL'
+CREATE TABLE IF NOT EXISTS webcal_blob (
+  cal_blob_id INT NOT NULL,
+  cal_id INT NULL,
+  cal_login VARCHAR(25) NULL,
+  cal_name VARCHAR(255) NULL,
+  cal_description VARCHAR(128) NULL,
+  cal_size INT NULL,
+  cal_mime_type VARCHAR(50) NULL,
+  cal_type CHAR(1) NOT NULL,
+  cal_mod_date INT NOT NULL,
+  cal_mod_time INT NOT NULL,
+  cal_blob LONGBLOB,
+  PRIMARY KEY ( cal_blob_id )
+);
 ALTER TABLE webcal_blob MODIFY COLUMN cal_name VARCHAR(255) NULL;
 SQL,
     'postgresql-sql' => <<<'SQL'
+CREATE TABLE IF NOT EXISTS webcal_blob (
+  cal_blob_id INT NOT NULL,
+  cal_id INT NULL,
+  cal_login VARCHAR(25) NULL,
+  cal_name VARCHAR(255) NULL,
+  cal_description VARCHAR(128) NULL,
+  cal_size INT NULL,
+  cal_mime_type VARCHAR(50) NULL,
+  cal_type CHAR(1) NOT NULL,
+  cal_mod_date INT NOT NULL,
+  cal_mod_time INT NOT NULL,
+  cal_blob BYTEA,
+  PRIMARY KEY ( cal_blob_id )
+);
 ALTER TABLE webcal_blob ALTER COLUMN cal_name TYPE VARCHAR(255);
 SQL,
     'sqlite3-sql' => <<<'SQL'

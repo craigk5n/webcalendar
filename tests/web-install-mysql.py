@@ -101,11 +101,20 @@ def load_fixture(fixture_path):
     env['MYSQL_PWD'] = 'root'
     try:
         # Use mysql CLI with redirection - very reliable
+        # Try --ssl-mode=DISABLED (MySQL 5.7.11+), fall back to --skip-ssl (older)
         with open(fixture_path, 'r') as f:
             result = subprocess.run([
                 "mysql", "-h", DB_HOST, "-u", "root",
                 "--ssl-mode=DISABLED", DB_NAME
             ], env=env, stdin=f, capture_output=True, text=True)
+
+        if result.returncode != 0 and "unknown variable" in result.stderr:
+            # Older mysql client doesn't support --ssl-mode, try --skip-ssl
+            with open(fixture_path, 'r') as f:
+                result = subprocess.run([
+                    "mysql", "-h", DB_HOST, "-u", "root",
+                    "--skip-ssl", DB_NAME
+                ], env=env, stdin=f, capture_output=True, text=True)
 
         if result.returncode != 0:
             print(f"Error loading fixture: {result.stderr}")
