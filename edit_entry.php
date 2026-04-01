@@ -601,7 +601,7 @@ $tabI = 0;
 
         <label for="entry_brief" data-toggle="tooltip" data-placement="top" title="<?php etooltip('brief-description-help'); ?>">
           <?php etranslate('Brief Description'); ?>:</label>
-        <input class="form-control" type="text" name="name" id="entry_brief" size="25" value="<?php echo htmlspecialchars($name); ?>">
+        <input class="form-control" type="text" name="name" id="entry_brief" size="25" maxlength="80" value="<?php echo htmlspecialchars($name); ?>">
         <label for="description" data-toggle="tooltip" data-placement="top" title="<?php etooltip('full-description-help'); ?>">
           <?php etranslate('Full Description'); ?>:</label>
         <textarea class="form-control" rows="5" name="description" id="description"><?php echo htmlspecialchars($description); ?></textarea>
