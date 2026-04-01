@@ -285,9 +285,14 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
       }else
         $ret .= 'DTEND;VALUE=DATE:' . gmdate ( 'Ymd', $eventend ) . "\r\n";
       }
-    else  if ( $time == -1 )
-    // untimed event
-     $ret .= "DTEND;VALUE=DATE:$date\r\n";
+    else  if ( $time == -1 ) {
+    // untimed event: DTEND is exclusive per RFC 5545, so use the next day
+      $nextday = gmdate ( 'Ymd', gmmktime ( 0, 0, 0,
+        (int)substr ( $date, 4, 2 ),
+        (int)substr ( $date, 6, 2 ) + 1,
+        (int)substr ( $date, 0, 4 ) ) );
+      $ret .= "DTEND;VALUE=DATE:$nextday\r\n";
+    }
     else if ( $time > 0 ) {
       // timed  event
       if ( $vtimezone_exists ) {

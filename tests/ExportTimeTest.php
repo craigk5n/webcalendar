@@ -93,7 +93,8 @@ final class ExportTimeTest extends TestCase
   }
 
   /**
-   * Test that untimed events use DATE format without time conversion.
+   * Test that untimed events use DATE format and DTEND is the next day
+   * per RFC 5545 (DTEND is exclusive).
    */
   public function test_export_time_untimed() {
     date_default_timezone_set("Europe/Berlin");
@@ -104,10 +105,42 @@ final class ExportTimeTest extends TestCase
     $result = export_time('20180715', 0, '-1', 'ical');
 
     $this->assertStringContainsString('DTSTART;VALUE=DATE:20180715', $result);
+    // DTEND must be the next day (exclusive end per RFC 5545)
+    $this->assertStringContainsString('DTEND;VALUE=DATE:20180716', $result);
   }
 
   /**
-   * Test that all-day events use DATE format without time conversion.
+   * Test untimed event at end of month (DTEND rolls to next month).
+   */
+  public function test_export_time_untimed_end_of_month() {
+    date_default_timezone_set("UTC");
+    $GLOBALS['TIMEZONE'] = 'UTC';
+    $GLOBALS['use_vtimezone'] = '';
+    $GLOBALS['vtimezone_data'] = '';
+
+    $result = export_time('20180131', 0, '-1', 'ical');
+
+    $this->assertStringContainsString('DTSTART;VALUE=DATE:20180131', $result);
+    $this->assertStringContainsString('DTEND;VALUE=DATE:20180201', $result);
+  }
+
+  /**
+   * Test untimed event at end of year (DTEND rolls to next year).
+   */
+  public function test_export_time_untimed_end_of_year() {
+    date_default_timezone_set("UTC");
+    $GLOBALS['TIMEZONE'] = 'UTC';
+    $GLOBALS['use_vtimezone'] = '';
+    $GLOBALS['vtimezone_data'] = '';
+
+    $result = export_time('20181231', 0, '-1', 'ical');
+
+    $this->assertStringContainsString('DTSTART;VALUE=DATE:20181231', $result);
+    $this->assertStringContainsString('DTEND;VALUE=DATE:20190101', $result);
+  }
+
+  /**
+   * Test that all-day events use DATE format and DTEND is the next day.
    */
   public function test_export_time_allday() {
     date_default_timezone_set("Europe/Berlin");
