@@ -130,21 +130,68 @@ System-wide settings are stored in the `webcal_config` table and managed through
 
 Individual user preferences are stored in the `webcal_user_pref` table. Users manage their own preferences through the preferences interface. Administrators can set default preference values that apply to new users.
 
-## Email Reminders
+## Email and Reminders
 
-WebCalendar can send email reminders for upcoming events. The reminder system is driven by a command-line script that should be executed on a regular schedule via cron.
+### Email Configuration
 
-**Reminder script:** `tools/send_reminders.php`
+Before reminders or notifications will work, configure email in
+**Admin** > **System Settings** > **Email** tab:
 
-**Example cron entry** (runs every 15 minutes):
+1. Set **Email enabled** to **Yes**.
+2. Set **Default sender address** (e.g., `calendar@yourcompany.com`).
+   Some mail servers reject messages where the From domain doesn't
+   match the SMTP server.
+3. Set **Email Mailer** to one of: PHP mail, SMTP, or sendmail.
+4. If using SMTP, configure:
+   - **SMTP Host name(s)** — server hostname or IP
+   - **SMTP Port Number** — typically 25, 465 (SSL), or 587 (STARTTLS)
+   - **SMTP Authentication** — enable if your server requires it, then
+     set **SMTP Username** and **SMTP Password**
 
+Test your configuration:
+
+```bash
+php tools/send_test_email.php
 ```
+
+### Notification Types
+
+WebCalendar sends two kinds of email:
+
+- **Notifications** — sent immediately when events are added, updated,
+  or deleted on a user's calendar. Controlled per-user in Preferences.
+- **Reminders** — sent before an event at a time configured by the
+  user. Requires a cron job (see below).
+
+### Setting Up Reminder Cron Job
+
+The reminder script checks for pending reminders and sends emails.
+It requires the PHP CLI binary.
+
+```bash
+# Run every 15 minutes
 */15 * * * * /usr/bin/php /var/www/html/webcalendar/tools/send_reminders.php
 ```
 
-Adjust the PHP binary path and WebCalendar installation path to match your environment.
+Adjust the PHP binary path and WebCalendar installation path for your
+environment. Run `which php` to find the correct path.
 
-**Testing email configuration:** Use `tools/send_test_email.php` to verify that outgoing email is working correctly before relying on reminders.
+If you don't have PHP CLI available, you can use `wget` as an
+alternative:
+
+```bash
+*/15 * * * * wget -q -O /dev/null https://yourserver/webcalendar/tools/send_reminders.php
+```
+
+### Remote Calendar Sync Cron Job
+
+If you use remote (subscribed) iCalendar feeds via nonuser calendars,
+set up a cron job to refresh them periodically:
+
+```bash
+# Reload remote calendars every hour
+0 * * * * /usr/bin/php /var/www/html/webcalendar/tools/reload_remotes.php
+```
 
 ## Key Admin Settings
 
