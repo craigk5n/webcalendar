@@ -194,7 +194,7 @@ function do_config($callingFromInstall=false)
 
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://k5n.us/wp/webcalendar/';
-  $TROUBLE_URL = 'docs/WebCalendar-SysAdmin.html#trouble';
+  $TROUBLE_URL = 'docs/troubleshooting.md';
 
   $settings = [];
 

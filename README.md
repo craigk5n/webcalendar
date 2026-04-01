@@ -1,6 +1,6 @@
 # WebCalendar
 
-[![Version](https://img.shields.io/badge/version-v1.9.13-blue.svg)](https://github.com/craigk5n/webcalendar/releases)
+[![Version](https://img.shields.io/badge/version-v1.9.16-blue.svg)](https://github.com/craigk5n/webcalendar/releases)
 [![License](https://img.shields.io/badge/license-GPL%20v2-green.svg)](LICENSE)
 [![PHP](https://img.shields.io/badge/php-8.0%2B-8892BF.svg)](https://php.net)
 [![CI](https://github.com/craigk5n/webcalendar/workflows/CI/badge.svg)](https://github.com/craigk5n/webcalendar/actions)
@@ -65,23 +65,22 @@ For automated deployments, use the headless installer:
 php wizard/headless.php
 ```
 
-See the [Installation Guide](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-SysAdmin.html) for detailed instructions.
+See the [Installation Guide](docs/installation.md) for detailed instructions.
 
 ## 🐳 Docker Development
 
 Build and run a development environment with live file mounting:
 
 ```bash
-# Build the development container
-docker-compose -f docker/docker-compose-php8-dev.yml build
-
-# Start the containers
+# Start the development containers (MariaDB + PostgreSQL)
 docker-compose -f docker/docker-compose-php8-dev.yml up
 
-# Access at http://localhost:8080
+# Access at http://localhost:8080 (MariaDB) or http://localhost:8081 (PostgreSQL)
 ```
 
 Changes to your local files are immediately reflected in the container.
+
+See [Docker Deployment](docs/docker.md) for all available configurations.
 
 ## ⚙️ Configuration
 
@@ -106,9 +105,8 @@ Add these to your `.htaccess` file or web server configuration.
 - ✅ MySQL / MariaDB (recommended)
 - ✅ PostgreSQL
 - ✅ SQLite3
-- ✅ Oracle
-- ✅ IBM DB2
-- ✅ ODBC
+
+Legacy backends (code present, untested on PHP 8): Oracle, DB2, ODBC, Interbase
 
 ## 🧪 Testing
 
@@ -163,23 +161,29 @@ Create `includes/config-app-yourapp.php` to override settings dynamically.
 
 ## 🗺️ Roadmap
 
-### v1.9.X (Current)
-- Bug fixes and PHP 8.x compatibility
-- Improved Docker support
-- Translation improvements
-- New web-based installer
+### v1.9.16 (Current)
+- PHP 8.0+ required (tested against 8.2, 8.3, 8.4)
+- New web-based installation/upgrade wizard
+- Headless CLI installer for automated deployments
+- MCP server for AI assistant integration
+- Multi-database Docker test infrastructure
 
-### v2.0 (In Progress)
-- Modernized codebase with PHP 8+ features
+### v2.0.0 (Planned)
+- Modernized codebase with PHP 8.1+ features
 - Namespace implementation
-- Enhanced security
+- Enhanced security and access control
 
 ## 📚 Documentation
 
-- [📖 System Administrator's Guide](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-SysAdmin.html) - Installation, configuration, and FAQ
-- [⬆️ Upgrading Instructions](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/UPGRADING.html)
-- [🗄️ Database Schema](docs/WebCalendar-Database.md)
-- [💻 Developer Guide](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-DeveloperGuide.html)
+- [📖 Installation Guide](docs/installation.md) - System requirements, setup wizard, Docker
+- [🔧 Admin Guide](docs/admin-guide.md) - User management, system settings, email
+- [📅 User Guide](docs/user-guide.md) - Calendar views, events, preferences
+- [⬆️ Upgrade Guide](docs/upgrade-guide.md) - Upgrading from previous versions
+- [🗄️ Database Schema](docs/WebCalendar-Database.md) - Table definitions
+- [💻 Developer Guide](docs/developer-guide.md) - Architecture, coding standards, testing
+- [🤖 MCP Server](docs/mcp-server.md) - AI assistant integration
+
+See the [full documentation index](docs/index.md) for all guides.
 
 ## 🤝 Contributing
 
