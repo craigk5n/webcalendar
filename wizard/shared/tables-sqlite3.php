@@ -256,7 +256,7 @@ return [
         cal_blob_id INT NOT NULL,
         cal_id INT NULL,
         cal_login VARCHAR(25) NULL,
-        cal_name VARCHAR(30) NULL,
+        cal_name VARCHAR(255) NULL,
         cal_description VARCHAR(128) NULL,
         cal_size INT NULL,
         cal_mime_type VARCHAR(50) NULL,

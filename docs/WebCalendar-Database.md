@@ -85,7 +85,7 @@
 | **cal_blob_id** | INT |   | N |   | Unique identifier for this object |
 | cal_id | INT |   | Y |   | event id (if applicable) |
 | cal_login | VARCHAR | 25 | Y |   | login of user who created |
-| cal_name | VARCHAR | 30 | Y |   | filename of object (not used for comments) |
+| cal_name | VARCHAR | 255 | Y |   | filename of object (not used for comments) |
 | cal_description | VARCHAR | 128 | Y |   | description of what the object is (subject for comment) |
 | cal_size | INT |   | Y |   | size of object (not used for comment) |
 | cal_mime_type | VARCHAR | 50 | Y |   | MIME type of object (as specified by browser during upload) (not used for comment) |

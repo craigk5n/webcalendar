@@ -82,7 +82,7 @@ $tables = [
     ['cal_lastname', 'VARCHAR(25)'],
   ],
   'webcal_blob' => [
-    ['cal_name', 'VARCHAR(30)'],
+    ['cal_name', 'VARCHAR(255)'],
     ['cal_description', 'VARCHAR(128)'],
   ],
   'webcal_entry_ext_user' => [

@@ -685,7 +685,7 @@ CREATE TABLE webcal_blob (
   /* login of user who created */
   cal_login VARCHAR(25) NULL,
   /* filename of object (not used for comments) */
-  cal_name VARCHAR(30) NULL,
+  cal_name VARCHAR(255) NULL,
   /* description of what the object is (subject for comment) */
   cal_description VARCHAR(128) NULL,
   /* size of object (not used for comment) */

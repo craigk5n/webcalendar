@@ -256,7 +256,7 @@ CREATE TABLE webcal_blob (
   cal_mime_type VARCHAR2(50) NULL,
   cal_mod_date INT NOT NULL,
   cal_mod_time INT NOT NULL,
-  cal_name VARCHAR2(30) NULL,
+  cal_name VARCHAR2(255) NULL,
   cal_size INT NULL,
   cal_type CHAR(1) NOT NULL,
   cal_blob BLOB,
