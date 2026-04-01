@@ -469,17 +469,17 @@ function toggle_byday( ele ) {
   var bydaytext = byday_names[ele.id.substr(2,1)];
   var bydayVal = byday_labels[ele.id.substr(2,1)];
   var tmp = '';
-  if (ele.value.length > 4 ) {
+  if (ele.textContent.length > 4 ) {
     //blank
-    ele.value = ele.id.substr(1,1) + bydaytext;
+    ele.textContent = ele.id.substr(1,1) + bydaytext;
     tmp = ele.id.substr(1,1) + bydayVal;
-  } else if (ele.value == ele.id.substr(1,1) + bydaytext) {
+  } else if (ele.textContent == ele.id.substr(1,1) + bydaytext) {
     //positive value
-    ele.value = ( parseInt( ele.id.substr( 1,1 ) ) -6 ) + bydaytext;
+    ele.textContent = ( parseInt( ele.id.substr( 1,1 ) ) -6 ) + bydaytext;
     tmp = ( parseInt( ele.id.substr( 1,1 ) ) -6 ) + bydayVal;
-  } else if ( ele.value == ( parseInt( ele.id.substr( 1,1 ) ) -6 ) + bydaytext ) {
+  } else if ( ele.textContent == ( parseInt( ele.id.substr( 1,1 ) ) -6 ) + bydaytext ) {
     //negative value
-  ele.value = "        ";
+  ele.textContent = "        ";
   tmp = '';
   }
   bydayAr[ele.id.substr(1)] = tmp;
@@ -487,15 +487,15 @@ function toggle_byday( ele ) {
 
 function toggle_bymonthday( ele ) {
   var tmp = '';
-  if (ele.value .length > 3) {
+  if (ele.textContent.length > 3) {
     //blank
-  ele.value = tmp = ele.id.substr(10);
-  } else if (ele.value == ele.id.substr(10)) {
+  ele.textContent = tmp = ele.id.substr(10);
+  } else if (ele.textContent == ele.id.substr(10)) {
     //positive value
-  ele.value = tmp = parseInt( ele.id.substr( 10 ) ) -32;
-  } else if ( ele.value == ( parseInt( ele.id.substr( 10 ) ) -32 ) ) {
+  ele.textContent = tmp = parseInt( ele.id.substr( 10 ) ) -32;
+  } else if ( ele.textContent == ( parseInt( ele.id.substr( 10 ) ) -32 ) ) {
     //negative value
-  ele.value = "     ";
+  ele.textContent = "     ";
   tmp = '';
   }
   bymonthdayAr[ele.id.substr(10)] = tmp;
@@ -503,16 +503,16 @@ function toggle_bymonthday( ele ) {
 
 function toggle_bysetpos( ele ) {
   var tmp = '';
-  if (ele.value .length > 3) {
+  if (ele.textContent.length > 3) {
     //blank
-  ele.value = tmp = ele.id.substr(8);
+  ele.textContent = tmp = ele.id.substr(8);
 
-  } else if (ele.value == ele.id.substr(8)) {
+  } else if (ele.textContent == ele.id.substr(8)) {
     //positive value
-  ele.value = tmp = parseInt( ele.id.substr( 8 ) ) -32;
-  } else if ( ele.value == ( parseInt( ele.id.substr( 8 ) ) -32 ) ) {
+  ele.textContent = tmp = parseInt( ele.id.substr( 8 ) ) -32;
+  } else if ( ele.textContent == ( parseInt( ele.id.substr( 8 ) ) -32 ) ) {
     //negative value
-  ele.value = "    ";
+  ele.textContent = "    ";
   tmp = '';
   }
   bysetposAr[ele.id.substr(8)] = tmp;
