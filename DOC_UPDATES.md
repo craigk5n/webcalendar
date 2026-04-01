@@ -195,19 +195,20 @@ GitHub looks for `CONTRIBUTING.md` in the project root to surface contribution g
 
 ---
 
-### DOCS-007: Add GitHub issue and PR templates
+### DOCS-007: Add GitHub issue and PR templates -- DONE
 
 **Priority:** P2 — Medium
 **Estimate:** S
+**Status:** COMPLETE
 
 **Description:**
 Standardize bug reports, feature requests, and PRs with templates. Reduces noise and speeds up triage.
 
 **Acceptance Criteria:**
-- [ ] `.github/ISSUE_TEMPLATE/bug_report.md` — includes fields for: WebCalendar version, PHP version, database type/version, OS, steps to reproduce, expected vs. actual behavior
-- [ ] `.github/ISSUE_TEMPLATE/feature_request.md` — includes use case, proposed solution, alternatives considered
-- [ ] `.github/PULL_REQUEST_TEMPLATE.md` — checklist: tests pass, docs updated, changelog entry added, no breaking changes (or documented)
-- [ ] `.github/ISSUE_TEMPLATE/config.yml` — optional: add link to discussions for questions
+- [x] `.github/ISSUE_TEMPLATE/bug_report.md` — version, PHP, DB, OS, steps, expected/actual
+- [x] `.github/ISSUE_TEMPLATE/feature_request.md` — use case, proposed solution, alternatives
+- [x] `.github/PULL_REQUEST_TEMPLATE.md` — checklist: tests, compile, breaking changes, docs
+- [x] `.github/ISSUE_TEMPLATE/config.yml` — links to Discussions and SECURITY.md
 
 ---
 
