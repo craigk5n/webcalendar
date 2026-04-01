@@ -1297,6 +1297,10 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
     }
     // Check for all day
     if ( ! empty ( $Entry['AllDay'] ) && $Entry['AllDay'] == 1 ) {
+      // Use local date (not gmdate) since all-day events are timezone-neutral
+      // and the timestamps were created in local timezone context.
+      $Entry['start_date'] = date ( 'Ymd', $Entry['StartTime'] );
+      $Entry['end_date'] = date ( 'Ymd', $Entry['EndTime'] );
       $Entry['start_time'] = 0;
       $Entry['end_time'] = 0;
       $Entry['Duration'] = '1440';
