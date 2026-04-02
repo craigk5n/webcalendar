@@ -30,8 +30,13 @@ WebCalendar is an open-source, multi-user, web-based calendar application writte
 ## For Developers
 
 - [Developer Guide](developer-guide.md) — Architecture, coding standards, extending WebCalendar
-- [Database Schema](WebCalendar-Database.md) — Table definitions (auto-generated from SQL)
+- [v2.0.x Development Guide](v2-development.md) — Scope, priorities, and workflow for the 2.0 stable series
 - [MCP Server](mcp-server.md) — AI assistant integration via Model Context Protocol
+
+## Reference
+
+- [Database Schema](WebCalendar-Database.md) — Table definitions (auto-generated from SQL)
+- [Glossary](glossary.md) — Terms and concepts explained
 
 ## Support
 

@@ -1,7 +1,6 @@
 # Exclude internal planning and AI-context docs from release archives
 # (git archive / GitHub release tarballs)
 PRD.md                    export-ignore
-ROADMAP.md                export-ignore
 ICAL_STATUS.md            export-ignore
 USER_ACCESS_ROADMAP.md    export-ignore
 WP_PLUGIN_REVENUE_PLAN.md export-ignore

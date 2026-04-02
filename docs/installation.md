@@ -152,6 +152,61 @@ Generate the install password hash:
 php -r "echo md5('YourPassword');"
 ```
 
+## Manual Database Setup
+
+While the Web Wizard is the recommended way to set up your database, you can also perform the setup manually if your hosting environment requires it.
+
+Manual setup involves three steps:
+1. Creating the database.
+2. Creating the database user with appropriate privileges.
+3. Importing the required table definitions.
+
+SQL files for supported databases are located in the `install/sql/` directory:
+- `tables-mysql.sql`
+- `tables-postgres.sql`
+- `tables-sqlite.sql`
+- `tables-oracle.sql`
+- `tables-mssql.sql`
+- `tables-db2.sql`
+- `tables-ibase.sql`
+
+### MySQL / MariaDB (Command Line)
+
+1. Create the database:
+   ```bash
+   mysqladmin -u root -p create webcalendar
+   ```
+2. Create the user and grant privileges:
+   ```sql
+   GRANT ALL PRIVILEGES ON webcalendar.* TO 'webcal_user'@'localhost' IDENTIFIED BY 'your_password';
+   FLUSH PRIVILEGES;
+   ```
+3. Import the tables:
+   ```bash
+   mysql -u webcal_user -p webcalendar < install/sql/tables-mysql.sql
+   ```
+
+### PostgreSQL (Command Line)
+
+1. Create the database and user:
+   ```bash
+   su - postgres
+   createdb webcalendar
+   createuser -P webcal_user
+   ```
+2. Import the tables:
+   ```bash
+   psql -U webcal_user -d webcalendar -f install/sql/tables-postgres.sql
+   ```
+
+### Using phpMyAdmin
+
+If you have phpMyAdmin installed, you can use it to set up WebCalendar:
+
+1. **Create Database:** On the main page, enter a name (e.g., `webcalendar`) in the "Create new database" field and click **Create**.
+2. **Create User (Optional):** Click the **Privileges** tab, then **Add a new user**. Enter your chosen username and password. In the **Global privileges** section, select `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `FILE`, `CREATE`, `ALTER`, `INDEX`, and `DROP`. Click **Go**.
+3. **Import Tables:** Click the name of your new database in the sidebar, then click the **Import** tab at the top. Use the **Browse** button to select `install/sql/tables-mysql.sql` from the WebCalendar directory and click **Go**.
+
 ## Configuration
 
 The wizard writes `includes/settings.php`. This file contains

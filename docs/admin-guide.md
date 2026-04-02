@@ -168,6 +168,8 @@ WebCalendar sends two kinds of email:
 The reminder script checks for pending reminders and sends emails.
 It requires the PHP CLI binary.
 
+#### Linux / UNIX
+
 ```bash
 # Run every 15 minutes
 */15 * * * * /usr/bin/php /var/www/html/webcalendar/tools/send_reminders.php
@@ -182,6 +184,20 @@ alternative:
 ```bash
 */15 * * * * wget -q -O /dev/null https://yourserver/webcalendar/tools/send_reminders.php
 ```
+
+#### Windows Task Scheduler
+
+1. Create a batch file named `sendreminders.bat`. Its contents should be:
+   ```batch
+   C:\path\to\php.exe C:\path\to\webcalendar\tools\send_reminders.php
+   ```
+2. Open **Task Scheduler** in Windows.
+3. Click **Create Basic Task** and name it "WebCalendar Reminders".
+4. Set the **Trigger** to "Daily".
+5. Set the **Start Time** (e.g., 12:00:00 AM).
+6. Under **Action**, select **Start a program** and browse to your `sendreminders.bat`.
+7. Click **Finish**.
+8. To make it run more frequently, right-click the task, choose **Properties** > **Triggers** > **Edit** > **Advanced Settings** > **Repeat task every:** and set it to 15 minutes (or your preference).
 
 ### Remote Calendar Sync Cron Job
 

@@ -158,7 +158,7 @@ These environment variables were added in the v1.9.x series:
 |---------------------|-------------|-------------|
 | v1.9.0 - v1.9.10 | 7.4 | 8.0 |
 | v1.9.11 - v1.9.16 | 8.0 | 8.2+ |
-| v2.0.0 | 8.1 (planned) | 8.2+ |
+| v2.0.x | 8.0 | 8.2+ |
 
 If upgrading from PHP 7.x, update PHP first and verify your application
 works before upgrading WebCalendar.
@@ -279,4 +279,7 @@ cp includes/settings.php.backup includes/settings.php
   `sqlite3`), you must migrate to `sqlite3` before upgrading. The
   legacy SQLite extension was removed from PHP 8.0.
 
-<!-- TODO: Add v2.0.0-specific breaking changes here when defined -->
+- **v2.0.x is a stability release.** The 1.9.x series was the
+  development line; 2.0.x is the corresponding production release.
+  No new features are introduced — only bug fixes, security
+  hardening, and code quality improvements.
