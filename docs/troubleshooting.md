@@ -72,11 +72,13 @@ updates.
 - For MySQL: increase `wait_timeout` and `max_connections`.
 - For PostgreSQL: check `max_connections` in `postgresql.conf`.
 
-### Slow queries
+### Specific Errors
 
-- Add database indexes if missing (the wizard creates standard indexes).
-- For MySQL: enable the slow query log to identify bottlenecks.
-- Consider enabling `$db_cachedir` in settings for query caching.
+- **"Error removing temporary file" or "Cache error":** Indicates a file in the database cache directory could not be modified. This often happens when the reminder cron job runs under a different system account than the web server, causing ownership conflicts. Ensure both accounts have write permissions to `$db_cachedir`.
+- **"Failed opening 'includes/...' for inclusion":** You may need to modify the `include_path` in your `php.ini`. Add the WebCalendar base directory to the list.
+- **"Call to undefined function":** Your PHP installation is missing a required module (e.g., `mysqli_connect`). Verify all [Requirements](installation.md#requirements) are met.
+- **"Can't connect to local MySQL server through socket '/tmp/mysql.sock'":** The value of `mysql.default_socket` in `php.ini` must match the actual socket location used by your MySQL server (check `my.cnf`).
+- **"Client does not support authentication protocol":** This typically occurs when an older PHP MySQL client attempts to connect to a newer MySQL/MariaDB server using the old hashing algorithm. Update your PHP extensions or re-hash the database password using the new algorithm.
 
 ## Authentication Issues
 

@@ -9,23 +9,42 @@
 
 WebCalendar is a **multi-user, web-based calendar application** built with PHP. It supports multiple database backends, features event management, user groups, access controls, and integrates with external applications. Designed for both personal and enterprise use, WebCalendar can be deployed on any web server with PHP support.
 
-![WebCalendar Screenshot](https://www.k5n.us/wp-content/gallery/webcalendar/wcss-month.png)
+![WebCalendar Month View](https://www.k5n.us/wp-content/gallery/webcalendar/wcss-month.png)
 
-## ✨ Features
+<p align="center">
+  <a href="https://www.k5n.us/webcalendar/webcalendar-screenshots/">
+    <img src="https://www.k5n.us/wp-content/gallery/webcalendar/thumbs/thumbs_wcss-week.png" alt="Week View" width="150">
+  </a>
+  <a href="https://www.k5n.us/webcalendar/webcalendar-screenshots/">
+    <img src="https://www.k5n.us/wp-content/gallery/webcalendar/thumbs/thumbs_wcss-day.png" alt="Day View" width="150">
+  </a>
+  <a href="https://www.k5n.us/webcalendar/webcalendar-screenshots/">
+    <img src="https://www.k5n.us/wp-content/gallery/webcalendar/thumbs/thumbs_wcss-add-entry.png" alt="Add Event" width="150">
+  </a>
+</p>
+<p align="center"><a href="https://www.k5n.us/webcalendar/webcalendar-screenshots/">View all screenshots →</a></p>
 
-- **📅 Multiple Calendar Views** - Month, week, day, year, and agenda views
-- **👥 Multi-User Support** - User management with groups and permissions
-- **🔄 Recurring Events** - Support for complex event repetition patterns
-- **🔐 Access Control** - Granular permissions for viewing and editing events
-- **📧 Email Notifications** - Event reminders and updates via email
-- **📱 Responsive Design** - Works on desktop and mobile devices
-- **🌐 Multi-Language** - Available in 30+ languages
-- **📤 iCal Import/Export** - Import and export calendar data in iCalendar format
-- **🔗 External Integration** - LDAP, IMAP, and custom authentication bridges
-- **🐳 Docker Ready** - Pre-built Docker images for easy deployment
-- **🤖 MCP Server** - Model Context Protocol support for AI assistant integration
+## Features
 
-## 🚀 Quick Start
+- **Multiple Calendar Views** - Month, week, day, year, and agenda views
+- **Multi-User Support** - User management with groups and permissions
+- **Recurring Events** - Support for complex event repetition patterns
+- **Access Control** - Granular permissions for viewing and editing events
+- **Email Notifications** - Event reminders and updates via email
+- **Responsive Design** - Works on desktop and mobile devices
+- **Multi-Language** - Translation files for 100+ languages (~35 human-contributed with substantial coverage)
+- **iCal Import/Export** - Import and export calendar data in iCalendar format
+- **External Integration** - LDAP, IMAP, and custom authentication bridges
+- **Docker Ready** - Pre-built Docker images for easy deployment
+- **MCP Server** - Model Context Protocol support for AI assistant integration
+
+## Requirements
+
+- **PHP** 8.0+ (8.2+ recommended; tested against 8.2, 8.3, 8.4)
+- **Database:** MySQL/MariaDB, PostgreSQL, or SQLite3
+- **Web server:** Apache or Nginx with PHP support
+
+## Quick Start
 
 ### Using Docker (Recommended)
 
@@ -67,7 +86,7 @@ php wizard/headless.php
 
 See the [Installation Guide](docs/installation.md) for detailed instructions.
 
-## 🐳 Docker Development
+## Docker Development
 
 Build and run a development environment with live file mounting:
 
@@ -82,7 +101,7 @@ Changes to your local files are immediately reflected in the container.
 
 See [Docker Deployment](docs/docker.md) for all available configurations.
 
-## ⚙️ Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -108,7 +127,7 @@ Add these to your `.htaccess` file or web server configuration.
 
 Legacy backends (code present, untested on PHP 8): Oracle, DB2, ODBC, Interbase
 
-## 🧪 Testing
+## Testing
 
 Run the test suite with PHPUnit:
 
@@ -123,7 +142,7 @@ cd tests; ./run_unit_tests.sh; cd ..
 cd tests; ./compile_test.sh; cd ..
 ```
 
-## 🏗️ Building from Source
+## Building from Source
 
 WebCalendar includes all required dependencies in the release (primarily in the `pub/` directory). You **do not need to run Composer** unless you are adding or updating dependencies.
 
@@ -139,7 +158,7 @@ make
 
 Note: The Makefile requires Linux (uses `sha384sum`).
 
-## 🔌 External Application Integration
+## External Application Integration
 
 WebCalendar can integrate with external systems for user authentication and configuration:
 
@@ -159,7 +178,7 @@ See [user-ldap.php](includes/user-ldap.php) and [user-app-joomla.php](includes/u
 
 Create `includes/config-app-yourapp.php` to override settings dynamically.
 
-## 🗺️ Roadmap
+## Roadmap
 
 ### v1.9.16 (Current)
 - PHP 8.0+ required (tested against 8.2, 8.3, 8.4)
@@ -173,19 +192,24 @@ Create `includes/config-app-yourapp.php` to override settings dynamically.
 - Namespace implementation
 - Enhanced security and access control
 
-## 📚 Documentation
+## Documentation
 
-- [📖 Installation Guide](docs/installation.md) - System requirements, setup wizard, Docker
-- [🔧 Admin Guide](docs/admin-guide.md) - User management, system settings, email
-- [📅 User Guide](docs/user-guide.md) - Calendar views, events, preferences
-- [⬆️ Upgrade Guide](docs/upgrade-guide.md) - Upgrading from previous versions
-- [🗄️ Database Schema](docs/WebCalendar-Database.md) - Table definitions
-- [💻 Developer Guide](docs/developer-guide.md) - Architecture, coding standards, testing
-- [🤖 MCP Server](docs/mcp-server.md) - AI assistant integration
+- [Installation Guide](docs/installation.md) - System requirements, setup wizard, Docker
+- [Admin Guide](docs/admin-guide.md) - User management, system settings, email
+- [User Guide](docs/user-guide.md) - Calendar views, events, preferences
+- [Upgrade Guide](docs/upgrade-guide.md) - Upgrading from previous versions
+- [Database Schema](docs/WebCalendar-Database.md) - Table definitions
+- [Developer Guide](docs/developer-guide.md) - Architecture, coding standards, testing
+- [MCP Server](docs/mcp-server.md) - AI assistant integration
 
 Browse the [full documentation](https://craigk5n.github.io/webcalendar/) or see the [docs index](docs/index.md) on GitHub.
 
-## 🤝 Contributing
+## Security
+
+To report a security vulnerability, please see [SECURITY.md](SECURITY.md).
+Do not open a public issue for security reports.
+
+## Contributing
 
 Contributions are welcome! Please:
 
@@ -195,17 +219,17 @@ Contributions are welcome! Please:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 WebCalendar is licensed under the [GNU General Public License v2.0](LICENSE).
 
-## 🔗 Links
+## Links
 
-- 🌐 **Website**: https://k5n.us/webcalendar/
-- 🐛 **Issues**: https://github.com/craigk5n/webcalendar/issues
-- 💾 **Releases**: https://github.com/craigk5n/webcalendar/releases
+- **Website**: https://k5n.us/webcalendar/
+- **Issues**: https://github.com/craigk5n/webcalendar/issues
+- **Releases**: https://github.com/craigk5n/webcalendar/releases
 
-## 👨‍💻 Maintainer
+## Maintainer
 
 **Craig Knudsen** - [craig@k5n.us](mailto:craig@k5n.us) - [https://k5n.us](https://k5n.us)
 

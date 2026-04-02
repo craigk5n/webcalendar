@@ -226,8 +226,12 @@ Additional event fields can be configured through the admin UI without code chan
 
 ## Translations
 
-WebCalendar supports 100+ languages via translation files in the
-`translations/` directory.
+WebCalendar includes translation files for 100+ languages in the
+`translations/` directory. Approximately 35 are human-contributed with
+substantial coverage; the remainder were generated via AI-assisted bulk
+translation (see [AI-Assisted Translation](#ai-assisted-translation))
+and should be reviewed by native speakers before being considered
+production-quality.
 
 ### File Format
 

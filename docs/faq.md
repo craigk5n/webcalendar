@@ -137,8 +137,10 @@ SET cal_passwd = MD5('newpassword')
 WHERE cal_login = 'admin';
 ```
 
-Note: The exact hashing method depends on your authentication
-configuration.
+Note: WebCalendar uses bcrypt (`password_hash()`) for new passwords, but
+the login system still recognizes legacy MD5 hashes and auto-upgrades
+them on the next successful login. The MD5 approach above works as a
+quick reset.
 
 ### Email reminders aren't being sent.
 

@@ -160,4 +160,4 @@ Reminders can be configured per event. Set a reminder to receive an email notifi
 
 ## Language Support
 
-WebCalendar supports over 30 languages. To change your language, go to Preferences and select your preferred language from the dropdown. The entire interface -- menus, labels, and system messages -- will display in the selected language.
+WebCalendar includes translation files for over 100 languages. Approximately 35 of these are human-contributed translations with substantial coverage; the remainder were generated via AI-assisted bulk translation and may contain inaccuracies. To change your language, go to Preferences and select your preferred language from the dropdown. The entire interface -- menus, labels, and system messages -- will display in the selected language.
