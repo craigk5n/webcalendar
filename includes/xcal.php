@@ -1657,7 +1657,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
       // update Categories
       if ( ! empty( $Entry['Categories'] ) || $importcat != '') {
         $cat_ids = ( $importcat != ''
-          ? get_categories_id_byname( function_exists("utf8_decode") ? utf8_decode( $importcat ) : $importcat )
+          ? get_categories_id_byname( $importcat )
           : $Entry['Categories'] );
 
         $cat_order = 1;
@@ -2566,7 +2566,7 @@ function format_ical ( $event ) {
   if ( isset ( $event['categories'] ) ) {
     // $fevent['Categories']  will contain an array of cat_id(s) that match the
     // category_names
-    $fevent['Categories'] = get_categories_id_byname ( utf8_decode ( $event['categories'] ) );
+    $fevent['Categories'] = get_categories_id_byname ( $event['categories'] );
   }
   // Start and end time
   /* Snippet from RFC2445
@@ -2631,9 +2631,9 @@ function format_ical ( $event ) {
 
   if ( empty ( $event['summary'] ) )
     $event['summary'] = translate ( 'Unnamed Event' );
-  $fevent['Summary'] = utf8_decode ( $event['summary'] );
+  $fevent['Summary'] = $event['summary'];
   if ( ! empty ( $event['description'] ) ) {
-    $fevent['Description'] = utf8_decode ( $event['description'] );
+    $fevent['Description'] = $event['description'];
   } else {
     $fevent['Description'] = $fevent['Summary'];
   }
@@ -2707,11 +2707,11 @@ function format_ical ( $event ) {
   }
 
   if ( ! empty ( $event['location'] ) ) {
-    $fevent['Location'] = utf8_decode ( $event['location'] );
+    $fevent['Location'] = $event['location'];
   }
 
   if ( ! empty ( $event['url'] ) ) {
-    $fevent['URL'] = utf8_decode ( $event['url'] );
+    $fevent['URL'] = $event['url'];
   }
 
   if ( ! empty ( $event['priority'] ) ) {

@@ -198,8 +198,8 @@ function build_entry_label ( $event, $popupid,
   $tmpId = $event->getId();
   $tmpLogin = $event->getLogin();
   $tmpName = $event->getName();
-  $tmp_ret = htmlspecialchars ( substr ( $tmpName, 0, $sum_length )
-     . ( strlen ( $tmpName ) > $sum_length ? '...' : '' ) );
+  $tmp_ret = htmlspecialchars ( mb_substr ( $tmpName, 0, $sum_length )
+     . ( mb_strlen ( $tmpName ) > $sum_length ? '...' : '' ) );
 
   if ( $not_my_entry && $tmpAccess == 'R' && !
     ( $can_access &PRIVATE_WT ) ) {
@@ -6264,8 +6264,8 @@ function build_entry_popup ( $popupid, $user, $description, $time,
     $ret .= '<dt>' . translate ( 'User' )
      . ":</dt>\n<dd>$popup_fullnames[$user]</dd>\n";
   }
-  $ret .= ( $SUMMARY_LENGTH < 80 && strlen ( $name ) && $details
-    ? '<dt>' . htmlspecialchars ( substr ( $name, 0, 40 ) ) . "</dt>\n" : '' )
+  $ret .= ( $SUMMARY_LENGTH < 80 && mb_strlen ( $name ) && $details
+    ? '<dt>' . htmlspecialchars ( mb_substr ( $name, 0, 40 ) ) . "</dt>\n" : '' )
    . ( strlen ( $time )
     ? '<dt>' . translate ( 'Time' ) . ":</dt>\n<dd>$time</dd>\n" : '' )
    . ( ! empty ( $location ) && $details
