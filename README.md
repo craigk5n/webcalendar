@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/badge/version-v1.9.16-blue.svg)](https://github.com/craigk5n/webcalendar/releases)
 [![License](https://img.shields.io/badge/license-GPL%20v2-green.svg)](LICENSE)
-[![PHP](https://img.shields.io/badge/php-8.0%2B-8892BF.svg)](https://php.net)
+[![PHP](https://img.shields.io/badge/php-8.2%2B-8892BF.svg)](https://php.net)
 [![CI](https://github.com/craigk5n/webcalendar/workflows/CI/badge.svg)](https://github.com/craigk5n/webcalendar/actions)
 [![GitHub stars](https://img.shields.io/github/stars/craigk5n/webcalendar.svg?style=social&label=Star)](https://github.com/craigk5n/webcalendar)
 [![Downloads](https://img.shields.io/github/downloads/craigk5n/webcalendar/total.svg)](https://github.com/craigk5n/webcalendar/releases)
@@ -40,7 +40,7 @@ WebCalendar is a **multi-user, web-based calendar application** built with PHP. 
 
 ## Requirements
 
-- **PHP** 8.0+ (8.2+ recommended; tested against 8.2, 8.3, 8.4)
+- **PHP** 8.2+ (tested against 8.2, 8.3, 8.4)
 - **Database:** MySQL/MariaDB, PostgreSQL, or SQLite3
 - **Web server:** Apache or Nginx with PHP support
 
@@ -107,6 +107,20 @@ See [Docker Deployment](docs/docker.md) for all available configurations.
 
 WebCalendar supports containerized deployments via environment variables:
 
+```yaml
+# Docker Compose example
+environment:
+  WEBCALENDAR_USE_ENV: "true"
+  WEBCALENDAR_DB_TYPE: mysqli
+  WEBCALENDAR_DB_HOST: db
+  WEBCALENDAR_DB_DATABASE: webcalendar
+  WEBCALENDAR_DB_LOGIN: webcalendar
+  WEBCALENDAR_DB_PASSWORD: "your_secure_password"
+  WEBCALENDAR_MODE: prod
+```
+
+For Apache deployments, add to `.htaccess` or web server configuration:
+
 ```apache
 SetEnv WEBCALENDAR_USE_ENV true
 SetEnv WEBCALENDAR_DB_TYPE mysqli
@@ -116,8 +130,6 @@ SetEnv WEBCALENDAR_DB_LOGIN webcalendar
 SetEnv WEBCALENDAR_DB_PASSWORD "your_secure_password"
 SetEnv WEBCALENDAR_MODE prod
 ```
-
-Add these to your `.htaccess` file or web server configuration.
 
 ### Database Support
 
@@ -132,7 +144,7 @@ Legacy backends (code present, untested on PHP 8): Oracle, DB2, ODBC, Interbase
 Run the test suite with PHPUnit:
 
 ```bash
-# Install dependencies
+# Install dev dependencies (only needed for testing/development)
 composer install
 
 # Run PHPUnit tests
@@ -152,11 +164,9 @@ If you need to modify dependencies:
 # Install PHP dependencies (only needed for adding/updating dependencies)
 composer install
 
-# Copy vendor assets to project directories
+# Copy vendor assets to project directories (requires Linux — uses sha384sum)
 make
 ```
-
-Note: The Makefile requires Linux (uses `sha384sum`).
 
 ## External Application Integration
 
@@ -181,14 +191,14 @@ Create `includes/config-app-yourapp.php` to override settings dynamically.
 ## Roadmap
 
 ### v1.9.16 (Current)
-- PHP 8.0+ required (tested against 8.2, 8.3, 8.4)
+- PHP 8.2+ required (tested against 8.2, 8.3, 8.4)
 - New web-based installation/upgrade wizard
 - Headless CLI installer for automated deployments
 - MCP server for AI assistant integration
 - Multi-database Docker test infrastructure
 
 ### v2.0.0 (Planned)
-- Modernized codebase with PHP 8.1+ features
+- Modernized codebase with PHP 8.2+ features
 - Namespace implementation
 - Enhanced security and access control
 
@@ -211,7 +221,7 @@ Do not open a public issue for security reports.
 
 ## Contributing
 
-Contributions are welcome! Please:
+Contributions are welcome! Please read the [Contributing Guide](CONTRIBUTING.md) for details.
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -219,9 +229,17 @@ Contributions are welcome! Please:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+Bug reports and feature requests use [GitHub issue templates](https://github.com/craigk5n/webcalendar/issues/new/choose).
+
+This project has a [Code of Conduct](CODE_OF_CONDUCT.md). Please follow it in all interactions.
+
 ## License
 
 WebCalendar is licensed under the [GNU General Public License v2.0](LICENSE).
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release history.
 
 ## Links
 
