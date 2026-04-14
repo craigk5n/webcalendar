@@ -1,0 +1,213 @@
+<ul>
+<li>Installation/Setup 
+  <ul>
+    <li><a href="#faq_1">How do I setup PHP, MySQL and Apache on Windows?</a></li>
+    <li><a href="#faq_2">How do I setup PHP, MySQL and Apache on Mac OS X?</a></li>
+    <li><a href="#faq_3">How do I setup PHP, MySQL and Apache on UNIX/Linux?</a></li>
+    <li><a href="#faq_4">I've finished the install. What is the login to WebCalendar?</a></li>
+    <li><a href="#faq_5"><a id="samplepublic">I want to use WebCalendar as an events calendar for my organization. How do I set it up to do this?</a></a></li>
+    <li><a href="#faq_6">How can I add holidays to the calendar?</a></li>
+    <li><a href="#faq_7">Why are deleted events still present in the database?</a></li>
+    <li><a href="#faq_8">Can I setup more than one public calendar?</a></li>
+    <li><a href="#faq_9">How do I change the title "Public Access" at the top of the calendar?</a></li>
+    <li><a href="#faq_10">Can I embed WebCalendar as a component on another web page?</a></li>
+    <li><a href="#faq_11">How do I customize the appearance of WebCalendar so that it matches the rest of my site?</a></li>
+    <li><a href="#faq_12">How do I add a new translation?</a></li>
+    <li><a href="#faq_13">How do I update an existing translation?</a></li>
+    <li><a href="#faq_14">During Import, I receive this error: Unknown Timezone: XXXXX defaulting to GMT.</a></li>
+  </ul></li>
+<li>Troubleshooting 
+  <ul>
+    <li><a href="#faq_15">I get error messages about undefined variables when I try to view any page.</a></li>
+    <li><a href="#faq_16"><a id="dbCacheError">I receive an error message saying "Error removing temporary file" or "Cache error".</a></a></li>
+    <li><a href="#faq_17">I receive an error message saying "Failed opening 'includes/...' for inclusion ..."</a></li>
+    <li><a href="#faq_18">I get an error message from PHP saying "Call to undefined function: ..."</a></li>
+    <li><a href="#faq_19">When I try and view certain pages, nothing happens for 30 seconds, then I get a time-out error.</a></li>
+    <li><a href="#faq_20">I get an error message that says "Can't connect to local MySQL server through socket '/tmp/mysql.sock'."</a></li>
+    <li><a href="#faq_21">I am not receiving any email messages from WebCalendar.</a></li>
+    <li><a href="#faq_22">Some of the pages are displaying text in English rather than &lt;insert your language here></a></li>
+    <li><a href="#faq_23">The text that I entered in the Custom Event Fields is not being translated to different languages.</a></li>
+    <li><a href="#faq_24">How do I get the most recent version of WebCalendar?</a></li>
+    <li><a href="#faq_25">I get a database error indicating table <span class="tt">webcal_config</span> does not exist.</a></li>
+    <li><a href="#faq_26">I get a database error from MySQL that says "Client does not support authentication protocol."</a></li>
+  </ul></li>
+<li>Usage 
+  <ul>
+    <li><a href="#faq_27">Why do weeks start with Sunday instead of Monday?</a></li>
+    <li><a href="#faq_28">Can I sync events with Palm/PocketPC/Outlook/iCal?</a></li>
+    <li><a href="#faq_29">Why can't I edit an event that another user added to my calendar?</a></li>
+    <li><a href="#faq_30">I'm trying to add a user as a participant to an event, but they do not show up in the list of users.</a></li>
+  </ul></li>
+<li>Developing 
+  <ul>
+    <li><a href="#faq_31">Why aren't you using PHP sessions?</a></li>
+    <li><a href="#faq_32">Why aren't you using ADODB for database access?</a></li>
+    <li><a href="#faq_33">Why aren't you using the PEAR database functions?</a></li>
+    <li><a href="#faq_34">Why aren't you using a template engine like smarty?</a></li>
+    <li><a href="#faq_35">How do I install a patch?</a></li>
+  </ul></li>
+</ul>
+<hr/>
+<dl>
+<dt><a name="faq_1">How do I setup PHP, MySQL and Apache on Windows?</a></dt>
+<dd>The easiest way to do this is to try one of the prepackaged bundles that will install all of these for you:
+        <ul>
+          <li><a href="https://xampp-windows.en.softonic.com/download" title="Open in new window" target="_blank">XAMPP</a></li>
+<!-- [bad links]
+          <li><a href="http://foxserv.net" title="Open in new window" target="_blank">FoxServ</a></li>
+          <li><a href="http://sokkit.net" title="Open in new window" target="_blank">Sokkit</a> (formerly PHPTriad)</li>
+ -->
+        </ul>
+      </dd>
+<dt><a name="faq_2">How do I setup PHP, MySQL and Apache on Mac OS X?</a></dt>
+<dd>You can use the built-in Apache/PHP installed on Mac OS X. However, this does not include MySQL. An easier way to setup WebCalendar would be to use one of the following packages:
+        <ul>
+          <li><a href="http://apachefriends.org/en/xampp.html" title="Open in new window" target="_blank">XAMPP</a></li>
+        </ul>
+      </dd>
+<dt><a name="faq_3">How do I setup PHP, MySQL and Apache on UNIX/Linux?</a></dt>
+<dd>There are many online instructions on how to do this. Here are a few:
+        <ul>
+<!-- [bad links]
+          <li><a href="http://onlamp.com/pub/a/php/2000/11/17/php_admin.html" title="Open in new window" target="_blank">ONLamp.com: Basic Installation of PHP on a Unix System</a></li>
+          <li><a href="http://devshed.com/Server_Side/PHP/SoothinglySeamless/" title="Open in new window" target="_blank">Developer Shed: The Soothingly Seamless Setup of Apache, SSL, MySQL and PHP</a></li>
+          <li><a href="http://linuxhelp.net/guides/lamp/" title="Open in new window" target="_blank">Linux Help: LAMP Guide</a></li>
+ -->
+          <li><a href="http://php.net/manual/en/installation.php" title="Open in new window" target="_blank">PHP.net</a></li>
+        </ul>
+      </dd>
+<dt><a name="faq_4">I've finished the install. What is the login to WebCalendar?</a></dt>
+<dd>After the initial creation of the database tables, there will be a single user account created with the username "admin" and the password set to "admin" as well.<br><span class="note">Note:</span> This account is intended to get your started. You should create a new admin account and delete this one.</dd>
+<dt><a name="faq_5"><a id="samplepublic">I want to use WebCalendar as an events calendar for my organization. How do I set it up to do this?</a></a></dt>
+<dd>You will want to setup WebCalendar to use public access.
+        <ol>
+          <li>Setup your <span class="tt">settings.php</span> file as a multi-user system (see <a href="http://cvs.sourceforge.net/viewcvs.py/*checkout*/webcalendar/webcalendar/docs/WebCalendar-SysAdmin.html?rev=HEAD&amp;content-type=text/html#appsetup">instructions</a>).</li>
+          <li>In System Settings, set "Allow public access" to "Yes."</li>
+          <li>If you want people to be able to submit new events through public access, set "Public access can add events" to "Yes."</li>
+          <li>If you set "Public access can add events" to "Yes", set the setting for "Public access new events require approval" to your liking. If you set this to "Yes," an admin user will need to approve any new events before they will appear on the public access calendar.</li>
+          <li>Login using one of the accounts you have setup. Add a new event, and select "Public User" as one of the participants.</li>
+          <li>If you have enabled "Require event approvals" in your System Settings, then you will need to approve the new event. Choose the "Unapproved Events" at the bottom of any page (you must be an admin user to access this). You will be presented with a list of unapproved events (for both the current user and for the Public User account). Approve the new event for the Public User.</li>
+          <li>Go to the Login page. You will see a "Access public calendar" link that will bring you to the calendar for public access.</li>
+          <li>By default, the index.php page should send users to the public calendar.</li>
+        </ol>
+      </dd>
+<dt><a name="faq_6">How can I add holidays to the calendar?</a></dt>
+<dd>There is no built-in support for holidays because it is not necessary. You can add holidays into WebCalendar by importing one of the many iCalendar holiday files that are freely available.
+<!-- [bad links]
+        A good resource for free iCalendar files is
+        <a href="http://icalshare.com" target="_blank">iCalShare</a>.
+        For example, the U.S. holiday iCalendar file can be downloaded from:
+        <blockquote>
+          <a href="http://icalshare.com/article.php?story=20020912105939521" target="_blank">
+            http://icalshare.com/article.php?story=20020912105939521</a> </blockquote>
+ -->
+        If you don't want each individual user to have to import the holiday calendar, you can use nonuser calendars. First, make sure nonuser calendars are enabled in your system settings. Then, from Admin-&gt;Users, you can access nonuser calendars. Create a new nonuser calendar (such as "usholidays"). Then, notify your users that they can add this nonuser calendar as a layer to their own calendar in order to see the holidays.
+      </dd>
+<dt><a name="faq_7">Why are deleted events still present in the database?</a></dt>
+<dd>When you delete an event from your calendar, it is not deleted from the database. Instead, it is marked as deleted. This allows the system administrator access to information even after it is deleted.</dd>
+<dt><a name="faq_8">Can I setup more than one public calendar?</a></dt>
+<dd>You cannot directly setup two public calendars. However, there are two options for emulating this type of functionality:
+        <ul>
+          <li>You can <a href="WebCalendar-UserManual.html#categories">create global categories</a> and point users to the calendar with only a certain category displayed.</li>
+          <li>You can setup multiple NonUser calendars and enable public access viewing of other users' calendars. You can then link directly to the calendar of one of the NonUser calendars, or you can <a href="WebCalendar-UserManual.html#views">setup a view</a> that contains the calendar of one or more of the NonUser calendars.</li>
+        </ul>
+      </dd>
+<dt><a name="faq_9">How do I change the title "Public Access" at the top of the calendar?</a></dt>
+<dd>In the file <span class="tt">translations/English-US.txt</span>, change the line that says "Public Access" to what you want it to say on the right side.<br><br>Example:<pre>Public Access: Foobar Event Calendar</pre></dd>
+<dt><a name="faq_10">Can I embed WebCalendar as a component on another web page?</a></dt>
+<dd>WebCalendar is meant to be run as a standalone web application. You can customize the appearance of WebCalendar to match your existing site. To do this, In System Settings, set both "Custom header" and "Custom trailer" to "Yes" and press the "Edit" button to enter the header and trailer content.<br>If you are looking to just include a list of upcoming events in one of your web pages, you can use the <span class="tt">upcoming.php</span> page in WebCalendar to do this. Edit the top of this file to configure options. (These settings will likely move into System Settings in subsequent release.) You can then use an <span class="tt">iframe</span> elsewhere on your web site as in the example below: <pre>&lt;iframe src="upcoming.php" style="inline-size: 300px; block-size: 250px;" scrolling="yes"&gt;&lt;/iframe&gt;</pre> Include this HTML anywhere on any of your pages. By default, the events from the public calendar will be loaded (so you must have "Public Access" enabled in System Settings). You can override this with another user's calendar. (See <span class="tt">upcoming.php</span> for instructions on this.)<br><br>If you would like to display a small calendar (like the ones on the month view), you can add the following example. There are some configuration options available in the top of this file as well. You can then use an <span class="tt">iframe</span> elsewhere on your web site as in the example below: <pre>&lt;iframe src="minical.php" style="inline-size: 180px; block-size: 200px;" scrolling="yes"&gt;&lt;/iframe&gt;</pre></dd>
+<dt><a name="faq_11">How do I customize the appearance of WebCalendar so that it matches the rest of my site?</a></dt>
+<dd>You can customize the appearance of WebCalendar to match your existing site. To do this, In System Settings, set both "Custom header" and "Custom trailer" to "Yes", and press the "Save" button. Then click on the "Edit" button to enter your site content. The custom header will be included after the document's HTML <code>&lt;body&gt;</code> tag but before any WebCalendar content. The custom trailer will be included after the WebCalendar content and before the document's HTML <code>&lt;/body&gt;</code> tag. If you want to add JavaScript or Stylesheet data, you can use the "Custom script/stylesheet" option on the same System Settings page. Any content entered will be included within the document's HTML <code>&lt;head&gt;</code> section.</dd>
+<dt><a name="faq_12">How do I add a new translation?</a></dt>
+<dd>It's a fairly simple process. If you've ever translated a C-based app that used GNU's gettext tool, then you'll have no problem. The I18N support was based on GNU's <a href="http://gnu.org/software/gettext/gettext.html" title="Open in new window" target="_blank">gettext</a>. Here's what you need to do.
+        <ol>
+          <li>look in the "translations" directory</li>
+          <li>copy the <span class="tt">English-US.txt</span> file into what you'd like to call your language data file. (e.g. <span class="tt">cp English-US.txt French.txt</span>)</li>
+          <li>Now translate all the text to the _right_ of the ": " into the new language. Do <em>not</em> alter the text to the left of the ": ".</li>
+          <li>When you're done making changes, move into the "tools" directory. Run the <span class="tt">check_translation.pl</span> script on your new data file to make sure you have all the needed translations. (e.g. <span class="tt">perl check_translation.pl French</span>)</li>
+          <li>Add the new language to both the $languages array and the $browser_languages arrays defined in <span class="tt">includes/translate.php</span>.</li>
+          <li>Test it out...</li>
+          <li>Create a <a href="https://github.com/craigk5n/webcalendar/pulls" target="_blank">pull request on Github</a>.</li>
+        </ol>
+      </dd>
+<dt><a name="faq_13">How do I update an existing translation?</a></dt>
+<dd>Just open up the translation file in the <span class="tt">translations</span> directory with your favorite text editor (like vi, vim, emacs, pico, Notepad, etc.). In particular look for places where missing translations are indicated. All missing translations should be marked with a "&lt;&lt;&nbsp;MISSING&nbsp;&gt;&gt;" note. and typically the English version of the translation will also be included on the following line (as in the example below):
+        <pre># &lt;&lt; MISSING &gt;&gt;
+# Edit:
+#
+        </pre><br>For some text, an abbreviation may be used rather than the English text. In those cases, the full text will be noted as in the following example:
+        <pre># &lt;&lt; MISSING &gt;&gt;
+# custom-script-help:
+# English text: Allows entry of custom Javascript or stylesheet text that
+# will be inserted into the HTML "head" section of every page.
+#
+        </pre><br>When you're done making changes, move into the <span class="tt">tools</span> directory. Run the <span class="tt">check_translation.pl</span> script on your new data file to make sure you have all the needed translations: <pre class="tt">perl check_translation.pl French</pre> Create a <a href="https://github.com/craigk5n/webcalendar/pulls" target="_blank">pull request on Github</a>.
+      </dd>
+<dt><a name="faq_14">During Import, I receive this error: Unknown Timezone: XXXXX defaulting to GMT.</a></dt>
+<dd>This is a notice that your import file contained unknown timezone information. WebCalendar will simply save the event or task as GMT. You are encouraged to submit these notices as a new <a href="https://github.com/craigk5n/webcalendar/issues" target="_blank">Issue on Github</a>, so that WebCalendar can improve its TZID support.</dd>
+<dt><a name="faq_15">I get error messages about undefined variables when I try to view any page.</a></dt>
+<dd>On newer versions of PHP, the default setting of PHP is to display messages when an undefined variable is referenced. To prevent these messages from being displayed, change the setting of <span class="tt">error_reporting</span> in your <span class="tt">php.ini</span> file to be: <pre>error_reporting = E_ALL &amp; ~E_NOTICE</pre> Alternately, you can disable any error messages from being displayed in the browser and have them logged to a file. (See the comments included in the <span class="tt">php.ini</span> file for instructions on how to do this.)</dd>
+<dt><a name="faq_16"><a id="dbCacheError">I receive an error message saying "Error removing temporary file" or "Cache error".</a></a></dt>
+<dd>This indicates that a file in your database cache directory could not be deleted or created. The quickest solution to this problem is to not use the database cache. Simply remote the <span class="tt">db_cachedir</span> line from <span class="tt">includes/settings.php</span> with a simple text editor. This error is most common when the <span class="tt">send_reminders.php</span> script is run from a cron job under a different system account than the PHP application server is running under. This causes files created by the <span class="tt">send_reminders.php</span> script to be owned by a different user than normal, preventing the PHP application from being able to remove the files when needed.</dd>
+<dt><a name="faq_17">I receive an error message saying "Failed opening 'includes/...' for inclusion ..."</a></dt>
+<dd>You may have to modify the <span class="tt">include_path</span> setting in your <span class="tt">php.ini</span> file. Most users do not need to do this, but some PHP installs seem to require it. You will need to add the WebCalendar directory to the list of directories for <span class="tt">include_path</span>.</dd>
+<dt><a name="faq_18">I get an error message from PHP saying "Call to undefined function: ..."</a></dt>
+<dd>This tells you that your version of PHP is missing something that WebCalendar needs. If the function mentioned is a database login function (<em>ociplogin, mysql_pconnect, ibase_connect, pg_pconnect</em>), then you probably do not have the needed support for your database compiled into PHP. If the function is not a database connect call, then check the <a href="http://php.net/manual/en/" title="Open in new window" target="_blank">PHP manual</a> to see if the function requires a specific version of PHP. You may have an out-dated version of PHP that requires upgrading.</dd>
+<dt><a name="faq_19">When I try and view certain pages, nothing happens for 30 seconds, then I get a time-out error.</a></dt>
+<dd>On slower or very busy servers, it can take some time for the server to get all the events. Most PHP installations have a built-in timeout out of 30 seconds and will interrupt any request that takes longer than that. This is most likely to happen on the year-long custom report or on the month view when layers are being used. If you have access, you can increase the time-out value for PHP in the <span class="tt">php.ini</span> file by changing the setting of the <span class="tt">max_execution_time</span> setting.</dd>
+<dt><a name="faq_20">I get an error message that says "Can't connect to local MySQL server through socket '/tmp/mysql.sock'."</a></dt>
+<dd>This is a PHP/MySQL configuration issue. The value of <span class="tt">mysql.default_socket</span> in your <span class="tt">php.ini</span> file must match the value of <span class="tt">socket</span> in your <span class="tt">my.cnf</span> file. Edit the <span class="tt">php.ini</span> file to fix this problem.</dd>
+<dt><a name="faq_21">I am not receiving any email messages from WebCalendar.</a></dt>
+<dd>WebCalendar sends two types of email messages: Notifications<a href="#g_notification">*</a> and Reminders<a href="#g_reminder">*</a>. Check the following if you are not receiving any email:
+        <ol>
+          <li>You have defined a valid SMTP server in your PHP configuration file <span class="tt">php.ini</span>. (The setting is "SMTP" in the "mail_function" section.)</li>
+          <li>In WebCalendar's System Settings, you have set the "Email Enabled" setting to "Yes".</li>
+          <li>In WebCalendar's System Settings, make sure you have the "Default sender address" to something.<br><span class="note">Note:</span> Some mail system will reject mail that has a "From" address that is a different domain from the originating SMTP server. So, if your SMTP server is smtp.mydomain.com and your "Default sender address" is calendar@someotherdomain.com, some mail systems may bounce the mail back.</li>
+          <li>For a Notification, make sure you have the type of Notification set to "Yes" in the user's Preferences.</li>
+          <li>For a Reminder:
+            <ul>
+              <li>Make sure you have "Event reminders" set to "Yes" in the user's Preferences.</li>
+              <li>Make sure you have <a href="http://cvs.sourceforge.net/viewcvs.py/*checkout*/webcalendar/webcalendar/docs/WebCalendar-SysAdmin.html?rev=HEAD&amp;content-type=text/html#reminders">setup a cron job</a> to periodically run the <span class="tt">send_reminders.php</span> script.</li>
+            </ul>
+         </li>
+        </ol>
+      </dd>
+<dt><a name="faq_22">Some of the pages are displaying text in English rather than &lt;insert your language here></a></dt>
+<dd>The translations have been submitted at various points of WebCalendar development. Some have not been updated to include newer features.</dd>
+<dt><a name="faq_23">The text that I entered in the Custom Event Fields is not being translated to different languages.</a></dt>
+<dd>You will need to add an entry in each of the translation files for any text you add into the Custom Event Fields.</dd>
+<dt><a name="faq_24">How do I get the most recent version of WebCalendar?</a></dt>
+<dd>You can download the latest public release from Github: <a href="https://github.com/craigk5n/webcalendar/releases" target="_blank">WebCalendar Releases</a><br>You can download the latest development code from git using the Github repository:<br><code>git clone https://github.com/craigk5n/webcalendar.git</code></dd>
+<dt><a name="faq_25">I get a database error indicating table <span class="tt">webcal_config</span> does not exist.</a></dt>
+<dd>This is the first table that WebCalendar tries to access, so it typically means one of the following:
+        <ul>
+          <li>You have not created the database tables as described in the instructions</li>
+          <li>You have the wrong database name specified in your <span class="tt">includes/settings.php</span> file</li>
+        </ul>
+      </dd>
+<dt><a name="faq_26">I get a database error from MySQL that says "Client does not support authentication protocol."</a></dt>
+<dd>From the MySQL 5.0 Reference Manual: <blockquote>MySQL 5.0 uses an authentication protocol based on a password hashing algorithm that is incompatible with that used by older (pre-4.1) clients. If you upgrade the server from 4.0, attempts to connect to it with an older client may fail with the following message:<br><br>Client does not support authentication protocol requested by server; consider upgrading MySQL client</blockquote>
+<!-- [bad link]
+        The <a href="http://dev.mysql.com/doc/refman/5.0/en/old-client.html" target="_blank">MySQL
+          Reference Manual</a> has solutions for this problem.
+ -->
+      </dd>
+<dt><a name="faq_27">Why do weeks start with Sunday instead of Monday?</a></dt>
+<dd>The default setup of WebCalendar is to start weeks on Sunday. Your  system administrator can change the system default setting. You can  change the setting just for you in your <a href="http://cvs.sourceforge.net/viewcvs.py/*checkout*/webcalendar/webcalendar/docs/WebCalendar-UserManual.html?rev=HEAD&amp;content-type=text/html#pref">Preferences</a>.</dd>
+<dt><a name="faq_28">Can I sync events with Palm/PocketPC/Outlook/iCal?</a></dt>
+<dd>Export support is available for Palm and anything that supports iCal or vCal. Use the "Export" link at the bottom of each page.</dd>
+<dt><a name="faq_29">Why can't I edit an event that another user added to my calendar?</a></dt>
+<dd>If another user adds an event to your calendar, you cannot edit the event. This is a security restriction. You can reject the event rather than approve it, or you can delete the event from your calendar.</dd>
+<dt><a name="faq_30">I'm trying to add a user as a participant to an event, but they do not show up in the list of users.</a></dt>
+<dd>Your system administrator has enabled a feature that only allows you to view users that are in the same group(s) that you are in. Make sure the user is in one of the same groups that you are in.</dd>
+<dt><a name="faq_31">Why aren't you using PHP sessions?</a></dt>
+<dd>The <span class="tt">install/index.php</span> page <em>does</em> use PHP sessions. The cookie-based solution that WebCalendar uses is simple, and it will work with all versions of PHP.</dd>
+<dt><a name="faq_32">Why aren't you using ADODB for database access?</a></dt>
+<dd>Again, this would be overkill for what we need. ADODB is a fairly large project, so I'm partial to my leaner dbi4php.php solution.</dd>
+<dt><a name="faq_33">Why aren't you using the PEAR database functions?</a></dt>
+<dd>WebCalendar pre-dates the PEAR database functions. There does not seem to be sufficient reason to switch from our existing code at this point.</dd>
+<dt><a name="faq_34">Why aren't you using a template engine like smarty?</a></dt>
+<dd>WebCalendar pre-dates most of the template engines out there. We are currently evaluating some of the templating options and may consider moving to one of the template systems in the future.</dd>
+<dt><a name="faq_35">How do I install a patch?</a></dt>
+<dd>Different patches are applied differently. Some patches just contain an updated file. In that case, you should be able to just replace the old file with the new (assuming the new file and your install are based on the same version of WebCalendar).<br><br>Others are patch files, which usually have a <span class="tt">.diff</span> or <span class="tt">.patch</span> file extension. In order to use one of these files, you need the <a href="http://gnu.org/software/patch/patch.html" target="_blank">GNU patch</a> program. (This should be installed on all Linux systems and you can get a version for Windows. I use the patch program that comes with <a href="http://cygwin.com" target="_blank">Cygwin</a> on windows.) I would recommend testing the patch on your install first using the <span class="tt">--dry-run</span> option.<br><br>For example, if the patch file is called <span class="tt">calmods.diff</span>, then you would use: <pre>patch --dry-run &lt; calmods.diff</pre> If the program says it cannot determine which file to patch, try adding -p1: <pre>patch --dry-run -p1 &lt; calmods.diff</pre><br><br>If it goes through all the changes successfully, do the same command without the <span class="tt">--dry-run</span> option to install the patch. If it says "hunk failed", then the patch cannot be applied without hand-merging files. This essentially means that the patch was based on a version of WebCalendar that is too different than the version that you have installed, so it was unable to determine how to apply some of the changes in the patch file.</dd>
+</dl>

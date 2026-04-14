@@ -16,5 +16,6 @@ __pycache__
 *.sha
 sqlite-data
 tests/.phpunit.result.cache
+DOC_UPDATES.md
 vendor/
 wc-icons/

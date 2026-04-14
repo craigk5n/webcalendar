@@ -20,7 +20,7 @@
  *
  * If you're a Windows user, you'll either need to find a cron clone
  * for Windows (they're out there) or use the Windows Task Scheduler.
- * (See docs/WebCalendar-SysAdmin.html for instructions.)
+ * (See docs/admin-guide.md for instructions.)
  *
  * Comments:
  * You will need access to the PHP binary (command-line) rather than the

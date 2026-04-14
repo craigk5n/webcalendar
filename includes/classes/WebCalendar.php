@@ -664,8 +664,8 @@ class WebCalendar {
 
       // Check the current installation version.
       // Redirect user to install page if it is different from stored value.
-      // This will prevent running WebCalendar until UPGRADING.html has been
-      // read and required upgrade actions completed.
+      // This will prevent running WebCalendar until the upgrade wizard
+      // has been run and required upgrade actions completed.
       $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
          WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
       if ( $rows ) {

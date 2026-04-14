@@ -1,0 +1,58 @@
+site_name: WebCalendar Documentation
+site_url: https://craigk5n.github.io/webcalendar/
+repo_url: https://github.com/craigk5n/webcalendar
+repo_name: craigk5n/webcalendar
+edit_uri: edit/master/docs/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - content.action.edit
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - tables
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: installation.md
+    - Configuration: configuration.md
+    - Docker Deployment: docker.md
+    - Upgrade Guide: upgrade-guide.md
+  - User Guide:
+    - Using WebCalendar: user-guide.md
+    - Import & Export: import-export.md
+    - FAQ: faq.md
+  - Administration:
+    - Admin Guide: admin-guide.md
+    - Security: security.md
+    - Troubleshooting: troubleshooting.md
+  - Development:
+    - Developer Guide: developer-guide.md
+    - Database Schema: WebCalendar-Database.md
+    - MCP Server: mcp-server.md
+  - Migration:
+    - v1.x to v2.0: migration-v2.md

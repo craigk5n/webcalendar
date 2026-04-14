@@ -245,9 +245,14 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
   global $TIMEZONE, $use_vtimezone, $vtimezone_data;
 
   $ret = $vtimezone_exists = '';
-  // Use mktime (not gmmktime) so the server timezone and DST are applied
-  // when converting to UTC. Stored times are in server-local time.
-  $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ), false );
+  // Stored cal_time is already UTC for timed events: edit_entry_handler.php
+  // converts local wall time to a UTC epoch via mktime() and writes it with
+  // gmdate('His', ...). Use gmmktime (via $gmt=true) here to round-trip the
+  // stored UTC value; using mktime would re-apply the server TZ offset and
+  // shift exported times (see issue #74 re-diagnosis). For all-day/untimed
+  // events ($time == 0 or -1) the time component is unused for DATE-only
+  // output, so gmmktime is safe there too.
+  $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ), $time > 0 );
   $eventend = $eventstart + ( $duration * 60 );
   if ( $time == 0 && $duration == 1440 && strcmp( $texport, 'ical' ) == 0 ) {
     // all day.
@@ -267,7 +272,11 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
     $dtstart = $date . 'T000000';
     if ( $use_vtimezone && ( $vtimezone_data = get_vtimezone ( $TIMEZONE, $dtstart ) ) ) {
       $vtimezone_exists = true;
-      $ret .= 'DTSTART;TZID=' . $TIMEZONE . ':' . $utc_start . "\r\n";
+      // RFC 5545: a TZID-tagged value MUST be LOCAL wall time in that zone
+      // and MUST NOT carry the 'Z' UTC suffix. date() converts the UTC epoch
+      // to the PHP default TZ's wall clock (which matches $TIMEZONE here).
+      $local_start = date ( 'Ymd\THis', $eventstart );
+      $ret .= 'DTSTART;TZID=' . $TIMEZONE . ':' . $local_start . "\r\n";
     } else {
       $ret .= "DTSTART:$utc_start\r\n";
     }
@@ -296,7 +305,11 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
     else if ( $time > 0 ) {
       // timed  event
       if ( $vtimezone_exists ) {
-        $ret .= 'DTEND;TZID=' . $TIMEZONE . ':' . date ( 'Ymd', $eventend ) . "T000000\r\n";
+        // Local wall time in $TIMEZONE, no 'Z' suffix (see DTSTART note).
+        // The prior code hard-coded T000000 here, which lost the event's
+        // actual end time and shifted exports to midnight.
+        $local_end = date ( 'Ymd\THis', $eventend );
+        $ret .= 'DTEND;TZID=' . $TIMEZONE . ':' . $local_end . "\r\n";
       }else {
         $utc_end = export_ts_utc_date ( $eventend );
         $ret .= "DTEND:$utc_end\r\n";
@@ -1657,7 +1670,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
       // update Categories
       if ( ! empty( $Entry['Categories'] ) || $importcat != '') {
         $cat_ids = ( $importcat != ''
-          ? get_categories_id_byname( function_exists("utf8_decode") ? utf8_decode( $importcat ) : $importcat )
+          ? get_categories_id_byname( $importcat )
           : $Entry['Categories'] );
 
         $cat_order = 1;
@@ -2566,7 +2579,7 @@ function format_ical ( $event ) {
   if ( isset ( $event['categories'] ) ) {
     // $fevent['Categories']  will contain an array of cat_id(s) that match the
     // category_names
-    $fevent['Categories'] = get_categories_id_byname ( utf8_decode ( $event['categories'] ) );
+    $fevent['Categories'] = get_categories_id_byname ( $event['categories'] );
   }
   // Start and end time
   /* Snippet from RFC2445
@@ -2631,9 +2644,9 @@ function format_ical ( $event ) {
 
   if ( empty ( $event['summary'] ) )
     $event['summary'] = translate ( 'Unnamed Event' );
-  $fevent['Summary'] = utf8_decode ( $event['summary'] );
+  $fevent['Summary'] = $event['summary'];
   if ( ! empty ( $event['description'] ) ) {
-    $fevent['Description'] = utf8_decode ( $event['description'] );
+    $fevent['Description'] = $event['description'];
   } else {
     $fevent['Description'] = $fevent['Summary'];
   }
@@ -2707,11 +2720,11 @@ function format_ical ( $event ) {
   }
 
   if ( ! empty ( $event['location'] ) ) {
-    $fevent['Location'] = utf8_decode ( $event['location'] );
+    $fevent['Location'] = $event['location'];
   }
 
   if ( ! empty ( $event['url'] ) ) {
-    $fevent['URL'] = utf8_decode ( $event['url'] );
+    $fevent['URL'] = $event['url'];
   }
 
   if ( ! empty ( $event['priority'] ) ) {
