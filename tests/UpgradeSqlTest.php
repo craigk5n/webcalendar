@@ -83,6 +83,30 @@ final class UpgradeSqlTest extends TestCase
   }
 
   /**
+   * Every 'upgrade-function' named in the upgrade matrix must be defined
+   * in wizard/shared/upgrade-functions.php (or elsewhere).  Silently
+   * skipping an upgrade function caused data migrations for v1.1.0c,
+   * v1.1.0e, and v1.9.11 to no-op during the v1.3.0 -> v1.9.x upgrade
+   * path in #639.
+   */
+  public function test_every_upgrade_function_reference_resolves(): void
+  {
+    require_once __DIR__ . '/../wizard/shared/upgrade-functions.php';
+
+    global $updates;
+    $missing = [];
+    foreach ($updates as $update) {
+      if (!empty($update['upgrade-function'])) {
+        $fn = $update['upgrade-function'];
+        if (!function_exists($fn)) {
+          $missing[] = $update['version'] . ' -> ' . $fn;
+        }
+      }
+    }
+    $this->assertSame([], $missing, 'Upgrade-function references without a matching definition');
+  }
+
+  /**
    * Runtime code must not fatal-error when the wizard/ directory has been
    * removed post-install (users are instructed to rename/remove it).
    * Regression for GitHub issue #639 500/redirect-loop.

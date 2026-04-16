@@ -477,6 +477,10 @@ class WizardDatabase
   {
     if (str_starts_with($sql, 'function:')) {
       $func = substr($sql, 9);
+      // Lazy-load restored upgrade helpers from the old install/ directory
+      // (do_v11b_updates, do_v11e_updates, do_v1_9_11_updates).  See
+      // wizard/shared/upgrade-functions.php.
+      require_once __DIR__ . '/shared/upgrade-functions.php';
       if (function_exists($func)) {
         try {
           return $func($this->connection, $this->state);
@@ -485,7 +489,8 @@ class WizardDatabase
           return false;
         }
       }
-      return true;
+      $this->error = "Upgrade function not found: $func";
+      return false;
     }
 
     try {
