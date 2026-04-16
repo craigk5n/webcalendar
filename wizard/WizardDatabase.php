@@ -541,6 +541,7 @@ class WizardDatabase
       'Duplicate key name',       // MySQL: ADD INDEX on existing index
       'already exists',           // PostgreSQL/SQLite: column/table already exists
       'duplicate column name',    // SQLite: ALTER TABLE ADD on existing column
+      'Multiple primary key',     // MySQL/MariaDB: ADD PRIMARY KEY when PK already exists
     ];
     foreach ($ignorable as $pattern) {
       if (stripos($error, $pattern) !== false) {

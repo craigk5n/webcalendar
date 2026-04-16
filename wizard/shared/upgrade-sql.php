@@ -540,19 +540,19 @@ SQL
   ],
   [
     'version' => 'v1.9.6',
+    // webcal_entry_categories has had PRIMARY KEY (cal_id, cat_id, cat_order, cat_owner)
+    // since v1.1.0c-CVS, so ADD PRIMARY KEY here would fail with
+    // "Multiple primary key defined" on any real upgrade path. Keep only the
+    // defensive NULL -> '' cleanup in case any pre-PK data slipped through.
     'postgresql-sql' => <<<'SQL'
 UPDATE webcal_entry_categories SET cat_owner = '' WHERE cat_owner IS NULL;
-ALTER TABLE webcal_entry_categories ADD CONSTRAINT pkey_webcal_entry_categories PRIMARY KEY (cal_id, cat_id, cat_order, cat_owner);
 SQL,
     'default-sql' => <<<'SQL'
 UPDATE webcal_entry_categories SET cat_owner = '' WHERE cat_owner IS NULL;
-ALTER TABLE webcal_entry_categories ADD PRIMARY KEY (cal_id, cat_id, cat_order, cat_owner);
 SQL
     ,
     'sqlite3-sql' => <<<'SQL'
 UPDATE webcal_entry_categories SET cat_owner = '' WHERE cat_owner IS NULL;
--- SQLite does not support ALTER TABLE ADD PRIMARY KEY on existing tables
--- This would require recreating the table with the proper primary key
 SQL
   ],
   [

@@ -6520,7 +6520,17 @@ function sendCookie($name, $value, $expiration=0, $path='', $sensitive=true) {
  */
 function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
   global $updates;
-  require_once __DIR__ . '/../wizard/shared/upgrade-sql.php';
+  $upgradeSqlFile = __DIR__ . '/../wizard/shared/upgrade-sql.php';
+  if (!file_exists($upgradeSqlFile)) {
+    // The wizard/ directory is optional at runtime (users are told to
+    // remove or rename it after installing).  If it's gone we can't
+    // introspect per-version schema deltas, so conservatively report
+    // that an upgrade is required.  The caller will then show the
+    // "re-install the wizard/ directory" message instead of crashing
+    // on a failed require.
+    return true;
+  }
+  require_once $upgradeSqlFile;
 
   if ($db_type == 'mysqli')
     $db_type = 'mysql';
