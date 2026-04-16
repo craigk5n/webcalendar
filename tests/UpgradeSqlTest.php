@@ -48,6 +48,24 @@ final class UpgradeSqlTest extends TestCase
     );
   }
 
+  /**
+   * Fix A: the v1.9.11 MODIFY that makes webcal_categories.cat_owner NOT NULL
+   * must be preceded by the UPDATE that clears NULLs, otherwise MariaDB in
+   * strict mode returns "Data truncated for column 'cat_owner' at row 1".
+   */
+  public function test_v1911_clears_null_cat_owner_before_modify(): void
+  {
+    $sql = getSqlUpdates('v1.9.0', 'mysql', false);
+    $joined = implode("\n", $sql);
+
+    $updatePos = stripos($joined, "UPDATE webcal_categories SET cat_owner = '' WHERE cat_owner IS NULL");
+    $modifyPos = stripos($joined, 'MODIFY cat_owner VARCHAR(25) DEFAULT \'\' NOT NULL');
+
+    $this->assertNotFalse($updatePos, 'v1.9.11 must UPDATE NULL cat_owner rows first');
+    $this->assertNotFalse($modifyPos, 'v1.9.11 must still MODIFY cat_owner NOT NULL');
+    $this->assertLessThan($modifyPos, $updatePos, 'UPDATE must come before MODIFY');
+  }
+
   public function test_multiple_primary_key_error_is_ignored(): void
   {
     $ref = new ReflectionClass(WizardDatabase::class);
@@ -80,6 +98,81 @@ final class UpgradeSqlTest extends TestCase
       $method->invoke($db, 'Table webcal_entry does not exist'),
       'Genuine errors must still abort the upgrade'
     );
+  }
+
+  /**
+   * Fix C: executeCommand's error message must include the failing SQL so
+   * the user can tell which upgrade step tripped.
+   */
+  public function test_formatCommandError_includes_failing_sql(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('formatCommandError');
+    $method->setAccessible(true);
+
+    $state = new WizardState();
+    $db = new WizardDatabase($state);
+
+    $formatted = $method->invoke(
+      $db,
+      "Data truncated for column 'cat_owner' at row 1",
+      'ALTER TABLE webcal_categories MODIFY cat_owner VARCHAR(25) DEFAULT \'\' NOT NULL'
+    );
+    $this->assertStringContainsString("Data truncated for column 'cat_owner'", $formatted);
+    $this->assertStringContainsString('ALTER TABLE webcal_categories MODIFY cat_owner', $formatted);
+    $this->assertStringContainsString('Failed SQL:', $formatted);
+  }
+
+  public function test_formatCommandError_truncates_long_sql(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('formatCommandError');
+    $method->setAccessible(true);
+
+    $state = new WizardState();
+    $db = new WizardDatabase($state);
+
+    $longSql = 'INSERT INTO x VALUES (' . str_repeat('a', 1000) . ')';
+    $formatted = $method->invoke($db, 'boom', $longSql);
+    $this->assertLessThan(strlen($longSql) + 100, strlen($formatted));
+    $this->assertStringContainsString('...', $formatted);
+  }
+
+  /**
+   * Fix B: updateVersionInDb must propagate a failure (e.g. webcal_config
+   * missing) instead of silently returning true.  Previously this masked a
+   * post-install state where WEBCAL_PROGRAM_VERSION never got written and
+   * the app looped back to the wizard on every request.
+   */
+  public function test_updateVersionInDb_reports_failure_when_table_missing(): void
+  {
+    $dbFile = tempnam(sys_get_temp_dir(), 'wcver_');
+    $sqlite = new SQLite3($dbFile);
+    // Intentionally no webcal_config table -- the INSERT must fail.
+
+    $state = new WizardState();
+    $state->dbType = 'sqlite3';
+    $state->programVersion = 'v1.9.16';
+
+    $db = new WizardDatabase($state);
+
+    // Inject the connection via reflection (constructor doesn't take one).
+    $cRef = new ReflectionProperty(WizardDatabase::class, 'connection');
+    $cRef->setAccessible(true);
+    $cRef->setValue($db, $sqlite);
+
+    $mRef = new ReflectionMethod(WizardDatabase::class, 'updateVersionInDb');
+    $mRef->setAccessible(true);
+
+    try {
+      $result = $mRef->invoke($db);
+      $this->assertFalse($result, 'updateVersionInDb must return false when the INSERT fails');
+      $this->assertNotNull($db->getError(), 'Error message must be populated on failure');
+      $this->assertStringContainsString('WEBCAL_PROGRAM_VERSION', (string) $db->getError());
+    } finally {
+      $sqlite->close();
+      @unlink($dbFile);
+    }
   }
 
   /**

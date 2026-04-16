@@ -210,14 +210,14 @@ function do_v11e_updates($connection = null, $state = null): bool
  * be backed up by backing up the database alone.  Originally
  * install/install_functions.php::do_v1_9_11_updates.
  */
-function do_v1_9_11_updates($connection = null, $state = null): bool
+function do_v1_9_11_updates($connection = null, $state = null, ?string $iconDir = null): bool
 {
   if ($state !== null) {
     wizard_upgrade_bootstrap_dbi($state);
   }
 
-  // wizard/shared/ -> repo root -> wc-icons/
-  $icon_path = __DIR__ . '/../../wc-icons/';
+  // wizard/shared/ -> repo root -> wc-icons/ (overridable for tests)
+  $icon_path = $iconDir ?? __DIR__ . '/../../wc-icons/';
   if (!is_dir($icon_path)) {
     // No icon directory on disk; nothing to migrate.
     return true;

@@ -500,7 +500,7 @@ class WizardDatabase
           if ($this->isIgnorableSchemaError($error)) {
             return true;
           }
-          $this->error = $error;
+          $this->error = $this->formatCommandError($error, $sql);
           return false;
         }
       } elseif ($this->state->dbType === 'postgresql') {
@@ -509,7 +509,7 @@ class WizardDatabase
           if ($this->isIgnorableSchemaError($error)) {
             return true;
           }
-          $this->error = $error;
+          $this->error = $this->formatCommandError($error, $sql);
           return false;
         }
       } elseif ($this->state->dbType === 'sqlite3') {
@@ -518,7 +518,7 @@ class WizardDatabase
           if ($this->isIgnorableSchemaError($error)) {
             return true;
           }
-          $this->error = $error;
+          $this->error = $this->formatCommandError($error, $sql);
           return false;
         }
       }
@@ -528,7 +528,7 @@ class WizardDatabase
       if ($this->isIgnorableSchemaError($e->getMessage())) {
         return true;
       }
-      $this->error = $e->getMessage();
+      $this->error = $this->formatCommandError($e->getMessage(), $sql);
       return false;
     }
     return true;
@@ -539,6 +539,23 @@ class WizardDatabase
    * that occurs during idempotent upgrade operations (e.g. adding a
    * column that already exists).
    */
+  /**
+   * Format a DB-engine error message together with the failing SQL so
+   * the wizard UI can show the user which command tripped the upgrade.
+   * Long statements are truncated in the middle for readability.
+   */
+  private function formatCommandError(string $error, string $sql): string
+  {
+    $trimmed = trim(preg_replace('/\s+/', ' ', $sql));
+    $max = 400;
+    if (strlen($trimmed) > $max) {
+      $head = substr($trimmed, 0, 200);
+      $tail = substr($trimmed, -180);
+      $trimmed = $head . ' ... ' . $tail;
+    }
+    return $error . "\nFailed SQL: " . $trimmed;
+  }
+
   private function isIgnorableSchemaError(string $error): bool
   {
     $ignorable = [
@@ -563,14 +580,26 @@ class WizardDatabase
     if ($this->state->dbType === 'mysqli') {
       $sql = "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version') "
         . "ON DUPLICATE KEY UPDATE cal_value = '$version'";
-      $this->connection->query($sql);
+      if (!$this->connection->query($sql)) {
+        $this->error = 'Failed to stamp WEBCAL_PROGRAM_VERSION=' . $version
+          . ' in webcal_config: ' . $this->connection->error;
+        return false;
+      }
     } elseif ($this->state->dbType === 'postgresql') {
       $sql = "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version') "
         . "ON CONFLICT (cal_setting) DO UPDATE SET cal_value = '$version'";
-      pg_query($this->connection, $sql);
+      if (!@pg_query($this->connection, $sql)) {
+        $this->error = 'Failed to stamp WEBCAL_PROGRAM_VERSION=' . $version
+          . ' in webcal_config: ' . pg_last_error($this->connection);
+        return false;
+      }
     } elseif ($this->state->dbType === 'sqlite3') {
       $sql = "INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version')";
-      $this->connection->exec($sql);
+      if (!@$this->connection->exec($sql)) {
+        $this->error = 'Failed to stamp WEBCAL_PROGRAM_VERSION=' . $version
+          . ' in webcal_config: ' . $this->connection->lastErrorMsg();
+        return false;
+      }
     }
     return true;
   }

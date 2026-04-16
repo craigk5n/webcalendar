@@ -558,16 +558,21 @@ SQL
   [
     'version' => 'v1.9.11',
     'upgrade-function' => 'do_v1_9_11_updates',
+    // Clean up NULL cat_owner rows before the MODIFY below so MariaDB/MySQL
+    // in strict mode doesn't emit "Data truncated for column 'cat_owner' at
+    // row 1" when converting the column to NOT NULL.
     'default-sql' => <<<'SQL'
 ALTER TABLE webcal_categories ADD cat_status CHAR DEFAULT 'A';
 ALTER TABLE webcal_categories ADD cat_icon_mime VARCHAR(32) DEFAULT NULL;
 ALTER TABLE webcal_categories ADD cat_icon_blob LONGBLOB DEFAULT NULL;
+UPDATE webcal_categories SET cat_owner = '' WHERE cat_owner IS NULL;
 ALTER TABLE webcal_categories MODIFY cat_owner VARCHAR(25) DEFAULT '' NOT NULL;
 SQL,
     'postgresql-sql' => <<<'SQL'
 ALTER TABLE webcal_categories ADD COLUMN cat_status CHAR(1) DEFAULT 'A';
 ALTER TABLE webcal_categories ADD COLUMN cat_icon_mime VARCHAR(32) DEFAULT NULL;
 ALTER TABLE webcal_categories ADD COLUMN cat_icon_blob BYTEA DEFAULT NULL;
+UPDATE webcal_categories SET cat_owner = '' WHERE cat_owner IS NULL;
 ALTER TABLE webcal_categories ALTER COLUMN cat_owner TYPE VARCHAR(25);
 SQL
     ,
@@ -575,6 +580,7 @@ SQL
 ALTER TABLE webcal_categories ADD COLUMN cat_status CHAR(1) DEFAULT 'A';
 ALTER TABLE webcal_categories ADD COLUMN cat_icon_mime VARCHAR(32) DEFAULT NULL;
 ALTER TABLE webcal_categories ADD COLUMN cat_icon_blob BLOB DEFAULT NULL;
+UPDATE webcal_categories SET cat_owner = '' WHERE cat_owner IS NULL;
 -- SQLite does not support ALTER TABLE MODIFY, but column types are dynamic
 SQL
   ],
