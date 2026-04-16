@@ -151,45 +151,61 @@ class WizardDatabase
       $this->state->databaseExists = true;
     }
 
-    // Try to get version from webcal_config
-    $version = $this->getDbVersionFromConfig();
-    if ($version !== null) {
-      $this->state->detectedDbVersion = $version;
-      $this->state->databaseExists = true;
-      $this->state->databaseIsEmpty = false;
-      
-      // Check if upgrade is needed
-      if ($version !== $this->state->programVersion) {
-        $this->state->isUpgrade = true;
-        $this->loadUpgradeCommands($version);
-      }
-      
-      // Count admin users
-      $this->state->adminUserCount = $this->getAdminUserCount();
-      return;
-    }
-    
-    // Try to detect version from schema
-    $version = $this->getDatabaseVersionFromSchema();
+    // Authoritative detection: reconcile the stored version stamp
+    // (webcal_config.WEBCAL_PROGRAM_VERSION) with a live schema probe.
+    // The stamp alone is unreliable -- partial or failed upgrades can
+    // leave it pointing at a version older than the schema actually
+    // reflects.  The probe (getDatabaseVersionFromSchema) walks
+    // $database_upgrade_matrix and returns the highest version whose
+    // sentinel INSERT still works against the current schema.
+    $configVersion = $this->getDbVersionFromConfig();
+    $schemaVersion = $this->getDatabaseVersionFromSchema();
+    $version = $this->reconcileDbVersion($configVersion, $schemaVersion);
+
     if ($version !== null && $version !== 'Unknown') {
       $this->state->detectedDbVersion = $version;
       $this->state->databaseExists = true;
       $this->state->databaseIsEmpty = false;
-      
-      if ($version !== $this->state->programVersion) {
+
+      // Mark as upgrade when the reconciled version is behind the
+      // program version OR the stored stamp is stale.  Either case
+      // needs executeUpgrade() to run so updateVersionInDb() corrects
+      // the stamp; the SQL command list may be empty if the schema is
+      // already current and we're only fixing the stamp.
+      if ($version !== $this->state->programVersion || $configVersion !== $version) {
         $this->state->isUpgrade = true;
         $this->loadUpgradeCommands($version);
       }
-      
+
       $this->state->adminUserCount = $this->getAdminUserCount();
       return;
     }
-    
-    // Check if database is empty
+
+    // Nothing detected -- check if database is empty
     $this->state->databaseIsEmpty = $this->isEmptyDatabase();
     if (!$this->state->databaseIsEmpty) {
       $this->state->databaseExists = true;
     }
+  }
+
+  /**
+   * Pick the more-trustworthy of the stored stamp and the live schema
+   * probe.  If both are present, the higher (more-recent) wins -- a
+   * stale stamp left by a failed upgrade must not downgrade the real
+   * schema reading.  If the probe returned 'Unknown' we fall back to
+   * the stamp, and vice versa.
+   */
+  private function reconcileDbVersion(?string $configVersion, string $schemaVersion): ?string
+  {
+    if ($schemaVersion === '' || $schemaVersion === 'Unknown') {
+      return $configVersion;
+    }
+    if ($configVersion === null || $configVersion === '') {
+      return $schemaVersion;
+    }
+    $cfg = str_replace('v', '', strtolower($configVersion));
+    $sch = str_replace('v', '', strtolower($schemaVersion));
+    return version_compare($sch, $cfg, '>') ? $schemaVersion : $configVersion;
   }
   
   /**

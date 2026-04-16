@@ -18,6 +18,20 @@
  *     bad icon file doesn't abort the whole upgrade
  *   - The wc-icons path is updated for the new location (wizard/shared/
  *     instead of install/)
+ *
+ * IDEMPOTENCY NOTE
+ * ----------------
+ * Schema-based version detection (see WizardDatabase::checkDatabase) can
+ * accurately recover from partial/failed upgrades for SQL-only blocks
+ * because CREATE TABLE IF NOT EXISTS and the isIgnorableSchemaError()
+ * whitelist make re-running those blocks safe.  The functions below are
+ * NOT all idempotent -- notably do_v11b_updates' "cal_end + 1 day" loop
+ * would double-bump rows if re-run after partial completion.  If a
+ * function aborts mid-flight we can end up with silently corrupted data.
+ *
+ * New migration helpers added here should be written so they can be run
+ * more than once safely -- guard with a WHERE clause that matches only
+ * unmigrated rows, or record a migration marker in webcal_config.
  */
 
 require_once __DIR__ . '/../../includes/dbi4php.php';

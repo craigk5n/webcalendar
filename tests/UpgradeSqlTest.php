@@ -139,6 +139,45 @@ final class UpgradeSqlTest extends TestCase
   }
 
   /**
+   * Schema probe should win when the stored stamp is older than what
+   * the schema actually reflects -- classic partial-upgrade recovery
+   * scenario.
+   */
+  public function test_reconcileDbVersion_prefers_higher_schema_over_stale_config(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('reconcileDbVersion');
+    $method->setAccessible(true);
+
+    $db = new WizardDatabase(new WizardState());
+    $this->assertSame('v1.9.12', $method->invoke($db, 'v1.3.0', 'v1.9.12'));
+    $this->assertSame('v1.9.16', $method->invoke($db, 'v1.9.13', 'v1.9.16'));
+  }
+
+  public function test_reconcileDbVersion_keeps_higher_config_when_schema_behind(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('reconcileDbVersion');
+    $method->setAccessible(true);
+
+    $db = new WizardDatabase(new WizardState());
+    // Unusual -- shouldn't normally happen -- but don't downgrade.
+    $this->assertSame('v1.9.16', $method->invoke($db, 'v1.9.16', 'v1.9.12'));
+  }
+
+  public function test_reconcileDbVersion_falls_back_to_the_available_source(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('reconcileDbVersion');
+    $method->setAccessible(true);
+
+    $db = new WizardDatabase(new WizardState());
+    $this->assertSame('v1.3.0', $method->invoke($db, 'v1.3.0', 'Unknown'));
+    $this->assertSame('v1.9.12', $method->invoke($db, null, 'v1.9.12'));
+    $this->assertNull($method->invoke($db, null, 'Unknown'));
+  }
+
+  /**
    * Fix B: updateVersionInDb must propagate a failure (e.g. webcal_config
    * missing) instead of silently returning true.  Previously this masked a
    * post-install state where WEBCAL_PROGRAM_VERSION never got written and
