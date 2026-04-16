@@ -34,7 +34,7 @@ A modern Bootstrap 5-based installation wizard for WebCalendar v1.9.13+
 1. Upload WebCalendar files to your web server
 2. Access the wizard at: `http://yourserver/wizard/`
 3. Follow the step-by-step instructions
-4. Remove or rename the wizard directory when complete
+4. After logging in, run **Admin &gt; Security Audit** to review the wizard directory and other security recommendations
 
 ### CLI Installation (Headless)
 
@@ -150,10 +150,10 @@ The wizard automatically detects existing WebCalendar installations and handles 
 
 ## Security Notes
 
-- Always remove the wizard directory after installation: `rm -rf wizard/`
+- The wizard is password-protected, but after installation you can further restrict it — any of: `chmod 000 wizard/`, move it outside the web root, or leave it in place and rely on the wizard password. Deleting the directory isn't required and breaks upgrade detection at runtime.
+- Run **Admin &gt; Security Audit** after logging in to review the wizard directory and other hardening recommendations
 - Set proper permissions on `includes/settings.php`: `chmod 640`
-- Use strong passwords for both install wizard and admin accounts
-- Consider renaming the wizard directory during development
+- Use strong passwords for both the install wizard and admin accounts
 
 ## Compatibility
 
