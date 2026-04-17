@@ -663,19 +663,24 @@ class WebCalendar {
         doDbSanityCheck();
 
       // Check the current installation version.
-      // Redirect user to install page if it is different from stored value.
-      // This will prevent running WebCalendar until the upgrade wizard
-      // has been run and required upgrade actions completed.
-      $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
+      // Redirect user to the wizard if it is different from stored value.
+      // Read without the query cache -- see the matching note in
+      // includes/config.php for why (issue #639).
+      $rows = [];
+      $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
          WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
+      if ( $res ) {
+        while ( $row = dbi_fetch_row ( $res ) ) {
+          $rows[] = $row;
+        }
+        dbi_free_result ( $res );
+      }
       if ( $rows ) {
-              $row = $rows[0];
+        $row = $rows[0];
         if ( $row[0] != $PROGRAM_VERSION ) {
-          // &amp; does not work here...leave it as &
-          header ( 'Location: install/index.php?action=mismatch&version='
-                      . $row[0] );
-        exit;}
-
+          header ( 'Location: wizard/index.php' );
+          exit;
+        }
       }
     }
 

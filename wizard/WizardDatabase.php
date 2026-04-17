@@ -416,7 +416,33 @@ class WizardDatabase
     }
 
     // After successful upgrade, update version in webcal_config
-    return $this->updateVersionInDb();
+    if (!$this->updateVersionInDb()) {
+      return false;
+    }
+
+    // Invalidate the on-disk query cache (if configured).  The wizard
+    // writes via native drivers, which bypasses dbi4php's automatic
+    // cache-clear on non-SELECT statements, so stale cached rows --
+    // especially the WEBCAL_PROGRAM_VERSION row read by config.php --
+    // would otherwise pin the pre-upgrade state and loop users back
+    // into the wizard on every request (issue #639).
+    $this->clearQueryCache();
+    return true;
+  }
+
+  /**
+   * Delete all .dat files from the dbi4php query cache directory.
+   * Uses direct filesystem ops so we don't need to bootstrap dbi4php.
+   */
+  private function clearQueryCache(): void
+  {
+    $dir = $this->state->dbCacheDir ?? null;
+    if (empty($dir) || !is_dir($dir)) {
+      return;
+    }
+    foreach (glob(rtrim($dir, '/') . '/*.dat') ?: [] as $file) {
+      @unlink($file);
+    }
   }
 
   /**

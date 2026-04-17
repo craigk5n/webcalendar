@@ -364,10 +364,22 @@ function do_config($callingFromInstall=false)
   $c = @dbi_connect($db_host, $db_login, $db_password, $db_database, false);
 
   if ($c && !$callingFromInstall) {
-    $rows = dbi_get_cached_rows('SELECT cal_value FROM webcal_config
+    // IMPORTANT: read WEBCAL_PROGRAM_VERSION without the query cache.
+    // dbi_get_cached_rows() persists SELECT results to {db_cachedir}/*.dat
+    // and the wizard's updateVersionInDb() writes via native mysqli, which
+    // never triggers dbi4php's cache-invalidation path.  A stale cache
+    // file would pin the old version forever and loop the user back to
+    // the wizard on every request (issue #639).
+    $rows = [];
+    $res = dbi_execute('SELECT cal_value FROM webcal_config
       WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'');
+    if ($res) {
+      while ($row = dbi_fetch_row($res)) {
+        $rows[] = $row;
+      }
+      dbi_free_result($res);
+    }
 
-    //echo "<pre>"; print_r($rows); echo "</pre>"; exit;
     if (!$rows || empty($rows) || empty($rows[0])) {
       if (file_exists('wizard/index.php')) {
         header($locateStr);

@@ -178,6 +178,63 @@ final class UpgradeSqlTest extends TestCase
   }
 
   /**
+   * Cache busting: after the wizard completes an upgrade it must wipe
+   * the dbi4php on-disk query cache so config.php's next read of
+   * WEBCAL_PROGRAM_VERSION sees the fresh value instead of a stale
+   * .dat file cached while the DB was still at the old version.
+   * Without this the user loops back to the wizard forever (issue #639).
+   */
+  public function test_executeUpgrade_clears_query_cache_on_success(): void
+  {
+    $cacheDir = sys_get_temp_dir() . '/wc_cache_' . uniqid();
+    mkdir($cacheDir);
+    $stale = $cacheDir . '/deadbeef.dat';
+    file_put_contents($stale, 'stale');
+
+    try {
+      $dbFile = tempnam(sys_get_temp_dir(), 'wcclear_');
+      $sqlite = new SQLite3($dbFile);
+      $sqlite->exec('CREATE TABLE webcal_config (cal_setting TEXT PRIMARY KEY, cal_value TEXT)');
+
+      $state = new WizardState();
+      $state->dbType = 'sqlite3';
+      $state->programVersion = 'v1.9.16';
+      $state->dbCacheDir = $cacheDir;
+      $state->databaseIsEmpty = false;
+      $state->upgradeSqlCommands = [];
+
+      $db = new WizardDatabase($state);
+      $cRef = new ReflectionProperty(WizardDatabase::class, 'connection');
+      $cRef->setAccessible(true);
+      $cRef->setValue($db, $sqlite);
+
+      $this->assertTrue($db->executeUpgrade());
+      $this->assertFileDoesNotExist($stale, 'Cache .dat files must be purged after a successful upgrade');
+
+      $sqlite->close();
+      @unlink($dbFile);
+    } finally {
+      @array_map('unlink', glob($cacheDir . '/*'));
+      @rmdir($cacheDir);
+    }
+  }
+
+  public function test_clearQueryCache_noop_when_cachedir_unset(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('clearQueryCache');
+    $method->setAccessible(true);
+
+    $state = new WizardState();
+    $state->dbCacheDir = null;
+    $db = new WizardDatabase($state);
+
+    // Should not throw even when no cache dir is configured.
+    $method->invoke($db);
+    $this->addToAssertionCount(1);
+  }
+
+  /**
    * Fix B: updateVersionInDb must propagate a failure (e.g. webcal_config
    * missing) instead of silently returning true.  Previously this masked a
    * post-install state where WEBCAL_PROGRAM_VERSION never got written and
