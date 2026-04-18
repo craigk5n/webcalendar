@@ -266,8 +266,8 @@ if (empty($thisday))
   $thisday = date('d');
 
 ?>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2" aria-controls="navbarNavDropdown navbarLogoutCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="navbar-collapse collapse w-50 order-1 order-md-0 dual-collapse2" id="navbarNavDropdown">
@@ -542,7 +542,7 @@ if (empty($thisday))
     </ul>
   </div>
 
-  <div class="mx-auto order-0 w-30">
+  <div class="mx-auto order-0">
     <ul class="navbar-nav mxr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -701,7 +701,7 @@ if (empty($thisday))
   </div>
 
   <?php if (!$use_http_auth && $single_user != 'Y') { ?>
-    <div class="navbar-collapse collapse w-20 order-3 dual-collapse2">
+    <div class="navbar-collapse collapse order-3 dual-collapse2" id="navbarLogoutCollapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown-menu-right">
           <a class="nav-link" href="<?php echo $logout_url; ?>">Logout</a>
