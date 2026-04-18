@@ -543,7 +543,7 @@ if (empty($thisday))
   </div>
 
   <div class="mx-auto order-0">
-    <ul class="navbar-nav mxr-auto">
+    <ul class="navbar-nav flex-row mxr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <?php etranslate('Month'); ?>
