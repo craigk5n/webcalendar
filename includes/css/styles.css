@@ -344,7 +344,7 @@ a#programname {
 }
 
 .tt {
-  font-family: 'Lucida Console', monospace";
+  font-family: 'Lucida Console', monospace;
 }
 
 #activitylog .next,
@@ -1406,10 +1406,8 @@ table.ThemeMenubar {
   height: 0.3em;
 }
 
-<?php
-// No 2nd level submenu built into Bootstrap v4.
-// Got this from here: https://ricard.dev/bootstrap-4-second-level-menu-nav/
-?>
+/* No 2nd level submenu built into Bootstrap v4.
+   Source: https://ricard.dev/bootstrap-4-second-level-menu-nav/ */
 
 .dropdown-submenu {
   position: relative;
