@@ -71,7 +71,14 @@ if ( $REQUEST_METHOD == 'POST' ) {
     exit;
   }
 
-  $query_params = [getPostValue ( 'template' ), $type, $user];
+  // Read template value directly from $_POST rather than via getPostValue().
+  // This field is intentionally designed to accept raw HTML (<link>, <script>,
+  // etc.) for the admin-defined custom header/stylesheet/trailer, which the
+  // banned-tag XSS filter in preventHacking() would otherwise block. CSRF and
+  // admin permissions have already been verified above. dbi_execute() uses
+  // prepared statements, so no manual escaping is needed.
+  $template_text = isset ( $_POST['template'] ) ? $_POST['template'] : '';
+  $query_params = [$template_text, $type, $user];
 
   if ( $found )
     $sql = 'UPDATE webcal_user_template SET cal_template_text = ?

@@ -100,6 +100,18 @@ textarea {
   /*font-size:.75rem;*/
   overflow:auto;
 }
+/* Firefox's UA stylesheet can override Bootstrap's `font-size:inherit`
+   on native form widgets. Re-assert inheritance so controls like the
+   category selector render at the parent's size on Firefox too. */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family:inherit;
+  font-size:inherit;
+  line-height:inherit;
+}
 table {
   border:0;
   border-collapse:collapse;
@@ -971,6 +983,18 @@ table#nextmonth {
 }
 table#prevmonth {
   float: left;
+}
+/* On narrow viewports the two floated mini-calendars can't fit side by
+   side and drop into separate rows, pushing the main title far down.
+   Drop the floats on small screens so they lay out inline-block and
+   stack gracefully when space is tight. */
+@media (max-width: 576px) {
+  table#prevmonth,
+  table#nextmonth {
+    float:none;
+    display:inline-block;
+    vertical-align:top;
+  }
 }
 #month .minical caption,
 #viewl .minical caption {
