@@ -986,13 +986,15 @@ table#prevmonth {
 }
 /* On narrow viewports the two floated mini-calendars can't fit side by
    side and drop into separate rows, pushing the main title far down.
-   Drop the floats on small screens so they lay out inline-block and
-   stack gracefully when space is tight. */
+   Drop the floats on small screens so they lay out inline and stack
+   gracefully when space is tight. Uses `inline-table` rather than
+   `inline-block` so the <caption> keeps its table-caption semantics
+   and `caption-side: top` is still honored (#640). */
 @media (max-width: 576px) {
   table#prevmonth,
   table#nextmonth {
     float:none;
-    display:inline-block;
+    display:inline-table;
     vertical-align:top;
   }
 }
