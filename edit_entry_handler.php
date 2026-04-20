@@ -775,11 +775,13 @@ if( empty( $error ) ) {
           || $extra_type == EXTRA_TEXT
           || $extra_type == EXTRA_URL
           || $extra_type == EXTRA_USER ) {
-        // We were passed an array instead of a string.
+        // Multi-select returns an array of selected option values; flatten
+        // it to a comma-separated string for storage. All other extras types
+        // already arrive as scalars from getPostValue() above and must be
+        // left alone — a prior "else $value = ''" here wiped every non-array
+        // site_extras value on save (#641).
         if( $extra_type == EXTRA_SELECTLIST && $extra_arg2 > 0 && is_array($value))
           $value = implode( ',', $value );
-        else
-          $value = '';
 
         $sql = 'INSERT INTO webcal_site_extras ( cal_id, cal_name, cal_type,
           cal_data ) VALUES ( ?, ?, ?, ? )';
