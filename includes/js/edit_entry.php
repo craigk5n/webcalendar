@@ -592,79 +592,198 @@ function toggle_rem_rep() {
  ( elements['rem_rep_count'].value == 0 );
 }
 
+// i18n strings for the category modal, emitted server-side as JSON literals
+// so names can safely contain quotes / unicode without breaking JS parsing.
+var CAT_I18N = {
+  add:      <?php echo json_encode(translate('Add')); ?>,
+  moveUp:   <?php echo json_encode(translate('Move up')); ?>,
+  moveDown: <?php echo json_encode(translate('Move down')); ?>,
+  remove:   <?php echo json_encode(translate('Remove')); ?>,
+  position: <?php echo json_encode(translate('Position')); ?>,
+  none:     <?php echo json_encode(translate('None')); ?>
+};
+
 function editCats ( evt ) {
-  var obj;
-
-  $('#catModal').modal('show');
-
-  var cat_ids = elements['cat_id'].value;
-  var selected_ids = cat_ids.split ( ',' );
-
-<?php
-  foreach ( $categories as $catid => $cat ) {
-    if ( $catid == 0 || $catid == -1 )
-      continue; // Ignore these special cases (0=All, -1=None)
-    ?>
-    var checkboxId = 'cat_<?php echo $catid;?>';
-    obj = document.getElementById ( checkboxId );
-    if ( obj ) {
-      // Is this selected??
-      var sel = false;
-      for ( i = 0; i < selected_ids.length; i++ ) {
-        if ( selected_ids[i] == <?php echo $catid;?> )
-          sel = true;
-      }
-      obj.checked = sel;
-    } else {
-      // Note: this happens when an admin edits a user's personal event.
-      //alert ( "Could not find '" + checkboxId + "' in DOM" );
-    }
-  <?php
+  // Seed the modal from the hidden input, preserving its stored order.
+  var rawIds = ( document.getElementById('cat_id').value || '' ).split(',');
+  var selected = [];
+  for ( var i = 0; i < rawIds.length; i++ ) {
+    var id = parseInt ( rawIds[i], 10 );
+    if ( id > 0 ) selected.push ( id );
   }
-  ?>
+  window.catModalState = {
+    all: ( window.WebCalCategories || [] ).slice(),
+    selectedIds: selected
+  };
+  renderCatModal();
+  $('#catModal').modal('show');
+}
 
+function renderCatModal () {
+  var state = window.catModalState;
+  var available = document.getElementById('catAvailableList');
+  var selectedList = document.getElementById('catSelectedList');
+  if ( ! available || ! selectedList ) return;
+  available.innerHTML = '';
+  selectedList.innerHTML = '';
+
+  var byId = {};
+  for ( var i = 0; i < state.all.length; i++ ) byId[state.all[i].id] = state.all[i];
+
+  // Drop any selected IDs that aren't in the eligible set (defensive).
+  var validSelected = [];
+  for ( var s = 0; s < state.selectedIds.length; s++ ) {
+    if ( byId[state.selectedIds[s]] ) validSelected.push ( state.selectedIds[s] );
+  }
+  state.selectedIds = validSelected;
+
+  for ( var p = 0; p < validSelected.length; p++ ) {
+    selectedList.appendChild ( buildSelectedRow ( byId[validSelected[p]], p, validSelected.length ) );
+  }
+
+  var selectedSet = {};
+  for ( var q = 0; q < validSelected.length; q++ ) selectedSet[validSelected[q]] = true;
+  for ( var r = 0; r < state.all.length; r++ ) {
+    var cat = state.all[r];
+    if ( ! selectedSet[cat.id] ) {
+      available.appendChild ( buildAvailableRow ( cat ) );
+    }
+  }
+}
+
+function buildAvailableRow ( cat ) {
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'list-group-item list-group-item-action';
+  btn.setAttribute ( 'data-cat-id', String(cat.id) );
+  btn.setAttribute ( 'aria-label', CAT_I18N.add + ': ' + cat.name );
+  // Use textContent so category names cannot inject HTML.
+  var nameSpan = document.createElement('span');
+  nameSpan.textContent = cat.name;
+  btn.appendChild ( nameSpan );
+  if ( cat.global ) {
+    var sup = document.createElement('sup');
+    sup.textContent = '*';
+    btn.appendChild ( sup );
+  }
+  btn.onclick = function () { catAdd ( cat.id ); };
+  return btn;
+}
+
+function buildSelectedRow ( cat, idx, total ) {
+  var li = document.createElement('li');
+  li.className = 'list-group-item d-flex align-items-center justify-content-between';
+  li.setAttribute ( 'data-cat-id', String(cat.id) );
+
+  var label = document.createElement('span');
+  label.textContent = cat.name;
+  if ( cat.global ) {
+    var sup = document.createElement('sup');
+    sup.textContent = '*';
+    label.appendChild ( sup );
+  }
+  li.appendChild ( label );
+
+  var group = document.createElement('div');
+  group.className = 'btn-group btn-group-sm';
+
+  var up = document.createElement('button');
+  up.type = 'button';
+  up.className = 'btn btn-outline-secondary';
+  up.setAttribute ( 'aria-label', CAT_I18N.moveUp + ': ' + cat.name );
+  up.textContent = '▲'; // ▲
+  if ( idx === 0 ) up.disabled = true;
+  up.onclick = function () { catMove ( cat.id, -1 ); };
+  group.appendChild ( up );
+
+  var down = document.createElement('button');
+  down.type = 'button';
+  down.className = 'btn btn-outline-secondary';
+  down.setAttribute ( 'aria-label', CAT_I18N.moveDown + ': ' + cat.name );
+  down.textContent = '▼'; // ▼
+  if ( idx === total - 1 ) down.disabled = true;
+  down.onclick = function () { catMove ( cat.id, 1 ); };
+  group.appendChild ( down );
+
+  var rem = document.createElement('button');
+  rem.type = 'button';
+  rem.className = 'btn btn-outline-danger';
+  rem.setAttribute ( 'aria-label', CAT_I18N.remove + ': ' + cat.name );
+  rem.textContent = '×'; // ×
+  rem.onclick = function () { catRemove ( cat.id ); };
+  group.appendChild ( rem );
+
+  li.appendChild ( group );
+  return li;
+}
+
+function catAdd ( id ) {
+  var s = window.catModalState;
+  if ( s.selectedIds.indexOf ( id ) === -1 ) s.selectedIds.push ( id );
+  renderCatModal();
+  focusSelectedRow ( id, 0 );
+}
+
+function catRemove ( id ) {
+  var s = window.catModalState;
+  var idx = s.selectedIds.indexOf ( id );
+  if ( idx !== -1 ) s.selectedIds.splice ( idx, 1 );
+  renderCatModal();
+  var avail = document.querySelector ( '#catAvailableList [data-cat-id="' + id + '"]' );
+  if ( avail ) avail.focus();
+}
+
+function catMove ( id, delta ) {
+  var s = window.catModalState;
+  var idx = s.selectedIds.indexOf ( id );
+  if ( idx === -1 ) return;
+  var target = idx + delta;
+  if ( target < 0 || target >= s.selectedIds.length ) return;
+  var tmp = s.selectedIds[idx];
+  s.selectedIds[idx] = s.selectedIds[target];
+  s.selectedIds[target] = tmp;
+  renderCatModal();
+  var status = document.getElementById('catReorderStatus');
+  if ( status ) {
+    status.textContent = CAT_I18N.position + ': ' + ( target + 1 ) + ' / ' + s.selectedIds.length;
+  }
+  // Re-focus the same direction button so repeated presses keep working.
+  focusSelectedRow ( id, delta < 0 ? 0 : 1 );
+}
+
+function focusSelectedRow ( id, btnIndex ) {
+  var row = document.querySelector ( '#catSelectedList [data-cat-id="' + id + '"]' );
+  if ( ! row ) return;
+  var btns = row.querySelectorAll('button');
+  if ( ! btns.length ) return;
+  var target = btns[btnIndex];
+  if ( target && ! target.disabled ) {
+    target.focus();
+    return;
+  }
+  for ( var i = 0; i < btns.length; i++ ) {
+    if ( ! btns[i].disabled ) { btns[i].focus(); return; }
+  }
 }
 
 function catOkHandler () {
-  // Get selected categories
-  var catIds = '', catNames = '';
-<?php
-  foreach ( $categories as $catid => $cat ) {
-    echo ' // Processing catid=' . $catid . "\n";
-    if ( $catid == 0 || $catid == -1 )
-      continue; // Ignore these special cases (0=All, -1=None)
-    ?>
-  var checkboxId = 'cat_<?php echo $catid;?>';
-  var nameId = 'cat_<?php echo $catid;?>_text';
-  obj = document.getElementById ( checkboxId );
-  if ( obj ) {
-    if ( obj.checked ) {
-      if ( catIds.length > 0 ) {
-        catIds += ',';
-        catNames += ', ';
-      }
-      catIds += '<?php echo $catid;?>';
-      catNames += '<?php echo addslashes($cat['cat_name']);?>';
-    }
-  } else {
-    // Note: this can happen when an admin is editing a user's personal
-    // event.
-    //if ( ! obj )
-    //  alert ( "Could not find " + checkboxId );
-    //else
-    //  alert ( "Could not find " + nameId );
+  var s = window.catModalState || { selectedIds: [], all: [] };
+  var byId = {};
+  for ( var i = 0; i < s.all.length; i++ ) byId[s.all[i].id] = s.all[i];
+
+  var idParts = [], nameParts = [];
+  for ( var j = 0; j < s.selectedIds.length; j++ ) {
+    var cat = byId[s.selectedIds[j]];
+    if ( ! cat ) continue;
+    idParts.push ( cat.id );
+    nameParts.push ( cat.name );
   }
-<?php
-  }
-?>
-  var cats = $('#entry_categories');
-  if (catNames.length == 0) {
-    catNames = "<?php etranslate("None") ?>";
-  }
-  cats.val(catNames);
-  var catId = $('#cat_id');
-  catId.val(catIds);
-  //console.log("cat_id.value = " + catId.value);
+
+  document.getElementById('cat_id').value = idParts.join(',');
+  var displayText = nameParts.join(', ');
+  if ( displayText.length === 0 ) displayText = CAT_I18N.none;
+  document.getElementById('entry_categories').value = displayText;
+
   $('#catModal').modal('hide');
   return true;
 }

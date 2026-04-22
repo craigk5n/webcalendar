@@ -1608,9 +1608,35 @@ $tabI = 0;
 <br>
 
 
-<?php /* Create a hidden div tag for editing categories... */ ?>
+<?php /* Hidden modal for editing (and ordering) event categories. */ ?>
+<?php
+// Build the set of categories eligible for this editor. Visibility rule
+// mirrors the legacy modal: user's own categories, global categories,
+// admins, and admin-editing-user flow. Consumed by JS in the modal.
+$cat_modal_data = [];
+if (!empty($categories)) {
+  foreach ($categories as $K => $V) {
+    if ($K > 0 && (($V['cat_owner'] == $login || $V['cat_global'] > 0)
+      || $is_admin || substr($form ?? '', 0, 4) == 'edit')) {
+      $cat_modal_data[] = [
+        'id' => (int) $K,
+        'name' => $V['cat_name'],
+        'global' => empty($V['cat_owner']),
+      ];
+    }
+  }
+}
+?>
+<script>
+window.WebCalCategories = <?php
+  echo json_encode(
+    $cat_modal_data,
+    JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE
+  );
+?>;
+</script>
 <div class="modal" id="catModal" tabindex="-1">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title"><?php etranslate("Edit Categories"); ?></h5>
@@ -1619,26 +1645,19 @@ $tabI = 0;
         </button>
       </div>
       <div class="modal-body">
-        <form name="editCatForm" id="editCatForm">
-
-          <?php
-          if (!empty($categories)) {
-            foreach ($categories as $K => $V) {
-              // None is index -1 and needs to be ignored
-              if ($K > 0 && (($V['cat_owner'] == $login || $V['cat_global'] > 0)
-                || $is_admin || substr($form, 0, 4) == 'edit')) {
-                $tmpStr = $K . '">' . $V['cat_name'];
-                echo '<input type="checkbox" name="cat_' . $K . '" ' .
-                  'id="cat_' . $K . '"><label for="cat_' . $K . '">' .
-                  htmlentities($V['cat_name']);
-                if (empty($V['cat_owner']))
-                  echo '<sup>*</sup>';
-                echo "</label><br>\n";
-              }
-            }
-          }
-          ?>
-        </form>
+        <div class="row">
+          <div class="col-sm-6">
+            <label class="font-weight-bold" for="catAvailableList"><?php etranslate('Available categories'); ?>:</label>
+            <ul class="list-group" id="catAvailableList"
+                aria-label="<?php etranslate('Available categories'); ?>"></ul>
+          </div>
+          <div class="col-sm-6">
+            <label class="font-weight-bold" for="catSelectedList"><?php etranslate('Selected categories'); ?>:</label>
+            <ul class="list-group" id="catSelectedList"
+                aria-label="<?php etranslate('Selected categories'); ?>"></ul>
+          </div>
+        </div>
+        <div id="catReorderStatus" aria-live="polite" class="sr-only"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php etranslate("Cancel"); ?></button>
