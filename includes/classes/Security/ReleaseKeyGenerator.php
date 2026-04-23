@@ -122,4 +122,71 @@ final class ReleaseKeyGenerator
     }
     return base64_encode($rawSecretKey);
   }
+
+  /**
+   * Validate that a base64-encoded secret-key env var (the value stored
+   * in the GitHub Actions secret RELEASE_SIGNING_KEY) is well-formed
+   * and that the public key derived from it matches the given expected
+   * raw public key (the committed `release-signing-pubkey.pem`).
+   *
+   * Returns a result envelope rather than throwing because the CI
+   * verification workflow needs to surface the failure reason to the
+   * operator, not crash with an uncaught exception.
+   *
+   * The reason string is carefully constructed to never contain the
+   * secret-key input — log-safe even on failure.
+   *
+   * @return array{valid: bool, reason: string}
+   */
+  public static function verifySecretKeyEnvMatchesPublicKey(
+    #[\SensitiveParameter] ?string $secretKeyBase64,
+    string $expectedPublicKey32Bytes
+  ): array {
+    if ($secretKeyBase64 === null || $secretKeyBase64 === '') {
+      return [
+        'valid' => false,
+        'reason' => 'RELEASE_SIGNING_KEY is empty or unset.',
+      ];
+    }
+
+    $decoded = base64_decode($secretKeyBase64, true);
+    if ($decoded === false) {
+      return [
+        'valid' => false,
+        'reason' => 'RELEASE_SIGNING_KEY is not valid base64.',
+      ];
+    }
+
+    if (strlen($decoded) !== SODIUM_CRYPTO_SIGN_SECRETKEYBYTES) {
+      return [
+        'valid' => false,
+        'reason' => 'RELEASE_SIGNING_KEY must decode to '
+          . SODIUM_CRYPTO_SIGN_SECRETKEYBYTES . ' bytes; got '
+          . strlen($decoded) . '.',
+      ];
+    }
+
+    if (strlen($expectedPublicKey32Bytes) !== SODIUM_CRYPTO_SIGN_PUBLICKEYBYTES) {
+      return [
+        'valid' => false,
+        'reason' => 'Expected public key must be '
+          . SODIUM_CRYPTO_SIGN_PUBLICKEYBYTES . ' bytes; got '
+          . strlen($expectedPublicKey32Bytes) . '.',
+      ];
+    }
+
+    $derived = sodium_crypto_sign_publickey_from_secretkey($decoded);
+    if (!hash_equals($expectedPublicKey32Bytes, $derived)) {
+      return [
+        'valid' => false,
+        'reason' => 'RELEASE_SIGNING_KEY does not match release-signing-pubkey.pem '
+          . '(keypair mismatch — the secret does not correspond to the committed public key).',
+      ];
+    }
+
+    return [
+      'valid' => true,
+      'reason' => 'RELEASE_SIGNING_KEY matches release-signing-pubkey.pem.',
+    ];
+  }
 }

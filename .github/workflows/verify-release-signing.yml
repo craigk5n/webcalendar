@@ -1,0 +1,44 @@
+name: Verify Release Signing Key
+
+# Dry-run verification that RELEASE_SIGNING_KEY is correctly set up in the
+# `release` GitHub environment AND that the secret half corresponds to the
+# public key committed at release-signing-pubkey.pem.
+#
+# Manual trigger only (workflow_dispatch) — run from the Actions tab after
+# creating / rotating the signing key.
+#
+# The workflow fails hard if:
+#   - RELEASE_SIGNING_KEY is not set.
+#   - RELEASE_SIGNING_KEY is not valid base64 or the wrong length.
+#   - The public key derived from the secret does not match the committed
+#     release-signing-pubkey.pem (keypair mismatch).
+#
+# The secret is never written to logs. GitHub auto-masks secret values in
+# workflow output, and the verifier script prints only a generic reason
+# string on failure.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    # Scoping to the `release` environment is what actually enforces
+    # AC3: secrets defined on this environment are NEVER passed to
+    # workflows triggered by pull_request from forks.
+    environment: release
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: sodium
+          tools: none
+
+      - name: Verify RELEASE_SIGNING_KEY matches release-signing-pubkey.pem
+        env:
+          RELEASE_SIGNING_KEY: ${{ secrets.RELEASE_SIGNING_KEY }}
+        run: php tools/verify-release-signing-key.php

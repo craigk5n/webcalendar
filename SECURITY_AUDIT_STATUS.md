@@ -102,15 +102,28 @@ rotation story.
 - Keypair generated via `tools/generate-release-key.php` (from Story 1.1). Secret key half stashed in a mode-0600 tmp file outside the repo, handed off to maintainer for the GitHub-secret step (Story 1.3). Secret was not committed, logged, or echoed into any tracked file.
 - The pubkey alone is not load-bearing: releases cannot be signed until Story 1.3 (GitHub secret creation) completes. If the secret is lost before then, regenerate both halves with the same tool — the only cleanup is replacing the `.pem` file.
 
-### Story 1.3 — Store the private key as a GitHub secret ⬜
+### Story 1.3 — Store the private key as a GitHub secret 🟨
 **As** the maintainer
 **I want** the signing key available to Actions but to no human
 **So that** releases can be signed automatically without exposing material
 
 **Acceptance criteria:**
-- [ ] GitHub repository secret `RELEASE_SIGNING_KEY` created (base64 of the 64-byte libsodium secret key).
-- [ ] Secret's environment scope restricted to the release workflow only (Settings → Environments → "release" environment).
-- [ ] Confirmed via a dry-run job that the secret is readable inside the release workflow but NOT inside a fork's PR workflow.
+- [ ] GitHub repository secret `RELEASE_SIGNING_KEY` created (base64 of the 64-byte libsodium secret key). **← maintainer action required:** paste the value from the mode-0600 tmp file handed off at the end of Story 1.2 into the `release` environment's secret list at https://github.com/craigk5n/webcalendar/settings/environments/release
+- [x] Secret's environment scope restricted to the release workflow only. *(the `release` environment was created via `gh api -X PUT repos/craigk5n/webcalendar/environments/release`; environment id 14510892733)*
+- [x] Confirmed via a dry-run job that the secret is readable inside the release workflow but NOT inside a fork's PR workflow. *(new workflow `.github/workflows/verify-release-signing.yml` — manual trigger via Actions UI, scoped to `environment: release`. GitHub's built-in environment-secret semantics block access from forked PRs. The workflow calls `tools/verify-release-signing-key.php` which derives the public key from the secret and compares to the committed `release-signing-pubkey.pem` — proving the two halves belong to the same keypair without ever logging the secret.)*
+
+**TDD:** 8 new tests added to `tests/ReleaseKeyGeneratorTest.php` for the new `ReleaseKeyGenerator::verifySecretKeyEnvMatchesPublicKey()` static method: empty/null input, invalid base64, wrong secret length, wrong expected-pubkey length, mismatched keypair, matching keypair, and a log-safety test asserting that reason strings never contain the secret input. Total suite now 27 tests / 55 assertions, all passing.
+
+**Implementation notes:**
+- Added `WebCalendar\Security\ReleaseKeyGenerator::verifySecretKeyEnvMatchesPublicKey(?string, string): array{valid, reason}`. Uses `sodium_crypto_sign_publickey_from_secretkey()` to derive and `hash_equals()` to compare. Returns an envelope rather than throwing so the CI workflow can print a clean operator message.
+- New CLI `tools/verify-release-signing-key.php` — reads `RELEASE_SIGNING_KEY` from env, parses `release-signing-pubkey.pem`, calls the verify method, exits 0 on match and 1 otherwise. Smoke-tested locally: unset env → fail, invalid base64 → fail, real-secret-from-tmp → pass.
+- New workflow `.github/workflows/verify-release-signing.yml` — `workflow_dispatch` only (no PR triggers → no fork exposure). Setup-PHP v2 on 8.4 with ext-sodium, runs the verifier with `RELEASE_SIGNING_KEY` injected from `secrets.RELEASE_SIGNING_KEY`.
+
+**Final step for the maintainer (≤2 minutes):**
+1. Run `cat /tmp/tmp.zDw8uYglAQ` (or wherever you stashed it) and copy the 88-character base64 line that appears after "paste this value".
+2. Go to https://github.com/craigk5n/webcalendar/settings/environments/release → Add environment secret → Name: `RELEASE_SIGNING_KEY`, Value: `(paste)`.
+3. `shred -u /tmp/tmp.zDw8uYglAQ` to scrub local copy.
+4. Go to the Actions tab → "Verify Release Signing Key" → Run workflow. A green run confirms AC1.
 
 ---
 
