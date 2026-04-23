@@ -132,24 +132,45 @@ rotation story.
 **Goal:** Every tagged release publishes `MANIFEST.sha256` and `MANIFEST.sha256.sig`
 alongside the zip, and both files are also embedded inside the zip at the repo root.
 
-### Story 2.1 — `tools/build-manifest.php` script ⬜
+### Story 2.1 — `tools/build-manifest.php` script 🟩
 **As** the release workflow
 **I want** a single PHP script that emits the manifest
 **So that** manifest generation is reproducible locally and in CI
 
 **Acceptance criteria:**
-- [ ] Script reads `release-files` (one path per line) and produces `MANIFEST.sha256` on stdout.
-- [ ] Each line is `<64-hex-sha256><two spaces><relative-path>` (matching `sha256sum` format).
-- [ ] Lines are sorted by relative path (lexicographic, LC_ALL=C) for reproducibility.
-- [ ] Header comment lines (prefixed with `# `) include: `webcalendar-version`, `build-timestamp` (ISO 8601 UTC), `git-sha`. Header is included in the signed bytes.
-- [ ] LF line endings throughout; no trailing whitespace; final LF present.
-- [ ] Script exits non-zero if any file in `release-files` is missing.
-- [ ] Script produces byte-identical output across two consecutive runs on the same tree (reproducibility test).
+- [x] Script reads a file-list (default `release-files`) and produces `MANIFEST.sha256` on stdout.
+- [x] Each line is `<64-hex-sha256><two spaces><relative-path>` (matching GNU `sha256sum` format). *(cross-checked against `sha256sum`: hashes match byte-for-byte.)*
+- [x] Lines are sorted by relative path (lexicographic, LC_ALL=C-equivalent via `sort($paths, SORT_STRING)`). *(covered by `testHashLinesAreSortedLexicographicallyByPath` and `testSortIsLcAllCByteOrderNotLocaleAware`.)*
+- [x] Header comment lines (prefixed with `# `) include: `webcalendar-version`, `build-timestamp` (ISO 8601 UTC), `git-sha`. Header is included in the signed bytes.
+- [x] LF line endings throughout; no trailing whitespace; final LF present.
+- [x] Script exits non-zero if any file in the list is missing.
+- [x] Script produces byte-identical output across two consecutive runs on the same tree. *(honors `SOURCE_DATE_EPOCH` for reproducible-builds timestamp pinning; `testTwoRunsProduceIdenticalBytes` locks in the determinism at the class level.)*
+
+**TDD:** New test file `tests/ManifestBuilderTest.php` — 15 tests, 27 assertions, all passing. Covers: header metadata, header-before-hashes ordering, sha256sum-format hash lines, lowercase hex + exactly two spaces, lexicographic sort, LC_ALL=C byte-order sort, LF-only line endings, single trailing LF, no trailing whitespace, missing-file RuntimeException with path in message, unreadable-file RuntimeException, reproducibility, raw-bytes hashing (no line-ending normalization), nested path preservation.
+
+**Implementation notes:**
+- Pure logic in `WebCalendar\Security\ManifestBuilder::build()`; I/O in the CLI wrapper `tools/build-manifest.php` (flag parsing, composer.json version read, `$GITHUB_SHA` / `git rev-parse HEAD` fallback, `$SOURCE_DATE_EPOCH` honoring).
+- The CLI defaults `--list` to `release-files` but any list can be passed — useful for testing and for generating partial manifests during `release-files` cleanup (Story 2.5).
+- Reproducibility design: `build-timestamp` is the only time-varying field. The release workflow can pin it by exporting `SOURCE_DATE_EPOCH` (e.g., to the tag timestamp). Without the pin, second-to-second drift is the only source of byte variance — hashes and sort order are deterministic given the same tree.
+- Pre-existing bug surfaced during smoke-test: `release-files` contains ~185 stale entries (entire `install/` tree replaced by `wizard/`, CKEditor assets, deleted translations). Today's release workflow silently `cp`s past these because it doesn't `set -e`. Story 2.5 tracks the cleanup.
+
+### Story 2.5 — Clean up stale entries in `release-files` ⬜ (NEW)
+**As** the maintainer
+**I want** `release-files` to list exactly the files that exist on disk
+**So that** `build-manifest.php` (strict mode) does not fail, AND the release zip actually contains a consistent, documented file set
+
+**Context:** surfaced by Story 2.1's smoke test. 185 of 443 entries reference files that were deleted in prior commits (most notably cc0d41cf which replaced `install/` with `wizard/`). The existing `release.yml` silently swallows these via `cp` without `set -e`. `build-manifest.php` correctly rejects missing files, so Story 2.3 (workflow wiring) is blocked until this is resolved.
+
+**Acceptance criteria:**
+- [ ] Every non-empty, non-comment line in `release-files` resolves to an existing tracked file at repo root.
+- [ ] `release-files` includes new files that SHOULD ship but currently don't (e.g., files under `wizard/`, `docs/` migrations) — this part requires maintainer judgment.
+- [ ] `.github/workflows/release.yml` gains `set -e` (or equivalent `-euo pipefail` for bash) so future drift fails loudly instead of silently.
+- [ ] A CI check (or a test) asserts `release-files` is consistent with the filesystem; drift becomes a build-break.
 
 **TDD:**
-- Unit test: fixture with 3 files → manifest has 3 hash lines + header + sorted order.
-- Unit test: missing file → non-zero exit, stderr mentions the missing path.
-- Unit test: two runs produce identical bytes (reproducibility).
+- Unit/integration test: walk `release-files`, assert every entry is a real file. Placed in `tests/` so CI catches regressions.
+
+**Blocks:** Story 2.3.
 
 ### Story 2.2 — `tools/sign-manifest.php` script ⬜
 **As** the release workflow
