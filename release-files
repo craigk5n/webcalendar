@@ -349,6 +349,7 @@ purge.php
 README.md
 register.php
 reject_entry.php
+release-signing-pubkey.pem
 remotecal_mgmt.php
 report.php
 resourcecal_mgmt.php

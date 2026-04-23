@@ -85,16 +85,22 @@ rotation story.
 - CLI wrapper: `tools/generate-release-key.php` (chmod +x, shebang line).
 - PHPStan level-0 clean on new files (matches repo config).
 
-### Story 1.2 — Commit the public key file ⬜
+### Story 1.2 — Commit the public key file 🟩
 **As** the maintainer
 **I want** the public key stored in the repo
 **So that** every install can verify its own manifest
 
 **Acceptance criteria:**
-- [ ] `release-signing-pubkey.pem` committed at repo root.
-- [ ] File contents: standard PEM block (`-----BEGIN WEBCALENDAR RELEASE PUBLIC KEY-----` / `-----END WEBCALENDAR RELEASE PUBLIC KEY-----`) wrapping base64 of the 32-byte raw Ed25519 public key.
-- [ ] Added to `release-files` so it ships in the zip.
-- [ ] `.gitignore` updated to reject any `release-signing-privkey*` filename, defense-in-depth against accidental commits.
+- [x] `release-signing-pubkey.pem` committed at repo root.
+- [x] File contents: standard PEM block (`-----BEGIN WEBCALENDAR RELEASE PUBLIC KEY-----` / `-----END WEBCALENDAR RELEASE PUBLIC KEY-----`) wrapping base64 of the 32-byte raw Ed25519 public key. *(verified by `testPublicKeyFileParsesToExactlyThirtyTwoBytes`)*
+- [x] Added to `release-files` so it ships in the zip. Inserted alphabetically between `reject_entry.php` and `remotecal_mgmt.php`. *(verified by `testPublicKeyFileIsListedInReleaseFiles`)*
+- [x] `.gitignore` updated to reject any `release-signing-privkey*` filename, defense-in-depth against accidental commits. *(verified by `testPrivateKeyIsNotAccidentallyCommitted`)*
+
+**TDD:** New test file `tests/ReleaseSigningPubkeyTest.php` — 5 tests, 8 assertions, all passing. Covers: file presence at repo root, PEM round-trip decode to 32 bytes, LF line endings, listed in `release-files`, no accidental privkey commit.
+
+**Implementation notes:**
+- Keypair generated via `tools/generate-release-key.php` (from Story 1.1). Secret key half stashed in a mode-0600 tmp file outside the repo, handed off to maintainer for the GitHub-secret step (Story 1.3). Secret was not committed, logged, or echoed into any tracked file.
+- The pubkey alone is not load-bearing: releases cannot be signed until Story 1.3 (GitHub secret creation) completes. If the secret is lost before then, regenerate both halves with the same tool — the only cleanup is replacing the `.pem` file.
 
 ### Story 1.3 — Store the private key as a GitHub secret ⬜
 **As** the maintainer
