@@ -253,6 +253,10 @@ print_header();
 </table>
 
 <?php
+// File integrity section — verifies the signed MANIFEST.sha256 against the
+// installed tree. See SECURITY_AUDIT_STATUS.md (issue #233, Story 3.5).
+render_file_integrity_section();
+
 echo print_trailer();
 
 exit;
@@ -287,6 +291,207 @@ function get_wc_path($filename)
     // Oops. This file is not named security_audit.php
     die_miserable_death('Crap! Someone renamed security_audit.php');
 }
+/**
+ * Render the "File integrity" section (signed-manifest feature, issue #233).
+ *
+ * This is a new section added after the existing audit table. It:
+ *   1. Checks for the three signed-manifest artifacts at install root.
+ *      If any are missing, shows a soft notice and returns.
+ *   2. Verifies the MANIFEST.sha256 Ed25519 signature. On failure, shows
+ *      the reason and RETURNS — never displays scan results, because
+ *      an unverified manifest cannot be trusted.
+ *   3. On successful verification: parses the manifest, walks the
+ *      install tree, classifies every file (MATCH/MODIFIED/MISSING/EXTRA),
+ *      and renders three tables grouped by kind.
+ *
+ * Noise-filter support (Story 4.2) is not yet wired — this section always
+ * shows every finding. The AC for Story 3.5 defers filtering to 4.2.
+ */
+function render_file_integrity_section(): void
+{
+  // Require the Security namespace classes — no composer autoloader
+  // wiring per D10.
+  require_once __DIR__ . '/includes/classes/Security/ReleaseKeyGenerator.php';
+  require_once __DIR__ . '/includes/classes/Security/VerifyResult.php';
+  require_once __DIR__ . '/includes/classes/Security/ManifestVerifier.php';
+  require_once __DIR__ . '/includes/classes/Security/ManifestData.php';
+  require_once __DIR__ . '/includes/classes/Security/ManifestParser.php';
+  require_once __DIR__ . '/includes/classes/Security/ScanEntryKind.php';
+  require_once __DIR__ . '/includes/classes/Security/ScannedFile.php';
+  require_once __DIR__ . '/includes/classes/Security/ScanReport.php';
+  require_once __DIR__ . '/includes/classes/Security/ExcludeRules.php';
+  require_once __DIR__ . '/includes/classes/Security/InstallationScanner.php';
+  require_once __DIR__ . '/includes/classes/Security/Severity.php';
+  require_once __DIR__ . '/includes/classes/Security/SeverityClassifier.php';
+
+  $rootDir = __DIR__;
+  $manifestPath = $rootDir . '/MANIFEST.sha256';
+  $sigPath = $rootDir . '/MANIFEST.sha256.sig';
+  $pubkeyPath = $rootDir . '/release-signing-pubkey.pem';
+
+  echo '<h3 class="mt-4">' . htmlspecialchars(
+    translate('File integrity'),
+    ENT_QUOTES | ENT_SUBSTITUTE,
+    'UTF-8'
+  ) . '</h3>';
+
+  if (!is_file($manifestPath) || !is_file($sigPath) || !is_file($pubkeyPath)) {
+    echo '<div class="alert alert-secondary">' . htmlspecialchars(
+      translate('Manifest files not present (install may be from source or pre-1.9.x release)'),
+      ENT_QUOTES | ENT_SUBSTITUTE,
+      'UTF-8'
+    ) . '</div>';
+    return;
+  }
+
+  $verify = WebCalendar\Security\ManifestVerifier::verify(
+    $manifestPath,
+    $sigPath,
+    $pubkeyPath
+  );
+
+  if (!$verify->valid) {
+    $msg = str_replace(
+      'XXX',
+      $verify->reason,
+      translate('Manifest signature FAILED: XXX')
+    );
+    echo '<div class="alert alert-danger"><strong>'
+      . htmlspecialchars($msg, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8')
+      . '</strong></div>';
+    // Trust boundary: a tampered manifest cannot be trusted to describe
+    // what "should" be on disk, so never show scan results.
+    return;
+  }
+
+  echo '<div class="alert alert-success">'
+    . htmlspecialchars(
+      translate('Manifest signature valid'),
+      ENT_QUOTES | ENT_SUBSTITUTE,
+      'UTF-8'
+    )
+    . '</div>';
+
+  try {
+    $manifest = WebCalendar\Security\ManifestParser::parse($manifestPath);
+  } catch (Throwable $e) {
+    echo '<div class="alert alert-danger">'
+      . htmlspecialchars(
+        'Manifest parse error: ' . $e->getMessage(),
+        ENT_QUOTES | ENT_SUBSTITUTE,
+        'UTF-8'
+      )
+      . '</div>';
+    return;
+  }
+
+  $excludes = new WebCalendar\Security\ExcludeRules([
+    'includes/settings.php',
+    'includes/site_extras.php',
+    'MANIFEST.sha256',
+    'MANIFEST.sha256.sig',
+    'tools/',
+    'tests/',
+    'docs/',
+    'vendor/',
+    '.git/',
+    '.github/',
+  ]);
+
+  $report = WebCalendar\Security\InstallationScanner::scan(
+    $manifest,
+    $rootDir,
+    $excludes
+  );
+
+  $summary = str_replace(
+    'XXX',
+    (string) $report->matchedCount,
+    translate('Scanned XXX files against manifest')
+  );
+  echo '<p>' . htmlspecialchars(
+    $summary . ' (v' . $manifest->version . ', '
+      . $manifest->buildTimestamp->format('Y-m-d') . ')',
+    ENT_QUOTES | ENT_SUBSTITUTE,
+    'UTF-8'
+  ) . '</p>';
+
+  render_integrity_table(translate('Modified files'), $report->modified);
+  render_integrity_table(translate('Missing files'), $report->missing);
+  render_integrity_table(translate('Extra files'), $report->extra);
+
+  if ($report->modified === [] && $report->missing === [] && $report->extra === []) {
+    echo '<div class="alert alert-success">'
+      . htmlspecialchars(
+        translate('No file integrity issues detected.'),
+        ENT_QUOTES | ENT_SUBSTITUTE,
+        'UTF-8'
+      )
+      . '</div>';
+  }
+}
+
+/**
+ * @param list<WebCalendar\Security\ScannedFile> $files
+ */
+function render_integrity_table(string $heading, array $files): void
+{
+  if ($files === []) {
+    return;
+  }
+
+  $encHeading = htmlspecialchars($heading, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+  echo '<h4 class="mt-3">' . $encHeading
+    . ' <span class="badge bg-secondary">' . count($files) . '</span></h4>';
+  echo '<table class="table table-sm table-striped table-responsive">';
+  echo '<thead><tr>'
+    . '<th>' . htmlspecialchars(translate('Path'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</th>'
+    . '<th>' . htmlspecialchars(translate('Severity'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</th>'
+    . '<th>' . htmlspecialchars(translate('Action'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</th>'
+    . '</tr></thead><tbody>';
+  foreach ($files as $f) {
+    $sev = WebCalendar\Security\SeverityClassifier::classify($f);
+    echo '<tr>'
+      . '<td><code>' . htmlspecialchars($f->path, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</code></td>'
+      . '<td>' . severity_badge_html($sev) . '</td>'
+      . '<td>' . htmlspecialchars(action_hint_for($f->kind), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</td>'
+      . '</tr>';
+  }
+  echo '</tbody></table>';
+}
+
+function severity_badge_html(WebCalendar\Security\Severity $s): string
+{
+  switch ($s) {
+    case WebCalendar\Security\Severity::CRITICAL:
+      return '<span class="badge bg-danger">'
+        . htmlspecialchars(translate('Critical'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8')
+        . '</span>';
+    case WebCalendar\Security\Severity::WARN:
+      return '<span class="badge bg-warning text-dark">'
+        . htmlspecialchars(translate('Warning'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8')
+        . '</span>';
+    case WebCalendar\Security\Severity::INFO:
+      return '<span class="badge bg-info text-dark">'
+        . htmlspecialchars(translate('Info'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8')
+        . '</span>';
+  }
+  return '';
+}
+
+function action_hint_for(WebCalendar\Security\ScanEntryKind $k): string
+{
+  switch ($k) {
+    case WebCalendar\Security\ScanEntryKind::MODIFIED:
+      return translate('Restore from release zip if not intentional');
+    case WebCalendar\Security\ScanEntryKind::MISSING:
+      return translate('Restore from release zip');
+    case WebCalendar\Security\ScanEntryKind::EXTRA:
+      return translate('Review contents and remove if not legitimate');
+  }
+  return '';
+}
+
 /**
  * Determine if a directory or file is writable
  */

@@ -992,6 +992,27 @@ recommend setting XXX Off: The recommended setting for "XXX" is Off.
 recommend setting XXX On: recommend setting XXX On
 recommend setting allow_url_fopen Off: The recommended setting for "allow_url_fopen" is Off when remote calendars are not enabled.
 
+#
+# File-integrity section of security_audit.php (issue #233).
+#
+File integrity: File integrity
+Manifest files not present (install may be from source or pre-1.9.x release): Manifest files not present (install may be from source or pre-1.9.x release).
+Manifest signature valid: Manifest signature is valid.
+Manifest signature FAILED: XXX: Manifest signature FAILED: XXX
+Scanned XXX files against manifest: Scanned XXX files against manifest
+No file integrity issues detected.: No file integrity issues detected.
+Modified files: Modified files
+Missing files: Missing files
+Extra files: Extra files
+Critical: Critical
+Warning: Warning
+Info: Info
+Restore from release zip if not intentional: Restore from release zip if this change was not intentional.
+Restore from release zip: Restore this file from the release zip.
+Review contents and remove if not legitimate: Review contents; remove if not legitimate (unexpected executable files may indicate a webshell).
+Path: Path
+Severity: Severity
+
 ########################################
 # Page: freebusy.php
 #

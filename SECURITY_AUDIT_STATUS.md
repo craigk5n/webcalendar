@@ -252,7 +252,7 @@ This story was fully satisfied as a side-effect of Stories 1.2 and 2.3. No dedic
 
 ---
 
-## Epic 3 — Audit-Time Verification (PHP in app) 🟨
+## Epic 3 — Audit-Time Verification (PHP in app) 🟩
 
 **Goal:** `security_audit.php` gains a new section that verifies the signature, walks
 the filesystem, and reports discrepancies with appropriate severity.
@@ -404,22 +404,31 @@ the filesystem, and reports discrepancies with appropriate severity.
 - Expanded the INFO set beyond AC to include font files, data files (yaml/toml/csv/tsv), and `js` — none of these execute in a PHP context when dropped into the install tree.
 - Full signed-manifest suite now: 140 tests / 267 assertions green. PHPStan level-0 clean.
 
-### Story 3.5 — `security_audit.php` integration ⬜
+### Story 3.5 — `security_audit.php` integration 🟩
 **As** the admin
 **I want** the audit page to show the new results alongside existing checks
 **So that** the existing UX remains familiar
 
 **Acceptance criteria:**
-- [ ] New section in `security_audit.php` titled "File integrity" rendered after existing issues.
-- [ ] Shows signature verification status at the top: PASS (green) / FAIL (red with reason).
-- [ ] If verification fails, does NOT display file-level results (manifest is untrusted).
-- [ ] If verification passes, shows three tables: Modified files, Missing files, Extra files, each filtered by the active noise filter (Story 4.2).
-- [ ] Each row: path, severity badge, action hint ("Review contents", "Restore from release zip", etc.).
-- [ ] Summary line: "Scanned N files against manifest version X.Y.Z signed on $date."
-- [ ] Translation strings added to `translations/English-US.txt` (`'File integrity'`, `'Manifest signature'`, `'Manifest signature valid'`, `'Manifest signature FAILED: XXX'`, `'Modified files'`, `'Missing files'`, `'Extra files'`, `'Scanned XXX files against manifest'`).
-- [ ] Section only renders if `release-signing-pubkey.pem`, `MANIFEST.sha256`, and `MANIFEST.sha256.sig` are all present; otherwise a one-line "Manifest files not present (install may be from source or pre-1.9.x release)" notice.
+- [x] New "File integrity" section rendered after the existing security-audit table via a new `render_file_integrity_section()` function.
+- [x] Signature verification result shown at the top of the section — `alert-success` (green) on PASS, `alert-danger` (red) on FAIL with the `VerifyResult::$reason` interpolated.
+- [x] Trust boundary: if signature verification fails, the function `return`s immediately without invoking the parser or scanner. Scan results are never displayed against an untrusted manifest.
+- [x] On verification pass: parses manifest, scans install tree with a default `ExcludeRules` set, renders three tables (Modified / Missing / Extra) each with its own count badge. Empty tables are not rendered; an all-clear banner shows if all three are empty.
+- [x] Each table row: path (`<code>`), severity badge (`bg-danger` / `bg-warning text-dark` / `bg-info text-dark`), action hint ("Restore from release zip", "Review contents and remove if not legitimate", etc.).
+- [x] Summary line above the tables: `Scanned N files against manifest (vX.Y.Z, YYYY-MM-DD)` — version and build-date pulled from the verified `ManifestData`.
+- [x] Translation strings added to `translations/English-US.txt`: `File integrity`, `Manifest files not present...`, `Manifest signature valid`, `Manifest signature FAILED: XXX`, `Scanned XXX files against manifest`, `No file integrity issues detected.`, `Modified files`, `Missing files`, `Extra files`, `Critical`, `Warning`, `Info`, `Restore from release zip if not intentional`, `Restore from release zip`, `Review contents and remove if not legitimate`, `Path`, `Severity`.
+- [x] If any of the three artifacts (`release-signing-pubkey.pem`, `MANIFEST.sha256`, `MANIFEST.sha256.sig`) is absent: a single `alert-secondary` notice renders ("Manifest files not present (install may be from source or pre-1.9.x release)") and the function returns — no false alarms for source checkouts or pre-1.9.x installs.
 
-**TDD:** Not a pure unit test — covered by manual/integration test in Story 6.1.
+**TDD:** Not a pure unit test — per AC. End-to-end smoke test ran the full pipeline against a fresh fixture tree: planted 1 modified + 1 missing + 1 extra (`evil.php`), asserted `valid=true`, `matchedCount=1`, `modified=[b.txt→WARN]`, `missing=[sub/c.txt→WARN]`, `extra=[evil.php→CRITICAL]`. Pass. Story 6.1 will wrap this in a PHPUnit integration test.
+
+**Implementation notes:**
+- Three helper functions live at the bottom of `security_audit.php` next to the existing `print_issue` / `is__writable` helpers: `render_file_integrity_section()` (the orchestrator), `render_integrity_table()` (one of the three finding tables), `severity_badge_html()` + `action_hint_for()` (presentation primitives).
+- All 12 `WebCalendar\Security\*` classes loaded via `require_once` inside `render_file_integrity_section()` — no composer autoloader wiring per D10. The includes only happen if the audit page is actually viewed.
+- **XSS-safe**: every dynamic string goes through `htmlspecialchars($s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8')`. Paths are wrapped in `<code>` for readability. `ENT_SUBSTITUTE` replaces invalid UTF-8 sequences instead of returning an empty string (defense against silent XSS via malformed bytes).
+- **Noise filter hardcoded to "show all"** for Story 3.5 — per AC of Story 4.2, which will replace this with the `SECURITY_AUDIT_NOISE_FILTER` config key.
+- **Excludes hardcoded** to the default set from D9 (`includes/settings.php`, `includes/site_extras.php`, `MANIFEST.sha256*`, `tools/`, `tests/`, `docs/`, `vendor/`, `.git/`, `.github/`) — Story 4.1 will replace with config-sourced list. Ships the MANIFEST files themselves in the exclude list so they don't show up as EXTRA against their own manifest.
+- Bootstrap 5 classes (`bg-danger`, `bg-warning text-dark`, `bg-info text-dark`) match what `wizard/steps/phpsettings.php` already uses — consistent with the project's current BS5 migration.
+- Full signed-manifest suite: 140 tests / 267 assertions green. `php -l security_audit.php` clean. PHPStan level-0 clean on all new code.
 
 ---
 
