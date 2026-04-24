@@ -25,13 +25,29 @@ jobs:
   build:
     needs: [php-lint, phpunit, test-install, test-web-wizard, phpstan]
     runs-on: ubuntu-latest
+    # Scope RELEASE_SIGNING_KEY to this job only. Environment-scoped
+    # secrets are not passed to workflows triggered from forked PRs —
+    # see Story 1.3 of the signed-manifest feature (issue #233).
+    environment: release
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v6
 
+    - name: Set up PHP (ext-sodium required for manifest signing)
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.4'
+        extensions: sodium
+        tools: none
+
     - name: Get release version
       run: echo "RELEASE_VERSION=$(./bump_version.sh -p)" >> $GITHUB_ENV
+
+    - name: Pin SOURCE_DATE_EPOCH to HEAD commit timestamp
+      # Makes MANIFEST.sha256 byte-identical across re-runs of the same
+      # commit. Ed25519 is deterministic, so the signature matches too.
+      run: echo "SOURCE_DATE_EPOCH=$(git log -1 --format=%ct HEAD)" >> $GITHUB_ENV
 
     - name: Create release directory
       run: mkdir release-dir
@@ -50,6 +66,32 @@ jobs:
           mkdir -p WebCalendar-${{ env.RELEASE_VERSION }}/$(dirname "$file")
           cp "$file" WebCalendar-${{ env.RELEASE_VERSION }}/"$file"
         done < release-files
+
+    - name: Build MANIFEST.sha256
+      # Generates the signed-manifest feature's file inventory against the
+      # staged tree. Strict: fails if any release-files entry is missing.
+      run: |
+        set -euo pipefail
+        php tools/build-manifest.php \
+          --tree=WebCalendar-${{ env.RELEASE_VERSION }} \
+          --version=${{ env.RELEASE_VERSION }} \
+          > WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256
+        echo "--- MANIFEST.sha256 header ---"
+        head -3 WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256
+        echo "--- manifest line count ---"
+        wc -l WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256
+
+    - name: Sign MANIFEST.sha256
+      # Produces MANIFEST.sha256.sig next to the manifest. The secret
+      # never appears in logs — GitHub auto-masks secrets and the signer
+      # prints only generic reason strings on failure.
+      env:
+        RELEASE_SIGNING_KEY: ${{ secrets.RELEASE_SIGNING_KEY }}
+      run: |
+        set -euo pipefail
+        php tools/sign-manifest.php \
+          WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256
+        ls -l WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256.sig
 
     - name: Zip the release
       run: zip -r WebCalendar-${{ env.RELEASE_VERSION }}.zip WebCalendar-${{ env.RELEASE_VERSION }}/
@@ -80,10 +122,32 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} 
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./WebCalendar-${{ env.RELEASE_VERSION }}.zip
         asset_name: WebCalendar-${{ env.RELEASE_VERSION }}.zip
         asset_content_type: application/zip
+
+    # Publish the manifest and its signature as separate release assets
+    # so admins can download-and-verify before unzipping the bundle.
+    - name: Upload MANIFEST.sha256
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256
+        asset_name: MANIFEST.sha256
+        asset_content_type: text/plain
+
+    - name: Upload MANIFEST.sha256.sig
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256.sig
+        asset_name: MANIFEST.sha256.sig
+        asset_content_type: text/plain
 
     - name: Tag the Release Branch
       run: |
