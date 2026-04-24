@@ -154,23 +154,46 @@ alongside the zip, and both files are also embedded inside the zip at the repo r
 - Reproducibility design: `build-timestamp` is the only time-varying field. The release workflow can pin it by exporting `SOURCE_DATE_EPOCH` (e.g., to the tag timestamp). Without the pin, second-to-second drift is the only source of byte variance — hashes and sort order are deterministic given the same tree.
 - Pre-existing bug surfaced during smoke-test: `release-files` contains ~185 stale entries (entire `install/` tree replaced by `wizard/`, CKEditor assets, deleted translations). Today's release workflow silently `cp`s past these because it doesn't `set -e`. Story 2.5 tracks the cleanup.
 
-### Story 2.5 — Clean up stale entries in `release-files` ⬜ (NEW)
+### Story 2.5 — Clean up stale entries in `release-files` 🟨 (NEW)
 **As** the maintainer
 **I want** `release-files` to list exactly the files that exist on disk
 **So that** `build-manifest.php` (strict mode) does not fail, AND the release zip actually contains a consistent, documented file set
 
-**Context:** surfaced by Story 2.1's smoke test. 185 of 443 entries reference files that were deleted in prior commits (most notably cc0d41cf which replaced `install/` with `wizard/`). The existing `release.yml` silently swallows these via `cp` without `set -e`. `build-manifest.php` correctly rejects missing files, so Story 2.3 (workflow wiring) is blocked until this is resolved.
+**Context:** surfaced by Story 2.1's smoke test. 177 of 443 entries referenced files deleted in prior commits (most notably cc0d41cf which replaced `install/` with `wizard/`, plus the CKEditor removal). The existing `release.yml` silently swallowed these via `cp` without `set -e`. `build-manifest.php` correctly rejects missing files, so Story 2.3 (workflow wiring) was blocked until this.
 
 **Acceptance criteria:**
-- [ ] Every non-empty, non-comment line in `release-files` resolves to an existing tracked file at repo root.
-- [ ] `release-files` includes new files that SHOULD ship but currently don't (e.g., files under `wizard/`, `docs/` migrations) — this part requires maintainer judgment.
-- [ ] `.github/workflows/release.yml` gains `set -e` (or equivalent `-euo pipefail` for bash) so future drift fails loudly instead of silently.
-- [ ] A CI check (or a test) asserts `release-files` is consistent with the filesystem; drift becomes a build-break.
+- [x] Every non-empty, non-comment line in `release-files` resolves to an existing tracked file at repo root. *(443 → 266 lines; 177 stale entries removed: all `install/*`, all `pub/ckeditor/*`, `docs/newwin.gif`, `docs/WebCalendar-SysAdmin.html`, `UPGRADING.html`, 18 legacy translation files, `tools/populate_sqlite3.php`. All deletions are files that no longer exist in the repo.)*
+- [ ] `release-files` includes new files that SHOULD ship but currently don't. **← maintainer decision required** — see table below.
+- [x] `.github/workflows/release.yml` gains `set -euo pipefail` on the file-copy loop so future drift fails loudly instead of silently. Also skips blank and `#`-prefixed lines explicitly.
+- [x] A CI check asserts `release-files` is consistent with the filesystem; drift is now a build-break. *(new test `tests/ReleaseFilesConsistencyTest.php` — 3 tests: file exists, every entry resolves to a real file (with offender listing on failure), no duplicate entries.)*
 
-**TDD:**
-- Unit/integration test: walk `release-files`, assert every entry is a real file. Placed in `tests/` so CI catches regressions.
+**TDD:** `tests/ReleaseFilesConsistencyTest.php` — 3 tests, 5 assertions. Failing output is designed to be self-explanatory: the failure message lists every stale entry with its line number so the maintainer can diff against the commit that introduced the drift.
 
-**Blocks:** Story 2.3.
+**Blocks:** Story 2.3 (now unblocked by AC1/3/4; AC2 optional and independently addable).
+
+**Maintainer decision table (AC2):** 17 `docs/*.md` files exist on disk but are NOT in `release-files`. The previous release listing included two now-deleted legacy docs (`docs/newwin.gif`, `docs/WebCalendar-SysAdmin.html`), so the *intent* was to ship docs. Pick any subset (or none) and they can be added in a follow-up commit. Sizes in parentheses:
+
+| Candidate | Ship? | Rationale |
+|-----------|-------|-----------|
+| `docs/admin-guide.md` (15 KB) | likely YES | Direct admin-facing reference. |
+| `docs/configuration.md` (5 KB) | likely YES | Core setup reference. |
+| `docs/faq.md` (4 KB) | likely YES | End-user oriented. |
+| `docs/glossary.md` (3 KB) | likely YES | Small, end-user oriented. |
+| `docs/import-export.md` (3 KB) | likely YES | End-user feature doc. |
+| `docs/index.md` (2 KB) | likely YES | Entry point. |
+| `docs/installation.md` (8 KB) | likely YES | Essential. |
+| `docs/security.md` (4 KB) | likely YES | Essential for security-conscious admins. |
+| `docs/troubleshooting.md` (7 KB) | likely YES | End-user oriented. |
+| `docs/upgrade-guide.md` (4 KB) | likely YES | Essential. |
+| `docs/user-guide.md` (6 KB) | likely YES | End-user oriented. |
+| `docs/docker.md` (4 KB) | maybe | Useful for dockerized installs. |
+| `docs/mcp-server.md` (9 KB) | maybe | Narrow audience; also on website. |
+| `docs/WebCalendar-Database.md` (26 KB) | maybe | Schema reference, useful for ops. |
+| `docs/developer-guide.md` (12 KB) | PROBABLY NO | Internal/contributor doc. |
+| `docs/migration-v2.md` (9 KB) | PROBABLY NO | Forward-looking dev doc. |
+| `docs/v2-development.md` (3 KB) | PROBABLY NO | Internal/contributor doc. |
+
+I didn't add any of these — it's your call which ones belong in a 1.9.x release zip vs stay on the project website.
 
 ### Story 2.2 — `tools/sign-manifest.php` script ⬜
 **As** the release workflow

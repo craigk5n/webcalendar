@@ -37,8 +37,15 @@ jobs:
       run: mkdir release-dir
 
     - name: Copy files to release directory
+      # set -euo pipefail: previously this loop silently skipped missing
+      # entries via cp's non-fatal exit. Story 2.5 of the signed-manifest
+      # feature (issue #233) makes drift a hard failure — the CI drift
+      # test catches this in PR reviews, but belt-and-suspenders here.
       run: |
+        set -euo pipefail
         while IFS= read -r file; do
+          [ -z "$file" ] && continue
+          case "$file" in \#*) continue ;; esac
           echo "Copying $file"
           mkdir -p WebCalendar-${{ env.RELEASE_VERSION }}/$(dirname "$file")
           cp "$file" WebCalendar-${{ env.RELEASE_VERSION }}/"$file"
