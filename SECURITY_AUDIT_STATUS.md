@@ -326,27 +326,50 @@ the filesystem, and reports discrepancies with appropriate severity.
 - Line numbers are 1-indexed in error messages so the admin can jump directly to the offending line with most editors.
 - PHPStan level-0 clean. Full signed-manifest suite now: 94 tests / 186 assertions green.
 
-### Story 3.3 — `InstallationScanner` class ⬜
+### Story 3.3 — `InstallationScanner` class 🟩
 **As** the audit
 **I want** a filesystem walker that compares disk state to the manifest
 **So that** missing, modified, and extra files are identified
 
 **Acceptance criteria:**
-- [ ] `scan(ManifestData $manifest, string $installRoot, ExcludeRules $excludes): ScanReport`.
-- [ ] Walks `$installRoot` recursively (RecursiveDirectoryIterator + SKIP_DOTS).
-- [ ] For each disk file: if in manifest → hash and compare → classify `MATCH` / `MODIFIED`. If not in manifest AND not excluded → classify `EXTRA`.
-- [ ] For each manifest entry not seen on disk AND not excluded → classify `MISSING`.
-- [ ] `ScanReport` = `{list<ScannedFile> $modified, list<ScannedFile> $missing, list<ScannedFile> $extra, int $matchedCount}`.
-- [ ] Honors `$excludes` (see Story 4.1).
-- [ ] Symlinks are not followed; they are reported as EXTRA unless manifest-listed.
+- [x] `InstallationScanner::scan(ManifestData $manifest, string $installRoot, ExcludeRules $excludes): ScanReport` — static entry point.
+- [x] Walks `$installRoot` recursively. **Design pivot noted**: `RecursiveDirectoryIterator` by default DOES descend into symlinked directories, and `LEAVES_ONLY` drops symlinks entirely. Used a hand-rolled recursive `FilesystemIterator` walk with explicit `isLink()` checks instead. Clearer intent, fewer surprises.
+- [x] For each disk file: if in manifest → hash (`hash_file('sha256')`) and compare → classify MATCH (incr `matchedCount`) or MODIFIED. If not in manifest AND not excluded → classify EXTRA.
+- [x] For each manifest entry not seen on disk AND not excluded → classify MISSING.
+- [x] `ScanReport = {list<ScannedFile> $modified, list<ScannedFile> $missing, list<ScannedFile> $extra, int $matchedCount}` — all readonly.
+- [x] Honors `$excludes` — excluded paths skipped for both EXTRA classification AND (if in manifest) the MISSING sweep.
+- [x] Symlinks are not followed; a symlink at any level is treated as a leaf and reported as EXTRA unless manifest-listed. Prevents attacker-planted symlinks-to-external-trees from expanding the scan surface.
 
-**TDD:**
-- Integration test: fixture install tree matching a manifest → empty report, `matchedCount` = file count.
-- Integration test: delete one shipped file → reported as MISSING.
-- Integration test: modify one shipped file → reported as MODIFIED.
-- Integration test: add `evil.php` at root → reported as EXTRA.
-- Integration test: add excluded path → NOT reported.
-- Integration test: a symlink pointing outside the tree → reported but not followed.
+**New classes (all under `WebCalendar\Security`):**
+- `ScanEntryKind` — backed enum (`MODIFIED`, `MISSING`, `EXTRA`). MATCH is a scalar count, not an enum case, because the report never carries per-file MATCH entries.
+- `ScannedFile` — immutable `{path, kind, expectedHash?, actualHash?}`. Hashes populated per convention: MODIFIED=both, MISSING=expected only, EXTRA=neither.
+- `ScanReport` — immutable `{modified[], missing[], extra[], matchedCount}`.
+- `ExcludeRules` — minimal glob matcher; Story 4.1 will extend with default set + admin-supplied extras. Pattern syntax: trailing-slash prefix (`tests/` → matches anything under `tests/`), or `fnmatch()` patterns (`pub/css/*.css`).
+- `InstallationScanner` — the walker, with static `scan()` entry + private instance run for clean state management.
+
+**TDD:** New test file `tests/InstallationScannerTest.php` — 16 tests, 49 assertions, all passing. Integration-style: each test writes a real fixture tree under `/tmp/wc_scan_*` and a real `ManifestData`, then asserts the `ScanReport`.
+
+**Test coverage:**
+- Clean install → empty report, `matchedCount` = file count.
+- Deleted shipped file → MISSING with `expectedHash` populated, `actualHash` null.
+- Modified shipped file → MODIFIED with BOTH hashes populated.
+- Dropped `evil.php` at root → EXTRA.
+- Dropped `shell.php` in `includes/classes/` → EXTRA with full relative path.
+- Excluded path with EXTRA content → suppressed.
+- Excluded path present in manifest → suppressed from MISSING too (defensive).
+- Directory glob (`tests/`, `.git/`) → excludes subtree.
+- `*` glob (`pub/css/*.css`) → precise extension matching (other files under same dir still reported).
+- Symlink at leaf → reported as EXTRA, target NOT followed.
+- Symlink to external directory → reported as EXTRA for the symlink itself; scanner does NOT descend (verified by planting a `trap.php` in the target and asserting it doesn't appear in report).
+- Realistic mixed scenario: 1 MATCH + 1 MODIFIED + 1 MISSING + 1 EXTRA + 1 excluded, all classifications correct simultaneously.
+- Missing install root → RuntimeException.
+- Empty install root → all manifest entries reported as MISSING.
+- `ScannedFile` and `ScanReport` both immutable (mutation → fatal Error).
+
+**Implementation notes:**
+- Scanner uses instance fields (private constructor + static `scan()` entry) rather than static scratch arrays. Thread-safety isn't a PHP concern, but it keeps multiple simultaneous scans isolated and makes the walk methods easier to read.
+- `$seenManifestPaths` is the bookkeeping trick: mark manifest entries as "seen" as they're encountered (or excluded) on disk, then iterate remaining manifest entries for the MISSING pass.
+- Full signed-manifest suite now: 110 tests / 235 assertions green.
 
 ### Story 3.4 — Severity classifier ⬜
 **As** the admin
