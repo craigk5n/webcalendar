@@ -195,23 +195,26 @@ alongside the zip, and both files are also embedded inside the zip at the repo r
 
 I didn't add any of these — it's your call which ones belong in a 1.9.x release zip vs stay on the project website.
 
-### Story 2.2 — `tools/sign-manifest.php` script ⬜
+### Story 2.2 — `tools/sign-manifest.php` script 🟩
 **As** the release workflow
 **I want** to sign the manifest with the private key from env
 **So that** a detached signature accompanies the manifest
 
 **Acceptance criteria:**
-- [ ] Reads private key from env var `RELEASE_SIGNING_KEY` (base64 of 64-byte libsodium secret key).
-- [ ] Input: path to `MANIFEST.sha256`. Output: writes `MANIFEST.sha256.sig` next to it.
-- [ ] Signature format: base64 of the 64-byte Ed25519 signature, single line + LF.
-- [ ] Uses `#[\SensitiveParameter]` on any function receiving the secret key.
-- [ ] Exits non-zero if env var is empty, malformed, or wrong length.
-- [ ] Never logs, echoes, or exposes the secret key — CI log is reviewed for leakage.
+- [x] Reads private key from env var `RELEASE_SIGNING_KEY` (base64 of 64-byte libsodium secret key).
+- [x] Input: path to `MANIFEST.sha256`. Output: writes `<input>.sig` next to it (i.e. `MANIFEST.sha256.sig` when called with `MANIFEST.sha256`).
+- [x] Signature format: base64 of the 64-byte Ed25519 signature, single line + trailing LF. *(verified by `testSignatureIsSingleLineBase64`)*
+- [x] Uses `#[\SensitiveParameter]` on the `sign()` secret-key parameter. `sodium_memzero()` scrubs the decoded key buffer after use.
+- [x] Exits non-zero on every error path: unset env (`empty or unset`), invalid base64 (`not valid base64`), wrong length (`must decode to 64 bytes`), missing input manifest, unwritable sig destination. *(all five paths smoke-tested locally; exit=1 with a clean operator message on each.)*
+- [x] Never logs, echoes, or exposes the secret key. *(covered by `testReasonDoesNotLeakSecret` and `testReasonDoesNotLeakSecretOnInvalidBase64Failure` — the latter uses a `LEAKCANARY` tag to assert even recognizable substrings never surface.)*
 
-**TDD:**
-- Unit test: signs a known manifest with a test keypair, verifies with the paired public key.
-- Unit test: tampering with one byte of the manifest after signing causes verification to fail.
-- Unit test: wrong-length secret key produces a clear error.
+**TDD:** New test file `tests/ManifestSignerTest.php` — 12 tests, 29 assertions, all passing. Covers: verifiable round-trip with paired public key, single-line base64 format, Ed25519 determinism (same input → same signature), different messages → different signatures, full-message and one-byte-flip tamper detection, empty/null/invalid-base64/wrong-length secret rejection, and two log-safety tests asserting reasons never leak the secret.
+
+**Implementation notes:**
+- Pure logic in `WebCalendar\Security\ManifestSigner::sign(string, ?string): array{ok, signature, reason}`. Envelope return (not throw) so the CLI can print a clean message and failure reasons stay in our control.
+- Defensive `sodium_memzero()` on the decoded secret key buffer even though PHP's refcounted string lifecycle already discards it promptly. Cheap belt-and-suspenders.
+- CLI wrapper `tools/sign-manifest.php` (chmod +x, shebang). Single positional arg for the manifest path; `<path>.sig` is the implied output. End-to-end smoke test on the full `build-manifest.php → sign-manifest.php` pipeline confirmed: signature verifies externally with raw libsodium; one-byte flip in the manifest makes verify return false.
+- Ed25519's deterministic signing (RFC 8032 §5.1.6) is locked in by `testSignIsDeterministicForSameInput` — reproducible-builds workflows can pin `SOURCE_DATE_EPOCH` and get byte-identical (manifest, signature) pairs across runs.
 
 ### Story 2.3 — Wire into `.github/workflows/release.yml` ⬜
 **As** the maintainer
