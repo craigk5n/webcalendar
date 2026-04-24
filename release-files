@@ -182,11 +182,8 @@ month.php
 nulogin.php
 pref.php
 pub/bootstrap.bundle.min.js
-pub/bootstrap.bundle.min.js.sha
 pub/bootstrap.min.css
-pub/bootstrap.min.css.sha
 pub/jquery.min.js
-pub/jquery.min.js.sha
 publish.php
 purge.php
 README.md

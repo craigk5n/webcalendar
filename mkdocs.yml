@@ -49,6 +49,7 @@ nav:
   - Administration:
     - Admin Guide: admin-guide.md
     - Security: security.md
+    - Release Signing: release-signing.md
     - Troubleshooting: troubleshooting.md
   - Development:
     - Developer Guide: developer-guide.md
