@@ -17,6 +17,17 @@ require_once __DIR__ . "/../includes/xcal.php";
  * after that change was re-diagnosed as the cause of a constant-offset
  * export bug (Apple Calendar showing events off by the full server TZ
  * offset). The 2018 #74 symptom originated in event creation, not export.
+ *
+ * @runTestsInSeparateProcesses
+ * @preserveGlobalState disabled
+ *
+ * Isolation required because one test path exercises
+ * xcal.php:export_time_vtimezone which calls dbi_query_cached, hitting
+ * die_miserable_death when $db_type isn't set. Without isolation that
+ * die() terminates the phpunit runner and silently skips every later
+ * test alphabetically after ExportTime* (including all Security/ tests
+ * from issue #233). Matches the pattern used by CategoryOrderTest and
+ * UpgradeFunctionsSmokeTest.
  */
 final class ExportTimeTest extends TestCase
 {

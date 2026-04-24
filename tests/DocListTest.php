@@ -4,6 +4,18 @@ use PHPUnit\Framework\TestCase;
 require_once __DIR__ . '/../includes/classes/Doc.php';
 require_once __DIR__ . '/../includes/classes/DocList.php';
 
+/**
+ * @runTestsInSeparateProcesses
+ * @preserveGlobalState disabled
+ *
+ * Isolation required because this test's setUp() dynamically defines
+ * `die_miserable_death` (and friends). The real DocList::getByDay code
+ * path calls die_miserable_death, which in `includes/config.php` is
+ * `echo ...; exit;` — if this test runs in the shared phpunit process
+ * it halts the entire runner and silently skips every later test
+ * alphabetically after DocList*. Matches the pattern used by
+ * CategoryOrderTest and UpgradeFunctionsSmokeTest.
+ */
 final class DocListTest extends TestCase {
 
     protected function setUp(): void {

@@ -614,10 +614,37 @@ Full signed-manifest suite now: **176 tests / 406 assertions** green.
 - Tricky call-out documented in `setUp()`: in the real release workflow, `release-signing-pubkey.pem` is in `release-files` AND thus in the manifest. The fixture mirrors that — pubkey written before manifest-build, pubkey path included in the manifest file-list. Without this, the pubkey shows up as EXTRA on every test (the exclude-rules set doesn't cover it because in production it's in the manifest, not excluded).
 - Full signed-manifest suite now: **191 tests / 487 assertions** green. PHPStan level-0 clean.
 
-### Story 6.2 — CI: run new unit tests ⬜
+### Story 6.2 — CI: run new unit tests 🟩
 **Acceptance criteria:**
-- [ ] No changes needed to `.github/workflows/ci.yml` — new tests live under `tests/` and are picked up by existing `phpunit -c tests/phpunit.xml`.
-- [ ] PHPStan passes on new `includes/classes/Security/` code at the repo's existing level.
+- [x] No changes needed to `.github/workflows/ci.yml` — new tests live under `tests/` and are picked up by existing `phpunit -c tests/phpunit.xml`. The config's `<directory suffix="Test.php">.</directory>` auto-discovers every `*Test.php` including the 14 new Security/ files. `ci.yml` runs `vendor/bin/phpunit -c tests/phpunit.xml` on a PHP 8.2/8.3/8.4 matrix — unchanged.
+- [x] PHPStan passes on new `includes/classes/Security/` code at the repo's existing level. `phpstan.neon`'s `paths: [.]` already scans the new namespace; running `vendor/bin/phpstan analyse --no-progress` (the exact command from `phpstan.yml`) → `[OK] No errors`. Matches level 0, the project's existing level.
+
+**Pre-existing CI bug surfaced and fixed along the way** (important — read):
+
+The AC checked out as "technically met" by auto-discovery, but running the *exact* CI command locally (`vendor/bin/phpunit -c tests/phpunit.xml`) stopped at test #10 with `exit=0`. Investigation:
+
+- `tests/DocListTest::testInvalidDocListTypeDies` exercises a code path that calls `die_miserable_death()` — whose definition in `includes/config.php` is `echo …; exit;`.
+- With `exit;` (no argument), PHP exits 0. The PHPUnit runner dies mid-suite without printing a summary; CI sees exit 0 and marks the job green.
+- Result: CI has been **silently skipping every test alphabetically after DocListTest for an unknown period** — including my 14 new Security/ test files.
+- `tests/ExportTimeTest` had the same problem via `xcal.php`'s `die_miserable_death` path.
+
+**Fix applied** — surgical, matches the existing convention already used by `CategoryOrderTest`, `UpgradeSqlTest`, and `UpgradeFunctionsSmokeTest`:
+
+- Added `@runTestsInSeparateProcesses` + `@preserveGlobalState disabled` class-level annotations to `DocListTest` and `ExportTimeTest`.
+- These tests now run in child processes; their `exit;` calls terminate the child, not the shared runner.
+- Documented the reason in a doc-block comment on each class so the next maintainer understands why isolation is there.
+
+**Verification numbers before / after the fix:**
+
+| Metric | Before | After |
+|--------|-------:|------:|
+| `phpunit -c tests/phpunit.xml` tests that actually run | ~10 | **379** |
+| Assertions evaluated | minimal | **1278** |
+| Errors / failures | masked as exit=0 | 0 |
+| Skipped (legitimate) | unknown | 6 |
+| My 14 Security/ test files actually running in CI | **NO** | **YES** |
+
+**TDD angle:** the Story 6.1 integration test's 15 cases — the most important security-contract tests in the entire feature — were being silently ignored by CI. That's now fixed. My 14 files contribute **191 of the 379 tests** that run post-fix.
 
 ### Story 6.3 — Release-workflow smoke test ⬜
 **Acceptance criteria:**
@@ -660,6 +687,7 @@ that doesn't rely on the maintainer's local key.
 | 2026-04-23 | D10 refined: new code uses namespace `WebCalendar\Security` (loaded via `require_once`, no autoloader change). Keeps class names collision-free and matches the PHP guide's namespacing expectation without destabilizing the legacy global-namespace includes. | — |
 | 2026-04-23 | PHP floor for new shipping code is 8.1 (per `.github/workflows/php-syntax-check.yml` matrix). Features requiring 8.2+ (typed constants, `readonly class`) are avoided; forward-compatible attributes (`#[\SensitiveParameter]`, `#[\Override]`) are fine. | — |
 | 2026-04-23 | `VerifyResult` (Story 3.1) specified as `final readonly class` — that's PHP 8.2 syntax. Implemented as 8.1-compatible `final class` with `readonly` on promoted properties. Semantically identical: any mutation of `$valid` or `$reason` after construction raises fatal Error, confirmed by `testVerifyResultIsImmutable`. | — |
+| 2026-04-24 | **Pre-existing CI silent-skip bug fixed by Story 6.2:** `DocListTest` + `ExportTimeTest` both called `die_miserable_death()` → `exit;` → phpunit runner died mid-suite → CI exit 0 → green CI despite ~95% of tests not running. Annotated both classes with `@runTestsInSeparateProcesses` + `@preserveGlobalState disabled`, matching the existing `CategoryOrderTest` / `UpgradeFunctionsSmokeTest` convention. Tests run per-class on 379 tests / 1278 assertions as of this commit. | — |
 
 ---
 
