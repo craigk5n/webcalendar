@@ -537,26 +537,32 @@ Full signed-manifest suite now: **172 tests / 393 assertions** green.
 
 ---
 
-## Epic 5 — Operational Runbook & Documentation ⬜
+## Epic 5 — Operational Runbook & Documentation 🟨
 
-### Story 5.1 — Developer runbook ⬜
+### Story 5.1 — Developer runbook 🟩
 **Acceptance criteria:**
-- [ ] New doc `docs/release-signing.md` covers:
-  - Threat model (from the top of this file).
-  - How to generate a fresh keypair (tools/generate-release-key.php).
-  - How to install the public key into the repo and the private key into GitHub secrets.
-  - Key rotation procedure (when to rotate, how to transition, how to handle old releases).
-  - What to do if the private key is suspected compromised (revoke, rotate, publish advisory, notify users to re-download the affected release).
-  - How admins verify a release manually using `openssl` + the published public key (independent of the app).
+- [x] New doc `docs/release-signing.md` covers all required topics:
+  - [x] Threat model (adapted from the top of this file with an explicit "what this catches" / "what it doesn't" / "why we ship it anyway" framing).
+  - [x] How to generate a fresh keypair via `tools/generate-release-key.php` — prerequisites, procedure, and the randomness/libsodium-missing invariants locked in by unit tests.
+  - [x] How to install the public key into the repo (awk extraction from the tmp file, git commit, defensive `.gitignore` rule).
+  - [x] How to store the private key in the GitHub Actions `release` environment secret + how to verify the paste via the **Verify Release Signing Key** workflow.
+  - [x] Key rotation procedure (routine cadence, immediate compromise trigger, major-version boundaries) with an optional transition-period path documented as code-not-yet-written.
+  - [x] Compromise response runbook (immediate rotation, delete suspect secret, GitHub Security Advisory, CHANGELOG Security entry, access audit).
+  - [x] **Manual verification** — three independent paths:
+    - Pure-PHP one-liner using libsodium (recommended; zero extra deps).
+    - Node.js + libsodium-wrappers (for non-PHP environments).
+    - `openssl pkeyutl -verify` via PKCS#8 / SPKI conversion (shown with the required `\x30\x2a\x30\x05\x06\x03\x2b\x65\x70\x03\x21\x00` prefix; explained why it's the hard path).
+- [x] Troubleshooting section for the three most likely operator-hit failures: "Manifest files not present", "Manifest signature FAILED", and "signing step fails in release workflow".
+- [x] **Verified by running the documented commands**: the PHP one-liner and the `sha256sum -c` cross-check both work exactly as written against a fresh fixture triple — `SIGNATURE VALID`, `all hashes match`.
 
 ### Story 5.2 — Admin help text ⬜
 **Acceptance criteria:**
 - [ ] `security_audit.php` renders a one-line link under the "File integrity" section pointing to `docs/release-signing.md` (or a short anchor within).
 - [ ] Admin settings UI for the new config keys includes help text.
 
-### Story 5.3 — `CHANGELOG.md` entry ⬜
+### Story 5.3 — `CHANGELOG.md` entry 🟩
 **Acceptance criteria:**
-- [ ] Entry under the next release version notes: "Security audit now verifies a signed manifest of release files and reports extra/modified/missing files (issue #233)."
+- [x] Entry under the `[Unreleased]` section in `CHANGELOG.md` with a `### Added` subsection noting: "Security audit now verifies a signed manifest of release files and reports extra, modified, and missing files — a defense against opportunistic webshell drops (#233). See `docs/release-signing.md` for the maintainer runbook and independent verification instructions."
 
 ---
 

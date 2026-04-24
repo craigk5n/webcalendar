@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Security audit now verifies a signed manifest of release files and reports
+  extra, modified, and missing files — a defense against opportunistic
+  webshell drops (#233). See `docs/release-signing.md` for the maintainer
+  runbook and independent verification instructions.
+
 ## [v1.9.16] - 2026-04-01
 
 ### Fixed
