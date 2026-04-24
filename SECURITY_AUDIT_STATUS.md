@@ -293,17 +293,38 @@ the filesystem, and reports discrepancies with appropriate severity.
 - PHPStan level-0 clean on all new files.
 - Full signed-manifest suite now: 72 tests / 145 assertions green.
 
-### Story 3.2 — `ManifestParser` class ⬜
+### Story 3.2 — `ManifestParser` class 🟩
 **Acceptance criteria:**
-- [ ] `parse(string $manifestPath): ManifestData` returns `{string $version, DateTimeImmutable $buildTimestamp, string $gitSha, array<string,string> $hashes}` (hashes map relative-path → sha256 hex).
-- [ ] Rejects lines that don't match `/^[0-9a-f]{64}  \S.*$/` (other than header `# ` lines).
-- [ ] Rejects duplicate paths.
-- [ ] Throws on malformed input with line-number context.
+- [x] `ManifestParser::parse(string $manifestPath): ManifestData` returns `{string $version, DateTimeImmutable $buildTimestamp, string $gitSha, array<string,string> $hashes}` (hashes map relative-path → lowercase-hex sha256).
+- [x] Rejects lines that don't match the canonical hash-line regex `/^[0-9a-f]{64}  \S.*$/` (rejects 3 spaces, tabs, uppercase hex, wrong hash length, non-hex chars, empty path).
+- [x] Rejects duplicate paths with the duplicate's line number AND the original line number in the error message.
+- [x] Throws `RuntimeException` with a `line N:` prefix on every malformed-body failure (regex miss, blank line, duplicate, empty path). Header-level failures (missing required field, malformed timestamp, empty body) throw with descriptive messages.
+- [x] `ManifestData` is `final class` with `readonly` on all four promoted properties (same 8.1-compatible pattern as `VerifyResult`).
 
-**TDD:**
-- Unit test: well-formed manifest → parsed correctly, header fields populated.
-- Unit test: line with 3 spaces between hash and path → rejected.
-- Unit test: duplicate path → rejected with line number.
+**TDD:** New test file `tests/ManifestParserTest.php` — 22 tests, 41 assertions, all passing.
+
+**Test coverage:**
+- Well-formed manifest → all four fields populated correctly, hashes keyed by path.
+- Immutability of `ManifestData` (mutation → fatal `Error`).
+- Header field order is not required (forward/backward compatible).
+- Unknown header keys are tolerated (forward-compatibility — future manifest versions can add fields).
+- Nested paths (e.g. `includes/classes/Event.php`).
+- Paths containing spaces (sha256sum format uses two spaces as the only separator).
+- Rejects: 3 spaces between hash and path, tab instead of spaces, uppercase hex, short hash, non-hex char, empty path.
+- Rejects duplicate paths with both line numbers.
+- Rejects blank lines inside the manifest (strict canonical format).
+- Accepts the single trailing-LF artifact (canonical builder output).
+- Rejects missing version, timestamp, or git-sha headers (explicit reason).
+- Rejects malformed timestamp (parse failure surfaces as `RuntimeException`).
+- Rejects manifest with zero hash lines (no empty bodies).
+- Rejects missing file with "not exist / cannot read" reason.
+- **Round-trip contract**: a manifest produced by `ManifestBuilder::build()` parses cleanly via `ManifestParser::parse()` — locks the two sides together so future format drift breaks the test.
+
+**Implementation notes:**
+- Two regexes do all the structural work: `HASH_LINE_REGEX` for body lines, `HEADER_LINE_REGEX` for `# key: value` lines. Header keys are lowercased at parse time for case-insensitive lookup.
+- Single-pass parse: one `foreach` over lines, state tracked by `$inBody` (prevents header lines appearing after hash lines begin).
+- Line numbers are 1-indexed in error messages so the admin can jump directly to the offending line with most editors.
+- PHPStan level-0 clean. Full signed-manifest suite now: 94 tests / 186 assertions green.
 
 ### Story 3.3 — `InstallationScanner` class ⬜
 **As** the audit
