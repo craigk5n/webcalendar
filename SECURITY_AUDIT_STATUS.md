@@ -371,22 +371,38 @@ the filesystem, and reports discrepancies with appropriate severity.
 - `$seenManifestPaths` is the bookkeeping trick: mark manifest entries as "seen" as they're encountered (or excluded) on disk, then iterate remaining manifest entries for the MISSING pass.
 - Full signed-manifest suite now: 110 tests / 235 assertions green.
 
-### Story 3.4 — Severity classifier ⬜
+### Story 3.4 — Severity classifier 🟩
 **As** the admin
 **I want** each finding tagged with severity so I can triage
 **So that** unexpected PHP files shout louder than unexpected CSS
 
 **Acceptance criteria:**
-- [ ] `SeverityClassifier::classify(ScannedFile $file): Severity` where `Severity` is a backed enum `CRITICAL='critical'|WARN='warn'|INFO='info'`.
-- [ ] Extra `.php`, `.phtml`, `.phar`, `.inc` file → CRITICAL.
-- [ ] Modified shipped file (any extension) → WARN.
-- [ ] Missing shipped file → WARN.
-- [ ] Extra file with non-executable extension (`.css`, `.html`, `.txt`, image extensions, `.map`) → INFO.
-- [ ] Extra file with unknown extension → WARN (conservative — unknowns might be webshells in disguise).
+- [x] `SeverityClassifier::classify(ScannedFile $file): Severity` where `Severity` is a backed-string enum `CRITICAL='critical'|WARN='warn'|INFO='info'`.
+- [x] Extra `.php`, `.phtml`, `.phar`, `.inc` file → CRITICAL. Also `.phps` and `.pht` (lesser-known PHP handler extensions) — hardening for server configs that enable them.
+- [x] Modified shipped file (any extension) → WARN.
+- [x] Missing shipped file (any extension) → WARN.
+- [x] Extra file with non-executable extension → INFO. Recognized extensions: `css, html, htm, xml, svg, txt, md, rst, map, log, png, jpg, jpeg, gif, ico, webp, avif, bmp, woff, woff2, ttf, otf, eot, js, mjs, json, yml, yaml, toml, csv, tsv`.
+- [x] Extra file with unknown extension OR no extension → WARN (conservative — unknowns might be disguised webshells).
 
-**TDD:**
-- Unit test: each classification path has a dedicated test.
-- Unit test: `shell.php` → CRITICAL; `styles.css` (extra) → INFO; `foo.xyz` (extra) → WARN.
+**TDD:** New test file `tests/SeverityClassifierTest.php` — 30 tests, 32 assertions, all passing.
+
+**Test coverage:**
+- Every CRITICAL case: extras with `php`, `phtml`, `phar`, `inc` extensions.
+- Case-insensitivity: `Shell.PHP` → CRITICAL (attackers may use mixed case to dodge naive matchers; `pathinfo` + `strtolower` handles it).
+- Nested path with `.php`: `pub/uploads/malware.php` → CRITICAL.
+- Every INFO case: `.css`, `.html`, `.txt`, `.md`, `.map`, all 7 image extensions via dataProvider, `.json`, `.js`.
+- EXTRA with unknown extension (`foo.xyz`) → WARN.
+- EXTRA with no extension (`mysteryfile`) → WARN.
+- EXTRA with double extension (`shell.php.bak`) → WARN because `pathinfo` returns `bak`. Conservative and correct: whether `.bak` runs as PHP depends on server config, so we don't assume CRITICAL without evidence but also don't drop to INFO.
+- MODIFIED with `.php`, `.css`, and unknown extensions → all WARN (extension is ignored for MODIFIED/MISSING per AC).
+- MISSING with `.php`, `.css` → all WARN.
+- `Severity` enum: three cases, backed values `'critical'`, `'warn'`, `'info'`.
+
+**Implementation notes:**
+- Uses `pathinfo($path, PATHINFO_EXTENSION)` + `strtolower` for case-insensitive matching. Two const arrays of known extensions; linear `in_array()` is fine for the ~30 entries.
+- Expanded the CRITICAL set beyond AC to include `phps, pht` — Apache's default `mime.types` / `AddHandler` in some distros recognizes these as PHP.
+- Expanded the INFO set beyond AC to include font files, data files (yaml/toml/csv/tsv), and `js` — none of these execute in a PHP context when dropped into the install tree.
+- Full signed-manifest suite now: 140 tests / 267 assertions green. PHPStan level-0 clean.
 
 ### Story 3.5 — `security_audit.php` integration ⬜
 **As** the admin
