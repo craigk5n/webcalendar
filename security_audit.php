@@ -385,18 +385,13 @@ function render_file_integrity_section(): void
     return;
   }
 
-  $excludes = new WebCalendar\Security\ExcludeRules([
-    'includes/settings.php',
-    'includes/site_extras.php',
-    'MANIFEST.sha256',
-    'MANIFEST.sha256.sig',
-    'tools/',
-    'tests/',
-    'docs/',
-    'vendor/',
-    '.git/',
-    '.github/',
-  ]);
+  // Defaults (D9) + any admin-supplied extras from the
+  // SECURITY_AUDIT_EXTRA_EXCLUDES setting (Story 4.1).
+  // webcal_config values land in $GLOBALS via load_global_settings().
+  $extraExcludes = $GLOBALS['SECURITY_AUDIT_EXTRA_EXCLUDES'] ?? null;
+  $excludes = WebCalendar\Security\ExcludeRules::withDefaults(
+    is_string($extraExcludes) ? $extraExcludes : null
+  );
 
   $report = WebCalendar\Security\InstallationScanner::scan(
     $manifest,

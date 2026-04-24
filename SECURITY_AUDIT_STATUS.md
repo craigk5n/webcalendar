@@ -432,34 +432,43 @@ the filesystem, and reports discrepancies with appropriate severity.
 
 ---
 
-## Epic 4 — Configuration & Exclusions ⬜
+## Epic 4 — Configuration & Exclusions 🟨
 
-### Story 4.1 — `ExcludeRules` configuration source ⬜
+### Story 4.1 — `ExcludeRules` configuration source 🟩
 **As** the admin / developer
 **I want** a predictable list of paths excluded from the audit
 **So that** user-editable files don't flood the report
 
 **Acceptance criteria:**
-- [ ] `ExcludeRules` class encapsulates the exclusion set; constructor takes `list<string> $globs`.
-- [ ] Default exclude list (hard-coded constant):
-  - `includes/settings.php`
-  - `includes/site_extras.php`
-  - `MANIFEST.sha256`
-  - `MANIFEST.sha256.sig`
-  - `tools/`
-  - `tests/`
-  - `docs/`
-  - `vendor/`
-  - `.git/`
-  - `.github/`
-- [ ] `matches(string $relPath): bool` supports `*` and trailing-slash prefix matching.
-- [ ] User-provided additional excludes come from admin setting `SECURITY_AUDIT_EXTRA_EXCLUDES` (newline-separated globs). Stored in `webcal_config`.
-- [ ] CSS-under-`pub/` is NOT excluded by default (per D9 — flag everything by default), but is trivially added to the extra excludes list by admins who customize their theme.
+- [x] `ExcludeRules` class encapsulates the exclusion set; constructor takes `list<string> $globs` (unchanged from Story 3.3).
+- [x] Default exclude list materialized as `public const DEFAULT_PATTERNS` — 10 entries exactly matching AC: `includes/settings.php`, `includes/site_extras.php`, `MANIFEST.sha256`, `MANIFEST.sha256.sig`, `tools/`, `tests/`, `docs/`, `vendor/`, `.git/`, `.github/`.
+- [x] `matches(string $relPath): bool` supports `*` globs via `fnmatch()` and trailing-slash directory-prefix matching (unchanged from Story 3.3).
+- [x] `ExcludeRules::withDefaults(?string $extraConfig = null): self` factory unions `DEFAULT_PATTERNS` with newline-separated user extras. Wired into `security_audit.php` reading from `$GLOBALS['SECURITY_AUDIT_EXTRA_EXCLUDES']` (loaded from `webcal_config` by `load_global_settings()`).
+- [x] CSS-under-`pub/` is NOT excluded by default (per D9). Locked in by `testCssUnderPubIsNotExcludedByDefault`. Admins add `pub/css/*.css` via `SECURITY_AUDIT_EXTRA_EXCLUDES`.
 
-**TDD:**
-- Unit test: default list excludes `includes/settings.php` but not `includes/init.php`.
-- Unit test: glob `pub/css/*.css` matches `pub/css/custom.css` but not `pub/js/foo.js`.
-- Unit test: user-supplied excludes are unioned with defaults.
+**TDD:** New test file `tests/ExcludeRulesTest.php` — 17 tests, 40+ assertions, all passing.
+
+**Test coverage:**
+- `DEFAULT_PATTERNS` const is public, non-empty, and contains every AC-required pattern.
+- Default-only: `includes/settings.php` excluded; `includes/init.php`, `admin.php`, `pub/bootstrap.min.css` NOT excluded.
+- Default-only: MANIFEST.sha256 and MANIFEST.sha256.sig excluded (so they don't appear as EXTRA against their own manifest).
+- Directory-prefix matching: `tests/foo.php`, `docs/index.md`, `.git/HEAD`, `.github/workflows/release.yml`, `vendor/composer/autoload_real.php` all excluded.
+- Prefix matching is STRICT: `tools/` excludes `tools/bar` but NOT `tools.txt` or `toolsomething.php`.
+- CSS under `pub/` NOT excluded by default (per D9 paranoid-mode).
+- `withDefaults("pub/css/*.css")`: glob extra matches CSS files, does not over-match (`.js` still flagged).
+- Multiple newline-separated extras all apply AND defaults stay active (union, not replace).
+- CRLF line endings from Windows-pasted input handled correctly.
+- Comment lines (`#`-prefixed) and blank lines skipped silently.
+- Leading/trailing whitespace trimmed from each extra.
+- `null`, `''`, and whitespace-only input all behave identically (defaults only).
+- Plain constructor (Story 3.3 surface) still works for custom sets.
+
+**Implementation notes:**
+- Added `public const DEFAULT_PATTERNS = [...]` with inline comments explaining why each entry is there (site-specific config, MANIFEST self-exclusion, developer directories, never-shipped paths). Forward-comprehensible for reviewers who pick up the file later.
+- Added `public static function withDefaults(?string $extraConfig = null): self` factory. Parses newline-separated extras with `preg_split('/\r\n|\r|\n/', ...)` (handles LF / CRLF / CR), trims each line, skips empty + `#`-prefixed lines.
+- Defensive: `matches('')` returns false so an empty string can't accidentally match a pattern that accepts empty input.
+- `security_audit.php` simplified: the 10-line hardcoded `new ExcludeRules([...])` array is replaced with a single `ExcludeRules::withDefaults(...)` call reading `$GLOBALS['SECURITY_AUDIT_EXTRA_EXCLUDES']`. The setting doesn't exist in `webcal_config` yet — Story 4.2 adds it to the admin UI. Until then the read yields `null` and defaults apply.
+- Full signed-manifest suite now: 157 tests / 325 assertions green. PHPStan level-0 clean.
 
 ### Story 4.2 — Noise filter admin setting ⬜
 **As** a developer or a power user
