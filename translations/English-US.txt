@@ -1020,6 +1020,8 @@ Show only CRITICAL findings: Show only CRITICAL findings
 Extra exclusion patterns: Extra exclusion patterns
 Extra exclude patterns applied to the file-integrity scan: Extra exclude patterns applied to the file-integrity scan.
 One glob pattern per line; lines starting with # are comments. Directory prefixes end with / (e.g. pub/uploads/). Applied in addition to the built-in defaults.: One glob pattern per line; lines starting with # are comments. Directory prefixes end with / (e.g. pub/uploads/). Applied in addition to the built-in defaults.
+See the release-signing runbook for manual verification and key rotation instructions: See the release-signing runbook for manual verification and key rotation instructions
+Documentation: Documentation
 
 ########################################
 # Page: freebusy.php

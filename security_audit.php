@@ -336,6 +336,18 @@ function render_file_integrity_section(): void
     'UTF-8'
   ) . '</h3>';
 
+  // One-line docs link (Story 5.2). GitHub URL works regardless of
+  // whether docs/ is webroot-accessible.
+  echo '<p class="text-muted"><small>'
+    . htmlspecialchars(
+        translate('See the release-signing runbook for manual verification and key rotation instructions'),
+        ENT_QUOTES | ENT_SUBSTITUTE,
+        'UTF-8'
+      )
+    . ': <a href="https://github.com/craigk5n/webcalendar/blob/master/docs/release-signing.md"'
+    . ' target="_blank" rel="noopener noreferrer">docs/release-signing.md</a>'
+    . '</small></p>';
+
   if (!is_file($manifestPath) || !is_file($sigPath) || !is_file($pubkeyPath)) {
     echo '<div class="alert alert-secondary">' . htmlspecialchars(
       translate('Manifest files not present (install may be from source or pre-1.9.x release)'),

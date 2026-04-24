@@ -537,7 +537,7 @@ Full signed-manifest suite now: **172 tests / 393 assertions** green.
 
 ---
 
-## Epic 5 — Operational Runbook & Documentation 🟨
+## Epic 5 — Operational Runbook & Documentation 🟩
 
 ### Story 5.1 — Developer runbook 🟩
 **Acceptance criteria:**
@@ -555,10 +555,31 @@ Full signed-manifest suite now: **172 tests / 393 assertions** green.
 - [x] Troubleshooting section for the three most likely operator-hit failures: "Manifest files not present", "Manifest signature FAILED", and "signing step fails in release workflow".
 - [x] **Verified by running the documented commands**: the PHP one-liner and the `sha256sum -c` cross-check both work exactly as written against a fresh fixture triple — `SIGNATURE VALID`, `all hashes match`.
 
-### Story 5.2 — Admin help text ⬜
+### Story 5.2 — Admin help text 🟩
 **Acceptance criteria:**
-- [ ] `security_audit.php` renders a one-line link under the "File integrity" section pointing to `docs/release-signing.md` (or a short anchor within).
-- [ ] Admin settings UI for the new config keys includes help text.
+- [x] `security_audit.php` renders a one-line link under the "File integrity" heading pointing at the release-signing runbook. Rendered as a `text-muted small` paragraph immediately below the `<h3>` — visible without being noisy.
+- [x] Admin settings UI for the new config keys (`SECURITY_AUDIT_NOISE_FILTER` and `SECURITY_AUDIT_EXTRA_EXCLUDES`) includes help text:
+  - Filter dropdown + exclusions textarea each have a `title=` tooltip (added in Story 4.2).
+  - Exclusions textarea has a `text-muted small` paragraph below it explaining the glob syntax + comment + directory-prefix conventions (also from Story 4.2).
+  - New `Documentation: docs/release-signing.md` link paragraph at the bottom of the Security Audit fieldset (Story 5.2 addition).
+
+**Design choice — GitHub URL, not relative:** the link points at `https://github.com/craigk5n/webcalendar/blob/master/docs/release-signing.md` rather than a relative `docs/release-signing.md`. Rationale: the runbook is not currently in `release-files` (that's part of Story 2.5's pending AC2 decision about which docs/*.md files ship), so a relative link might 404 depending on the install's webroot layout. The absolute GitHub URL works regardless and always points at the latest-published version. If Story 2.5 AC2 decides to ship the runbook, the link can be updated later without breaking anything in between.
+
+All anchor tags use `target="_blank" rel="noopener noreferrer"` — the standard hardening pair that prevents reverse-tabnabbing attacks on `_blank` links.
+
+**TDD:** New test file `tests/AdminHelpTextTest.php` — 4 tests, 13 assertions, all passing.
+
+**Test coverage:**
+- `security_audit.php` contains a link to the docs URL (Story 5.2 AC1).
+- `admin.php` contains a link to the docs URL in the Security Audit fieldset (Story 5.2 AC2).
+- `docs/release-signing.md` actually exists on disk — dead-link defense.
+- Both UI links use `target="_blank"` AND `rel="noopener"` — tabnabbing defense locked in.
+
+**Translation strings added:**
+- `See the release-signing runbook for manual verification and key rotation instructions`
+- `Documentation`
+
+Full signed-manifest suite now: **176 tests / 406 assertions** green.
 
 ### Story 5.3 — `CHANGELOG.md` entry 🟩
 **Acceptance criteria:**

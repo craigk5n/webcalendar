@@ -753,6 +753,9 @@ if ( ! $error ) {
      <p style="margin-left:25%;" class="text-muted"><small>'
    . translate ( 'One glob pattern per line; lines starting with # are comments. Directory prefixes end with / (e.g. pub/uploads/). Applied in addition to the built-in defaults.' )
    . '</small></p>
+     <p style="margin-left:25%;" class="text-muted"><small>'
+   . translate ( 'Documentation' )
+   . ': <a href="https://github.com/craigk5n/webcalendar/blob/master/docs/release-signing.md" target="_blank" rel="noopener noreferrer">docs/release-signing.md</a></small></p>
    </fieldset>
     </div></div>
 
