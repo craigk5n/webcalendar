@@ -252,30 +252,46 @@ This story was fully satisfied as a side-effect of Stories 1.2 and 2.3. No dedic
 
 ---
 
-## Epic 3 — Audit-Time Verification (PHP in app) ⬜
+## Epic 3 — Audit-Time Verification (PHP in app) 🟨
 
 **Goal:** `security_audit.php` gains a new section that verifies the signature, walks
 the filesystem, and reports discrepancies with appropriate severity.
 
-### Story 3.1 — `ManifestVerifier` class ⬜
+### Story 3.1 — `ManifestVerifier` class 🟩
 **As** the admin running the audit
 **I want** the manifest signature verified before its contents are trusted
 **So that** a tampered manifest cannot mask tampered files
 
 **Acceptance criteria:**
-- [ ] New file `includes/classes/Security/ManifestVerifier.php` (PHP 8.1+, `declare(strict_types=1)`, no namespace — matches existing legacy include convention OR single-class namespace `WebCalendar\Security` if autoload is wired).
-- [ ] Class exposes `verify(string $manifestPath, string $signaturePath, string $publicKeyPemPath): VerifyResult`.
-- [ ] `VerifyResult` is a `final readonly class` with `bool $valid`, `string $reason`.
-- [ ] Uses `sodium_crypto_sign_verify_detached()` — not OpenSSL.
-- [ ] Fails gracefully with a clear reason when: any file missing, PEM malformed, signature not 64 bytes, signature mismatch.
-- [ ] Uses `hash_equals()` only if comparing hex-encoded values (Ed25519 verify itself is constant-time).
+- [x] New files `includes/classes/Security/ManifestVerifier.php` and `VerifyResult.php` (PHP 8.1+, `declare(strict_types=1)`, namespace `WebCalendar\Security` — matches D10 as refined).
+- [x] Class exposes `ManifestVerifier::verify(string $manifestPath, string $signaturePath, string $publicKeyPemPath): VerifyResult`. Static method; pure-logic-meets-file-IO; no hidden state.
+- [x] `VerifyResult` is `final class` with `public readonly bool $valid` and `public readonly string $reason` (constructor-promoted). Semantically equivalent to `final readonly class` but parse-compatible with PHP 8.1 — see Decisions Log entry below. Mutation attempt raises fatal Error, verified by `testVerifyResultIsImmutable`.
+- [x] Uses `sodium_crypto_sign_verify_detached()` — not OpenSSL. The verify itself is constant-time, so no `hash_equals()` wrapping needed.
+- [x] Fails gracefully with a clear `reason` for every failure mode: missing manifest/sig/pubkey file, empty sig, invalid base64 sig, wrong-length sig, malformed PEM, truncated pubkey (fewer than 32 decoded bytes), tampered manifest, swapped pubkey.
+- [x] Tolerates trailing whitespace in the signature file (CRLF / extra LFs from pipe-chained tools) via `trim()` — base64 body itself contains no whitespace, so this is safe.
+- [x] Pubkey parsing delegates to `ReleaseKeyGenerator::parsePublicKeyPem()`, which already enforces the 32-byte invariant — no duplicated PEM logic.
 
-**TDD:**
-- Unit test: valid manifest + valid signature + valid pubkey → `valid=true`.
-- Unit test: modify manifest post-sign → `valid=false`, reason mentions signature mismatch.
-- Unit test: truncated pubkey → `valid=false`, reason mentions key format.
-- Unit test: swapped pubkey (different keypair) → `valid=false`.
-- Unit test: missing manifest file → `valid=false`, reason mentions file not found.
+**TDD:** New test file `tests/ManifestVerifierTest.php` — 15 tests, 29 assertions, all passing. Each test sets up a fresh temp directory with real fixture files (manifest, sig, pubkey PEM generated from a throwaway keypair) so the verifier's full file-IO path is exercised.
+
+**Failure-mode test coverage:**
+- Valid triple → `valid=true`.
+- Appended byte to manifest → `valid=false`, reason matches `/signature.*(mismatch|does not verify|failed)/i`.
+- One-bit flip in manifest → `valid=false`.
+- Swapped pubkey (different keypair) → `valid=false`.
+- Missing manifest / sig / pubkey file → `valid=false`, reason includes "not found" + display name.
+- Malformed PEM → `valid=false`, reason mentions "pem" / "public key".
+- Truncated pubkey (valid base64 but < 32 bytes decoded) → `valid=false`, reason mentions "32 bytes".
+- Invalid base64 signature → `valid=false`.
+- Wrong-length signature → `valid=false`, reason mentions "64 bytes".
+- Empty signature file → `valid=false`.
+- Trailing whitespace in sig → still `valid=true`.
+- `VerifyResult` is immutable (write attempt → fatal Error).
+- `reason` is always non-empty on both pass and fail paths.
+
+**Implementation notes:**
+- Internal I/O helpers (`readFile`, `readSignature`, `readPublicKey`) return either the decoded bytes on success OR a `VerifyResult` on failure. This pattern keeps the public `verify()` body linear ("early-return the result from the helper if it's already a result") without exceptions or nested try/catch.
+- PHPStan level-0 clean on all new files.
+- Full signed-manifest suite now: 72 tests / 145 assertions green.
 
 ### Story 3.2 — `ManifestParser` class ⬜
 **Acceptance criteria:**
@@ -476,6 +492,7 @@ that doesn't rely on the maintainer's local key.
 | 2026-04-23 | D1–D10 locked per conversation with maintainer. | — |
 | 2026-04-23 | D10 refined: new code uses namespace `WebCalendar\Security` (loaded via `require_once`, no autoloader change). Keeps class names collision-free and matches the PHP guide's namespacing expectation without destabilizing the legacy global-namespace includes. | — |
 | 2026-04-23 | PHP floor for new shipping code is 8.1 (per `.github/workflows/php-syntax-check.yml` matrix). Features requiring 8.2+ (typed constants, `readonly class`) are avoided; forward-compatible attributes (`#[\SensitiveParameter]`, `#[\Override]`) are fine. | — |
+| 2026-04-23 | `VerifyResult` (Story 3.1) specified as `final readonly class` — that's PHP 8.2 syntax. Implemented as 8.1-compatible `final class` with `readonly` on promoted properties. Semantically identical: any mutation of `$valid` or `$reason` after construction raises fatal Error, confirmed by `testVerifyResultIsImmutable`. | — |
 
 ---
 
