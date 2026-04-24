@@ -432,7 +432,7 @@ the filesystem, and reports discrepancies with appropriate severity.
 
 ---
 
-## Epic 4 — Configuration & Exclusions 🟨
+## Epic 4 — Configuration & Exclusions 🟩
 
 ### Story 4.1 — `ExcludeRules` configuration source 🟩
 **As** the admin / developer
@@ -504,9 +504,36 @@ the filesystem, and reports discrepancies with appropriate severity.
 - Added 8 translation strings for the admin UI labels and option names.
 - Full signed-manifest suite now: **167 tests / 357 assertions** green. PHPStan level-0 clean.
 
-### Story 4.3 — Access control integration ⬜
+### Story 4.3 — Access control integration 🟩
 **Acceptance criteria:**
-- [ ] Existing `ACCESS_SECURITY_AUDIT` check (already present in `security_audit.php`) gates the new section too. No new UAC function added.
+- [x] Existing `ACCESS_SECURITY_AUDIT` check (already present in `security_audit.php`) gates the new section too. No new UAC function added.
+
+**Verification (no code changes required):**
+
+The existing guard at the top of `security_audit.php` (lines 17–20) is:
+
+```php
+if (!$is_admin || (access_is_enabled()
+  && !access_can_access_function(ACCESS_SECURITY_AUDIT))) {
+  die_miserable_death(print_not_auth());
+}
+```
+
+`die_miserable_death()` halts execution immediately, so every line below it — including the `render_file_integrity_section()` call on line 258 — is unreachable unless the caller is (a) an admin OR (b) has the `ACCESS_SECURITY_AUDIT` UAC function granted when UAC is enabled. The new file-integrity section inherits this gate for free; there was no additional work to do.
+
+**TDD:** New test file `tests/SecurityAuditAccessGateTest.php` — 5 tests, 36 assertions, all passing. This is a source-structure regression test (reads the .php files rather than running HTTP) that locks in the invariants:
+
+- `ACCESS_SECURITY_AUDIT` gate exists in the first 30 lines of `security_audit.php`.
+- `render_file_integrity_section()` call site appears AFTER both the access check AND the `die_miserable_death(print_not_auth())` line.
+- No call to `render_file_integrity_section()` anywhere before the access gate.
+- No new UAC constant was introduced (`ACCESS_FILE_INTEGRITY`, `ACCESS_MANIFEST`, `ACCESS_RELEASE_SIGNING`, `ACCESS_SIGNED_MANIFEST` — all asserted absent from `includes/access.php`).
+- The existing `ACCESS_SECURITY_AUDIT` constant is still defined in `includes/access.php` — don't accidentally delete the one we depend on.
+
+If a future refactor ever reorders `security_audit.php` in a way that exposes the file-integrity section without the gate, OR if a developer adds a duplicate UAC constant for the new feature, this test breaks the build.
+
+**Out-of-scope concern (not part of this story):** the CLI tools `tools/build-manifest.php`, `tools/sign-manifest.php`, and `tools/verify-release-signing-key.php` ship with releases and could in principle be hit via the web (`/tools/sign-manifest.php`). They are intended for CLI / CI use and have no authentication guard. Same as the pre-existing `tools/send_reminders.php` etc. This is a project-wide concern predating Story 4.3 — not a regression introduced by the signed-manifest feature. Flagged here for future hardening (e.g., ship with `.htaccess` Deny + document webroot layout).
+
+Full signed-manifest suite now: **172 tests / 393 assertions** green.
 
 ---
 
