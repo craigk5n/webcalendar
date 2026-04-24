@@ -470,22 +470,39 @@ the filesystem, and reports discrepancies with appropriate severity.
 - `security_audit.php` simplified: the 10-line hardcoded `new ExcludeRules([...])` array is replaced with a single `ExcludeRules::withDefaults(...)` call reading `$GLOBALS['SECURITY_AUDIT_EXTRA_EXCLUDES']`. The setting doesn't exist in `webcal_config` yet — Story 4.2 adds it to the admin UI. Until then the read yields `null` and defaults apply.
 - Full signed-manifest suite now: 157 tests / 325 assertions green. PHPStan level-0 clean.
 
-### Story 4.2 — Noise filter admin setting ⬜
+### Story 4.2 — Noise filter admin setting 🟩
 **As** a developer or a power user
 **I want** to suppress low-severity findings
 **So that** the report is actionable on a heavily customized install
 
 **Acceptance criteria:**
-- [ ] New config key `SECURITY_AUDIT_NOISE_FILTER` with values `all` (default), `warn_and_above`, `critical_only`.
-- [ ] Surfaced in admin settings UI (`admin.php`) with help text explaining each mode.
-- [ ] When set to `critical_only`, the audit renders only findings that classify as CRITICAL.
-- [ ] When set to `warn_and_above`, INFO findings are hidden.
-- [ ] Default `all` shows everything.
+- [x] New config key `SECURITY_AUDIT_NOISE_FILTER` with values `all` (default), `warn_and_above`, `critical_only`. Round-trips through `webcal_config` via the existing admin save handler.
+- [x] Surfaced in the admin settings UI in `admin.php`'s "Other" tab inside a new `Security Audit` `<fieldset>`. The same fieldset also exposes `SECURITY_AUDIT_EXTRA_EXCLUDES` (from Story 4.1) as a `<textarea>` with inline help text — otherwise the Story 4.1 plumbing had no UI to exercise it.
+- [x] When set to `critical_only`, the audit renders only CRITICAL-classified findings. Covered by `testCriticalOnlyDropsWarnAndInfo`.
+- [x] When set to `warn_and_above`, INFO findings are hidden (MODIFIED+MISSING stay since they're WARN, and CRITICAL extras stay). Covered by `testWarnAndAboveDropsInfoEntries`.
+- [x] Default `all` shows everything (identity function). Covered by `testAllModePreservesEveryEntry`.
 
-**TDD:**
-- Unit test: filter `critical_only` applied to a mixed ScanReport returns only CRITICAL entries.
-- Unit test: filter `warn_and_above` preserves WARN + CRITICAL.
-- Unit test: filter `all` is the identity function.
+**TDD:** New test file `tests/ScanReportFilterTest.php` — 10 tests, 32 assertions, all passing.
+
+**Test coverage:**
+- Mode constants have expected string values (`'all'`, `'warn_and_above'`, `'critical_only'`).
+- `ALL` mode preserves every entry of a mixed 5-entry fixture.
+- `ALL` on empty report stays empty.
+- `WARN_AND_ABOVE` drops INFO `theme.css` but keeps CRITICAL `shell.php` and WARN `mystery.xyz`.
+- `CRITICAL_ONLY` drops everything that isn't CRITICAL; only `shell.php` survives.
+- `matchedCount` preserved across every mode (filter hides findings, not the match count).
+- Unknown mode (`"garbage-value"`) falls back to `ALL` (identity).
+- Empty string mode falls back to `ALL`.
+- Filtered result is a NEW `ScanReport` instance (never mutates input).
+- Filtered lists are zero-indexed contiguous `list<>`s (important — keeping `array_filter` output without `array_values` would leave sparse keys and trip up PHPStan's `list<T>` typing).
+
+**Implementation notes:**
+- New class `WebCalendar\Security\ScanReportFilter` under `includes/classes/Security/`. Three public const modes, one public static `filter()` entry point, two private helpers.
+- `security_audit.php` reads `$GLOBALS['SECURITY_AUDIT_NOISE_FILTER']` (loaded from `webcal_config`), falls back to `ScanReportFilter::ALL` if unset or non-string, and applies the filter after the scan but before rendering.
+- `admin.php` form: a `<select name="admin_SECURITY_AUDIT_NOISE_FILTER">` with three `<option>`s. Uses the existing `$selected` idiom to mark the current value. The `admin_` prefix on the form input name is what makes the save handler (lines 18–56 of admin.php) persist it to `webcal_config` on POST.
+- Added the exclusions `<textarea>` to the same fieldset so Story 4.1's `SECURITY_AUDIT_EXTRA_EXCLUDES` setting has a UI surface too. Story 4.1 left this pending.
+- Added 8 translation strings for the admin UI labels and option names.
+- Full signed-manifest suite now: **167 tests / 357 assertions** green. PHPStan level-0 clean.
 
 ### Story 4.3 — Access control integration ⬜
 **Acceptance criteria:**

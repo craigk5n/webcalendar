@@ -1012,6 +1012,14 @@ Restore from release zip: Restore this file from the release zip.
 Review contents and remove if not legitimate: Review contents; remove if not legitimate (unexpected executable files may indicate a webshell).
 Path: Path
 Severity: Severity
+File integrity noise filter: File integrity noise filter
+Severity threshold for the security-audit file-integrity section: Severity threshold for the security-audit file-integrity section.
+Show all findings: Show all findings
+Hide low-severity (INFO) findings: Hide low-severity (INFO) findings
+Show only CRITICAL findings: Show only CRITICAL findings
+Extra exclusion patterns: Extra exclusion patterns
+Extra exclude patterns applied to the file-integrity scan: Extra exclude patterns applied to the file-integrity scan.
+One glob pattern per line; lines starting with # are comments. Directory prefixes end with / (e.g. pub/uploads/). Applied in addition to the built-in defaults.: One glob pattern per line; lines starting with # are comments. Directory prefixes end with / (e.g. pub/uploads/). Applied in addition to the built-in defaults.
 
 ########################################
 # Page: freebusy.php

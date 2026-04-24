@@ -726,7 +726,35 @@ if ( ! $error ) {
    . translate ( 'Admin and owner can always add comments if enabled.' )
    . '</p><p class="form-inline mt-1 mb-2" id="com1a" style="margin-left:25%">' . print_checkbox ( ['ALLOW_COMMENTS_PART', 'Y', $partyStr] )
     . print_checkbox ( ['ALLOW_COMMENTS_ANY', 'Y', $anyoneStr] )
-    . '</p></div></div>
+    . '</p>
+
+<!-- BEGIN SECURITY AUDIT (issue #233) -->
+   <fieldset class="border p-2 mt-2"><legend>'
+   . translate ( 'Security Audit' ) . '</legend>
+     <div class="form-inline mt-1 mb-2"><label title="'
+   . translate ( 'Severity threshold for the security-audit file-integrity section' ) . '">'
+   . translate ( 'File integrity noise filter' ) . ':</label>
+       <select name="admin_SECURITY_AUDIT_NOISE_FILTER">
+         <option value="all"' . ( ( $s['SECURITY_AUDIT_NOISE_FILTER'] ?? 'all' ) == 'all' ? $selected : '' ) . '>'
+   . translate ( 'Show all findings' ) . '</option>
+         <option value="warn_and_above"' . ( ( $s['SECURITY_AUDIT_NOISE_FILTER'] ?? '' ) == 'warn_and_above' ? $selected : '' ) . '>'
+   . translate ( 'Hide low-severity (INFO) findings' ) . '</option>
+         <option value="critical_only"' . ( ( $s['SECURITY_AUDIT_NOISE_FILTER'] ?? '' ) == 'critical_only' ? $selected : '' ) . '>'
+   . translate ( 'Show only CRITICAL findings' ) . '</option>
+       </select>
+     </div>
+     <div class="form-inline mt-1 mb-2 align-items-start"><label title="'
+   . translate ( 'Extra exclude patterns applied to the file-integrity scan' ) . '">'
+   . translate ( 'Extra exclusion patterns' ) . ':</label>
+       <textarea name="admin_SECURITY_AUDIT_EXTRA_EXCLUDES" rows="4" cols="40">'
+   . htmlspecialchars ( (string) ( $s['SECURITY_AUDIT_EXTRA_EXCLUDES'] ?? '' ), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8' )
+   . '</textarea>
+     </div>
+     <p style="margin-left:25%;" class="text-muted"><small>'
+   . translate ( 'One glob pattern per line; lines starting with # are comments. Directory prefixes end with / (e.g. pub/uploads/). Applied in addition to the built-in defaults.' )
+   . '</small></p>
+   </fieldset>
+    </div></div>
 
 <!-- BEGIN MCP SERVER -->
   <div class="tab-pane container fade" id="' . $tabs_ar[12] . '">

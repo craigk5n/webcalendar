@@ -323,6 +323,7 @@ function render_file_integrity_section(): void
   require_once __DIR__ . '/includes/classes/Security/InstallationScanner.php';
   require_once __DIR__ . '/includes/classes/Security/Severity.php';
   require_once __DIR__ . '/includes/classes/Security/SeverityClassifier.php';
+  require_once __DIR__ . '/includes/classes/Security/ScanReportFilter.php';
 
   $rootDir = __DIR__;
   $manifestPath = $rootDir . '/MANIFEST.sha256';
@@ -398,6 +399,14 @@ function render_file_integrity_section(): void
     $rootDir,
     $excludes
   );
+
+  // Noise filter (Story 4.2) — hides findings below the configured
+  // severity threshold. matchedCount is preserved.
+  $filterMode = $GLOBALS['SECURITY_AUDIT_NOISE_FILTER'] ?? WebCalendar\Security\ScanReportFilter::ALL;
+  if (!is_string($filterMode)) {
+    $filterMode = WebCalendar\Security\ScanReportFilter::ALL;
+  }
+  $report = WebCalendar\Security\ScanReportFilter::filter($report, $filterMode);
 
   $summary = str_replace(
     'XXX',
