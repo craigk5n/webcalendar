@@ -587,14 +587,32 @@ Full signed-manifest suite now: **176 tests / 406 assertions** green.
 
 ---
 
-## Epic 6 — Tests & CI ⬜
+## Epic 6 — Tests & CI 🟨
 
-### Story 6.1 — End-to-end integration test ⬜
+### Story 6.1 — End-to-end integration test 🟩
 **Acceptance criteria:**
-- [ ] New PHPUnit test `tests/SignedManifestIntegrationTest.php`.
-- [ ] Builds a test manifest against a fixture tree using a test keypair.
-- [ ] Mutates the tree (add, remove, modify) and asserts the `ScanReport` matches expectations for each severity.
-- [ ] Asserts that a one-byte flip in the manifest causes signature verification to fail and scan results to be withheld.
+- [x] New PHPUnit test `tests/SignedManifestIntegrationTest.php` — 15 tests, 81 assertions, all passing. Exercises every `WebCalendar\Security` class in sequence: `ReleaseKeyGenerator → ManifestBuilder → ManifestSigner → ManifestVerifier → ManifestParser → InstallationScanner → SeverityClassifier → ScanReportFilter`.
+- [x] Builds a test manifest against a fixture tree using a test keypair. `setUp()` writes 8 content files across 4 directories, generates a throwaway keypair, writes the pubkey PEM BEFORE the manifest (mirroring the real workflow where `release-signing-pubkey.pem` is in `release-files` and gets hashed into the manifest), signs, and persists all three artifacts at the tree root.
+- [x] Mutates the tree (add, remove, modify) and asserts the `ScanReport` matches expectations for each severity:
+  - Added `.php` → EXTRA + **CRITICAL**.
+  - Added `.css` → EXTRA + **INFO**.
+  - Modified `admin.php` (manifest-listed) → MODIFIED with both hashes populated + **WARN**.
+  - Deleted `includes/functions.php` (manifest-listed) → MISSING with expected hash only + **WARN**.
+- [x] Asserts that a one-byte flip in the manifest causes signature verification to fail AND scan results are withheld (the `report` field returns `null` from the pipeline helper rather than being populated with stale data). Two variants: flip a byte mid-manifest, OR flip a byte inside the decoded signature. Plus a third tamper vector: swapped pubkey (attacker replaces the PEM to validate their forged manifest) — also fails closed.
+
+**Bonus coverage beyond the AC:**
+- **Clean install** → empty report, `matchedCount` = file count + 1 (pubkey is MATCH by design, since it's in the manifest).
+- **Mixed realistic scenario** — 1 modified + 1 missing + 1 critical-extra all in one scan, correctly classified simultaneously with the matched-count preserved.
+- **Noise filter wired end-to-end** — `ScanReportFilter::CRITICAL_ONLY` applied to a 4-anomaly fixture drops WARN + INFO and leaves only the CRITICAL. `WARN_AND_ABOVE` drops INFO but keeps WARN and CRITICAL. Both locked in through the same pipeline.
+- **Excludes wired end-to-end** — `includes/settings.php` planted on disk is suppressed by `DEFAULT_PATTERNS`; `pub/css/custom.css` is NOT excluded by default (D9) but IS suppressed when `pub/css/*.css` is passed as an admin extra.
+- **Documented runbook commands are testable** — `testDocumentedRunbookOneLinerVerifiesCleanInstall` inlines and executes the exact pure-PHP one-liner from `docs/release-signing.md`. If either the runbook or any of the 8 Security/ classes drift apart, this test breaks the build. `testDocumentedSha256sumFormatMatches` asserts manifest body lines parse as GNU `sha256sum` format.
+
+**Implementation notes:**
+- `setUp()` creates a fresh tmp dir, a fresh keypair, and a fresh 8-file fixture per test. Full test isolation — no bleed between cases.
+- `tearDown()` uses `RecursiveIteratorIterator(CHILD_FIRST)` to recursively `rmdir` the nested fixture.
+- `auditPipeline()` helper does verify → parse → scan with default excludes; returns a `{valid, reason, report}` envelope so tamper-detection tests can assert `$report === null` without awkward try/catch.
+- Tricky call-out documented in `setUp()`: in the real release workflow, `release-signing-pubkey.pem` is in `release-files` AND thus in the manifest. The fixture mirrors that — pubkey written before manifest-build, pubkey path included in the manifest file-list. Without this, the pubkey shows up as EXTRA on every test (the exclude-rules set doesn't cover it because in production it's in the manifest, not excluded).
+- Full signed-manifest suite now: **191 tests / 487 assertions** green. PHPStan level-0 clean.
 
 ### Story 6.2 — CI: run new unit tests ⬜
 **Acceptance criteria:**
