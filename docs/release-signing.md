@@ -19,6 +19,7 @@ feature (GitHub issue [#233][issue]). Target audience:
 - [Key Rotation](#key-rotation)
 - [Compromise Response](#compromise-response)
 - [Manual Verification of a Release](#manual-verification-of-a-release)
+- [Sigstore Cosign Verification](#sigstore-cosign-verification)
 - [Troubleshooting](#troubleshooting)
 
 ---
@@ -324,6 +325,86 @@ openssl pkeyutl -verify \
 ```
 
 The pure-PHP path is simpler and recommended.
+
+---
+
+## Sigstore Cosign Verification
+
+Every tagged release is **also** signed keyless with [Sigstore cosign][cosign]
+via GitHub Actions' OIDC identity. This gives you an independent verification
+path that does not rely on the WebCalendar-maintained Ed25519 key at all:
+
+- The private signing key is **ephemeral** — generated in-memory during the
+  release workflow, never stored anywhere.
+- The signing identity is a short-lived X.509 certificate issued by
+  [Fulcio][fulcio] tying the signature to the GitHub Actions OIDC subject
+  `https://github.com/craigk5n/webcalendar/.github/workflows/release.yml@refs/heads/release`.
+- The signing event is recorded in [Rekor][rekor], Sigstore's public
+  transparency log — tamper-evident, publicly auditable.
+
+[cosign]: https://docs.sigstore.dev/cosign/overview/
+[fulcio]: https://docs.sigstore.dev/fulcio/overview/
+[rekor]: https://docs.sigstore.dev/rekor/overview/
+
+### Artifacts
+
+Each tagged release publishes two extra assets alongside the zip:
+
+- `WebCalendar-VERSION.zip.sig` — detached Ed25519-over-SHA-256 signature.
+- `WebCalendar-VERSION.zip.pem` — the Fulcio-issued certificate (contains the
+  public key + the OIDC subject that signed).
+
+Both are uploaded by the `Upload cosign signature` / `Upload cosign certificate`
+steps in `.github/workflows/release.yml`.
+
+### Verifying a Release With Cosign
+
+Install cosign: https://docs.sigstore.dev/cosign/installation/
+
+From a directory holding all three files (zip, .sig, .pem) for the same
+release:
+
+```bash
+VERSION=1.9.17  # set to the release you're verifying
+cosign verify-blob \
+  --certificate WebCalendar-${VERSION}.zip.pem \
+  --signature   WebCalendar-${VERSION}.zip.sig \
+  --certificate-identity-regexp \
+      '^https://github\.com/craigk5n/webcalendar/\.github/workflows/release\.yml@refs/heads/release$' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  WebCalendar-${VERSION}.zip
+```
+
+Expected output: `Verified OK`. Any tampering with the zip, the signature,
+the certificate, or the identity-pin regex → verification fails.
+
+### What the identity-pin regex does
+
+The `--certificate-identity-regexp` flag tells cosign which OIDC subject is
+considered authoritative for this artifact. The regex above pins three things:
+
+1. **Repository**: `craigk5n/webcalendar` — a zip signed by any other
+   repository's workflow will fail.
+2. **Workflow path**: `.github/workflows/release.yml` — a zip signed by some
+   *other* workflow in the same repo (e.g. a test workflow) will fail.
+3. **Branch**: `refs/heads/release` — a zip signed by a run on a feature
+   branch or fork will fail.
+
+If an attacker creates a release tag in a fork, cosign will reject it
+because the OIDC subject encodes the *source* repo, not the target.
+
+### Complementary to, Not a Replacement for, the Manifest Signature
+
+The two signing schemes check different things:
+
+| Scheme | Answers the question |
+|--------|---------------------|
+| Ed25519 manifest signature | "Are the files on disk byte-identical to what the maintainer intended?" |
+| Cosign zip signature | "Was this zip produced by a trusted GitHub Actions workflow run from the official repo?" |
+
+Both are defense-in-depth. The manifest signature protects every shipped file
+individually. The cosign signature protects the zip as a whole and proves
+provenance via Sigstore's public infrastructure.
 
 ---
 

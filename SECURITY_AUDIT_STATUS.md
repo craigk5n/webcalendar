@@ -653,19 +653,44 @@ The AC checked out as "technically met" by auto-discovery, but running the *exac
 
 ---
 
-## Epic 7 (Stretch) — Cosign Keyless Signing ⏭️
+## Epic 7 (Stretch) — Cosign Keyless Signing 🟩
 
 **Goal:** Publish an additional cosign signature of the release zip using GitHub's
 OIDC identity, giving security-conscious admins an independent verification path
 that doesn't rely on the maintainer's local key.
 
-### Story 7.1 — Add cosign step to release workflow ⏭️
+### Story 7.1 — Add cosign step to release workflow 🟩
 **Acceptance criteria:**
-- [ ] `sigstore/cosign-installer@v3` added to the workflow.
-- [ ] After the zip is built, sign it keyless: `cosign sign-blob --yes WebCalendar-${VERSION}.zip`.
-- [ ] `.sig` and `.pem` (cert) uploaded as release assets.
-- [ ] Users can verify independently: `cosign verify-blob --certificate-identity-regexp '...' --certificate-oidc-issuer https://token.actions.githubusercontent.com ...`.
-- [ ] Documented in `docs/release-signing.md`.
+- [x] `sigstore/cosign-installer@v3` added to the workflow. Pinned to `cosign-release: 'v2.4.1'` for reproducibility — bumped deliberately by the maintainer.
+- [x] After the zip is built, sign it keyless via `cosign sign-blob --yes` with explicit `--output-signature` and `--output-certificate` flags. Both outputs are written into the repo root for upload-step consumption.
+- [x] `.sig` and `.pem` uploaded as release assets named `WebCalendar-${VERSION}.zip.sig` and `WebCalendar-${VERSION}.zip.pem` (matching the zip's naming convention so admins can pattern-match by version).
+- [x] Users can verify independently with the documented `cosign verify-blob` command — pinned to `--certificate-identity-regexp '^https://github\.com/craigk5n/webcalendar/\.github/workflows/release\.yml@refs/heads/release$'` and `--certificate-oidc-issuer https://token.actions.githubusercontent.com`. Pins three things at once: repo, workflow file, and branch.
+- [x] Documented in `docs/release-signing.md` in a new "Sigstore Cosign Verification" section — covers the identity-pin rationale, the complementary-not-replacement framing (zip-level vs file-level invariants), and a full `VERSION=... cosign verify-blob ...` example.
+
+**Also wired:**
+- **`permissions: id-token: write`** added to the `build` job. Without this, cosign cannot request the GitHub Actions OIDC token and the sign step fails at runtime with an opaque error.
+- **`permissions: contents: write`** also added — required by the pre-existing `actions/create-release@v1` and `actions/upload-release-asset@v1` actions that the signed-manifest work relies on. (The workflow was already working because the repo's default `GITHUB_TOKEN` permission grant covered it, but declaring explicit job-level permissions is GitHub's recommended hardening once you declare ANY permission.)
+
+**TDD:** New test file `tests/CosignWorkflowTest.php` — 9 tests, 35 assertions, all passing.
+
+**Test coverage (source-structure regression):**
+- Workflow is valid YAML with the expected job structure.
+- `sigstore/cosign-installer@v3` is present (AC1 lock-in).
+- `cosign-release` is pinned to a specific version string (no `@latest` drift).
+- `id-token: write` permission is declared (signing would silently fail without it).
+- `cosign sign-blob --yes` with both `--output-signature` and `--output-certificate` (keyless blob-signing, not container-signing).
+- Both `.sig` and `.pem` are uploaded as release assets with the conventional naming.
+- **Step ordering is correct**: sign-blob comes AFTER `Zip the release`; upload steps come AFTER `Create GitHub Release` (which mints `upload_url`).
+- Runbook has the `## Sigstore Cosign Verification` heading + `cosign verify-blob` command + `--certificate-identity-regexp` flag + `token.actions.githubusercontent.com` issuer.
+- Runbook identity pin matches the workflow's actual path (`.github/workflows/release.yml`) and trigger branch (`refs/heads/release`) — if either side drifts, this test breaks.
+
+**Operational notes:**
+- Cosign signs the zip as a whole. Admins can verify the zip BEFORE unzipping — useful for supply-chain paranoia.
+- The WebCalendar Ed25519 manifest signature verifies the zip CONTENTS. Cosign verifies the zip ENVELOPE. Both defense-in-depth paths; neither supersedes the other.
+- Cosign sign step runs unconditionally (no `if:` guard). First real release after this merge will produce cosign artifacts automatically.
+- First-release smoke test (Story 6.3): the `cosign verify-blob` command in the runbook should be run against the actual published zip + .sig + .pem triple as part of the post-release verification.
+
+Full signed-manifest suite now: **200 tests / 522 assertions** green. Full CI suite (unfiltered `phpunit -c tests/phpunit.xml`): **388 tests / 1313 assertions**, 6 skipped, 0 errors.
 
 ---
 
