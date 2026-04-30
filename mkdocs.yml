@@ -46,6 +46,7 @@ nav:
     - Using WebCalendar: user-guide.md
     - Import & Export: import-export.md
     - FAQ: faq.md
+    - Glossary: glossary.md
   - Administration:
     - Admin Guide: admin-guide.md
     - Security: security.md

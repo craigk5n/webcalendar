@@ -4,11 +4,11 @@
 **Author:** [Craig Knudsen](https://k5n.us)  
 **Version:** v1.9.13
 
-> This file is generated from [tables-mysql.sql](../wizard/shared/tables-mysql.sql).  
+> This file is generated from [tables-mysql.sql](https://github.com/craigk5n/webcalendar/blob/master/wizard/shared/tables-mysql.sql).  
 > Below are the definitions of all WebCalendar tables, along with some descriptions of
 > how each table is used. Column names shown in **bold** are primary keys for that table.
 
-> If you update the SQL for WebCalendar, use the [sql2md.py](sql2md.py) script to regenerate this file.
+> If you update the SQL for WebCalendar, use the [sql2md.py](https://github.com/craigk5n/webcalendar/blob/master/docs/archive/legacy-html/sql2md.py) script to regenerate this file.
 
 ## List of Tables
 
