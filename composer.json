@@ -29,7 +29,7 @@
     "components/jquery": "3.5.*",
     "mcp/sdk": "^0.3.0",
     "phpmailer/phpmailer": "7.0.*",
-    "tinymce/tinymce": "7.7.*",
+    "tinymce/tinymce": "8.4.*",
     "twbs/bootstrap": "4.6.*",
     "twbs/bootstrap-icons": "1.10.*"
   },
