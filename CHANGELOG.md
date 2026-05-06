@@ -9,12 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+## [v1.9.16] - 2026-04-01
+
+### Security
+
 - Security audit now verifies a signed manifest of release files and reports
   extra, modified, and missing files — a defense against opportunistic
   webshell drops (#233). See `docs/release-signing.md` for the maintainer
   runbook and independent verification instructions.
-
-## [v1.9.16] - 2026-04-01
 
 ### Fixed
 
@@ -51,6 +59,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Set UTF-8 charset on database connections and HTTP headers (#626)
 - Upgrade wizard skipping v1.9.11 SQL when upgrading from v1.9.10 (#624)
 - Display events of all participants
+- Wizard upgrade regressions blocking install and post-install runtime (#639)
+- Restore upgrade helper functions dropped in wizard rewrite (#639)
+- `cat_owner` NULL cleanup and version-stamp error reporting in installer (#639)
+- Schema probe now authoritative over stale version stamp during upgrade (#639)
+- Bypass and clear stale query cache for `WEBCAL_PROGRAM_VERSION` (#639)
+- Custom template HTML save, Firefox select font, and mobile minical fixes (#639)
+- Keep Month/Week/Year views horizontal on iPad portrait (#639)
+- Narrow-viewport minical caption-side rendering (#640)
+- Stop wiping non-array `site_extras` values on save (#641)
+- Navbar collapse breakpoint and dual-collapse toggle on mobile (#639)
+- Stray quote and PHP block in `styles.css` (#639)
+- Correct ICS export timezone for Apple Calendar and CalDAV clients
+- Support emoji and full Unicode in iCal imports and display
 
 ### Changed
 
@@ -63,6 +84,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - MCP server unit and integration tests with CI workflow
 - Comprehensive Markdown documentation in docs/
+- Manual ordering UI for event categories (#493)
+- MkDocs Material documentation site with GitHub Pages deployment
 
 ## [v1.9.15] - 2026-02-27
 
@@ -189,8 +212,8 @@ For releases prior to v1.9.0, see the
 [GitHub releases page](https://github.com/craigk5n/webcalendar/releases)
 and the git log.
 
-[Unreleased]: https://github.com/craigk5n/webcalendar/compare/v1.9.15...HEAD
-[v1.9.16]: https://github.com/craigk5n/webcalendar/compare/v1.9.15...HEAD
+[Unreleased]: https://github.com/craigk5n/webcalendar/compare/v1.9.16...HEAD
+[v1.9.16]: https://github.com/craigk5n/webcalendar/compare/v1.9.15...v1.9.16
 [v1.9.15]: https://github.com/craigk5n/webcalendar/compare/v1.9.14...v1.9.15
 [v1.9.14]: https://github.com/craigk5n/webcalendar/compare/v1.9.13...v1.9.14
 [v1.9.13]: https://github.com/craigk5n/webcalendar/compare/v1.9.10...v1.9.13
