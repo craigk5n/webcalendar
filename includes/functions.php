@@ -3159,7 +3159,7 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
 
   $n = 0;
   $ret = [];
-  for ( $i = 0, $cnt = count ( $repeated_events ); $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = is_array ( $repeated_events ) ? count ( $repeated_events ) : 0; $i < $cnt; $i++ ) {
     if( ( $repeated_events[$i]->getStatus() == 'A' || $get_unapproved )
         && in_array( $dateYmd, $repeated_events[$i]->getRepeatAllDates() ) )
       $ret[$n++] = $repeated_events[$i];

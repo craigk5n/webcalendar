@@ -672,4 +672,30 @@ final class FunctionsTest extends TestCase
     // This test exists only to document concerns
     $this->assertTrue(true);
   }
+
+  /**
+   * Regression: rss.php calls get_repeating_entries() in its default
+   * (allow_repeats=false) path, which leaves the global $repeated_events
+   * unset. On PHP 8, count(null) throws TypeError and aborts the RSS feed
+   * mid-stream. See GitHub discussion #643.
+   */
+  public function test_get_repeating_entries_returns_empty_when_globals_unset() {
+    global $repeated_events;
+    unset($repeated_events);
+
+    $result = get_repeating_entries('__public__', '20260524');
+
+    $this->assertIsArray($result);
+    $this->assertCount(0, $result);
+  }
+
+  public function test_get_repeating_entries_returns_empty_when_globals_null() {
+    global $repeated_events;
+    $repeated_events = null;
+
+    $result = get_repeating_entries('__public__', '20260524');
+
+    $this->assertIsArray($result);
+    $this->assertCount(0, $result);
+  }
 }
