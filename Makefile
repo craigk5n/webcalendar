@@ -196,6 +196,9 @@ TINYMCE_FILES = \
 	pub/tinymce/plugins/lists/plugin.min.js \
 	pub/tinymce/plugins/lists/plugin.js \
 	pub/tinymce/plugins/lists/index.js \
+	pub/tinymce/plugins/table/plugin.min.js \
+	pub/tinymce/plugins/table/plugin.js \
+	pub/tinymce/plugins/table/index.js \
 	pub/tinymce/skins/ui/oxide-dark/skin.shadowdom.js \
 	pub/tinymce/skins/ui/oxide-dark/content.inline.css \
 	pub/tinymce/skins/ui/oxide-dark/content.css \
@@ -270,7 +273,7 @@ TINYMCE_FILES = \
 # TINYMCE
 pub/tinymce/CHANGELOG.md: $(TINYMCE_VENDOR_DIR)/tinymce/CHANGELOG.md
 	(cd pub/tinymce; mkdir -p models models/dom icons icons/default plugins plugins/autoresize \
-	plugins/link plugins/advlist plugins/autolink plugins/code plugins/lists \
+	plugins/link plugins/advlist plugins/autolink plugins/code plugins/lists plugins/table \
 	skins skins/ui skins/ui/oxide-dark skins/ui/tinymce-5-dark skins/ui/oxide \
 	skins/ui/tinymce-5 skins/content skins/content/tinymce-5-dark skins/content/document \
 	skins/content/default skins/content/dark skins/content/writer skins/content/tinymce-5 \
