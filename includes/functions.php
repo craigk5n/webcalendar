@@ -6840,6 +6840,78 @@ function get_mcp_tool_schema($tool_name) {
 }
 
 /**
+ * Convert a stored event date/time to a viewing user's local timezone.
+ *
+ * WebCalendar stores webcal_entry.cal_time (HHMMSS, or -1 for untimed/all-day
+ * events) as a GMT clock time, and the web UI converts it to each user's
+ * TIMEZONE on display -- e.g. view_entry.php renders the start time with
+ * display_time($date . cal_time, 2), which interprets the digits as GMT
+ * (date_to_epoch) and reformats them in the user's timezone. This conversion is
+ * NOT gated on the GENERAL_USE_GMT system setting; display_time always applies
+ * it. The MCP tools must do the same or clients receive times shifted by the
+ * user's UTC offset (the bug where 8 AM appointments were reported as noon).
+ *
+ * Untimed events (cal_time === -1) are returned unchanged. A timed event can
+ * roll onto an adjacent calendar day once shifted into the user's timezone, so
+ * the (possibly adjusted) date is returned alongside the time.
+ *
+ * This is a pure helper (no globals, no env mutation) so it can be unit-tested
+ * directly; the caller passes the target timezone explicitly.
+ *
+ * @param string|int $date cal_date in YYYYMMDD
+ * @param string|int $time cal_time in HHMMSS, or -1 for untimed events
+ * @param string     $tz   Olson timezone name to convert into (e.g.
+ *                         'America/New_York')
+ * @return array  ['date' => YYYYMMDD, 'time' => HHMMSS] in local time. Untimed
+ *                events keep time '-1'; inputs are returned unchanged when the
+ *                stored value or timezone cannot be parsed.
+ */
+function mcp_gmt_to_local ( $date, $time, $tz ) {
+  // Untimed/all-day events carry no clock time to convert.
+  if ( (int)$time === -1 )
+    return [ 'date' => (string)$date, 'time' => (string)$time ];
+
+  // Interpret the stored digits as GMT, then render in the target timezone.
+  // An explicit DateTime keeps this self-contained (no process-wide TZ env
+  // mutation) and DST-correct via the zoneinfo database. This mirrors
+  // display_time()'s date_to_epoch()+date() round-trip used by the web UI.
+  try {
+    $dt = DateTime::createFromFormat ( 'YmdHis',
+      sprintf ( '%08d%06d', (int)$date, (int)$time ),
+      new DateTimeZone ( 'UTC' ) );
+    if ( $dt === false )
+      return [ 'date' => (string)$date, 'time' => (string)$time ];
+    $dt->setTimezone ( new DateTimeZone ( $tz ?: 'UTC' ) );
+  } catch ( Exception $e ) {
+    // Unknown timezone: fail safe by returning the unconverted values.
+    return [ 'date' => (string)$date, 'time' => (string)$time ];
+  }
+
+  return [ 'date' => $dt->format ( 'Ymd' ), 'time' => $dt->format ( 'His' ) ];
+}
+
+/**
+ * Shift a YYYYMMDD date string by a whole number of days.
+ *
+ * Used by list_events to widen its GMT date-range query by one day on each side
+ * before converting to local time, so events that cross a calendar-day boundary
+ * during the timezone shift are not dropped. Computed in UTC (no DST) at noon to
+ * stay clear of any day-boundary edge cases.
+ *
+ * @param string|int $date  Date in YYYYMMDD
+ * @param int        $days  Number of days to add (may be negative)
+ * @return string  The shifted date in YYYYMMDD
+ */
+function mcp_shift_date ( $date, $days ) {
+  $d = (string)$date;
+  $ts = gmmktime ( 12, 0, 0,
+    (int)substr ( $d, 4, 2 ),
+    (int)substr ( $d, 6, 2 ) + (int)$days,
+    (int)substr ( $d, 0, 4 ) );
+  return gmdate ( 'Ymd', $ts );
+}
+
+/**
  * Dispatch a decoded JSON-RPC request to the appropriate MCP method and build
  * the JSON-RPC response array. This is the pure routing core extracted from
  * handleMcpHttpRequest() so it can be exercised without HTTP/STDIO transport.

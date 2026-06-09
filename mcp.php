@@ -359,6 +359,16 @@ class WebCalendarMcpTools
             return ['error' => 'Dates must be in YYYYMMDD format'];
         }
 
+        // Events are stored in GMT but returned to the client in the user's
+        // local timezone, matching what the web UI shows (see mcp_gmt_to_local).
+        // A local-evening event can be stored under the next GMT day (and vice
+        // versa), so widen the GMT query by one day on each side and then filter
+        // to the requested range by local date.
+        global $TIMEZONE;
+        $tz = $TIMEZONE ?? date_default_timezone_get();
+        $query_start = mcp_shift_date($start_date, -1);
+        $query_end = mcp_shift_date($end_date, 1);
+
         // Query events
         $events = [];
         $sql = "SELECT e.cal_id, e.cal_name, e.cal_date, e.cal_time, e.cal_duration,
@@ -368,14 +378,20 @@ class WebCalendarMcpTools
                 WHERE eu.cal_login = ? AND e.cal_date BETWEEN ? AND ?
                 ORDER BY e.cal_date, e.cal_time";
 
-        $res = dbi_execute($sql, [$this->userLogin, $start_date, $end_date]);
+        $res = dbi_execute($sql, [$this->userLogin, $query_start, $query_end]);
         if ($res) {
             while ($row = dbi_fetch_row($res)) {
+                $local = mcp_gmt_to_local($row[2], $row[3], $tz);
+                // Drop events the widened window pulled in that fall outside the
+                // requested range once converted to the user's local date.
+                if ($local['date'] < $start_date || $local['date'] > $end_date) {
+                    continue;
+                }
                 $events[] = [
                     'id' => $row[0],
                     'name' => $row[1],
-                    'date' => $row[2],
-                    'time' => $row[3],
+                    'date' => $local['date'],
+                    'time' => $local['time'],
                     'duration' => $row[4],
                     'description' => $row[5],
                     'location' => $row[6],
@@ -384,6 +400,12 @@ class WebCalendarMcpTools
             }
             dbi_free_result($res);
         }
+
+        // Re-sort by local date/time; the widening + conversion can reorder rows
+        // relative to the GMT-ordered query.
+        usort($events, function ($a, $b) {
+            return [$a['date'], $a['time']] <=> [$b['date'], $b['time']];
+        });
 
         return ['events' => $events];
     }
@@ -424,20 +446,30 @@ class WebCalendarMcpTools
                 ORDER BY e.cal_date DESC, e.cal_time DESC
                 LIMIT " . (int)$limit;
 
+        // Return times in the user's local timezone (see list_events).
+        global $TIMEZONE;
+        $tz = $TIMEZONE ?? date_default_timezone_get();
+
         $search_term = '%' . $keyword . '%';
         $res = dbi_execute($sql, [$this->userLogin, $search_term, $search_term]);
         if ($res) {
             while ($row = dbi_fetch_row($res)) {
+                $local = mcp_gmt_to_local($row[2], $row[3], $tz);
                 $events[] = [
                     'id' => $row[0],
                     'name' => $row[1],
-                    'date' => $row[2],
-                    'time' => $row[3],
+                    'date' => $local['date'],
+                    'time' => $local['time'],
                     'description' => $row[4]
                 ];
             }
             dbi_free_result($res);
         }
+
+        // Preserve the SQL's newest-first ordering after local conversion.
+        usort($events, function ($a, $b) {
+            return [$b['date'], $b['time']] <=> [$a['date'], $a['time']];
+        });
 
         return ['events' => $events, 'total' => count($events)];
     }

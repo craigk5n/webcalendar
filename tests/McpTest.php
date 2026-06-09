@@ -974,4 +974,104 @@ final class McpTest extends TestCase
       "Another user's actions must not count toward this user's limit"
     );
   }
+
+  // ---------------------------------------------------------------
+  // Timezone conversion (mcp_gmt_to_local / mcp_shift_date)
+  //
+  // WebCalendar stores cal_time as a GMT clock time and the web UI converts it
+  // to the user's TIMEZONE on display (view_entry.php: display_time(..., 2)),
+  // independent of the GENERAL_USE_GMT setting. The MCP tools must return the
+  // same local time. These guard list_events/search_events against the
+  // regression where raw GMT times were returned to clients.
+  // ---------------------------------------------------------------
+
+  /**
+   * Regression: a noon-GMT event must come back as 8:00 AM US Eastern in June
+   * (EDT, UTC-4) -- the exact bug where 8 AM appointments were reported as noon.
+   */
+  public function testGmtToLocalConvertsEdtSummerTime() {
+    $local = mcp_gmt_to_local('20260611', '120000', 'America/New_York');
+    $this->assertEquals('20260611', $local['date']);
+    $this->assertEquals('080000', $local['time']);
+  }
+
+  /**
+   * EST winter offset is UTC-5: noon GMT in January is 7:00 AM Eastern.
+   */
+  public function testGmtToLocalConvertsEstWinterTime() {
+    $local = mcp_gmt_to_local('20260115', '120000', 'America/New_York');
+    $this->assertEquals('20260115', $local['date']);
+    $this->assertEquals('070000', $local['time']);
+  }
+
+  /**
+   * Early-morning GMT events roll back onto the previous local calendar day,
+   * so the returned date must shift too: 02:00 GMT - 4h = 22:00 the day before.
+   */
+  public function testGmtToLocalRollsDateBackwardAcrossMidnight() {
+    $local = mcp_gmt_to_local('20260611', '020000', 'America/New_York');
+    $this->assertEquals('20260610', $local['date']);
+    $this->assertEquals('220000', $local['time']);
+  }
+
+  /**
+   * Untimed/all-day events (cal_time === -1) carry no clock time and must be
+   * returned unchanged.
+   */
+  public function testGmtToLocalLeavesUntimedEventsUnchanged() {
+    $local = mcp_gmt_to_local('20260615', '-1', 'America/New_York');
+    $this->assertEquals('20260615', $local['date']);
+    $this->assertEquals('-1', $local['time']);
+  }
+
+  /**
+   * An unpadded integer-style time (e.g. 80000 for 08:00) must be normalized
+   * and converted, not mangled: 08:00 GMT - 4h = 04:00 EDT.
+   */
+  public function testGmtToLocalNormalizesUnpaddedTime() {
+    $local = mcp_gmt_to_local('20260611', 80000, 'America/New_York');
+    $this->assertEquals('20260611', $local['date']);
+    $this->assertEquals('040000', $local['time']);
+  }
+
+  /**
+   * Converting into UTC is an identity for GMT-stored values.
+   */
+  public function testGmtToLocalUtcIsIdentity() {
+    $local = mcp_gmt_to_local('20260611', '120000', 'UTC');
+    $this->assertEquals('20260611', $local['date']);
+    $this->assertEquals('120000', $local['time']);
+  }
+
+  /**
+   * An invalid timezone must fail safe by returning the unconverted values
+   * rather than throwing inside a tool call.
+   */
+  public function testGmtToLocalFailsSafeOnInvalidTimezone() {
+    $local = mcp_gmt_to_local('20260611', '120000', 'Not/AZone');
+    $this->assertEquals('20260611', $local['date']);
+    $this->assertEquals('120000', $local['time']);
+  }
+
+  public function testShiftDateForwardAcrossMonthBoundary() {
+    $this->assertEquals('20260201', mcp_shift_date('20260131', 1));
+  }
+
+  public function testShiftDateBackwardAcrossMonthBoundary() {
+    // 2026 is not a leap year, so February has 28 days.
+    $this->assertEquals('20260228', mcp_shift_date('20260301', -1));
+  }
+
+  public function testShiftDateBackwardAcrossYearBoundary() {
+    $this->assertEquals('20251231', mcp_shift_date('20260101', -1));
+  }
+
+  public function testShiftDateForwardAcrossYearBoundary() {
+    $this->assertEquals('20270101', mcp_shift_date('20261231', 1));
+  }
+
+  public function testShiftDateHandlesLeapDay() {
+    // 2024 is a leap year: the day before March 1 is February 29.
+    $this->assertEquals('20240229', mcp_shift_date('20240301', -1));
+  }
 }
