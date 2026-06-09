@@ -103,167 +103,12 @@ function handleMcpHttpRequest($user_login) {
             throw new Exception('Invalid JSON-RPC version');
         }
 
-        $method = $request['method'] ?? '';
-        $params = $request['params'] ?? [];
-        $id = $request['id'] ?? null;
-
         $tools = new WebCalendarMcpTools($user_login);
-        $result = null;
-        $error = null;
 
-        switch ($method) {
-            case 'initialize':
-                $result = [
-                    'protocolVersion' => '2024-11-05',
-                    'capabilities' => [
-                        'tools' => [
-                            'listChanged' => true
-                        ]
-                    ],
-                    'serverInfo' => [
-                        'name' => 'WebCalendar MCP Server',
-                        'version' => '1.0.0'
-                    ]
-                ];
-                break;
-
-            case 'tools/list':
-                $result = [
-                    'tools' => [
-                        [
-                            'name' => 'list_events',
-                            'description' => 'List events for a user within a date range',
-                            'inputSchema' => [
-                                'type' => 'object',
-                                'properties' => [
-                                    'start_date' => [
-                                        'type' => 'string',
-                                        'description' => 'Start date in YYYYMMDD format'
-                                    ],
-                                    'end_date' => [
-                                        'type' => 'string',
-                                        'description' => 'End date in YYYYMMDD format'
-                                    ]
-                                ],
-                                'required' => ['start_date', 'end_date']
-                            ]
-                        ],
-                        [
-                            'name' => 'get_user_info',
-                            'description' => 'Get basic information about the authenticated user',
-                            'inputSchema' => [
-                                'type' => 'object',
-                                'properties' => []
-                            ]
-                        ],
-                        [
-                            'name' => 'search_events',
-                            'description' => 'Search events by keyword in name or description',
-                            'inputSchema' => [
-                                'type' => 'object',
-                                'properties' => [
-                                    'keyword' => [
-                                        'type' => 'string',
-                                        'description' => 'Search keyword'
-                                    ],
-                                    'limit' => [
-                                        'type' => 'integer',
-                                        'description' => 'Maximum number of results',
-                                        'default' => 50
-                                    ]
-                                ],
-                                'required' => ['keyword']
-                            ]
-                        ],
-                        [
-                            'name' => 'add_event',
-                            'description' => 'Add a new basic event (no repeating)',
-                            'inputSchema' => [
-                                'type' => 'object',
-                                'properties' => [
-                                    'name' => [
-                                        'type' => 'string',
-                                        'description' => 'Event name'
-                                    ],
-                                    'date' => [
-                                        'type' => 'string',
-                                        'description' => 'Event date in YYYYMMDD format'
-                                    ],
-                                    'description' => [
-                                        'type' => 'string',
-                                        'description' => 'Event description'
-                                    ],
-                                    'location' => [
-                                        'type' => 'string',
-                                        'description' => 'Event location'
-                                    ],
-                                    'duration' => [
-                                        'type' => 'integer',
-                                        'description' => 'Duration in minutes',
-                                        'default' => 0
-                                    ]
-                                ],
-                                'required' => ['name', 'date']
-                            ]
-                        ]
-                    ]
-                ];
-                break;
-
-            case 'tools/call':
-                $tool_name = $params['name'] ?? '';
-                $tool_args = $params['arguments'] ?? [];
-
-                try {
-                    switch ($tool_name) {
-                        case 'list_events':
-                            $result = $tools->list_events(
-                                $tool_args['start_date'] ?? '',
-                                $tool_args['end_date'] ?? ''
-                            );
-                            break;
-                        case 'get_user_info':
-                            $result = $tools->get_user_info();
-                            break;
-                        case 'search_events':
-                            $result = $tools->search_events(
-                                $tool_args['keyword'] ?? '',
-                                $tool_args['limit'] ?? 50
-                            );
-                            break;
-                        case 'add_event':
-                            $result = $tools->add_event(
-                                $tool_args['name'] ?? '',
-                                $tool_args['date'] ?? '',
-                                $tool_args['description'] ?? '',
-                                $tool_args['location'] ?? '',
-                                $tool_args['duration'] ?? 0
-                            );
-                            break;
-                        default:
-                            throw new Exception("Unknown tool: $tool_name");
-                    }
-                } catch (Exception $e) {
-                    $error = [
-                        'code' => -32603,
-                        'message' => $e->getMessage()
-                    ];
-                }
-                break;
-
-            default:
-                $error = [
-                    'code' => -32601,
-                    'message' => 'Method not found'
-                ];
-        }
-
-        $response = ['jsonrpc' => '2.0', 'id' => $id];
-        if ($error) {
-            $response['error'] = $error;
-        } else {
-            $response['result'] = $result;
-        }
+        // Route the request and build the JSON-RPC response. The dispatch
+        // logic lives in mcp_dispatch_request() (includes/functions.php) so it
+        // can be unit-tested without HTTP/STDIO transport.
+        $response = mcp_dispatch_request($request, $tools);
 
         echo json_encode($response);
 
@@ -394,11 +239,6 @@ if (empty($token)) {
 // Optional debug logging (enable with WEBCALENDAR_DEBUG=true or ?debug=1)
 if (getenv('WEBCALENDAR_DEBUG') || isset($_GET['debug'])) {
     error_log("MCP Token: source='$token_source', token='" . substr($token, 0, 8) . "...'");
-}
-
-// Fallback to other methods
-if (empty($token)) {
-    $token = getenv('MCP_TOKEN') ?: ($_SERVER['HTTP_X_MCP_TOKEN'] ?? ($_GET['token'] ?? ''));
 }
 
 // Optional debug logging
@@ -619,35 +459,58 @@ class WebCalendarMcpTools
             return ['error' => 'Event name is required'];
         }
 
-        // Generate new event ID
-        $res = dbi_execute('SELECT MAX(cal_id) FROM webcal_entry');
-        if ($res) {
-            $row = dbi_fetch_row($res);
-            $event_id = $row[0] + 1;
-            dbi_free_result($res);
-        } else {
-            $event_id = 1;
-        }
-
-        // Insert event
+        // Generate a new event ID and insert it.
+        //
+        // webcal_entry.cal_id is a plain INT PRIMARY KEY with no
+        // auto-increment or sequence on any supported backend, so the
+        // application assigns it as MAX(cal_id) + 1. Two concurrent callers
+        // can compute the same id, so we insert with a non-fatal, quiet call
+        // and retry on collision: the duplicate primary key makes the INSERT
+        // return false, and we recompute the id and try again. This is
+        // portable across SQLite, MySQL and PostgreSQL without any
+        // dialect-specific locking.
+        $now = date('Ymd');
+        $time = date('His');
         $sql = "INSERT INTO webcal_entry (cal_id, cal_name, cal_date, cal_time, cal_duration, cal_description, cal_location, cal_create_by, cal_mod_date, cal_mod_time)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        $now = date('Ymd');
-        $time = date('His');
-        $res = dbi_execute($sql, [$event_id, $name, $date, -1, $duration, $description, $location, $this->userLogin, $now, $time]);
+        $event_id = null;
+        $max_attempts = 5;
+        for ($attempt = 0; $attempt < $max_attempts; $attempt++) {
+            $res = dbi_execute('SELECT MAX(cal_id) FROM webcal_entry');
+            if (!$res) {
+                return ['error' => 'Failed to create event'];
+            }
+            $row = dbi_fetch_row($res);
+            $candidate_id = ($row[0] ?? 0) + 1;
+            dbi_free_result($res);
 
-        if ($res) {
-            // Add user participation
-            dbi_execute("INSERT INTO webcal_entry_user (cal_id, cal_login, cal_status) VALUES (?, ?, 'A')", [$event_id, $this->userLogin]);
+            // Non-fatal + quiet: a duplicate-key collision returns false so we
+            // can retry instead of aborting the whole request.
+            $res = dbi_execute(
+                $sql,
+                [$candidate_id, $name, $date, -1, $duration, $description, $location, $this->userLogin, $now, $time],
+                false,
+                false
+            );
 
-            // Log activity
-            activity_log($event_id, $this->userLogin, $this->userLogin, 'M', 'MCP: Event created');
-
-            return ['success' => true, 'event_id' => $event_id];
+            if ($res) {
+                $event_id = $candidate_id;
+                break;
+            }
         }
 
-        return ['error' => 'Failed to create event'];
+        if ($event_id === null) {
+            return ['error' => 'Failed to create event'];
+        }
+
+        // Add user participation
+        dbi_execute("INSERT INTO webcal_entry_user (cal_id, cal_login, cal_status) VALUES (?, ?, 'A')", [$event_id, $this->userLogin]);
+
+        // Log activity
+        activity_log($event_id, $this->userLogin, $this->userLogin, 'M', 'MCP: Event created');
+
+        return ['success' => true, 'event_id' => $event_id];
     }
 }
 

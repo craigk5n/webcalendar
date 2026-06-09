@@ -6594,7 +6594,18 @@ function validate_mcp_token($token) {
     return null;
   }
 
-  $res = dbi_execute('SELECT cal_login FROM webcal_user WHERE cal_api_token = ? AND cal_enabled = \'Y\'', [$token]);
+  // Extract token from "Bearer token" format if present
+  $actualToken = $token;
+  if (strpos($token, 'Bearer ') === 0) {
+    $actualToken = substr($token, 7); // Remove "Bearer " prefix
+  }
+
+  // Only proceed if we have a non-empty token after extraction
+  if (empty($actualToken)) {
+    return null;
+  }
+
+  $res = dbi_execute('SELECT cal_login FROM webcal_user WHERE cal_api_token = ? AND cal_enabled = \'Y\'', [$actualToken]);
   if ($res) {
     $row = dbi_fetch_row($res);
     dbi_free_result($res);
@@ -6611,12 +6622,15 @@ function validate_mcp_token($token) {
 /**
  * Load system settings into an array
  *
+ * @param bool $force_reload When true, bypass the process-static cache and
+ *                           re-read webcal_config (e.g. after settings change
+ *                           within the same request, or for test isolation).
  * @return array Associative array of setting name => value
  */
-function load_settings() {
+function load_settings($force_reload = false) {
   static $settings_cache = null;
 
-  if ($settings_cache !== null) {
+  if ($settings_cache !== null && !$force_reload) {
     return $settings_cache;
   }
 
@@ -6671,14 +6685,243 @@ function check_mcp_rate_limit($user_login) {
     return false; // No limit
   }
 
-  // Simple implementation: check activity log for MCP actions in the last hour
+  // Count MCP actions in the activity log within the last hour.
+  //
+  // webcal_entry_log stores the time of each action as two integer columns:
+  // cal_date (YYYYMMDD) and cal_time (HHMMSS), both written in GMT by
+  // activity_log(). We build the GMT date/time of one hour ago and compare
+  // on those columns so the count is done in SQL (COUNT(*)) and is correctly
+  // hour-granular. (The previous implementation compared the YYYYMMDD column
+  // directly against a Unix timestamp, which was always false, so the rate
+  // limit never triggered.)
   $one_hour_ago = time() - 3600;
-  $res = dbi_execute("SELECT COUNT(*) FROM webcal_entry_log WHERE cal_login = ? AND cal_type = 'M' AND cal_text LIKE 'MCP:%' AND cal_date >= ?", [$user_login, $one_hour_ago]);
+  $date_part = (int)gmdate('Ymd', $one_hour_ago);
+  $time_part = (int)gmdate('Gis', $one_hour_ago);
+
+  $res = dbi_execute(
+    "SELECT COUNT(*) FROM webcal_entry_log
+      WHERE cal_login = ? AND cal_type = 'M' AND cal_text LIKE 'MCP:%'
+        AND (cal_date > ? OR (cal_date = ? AND cal_time >= ?))",
+    [$user_login, $date_part, $date_part, $time_part]
+  );
+
   if ($res) {
     $row = dbi_fetch_row($res);
+    $count = (int)($row[0] ?? 0);
     dbi_free_result($res);
-    return ($row[0] ?? 0) >= $rate_limit;
+    return $count >= $rate_limit;
   }
   return false;
+}
+
+/**
+ * Returns the MCP "initialize" result payload (protocol version, server
+ * capabilities and server info). Single source of truth shared by the HTTP
+ * handler in mcp.php and the test suite.
+ *
+ * @return array The initialize result.
+ */
+function mcp_initialize_result() {
+  return [
+    'protocolVersion' => '2024-11-05',
+    'capabilities' => [
+      'tools' => [
+        'listChanged' => true
+      ]
+    ],
+    'serverInfo' => [
+      'name' => 'WebCalendar MCP Server',
+      'version' => '1.0.0'
+    ]
+  ];
+}
+
+/**
+ * Returns the MCP tool definitions (name, description, inputSchema) advertised
+ * by the server's tools/list response. Single source of truth shared by the
+ * HTTP handler in mcp.php and the test suite.
+ *
+ * @return array List of tool definition arrays.
+ */
+function mcp_list_tools() {
+  return [
+    [
+      'name' => 'list_events',
+      'description' => 'List events for a user within a date range',
+      'inputSchema' => [
+        'type' => 'object',
+        'properties' => [
+          'start_date' => [
+            'type' => 'string',
+            'description' => 'Start date in YYYYMMDD format'
+          ],
+          'end_date' => [
+            'type' => 'string',
+            'description' => 'End date in YYYYMMDD format'
+          ]
+        ],
+        'required' => ['start_date', 'end_date']
+      ]
+    ],
+    [
+      'name' => 'get_user_info',
+      'description' => 'Get basic information about the authenticated user',
+      'inputSchema' => [
+        'type' => 'object',
+        'properties' => []
+      ]
+    ],
+    [
+      'name' => 'search_events',
+      'description' => 'Search events by keyword in name or description',
+      'inputSchema' => [
+        'type' => 'object',
+        'properties' => [
+          'keyword' => [
+            'type' => 'string',
+            'description' => 'Search keyword'
+          ],
+          'limit' => [
+            'type' => 'integer',
+            'description' => 'Maximum number of results',
+            'default' => 50
+          ]
+        ],
+        'required' => ['keyword']
+      ]
+    ],
+    [
+      'name' => 'add_event',
+      'description' => 'Add a new basic event (no repeating)',
+      'inputSchema' => [
+        'type' => 'object',
+        'properties' => [
+          'name' => [
+            'type' => 'string',
+            'description' => 'Event name'
+          ],
+          'date' => [
+            'type' => 'string',
+            'description' => 'Event date in YYYYMMDD format'
+          ],
+          'description' => [
+            'type' => 'string',
+            'description' => 'Event description'
+          ],
+          'location' => [
+            'type' => 'string',
+            'description' => 'Event location'
+          ],
+          'duration' => [
+            'type' => 'integer',
+            'description' => 'Duration in minutes',
+            'default' => 0
+          ]
+        ],
+        'required' => ['name', 'date']
+      ]
+    ]
+  ];
+}
+
+/**
+ * Returns the inputSchema for a single MCP tool.
+ *
+ * @param string $tool_name The tool name.
+ * @return array|null The tool's inputSchema, or null if the tool is unknown.
+ */
+function get_mcp_tool_schema($tool_name) {
+  foreach (mcp_list_tools() as $tool) {
+    if ($tool['name'] === $tool_name) {
+      return $tool['inputSchema'];
+    }
+  }
+  return null;
+}
+
+/**
+ * Dispatch a decoded JSON-RPC request to the appropriate MCP method and build
+ * the JSON-RPC response array. This is the pure routing core extracted from
+ * handleMcpHttpRequest() so it can be exercised without HTTP/STDIO transport.
+ *
+ * @param array $request A decoded JSON-RPC request (jsonrpc, method, params, id).
+ * @param object|null $tools A WebCalendarMcpTools instance, required only for
+ *                           'tools/call'. May be null when callers exercise
+ *                           non-tool methods (initialize, tools/list, errors).
+ * @return array The JSON-RPC response array.
+ */
+function mcp_dispatch_request($request, $tools = null) {
+  $method = $request['method'] ?? '';
+  $params = $request['params'] ?? [];
+  $id = $request['id'] ?? null;
+
+  $result = null;
+  $error = null;
+
+  switch ($method) {
+    case 'initialize':
+      $result = mcp_initialize_result();
+      break;
+
+    case 'tools/list':
+      $result = ['tools' => mcp_list_tools()];
+      break;
+
+    case 'tools/call':
+      $tool_name = $params['name'] ?? '';
+      $tool_args = $params['arguments'] ?? [];
+
+      try {
+        switch ($tool_name) {
+          case 'list_events':
+            $result = $tools->list_events(
+              $tool_args['start_date'] ?? '',
+              $tool_args['end_date'] ?? ''
+            );
+            break;
+          case 'get_user_info':
+            $result = $tools->get_user_info();
+            break;
+          case 'search_events':
+            $result = $tools->search_events(
+              $tool_args['keyword'] ?? '',
+              $tool_args['limit'] ?? 50
+            );
+            break;
+          case 'add_event':
+            $result = $tools->add_event(
+              $tool_args['name'] ?? '',
+              $tool_args['date'] ?? '',
+              $tool_args['description'] ?? '',
+              $tool_args['location'] ?? '',
+              $tool_args['duration'] ?? 0
+            );
+            break;
+          default:
+            throw new Exception("Unknown tool: $tool_name");
+        }
+      } catch (Exception $e) {
+        $error = [
+          'code' => -32603,
+          'message' => $e->getMessage()
+        ];
+      }
+      break;
+
+    default:
+      $error = [
+        'code' => -32601,
+        'message' => 'Method not found'
+      ];
+  }
+
+  $response = ['jsonrpc' => '2.0', 'id' => $id];
+  if ($error) {
+    $response['error'] = $error;
+  } else {
+    $response['result'] = $result;
+  }
+
+  return $response;
 }
 ?>

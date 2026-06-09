@@ -29,10 +29,9 @@ if [ "$1" = "--cleanup" ]; then
 fi
 
 PORT=8099
-DB_DIR="$PROJECT_DIR/database"
-DB_FILE="$DB_DIR/mcp_test.sqlite"
-SETTINGS_FILE="$PROJECT_DIR/includes/settings.php"
-SETTINGS_BACKUP=""
+# Use the system temp dir so the test never writes into the repo.
+TMP_DIR="${TMPDIR:-/tmp}"
+DB_FILE="$TMP_DIR/mcp_test.sqlite"
 SERVER_PID=""
 PASS=0
 FAIL=0
@@ -52,14 +51,7 @@ cleanup() {
   fi
 
   if [ "$CLEANUP" = true ]; then
-    # Restore settings.php if we backed it up
-    if [ -n "$SETTINGS_BACKUP" ] && [ -f "$SETTINGS_BACKUP" ]; then
-      mv "$SETTINGS_BACKUP" "$SETTINGS_FILE"
-    elif [ -f "$SETTINGS_FILE.mcp-test-created" ]; then
-      rm -f "$SETTINGS_FILE"
-      rm -f "$SETTINGS_FILE.mcp-test-created"
-    fi
-    # Remove test database
+    # Remove the temporary test database
     rm -f "$DB_FILE"
   fi
 }
@@ -104,36 +96,22 @@ echo ""
 # ---------------------------------------------------------------
 echo "--- Setup ---"
 
-# Create database directory
-mkdir -p "$DB_DIR"
+# Start from a clean temporary database.
+rm -f "$DB_FILE"
 
-# Backup existing settings.php if present
-if [ -f "$SETTINGS_FILE" ]; then
-  SETTINGS_BACKUP="${SETTINGS_FILE}.mcp-test-backup.$$"
-  cp "$SETTINGS_FILE" "$SETTINGS_BACKUP"
-fi
+# Run in environment-variable mode so the installer and server use the temp
+# database and never read or write the live includes/settings.php. Exported
+# here so both the headless installer and the php -S server below inherit them.
+export WEBCALENDAR_USE_ENV=true
+export WEBCALENDAR_DB_TYPE=sqlite3
+export WEBCALENDAR_DB_DATABASE="$DB_FILE"
 
-# Create settings.php for SQLite
-cat > "$SETTINGS_FILE" << 'SETTINGS'
-db_type: sqlite3
-db_database: database/mcp_test.sqlite
-db_host: localhost
-db_login: ""
-db_password: ""
-install_password: test123
-single_user: false
-use_http_auth: false
-user_inc: user.php
-SETTINGS
-touch "${SETTINGS_FILE}.mcp-test-created"
-
-echo "Created settings.php for SQLite"
+echo "Using env-variable config (temp DB: $DB_FILE)"
 
 # Run headless installer
 echo "Running headless installer..."
 INSTALL_OUTPUT=$(php wizard/headless.php \
-  --db-type=sqlite3 \
-  --db-database=database/mcp_test.sqlite \
+  --use-env \
   --admin-login=admin \
   --admin-password=admin \
   --install-password=test123 \
