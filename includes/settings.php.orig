@@ -63,7 +63,7 @@ single_user: false
 # user mode.
 # Set the following to true to use http-based authorization.
 # If you want to setup a public calendar with HTTP-based authentication,
-# see FAQ in WebCalendar-SysAdmin.html for instructions.
+# see the FAQ in docs/admin-guide.md for instructions.
 use_http_auth: false
 
 # user authentication module (user.php, user-ldap.php, user-nis.php)

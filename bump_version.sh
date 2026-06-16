@@ -11,7 +11,6 @@
 #   - wizard/shared/default_config.php  (WEBCAL_PROGRAM_VERSION)
 #   - wizard/shared/upgrade_matrix.php  (PROGRAM_VERSION)
 #   - includes/config.php               (PROGRAM_VERSION and PROGRAM_DATE)
-#   - UPGRADING.html                    (version table)
 #   - composer.json                     (version field)
 #   - .npmrc                            (init-version)
 #   - wizard/shared/tables-*.sql        (WEBCAL_PROGRAM_VERSION INSERT)
@@ -53,25 +52,6 @@ update_config_php() {
     sed -i "/^ *\$PROGRAM_DATE =\s*/s/'[^']*'/'$new_date'/" "$file_path"
 
     echo "Updated $file_path to version $new_version and date $new_date"
-}
-
-# Function to update version in UPGRADING.html
-update_upgrading_html() {
-    local file_path="UPGRADING.html"
-    local new_version="$1"
-    local version_without_v="${new_version#v}" # removes 'v' prefix for versions like v1.9.1
-
-    # Get the line number containing the version
-    local line_num=$(grep -nE '<th>WebCalendar Version:</th>' "$file_path" | cut -d: -f1)
-    # Add 1 to the line number to target the next line
-    ((line_num++))
-
-    # If we found the line, update the version on that line
-    if [[ -n "$line_num" ]]; then
-        sed -i "${line_num}s|<td>[^<]*</td>|<td>$version_without_v</td>|" "$file_path"
-    fi
-
-    echo "Updated $file_path to version $new_version"
 }
 
 # Function to update version in composer.json
@@ -170,7 +150,6 @@ fi
 
 update_default_config_version "$new_version"
 update_config_php "$new_version"
-update_upgrading_html "$new_version"
 update_composer_json "$new_version"
 update_upgrade_matrix "$new_version"
 update_npmrc_version "$new_version"

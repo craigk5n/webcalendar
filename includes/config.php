@@ -42,13 +42,13 @@ $config_possible_settings = [
 
 /**
  * Prints a fatal error message to the user along with a link to the
- * Troubleshooting section of the WebCalendar System Administrator's Guide.
+ * Troubleshooting section of the WebCalendar Administrator Guide.
  *
  * Execution is aborted.
  *
  * @param string  $error  The error message to display
- * @param string  $anchor The section in WebCalendar-SysAdmin.html to
- *		display (should be marked with <a name="XXX">
+ * @param string  $anchor The section anchor in docs/troubleshooting.md to
+ *		display (appended to $TROUBLE_URL as "#anchor")
  * @internal We don't normally put functions in this file. But, since this
  *           file is included before some of the others, this function either
  *           goes here or we repeat this code in multiple files.

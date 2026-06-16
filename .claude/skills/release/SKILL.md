@@ -73,7 +73,7 @@ Halt on any failure. Do not "fix and retry" — surface the failure to the user.
 ./bump_version.sh vX.Y.Z                            # explicit version
 ```
 
-This updates: `wizard/shared/default_config.php`, `wizard/shared/upgrade_matrix.php`, `includes/config.php` (`$PROGRAM_VERSION` + `$PROGRAM_DATE`), `UPGRADING.html`, `composer.json`, `composer.lock`, `.npmrc`, `wizard/shared/tables-*.sql`, `wizard/shared/tables-sqlite*.php`, `wizard/shared/upgrade-sql.php` (adds empty placeholder entry), and the four wizard files (`index.php`, `headless.php`, `wizard.js`, `WizardState.php`).
+This updates: `wizard/shared/default_config.php`, `wizard/shared/upgrade_matrix.php`, `includes/config.php` (`$PROGRAM_VERSION` + `$PROGRAM_DATE`), `composer.json`, `composer.lock`, `.npmrc`, `wizard/shared/tables-*.sql`, `wizard/shared/tables-sqlite*.php`, `wizard/shared/upgrade-sql.php` (adds empty placeholder entry), and the four wizard files (`index.php`, `headless.php`, `wizard.js`, `WizardState.php`).
 
 Confirm by running `./bump_version.sh -p` — should show the new version.
 
@@ -203,7 +203,6 @@ git add \
   wizard/shared/default_config.php \
   wizard/shared/upgrade_matrix.php \
   includes/config.php \
-  UPGRADING.html \
   composer.json composer.lock \
   .npmrc \
   wizard/shared/tables-*.sql \
@@ -315,7 +314,6 @@ Tell the user:
 | `wizard/shared/default_config.php` | `WEBCAL_PROGRAM_VERSION` |
 | `wizard/shared/upgrade_matrix.php` | `$PROGRAM_VERSION` |
 | `includes/config.php` | `$PROGRAM_VERSION`, `$PROGRAM_DATE` |
-| `UPGRADING.html` | version table cell |
 | `composer.json` + `composer.lock` | `version` field |
 | `.npmrc` | `init-version` |
 | `wizard/shared/tables-*.sql` | `WEBCAL_PROGRAM_VERSION` INSERT |
