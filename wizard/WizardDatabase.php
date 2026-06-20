@@ -15,6 +15,20 @@ class WizardDatabase
   public function __construct(WizardState $state)
   {
     $this->state = $state;
+
+    // PHP 8.1+ defaults mysqli error reporting to
+    // MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT, which makes failed
+    // mysqli calls THROW mysqli_sql_exception instead of returning false /
+    // setting ->error. The "@" operator does NOT suppress thrown
+    // exceptions, so an uncaught exception during connect/select_db (e.g.
+    // selecting a database that does not exist yet) becomes a fatal error
+    // with an empty response body, surfacing in the wizard UI as
+    // "Unexpected end of JSON input" (see issue #642). This class is
+    // written against the legacy return-false semantics, so disable the
+    // throwing behavior for all mysqli calls it makes.
+    if (function_exists('mysqli_report')) {
+      mysqli_report(MYSQLI_REPORT_OFF);
+    }
   }
 
   public function getError(): ?string

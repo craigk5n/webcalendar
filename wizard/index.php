@@ -471,6 +471,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
   while (ob_get_level()) {
     ob_end_clean();
   }
+
+  // Defense in depth: if a fatal error escapes handleApiRequest(), the
+  // response body would otherwise be empty, surfacing in the UI as the
+  // confusing "Unexpected end of JSON input" (issue #642). Emit a valid
+  // JSON error instead so the user sees the real problem.
+  register_shutdown_function(function () {
+    $err = error_get_last();
+    if ($err && in_array($err['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR], true)) {
+      while (ob_get_level()) {
+        ob_end_clean();
+      }
+      if (!headers_sent()) {
+        header('Content-Type: application/json');
+      }
+      echo json_encode([
+        'success' => false,
+        'message' => 'Server error: ' . $err['message'],
+      ]);
+    }
+  });
+
   ob_start();
   handleApiRequest($_POST['action'], $state, $validator);
   $output = ob_get_clean();
