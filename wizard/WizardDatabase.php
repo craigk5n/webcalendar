@@ -405,6 +405,84 @@ class WizardDatabase
   }
 
   /**
+   * Create an administrator account in webcal_user.
+   *
+   * The "create-admin-user" action only calls testConnection() before this,
+   * which (for mysqli) connects without selecting a database, so select the
+   * target database here first. The password is stored with password_hash()
+   * to match the main app (includes/user.php).
+   */
+  public function createAdminUser(string $login, string $password, string $email = ''): bool
+  {
+    if (!$this->connection) {
+      $this->error = 'No database connection';
+      return false;
+    }
+
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO webcal_user "
+      . "(cal_login, cal_passwd, cal_email, cal_firstname, cal_lastname, cal_is_admin) "
+      . "VALUES (?, ?, ?, 'Administrator', 'Default', 'Y')";
+
+    try {
+      if ($this->state->dbType === 'mysqli') {
+        if (!$this->connection->select_db($this->state->dbDatabase)) {
+          $this->error = $this->connection->error;
+          return false;
+        }
+        $stmt = $this->connection->prepare($sql);
+        if (!$stmt) {
+          $this->error = $this->connection->error;
+          return false;
+        }
+        $stmt->bind_param('sss', $login, $hashedPassword, $email);
+        if (!$stmt->execute()) {
+          $this->error = $stmt->error;
+          return false;
+        }
+        return true;
+      } elseif ($this->state->dbType === 'postgresql') {
+        // pg uses $1, $2, $3 placeholders rather than ?
+        $pgSql = "INSERT INTO webcal_user "
+          . "(cal_login, cal_passwd, cal_email, cal_firstname, cal_lastname, cal_is_admin) "
+          . "VALUES ($1, $2, $3, 'Administrator', 'Default', 'Y')";
+        $result = @pg_query_params($this->connection, $pgSql, [$login, $hashedPassword, $email]);
+        if ($result === false) {
+          $this->error = pg_last_error($this->connection);
+          return false;
+        }
+        return true;
+      } elseif ($this->state->dbType === 'sqlite3') {
+        $stmt = $this->connection->prepare($sql);
+        if (!$stmt) {
+          $this->error = 'Failed to prepare admin user insert';
+          return false;
+        }
+        $stmt->bindValue(1, $login);
+        $stmt->bindValue(2, $hashedPassword);
+        $stmt->bindValue(3, $email);
+        return $stmt->execute() !== false;
+      }
+    } catch (\Exception $e) {
+      $this->error = $e->getMessage();
+      return false;
+    }
+
+    $this->error = "Unsupported database type: " . $this->state->dbType;
+    return false;
+  }
+
+  /**
+   * Return the upgrade SQL commands collected for the detected version,
+   * for display in the wizard (the "get-upgrade-sql" action).
+   */
+  public function getUpgradeSqlCommands(): array
+  {
+    return $this->state->upgradeSqlCommands;
+  }
+
+  /**
    * Execute upgrade SQL commands (or base schema for new installs)
    */
   public function executeUpgrade(): bool
