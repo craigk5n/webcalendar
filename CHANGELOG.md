@@ -15,6 +15,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+## [v1.9.17] - 2026-06-21
+
+### Security
+
+- Update TinyMCE to 7.9.3 to address CVE-2026-47759 (XSS).
+
+### Fixed
+
+- Prevent "Unexpected end of JSON input" during install/upgrade on PHP 8.1+;
+  the wizard now returns proper JSON instead of an empty body on DB errors (#642)
+- Restore missing wizard methods so the admin-user and upgrade-SQL steps work
+  again (createAdminUser, getUpgradeSqlCommands) (#642)
+- Ship the TinyMCE table plugin referenced by the editor configuration
+- Guard count() against null in RSS feed generation on PHP 8
+- Return MCP event times in the user's local timezone
+- Repair MCP add_event and rate limiting, and isolate the MCP test suite
+- Handle mixed latin1/UTF-8 data in the charset conversion tool
+
 ## [v1.9.16] - 2026-04-01
 
 ### Security

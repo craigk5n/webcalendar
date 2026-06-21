@@ -650,4 +650,8 @@ SQL,
 -- SQLite does not support ALTER TABLE MODIFY COLUMN, but column types are dynamic
 SQL
   ],
+  [
+    'version' => 'v1.9.17',
+    'default-sql' => ''
+  ],
 ];
