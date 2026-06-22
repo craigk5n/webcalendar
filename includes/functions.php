@@ -50,7 +50,11 @@ function do_debug ( $msg ) {
  * @return string  The text altered to have HTML links for any web links.
  */
 function activate_urls( $text ) {
-  return preg_replace( '/[a-z]+:\/\/[^<> \t\r\n]+[a-z0-9\/]/i',
+  // Only linkify http/https URLs. The previous pattern accepted any scheme
+  // (e.g. javascript://%0aalert(1), data://...) which produced an executable
+  // href. Double/single quotes are also excluded from the matched URL so a
+  // value cannot break out of the href attribute it is placed in.
+  return preg_replace( '/https?:\/\/[^<>"\'\s]+[a-z0-9\/]/i',
     '<a href="\\0">\\0</a>', $text );
 }
 

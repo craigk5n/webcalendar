@@ -432,7 +432,10 @@ echo '<div class="w-100"></div></div>' . "\n";
 
 if (!empty($url)) {
 echo '<div class="row"><div class="col-3">' . translate('URL') . "</div>\n";
-echo '<div class="col-9">' . activate_urls($url) . "</div>\n";
+// Escape the URL before linkifying so a value such as
+// http://x"><script>... cannot inject markup (activate_urls only matches the
+// http(s) URL itself; the surrounding text is emitted as-is).
+echo '<div class="col-9">' . activate_urls(htmlspecialchars($url)) . "</div>\n";
 echo '<div class="w-100"></div></div>' . "\n";
 }
 
