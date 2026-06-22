@@ -21,15 +21,43 @@ send_no_cache_header();
 if ( empty ( $user ) )
   $user = $login;
 
+/**
+ * Returns true if the logged-in user is allowed to approve / reject / delete
+ * the participation status for $target's calendar.
+ *
+ * Without this check, any authenticated user could change another user's
+ * participation status by POSTing an arbitrary entry<type><id>=<login> field
+ * to this page (IDOR) — the form value is otherwise trusted verbatim.
+ */
+function can_process_unapproved_for ( $target ) {
+  global $login, $is_admin;
+  if ( $target === $login )
+    return true;                                   // own calendar
+  if ( $is_admin )
+    return true;
+  if ( user_is_nonuser_admin ( $login, $target ) )
+    return true;
+  if ( user_is_assistant ( $login, $target ) )
+    return true;
+  if ( access_is_enabled() && access_user_calendar ( 'approve', $target ) )
+    return true;
+  return false;
+}
+
 if ( ! empty ( $_POST ) ) {
   $process_action = getPostValue ( 'process_action' );
   $process_user = getPostValue ( 'process_user' );
+  // Only allow known status codes (Approve / Reject / Delete). An arbitrary
+  // value would otherwise be written straight into cal_status.
+  if ( ! in_array ( $process_action, ['A', 'R', 'D'], true ) )
+    $process_action = '';
   if ( ! empty ( $process_action ) ) {
     foreach ( $_POST as $tid => $app_user ) {
       if ( substr ( $tid, 0, 5 ) == 'entry' ) {
         $type = substr ( $tid, 5, 1 );
         $id = substr ( $tid, 6 );
-        if ( empty ( $error ) && $id > 0 )
+        if ( empty ( $error ) && is_numeric ( $id ) && $id > 0 &&
+            can_process_unapproved_for ( $app_user ) )
           update_status ( $process_action, $app_user, $id, $type );
       }
     }
