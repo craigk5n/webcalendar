@@ -207,6 +207,15 @@ if ($single_user == 'N') {
   });
 
   var layers = [];
+
+  // HTML-escape a value before inserting it into innerHTML. Layer names and
+  // colors are user-controlled and must never be concatenated into markup raw.
+  function escapeHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+  }
+
   // Set the LAYER_STATUS value in webcal_user_pref for either the current
   // user or the public user ('__public__') with an AJAX call to
   // layers_ajax.php.
@@ -276,8 +285,8 @@ if ($single_user == 'N') {
             fullname: l.fullname
           };
           x += '<tr onclick="return edit_layer(' + l.id + ')">' +
-            '<td>' + l.fullname + '</td><td>' + l.color +
-            '<span class="colorsample" style="background-color: ' + l.color +
+            '<td>' + escapeHtml(l.fullname) + '</td><td>' + escapeHtml(l.color) +
+            '<span class="colorsample" style="background-color: ' + escapeHtml(l.color) +
             '">&nbsp;</span></td><td>' +
             (l.dups == 'Y' ? '<?php echo $yesStr; ?>' : '<?php echo $noStr; ?>') +
             '</td></tr>\n';

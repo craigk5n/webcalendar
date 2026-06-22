@@ -267,8 +267,9 @@ if ( empty ( $error ) && empty ( $info ) ) {
 } else if ( empty ( $error ) ) {
   echo '<ul>';
   foreach ( $info as $result ) {
-    echo '<li class="nav"><a class="nav" href="view_entry.php?id=' . $result['id']
-     . '&amp;user=' . $result['user'] . '">' . $result['text'] . '</a></li>' . "\n";
+    echo '<li class="nav"><a class="nav" href="view_entry.php?id=' . htmlspecialchars ( $result['id'], ENT_QUOTES )
+     . '&amp;user=' . htmlspecialchars ( $result['user'], ENT_QUOTES ) . '">'
+     . htmlspecialchars ( $result['text'], ENT_QUOTES ) . '</a></li>' . "\n";
   }
   echo "</ul>\n";
 }

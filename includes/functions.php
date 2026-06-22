@@ -3696,7 +3696,8 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     $class = 'entry';
 
   if ( $getCat > 0 && file_exists ( $catIcon ) ) {
-    $catAlt = translate ( 'Category' ) . ': ' . $categories[$getCat]['cat_name'];
+    $catAlt = translate ( 'Category' ) . ': '
+     . htmlspecialchars ( $categories[$getCat]['cat_name'], ENT_QUOTES );
     $hour_arr[$ind] .= '<img src="' . $catIcon . '" alt="' . $catAlt
      . '">';
   }
@@ -3853,7 +3854,8 @@ function html_for_event_week_at_a_glance ( $event, $date,
     $hour_arr[$ind] = '';
 
   if ( $getCat > 0 && file_exists ( $catIcon ) ) {
-    $catAlt = translate ( 'Category' ) . ': ' . $categories[$getCat]['cat_name'];
+    $catAlt = translate ( 'Category' ) . ': '
+     . htmlspecialchars ( $categories[$getCat]['cat_name'], ENT_QUOTES );
     $hour_arr[$ind] .= '<img src="' . $catIcon . '" alt="' . $catAlt
      . '">';
   }
@@ -4590,10 +4592,10 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
         <option value="' . $K . '"';
         if ( $cat_id == $K ) {
           $printerStr .= '
-    <span id="cat">' . $catStr . ': ' . $categories[$K]['cat_name'] . '</span>';
+    <span id="cat">' . $catStr . ': ' . htmlspecialchars ( $categories[$K]['cat_name'], ENT_QUOTES ) . '</span>';
           $ret .= ' selected';
         }
-        $ret .= ">{$V['cat_name']}</option>";
+        $ret .= '>' . htmlspecialchars ( $V['cat_name'], ENT_QUOTES ) . '</option>';
       }
     }
   }
@@ -5008,7 +5010,7 @@ function print_entry ( $event, $date ) {
     // Use category icon.
     $catAlt = ( empty ( $categories[$catNum] )
       ? '' : translate ( 'Category' ) . ': '
-       . $categories[$catNum]['cat_name'] );
+       . htmlspecialchars ( $categories[$catNum]['cat_name'], ENT_QUOTES ) );
 
     $ret .= $catIcon . '" alt="' . $catAlt . '">';
   }
@@ -6279,7 +6281,7 @@ function build_entry_popup ( $popupid, $user, $description, $time,
     }
     for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
       user_load_variables ( $participants[$i][0], 'temp' );
-      $partList[] = $tempfullname . ' '
+      $partList[] = htmlspecialchars ( $tempfullname, ENT_QUOTES ) . ' '
        . ( $participants[$i][1] == 'W' ? '(?)' : '' );
     }
     $rows = dbi_get_cached_rows ( 'SELECT cal_fullname FROM webcal_entry_ext_user
@@ -6289,7 +6291,7 @@ function build_entry_popup ( $popupid, $user, $description, $time,
       $extStr = translate ( 'External User' );
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
-        $partList[] = $row[0] . ' (' . $extStr . ')';
+        $partList[] = htmlspecialchars ( $row[0], ENT_QUOTES ) . ' (' . $extStr . ')';
       }
     }
   }
@@ -6297,7 +6299,7 @@ function build_entry_popup ( $popupid, $user, $description, $time,
   if ( $user != $login ) {
     if ( empty ( $popup_fullnames[$user] ) ) {
       user_load_variables ( $user, 'popuptemp_' );
-      $popup_fullnames[$user] = $popuptemp_fullname;
+      $popup_fullnames[$user] = htmlspecialchars ( $popuptemp_fullname, ENT_QUOTES );
     }
     $ret .= '<dt>' . translate ( 'User' )
      . ":</dt>\n<dd>$popup_fullnames[$user]</dd>\n";
