@@ -113,6 +113,40 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
 }
 
 /**
+ * Count recent failed login attempts for a given login name.
+ *
+ * Used to throttle online password-guessing (brute force). Failed logins are
+ * recorded via activity_log() with cal_type = LOG_LOGIN_FAILURE and the
+ * attempted login in cal_user_cal. The log stores the date as Ymd and the time
+ * as Gis (= hour*10000 + min*100 + sec, which is monotonic within a day), so a
+ * sliding window can be expressed with a date+time comparison.
+ *
+ * @param string $login       Attempted login name.
+ * @param int    $windowSecs  How far back to count (default 15 minutes).
+ *
+ * @return int Number of failed attempts for this login within the window.
+ */
+function login_recent_failure_count ( $login, $windowSecs = 900 ) {
+  if ( ! defined ( 'LOG_LOGIN_FAILURE' ) || empty ( $login ) )
+    return 0;
+  $cutoff = time() - $windowSecs;
+  $cutoffDate = gmdate ( 'Ymd', $cutoff );
+  $cutoffTime = (int) gmdate ( 'Gis', $cutoff );
+  $sql = 'SELECT COUNT(*) FROM webcal_entry_log
+    WHERE cal_type = ? AND cal_user_cal = ?
+      AND ( cal_date > ? OR ( cal_date = ? AND cal_time >= ? ) )';
+  $res = dbi_execute ( $sql,
+    [LOG_LOGIN_FAILURE, $login, $cutoffDate, $cutoffDate, $cutoffTime] );
+  $count = 0;
+  if ( $res ) {
+    if ( $row = dbi_fetch_row ( $res ) )
+      $count = (int) $row[0];
+    dbi_free_result ( $res );
+  }
+  return $count;
+}
+
+/**
  * Get the corrected timestamp after adding or subtracting ONE_HOUR
  * to compensate for DST.
  */
