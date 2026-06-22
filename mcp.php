@@ -222,7 +222,10 @@ if (preg_match('/Bearer\s+(.+)/i', $auth_header, $matches)) {
     $token_source = 'bearer-direct';
 }
 
-// Fallback to other methods
+// Fallback to other methods.
+// NOTE: the ?token= query-string method was removed: tokens in URLs leak into
+// web-server access logs, Referer headers and browser history. Use the
+// Authorization / X-MCP-Token headers or the MCP_TOKEN env var instead.
 if (empty($token)) {
     if (getenv('MCP_TOKEN')) {
         $token = getenv('MCP_TOKEN');
@@ -230,24 +233,20 @@ if (empty($token)) {
     } elseif (isset($_SERVER['HTTP_X_MCP_TOKEN'])) {
         $token = $_SERVER['HTTP_X_MCP_TOKEN'];
         $token_source = 'x-mcp-token';
-    } elseif (isset($_GET['token'])) {
-        $token = $_GET['token'];
-        $token_source = 'query';
     }
 }
 
-// Optional debug logging (enable with WEBCALENDAR_DEBUG=true or ?debug=1)
-if (getenv('WEBCALENDAR_DEBUG') || isset($_GET['debug'])) {
-    error_log("MCP Token: source='$token_source', token='" . substr($token, 0, 8) . "...'");
-}
-
-// Optional debug logging
+// Optional debug logging. NEVER log token material or the Authorization header
+// — those are credentials and routinely end up in lower-privilege log
+// aggregators. Only the non-sensitive token source is logged, and only when
+// WEBCALENDAR_DEBUG=true is set in the environment (it is NOT triggerable via a
+// request parameter such as ?debug).
 if (getenv('WEBCALENDAR_DEBUG') === 'true') {
-    error_log("MCP Request: auth_header='$auth_header', token='$token', sapi=" . php_sapi_name());
+    error_log("MCP Request: token_source='$token_source', sapi=" . php_sapi_name());
 }
 
 if (empty($token)) {
-  $error_msg = 'API token required. Use Authorization: Bearer <token> header, X-MCP-Token header, MCP_TOKEN env var, or ?token= parameter';
+  $error_msg = 'API token required. Use Authorization: Bearer <token> header, X-MCP-Token header, or MCP_TOKEN env var';
   if (php_sapi_name() === 'cli') {
     fwrite(STDERR, "Error: $error_msg\n");
     exit(1);
