@@ -557,6 +557,8 @@ class WebCalendar {
           $session_not_found = true;
       } else {
         session_name(getSessionName());
+        if ( function_exists ( 'harden_php_session' ) )
+          harden_php_session();
         @session_start();
         if ( ! empty ( $_SESSION['webcal_login'] ) )
           $login = $_SESSION['webcal_login'];
@@ -625,6 +627,11 @@ class WebCalendar {
                   ? '' : '?return_path=' . $login_return_path ) );
 
             @session_start();
+            // A persistent (remember-me) cookie just re-established this
+            // session; rotate the session id so a fixed/pre-set id cannot be
+            // carried into the now-authenticated session.
+            if ( session_status() === PHP_SESSION_ACTIVE )
+              session_regenerate_id ( true );
             $_SESSION['webcal_login'] = $login;
             $_SESSION['webcalendar_session'] = $webcalendar_session;
           }

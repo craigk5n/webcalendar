@@ -6537,7 +6537,38 @@ function sendCookie($name, $value, $expiration=0, $path='', $sensitive=true) {
   $httpOnly = true; // don't allow JS access to cookies.
   // If sensitive and HTTPS is supported, set secure to true
   $secure = $sensitive && isSecure();
-  SetCookie ( $name, $value, $expiration, $path, $domain, $secure, $httpOnly);
+  // Use the options-array form so we can set SameSite (mitigates CSRF and
+  // cross-site cookie leakage). PHP 7.3+ / 8.x.
+  SetCookie ( $name, $value, [
+    'expires'  => $expiration,
+    'path'     => $path,
+    'domain'   => $domain,
+    'secure'   => $secure,
+    'httponly' => $httpOnly,
+    'samesite' => 'Lax',
+  ] );
+}
+
+/**
+ * Apply secure parameters to the PHP session cookie before session_start().
+ *
+ * Sets HttpOnly, SameSite=Lax, Secure (when on HTTPS) and enables strict
+ * session id mode (rejects uninitialized session ids, which helps against
+ * session fixation). Must be called BEFORE session_start(); it is a no-op once
+ * a session is active.
+ */
+function harden_php_session() {
+  if ( session_status() !== PHP_SESSION_NONE )
+    return;
+  ini_set ( 'session.use_strict_mode', '1' );
+  session_set_cookie_params ( [
+    'lifetime' => (int) ini_get ( 'session.cookie_lifetime' ),
+    'path'     => '/',
+    'domain'   => '',
+    'secure'   => isSecure(),
+    'httponly' => true,
+    'samesite' => 'Lax',
+  ] );
 }
 
 /**

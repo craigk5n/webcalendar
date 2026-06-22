@@ -11,6 +11,7 @@ require_once 'includes/formvars.php';
 require_once 'includes/functions.php';
 
 session_name(getSessionName());
+harden_php_session();
 @session_start();
 
 foreach ( $_SESSION as $key => $value ) {
@@ -145,6 +146,10 @@ if ($single_user == 'Y' || $use_http_auth) {
       $error = translate('Too many failed login attempts. Please try again later.');
       echo "ERROR: $error"; exit;
     } else if (user_valid_login($login, $password)) {
+      // Prevent session fixation: a fresh session id is issued on every
+      // successful authentication so a pre-set/fixed id cannot be reused.
+      if (session_status() === PHP_SESSION_ACTIVE)
+        session_regenerate_id(true);
       user_load_variables($login, '');
 
       // Generate a random remember-me token and store its hash in the DB.

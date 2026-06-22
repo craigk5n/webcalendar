@@ -131,51 +131,36 @@ function user_valid_crypt ( $login, $crypt_password ) {
   global $error;
   $ret = false;
 
-  // Token-based cookie (tok:random_hex_token)
-  if ( strpos ( $crypt_password, 'tok:' ) === 0 ) {
-    $token = substr ( $crypt_password, 4 );
-    $token_hash = hash ( 'sha256', $token );
-    $pref_name = 'REMEMBER_TOKEN_' . substr ( $token_hash, 0, 8 );
-    $sql = 'SELECT cal_value FROM webcal_user_pref'
-      . ' WHERE cal_login = ? AND cal_setting = ?';
-    $res = dbi_execute ( $sql, [$login, $pref_name] );
-    if ( $res ) {
-      $row = dbi_fetch_row ( $res );
-      if ( $row && hash_equals ( $row[0], $token_hash ) )
-        $ret = true;
-      else
-        $error = 'Invalid login';
-      dbi_free_result ( $res );
-    } else {
-      $error = 'Database error: ' . dbi_error();
-    }
-    return $ret;
+  // Only token-based remember-me cookies (tok:<random_hex>) are accepted.
+  //
+  // The token is generated with random_bytes() at login (see login.php) and
+  // ONLY its SHA-256 hash is stored server-side. The previous legacy formats
+  // compared the cookie value against the stored cal_passwd hash (or a weak
+  // crypt() self-comparison), which allowed "pass-the-hash": anyone who
+  // obtained the stored password hash (DB read, backup, user_get_users())
+  // could forge a valid login cookie. Those formats have been removed; cookies
+  // issued by old versions simply require one fresh login.
+  if ( strpos ( $crypt_password, 'tok:' ) !== 0 ) {
+    $error = 'Invalid login';
+    return false;
   }
 
-  // Legacy cookie formats (DES crypt or bcrypt hash)
-  $sql = 'SELECT cal_login, cal_passwd FROM webcal_user WHERE cal_login = ?';
-  $res = dbi_execute ( $sql, [$login] );
+  $token = substr ( $crypt_password, 4 );
+  $token_hash = hash ( 'sha256', $token );
+  $pref_name = 'REMEMBER_TOKEN_' . substr ( $token_hash, 0, 8 );
+  $sql = 'SELECT cal_value FROM webcal_user_pref'
+    . ' WHERE cal_login = ? AND cal_setting = ?';
+  $res = dbi_execute ( $sql, [$login, $pref_name] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row && $row[0] != '' ) {
-      if ( $row[0] == $login ) {
-        if ( hash_equals ( $row[1], $crypt_password ) )
-          $ret = true;
-        else if ( crypt ( $row[1], $crypt_password ) == $crypt_password )
-          $ret = true;
-        else
-          $error = 'Invalid login';
-      } else {
-        $error = 'Invalid login';
-      }
-    } else {
+    if ( $row && hash_equals ( $row[0], $token_hash ) )
+      $ret = true;
+    else
       $error = 'Invalid login';
-    }
     dbi_free_result ( $res );
   } else {
     $error = 'Database error: ' . dbi_error();
   }
-
   return $ret;
 }
 
