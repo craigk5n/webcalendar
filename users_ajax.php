@@ -56,6 +56,12 @@ if (!empty($_SERVER['HTTP_REFERER'])) {
 $error = '';
 
 if ($action == 'userlist') {
+  // The full user list (logins, names, emails, admin flags) is administrative
+  // data; only a user administrator may retrieve it.
+  if (!users_ajax_can_manage_users()) {
+    ajax_send_error($notAuthStr);
+    exit;
+  }
   // Use JSON to encode our list of users.
   $userlist = user_get_users();
   $ret_users = [];
@@ -75,10 +81,13 @@ if ($action == 'userlist') {
     }
   }
   ajax_send_object('users', $ret_users, $sendPlainText);
-} else if ($action == 'save' && ($is_admin || getPostValue('login') == $login)) {
-  // Only admin user can add/edit other users
-  if (!$is_admin) {
-    if (!access_can_access_function(ACCESS_USER_MANAGEMENT))
+} else if ($action == 'save' && (users_ajax_can_manage_users() || getPostValue('login') == $login)) {
+  // A user administrator can add/edit any account. A non-administrator may
+  // only edit their OWN account, and may not add accounts or change the
+  // admin/enabled privilege flags (which would allow self-promotion).
+  $canManage = users_ajax_can_manage_users();
+  if (!$canManage) {
+    if (getPostValue('add') === '1')
       $error = $notAuthStr;
   } else if (!$admin_can_add_user) {
     $error = translate('Unsupported action');
@@ -93,12 +102,15 @@ if ($action == 'userlist') {
   }
   if (empty($error)) {
     save_user(
-      getPostValue('add') === '1',
+      $canManage && getPostValue('add') === '1',
       getPostValue('login'),
       getPostValue('lastname'),
       getPostValue('firstname'),
-      getPostValue('is_admin') == 'Y' ? 'Y' : 'N',
-      getPostValue('enabled') == 'Y' ? 'Y' : 'N',
+      // Only a user administrator may set the admin/enabled flags. For a
+      // self-editing non-admin these are forced to safe values so the POST
+      // cannot grant admin rights or alter the enabled state.
+      $canManage ? (getPostValue('is_admin') == 'Y' ? 'Y' : 'N') : 'N',
+      $canManage ? (getPostValue('enabled') == 'Y' ? 'Y' : 'N') : 'Y',
       getPostValue('email'),
       getPostValue('password')
     );
@@ -114,10 +126,12 @@ if ($action == 'userlist') {
   if (empty($user)) {
     $error = translate('Unsupported action');
   } else if (empty($password)) {
-    $error = $blankUserStr;
-  } else {
-    if (!access_can_access_function(ACCESS_USER_MANAGEMENT) && !access_can_access_function(ACCESS_ACCOUNT_INFO))
-      $error = $notAuthStr;
+    $error = $noPasswordStr;
+  } else if ($user != $login && !users_ajax_can_manage_users()) {
+    // A user may change their own password; changing ANOTHER account's
+    // password requires user-management rights. Self-service (ACCESS_ACCOUNT_INFO)
+    // must NOT authorize resetting an arbitrary target account.
+    $error = $notAuthStr;
   }
   if (empty($error)) {
     user_update_user_password($user, $password);
@@ -135,10 +149,9 @@ if ($action == 'userlist') {
     ajax_send_error($error);
 } else if ($action == 'delete') {
   $user = getPostValue('login');
-  // Only admin user can add/edit other users
-  if (!$is_admin) {
-    if (!access_can_access_function(ACCESS_USER_MANAGEMENT))
-      $error = $notAuthStr;
+  // Only a user administrator can delete users.
+  if (!users_ajax_can_manage_users()) {
+    $error = $notAuthStr;
   } else if (!$admin_can_add_user) {
     $error = translate('Unsupported action');
   } else if (empty($user)) {
@@ -273,6 +286,11 @@ if ($action == 'userlist') {
     ajax_send_error($error);
   }
 } else if ($action == 'resource-cal-list') {
+  // Resource-calendar administration is admin-only (matches save-resource-cal).
+  if (! $is_admin) {
+    ajax_send_error($notAuthStr);
+    exit;
+  }
   // Use JSON to encode our list of resource calendars (aka "nonuser" calendars).
   $userlist = get_nonuser_cals();
   //echo "<pre>"; print_r($userlist); echo "</pre>"; exit;
@@ -321,6 +339,11 @@ if ($action == 'userlist') {
   else
     ajax_send_error($error);
 } else if ($action == 'group-list') {
+  // Group definitions are administrative data.
+  if (!users_ajax_can_manage_users()) {
+    ajax_send_error($notAuthStr);
+    exit;
+  }
   // Use JSON to encode our list of groups.
   $groups = get_groups($login, true);
   $ret_groups = [];
@@ -335,28 +358,38 @@ if ($action == 'userlist') {
   }
   ajax_send_object('groups', $ret_groups, $sendPlainText);
 } else if ($action == 'save-group') {
-  $ret = save_group(
-    getPostValue('add') === '1',
-    getPostValue('id'),
-    getPostValue('name'),
-    getPostValue('users')
-  );
-  $error = $ret[0];
-  $msg = $ret[1];
-  if ($error == '')
-    ajax_send_success(false, $msg);
-  else
-    ajax_send_error($error);
-} else if ($action == 'delete-group') {
-  $id = getPostValue('id');
-  if (empty($id)) {
-    $error = "Missing Group Id from delete request";
+  // Managing groups is a user-administration function.
+  if (!users_ajax_can_manage_users()) {
+    ajax_send_error($notAuthStr);
   } else {
-    // Delete this group.
-    dbi_execute ( 'DELETE FROM webcal_group WHERE cal_group_id = ? ',
-      [$id] );
-    dbi_execute ( 'DELETE FROM webcal_group_user WHERE cal_group_id = ? ',
-     [$id] );
+    $ret = save_group(
+      getPostValue('add') === '1',
+      getPostValue('id'),
+      getPostValue('name'),
+      getPostValue('users')
+    );
+    $error = $ret[0];
+    $msg = $ret[1];
+    if ($error == '')
+      ajax_send_success(false, $msg);
+    else
+      ajax_send_error($error);
+  }
+} else if ($action == 'delete-group') {
+  // Managing groups is a user-administration function.
+  if (!users_ajax_can_manage_users()) {
+    $error = $notAuthStr;
+  } else {
+    $id = getPostValue('id');
+    if (empty($id)) {
+      $error = "Missing Group Id from delete request";
+    } else {
+      // Delete this group.
+      dbi_execute ( 'DELETE FROM webcal_group WHERE cal_group_id = ? ',
+        [$id] );
+      dbi_execute ( 'DELETE FROM webcal_group_user WHERE cal_group_id = ? ',
+       [$id] );
+    }
   }
   if ($error == '')
     ajax_send_success();
@@ -371,6 +404,24 @@ exit;
 
 function strip_tags_content($text) {
   return strip_tags($text);
+}
+
+/**
+ * Returns true if the current user is allowed to manage OTHER users'
+ * accounts (add/edit/delete users, set other users' passwords, manage
+ * groups).
+ *
+ * This is an admin, or a non-admin who has been explicitly granted the
+ * USER_MANAGEMENT access function while UAC is enabled. The
+ * access_is_enabled() guard is required because access_can_access_function()
+ * returns true for everyone when UAC is disabled (the default); without it
+ * this check would be fail-open and any logged-in user would be treated as a
+ * user administrator.
+ */
+function users_ajax_can_manage_users() {
+  global $is_admin;
+  return $is_admin ||
+    ( access_is_enabled() && access_can_access_function( ACCESS_USER_MANAGEMENT ) );
 }
 
 // Add/Update a user

@@ -1959,14 +1959,101 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
   }
 }
 
+/**
+ * Validate a user-supplied URL before WebCalendar fetches it (remote calendar
+ * subscriptions, hCalendar import, etc.).
+ *
+ * This is an anti-SSRF control. Without it, an attacker could supply
+ * "file:///etc/passwd" (read via fopn URL wrappers) or "http://169.254.169.254/"
+ * (cloud metadata) / "http://127.0.0.1:.../" (internal services) and have the
+ * server fetch it and render the contents back as calendar data.
+ *
+ * Returns true only for http/https URLs whose host does not resolve to a
+ * loopback/private/link-local/reserved address. On failure, $err is populated.
+ *
+ * Note: this resolves DNS at validation time; a determined attacker could still
+ * attempt DNS rebinding. Restricting the scheme (below) eliminates the most
+ * severe local-file-read vector regardless.
+ */
+function webcal_validate_remote_url($url, &$err = '') {
+  $url = trim($url);
+  // PHP curl does not support webcal://; callers normalize it to http://.
+  $check = str_ireplace('webcal://', 'http://', $url);
+
+  $parts = parse_url($check);
+  if ($parts === false || empty($parts['scheme']) || empty($parts['host'])) {
+    $err = 'Invalid URL';
+    return false;
+  }
+  $scheme = strtolower($parts['scheme']);
+  if ($scheme !== 'http' && $scheme !== 'https') {
+    // Blocks file://, php://, ftp://, gopher://, dict://, etc.
+    $err = 'Only http and https URLs are allowed';
+    return false;
+  }
+
+  $host = $parts['host'];
+  // Strip IPv6 brackets if present.
+  $host = trim($host, '[]');
+
+  // Resolve the host to its IP address(es) and reject internal ranges.
+  $ips = [];
+  if (filter_var($host, FILTER_VALIDATE_IP)) {
+    $ips[] = $host;
+  } else {
+    $records = @dns_get_record($host, DNS_A + DNS_AAAA);
+    if (is_array($records)) {
+      foreach ($records as $r) {
+        if (!empty($r['ip'])) $ips[] = $r['ip'];
+        if (!empty($r['ipv6'])) $ips[] = $r['ipv6'];
+      }
+    }
+    // Fallback for IPv4 if dns_get_record returned nothing.
+    if (empty($ips)) {
+      $resolved = @gethostbyname($host);
+      if ($resolved && $resolved !== $host) $ips[] = $resolved;
+    }
+  }
+  if (empty($ips)) {
+    $err = 'Unable to resolve host';
+    return false;
+  }
+  foreach ($ips as $ip) {
+    if (!filter_var(
+      $ip,
+      FILTER_VALIDATE_IP,
+      FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+    )) {
+      // Loopback, private (RFC1918), link-local (169.254/16, fe80::),
+      // and other reserved ranges are rejected.
+      $err = 'URL resolves to a disallowed (internal) address';
+      return false;
+    }
+  }
+  return true;
+}
+
 function curl_download($url) {
   global $errormsg;
+
+  $err = '';
+  if (!webcal_validate_remote_url($url, $err)) {
+    $errormsg .= 'Error: ' . $err;
+    return false;
+  }
 
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $url);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+  curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+  // Restrict to HTTP(S) so curl cannot be tricked into file://, gopher://, etc.
+  if (defined('CURLPROTO_HTTP')) {
+    curl_setopt($ch, CURLOPT_PROTOCOLS, CURLPROTO_HTTP | CURLPROTO_HTTPS);
+    curl_setopt($ch, CURLOPT_REDIR_PROTOCOLS, CURLPROTO_HTTP | CURLPROTO_HTTPS);
+  }
   $result = curl_exec($ch);
   if(curl_errno($ch)) {
     $errormsg .= 'Error: '.curl_error($ch);
@@ -2004,7 +2091,25 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   $importMd5 = '';
   $ical_data = [];
   do_debug ( "in parse_ical, file=$cal_file, source=$source" );
-  if ( $source == 'file' || $source == 'remoteics' ) {
+  if ( $source == 'remoteics' ) {
+    // Remote calendar subscription. The URL is attacker-controlled, so it MUST
+    // be validated and fetched only over HTTP(S) via curl. We deliberately do
+    // NOT use fopen() here: fopen() honors URL wrappers (file://, php://, ...)
+    // and would turn this into an arbitrary local-file-read / SSRF primitive.
+    $urlErr = '';
+    if ( !webcal_validate_remote_url($cal_file, $urlErr) ) {
+      $errormsg .= "Invalid remote calendar URL: $urlErr";
+      return [];
+    }
+    $data = curl_download($cal_file);
+    if (empty($data)) {
+      if (empty($errormsg)) {
+        $errormsg .= "No data returned";
+      }
+      return [];
+    }
+  } else if ( $source == 'file' ) {
+    // Local file path (e.g. an uploaded temp file from import_handler.php).
     $fd = '';
     try {
       $fd = @fopen($cal_file, 'r');
@@ -2013,29 +2118,18 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       $errormsg .= "Cannot read file: $e";
       return [];
     }
-    if (!$fd && stripos($cal_file, "http") == 0) {
-      // Try curl instead so we can ignore cert errors
-      $data = curl_download($cal_file);
-      if (empty($data)) {
-        if (empty($errormsg)) {
-          $errormsg .= "No data returned";
-        }
-        return [];
-      }
-    } else {
-      if (!$fd) {
-        $errormsg .= "Error opening file: $cal_file";
-        return $errormsg;
-      }
-      // Read in contents of entire file first
-      $data = '';
-      $line = 0;
-      while ( ! feof( $fd ) && empty ( $error ) ) {
-        $line++;
-        $data .= fgets( $fd, 4096 );
-      }
-      fclose ( $fd );
+    if (!$fd) {
+      $errormsg .= "Error opening file: $cal_file";
+      return $errormsg;
     }
+    // Read in contents of entire file first
+    $data = '';
+    $line = 0;
+    while ( ! feof( $fd ) && empty ( $error ) ) {
+      $line++;
+      $data .= fgets( $fd, 4096 );
+    }
+    fclose ( $fd );
   } else if ( $source == 'icalclient' ) {
     do_debug ( "before fopen on stdin..." );
     $stdin = fopen ( 'php://input', 'r' );
