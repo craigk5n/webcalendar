@@ -517,7 +517,13 @@ final class McpIntegrationTest extends TestCase
         $this->assertMcpSuccess($data);
     }
 
-    public function test_query_parameter_authentication(): void
+    /**
+     * The ?token= query-string authentication method was removed for security
+     * (tokens in URLs leak into access logs, Referer headers and history).
+     * A request that supplies the token ONLY via the query string must now be
+     * rejected exactly like a request with no token at all.
+     */
+    public function test_query_parameter_authentication_is_rejected(): void
     {
         $ch = curl_init();
         curl_setopt_array($ch, [
@@ -533,11 +539,11 @@ final class McpIntegrationTest extends TestCase
             CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
             CURLOPT_TIMEOUT => 10
         ]);
-        
+
         $response = curl_exec($ch);
         curl_close($ch);
-        
+
         $data = json_decode($response, true);
-        $this->assertMcpSuccess($data);
+        $this->assertMcpError($data, -32600, 'API token required');
     }
 }
