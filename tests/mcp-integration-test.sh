@@ -373,14 +373,16 @@ else
   fail "X-MCP-Token header auth failed" "$RESPONSE"
 fi
 
-# Query param token
+# Query param token auth was REMOVED for security: a token in the URL leaks
+# into web-server access logs, Referer headers and browser history. A request
+# that supplies the token only via ?token= must now be rejected.
 RESPONSE=$(curl -s -X POST "http://localhost:$PORT/mcp.php?token=$API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}')
-if echo "$RESPONSE" | jq -e '.result.serverInfo' > /dev/null 2>&1; then
-  pass "Query param token auth works"
+if echo "$RESPONSE" | jq -e '.error and (.error.message | contains("API token required"))' > /dev/null 2>&1; then
+  pass "Query param token auth is rejected (removed for security)"
 else
-  fail "Query param token auth failed" "$RESPONSE"
+  fail "Query param token auth should be rejected but was accepted" "$RESPONSE"
 fi
 
 # ---------------------------------------------------------------
