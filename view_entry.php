@@ -417,7 +417,7 @@ $str = str_replace ( '&amp;amp;', '&amp;', $str );
 // If there is no HTML found, then go ahead and replace
 // the line breaks ("\n") with the HTML break.
 echo ( strstr ( $str, '<' ) && strstr ( $str, '>' )
-? $str // found some html...
+? sanitize_html ( $str ) // found some html — sanitize it server-side (XSS-3)
 : nl2br ( activate_urls ( $str ) ) );
 } else {
 echo nl2br ( activate_urls ( htmlspecialchars ( $description ) ) );
@@ -894,7 +894,7 @@ $str = str_replace ( '&amp;amp;', '&amp;', $str );
 // If there is no HTML found, then go ahead and replace
 // the line breaks ("\n") with the HTML break.
 $comment_text .= ( strstr ( $str, '<' ) && strstr ( $str, '>' )
-? $str // found some html...
+? sanitize_html ( $str ) // found some html — sanitize it server-side (XSS-3)
 : nl2br ( activate_urls ( $str ) ) );
 } else {
 $comment_text .= nl2br ( activate_urls (
