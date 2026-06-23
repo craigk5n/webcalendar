@@ -7,6 +7,12 @@
  * @package WebCalendar
  */
 
+// Server-side rich-text sanitizer (used by the event-popup and day/week views
+// when ALLOW_HTML_DESCRIPTION is enabled). Loaded here so sanitize_html() is
+// available to every page that loads functions.php, including those that do
+// not go through init.php (e.g. upcoming.php).
+require_once __DIR__ . '/htmlsanitize.php';
+
 /* Functions start here. All non-function code should be above this.
  *
  * Note to developers:
@@ -3775,7 +3781,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
       <dt>' . translate ( 'Description' ) . ':</dt>
       <dd>'
      . ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y'
-      ? $getDesc : strip_tags ( $getDesc ) ) . '</dd>
+      ? sanitize_html ( $getDesc ) : strip_tags ( $getDesc ) ) . '</dd>
     </dl>' : '' ) . "<br>\n";
 }
 
@@ -6330,7 +6336,7 @@ function build_entry_popup ( $popupid, $user, $description, $time,
       // If there is no HTML found, then go ahead and replace
       // the line breaks ("\n") with the HTML break ("<br>").
       $ret .= ( strstr ( $str, '<' ) && strstr ( $str, '>' )
-        ? $str : nl2br ( $str ) );
+        ? sanitize_html ( $str ) : nl2br ( $str ) );
     } else
       // HTML not allowed in description, escape everything.
       $ret .= nl2br ( htmlspecialchars ( $description ) );
