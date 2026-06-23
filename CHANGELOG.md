@@ -15,6 +15,61 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+## [v1.9.18] - 2026-06-22
+
+### Security
+
+This release remediates the critical and high-priority findings from a full
+security assessment (OWASP Top 10 and beyond). Several issues were remotely
+exploitable by any authenticated low-privilege user against a default
+configuration, so upgrading is strongly recommended.
+
+- Fix privilege escalation that let any authenticated user grant themselves
+  administrator rights, and account takeover that let any user reset another
+  user's password, via `users_ajax.php`; gate user and group create/delete on
+  real authorization (#654).
+- Enforce authorization on event approval/rejection and on attachment/comment
+  downloads (blob IDOR), and sanitize the attachment `Content-Disposition` and
+  MIME handling in `doc.php` (#654).
+- Prevent SSRF / arbitrary local-file read via remote-calendar subscriptions by
+  validating URL schemes and rejecting internal/loopback addresses (#654).
+- Remove "pass-the-hash" remember-me cookie validation (token-only now),
+  regenerate the session id on login to prevent session fixation, and set
+  `SameSite`/`Secure`/`HttpOnly` and strict-mode session cookies (#654).
+- Hash MCP API tokens at rest, generate them server-side, show them once, and
+  stop logging token material (#654).
+- Record failed logins and throttle repeated failures to blunt online brute
+  force (#654).
+- Sanitize rich-text event descriptions and comments server-side when HTML
+  descriptions are enabled, replacing the previous trust-the-editor behavior
+  that allowed stored XSS (#655).
+- Escape user-controlled output across views — event, category, group, layer,
+  participant and comment names, custom fields, search results and admin
+  dropdowns — and stop linkifying dangerous URL schemes such as `javascript:`
+  and `data:` (#654, #655).
+- Require an authenticated wizard session for the installer's `phpinfo()`
+  output (#654).
+- Add a `composer audit` gate to CI and pin secret-handling GitHub Actions to
+  commit SHAs (#654).
+
+### Added
+
+- Mobile camera capture for event attachments.
+
+### Changed
+
+- Remember-me cookies issued by earlier versions are invalidated by the
+  authentication hardening; users will need to log in again once after
+  upgrading.
+
+### Removed
+
+- The default `admin`/`admin` account is no longer created on new installs; the
+  installer now requires creating an administrator with a real, hashed password.
+- The MCP `?token=` query-string authentication method (tokens in URLs leak into
+  logs and history). Use the `Authorization`/`X-MCP-Token` header or the
+  `MCP_TOKEN` environment variable instead.
+
 ## [v1.9.17] - 2026-06-21
 
 ### Security
