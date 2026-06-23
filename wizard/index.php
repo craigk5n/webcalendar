@@ -60,7 +60,14 @@ if (!$state->isValidUser && !in_array($currentStep, ['welcome', 'auth'])) {
 }
 
 // Handle phpinfo request
+// phpinfo() discloses the full PHP configuration, absolute paths and
+// environment variables (which may include DB credentials). It must only be
+// available to an authenticated wizard user, never anonymously on a live install.
 if (isset($_GET['action']) && $_GET['action'] === 'phpinfo') {
+  if (empty($state->isValidUser)) {
+    http_response_code(403);
+    exit('Forbidden');
+  }
   phpinfo();
   exit;
 }

@@ -193,9 +193,9 @@ if ( ! $error ) {
 
     $xurl = $views[$i]['url'];
     $xurl_strip = str_replace ( '&amp;', '&', $xurl );
-    $user_vu .= $option . $xurl . '"'
+    $user_vu .= $option . htmlspecialchars ( $xurl, ENT_QUOTES ) . '"'
      . ( $s['STARTVIEW'] == $xurl_strip ? $selected : '' )
-     . '>' . $views[$i]['cal_name'] . '</option>';
+     . '>' . htmlspecialchars ( $views[$i]['cal_name'], ENT_QUOTES ) . '</option>';
   }
   $colors = [
     'BGCOLOR' => translate('Document background'),

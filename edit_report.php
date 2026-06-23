@@ -227,9 +227,9 @@ if ( $show_participants ) {
 
   for ( $i = 0; $i < $userlistcnt; $i++ ) {
     echo '
-              <option value="' . $userlist[$i]['cal_login'] . '"'
+              <option value="' . htmlspecialchars ( $userlist[$i]['cal_login'], ENT_QUOTES ) . '"'
      . ( ! empty ( $report_user ) && $report_user == $userlist[$i]['cal_login']
-      ? $selected : '' ) . '>' . $userlist[$i]['cal_fullname'] . '</option>';
+      ? $selected : '' ) . '>' . htmlspecialchars ( $userlist[$i]['cal_fullname'], ENT_QUOTES ) . '</option>';
   }
 
   echo '</select></div>';

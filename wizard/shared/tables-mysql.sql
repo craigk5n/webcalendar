@@ -40,11 +40,11 @@ CREATE TABLE webcal_user (
   PRIMARY KEY ( cal_login )
 );
 
-# create a DEFAULT admin user
-INSERT INTO webcal_user
-  ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin )
-  VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator',
-  'Default', 'Y' );
+# NOTE: No default admin user is created here. Earlier versions shipped a
+# default 'admin'/'admin' account (md5 21232f29...), which was a remotely
+# exploitable backdoor on installs that skipped admin creation. The installer
+# now requires an administrator account with a real, hashed password to be
+# created when no admin user exists.
 
 /**
  * Defines a calendar event.  Each event in the system has one entry in

@@ -432,7 +432,10 @@ echo '<div class="w-100"></div></div>' . "\n";
 
 if (!empty($url)) {
 echo '<div class="row"><div class="col-3">' . translate('URL') . "</div>\n";
-echo '<div class="col-9">' . activate_urls($url) . "</div>\n";
+// Escape the URL before linkifying so a value such as
+// http://x"><script>... cannot inject markup (activate_urls only matches the
+// http(s) URL itself; the surrounding text is emitted as-is).
+echo '<div class="col-9">' . activate_urls(htmlspecialchars($url)) . "</div>\n";
 echo '<div class="w-100"></div></div>' . "\n";
 }
 
@@ -522,7 +525,7 @@ echo '</div><div class="w-100"></div></div>' . "\n";
 
 if ($CATEGORIES_ENABLED == 'Y' && !empty($category)) {
 echo '<div class="row"><div class="col-3">' . translate('Category') . "</div>\n";
-echo '<div class="col-9">' . $category;
+echo '<div class="col-9">' . htmlspecialchars ( $category, ENT_QUOTES );
 echo '</div><div class="w-100"></div></div>' . "\n";
 }
 
@@ -602,26 +605,33 @@ if (!empty($extras[$extra_name]['cal_name'])  && !empty($extra_view)) {
 echo '<div class="row"><div class="col-3">' . translate($site_extras[$i][1]) . "</div>\n";
 echo '<div class="col-9">';
 if ($extra_type == EXTRA_URL) {
-$target = (!empty($extra_arg1) ? ' target="' . $extra_arg1 . '" ' : '');
-echo (strlen($extras[$extra_name]['cal_data']) ? '<a href="'
-. $extras[$extra_name]['cal_data'] . '"' . $target . '>'
-. $extras[$extra_name]['cal_data'] . '</a>' : '');
-} elseif ($extra_type == EXTRA_EMAIL)
+$target = (!empty($extra_arg1) ? ' target="' . htmlspecialchars($extra_arg1, ENT_QUOTES) . '" ' : '');
+$extra_url = $extras[$extra_name]['cal_data'];
+$extra_url_safe = htmlspecialchars($extra_url, ENT_QUOTES);
+// Only hyperlink http/https URLs; a value like javascript:/data: is shown as
+// escaped text so it cannot execute when clicked.
+if (strlen($extra_url))
+  echo (preg_match('#^https?://#i', $extra_url)
+    ? '<a href="' . $extra_url_safe . '"' . $target . '>' . $extra_url_safe . '</a>'
+    : $extra_url_safe);
+} elseif ($extra_type == EXTRA_EMAIL) {
+$extra_email_safe = htmlspecialchars($extras[$extra_name]['cal_data'], ENT_QUOTES);
 echo (strlen($extras[$extra_name]['cal_data']) ? '<a href="mailto:'
-. $extras[$extra_name]['cal_data'] . '?subject=' . $subject . '">'
-. $extras[$extra_name]['cal_data'] . '</a>' : '');
+. $extra_email_safe . '?subject=' . $subject . '">'
+. $extra_email_safe . '</a>' : '');
+}
 elseif ($extra_type == EXTRA_DATE)
 echo ($extras[$extra_name]['cal_date'] > 0
 ? date_to_str($extras[$extra_name]['cal_date']) : '');
 elseif ($extra_type == EXTRA_TEXT || $extra_type == EXTRA_MULTILINETEXT)
-echo nl2br($extras[$extra_name]['cal_data']);
+echo nl2br(htmlspecialchars($extras[$extra_name]['cal_data'], ENT_QUOTES));
 elseif (
 $extra_type == EXTRA_USER || $extra_type == EXTRA_SELECTLIST
 || $extra_type == EXTRA_CHECKBOX
 )
-echo $extras[$extra_name]['cal_data'];
+echo htmlspecialchars($extras[$extra_name]['cal_data'], ENT_QUOTES);
 elseif ($extra_type == EXTRA_RADIO)
-echo $extra_arg1[$extras[$extra_name]['cal_data']];
+echo htmlspecialchars((string)($extra_arg1[$extras[$extra_name]['cal_data']] ?? ''), ENT_QUOTES);
 echo '</div><div class="w-100"></div></div>' . "\n";
 }
 }
@@ -691,10 +701,10 @@ echo '
       <td style="inline-size: 30%">';
 if ( strlen ( $tempemail ) && $can_email != 'N' ) {
 echo '<a href="mailto:' . $tempemail . '?subject=' . $subject
- . '">&nbsp;' . $tempfullname . '</a>';
+ . '">&nbsp;' . htmlspecialchars ( $tempfullname, ENT_QUOTES ) . '</a>';
 $allmails[] = $tempemail;
 } else
-echo '&nbsp;' . $tempfullname;
+echo '&nbsp;' . htmlspecialchars ( $tempfullname, ENT_QUOTES );
 
 echo '</td>
       <td class="aligncenter" style="inline-size: 5%">' . $percentage . '%</td>
@@ -715,10 +725,10 @@ echo '
   ';
 if ( strlen ( $tempemail ) > 0 && $can_email != 'N' ) {
 echo '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
- . $tempfullname . '</a>';
+ . htmlspecialchars ( $tempfullname, ENT_QUOTES ) . '</a>';
 $allmails[] = $tempemail;
 } else
-echo $tempfullname;
+echo htmlspecialchars ( $tempfullname, ENT_QUOTES );
 
 echo '<br>';
 }
@@ -746,10 +756,10 @@ echo '
   ';
 if ( strlen ( $tempemail ) > 0 && $can_email != 'N' ) {
 echo '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
- . $tempfullname . '</a>';
+ . htmlspecialchars ( $tempfullname, ENT_QUOTES ) . '</a>';
 $allmails[] = $tempemail;
 } else
-echo $tempfullname;
+echo htmlspecialchars ( $tempfullname, ENT_QUOTES );
 
 echo ' (?)<br>';
 }
@@ -762,8 +772,8 @@ echo '
   <del>'
   . ( strlen ( $tempemail ) > 0 && $can_email !== 'N'
     ? '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
-      . $tempfullname . '</a>'
-    : $tempfullname )
+      . htmlspecialchars ( $tempfullname, ENT_QUOTES ) . '</a>'
+    : htmlspecialchars ( $tempfullname, ENT_QUOTES ) )
   . '</del> (' . translate ( 'Rejected' ) . ')<br>';
   }
 }
@@ -860,7 +870,7 @@ $cmt = $comList->getDoc ( $i );
 user_load_variables ( $cmt->getLogin(), 'cmt_' );
 $comment_text .= '
   <strong>' . htmlspecialchars ( $cmt->getDescription() )
-. '</strong> - ' . $cmt_fullname . ' ' . translate ( 'at' ) . ' '
+. '</strong> - ' . htmlspecialchars ( $cmt_fullname, ENT_QUOTES ) . ' ' . translate ( 'at' ) . ' '
 . date_to_str ( $cmt->getModDate(), '', false, true ) . ' '
 . display_time ( $cmt->getModTime(), 2 );
 

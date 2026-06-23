@@ -11,6 +11,7 @@ require_once 'includes/formvars.php';
 require_once 'includes/functions.php';
 
 session_name(getSessionName());
+harden_php_session();
 @session_start();
 
 foreach ( $_SESSION as $key => $value ) {
@@ -34,7 +35,9 @@ $WebCalendar->initializeSecondPhase();
 load_global_settings();
 
 // Set this true to show "no such user" or "invalid password" on login failures.
-$showLoginFailureReason = (!empty($settings['mode']) && $settings['mode'] = 'dev');
+// NOTE: this used '=' (assignment) instead of '==', which unintentionally
+// enabled failure-reason disclosure (user enumeration) on any non-empty mode.
+$showLoginFailureReason = (!empty($settings['mode']) && $settings['mode'] == 'dev');
 $message = '';
 
 if ( ! empty ( $last_login ) )
@@ -124,13 +127,29 @@ if ($single_user == 'Y' || $use_http_auth) {
         str_replace('XXX', htmlentities($login), $badLoginStr)
       );
 
+    // Brute-force throttle: refuse to even check the password once a login has
+    // accumulated too many recent failures. This is a temporary, per-account
+    // window (it auto-expires), trading a small account-lockout-DoS risk for
+    // protection against online password guessing. cal_login is VARCHAR(25),
+    // so the attempted login is truncated to match what is stored in the log.
+    $logLogin = substr($login, 0, 25);
+    $loginMaxFailures = 10;
+    $loginFailWindow = 900; // 15 minutes
+
     if (empty($password)) {
       if (empty($error) && $showLoginFailureReason) {
         $error = translate('You must provide a password.');
       } else if (empty($error)) {
         $error = translate('Invalid login');
       }
+    } else if (login_recent_failure_count($logLogin, $loginFailWindow) >= $loginMaxFailures) {
+      $error = translate('Too many failed login attempts. Please try again later.');
+      echo "ERROR: $error"; exit;
     } else if (user_valid_login($login, $password)) {
+      // Prevent session fixation: a fresh session id is issued on every
+      // successful authentication so a pre-set/fixed id cannot be reused.
+      if (session_status() === PHP_SESSION_ACTIVE)
+        session_regenerate_id(true);
       user_load_variables($login, '');
 
       // Generate a random remember-me token and store its hash in the DB.
@@ -162,16 +181,15 @@ if ($single_user == 'Y' || $use_http_auth) {
 
       do_redirect($url);
     } else {
-      // Invalid login.
-      if (empty($error) || !$showLoginFailureReason) {
-        $error = translate('Invalid login', true);
-        echo "ERROR: $error"; exit;
-      }
-
+      // Invalid login. Always record the failure FIRST (for audit and for the
+      // brute-force throttle above). The attempted login is stored in
+      // cal_user_cal so it can be counted per-account; the IP is kept in the
+      // message text. Previously this log call was unreachable in production
+      // because the early "echo ERROR; exit" ran before it.
       activity_log(
         0,
         'system',
-        '',
+        $logLogin,
         LOG_LOGIN_FAILURE,
         str_replace(
           ['XXX', 'YYY'],
@@ -179,6 +197,11 @@ if ($single_user == 'Y' || $use_http_auth) {
           translate('Activity login failure')
         )
       );
+
+      if (empty($error) || !$showLoginFailureReason) {
+        $error = translate('Invalid login', true);
+        echo "ERROR: $error"; exit;
+      }
     }
   } else {
     // No login info... just present empty login page.

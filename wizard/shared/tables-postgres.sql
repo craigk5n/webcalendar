@@ -14,8 +14,10 @@ CREATE TABLE webcal_user (
   cal_api_token VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY ( cal_login )
 );
-INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin )
-  VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'Default', 'Y' );
+-- NOTE: No default admin user is created here. Earlier versions shipped a
+-- default 'admin'/'admin' account (md5 21232f29...), a remotely exploitable
+-- backdoor. The installer now requires a real, hashed admin password to be
+-- set when no admin user exists.
 CREATE TABLE webcal_entry (
   cal_id INT NOT NULL,
   cal_group_id INT,

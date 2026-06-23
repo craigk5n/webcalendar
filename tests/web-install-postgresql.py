@@ -201,16 +201,29 @@ def test_new_installation(driver):
             wait_for_text(driver, "stepTitle", "Tables")
             click_button(driver, "button[data-action='execute-upgrade']")
 
-        # Click through Admin User / Summary / Finish
+        # New installs now REQUIRE creating an admin account: the insecure
+        # default admin/admin user was removed from the base schema, so the
+        # wizard no longer auto-skips the Admin User step. Note the submit
+        # button lives inside form[data-action='create-admin-user']; the
+        # data-action is on the form, not the button.
+        try:
+            wait_for_text(driver, "stepTitle", "Admin", timeout=15)
+            login_field = driver.find_element(By.ID, "admin_login")
+            login_field.clear()
+            login_field.send_keys("admin")
+            driver.find_element(By.ID, "admin_password").send_keys("admin123")
+            driver.find_element(By.ID, "admin_password2").send_keys("admin123")
+            driver.find_element(By.ID, "admin_email").send_keys("admin@example.com")
+            click_button(driver, "form[data-action='create-admin-user'] button[type='submit']")
+            time.sleep(2)
+        except TimeoutException:
+            pass  # No Admin User step (e.g. admins already exist)
+
+        # Click through Summary / Finish
         for i in range(10):
             try:
                 title = driver.find_element(By.ID, "stepTitle").text
-                if "Admin User" in title:
-                    driver.find_element(By.ID, "admin_password").send_keys("admin123")
-                    driver.find_element(By.ID, "admin_password2").send_keys("admin123")
-                    driver.find_element(By.ID, "admin_email").send_keys("admin@example.com")
-                    click_button(driver, "button[data-action='create-admin-user']")
-                elif "Summary" in title:
+                if "Summary" in title:
                     save_btns = driver.find_elements(By.CSS_SELECTOR, "button[data-action='save-settings-file']")
                     if save_btns:
                         click_button(driver, "button[data-action='save-settings-file']")

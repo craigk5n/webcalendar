@@ -29,6 +29,11 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
+    - name: Security audit dependencies
+      # Fail the build if any installed dependency has a known security
+      # advisory. Keep this as a gate so vulnerable packages can't ship.
+      run: composer audit
+
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 

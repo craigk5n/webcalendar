@@ -50,7 +50,11 @@ function do_debug ( $msg ) {
  * @return string  The text altered to have HTML links for any web links.
  */
 function activate_urls( $text ) {
-  return preg_replace( '/[a-z]+:\/\/[^<> \t\r\n]+[a-z0-9\/]/i',
+  // Only linkify http/https URLs. The previous pattern accepted any scheme
+  // (e.g. javascript://%0aalert(1), data://...) which produced an executable
+  // href. Double/single quotes are also excluded from the matched URL so a
+  // value cannot break out of the href attribute it is placed in.
+  return preg_replace( '/https?:\/\/[^<>"\'\s]+[a-z0-9\/]/i',
     '<a href="\\0">\\0</a>', $text );
 }
 
@@ -110,6 +114,40 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
         ( empty ( $user_cal ) ? null : $user_cal ), $type, gmdate ( 'Ymd' ),
           gmdate ( 'Gis' ), ( empty ( $text ) ? null : $text )] ) )
     db_error ( true, $sql );
+}
+
+/**
+ * Count recent failed login attempts for a given login name.
+ *
+ * Used to throttle online password-guessing (brute force). Failed logins are
+ * recorded via activity_log() with cal_type = LOG_LOGIN_FAILURE and the
+ * attempted login in cal_user_cal. The log stores the date as Ymd and the time
+ * as Gis (= hour*10000 + min*100 + sec, which is monotonic within a day), so a
+ * sliding window can be expressed with a date+time comparison.
+ *
+ * @param string $login       Attempted login name.
+ * @param int    $windowSecs  How far back to count (default 15 minutes).
+ *
+ * @return int Number of failed attempts for this login within the window.
+ */
+function login_recent_failure_count ( $login, $windowSecs = 900 ) {
+  if ( ! defined ( 'LOG_LOGIN_FAILURE' ) || empty ( $login ) )
+    return 0;
+  $cutoff = time() - $windowSecs;
+  $cutoffDate = gmdate ( 'Ymd', $cutoff );
+  $cutoffTime = (int) gmdate ( 'Gis', $cutoff );
+  $sql = 'SELECT COUNT(*) FROM webcal_entry_log
+    WHERE cal_type = ? AND cal_user_cal = ?
+      AND ( cal_date > ? OR ( cal_date = ? AND cal_time >= ? ) )';
+  $res = dbi_execute ( $sql,
+    [LOG_LOGIN_FAILURE, $login, $cutoffDate, $cutoffDate, $cutoffTime] );
+  $count = 0;
+  if ( $res ) {
+    if ( $row = dbi_fetch_row ( $res ) )
+      $count = (int) $row[0];
+    dbi_free_result ( $res );
+  }
+  return $count;
 }
 
 /**
@@ -3658,7 +3696,8 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     $class = 'entry';
 
   if ( $getCat > 0 && file_exists ( $catIcon ) ) {
-    $catAlt = translate ( 'Category' ) . ': ' . $categories[$getCat]['cat_name'];
+    $catAlt = translate ( 'Category' ) . ': '
+     . htmlspecialchars ( $categories[$getCat]['cat_name'], ENT_QUOTES );
     $hour_arr[$ind] .= '<img src="' . $catIcon . '" alt="' . $catAlt
      . '">';
   }
@@ -3815,7 +3854,8 @@ function html_for_event_week_at_a_glance ( $event, $date,
     $hour_arr[$ind] = '';
 
   if ( $getCat > 0 && file_exists ( $catIcon ) ) {
-    $catAlt = translate ( 'Category' ) . ': ' . $categories[$getCat]['cat_name'];
+    $catAlt = translate ( 'Category' ) . ': '
+     . htmlspecialchars ( $categories[$getCat]['cat_name'], ENT_QUOTES );
     $hour_arr[$ind] .= '<img src="' . $catIcon . '" alt="' . $catAlt
      . '">';
   }
@@ -4552,10 +4592,10 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
         <option value="' . $K . '"';
         if ( $cat_id == $K ) {
           $printerStr .= '
-    <span id="cat">' . $catStr . ': ' . $categories[$K]['cat_name'] . '</span>';
+    <span id="cat">' . $catStr . ': ' . htmlspecialchars ( $categories[$K]['cat_name'], ENT_QUOTES ) . '</span>';
           $ret .= ' selected';
         }
-        $ret .= ">{$V['cat_name']}</option>";
+        $ret .= '>' . htmlspecialchars ( $V['cat_name'], ENT_QUOTES ) . '</option>';
       }
     }
   }
@@ -4970,7 +5010,7 @@ function print_entry ( $event, $date ) {
     // Use category icon.
     $catAlt = ( empty ( $categories[$catNum] )
       ? '' : translate ( 'Category' ) . ': '
-       . $categories[$catNum]['cat_name'] );
+       . htmlspecialchars ( $categories[$catNum]['cat_name'], ENT_QUOTES ) );
 
     $ret .= $catIcon . '" alt="' . $catAlt . '">';
   }
@@ -6241,7 +6281,7 @@ function build_entry_popup ( $popupid, $user, $description, $time,
     }
     for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
       user_load_variables ( $participants[$i][0], 'temp' );
-      $partList[] = $tempfullname . ' '
+      $partList[] = htmlspecialchars ( $tempfullname, ENT_QUOTES ) . ' '
        . ( $participants[$i][1] == 'W' ? '(?)' : '' );
     }
     $rows = dbi_get_cached_rows ( 'SELECT cal_fullname FROM webcal_entry_ext_user
@@ -6251,7 +6291,7 @@ function build_entry_popup ( $popupid, $user, $description, $time,
       $extStr = translate ( 'External User' );
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
-        $partList[] = $row[0] . ' (' . $extStr . ')';
+        $partList[] = htmlspecialchars ( $row[0], ENT_QUOTES ) . ' (' . $extStr . ')';
       }
     }
   }
@@ -6259,7 +6299,7 @@ function build_entry_popup ( $popupid, $user, $description, $time,
   if ( $user != $login ) {
     if ( empty ( $popup_fullnames[$user] ) ) {
       user_load_variables ( $user, 'popuptemp_' );
-      $popup_fullnames[$user] = $popuptemp_fullname;
+      $popup_fullnames[$user] = htmlspecialchars ( $popuptemp_fullname, ENT_QUOTES );
     }
     $ret .= '<dt>' . translate ( 'User' )
      . ":</dt>\n<dd>$popup_fullnames[$user]</dd>\n";
@@ -6503,7 +6543,38 @@ function sendCookie($name, $value, $expiration=0, $path='', $sensitive=true) {
   $httpOnly = true; // don't allow JS access to cookies.
   // If sensitive and HTTPS is supported, set secure to true
   $secure = $sensitive && isSecure();
-  SetCookie ( $name, $value, $expiration, $path, $domain, $secure, $httpOnly);
+  // Use the options-array form so we can set SameSite (mitigates CSRF and
+  // cross-site cookie leakage). PHP 7.3+ / 8.x.
+  SetCookie ( $name, $value, [
+    'expires'  => $expiration,
+    'path'     => $path,
+    'domain'   => $domain,
+    'secure'   => $secure,
+    'httponly' => $httpOnly,
+    'samesite' => 'Lax',
+  ] );
+}
+
+/**
+ * Apply secure parameters to the PHP session cookie before session_start().
+ *
+ * Sets HttpOnly, SameSite=Lax, Secure (when on HTTPS) and enables strict
+ * session id mode (rejects uninitialized session ids, which helps against
+ * session fixation). Must be called BEFORE session_start(); it is a no-op once
+ * a session is active.
+ */
+function harden_php_session() {
+  if ( session_status() !== PHP_SESSION_NONE )
+    return;
+  ini_set ( 'session.use_strict_mode', '1' );
+  session_set_cookie_params ( [
+    'lifetime' => (int) ini_get ( 'session.cookie_lifetime' ),
+    'path'     => '/',
+    'domain'   => '',
+    'secure'   => isSecure(),
+    'httponly' => true,
+    'samesite' => 'Lax',
+  ] );
 }
 
 /**
@@ -6605,11 +6676,34 @@ function validate_mcp_token($token) {
     return null;
   }
 
-  $res = dbi_execute('SELECT cal_login FROM webcal_user WHERE cal_api_token = ? AND cal_enabled = \'Y\'', [$actualToken]);
+  // Tokens are stored as SHA-256 hashes (never in clear text). Look up by the
+  // hash of the presented token.
+  $tokenHash = hash('sha256', $actualToken);
+  $res = dbi_execute(
+    'SELECT cal_login FROM webcal_user WHERE cal_api_token = ? AND cal_enabled = \'Y\'',
+    [$tokenHash]);
   if ($res) {
     $row = dbi_fetch_row($res);
     dbi_free_result($res);
-    return $row[0] ?? null;
+    if (!empty($row[0])) {
+      return $row[0];
+    }
+  }
+
+  // Transparent migration: older versions stored the raw token. If a row still
+  // matches the plaintext, accept it once and upgrade it to a hash in place
+  // (same pattern as the md5 -> bcrypt password upgrade).
+  $res = dbi_execute(
+    'SELECT cal_login FROM webcal_user WHERE cal_api_token = ? AND cal_enabled = \'Y\'',
+    [$actualToken]);
+  if ($res) {
+    $row = dbi_fetch_row($res);
+    dbi_free_result($res);
+    if (!empty($row[0])) {
+      dbi_execute('UPDATE webcal_user SET cal_api_token = ? WHERE cal_login = ?',
+        [$tokenHash, $row[0]]);
+      return $row[0];
+    }
   }
   return null;
 }

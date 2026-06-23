@@ -42,8 +42,11 @@ final class CosignWorkflowTest extends TestCase
 
   public function testCosignInstallerStepPresent(): void
   {
+    // The action is pinned to a commit SHA for supply-chain hardening, with
+    // the version retained in a trailing comment (# v3). Accept either the
+    // SHA-pinned or plain-tag form so long as cosign-installer is wired up.
     self::assertStringContainsString(
-      'sigstore/cosign-installer@v3',
+      'sigstore/cosign-installer@',
       $this->workflowSrc,
       'release.yml must install cosign (Story 7.1 AC1).'
     );

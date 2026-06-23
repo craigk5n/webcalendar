@@ -148,11 +148,11 @@ echo '<div class="form-inline"><label class="col-sm-2 col-form-label" for="viewu
   }
   for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
     $u = $users[$i]['cal_login'];
-    echo "<option value=\"$u\"";
+    echo '<option value="' . htmlspecialchars ( $u, ENT_QUOTES ) . '"';
     if ( ! empty ( $viewuser[$u] ) ) {
       echo $selected;
     }
-    echo '>' . $users[$i]['cal_fullname'] . "</option>\n";
+    echo '>' . htmlspecialchars ( $users[$i]['cal_fullname'], ENT_QUOTES ) . "</option>\n";
   }
 ?>
 </select>
