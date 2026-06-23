@@ -23,8 +23,22 @@
  */
 require_once 'includes/init.php';
 
-$allow_view_other =
-  ( ! empty( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' );
+// We need to find where these things are being unset. :-(
+global $ALLOW_VIEW_OTHER;
+
+// This
+$ALLOW_VIEW_OTHER ??= 'Y';
+$ALLOW_VIEW_OTHER = ( ! $ALLOW_VIEW_OTHER || trim ( $ALLOW_VIEW_OTHER ) === 'Y' ? 'Y' : 'N' );
+
+// is shorthand for:
+// $ALLOW_VIEW_OTHER =
+//     ( ! isset ( $ALLOW_VIEW_OTHER ) || null === $ALLOW_VIEW_OTHER
+//   ? 'Y' : $ALLOW_VIEW_OTHER );
+// $ALLOW_VIEW_OTHER =
+//   ( empty ( $ALLOW_VIEW_OTHER ) || trim ( $ALLOW_VIEW_OTHER ) === 'Y' )
+//     ? 'Y' : 'N' );
+
+$allow_view_other = ( $ALLOW_VIEW_OTHER === 'Y' );
 
 if( ! access_is_enabled() ) {
   echo print_not_auth();
@@ -91,9 +105,6 @@ if (getPostValue('otheruser') != '' && $action == 'save') {
       $i += $i;
     }
 
-    $email  = getPostValue( 'email' );
-    $invite = getPostValue( 'invite' );
-    $time   = getPostValue( 'time' );
 
     if( ! dbi_execute( 'INSERT INTO webcal_access_user ( cal_login,
         cal_other_user, cal_can_view, cal_can_edit, cal_can_approve,
@@ -102,12 +113,13 @@ if (getPostValue('otheruser') != '' && $action == 'save') {
         [
           $puser,
           $pouser,
-          ( $view_total > 0 ? $view_total : 0 ),
+          ( $view_total ?: 0 ),
           ( $edit_total > 0 && $puser != '__public__' ? $edit_total : 0 ),
           ( $approve_total > 0 && $puser != '__public__' ? $approve_total : 0 ),
-          ( strlen( $invite ) ? $invite : 'N' ),
-          ( strlen( $email ) ? $email : 'N' ),
-          ( strlen( $time ) ? $time : 'N' )] ) )
+          ( trim ( getPostValue ( 'invite' ) ) ?: 'N' ),
+          ( trim ( getPostValue ( 'email' ) ) ?: 'N' ),
+          ( trim ( getPostValue ( 'time' ) ) ?: 'N' )
+        ] ) )
       die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrStr ) );
 
     $saved = true;
@@ -143,25 +155,18 @@ if( ! empty( $otheruser ) ) {
     $allPermissions = access_load_user_permissions( false );
 
     // Load default-default values if exist.
-    if( ! empty( $allPermissions['__default__.__default__'] ) )
-      $op = $allPermissions['__default__.__default__'];
+    $op = ( $allPermissions['__default__.__default__'] ?: '' );
 
     if( $is_admin ) {
-      // Load user-default values if exist.
-      if( ! empty( $allPermissions[ $guser . '.__default__' ] ) )
-        $op = $allPermissions[ $guser . '.__default__' ];
-
       // Load user-otheruser values if exist.
-      if( ! empty( $allPermissions[ $guser . '.' . $otheruser ] ) )
-        $op = $allPermissions[ $guser . '.' . $otheruser ];
+      $op = ( $allPermissions[$guser . '.' . $otheruser] ?:
+        // Load user-default values if exist.
+        $allPermissions[$guser . '.__default__'] );
     } else {
-      // Load default-user values if exist.
-      if( ! empty( $allPermissions['__default__.' . $guser] ) )
-        $op = $allPermissions['__default__.' . $guser ];
-
       // Load otheruser-user values if exist.
-      if( ! empty( $allPermissions[$otheruser . '.' . $guser] ) )
-        $op = $allPermissions[$otheruser . '.' . $guser];
+      $op = ( $allPermissions[$otheruser . '.' . $guser] ?:
+        // Load default-user values if exist.
+        $allPermissions['__default__.' . $guser] );
     }
   }
 }
