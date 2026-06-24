@@ -151,7 +151,7 @@ final class McpIntegrationTest extends TestCase
         $project_dir = __DIR__ . '/..';
         // Env-variable mode so the server never reads includes/settings.php.
         $env = sprintf(
-            'WEBCALENDAR_USE_ENV=true WEBCALENDAR_DB_TYPE=sqlite3 WEBCALENDAR_DB_DATABASE=%s',
+            'MCP_TOKEN= WEBCALENDAR_USE_ENV=true WEBCALENDAR_DB_TYPE=sqlite3 WEBCALENDAR_DB_DATABASE=%s',
             self::$db_file
         );
         $cmd = sprintf('%s php -S localhost:%d -t %s > /tmp/mcp-test-server.log 2>&1 & echo $!', $env, self::$server_port, $project_dir);

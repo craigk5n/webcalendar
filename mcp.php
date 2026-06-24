@@ -227,12 +227,12 @@ if (preg_match('/Bearer\s+(.+)/i', $auth_header, $matches)) {
 // web-server access logs, Referer headers and browser history. Use the
 // Authorization / X-MCP-Token headers or the MCP_TOKEN env var instead.
 if (empty($token)) {
-    if (getenv('MCP_TOKEN')) {
-        $token = getenv('MCP_TOKEN');
-        $token_source = 'env';
-    } elseif (isset($_SERVER['HTTP_X_MCP_TOKEN'])) {
+    if (isset($_SERVER['HTTP_X_MCP_TOKEN'])) {
         $token = $_SERVER['HTTP_X_MCP_TOKEN'];
         $token_source = 'x-mcp-token';
+    } elseif (getenv('MCP_TOKEN')) {
+        $token = getenv('MCP_TOKEN');
+        $token_source = 'env';
     }
 }
 
