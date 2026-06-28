@@ -142,7 +142,7 @@ CREATE TABLE webcal_config (
   cal_value VARCHAR2(100) NULL,
   PRIMARY KEY ( cal_setting )
 );
-INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( 'WEBCAL_PROGRAM_VERSION', 'v1.9.18' );
+INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( 'WEBCAL_PROGRAM_VERSION', 'v1.9.19' );
 CREATE TABLE webcal_entry_log (
   cal_log_id INT NOT NULL,
   cal_date INT NOT NULL,

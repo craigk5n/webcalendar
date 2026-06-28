@@ -15,6 +15,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+## [v1.9.19] - 2026-06-28
+
+### Changed
+
+- Bump twbs/bootstrap-icons from 1.10.5 to 1.13.1 (#554)
+- Bump actions/checkout from 6 to 7 (#650)
+- Bump actions/cache from 5 to 6 (#661)
+
+### Fixed
+
+- `includes/htmlsanitize.php` was missing from the release zip; added to `release-files` manifest (#662)
+- MCP: `X-MCP-Token` header now takes priority over `MCP_TOKEN` env var for token extraction
+
 ## [v1.9.18] - 2026-06-22
 
 ### Security
