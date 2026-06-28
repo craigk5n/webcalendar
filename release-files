@@ -135,6 +135,7 @@ includes/formvars.php
 includes/functions.php
 includes/gradient.php
 includes/help_list.php
+includes/htmlsanitize.php
 includes/index.html
 includes/index.php
 includes/init.php
