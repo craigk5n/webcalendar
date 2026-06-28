@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1919116f3ad7d6e7841f2082e5b0ddec",
+    "content-hash": "94b6935853d3101b1c602ea96526d283",
     "packages": [
         {
             "name": "components/jquery",
@@ -1288,16 +1288,16 @@
         },
         {
             "name": "tinymce/tinymce",
-            "version": "7.9.3",
+            "version": "8.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tinymce/tinymce-dist.git",
-                "reference": "4e5c520b2b6d52a6251316ab2e4af383c5e753bd"
+                "reference": "4ec295845c55ee20abd551c98bc42f1079c43c83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/4e5c520b2b6d52a6251316ab2e4af383c5e753bd",
-                "reference": "4e5c520b2b6d52a6251316ab2e4af383c5e753bd",
+                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/4ec295845c55ee20abd551c98bc42f1079c43c83",
+                "reference": "4ec295845c55ee20abd551c98bc42f1079c43c83",
                 "shasum": ""
             },
             "type": "component",
@@ -1322,7 +1322,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-2.0-or-later"
+                "SEE LICENSE IN license.md"
             ],
             "description": "Web based JavaScript HTML WYSIWYG editor control.",
             "homepage": "https://www.tiny.cloud/",
@@ -1341,9 +1341,9 @@
                 "wysiwyg"
             ],
             "support": {
-                "source": "https://github.com/tinymce/tinymce-dist/tree/7.9.3"
+                "source": "https://github.com/tinymce/tinymce-dist/tree/8.6.0"
             },
-            "time": "2026-05-19T23:38:56+00:00"
+            "time": "2026-06-03T03:28:15+00:00"
         },
         {
             "name": "twbs/bootstrap",
@@ -5849,10 +5849,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
