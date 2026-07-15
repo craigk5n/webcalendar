@@ -32,7 +32,7 @@
     "php": "^8.2",
     "components/jquery": "3.5.*",
     "mcp/sdk": "^0.6.0",
-    "phpmailer/phpmailer": "7.0.*",
+    "phpmailer/phpmailer": "7.1.*",
     "tinymce/tinymce": "^7.9.3",
     "twbs/bootstrap": "4.6.*",
     "twbs/bootstrap-icons": "1.13.*"
