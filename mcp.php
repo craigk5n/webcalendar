@@ -341,8 +341,6 @@ if ( ! file_exists( 'includes/mcp-loader.php' ) || ! class_exists( 'Mcp\Server' 
 
 require_once 'includes/mcp-loader.php';
 
-use Mcp\Server;
-use Mcp\Server\Transport\StdioTransport;
 use Mcp\Capability\Attribute\McpTool;
 
 // Define MCP Tools
@@ -867,33 +865,26 @@ class WebCalendarMcpTools
 
 // Handle transport based on execution context
 if (php_sapi_name() === 'cli') {
-    // STDIO transport for CLI execution
-    $server = Server::builder()
-        ->setServerInfo('WebCalendar MCP Server', '1.0.0')
-        ->setDiscovery(__DIR__, ['.'])
-        ->addToolInstance(new WebCalendarMcpTools($user_login))
-        ->build();
-
-    $transport = new StdioTransport();
-} else {
-    // HTTP transport for web requests - implement custom JSON-RPC handler
-    handleMcpHttpRequest($user_login);
-    exit; // handleMcpHttpRequest handles the response and exits
-}
-
-try {
-    $server->run($transport);
-} catch (Exception $e) {
-    $error_msg = 'MCP Server error: ' . $e->getMessage();
-    error_log($error_msg);
-    if (php_sapi_name() === 'cli') {
-        fwrite(STDERR, "Error: $error_msg\n");
+    // STDIO transport: read newline-delimited JSON-RPC messages from stdin and
+    // dispatch each through mcp_dispatch_request() -- the same handler the HTTP
+    // transport uses -- so STDIO and HTTP advertise and route tools identically
+    // (single source of truth: mcp_list_tools). The loop lives in
+    // mcp_run_stdio_loop() (includes/functions.php) so it can be unit-tested
+    // with in-memory streams.
+    $tools = new WebCalendarMcpTools($user_login);
+    $stdin = fopen('php://stdin', 'r');
+    if ($stdin === false) {
+        fwrite(STDERR, "Error: unable to open stdin\n");
         exit(1);
-    } else {
-        header('Content-Type: application/json');
-        echo json_encode(['error' => 'Internal server error']);
-        exit;
     }
+
+    mcp_run_stdio_loop($stdin, STDOUT, $tools);
+
+    fclose($stdin);
+    exit(0);
 }
-?></content>
-<parameter name="filePath">mcp.php
+
+// HTTP transport for web requests -- custom JSON-RPC handler.
+handleMcpHttpRequest($user_login);
+exit; // handleMcpHttpRequest handles the response and exits
+?>

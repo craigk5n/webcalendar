@@ -7523,4 +7523,59 @@ function mcp_dispatch_request($request, $tools = null) {
 
   return $response;
 }
+
+/**
+ * Runs the MCP STDIO transport loop. Reads newline-delimited JSON-RPC messages
+ * from $in, dispatches each via mcp_dispatch_request() -- the same handler the
+ * HTTP transport uses -- and writes newline-delimited JSON-RPC responses to
+ * $out. JSON-RPC notifications (messages with no 'id', e.g.
+ * notifications/initialized) receive no response. Returns when $in reaches EOF.
+ *
+ * Separated from mcp.php so the framing logic can be unit-tested with in-memory
+ * streams instead of a real STDIO process.
+ *
+ * @param resource $in    Readable stream (e.g. php://stdin).
+ * @param resource $out   Writable stream (e.g. php://stdout).
+ * @param object   $tools WebCalendarMcpTools instance for tools/call routing.
+ * @return void
+ */
+function mcp_run_stdio_loop($in, $out, $tools) {
+  while (($line = fgets($in)) !== false) {
+    $line = trim($line);
+    if ($line === '') {
+      continue;
+    }
+
+    $request = json_decode($line, true);
+    if (!is_array($request)) {
+      // Malformed JSON: reply with a JSON-RPC parse error.
+      fwrite($out, json_encode([
+        'jsonrpc' => '2.0',
+        'id' => null,
+        'error' => ['code' => -32700, 'message' => 'Parse error']
+      ]) . "\n");
+      continue;
+    }
+
+    // Notifications (no 'id') must not receive a response.
+    $is_notification = !array_key_exists('id', $request);
+
+    try {
+      $response = mcp_dispatch_request($request, $tools);
+    } catch (Exception $e) {
+      // mcp_dispatch_request handles its own errors, but guard the loop so a
+      // single bad message cannot terminate a long-running server.
+      error_log('MCP STDIO error: ' . $e->getMessage());
+      $response = [
+        'jsonrpc' => '2.0',
+        'id' => $request['id'] ?? null,
+        'error' => ['code' => -32603, 'message' => 'Internal error']
+      ];
+    }
+
+    if (!$is_notification) {
+      fwrite($out, json_encode($response) . "\n");
+    }
+  }
+}
 ?>
