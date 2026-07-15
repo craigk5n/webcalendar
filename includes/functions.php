@@ -6892,7 +6892,7 @@ function mcp_list_tools() {
     ],
     [
       'name' => 'add_event',
-      'description' => 'Add a new basic event (no repeating)',
+      'description' => 'Add a new basic event (no repeating), timed or untimed',
       'inputSchema' => [
         'type' => 'object',
         'properties' => [
@@ -6903,6 +6903,11 @@ function mcp_list_tools() {
           'date' => [
             'type' => 'string',
             'description' => 'Event date in YYYYMMDD format'
+          ],
+          'time' => [
+            'type' => 'string',
+            'description' => 'Start time in HHMMSS format (GMT), or -1 for untimed',
+            'default' => '-1'
           ],
           'description' => [
             'type' => 'string',
@@ -7453,6 +7458,7 @@ function mcp_dispatch_request($request, $tools = null) {
             $result = $tools->add_event(
               $tool_args['name'] ?? '',
               $tool_args['date'] ?? '',
+              $tool_args['time'] ?? '-1',
               $tool_args['description'] ?? '',
               $tool_args['location'] ?? '',
               $tool_args['duration'] ?? 0

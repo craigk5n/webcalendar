@@ -253,4 +253,33 @@ final class McpSchedulingWriteToolsIntegrationTest extends TestCase
         $this->assertStringContainsStringIgnoringCase('authorized', $result['error']);
         $this->assertNotNull($this->entryRow($id), 'the event must still exist after a rejected delete');
     }
+
+    public function test_add_event_stores_the_given_time(): void
+    {
+        $resp = $this->callTool('add_event', [
+            'name' => 'Timed Lunch',
+            'date' => '20260717',
+            'time' => '140000',
+            'duration' => 60,
+        ]);
+        $result = $resp['result'] ?? [];
+        $this->assertArrayNotHasKey('error', $result, json_encode($resp));
+
+        $row = $this->entryRow((int)$result['event_id']);
+        $this->assertEquals(140000, $row['cal_time'], 'the requested time must be stored');
+        $this->assertEquals(60, $row['cal_duration']);
+    }
+
+    public function test_add_event_defaults_to_untimed(): void
+    {
+        $resp = $this->callTool('add_event', [
+            'name' => 'All Day',
+            'date' => '20260717',
+        ]);
+        $result = $resp['result'] ?? [];
+        $this->assertArrayNotHasKey('error', $result, json_encode($resp));
+
+        $row = $this->entryRow((int)$result['event_id']);
+        $this->assertEquals(-1, $row['cal_time'], 'no time given -> untimed (-1)');
+    }
 }

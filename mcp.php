@@ -471,8 +471,8 @@ class WebCalendarMcpTools
         return ['events' => $events, 'total' => count($events)];
     }
 
-    #[McpTool(description: 'Add a new basic event (no repeating)')]
-    public function add_event(string $name, string $date, string $description = '', string $location = '', int $duration = 0): array
+    #[McpTool(description: 'Add a new basic event (no repeating), timed or untimed')]
+    public function add_event(string $name, string $date, string $time = '-1', string $description = '', string $location = '', int $duration = 0): array
     {
         // Check if write access is enabled
         if (!is_mcp_write_enabled()) {
@@ -488,6 +488,15 @@ class WebCalendarMcpTools
             return ['error' => 'Event name is required'];
         }
 
+        // Time: -1 (untimed/all-day) or HHMMSS in the GMT frame.
+        $cal_time = -1;
+        if ((string)$time !== '' && (string)$time !== '-1') {
+            if (!preg_match('/^\d{1,6}$/', (string)$time)) {
+                return ['error' => 'Time must be in HHMMSS format or -1 for untimed'];
+            }
+            $cal_time = (int)$time;
+        }
+
         // Generate a new event ID and insert it.
         //
         // webcal_entry.cal_id is a plain INT PRIMARY KEY with no
@@ -499,7 +508,7 @@ class WebCalendarMcpTools
         // portable across SQLite, MySQL and PostgreSQL without any
         // dialect-specific locking.
         $now = date('Ymd');
-        $time = date('His');
+        $mod_time = date('His');
         $sql = "INSERT INTO webcal_entry (cal_id, cal_name, cal_date, cal_time, cal_duration, cal_description, cal_location, cal_create_by, cal_mod_date, cal_mod_time)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -518,7 +527,7 @@ class WebCalendarMcpTools
             // can retry instead of aborting the whole request.
             $res = dbi_execute(
                 $sql,
-                [$candidate_id, $name, $date, -1, $duration, $description, $location, $this->userLogin, $now, $time],
+                [$candidate_id, $name, $date, $cal_time, $duration, $description, $location, $this->userLogin, $now, $mod_time],
                 false,
                 false
             );

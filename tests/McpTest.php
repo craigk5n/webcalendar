@@ -119,6 +119,12 @@ final class McpTest extends TestCase
     $this->assertContains('date', $schema['required']);
   }
 
+  public function test_add_event_schema_has_optional_time() {
+    $schema = get_mcp_tool_schema('add_event');
+    $this->assertArrayHasKey('time', $schema['properties']);
+    $this->assertNotContains('time', $schema['required']);
+  }
+
   public function test_search_events_schema_required_fields() {
     $schema = get_mcp_tool_schema('search_events');
     $this->assertNotNull($schema);
