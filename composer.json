@@ -30,7 +30,7 @@
   "prefer-stable": true,
   "require": {
     "php": "^8.2",
-    "components/jquery": "3.5.*",
+    "components/jquery": "4.0.*",
     "mcp/sdk": "^0.6.0",
     "phpmailer/phpmailer": "7.0.*",
     "tinymce/tinymce": "^7.9.3",
