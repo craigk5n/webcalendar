@@ -18,6 +18,9 @@
     "preferred-install": {
       "*": "source"
     },
+    "platform": {
+      "php": "8.2.0"
+    },
     "process-timeout": 0,
     "sort-packages": true,
     "allow-plugins": {
@@ -26,6 +29,7 @@
   },
   "prefer-stable": true,
   "require": {
+    "php": "^8.2",
     "components/jquery": "3.5.*",
     "mcp/sdk": "^0.6.0",
     "phpmailer/phpmailer": "7.0.*",
