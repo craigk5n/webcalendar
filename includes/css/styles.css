@@ -959,7 +959,7 @@ th.day_glance_time {
   font-size:.75rem;
 }
 #viewl .main td,
-#month .main td, #Month #month_main td {
+#month .main td, #month #month_main td {
   height:6.0rem;
   font-size:.75rem;
   vertical-align:top;
@@ -1063,10 +1063,10 @@ table#prevmonth {
 #viewt table.timebar th {
   width:10%;
 }
-#ViewT div table th {
+#viewt div table th {
   width:10%;
 }
-#ViewT div table td {
+#viewt div table td {
   width:90%;
 }
 #viewt table.timebar dh {
