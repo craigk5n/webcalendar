@@ -904,7 +904,7 @@ if ( ! $error ) {
           <fieldset class="border p-2">
             <legend>' . translate ( 'Color options' ) . '</legend>
 <!-- BEGIN EXAMPLE MONTH -->
-            <div style="float:right; width:45%; margin:0; background: var(--bgcolor)">
+            <div class="colorpreview" style="float:right; width:45%; margin:0; background: var(--bgcolor)">
               <p id="monthtitle" class="bold" style="text-align:center; color: var(--h2color)">' . date_to_str ( date ( 'Ymd' ), $DATE_FORMAT_MY, false ) . '</p>'
    . display_month ( date ( 'm' ), date ( 'Y' ), true ) . '
             </div>

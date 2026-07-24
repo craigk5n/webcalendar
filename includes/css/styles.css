@@ -670,6 +670,17 @@ tr.highlight td {
   background-color: var(--weeknumber) !important;
 }
 
+/* Color-picker live preview: strip the server-baked gradient images from the
+ * sample month so the var(--*) background-colors set in styles.php show through
+ * and update live as the user edits a color. Without this, when
+ * ENABLE_GRADIENTS is on, the gradient image overlays and masks the color
+ * change. Scoped to .colorpreview (the sample-month container in admin.php /
+ * pref.php) so the real calendar keeps its gradients. */
+.colorpreview .main td,
+.colorpreview .main th {
+  background-image: none !important;
+}
+
 #admin table,
 #pref table {
   vertical-align:top;

@@ -939,7 +939,7 @@ if ( $CUSTOM_TRAILER == 'Y' ) { ?>
 <div><a href="#" class="btn btn-secondary" onclick="reset_colors(); return false;"><?php etranslate('Reset Colors');?></a></div>
 
 
-</td><td class="aligncenter aligntop" style="inline-size: 50%">
+</td><td class="aligncenter aligntop colorpreview" style="inline-size: 50%">
 <br>
 <!-- BEGIN EXAMPLE MONTH -->
 <p class="bold" style="text-align:center; color: var(--h2color)">
