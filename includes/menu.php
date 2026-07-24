@@ -454,6 +454,7 @@ if (empty($thisday))
               if (!empty($GROUPS_ENABLED) && $GROUPS_ENABLED == 'Y') {
                 print_menu_item(translate('Groups'), 'groups.php');
               }
+              print_menu_item(translate('Export for WordPress'), 'export_wordpress.php');
             }
 
             // Nonuser Admin Settings
