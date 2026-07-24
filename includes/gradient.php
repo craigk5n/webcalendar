@@ -151,7 +151,7 @@ function can_write_to_dir ($path)
 /**
  * background_css (needs description)
  */
-function background_css ( $base, $height = '', $percent = '' ) {
+function background_css ( $base, $height = '', $percent = '', $varname = '' ) {
   global $ENABLE_GRADIENTS;
 
   $ret = $type = '';
@@ -161,9 +161,17 @@ function background_css ( $base, $height = '', $percent = '' ) {
   elseif ( function_exists ( 'imagegif' ) )
     $type = '.gif';
 
+  // Live-preview support: when a CSS custom-property name is supplied, render
+  // the color as var(--name, <baked-color>). The baked color stays as the
+  // fallback, so normal rendering is unchanged, but a client-side color picker
+  // (see color_change_handler_* in pref.php/admin.php) can override --name to
+  // update the page without a reload. The gradient image (if enabled) is still
+  // generated from the baked color and does not update live.
+  $color = ( $varname != '' ? 'var(--' . $varname . ', ' . $base . ')' : $base );
+
   $ret = 'background';
   if ( $type != '' && $ENABLE_GRADIENTS == 'Y' ) {
-    $ret .= ': ' . $base . ' url( ';
+    $ret .= ': ' . $color . ' url( ';
     if ( ! file_exists ( 'images/cache' ) || ! can_write_to_dir ( 'images/cache/' ) )
       $ret .= 'includes/gradient.php?base=' . substr ( $base, 1 )
        . ( $height != '' ? '&height=' . $height : '' )
@@ -179,7 +187,7 @@ function background_css ( $base, $height = '', $percent = '' ) {
     }
     $ret .= ' ) repeat-x';
   } else
-    $ret .= '-color: ' . $base;
+    $ret .= '-color: ' . $color;
 
   return $ret . ';';
 }

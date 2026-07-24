@@ -971,7 +971,7 @@ etranslate ( 'Save Preferences' )?></button>
 foreach ( $colors as $k => $v ) {
   echo "function color_change_handler_$k() {\n";
     echo "  var color = $('#pref_" . $k . "').val();\n";
-    echo "  $('body').get(0).style.setProperty('--" . strtolower($k) . "', color);\n";
+    echo "  $('body').get(0).style.setProperty('--" . str_replace( '_', '', strtolower( $k ) ) . "', color);\n";
   echo "}\n";
 }
 ?>
@@ -979,7 +979,7 @@ foreach ( $colors as $k => $v ) {
 function reset_colors() {
   <?php
     foreach ( $colors as $k => $v ) {
-      echo "  $('body').get(0).style.setProperty('--" . strtolower($k) . "', '$GLOBALS[$k]');\n";
+      echo "  $('body').get(0).style.setProperty('--" . str_replace( '_', '', strtolower( $k ) ) . "', '$GLOBALS[$k]');\n";
       echo "  $('#pref_" . $k . "').val('$GLOBALS[$k]');\n";
     }
   ?>
