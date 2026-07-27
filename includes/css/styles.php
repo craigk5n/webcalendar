@@ -186,7 +186,7 @@ if ( $DISPLAY_TASKS != 'Y' ) { ?>
 
 <?php if (  $MENU_ENABLED == 'N' ) { ?>
 #dateselector form {
-  border-top: 0.0625em solid <?php echo $GLOBALS['TABLEBG'];?>;
+  border-top: 0.0625em solid var(--tablebg, <?php echo $GLOBALS['TABLEBG'];?>);
 }
 <?php } ?>
 
@@ -196,52 +196,52 @@ body {
   background-repeats: '<?php echo$GLOBALS['BGREPEAT'];?>' );
 }
 .popup {
-  <?php echo background_css( $GLOBALS['POPUP_BG'], 200 ); ?>
+  <?php echo background_css( $GLOBALS['POPUP_BG'], 200, '', 'popupbg' ); ?>
 }
 <?php } ?>
 .main th,
 .main th.weekend {
-  <?php echo background_css( $GLOBALS['THBG'], 15 );?>
+  <?php echo background_css( $GLOBALS['THBG'], 15, '', 'thbg' );?>
 }
 .main td {
-  <?php echo background_css( $GLOBALS['CELLBG'], 100 ); ?>
+  <?php echo background_css( $GLOBALS['CELLBG'], 100, '', 'cellbg' ); ?>
 }
 .main td.weekend {
-  <?php echo background_css( $GLOBALS['WEEKENDBG'], 100 ); ?>
+  <?php echo background_css( $GLOBALS['WEEKENDBG'], 100, '', 'weekendbg' ); ?>
 }
 <?php if  ( $GLOBALS['HASEVENTSBG'] != $GLOBALS['CELLBG'] ) { ?>
 .main td.hasevents {
-  <?php echo background_css( $GLOBALS['HASEVENTSBG'], 100 ); ?>
+  <?php echo background_css( $GLOBALS['HASEVENTSBG'], 100, '', 'haseventsbg' ); ?>
 }
 <?php } ?>
 .main td.othermonth {
-  <?php echo background_css( $GLOBALS['OTHERMONTHBG'], 100 ); ?>
+  <?php echo background_css( $GLOBALS['OTHERMONTHBG'], 100, '', 'othermonthbg' ); ?>
 }
 .main td.today, #datesel td #today {
-  <?php echo background_css( $GLOBALS['TODAYCELLBG'], 100 ); ?>
+  <?php echo background_css( $GLOBALS['TODAYCELLBG'], 100, '', 'todaycellbg' ); ?>
 }
 #admin .main td.weekcell,
 #monthx .main td.weekcell,
 #pref .main td.weekcell,
 #viewl .main td.weekcell {
-  <?php echo background_css( $GLOBALS['THBG'], 50 ); ?>
+  <?php echo background_css( $GLOBALS['THBG'], 50, '', 'thbg' ); ?>
 }
 .glance td,
 .note {
-  <?php echo background_css( $GLOBALS['CELLBG'], 50 );?>
+  <?php echo background_css( $GLOBALS['CELLBG'], 50, '', 'cellbg' );?>
 }
 #viewt .main th.weekend {
-  <?php echo background_css( $GLOBALS['WEEKENDBG'], 15 );?>
+  <?php echo background_css( $GLOBALS['WEEKENDBG'], 15, '', 'weekendbg' );?>
 }
 #login table,
 #register table {
-  <?php echo background_css( $GLOBALS['CELLBG'], 200 );?>
+  <?php echo background_css( $GLOBALS['CELLBG'], 200, '', 'cellbg' );?>
 }
 #securityAuditNotes {
-  <?php echo background_css( $GLOBALS['CELLBG'], 150 );?>
+  <?php echo background_css( $GLOBALS['CELLBG'], 150, '', 'cellbg' );?>
 }
 #viewt td.entry {
-  <?php echo background_css( $GLOBALS['THBG'], 10 );?>
+  <?php echo background_css( $GLOBALS['THBG'], 10, '', 'thbg' );?>
 }
 #minicalendar th,
 #minicalendar td {
