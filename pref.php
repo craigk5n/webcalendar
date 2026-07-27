@@ -950,10 +950,11 @@ if ( $CUSTOM_TRAILER == 'Y' ) { ?>
 ?>
 <!-- END EXAMPLE MONTH -->
 </td></tr></table>
-</div>
+</div><!-- .form-group -->
+</div><!-- #colors .tab-pane -->
 <!-- END COLORS -->
 <?php } // if $ALLOW_COLOR_CUSTOMIZATION ?>
-</div>
+</div><!-- .tab-content -->
 
 <!-- END TABS -->
 <br><br>
