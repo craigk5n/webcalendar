@@ -959,7 +959,7 @@ th.day_glance_time {
   font-size:.75rem;
 }
 #viewl .main td,
-#month .main td, #Month #month_main td {
+#month .main td, #month #month_main td {
   height:6.0rem;
   font-size:.75rem;
   vertical-align:top;
@@ -1063,10 +1063,10 @@ table#prevmonth {
 #viewt table.timebar th {
   width:10%;
 }
-#ViewT div table th {
+#viewt div table th {
   width:10%;
 }
-#ViewT div table td {
+#viewt div table td {
   width:90%;
 }
 #viewt table.timebar dh {
@@ -1253,37 +1253,13 @@ table#prevmonth {
 .layertable td {
   padding:.3125rem 1.25rem;
 }
-#layers #layertable th {
-  background-color: #000080;
-  border: 2px outset #000060;
-  color: #ffffff;
-  font-size: 1.0rem;
-  padding: 4px;
-  /*padding-left: 20px;*/
-}
-#layers #layertable td.odd {
-  background-color: #c0c0c0;
-  border: 2px outset #c0c0c0;
-  color: #000000;
-  font-size: 1.0rem;
-  padding: 4px;
-  cursor:pointer;
-}
-#layers #layertable td.even {
-  background-color: #d8d8d8;
-  border: 2px outset #d8d8d8;
-  color: #000000;
-  font-size: 1.0rem;
-  padding: 4px;
-  cursor:pointer;
-}
-#layers #layertable .colorsample {
-  margin-left: 5px;
-  padding-left: 10px;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #000000;
-}
+/* NOTE: the legacy #layers #layertable rules (navy outset header, gray
+ * odd/even cells) were removed here. The layer list is now a Bootstrap
+ * ".table table-striped" table (see the JS in layers.php) and the JS no longer
+ * emits td.odd/td.even, so those pre-Bootstrap rules only fought the Bootstrap
+ * styling (navy/outset header). They had been dormant for years because the
+ * body id was CamelCase; lowercasing it (so other page CSS works) revived them
+ * on this page, hence the removal. */
 .fakebutton {
    border:2px #d0d0d0 outset;
    /*border-color:#e0e0e0 #808080 #808080 #e0e0e0;*/
