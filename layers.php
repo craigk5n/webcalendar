@@ -200,6 +200,7 @@ if ($single_user == 'N') {
         </div>
       </div>
     </div>
+  </div>
 
 <script>
   $(document).ready(function() {
