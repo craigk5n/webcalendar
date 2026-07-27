@@ -154,7 +154,7 @@ if ($single_user == 'N') {
   </form>
 
   <div id="edit-layer-dialog" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 id="edit-layer-title" class="modal-title">Modal title</h5>
