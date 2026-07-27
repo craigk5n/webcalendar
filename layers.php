@@ -158,7 +158,7 @@ if ($single_user == 'N') {
       <div class="modal-content">
         <div class="modal-header">
           <h5 id="edit-layer-title" class="modal-title">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#edit-layer-dialog').hide();">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -186,14 +186,14 @@ if ($single_user == 'N') {
             </table>
             <div class="modal-footer">
               <button class="btn btn-secondary" data-dismiss="modal"
- type="button" onclick="$('#edit-layer-dialog').hide();"><?php
+ type="button"><?php
  etranslate ( 'Cancel' ); ?></button>
               <button class="btn btn-danger" id="editLayerDeleteButton"
  type="button" onclick="if ( confirm ( '<?php echo $areYouSureStr; ?>' ) ) {
  $('#editLayerDelete').prop ('value', '1'); edit_window_closed();
- $('#edit-layer-dialog').hide(); }"><?php etranslate ( 'Delete' ); ?></button>
+ $('#edit-layer-dialog').modal('hide'); }"><?php etranslate ( 'Delete' ); ?></button>
               <button class="btn btn-primary" data-dismiss="modal" type="button"
- onclick="edit_window_closed(); $('#edit-layer-dialog').hide();"><?php
+ onclick="edit_window_closed();"><?php
  etranslate ( 'Save' ) ?></button>
             </div>
           </form>
@@ -377,7 +377,7 @@ if ($single_user == 'N') {
     else
       $('#editLayerDups').prop("checked", false);
 
-    $('#edit-layer-dialog').show();
+    $('#edit-layer-dialog').modal('show');
   }
 </script>
 
