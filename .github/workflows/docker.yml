@@ -50,6 +50,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
+            ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:${{ steps.extract_version.outputs.version }}
             ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:${{ steps.extract_version.outputs.version }}-php8-apache
             ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:latest-php8-apache
             ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar:latest
