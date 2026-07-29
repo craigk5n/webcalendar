@@ -15,6 +15,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+## [v1.9.22] - 2026-07-29
+
+### Added
+
+- MCP: write tools `add_recurring_event`, `update_event`, and `delete_event`, gated behind the new `MCP_WRITE_ACCESS` setting
+- MCP: read tools `get_availability` and `check_conflicts` for scheduling agents
+- MCP: optional event time on `add_event` (#670)
+- MCP: per-user connection help tab showing the endpoint URL and a sample agent configuration (#682)
+- Admin "Export for WordPress" page (#680)
+
+### Changed
+
+- Upgraded `mcp/sdk` from 0.3.0 to 0.6.0 (#659)
+- Updated Dutch translation (#674)
+- CI: flaky MySQL/PostgreSQL Selenium wizard tests are now non-blocking (#688, tracked in #689)
+
+### Fixed
+
+- Release ZIP now includes 77 translation files that were dropped from the release manifest when translations were renamed (Hebrew, Chinese, Arabic, Hindi, and others offered in the UI but missing from releases), plus the `export_wordpress.php` admin page. Added an inverse drift check: every git-tracked file must be listed in `release-files` or `release-files-excluded`, so unclassified new files fail CI
+- Widen `webcal_user.cal_passwd` to VARCHAR(255) during upgrade, fixing "Error executing query" on first login after upgrading a legacy database on strict-mode MySQL/MariaDB (#676)
+- MCP: deleted and rejected events are no longer returned by read tools (#671)
+- MCP: CLI/STDIO transport works again via the shared tool dispatcher (#669)
+- Color picker preferences: live preview updates as colors change, including with gradients enabled (#684)
+- Preferences: Colors tab content no longer renders outside its tab pane (#683)
+- Page-specific styles apply again — the `<body>` id is lowercased to match stylesheet selectors (#685)
+- Layers: Edit Layer dialog opens as a proper centered Bootstrap modal (#687)
+
+### Removed
+
 ## [v1.9.21] - 2026-07-13
 
 ### Added

@@ -668,6 +668,10 @@ SQL
   ],
   [
     'version' => 'v1.9.21',
+    'default-sql' => ''
+  ],
+  [
+    'version' => 'v1.9.22',
     // Ensure webcal_user.cal_passwd is wide enough for a bcrypt hash (60
     // chars). The original widening lived only in the v1.9.0 block, so any
     // database already past v1.9.0 with a still-narrow column (e.g. a legacy
@@ -677,6 +681,11 @@ SQL
     // login with "Error executing query." Widen it here so every upgrade path
     // is covered. Re-running MODIFY on an already-VARCHAR(255) column is a
     // harmless no-op.
+    //
+    // NOTE: this fix (#676) originally landed in the v1.9.21 entry, but that
+    // was AFTER v1.9.21 shipped — installs already at v1.9.21 skip entries
+    // <= their version and would never run it. Moved to v1.9.22 so every
+    // upgrade path executes it.
     'default-sql' => <<<'SQL'
 ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);
 SQL,

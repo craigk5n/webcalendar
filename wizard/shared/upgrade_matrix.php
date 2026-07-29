@@ -1,6 +1,6 @@
 <?php
 //Program Version for this release; use bump_version.sh to update this.
-$PROGRAM_VERSION = 'v1.9.21';
+$PROGRAM_VERSION = 'v1.9.22';
 
 //array element[0] = sql insertion testy
 //array element[1] = sql delete to clean up
