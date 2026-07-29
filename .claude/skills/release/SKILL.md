@@ -44,6 +44,19 @@ git log HEAD..origin/master --oneline               # expect: empty
 
 If on a different branch or working tree is dirty: stop and ask the user how to proceed. Do **not** auto-stash or auto-checkout.
 
+**Release-manifest coverage check.** Every git-tracked file must be classified: listed in `release-files` (ships in the ZIP) or matched by `release-files-excluded` (dev-only). Past releases shipped broken because new files were committed without updating `release-files` (#667, missing translations, `export_wordpress.php`).
+
+```bash
+# Enforced invariant — fails if any tracked file is unclassified
+vendor/bin/phpunit -c tests/phpunit.xml --filter ReleaseFilesConsistencyTest
+
+# Files added since the last release, with their classification
+PREV_TAG=$(git describe --tags --abbrev=0)
+git diff --diff-filter=A --name-only "$PREV_TAG"..HEAD
+```
+
+Show the user the list of files added since `PREV_TAG` and, for each, whether it ships (`release-files`) or is excluded (`release-files-excluded`). Ask the user to confirm the classification of any **newly added file that landed in the excluded set** — a runtime file wrongly excluded is exactly the drift that broke past releases. If the test fails, stop: classify the offending files (with the user) before proceeding.
+
 Compute the new version:
 - If user supplied `vX.Y.Z`, use that.
 - Otherwise: `bump_version.sh` will auto-increment the patch when called with no arg.

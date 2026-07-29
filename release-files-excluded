@@ -1,0 +1,71 @@
+# release-files-excluded — git-tracked files that intentionally do NOT ship
+# in the release ZIP.
+#
+# Every file tracked by git must either be listed in release-files (it ships)
+# or match a pattern here (it does not). tests/ReleaseFilesConsistencyTest.php
+# enforces this, so adding a new file to the repo without classifying it
+# fails CI. This prevents the broken-release drift where new runtime files
+# were committed but never added to release-files (see issues #667, #233).
+#
+# Pattern syntax (per line, matched against repo-relative paths):
+#   exact/path.txt   literal path
+#   dir/**           everything under dir/, recursively
+#   *                within a pattern, matches anything except '/'
+# Blank lines and lines starting with '#' are ignored.
+# Stale patterns (matching no tracked file) and patterns that match a file
+# listed in release-files both fail the test — keep this list precise.
+
+# --- Development / CI infrastructure ---
+.claude/**
+.github/**
+docker/**
+tests/**
+.browserslistrc
+.dockerignore
+.editorconfig
+.gitattributes
+.gitignore
+.npmrc
+.prettierignore
+.prettierrc.json
+Makefile
+bump_version.sh
+phpstan.neon
+phpstan-baseline.neon
+
+# --- Release build tooling (used to CREATE releases, not needed at runtime;
+#     verification-side classes/tools DO ship — see release-files) ---
+release-files
+release-files-excluded
+tools/build-manifest.php
+tools/sign-manifest.php
+tools/generate-release-key.php
+tools/verify-release-signing-key.php
+includes/classes/Security/ManifestBuilder.php
+includes/classes/Security/ManifestSigner.php
+
+# --- Developer docs & site (user-facing docs in docs/ ship; these don't) ---
+docs/archive/**
+docs/developer-guide.md
+docs/docker.md
+docs/migration-v2.md
+docs/v2-development.md
+docs/WebCalendar-Database.md
+mkdocs.yml
+CHANGELOG.md
+CONTRIBUTING.md
+TODO
+SECURITY_AUDIT_STATUS.md
+
+# --- Developer utilities not part of the shipped app ---
+tools/complete-translation.py
+tools/convert_latin1_to_utf8.php
+translations/.gitignore
+includes/site_extras.php.modified
+wc-icons/example.gif
+
+# --- Legacy components not shipped since the 1.9.x reboot ---
+# java/: old Java client library. ws/: legacy XML web-services API it talked
+# to (unmaintained, unreviewed for security — deliberately not shipped).
+java/**
+ws/**
