@@ -246,6 +246,8 @@ git push origin master master:release vX.Y.Z
 
 Pushing to `release` is what triggers `.github/workflows/release.yml`: full CI suite → build zip → cosign signing → GitHub release. The tag must exist at push time so `actions/create-release@v1` reuses it instead of attempting to mint a new one.
 
+The `release` push also triggers `.github/workflows/docker.yml`, which builds a multi-arch image and pushes four Docker Hub tags: `craigk5n/webcalendar:X.Y.Z` (bare version), `X.Y.Z-php8-apache`, `latest-php8-apache`, and `latest`. No manual Docker step is needed.
+
 **If `release` is far behind master** (it can drift between releases), the FF will include all intermediate commits. Confirm with the user before pushing if `git rev-list --count origin/release..origin/master` is unexpectedly high.
 
 ---
@@ -296,7 +298,9 @@ Tell the user:
 - Tag pushed: `vX.Y.Z`
 - Branches updated: `master`, `release`
 - CI run: pass/fail link
-- Anything left manual (e.g., announcement post, Docker tag)
+- Docker Hub tags pushed by docker.yml (`X.Y.Z`, `X.Y.Z-php8-apache`, `latest-php8-apache`, `latest`) — spot-check with:
+  `curl -s "https://auth.docker.io/token?service=registry.docker.io&scope=repository:craigk5n/webcalendar:pull"` for a token, then HEAD `https://registry-1.docker.io/v2/craigk5n/webcalendar/manifests/X.Y.Z` (the hub.docker.com tag-listing API lags; the registry API is authoritative)
+- Anything left manual (e.g., announcement post)
 
 ---
 
