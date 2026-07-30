@@ -23,7 +23,7 @@ jobs:
       - name: Log in to Docker Hub
         # Pinned to a commit SHA (supply-chain hardening): handles the Docker
         # Hub token. Dependabot updates the SHA via the version comment.
-        uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v4
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
