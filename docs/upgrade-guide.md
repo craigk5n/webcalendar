@@ -108,7 +108,13 @@ version upgrades):
 3. Extract over your existing installation, preserving:
    - `includes/settings.php`
    - `icons/` (if you have custom icons)
-4. Access the application — the wizard will prompt for schema updates.
+4. **Delete obsolete directories left over from the old version.** In
+   particular, remove the `install/` directory if it exists — it was
+   replaced by `wizard/` in v1.9.13. Leftover pre-PHP-8 files in
+   `install/` can cause fatal errors (e.g. `Call to undefined function
+   each()` on the System Settings page), and leaving an old installer
+   web-accessible is a security risk.
+5. Access the application — the wizard will prompt for schema updates.
 
 ## Post-Upgrade Verification
 
