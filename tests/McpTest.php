@@ -101,6 +101,35 @@ final class McpTest extends TestCase
     }
   }
 
+  /**
+   * An empty `properties` must serialize as a JSON object, not an array.
+   *
+   * json_encode() turns an empty PHP array into `[]`, but JSON Schema requires
+   * `properties` to be an object. A client that validates tools/list against
+   * the spec rejects the entire response, so a single parameterless tool makes
+   * every other tool undiscoverable too.
+   *
+   * test_tools_list_schemas() above cannot catch this: an empty array
+   * satisfies assertArrayHasKey() and still encodes as `[]`.
+   */
+  public function test_tools_list_properties_encode_as_json_objects() {
+    foreach (mcp_list_tools() as $tool) {
+      $this->assertStringContainsString(
+        '"properties":{', json_encode($tool['inputSchema']),
+        $tool['name'] . ': inputSchema.properties must encode as a JSON'
+         . ' object, not an array'
+      );
+    }
+  }
+
+  public function test_parameterless_tool_encodes_empty_properties_as_object() {
+    $schema = get_mcp_tool_schema('get_user_info');
+    $this->assertNotNull($schema);
+    $this->assertCount(0, (array)$schema['properties'],
+      'get_user_info takes no parameters');
+    $this->assertStringContainsString('"properties":{}', json_encode($schema));
+  }
+
   // ---------------------------------------------------------------
   // MCP Tool Schema Validation Tests
   // ---------------------------------------------------------------
