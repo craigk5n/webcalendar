@@ -3333,6 +3333,30 @@ function get_weekday_before ( $year, $month, $day = 2 ) {
 }
 
 /**
+ * Gets the timestamp for the last second of a day.
+ *
+ * Date ranges handed to {@link read_events()} and
+ * {@link read_repeated_events()} are bounded by time of day on the final day:
+ *
+ * <code>OR ( we.cal_date = $end_date AND we.cal_time <= $end_time )</code>
+ *
+ * so a range that stops at the last day's midnight silently drops every event
+ * on it. Use this for the end of any multi-day range.
+ *
+ * mktime() handles the day overflow, so $days_after may push past the end of
+ * the month, and a range spanning a DST change still ends on the right day.
+ *
+ * @param int $timestamp   Any time on the starting day.
+ * @param int $days_after  Days to advance before taking the end of day.
+ *
+ * @return int  The last second of that day (in UNIX timestamp format).
+ */
+function end_of_day ( $timestamp, $days_after = 0 ) {
+  return mktime ( 23, 59, 59, date ( 'm', $timestamp ),
+    date ( 'd', $timestamp ) + $days_after, date ( 'Y', $timestamp ) );
+}
+
+/**
  * Get the moonphases for a given year and month.
  *
  * Will only work if optional moon_phases.php file exists in includes folder.

@@ -698,4 +698,54 @@ final class FunctionsTest extends TestCase
     $this->assertIsArray($result);
     $this->assertCount(0, $result);
   }
+
+  public function test_end_of_day_returns_last_second_of_the_same_day() {
+    $noon = mktime ( 12, 0, 0, 9, 6, 2026 );
+    $this->assertEquals ( mktime ( 23, 59, 59, 9, 6, 2026 ), end_of_day ( $noon ) );
+  }
+
+  public function test_end_of_day_advances_by_days_after() {
+    $start = mktime ( 0, 0, 0, 9, 6, 2026 );
+    $this->assertEquals ( mktime ( 23, 59, 59, 9, 12, 2026 ), end_of_day ( $start, 6 ) );
+    $this->assertEquals ( mktime ( 23, 59, 59, 9, 19, 2026 ), end_of_day ( $start, 13 ) );
+  }
+
+  public function test_end_of_day_rolls_over_month_and_year_boundaries() {
+    $start = mktime ( 0, 0, 0, 9, 28, 2026 );
+    $this->assertEquals ( mktime ( 23, 59, 59, 10, 4, 2026 ), end_of_day ( $start, 6 ) );
+
+    $newYearsEve = mktime ( 0, 0, 0, 12, 28, 2026 );
+    $this->assertEquals ( mktime ( 23, 59, 59, 1, 3, 2027 ), end_of_day ( $newYearsEve, 6 ) );
+  }
+
+  /**
+   * The reason this helper exists: a range ending at the last day's midnight
+   * drops that day's events, because read_events() bounds the final day by
+   * time of day.  A fixed second count also drifts across a DST change.
+   */
+  public function test_end_of_day_is_after_midnight_of_the_target_day() {
+    $start = mktime ( 0, 0, 0, 9, 6, 2026 );
+    $this->assertGreaterThan ( $start + ( 6 * 86400 ), end_of_day ( $start, 6 ) );
+  }
+
+  public function test_end_of_day_lands_on_the_right_day_across_dst() {
+    $tz = date_default_timezone_get();
+    date_default_timezone_set ( 'America/New_York' );
+    try {
+      // US 2026: spring forward Mar 8, fall back Nov 1 -- both week-start Sundays.
+      $spring = mktime ( 0, 0, 0, 3, 8, 2026 );
+      $this->assertEquals ( '20260314', date ( 'Ymd', end_of_day ( $spring, 6 ) ) );
+
+      $fall = mktime ( 0, 0, 0, 11, 1, 2026 );
+      $this->assertEquals ( '20261107', date ( 'Ymd', end_of_day ( $fall, 6 ) ) );
+
+      // A fixed 6-day offset drifts across a DST change: an hour late in the
+      // spring week, and a whole day early in the fall week, which is why this
+      // helper rebuilds the date with mktime() instead.
+      $this->assertEquals ( '20260314 01', date ( 'Ymd H', $spring + 518400 ) );
+      $this->assertEquals ( '20261106 23', date ( 'Ymd H', $fall + 518400 ) );
+    } finally {
+      date_default_timezone_set ( $tz );
+    }
+  }
 }
