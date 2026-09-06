@@ -49,12 +49,7 @@ $next = mktime( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
-// End on the last second of the seventh day, not its midnight: read_events()
-// bounds the final day by time of day, so stopping at midnight drops every
-// event on it.  mktime() rather than a fixed offset so DST weeks still end on
-// the right day.
-$wkend = mktime ( 23, 59, 59, date ( 'm', $wkstart ),
-  date ( 'd', $wkstart ) + 6, date ( 'Y', $wkstart ) );
+$wkend = end_of_day ( $wkstart, 6 );
 
 /* Pre-Load the repeated events for quicker access */
 $repeated_events = read_repeated_events ( $login, $wkstart, $wkend, '' );
