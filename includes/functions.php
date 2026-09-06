@@ -6887,7 +6887,11 @@ function mcp_list_tools() {
       'description' => 'Get basic information about the authenticated user',
       'inputSchema' => [
         'type' => 'object',
-        'properties' => []
+        // new stdClass(), not []: json_encode turns an empty PHP array into `[]`,
+        // but JSON Schema requires `properties` to be an object. MCP clients that
+        // validate tools/list against the spec reject the whole response over it,
+        // so this one tool made every other tool undiscoverable too.
+        'properties' => new stdClass()
       ]
     ],
     [
