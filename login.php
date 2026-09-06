@@ -166,13 +166,11 @@ if ($single_user == 'Y' || $use_http_auth) {
         ? time() + 31536000 : 0);
       sendCookie('webcalendar_session', $encoded_login, $timeStr, $cookie_path);
 
-      // The cookie "webcalendar_login" is provided as a convenience to other
-      // apps that may wish to know what was the last calendar login,
-      // so they can use week_ssi.php as a server-side include.
-      // As such, it's not a security risk to have it un-encoded since it is not
-      // used to allow logins within this app. It is used to load user
-      // preferences on the login page (before anyone has logged in)
-      // if $REMEMBER_LAST_LOGIN is set to "Y" (in admin.php).
+      // The cookie "webcalendar_login" records the last calendar login. It is
+      // not a security risk to have it un-encoded since it is not used to
+      // allow logins within this app. It is used to load user preferences on
+      // the login page (before anyone has logged in) if $REMEMBER_LAST_LOGIN
+      // is set to "Y" (in admin.php).
       sendCookie('webcalendar_login', $login, $timeStr, $cookie_path);
 
       if (!empty($GLOBALS['newUserUrl'])) {
