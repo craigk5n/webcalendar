@@ -2,10 +2,11 @@
 /**
  * This page is intended to be used as a server-side include for another page.
  * (Such as an intranet home page or something.)
- * As such, no login is required. Instead, the login id is either passed in the
- * URL "week_ssi.php?login=cknudsen". Unless, of course, we are in
- * single-user mode, where no login info is needed.
- * If no login info is passed, we check for the last login used.
+ *
+ * It shows the week belonging to whoever is viewing it: the logged-in user,
+ * or the public user when $PUBLIC_ACCESS is enabled. There is no way to embed
+ * some other user's calendar. A "login" URL parameter is ignored, because
+ * includes/init.php has already established the login before this page runs.
  */
 
 require_once 'includes/init.php';
@@ -15,20 +16,6 @@ load_global_settings();
 $WebCalendar->setLanguage();
 
 $user = '__none__'; // Don't let user specify in URL.
-
-if ( strlen ( $login ) == 0 ) {
-  if ( $single_user == 'Y' )
-    $login = $user = $single_user_login;
-  else
-  if ( strlen ( $webcalendar_login ) > 0 )
-    $login = $user = $webcalendar_login;
-  else {
-    echo '<span style="color:#F00;"><span class="bold colon">' .
-      translate ( 'Error' ) . '</span>'
-     . translate( 'No user specified.' ) . '</span>';
-    exit;
-  }
-}
 
 $view = 'week';
 // TODO This is suspect
@@ -49,12 +36,7 @@ $next = mktime( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
-// End on the last second of the seventh day, not its midnight: read_events()
-// bounds the final day by time of day, so stopping at midnight drops every
-// event on it.  mktime() rather than a fixed offset so DST weeks still end on
-// the right day.
-$wkend = mktime ( 23, 59, 59, date ( 'm', $wkstart ),
-  date ( 'd', $wkstart ) + 6, date ( 'Y', $wkstart ) );
+$wkend = end_of_day ( $wkstart, 6 );
 
 /* Pre-Load the repeated events for quicker access */
 $repeated_events = read_repeated_events ( $login, $wkstart, $wkend, '' );

@@ -363,12 +363,12 @@ if ( $report_time_range >= 0 && $report_time_range < 10 ) {
 if ( $report_time_range > 9 && $report_time_range < 20 ) {
   $week_offset = 11 - $report_time_range + $offset;
   $start_date = $wkstart + ( $week_offset * 604800 );
-  $end_date = $start_date + 518400;
+  $end_date = end_of_day ( $start_date, 6 );
 } else
 if ( $report_time_range > 19 && $report_time_range < 30 ) {
   $week_offset = 21 - $report_time_range + $offset;
   $start_date = $wkstart + ( $week_offset * 604800 );
-  $end_date = $start_date + 1123200;
+  $end_date = end_of_day ( $start_date, 13 );
 } else
 if ( $report_time_range > 29 && $report_time_range < 40 ) {
   $thismonth = $datem;
@@ -409,7 +409,7 @@ if ( $report_time_range > 49 && $report_time_range < 60 ) {
   }
   $today = mktime ( 0, 0, 0, $datem, $dated, $dateY );
   $start_date = $today + ( 86400 * $offset * $x );
-  $end_date = $start_date + ( 86400 * $x );
+  $end_date = end_of_day ( $start_date, $x );
 } else {
   // Programmer's bug (no translation needed).
   echo 'Invalid cal_time_range setting for report id ' . $report_id;
