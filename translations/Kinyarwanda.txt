@@ -1410,7 +1410,7 @@ on: ku
 All Attendees: Abitabiriye bose
 Busy: Irahuze
 Tentative: Ihema
-Schedule an appointment for XXX.: Teganya gahunda ya XXX: YYY.
+Schedule an appointment for XXX.: Teganya gahunda ya XXX.
 date_select: __dd__ __ ukwezi__ __yyyy__
 Event approved: Ibirori byemewe
 Journal approved: Ikinyamakuru cyemejwe

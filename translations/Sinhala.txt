@@ -1410,7 +1410,7 @@ on: මත
 All Attendees: සියලුම සහභාගිවන්නන්
 Busy: කාර්යබහුල
 Tentative: තාවකාලික
-Schedule an appointment for XXX.: XXX සඳහා හමුවීමක් උපලේඛනගත කරන්න: YYY.
+Schedule an appointment for XXX.: XXX සඳහා හමුවීමක් උපලේඛනගත කරන්න.
 date_select: __dd__ __ මාස__ __yyyy__
 Event approved: සිදුවීම අනුමත කර ඇත
 Journal approved: ජර්නලය අනුමත කර ඇත

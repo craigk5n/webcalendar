@@ -1415,7 +1415,7 @@ on: rau
 All Attendees: Txhua Tus Neeg Tuaj Koom
 Busy: Tibneeg hu tauj coob
 Tentative: Suab Nkauj Kho Siab
-Schedule an appointment for XXX.: Teem caij sib tham rau XXX: YYY.
+Schedule an appointment for XXX.: Teem caij sib tham rau XXX.
 date_select: dd ____ __ th__monmonmon __ __ __ __, __yyyy______ __yy__, yyyy________________, yy________________, yy___thth__________, yy_thth____,.
 Event approved: Kev pom zoo pom zoo
 Journal approved: Phau ntawv pom zoo raug

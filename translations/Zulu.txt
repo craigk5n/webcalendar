@@ -1410,7 +1410,7 @@ on: vula
 All Attendees: Bonke Ababekhona
 Busy: Kubhizi
 Tentative: Okwesikhashana
-Schedule an appointment for XXX.: Hlela i-aphoyintimenti ye-XXX: YYY.
+Schedule an appointment for XXX.: Hlela i-aphoyintimenti ye-XXX.
 date_select: =
 Event approved: Umcimbi uvunyelwe
 Journal approved: Ijenali ivunyelwe

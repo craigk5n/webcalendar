@@ -474,10 +474,6 @@ function dbi_affected_rows( $conn, $res ) {
 function dbi_update_blob( $table, $column, $key, $data ) {
   global $db_connection_info;
 
-  $notAvailable = str_replace ( ['XXX', 'YYY'],
-    ['dbi_update_blob', $GLOBALS['db_type']],
-    translate( 'Unfortunately, XXX is not implemented for YYY' ) );
-
   assert( ! empty( $table ) );
   assert( ! empty( $column ) );
   assert( ! empty( $key ) );
@@ -520,7 +516,9 @@ elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
     return ( $ret == FALSE ? FALSE : TRUE );
   } else
     // TODO!
-    die_miserable_death( $notAvailable );
+    die_miserable_death( str_replace ( ['XXX', 'YYY'],
+        ['dbi_update_blob', $GLOBALS['db_type']],
+        translate( 'Unfortunately, XXX is not implemented for YYY' ) ) );
 }
 
 /**
@@ -534,10 +532,6 @@ elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
  */
 function dbi_get_blob( $table, $column, $key ) {
   global $db_connection_info;
-
-  $notAvailable = str_replace ( ['XXX', 'YYY'],
-    ['dbi_get_blob', $GLOBALS['db_type']],
-    translate( 'Unfortunately, XXX is not implemented for YYY' ) );
 
   assert( ! empty( $table ) );
   assert( ! empty( $column ) );
@@ -563,7 +557,9 @@ function dbi_get_blob( $table, $column, $key ) {
       $ret = $row[0];
     } else {
       // TODO!
-      die_miserable_death( $notAvailable );
+      die_miserable_death( str_replace ( ['XXX', 'YYY'],
+        ['dbi_get_blob', $GLOBALS['db_type']],
+        translate( 'Unfortunately, XXX is not implemented for YYY' ) ) );
     }
   }
   dbi_free_result( $res );

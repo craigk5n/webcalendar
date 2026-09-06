@@ -1410,7 +1410,7 @@ on: fuq
 All Attendees: L-Attendenti Kollha
 Busy: Għandi x'nagħmel
 Tentative: Tentattiv
-Schedule an appointment for XXX.: Skeda appuntament għal XXX: SSSS.
+Schedule an appointment for XXX.: Skeda appuntament għal XXX.
 date_select: __dd__ __ xahar__ __yyyy__
 Event approved: Avveniment approvat
 Journal approved: Ġurnal approvat

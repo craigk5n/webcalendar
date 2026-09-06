@@ -1410,7 +1410,7 @@ on: kuyatsa
 All Attendees: Onse Opezekapo
 Busy: Tanganidwa
 Tentative: Kukonzekera
-Schedule an appointment for XXX.: Sanjani nthawi yokumana ndi XXX: YYY.
+Schedule an appointment for XXX.: Sanjani nthawi yokumana ndi XXX.
 date_select: =
 Event approved: Chochitika chovomerezeka
 Journal approved: Zolemba zivomerezedwa

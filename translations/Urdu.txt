@@ -1410,7 +1410,7 @@ on: پر
 All Attendees: تمام شرکاء
 Busy: مصروف
 Tentative: عارضی
-Schedule an appointment for XXX.: XXX کے لئے ملاقات کا نظام الاوقات: YYY۔
+Schedule an appointment for XXX.: XXX کے لئے ملاقات کا نظام الاوقات۔
 date_select: __d_____ تاریخ________
 Event approved: واقعہ منظور
 Journal approved: جرنل کی منظوری
