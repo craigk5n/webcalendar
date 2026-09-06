@@ -1410,7 +1410,7 @@ on: បើក
 All Attendees: អ្នកចូលរួមទាំងអស់
 Busy: រវល់
 Tentative: ការសងសឹក
-Schedule an appointment for XXX.: កំណត់ពេលណាត់ជួបសម្រាប់ XXX: YYY ។
+Schedule an appointment for XXX.: កំណត់ពេលណាត់ជួបសម្រាប់ XXX ។
 date_select: __ ថែម __ __ ថ្ងៃទី __ __ ឆ្នាំទី __
 Event approved: បានអនុម័តព្រឹត្តិការណ៍
 Journal approved: ទិនានុប្បវត្តិត្រូវបានអនុម័ត

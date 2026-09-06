@@ -1306,7 +1306,7 @@ on: на
 All Attendees: Сви присутни
 Busy: Заузет
 Tentative: Оквирно
-Schedule an appointment for XXX.: Закажите састанак за КСКСКС: ГГГ.
+Schedule an appointment for XXX.: Закажите састанак за XXX.
 date_select: __дд__ __месец__ __иии____
 Event approved: Догађај одобрен
 Journal approved: Часопис одобрен

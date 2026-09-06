@@ -1410,7 +1410,7 @@ on: په
 All Attendees: ټول ګډون وال
 Busy: بوخت
 Tentative: عصبي
-Schedule an appointment for XXX.: د XXX لپاره ناستې مهالویش: YYY.
+Schedule an appointment for XXX.: د XXX لپاره ناستې مهالویش.
 date_select: _د_د_م_م_____ه_
 Event approved: پیښه تصویب شوه
 Journal approved: ژورنال تصویب شو

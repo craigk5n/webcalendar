@@ -1410,7 +1410,7 @@ on: ഓണാണ്
 All Attendees: പങ്കെടുത്തവരെല്ലാം
 Busy: തിരക്ക്
 Tentative: താൽക്കാലികം
-Schedule an appointment for XXX.: XXX- നായി ഒരു കൂടിക്കാഴ്‌ച ഷെഡ്യൂൾ ചെയ്യുക: YYY.
+Schedule an appointment for XXX.: XXX- നായി ഒരു കൂടിക്കാഴ്‌ച ഷെഡ്യൂൾ ചെയ്യുക.
 date_select: __dd__ __ മാസം__ __yyyy__
 Event approved: ഇവന്റ് അംഗീകരിച്ചു
 Journal approved: ജേണൽ അംഗീകരിച്ചു

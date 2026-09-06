@@ -1394,7 +1394,7 @@ on: ಆನ್
 All Attendees: ಎಲ್ಲಾ ಪಾಲ್ಗೊಳ್ಳುವವರು
 Busy: ನಿರತ
 Tentative: ತಾತ್ಕಾಲಿಕ
-Schedule an appointment for XXX.: XXX ಗಾಗಿ ನೇಮಕಾತಿಯನ್ನು ನಿಗದಿಪಡಿಸಿ: YYY.
+Schedule an appointment for XXX.: XXX ಗಾಗಿ ನೇಮಕಾತಿಯನ್ನು ನಿಗದಿಪಡಿಸಿ.
 date_select: __dd__ __ ತಿಂಗಳು__ __yyyy__
 Event approved: ಈವೆಂಟ್ ಅನುಮೋದಿಸಲಾಗಿದೆ
 Journal approved: ಜರ್ನಲ್ ಅನುಮೋದಿಸಲಾಗಿದೆ

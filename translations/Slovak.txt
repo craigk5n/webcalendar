@@ -1288,7 +1288,7 @@ on: na
 All Attendees: Všetci účastníci
 Busy: Zaneprázdnený
 Tentative: Predbežne
-Schedule an appointment for XXX.: Naplánujte si schôdzku na XXX: RRRR.
+Schedule an appointment for XXX.: Naplánujte si schôdzku na XXX.
 date_select: __dd__ __month__ __rrrr__
 Event approved: Udalosť schválená
 Journal approved: Časopis bol schválený

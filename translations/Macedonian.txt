@@ -1410,7 +1410,7 @@ on: на
 All Attendees: Сите присутни
 Busy: Зафатен
 Tentative: Обично
-Schedule an appointment for XXX.: Закажете состанок за ХХХ: ГОСА.
+Schedule an appointment for XXX.: Закажете состанок за XXX.
 date_select: __dd__ __месец __yyyy__
 Event approved: Настанот е одобрен
 Journal approved: Весник е одобрен

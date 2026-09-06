@@ -1410,7 +1410,7 @@ on: पर
 All Attendees: सभी उपस्थित लोग
 Busy: व्यस्त
 Tentative: जांच का
-Schedule an appointment for XXX.: XXX के लिए अपॉइंटमेंट शेड्यूल करें: YYY।
+Schedule an appointment for XXX.: XXX के लिए अपॉइंटमेंट शेड्यूल करें।
 date_select: =
 Event approved: घटना को मंजूरी दी
 Journal approved: जर्नल ने मंजूरी दे दी

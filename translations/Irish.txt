@@ -1410,7 +1410,7 @@ on: ar
 All Attendees: Gach Freastalaí
 Busy: Gnóthach
 Tentative: Sealadach
-Schedule an appointment for XXX.: Déan coinne a sceidealú do XXX: BBBB.
+Schedule an appointment for XXX.: Déan coinne a sceidealú do XXX.
 date_select: =
 Event approved: Imeacht ceadaithe
 Journal approved: Iris ceadaithe

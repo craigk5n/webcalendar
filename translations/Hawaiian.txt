@@ -1410,7 +1410,7 @@ on: ma
 All Attendees: ʻO nā mea hele a pau
 Busy: ʻOihana
 Tentative: ʻĀkau
-Schedule an appointment for XXX.: E hoʻolālā i kahi manawa no XXX: YYY.
+Schedule an appointment for XXX.: E hoʻolālā i kahi manawa no XXX.
 date_select: =
 Event approved: Ua ʻae ʻia ka hanana
 Journal approved: Ua ʻae ʻia ka puke pai

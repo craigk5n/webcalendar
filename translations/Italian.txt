@@ -1374,7 +1374,7 @@ on: attivo
 All Attendees: Tutti i partecipanti
 Busy: Occupato
 Tentative: Non definitivo
-Schedule an appointment for XXX.: Imposta un appuntamento per XXX:YYY.
+Schedule an appointment for XXX.: Imposta un appuntamento per XXX.
 Event approved: Evento approvato
 Journal approved: Giornale approvato
 Task approved: Compito approvato

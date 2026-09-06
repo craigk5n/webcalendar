@@ -1410,7 +1410,7 @@ on: sa
 All Attendees: Lahat ng Dadalo
 Busy: Abala
 Tentative: =
-Schedule an appointment for XXX.: Mag-iskedyul ng appointment para sa XXX: YYY.
+Schedule an appointment for XXX.: Mag-iskedyul ng appointment para sa XXX.
 date_select: =
 Event approved: Naaprubahan ang kaganapan
 Journal approved: Naaprubahan ang journal
