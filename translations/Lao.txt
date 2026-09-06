@@ -1410,7 +1410,7 @@ on: ສຸດ
 All Attendees: ຜູ້ເຂົ້າຮ່ວມທັງ ໝົດ
 Busy: ຄາ​ວຽກ
 Tentative: ແກ້ແຄ້ນ
-Schedule an appointment for XXX.: ຈັດຕາຕະລາງນັດ ໝາຍ ສຳ ລັບ XXX: YYY.
+Schedule an appointment for XXX.: ຈັດຕາຕະລາງນັດ ໝາຍ ສຳ ລັບ XXX.
 date_select: dd__ ____, monyy mon
 Event approved: ການອະນຸມັດເຫດການ
 Journal approved: ວາລະສານອະນຸມັດ

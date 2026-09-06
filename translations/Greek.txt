@@ -1344,7 +1344,7 @@ on: =
 All Attendees: Όλοι οι συμμετέχοντες
 Busy: Απασχολημένος
 Tentative: Προσωρινός
-Schedule an appointment for XXX.: Προγραμματισμός συνάντησης για XXX:XXX.
+Schedule an appointment for XXX.: Προγραμματισμός συνάντησης για XXX.
 Event approved: Αποδοχή γεγονότος
 Journal approved: Αποδοχή ημερολογίου
 Task approved: Αποδοχή εργασίας

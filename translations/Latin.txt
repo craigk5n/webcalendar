@@ -1410,7 +1410,7 @@ on: in
 All Attendees: omnes Attendees
 Busy: occupatus
 Tentative: temptat
-Schedule an appointment for XXX.: Schedule constitutio pro XXX: YYY.
+Schedule an appointment for XXX.: Schedule constitutio pro XXX.
 date_select: __dd__ __mēness__ __yyyy__
 Event approved: res probatus
 Journal approved: Journal probatus

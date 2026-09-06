@@ -1309,7 +1309,7 @@ on: 在
 All Attendees: 所有参会者
 Busy: 忙
 Tentative: 塔塔尔族
-Schedule an appointment for XXX.: 安排XXX：YYY的约会。
+Schedule an appointment for XXX.: 安排XXX的约会。
 Event approved: 活动已获批准
 Journal approved: 期刊批准
 Task approved: 泰米尔语

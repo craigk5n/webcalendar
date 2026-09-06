@@ -1410,7 +1410,7 @@ on: üstünde
 All Attendees: Gatnaşanlaryň hemmesi
 Busy: Işli
 Tentative: =
-Schedule an appointment for XXX.: XXX üçin duşuşygy meýilleşdiriň: YYY.
+Schedule an appointment for XXX.: XXX üçin duşuşygy meýilleşdiriň.
 date_select: __dd__ __ aý__ __yyy__
 Event approved: Waka tassyklandy
 Journal approved: Journalurnal tassyklandy
