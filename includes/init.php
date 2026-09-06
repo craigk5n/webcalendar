@@ -9,7 +9,6 @@
  * <b>Comments:</b>
  * The following scripts do not use this file:
  *   - login.php
- *   - week_ssi.php
  *   - upcoming.php
  *   - tools/send_reminders.php
  *
