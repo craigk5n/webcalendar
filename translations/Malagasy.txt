@@ -1410,7 +1410,7 @@ on: amin'ny
 All Attendees: Mpanatrika rehetra
 Busy: Be asa
 Tentative: Andrana
-Schedule an appointment for XXX.: Manome fotoana fanendrena ho an'i XXX: YYY.
+Schedule an appointment for XXX.: Manome fotoana fanendrena ho an'i XXX.
 date_select: =
 Event approved: Nekena ny hetsika
 Journal approved: Nankatoavina ny gazety

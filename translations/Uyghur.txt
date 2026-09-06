@@ -1410,7 +1410,7 @@ on: =
 All Attendees: بارلىق قاتناشقۇچىلار
 Busy: ئالدىراش
 Tentative: =
-Schedule an appointment for XXX.: XXX: YYY ئۈچۈن ئۇچرىشىشنى ئورۇنلاشتۇرۇڭ.
+Schedule an appointment for XXX.: XXX ئۈچۈن ئۇچرىشىشنى ئورۇنلاشتۇرۇڭ.
 date_select: __dd__ __ ئاي __yyy__
 Event approved: پائالىيەت تەستىقلاندى
 Journal approved: ژۇرنال تەستىقلاندى

@@ -1410,7 +1410,7 @@ on: บน
 All Attendees: ผู้เข้าร่วมทั้งหมด
 Busy: ไม่ว่าง
 Tentative: ไม่แน่นอน
-Schedule an appointment for XXX.: กำหนดเวลานัดหมายสำหรับ XXX: YYY
+Schedule an appointment for XXX.: กำหนดเวลานัดหมายสำหรับ XXX
 date_select: =
 Event approved: อนุมัติกิจกรรมแล้ว
 Journal approved: วารสารได้รับการอนุมัติ

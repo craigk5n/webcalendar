@@ -1410,7 +1410,7 @@ on: sou
 All Attendees: Tout patisipan yo
 Busy: Okipe
 Tentative: Pwovizwa
-Schedule an appointment for XXX.: Pran yon randevou pou XXX: AAAA.
+Schedule an appointment for XXX.: Pran yon randevou pou XXX.
 date_select: =
 Event approved: Evènman apwouve
 Journal approved: Jounal apwouve

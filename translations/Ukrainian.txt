@@ -1410,7 +1410,7 @@ on: на
 All Attendees: Усі присутні
 Busy: Зайнятий
 Tentative: Орієнтовний
-Schedule an appointment for XXX.: Заплануйте зустріч на XXX: РРР.
+Schedule an appointment for XXX.: Заплануйте зустріч на XXX.
 date_select: __dd__ __місяць__ __рррр__
 Event approved: Подія затверджена
 Journal approved: Журнал затверджено

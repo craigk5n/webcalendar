@@ -1410,7 +1410,7 @@ on: i luga
 All Attendees: Tagata Auai Uma
 Busy: Pisi
 Tentative: Fale Faʻalelotu
-Schedule an appointment for XXX.: Faʻatulaga se taimi mo XXX: YYY
+Schedule an appointment for XXX.: Faʻatulaga se taimi mo XXX
 date_select: =
 Event approved: Na faamaonia le mea na tupu
 Journal approved: Faamaonia le tusi talaaga

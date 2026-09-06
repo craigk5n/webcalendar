@@ -1410,7 +1410,7 @@ on: bulela
 All Attendees: Batho bohle ba tlileng kopanong
 Busy: Phathahane
 Tentative: Ho ikoetlisa
-Schedule an appointment for XXX.: Rera nako ea kopano bakeng sa XXX: YYY.
+Schedule an appointment for XXX.: Rera nako ea kopano bakeng sa XXX.
 date_select: =
 Event approved: Ketsahalo e amohetsoe
 Journal approved: Sengoloa se amohetsoe

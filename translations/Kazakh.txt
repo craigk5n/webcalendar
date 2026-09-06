@@ -1410,7 +1410,7 @@ on: қосулы
 All Attendees: Барлық қатысушылар
 Busy: Бос емес
 Tentative: Болжалды
-Schedule an appointment for XXX.: ХХХ уақытына жоспарлаңыз: ЖЖЖ.
+Schedule an appointment for XXX.: XXX уақытына жоспарлаңыз.
 date_select: __dd__ __ай __ __yyyy__
 Event approved: Іс-шара мақұлданды
 Journal approved: Журнал мақұлданды

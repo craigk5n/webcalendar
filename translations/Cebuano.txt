@@ -1409,7 +1409,7 @@ on: sa
 All Attendees: Tanan nga Nagtambong
 Busy: =
 Tentative: =
-Schedule an appointment for XXX.: Pag-eskedyul sa usa ka appointment alang sa XXX: YYY.
+Schedule an appointment for XXX.: Pag-eskedyul sa usa ka appointment alang sa XXX.
 date_select: =
 Event approved: Giaprubahan ang kalihokan
 Journal approved: Giuyonan ang journal

@@ -1410,7 +1410,7 @@ on: plu
 All Attendees: Ĉiuj Ĉeestantoj
 Busy: Okupita
 Tentative: Provizora
-Schedule an appointment for XXX.: Aranĝu rendevuon por XXX: YYY.
+Schedule an appointment for XXX.: Aranĝu rendevuon por XXX.
 date_select: __dd__ __monato__ __yyyy__
 Event approved: Okazaĵo aprobita
 Journal approved: Journalurnalo aprobita
