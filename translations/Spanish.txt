@@ -1485,7 +1485,7 @@ on: en
 All Attendees: Todos los asistentes
 Busy: Ocupado
 Tentative: Tentativo
-Schedule an appointment for XXX.: Programar una cita para XXX: YYY.
+Schedule an appointment for XXX.: Programar una cita para XXX.
 Event approved: Evento aprobado
 Journal approved: Diario aprobado
 Task approved: Tarea aprobada

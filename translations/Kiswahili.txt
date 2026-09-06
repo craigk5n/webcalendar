@@ -1410,7 +1410,7 @@ on: kuwasha
 All Attendees: Wahudhuriaji wote
 Busy: Yuko busy
 Tentative: Kutazama
-Schedule an appointment for XXX.: Panga miadi ya XXX: YYY.
+Schedule an appointment for XXX.: Panga miadi ya XXX.
 date_select: __dd__ __mwezi__ __yyyy__
 Event approved: Tukio limeidhinishwa
 Journal approved: Jarida limeidhinishwa

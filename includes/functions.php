@@ -614,17 +614,6 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
         <th style="width:{$participant_pct};">
 EOT;
    $ret .= translate ( 'Participants' ) . '</th>';
-  $tentative = translate ( 'Tentative' );
-  $titleStr = ' title="' . translate ( 'Schedule an appointment for XXX.' ) . '">';
-  $viewMsg = translate ( 'View this entry' );
-
-  $hours = $last_hour - $first_hour;
-  $interval = intval ( 60 / $increment );
-  $cell_pct = intval ( 80 / ( $hours * $interval ) );
-  $cols = ( ( $hours * $interval ) + 1 );
-  $style_width = ( $cell_pct > 0 ? 'style="width:' . $cell_pct . '%;"' : '' );
-  $thismonth = date ( 'm', $dateTS );
-  $thisyear = date ( 'Y', $dateTS );
 
   // Build a master array containing all events for $participants.
   for ( $i = 0; $i < $cnt; $i++ ) {
@@ -695,10 +684,16 @@ EOT;
       $inc_x_j = $increment * $j;
       $str .= '
         <td id="C' . ( $j + 1 ) . '" class="dailymatrix" ';
+      $hourStr = sprintf ( $hourfmt, $hour );
+      $minStr = ( $inc_x_j <= 9 ? '0' : '' ) . $inc_x_j;
+      // Translations disagree on this phrase: most split the time into
+      // XXX:YYY (hour:minute), the rest use a single XXX for the whole time.
+      $timeStr = ( strpos ( $titleStr, 'YYY' ) === false
+        ? str_replace ( 'XXX', $hourStr . ':' . $minStr, $titleStr )
+        : str_replace ( ['XXX', 'YYY'], [$hourStr, $minStr], $titleStr ) );
       $tmpTitle = 'onmousedown="schedule_event( ' . $i . ','
        . sprintf ( "%02d", $inc_x_j ) . ' );"' . $MouseOver . $MouseOut
-       . str_replace ( 'XXX', sprintf ( $hourfmt, $hour ) . ':' .
-          ( $inc_x_j <= 9 ? '0' : '' ) . $inc_x_j, $titleStr );
+       . $timeStr;
       switch ( $j ) {
         case $halfway:
           $k = ( $hour <= 9 ? '0' : substr ( $hour, 0, 1 ) );

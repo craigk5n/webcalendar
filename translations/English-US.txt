@@ -1579,7 +1579,7 @@ on: on
 All Attendees: All Attendees
 Busy: Busy
 Tentative: Tentative
-Schedule an appointment for XXX.: Schedule an appointment for XXX:YYY.
+Schedule an appointment for XXX.: Schedule an appointment for XXX.
 Event approved: Event approved
 Journal approved: Journal approved
 Task approved: Task approved

@@ -1410,7 +1410,7 @@ on: ing
 All Attendees: Kabeh Hadirin
 Busy: Sibuk
 Tentative: Tentatif
-Schedule an appointment for XXX.: Jadwal janjian kanggo XXX: YYY.
+Schedule an appointment for XXX.: Jadwal janjian kanggo XXX.
 date_select: =
 Event approved: Acara disetujoni
 Journal approved: Jurnal disetujoni

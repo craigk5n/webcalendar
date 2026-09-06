@@ -1410,7 +1410,7 @@ on: an
 All Attendees: All Participanten
 Busy: Beschäftegt                         
 Tentative: Tentativ
-Schedule an appointment for XXX.: Rendez-vous fir XXX: YYY.
+Schedule an appointment for XXX.: Rendez-vous fir XXX.
 date_select: =
 Event approved: Event ugeholl
 Journal approved: Journal guttgeheescht

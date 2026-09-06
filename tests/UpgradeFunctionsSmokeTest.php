@@ -96,4 +96,42 @@ final class UpgradeFunctionsSmokeTest extends TestCase
       @rmdir($emptyDir);
     }
   }
+
+  /**
+   * Regression test for #714.
+   *
+   * The two tests above both return early -- missing dir, empty dir -- so
+   * nothing in the suite ever reached dbi_update_blob(), which is where the
+   * upgrade died with "Call to undefined function translate()".  This one
+   * puts a real icon in place so the migration actually runs.
+   */
+  public function test_do_v1_9_11_updates_migrates_an_icon_file(): void
+  {
+    $iconDir = sys_get_temp_dir() . '/wcsmoke_icons_' . uniqid();
+    mkdir($iconDir);
+    // Smallest valid GIF: 1x1 transparent.
+    $gif = base64_decode('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+    $iconFile = $iconDir . '/cat-7.gif';
+    file_put_contents($iconFile, $gif);
+
+    dbi_execute("INSERT INTO webcal_categories (cat_id, cat_name, cat_owner)"
+      . " VALUES (7, 'Smoke', 'admin')");
+
+    try {
+      $this->assertTrue(do_v1_9_11_updates(null, null, $iconDir));
+
+      $res = dbi_execute('SELECT cat_icon_mime, cat_icon_blob'
+        . ' FROM webcal_categories WHERE cat_id = 7');
+      $row = dbi_fetch_row($res);
+      dbi_free_result($res);
+
+      $this->assertSame('image/gif', $row[0], 'mime type should be recorded');
+      $this->assertSame($gif, $row[1], 'icon bytes should be stored in the blob');
+      $this->assertFileDoesNotExist($iconFile,
+        'source file should be removed so a re-run does not repeat the work');
+    } finally {
+      @unlink($iconFile);
+      @rmdir($iconDir);
+    }
+  }
 }
