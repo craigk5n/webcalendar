@@ -35,6 +35,10 @@
  */
 
 require_once __DIR__ . '/../../includes/dbi4php.php';
+// dbi4php reports errors through translate().  The wizard deliberately
+// avoids config.php, so pull in translate.php on its own: with $LANGUAGE
+// unset translate() just returns the string it was given.
+require_once __DIR__ . '/../../includes/translate.php';
 
 /**
  * Ensure dbi4php is connected using the wizard's current database
@@ -232,6 +236,9 @@ function do_v1_9_11_updates($connection = null, $state = null, ?string $iconDir 
 
   // wizard/shared/ -> repo root -> wc-icons/ (overridable for tests)
   $icon_path = $iconDir ?? __DIR__ . '/../../wc-icons/';
+  // Normalize: an injected path without a trailing slash would make every
+  // glob() below silently match nothing.
+  $icon_path = rtrim($icon_path, '/') . '/';
   if (!is_dir($icon_path)) {
     // No icon directory on disk; nothing to migrate.
     return true;

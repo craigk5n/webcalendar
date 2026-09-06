@@ -1410,7 +1410,7 @@ on: ieslēgts
 All Attendees: Visi dalībnieki
 Busy: Aizņemts
 Tentative: Provizorisks
-Schedule an appointment for XXX.: Ieplānojiet tikšanos: XXX: YYY.
+Schedule an appointment for XXX.: Ieplānojiet tikšanos: XXX.
 date_select: __dd__ __mēness__ __yyyy__
 Event approved: Pasākums apstiprināts
 Journal approved: Žurnāls apstiprināts

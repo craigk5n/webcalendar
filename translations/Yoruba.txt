@@ -1410,7 +1410,7 @@ on: lori
 All Attendees: Gbogbo Awọn olukopa
 Busy: Nšišẹ
 Tentative: =
-Schedule an appointment for XXX.: Ṣeto ipinnu lati pade fun XXX: YYY.
+Schedule an appointment for XXX.: Ṣeto ipinnu lati pade fun XXX.
 date_select: __dd__ __ osu____ __yyyy__
 Event approved: Iṣẹlẹ ti a fọwọsi
 Journal approved: Iwe akọọlẹ ti a fọwọsi                                        
