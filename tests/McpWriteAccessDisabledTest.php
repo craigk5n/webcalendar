@@ -110,6 +110,19 @@ final class McpWriteAccessDisabledTest extends TestCase
         return $n;
     }
 
+    public function test_add_event_is_blocked_and_creates_nothing(): void
+    {
+        $before = $this->entryCount();
+        $resp = $this->callTool('add_event', [
+            'name' => 'Should Not Persist',
+            'date' => '20260803',
+        ]);
+        $result = $resp['result'] ?? [];
+        $this->assertArrayHasKey('error', $result, json_encode($resp));
+        $this->assertStringContainsStringIgnoringCase('write access', $result['error']);
+        $this->assertSame($before, $this->entryCount(), 'no event may be created when write access is off');
+    }
+
     public function test_add_recurring_event_is_blocked_and_creates_nothing(): void
     {
         $before = $this->entryCount();
