@@ -220,17 +220,25 @@ def test_new_installation(driver):
             pass  # No Admin User step (e.g. admins already exist)
 
         # Click through Summary / Finish
-        for i in range(10):
+        #
+        # Poll to a deadline rather than a fixed iteration count. On a slow
+        # backend the Summary step can take longer than the old ~10s budget to
+        # appear; missing it meant Continue was never clicked, so the run sat on
+        # Admin User until the Finish wait below timed out (#728).
+        summary_deadline = time.time() + 45
+        summary_clicked = False
+        while time.time() < summary_deadline:
             try:
                 title = driver.find_element(By.ID, "stepTitle").text
-                if "Summary" in title:
+                if "Finish" in title:
+                    break
+                if "Summary" in title and not summary_clicked:
                     save_btns = driver.find_elements(By.CSS_SELECTOR, "button[data-action='save-settings-file']")
                     if save_btns:
                         click_button(driver, "button[data-action='save-settings-file']")
                     else:
                         click_button(driver, "continueToFinishBtn", by=By.ID)
-                elif "Finish" in title:
-                    break
+                    summary_clicked = True
             except Exception: pass
             time.sleep(1)
 
