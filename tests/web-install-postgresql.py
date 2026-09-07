@@ -46,6 +46,38 @@ def wait_for_text(driver, selector, text, timeout=45):
         time.sleep(0.5)
     raise TimeoutException(f"Timed out waiting for text '{text}' in element '{selector}' (current text: '{driver.find_element(By.ID, selector).text if driver.find_elements(By.ID, selector) else 'N/A'}')")
 
+def dump_failure_context(driver):
+    """Print enough to diagnose a CI-only failure without a local repro (#728).
+
+    These wizard jobs fail intermittently (MySQL in ~20% of runs) and the
+    container access log alone has not been enough to say why. Container logs
+    are only dumped on failure, so there is no passing run to diff against;
+    this prints the browser's own view of the failure instead.
+    """
+    print(f"FAILED on page: {driver.current_url}")
+    try:
+        print(f"  page title: {driver.title!r}")
+        print(f"  stepTitle: {driver.find_element(By.ID, 'stepTitle').text!r}")
+    except Exception as exc:
+        print(f"  stepTitle: unavailable ({exc.__class__.__name__})")
+    for sel in ("#errorMessage", ".alert", ".invalid-feedback", ".text-danger"):
+        try:
+            for el in driver.find_elements(By.CSS_SELECTOR, sel):
+                text = el.text.strip()
+                if text:
+                    print(f"  {sel}: {text[:200]!r}")
+        except Exception:
+            pass
+    try:
+        for entry in driver.get_log("browser"):
+            print(f"  console[{entry.get('level')}]: {str(entry.get('message'))[:200]}")
+    except Exception:
+        pass  # get_log is not supported by every driver/browser combination
+    source = driver.page_source or ""
+    print(f"  page_source ({len(source)} chars, first 4000 shown):")
+    print(source[:4000])
+
+
 def click_button(driver, selector, by=By.CSS_SELECTOR):
     try:
         element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((by, selector)))
@@ -248,7 +280,7 @@ def test_new_installation(driver):
         # Post-install smoke test: login, view calendar, create event
         _post_install_smoke_test(driver)
     except Exception:
-        print(f"FAILED on page: {driver.current_url}")
+        dump_failure_context(driver)
         raise
 
 def _run_upgrade_test(driver, fixture_path):
@@ -302,12 +334,7 @@ def _run_upgrade_test(driver, fixture_path):
         wait_for_text(driver, "stepTitle", "Finish")
         assert "Complete" in driver.page_source
     except Exception:
-        print(f"FAILED on page: {driver.current_url}")
-        try:
-            print(f"Page Title: {driver.title}")
-            print(f"Step Title: {driver.find_element(By.ID, 'stepTitle').text if driver.find_elements(By.ID, 'stepTitle') else 'N/A'}")
-        except Exception:
-            pass
+        dump_failure_context(driver)
         raise
 
 def test_upgrade_installation(driver):
@@ -379,5 +406,5 @@ def test_version_check(driver):
         print(f"SUCCESS: Version check passed - DB={db_version}, wizard={wizard_version}")
 
     except Exception:
-        print(f"FAILED on page: {driver.current_url}")
+        dump_failure_context(driver)
         raise
