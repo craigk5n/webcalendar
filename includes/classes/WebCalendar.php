@@ -16,6 +16,15 @@
  * @todo Organize initialization steps more logically.
  */
 class WebCalendar {
+  // Provide translation of translation file
+  // (trimming the ".txt" to the proper value for mb_language)
+  private $mb_language_map = [
+    'Chinese-Big5'   => 'Chinese-Traditional',
+    'Chinese-GB2312' => 'Chinese-Simplified',
+    'Japanese-eucjp' => 'Japanese',
+    'Japanese-sjis'  => 'Japanese',
+  ];
+
   /**
    * Filename of the page the user is viewing.
    *
@@ -71,22 +80,6 @@ class WebCalendar {
     [
       ['InitFirstPhase', 'Config', 'PHPDBI', 'Functions'],
       ['User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'InitSecondPhase']]];
-    // Provide translation of translation file (trimming the ".txt" to the proper value for mb_language)
-    private $mb_language_map = [
-      'Arabic_utf8' => 'Arabic',
-      'Chinese-Big5' => 'Chinese',
-      'Chinese-GB2312' => 'Chinese',
-      'German' => 'German',
-      'German_utf8' => 'German',
-      'Hebrew_utf8' => 'Hebrew',
-      'Japanese-eucjp' => 'Japanese',
-      'Japanese-sjis' => 'Japanese',
-      'Japanese' => 'Japanese',
-      'Korean' => 'Korean',
-      'Russian' => 'Russian',
-      'Russian_utf8' => 'Russian',
-      'Spanish' => 'Spanish',
-    ];
 
   /**
    * WebCalendar constructor.
