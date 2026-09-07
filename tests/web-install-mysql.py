@@ -47,6 +47,27 @@ def wait_for_text(driver, selector, text, timeout=45):
         time.sleep(0.5)
     raise TimeoutException(f"Timed out waiting for text '{text}' in element '{selector}'")
 
+def type_value(driver, element_id, value, attempts=3):
+    """Type into a field and confirm the value actually landed (#728).
+
+    send_keys can drop characters while the page is still settling. When that
+    happened to the two password fields they ended up holding different text,
+    the wizard refused to leave the Admin User step with "Passwords do not
+    match", and the run then died in the unrelated wait for the Finish step.
+    Verifying here fails fast with a useful message instead.
+    """
+    for _ in range(attempts):
+        field = driver.find_element(By.ID, element_id)
+        field.clear()
+        field.send_keys(value)
+        actual = field.get_attribute("value")
+        if actual == value:
+            return
+        print(f"  retyping {element_id}: got {actual!r}, wanted {value!r}")
+    raise AssertionError(
+        f"{element_id} would not accept {value!r} after {attempts} attempts")
+
+
 def dump_failure_context(driver):
     """Print enough to diagnose a CI-only failure without a local repro (#728).
 
@@ -286,11 +307,9 @@ def test_new_installation(driver):
         # wizard no longer auto-skips the Admin User step.
         try:
             wait_for_text(driver, "stepTitle", "Admin", timeout=45)
-            login_field = driver.find_element(By.ID, "admin_login")
-            login_field.clear()
-            login_field.send_keys("admin")
-            driver.find_element(By.ID, "admin_password").send_keys("admin123")
-            driver.find_element(By.ID, "admin_password2").send_keys("admin123")
+            type_value(driver, "admin_login", "admin")
+            type_value(driver, "admin_password", "admin123")
+            type_value(driver, "admin_password2", "admin123")
             click_button(driver, "form[data-action='create-admin-user'] button[type='submit']")
             time.sleep(2)
         except TimeoutException:
