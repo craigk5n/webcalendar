@@ -1,5 +1,7 @@
 *.class
 .DS_Store
+# Local environment overrides -- may hold credentials, never commit.
+.env
 .htaccess
 includes/htmlare*
 includes/settings.php
