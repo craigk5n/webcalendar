@@ -1,26 +1,25 @@
-*.class
-.DS_Store
 # Local environment overrides -- may hold credentials, never commit.
 .env
-.htaccess
-includes/htmlare*
-includes/settings.php
-*.jar
-*.jar
-java/
-*.log
-mysql-data
-node_modules/
-*.old
-*.orig
-__pycache__
-*.save
-*.sha
-sqlite-data
-tests/.phpunit.result.cache
-DOC_UPDATES.md
-vendor/
-wc-icons/
 # Defense-in-depth: never commit the release-signing private key half.
 # The public key (release-signing-pubkey.pem) is deliberately tracked.
 release-signing-privkey*
+
+__pycache__
+.DS_Store
+.htaccess
+*.class
+*.jar
+*.log
+*.old
+*.orig
+*.save
+*.sha
+DOC_UPDATES.md
+includes/htmlare*
+includes/settings.php
+mysql-data
+node_modules/
+sqlite-data
+tests/.phpunit.result.cache
+vendor/
+wc-icons/
