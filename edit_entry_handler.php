@@ -968,7 +968,7 @@ if( empty( $error ) ) {
         user_load_variables( $old_participant, 'temp' );
 
         if( $old_participant != $login && ! empty( $tempemail )
-            && $do_send == 'Y' && $SEND_EMAIL != 'N' ) {
+            && $do_send == 'Y' && $SEND_EMAIL == 'Y' ) {
           reset_language( empty( $user_language ) || $user_language == 'none'
             ? $LANGUAGE : $user_language );
 
@@ -1087,7 +1087,7 @@ if( empty( $error ) ) {
         user_load_variables( $i, 'temp' );
 
         if( boss_must_be_notified( $login, $i ) && ! empty( $tempemail )
-            && $do_send == 'Y' && $send_user_mail && $SEND_EMAIL != 'N' ) {
+            && $do_send == 'Y' && $send_user_mail && $SEND_EMAIL == 'Y' ) {
           // We send to creator if they want it.
           if( $send_own != 'Y' && ( $i == $login ) )
             continue;
@@ -1204,7 +1204,7 @@ if( empty( $error ) ) {
 
         // Send mail notification if enabled.
         // TODO: Move this code into a function...
-        if( $EXTERNAL_NOTIFICATIONS == 'Y' && $SEND_EMAIL != 'N'
+        if( $EXTERNAL_NOTIFICATIONS == 'Y' && $SEND_EMAIL == 'Y'
             && strlen( $ext_emails[$i] ) > 0 ) {
           if( ( ! $newevent && isset( $EXTERNAL_UPDATES )
               && $EXTERNAL_UPDATES == 'Y' ) || $newevent ) {
