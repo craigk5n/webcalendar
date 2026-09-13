@@ -60,11 +60,11 @@ final class WizardConfigSeedingTest extends TestCase
     return $db;
   }
 
-  private function invokePrivate(object $db, string $method)
+  private function invokePrivate(object $db, string $method, array $args = [])
   {
     $m = new ReflectionMethod(WizardDatabase::class, $method);
     $m->setAccessible(true);
-    return $m->invoke($db);
+    return $m->invokeArgs($db, $args);
   }
 
   /**
@@ -173,6 +173,77 @@ final class WizardConfigSeedingTest extends TestCase
     self::assertSame('N', $config['MCP_SERVER_ENABLED'] ?? null,
       'An upgrade must seed settings the old install never had.');
     self::assertArrayHasKey('CSRF_PROTECTION', $config);
+  }
+
+  /**
+   * Regression for the MySQL CI failure on PR #735.
+   *
+   * getExistingConfigSettings() was missing the select_db() call that every
+   * other mysqli query in this class makes, so on MySQL the lookup returned
+   * an empty set, seeding tried to re-insert all ~160 rows, and the
+   * duplicate-key error aborted executeUpgrade() -- taking the whole
+   * install down. Seeding must survive a lookup that comes back blind,
+   * because "the row already exists" is precisely the state it wanted.
+   *
+   * The duplicate error string is taken from the driver rather than
+   * hand-written, so this fails if the pattern stops matching reality.
+   */
+  public function testSeedingToleratesRowsThatAlreadyExist(): void
+  {
+    $sqlite = new SQLite3($this->dbFile);
+    $sqlite->exec('CREATE TABLE webcal_config ( cal_setting VARCHAR(50)
+      NOT NULL, cal_value VARCHAR(100) NULL, PRIMARY KEY ( cal_setting ) )');
+    $sqlite->exec("INSERT INTO webcal_config VALUES ('ALLOW_VIEW_OTHER', 'Y')");
+
+    $db = $this->wizardDatabaseFor($sqlite);
+
+    $duplicate = "INSERT INTO webcal_config (cal_setting, cal_value) "
+      . "VALUES ('ALLOW_VIEW_OTHER', 'Y')";
+    self::assertFalse($this->invokePrivate($db, 'executeCommand', [$duplicate]),
+      'Re-inserting an existing primary key should fail at the driver.');
+
+    self::assertTrue(
+      $this->invokePrivate($db, 'isDuplicateRowError', [(string) $db->getError()]),
+      'The driver said: ' . (string) $db->getError() . ' -- seeding must '
+      . 'recognise that as "row already exists", not abort the upgrade.'
+    );
+  }
+
+  /**
+   * The MySQL and PostgreSQL wordings cannot be produced locally, so pin
+   * them as strings. These are what actually broke CI.
+   *
+   * @dataProvider duplicateRowErrorProvider
+   */
+  public function testDuplicateRowErrorsAreRecognisedPerDriver(string $error): void
+  {
+    $db = $this->wizardDatabaseFor(new SQLite3($this->dbFile));
+    self::assertTrue($this->invokePrivate($db, 'isDuplicateRowError', [$error]));
+  }
+
+  /**
+   * @return array<string,array{0:string}>
+   */
+  public function duplicateRowErrorProvider(): array
+  {
+    return [
+      'MySQL' => ["Duplicate entry 'ALLOW_VIEW_OTHER' for key 'PRIMARY'"],
+      'PostgreSQL' => ['ERROR: duplicate key value violates unique '
+        . 'constraint "webcal_config_pkey"'],
+      'SQLite 3' => ['UNIQUE constraint failed: webcal_config.cal_setting'],
+    ];
+  }
+
+  /**
+   * A real error must still abort, or the tolerance above would swallow
+   * genuine failures.
+   */
+  public function testNonDuplicateErrorsAreStillFatal(): void
+  {
+    $db = $this->wizardDatabaseFor(new SQLite3($this->dbFile));
+    self::assertFalse(
+      $this->invokePrivate($db, 'isDuplicateRowError', ['no such table: webcal_config'])
+    );
   }
 
   /**

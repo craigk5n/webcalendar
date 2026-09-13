@@ -619,7 +619,14 @@ class WizardDatabase
       $sql = "INSERT INTO webcal_config (cal_setting, cal_value) "
         . "VALUES ('$key', '$escapedVal')";
       if (!$this->executeCommand($sql)) {
-        return false;
+        // The row is already there -- it appeared since the lookup ran, or
+        // the lookup could not read the table on this driver. Seeding only
+        // ever means "make sure this row exists", so that is the desired
+        // end state, not a reason to abort the upgrade.
+        if (!$this->isDuplicateRowError((string) $this->error)) {
+          return false;
+        }
+        $this->error = null;
       }
     }
     return true;
@@ -637,11 +644,19 @@ class WizardDatabase
 
     try {
       if ($this->state->dbType === 'mysqli') {
+        // select_db first, exactly as getDbVersionFromConfig() does: the
+        // wizard may have connected without a database selected, and
+        // without this the SELECT fails, every setting looks absent, and
+        // we try to re-insert rows that are already there.
+        if (!@$this->connection->select_db($this->state->dbDatabase)) {
+          return $settings;
+        }
         $result = @$this->connection->query($sql);
         if ($result) {
           while ($row = $result->fetch_row()) {
             $settings[$row[0]] = true;
           }
+          $result->free();
         }
       } elseif ($this->state->dbType === 'postgresql') {
         $result = @pg_query($this->connection, $sql);
@@ -649,6 +664,7 @@ class WizardDatabase
           while ($row = pg_fetch_row($result)) {
             $settings[$row[0]] = true;
           }
+          pg_free_result($result);
         }
       } elseif ($this->state->dbType === 'sqlite3') {
         $result = @$this->connection->query($sql);
@@ -656,6 +672,7 @@ class WizardDatabase
           while ($row = $result->fetchArray(SQLITE3_NUM)) {
             $settings[$row[0]] = true;
           }
+          $result->finalize();
         }
       }
     } catch (Exception $e) {
@@ -663,6 +680,30 @@ class WizardDatabase
     }
 
     return $settings;
+  }
+
+  /**
+   * True when $error is a driver's "this row already exists" complaint.
+   *
+   * Distinct from isIgnorableSchemaError(), which covers duplicate DDL
+   * (columns, indexes). Seeding only ever inserts rows, and a row that is
+   * already present is the state we wanted anyway, so this must not abort
+   * an upgrade the way a real error should.
+   */
+  private function isDuplicateRowError(string $error): bool
+  {
+    $duplicates = [
+      'Duplicate entry',          // MySQL / MariaDB
+      'duplicate key value',      // PostgreSQL
+      'UNIQUE constraint failed', // SQLite 3
+      'is not unique',            // older SQLite
+    ];
+    foreach ($duplicates as $pattern) {
+      if (stripos($error, $pattern) !== false) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private function executeCommand(string $sql): bool
