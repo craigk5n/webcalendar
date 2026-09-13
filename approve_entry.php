@@ -93,7 +93,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   $user_TIMEZONE = get_pref_setting ( $creator, 'TIMEZONE' );
   set_env ( 'TZ', $user_TIMEZONE );
   $user_language = get_pref_setting ( $creator, 'LANGUAGE' );
-  if ( $send_user_mail == 'Y' && strlen ( $tempemail ) && $SEND_EMAIL != 'N' ) {
+  if ( $send_user_mail == 'Y' && strlen ( $tempemail ) && $SEND_EMAIL == 'Y' ) {
     reset_language ( empty ( $user_language ) || ( $user_language == 'none' )
       ? $LANGUAGE : $user_language );
 
