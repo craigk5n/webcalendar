@@ -23,21 +23,6 @@
  */
 require_once 'includes/init.php';
 
-// We need to find where these things are being unset. :-(
-global $ALLOW_VIEW_OTHER;
-
-// This
-$ALLOW_VIEW_OTHER ??= 'Y';
-$ALLOW_VIEW_OTHER = ( ! $ALLOW_VIEW_OTHER || trim ( $ALLOW_VIEW_OTHER ) === 'Y' ? 'Y' : 'N' );
-
-// is shorthand for:
-// $ALLOW_VIEW_OTHER =
-//     ( ! isset ( $ALLOW_VIEW_OTHER ) || null === $ALLOW_VIEW_OTHER
-//   ? 'Y' : $ALLOW_VIEW_OTHER );
-// $ALLOW_VIEW_OTHER =
-//   ( empty ( $ALLOW_VIEW_OTHER ) || trim ( $ALLOW_VIEW_OTHER ) === 'Y' )
-//     ? 'Y' : 'N' );
-
 $allow_view_other = ( $ALLOW_VIEW_OTHER === 'Y' );
 
 if( ! access_is_enabled() ) {
@@ -105,6 +90,12 @@ if (getPostValue('otheruser') != '' && $action == 'save') {
       $i += $i;
     }
 
+    // Cast because getPostValue() returns NULL for a missing field, and both
+    // strlen( null ) and trim( null ) are deprecated in PHP 8.1+. Keep the
+    // strlen() test rather than ?:, which would turn a literal '0' into 'N'.
+    $email  = (string) getPostValue( 'email' );
+    $invite = (string) getPostValue( 'invite' );
+    $time   = (string) getPostValue( 'time' );
 
     if( ! dbi_execute( 'INSERT INTO webcal_access_user ( cal_login,
         cal_other_user, cal_can_view, cal_can_edit, cal_can_approve,
@@ -116,9 +107,9 @@ if (getPostValue('otheruser') != '' && $action == 'save') {
           ( $view_total ?: 0 ),
           ( $edit_total > 0 && $puser != '__public__' ? $edit_total : 0 ),
           ( $approve_total > 0 && $puser != '__public__' ? $approve_total : 0 ),
-          ( trim ( getPostValue ( 'invite' ) ) ?: 'N' ),
-          ( trim ( getPostValue ( 'email' ) ) ?: 'N' ),
-          ( trim ( getPostValue ( 'time' ) ) ?: 'N' )
+          ( strlen( $invite ) ? $invite : 'N' ),
+          ( strlen( $email ) ? $email : 'N' ),
+          ( strlen( $time ) ? $time : 'N' )
         ] ) )
       die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrStr ) );
 
@@ -153,20 +144,21 @@ if( ! empty( $otheruser ) ) {
     $ADMIN_OVERRIDE_UAC = 'N';
     // Now load all the data from webcal_access_user.
     $allPermissions = access_load_user_permissions( false );
+    $op = [];
 
-    // Load default-default values if exist.
-    $op = ( $allPermissions['__default__.__default__'] ?: '' );
+    // Three levels, each overriding the one before it but only when it
+    // actually has a value: the global default, then the wider default, then
+    // the specific pair. empty() rather than ?:, which evaluates its left
+    // operand and so warns on a key that is not there.
+    $levels = ( $is_admin
+      ? ['__default__.__default__', $guser . '.__default__',
+         $guser . '.' . $otheruser]
+      : ['__default__.__default__', '__default__.' . $guser,
+         $otheruser . '.' . $guser] );
 
-    if( $is_admin ) {
-      // Load user-otheruser values if exist.
-      $op = ( $allPermissions[$guser . '.' . $otheruser] ?:
-        // Load user-default values if exist.
-        $allPermissions[$guser . '.__default__'] );
-    } else {
-      // Load otheruser-user values if exist.
-      $op = ( $allPermissions[$otheruser . '.' . $guser] ?:
-        // Load default-user values if exist.
-        $allPermissions['__default__.' . $guser] );
+    foreach( $levels as $level ) {
+      if( ! empty( $allPermissions[$level] ) )
+        $op = $allPermissions[$level];
     }
   }
 }
