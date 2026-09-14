@@ -44,13 +44,16 @@ function save_pref ( $prefs, $src ) {
         $error = db_error ( false, $sql );
         break;
       }
-      if ( strlen ( $value ) > 0 ) {
-        $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( ?, ? )';
+      // Write the row back even when the admin cleared the field. Deleting
+      // without re-inserting left the setting with no row at all, which is
+      // not the same thing as an empty value: every call site then fell back
+      // to its own idea of what an undefined setting meant, and those ideas
+      // disagreed (issue #734). Storing '' records the admin's choice.
+      $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( ?, ? )';
 
-        if ( ! dbi_execute ( $sql, [$setting, $value] ) ) {
-          $error = db_error ( false, $sql );
-          break;
-        }
+      if ( ! dbi_execute ( $sql, [$setting, $value] ) ) {
+        $error = db_error ( false, $sql );
+        break;
       }
     }
   }
