@@ -643,7 +643,7 @@ if ( $is_admin )
   $show_participants = true;
 
 if ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' &&
-( $PUBLIC_ACCESS_OTHERS != 'Y' || $PUBLIC_ACCESS_VIEW_PART == 'N' ) )
+( $PUBLIC_ACCESS_OTHERS != 'Y' || $PUBLIC_ACCESS_VIEW_PART != 'Y' ) )
   $show_participants = false;
 
 if ( $single_user == 'N' && $show_participants ) {

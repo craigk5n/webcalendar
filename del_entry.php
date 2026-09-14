@@ -149,7 +149,7 @@ if ( $id > 0 && empty ( $error ) ) {
         if ( ! $is_nonuser_admin && $partlogin[$i] != $login &&
           get_pref_setting ( $partlogin[$i], 'EMAIL_EVENT_DELETED' ) == 'Y' &&
             boss_must_be_notified ( $login, $partlogin[$i] ) && !
-            empty ( $tempemail ) && $SEND_EMAIL != 'N' ) {
+            empty ( $tempemail ) && $SEND_EMAIL == 'Y' ) {
           reset_language ( empty ( $user_language ) || $user_language == 'none'
             ? $LANGUAGE : $user_language );
           // Use WebCalMailer class.
