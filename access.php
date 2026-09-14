@@ -23,8 +23,7 @@
  */
 require_once 'includes/init.php';
 
-$allow_view_other =
-  ( ! empty( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' );
+$allow_view_other = ( $ALLOW_VIEW_OTHER === 'Y' );
 
 if( ! access_is_enabled() ) {
   echo print_not_auth();
@@ -91,9 +90,12 @@ if (getPostValue('otheruser') != '' && $action == 'save') {
       $i += $i;
     }
 
-    $email  = getPostValue( 'email' );
-    $invite = getPostValue( 'invite' );
-    $time   = getPostValue( 'time' );
+    // Cast because getPostValue() returns NULL for a missing field, and both
+    // strlen( null ) and trim( null ) are deprecated in PHP 8.1+. Keep the
+    // strlen() test rather than ?:, which would turn a literal '0' into 'N'.
+    $email  = (string) getPostValue( 'email' );
+    $invite = (string) getPostValue( 'invite' );
+    $time   = (string) getPostValue( 'time' );
 
     if( ! dbi_execute( 'INSERT INTO webcal_access_user ( cal_login,
         cal_other_user, cal_can_view, cal_can_edit, cal_can_approve,
@@ -102,12 +104,13 @@ if (getPostValue('otheruser') != '' && $action == 'save') {
         [
           $puser,
           $pouser,
-          ( $view_total > 0 ? $view_total : 0 ),
+          ( $view_total ?: 0 ),
           ( $edit_total > 0 && $puser != '__public__' ? $edit_total : 0 ),
           ( $approve_total > 0 && $puser != '__public__' ? $approve_total : 0 ),
           ( strlen( $invite ) ? $invite : 'N' ),
           ( strlen( $email ) ? $email : 'N' ),
-          ( strlen( $time ) ? $time : 'N' )] ) )
+          ( strlen( $time ) ? $time : 'N' )
+        ] ) )
       die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrStr ) );
 
     $saved = true;
@@ -141,27 +144,21 @@ if( ! empty( $otheruser ) ) {
     $ADMIN_OVERRIDE_UAC = 'N';
     // Now load all the data from webcal_access_user.
     $allPermissions = access_load_user_permissions( false );
+    $op = [];
 
-    // Load default-default values if exist.
-    if( ! empty( $allPermissions['__default__.__default__'] ) )
-      $op = $allPermissions['__default__.__default__'];
+    // Three levels, each overriding the one before it but only when it
+    // actually has a value: the global default, then the wider default, then
+    // the specific pair. empty() rather than ?:, which evaluates its left
+    // operand and so warns on a key that is not there.
+    $levels = ( $is_admin
+      ? ['__default__.__default__', $guser . '.__default__',
+         $guser . '.' . $otheruser]
+      : ['__default__.__default__', '__default__.' . $guser,
+         $otheruser . '.' . $guser] );
 
-    if( $is_admin ) {
-      // Load user-default values if exist.
-      if( ! empty( $allPermissions[ $guser . '.__default__' ] ) )
-        $op = $allPermissions[ $guser . '.__default__' ];
-
-      // Load user-otheruser values if exist.
-      if( ! empty( $allPermissions[ $guser . '.' . $otheruser ] ) )
-        $op = $allPermissions[ $guser . '.' . $otheruser ];
-    } else {
-      // Load default-user values if exist.
-      if( ! empty( $allPermissions['__default__.' . $guser] ) )
-        $op = $allPermissions['__default__.' . $guser ];
-
-      // Load otheruser-user values if exist.
-      if( ! empty( $allPermissions[$otheruser . '.' . $guser] ) )
-        $op = $allPermissions[$otheruser . '.' . $guser];
+    foreach( $levels as $level ) {
+      if( ! empty( $allPermissions[$level] ) )
+        $op = $allPermissions[$level];
     }
   }
 }

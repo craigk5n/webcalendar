@@ -507,6 +507,15 @@ class WizardDatabase
       }
     }
 
+    // Seed any setting that still has no row. Fresh installs are already
+    // covered above; this is the step that makes an UPGRADED site end up
+    // with the same config as a fresh one instead of leaving newer settings
+    // undefined (issue #734). Runs after the upgrade SQL so that anything
+    // that SQL deletes is re-seeded, and is a no-op when nothing is missing.
+    if (!$this->loadDefaultConfig()) {
+      return false;
+    }
+
     // After successful upgrade, update version in webcal_config
     if (!$this->updateVersionInDb()) {
       return false;
@@ -587,24 +596,114 @@ class WizardDatabase
   }
 
   /**
-   * Insert default config values for fresh installs.
+   * Insert default config values for any setting that has no row yet.
    * Reads from ../includes/default_config.php (single source of truth).
    * Skips WEBCAL_PROGRAM_VERSION since loadBaseSchema already inserts it.
+   *
+   * Safe to call on an upgrade as well as a fresh install: settings that
+   * already have a row are left alone, so an administrator's choices are
+   * never overwritten. Upgrades used to skip this entirely, which left any
+   * setting added after a site was first installed with no row at all
+   * (issue #734).
    */
   private function loadDefaultConfig(): bool
   {
-    require __DIR__ . '/../includes/default_config.php';
+    require_once __DIR__ . '/../includes/default_config.php';
 
-    foreach ($webcalConfig as $key => $val) {
+    $existing = $this->getExistingConfigSettings();
+
+    foreach (webcal_config_defaults() as $key => $val) {
       if ($key === 'WEBCAL_PROGRAM_VERSION') continue;
+      if (isset($existing[$key])) continue;
       $escapedVal = str_replace("'", "''", $val);
       $sql = "INSERT INTO webcal_config (cal_setting, cal_value) "
         . "VALUES ('$key', '$escapedVal')";
       if (!$this->executeCommand($sql)) {
-        return false;
+        // The row is already there -- it appeared since the lookup ran, or
+        // the lookup could not read the table on this driver. Seeding only
+        // ever means "make sure this row exists", so that is the desired
+        // end state, not a reason to abort the upgrade.
+        if (!$this->isDuplicateRowError((string) $this->error)) {
+          return false;
+        }
+        $this->error = null;
       }
     }
     return true;
+  }
+
+  /**
+   * Returns the cal_setting names already present in webcal_config, as a
+   * set keyed by setting name. Empty if the table does not exist yet, which
+   * is the fresh-install case where every default is missing anyway.
+   */
+  private function getExistingConfigSettings(): array
+  {
+    $settings = [];
+    $sql = 'SELECT cal_setting FROM webcal_config';
+
+    try {
+      if ($this->state->dbType === 'mysqli') {
+        // select_db first, exactly as getDbVersionFromConfig() does: the
+        // wizard may have connected without a database selected, and
+        // without this the SELECT fails, every setting looks absent, and
+        // we try to re-insert rows that are already there.
+        if (!@$this->connection->select_db($this->state->dbDatabase)) {
+          return $settings;
+        }
+        $result = @$this->connection->query($sql);
+        if ($result) {
+          while ($row = $result->fetch_row()) {
+            $settings[$row[0]] = true;
+          }
+          $result->free();
+        }
+      } elseif ($this->state->dbType === 'postgresql') {
+        $result = @pg_query($this->connection, $sql);
+        if ($result) {
+          while ($row = pg_fetch_row($result)) {
+            $settings[$row[0]] = true;
+          }
+          pg_free_result($result);
+        }
+      } elseif ($this->state->dbType === 'sqlite3') {
+        $result = @$this->connection->query($sql);
+        if ($result) {
+          while ($row = $result->fetchArray(SQLITE3_NUM)) {
+            $settings[$row[0]] = true;
+          }
+          $result->finalize();
+        }
+      }
+    } catch (Exception $e) {
+      // Table does not exist yet -- treat every setting as missing.
+    }
+
+    return $settings;
+  }
+
+  /**
+   * True when $error is a driver's "this row already exists" complaint.
+   *
+   * Distinct from isIgnorableSchemaError(), which covers duplicate DDL
+   * (columns, indexes). Seeding only ever inserts rows, and a row that is
+   * already present is the state we wanted anyway, so this must not abort
+   * an upgrade the way a real error should.
+   */
+  private function isDuplicateRowError(string $error): bool
+  {
+    $duplicates = [
+      'Duplicate entry',          // MySQL / MariaDB
+      'duplicate key value',      // PostgreSQL
+      'UNIQUE constraint failed', // SQLite 3
+      'is not unique',            // older SQLite
+    ];
+    foreach ($duplicates as $pattern) {
+      if (stripos($error, $pattern) !== false) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private function executeCommand(string $sql): bool
