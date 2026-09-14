@@ -83,9 +83,20 @@ final class WizardRemovableTest extends TestCase
 
   public function testDefaultConfigDefinesSettingsAndLoader(): void
   {
-    $webcalConfig = null;
-    require self::ROOT . '/includes/default_config.php';
+    // require_once, not require: the file declares functions, so re-running
+    // it in a process that already loaded it is a redeclare fatal. Read the
+    // defaults through the accessor rather than the $webcalConfig variable,
+    // which only exists in the scope the file was first required from.
+    require_once self::ROOT . '/includes/default_config.php';
 
+    self::assertTrue(
+      function_exists('webcal_config_defaults'),
+      'includes/default_config.php must expose webcal_config_defaults(); '
+      . 'load_global_settings() reads the defaults through it because it '
+      . 'cannot rely on the scope the file was required from.'
+    );
+
+    $webcalConfig = webcal_config_defaults();
     self::assertIsArray($webcalConfig);
     self::assertNotEmpty($webcalConfig);
     self::assertArrayHasKey('WEBCAL_PROGRAM_VERSION', $webcalConfig);
