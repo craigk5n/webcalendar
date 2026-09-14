@@ -4146,6 +4146,12 @@ function load_global_settings() {
         ? ':' . $SERVER_PORT : '' )
        . substr ( $REQUEST_URI, 0, $ptr + 1 );
 
+      // Clear any existing row first. cal_setting is the primary key, so a
+      // bare INSERT silently fails when the row is present but empty, which
+      // is reachable now that admin.php stores a cleared field as '' rather
+      // than deleting the row (#734).
+      dbi_execute ( 'DELETE FROM webcal_config WHERE cal_setting = ?',
+        ['SERVER_URL'] );
       dbi_execute ( 'INSERT INTO webcal_config ( cal_setting, cal_value )
         VALUES ( ?, ? )', ['SERVER_URL', $SERVER_URL] );
     }
@@ -4155,6 +4161,24 @@ function load_global_settings() {
   if ( empty ( $FONTS ) )
     $FONTS = ( $LANGUAGE == 'Japanese' ? 'Osaka, ' : '' )
      . 'Arial, Helvetica, sans-serif';
+
+  // Any setting with no row in webcal_config is still undefined here. That
+  // used to leave every call site to decide for itself what an undefined
+  // global meant, and they disagreed -- some denied, some allowed (#734).
+  // Fall back to the documented default so a site missing a row behaves the
+  // same as a fresh install, which is what the admin UI already reports.
+  //
+  // Deliberately last: the blocks above derive TIMEZONE, APPLICATION_NAME
+  // and FONTS from the request and the language, and those derived values
+  // have to win over the static defaults. isset() rather than empty() so an
+  // admin's deliberately blank value is not overwritten.
+  if ( ! function_exists ( 'webcal_config_defaults' ) )
+    require_once __DIR__ . '/default_config.php';
+
+  foreach ( webcal_config_defaults() as $setting => $default ) {
+    if ( ! isset ( $GLOBALS[$setting] ) )
+      $GLOBALS[$setting] = $default;
+  }
 }
 
 /**
@@ -6293,7 +6317,7 @@ function build_entry_popup ( $popupid, $user, $description, $time,
   $partList = [];
   if ( $details && $id != '' && !
     empty ( $PARTICIPANTS_IN_POPUP ) && $PARTICIPANTS_IN_POPUP == 'Y' && !
-      ( $PUBLIC_ACCESS_VIEW_PART == 'N' && $login == '__public__' ) ) {
+      ( $PUBLIC_ACCESS_VIEW_PART != 'Y' && $login == '__public__' ) ) {
     $rows = dbi_get_cached_rows ( 'SELECT cal_login, cal_status
   FROM webcal_entry_user
   WHERE cal_id = ?
