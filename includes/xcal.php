@@ -2387,6 +2387,11 @@ function parse_ical ( $cal_file, $source = 'file' ) {
         $state = 'NONE';
       } else if ( preg_match ( "/^BEGIN:VTIMEZONE/i", $buff ) ) {
         $state = 'VTIMEZONE';
+        // Start each VTIMEZONE clean. These keys are shared with the
+        // VEVENT parser, so leftovers from a previous block would be
+        // saved against the wrong timezone.
+        unset ( $event['tzid'], $event['tzlocation'], $event['dtstart'],
+          $event['dtend'] );
         $event['VTIMEZONE'] = $buff;
       } else if ( preg_match ( "/^BEGIN:VTODO/i", $buff ) ) {
         $state = 'VTODO';
@@ -3324,17 +3329,25 @@ function generate_export_select ( $jsaction = '', $name = 'exformat' ) {
  */
 function save_vtimezone ( $event ) {
   //do_debug( print_r( $event, true ) );
-  $tzidLong = parse_tzid ( $event['tzid'] );
+  $tzidLong = parse_tzid ( ! empty ( $event['tzid'] ) ? $event['tzid'] : '' );
   $tzid = ( ! empty ( $event['tzlocation'] ) ? $event['tzlocation'] :
     ( ! empty ( $tzidLong ) ? $tzidLong : '' ) );
+  // Without a TZID there is nothing to key the row on. Storing a blank
+  // tzid just collides with the next nameless VTIMEZONE.
+  if ( $tzid == '' ) return;
   $dtstart = ( ! empty ( $event['dtstart'] ) ? $event['dtstart'] : '' );
   $dtend = ( ! empty ( $event['dtend'] ) ? $event['dtend'] : '' );
-  //delete any record already found for this tzid
-  dbi_execute ( 'DELETE FROM webcal_timezones WHERE tzid = ? AND dtstart = ?',
-    [$tzid, $dtstart] );
+  // Delete any record already found for this tzid. tzid alone is the
+  // PRIMARY KEY, so the delete must not be narrowed by dtstart: a stored
+  // row carrying a different dtstart would survive and the INSERT below
+  // would fail with a duplicate key error.
+  dbi_execute ( 'DELETE FROM webcal_timezones WHERE tzid = ?', [$tzid],
+    false, false );
   $sql = 'INSERT INTO webcal_timezones ( tzid, dtstart, dtend, vtimezone )
     VALUES ( ?, ?, ?, ?)';
-  if ( ! dbi_execute ( $sql, [$tzid, $dtstart, $dtend, $event['VTIMEZONE']] ) ) {
+  // Non-fatal: a timezone we cannot cache must not abort the whole import.
+  if ( ! dbi_execute ( $sql,
+      [$tzid, $dtstart, $dtend, $event['VTIMEZONE']], false, false ) ) {
     $error = db_error();
     // do_debug ( $error );
   }
