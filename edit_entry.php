@@ -1266,9 +1266,7 @@ $tabI = 0;
           echo '
                 <td><label><input type="checkbox" name="bymonth[]" value="'
             . $rpt_month . '"' . (in_array($rpt_month, $bymonth) ? $checked : '')
-            . '>&nbsp;' . translate(
-              date('M', mktime(0, 0, 0, $rpt_month, 1))
-            )
+            . '>&nbsp;' . month_name ( $rpt_month - 1, 'M' )
             . '</label></td>' . ($rpt_month == 6 ? '
               </tr>
               <tr>' : '');
