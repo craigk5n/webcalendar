@@ -47,27 +47,51 @@ def wait_for_text(driver, selector, text, timeout=45):
         time.sleep(0.5)
     raise TimeoutException(f"Timed out waiting for text '{text}' in element '{selector}'")
 
-def type_value(driver, element_id, value, attempts=3):
-    """Type into a field and confirm the value actually landed (#728).
+def set_value(driver, element_id, value):
+    """Set a field and fire exactly one input event (#728).
 
-    send_keys can drop characters while the page is still settling. When that
-    happened to the two password fields they ended up holding different text,
-    the wizard refused to leave the Admin User step with "Passwords do not
-    match", and the run then died in the unrelated wait for the Finish step.
-    Verifying here fails fast with a useful message instead.
+    wizard.js revalidates on every input event with an async fetch, so
+    send_keys asked the server once per character. Replies are not
+    guaranteed to come back in order, and a password with minlength=8 is
+    invalid for its first seven characters, so a late reply for an early
+    keystroke could overwrite the good result for the complete value.
+    Setting the value and dispatching one event asks the question once.
     """
-    for _ in range(attempts):
-        field = driver.find_element(By.ID, element_id)
-        field.clear()
-        field.send_keys(value)
-        actual = field.get_attribute("value")
-        if actual == value:
+    field = driver.find_element(By.ID, element_id)
+    driver.execute_script(
+        "arguments[0].value = arguments[1];"
+        "arguments[0].dispatchEvent(new Event('input', {bubbles: true}));",
+        field, value)
+    actual = field.get_attribute("value")
+    assert actual == value, f"{element_id} holds {actual!r}, wanted {value!r}"
+
+
+def wait_for_validated(driver, element_ids, timeout=30):
+    """Wait for wizard.js to mark every field valid (#728).
+
+    The submit button starts out enabled, because it is disabled only once
+    a validation reply comes back bad -- so "the button is enabled" does
+    not on its own mean the form is ready. wizard.js adds is-valid to a
+    field when its reply comes back good, so wait for that on every field.
+    Clicking early is silently dropped by the browser and the run then died
+    in the unrelated wait for the Finish step.
+    """
+    end_time = time.time() + timeout
+    pending = list(element_ids)
+    while time.time() < end_time:
+        pending = []
+        for element_id in element_ids:
+            try:
+                classes = driver.find_element(By.ID, element_id).get_attribute("class") or ""
+            except Exception:
+                classes = ""
+            if "is-valid" not in classes.split():
+                pending.append(element_id)
+        if not pending:
             return
-        print(f"  retyping {element_id}: got {actual!r}, wanted {value!r}")
-    raise AssertionError(
-        f"{element_id} would not accept {value!r} after {attempts} attempts")
-
-
+        time.sleep(0.5)
+    raise TimeoutException(
+        "Timed out waiting for fields to validate: " + ", ".join(pending))
 def dump_failure_context(driver):
     """Print enough to diagnose a CI-only failure without a local repro (#728).
 
@@ -307,13 +331,18 @@ def test_new_installation(driver):
         # wizard no longer auto-skips the Admin User step.
         try:
             wait_for_text(driver, "stepTitle", "Admin", timeout=45)
-            type_value(driver, "admin_login", "admin")
-            type_value(driver, "admin_password", "admin123")
-            type_value(driver, "admin_password2", "admin123")
+            on_admin_step = True
+        except TimeoutException:
+            # No Admin User step (e.g. admins already exist).
+            on_admin_step = False
+
+        if on_admin_step:
+            set_value(driver, "admin_login", "admin")
+            set_value(driver, "admin_password", "admin123")
+            set_value(driver, "admin_password2", "admin123")
+            wait_for_validated(driver, ["admin_login", "admin_password", "admin_password2"])
             click_button(driver, "form[data-action='create-admin-user'] button[type='submit']")
             time.sleep(2)
-        except TimeoutException:
-            pass  # No Admin User step (e.g. admins already exist)
 
         # Click through Summary if needed
         #
