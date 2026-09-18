@@ -501,37 +501,16 @@ class WebCalendar {
 
     // Catch-all for getting the username when using HTTP-authentication.
     if ( $use_http_auth ) {
-      if ( empty ( $PHP_AUTH_USER ) ) {
-        if ( ! empty ( $_SERVER ) && isset ( $_SERVER['PHP_AUTH_USER'] ) )
-          $PHP_AUTH_USER = $_SERVER['PHP_AUTH_USER'];
-        else
-        if ( ! empty ( $HTTP_SERVER_VARS ) &&
-            isset ( $HTTP_SERVER_VARS['PHP_AUTH_USER'] ) )
-          $PHP_AUTH_USER = $HTTP_SERVER_VARS['PHP_AUTH_USER'];
-        else
-        if ( isset ( $REMOTE_USER ) )
-          $PHP_AUTH_USER = $REMOTE_USER;
-        else
-        if ( ! empty ( $_ENV ) && isset ( $_ENV['REMOTE_USER'] ) )
-          $PHP_AUTH_USER = $_ENV['REMOTE_USER'];
-        else
-        if ( ! empty ( $HTTP_ENV_VARS ) && isset ( $HTTP_ENV_VARS['REMOTE_USER'] ) )
-          $PHP_AUTH_USER = $HTTP_ENV_VARS['REMOTE_USER'];
-        else
-        if ( @getenv ( 'REMOTE_USER' ) )
-          $PHP_AUTH_USER = getenv ( 'REMOTE_USER' );
-        else
-        if ( isset ( $AUTH_USER ) )
-          $PHP_AUTH_USER = $AUTH_USER;
-        else
-        if ( ! empty ( $_ENV ) && isset ( $_ENV['AUTH_USER'] ) )
-          $PHP_AUTH_USER = $_ENV['AUTH_USER'];
-        else
-        if ( ! empty ( $HTTP_ENV_VARS ) && isset ( $HTTP_ENV_VARS['AUTH_USER'] ) )
-          $PHP_AUTH_USER = $HTTP_ENV_VARS['AUTH_USER'];
-        else
-        if ( @getenv ( 'AUTH_USER' ) )
-          $PHP_AUTH_USER = getenv ( 'AUTH_USER' );
+      $PHP_AUTH_USER = $_SERVER['PHP_AUTH_USER']
+        ?: $HTTP_SERVER_VARS['PHP_AUTH_USER']
+        ?: $REMOTE_USER
+        ?: $_ENV['REMOTE_USER']
+        ?: $HTTP_ENV_VARS['REMOTE_USER']
+        ?: getenv ( 'REMOTE_USER' )
+        ?: $AUTH_USER
+        ?: $_ENV['AUTH_USER']
+        ?: $HTTP_ENV_VARS['AUTH_USER']
+        ?: getenv ( 'AUTH_USER' );
       }
     }
 
