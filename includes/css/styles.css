@@ -39,6 +39,35 @@ del {
   text-decoration: line-through 2px var(--textcolor);
 }
 
+/**
+ * Animate details / summary
+ *
+ * @see https://www.youtube.com/watch?v=Vzj3jSUbMtI&list=WL&index=48
+ */
+details {
+  background: hsl(0 0% 5%);
+  border: 1px solid hsl(0 0% 12%);
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  overflow: hidden;
+}
+
+/* Don't add margin/padding to this,
+   add it to the actual stuff inside the details content */
+details::details-content {
+  block-size: 0;
+  color: hsl(0 0% 78%);
+  font-size: 1rem;
+  transition:
+    block-size 1s,
+    content-visibility 1s;
+  transition-behavior: allow-discrete;
+}
+
+details:open::details-content {
+  block-size: auto;
+}
+
 div.container-fluid, div.container, nav.navbar,
   div.dropdown-menu, ul.dropdown-menu, .list-group, .list-group-item,
   .sectioncontent {
@@ -192,16 +221,17 @@ ul a {
   color: #000;
   margin: 20px;
 }
-#cat, #day dl.desc {
+#cat,
+#day dl.desc {
   display:none;
 }
 
 td.weekcell {
+  width: 1%;
   background-color: var(--weeknumber);
   font-size:.625rem;
-  text-decoration:none;
-  width: 1%;
   text-align: center;
+  text-decoration:none;
   vertical-align: middle;
 }
 
