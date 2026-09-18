@@ -28,10 +28,10 @@ while( $fileName = readdir( $myDirectory ) ) {
 closedir( $myDirectory );
 
 require_once 'includes/translate.php';
+require_once 'includes/functions.php';
 require_once 'includes/config.php';
 require_once 'includes/dbi4php.php';
 require_once 'includes/formvars.php';
-require_once 'includes/functions.php';
 
 do_config();
 
