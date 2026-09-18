@@ -53,5 +53,11 @@ services:
       - WEBCALENDAR_DB_DATABASE=webcalendar_test
     depends_on:
       - chrome
+    # pymysql is pinned: 1.2.1/1.2.2/1.2.3 all shipped on 2026-09-17 and the
+    # rewritten auth state machine dereferences a None auth_packet against
+    # mysql:8.0, failing every connection with
+    # "AttributeError: 'NoneType' object has no attribute
+    # 'is_auth_switch_request'" (connections.py:1031). 1.2.0 is the last
+    # release this suite passed on. Unpin once that is fixed upstream.
     command: >
-      bash -c "apt-get update && apt-get install -y default-mysql-client && pip install pytest selenium pymysql cryptography && pytest -s tests/web-install-mysql.py"
+      bash -c "apt-get update && apt-get install -y default-mysql-client && pip install pytest selenium 'pymysql==1.2.0' cryptography && pytest -s tests/web-install-mysql.py"
