@@ -13,6 +13,8 @@ class WebCalendarWizard {
     
     this.state = {};
     this.fieldValidation = {};
+    // Per-field counter used to discard out-of-order validation replies (#728).
+    this.validationSeq = {};
     
     this.init();
   }
@@ -270,6 +272,15 @@ class WebCalendarWizard {
     const fieldName = field.name;
     const value = field.value;
     const context = {};
+    // Every keystroke fires one of these, and the replies are not guaranteed
+    // to arrive in the order they were sent. A password with minlength=8 is
+    // invalid for its first seven characters, so a late reply for an early
+    // keystroke used to overwrite the valid result for the complete value,
+    // leaving the submit button disabled on a form that reads correctly
+    // (#728). Stamp each request and ignore any reply that is no longer the
+    // newest for its field.
+    const seq = (this.validationSeq[fieldName] || 0) + 1;
+    this.validationSeq[fieldName] = seq;
     
     // Gather context for validation
     const form = field.closest('form');
@@ -295,6 +306,9 @@ class WebCalendarWizard {
       });
       
       const data = await response.json();
+      
+      // A newer keystroke has already been sent; this reply is stale.
+      if (this.validationSeq[fieldName] !== seq) return;
       
       // Update field validation state
       this.fieldValidation[fieldName] = data.valid;
