@@ -30,3 +30,6 @@ jobs:
         run: composer install
       - name: PHPUnit Tests
         run: vendor/bin/phpunit -c tests/phpunit.xml
+      - name: Wizard validation race guard (#728)
+        if: matrix.php-version == '8.4'
+        run: node tests/wizard-validation-race.js
