@@ -82,17 +82,14 @@ View this entry: View this entry
 am: am
 pm: pm
 days: days
+hour: hour
 hours: hours
 minutes: minutes
 Save: Save
 You are not authorized to edit this task.: You are not authorized to edit this task.
-is in a different timezone than you are. Currently: is in a different timezone than you are. Currently
-hour ahead of you: hour ahead of you
-hour behind you: hour behind you
-hours ahead of you: hours ahead of you
-hours behind you: hours behind you
-XXX is in a different timezone (ahead): (XXX is in a different timezone; YYY ahead of you.<br>&nbsp;ZZZ)
-XXX is in a different timezone (behind): (XXX is in a different timezone; YYY behind you.<br>&nbsp;ZZZ)
+(XXX is in a different timezone than you are.: (XXX is in a different timezone than you are.
+Currently YYY ahead of you.): Currently YYY ahead of you.)
+Currently YYY behind you.): Currently YYY behind you.)
 Time entered here is based on your Timezone.: Time entered here is based on <b>your</b> Timezone.
 Edit Entry: Edit Entry
 Add Entry: Add Entry
@@ -1579,7 +1576,7 @@ on: on
 All Attendees: All Attendees
 Busy: Busy
 Tentative: Tentative
-Schedule an appointment for XXX.: Schedule an appointment for XXX.
+Schedule an appointment for XXX.: Schedule an appointment for XXX:YYY.
 Event approved: Event approved
 Journal approved: Journal approved
 Task approved: Task approved
