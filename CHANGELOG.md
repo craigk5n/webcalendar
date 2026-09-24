@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- **`tools/check-ai-signals.php`**, which flags comments that read as machine-written using the mechanical subset of `webcalendar-core`'s `AI-SIGNALS.md`: second-person address, instructional phrasing, the buzzword list and bookend section markers. A pull request job checks only the lines it adds. Run over the whole tree it reports around sixty findings, and nearly all are legitimate — WebCalendar has twenty-five years of comments that speak to an administrator directly, which is good writing for its audience rather than a machine tell — so existing prose is left alone
+
 - **The test suite refuses to run concurrently with itself.** `McpIntegrationTest` installs into a fixed SQLite file in the temp directory and serves it on `localhost:8099`, and the other MCP tests use 8100-8104, so two runs on one machine delete each other's database and fight over the ports, producing a scatter of errors that point nowhere near the cause. `tests/bootstrap.php` now takes an exclusive lock for the run and fails fast with an explanation; `WEBCAL_TEST_ALLOW_PARALLEL=1` overrides it. The lock is global rather than per-checkout because the resources it protects are
 
 - **`bin/webcal.php seed` and `reset`** load named development scenarios into a SQLite calendar: a populated month, overlapping events for conflict work, a repeating series with exception dates, and a group of users with layers. `reset` empties the calendar without uninstalling. Both refuse unless the database is SQLite **and** `--force` or `WEBCAL_ALLOW_SEED=1` is given; `mode: dev` is deliberately not accepted as consent, because live installations set it
