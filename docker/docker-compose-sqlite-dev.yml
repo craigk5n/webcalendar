@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   webcalendar-sqlite:
-    image: php:8.1-apache
+    image: php:8.4-apache
     container_name: webcalendar-php
     volumes:
       - .:/var/www/html/
@@ -28,7 +28,7 @@ services:
       - db_initializer
 
   db_initializer:
-    image: alpine:latest
+    image: alpine:3.20
     container_name: sqlite3-initializer
     command: >
       sh -c "

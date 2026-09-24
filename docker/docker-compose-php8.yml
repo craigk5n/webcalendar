@@ -8,7 +8,7 @@ version: '3.1'
 services:
 
   db:
-    image: mariadb
+    image: mariadb:11.4
     container_name: webcalendar-db
     volumes:
       - mysql-data:/var/lib/mysql

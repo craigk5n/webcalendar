@@ -8,7 +8,7 @@ version: '3.1'
 services:
 
   db-mariadb:
-    image: mariadb
+    image: mariadb:11.4
     container_name: webcalendar-maria-db
     volumes:
       - mysql-data:/var/lib/mysql
@@ -85,7 +85,7 @@ services:
   # Before the webcalendar db is created:
   #   psql -h localhost -p 5432 -U webcalendar -W -d postgres
   db-pgsql:
-    image: postgres
+    image: postgres:16
     container_name: webcalendar-db-pgsql
     volumes:
       - pgsql-data:/var/lib/postgresql/data

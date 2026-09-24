@@ -1,5 +1,5 @@
 # Docker container for WebCalendar with Sqlite
-FROM php:8.1-apache
+FROM php:8.4-apache
 
 # Install SQLite3 PHP extension
 RUN docker-php-ext-install pdo pdo_sqlite

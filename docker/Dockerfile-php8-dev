@@ -1,5 +1,5 @@
 # Use the official PHP image with Apache
-FROM php:8-apache
+FROM php:8.4-apache
 LABEL maintainer="craig@k5n.us"
 LABEL vendor="k5n.us"
 
