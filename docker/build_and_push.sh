@@ -46,8 +46,8 @@ if [ "$doTagBranch" == "1" ]; then
   tagBranchParam="k5nus/webcalendar:$tagBranch"
   echo "Tagging and pushing '$tagBranch' tag"
 fi
-echo docker build $tagBranchParam -t k5nus/webcalendar:$version -f docker/Dockerfile-php8 .
-docker build $tagBranchParam -t k5nus/webcalendar:$version -f docker/Dockerfile-php8 .
+echo docker build $tagBranchParam -t k5nus/webcalendar:$version -f docker/Dockerfile-prod .
+docker build $tagBranchParam -t k5nus/webcalendar:$version -f docker/Dockerfile-prod .
 if [ "$doTagBranch" == "1" ]; then
   echo "Pushing $tagBranch"
   docker push k5nus/webcalendar:$tagBranch
