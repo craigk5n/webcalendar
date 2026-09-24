@@ -23,7 +23,7 @@ services:
       - WEBCALENDAR_MODE=dev
     build:
       context: ..
-      dockerfile: docker/Dockerfile-php8.1-dev
+      dockerfile: docker/Dockerfile-dev
     depends_on:
       - db_initializer
 

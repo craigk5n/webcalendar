@@ -176,7 +176,7 @@ WHERE cal_login = 'admin';
 Check container logs:
 
 ```bash
-docker-compose -f docker/docker-compose-php8.yml logs
+docker-compose -f docker/docker-compose-prod.yml logs
 ```
 
 Common causes:

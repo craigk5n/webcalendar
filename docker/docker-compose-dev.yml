@@ -5,7 +5,7 @@
 #
 #   If you need shell access on the webserver container running WebCalendar, you can use
 #   the following command:
-#     docker-compose -f docker/docker-compose-php8.1-dev.yml exec webcalendar /bin/sh
+#     docker compose -f docker/docker-compose-dev.yml exec webcalendar /bin/sh
 
 version: '3.1'
 
@@ -28,7 +28,7 @@ services:
   webcalendar:
     build:
       context: ..
-      dockerfile: docker/Dockerfile-php8.1-dev
+      dockerfile: docker/Dockerfile-dev
     depends_on:
       - db
     ports:

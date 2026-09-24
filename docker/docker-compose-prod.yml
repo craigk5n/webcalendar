@@ -3,7 +3,7 @@
 # docker-compose up).  You only need to do this once.
 #
 #   Start a shell on the mariadb container:
-#     docker-compose -f docker-compose-php8.1.yml exec db /bin/sh
+#     docker compose -f docker/docker-compose-prod.yml exec db /bin/sh
 #   Start the mariadb client:
 #     /bin/mariadb -p
 #     (enter the MYSQL_ROOT_PASSWORD below)
@@ -14,7 +14,7 @@
 #
 #   If you need shell access on the webserver container running WebCalendar, you can use
 #   the following command:
-#     docker-compose -f docker-compose-php8.1.yml exec webcalendar-php8.1 /bin/sh
+#     docker compose -f docker/docker-compose-prod.yml exec webcalendar /bin/sh
 
 version: '3.1'
 
@@ -33,8 +33,8 @@ services:
       - MYSQL_USER=webcalendar
     restart: unless-stopped
 
-  webcalendar-php8.1:
-    image: webcalendar-php8.1
+  webcalendar:
+    image: webcalendar
     depends_on:
       - db
     ports:
