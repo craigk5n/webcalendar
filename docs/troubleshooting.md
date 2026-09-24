@@ -198,6 +198,34 @@ configurations should mount the local directory into the container.
 
 ## Diagnostic Steps
 
+### Collect everything at once
+
+```bash
+php bin/webcal.php diagnose           # human readable
+php bin/webcal.php diagnose --json    # machine readable
+```
+
+This reports the WebCalendar and PHP versions, the extensions WebCalendar
+uses, the database type and server version, directory writability, and the
+configuration settings that usually matter, in one block you can paste into a
+bug report.
+
+It works when the calendar does not. A missing or broken `includes/settings.php`
+produces a report rather than a redirect to the installation wizard, which is
+the situation you most need it in.
+
+**It is safe to post publicly.** Passwords, API tokens, host names and email
+addresses are reported only as `(set)` or `(not set)`, and any setting that has
+not been explicitly classified is left out and counted rather than printed. If
+you would rather check first, read it before pasting — that is the point of the
+human-readable form.
+
+Administrators who can still log in can get the same report with a copy button
+under **Admin > Security Audit > Diagnostic report**.
+
+The individual checks below are still useful when you want to look at one thing
+in isolation, or when you cannot run the command at all.
+
 ### Check PHP configuration
 
 ```bash
