@@ -25,6 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- `.github/PULL_REQUEST_TEMPLATE.md` asks for `make check` in place of the separate PHPUnit and compile boxes it subsumed, and adds a `CHANGELOG.md` item
+- `docs/troubleshooting.md` leads its Diagnostic Steps section with `php bin/webcal.php diagnose`, which collects in one command what the individual checks below it gather by hand
+
 - `.github/ISSUE_TEMPLATE/bug_report.md` asks for the output of `php bin/webcal.php diagnose` instead of six hand-typed environment fields, with the admin page and the manual fields as fallbacks
 
 - **PHP 8.2 is now the minimum, and PHP 8.1 is no longer supported.** 8.1 reached end of life on 31 December 2025. The repository had stated four different floors: `composer.json` required `^8.2`, `README.md` said 8.2+, `CONTRIBUTING.md` said 8.0+, `docs/installation.md` said "8.0 minimum", and the signed-manifest decisions log recorded 8.1 with 8.2+ language features deliberately avoided — while `php-syntax-check.yml` and `test-install.yml` still tested 8.1 and the installation wizard admitted anything from 8.0 up. The wizard now reports PHP below 8.2 as an error, both workflows drop 8.1, and the docs agree. New code may use `readonly class`, typed class constants and `#[\Override]`. PHP 8.2 itself loses security support on 31 December 2026
