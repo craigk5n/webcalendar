@@ -225,7 +225,7 @@ listed would have caught it.
 
 Only where it serves support or maintenance.
 
-### D1. Event write path
+### D1. Event write path — LANDED 2026-09-24
 
 `mcp.php` forked event-creation logic from `edit_entry_handler.php`. Two copies
 exist and have already drifted; `tests/McpAddEventRaceConditionTest.php` and
@@ -260,7 +260,7 @@ tests before the refactor, not after.
 | 5 | ~~B2 seed/reset~~ | **Done 2026-09-24.** Gated on SQLite + explicit opt-in, not on `mode` |
 | 6 | C3 manifest completeness | Cheap, prevents a repeat of #667 |
 | 7 | ~~B4 codemap~~ | **Done 2026-09-24.** |
-| 8 | D1 event write path | Last; needs tests and the most care |
+| 8 | ~~D1 event write path~~ | **Done 2026-09-24.** Refactored against the existing MCP end-to-end tests |
 | 9 | C2 AI-signal lint | Needs a cleanup pass to be enforceable |
 
 Items 1–4 are worth doing regardless of what happens with WCTNG. Items 8–9 are
