@@ -56,6 +56,7 @@ CHANGELOG.md
 CONTRIBUTING.md
 TODO
 SECURITY_AUDIT_STATUS.md
+AGENT_ROADMAP.md
 
 # --- Developer utilities not part of the shipped app ---
 tools/complete-translation.py

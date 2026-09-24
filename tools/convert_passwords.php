@@ -1,5 +1,12 @@
-#!/usr/local/bin/php -q
 <?php
+
+// Command-line only. Served over HTTP this hands execution to anyone who can
+// reach the URL, and .htaccess cannot be relied on: the Debian and Ubuntu
+// default of AllowOverride None makes it a no-op.
+if ( PHP_SAPI !== 'cli' ) {
+  http_response_code ( 403 );
+  exit ( basename ( __FILE__ ) . " must be run from the command line.\n" );
+}
 /**
  * This script will alter the webcal_user table to allow 32 character passwords
  * and convert user passwords to PHP md5 passwords.
