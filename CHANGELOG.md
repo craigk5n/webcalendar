@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **`bin/webcal.php`**, a command-line entry point. Refuses to run under any SAPI but CLI
 
 - The PHP 8.1 and SQLite Docker dev environments are now tracked: `docker/Dockerfile-dev`, `docker/docker-compose-dev.yml`, `docker/docker-compose-prod.yml`, `docker/docker-compose-sqlite-dev.yml`, `docker/mysql-init.sql` and the selenium login tests under `docker/tests/`. `CLAUDE.md` and the developer docs referenced these but they had never been committed
+- `tests/DestructiveTestGuardTest.php` keeps that refusal in place: the guard must exist in each runner, must come before any docker command, and the workflow must keep supplying the override
 - `tests/PhpFloorConsistencyTest.php` locks the supported PHP version together across `composer.json`, `WizardValidator`, the CI matrices and the docs. They had drifted into four different answers
 - `tests/DockerReferencesTest.php` fails the build when a compose file, workflow or shell script names a Dockerfile or compose file that does not exist. The three Selenium wizard jobs reach `docker/Dockerfile-php8-dev` three hops down — workflow, to `tests/run-*-install-tests.sh`, to a `docker-compose-test-*.yml` `dockerfile:` key — so renaming it broke CI with nothing failing locally
 - `tests/CliOnlyGuardTest.php` fails the build when a script under `tools/` or `bin/` is added without a command-line guard, or when an existing guard is moved below code that would already have run
@@ -33,6 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Config defaults and `db_load_config()` moved from `wizard/shared/default_config.php` to `includes/default_config.php`. The wizard still reads it as the single source of truth, but it is no longer inside a directory administrators are told to delete (#707)
 
 ### Fixed
+
+- **`tests/run-{mysql,postgresql,sqlite}-install-tests.sh` no longer destroy a live installation.** Each drives the web installation wizard against a container that bind mounts the working copy, and `tests/web-install-*.py` deletes `includes/settings.php` as part of its setup. On a CI checkout that costs nothing; on a working copy that is also a live install it removes the configuration and takes the calendar down. All three now refuse to start when `includes/settings.php` is present, unless `WEBCAL_TEST_ALLOW_DESTRUCTIVE=1` is set, which the wizard CI jobs supply
 
 - `docker/build_and_push.sh` pushes to `craigk5n/webcalendar`, the repository the release workflows actually publish to. It was hardcoded to `k5nus/webcalendar`, untouched since April 2022. The branch tag also lost its `-t`, so `$tagBranchParam` expanded to a second positional argument and the build died with `"docker buildx build" requires exactly 1 argument` before pushing anything
 - `docker.yml` and `docker-dev.yml` set step outputs through `$GITHUB_OUTPUT` instead of the `::set-output` workflow command, which GitHub deprecated in October 2022 and has said it will disable
