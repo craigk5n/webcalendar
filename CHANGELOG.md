@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- **Diagnostic report for bug reports.** `php bin/webcal.php diagnose` prints the WebCalendar and PHP versions, loaded extensions, database type and server version, directory writability and the relevant configuration, so a report carries its environment instead of the reporter hand-typing it. Admins who can still log in get the same report with a copy button under **Admin > Security Audit**. It runs on a broken install: a missing `settings.php` produces a report rather than a redirect to the wizard
+- **`bin/webcal.php`**, a command-line entry point. Refuses to run under any SAPI but CLI
+
 - The PHP 8.1 and SQLite Docker dev environments are now tracked: `docker/Dockerfile-dev`, `docker/docker-compose-dev.yml`, `docker/docker-compose-prod.yml`, `docker/docker-compose-sqlite-dev.yml`, `docker/mysql-init.sql` and the selenium login tests under `docker/tests/`. `CLAUDE.md` and the developer docs referenced these but they had never been committed
 - `tests/PhpFloorConsistencyTest.php` locks the supported PHP version together across `composer.json`, `WizardValidator`, the CI matrices and the docs. They had drifted into four different answers
 - `tests/DockerReferencesTest.php` fails the build when a compose file, workflow or shell script names a Dockerfile or compose file that does not exist. The three Selenium wizard jobs reach `docker/Dockerfile-php8-dev` three hops down — workflow, to `tests/run-*-install-tests.sh`, to a `docker-compose-test-*.yml` `dockerfile:` key — so renaming it broke CI with nothing failing locally
@@ -16,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **Reminder web trigger.** Admin > Settings > Email can generate a token that lets `tools/send_reminders.php` be run by fetching its URL, for hosts that offer no way to run a command. Off until a token is generated. The token is generated server-side, shown once, and stored only as a SHA-256 hash, so a database read or backup does not yield a working credential. It may be passed as `?token=` or as an `X-Reminder-Token` header, and every run triggered this way is written to the activity log with the requesting IP
 
 ### Changed
+
+- `.github/ISSUE_TEMPLATE/bug_report.md` asks for the output of `php bin/webcal.php diagnose` instead of six hand-typed environment fields, with the admin page and the manual fields as fallbacks
 
 - **PHP 8.2 is now the minimum, and PHP 8.1 is no longer supported.** 8.1 reached end of life on 31 December 2025. The repository had stated four different floors: `composer.json` required `^8.2`, `README.md` said 8.2+, `CONTRIBUTING.md` said 8.0+, `docs/installation.md` said "8.0 minimum", and the signed-manifest decisions log recorded 8.1 with 8.2+ language features deliberately avoided — while `php-syntax-check.yml` and `test-install.yml` still tested 8.1 and the installation wizard admitted anything from 8.0 up. The wizard now reports PHP below 8.2 as an error, both workflows drop 8.1, and the docs agree. New code may use `readonly class`, typed class constants and `#[\Override]`. PHP 8.2 itself loses security support on 31 December 2026
 

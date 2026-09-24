@@ -36,10 +36,34 @@ final class CliOnlyGuardTest extends TestCase
    */
   private function cliScripts(): array
   {
-    return array_merge(
-      glob(self::ROOT . '/tools/*.php') ?: [],
-      glob(self::ROOT . '/bin/*.php') ?: []
-    );
+    // bin/ holds extensionless executables (bin/webcal), so glob on
+    // everything there and keep what is actually PHP.
+    $bin = array_filter(glob(self::ROOT . '/bin/*') ?: [], static function ($f) {
+      return is_file($f)
+        && str_starts_with((string) file_get_contents($f), '<?php');
+    });
+
+    return array_merge(glob(self::ROOT . '/tools/*.php') ?: [], $bin);
+  }
+
+  /**
+   * A PHP file without a .php extension is served as a static download by
+   * Apache, so the SAPI guard inside it never runs and the source is handed
+   * out verbatim. bin/webcal was extensionless at first and returned 200 with
+   * its own body; only the rename to bin/webcal.php made the guard fire.
+   */
+  public function testCliScriptsAreNamedSoThePhpEngineRunsThem(): void
+  {
+    $offenders = [];
+
+    foreach ($this->cliScripts() as $file) {
+      if (!str_ends_with($file, '.php')) {
+        $offenders[] = basename($file);
+      }
+    }
+
+    $this->assertSame([], $offenders, 'CLI scripts the web server would serve '
+      . 'as source rather than execute: ' . implode(', ', $offenders));
   }
 
   public function testEveryCliScriptRefusesNonCliSapi(): void
