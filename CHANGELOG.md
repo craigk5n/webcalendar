@@ -9,8 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- The PHP 8.1 and SQLite Docker dev environments are now tracked: `docker/Dockerfile-php8.1-dev`, `docker/Dockerfile-php-sqlite`, `docker/docker-compose-php8.1-dev.yml`, `docker/docker-compose-php8.1.yml`, `docker/docker-compose-sqlite-dev.yml`, `docker/mysql-init.sql` and the selenium login tests under `docker/tests/`. `CLAUDE.md` and the developer docs referenced these but they had never been committed
+- `tests/CliOnlyGuardTest.php` fails the build when a script under `tools/` or `bin/` is added without a command-line guard, or when an existing guard is moved below code that would already have run
+- **Reminder web trigger.** Admin > Settings > Email can generate a token that lets `tools/send_reminders.php` be run by fetching its URL, for hosts that offer no way to run a command. Off until a token is generated. The token is generated server-side, shown once, and stored only as a SHA-256 hash, so a database read or backup does not yield a working credential. It may be passed as `?token=` or as an `X-Reminder-Token` header, and every run triggered this way is written to the activity log with the requesting IP
+
 ### Changed
 
+- **Shebang lines removed from `tools/*.php`.** PHP strips `#!` only under the CLI SAPI; served by Apache the line was emitted as page output, which sent the response headers before the new guard could set a status. The scripts answered `200` with the shebang text in the body instead of `403`. Every documented and CI invocation already uses `php tools/<script>.php`, and most of the removed lines pointed at `/usr/local/bin/php`, which does not exist on Debian, Ubuntu or RHEL. A crontab invoking a script directly rather than through `php` needs updating
+- **Scripts under `tools/` now refuse to run over HTTP.** They live inside the web root and three of them ship in releases: `send_reminders.php`, `reload_remotes.php` and `convert_passwords.php`. The last converts stored password hashes and was reachable by URL. `.htaccess` was never protection here — Debian and Ubuntu ship `AllowOverride None` for `/var/www`, which makes the whole file a no-op, so each script now checks `PHP_SAPI` itself and answers 403
+- **Breaking, for sites triggering reminders by URL:** fetching `tools/send_reminders.php` with no token now returns 403. `docs/admin-guide.md` previously offered it as an alternative for hosts without PHP CLI. Affected sites should move to a cron entry running the PHP CLI binary — cPanel, Plesk and DirectAdmin all provide one — or generate a token and add it to the URL
 - Config defaults and `db_load_config()` moved from `wizard/shared/default_config.php` to `includes/default_config.php`. The wizard still reads it as the single source of truth, but it is no longer inside a directory administrators are told to delete (#707)
 
 ### Fixed
