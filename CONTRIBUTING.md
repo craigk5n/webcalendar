@@ -37,7 +37,7 @@ make  # copies vendor assets to pub/
 ### Using Docker
 
 ```bash
-docker-compose -f docker/docker-compose-php8-dev.yml up
+docker-compose -f docker/docker-compose-dev.yml up
 # http://localhost:8080 (MariaDB) / http://localhost:8081 (PostgreSQL)
 ```
 

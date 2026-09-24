@@ -105,13 +105,13 @@ directory, not from the `docker/` subdirectory.
 **Production** (MariaDB, port 8080):
 
 ```bash
-docker compose -f docker/docker-compose-php8.yml up
+docker compose -f docker/docker-compose-prod.yml up
 ```
 
 **Development** (MariaDB on 8080, PostgreSQL on 8081):
 
 ```bash
-docker compose -f docker/docker-compose-php8-dev.yml up
+docker compose -f docker/docker-compose-dev.yml up
 ```
 
 **SQLite Development** (port 8081):
@@ -123,7 +123,7 @@ docker compose -f docker/docker-compose-sqlite-dev.yml up
 Shell access into a running container:
 
 ```bash
-docker compose -f docker/docker-compose-php8.yml \
+docker compose -f docker/docker-compose-prod.yml \
   exec webcalendar-php8 /bin/sh
 ```
 

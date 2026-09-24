@@ -21,6 +21,9 @@ tests/.phpunit.result.cache
 DOC_UPDATES.md
 vendor/
 wc-icons/
+# pytest leaves these beside the Docker selenium tests.
+.pytest_cache/
+
 # Defense-in-depth: never commit the release-signing private key half.
 # The public key (release-signing-pubkey.pem) is deliberately tracked.
 release-signing-privkey*
