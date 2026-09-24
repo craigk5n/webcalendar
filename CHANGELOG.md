@@ -24,6 +24,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- `docker/build_and_push.sh` pushes to `craigk5n/webcalendar`, the repository the release workflows actually publish to. It was hardcoded to `k5nus/webcalendar`, untouched since April 2022. The branch tag also lost its `-t`, so `$tagBranchParam` expanded to a second positional argument and the build died with `"docker buildx build" requires exactly 1 argument` before pushing anything
+- `docker.yml` and `docker-dev.yml` set step outputs through `$GITHUB_OUTPUT` instead of the `::set-output` workflow command, which GitHub deprecated in October 2022 and has said it will disable
+
 - `docker/docker-compose-sqlite-dev.yml` works. It had never parsed: `db_initializer` declared `depends_on: webcalendar` while the service was named `webcalendar-sqlite`, and the two depended on each other in a cycle. Beyond that the two services bind mounted different host directories to the same container path, the relative paths resolved against `docker/` rather than the working copy so the web root was the `docker/` directory itself, the initializer piped a nonexistent `init.sql` into sqlite3, and `image:` alongside `build:` meant a local build would be tagged `php:8.4-apache`, shadowing the official image. The initializer is gone — the installation wizard creates the schema, as it does for the MariaDB environment — and the remaining service mounts the working copy with the database in `sqlite-data/`
 
 - Admin Settings no longer returns a 500 error after following the security audit's advice to remove or `chmod 000` the `wizard/` directory. `admin.php` hard-required a file from `wizard/`, so either action made the page fatal (#707)

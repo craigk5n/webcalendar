@@ -15,7 +15,7 @@ jobs:
 
       - name: Extract Commit Hash
         id: extract_hash
-        run: echo "::set-output name=hash::$(git rev-parse --short HEAD)"
+        run: echo "hash=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Get WebCalendar Version
         run: echo "WEBCALENDAR_VERSION=$(./bump_version.sh -p)" >> $GITHUB_ENV

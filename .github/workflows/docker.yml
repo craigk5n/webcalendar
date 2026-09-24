@@ -19,7 +19,7 @@ jobs:
 
       - name: Extract WebCalendar Version
         id: extract_version
-        run: echo "::set-output name=version::$(./bump_version.sh -p)"
+        run: echo "version=$(./bump_version.sh -p)" >> "$GITHUB_OUTPUT"
 
       - name: Set up QEMU
         # Emulation for cross-arch (arm64) builds on the amd64 runner.
