@@ -82,6 +82,10 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Run MySQL installation and upgrade tests
+        env:
+          # A CI checkout has no live configuration to lose; the scripts
+          # refuse to run without this so a developer's working copy does.
+          WEBCAL_TEST_ALLOW_DESTRUCTIVE: '1'
         run: |
           chmod +x tests/run-mysql-install-tests.sh
           ./tests/run-mysql-install-tests.sh
@@ -105,6 +109,10 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Run PostgreSQL installation and upgrade tests
+        env:
+          # A CI checkout has no live configuration to lose; the scripts
+          # refuse to run without this so a developer's working copy does.
+          WEBCAL_TEST_ALLOW_DESTRUCTIVE: '1'
         run: |
           chmod +x tests/run-postgresql-install-tests.sh
           ./tests/run-postgresql-install-tests.sh
@@ -125,6 +133,10 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Run SQLite installation and upgrade tests
+        env:
+          # A CI checkout has no live configuration to lose; the scripts
+          # refuse to run without this so a developer's working copy does.
+          WEBCAL_TEST_ALLOW_DESTRUCTIVE: '1'
         run: |
           chmod +x tests/run-sqlite-install-tests.sh
           ./tests/run-sqlite-install-tests.sh

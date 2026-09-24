@@ -24,6 +24,22 @@ What actually happened.
 
 ## Environment
 
+Run this and paste the output. It reports no passwords, tokens, host names
+or email addresses — only whether each is configured.
+
+```bash
+php bin/webcal.php diagnose
+```
+
+If you cannot reach a command line, log in as an administrator and use
+**Admin > Security Audit > Diagnostic report**, which has a copy button.
+
+```
+paste the report here
+```
+
+If neither is available, fill in what you can:
+
 - **WebCalendar version:**
 - **PHP version:**
 - **Database type and version:**

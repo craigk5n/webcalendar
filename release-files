@@ -11,6 +11,7 @@ assistant_edit.php
 AUTHORS
 autocomplete_ajax.php
 availability.php
+bin/webcal.php
 category_handler.php
 category.php
 catsel.php
@@ -102,6 +103,9 @@ includes/assert.php
 includes/auth-settings.php
 includes/blacklist.php
 includes/classes/AttachmentList.php
+includes/classes/Diagnostics/Collector.php
+includes/classes/Diagnostics/ConfigPolicy.php
+includes/classes/Diagnostics/Report.php
 includes/classes/captcha/captcha.php
 includes/classes/captcha/COLLEGE.ttf
 includes/classes/captcha/README
