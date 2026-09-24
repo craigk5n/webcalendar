@@ -1,5 +1,14 @@
-#!/usr/local/bin/php -q
 <?php
+
+// Normally command-line only. Served over HTTP without a check this hands
+// execution to anyone who reaches the URL, and .htaccess cannot be relied on:
+// the Debian and Ubuntu default of AllowOverride None makes it a no-op.
+//
+// A web trigger exists for hosts that offer no shell, but it is off until an
+// administrator generates a token (Admin > Settings > Email). The token is
+// verified in verify_web_trigger() below, as soon as the database is up.
+// Nothing that reads a reminder or sends mail runs before that call.
+$reminder_web_request = ( PHP_SAPI !== 'cli' );
 /**
  * Description:
  * This is a command-line script that will send out any email
@@ -76,6 +85,29 @@ require_once __WC_INCLUDEDIR . 'site_extras.php';
 
 $WebCalendar->initializeSecondPhase();
 
+/**
+ * Refuses an HTTP request that carries no valid web-trigger token.
+ *
+ * Exits; it returns only when the request may proceed. The two failure cases
+ * answer the same way on purpose, so a probe cannot tell a site with the
+ * trigger switched off from one with a token it failed to guess.
+ */
+function verify_web_trigger() {
+  $storedHash = (string) ( $GLOBALS['REMINDER_WEB_TRIGGER_TOKEN'] ?? '' );
+  $presented = reminder_web_trigger_presented_token();
+
+  if ( reminder_web_trigger_allowed ( $presented, $storedHash ) ) {
+    activity_log ( 0, 'system', '', LOG_SYSTEM,
+      'Reminders triggered over HTTP from '
+      . ( $_SERVER['REMOTE_ADDR'] ?? 'unknown' ) );
+    return;
+  }
+
+  http_response_code ( 403 );
+  exit ( "Reminders must be run from the command line unless an administrator "
+    . "has enabled the web trigger. See docs/admin-guide.md.\n" );
+}
+
 $debug = false;// Set to true to print debug info...
 $only_testing = false; // Just pretend to send -- for debugging.
 
@@ -87,6 +119,9 @@ if ( ! $c ) {
 }
 
 load_global_settings();
+
+if ( $reminder_web_request )
+  verify_web_trigger();
 
 $WebCalendar->setLanguage();
 
