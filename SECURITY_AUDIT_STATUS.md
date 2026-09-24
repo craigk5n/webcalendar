@@ -81,7 +81,7 @@ rotation story.
 
 **Implementation notes:**
 - New code lives at `includes/classes/Security/ReleaseKeyGenerator.php` under namespace `WebCalendar\Security` (decision D10 refined: namespace adopted to keep class names collision-free, still loaded via `require_once` — no autoloader wiring).
-- Class targets PHP 8.1 parse-compatibility (the floor per `.github/workflows/php-syntax-check.yml`): no `readonly class`, no typed class constants, no `#[\Override]`. Uses `#[\SensitiveParameter]` which is a no-op on 8.1 and active on 8.2+.
+- Class targeted PHP 8.1 parse-compatibility, the floor at the time: no `readonly class`, no typed class constants, no `#[\Override]`. The floor moved to 8.2 on 2026-09-24 (see Decisions Log); the class was left as written because the pattern is semantically identical.
 - CLI wrapper: `tools/generate-release-key.php` (chmod +x, shebang line).
 - PHPStan level-0 clean on new files (matches repo config).
 
@@ -531,7 +531,15 @@ if (!$is_admin || (access_is_enabled()
 
 If a future refactor ever reorders `security_audit.php` in a way that exposes the file-integrity section without the gate, OR if a developer adds a duplicate UAC constant for the new feature, this test breaks the build.
 
-**Out-of-scope concern (not part of this story):** the CLI tools `tools/build-manifest.php`, `tools/sign-manifest.php`, and `tools/verify-release-signing-key.php` ship with releases and could in principle be hit via the web (`/tools/sign-manifest.php`). They are intended for CLI / CI use and have no authentication guard. Same as the pre-existing `tools/send_reminders.php` etc. This is a project-wide concern predating Story 4.3 — not a regression introduced by the signed-manifest feature. Flagged here for future hardening (e.g., ship with `.htaccess` Deny + document webroot layout).
+**Out-of-scope concern (not part of this story) — RESOLVED 2026-09-24:** the CLI tools `tools/build-manifest.php`, `tools/sign-manifest.php`, and `tools/verify-release-signing-key.php` ship with releases and could in principle be hit via the web (`/tools/sign-manifest.php`). They were intended for CLI / CI use and had no authentication guard. Same as the pre-existing `tools/send_reminders.php` etc. This was a project-wide concern predating Story 4.3 — not a regression introduced by the signed-manifest feature.
+
+Closed outside this epic. Every script under `tools/` now refuses a non-CLI SAPI as its first executable statement, answering 403. The suggested `.htaccess` Deny was rejected as the mechanism: Debian and Ubuntu ship `AllowOverride None` for `/var/www`, which makes the whole file a no-op, so the check has to live in the scripts themselves. `tests/CliOnlyGuardTest.php` fails the build if a new script arrives without a guard, or if an existing guard moves below code that would already have run.
+
+Verified against the dev container, not just by unit test: the first attempt returned `200` with the shebang line in the body, because PHP strips `#!` only under CLI and the inline output committed the response headers before `http_response_code(403)` ran. The shebangs were removed; all eight shipped scripts now answer `403` with no body leak.
+
+Scope note: the exposure was wider than the three manifest tools listed above. `tools/convert_passwords.php` also ships in `release-files` and rewrites stored password hashes; it was reachable by URL on any install where `.htaccess` was inert.
+
+One sanctioned exception: `tools/send_reminders.php` can be run over HTTP when an administrator generates a token under **Admin > Settings > Email**, for hosts that offer no shell. Off by default; the token is generated server-side, shown once, stored only as a SHA-256 hash, and every triggered run is written to the activity log with the requesting IP. See `tests/ReminderWebTriggerTest.php` and `AGENT_ROADMAP.md` (Pillar C1).
 
 Full signed-manifest suite now: **172 tests / 393 assertions** green.
 
@@ -710,8 +718,10 @@ Full signed-manifest suite now: **200 tests / 522 assertions** green. Full CI su
 |------|----------|---------------|
 | 2026-04-23 | D1–D10 locked per conversation with maintainer. | — |
 | 2026-04-23 | D10 refined: new code uses namespace `WebCalendar\Security` (loaded via `require_once`, no autoloader change). Keeps class names collision-free and matches the PHP guide's namespacing expectation without destabilizing the legacy global-namespace includes. | — |
-| 2026-04-23 | PHP floor for new shipping code is 8.1 (per `.github/workflows/php-syntax-check.yml` matrix). Features requiring 8.2+ (typed constants, `readonly class`) are avoided; forward-compatible attributes (`#[\SensitiveParameter]`, `#[\Override]`) are fine. | — |
-| 2026-04-23 | `VerifyResult` (Story 3.1) specified as `final readonly class` — that's PHP 8.2 syntax. Implemented as 8.1-compatible `final class` with `readonly` on promoted properties. Semantically identical: any mutation of `$valid` or `$reason` after construction raises fatal Error, confirmed by `testVerifyResultIsImmutable`. | — |
+| 2026-04-23 | PHP floor for new shipping code is 8.1 (per `.github/workflows/php-syntax-check.yml` matrix). Features requiring 8.2+ (typed constants, `readonly class`) are avoided; forward-compatible attributes (`#[\SensitiveParameter]`, `#[\Override]`) are fine. | 2026-09-24 floor bump, below |
+| 2026-04-23 | `VerifyResult` (Story 3.1) specified as `final readonly class` — that's PHP 8.2 syntax. Implemented as 8.1-compatible `final class` with `readonly` on promoted properties. Semantically identical: any mutation of `$valid` or `$reason` after construction raises fatal Error, confirmed by `testVerifyResultIsImmutable`. | 2026-09-24 floor bump, below — `final readonly class` is now permitted, though rewriting working classes to use it buys nothing |
+| 2026-09-24 | **PHP floor raised to 8.2, superseding the 8.1 entries above.** 8.1 reached end of life on 31 December 2025. The repo had stated four different floors — `composer.json` `^8.2`, `README.md` 8.2+, `CONTRIBUTING.md` 8.0+, `docs/installation.md` "8.0 minimum", this log 8.1 — while `php-syntax-check.yml` and `test-install.yml` still tested 8.1 and `WizardValidator` gated at 8.0. All now say 8.2. New code may use `readonly class`, typed class constants and `#[\Override]`. Note 8.2 itself loses security support on 31 December 2026, so this will want revisiting. | — |
+| 2026-09-24 | **Story 4.3's flagged out-of-scope concern is closed.** Every `tools/*.php` refuses a non-CLI SAPI itself rather than relying on `.htaccess`, which is a no-op under the Debian/Ubuntu `AllowOverride None` default. `send_reminders.php` keeps a token-gated web path for shell-less hosts. Guard enforced by `tests/CliOnlyGuardTest.php`. | — |
 | 2026-04-24 | **Pre-existing CI silent-skip bug fixed by Story 6.2:** `DocListTest` + `ExportTimeTest` both called `die_miserable_death()` → `exit;` → phpunit runner died mid-suite → CI exit 0 → green CI despite ~95% of tests not running. Annotated both classes with `@runTestsInSeparateProcesses` + `@preserveGlobalState disabled`, matching the existing `CategoryOrderTest` / `UpgradeFunctionsSmokeTest` convention. Tests run per-class on 379 tests / 1278 assertions as of this commit. | — |
 
 ---
