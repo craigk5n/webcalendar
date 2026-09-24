@@ -1,0 +1,26 @@
+FROM php:8.4-apache
+LABEL maintainer="craig@k5n.us"
+LABEL vendor="k5n.us"
+
+# Build dependencies for the extensions below. libsqlite3-dev in particular is
+# required by pdo_sqlite; without it docker-php-ext-install fails with
+# "Package 'sqlite3', required by 'virtual:world', not found".
+RUN apt-get update && apt-get install -y \
+    mariadb-client \
+    libmariadb-dev-compat libmariadb-dev \
+    libsqlite3-dev \
+    libpq-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev
+
+# Every database backend WebCalendar supports, so one image serves the MariaDB,
+# PostgreSQL and SQLite dev environments and the wizard CI that exercises all
+# three. gd is here because the wizard image build has always carried it.
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j"$(nproc)" \
+      pdo pdo_sqlite pdo_pgsql mysqli pgsql gd
+
+WORKDIR /var/www/html
+
+CMD ["apache2-foreground"]

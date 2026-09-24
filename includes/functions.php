@@ -6793,6 +6793,44 @@ function is_mcp_enabled() {
 }
 
 /**
+ * Reads the reminder web-trigger token presented with an HTTP request.
+ *
+ * Accepts either a "token" query parameter or an X-Reminder-Token header, so a
+ * cron facility that can only fetch a URL still has a way to pass it.
+ *
+ * @return string The presented token, or '' when none was supplied.
+ */
+function reminder_web_trigger_presented_token() {
+  if ( ! empty ( $_SERVER['HTTP_X_REMINDER_TOKEN'] ) )
+    return (string) $_SERVER['HTTP_X_REMINDER_TOKEN'];
+
+  if ( ! empty ( $_GET['token'] ) )
+    return (string) $_GET['token'];
+
+  return '';
+}
+
+/**
+ * Decides whether an HTTP request may run the reminder script.
+ *
+ * REMINDER_WEB_TRIGGER_TOKEN holds the SHA-256 hash of a token generated in
+ * Admin > Settings > Email, never the token itself, so a database read does
+ * not yield anything usable. An empty setting disables the web trigger, which
+ * is the default: a site that runs reminders from cron has no reason to expose
+ * the script at all.
+ *
+ * @param string $presented Token supplied with the request.
+ * @param string $storedHash Stored SHA-256 hash, or '' when disabled.
+ * @return bool True when the request may proceed.
+ */
+function reminder_web_trigger_allowed ( $presented, $storedHash ) {
+  if ( $storedHash === '' || $presented === '' )
+    return false;
+
+  return hash_equals ( $storedHash, hash ( 'sha256', $presented ) );
+}
+
+/**
  * Check if MCP write access is enabled
  *
  * @return bool True if MCP write operations are allowed

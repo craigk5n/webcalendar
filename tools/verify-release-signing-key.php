@@ -1,7 +1,14 @@
-#!/usr/bin/env php
 <?php
 
 declare(strict_types=1);
+
+// Command-line only. Served over HTTP this hands execution to anyone who can
+// reach the URL, and .htaccess cannot be relied on: the Debian and Ubuntu
+// default of AllowOverride None makes it a no-op.
+if ( PHP_SAPI !== 'cli' ) {
+  http_response_code ( 403 );
+  exit ( basename ( __FILE__ ) . " must be run from the command line.\n" );
+}
 
 /**
  * tools/verify-release-signing-key.php — dry-run validator for
