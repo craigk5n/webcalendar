@@ -27,6 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- The event write path moved out of `mcp.php` into `includes/classes/Event/`. `add_event` and `add_recurring_event` each carried their own copy of the cal_id allocation loop, the `webcal_entry` insert and the participation insert, forked from `edit_entry_handler.php` and then forked again from each other; `delete_event` carried its own cascade. `EventService::createEvent()`, `storeRecurrence()` and `deleteEvent()` are now the single copy, named to match `webcalendar-core`'s `EventService` so a later port is a rename. Behaviour is unchanged, including that repeating events keep `webcal_entry.cal_type` at the column default
+
 - `.github/PULL_REQUEST_TEMPLATE.md` asks for `make check` in place of the separate PHPUnit and compile boxes it subsumed, and adds a `CHANGELOG.md` item
 - `docs/troubleshooting.md` leads its Diagnostic Steps section with `php bin/webcal.php diagnose`, which collects in one command what the individual checks below it gather by hand
 
