@@ -39,6 +39,7 @@ release-files
 release-files-excluded
 tools/build-manifest.php
 tools/build-codemap.php
+tools/check-ai-signals.php
 # seed/reset rewrite a calendar. They are a development convenience and
 # are deliberately absent from releases, so a production install cannot
 # run them even if someone supplies the opt-in flag.

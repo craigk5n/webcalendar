@@ -204,12 +204,21 @@ It stays shut until an administrator generates a token, stores only the token's
 SHA-256 hash, and logs each triggered run. The other nine scripts remain
 unconditionally command-line only.
 
-### C2. AI-signal lint
+### C2. AI-signal lint — LANDED 2026-09-24
 
 Port the mechanical checks from `AI-SIGNALS.md`: second-person comments, bookend
-section markers, trivial docblocks that restate the signature, and the buzzword
-list. Advisory at first so the existing backlog does not block CI, enforcing on
-changed files after a cleanup pass.
+section markers and the buzzword list.
+
+The plan assumed a backlog to clean up first. There isn't one worth cleaning:
+run over the whole tree the check reports about sixty findings, and nearly all
+are legitimate comments addressing an administrator directly ("You can test this
+script from the command line"). `AI-SIGNALS.md`'s premise that humans rarely
+write "you" holds for new application code, not for this tree.
+
+Scoping the check to lines a change *adds* removed the need for a cleanup pass
+entirely, so it went straight to enforcing. Trivial-docblock detection was
+dropped: deciding whether a docblock restates its signature needs judgement, and
+a false accusation costs more than a miss.
 
 ### C3. Release manifest completeness
 
@@ -261,7 +270,7 @@ tests before the refactor, not after.
 | 6 | C3 manifest completeness | Cheap, prevents a repeat of #667 |
 | 7 | ~~B4 codemap~~ | **Done 2026-09-24.** |
 | 8 | ~~D1 event write path~~ | **Done 2026-09-24.** Refactored against the existing MCP end-to-end tests |
-| 9 | C2 AI-signal lint | Needs a cleanup pass to be enforceable |
+| 9 | ~~C2 AI-signal lint~~ | **Done 2026-09-24.** No cleanup pass needed: scoping to added lines made it enforceable immediately |
 
 Items 1–4 are worth doing regardless of what happens with WCTNG. Items 8–9 are
 worth reconsidering if legacy's timeline shortens.
