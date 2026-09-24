@@ -8,11 +8,12 @@ namespace WebCalendar\Security;
  * Immutable result of `ManifestVerifier::verify()`.
  *
  * The feature spec (STATUS.md, Story 3.1) asks for a `final readonly
- * class`, which requires PHP 8.2+. Our shipping floor is 8.1, so we
- * use the 8.1-compatible equivalent: `final class` with `readonly`
- * on each promoted property. Semantically identical — any attempt
- * to write to `$valid` or `$reason` after construction raises a
- * fatal Error, just like a 8.2 `readonly class` would.
+ * class`. That needs PHP 8.2, which was above the floor when this was
+ * written, so it uses the equivalent: `final class` with `readonly` on
+ * each promoted property. The floor moved to 8.2 on 2026-09-24 and this
+ * was left alone — the two forms are semantically identical, since any
+ * attempt to write to `$valid` or `$reason` after construction raises a
+ * fatal Error either way.
  */
 final class VerifyResult
 {

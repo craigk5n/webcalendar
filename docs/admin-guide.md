@@ -178,12 +178,42 @@ It requires the PHP CLI binary.
 Adjust the PHP binary path and WebCalendar installation path for your
 environment. Run `which php` to find the correct path.
 
-If you don't have PHP CLI available, you can use `wget` as an
-alternative:
+On shared hosting without shell access, check the control panel first.
+cPanel, Plesk and DirectAdmin all provide a cron facility that runs shell
+commands, including the PHP CLI binary. Your hosting provider can tell you
+the correct path to `php`. That is the preferred setup.
+
+#### Web Trigger (hosts with no shell at all)
+
+Earlier releases let any visitor run the reminder script by fetching
+`tools/send_reminders.php`. That is no longer allowed by default. If your
+host offers no way to run a command, enable the web trigger instead:
+
+1. Go to **Admin** > **Settings** > **Email**.
+2. Next to **Reminder web trigger**, click **Generate New Token**.
+3. Copy the token and the URL shown. Neither is displayed again — only a
+   SHA-256 hash of the token is stored, so it cannot be recovered from the
+   database or a backup.
+4. Point your web-cron service at that URL.
 
 ```bash
-*/15 * * * * wget -q -O /dev/null https://yourserver/webcalendar/tools/send_reminders.php
+*/15 * * * * wget -q -O /dev/null "https://yourserver/webcalendar/tools/send_reminders.php?token=YOUR_TOKEN"
 ```
+
+The token may also be sent as an `X-Reminder-Token` header, which keeps it
+out of web server access logs:
+
+```bash
+*/15 * * * * curl -s -H "X-Reminder-Token: YOUR_TOKEN" -o /dev/null https://yourserver/webcalendar/tools/send_reminders.php
+```
+
+Every run triggered this way is written to the activity log with the
+requesting IP address. Click **Clear Token** to switch the web trigger off
+again.
+
+Treat the URL as a credential. Anyone holding it can make the server send
+its due reminders. A cron job running the PHP CLI binary exposes nothing,
+which is why it remains the better option where it is available.
 
 #### Windows Task Scheduler
 
