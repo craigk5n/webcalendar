@@ -1444,6 +1444,9 @@ event: event
 This is a reminder for the XXX detailed below.: This is a reminder for the XXX detailed below.
 Reminder: Reminder
 Reminder cron URL: Reminder cron URL
+Copy to clipboard: Copy to clipboard
+Diagnostic report: Diagnostic report
+Paste this into a bug report. Passwords, tokens, host names and email addresses are reported only as set or not set.: Paste this into a bug report. Passwords, tokens, host names and email addresses are reported only as set or not set.
 Reminder web trigger: Reminder web trigger
 
 ########################################

@@ -69,7 +69,7 @@ These are properties of this repository that any plan has to respect.
 
 ---
 
-## Pillar A — Support diagnostics
+## Pillar A — Support diagnostics — LANDED 2026-09-24
 
 **Goal:** a user pastes one block of text and the maintainer, or an agent, knows
 what is wrong without a back-and-forth.
@@ -255,7 +255,7 @@ tests before the refactor, not after.
 |-------|------|----------|
 | 1 | B1 `bin/webcal` skeleton + SAPI guard | Everything else hangs off it |
 | 2 | ~~C1 CLI-only guard test~~ | **Done 2026-09-24.** Landed ahead of B1, since the exposure was live |
-| 3 | A1–A4 diagnostics | Highest support value; needs only B1 |
+| 3 | ~~A1–A4 diagnostics~~ | **Done 2026-09-24.** Shipped with a minimal `bin/webcal.php` rather than the full B1 dispatcher |
 | 4 | B3 `make check` | Makes the rest verifiable |
 | 5 | B2 seed/reset | Biggest maintenance win, wants `make check` first |
 | 6 | C3 manifest completeness | Cheap, prevents a repeat of #667 |
