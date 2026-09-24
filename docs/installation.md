@@ -15,7 +15,7 @@
 
 ## Requirements
 
-**PHP**: 8.0 minimum, 8.2+ recommended (CI tests against 8.2, 8.3, 8.4)
+**PHP**: 8.2 minimum (CI tests against 8.2, 8.3 and 8.4). PHP 8.1 reached end of life on 31 December 2025 and is no longer supported. Note that PHP 8.2 itself loses security support on 31 December 2026.
 
 **PHP Extensions** (required):
 - A database driver: `mysqli`, `pgsql`, `sqlite3`, `oci8`, `ibm_db2`,
