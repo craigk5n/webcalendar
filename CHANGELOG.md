@@ -27,7 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
-- Events created through MCP before this release keep `cal_type = 'E'` even where a `webcal_entry_repeats` row exists. They continue to display and export correctly. To correct them: `UPDATE webcal_entry SET cal_type = 'M' WHERE cal_type = 'E' AND cal_id IN ( SELECT cal_id FROM webcal_entry_repeats )`
+- Upgrading corrects events created through MCP before this release, which have `cal_type = 'E'` despite having a `webcal_entry_repeats` row. The statement is scoped by that join, so one-off events, already-correct rows and tasks are untouched, and re-running an upgrade is a no-op
 - The event write path moved out of `mcp.php` into `includes/classes/Event/`. `add_event` and `add_recurring_event` each carried their own copy of the cal_id allocation loop, the `webcal_entry` insert and the participation insert, forked from `edit_entry_handler.php` and then forked again from each other; `delete_event` carried its own cascade. `EventService::createEvent()`, `storeRecurrence()` and `deleteEvent()` are now the single copy, named to match `webcalendar-core`'s `EventService` so a later port is a rename. Behaviour is unchanged, including that repeating events keep `webcal_entry.cal_type` at the column default
 
 - `.github/PULL_REQUEST_TEMPLATE.md` asks for `make check` in place of the separate PHPUnit and compile boxes it subsumed, and adds a `CHANGELOG.md` item
