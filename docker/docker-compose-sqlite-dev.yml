@@ -1,0 +1,52 @@
+version: '3.1'
+
+services:
+
+  webcalendar-sqlite:
+    image: php:8.1-apache
+    container_name: webcalendar-php
+    volumes:
+      - .:/var/www/html/
+      - ./sqlite-data:/var/www/data  # Directory to store SQLite database file
+    ports:
+      - 8081:80
+    environment:
+      - WEBCALENDAR_USE_ENV=true
+      - WEBCALENDAR_INSTALL_PASSWORD=b97f7de5f4b20eb6e474bb18b040b369
+      - WEBCALENDAR_DB_TYPE=sqlite3
+      - WEBCALENDAR_DB_DATABASE=/var/www/data/webcalendar.db  # Path to SQLite database file
+      - WEBCALENDAR_DB_LOGIN=webcalendar
+      - WEBCALENDAR_DB_PASSWORD=Webcalendar.1
+      - WEBCALENDAR_DB_HOST=db
+      - WEBCALENDAR_DB_PERSISTENT=true
+      - WEBCALENDAR_USER_INC=user.php
+      - WEBCALENDAR_MODE=dev
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile-php8.1-dev
+    depends_on:
+      - db_initializer
+
+  db_initializer:
+    image: alpine:latest
+    container_name: sqlite3-initializer
+    command: >
+      sh -c "
+      apk add --no-cache sqlite;
+      until [ -f /var/www/data/webcalendar.db ]; do
+        echo 'Waiting for webcalendar.db to be created...';
+        sleep 1;
+      done;
+      echo 'webcalendar.db exists. Initializing...';
+      sqlite3 /var/www/data/webcalendar.db < /var/www/html/init.sql;
+      echo 'Database initialized.';
+      "
+    volumes:
+      - .:/var/www/html/
+      - ./data:/var/www/data
+    depends_on:
+      - webcalendar
+
+volumes:
+  webcalendar_data: {}
+

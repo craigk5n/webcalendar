@@ -1,0 +1,5 @@
+pytest
+selenium
+pymysql
+psycopg2-binary
+cryptography

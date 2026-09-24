@@ -1,0 +1,13 @@
+FROM php:8.1-apache
+MAINTAINER craigk5n <craig@k5n.us>
+LABEL vendor "k5n.us"
+
+# libsqlite3-dev is a build dependency of the pdo_sqlite extension below;
+# without it docker-php-ext-install fails with "Package 'sqlite3' not found".
+RUN apt-get update && apt-get install -y \
+    mariadb-client \
+    libmariadb-dev-compat libmariadb-dev \
+    libsqlite3-dev
+
+# Install Mysqlu, SQLite3 PHP extension
+RUN docker-php-ext-install pdo pdo_sqlite mysqli
