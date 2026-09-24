@@ -20,6 +20,14 @@ final class NewEvent
 {
   public const UNTIMED = -1;
 
+  /**
+   * webcal_entry.cal_type. An event is REPEATING_EVENT when it has a
+   * recurrence rule and EVENT when it does not; edit_entry_handler.php makes
+   * the same distinction for journals (J/O) and tasks (T/N).
+   */
+  public const TYPE_EVENT = 'E';
+  public const TYPE_REPEATING_EVENT = 'M';
+
   public function __construct(
     public readonly string $name,
     public readonly int $date,
@@ -28,6 +36,6 @@ final class NewEvent
     public readonly string $description,
     public readonly string $location,
     public readonly string $createdBy,
-    public readonly string $type = 'E'
+    public readonly string $type = self::TYPE_EVENT
   ) {}
 }

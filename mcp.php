@@ -669,7 +669,11 @@ class WebCalendarMcpTools
         }
         $repeat_cols = mcp_rrule_to_repeat_columns($validated['parts']);
 
-        // Same creation path as add_event; see EventService.
+        // Same creation path as add_event, but stored as a repeating event.
+        // edit_entry_handler.php is the authority on this column: an event is
+        // 'M' when it repeats and 'E' when it does not (see the $tmpRpt block
+        // there). This path used to omit cal_type entirely and inherit the
+        // column default of 'E', leaving recurring events mislabelled.
         $event_id = \WebCalendar\Event\EventService::createEvent(
             new \WebCalendar\Event\NewEvent(
                 $name,
@@ -678,7 +682,8 @@ class WebCalendarMcpTools
                 $duration,
                 $description,
                 $location,
-                $this->userLogin
+                $this->userLogin,
+                \WebCalendar\Event\NewEvent::TYPE_REPEATING_EVENT
             )
         );
 

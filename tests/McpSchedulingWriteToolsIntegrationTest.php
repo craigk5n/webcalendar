@@ -186,6 +186,60 @@ final class McpSchedulingWriteToolsIntegrationTest extends TestCase
         $this->assertEquals(6, $repeat['cal_count']);
     }
 
+    /**
+     * webcal_entry.cal_type distinguishes a repeating event ('M') from a
+     * one-off ('E'); edit_entry_handler.php is the authority on that and sets
+     * it from whether a recurrence rule is present.
+     *
+     * add_recurring_event used to omit the column entirely and inherit the
+     * schema default of 'E', so every recurring event MCP created was
+     * mislabelled. Display tolerated it, because the queries accept both
+     * values, which is why it went unnoticed.
+     */
+    public function test_add_recurring_event_marks_the_entry_as_repeating(): void
+    {
+        $resp = $this->callTool('add_recurring_event', [
+            'name' => 'Repeating type check',
+            'date' => '20260601',
+            'time' => '120000',
+            'duration' => 60,
+            'rrule' => 'FREQ=DAILY;INTERVAL=1',
+        ]);
+
+        $result = $resp['result'] ?? [];
+        $this->assertArrayNotHasKey('error', $result, 'unexpected error: ' . json_encode($resp));
+        $this->assertArrayHasKey('event_id', $result);
+
+        $entry = $this->entryRow((int)$result['event_id']);
+        $this->assertNotNull($entry);
+        $this->assertSame('M', $entry['cal_type'],
+            'a recurring event must be stored as cal_type M, not the column default E');
+        $this->assertNotNull($this->repeatRow((int)$result['event_id']),
+            'and it must still have its recurrence row');
+    }
+
+    /**
+     * The other half: a plain event must not be relabelled by that change.
+     */
+    public function test_add_event_stays_a_plain_event(): void
+    {
+        $resp = $this->callTool('add_event', [
+            'name' => 'Plain type check',
+            'date' => '20260601',
+            'time' => '130000',
+            'duration' => 30,
+        ]);
+
+        $result = $resp['result'] ?? [];
+        $this->assertArrayNotHasKey('error', $result, 'unexpected error: ' . json_encode($resp));
+        $this->assertArrayHasKey('event_id', $result);
+
+        $entry = $this->entryRow((int)$result['event_id']);
+        $this->assertNotNull($entry);
+        $this->assertSame('E', $entry['cal_type']);
+        $this->assertNull($this->repeatRow((int)$result['event_id']));
+    }
+
     public function test_add_recurring_event_rejects_invalid_rrule_without_creating_event(): void
     {
         $before = $this->entryCount();
