@@ -23,6 +23,8 @@ if (PHP_SAPI !== 'cli') {
  * second-person rule is about comments written for a maintainer, and
  * documentation addressing its reader as "you" is correct.
  *
+ * ai-signals:allow -- this block quotes the phrasing it detects.
+ *
  * Scope matters more than the rules do. Run over the whole tree this reports
  * about sixty findings, and nearly all of them are legitimate: WebCalendar has
  * twenty-five years of comments that address a system administrator directly
@@ -37,6 +39,11 @@ if (PHP_SAPI !== 'cli') {
  *   php tools/check-ai-signals.php --since=REF      only lines added since REF
  *   php tools/check-ai-signals.php --since=REF --strict   exit 1 on a finding
  *   php tools/check-ai-signals.php --path=DIR       scan somewhere else
+ *
+ * A comment containing the marker ai-signals:allow is skipped. Code that
+ * discusses these phrases has to be able to quote one, which this file found
+ * out about itself on its first run in CI: the docblock below quotes an
+ * example and the tool flagged it.
  */
 
 $root = dirname(__DIR__);
@@ -193,6 +200,12 @@ function ai_signal_scan(string $path): array
 
     $text = $token[1];
     $line = $token[2];
+
+    // An explicit, visible opt-out. A reader can see that the author made a
+    // decision here rather than the check silently not applying.
+    if (str_contains($text, 'ai-signals:allow')) {
+      continue;
+    }
 
     foreach ($rules as $rule => $pattern) {
       if (preg_match($pattern, $text, $m, PREG_OFFSET_CAPTURE)) {

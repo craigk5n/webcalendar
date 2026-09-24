@@ -127,6 +127,43 @@ final class AiSignalLintTest extends TestCase
   }
 
   /**
+   * Code that discusses these phrases has to be able to quote one. This tool
+   * flagged its own docblock the first time it ran in CI, which is how the
+   * marker came to exist.
+   */
+  public function testTheAllowMarkerSuppressesAComment(): void
+  {
+    $flagged = $this->lint('// You should call this first.');
+    $this->assertStringContainsString('second-person', $flagged['output']);
+
+    // The marker covers the comment it is in, so both have to be in one
+    // block. That is how it is used in practice, in a docblock explaining a
+    // rule and quoting an example of it.
+    $allowed = $this->lint(
+      "/**\n * ai-signals:allow -- quoting the phrasing for illustration.\n"
+      . " *\n * You should call this first.\n */"
+    );
+    $this->assertStringContainsString('No AI-writing signals', $allowed['output'],
+      'the marker must suppress the finding in its own comment');
+  }
+
+  /**
+   * The marker only covers the comment it appears in, so it cannot be dropped
+   * at the top of a file to switch the whole check off.
+   */
+  public function testTheAllowMarkerDoesNotLeakToOtherComments(): void
+  {
+    $result = $this->lint(
+      "// ai-signals:allow -- this one is deliberate: you should ignore it.\n"
+      . "function a() {}\n"
+      . '// You should not be able to hide this one.'
+    );
+
+    $this->assertStringContainsString('second-person', $result['output'],
+      'a marker in one comment must not silence a different comment');
+  }
+
+  /**
    * A string that happens to contain a flagged phrase is not a comment.
    */
   public function testCodeAndStringLiteralsAreIgnored(): void
