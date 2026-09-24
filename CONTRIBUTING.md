@@ -20,7 +20,7 @@ All contributors are expected to follow our
 
 ### Prerequisites
 
-- PHP 8.0+ (8.2+ recommended)
+- PHP 8.2+
 - Composer
 - MySQL, PostgreSQL, or SQLite3
 - Git

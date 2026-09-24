@@ -56,6 +56,10 @@ These are properties of this repository that any plan has to respect.
   `release-files`, or it is absent from the ZIP (see #667).
 - **`.htaccess` may be a no-op.** Debian/Ubuntu default `AllowOverride None`
   neutralizes it. Nothing may depend on it for protection.
+- **PHP floor is 8.2**, settled 2026-09-24 and enforced by
+  `tests/PhpFloorConsistencyTest.php`. New code may use `readonly class`, typed
+  class constants and `#[\Override]`. PHP 8.2 loses security support on
+  31 December 2026, so this wants revisiting during 2026.
 - **Code must not read as AI-generated.** `webcalendar-core/AI-SIGNALS.md` is the
   standard; core was audited against it with 45+ fixes. This repo has never been
   audited and has taken more agent-written code.
