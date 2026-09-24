@@ -123,7 +123,7 @@ redaction and two thin renderers.
 
 ---
 
-## Pillar B — Maintenance dev loop
+## Pillar B — Maintenance dev loop — LANDED 2026-09-24
 
 **Goal:** an agent proves a fix without docker-compose, a browser and screenshots.
 
@@ -256,10 +256,10 @@ tests before the refactor, not after.
 | 1 | B1 `bin/webcal` skeleton + SAPI guard | Everything else hangs off it |
 | 2 | ~~C1 CLI-only guard test~~ | **Done 2026-09-24.** Landed ahead of B1, since the exposure was live |
 | 3 | ~~A1–A4 diagnostics~~ | **Done 2026-09-24.** Shipped with a minimal `bin/webcal.php` rather than the full B1 dispatcher |
-| 4 | B3 `make check` | Makes the rest verifiable |
-| 5 | B2 seed/reset | Biggest maintenance win, wants `make check` first |
+| 4 | ~~B3 `make check`~~ | **Done 2026-09-24.** |
+| 5 | ~~B2 seed/reset~~ | **Done 2026-09-24.** Gated on SQLite + explicit opt-in, not on `mode` |
 | 6 | C3 manifest completeness | Cheap, prevents a repeat of #667 |
-| 7 | B4 codemap | Independent, do when convenient |
+| 7 | ~~B4 codemap~~ | **Done 2026-09-24.** |
 | 8 | D1 event write path | Last; needs tests and the most care |
 | 9 | C2 AI-signal lint | Needs a cleanup pass to be enforceable |
 
