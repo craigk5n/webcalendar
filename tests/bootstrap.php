@@ -29,6 +29,11 @@ declare(strict_types=1);
  * fixtures and know what you are doing.
  */
 
+// Shared test fixtures. Loaded here rather than from each test file, which
+// drifted: the require reached only the classes whose existing requires
+// happened to use the same quoting style.
+require_once __DIR__ . '/McpServerFixture.php';
+
 (static function (): void {
   if (getenv('WEBCAL_TEST_ALLOW_PARALLEL') === '1') {
     return;
