@@ -136,4 +136,35 @@ final class SeleniumWaitsTest extends TestCase
       basename($suite) . ' must detect a navigation with the window marker, '
       . 'not by touching an element reference that the navigation invalidates');
   }
+
+  /**
+   * Every wizard job may fail the build.
+   *
+   * The MySQL and PostgreSQL jobs carried continue-on-error: true, under a
+   * TODO calling the harness flaky. That made them decorative: a broken
+   * install path on either backend was reported as a pass. The record does not
+   * support the TODO -- across thirty runs the only failures were two runs on
+   * one branch where all three jobs failed together, with
+   * "login failed with both passwords" on each, which is a real defect and
+   * exactly what these tests are for. The SQLite job was already blocking and
+   * failed in both, so the build went red anyway: making the other two
+   * blocking would have added no red builds at all.
+   *
+   * The cited mechanism was the fixed sleeps, and those are gone.
+   */
+  public function testNoWizardJobIsAllowedToFailSilently(): void
+  {
+    $src = file_get_contents(self::ROOT . '/.github/workflows/test-web-wizard.yml');
+    self::assertIsString($src);
+
+    $out = [];
+    foreach (explode("\n", $src) as $line) {
+      $out[] = preg_replace('/(^|\s)#.*$/', '', $line);
+    }
+
+    self::assertStringNotContainsString('continue-on-error', implode("\n", $out),
+      'a wizard job set to continue-on-error reports a broken install path as '
+      . 'a pass. If one is genuinely flaky, fix or remove it rather than '
+      . 'silencing it.');
+  }
 }
