@@ -68,7 +68,7 @@ function wc_usage(int $exitCode): never
              [--output=FILE]   to FILE, which is created readable only by you.
              [--from=YYYYMMDD --to=YYYYMMDD]
                           Every date unless a range is given.
-             [--include-layers] [--category=ID]
+             [--include-layers] [--include-deleted] [--category=ID]
       config list         Show every setting, with secret values hidden.
       config get NAME     Print one value in full, secret or not.
       config set NAME VALUE
@@ -860,6 +860,11 @@ function wc_cmd_export(array $argv): int
   $GLOBALS['cat_filter'] = wc_opt($argv, 'category');
   $GLOBALS['include_layers']
     = in_array('--include-layers', $argv, true) ? 'y' : '';
+  // The Export page's checkbox, and off by default here for the same reason:
+  // a deleted event is one somebody removed, and resurrecting them on the way
+  // back in would be a surprise.
+  $GLOBALS['include_deleted']
+    = in_array('--include-deleted', $argv, true) ? 'y' : '';
   // The Export page prefills a date window. A calendar exported from a shell
   // is wanted whole, so the default here is every date.
   $GLOBALS['use_all_dates'] = ($from === '' && $to === '') ? 'y' : '';
