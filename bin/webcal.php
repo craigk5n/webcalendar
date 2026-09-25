@@ -52,6 +52,8 @@ function wc_usage(int $exitCode): never
       db dump [--output=FILE]
                           Dump the webcal_* tables as SQL, to standard output
                           or to FILE, which is created readable only by you.
+      db check            Report whether an upgrade is pending, and apply
+                          nothing. Exit 0 up to date, 1 pending, 2 unknown.
       user reset-password --login=NAME [--stdin]
                           Set a new password. One is generated and printed
                           unless --stdin is given, in which case it is read
@@ -345,8 +347,13 @@ function wc_cmd_reset(array $argv): int
  */
 function wc_cmd_db(array $argv): int
 {
+  if (($argv[0] ?? '') === 'check') {
+    return wc_db_check();
+  }
+
   if (($argv[0] ?? '') !== 'dump') {
-    fwrite(STDERR, "Usage: php bin/webcal.php db dump [--output=FILE]\n");
+    fwrite(STDERR, "Usage: php bin/webcal.php db dump [--output=FILE]\n"
+      . "       php bin/webcal.php db check\n");
     return 1;
   }
 
@@ -405,6 +412,93 @@ function wc_cmd_db(array $argv): int
 /**
  * @return list<string>
  */
+/**
+ * Reports whether the schema matches the program, and applies nothing.
+ *
+ * The same comparison do_config() makes when it decides whether to send a
+ * browser to the wizard, with an exit status instead of a redirect, so a
+ * deployment can ask the question without a browser: 0 up to date, 1 an
+ * upgrade is pending, 2 the answer could not be established.
+ */
+function wc_db_check(): int
+{
+  $program = (string) ($GLOBALS['PROGRAM_VERSION'] ?? '');
+  $type = (string) ($GLOBALS['db_type'] ?? '');
+
+  // Read directly rather than through dbi_get_cached_rows(). A stale cache
+  // file pinned the old version and looped the administrator back to the
+  // wizard on every request (#639); includes/config.php reads it the same way
+  // and says so for the same reason.
+  $stored = null;
+  $res = dbi_execute("SELECT cal_value FROM webcal_config
+    WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'", [], false, false);
+  if ($res) {
+    $row = dbi_fetch_row($res);
+    if ($row && isset($row[0])) {
+      $stored = (string) $row[0];
+    }
+    dbi_free_result($res);
+  }
+
+  $tables = wc_webcal_tables($type);
+
+  printf("%-18s %s\n", 'Program version:',
+    $program === '' ? '(unknown)' : $program);
+  printf("%-18s %s\n", 'Database version:',
+    ($stored === null || $stored === '') ? '(no row)' : $stored);
+  printf("%-18s %d\n", 'webcal_ tables:', count($tables));
+  echo "\n";
+
+  if ($stored === null || $stored === '') {
+    fwrite(STDERR, "webcal_config holds no WEBCAL_PROGRAM_VERSION row, so "
+      . "there is nothing to compare against.\nA complete installation always "
+      . "has one; run the wizard.\n");
+    return 2;
+  }
+
+  if ($stored === $program) {
+    echo "Up to date. Nothing to apply.\n";
+    return 0;
+  }
+
+  $normalise = static fn (string $v): string
+    => str_replace('v', '', strtolower($v));
+
+  if (version_compare($normalise($stored), $normalise($program), '>')) {
+    fwrite(STDERR, "The database is ahead of the code: $stored against "
+      . "$program.\nThat is an older WebCalendar deployed over a database "
+      . "another copy has already upgraded. Deploy the matching version "
+      . "rather than moving the schema back.\n");
+    return 2;
+  }
+
+  // Soft dependency, and deliberately so: administrators are told they may
+  // remove wizard/ once installed, and upgrade_requires_db_changes() answers
+  // conservatively when it is gone. Worth saying which of the two happened.
+  $upgradeSql = WC_ROOT . '/wizard/shared/upgrade-sql.php';
+
+  if (!upgrade_requires_db_changes($type, $stored, $program)) {
+    // config.php's own handling of this case: no schema delta, so it calls
+    // update_webcalendar_version_in_db() and carries on. No wizard needed.
+    echo "No upgrade steps are recorded between $stored and $program, so the "
+      . "schema itself matches.\nThe stored version is behind and is brought "
+      . "forward automatically on the next page load.\n";
+    return 0;
+  }
+
+  echo "An upgrade is pending: $stored to $program.\n\n";
+  if (!is_file($upgradeSql)) {
+    echo "wizard/ is not present, so which steps apply cannot be read from "
+      . "here and this answer is the conservative one. Restore the directory "
+      . "from the release to upgrade.\n";
+  } else {
+    echo "Run wizard/index.php in a browser, or wizard/headless.php from a "
+      . "shell. Nothing was changed by this command.\n";
+  }
+
+  return 1;
+}
+
 function wc_webcal_tables(string $type): array
 {
   // Asked of the live database rather than taken from a list in this file,
@@ -1143,6 +1237,17 @@ switch ($command) {
     exit(wc_cmd_reset($argv));
   case 'db':
     $wcEnv = wc_bootstrap();
+
+    if (($argv[0] ?? '') === 'check') {
+      // upgrade_requires_db_changes() is in functions.php, which assigns at
+      // file scope like the rest -- hence the require here rather than inside
+      // a function. Only `check` needs it; `dump` shells out.
+      if (!defined('_ISVALID')) {
+        define('_ISVALID', true);
+      }
+      require_once WC_ROOT . '/includes/translate.php';
+      require_once WC_ROOT . '/includes/functions.php';
+    }
     // Listing the tables needs a working connection. Without one the query
     // below would reach into an extension that is not loaded and raise a
     // fatal, which is what dbi_connect() was just taught not to do.
