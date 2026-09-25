@@ -58,10 +58,6 @@ class WebCalendar {
      [
        ['Config', 'PHPDBI', 'Functions'],
        ['User', 'Validate', 'Connect', 'SiteExtras', 'Access']],
-    '/^convert_passwords\.php$/' =>
-    [
-      ['Config', 'PHPDBI'],
-      []],
     '/^send_reminders|send_test_email|populate_sqlite3|reload_remotes\.php$/' =>
     [
       ['Config', 'PHPDBI', 'Functions'],
