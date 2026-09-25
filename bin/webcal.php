@@ -49,6 +49,10 @@ function wc_usage(int $exitCode): never
            [--force]      needs --force or WEBCAL_ALLOW_SEED=1.
       seed --list         Show the available scenarios.
       reset [--force]     Remove every calendar entry. Same requirements.
+      user reset-password --login=NAME [--stdin]
+                          Set a new password. One is generated and printed
+                          unless --stdin is given, in which case it is read
+                          from standard input.
       help                Show this message.
 
     TXT);
@@ -266,6 +270,84 @@ function wc_cmd_reset(array $argv): int
   return 0;
 }
 
+function wc_cmd_user(array $argv): int
+{
+  $action = $argv[0] ?? '';
+  if ($action !== 'reset-password') {
+    fwrite(STDERR, "Usage: php bin/webcal.php user reset-password --login=NAME [--stdin]\n");
+    return 1;
+  }
+
+  $login = '';
+  foreach ($argv as $arg) {
+    if (str_starts_with($arg, '--login=')) {
+      $login = substr($arg, 8);
+    }
+  }
+
+  if ($login === '') {
+    fwrite(STDERR, "Missing --login=NAME.\n");
+    return 1;
+  }
+
+  if (!user_load_variables($login, 'wc_reset_')) {
+    fwrite(STDERR, "No such user: $login\n");
+    return 1;
+  }
+
+  $password = wc_read_or_generate_password($argv);
+
+  if (!user_update_user_password($login, $password)) {
+    fwrite(STDERR, "Could not update the password: "
+      . ($GLOBALS['error'] ?? 'unknown error') . "\n");
+    return 1;
+  }
+
+  // The activity log is how an administrator finds out this happened.
+  //
+  // 'u' is LOG_USER_UPDATE. The constant is defined in
+  // WebCalendar::_initFunctions(), which this command does not run -- it
+  // loads configuration and the database layer only -- so referring to the
+  // constant here would silently skip the audit entry.
+  activity_log(0, $login, $login, 'u', 'Password reset from the command line');
+
+  echo "Password reset for $login.\n";
+  if (!in_array('--stdin', $argv, true)) {
+    echo "\n  $password\n\n";
+    echo "Shown once. It is stored only as a hash.\n";
+  }
+
+  return 0;
+}
+
+/**
+ * A generated password, or one read from standard input.
+ *
+ * Deliberately not accepted as a command-line option: arguments are visible
+ * in ps output and land in shell history.
+ */
+function wc_read_or_generate_password(array $argv): string
+{
+  if (!in_array('--stdin', $argv, true)) {
+    // Unambiguous alphabet: no O/0, l/1, I.
+    $alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';
+    $password = '';
+    for ($i = 0; $i < 20; $i++) {
+      $password .= $alphabet[random_int(0, strlen($alphabet) - 1)];
+    }
+
+    return $password;
+  }
+
+  $password = trim((string) fgets(STDIN));
+  if ($password === '') {
+    fwrite(STDERR, "No password on standard input.\n");
+    exit(1);
+  }
+
+  return $password;
+}
+
 $argv = $_SERVER['argv'] ?? [];
 array_shift($argv);
 $command = array_shift($argv) ?? '';
@@ -277,6 +359,38 @@ switch ($command) {
     exit(wc_cmd_seed($argv));
   case 'reset':
     exit(wc_cmd_reset($argv));
+  case 'user':
+    // Loaded here rather than inside a function on purpose.
+    // includes/auth-settings.php assigns around twenty-five configuration
+    // variables at file scope, and includes/user.php reads them, so requiring
+    // either from inside a function would make them function-local and the
+    // user layer would see nothing. Same reason config.php is loaded above.
+    wc_bootstrap();
+
+    // Changing webcal_user.cal_passwd only affects logins when WebCalendar is
+    // the thing checking passwords. With LDAP, IMAP, NIS or Joomla the
+    // password lives elsewhere, and writing that column would report success
+    // while the user stayed locked out.
+    $wcUserInc = basename((string) ($GLOBALS['user_inc'] ?? 'user.php'));
+    if ($wcUserInc !== 'user.php') {
+      fwrite(STDERR, "This installation authenticates through $wcUserInc, so "
+        . "passwords are not stored in WebCalendar.\nReset it there instead;"
+        . " changing the local column would not affect logins.\n");
+      exit(1);
+    }
+
+    // The marker that these files were not reached directly over HTTP.
+    // WebCalendar::_initFunctions() normally sets it; js_cacher.php and
+    // css_cacher.php set it themselves for the same reason. The SAPI guard at
+    // the top of this file already makes direct HTTP access impossible.
+    if (!defined('_ISVALID')) {
+      define('_ISVALID', true);
+    }
+    require_once WC_ROOT . '/includes/translate.php';
+    require_once WC_ROOT . '/includes/functions.php';
+    require_once WC_ROOT . '/includes/' . $wcUserInc;
+
+    exit(wc_cmd_user($argv));
   case 'help':
   case '--help':
   case '-h':
