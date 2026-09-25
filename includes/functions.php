@@ -2978,6 +2978,11 @@ function get_remote_calendar_last_checked($username)
 // identical, we can skip the new import.
 function get_remote_calendar_last_md5($username)
 {
+  // A calendar with no previous import has no hash. Without this $ret is
+  // undefined on the first refresh of every subscription, which PHP 8 reports
+  // as a warning -- and it reached the terminal in the middle of the output
+  // from tools/reload_remotes.php.
+  $ret = '';
   $sql = 'SELECT cal_md5 FROM webcal_import WHERE cal_login = ? ORDER BY cal_import_id DESC LIMIT 1';
   $rows = dbi_get_cached_rows($sql, [$username]);
   if ($rows && is_array($rows)) {
@@ -2988,6 +2993,8 @@ function get_remote_calendar_last_md5($username)
 
 function update_import_check_date($username)
 {
+  // Same as above: nothing to update when there is no import to update.
+  $ret = '';
   $sql = 'SELECT MAX(cal_import_id) FROM webcal_import WHERE cal_login = ?';
   $rows = dbi_get_cached_rows($sql, [$username]);
   if ($rows && is_array($rows)) {
@@ -3007,6 +3014,14 @@ function load_remote_calendar($username, $url)
 {
   global $calUser, $count_suc, $error_num,
   $errormsg, $importMd5, $login, $numDeleted;
+
+  // One call reports on one calendar. parse_ical() appends to $errormsg and
+  // nothing ever cleared it, so a failure left behind by the calendar before
+  // this one made this one fail too: the import below is gated on
+  // empty($errormsg) and the return value is derived from it. Reloading a
+  // whole list, as tools/reload_remotes.php does, meant one unreachable URL
+  // silently stopped every calendar after it from refreshing.
+  $errormsg = '';
 
   // Set global vars used in xcal.php (blech)
   $data = [];
