@@ -80,6 +80,19 @@ final class ConfigPolicy
    */
   private const SECRET_NAME = '/(PASS|PASSWORD|TOKEN|SECRET|APIKEY|API_KEY|PRIVKEY|SALT|CRYPT)/i';
 
+  /**
+   * Whether a setting's value should be kept out of ordinary output.
+   *
+   * Separate from classify() because the two answer different questions.
+   * classify() decides what belongs in a bug report, which is a deliberately
+   * short list; `webcal.php config list` shows every setting an installation
+   * has and needs to hide only the values that are secrets.
+   */
+  public static function isSecret(string $key): bool
+  {
+    return preg_match(self::SECRET_NAME, $key) === 1;
+  }
+
   public static function classify(string $key): string
   {
     if (in_array($key, self::PRESENCE_ONLY, true)) {
@@ -89,9 +102,7 @@ final class ConfigPolicy
       return self::OMITTED;
     }
 
-    return preg_match(self::SECRET_NAME, $key) === 1
-      ? self::PRESENCE
-      : self::SHOWN;
+    return self::isSecret($key) ? self::PRESENCE : self::SHOWN;
   }
 
   /**
