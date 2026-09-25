@@ -749,7 +749,14 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
     $sql .= " AND weu.cal_status IN ('W','A')";
   }
 
-  if ( ! empty ( $type ) && $type = 'publish' ) {
+  // Was `! empty ( $type ) && $type = 'publish'`. That inner `=` is an
+  // assignment, so the condition reduced to "any non-empty $type" and set
+  // $type to 'publish' on the way through. publish.php is the one caller that
+  // wants this restriction, and it is the one page that serves another user's
+  // calendar to an unauthenticated visitor; approve_entry.php takes $type
+  // straight from the request, so approving an event with any type parameter
+  // silently filtered its own email attachment down to public events.
+  if ( $type == 'publish' ) {
     if ( $USER_REMOTE_ACCESS == 0 ) {
       $sql .= " AND we.cal_access = 'P'";
     } else if ( $USER_REMOTE_ACCESS == 1 ) {

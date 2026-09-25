@@ -853,9 +853,9 @@ function wc_cmd_export(array $argv): int
   // export_get_event_entry() reads every one of these through `global`.
   $GLOBALS['login'] = $login;
   $GLOBALS['user'] = '';
-  // Empty on purpose. The publish filter there reads `$type = 'publish'` --
-  // an assignment, not a comparison -- so any non-empty value switches it on
-  // and drops every event not marked public.
+  // Empty on purpose: this is not publish.php, so the public-events-only
+  // restriction must not apply. It used to apply to any non-empty value,
+  // because the condition was an assignment rather than a comparison.
   $GLOBALS['type'] = '';
   $GLOBALS['cat_filter'] = wc_opt($argv, 'category');
   $GLOBALS['include_layers']
