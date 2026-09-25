@@ -49,6 +49,9 @@ function wc_usage(int $exitCode): never
            [--force]      needs --force or WEBCAL_ALLOW_SEED=1.
       seed --list         Show the available scenarios.
       reset [--force]     Remove every calendar entry. Same requirements.
+      db dump [--output=FILE]
+                          Dump the webcal_* tables as SQL, to standard output
+                          or to FILE, which is created readable only by you.
       user reset-password --login=NAME [--stdin]
                           Set a new password. One is generated and printed
                           unless --stdin is given, in which case it is read
@@ -270,6 +273,187 @@ function wc_cmd_reset(array $argv): int
   return 0;
 }
 
+/**
+ * Dumps the webcal_* tables by handing the work to the database's own tool.
+ *
+ * Reimplementing this in PHP would mean getting quoting, ordering and
+ * constraints right on three backends, and a backup that does not restore is
+ * worse than no backup. mysqldump, pg_dump and sqlite3 already do it.
+ *
+ * The value here is that an administrator does not have to dig credentials
+ * out of settings.php, which is the same reason `diagnose` exists.
+ *
+ * Only the webcal_* tables are included. The configured database may hold
+ * other applications' tables, and they are not WebCalendar's to copy.
+ */
+function wc_cmd_db(array $argv): int
+{
+  if (($argv[0] ?? '') !== 'dump') {
+    fwrite(STDERR, "Usage: php bin/webcal.php db dump [--output=FILE]\n");
+    return 1;
+  }
+
+  $output = '';
+  foreach ($argv as $arg) {
+    if (str_starts_with($arg, '--output=')) {
+      $output = substr($arg, 9);
+    }
+  }
+
+  $type = (string) ($GLOBALS['db_type'] ?? '');
+  $tables = wc_webcal_tables($type);
+  if ($tables === []) {
+    fwrite(STDERR, "No webcal_ tables found. Is this the right database?\n");
+    return 1;
+  }
+
+  [$command, $env, $cleanup] = wc_dump_command($type, $tables);
+  if ($command === []) {
+    return 1;
+  }
+
+  $binary = $command[0];
+  if (wc_which($binary) === null) {
+    fwrite(STDERR, "$binary is not installed or not on PATH.\n"
+      . "It ships with the database client package for " . $type . ".\n");
+    $cleanup();
+    return 1;
+  }
+
+  // 0600: a dump is every event, every user and every hashed password.
+  $target = $output === '' ? 'php://stdout' : $output;
+  if ($output !== '') {
+    touch($output);
+    chmod($output, 0600);
+  }
+
+  $descriptors = [1 => ['file', $target, 'w'], 2 => ['file', 'php://stderr', 'w']];
+  $process = proc_open($command, $descriptors, $pipes, null, $env);
+  $status = is_resource($process) ? proc_close($process) : 1;
+
+  $cleanup();
+
+  if ($status !== 0) {
+    fwrite(STDERR, "$binary exited with status $status.\n");
+    return 1;
+  }
+
+  if ($output !== '') {
+    fwrite(STDERR, 'Wrote ' . count($tables) . " tables to $output\n");
+  }
+
+  return 0;
+}
+
+/**
+ * @return list<string>
+ */
+function wc_webcal_tables(string $type): array
+{
+  // Asked of the live database rather than taken from a list in this file,
+  // which would drift from the schema.
+  //
+  // The pattern is deliberately loose. LIKE treats _ as a single-character
+  // wildcard and the three backends disagree about escaping it -- MySQL's
+  // SHOW TABLES and SQLite's .dump do not accept ESCAPE at all -- so the
+  // prefix is matched exactly in PHP below instead of three ways in SQL.
+  $sql = match (true) {
+    str_contains($type, 'sqlite') =>
+      "SELECT name FROM sqlite_master WHERE type = 'table' AND name LIKE 'webcal%' ORDER BY name",
+    str_contains($type, 'postgres') =>
+      "SELECT tablename FROM pg_tables WHERE tablename LIKE 'webcal%' ORDER BY tablename",
+    default =>
+      "SHOW TABLES LIKE 'webcal%'",
+  };
+
+  $res = @dbi_execute($sql);
+  if (!$res) {
+    return [];
+  }
+
+  $tables = [];
+  while ($row = dbi_fetch_row($res)) {
+    $name = (string) ($row[0] ?? '');
+    if (str_starts_with($name, 'webcal_')) {
+      $tables[] = $name;
+    }
+  }
+  dbi_free_result($res);
+
+  return $tables;
+}
+
+/**
+ * The command, its environment, and a cleanup callback.
+ *
+ * Passwords never reach the argument list: those are visible in ps output to
+ * every user on the machine. MySQL gets a 0600 defaults file, PostgreSQL gets
+ * PGPASSWORD in the child's environment, and SQLite has no credentials.
+ *
+ * @param list<string> $tables
+ * @return array{0: list<string>, 1: array<string, string>|null, 2: callable}
+ */
+function wc_dump_command(string $type, array $tables): array
+{
+  $nothing = static function (): void {};
+  $host = (string) ($GLOBALS['db_host'] ?? '');
+  $database = (string) ($GLOBALS['db_database'] ?? '');
+  $login = (string) ($GLOBALS['db_login'] ?? '');
+  $password = (string) ($GLOBALS['db_password'] ?? '');
+
+  if (str_contains($type, 'sqlite')) {
+    // .dump takes a LIKE pattern and does not accept ESCAPE, so the
+    // underscore here is a single-character wildcard rather than a literal.
+    // Every table in the schema begins with the literal "webcal_", and
+    // nothing else begins with "webcal", so the match is the same set.
+    return [['sqlite3', $database, ".dump 'webcal_%'"], null, $nothing];
+  }
+
+  if (str_contains($type, 'postgres')) {
+    $command = ['pg_dump', '--no-owner', '--no-privileges'];
+    if ($host !== '') {
+      $command[] = '--host=' . $host;
+    }
+    if ($login !== '') {
+      $command[] = '--username=' . $login;
+    }
+    foreach ($tables as $table) {
+      $command[] = '--table=' . $table;
+    }
+    $command[] = $database;
+
+    return [$command, ['PGPASSWORD' => $password] + getenv(), $nothing];
+  }
+
+  // MySQL and MariaDB. --defaults-extra-file has to be the first argument.
+  $file = tempnam(sys_get_temp_dir(), 'wcdump');
+  if ($file === false) {
+    fwrite(STDERR, "Could not create a temporary credentials file.\n");
+    return [[], null, $nothing];
+  }
+  chmod($file, 0600);
+  file_put_contents($file, "[client]\nuser=" . $login . "\npassword=\""
+    . str_replace('"', '\\"', $password) . "\"\n"
+    . ($host === '' ? '' : 'host=' . $host . "\n"));
+
+  $command = ['mysqldump', '--defaults-extra-file=' . $file,
+    '--single-transaction', '--no-tablespaces', $database];
+  foreach ($tables as $table) {
+    $command[] = $table;
+  }
+
+  return [$command, null, static function () use ($file): void {
+    @unlink($file);
+  }];
+}
+
+function wc_which(string $binary): ?string
+{
+  $path = trim((string) shell_exec('command -v ' . escapeshellarg($binary) . ' 2>/dev/null'));
+
+  return $path === '' ? null : $path;
+}
+
 function wc_cmd_user(array $argv): int
 {
   $action = $argv[0] ?? '';
@@ -359,6 +543,19 @@ switch ($command) {
     exit(wc_cmd_seed($argv));
   case 'reset':
     exit(wc_cmd_reset($argv));
+  case 'db':
+    $wcEnv = wc_bootstrap();
+    // Listing the tables needs a working connection. Without one the query
+    // below would reach into an extension that is not loaded and raise a
+    // fatal, which is what dbi_connect() was just taught not to do.
+    if (($wcEnv['db_server_version'] ?? '') !== ''
+      && !str_starts_with((string) $wcEnv['db_server_version'], '(')) {
+      exit(wc_cmd_db($argv));
+    }
+    fwrite(STDERR, 'Cannot reach the database: '
+      . ($wcEnv['db_server_version'] ?? '(unknown)') . "\n"
+      . "Run `php bin/webcal.php diagnose` to see the configuration.\n");
+    exit(1);
   case 'user':
     // Loaded here rather than inside a function on purpose.
     // includes/auth-settings.php assigns around twenty-five configuration
