@@ -77,8 +77,9 @@ $debug = false; // Set to true to print debug info...
 // Establish a database connection.
 $c = dbi_connect($db_host, $db_login, $db_password, $db_database, true);
 if (!$c) {
-  echo translate('Error connecting to database') . ': ' . dbi_error();
-  exit;
+  echo translate('Error connecting to database') . ': ' . dbi_error() . "\n";
+  // Non-zero so cron, and `webcal.php remotes refresh`, can tell.
+  exit(1);
 }
 
 load_global_settings();
@@ -135,9 +136,9 @@ if ($REMOTES_ENABLED == 'Y') {
     dbi_free_result($res);
   }
   if ($cnt == 0)
-    echo "<br>\n" . translate('No Remote Calendars found');
+    echo translate('No Remote Calendars found') . "\n";
 } else {
-  echo "<br>\n" . translate('Remote Calendars not enabled');
+  echo translate('Remote Calendars not enabled') . "\n";
 }
 
 ?>

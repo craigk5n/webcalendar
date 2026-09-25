@@ -56,6 +56,12 @@ function wc_usage(int $exitCode): never
                           Set a new password. One is generated and printed
                           unless --stdin is given, in which case it is read
                           from standard input.
+      reminders send      Send the email reminders that are due. The same work
+                          as the documented cron entry, which keeps working.
+      remotes refresh     Reload every calendar subscribed to a remote URL.
+      email test --to=ADDRESS
+                          Send one message with the configured mail settings
+                          and say why it failed if it did.
       help                Show this message.
 
     TXT);
@@ -532,6 +538,92 @@ function wc_read_or_generate_password(array $argv): string
   return $password;
 }
 
+/**
+ * Sends one message through the configured mailer.
+ *
+ * docs/admin-guide.md, faq.md, security.md and troubleshooting.md told
+ * administrators to run tools/send_test_email.php for this. That script was
+ * never committed, so no release has ever contained it.
+ */
+function wc_cmd_email(array $argv): int
+{
+  if (($argv[0] ?? '') !== 'test') {
+    fwrite(STDERR, "Usage: php bin/webcal.php email test --to=ADDRESS\n");
+    return 1;
+  }
+
+  $to = '';
+  foreach ($argv as $arg) {
+    if (str_starts_with($arg, '--to=')) {
+      $to = substr($arg, 5);
+    }
+  }
+  if ($to === '') {
+    fwrite(STDERR, "Missing --to=ADDRESS. Send the test somewhere you can "
+      . "read it.\n");
+    return 1;
+  }
+  if (filter_var($to, FILTER_VALIDATE_EMAIL) === false) {
+    fwrite(STDERR, "Not an email address: $to\n");
+    return 1;
+  }
+
+  $mailer = (string) ($GLOBALS['EMAIL_MAILER'] ?? 'mail');
+  $from = (string) ($GLOBALS['EMAIL_FALLBACK_FROM'] ?? '');
+
+  echo "Mailer:  $mailer\n";
+  if ($mailer === 'smtp') {
+    echo 'Server:  ' . ($GLOBALS['SMTP_HOST'] ?? '(none configured)') . ':'
+      . ($GLOBALS['SMTP_PORT'] ?? '(no port)') . "\n";
+    echo 'Auth:    ' . ((($GLOBALS['SMTP_AUTH'] ?? '') === 'Y')
+      ? 'yes, as ' . ($GLOBALS['SMTP_USERNAME'] ?? '(no username)')
+      : 'no') . "\n";
+  }
+  echo "From:    " . ($from === '' ? '(not set)' : $from) . "\n";
+  echo "To:      $to\n\n";
+
+  if ($from === '' || $from === 'youremailhere') {
+    fwrite(STDERR, "Admin > Settings > Email has no sender address, so the "
+      . "message would be sent with an empty From header and most servers "
+      . "will reject it.\n");
+    return 1;
+  }
+
+  // WebCalMailer reports failures by appending to this global rather than
+  // returning a reason; approve_entry.php and edit_entry_handler.php read it
+  // the same way. Cleared first so an earlier message cannot be reported.
+  $GLOBALS['mailerError'] = '';
+
+  $mail = new WebCalMailer();
+  $sent = $mail->WC_Send(
+    'WebCalendar',
+    $to,
+    $to,
+    'Test message',
+    "This is a test message from WebCalendar.\n\nIf you are reading it, "
+      . "outgoing mail works.\n"
+  );
+
+  if ($sent) {
+    echo "Sent. If it does not arrive, the message left WebCalendar and the "
+      . "problem is beyond it:\ncheck the mail server log, the spam folder "
+      . "and SPF or DKIM for the sender domain.\n";
+    return 0;
+  }
+
+  // LastError() is PHPMailer's own account of the failure. $mailerError is
+  // where WebCalMailer collects its own, which is what the web pages read.
+  $reason = trim((string) $mail->LastError());
+  if ($reason === '') {
+    $reason = trim(strip_tags(str_replace('<br>', "\n",
+      (string) ($GLOBALS['mailerError'] ?? ''))));
+  }
+  fwrite(STDERR, "Not sent.\n"
+    . ($reason === '' ? "The mailer gave no reason.\n" : "$reason\n"));
+
+  return 1;
+}
+
 $argv = $_SERVER['argv'] ?? [];
 array_shift($argv);
 $command = array_shift($argv) ?? '';
@@ -588,6 +680,65 @@ switch ($command) {
     require_once WC_ROOT . '/includes/' . $wcUserInc;
 
     exit(wc_cmd_user($argv));
+  case 'reminders':
+  case 'remotes':
+    [$wcVerb, $wcScript] = $command === 'reminders'
+      ? ['send', 'send_reminders.php']
+      : ['refresh', 'reload_remotes.php'];
+
+    if (($argv[0] ?? '') !== $wcVerb) {
+      fwrite(STDERR, "Usage: php bin/webcal.php $command $wcVerb\n");
+      exit(1);
+    }
+
+    $wcScript = WC_ROOT . '/tools/' . $wcScript;
+    if (!is_file($wcScript)) {
+      fwrite(STDERR, "Missing " . $wcScript . ".\n");
+      exit(1);
+    }
+
+    // Run rather than reimplemented, and required here rather than from a
+    // function. These are top-level scripts: they resolve their includes
+    // against '../includes/' and assign configuration at file scope, so
+    // pulled in from inside a function those assignments would be
+    // function-local and the script would see nothing. Hence the chdir too.
+    //
+    // The documented cron entries keep working unchanged, which is the point
+    // -- send_reminders.php emails users and nothing tests what it selects.
+    chdir(dirname($wcScript));
+    require $wcScript;
+    exit(0);
+  case 'email':
+    wc_bootstrap();
+
+    // Same reason as the user command below: these files assign at file
+    // scope and are read through `global`.
+    if (!defined('_ISVALID')) {
+      define('_ISVALID', true);
+    }
+    require_once WC_ROOT . '/includes/translate.php';
+    require_once WC_ROOT . '/includes/functions.php';
+    require_once WC_ROOT . '/includes/'
+      . basename((string) ($GLOBALS['user_inc'] ?? 'user.php'));
+    load_global_settings();
+
+    // load_translation_text() opens translations/<language>.txt by a relative
+    // path, and WebCalMailer's constructor asks translate() for 'charset',
+    // which returns its own argument while $LANGUAGE is empty -- the mailer
+    // would take the literal string 'charset' as its encoding. Both want the
+    // install directory as the working directory and a language chosen.
+    chdir(WC_ROOT);
+    $wcLanguage = (string) ($GLOBALS['LANGUAGE'] ?? '');
+    if ($wcLanguage === '' || $wcLanguage === 'none'
+      || $wcLanguage === 'Browser-defined') {
+      // Nothing to ask: there is no browser on this side.
+      $wcLanguage = 'English-US';
+    }
+    $GLOBALS['LANGUAGE'] = $wcLanguage;
+    reset_language($wcLanguage);
+
+    require_once WC_ROOT . '/includes/classes/WebCalMailer.php';
+    exit(wc_cmd_email($argv));
   case 'help':
   case '--help':
   case '-h':

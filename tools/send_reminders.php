@@ -114,8 +114,9 @@ $only_testing = false; // Just pretend to send -- for debugging.
 // Establish a database connection.
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database, true );
 if ( ! $c ) {
-  echo translate( 'Error connecting to database' ) . ': ' . dbi_error();
-  exit;
+  echo translate( 'Error connecting to database' ) . ': ' . dbi_error() . "\n";
+  // Non-zero so cron, and `webcal.php reminders send`, can tell.
+  exit( 1 );
 }
 
 load_global_settings();
