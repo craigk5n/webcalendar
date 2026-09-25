@@ -52,6 +52,8 @@ function wc_usage(int $exitCode): never
       db dump [--output=FILE]
                           Dump the webcal_* tables as SQL, to standard output
                           or to FILE, which is created readable only by you.
+      db check            Report whether an upgrade is pending, and apply
+                          nothing. Exit 0 up to date, 1 pending, 2 unknown.
       user reset-password --login=NAME [--stdin]
                           Set a new password. One is generated and printed
                           unless --stdin is given, in which case it is read
@@ -62,6 +64,22 @@ function wc_usage(int $exitCode): never
       email test --to=ADDRESS
                           Send one message with the configured mail settings
                           and say why it failed if it did.
+      export --login=NAME Write a calendar as iCalendar, to standard output or
+             [--output=FILE]   to FILE, which is created readable only by you.
+             [--from=YYYYMMDD --to=YYYYMMDD]
+                          Every date unless a range is given.
+             [--include-layers] [--category=ID]
+      config list         Show every setting, with secret values hidden.
+      config get NAME     Print one value in full, secret or not.
+      config set NAME VALUE
+                          Store a value the way Admin > Settings does.
+                          An unrecognised name needs --force.
+      import --login=NAME --file=FILE [--overwrite] [--category=ID]
+                          Import an .ics or .vcs file into a calendar.
+                          Importing the same file twice updates the events it
+                          created rather than duplicating them; --overwrite
+                          also marks what an earlier import left behind as
+                          deleted.
       help                Show this message.
 
     TXT);
@@ -104,12 +122,47 @@ function wc_bootstrap(): array
     return $env;
   }
 
+  wc_init_query_cache();
+
   $env['db_server_version'] = wc_db_server_version((string) $type);
   $env['settings'] = wc_db_settings();
   $env['db_schema_version'] = $env['settings']['WEBCAL_PROGRAM_VERSION']
     ?? '(unknown)';
 
   return $env;
+}
+
+/**
+ * Tells this process where the query cache lives.
+ *
+ * do_config() only calls dbi_init_cache() when it is not being called from an
+ * installer, and every command here passes $callingFromInstall = true so that
+ * a missing settings.php produces a report rather than a redirect. The cost is
+ * that dbi_execute()'s automatic invalidation -- it clears the cache on
+ * anything that is not a SELECT -- had nothing to clear, because this process
+ * did not know the directory existed.
+ *
+ * That silently mattered for every command that writes. An installation with
+ * db_cachedir set serves webcal_config and the user rows out of
+ * {db_cachedir}/*.dat, so a setting changed or a password reset from here
+ * would not be seen by the web server until something else happened to clear
+ * the cache. Issue #639 is the same failure with the schema version.
+ */
+function wc_init_query_cache(): void
+{
+  $settings = $GLOBALS['settings'] ?? [];
+  if (!is_array($settings)) {
+    return;
+  }
+
+  // The order do_config() uses: db_cachedir first, then cachedir.
+  $dir = (string) ($settings['db_cachedir'] ?? '');
+  if ($dir === '') {
+    $dir = (string) ($settings['cachedir'] ?? '');
+  }
+  if ($dir !== '') {
+    dbi_init_cache($dir);
+  }
 }
 
 function wc_db_server_version(string $type): string
@@ -294,8 +347,13 @@ function wc_cmd_reset(array $argv): int
  */
 function wc_cmd_db(array $argv): int
 {
+  if (($argv[0] ?? '') === 'check') {
+    return wc_db_check();
+  }
+
   if (($argv[0] ?? '') !== 'dump') {
-    fwrite(STDERR, "Usage: php bin/webcal.php db dump [--output=FILE]\n");
+    fwrite(STDERR, "Usage: php bin/webcal.php db dump [--output=FILE]\n"
+      . "       php bin/webcal.php db check\n");
     return 1;
   }
 
@@ -354,6 +412,93 @@ function wc_cmd_db(array $argv): int
 /**
  * @return list<string>
  */
+/**
+ * Reports whether the schema matches the program, and applies nothing.
+ *
+ * The same comparison do_config() makes when it decides whether to send a
+ * browser to the wizard, with an exit status instead of a redirect, so a
+ * deployment can ask the question without a browser: 0 up to date, 1 an
+ * upgrade is pending, 2 the answer could not be established.
+ */
+function wc_db_check(): int
+{
+  $program = (string) ($GLOBALS['PROGRAM_VERSION'] ?? '');
+  $type = (string) ($GLOBALS['db_type'] ?? '');
+
+  // Read directly rather than through dbi_get_cached_rows(). A stale cache
+  // file pinned the old version and looped the administrator back to the
+  // wizard on every request (#639); includes/config.php reads it the same way
+  // and says so for the same reason.
+  $stored = null;
+  $res = dbi_execute("SELECT cal_value FROM webcal_config
+    WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'", [], false, false);
+  if ($res) {
+    $row = dbi_fetch_row($res);
+    if ($row && isset($row[0])) {
+      $stored = (string) $row[0];
+    }
+    dbi_free_result($res);
+  }
+
+  $tables = wc_webcal_tables($type);
+
+  printf("%-18s %s\n", 'Program version:',
+    $program === '' ? '(unknown)' : $program);
+  printf("%-18s %s\n", 'Database version:',
+    ($stored === null || $stored === '') ? '(no row)' : $stored);
+  printf("%-18s %d\n", 'webcal_ tables:', count($tables));
+  echo "\n";
+
+  if ($stored === null || $stored === '') {
+    fwrite(STDERR, "webcal_config holds no WEBCAL_PROGRAM_VERSION row, so "
+      . "there is nothing to compare against.\nA complete installation always "
+      . "has one; run the wizard.\n");
+    return 2;
+  }
+
+  if ($stored === $program) {
+    echo "Up to date. Nothing to apply.\n";
+    return 0;
+  }
+
+  $normalise = static fn (string $v): string
+    => str_replace('v', '', strtolower($v));
+
+  if (version_compare($normalise($stored), $normalise($program), '>')) {
+    fwrite(STDERR, "The database is ahead of the code: $stored against "
+      . "$program.\nThat is an older WebCalendar deployed over a database "
+      . "another copy has already upgraded. Deploy the matching version "
+      . "rather than moving the schema back.\n");
+    return 2;
+  }
+
+  // Soft dependency, and deliberately so: administrators are told they may
+  // remove wizard/ once installed, and upgrade_requires_db_changes() answers
+  // conservatively when it is gone. Worth saying which of the two happened.
+  $upgradeSql = WC_ROOT . '/wizard/shared/upgrade-sql.php';
+
+  if (!upgrade_requires_db_changes($type, $stored, $program)) {
+    // config.php's own handling of this case: no schema delta, so it calls
+    // update_webcalendar_version_in_db() and carries on. No wizard needed.
+    echo "No upgrade steps are recorded between $stored and $program, so the "
+      . "schema itself matches.\nThe stored version is behind and is brought "
+      . "forward automatically on the next page load.\n";
+    return 0;
+  }
+
+  echo "An upgrade is pending: $stored to $program.\n\n";
+  if (!is_file($upgradeSql)) {
+    echo "wizard/ is not present, so which steps apply cannot be read from "
+      . "here and this answer is the conservative one. Restore the directory "
+      . "from the release to upgrade.\n";
+  } else {
+    echo "Run wizard/index.php in a browser, or wizard/headless.php from a "
+      . "shell. Nothing was changed by this command.\n";
+  }
+
+  return 1;
+}
+
 function wc_webcal_tables(string $type): array
 {
   // Asked of the live database rather than taken from a list in this file,
@@ -494,12 +639,8 @@ function wc_cmd_user(array $argv): int
   }
 
   // The activity log is how an administrator finds out this happened.
-  //
-  // 'u' is LOG_USER_UPDATE. The constant is defined in
-  // WebCalendar::_initFunctions(), which this command does not run -- it
-  // loads configuration and the database layer only -- so referring to the
-  // constant here would silently skip the audit entry.
-  activity_log(0, $login, $login, 'u', 'Password reset from the command line');
+  activity_log(0, $login, $login, LOG_USER_UPDATE,
+    'Password reset from the command line');
 
   echo "Password reset for $login.\n";
   if (!in_array('--stdin', $argv, true)) {
@@ -624,6 +765,465 @@ function wc_cmd_email(array $argv): int
   return 1;
 }
 
+/**
+ * The value given to --name=..., or '' when the option is absent.
+ */
+function wc_opt(array $argv, string $name): string
+{
+  $prefix = '--' . $name . '=';
+  foreach ($argv as $arg) {
+    if (str_starts_with($arg, $prefix)) {
+      return substr($arg, strlen($prefix));
+    }
+  }
+
+  return '';
+}
+
+/**
+ * Chooses a language and makes translate() work.
+ *
+ * load_translation_text() opens translations/<language>.txt by a relative
+ * path, so the install directory has to be the working directory, and
+ * translate() hands back its own argument while $LANGUAGE is empty.
+ */
+function wc_init_language(): void
+{
+  chdir(WC_ROOT);
+
+  $language = (string) ($GLOBALS['LANGUAGE'] ?? '');
+  if ($language === '' || $language === 'none'
+    || $language === 'Browser-defined') {
+    // Nothing to ask: there is no browser on this side.
+    $language = 'English-US';
+  }
+  $GLOBALS['LANGUAGE'] = $language;
+  reset_language($language);
+}
+
+/**
+ * Confirms a calendar exists before reading from or writing to it.
+ */
+function wc_require_login(array $argv, string $prefix): ?string
+{
+  $login = wc_opt($argv, 'login');
+  if ($login === '') {
+    fwrite(STDERR, "Missing --login=NAME.\n");
+    return null;
+  }
+  if (!user_load_variables($login, $prefix)) {
+    fwrite(STDERR, "No such user: $login\n");
+    return null;
+  }
+
+  return $login;
+}
+
+/**
+ * Writes a calendar as iCalendar.
+ *
+ * Deliberately the same code path as export_handler.php, so the file this
+ * produces is the file the Export page produces. That includes exporting
+ * through export_ical()'s echo rather than asking it to return the document:
+ * the returning branch exists for email attachments and skips
+ * save_uid_for_event(), so the UIDs in the file would not be recorded and a
+ * later --overwrite import would duplicate every event instead of replacing
+ * it.
+ */
+function wc_cmd_export(array $argv): int
+{
+  $login = wc_require_login($argv, 'wc_export_');
+  if ($login === null) {
+    return 1;
+  }
+
+  $from = wc_opt($argv, 'from');
+  $to = wc_opt($argv, 'to');
+  foreach (['from' => $from, 'to' => $to] as $option => $value) {
+    if ($value !== '' && preg_match('/^\d{8}$/', $value) !== 1) {
+      fwrite(STDERR, "--$option takes a date as YYYYMMDD, not \"$value\".\n");
+      return 1;
+    }
+  }
+  if ($from !== '' && $to !== '' && $from > $to) {
+    fwrite(STDERR, "--from is after --to.\n");
+    return 1;
+  }
+
+  // export_get_event_entry() reads every one of these through `global`.
+  $GLOBALS['login'] = $login;
+  $GLOBALS['user'] = '';
+  // Empty on purpose. The publish filter there reads `$type = 'publish'` --
+  // an assignment, not a comparison -- so any non-empty value switches it on
+  // and drops every event not marked public.
+  $GLOBALS['type'] = '';
+  $GLOBALS['cat_filter'] = wc_opt($argv, 'category');
+  $GLOBALS['include_layers']
+    = in_array('--include-layers', $argv, true) ? 'y' : '';
+  // The Export page prefills a date window. A calendar exported from a shell
+  // is wanted whole, so the default here is every date.
+  $GLOBALS['use_all_dates'] = ($from === '' && $to === '') ? 'y' : '';
+  $GLOBALS['startdate'] = $from === '' ? '00000000' : $from;
+  $GLOBALS['enddate'] = $to === '' ? '99991231' : $to;
+  $GLOBALS['moddate'] = '00000000';
+  // A backup that leaves out events awaiting approval is not a backup. The
+  // page uses whatever the exporting user happens to prefer.
+  $GLOBALS['DISPLAY_UNAPPROVED'] = 'Y';
+
+  if ($GLOBALS['include_layers'] !== '') {
+    load_user_layers();
+  }
+
+  ob_start();
+  export_ical('all');
+  $ics = (string) ob_get_clean();
+
+  // Two ways to come back with nothing, and they used to answer differently:
+  // export_ical() returns before writing a byte when the query matches no
+  // rows, but a category filter that excludes every event leaves a valid
+  // VCALENDAR with nothing in it. Counting components treats both the same,
+  // so a backup can never quietly be an empty file.
+  $components = preg_match_all('/^BEGIN:(VEVENT|VTODO|VJOURNAL)\r?$/m', $ics);
+  if ($components === 0 || $components === false) {
+    fwrite(STDERR, "No events matched, so nothing was written.\n");
+    return 1;
+  }
+
+  // The buffer catches whatever was printed, which on an installation with
+  // display_errors pointed at standard output would include any PHP notice
+  // raised while building the document. Refusing beats writing a file that
+  // says it is a calendar and is not.
+  if (!str_starts_with($ics, 'BEGIN:VCALENDAR')) {
+    fwrite(STDERR, "The export did not begin with BEGIN:VCALENDAR, so "
+      . "something was printed into it. Nothing was written. First line:\n  "
+      . strtok($ics, "\n") . "\n");
+    return 1;
+  }
+
+  $output = wc_opt($argv, 'output');
+  if ($output === '') {
+    echo $ics;
+    return 0;
+  }
+
+  // 0600 before the first byte: a calendar is personal data, and the same
+  // reasoning as `db dump`.
+  touch($output);
+  chmod($output, 0600);
+  if (file_put_contents($output, $ics) === false) {
+    fwrite(STDERR, "Could not write $output\n");
+    return 1;
+  }
+
+  fwrite(STDERR, 'Wrote ' . $components . ' events, ' . strlen($ics)
+    . " bytes, to $output\n");
+
+  return 0;
+}
+
+/**
+ * Reads an iCalendar or vCalendar file into a calendar.
+ *
+ * import.php also offers Palm, Outlook CSV and git log, each through its own
+ * parser and its own page-level setup. The two calendar formats are the ones
+ * worth driving from a shell.
+ */
+function wc_cmd_import(array $argv): int
+{
+  $login = wc_require_login($argv, 'wc_import_');
+  if ($login === null) {
+    return 1;
+  }
+
+  $file = wc_opt($argv, 'file');
+  if ($file === '') {
+    fwrite(STDERR, "Missing --file=FILE.\n");
+    return 1;
+  }
+  if (!is_file($file) || !is_readable($file)) {
+    fwrite(STDERR, "Cannot read $file\n");
+    return 1;
+  }
+
+  $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+  $GLOBALS['errormsg'] = '';
+  $GLOBALS['tz'] = $GLOBALS['tz'] ?? 0;
+
+  if ($extension === 'ics' || $extension === 'ical') {
+    $GLOBALS['ImportType'] = 'ICAL';
+    $type = 'ical';
+    $data = parse_ical($file);
+  } elseif ($extension === 'vcs' || $extension === 'vcal') {
+    $GLOBALS['ImportType'] = 'VCAL';
+    $type = 'vcal';
+    $data = parse_vcal($file);
+  } else {
+    fwrite(STDERR, "Cannot tell the format of $file from its name. Expected "
+      . ".ics or .vcs; import.php handles the other formats.\n");
+    return 1;
+  }
+
+  if ((string) ($GLOBALS['errormsg'] ?? '') !== '') {
+    fwrite(STDERR, 'Could not parse the file: '
+      . strip_tags((string) $GLOBALS['errormsg']) . "\n");
+    return 1;
+  }
+  if (empty($data)) {
+    fwrite(STDERR, "No events found in $file\n");
+    return 1;
+  }
+
+  $GLOBALS['calUser'] = $login;
+  // The actor recorded in the activity log. There is no session here, so the
+  // owner of the calendar is the closest true answer.
+  $GLOBALS['login'] = $login;
+  $GLOBALS['importcat'] = wc_opt($argv, 'category');
+  $GLOBALS['count_suc'] = 0;
+  $GLOBALS['count_con'] = 0;
+  $GLOBALS['error_num'] = 0;
+  $GLOBALS['numDeleted'] = 0;
+
+  $overwrite = in_array('--overwrite', $argv, true);
+
+  // true = silent. Otherwise import_data() writes an HTML conflict report,
+  // headings and all, which is what import_handler.php wants and this does
+  // not. load_remote_calendar() passes it for the same reason.
+  import_data($data, $overwrite, $type, true);
+
+  echo "Imported " . basename($file) . " into $login\n";
+  printf("  events imported:    %d\n", (int) $GLOBALS['count_suc']);
+  printf("  marked deleted:     %d\n", (int) $GLOBALS['numDeleted']);
+  printf("  conflicts skipped:  %d\n", (int) $GLOBALS['count_con']);
+  printf("  errors:             %d\n", (int) $GLOBALS['error_num']);
+
+  if ((string) ($GLOBALS['errormsg'] ?? '') !== '') {
+    fwrite(STDERR, strip_tags((string) $GLOBALS['errormsg']) . "\n");
+  }
+
+  return ((int) $GLOBALS['error_num']) > 0 ? 1 : 0;
+}
+
+/**
+ * Reads and writes webcal_config, the table behind Admin > Settings.
+ *
+ * The reason to have this is the case Admin > Settings cannot reach: a
+ * setting that stops the administrator logging in or renders the admin page
+ * unusable. It deliberately does not touch includes/settings.php, which holds
+ * the database credentials and is the installer's business.
+ */
+function wc_cmd_config(array $argv): int
+{
+  $action = $argv[0] ?? '';
+
+  return match ($action) {
+    'list' => wc_config_list(),
+    'get' => wc_config_get($argv[1] ?? ''),
+    'set' => wc_config_set($argv[1] ?? '', $argv[2] ?? null, $argv),
+    default => wc_config_usage(),
+  };
+}
+
+function wc_config_usage(): int
+{
+  fwrite(STDERR, <<<TXT
+    Usage: php bin/webcal.php config list
+           php bin/webcal.php config get NAME
+           php bin/webcal.php config set NAME VALUE [--force]
+
+    TXT);
+
+  return 1;
+}
+
+/**
+ * @return array<string, string> setting name => stored value
+ */
+function wc_config_rows(): array
+{
+  $rows = [];
+  $res = dbi_execute('SELECT cal_setting, cal_value FROM webcal_config');
+  if (!$res) {
+    return $rows;
+  }
+  while ($row = dbi_fetch_row($res)) {
+    $rows[(string) $row[0]] = (string) ($row[1] ?? '');
+  }
+  dbi_free_result($res);
+  ksort($rows);
+
+  return $rows;
+}
+
+function wc_config_list(): int
+{
+  $rows = wc_config_rows();
+  if ($rows === []) {
+    fwrite(STDERR, "webcal_config is empty. Is this installation set up?\n");
+    return 1;
+  }
+
+  $hidden = 0;
+  $width = max(array_map('strlen', array_keys($rows)));
+
+  foreach ($rows as $name => $value) {
+    if (\WebCalendar\Diagnostics\ConfigPolicy::isSecret($name)) {
+      $hidden++;
+      // Presence still matters: whether a token exists is half of most
+      // support questions about one.
+      $shown = $value === '' ? '(empty)' : '(set, hidden)';
+    } else {
+      $shown = $value === '' ? '(empty)' : $value;
+    }
+    printf("%-{$width}s  %s\n", $name, $shown);
+  }
+
+  fwrite(STDERR, "\n" . count($rows) . ' settings, ' . $hidden
+    . " hidden as secrets.\nconfig get NAME prints one value in full.\n");
+
+  return 0;
+}
+
+function wc_config_get(string $name): int
+{
+  if ($name === '') {
+    fwrite(STDERR, "Usage: php bin/webcal.php config get NAME\n");
+    return 1;
+  }
+
+  $name = strtoupper($name);
+  $rows = wc_config_rows();
+
+  if (array_key_exists($name, $rows)) {
+    // The value alone on standard output, so it can be read by a script.
+    echo $rows[$name] . "\n";
+    return 0;
+  }
+
+  // A row holding '' and no row at all are different states, and treating
+  // them alike is what issue #734 was about: call sites disagreed on what an
+  // absent setting meant.
+  require_once WC_ROOT . '/includes/default_config.php';
+  $defaults = webcal_config_defaults();
+
+  fwrite(STDERR, "$name has no row in webcal_config.\n");
+  if (array_key_exists($name, $defaults)) {
+    fwrite(STDERR, 'The built-in default is "' . $defaults[$name]
+      . "\".\n");
+  } else {
+    fwrite(STDERR, "It is not a setting this version knows about either.\n");
+  }
+
+  return 1;
+}
+
+function wc_config_set(string $name, ?string $value, array $argv): int
+{
+  if ($name === '' || $value === null) {
+    fwrite(STDERR, "Usage: php bin/webcal.php config set NAME VALUE\n"
+      . "Clear a setting with an empty value: config set NAME ''\n");
+    return 1;
+  }
+
+  $name = strtoupper($name);
+  // The character set Admin > Settings accepts, which is what the column has
+  // held for twenty years.
+  if (preg_match('/^[A-Z0-9_]+$/', $name) !== 1) {
+    fwrite(STDERR, "A setting name is letters, digits and underscores: "
+      . "\"$name\" is not.\n");
+    return 1;
+  }
+
+  $forced = in_array('--force', $argv, true);
+
+  // Not a preference. wizard/ reads it to decide which upgrade steps an
+  // installation still needs, so a hand-edited value makes the wizard skip
+  // migrations or run them twice.
+  if ($name === 'WEBCAL_PROGRAM_VERSION' && !$forced) {
+    fwrite(STDERR, "WEBCAL_PROGRAM_VERSION records the schema the database is "
+      . "at, not a preference.\nThe installation wizard reads it to decide "
+      . "which upgrades to apply. --force if you are sure.\n");
+    return 1;
+  }
+
+  $rows = wc_config_rows();
+  require_once WC_ROOT . '/includes/default_config.php';
+  $known = array_keys(webcal_config_defaults());
+
+  if (!array_key_exists($name, $rows) && !in_array($name, $known, true)
+    && !$forced) {
+    fwrite(STDERR, "$name is not a setting this version knows about, and has "
+      . "no row already.\n");
+    $near = wc_config_near_matches($name, array_unique(
+      array_merge($known, array_keys($rows))));
+    if ($near !== []) {
+      fwrite(STDERR, 'Did you mean: ' . implode(', ', $near) . "?\n");
+    }
+    fwrite(STDERR, "--force to store it anyway.\n");
+    return 1;
+  }
+
+  $before = $rows[$name] ?? null;
+
+  // DELETE then INSERT, the way admin.php and load_global_settings() do it:
+  // cal_setting is the primary key, so a bare INSERT fails when the row is
+  // already there. The row is always written back rather than left absent,
+  // because '' is a recorded choice and a missing row is not (#734).
+  //
+  // No cache to invalidate by hand: dbi_execute() clears the query cache
+  // itself on anything that is not a SELECT.
+  if (!dbi_execute('DELETE FROM webcal_config WHERE cal_setting = ?',
+    [$name], false, false)) {
+    fwrite(STDERR, 'Could not remove the old row: ' . dbi_error() . "\n");
+    return 1;
+  }
+  if (!dbi_execute('INSERT INTO webcal_config ( cal_setting, cal_value ) '
+    . 'VALUES ( ?, ? )', [$name, $value], false, false)) {
+    fwrite(STDERR, 'Could not write the new row: ' . dbi_error() . "\n");
+    return 1;
+  }
+
+  $secret = \WebCalendar\Diagnostics\ConfigPolicy::isSecret($name);
+  $render = static function (?string $v) use ($secret): string {
+    if ($v === null) {
+      return '(no row)';
+    }
+    if ($v === '') {
+      return '(empty)';
+    }
+
+    return $secret ? '(hidden)' : '"' . $v . '"';
+  };
+
+  echo "$name\n";
+  echo '  was: ' . $render($before) . "\n";
+  echo '  now: ' . $render($value) . "\n";
+
+  return 0;
+}
+
+/**
+ * Setting names close enough to $name to be worth suggesting.
+ *
+ * A typed SEND_EMAILS for SEND_EMAIL would otherwise store a row nothing
+ * reads, and the administrator would be left wondering why the change had no
+ * effect.
+ *
+ * @param list<string> $candidates
+ * @return list<string>
+ */
+function wc_config_near_matches(string $name, array $candidates): array
+{
+  $near = [];
+  foreach ($candidates as $candidate) {
+    if (levenshtein($name, $candidate) <= 3) {
+      $near[] = $candidate;
+    }
+  }
+  sort($near);
+
+  return array_slice($near, 0, 5);
+}
+
 $argv = $_SERVER['argv'] ?? [];
 array_shift($argv);
 $command = array_shift($argv) ?? '';
@@ -637,6 +1237,17 @@ switch ($command) {
     exit(wc_cmd_reset($argv));
   case 'db':
     $wcEnv = wc_bootstrap();
+
+    if (($argv[0] ?? '') === 'check') {
+      // upgrade_requires_db_changes() is in functions.php, which assigns at
+      // file scope like the rest -- hence the require here rather than inside
+      // a function. Only `check` needs it; `dump` shells out.
+      if (!defined('_ISVALID')) {
+        define('_ISVALID', true);
+      }
+      require_once WC_ROOT . '/includes/translate.php';
+      require_once WC_ROOT . '/includes/functions.php';
+    }
     // Listing the tables needs a working connection. Without one the query
     // below would reach into an extension that is not loaded and raise a
     // fatal, which is what dbi_connect() was just taught not to do.
@@ -648,6 +1259,17 @@ switch ($command) {
       . ($wcEnv['db_server_version'] ?? '(unknown)') . "\n"
       . "Run `php bin/webcal.php diagnose` to see the configuration.\n");
     exit(1);
+  case 'config':
+    $wcEnv = wc_bootstrap();
+    if (($wcEnv['db_server_version'] ?? '') === ''
+      || str_starts_with((string) $wcEnv['db_server_version'], '(')) {
+      fwrite(STDERR, 'Cannot reach the database: '
+        . ($wcEnv['db_server_version'] ?? '(unknown)') . "\n"
+        . "Run `php bin/webcal.php diagnose` to see the configuration.\n");
+      exit(1);
+    }
+    require_once WC_ROOT . '/includes/classes/Diagnostics/ConfigPolicy.php';
+    exit(wc_cmd_config($argv));
   case 'user':
     // Loaded here rather than inside a function on purpose.
     // includes/auth-settings.php assigns around twenty-five configuration
@@ -675,6 +1297,7 @@ switch ($command) {
     if (!defined('_ISVALID')) {
       define('_ISVALID', true);
     }
+    require_once WC_ROOT . '/includes/activity-log-constants.php';
     require_once WC_ROOT . '/includes/translate.php';
     require_once WC_ROOT . '/includes/functions.php';
     require_once WC_ROOT . '/includes/' . $wcUserInc;
@@ -709,36 +1332,38 @@ switch ($command) {
     require $wcScript;
     exit(0);
   case 'email':
+  case 'export':
+  case 'import':
     wc_bootstrap();
 
     // Same reason as the user command below: these files assign at file
-    // scope and are read through `global`.
+    // scope and are read through `global`, so they cannot be required from
+    // inside a function. xcal.php holds the export and import functions, and
+    // WebCalMailer pulls it in anyway for ICS attachments.
     if (!defined('_ISVALID')) {
       define('_ISVALID', true);
     }
+    require_once WC_ROOT . '/includes/activity-log-constants.php';
     require_once WC_ROOT . '/includes/translate.php';
     require_once WC_ROOT . '/includes/functions.php';
     require_once WC_ROOT . '/includes/'
       . basename((string) ($GLOBALS['user_inc'] ?? 'user.php'));
+    require_once WC_ROOT . '/includes/xcal.php';
     load_global_settings();
 
-    // load_translation_text() opens translations/<language>.txt by a relative
-    // path, and WebCalMailer's constructor asks translate() for 'charset',
-    // which returns its own argument while $LANGUAGE is empty -- the mailer
-    // would take the literal string 'charset' as its encoding. Both want the
-    // install directory as the working directory and a language chosen.
-    chdir(WC_ROOT);
-    $wcLanguage = (string) ($GLOBALS['LANGUAGE'] ?? '');
-    if ($wcLanguage === '' || $wcLanguage === 'none'
-      || $wcLanguage === 'Browser-defined') {
-      // Nothing to ask: there is no browser on this side.
-      $wcLanguage = 'English-US';
-    }
-    $GLOBALS['LANGUAGE'] = $wcLanguage;
-    reset_language($wcLanguage);
+    // WebCalMailer's constructor asks translate() for 'charset' and would
+    // otherwise be handed the literal string 'charset' as its encoding;
+    // export and import translate category and status names.
+    wc_init_language();
 
-    require_once WC_ROOT . '/includes/classes/WebCalMailer.php';
-    exit(wc_cmd_email($argv));
+    if ($command === 'email') {
+      require_once WC_ROOT . '/includes/classes/WebCalMailer.php';
+      exit(wc_cmd_email($argv));
+    }
+
+    exit($command === 'export'
+      ? wc_cmd_export($argv)
+      : wc_cmd_import($argv));
   case 'help':
   case '--help':
   case '-h':

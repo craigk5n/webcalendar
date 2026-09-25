@@ -98,6 +98,7 @@ import_outlookcsv.php
 import_palmdesktop.php
 import.php
 includes/access.php
+includes/activity-log-constants.php
 includes/ajax.php
 includes/assert.php
 includes/auth-settings.php
