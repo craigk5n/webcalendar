@@ -1,5 +1,7 @@
 <?php
 
+
+require_once __DIR__ . '/McpServerFixture.php';
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . "/../includes/dbi4php.php";
@@ -17,12 +19,16 @@ final class McpTokenExtractionTest extends TestCase
     private static $db_file = null;
     private static $api_token = null;
     private static $server_pid = null;
-    private static $server_port = 8100;
+    private static $server_port = 0;
+    private static $server_log = null;
 
     public static function setUpBeforeClass(): void
     {
+        // Per-run port and paths; see tests/McpServerFixture.php.
+        self::$server_port = McpServerFixture::freePort();
+        self::$server_log = McpServerFixture::tempPath('mcp-token-test-server', '.log');
         self::$db_dir = sys_get_temp_dir();
-        self::$db_file = self::$db_dir . '/mcp_token_test.sqlite';
+        self::$db_file = McpServerFixture::tempPath('mcp_token_test', '.sqlite');
 
         // Create database directory
         if (!file_exists(self::$db_dir)) {
@@ -120,7 +126,7 @@ final class McpTokenExtractionTest extends TestCase
             'MCP_TOKEN= WEBCALENDAR_USE_ENV=true WEBCALENDAR_DB_TYPE=sqlite3 WEBCALENDAR_DB_DATABASE=%s',
             self::$db_file
         );
-        $cmd = sprintf('%s php -S localhost:%d -t %s > /tmp/mcp-token-test-server.log 2>&1 & echo $!', $env, self::$server_port, $project_dir);
+        $cmd = sprintf('%s php -S localhost:%d -t %s > ' . self::$server_log . ' 2>&1 & echo $!', $env, self::$server_port, $project_dir);
         
         exec($cmd, $output);
         self::$server_pid = (int)$output[0];
@@ -237,7 +243,10 @@ final class McpTokenExtractionTest extends TestCase
     {
         // Create a test script that simulates the bug scenario
         // where MCP_TOKEN is empty but Bearer token is provided
-        $test_script = __DIR__ . '/test_bearer_bug.php';
+        // Per-run: two test runs writing this one path meant whichever
+        // finished first deleted the file the other was still using.
+        $test_script = __DIR__ . '/test_bearer_bug-' . getmypid() . '-'
+            . bin2hex(random_bytes(4)) . '.php';
         $test_code = <<<PHP
 <?php
 // Simulate the MCP token extraction logic from mcp.php
@@ -300,7 +309,9 @@ PHP;
     public function test_duplicate_fallback_does_not_override_valid_tokens(): void
     {
         // Create a test script that simulates the exact mcp.php logic
-        $test_script = __DIR__ . '/test_duplicate_bug.php';
+        // Per-run, for the same reason as the bearer probe above.
+        $test_script = __DIR__ . '/test_duplicate_bug-' . getmypid() . '-'
+            . bin2hex(random_bytes(4)) . '.php';
         $test_code = <<<PHP
 <?php
 // Simulate the exact MCP token extraction logic from mcp.php

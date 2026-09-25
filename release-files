@@ -106,6 +106,8 @@ includes/classes/AttachmentList.php
 includes/classes/Diagnostics/Collector.php
 includes/classes/Diagnostics/ConfigPolicy.php
 includes/classes/Diagnostics/Report.php
+includes/classes/Event/EventService.php
+includes/classes/Event/NewEvent.php
 includes/classes/captcha/captcha.php
 includes/classes/captcha/COLLEGE.ttf
 includes/classes/captcha/README

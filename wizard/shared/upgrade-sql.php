@@ -701,4 +701,23 @@ SQL,
     'version' => 'v1.9.23',
     'default-sql' => ''
   ],
+  [
+    'version' => 'v1.9.24',
+    // Correct webcal_entry.cal_type for recurring events created through the
+    // MCP server. add_recurring_event omitted the column and inherited the
+    // schema default of 'E', so those events were labelled one-offs even
+    // though they have a webcal_entry_repeats row. edit_entry_handler.php has
+    // always written 'M' for a repeating event.
+    //
+    // Nothing displayed wrongly -- the view and export queries accept 'E' and
+    // 'M' alike -- so this corrects the stored value rather than repairing a
+    // visible fault. It is scoped by the join, so an event without a
+    // recurrence row is never touched, and re-running it is a no-op.
+    //
+    // The subquery reads a different table from the one being updated, which
+    // MySQL, PostgreSQL and SQLite all allow.
+    'default-sql' => <<<'SQL'
+UPDATE webcal_entry SET cal_type = 'M' WHERE cal_type = 'E' AND cal_id IN ( SELECT cal_id FROM webcal_entry_repeats );
+SQL
+  ],
 ];
