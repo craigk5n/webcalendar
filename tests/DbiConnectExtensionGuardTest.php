@@ -63,15 +63,57 @@ final class DbiConnectExtensionGuardTest extends TestCase
   /**
    * A guard placed after the driver branches would never run.
    */
+  /**
+   * The map and the message are data. What turns them into a guard is the
+   * condition that reads them and returns before any driver is called, and
+   * nothing here tested that: replacing the condition with `if( false )` left
+   * the map intact, the message in place and every assertion in this file
+   * true, while the probe did nothing at all. Found by mutating dbi4php.php
+   * on 2026-09-25.
+   */
+  public function testTheProbeIsLive(): void
+  {
+    $src = $this->source();
+
+    $this->assertMatchesRegularExpression(
+      '/if\s*\(\s*\$driver\s*!==\s*\x27\x27\s*&&\s*!\s*'
+      . 'function_exists\s*\(\s*\$driver\s*\)\s*\)/',
+      $src,
+      'the probe has to evaluate function_exists($driver), not merely list '
+      . 'the driver functions in a map');
+
+    $this->assertMatchesRegularExpression(
+      '/if\s*\([^)]*db_type[^)]*sqlite3[^)]*!\s*class_exists\s*\('
+      . '\s*\x27SQLite3\x27\s*\)\s*\)/',
+      $src,
+      'the sqlite3 probe has to evaluate class_exists(), not merely mention '
+      . 'it');
+  }
+
+  /**
+   * Measured from the condition, not from the message it prints. The message
+   * stays where it is when the condition around it is disabled.
+   */
   public function testTheGuardPrecedesTheDriverBranches(): void
   {
     $src = $this->source();
 
-    $guardAt = strpos($src, 'is not loaded (');
+    $guardAt = strpos($src, 'function_exists( $driver )');
+    $sqliteAt = strpos($src, "class_exists( 'SQLite3' )");
     $firstDriverAt = strpos($src, "'ibase' ) == 0 ) {");
-    $this->assertNotFalse($guardAt);
+
+    $this->assertNotFalse($guardAt, 'no live extension probe');
+    $this->assertNotFalse($sqliteAt, 'no live sqlite3 probe');
     $this->assertNotFalse($firstDriverAt);
+
     $this->assertLessThan($firstDriverAt, $guardAt,
       'the extension probe must run before any driver call');
+    $this->assertLessThan($firstDriverAt, $sqliteAt,
+      'the sqlite3 probe must run before any driver call');
+
+    // A probe that does not return leaves the driver to be called anyway.
+    $between = substr($src, $guardAt, $firstDriverAt - $guardAt);
+    $this->assertSame(2, substr_count($between, 'return false;'),
+      'each probe must return before the driver branches are reached');
   }
 }

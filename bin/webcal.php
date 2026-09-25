@@ -68,7 +68,7 @@ function wc_usage(int $exitCode): never
              [--output=FILE]   to FILE, which is created readable only by you.
              [--from=YYYYMMDD --to=YYYYMMDD]
                           Every date unless a range is given.
-             [--include-layers] [--category=ID]
+             [--include-layers] [--include-deleted] [--category=ID]
       config list         Show every setting, with secret values hidden.
       config get NAME     Print one value in full, secret or not.
       config set NAME VALUE
@@ -853,13 +853,18 @@ function wc_cmd_export(array $argv): int
   // export_get_event_entry() reads every one of these through `global`.
   $GLOBALS['login'] = $login;
   $GLOBALS['user'] = '';
-  // Empty on purpose. The publish filter there reads `$type = 'publish'` --
-  // an assignment, not a comparison -- so any non-empty value switches it on
-  // and drops every event not marked public.
+  // Empty on purpose: this is not publish.php, so the public-events-only
+  // restriction must not apply. It used to apply to any non-empty value,
+  // because the condition was an assignment rather than a comparison.
   $GLOBALS['type'] = '';
   $GLOBALS['cat_filter'] = wc_opt($argv, 'category');
   $GLOBALS['include_layers']
     = in_array('--include-layers', $argv, true) ? 'y' : '';
+  // The Export page's checkbox, and off by default here for the same reason:
+  // a deleted event is one somebody removed, and resurrecting them on the way
+  // back in would be a surprise.
+  $GLOBALS['include_deleted']
+    = in_array('--include-deleted', $argv, true) ? 'y' : '';
   // The Export page prefills a date window. A calendar exported from a shell
   // is wanted whole, so the default here is every date.
   $GLOBALS['use_all_dates'] = ($from === '' && $to === '') ? 'y' : '';
