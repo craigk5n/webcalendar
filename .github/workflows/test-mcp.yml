@@ -7,23 +7,39 @@ on:
   workflow_dispatch:
   workflow_call:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
+  # tests/McpTest.php is already run on 8.2, 8.3 and 8.4 by ci.yml, which
+  # executes the whole suite -- tests/phpunit.xml takes every *Test.php in
+  # tests/. Running the same file again on the same three versions bought
+  # nothing and cost three jobs per push.
+  #
+  # What it does cover, and ci.yml cannot, is the invocation: phpunit here is
+  # called WITHOUT -c, so tests/phpunit.xml and its bootstrap are never read.
+  # A test that leans on the bootstrap to load a helper passes locally and
+  # fails here, which is how 57 "Class not found" errors once arrived.
+  # TestFixtureRequiresTest guards the source; this proves it for real, and it
+  # is the only place in CI that runs phpunit without a configuration file.
+  #
+  # One version is enough for that: what is under test is the absence of a
+  # bootstrap, not the language version. The floor is used so the check sits
+  # on the oldest thing still supported.
   mcp_unit_tests:
-    name: MCP Unit Tests (PHP ${{ matrix.php-version }})
+    name: MCP Unit Tests (no bootstrap)
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php-version: ['8.2', '8.3', '8.4']
     steps:
       - uses: actions/checkout@v7
 
-      - name: Set up PHP ${{ matrix.php-version }}
+      - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-version }}
+          php-version: '8.2'
 
       - name: Install dependencies
-        run: composer install
+        run: composer install --no-interaction --prefer-dist --no-progress
 
       - name: Run MCP unit tests
         run: vendor/bin/phpunit tests/McpTest.php
@@ -44,7 +60,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y jq sqlite3 curl
-          composer install
+          composer install --no-interaction --prefer-dist --no-progress
 
       - name: Run MCP integration tests
         run: |
