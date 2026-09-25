@@ -123,7 +123,7 @@ redaction and two thin renderers.
 
 ---
 
-## Pillar B — Maintenance dev loop
+## Pillar B — Maintenance dev loop — LANDED 2026-09-24
 
 **Goal:** an agent proves a fix without docker-compose, a browser and screenshots.
 
@@ -204,12 +204,21 @@ It stays shut until an administrator generates a token, stores only the token's
 SHA-256 hash, and logs each triggered run. The other nine scripts remain
 unconditionally command-line only.
 
-### C2. AI-signal lint
+### C2. AI-signal lint — LANDED 2026-09-24
 
 Port the mechanical checks from `AI-SIGNALS.md`: second-person comments, bookend
-section markers, trivial docblocks that restate the signature, and the buzzword
-list. Advisory at first so the existing backlog does not block CI, enforcing on
-changed files after a cleanup pass.
+section markers and the buzzword list.
+
+The plan assumed a backlog to clean up first. There isn't one worth cleaning:
+run over the whole tree the check reports about sixty findings, and nearly all
+are legitimate comments addressing an administrator directly ("You can test this
+script from the command line"). `AI-SIGNALS.md`'s premise that humans rarely
+write "you" holds for new application code, not for this tree.
+
+Scoping the check to lines a change *adds* removed the need for a cleanup pass
+entirely, so it went straight to enforcing. Trivial-docblock detection was
+dropped: deciding whether a docblock restates its signature needs judgement, and
+a false accusation costs more than a miss.
 
 ### C3. Release manifest completeness
 
@@ -225,7 +234,7 @@ listed would have caught it.
 
 Only where it serves support or maintenance.
 
-### D1. Event write path
+### D1. Event write path — LANDED 2026-09-24
 
 `mcp.php` forked event-creation logic from `edit_entry_handler.php`. Two copies
 exist and have already drifted; `tests/McpAddEventRaceConditionTest.php` and
@@ -256,12 +265,12 @@ tests before the refactor, not after.
 | 1 | B1 `bin/webcal` skeleton + SAPI guard | Everything else hangs off it |
 | 2 | ~~C1 CLI-only guard test~~ | **Done 2026-09-24.** Landed ahead of B1, since the exposure was live |
 | 3 | ~~A1–A4 diagnostics~~ | **Done 2026-09-24.** Shipped with a minimal `bin/webcal.php` rather than the full B1 dispatcher |
-| 4 | B3 `make check` | Makes the rest verifiable |
-| 5 | B2 seed/reset | Biggest maintenance win, wants `make check` first |
+| 4 | ~~B3 `make check`~~ | **Done 2026-09-24.** |
+| 5 | ~~B2 seed/reset~~ | **Done 2026-09-24.** Gated on SQLite + explicit opt-in, not on `mode` |
 | 6 | C3 manifest completeness | Cheap, prevents a repeat of #667 |
-| 7 | B4 codemap | Independent, do when convenient |
-| 8 | D1 event write path | Last; needs tests and the most care |
-| 9 | C2 AI-signal lint | Needs a cleanup pass to be enforceable |
+| 7 | ~~B4 codemap~~ | **Done 2026-09-24.** |
+| 8 | ~~D1 event write path~~ | **Done 2026-09-24.** Refactored against the existing MCP end-to-end tests |
+| 9 | ~~C2 AI-signal lint~~ | **Done 2026-09-24.** No cleanup pass needed: scoping to added lines made it enforceable immediately |
 
 Items 1–4 are worth doing regardless of what happens with WCTNG. Items 8–9 are
 worth reconsidering if legacy's timeline shortens.
@@ -304,6 +313,18 @@ prerequisite for anything.
 
 Also: root holds 98 PHP files. A `docs/` move would help agents orient, and
 would be disruptive to anyone carrying local patches.
+
+### Retiring the test-suite lock
+
+`tests/bootstrap.php` serialises runs because the suite used to corrupt itself
+when run twice. The underlying collisions are fixed as of 2026-09-24 and two
+full suites now pass in parallel, so the lock is a safety net rather than a
+requirement.
+
+It is kept for now because the failure it prevents is expensive to read -- a
+scatter of errors in unrelated tests -- and one new test with a fixed path
+would bring it back. Removing it would be reasonable alongside a check that
+fails when a test hard-codes a shared path.
 
 ### Observability
 
