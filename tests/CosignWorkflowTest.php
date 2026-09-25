@@ -52,6 +52,22 @@ final class CosignWorkflowTest extends TestCase
     );
   }
 
+  /**
+   * The action is third-party code that runs with the release job's token, so
+   * a tag would let its author change what runs here after the fact. The
+   * workflow already pins it by commit; nothing made that stay true, which a
+   * mutation swapping the digest for @main showed.
+   */
+  public function testCosignInstallerIsPinnedByCommit(): void
+  {
+    self::assertMatchesRegularExpression(
+      '/uses:\s*sigstore\/cosign-installer@[0-9a-f]{40}\b/',
+      $this->workflowSrc,
+      'sigstore/cosign-installer must be pinned to a 40-character commit '
+      . 'digest, not a tag or branch'
+    );
+  }
+
   public function testCosignVersionIsPinned(): void
   {
     // Pinning prevents silent behavior changes when cosign cuts a
