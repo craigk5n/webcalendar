@@ -151,8 +151,11 @@ Before reminders or notifications will work, configure email in
 Test your configuration:
 
 ```bash
-php tools/send_test_email.php
+php bin/webcal.php email test --to=you@example.com
 ```
+
+The command prints the mailer, server and sender it is about to use, then
+sends one message and reports the mail server's own reason if it fails.
 
 ### Notification Types
 

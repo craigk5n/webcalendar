@@ -77,8 +77,9 @@ $debug = false; // Set to true to print debug info...
 // Establish a database connection.
 $c = dbi_connect($db_host, $db_login, $db_password, $db_database, true);
 if (!$c) {
-  echo translate('Error connecting to database') . ': ' . dbi_error();
-  exit;
+  echo translate('Error connecting to database') . ': ' . dbi_error() . "\n";
+  // Non-zero so cron, and `webcal.php remotes refresh`, can tell.
+  exit(1);
 }
 
 load_global_settings();
@@ -92,6 +93,7 @@ if ($REMOTES_ENABLED == 'Y') {
   $res = dbi_execute('SELECT cal_login, cal_url, cal_admin ' .
     'FROM webcal_nonuser_cals WHERE cal_url IS NOT NULL');
   $cnt = 0;
+  $failed = 0;
   if ($res) {
     while ($row = dbi_fetch_row($res)) {
       $data = [];
@@ -114,30 +116,38 @@ if ($REMOTES_ENABLED == 'Y') {
         $data = parse_hcal($result, $type);
       }
 */
-      if (empty($errormsg) && !empty($cal_url)) {
-        if ($debug) {
-          echo "Loading calendar \"$calUser\" from URL: $cal_url\n";
-        }
-        $arr = load_remote_calendar($calUser, $cal_url);
-        if (empty($arr[0])) {
-          // Success (or not updated)
-          if (!empty($arr[3])) {
-            $message = $arr[3];
-          } else {
-            $message = $arr[1] . ' ' . translate('events added') . ', ' . $arr[2] . ' ' . translate('events deleted');
-          }
-        } else {
-          // Error
-          $error = $arr[3];
-        }
+      // The outer half of the same bug: this used to also require
+      // empty($errormsg), so once one calendar had failed every later one was
+      // counted and then skipped without a word. load_remote_calendar() now
+      // clears the global itself, and each calendar is reported below, so a
+      // failure is attributed to the subscription that caused it.
+      if (empty($cal_url))
+        continue;
+
+      if ($debug) {
+        echo "Loading calendar \"$calUser\" from URL: $cal_url\n";
+      }
+      $arr = load_remote_calendar($calUser, $cal_url);
+      if (empty($arr[0])) {
+        // Success (or not updated)
+        echo $calUser . ': ' . (!empty($arr[3]) ? $arr[3]
+          : $arr[1] . ' ' . translate('events added') . ', '
+            . $arr[2] . ' ' . translate('events deleted')) . "\n";
+      } else {
+        $failed++;
+        fwrite(STDERR, $calUser . ': '
+          . (!empty($arr[3]) ? $arr[3] : 'failed with no message') . "\n");
       }
     }
     dbi_free_result($res);
   }
   if ($cnt == 0)
-    echo "<br>\n" . translate('No Remote Calendars found');
+    echo translate('No Remote Calendars found') . "\n";
+  // Non-zero so cron can tell that some subscriptions did not refresh.
+  if ($failed > 0)
+    exit(1);
 } else {
-  echo "<br>\n" . translate('Remote Calendars not enabled');
+  echo translate('Remote Calendars not enabled') . "\n";
 }
 
 ?>
