@@ -198,6 +198,12 @@ Landed: a `PHP_SAPI` check answering 403 at the top of all 10 scripts,
 verified against a deliberately misplaced guard), and the removal of the
 `wget`-over-HTTP reminder cron from `docs/admin-guide.md`.
 
+Follow-up 2026-09-25: `convert_passwords.php` was deleted rather than left
+guarded. A guard stops it being reached over HTTP; it does not stop an
+administrator running the script the release ships. It md5s whatever
+`cal_passwd` already holds, so on a bcrypt installation it overwrites every
+hash with an unrecoverable one, and nothing has referenced it since 0.9.43.
+
 Follow-up, same day: hosts with no shell lost their only way to run reminders,
 so an admin-configurable web trigger was added for `send_reminders.php` alone.
 It stays shut until an administrator generates a token, stores only the token's
