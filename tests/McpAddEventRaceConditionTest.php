@@ -1,5 +1,7 @@
 <?php
 
+
+require_once __DIR__ . '/McpServerFixture.php';
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . "/../includes/dbi4php.php";
@@ -23,12 +25,16 @@ final class McpAddEventRaceConditionTest extends TestCase
     private static $db_file = null;
     private static $api_token = null;
     private static $server_pid = null;
-    private static $server_port = 8102;
+    private static $server_port = 0;
+    private static $server_log = null;
 
     public static function setUpBeforeClass(): void
     {
+        // Per-run port and paths; see tests/McpServerFixture.php.
+        self::$server_port = McpServerFixture::freePort();
+        self::$server_log = McpServerFixture::tempPath('mcp-race-test-server', '.log');
         self::$db_dir = sys_get_temp_dir();
-        self::$db_file = self::$db_dir . '/mcp_race_test.sqlite';
+        self::$db_file = McpServerFixture::tempPath('mcp_race_test', '.sqlite');
 
         // Create database directory
         if (!file_exists(self::$db_dir)) {
@@ -129,7 +135,7 @@ final class McpAddEventRaceConditionTest extends TestCase
             'MCP_TOKEN= WEBCALENDAR_USE_ENV=true WEBCALENDAR_DB_TYPE=sqlite3 WEBCALENDAR_DB_DATABASE=%s',
             self::$db_file
         );
-        $cmd = sprintf('%s php -S localhost:%d -t %s > /tmp/mcp-race-test-server.log 2>&1 & echo $!', $env, self::$server_port, $project_dir);
+        $cmd = sprintf('%s php -S localhost:%d -t %s > ' . self::$server_log . ' 2>&1 & echo $!', $env, self::$server_port, $project_dir);
 
         exec($cmd, $output);
         self::$server_pid = (int)$output[0];

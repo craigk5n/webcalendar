@@ -28,3 +28,32 @@ jobs:
       - name: Check PHP syntax
         run: |
           find . -name '*.php' -not -path './vendor/*' -exec php -l {} \;
+
+  ai-signals:
+    name: AI-writing signals (added lines)
+    runs-on: ubuntu-latest
+    # Only on pull requests: the check compares against the base branch, and
+    # there is nothing meaningful to diff a push to master against.
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          # The diff needs both sides, which a shallow clone does not have.
+          fetch-depth: 0
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Check lines this pull request adds
+        # Scoped to added lines on purpose. Run over the whole tree this
+        # reports about sixty findings, nearly all of them legitimate comments
+        # addressing an administrator directly, which is good writing for its
+        # audience. New code is held to the convention; existing prose is left
+        # where it is.
+        run: |
+          php tools/check-ai-signals.php \
+            --since=${{ github.event.pull_request.base.sha }} --strict
