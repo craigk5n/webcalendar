@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **`bin/webcal.php`**, a command-line entry point. Refuses to run under any SAPI but CLI
 
 - The PHP 8.1 and SQLite Docker dev environments are now tracked: `docker/Dockerfile-dev`, `docker/docker-compose-dev.yml`, `docker/docker-compose-prod.yml`, `docker/docker-compose-sqlite-dev.yml`, `docker/mysql-init.sql` and the selenium login tests under `docker/tests/`. `CLAUDE.md` and the developer docs referenced these but they had never been committed
+- `tests/TestFixtureRequiresTest.php` fails when a test uses a helper from `tests/` without requiring it. Not every invocation loads `tests/bootstrap.php`: `test-mcp.yml` runs phpunit with no `-c`, so relying on the bootstrap passes locally and fails in CI
 - `tests/DestructiveTestGuardTest.php` keeps that refusal in place: the guard must exist in each runner, must come before any docker command, and the workflow must keep supplying the override
 - `tests/PhpFloorConsistencyTest.php` locks the supported PHP version together across `composer.json`, `WizardValidator`, the CI matrices and the docs. They had drifted into four different answers
 - `tests/DockerReferencesTest.php` fails the build when a compose file, workflow or shell script names a Dockerfile or compose file that does not exist. The three Selenium wizard jobs reach `docker/Dockerfile-php8-dev` three hops down — workflow, to `tests/run-*-install-tests.sh`, to a `docker-compose-test-*.yml` `dockerfile:` key — so renaming it broke CI with nothing failing locally
@@ -48,6 +49,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Config defaults and `db_load_config()` moved from `wizard/shared/default_config.php` to `includes/default_config.php`. The wizard still reads it as the single source of truth, but it is no longer inside a directory administrators are told to delete (#707)
 
 ### Fixed
+
+- **The test suite can run concurrently with itself.** Six MCP test classes hard-coded a port (8099 to 8104), a SQLite file and a server log path, and `McpTestHelper`, `CrossDatabaseTestHelper` and two scratch scripts written into `tests/` used fixed paths too. All are machine-wide, so two runs deleted each other's databases and fought over the ports, surfacing as errors in unrelated tests. Ports now come from the operating system and every path is unique per run; `tests/McpServerFixture.php` holds both helpers. Two full suites in parallel now pass, where they previously produced around sixty errors each
 
 - **MCP recurring events are stored as repeating.** `add_recurring_event` omitted `cal_type` from its insert and inherited the `webcal_entry` column default of `'E'`, so every recurring event the MCP server created was labelled a one-off. `edit_entry_handler.php` is the authority on that column and sets `'M'` when a recurrence rule is present. Nothing broke visibly — the view and export queries accept `'E'` and `'M'` alike, which is why it went unnoticed — but the column said the wrong thing, and anything reading it for its documented meaning, such as a migration to a newer WebCalendar, would have been misled. Existing rows are not rewritten; see below
 

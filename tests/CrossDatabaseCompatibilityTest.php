@@ -1,5 +1,7 @@
 <?php
 
+
+require_once __DIR__ . '/McpServerFixture.php';
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . "/../includes/dbi4php.php";
@@ -120,7 +122,9 @@ final class CrossDatabaseCompatibilityTest extends TestCase
     private function getDatabaseConfig($dbType) {
         switch ($dbType) {
             case 'sqlite3':
-                return ['path' => sys_get_temp_dir() . '/webcalendar_' . $dbType . '_test.db'];
+                // Per-run, so two test runs cannot share one file.
+                return ['path' => McpServerFixture::tempPath(
+                    'webcalendar_' . $dbType . '_test', '.db')];
             case 'mysql':
             case 'postgresql':
                 return self::backendConfig($dbType) ?? [];

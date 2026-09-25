@@ -314,6 +314,18 @@ prerequisite for anything.
 Also: root holds 98 PHP files. A `docs/` move would help agents orient, and
 would be disruptive to anyone carrying local patches.
 
+### Retiring the test-suite lock
+
+`tests/bootstrap.php` serialises runs because the suite used to corrupt itself
+when run twice. The underlying collisions are fixed as of 2026-09-24 and two
+full suites now pass in parallel, so the lock is a safety net rather than a
+requirement.
+
+It is kept for now because the failure it prevents is expensive to read -- a
+scatter of errors in unrelated tests -- and one new test with a fixed path
+would bring it back. Removing it would be reasonable alongside a check that
+fails when a test hard-codes a shared path.
+
 ### Observability
 
 `bin/webcal log tail --json` over `webcal_entry_log`, plus PHP error log
