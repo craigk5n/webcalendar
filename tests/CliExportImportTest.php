@@ -45,10 +45,11 @@ final class CliExportImportTest extends TestCase
   }
 
   /**
-   * export_get_event_entry() contains `if ( ! empty ( $type ) && $type =
-   * 'publish' )`. That inner `=` is an assignment, so any non-empty $type
-   * switches the publish filter on and silently drops every event that is not
-   * marked public. The command has to leave it empty.
+   * export_get_event_entry() restricts the result to publicly visible events
+   * when $type is 'publish', which is what publish.php wants and an export
+   * from a shell does not. The command clears it rather than relying on it
+   * being unset, since $type is a global that any earlier code may have
+   * written. ExportAccessFilterTest covers the restriction itself.
    */
   public function testExportLeavesThePublishFilterOff(): void
   {

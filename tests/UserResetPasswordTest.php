@@ -30,6 +30,54 @@ final class UserResetPasswordTest extends TestCase
    * A password passed as an argument is visible in ps output and lands in
    * shell history, so the command generates one or reads standard input.
    */
+
+  /**
+   * The body of one function in bin/webcal.php, comments removed.
+   *
+   * File-wide assertions stopped meaning what they said once the command line
+   * grew several commands that share an idiom: a check for the idiom passed
+   * because another command still used it.
+   */
+  private function functionBody(string $name): string
+  {
+    $src = $this->source();
+
+    $start = strpos($src, 'function ' . $name . '(');
+    self::assertNotFalse($start, "bin/webcal.php must define $name()");
+
+    $open = strpos($src, '{', $start);
+    $depth = 0;
+    $end = $open;
+    for ($i = $open; $i < strlen($src); $i++) {
+      if ($src[$i] === '{') {
+        $depth++;
+      }
+      if ($src[$i] === '}') {
+        $depth--;
+        if ($depth === 0) {
+          $end = $i;
+          break;
+        }
+      }
+    }
+
+    $body = substr($src, $open, $end - $open + 1);
+    $out = '';
+    foreach (token_get_all('<?php ' . $body) as $token) {
+      if (is_array($token)) {
+        if ($token[0] === T_COMMENT || $token[0] === T_DOC_COMMENT
+          || $token[0] === T_OPEN_TAG) {
+          continue;
+        }
+        $out .= $token[1];
+        continue;
+      }
+      $out .= $token;
+    }
+
+    return $out;
+  }
+
   public function testThePasswordIsNeverACommandLineArgument(): void
   {
     $src = $this->source();
@@ -39,6 +87,22 @@ final class UserResetPasswordTest extends TestCase
     $this->assertStringContainsString('--stdin', $src);
     $this->assertStringContainsString('random_int', $src,
       'the generated password must come from a cryptographic source');
+
+    // The literal alone is not enough. An option read through the generic
+    // wc_opt() helper never spells '--password=' anywhere, so the check above
+    // passed with one added. What matters is the mechanism: the only two
+    // sources are the generator and standard input, and the only thing the
+    // argument list may be consulted for is the --stdin flag.
+    $body = $this->functionBody('wc_read_or_generate_password');
+
+    $this->assertStringContainsString('STDIN', $body,
+      'a supplied password must arrive on standard input');
+
+    $withoutStdinFlag = str_replace("in_array('--stdin', \$argv, true)", '',
+      $body);
+    $this->assertStringNotContainsString('$argv', $withoutStdinFlag,
+      'nothing but the --stdin flag may be read from the argument list: a '
+      . 'password there is visible in ps output and shell history');
   }
 
   /**
