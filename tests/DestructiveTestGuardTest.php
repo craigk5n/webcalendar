@@ -43,18 +43,72 @@ final class DestructiveTestGuardTest extends TestCase
   }
 
   /**
+   * The runner with its comment lines removed.
+   *
+   * Each runner explains the guard in a comment block that names
+   * includes/settings.php and the variable, so searching the whole file for
+   * those strings passed even with the condition replaced by `if false`.
+   * Found by mutating the runners on 2026-09-25.
+   */
+  private function shellCode(string $rel): string
+  {
+    $out = [];
+    foreach (explode("\n", $this->read($rel)) as $line) {
+      $trimmed = ltrim($line);
+      if ($trimmed === '' || str_starts_with($trimmed, '#')) {
+        continue;
+      }
+      $out[] = $line;
+    }
+
+    return implode("\n", $out);
+  }
+
+  /**
+   * Where the refusal itself is, not merely where the strings appear.
+   *
+   * The two echo lines inside the block name both of them too, so presence
+   * alone stays true when the condition is disabled. What makes it a guard is
+   * one condition that tests for the file and honours the override together.
+   *
+   * @return int|false
+   */
+  private function guardOffset(string $code)
+  {
+    $pattern = '/\bif\b[^\n]*-f[^\n]*includes\/settings\.php[^\n]*'
+      . preg_quote(self::ENV_VAR, '/') . '/';
+
+    if (preg_match($pattern, $code, $m, PREG_OFFSET_CAPTURE)) {
+      return $m[0][1];
+    }
+
+    return false;
+  }
+
+  /**
    * @dataProvider runnerProvider
    */
   public function testRunnerRefusesWhenALiveSettingsFileIsPresent(string $runner): void
   {
-    $src = $this->read($runner);
+    $code = $this->shellCode($runner);
+    $offset = $this->guardOffset($code);
 
-    $this->assertStringContainsString('includes/settings.php', $src,
-      basename($runner) . ' must test for a live settings.php');
-    $this->assertStringContainsString(self::ENV_VAR, $src,
-      basename($runner) . ' must honour ' . self::ENV_VAR);
-    $this->assertMatchesRegularExpression('/\bexit 1\b/', $src,
-      basename($runner) . ' must exit non-zero when it refuses');
+    $this->assertNotFalse($offset, basename($runner) . ' must refuse in a '
+      . 'single condition that tests for includes/settings.php and honours '
+      . self::ENV_VAR . '. Naming them in a comment or an echo is not a '
+      . 'guard.');
+
+    // Only the refusal's own block counts. The runners end with another
+    // `exit 1`, so searching everything after the condition matched that one
+    // even with the refusal's exit removed.
+    $block = substr($code, $offset);
+    $end = strpos($block, "\nfi");
+    if ($end !== false) {
+      $block = substr($block, 0, $end);
+    }
+
+    $this->assertMatchesRegularExpression('/\bexit 1\b/', $block,
+      basename($runner) . ' must exit non-zero inside the refusal itself');
   }
 
   /**
@@ -65,12 +119,12 @@ final class DestructiveTestGuardTest extends TestCase
    */
   public function testGuardPrecedesAnyDockerCommand(string $runner): void
   {
-    $src = $this->read($runner);
+    $code = $this->shellCode($runner);
 
-    $guard = strpos($src, self::ENV_VAR);
+    $guard = $this->guardOffset($code);
     $this->assertNotFalse($guard, basename($runner) . ' has no guard');
 
-    if (preg_match('/^\s*docker\s/m', $src, $m, PREG_OFFSET_CAPTURE)) {
+    if (preg_match('/^\s*docker\s/m', $code, $m, PREG_OFFSET_CAPTURE)) {
       $this->assertLessThan($m[0][1], $guard,
         basename($runner) . ' runs docker before the guard');
     } else {
@@ -86,7 +140,13 @@ final class DestructiveTestGuardTest extends TestCase
   {
     $src = $this->read('.github/workflows/test-web-wizard.yml');
 
-    $this->assertSame(3, substr_count($src, self::ENV_VAR),
+    // Assignments, not occurrences. substr_count() also counted a longer
+    // name that merely begins with this one, so renaming the variable left
+    // the total at three while no job set it any more.
+    $assignments = preg_match_all(
+      '/\b' . preg_quote(self::ENV_VAR, '/') . '\b\s*[:=]/', $src);
+
+    $this->assertSame(3, $assignments,
       'each of the three wizard jobs must set ' . self::ENV_VAR);
   }
 }
