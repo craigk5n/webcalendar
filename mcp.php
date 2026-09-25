@@ -161,6 +161,12 @@ if ($is_mcp_http_request || php_sapi_name() === 'cli') {
       require_once 'includes/' . $i . '.php';
     }
 
+    // Event write path, shared by add_event and add_recurring_event. Required
+    // explicitly because this tree has no autoloader; same convention as
+    // includes/classes/Security/ in security_audit.php.
+    require_once 'includes/classes/Event/NewEvent.php';
+    require_once 'includes/classes/Event/EventService.php';
+
     // Load MCP loader (replaces full composer autoloader for now)
     if ( file_exists ( 'includes/mcp-loader.php' ) ) {
       require_once 'includes/mcp-loader.php';
@@ -502,53 +508,24 @@ class WebCalendarMcpTools
             $cal_time = (int)$time;
         }
 
-        // Generate a new event ID and insert it.
-        //
-        // webcal_entry.cal_id is a plain INT PRIMARY KEY with no
-        // auto-increment or sequence on any supported backend, so the
-        // application assigns it as MAX(cal_id) + 1. Two concurrent callers
-        // can compute the same id, so we insert with a non-fatal, quiet call
-        // and retry on collision: the duplicate primary key makes the INSERT
-        // return false, and we recompute the id and try again. This is
-        // portable across SQLite, MySQL and PostgreSQL without any
-        // dialect-specific locking.
-        $now = date('Ymd');
-        $mod_time = date('His');
-        $sql = "INSERT INTO webcal_entry (cal_id, cal_name, cal_date, cal_time, cal_duration, cal_description, cal_location, cal_create_by, cal_mod_date, cal_mod_time)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        $event_id = null;
-        $max_attempts = 5;
-        for ($attempt = 0; $attempt < $max_attempts; $attempt++) {
-            $res = dbi_execute('SELECT MAX(cal_id) FROM webcal_entry');
-            if (!$res) {
-                return ['error' => 'Failed to create event'];
-            }
-            $row = dbi_fetch_row($res);
-            $candidate_id = ($row[0] ?? 0) + 1;
-            dbi_free_result($res);
-
-            // Non-fatal + quiet: a duplicate-key collision returns false so we
-            // can retry instead of aborting the whole request.
-            $res = dbi_execute(
-                $sql,
-                [$candidate_id, $name, $date, $cal_time, $duration, $description, $location, $this->userLogin, $now, $mod_time],
-                false,
-                false
-            );
-
-            if ($res) {
-                $event_id = $candidate_id;
-                break;
-            }
-        }
+        // Id allocation, the INSERT and the participation row live in
+        // EventService; see the note there on why cal_id is MAX + 1 with a
+        // retry rather than an auto-increment.
+        $event_id = \WebCalendar\Event\EventService::createEvent(
+            new \WebCalendar\Event\NewEvent(
+                $name,
+                (int)$date,
+                $cal_time,
+                $duration,
+                $description,
+                $location,
+                $this->userLogin
+            )
+        );
 
         if ($event_id === null) {
             return ['error' => 'Failed to create event'];
         }
-
-        // Add user participation
-        dbi_execute("INSERT INTO webcal_entry_user (cal_id, cal_login, cal_status) VALUES (?, ?, 'A')", [$event_id, $this->userLogin]);
 
         // Log activity
         activity_log($event_id, $this->userLogin, $this->userLogin, 'M', 'MCP: Event created');
@@ -692,54 +669,32 @@ class WebCalendarMcpTools
         }
         $repeat_cols = mcp_rrule_to_repeat_columns($validated['parts']);
 
-        // Insert the base event, assigning cal_id as MAX(cal_id)+1 with a
-        // retry-on-collision loop (same pattern/rationale as add_event).
-        $now = date('Ymd');
-        $mod_time = date('His');
-        $sql = "INSERT INTO webcal_entry (cal_id, cal_name, cal_date, cal_time, cal_duration, cal_description, cal_location, cal_create_by, cal_mod_date, cal_mod_time)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $event_id = null;
-        for ($attempt = 0; $attempt < 5; $attempt++) {
-            $res = dbi_execute('SELECT MAX(cal_id) FROM webcal_entry');
-            if (!$res) {
-                return ['error' => 'Failed to create event'];
-            }
-            $row = dbi_fetch_row($res);
-            $candidate_id = ($row[0] ?? 0) + 1;
-            dbi_free_result($res);
+        // Same creation path as add_event, but stored as a repeating event.
+        // edit_entry_handler.php is the authority on this column: an event is
+        // 'M' when it repeats and 'E' when it does not (see the $tmpRpt block
+        // there). This path used to omit cal_type entirely and inherit the
+        // column default of 'E', leaving recurring events mislabelled.
+        $event_id = \WebCalendar\Event\EventService::createEvent(
+            new \WebCalendar\Event\NewEvent(
+                $name,
+                (int)$date,
+                $cal_time,
+                $duration,
+                $description,
+                $location,
+                $this->userLogin,
+                \WebCalendar\Event\NewEvent::TYPE_REPEATING_EVENT
+            )
+        );
 
-            $res = dbi_execute(
-                $sql,
-                [$candidate_id, $name, $date, $cal_time, $duration, $description, $location, $this->userLogin, $now, $mod_time],
-                false,
-                false
-            );
-            if ($res) {
-                $event_id = $candidate_id;
-                break;
-            }
-        }
         if ($event_id === null) {
             return ['error' => 'Failed to create event'];
         }
 
-        // Participation row.
-        dbi_execute(
-            "INSERT INTO webcal_entry_user (cal_id, cal_login, cal_status) VALUES (?, ?, 'A')",
-            [$event_id, $this->userLogin]
-        );
-
-        // Insert the recurrence row. If it fails, roll back the base event so
-        // we never leave an orphan non-repeating entry behind.
-        $repeat_cols = array_merge(['cal_id' => $event_id], $repeat_cols);
-        $cols = array_keys($repeat_cols);
-        $placeholders = implode(', ', array_fill(0, count($cols), '?'));
-        $rsql = 'INSERT INTO webcal_entry_repeats (' . implode(', ', $cols)
-            . ') VALUES (' . $placeholders . ')';
-        $rres = dbi_execute($rsql, array_values($repeat_cols));
-        if (!$rres) {
-            dbi_execute('DELETE FROM webcal_entry_user WHERE cal_id = ?', [$event_id]);
-            dbi_execute('DELETE FROM webcal_entry WHERE cal_id = ?', [$event_id]);
+        // Store the recurrence rule. If it fails, remove the base event so we
+        // never leave an orphan non-repeating entry behind.
+        if (!\WebCalendar\Event\EventService::storeRecurrence($event_id, $repeat_cols)) {
+            \WebCalendar\Event\EventService::deleteEvent($event_id);
             return ['error' => 'Failed to store recurrence rule'];
         }
 
@@ -853,10 +808,7 @@ class WebCalendarMcpTools
 
         // Remove the event and every row that references it, including any
         // recurrence rule and its exceptions/inclusions.
-        dbi_execute('DELETE FROM webcal_entry WHERE cal_id = ?', [$event_id]);
-        dbi_execute('DELETE FROM webcal_entry_user WHERE cal_id = ?', [$event_id]);
-        dbi_execute('DELETE FROM webcal_entry_repeats WHERE cal_id = ?', [$event_id]);
-        dbi_execute('DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?', [$event_id]);
+        \WebCalendar\Event\EventService::deleteEvent($event_id);
 
         activity_log($event_id, $this->userLogin, $this->userLogin, 'M', 'MCP: Event deleted');
         return ['success' => true, 'event_id' => $event_id];
