@@ -87,7 +87,16 @@ final class DbDumpTest extends TestCase
       $this->assertStringContainsString("'" . $tool . "'", $src,
         $tool . ' must be used rather than a hand-written dumper');
     }
-    $this->assertStringNotContainsString('INSERT INTO webcal_', $src,
-      'this command must not generate SQL itself');
+    // `config set` writes one webcal_config row, deleting and re-inserting
+    // the way admin.php does, and that is the only INSERT this file may hold.
+    // Any other table appearing here would mean a hand-written dumper had
+    // grown back.
+    preg_match_all('/INSERT INTO (webcal_\w+)/', $src, $matches);
+    $tables = array_values(array_unique($matches[1]));
+    sort($tables);
+
+    $this->assertSame(['webcal_config'], $tables,
+      'db dump must not generate SQL itself; the only INSERT allowed in this '
+      . 'file is the single webcal_config row written by config set');
   }
 }

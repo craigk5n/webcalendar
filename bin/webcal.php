@@ -67,6 +67,11 @@ function wc_usage(int $exitCode): never
              [--from=YYYYMMDD --to=YYYYMMDD]
                           Every date unless a range is given.
              [--include-layers] [--category=ID]
+      config list         Show every setting, with secret values hidden.
+      config get NAME     Print one value in full, secret or not.
+      config set NAME VALUE
+                          Store a value the way Admin > Settings does.
+                          An unrecognised name needs --force.
       import --login=NAME --file=FILE [--overwrite] [--category=ID]
                           Import an .ics or .vcs file into a calendar.
                           Importing the same file twice updates the events it
@@ -115,12 +120,47 @@ function wc_bootstrap(): array
     return $env;
   }
 
+  wc_init_query_cache();
+
   $env['db_server_version'] = wc_db_server_version((string) $type);
   $env['settings'] = wc_db_settings();
   $env['db_schema_version'] = $env['settings']['WEBCAL_PROGRAM_VERSION']
     ?? '(unknown)';
 
   return $env;
+}
+
+/**
+ * Tells this process where the query cache lives.
+ *
+ * do_config() only calls dbi_init_cache() when it is not being called from an
+ * installer, and every command here passes $callingFromInstall = true so that
+ * a missing settings.php produces a report rather than a redirect. The cost is
+ * that dbi_execute()'s automatic invalidation -- it clears the cache on
+ * anything that is not a SELECT -- had nothing to clear, because this process
+ * did not know the directory existed.
+ *
+ * That silently mattered for every command that writes. An installation with
+ * db_cachedir set serves webcal_config and the user rows out of
+ * {db_cachedir}/*.dat, so a setting changed or a password reset from here
+ * would not be seen by the web server until something else happened to clear
+ * the cache. Issue #639 is the same failure with the schema version.
+ */
+function wc_init_query_cache(): void
+{
+  $settings = $GLOBALS['settings'] ?? [];
+  if (!is_array($settings)) {
+    return;
+  }
+
+  // The order do_config() uses: db_cachedir first, then cachedir.
+  $dir = (string) ($settings['db_cachedir'] ?? '');
+  if ($dir === '') {
+    $dir = (string) ($settings['cachedir'] ?? '');
+  }
+  if ($dir !== '') {
+    dbi_init_cache($dir);
+  }
 }
 
 function wc_db_server_version(string $type): string
@@ -869,6 +909,227 @@ function wc_cmd_import(array $argv): int
   return ((int) $GLOBALS['error_num']) > 0 ? 1 : 0;
 }
 
+/**
+ * Reads and writes webcal_config, the table behind Admin > Settings.
+ *
+ * The reason to have this is the case Admin > Settings cannot reach: a
+ * setting that stops the administrator logging in or renders the admin page
+ * unusable. It deliberately does not touch includes/settings.php, which holds
+ * the database credentials and is the installer's business.
+ */
+function wc_cmd_config(array $argv): int
+{
+  $action = $argv[0] ?? '';
+
+  return match ($action) {
+    'list' => wc_config_list(),
+    'get' => wc_config_get($argv[1] ?? ''),
+    'set' => wc_config_set($argv[1] ?? '', $argv[2] ?? null, $argv),
+    default => wc_config_usage(),
+  };
+}
+
+function wc_config_usage(): int
+{
+  fwrite(STDERR, <<<TXT
+    Usage: php bin/webcal.php config list
+           php bin/webcal.php config get NAME
+           php bin/webcal.php config set NAME VALUE [--force]
+
+    TXT);
+
+  return 1;
+}
+
+/**
+ * @return array<string, string> setting name => stored value
+ */
+function wc_config_rows(): array
+{
+  $rows = [];
+  $res = dbi_execute('SELECT cal_setting, cal_value FROM webcal_config');
+  if (!$res) {
+    return $rows;
+  }
+  while ($row = dbi_fetch_row($res)) {
+    $rows[(string) $row[0]] = (string) ($row[1] ?? '');
+  }
+  dbi_free_result($res);
+  ksort($rows);
+
+  return $rows;
+}
+
+function wc_config_list(): int
+{
+  $rows = wc_config_rows();
+  if ($rows === []) {
+    fwrite(STDERR, "webcal_config is empty. Is this installation set up?\n");
+    return 1;
+  }
+
+  $hidden = 0;
+  $width = max(array_map('strlen', array_keys($rows)));
+
+  foreach ($rows as $name => $value) {
+    if (\WebCalendar\Diagnostics\ConfigPolicy::isSecret($name)) {
+      $hidden++;
+      // Presence still matters: whether a token exists is half of most
+      // support questions about one.
+      $shown = $value === '' ? '(empty)' : '(set, hidden)';
+    } else {
+      $shown = $value === '' ? '(empty)' : $value;
+    }
+    printf("%-{$width}s  %s\n", $name, $shown);
+  }
+
+  fwrite(STDERR, "\n" . count($rows) . ' settings, ' . $hidden
+    . " hidden as secrets.\nconfig get NAME prints one value in full.\n");
+
+  return 0;
+}
+
+function wc_config_get(string $name): int
+{
+  if ($name === '') {
+    fwrite(STDERR, "Usage: php bin/webcal.php config get NAME\n");
+    return 1;
+  }
+
+  $name = strtoupper($name);
+  $rows = wc_config_rows();
+
+  if (array_key_exists($name, $rows)) {
+    // The value alone on standard output, so it can be read by a script.
+    echo $rows[$name] . "\n";
+    return 0;
+  }
+
+  // A row holding '' and no row at all are different states, and treating
+  // them alike is what issue #734 was about: call sites disagreed on what an
+  // absent setting meant.
+  require_once WC_ROOT . '/includes/default_config.php';
+  $defaults = webcal_config_defaults();
+
+  fwrite(STDERR, "$name has no row in webcal_config.\n");
+  if (array_key_exists($name, $defaults)) {
+    fwrite(STDERR, 'The built-in default is "' . $defaults[$name]
+      . "\".\n");
+  } else {
+    fwrite(STDERR, "It is not a setting this version knows about either.\n");
+  }
+
+  return 1;
+}
+
+function wc_config_set(string $name, ?string $value, array $argv): int
+{
+  if ($name === '' || $value === null) {
+    fwrite(STDERR, "Usage: php bin/webcal.php config set NAME VALUE\n"
+      . "Clear a setting with an empty value: config set NAME ''\n");
+    return 1;
+  }
+
+  $name = strtoupper($name);
+  // The character set Admin > Settings accepts, which is what the column has
+  // held for twenty years.
+  if (preg_match('/^[A-Z0-9_]+$/', $name) !== 1) {
+    fwrite(STDERR, "A setting name is letters, digits and underscores: "
+      . "\"$name\" is not.\n");
+    return 1;
+  }
+
+  $forced = in_array('--force', $argv, true);
+
+  // Not a preference. wizard/ reads it to decide which upgrade steps an
+  // installation still needs, so a hand-edited value makes the wizard skip
+  // migrations or run them twice.
+  if ($name === 'WEBCAL_PROGRAM_VERSION' && !$forced) {
+    fwrite(STDERR, "WEBCAL_PROGRAM_VERSION records the schema the database is "
+      . "at, not a preference.\nThe installation wizard reads it to decide "
+      . "which upgrades to apply. --force if you are sure.\n");
+    return 1;
+  }
+
+  $rows = wc_config_rows();
+  require_once WC_ROOT . '/includes/default_config.php';
+  $known = array_keys(webcal_config_defaults());
+
+  if (!array_key_exists($name, $rows) && !in_array($name, $known, true)
+    && !$forced) {
+    fwrite(STDERR, "$name is not a setting this version knows about, and has "
+      . "no row already.\n");
+    $near = wc_config_near_matches($name, array_unique(
+      array_merge($known, array_keys($rows))));
+    if ($near !== []) {
+      fwrite(STDERR, 'Did you mean: ' . implode(', ', $near) . "?\n");
+    }
+    fwrite(STDERR, "--force to store it anyway.\n");
+    return 1;
+  }
+
+  $before = $rows[$name] ?? null;
+
+  // DELETE then INSERT, the way admin.php and load_global_settings() do it:
+  // cal_setting is the primary key, so a bare INSERT fails when the row is
+  // already there. The row is always written back rather than left absent,
+  // because '' is a recorded choice and a missing row is not (#734).
+  //
+  // No cache to invalidate by hand: dbi_execute() clears the query cache
+  // itself on anything that is not a SELECT.
+  if (!dbi_execute('DELETE FROM webcal_config WHERE cal_setting = ?',
+    [$name], false, false)) {
+    fwrite(STDERR, 'Could not remove the old row: ' . dbi_error() . "\n");
+    return 1;
+  }
+  if (!dbi_execute('INSERT INTO webcal_config ( cal_setting, cal_value ) '
+    . 'VALUES ( ?, ? )', [$name, $value], false, false)) {
+    fwrite(STDERR, 'Could not write the new row: ' . dbi_error() . "\n");
+    return 1;
+  }
+
+  $secret = \WebCalendar\Diagnostics\ConfigPolicy::isSecret($name);
+  $render = static function (?string $v) use ($secret): string {
+    if ($v === null) {
+      return '(no row)';
+    }
+    if ($v === '') {
+      return '(empty)';
+    }
+
+    return $secret ? '(hidden)' : '"' . $v . '"';
+  };
+
+  echo "$name\n";
+  echo '  was: ' . $render($before) . "\n";
+  echo '  now: ' . $render($value) . "\n";
+
+  return 0;
+}
+
+/**
+ * Setting names close enough to $name to be worth suggesting.
+ *
+ * A typed SEND_EMAILS for SEND_EMAIL would otherwise store a row nothing
+ * reads, and the administrator would be left wondering why the change had no
+ * effect.
+ *
+ * @param list<string> $candidates
+ * @return list<string>
+ */
+function wc_config_near_matches(string $name, array $candidates): array
+{
+  $near = [];
+  foreach ($candidates as $candidate) {
+    if (levenshtein($name, $candidate) <= 3) {
+      $near[] = $candidate;
+    }
+  }
+  sort($near);
+
+  return array_slice($near, 0, 5);
+}
+
 $argv = $_SERVER['argv'] ?? [];
 array_shift($argv);
 $command = array_shift($argv) ?? '';
@@ -893,6 +1154,17 @@ switch ($command) {
       . ($wcEnv['db_server_version'] ?? '(unknown)') . "\n"
       . "Run `php bin/webcal.php diagnose` to see the configuration.\n");
     exit(1);
+  case 'config':
+    $wcEnv = wc_bootstrap();
+    if (($wcEnv['db_server_version'] ?? '') === ''
+      || str_starts_with((string) $wcEnv['db_server_version'], '(')) {
+      fwrite(STDERR, 'Cannot reach the database: '
+        . ($wcEnv['db_server_version'] ?? '(unknown)') . "\n"
+        . "Run `php bin/webcal.php diagnose` to see the configuration.\n");
+      exit(1);
+    }
+    require_once WC_ROOT . '/includes/classes/Diagnostics/ConfigPolicy.php';
+    exit(wc_cmd_config($argv));
   case 'user':
     // Loaded here rather than inside a function on purpose.
     // includes/auth-settings.php assigns around twenty-five configuration
