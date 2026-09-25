@@ -6,9 +6,10 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Scripts under tools/ are command-line utilities, but they live inside the
- * web root and three of them ship in release-files: send_reminders.php,
- * reload_remotes.php and convert_passwords.php.  The last one rewrites stored
- * password hashes.
+ * web root and two of them ship in release-files: send_reminders.php and
+ * reload_remotes.php.  A third, convert_passwords.php, shipped until it was
+ * deleted: it rewrote every stored hash to md5 for a 0.9.43 upgrade and was
+ * reachable by URL.
  *
  * .htaccess cannot be relied on to block them.  Debian and Ubuntu ship
  * AllowOverride None for /var/www, which makes the whole file a no-op, and
