@@ -2,11 +2,16 @@ FROM php:8.4-apache
 LABEL maintainer="craig@k5n.us"
 LABEL vendor="k5n.us"
 
-# Build dependencies for the extensions below. libsqlite3-dev in particular is
-# required by pdo_sqlite; without it docker-php-ext-install fails with
-# "Package 'sqlite3', required by 'virtual:world', not found".
+# Two kinds of package. The lib*-dev entries are build dependencies for the
+# extensions below; without libsqlite3-dev in particular docker-php-ext-install
+# fails with "Package 'sqlite3', required by 'virtual:world', not found".
+#
+# mariadb-client and sqlite3 are command-line tools needed at runtime instead:
+# `bin/webcal.php db dump` hands the work to mysqldump and sqlite3 rather than
+# writing SQL itself, so without them that command has nothing to call.
 RUN apt-get update && apt-get install -y \
     mariadb-client \
+    sqlite3 \
     libmariadb-dev-compat libmariadb-dev \
     libsqlite3-dev \
     libpq-dev \
