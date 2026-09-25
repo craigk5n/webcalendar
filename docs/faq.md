@@ -145,6 +145,6 @@ quick reset.
 ### Email reminders aren't being sent.
 
 1. Verify the cron job is running: `crontab -l`
-2. Test email configuration: `php tools/send_test_email.php`
+2. Test email configuration: `php bin/webcal.php email test --to=you@example.com`
 3. Check that `SEND_EMAIL` is enabled in admin settings.
 4. Check your PHP mail configuration or SMTP settings.
