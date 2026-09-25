@@ -736,13 +736,22 @@ function wc_cmd_email(array $argv): int
   $GLOBALS['mailerError'] = '';
 
   $mail = new WebCalMailer();
+  // The seventh argument is the sender, and leaving it out is why the first
+  // version of this command produced mail that went nowhere. WC_Send()'s two
+  // branches are identical -- both call SetFrom($from_email, $from_name) --
+  // so an omitted sender is not defaulted, it is sent as an empty From. The
+  // relay accepted the message and the destination discarded it, which looked
+  // exactly like success here. tools/send_reminders.php passes
+  // EMAIL_FALLBACK_FROM in this position; so does this.
   $sent = $mail->WC_Send(
     'WebCalendar',
     $to,
     $to,
     'Test message',
     "This is a test message from WebCalendar.\n\nIf you are reading it, "
-      . "outgoing mail works.\n"
+      . "outgoing mail works.\n",
+    'N',
+    $from
   );
 
   if ($sent) {
