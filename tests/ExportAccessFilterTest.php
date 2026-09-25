@@ -19,6 +19,13 @@ use PHPUnit\Framework\TestCase;
  *   ICS to the approval mail, so approving with any type parameter quietly
  *   filtered that attachment down to public events.
  *
+ * It also covers the other choice the same function makes: which
+ * participation statuses an export accepts. del_entry.php deletes by setting
+ * cal_status to 'D', so the Export page's "Include deleted entries" checkbox
+ * is a question about that list -- and export_handler.php collected the
+ * checkbox into $include_deleted while nothing read it, so ticking it did
+ * nothing.
+ *
  * The function is lifted out of includes/xcal.php rather than copied, and
  * dbi_execute() is stubbed to capture the statement, because what is being
  * tested is the SQL it decides to build.
@@ -31,6 +38,7 @@ final class ExportAccessFilterTest extends TestCase
   protected function setUp(): void
   {
     $GLOBALS['wc_captured_sql'] = '';
+    $GLOBALS['wc_captured_params'] = [];
 
     $GLOBALS['login'] = 'alice';
     $GLOBALS['user'] = '';
@@ -42,6 +50,7 @@ final class ExportAccessFilterTest extends TestCase
     $GLOBALS['enddate'] = '99991231';
     $GLOBALS['moddate'] = '00000000';
     $GLOBALS['DISPLAY_UNAPPROVED'] = 'Y';
+    $GLOBALS['include_deleted'] = '';
     $GLOBALS['USER_REMOTE_ACCESS'] = 0;
     $GLOBALS['type'] = '';
 
@@ -58,6 +67,7 @@ final class ExportAccessFilterTest extends TestCase
     eval(<<<'PHP'
       function dbi_execute($sql, $params = [], $fatal = true, $show = true) {
         $GLOBALS['wc_captured_sql'] = $sql;
+        $GLOBALS['wc_captured_params'] = $params;
         return false;
       }
 PHP);
@@ -149,5 +159,61 @@ PHP);
 
     self::assertSame('icalclient', $GLOBALS['type'],
       'export_get_event_entry() must not assign to the global $type');
+  }
+
+  /**
+   * @return list<string> the statuses bound to the query
+   */
+  private function statusesFor(string $includeDeleted,
+    string $displayUnapproved = 'Y'): array
+  {
+    $GLOBALS['include_deleted'] = $includeDeleted;
+    $GLOBALS['DISPLAY_UNAPPROVED'] = $displayUnapproved;
+    $GLOBALS['type'] = '';
+    export_get_event_entry('all');
+
+    // The login is bound first; the statuses are what follow it.
+    $params = (array) $GLOBALS['wc_captured_params'];
+
+    return array_values(array_filter($params, static fn ($p) =>
+      in_array($p, ['A', 'W', 'D'], true)));
+  }
+
+  public function testDeletedEntriesAreLeftOutByDefault(): void
+  {
+    self::assertSame(['W', 'A'], $this->statusesFor(''),
+      'an ordinary export must not contain events somebody deleted');
+  }
+
+  /**
+   * The checkbox on export.php. export_handler.php has collected it since it
+   * was added and nothing read it, so ticking it changed nothing.
+   */
+  public function testTheIncludeDeletedOptionAddsThem(): void
+  {
+    self::assertSame(['W', 'A', 'D'], $this->statusesFor('y'));
+  }
+
+  public function testTheOptionCombinesWithDisplayUnapproved(): void
+  {
+    self::assertSame(['A'], $this->statusesFor('', 'N'),
+      'with unapproved events hidden, only accepted ones are exported');
+    self::assertSame(['A', 'D'], $this->statusesFor('y', 'N'),
+      'and the deleted option still applies on top of that');
+  }
+
+  /**
+   * Bound, not spliced into the string. These are fixed literals today, but a
+   * status list built by concatenation is the shape that later grows a
+   * variable in it.
+   */
+  public function testTheStatusesAreBoundAsParameters(): void
+  {
+    $this->statusesFor('y');
+    $sql = (string) $GLOBALS['wc_captured_sql'];
+
+    self::assertStringContainsString('weu.cal_status IN ( ?, ?, ? )', $sql);
+    self::assertStringNotContainsString("'W'", $sql,
+      'the statuses belong in the parameter list, not the SQL');
   }
 }
