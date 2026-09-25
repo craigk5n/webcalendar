@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **`bin/webcal.php`**, a command-line entry point. Refuses to run under any SAPI but CLI
 
 - The PHP 8.1 and SQLite Docker dev environments are now tracked: `docker/Dockerfile-dev`, `docker/docker-compose-dev.yml`, `docker/docker-compose-prod.yml`, `docker/docker-compose-sqlite-dev.yml`, `docker/mysql-init.sql` and the selenium login tests under `docker/tests/`. `CLAUDE.md` and the developer docs referenced these but they had never been committed
+- `tests/TestFixtureRequiresTest.php` fails when a test uses a helper from `tests/` without requiring it. Not every invocation loads `tests/bootstrap.php`: `test-mcp.yml` runs phpunit with no `-c`, so relying on the bootstrap passes locally and fails in CI
 - `tests/DestructiveTestGuardTest.php` keeps that refusal in place: the guard must exist in each runner, must come before any docker command, and the workflow must keep supplying the override
 - `tests/PhpFloorConsistencyTest.php` locks the supported PHP version together across `composer.json`, `WizardValidator`, the CI matrices and the docs. They had drifted into four different answers
 - `tests/DockerReferencesTest.php` fails the build when a compose file, workflow or shell script names a Dockerfile or compose file that does not exist. The three Selenium wizard jobs reach `docker/Dockerfile-php8-dev` three hops down — workflow, to `tests/run-*-install-tests.sh`, to a `docker-compose-test-*.yml` `dockerfile:` key — so renaming it broke CI with nothing failing locally

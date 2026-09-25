@@ -1,5 +1,7 @@
 <?php
 
+
+require_once __DIR__ . '/McpServerFixture.php';
 /**
  * Cross-Database Test Helper for WebCalendar MCP Server Testing
  * 

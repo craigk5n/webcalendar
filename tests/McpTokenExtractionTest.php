@@ -1,5 +1,7 @@
 <?php
 
+
+require_once __DIR__ . '/McpServerFixture.php';
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . "/../includes/dbi4php.php";

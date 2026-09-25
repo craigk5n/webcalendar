@@ -1,5 +1,7 @@
 <?php
 
+
+require_once __DIR__ . '/McpServerFixture.php';
 /**
  * SQLite Test Helper for WebCalendar MCP Server Testing
  * 
