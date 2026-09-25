@@ -339,7 +339,6 @@ SECURITY.md
 select_user.php
 set_entry_cat.php
 tools/check_translation.pl
-tools/convert_passwords.php
 tools/reload_remotes.php
 tools/send_reminders.php
 tools/summary.txt
