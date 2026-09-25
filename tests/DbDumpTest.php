@@ -57,10 +57,70 @@ final class DbDumpTest extends TestCase
   /**
    * A dump is every event, every user and every password hash.
    */
+
+  /**
+   * The body of one function in bin/webcal.php, comments removed.
+   *
+   * File-wide assertions stopped meaning what they said once the command line
+   * grew several commands that share an idiom: a check for the idiom passed
+   * because another command still used it.
+   */
+  private function functionBody(string $name): string
+  {
+    $src = $this->source();
+
+    $start = strpos($src, 'function ' . $name . '(');
+    self::assertNotFalse($start, "bin/webcal.php must define $name()");
+
+    $open = strpos($src, '{', $start);
+    $depth = 0;
+    $end = $open;
+    for ($i = $open; $i < strlen($src); $i++) {
+      if ($src[$i] === '{') {
+        $depth++;
+      }
+      if ($src[$i] === '}') {
+        $depth--;
+        if ($depth === 0) {
+          $end = $i;
+          break;
+        }
+      }
+    }
+
+    $body = substr($src, $open, $end - $open + 1);
+    $out = '';
+    foreach (token_get_all('<?php ' . $body) as $token) {
+      if (is_array($token)) {
+        if ($token[0] === T_COMMENT || $token[0] === T_DOC_COMMENT
+          || $token[0] === T_OPEN_TAG) {
+          continue;
+        }
+        $out .= $token[1];
+        continue;
+      }
+      $out .= $token;
+    }
+
+    return $out;
+  }
+
   public function testAnOutputFileIsCreatedPrivate(): void
   {
-    $this->assertMatchesRegularExpression('/chmod\(\$output, 0600\)/',
-      $this->source());
+    // Scoped to the dump. `export` writes a calendar and sets the same mode,
+    // so a check across the whole file stayed green with the dump's own chmod
+    // deleted.
+    $body = $this->functionBody('wc_cmd_db');
+
+    $this->assertMatchesRegularExpression('/chmod\(\$output, 0600\)/', $body,
+      'db dump must create its output file readable only by its owner');
+
+    $chmod = strpos($body, 'chmod($output, 0600)');
+    $write = strpos($body, 'proc_open');
+    if ($write !== false) {
+      $this->assertLessThan($write, $chmod,
+        'the mode has to be set before the dump is written into the file');
+    }
   }
 
   /**
