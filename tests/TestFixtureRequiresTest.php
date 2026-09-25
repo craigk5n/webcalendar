@@ -30,6 +30,29 @@ final class TestFixtureRequiresTest extends TestCase
   }
 
   /**
+   * The rule above is only worth having while something actually runs phpunit
+   * without a configuration file, and .github/workflows/test-mcp.yml is the
+   * only place in CI that does -- tests/run_unit_tests.sh does too, but
+   * nothing runs it there. Adding -c to that step would quietly retire the
+   * coverage this test is written against, leaving a rule with nothing behind
+   * it.
+   */
+  public function testCiStillRunsPhpunitWithoutAConfigurationFile(): void
+  {
+    $workflow = file_get_contents(
+      __DIR__ . '/../.github/workflows/test-mcp.yml');
+    self::assertIsString($workflow);
+
+    self::assertMatchesRegularExpression(
+      '#vendor/bin/phpunit\s+tests/McpTest\.php\s*$#m',
+      $workflow,
+      'test-mcp.yml must keep running phpunit with the test file alone. With '
+      . '-c it reads phpunit.xml and its bootstrap, and nothing in CI would '
+      . 'exercise the bootstrap-less invocation any more.'
+    );
+  }
+
+  /**
    * @dataProvider helperProvider
    */
   public function testEveryUserOfAHelperRequiresIt(string $helper): void
