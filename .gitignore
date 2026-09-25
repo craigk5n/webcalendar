@@ -31,3 +31,31 @@ tests/screenshots/
 # Defense-in-depth: never commit the release-signing private key half.
 # The public key (release-signing-pubkey.pem) is deliberately tracked.
 release-signing-privkey*
+
+# --- Local copies of the live configuration. These hold database
+# credentials; settings.php.orig is the shipped template and stays tracked.
+includes/settings.php.*
+!includes/settings.php.orig
+includes/config.php.*
+
+# Databases left by local testing. A calendar database holds real events
+# and password hashes.
+*.db
+*.sqlite
+*.sqlite3
+
+# Terraform provider binaries and state. The providers alone are ~330MB.
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Editor and tool caches.
+.vscode/
+.php-cs-fixer.cache
+
+# Scratch output from ad-hoc commands and debugging.
+.debug_*
+debug.txt
+*.bak
+*.tar.gz
+

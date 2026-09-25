@@ -7,6 +7,10 @@ on:
   workflow_dispatch:
   workflow_call:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   mcp_unit_tests:
     name: MCP Unit Tests (PHP ${{ matrix.php-version }})
@@ -23,7 +27,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
 
       - name: Install dependencies
-        run: composer install
+        run: composer install --no-interaction --prefer-dist --no-progress
 
       - name: Run MCP unit tests
         run: vendor/bin/phpunit tests/McpTest.php
@@ -44,7 +48,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y jq sqlite3 curl
-          composer install
+          composer install --no-interaction --prefer-dist --no-progress
 
       - name: Run MCP integration tests
         run: |
