@@ -83,7 +83,7 @@ function activate_urls( $text ) {
  *   - LOG_DELETE_T
  *   - LOG_LOGIN_FAILURE
  *   - LOG_NEWUSER_FULL
- *   - LOG_NEWUSEREMAIL
+ *   - LOG_NEWUSER_EMAIL
  *   - LOG_NOTIFICATION
  *   - LOG_REJECT
  *   - LOG_REJECT_T
@@ -4071,10 +4071,20 @@ function getServerUrl($checkDatabase = true): string
 
 function determineServerUrl(): string
 {
+  // Nothing to derive this from on the command line, where reminders, export
+  // and the installer all reach here. Reading the absent keys raised two
+  // warnings per call under PHP 8 -- once per event during an export, which
+  // is output that has to stay a valid iCalendar document. Admin > Settings
+  // has a Server URL field for this case; localhost is the honest
+  // placeholder until it is filled in.
+  if (empty($_SERVER['HTTP_HOST'])) {
+    return 'http://localhost/';
+  }
+
   $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
   $host = $_SERVER['HTTP_HOST'];
-  $port = $_SERVER['SERVER_PORT'];
-  $folder = dirname($_SERVER['SCRIPT_NAME']);
+  // SERVER_PORT was read and never used; reading it was the second warning.
+  $folder = dirname($_SERVER['SCRIPT_NAME'] ?? '/');
   $url = $protocol . '://'. $host . '/';
   if ($folder != '/')
      $url .= $folder;

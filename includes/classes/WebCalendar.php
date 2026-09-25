@@ -325,37 +325,9 @@ class WebCalendar {
     $db_login, $db_password, $ldays_per_month,
     $offsets, $PHP_SELF, $settings, $weekday_names;
 
-    /**#@+
-     * Used for activity log.
-     */
-    define ( 'LOG_APPROVE',       'A' );
-    define ( 'LOG_APPROVE_J',     'P' );
-    define ( 'LOG_APPROVE_T',     'H' );
-    define ( 'LOG_ATTACHMENT',    'T' );
-    define ( 'LOG_COMMENT',       'M' );
-    define ( 'LOG_CREATE',        'C' );
-    define ( 'LOG_CREATE_J',      'I' );
-    define ( 'LOG_CREATE_T',      'G' );
-    define ( 'LOG_DELETE',        'D' );
-    define ( 'LOG_DELETE_J',      'V' );
-    define ( 'LOG_DELETE_T',      'L' );
-    define ( 'LOG_LOGIN_FAILURE', 'x' );
-    define ( 'LOG_NEWUSER_EMAIL', 'E' );
-    define ( 'LOG_NEWUSER_FULL',  'F' );
-    define ( 'LOG_NOTIFICATION',  'N' );
-    define ( 'LOG_REJECT',        'X' );
-    define ( 'LOG_REJECT_J',      'Q' );
-    define ( 'LOG_REJECT_T',      'J' );
-    define ( 'LOG_REMINDER',      'R' );
-    define ( 'LOG_UPDATE',        'U' );
-    define ( 'LOG_UPDATE_J',      'S' );
-    define ( 'LOG_UPDATE_T',      'K' );
-    define ( 'LOG_USER_ADD',      'a' );
-    define ( 'LOG_USER_DELETE',   'd' );
-    define ( 'LOG_USER_UPDATE',   'u' );
-    define ( 'SECURITY_VIOLATION','Z' );
-    define ( 'LOG_SYSTEM',        'Y' );
-    /**#@-*/
+    // Used for the activity log. Shared with bin/webcal.php, which does not
+    // run this method; see includes/activity-log-constants.php.
+    require_once __DIR__ . '/../activity-log-constants.php';
 
     /**
      * Number of seconds in:
