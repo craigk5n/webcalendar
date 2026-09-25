@@ -85,6 +85,28 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v7
 
+      # The web image is 48 seconds of every one of these three jobs, all of
+      # it recompiling the same PHP extensions from the same Dockerfile.
+      # Built here with a layer cache so compose finds it already present and
+      # skips its own build; the tag has to match the image: key in
+      # docker/docker-compose-test-*.yml, which DockerImageTagTest checks.
+      #
+      # The three jobs share one cache scope on purpose: a cold cache means
+      # all three build, which is what happens today, and a warm one means
+      # none of them do.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build the web image with a layer cache
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile-dev
+          tags: webcalendar-test-web:ci
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
       - name: Run MySQL installation and upgrade tests
         env:
           # A CI checkout has no live configuration to lose; the scripts
@@ -112,6 +134,28 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v7
 
+      # The web image is 48 seconds of every one of these three jobs, all of
+      # it recompiling the same PHP extensions from the same Dockerfile.
+      # Built here with a layer cache so compose finds it already present and
+      # skips its own build; the tag has to match the image: key in
+      # docker/docker-compose-test-*.yml, which DockerImageTagTest checks.
+      #
+      # The three jobs share one cache scope on purpose: a cold cache means
+      # all three build, which is what happens today, and a warm one means
+      # none of them do.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build the web image with a layer cache
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile-dev
+          tags: webcalendar-test-web:ci
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
       - name: Run PostgreSQL installation and upgrade tests
         env:
           # A CI checkout has no live configuration to lose; the scripts
@@ -135,6 +179,28 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v7
+
+      # The web image is 48 seconds of every one of these three jobs, all of
+      # it recompiling the same PHP extensions from the same Dockerfile.
+      # Built here with a layer cache so compose finds it already present and
+      # skips its own build; the tag has to match the image: key in
+      # docker/docker-compose-test-*.yml, which DockerImageTagTest checks.
+      #
+      # The three jobs share one cache scope on purpose: a cold cache means
+      # all three build, which is what happens today, and a warm one means
+      # none of them do.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build the web image with a layer cache
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile-dev
+          tags: webcalendar-test-web:ci
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Run SQLite installation and upgrade tests
         env:
