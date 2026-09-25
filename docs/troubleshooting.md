@@ -143,7 +143,7 @@ WHERE cal_login = 'admin';
    ```
 2. Test email manually:
    ```bash
-   php tools/send_test_email.php
+   php bin/webcal.php email test --to=you@example.com
    ```
 3. Check that `SEND_EMAIL` is `Y` in admin settings.
 4. Check PHP error log for mail delivery errors.
