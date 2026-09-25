@@ -62,6 +62,17 @@ function wc_usage(int $exitCode): never
       email test --to=ADDRESS
                           Send one message with the configured mail settings
                           and say why it failed if it did.
+      export --login=NAME Write a calendar as iCalendar, to standard output or
+             [--output=FILE]   to FILE, which is created readable only by you.
+             [--from=YYYYMMDD --to=YYYYMMDD]
+                          Every date unless a range is given.
+             [--include-layers] [--category=ID]
+      import --login=NAME --file=FILE [--overwrite] [--category=ID]
+                          Import an .ics or .vcs file into a calendar.
+                          Importing the same file twice updates the events it
+                          created rather than duplicating them; --overwrite
+                          also marks what an earlier import left behind as
+                          deleted.
       help                Show this message.
 
     TXT);
@@ -494,12 +505,8 @@ function wc_cmd_user(array $argv): int
   }
 
   // The activity log is how an administrator finds out this happened.
-  //
-  // 'u' is LOG_USER_UPDATE. The constant is defined in
-  // WebCalendar::_initFunctions(), which this command does not run -- it
-  // loads configuration and the database layer only -- so referring to the
-  // constant here would silently skip the audit entry.
-  activity_log(0, $login, $login, 'u', 'Password reset from the command line');
+  activity_log(0, $login, $login, LOG_USER_UPDATE,
+    'Password reset from the command line');
 
   echo "Password reset for $login.\n";
   if (!in_array('--stdin', $argv, true)) {
@@ -624,6 +631,244 @@ function wc_cmd_email(array $argv): int
   return 1;
 }
 
+/**
+ * The value given to --name=..., or '' when the option is absent.
+ */
+function wc_opt(array $argv, string $name): string
+{
+  $prefix = '--' . $name . '=';
+  foreach ($argv as $arg) {
+    if (str_starts_with($arg, $prefix)) {
+      return substr($arg, strlen($prefix));
+    }
+  }
+
+  return '';
+}
+
+/**
+ * Chooses a language and makes translate() work.
+ *
+ * load_translation_text() opens translations/<language>.txt by a relative
+ * path, so the install directory has to be the working directory, and
+ * translate() hands back its own argument while $LANGUAGE is empty.
+ */
+function wc_init_language(): void
+{
+  chdir(WC_ROOT);
+
+  $language = (string) ($GLOBALS['LANGUAGE'] ?? '');
+  if ($language === '' || $language === 'none'
+    || $language === 'Browser-defined') {
+    // Nothing to ask: there is no browser on this side.
+    $language = 'English-US';
+  }
+  $GLOBALS['LANGUAGE'] = $language;
+  reset_language($language);
+}
+
+/**
+ * Confirms a calendar exists before reading from or writing to it.
+ */
+function wc_require_login(array $argv, string $prefix): ?string
+{
+  $login = wc_opt($argv, 'login');
+  if ($login === '') {
+    fwrite(STDERR, "Missing --login=NAME.\n");
+    return null;
+  }
+  if (!user_load_variables($login, $prefix)) {
+    fwrite(STDERR, "No such user: $login\n");
+    return null;
+  }
+
+  return $login;
+}
+
+/**
+ * Writes a calendar as iCalendar.
+ *
+ * Deliberately the same code path as export_handler.php, so the file this
+ * produces is the file the Export page produces. That includes exporting
+ * through export_ical()'s echo rather than asking it to return the document:
+ * the returning branch exists for email attachments and skips
+ * save_uid_for_event(), so the UIDs in the file would not be recorded and a
+ * later --overwrite import would duplicate every event instead of replacing
+ * it.
+ */
+function wc_cmd_export(array $argv): int
+{
+  $login = wc_require_login($argv, 'wc_export_');
+  if ($login === null) {
+    return 1;
+  }
+
+  $from = wc_opt($argv, 'from');
+  $to = wc_opt($argv, 'to');
+  foreach (['from' => $from, 'to' => $to] as $option => $value) {
+    if ($value !== '' && preg_match('/^\d{8}$/', $value) !== 1) {
+      fwrite(STDERR, "--$option takes a date as YYYYMMDD, not \"$value\".\n");
+      return 1;
+    }
+  }
+  if ($from !== '' && $to !== '' && $from > $to) {
+    fwrite(STDERR, "--from is after --to.\n");
+    return 1;
+  }
+
+  // export_get_event_entry() reads every one of these through `global`.
+  $GLOBALS['login'] = $login;
+  $GLOBALS['user'] = '';
+  // Empty on purpose. The publish filter there reads `$type = 'publish'` --
+  // an assignment, not a comparison -- so any non-empty value switches it on
+  // and drops every event not marked public.
+  $GLOBALS['type'] = '';
+  $GLOBALS['cat_filter'] = wc_opt($argv, 'category');
+  $GLOBALS['include_layers']
+    = in_array('--include-layers', $argv, true) ? 'y' : '';
+  // The Export page prefills a date window. A calendar exported from a shell
+  // is wanted whole, so the default here is every date.
+  $GLOBALS['use_all_dates'] = ($from === '' && $to === '') ? 'y' : '';
+  $GLOBALS['startdate'] = $from === '' ? '00000000' : $from;
+  $GLOBALS['enddate'] = $to === '' ? '99991231' : $to;
+  $GLOBALS['moddate'] = '00000000';
+  // A backup that leaves out events awaiting approval is not a backup. The
+  // page uses whatever the exporting user happens to prefer.
+  $GLOBALS['DISPLAY_UNAPPROVED'] = 'Y';
+
+  if ($GLOBALS['include_layers'] !== '') {
+    load_user_layers();
+  }
+
+  ob_start();
+  export_ical('all');
+  $ics = (string) ob_get_clean();
+
+  // Two ways to come back with nothing, and they used to answer differently:
+  // export_ical() returns before writing a byte when the query matches no
+  // rows, but a category filter that excludes every event leaves a valid
+  // VCALENDAR with nothing in it. Counting components treats both the same,
+  // so a backup can never quietly be an empty file.
+  $components = preg_match_all('/^BEGIN:(VEVENT|VTODO|VJOURNAL)\r?$/m', $ics);
+  if ($components === 0 || $components === false) {
+    fwrite(STDERR, "No events matched, so nothing was written.\n");
+    return 1;
+  }
+
+  // The buffer catches whatever was printed, which on an installation with
+  // display_errors pointed at standard output would include any PHP notice
+  // raised while building the document. Refusing beats writing a file that
+  // says it is a calendar and is not.
+  if (!str_starts_with($ics, 'BEGIN:VCALENDAR')) {
+    fwrite(STDERR, "The export did not begin with BEGIN:VCALENDAR, so "
+      . "something was printed into it. Nothing was written. First line:\n  "
+      . strtok($ics, "\n") . "\n");
+    return 1;
+  }
+
+  $output = wc_opt($argv, 'output');
+  if ($output === '') {
+    echo $ics;
+    return 0;
+  }
+
+  // 0600 before the first byte: a calendar is personal data, and the same
+  // reasoning as `db dump`.
+  touch($output);
+  chmod($output, 0600);
+  if (file_put_contents($output, $ics) === false) {
+    fwrite(STDERR, "Could not write $output\n");
+    return 1;
+  }
+
+  fwrite(STDERR, 'Wrote ' . $components . ' events, ' . strlen($ics)
+    . " bytes, to $output\n");
+
+  return 0;
+}
+
+/**
+ * Reads an iCalendar or vCalendar file into a calendar.
+ *
+ * import.php also offers Palm, Outlook CSV and git log, each through its own
+ * parser and its own page-level setup. The two calendar formats are the ones
+ * worth driving from a shell.
+ */
+function wc_cmd_import(array $argv): int
+{
+  $login = wc_require_login($argv, 'wc_import_');
+  if ($login === null) {
+    return 1;
+  }
+
+  $file = wc_opt($argv, 'file');
+  if ($file === '') {
+    fwrite(STDERR, "Missing --file=FILE.\n");
+    return 1;
+  }
+  if (!is_file($file) || !is_readable($file)) {
+    fwrite(STDERR, "Cannot read $file\n");
+    return 1;
+  }
+
+  $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+  $GLOBALS['errormsg'] = '';
+  $GLOBALS['tz'] = $GLOBALS['tz'] ?? 0;
+
+  if ($extension === 'ics' || $extension === 'ical') {
+    $GLOBALS['ImportType'] = 'ICAL';
+    $type = 'ical';
+    $data = parse_ical($file);
+  } elseif ($extension === 'vcs' || $extension === 'vcal') {
+    $GLOBALS['ImportType'] = 'VCAL';
+    $type = 'vcal';
+    $data = parse_vcal($file);
+  } else {
+    fwrite(STDERR, "Cannot tell the format of $file from its name. Expected "
+      . ".ics or .vcs; import.php handles the other formats.\n");
+    return 1;
+  }
+
+  if ((string) ($GLOBALS['errormsg'] ?? '') !== '') {
+    fwrite(STDERR, 'Could not parse the file: '
+      . strip_tags((string) $GLOBALS['errormsg']) . "\n");
+    return 1;
+  }
+  if (empty($data)) {
+    fwrite(STDERR, "No events found in $file\n");
+    return 1;
+  }
+
+  $GLOBALS['calUser'] = $login;
+  // The actor recorded in the activity log. There is no session here, so the
+  // owner of the calendar is the closest true answer.
+  $GLOBALS['login'] = $login;
+  $GLOBALS['importcat'] = wc_opt($argv, 'category');
+  $GLOBALS['count_suc'] = 0;
+  $GLOBALS['count_con'] = 0;
+  $GLOBALS['error_num'] = 0;
+  $GLOBALS['numDeleted'] = 0;
+
+  $overwrite = in_array('--overwrite', $argv, true);
+
+  // true = silent. Otherwise import_data() writes an HTML conflict report,
+  // headings and all, which is what import_handler.php wants and this does
+  // not. load_remote_calendar() passes it for the same reason.
+  import_data($data, $overwrite, $type, true);
+
+  echo "Imported " . basename($file) . " into $login\n";
+  printf("  events imported:    %d\n", (int) $GLOBALS['count_suc']);
+  printf("  marked deleted:     %d\n", (int) $GLOBALS['numDeleted']);
+  printf("  conflicts skipped:  %d\n", (int) $GLOBALS['count_con']);
+  printf("  errors:             %d\n", (int) $GLOBALS['error_num']);
+
+  if ((string) ($GLOBALS['errormsg'] ?? '') !== '') {
+    fwrite(STDERR, strip_tags((string) $GLOBALS['errormsg']) . "\n");
+  }
+
+  return ((int) $GLOBALS['error_num']) > 0 ? 1 : 0;
+}
+
 $argv = $_SERVER['argv'] ?? [];
 array_shift($argv);
 $command = array_shift($argv) ?? '';
@@ -675,6 +920,7 @@ switch ($command) {
     if (!defined('_ISVALID')) {
       define('_ISVALID', true);
     }
+    require_once WC_ROOT . '/includes/activity-log-constants.php';
     require_once WC_ROOT . '/includes/translate.php';
     require_once WC_ROOT . '/includes/functions.php';
     require_once WC_ROOT . '/includes/' . $wcUserInc;
@@ -709,36 +955,38 @@ switch ($command) {
     require $wcScript;
     exit(0);
   case 'email':
+  case 'export':
+  case 'import':
     wc_bootstrap();
 
     // Same reason as the user command below: these files assign at file
-    // scope and are read through `global`.
+    // scope and are read through `global`, so they cannot be required from
+    // inside a function. xcal.php holds the export and import functions, and
+    // WebCalMailer pulls it in anyway for ICS attachments.
     if (!defined('_ISVALID')) {
       define('_ISVALID', true);
     }
+    require_once WC_ROOT . '/includes/activity-log-constants.php';
     require_once WC_ROOT . '/includes/translate.php';
     require_once WC_ROOT . '/includes/functions.php';
     require_once WC_ROOT . '/includes/'
       . basename((string) ($GLOBALS['user_inc'] ?? 'user.php'));
+    require_once WC_ROOT . '/includes/xcal.php';
     load_global_settings();
 
-    // load_translation_text() opens translations/<language>.txt by a relative
-    // path, and WebCalMailer's constructor asks translate() for 'charset',
-    // which returns its own argument while $LANGUAGE is empty -- the mailer
-    // would take the literal string 'charset' as its encoding. Both want the
-    // install directory as the working directory and a language chosen.
-    chdir(WC_ROOT);
-    $wcLanguage = (string) ($GLOBALS['LANGUAGE'] ?? '');
-    if ($wcLanguage === '' || $wcLanguage === 'none'
-      || $wcLanguage === 'Browser-defined') {
-      // Nothing to ask: there is no browser on this side.
-      $wcLanguage = 'English-US';
-    }
-    $GLOBALS['LANGUAGE'] = $wcLanguage;
-    reset_language($wcLanguage);
+    // WebCalMailer's constructor asks translate() for 'charset' and would
+    // otherwise be handed the literal string 'charset' as its encoding;
+    // export and import translate category and status names.
+    wc_init_language();
 
-    require_once WC_ROOT . '/includes/classes/WebCalMailer.php';
-    exit(wc_cmd_email($argv));
+    if ($command === 'email') {
+      require_once WC_ROOT . '/includes/classes/WebCalMailer.php';
+      exit(wc_cmd_email($argv));
+    }
+
+    exit($command === 'export'
+      ? wc_cmd_export($argv)
+      : wc_cmd_import($argv));
   case 'help':
   case '--help':
   case '-h':
