@@ -537,7 +537,7 @@ Closed outside this epic. Every script under `tools/` now refuses a non-CLI SAPI
 
 Verified against the dev container, not just by unit test: the first attempt returned `200` with the shebang line in the body, because PHP strips `#!` only under CLI and the inline output committed the response headers before `http_response_code(403)` ran. The shebangs were removed; all eight shipped scripts now answer `403` with no body leak.
 
-Scope note: the exposure was wider than the three manifest tools listed above. `tools/convert_passwords.php` also ships in `release-files` and rewrites stored password hashes; it was reachable by URL on any install where `.htaccess` was inert.
+Scope note: the exposure was wider than the three manifest tools listed above. `tools/convert_passwords.php` also ships in `release-files` and rewrites stored password hashes; it was reachable by URL on any install where `.htaccess` was inert. Deleted 2026-09-25: a SAPI guard closes the URL but leaves a shipped script that md5s every bcrypt hash in `webcal_user` if it is ever run, for an upgrade path that ended at 0.9.43.
 
 One sanctioned exception: `tools/send_reminders.php` can be run over HTTP when an administrator generates a token under **Admin > Settings > Email**, for hosts that offer no shell. Off by default; the token is generated server-side, shown once, stored only as a SHA-256 hash, and every triggered run is written to the activity log with the requesting IP. See `tests/ReminderWebTriggerTest.php` and `AGENT_ROADMAP.md` (Pillar C1).
 
