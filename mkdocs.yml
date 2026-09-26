@@ -49,6 +49,7 @@ nav:
     - Glossary: glossary.md
   - Administration:
     - Admin Guide: admin-guide.md
+    - Command Line: cli.md
     - Security: security.md
     - Release Signing: release-signing.md
     - Troubleshooting: troubleshooting.md

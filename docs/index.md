@@ -23,6 +23,7 @@ WebCalendar is an open-source, multi-user, web-based calendar application writte
 ## For Administrators
 
 - [Admin Guide](admin-guide.md) — User management, system settings, email
+- [Command Line](cli.md) — `bin/webcal.php`: recovery, backup, import/export
 - [Security](security.md) — Deployment hardening and best practices
 - [Docker Deployment](docker.md) — Container-based deployment
 - [Troubleshooting](troubleshooting.md) — Common issues and solutions

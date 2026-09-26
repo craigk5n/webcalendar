@@ -163,4 +163,77 @@ final class DevSeederTest extends TestCase
     $this->assertStringNotContainsString('DELETE FROM webcal_config', $joined,
       'reset empties the calendar, it does not uninstall');
   }
+
+  /**
+   * Every table that carries a cal_id has to be cleared, and the list comes
+   * from the schema rather than from a copy kept here.
+   *
+   * webcal_import_data and webcal_site_extras were both missed. The first is
+   * not merely untidy: its primary key is (cal_id, cal_login), so rows left
+   * pointing at deleted events collided with the ids a later import reused --
+   * re-importing the same file after a reset failed on a UNIQUE violation and
+   * died partway with no summary. Deriving the list means a table added later
+   * fails here instead of being forgotten.
+   */
+  public function testResetClearsEveryTableThatReferencesAnEvent(): void
+  {
+    $schema = file_get_contents(
+      __DIR__ . '/../wizard/shared/tables-sqlite3.php');
+    self::assertIsString($schema);
+
+    self::assertGreaterThan(0, preg_match_all(
+      '/CREATE TABLE (\w+)\s*\((.*?)\)"/s', $schema, $tables,
+      PREG_SET_ORDER), 'could not read the table definitions');
+
+    $needClearing = [];
+    foreach ($tables as [, $name, $body]) {
+      if (preg_match('/\bcal_id\b/', $body) === 1) {
+        $needClearing[] = $name;
+      }
+    }
+    self::assertNotEmpty($needClearing);
+
+    $cleared = [];
+    foreach (Seeder::resetStatements() as [$sql]) {
+      if (preg_match('/^DELETE FROM (\w+)$/', trim($sql), $m) === 1) {
+        $cleared[] = $m[1];
+      }
+    }
+
+    $missing = array_values(array_diff($needClearing, $cleared));
+    sort($missing);
+
+    self::assertSame([], $missing, count($missing) . ' table(s) carry a cal_id '
+      . "and are not emptied by reset, so rows are left pointing at events "
+      . "that no longer exist:\n  " . implode("\n  ", $missing));
+  }
+
+  /**
+   * And the import records themselves, which own those rows.
+   */
+  public function testResetClearsTheImportRecords(): void
+  {
+    // Exact table names, not a substring search: "DELETE FROM
+    // webcal_import_data" contains "DELETE FROM webcal_import", so asserting
+    // the latter as a substring stayed true with the parent table dropped.
+    // The same superstring trap as DestructiveTestGuardTest's substr_count.
+    $cleared = [];
+    foreach (Seeder::resetStatements() as [$sql]) {
+      if (preg_match('/^DELETE FROM (\w+)$/', trim($sql), $m) === 1) {
+        $cleared[] = $m[1];
+      }
+    }
+
+    self::assertContains('webcal_import_data', $cleared);
+    self::assertContains('webcal_import', $cleared);
+
+    $data = array_search('webcal_import_data', $cleared, true);
+    $parent = array_search('webcal_import', $cleared, true);
+    $entry = array_search('webcal_entry', $cleared, true);
+
+    self::assertLessThan($parent, $data,
+      'the import rows go before the import record that owns them');
+    self::assertLessThan($entry, $data,
+      'and before the events they refer to');
+  }
 }
