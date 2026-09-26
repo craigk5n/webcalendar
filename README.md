@@ -1,6 +1,6 @@
 # WebCalendar
 
-[![Version](https://img.shields.io/badge/version-v1.9.16-blue.svg)](https://github.com/craigk5n/webcalendar/releases)
+[![Version](https://img.shields.io/badge/version-v1.9.23-blue.svg)](https://github.com/craigk5n/webcalendar/releases)
 [![License](https://img.shields.io/badge/license-GPL%20v2-green.svg)](LICENSE)
 [![PHP](https://img.shields.io/badge/php-8.2%2B-8892BF.svg)](https://php.net)
 [![CI](https://github.com/craigk5n/webcalendar/workflows/CI/badge.svg)](https://github.com/craigk5n/webcalendar/actions)
@@ -190,7 +190,7 @@ Create `includes/config-app-yourapp.php` to override settings dynamically.
 
 ## Roadmap
 
-### v1.9.16 (Current)
+### v1.9.16
 - PHP 8.2+ required (tested against 8.2, 8.3, 8.4)
 - New web-based installation/upgrade wizard
 - Headless CLI installer for automated deployments

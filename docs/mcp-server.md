@@ -109,9 +109,88 @@ Create a new non-repeating event.
 | `date` | string | Yes | Event date (YYYYMMDD) |
 | `description` | string | No | Event description |
 | `location` | string | No | Event location |
+| `time` | string | No | Start time (HHMMSS), or `-1` for an untimed event |
 | `duration` | integer | No | Duration in minutes |
 
 **Returns:** Created event ID.
+
+### add_recurring_event
+
+Create a repeating event from an RFC 5545 recurrence rule.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `name` | string | Yes | Event title |
+| `date` | string | Yes | Date of the first occurrence (YYYYMMDD) |
+| `rrule` | string | Yes | Recurrence rule, e.g. `FREQ=WEEKLY;BYDAY=MO` |
+| `time` | string | No | Start time (HHMMSS), or `-1` for an untimed event |
+| `duration` | integer | No | Duration in minutes |
+| `description` | string | No | Event description |
+| `location` | string | No | Event location |
+
+**Returns:** Created event ID.
+
+### update_event
+
+Change fields of an event. Only the event's creator may update it, and only
+the fields given are altered.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `event_id` | integer | Yes | Event to update |
+| `name` | string | No | New title |
+| `date` | string | No | New date (YYYYMMDD) |
+| `time` | string | No | New start time (HHMMSS), or `-1` for untimed |
+| `duration` | integer | No | New duration in minutes |
+| `description` | string | No | New description |
+| `location` | string | No | New location |
+
+**Returns:** Confirmation of what changed.
+
+### delete_event
+
+Delete an event. Only the event's creator may delete it.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `event_id` | integer | Yes | Event to delete |
+
+### get_availability
+
+List the user's busy time blocks in a date range, for finding a free slot
+without reading event details. Times are GMT.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `start_date` | string | Yes | Range start (YYYYMMDD) |
+| `end_date` | string | Yes | Range end (YYYYMMDD) |
+
+**Returns:** Busy blocks with their start times and durations.
+
+### check_conflicts
+
+Check whether a proposed slot overlaps any existing timed event, before
+creating one. Times are GMT.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `date` | string | Yes | Proposed date (YYYYMMDD) |
+| `time` | string | Yes | Proposed start time (HHMMSS) |
+| `duration` | integer | Yes | Proposed duration in minutes |
+
+**Returns:** Any overlapping events. Untimed and all-day events are not
+considered, since they do not occupy a slot.
+
+## Write Access
+
+`add_event`, `add_recurring_event`, `update_event` and `delete_event` all
+refuse unless **MCP Write Access** is enabled in **Admin > Settings**
+(`MCP_WRITE_ACCESS`). It is off by default, so a freshly configured server is
+read-only and an assistant cannot change a calendar until an administrator
+allows it.
+
+The read tools -- `list_events`, `search_events` and `get_user_info` -- are
+unaffected by that setting.
 
 ## Transport Modes
 
