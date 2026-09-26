@@ -2,6 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * One failing remote calendar must not take the rest of the list with it.
  *
@@ -87,27 +89,11 @@ PHP);
     $src = file_get_contents(__DIR__ . '/../includes/functions.php');
     self::assertNotFalse($src);
 
-    $start = strpos($src, 'function load_remote_calendar(');
-    self::assertNotFalse($start,
+    $fn = SourceText::phpFunction($src, 'load_remote_calendar');
+    self::assertIsString($fn,
       'includes/functions.php must define load_remote_calendar()');
 
-    $open = strpos($src, '{', $start);
-    $depth = 0;
-    $end = $open;
-    for ($i = $open; $i < strlen($src); $i++) {
-      if ($src[$i] === '{') {
-        $depth++;
-      }
-      if ($src[$i] === '}') {
-        $depth--;
-        if ($depth === 0) {
-          $end = $i;
-          break;
-        }
-      }
-    }
-
-    eval(substr($src, $start, $end - $start + 1));
+    eval($fn);
   }
 
   public function testAFailingCalendarIsReportedAsFailing(): void
@@ -166,17 +152,7 @@ PHP);
     self::assertNotFalse($src);
 
     // Comments explain the old condition, so read only executable code.
-    $code = '';
-    foreach (token_get_all($src) as $token) {
-      if (is_array($token)) {
-        if ($token[0] === T_COMMENT || $token[0] === T_DOC_COMMENT) {
-          continue;
-        }
-        $code .= $token[1];
-        continue;
-      }
-      $code .= $token;
-    }
+    $code = SourceText::php($src);
 
     self::assertDoesNotMatchRegularExpression(
       '/empty\s*\(\s*\$errormsg\s*\)/',

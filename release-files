@@ -25,6 +25,7 @@ docadd.php
 docdel.php
 doc.php
 docs/admin-guide.md
+docs/cli.md
 docs/configuration.md
 docs/faq.md
 docs/glossary.md
