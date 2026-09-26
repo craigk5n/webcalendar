@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * `bin/webcal.php export` and `import` drive the same functions the Export
  * and Import pages drive, which is the property worth protecting: a file the
@@ -137,26 +139,11 @@ final class CliExportImportTest extends TestCase
     $src = file_get_contents(__DIR__ . '/../includes/functions.php');
     self::assertIsString($src);
 
-    $start = strpos($src, 'function determineServerUrl()');
-    self::assertNotFalse($start);
+    $fn = SourceText::phpFunction($src, 'determineServerUrl');
+    self::assertIsString($fn,
+      'includes/functions.php must define determineServerUrl()');
 
-    $open = strpos($src, '{', $start);
-    $depth = 0;
-    $end = $open;
-    for ($i = $open; $i < strlen($src); $i++) {
-      if ($src[$i] === '{') {
-        $depth++;
-      }
-      if ($src[$i] === '}') {
-        $depth--;
-        if ($depth === 0) {
-          $end = $i;
-          break;
-        }
-      }
-    }
-
-    eval(substr($src, $start, $end - $start + 1));
+    eval($fn);
   }
 
   /**

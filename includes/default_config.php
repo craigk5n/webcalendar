@@ -179,7 +179,7 @@ function webcal_config_defaults() {
     'USER_RSS_ENABLED' => 'N',
     'USER_SEES_ONLY_HIS_GROUPS' => 'Y',
     'USER_SORT_ORDER' => 'cal_lastname, cal_firstname',
-    'WEBCAL_PROGRAM_VERSION' => 'v1.9.23',
+    'WEBCAL_PROGRAM_VERSION' => 'v1.9.24',
     'WEEKENDBG' => '#d0d0d0',
     'WEEKEND_START' => '6',
     'WEEKNUMBER' => '#f06030',

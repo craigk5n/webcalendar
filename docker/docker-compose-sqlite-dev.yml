@@ -1,11 +1,25 @@
-# Development environment backed by SQLite, no database server.
+# Disposable environment backed by SQLite, no database server.
 #
-# Run docker compose from the top-level WebCalendar directory:
+# Usually reached through `make sandbox`, which starts this and installs into
+# it; `make sandbox-cli CMD="..."` then runs bin/webcal.php against it.
+#
 #   docker compose -f docker/docker-compose-sqlite-dev.yml up
 #
-# The calendar is served on http://localhost:8081/ and the installation
-# wizard creates the schema on first access. The database file lives in
-# sqlite-data/ at the top of the working copy, so it survives a rebuild.
+# The calendar is served on http://localhost:8081/.
+#
+# This cannot touch the working copy, and both halves of that matter.
+#
+# The code is mounted read-only, so nothing in the container can write to the
+# tree -- which is how tests/run-*-install-tests.sh deleted a live
+# includes/settings.php and took a calendar down on 2026-09-24.
+#
+# WEBCALENDAR_USE_ENV=true means do_config() reads the database settings from
+# the environment and never opens includes/settings.php, so a live
+# configuration sitting in the mount is not merely protected, it is ignored.
+# headless.php honours the same flag and skips writing that file.
+#
+# The database lives in a named docker volume rather than in the working copy.
+# It survives a rebuild and a `down`, and `down -v` discards it.
 #
 #   If you need shell access on the container:
 #     docker compose -f docker/docker-compose-sqlite-dev.yml exec webcalendar /bin/sh
@@ -26,10 +40,20 @@ services:
     container_name: webcalendar-sqlite
     volumes:
       # Paths are relative to this file, so `..` is the working copy root.
-      - ..:/var/www/html/
-      - ../sqlite-data:/var/www/data
+      # Read-only on purpose: see the note at the top of this file.
+      - ..:/var/www/html/:ro
+      - sandbox-data:/var/www/data
+    # A named volume is created root-owned, and Apache runs as www-data, so
+    # the database directory has to be handed over before the server starts.
+    # This runs as root only for the chown; apache2-foreground drops
+    # privileges itself. Without it the installer stops at "Database
+    # directory is not writable".
+    command: >
+      sh -c "chown www-data:www-data /var/www/data && exec apache2-foreground"
     ports:
-      - 8081:80
+      # Overridable because 8081 is a popular choice and collides easily:
+      #   make sandbox SANDBOX_PORT=8099
+      - "${SANDBOX_PORT:-8081}:80"
     # install password is Webcalendar.1
     # use the following to generate your password hash (replace "Webcalendar.1" with your password):
     # php -r "echo md5('Webcalendar.1');"
@@ -43,3 +67,8 @@ services:
       - WEBCALENDAR_DB_PERSISTENT=true
       - WEBCALENDAR_USER_INC=user.php
       - WEBCALENDAR_MODE=dev
+
+volumes:
+  # Named rather than a path in the working copy, so running this leaves
+  # nothing behind in the tree.
+  sandbox-data:
