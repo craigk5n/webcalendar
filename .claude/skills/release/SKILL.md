@@ -31,8 +31,12 @@ Run these checks. Halt and report on any failure.
 # Must be on master
 git rev-parse --abbrev-ref HEAD                     # expect: master
 
-# Clean working tree
-git status --porcelain                              # expect: empty
+# No modified tracked files. Untracked local files are chronic in this
+# repo (a couple of dozen scratch files, roadmaps and local configs), so
+# plain --porcelain is never empty and would halt every release. The bump
+# itself happens in a fresh worktree (Step 3), which is clean by
+# construction; what matters here is that master has no uncommitted edits.
+git status --porcelain --untracked-files=no          # expect: empty
 
 # Up to date with remote
 git fetch origin
@@ -42,7 +46,7 @@ git log HEAD..origin/master --oneline               # expect: empty
 ./bump_version.sh -p
 ```
 
-If on a different branch or working tree is dirty: stop and ask the user how to proceed. Do **not** auto-stash or auto-checkout.
+If on a different branch, or a tracked file is modified: stop and ask the user how to proceed. Do **not** auto-stash or auto-checkout.
 
 **Release-manifest coverage check.** Every git-tracked file must be classified: listed in `release-files` (ships in the ZIP) or matched by `release-files-excluded` (dev-only). Past releases shipped broken because new files were committed without updating `release-files` (#667, missing translations, `export_wordpress.php`).
 
@@ -80,13 +84,46 @@ Halt on any failure. Do not "fix and retry" — surface the failure to the user.
 
 ## Step 3 — Bump the version
 
+**First: is this checkout also a live deployment?** If the tree is served by a
+web server — `/var/www/...`, or `includes/settings.php` points at a database
+real users rely on — do not bump in it. `upgrade_requires_db_changes()` returns
+true for *every* version bump by design (`includes/functions.php`, "This
+ensures the wizard is triggered for every version bump"), so from the moment
+`includes/config.php` names a version ahead of the database, every request
+redirects to `wizard/index.php`. The site is down until the tree is switched
+back.
+
+Nothing is written to the database in that window — updating the stored version
+is the branch the redirect skips — so recovery is just restoring the tree. But
+it is downtime, and it lasted six minutes when v1.9.24 was cut this way on
+2026-09-26.
+
+Work in a `git worktree` instead, which leaves the served tree untouched:
+
+```bash
+git worktree add -b chore/release-vX.Y.Z /tmp/wc-release origin/master
+ln -s "$PWD/vendor" /tmp/wc-release/vendor    # so the test suite can run
+cd /tmp/wc-release
+```
+
+Three release-files guards `markTestSkipped` in a linked worktree (`.git` is a
+file there, so their `git ls-files` probe fails), so Step 1's manifest check
+must be run in the main checkout or trusted to CI.
+
+Then bump:
+
 ```bash
 ./bump_version.sh                                   # auto-patch bump
 # OR
 ./bump_version.sh vX.Y.Z                            # explicit version
 ```
 
-This updates: `includes/default_config.php`, `wizard/shared/upgrade_matrix.php`, `includes/config.php` (`$PROGRAM_VERSION` + `$PROGRAM_DATE`), `composer.json`, `composer.lock`, `.npmrc`, `wizard/shared/tables-*.sql`, `wizard/shared/tables-sqlite*.php`, `wizard/shared/upgrade-sql.php` (adds empty placeholder entry), and the four wizard files (`index.php`, `headless.php`, `wizard.js`, `WizardState.php`).
+This updates: `includes/default_config.php`, `wizard/shared/upgrade_matrix.php`, `includes/config.php` (`$PROGRAM_VERSION` + `$PROGRAM_DATE`), `composer.json`, `composer.lock`, `.npmrc`, `wizard/shared/tables-*.sql`, `wizard/shared/tables-sqlite*.php`, `wizard/shared/upgrade-sql.php` (adds empty placeholder entry), the four wizard files (`index.php`, `headless.php`, `wizard.js`, `WizardState.php`), and three documentation stamps: `README.md`'s version badge, `docs/WebCalendar-Database.md`'s `**Version:**` line, and `CLAUDE.md`'s overview line where that file exists.
+
+The documentation stamps are not cosmetic: `tests/DocumentedVersionTest.php`
+asserts all three against `includes/config.php`, so a release that bumps the
+code and not the docs fails the build. They must be staged with the rest
+(Step 8).
 
 Confirm by running `./bump_version.sh -p` — should show the new version.
 
@@ -201,16 +238,21 @@ Before any `git commit`, show the user:
 
 Wait for explicit "go" / "yes" / equivalent confirmation. Do **not** assume.
 
+Note that "cut the release" earlier in the conversation is authorisation for
+the release; it is not this confirmation, which is about the specific diff.
+
 ---
 
-## Step 8 — Commit, tag
+## Step 8 — Commit and open a pull request
 
-**Stage explicitly — never `git add -A`.** The repo often has untracked dev files; `-A` would sweep them into the release commit. Stage only the files this release touches:
+**Stage explicitly — never `git add -A`.** The repo carries a couple of dozen
+untracked local files; `-A` would sweep them into the release commit. Stage
+only the files this release touches:
 
 ```bash
 # Files bump_version.sh touches + CHANGELOG.md.
-# If a release skips bump_version.sh (e.g. shipping a previously-prepared version),
-# stage only what actually changed (commonly just CHANGELOG.md).
+# If a release skips bump_version.sh (e.g. shipping a previously-prepared
+# version), stage only what actually changed (commonly just CHANGELOG.md).
 git add \
   CHANGELOG.md \
   includes/default_config.php \
@@ -221,34 +263,103 @@ git add \
   wizard/shared/tables-*.sql \
   wizard/shared/tables-sqlite*.php \
   wizard/shared/upgrade-sql.php \
-  wizard/index.php wizard/headless.php wizard/wizard.js wizard/WizardState.php
+  wizard/index.php wizard/headless.php wizard/wizard.js wizard/WizardState.php \
+  README.md docs/WebCalendar-Database.md
+
+# CLAUDE.md is also updated by bump_version.sh but is untracked; nothing to
+# stage, and DocumentedVersionTest skips it when it is absent. It will
+# disagree with includes/config.php in any checkout that has it until that
+# checkout pulls the release commit.
 
 # Sanity-check what's staged before committing
 git diff --cached --stat
 
 git commit -m "chore(release): vX.Y.Z"
-
-# Tag the release commit at master HEAD
-git tag vX.Y.Z
 ```
 
-Note: the repo's release model uses **fast-forward of `release` to `master`**, not a true merge. The `release` branch is a moving pointer at the most recent shipped commit. Don't create a merge commit unless `release` has divergent commits (it shouldn't).
+Then open a pull request against `master` and merge it once CI is green:
+
+```bash
+git push -u origin chore/release-vX.Y.Z
+gh pr create --base master --head chore/release-vX.Y.Z \
+  --title "chore(release): vX.Y.Z" --body-file /tmp/release-pr-vX.Y.Z.md
+# ... wait for checks, then:
+gh pr merge <N> --merge
+```
+
+Pass `--head` explicitly. `gh pr create` otherwise infers the head branch from
+the current checkout, which is wrong whenever the bump was made in a worktree
+or the tree has been switched back.
+
+**Why a pull request rather than committing straight to master.** An earlier
+version of this skill committed and tagged on `master` locally, then pushed
+`master`, `master:release` and the tag in one call. A pull request instead
+gives the release commit the same review and the same checks as everything
+else in this repository: the diff gets a URL, and `master` does not move until
+the suite is green on the exact commit being shipped.
+
+The cost is that `master` gains a merge commit that does not exist locally, so
+the tag cannot be created before the push. Step 9 handles that.
+
+**What a pull request does not buy you:** nothing exercises `release.yml`
+itself. It runs only on a push to `release`, so a bug in the release workflow
+reaches you at release time no matter how the commit got to `master`. That is
+how v1.9.24 first failed to cut — `release.yml` calls five workflows, three of
+which shared a concurrency group and so cancelled one of their own jobs, and
+no pull request could have shown it. Structural guards are the only cover
+here; `tests/ReusableWorkflowConcurrencyTest.php` is the one for that
+particular trap. Expect the first release after any `release.yml` or
+reusable-workflow change to be the test of it, and read the run rather than
+assuming a green PR implies a green release.
 
 ---
 
-## Step 9 — Push (atomic)
+## Step 9 — Tag the merge commit and fast-forward `release`
 
-Push master, fast-forward `release` to master, and the tag — all in one network round-trip so CI sees consistent state:
+After the merge, the commit to tag is `origin/master`, not anything local.
+Tag it **without checking it out** — checking it out in a served tree is the
+Step 3 hazard again:
 
 ```bash
-git push origin master master:release vX.Y.Z
+git fetch origin
+git tag vX.Y.Z origin/master                 # no working-tree change
+git rev-parse vX.Y.Z origin/master           # confirm they match
+
+# One round-trip: the tag, then the release fast-forward.
+git push origin vX.Y.Z origin/master:refs/heads/release
 ```
 
-Pushing to `release` is what triggers `.github/workflows/release.yml`: full CI suite → build zip → cosign signing → GitHub release. The tag must exist at push time so `actions/create-release@v1` reuses it instead of attempting to mint a new one.
+The tag must exist at push time so `actions/create-release@v1` reuses it
+instead of minting its own. `release.yml` does tag the branch itself as a
+fallback and the result is the same commit, so a release cut without the tag
+is not broken — but the tag then comes from the workflow rather than from a
+reviewed commit, and the run's own "Check and Delete Existing Tag" step is
+what makes that safe. Push the tag.
 
-The `release` push also triggers `.github/workflows/docker.yml`, which builds a multi-arch image and pushes four Docker Hub tags: `craigk5n/webcalendar:X.Y.Z` (bare version), `X.Y.Z-php8-apache`, `latest-php8-apache`, and `latest`. No manual Docker step is needed.
+Confirm the fast-forward before pushing if `release` has drifted:
 
-**If `release` is far behind master** (it can drift between releases), the FF will include all intermediate commits. Confirm with the user before pushing if `git rev-list --count origin/release..origin/master` is unexpectedly high.
+```bash
+git merge-base --is-ancestor origin/release origin/master && echo "fast-forward"
+git rev-list --count origin/release..origin/master
+```
+
+The `release` branch is a moving pointer at the most recent shipped commit,
+not a long-lived branch — a plain fast-forward, never a merge commit. It can
+legitimately be many commits behind (158, for v1.9.24); confirm with the user
+if the count is unexpectedly high, but a large number is normal when releases
+are infrequent.
+
+Pushing to `release` is what triggers `.github/workflows/release.yml`: full CI
+suite → build zip → manifest and cosign signing → GitHub release. It also
+triggers `.github/workflows/docker.yml`, which builds a multi-arch image and
+pushes four Docker Hub tags: `<user>/webcalendar:X.Y.Z`, `X.Y.Z-php8-apache`,
+`latest-php8-apache` and `latest`. No manual Docker step is needed.
+
+**Do not `git pull` in a served checkout afterwards.** `master` now names a
+version ahead of that installation's database, which is the wizard redirect
+from Step 3. Upgrading a live install is a deployment decision for its
+administrator, separate from cutting the release; `php bin/webcal.php db check`
+reports the pending state without applying anything.
 
 ---
 
@@ -340,6 +451,9 @@ Tell the user:
 | `wizard/headless.php` | `const PROGRAM_VERSION` |
 | `wizard/wizard.js` | `programVersion` fallback |
 | `wizard/WizardState.php` | `programVersion` fallback |
+| `README.md` | version badge |
+| `docs/WebCalendar-Database.md` | `**Version:**` stamp |
+| `CLAUDE.md` | overview line, only if the file is present |
 
 ## Reference: stale instructions to ignore
 
