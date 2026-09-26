@@ -108,8 +108,28 @@ database is ahead of a restored tree, `upgrade_requires_db_changes()` finds
 nothing newer, returns false, and `update_webcalendar_version_in_db()` silently
 rewrites the stored version *backwards* to match the older code. A calendar can
 therefore end up with its version row flip-flopping as the tree is switched,
-with no record in the activity log. Check `webcal_config` directly rather than
-inferring the state.
+with no record in the activity log.
+
+**The rewrite moves the version row; it does not undo applied SQL.** That is
+the part to be careful about. After someone upgrades and the tree is then
+restored, the row understates the schema: it says vX.Y.(Z-1) while vX.Y.Z's
+statements have already run. Upgrading again from that row re-applies them.
+v1.9.24's one statement is explicitly idempotent, so this cost nothing on
+2026-09-26 — but `upgrade-sql.php` contains 72 `ALTER TABLE ... ADD` statements
+across its history, and every one of those fails on a second run with a
+duplicate-column error.
+
+So after any release attempt that was interrupted, reverted, or bounced between
+trees, check the version row against what has actually been applied rather than
+trusting the row:
+
+```bash
+php bin/webcal.php config get WEBCAL_PROGRAM_VERSION
+```
+
+and confirm it against the effect of that version's entry in
+`wizard/shared/upgrade-sql.php`. `db check` compares the row to the code, so it
+agrees with a row that is itself wrong.
 
 Work in a `git worktree` instead, which leaves the served tree untouched:
 
