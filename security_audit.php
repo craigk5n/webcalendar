@@ -261,6 +261,10 @@ print_header();
 // installed tree. See SECURITY_AUDIT_STATUS.md (issue #233, Story 3.5).
 render_file_integrity_section();
 
+// Diagnostic report — the same collector bin/webcal uses, for admins who can
+// still reach this page. See AGENT_ROADMAP.md, Pillar A.
+render_diagnostics_section();
+
 echo print_trailer();
 
 exit;
@@ -311,6 +315,71 @@ function get_wc_path($filename)
  * Noise-filter support (Story 4.2) is not yet wired — this section always
  * shows every finding. The AC for Story 3.5 defers filtering to 4.2.
  */
+/**
+ * Renders the diagnostic report with a button that copies it to the
+ * clipboard, so a bug report can carry the environment instead of the
+ * reporter hand-typing it into the issue template and getting it wrong.
+ *
+ * Values are filtered by WebCalendar\Diagnostics\ConfigPolicy before they
+ * reach the page: credentials, hostnames and admin-authored free text are
+ * reduced to "set" or "not set", and any setting nobody has classified is
+ * left out. DiagnosticsRedactionTest pins that.
+ */
+function render_diagnostics_section(): void
+{
+  require_once __DIR__ . '/includes/classes/Diagnostics/ConfigPolicy.php';
+  require_once __DIR__ . '/includes/classes/Diagnostics/Report.php';
+  require_once __DIR__ . '/includes/classes/Diagnostics/Collector.php';
+
+  $report = WebCalendar\Diagnostics\Collector::collect(
+    load_settings(),
+    ['install_root' => __DIR__]
+  );
+  $text = $report->toText();
+
+  echo '<h3 class="mt-4">' . htmlspecialchars(
+    translate('Diagnostic report'),
+    ENT_QUOTES | ENT_SUBSTITUTE,
+    'UTF-8'
+  ) . '</h3>';
+
+  echo '<p class="text-muted"><small>' . htmlspecialchars(
+    translate('Paste this into a bug report. Passwords, tokens, host names and email addresses are reported only as set or not set.'),
+    ENT_QUOTES | ENT_SUBSTITUTE,
+    'UTF-8'
+  ) . '</small></p>';
+
+  echo '<p><button type="button" class="btn btn-secondary btn-sm"'
+    . ' onclick="wcCopyDiagnostics(this)">'
+    . htmlspecialchars(translate('Copy to clipboard'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8')
+    . '</button></p>';
+
+  echo '<pre id="wc-diagnostics" class="border p-2" style="max-height:24em;overflow:auto">'
+    . htmlspecialchars($text, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8')
+    . '</pre>';
+
+  // navigator.clipboard needs a secure context, which plenty of internal
+  // installs are not, so fall back to selecting the text for the user.
+  echo <<<'SCRIPT'
+<script>
+function wcCopyDiagnostics(btn) {
+  var el = document.getElementById('wc-diagnostics');
+  var done = function () { btn.textContent = 'Copied'; };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(el.textContent).then(done);
+    return;
+  }
+  var range = document.createRange();
+  range.selectNodeContents(el);
+  var sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+  try { document.execCommand('copy'); done(); } catch (e) { /* leave selected */ }
+}
+</script>
+SCRIPT;
+}
+
 function render_file_integrity_section(): void
 {
   // Require the Security namespace classes — no composer autoloader

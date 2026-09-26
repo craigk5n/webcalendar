@@ -111,6 +111,56 @@ final class UpgradeSqlTest extends TestCase
     );
   }
 
+  /**
+   * Events created through the MCP server before v1.9.24 were stored with
+   * webcal_entry.cal_type at its schema default of 'E' even when they had a
+   * recurrence row, because add_recurring_event omitted the column.
+   * edit_entry_handler.php has always written 'M' for a repeating event.
+   *
+   * The correction is scoped by a join on webcal_entry_repeats, so it must
+   * leave one-off events, already-correct rows and tasks alone, and it must
+   * survive being run twice -- an upgrade can be re-run.
+   */
+  public function test_v1924_corrects_cal_type_only_for_recurring_events(): void
+  {
+    $file = tempnam(sys_get_temp_dir(), 'wcupg') . '.db';
+    $db = new SQLite3($file);
+    $db->exec('CREATE TABLE webcal_entry ( cal_id INT PRIMARY KEY,'
+      . " cal_name TEXT, cal_type CHAR(1) DEFAULT 'E' )");
+    $db->exec('CREATE TABLE webcal_entry_repeats ( cal_id INT, cal_type TEXT )');
+
+    $db->exec("INSERT INTO webcal_entry VALUES ( 1, 'mcp recurring', 'E' )");
+    $db->exec("INSERT INTO webcal_entry_repeats VALUES ( 1, 'daily' )");
+    $db->exec("INSERT INTO webcal_entry VALUES ( 2, 'one off', 'E' )");
+    $db->exec("INSERT INTO webcal_entry VALUES ( 3, 'already correct', 'M' )");
+    $db->exec("INSERT INTO webcal_entry_repeats VALUES ( 3, 'weekly' )");
+    $db->exec("INSERT INTO webcal_entry VALUES ( 4, 'a task', 'T' )");
+
+    $statements = getSqlUpdates('v1.9.23', 'sqlite3');
+    $this->assertNotEmpty($statements,
+      'upgrading from the previous release must produce the correction');
+
+    foreach ([1, 2] as $pass) {
+      foreach ($statements as $sql) {
+        $db->exec(trim((string) $sql));
+      }
+
+      $types = [];
+      $res = $db->query('SELECT cal_id, cal_type FROM webcal_entry ORDER BY cal_id');
+      while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
+        $types[(int) $row['cal_id']] = $row['cal_type'];
+      }
+
+      $this->assertSame('M', $types[1], "pass $pass: the recurring event must become M");
+      $this->assertSame('E', $types[2], "pass $pass: a one-off must stay E");
+      $this->assertSame('M', $types[3], "pass $pass: an already correct row is unchanged");
+      $this->assertSame('T', $types[4], "pass $pass: a task must not be touched");
+    }
+
+    $db->close();
+    unlink($file);
+  }
+
   public function test_multiple_primary_key_error_is_ignored(): void
   {
     $ref = new ReflectionClass(WizardDatabase::class);

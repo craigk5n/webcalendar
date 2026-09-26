@@ -1,5 +1,7 @@
 <?php
 
+
+require_once __DIR__ . '/McpServerFixture.php';
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . "/../includes/dbi4php.php";
@@ -14,6 +16,9 @@ require_once __DIR__ . "/CrossDatabaseTestHelper.php";
  */
 final class CrossDatabaseCompatibilityTest extends TestCase
 {
+    /** Environment prefix that opts an optional backend into the run. */
+    private const ENV_PREFIX = 'WEBCAL_TEST_';
+
     private $testHelpers = [];
     private $dbTypes = ['sqlite3'];
     
@@ -23,30 +28,87 @@ final class CrossDatabaseCompatibilityTest extends TestCase
         // Initialize available database types
         $this->dbTypes = ['sqlite3']; // Start with SQLite
         
-        // Try to add MySQL if available
-        if (extension_loaded('mysqli')) {
-            $this->dbTypes[] = 'mysql';
-        }
-        
-        // Try to add PostgreSQL if available
-        if (extension_loaded('pgsql')) {
-            $this->dbTypes[] = 'postgresql';
-        }
-        
-        // Create test databases for each available type
-        foreach ($this->dbTypes as $dbType) {
-            try {
-                $config = $this->getDatabaseConfig($dbType);
-                $helper = createCrossDatabaseTestHelper($dbType, $config);
-                $this->testHelpers[$dbType] = $helper;
-                
-                // Establish database connection
-                dbi_connect($config['host'] ?? '', $config['login'] ?? '', $config['password'] ?? '', $helper->getDbPath());
-            } catch (Exception $e) {
-                // Skip database type if not available
-                echo "Skipping $dbType: " . $e->getMessage() . "\n";
+        // MySQL and PostgreSQL are attempted only when someone has said where
+        // they are. Previously they were attempted whenever the extension was
+        // loaded, against hardcoded testuser/testpass credentials, so on every
+        // machine without that exact account the connection failed, the
+        // exception was swallowed, and the test reported success having
+        // exercised SQLite alone. See self::backendConfig().
+        foreach (['mysql', 'postgresql'] as $optional) {
+            if (self::backendConfig($optional) !== null) {
+                $this->dbTypes[] = $optional;
             }
         }
+
+        foreach ($this->dbTypes as $dbType) {
+            $config = $this->getDatabaseConfig($dbType);
+            try {
+                $helper = createCrossDatabaseTestHelper($dbType, $config);
+                $this->testHelpers[$dbType] = $helper;
+
+                dbi_connect($config['host'] ?? '', $config['login'] ?? '', $config['password'] ?? '', $helper->getDbPath());
+            } catch (Exception $e) {
+                // A backend that was deliberately configured and cannot be
+                // reached is a real failure. Swallowing it is what hid the
+                // gap in the first place.
+                $this->fail("$dbType is configured via " . self::ENV_PREFIX
+                    . strtoupper($dbType) . "_* but could not be used: "
+                    . $e->getMessage());
+            }
+        }
+    }
+
+    /**
+     * Connection details for an optional backend, or null when it has not
+     * been configured.
+     *
+     * Set WEBCAL_TEST_MYSQL_HOST, _DATABASE, _LOGIN and _PASSWORD (and the
+     * POSTGRESQL equivalents) to bring one into the run. Host and database
+     * are the minimum; without them the backend is not attempted at all, so
+     * an ordinary checkout tests SQLite and says so rather than pretending.
+     *
+     * @return array<string, string>|null
+     */
+    private static function backendConfig(string $dbType): ?array
+    {
+        $prefix = self::ENV_PREFIX . strtoupper($dbType) . '_';
+        $host = getenv($prefix . 'HOST');
+        $database = getenv($prefix . 'DATABASE');
+
+        if (!is_string($host) || $host === '' || !is_string($database) || $database === '') {
+            return null;
+        }
+
+        return [
+            'host' => $host,
+            'database' => $database,
+            'login' => (string) (getenv($prefix . 'LOGIN') ?: ''),
+            'password' => (string) (getenv($prefix . 'PASSWORD') ?: ''),
+        ];
+    }
+
+    /**
+     * Reports which backends this run actually covered.
+     *
+     * Skipped rather than passed when only SQLite is present, so the summary
+     * line says so instead of a green result implying three backends were
+     * checked.
+     */
+    public function testOptionalBackendsAreCoveredOrReportedSkipped(): void
+    {
+        $optional = array_values(array_intersect(
+            array_keys($this->testHelpers), ['mysql', 'postgresql']
+        ));
+
+        if ($optional === []) {
+            $this->markTestSkipped(
+                'Only SQLite was exercised. Set ' . self::ENV_PREFIX
+                . 'MYSQL_HOST/_DATABASE (and _LOGIN/_PASSWORD), or the '
+                . 'POSTGRESQL equivalents, to cover those backends too.'
+            );
+        }
+
+        $this->assertNotEmpty($optional);
     }
     
     protected function tearDown(): void {
@@ -60,21 +122,12 @@ final class CrossDatabaseCompatibilityTest extends TestCase
     private function getDatabaseConfig($dbType) {
         switch ($dbType) {
             case 'sqlite3':
-                return ['path' => sys_get_temp_dir() . '/webcalendar_' . $dbType . '_test.db'];
+                // Per-run, so two test runs cannot share one file.
+                return ['path' => McpServerFixture::tempPath(
+                    'webcalendar_' . $dbType . '_test', '.db')];
             case 'mysql':
-                return [
-                    'host' => 'localhost',
-                    'database' => 'webcalendar_test',
-                    'login' => 'testuser',
-                    'password' => 'testpass'
-                ];
             case 'postgresql':
-                return [
-                    'host' => 'localhost',
-                    'database' => 'webcalendar_test',
-                    'login' => 'testuser',
-                    'password' => 'testpass'
-                ];
+                return self::backendConfig($dbType) ?? [];
             default:
                 return [];
         }

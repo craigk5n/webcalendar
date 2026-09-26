@@ -1,0 +1,45 @@
+# Development environment backed by SQLite, no database server.
+#
+# Run docker compose from the top-level WebCalendar directory:
+#   docker compose -f docker/docker-compose-sqlite-dev.yml up
+#
+# The calendar is served on http://localhost:8081/ and the installation
+# wizard creates the schema on first access. The database file lives in
+# sqlite-data/ at the top of the working copy, so it survives a rebuild.
+#
+#   If you need shell access on the container:
+#     docker compose -f docker/docker-compose-sqlite-dev.yml exec webcalendar /bin/sh
+#
+# To install from the command line instead of the browser wizard, run it as
+# www-data. `exec` runs as root by default, and a root-owned database file
+# leaves Apache unable to write it ("attempt to write a readonly database"):
+#     docker compose -f docker/docker-compose-sqlite-dev.yml \
+#       exec -u www-data webcalendar php wizard/headless.php --use-env \
+#       --admin-login=admin --admin-password=admin --install-password=test123
+
+services:
+
+  webcalendar:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile-dev
+    container_name: webcalendar-sqlite
+    volumes:
+      # Paths are relative to this file, so `..` is the working copy root.
+      - ..:/var/www/html/
+      - ../sqlite-data:/var/www/data
+    ports:
+      - 8081:80
+    # install password is Webcalendar.1
+    # use the following to generate your password hash (replace "Webcalendar.1" with your password):
+    # php -r "echo md5('Webcalendar.1');"
+    environment:
+      - WEBCALENDAR_USE_ENV=true
+      - WEBCALENDAR_INSTALL_PASSWORD=b97f7de5f4b20eb6e474bb18b040b369
+      - WEBCALENDAR_DB_TYPE=sqlite3
+      - WEBCALENDAR_DB_DATABASE=/var/www/data/webcalendar.db
+      - WEBCALENDAR_DB_LOGIN=webcalendar
+      - WEBCALENDAR_DB_PASSWORD=Webcalendar.1
+      - WEBCALENDAR_DB_PERSISTENT=true
+      - WEBCALENDAR_USER_INC=user.php
+      - WEBCALENDAR_MODE=dev

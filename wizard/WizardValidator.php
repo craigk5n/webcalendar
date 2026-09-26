@@ -241,13 +241,13 @@ class WizardValidator
     
     // PHP Version
     $phpVersion = phpversion();
-    $versionOk = version_compare($phpVersion, '8.0', '>=');
+    $versionOk = version_compare($phpVersion, '8.2', '>=');
     $settings[] = [
       'name' => 'PHP Version',
-      'required' => '8.0+',
+      'required' => '8.2+',
       'current' => $phpVersion,
       'status' => $versionOk ? 'ok' : 'error',
-      'message' => $versionOk ? 'Supported' : 'PHP 8.0 or later is required',
+      'message' => $versionOk ? 'Supported' : 'PHP 8.2 or later is required',
     ];
     
     // GD Module

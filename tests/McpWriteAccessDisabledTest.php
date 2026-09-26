@@ -1,5 +1,7 @@
 <?php
 
+
+require_once __DIR__ . '/McpServerFixture.php';
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . "/../includes/dbi4php.php";
@@ -16,11 +18,15 @@ final class McpWriteAccessDisabledTest extends TestCase
     private static $db_file = null;
     private static $api_token = null;
     private static $server_pid = null;
-    private static $server_port = 8104;
+    private static $server_port = 0;
+    private static $server_log = null;
 
     public static function setUpBeforeClass(): void
     {
-        self::$db_file = sys_get_temp_dir() . '/mcp_write_disabled_test.sqlite';
+        // Per-run port and paths; see tests/McpServerFixture.php.
+        self::$server_port = McpServerFixture::freePort();
+        self::$server_log = McpServerFixture::tempPath('mcp-write-disabled-server', '.log');
+        self::$db_file = McpServerFixture::tempPath('mcp_write_disabled_test', '.sqlite');
         if (file_exists(self::$db_file)) {
             unlink(self::$db_file);
         }
@@ -51,7 +57,7 @@ final class McpWriteAccessDisabledTest extends TestCase
             'MCP_TOKEN= WEBCALENDAR_USE_ENV=true WEBCALENDAR_DB_TYPE=sqlite3 WEBCALENDAR_DB_DATABASE=%s',
             self::$db_file
         );
-        $cmd = sprintf('%s php -S localhost:%d -t %s > /tmp/mcp-write-disabled-server.log 2>&1 & echo $!', $env, self::$server_port, $project_dir);
+        $cmd = sprintf('%s php -S localhost:%d -t %s > ' . self::$server_log . ' 2>&1 & echo $!', $env, self::$server_port, $project_dir);
         $out = [];
         exec($cmd, $out);
         self::$server_pid = (int)$out[0];

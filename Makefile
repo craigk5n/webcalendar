@@ -284,3 +284,30 @@ pub/tinymce/CHANGELOG.md: $(TINYMCE_VENDOR_DIR)/tinymce/CHANGELOG.md
 	  echo "Copying file: $${f}"; \
 	  cp $${a} $${f}; \
 	done
+
+# ---------------------------------------------------------------------------
+# Quality gate. Runs what CI runs, in the order CI runs it, so a green `make
+# check` predicts a green pipeline. Each step prints its own output and the
+# first failure stops the target, giving a meaningful exit code.
+#
+# phpcs is deliberately absent. There is no phpcs.xml, and the codebase uses
+# 2-space indentation rather than PSR-12, so an unconfigured run would emit
+# thousands of complaints and the target would never pass. Adopting a standard
+# for the legacy tree is its own piece of work.
+# ---------------------------------------------------------------------------
+.PHONY: check check-compile check-stan check-tests
+
+check: check-compile check-stan check-tests
+	@echo "=== all checks passed ==="
+
+check-compile:
+	@echo "=== compile ==="
+	./tests/compile_test.sh
+
+check-stan:
+	@echo "=== phpstan ==="
+	vendor/bin/phpstan analyse --no-progress
+
+check-tests:
+	@echo "=== phpunit ==="
+	vendor/bin/phpunit -c tests/phpunit.xml

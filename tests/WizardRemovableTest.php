@@ -27,10 +27,16 @@ final class WizardRemovableTest extends TestCase
    */
   private function runtimeSources(): array
   {
+    // bin/ and the class subdirectories were added after this test was
+    // written. bin/webcal.php is a shipped entry point with eleven commands,
+    // one of which reports on pending upgrades, so it is exactly the kind of
+    // file that would be tempted to read wizard/shared/upgrade-sql.php.
     $files = array_merge(
       glob(self::ROOT . '/*.php') ?: [],
+      glob(self::ROOT . '/bin/*.php') ?: [],
       glob(self::ROOT . '/includes/*.php') ?: [],
-      glob(self::ROOT . '/includes/classes/*.php') ?: []
+      glob(self::ROOT . '/includes/classes/*.php') ?: [],
+      glob(self::ROOT . '/includes/classes/*/*.php') ?: []
     );
 
     // run_install.php is an explicit wrapper around the installer, so it is
@@ -48,9 +54,18 @@ final class WizardRemovableTest extends TestCase
       $src = file_get_contents($file);
       self::assertNotFalse($src, "Could not read $file");
 
+      // Anywhere in the statement, not just a quote immediately after the
+      // keyword: every file here builds paths as WC_ROOT . '/...' or
+      // __DIR__ . '/...', and the original pattern matched none of those.
+      // A path held in a variable still slips through -- functions.php does
+      // that deliberately, behind a file_exists() check.
+      //
+      // Comments are stripped first. default_config.php explains in prose
+      // that wizard/WizardDatabase.php requires it, which the pattern read
+      // as a dependency in the wrong direction.
       if (preg_match_all(
-        '/\b(?:require|include)(?:_once)?\s*\(?\s*[\'"][^\'"]*wizard\//',
-        $src,
+        '/\b(?:require|include)(?:_once)?\b[^;]{0,300}wizard\//',
+        $this->executableCode($src),
         $matches
       )) {
         $offenders[] = basename($file) . ' (' . count($matches[0]) . ')';
@@ -64,6 +79,27 @@ final class WizardRemovableTest extends TestCase
       . 'an admin follows the security audit advice to remove or chmod 000 '
       . 'the wizard/ directory (issue #707): ' . implode(', ', $offenders)
     );
+  }
+
+  /**
+   * The source with comments removed, so prose about wizard/ is not read as a
+   * dependency on it.
+   */
+  private function executableCode(string $php): string
+  {
+    $out = '';
+    foreach (token_get_all($php) as $token) {
+      if (is_array($token)) {
+        if ($token[0] === T_COMMENT || $token[0] === T_DOC_COMMENT) {
+          continue;
+        }
+        $out .= $token[1];
+        continue;
+      }
+      $out .= $token;
+    }
+
+    return $out;
   }
 
   public function testConfigDefaultsLiveOutsideWizard(): void

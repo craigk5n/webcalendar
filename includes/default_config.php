@@ -142,6 +142,7 @@ function webcal_config_defaults() {
     'REMEMBER_LAST_LOGIN' => 'N',
     'REMINDER_DEFAULT' => 'N',
     'REMINDER_OFFSET' => '240',
+    'REMINDER_WEB_TRIGGER_TOKEN' => '',
     'REMINDER_WITH_DATE' => 'N',
     'REMOTES_ENABLED' => 'N',
     'REPORTS_ENABLED' => 'N',

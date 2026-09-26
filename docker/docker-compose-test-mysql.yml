@@ -14,9 +14,13 @@ services:
       retries: 10
 
   web:
+    # Named so CI can build it once, with a layer cache, and have compose
+    # reuse it instead of rebuilding. Keep this in step with the tag in
+    # .github/workflows/test-web-wizard.yml; DockerImageTagTest checks it.
+    image: webcalendar-test-web:ci
     build:
       context: ..
-      dockerfile: docker/Dockerfile-php8-dev
+      dockerfile: docker/Dockerfile-dev
     volumes:
       - ..:/var/www/html
     environment:

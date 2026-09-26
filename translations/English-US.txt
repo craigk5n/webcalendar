@@ -189,6 +189,7 @@ Add Exception: Add Exception
 Add Inclusion: Add Inclusion
 Delete Selected: Delete Selected
 email-event-reminders-help: Specifies whether or not to send event reminders.
+reminder-web-trigger-help: Lets tools/send_reminders.php be run by fetching its URL, for hosts with no shell access. Off unless a token is generated; the URL must carry that token. Prefer a cron job running the PHP CLI binary.
 Send Reminder: Send Reminder
 Yes: Yes
 No: No
@@ -1442,6 +1443,11 @@ task: task
 event: event
 This is a reminder for the XXX detailed below.: This is a reminder for the XXX detailed below.
 Reminder: Reminder
+Reminder cron URL: Reminder cron URL
+Copy to clipboard: Copy to clipboard
+Diagnostic report: Diagnostic report
+Paste this into a bug report. Passwords, tokens, host names and email addresses are reported only as set or not set.: Paste this into a bug report. Passwords, tokens, host names and email addresses are reported only as set or not set.
+Reminder web trigger: Reminder web trigger
 
 ########################################
 # Page: ws/get_events.php

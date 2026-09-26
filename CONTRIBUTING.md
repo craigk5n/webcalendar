@@ -20,7 +20,7 @@ All contributors are expected to follow our
 
 ### Prerequisites
 
-- PHP 8.0+ (8.2+ recommended)
+- PHP 8.2+
 - Composer
 - MySQL, PostgreSQL, or SQLite3
 - Git
@@ -37,7 +37,7 @@ make  # copies vendor assets to pub/
 ### Using Docker
 
 ```bash
-docker-compose -f docker/docker-compose-php8-dev.yml up
+docker-compose -f docker/docker-compose-dev.yml up
 # http://localhost:8080 (MariaDB) / http://localhost:8081 (PostgreSQL)
 ```
 

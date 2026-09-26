@@ -148,7 +148,7 @@ If using email notifications (`tools/send_reminders.php`):
 
 - Configure SMTP with authentication (not `mail()` function).
 - Use TLS/STARTTLS for SMTP connections.
-- Test with `tools/send_test_email.php` before deploying.
+- Test with `php bin/webcal.php email test --to=you@example.com` before deploying.
 
 ## MCP Server Security
 

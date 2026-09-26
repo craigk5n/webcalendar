@@ -99,6 +99,33 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
     // echo "<!-- Waiting on db connection made (lazy) -->\nRETURN!<br>";
     return true;
 
+  // Each backend reaches straight into its PHP extension below. When that
+  // extension is not loaded the call raises a fatal Error rather than failing
+  // the connection, which kills the caller outright -- including
+  // bin/webcal.php diagnose, whose whole purpose is to run when the
+  // installation is broken, and a missing extension is one of the ways it
+  // breaks. Report it as a failed connection instead.
+  $driver = [
+    'ibase' => 'ibase_connect',
+    'ibm_db2' => 'db2_connect',
+    'mysqli' => 'mysqli_connect',
+    'odbc' => 'odbc_connect',
+    'oracle' => 'oci_connect',
+    'postgresql' => 'pg_connect',
+  ][$GLOBALS['db_type']] ?? '';
+
+  if( $driver !== '' && ! function_exists( $driver ) ) {
+    $db_connection_info['last_error'] = 'The PHP extension for '
+      . $GLOBALS['db_type'] . ' is not loaded (' . $driver . ' is undefined).';
+    return false;
+  }
+
+  if( $GLOBALS['db_type'] == 'sqlite3' && ! class_exists( 'SQLite3' ) ) {
+    $db_connection_info['last_error'] =
+      'The PHP extension for sqlite3 is not loaded (SQLite3 is undefined).';
+    return false;
+  }
+
   if( strcmp( $GLOBALS['db_type'], 'ibase' ) == 0 ) {
     $host = $host . ':' . $database;
     $c = ( $GLOBALS['db_persistent']

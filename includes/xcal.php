@@ -687,7 +687,7 @@ function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
 }
 
 function export_get_event_entry( $id = 'all', $attachment = false ) {
-  global $cat_filter, $DISPLAY_UNAPPROVED, $enddate,
+  global $cat_filter, $DISPLAY_UNAPPROVED, $enddate, $include_deleted,
   $include_layers, $layers, $login, $moddate, $startdate,
   $type, $user, $USER_REMOTE_ACCESS, $use_all_dates;
 
@@ -743,13 +743,30 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
     }
     $sql .= ' ) ';
   } //end if $id=all
-  if ( $DISPLAY_UNAPPROVED == 'N' ) {
-    $sql .= " AND weu.cal_status = 'A'";
-  } else {
-    $sql .= " AND weu.cal_status IN ('W','A')";
+  // Which participation statuses the export accepts. del_entry.php deletes an
+  // event by setting cal_status to 'D' rather than removing the row, so the
+  // Export page's "Include deleted entries" checkbox is a question about this
+  // list. export_handler.php has collected that checkbox into
+  // $include_deleted since it was added, and nothing ever read it, so ticking
+  // it did nothing at all.
+  $statuses = ( $DISPLAY_UNAPPROVED == 'N' ? ['A'] : ['W', 'A'] );
+  if ( ! empty ( $include_deleted ) )
+    $statuses[] = 'D';
+
+  $sql .= ' AND weu.cal_status IN ( '
+   . implode ( ', ', array_fill ( 0, count ( $statuses ), '?' ) ) . ' )';
+  foreach ( $statuses as $status ) {
+    $sql_params[] = $status;
   }
 
-  if ( ! empty ( $type ) && $type = 'publish' ) {
+  // Was `! empty ( $type ) && $type = 'publish'`. That inner `=` is an
+  // assignment, so the condition reduced to "any non-empty $type" and set
+  // $type to 'publish' on the way through. publish.php is the one caller that
+  // wants this restriction, and it is the one page that serves another user's
+  // calendar to an unauthenticated visitor; approve_entry.php takes $type
+  // straight from the request, so approving an event with any type parameter
+  // silently filtered its own email attachment down to public events.
+  if ( $type == 'publish' ) {
     if ( $USER_REMOTE_ACCESS == 0 ) {
       $sql .= " AND we.cal_access = 'P'";
     } else if ( $USER_REMOTE_ACCESS == 1 ) {

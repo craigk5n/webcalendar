@@ -15,7 +15,7 @@
 
 ## Requirements
 
-**PHP**: 8.0 minimum, 8.2+ recommended (CI tests against 8.2, 8.3, 8.4)
+**PHP**: 8.2 minimum (CI tests against 8.2, 8.3 and 8.4). PHP 8.1 reached end of life on 31 December 2025 and is no longer supported. Note that PHP 8.2 itself loses security support on 31 December 2026.
 
 **PHP Extensions** (required):
 - A database driver: `mysqli`, `pgsql`, `sqlite3`, `oci8`, `ibm_db2`,
@@ -105,13 +105,13 @@ directory, not from the `docker/` subdirectory.
 **Production** (MariaDB, port 8080):
 
 ```bash
-docker compose -f docker/docker-compose-php8.yml up
+docker compose -f docker/docker-compose-prod.yml up
 ```
 
 **Development** (MariaDB on 8080, PostgreSQL on 8081):
 
 ```bash
-docker compose -f docker/docker-compose-php8-dev.yml up
+docker compose -f docker/docker-compose-dev.yml up
 ```
 
 **SQLite Development** (port 8081):
@@ -123,7 +123,7 @@ docker compose -f docker/docker-compose-sqlite-dev.yml up
 Shell access into a running container:
 
 ```bash
-docker compose -f docker/docker-compose-php8.yml \
+docker compose -f docker/docker-compose-prod.yml \
   exec webcalendar-php8 /bin/sh
 ```
 

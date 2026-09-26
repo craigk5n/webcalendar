@@ -1,5 +1,7 @@
 <?php
 
+
+require_once __DIR__ . '/McpServerFixture.php';
 /**
  * Cross-Database Test Helper for WebCalendar MCP Server Testing
  * 
@@ -164,7 +166,9 @@ abstract class CrossDatabaseTestHelper {
 class SQLiteTestHelper extends CrossDatabaseTestHelper {
     
     protected function configureDatabase($config) {
-        $this->dbPath = $config['path'] ?? sys_get_temp_dir() . '/webcalendar_sqlite_test.db';
+        // Per-run by default, for the same reason as McpTestHelper.
+        $this->dbPath = $config['path']
+            ?? McpServerFixture::tempPath('webcalendar_sqlite_test', '.db');
     }
     
     protected function createDatabase() {

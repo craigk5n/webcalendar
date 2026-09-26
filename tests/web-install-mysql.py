@@ -47,6 +47,43 @@ def wait_for_text(driver, selector, text, timeout=45):
         time.sleep(0.5)
     raise TimeoutException(f"Timed out waiting for text '{text}' in element '{selector}'")
 
+def wait_for_page(driver, timeout=20):
+    """Wait until the browser has finished loading a document.
+
+    A fixed sleep after a navigation is wrong in both directions: dead time
+    when the page is ready sooner, and a failure when a loaded runner takes
+    longer than the guess. readyState is the thing actually being waited for.
+    """
+    WebDriverWait(driver, timeout).until(
+        lambda d: d.execute_script("return document.readyState") == "complete")
+
+
+def click_and_wait(driver, element, timeout=20):
+    """Click something that navigates, then wait for the new document.
+
+    A marker on window is what detects the navigation: a new document does not
+    have it. Waiting on readyState alone is not enough, because the old
+    document is already 'complete' when the click happens.
+
+    The obvious alternative, EC.staleness_of() on the old <body>, was tried and
+    is not safe here. It only treats StaleElementReferenceException as "gone",
+    and Chrome instead raises WebDriverException("Node with given id does not
+    belong to the document") during a navigation, which propagates and fails
+    the test. That turned a passing test_new_installation into a failure.
+
+    A click that does not navigate is not an error: the caller's own checks
+    say what happened, and they give better messages than a timeout here.
+    """
+    driver.execute_script("window.__wcNavMarker = 1;")
+    element.click()
+    try:
+        WebDriverWait(driver, timeout).until(
+            lambda d: d.execute_script("return window.__wcNavMarker") is None)
+    except TimeoutException:
+        pass
+    wait_for_page(driver, timeout)
+
+
 def set_value(driver, element_id, value):
     """Set a field and fire exactly one input event (#728).
 
@@ -219,7 +256,7 @@ def _try_login(driver, password):
     """Attempt to login as admin with the given password. Returns True if successful."""
     driver.delete_all_cookies()
     driver.get(f"{BASE_URL}/login.php")
-    time.sleep(2)
+    wait_for_page(driver)
 
     if "Fatal" in driver.title or "Error" in driver.title:
         body = driver.find_element(By.TAG_NAME, "body").text[:500]
@@ -237,8 +274,8 @@ def _try_login(driver, password):
 
     driver.find_element(By.ID, "user").send_keys("admin")
     driver.find_element(By.ID, "password").send_keys(password)
-    driver.find_element(By.CSS_SELECTOR, "#login-form button[type='submit']").click()
-    time.sleep(3)
+    click_and_wait(driver, driver.find_element(
+        By.CSS_SELECTOR, "#login-form button[type='submit']"))
 
     if "login" in driver.current_url:
         body = driver.find_element(By.TAG_NAME, "body").text[:500]
@@ -266,15 +303,19 @@ def _post_install_smoke_test(driver):
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "entry_brief")))
     assert "Fatal" not in driver.page_source, "edit_entry.php has fatal error"
     driver.find_element(By.ID, "entry_brief").send_keys("Smoke Test Event")
-    driver.find_element(By.CSS_SELECTOR, "button[onclick*='validate_and_submit']").click()
-    time.sleep(3)
+    click_and_wait(driver, driver.find_element(
+        By.CSS_SELECTOR, "button[onclick*='validate_and_submit']"))
 
     # Verify no fatal error on handler page
     assert "Fatal" not in driver.page_source, f"edit_entry_handler.php has fatal error"
 
     # Verify event appears on calendar
     driver.get(f"{BASE_URL}/month.php")
-    time.sleep(2)
+    try:
+        WebDriverWait(driver, 20).until(EC.text_to_be_present_in_element(
+            (By.TAG_NAME, "body"), "Smoke Test Event"))
+    except TimeoutException:
+        pass  # let the assertion below report it with its own message
     assert "Smoke Test Event" in driver.page_source, "Event not found on calendar after creation"
     print("SUCCESS: Event created and visible on calendar")
     print("SUCCESS: Post-install smoke test passed — login, calendar view, and event creation work")
@@ -289,7 +330,6 @@ def test_new_installation(driver):
         try:
             start_over_btn = driver.find_element(By.ID, "logoutBtn")
             driver.execute_script("arguments[0].click();", start_over_btn)
-            time.sleep(1)
         except Exception:
             pass  # Already on welcome page or button not found
         wait_for_text(driver, "stepTitle", "Welcome")
@@ -342,7 +382,6 @@ def test_new_installation(driver):
             set_value(driver, "admin_password2", "admin123")
             wait_for_validated(driver, ["admin_login", "admin_password", "admin_password2"])
             click_button(driver, "form[data-action='create-admin-user'] button[type='submit']")
-            time.sleep(2)
 
         # Click through Summary if needed
         #
@@ -382,7 +421,6 @@ def _run_upgrade_test(driver, fixture_path):
     try:
         reset_db()
         load_fixture(fixture_path)
-        time.sleep(2)
 
         driver.delete_all_cookies()
         driver.get(f"{BASE_URL}/wizard/index.php")
@@ -390,7 +428,6 @@ def _run_upgrade_test(driver, fixture_path):
         try:
             start_over_btn = driver.find_element(By.ID, "logoutBtn")
             driver.execute_script("arguments[0].click();", start_over_btn)
-            time.sleep(1)
         except Exception:
             pass
 
@@ -490,7 +527,7 @@ def test_version_check(driver):
 
         # 2. Verify version shown by wizard status page
         driver.get(f"{BASE_URL}/wizard/index.php")
-        time.sleep(1)
+        wait_for_page(driver)
         page_source = driver.page_source
         match = re.search(r'v([0-9]+\.[0-9]+\.[0-9]+)', page_source)
         assert match, "Could not find version in wizard page"

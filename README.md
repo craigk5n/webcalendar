@@ -54,7 +54,7 @@ git clone https://github.com/craigk5n/webcalendar.git
 cd webcalendar
 
 # Start with Docker Compose
-docker-compose -f docker/docker-compose-php8.yml up
+docker-compose -f docker/docker-compose-prod.yml up
 
 # Access at http://localhost:8080
 ```
@@ -92,7 +92,7 @@ Build and run a development environment with live file mounting:
 
 ```bash
 # Start the development containers (MariaDB + PostgreSQL)
-docker-compose -f docker/docker-compose-php8-dev.yml up
+docker-compose -f docker/docker-compose-dev.yml up
 
 # Access at http://localhost:8080 (MariaDB) or http://localhost:8081 (PostgreSQL)
 ```

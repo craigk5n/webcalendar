@@ -19,7 +19,7 @@ development, and testing.
 ```bash
 git clone https://github.com/craigk5n/webcalendar.git
 cd webcalendar
-docker-compose -f docker/docker-compose-php8.yml up
+docker-compose -f docker/docker-compose-prod.yml up
 # Open http://localhost:8080
 ```
 
@@ -27,10 +27,8 @@ docker-compose -f docker/docker-compose-php8.yml up
 
 | File | Purpose | Port(s) | Database |
 |------|---------|---------|----------|
-| `docker-compose-php8.yml` | Production | 8080 | MariaDB |
-| `docker-compose-php8.1.yml` | Production (PHP 8.1) | 8080 | MariaDB |
-| `docker-compose-php8-dev.yml` | Development | 8080, 8081 | MariaDB + PostgreSQL |
-| `docker-compose-php8.1-dev.yml` | Development (PHP 8.1) | 8080 | MariaDB |
+| `docker-compose-prod.yml` | Production | 8080 | MariaDB |
+| `docker-compose-dev.yml` | Development | 8080 | MariaDB |
 | `docker-compose-sqlite-dev.yml` | Development (SQLite) | 8081 | SQLite3 |
 | `docker-compose-test-mysql.yml` | CI testing | internal | MySQL 8.0 |
 | `docker-compose-test-postgresql.yml` | CI testing | internal | PostgreSQL |
@@ -39,12 +37,12 @@ docker-compose -f docker/docker-compose-php8.yml up
 ## Production Deployment
 
 ```bash
-docker-compose -f docker/docker-compose-php8.yml up -d
+docker-compose -f docker/docker-compose-prod.yml up -d
 ```
 
 This starts:
 
-- **PHP 8 + Apache** container on port 8080
+- **PHP 8.4 + Apache** container on port 8080
 - **MariaDB** container with persistent volume
 
 On first access, the installation wizard runs automatically.
@@ -67,16 +65,16 @@ edits are reflected immediately.
 ### MariaDB + PostgreSQL (dual database)
 
 ```bash
-docker-compose -f docker/docker-compose-php8-dev.yml up
+docker-compose -f docker/docker-compose-dev.yml up
 ```
 
 - Port 8080: WebCalendar with MariaDB
 - Port 8081: WebCalendar with PostgreSQL
 
-### MariaDB only (PHP 8.1)
+### MariaDB only
 
 ```bash
-docker-compose -f docker/docker-compose-php8.1-dev.yml up
+docker-compose -f docker/docker-compose-dev.yml up
 ```
 
 - Port 8080: WebCalendar with MariaDB

@@ -89,9 +89,9 @@ schema updates non-interactively.
 2. Recreate the container:
 
 ```bash
-docker-compose -f docker/docker-compose-php8.yml down
-docker-compose -f docker/docker-compose-php8.yml pull
-docker-compose -f docker/docker-compose-php8.yml up -d
+docker-compose -f docker/docker-compose-prod.yml down
+docker-compose -f docker/docker-compose-prod.yml pull
+docker-compose -f docker/docker-compose-prod.yml up -d
 ```
 
 The wizard runs automatically on first access if a schema update is

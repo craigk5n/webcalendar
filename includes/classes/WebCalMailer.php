@@ -90,6 +90,18 @@ class WebCalMailer {
   }
 
   /**
+   * Why the last send failed.
+   *
+   * PHPMailer records it in ErrorInfo, and this class composes PHPMailer
+   * rather than extending it, so nothing outside could read it: WC_Send()
+   * returned false and the caller was left to guess. SetError() below is this
+   * class's own handler, which PHPMailer never calls.
+   */
+  function LastError() {
+    return $this->mail->ErrorInfo;
+  }
+
+  /**
    * Replace the default language handler to use WebCalendar's function.
    */
   function Lang( $key ) {

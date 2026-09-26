@@ -12,6 +12,10 @@ on:
   workflow_dispatch:
   workflow_call:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   build-test:
     runs-on: ubuntu-latest
@@ -27,7 +31,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
       - name: Install dependencies
-        run: composer install
+        run: composer install --no-interaction --prefer-dist --no-progress
       - name: PHPUnit Tests
         run: vendor/bin/phpunit -c tests/phpunit.xml
       - name: Wizard validation race guard (#728)

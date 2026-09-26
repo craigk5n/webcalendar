@@ -83,7 +83,7 @@ function activate_urls( $text ) {
  *   - LOG_DELETE_T
  *   - LOG_LOGIN_FAILURE
  *   - LOG_NEWUSER_FULL
- *   - LOG_NEWUSEREMAIL
+ *   - LOG_NEWUSER_EMAIL
  *   - LOG_NOTIFICATION
  *   - LOG_REJECT
  *   - LOG_REJECT_T
@@ -2978,6 +2978,11 @@ function get_remote_calendar_last_checked($username)
 // identical, we can skip the new import.
 function get_remote_calendar_last_md5($username)
 {
+  // A calendar with no previous import has no hash. Without this $ret is
+  // undefined on the first refresh of every subscription, which PHP 8 reports
+  // as a warning -- and it reached the terminal in the middle of the output
+  // from tools/reload_remotes.php.
+  $ret = '';
   $sql = 'SELECT cal_md5 FROM webcal_import WHERE cal_login = ? ORDER BY cal_import_id DESC LIMIT 1';
   $rows = dbi_get_cached_rows($sql, [$username]);
   if ($rows && is_array($rows)) {
@@ -2988,6 +2993,8 @@ function get_remote_calendar_last_md5($username)
 
 function update_import_check_date($username)
 {
+  // Same as above: nothing to update when there is no import to update.
+  $ret = '';
   $sql = 'SELECT MAX(cal_import_id) FROM webcal_import WHERE cal_login = ?';
   $rows = dbi_get_cached_rows($sql, [$username]);
   if ($rows && is_array($rows)) {
@@ -3007,6 +3014,14 @@ function load_remote_calendar($username, $url)
 {
   global $calUser, $count_suc, $error_num,
   $errormsg, $importMd5, $login, $numDeleted;
+
+  // One call reports on one calendar. parse_ical() appends to $errormsg and
+  // nothing ever cleared it, so a failure left behind by the calendar before
+  // this one made this one fail too: the import below is gated on
+  // empty($errormsg) and the return value is derived from it. Reloading a
+  // whole list, as tools/reload_remotes.php does, meant one unreachable URL
+  // silently stopped every calendar after it from refreshing.
+  $errormsg = '';
 
   // Set global vars used in xcal.php (blech)
   $data = [];
@@ -4056,10 +4071,20 @@ function getServerUrl($checkDatabase = true): string
 
 function determineServerUrl(): string
 {
+  // Nothing to derive this from on the command line, where reminders, export
+  // and the installer all reach here. Reading the absent keys raised two
+  // warnings per call under PHP 8 -- once per event during an export, which
+  // is output that has to stay a valid iCalendar document. Admin > Settings
+  // has a Server URL field for this case; localhost is the honest
+  // placeholder until it is filled in.
+  if (empty($_SERVER['HTTP_HOST'])) {
+    return 'http://localhost/';
+  }
+
   $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
   $host = $_SERVER['HTTP_HOST'];
-  $port = $_SERVER['SERVER_PORT'];
-  $folder = dirname($_SERVER['SCRIPT_NAME']);
+  // SERVER_PORT was read and never used; reading it was the second warning.
+  $folder = dirname($_SERVER['SCRIPT_NAME'] ?? '/');
   $url = $protocol . '://'. $host . '/';
   if ($folder != '/')
      $url .= $folder;
@@ -6790,6 +6815,44 @@ function load_settings($force_reload = false) {
 function is_mcp_enabled() {
   $settings = load_settings();
   return isset($settings['MCP_SERVER_ENABLED']) && $settings['MCP_SERVER_ENABLED'] == 'Y';
+}
+
+/**
+ * Reads the reminder web-trigger token presented with an HTTP request.
+ *
+ * Accepts either a "token" query parameter or an X-Reminder-Token header, so a
+ * cron facility that can only fetch a URL still has a way to pass it.
+ *
+ * @return string The presented token, or '' when none was supplied.
+ */
+function reminder_web_trigger_presented_token() {
+  if ( ! empty ( $_SERVER['HTTP_X_REMINDER_TOKEN'] ) )
+    return (string) $_SERVER['HTTP_X_REMINDER_TOKEN'];
+
+  if ( ! empty ( $_GET['token'] ) )
+    return (string) $_GET['token'];
+
+  return '';
+}
+
+/**
+ * Decides whether an HTTP request may run the reminder script.
+ *
+ * REMINDER_WEB_TRIGGER_TOKEN holds the SHA-256 hash of a token generated in
+ * Admin > Settings > Email, never the token itself, so a database read does
+ * not yield anything usable. An empty setting disables the web trigger, which
+ * is the default: a site that runs reminders from cron has no reason to expose
+ * the script at all.
+ *
+ * @param string $presented Token supplied with the request.
+ * @param string $storedHash Stored SHA-256 hash, or '' when disabled.
+ * @return bool True when the request may proceed.
+ */
+function reminder_web_trigger_allowed ( $presented, $storedHash ) {
+  if ( $storedHash === '' || $presented === '' )
+    return false;
+
+  return hash_equals ( $storedHash, hash ( 'sha256', $presented ) );
 }
 
 /**

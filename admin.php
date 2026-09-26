@@ -26,8 +26,11 @@ function save_pref ( $prefs, $src ) {
 
       // Validate key name. Should start with "admin_" and not include
       // any unusual characters that might be an SQL injection attack.
-      if ( $key == 'csrf_form_key' ) {
-        // Ignore this for validation...
+      if ( $key == 'csrf_form_key'
+        || $key == 'reminder_generate_token'
+        || $key == 'reminder_clear_token' ) {
+        // Not settings. The buttons are handled after save_pref(); the
+        // $prefix test below already keeps them out of webcal_config.
       } else if ( ! preg_match ( '/admin_[A-Za-z0-9_]+$/', $key ) ) {
         die_miserable_death ( str_replace ( 'XXX', $key,
             translate ( 'Invalid setting name XXX.' ) ) );
@@ -63,8 +66,22 @@ function save_pref ( $prefs, $src ) {
 }
 $error = ( $is_admin ? '' : print_not_auth() );
 
+$reminder_new_token = '';
+
 if ( ! empty ( $_POST ) && empty ( $error ) ) {
   save_pref ( $_POST, 'post' );
+
+  // Reminder web-trigger token (generate / clear). Generated server-side with
+  // a CSPRNG; only its SHA-256 hash is stored, and the raw token is shown once
+  // below. Same handling as the MCP token in pref.php, for the same reason: a
+  // database read or backup must not yield a usable token.
+  if ( ! empty ( $_POST['reminder_generate_token'] ) ) {
+    $reminder_new_token = bin2hex ( random_bytes ( 32 ) );
+    save_pref ( ['admin_REMINDER_WEB_TRIGGER_TOKEN'
+      => hash ( 'sha256', $reminder_new_token )], 'post' );
+  } else if ( ! empty ( $_POST['reminder_clear_token'] ) ) {
+    save_pref ( ['admin_REMINDER_WEB_TRIGGER_TOKEN' => ''], 'post' );
+  }
 }
 
 // Load any new config settings. Existing ones will not be affected.
@@ -885,6 +902,29 @@ if ( ! $error ) {
    . '<div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-event-reminders-help' ) . '">'
    . translate ( 'Event reminders' ) . ':</label>'
    . print_radio( 'EMAIL_REMINDER' ) . '</div>'
+   . '<div class="form-inline mt-1 mb-2"><label title="'
+   . tooltip ( 'reminder-web-trigger-help' ) . '">'
+   . translate ( 'Reminder web trigger' ) . ':</label> '
+   . ( empty ( $s['REMINDER_WEB_TRIGGER_TOKEN'] )
+     ? '<span>' . translate ( 'Disabled' ) . '</span>'
+     : '<span>' . translate ( 'Enabled' ) . '</span>' )
+   . ' <button type="submit" name="reminder_generate_token" value="1" '
+   . 'class="btn btn-secondary btn-sm ml-2">'
+   . translate ( 'Generate New Token' ) . '</button>'
+   . ( empty ( $s['REMINDER_WEB_TRIGGER_TOKEN'] ) ? ''
+     : ' <button type="submit" name="reminder_clear_token" value="1" '
+       . 'class="btn btn-secondary btn-sm ml-1">'
+       . translate ( 'Clear Token' ) . '</button>' )
+   . '</div>'
+   . ( empty ( $reminder_new_token ) ? ''
+     : '<div class="alert alert-warning mt-1 mb-2"><p>'
+       . translate ( 'Copy this token now. For security it is stored hashed and cannot be shown again.' )
+       . '</p><p><code>' . htmlspecialchars ( $reminder_new_token )
+       . '</code></p><p>'
+       . translate ( 'Reminder cron URL' ) . ':<br><code>'
+       . htmlspecialchars ( 'https://your-server/webcalendar/tools/'
+         . 'send_reminders.php?token=' . $reminder_new_token )
+       . '</code></p></div>' )
    . '<div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-event-added' ) . '">'
    . translate ( 'Events added to my calendar' ) . ':</label>'
    . print_radio ( 'EMAIL_EVENT_ADDED' ) . '</div>

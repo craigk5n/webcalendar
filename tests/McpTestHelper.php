@@ -1,5 +1,7 @@
 <?php
 
+
+require_once __DIR__ . '/McpServerFixture.php';
 /**
  * SQLite Test Helper for WebCalendar MCP Server Testing
  * 
@@ -13,7 +15,10 @@ class McpTestHelper {
     
     public function __construct($dbPath = null) {
         // Use a default path if not specified
-        $this->dbPath = $dbPath ?: sys_get_temp_dir() . '/webcalendar_test.db';
+        // Per-run by default. A fixed path here meant two test runs shared one
+        // file, and the constructor below deletes it, so each run destroyed the
+        // other's database mid-test. See tests/McpServerFixture.php.
+        $this->dbPath = $dbPath ?: McpServerFixture::tempPath('webcalendar_test', '.db');
         
         // Remove existing test database if it exists
         if (file_exists($this->dbPath)) {

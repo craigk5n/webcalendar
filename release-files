@@ -11,6 +11,7 @@ assistant_edit.php
 AUTHORS
 autocomplete_ajax.php
 availability.php
+bin/webcal.php
 category_handler.php
 category.php
 catsel.php
@@ -97,11 +98,17 @@ import_outlookcsv.php
 import_palmdesktop.php
 import.php
 includes/access.php
+includes/activity-log-constants.php
 includes/ajax.php
 includes/assert.php
 includes/auth-settings.php
 includes/blacklist.php
 includes/classes/AttachmentList.php
+includes/classes/Diagnostics/Collector.php
+includes/classes/Diagnostics/ConfigPolicy.php
+includes/classes/Diagnostics/Report.php
+includes/classes/Event/EventService.php
+includes/classes/Event/NewEvent.php
 includes/classes/captcha/captcha.php
 includes/classes/captcha/COLLEGE.ttf
 includes/classes/captcha/README
@@ -333,7 +340,6 @@ SECURITY.md
 select_user.php
 set_entry_cat.php
 tools/check_translation.pl
-tools/convert_passwords.php
 tools/reload_remotes.php
 tools/send_reminders.php
 tools/summary.txt
