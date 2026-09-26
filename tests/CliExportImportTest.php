@@ -158,4 +158,34 @@ final class CliExportImportTest extends TestCase
 
     eval(substr($src, $start, $end - $start + 1));
   }
+
+  /**
+   * The From the command prints has to be the From it sends.
+   *
+   * WC_Send() takes the sender as its seventh argument, and its two branches
+   * are identical -- both call SetFrom($from_email, $from_name) -- so an
+   * omitted sender is not defaulted to anything, it is sent as an empty From.
+   * The first version of `email test` read EMAIL_FALLBACK_FROM to display it
+   * and then called WC_Send() with five arguments. The relay accepted the
+   * message, the destination discarded it, and the command reported success
+   * while printing a From it had never used. Found by sending one and
+   * watching it not arrive.
+   */
+  public function testTheTestMessageIsSentFromTheAddressItReports(): void
+  {
+    $src = $this->cli();
+
+    $start = strpos($src, '$sent = $mail->WC_Send(');
+    self::assertNotFalse($start, 'email test must send through WC_Send()');
+    $call = substr($src, $start, (int) strpos($src, ');', $start) - $start);
+
+    self::assertStringContainsString('$from', $call,
+      'the sender read for display must be the one handed to WC_Send(), or '
+      . 'the message goes out with an empty From');
+
+    // Seven arguments at least: the sender sits in the seventh position, so
+    // a shorter call cannot be passing it.
+    self::assertGreaterThanOrEqual(7, substr_count($call, ',') + 1,
+      'WC_Send() takes the sender as its seventh argument');
+  }
 }

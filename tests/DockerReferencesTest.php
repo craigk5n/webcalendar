@@ -75,12 +75,29 @@ final class DockerReferencesTest extends TestCase
       if ($src === false) {
         continue;
       }
-      preg_match_all('#(?<![\w/-])\.?/?(docker/[A-Za-z0-9._-]+)#', $src, $m);
-      foreach (array_unique($m[1]) as $path) {
+      preg_match_all('#(?<![\w/-])\.?/?(docker/[A-Za-z0-9._-]+)#', $src, $m,
+        PREG_OFFSET_CAPTURE);
+      $seen = [];
+      foreach ($m[1] as [$path, $offset]) {
+        if (isset($seen[$path])) {
+          continue;
+        }
+        $seen[$path] = true;
+
         // docker/login-action and friends are GitHub Actions, not paths.
         if (preg_match('/-action$/', $path)) {
           continue;
         }
+
+        // A glob is a pattern, not a path. The character class above stops at
+        // the '*', so `docker/docker-compose-test-*.yml` in a comment matched
+        // as `docker/docker-compose-test-` and was reported missing. What
+        // follows the match is what tells the two apart.
+        $next = $src[$offset + strlen($path)] ?? '';
+        if ($next === '*' || $next === '?') {
+          continue;
+        }
+
         if (!file_exists(self::ROOT . '/' . $path)) {
           $missing[] = basename($file) . ' -> ' . $path;
         }
