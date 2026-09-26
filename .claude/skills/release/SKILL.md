@@ -93,10 +93,23 @@ ensures the wizard is triggered for every version bump"), so from the moment
 redirects to `wizard/index.php`. The site is down until the tree is switched
 back.
 
-Nothing is written to the database in that window — updating the stored version
-is the branch the redirect skips — so recovery is just restoring the tree. But
-it is downtime, and it lasted six minutes when v1.9.24 was cut this way on
-2026-09-26.
+The mechanism is confirmed: `upgrade_requires_db_changes()` returns true for
+any newer version, from nested scope and on repeat calls, so the redirect
+branch is the one that runs. What that costs depends on whether a request
+arrives. When v1.9.24 was cut this way on 2026-09-26 the tree sat ahead of the
+database for about six minutes; whether a visitor hit it in that window was
+never established, so treat the exposure as "every request during the window",
+not as a measured outage.
+
+Restoring the tree is not necessarily the whole recovery, because a request
+that *does* arrive can complete the wizard and upgrade the database — which is
+what appears to have happened on 2026-09-26. Then the roles reverse: the
+database is ahead of a restored tree, `upgrade_requires_db_changes()` finds
+nothing newer, returns false, and `update_webcalendar_version_in_db()` silently
+rewrites the stored version *backwards* to match the older code. A calendar can
+therefore end up with its version row flip-flopping as the tree is switched,
+with no record in the activity log. Check `webcal_config` directly rather than
+inferring the state.
 
 Work in a `git worktree` instead, which leaves the served tree untouched:
 
