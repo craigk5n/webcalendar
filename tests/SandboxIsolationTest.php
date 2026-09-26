@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * The sandbox cannot write to the working copy.
  *
@@ -40,15 +42,7 @@ final class SandboxIsolationTest extends TestCase
     $s = file_get_contents(self::COMPOSE);
     self::assertIsString($s, 'could not read the sandbox compose file');
 
-    $out = [];
-    foreach (explode("\n", $s) as $line) {
-      if (preg_match('/^\s*#/', $line) === 1) {
-        continue;
-      }
-      $out[] = $line;
-    }
-
-    return implode("\n", $out);
+    return SourceText::yaml($s);
   }
 
   public function testTheWorkingCopyIsMountedReadOnly(): void
