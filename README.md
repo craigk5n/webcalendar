@@ -206,6 +206,7 @@ Create `includes/config-app-yourapp.php` to override settings dynamically.
 
 - [Installation Guide](docs/installation.md) - System requirements, setup wizard, Docker
 - [Admin Guide](docs/admin-guide.md) - User management, system settings, email
+- [Command Line](docs/cli.md) - `bin/webcal.php`: recovery, backup, import/export
 - [User Guide](docs/user-guide.md) - Calendar views, events, preferences
 - [Upgrade Guide](docs/upgrade-guide.md) - Upgrading from previous versions
 - [Database Schema](docs/WebCalendar-Database.md) - Table definitions
