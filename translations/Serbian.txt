@@ -569,8 +569,8 @@ hour ahead of you: сат испред вас
 hour behind you: сат иза вас
 hours ahead of you: сати испред вас
 hours behind you: сати иза вас
-XXX is in a different timezone (ahead): (КСКСКС је у другој временској зони; ГГГ је испред вас. <бр> & нбсп; ЗЗЗ)
-XXX is in a different timezone (behind): (КСКСКС је у другој временској зони; ГГГ је иза вас. <бр> & нбсп; ЗЗЗ)
+XXX is in a different timezone (ahead): (КСКСКС је у другој временској зони; YYY је испред вас. <бр> & нбсп; ЗЗЗ)
+XXX is in a different timezone (behind): (КСКСКС је у другој временској зони; YYY је иза вас. <бр> & нбсп; ЗЗЗ)
 Time entered here is based on your Timezone.: Овде унето време заснива се на вашој временској зони.
 Edit Entry: Измена уноса
 Details: Детаљи
@@ -999,7 +999,7 @@ cookies-note: Напомена: Ова апликација захтева да 
 #
 Illegal characters in login XXX.: Незаконити знакови у пријави КСКСКС.
 Invalid login: Неважећа лозинка
-Activity login failure: Корисничко име: „КСКСКС“, ИП: „ГГГ“.
+Activity login failure: Корисничко име: „КСКСКС“, ИП: „YYY“.
 Error XXX: Грешка: „КСКСКС“.
 You have been logged out.: Ви сте излоговани.
 Access public calendar: Приступ јавном календару
@@ -1285,11 +1285,11 @@ db_type not defined.: дб_типе није дефинисан.
 invalid db_type XXX: неважећи дб_типе "" КСКСКС ".
 Cache cleared from previous SQL!: Кеш меморија је избрисана из претходног СКЛ-а!
 Error executing query.: Грешка при извршавању упита.
-Unfortunately, XXX is not implemented for YYY: Нажалост, „КСКСКС“ није примењен за (ГГГ).
+Unfortunately, XXX is not implemented for YYY: Нажалост, „КСКСКС“ није примењен за (YYY).
 Unknown ODBC error.: Непозната ОДБЦ грешка.
 Error opening cache dir XXX.: Грешка при отварању директорија кеш меморије „КСКСКС“.
 delete: избрисати
-Cache error Could not XXX file YYY.: Грешка у кешу: Није могуће КСКСКС датотека „ГГГ“.
+Cache error Could not XXX file YYY.: Грешка у кешу: Није могуће КСКСКС датотека „YYY“.
 ########################################
 # Page: includes/formvars.php
 #
@@ -1306,7 +1306,7 @@ on: на
 All Attendees: Сви присутни
 Busy: Заузет
 Tentative: Оквирно
-Schedule an appointment for XXX.: Закажите састанак за XXX.
+Schedule an appointment for XXX.: Закажите састанак за КСКСКС: YYY.
 date_select: __дд__ __месец__ __иии____
 Event approved: Догађај одобрен
 Journal approved: Часопис одобрен
@@ -2142,7 +2142,7 @@ Server: Сервер
 Connection Persistence: Упорност везе
 All your database tables appear to be up...: Изгледа да су све ваше табеле базе података ажурне. Можете да пређете на следећу страницу и довршите подешавање ВебЦалендара.
 This appears to be a new installation...: Чини се да је ово нова инсталација. Ако ово није тачно, вратите се на претходну страницу и исправите своја подешавања.
-This appears to be an upgrade...: Чини се да је ово надоградња са верзије & нбсп; КСКСКС & нбсп; на & нбсп; ГГГ.
+This appears to be an upgrade...: Чини се да је ово надоградња са верзије & нбсп; КСКСКС & нбсп; на & нбсп; YYY.
 The database requires some data input...: База података захтева одређени унос података Кликните Ажурирај базу података да бисте довршили надоградњу.
 In this section we will perform...: У овом одељку извршићемо промене како бисмо вашу базу података довели на потребан ниво. Ако користите потпуно подржану базу података, овај корак ће се аутоматски извршити за вас. Ако није, потребан СКЛ се може приказати и требали бисте бити у могућности да га исечете и налепите у прозор упита сервера базе података.
 No database actions are required.: Нису потребне акције базе података.
@@ -2177,7 +2177,7 @@ Launch WebCalendar: Покрените ВебЦалендар
 ########################################
 # Page: install/install_functions.php
 #
-Error updating table XXX: Грешка при ажурирању табеле „КСКСКС“: ГГГ.
+Error updating table XXX: Грешка при ажурирању табеле „КСКСКС“: YYY.
 Conversion Successful: Конверзија успешна
 Perl script required: Ваша претходна верзија ВебЦалендар захтева покретање ПЕРЛ скрипте за претварање података. Покрените /тоолс/упграде_то_0.9.7.пл, а затим се вратите на ову страницу да бисте наставили.
 previous version requires updating several tables: Ваша претходна верзија ВебЦалендар-а захтева ажурирање неколико табела базе података.
@@ -2216,7 +2216,7 @@ Not authorized (not admin).: Није овлашћен (није админ).
 #
 Checking for events for XXX from date YYY to date ZZZ.: Провера догађаја за КСКСКС од датума ИИИ до датума ЗЗЗ.
 Found XXX events in time range.: Пронашли смо КСКСКС догађаја у временском опсегу.
-Event id=XXX YYY at ZZZ on AAA.: ИД догађаја = КСКСКС „ГГГ“ на ЗЗЗ на ААА.
+Event id=XXX YYY at ZZZ on AAA.: ИД догађаја = КСКСКС „YYY“ на ЗЗЗ на ААА.
 ########################################
 # Page: ws/get_reminders.php
 #
@@ -2227,12 +2227,12 @@ Reminder set for event.: Подсетник постављен за догађа
 Mins Before XXX.: Минс бефоре: КСКСКС.
 Event time is XXX.: Време догађаја је: КСКСКС.
 Remind time is XXX.: Подсетник је: КСКСКС.
-Reminders for user XXX, login YYY.: Подсетници за корисника „КСКСКС“, пријава „ГГГ“.
+Reminders for user XXX, login YYY.: Подсетници за корисника „КСКСКС“, пријава „YYY“.
 ########################################
 # Page: ws/get_unapproved.php
 #
 Getting unapproved for user XXX.: Неодобрење за корисника „КСКСКС“.
-Event id=XXX YYY already sent.: Ид догађаја = КСКСКС „ГГГ“ је већ послат.
+Event id=XXX YYY already sent.: Ид догађаја = КСКСКС „YYY“ је већ послат.
 ########################################
 # Page: ws/login.php
 #
