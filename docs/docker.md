@@ -89,7 +89,38 @@ docker-compose -f docker/docker-compose-sqlite-dev.yml up
 ```
 
 - Port 8081: WebCalendar with SQLite3
-- Database stored as a file inside the container
+- The database lives in a named docker volume, `sandbox-data`, not in the
+  working copy
+
+### Disposable sandbox
+
+A WebCalendar checkout is frequently also a live installation, so `make
+sandbox` wraps the same compose file in a form safe to test writes against:
+
+```bash
+make sandbox                      # start it and install
+make sandbox SANDBOX_PORT=9099    # if 8081 is taken
+make sandbox-cli CMD="seed --scenario=month --force"
+make sandbox-cli CMD="export --login=admin"
+make sandbox-reset                # throw the data away, keep the install
+make sandbox-clean                # stop it and drop the volume
+```
+
+Containerisation alone is not what makes this safe — most of the compose
+files bind mount the working copy read-write, and driving an installer
+inside one of those is how a live `includes/settings.php` has been deleted
+before. Two independent properties are what isolate this one:
+
+- the working copy is mounted **read-only**, so the kernel refuses the
+  write, and
+- `WEBCALENDAR_USE_ENV=true` means the configuration comes from the
+  environment and `includes/settings.php` is never opened, so a live
+  configuration in the mount is ignored rather than merely protected.
+
+`tests/SandboxIsolationTest.php` asserts both.
+
+Changing `SANDBOX_PORT` while the sandbox is already running skips the port
+pre-check, and docker reports the collision itself.
 
 ## Testing
 
