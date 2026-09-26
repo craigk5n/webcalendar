@@ -93,10 +93,43 @@ ensures the wizard is triggered for every version bump"), so from the moment
 redirects to `wizard/index.php`. The site is down until the tree is switched
 back.
 
-Nothing is written to the database in that window — updating the stored version
-is the branch the redirect skips — so recovery is just restoring the tree. But
-it is downtime, and it lasted six minutes when v1.9.24 was cut this way on
-2026-09-26.
+The mechanism is confirmed: `upgrade_requires_db_changes()` returns true for
+any newer version, from nested scope and on repeat calls, so the redirect
+branch is the one that runs. What that costs depends on whether a request
+arrives. When v1.9.24 was cut this way on 2026-09-26 the tree sat ahead of the
+database for about six minutes; whether a visitor hit it in that window was
+never established, so treat the exposure as "every request during the window",
+not as a measured outage.
+
+Restoring the tree is not necessarily the whole recovery, because a request
+that *does* arrive can complete the wizard and upgrade the database — which is
+what appears to have happened on 2026-09-26. Then the roles reverse: the
+database is ahead of a restored tree, `upgrade_requires_db_changes()` finds
+nothing newer, returns false, and `update_webcalendar_version_in_db()` silently
+rewrites the stored version *backwards* to match the older code. A calendar can
+therefore end up with its version row flip-flopping as the tree is switched,
+with no record in the activity log.
+
+**The rewrite moves the version row; it does not undo applied SQL.** That is
+the part to be careful about. After someone upgrades and the tree is then
+restored, the row understates the schema: it says vX.Y.(Z-1) while vX.Y.Z's
+statements have already run. Upgrading again from that row re-applies them.
+v1.9.24's one statement is explicitly idempotent, so this cost nothing on
+2026-09-26 — but `upgrade-sql.php` contains 72 `ALTER TABLE ... ADD` statements
+across its history, and every one of those fails on a second run with a
+duplicate-column error.
+
+So after any release attempt that was interrupted, reverted, or bounced between
+trees, check the version row against what has actually been applied rather than
+trusting the row:
+
+```bash
+php bin/webcal.php config get WEBCAL_PROGRAM_VERSION
+```
+
+and confirm it against the effect of that version's entry in
+`wizard/shared/upgrade-sql.php`. `db check` compares the row to the code, so it
+agrees with a row that is itself wrong.
 
 Work in a `git worktree` instead, which leaves the served tree untouched:
 
