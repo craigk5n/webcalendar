@@ -78,4 +78,54 @@ final class CodemapTest extends TestCase
       'the codemap looks truncated; the generator once found 16 of 161 '
       . 'because string-interpolation braces desynchronised its depth count');
   }
+
+  /**
+   * The generator's own --check mode regenerates and compares byte for byte,
+   * so this covers every column at once -- including any added later -- with
+   * no second implementation to drift from the first. The tests above stay
+   * because they say what specifically must hold if this ever has to be
+   * skipped.
+   */
+  public function testRegeneratingReproducesTheCommittedFile(): void
+  {
+    $root = realpath(self::ROOT);
+    self::assertIsString($root);
+
+    $output = [];
+    $status = 0;
+    @exec('php ' . escapeshellarg($root . '/tools/build-codemap.php')
+      . ' --check 2>&1', $output, $status);
+
+    self::assertSame(0, $status,
+      "docs/CODEMAPS/functions.md is out of date. Run:\n"
+      . "  php tools/build-codemap.php\n" . implode("\n", $output));
+  }
+
+  /**
+   * These files pass data through globals, so the column is the part of the
+   * contract a signature does not state. A silently empty one would leave the
+   * map looking complete while saying nothing.
+   */
+  public function testTheGlobalsColumnIsPopulated(): void
+  {
+    $map = file_get_contents(self::ROOT . '/' . self::MAP);
+    self::assertIsString($map);
+
+    self::assertStringContainsString('| Globals |', $map,
+      'the table must carry a Globals column');
+
+    // export_get_event_entry() is the reason this column exists: two
+    // parameters, and everything else arrives through globals.
+    self::assertMatchesRegularExpression(
+      '/\| `export_get_event_entry\(\)`.*\$DISPLAY_UNAPPROVED.*\$login/',
+      $map,
+      'export_get_event_entry() must list the globals it reads');
+
+    $rows = preg_match_all('/^\| `\w+\(\)`/m', $map);
+    $withGlobals = preg_match_all('/^\| `\w+\(\).*`\$\w+/m', $map);
+
+    self::assertGreaterThan($rows / 4, $withGlobals,
+      'far fewer functions declare globals than expected, which suggests the '
+      . 'extraction has stopped working rather than that the code changed');
+  }
 }

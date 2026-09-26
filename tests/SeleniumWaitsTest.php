@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * The wizard's Selenium tests wait for conditions, not for the clock.
  *
@@ -53,18 +55,7 @@ final class SeleniumWaitsTest extends TestCase
    */
   private function pythonCode(string $rel): string
   {
-    $src = file_get_contents(self::ROOT . '/' . $rel);
-    self::assertIsString($src, "could not read $rel");
-
-    // Triple-quoted blocks are docstrings in these files, never data.
-    $src = (string) preg_replace('/"""[\s\S]*?"""/', '', $src);
-
-    $out = [];
-    foreach (explode("\n", $src) as $line) {
-      $out[] = preg_replace('/(^|\s)#.*$/', '', $line);
-    }
-
-    return implode("\n", $out);
+    return SourceText::python((string) file_get_contents(self::ROOT . '/' . $rel));
   }
 
   /**

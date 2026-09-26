@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * The activity log's cal_type letters have to be reachable from every entry
  * point that writes a log row.
@@ -53,17 +55,7 @@ final class ActivityLogConstantsTest extends TestCase
       // Executable tokens only. A docblock listing the names is prose, and
       // one of them was misspelled there -- a build should not fail over a
       // comment.
-      $code = '';
-      foreach (@token_get_all($source) as $token) {
-        if (is_array($token)) {
-          if ($token[0] === T_COMMENT || $token[0] === T_DOC_COMMENT) {
-            continue;
-          }
-          $code .= $token[1] . ' ';
-          continue;
-        }
-        $code .= $token;
-      }
+      $code = SourceText::php($source);
 
       if (!preg_match_all('/\b(LOG_[A-Z_]+|SECURITY_VIOLATION)\b/', $code,
         $matches)) {
