@@ -10,7 +10,11 @@ on:
   workflow_call:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  # A literal prefix, not ${{ github.workflow }}: inside a reusable
+  # workflow that expression is the CALLER's name, so every workflow
+  # release.yml calls landed in one group and GitHub cancelled the
+  # older pending one. Keep this unique per file.
+  group: test-web-wizard-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:

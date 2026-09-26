@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * dbi_connect() reaches straight into the PHP extension for the configured
  * backend. When that extension is not loaded the call raises a fatal Error
@@ -115,5 +117,46 @@ final class DbiConnectExtensionGuardTest extends TestCase
     $between = substr($src, $guardAt, $firstDriverAt - $guardAt);
     $this->assertSame(2, substr_count($between, 'return false;'),
       'each probe must return before the driver branches are reached');
+  }
+
+  /**
+   * A fatal database error has to be reported as a failure.
+   *
+   * dbi_fatal_error() ended in a bare `exit`, which is status 0. Every fatal
+   * database error therefore reported success: an import that died halfway
+   * through a file exited 0 with part of the calendar loaded, and cron saw
+   * tools/send_reminders.php succeed when it had never connected. Demonstrated
+   * by renaming webcal_reminders in a sandbox and importing three events --
+   * one arrived, the summary never printed, and the status was 0.
+   */
+  public function testAFatalDatabaseErrorExitsNonZero(): void
+  {
+    $body = (string) SourceText::phpFunctionBody($this->source(),
+      'dbi_fatal_error');
+
+    self::assertMatchesRegularExpression('/exit\s*\(\s*[1-9]/', $body,
+      'dbi_fatal_error() must exit non-zero, or a script cannot tell that '
+      . 'anything went wrong');
+    self::assertDoesNotMatchRegularExpression('/^\s*exit\s*;/m', $body,
+      'a bare exit is status 0');
+  }
+
+  /**
+   * And its message must not be written to standard output under CLI, where
+   * `export` is writing an iCalendar document there and `db dump` is writing
+   * SQL. Called with $doExit = false so the process survives; anything it
+   * prints to stdout lands in the output buffer, and nothing should.
+   */
+  public function testTheMessageStaysOffStandardOutputUnderCli(): void
+  {
+    require_once __DIR__ . '/../includes/dbi4php.php';
+
+    ob_start();
+    dbi_fatal_error('a test failure <br>with markup', false, true);
+    $printed = (string) ob_get_clean();
+
+    self::assertSame('', $printed,
+      'under CLI the message belongs on standard error; on standard output it '
+      . 'is written into whatever document the command is producing');
   }
 }

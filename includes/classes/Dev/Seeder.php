@@ -70,10 +70,22 @@ final class Seeder
   public static function resetStatements(): array
   {
     $out = [];
+    // Every table that carries a cal_id, plus the import records those rows
+    // belong to. Children first, so nothing is left pointing at a row that has
+    // gone.
+    //
+    // webcal_import_data and webcal_site_extras were missed, and the first of
+    // those is not merely untidy: its primary key is (cal_id, cal_login), so
+    // rows left behind referring to deleted events collided with the ids a
+    // later import reused. Re-importing the same file after a reset failed on
+    // a UNIQUE violation, and the import died partway with no summary.
+    // DevSeederTest derives the list from the schema so a new cal_id table
+    // cannot be forgotten here.
     foreach ([
       'webcal_entry_repeats_not', 'webcal_entry_repeats', 'webcal_entry_user',
       'webcal_entry_categories', 'webcal_entry_ext_user', 'webcal_entry_log',
-      'webcal_reminders', 'webcal_blob', 'webcal_entry',
+      'webcal_reminders', 'webcal_blob', 'webcal_site_extras',
+      'webcal_import_data', 'webcal_import', 'webcal_entry',
     ] as $table) {
       $out[] = ['DELETE FROM ' . $table, []];
     }

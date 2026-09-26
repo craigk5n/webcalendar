@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * `bin/webcal.php db dump` hands the work to mysqldump, pg_dump or sqlite3
  * rather than writing SQL itself. Getting quoting, ordering and constraints
@@ -67,42 +69,10 @@ final class DbDumpTest extends TestCase
    */
   private function functionBody(string $name): string
   {
-    $src = $this->source();
+    $body = SourceText::phpFunctionBody($this->source(), $name);
+    self::assertIsString($body, "bin/webcal.php must define $name()");
 
-    $start = strpos($src, 'function ' . $name . '(');
-    self::assertNotFalse($start, "bin/webcal.php must define $name()");
-
-    $open = strpos($src, '{', $start);
-    $depth = 0;
-    $end = $open;
-    for ($i = $open; $i < strlen($src); $i++) {
-      if ($src[$i] === '{') {
-        $depth++;
-      }
-      if ($src[$i] === '}') {
-        $depth--;
-        if ($depth === 0) {
-          $end = $i;
-          break;
-        }
-      }
-    }
-
-    $body = substr($src, $open, $end - $open + 1);
-    $out = '';
-    foreach (token_get_all('<?php ' . $body) as $token) {
-      if (is_array($token)) {
-        if ($token[0] === T_COMMENT || $token[0] === T_DOC_COMMENT
-          || $token[0] === T_OPEN_TAG) {
-          continue;
-        }
-        $out .= $token[1];
-        continue;
-      }
-      $out .= $token;
-    }
-
-    return $out;
+    return $body;
   }
 
   public function testAnOutputFileIsCreatedPrivate(): void

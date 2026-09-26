@@ -54,6 +54,7 @@ function wc_usage(int $exitCode): never
                           or to FILE, which is created readable only by you.
       db check            Report whether an upgrade is pending, and apply
                           nothing. Exit 0 up to date, 1 pending, 2 unknown.
+      user list           Show the accounts, with their mail addresses.
       user reset-password --login=NAME [--stdin]
                           Set a new password. One is generated and printed
                           unless --stdin is given, in which case it is read
@@ -605,11 +606,99 @@ function wc_which(string $binary): ?string
   return $path === '' ? null : $path;
 }
 
+/**
+ * The accounts, so choosing a --login for the other commands does not need a
+ * hand-written query.
+ *
+ * Reading state was the last thing here that still meant writing a throwaway
+ * PHP script: which accounts exist, which is an administrator, and which
+ * address each one receives mail at. That last column is how a test message
+ * that never arrived was traced -- reminders were reaching the same address,
+ * so the fault had to be in the message rather than the route.
+ */
+function wc_user_list(): int
+{
+  $res = dbi_execute('SELECT cal_login, cal_firstname, cal_lastname, '
+    . 'cal_is_admin, cal_enabled, cal_email FROM webcal_user '
+    . 'ORDER BY cal_login', [], false, false);
+
+  if (!$res) {
+    fwrite(STDERR, 'Could not read webcal_user: ' . dbi_error() . "\n");
+    return 1;
+  }
+
+  $rows = [];
+  while ($row = dbi_fetch_row($res)) {
+    $rows[] = [
+      'login' => (string) $row[0],
+      'name' => trim((string) $row[1] . ' ' . (string) $row[2]),
+      'admin' => ((string) $row[3] === 'Y'),
+      'enabled' => ((string) $row[4] !== 'N'),
+      'email' => (string) ($row[5] ?? ''),
+    ];
+  }
+  dbi_free_result($res);
+
+  if ($rows === []) {
+    fwrite(STDERR, "webcal_user is empty. Is this installation set up?\n");
+    return 1;
+  }
+
+  $wLogin = max(5, ...array_map(fn ($r) => strlen($r['login']), $rows));
+  $wName = max(4, ...array_map(fn ($r) => strlen($r['name']), $rows));
+
+  printf("%-{$wLogin}s  %-{$wName}s  %-5s  %-7s  %s\n",
+    'LOGIN', 'NAME', 'ADMIN', 'ENABLED', 'EMAIL');
+
+  $admins = 0;
+  foreach ($rows as $row) {
+    $admins += $row['admin'] ? 1 : 0;
+    printf("%-{$wLogin}s  %-{$wName}s  %-5s  %-7s  %s\n",
+      $row['login'],
+      $row['name'] === '' ? '-' : $row['name'],
+      $row['admin'] ? 'yes' : '-',
+      $row['enabled'] ? 'yes' : 'NO',
+      $row['email'] === '' ? '(none)' : $row['email']);
+  }
+
+  fwrite(STDERR, "\n" . count($rows) . ' account'
+    . (count($rows) === 1 ? '' : 's') . ', ' . $admins
+    . ' administrator' . ($admins === 1 ? '' : 's') . ".\n");
+
+  // Passwords may not live here at all, and a reader choosing a login for
+  // reset-password needs to know that before being refused.
+  $backend = basename((string) ($GLOBALS['user_inc'] ?? 'user.php'));
+  if ($backend !== 'user.php') {
+    fwrite(STDERR, "Authentication goes through $backend, so passwords are "
+      . "not stored in WebCalendar.\n");
+  }
+
+  return 0;
+}
+
 function wc_cmd_user(array $argv): int
 {
   $action = $argv[0] ?? '';
+
+  if ($action === 'list') {
+    return wc_user_list();
+  }
+
   if ($action !== 'reset-password') {
-    fwrite(STDERR, "Usage: php bin/webcal.php user reset-password --login=NAME [--stdin]\n");
+    fwrite(STDERR, "Usage: php bin/webcal.php user list\n"
+      . "       php bin/webcal.php user reset-password --login=NAME [--stdin]\n");
+    return 1;
+  }
+
+  // Changing webcal_user.cal_passwd only affects logins when WebCalendar is
+  // the thing checking passwords. With LDAP, IMAP, NIS or Joomla the password
+  // lives elsewhere, and writing that column would report success while the
+  // user stayed locked out.
+  $backend = basename((string) ($GLOBALS['user_inc'] ?? 'user.php'));
+  if ($backend !== 'user.php') {
+    fwrite(STDERR, "This installation authenticates through $backend, so "
+      . "passwords are not stored in WebCalendar.\nReset it there instead;"
+      . " changing the local column would not affect logins.\n");
     return 1;
   }
 
@@ -1292,17 +1381,11 @@ switch ($command) {
     // user layer would see nothing. Same reason config.php is loaded above.
     wc_bootstrap();
 
-    // Changing webcal_user.cal_passwd only affects logins when WebCalendar is
-    // the thing checking passwords. With LDAP, IMAP, NIS or Joomla the
-    // password lives elsewhere, and writing that column would report success
-    // while the user stayed locked out.
+    // Which backend checks passwords. reset-password refuses unless it is
+    // WebCalendar's own; `list` does not care, because it reads webcal_user
+    // and never touches a password. Refusing here made the whole command
+    // unavailable on an LDAP installation, listing included.
     $wcUserInc = basename((string) ($GLOBALS['user_inc'] ?? 'user.php'));
-    if ($wcUserInc !== 'user.php') {
-      fwrite(STDERR, "This installation authenticates through $wcUserInc, so "
-        . "passwords are not stored in WebCalendar.\nReset it there instead;"
-        . " changing the local column would not affect logins.\n");
-      exit(1);
-    }
 
     // The marker that these files were not reached directly over HTTP.
     // WebCalendar::_initFunctions() normally sets it; js_cacher.php and
