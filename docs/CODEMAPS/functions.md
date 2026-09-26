@@ -187,23 +187,23 @@ dozen globals. Half the functions indexed here declare at least one.
 | Function | Line | Purpose | Globals |
 |---|---:|---|---|
 | `dbi_affected_rows()` | 465 | Returns the number of rows affected by the last INSERT, UPDATE or DELETE | — |
-| `dbi_clear_cache()` | 893 | Clear out the db cache | `$db_connection_info` |
+| `dbi_clear_cache()` | 907 | Clear out the db cache | `$db_connection_info` |
 | `dbi_close()` | 246 | Closes a database connection | `$db_connection_info, $db_query_count, $old_textlimit, $old_textsize, $SQLLOG` |
 | `dbi_connect()` | 76 | Opens up a database connection | `$db_cache_count, $db_connection_info, $db_query_count, $db_sqlite_error_str, $old_textlimit, $old_textsize` |
 | `dbi_error()` | 646 | _(undocumented)_ | `$db_sqlite_error_str` |
-| `dbi_escape_string()` | 734 | Escapes a string accordingly to the DB type | `$db_connection_info` |
-| `dbi_execute()` | 779 | Executes a SQL query, supporting parameter binding in the ?-style | — |
+| `dbi_escape_string()` | 748 | Escapes a string accordingly to the DB type | `$db_connection_info` |
+| `dbi_execute()` | 793 | Executes a SQL query, supporting parameter binding in the ?-style | — |
 | `dbi_fatal_error()` | 715 | Displays a fatal database error and aborts execution | — |
 | `dbi_fetch_row()` | 428 | Retrieves a single row from the database and returns it as an array | — |
 | `dbi_free_result()` | 604 | Frees a result set | — |
 | `dbi_get_blob()` | 560 | Get a BLOB (binary large object) from the database | `$db_connection_info` |
-| `dbi_get_cached_rows()` | 805 | Execute a SQL query | `$db_cache_count, $db_connection_info` |
-| `dbi_get_debug()` | 882 | Get the SQL debug status | `$db_connection_info` |
-| `dbi_init_cache()` | 856 | Specify the location of the cache directory | `$db_connection_info` |
+| `dbi_get_cached_rows()` | 819 | Execute a SQL query | `$db_cache_count, $db_connection_info` |
+| `dbi_get_debug()` | 896 | Get the SQL debug status | `$db_connection_info` |
+| `dbi_init_cache()` | 870 | Specify the location of the cache directory | `$db_connection_info` |
 | `dbi_num_cached_queries()` | 300 | Return the number of queries that were cached | `$db_cache_count` |
 | `dbi_num_queries()` | 291 | Return the number of database queries that were executed | `$db_query_count` |
 | `dbi_query()` | 321 | Executes an SQL query | `$c, $db_connection_info, $db_query_count, $phpdbiVerbose, $SQLLOG` |
-| `dbi_set_debug()` | 870 | Enable SQL debugging | `$db_connection_info` |
+| `dbi_set_debug()` | 884 | Enable SQL debugging | `$db_connection_info` |
 | `dbi_update_blob()` | 501 | Update a BLOB (binary large object) in the database with the contents of the specified file | `$db_connection_info` |
 
 ## `includes/xcal.php`
