@@ -54,7 +54,7 @@ require_once __DIR__ . '/WizardState.php';
 require_once __DIR__ . '/WizardValidator.php';
 require_once __DIR__ . '/WizardDatabase.php';
 
-const PROGRAM_VERSION = 'v1.9.23';
+const PROGRAM_VERSION = 'v1.9.24';
 
 // Parse command line arguments
 $options = getopt('', [

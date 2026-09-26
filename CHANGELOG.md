@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+## [v1.9.24] - 2026-09-26
+
+### Added
+
 - **`docs/cli.md`**, a reference for `bin/webcal.php`. Eleven of its thirteen commands were undocumented anywhere a user would look: everything added this cycle — `seed`, `reset`, `db dump`, `db check`, `config`, `user list`, `user reset-password`, `reminders send`, `remotes refresh`, `export`, `import` — existed only in `CLAUDE.md`, which is neither shipped in the release nor tracked in git. `bin/webcal.php` does ship. The page is organised by what an administrator is trying to do rather than by command name, since the reason to reach for the command line is usually that the web interface is not available. Added to the MkDocs navigation, `docs/index.md`, `README.md` and `release-files`
 
 - **`make sandbox` is documented**, in `docs/docker.md` under SQLite Development, including why containerisation alone is not what makes it safe. That section also claimed the SQLite database was "stored as a file inside the container", which stopped being true when the sandbox moved it into a named volume
@@ -533,7 +543,15 @@ For releases prior to v1.9.0, see the
 [GitHub releases page](https://github.com/craigk5n/webcalendar/releases)
 and the git log.
 
-[Unreleased]: https://github.com/craigk5n/webcalendar/compare/v1.9.16...HEAD
+[Unreleased]: https://github.com/craigk5n/webcalendar/compare/v1.9.24...HEAD
+[v1.9.24]: https://github.com/craigk5n/webcalendar/compare/v1.9.23...v1.9.24
+[v1.9.23]: https://github.com/craigk5n/webcalendar/compare/v1.9.22...v1.9.23
+[v1.9.22]: https://github.com/craigk5n/webcalendar/compare/v1.9.21...v1.9.22
+[v1.9.21]: https://github.com/craigk5n/webcalendar/compare/v1.9.20...v1.9.21
+[v1.9.20]: https://github.com/craigk5n/webcalendar/compare/v1.9.19...v1.9.20
+[v1.9.19]: https://github.com/craigk5n/webcalendar/compare/v1.9.18...v1.9.19
+[v1.9.18]: https://github.com/craigk5n/webcalendar/compare/v1.9.17...v1.9.18
+[v1.9.17]: https://github.com/craigk5n/webcalendar/compare/v1.9.16...v1.9.17
 [v1.9.16]: https://github.com/craigk5n/webcalendar/compare/v1.9.15...v1.9.16
 [v1.9.15]: https://github.com/craigk5n/webcalendar/compare/v1.9.14...v1.9.15
 [v1.9.14]: https://github.com/craigk5n/webcalendar/compare/v1.9.13...v1.9.14
