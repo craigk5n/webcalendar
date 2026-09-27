@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * `bin/webcal.php user reset-password` is the answer to the commonest support
  * request there was no answer to: an administrator locked out of their own
@@ -40,42 +42,10 @@ final class UserResetPasswordTest extends TestCase
    */
   private function functionBody(string $name): string
   {
-    $src = $this->source();
+    $body = SourceText::phpFunctionBody($this->source(), $name);
+    self::assertIsString($body, "bin/webcal.php must define $name()");
 
-    $start = strpos($src, 'function ' . $name . '(');
-    self::assertNotFalse($start, "bin/webcal.php must define $name()");
-
-    $open = strpos($src, '{', $start);
-    $depth = 0;
-    $end = $open;
-    for ($i = $open; $i < strlen($src); $i++) {
-      if ($src[$i] === '{') {
-        $depth++;
-      }
-      if ($src[$i] === '}') {
-        $depth--;
-        if ($depth === 0) {
-          $end = $i;
-          break;
-        }
-      }
-    }
-
-    $body = substr($src, $open, $end - $open + 1);
-    $out = '';
-    foreach (token_get_all('<?php ' . $body) as $token) {
-      if (is_array($token)) {
-        if ($token[0] === T_COMMENT || $token[0] === T_DOC_COMMENT
-          || $token[0] === T_OPEN_TAG) {
-          continue;
-        }
-        $out .= $token[1];
-        continue;
-      }
-      $out .= $token;
-    }
-
-    return $out;
+    return $body;
   }
 
   public function testThePasswordIsNeverACommandLineArgument(): void
@@ -124,27 +94,31 @@ final class UserResetPasswordTest extends TestCase
    * Writing webcal_user.cal_passwd would report success while the account
    * stayed locked out, which is worse than refusing.
    */
+  /**
+   * Passwords for LDAP, IMAP, NIS and Joomla live elsewhere, so writing
+   * webcal_user.cal_passwd would report success while the user stayed locked
+   * out.
+   *
+   * This was checked in the dispatch, before the action was looked at, which
+   * also made `user list` unavailable on exactly those installations. It now
+   * belongs to reset-password, so the property to hold is that it runs before
+   * the write rather than before the command -- a stronger statement, since it
+   * names what the refusal is protecting.
+   */
   public function testAlternativeAuthenticationBackendsAreRefused(): void
   {
-    $src = $this->source();
+    $body = (string) SourceText::phpFunctionBody($this->source(), 'wc_cmd_user');
 
-    $this->assertMatchesRegularExpression(
-      "/\\\$wcUserInc\s*!==\s*'user\.php'/", $src,
-      'the command must refuse when another backend owns the password');
+    $this->assertMatchesRegularExpression("/!==\s*'user\.php'/", $body,
+      'reset-password must compare against the configured backend');
 
-    // Textual order is not execution order here: wc_cmd_user() is defined
-    // above the dispatch that calls it. The property that matters is that
-    // within the dispatch, the refusal runs before the command is invoked.
-    $caseAt = strpos($src, "case 'user':");
-    $this->assertNotFalse($caseAt);
-    $dispatch = substr($src, $caseAt);
+    $refusalAt = strpos($body, 'authenticates through');
+    $writeAt = strpos($body, 'user_update_user_password');
 
-    $refusalAt = strpos($dispatch, 'authenticates through');
-    $invokeAt = strpos($dispatch, 'wc_cmd_user($argv)');
-    $this->assertNotFalse($refusalAt, 'the dispatch must carry the refusal');
-    $this->assertNotFalse($invokeAt);
-    $this->assertLessThan($invokeAt, $refusalAt,
-      'the refusal has to run before the command that writes to the database');
+    $this->assertNotFalse($refusalAt, 'the refusal must still be there');
+    $this->assertNotFalse($writeAt, 'reset-password must still write a hash');
+    $this->assertLessThan($writeAt, $refusalAt,
+      'the refusal has to run before the password is written');
   }
 
   /**
@@ -173,5 +147,62 @@ final class UserResetPasswordTest extends TestCase
     $this->assertLessThan($updateAt, $lookupAt,
       'existence must be established before the update, which matches zero '
       . 'rows silently');
+  }
+
+  /**
+   * `user list` reads webcal_user. A command that only reports is safe to run
+   * on a production installation, and that is most of its value.
+   */
+  public function testListingChangesNothing(): void
+  {
+    $body = (string) SourceText::phpFunctionBody($this->source(), 'wc_user_list');
+
+    foreach (['INSERT', 'UPDATE ', 'DELETE', 'ALTER', 'DROP'] as $verb) {
+      self::assertStringNotContainsStringIgnoringCase($verb, $body,
+        "user list must not issue $verb");
+    }
+    self::assertStringContainsString('SELECT cal_login', $body);
+  }
+
+  /**
+   * Listing has to work whatever checks passwords.
+   *
+   * The refusal for LDAP, IMAP, NIS and Joomla used to sit in the dispatch,
+   * before the action was even looked at, so `user list` was unavailable on
+   * those installations -- the ones where an administrator most needs to see
+   * which accounts exist and cannot simply reset a password to get in. It now
+   * belongs to reset-password, which is the only part that writes a password
+   * column.
+   */
+  public function testListingIsNotRefusedOnOtherAuthenticationBackends(): void
+  {
+    $body = (string) SourceText::phpFunctionBody($this->source(), 'wc_cmd_user');
+
+    $list = strpos($body, "=== 'list'");
+    $refusal = strpos($body, 'passwords are not stored in WebCalendar');
+
+    self::assertNotFalse($list, 'wc_cmd_user() must handle the list action');
+    self::assertNotFalse($refusal, 'reset-password must still refuse');
+    self::assertLessThan($refusal, $list,
+      'the list action has to return before the backend refusal, or listing '
+      . 'is unavailable on exactly the installations that need it most');
+  }
+
+  /**
+   * And the refusal must not have been left in the dispatch as well, where it
+   * would apply to every action again.
+   */
+  public function testTheDispatchDoesNotRefuseOnTheBackend(): void
+  {
+    $code = SourceText::php($this->source());
+
+    $start = strpos($code, "case 'user':");
+    self::assertNotFalse($start);
+    $end = strpos($code, "case 'help':", $start);
+    self::assertNotFalse($end);
+
+    self::assertStringNotContainsString('passwords are not stored',
+      substr($code, $start, $end - $start),
+      'the backend refusal belongs to reset-password, not to the dispatch');
   }
 }

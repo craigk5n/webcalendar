@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * export_get_event_entry() restricts an export to publicly visible events for
  * publish.php, which is the one page that serves a user's calendar to an
@@ -86,27 +88,11 @@ PHP);
     $src = file_get_contents(__DIR__ . '/../includes/xcal.php');
     self::assertNotFalse($src);
 
-    $start = strpos($src, 'function export_get_event_entry(');
-    self::assertNotFalse($start,
+    $fn = SourceText::phpFunction($src, 'export_get_event_entry');
+    self::assertIsString($fn,
       'includes/xcal.php must define export_get_event_entry()');
 
-    $open = strpos($src, '{', $start);
-    $depth = 0;
-    $end = $open;
-    for ($i = $open; $i < strlen($src); $i++) {
-      if ($src[$i] === '{') {
-        $depth++;
-      }
-      if ($src[$i] === '}') {
-        $depth--;
-        if ($depth === 0) {
-          $end = $i;
-          break;
-        }
-      }
-    }
-
-    eval(substr($src, $start, $end - $start + 1));
+    eval($fn);
   }
 
   private function sqlFor(string $type, int $remoteAccess = 0): string

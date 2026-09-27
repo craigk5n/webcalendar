@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * tests/run-*-install-tests.sh drive the web installation wizard against a
  * container that bind mounts the working copy, and tests/web-install-*.py
@@ -52,16 +54,7 @@ final class DestructiveTestGuardTest extends TestCase
    */
   private function shellCode(string $rel): string
   {
-    $out = [];
-    foreach (explode("\n", $this->read($rel)) as $line) {
-      $trimmed = ltrim($line);
-      if ($trimmed === '' || str_starts_with($trimmed, '#')) {
-        continue;
-      }
-      $out[] = $line;
-    }
-
-    return implode("\n", $out);
+    return SourceText::shell($this->read($rel));
   }
 
   /**

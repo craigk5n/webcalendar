@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * Issue #707 — the wizard/ directory must stay removable.
  *
@@ -87,19 +89,7 @@ final class WizardRemovableTest extends TestCase
    */
   private function executableCode(string $php): string
   {
-    $out = '';
-    foreach (token_get_all($php) as $token) {
-      if (is_array($token)) {
-        if ($token[0] === T_COMMENT || $token[0] === T_DOC_COMMENT) {
-          continue;
-        }
-        $out .= $token[1];
-        continue;
-      }
-      $out .= $token;
-    }
-
-    return $out;
+    return SourceText::php($php);
   }
 
   public function testConfigDefaultsLiveOutsideWizard(): void

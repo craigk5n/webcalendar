@@ -119,6 +119,7 @@ Common settings (partial list):
 | `SEND_EMAIL` | `Y`/`N` | Enable email notifications |
 | `MCP_SERVER_ENABLED` | `Y`/`N` | Enable MCP server for AI assistants |
 | `MCP_RATE_LIMIT` | integer | MCP requests per minute limit |
+| `MCP_WRITE_ACCESS` | `Y`/`N` | Let AI assistants change events (default off) |
 
 Defaults for all settings are defined in
 `includes/default_config.php`.

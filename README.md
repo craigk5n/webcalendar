@@ -1,6 +1,6 @@
 # WebCalendar
 
-[![Version](https://img.shields.io/badge/version-v1.9.16-blue.svg)](https://github.com/craigk5n/webcalendar/releases)
+[![Version](https://img.shields.io/badge/version-v1.9.24-blue.svg)](https://github.com/craigk5n/webcalendar/releases)
 [![License](https://img.shields.io/badge/license-GPL%20v2-green.svg)](LICENSE)
 [![PHP](https://img.shields.io/badge/php-8.2%2B-8892BF.svg)](https://php.net)
 [![CI](https://github.com/craigk5n/webcalendar/workflows/CI/badge.svg)](https://github.com/craigk5n/webcalendar/actions)
@@ -190,7 +190,7 @@ Create `includes/config-app-yourapp.php` to override settings dynamically.
 
 ## Roadmap
 
-### v1.9.16 (Current)
+### v1.9.16
 - PHP 8.2+ required (tested against 8.2, 8.3, 8.4)
 - New web-based installation/upgrade wizard
 - Headless CLI installer for automated deployments
@@ -206,6 +206,7 @@ Create `includes/config-app-yourapp.php` to override settings dynamically.
 
 - [Installation Guide](docs/installation.md) - System requirements, setup wizard, Docker
 - [Admin Guide](docs/admin-guide.md) - User management, system settings, email
+- [Command Line](docs/cli.md) - `bin/webcal.php`: recovery, backup, import/export
 - [User Guide](docs/user-guide.md) - Calendar views, events, preferences
 - [Upgrade Guide](docs/upgrade-guide.md) - Upgrading from previous versions
 - [Database Schema](docs/WebCalendar-Database.md) - Table definitions

@@ -158,6 +158,10 @@ The MCP server (`mcp.php`) provides AI assistant access to calendar data.
 - **API tokens** — each user generates their own token in preferences.
   Tokens are passed via `MCP_TOKEN` environment variable (STDIO) or
   `X-MCP-Token` / `Authorization: Bearer` headers (HTTP).
+- **Read-only by default** — the four tools that write (`add_event`,
+  `add_recurring_event`, `update_event`, `delete_event`) refuse unless
+  `MCP_WRITE_ACCESS` is enabled. Leave it off unless an assistant needs
+  to change calendars; a token that leaks can then only read.
 - **Rate limiting** — configure `MCP_RATE_LIMIT` to prevent abuse.
 - **Audit logging** — MCP requests are logged for review.
 - Restrict network access to the MCP HTTP endpoint if exposed.

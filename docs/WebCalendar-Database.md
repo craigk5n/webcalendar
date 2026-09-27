@@ -2,7 +2,7 @@
 
 **Home Page:** [https://k5n.us/webcalendar](https://k5n.us/webcalendar)  
 **Author:** [Craig Knudsen](https://k5n.us)  
-**Version:** v1.9.13
+**Version:** v1.9.24
 
 > This file is generated from [tables-mysql.sql](https://github.com/craigk5n/webcalendar/blob/master/wizard/shared/tables-mysql.sql).  
 > Below are the definitions of all WebCalendar tables, along with some descriptions of

@@ -714,14 +714,28 @@ function dbi_error()
  */
 function dbi_fatal_error( $msg, $doExit = true, $showError = true ) {
   if( $showError ) {
-    echo '<h2>' . translate( 'Error' ) . '</h2>
+    // Under CLI the caller is reading standard output: `webcal.php export`
+    // writes an iCalendar document there and `db dump` writes SQL, so an HTML
+    // error block would be written into the file as though it were data. The
+    // message goes to standard error as plain text instead.
+    if( PHP_SAPI === 'cli' ) {
+      fwrite( STDERR, trim( strip_tags( str_replace( [ '<br>', '<br />' ],
+        "\n", $msg ) ) ) . "\n" );
+    } else {
+      echo '<h2>' . translate( 'Error' ) . '</h2>
 <!--begin_error (dbierror)-->
 ' . $msg . '
 <!--end_error-->
 ';
+    }
   }
   if( $doExit )
-    exit;
+    // A bare `exit` is status 0. Every fatal database error therefore reported
+    // success: an import that died halfway through a file exited 0 with part
+    // of the calendar loaded, and cron saw send_reminders.php succeed when it
+    // had not connected. A web request does not care about the status; a
+    // script does, and it is the whole reason these commands have exit codes.
+    exit( 1 );
 }
 
 /**

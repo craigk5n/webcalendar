@@ -20,6 +20,9 @@
 #   - wizard/headless.php               (PROGRAM_VERSION const)
 #   - wizard/wizard.js                  (programVersion fallback)
 #   - wizard/WizardState.php            (programVersion fallback)
+#   - README.md                         (version badge)
+#   - docs/WebCalendar-Database.md      (**Version:** stamp)
+#   - CLAUDE.md                         (overview line, if present)
 
 # Function to bump version number
 bump_version() {
@@ -127,6 +130,29 @@ update_wizard_files() {
     echo "Updated wizard files to version $new_version"
 }
 
+# Function to update the version stamps in documentation.
+#
+# These are not source, but tests/DocumentedVersionTest.php checks them
+# against includes/config.php, so a release that bumped the code and not the
+# docs used to ship a README advertising a version seven releases old -- and
+# now fails the build instead. CLAUDE.md is not tracked, so it is updated
+# only where it exists.
+update_doc_versions() {
+    local new_version="$1"
+
+    sed -i -E "s|(badge/version-)v[0-9]+\\.[0-9]+\\.[0-9]+(-)|\\1$new_version\\2|" \
+        README.md
+    sed -i -E "s/(\\*\\*Version:\\*\\* )v[0-9]+\\.[0-9]+\\.[0-9]+/\\1$new_version/" \
+        docs/WebCalendar-Database.md
+
+    if [ -f CLAUDE.md ]; then
+        sed -i -E "s/(calendar application \\()v[0-9]+\\.[0-9]+\\.[0-9]+(\\))/\\1$new_version\\2/" \
+            CLAUDE.md
+    fi
+
+    echo "Updated documentation version stamps to $new_version"
+}
+
 # Function to print current version
 print_version() {
     local version
@@ -156,6 +182,7 @@ update_npmrc_version "$new_version"
 update_sql_files "$new_version"
 update_upgrade_sql_file "$new_version"
 update_wizard_files "$new_version"
+update_doc_versions "$new_version"
 
 # Keep composer.lock in sync with composer.json
 if command -v composer &> /dev/null; then

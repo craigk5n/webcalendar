@@ -2,6 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * Regression tests for purge.php, covering a cluster of bugs that between
  * them left the page unable to purge anything -- and, once it could, able to
@@ -67,19 +69,9 @@ final class PurgeEventSelectionTest extends TestCase
 
     $fns = '';
     foreach (['get_purge_ids', 'get_ids'] as $name) {
-      $start = strpos($src, "function $name (");
-      self::assertNotFalse($start, "purge.php must define $name()");
-      // Walk braces from the function header to its matching close.
-      $open = strpos($src, '{', $start);
-      $depth = 0;
-      for ($i = $open; $i < strlen($src); $i++) {
-        if ($src[$i] === '{') $depth++;
-        if ($src[$i] === '}') {
-          $depth--;
-          if ($depth === 0) break;
-        }
-      }
-      $fns .= substr($src, $start, $i - $start + 1) . "\n";
+      $fn = SourceText::phpFunction($src, $name);
+      self::assertIsString($fn, "purge.php must define $name()");
+      $fns .= $fn . "\n";
     }
     eval($fns);
   }

@@ -295,7 +295,87 @@ pub/tinymce/CHANGELOG.md: $(TINYMCE_VENDOR_DIR)/tinymce/CHANGELOG.md
 # thousands of complaints and the target would never pass. Adopting a standard
 # for the legacy tree is its own piece of work.
 # ---------------------------------------------------------------------------
-.PHONY: check check-compile check-stan check-tests
+# --- Disposable sandbox -------------------------------------------------
+#
+# A throwaway installation in a container, for trying anything that writes.
+# This working copy is frequently also a live install, so the sandbox never
+# touches it: the code is mounted read-only and the database settings come
+# from the environment, which means do_config() ignores includes/settings.php
+# entirely. See docker/docker-compose-sqlite-dev.yml for the details.
+#
+#   make sandbox                                  start it and install
+#   make sandbox-cli CMD="export --login=admin"   run bin/webcal.php in it
+#   make sandbox-reset                            throw the data away, reinstall
+#   make sandbox-clean                            stop it and drop the volume
+
+SANDBOX_COMPOSE = docker/docker-compose-sqlite-dev.yml
+SANDBOX_DC = docker compose -f $(SANDBOX_COMPOSE)
+# www-data, not root: a root-owned SQLite file leaves Apache unable to write
+# it, which surfaces as "attempt to write a readonly database".
+SANDBOX_EXEC = $(SANDBOX_DC) exec -T -u www-data webcalendar
+SANDBOX_PORT ?= 8081
+export SANDBOX_PORT
+SANDBOX_URL = http://localhost:$(SANDBOX_PORT)/
+SANDBOX_ADMIN = admin
+SANDBOX_PASSWORD = sandbox-admin
+
+sandbox:
+	@# Docker's own message for a taken port is a wall of text ending in
+	@# "port is already allocated", which does not say what to do about it.
+	@#
+	@# Only checked when we are about to bind the port: on a re-run our own
+	@# container already holds it, and refusing then made this target usable
+	@# exactly once, with an error suggesting the port that had just failed.
+	@if ! $(SANDBOX_DC) ps --status=running -q webcalendar 2>/dev/null \
+	    | grep -q .; then \
+	  if command -v ss >/dev/null 2>&1 && \
+	      ss -ltn 2>/dev/null | grep -qE ':$(SANDBOX_PORT)[[:space:]]'; then \
+	    echo "port $(SANDBOX_PORT) is in use by something else." >&2; \
+	    echo "choose another, e.g. make sandbox SANDBOX_PORT=9099" >&2; \
+	    exit 1; \
+	  fi; \
+	fi
+	@$(SANDBOX_DC) up -d --build
+	@printf 'waiting for the container'
+	@until $(SANDBOX_EXEC) php -r 'exit(0);' >/dev/null 2>&1; do \
+	  printf '.'; sleep 1; \
+	done; echo
+	@# db check exits 2 when webcal_config has no version row, which is the
+	@# one reliable way to ask "has this been installed yet" without a
+	@# settings.php to look for.
+	@if $(SANDBOX_EXEC) php bin/webcal.php db check >/dev/null 2>&1; then \
+	  echo "already installed"; \
+	else \
+	  echo "installing..."; \
+	  $(SANDBOX_EXEC) php wizard/headless.php --use-env \
+	    --admin-login=$(SANDBOX_ADMIN) --admin-password=$(SANDBOX_PASSWORD) \
+	    --admin-email=admin@example.invalid --user-auth=web \
+	    --install-password=sandbox-install --force \
+	    || { echo "install failed, see the output above" >&2; exit 1; }; \
+	  $(SANDBOX_EXEC) php bin/webcal.php db check >/dev/null 2>&1 \
+	    || { echo "the installer reported success but db check cannot reach \
+the database" >&2; exit 1; }; \
+	fi
+	@echo
+	@echo "  sandbox:  $(SANDBOX_URL)"
+	@echo "  login:    $(SANDBOX_ADMIN) / $(SANDBOX_PASSWORD)"
+	@echo "  cli:      make sandbox-cli CMD=\"db check\""
+	@echo "  seed:     make sandbox-cli CMD=\"seed --scenario=month --force\""
+	@echo "  discard:  make sandbox-clean"
+
+sandbox-cli:
+	@test -n "$(CMD)" || { echo 'usage: make sandbox-cli CMD="db check"' >&2; exit 1; }
+	@$(SANDBOX_EXEC) php bin/webcal.php $(CMD)
+
+sandbox-reset:
+	@$(SANDBOX_DC) down -v
+	@$(MAKE) sandbox
+
+sandbox-clean:
+	@$(SANDBOX_DC) down -v
+	@echo "sandbox removed; the working copy was never written to"
+
+.PHONY: check check-compile check-stan check-tests sandbox sandbox-cli sandbox-reset sandbox-clean
 
 check: check-compile check-stan check-tests
 	@echo "=== all checks passed ==="

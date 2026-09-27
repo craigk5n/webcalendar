@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * `bin/webcal.php db check` answers the question do_config() answers when it
  * decides whether to send a browser to the wizard -- is the schema behind the
@@ -28,42 +30,10 @@ final class CliDbCheckTest extends TestCase
     $src = file_get_contents(__DIR__ . '/../bin/webcal.php');
     self::assertIsString($src);
 
-    $start = strpos($src, 'function wc_db_check()');
-    self::assertNotFalse($start, 'bin/webcal.php must define wc_db_check()');
+    $fn = SourceText::phpFunction($src, 'wc_db_check');
+    self::assertIsString($fn, 'bin/webcal.php must define wc_db_check()');
 
-    $open = strpos($src, '{', $start);
-    $depth = 0;
-    $end = $open;
-    for ($i = $open; $i < strlen($src); $i++) {
-      if ($src[$i] === '{') {
-        $depth++;
-      }
-      if ($src[$i] === '}') {
-        $depth--;
-        if ($depth === 0) {
-          $end = $i;
-          break;
-        }
-      }
-    }
-
-    // Comments stripped: the function explains in prose why it does not use
-    // dbi_get_cached_rows(), and naming it there is not using it.
-    $body = substr($src, $start, $end - $start + 1);
-    $out = '';
-    foreach (token_get_all('<?php ' . $body) as $token) {
-      if (is_array($token)) {
-        if ($token[0] === T_COMMENT || $token[0] === T_DOC_COMMENT
-          || $token[0] === T_OPEN_TAG) {
-          continue;
-        }
-        $out .= $token[1];
-        continue;
-      }
-      $out .= $token;
-    }
-
-    return $out;
+    return $fn;
   }
 
   /**

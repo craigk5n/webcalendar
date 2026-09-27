@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 require_once __DIR__ . '/../includes/classes/Diagnostics/ConfigPolicy.php';
 
 use WebCalendar\Diagnostics\ConfigPolicy;
@@ -169,25 +171,10 @@ final class CliConfigTest extends TestCase
     }
 
     $src = $this->cli();
-    $start = strpos($src, 'function wc_config_near_matches');
-    self::assertNotFalse($start);
+    $fn = SourceText::phpFunction($src, 'wc_config_near_matches');
+    self::assertIsString($fn,
+      'bin/webcal.php must define wc_config_near_matches()');
 
-    $open = strpos($src, '{', $start);
-    $depth = 0;
-    $end = $open;
-    for ($i = $open; $i < strlen($src); $i++) {
-      if ($src[$i] === '{') {
-        $depth++;
-      }
-      if ($src[$i] === '}') {
-        $depth--;
-        if ($depth === 0) {
-          $end = $i;
-          break;
-        }
-      }
-    }
-
-    eval(substr($src, $start, $end - $start + 1));
+    eval($fn);
   }
 }

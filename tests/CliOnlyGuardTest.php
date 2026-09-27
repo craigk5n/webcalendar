@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/SourceText.php';
+
 /**
  * Scripts under tools/ are command-line utilities, but they live inside the
  * web root and two of them ship in release-files: send_reminders.php and
@@ -123,18 +125,6 @@ final class CliOnlyGuardTest extends TestCase
    */
   private function stripComments(string $php): string
   {
-    $out = '';
-    foreach (token_get_all($php) as $token) {
-      if (is_array($token)) {
-        if ($token[0] === T_COMMENT || $token[0] === T_DOC_COMMENT) {
-          continue;
-        }
-        $out .= $token[1];
-        continue;
-      }
-      $out .= $token;
-    }
-
-    return $out;
+    return SourceText::php($php);
   }
 }

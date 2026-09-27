@@ -87,13 +87,29 @@ updates.
 - Verify the admin user was created during the wizard setup.
 - Check that `$user_inc` in `includes/settings.php` matches your auth
   method (default: `user.php` for database auth).
-- Try resetting the password directly in the database:
+- Reset the password from the command line:
+
+```bash
+php bin/webcal.php user reset-password --login=admin
+```
+
+The new password is printed once. See [Command Line](cli.md) for the
+options, including reading the password from standard input instead of
+having one generated.
+
+Resetting it with SQL still works, because a 32-character hexadecimal
+`cal_passwd` is read as a legacy MD5 hash and re-hashed on the next
+successful login:
 
 ```sql
 UPDATE webcal_user
 SET cal_passwd = MD5('newpassword')
 WHERE cal_login = 'admin';
 ```
+
+Prefer the command where you can. The SQL leaves an unsalted MD5 hash in
+the table until that next login, and anyone able to read `webcal_user` in
+the meantime can reverse it.
 
 ### LDAP login fails
 

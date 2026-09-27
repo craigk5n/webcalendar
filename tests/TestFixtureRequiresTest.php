@@ -26,7 +26,8 @@ final class TestFixtureRequiresTest extends TestCase
    */
   public static function helperProvider(): array
   {
-    return [['McpServerFixture'], ['McpTestHelper'], ['CrossDatabaseTestHelper']];
+    return [['McpServerFixture'], ['McpTestHelper'],
+      ['CrossDatabaseTestHelper'], ['SourceText']];
   }
 
   /**
