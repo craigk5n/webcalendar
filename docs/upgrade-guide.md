@@ -47,7 +47,9 @@ Verify your PHP version meets the requirements for the target release:
 php -v
 ```
 
-WebCalendar v1.9.16 requires PHP 8.0 or later.
+WebCalendar requires PHP 8.2 or later. Releases up to v1.9.23 ran on
+PHP 8.0 and 8.1; v1.9.24 raised the floor, so upgrade PHP before
+upgrading WebCalendar if you are still on either.
 
 ## Upgrade Methods
 
