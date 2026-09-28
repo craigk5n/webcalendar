@@ -543,7 +543,7 @@ function render_integrity_table(string $heading, array $files): void
     echo '<tr>'
       . '<td><code>' . htmlspecialchars($f->path, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</code></td>'
       . '<td>' . severity_badge_html($sev) . '</td>'
-      . '<td>' . htmlspecialchars(action_hint_for($f->kind), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</td>'
+      . '<td>' . htmlspecialchars(action_hint_for_file($f), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</td>'
       . '</tr>';
   }
   echo '</tbody></table>';
@@ -566,6 +566,27 @@ function severity_badge_html(WebCalendar\Security\Severity $s): string
         . '</span>';
   }
   return '';
+}
+
+/**
+ * The advice for one finding.
+ *
+ * A file that matches the manifest once line endings are normalised is still a
+ * finding -- it does differ from what was signed -- but "restore from the
+ * release zip" is the wrong advice for it, and an unexplained warning on an
+ * installation where nothing was touched teaches admins to ignore this page.
+ * Reported as issue #788, where includes/zone.tab shipped with CRLF and an
+ * extraction converted it.
+ */
+function action_hint_for_file(WebCalendar\Security\ScannedFile $f): string
+{
+  if ($f->lineEndingsOnly) {
+    return translate('Differs only in line endings (CRLF/LF) - content is '
+      . 'otherwise identical, usually converted during install; no action '
+      . 'needed');
+  }
+
+  return action_hint_for($f->kind);
 }
 
 function action_hint_for(WebCalendar\Security\ScanEntryKind $k): string
