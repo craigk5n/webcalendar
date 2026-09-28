@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- **`includes/zone.tab` shipped with CRLF line endings, so the Security Audit reported it modified on installations where nothing was modified.** It was the only text file in the release using CRLF — `.editorconfig` has said `end_of_line = lf` for years, and the five other `\r`-bearing shipped files are binaries (a favicon, three GIFs, a TrueType font). Nothing read it wrongly: `display_tz_selection()` does `trim()` then `preg_split('/[\s,]+/')`, so both forms yield the same 383 timezones, verified by parsing each. The cost was to the signed manifest, which records the bytes that ship — so any deployment pipeline that normalises line endings turned that one file into a permanent "modified file" warning. Reported as #788 against v1.9.24, where the reporter's hash was exactly ours with the 407 CRs stripped, a 407-byte difference (17927 against 17520). Converted to LF, which also means the hash the reporter measured is now the one the manifest will carry. `tests/ShippedLineEndingsTest.php` fails the build when any file listed in `release-files` contains CRLF, treating a file as binary when it holds a NUL byte, as git does
+
+
 ### Removed
 
 ## [v1.9.24] - 2026-09-26
