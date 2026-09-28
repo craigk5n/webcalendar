@@ -158,7 +158,59 @@ final class InstallationScanner
       $relPath,
       ScanEntryKind::MODIFIED,
       $expected,
-      $actual
+      $actual,
+      $this->differsOnlyInLineEndings($fullPath, $expected)
     );
+  }
+
+  /**
+   * Largest file in a v1.9.24 release is 1.5MB (pub/tinymce/themes/silver/
+   * theme.js). The cap is generous against that and bounds the work when an
+   * install has something much bigger sitting in the tree.
+   */
+  private const LINE_ENDING_CHECK_MAX_BYTES = 8388608;
+
+  /**
+   * True when the file on disk becomes the manifest's bytes once line endings
+   * are normalised.
+   *
+   * Both directions are tried, because the conversion can go either way: an
+   * extraction in text mode strips the CRs from a file we shipped with CRLF,
+   * and a checkout or editor on Windows can add them to one we shipped with LF.
+   * The manifest stores a hash, not the content, so the only way to ask the
+   * question is to convert the local copy and hash each candidate.
+   *
+   * Cheap tests first: anything with a NUL byte is binary, where line endings
+   * are not a meaningful notion, and a file with no CR and no LF at all cannot
+   * be reconciled this way.
+   */
+  private function differsOnlyInLineEndings(
+    string $fullPath,
+    string $expected
+  ): bool {
+    $size = @filesize($fullPath);
+    if ($size === false || $size > self::LINE_ENDING_CHECK_MAX_BYTES) {
+      return false;
+    }
+
+    $contents = @file_get_contents($fullPath);
+    if ($contents === false || $contents === '') {
+      return false;
+    }
+    if (str_contains($contents, "\0")) {
+      return false;
+    }
+
+    $lf = str_replace("\r\n", "\n", $contents);
+    if (!str_contains($lf, "\n")) {
+      return false;
+    }
+
+    if (hash('sha256', $lf) === $expected) {
+      return true;
+    }
+
+    // Normalise to LF first so an already-CRLF file does not become CRCRLF.
+    return hash('sha256', str_replace("\n", "\r\n", $lf)) === $expected;
   }
 }

@@ -11,7 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- **The Security Audit now says when a file differs only in line endings.** A file whose content matches `MANIFEST.sha256` once CRLF and LF are normalised is still reported — it genuinely differs from what was signed, and suppressing it would be the wrong trade — but the advice changes from "restore from release zip" to saying that the content is otherwise identical and no action is needed. The prompt was #788, where `includes/zone.tab` shipped with CRLF, an extraction converted it, and settling that took two hashes and a size comparison; an unexplained warning on an installation where nothing was touched is how administrators learn to ignore the page. Both directions are detected, since a conversion can strip CRs from a file shipped with CRLF or add them to one shipped with LF. Severity is unchanged. Files containing a NUL byte are excluded, so a tampered image with a `\r` in it is never described as a line-ending difference, and the check is capped at 8MB. `tests/AuditLineEndingNoteTest.php` pins both the annotation and the advice, lifting `action_hint_for_file()` out of `security_audit.php` and running it rather than matching its source
+
+
 ### Fixed
+
+- **`includes/zone.tab` shipped with CRLF line endings, so the Security Audit reported it modified on installations where nothing was modified.** It was the only text file in the release using CRLF — `.editorconfig` has said `end_of_line = lf` for years, and the five other `\r`-bearing shipped files are binaries (a favicon, three GIFs, a TrueType font). Nothing read it wrongly: `display_tz_selection()` does `trim()` then `preg_split('/[\s,]+/')`, so both forms yield the same 383 timezones, verified by parsing each. The cost was to the signed manifest, which records the bytes that ship — so any deployment pipeline that normalises line endings turned that one file into a permanent "modified file" warning. Reported as #788 against v1.9.24, where the reporter's hash was exactly ours with the 407 CRs stripped, a 407-byte difference (17927 against 17520). Converted to LF, which also means the hash the reporter measured is now the one the manifest will carry. `tests/ShippedLineEndingsTest.php` fails the build when any file listed in `release-files` contains CRLF, treating a file as binary when it holds a NUL byte, as git does
+
 
 ### Removed
 
