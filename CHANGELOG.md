@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- **The Security Audit now says when a file differs only in line endings.** A file whose content matches `MANIFEST.sha256` once CRLF and LF are normalised is still reported — it genuinely differs from what was signed, and suppressing it would be the wrong trade — but the advice changes from "restore from release zip" to saying that the content is otherwise identical and no action is needed. The prompt was #788, where `includes/zone.tab` shipped with CRLF, an extraction converted it, and settling that took two hashes and a size comparison; an unexplained warning on an installation where nothing was touched is how administrators learn to ignore the page. Both directions are detected, since a conversion can strip CRs from a file shipped with CRLF or add them to one shipped with LF. Severity is unchanged. Files containing a NUL byte are excluded, so a tampered image with a `\r` in it is never described as a line-ending difference, and the check is capped at 8MB. `tests/AuditLineEndingNoteTest.php` pins both the annotation and the advice, lifting `action_hint_for_file()` out of `security_audit.php` and running it rather than matching its source
+
+
 ### Fixed
 
 ### Removed
