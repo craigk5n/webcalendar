@@ -150,11 +150,9 @@ if( ! empty( $otheruser ) ) {
     // actually has a value: the global default, then the wider default, then
     // the specific pair. empty() rather than ?:, which evaluates its left
     // operand and so warns on a key that is not there.
-    $levels = ( $is_admin
-      ? ['__default__.__default__', $guser . '.__default__',
-         $guser . '.' . $otheruser]
-      : ['__default__.__default__', '__default__.' . $guser,
-         $otheruser . '.' . $guser] );
+    $levels = ['__default__.__default__'] += ( $is_admin
+      ? ["$guser.__default__", "$guser.$otheruser"]
+      : ["__default__.$guser", "$otheruser.$guser"] );
 
     foreach( $levels as $level ) {
       if( ! empty( $allPermissions[$level] ) )
