@@ -26,8 +26,17 @@ jobs:
           php-version: ${{ matrix.php-version }}
 
       - name: Check PHP syntax
+        # `find -exec` always exits 0 regardless of what php -l returned, so the
+        # old form reported success on files that do not parse. xargs exits
+        # non-zero when any invocation fails, and the explicit bash shell turns
+        # on pipefail so that status is the step's status. php -l exits 255 on
+        # a parse error, which makes xargs stop at the first bad file; the sh
+        # wrapper maps that to 1 so every bad file is reported before the
+        # step fails.
+        shell: bash
         run: |
-          find . -name '*.php' -not -path './vendor/*' -exec php -l {} \;
+          find . -name '*.php' -not -path './vendor/*' -print0 \
+            | xargs -0 -n1 sh -c 'php -l "$0" || exit 1'
 
   ai-signals:
     name: AI-writing signals (added lines)
