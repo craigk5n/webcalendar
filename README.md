@@ -53,11 +53,15 @@ WebCalendar is a **multi-user, web-based calendar application** built with PHP. 
 git clone https://github.com/craigk5n/webcalendar.git
 cd webcalendar
 
-# Start with Docker Compose
-docker-compose -f docker/docker-compose-prod.yml up
+# Build and start with Docker Compose
+docker compose -f docker/docker-compose-prod.yml up -d --build
 
-# Access at http://localhost:8080
+# Open http://localhost:8080 and complete the install wizard
 ```
+
+The wizard creates the administrator account; there is no default login.
+See [docs/installation.md](docs/installation.md#docker) for a scripted
+install and for running the published `craigk5n/webcalendar` image.
 
 ### Manual Installation
 

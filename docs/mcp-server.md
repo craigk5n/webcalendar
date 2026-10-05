@@ -27,7 +27,7 @@ web-based AI services.
 ## Requirements
 
 - WebCalendar v1.9.13 or later
-- PHP 8.0+
+- PHP 8.2+
 - MCP SDK package (`mcp/sdk` — included via Composer)
 - `MCP_SERVER_ENABLED` set to `Y` in admin settings
 
@@ -35,22 +35,31 @@ web-based AI services.
 
 ### 1. Enable in Admin Settings
 
-Log in as an admin, go to **Admin** > **System Settings**, and set:
+Log in as an admin, go to **Admin** > **System Settings**, open
+the **MCP Server** tab, and set:
 
-- **MCP_SERVER_ENABLED** = `Y`
-- **MCP_RATE_LIMIT** = max requests per minute per user
+- **MCP Server enabled** (`MCP_SERVER_ENABLED`) = Yes
+- **MCP Write Access** (`MCP_WRITE_ACCESS`) = Yes, only if assistants
+  should be able to add, change or delete events. See
+  [Write Access](#write-access).
+- **MCP Rate Limit** (`MCP_RATE_LIMIT`) = max requests per hour per user
 
 ### 2. Generate an API Token
 
 Each user generates their own token:
 
 1. Go to **Preferences** (`pref.php`).
-2. In the **MCP API Token** field, enter a token string (or generate
-   one — any unique string works).
-3. Save preferences.
+2. Next to **MCP API Token**, click **Generate New Token**.
+3. Copy the token straight away. It is shown once and never again.
 
-The token is stored in the `cal_api_token` column of `webcal_user`.
-To revoke access, clear the token field.
+The token is generated server-side and only its SHA-256 hash is stored,
+in the `cal_api_token` column of `webcal_user`, so neither WebCalendar
+nor a database backup can show it to you later. If it is lost, generate
+a new one, which replaces the old. To revoke access, click
+**Clear Token**.
+
+The same Preferences tab shows the **MCP Endpoint URL** and a sample
+agent configuration.
 
 ### 3. Configure Your AI Assistant
 
@@ -321,7 +330,8 @@ headers, and handles `OPTIONS` preflight requests.
 | Setting | Description | Default |
 |---------|-------------|---------|
 | `MCP_SERVER_ENABLED` | `Y` to enable, `N` to disable | `N` |
-| `MCP_RATE_LIMIT` | Max requests per minute per user | — |
+| `MCP_WRITE_ACCESS` | `Y` to allow the four write tools | `N` |
+| `MCP_RATE_LIMIT` | Max requests per hour per user | `100` |
 | `MCP_CORS_ORIGINS` | Allowed CORS origins for HTTP transport | — |
 
 ## Use Cases
@@ -378,15 +388,17 @@ Combine with an AI assistant to generate a morning summary:
 
 ### "API token required" error
 
-- Verify the token is set: check **Preferences** for the MCP API Token
-  field.
+- Verify a token is set: **Preferences** shows `(token set)` next to
+  MCP API Token. If you no longer have the token itself, generate a new
+  one.
 - For STDIO: ensure `MCP_TOKEN` is in the environment.
 - For HTTP: check the header is being sent (`X-MCP-Token` or
   `Authorization: Bearer`).
 
 ### "MCP server is not enabled" error
 
-An admin must set `MCP_SERVER_ENABLED` to `Y` in System Settings.
+An admin must set **MCP Server enabled** to Yes under **Admin** >
+**System Settings** > **MCP Server**.
 
 ### Apache strips Authorization header
 
