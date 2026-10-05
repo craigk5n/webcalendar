@@ -69,7 +69,7 @@ if ($since === '') {
   $addedLines = ai_signal_added_lines($root, $since);
   $files = [];
   foreach (array_keys($addedLines) as $rel) {
-    if (is_file($root . '/' . $rel)) {
+    if (is_file($root . '/' . $rel) && !ai_signal_is_third_party($rel)) {
       $files[] = $root . '/' . $rel;
     }
   }
@@ -117,11 +117,24 @@ if (!$strict) {
 exit($strict ? 1 : 0);
 
 /**
+ * Third-party code copied into the tree, and generated or archived
+ * material, is not held to this convention. Applied in both modes: a
+ * refresh of the bundled MCP SDK adds hundreds of upstream files to a
+ * pull request, and their comments are upstream's to write.
+ */
+function ai_signal_is_third_party(string $path): bool
+{
+  return (bool) preg_match(
+    '#(^|/)(vendor|pub|node_modules|\.git|docs/archive|tests/fixtures|includes/classes/phpmailer|includes/classes/mcp-sdk|includes/classes/hKit|includes/classes/captcha)/#',
+    $path
+  );
+}
+
+/**
  * @return list<string>
  */
 function ai_signal_all_php_files(string $root): array
 {
-  $skip = '#/(vendor|pub|node_modules|\.git|docs/archive|tests/fixtures|includes/classes/phpmailer|includes/classes/hKit|includes/classes/captcha)/#';
   $out = [];
 
   $it = new RecursiveIteratorIterator(
@@ -129,7 +142,7 @@ function ai_signal_all_php_files(string $root): array
   );
   foreach ($it as $file) {
     $path = str_replace('\\', '/', $file->getPathname());
-    if (!str_ends_with($path, '.php') || preg_match($skip, $path)) {
+    if (!str_ends_with($path, '.php') || ai_signal_is_third_party($path)) {
       continue;
     }
     $out[] = $path;

@@ -160,7 +160,7 @@ cd tests; ./compile_test.sh; cd ..
 
 ## Building from Source
 
-WebCalendar includes all required dependencies in the release (primarily in the `pub/` directory). You **do not need to run Composer** unless you are adding or updating dependencies.
+WebCalendar includes all required dependencies in the release: front-end assets in `pub/`, PHPMailer in `includes/classes/phpmailer/`, and the MCP SDK in `includes/classes/mcp-sdk/`. You **do not need to run Composer** unless you are adding or updating dependencies.
 
 If you need to modify dependencies:
 
@@ -170,6 +170,10 @@ composer install
 
 # Copy vendor assets to project directories (requires Linux — uses sha384sum)
 make
+
+# After `composer update mcp/sdk`: refresh the bundled MCP SDK (any OS) and
+# commit includes/classes/mcp-sdk/ and release-files together
+make mcp-sdk
 ```
 
 ## External Application Integration
