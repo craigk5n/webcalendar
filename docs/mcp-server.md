@@ -35,8 +35,8 @@ web-based AI services.
 
 ### 1. Enable in Admin Settings
 
-Log in as an admin, go to **Admin** > **Settings**, open the
-**MCP Server** tab, and set:
+Log in as an admin, go to **Admin** > **System Settings**, open
+the **MCP Server** tab, and set:
 
 - **MCP Server enabled** (`MCP_SERVER_ENABLED`) = Yes
 - **MCP Write Access** (`MCP_WRITE_ACCESS`) = Yes, only if assistants
@@ -398,7 +398,7 @@ Combine with an AI assistant to generate a morning summary:
 ### "MCP server is not enabled" error
 
 An admin must set **MCP Server enabled** to Yes under **Admin** >
-**Settings** > **MCP Server**.
+**System Settings** > **MCP Server**.
 
 ### Apache strips Authorization header
 
