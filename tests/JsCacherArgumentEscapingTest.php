@@ -77,7 +77,10 @@ final class JsCacherArgumentEscapingTest extends TestCase
     $this->assertStringNotContainsString('alert', $out);
   }
 
-  /** @runInSeparateProcess */
+  /**
+   * @runInSeparateProcess
+   * @preserveGlobalState disabled
+   */
   public function testAvailabilityWritesOnlyNumbersAndAnIdentifier(): void
   {
     // availability.php calls etranslate(); a stub is enough here, and this
