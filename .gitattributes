@@ -13,3 +13,7 @@ DOC_UPDATES.md            export-ignore
 .github/                  export-ignore
 docker/tests/             export-ignore
 tests/screenshots/        export-ignore
+
+# Third-party code copied out of vendor/ by make; not ours to review in diffs
+includes/classes/mcp-sdk/** linguist-vendored
+includes/classes/phpmailer/** linguist-vendored

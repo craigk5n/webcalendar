@@ -1,6 +1,6 @@
 # WebCalendar
 
-[![Version](https://img.shields.io/badge/version-v1.9.24-blue.svg)](https://github.com/craigk5n/webcalendar/releases)
+[![Version](https://img.shields.io/badge/version-v1.9.25-blue.svg)](https://github.com/craigk5n/webcalendar/releases)
 [![License](https://img.shields.io/badge/license-GPL%20v2-green.svg)](LICENSE)
 [![PHP](https://img.shields.io/badge/php-8.2%2B-8892BF.svg)](https://php.net)
 [![CI](https://github.com/craigk5n/webcalendar/workflows/CI/badge.svg)](https://github.com/craigk5n/webcalendar/actions)
@@ -53,11 +53,15 @@ WebCalendar is a **multi-user, web-based calendar application** built with PHP. 
 git clone https://github.com/craigk5n/webcalendar.git
 cd webcalendar
 
-# Start with Docker Compose
-docker-compose -f docker/docker-compose-prod.yml up
+# Build and start with Docker Compose
+docker compose -f docker/docker-compose-prod.yml up -d --build
 
-# Access at http://localhost:8080
+# Open http://localhost:8080 and complete the install wizard
 ```
+
+The wizard creates the administrator account; there is no default login.
+See [docs/installation.md](docs/installation.md#docker) for a scripted
+install and for running the published `craigk5n/webcalendar` image.
 
 ### Manual Installation
 
@@ -156,7 +160,7 @@ cd tests; ./compile_test.sh; cd ..
 
 ## Building from Source
 
-WebCalendar includes all required dependencies in the release (primarily in the `pub/` directory). You **do not need to run Composer** unless you are adding or updating dependencies.
+WebCalendar includes all required dependencies in the release: front-end assets in `pub/`, PHPMailer in `includes/classes/phpmailer/`, and the MCP SDK in `includes/classes/mcp-sdk/`. You **do not need to run Composer** unless you are adding or updating dependencies.
 
 If you need to modify dependencies:
 
@@ -166,6 +170,10 @@ composer install
 
 # Copy vendor assets to project directories (requires Linux — uses sha384sum)
 make
+
+# After `composer update mcp/sdk`: refresh the bundled MCP SDK (any OS) and
+# commit includes/classes/mcp-sdk/ and release-files together
+make mcp-sdk
 ```
 
 ## External Application Integration
