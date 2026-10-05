@@ -136,6 +136,23 @@ function send_http_headers () {
 }
 
 /**
+ * The src of a script served through js_cacher.php.
+ *
+ * Callers append request values to $inc (catsel.php its form name,
+ * availability.php a date and a form name), so each segment is URL-encoded:
+ * that keeps a quote from closing the attribute, and the slashes the
+ * segments are split on survive.
+ *
+ * @param string $inc  js/<file>[/false/<arg>...]
+ *
+ * @return string  HTML-safe URL.
+ */
+function js_cacher_src ( $inc ) {
+  return 'js_cacher.php?inc='
+    . implode( '/', array_map( 'rawurlencode', explode( '/', $inc ) ) );
+}
+
+/**
  * Prints the HTML header and opening HTML body tag.
  *
  * @param array  $includes     Array of additional files to include referenced
@@ -250,7 +267,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
           }
           $ret .= $i . '?' . filemtime( $i );
         } else {
-          $ret .= 'js_cacher.php?inc=' . $inc;
+          $ret .= js_cacher_src( $inc );
         }
         $ret .= '" defer></script>';
       }

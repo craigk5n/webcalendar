@@ -167,10 +167,8 @@ if ($is_mcp_http_request || php_sapi_name() === 'cli') {
     require_once 'includes/classes/Event/NewEvent.php';
     require_once 'includes/classes/Event/EventService.php';
 
-    // Load MCP loader (replaces full composer autoloader for now)
-    if ( file_exists ( 'includes/mcp-loader.php' ) ) {
-      require_once 'includes/mcp-loader.php';
-    }
+    // Load the bundled MCP SDK (includes/classes/mcp-sdk/).
+    require_once 'includes/mcp-loader.php';
 
     // Load and initialize configuration
     do_config();
@@ -331,15 +329,18 @@ $user = $user_login;
 load_user_preferences();
 load_global_settings();
 
-// Import MCP SDK
-if ( ! file_exists( 'includes/mcp-loader.php' ) || ! class_exists( 'Mcp\Server' ) ) {
+// The MCP SDK ships in includes/classes/mcp-sdk/ and is loaded by
+// includes/mcp-loader.php from init.php. If the class is still missing the
+// bundle was not shipped or was removed, which is a packaging error.
+if ( ! class_exists( 'Mcp\Server' ) ) {
   if ( php_sapi_name() === 'cli' ) {
-    fwrite( STDERR, "Error: MCP SDK not found. Run 'composer install' to install.\n" );
+    fwrite( STDERR, "Error: the bundled MCP SDK is missing from includes/classes/mcp-sdk/. "
+      . "Restore it from the release zip, or run 'composer install' and 'make mcp-sdk'.\n" );
   } else {
     header( 'Content-Type: application/json' );
     echo json_encode( [
       'error' => 'MCP server is not available',
-      'message' => 'The MCP SDK PHP package must be installed. Run: composer install'
+      'message' => 'The bundled MCP SDK is missing from includes/classes/mcp-sdk/'
     ] );
   }
   exit( 1 );

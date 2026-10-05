@@ -11,21 +11,20 @@ if( empty( $inc ) && ! empty( $_REQUEST['inc'] ) )
 
 $arinc = explode( '/', $inc );
 
-// We only allow includes if they exist in our js or HTMLarea directories.
-if( $arinc[0] != 'js' && $arinc[0] != 'htmlarea' )
+// Only a file directly inside includes/js may be included. Segments after
+// the file name are arguments some of those files read, never path parts.
+// "." and ".." are listed by readdir(), so they are excluded explicitly.
+if( count( $arinc ) < 2 || $arinc[0] !== 'js'
+    || $arinc[1] === '.' || $arinc[1] === '..' )
   return false;
 
-if( is_dir( 'includes' ) )
-  $newinc = 'includes';
-elseif( is_dir( '../includes' ) )
-  $newinc = '../includes';
+$newinc = is_dir( 'includes' ) ? 'includes/js' : '../includes/js';
 
-// Get list of files in the js directory.
-$myDirectory = opendir( "$newinc/$arinc[0]" );
-while( $fileName = readdir( $myDirectory ) ) {
-  $fileList[] = $fileName;
-}
-closedir( $myDirectory );
+if( ! in_array( $arinc[1], scandir( $newinc ), true )
+    || ! is_file( "$newinc/$arinc[1]" ) )
+  return false;
+
+$newinc .= '/' . $arinc[1];
 
 require_once 'includes/translate.php';
 require_once 'includes/functions.php';
@@ -54,14 +53,6 @@ $login = ( empty( $_SESSION['webcal_login'] )
 
 load_user_preferences();
 
-foreach( $arinc as $a ) {
-  if( $a == 'true' || $a == 'false' )
-    break;
-
-  $newinc .= '/' . $a;
-}
-
-if( is_file( $newinc ) && in_array( $arinc[1], $fileList ) )
-  include_once $newinc;
+include_once $newinc;
 
 ?>
