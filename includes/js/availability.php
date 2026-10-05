@@ -1,10 +1,12 @@
 <?php
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
-$month = $arinc[3];
-$day = $arinc[4];
-$year = $arinc[5];
-$parent_form = $arinc[6];
+// All four come from the request and are written into script.
+$month = (int) ( $arinc[3] ?? 0 );
+$day = (int) ( $arinc[4] ?? 0 );
+$year = (int) ( $arinc[5] ?? 0 );
+$parent_form = preg_match( '/^[A-Za-z_]\w*$/', $arinc[6] ?? '' )
+  ? $arinc[6] : '';
 ?>
 
 function schedule_event(hours, minutes) {
