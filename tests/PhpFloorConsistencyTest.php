@@ -93,7 +93,10 @@ final class PhpFloorConsistencyTest extends TestCase
    */
   public static function docProvider(): array
   {
-    return [['README.md'], ['CONTRIBUTING.md'], ['docs/installation.md']];
+    return [
+      ['README.md'], ['CONTRIBUTING.md'], ['docs/installation.md'],
+      ['docs/faq.md'], ['docs/upgrade-guide.md'], ['docs/mcp-server.md'],
+    ];
   }
 
   /**
