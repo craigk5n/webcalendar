@@ -275,7 +275,9 @@ make              # copies vendor assets to pub/
 
 The `make` target requires `sha384sum` (Linux). It copies
 Bootstrap, jQuery, and other front-end assets from `vendor/` into
-`pub/` where the application loads them.
+`pub/` where the application loads them. `make mcp-sdk` runs on any
+OS and refreshes the MCP SDK copy in `includes/classes/mcp-sdk/`,
+which is how the MCP server works in releases without Composer.
 
 ## Upgrading
 

@@ -28,7 +28,8 @@ web-based AI services.
 
 - WebCalendar v1.9.13 or later
 - PHP 8.2+
-- MCP SDK package (`mcp/sdk` — included via Composer)
+- Nothing to install for the SDK: it ships in `includes/classes/mcp-sdk/`
+  with every release zip and Docker image
 - `MCP_SERVER_ENABLED` set to `Y` in admin settings
 
 ## Setup
