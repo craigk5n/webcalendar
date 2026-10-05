@@ -9,6 +9,7 @@
  * <b>Comments:</b>
  * The following scripts do not use this file:
  *   - login.php
+ *   - week_ssi.php
  *   - upcoming.php
  *   - tools/send_reminders.php
  *
@@ -48,9 +49,10 @@
  }
 
 require_once 'includes/translate.php';
+require_once 'includes/functions.php';
+require_once 'includes/classes/WebCalendar.php';
 require_once 'includes/classes/Event.php';
 require_once 'includes/classes/RptEvent.php';
-require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
@@ -58,7 +60,6 @@ require_once 'includes/assert.php';
 require_once 'includes/config.php';
 require_once 'includes/dbi4php.php';
 require_once 'includes/formvars.php';
-require_once 'includes/functions.php';
 require_once 'includes/mcp-loader.php';
 
 $WebCalendar->initializeFirstPhase();
