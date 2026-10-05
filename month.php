@@ -70,12 +70,12 @@ if ( $DISPLAY_TASKS == 'Y' && $friendly != 1 ) {
     $prevMonth2 = display_small_month ( $prevmonth, $prevyear, true, false,
       'prevmonth', $monthURL ) . '<br>';
   } else {
-    $nextMonth2 =  $prevMonth2 = '<br><br><br><br>';
+    $nextMonth2 = $prevMonth2 = '<br><br><br><br>';
   }
   $smallTasks = display_small_tasks ( $cat_id );
   $tableWidth = '80%';
 }
-$eventinfo = ( ! empty ( $eventinfo ) ? $eventinfo : '' );
+$eventinfo = ( $eventinfo ?: '' );
 $monthStr = display_month ( $thismonth, $thisyear, false, true );
 $navStr = display_navigation ( 'month' );
 
