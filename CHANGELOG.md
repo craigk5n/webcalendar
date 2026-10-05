@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+### Fixed
+
+### Removed
+
+## [v1.9.25] - 2026-10-05
+
+### Changed
+
 - **The Security Audit now says when a file differs only in line endings.** A file whose content matches `MANIFEST.sha256` once CRLF and LF are normalised is still reported — it genuinely differs from what was signed, and suppressing it would be the wrong trade — but the advice changes from "restore from release zip" to saying that the content is otherwise identical and no action is needed. The prompt was #788, where `includes/zone.tab` shipped with CRLF, an extraction converted it, and settling that took two hashes and a size comparison; an unexplained warning on an installation where nothing was touched is how administrators learn to ignore the page. Both directions are detected, since a conversion can strip CRs from a file shipped with CRLF or add them to one shipped with LF. Severity is unchanged. Files containing a NUL byte are excluded, so a tampered image with a `\r` in it is never described as a line-ending difference, and the check is capped at 8MB. `tests/AuditLineEndingNoteTest.php` pins both the annotation and the advice, lifting `action_hint_for_file()` out of `security_audit.php` and running it rather than matching its source
 
 
@@ -29,8 +37,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **`js_cacher.php` included any file on the server for an unauthenticated visitor.** It checked only that `inc` began with `js/`, then appended every following segment to the path it passed to `include_once`, `..` included. Its one other gate compared the second segment against `readdir()` of `includes/js`, which lists `.` and `..`, so `js_cacher.php?inc=js/../../../../../etc/passwd` returned `/etc/passwd`, and any readable PHP file on the server could be executed in WebCalendar's context, with no login. Now only a file directly inside `includes/js` is included: the second segment must be an entry of that directory other than `.` or `..`, and later segments are treated purely as the arguments `catsel.php` and `availability.php` read from `$arinc`, never as path components. The dead `htmlarea` branch is gone with it, since `includes/htmlarea` no longer exists. `tests/JsCacherPathTraversalTest.php` runs `js_cacher.php` in a child process for each case and checks whether it gets past the gate. Reported by [dutchypoo](https://github.com/dutchypoo)
 
 - **`catsel.php` and `availability.php` reflected request values into the page unescaped.** Both pass request values to `print_header()` as path segments of a `js_cacher.php` include — the category picker its `form`, the availability view `month`, `day`, `year` and `form` — and `print_header()` wrote them straight into `<script src="js_cacher.php?inc=...">`. A quote ended the attribute, so `catsel.php?form=x" onload=alert(1) ` ran script in a logged-in user's session; `preventHacking()` only blocks a list of tag names, and `getGetValue()` only applies `addslashes()`, which does nothing to an HTML attribute. The same values were also printed as bare JavaScript by `includes/js/catsel.php` and `includes/js/availability.php`. The src is now built by `js_cacher_src()` in `includes/init.php`, which URL-encodes each segment; `catsel.php` emits its form name only when it is a plain identifier, and `availability.php` casts the date to integers and applies the same rule to the form name. `tests/JsCacherArgumentEscapingTest.php` covers the attribute, the round trip through `$_GET`, and the output of both scripts
-
-### Removed
 
 ## [v1.9.24] - 2026-09-26
 
