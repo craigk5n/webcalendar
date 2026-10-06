@@ -1,0 +1,60 @@
+# Local environment overrides -- may hold credentials, never commit.
+.env
+.htaccess
+includes/settings.php
+
+__pycache__
+.DS_Store
+*.class
+*.jar
+*.log
+*.old
+*.orig
+*.save
+*.sha
+DOC_UPDATES.md
+includes/htmlare*
+mysql-data
+node_modules/
+sqlite-data
+tests/.phpunit.result.cache
+vendor/
+wc-icons/
+
+# pytest leaves these beside the Docker selenium tests.
+.pytest_cache/
+
+# Selenium writes these from inside the container, so they arrive
+# root-owned and are regenerated on every wizard test run.
+tests/screenshots/
+
+# Defense-in-depth: never commit the release-signing private key half.
+# The public key (release-signing-pubkey.pem) is deliberately tracked.
+release-signing-privkey*
+
+# --- Local copies of the live configuration. These hold database
+# credentials; settings.php.orig is the shipped template and stays tracked.
+!includes/settings.php.orig
+includes/config.php.*
+includes/settings.php.*
+
+# Databases left by local testing. A calendar database holds real events
+# and password hashes.
+*.db
+*.sqlite
+*.sqlite3
+
+# Terraform provider binaries and state. The providers alone are ~330MB.
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Editor and tool caches.
+.php-cs-fixer.cache
+.vscode/
+
+# Scratch output from ad-hoc commands and debugging.
+.debug_*
+*.bak
+*.tar.gz
+debug.txt
