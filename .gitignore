@@ -34,9 +34,9 @@ release-signing-privkey*
 
 # --- Local copies of the live configuration. These hold database
 # credentials; settings.php.orig is the shipped template and stays tracked.
-!includes/settings.php.orig
 includes/config.php.*
 includes/settings.php.*
+!includes/settings.php.orig
 
 # Databases left by local testing. A calendar database holds real events
 # and password hashes.
