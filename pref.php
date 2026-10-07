@@ -105,6 +105,7 @@ if ( ! empty ( $_POST ) && empty ( $error )) {
   load_user_preferences();
 }
 
+
 if ($user != $login)
   $user = (($is_admin || $is_nonuser_admin) && $user) ? $user : $login;
 
@@ -146,7 +147,6 @@ if ( $res ) {
 $translation_loaded = false;
 
 //move this include here to allow proper translation
-$datestyle_md = $datestyle_my = $datestyle_tk = $datestyle_ymd = '';
 require_once 'includes/date_formats.php';
 
 // Make sure global values passed to styles.php are for this user.
@@ -242,6 +242,7 @@ etranslate ( 'Save Preferences' )?></button>
 <?php if ( $updating_public ) { ?>
  <input type="hidden" name="public" value="1">
 <?php } /*if ( $updating_public )*/
+
 
 // If user is admin of a non-user cal, and non-user cal is "public"
 // (meaning it is a public calendar that requires no login), then allow
@@ -360,22 +361,50 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 <tr><td class="aligntop" data-toggle="tooltip" data-placement="top" title="<?php etooltip ("date-format-help");?>">
  <label for="pref_DATE_FORMAT"><?php etranslate ('Date format')?>:</label></td><td>
  <select class="form-control" name="pref_DATE_FORMAT">
-  <?php echo $datestyle_ymd ?>
+  <?php
+  for ( $i = 0, $cnt = count ( $datestyles ); $i < $cnt; $i += 2 ) {
+    echo '<option value="' . $datestyles[$i] . '"';
+    if ( $prefarray['DATE_FORMAT'] == $datestyles[$i] )
+      echo $selected;
+    echo '>' . $datestyles[$i + 1] . "</option>\n";
+  }
+  ?>
 </select>&nbsp;<?php echo date_to_str ( $dateYmd,
     $DATE_FORMAT, false, false );?>
 <br>
 <select class="form-control" name="pref_DATE_FORMAT_MY">
-<?php echo $datestyle_my ?> ?>
+<?php
+  for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i += 2 ) {
+    echo '<option value="' . $datestyles_my[$i] . '"';
+    if ( $prefarray['DATE_FORMAT_MY'] == $datestyles_my[$i] )
+      echo $selected;
+    echo '>' . $datestyles_my[$i + 1] . "</option>\n";
+  }
+?>
 </select>&nbsp;<?php echo date_to_str ( $dateYmd,
     $DATE_FORMAT_MY, false, false );?>
 <br>
 <select class="form-control" name="pref_DATE_FORMAT_MD">
-<?php echo $datestyles_md ?>
+<?php
+  for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i += 2 ) {
+    echo '<option value="' . $datestyles_md[$i] . '"';
+    if ( $prefarray['DATE_FORMAT_MD'] == $datestyles_md[$i] )
+      echo $selected;
+    echo '>' . $datestyles_md[$i + 1] . "</option>\n";
+  }
+?>
 </select>&nbsp;<?php echo date_to_str ( $dateYmd,
     $DATE_FORMAT_MD, false, false );?>
 <br>
 <select class="form-control" name="pref_DATE_FORMAT_TASK">
-<?php echo $datestyles_tk ?>
+<?php
+  for ( $i = 0, $cnt = count ( $datestyles_task ); $i < $cnt; $i += 2 ) {
+    echo '<option value="' . $datestyles_task[$i] . '"';
+    if ( $prefarray['DATE_FORMAT_TASK'] == $datestyles_task[$i] )
+      echo $selected;
+    echo '>' . $datestyles_task[$i + 1] . "</option>\n";
+  }
+?>
 </select>&nbsp;<?php echo translate ( 'Small Task Date' ) . ' ' .
   date_to_str( $dateYmd, $DATE_FORMAT_TASK, false, false );?>
 </td></tr>

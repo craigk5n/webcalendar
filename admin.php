@@ -1,6 +1,5 @@
 <?php
 require_once 'includes/init.php';
-$datestyle_md = $datestyle_my = $datestyle_tk = $datestyle_ymd = '';
 require_once 'includes/date_formats.php';
 // Provides db_load_config(). This lives in includes/ so that admin.php keeps
 // working after the wizard/ directory is removed or made unreadable, as the
@@ -140,7 +139,8 @@ if ( ! $error ) {
   $option = '
                 <option value="';
 
-  $cch = $color_sets = $lang_list = $prefer_vu = $rc = '';
+  $cch = $color_sets = $datestyle_md = $datestyle_my = $datestyle_tk = '';
+  $datestyle_ymd = $lang_list = $prefer_vu = $rc = '';
   $start_wk_on = $start_wkend_on = $tabs = $user_vu = '';
   $work_hr_end = $work_hr_start = '';
 
@@ -166,6 +166,26 @@ if ( ! $error ) {
     $lang_list .= $option . $val . '"'
      . ( $val == $s['LANGUAGE'] ? $selected : '' )
      . '>' . $key . '</option>';
+  }
+  for ( $i = 0, $cnt = count ( $datestyles ); $i < $cnt; $i += 2 ) {
+    $datestyle_ymd .= $option . $datestyles[$i] . '"'
+     . ( $s['DATE_FORMAT'] == $datestyles[$i] ? $selected : '' )
+     . '>' . $datestyles[$i + 1] . '</option>';
+  }
+  for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i += 2 ) {
+    $datestyle_my .= $option . $datestyles_my[$i] . '"'
+     . ( $s['DATE_FORMAT_MY'] == $datestyles_my[$i] ? $selected : '' )
+     . '>' . $datestyles_my[$i + 1] . '</option>';
+  }
+  for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i += 2 ) {
+    $datestyle_md .= $option . $datestyles_md[$i] . '"'
+     . ( $s['DATE_FORMAT_MD'] == $datestyles_md[$i] ? $selected : '' )
+     . '>' . $datestyles_md[$i + 1] . '</option>';
+  }
+  for ( $i = 0, $cnt = count ( $datestyles_task ); $i < $cnt; $i += 2 ) {
+    $datestyle_tk .= $option . $datestyles_task[$i] . '"'
+     . ( $s['DATE_FORMAT_TASK'] == $datestyles_task[$i] ? $selected : '' )
+     . '>' . $datestyles_task[$i + 1] . '</option>';
   }
   for ( $i = 0; $i < 7; $i++ ) {
     $start_wk_on .= $option . "$i\""
