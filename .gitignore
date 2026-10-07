@@ -1,26 +1,26 @@
-*.class
-.DS_Store
 # Local environment overrides -- may hold credentials, never commit.
 .env
 .htaccess
-includes/htmlare*
 includes/settings.php
+
+__pycache__
+.DS_Store
+*.class
 *.jar
-*.jar
-java/
 *.log
-mysql-data
-node_modules/
 *.old
 *.orig
-__pycache__
 *.save
 *.sha
+DOC_UPDATES.md
+includes/htmlare*
+mysql-data
+node_modules/
 sqlite-data
 tests/.phpunit.result.cache
-DOC_UPDATES.md
 vendor/
 wc-icons/
+
 # pytest leaves these beside the Docker selenium tests.
 .pytest_cache/
 
@@ -34,9 +34,9 @@ release-signing-privkey*
 
 # --- Local copies of the live configuration. These hold database
 # credentials; settings.php.orig is the shipped template and stays tracked.
+includes/config.php.*
 includes/settings.php.*
 !includes/settings.php.orig
-includes/config.php.*
 
 # Databases left by local testing. A calendar database holds real events
 # and password hashes.
@@ -50,12 +50,11 @@ includes/config.php.*
 *.tfstate.*
 
 # Editor and tool caches.
-.vscode/
 .php-cs-fixer.cache
+.vscode/
 
 # Scratch output from ad-hoc commands and debugging.
 .debug_*
-debug.txt
 *.bak
 *.tar.gz
-
+debug.txt
