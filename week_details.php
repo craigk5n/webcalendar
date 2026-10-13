@@ -140,7 +140,7 @@ function print_detailed_entry ( $event, $date ) {
 
   echo ( $evPri ? '
             <strong>' : '' ) . '
-            <a title="' . translate ( 'View this entry' ) . '" class="' . $class
+            <a title="' . tooltip ( 'View this entry' ) . '" class="' . $class
    . '" id="' . $linkid . '" href="view_entry.php?id=' . $id
    . '&amp;date=' . $date;
 

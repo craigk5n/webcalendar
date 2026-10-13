@@ -1924,7 +1924,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
         $dd = $Entry['start_date'];
         if (!$silent) {
           echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
-          echo '" title="' . translate ( 'View this entry' ) . '">';
+          echo '" title="' . tooltip ( 'View this entry' ) . '">';
           $Entry['Summary'] = str_replace( "''", "'", $Entry['Summary'] );
           $Entry['Summary'] = str_replace( "\\", ' ', $Entry['Summary'] );
           echo htmlspecialchars ( $Entry['Summary'] ). '</a> (' .

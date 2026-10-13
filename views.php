@@ -19,7 +19,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
      . ' href="views_edit.php?id=' . $views[$i]['cal_view_id'] . '">'
      . htmlspecialchars ( $views[$i]['cal_name'] ) . '</a>';
     if ( $views[$i]['cal_is_global'] == 'Y' ) {
-      echo '&nbsp;<abbr title="' . translate ( 'Global' ) . '">*</abbr>';
+      echo '&nbsp;<abbr title="' . tooltip ( 'Global' ) . '">*</abbr>';
       $global_found = true;
     }
     echo '</li>';

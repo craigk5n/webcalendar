@@ -58,28 +58,28 @@ if (!ini_get('allow_url_fopen')) { ?>
     <thead>
         <tr>
             <th scope="col">
-                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Unique Calendar ID for remote calendar') ?>"><?php etranslate('Calendar ID') ?></div>
+                <div data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Unique Calendar ID for remote calendar') ?>"><?php etranslate('Calendar ID') ?></div>
             </th>
             <th scope="col"><?php etranslate('Name') ?></th>
             <th scope="col">
-                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Calendar user who created this remote calendar') ?>"><?php etranslate('Created By') ?></div>
+                <div data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Calendar user who created this remote calendar') ?>"><?php etranslate('Created By') ?></div>
             </th>
             <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
                 <th scope="col">
-                    <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Enabling allows this remote calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?></div>
+                    <div data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Enabling allows this remote calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?></div>
                 </th>
             <?php } ?>
             <th scope="col">
-                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Number of events currently in the remote calendar') ?>"><?php etranslate('Events') ?></div>
+                <div data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Number of events currently in the remote calendar') ?>"><?php etranslate('Events') ?></div>
             </th>
             <th scope="col">
-                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Date the remote calendar was last updated') ?>"><?php etranslate('Last Updated') ?></div>
+                <div data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Date the remote calendar was last updated') ?>"><?php etranslate('Last Updated') ?></div>
             </th>
             <th scope="col">
-                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Date the remote calendar was last checked for an update.  The update may have been skipped if it the remote calendar had not changes since the last update.') ?>"><?php etranslate('Last Checked') ?></div>
+                <div data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Date the remote calendar was last checked for an update.  The update may have been skipped if it the remote calendar had not changes since the last update.') ?>"><?php etranslate('Last Checked') ?></div>
             </th>
             <th scope="col">
-                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('URL for the ICS file used to import events for this remote calendar') ?>"><?php etranslate('Calendar URL') ?></div>
+                <div data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('URL for the ICS file used to import events for this remote calendar') ?>"><?php etranslate('Calendar URL') ?></div>
             </th>
             <th scope="col">
                 <!-- dropdown menu -->
@@ -116,8 +116,8 @@ if (!ini_get('allow_url_fopen')) { ?>
                     <?php print_form_key(); ?>
                     <input type="hidden" name="editUserAdd" id="editUserAdd" value="0">
                     <div class="form-inline" id="divEditUsername">
-                        <label class="col-5" for="editUsername" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Unique Calendar ID for remote calendar') ?>"><?php etranslate('Calendar ID') ?>: </label>
-                        <input required type="text" pattern="[A-Za-z0-9_]+" title="<?php etranslate('word characters only'); ?>" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New ID') . ' (' . translate('required') . ')'; ?>">
+                        <label class="col-5" for="editUsername" data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Unique Calendar ID for remote calendar') ?>"><?php etranslate('Calendar ID') ?>: </label>
+                        <input required type="text" pattern="[A-Za-z0-9_]+" title="<?php etooltip('word characters only'); ?>" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New ID') . ' (' . translate('required') . ')'; ?>">
                         <div id="invalid-id-error" class="invalid-feedback text-right">
                             <?php echo $invalidIDError; ?>
                         </div>
@@ -131,12 +131,12 @@ if (!ini_get('allow_url_fopen')) { ?>
                     </div>
                     <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
                         <div class="form-inline mt-1" id="div-editPublic">
-                            <label class="col-5" for="editPublic" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Enabling allows this remote calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?>: </label>
+                            <label class="col-5" for="editPublic" data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Enabling allows this remote calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?>: </label>
                             <?php echo print_radio('editPublic'); ?>
                         </div>
                     <?php } ?>
                     <div class="form-inline mt-1" id="div-editURL">
-                        <label class="col-5" for="editURL" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('URL for the ICS file used to import events for this remote calendar') ?>"><?php etranslate('URL') ?>: </label>
+                        <label class="col-5" for="editURL" data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('URL for the ICS file used to import events for this remote calendar') ?>"><?php etranslate('URL') ?>: </label>
                         <input required type="email" class="col-7 form-control" id="editURL" name="editURL">
                         <div id="invalid-url-error" class="invalid-feedback text-right">
                             <?php echo $noUrlError; ?>
@@ -204,12 +204,12 @@ if (!ini_get('allow_url_fopen')) { ?>
                     <input type="hidden" name="addLayerRemoteCalendarLogin" id="addLayerRemoteCalendarLogin" value="">
                     <table>
                         <tr>
-                            <td style="padding-right: 2em" data-toggle="tooltip" data-placement="top" title="<?php etranslate('The text color of the new layer that will be displayed in your calendar.'); ?>"><label><?php echo $colorStr; ?>:</label></td>
+                            <td style="padding-right: 2em" data-toggle="tooltip" data-placement="top" title="<?php etooltip('The text color of the new layer that will be displayed in your calendar.'); ?>"><label><?php echo $colorStr; ?>:</label></td>
                             <td><?php echo print_color_input_html('editLayerColor', '', '#000000'); ?>
                             </td>
                         </tr>
                         <tr>
-                            <td style="padding-right: 2em" data-toggle="tooltip" data-placement="top" title="<?php etranslate('If checked, events that are duplicates of your events will be shown.'); ?>"><label><?php echo $duplicatesStr; ?>:</label></td>
+                            <td style="padding-right: 2em" data-toggle="tooltip" data-placement="top" title="<?php etooltip('If checked, events that are duplicates of your events will be shown.'); ?>"><label><?php echo $duplicatesStr; ?>:</label></td>
                             <td><input class="form-control" type="checkbox" name="editLayerDups" id="editLayerDups">
                             </td>
                         </tr>

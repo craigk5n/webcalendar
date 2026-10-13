@@ -12,7 +12,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
 
   $goto_link = $manage_calendar_link = $reports_link = $views_link = [];
 
-  $myCalStr = translate ( 'My Calendar' );
+  $myCalStr = tooltip ( 'My Calendar' );
   $todayStr = translate ( 'Today' );
   $adminStr = translate ( 'Admin' );
   $unapprovedStr = translate ( 'Unapproved Entries' );
