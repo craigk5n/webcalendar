@@ -27,6 +27,11 @@
       "php-http/discovery": true
     }
   },
+  "autoload": {
+    "psr-4": {
+      "WebCalendar\\": "app/"
+    }
+  },
   "prefer-stable": true,
   "require": {
     "php": "^8.2",

@@ -32,6 +32,9 @@ $state = new WizardState();
 // Load existing settings and environment variables
 $settingsPath = __DIR__ . '/../includes/settings.php';
 $state->loadFromSettingsFile($settingsPath);
+$state->loadFromEnv();
+// Keep authoritative configuration separate from the session's setup draft.
+$configuredState = clone $state;
 
 if (isset($_SESSION['wizard_state'])) {
   $state->loadFromSession();
@@ -39,6 +42,14 @@ if (isset($_SESSION['wizard_state'])) {
 
 // Environment variables should always take precedence
 $state->loadFromEnv();
+if ($configuredState->isInitialized) {
+  $state->installPassword = $configuredState->installPassword;
+}
+// Invalidate old wizard sessions and sessions authenticated with a replaced password.
+$state->isValidUser = $state->isValidUser
+  && !empty($state->installPassword)
+  && isset($_SESSION['wizard_authenticated_password'])
+  && hash_equals($state->installPassword, $_SESSION['wizard_authenticated_password']);
 
 if (!isset($_SESSION['wizard_state'])) {
   $state->saveToSession();
@@ -75,9 +86,20 @@ if (isset($_GET['action']) && $_GET['action'] === 'phpinfo') {
 /**
  * Handle API requests
  */
-function handleApiRequest(string $action, WizardState $state, WizardValidator $validator): void
+function handleApiRequest(string $action, WizardState $state, WizardValidator $validator,
+  WizardState $configuredState): void
 {
   $response = ['success' => false, 'message' => ''];
+
+  $publicActions = [
+    'validate-field', 'save-install-password', 'login',
+    'welcome-continue', 'welcome-quick-upgrade', 'logout',
+  ];
+  if (!$state->isValidUser && !in_array($action, $publicActions, true)) {
+    http_response_code(403);
+    echo json_encode(['success' => false, 'message' => 'Authentication required']);
+    return;
+  }
   
   switch ($action) {
     case 'validate-field':
@@ -97,6 +119,13 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
       break;
       
     case 'save-install-password':
+      // Existing installations must authenticate through login. This endpoint
+      // creates the first setup password; it is not a password reset mechanism.
+      if ($configuredState->isInitialized || !empty($state->installPassword)) {
+        http_response_code(403);
+        $response = ['success' => false, 'message' => 'Initial password setup is unavailable'];
+        break;
+      }
       $password = $_POST['password'] ?? '';
       $confirm = $_POST['password2'] ?? '';
       $hint = $_POST['hint'] ?? '';
@@ -106,6 +135,7 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
         $state->setInstallPassword($password);
         $state->installPasswordHint = $hint;
         $state->isValidUser = true;
+        $_SESSION['wizard_authenticated_password'] = $state->installPassword;
         $nextStep = routeAfterAuth($state, $validator);
         $state->step = $nextStep;
         $state->saveToSession();
@@ -120,6 +150,7 @@ function handleApiRequest(string $action, WizardState $state, WizardValidator $v
       $result = $validator->validateLoginPassword($password);
       if ($result['valid'] && $state->verifyInstallPassword($password)) {
         $state->isValidUser = true;
+        $_SESSION['wizard_authenticated_password'] = $state->installPassword;
         $nextStep = routeAfterAuth($state, $validator);
         $state->step = $nextStep;
         $state->saveToSession();
@@ -500,7 +531,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
   });
 
   ob_start();
-  handleApiRequest($_POST['action'], $state, $validator);
+  handleApiRequest($_POST['action'], $state, $validator, $configuredState);
   $output = ob_get_clean();
   
   // Clean up any leading/trailing junk

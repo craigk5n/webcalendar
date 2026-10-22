@@ -50,7 +50,7 @@ final class McpWriteAccessDisabledTest extends TestCase
         $db->exec("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('MCP_SERVER_ENABLED', 'Y');");
         $db->exec("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('MCP_WRITE_ACCESS', 'N');");
         $db->exec("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('MCP_RATE_LIMIT', '1000');");
-        $db->exec(sprintf("UPDATE webcal_user SET cal_api_token = '%s' WHERE cal_login = 'admin';", self::$api_token));
+        $db->exec(sprintf("UPDATE webcal_user SET cal_api_token = '%s' WHERE cal_login = 'admin';", hash('sha256', self::$api_token)));
         $db->close();
 
         $env = sprintf(
@@ -104,7 +104,7 @@ final class McpWriteAccessDisabledTest extends TestCase
             CURLOPT_TIMEOUT => 10,
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+        unset($ch);
         return json_decode($response, true) ?? [];
     }
 

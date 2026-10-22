@@ -191,7 +191,14 @@ class WizardDatabase
         $this->loadUpgradeCommands($version);
       }
 
-      $this->state->adminUserCount = $this->getAdminUserCount();
+      $adminUserCount = $this->getAdminUserCount();
+      if ($adminUserCount === null) {
+        $this->error = 'Unable to count administrator accounts';
+        $this->state->dbConnectionSuccess = false;
+        $this->state->dbConnectionError = $this->error;
+        return;
+      }
+      $this->state->adminUserCount = $adminUserCount;
       return;
     }
 
@@ -346,13 +353,13 @@ class WizardDatabase
   }
   
   /**
-   * Count admin users
+   * Count admin users, or return null when the count cannot be read.
    */
-  private function getAdminUserCount(): int
+  private function getAdminUserCount(): ?int
   {
     try {
       if ($this->state->dbType === 'mysqli') {
-        if (!@$this->connection->select_db($this->state->dbDatabase)) return 0;
+        if (!@$this->connection->select_db($this->state->dbDatabase)) return null;
         $result = @$this->connection->query("SELECT COUNT(*) FROM webcal_user WHERE cal_is_admin = 'Y'");
         if ($result && $row = $result->fetch_row()) {
           return (int) $row[0];
@@ -369,9 +376,9 @@ class WizardDatabase
         }
       }
     } catch (Exception $e) {
-      // Table doesn't exist
+      // Query errors do not establish that no administrator exists.
     }
-    return 0;
+    return null;
   }
 
   private function loadUpgradeCommands(string $fromVersion): void
@@ -416,6 +423,14 @@ class WizardDatabase
   {
     if (!$this->connection) {
       $this->error = 'No database connection';
+      return false;
+    }
+
+    $adminUserCount = $this->getAdminUserCount();
+    if ($adminUserCount === null || $adminUserCount > 0) {
+      $this->error = $adminUserCount === null
+        ? 'Unable to count administrator accounts'
+        : 'An administrator already exists';
       return false;
     }
 

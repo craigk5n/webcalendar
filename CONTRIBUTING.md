@@ -37,8 +37,8 @@ make  # copies vendor assets to pub/
 ### Using Docker
 
 ```bash
-docker-compose -f docker/docker-compose-dev.yml up
-# http://localhost:8080 (MariaDB) / http://localhost:8081 (PostgreSQL)
+docker compose -f docker/docker-compose-dev.yml up -d --build
+# http://127.0.0.1:8090 (MariaDB)
 ```
 
 See [docs/developer-guide.md](docs/developer-guide.md) for full details.

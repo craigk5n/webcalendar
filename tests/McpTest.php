@@ -21,6 +21,33 @@ final class McpTest extends TestCase
   // MCP Core Function Tests
   // ---------------------------------------------------------------
 
+  public function testStoredHashCannotAuthenticateOrChangeTheToken() {
+    $token = bin2hex(random_bytes(32));
+    $hash = hash('sha256', $token);
+    $stmt = $this->testDb->getDb()->prepare(
+      "UPDATE webcal_user SET cal_api_token = :token WHERE cal_login = 'testuser'"
+    );
+    $stmt->bindValue(':token', $hash, SQLITE3_TEXT);
+    $stmt->execute();
+
+    $this->assertSame('testuser', validate_mcp_token($token));
+    $this->assertNull(validate_mcp_token('Bearer ' . $hash));
+    $this->assertSame($hash, $this->testDb->getApiToken('testuser'));
+    $this->assertSame('testuser', validate_mcp_token($token));
+  }
+
+  public function testLegacyPlaintextTokenRequiresRegeneration() {
+    $token = bin2hex(random_bytes(32));
+    $stmt = $this->testDb->getDb()->prepare(
+      "UPDATE webcal_user SET cal_api_token = :token WHERE cal_login = 'testuser'"
+    );
+    $stmt->bindValue(':token', $token, SQLITE3_TEXT);
+    $stmt->execute();
+
+    $this->assertNull(validate_mcp_token($token));
+    $this->assertSame($token, $this->testDb->getApiToken('testuser'));
+  }
+
   public function test_validate_mcp_token_empty_returns_null() {
     $result = validate_mcp_token('');
     $this->assertNull($result);
@@ -783,7 +810,7 @@ final class McpTest extends TestCase
   }
 
   /**
-   * Test that malformed token handling is robust and secure.
+   * Reject unmatched tokens containing binary bytes, encoded data, or punctuation.
    */
   public function testMalformedTokenHandling() {
     $malformedTokens = [

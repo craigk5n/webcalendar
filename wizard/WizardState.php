@@ -361,12 +361,13 @@ class WizardState
       return;
     }
 
+    // An empty or unreadable configuration is not proof of a fresh install.
+    $this->isInitialized = true;
+
     $content = @file_get_contents($settingsPath);
     if (empty($content)) {
       return;
     }
-
-    $this->isInitialized = true;
 
     $map = [
       'install_password' => 'installPassword',

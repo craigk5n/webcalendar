@@ -30,8 +30,8 @@ use PHPUnit\Framework\TestCase;
  * Limitation: (b) only resolves static string literals and `__DIR__ . '...'`.
  * Dynamic requires (variable/computed paths) are skipped — they cannot be
  * resolved without executing the code path, which is what (a) is for.
- * Anything under vendor/ is ignored in both checks: the composer tree is
- * intentionally never shipped (opt-in) and is handled gracefully at runtime.
+ * Static references under vendor/ are ignored: the composer tree is opt-in
+ * and never shipped. The boot check still requires it to be optional at runtime.
  */
 final class ReleaseArchiveSmokeTest extends TestCase
 {
@@ -91,10 +91,6 @@ PHP;
         continue;
       }
       if (preg_match("#required '([^']+)'#", $line, $m)) {
-        // vendor/ is composer-opt-in and never shipped — not a manifest bug.
-        if (strpos($m[1], 'vendor/') !== false) {
-          continue;
-        }
         $missing[] = $m[1];
       } else {
         $missing[] = trim($line);
@@ -110,6 +106,23 @@ PHP;
       . "issue #666 failure mode.\nMissing:\n  " . implode("\n  ", $missing)
       . "\n\n--- staged boot output ---\n" . $output
     );
+  }
+
+  public function testRuntimeHelpersLoadWithoutComposer(): void
+  {
+    $script = <<<'PHP'
+<?php
+require 'includes/functions.php';
+if (!class_exists(WebCalendar\Helpers\DateDisplay::class)
+    || !class_exists(WebCalendar\Helpers\ConfigService::class)) {
+  exit(1);
+}
+echo 'HELPERS_LOADED';
+PHP;
+    file_put_contents(self::$stage . '/__smoke_helpers.php', $script);
+    [$output, $status] = self::runPhp('__smoke_helpers.php', self::$stage);
+    self::assertSame(0, $status, $output);
+    self::assertStringContainsString('HELPERS_LOADED', $output);
   }
 
   /**

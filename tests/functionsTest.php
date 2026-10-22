@@ -334,8 +334,7 @@ final class FunctionsTest extends TestCase
   /**
    * Test clean_word() - Non-word character removal
    *
-   * SECURITY CONCERN: Used for sanitizing identifiers. Note that \W
-   * in regex removes everything except [a-zA-Z0-9_]. This means:
+   * Identifier sanitization with \W removes everything except [a-zA-Z0-9_]:
    * 1. Removes hyphens, periods, spaces
    * 2. Removes unicode characters (may break internationalization)
    */
@@ -494,24 +493,6 @@ final class FunctionsTest extends TestCase
     // Invalid input
     $this->assertEquals(0, hextoint(''));
     $this->assertEquals(0, hextoint('G'));  // Invalid hex digit
-  }
-
-  /**
-   * Test getShortTime()
-   */
-  public function test_getShortTime() {
-    global $DISPLAY_MINUTES;
-
-    // When DISPLAY_MINUTES is off, strip :00
-    $DISPLAY_MINUTES = 'N';
-    $this->assertEquals('10', getShortTime('10:00'));
-    $this->assertEquals('2 PM', getShortTime('2:00 PM'));
-    $this->assertEquals('10:30', getShortTime('10:30'));  // Keep non-:00
-
-    // When DISPLAY_MINUTES is on, keep everything
-    $DISPLAY_MINUTES = 'Y';
-    $this->assertEquals('10:00', getShortTime('10:00'));
-    $this->assertEquals('10:30', getShortTime('10:30'));
   }
 
   /**

@@ -11,10 +11,10 @@ on:
 jobs:
   php-lint:
     name: PHP lint (${{ matrix.php-version }})
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
-        php-version: ['8.2', '8.4']
+        php-version: ['8.2', '8.4', '8.5']
 
     steps:
       - name: Checkout code
@@ -40,7 +40,7 @@ jobs:
 
   ai-signals:
     name: AI-writing signals (added lines)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     # Only on pull requests: the check compares against the base branch, and
     # there is nothing meaningful to diff a push to master against.
     if: github.event_name == 'pull_request'

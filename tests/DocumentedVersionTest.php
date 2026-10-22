@@ -147,25 +147,24 @@ final class DocumentedVersionTest extends TestCase
       . implode(', ', $extra));
   }
 
-  /**
-   * CLAUDE.md is the file an agent reads first, and it is not tracked, so this
-   * can only run where it exists. That is the reason the drift went unnoticed:
-   * it said v1.9.13 and listed four MCP tools.
-   */
+  /** Check version stamps in shared or local agent instructions when present. */
   public function testTheAgentInstructionsNameThisVersion(): void
   {
-    $path = self::ROOT . '/CLAUDE.md';
-    if (!is_file($path)) {
-      self::markTestSkipped('CLAUDE.md is not present in this checkout.');
+    $checkedVersion = false;
+    foreach (['CLAUDE.md', 'AGENTS.md'] as $file) {
+      if (!is_file(self::ROOT . '/' . $file)) {
+        continue;
+      }
+      if (!preg_match('/\(v([\d.]+)\)/', $this->read($file), $matches)) {
+        continue;
+      }
+      self::assertSame(ltrim($this->programVersion(), 'v'), $matches[1],
+        "$file must name the application version when it declares a version stamp.");
+      $checkedVersion = true;
     }
-
-    $claude = (string) file_get_contents($path);
-    if (!preg_match('/\(v([\d.]+)\)/', $claude, $m)) {
-      self::markTestSkipped('CLAUDE.md states no version.');
+    if (!$checkedVersion) {
+      self::markTestSkipped('Neither CLAUDE.md nor AGENTS.md states a version.');
     }
-
-    self::assertSame(ltrim($this->programVersion(), 'v'), $m[1],
-      'CLAUDE.md is read as ground truth by an agent before anything else');
   }
 
   /**

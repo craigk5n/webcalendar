@@ -122,7 +122,7 @@ final class McpAddEventRaceConditionTest extends TestCase
         $db->exec("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('MCP_RATE_LIMIT', '100');");
 
         // Set API token for admin user
-        $db->exec(sprintf("UPDATE webcal_user SET cal_api_token = '%s' WHERE cal_login = 'admin';", self::$api_token));
+        $db->exec(sprintf("UPDATE webcal_user SET cal_api_token = '%s' WHERE cal_login = 'admin';", hash('sha256', self::$api_token)));
 
         $db->close();
     }
@@ -266,7 +266,7 @@ final class McpAddEventRaceConditionTest extends TestCase
                 $results[] = $data['result']['event_id'];
             }
             curl_multi_remove_handle($multi_handle, $ch);
-            curl_close($ch);
+            unset($ch);
         }
         curl_multi_close($multi_handle);
 
@@ -315,7 +315,7 @@ final class McpAddEventRaceConditionTest extends TestCase
         ]);
 
         $response = curl_exec($ch);
-        curl_close($ch);
+        unset($ch);
 
         return json_decode($response, true) ?? [];
     }

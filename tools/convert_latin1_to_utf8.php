@@ -407,6 +407,7 @@ if ($dryRun) {
 
 /*
  * PostgreSQL notes:
+ * ai-signals:allow -- operator instructions for diagnosing and repairing mojibake.
  * -----------------
  * PostgreSQL databases are typically already in UTF-8 (the default encoding).
  * If you have mojibake in PostgreSQL, the data was likely inserted as latin1

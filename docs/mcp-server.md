@@ -59,6 +59,11 @@ nor a database backup can show it to you later. If it is lost, generate
 a new one, which replaces the old. To revoke access, click
 **Clear Token**.
 
+Legacy tokens stored in plaintext are no longer accepted. After upgrading,
+users with legacy tokens must generate a new token in Preferences and update
+their clients. Authentication never accepts or rewrites a stored token hash
+as a bearer credential.
+
 The same Preferences tab shows the **MCP Endpoint URL** and a sample
 agent configuration.
 

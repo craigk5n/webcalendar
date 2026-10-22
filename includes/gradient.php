@@ -359,7 +359,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
   } else
     echo 'No image formats supported!<br>' . "\n";
 
-  imagedestroy ( $image );
+  unset ( $image );
   return;
 }
 

@@ -11,8 +11,8 @@ require_once __DIR__ . "/CrossDatabaseTestHelper.php";
 /**
  * Cross-Database Compatibility Tests for MCP Server
  * 
- * These tests ensure that MCP server functionality works correctly across
- * different database backends (SQLite, MySQL, PostgreSQL).
+ * Exercise MCP authentication, settings, events, and rate limits against
+ * SQLite and explicitly configured MySQL or PostgreSQL test databases.
  */
 final class CrossDatabaseCompatibilityTest extends TestCase
 {
