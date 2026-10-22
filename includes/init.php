@@ -9,7 +9,6 @@
  * <b>Comments:</b>
  * The following scripts do not use this file:
  *   - login.php
- *   - week_ssi.php
  *   - upcoming.php
  *   - tools/send_reminders.php
  *
@@ -62,6 +61,7 @@ require_once 'includes/config.php';
 require_once 'includes/dbi4php.php';
 require_once 'includes/formvars.php';
 require_once 'includes/functions.php';
+require_once 'includes/mcp-loader.php';
 
 $WebCalendar->initializeFirstPhase();
 
@@ -72,9 +72,6 @@ require_once 'includes/site_extras.php';
 require_once 'includes/validate.php';
 
 $WebCalendar->initializeSecondPhase();
-
-// TODO: Start using composer for dependency management...
-//require_once 'vendor/autoload.php';
 
 // Return the toplevel URL (no path) of the current URL.
 function get_server_top_url () {
@@ -133,12 +130,27 @@ function send_http_headers () {
   //Header("Content-Security-Policy: default-src " . get_server_top_url() .
   //  "; img-src *; style-src *");
 
-  // Set charset to match what is defined in translation file's "charset" definition.
-  $charset = translate('charset');
-  if ($charset == '=') {
-    $charset = 'UTF-8'; // default
-  }
-  header('Content-Type: text/html; charset=' . $charset);
+  // Always use UTF-8 for Content-Type. Many translation files still declare
+  // iso-8859-1 but all database connections now use utf8mb4, so the browser
+  // must interpret the output as UTF-8 to display characters correctly.
+  header('Content-Type: text/html; charset=UTF-8');
+}
+
+/**
+ * The src of a script served through js_cacher.php.
+ *
+ * Callers append request values to $inc (catsel.php its form name,
+ * availability.php a date and a form name), so each segment is URL-encoded:
+ * that keeps a quote from closing the attribute, and the slashes the
+ * segments are split on survive.
+ *
+ * @param string $inc  js/<file>[/false/<arg>...]
+ *
+ * @return string  HTML-safe URL.
+ */
+function js_cacher_src ( $inc ) {
+  return 'js_cacher.php?inc='
+    . implode( '/', array_map( 'rawurlencode', explode( '/', $inc ) ) );
 }
 
 /**
@@ -256,7 +268,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
           }
           $ret .= $i . '?' . filemtime( $i );
         } else {
-          $ret .= 'js_cacher.php?inc=' . $inc;
+          $ret .= js_cacher_src( $inc );
         }
         $ret .= '" defer></script>';
       }
@@ -336,12 +348,16 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
 
   $id = preg_replace ( '/.php/', '',
     substr ( $self, strrpos ( $self, '/' ) + 1 ) );
-  $id_ar = explode ( '_', $id );
 
-  // classes and ids are supposed to be UpperCamelCase, per Developer Guide
-  $id = array_map ( 'ucfirst', $id_ar );
+  // Body id mirrors the script name with underscores removed and forced to
+  // lowercase (admin.php -> "admin", view_t.php -> "viewt"). The page-specific
+  // selectors in includes/css/styles.css (#admin, #pref, #day, #viewt, ...) are
+  // lowercase, so this MUST stay lowercase for them to match. (Previously this
+  // used ucfirst() to produce UpperCamelCase ids, which silently disabled all
+  // of that page-specific CSS since CSS id selectors are case-sensitive.)
+  $id = strtolower ( str_replace ( '_', '', $id ) );
 
-  echo implode ( '', $id ) .
+  echo $id .
     ( translate ( 'direction' ) === 'rtl' ? '" dir="rtl"' : '"' )
     // Add any extra parts to the <body> tag.
     . " $BodyX>\n"
@@ -385,6 +401,17 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
   if ($MENU_ENABLED != 'N') {
     $ret .= '<script src="./includes/js/menu.js"></script>' . "\n";
   }
+  // The Month/Week/Year selectors live in the top menu by default. Put them
+  // here instead when the admin asked for that, or when the top menu is
+  // disabled entirely and so has nowhere to hold them. Installs predating the
+  // MENU_DATE_TOP setting have no webcal_config row for it, so default to top.
+  if( $include_nav_links && ! $friendly
+    && ( $MENU_ENABLED == 'N' || ( $MENU_DATE_TOP ?? 'Y' ) == 'N' ) ) {
+    require_once 'date_selectors.php';
+    $ret .= '<nav id="dateselector"'
+     . ' class="navbar navbar-expand-lg navbar-light bg-light">' . "\n"
+     . date_selectors_html() . "</nav>\n";
+  }
   if( $include_nav_links && ! $friendly ) {
     if( $MENU_ENABLED == 'N' )
       require_once 'includes/trailer.php';
@@ -405,7 +432,7 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
   // Only enable CKEditor on the following pages.  Some pages are expecting plain
   // text and HTML will cause issues.
   $pagesWithFullEditor = [ 'edit_entry.php', 'docadd.php' ];
-  $includeCkeditor = ( ! empty ( $GLOBALS['ALLOW_HTML_DESCRIPTION'] ) ) &&
+  $includeHtmlEditor = ( ! empty ( $GLOBALS['ALLOW_HTML_DESCRIPTION'] ) ) &&
     $GLOBALS['ALLOW_HTML_DESCRIPTION'] == 'Y' &&
     in_array ( $GLOBALS['SCRIPT'], $pagesWithFullEditor );
 
@@ -424,13 +451,17 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
   }
   return $ret .
     '<!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->' .
-    ( $includeCkeditor ?
-    /* Load local copy of ckeditor */ '
-    <script src="pub/ckeditor/ckeditor.js"></script>
-    <script>' .
-    /* Use CKEditor for ALL <textarea>. */ '
-      CKEDITOR.replaceAll();
-    </script>' : '' ) .
+    ( $includeHtmlEditor ?
+    "\n" . '<script src="pub/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+    tinymce.init({
+      selector: \'textarea\',
+      promotion: false,
+      plugins: \'lists link table  code autolink\',
+      toolbar: \'undo redo styles bold italic alignleft aligncenter alignright outdent indent numlist bullist link table code\',
+      license_key: \'gpl\'
+    });
+    </script>' . "\n" : '' ) .
 
     // Adds an easy link to validate the pages.
     ( $DEMO_MODE == 'Y' ? '

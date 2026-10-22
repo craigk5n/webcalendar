@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: webcalendar_test
+      MYSQL_USER: webcalendar
+      MYSQL_PASSWORD: password
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u", "root", "-proot"]
+      timeout: 20s
+      retries: 10
+
+  web:
+    # Named so CI can build it once, with a layer cache, and have compose
+    # reuse it instead of rebuilding. Keep this in step with the tag in
+    # .github/workflows/test-web-wizard.yml; DockerImageTagTest checks it.
+    image: webcalendar-test-web:ci
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile-dev
+    volumes:
+      - ..:/var/www/html
+    environment:
+      - WEBCALENDAR_USE_ENV=true
+      - WEBCALENDAR_DB_TYPE=mysqli
+      - WEBCALENDAR_DB_HOST=db
+      - WEBCALENDAR_DB_LOGIN=webcalendar
+      - WEBCALENDAR_DB_PASSWORD=password
+      - WEBCALENDAR_DB_DATABASE=webcalendar_test
+      - WEBCALENDAR_USER_INC=user.php
+      - WEBCALENDAR_INSTALL_PASSWORD=2168ad5e463d9accb215edaafa31c8d9 # md5 of 'Test123!'
+      - WEBCALENDAR_MODE=dev
+    depends_on:
+      db:
+        condition: service_healthy
+
+  chrome:
+    image: selenium/standalone-chrome:latest
+    shm_size: 2gb
+    depends_on:
+      - web
+
+  pytest:
+    image: python:3.9
+    volumes:
+      - ..:/work
+    working_dir: /work
+    environment:
+      - BASE_URL=http://web
+      - SELENIUM_URL=http://chrome:4444/wd/hub
+      - WEBCALENDAR_DB_HOST=db
+      - WEBCALENDAR_DB_LOGIN=webcalendar
+      - WEBCALENDAR_DB_PASSWORD=password
+      - WEBCALENDAR_DB_DATABASE=webcalendar_test
+    depends_on:
+      - chrome
+    # pymysql is pinned: 1.2.1/1.2.2/1.2.3 all shipped on 2026-09-17 and the
+    # rewritten auth state machine dereferences a None auth_packet against
+    # mysql:8.0, failing every connection with
+    # "AttributeError: 'NoneType' object has no attribute
+    # 'is_auth_switch_request'" (connections.py:1031). 1.2.0 is the last
+    # release this suite passed on. Unpin once that is fixed upstream.
+    command: >
+      bash -c "apt-get update && apt-get install -y default-mysql-client && pip install pytest selenium 'pymysql==1.2.0' cryptography && pytest -s tests/web-install-mysql.py"

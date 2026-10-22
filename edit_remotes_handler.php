@@ -118,8 +118,12 @@ if ( ! empty ( $reload ) ) {
   // }
   // We may be processing an hCalendar.
   // $data sometimes has a count of 1 but is not a valid array.
+  $hcalUrlErr = '';
   if ( ( count ( $data ) == 0 || ! isset ( $data[0] ) ) &&
-      function_exists ( 'simplexml_load_string' ) ) {
+      function_exists ( 'simplexml_load_string' ) &&
+      webcal_validate_remote_url ( $nurl, $hcalUrlErr ) ) {
+    // hKit fetches the URL itself (file_get_contents), so validate it here too
+    // to prevent the same SSRF / local-file-read vector as the ics path.
     $h = new hKit;
     $h->tidy_mode = 'proxy';
     $result = $h->getByURL ( 'hcal', $nurl );

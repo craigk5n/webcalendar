@@ -1,11 +1,6 @@
 <?php
 /**
- * Dynamic CSS styles used in WebCalendar.
- *
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
- * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
- * @package WebCalendar
+ * WebCalendar dynamic CSS styles.
  *
  *                         HOW TO READ THIS DOCUMENT
  *
@@ -18,7 +13,7 @@
  * while its declaration is 'color: red;'.
  * Each declaration has two parts: 'property' & 'value'.
  *
- * In the example above, there is only one declaraion ("color: red;").
+ * In the example above, there is only one declaration ("color: red;").
  * For that declaration, the PROPERTY is "color" and the VALUE is "red".
  *
  * NOTE: Each property must be followed by a colon (:),
@@ -60,21 +55,29 @@
  * WEEKENDBG    - background-color for cells that make up the weekend
  *
  *           SOME OF THE CSS IDS AND CLASSES USED IN WEBCALENDAR
- *  #programname         - link to webcalendar site
- *                         NOTE: modifying this can make this link disappear
- *  #viewd .main th      - participants cell
- *  #year.minical        - contains ALL months
- *                         NOTE: display: block; here
- *                         keeps the caption vertically close to the day names
+ *
+ * NOTE: If selectors are kept sorted from lowest to highest specificity,
+ *       so html tags first, then classes then ids,
+ *       the need for "!important" is greatly reduced.
+ *
+ *  a                    - links that don't have a specific class must be
+ *                         defined BEFORE all other link-related classes for
+ *                         those classes to work.
+ *  img.color            - transparent images used for visual color-selection
+ *  img.help             - question mark img linking to help sections
+ *
  *  .dayofmonth          - numerical date links in main calendars
  *  .dayofmonth:hover    - numerical date links in main calendars on hover
+ *
  *  .entry               - links to entries/events
+ *  .layerentry          - links to entries/events on layers
+ *  .unapprovedentry     - links to unapproved entries/events
+ *
  *  .entry img
  *  .layerentry img
  *  .unapprovedentry img - event (or bullet) icon;
  *                         NOTE: must be defined AFTER the .entry, .layerentry,
  *                         and .unapprovedentry classes.
- *  .layerentry          - links to entries/events on layers
  *  .main                - most display pages use this for calendar content
  *  .main td.hasevents   - only use HASEVENTSBG if it differs from CELLBG
  *  .minical             - styles for minicalendars
@@ -86,13 +89,14 @@
  *  .prev img            - left arrow images
  *  .printer             - printer-friendly links
  *  .standard            - standard table mainly in prefs.php & admin.php
- *  .unapprovedentry     - links to unapproved entries/events
  *  .weeknumber          - week number in monthview & such
- *  a                    - links that don't have a specific class must be
- *                         defined BEFORE all other link-related classes for
- *                         those classes to work.
- *  img.color            - transparent images used for visual color-selection
- *  img.help             - question mark img linking to help sections
+ *
+ *  #programname         - link to webcalendar site
+ *                         NOTE: modifying this can make this link disappear
+ *  #viewd .main th      - participants cell
+ *  #year.minical        - contains ALL months
+ *                         NOTE: display: block; here
+ *                         keeps the caption vertically close to the day names
  *
  * display: none; is unhidden by includes/css/print_styles.css
  * for printer-friendly pages and where else needed.
@@ -120,6 +124,11 @@
  * determined by taking the name of the page & removing any underscores (_).
  *   Example: edit_entry.php
  *   Results: <body id="editentry">
+ *
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://k5n.us/webcalendar
+ * @license https://gnu.org/licenses/old-licenses/gpl-2.0.html GNU GPL
+ * @package WebCalendar
  */
 
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
@@ -131,12 +140,15 @@ defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 
   So, as long as this file, "styles.php" with PHP variables, gets called before
   "styles.css" they should all work. Allowing "styles.css" to cache without the
-  need to go through "css_cacher.php". */
+  need to go through "css_cacher.php".
+ */
 
-/* ":root" matches top-level, usually "html". */
+/* TODO: Move the rest of the selectors that don't need php to "styles.css". */
+
+/* ":root" matches top-level; USUALLY "html". */
+/* Leave font-size as "px" here and "rem" should scale properly everywhere else. */
 ?>
 :root {
-<?php /* Leave font-size as "px" here and "rem" should scale properly everywhere else. */ ?>
   --def-font-size: 16px;
   --def-font-family: sans-serif;
 
@@ -184,11 +196,10 @@ if ( $DISPLAY_TASKS != 'Y' ) { ?>
   ? '10em' : $GLOBALS['MINICALWIDTH']; ?>;
 }
 
-<?php if (  $MENU_ENABLED == 'N' ) { ?>
-#dateselector form {
-  border-top: 0.0625em solid <?php echo $GLOBALS['TABLEBG'];?>;
+/* Only present when the date selectors are rendered below the calendar. */
+#dateselector {
+  border-top: 0.0625em solid var(--tablebg, <?php echo $GLOBALS['TABLEBG'];?>);
 }
-<?php } ?>
 
 <?php if ( ! empty ( $GLOBALS['BGIMAGE'] ) ) { ?>
 body {
@@ -196,52 +207,52 @@ body {
   background-repeats: '<?php echo$GLOBALS['BGREPEAT'];?>' );
 }
 .popup {
-  <?php echo background_css( $GLOBALS['POPUP_BG'], 200 ); ?>
+  <?php echo background_css( $GLOBALS['POPUP_BG'], 200, '', 'popupbg' ); ?>
 }
 <?php } ?>
 .main th,
 .main th.weekend {
-  <?php echo background_css( $GLOBALS['THBG'], 15 );?>
+  <?php echo background_css( $GLOBALS['THBG'], 15, '', 'thbg' );?>
 }
 .main td {
-  <?php echo background_css( $GLOBALS['CELLBG'], 100 ); ?>
+  <?php echo background_css( $GLOBALS['CELLBG'], 100, '', 'cellbg' ); ?>
 }
 .main td.weekend {
-  <?php echo background_css( $GLOBALS['WEEKENDBG'], 100 ); ?>
+  <?php echo background_css( $GLOBALS['WEEKENDBG'], 100, '', 'weekendbg' ); ?>
 }
 <?php if  ( $GLOBALS['HASEVENTSBG'] != $GLOBALS['CELLBG'] ) { ?>
 .main td.hasevents {
-  <?php echo background_css( $GLOBALS['HASEVENTSBG'], 100 ); ?>
+  <?php echo background_css( $GLOBALS['HASEVENTSBG'], 100, '', 'haseventsbg' ); ?>
 }
 <?php } ?>
 .main td.othermonth {
-  <?php echo background_css( $GLOBALS['OTHERMONTHBG'], 100 ); ?>
+  <?php echo background_css( $GLOBALS['OTHERMONTHBG'], 100, '', 'othermonthbg' ); ?>
 }
 .main td.today, #datesel td #today {
-  <?php echo background_css( $GLOBALS['TODAYCELLBG'], 100 ); ?>
+  <?php echo background_css( $GLOBALS['TODAYCELLBG'], 100, '', 'todaycellbg' ); ?>
 }
 #admin .main td.weekcell,
-#monthx .main td.weekcell,
+#month .main td.weekcell,
 #pref .main td.weekcell,
 #viewl .main td.weekcell {
-  <?php echo background_css( $GLOBALS['THBG'], 50 ); ?>
+  <?php echo background_css( $GLOBALS['THBG'], 50, '', 'thbg' ); ?>
 }
 .glance td,
 .note {
-  <?php echo background_css( $GLOBALS['CELLBG'], 50 );?>
+  <?php echo background_css( $GLOBALS['CELLBG'], 50, '', 'cellbg' );?>
 }
 #viewt .main th.weekend {
-  <?php echo background_css( $GLOBALS['WEEKENDBG'], 15 );?>
+  <?php echo background_css( $GLOBALS['WEEKENDBG'], 15, '', 'weekendbg' );?>
 }
 #login table,
 #register table {
-  <?php echo background_css( $GLOBALS['CELLBG'], 200 );?>
+  <?php echo background_css( $GLOBALS['CELLBG'], 200, '', 'cellbg' );?>
 }
 #securityAuditNotes {
-  <?php echo background_css( $GLOBALS['CELLBG'], 150 );?>
+  <?php echo background_css( $GLOBALS['CELLBG'], 150, '', 'cellbg' );?>
 }
 #viewt td.entry {
-  <?php echo background_css( $GLOBALS['THBG'], 10 );?>
+  <?php echo background_css( $GLOBALS['THBG'], 10, '', 'thbg' );?>
 }
 #minicalendar th,
 #minicalendar td {

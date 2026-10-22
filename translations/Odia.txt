@@ -1410,7 +1410,7 @@ on: ଉପରେ
 All Attendees: ସମସ୍ତ ଉପସ୍ଥିତ
 Busy: ବ୍ୟସ୍ତ
 Tentative: ଟେଣ୍ଟେଟିଭ୍ |
-Schedule an appointment for XXX.: XXX ପାଇଁ ଏକ ନିଯୁକ୍ତିର କାର୍ଯ୍ୟସୂଚୀ: YYY |
+Schedule an appointment for XXX.: XXX ପାଇଁ ଏକ ନିଯୁକ୍ତିର କାର୍ଯ୍ୟସୂଚୀ |
 date_select: =
 Event approved: ଇଭେଣ୍ଟ ଅନୁମୋଦିତ |
 Journal approved: ପତ୍ରିକା ଅନୁମୋଦିତ |

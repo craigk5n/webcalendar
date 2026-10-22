@@ -162,10 +162,15 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     // Note: we only search approved/waiting events (not deleted).
     $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date, weu.cal_login '
       . ( empty( $extra_filter ) ? '' : ', wse.cal_data ' )
-      . 'FROM webcal_entry_user weu LEFT JOIN  webcal_entry we '
+      . 'FROM webcal_entry_user weu LEFT JOIN ( webcal_entry we '
       . ( empty( $cat_filter ) ? '' : ', webcal_entry_categories wec ' )
       . ( empty( $extra_filter ) ? '' : ', webcal_site_extras wse ' )
-      . 'ON weu.cal_id = we.cal_id WHERE weu.cal_status in ( \'A\',\'W\' )
+      . ') ON ( '
+      . 'weu.cal_id = we.cal_id '
+      . ( empty( $cat_filter ) ? '' : 'AND wec.cal_id = we.cal_id ' )
+      . ( empty( $extra_filter ) ? '' : 'AND wse.cal_id = we.cal_id ' )
+      . ') '
+      . 'WHERE weu.cal_status in ( \'A\',\'W\' )
        AND weu.cal_login IN ( ?';
     if ( $search_others ) {
       if ( empty ( $users[0] ) )
@@ -262,8 +267,9 @@ if ( empty ( $error ) && empty ( $info ) ) {
 } else if ( empty ( $error ) ) {
   echo '<ul>';
   foreach ( $info as $result ) {
-    echo '<li class="nav"><a class="nav" href="view_entry.php?id=' . $result['id']
-     . '&amp;user=' . $result['user'] . '">' . $result['text'] . '</a></li>' . "\n";
+    echo '<li class="nav"><a class="nav" href="view_entry.php?id=' . htmlspecialchars ( $result['id'], ENT_QUOTES )
+     . '&amp;user=' . htmlspecialchars ( $result['user'], ENT_QUOTES ) . '">'
+     . htmlspecialchars ( $result['text'], ENT_QUOTES ) . '</a></li>' . "\n";
   }
   echo "</ul>\n";
 }

@@ -1136,7 +1136,7 @@ Save login via cookies so I dont have to login next time.: Stoor aanmelding via 
 Save Preferences: Stoor voorkeure
 Save Settings: Stoor instellings
 Save: Stoor
-Schedule an appointment for XXX.: Skeduleer 'n afspraak vir XXX:YYY.
+Schedule an appointment for XXX.: Skeduleer 'n afspraak vir XXX.
 Scheduling Conflict: Skeduleer konflik
 Search for existing icons...: Soek vir bestaande ikone...
 Search Results: Soekresultate

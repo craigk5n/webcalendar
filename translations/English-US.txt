@@ -36,7 +36,7 @@
 #        Translate "May_" to the full month name and "May" to the,
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
-# Translation last updated on 01-23-2024
+# Translation last updated on 08-12-2026
 
 charset: iso-8859-1
 direction: ltr
@@ -155,10 +155,6 @@ External Participants: External Participants
 repeat-type-help: Select how often the event should repeat.
 Daily: Daily
 Weekly: Weekly
-Monthly: Monthly
-by day: by day
-by date: by date
-by position: by position
 Monthly (by day): Monthly (by day)
 Monthly (by date): Monthly (by date)
 Monthly (by position): Monthly (by position)
@@ -193,6 +189,7 @@ Add Exception: Add Exception
 Add Inclusion: Add Inclusion
 Delete Selected: Delete Selected
 email-event-reminders-help: Specifies whether or not to send event reminders.
+reminder-web-trigger-help: Lets tools/send_reminders.php be run by fetching its URL, for hosts with no shell access. Off unless a token is generated; the URL must carry that token. Prefer a cron job running the PHP CLI binary.
 Send Reminder: Send Reminder
 Yes: Yes
 No: No
@@ -209,6 +206,8 @@ CAPTCHA Warning: <b>Warning:</b> Cannot use CAPTCHA without PHP's GD extension!<
 Are you sure you want to delete this entry?: Are you sure you want to delete this entry?
 Delete entry: Delete entry
 Edit Categories: Edit Categories
+Available categories: Available categories
+Selected categories: Selected categories
 
 ########################################
 # Page: icalclient.php
@@ -280,6 +279,24 @@ Remote calendar successfully deleted.: Remote calendar successfully deleted.
 # Page: views_edit_handler.php
 #
 You must specify a view name: You must specify a view name
+
+########################################
+# Page: export_wordpress.php
+#
+Export for WordPress: Export for WordPress
+#
+Download your calendar data as a SQL file that can be imported into the WebCalendar plugin for WordPress. On your WordPress site, go to WebCalendar, then Import, and upload the downloaded file. The import wizard will guide you through mapping users and calendars.: Download your calendar data as a SQL file that can be imported into the WebCalendar plugin for WordPress. On your WordPress site, go to WebCalendar, then Import, and upload the downloaded file. The import wizard will guide you through mapping users and calendars.
+#
+Passwords are never exported. The WordPress plugin creates or maps WordPress accounts and sends password-reset emails instead.: Passwords are never exported. The WordPress plugin creates or maps WordPress accounts and sends password-reset emails instead.
+#
+Table: Table
+#
+Rows: Rows
+#
+Include activity log: Include activity log
+Export: Export
+#
+About the WebCalendar plugin for WordPress: About the WebCalendar plugin for WordPress
 
 ########################################
 # Page: report.php
@@ -525,6 +542,8 @@ You have been logged out.: You have been logged out.
 Illegal characters in login XXX.: Illegal characters in login <span class="tt">XXX</span>.
 You must provide a password.: You must provide a password.
 Invalid login: Invalid login
+#
+Too many failed login attempts. Please try again later.: Too many failed login attempts. Please try again later.
 Activity login failure: Username: "XXX", IP: "YYY".
 Submit: Submit
 Access XXX calendar: Access XXX calendar
@@ -562,6 +581,8 @@ Email: Email
 When I am the boss: When I am the boss
 Subscribe/Publish: Subscribe/Publish
 Custom Scripts: Custom Scripts
+#
+MCP: MCP
 Language: Language
 language-help: Specifies which language to use.
 Your browser default language is XXX.: Your browser default language is "XXX".
@@ -677,6 +698,22 @@ custom-header-help: Allows a custom HTML snippet to be included in the top of ev
 Custom header: Custom header
 custom-trailer-help: Allows a custom HTML snippet to be included at the end of every page.
 Custom trailer: Custom trailer
+MCP Server: MCP Server
+mcp-api-token-help: API token for accessing WebCalendar data via Model Context Protocol. Generate a new token to replace the current one.
+MCP API Token: MCP API Token
+#
+Copy this token now. For security it is stored hashed and cannot be shown again.: Copy this token now. For security it is stored hashed and cannot be shown again.
+Generate New Token: Generate New Token
+#
+Clear Token: Clear Token
+#
+MCP Endpoint URL: MCP Endpoint URL
+#
+Sample agent configuration: Sample agent configuration
+#
+Paste this into your AI agent MCP settings file (for example, mcp_settings.json).: Paste this into your AI agent MCP settings file (for example, mcp_settings.json).
+#
+Replace YOUR_MCP_TOKEN with a token generated above.: Replace YOUR_MCP_TOKEN with a token generated above.
 Reset Colors: Reset Colors
 
 ########################################
@@ -866,6 +903,34 @@ Admin and owner can always add attachments if enabled.: Admin and owner can alwa
 allow-comments-help: Allow users to add comments to events.
 Allow comments to events: Allow comments to events
 Admin and owner can always add comments if enabled.: Admin and owner can always add comments if enabled.
+Security Audit: Security Audit
+Severity threshold for the security-audit file-integrity section: Severity threshold for the security-audit file-integrity section.
+File integrity noise filter: File integrity noise filter
+Show all findings: Show all findings
+Hide low-severity (INFO) findings: Hide low-severity (INFO) findings
+Show only CRITICAL findings: Show only CRITICAL findings
+Extra exclude patterns applied to the file-integrity scan: Extra exclude patterns applied to the file-integrity scan.
+Extra exclusion patterns: Extra exclusion patterns
+One glob pattern per line; lines starting with # are comments. Directory prefixes end with / (e.g. pub/uploads/). Applied in addition to the built-in defaults.: One glob pattern per line; lines starting with # are comments. Directory prefixes end with / (e.g. pub/uploads/). Applied in addition to the built-in defaults.
+Documentation: Documentation
+#
+MCP Server Configuration: MCP Server Configuration
+#
+MCP Server is not available.: MCP Server is not available.
+#
+The MCP SDK PHP package must be installed. Run composer install: The MCP SDK PHP package must be installed. Run composer install
+mcp-server-enabled-help: Enable the Model Context Protocol server to allow AI assistants to query WebCalendar data using API tokens.
+MCP Server enabled: MCP Server enabled
+mcp-write-access-help: Allow MCP clients to perform write operations (add events, modify data). Disable for read-only access.
+MCP Write Access: MCP Write Access
+mcp-rate-limit-help: Maximum number of MCP requests allowed per user per hour to prevent abuse.
+MCP Rate Limit (requests/hour): MCP Rate Limit (requests/hour)
+mcp-cors-origins-help: Configure which origins are allowed to make cross-origin MCP requests. Use * to allow all origins, or specify custom origins below.
+MCP CORS Allowed Origins: MCP CORS Allowed Origins
+mcp-cors-custom-help: Specify allowed origins as a comma-separated list (e.g., https://example.com,https://another.com). Leave empty to disable CORS.
+Custom Origins (comma-separated): Custom Origins (comma-separated)
+#
+Each user connects their AI agent with their own personal API token, generated on their Preferences MCP tab, where a ready-to-use sample configuration is shown.: Each user connects their AI agent with their own personal API token, generated on their Preferences MCP tab, where a ready-to-use sample configuration is shown.
 email-mailer: Choose email type (SMTP, PHP mail, sendmail)
 Email Mailer: Email Mailer
 email-smtp-host: Hostname(s) of SMTP server(s) separated by commas
@@ -909,6 +974,8 @@ Also, please use English rather than XXX.: Also, please use <strong>English</str
 #
 Subject: Subject
 Comment: Comment
+#
+Take photo: Take photo
 
 ########################################
 # Page: reject_entry.php
@@ -931,7 +998,6 @@ New Search: New Search
 ########################################
 # Page: export.php
 #
-Export: Export
 Export format: Export format
 Include all layers: Include all layers
 Include deleted entries: Include deleted entries
@@ -951,12 +1017,19 @@ day: day
 ########################################
 # Page: security_audit.php
 #
-Security Audit: Security Audit
 list potential security issues: The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.
 View your current PHP settings: View your current PHP settings
 Security Issue: Security Issue
 Default admin user password: Default admin user password
 You should change the password of the default admin user.: You should change the password of the default admin user.
+#
+Wizard directory exists: Wizard directory exists
+#
+The wizard/ directory is still present. It is password-protected, but you may restrict access for extra security.: The wizard/ directory is still present. It is password-protected, but you may restrict access for extra security.
+#
+Options - restrict permissions: Options - restrict permissions
+#
+move outside web root, or remove it: move outside web root, or remove it
 File permissions XXX: File permissions: XXX
 item XXX should not be writable: The following item should not be writable:<br><span class="tt">XXX</span>
 File exists XXX: File exists: "XXX"
@@ -973,6 +1046,26 @@ PHP Settings XXX: PHP Settings: "XXX"
 recommend setting XXX Off: The recommended setting for "XXX" is Off.
 recommend setting XXX On: recommend setting XXX On
 recommend setting allow_url_fopen Off: The recommended setting for "allow_url_fopen" is Off when remote calendars are not enabled.
+File integrity: File integrity
+See the release-signing runbook for manual verification and key rotation instructions: See the release-signing runbook for manual verification and key rotation instructions
+Manifest files not present (install may be from source or pre-1.9.x release): Manifest files not present (install may be from source or pre-1.9.x release).
+#
+Manifest signature FAILED - XXX: Manifest signature FAILED - XXX
+Manifest signature valid: Manifest signature is valid.
+Scanned XXX files against manifest: Scanned XXX files against manifest
+Modified files: Modified files
+Missing files: Missing files
+Extra files: Extra files
+No file integrity issues detected.: No file integrity issues detected.
+Path: Path
+Severity: Severity
+Action: Action
+Critical: Critical
+Warning: Warning
+Info: Info
+Restore from release zip if not intentional: Restore from release zip if this change was not intentional.
+Restore from release zip: Restore this file from the release zip.
+Review contents and remove if not legitimate: Review contents; remove if not legitimate (unexpected executable files may indicate a webshell).
 
 ########################################
 # Page: freebusy.php
@@ -1330,9 +1423,13 @@ email-boss-notifications-help: Specifies if bosses receive emails as event notif
 boss-approve-event-help: Specifies whether the boss will be required to approve events added by assistants.
 
 ########################################
-# Page: tools/reload_remotes.php
+# Page: tools/send_test_email.php
 #
 Error connecting to database: Error connecting to database
+
+########################################
+# Page: tools/reload_remotes.php
+#
 Include Path: Include Path
 No Remote Calendars found: No Remote Calendars found
 Remote Calendars not enabled: Remote Calendars not enabled
@@ -1346,6 +1443,11 @@ task: task
 event: event
 This is a reminder for the XXX detailed below.: This is a reminder for the XXX detailed below.
 Reminder: Reminder
+Reminder cron URL: Reminder cron URL
+Copy to clipboard: Copy to clipboard
+Diagnostic report: Diagnostic report
+Paste this into a bug report. Passwords, tokens, host names and email addresses are reported only as set or not set.: Paste this into a bug report. Passwords, tokens, host names and email addresses are reported only as set or not set.
+Reminder web trigger: Reminder web trigger
 
 ########################################
 # Page: ws/get_events.php
@@ -1410,6 +1512,7 @@ TH: TH
 FR: FR
 SA: SA
 SU: SU
+Monthly: Monthly
 Interval: Interval
 Months: Months
 Month Days: Month Days
@@ -1482,7 +1585,7 @@ on: on
 All Attendees: All Attendees
 Busy: Busy
 Tentative: Tentative
-Schedule an appointment for XXX.: Schedule an appointment for XXX:YYY.
+Schedule an appointment for XXX.: Schedule an appointment for XXX.
 Event approved: Event approved
 Journal approved: Journal approved
 Task approved: Task approved
@@ -1513,7 +1616,6 @@ Task Due Date: Task Due Date
 You have XXX unapproved entries: You have XXX unapproved entries
 Changes successfully saved: Changes successfully saved
 Event: Event
-Action: Action
 Printer Friendly: Printer Friendly
 Generate printer-friendly version: Generate printer-friendly version
 after: after
@@ -1596,47 +1698,116 @@ English: English
 English-US: English-US
 Afrikaans: Afrikaans
 Albanian: Albanian
+Amharic: Amharic
 Arabic: Arabic
+Azerbaijani: Azerbaijani
 Basque: Basque
+Belarusian: Belarusian
+Bengali: Bengali
+Bosnian: Bosnian
 Bulgarian: Bulgarian
+Burmese: Burmese
 Catalan: Catalan
+Cebuano: Cebuano
+Chichewa: Chichewa
 Chinese (Simplified/GB2312): Chinese (Simplified/GB2312)
 Chinese (Traditional/Big5): Chinese (Traditional/Big5)
+Corsican: Corsican
 Croatian: Croatian
 Czech: Czech
 Danish: Danish
 Dutch: Dutch
-Elven: Elven
+Esperanto: Esperanto
 Estonian: Estonian
+Filipino: Filipino
 Finnish: Finnish
 French: French
+Frisian: Frisian
 Galician: Galician
+Georgian: Georgian
 German: German
 Greek: Greek
+Gujarati: Gujarati
+Haitian: Haitian
+Hausa: Hausa
+Hawaiian: Hawaiian
 Hebrew: Hebrew
+Hindi: Hindi
+Hmong: Hmong
 Holo (Taiwanese): Holo (Taiwanese)
 Hungarian: Hungarian
 Icelandic: Icelandic
+Igbo: Igbo
 Indonesian: Indonesian
+Irish: Irish
 Italian: Italian
 Japanese: Japanese
+Javanese: Javanese
+Kannada: Kannada
+Kazakh: Kazakh
+Khmer: Khmer
+Kinyarwanda: Kinyarwanda
+Kiswahili: Kiswahili
 Korean: Korean
+Kurdish: Kurdish
+Kyrgyz: Kyrgyz
+Lao: Lao
+Latin: Latin
+Latvian: Latvian
 Lithuanian: Lithuanian
+Luxembourgish: Luxembourgish
+Macedonian: Macedonian
+Malagasy: Malagasy
+Malay: Malay
+Malayalam: Malayalam
+Maltese: Maltese
+Maori: Maori
+Marathi: Marathi
+Mongolian: Mongolian
+Nepali: Nepali
 Norwegian: Norwegian
+Odia: Odia
+Pashto: Pashto
+Persian: Persian
 Polish: Polish
 Portuguese: Portuguese
 Portuguese/Brazil: Portuguese/Brazil
+Punjabi: Punjabi
 Romanian: Romanian
 Russian: Russian
+Samoan: Samoan
+Scots: Scots
 Serbian: Serbian
+Sesotho: Sesotho
+Shona: Shona
+Sindhi: Sindhi
+Sinhala: Sinhala
 Slovak: Slovak
 Slovenian: Slovenian
+Somali: Somali
 Spanish: Spanish
+Sundanese: Sundanese
 Swedish: Swedish
+Tajik: Tajik
+Tamil: Tamil
+Tatar: Tatar
+Telugu: Telugu
+Thai: Thai
 Turkish: Turkish
+Turkmen: Turkmen
+Ukrainian: Ukrainian
+Urdu: Urdu
+Uyghur: Uyghur
+Uzbek: Uzbek
+Vietnamese: Vietnamese
 Welsh: Welsh
+Xhosa: Xhosa
+Yiddish: Yiddish
+Yoruba: Yoruba
+Zulu: Zulu
 Browser-defined: Browser-defined
 journal: journal
+ISO Language Code: ISO Language Code
 0: 0
 1: 1
 2: 2
@@ -1647,6 +1818,79 @@ journal: journal
 7: 7
 8: 8
 9: 9
+10: 10
+11: 11
+12: 12
+13: 13
+14: 14
+15: 15
+16: 16
+17: 17
+18: 18
+19: 19
+20: 20
+21: 21
+22: 22
+23: 23
+24: 24
+25: 25
+26: 26
+27: 27
+28: 28
+29: 29
+30: 30
+31: 31
+40: 40
+50: 50
+60: 60
+70: 70
+80: 80
+90: 90
+100: 100
+200: 200
+300: 300
+400: 400
+500: 500
+600: 600
+700: 700
+800: 800
+900: 900
+1000: 1000
+2000: 2000
+2023: 2023
+2024: 2024
+2025: 2025
+3000: 3000
+3999: 3999
+4000: 4000
+5000: 5000
+6000: 6000
+7000: 7000
+8000: 8000
+9000: 9000
+10000: 10000
+20000: 20000
+30000: 30000
+40000: 40000
+50000: 50000
+60000: 60000
+70000: 70000
+80000: 80000
+90000: 90000
+100000: 100000
+200000: 200000
+300000: 300000
+400000: 400000
+500000: 500000
+600000: 600000
+700000: 700000
+800000: 800000
+900000: 900000
+1000000: 1000000
+Date Formats: Date Formats
+Number Symbols: Number Symbols
+Names (and Abbreviations): Names (and Abbreviations)
+Old phrases not currently in the code: Old phrases not currently in the code
 
 ########################################
 # Page: includes/trailer.php
@@ -1692,7 +1936,6 @@ You must define XXX in: You must define "XXX" in the "settings.php" file.
 # Page: includes/help_list.php
 #
 Index: Index
-Documentation: Documentation
 Page: Page
 
 ########################################
@@ -1702,6 +1945,8 @@ You have not entered a Brief Description: You have not entered a Brief Descripti
 time prior to work hours...: The time you have entered begins before your preferred work hours. Is this correct?
 Invalid Event Date: Invalid Event Date
 Please add a participant: Please add a participant
+Move up: Move up
+Move down: Move down
 You have not entered a valid time of day: You have not entered a valid time of day.
 
 ########################################
@@ -1767,174 +2012,3 @@ instantiate: Could not instantiate mail function
 mailer_not_supported: mailer is not supported
 provide_address: You must provide at least one recipient email address.
 recipients_failed: SMTP Error: The following recipients failed:
-
-########################################
-# Page: install/install_adminuser.php
-#
-Your have XXX admin accounts.: Your have XXX admin accounts.
-Create Default Admin User: Create Default Admin User
-
-########################################
-# Page: install/index.php
-#
-PHP Version: PHP Version
-GD Module: GD Module
-Installed: Installed
-Not found: Not found
-GD module required for gradient background colors: GD module required for gradient background colors
-Allow File Uploads: Allow File Uploads
-File uploads are required to upload category icons: File uploads are required to upload category icons
-Allow URL fopen: Allow URL fopen (required only if Remote Calendars are used)
-Remote URL fopen is required to load remote calendars: Remote URL fopen is required to load remote calendars
-Safe Mode: Safe Mode
-Safe Mode needs to be disabled to allow setting env variables to specify the timezone: Safe Mode needs to be disabled to allow setting env variables to specify the timezone
-Connection not yet configured: Connection not yet configured
-Your form post was either missing a required session token or timed out.: Your form post was either missing a required session token or timed out.
-Environment variables: Environment variables
-Info: Info
-
-########################################
-# Page: install/install_dbtables.php
-#
-Upgrade Database: Upgrade Database
-Your XXX database named 'YYY' is up to date.  You may go on to the next step.: Your XXX database named 'YYY' is up to date.  You may go on to the next step.
-Your XXX database named 'YYY' is empty and needs tables created.: Your XXX database named 'YYY' is empty and needs tables created.
-Create Database Tables: Create Database Tables
-Your XXX database named 'YYY' needs upgrading from version ZZZ.: Your XXX database named 'YYY' needs upgrading from version ZZZ.
-Display SQL: Display SQL
-Upgrade SQL Commands: Upgrade SQL Commands
-Copy: Copy
-SQL content copied to clipboard: SQL content copied to clipboard
-
-########################################
-# Page: install/headless.php
-#
-Unable to determine current database version.: Unable to determine current database version.
-Database successfully migrated from XXX to YYY: Database successfully migrated from XXX to YYY
-
-########################################
-# Page: install/install_appsettings.php
-#
-When choosing XXX, changes will need to be made to the file auth-settings.php before user authentication will work properly.: When choosing XXX, changes will need to be made to the file auth-settings.php before user authentication will work properly.
-You are using environment variables for your settings and must make changes externally.: You are using environment variables for your settings and must make changes externally.
-You cannot continue until you set the proper environment variables.: You cannot continue until you set the proper environment variables.
-Specify how users will be prompted for username and password.: Specify how users will be prompted for username and password.
-User Authentication: User Authentication
-Web-based via WebCalendar (default): Web-based via WebCalendar (default)
-Web Server (not detected): Web Server (not detected)
-Web Server (detected): Web Server (detected)
-Single-User Mode: Single-User Mode
-Specify where the user login and password will be verified against.  If an option is disabled, the required PHP module was not found.: Specify where the user login and password will be verified against.  If an option is disabled, the required PHP module was not found.
-User Database: User Database
-WebCalendar User Database (default): WebCalendar User Database (default)
-Enter login for single user mode.: Enter login for single user mode.
-Single User Login: Single User Login
-Set calendar to readonly mode. Default is false.: Set calendar to readonly mode. Default is false.
-Read-Only: Read-Only
-Mode selection (Production or Development). Default is Production. Development mode will enable verbose errors in the browser.: Mode selection (Production or Development). Default is Production. Development mode will enable verbose errors in the browser.
-Run Environment: Run Environment
-
-########################################
-# Page: install/install_auth.php
-#
-If your installation is accessible to anyone untrusted, you should secure the installation pages by restricting access. The easiest way to do this is by providing a passphrase.: If your installation is accessible to anyone untrusted, you should secure the installation pages by restricting access. The easiest way to do this is by providing a passphrase.
-Once the installation is complete, you will need not this passphrase again until you want to upgrade your installation. Please take note of your password because there is no way to recover it.: Once the installation is complete, you will need not this passphrase again until you want to upgrade your installation. Please take note of your password because there is no way to recover it.
-This password hint will be provided when the you login at a later time.: This password hint will be provided when the you login at a later time.
-Enter a hint to remember your password: Enter a hint to remember your password
-This passphrase was provided during the initial installation.: This passphrase was provided during the initial installation.
-Enter your passphrase: Enter your passphrase
-Enter your passphrase again: Enter your passphrase again
-This password hint was provided when the password was set.: This password hint was provided when the password was set.
-Password hint: Password hint
-Installation passphrase: Installation passphrase
-
-########################################
-# Page: install/install_finish.php
-#
-Install/Upgrade process is now complete.: Install/Upgrade process is now complete.
-Launch WebCalendar: Launch WebCalendar
-
-########################################
-# Page: install/install_createdb.php
-#
-Your XXX database named 'YYY' exists.  You may go on to the next step.: Your XXX database named 'YYY' exists.  You may go on to the next step.
-Your XXX database named 'YYY' does not exist yet.: Your XXX database named 'YYY' does not exist yet.
-Create Database: Create Database
-
-########################################
-# Page: install/install_auth_handler.php
-#
-Your passwords must match.: Your passwords must match.
-Install password saved.  Login with password to continue.: Install password saved.  Login with password to continue.
-Successful login: Successful login
-Invalid passphrase.: Invalid passphrase.
-
-########################################
-# Page: install/install_dbsettings.php
-#
-Because environment variables are being used to configure WebCalendar, you cannot alter the settings on this page.  You must do this externally.: Because environment variables are being used to configure WebCalendar, you cannot alter the settings on this page.  You must do this externally.
-Database Server: Database Server
-Database Login: Database Login
-Database Password: Database Password
-Database Cache Directory (Optional): Database Cache Directory (Optional)
-Database Debugging: Database Debugging
-Disabled (recommended): Disabled (recommended)
-Test Connection: Test Connection
-Save Settings: Save Settings
-Successful database connection: Successful database connection
-Failed to connect to the database. Please check your settings.: Failed to connect to the database. Please check your settings.
-SQLite3 File Path: SQLite3 File Path
-
-########################################
-# Page: install/install_adminuser_handler.php
-#
-Default admin account created with login "admin" and password "admin".: Default admin account created with login "admin" and password "admin".
-
-########################################
-# Page: install/install_appsettings_handler.php
-#
-Unknown error: Unknown error
-Invalid Application Settings: Invalid Application Settings
-
-########################################
-# Page: install/install_functions.php
-#
-Error updating table XXX: Error updating table "XXX": YYY.
-Conversion Successful: <b>Conversion Successful</b>
-
-########################################
-# Page: install/install_welcome.php
-#
-Your WebCalendar database is configured and current with the installed version of WebCalendar.: Your WebCalendar database is configured and current with the installed version of WebCalendar.
-You can use these pages to change your settings and to re-add the default admin user.: You can use these pages to change your settings and to re-add the default admin user.
-You can re-add the default admin user.: You can re-add the default admin user.
-This wizard will guide you through the XXX process.: This wizard will guide you through the XXX process.
-
-########################################
-# Page: install/install_phpsettings.php
-#
-Setting Description: Setting Description
-Required Setting: Required Setting
-Current Setting: Current Setting
-Correct: Correct
-Incorrect: Incorrect
-Detailed PHP Info: Detailed PHP Info
-Some WebCalendar function may be limited.  Are you sure?: Some WebCalendar function may be limited.  Are you sure?
-Acknowledge: Acknowledge
-PHP Info: PHP Info
-
-########################################
-# Page: install/install_dbtables_handler.php
-#
-Database tables successfully created: Database tables successfully created
-
-########################################
-# Page: install/install_createdb_handler.php
-#
-Database XXX already exists.: Database XXX already exists.
-Created database XXX: Created database XXX
-
-########################################
-# Page: install/install_ajax.php
-#
-Invalid test connection request: Invalid test connection request

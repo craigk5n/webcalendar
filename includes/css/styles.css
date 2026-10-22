@@ -100,6 +100,18 @@ textarea {
   /*font-size:.75rem;*/
   overflow:auto;
 }
+/* Firefox's UA stylesheet can override Bootstrap's `font-size:inherit`
+   on native form widgets. Re-assert inheritance so controls like the
+   category selector render at the parent's size on Firefox too. */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family:inherit;
+  font-size:inherit;
+  line-height:inherit;
+}
 table {
   border:0;
   border-collapse:collapse;
@@ -196,7 +208,7 @@ td.weekcell {
 img {
   max-inline-size: 100%;
   block-size: auto;
-  
+
   /* These 2 presume pre-load a low-res image in an inline style="" on each img. */
   /* We probably don't need them. Yet. */
   /*
@@ -204,7 +216,7 @@ img {
   background-size: cover;
   */
 
-  shape-margin: 1rem;  
+  shape-margin: 1rem;
   border: 0;
   vertical-align: middle;
 }
@@ -215,19 +227,10 @@ img.color {
 #cat {
   font-size:1.125rem;
 }
-#dateselector,
 #trailer {
   margin:0;
   padding:0;
 }
-#dateselector form {
-  float:left;
-  width:33%;
-  margin-top:.3125rem;
-  margin-bottom:1.5625rem;
-  padding-top:.3125rem;
-}
-#dateselector label,
 #trailer label {
   margin:0;
   padding:0;
@@ -344,7 +347,7 @@ a#programname {
 }
 
 .tt {
-  font-family: 'Lucida Console', monospace";
+  font-family: 'Lucida Console', monospace;
 }
 
 #activitylog .next,
@@ -619,7 +622,7 @@ tr.highlight td {
   padding:0;
 }
 
-#pref form-group {
+#pref .form-group {
   text-align: left;
 }
 /* Settings/Preferences month preview for color.
@@ -656,6 +659,17 @@ tr.highlight td {
 #admin table#month_main td.weekcell,
 #pref table#month_main td.weekcell {
   background-color: var(--weeknumber) !important;
+}
+
+/* Color-picker live preview: strip the server-baked gradient images from the
+ * sample month so the var(--*) background-colors set in styles.php show through
+ * and update live as the user edits a color. Without this, when
+ * ENABLE_GRADIENTS is on, the gradient image overlays and masks the color
+ * change. Scoped to .colorpreview (the sample-month container in admin.php /
+ * pref.php) so the real calendar keeps its gradients. */
+.colorpreview .main td,
+.colorpreview .main th {
+  background-image: none !important;
 }
 
 #admin table,
@@ -947,7 +961,7 @@ th.day_glance_time {
   font-size:.75rem;
 }
 #viewl .main td,
-#month .main td, #Month #month_main td {
+#month .main td, #month #month_main td {
   height:6.0rem;
   font-size:.75rem;
   vertical-align:top;
@@ -971,6 +985,20 @@ table#nextmonth {
 }
 table#prevmonth {
   float: left;
+}
+/* On narrow viewports the two floated mini-calendars can't fit side by
+   side and drop into separate rows, pushing the main title far down.
+   Drop the floats on small screens so they lay out inline and stack
+   gracefully when space is tight. Uses `inline-table` rather than
+   `inline-block` so the <caption> keeps its table-caption semantics
+   and `caption-side: top` is still honored (#640). */
+@media (max-width: 576px) {
+  table#prevmonth,
+  table#nextmonth {
+    float:none;
+    display:inline-table;
+    vertical-align:top;
+  }
 }
 #month .minical caption,
 #viewl .minical caption {
@@ -1037,10 +1065,10 @@ table#prevmonth {
 #viewt table.timebar th {
   width:10%;
 }
-#ViewT div table th {
+#viewt div table th {
   width:10%;
 }
-#ViewT div table td {
+#viewt div table td {
   width:90%;
 }
 #viewt table.timebar dh {
@@ -1227,37 +1255,13 @@ table#prevmonth {
 .layertable td {
   padding:.3125rem 1.25rem;
 }
-#layers #layertable th {
-  background-color: #000080;
-  border: 2px outset #000060;
-  color: #ffffff;
-  font-size: 1.0rem;
-  padding: 4px;
-  /*padding-left: 20px;*/
-}
-#layers #layertable td.odd {
-  background-color: #c0c0c0;
-  border: 2px outset #c0c0c0;
-  color: #000000;
-  font-size: 1.0rem;
-  padding: 4px;
-  cursor:pointer;
-}
-#layers #layertable td.even {
-  background-color: #d8d8d8;
-  border: 2px outset #d8d8d8;
-  color: #000000;
-  font-size: 1.0rem;
-  padding: 4px;
-  cursor:pointer;
-}
-#layers #layertable .colorsample {
-  margin-left: 5px;
-  padding-left: 10px;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #000000;
-}
+/* NOTE: the legacy #layers #layertable rules (navy outset header, gray
+ * odd/even cells) were removed here. The layer list is now a Bootstrap
+ * ".table table-striped" table (see the JS in layers.php) and the JS no longer
+ * emits td.odd/td.even, so those pre-Bootstrap rules only fought the Bootstrap
+ * styling (navy/outset header). They had been dormant for years because the
+ * body id was CamelCase; lowercasing it (so other page CSS works) revived them
+ * on this page, hence the removal. */
 .fakebutton {
    border:2px #d0d0d0 outset;
    /*border-color:#e0e0e0 #808080 #808080 #e0e0e0;*/
@@ -1406,10 +1410,8 @@ table.ThemeMenubar {
   height: 0.3em;
 }
 
-<?php
-// No 2nd level submenu built into Bootstrap v4.
-// Got this from here: https://ricard.dev/bootstrap-4-second-level-menu-nav/
-?>
+/* No 2nd level submenu built into Bootstrap v4.
+   Source: https://ricard.dev/bootstrap-4-second-level-menu-nav/ */
 
 .dropdown-submenu {
   position: relative;

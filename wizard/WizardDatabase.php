@@ -1,0 +1,839 @@
+<?php
+/**
+ * Wizard Database helper class
+ */
+
+require_once __DIR__ . '/WizardState.php';
+require_once __DIR__ . '/shared/upgrade-sql.php';
+
+class WizardDatabase
+{
+  private WizardState $state;
+  private $connection = null;
+  private ?string $error = null;
+
+  public function __construct(WizardState $state)
+  {
+    $this->state = $state;
+
+    // PHP 8.1+ defaults mysqli error reporting to
+    // MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT, which makes failed
+    // mysqli calls THROW mysqli_sql_exception instead of returning false /
+    // setting ->error. The "@" operator does NOT suppress thrown
+    // exceptions, so an uncaught exception during connect/select_db (e.g.
+    // selecting a database that does not exist yet) becomes a fatal error
+    // with an empty response body, surfacing in the wizard UI as
+    // "Unexpected end of JSON input" (see issue #642). This class is
+    // written against the legacy return-false semantics, so disable the
+    // throwing behavior for all mysqli calls it makes.
+    if (function_exists('mysqli_report')) {
+      mysqli_report(MYSQLI_REPORT_OFF);
+    }
+  }
+
+  public function getError(): ?string
+  {
+    return $this->error;
+  }
+
+  public function testConnection(): bool
+  {
+    switch ($this->state->dbType) {
+      case 'mysqli':
+        return $this->connectMysqli();
+      case 'postgresql':
+        return $this->connectPostgresql();
+      case 'sqlite3':
+        return $this->connectSqlite3();
+      default:
+        $this->error = "Unsupported database type: " . $this->state->dbType;
+        return false;
+    }
+  }
+
+  public function reconnect(): bool
+  {
+    $this->closeConnection();
+    return $this->testConnection();
+  }
+
+  public function closeConnection(): void
+  {
+    if ($this->connection) {
+      if ($this->state->dbType === 'mysqli') {
+        $this->connection->close();
+      } elseif ($this->state->dbType === 'postgresql') {
+        pg_close($this->connection);
+      } elseif ($this->state->dbType === 'sqlite3') {
+        $this->connection->close();
+      }
+      $this->connection = null;
+    }
+  }
+
+  private function connectMysqli(): bool
+  {
+    $mysqli = @new mysqli($this->state->dbHost, $this->state->dbLogin, $this->state->dbPassword);
+    if ($mysqli->connect_error) {
+      $this->error = $mysqli->connect_error;
+      return false;
+    }
+    $this->connection = $mysqli;
+    return true;
+  }
+
+  private function connectPostgresql(): bool
+  {
+    // Try connecting to the specified database first
+    $connString = sprintf(
+      "host=%s dbname=%s user=%s password=%s",
+      $this->state->dbHost,
+      $this->state->dbDatabase,
+      $this->state->dbLogin,
+      $this->state->dbPassword
+    );
+    
+    $c = @pg_connect($connString);
+    if ($c) {
+      $this->connection = $c;
+      return true;
+    }
+
+    // Fallback: connect to 'postgres' to see if DB needs to be created
+    $connStringFallback = sprintf(
+      "host=%s dbname=postgres user=%s password=%s",
+      $this->state->dbHost,
+      $this->state->dbLogin,
+      $this->state->dbPassword
+    );
+    $c = @pg_connect($connStringFallback);
+    if ($c) {
+      $this->connection = $c;
+      return true;
+    }
+
+    $this->error = "PostgreSQL connection failed";
+    return false;
+  }
+
+  private function connectSqlite3(): bool
+  {
+    try {
+      $dbPath = $this->state->dbDatabase;
+      if ($dbPath[0] !== '/') {
+        $dbPath = __DIR__ . '/../' . $dbPath;
+      }
+
+      $dir = dirname($dbPath);
+      if (!is_dir($dir)) {
+        if (!@mkdir($dir, 0777, true)) {
+          $this->error = "Cannot create database directory: {$dir}";
+          return false;
+        }
+      }
+
+      if (!is_writable($dir)) {
+        $this->error = "Database directory is not writable: {$dir}";
+        return false;
+      }
+
+      $db = new SQLite3($dbPath);
+      $this->connection = $db;
+      return true;
+    } catch (Exception $e) {
+      $this->error = $e->getMessage();
+      return false;
+    }
+  }
+
+  /**
+   * Inspect the database to determine its current state
+   */
+  public function checkDatabase(): void
+  {
+    if (!$this->connection) {
+      return;
+    }
+
+    // Select database if needed
+    if ($this->state->dbType === 'mysqli') {
+      if (!@$this->connection->select_db($this->state->dbDatabase)) {
+        return;
+      }
+      $this->state->databaseExists = true;
+    } elseif ($this->state->dbType === 'postgresql') {
+      $this->state->databaseExists = true;
+    }
+
+    // Authoritative detection: reconcile the stored version stamp
+    // (webcal_config.WEBCAL_PROGRAM_VERSION) with a live schema probe.
+    // The stamp alone is unreliable -- partial or failed upgrades can
+    // leave it pointing at a version older than the schema actually
+    // reflects.  The probe (getDatabaseVersionFromSchema) walks
+    // $database_upgrade_matrix and returns the highest version whose
+    // sentinel INSERT still works against the current schema.
+    $configVersion = $this->getDbVersionFromConfig();
+    $schemaVersion = $this->getDatabaseVersionFromSchema();
+    $version = $this->reconcileDbVersion($configVersion, $schemaVersion);
+
+    if ($version !== null && $version !== 'Unknown') {
+      $this->state->detectedDbVersion = $version;
+      $this->state->databaseExists = true;
+      $this->state->databaseIsEmpty = false;
+
+      // Mark as upgrade when the reconciled version is behind the
+      // program version OR the stored stamp is stale.  Either case
+      // needs executeUpgrade() to run so updateVersionInDb() corrects
+      // the stamp; the SQL command list may be empty if the schema is
+      // already current and we're only fixing the stamp.
+      if ($version !== $this->state->programVersion || $configVersion !== $version) {
+        $this->state->isUpgrade = true;
+        $this->loadUpgradeCommands($version);
+      }
+
+      $this->state->adminUserCount = $this->getAdminUserCount();
+      return;
+    }
+
+    // Nothing detected -- check if database is empty
+    $this->state->databaseIsEmpty = $this->isEmptyDatabase();
+    if (!$this->state->databaseIsEmpty) {
+      $this->state->databaseExists = true;
+    }
+  }
+
+  /**
+   * Pick the more-trustworthy of the stored stamp and the live schema
+   * probe.  If both are present, the higher (more-recent) wins -- a
+   * stale stamp left by a failed upgrade must not downgrade the real
+   * schema reading.  If the probe returned 'Unknown' we fall back to
+   * the stamp, and vice versa.
+   */
+  private function reconcileDbVersion(?string $configVersion, string $schemaVersion): ?string
+  {
+    if ($schemaVersion === '' || $schemaVersion === 'Unknown') {
+      return $configVersion;
+    }
+    if ($configVersion === null || $configVersion === '') {
+      return $schemaVersion;
+    }
+    $cfg = str_replace('v', '', strtolower($configVersion));
+    $sch = str_replace('v', '', strtolower($schemaVersion));
+    return version_compare($sch, $cfg, '>') ? $schemaVersion : $configVersion;
+  }
+  
+  /**
+   * Get version from webcal_config
+   */
+  private function getDbVersionFromConfig(): ?string
+  {
+    try {
+      if ($this->state->dbType === 'mysqli') {
+        if (!@$this->connection->select_db($this->state->dbDatabase)) return null;
+        $result = @$this->connection->query("SELECT cal_value FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
+        if ($result && $row = $result->fetch_row()) {
+          return $row[0];
+        }
+      } elseif ($this->state->dbType === 'postgresql') {
+        $result = @pg_query($this->connection, "SELECT cal_value FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
+        if ($result && $row = pg_fetch_row($result)) {
+          return $row[0];
+        }
+      } elseif ($this->state->dbType === 'sqlite3') {
+        $result = @$this->connection->query("SELECT cal_value FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
+        if ($result && $row = $result->fetchArray(SQLITE3_NUM)) {
+          return $row[0];
+        }
+      }
+    } catch (Exception $e) {
+      // Table doesn't exist or other error
+    }
+    return null;
+  }
+  
+  /**
+   * Get version from schema testing (for old databases)
+   */
+  private function getDatabaseVersionFromSchema(): string
+  {
+    include __DIR__ . '/shared/upgrade_matrix.php';
+
+    $version = 'Unknown';
+    $success = true;
+
+    for ($i = 0; $i < count($database_upgrade_matrix); $i++) {
+      $testSql = $database_upgrade_matrix[$i][0];
+
+      if (empty($testSql)) {
+        continue;
+      }
+
+      if ($this->executeTestQuery($testSql)) {
+        $version = $database_upgrade_matrix[$i][2];
+        // Clean up test data
+        $cleanupSql = $database_upgrade_matrix[$i][1];
+        if (!empty($cleanupSql)) {
+          $this->executeTestQuery($cleanupSql);
+        }
+      } else {
+        break;
+      }
+    }
+
+    return $version;
+  }
+
+  /**
+   * Execute a test query (for schema detection)
+   */
+  private function executeTestQuery(string $sql): bool
+  {
+    try {
+      if ($this->state->dbType === 'mysqli') {
+        $result = @$this->connection->query($sql);
+        if ($result === false) {
+          $this->error = $this->connection->error;
+          return false;
+        }
+        return true;
+      } elseif ($this->state->dbType === 'postgresql') {
+        $result = @pg_query($this->connection, $sql);
+        if ($result === false) {
+          $this->error = pg_last_error($this->connection);
+          return false;
+        }
+        return true;
+      } elseif ($this->state->dbType === 'sqlite3') {
+        return @$this->connection->query($sql) !== false;
+      }
+    } catch (Exception $e) {
+      return false;
+    }
+    return false;
+  }
+  
+  /**
+   * Check if database is empty
+   */
+  private function isEmptyDatabase(): bool
+  {
+    try {
+      if ($this->state->dbType === 'mysqli') {
+        if (!@$this->connection->select_db($this->state->dbDatabase)) return true;
+        $result = @$this->connection->query("SELECT COUNT(*) FROM webcal_config");
+        if ($result) {
+          $row = $result->fetch_row();
+          return $row[0] == 0;
+        }
+        return true;
+      } elseif ($this->state->dbType === 'postgresql') {
+        $result = @pg_query($this->connection, "SELECT COUNT(*) FROM webcal_config");
+        if ($result) {
+          $row = pg_fetch_row($result);
+          return $row[0] == 0;
+        }
+        return true;
+      } elseif ($this->state->dbType === 'sqlite3') {
+        $result = @$this->connection->query("SELECT COUNT(*) FROM webcal_config");
+        if ($result && $row = $result->fetchArray(SQLITE3_NUM)) {
+          return $row[0] == 0;
+        }
+      }
+    } catch (Exception $e) {
+      // Table doesn't exist
+    }
+    return true;
+  }
+  
+  /**
+   * Count admin users
+   */
+  private function getAdminUserCount(): int
+  {
+    try {
+      if ($this->state->dbType === 'mysqli') {
+        if (!@$this->connection->select_db($this->state->dbDatabase)) return 0;
+        $result = @$this->connection->query("SELECT COUNT(*) FROM webcal_user WHERE cal_is_admin = 'Y'");
+        if ($result && $row = $result->fetch_row()) {
+          return (int) $row[0];
+        }
+      } elseif ($this->state->dbType === 'postgresql') {
+        $result = @pg_query($this->connection, "SELECT COUNT(*) FROM webcal_user WHERE cal_is_admin = 'Y'");
+        if ($result && $row = pg_fetch_row($result)) {
+          return (int) $row[0];
+        }
+      } elseif ($this->state->dbType === 'sqlite3') {
+        $result = @$this->connection->query("SELECT COUNT(*) FROM webcal_user WHERE cal_is_admin = 'Y'");
+        if ($result && $row = $result->fetchArray(SQLITE3_NUM)) {
+          return (int) $row[0];
+        }
+      }
+    } catch (Exception $e) {
+      // Table doesn't exist
+    }
+    return 0;
+  }
+
+  private function loadUpgradeCommands(string $fromVersion): void
+  {
+    $dbType = $this->state->dbType === 'mysqli' ? 'mysql' : $this->state->dbType;
+    $this->state->upgradeSqlCommands = getSqlUpdates($fromVersion, $dbType, true);
+  }
+
+  /**
+   * Create database (if needed)
+   */
+  public function createDatabase(): bool
+  {
+    if (!$this->connection) {
+      return false;
+    }
+
+    if ($this->state->dbType === 'mysqli') {
+      $sql = "CREATE DATABASE IF NOT EXISTS " . $this->state->dbDatabase;
+      if ($this->connection->query($sql)) {
+        return $this->connection->select_db($this->state->dbDatabase);
+      }
+      $this->error = $this->connection->error;
+      return false;
+    } elseif ($this->state->dbType === 'postgresql') {
+      // Postgres database creation usually happens outside or via 'postgres' connection
+      // For now, assume it exists or fail
+      return true;
+    }
+    return true;
+  }
+
+  /**
+   * Create an administrator account in webcal_user.
+   *
+   * The "create-admin-user" action only calls testConnection() before this,
+   * which (for mysqli) connects without selecting a database, so select the
+   * target database here first. The password is stored with password_hash()
+   * to match the main app (includes/user.php).
+   */
+  public function createAdminUser(string $login, string $password, string $email = ''): bool
+  {
+    if (!$this->connection) {
+      $this->error = 'No database connection';
+      return false;
+    }
+
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO webcal_user "
+      . "(cal_login, cal_passwd, cal_email, cal_firstname, cal_lastname, cal_is_admin) "
+      . "VALUES (?, ?, ?, 'Administrator', 'Default', 'Y')";
+
+    try {
+      if ($this->state->dbType === 'mysqli') {
+        if (!$this->connection->select_db($this->state->dbDatabase)) {
+          $this->error = $this->connection->error;
+          return false;
+        }
+        $stmt = $this->connection->prepare($sql);
+        if (!$stmt) {
+          $this->error = $this->connection->error;
+          return false;
+        }
+        $stmt->bind_param('sss', $login, $hashedPassword, $email);
+        if (!$stmt->execute()) {
+          $this->error = $stmt->error;
+          return false;
+        }
+        return true;
+      } elseif ($this->state->dbType === 'postgresql') {
+        // pg uses $1, $2, $3 placeholders rather than ?
+        $pgSql = "INSERT INTO webcal_user "
+          . "(cal_login, cal_passwd, cal_email, cal_firstname, cal_lastname, cal_is_admin) "
+          . "VALUES ($1, $2, $3, 'Administrator', 'Default', 'Y')";
+        $result = @pg_query_params($this->connection, $pgSql, [$login, $hashedPassword, $email]);
+        if ($result === false) {
+          $this->error = pg_last_error($this->connection);
+          return false;
+        }
+        return true;
+      } elseif ($this->state->dbType === 'sqlite3') {
+        $stmt = $this->connection->prepare($sql);
+        if (!$stmt) {
+          $this->error = 'Failed to prepare admin user insert';
+          return false;
+        }
+        $stmt->bindValue(1, $login);
+        $stmt->bindValue(2, $hashedPassword);
+        $stmt->bindValue(3, $email);
+        return $stmt->execute() !== false;
+      }
+    } catch (\Exception $e) {
+      $this->error = $e->getMessage();
+      return false;
+    }
+
+    $this->error = "Unsupported database type: " . $this->state->dbType;
+    return false;
+  }
+
+  /**
+   * Return the upgrade SQL commands collected for the detected version,
+   * for display in the wizard (the "get-upgrade-sql" action).
+   */
+  public function getUpgradeSqlCommands(): array
+  {
+    return $this->state->upgradeSqlCommands;
+  }
+
+  /**
+   * Execute upgrade SQL commands (or base schema for new installs)
+   */
+  public function executeUpgrade(): bool
+  {
+    if (!$this->connection) {
+      return false;
+    }
+
+    // For new installations, load base schema and default config
+    if ($this->state->databaseIsEmpty) {
+      if (!$this->loadBaseSchema()) {
+        return false;
+      }
+      if (!$this->loadDefaultConfig()) {
+        return false;
+      }
+    }
+
+    foreach ($this->state->upgradeSqlCommands as $sql) {
+      if (!$this->executeCommand($sql)) {
+        return false;
+      }
+    }
+
+    // Seed any setting that still has no row. Fresh installs are already
+    // covered above; this is the step that makes an UPGRADED site end up
+    // with the same config as a fresh one instead of leaving newer settings
+    // undefined (issue #734). Runs after the upgrade SQL so that anything
+    // that SQL deletes is re-seeded, and is a no-op when nothing is missing.
+    if (!$this->loadDefaultConfig()) {
+      return false;
+    }
+
+    // After successful upgrade, update version in webcal_config
+    if (!$this->updateVersionInDb()) {
+      return false;
+    }
+
+    // Invalidate the on-disk query cache (if configured).  The wizard
+    // writes via native drivers, which bypasses dbi4php's automatic
+    // cache-clear on non-SELECT statements, so stale cached rows --
+    // especially the WEBCAL_PROGRAM_VERSION row read by config.php --
+    // would otherwise pin the pre-upgrade state and loop users back
+    // into the wizard on every request (issue #639).
+    $this->clearQueryCache();
+    return true;
+  }
+
+  /**
+   * Delete all .dat files from the dbi4php query cache directory.
+   * Uses direct filesystem ops so we don't need to bootstrap dbi4php.
+   */
+  private function clearQueryCache(): void
+  {
+    $dir = $this->state->dbCacheDir ?? null;
+    if (empty($dir) || !is_dir($dir)) {
+      return;
+    }
+    foreach (glob(rtrim($dir, '/') . '/*.dat') ?: [] as $file) {
+      @unlink($file);
+    }
+  }
+
+  /**
+   * Load base schema for new installations from tables-*.sql / tables-*.php
+   */
+  private function loadBaseSchema(): bool
+  {
+    if ($this->state->dbType === 'sqlite3') {
+      $statements = include __DIR__ . '/shared/tables-sqlite3.php';
+      if (!is_array($statements)) {
+        $this->error = 'Failed to load SQLite base schema';
+        return false;
+      }
+      foreach ($statements as $sql) {
+        $sql = trim($sql);
+        if (empty($sql)) continue;
+        if (!$this->executeCommand($sql)) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    // MySQL or PostgreSQL: load from .sql file
+    $dbType = $this->state->dbType === 'mysqli' ? 'mysql' : 'postgres';
+    $sqlFile = __DIR__ . "/shared/tables-{$dbType}.sql";
+
+    if (!file_exists($sqlFile)) {
+      $this->error = "Base schema file not found: tables-{$dbType}.sql";
+      return false;
+    }
+
+    $content = file_get_contents($sqlFile);
+
+    // Strip block comments /* ... */
+    $content = preg_replace('/\/\*.*?\*\//s', '', $content);
+    // Strip line comments starting with #
+    $content = preg_replace('/^#.*$/m', '', $content);
+
+    $statements = explode(';', $content);
+    foreach ($statements as $sql) {
+      $sql = trim($sql);
+      if (empty($sql)) continue;
+      if (!$this->executeCommand($sql)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  /**
+   * Insert default config values for any setting that has no row yet.
+   * Reads from ../includes/default_config.php (single source of truth).
+   * Skips WEBCAL_PROGRAM_VERSION since loadBaseSchema already inserts it.
+   *
+   * Safe to call on an upgrade as well as a fresh install: settings that
+   * already have a row are left alone, so an administrator's choices are
+   * never overwritten. Upgrades used to skip this entirely, which left any
+   * setting added after a site was first installed with no row at all
+   * (issue #734).
+   */
+  private function loadDefaultConfig(): bool
+  {
+    require_once __DIR__ . '/../includes/default_config.php';
+
+    $existing = $this->getExistingConfigSettings();
+
+    foreach (webcal_config_defaults() as $key => $val) {
+      if ($key === 'WEBCAL_PROGRAM_VERSION') continue;
+      if (isset($existing[$key])) continue;
+      $escapedVal = str_replace("'", "''", $val);
+      $sql = "INSERT INTO webcal_config (cal_setting, cal_value) "
+        . "VALUES ('$key', '$escapedVal')";
+      if (!$this->executeCommand($sql)) {
+        // The row is already there -- it appeared since the lookup ran, or
+        // the lookup could not read the table on this driver. Seeding only
+        // ever means "make sure this row exists", so that is the desired
+        // end state, not a reason to abort the upgrade.
+        if (!$this->isDuplicateRowError((string) $this->error)) {
+          return false;
+        }
+        $this->error = null;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Returns the cal_setting names already present in webcal_config, as a
+   * set keyed by setting name. Empty if the table does not exist yet, which
+   * is the fresh-install case where every default is missing anyway.
+   */
+  private function getExistingConfigSettings(): array
+  {
+    $settings = [];
+    $sql = 'SELECT cal_setting FROM webcal_config';
+
+    try {
+      if ($this->state->dbType === 'mysqli') {
+        // select_db first, exactly as getDbVersionFromConfig() does: the
+        // wizard may have connected without a database selected, and
+        // without this the SELECT fails, every setting looks absent, and
+        // we try to re-insert rows that are already there.
+        if (!@$this->connection->select_db($this->state->dbDatabase)) {
+          return $settings;
+        }
+        $result = @$this->connection->query($sql);
+        if ($result) {
+          while ($row = $result->fetch_row()) {
+            $settings[$row[0]] = true;
+          }
+          $result->free();
+        }
+      } elseif ($this->state->dbType === 'postgresql') {
+        $result = @pg_query($this->connection, $sql);
+        if ($result) {
+          while ($row = pg_fetch_row($result)) {
+            $settings[$row[0]] = true;
+          }
+          pg_free_result($result);
+        }
+      } elseif ($this->state->dbType === 'sqlite3') {
+        $result = @$this->connection->query($sql);
+        if ($result) {
+          while ($row = $result->fetchArray(SQLITE3_NUM)) {
+            $settings[$row[0]] = true;
+          }
+          $result->finalize();
+        }
+      }
+    } catch (Exception $e) {
+      // Table does not exist yet -- treat every setting as missing.
+    }
+
+    return $settings;
+  }
+
+  /**
+   * True when $error is a driver's "this row already exists" complaint.
+   *
+   * Distinct from isIgnorableSchemaError(), which covers duplicate DDL
+   * (columns, indexes). Seeding only ever inserts rows, and a row that is
+   * already present is the state we wanted anyway, so this must not abort
+   * an upgrade the way a real error should.
+   */
+  private function isDuplicateRowError(string $error): bool
+  {
+    $duplicates = [
+      'Duplicate entry',          // MySQL / MariaDB
+      'duplicate key value',      // PostgreSQL
+      'UNIQUE constraint failed', // SQLite 3
+      'is not unique',            // older SQLite
+    ];
+    foreach ($duplicates as $pattern) {
+      if (stripos($error, $pattern) !== false) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private function executeCommand(string $sql): bool
+  {
+    if (str_starts_with($sql, 'function:')) {
+      $func = substr($sql, 9);
+      // Lazy-load restored upgrade helpers from the old install/ directory
+      // (do_v11b_updates, do_v11e_updates, do_v1_9_11_updates).  See
+      // wizard/shared/upgrade-functions.php.
+      require_once __DIR__ . '/shared/upgrade-functions.php';
+      if (function_exists($func)) {
+        try {
+          return $func($this->connection, $this->state);
+        } catch (Exception $e) {
+          $this->error = "Error executing upgrade function $func: " . $e->getMessage();
+          return false;
+        }
+      }
+      $this->error = "Upgrade function not found: $func";
+      return false;
+    }
+
+    try {
+      if ($this->state->dbType === 'mysqli') {
+        if (!$this->connection->query($sql)) {
+          $error = $this->connection->error;
+          if ($this->isIgnorableSchemaError($error)) {
+            return true;
+          }
+          $this->error = $this->formatCommandError($error, $sql);
+          return false;
+        }
+      } elseif ($this->state->dbType === 'postgresql') {
+        if (!@pg_query($this->connection, $sql)) {
+          $error = pg_last_error($this->connection);
+          if ($this->isIgnorableSchemaError($error)) {
+            return true;
+          }
+          $this->error = $this->formatCommandError($error, $sql);
+          return false;
+        }
+      } elseif ($this->state->dbType === 'sqlite3') {
+        if (!$this->connection->exec($sql)) {
+          $error = $this->connection->lastErrorMsg();
+          if ($this->isIgnorableSchemaError($error)) {
+            return true;
+          }
+          $this->error = $this->formatCommandError($error, $sql);
+          return false;
+        }
+      }
+    } catch (\Exception $e) {
+      // PHP 8.1+ throws exceptions for DB errors (e.g. mysqli_sql_exception).
+      // Treat expected schema errors as non-fatal during upgrades.
+      if ($this->isIgnorableSchemaError($e->getMessage())) {
+        return true;
+      }
+      $this->error = $this->formatCommandError($e->getMessage(), $sql);
+      return false;
+    }
+    return true;
+  }
+
+  /**
+   * Check if a database error is an expected, non-fatal schema error
+   * that occurs during idempotent upgrade operations (e.g. adding a
+   * column that already exists).
+   */
+  /**
+   * Format a DB-engine error message together with the failing SQL so
+   * the wizard UI can show the user which command tripped the upgrade.
+   * Long statements are truncated in the middle for readability.
+   */
+  private function formatCommandError(string $error, string $sql): string
+  {
+    $trimmed = trim(preg_replace('/\s+/', ' ', $sql));
+    $max = 400;
+    if (strlen($trimmed) > $max) {
+      $head = substr($trimmed, 0, 200);
+      $tail = substr($trimmed, -180);
+      $trimmed = $head . ' ... ' . $tail;
+    }
+    return $error . "\nFailed SQL: " . $trimmed;
+  }
+
+  private function isIgnorableSchemaError(string $error): bool
+  {
+    $ignorable = [
+      'Duplicate column name',    // MySQL: ALTER TABLE ADD on existing column
+      'Duplicate key name',       // MySQL: ADD INDEX on existing index
+      'already exists',           // PostgreSQL/SQLite: column/table already exists
+      'duplicate column name',    // SQLite: ALTER TABLE ADD on existing column
+      'Multiple primary key',     // MySQL/MariaDB: ADD PRIMARY KEY when PK already exists
+    ];
+    foreach ($ignorable as $pattern) {
+      if (stripos($error, $pattern) !== false) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private function updateVersionInDb(): bool
+  {
+    $version = $this->state->programVersion;
+
+    if ($this->state->dbType === 'mysqli') {
+      $sql = "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version') "
+        . "ON DUPLICATE KEY UPDATE cal_value = '$version'";
+      if (!$this->connection->query($sql)) {
+        $this->error = 'Failed to stamp WEBCAL_PROGRAM_VERSION=' . $version
+          . ' in webcal_config: ' . $this->connection->error;
+        return false;
+      }
+    } elseif ($this->state->dbType === 'postgresql') {
+      $sql = "INSERT INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version') "
+        . "ON CONFLICT (cal_setting) DO UPDATE SET cal_value = '$version'";
+      if (!@pg_query($this->connection, $sql)) {
+        $this->error = 'Failed to stamp WEBCAL_PROGRAM_VERSION=' . $version
+          . ' in webcal_config: ' . pg_last_error($this->connection);
+        return false;
+      }
+    } elseif ($this->state->dbType === 'sqlite3') {
+      $sql = "INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('WEBCAL_PROGRAM_VERSION', '$version')";
+      if (!@$this->connection->exec($sql)) {
+        $this->error = 'Failed to stamp WEBCAL_PROGRAM_VERSION=' . $version
+          . ' in webcal_config: ' . $this->connection->lastErrorMsg();
+        return false;
+      }
+    }
+    return true;
+  }
+}

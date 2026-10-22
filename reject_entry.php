@@ -18,7 +18,7 @@ else {
    . ( empty ( $_SERVER['QUERY_STRING'] ) ? '' : '?' . $_SERVER['QUERY_STRING'] )
    . '" method="post" name="add_comments">';
   print_form_key ();
-  echo '<table cellspacing="5">
+  echo '<table style="border-collapse: separate; border-spacing: 5px;">
         <tr>
           <td class="aligncenter alignbottom"><h3>'
    . translate ( 'Additional Comments (optional)' ) . '</h3></td>
@@ -102,7 +102,7 @@ if ( empty ( $error ) && $id > 0 ) {
     set_env ( 'TZ', $user_TIMEZONE );
     $user_language = get_pref_setting ( $partlogin[$i], 'LANGUAGE' );
     if ( $send_user_mail == 'Y' &&
-      strlen ( $tempemail ) && $SEND_EMAIL != 'N' && $can_mail == 'Y' ) {
+      strlen ( $tempemail ) && $SEND_EMAIL == 'Y' && $can_mail == 'Y' ) {
       reset_language ( empty ( $user_language ) || $user_language == 'none'
         ? $LANGUAGE : $user_language );
 

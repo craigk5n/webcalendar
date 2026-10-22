@@ -1410,7 +1410,7 @@ on: =
 All Attendees: Dhamaan Kaqeybgalayaasha
 Busy: Mashquul
 Tentative: Adkaysi
-Schedule an appointment for XXX.: Ballan u sameyso XXX: YYY.
+Schedule an appointment for XXX.: Ballan u sameyso XXX.
 date_select: __dd__ __ bishii________yy__
 Event approved: Dhacdada waa la ogolaaday
 Journal approved: Joornaal waa la ogolaaday

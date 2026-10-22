@@ -10,8 +10,8 @@ function doDbSanityCheck() {
    . '" using db login "' . $db_login . '" on db server "' . $db_host
    . '".<br><br>
 Have you created the database tables as specified in the
-<a href="docs/WebCalendar-SysAdmin.html" '
-   . '  target="other">WebCalendar System Administrator\'s Guide</a>?';
+<a href="docs/installation.md" '
+   . '  target="other">WebCalendar Installation Guide</a>?';
   $res = @dbi_execute ( 'SELECT COUNT( cal_value ) FROM webcal_config',
     [], false, false );
   if ( $res ) {

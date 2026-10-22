@@ -76,13 +76,13 @@ print_header ( [], '', 'onload="load_groups();"' );
             <div class="modal-body">
                 <!-- Error Alert -->
                 <div id="edit-group-dialog-alert" class="alert alert-danger" style="display: none">
-                    <strong><?php etranslate("Error"); ?>!</strong>&nbsp;<span id="errorMessage">A problem has been occurred while submitting your data.</span>
+                    <strong><?php etranslate("Error"); ?>!</strong>&nbsp;<span id="errorMessage">A problem has occurred while submitting your data.</span>
                     <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
                 </div>
                 <form name="editGroupForm" id="editGroupForm">
                     <input type="hidden" name="editGroupAdd" id="editGroupAdd" value="0">
                     <input type="hidden" name="editGroupId" id="editGroupId" value="0">
-                    <div class="form-inline" is="divEditName">
+                    <div class="form-inline" id="divEditName">
                         <label class="col-5" for="editName"><?php etranslate('Group name') ?>: </label>
                         <input required type="text" class="col-7 form-control" id="editName" name="editName" placeholder="<?php echo translate('New group name') . ' (' . translate('required') . ')'; ?>">
                         <div id="invalid-name-error" class="invalid-feedback text-right">
@@ -160,18 +160,27 @@ print_header ( [], '', 'onload="load_groups();"' );
 </div>
 
 <script>
-    function group_menu(id, name) {
-        console.log('group_menu(' + id + ', "' + name + '")');
-        // Dropdown menu
+    // HTML-escape a value before inserting it into innerHTML. Group/user names
+    // are user-controlled, so they must never be concatenated into markup raw.
+    function escapeHtml(s) {
+        return String(s == null ? '' : s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    }
+
+    function group_menu(id) {
+        // Dropdown menu. Only the numeric id is inlined into the onclick
+        // handlers; the (user-controlled) name is looked up by id inside
+        // edit_group()/delete_group(), so it is never injected into markup.
         ret = '<div class="btn-group dropleft float-right">\n' +
             '<button type="button" class="btn btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\n' +
             '<span class="sr-only">Toggle Dropdown</span> </button> <div class="dropdown-menu">\n';
         // Edit
-        ret += "<a class='clickable dropdown-item' onclick=\"return edit_group(" + id + ", '" + name +
-            "');\"><?php etranslate('Edit Group'); ?></a>";
+        ret += "<a class='clickable dropdown-item' onclick=\"return edit_group(" + id +
+            ");\"><?php etranslate('Edit Group'); ?></a>";
         // Delete Group
-        ret += "<a class='clickable dropdown-item' onclick=\"return delete_group(" + id + ", '" + name +
-            "');\"><?php etranslate('Delete Group'); ?></a>";
+        ret += "<a class='clickable dropdown-item' onclick=\"return delete_group(" + id +
+            ");\"><?php etranslate('Delete Group'); ?></a>";
         ret += "</div></div>\n";
         return ret;
     }
@@ -216,9 +225,9 @@ print_header ( [], '', 'onload="load_groups();"' );
                             g.users[j]['cal_fullname'] ? g.users[j]['cal_fullname'] : g.users[j]['cal_login'];
                     }
                     groups[i].usernames = users;
-                    tbody += '<tr><td>' + g.name + '</td><td>' + g.owner +
-                        '</td><td>' + g.last_update + '</td><td>' + users +
-                        '</td><td>' + group_menu(g.group_id, g.name) + '</td></tr>\n';
+                    tbody += '<tr><td>' + escapeHtml(g.name) + '</td><td>' + escapeHtml(g.owner) +
+                        '</td><td>' + escapeHtml(g.last_update) + '</td><td>' + escapeHtml(users) +
+                        '</td><td>' + group_menu(g.group_id) + '</td></tr>\n';
                 }
                 $('#group-tbody').html(tbody);
             },
@@ -352,9 +361,16 @@ print_header ( [], '', 'onload="load_groups();"' );
             });
     }
 
-    function delete_group(id, name) {
-        console.log('delete_group(' + id + ', "' + name + '")');
-        console.log('id = "' + id + '"');
+    function delete_group(id) {
+        // Look the (user-controlled) name up by id rather than receiving it
+        // through the onclick markup, so it never has to be encoded into HTML.
+        var name = '';
+        for (var i = 0; i < groups.length; i++) {
+            if (id == groups[i]['id']) {
+                name = groups[i]['name'];
+                break;
+            }
+        }
         $('#deleteGroupId').val(id);
         $('#deleteGroupName').val(name);
         $('#delete-group-dialog').show();

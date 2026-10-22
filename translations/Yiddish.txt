@@ -1410,7 +1410,7 @@ on: אויף
 All Attendees: כל אַטענדיז
 Busy: פאַרנומען
 Tentative: טענטאַטיוו
-Schedule an appointment for XXX.: פּלאַן אַ אַפּוינטמאַנט פֿאַר XXX: YYY.
+Schedule an appointment for XXX.: פּלאַן אַ אַפּוינטמאַנט פֿאַר XXX.
 date_select: =
 Event approved: געשעעניש באוויליקט
 Journal approved: זשורנאַל באוויליקט

@@ -1410,7 +1410,7 @@ on: પર
 All Attendees: બધા ઉપસ્થિતો
 Busy: વ્યસ્ત
 Tentative: ટેન્ટિવ
-Schedule an appointment for XXX.: એક્સએક્સએક્સએક્સ માટે એપોઇન્ટમેન્ટનું સમયપત્રક: વાયવાય.
+Schedule an appointment for XXX.: XXX માટે એપોઇન્ટમેન્ટનું સમયપત્રક.
 date_select: __dd__ __મહેન_________
 Event approved: ઇવેન્ટ મંજૂર
 Journal approved: જર્નલ મંજૂર

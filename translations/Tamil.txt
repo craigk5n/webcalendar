@@ -1410,7 +1410,7 @@ on: ஆன்
 All Attendees: அனைத்து பங்கேற்பாளர்கள்
 Busy: பரபரப்பு
 Tentative: தற்காலிக
-Schedule an appointment for XXX.: XXX க்கான சந்திப்பைத் திட்டமிடுங்கள்: YYY.
+Schedule an appointment for XXX.: XXX க்கான சந்திப்பைத் திட்டமிடுங்கள்.
 date_select: __dd__ __ மாத__ __yyyy__
 Event approved: நிகழ்வு அங்கீகரிக்கப்பட்டது
 Journal approved: பத்திரிகை ஒப்புதல் அளித்தது

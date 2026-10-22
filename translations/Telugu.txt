@@ -1410,7 +1410,7 @@ on: పై
 All Attendees: హాజరైన వారందరూ
 Busy: బిజీగా
 Tentative: అస్థిరమైనదనే
-Schedule an appointment for XXX.: XXX కోసం నియామకాన్ని షెడ్యూల్ చేయండి: YYY.
+Schedule an appointment for XXX.: XXX కోసం నియామకాన్ని షెడ్యూల్ చేయండి.
 date_select: __dd__ __ నెల__ __yyyy__
 Event approved: ఈవెంట్ ఆమోదించబడింది
 Journal approved: జర్నల్ ఆమోదించబడింది

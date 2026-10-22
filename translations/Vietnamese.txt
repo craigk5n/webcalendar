@@ -1410,7 +1410,7 @@ on: trên
 All Attendees: Tất cả người tham dự
 Busy: Bận
 Tentative: Mang tính thăm dò
-Schedule an appointment for XXX.: Lên lịch một cuộc hẹn cho XXX: YYY.
+Schedule an appointment for XXX.: Lên lịch một cuộc hẹn cho XXX.
 date_select: __dd__ __tháng _ __yyyy__
 Event approved: Sự kiện đã được phê duyệt
 Journal approved: Tạp chí đã được phê duyệt

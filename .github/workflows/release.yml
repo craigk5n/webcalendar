@@ -6,29 +6,132 @@ on:
       - release
 
 jobs:
+  # Run all test suites before creating a release
+  php-lint:
+    uses: ./.github/workflows/php-syntax-check.yml
+
+  phpunit:
+    uses: ./.github/workflows/ci.yml
+
+  test-install:
+    uses: ./.github/workflows/test-install.yml
+
+  test-web-wizard:
+    uses: ./.github/workflows/test-web-wizard.yml
+
+  phpstan:
+    uses: ./.github/workflows/phpstan.yml
+
   build:
+    needs: [php-lint, phpunit, test-install, test-web-wizard, phpstan]
     runs-on: ubuntu-latest
+    # Scope RELEASE_SIGNING_KEY to this job only. Environment-scoped
+    # secrets are not passed to workflows triggered from forked PRs —
+    # see Story 1.3 of the signed-manifest feature (issue #233).
+    environment: release
+    permissions:
+      # contents: write is needed by actions/create-release@v1 and
+      # actions/upload-release-asset@v1 (they mint a tag + upload blobs).
+      contents: write
+      # id-token: write lets cosign request a GitHub Actions OIDC token
+      # and exchange it with Sigstore's Fulcio CA for a short-lived
+      # signing certificate. Story 7.1 of issue #233 — cosign keyless
+      # signing of the release zip as a second independent verification
+      # path.
+      id-token: write
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
+
+    - name: Set up PHP (ext-sodium required for manifest signing)
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.4'
+        extensions: sodium
+        tools: none
+
+    - name: Install cosign
+      # Pinned to a commit SHA (supply-chain hardening): this runs in the
+      # release job alongside the RELEASE_SIGNING_KEY. Dependabot keeps the SHA
+      # current via the trailing version comment.
+      # Story 7.1 of the signed-manifest feature (issue #233).
+      uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+      with:
+        cosign-release: 'v2.4.1'
 
     - name: Get release version
       run: echo "RELEASE_VERSION=$(./bump_version.sh -p)" >> $GITHUB_ENV
+
+    - name: Pin SOURCE_DATE_EPOCH to HEAD commit timestamp
+      # Makes MANIFEST.sha256 byte-identical across re-runs of the same
+      # commit. Ed25519 is deterministic, so the signature matches too.
+      run: echo "SOURCE_DATE_EPOCH=$(git log -1 --format=%ct HEAD)" >> $GITHUB_ENV
 
     - name: Create release directory
       run: mkdir release-dir
 
     - name: Copy files to release directory
+      # set -euo pipefail: previously this loop silently skipped missing
+      # entries via cp's non-fatal exit. Story 2.5 of the signed-manifest
+      # feature (issue #233) makes drift a hard failure — the CI drift
+      # test catches this in PR reviews, but belt-and-suspenders here.
       run: |
+        set -euo pipefail
         while IFS= read -r file; do
+          [ -z "$file" ] && continue
+          case "$file" in \#*) continue ;; esac
           echo "Copying $file"
           mkdir -p WebCalendar-${{ env.RELEASE_VERSION }}/$(dirname "$file")
           cp "$file" WebCalendar-${{ env.RELEASE_VERSION }}/"$file"
         done < release-files
 
+    - name: Build MANIFEST.sha256
+      # Generates the signed-manifest feature's file inventory against the
+      # staged tree. Strict: fails if any release-files entry is missing.
+      run: |
+        set -euo pipefail
+        php tools/build-manifest.php \
+          --tree=WebCalendar-${{ env.RELEASE_VERSION }} \
+          --version=${{ env.RELEASE_VERSION }} \
+          > WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256
+        echo "--- MANIFEST.sha256 header ---"
+        head -3 WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256
+        echo "--- manifest line count ---"
+        wc -l WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256
+
+    - name: Sign MANIFEST.sha256
+      # Produces MANIFEST.sha256.sig next to the manifest. The secret
+      # never appears in logs — GitHub auto-masks secrets and the signer
+      # prints only generic reason strings on failure.
+      env:
+        RELEASE_SIGNING_KEY: ${{ secrets.RELEASE_SIGNING_KEY }}
+      run: |
+        set -euo pipefail
+        php tools/sign-manifest.php \
+          WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256
+        ls -l WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256.sig
+
     - name: Zip the release
       run: zip -r WebCalendar-${{ env.RELEASE_VERSION }}.zip WebCalendar-${{ env.RELEASE_VERSION }}/
+
+    - name: Sign release zip with cosign (keyless via GitHub OIDC)
+      # Produces two sibling files: .sig (detached signature) and .pem
+      # (short-lived Fulcio certificate binding the signature to this
+      # GitHub Actions workflow's OIDC identity). Anyone can verify the
+      # zip via `cosign verify-blob` using the documented identity regex
+      # + OIDC issuer — no WebCalendar-maintained key material required.
+      # See docs/release-signing.md for the exact verify command.
+      # Story 7.1 of the signed-manifest feature (issue #233).
+      run: |
+        set -euo pipefail
+        cosign sign-blob --yes \
+          --output-signature WebCalendar-${{ env.RELEASE_VERSION }}.zip.sig \
+          --output-certificate WebCalendar-${{ env.RELEASE_VERSION }}.zip.pem \
+          WebCalendar-${{ env.RELEASE_VERSION }}.zip
+        ls -l \
+          WebCalendar-${{ env.RELEASE_VERSION }}.zip.sig \
+          WebCalendar-${{ env.RELEASE_VERSION }}.zip.pem
 
     - name: Check and Delete Existing Tag
       run: |
@@ -56,10 +159,55 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} 
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./WebCalendar-${{ env.RELEASE_VERSION }}.zip
         asset_name: WebCalendar-${{ env.RELEASE_VERSION }}.zip
         asset_content_type: application/zip
+
+    # Publish the manifest and its signature as separate release assets
+    # so admins can download-and-verify before unzipping the bundle.
+    - name: Upload MANIFEST.sha256
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256
+        asset_name: MANIFEST.sha256
+        asset_content_type: text/plain
+
+    - name: Upload MANIFEST.sha256.sig
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./WebCalendar-${{ env.RELEASE_VERSION }}/MANIFEST.sha256.sig
+        asset_name: MANIFEST.sha256.sig
+        asset_content_type: text/plain
+
+    # Cosign keyless signature of the zip itself (Story 7.1). Independent
+    # of the WebCalendar-maintained Ed25519 manifest signature — verifies
+    # via Sigstore's public Fulcio CA + Rekor transparency log.
+    - name: Upload cosign signature (.zip.sig)
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./WebCalendar-${{ env.RELEASE_VERSION }}.zip.sig
+        asset_name: WebCalendar-${{ env.RELEASE_VERSION }}.zip.sig
+        asset_content_type: text/plain
+
+    - name: Upload cosign certificate (.zip.pem)
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./WebCalendar-${{ env.RELEASE_VERSION }}.zip.pem
+        asset_name: WebCalendar-${{ env.RELEASE_VERSION }}.zip.pem
+        asset_content_type: application/x-pem-file
 
     - name: Tag the Release Branch
       run: |

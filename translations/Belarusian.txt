@@ -1410,7 +1410,7 @@ on: далей
 All Attendees: Усе прысутныя
 Busy: Заняты
 Tentative: Папярэдні
-Schedule an appointment for XXX.: Заплануйце сустрэчу на XXX: ГГГ.
+Schedule an appointment for XXX.: Заплануйце сустрэчу на XXX.
 date_select: __dd__ __месяц__ __гггг__
 Event approved: Мерапрыемства зацверджана
 Journal approved: Часопіс зацверджаны

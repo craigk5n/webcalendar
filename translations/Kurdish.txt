@@ -1410,7 +1410,7 @@ on: li
 All Attendees: Hemî Beşdarvan
 Busy: Bikar
 Tentative: Demok
-Schedule an appointment for XXX.: Ji bo XXX randevûyekê plansaz bikin: YYY.
+Schedule an appointment for XXX.: Ji bo XXX randevûyekê plansaz bikin.
 date_select: =
 Event approved: Bûyer hate pejirandin
 Journal approved: Kovar pejirand

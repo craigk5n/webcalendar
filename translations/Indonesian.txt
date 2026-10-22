@@ -1285,7 +1285,7 @@ on: di
 All Attendees: Semua Peserta
 Busy: Sibuk
 Tentative: Sebagian
-Schedule an appointment for XXX.: Jadwalkan janji temu untuk XXX: YYY.
+Schedule an appointment for XXX.: Jadwalkan janji temu untuk XXX.
 date_select: __dd__ __bulan__ __yyyy__
 Event approved: Menyetujui acara
 Journal approved: Jurnal disetujui

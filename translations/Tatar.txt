@@ -1410,7 +1410,7 @@ on: өстендә
 All Attendees: Барлык катнашучылар
 Busy: Мәшгуль
 Tentative: Тентатив
-Schedule an appointment for XXX.: XXX өчен расписаниене раслагыз: YYY.
+Schedule an appointment for XXX.: XXX өчен расписаниене раслагыз.
 date_select: __dd__ __ ай__ __yyyy__
 Event approved: Чара расланды
 Journal approved: Журнал расланды

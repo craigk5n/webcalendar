@@ -1410,7 +1410,7 @@ on: haqqında
 All Attendees: Bütün iştirakçılar
 Busy: Məşğul
 Tentative: Müvəqqəti
-Schedule an appointment for XXX.: XXX: YYY üçün görüş təyin edin.
+Schedule an appointment for XXX.: XXX üçün görüş təyin edin.
 date_select: __dd__ __ ay____yyyy__
 Event approved: Tədbir təsdiqləndi
 Journal approved: Jurnal təsdiqləndi

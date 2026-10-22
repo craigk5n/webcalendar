@@ -11,6 +11,7 @@ require_once 'includes/formvars.php';
 require_once 'includes/functions.php';
 
 session_name(getSessionName());
+harden_php_session();
 @session_start();
 
 foreach ( $_SESSION as $key => $value ) {
@@ -34,7 +35,9 @@ $WebCalendar->initializeSecondPhase();
 load_global_settings();
 
 // Set this true to show "no such user" or "invalid password" on login failures.
-$showLoginFailureReason = (!empty($settings['mode']) && $settings['mode'] = 'dev');
+// NOTE: this used '=' (assignment) instead of '==', which unintentionally
+// enabled failure-reason disclosure (user enumeration) on any non-empty mode.
+$showLoginFailureReason = (!empty($settings['mode']) && $settings['mode'] == 'dev');
 $message = '';
 
 if ( ! empty ( $last_login ) )
@@ -43,7 +46,7 @@ if ( ! empty ( $last_login ) )
 if ( empty ( $webcalendar_login ) )
   $webcalendar_login = '';
 
-if ( $REMEMBER_LAST_LOGIN == 'Y' && empty ( $login ) )
+if ( ! empty ( $REMEMBER_LAST_LOGIN ) && $REMEMBER_LAST_LOGIN == 'Y' && empty ( $login ) )
   $last_login = $login = $webcalendar_login;
 
 load_user_preferences ( 'guest' );
@@ -69,6 +72,18 @@ if (!empty($action) && $action == 'logout') {
   }
   $logout = true;
   $return_path = '';
+  // Delete this device's remember-me token from the DB.
+  if (!empty($_COOKIE['webcalendar_session'])) {
+    $parts = explode('|', decode_string($_COOKIE['webcalendar_session']));
+    if (!empty($parts[1]) && strpos($parts[1], 'tok:') === 0) {
+      $token = substr($parts[1], 4);
+      $token_hash = hash('sha256', $token);
+      $pref_name = 'REMEMBER_TOKEN_' . substr($token_hash, 0, 8);
+      dbi_execute('DELETE FROM webcal_user_pref WHERE cal_login = ?'
+        . ' AND cal_setting = ?', [$parts[0], $pref_name]);
+    }
+  }
+  sendCookie('webcalendar_session', '', 0);
   sendCookie('webcalendar_login', '', 0);
   sendCookie('webcalendar_last_view', '', 0);
   $message = translate('You have been logged out.');
@@ -112,30 +127,50 @@ if ($single_user == 'Y' || $use_http_auth) {
         str_replace('XXX', htmlentities($login), $badLoginStr)
       );
 
+    // Brute-force throttle: refuse to even check the password once a login has
+    // accumulated too many recent failures. This is a temporary, per-account
+    // window (it auto-expires), trading a small account-lockout-DoS risk for
+    // protection against online password guessing. cal_login is VARCHAR(25),
+    // so the attempted login is truncated to match what is stored in the log.
+    $logLogin = substr($login, 0, 25);
+    $loginMaxFailures = 10;
+    $loginFailWindow = 900; // 15 minutes
+
     if (empty($password)) {
       if (empty($error) && $showLoginFailureReason) {
         $error = translate('You must provide a password.');
       } else if (empty($error)) {
         $error = translate('Invalid login');
       }
+    } else if (login_recent_failure_count($logLogin, $loginFailWindow) >= $loginMaxFailures) {
+      $error = translate('Too many failed login attempts. Please try again later.');
+      echo "ERROR: $error"; exit;
     } else if (user_valid_login($login, $password)) {
+      // Prevent session fixation: a fresh session id is issued on every
+      // successful authentication so a pre-set/fixed id cannot be reused.
+      if (session_status() === PHP_SESSION_ACTIVE)
+        session_regenerate_id(true);
       user_load_variables($login, '');
 
-      $salt = chr(rand(ord('A'), ord('z')))
-        . chr(rand(ord('A'), ord('z')));
-      $encoded_login = encode_string($login . '|' . crypt($password, $salt));
+      // Generate a random remember-me token and store its hash in the DB.
+      // Each login (device) gets its own token so they can be
+      // independently revoked without affecting other sessions.
+      $token = bin2hex(random_bytes(32));
+      $token_hash = hash('sha256', $token);
+      $pref_name = 'REMEMBER_TOKEN_' . substr($token_hash, 0, 8);
+      dbi_execute('INSERT INTO webcal_user_pref (cal_login, cal_setting, cal_value)'
+        . ' VALUES (?, ?, ?)', [$login, $pref_name, $token_hash]);
+      $encoded_login = encode_string($login . '|tok:' . $token);
       // If $remember, set login to expire in 365 days.
       $timeStr = (!empty($remember) && $remember == 'yes'
         ? time() + 31536000 : 0);
       sendCookie('webcalendar_session', $encoded_login, $timeStr, $cookie_path);
 
-      // The cookie "webcalendar_login" is provided as a convenience to other
-      // apps that may wish to know what was the last calendar login,
-      // so they can use week_ssi.php as a server-side include.
-      // As such, it's not a security risk to have it un-encoded since it is not
-      // used to allow logins within this app. It is used to load user
-      // preferences on the login page (before anyone has logged in)
-      // if $REMEMBER_LAST_LOGIN is set to "Y" (in admin.php).
+      // The cookie "webcalendar_login" records the last calendar login. It is
+      // not a security risk to have it un-encoded since it is not used to
+      // allow logins within this app. It is used to load user preferences on
+      // the login page (before anyone has logged in) if $REMEMBER_LAST_LOGIN
+      // is set to "Y" (in admin.php).
       sendCookie('webcalendar_login', $login, $timeStr, $cookie_path);
 
       if (!empty($GLOBALS['newUserUrl'])) {
@@ -144,16 +179,15 @@ if ($single_user == 'Y' || $use_http_auth) {
 
       do_redirect($url);
     } else {
-      // Invalid login.
-      if (empty($error) || !$showLoginFailureReason) {
-        $error = translate('Invalid login', true);
-        echo "ERROR: $error"; exit;
-      }
-
+      // Invalid login. Always record the failure FIRST (for audit and for the
+      // brute-force throttle above). The attempted login is stored in
+      // cal_user_cal so it can be counted per-account; the IP is kept in the
+      // message text. Previously this log call was unreachable in production
+      // because the early "echo ERROR; exit" ran before it.
       activity_log(
         0,
         'system',
-        '',
+        $logLogin,
         LOG_LOGIN_FAILURE,
         str_replace(
           ['XXX', 'YYY'],
@@ -161,6 +195,11 @@ if ($single_user == 'Y' || $use_http_auth) {
           translate('Activity login failure')
         )
       );
+
+      if (empty($error) || !$showLoginFailureReason) {
+        $error = translate('Invalid login', true);
+        echo "ERROR: $error"; exit;
+      }
     }
   } else {
     // No login info... just present empty login page.
@@ -194,10 +233,11 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
   echo load_template ( $login, 'H' );
 }
 ?>
-<div id="login-container" class="container">
-<div class="row pl-3">
+<div id="login-container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
   <form id="login-form" class="form" action="login.php" method="post">
-    <div class="row justify-content-md-center">
+    <div class="text-center">
       <h3><?php echo htmlentities($appStr); ?> Login</h3>
     </div>
   <?php if ( ! empty ( $message )) { ?>
@@ -210,19 +250,19 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
       <?php echo $error; ?>
     </div>
   <?php } ?>
-    <div class="form-group row">
-      <label for="login" class="text-info">Username:</label><br>
+    <div class="form-group">
+      <label for="user" class="text-info">Username:</label><br>
       <input type="text" name="login" id="user" class="form-control">
     </div>
-    <div class="form-group row">
+    <div class="form-group">
       <label for="password" class="text-info">Password:</label><br>
       <input type="password" name="password" id="password" class="form-control">
     </div>
-    <div class="form-group form-check row">
+    <div class="form-group form-check">
       <input type="checkbox" class="form-check-input" id="remember-me" name="remember" value="yes">
-      <label class="form-check-label" for="exampleCheck1">Remember me</label>
+      <label class="form-check-label" for="remember-me">Remember me</label>
     </div>
-    <div class="form-group row justify-content-md-center">
+    <div class="form-group text-center">
       <button class="btn btn-primary" type="submit"><?php
  etranslate ( 'Submit' )?></button>
     </div>
@@ -235,7 +275,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
       $accessStr = translate ( 'Access XXX calendar' );
       for ( $i = 0, $cnt = count ( $cals ); $i < $cnt; $i++ ) {
         if ( $cals[$i]['cal_is_public'] == 'Y' ) {
-          echo '<li id="form_' . $cals[$i]['cal_login'] . '" class="form-group row">' .
+          echo '<li id="form_' . $cals[$i]['cal_login'] . '" class="form-group">' .
             '<a class="nav" href="nulogin.php?login=' . $cals[$i]['cal_login'] . '">'
             . str_replace ( 'XXX', $cals[$i]['cal_fullname'], $accessStr )
             . '</a></li>';
@@ -249,13 +289,14 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
         $valid_ip = validate_domain();
 
         if ( ! empty ( $valid_ip ) ) {
-          echo '<div id="register-link" class="form-group row"><a href="register.php">'
+          echo '<div id="register-link" class="form-group"><a href="register.php">'
            . translate ( 'Not yet registered? Register here!' ) . '</a></div>';
         }
       }
     ?>
 
   </form>
+  </div>
 </div>
 </div>
 

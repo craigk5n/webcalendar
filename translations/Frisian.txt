@@ -1410,7 +1410,7 @@ on: op
 All Attendees: Alle oanwêzigen
 Busy: Drok
 Tentative: Tentatyf
-Schedule an appointment for XXX.: Plan in ôfspraak foar XXX: JJJ.
+Schedule an appointment for XXX.: Plan in ôfspraak foar XXX.
 date_select: =
 Event approved: Event goedkard
 Journal approved: Journal goedkard

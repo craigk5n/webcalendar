@@ -1410,7 +1410,7 @@ on: চালু
 All Attendees: সকল উপস্থিত
 Busy: ব্যস্ত
 Tentative: সম্ভাব্য
-Schedule an appointment for XXX.: XXX এর জন্য অ্যাপয়েন্টমেন্টের সময়সূচী করুন: YYY Y
+Schedule an appointment for XXX.: XXX এর জন্য অ্যাপয়েন্টমেন্টের সময়সূচী করুন
 date_select: __d_____মাস__________
 Event approved: ইভেন্ট অনুমোদিত হয়েছে
 Journal approved: জার্নাল অনুমোদিত

@@ -1,0 +1,420 @@
+<?php
+
+use PHPUnit\Framework\TestCase;
+
+require_once __DIR__ . '/../wizard/shared/upgrade-sql.php';
+require_once __DIR__ . '/../wizard/WizardDatabase.php';
+require_once __DIR__ . '/../wizard/WizardState.php';
+
+/**
+ * Regression tests for wizard upgrade SQL generation.
+ *
+ * Covers GitHub issue #639: upgrading from v1.3.0 through v1.9.6 failed with
+ * "Multiple primary key defined" because the v1.9.6 step re-added a PRIMARY KEY
+ * that has existed on webcal_entry_categories since v1.1.0c-CVS.
+ */
+final class UpgradeSqlTest extends TestCase
+{
+  public function test_v196_does_not_readd_entry_categories_pk_mysql(): void
+  {
+    $sql = getSqlUpdates('v1.3.0', 'mysql', false);
+    $joined = implode("\n", $sql);
+    $this->assertStringNotContainsStringIgnoringCase(
+      'ADD PRIMARY KEY (cal_id, cat_id, cat_order, cat_owner)',
+      $joined,
+      'v1.9.6 upgrade must not re-add a PK that already exists since v1.1.0c-CVS'
+    );
+  }
+
+  public function test_v196_does_not_readd_entry_categories_pk_postgres(): void
+  {
+    $sql = getSqlUpdates('v1.3.0', 'postgresql', false);
+    $joined = implode("\n", $sql);
+    $this->assertStringNotContainsStringIgnoringCase(
+      'ADD CONSTRAINT pkey_webcal_entry_categories',
+      $joined,
+      'Postgres v1.9.6 upgrade must not re-add a constraint for an existing PK'
+    );
+  }
+
+  public function test_v196_still_cleans_null_cat_owner(): void
+  {
+    $sql = getSqlUpdates('v1.3.0', 'mysql', false);
+    $joined = implode("\n", $sql);
+    $this->assertStringContainsString(
+      "UPDATE webcal_entry_categories SET cat_owner = '' WHERE cat_owner IS NULL",
+      $joined,
+      'v1.9.6 must retain the defensive cat_owner NULL cleanup'
+    );
+  }
+
+  /**
+   * Fix A: the v1.9.11 MODIFY that makes webcal_categories.cat_owner NOT NULL
+   * must be preceded by the UPDATE that clears NULLs, otherwise MariaDB in
+   * strict mode returns "Data truncated for column 'cat_owner' at row 1".
+   */
+  public function test_v1911_clears_null_cat_owner_before_modify(): void
+  {
+    $sql = getSqlUpdates('v1.9.0', 'mysql', false);
+    $joined = implode("\n", $sql);
+
+    $updatePos = stripos($joined, "UPDATE webcal_categories SET cat_owner = '' WHERE cat_owner IS NULL");
+    $modifyPos = stripos($joined, 'MODIFY cat_owner VARCHAR(25) DEFAULT \'\' NOT NULL');
+
+    $this->assertNotFalse($updatePos, 'v1.9.11 must UPDATE NULL cat_owner rows first');
+    $this->assertNotFalse($modifyPos, 'v1.9.11 must still MODIFY cat_owner NOT NULL');
+    $this->assertLessThan($modifyPos, $updatePos, 'UPDATE must come before MODIFY');
+  }
+
+  /**
+   * Issue #676: webcal_user.cal_passwd must be widened to VARCHAR(255) on any
+   * upgrade path, not just from pre-v1.9.0. A database already past v1.9.0 that
+   * still has a narrow (MD5-sized) column would otherwise fail on the first
+   * login after upgrade, when user_valid_login() rehashes the password to a
+   * 60-char bcrypt hash -- strict-mode MySQL/MariaDB rejects the write and the
+   * login dies with "Error executing query."
+   */
+  public function test_cal_passwd_widened_when_upgrading_from_post_v190_mysql(): void
+  {
+    $sql = getSqlUpdates('v1.9.12', 'mysql', false);
+    $joined = implode("\n", $sql);
+    $this->assertStringContainsStringIgnoringCase(
+      'MODIFY cal_passwd VARCHAR(255)',
+      $joined,
+      'A v1.9.12 -> latest upgrade must widen cal_passwd to hold a bcrypt hash'
+    );
+  }
+
+  public function test_cal_passwd_widened_when_upgrading_from_post_v190_postgres(): void
+  {
+    $sql = getSqlUpdates('v1.9.12', 'postgresql', false);
+    $joined = implode("\n", $sql);
+    $this->assertStringContainsStringIgnoringCase(
+      'ALTER COLUMN cal_passwd TYPE VARCHAR(255)',
+      $joined,
+      'Postgres v1.9.12 -> latest upgrade must widen cal_passwd'
+    );
+  }
+
+  /**
+   * SQLite does not enforce VARCHAR length and cannot parse MySQL "MODIFY",
+   * so the widening step must not leak the default-sql (MySQL) statement to it.
+   */
+  public function test_cal_passwd_widening_not_sent_to_sqlite(): void
+  {
+    $sql = getSqlUpdates('v1.9.12', 'sqlite3', false);
+    $joined = implode("\n", $sql);
+    $this->assertStringNotContainsStringIgnoringCase(
+      'MODIFY cal_passwd',
+      $joined,
+      'SQLite must not receive the MySQL MODIFY cal_passwd statement'
+    );
+  }
+
+  /**
+   * Events created through the MCP server before v1.9.24 were stored with
+   * webcal_entry.cal_type at its schema default of 'E' even when they had a
+   * recurrence row, because add_recurring_event omitted the column.
+   * edit_entry_handler.php has always written 'M' for a repeating event.
+   *
+   * The correction is scoped by a join on webcal_entry_repeats, so it must
+   * leave one-off events, already-correct rows and tasks alone, and it must
+   * survive being run twice -- an upgrade can be re-run.
+   */
+  public function test_v1924_corrects_cal_type_only_for_recurring_events(): void
+  {
+    $file = tempnam(sys_get_temp_dir(), 'wcupg') . '.db';
+    $db = new SQLite3($file);
+    $db->exec('CREATE TABLE webcal_entry ( cal_id INT PRIMARY KEY,'
+      . " cal_name TEXT, cal_type CHAR(1) DEFAULT 'E' )");
+    $db->exec('CREATE TABLE webcal_entry_repeats ( cal_id INT, cal_type TEXT )');
+
+    $db->exec("INSERT INTO webcal_entry VALUES ( 1, 'mcp recurring', 'E' )");
+    $db->exec("INSERT INTO webcal_entry_repeats VALUES ( 1, 'daily' )");
+    $db->exec("INSERT INTO webcal_entry VALUES ( 2, 'one off', 'E' )");
+    $db->exec("INSERT INTO webcal_entry VALUES ( 3, 'already correct', 'M' )");
+    $db->exec("INSERT INTO webcal_entry_repeats VALUES ( 3, 'weekly' )");
+    $db->exec("INSERT INTO webcal_entry VALUES ( 4, 'a task', 'T' )");
+
+    $statements = getSqlUpdates('v1.9.23', 'sqlite3');
+    $this->assertNotEmpty($statements,
+      'upgrading from the previous release must produce the correction');
+
+    foreach ([1, 2] as $pass) {
+      foreach ($statements as $sql) {
+        $db->exec(trim((string) $sql));
+      }
+
+      $types = [];
+      $res = $db->query('SELECT cal_id, cal_type FROM webcal_entry ORDER BY cal_id');
+      while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
+        $types[(int) $row['cal_id']] = $row['cal_type'];
+      }
+
+      $this->assertSame('M', $types[1], "pass $pass: the recurring event must become M");
+      $this->assertSame('E', $types[2], "pass $pass: a one-off must stay E");
+      $this->assertSame('M', $types[3], "pass $pass: an already correct row is unchanged");
+      $this->assertSame('T', $types[4], "pass $pass: a task must not be touched");
+    }
+
+    $db->close();
+    unlink($file);
+  }
+
+  public function test_multiple_primary_key_error_is_ignored(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('isIgnorableSchemaError');
+    $method->setAccessible(true);
+
+    $state = new WizardState();
+    $db = new WizardDatabase($state);
+
+    $this->assertTrue(
+      $method->invoke($db, 'Multiple primary key defined'),
+      'MariaDB/MySQL "Multiple primary key defined" must be treated as non-fatal'
+    );
+    $this->assertTrue(
+      $method->invoke($db, 'ERROR 1068: Multiple primary key defined'),
+      'Error string with numeric code prefix must still be detected'
+    );
+  }
+
+  public function test_unrelated_schema_error_is_not_ignored(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('isIgnorableSchemaError');
+    $method->setAccessible(true);
+
+    $state = new WizardState();
+    $db = new WizardDatabase($state);
+
+    $this->assertFalse(
+      $method->invoke($db, 'Table webcal_entry does not exist'),
+      'Genuine errors must still abort the upgrade'
+    );
+  }
+
+  /**
+   * Fix C: executeCommand's error message must include the failing SQL so
+   * the user can tell which upgrade step tripped.
+   */
+  public function test_formatCommandError_includes_failing_sql(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('formatCommandError');
+    $method->setAccessible(true);
+
+    $state = new WizardState();
+    $db = new WizardDatabase($state);
+
+    $formatted = $method->invoke(
+      $db,
+      "Data truncated for column 'cat_owner' at row 1",
+      'ALTER TABLE webcal_categories MODIFY cat_owner VARCHAR(25) DEFAULT \'\' NOT NULL'
+    );
+    $this->assertStringContainsString("Data truncated for column 'cat_owner'", $formatted);
+    $this->assertStringContainsString('ALTER TABLE webcal_categories MODIFY cat_owner', $formatted);
+    $this->assertStringContainsString('Failed SQL:', $formatted);
+  }
+
+  public function test_formatCommandError_truncates_long_sql(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('formatCommandError');
+    $method->setAccessible(true);
+
+    $state = new WizardState();
+    $db = new WizardDatabase($state);
+
+    $longSql = 'INSERT INTO x VALUES (' . str_repeat('a', 1000) . ')';
+    $formatted = $method->invoke($db, 'boom', $longSql);
+    $this->assertLessThan(strlen($longSql) + 100, strlen($formatted));
+    $this->assertStringContainsString('...', $formatted);
+  }
+
+  /**
+   * Schema probe should win when the stored stamp is older than what
+   * the schema actually reflects -- classic partial-upgrade recovery
+   * scenario.
+   */
+  public function test_reconcileDbVersion_prefers_higher_schema_over_stale_config(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('reconcileDbVersion');
+    $method->setAccessible(true);
+
+    $db = new WizardDatabase(new WizardState());
+    $this->assertSame('v1.9.12', $method->invoke($db, 'v1.3.0', 'v1.9.12'));
+    $this->assertSame('v1.9.16', $method->invoke($db, 'v1.9.13', 'v1.9.16'));
+  }
+
+  public function test_reconcileDbVersion_keeps_higher_config_when_schema_behind(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('reconcileDbVersion');
+    $method->setAccessible(true);
+
+    $db = new WizardDatabase(new WizardState());
+    // Unusual -- shouldn't normally happen -- but don't downgrade.
+    $this->assertSame('v1.9.16', $method->invoke($db, 'v1.9.16', 'v1.9.12'));
+  }
+
+  public function test_reconcileDbVersion_falls_back_to_the_available_source(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('reconcileDbVersion');
+    $method->setAccessible(true);
+
+    $db = new WizardDatabase(new WizardState());
+    $this->assertSame('v1.3.0', $method->invoke($db, 'v1.3.0', 'Unknown'));
+    $this->assertSame('v1.9.12', $method->invoke($db, null, 'v1.9.12'));
+    $this->assertNull($method->invoke($db, null, 'Unknown'));
+  }
+
+  /**
+   * Cache busting: after the wizard completes an upgrade it must wipe
+   * the dbi4php on-disk query cache so config.php's next read of
+   * WEBCAL_PROGRAM_VERSION sees the fresh value instead of a stale
+   * .dat file cached while the DB was still at the old version.
+   * Without this the user loops back to the wizard forever (issue #639).
+   */
+  public function test_executeUpgrade_clears_query_cache_on_success(): void
+  {
+    $cacheDir = sys_get_temp_dir() . '/wc_cache_' . uniqid();
+    mkdir($cacheDir);
+    $stale = $cacheDir . '/deadbeef.dat';
+    file_put_contents($stale, 'stale');
+
+    try {
+      $dbFile = tempnam(sys_get_temp_dir(), 'wcclear_');
+      $sqlite = new SQLite3($dbFile);
+      $sqlite->exec('CREATE TABLE webcal_config (cal_setting TEXT PRIMARY KEY, cal_value TEXT)');
+
+      $state = new WizardState();
+      $state->dbType = 'sqlite3';
+      $state->programVersion = 'v1.9.16';
+      $state->dbCacheDir = $cacheDir;
+      $state->databaseIsEmpty = false;
+      $state->upgradeSqlCommands = [];
+
+      $db = new WizardDatabase($state);
+      $cRef = new ReflectionProperty(WizardDatabase::class, 'connection');
+      $cRef->setAccessible(true);
+      $cRef->setValue($db, $sqlite);
+
+      $this->assertTrue($db->executeUpgrade());
+      $this->assertFileDoesNotExist($stale, 'Cache .dat files must be purged after a successful upgrade');
+
+      $sqlite->close();
+      @unlink($dbFile);
+    } finally {
+      @array_map('unlink', glob($cacheDir . '/*'));
+      @rmdir($cacheDir);
+    }
+  }
+
+  public function test_clearQueryCache_noop_when_cachedir_unset(): void
+  {
+    $ref = new ReflectionClass(WizardDatabase::class);
+    $method = $ref->getMethod('clearQueryCache');
+    $method->setAccessible(true);
+
+    $state = new WizardState();
+    $state->dbCacheDir = null;
+    $db = new WizardDatabase($state);
+
+    // Should not throw even when no cache dir is configured.
+    $method->invoke($db);
+    $this->addToAssertionCount(1);
+  }
+
+  /**
+   * Fix B: updateVersionInDb must propagate a failure (e.g. webcal_config
+   * missing) instead of silently returning true.  Previously this masked a
+   * post-install state where WEBCAL_PROGRAM_VERSION never got written and
+   * the app looped back to the wizard on every request.
+   */
+  public function test_updateVersionInDb_reports_failure_when_table_missing(): void
+  {
+    $dbFile = tempnam(sys_get_temp_dir(), 'wcver_');
+    $sqlite = new SQLite3($dbFile);
+    // Intentionally no webcal_config table -- the INSERT must fail.
+
+    $state = new WizardState();
+    $state->dbType = 'sqlite3';
+    $state->programVersion = 'v1.9.16';
+
+    $db = new WizardDatabase($state);
+
+    // Inject the connection via reflection (constructor doesn't take one).
+    $cRef = new ReflectionProperty(WizardDatabase::class, 'connection');
+    $cRef->setAccessible(true);
+    $cRef->setValue($db, $sqlite);
+
+    $mRef = new ReflectionMethod(WizardDatabase::class, 'updateVersionInDb');
+    $mRef->setAccessible(true);
+
+    try {
+      $result = $mRef->invoke($db);
+      $this->assertFalse($result, 'updateVersionInDb must return false when the INSERT fails');
+      $this->assertNotNull($db->getError(), 'Error message must be populated on failure');
+      $this->assertStringContainsString('WEBCAL_PROGRAM_VERSION', (string) $db->getError());
+    } finally {
+      $sqlite->close();
+      @unlink($dbFile);
+    }
+  }
+
+  /**
+   * Every 'upgrade-function' named in the upgrade matrix must be defined
+   * in wizard/shared/upgrade-functions.php (or elsewhere).  Silently
+   * skipping an upgrade function caused data migrations for v1.1.0c,
+   * v1.1.0e, and v1.9.11 to no-op during the v1.3.0 -> v1.9.x upgrade
+   * path in #639.
+   */
+  public function test_every_upgrade_function_reference_resolves(): void
+  {
+    require_once __DIR__ . '/../wizard/shared/upgrade-functions.php';
+
+    global $updates;
+    $missing = [];
+    foreach ($updates as $update) {
+      if (!empty($update['upgrade-function'])) {
+        $fn = $update['upgrade-function'];
+        if (!function_exists($fn)) {
+          $missing[] = $update['version'] . ' -> ' . $fn;
+        }
+      }
+    }
+    $this->assertSame([], $missing, 'Upgrade-function references without a matching definition');
+  }
+
+  /**
+   * Runtime code must not fatal-error when the wizard/ directory has been
+   * removed post-install (users are instructed to rename/remove it).
+   * Regression for GitHub issue #639 500/redirect-loop.
+   *
+   * @runInSeparateProcess
+   * @preserveGlobalState disabled
+   */
+  public function test_upgrade_requires_db_changes_survives_missing_wizard(): void
+  {
+    require_once __DIR__ . '/../includes/functions.php';
+
+    $wizardSql = __DIR__ . '/../wizard/shared/upgrade-sql.php';
+    $hidden = $wizardSql . '.hidden-for-test';
+    $this->assertFileExists($wizardSql);
+    rename($wizardSql, $hidden);
+
+    try {
+      $result = upgrade_requires_db_changes('mysql', 'v1.9.0', 'v1.9.16');
+      $this->assertTrue(
+        $result,
+        'When wizard SQL is missing, must return true so caller shows re-install message'
+      );
+    } finally {
+      rename($hidden, $wizardSql);
+    }
+  }
+}

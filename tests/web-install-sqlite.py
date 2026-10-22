@@ -1,0 +1,539 @@
+import pytest
+import os
+import time
+import sqlite3
+import re
+import subprocess
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import StaleElementReferenceException, TimeoutException
+
+BASE_URL = os.environ.get('BASE_URL', 'http://web')
+SELENIUM_URL = os.environ.get('SELENIUM_URL', 'http://chrome:4444/wd/hub')
+DB_PATH = os.environ.get('WEBCALENDAR_DB_DATABASE', '/work/data/webcalendar_test.db')
+
+SCREENSHOT_DIR = os.environ.get('SCREENSHOT_DIR', '/work/tests/screenshots')
+
+@pytest.fixture
+def driver(request):
+    chrome_options = Options()
+    driver = webdriver.Remote(command_executor=SELENIUM_URL, options=chrome_options)
+    driver.set_window_size(1920, 1080)
+    driver.implicitly_wait(10)
+    yield driver
+    if hasattr(request.node, 'rep_call') and request.node.rep_call.failed:
+        os.makedirs(SCREENSHOT_DIR, exist_ok=True)
+        path = f"{SCREENSHOT_DIR}/sqlite-{request.node.name}.png"
+        driver.save_screenshot(path)
+        print(f"Screenshot saved: {path}")
+    driver.quit()
+
+def wait_for_text(driver, selector, text, timeout=15):
+    end_time = time.time() + timeout
+    while time.time() < end_time:
+        try:
+            element = driver.find_element(By.ID, selector)
+            if text in element.text:
+                return True
+        except Exception:
+            pass
+        time.sleep(0.5)
+    raise TimeoutException(f"Timed out waiting for text '{text}' in element '{selector}'")
+
+def wait_for_page(driver, timeout=20):
+    """Wait until the browser has finished loading a document.
+
+    A fixed sleep after a navigation is wrong in both directions: dead time
+    when the page is ready sooner, and a failure when a loaded runner takes
+    longer than the guess. readyState is the thing actually being waited for.
+    """
+    WebDriverWait(driver, timeout).until(
+        lambda d: d.execute_script("return document.readyState") == "complete")
+
+
+def click_and_wait(driver, element, timeout=20):
+    """Click something that navigates, then wait for the new document.
+
+    A marker on window is what detects the navigation: a new document does not
+    have it. Waiting on readyState alone is not enough, because the old
+    document is already 'complete' when the click happens.
+
+    The obvious alternative, EC.staleness_of() on the old <body>, was tried and
+    is not safe here. It only treats StaleElementReferenceException as "gone",
+    and Chrome instead raises WebDriverException("Node with given id does not
+    belong to the document") during a navigation, which propagates and fails
+    the test. That turned a passing test_new_installation into a failure.
+
+    A click that does not navigate is not an error: the caller's own checks
+    say what happened, and they give better messages than a timeout here.
+    """
+    driver.execute_script("window.__wcNavMarker = 1;")
+    element.click()
+    try:
+        WebDriverWait(driver, timeout).until(
+            lambda d: d.execute_script("return window.__wcNavMarker") is None)
+    except TimeoutException:
+        pass
+    wait_for_page(driver, timeout)
+
+
+def set_value(driver, element_id, value):
+    """Set a field and fire exactly one input event (#728).
+
+    wizard.js revalidates on every input event with an async fetch, so
+    send_keys asked the server once per character. Replies are not
+    guaranteed to come back in order, and a password with minlength=8 is
+    invalid for its first seven characters, so a late reply for an early
+    keystroke could overwrite the good result for the complete value.
+    Setting the value and dispatching one event asks the question once.
+    """
+    field = driver.find_element(By.ID, element_id)
+    driver.execute_script(
+        "arguments[0].value = arguments[1];"
+        "arguments[0].dispatchEvent(new Event('input', {bubbles: true}));",
+        field, value)
+    actual = field.get_attribute("value")
+    assert actual == value, f"{element_id} holds {actual!r}, wanted {value!r}"
+
+
+def wait_for_validated(driver, element_ids, timeout=30):
+    """Wait for wizard.js to mark every field valid (#728).
+
+    The submit button starts out enabled, because it is disabled only once
+    a validation reply comes back bad -- so "the button is enabled" does
+    not on its own mean the form is ready. wizard.js adds is-valid to a
+    field when its reply comes back good, so wait for that on every field.
+    Clicking early is silently dropped by the browser and the run then died
+    in the unrelated wait for the Finish step.
+    """
+    end_time = time.time() + timeout
+    pending = list(element_ids)
+    while time.time() < end_time:
+        pending = []
+        for element_id in element_ids:
+            try:
+                classes = driver.find_element(By.ID, element_id).get_attribute("class") or ""
+            except Exception:
+                classes = ""
+            if "is-valid" not in classes.split():
+                pending.append(element_id)
+        if not pending:
+            return
+        time.sleep(0.5)
+    raise TimeoutException(
+        "Timed out waiting for fields to validate: " + ", ".join(pending))
+def dump_failure_context(driver):
+    """Print enough to diagnose a CI-only failure without a local repro (#728).
+
+    These wizard jobs fail intermittently (MySQL in ~20% of runs) and the
+    container access log alone has not been enough to say why. Container logs
+    are only dumped on failure, so there is no passing run to diff against;
+    this prints the browser's own view of the failure instead.
+    """
+    print(f"FAILED on page: {driver.current_url}")
+    try:
+        print(f"  page title: {driver.title!r}")
+        print(f"  stepTitle: {driver.find_element(By.ID, 'stepTitle').text!r}")
+    except Exception as exc:
+        print(f"  stepTitle: unavailable ({exc.__class__.__name__})")
+    for sel in ("#errorMessage", ".alert", ".invalid-feedback", ".text-danger"):
+        try:
+            for el in driver.find_elements(By.CSS_SELECTOR, sel):
+                text = el.text.strip()
+                if text:
+                    print(f"  {sel}: {text[:200]!r}")
+        except Exception:
+            pass
+    try:
+        for entry in driver.get_log("browser"):
+            print(f"  console[{entry.get('level')}]: {str(entry.get('message'))[:200]}")
+    except Exception:
+        pass  # get_log is not supported by every driver/browser combination
+    source = driver.page_source or ""
+    print(f"  page_source ({len(source)} chars, first 4000 shown):")
+    print(source[:4000])
+
+
+def click_button(driver, selector, by=By.CSS_SELECTOR):
+    try:
+        element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((by, selector)))
+        driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
+        time.sleep(0.5)
+        element.click()
+    except Exception:
+        try:
+            element = driver.find_element(by, selector)
+            driver.execute_script("arguments[0].click();", element)
+        except Exception:
+            pass
+
+def reset_db():
+    # Remove stale settings.php if it exists
+    settings_path = "/work/includes/settings.php"
+    if os.path.exists(settings_path):
+        try:
+            os.remove(settings_path)
+            print(f"Removed stale settings file: {settings_path}")
+        except Exception as e:
+            print(f"Warning: Could not remove {settings_path}: {e}")
+
+    # Remove existing SQLite database file
+    if os.path.exists(DB_PATH):
+        try:
+            os.remove(DB_PATH)
+            print(f"Removed existing database: {DB_PATH}")
+        except Exception as e:
+            print(f"Warning: Could not remove {DB_PATH}: {e}")
+
+    # Create empty database file with correct permissions
+    db_dir = os.path.dirname(DB_PATH)
+    os.makedirs(db_dir, exist_ok=True)
+    open(DB_PATH, 'w').close()
+    os.chmod(DB_PATH, 0o666)
+    print(f"Created empty database: {DB_PATH}")
+
+def load_fixture(fixture_path):
+    print(f"Loading fixture: {fixture_path}")
+    # Ensure DB file exists
+    db_dir = os.path.dirname(DB_PATH)
+    os.makedirs(db_dir, exist_ok=True)
+    if os.path.exists(DB_PATH):
+        os.remove(DB_PATH)
+
+    conn = sqlite3.connect(DB_PATH)
+    with open(fixture_path, 'r') as f:
+        sql = f.read()
+    conn.executescript(sql)
+    conn.close()
+    os.chmod(DB_PATH, 0o666)
+
+    # Verify data was loaded
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM webcal_config")
+    count = cursor.fetchone()[0]
+    print(f"Fixture loaded. webcal_config row count: {count}")
+    cursor.execute("SELECT cal_value FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'")
+    result = cursor.fetchone()
+    if result:
+        print(f"Detected version in DB: {result[0]}")
+    else:
+        print("No WEBCAL_PROGRAM_VERSION found in webcal_config!")
+    conn.close()
+
+def _try_login(driver, password):
+    """Attempt to login as admin with the given password. Returns True if successful."""
+    driver.delete_all_cookies()
+    driver.get(f"{BASE_URL}/login.php")
+    wait_for_page(driver)
+
+    if "Fatal" in driver.title or "Error" in driver.title:
+        body = driver.find_element(By.TAG_NAME, "body").text[:500]
+        print(f"Smoke test: error page title='{driver.title}', body={body}")
+        return False
+    if "wizard" in driver.current_url:
+        print(f"Smoke test: redirected to wizard ({driver.current_url})")
+        return False
+
+    try:
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "user")))
+    except TimeoutException:
+        print(f"Smoke test: login form not found (title={driver.title})")
+        return False
+
+    driver.find_element(By.ID, "user").send_keys("admin")
+    driver.find_element(By.ID, "password").send_keys(password)
+    click_and_wait(driver, driver.find_element(
+        By.CSS_SELECTOR, "#login-form button[type='submit']"))
+
+    if "login" in driver.current_url:
+        body = driver.find_element(By.TAG_NAME, "body").text[:500]
+        print(f"Smoke test: login with '{password}' failed. body={body}")
+        return False
+
+    print(f"Smoke test: login with '{password}' succeeded. URL={driver.current_url}")
+    return True
+
+
+def _post_install_smoke_test(driver):
+    """After wizard completes, verify the app works: login, view calendar, create event."""
+    logged_in = _try_login(driver, "admin")
+    if not logged_in:
+        logged_in = _try_login(driver, "admin123")
+
+    assert logged_in, f"Smoke test: login failed with both passwords. URL={driver.current_url}"
+    print(f"SUCCESS: Logged in as admin, landed on {driver.current_url}")
+
+    # Verify we landed on a calendar page
+    assert "Fatal" not in driver.title, f"Smoke test: fatal error after login (title={driver.title})"
+
+    # Create an event
+    driver.get(f"{BASE_URL}/edit_entry.php")
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "entry_brief")))
+    assert "Fatal" not in driver.page_source, "edit_entry.php has fatal error"
+    driver.find_element(By.ID, "entry_brief").send_keys("Smoke Test Event")
+    click_and_wait(driver, driver.find_element(
+        By.CSS_SELECTOR, "button[onclick*='validate_and_submit']"))
+
+    # Verify no fatal error on handler page
+    assert "Fatal" not in driver.page_source, f"edit_entry_handler.php has fatal error"
+
+    # Verify event appears on calendar
+    driver.get(f"{BASE_URL}/month.php")
+    try:
+        WebDriverWait(driver, 20).until(EC.text_to_be_present_in_element(
+            (By.TAG_NAME, "body"), "Smoke Test Event"))
+    except TimeoutException:
+        pass  # let the assertion below report it with its own message
+    assert "Smoke Test Event" in driver.page_source, "Event not found on calendar after creation"
+    print("SUCCESS: Event created and visible on calendar")
+    print("SUCCESS: Post-install smoke test passed — login, calendar view, and event creation work")
+
+
+def test_new_installation(driver):
+    try:
+        reset_db()
+        driver.get(f"{BASE_URL}/wizard/index.php")
+        # Click the Start Over button to properly reset the wizard
+        try:
+            start_over_btn = driver.find_element(By.ID, "logoutBtn")
+            driver.execute_script("arguments[0].click();", start_over_btn)
+        except Exception:
+            pass  # Already on welcome page or button not found
+        wait_for_text(driver, "stepTitle", "Welcome")
+        click_button(driver, "button[data-action='welcome-continue']")
+        wait_for_text(driver, "stepTitle", "Authentication")
+        driver.find_element(By.ID, "password").send_keys("Test123!")
+        click_button(driver, "form[data-action='login'] button[type='submit']")
+
+        last_title = "Authentication"
+        for i in range(10):
+            try:
+                WebDriverWait(driver, 10).until(lambda d: d.find_element(By.ID, "stepTitle").text != last_title)
+                title = driver.find_element(By.ID, "stepTitle").text
+                last_title = title
+                if "Tables" in title: break
+                # Handle Create Database step explicitly
+                if "Create" in title:
+                    click_button(driver, "button[data-action='create-database']")
+                    continue
+                btns = driver.find_elements(By.CSS_SELECTOR, "button.btn-primary, button.btn-success")
+                clicked = False
+                for btn in btns:
+                    if btn.is_displayed() and ("Continue" in btn.text or "Acknowledge" in btn.text):
+                        driver.execute_script("arguments[0].click();", btn)
+                        clicked = True
+                        break
+                if not clicked:
+                    # Try DB readonly continue as fallback
+                    action_btns = driver.find_elements(By.CSS_SELECTOR, "button[data-action='continue-db-readonly']")
+                    for btn in action_btns:
+                        if btn.is_displayed():
+                            driver.execute_script("arguments[0].click();", btn)
+                            clicked = True
+                            break
+                if not clicked: break
+            except Exception: break
+
+        wait_for_text(driver, "stepTitle", "Tables")
+        click_button(driver, "button[data-action='execute-upgrade']")
+
+        # New installs now REQUIRE creating an admin account: the insecure
+        # default admin/admin user was removed from the base schema, so the
+        # wizard no longer auto-skips the Admin User step. Note the submit
+        # button lives inside form[data-action='create-admin-user']; the
+        # data-action is on the form, not the button.
+        try:
+            wait_for_text(driver, "stepTitle", "Admin", timeout=15)
+            on_admin_step = True
+        except TimeoutException:
+            # No Admin User step (e.g. admins already exist).
+            on_admin_step = False
+
+        if on_admin_step:
+            set_value(driver, "admin_login", "admin")
+            set_value(driver, "admin_password", "admin123")
+            set_value(driver, "admin_password2", "admin123")
+            set_value(driver, "admin_email", "admin@example.com")
+            wait_for_validated(driver, ["admin_login", "admin_password", "admin_password2", "admin_email"])
+            click_button(driver, "form[data-action='create-admin-user'] button[type='submit']")
+
+        # Click through Summary / Finish
+        #
+        # Poll to a deadline rather than a fixed iteration count. On a slow
+        # backend the Summary step can take longer than the old ~10s budget to
+        # appear; missing it meant Continue was never clicked, so the run sat on
+        # Admin User until the Finish wait below timed out (#728).
+        summary_deadline = time.time() + 45
+        summary_clicked = False
+        while time.time() < summary_deadline:
+            try:
+                title = driver.find_element(By.ID, "stepTitle").text
+                if "Finish" in title:
+                    break
+                if "Summary" in title and not summary_clicked:
+                    save_btns = driver.find_elements(By.CSS_SELECTOR, "button[data-action='save-settings-file']")
+                    if save_btns:
+                        click_button(driver, "button[data-action='save-settings-file']")
+                    else:
+                        click_button(driver, "continueToFinishBtn", by=By.ID)
+                    summary_clicked = True
+            except Exception: pass
+            time.sleep(1)
+
+        wait_for_text(driver, "stepTitle", "Finish")
+        assert "Complete" in driver.page_source
+
+        # Post-install smoke test: login, view calendar, create event
+        _post_install_smoke_test(driver)
+    except Exception:
+        dump_failure_context(driver)
+        raise
+
+def _run_upgrade_test(driver, fixture_path):
+    """Shared upgrade test logic: load fixture, run wizard, verify finish."""
+    try:
+        reset_db()
+        load_fixture(fixture_path)
+
+        driver.delete_all_cookies()
+        driver.get(f"{BASE_URL}/wizard/index.php")
+
+        try:
+            start_over_btn = driver.find_element(By.ID, "logoutBtn")
+            driver.execute_script("arguments[0].click();", start_over_btn)
+        except Exception:
+            pass
+
+        wait_for_text(driver, "stepTitle", "Welcome")
+        click_button(driver, "button[data-action='welcome-continue']")
+        wait_for_text(driver, "stepTitle", "Authentication")
+        driver.find_element(By.ID, "password").send_keys("Test123!")
+        click_button(driver, "form[data-action='login'] button[type='submit']")
+
+        # Walk through intermediate steps until Tables
+        last_title = "Authentication"
+        for i in range(10):
+            try:
+                WebDriverWait(driver, 10).until(lambda d: d.find_element(By.ID, "stepTitle").text != last_title)
+                title = driver.find_element(By.ID, "stepTitle").text
+                last_title = title
+                if "Tables" in title: break
+                if "Create" in title:
+                    click_button(driver, "button[data-action='create-database']")
+                    continue
+                btns = driver.find_elements(By.CSS_SELECTOR, "button.btn-primary, button.btn-success")
+                clicked = False
+                for btn in btns:
+                    if btn.is_displayed() and ("Continue" in btn.text or "Acknowledge" in btn.text):
+                        driver.execute_script("arguments[0].click();", btn)
+                        clicked = True
+                        break
+                if not clicked:
+                    action_btns = driver.find_elements(By.CSS_SELECTOR, "button[data-action='continue-db-readonly']")
+                    for btn in action_btns:
+                        if btn.is_displayed():
+                            driver.execute_script("arguments[0].click();", btn)
+                            clicked = True
+                            break
+                if not clicked: break
+            except Exception: break
+
+        wait_for_text(driver, "stepTitle", "Tables")
+        print(f"SUCCESS: Login successful - reached Tables step (fixture: {fixture_path})")
+        click_button(driver, "button[data-action='execute-upgrade']")
+
+        for i in range(20):
+            try:
+                title = driver.find_element(By.ID, "stepTitle").text
+                if "Summary" in title:
+                    save_btns = driver.find_elements(By.CSS_SELECTOR, "button[data-action='save-settings-file']")
+                    if save_btns:
+                        click_button(driver, "button[data-action='save-settings-file']")
+                    else:
+                        click_button(driver, "continueToFinishBtn", by=By.ID)
+                    time.sleep(1)
+                if "Finish" in title: break
+            except Exception:
+                pass
+            time.sleep(1)
+
+        wait_for_text(driver, "stepTitle", "Finish")
+        assert "Complete" in driver.page_source
+    except Exception:
+        dump_failure_context(driver)
+        raise
+
+def test_upgrade_installation(driver):
+    _run_upgrade_test(driver, "tests/fixtures/v1.3.0-schema-sqlite3.sql")
+
+def test_upgrade_from_v1_9_10(driver):
+    _run_upgrade_test(driver, "tests/fixtures/v1.9.10-schema-sqlite3.sql")
+
+def test_upgrade_from_v1_9_12(driver):
+    _run_upgrade_test(driver, "tests/fixtures/v1.9.12-schema-sqlite3.sql")
+
+def get_expected_version():
+    """Get expected version from bump_version.sh or fallback to parsing config file"""
+    try:
+        result = subprocess.run(
+            ["bash", "./bump_version.sh", "-p"],
+            capture_output=True,
+            text=True,
+            cwd="/work"
+        )
+        version = result.stdout.strip()
+        if version:
+            return version
+    except Exception:
+        pass
+
+    # Fallback: parse directly from default_config.php
+    try:
+        with open("/work/includes/default_config.php", "r") as f:
+            content = f.read()
+            match = re.search(r"'WEBCAL_PROGRAM_VERSION' => '([^']+)'", content)
+            if match:
+                return match.group(1).lstrip('v')
+    except Exception:
+        pass
+
+    return None
+
+def test_version_check(driver):
+    """Check that the database and wizard both report the correct program version."""
+    try:
+        expected_version = get_expected_version()
+        print(f"Expected version: {expected_version}")
+        assert expected_version, "Could not determine expected version"
+
+        # 1. Verify version in database directly
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        cursor.execute("SELECT cal_value FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'")
+        result = cursor.fetchone()
+        conn.close()
+
+        assert result, "WEBCAL_PROGRAM_VERSION not found in webcal_config"
+        db_version = result[0].lstrip('v')
+        print(f"Version in DB: {db_version}")
+        assert db_version == expected_version, f"DB version mismatch: {db_version} != {expected_version}"
+
+        # 2. Verify version shown by wizard status page
+        driver.get(f"{BASE_URL}/wizard/index.php")
+        wait_for_page(driver)
+        page_source = driver.page_source
+        match = re.search(r'v([0-9]+\.[0-9]+\.[0-9]+)', page_source)
+        assert match, "Could not find version in wizard page"
+        wizard_version = match.group(1)
+        print(f"Version in wizard: {wizard_version}")
+        assert wizard_version == expected_version, f"Wizard version mismatch: {wizard_version} != {expected_version}"
+
+        print(f"SUCCESS: Version check passed - DB={db_version}, wizard={wizard_version}")
+
+    except Exception:
+        dump_failure_context(driver)
+        raise

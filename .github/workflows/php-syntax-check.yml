@@ -6,16 +6,63 @@ on:
     branches:
       - master
       - release
+  workflow_call:
 
 jobs:
   php-lint:
-    name: Check PHP syntax
+    name: PHP lint (${{ matrix.php-version }})
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ['8.2', '8.4']
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+
+      - name: Set up PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
 
       - name: Check PHP syntax
+        # `find -exec` always exits 0 regardless of what php -l returned, so the
+        # old form reported success on files that do not parse. xargs exits
+        # non-zero when any invocation fails, and the explicit bash shell turns
+        # on pipefail so that status is the step's status. php -l exits 255 on
+        # a parse error, which makes xargs stop at the first bad file; the sh
+        # wrapper maps that to 1 so every bad file is reported before the
+        # step fails.
+        shell: bash
         run: |
-          find . -name '*.php' -not -path './vendor/*' -exec php -l {} \;
+          find . -name '*.php' -not -path './vendor/*' -print0 \
+            | xargs -0 -n1 sh -c 'php -l "$0" || exit 1'
+
+  ai-signals:
+    name: AI-writing signals (added lines)
+    runs-on: ubuntu-latest
+    # Only on pull requests: the check compares against the base branch, and
+    # there is nothing meaningful to diff a push to master against.
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          # The diff needs both sides, which a shallow clone does not have.
+          fetch-depth: 0
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Check lines this pull request adds
+        # Scoped to added lines on purpose. Run over the whole tree this
+        # reports about sixty findings, nearly all of them legitimate comments
+        # addressing an administrator directly, which is good writing for its
+        # audience. New code is held to the convention; existing prose is left
+        # where it is.
+        run: |
+          php tools/check-ai-signals.php \
+            --since=${{ github.event.pull_request.base.sha }} --strict

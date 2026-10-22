@@ -1,0 +1,116 @@
+<?php
+
+/*
+ * This file is part of the official PHP MCP SDK.
+ *
+ * A collaboration between Symfony and the PHP Foundation.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Mcp\Schema;
+
+/**
+ * Capabilities a client may support. Known capabilities are defined here, in this schema, but this is not a closed set:
+ * any client can define its own, additional capabilities.
+ *
+ * @author Kyrian Obikwelu <koshnawaza@gmail.com>
+ */
+class ClientCapabilities implements \JsonSerializable
+{
+    /**
+     * @param array<string, mixed>  $experimental
+     * @param ?array<string, mixed> $extensions   protocol extensions the client supports (e.g. io.modelcontextprotocol/ui)
+     */
+    public function __construct(
+        public readonly ?bool $roots = false,
+        public readonly ?bool $rootsListChanged = null,
+        public readonly ?bool $sampling = null,
+        public readonly ?bool $elicitation = null,
+        public readonly ?array $experimental = null,
+        public readonly ?array $extensions = null,
+    ) {
+    }
+
+    /**
+     * @param array{
+     *     roots?: array{
+     *         listChanged?: bool,
+     *     },
+     *     sampling?: bool,
+     *     elicitation?: bool,
+     *     experimental?: array<string, mixed>,
+     *     extensions?: array<string, mixed>,
+     * } $data
+     */
+    public static function fromArray(array $data): self
+    {
+        $rootsEnabled = isset($data['roots']);
+        $rootsListChanged = null;
+        if ($rootsEnabled) {
+            if (\is_array($data['roots']) && \array_key_exists('listChanged', $data['roots'])) {
+                $rootsListChanged = (bool) $data['roots']['listChanged'];
+            } elseif (\is_object($data['roots']) && property_exists($data['roots'], 'listChanged')) {
+                $rootsListChanged = (bool) $data['roots']->listChanged;
+            }
+        }
+
+        $sampling = null;
+        if (isset($data['sampling'])) {
+            $sampling = true;
+        }
+
+        $elicitation = null;
+        if (isset($data['elicitation'])) {
+            $elicitation = true;
+        }
+
+        return new self(
+            $rootsEnabled,
+            $rootsListChanged,
+            $sampling,
+            $elicitation,
+            \is_array($data['experimental'] ?? null) ? $data['experimental'] : null,
+            \is_array($data['extensions'] ?? null) ? $data['extensions'] : null,
+        );
+    }
+
+    /**
+     * @return array{
+     *     roots?: object,
+     *     sampling?: object,
+     *     elicitation?: object,
+     *     experimental?: object,
+     *     extensions?: object,
+     * }|\stdClass
+     */
+    public function jsonSerialize(): array|object
+    {
+        $data = [];
+        if ($this->roots || $this->rootsListChanged) {
+            $data['roots'] = new \stdClass();
+            if ($this->rootsListChanged) {
+                $data['roots']->listChanged = $this->rootsListChanged;
+            }
+        }
+
+        if ($this->sampling) {
+            $data['sampling'] = new \stdClass();
+        }
+
+        if ($this->elicitation) {
+            $data['elicitation'] = new \stdClass();
+        }
+
+        if ($this->experimental) {
+            $data['experimental'] = (object) $this->experimental;
+        }
+
+        if ($this->extensions) {
+            $data['extensions'] = (object) $this->extensions;
+        }
+
+        return $data ?: new \stdClass();
+    }
+}

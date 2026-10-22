@@ -14,13 +14,12 @@ echo $helpListStr . '
     <h2>' . translate ( 'WebCalendar Documentation' ) . '</h2>
     <h5>' . translate ( 'Currently in English only.') . '<h5>
     <ul>
-      <li><a href="docs/WebCalendar-UserManual.html">WebCalendar User Manual</a></li>
-      <li><a href="docs/WebCalendar-SysAdmin.html">WebCalendar System Administrator\'s Guide</a></li>
-      <li><a href="docs/WebCalendar-DeveloperGuide.html">WebCalendar Developer Guide</a></li>
-      <li><a href="docs/WebCalendar-Styling.html">WebCalendar Styling HOWTO</a></li>
-      <li><a href="docs/WebCalendar-Database.html">WebCalendar Database Documentation</a></li>
-      <li><a href="docs/WebCalendar-Functions.html">WebCalendar Function Documentation</a></li>
-      <li><a href="http://k5n.us/wiki/">WebCalendar Wiki</a></li>
+      <li><a href="docs/user-guide.md">WebCalendar User Guide</a></li>
+      <li><a href="docs/admin-guide.md">WebCalendar Administrator Guide</a></li>
+      <li><a href="docs/developer-guide.md">WebCalendar Developer Guide</a></li>
+      <li><a href="docs/configuration.md">WebCalendar Configuration Reference</a></li>
+      <li><a href="docs/WebCalendar-Database.md">WebCalendar Database Documentation</a></li>
+      <li><a href="docs/faq.md">FAQ</a></li>
     </ul>';
 
 echo print_trailer ( false, true, true );

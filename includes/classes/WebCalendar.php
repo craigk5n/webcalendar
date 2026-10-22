@@ -54,14 +54,10 @@ class WebCalendar {
     [
       ['Config', 'PHPDBI', 'Functions'],
       ['User', 'Connect']],
-    '/^(ajax|layers_ajax|events_ajax|users_ajax|autocomplete_ajax|css_cacher|js_cacher|icalclient|freebusy|publish|rss|rss_unapproved|rss_activity_log|get_reminders|get_events|ws)\.php$/' =>
-    [
-      ['Config', 'PHPDBI', 'Functions'],
-      ['User', 'Validate', 'Connect', 'SiteExtras', 'Access']],
-    '/^convert_passwords\.php$/' =>
-    [
-      ['Config', 'PHPDBI'],
-      []],
+     '/^(ajax|layers_ajax|events_ajax|users_ajax|autocomplete_ajax|css_cacher|js_cacher|icalclient|freebusy|publish|rss|rss_unapproved|rss_activity_log|get_reminders|get_events|ws|mcp)\.php$/' =>
+     [
+       ['Config', 'PHPDBI', 'Functions'],
+       ['User', 'Validate', 'Connect', 'SiteExtras', 'Access']],
     '/^send_reminders|send_test_email|populate_sqlite3|reload_remotes\.php$/' =>
     [
       ['Config', 'PHPDBI', 'Functions'],
@@ -139,14 +135,14 @@ class WebCalendar {
     $SCRIPT = $match[1];
     // Security precaution.  Don't allow <script> to be included in
     // a URL in any way.  This includes the directory names as well.
-    if ( preg_match ( '/\s*script/i', $_SERVER['QUERY_STRING'] . $self ) ) {
+    if ( preg_match ( '/\s*script/i', (isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '') . $self ) ) {
       // No need to have a graceful exit for this since it should only
       // happen to malicious crapweasels.
       echo "<html><body><h2>User Error</h2><p>Bite me.</p></html>\n";
       exit;
     }
     // Don't allow "img src" to be in the URL either.
-    if ( preg_match ( '/\s*img.*src/i', $_SERVER['QUERY_STRING'] . $self ) ) {
+    if ( preg_match ( '/\s*img.*src/i', (isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '') . $self ) ) {
       // No need to have a graceful exit for this since it should only
       // happen to malicious crapweasels.
       echo "<html><body><h2>User Error</h2><p>Bite me.</p></html>\n";
@@ -209,7 +205,7 @@ class WebCalendar {
   <head>
     <title>' . generate_application_name() . ' ' . translate ( 'Error' ) . '</title>
   </head>
-  <body bgcolor="' . $user_BGCOLOR . '">
+  <body style="background-color: ' . $user_BGCOLOR . '">
     ' . print_not_auth ( true ) . '
   </body>
 </html>';
@@ -329,37 +325,9 @@ class WebCalendar {
     $db_login, $db_password, $ldays_per_month,
     $offsets, $PHP_SELF, $settings, $weekday_names;
 
-    /**#@+
-     * Used for activity log.
-     */
-    define ( 'LOG_APPROVE',       'A' );
-    define ( 'LOG_APPROVE_J',     'P' );
-    define ( 'LOG_APPROVE_T',     'H' );
-    define ( 'LOG_ATTACHMENT',    'T' );
-    define ( 'LOG_COMMENT',       'M' );
-    define ( 'LOG_CREATE',        'C' );
-    define ( 'LOG_CREATE_J',      'I' );
-    define ( 'LOG_CREATE_T',      'G' );
-    define ( 'LOG_DELETE',        'D' );
-    define ( 'LOG_DELETE_J',      'V' );
-    define ( 'LOG_DELETE_T',      'L' );
-    define ( 'LOG_LOGIN_FAILURE', 'x' );
-    define ( 'LOG_NEWUSER_EMAIL', 'E' );
-    define ( 'LOG_NEWUSER_FULL',  'F' );
-    define ( 'LOG_NOTIFICATION',  'N' );
-    define ( 'LOG_REJECT',        'X' );
-    define ( 'LOG_REJECT_J',      'Q' );
-    define ( 'LOG_REJECT_T',      'J' );
-    define ( 'LOG_REMINDER',      'R' );
-    define ( 'LOG_UPDATE',        'U' );
-    define ( 'LOG_UPDATE_J',      'S' );
-    define ( 'LOG_UPDATE_T',      'K' );
-    define ( 'LOG_USER_ADD',      'a' );
-    define ( 'LOG_USER_DELETE',   'd' );
-    define ( 'LOG_USER_UPDATE',   'u' );
-    define ( 'SECURITY_VIOLATION','Z' );
-    define ( 'LOG_SYSTEM',        'Y' );
-    /**#@-*/
+    // Used for the activity log. Shared with bin/webcal.php, which does not
+    // run this method; see includes/activity-log-constants.php.
+    require_once __DIR__ . '/../activity-log-constants.php';
 
     /**
      * Number of seconds in:
@@ -557,6 +525,8 @@ class WebCalendar {
           $session_not_found = true;
       } else {
         session_name(getSessionName());
+        if ( function_exists ( 'harden_php_session' ) )
+          harden_php_session();
         @session_start();
         if ( ! empty ( $_SESSION['webcal_login'] ) )
           $login = $_SESSION['webcal_login'];
@@ -575,10 +545,10 @@ class WebCalendar {
             // Invalid session cookie.
             $session_not_found = true;
           } else {
-            $cooie_check = explode('|', decode_string($encoded_login));
+            $cookie_check = explode('|', decode_string($encoded_login));
             // First time after switching to PHP8 you may have
             // incompatible cookies here.
-            if ( empty($cooie_check[0]) || empty($cooie_check[1]))
+            if ( empty($cookie_check[0]) || empty($cookie_check[1]))
               $session_not_found = true;
           }
           if ( ! $session_not_found ) {
@@ -625,6 +595,11 @@ class WebCalendar {
                   ? '' : '?return_path=' . $login_return_path ) );
 
             @session_start();
+            // A persistent (remember-me) cookie just re-established this
+            // session; rotate the session id so a fixed/pre-set id cannot be
+            // carried into the now-authenticated session.
+            if ( session_status() === PHP_SESSION_ACTIVE )
+              session_regenerate_id ( true );
             $_SESSION['webcal_login'] = $login;
             $_SESSION['webcalendar_session'] = $webcalendar_session;
           }
@@ -663,19 +638,24 @@ class WebCalendar {
         doDbSanityCheck();
 
       // Check the current installation version.
-      // Redirect user to install page if it is different from stored value.
-      // This will prevent running WebCalendar until UPGRADING.html has been
-      // read and required upgrade actions completed.
-      $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
+      // Redirect user to the wizard if it is different from stored value.
+      // Read without the query cache -- see the matching note in
+      // includes/config.php for why (issue #639).
+      $rows = [];
+      $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
          WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
+      if ( $res ) {
+        while ( $row = dbi_fetch_row ( $res ) ) {
+          $rows[] = $row;
+        }
+        dbi_free_result ( $res );
+      }
       if ( $rows ) {
-              $row = $rows[0];
+        $row = $rows[0];
         if ( $row[0] != $PROGRAM_VERSION ) {
-          // &amp; does not work here...leave it as &
-          header ( 'Location: install/index.php?action=mismatch&version='
-                      . $row[0] );
-        exit;}
-
+          header ( 'Location: wizard/index.php' );
+          exit;
+        }
       }
     }
 
@@ -784,8 +764,7 @@ class WebCalendar {
           $lastname = $login_lastname;
           $fullname = $login_fullname;
           $is_admin = ( $login_is_admin == 'Y' );
-          $is_nonuser = ( ! empty ( $GLOBALS['login_is_nonuser'] )
-              && $GLOBALS['login_is_nonuser'] );
+          $is_nonuser = ! empty ( $GLOBALS['login_is_nonuser'] );
           $user_email = $login_email;
         } else {
           // Invalid login.

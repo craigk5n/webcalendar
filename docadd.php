@@ -169,7 +169,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
       cal_login, cal_name, cal_description, cal_size, cal_mime_type, cal_type,
       cal_mod_date, cal_mod_time, cal_blob ) VALUES
 ( ?,?,?,?,?,?,?,?,?,?,? )', [$nextid, $id, $login,
-        substr($filename,0,30), $description, $filesize, $mimetype, 'A', date ( 'Ymd' ),
+        $filename, $description, $filesize, $mimetype, 'A', date ( 'Ymd' ),
         date ( 'His' ), NULL] ) )
       $error = db_error();
     else {
@@ -231,6 +231,26 @@ print_header();
 <tr class="browse"><td>
  <label for="fileupload"><?php etranslate ( 'Upload file' );?>:</label></td><td>
  <input type="file" name="FileName" id="fileupload" size="45" maxlength="50">
+ <button type="button" id="takephoto" class="btn btn-secondary btn-sm">&#128247;
+  <?php etranslate ( 'Take photo' );?></button>
+ <script>
+  // Issue #646: let mobile users snap a photo straight into the existing
+  // file input. Tapping "Take photo" prefers the rear camera; on desktop or
+  // unsupported browsers it gracefully opens the standard file picker. The
+  // upload still submits via the same FileName field, so no server change.
+  ( function () {
+    var btn = document.getElementById ( 'takephoto' );
+    var inp = document.getElementById ( 'fileupload' );
+    if ( btn && inp ) {
+      btn.addEventListener ( 'click', function () {
+        inp.setAttribute ( 'accept', 'image/*' );
+        inp.setAttribute ( 'capture', 'environment' );
+        inp.click();
+      } );
+    }
+  } )();
+ </script>
+ </td></tr>
 <tr><td class="aligntop"><label for="description">
   <?php etranslate ( 'Description' )?>:</label></td>
   <td><input type="text" name="description" size="50" maxlength="127"></td></tr>

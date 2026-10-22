@@ -63,11 +63,10 @@ if ( empty ( $user ) )
   $user = $login;
 $get_unapproved = true;
 
-$sendPlainText = false;
 $format = getValue ( 'format' );
-if ( ! empty ( $format ) &&
+
+$sendPlainText = ( ! empty ( $format ) &&
  ( $format == 'text' || $format == 'plain' ) );
-$sendPlainText = true;
 
 $startdate = getIntValue ( 'startdate' );
 if ( empty ( $startdate ) )

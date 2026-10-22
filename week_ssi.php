@@ -2,10 +2,11 @@
 /**
  * This page is intended to be used as a server-side include for another page.
  * (Such as an intranet home page or something.)
- * As such, no login is required. Instead, the login id is either passed in the
- * URL "week_ssi.php?login=cknudsen". Unless, of course, we are in
- * single-user mode, where no login info is needed.
- * If no login info is passed, we check for the last login used.
+ *
+ * It shows the week belonging to whoever is viewing it: the logged-in user,
+ * or the public user when $PUBLIC_ACCESS is enabled. There is no way to embed
+ * some other user's calendar. A "login" URL parameter is ignored, because
+ * includes/init.php has already established the login before this page runs.
  */
 
 require_once 'includes/init.php';
@@ -16,25 +17,11 @@ $WebCalendar->setLanguage();
 
 $user = '__none__'; // Don't let user specify in URL.
 
-if ( strlen ( $login ) == 0 ) {
-  if ( $single_user == 'Y' )
-    $login = $user = $single_user_login;
-  else
-  if ( strlen ( $webcalendar_login ) > 0 )
-    $login = $user = $webcalendar_login;
-  else {
-    echo '<span style="color:#F00;"><span class="bold colon">' .
-      translate ( 'Error' ) . '</span>'
-     . translate( 'No user specified.' ) . '</span>';
-    exit;
-  }
-}
-
 $view = 'week';
 // TODO This is suspect
 $today = time();
 
-if ( ! empty ( $date ) && ! empty ( $date ) ) {
+if ( ! empty ( $date ) ) {
   $thisyear = substr ( $date, 0, 4 );
   $thismonth = substr ( $date, 4, 2 );
   $thisday = substr ( $date, 6, 2 );
@@ -49,16 +36,13 @@ $next = mktime( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
-$wkend = $wkstart + 518400;
-
-$startdate = date ( 'Ymd', $wkstart );
-$enddate = date ( 'Ymd', $wkend );
+$wkend = end_of_day ( $wkstart, 6 );
 
 /* Pre-Load the repeated events for quicker access */
-$repeated_events = read_repeated_events ( $login, $startdate, $enddate, '' );
+$repeated_events = read_repeated_events ( $login, $wkstart, $wkend, '' );
 
 /* Pre-load the non-repeating events for quicker access */
-$events = read_events ( $login, $startdate, $enddate );
+$events = read_events ( $login, $wkstart, $wkend );
 
 $first_hour = $WORK_DAY_START_HOUR;
 $last_hour = $WORK_DAY_END_HOUR;
@@ -79,16 +63,17 @@ for ( $i = 0; $i < 7; $i++ ) {
    . date ( 'd', $days[$i] ) . '</th>';
 
   $tmpOut2 .= '
-              <td style="vertical-align: top; width: 75px; height: 75px; '
-   . 'background: ' . ( $date == date ( 'Ymd' ) ? $TODAYCELLBG : $CELLBG )
-   . print_date_entries ( $date, $login, true, true ) . '&nbsp;</td>';
+              <td style="inline-size: 75px; block-size: 75px; background: ' .
+    ( $date == date ( 'Ymd' ) ? $TODAYCELLBG : $CELLBG ) .
+    '; vertical-align: top;">' .
+    print_date_entries ( $date, $login, true, true ) . '&nbsp;</td>';
 }
 
 echo '
     <table>
       <tr>
         <td style="background: ' . $TABLEBG . ';">
-          <table cellspacing="1" cellpadding="2">
+          <table style="border-collapse: separate; border-spacing: 1px; padding: 2px;">
             <tr>' . $tmpOut1 . '
             </tr>
             <tr>' . $tmpOut2 . '
