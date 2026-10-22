@@ -7746,4 +7746,37 @@ function js_cacher_safe_path ( $inc, $base ) {
 
   return $real;
 }
+
+/**
+ * Resolve a category icon request to a safe file inside the icon directory.
+ *
+ * category_handler.php copied file_get_contents( 'wc-icons/' . $urlname )
+ * with $urlname an unfiltered POST field, so '../includes/settings.php' read
+ * a file outside wc-icons/ into the category blob. Reduce the name to its
+ * basename (so no directory component survives), require a .gif/.png
+ * extension, and confirm the realpath sits inside the icon directory.
+ *
+ * @param string $urlname request value (any path component is discarded)
+ * @param string $iconDir the wc-icons directory (relative or absolute)
+ *
+ * @return string|bool absolute real path to the icon, or false if unsafe
+ */
+function category_icon_safe_path ( $urlname, $iconDir ) {
+  $name = basename ( (string) $urlname );
+
+  if ( $name === '' || strpos ( $name, "\0" ) !== false
+    || ! preg_match ( '/\.(gif|png)$/i', $name ) )
+    return false;
+
+  $base = realpath ( $iconDir );
+  $real = realpath ( rtrim ( $iconDir, '/' ) . '/' . $name );
+
+  if ( $base === false || $real === false || ! is_file ( $real ) )
+    return false;
+
+  if ( strpos ( $real, $base . DIRECTORY_SEPARATOR ) !== 0 )
+    return false;
+
+  return $real;
+}
 ?>
