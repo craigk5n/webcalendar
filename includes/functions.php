@@ -4304,14 +4304,15 @@ function load_template ( $login, $type ) {
   $file = preg_replace ('/^\s*/', '', $ret);
   $file = preg_replace ('/\s*$/', '', $file);
 
-  if ( $found &&
-    ( ! empty ( $ALLOW_EXTERNAL_HEADER ) && $ALLOW_EXTERNAL_HEADER == 'Y' ) &&
-      file_exists ( $file ) ) {
-// Craig. Why not just do $ret = file_get_contents ( $file ) here?
-    ob_start();
-    include "$file";
-    $ret = ob_get_contents();
-    ob_end_clean();
+  // Optional external header/script/trailer file. The template text is NOT
+  // included as PHP (that executed a DB-stored, potentially attacker-named
+  // path, reachable even unauthenticated): confine it to the templates/
+  // directory and read it.
+  if ( $found
+    && ( ! empty ( $ALLOW_EXTERNAL_HEADER ) && $ALLOW_EXTERNAL_HEADER == 'Y' ) ) {
+    $safe = template_external_file ( $file, __DIR__ . '/../templates' );
+    if ( $safe !== false )
+      $ret = file_get_contents ( $safe );
   }
 
   return $ret;
@@ -7770,6 +7771,63 @@ function category_icon_safe_path ( $urlname, $iconDir ) {
 
   $base = realpath ( $iconDir );
   $real = realpath ( rtrim ( $iconDir, '/' ) . '/' . $name );
+
+  if ( $base === false || $real === false || ! is_file ( $real ) )
+    return false;
+
+  if ( strpos ( $real, $base . DIRECTORY_SEPARATOR ) !== 0 )
+    return false;
+
+  return $real;
+}
+
+/**
+ * Whether $login may edit the custom template (header/script/trailer) owned
+ * by $user.
+ *
+ * The caller supplies the UAC facts so this stays a pure decision: the
+ * __system__ template needs admin (UAC off) or the SYSTEM_SETTINGS function
+ * (UAC on); a per-user template may be edited by its owner, an admin, or a
+ * nonuser-admin of that user. edit_template.php previously gated __system__
+ * with assert() (a no-op in production) and left per-user templates with no
+ * owner check at all.
+ *
+ * @param string $user             template owner ('__system__' or a login)
+ * @param string $login            the acting user
+ * @param bool   $isAdmin
+ * @param bool   $uacEnabled        access_is_enabled()
+ * @param bool   $hasSystemSettings access_can_access_function(ACCESS_SYSTEM_SETTINGS)
+ * @param bool   $isNonuserAdmin    user_is_nonuser_admin($login, $user)
+ */
+function template_edit_allowed ( $user, $login, $isAdmin, $uacEnabled,
+  $hasSystemSettings, $isNonuserAdmin ) {
+  if ( $user == '__system__' )
+    return $uacEnabled ? (bool) $hasSystemSettings : (bool) $isAdmin;
+
+  return $user == $login || (bool) $isAdmin || (bool) $isNonuserAdmin;
+}
+
+/**
+ * Resolve an ALLOW_EXTERNAL_HEADER template file to a safe path, or false.
+ *
+ * load_template() used to include() this DB-stored path as PHP, which is a
+ * local file read and code-execution primitive reachable even from the
+ * unauthenticated login page. The file must now be a regular file confined to
+ * $baseDir (a fixed templates directory) and is read, never executed.
+ *
+ * @param string $file    candidate path from the template text
+ * @param string $baseDir the permitted templates directory
+ *
+ * @return string|bool absolute real path to read, or false if unsafe
+ */
+function template_external_file ( $file, $baseDir ) {
+  $file = (string) $file;
+
+  if ( $file === '' || strpos ( $file, "\0" ) !== false )
+    return false;
+
+  $base = realpath ( $baseDir );
+  $real = realpath ( $file );
 
   if ( $base === false || $real === false || ! is_file ( $real ) )
     return false;
