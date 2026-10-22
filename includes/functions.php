@@ -4164,21 +4164,19 @@ function load_global_settings() {
 
   if ( empty ( $SERVER_URL ) &&
       ( ! empty ( $HTTP_HOST ) && ! empty ( $REQUEST_URI ) ) ) {
+    // Never derive-and-persist SERVER_URL from the request: the Host header
+    // and URI are unauthenticated client input, and persisting them lets one
+    // request poison the URL used in everyone's emails, feeds and redirects.
+    // Use a per-request fallback only, from a host validated as a bare
+    // hostname[:port], and do not write it to webcal_config (the admin sets
+    // SERVER_URL in the wizard / Admin > Settings).
     $ptr = strrpos ( $REQUEST_URI, '/' );
-    if ( $ptr > 0 ) {
+    if ( $ptr > 0
+        && preg_match ( '/^[A-Za-z0-9.-]+(:[0-9]{1,5})?$/', $HTTP_HOST ) ) {
       $SERVER_URL = 'http://' . $HTTP_HOST
        . ( ! empty ( $SERVER_PORT ) && $SERVER_PORT != 80
         ? ':' . $SERVER_PORT : '' )
        . substr ( $REQUEST_URI, 0, $ptr + 1 );
-
-      // Clear any existing row first. cal_setting is the primary key, so a
-      // bare INSERT silently fails when the row is present but empty, which
-      // is reachable now that admin.php stores a cleared field as '' rather
-      // than deleting the row (#734).
-      dbi_execute ( 'DELETE FROM webcal_config WHERE cal_setting = ?',
-        ['SERVER_URL'] );
-      dbi_execute ( 'INSERT INTO webcal_config ( cal_setting, cal_value )
-        VALUES ( ?, ? )', ['SERVER_URL', $SERVER_URL] );
     }
   }
 
@@ -4223,6 +4221,10 @@ function load_nonuser_preferences ( $nonuser ) {
       $row = $rows[$i];
       $setting = $row[0];
       $value = $row[1];
+      // A stored preference must never override a security-relevant system
+      // setting for the session.
+      if ( is_system_only_setting ( $setting ) )
+        continue;
       // $sys_setting = 'sys_' . $setting;
       // save system defaults
       // ** Don't override ones set by load_user_prefs.
@@ -4449,6 +4451,13 @@ function load_user_preferences ( $guest = '' ) {
 
       if ( $ALLOW_COLOR_CUSTOMIZATION == 'N' &&
         isset ( $colors[$setting] ) )
+        continue;
+
+      // A user preference must never override a security-relevant system
+      // setting (UAC_ENABLED, ALLOW_VIEW_OTHER, ...) for the session. Skipping
+      // it here also neutralizes any such row already written to
+      // webcal_user_pref.
+      if ( is_system_only_setting ( $setting ) )
         continue;
 
       // $sys_setting = 'sys_' . $setting;
@@ -7908,5 +7917,36 @@ function template_external_file ( $file, $baseDir ) {
     return false;
 
   return $real;
+}
+
+/**
+ * Whether a setting name is an administrator-only system setting that a user
+ * preference (webcal_user_pref) must never override for the session.
+ *
+ * pref.php wrote any pref_<NAME> into webcal_user_pref, and the preference
+ * loaders assigned every row to its global, so a user could set, for example,
+ * pref_ALLOW_VIEW_OTHER=Y or pref_UAC_ENABLED=N and change access decisions
+ * for their own session. These security-relevant settings live in
+ * webcal_config and are not user-overridable.
+ *
+ * @param string $name the setting name
+ */
+function is_system_only_setting ( $name ) {
+  static $systemOnly = null;
+  if ( $systemOnly === null )
+    $systemOnly = array_flip ( [
+      'UAC_ENABLED', 'ALLOW_VIEW_OTHER', 'USER_SEES_ONLY_HIS_GROUPS',
+      'GROUPS_ENABLED', 'PUBLIC_ACCESS', 'PUBLIC_ACCESS_CAN_ADD',
+      'PUBLIC_ACCESS_OTHERS', 'PUBLIC_ACCESS_VIEW_PART',
+      'PUBLIC_ACCESS_ADD_NEEDS_APPROVAL', 'PUBLIC_ACCESS_DEFAULT_VISIBLE',
+      'PUBLIC_ACCESS_FULLNAME', 'REQUIRE_APPROVALS', 'ALLOW_EXTERNAL_HEADER',
+      'ALLOW_USER_HEADER', 'ALLOW_HTML_DESCRIPTION', 'READONLY', 'readonly',
+      'SINGLE_USER', 'SINGLE_USER_LOGIN', 'SELF_REGISTRATION',
+      'SELF_REGISTRATION_FULL', 'REMOTES_ENABLED', 'ENABLE_CAPTCHA',
+      'MCP_SERVER_ENABLED', 'MCP_WRITE_ACCESS', 'MCP_RATE_LIMIT',
+      'SERVER_URL', 'mode',
+    ] );
+
+  return isset ( $systemOnly[$name] );
 }
 ?>

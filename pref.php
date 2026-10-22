@@ -27,6 +27,10 @@ function save_pref( $prefs, $src) {
       $prefix = 'pref_';
     }
     //echo "Setting = $setting, key = $key, prefix = $prefix<br>\n";
+    // Never store a preference that would override an admin-only system
+    // setting (also neutralized at read time in load_user_preferences).
+    if ( is_system_only_setting ( strtoupper ( $setting ) ) )
+      continue;
     if ( strlen ( $setting ) > 0 && $prefix == 'pref_' ) {
       $sql = 'DELETE FROM webcal_user_pref WHERE cal_login = ? ' .
         'AND cal_setting = ?';
