@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  # tests/McpTest.php is already run on 8.2, 8.3 and 8.4 by ci.yml, which
+  # tests/McpTest.php is already run on 8.2, 8.3, 8.4 and 8.5 by ci.yml, which
   # executes the whole suite -- tests/phpunit.xml takes every *Test.php in
   # tests/. Running the same file again on the same three versions bought
   # nothing and cost three jobs per push.

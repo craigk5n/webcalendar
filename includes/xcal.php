@@ -2076,7 +2076,7 @@ function curl_download($url) {
     $errormsg .= 'Error: '.curl_error($ch);
   }
 
-  curl_close ($ch);
+  unset ($ch);
   return $result;
 }
 
@@ -2815,7 +2815,7 @@ function format_ical ( $event ) {
       case 'ACCEPTED':
         $fevent['Status'] = 'A';
         break;
-      case 'CANCELLED';
+      case 'CANCELLED':
         $fevent['Status'] = 'D';
         break;
       case 'DECLINED':

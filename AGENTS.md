@@ -87,8 +87,8 @@ Run these from the repository root unless specified otherwise:
 ## Local runtime
 - From the root: `docker compose -f docker/docker-compose-dev.yml up --build`.
   This bind-mounts the checkout, so install Composer dependencies on the host
-  first; the dev Dockerfile does not install them. Upstream v1.9.25 uses
-  `docker/Dockerfile-dev` with `php:8.4-apache` and requires PHP 8.2+.
+  first; the dev Dockerfile does not install them. The development stack uses
+  `docker/Dockerfile-dev` with `php:8.5.12-apache-trixie` and requires PHP 8.2+.
 - The local upstream-based dev stack serves the app at `http://127.0.0.1:8090`
   using services `webcalendar` and `db`. It reuses the `docker_mysql-data`
   volume and `webcalendar_php8` database from the legacy stack. MariaDB is
@@ -96,12 +96,25 @@ Run these from the repository root unless specified otherwise:
   to upstream's older 11.4 image against the existing data directory.
   Both services mount the host's `/etc/localtime` so build timestamps use
   the local timezone. The legacy PHP 8.3 Docker files and containers were
-  removed after migration to the upstream filenames and PHP 8.4 image.
+  removed after migration to the upstream filenames.
   Complete the web wizard after startup. With `WEBCALENDAR_USE_ENV=true`,
   `includes/config.php` reads `WEBCALENDAR_*` settings instead of the ignored
   local `includes/settings.php` file.
 - For a fresh environment-backed database, open `/wizard/` directly: the root
   page reports a missing `webcal_config` table until installation is completed.
+
+## PHP 8.5 compatibility
+- Development and production Dockerfiles pin PHP 8.5.12 on Debian trixie.
+  Keep Composer's platform at PHP 8.2.0 while PHP 8.2 remains supported;
+  validate the actual image with `composer check-platform-reqs`.
+- PHP 8.5 deprecates `curl_close()`, `imagedestroy()`, reflection
+  `setAccessible()`, and semicolon-terminated switch cases. Handles are objects
+  on all supported PHP versions; release them with `unset()` when needed.
+  Reflection can access non-public members directly on PHP 8.1+.
+- The optional MySQL/PostgreSQL PHPUnit fixture in
+  `tests/CrossDatabaseTestHelper.php` still feeds SQLite-specific SQL to other
+  backends. Its MySQL `PRAGMA` failure reproduces on PHP 8.4; use disposable
+  databases for backend installation checks rather than the live development DB.
 
 ## UI and packaging conventions
 - Route displayed text through `translate()` / `etranslate()` and update

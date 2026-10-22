@@ -54,7 +54,6 @@ final class WizardConfigSeedingTest extends TestCase
     $db = new WizardDatabase($state);
 
     $connection = new ReflectionProperty(WizardDatabase::class, 'connection');
-    $connection->setAccessible(true);
     $connection->setValue($db, $sqlite);
 
     return $db;
@@ -63,7 +62,6 @@ final class WizardConfigSeedingTest extends TestCase
   private function invokePrivate(object $db, string $method, array $args = [])
   {
     $m = new ReflectionMethod(WizardDatabase::class, $method);
-    $m->setAccessible(true);
     return $m->invokeArgs($db, $args);
   }
 
