@@ -20,7 +20,7 @@ if ( empty ( $ret ) ) {
     <form action="approve_entry.php' . $q_string
    . '" method="post" name="add_comments">';
    print_form_key();
-   echo '<table cellspacing="5">
+   echo '<table style="border-collapse: separate; border-spacing: 5px;">
         <tr>
           <td class="aligncenter alignbottom"><h3>'
    . translate ( 'Additional Comments (optional)' ) . '</h3></td>
@@ -93,7 +93,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   $user_TIMEZONE = get_pref_setting ( $creator, 'TIMEZONE' );
   set_env ( 'TZ', $user_TIMEZONE );
   $user_language = get_pref_setting ( $creator, 'LANGUAGE' );
-  if ( $send_user_mail == 'Y' && strlen ( $tempemail ) && $SEND_EMAIL != 'N' ) {
+  if ( $send_user_mail == 'Y' && strlen ( $tempemail ) && $SEND_EMAIL == 'Y' ) {
     reset_language ( empty ( $user_language ) || ( $user_language == 'none' )
       ? $LANGUAGE : $user_language );
 

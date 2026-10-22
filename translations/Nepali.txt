@@ -1410,7 +1410,7 @@ on: खुल्ला
 All Attendees: सबै सहभागीहरू
 Busy: व्यस्त
 Tentative: टेन्टेटिभ
-Schedule an appointment for XXX.: XXX: YYY को लागि अपोइन्टमेन्टको तालिका बनाउनुहोस्।
+Schedule an appointment for XXX.: XXX को लागि अपोइन्टमेन्टको तालिका बनाउनुहोस्।
 date_select: __dd__ __ महिना _________
 Event approved: कार्यक्रम स्वीकृत भयो
 Journal approved: जर्नल स्वीकृत

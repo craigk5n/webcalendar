@@ -1290,7 +1290,7 @@ on: အပေါ်
 All Attendees: တက်ရောက်သူအားလုံး
 Busy: အလုပ်ရှုပ်သည်
 Tentative: သဘော
-Schedule an appointment for XXX.: XXX: YYY အတွက်ရက်ချိန်းယူရန်စီစဉ်ပါ။
+Schedule an appointment for XXX.: XXX အတွက်ရက်ချိန်းယူရန်စီစဉ်ပါ။
 Event approved: ဖြစ်ရပ်အတည်ပြုခဲ့သည်
 Journal approved: ဂျာနယ်အတည်ပြုခဲ့သည်
 Task approved: Task အတည်ပြုခဲ့သည်

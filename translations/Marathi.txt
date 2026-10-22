@@ -1410,7 +1410,7 @@ on: चालू
 All Attendees: सर्व उपस्थिती
 Busy: व्यस्त
 Tentative: तंतोतंत
-Schedule an appointment for XXX.: एक्सएक्सएक्ससाठी एप्पॉइंटमेंटचे वेळापत्रकः YYY.
+Schedule an appointment for XXX.: XXXसाठी एप्पॉइंटमेंटचे वेळापत्रक.
 date_select: __d_____आमची________
 Event approved: कार्यक्रम मंजूर
 Journal approved: जर्नल मंजूर

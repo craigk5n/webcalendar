@@ -21,7 +21,6 @@
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
 
-require_once 'includes/init.php';
 require_once 'includes/views.php';
 $id=getValue('id');
 view_init ( $id );
@@ -73,15 +72,13 @@ if ( ! empty ( $error ) ) {
 }
 
 $e_save = $re_save = [];
-for ( $i = 0, $cnt = count ( $viewusers ); $i < $cnt; $i++ ) {
-  /* Pre-Load the repeated events for quicker access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], $startdate, $enddate, '' );
-  $re_save = array_merge ( $re_save, $repeated_events );
-  /* Pre-load the non-repeating events for quicker access */
-  $events = read_events ( $viewusers[$i], $startdate, $enddate );
-  $e_save = array_merge ( $e_save, $events );
-}
 $events = $repeated_events = [];
+foreach ( $viewusers as $i ) {
+  /* Pre-Load the repeated events for quicker access */
+  $re_save = array_merge ( $re_save, read_repeated_events ( $i, $startdate, $enddate, '' ) );
+  /* Pre-load the non-repeating events for quicker access */
+  $e_save = array_merge ( $e_save, read_events ( $i, $startdate, $enddate ) );
+}
 
 for ( $i = 0, $cnt = count ( $e_save ); $i < $cnt; $i++ ) {
   $should_add = 1;

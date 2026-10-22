@@ -1410,7 +1410,7 @@ on: na
 All Attendees: Ndị niile bịara
 Busy: Anọghị
 Tentative: Mgbatị
-Schedule an appointment for XXX.: Hazie oge maka XXX: YYY.
+Schedule an appointment for XXX.: Hazie oge maka XXX.
 date_select: __dd__ __month__ __yyyyyy__
 Event approved: Emere mmemme
 Journal approved: Edere akwụkwọ akụkọ

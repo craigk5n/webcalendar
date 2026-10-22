@@ -1410,7 +1410,7 @@ on: ላይ
 All Attendees: ሁሉም ተሳታፊዎች
 Busy: ስራ የሚበዛበት
 Tentative: ጊዜያዊ
-Schedule an appointment for XXX.: ለ XXX: YYY ቀጠሮ ይያዙ
+Schedule an appointment for XXX.: ለ XXX ቀጠሮ ይያዙ
 date_select: __dd__ __ ወር__ __yyyy__
 Event approved: ዝግጅት ፀድቋል
 Journal approved: ጆርናል ፀደቀ

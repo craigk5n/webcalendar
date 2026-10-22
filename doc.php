@@ -76,9 +76,14 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       dbi_free_result ( $res );
     }
 
-    if ( ($login != '__public__') && ($PUBLIC_ACCESS_OTHERS == 'Y') ) {
-      $can_view = true;
-    }
+    // NOTE: a blanket "grant any logged-in user" rule used to live here
+    // (gated only on PUBLIC_ACCESS_OTHERS, which defaults to 'Y'). That was an
+    // IDOR: any authenticated user could download any attachment/comment by
+    // guessing its blid, regardless of event ownership. Access is instead
+    // determined below by participation, group membership, nonuser-only
+    // events, or admin/assistant rights (mirroring view_entry.php). The
+    // ALLOW_VIEW_OTHER / PUBLIC_ACCESS_OTHERS settings still enable the
+    // group-membership path below.
     if ( ! $can_view ) {
       $check_group = false;
       // if not a participant in the event, must be allowed to look at
@@ -166,19 +171,40 @@ if ( ! empty ( $error ) ) {
   exit;
 }
 
-$disp = ( $type == 'A' ? 'attachment' : 'inline' );
+// Sanitize the stored filename before placing it in a response header:
+// strip any path component and CR/LF/quote characters that would allow HTTP
+// response splitting / Content-Disposition manipulation. The name is then
+// always quoted.
+$filename = preg_replace ( '/[\r\n"]/', '', basename ( (string) $filename ) );
+if ( $filename === '' )
+  $filename = 'attachment';
+
+// Do NOT trust the stored (originally client-supplied) MIME type for inline
+// rendering. Serving an attacker-uploaded text/html or image/svg+xml blob
+// "inline" would execute script in this application's origin (stored XSS).
+// Only a small allow-list of inert types is served inline; everything else is
+// forced to download as a generic binary.
+$inlineSafe = [
+  'image/gif', 'image/png', 'image/jpeg', 'image/webp', 'application/pdf',
+  'text/plain',
+];
+$mimetype = strtolower ( trim ( (string) $mimetype ) );
+if ( in_array ( $mimetype, $inlineSafe, true ) ) {
+  $disp = 'inline';
+} else {
+  $disp = 'attachment';
+  $mimetype = 'application/octet-stream';
+}
 
 // Print out data now.
-Header ( 'Content-Length: ' . $size );
+Header ( 'Content-Length: ' . (int) $size );
 Header ( 'Content-Type: ' . $mimetype );
+Header ( 'X-Content-Type-Options: nosniff' );
 
-$description = preg_replace ( "/\n\r\t+/", ' ', $description );
+$description = preg_replace ( '/[\r\n]+/', ' ', (string) $description );
 Header ( 'Content-Description: ' . $description );
 
-// Don't allow spaces in filenames.
-//$filename = preg_replace ( "/\n\r\t+/", "_", $filename );
-//Header ( "Content-Disposition: $disp; filename=$filename" );
-Header ( 'Content-Disposition: filename=' . $filename );
+Header ( 'Content-Disposition: ' . $disp . '; filename="' . $filename . '"' );
 
 echo $filedata;
 exit;

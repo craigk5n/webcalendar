@@ -4,20 +4,21 @@
 #   Marieke Timmer / marieke.timmer@tijdhof.nl
 #   Arnout Engelen / arnouten@bzzt.net
 #   Oliver Heesakkers / dev@heesakkers.info
+#   Paul Slootman / paul@wurtel.net
 #
-# Translation last updated on 11-27-2023
+# Translation last updated on 07-17-2026
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
 
-# A lone equal sign "=" to the right of the colon, such as "Ok: =",
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-15
+charset: utf-8
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -42,1022 +43,18 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: usersel.php
-#
-form: formulier
-listid: lijst id
-Users: Gebruikers
-All: Alle
-None: Geen
-Reset: =
-Groups: Groepen
-Add: Voeg toe
-Remove: Verwijderen
-OK: =
-Cancel: Annuleer
-
-########################################
-# Page: rss_unapproved.php
-#
-Unapproved Entries: Openstaande vermeldingen
-All day event: Dagvullende afspraak
-Approve/Confirm: Bevestigen
-Approve Selected: Goedkeuren geselecteerden
-Check All: Controleer alle
-Delete: Verwijderen
-Emails Will Not Be Sent: Er zullen geen emails worden verstuurd
-Reject Selected: Verwerp geselecteerde
-Reject: Weigeren
-Uncheck All: Alles uitvinken
-View this entry: Afspraak bekijken
-
-########################################
-# Page: edit_entry.php
-#
-am: a.m. (ante meridiem), 's morgens
-pm: p.m. (post meridiem), 's avond
-days: dagen
-hours: uren
-minutes: minuten
-Save: Opslaan
-You are not authorized to edit this task.: U heeft geen recht deze taak te bewerken
-is in a different timezone than you are. Currently: is in een andere tijdzone dan u, Op het moment
-hour ahead of you: een uur voor op u
-hour behind you: een uur achter op u
-hours ahead of you: uren voor op u
-hours behind you: uren achter op u
-Time entered here is based on your Timezone.: Gegeven tijd is gebaseerd op uw tijdzone
-Edit Entry: Afspraak wijzigen
-Add Entry: Afspraak toevoegen
-Help: =
-You are not authorized to edit this entry.: U heeft geen toestemming om deze afspraak te bewerken.
-Details: =
-Participants: Deelnemers
-Repeat: Herhalen
-Reminders: Herinneringen
-brief-description-help: In dit veld kunt u een korte afspraakomschrijving invullen (ca. 20 karakters). De omschrijving wordt in de agenda getoond.
-Brief Description: Korte omschrijving
-full-description-help: Hier ziet u de volledige afspraakomschrijving.<br />N.B.: deze omschrijving wordt alleen getoond indien de afspraak wordt geopend.
-Full Description: Uitgebreide omschrijving
-access-help: Hier bepaalt u de toegankelijkheid van de afspraak voor anderen. Indien u<br /><i>publiek</i> selecteert kunnen de overige gebruikers de afspraak bekijken. Selecteert u <i>vertrouwelijk</i>, dan zien de overige gebruikers wel dat u een afspraak heeft, maar kunnen zij geen details opvragen.
-Access: Toegankelijkheid
-Public: Publiekelijk
-Private: privé-afspraak
-Confidential: vertrouwelijk
-priority-help: Hier kunt u de prioriteit van de afspraak vermelden; afspraken met een hoge prioriteit zullen vetgedrukt in de agenda verschijnen.
-Priority: Prioriteit
-High: Hoge prioriteit
-Medium: Normale prioriteit
-Low: Lage prioriteit
-category-help: Hier geeft u aan in welke categorie de afspraak thuishoort.
-Category: Categorie
-Edit: Aanpassen
-completed-help: Datumtaak afgewerkt. Alleen mogelijk als alle deelnemers de taak 100% afgewerkt hebben.
-Date Completed: Datum afgewerkt
-percent-help: Afwerkingspercentage van de taak voor deze gebruiker
-Percent Complete: Procent compleet
-All Percentages: Alle percentages
-location-help: Locatie van de afspraak
-Location: Locatie
-url-help: URL bij een afspraak
-URL: URL voor agendapublicatie
-date-help: Dit is de datum waarop de afspraak plaatsvindt.
-Start Date: Startdatum
-Date: Datum
-time-help: Dit is de aanvangstijd van de afspraak.<br /><i>Dit veld mag leeg blijven</i><br />
-Type: =
-Untimed event: Afspraak zonder begin en eindtijd
-Timed event: Tijdgebonden afspraak
-Timezone Offset: Tijdverschil server-lokaal
-Time: Tijd
-duration-help: Hier geeft u aan hoe lang de afspraak duurt (in minuten).<br /><i>Dit veld mag leeg blijven</i><br />
-Duration: Duur
-end-time-help: Bepaalt de tijd waarop de afspraak gepland is te eindigen.
-Start Time: Starttijd
-Due Date: Af zijn op datum
-Due Time: Af zijn om
-Site Extras: Site extra's
-participants-help: Noteer hier welke externe deelnemers bij de afspraak aanwezig zullen zijn. Zorg dat elke regel maximaal één deelnemer omvat en voeg een mailadres toe om de externe deelnemer een email-notificatie of herinnering te laten ontvangen.<br />N.B. het verzenden van notificaties en herinneringen zal alleen plaatsvinden indien de agenda-instellingen en de server dit ondersteunen.
-Availability: Beschikbaarheid
-external-participants-help: Hier wordt een lijst van externe deelnemers gegeven. Vul per regel een gebruiker en emailadres in. Als een emailadres is ingevoerd kan de externe gebruiker ook notificaties en herinneringen ontvangen.
-External Participants: externe deelnemers
-repeat-type-help: Deze optie geeft aan hoe vaak de afspraak moet worden herhaald:<br /><i>maandelijks (dag)</i> zorgt ervoor dat de afspraak wordt herhaald op elke 1e maandag van de maand, 3e donderdag van de maand, etc.<br /><i>maandelijks (dag v.a. maandeinde)</i> zorgt ervoor dat de afspraak wordt herhaald op elke laatste vrijdag van de maand, elke een-na-laatste maandag van de maand, etc. - steeds afhankelijk van de dag waarop u een afspraak definieert<br /><i>Maandelijks (datum)</i> zorgt ervoor dat de afspraak wordt herhaald op dezelfde dag van de maand.
-Daily: Dagelijks
-Weekly: Wekelijks
-Monthly: Maandelijks
-by day: per dag
-by date: datum
-by position: positie
-Yearly: Jaarlijks
-Manual: Handmatig
-Expert Mode: Expert-modus
-repeat-end-date-help: Deze optie specificeert de datum waarop het herhalingspatroon eindigt.
-Ending: Eindigt
-Forever: Eeuwig
-Use end date: Gebruik einddatum
-Number of times: Aantal keren
-repeat-frequency-help: Hier kunt u een eventueel herhalingspatroon specificeren. Indien u [1] invult wordt de afspraak elke dag / week / maand / jaar herhaald. Indien u [2] invult wordt de afspraak om de dag / week / maand / jaar herhaalt, etc.<br />N.B.: bij een herhalingsinterval om de x weken dient u wel een herhalingsdag te specificeren (zie boven).
-Frequency: Herhalingspatroon
-Weekdays Only: Enkel werkdagen
-Week Start: Week start
-repeat-bydayextended-help: Sta toe dat een dag van de week wordt gekozen.
-ByDay: PerDag
-repeat-month-help: Bepaal in welke maanden de afspraak herhaald moet worden.
-ByMonth: PerMaand
-repeat-bysetpos-help: Sta datumkeuze toe op basis van dag van de maand.
-BySetPos: PerStelPos
-repeat-bymonthdayextended-help: Sta herhaling toe op basis van een datum.
-ByMonthDay: PerMaandDag
-repeat-byweekno-help: Sta toe dat de gebruiker een lijst van weken opgeeft voor de herhaling (1,2...53,-53,-52...-1).
-ByWeekNo: PerWeekNr
-repeat-byyearday-help: Sta toe dat de gebruiker een lijst van dagen in het jaar opgeeft voor de herhaling (1,2...366,-366,-365...-1).
-ByYearDay: PerJaarDag
-repeat-exceptions-help: Dagen die niet in het patroon vallen, maar wel meetellen, of dagen die wel in het patroon zitten, maar juist niet mogen meetellen
-Exclusions: Uitsluitingen
-Inclusions: Toevoegingen
-Add Exception: Uitzondering toevoegen
-Add Inclusion: Extra dag toevoegen
-Delete Selected: Geselecteerde verwijderen
-email-event-reminders-help: Hiermee stelt u in of u per email een herinnering ontvangt indien u dit heeft ingesteld.<br /> <b>N.B.</b>: dit vereist aanvullende serverinstellingen.
-Send Reminder: Herinnering sturen
-Yes: Ja
-No: Nee
-When: Wanneer
-Use Date/Time: Gebruik Datum/Tijd
-Use Offset: Gebruik dispositie
-Before: Voor
-After: Na
-Start: Begin
-End/Due: Einde/Klaar
-Times: Keren
-Every: Iedere
-Are you sure you want to delete this entry?: Weet u zeker dat u dit item wilt verwijderen?
-Delete entry: Afspraak verwijderen
-
-########################################
-# Page: icalclient.php
-#
-Publishing Disabled (Admin): Publiceren is uitgeschakeld (Admin)
-Publishing Disabled (User): Publiceren is uitgeschakeld (Gebruiker)
-
-########################################
-# Page: autocomplete_ajax.php
-#
-Error: fout
-
-########################################
-# Page: set_entry_cat.php
-#
-Invalid entry id.: Ongeldige afspraak-ID
-You have not added any categories.: U heeft geen categorie toegevoegd
-Set Category: Bepaal categorie
-Global Categories cannot be changed.: Globale categorien kunnen niet worden gewijzigd
-
-########################################
-# Page: remotecal_mgmt.php
-#
-Username cannot be blank.: Gebruikersnaam kan niet leeg zijn
-Source: Bron
-Color: Kleur
-Duplicates: Afspraken dupliceren
-Remote Calendars: Kalenders op afstand
-Calendar ID: Agenda ID
-Public Access: Open Agenda
-Events: Afspraken
-Add Remote Calendar: Kalender op afstand toevoegen
-word characters only: Enkel word karakters
-Username: Gebruikersnaam
-Add Layer: Laag toevoegen
-The text color of the new layer that will be displayed in your calendar.: De tekstkleur die wordt gebruikt voor deze nieuwe laag in je agenda.
-If checked, events that are duplicates of your events will be shown.: Indien deze optie is geactiveerd zullen afspraken die zowel in je eigen agenda staan, als die van degene wiens agenda je dubbelt, ook dubbel worden weergegeven.
-Reload: Opnieuw laden
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: Bepaal de naam voor dit overzicht
-
-########################################
-# Page: report.php
-#
-This event is confidential.: Vertrouwelijk - details niet beschikbaar
-(Private): (privé-afspraak)
-(cont.): =
-Approved: Goedgekeurd
-Deleted: Verwijderd
-Rejected: Geweigerd
-Waiting for approval: Nog niet bevestigd
-Unknown: Onbekend
-Invalid report id.: Ongeldige rapportage-ID
-Add new report: Rapportage toevoegen
-Unnamed Report: naamloze rapportage
-Next: Volgende
-Previous: Vorige
-Manage Reports: Rapportagebeheer
-
-########################################
-# Page: category.php
-#
-Category Icon: Categorie-ikoon
-Global: Publieke categorie
-Categories: Categorieen
-Category Name: Categorienaam
-Remove Icon: Ikoon verwijderen
-Add Icon to Category: Ikoon aan categorie toevoegen
-Make New Category: Categorie toevoegen
-
-########################################
-# Page: events_ajax.php
-#
-Not authorized: Niet geauthoriseerd
-Database error: Databasefout
-Unknown error.: Onbekende fout.
-
-########################################
-# Page: layers_ajax.php
-#
-Unable to update preference: Voorkeuren kunnen niet bijgewerkt worden
-Unsupported action: Niet ondersteunde actie
-You cannot create a layer for yourself.: U kunt geen laag voor uzelf aanmaken
-You can only create one layer for each user.: U kunt slechts een laag per gebruiker aanmaken
-
-########################################
-# Page: view_entry.php
-#
-Update Task Percentage: Taak bijwerken percentage
-Completed: Afgewerkt
-Admin mode: Admin-modus
-Assistant mode: Assistentiemodus
-Description: Omschrijving
-Status: =
-Declined: Afgewezen
-Needs-Action: Behoeft-aandacht
-Repeat Type: Herhalingspatroon
-by: door
-Created by: Aangemaakt door
-Updated: Gewijzigd
-Percentage Complete: Percentage compleet
-External User: Externe Gebruiker
-Update: Bijwerken
-Attachments: Bijlagen
-View: Bekijk
-Comments: Opmerkingen
-comments: opmerkingen
-Show: Toon
-Hide: Verbergen
-Approve/Confirm entry: Afspraak bevestigen
-Approve this entry?: Afspraak bevestigen?
-Reject entry: Afspraak weigeren
-Reject this entry?: Afspraak weigeren?
-Add Attachment: Bijlage toevoegen
-Add Comment: Opmerking toevoegen
-Set category: Bepaal categorie
-Add to My Calendar: Zet afspraak ook in mijn eigen agenda
-Copy entry: Kopie maken van afspraak
-This will delete this entry for all users.: De afspraak wordt uit de agenda verwijderd.
-Edit entry: Afspraak wijzigen
-Edit repeating entry for all dates: Wijzig de gehele reeks met afspraken
-Delete repeating event for all dates: Verwijder de gehele reeks met afspraken
-Edit entry for this date: Wijzig alleen de afspraak op deze datum
-Delete entry only for this date: Verwijder alleen de afspraak op deze datum (NB: niet mogelijk voor de eerste dag)
-This will delete the entry from your XXX calendar.: U staat op het punt de afspraak te verwijderen uit uw XXX agenda.
-boss: van uw baas
-This will delete the entry from your boss calendar.: Hiermee wordt een afspraak verwijderd uit de agenda van uw baas.
-This will delete the entry from your calendar.: De afspraak wordt uit de agenda verwijderd.
-from your boss calendar: Uit de agenda van de baas
-Do you want to add this entry to your calendar?: Deze afspraak ook in uw eigen agenda plaatsen?
-This will add the entry to your calendar.: Bevestig om de afspraak in uw eigen agenda te plaatsen.
-Email all participants: Stuur emailbericht naar alle aanwezigen
-Export this entry to: Exporteer afspraak naar
-Hide activity log: Verberg logboek
-Show activity log: Toon logboek
-
-########################################
-# Page: layers.php
-#
-Are you sure you want to delete this layer?: Weet u zeker dat u deze laag wilt verwijderen?
-Delete layer: Laag verwijderen
-Disabled: niet weergegeven
-Edit layer: Laag wijzigen
-Layer: laag
-Layers: Lagen
-Enable layers: Lagen activeren
-Disable Layers: Lagen deactiveren
-Add layer: Laag toevoegen
-Specifies the user that you would like to see displayed in your calendar.: Specificeert de gebruiker wiens agenda je in als laag aan je eigen agenda wilt toevoegen.
-Edit Layer: Laag wijzigen
-
-########################################
-# Page: purge.php
-#
-Preview: =
-Purging events for: Afspraken geheel verwijderen voor
-Delete Events: Afspraken verwijderen
-Finished: Klaar
-Back: Terug
-User: Gebruiker
-Check box to delete ALL events for a user: Vinkje om <b>ALLE</b> afspraken van een gebruiker te verwijderen
-Delete all events before: Alle afspraken verwijderen voor
-Purge deleted only: Alleen de geschrapte afspraken definitief verwijderen
-Preview delete: Preview verwijderen
-Are you sure you want to delete events for: Weet u zeker dat u alle afspraken wilt verwijderen voor
-
-########################################
-# Page: edit_report_handler.php
-#
-Variable XXX not found.: Variabele <tt>XXX</tt> niet gevonden
-Page template: sjabloon pagina
-Day template: sjabloon dag
-Event template: sjabloon agendaitems
-
-########################################
-# Page: access.php
-#
-Database error XXX.: Databasefout: XXX.
-DEFAULT CONFIGURATION: STANDAARD INSTELLINGEN
-Go: Tonen
-Undo: Ongedaan maken
-Admin: Beheer
-User Access Control: Gebruikerstoegang controle
-Allow Access to Other Users Calendar: Sta toegang toe tot agenda van andere gebruikers
-Grant This User Access to My Calendar: Geef deze gebruiker toegang tot mijn agenda
-Calendar: Kalender
-View Event: Bekijk afspraak
-Approve/Reject: Goedkeuren/Afwijzen
-Tasks: Taken
-Journals: Journalen
-Can Invite: Kan uitnodigen
-Can Email: Kan emailen
-Can See Time Only: Kan alleen tijd zien
-Assistant: Assistent
-Select All: Selecteer Alles
-Clear All: Alle wissen
-
-########################################
-# Page: view_l.php
-#
-No users for this view.: Geen gebruikers voor deze weergave
-
-########################################
-# Page: groups.php
-#
-Group name: Groepsnaam
-Add Group: Groep toevoegen
-Edit Group: Groep wijzigen
-
-########################################
-# Page: help_layers.php
-#
-Layers are useful for displaying...: Lagen zijn nuttig om andermans afpsraken in uw eigen agenda te tonen. U kunt de gebruiker en kleur kiezen waarin die afspraken worden getoond.
-Add/Edit/Delete: toevoegen / wijzigen / verwijderen
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Selecteer [wijzig lagen] in menu [beheer] om lagen toe te voegen, wijzigen of verwijderen.
-Colors: Kleuren
-Disabling: de-activeer
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: De-activeer lagen door naar menu [beheer] onderin beeld te gaan en te klikken op lagen deactiveren.
-Enabling: activeer
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Activeer lagen door naar menu [beheer] onderin beeld te gaan en te klikken op [lagen activeren].
-colors-help: Alle kleuren moeten worden aangegeven als #RRGGBB hexadecimaal formaat waarin RR de hexadecimale waarde is voor rood, GG voor groen en BB voor blauw
-
-########################################
-# Page: minical.php
-#
-This Calendar is not Public.: Deze agenda is niet openbaar
-
-########################################
-# Page: approve_entry.php
-#
-Additional Comments (optional): Extra opmerkingen (optioneel
-Approve and Send: Goedkeuren en verzenden
-Approve and Exit: Goedkeuren en afsluiten
-(Your comments will be emailed to the event creator.): Je commentaar zal in een email verstuurd worden aan de maker van de afspraak.
-Hello, XXX.: Hallo, XXX.
-
-########################################
-# Page: import.php
-#
-Import: Importeren
-Import format: Te importeren formaat
-Exclude private records: Negeer privégegevens
-Overwrite Prior Import: Vorige import overschrijven
-Repeated items are imported separately. Prior imports are not overwritten.: Herhaalde afspraken worden apart geimporteerd. Vorige imports worden niet overschreven.
-Upload file: Upload bestand
-
-########################################
-# Page: login.php
-#
-Fatal Error: Fatale fout
-You have been logged out.: U bent uitgelogd
-Invalid login: Ongeldige login
-Submit: Invoeren
-Not yet registered? Register here!: Nog niet geregistreerd? Registreer hier!
-
-########################################
-# Page: pref.php
-#
-Document background: Achtergrondkleur agenda
-Document title: Tekstkleur programmanaam inlogscherm
-Document text: Standaard tekstkleur
-My event text: Mijn afspraak tekstkleur
-Table grid color: Kleur tabelraster
-Table header background: Achtergrondkleur tabelzijden
-Table header text: Tekstkleur tabelheaders
-Table cell background: Achtergrondkleur tabelcellen
-Table cell background for current day: Achtergrondkleur voor afspraken en huidige dag
-Table cell background for days with events: Achtergrondkleur voor cellen met afspraken
-Table cell background for weekends: Achtergrondkleur voor weekeinden
-Table cell background for other month: Achtergrondkleur voor cellen in andere maand
-Week number color: Weeknummer kleur
-Event popup background: Achtergrondkleur afspraak-popup
-Event popup text: Tekstkleur afspraak-popup
-Preferences: Voorkeuren
-Save Preferences: Voorkeuren opslaan
-Public Access calendar: Publiek toegankelijke kalender
-Return to My Preferences: Terugkeren naar Mijn Voorkeuren
-Settings: Instellingen
-Email: E-mail
-When I am the boss: Als mijn agenda door een assistent wordt beheerd
-Subscribe/Publish: Aanmelden voor agendapublicatie via internet
-Custom Scripts: Zelfgemaakte scripts
-Language: Taal
-language-help: Specificeert welke taal gebruikt dient te worden.
-Date and Time: Datum en tijd
-tz-help: Deze optie bepaalt het aantal uren tijdsverschil tussen de servertijd en de lokale tijd.
-Timezone Selection: Tijdzone
-date-format-help: Hier geeft u aan hoe de datum wordt weergegeven.
-Date format: Datumweergave
-Small Task Date: Taakdatum klein
-time-format-help: Hier geeft u aan hoe tijden worden weergegeven:<br /><i>12 uurs klok: </i> tijd wordt getoond als 3am, 8:30pm, etc.<br /><i> 24 uurs klok:</i> tijd wordt getoond als 3:00, 20:30, etc.
-Time format: Tijdweergave
-12 hour: 12 uur
-24 hour: 24 uur
-display-week-starts-on: Specificeert of de week op zondag of maandag start. Indien wordt gekozen voor maandag worden ISO weeknummers getoond.
-Week starts on: De week begint op
-display-weekend-starts-on: Stelt de dag van de week in waarop weekends beginnen
-Weekend starts on: Weekend begint op
-work-hours-help: Specificeert hoe laat een normale dag begint en eindigt.<br /><b>N.B.</b>: het is wel mogelijk om afspraken buiten deze tijden te maken; indien u dit doet wordt u om een bevestiging gevraagd.
-Work hours: Werktijden
-From: Van
-to: tot
-Appearance: Voorkomen
-preferred-view-help: Specificeert de standaard agendaview - dag, week, maand, jaar.
-Preferred view: Voorkeursweergave
-Day: Dag
-Week: =
-Month: Maand
-Year: Jaar
-fonts-help: Specificeert een lijst van systeem-fonts die gebruikt kunnen worden, zoals Verdana, Arial, Helvetica, etc.
-Fonts: Lettertypen
-display-sm_month-help: Toon kleine maandschema's in de maandview
-Display small months: Toon kleine maanden
-display-weekends-help: Toon ook weekends in week-view
-Display weekends: Toon weekeinden
-display-long-daynames-help: Indien ingeschakeld worden lange dagnamen getoond.
-Display long day names: Toon dagnamen voluit
-display-minutes-help: Toon altijd de minuten, ook bij :00
-Display 00 minutes always: Altijd 00 minuten tonen
-display-alldays-help: Toon vorige en volgende dagen bij de maandview, zodat alle cellen gevuld zijn
-Display all days in month view: Alle dagen tonen in maandweergave
-display-week-number-help: Geeft aan of het weeknummer (1-52) moet worden weergeven.
-Display week number: Weeknummer tonen
-display-tasks-help: Toon klein taakvenster in maand- en dagagenda
-Display small task list: Kleine takenlijst tonen
-display-tasks-in-grid-help: Toon in de agenda's de taken samen met de gebeurtenissen
-Display tasks in Calendars: In de kalenders taken weergeven
-lunar-help: Toon met kleine icoontjes de maanfasen van elke maand
-Display Lunar Phases in month view: Maanfasen tonen in maandweergave
-display-unapproved-help: Geeft aan of openstaande, onbevestigde afspraken moeten worden weergegeven in uw agenda.<br />Indien u [ja] kiest worden openstaande afspraken in een andere tekstkleur in uw agenda weergegeven.<br />Indien u [nee] kiest moeten openstaande afspraken eerst bevestigd worden voordat deze in uw agenda worden getoond.
-Display unapproved: Openstaande afspraken tonen
-timed-evt-len-help: Bepaalt de invoermethode om de lengte van een tijdgebonden afspraak
-Specify timed event length by: Bepaal lengte tijdgebonden afspraak door
-End Time: Einddtijd
-Default Category: Toon de volgende categorieen in mijn agenda
-crossday-help: Indien aangeduid worden afspraken die meer dan één dag duren op de afzonderlijke dagen aangegeven.
-Disable Cross-Day Events: Dagoverschrijdende afspraken uitschakelen
-display-desc-print-day-help: Als deze optie aan staat worden de beschrijvingen van afspraak in de printversie van de dag-view ook getoond
-Display description in printer day view: Beschrijving weergeven in printversie dag-view
-entry-interval-help: Bepaalt het minuteninterval bij het invoeren van tijden van afspraken
-Entry interval: Afspraak interval
-hour: uur
-minute: minuut
-time-interval-help: Hiermee wordt de duur van de tijdblokken in de week- en dagview bepaald.
-Time interval: Tijdsinterval
-Miscellaneous: Allerlei
-auto-refresh-help: Indien ingeschakeld zorgt deze optie voor een automatische periodieke update van de dag-, week- en maandview, evenals de lijst met nog niet bevestigde items.
-Auto-refresh calendars: Automatische agenda-update
-auto-refresh-time-help: Indien de optie auto-refresh is geactiveerd wordt hier het refres-interval ingesteld.
-Auto-refresh time: Interval automatische agenda-update
-Email format preference: Email formaat voorkeur
-HTML: =
-Plain Text: Platte tekst
-Event reminders: Stuur mij per email een herinnering om mij aan een afspraak te herinneren
-email-event-added: Specificeert of er email-notificaties worden verzonden bij het toevoegen van een afspraak
-Events added to my calendar: Stuur mij een email-notificatie als afspraken aan mijn agenda zijn toegevoegd
-email-event-updated: Specificeert of er email-notificaties worden verzonden bij het bijwerken van een afspraak
-Events updated on my calendar: Stuur mij een email-notificatie als afspraken in mijn agenda zijn bijgewerkt
-email-event-deleted: Specificeert of er email-notificaties worden verzonden bij het verwijderen van een afspraak
-Events removed from my calendar: Stuur mij een email-notificatie als afspraken uit mijn agenda zijn verwijderd
-email-event-rejected: Specificeert of er email-notificaties worden verzonden indien een genodigde een afsparak weigert
-Event rejected by participant: Stuur mij een email-notificatie als een afspraak door een genodigde wordt geweigerd
-email-event-create: Specificeert of er e-mailnotificaties worden verzonden bij het aanmaken van een afspraak
-Event that I create: Afspraken die ik zelf aanmaak
-Email me event notification: Ik wil email-notificaties ontvangen van agendawijzigingen
-I want to approve events: Ik wil nieuwe afspraken zelf goedkeuren
-display_byproxy-help: Toon de werkelijke maker op de view_entry pagina
-Display if created by Assistant: Markering weergeven indien aangemaakt door assistent
-allow-view-subscriptions-help: Met deze functie wordt het mogelijk om geregistreerden te bekijken.
-Allow remote viewing of: Permitteer inzage op afstand
-entries: afspraken
-allow-remote-subscriptions-help: Met deze optie bepaalt u of anderen zich op uw agenda kunnen aanmelden om zo de inhoud van uw agenda in hun iCal-applicatie te bekijken (bijvoorbeeld Apple's iCal of Mozilla Calendar).
-Allow remote subscriptions: Agendapublicatie via internet toestaan
-remote-subscriptions-url-help: Hier wordt de URL (= internetadres) getoond waar anderen zich op uw agenda kunnen aanmelden.
-allow-remote-publishing-help: Deze optie regelt bekendmakingen op afstand.
-Allow remote publishing: Permitteer bekendmakingen op afstand
-remote-publishing-url-help: Toont de URL in de toepassing van de iCal cient, zowel om zich aan te melden als om terug te publiceren in de WebKalender
-rss-enabled-help: Bepaalt of de agenda van een gebruiker verkregen kan worden via een RSS feed.
-Enable RSS feed: RSS-feed inschakelen
-rss-feed-url-help: De URL om de RSS feed te openen.
-freebusy-enabled-help: Bepaalt of de beschikbare tijd van een gebruiker verkregen kan worden door gebruik te maken van de iCal FreeBusy standaard.
-Enable FreeBusy publishing: FreeBusy publicatie inschakelen
-freebusy-url-help: De URL om de FreeBusy lijst van de gebruiker te openen.
-custom-script-help: Sta eigen Javascripts en stylesheets die in de HTML "head" van iedere pagina worden geplaatst toe.
-Custom script/stylesheet: Eigen script/stylesheet
-custom-header-help: Sta toe dat een eigen stukje HTML bovenaan iedere pagina wordt geplaatst.
-Custom header: Eigen paginahoofd
-custom-trailer-help: Sta toe dat een eigen stukje HTML onderaan iedere pagina wordt gelaten
-Custom trailer: Eigen pagina-onderschrift
-
-########################################
-# Page: help_admin.php
-#
-System Settings: Instellingen
-Allow HTML in Description: HTML toestaan in beschrijvingen
-allow-html-description-help: Als deze optie aan staat kunnen gebruiker HTML gebruiken in de beschrijvingen bij afspraken. Als hij uit staat worden HTML-tags ge-escaped zodat ze als gewone tekst worden weergegeven. Let op: als deze optie aan staat is het mogelijk te verwijzen naar afbeeldingen op andere websites.
-Allow users to override conflicts: Sta overrulen dubbele afspraken toe
-conflict-check-override-help: Deze optie staat gebruikers toe om dubbele afspraken te overrulen en twee of meer afspraken op dezelfde tijd te maken.
-Allow viewing other users calendars: Inzage agenda andere gebruikers toestaan
-allow-view-other-help: Definieert of een gebruiker de agenda van andere gebruikers mag inzien.
-Application Name: Programmanaam
-app-name-help: Hier wordt de naam van de applicatie gedefinieerd, deze naam verschijnt in het browservenster op elke pagina en op de login-pagina.
-Check for event conflicts: Check op conflicterende afspraken
-conflict-check-help: Check op conflicterende afspraken (= afspraken van een persoon op hetzelfde tijdstip. Door [ja] te kiezen blijft het mogelijk om conflicterende afspraken in te stellen door de waarschuwing te bevestigen. Door [nee] te kiezen wordt geen check op conflicterende afspraken uitgevoerd.
-Conflict checking months: Maanden op conflicten controleren
-conflict-months-help: Indien u bij optie Check op conflicterende afspraken [ja] heeft ingevoerd specificeert u hier het aantal maanden waarin deze check wordt uitgevoerd. Indien het toevoegen van afspraken teveel tijd kost is het advies om dit aantal te verlagen.
-Disable Access field: De-activeer veld Toegang
-disable-access-field-help: Door [ja] te kiezen wordt het veld Toegang niet getoond in de afspraak-view; uw agenda kan hierdoor overzichtelijker worden.
-Disable Participants field: De-activeer veld Aanwezigen
-disable-participants-field-help: Door [ja] te kiezen wordt het veld Aanwezigenniet getoond in de afspraak-view. Hierdoor voorkomt u dat andere gebruikers aanwezigen aan hun afspraken toevoegen. Indien u deze optie activeert wenst u wellicht ook om de optie [sta raadplegen agenda andere gebruikers toe] te de-activeren.
-Disable Priority field: De-activeer veld Priority
-disable-priority-field-help: Door ja te kiezen wordt het veld Priority niet getoond bij het maken van uw afspraken; uw agenda kan hierdoor overzichtelijk worden.
-Disable Repeating field: De-activeer veld Herhalingspatroon
-disable-repeating-field-help: Door [ja] te kiezen wordt het veld [herhalingspatroon] niet getoond bij het toevoegen van afspraken; uw agenda kan hierdoor overzichtelijk worden.
-Display days with events in bold in year view: Geef dagen met afspraken in de jaar-view vet gedruk weer
-yearly-shows-events-help: Als deze optie aan staat worden dagen met afspraken in de jaar-view vet gedruk weergegeven.
-Display Site Extras in popup: Toon Site Extra's in popup
-popup-includes-siteextras-help: Laat de eigen afspraak-velden, geconfigureerd in het bestand site_extras.php, zien in afspraak-popups.
-Display weekends in week view: Toon ook weekends in week-view
-Home URL: Thuis URL
-home-url-help: Specifieert de home URL van het programma. Dit kan een absoluut of een relatief adres zijn.
-Include add event link in views: Toon icoon voor maken van afspraken in alle views
-allow-view-add-help: In alle views wordt een '+' getoond zodat sneller een afspraak in een andere agenda kan worden gezet.
-Limit number of timed events per day: Stel beperking in voor het aantal tijdgebonden afspraken per gebruiker per dag
-limit-appts-help: Deze optie staat de Administrator toe om het aantal afspraken per dag voor alle gebruikers te beperken.
-Maximum timed events per day: Maximum aantal tijdgebonden afspraken per gebruiker per dag
-limit-appts-number-help: Deze optie bepaalt het maximale aantal tijdgebonden afspraken per gebruiker per dag
-Remember last login: Onthoud loginnaam
-remember-last-login-help: Indien ingeschakeld zal, bij een volgend bezoek, de gebruikersnaam maar niet het password automatisch worden ingevoerd en worden de gebruikersinstellingen geladen inclusief kleurpatroon en taalselectie.
-Require event approvals: Afspraakbevestigingen worden vereist
-require-approvals-help: Indien ingeschakeld dient een gebruiker een afspraak te bevestigen voordat deze in de agenda wordt getoond tenzij Weergave onbevestigde items is geactiveerd.<br />Let op: door deze optie te de-activeren worden alle bevestigingen voor de publiek toegankelijke agenda uitgeschakeld indien deze is geactiveerd.
-Server URL: =
-server-url-help: Specificeert de basis URL van de applicatie, deze URL wordt gebruikt bij het verzenden van email notificaties en herinneringen.
-Allow public access: Publieke toegang tot agenda toestaan
-allow-public-access-help: Indien ingeschakeld kan de agenda worden gebruikt als read-only Open Agenda; gebruikers hoeven in dit geval niet in te loggen
-Public access can add events: Toevoegen nieuwe afspraken bij Open Agenda toestaan
-public-access-can-add-help: Indien ingeschakeld kunnen gebruikers, die de agenda via publeike toegang inzien, wel nieuwe afspraken toevoegen. Deze worden echter pas getoond na goedkeuring van de Administrator.
-Public access can view other users: Inzage agenda overige gebruikers bij publieke toegang toestaan
-public-access-view-others-help: Indien publieke toegang is ingeschakeld bepaalt deze optie of de gebruiker de agenda van overige gebruikers kan inzien.
-Public access can view participants: Open Agenda kan deelnemers bekijken
-public-access-sees-participants-help: Als deze optie aan staat kunnen gebruikers die de kalender bekijken vanaf de Open Agenda zien wie er deelnemen aan een afspraak wanneer ze de details van een afspraak bekijken.
-Public access is default participant: Open Agenda is de standaard instelling voor deelnemers
-public-access-default-selected: Publieke toegang is standaard geselecteerd
-Public access new events require approval: Goedkeuring vereisen voor afspraken in Open Agenda
-public-access-add-requires-approval-help: Deze optie bepaalt of afspraken voor de Open Agenda goedgekeurd moeten worden voordat zij zichtbaar zijn.
-Public access visible by default: Publieke afspraken standaard zichtbaar
-public-access-default-visible: Afspraken op de Open Agenda verschijnen automatisch op de kalenders van alle gebruikers
-Groups enabled: Activeer groepen
-groups-enabled-help: Maakt groepsondersteuning mogelijk, zodat gebruikers andere gebruikers per groep kunnen selecteren.
-User sees only his groups: Gebruiker heeft enkel inzage in eigen groep(en)
-user-sees-his-group-help: Indien geactiveerd hebben gebruikers geen inzake in de agenda van gebruikers buiten hun groep(en).
-Nonuser: Losse agenda
-Nonuser enabled: Activeer losse agenda
-nonuser-enabled-help: Indien deze optie is geactiveerd kan een beheerder een of meer losse agenda's (= agenda zonder eigenaar-gebruiker) toevoegen.
-Nonuser list: Positie losse agenda
-nonuser-list-help: Deze optie bepaalt waar de losse agenda in het deelnemersoverzicht wordt getoond.
-Other: Overige
-Allow external users: Toon externe deelnemers
-allow-external-users-help: Hiermee kan een extern persoon als aanwezige bij een bepaalde afspraak worden gespecificeerd.
-subscriptions-enabled-help: Met deze optie bepaalt u of remote gebruikers zich op een WebCalendar-agenda kunnen aanmelden om zo de inhoud van deze agenda in hun iCal-applicatie te bekijken (bijvoorbeeld Apple's iCal of Mozilla Calendar).
-Categories enabled: Activeer gebruik van categorieen
-categories-enabled-help: Sta ondersteuning toe voor afspraakcategorieën.
-External users can receive email notifications: Emailnotificaties voor externe deelnemers toestaan
-external-can-receive-notification-help: Als externe deelnemers en emailgebruik beide zijn geactiveerd en het mailadres van de externe deelnemer is ingevuld kunnen externe deelnemers email notificaties ontvangen bij het toevoegen, wijzigen of verwijderen van een afspraak.
-External users can receive email reminders: Herinneringen voor externe deelnemers toestaan
-external-can-receive-reminder-help: Als externe deelnemers en emailgebruik beide zijn geactiveerd en het mailadres is ingevuld kunnen externe deelnemers emailreminders ontvangen.
-Reports enabled: Activeer rapportages
-reports-enabled-help: Indien deze optie is geactiveerd wordt een nieuwe rapportage-sectie zichtbaar in het beheerpaneel onderaan de pagina. Hier kan een gebruiker eigen agendarapportages definieren.<br />Beheerders kunnen algemene rapportages toevoegen die in het rapportagemenu van alle gebruikers beschikbaar zijn.
-Default sender address: Standaard mailadres
-email-default-sender: Specificeert het mailadres dat als afzender wordt getoond bij het verzenden van herinneringen
-Email enabled: Activeer gebruik van email
-email-enabled-help: Activeer of deactiveer hier het verzenden van email-notificaties en herinneringen bij een afspraak
-Allow user to customize colors: Gebruikers mogen kleuren van eigen agenda aanpassen
-user-customize-color: eigen kleur van de gebruiker
-Enable gradient images for background colors: Maak gradient images voor achtergrondkleuren mogelijk
-enable-gradient-help: Gebruik overgaande kleuren voor de celachtergrond.
-Manually entering color values: Handmatig kleurwaarden ingeven
-
-########################################
-# Page: view_m.php
-#
-Double-click on empty cell to add new entry: Dubbelklik een lege cel om een nieuwe afspraak te maken
-
-########################################
-# Page: views.php
-#
-Manage Views: Beheer weergaves
-Add New View: Overzicht toevoegen
-
-########################################
-# Page: admin.php
-#
-Select: Kies
-Bottom: Onder
-Top: Boven
-Anyone: Wie dan ook
-Participant: Deelnemer
-System options: Systeemopties
-Title: =
-enable-external-header-help: Laat toe om de hoofding te laden vanuit een extern bestand.
-Site customization: Aanpassing van de site
-Allow external file for header/script/trailer: Permitteer extern bestand voor kop/script/staart
-Allow user to override header/trailer: Permitteer de gebruiker controle over kop/staart
-Server Timezone Selection: Server tijdzone selectie
-display-general-use-gmt-help: Indien aangeduid, worden datums en tijden voor algemeen gebruik in GMT getoond.
-Display Common Use Date/Times as GMT: Toon data en tijden voor algemeen gebruik in GMT
-Allow top menu: Permitteer menu bovenin
-Date Selectors position: Datum positiekiezers
-Display days with events in bold in month and year views: Nummers van dagen met afspraken vet weergeven bij maand- en jaarweergave
-Restrictions: Beperkingen
-disable-location-field-help: Hiermee voorkomt u dat het locatie-veld wordt getoond
-Disable Location field: Locatie-veld uitschakelen
-disable-url-field-help: Als u "ja" kiest wordt het URL-veld niet getoond op pagina's met afspraakinformatie
-Disable URL field: URL-veld uitschakelen
-Popups: Pop-ups
-disable-popups-help: Hiermee voorkomt u dat pop-ups worden getoond.
-Disable Pop-Ups: Pop-ups uitschakelen
-popup-includes-participants-help: Toon deelnemers in de pop-ups van afspraken
-Display Participants in popup: Toon deelnemers in pop-up
-summary_length-help: Maximale lengte van de korte beschrijving in agenda overzichten
-Brief Description Length: Lengte van korte omschrijving
-user_sort-help: Bepaalt de volgorde op lijsten van gebruikers en losse agenda's
-User Sort Order: Gebruikersvolgorde
-Lastname, Firstname: Achternaam, Voornaam
-Firstname, Lastname: Voornaam, Achternaam
-public-access-override-help: Maak verbergen van namen en beschrijvingen mogelijk in de publieke agenda
-Override event name/description for public access: Domineer afspraak naam/omschrijving voor Open Agenda
-public-access-override-text-help: De tekst bij bovenstaande optie staat aan. Indien 'niet beschikbaar', zal hij vertaald worden.
-Text to display to public access: Tekst om te tonen bij Open Agenda
-uac-enabled-help: Sta UAC toe (user-level access control, toegang en bevoegdheden per gebruiker regelen)
-User Access Control enabled: Gebruikerstoegang controle ingeschakeld
-Enabled: wel weergeven
-remotes-enabled-help: Sta gebrukers toe om ics-bestanden te laden via URL
-Allow remote calendars: Sta agenda's op afstand toe
-icon_upload-enabled-help: Sta het uploaden van categorie-icoontjes toe
-Category Icon Upload enabled: Uploaden categorie-ikoon toegestaan
-allow-self-registration-help: Deze optie regelt zelf-registratie.
-Allow self-registration: Sta zelf-registratie toe
-use-blacklist-help: Beperking van de toegang tot de webkalender gebaseerd op IP-adres
-Restrict self-registration to blacklist: Beperk zelf-registratie tot zwarte lijst
-allow-self-registration-full-help: Sta nieuwe gebruikers toe hun zelfregistratie on-line te vervolledigen
-Use self-registration email notifications: Gebruik zelf-registratie email-notificaties
-allow-attachment-help: Met deze functie wordt het mogelijk om bijlagen aan afspraken toe te voegen.
-Allow file attachments to events: Permitteer bestandsbijlagen bij afspraken
-Admin and owner can always add attachments if enabled.: Indien ingesteld kunnen de Admin en eigenaar altijd bijlagen toevoegen.
-allow-comments-help: Met deze functie wordt het mogelijk om opmerkingen aan afspraken toe te voegen.
-Allow comments to events: Permitteer opmerkingen bij afspraken
-Admin and owner can always add comments if enabled.: Indien ingesteld kunnen de Admin en eigenaar altijd opmerkingen toevoegen.
-email-mailer: email-verstuurder
-Email Mailer: Email verstuurder
-email-smtp-host: email-smtp-host
-SMTP Host name(s): SMTP servernaam/-namen
-email-smtp-port: email-smtp-poort
-SMTP Port Number: SMTP Poortnummer
-email-smtp-auth: email-smtp-auth
-SMTP Authentication: SMTP Authenticatie
-email-smtp-username: email-smtp-gebruikersnaam
-SMTP Username: SMPT Gebruikersnaam
-email-smtp-password: email-smtp-paswoord
-SMTP Password: SMPT Wachtwoord
-Default user settings: Standaard gebruikersinstellingen
-Color options: Kleuropties
-gradient-colors: overloop-kleuren
-Not available: Niet beschikbaar
-Background Image options: Opties achtergrondafbeelding
-bgimage-help: URL van de gewenste achtergrondafbeelding. Dit mag een relatieve link zijn.
-Background Image: Achtergrondafbeelding
-bgrepeat-help: Bepaalt het herhaalgedrag van een achtgrondafbeelding.
-Background Repeat: Achtergrond bij herhaling
-
-########################################
-# Page: help_index.php
-#
-Help Index: Overzicht help-onderwerpen
-About WebCalendar: Over WebCalendar
-
-########################################
-# Page: help_bug.php
-#
-Report Bug: Rapporteer een programmafout
-Please include all the information below when reporting a bug.: Wil u onderstaande informatie vermelden bij het doorgeven van een foutmelding?
-Also, please use English rather than: Wil u <strong>Engels</strong> gebruiken in plaats van
-
-########################################
-# Page: docadd.php
-#
-Subject: Onderwerp
-Comment: Opmerking
-
-########################################
-# Page: reject_entry.php
-#
-Continue: Doorgaan
-(Your comments will be emailed to the other participants.): (Uw opmerkingen worden ingevoegd bij een email aan de andere deelnemers)
-
-########################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords.: Vul een of meer trefwoorden in
-Search Results: Zoekresultaten
-match found: afspraak gevonden die overeenkomst met de trefwoorden
-matches found: afspraken gevonden die overeenkomen met de trefwoorden
-No matches found: Helaas, geen match aangetroffen
-New Search: Nieuwe zoekopdracht
-
-########################################
-# Page: export.php
-#
-Export: Exporteren
-Export format: Exportformaat
-Include all layers: Inclusief alle lagen
-Include deleted entries: Inclusief verwijderde afspraken
-Export all dates: Alles exporteren
-Start date: Startdatum
-End date: Einddatum
-Modified since: Wijzigingen vanaf
-
-########################################
-# Page: availability.php
-#
-user: gebruiker
-year: jaar
-month: maand
-day: dag
-
-########################################
-# Page: freebusy.php
-#
-No user specified.: Geen gebruiker gekozen
-
-########################################
-# Page: select_user.php
-#
-View Another Users Calendar: Bekijk de agenda van een andere gebruiker
-
-########################################
-# Page: edit_remotes_handler.php
-#
-Import Results: Resultaat van importeren
-Events successfully imported: Afspraken succesvol geimporteerd
-Create a new layer to view this calendar.: Maak een nieuwe laag om deze kalender te bekijken
-Errors: Fouten
-There was an error parsing the import file or no events were returned.: Er heeft zich een fout voorgedaan bij het verwerken van het importbestand of er zijn geen items aangetroffen
-
-########################################
-# Page: adminhome.php
-#
-Assistants: Assistenten
-Control Panel: Controlepaneel
-Account: account
-Views: Overzichten
-Reports: Rapportages
-Activity Log: Berwerkerslogboek
-System Log: Systeemlogboek
-Public Preferences: Publieke voorkeuren
-Unapproved Public Events: Openstaande publieke afspraken
-Administrative Tools: Administratieve gereedschappen
-
-########################################
-# Page: upcoming.php
-#
-more: meer
-
-########################################
-# Page: doc.php
-#
-Invalid blob id: Ongeldig blob ID
-
-########################################
-# Page: login-app.php
-#
-You must enter a login and password.: U moet een gebruikersnaam en een wachtwoord invullen.
-Password: Wachtwoord
-Save login via cookies so I dont have to login next time.: Bewaar inloggegevens
-Login: Aanmelden
-public: publiekelijk
-cookies-note: <b>NB:</b> Deze applicatie maakt gebruik van cookies.
-
-########################################
-# Page: docdel.php
-#
-Removed: Verwijderd
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Naamloos overzicht
-Add View: Overzicht toevoegen
-Edit View: Overzicht wijzigen
-View Name: Naam
-View Type: Type
-Day by Time: Dag per Tijd
-Week (Users horizontal): Weekoverzicht - gebruikers boven
-Week by Time: Week per Tijd
-Week (Users vertical): Weekoverzicht - gebruikers links
-Week (Timebar): Weekoverzicht - tijdbalkweergave
-Month (Timebar): Maandoverzicht - tijdbalk
-Month (side by side): Maandoverzicht - gebruikers boven naast elkaar
-Month (on same calendar): Maandoverzicht -  gebruikers in één agenda
-
-########################################
-# Page: nulogin.php
-#
-A login must be specified.: Er moet een login gespecifieerd worden
-No such nonuser calendar: Onbekende losse agenda
-
-########################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: De voorgestelde tijd conflicteert met de volgende afspraak
-Scheduling Conflict: Agendaconflict
-Your suggested time of: De door u voorgestelde tijd
-conflicts with the following existing calendar entries: conflicteert met de volgende bestaande afspraken
-
-########################################
-# Page: help_edit_entry.php
-#
-Adding/Editing Calendar Entries: Afspraken toevoegen/wijzigen
-For More Information...: Voor verdere inlichtingen...
-Repeat End Date: Einddatum herhaling
-Repeat Day: Herhalingsdag
-repeat-day-help: Indien uw afspraak wekelijks wordt herhaald, geeft u hier aan op welke weekdag de afspraak terugkeert. Dit is alleen mogelijk indien u hierboven bij <i>herhalingspatroon</i> de optie [wekelijks] heeft gekozen.<br />N.B.: u kunt meerdere weekdagen aanvinken.
-
-########################################
-# Page: assistant_edit.php
-#
-Your assistants: Uw agenda-assistenten
-
-########################################
-# Page: list_unapproved.php
-#
-Approve Selected entries?: Geselecteerde afpsraken goedkeuren?
-Reject Selected entries?: Verwerp geselecteerde afspraken
-
-########################################
-# Page: add_entry.php
-#
-a XXX event may not be added to your calendar: Dit is een XXX afspraak en mag niet aan uw agenda toegevoegd worden.
-confidential: vertrouwelijk
-private: privé-afspraak
-
-########################################
-# Page: help_uac.php
-#
-Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Gebruikerstoegang controle maakt het mogelijk nauwkeuriger gebruikerstoegang en -permissies te regelen dan voorheen mogelijk was. Gebruikers kunnen ook standaard en per individu permissies verlenen indien geauthoriseerd door de beheerder.
-If disabled, this user cannot send you emails.: Indien uitgeschakeld, zal deze gebruiker u geen email kunnen sturen.
-If disabled, this user cannot see you in the participants list.: Indien uitgeschakeld, zal deze gebruiker u niet zien in de deelnemers-lijst
-If enabled, this user cannot view the details of any of your entries.: Indien ingeschakeld, zal deze gebruiker geen details kunnen zien van iedere afspraak die u maakt.
-
-########################################
-# Page: search.php
-#
-Advanced Search: Uitgebreid zoeken
-Search: Zoeken
-Keywords: Trefwoorden
-Include: Bevat
-Filter by Date: Filter volgens datum
-Past: Voorbije
-Upcoming: Komende
-Range: Periode
-
-########################################
-# Page: register.php
-#
-Email address cannot be blank.: Email-adres kan niet leeg zijn
-Username already exists.: Gebruikersnaam bestaat al
-Email address already exists.: Email-adres bestaat al
-The passwords were not identical.: De ingevoerde wachtwoorden zijn niet identiek of u heeft het wachtwoord maar een keer ingevuld<br />Probeer het nog eens
-A new WebCalendar account has been set up for you.: Er is een nieuw WebCalendar account voor u opgezet.
-You may change your password after logging in the first time.: U kunt uw wachtwoord wijzigen na de eerste keer te hebben ingelogd
-If you received this email in error: Indien u deze mail onterecht ontvangt
-Administrator: Beheerder
-Welcome: Welkom
-You have not entered a password.: U heeft geen wachtwoord ingevuld.
-Registration: Registratie
-Welcome to WebCalendar: Welkom bij de WebKalender
-Your email should arrive shortly.: Uw E-mail moet zodra aankomen
-Return to Login screen: Terugkeren naar login-scherm
-First Name: Voornaam
-Last Name: Achternaam
-E-mail address: E-mailadres
-Password (again): Wachtwoord (herhalen)
-Your account information will be emailed to you.: Uw accountinformatie wordt u toegestuurd via E-mail
-
-########################################
-# Page: about.php
-#
-version XXX: versie XXX
-WebCalendar is a PHP application used...: Webcalendar is een PHP-toepassing die dient om de agenda van een enkele gebruiker of van een internet- of intranetgebruikersgroep bij te houden.
-Credits: Medewerkers
-About: Over
-
-########################################
-# Page: catsel.php
-#
-AVAILABLE CATEGORIES: BESCHIKBARE CATEGORIEN
-ENTRY CATEGORIES: AFSPRAAK CATEGORIEN
-Global Category: Globale categorie
-
-########################################
 # Page: import_handler.php
 #
+No file: Geen bestand
 Error deleting palm events from webcalendar.: Fout bij het verwidjeren van palm afspraken uit de webkalender.
+Import Results: Resultaat van importeren
+Events successfully imported: Afspraken succesvol geimporteerd
 Events from prior import marked as deleted: Afspraken van vorige import gemarkeerd als verwijderd
 Conflicting events: Conflicterende afspraken
+Errors: Fouten
+Error: fout
+There was an error parsing the import file or no events were returned.: Er heeft zich een fout voorgedaan bij het verwerken van het importbestand of er zijn geen items aangetroffen
 The import file contained no data.: Het importbestand bevat geen gegevens.
-
-########################################
-# Page: category_handler.php
-#
-File size exceeds maximum.: Bestand is groter dan toegestaan
-
-########################################
-# Page: icons.php
-#
-Click to Select: Klik om te selecteren
-
-########################################
-# Page: export_handler.php
-#
-export format not defined or incorrect.: Exportformaat niet gedefinieerd of incorrect
-
-########################################
-# Page: users_ajax.php
-#
-Deleting users not supported.: Het verwijderen van gebruikers is niet mogelijk
-Set Password: Bewaar wachtwoord
-
-########################################
-# Page: help_import.php
-#
-Palm Desktop: =
-The following entries will not be imported: De volgende items zullen niet worden geimporteerd
-Entries older than the current date: items ouder dan de huidige datum
-Entries created in the Palm Desktop...: Items gemaakt in de Palm Desktop agenda die nog niet met HotSync gesynchroniseerd zijn
-vCal: =
-This form will import vCalendar (.vcs) 1.0 events.: Hier kunt u afspraken uit vCalendar (.vcs) 1.0 in uw agenda importeren
-The following formats have been tested: De volgende bestandsformaten zijn getest
-This form will import iCalendar (.ics) events.: Met dit formulier importeert u iCalendar (.ics) afspraken
-will cause events imported previously...: zal vroeger geïmporteerde afspraken als <i>verwijderd</i> aanduiden, wanneer ze dezelfde UID gebruikten als het pas geïmporteerde bestand. Dit maakt het mogelijk een bijgewerkt iCalendar-bestand te importeren zonder dubbels te creëren.
-
-########################################
-# Page: user_mgmt.php
-#
-Are you sure you want to delete this user?: Weet u zeker dat u deze gebruiker wilt wissen?
-Add User: Gebruiker toevoegen
-Change Password: Wijzig wachtwoord
-Delete User: Verwijder gebruiker
-Edit User: Gebruiker wijzigen
-
-########################################
-# Page: week_details.php
-#
-New Entry: Nieuwe afspraak
-cont.: =
-
-########################################
-# Page: edit_template.php
-#
-Edit Custom Header: Eigen paginahoofding aanpassen
-Edit Custom Script/Stylesheet: Eigen Script/Stylesheet aanpassen
-Edit Custom Trailer: Eigen pagina-onderschrift aanpassen
 
 ########################################
 # Page: edit_report.php
@@ -1088,110 +85,1306 @@ Next 60 days: Volgende 60 dagen
 Next 90 days: Volgende 90 dagen
 Next 180 days: Volgende 180 dagen
 Next 365 days: Volgende 365 dagen
+Date: Datum
+Time: Tijd
+Invalid report id XXX.: Ongeldig rapportage id: "XXX".
+Unnamed Report: naamloze rapportage
 Add Report: rapportage toevoegen
 Edit Report: rapportage wijzigen
+Report Name: Rapportage naam
+User: Gebruiker
 Current User: Huidige gebruiker
-Include standard header/trailer: gebruik standaard kop- en voettekst
-Include previous/next links: gebruik links voor vorige en volgende rapportageperiode
-Include empty dates: toon ook dagen zonder afspraken
-Date range: rapportageperiode
+Global: Publieke categorie
+Include link in menu: Toon link in menu
+Include standard header/trailer: Gebruik standaard kop- en voettekst
+Include previous/next links: Gebruik links voor vorige en volgende rapportageperiode
+Include empty dates: Toon ook dagen zonder afspraken
+Date range: Rapportageperiode
+Category: Categorie
+None: Geen
+Page template: sjabloon pagina
+Day template: sjabloon dag
+Event template: sjabloon agendaitems
+Site Extras: Site extra's
+Save: Opslaan
+Cancel: Annuleer
 Are you sure you want to delete this report?: Weet u zeker dat u deze rapportage wilt verwijderen?
+Delete: Verwijderen
 Template variables: sjabloon variabelen
+
+########################################
+# Page: view_t.php
+#
+All day event: Dagvullende afspraak
+No users for this view.: Geen gebruikers voor deze weergave
+Next: Volgende
+Previous: Vorige
+Double-click on empty cell to add new entry: Dubbelklik een lege cel om een nieuwe afspraak te maken
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Eigen paginahoofding aanpassen
+Edit Custom Script/Stylesheet: Eigen Script/Stylesheet aanpassen
+Edit Custom Trailer: Eigen pagina-onderschrift aanpassen
+Are you sure you want to delete this entry?: Weet u zeker dat u dit item wilt verwijderen?
+
+########################################
+# Page: register.php
+#
+Username cannot be blank.: Gebruikersnaam kan niet leeg zijn
+Email address cannot be blank.: Email-adres kan niet leeg zijn
+Username already exists.: Gebruikersnaam bestaat al
+Email address already exists.: Email-adres bestaat al
+Illegal characters in login XXX.: ongeldige tekens in login <span class="tt">XXX</span>.
+The passwords were not identical.: De ingevoerde wachtwoorden zijn niet identiek of u heeft het wachtwoord maar een keer ingevuld<br />Probeer het nog eens
+New user via self-registration.: Nieuwe gebruiker via zelf-registratie.
+Hello, XXX.: Hallo, XXX.
+A new WebCalendar account has been set up for you.: Er is een nieuw WebCalendar account voor u opgezet.
+Your username is XXX.: Je gebruikersnaam is: "XXX".
+Your password is XXX.: Je wachtwoord is: "XXX".
+Please visit XXX to log in and start using your account!: Ga naar "XXX" om in te loggen en aan de slag te gaan met je account!
+You may change your password after logging in the first time.: U kunt uw wachtwoord wijzigen na de eerste keer te hebben ingelogd
+If you received this email in error: Indien u deze mail onterecht ontvangt
+Administrator: Beheerder
+Welcome: Welkom
+New user via email.: Nieuwe gebruiker via e-mail.
+You have not entered a password.: U heeft geen wachtwoord ingevuld.
+Email cannot be blank.: E-mail moet ingevuld zijn.
+Registration: Registratie
+Welcome to WebCalendar: Welkom bij de WebKalender
+Your email should arrive shortly.: Uw E-mail moet zodra aankomen
+Return to Login screen: Terugkeren naar login-scherm
+Username: Gebruikersnaam
+First Name: Voornaam
+Last Name: Achternaam
+E-mail address: E-mailadres
+Password: Wachtwoord
+Password (again): Wachtwoord (herhalen)
+Your account information will be emailed to you.: Uw accountinformatie wordt u toegestuurd via E-mail
+Submit: Invoeren
+cookies-note: <b>NB:</b> Deze applicatie maakt gebruik van cookies.
+JSON error: =
 
 ########################################
 # Page: help_pref.php
 #
+Help: =
+Preferences: Voorkeuren
+Settings: Instellingen
+Auto-refresh calendars: Automatische agenda-update
+auto-refresh-help: Indien ingeschakeld zorgt deze optie voor een automatische periodieke update van de dag-, week- en maandview, evenals de lijst met nog niet bevestigde items.
+Auto-refresh time: Interval automatische agenda-update
+auto-refresh-time-help: Indien de optie auto-refresh is geactiveerd wordt hier het refres-interval ingesteld.
+Date format: Datumweergave
+date-format-help: Hier geeft u aan hoe de datum wordt weergegeven.
+Default Category: Toon de volgende categorieÃ«n in mijn agenda
 default-category-help: Hiermee wordt de standaard-categorie voor nieuwe afspraken ingesteld.
+Display description in printer day view: Beschrijving weergeven in printversie dag-view
+display-desc-print-day-help: Als deze optie aan staat worden de beschrijvingen van afspraak in de printversie van de dag-view ook getoond
+Display unapproved: Openstaande afspraken tonen
+display-unapproved-help: Geeft aan of openstaande, onbevestigde afspraken moeten worden weergegeven in uw agenda.<br />Indien u [ja] kiest worden openstaande afspraken in een andere tekstkleur in uw agenda weergegeven.<br />Indien u [nee] kiest moeten openstaande afspraken eerst bevestigd worden voordat deze in uw agenda worden getoond.
+Display week number: Weeknummer tonen
+display-week-number-help: Geeft aan of het weeknummer (1-52) moet worden weergeven.
+Display weekends in week view: Toon ook weekends in week-view
+display-weekends-help: Toon ook weekends in week-view
+Fonts: Lettertypen
+fonts-help: Specificeert een lijst van systeem-fonts die gebruikt kunnen worden, zoals Verdana, Arial, Helvetica, etc.
+Language: Taal
+language-help: Specificeert welke taal gebruikt dient te worden.
+Preferred view: Voorkeursweergave
+preferred-view-help: Specificeert de standaard agendaview - dag, week, maand, jaar.
+Specify timed event length by: Bepaal lengte tijdgebonden afspraak door
+timed-evt-len-help: Bepaalt de invoermethode om de lengte van een tijdgebonden afspraak
+Time format: Tijdweergave
+time-format-help: Hier geeft u aan hoe tijden worden weergegeven:<br /><i>12 uurs klok: </i> tijd wordt getoond als 3am, 8:30pm, etc.<br /><i> 24 uurs klok:</i> tijd wordt getoond als 3:00, 20:30, etc.
+Time interval: Tijdsinterval
+time-interval-help: Hiermee wordt de duur van de tijdblokken in de week- en dagview bepaald.
+Timezone Offset: Tijdverschil server-lokaal
+tz-help: Deze optie bepaalt het aantal uren tijdsverschil tussen de servertijd en de lokale tijd.
+Week starts on: De week begint op
+display-week-starts-on: Specificeert of de week op zondag of maandag start. Indien wordt gekozen voor maandag worden ISO weeknummers getoond.
+Work hours: Werktijden
+work-hours-help: Specificeert hoe laat een normale dag begint en eindigt.<br /><b>N.B.</b>: het is wel mogelijk om afspraken buiten deze tijden te maken; indien u dit doet wordt u om een bevestiging gevraagd.
+Email: E-mail
+Event rejected by participant: Stuur mij een email-notificatie als een afspraak door een genodigde wordt geweigerd
+email-event-rejected: Specificeert of er email-notificaties worden verzonden indien een genodigde een afsparak weigert
+Event reminders: Stuur mij per email een herinnering om mij aan een afspraak te herinneren
+email-event-reminders-help: Hiermee stelt u in of u per email een herinnering ontvangt indien u dit heeft ingesteld.<br /> <b>N.B.</b>: dit vereist aanvullende serverinstellingen.
+Events added to my calendar: Stuur mij een email-notificatie als afspraken aan mijn agenda zijn toegevoegd
+email-event-added: Specificeert of er email-notificaties worden verzonden bij het toevoegen van een afspraak
+Events removed from my calendar: Stuur mij een email-notificatie als afspraken uit mijn agenda zijn verwijderd
+email-event-deleted: Specificeert of er email-notificaties worden verzonden bij het verwijderen van een afspraak
+Events updated on my calendar: Stuur mij een email-notificatie als afspraken in mijn agenda zijn bijgewerkt
+email-event-updated: Specificeert of er email-notificaties worden verzonden bij het bijwerken van een afspraak
+When I am the boss: Als mijn agenda door een assistent wordt beheerd
+Email me event notification: Ik wil email-notificaties ontvangen van agendawijzigingen
 email-boss-notifications-help: Bepaalt of de bazen emails ontvangen als afspraakmeldingen.
+I want to approve events: Ik wil nieuwe afspraken zelf goedkeuren
 boss-approve-event-help: Bepaalt of de baas afspraken moet goedkeuren die toegevoegd werden door assistenten.
+Subscribe/Publish: Aanmelden voor agendapublicatie via internet
+Allow remote publishing: Permitteer bekendmakingen op afstand
+allow-remote-publishing-help: Deze optie regelt bekendmakingen op afstand.
+URL: URL voor agendapublicatie
+remote-publishing-url-help: Toont de URL in de toepassing van de iCal cient, zowel om zich aan te melden als om terug te publiceren in de WebKalender
+Allow remote subscriptions: Agendapublicatie via internet toestaan
+allow-remote-subscriptions-help: Met deze optie bepaalt u of anderen zich op uw agenda kunnen aanmelden om zo de inhoud van uw agenda in hun iCal-applicatie te bekijken (bijvoorbeeld Apple's iCal of Mozilla Calendar).
+remote-subscriptions-url-help: Hier wordt de URL (= internetadres) getoond waar anderen zich op uw agenda kunnen aanmelden.
+Enable FreeBusy publishing: FreeBusy publicatie inschakelen
+freebusy-enabled-help: Bepaalt of de beschikbare tijd van een gebruiker verkregen kan worden door gebruik te maken van de iCal FreeBusy standaard.
+freebusy-url-help: De URL om de FreeBusy lijst van de gebruiker te openen.
+Enable RSS feed: RSS-feed inschakelen
+rss-enabled-help: Bepaalt of de agenda van een gebruiker verkregen kan worden via een RSS feed.
+rss-feed-url-help: De URL om de RSS feed te openen.
+Colors: Kleuren
+colors-help: Alle kleuren moeten worden aangegeven als #RRGGBB hexadecimaal formaat waarin RR de hexadecimale waarde is voor rood, GG voor groen en BB voor blauw
 
 ########################################
-# Page: tools/send_test_email.php
+# Page: layers_ajax.php
 #
-Error connecting to database: Fout bij het verbinden met de database
+Unable to update preference: Voorkeuren kunnen niet bijgewerkt worden
+Invalid entry id.: Ongeldige afspraak-ID
+Unsupported action: Niet ondersteunde actie
+Database error: Databasefout
+You cannot create a layer for yourself.: U kunt geen laag voor uzelf aanmaken
+You can only create one layer for each user.: U kunt slechts een laag per gebruiker aanmaken
 
 ########################################
-# Page: tools/reload_remotes.php
+# Page: report.php
 #
-Include Path: Include Pad
-No Remote Calendars found: Geen kalenders op afstand gevonden
-Remote Calendars not enabled: Kalenders op afstand niet ingeschakeld
+This event is confidential.: Vertrouwelijk - details niet beschikbaar
+(Private): (privÃ©-afspraak)
+Untimed event: Afspraak zonder begin en eindtijd
+(cont.): =
+minutes: minuten
+Low: Lage prioriteit
+High: Hoge prioriteit
+Medium: Normale prioriteit
+Approved: Goedgekeurd
+Deleted: Verwijderd
+Rejected: Geweigerd
+Waiting for approval: Nog niet bevestigd
+Unknown: Onbekend
+Invalid report id.: Ongeldige rapportage-ID
+Click here to manage reports for the Public Access calendar.: Hier klikken om rapportages voor Openbaar Toegang kalender te onderhouden.
+Add new report: Rapportage toevoegen
+Manage Reports: Rapportagebeheer
 
 ########################################
-# Page: tools/send_reminders.php
+# Page: docdel.php
 #
-could not find event id: afspraak id onvindbaar
-could not find event id XXX in database.: afspraak id onvindbaar in de database
-task: taak
-event: afspraak
-This is a reminder for the XXX detailed below.: Dit is een herinnering aan de XXX waarvan u hieronder de details vindt
-Reminder: Herinnering
+Invalid entry id XXX.: Ongeldig id: "XXX".
+Removed: Verwijderd
 
 ########################################
-# Page: ws/user_mod.php
+# Page: export_handler.php
 #
-Invalid characters in login: Ongeldige karakters in login
-You cannot remove admin rights from yourself!: Je kan administratieve rechten bij jezelf niet verwijderen!
-Unknown error saving user: Onbekende fout bij het bewaren van de gebruiker
+Export: Exporteren
+export format not defined or incorrect.: Exportformaat niet gedefinieerd of incorrect
 
 ########################################
-# Page: includes/xcal.php
+# Page: import.php
 #
-MO: MA
-TU: DI
-WE: WO
-TH: DO
-FR: VR
-SA: ZA
-SU: ZO
-Interval: =
-Months: Maanden
-Month Days: Maand dagen
-Days: Dagen
-Weeks: Weken
-Position: Positie
-Until: Tot
-Count: Telling
-Inclusion Dates: Toe te voegen data
-Exclusion Dates: Uitgesloten data
-Unnamed Event: Naamloze afspraak
-Event Imported: Item geimporteerd
-Palm Pilot: =
+Calendar: Kalender
+import from file: importeren uit bestand
+Import: Importeren
+Disabled: niet weergegeven
+No: Nee
+Yes: Ja
+Import format: Te importeren formaat
+Exclude private records: Negeer privÃ©gegevens
+Overwrite Prior Import: Vorige import overschrijven
+Repeated items are imported separately. Prior imports are not overwritten.: Herhaalde afspraken worden apart geimporteerd. Vorige imports worden niet overschreven.
+Upload file: Upload bestand
+
+########################################
+# Page: export.php
+#
+Export format: Exportformaat
+Categories: CategorieÃ«n
+All: Alle
+Include all layers: Inclusief alle lagen
+Include deleted entries: Inclusief verwijderde afspraken
+Export all dates: Alles exporteren
+Start date: Startdatum
+End date: Einddatum
+Modified since: Wijzigingen vanaf
+
+########################################
+# Page: reject_entry.php
+#
+Additional Comments (optional): Extra opmerkingen (optioneel
+Continue: Doorgaan
+(Your comments will be emailed to the other participants.): (Uw opmerkingen worden ingevoegd bij een email aan de andere deelnemers)
+XXX has rejected an appointment.: XXX heeft een afspraak geweigerd.
+Subject XXX: Onderwerp: "XXX".
+Description XXX: Omschrijving: "XXX".
+Date XXX: Datum: XXX
+Time XXX: Tijd: XXX
+Comments XXX: Opmerkingen: XXX
+Rejected by XXX.: Afgewezen door XXX.
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Afspraak XXX staat al op jouw agenda.
+a XXX event may not be added to your calendar: Dit is een XXX afspraak en mag niet aan uw agenda toegevoegd worden.
+confidential: vertrouwelijk
+private: privÃ©-afspraak
+Error adding event XXX.: Fout bij toevoegen afspraak: XXX.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Weet u zeker dat u deze laag wilt verwijderen?
+Color: Kleur
+Delete layer: Laag verwijderen
+Duplicates: Afspraken dupliceren
+Edit layer: Laag wijzigen
+Edit: Aanpassen
+Layer: laag
+Layers are currently disabled.: Lagen zijn momenteel uitgeschakeld.
+Layers are currently enabled.: Lagen zijn momenteel ingeschakeld.
+Source: Bron
+Click to modify layers settings for XXX: Hier klikken om lagen instellingen voor XXX aan te passen
+Layers: Lagen
+Enable layers: Lagen activeren
+Disable Layers: Lagen deactiveren
+Add layer: Laag toevoegen
+Specifies the user that you would like to see displayed in your calendar.: Specificeert de gebruiker wiens agenda je in als laag aan je eigen agenda wilt toevoegen.
+The text color of the new layer that will be displayed in your calendar.: De tekstkleur die wordt gebruikt voor deze nieuwe laag in je agenda.
+If checked, events that are duplicates of your events will be shown.: Indien deze optie is geactiveerd zullen afspraken die zowel in je eigen agenda staan, als die van degene wiens agenda je dubbelt, ook dubbel worden weergegeven.
+Add Layer: Laag toevoegen
+Edit Layer: Laag wijzigen
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Naamloos overzicht
+Add View: Overzicht toevoegen
+Edit View: Overzicht wijzigen
+View Name: Naam
+View Type: Type
+Day: Dag
+Day by Time: Dag per Tijd
+Week (Users horizontal): Weekoverzicht - gebruikers boven
+Week by Time: Week per Tijd
+Week (Users vertical): Weekoverzicht - gebruikers links
+Week (Timebar): Weekoverzicht - tijdbalkweergave
+Month (Timebar): Maandoverzicht - tijdbalk
+Month (side by side): Maandoverzicht - gebruikers boven naast elkaar
+Month (on same calendar): Maandoverzicht -  gebruikers in Ã©Ã©n agenda
+Users: Gebruikers
+Select: Kies
+Add: Voeg toe
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Bevestigen
+Approve Selected: Goedkeuren geselecteerden
+Check All: Controleer alle
+Emails Will Not Be Sent: Er zullen geen emails worden verstuurd
+Reject Selected: Verwerp geselecteerde
+Reject: Weigeren
+Uncheck All: Alles uitvinken
+View this entry: Afspraak bekijken
+No unapproved entries for XXX.: Geen niet-goedgekeurde afspraken voor "XXX".
+Unapproved Entries: Openstaande vermeldingen
+Not authorized: Niet geauthoriseerd
+Approve this entry?: Afspraak bevestigen?
+Reject this entry?: Afspraak weigeren?
+Approve Selected entries?: Geselecteerde afspraken goedkeuren?
+Reject Selected entries?: Verwerp geselecteerde afspraken
+
+########################################
+# Page: week_ssi.php
+#
+No user specified.: Geen gebruiker gekozen
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Gebruikerstoegang controle maakt het mogelijk nauwkeuriger gebruikerstoegang en -permissies te regelen dan voorheen mogelijk was. Gebruikers kunnen ook standaard en per individu permissies verlenen indien geauthoriseerd door de beheerder.
+User Access Control: Gebruikerstoegang controle
+Can Email: Kan emailen
+If disabled, this user cannot send you emails.: Indien uitgeschakeld, zal deze gebruiker u geen email kunnen sturen.
+Can Invite: Kan uitnodigen
+If disabled, this user cannot see you in the participants list.: Indien uitgeschakeld, zal deze gebruiker u niet zien in de deelnemers-lijst
+Can See Time Only: Kan alleen tijd zien
+If enabled, this user cannot view the details of any of your entries.: Indien ingeschakeld, zal deze gebruiker geen details kunnen zien van iedere afspraak die u maakt.
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Categorie naam is verplicht
+File size exceeds maximum.: Bestand is groter dan toegestaan
+File is not a GIF or PNG image: Bestand is geen GIF of PNG beeld
+
+########################################
+# Page: security_audit.php
+#
+Security Audit: =
+list potential security issues: De informatie hieronder toont mogelijke problemen met je WebCalendar installatie die aangepast kunnen worden om het veiliger te maken.
+View your current PHP settings: Bekijk je huidige PHP instellingen
+Security Issue: Beveiligings Probleem
+Status: =
+Details: =
+Default admin user password: Default admin gebruikers wachtwoord
+You should change the password of the default admin user.: Het wordt aangeraden om het wachtwoord van de default admin gebruiker te wijzigen.
+Wizard directory exists: Wizard map bestaat al
+# The wizard/ directory is still present. It is password-protected, but you may restrict access for extra security.: De wizard/ map bestaat nog. Het is beveiligd met een wachtwoord, maar je kunt toegang hiertoe beperken voor extra veiligheid.
+Options: restrict permissions: Opties: beperk rechten
+move outside web root, or remove it: verplaats naar buiten de web root, of verwijder het
+File permissions XXX: Bestands rechten: XXX
+item XXX should not be writable: Het volgende bestand zou niet schrijbaar mogen zijn:<br><span class="tt">XXX</span>
+File exists XXX: Bestand bestaat: "XXX"
+Because you have email disabled, you should remove this file.: Omdat email uitgeschakeld is, zou je dit bestand moeten verwijderen.
+File location XXX: Bestandslocatie: "XXX"
+remove XXX if not using: Als je bestand "XXX" niet gebruikt, dan zou die verwijderd moeten worden. Op z'n minst, dient dat verplaatst te worden naar een andere map.
+System Settings XXX: Systeem Instellingen: "XXX"
+consider enabling UAC: Je zou moeten overwegen om User Access Control in te schakelen om gebruikers rechten toe te kennen.
+Public access new events require approval: Goedkeuring vereisen voor afspraken in Open Agenda
+recommend approving new public events: Wij bevelen aan dat alle publieke gebeurtenissen verzoeken goedgekeurd moeten worden.
+Require CAPTCHA validation for public access new events: CAPTCHA validatie vereist voor openbaar toegang nieuwe gebeurtenissen
+recommend using CAPTCHA: CAPTCHA is aanbevolen om te beschermen tegen geautomatiseerde gebeurtenis verzoeken.
+Database cache directory location: Database cache map locatie
+db cache should be inaccessible: De database cache zou een map moeten zijn dat niet benaderbaar is via een URL.
+PHP Settings XXX: PHP Instellingen: "XXX"
+recommend setting XXX Off: De aanbevolen instelling voor "XXX" is Uit.
+recommend setting XXX On: De aanbevolen instelling voor "XXX" is Aan.
+recommend setting allow_url_fopen Off: De aanbevolen instelling voor "allow_url_fopen" is Uit wanneer kalenders op afstand niet aangezet zijn.
+File integrity: =
+See the release-signing runbook for manual verification and key rotation instructions: Zie het release-signing runbook voor handmatige verificatie en sleutel rotatie instructies
+Manifest files not present (install may be from source or pre-1.9.x release): =
+Manifest signature FAILED: XXX: =
+Manifest signature valid: =
+Scanned XXX files against manifest: =
+Modified files: Aangepaste bestanden
+Missing files: Ontbrekende bestanden
+Extra files: Extra bestanden
+No file integrity issues detected.: =
+Path: Pad
+Severity: Niveau
+Action: Handeling
+Critical: Kritiek
+Warning: Waarschuwing
+Info: =
+Restore from release zip if not intentional: Herstel vanaf de release zip indien deze verandering niet bewust gedaan is.
+Restore from release zip: Herstel dit bestand vanaf de release zip.
+Review contents and remove if not legitimate: Controleer de inhoud, verwijder indien niet legitiem (onverwachte bestanden die uitvoerbaar zijn, kunnen een webshell zijn).
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Lagen zijn nuttig om andermans afpsraken in uw eigen agenda te tonen. U kunt de gebruiker en kleur kiezen waarin die afspraken worden getoond.
+Add/Edit/Delete: toevoegen / wijzigen / verwijderen
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Selecteer [wijzig lagen] in menu [beheer] om lagen toe te voegen, wijzigen of verwijderen.
+Disabling: de-activeer
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: De-activeer lagen door naar menu [beheer] onderin beeld te gaan en te klikken op lagen deactiveren.
+Enabling: activeer
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Activeer lagen door naar menu [beheer] onderin beeld te gaan en te klikken op [lagen activeren].
+
+########################################
+# Page: week_details.php
+#
+New Entry: Nieuwe afspraak
+Week: =
+Admin mode: Admin-modus
+Assistant mode: Assistentiemodus
+cont.: =
+Private: privÃ©-afspraak
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Bepaal de naam voor dit overzicht
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Calendar ID: Agenda ID
+word characters only: Enkel word karakters
+Create a new layer to view this calendar.: Maak een nieuwe laag om deze kalender te bekijken
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: BESCHIKBARE CATEGORIEN
+ENTRY CATEGORIES: AFSPRAAK CATEGORIEN
+Remove: Verwijderen
+Global Category: Globale categorie
+OK: =
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Ongeldig blob ID
+
+########################################
+# Page: approve_entry.php
+#
+Approve and Send: Goedkeuren en verzenden
+Approve and Exit: Goedkeuren en afsluiten
+(Your comments will be emailed to the event creator.): Je commentaar zal in een email verstuurd worden aan de maker van de afspraak.
+XXX has approved an appointment and added comments.: Een afspraak is goedgekeurd door XXX en voorzien van opmerkingen.
+Approved w/Comments by XXX.: Goedgekeurd met opmerkingen door XXX.
+
+########################################
+# Page: help_admin.php
+#
+System Settings: Instellingen
+Allow HTML in Description: HTML toestaan in beschrijvingen
+allow-html-description-help: Als deze optie aan staat kunnen gebruiker HTML gebruiken in de beschrijvingen bij afspraken. Als hij uit staat worden HTML-tags ge-escaped zodat ze als gewone tekst worden weergegeven. Let op: als deze optie aan staat is het mogelijk te verwijzen naar afbeeldingen op andere websites.
+Allow users to override conflicts: Sta overrulen dubbele afspraken toe
+conflict-check-override-help: Deze optie staat gebruikers toe om dubbele afspraken te overrulen en twee of meer afspraken op dezelfde tijd te maken.
+Allow viewing other users calendars: Inzage agenda andere gebruikers toestaan
+allow-view-other-help: Definieert of een gebruiker de agenda van andere gebruikers mag inzien.
+Application Name: Programmanaam
+app-name-help: Hier wordt de naam van de applicatie gedefinieerd, deze naam verschijnt in het browservenster op elke pagina en op de login-pagina.
+Check for event conflicts: Check op conflicterende afspraken
+conflict-check-help: Check op conflicterende afspraken (= afspraken van een persoon op hetzelfde tijdstip. Door [ja] te kiezen blijft het mogelijk om conflicterende afspraken in te stellen door de waarschuwing te bevestigen. Door [nee] te kiezen wordt geen check op conflicterende afspraken uitgevoerd.
+Conflict checking months: Maanden op conflicten controleren
+conflict-months-help: Indien u bij optie Check op conflicterende afspraken [ja] heeft ingevoerd specificeert u hier het aantal maanden waarin deze check wordt uitgevoerd. Indien het toevoegen van afspraken teveel tijd kost is het advies om dit aantal te verlagen.
+Custom header: Eigen paginahoofd
+custom-header-help: Sta toe dat een eigen stukje HTML bovenaan iedere pagina wordt geplaatst.
+Custom script/stylesheet: Eigen script/stylesheet
+custom-script-help: Sta eigen Javascripts en stylesheets die in de HTML "head" van iedere pagina worden geplaatst toe.
+Custom trailer: Eigen pagina-onderschrift
+custom-trailer-help: Sta toe dat een eigen stukje HTML onderaan iedere pagina wordt gelaten
+Disable Access field: De-activeer veld Toegang
+disable-access-field-help: Door [ja] te kiezen wordt het veld Toegang niet getoond in de afspraak-view; uw agenda kan hierdoor overzichtelijker worden.
+Disable Participants field: De-activeer veld Aanwezigen
+disable-participants-field-help: Door [ja] te kiezen wordt het veld Aanwezigenniet getoond in de afspraak-view. Hierdoor voorkomt u dat andere gebruikers aanwezigen aan hun afspraken toevoegen. Indien u deze optie activeert wenst u wellicht ook om de optie [sta raadplegen agenda andere gebruikers toe] te de-activeren.
+Disable Priority field: De-activeer veld Priority
+disable-priority-field-help: Door ja te kiezen wordt het veld Priority niet getoond bij het maken van uw afspraken; uw agenda kan hierdoor overzichtelijk worden.
+Disable Repeating field: De-activeer veld Herhalingspatroon
+disable-repeating-field-help: Door [ja] te kiezen wordt het veld [herhalingspatroon] niet getoond bij het toevoegen van afspraken; uw agenda kan hierdoor overzichtelijk worden.
+Display days with events in bold in year view: Geef dagen met afspraken in de jaar-view vet gedruk weer
+yearly-shows-events-help: Als deze optie aan staat worden dagen met afspraken in de jaar-view vet gedruk weergegeven.
+Display Site Extras in popup: Toon Site Extra's in popup
+popup-includes-siteextras-help: Laat de eigen afspraak-velden, geconfigureerd in het bestand site_extras.php, zien in afspraak-popups.
+Home URL: Thuis URL
+home-url-help: Specifieert de home URL van het programma. Dit kan een absoluut of een relatief adres zijn.
+Include add event link in views: Toon icoon voor maken van afspraken in alle views
+allow-view-add-help: In alle views wordt een '+' getoond zodat sneller een afspraak in een andere agenda kan worden gezet.
+Limit number of timed events per day: Stel beperking in voor het aantal tijdgebonden afspraken per gebruiker per dag
+limit-appts-help: Deze optie staat de Administrator toe om het aantal afspraken per dag voor alle gebruikers te beperken.
+Maximum timed events per day: Maximum aantal tijdgebonden afspraken per gebruiker per dag
+limit-appts-number-help: Deze optie bepaalt het maximale aantal tijdgebonden afspraken per gebruiker per dag
+Remember last login: Onthoud loginnaam
+remember-last-login-help: Indien ingeschakeld zal, bij een volgend bezoek, de gebruikersnaam maar niet het password automatisch worden ingevoerd en worden de gebruikersinstellingen geladen inclusief kleurpatroon en taalselectie.
+Require event approvals: Afspraakbevestigingen worden vereist
+require-approvals-help: Indien ingeschakeld dient een gebruiker een afspraak te bevestigen voordat deze in de agenda wordt getoond tenzij Weergave onbevestigde items is geactiveerd.<br />Let op: door deze optie te de-activeren worden alle bevestigingen voor de publiek toegankelijke agenda uitgeschakeld indien deze is geactiveerd.
+Server URL: =
+server-url-help: Specificeert de basis URL van de applicatie, deze URL wordt gebruikt bij het verzenden van email notificaties en herinneringen.
+Public Access: Open Agenda
+Allow public access: Publieke toegang tot agenda toestaan
+allow-public-access-help: Indien ingeschakeld kan de agenda worden gebruikt als read-only Open Agenda; gebruikers hoeven in dit geval niet in te loggen
+Public access can add events: Toevoegen nieuwe afspraken bij Open Agenda toestaan
+public-access-can-add-help: Indien ingeschakeld kunnen gebruikers, die de agenda via publeike toegang inzien, wel nieuwe afspraken toevoegen. Deze worden echter pas getoond na goedkeuring van de Administrator.
+Public access can view other users: Inzage agenda overige gebruikers bij publieke toegang toestaan
+public-access-view-others-help: Indien publieke toegang is ingeschakeld bepaalt deze optie of de gebruiker de agenda van overige gebruikers kan inzien.
+Public access can view participants: Open Agenda kan deelnemers bekijken
+public-access-sees-participants-help: Als deze optie aan staat kunnen gebruikers die de kalender bekijken vanaf de Open Agenda zien wie er deelnemen aan een afspraak wanneer ze de details van een afspraak bekijken.
+Public access is default participant: Open Agenda is de standaard instelling voor deelnemers
+public-access-default-selected: Publieke toegang is standaard geselecteerd
+public-access-add-requires-approval-help: Deze optie bepaalt of afspraken voor de Open Agenda goedgekeurd moeten worden voordat zij zichtbaar zijn.
+Public access visible by default: Publieke afspraken standaard zichtbaar
+public-access-default-visible: Afspraken op de Open Agenda verschijnen automatisch op de kalenders van alle gebruikers
+Groups: Groepen
+Groups enabled: Activeer groepen
+groups-enabled-help: Maakt groepsondersteuning mogelijk, zodat gebruikers andere gebruikers per groep kunnen selecteren.
+User sees only his groups: Gebruiker heeft enkel inzage in eigen groep(en)
+user-sees-his-group-help: Indien geactiveerd hebben gebruikers geen inzake in de agenda van gebruikers buiten hun groep(en).
+Nonuser: Losse agenda
+Nonuser enabled: Activeer losse agenda
+nonuser-enabled-help: Indien deze optie is geactiveerd kan een beheerder een of meer losse agenda's (= agenda zonder eigenaar-gebruiker) toevoegen.
+Nonuser list: Positie losse agenda
+nonuser-list-help: Deze optie bepaalt waar de losse agenda in het deelnemersoverzicht wordt getoond.
+Other: Overige
+Allow external users: Toon externe deelnemers
+allow-external-users-help: Hiermee kan een extern persoon als aanwezige bij een bepaalde afspraak worden gespecificeerd.
+subscriptions-enabled-help: Met deze optie bepaalt u of remote gebruikers zich op een WebCalendar-agenda kunnen aanmelden om zo de inhoud van deze agenda in hun iCal-applicatie te bekijken (bijvoorbeeld Apple's iCal of Mozilla Calendar).
+Categories enabled: Activeer gebruik van categorieÃ«n
+categories-enabled-help: Sta ondersteuning toe voor afspraakcategorieÃ«n.
+External users can receive email notifications: Emailnotificaties voor externe deelnemers toestaan
+external-can-receive-notification-help: Als externe deelnemers en emailgebruik beide zijn geactiveerd en het mailadres van de externe deelnemer is ingevuld kunnen externe deelnemers email notificaties ontvangen bij het toevoegen, wijzigen of verwijderen van een afspraak.
+External users can receive email reminders: Herinneringen voor externe deelnemers toestaan
+external-can-receive-reminder-help: Als externe deelnemers en emailgebruik beide zijn geactiveerd en het mailadres is ingevuld kunnen externe deelnemers emailreminders ontvangen.
+Reports enabled: Activeer rapportages
+reports-enabled-help: Indien deze optie is geactiveerd wordt een nieuwe rapportage-sectie zichtbaar in het beheerpaneel onderaan de pagina. Hier kan een gebruiker eigen agendarapportages definieren.<br />Beheerders kunnen algemene rapportages toevoegen die in het rapportagemenu van alle gebruikers beschikbaar zijn.
+Default sender address: Standaard mailadres
+email-default-sender: Specificeert het mailadres dat als afzender wordt getoond bij het verzenden van herinneringen
+Email enabled: Activeer gebruik van email
+email-enabled-help: Activeer of deactiveer hier het verzenden van email-notificaties en herinneringen bij een afspraak
+Allow user to customize colors: Gebruikers mogen kleuren van eigen agenda aanpassen
+user-customize-color: eigen kleur van de gebruiker
+Enable gradient images for background colors: Maak gradient images voor achtergrondkleuren mogelijk
+enable-gradient-help: Gebruik overgaande kleuren voor de celachtergrond.
+Manually entering color values: Handmatig kleurwaarden ingeven
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Assistenten
+Control Panel: Controlepaneel
+Account: account
+Remote Calendars: Kalenders op afstand
+Resource Calendars: Hulpmiddelen Kalenders
+Views: Overzichten
+Reports: Rapportages
+Delete Events: Afspraken verwijderen
+Activity Log: Berwerkerslogboek
+System Log: Systeemlogboek
+Public Preferences: Publieke voorkeuren
+Unapproved Public Events: Openstaande publieke afspraken
+Administrative Tools: Administratieve gereedschappen
+
+########################################
+# Page: search.php
+#
+Advanced Search: Uitgebreid zoeken
+Search: Zoeken
+Keywords: Trefwoorden
+Enter % for all entries: Vul % in voor alles
+Include: Bevat
+Filter by Date: Filter volgens datum
+All Dates: Alle datums
+Past: Voorbije
+Upcoming: Komende
+Range: Periode
+
+########################################
+# Page: usersel.php
+#
+Program Error No XXX specified!: Programma Fout: XXX niet gespecificeerd!
+form: formulier
+listid: lijst id
+Reset: =
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX heeft een nieuwe afspraak gemaakt.
+XXX has updated an appointment.: XXX heeft een afspraak bijgewerkt.
+Security violation!: =
+You must enter the anti-spam text on the previous page.: Je moet de anti-spam tekst van de vorige pagina invullen.
+The following conflicts with the suggested time: De voorgestelde tijd conflicteert met de volgende afspraak
+XXX has canceled an appointment.: XXX heeft een afspraak geannuleerd.
+User removed from participants list.: Gebruiker verwijderd uit de deelnemers lijst.
+Please look on XXX to accept or reject this appointment.: Kijk AUB op XXX om de afspraak te accepteren of af te wijzen.
+Please look on XXX to view this appointment.: Kijk AUB op XXX om deze afspraak te bekijken.
+Scheduling Conflict: Agendaconflict
+Your suggested time of: De door u voorgestelde tijd
+conflicts with the following existing calendar entries: conflicteert met de volgende bestaande afspraken
+
+########################################
+# Page: help_import.php
+#
+Palm Desktop: =
+allow you to import entries from the Palm...: Via dit formulier kun je afspraken vanaf de Palm Desktop Datebook importeren. Het moet in je Palm map in <tt>datebook/datebook.dat</tt> staan in a submap met als naam jouw gebruikersnaam.
+The following entries will not be imported: De volgende items zullen niet worden geimporteerd
+Entries older than the current date: items ouder dan de huidige datum
+Entries created in the Palm Desktop...: Items gemaakt in de Palm Desktop agenda die nog niet met HotSync gesynchroniseerd zijn
+Anything imported from Palm...: Alles geimporteerd vanaf Palm zal overschreven worden met de volgende import (tenzij de gebeurtenis datum al voorbij is). Daarom zouden bewerkingen in de Palm Desktop gedaan moeten worden.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Hier kunt u afspraken uit vCalendar (.vcs) 1.0 in uw agenda importeren
+The following formats have been tested: De volgende bestandsformaten zijn getest
+This form will import iCalendar (.ics) events.: Met dit formulier importeert u iCalendar (.ics) afspraken
+will cause events imported previously...: zal vroeger geÃ¯mporteerde afspraken als <i>verwijderd</i> aanduiden, wanneer ze dezelfde UID gebruikten als het pas geÃ¯mporteerde bestand. Dit maakt het mogelijk een bijgewerkt iCalendar-bestand te importeren zonder dubbels te creÃ«ren.
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: versie XXX
+WebCalendar is a PHP application used...: Webcalendar is een PHP-toepassing die dient om de agenda van een enkele gebruiker of van een internet- of intranetgebruikersgroep bij te houden.
+Credits: Medewerkers
+About: Over
+
+########################################
+# Page: login.php
+#
+Fatal Error: Fatale fout
+Invalid form request: Ongeldige form verzoek
+You have been logged out.: U bent uitgelogd
+You must provide a password.: Een wachtwoord moet ingevoerd worden.
+Invalid login: Ongeldige login
+Too many failed login attempts. Please try again later.: Teveel mislukte login pogingen. Probeer het AUB later nogmaals.
+Activity login failure: Gebruikersnaam "XXX", IP "YYY".
+Access XXX calendar: Toegang tot kalender XXX
+Not yet registered? Register here!: Nog niet geregistreerd? Registreer hier!
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Rapporteer een programmafout
+Please include all the information below when reporting a bug.: Wil u onderstaande informatie vermelden bij het doorgeven van een foutmelding?
+Also, please use English rather than: Wil u <strong>Engels</strong> gebruiken in plaats van
+Also, please use English rather than XXX.:Daarnaast, gebruik <strong>Engels</strong> i.p.v. XXX.
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: U moet een gebruikersnaam en een wachtwoord invullen.
+Save login via cookies so I dont have to login next time.: Bewaar inloggegevens
+Login: Aanmelden
+public: publiekelijk
+
+########################################
+# Page: edit_entry.php
+#
+am: a.m. (ante meridiem), 's morgens
+pm: p.m. (post meridiem), 's avond
+days: dagen
+hours: uren
+You are not authorized to edit this task.: U heeft geen recht deze taak te bewerken
+is in a different timezone than you are. Currently: is in een andere tijdzone dan u, Op het moment
+hour ahead of you: een uur voor op u
+hour behind you: een uur achter op u
+hours ahead of you: uren voor op u
+hours behind you: uren achter op u
+XXX is in a different timezone (ahead): (XXX is in een ander tijdzone; YYY later dan jou.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX is in een ander tijdzone; YYY eerder dan jou.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Gegeven tijd is gebaseerd op uw tijdzone
+Edit Entry: Afspraak wijzigen
+Add Entry: Afspraak toevoegen
+You are not authorized to edit this entry.: U heeft geen toestemming om deze afspraak te bewerken.
+Participants: Deelnemers
+Repeat: Herhalen
+Reminders: Herinneringen
+brief-description-help: In dit veld kunt u een korte afspraakomschrijving invullen (ca. 20 karakters). De omschrijving wordt in de agenda getoond.
+Brief Description: Korte omschrijving
+full-description-help: Hier ziet u de volledige afspraakomschrijving.<br />N.B.: deze omschrijving wordt alleen getoond indien de afspraak wordt geopend.
+Full Description: Uitgebreide omschrijving
+access-help: Hier bepaalt u de toegankelijkheid van de afspraak voor anderen. Indien u<br /><i>publiek</i> selecteert kunnen de overige gebruikers de afspraak bekijken. Selecteert u <i>vertrouwelijk</i>, dan zien de overige gebruikers wel dat u een afspraak heeft, maar kunnen zij geen details opvragen.
+Access: Toegankelijkheid
+Public: Publiekelijk
+Confidential: vertrouwelijk
+priority-help: Hier kunt u de prioriteit van de afspraak vermelden; afspraken met een hoge prioriteit zullen vetgedrukt in de agenda verschijnen.
+Priority: Prioriteit
+category-help: Hier geeft u aan in welke categorie de afspraak thuishoort.
+completed-help: Datumtaak afgewerkt. Alleen mogelijk als alle deelnemers de taak 100% afgewerkt hebben.
+Date Completed: Datum afgewerkt
+percent-help: Afwerkingspercentage van de taak voor deze gebruiker
+Percent Complete: Procent compleet
+All Percentages: Alle percentages
+location-help: Locatie van de afspraak
+Location: Locatie
+url-help: URL bij een afspraak
+date-help: Dit is de datum waarop de afspraak plaatsvindt.
+Start Date: Startdatum
+time-help: Dit is de aanvangstijd van de afspraak.<br /><i>Dit veld mag leeg blijven</i><br />
+Type: =
+Timed event: Tijdgebonden afspraak
+Time entered here is based on your Timezone: Hier ingevulde tijd is gebaseerd op jouw tijdzone
+duration-help: Hier geeft u aan hoe lang de afspraak duurt (in minuten).<br /><i>Dit veld mag leeg blijven</i><br />
+Duration: Duur
+end-time-help: Bepaalt de tijd waarop de afspraak gepland is te eindigen.
+Start Time: Starttijd
+Due Date: Af zijn op datum
+Due Time: Af zijn om
+Find Name: Zoek Naam
+Resources: Hulpmiddelen
+participants-help: Noteer hier welke externe deelnemers bij de afspraak aanwezig zullen zijn. Zorg dat elke regel maximaal Ã©Ã©n deelnemer omvat en voeg een mailadres toe om de externe deelnemer een email-notificatie of herinnering te laten ontvangen.<br />N.B. het verzenden van notificaties en herinneringen zal alleen plaatsvinden indien de agenda-instellingen en de server dit ondersteunen.
+Selected Participants: Geselecteerde Deelnemers
+Availability: Beschikbaarheid
+external-participants-help: Hier wordt een lijst van externe deelnemers gegeven. Vul per regel een gebruiker en emailadres in. Als een emailadres is ingevoerd kan de externe gebruiker ook notificaties en herinneringen ontvangen.
+External Participants: externe deelnemers
+repeat-type-help: Deze optie geeft aan hoe vaak de afspraak moet worden herhaald:<br /><i>maandelijks (dag)</i> zorgt ervoor dat de afspraak wordt herhaald op elke 1e maandag van de maand, 3e donderdag van de maand, etc.<br /><i>maandelijks (dag v.a. maandeinde)</i> zorgt ervoor dat de afspraak wordt herhaald op elke laatste vrijdag van de maand, elke een-na-laatste maandag van de maand, etc. - steeds afhankelijk van de dag waarop u een afspraak definieert<br /><i>Maandelijks (datum)</i> zorgt ervoor dat de afspraak wordt herhaald op dezelfde dag van de maand.
+Daily: Dagelijks
+Weekly: Wekelijks
+Monthly (by day): Maandelijks (per dag)
+Monthly (by date): Maandelijks (per datum)
+Monthly (by position): Maandelijks (per positie)
+Yearly: Jaarlijks
+Manual: Handmatig
+Expert Mode: Expert-modus
+repeat-end-date-help: Deze optie specificeert de datum waarop het herhalingspatroon eindigt.
+Ending: Eindigt
+Forever: Eeuwig
+Use end date: Gebruik einddatum
+Number of times: Aantal keren
+repeat-frequency-help: Hier kunt u een eventueel herhalingspatroon specificeren. Indien u [1] invult wordt de afspraak elke dag / week / maand / jaar herhaald. Indien u [2] invult wordt de afspraak om de dag / week / maand / jaar herhaalt, etc.<br />N.B.: bij een herhalingsinterval om de x weken dient u wel een herhalingsdag te specificeren (zie boven).
+Frequency: Herhalingspatroon
+Weekdays Only: Enkel werkdagen
+Week Start: Week start
+repeat-bydayextended-help: Sta toe dat een dag van de week wordt gekozen.
+ByDay: PerDag
+repeat-month-help: Bepaal in welke maanden de afspraak herhaald moet worden.
+ByMonth: PerMaand
+repeat-bysetpos-help: Sta datumkeuze toe op basis van dag van de maand.
+BySetPos: PerStelPos
+repeat-bymonthdayextended-help: Sta herhaling toe op basis van een datum.
+ByMonthDay: PerMaandDag
+repeat-byweekno-help: Sta toe dat de gebruiker een lijst van weken opgeeft voor de herhaling (1,2...53,-53,-52...-1).
+ByWeekNo: PerWeekNr
+repeat-byyearday-help: Sta toe dat de gebruiker een lijst van dagen in het jaar opgeeft voor de herhaling (1,2...366,-366,-365...-1).
+ByYearDay: PerJaarDag
+repeat-exceptions-help: Dagen die niet in het patroon vallen, maar wel meetellen, of dagen die wel in het patroon zitten, maar juist niet mogen meetellen
+Exclusions: Uitsluitingen
+Inclusions: Toevoegingen
+Add Exception: Uitzondering toevoegen
+Add Inclusion: Extra dag toevoegen
+Delete Selected: Geselecteerde verwijderen
+Send Reminder: Herinnering sturen
+When: Wanneer
+Use Date/Time: Gebruik Datum/Tijd
+Use Offset: Gebruik dispositie
+Before: Voor
+After: Na
+Start: Begin
+End/Due: Einde/Klaar
+Times: Keren
+Every: Iedere
+CAPTCHA Warning: =
+Delete entry: Afspraak verwijderen
+Edit Categories: CategorieÃ«n Bewerken
+Available categories: Beschikbare CategorieÃ«n
+Selected categories: Geselecteerde CategorieÃ«n
+
+########################################
+# Page: availability.php
+#
+user: gebruiker
+year: jaar
+month: maand
+day: dag
+
+########################################
+# Page: upcoming.php
+#
+more: meer
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: U heeft geen categorie toegevoegd
+Set Category: Bepaal categorie
+Global Categories cannot be changed.: Globale categorieÃ«n kunnen niet worden gewijzigd
+
+########################################
+# Page: user_mgmt.php
+#
+Are you sure you want to delete this user?: Weet u zeker dat u deze gebruiker wilt wissen?
+This will delete all events for this user.: Dit verwijdert alle afspraken voor deze gebruiker.
+This action cannot be undone.: Deze actie kan niet ongedaan gemaakt worden.
+Invalid email address: Ongeldig E-mail adres
+Invalid first name.: Ongeldige voornaam.
+Invalid last name.: Ongeldige achternaam.
+Admin: Beheer
+Add User: Gebruiker toevoegen
+New username: Nieuwe gebruikersnaam
+required: vereist
+Enabled: wel weergeven
+Change Password: Wijzig wachtwoord
+Set Password: Bewaar wachtwoord
+Delete User: Verwijder gebruiker
+Edit User: Gebruiker wijzigen
+User successfully added.: Gebruiker succesvol toegevoegd.
+User successfully updated.: Gebruiker succesvol bijgewerkt.
+Password successfully updated.: Wachtwoord succesvol bijgewerkt.
+User successfully deleted.: Gebruiker succesvol verwijderd.
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Er moet een login gespecifieerd worden
+No such nonuser calendar: Onbekende losse agenda
+
+########################################
+# Page: activity_log.php
+#
+Events: Afspraken
+
+########################################
+# Page: pref.php
+#
+Invalid setting name XXX.: Ongeldige instellingsnaam "XXX".
+Preferences reset to system defaults.: Voorkeuren teruggezet naar standaard instellingen.
+Document background: Achtergrondkleur agenda
+Document title: Tekstkleur programmanaam inlogscherm
+Document text: Standaard tekstkleur
+My event text: Mijn afspraak tekstkleur
+Table grid color: Kleur tabelraster
+Table header background: Achtergrondkleur tabelzijden
+Table header text: Tekstkleur tabelheaders
+Table cell background: Achtergrondkleur tabelcellen
+Table cell background for current day: Achtergrondkleur voor afspraken en huidige dag
+Table cell background for days with events: Achtergrondkleur voor cellen met afspraken
+Table cell background for weekends: Achtergrondkleur voor weekeinden
+Table cell background for other month: Achtergrondkleur voor cellen in andere maand
+Week number color: Weeknummer kleur
+Event popup background: Achtergrondkleur afspraak-popup
+Event popup text: Tekstkleur afspraak-popup
+Are you sure you want to reset preferences for XXX?: Weet je zeker dat je voorkeurinstellingen voor XXX naar standaard wilt terugzetten?
+Save Preferences: Voorkeuren opslaan
+Reset Preferences: Voorkeuren terugzetten
+Public Access calendar: Publiek toegankelijke kalender
+Manage Preferences for Resource, Remote and Public Calendars: Voorkeuren bewerken voor hulpmiidelen-, afstands- en publieke kalenders
+Return to My Preferences: Terugkeren naar Mijn Voorkeuren
+Custom Scripts: Zelfgemaakte scripts
+Your browser default language is XXX.: Jouw browser is standaard ingesteld op taal "XXX".
+Date and Time: Datum en tijd
+Timezone Selection: Tijdzone
+Small Task Date: Taakdatum klein
+preferred-event-visibility: Standaard zichtbaarheid voor afspraken
+Default Visibility: Standaard zichtbaarheid
+12 hour: 12 uur
+24 hour: 24 uur
+display-weekend-starts-on: Stelt de dag van de week in waarop weekends beginnen
+Weekend starts on: Weekend begint op
+From: Van
+to: tot
+Appearance: Voorkomen
+Month: Maand
+Year: Jaar
+display-sm_month-help: Toon kleine maandschema's in de maandview
+Display small months: Toon kleine maanden
+Display weekends: Toon weekeinden
+display-long-daynames-help: Indien ingeschakeld worden lange dagnamen getoond.
+Display long day names: Toon dagnamen voluit
+display-minutes-help: Toon altijd de minuten, ook bij :00
+Display 00 minutes always: Altijd 00 minuten tonen
+display-end-times-help: Toon eindtijd indien bekend
+Display end times on calendars: Toon eindtijd op kalenders
+display-alldays-help: Toon vorige en volgende dagen bij de maandview, zodat alle cellen gevuld zijn
+Display all days in month view: Alle dagen tonen in maandweergave
+display-tasks-help: Toon klein taakvenster in maand- en dagagenda
+Display small task list: Kleine takenlijst tonen
+display-tasks-in-grid-help: Toon in de agenda's de taken samen met de gebeurtenissen
+Display tasks in Calendars: In de kalenders taken weergeven
+lunar-help: Toon met kleine icoontjes de maanfasen van elke maand
+Display Lunar Phases in month view: Maanfasen tonen in maandweergave
+End Time: Einddtijd
+crossday-help: Indien aangeduid worden afspraken die meer dan Ã©Ã©n dag duren op de afzonderlijke dagen aangegeven.
+Disable Cross-Day Events: Dagoverschrijdende afspraken uitschakelen
+entry-interval-help: Bepaalt het minuteninterval bij het invoeren van tijden van afspraken
+Entry interval: Afspraak interval
+hour: uur
+minute: minuut
+Miscellaneous: Allerlei
+mcp-api-token-help: API token om WebCalendar data via Model Context Protocol te benaderen. Genereer een nieuwe token om de huidge te vervangen.
+MCP API Token: =
+Copy this token now. For security it is stored hashed and cannot be shown again.: Sla dit token nu op. Voor de veiligheid wordt het gehasht opgeslagen en kan niet teruggehaald worden.
+Generate New Token: Genereer Nieuwe Token
+Clear Token: Token Wissen
+email-format: keis voorkeur voor HTML or platte tekstt berichten
+Email format preference: Email formaat voorkeur
+HTML: =
+Plain Text: Platte tekst
+email-include-ics: Voeg een iCalendar ICS bestand toe aan email bericht
+Include iCalendar attachments: iCalendar bijvoegsels meesturen
+email-event-create: Specificeert of er e-mailnotificaties worden verzonden bij het aanmaken van een afspraak
+Event that I create: Afspraken die ik zelf aanmaak
+display_byproxy-help: Toon de werkelijke maker op de view_entry pagina
+Display if created by Assistant: Markering weergeven indien aangemaakt door assistent
+allow-view-subscriptions-help: Met deze functie wordt het mogelijk om geregistreerden te bekijken.
+Allow remote viewing of: Permitteer inzage op afstand
+entries: afspraken
+Reset Colors:Kleuren Terugzetten
+
+########################################
+# Page: help_index.php
+#
+Help Index: Overzicht help-onderwerpen
+About WebCalendar: Over WebCalendar
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Publiceren is uitgeschakeld (Admin)
+Publishing Disabled (User): Publiceren is uitgeschakeld (Gebruiker)
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Taak bijwerken percentage
+Completed: Afgewerkt
+Description: Omschrijving
+Declined: Afgewezen
+Needs-Action: Behoeft-aandacht
+Repeat Type: Herhalingspatroon
+by: door
+Created by: Aangemaakt door
+Updated: Gewijzigd
+Percentage Complete: Percentage compleet
+External User: Externe Gebruiker
+Update: Bijwerken
+Attachments: Bijlagen
+View: Bekijk
+Comments: Opmerkingen
+at: om
+comments: opmerkingen
+Show: Toon
+Hide: Verbergen
+Approve/Confirm entry: Afspraak bevestigen
+Reject entry: Afspraak weigeren
+Add Attachment: Bijlage toevoegen
+Add Comment: Opmerking toevoegen
+Set category: Bepaal categorie
+Add to My Calendar: Zet afspraak ook in mijn eigen agenda
+Copy entry: Kopie maken van afspraak
+This will delete this entry for all users.: De afspraak wordt uit de agenda verwijderd.
+Edit entry: Afspraak wijzigen
+Edit repeating entry for all dates: Wijzig de gehele reeks met afspraken
+Delete repeating event for all dates: Verwijder de gehele reeks met afspraken
+Edit entry for this date: Wijzig alleen de afspraak op deze datum
+Delete entry only for this date: Verwijder alleen de afspraak op deze datum (NB: niet mogelijk voor de eerste dag)
+Delete entry from calendar of XXX: Verwijder gebeurtenis uit kalender van XXX
+This will delete the entry from your XXX calendar.: U staat op het punt de afspraak te verwijderen uit uw XXX agenda.
+boss: van uw baas
+This will delete the entry from your boss calendar.: Hiermee wordt een afspraak verwijderd uit de agenda van uw baas.
+This will delete the entry from your calendar.: De afspraak wordt uit de agenda verwijderd.
+from your boss calendar: Uit de agenda van de baas
+Do you want to add this entry to your calendar?: Deze afspraak ook in uw eigen agenda plaatsen?
+This will add the entry to your calendar.: Bevestig om de afspraak in uw eigen agenda te plaatsen.
+Email all participants: Stuur emailbericht naar alle aanwezigen
+Export this entry to: Exporteer afspraak naar
+Hide activity log: Verberg logboek
+Show activity log: Toon logboek
+
+########################################
+# Page: groups.php
+#
+Are you sure you want to delete this group?: Weet je zeker dat je deze groep wilt verwijderen?
+Group Name cannot be blank.: Groepsnaam mag niet leeg zijn.
+You must selected one or more users.: Je moet minimaal Ã©Ã©n gebruiker selecteren.
+Group name: Groepsnaam
+Add Group: Groep toevoegen
+New group name: Nieuwe groepsnaam
+Delete Group: Groep verwijderen
+Edit Group: Groep wijzigen
+Group successfully added.: Groep succesvol toegevoegd.
+Group successfully updated.: Groep succesvol bijgewerkt.
+Group successfully deleted.: Groep succesvol verwijderd.
+
+########################################
+# Page: events_ajax.php
+#
+Unknown error.: Onbekende fout.
+
+########################################
+# Page: remotecal_mgmt.php
+#
+Your PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.: Je PHP instellingen voor allow_url_fopen staat niet toe dat een kalender op afstand geladen kan worden.
+Are you sure you want to delete this remote calendar?: Weet je zeker dat je deze kalender op afstand wilt verwijderen?
+This will remove all events for this remote calendar.: Dit zal alle afspraken voor deze kalender op afstand verwijderen.
+Name is required: Naam is verplicht
+The ID is limited to letters, numbers and underscore only.: Het ID is beperkt tot alleen letters, cijfers en liggend streepje.
+You have not entered a URL.: Je hebt geen URL ingevoerd.
+This remote calendar does not have a layer.  Add a layer for this calendar to view it in your calendar.: Deze kalender op afstand heeft geen lagen. Voeg een laag toe aan deze kalender om het zichtbaar te maken in jouw kalender.
+Unique Calendar ID for remote calendar: Uniek Kalendar ID voor kalender op afstand
+Name: Naam
+Calendar user who created this remote calendar: Kalender gebruiker die deze kalender op afstand aangemaakt heeft
+Created By: Aangemaakt door
+Enabling allows this remote calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.: Activeren maakt het mogelijk om deze kalender op afstand te gebruiken als een publieke kalender, en een link erheen zal getoond worden op de login pagina.
+Number of events currently in the remote calendar: Aantal afspraken in de kalender op afstand op dit moment
+Date the remote calendar was last updated: Datum waarop de kalender op afstand voor het laatst bijgewerkt is
+Last Updated: Laatst bijgewerkt
+Date the remote calendar was last checked for an update.  The update may have been skipped if it the remote calendar had not changes since the last update.: Datum waarop de kalender op afatand voor het laatst gecontroleerd is op wijzigingen.  Het bijwerken is mogelijk overgeslagen indien de kalender op afstand geen wijzigingen heeft sinds de laatste controle.
+Last Checked: Laatst gecontroleerd
+URL for the ICS file used to import events for this remote calendar: URL voor het ICS bestand om gebeurtenissen te importeren vanaf deze kalender op afstand
+Calendar URL: Kalender URL
+Add Remote Calendar: Kalender op afstand toevoegen
+New ID: Nieuw ID
+Delete Remote Calendar: verwijder Kalender op afstand
+Reload: Opnieuw laden
+Remote Calendar successfully reloaded: Kalender op afstand succesvol herladen
+Remote Calendar successfully added. You must add a new layer to your calendar to view the events from this remote calendar on your calendar.: Kalender op afstand succesvol toegevoegd. Je moet een nieuwe laag toevoegen om gebeurtenissen van deze kalender op afstand te zien op je eiegen kalender.
+Remote Calendar successfully updated.: Kalender op afstand succesvol bijgewerkt.
+Remote calendar successfully deleted.: Kalender op afstand succesvol verwijderd.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Afspraken toevoegen/wijzigen
+For More Information...: Voor verdere inlichtingen...
+Repeat End Date: Einddatum herhaling
+Repeat Day: Herhalingsdag
+repeat-day-help: Indien uw afspraak wekelijks wordt herhaald, geeft u hier aan op welke weekdag de afspraak terugkeert. Dit is alleen mogelijk indien u hierboven bij <i>herhalingspatroon</i> de optie [wekelijks] heeft gekozen.<br />N.B.: u kunt meerdere weekdagen aanvinken.
+
+########################################
+# Page: purge.php
+#
+Preview: =
+Purging events for: Afspraken geheel verwijderen voor
+Finished: Klaar
+Back: Terug
+Check box to delete ALL events for a user: Vinkje om <b>ALLE</b> afspraken van een gebruiker te verwijderen
+Delete all events before: Alle afspraken verwijderen voor
+Purge deleted only: Alleen de geschrapte afspraken definitief verwijderen
+Preview delete: Preview verwijderen
+Are you sure you want to delete events for: Weet u zeker dat u alle afspraken wilt verwijderen voor
+Records deleted from XXX: Regels verwijderd uit "XXX"
+
+########################################
+# Page: admin.php
+#
+Bottom: Onder
+Top: Boven
+Anyone: Wie dan ook
+Participant: Deelnemer
+MCP Server: =
+System options: Systeemopties
+Translated Name (XXX): Vertaalde Naam (XXX)
+Site security: =
+Content Security Policy: =
+No site can frame the content: Geen site kan de inhoud via een frame tonen
+The same site can frame the content: Dezelfde site kan de inhoud via een frame tonen
+Any site can frame the content: Alle sites kunnen de inhoud via een frame tonen
+View explanation at OWASP: Lees uitleg op OWASP
+enable-external-header-help: Laat toe om de hoofding te laden vanuit een extern bestand.
+Use Cross-Site Request Forgery Protection: Gebruik Cross-Site Request Forgery Protection
+Site customization: Aanpassing van de site
+Allow external file for header/script/trailer: Permitteer extern bestand voor kop/script/staart
+Allow user to override header/trailer: Permitteer de gebruiker controle over kop/staart
+server-tz-help: Stelt in hoeveel uur bij te stellen om van UTC naar server tijd aan te passen.
+Server Timezone Selection: Server tijdzone selectie
+Default Client Timezone Selection: Default Client Tijdzone Keuze
+display-general-use-gmt-help: Indien aangeduid, worden datums en tijden voor algemeen gebruik in GMT getoond.
+Display Common Use Date/Times as GMT: Toon data en tijden voor algemeen gebruik in GMT
+Allow top menu: Permitteer menu bovenin
+Date Selectors position: Datum positiekiezers
+Display days with events in bold in month and year views: Nummers van dagen met afspraken vet weergeven bij maand- en jaarweergave
+Restrictions: Beperkingen
+disable-location-field-help: Hiermee voorkomt u dat het locatie-veld wordt getoond
+Disable Location field: Locatie-veld uitschakelen
+disable-url-field-help: Als u "ja" kiest wordt het URL-veld niet getoond op pagina's met afspraakinformatie
+Disable URL field: URL-veld uitschakelen
+Popups: Pop-ups
+disable-popups-help: Hiermee voorkomt u dat pop-ups worden getoond.
+Disable Pop-Ups: Pop-ups uitschakelen
+popup-includes-participants-help: Toon deelnemers in de pop-ups van afspraken
+Display Participants in popup: Toon deelnemers in pop-up
+summary_length-help: Maximale lengte van de korte beschrijving in agenda overzichten
+Brief Description Length: Lengte van korte omschrijving
+user_sort-help: Bepaalt de volgorde op lijsten van gebruikers en losse agenda's
+User Sort Order: Gebruikersvolgorde
+Lastname, Firstname: Achternaam, Voornaam
+Firstname, Lastname: Voornaam, Achternaam
+public-access-override-help: Maak verbergen van namen en beschrijvingen mogelijk in de publieke agenda
+Override event name/description for public access: Domineer afspraak naam/omschrijving voor Open Agenda
+public-access-override-text-help: De tekst bij bovenstaande optie staat aan. Indien 'niet beschikbaar', zal hij vertaald worden.
+Text to display to public access: Tekst om te tonen bij Open Agenda
+public-access-captcha-help: Indien ingesteld dan worden nieuwe gebeurtenissen die openbaar toegevoerd worden pas geaccepteerd indien CAPTCHA validatie slaagt
+uac-enabled-help: Sta UAC toe (user-level access control, toegang en bevoegdheden per gebruiker regelen)
+User Access Control enabled: Gebruikerstoegang controle ingeschakeld
+resource-enabled-help: Indien ingeschakeld hebben admin de mogelijkheid om helpmiddelen kalenders toe te voegen
+Resource Calendars enabled: Hulpmiddelen Kalenders ingeschakeld
+resource-list-help: Waar de hulpmiddelen kalenders te tonen in de deelnemers lijst
+Display in participants list at: Toon in de deelnemers lijst aan
+Upcoming Events: Naderende Gebeurtenis
+upcoming-events-help: upcoming.php aanzetten
+upcoming-events-allow-override: Gebruikers parameter voor upcoming.php toestaan
+Allow user override: user override toestaan
+upcoming-events-display-caticons: Toon categorie ikonen in upcoming.php
+Display category icons: Toon categorie ikonen
+upcoming-events-display-layers: Toon lagen in upcoming.php
+Display layers: Toon lagen
+upcoming-events-display-links: Toon links in upcoming.php
+Display links to events: Toon links naar gebeurtenissen
+upcoming-events-display-popups: Toon gebeurtenis popups in upcoming.php
+Display event popups: Toon gebeurteni popups
+remotes-enabled-help: Sta toe dat gebruikers externe ics bestanden laden via een URL
+Allow remote calendars: Sta agenda's op afstand toe
+icon_upload-enabled-help: Sta het uploaden van categorie-icoontjes toe
+Category Icon Upload enabled: Uploaden categorie-ikoon toegestaan
+allow-self-registration-help: Deze optie regelt zelf-registratie.
+Allow self-registration: Sta zelf-registratie toe
+use-blacklist-help: Beperking van de toegang tot de webkalender gebaseerd op IP-adres
+Restrict self-registration to blacklist: Beperk zelf-registratie tot zwarte lijst
+allow-self-registration-full-help: Sta nieuwe gebruikers toe hun zelfregistratie on-line te vervolledigen
+Use self-registration email notifications: Gebruik zelf-registratie email-notificaties
+allow-attachment-help: Met deze functie wordt het mogelijk om bijlagen aan afspraken toe te voegen.
+Allow file attachments to events: Permitteer bestandsbijlagen bij afspraken
+Admin and owner can always add attachments if enabled.: Indien ingesteld kunnen de Admin en eigenaar altijd bijlagen toevoegen.
+allow-comments-help: Met deze functie wordt het mogelijk om opmerkingen aan afspraken toe te voegen.
+Allow comments to events: Permitteer opmerkingen bij afspraken
+Admin and owner can always add comments if enabled.: Indien ingesteld kunnen de Admin en eigenaar altijd opmerkingen toevoegen.
+Severity threshold for the security-audit file-integrity section: Niveau drempel voor de security-audit file-integrity gedeelte.
+File integrity noise filter: File integrity ruis filter
+Show all findings: Toon alle bevindingen
+Hide low-severity (INFO) findings: verberg laag niveau (INFO) bevindingen
+Show only CRITICAL findings: Toon alleen CRITICAL bevindingen
+Extra exclude patterns applied to the file-integrity scan: Extra uitsluitsel patonen voor de bestands-integriteit scan.
+Extra exclusion patterns: Extra uitsluitsel patonen
+One glob pattern per line; lines starting with # are comments. Directory prefixes end with / (e.g. pub/uploads/). Applied in addition to the built-in defaults.: Een glob patroon per regel; regels beginnend met # zijn commentaar. Map prefixes eindigen met / (b.v. pub/uploads/). Deze worden toegepast bovenop de ingebouwde defaults.
+Documentation: Documentatie
+MCP Server Configuration: MCP Server Configuratie
+MCP Server is not available.: MCP Server is niet beschikbaar.
+The MCP SDK PHP package must be installed. Run: composer require mcp/sdk: MCP SDK PHP moet geinstalleerd worden. Voer uit: composer require mcp/sdk
+mcp-server-enabled-help: Model Context Protocol server aanzetten om AI assistenten WebCalendar data te laten benaderen m.b.v. API tokens.
+MCP Server enabled: =
+mcp-write-access-help: Sta toe dat MCP clients schrijf operaties uitvoeren (gebeurtenissen toevoegen, gegevens aanpassen). Uitschakelen voor alleen-lezen toegang.
+MCP Write Access: MCP Schrijf Toegang
+mcp-rate-limit-help: Maximale aantal MCP verzoeken toegestaan per gebruiker per uur om misbruik te voorkomen.
+MCP Rate Limit (requests/hour): MCP Rate Limit (verzoeken per uur)
+mcp-cors-origins-help: Welke origins toegestaan zijn om cross-origin MCP verzoeken uit te voeren. gebruik * om alles toe te staan, of geef specifieke custom origins op hieronder.
+MCP CORS Allowed Origins: =
+mcp-cors-custom-help: Geef toegestane origins op als een komma-gescheiden lijst (b.v. https://example.com,https://example.nl). Leeg laten om CORS uit te schakelen.
+Custom Origins (comma-separated): Custom Origins (komma-gescheiden)
+email-mailer: email-verstuurder
+Email Mailer: Email verstuurder
+email-smtp-host: email-smtp-host
+SMTP Host name(s): SMTP servernaam/-namen
+email-smtp-port: email-smtp-poort
+SMTP Port Number: SMTP Poortnummer
+email-smtp-tls: gebruik TLS voor de SMTP verbinding
+Use STARTTLS: Moet STARTTLS gebruikt worden met SMTP om de verbinding te versleutelen
+email-smtp-auth: email-smtp-auth
+SMTP Authentication: SMTP Authenticatie
+email-smtp-username: email-smtp-gebruikersnaam
+SMTP Username: SMPT Gebruikersnaam
+email-smtp-password: email-smtp-paswoord
+SMTP Password: SMPT Wachtwoord
+Default user settings: Standaard gebruikersinstellingen
+Color options: Kleuropties
+gradient-colors: overloop-kleuren
+Not available: Niet beschikbaar
+Background Image options: Opties achtergrondafbeelding
+bgimage-help: URL van de gewenste achtergrondafbeelding. Dit mag een relatieve link zijn.
+Background Image: Achtergrondafbeelding
+bgrepeat-help: Bepaalt het herhaalgedrag van een achtgrondafbeelding.
+Background Repeat: Achtergrond bij herhaling
+
+########################################
+# Page: docadd.php
+#
+Database error XXX.: Databasefout: XXX.
+Subject: Onderwerp
+Comment: Opmerking
+#
+Take photo: Neem een foto
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Bekijk de agenda van een andere gebruiker
+Go: Tonen
+
+########################################
+# Page: users_ajax.php
+#
+Deleting users not supported.: Het verwijderen van gebruikers is niet mogelijk
+events added: gebeurtenissen toegevoegd
+events deleted: gebeurtenissen verwijderd
+Calendar ID already in use: Kalender ID al in gebruik
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Vul een of meer trefwoorden in
+Search Results: Zoekresultaten
+match found: afspraak gevonden die overeenkomst met de trefwoorden
+matches found: afspraken gevonden die overeenkomen met de trefwoorden
+No matches found: Helaas, geen match aangetroffen
+New Search: Nieuwe zoekopdracht
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Dubbele Naam: "XXX".
+Username XXX already exists.: gebruikersnaam "XXX" bestaat al.
+Email address XXX already exists.: E-mail adres "XXX" bestaat al.
+
+########################################
+# Page: category.php
+#
+Category Icon: Categorie-ikoon
+Category Name: Categorienaam
+Remove Icon: Ikoon verwijderen
+Add Icon to Category: Ikoon aan categorie toevoegen
+GIF or PNG 6kb max: GIF of PNG maximaal 6kB
+Search for existing icons...: Zoek naar bestaand iconen...
+Make New Category: Categorie toevoegen
+Current Icons: Huidige Iconen
+Close: Sluiten
+
+########################################
+# Page: resourcecal_mgmt.php
+#
+Are you sure you want to delete this resource calendar?: Weet je zeker dat je deze hulpmiddelen kalender wil verwijderen?
+This will remove all events for this resource calendar.: Dit zal alle gebeurtenissen voor deze hulpmiddelen kalender verwijderen.
+Unique Calendar ID for resource calendar: Unieik Kalender ID voor hulpmiddelen kalender
+Admin of this resource calendar: Admin van deze hulpmiddelen kalender
+Enabling allows this resource calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.: Aanzetten maakt het mogelijk om deze hulpmiddelen kalender publiekelijk te maken, en een directe link erheen zal op de login pagina getoond worden.
+Number of events currently in the resource calendar: Aantal gebeurtenissen momenteel in de hulpmiddelen kalender
+Add Resource Calendar: Hulpmiddelen Kalender Toevoegen
+Delete Resource Calendar: Hulpmiddelen Kalender Verwijderen
+Resource Calendar successfully added.: Hulpmiddelen Kalender succesvol toegevoegd.
+Resource Calendar successfully updated.: Hulpmiddelen Kalender succesvol bijgewerkt.
+Resource calendar successfully deleted.: Hulpmiddelen Kalender succesvol verwijderd.
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Rapportage ID XXX niet gevonden.
+Variable XXX not found.: Variabele <tt>XXX</tt> niet gevonden
+
+########################################
+# Page: assistant_edit.php
+#
+Your assistants: Uw agenda-assistenten
+
+########################################
+# Page: icons.php
+#
+Click to Select: Klik om te selecteren
+
+########################################
+# Page: access.php
+#
+DEFAULT CONFIGURATION: STANDAARD INSTELLINGEN
+Undo: Ongedaan maken
+Allow Access to Other Users Calendar: Sta toegang toe tot agenda van andere gebruikers
+Grant This User Access to My Calendar: Geef deze gebruiker toegang tot mijn agenda
+View Event: Bekijk afspraak
+Approve/Reject: Goedkeuren/Afwijzen
+Tasks: Taken
+Journals: Journalen
+Assistant: Assistent
+Select All: Selecteer Alles
+Clear All: Alle wissen
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Hulpmiddelen kalender XXX bestaat niet.
+This Calendar is not Public.: Deze agenda is niet openbaar
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar Documentatie
+Currently in English only.: Momenteel alleen in het engels.
+
+########################################
+# Page: views.php
+#
+Manage Views: Beheer weergaves
+Add New View: Overzicht toevoegen
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Kon settings.php bestand niet vinden...
+Incomplete settings.php file...: settings.php bestand is niet compleet...
+Could not find XXX defined in...: Kon "XXX" niet vinden in...
+You must define XXX in: Je moet "XXX" definieren in het "settings.php" bestand.
 
 ########################################
 # Page: includes/date_formats.php
 #
-December: =
+December: december
 Dec: dec
 LANGUAGE DEFINED: TAAL GEDEFINIEERD
 
 ########################################
-# Page: includes/formvars.php
+# Page: includes/user-imap.php
 #
-Invalid data format for: Ongeldig dataformaat voor
-
-########################################
-# Page: includes/access.php
-#
-Another Users Calendar: Agenda andere gebruiker
-Category Management: Categorie-beheer
-Day View: Dagweergave
-Edit Event: Afspraak bewerken
-Month View: Maandweergave
-Common Trailer: Meestvoorkomende aansluiting
-User Management: Gebruikersbeheer
-Week View: Week weergave
-Year View: Jaar weergave
-Invalid function id: Ongeldige functie-id
-
-########################################
-# Page: includes/dbi4php.php
-#
-db_type not defined.: db_type niet gedefineerd.
-Cache cleared from previous SQL!: Cache van vorige SQL gewist!
-Error executing query.: Fout bij het uitvoeren van de query.
-Unknown ODBC error.: Onbekende ODBC-fout.
-delete: verwijderen
+Invalid user login: Ongeldige gebruikerslogin
 
 ########################################
 # Page: includes/common_admin_pref.php
@@ -1200,14 +1393,23 @@ NonUser Calendars: Losse agenda's
 Themes: Stijlen
 
 ########################################
+# Page: includes/user-nis.php
+#
+incorrect password: Onjuist wachtwoord
+no such user: Gebruiker bestaat niet
+
+########################################
 # Page: includes/functions.php
 #
+Error Type not set for activity log!: Fout: Type niet ingesteld voor activiteit log!
+This event is XXX.: Deze afspraak is XXX.
 Conf.: =
 exceeds limit of XXX events per day: de grens van XXX afspraken per dag is bereikt
 on: op
 All Attendees: Alle deelnemers
 Busy: Bezig
 Tentative: Voorlopig
+Schedule an appointment for XXX.: Maak een afspraak voor XXX.
 Event approved: Afspraak goedgekeurd
 Journal approved: Journaal goedgekeurd
 Task approved: Taak goedgekeurd
@@ -1225,6 +1427,7 @@ Event rejected: Afspraak geweigerd
 Journal rejected: Journaal afgewezen
 Task rejected: Taak geweigerd
 Reminder sent: Herinnering verzonden
+System Message: Systeem Bericht
 Event updated: Afspraak bijgewerkt
 Journal updated: Journaal bijgewerkt
 Task updated: Taak bijgewerkt
@@ -1237,7 +1440,6 @@ Task Due Date: Taak moet af zijn op
 You have XXX unapproved entries: U heeft XXX onbevestigde afspraken
 Changes successfully saved: Wijzigingen succesvol opgeslagen
 Event: Afspraak
-Action: Handeling
 Printer Friendly: Printversie
 Generate printer-friendly version: Genereer printversie
 after: na
@@ -1246,17 +1448,17 @@ end: einde
 start: =
 View this event: Bekijk deze afspraak
 View this task: Bekijk deze taak
-January: Januari
-February: Februari
-March: Maart
-April: =
-May_: Mei
-June: Juni
-July: Juli
-August: Augustus
-September: =
-October: Oktober
-November: =
+January: januari
+February: februari
+March: maart
+April: april
+May_: mei
+June: juni
+July: juli
+August: augustus
+September: september
+October: oktober
+November: november
 Jan: jan
 Feb: feb
 Mar: mrt
@@ -1268,14 +1470,24 @@ Aug: aug
 Sep: sep
 Oct: okt
 Nov: nov
-unknown-month: ongekende maand
+unknown-month: onbekende maand
+First Quarter Moon: Eerste Kwartier Maan
+Full Moon: Volle Maan
+Last Quarter Moon: Laatste Kwartier Maan
+New Moon: Nieuwe Maan
+Error TIME_SLOTS undefined!: Fout: TIME_SLOTS niet gedefinieerd!
 The following error occurred: De volgende fout heeft zich voorgedaan
 You are not authorized.: U heeft geen toegang
 Add N hours to: Voeg N uren toe aan
 Subtract N hours from: Trek N uren af van
 same as: hetzelfde als
 server time: servertijd
+Cannot read timezone file XXX.: Kan tijdzone bestand niet lezen: XXX.
+Your current GMT offset is XXX hours.: je huidige GMT verschil is XXX uur.
 Unauthorized: Niet geauthoriseerd
+Error approving event XXX.: Fout bij goedkeuring afspraak XXX.
+Error deleting event XXX.: Fout bij verwijderen afspraak XXX.
+Error rejecting event XXX.: Fout bij afkeuren afspraak XXX.
 Sunday: Zondag
 Monday: Maandag
 Tuesday: Dinsdag
@@ -1291,89 +1503,90 @@ Thu: do
 Fri: vr
 Sat: za
 unknown-weekday: ongekende weekdag
+The permissions for the icons directory are set to read-only: De rechten voor de ikonen map staan op alleen-lezen
 
 ########################################
 # Page: includes/user.php
 #
-incorrect password: Onjuist wachtwoord
-no such user: Gebruiker bestaat niet
-Invalid user login: Ongeldige gebruikerslogin
-
-########################################
-# Page: includes/translate.php
-#
-Browser Language Not Found: Taal van de browser niet gevonden
-English: Engels
-English-US: Engels-VS
-Afrikaans: =
-Albanian: Albanees
-Arabic: Arabisch
-Basque: Baskisch
-Bulgarian: Bulgaars
-Catalan: Catalaans
-Chinese (Simplified/GB2312): Chinees (Vereenvoudigd/GB2312)
-Chinese (Traditional/Big5): Chinees (Traditioneel/Big5)
-Croatian: Kroatisch
-Czech: Tsjechisch
-Danish: Deens
-Dutch: Nederlands
-Estonian: Estlands
-Finnish: Fins
-French: Frans
-Galician: Gallicisch
-German: Duits
-Greek: Grieks
-Hebrew: Hebreeuws
-Holo (Taiwanese): Holo (Taiwans)
-Hungarian: Hongaars
-Icelandic: Ijslands
-Italian: Italiaans
-Japanese: Japans
-Korean: Koreaans
-Lithuanian: Litouws
-Norwegian: Noors
-Polish: Pools
-Portuguese: Portugees
-Portuguese/Brazil: Protugees/Braziliaans
-Romanian: Roemeens
-Russian: Russisch
-Serbian: Servisch
-Slovak: Slovaaks
-Slovenian: Sloveens
-Spanish: Spaans
-Swedish: Zweeds
-Turkish: Turks
-Welsh: Wels(GB)
-Browser-defined: Door browser ingesteld
-journal: journaal
-
-########################################
-# Page: includes/trailer.php
-#
-My Calendar: MIJN KALENDER
-Add New Entry: Afspraak toevoegen
-Add New Task: Nieuwe taak toevoegen
-Logout: Afmelden
-Home: Thuis
-Back to My Calendar: Terug naar Mijn Kalender
-Go to: Ga naar
-Manage calendar of: Beheer de agenda van
+Account disabled: Gebruiker op non-actief
 
 ########################################
 # Page: includes/menu.php
 #
+My Calendar: MIJN KALENDER
+Home: Thuis
 This Week: Deze week
 This Month: Deze maand
 This Year: Dit jaar
 Add New Event: Nieuwe afspraak toevoegen
+Add New Task: Nieuwe taak toevoegen
 Delete Entries: Verwijder afspraken
+Another Users Calendar: Agenda andere gebruiker
 My Views: Mijn weergaves
+Unnamed: Zonder naam
 Manage Calendar of: Beheer de kalender van
 My Reports: Mijn rapporten
+Your Settings: Uw instellingen
 My Profile: Mijn profiel
+Admin Settings: Admin Instellingen
+Settings for: Instellingen voor
 Public Calendar: Openbare agenda
 Unapproved Events: Openstaande afspraken
 Help Contents: Help inhoud
+
+########################################
+# Page: includes/xcal.php
+#
+MO: MA
+TU: DI
+WE: WO
+TH: DO
+FR: VR
+SA: ZA
+SU: ZO
+Monthly: Maandelijks
+Interval: =
+Months: Maanden
+Month Days: Maand dagen
+Days: Dagen
+Weeks: Weken
+Position: Positie
+Until: Tot
+Count: Telling
+Inclusion Dates: Toe te voegen data
+Exclusion Dates: Uitgesloten data
+Unnamed Event: Naamloze afspraak
+Event Imported: Item geimporteerd
+Palm Pilot: =
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Fout tijdens verbinden met database XXX
+db_type not defined.: db_type niet gedefineerd.
+invalid db_type XXX: ongeldig db_type XXX
+Cache cleared from previous SQL!: Cache van vorige SQL gewist!
+Error executing query.: Fout bij het uitvoeren van de query.
+Unfortunately, XXX is not implemented for YYY: Helaas, "XXX" is niet geimplementeerd voor (YYY).
+Unsupported db_type.: Niet-ondersteund db_type.
+Unknown ODBC error.: Onbekende ODBC-fout.
+Error opening cache dir XXX.: Fout tijdens openen cache map "XXX".
+delete: verwijderen
+Cache error Could not XXX file YYY.: Cache fout: Kon bestand "YYY" niet XXX.
+
+########################################
+# Page: includes/formvars.php
+#
+Invalid data format for: Ongeldig dataformaat voor
+
+########################################
+# Page: includes/trailer.php
+#
+Add New Entry: Afspraak toevoegen
+Logout: Afmelden
+Back to My Calendar: Terug naar Mijn Kalender
+Go to: Ga naar
+Manage calendar of: Beheer de agenda van
 
 ########################################
 # Page: includes/help_list.php
@@ -1382,23 +1595,227 @@ Index: =
 Page: Pagina
 
 ########################################
-# Page: includes/js/edit_entry.php
+# Page: includes/access.php
 #
-You have not entered a Brief Description: U heeft geen korte omschrijving ingevuld
-time prior to work hours...: De tijd die u heeft ingevoerd is eerder dan uw normale werkdag. Is dit juist?
-Invalid Event Date: Ongeldige afspraak-datum
-Please add a participant: Voeg a.u.b. een deelnemer toe
-You have not entered a valid time of day: U heeft geen geldige tijd ingevuld
+Category Management: Categorie-beheer
+Day View: Dagweergave
+Edit Event: Afspraak bewerken
+Month View: Maandweergave
+Common Trailer: Meestvoorkomende aansluiting
+User Management: Gebruikersbeheer
+Week View: Week weergave
+Year View: Jaar weergave
+Invalid function id: Ongeldige functie-id
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Taal van de browser niet gevonden
+(not supported): (niet ondersteudn)
+English: Engels
+English-US: Engels-VS
+Afrikaans: =
+Albanian: Albanees
+Amharic: =
+Arabic: Arabisch
+Azerbaijani: Azerbaijaans
+Basque: Baskisch
+Belarusian: Wit-russisch
+Bengali: =
+Bosnian: Bosnisch
+Bulgarian: Bulgaars
+Burmese: Burmees
+Catalan: Catalaans
+Cebuano: =
+Chichewa: =
+Chinese (Simplified/GB2312): Chinees (Vereenvoudigd/GB2312)
+Chinese (Traditional/Big5): Chinees (Traditioneel/Big5)
+Corsican: Corsicaans
+Croatian: Kroatisch
+Czech: Tsjechisch
+Danish: Deens
+Dutch: Nederlands
+Esperanto: =
+Estonian: Estlands
+Filipino: Filipijns
+Finnish: Fins
+French: Frans
+Frisian: Fries
+Galician: Gallicisch
+Georgian: Georgisch
+German: Duits
+Greek: Grieks
+Gujarati: =
+Haitian: Haitisch
+Hausa: =
+Hawaiian: Hawaiiaans
+Hebrew: Hebreeuws
+Hindi: =
+Hmong: =
+Holo (Taiwanese): Holo (Taiwans)
+Hungarian: Hongaars
+Icelandic: Ijslands
+Igbo: =
+Indonesian: =
+Irish: =
+Italian: Italiaans
+Japanese: Japans
+Javanese: Javanees
+Kannada: =
+Kazakh: =
+Khmer: =
+Kinyarwanda: =
+Kiswahili: =
+Korean: Koreaans
+Kurdish: Kurdisch
+Kyrgyz: =
+Lao: =
+Latin: Latijn
+Latvian: Lets
+Lithuanian: Litouws
+Luxembourgish: =
+Macedonian: Macedonisch
+Malagasy: =
+Malay: Maleis
+Malayalam: =
+Maltese: Maltees
+Maori: =
+Marathi: =
+Mongolian: =
+Nepali: =
+Norwegian: Noors
+Odia: =
+Pashto: =
+Persian: Persisch
+Polish: Pools
+Portuguese: Portugees
+Portuguese/Brazil: Protugees/Braziliaans
+Punjabi: =
+Romanian: Roemeens
+Russian: Russisch
+Samoan: =
+Scots: Schots
+Serbian: Servisch
+Sesotho: =
+Shona: =
+Sindhi: =
+Sinhala: =
+Slovak: Slovaaks
+Slovenian: Sloveens
+Somali: =
+Spanish: Spaans
+Sundanese: Sundanees
+Swedish: Zweeds
+Tajik: =
+Tamil: =
+Tatar: =
+Telugu: =
+Thai: Thais
+Turkish: Turks
+Turkmen: =
+Ukrainian: Ukrains
+Urdu: =
+Uyghur: =
+Uzbek: =
+Vietnamese: Vietnamees
+Welsh: Wels(GB)
+Xhosa: =
+Yiddish: Yiddisch
+Yoruba: =
+Zulu: =
+Browser-defined: Door browser ingesteld
+event: afspraak
+journal: journaal
+ISO Language Code: ISO Taal Code
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+10: =
+11: =
+12: =
+13: =
+14: =
+15: =
+16: =
+17: =
+18: =
+19: =
+20: =
+21: =
+22: =
+23: =
+24: =
+25: =
+26: =
+27: =
+28: =
+29: =
+30: =
+31: =
+40: =
+50: =
+60: =
+70: =
+80: =
+90: =
+100: =
+200: =
+300: =
+400: =
+500: =
+600: =
+700: =
+800: =
+900: =
+1000: =
+2000: =
+2023: =
+2024: =
+2025: =
+3000: =
+3999: =
+4000: =
+5000: =
+6000: =
+7000: =
+8000: =
+9000: =
+10000: =
+20000: =
+30000: =
+40000: =
+50000: =
+60000: =
+70000: =
+80000: =
+90000: =
+100000: =
+200000: =
+300000: =
+400000: =
+500000: =
+600000: =
+700000: =
+800000: =
+900000: =
+1000000: =
+Date Formats: Datum Formaten
+Number Symbols: Nummer Symbolen
+Names (and Abbreviations): Namen (en Afkortingen)
+Old phrases not currently in the code: Oude frases niet meer in de code
 
 ########################################
 # Page: includes/js/import.php
 #
+You must select a file to import: je moet een bestand selecteren om te importeren
 File type does not match Import Format: Bestandstype komt niet overeen met import-formaat
-
-########################################
-# Page: includes/js/visible.php
-#
-Invalid Color: Ongeldige kleur
 
 ########################################
 # Page: includes/js/translate.js.php
@@ -1411,27 +1828,35 @@ Invalid color for table grid.: Ongeldige kleur voor tabelraster
 Invalid work hours.: Ongeldige werktijden
 Invalid color for event popup background.: Ongeldige achtergrondkleur voor afspraak-popup
 Invalid color for event popup text.: Ongeldige tekstkleur voor afspraak-popup
+Invalid color for table header text.: Ongeldige kleur voor agendatitel tekst
 Invalid color for table header background.: Ongeldige kleur voor achtergrond agendatitel
 Invalid color for document title.: Ongeldige kleur voor de agendatitel
-Invalid color for table cell background for today.: Ongeldige achtergrondkleur voor huidige datum
+Invalid color for table cell background for today.: Ongeldige achtergrondkleur voor vandaag
 Server URL is required.: Server-URL wordt vereist
 Change the date and time of this entry?: Wilt u de datum en tijd van deze afspraak wijzigen?
+Please add a participant: Voeg a.u.b. een deelnemer toe
+You have not entered a Brief Description: U heeft geen korte omschrijving ingevuld
+You have not entered a valid time of day: U heeft geen geldige tijd ingevuld
 Invalid Date: Ongeldige datum
+Invalid Event Date: Ongeldige afspraak-datum
+time prior to work hours...: De tijd die u heeft ingevoerd is eerder dan uw normale werkdag. Is dit juist?
 Calendar ID cannot be blank.: Kalender ID kan niet leeg zijn
 First and last names cannot both be blank.: Zowel voor- als achternaam kunnen niet leeg zijn
 Invalid color: Ongeldige kleur
 URL cannot be blank.: URL kan niet leeg zijn
+Invalid Color: Ongeldige kleur
 Database Name: Database naam
 Full Path (no backslashes): Volledig pad (geen schuine strepen achterover)
 The password contains illegal characters.: Het wachtwoord bevat ongeldige tekens.
 Error you must specify a Single-User Login: Fout u moet een\\nEnkele-Gebruikers Login
+Could not find XXX.: Kon XXX niet vinden.
+Could not find XXX in DOM.: Kon XXX niet vinden in DOM.
 
 ########################################
-# Page: includes/classes/Doc.php
+# Page: includes/js/edit_entry.php
 #
-bytes: =
-kb: =
-Mb: =
+Move up: Omhoog verplaatsen
+Move down: Omlaag verplaatsen
 
 ########################################
 # Page: includes/classes/WebCalMailer.php
@@ -1451,25 +1876,25 @@ provide_address: Lever adres
 recipients_failed: Ontvangers faalden
 
 ########################################
-# Page: install2/install_page1.php
+# Page: includes/classes/Doc.php
 #
-This installation wizard will guide you...: De installatie-wizard zal u leiden...
-PHP Version Check: PHP Versiecontrole
-PHP version: PHP versie
+bytes: =
+kb: kB
+Mb: MB
 
 ########################################
-# Page: install/install_appsettings.php
+# Page: tools/send_reminders.php
 #
-User Authentication: Gebruikers Authenticatie
-Web-based via WebCalendar (default): Web-based via WebKalender (standaard)
-Read-Only: Alleen-Lezen
+Error connecting to database: Fout bij het verbinden met de database
+could not find event id: afspraak id onvindbaar
+could not find event id XXX in database.: afspraak id onvindbaar in de database
+task: taak
+This is a reminder for the XXX detailed below.: Dit is een herinnering aan de XXX waarvan u hieronder de details vindt
+Reminder: Herinnering
 
 ########################################
-# Page: install/install_finish.php
+# Page: tools/reload_remotes.php
 #
-Launch WebCalendar: Lanceer WebKalender
-
-########################################
-# Page: install/install_dbsettings.php
-#
-Save Settings: Instellingen Opslaan
+Include Path: Include Pad
+No Remote Calendars found: Geen kalenders op afstand gevonden
+Remote Calendars not enabled: Kalenders op afstand niet ingeschakeld

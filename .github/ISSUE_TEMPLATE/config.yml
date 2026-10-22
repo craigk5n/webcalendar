@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions & Discussion
+    url: https://github.com/craigk5n/webcalendar/discussions
+    about: Use Discussions for questions, help, and general conversation.
+  - name: Security Vulnerabilities
+    url: https://github.com/craigk5n/webcalendar/blob/master/SECURITY.md
+    about: Do not file security issues here. See SECURITY.md for reporting instructions.

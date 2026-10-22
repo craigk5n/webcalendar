@@ -1,8 +1,12 @@
 <?php
 require_once 'includes/init.php';
 require_once 'includes/date_formats.php';
-if ( file_exists ( 'install/default_config.php' ) )
-  require_once 'install/default_config.php';
+// Provides db_load_config(). This lives in includes/ so that admin.php keeps
+// working after the wizard/ directory is removed or made unreadable, as the
+// security audit recommends. Do NOT load the obsolete pre-1.9.13
+// install/default_config.php here; leftover copies from old installs
+// use each(), which was removed in PHP 8.
+require_once 'includes/default_config.php';
 
 // Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
 // admin.php will not use this cached CSS, but we want to make sure it's flushed.
@@ -22,8 +26,11 @@ function save_pref ( $prefs, $src ) {
 
       // Validate key name. Should start with "admin_" and not include
       // any unusual characters that might be an SQL injection attack.
-      if ( $key == 'csrf_form_key' ) {
-        // Ignore this for validation...
+      if ( $key == 'csrf_form_key'
+        || $key == 'reminder_generate_token'
+        || $key == 'reminder_clear_token' ) {
+        // Not settings. The buttons are handled after save_pref(); the
+        // $prefix test below already keeps them out of webcal_config.
       } else if ( ! preg_match ( '/admin_[A-Za-z0-9_]+$/', $key ) ) {
         die_miserable_death ( str_replace ( 'XXX', $key,
             translate ( 'Invalid setting name XXX.' ) ) );
@@ -40,13 +47,16 @@ function save_pref ( $prefs, $src ) {
         $error = db_error ( false, $sql );
         break;
       }
-      if ( strlen ( $value ) > 0 ) {
-        $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( ?, ? )';
+      // Write the row back even when the admin cleared the field. Deleting
+      // without re-inserting left the setting with no row at all, which is
+      // not the same thing as an empty value: every call site then fell back
+      // to its own idea of what an undefined setting meant, and those ideas
+      // disagreed (issue #734). Storing '' records the admin's choice.
+      $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( ?, ? )';
 
-        if ( ! dbi_execute ( $sql, [$setting, $value] ) ) {
-          $error = db_error ( false, $sql );
-          break;
-        }
+      if ( ! dbi_execute ( $sql, [$setting, $value] ) ) {
+        $error = db_error ( false, $sql );
+        break;
       }
     }
   }
@@ -56,12 +66,26 @@ function save_pref ( $prefs, $src ) {
 }
 $error = ( $is_admin ? '' : print_not_auth() );
 
+$reminder_new_token = '';
+
 if ( ! empty ( $_POST ) && empty ( $error ) ) {
   save_pref ( $_POST, 'post' );
+
+  // Reminder web-trigger token (generate / clear). Generated server-side with
+  // a CSPRNG; only its SHA-256 hash is stored, and the raw token is shown once
+  // below. Same handling as the MCP token in pref.php, for the same reason: a
+  // database read or backup must not yield a usable token.
+  if ( ! empty ( $_POST['reminder_generate_token'] ) ) {
+    $reminder_new_token = bin2hex ( random_bytes ( 32 ) );
+    save_pref ( ['admin_REMINDER_WEB_TRIGGER_TOKEN'
+      => hash ( 'sha256', $reminder_new_token )], 'post' );
+  } else if ( ! empty ( $_POST['reminder_clear_token'] ) ) {
+    save_pref ( ['admin_REMINDER_WEB_TRIGGER_TOKEN' => ''], 'post' );
+  }
 }
 
 // Load any new config settings. Existing ones will not be affected.
-// This function is in the install/default_config.php file.
+// This function is in the includes/default_config.php file.
 if ( function_exists ( 'db_load_config' ) && empty ( $_POST ) )
   db_load_config();
 
@@ -128,6 +152,7 @@ if ( ! $error ) {
     'groups', translate ( 'Groups' ),
     'nonuser', translate ( 'Resource Calendars' ),
     'other', translate ( 'Other' ),
+    'mcp', translate ( 'MCP Server' ),
     'email', translate ( 'Email' ),
     'colors', translate ( 'Colors' )];
   $tabs = '<ul class="nav nav-tabs">';
@@ -192,9 +217,9 @@ if ( ! $error ) {
 
     $xurl = $views[$i]['url'];
     $xurl_strip = str_replace ( '&amp;', '&', $xurl );
-    $user_vu .= $option . $xurl . '"'
+    $user_vu .= $option . htmlspecialchars ( $xurl, ENT_QUOTES ) . '"'
      . ( $s['STARTVIEW'] == $xurl_strip ? $selected : '' )
-     . '>' . $views[$i]['cal_name'] . '</option>';
+     . '>' . htmlspecialchars ( $views[$i]['cal_name'], ENT_QUOTES ) . '</option>';
   }
   $colors = [
     'BGCOLOR' => translate('Document background'),
@@ -216,10 +241,16 @@ if ( ! $error ) {
 
   foreach ( $colors as $k => $v ) {
     $GLOBALS[$k] = $s[$k];
-    // Change the color in the current page
-    $cch .= "      function color_change_handler_$k() {\n        var color = $('#admin_' + $k).val();\n\n        $('body').get(0).style.setProperty('--' + $k.toLowerCase, color);\n      }\n";
+    // CSS custom-property name for this color (matches styles.php :root, e.g.
+    // POPUP_BG -> --popupbg). The id/value must be baked into the emitted JS
+    // strings (not concatenated with a bare $k, which would be an undefined JS
+    // identifier), and the color value must be quoted (an unquoted #ffffff is a
+    // JS syntax error that would break the whole <script>).
+    $vn = str_replace ( '_', '', strtolower ( $k ) );
+    // Change the color in the current page live as the user edits it.
+    $cch .= "      function color_change_handler_$k() {\n        var color = $('#admin_" . $k . "').val();\n        $('body').get(0).style.setProperty('--" . $vn . "', color);\n      }\n";
     $color_sets .= print_color_input_html ( $k, $v, '', '', 'p', '', 'color_change_handler_' . $k );
-    $rc .= "\n        $('#admin_' + $k).val(" . $GLOBALS[$k] . ");\n        $('body').get(0).style.setProperty('--' + $k.toLowerCase, '" . $GLOBALS[$k] . "');\n";
+    $rc .= "\n        $('#admin_" . $k . "').val('" . $GLOBALS[$k] . "');\n        $('body').get(0).style.setProperty('--" . $vn . "', '" . $GLOBALS[$k] . "');\n";
   }
 
   $csp = ( $s['CSP'] ?: 'none' );
@@ -357,18 +388,18 @@ if ( ! $error ) {
   echo '<div class="form-inline mt-1 mb-2" id="default_visibility_div"><label title="' . tooltip("preferred-event-visibility")
     . '">' . translate('Default Visibility') . ':</label>';
   echo '<select name="admin_DEFAULT_VISIBILITY" id="pref_DEFAULT_VISIBILITY"><option value="P"';
-  if (isset($prefarray['DEFAULT_VISIBILITY']) &&
-    $prefarray['DEFAULT_VISIBILITY'] == 'P') {
+  if (isset($s['DEFAULT_VISIBILITY']) &&
+    $s['DEFAULT_VISIBILITY'] == 'P') {
     echo " selected ";
   }
   echo ">" . translate('Public') . "</option>\n";
   echo '<option value="R"';
-  if (empty($prefarray['DEFAULT_VISIBILITY'] ) || $prefarray['DEFAULT_VISIBILITY'] == 'R') {
+  if (empty($s['DEFAULT_VISIBILITY'] ) || $s['DEFAULT_VISIBILITY'] == 'R') {
     echo " selected ";
   }
   echo  ">" . translate('Private') . "</option>\n";
   echo '<option value="C"';
-  if (isset($prefarray['DEFAULT_VISIBILITY']) && $prefarray['DEFAULT_VISIBILITY'] == 'C') {
+  if (isset($s['DEFAULT_VISIBILITY']) && $s['DEFAULT_VISIBILITY'] == 'C') {
     echo " selected ";
   }
   echo ">" . translate('Confidential') . "</option>\n";
@@ -643,8 +674,8 @@ if ( ! $error ) {
 
      <div class="form-inline mt-1 mb-2"><label title="' . tooltip( 'upcoming-events-display-popups' ) . '">'
    . translate ( 'Display event popups' ) . ':</label>'
-   . print_radio ( 'UPCOMING_DISPLAY_POPUPS', '', '', 'Y' ) . '</div>
-   </fieldset>
+    . print_radio ( 'UPCOMING_DISPLAY_POPUPS', '', '', 'Y' ) . '</div>
+    </fieldset>
 
 <!-- BEGIN REPORTS -->
           <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'reports-enabled-help' ) . '">'
@@ -724,11 +755,95 @@ if ( ! $error ) {
    . '</p><p id="com1" style="margin-left:25%"><strong>Note: </strong>'
    . translate ( 'Admin and owner can always add comments if enabled.' )
    . '</p><p class="form-inline mt-1 mb-2" id="com1a" style="margin-left:25%">' . print_checkbox ( ['ALLOW_COMMENTS_PART', 'Y', $partyStr] )
-   . print_checkbox ( ['ALLOW_COMMENTS_ANY', 'Y', $anyoneStr] )
-   . '</p></div></div>
+    . print_checkbox ( ['ALLOW_COMMENTS_ANY', 'Y', $anyoneStr] )
+    . '</p>
+
+<!-- BEGIN SECURITY AUDIT (issue #233) -->
+   <fieldset class="border p-2 mt-2"><legend>'
+   . translate ( 'Security Audit' ) . '</legend>
+     <div class="form-inline mt-1 mb-2"><label title="'
+   . translate ( 'Severity threshold for the security-audit file-integrity section' ) . '">'
+   . translate ( 'File integrity noise filter' ) . ':</label>
+       <select name="admin_SECURITY_AUDIT_NOISE_FILTER">
+         <option value="all"' . ( ( $s['SECURITY_AUDIT_NOISE_FILTER'] ?? 'all' ) == 'all' ? $selected : '' ) . '>'
+   . translate ( 'Show all findings' ) . '</option>
+         <option value="warn_and_above"' . ( ( $s['SECURITY_AUDIT_NOISE_FILTER'] ?? '' ) == 'warn_and_above' ? $selected : '' ) . '>'
+   . translate ( 'Hide low-severity (INFO) findings' ) . '</option>
+         <option value="critical_only"' . ( ( $s['SECURITY_AUDIT_NOISE_FILTER'] ?? '' ) == 'critical_only' ? $selected : '' ) . '>'
+   . translate ( 'Show only CRITICAL findings' ) . '</option>
+       </select>
+     </div>
+     <div class="form-inline mt-1 mb-2 align-items-start"><label title="'
+   . translate ( 'Extra exclude patterns applied to the file-integrity scan' ) . '">'
+   . translate ( 'Extra exclusion patterns' ) . ':</label>
+       <textarea name="admin_SECURITY_AUDIT_EXTRA_EXCLUDES" rows="4" cols="40">'
+   . htmlspecialchars ( (string) ( $s['SECURITY_AUDIT_EXTRA_EXCLUDES'] ?? '' ), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8' )
+   . '</textarea>
+     </div>
+     <p style="margin-left:25%;" class="text-muted"><small>'
+   . translate ( 'One glob pattern per line; lines starting with # are comments. Directory prefixes end with / (e.g. pub/uploads/). Applied in addition to the built-in defaults.' )
+   . '</small></p>
+     <p style="margin-left:25%;" class="text-muted"><small>'
+   . translate ( 'Documentation' )
+   . ': <a href="https://github.com/craigk5n/webcalendar/blob/master/docs/release-signing.md" target="_blank" rel="noopener noreferrer">docs/release-signing.md</a></small></p>
+   </fieldset>
+    </div></div>
+
+<!-- BEGIN MCP SERVER -->
+  <div class="tab-pane container fade" id="' . $tabs_ar[12] . '">
+  <div class="form-group">
+    <fieldset class="border p-2"><legend>' . translate('MCP Server Configuration') . '</legend>'
+    . ( ! is_mcp_available()
+      ? '<p class="bold"><span style="color: #cc0000;">' . translate( 'MCP Server is not available.' ) . '</span></p><p>'
+        . translate( 'The MCP SDK PHP package must be installed. Run composer install' ) . '</p>'
+      : '<div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'mcp-server-enabled-help' ) . '">'
+        . translate ( 'MCP Server enabled' ) . ':</label>'
+        . print_radio ( 'MCP_SERVER_ENABLED', '', '', 'N' ) . '</div>
+
+        <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'mcp-write-access-help' ) . '">'
+        . translate ( 'MCP Write Access' ) . ':</label>'
+        . print_radio ( 'MCP_WRITE_ACCESS', '', '', 'N' ) . '</div>
+
+        <div class="form-inline mt-1 mb-2"><label for="admin_MCP_RATE_LIMIT" title="' . tooltip ( 'mcp-rate-limit-help' ) . '">'
+        . translate ( 'MCP Rate Limit (requests/hour)' ) . ':</label>
+        <input type="number" size="10" name="admin_MCP_RATE_LIMIT" id="admin_MCP_RATE_LIMIT" value="'
+        . htmlspecialchars ( $s['MCP_RATE_LIMIT'] ?? '100' ) . '" min="1" max="1000"></div>
+
+        <div class="form-inline mt-1 mb-2"><label for="admin_MCP_CORS_ORIGINS" title="' . tooltip ( 'mcp-cors-origins-help' ) . '">'
+        . translate ( 'MCP CORS Allowed Origins' ) . ':</label>
+        <select name="admin_MCP_CORS_ORIGINS" id="admin_MCP_CORS_ORIGINS">
+        <option value=""' . (empty($s['MCP_CORS_ORIGINS']) ? ' selected' : '') . '>' . translate('Disabled') . '</option>
+        <option value="*" ' . (($s['MCP_CORS_ORIGINS'] ?? '') === '*' ? 'selected' : '') . '>Allow All (*)</option>
+        <option value="custom"' . ((!empty($s['MCP_CORS_ORIGINS']) && $s['MCP_CORS_ORIGINS'] !== '*' && strpos($s['MCP_CORS_ORIGINS'], ',') !== false) ? ' selected' : '') . '>Custom Origins</option>
+        </select></div>
+        <div class="form-inline mt-1 mb-2"><label for="admin_MCP_CORS_CUSTOM" title="' . tooltip ( 'mcp-cors-custom-help' ) . '">'
+        . translate ( 'Custom Origins (comma-separated)' ) . ':</label>
+        <input type="text" size="40" name="admin_MCP_CORS_CUSTOM" id="admin_MCP_CORS_CUSTOM" value="'
+        . htmlspecialchars ( (!empty($s['MCP_CORS_ORIGINS']) && $s['MCP_CORS_ORIGINS'] !== '*' && strpos($s['MCP_CORS_ORIGINS'], ',') !== false) ? $s['MCP_CORS_ORIGINS'] : '' ) . '" placeholder="https://example.com,https://another.com"></div>'
+        . '<hr class="mt-2">'
+        . '<div class="mt-1"><strong>' . translate ( 'MCP Endpoint URL' ) . ':</strong> '
+        . '<code>' . htmlspecialchars ( getServerUrl() . 'mcp.php' ) . '</code></div>'
+        . '<p class="mt-1"><small>'
+        . translate ( 'Each user connects their AI agent with their own personal API token, generated on their Preferences MCP tab, where a ready-to-use sample configuration is shown.' )
+        . '</small></p>'
+        . '<details class="mt-1"><summary>' . translate ( 'Sample agent configuration' ) . '</summary>'
+        . '<pre class="border rounded p-2 mt-1" style="white-space:pre-wrap;">'
+        . htmlspecialchars ( '{
+  "mcpServers": {
+    "webcalendar": {
+      "url": "' . getServerUrl() . 'mcp.php",
+      "headers": {
+        "X-MCP-Token": "YOUR_MCP_TOKEN"
+      }
+    }
+  }
+}' )
+        . '</pre></details>' )
+    . '</fieldset>
+  </div></div>
 
 <!-- BEGIN EMAIL -->
-  <div class="tab-pane container fade" id="' . $tabs_ar[12] . '">
+   <div class="tab-pane container fade" id="' . $tabs_ar[14] . '">
   <div class="form-group">
           <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-enabled-help' ) . '">'
    . translate ( 'Email enabled' ) . ':</label>'
@@ -787,6 +902,29 @@ if ( ! $error ) {
    . '<div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-event-reminders-help' ) . '">'
    . translate ( 'Event reminders' ) . ':</label>'
    . print_radio( 'EMAIL_REMINDER' ) . '</div>'
+   . '<div class="form-inline mt-1 mb-2"><label title="'
+   . tooltip ( 'reminder-web-trigger-help' ) . '">'
+   . translate ( 'Reminder web trigger' ) . ':</label> '
+   . ( empty ( $s['REMINDER_WEB_TRIGGER_TOKEN'] )
+     ? '<span>' . translate ( 'Disabled' ) . '</span>'
+     : '<span>' . translate ( 'Enabled' ) . '</span>' )
+   . ' <button type="submit" name="reminder_generate_token" value="1" '
+   . 'class="btn btn-secondary btn-sm ml-2">'
+   . translate ( 'Generate New Token' ) . '</button>'
+   . ( empty ( $s['REMINDER_WEB_TRIGGER_TOKEN'] ) ? ''
+     : ' <button type="submit" name="reminder_clear_token" value="1" '
+       . 'class="btn btn-secondary btn-sm ml-1">'
+       . translate ( 'Clear Token' ) . '</button>' )
+   . '</div>'
+   . ( empty ( $reminder_new_token ) ? ''
+     : '<div class="alert alert-warning mt-1 mb-2"><p>'
+       . translate ( 'Copy this token now. For security it is stored hashed and cannot be shown again.' )
+       . '</p><p><code>' . htmlspecialchars ( $reminder_new_token )
+       . '</code></p><p>'
+       . translate ( 'Reminder cron URL' ) . ':<br><code>'
+       . htmlspecialchars ( 'https://your-server/webcalendar/tools/'
+         . 'send_reminders.php?token=' . $reminder_new_token )
+       . '</code></p></div>' )
    . '<div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-event-added' ) . '">'
    . translate ( 'Events added to my calendar' ) . ':</label>'
    . print_radio ( 'EMAIL_EVENT_ADDED' ) . '</div>
@@ -808,15 +946,15 @@ if ( ! $error ) {
         </div>
 
 <!-- BEGIN COLORS -->
-  <div class="tab-pane container fade" id="' . $tabs_ar[14] . '">
+   <div class="tab-pane container fade" id="' . $tabs_ar[16] . '">
   <div class="form-group">
           <fieldset class="border p-2">
             <legend>' . translate ( 'Color options' ) . '</legend>
 <!-- BEGIN EXAMPLE MONTH -->
-            <p style="float:right; width:45%; margin:0; background: var(--background)">
+            <div class="colorpreview" style="float:right; width:45%; margin:0; background: var(--bgcolor)">
               <p id="monthtitle" class="bold" style="text-align:center; color: var(--h2color)">' . date_to_str ( date ( 'Ymd' ), $DATE_FORMAT_MY, false ) . '</p>'
    . display_month ( date ( 'm' ), date ( 'Y' ), true ) . '
-
+            </div>
 <!-- END EXAMPLE MONTH -->
             <p class="form-inline mt-1 mb-2"><label>' . translate ( 'Allow user to customize colors' )
    . ':</label>' . print_radio ( 'ALLOW_COLOR_CUSTOMIZATION' ) . '</p>
@@ -851,6 +989,37 @@ if ( ! $error ) {
     <script>\n" . $cch . "
       function reset_colors() {" . $rc . '
       }
+
+      // Handle CORS origin selection
+      document.getElementById("admin_MCP_CORS_ORIGINS").addEventListener("change", function() {
+        var customField = document.getElementById("admin_MCP_CORS_CUSTOM");
+        if (this.value === "*" || this.value === "") {
+          customField.value = "";
+          customField.disabled = true;
+        } else if (this.value === "custom") {
+          customField.disabled = false;
+        }
+      });
+
+      // Before form submission, set the actual CORS value
+      document.querySelector("form[name=\"prefform\"]").addEventListener("submit", function(e) {
+        var corsSelect = document.getElementById("admin_MCP_CORS_ORIGINS");
+        var customField = document.getElementById("admin_MCP_CORS_CUSTOM");
+
+        if (corsSelect.value === "custom") {
+          // Use the custom field value
+          corsSelect.value = customField.value;
+        }
+        // For "*" and "", keep the select value as-is
+      });
+
+      // Initialize CORS field state on page load
+      document.addEventListener("DOMContentLoaded", function() {
+        var corsSelect = document.getElementById("admin_MCP_CORS_ORIGINS");
+        var customField = document.getElementById("admin_MCP_CORS_CUSTOM");
+        // Trigger change handler to set initial state
+        corsSelect.onchange();
+      });
     </script>';
 } else {
   // if $error

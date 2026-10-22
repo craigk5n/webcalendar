@@ -24,7 +24,7 @@ function ajax_send_object ( $objectName, $object, $sendPlainText=false ) {
   if ( $sendPlainText )
     Header ( 'Content-Type: text/plain' );
   else
-    Header ( 'Content-Type: text/json' );
+    Header ( 'Content-Type: application/json' );
   $ret = [
     "error" => 0,
     "status" => 'OK',
@@ -49,7 +49,7 @@ function ajax_send_objects ( $objectArray, $sendPlainText=false ) {
   if ( $sendPlainText )
     Header ( 'Content-Type: text/plain' );
   else
-    Header ( 'Content-Type: text/json' );
+    Header ( 'Content-Type: application/json' );
   $ret = [
     "error" => 0,
     "status" => 'OK',
@@ -75,7 +75,7 @@ function ajax_send_success($sendPlainText = false, $message = '')
   if ($sendPlainText)
     Header('Content-Type: text/plain');
   else
-    Header('Content-Type: text/json');
+    Header('Content-Type: application/json');
   $ret = [
     "error" => 0,
     "status" => 'OK',
@@ -102,7 +102,7 @@ function ajax_send_error($errorMessage, $sendPlainText = false)
   if ($sendPlainText)
     Header('Content-Type: text/plain');
   else
-    Header('Content-Type: text/json');
+    Header('Content-Type: application/json');
   $ret = [
     "error" => 1,
     "status" => 'ERROR',

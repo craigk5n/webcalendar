@@ -1410,7 +1410,7 @@ on: بر
 All Attendees: همه حاضران
 Busy: مشغول
 Tentative: آزمایشی
-Schedule an appointment for XXX.: قرار ملاقات برای XXX: YYY.
+Schedule an appointment for XXX.: قرار ملاقات برای XXX.
 date_select: __dd__ __ Month__ __yyyy__
 Event approved: رویداد تأیید شد
 Journal approved: مجله تأیید شده است

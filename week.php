@@ -6,7 +6,7 @@ if( ! access_can_access_function( ACCESS_WEEK )
     || ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
   send_to_preferred_view();
 
-load_user_layers ( ( $user != $login ) && $is_nonuser_admin ? $user : '' );
+load_user_layers ( $user != $login && $is_nonuser_admin ? $user : '' );
 load_user_categories();
 
 $nextYmd =
@@ -247,7 +247,7 @@ print_header (
   generate_refresh_meta() );
 
 echo <<<EOT
-    <table cellpadding="1">
+    <table style="padding: 1px;">
       <tr>
         <td id="printarea" style="vertical-align:top; width:{$tableWidth};">
         {$navStr}

@@ -1410,7 +1410,7 @@ on: ਚਾਲੂ
 All Attendees: ਸਾਰੇ ਹਾਜ਼ਰੀਨ
 Busy: ਵਿਅਸਤ
 Tentative: ਤੰਤੂਵਾਦੀ
-Schedule an appointment for XXX.: XXX ਲਈ ਇੱਕ ਮੁਲਾਕਾਤ ਦਾ ਸਮਾਂ ਤਹਿ ਕਰੋ: YYY.
+Schedule an appointment for XXX.: XXX ਲਈ ਇੱਕ ਮੁਲਾਕਾਤ ਦਾ ਸਮਾਂ ਤਹਿ ਕਰੋ.
 date_select: __dd__ __ਮੈਂ_________
 Event approved: ਇਵੈਂਟ ਨੂੰ ਪ੍ਰਵਾਨਗੀ ਦਿੱਤੀ ਗਈ
 Journal approved: ਜਰਨਲ ਨੂੰ ਮਨਜ਼ੂਰੀ ਦਿੱਤੀ ਗਈ

@@ -1410,7 +1410,7 @@ on: i runga i
 All Attendees: Katoa nga Kaitono
 Busy: Riu
 Tentative: =
-Schedule an appointment for XXX.: Whakaritehia he wa whakarite mo XXX: YYY.
+Schedule an appointment for XXX.: Whakaritehia he wa whakarite mo XXX.
 date_select: =
 Event approved: Kua whakaaetia te takahanga
 Journal approved: Whakaaetia te Tuhipoka

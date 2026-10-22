@@ -99,6 +99,33 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
     // echo "<!-- Waiting on db connection made (lazy) -->\nRETURN!<br>";
     return true;
 
+  // Each backend reaches straight into its PHP extension below. When that
+  // extension is not loaded the call raises a fatal Error rather than failing
+  // the connection, which kills the caller outright -- including
+  // bin/webcal.php diagnose, whose whole purpose is to run when the
+  // installation is broken, and a missing extension is one of the ways it
+  // breaks. Report it as a failed connection instead.
+  $driver = [
+    'ibase' => 'ibase_connect',
+    'ibm_db2' => 'db2_connect',
+    'mysqli' => 'mysqli_connect',
+    'odbc' => 'odbc_connect',
+    'oracle' => 'oci_connect',
+    'postgresql' => 'pg_connect',
+  ][$GLOBALS['db_type']] ?? '';
+
+  if( $driver !== '' && ! function_exists( $driver ) ) {
+    $db_connection_info['last_error'] = 'The PHP extension for '
+      . $GLOBALS['db_type'] . ' is not loaded (' . $driver . ' is undefined).';
+    return false;
+  }
+
+  if( $GLOBALS['db_type'] == 'sqlite3' && ! class_exists( 'SQLite3' ) ) {
+    $db_connection_info['last_error'] =
+      'The PHP extension for sqlite3 is not loaded (SQLite3 is undefined).';
+    return false;
+  }
+
   if( strcmp( $GLOBALS['db_type'], 'ibase' ) == 0 ) {
     $host = $host . ':' . $database;
     $c = ( $GLOBALS['db_persistent']
@@ -126,6 +153,7 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
         return false;
       }
 
+      $c->set_charset('utf8mb4');
       $db_connection_info['connected'] = true;
       $db_connection_info['connection'] = $GLOBALS['db_connection'] = $c;
       $db_connection_info['last_error'] = '';
@@ -167,6 +195,7 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
     if( ! $c )
       return false;
 
+    pg_set_client_encoding($c, 'UTF8');
     $db_connection_info['connected']  = true;
     $db_connection_info['connection'] = $c;
     return $c;
@@ -362,7 +391,8 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
     $res = sqlite_query( $GLOBALS['sqlite_c'], $sql, SQLITE_NUM );
   } elseif ( strcmp ( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
     $found_db_type = true;
-    $res = $GLOBALS['sqlite3_c']->query ( $sql );
+    // Query method returns false on failure. Suppress warnings.
+    $res = @$GLOBALS['sqlite3_c']->query ( $sql );
   }
 
   if( $found_db_type ) {
@@ -471,10 +501,6 @@ function dbi_affected_rows( $conn, $res ) {
 function dbi_update_blob( $table, $column, $key, $data ) {
   global $db_connection_info;
 
-  $notAvailable = str_replace ( ['XXX', 'YYY'],
-    ['dbi_update_blob', $GLOBALS['db_type']],
-    translate( 'Unfortunately, XXX is not implemented for YYY' ) );
-
   assert( ! empty( $table ) );
   assert( ! empty( $column ) );
   assert( ! empty( $key ) );
@@ -517,7 +543,9 @@ elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
     return ( $ret == FALSE ? FALSE : TRUE );
   } else
     // TODO!
-    die_miserable_death( $notAvailable );
+    die_miserable_death( str_replace ( ['XXX', 'YYY'],
+        ['dbi_update_blob', $GLOBALS['db_type']],
+        translate( 'Unfortunately, XXX is not implemented for YYY' ) ) );
 }
 
 /**
@@ -531,10 +559,6 @@ elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
  */
 function dbi_get_blob( $table, $column, $key ) {
   global $db_connection_info;
-
-  $notAvailable = str_replace ( ['XXX', 'YYY'],
-    ['dbi_get_blob', $GLOBALS['db_type']],
-    translate( 'Unfortunately, XXX is not implemented for YYY' ) );
 
   assert( ! empty( $table ) );
   assert( ! empty( $column ) );
@@ -560,7 +584,9 @@ function dbi_get_blob( $table, $column, $key ) {
       $ret = $row[0];
     } else {
       // TODO!
-      die_miserable_death( $notAvailable );
+      die_miserable_death( str_replace ( ['XXX', 'YYY'],
+        ['dbi_get_blob', $GLOBALS['db_type']],
+        translate( 'Unfortunately, XXX is not implemented for YYY' ) ) );
     }
   }
   dbi_free_result( $res );
@@ -615,10 +641,12 @@ function dbi_free_result($res)
   }
 }
 
+$db_sqlite_error_str = ''; // Initialize to avoid undefined variable warning
 
 function dbi_error()
 {
   $dbType = $GLOBALS['db_type'] ?? 'undefined';
+  global $db_sqlite_error_str;
 
   switch ($dbType) {
     case 'ibase':
@@ -653,11 +681,15 @@ function dbi_error()
       }
 
     case 'sqlite3':
+      if (!empty($GLOBALS['sqlite3_c'])) {
+        $db_sqlite_error_str = $GLOBALS['sqlite3_c']->lastErrorMsg();
+        return $db_sqlite_error_str;
+      }
       try {
-        if (empty($GLOBALS['sqlite3_c']) || !empty($GLOBALS['db_sqlite_error_str'])) {
+        if (!empty($GLOBALS['db_sqlite_error_str'])) {
           return $GLOBALS['db_sqlite_error_str'];
         } else {
-          return $GLOBALS['sqlite3_c']->lastErrorMsg();
+          return 'No SQLite3 connection established';
         }
       } catch (Exception $e) {
         $GLOBALS['db_sqlite_error_str'] = $e->getMessage();
@@ -672,7 +704,6 @@ function dbi_error()
   }
 }
 
-
 /**
  * Displays a fatal database error and aborts execution.
  *
@@ -683,14 +714,28 @@ function dbi_error()
  */
 function dbi_fatal_error( $msg, $doExit = true, $showError = true ) {
   if( $showError ) {
-    echo '<h2>' . translate( 'Error' ) . '</h2>
+    // Under CLI the caller is reading standard output: `webcal.php export`
+    // writes an iCalendar document there and `db dump` writes SQL, so an HTML
+    // error block would be written into the file as though it were data. The
+    // message goes to standard error as plain text instead.
+    if( PHP_SAPI === 'cli' ) {
+      fwrite( STDERR, trim( strip_tags( str_replace( [ '<br>', '<br />' ],
+        "\n", $msg ) ) ) . "\n" );
+    } else {
+      echo '<h2>' . translate( 'Error' ) . '</h2>
 <!--begin_error (dbierror)-->
 ' . $msg . '
 <!--end_error-->
 ';
+    }
   }
   if( $doExit )
-    exit;
+    // A bare `exit` is status 0. Every fatal database error therefore reported
+    // success: an import that died halfway through a file exited 0 with part
+    // of the calendar loaded, and cron saw send_reminders.php succeed when it
+    // had not connected. A web request does not care about the status; a
+    // script does, and it is the whole reason these commands have exit codes.
+    exit( 1 );
 }
 
 /**
@@ -805,13 +850,13 @@ function dbi_get_cached_rows ( $sql, $params = [],
       $fd = @fopen( $file, 'w+b', false );
 
       if( empty( $fd ) ) {
-        die_miserable_death ( "Cache Error.<br><br>The permissions for the db_cachedir will not allow creation of the following file:<br><blockquote>" .
-          $file . "</blockquote>", 'dbCacheError' );
+        // Cannot write cache file; disable caching and continue.
+        $db_connection_info['cachedir'] = '';
+      } else {
+        fwrite( $fd, serialize( $rows ) );
+        fclose( $fd );
+        chmod( $file, 0666 );
       }
-
-      fwrite( $fd, serialize( $rows ) );
-      fclose( $fd );
-      chmod( $file, 0666 );
     }
     return $rows;
   } else
@@ -828,7 +873,8 @@ function dbi_init_cache( $dir ) {
   if( ! isset( $db_connection_info ) )
     $db_connection_info = [];
 
-  $db_connection_info['cachedir'] = $dir;
+  if( ! empty( $dir ) && is_dir( $dir ) && is_writable( $dir ) )
+    $db_connection_info['cachedir'] = $dir;
 }
 
 /**

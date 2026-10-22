@@ -1410,7 +1410,7 @@ on: kuni
 All Attendees: Barcha ishtirokchilar
 Busy: Band
 Tentative: Taxminiy
-Schedule an appointment for XXX.: XXX uchun uchrashuvni rejalashtiring: YYY.
+Schedule an appointment for XXX.: XXX uchun uchrashuvni rejalashtiring.
 date_select: __dd__ __mon____yyyyyy__
 Event approved: Tadbir tasdiqlandi
 Journal approved: Jurnal tasdiqlandi

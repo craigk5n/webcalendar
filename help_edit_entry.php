@@ -32,7 +32,7 @@ if ( $DISABLE_REPEATING_FIELD != 'Y' ) {
   $tmp_arr[ translate ( 'Repeat Type' )  ] = translate ( 'repeat-type-help' );
   list_help ( $tmp_arr );
   echo '
-      <p><a class="underline" href="docs/WebCalendar-UserManual.html#repeat">'
+      <p><a class="underline" href="docs/user-guide.md#repeating-events">'
    . translate ( 'For More Information...' ) . '</a></p>';
   $tmp_arr = [
     translate ( 'Repeat End Date' ) => translate ( 'repeat-end-date-help' ),

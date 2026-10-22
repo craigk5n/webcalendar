@@ -85,7 +85,7 @@ print_header ( [], '', 'onload="load_users();"' );
             <div class="modal-body">
                 <!-- Error Alert -->
                 <div id="edit-user-dialog-alert" class="alert alert-danger" style="display: none">
-                    <strong><?php etranslate("Error"); ?>!</strong>&nbsp;<span id="errorMessage">A problem has been occurred while submitting your data.</span>
+                    <strong><?php etranslate("Error"); ?>!</strong>&nbsp;<span id="errorMessage">A problem has occurred while submitting your data.</span>
                     <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
                 </div>
                 <form class="needs-validation" novalidate name="editUserForm" id="editUserForm">
@@ -98,14 +98,14 @@ print_header ( [], '', 'onload="load_users();"' );
                         </div>
                     </div>
                     <div class="form-inline mt-1" id="div-Name">
-                        <label class="col-5 for="editName"><?php etranslate('Name') ?>: </label>
+                        <label class="col-5" for="editName"><?php etranslate('Name') ?>: </label>
                         <input required type="text" class="col-7 form-control" id="editName" name="editName">
                         <div id="invalid-name-error" class="invalid-feedback text-right">
                             <?php echo $noNameError; ?>
                         </div>
                     </div>
                     <div class="form-inline mt-1" id="div-Name">
-                        <label class="col-5 for="editAdmin"><?php etranslate('Admin') ?>: </label>
+                        <label class="col-5" for="editAdmin"><?php etranslate('Admin') ?>: </label>
                         <select class="col-7 form-control" id="editAdmin" name="editAdmin">
                         <?php
                             $userlist = user_get_users();
@@ -120,7 +120,7 @@ print_header ( [], '', 'onload="load_users();"' );
                     </div>
                     <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
                         <div class="form-inline mt-1" id="div-editPublic">
-                            <label class="col-5 for=" editPublic" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Enabling allows this resource calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?>: </label>
+                            <label class="col-5" for="editPublic" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Enabling allows this resource calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?>: </label>
                             <?php echo print_radio('editPublic'); ?>
                         </div>
                     <?php } ?>

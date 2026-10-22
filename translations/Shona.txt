@@ -1410,7 +1410,7 @@ on: =
 All Attendees: Vese Vanopinda
 Busy: Kubatikana
 Tentative: Kufungisisa
-Schedule an appointment for XXX.: Ronga musangano weXX: YYY.
+Schedule an appointment for XXX.: Ronga musangano weXXX.
 date_select: =
 Event approved: Chiitiko chakabvumidzwa
 Journal approved: Zvinyorwa zvinobvumidzwa

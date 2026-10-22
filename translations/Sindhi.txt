@@ -1410,7 +1410,7 @@ on: جاري آهي
 All Attendees: سڀ حاضري ڏيندڙ
 Busy: مصروف
 Tentative: عارضي
-Schedule an appointment for XXX.: ايڪسينڪس لاء ملاقات جو وقت طئي ڪيو: YYY.
+Schedule an appointment for XXX.: XXX لاء ملاقات جو وقت طئي ڪيو.
 date_select: __d______ مهيني_ __yyy__
 Event approved: واقعي جي منظوري ڏني وئي
 Journal approved: جرنل منظور ٿيو

@@ -4,6 +4,7 @@
  */
 defined('_ISVALID') or die('You cannot access this file directly!');
 
+require_once 'date_selectors.php';
 
 global $ALLOW_VIEW_OTHER, $BodyX, $CATEGORIES_ENABLED, $DISPLAY_TASKS_IN_GRID,
 $DISPLAY_TASKS, $fullname, $GROUPS_ENABLED, $has_boss, $HOME_LINK,
@@ -266,8 +267,8 @@ if (empty($thisday))
   $thisday = date('d');
 
 ?>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2" aria-controls="navbarNavDropdown navbarLogoutCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="navbar-collapse collapse w-50 order-1 order-md-0 dual-collapse2" id="navbarNavDropdown">
@@ -454,6 +455,7 @@ if (empty($thisday))
               if (!empty($GROUPS_ENABLED) && $GROUPS_ENABLED == 'Y') {
                 print_menu_item(translate('Groups'), 'groups.php');
               }
+              print_menu_item(translate('Export for WordPress'), 'export_wordpress.php');
             }
 
             // Nonuser Admin Settings
@@ -542,166 +544,15 @@ if (empty($thisday))
     </ul>
   </div>
 
-  <div class="mx-auto order-0 w-30">
-    <ul class="navbar-nav mxr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?php etranslate('Month'); ?>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownLink">
-          <?php
-          /** I really like the submenus that allow us to add more years in here, but it does not display
-           *  the submenu correctly, so I am commenting it out for now... :-(
-          <!-- All 12 months for next 2 years in submenu -->
-          <li class="dropdown-submenu">
-            <a class="dropdown-item dropdown-toggle" href="#"><?php echo ($thisyear+2);?></a>
-            <ul class="dropdown-menu">
-            <h6 class="dropdown-header"><?php echo ($thisyear + 2); ?></h6>
-            <?php
-              for ( $i = 1; $i <= 12; $i++ ) {
-                $date = sprintf ("%04d%02d01", $thisyear + 2, $i);
-                $name = month_name($i - 1);
-                print_month_menu_item($name, $date);
-              }
-            ?>
-            </ul>
-          </li>
-          <!-- next year -->
-          <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#"><?php echo ($thisyear+1);?></a>
-              <ul class="dropdown-menu">
-                <h6 class="dropdown-header"><?php echo ($thisyear + 1); ?></h6>
-                <?php
-                for ( $i = 1; $i <= 12; $i++ ) {
-                  $date = sprintf ("%04d%02d01", $thisyear + 1, $i);
-                  $name = month_name($i - 1);
-                  print_month_menu_item($name, $date);
-                }
-              ?>
-            </ul>
-          </li>
-           **/ ?>
-          <!-- 3 months of prior year -->
-          <h6 class="dropdown-header"><?php echo ($thisyear - 1); ?></h6>
-          <?php
-          for ($i = 9; $i <= 12; $i++) {
-            $date = sprintf("%04d%02d01", $thisyear - 1, $i);
-            $name = month_name($i - 1);
-            print_month_menu_item($name, $date);
-          } ?>
-          <!-- this year -->
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header"><?php echo $thisyear; ?></h6>
-          <?php for ($i = 1; $i <= 12; $i++) {
-            $date = sprintf("%04d%02d01", $thisyear, $i);
-            $name = month_name($i - 1);
-            if ($i == $thismonth)
-              $name = '<b>' . $name . '</b>';
-            print_month_menu_item($name, $date);
-          } ?>
-          <!-- 3 months next year -->
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header"><?php echo ($thisyear + 1); ?></h6>
-          <?php for ($i = 1; $i <= 3; $i++) {
-            $date = sprintf("%04d%02d01", $thisyear + 1, $i);
-            $name = month_name($i - 1);
-            print_month_menu_item($name, $date);
-          } ?>
-          <?php
-          /* Commenting out submenu for now... :-(
-        <!-- year before -->
-        <div class="dropdown-divider"></div>
-        <li class="dropdown-submenu">
-          <a class="dropdown-item dropdown-toggle" href="#"><?php echo ($thisyear-1);?></a>
-          <ul class="dropdown-menu">
-            <h6 class="dropdown-header"><?php echo ($thisyear - 1); ?></h6>
-            <?php
-              for ( $i = 1; $i <= 12; $i++ ) {
-                $date = sprintf ("%04d%02d01", $thisyear - 1, $i);
-                $name = month_name($i - 1);
-                print_month_menu_item($name, $date);
-              }
-            ?>
-          </ul>
-        </li>
-        <!-- 2 years before -->
-        <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#"><?php echo ($thisyear-2);?></a>
-              <ul class="dropdown-menu">
-                <h6 class="dropdown-header"><?php echo ($thisyear - 2); ?></h6>
-                <?php
-                for ( $i = 1; $i <= 12; $i++ ) {
-                  $date = sprintf ("%04d%02d01", $thisyear - 2, $i);
-                  $name = month_name($i - 1, 'M');
-                  print_month_menu_item($name, $date);
-                }
-              ?>
-            </ul>
-          </li>
-        */ ?>
-        </ul>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?php etranslate('Week'); ?>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownLink">
-          <!-- 6 weeks prior and 8 weeks after -->
-          <?php
-          $d = (empty($thisday) ? date('d') : $thisday);
-          $m = (empty($thismonth) ? date('m') : $thismonth);
-          $y = (empty($thisyear) ? date('Y') : $thisyear);
-          $lastDay = ($DISPLAY_WEEKENDS == 'N' ? 4 : 6);
-          $thisdate = date('Ymd', mktime(0, 0, 0, $m, $d, $y));
-          $thisweek = date('W', mktime(0, 0, 0, $m, $d, $y));
-          $wkstart = get_weekday_before($y, $m, $d);
-          $y = (empty($thisyear) ? date('Y') : $thisyear);
-          for ($i = -5; $i <= 9; $i++) {
-            $twkstart = bump_local_timestamp($wkstart, 0, 0, 0, 0, 7 * $i, 0);
-            $twkend = bump_local_timestamp($twkstart, 0, 0, 0, 0, $lastDay, 0);
-            $dateSYmd = date('Ymd', $twkstart);
-            $dateEYmd = date('Ymd', $twkend);
-            $dateW = date('W', $twkstart + 86400);
-            if ($twkstart > 0 && $twkend < 2146021200) {
-              $name = (!empty($GLOBALS['PULLDOWN_WEEKNUMBER'])
-                && $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y'
-                ? '(' . $dateW . ')&nbsp;&nbsp;' : '') .
-                sprintf(
-                  '%s - %s',
-                  date_to_str($dateSYmd, '__mon__ __dd__', false, true),
-                  date_to_str($dateEYmd, '__mon__ __dd__', false, true)
-                );
-              if ($thisdate >= $dateSYmd && $thisdate <= $dateEYmd)
-                $name = '<b>' . $name . '</b>';
-              print_week_menu_item($name, $dateSYmd);
-            }
-          }
-          ?>
-        </ul>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?php etranslate('Year'); ?>
-        </a>
-        <div id="nav-project-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <!-- 5 years before, 5 years after -->
-          <?php for ($i = -5; $i <= 5; $i++) {
-            $date = sprintf("%04d%02d01", $thisyear + $i, 1, 1);
-            $name = ($thisyear + $i);
-            if ($i == 0)
-              $name = '<b>' . $name . '</b>';
-            print_year_menu_item($name, $date);
-          } ?>
-        </div>
-      </li>
-
-    </ul>
-  </div>
+  <?php // Installs predating this setting have no webcal_config row for it.
+  if (($MENU_DATE_TOP ?? 'Y') != 'N') { ?>
+    <div class="mx-auto order-0">
+      <?php echo date_selectors_html(); ?>
+    </div>
+  <?php } ?>
 
   <?php if (!$use_http_auth && $single_user != 'Y') { ?>
-    <div class="navbar-collapse collapse w-20 order-3 dual-collapse2">
+    <div class="navbar-collapse collapse order-3 dual-collapse2" id="navbarLogoutCollapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown-menu-right">
           <a class="nav-link" href="<?php echo $logout_url; ?>">Logout</a>
@@ -714,25 +565,6 @@ if (empty($thisday))
 </nav>
 
 <?php
-
-function print_year_menu_item($name, $date)
-{
-  global $login, $user;
-  echo '<a class="dropdown-item" href="year.php?date=' . $date .
-    ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a>\n";
-}
-
-function print_month_menu_item($name, $date)
-{
-  global $login, $user;
-  echo '<li><a class="dropdown-item" href="month.php?date=' . $date . ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
-}
-
-function print_week_menu_item($name, $date)
-{
-  global $login, $user;
-  echo '<li><a class="dropdown-item" href="week.php?date=' . $date . ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
-}
 
 function print_menu_item($name, $url, $testCondition = true, $target = '')
 {

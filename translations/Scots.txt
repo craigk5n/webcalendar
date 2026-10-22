@@ -1410,7 +1410,7 @@ on: air
 All Attendees: Gach neach-frithealaidh
 Busy: Trang
 Tentative: =
-Schedule an appointment for XXX.: Clàraich coinneamh airson XXX: BBBB.
+Schedule an appointment for XXX.: Clàraich coinneamh airson XXX.
 date_select: =
 Event approved: Tachartas air aontachadh
 Journal approved: Iris air aontachadh

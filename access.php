@@ -23,8 +23,7 @@
  */
 require_once 'includes/init.php';
 
-$allow_view_other =
-  ( ! empty( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' );
+$allow_view_other = ( $ALLOW_VIEW_OTHER === 'Y' );
 
 if( ! access_is_enabled() ) {
   echo print_not_auth();
@@ -46,7 +45,8 @@ $saved = '';
 // Are we handling the access form?
 // If so, do that, then redirect.
 // Handle function access first.
-if( getPostValue( 'auser' ) != '' && getPostValue( 'submit' ) == $saveStr ) {
+$action = getPostValue('action');
+if (getPostValue('auser') != '' && $action == "save") {
   $auser = getPostValue( 'auser' );
   $perm = '';
   for( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ) {
@@ -61,10 +61,14 @@ if( getPostValue( 'auser' ) != '' && getPostValue( 'submit' ) == $saveStr ) {
     die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrStr ) );
 
   $saved = true;
+} elseif (getPostValue('auser') != '' && $action == 'undo') {
+  // Undo: Simply reload the page with the current user, no save
+  header("Location: access.php?guser=" . urlencode(getPostValue('auser')));
+  exit;
 }
 
 // Are we handling the other user form? If so, do that, then redirect.
-if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) {
+if (getPostValue('otheruser') != '' && $action == 'save') {
   $puser = getPostValue( 'guser' );
   $pouser = getPostValue( 'otheruser' );
 
@@ -86,9 +90,12 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
       $i += $i;
     }
 
-    $email  = getPostValue( 'email' );
-    $invite = getPostValue( 'invite' );
-    $time   = getPostValue( 'time' );
+    // Cast because getPostValue() returns NULL for a missing field, and both
+    // strlen( null ) and trim( null ) are deprecated in PHP 8.1+. Keep the
+    // strlen() test rather than ?:, which would turn a literal '0' into 'N'.
+    $email  = (string) getPostValue( 'email' );
+    $invite = (string) getPostValue( 'invite' );
+    $time   = (string) getPostValue( 'time' );
 
     if( ! dbi_execute( 'INSERT INTO webcal_access_user ( cal_login,
         cal_other_user, cal_can_view, cal_can_edit, cal_can_approve,
@@ -97,26 +104,31 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
         [
           $puser,
           $pouser,
-          ( $view_total > 0 ? $view_total : 0 ),
+          ( $view_total ?: 0 ),
           ( $edit_total > 0 && $puser != '__public__' ? $edit_total : 0 ),
           ( $approve_total > 0 && $puser != '__public__' ? $approve_total : 0 ),
           ( strlen( $invite ) ? $invite : 'N' ),
           ( strlen( $email ) ? $email : 'N' ),
-          ( strlen( $time ) ? $time : 'N' )] ) )
+          ( strlen( $time ) ? $time : 'N' )
+        ] ) )
       die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrStr ) );
 
     $saved = true;
   }
+} elseif (getPostValue('otheruser') != '' && $action == 'undo') {
+  // Undo: Reload the page with the current guser and otheruser, no save
+  header("Location: access.php?guser=" . urlencode(getPostValue('guser')) . "&otheruser=" . urlencode(getPostValue('otheruser')));
+  exit;
 }
 $checked = ' checked';
-$guser = getPostValue( 'guser' );
+$guser = getValue( 'guser' );
 $selected = ' selected';
 
 if( $guser == '__default__' ) {
   $otheruser = $guser;
   $user_fullname = $defConfigStr;
 } else
-  $otheruser = getPostValue( 'otheruser' );
+  $otheruser = getValue( 'otheruser' );
 
 if( $otheruser == '__default__' ) {
   $otheruser_fullname = $defConfigStr;
@@ -132,27 +144,21 @@ if( ! empty( $otheruser ) ) {
     $ADMIN_OVERRIDE_UAC = 'N';
     // Now load all the data from webcal_access_user.
     $allPermissions = access_load_user_permissions( false );
+    $op = [];
 
-    // Load default-default values if exist.
-    if( ! empty( $allPermissions['__default__.__default__'] ) )
-      $op = $allPermissions['__default__.__default__'];
+    // Three levels, each overriding the one before it but only when it
+    // actually has a value: the global default, then the wider default, then
+    // the specific pair. empty() rather than ?:, which evaluates its left
+    // operand and so warns on a key that is not there.
+    $levels = ( $is_admin
+      ? ['__default__.__default__', $guser . '.__default__',
+         $guser . '.' . $otheruser]
+      : ['__default__.__default__', '__default__.' . $guser,
+         $otheruser . '.' . $guser] );
 
-    if( $is_admin ) {
-      // Load user-default values if exist.
-      if( ! empty( $allPermissions[ $guser . '.__default__' ] ) )
-        $op = $allPermissions[ $guser . '.__default__' ];
-
-      // Load user-otheruser values if exist.
-      if( ! empty( $allPermissions[ $guser . '.' . $otheruser ] ) )
-        $op = $allPermissions[ $guser . '.' . $otheruser ];
-    } else {
-      // Load default-user values if exist.
-      if( ! empty( $allPermissions['__default__.' . $guser] ) )
-        $op = $allPermissions['__default__.' . $guser ];
-
-      // Load otheruser-user values if exist.
-      if( ! empty( $allPermissions[$otheruser . '.' . $guser] ) )
-        $op = $allPermissions[$otheruser . '.' . $guser];
+    foreach( $levels as $level ) {
+      if( ! empty( $allPermissions[$level] ) )
+        $op = $allPermissions[$level];
     }
   }
 }
@@ -262,9 +268,10 @@ if( ! empty( $guser ) || ! $is_admin ) {
           </tr>
         </tbody>
       </table>
-      <button class="btn btn-secondary" type="submit">' . $undoStr . '</button>
-      <button class="btn btn-primary" name="submit" type="submit">'
-      . $saveStr . '</button>
+      <button class="btn btn-secondary" name="action" value="undo" type="submit">'
+        . $undoStr . '</button>
+      <button class="btn btn-primary" name="action" value="save" type="submit">'
+        . $saveStr . '</button>
     </form>';
 
     $pagetitle = translate( 'Allow Access to Other Users Calendar' );
@@ -317,23 +324,23 @@ if( ! empty( $otheruser ) ) {
     echo '
       <input type="hidden" name="guser" value="' . $guser . '">
       <input type="hidden" name="otheruser" value="' . $otheruser . '"><br>
-      <table cellpadding="5">
+      <table style="padding: 5px;">
         <tbody>
           <tr>
             <th class="'
       . ( $guser === '__public__'
-        ? 'aligncenter" width="60%">' . translate ( 'Calendar' ) . '</th>
-            <th class="boxtop boxbottom" width="20%">' . $typeStr . '</th>
-            <th class="boxtop boxright boxbottom" colspan="3" width="20%">'
+        ? 'aligncenter" style="inline-size: 60%">' . translate ( 'Calendar' ) . '</th>
+            <th class="boxtop boxbottom" style="inline-size: 20%">' . $typeStr . '</th>
+            <th class="boxtop boxright boxbottom" colspan="3" style="inline-size: 20%">'
           . translate ( 'View Event' )
-        : 'boxtop boxbottom boxleft" width="25%">'
+        : 'boxtop boxbottom boxleft" style="inline-size: 25%">'
           . $otheruser_fullname . '</th>
-            <th class="boxtop boxbottom" width="15%">' . $typeStr . '</th>
-            <th class="boxtop boxbottom" colspan="3" width="15%">'
+            <th class="boxtop boxbottom" style="inline-size: 15%">' . $typeStr . '</th>
+            <th class="boxtop boxbottom" colspan="3" style="inline-size: 15%">'
           . translate ( 'View' ) . '</th>
-            <th class="boxtop boxbottom" colspan="3" width="15%">'
+            <th class="boxtop boxbottom" colspan="3" style="inline-size: 15%">'
           . translate ( 'Edit' ) . '</th>
-            <th class="boxtop boxright boxbottom" colspan="3" width="15%">'
+            <th class="boxtop boxright boxbottom" colspan="3" style="inline-size: 15%">'
           . translate ( 'Approve/Reject' ) ) . '</th>
           </tr>';
 
@@ -428,7 +435,7 @@ if( ! empty( $otheruser ) ) {
       . 'onclick="selectAll(0);">' . translate ( 'Clear All' ) . '</button>
             </td>
             <td colspan="9" class="boxright">
-              <table class="aligncenter" cellpadding="5" cellspacing="2">
+              <table class="aligncenter" style="border-collapse: separate; border-spacing: 2px; padding: 5px;">
                 <tr>
                   <td class="pub">' . translate( 'Public' ) . '</td>
                   <td class="conf">' . translate( 'Confidential' ) . '</td>
@@ -442,10 +449,10 @@ if( ! empty( $otheruser ) ) {
   echo '
           <tr>
             <td colspan="11" class="boxleft boxbottom boxright">
-              <button class="btn btn-secondary" type="submit">'
-    . $undoStr . '</button>
-              <button class="btn btn-primary" name="submit" type="submit">'
-    . $saveStr . '</button>
+              <button class="btn btn-secondary" name="action" value="undo" type="submit">'
+                . $undoStr . '</button>
+              <button class="btn btn-primary" name="action" value="save" type="submit">'
+                . $saveStr . '</button>
             </td>
           </tr>
         </tbody>

@@ -1,29 +1,52 @@
 {
   "name": "k5n/webcalendar",
-  "type": "project",
   "description": "Multi-user web-based calendar app",
-  "version": "1.9.12",
-  "homepage": "https://www.k5n.us/webcalendar/",
+  "homepage": "https://k5n.us/webcalendar/",
+  "license": "GPL-2.0-only",
+  "type": "project",
+  "version": "1.9.25",
   "authors": [
     {
       "name": "Craig Knudsen",
       "email": "craig@k5n.us",
-      "homepage": "https://www.k5n.us",
+      "homepage": "https://k5n.us",
       "role": "Project Maintainer / Developer"
     }
   ],
-  "require": {
-    "phpmailer/phpmailer": "6.8.*",
-    "components/jquery": "3.5.*",
-    "ckeditor/ckeditor": "4.22.*",
-    "twbs/bootstrap": "4.6.*",
-    "twbs/bootstrap-icons": "1.8.*",
-    "phpunit/phpunit": "9.6.*"
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": {
+      "*": "source"
+    },
+    "platform": {
+      "php": "8.2.0"
+    },
+    "process-timeout": 0,
+    "sort-packages": true,
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
   },
-  "license": "GPL-2.0-only",
   "autoload": {
     "psr-4": {
-      "App\\": "app/"
+      "WebCalendar\\": "app/"
     }
+  },
+  "prefer-stable": true,
+  "require": {
+    "php": "^8.2",
+    "components/jquery": "3.5.*",
+    "mcp/sdk": "^0.7.1",
+    "phpmailer/phpmailer": "7.0.*",
+    "tinymce/tinymce": "^7.9.3",
+    "twbs/bootstrap": "4.6.*",
+    "twbs/bootstrap-icons": "1.13.*"
+  },
+  "require-dev": {
+    "components/normalize.css": "^3.0",
+    "friendsofphp/php-cs-fixer": "^3.86",
+    "phpstan/phpstan": "^2.0",
+    "phpunit/phpunit": "9.6.*",
+    "squizlabs/php_codesniffer": "^4.0"
   }
 }

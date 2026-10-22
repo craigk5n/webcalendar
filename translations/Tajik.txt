@@ -1410,7 +1410,7 @@ on: дар
 All Attendees: Ҳама ҳозирин
 Busy: Банд
 Tentative: Тахминӣ
-Schedule an appointment for XXX.: Таъинотро барои XXX: YYY таъин кунед.
+Schedule an appointment for XXX.: Таъинотро барои XXX таъин кунед.
 date_select: __dd__ __моҳ __ __yyyy__
 Event approved: Чорабинӣ тасдиқ карда шуд
 Journal approved: Маҷалла тасдиқ карда шуд

@@ -4,11 +4,8 @@
  * Presents page to edit/add an event/task/journal
  *
  * Notes:
- * A SysAdmin can enable HTML for event full descriptions. If one of the
- * supported HTML edit widgets is also installed, users can use WYSIWYG editing.
- * See the WebCalendar page at
- * http://k5n.us/webcalendar.php?topic=Add-Ons
- * for download and install instructions for these packages.
+ * A SysAdmin can enable HTML for event full descriptions.
+ * TinyMCE is used for rich text.
  */
 require_once 'includes/init.php';
 
@@ -29,12 +26,13 @@ function time_selection($prefix, $time = '', $trigger = false)
   $amsel = $pmsel = $ret = '';
   $trigger_str = ($trigger ? 'onchange="' . $prefix . 'timechanged() ' : '');
 
-  if (!isset($time) && $time != 0) {
+  if (!isset($time) || $time == 0) {
     $hour = $WORK_DAY_START_HOUR;
     $minute = 0;
   } else {
-    $hour = floor($time / 10000);
-    $minute = (($time / 100) % 100) % 60;
+    $time = (int) $time;
+    $hour = intdiv($time, 10000);
+    $minute = intdiv($time % 10000, 100);
   }
   if ($TIME_FORMAT == '12') {
     $maxhour = 12;
@@ -51,7 +49,8 @@ function time_selection($prefix, $time = '', $trigger = false)
     $hour = sprintf("%02d", $hour);
   }
   $minute = sprintf("%02d", $minute);
-  $ret .= '<select class="form-control col-auto" ' . 'name="' . $prefix . 'hour" id="' . $prefix . 'hour" '
+  $ret .= '<span class="form-inline">'
+    . '<select class="form-control col-auto" ' . 'name="' . $prefix . 'hour" id="' . $prefix . 'hour" '
     . $trigger_str . '>';
   for ($i = 0; $i < $maxhour; $i++) {
     $ihour = ($TIME_FORMAT == '24' ? sprintf("%02d", $i) : $i);
@@ -84,7 +83,8 @@ function time_selection($prefix, $time = '', $trigger = false)
       . $prefix . 'ampmA" value="0" ' . $amsel . '>&nbsp;' . translate('am')
       . '&nbsp;</label><label><input class="form-control" type="radio" name="' . $prefix . 'ampm" id="'
       . $prefix . 'ampmP" value="12" ' . $pmsel . '>&nbsp;' . translate('pm')
-      . '</label>&nbsp;' : '<input type="hidden" name="' . $prefix . 'ampm" value="0">');
+      . '</label>&nbsp;' : '<input type="hidden" name="' . $prefix . 'ampm" value="0">')
+    . '</span>';
 }
 
 $daysStr = translate('days');
@@ -601,7 +601,7 @@ $tabI = 0;
 
         <label for="entry_brief" data-toggle="tooltip" data-placement="top" title="<?php etooltip('brief-description-help'); ?>">
           <?php etranslate('Brief Description'); ?>:</label>
-        <input class="form-control" type="text" name="name" id="entry_brief" size="25" value="<?php echo htmlspecialchars($name); ?>">
+        <input class="form-control" type="text" name="name" id="entry_brief" size="25" maxlength="80" value="<?php echo htmlspecialchars($name); ?>">
         <label for="description" data-toggle="tooltip" data-placement="top" title="<?php etooltip('full-description-help'); ?>">
           <?php etranslate('Full Description'); ?>:</label>
         <textarea class="form-control" rows="5" name="description" id="description"><?php echo htmlspecialchars($description); ?></textarea>
@@ -678,7 +678,7 @@ $tabI = 0;
             <?php if (!empty($overall_percent)) { ?>
               <tr>
                 <td colspan="2">
-                  <table cellpadding="2" cellspacing="5">
+                  <table style="border-collapse: separate; border-spacing: 5px; padding: 2px;">
                     <tr>
                       <td colspan="2"><?php etranslate('All Percentages'); ?></td>
                     </tr>
@@ -764,9 +764,9 @@ $tabI = 0;
               &nbsp;(<label for="duration_h"><?php echo $hoursStr; ?></label>: <label for="duration_m"><?php echo $minuteStr; ?></label>)
             </div>
           <?php } else { ?>
-            <div id="timeentryend"><label data-toggle="tooltip" data-placement="top" title="<?php etooltip('end-time-help'); ?>">
-                &nbsp;-&nbsp;
-                <?php echo time_selection('end_', ($id ? add_duration($cal_time, $duration) : $cal_time)); ?>
+            <div class="form-inline" id="timeentryend" style="visibility:hidden;">
+              <label data-toggle="tooltip" data-placement="top" title="<?php etooltip('end-time-help'); ?>">&nbsp;-&nbsp;</label>
+              <?php echo time_selection('end_', ($id ? add_duration($cal_time, $duration) : $cal_time)); ?>
             </div>
           <?php } ?>
 
@@ -1000,7 +1000,7 @@ $tabI = 0;
     ?>
       <!-- PARTICIPANTS -->
       <div class="tab-pane container fade" id="<?php echo $tabs_name[$tabI++]; ?>">
-        <table width="100%" id="participantTable">
+        <table id="participantTable" style="inline-size: 100%">
           <tr>
             <td colspan="3">
               <fieldset class="form-group border p-2">
@@ -1077,9 +1077,9 @@ $tabI = 0;
       if ($DISABLE_REPEATING_FIELD != 'Y') {
         echo "\n" . '<!-- REPEAT -->
       <div class="tab-pane container fade" id="' . $tabs_name[$tabI++] . '">
-      <table cellpadding="3">
+      <table style="padding: 3px;">
         <tr>
-          <td class="align-top">
+          <td class="aligntop">
           <label for="rpttype" data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-type-help') . '">'
           . translate('Type') . ':</label></td>
           <td colspan="2">
@@ -1093,8 +1093,6 @@ $tabI = 0;
             ? $selected : '') . '>' . translate('Weekly') . '</option>
               <option value="monthlyByDay"'
           . (strcmp($rpt_type, 'monthlyByDay') == 0 ? $selected : '')
-          // translate ( 'Monthly' ) translate ( 'by day' ) translate ( 'by date' )
-          // translate ( 'by position' )
           . '>' . translate('Monthly (by day)') . '</option>
               <option value="monthlyByDate"'
           . (strcmp($rpt_type, 'monthlyByDate') == 0 ? $selected : '')
@@ -1182,8 +1180,7 @@ $tabI = 0;
           . (empty($bymonthdayStr) ? '' : $bymonthdayStr) . '">
             <input type="hidden" name="bysetposList" value="'
           . (empty($bysetposStr) ? '' : $bysetposStr) . '">
-            <table class="byxxx" cellpadding="2" cellspacing="2" '
-          . 'border="1">
+            <table class="byxxx" style="border-collapse: separate; border-spacing: 2px; border: 1px; padding: 2px;">
               <tr>
                 <td></td>';
         // Display byday extended selection.
@@ -1196,10 +1193,10 @@ $tabI = 0;
           $rpt_byday_label++
         ) {
           $rpt_byday_mod = $rpt_byday_label % 7;
-          $class = (is_weekend($rpt_byday_mod) ? ' class="weekend" ' : '');
-          echo '
-                <th width="50px"' . $class . '><label>'
-            . translate($weekday_names[$rpt_byday_mod]) . '</label></th>';
+          $class = ( is_weekend ( $rpt_byday_mod ) ? 'class="weekend" ' : '' );
+          echo "
+                <th $class" . 'style="inline-size: 50px"><label>' .
+            $weekday_names[$rpt_byday_mod] . '</label></th>';
         }
         echo '
               </tr>
@@ -1258,20 +1255,18 @@ $tabI = 0;
           <td colspan="4"></td>
         </tr>
         <tr id="rptbymonth" style="visibility:hidden;">
-          <td class="align-top">
+          <td class="aligntop">
           <label for="entry_freq" data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-month-help') . '">'
           . translate('ByMonth') . '</label>:&nbsp;</td>
           <td colspan="2" class="boxall">'
           /* Display bymonth selection. */ . '
-            <table cellpadding="5">
+            <table style="padding: 5px;">
               <tr>';
         for ($rpt_month = 1; $rpt_month < 13; $rpt_month++) {
           echo '
                 <td><label><input type="checkbox" name="bymonth[]" value="'
             . $rpt_month . '"' . (in_array($rpt_month, $bymonth) ? $checked : '')
-            . '>&nbsp;' . translate(
-              date('M', mktime(0, 0, 0, $rpt_month, 1))
-            )
+            . '>&nbsp;' . month_name ( $rpt_month - 1, 'M' )
             . '</label></td>' . ($rpt_month == 6 ? '
               </tr>
               <tr>' : '');
@@ -1290,8 +1285,7 @@ $tabI = 0;
           . ':&nbsp;</td>
           <td colspan="2" class="boxall">'
           /* Display bysetpos selection. */ . '
-            <table class="byxxx" cellpadding="2" '
-          . 'border="1">
+            <table class="byxxx" style="border: 1px; padding: 2px;">
               <tr>
                 <td></td>';
         for (
@@ -1300,7 +1294,7 @@ $tabI = 0;
           $rpt_bysetpos_label++
         ) {
           echo '
-                <th width="37px"><label>' . $rpt_bysetpos_label
+                <th style="inline-size: 37px"><label>' . $rpt_bysetpos_label
             . '</label></th>';
         }
         echo '
@@ -1335,8 +1329,7 @@ $tabI = 0;
           . ':&nbsp;</label></td>
         <td colspan="2" class="boxall">'
           /* Display bymonthday extended selection. */ . '
-          <table class="byxxx" cellpadding="2" '
-          . 'border="1">
+          <table class="byxxx" style="border: 1px; padding: 2px;">
             <tr>
               <td></td>';
         for (
@@ -1345,7 +1338,7 @@ $tabI = 0;
           $rpt_bymonthday_label++
         ) {
           echo '
-              <th width="37px"><label>' . $rpt_bymonthday_label
+              <th style="inline-size: 37px"><label>' . $rpt_bymonthday_label
             . '</label></th>';
         }
         echo '
@@ -1396,25 +1389,25 @@ $tabI = 0;
         <td colspan="2"><input type="text" name="byweekno" id="byweekno" '
           . 'size="50" maxlength="100" value="' . $byweekno . '"></td>
       </tr>
-      <tr id="rptbyyearday" style="visibility:hidden;" >
+      <tr id="rptbyyearday" style="visibility:hidden;">
         <td><label data-toggle="tooltip" data-placement="top" title="' .
         tooltip('repeat-byyearday-help') . '">' . translate('ByYearDay') . ':</label></td>
         <td colspan="2"><input type="text" name="byyearday" id="byyearday" '
           . 'size="50" maxlength="100" value="' . $byyearday . '"></td>
       </tr>
       <tr id="rptexceptions" style="visibility:visible;">
-        <td><label class="align-top" data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-exceptions-help') . '">'
+        <td><label class="aligntop" data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-exceptions-help') . '">'
           . translate('Exclusions') . '/<br>'
           . translate('Inclusions') . ':</label></td>
         <td colspan="2" class="boxtop boxright boxbottom boxleft">
-          <table width="250px">
+          <table style="inline-size: 250px">
             <tr>
               <td colspan="2">'
           . date_selection('except_', $rpt_end_date ? $rpt_end_date : $cal_date)
           . '</td>
             </tr>
             <tr>
-              <td class="alignright aligntop" width="100">
+              <td class="aligntop alignright" style="inline-size: 100px">
                 <label id="select_exceptions_not" style="visibility:'
           . (empty($excepts) ? 'visible' : 'hidden') . ';"></label>
                 <select id="select_exceptions" name="exceptions[]" '
@@ -1471,7 +1464,7 @@ $tabI = 0;
         $rem_rep_minutes -= ($rem_rep_hours * 60);
 
         echo '<div class="tab-pane container fade" id="' . $tabs_name[$tabI++] . '">' . '
-      <table cellpadding="3">
+      <table style="padding: 3px;">
         <thead>
           <tr>
           <td><label data-toggle="tooltip" data-placement="top" title="' .
@@ -1500,7 +1493,7 @@ $tabI = 0;
           <tr>
             <td rowspan="6"><label>' . translate('When')
           . ':</label></td>
-            <td class="boxtop boxleft" width="20%"><label><input type="radio" '
+            <td class="boxtop boxleft" style="inline-size: 20%"><label><input type="radio" '
           . 'name="rem_when" id="rem_when_date" value="Y" '
           . ($rem_use_date ? $checked : '') . ' onclick="toggle_rem_when()">'
           . translate('Use Date/Time') . '&nbsp;</label></td>
@@ -1515,7 +1508,7 @@ $tabI = 0;
             ? $cal_time : $reminder['time'])) . '</td>
           </tr>
           <tr>
-            <td class="boxright boxleft" height="20px" colspan="3">&nbsp;</td>
+            <td class="boxright boxleft" style="block-size: 20px" colspan="3">&nbsp;</td>
           </tr>
           <tr>
             <td class="boxleft"><label><input type="radio" name="rem_when" '
@@ -1613,9 +1606,35 @@ $tabI = 0;
 <br>
 
 
-<?php /* Create a hidden div tag for editing categories... */ ?>
+<?php /* Hidden modal for editing (and ordering) event categories. */ ?>
+<?php
+// Build the set of categories eligible for this editor. Visibility rule
+// mirrors the legacy modal: user's own categories, global categories,
+// admins, and admin-editing-user flow. Consumed by JS in the modal.
+$cat_modal_data = [];
+if (!empty($categories)) {
+  foreach ($categories as $K => $V) {
+    if ($K > 0 && (($V['cat_owner'] == $login || $V['cat_global'] > 0)
+      || $is_admin || substr($form ?? '', 0, 4) == 'edit')) {
+      $cat_modal_data[] = [
+        'id' => (int) $K,
+        'name' => $V['cat_name'],
+        'global' => empty($V['cat_owner']),
+      ];
+    }
+  }
+}
+?>
+<script>
+window.WebCalCategories = <?php
+  echo json_encode(
+    $cat_modal_data,
+    JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE
+  );
+?>;
+</script>
 <div class="modal" id="catModal" tabindex="-1">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title"><?php etranslate("Edit Categories"); ?></h5>
@@ -1624,26 +1643,19 @@ $tabI = 0;
         </button>
       </div>
       <div class="modal-body">
-        <form name="editCatForm" id="editCatForm">
-
-          <?php
-          if (!empty($categories)) {
-            foreach ($categories as $K => $V) {
-              // None is index -1 and needs to be ignored
-              if ($K > 0 && (($V['cat_owner'] == $login || $V['cat_global'] > 0)
-                || $is_admin || substr($form, 0, 4) == 'edit')) {
-                $tmpStr = $K . '">' . $V['cat_name'];
-                echo '<input type="checkbox" name="cat_' . $K . '" ' .
-                  'id="cat_' . $K . '"><label for="cat_' . $K . '">' .
-                  htmlentities($V['cat_name']);
-                if (empty($V['cat_owner']))
-                  echo '<sup>*</sup>';
-                echo "</label><br>\n";
-              }
-            }
-          }
-          ?>
-        </form>
+        <div class="row">
+          <div class="col-sm-6">
+            <label class="font-weight-bold" for="catAvailableList"><?php etranslate('Available categories'); ?>:</label>
+            <ul class="list-group" id="catAvailableList"
+                aria-label="<?php etranslate('Available categories'); ?>"></ul>
+          </div>
+          <div class="col-sm-6">
+            <label class="font-weight-bold" for="catSelectedList"><?php etranslate('Selected categories'); ?>:</label>
+            <ul class="list-group" id="catSelectedList"
+                aria-label="<?php etranslate('Selected categories'); ?>"></ul>
+          </div>
+        </div>
+        <div id="catReorderStatus" aria-live="polite" class="sr-only"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php etranslate("Cancel"); ?></button>

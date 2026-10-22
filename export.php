@@ -31,7 +31,7 @@ echo '<table class="table">
         <tr>
           <td><label for="exformat">' . translate ( 'Export format' )
  . ':</label></td>
-          <td>' . generate_export_select ( 'toggel_catfilter' ) . '
+          <td>' . generate_export_select ( 'toggle_catfilter' ) . '
           </td>
         </tr>';
 
@@ -126,7 +126,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
     updateDateFields();
   }
 
-  function toggel_catfilter() {
+  function toggle_catfilter() {
     if ( $('#exformat option:selected').index() == 0 ) {
       // ICalendar
       $('#catfilter').show();

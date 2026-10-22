@@ -71,7 +71,8 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ): array {
   if ( ! $fp )
     die_miserable_death ( 'Could not open language file: ' . $path_to_folder . $basename );
 
-  $translations = [];
+  if ( ! is_array ( $translations ) )
+    $translations = [];
   $inInstallTrans = false;
   $installationTranslations = [];
 

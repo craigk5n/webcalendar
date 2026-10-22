@@ -1,46 +1,56 @@
-# Contributor Covenant Code of Conduct
+# Code of Conduct
 
-## Our Pledge
+## Our Goal
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
+The purpose of this project is to build high-quality, useful software through open collaboration. We aim to maintain a productive environment where contributors can focus on technical work, share ideas, and improve the project together.
 
-## Our Standards
+We welcome contributions from anyone who wants to participate constructively, regardless of background.
 
-Examples of behavior that contributes to creating a positive environment include:
+## Expected Behavior
 
-* Using welcoming and inclusive language
-* Being respectful of differing viewpoints and experiences
-* Gracefully accepting constructive criticism
-* Focusing on what is best for the community
-* Showing empathy towards other community members
+- Focus on the project: Keep discussions centered on code, bugs, features, architecture, documentation, and related technical topics.
+- Be clear and constructive: Provide specific, actionable feedback. Explain your reasoning when suggesting changes or disagreeing.
+- Respect others' time: Be concise where possible. Read existing issues, pull requests, and documentation before posting duplicates.
+- Assume good intent: Interpret questions and comments in the most positive light unless evidence shows otherwise. Technical disagreements are normal and expected.
+- Communicate professionally: Use respectful language. Avoid personal attacks, insults, or inflammatory remarks.
+- Stay on topic: Off-topic posts (including unrelated debates) may be closed or redirected to keep the project focused.
+- Follow project processes: Use issues for bug reports and feature requests, pull requests for code changes, and respect maintainer decisions on scope and priorities.
 
-Examples of unacceptable behavior by participants include:
+## Unacceptable Behavior
 
-* The use of sexualized language or imagery and unwelcome sexual attention or advances
-* Trolling, insulting/derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or electronic address, without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a professional setting
+- Harassment, threats, or personal attacks directed at individuals.
+- Deliberate disruption of discussions (trolling, spamming, or derailing threads).
+- Malicious or harmful contributions, such as code containing backdoors, malware, or obfuscated damage.
+- Repeated off-topic posting that interferes with productive work.
+- Doxxing or sharing private personal information without consent.
 
-## Our Responsibilities
-
-Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
-
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
-
-## Scope
-
-This Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community. Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. Representation of a project may be further defined and clarified by project maintainers.
+Technical criticism, strong opinions on code quality, style, or design choices are not violations, provided they remain professional and focused on the work.
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at craig@k5n.us. The project team will review and investigate all complaints, and will respond in a way that it deems appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
+Project maintainers are responsible for enforcing this Code of Conduct. Decisions are based on the principles above and aim to protect the project's productivity.
 
-Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
+Responses to issues may include:
 
-## Attribution
+- A warning and request to adjust behavior.
+- Closing or locking off-topic or disruptive threads.
+- Temporary or permanent restrictions on participation for repeated violations.
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4, available at [http://contributor-covenant.org/version/1/4][version]
+Enforcement is handled transparently when possible, but maintainers' decisions on project direction and conduct are final. We do not maintain separate anonymous reporting systems or external committees.
 
-[homepage]: http://contributor-covenant.org
-[version]: http://contributor-covenant.org/version/1/4/
+If you believe a violation has occurred, contact the maintainers directly with specific details (links, quotes, context). Vague or unsubstantiated complaints may not receive a response.
+
+## Scope
+
+This Code of Conduct applies to official project spaces, including:
+
+- GitHub issues, pull requests, discussions, and wiki.
+- Any official project communication channels (e.g., chat rooms, mailing lists, or events run by maintainers).
+
+It does not apply to private conversations, external platforms, or behavior outside the project's control.
+
+## Attribution and Notes
+
+This Code of Conduct is written to support a focused, merit-driven open source environment centered on technical excellence and efficient collaboration.
+
+If these guidelines do not align with your needs, you are welcome to fork the project and maintain it under your own rules.

@@ -1,0 +1,43 @@
+services:
+  web:
+    # Named so CI can build it once, with a layer cache, and have compose
+    # reuse it instead of rebuilding. Keep this in step with the tag in
+    # .github/workflows/test-web-wizard.yml; DockerImageTagTest checks it.
+    image: webcalendar-test-web:ci
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile-dev
+    volumes:
+      - ..:/var/www/html
+    environment:
+      - WEBCALENDAR_USE_ENV=true
+      - WEBCALENDAR_DB_TYPE=sqlite3
+      - WEBCALENDAR_DB_HOST=localhost
+      - WEBCALENDAR_DB_LOGIN=
+      - WEBCALENDAR_DB_PASSWORD=
+      - WEBCALENDAR_DB_DATABASE=/var/www/html/data/webcalendar_test.db
+      - WEBCALENDAR_INSTALL_PASSWORD=2168ad5e463d9accb215edaafa31c8d9 # md5 of 'Test123!'
+      - WEBCALENDAR_MODE=dev
+    # Create writable data directory before starting Apache
+    command: >
+      bash -c "mkdir -p /var/www/html/data && chmod 777 /var/www/html/data && apache2-foreground"
+
+  chrome:
+    image: selenium/standalone-chrome:latest
+    shm_size: 2gb
+    depends_on:
+      - web
+
+  pytest:
+    image: python:3.9
+    volumes:
+      - ..:/work
+    working_dir: /work
+    environment:
+      - BASE_URL=http://web
+      - SELENIUM_URL=http://chrome:4444/wd/hub
+      - WEBCALENDAR_DB_DATABASE=/work/data/webcalendar_test.db
+    depends_on:
+      - chrome
+    command: >
+      bash -c "pip install pytest selenium && pytest -s tests/web-install-sqlite.py"

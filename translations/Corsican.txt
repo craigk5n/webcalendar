@@ -1410,7 +1410,7 @@ on: nantu
 All Attendees: Tutti i Participanti
 Busy: Impegnatu
 Tentative: Pruvucatu
-Schedule an appointment for XXX.: Pianificate un appuntamentu per XXX: AAAA.
+Schedule an appointment for XXX.: Pianificate un appuntamentu per XXX.
 date_select: =
 Event approved: Avvenimentu appruvatu
 Journal approved: Ghjurnale appruvatu

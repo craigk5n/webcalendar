@@ -7,6 +7,15 @@
  * @package WebCalendar
  */
 
+// Server-side rich-text sanitizer (used by the event-popup and day/week views
+// when ALLOW_HTML_DESCRIPTION is enabled). Loaded here so sanitize_html() is
+// available to every page that loads functions.php, including those that do
+// not go through init.php (e.g. upcoming.php).
+require_once __DIR__ . '/htmlsanitize.php';
+// These runtime helpers also ship in release archives, without Composer.
+require_once __DIR__ . '/../app/Helpers/ConfigService.php';
+require_once __DIR__ . '/../app/Helpers/DateDisplay.php';
+
 /* Functions start here. All non-function code should be above this.
  *
  * Note to developers:
@@ -20,7 +29,7 @@
  *    Retrieve preferences from the webcal_user_pref table.
  */
 
-use App\Helpers\DateDisplay;
+use WebCalendar\Helpers\DateDisplay;
 
 $tzInitSet = false;
 
@@ -52,7 +61,11 @@ function do_debug ( $msg ) {
  * @return string  The text altered to have HTML links for any web links.
  */
 function activate_urls( $text ) {
-  return preg_replace( '/[a-z]+:\/\/[^<> \t\r\n]+[a-z0-9\/]/i',
+  // Only linkify http/https URLs. The previous pattern accepted any scheme
+  // (e.g. javascript://%0aalert(1), data://...) which produced an executable
+  // href. Double/single quotes are also excluded from the matched URL so a
+  // value cannot break out of the href attribute it is placed in.
+  return preg_replace( '/https?:\/\/[^<>"\'\s]+[a-z0-9\/]/i',
     '<a href="\\0">\\0</a>', $text );
 }
 
@@ -75,7 +88,7 @@ function activate_urls( $text ) {
  *   - LOG_DELETE_T
  *   - LOG_LOGIN_FAILURE
  *   - LOG_NEWUSER_FULL
- *   - LOG_NEWUSEREMAIL
+ *   - LOG_NEWUSER_EMAIL
  *   - LOG_NOTIFICATION
  *   - LOG_REJECT
  *   - LOG_REJECT_T
@@ -112,6 +125,40 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
         ( empty ( $user_cal ) ? null : $user_cal ), $type, gmdate ( 'Ymd' ),
           gmdate ( 'Gis' ), ( empty ( $text ) ? null : $text )] ) )
     db_error ( true, $sql );
+}
+
+/**
+ * Count recent failed login attempts for a given login name.
+ *
+ * Used to throttle online password-guessing (brute force). Failed logins are
+ * recorded via activity_log() with cal_type = LOG_LOGIN_FAILURE and the
+ * attempted login in cal_user_cal. The log stores the date as Ymd and the time
+ * as Gis (= hour*10000 + min*100 + sec, which is monotonic within a day), so a
+ * sliding window can be expressed with a date+time comparison.
+ *
+ * @param string $login       Attempted login name.
+ * @param int    $windowSecs  How far back to count (default 15 minutes).
+ *
+ * @return int Number of failed attempts for this login within the window.
+ */
+function login_recent_failure_count ( $login, $windowSecs = 900 ) {
+  if ( ! defined ( 'LOG_LOGIN_FAILURE' ) || empty ( $login ) )
+    return 0;
+  $cutoff = time() - $windowSecs;
+  $cutoffDate = gmdate ( 'Ymd', $cutoff );
+  $cutoffTime = (int) gmdate ( 'Gis', $cutoff );
+  $sql = 'SELECT COUNT(*) FROM webcal_entry_log
+    WHERE cal_type = ? AND cal_user_cal = ?
+      AND ( cal_date > ? OR ( cal_date = ? AND cal_time >= ? ) )';
+  $res = dbi_execute ( $sql,
+    [LOG_LOGIN_FAILURE, $login, $cutoffDate, $cutoffDate, $cutoffTime] );
+  $count = 0;
+  if ( $res ) {
+    if ( $row = dbi_fetch_row ( $res ) )
+      $count = (int) $row[0];
+    dbi_free_result ( $res );
+  }
+  return $count;
 }
 
 /**
@@ -200,8 +247,8 @@ function build_entry_label ( $event, $popupid,
   $tmpId = $event->getId();
   $tmpLogin = $event->getLogin();
   $tmpName = $event->getName();
-  $tmp_ret = htmlspecialchars ( substr ( $tmpName, 0, $sum_length )
-     . ( strlen ( $tmpName ) > $sum_length ? '...' : '' ) );
+  $tmp_ret = htmlspecialchars ( mb_substr ( $tmpName, 0, $sum_length )
+     . ( mb_strlen ( $tmpName ) > $sum_length ? '...' : '' ) );
 
   if ( $not_my_entry && $tmpAccess == 'R' && !
     ( $can_access &PRIVATE_WT ) ) {
@@ -251,7 +298,7 @@ function build_entry_label ( $event, $popupid,
  * @param string $time        Input time in HHMMSS format
  * @param bool   $round_down  Should we change 1100 to 1059?
  *                            (This will make sure a 10AM-100AM appointment just
- *                            shows up in the 10AM slow and not in the 11AM slot
+ *                            shows up in the 10AM slot and not in the 11AM slot
  *                            also.)
  *
  * @return int  The time slot index.
@@ -564,8 +611,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $cols = ( ( $hours * $interval ) + 1 );
   $ret = <<<EOT
     <br>
-    <table class="aligncenter matrixd" style="width:'80%';"
-     >
+    <table class="aligncenter matrixd" style="inline-size: 80%;">
       <tr>
         <td class="matrix" colspan="{$cols}"></td>
       </tr>
@@ -573,17 +619,6 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
         <th style="width:{$participant_pct};">
 EOT;
    $ret .= translate ( 'Participants' ) . '</th>';
-  $tentative = translate ( 'Tentative' );
-  $titleStr = ' title="' . translate ( 'Schedule an appointment for XXX.' ) . '">';
-  $viewMsg = translate ( 'View this entry' );
-
-  $hours = $last_hour - $first_hour;
-  $interval = intval ( 60 / $increment );
-  $cell_pct = intval ( 80 / ( $hours * $interval ) );
-  $cols = ( ( $hours * $interval ) + 1 );
-  $style_width = ( $cell_pct > 0 ? 'style="width:' . $cell_pct . '%;"' : '' );
-  $thismonth = date ( 'm', $dateTS );
-  $thisyear = date ( 'Y', $dateTS );
 
   // Build a master array containing all events for $participants.
   for ( $i = 0; $i < $cnt; $i++ ) {
@@ -654,10 +689,16 @@ EOT;
       $inc_x_j = $increment * $j;
       $str .= '
         <td id="C' . ( $j + 1 ) . '" class="dailymatrix" ';
+      $hourStr = sprintf ( $hourfmt, $hour );
+      $minStr = ( $inc_x_j <= 9 ? '0' : '' ) . $inc_x_j;
+      // Translations disagree on this phrase: most split the time into
+      // XXX:YYY (hour:minute), the rest use a single XXX for the whole time.
+      $timeStr = ( strpos ( $titleStr, 'YYY' ) === false
+        ? str_replace ( 'XXX', $hourStr . ':' . $minStr, $titleStr )
+        : str_replace ( ['XXX', 'YYY'], [$hourStr, $minStr], $titleStr ) );
       $tmpTitle = 'onmousedown="schedule_event( ' . $i . ','
        . sprintf ( "%02d", $inc_x_j ) . ' );"' . $MouseOver . $MouseOut
-       . str_replace ( 'XXX', sprintf ( $hourfmt, $hour ) . ':' .
-          ( $inc_x_j <= 9 ? '0' : '' ) . $inc_x_j, $titleStr );
+       . $timeStr;
       switch ( $j ) {
         case $halfway:
           $k = ( $hour <= 9 ? '0' : substr ( $hour, 0, 1 ) );
@@ -1433,7 +1474,7 @@ function display_small_tasks ( $cat_id ) {
       </tr>
       <tr class="header">
         <td rowspan="2" class="sorterbottom">!&nbsp;</td>' . $ajax[0] . '
-        <td rowspan="2" width="20%" class="sorterbottom">'
+        <td class="sorterbottom" rowspan="2" style="inline-size: 20%">'
    . translate ( 'Task_Title' )
    . '&nbsp;</td>' . $ajax[1] . '
         <td rowspan="2" class="sorterbottom">' . translate ( 'Due' )
@@ -1464,7 +1505,7 @@ function display_small_tasks ( $cat_id ) {
      . rgb_luminance( $GLOBALS['BGCOLOR'], $E->getPriority() ) . '">
         <td colspan="2">' . $link . ' title="' . $priorityStr . '">'
      . $E->getPriority() . '</a></td>
-        <td class="name" colspan="2" width="50%">&nbsp;' . $link . ' title="'
+        <td class="name" colspan="2" style="inline-size: 50%">&nbsp;' . $link . ' title="'
      . translate( 'Task Name' ) . ': ' . $E->getName() . '">'
      . substr( $E->getName(), 0, 15 )
      . ( strlen( $E->getName() ) > 15 ? '...' : '' ) . '</a></td>
@@ -1635,7 +1676,7 @@ function display_unapproved_events ( $user ) {
     if ( $row && $row[0] > 0 )
       $ret .= ( $MENU_ENABLED == 'N'
         ? '<a class="nav" href="list_unapproved.php'
-         . ( $user != $login ? '?user=' . $user . '"' : '' )
+         . ( $user != $login ? '?user=' . $user : '' )
          . '">' . str_replace ( 'XXX', $row[0],
           translate ( 'You have XXX unapproved entries' ) ) . "</a><br>\n"
         : // Return something that won't display in bottom menu
@@ -1849,7 +1890,7 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
   $ret = "<$size>"
    . ( $sys ? translate ( 'System Log' ) : translate ( 'Activity Log' ) )
    . ( $sys ? '' : ' &nbsp;<a href="rss_activity_log.php">'
-   . '<img src="images/bootstrap-icons/rss-fill.svg" width="14" height="14" alt="RSS 2.0 - '
+   . '<img src="images/bootstrap-icons/rss-fill.svg" style="inline-size: 14px; block-size: 14px;" alt="RSS 2.0 - '
    . translate( 'Activity Log' ) . '"></a>' )
    . "</$size>" . display_admin_link(false) . '
     <table class="table table-striped mt-2 table-responsive">
@@ -1907,7 +1948,7 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
           // Added TZ conversion
           ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y' ? 3 : 2 ) )
          . '</td>
-        <td>' . ( ! $sys && ! $id ? '<a' 
+        <td>' . ( ! $sys && ! $id ? '<a'
            . ' href="view_entry.php?id=' . $l_eid . '">'
            . htmlspecialchars ( $l_ename ) . '</a></td>
         <td>' : '' ) . display_activity_log ( $l_type, $l_text ) . '</td>
@@ -2156,6 +2197,14 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
       $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
       $mdate = $cdate;
       while ( $cdate <= $realend && $n < $Count ) {
+          // Check if this month is in the BYMONTH list (if specified).
+          if ( ! empty ( $bymonth ) &&
+            ! in_array ( date ( 'n', $cdate ), $bymonth ) ) {
+            $thismonth += $interval;
+            $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
+            $mdate = mktime ( $hour, $minute, 0, $thismonth, 1, $thisyear );
+            continue;
+          }
           $bydayvalues = $bymonthdayvalues = $yret = [];
           if ( isset ( $byday ) )
             $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
@@ -2445,6 +2494,12 @@ function get_bymonthday ( $bymonthday, $cdate, $date, $realend ) {
   $hour = substr ( $dateYmHi, 6, 2 );
   $minute = substr ( $dateYmHi, 8, 2 );
   foreach ( $bymonthday as $monthday ) {
+    // Skip positive days that exceed the number of days in this month
+    // (e.g., day 31 in a 30-day month) per RFC 5545.
+    if ( $monthday > 0 && $monthday > $dim )
+      continue;
+    if ( $monthday < 0 && abs ( $monthday ) > $dim )
+      continue;
     $byxxxDay = mktime ( $hour, $minute, 0, $mth,
       ( $monthday > 0 ? $monthday : $dim + $monthday + 1 ), $yr );
     if ( $byxxxDay > $date )
@@ -2928,6 +2983,11 @@ function get_remote_calendar_last_checked($username)
 // identical, we can skip the new import.
 function get_remote_calendar_last_md5($username)
 {
+  // A calendar with no previous import has no hash. Without this $ret is
+  // undefined on the first refresh of every subscription, which PHP 8 reports
+  // as a warning -- and it reached the terminal in the middle of the output
+  // from tools/reload_remotes.php.
+  $ret = '';
   $sql = 'SELECT cal_md5 FROM webcal_import WHERE cal_login = ? ORDER BY cal_import_id DESC LIMIT 1';
   $rows = dbi_get_cached_rows($sql, [$username]);
   if ($rows && is_array($rows)) {
@@ -2938,6 +2998,8 @@ function get_remote_calendar_last_md5($username)
 
 function update_import_check_date($username)
 {
+  // Same as above: nothing to update when there is no import to update.
+  $ret = '';
   $sql = 'SELECT MAX(cal_import_id) FROM webcal_import WHERE cal_login = ?';
   $rows = dbi_get_cached_rows($sql, [$username]);
   if ($rows && is_array($rows)) {
@@ -2957,6 +3019,14 @@ function load_remote_calendar($username, $url)
 {
   global $calUser, $count_suc, $error_num,
   $errormsg, $importMd5, $login, $numDeleted;
+
+  // One call reports on one calendar. parse_ical() appends to $errormsg and
+  // nothing ever cleared it, so a failure left behind by the calendar before
+  // this one made this one fail too: the import below is gated on
+  // empty($errormsg) and the return value is derived from it. Reloading a
+  // whole list, as tools/reload_remotes.php does, meant one unreachable URL
+  // silently stopped every calendar after it from refreshing.
+  $errormsg = '';
 
   // Set global vars used in xcal.php (blech)
   $data = [];
@@ -3148,7 +3218,7 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
 
   $n = 0;
   $ret = [];
-  for ( $i = 0, $cnt = count ( $repeated_events ); $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = is_array ( $repeated_events ) ? count ( $repeated_events ) : 0; $i < $cnt; $i++ ) {
     if( ( $repeated_events[$i]->getStatus() == 'A' || $get_unapproved )
         && in_array( $dateYmd, $repeated_events[$i]->getRepeatAllDates() ) )
       $ret[$n++] = $repeated_events[$i];
@@ -3280,6 +3350,30 @@ function get_weekday_before ( $year, $month, $day = 2 ) {
     $newdate += 3600;
   }
   return $newdate;
+}
+
+/**
+ * Gets the timestamp for the last second of a day.
+ *
+ * Date ranges handed to {@link read_events()} and
+ * {@link read_repeated_events()} are bounded by time of day on the final day:
+ *
+ * <code>OR ( we.cal_date = $end_date AND we.cal_time <= $end_time )</code>
+ *
+ * so a range that stops at the last day's midnight silently drops every event
+ * on it. Use this for the end of any multi-day range.
+ *
+ * mktime() handles the day overflow, so $days_after may push past the end of
+ * the month, and a range spanning a DST change still ends on the right day.
+ *
+ * @param int $timestamp   Any time on the starting day.
+ * @param int $days_after  Days to advance before taking the end of day.
+ *
+ * @return int  The last second of that day (in UNIX timestamp format).
+ */
+function end_of_day ( $timestamp, $days_after = 0 ) {
+  return mktime ( 23, 59, 59, date ( 'm', $timestamp ),
+    date ( 'd', $timestamp ) + $days_after, date ( 'Y', $timestamp ) );
 }
 
 /**
@@ -3633,7 +3727,8 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     $class = 'entry';
 
   if ( $getCat > 0 && file_exists ( $catIcon ) ) {
-    $catAlt = translate ( 'Category' ) . ': ' . $categories[$getCat]['cat_name'];
+    $catAlt = translate ( 'Category' ) . ': '
+     . htmlspecialchars ( $categories[$getCat]['cat_name'], ENT_QUOTES );
     $hour_arr[$ind] .= '<img src="' . $catIcon . '" alt="' . $catAlt
      . '">';
   }
@@ -3711,7 +3806,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
       <dt>' . translate ( 'Description' ) . ':</dt>
       <dd>'
      . ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y'
-      ? $getDesc : strip_tags ( $getDesc ) ) . '</dd>
+      ? sanitize_html ( $getDesc ) : strip_tags ( $getDesc ) ) . '</dd>
     </dl>' : '' ) . "<br>\n";
 }
 
@@ -3790,7 +3885,8 @@ function html_for_event_week_at_a_glance ( $event, $date,
     $hour_arr[$ind] = '';
 
   if ( $getCat > 0 && file_exists ( $catIcon ) ) {
-    $catAlt = translate ( 'Category' ) . ': ' . $categories[$getCat]['cat_name'];
+    $catAlt = translate ( 'Category' ) . ': '
+     . htmlspecialchars ( $categories[$getCat]['cat_name'], ENT_QUOTES );
     $hour_arr[$ind] .= '<img src="' . $catIcon . '" alt="' . $catAlt
      . '">';
   }
@@ -3930,7 +4026,7 @@ function is_weekend ( $date ) {
  *
  * @ignore
  */
-function isLeapYear(int $year = null): bool {
+function isLeapYear(?int $year = null): bool {
   // If no year is provided, use the current year
   if ($year === null) {
       $year = (int) date('Y');
@@ -3951,7 +4047,7 @@ function getServerUrl($checkDatabase = true): string
   global $SERVER_URL, $HTTP_HOST, $REQUEST_URI;
   $ret = null;
 
-  if (false&&$checkDatabase) {
+  if ($checkDatabase) {
     $rows = dbi_get_cached_rows('SELECT cal_value FROM webcal_config WHERE cal_setting = ?', ['SERVER_URL']);
     if (!empty($rows) && !empty($rows[0]) && !empty($rows[0][0])) {
       $ret = $rows[0][0];
@@ -3966,10 +4062,20 @@ function getServerUrl($checkDatabase = true): string
 
 function determineServerUrl(): string
 {
+  // Nothing to derive this from on the command line, where reminders, export
+  // and the installer all reach here. Reading the absent keys raised two
+  // warnings per call under PHP 8 -- once per event during an export, which
+  // is output that has to stay a valid iCalendar document. Admin > Settings
+  // has a Server URL field for this case; localhost is the honest
+  // placeholder until it is filled in.
+  if (empty($_SERVER['HTTP_HOST'])) {
+    return 'http://localhost/';
+  }
+
   $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
   $host = $_SERVER['HTTP_HOST'];
-  $port = $_SERVER['SERVER_PORT'];
-  $folder = dirname($_SERVER['SCRIPT_NAME']);
+  // SERVER_PORT was read and never used; reading it was the second warning.
+  $folder = dirname($_SERVER['SCRIPT_NAME'] ?? '/');
   $url = $protocol . '://'. $host . '/';
   if ($folder != '/')
      $url .= $folder;
@@ -4032,7 +4138,7 @@ function load_global_settings() {
 
   // Set SERVER TIMEZONE.
   if ( empty ( $GLOBALS['TIMEZONE'] ) )
-    $GLOBALS['TIMEZONE'] = $GLOBALS['SERVER_TIMEZONE'];
+    $GLOBALS['TIMEZONE'] = $GLOBALS['SERVER_TIMEZONE'] ?? date_default_timezone_get();
 
   set_env ( 'TZ', $GLOBALS['TIMEZONE'] );
   if ( empty ( $tzInitSet ) ) {
@@ -4056,6 +4162,12 @@ function load_global_settings() {
         ? ':' . $SERVER_PORT : '' )
        . substr ( $REQUEST_URI, 0, $ptr + 1 );
 
+      // Clear any existing row first. cal_setting is the primary key, so a
+      // bare INSERT silently fails when the row is present but empty, which
+      // is reachable now that admin.php stores a cleared field as '' rather
+      // than deleting the row (#734).
+      dbi_execute ( 'DELETE FROM webcal_config WHERE cal_setting = ?',
+        ['SERVER_URL'] );
       dbi_execute ( 'INSERT INTO webcal_config ( cal_setting, cal_value )
         VALUES ( ?, ? )', ['SERVER_URL', $SERVER_URL] );
     }
@@ -4065,6 +4177,24 @@ function load_global_settings() {
   if ( empty ( $FONTS ) )
     $FONTS = ( $LANGUAGE == 'Japanese' ? 'Osaka, ' : '' )
      . 'Arial, Helvetica, sans-serif';
+
+  // Any setting with no row in webcal_config is still undefined here. That
+  // used to leave every call site to decide for itself what an undefined
+  // global meant, and they disagreed -- some denied, some allowed (#734).
+  // Fall back to the documented default so a site missing a row behaves the
+  // same as a fresh install, which is what the admin UI already reports.
+  //
+  // Deliberately last: the blocks above derive TIMEZONE, APPLICATION_NAME
+  // and FONTS from the request and the language, and those derived values
+  // have to win over the static defaults. isset() rather than empty() so an
+  // admin's deliberately blank value is not overwritten.
+  if ( ! function_exists ( 'webcal_config_defaults' ) )
+    require_once __DIR__ . '/default_config.php';
+
+  foreach ( webcal_config_defaults() as $setting => $default ) {
+    if ( ! isset ( $GLOBALS[$setting] ) )
+      $GLOBALS[$setting] = $default;
+  }
 }
 
 /**
@@ -4105,7 +4235,7 @@ function load_nonuser_preferences ( $nonuser ) {
 }
 
 /**
- * Returns a custom header, stylesheet or tailer.
+ * Returns a custom header, stylesheet or trailer.
  *
  * The data will be loaded from the webcal_user_template table.
  * If the global variable $ALLOW_EXTERNAL_HEADER is set to 'Y',
@@ -4527,10 +4657,10 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
         <option value="' . $K . '"';
         if ( $cat_id == $K ) {
           $printerStr .= '
-    <span id="cat">' . $catStr . ': ' . $categories[$K]['cat_name'] . '</span>';
+    <span id="cat">' . $catStr . ': ' . htmlspecialchars ( $categories[$K]['cat_name'], ENT_QUOTES ) . '</span>';
           $ret .= ' selected';
         }
-        $ret .= ">{$V['cat_name']}</option>";
+        $ret .= '>' . htmlspecialchars ( $V['cat_name'], ENT_QUOTES ) . '</option>';
       }
     }
   }
@@ -4621,7 +4751,7 @@ function print_color_input_html ($varname, $title, $varval = '', $id='', $tag='d
   }
 
   return '<' . $tag . ' class="form-inline">' .
-  (empty($title) ? '' : ('<label class="' . $class . '" for="' . $prefix . $varname . '">' . $title . '</label>')) .
+  (empty($title) ? '' : ('<label class="' . $class . '" for="' . $prefix . $id . '">' . $title . '</label>')) .
     '<input class="form-control" style="height: 2em; width: 4em;" name="' . $prefix . $varname . '" id="' . $prefix . $id .
     '" type="color" value="' . $setting . '"' . (empty($onchange) ? '' : ' onchange="' . $onchange . '()"') .
     '></' . $tag . '>';
@@ -4798,7 +4928,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
   for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     $time_h = intval ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
-    $ret .= '<tr><th class="weekday"';
+    $ret .= '<tr><th class="day_glance_time"';
     $ret .= '>'
      . display_time ( ( $time_h * 100 + $time_m ) * 100 ) . '</th>';
     if ( $rowspan > 1 ) {
@@ -4847,7 +4977,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
 function get_category_icon_url($cat_id) {
   global $categories;
 
-  if ($cat_id > 0 &&  !empty($categories[$cat_id]['cat_icon_mime'])) {
+  if ($cat_id > 0 && !empty($categories[$cat_id]['cat_icon_mime'])) {
     return 'getIcon.php?cat_id=' . $cat_id;
   }
   return '';
@@ -4940,12 +5070,12 @@ function print_entry ( $event, $date ) {
 
   if ( empty ( $catIcon ) )
     $ret .= 'images/' . $icon . '" class="bullet" alt="' . $view_text
-     . '" width="5" height="7">';
+     . '" style="inline-size: 5px; block-size: 7px;">';
   else {
     // Use category icon.
     $catAlt = ( empty ( $categories[$catNum] )
       ? '' : translate ( 'Category' ) . ': '
-       . $categories[$catNum]['cat_name'] );
+       . htmlspecialchars ( $categories[$catNum]['cat_name'], ENT_QUOTES ) );
 
     $ret .= $catIcon . '" alt="' . $catAlt . '">';
   }
@@ -5596,7 +5726,7 @@ function send_doctype ( $doc_title = '' ) {
   if ( empty ( $lang ) )
     $lang = 'en';
 
-  $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
+  $charset = 'UTF-8';
 
   return "<!DOCTYPE html>
   <html lang=\"$lang\">
@@ -6067,8 +6197,7 @@ function weekday_name ( $w, $format = 'l' ) {
  */
 function boss_must_approve_event ( $assistant, $boss ) {
   if ( user_is_assistant ( $assistant, $boss ) )
-    return ( get_pref_setting ( $boss, 'APPROVE_ASSISTANT_EVENT' ) == 'Y'
-      ? true : false );
+    return ( get_pref_setting ( $boss, 'APPROVE_ASSISTANT_EVENT' ) === 'Y' );
 
   return true;
 }
@@ -6084,8 +6213,7 @@ function boss_must_approve_event ( $assistant, $boss ) {
  */
 function boss_must_be_notified ( $assistant, $boss ) {
   if ( user_is_assistant ( $assistant, $boss ) )
-    return ( get_pref_setting ( $boss, 'EMAIL_ASSISTANT_EVENTS' ) == 'Y'
-      ? true : false );
+    return ( get_pref_setting ( $boss, 'EMAIL_ASSISTANT_EVENTS' ) === 'Y' );
 
   return true;
 }
@@ -6205,7 +6333,7 @@ function build_entry_popup ( $popupid, $user, $description, $time,
   $partList = [];
   if ( $details && $id != '' && !
     empty ( $PARTICIPANTS_IN_POPUP ) && $PARTICIPANTS_IN_POPUP == 'Y' && !
-      ( $PUBLIC_ACCESS_VIEW_PART == 'N' && $login == '__public__' ) ) {
+      ( $PUBLIC_ACCESS_VIEW_PART != 'Y' && $login == '__public__' ) ) {
     $rows = dbi_get_cached_rows ( 'SELECT cal_login, cal_status
   FROM webcal_entry_user
   WHERE cal_id = ?
@@ -6218,7 +6346,7 @@ function build_entry_popup ( $popupid, $user, $description, $time,
     }
     for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
       user_load_variables ( $participants[$i][0], 'temp' );
-      $partList[] = $tempfullname . ' '
+      $partList[] = htmlspecialchars ( $tempfullname, ENT_QUOTES ) . ' '
        . ( $participants[$i][1] == 'W' ? '(?)' : '' );
     }
     $rows = dbi_get_cached_rows ( 'SELECT cal_fullname FROM webcal_entry_ext_user
@@ -6228,7 +6356,7 @@ function build_entry_popup ( $popupid, $user, $description, $time,
       $extStr = translate ( 'External User' );
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
-        $partList[] = $row[0] . ' (' . $extStr . ')';
+        $partList[] = htmlspecialchars ( $row[0], ENT_QUOTES ) . ' (' . $extStr . ')';
       }
     }
   }
@@ -6236,13 +6364,13 @@ function build_entry_popup ( $popupid, $user, $description, $time,
   if ( $user != $login ) {
     if ( empty ( $popup_fullnames[$user] ) ) {
       user_load_variables ( $user, 'popuptemp_' );
-      $popup_fullnames[$user] = $popuptemp_fullname;
+      $popup_fullnames[$user] = htmlspecialchars ( $popuptemp_fullname, ENT_QUOTES );
     }
     $ret .= '<dt>' . translate ( 'User' )
      . ":</dt>\n<dd>$popup_fullnames[$user]</dd>\n";
   }
-  $ret .= ( $SUMMARY_LENGTH < 80 && strlen ( $name ) && $details
-    ? '<dt>' . htmlspecialchars ( substr ( $name, 0, 40 ) ) . "</dt>\n" : '' )
+  $ret .= ( $SUMMARY_LENGTH < 80 && mb_strlen ( $name ) && $details
+    ? '<dt>' . htmlspecialchars ( mb_substr ( $name, 0, 40 ) ) . "</dt>\n" : '' )
    . ( strlen ( $time )
     ? '<dt>' . translate ( 'Time' ) . ":</dt>\n<dd>$time</dd>\n" : '' )
    . ( ! empty ( $location ) && $details
@@ -6267,7 +6395,7 @@ function build_entry_popup ( $popupid, $user, $description, $time,
       // If there is no HTML found, then go ahead and replace
       // the line breaks ("\n") with the HTML break ("<br>").
       $ret .= ( strstr ( $str, '<' ) && strstr ( $str, '>' )
-        ? $str : nl2br ( $str ) );
+        ? sanitize_html ( $str ) : nl2br ( $str ) );
     } else
       // HTML not allowed in description, escape everything.
       $ret .= nl2br ( htmlspecialchars ( $description ) );
@@ -6421,7 +6549,7 @@ function print_error_box ( $msg )
 {
   echo '<div class="warningBox">' .
     '<table><tr><td class="alignmiddle">' .
-    '<img src="images/bootstrap-icons/exclamation-triangle-fill.svg" width="40" height="40" class="alignmiddle" alt="' .
+    '<img src="images/bootstrap-icons/exclamation-triangle-fill.svg" class="alignmiddle" style="inline-size: 40px; block-size: 40px;" alt="' .
     translate ( 'Error' ) . '"></td><td class="alignmiddle">' .
     translate('The permissions for the icons directory are set to read-only') .
     "</td></tr></table></div>\n";
@@ -6480,118 +6608,87 @@ function sendCookie($name, $value, $expiration=0, $path='', $sensitive=true) {
   $httpOnly = true; // don't allow JS access to cookies.
   // If sensitive and HTTPS is supported, set secure to true
   $secure = $sensitive && isSecure();
-  SetCookie ( $name, $value, $expiration, $path, $domain, $secure, $httpOnly);
+  // Use the options-array form so we can set SameSite (mitigates CSRF and
+  // cross-site cookie leakage). PHP 7.3+ / 8.x.
+  SetCookie ( $name, $value, [
+    'expires'  => $expiration,
+    'path'     => $path,
+    'domain'   => $domain,
+    'secure'   => $secure,
+    'httponly' => $httpOnly,
+    'samesite' => 'Lax',
+  ] );
 }
 
 /**
- * Finds the next version greater than the specified version from a given file content.
+ * Apply secure parameters to the PHP session cookie before session_start().
  *
- * The function scans the provided file content to detect version patterns like "upgrade_v1.9.5".
- * It then compares the found versions to the provided version and returns the immediate next version
- * greater than the provided one.
- *
- * @param string $fileContent  The content of the file containing version upgrade markers.
- * @param string $version      The version to be compared against.
- *
- * @return string              The next version greater than the provided version, or an empty string if not found.
+ * Sets HttpOnly, SameSite=Lax, Secure (when on HTTPS) and enables strict
+ * session id mode (rejects uninitialized session ids, which helps against
+ * session fixation). Must be called BEFORE session_start(); it is a no-op once
+ * a session is active.
  */
-function findNextVersion($fileContent, $version) {
-  // Extract all versions from the file content
-  preg_match_all('/\/\*upgrade_(v\d+\.\d+\.\d+)\*\//', $fileContent, $matches);
-  $versions = $matches[1];
-
-  // Removing the "v" prefix from versions
-  $version_trimmed = ltrim($version, "v");
-
-  for ($i = 0; $i < count($versions); $i++) {
-    $version2 = ltrim($versions[$i], "v");
-    if (version_compare($version_trimmed, $version2, '<')) {
-      return "v$version2";
-    }
-  }
-  return ''; // Not found
+function harden_php_session() {
+  if ( session_status() !== PHP_SESSION_NONE )
+    return;
+  ini_set ( 'session.use_strict_mode', '1' );
+  session_set_cookie_params ( [
+    'lifetime' => (int) ini_get ( 'session.cookie_lifetime' ),
+    'path'     => '/',
+    'domain'   => '',
+    'secure'   => isSecure(),
+    'httponly' => true,
+    'samesite' => 'Lax',
+  ] );
 }
 
 /**
  * Determines if a software upgrade requires database changes based on the database type and version range.
  *
- * The function inspects the SQL upgrade file associated with the specified database type to find SQL changes
- * between the provided old and new version. If there's any significant SQL content between these version
- * markers, it indicates that database changes are required.
- *
- * For some database types where the SQL upgrade file might not exist, it falls back to checking the MySQL
- * upgrade file as a general reference.
+ * Uses the upgrade-sql.php data to check if there are any SQL commands between the
+ * old and new versions for the specified database type.
  *
  * @param string $db_type      The type of the database (e.g., 'mysql', 'mysqli', 'postgres').
  * @param string $old_version  The starting version to check for changes from (e.g., 'v1.9.0').
  * @param string $new_version  The ending version to check for changes up to (e.g., 'v1.9.5').
  *
  * @return bool                True if SQL changes are found between the versions, false otherwise.
- *
- * @throws Exception           Throws an exception if the SQL file for the specified database type doesn't exist.
  */
 function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
-  // File path
+  global $updates;
+  $upgradeSqlFile = __DIR__ . '/../wizard/shared/upgrade-sql.php';
+  if (!file_exists($upgradeSqlFile)) {
+    // The wizard/ directory is optional at runtime (users are told to
+    // remove or rename it after installing).  If it's gone we can't
+    // introspect per-version schema deltas, so conservatively report
+    // that an upgrade is required.  The caller will then show the
+    // "re-install the wizard/ directory" message instead of crashing
+    // on a failed require.
+    return true;
+  }
+  require_once $upgradeSqlFile;
+
   if ($db_type == 'mysqli')
     $db_type = 'mysql';
-  $file_path = __DIR__ . "/../install/sql/upgrade-$db_type.sql";
-  if (!file_exists($file_path)) {
-    // For example, we don't have one for SQLite yet.  Check the mysql file as a fallback.
-    $file_path = __DIR__ . "/../install/sql/upgrade-mysql.sql";
-  }
 
-  // Check if the file exists
-  if (!file_exists($file_path)) {
-    throw new Exception("The SQL file for $db_type does not exist.");
-  }
+  $normalizedOld = str_replace('v', '', strtolower($old_version));
+  $normalizedNew = str_replace('v', '', strtolower($new_version));
 
-  // Get the file content
-  $content = file_get_contents($file_path);
-
-  // Get the SQL content between this version and the next
-  $start_token = "/*upgrade_$old_version*/";
-  $start_pos = strpos($content, "$start_token");
-  if ($start_pos) {
-    $start_pos += strlen($start_token);
-  } else {
-    // Not found.  Find the next version up.
-    $next_version = findNextVersion($content, $old_version);
-    if (empty($next_version)) { // shouldn't happen unless file is messed up
-      return true;
-    }
-    $start_token = "/*upgrade_$next_version*/";
-    $start_pos = strpos($content, "$start_token");
-    if (!$start_pos) {
-      return true;
-    }
-    $start_pos += strlen($start_token);
+  foreach ($updates as $update) {
+    $ver = str_replace('v', '', strtolower($update['version']));
+    // Skip versions at or before old_version
+    if (version_compare($ver, $normalizedOld, '<='))
+      continue;
+    // Stop after new_version
+    if (version_compare($ver, $normalizedNew, '>'))
+      break;
+    
+    // Always return true if we find a version > old_version.
+    // This ensures the wizard is triggered for every version bump
+    // to update the WEBCAL_PROGRAM_VERSION in the database.
+    return true;
   }
-  $end_token = "/*upgrade_$new_version*/";
-  $end_pos = strpos($content, "$end_token");
-  if ($end_pos)
-    $end_pos += strlen($end_token);
-  else {
-    // Not found.  Find the next version up.  This is not likely to
-    // happen except from the unit tests.
-    $next_version = findNextVersion($content, $new_version);
-    if (empty($next_version)) { // shouldn't happen unless file is messed up
-      return true;
-    }
-    $end_token = "/*upgrade_$next_version*/";
-    $end_pos = strpos($content, "$end_token");
-    if (!$end_pos) {
-      return true;
-    }
-    $end_pos += strlen($end_token);
-  }
-  $sql_content = trim(substr($content, $start_pos, $end_pos - $start_pos));
-  $no_comments = preg_replace('/\/\*upgrade_v\d+\.\d+\.\d+\*\/\n?/', '', $sql_content);
-
-  // Check if for ';' which will indicate a SQL command
-  if (strpos($no_comments, ';')) {
-    return true; // Found SQL changes
-  };
-  return false; // No SQL changes found
+  return false;
 }
 
 /**
@@ -6619,6 +6716,960 @@ function update_webcalendar_version_in_db($old_version, $new_version) {
     activity_log(0, 'system', $user, $type, "WebCalendar has been updated from " . $old_version .
       " to " . $new_version);
     return true;
+  }
+}
+
+/**
+ * Validates an MCP API token and returns the associated user login.
+ *
+ * @param string $token The API token to validate
+ * @return string|null The user login if token is valid, null otherwise
+ */
+function validate_mcp_token($token) {
+  if (empty($token)) {
+    return null;
+  }
+
+  // Extract token from "Bearer token" format if present
+  $actualToken = $token;
+  if (strpos($token, 'Bearer ') === 0) {
+    $actualToken = substr($token, 7); // Remove "Bearer " prefix
+  }
+
+  // Only proceed if we have a non-empty token after extraction
+  if (empty($actualToken)) {
+    return null;
+  }
+
+  // Tokens are stored as SHA-256 hashes (never in clear text). Look up by the
+  // hash of the presented token.
+  $tokenHash = hash('sha256', $actualToken);
+  $res = dbi_execute(
+    'SELECT cal_login FROM webcal_user WHERE cal_api_token = ? AND cal_enabled = \'Y\'',
+    [$tokenHash]);
+  if ($res) {
+    $row = dbi_fetch_row($res);
+    dbi_free_result($res);
+    if (!empty($row[0])) {
+      return $row[0];
+    }
+  }
+
+  // Legacy plaintext tokens must be regenerated in Preferences. A fallback
+  // comparing the credential directly to this column would also accept hashes.
+  return null;
+}
+
+/**
+ * Checks if MCP server is enabled in system settings.
+ *
+ * @return bool True if MCP server is enabled
+ */
+/**
+ * Load system settings into an array
+ *
+ * @param bool $force_reload When true, bypass the process-static cache and
+ *                           re-read webcal_config (e.g. after settings change
+ *                           within the same request, or for test isolation).
+ * @return array Associative array of setting name => value
+ */
+function load_settings($force_reload = false) {
+  static $settings_cache = null;
+
+  if ($settings_cache !== null && !$force_reload) {
+    return $settings_cache;
+  }
+
+  $settings_cache = [];
+  $rows = dbi_get_cached_rows('SELECT cal_setting, cal_value FROM webcal_config');
+  for ($i = 0, $cnt = count($rows); $i < $cnt; $i++) {
+    $row = $rows[$i];
+    $settings_cache[$row[0]] = $row[1];
+  }
+
+  return $settings_cache;
+}
+
+function is_mcp_enabled() {
+  $settings = load_settings();
+  return isset($settings['MCP_SERVER_ENABLED']) && $settings['MCP_SERVER_ENABLED'] == 'Y';
+}
+
+/**
+ * Reads the reminder web-trigger token presented with an HTTP request.
+ *
+ * Accepts either a "token" query parameter or an X-Reminder-Token header, so a
+ * cron facility that can only fetch a URL still has a way to pass it.
+ *
+ * @return string The presented token, or '' when none was supplied.
+ */
+function reminder_web_trigger_presented_token() {
+  if ( ! empty ( $_SERVER['HTTP_X_REMINDER_TOKEN'] ) )
+    return (string) $_SERVER['HTTP_X_REMINDER_TOKEN'];
+
+  if ( ! empty ( $_GET['token'] ) )
+    return (string) $_GET['token'];
+
+  return '';
+}
+
+/**
+ * Decides whether an HTTP request may run the reminder script.
+ *
+ * REMINDER_WEB_TRIGGER_TOKEN holds the SHA-256 hash of a token generated in
+ * Admin > Settings > Email, never the token itself, so a database read does
+ * not yield anything usable. An empty setting disables the web trigger, which
+ * is the default: a site that runs reminders from cron has no reason to expose
+ * the script at all.
+ *
+ * @param string $presented Token supplied with the request.
+ * @param string $storedHash Stored SHA-256 hash, or '' when disabled.
+ * @return bool True when the request may proceed.
+ */
+function reminder_web_trigger_allowed ( $presented, $storedHash ) {
+  if ( $storedHash === '' || $presented === '' )
+    return false;
+
+  return hash_equals ( $storedHash, hash ( 'sha256', $presented ) );
+}
+
+/**
+ * Check if MCP write access is enabled
+ *
+ * @return bool True if MCP write operations are allowed
+ */
+function is_mcp_write_enabled() {
+  $settings = load_settings();
+  return isset($settings['MCP_WRITE_ACCESS']) && $settings['MCP_WRITE_ACCESS'] == 'Y';
+}
+
+function get_mcp_rate_limit() {
+  $settings = load_settings();
+  return isset($settings['MCP_RATE_LIMIT']) ? (int)$settings['MCP_RATE_LIMIT'] : 100;
+}
+
+/**
+ * Checks if MCP SDK dependencies are available.
+ *
+ * @return bool True if MCP SDK is installed
+ */
+function is_mcp_available() {
+  return class_exists( 'Mcp\Server', true );
+}
+
+/**
+ * Checks if a user has exceeded the MCP rate limit.
+ *
+ * @param string $user_login The user login to check
+ * @return bool True if rate limit exceeded
+ */
+function check_mcp_rate_limit($user_login) {
+  $rate_limit = get_mcp_rate_limit();
+  if ($rate_limit <= 0) {
+    return false; // No limit
+  }
+
+  // Count MCP actions in the activity log within the last hour.
+  //
+  // webcal_entry_log stores the time of each action as two integer columns:
+  // cal_date (YYYYMMDD) and cal_time (HHMMSS), both written in GMT by
+  // activity_log(). We build the GMT date/time of one hour ago and compare
+  // on those columns so the count is done in SQL (COUNT(*)) and is correctly
+  // hour-granular. (The previous implementation compared the YYYYMMDD column
+  // directly against a Unix timestamp, which was always false, so the rate
+  // limit never triggered.)
+  $one_hour_ago = time() - 3600;
+  $date_part = (int)gmdate('Ymd', $one_hour_ago);
+  $time_part = (int)gmdate('Gis', $one_hour_ago);
+
+  $res = dbi_execute(
+    "SELECT COUNT(*) FROM webcal_entry_log
+      WHERE cal_login = ? AND cal_type = 'M' AND cal_text LIKE 'MCP:%'
+        AND (cal_date > ? OR (cal_date = ? AND cal_time >= ?))",
+    [$user_login, $date_part, $date_part, $time_part]
+  );
+
+  if ($res) {
+    $row = dbi_fetch_row($res);
+    $count = (int)($row[0] ?? 0);
+    dbi_free_result($res);
+    return $count >= $rate_limit;
+  }
+  return false;
+}
+
+/**
+ * Returns the MCP "initialize" result payload (protocol version, server
+ * capabilities and server info). Single source of truth shared by the HTTP
+ * handler in mcp.php and the test suite.
+ *
+ * @return array The initialize result.
+ */
+function mcp_initialize_result() {
+  return [
+    'protocolVersion' => '2024-11-05',
+    'capabilities' => [
+      'tools' => [
+        'listChanged' => true
+      ]
+    ],
+    'serverInfo' => [
+      'name' => 'WebCalendar MCP Server',
+      'version' => '1.0.0'
+    ]
+  ];
+}
+
+/**
+ * Returns the MCP tool definitions (name, description, inputSchema) advertised
+ * by the server's tools/list response. Single source of truth shared by the
+ * HTTP handler in mcp.php and the test suite.
+ *
+ * @return array List of tool definition arrays.
+ */
+function mcp_list_tools() {
+  return [
+    [
+      'name' => 'list_events',
+      'description' => 'List events for a user within a date range',
+      'inputSchema' => [
+        'type' => 'object',
+        'properties' => [
+          'start_date' => [
+            'type' => 'string',
+            'description' => 'Start date in YYYYMMDD format'
+          ],
+          'end_date' => [
+            'type' => 'string',
+            'description' => 'End date in YYYYMMDD format'
+          ]
+        ],
+        'required' => ['start_date', 'end_date']
+      ]
+    ],
+    [
+      'name' => 'get_user_info',
+      'description' => 'Get basic information about the authenticated user',
+      'inputSchema' => [
+        'type' => 'object',
+        // new stdClass(), not []: json_encode turns an empty PHP array into `[]`,
+        // but JSON Schema requires `properties` to be an object. MCP clients that
+        // validate tools/list against the spec reject the whole response over it,
+        // so this one tool made every other tool undiscoverable too.
+        'properties' => new stdClass()
+      ]
+    ],
+    [
+      'name' => 'search_events',
+      'description' => 'Search events by keyword in name or description',
+      'inputSchema' => [
+        'type' => 'object',
+        'properties' => [
+          'keyword' => [
+            'type' => 'string',
+            'description' => 'Search keyword'
+          ],
+          'limit' => [
+            'type' => 'integer',
+            'description' => 'Maximum number of results',
+            'default' => 50
+          ]
+        ],
+        'required' => ['keyword']
+      ]
+    ],
+    [
+      'name' => 'add_event',
+      'description' => 'Add a new basic event (no repeating), timed or untimed',
+      'inputSchema' => [
+        'type' => 'object',
+        'properties' => [
+          'name' => [
+            'type' => 'string',
+            'description' => 'Event name'
+          ],
+          'date' => [
+            'type' => 'string',
+            'description' => 'Event date in YYYYMMDD format'
+          ],
+          'time' => [
+            'type' => 'string',
+            'description' => 'Start time in HHMMSS format (GMT), or -1 for untimed',
+            'default' => '-1'
+          ],
+          'description' => [
+            'type' => 'string',
+            'description' => 'Event description'
+          ],
+          'location' => [
+            'type' => 'string',
+            'description' => 'Event location'
+          ],
+          'duration' => [
+            'type' => 'integer',
+            'description' => 'Duration in minutes',
+            'default' => 0
+          ]
+        ],
+        'required' => ['name', 'date']
+      ]
+    ],
+    [
+      'name' => 'get_availability',
+      'description' => 'List the authenticated user\'s busy time blocks within a '
+        . 'date range, for scheduling. Times are GMT (the storage frame); the '
+        . 'caller converts to local as needed. Recurring-event occurrences '
+        . 'beyond their base date are not yet expanded.',
+      'inputSchema' => [
+        'type' => 'object',
+        'properties' => [
+          'start_date' => [
+            'type' => 'string',
+            'description' => 'Start date in YYYYMMDD format'
+          ],
+          'end_date' => [
+            'type' => 'string',
+            'description' => 'End date in YYYYMMDD format'
+          ]
+        ],
+        'required' => ['start_date', 'end_date']
+      ]
+    ],
+    [
+      'name' => 'check_conflicts',
+      'description' => 'Check whether a proposed time slot overlaps any of the '
+        . 'authenticated user\'s existing timed events. Date/time are GMT.',
+      'inputSchema' => [
+        'type' => 'object',
+        'properties' => [
+          'date' => [
+            'type' => 'string',
+            'description' => 'Proposed date in YYYYMMDD format (GMT)'
+          ],
+          'time' => [
+            'type' => 'string',
+            'description' => 'Proposed start time in HHMMSS format (GMT)'
+          ],
+          'duration' => [
+            'type' => 'integer',
+            'description' => 'Proposed duration in minutes',
+            'default' => 0
+          ]
+        ],
+        'required' => ['date', 'time', 'duration']
+      ]
+    ],
+    [
+      'name' => 'add_recurring_event',
+      'description' => 'Add a recurring event described by an RFC 5545 RRULE. '
+        . 'The RRULE must use the WebCalendar-supported subset (FREQ '
+        . 'DAILY/WEEKLY/MONTHLY/YEARLY; INTERVAL, COUNT, UNTIL, BYMONTH, '
+        . 'BYMONTHDAY, BYDAY, BYSETPOS, BYWEEKNO, BYYEARDAY, WKST). '
+        . 'Date/time are GMT; write access must be enabled.',
+      'inputSchema' => [
+        'type' => 'object',
+        'properties' => [
+          'name' => [
+            'type' => 'string',
+            'description' => 'Event name'
+          ],
+          'date' => [
+            'type' => 'string',
+            'description' => 'Date of the first occurrence in YYYYMMDD format (GMT)'
+          ],
+          'rrule' => [
+            'type' => 'string',
+            'description' => 'RFC 5545 RRULE, e.g. FREQ=WEEKLY;BYDAY=MO,WE,FR'
+          ],
+          'time' => [
+            'type' => 'string',
+            'description' => 'Start time in HHMMSS format (GMT), or -1 for untimed',
+            'default' => '-1'
+          ],
+          'duration' => [
+            'type' => 'integer',
+            'description' => 'Duration in minutes',
+            'default' => 0
+          ],
+          'description' => [
+            'type' => 'string',
+            'description' => 'Event description'
+          ],
+          'location' => [
+            'type' => 'string',
+            'description' => 'Event location'
+          ]
+        ],
+        'required' => ['name', 'date', 'rrule']
+      ]
+    ],
+    [
+      'name' => 'update_event',
+      'description' => 'Update fields of an event the authenticated user '
+        . 'created. Only the fields provided are changed. Date/time are GMT. '
+        . 'Write access must be enabled.',
+      'inputSchema' => [
+        'type' => 'object',
+        'properties' => [
+          'event_id' => [
+            'type' => 'integer',
+            'description' => 'The cal_id of the event to update'
+          ],
+          'name' => ['type' => 'string', 'description' => 'New event name'],
+          'date' => [
+            'type' => 'string',
+            'description' => 'New date in YYYYMMDD format (GMT)'
+          ],
+          'time' => [
+            'type' => 'string',
+            'description' => 'New start time in HHMMSS (GMT), or -1 for untimed'
+          ],
+          'duration' => [
+            'type' => 'integer',
+            'description' => 'New duration in minutes'
+          ],
+          'description' => ['type' => 'string', 'description' => 'New description'],
+          'location' => ['type' => 'string', 'description' => 'New location']
+        ],
+        'required' => ['event_id']
+      ]
+    ],
+    [
+      'name' => 'delete_event',
+      'description' => 'Delete an event the authenticated user created, '
+        . 'including any recurrence rows. Write access must be enabled.',
+      'inputSchema' => [
+        'type' => 'object',
+        'properties' => [
+          'event_id' => [
+            'type' => 'integer',
+            'description' => 'The cal_id of the event to delete'
+          ]
+        ],
+        'required' => ['event_id']
+      ]
+    ]
+  ];
+}
+
+/**
+ * Returns the inputSchema for a single MCP tool.
+ *
+ * @param string $tool_name The tool name.
+ * @return array|null The tool's inputSchema, or null if the tool is unknown.
+ */
+function get_mcp_tool_schema($tool_name) {
+  foreach (mcp_list_tools() as $tool) {
+    if ($tool['name'] === $tool_name) {
+      return $tool['inputSchema'];
+    }
+  }
+  return null;
+}
+
+/**
+ * Convert a stored event date/time to a viewing user's local timezone.
+ *
+ * WebCalendar stores webcal_entry.cal_time (HHMMSS, or -1 for untimed/all-day
+ * events) as a GMT clock time, and the web UI converts it to each user's
+ * TIMEZONE on display -- e.g. view_entry.php renders the start time with
+ * display_time($date . cal_time, 2), which interprets the digits as GMT
+ * (date_to_epoch) and reformats them in the user's timezone. This conversion is
+ * NOT gated on the GENERAL_USE_GMT system setting; display_time always applies
+ * it. The MCP tools must do the same or clients receive times shifted by the
+ * user's UTC offset (the bug where 8 AM appointments were reported as noon).
+ *
+ * Untimed events (cal_time === -1) are returned unchanged. A timed event can
+ * roll onto an adjacent calendar day once shifted into the user's timezone, so
+ * the (possibly adjusted) date is returned alongside the time.
+ *
+ * This is a pure helper (no globals, no env mutation) so it can be unit-tested
+ * directly; the caller passes the target timezone explicitly.
+ *
+ * @param string|int $date cal_date in YYYYMMDD
+ * @param string|int $time cal_time in HHMMSS, or -1 for untimed events
+ * @param string     $tz   Olson timezone name to convert into (e.g.
+ *                         'America/New_York')
+ * @return array  ['date' => YYYYMMDD, 'time' => HHMMSS] in local time. Untimed
+ *                events keep time '-1'; inputs are returned unchanged when the
+ *                stored value or timezone cannot be parsed.
+ */
+function mcp_gmt_to_local ( $date, $time, $tz ) {
+  // Untimed/all-day events carry no clock time to convert.
+  if ( (int)$time === -1 )
+    return [ 'date' => (string)$date, 'time' => (string)$time ];
+
+  // Interpret the stored digits as GMT, then render in the target timezone.
+  // An explicit DateTime keeps this self-contained (no process-wide TZ env
+  // mutation) and DST-correct via the zoneinfo database. This mirrors
+  // display_time()'s date_to_epoch()+date() round-trip used by the web UI.
+  try {
+    $dt = DateTime::createFromFormat ( 'YmdHis',
+      sprintf ( '%08d%06d', (int)$date, (int)$time ),
+      new DateTimeZone ( 'UTC' ) );
+    if ( $dt === false )
+      return [ 'date' => (string)$date, 'time' => (string)$time ];
+    $dt->setTimezone ( new DateTimeZone ( $tz ?: 'UTC' ) );
+  } catch ( Exception $e ) {
+    // Unknown timezone: fail safe by returning the unconverted values.
+    return [ 'date' => (string)$date, 'time' => (string)$time ];
+  }
+
+  return [ 'date' => $dt->format ( 'Ymd' ), 'time' => $dt->format ( 'His' ) ];
+}
+
+/**
+ * Shift a YYYYMMDD date string by a whole number of days.
+ *
+ * Used by list_events to widen its GMT date-range query by one day on each side
+ * before converting to local time, so events that cross a calendar-day boundary
+ * during the timezone shift are not dropped. Computed in UTC (no DST) at noon to
+ * stay clear of any day-boundary edge cases.
+ *
+ * @param string|int $date  Date in YYYYMMDD
+ * @param int        $days  Number of days to add (may be negative)
+ * @return string  The shifted date in YYYYMMDD
+ */
+function mcp_shift_date ( $date, $days ) {
+  $d = (string)$date;
+  $ts = gmmktime ( 12, 0, 0,
+    (int)substr ( $d, 4, 2 ),
+    (int)substr ( $d, 6, 2 ) + (int)$days,
+    (int)substr ( $d, 0, 4 ) );
+  return gmdate ( 'Ymd', $ts );
+}
+
+/**
+ * Validate a client-supplied RRULE against the subset WebCalendar can store
+ * and correctly expand (see the scheduling-agent schema audit,
+ * docs/SCHEMA_AUDIT.md).
+ *
+ * Server-side, defense-in-depth validation for add_recurring_event -- the MCP
+ * server must never trust its client. Pure function (no DB, no globals) so it
+ * is unit-tested directly.
+ *
+ * Supported: FREQ in {DAILY,WEEKLY,MONTHLY,YEARLY}; INTERVAL, COUNT, UNTIL
+ * (COUNT/UNTIL mutually exclusive), BYMONTH, BYMONTHDAY, BYDAY (with numeric
+ * offsets), BYSETPOS, BYWEEKNO, BYYEARDAY, WKST. Rejected: sub-daily FREQ,
+ * BYHOUR/BYMINUTE/BYSECOND (WebCalendar ignores them), the COUNT=999 infinite
+ * sentinel, malformed values, unknown or duplicate parts, and BY* values that
+ * would overflow the webcal_entry_repeats varchar columns.
+ *
+ * @param string $rrule An RRULE string, with or without a leading "RRULE:".
+ * @return array ['valid'=>true,'parts'=>[KEY=>VALUE,...]] (normalized), or
+ *               ['valid'=>false,'error'=>string].
+ */
+function mcp_validate_rrule ( $rrule ) {
+  $fail = function ( $msg ) { return [ 'valid' => false, 'error' => $msg ]; };
+
+  // Strip an optional leading "RRULE:" (case-insensitive) and surrounding space.
+  $s = trim ( preg_replace ( '/^RRULE:/i', '', trim ( (string)$rrule ) ) );
+  if ( $s === '' )
+    return $fail ( 'RRULE is required' );
+
+  // Column width bounds from webcal_entry_repeats (schema audit).
+  $WIDTH = [ 'BYMONTH' => 50, 'BYMONTHDAY' => 100, 'BYDAY' => 100,
+    'BYSETPOS' => 50, 'BYWEEKNO' => 50, 'BYYEARDAY' => 50, 'WKST' => 2 ];
+  $WEEKDAYS = [ 'SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA' ];
+  $KNOWN = [ 'FREQ', 'INTERVAL', 'COUNT', 'UNTIL', 'BYMONTH', 'BYMONTHDAY',
+    'BYDAY', 'BYSETPOS', 'BYWEEKNO', 'BYYEARDAY', 'WKST' ];
+  $UNSUPPORTED = [ 'BYHOUR', 'BYMINUTE', 'BYSECOND' ];
+
+  // Parse KEY=VALUE parts, rejecting malformed/duplicate/unknown ones.
+  $parts = [];
+  foreach ( explode ( ';', $s ) as $token ) {
+    if ( $token === '' )
+      continue;
+    $eq = strpos ( $token, '=' );
+    if ( $eq === false )
+      return $fail ( "Malformed RRULE part: $token" );
+    $key = strtoupper ( trim ( substr ( $token, 0, $eq ) ) );
+    $val = trim ( substr ( $token, $eq + 1 ) );
+    if ( isset ( $parts[$key] ) )
+      return $fail ( "Duplicate RRULE part: $key" );
+    if ( in_array ( $key, $UNSUPPORTED, true ) )
+      return $fail ( "Unsupported RRULE part: $key (WebCalendar cannot expand it)" );
+    if ( ! in_array ( $key, $KNOWN, true ) )
+      return $fail ( "Unknown RRULE part: $key" );
+    $parts[$key] = $val;
+  }
+
+  // FREQ is required and limited to the four WebCalendar can expand.
+  if ( ! isset ( $parts['FREQ'] ) )
+    return $fail ( 'RRULE must include FREQ' );
+  $parts['FREQ'] = strtoupper ( $parts['FREQ'] );
+  if ( ! in_array ( $parts['FREQ'], [ 'DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY' ], true ) )
+    return $fail ( "Unsupported FREQ: {$parts['FREQ']} (allowed: DAILY, WEEKLY, MONTHLY, YEARLY)" );
+
+  // COUNT and UNTIL are mutually exclusive (RFC 5545).
+  if ( isset ( $parts['COUNT'] ) && isset ( $parts['UNTIL'] ) )
+    return $fail ( 'RRULE may not set both COUNT and UNTIL' );
+
+  // INTERVAL: positive integer.
+  if ( isset ( $parts['INTERVAL'] ) &&
+       ( ! ctype_digit ( $parts['INTERVAL'] ) || (int)$parts['INTERVAL'] < 1 ) )
+    return $fail ( 'INTERVAL must be a positive integer' );
+
+  // COUNT: positive integer, and not the 999 infinite sentinel.
+  if ( isset ( $parts['COUNT'] ) ) {
+    if ( ! ctype_digit ( $parts['COUNT'] ) || (int)$parts['COUNT'] < 1 )
+      return $fail ( 'COUNT must be a positive integer' );
+    if ( (int)$parts['COUNT'] === 999 )
+      return $fail ( 'COUNT=999 is reserved by WebCalendar as the infinite sentinel' );
+  }
+
+  // UNTIL: date (YYYYMMDD) or datetime (YYYYMMDDTHHMMSS[Z]).
+  if ( isset ( $parts['UNTIL'] ) &&
+       ! preg_match ( '/^\d{8}(T\d{6}Z?)?$/', $parts['UNTIL'] ) )
+    return $fail ( 'UNTIL must be YYYYMMDD or YYYYMMDDTHHMMSSZ' );
+
+  // WKST: a weekday abbreviation.
+  if ( isset ( $parts['WKST'] ) ) {
+    $parts['WKST'] = strtoupper ( $parts['WKST'] );
+    if ( ! in_array ( $parts['WKST'], $WEEKDAYS, true ) )
+      return $fail ( 'WKST must be one of SU,MO,TU,WE,TH,FR,SA' );
+  }
+
+  // BYDAY: comma list of [+/-n]WD tokens (offset 1..53 optional).
+  if ( isset ( $parts['BYDAY'] ) ) {
+    $parts['BYDAY'] = strtoupper ( $parts['BYDAY'] );
+    foreach ( explode ( ',', $parts['BYDAY'] ) as $tok ) {
+      if ( ! preg_match (
+        '/^([+-]?([1-9]|[1-4][0-9]|5[0-3]))?(SU|MO|TU|WE|TH|FR|SA)$/', $tok ) )
+        return $fail ( "Invalid BYDAY value: $tok" );
+    }
+  }
+
+  // Integer-list BY* parts with range checks (nonzero; magnitude in [min,max]).
+  foreach ( [
+    [ 'BYMONTH', 1, 12, false ], [ 'BYMONTHDAY', 1, 31, true ],
+    [ 'BYSETPOS', 1, 366, true ], [ 'BYWEEKNO', 1, 53, true ],
+    [ 'BYYEARDAY', 1, 366, true ],
+  ] as [ $name, $min, $max, $allowNeg ] ) {
+    if ( ! isset ( $parts[$name] ) )
+      continue;
+    foreach ( explode ( ',', $parts[$name] ) as $v ) {
+      if ( ! preg_match ( '/^-?\d+$/', $v ) )
+        return $fail ( "Invalid $name value: $v" );
+      $n = (int)$v;
+      if ( $n === 0 )
+        return $fail ( "$name value may not be zero" );
+      if ( ! $allowNeg && $n < 0 )
+        return $fail ( "$name value may not be negative: $v" );
+      $mag = abs ( $n );
+      if ( $mag < $min || $mag > $max )
+        return $fail ( "$name value out of range: $v" );
+    }
+  }
+
+  // Reject values that would overflow the varchar columns.
+  foreach ( $WIDTH as $name => $max ) {
+    if ( isset ( $parts[$name] ) && strlen ( $parts[$name] ) > $max )
+      return $fail ( "$name exceeds the $max-character column limit" );
+  }
+
+  return [ 'valid' => true, 'parts' => $parts ];
+}
+
+/**
+ * Map validated RRULE parts to webcal_entry_repeats column values, matching
+ * how xcal.php stores recurrence (see the scheduling-agent schema audit).
+ *
+ * cal_type follows WebCalendar's derivation: DAILY/WEEKLY/YEARLY map directly;
+ * MONTHLY is 'monthlyBySetPos' when BYSETPOS is present, else 'monthlyByDay'.
+ * UNTIL is interpreted in the GMT storage frame (consistent with the other
+ * scheduling tools) -- its date and time-of-day components are stored directly
+ * with no timezone shift. Pure function.
+ *
+ * @param array $parts Normalized parts from mcp_validate_rrule().
+ * @return array Column => value pairs for webcal_entry_repeats (only the
+ *               columns implied by the rule; always cal_type/cal_frequency/
+ *               cal_wkst).
+ */
+function mcp_rrule_to_repeat_columns ( array $parts ) {
+  $cols = [];
+  switch ( $parts['FREQ'] ) {
+    case 'DAILY':  $cols['cal_type'] = 'daily'; break;
+    case 'WEEKLY': $cols['cal_type'] = 'weekly'; break;
+    case 'YEARLY': $cols['cal_type'] = 'yearly'; break;
+    case 'MONTHLY':
+      $cols['cal_type'] = isset ( $parts['BYSETPOS'] )
+        ? 'monthlyBySetPos' : 'monthlyByDay';
+      break;
+  }
+  $cols['cal_frequency'] = isset ( $parts['INTERVAL'] ) ? (int)$parts['INTERVAL'] : 1;
+  $cols['cal_wkst'] = $parts['WKST'] ?? 'MO';
+
+  foreach ( [
+    'BYMONTH' => 'cal_bymonth', 'BYMONTHDAY' => 'cal_bymonthday',
+    'BYDAY' => 'cal_byday', 'BYSETPOS' => 'cal_bysetpos',
+    'BYWEEKNO' => 'cal_byweekno', 'BYYEARDAY' => 'cal_byyearday',
+  ] as $part => $col ) {
+    if ( isset ( $parts[$part] ) )
+      $cols[$col] = $parts[$part];
+  }
+
+  if ( isset ( $parts['COUNT'] ) )
+    $cols['cal_count'] = (int)$parts['COUNT'];
+
+  if ( isset ( $parts['UNTIL'] ) &&
+       preg_match ( '/^(\d{8})(T(\d{6})Z?)?$/', $parts['UNTIL'], $m ) ) {
+    $cols['cal_end'] = (int)$m[1];
+    $cols['cal_endtime'] = isset ( $m[3] ) ? (int)$m[3] : 0;
+  }
+
+  return $cols;
+}
+
+/**
+ * Convert a GMT date/time to an absolute minute count, for interval math in
+ * the availability/conflict tools. Uses gmmktime so the value is timezone-
+ * and DST-independent (both sides of a comparison use the same GMT frame).
+ *
+ * @param string|int $date YYYYMMDD
+ * @param string|int $time HHMMSS (unpadded integers like 80000 are accepted)
+ * @return int Whole minutes since the Unix epoch (GMT).
+ */
+function mcp_datetime_to_min ( $date, $time ) {
+  $d = sprintf ( '%08d', (int)$date );
+  $t = sprintf ( '%06d', (int)$time );
+  $ts = gmmktime (
+    (int)substr ( $t, 0, 2 ), (int)substr ( $t, 2, 2 ), (int)substr ( $t, 4, 2 ),
+    (int)substr ( $d, 4, 2 ), (int)substr ( $d, 6, 2 ), (int)substr ( $d, 0, 4 ) );
+  return intdiv ( $ts, 60 );
+}
+
+/**
+ * Whether two half-open intervals [s1,e1) and [s2,e2) overlap. Touching
+ * endpoints (e.g. back-to-back meetings) do NOT count as an overlap.
+ *
+ * @return bool
+ */
+function mcp_intervals_overlap ( $s1, $e1, $s2, $e2 ) {
+  return $s1 < $e2 && $s2 < $e1;
+}
+
+/**
+ * Return the subset of $events that overlaps the proposed [start,end) interval.
+ *
+ * @param int   $start  Proposed start (minutes).
+ * @param int   $end    Proposed end (minutes).
+ * @param array $events Each ['id','name','start','end'] with minute values.
+ * @return array The overlapping events, in input order.
+ */
+function mcp_find_conflicts ( $start, $end, array $events ) {
+  $conflicts = [];
+  foreach ( $events as $e ) {
+    if ( mcp_intervals_overlap ( $start, $end, $e['start'], $e['end'] ) )
+      $conflicts[] = $e;
+  }
+  return $conflicts;
+}
+
+/**
+ * Merge a list of [start,end] intervals into sorted, non-overlapping busy
+ * blocks. Touching intervals are left separate (back-to-back busy blocks).
+ *
+ * @param array $intervals List of [start,end] pairs (minutes).
+ * @return array Sorted, merged list of [start,end] pairs.
+ */
+function mcp_merge_intervals ( array $intervals ) {
+  if ( empty ( $intervals ) )
+    return [];
+  usort ( $intervals, function ( $a, $b ) { return $a[0] <=> $b[0]; } );
+  $merged = [ $intervals[0] ];
+  $count = count ( $intervals );
+  for ( $i = 1; $i < $count; $i++ ) {
+    $last = &$merged[count ( $merged ) - 1];
+    // Merge only on real overlap; equal endpoints stay separate.
+    if ( $intervals[$i][0] < $last[1] ) {
+      if ( $intervals[$i][1] > $last[1] )
+        $last[1] = $intervals[$i][1];
+    } else {
+      $merged[] = $intervals[$i];
+    }
+    unset ( $last );
+  }
+  return $merged;
+}
+
+/**
+ * Dispatch a decoded JSON-RPC request to the appropriate MCP method and build
+ * the JSON-RPC response array. This is the pure routing core extracted from
+ * handleMcpHttpRequest() so it can be exercised without HTTP/STDIO transport.
+ *
+ * @param array $request A decoded JSON-RPC request (jsonrpc, method, params, id).
+ * @param object|null $tools A WebCalendarMcpTools instance, required only for
+ *                           'tools/call'. May be null when callers exercise
+ *                           non-tool methods (initialize, tools/list, errors).
+ * @return array The JSON-RPC response array.
+ */
+function mcp_dispatch_request($request, $tools = null) {
+  $method = $request['method'] ?? '';
+  $params = $request['params'] ?? [];
+  $id = $request['id'] ?? null;
+
+  $result = null;
+  $error = null;
+
+  switch ($method) {
+    case 'initialize':
+      $result = mcp_initialize_result();
+      break;
+
+    case 'tools/list':
+      $result = ['tools' => mcp_list_tools()];
+      break;
+
+    case 'tools/call':
+      $tool_name = $params['name'] ?? '';
+      $tool_args = $params['arguments'] ?? [];
+
+      try {
+        switch ($tool_name) {
+          case 'list_events':
+            $result = $tools->list_events(
+              $tool_args['start_date'] ?? '',
+              $tool_args['end_date'] ?? ''
+            );
+            break;
+          case 'get_user_info':
+            $result = $tools->get_user_info();
+            break;
+          case 'search_events':
+            $result = $tools->search_events(
+              $tool_args['keyword'] ?? '',
+              $tool_args['limit'] ?? 50
+            );
+            break;
+          case 'add_event':
+            $result = $tools->add_event(
+              $tool_args['name'] ?? '',
+              $tool_args['date'] ?? '',
+              $tool_args['time'] ?? '-1',
+              $tool_args['description'] ?? '',
+              $tool_args['location'] ?? '',
+              $tool_args['duration'] ?? 0
+            );
+            break;
+          case 'get_availability':
+            $result = $tools->get_availability(
+              $tool_args['start_date'] ?? '',
+              $tool_args['end_date'] ?? ''
+            );
+            break;
+          case 'check_conflicts':
+            $result = $tools->check_conflicts(
+              $tool_args['date'] ?? '',
+              $tool_args['time'] ?? '',
+              $tool_args['duration'] ?? 0
+            );
+            break;
+          case 'add_recurring_event':
+            $result = $tools->add_recurring_event(
+              $tool_args['name'] ?? '',
+              $tool_args['date'] ?? '',
+              $tool_args['rrule'] ?? '',
+              $tool_args['time'] ?? '-1',
+              $tool_args['duration'] ?? 0,
+              $tool_args['description'] ?? '',
+              $tool_args['location'] ?? ''
+            );
+            break;
+          case 'update_event':
+            $result = $tools->update_event(
+              $tool_args['event_id'] ?? 0,
+              $tool_args['name'] ?? null,
+              $tool_args['date'] ?? null,
+              $tool_args['time'] ?? null,
+              $tool_args['duration'] ?? null,
+              $tool_args['description'] ?? null,
+              $tool_args['location'] ?? null
+            );
+            break;
+          case 'delete_event':
+            $result = $tools->delete_event($tool_args['event_id'] ?? 0);
+            break;
+          default:
+            throw new Exception("Unknown tool: $tool_name");
+        }
+      } catch (Exception $e) {
+        $error = [
+          'code' => -32603,
+          'message' => $e->getMessage()
+        ];
+      }
+      break;
+
+    default:
+      $error = [
+        'code' => -32601,
+        'message' => 'Method not found'
+      ];
+  }
+
+  $response = ['jsonrpc' => '2.0', 'id' => $id];
+  if ($error) {
+    $response['error'] = $error;
+  } else {
+    $response['result'] = $result;
+  }
+
+  return $response;
+}
+
+/**
+ * Runs the MCP STDIO transport loop. Reads newline-delimited JSON-RPC messages
+ * from $in, dispatches each via mcp_dispatch_request() -- the same handler the
+ * HTTP transport uses -- and writes newline-delimited JSON-RPC responses to
+ * $out. JSON-RPC notifications (messages with no 'id', e.g.
+ * notifications/initialized) receive no response. Returns when $in reaches EOF.
+ *
+ * Separated from mcp.php so the framing logic can be unit-tested with in-memory
+ * streams instead of a real STDIO process.
+ *
+ * @param resource $in    Readable stream (e.g. php://stdin).
+ * @param resource $out   Writable stream (e.g. php://stdout).
+ * @param object   $tools WebCalendarMcpTools instance for tools/call routing.
+ * @return void
+ */
+function mcp_run_stdio_loop($in, $out, $tools) {
+  while (($line = fgets($in)) !== false) {
+    $line = trim($line);
+    if ($line === '') {
+      continue;
+    }
+
+    $request = json_decode($line, true);
+    if (!is_array($request)) {
+      // Malformed JSON: reply with a JSON-RPC parse error.
+      fwrite($out, json_encode([
+        'jsonrpc' => '2.0',
+        'id' => null,
+        'error' => ['code' => -32700, 'message' => 'Parse error']
+      ]) . "\n");
+      continue;
+    }
+
+    // Notifications (no 'id') must not receive a response.
+    $is_notification = !array_key_exists('id', $request);
+
+    try {
+      $response = mcp_dispatch_request($request, $tools);
+    } catch (Exception $e) {
+      // mcp_dispatch_request handles its own errors, but guard the loop so a
+      // single bad message cannot terminate a long-running server.
+      error_log('MCP STDIO error: ' . $e->getMessage());
+      $response = [
+        'jsonrpc' => '2.0',
+        'id' => $request['id'] ?? null,
+        'error' => ['code' => -32603, 'message' => 'Internal error']
+      ];
+    }
+
+    if (!$is_notification) {
+      fwrite($out, json_encode($response) . "\n");
+    }
   }
 }
 ?>

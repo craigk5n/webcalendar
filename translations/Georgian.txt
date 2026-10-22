@@ -1410,7 +1410,7 @@ on: ჩართული
 All Attendees: ყველა დამსწრე
 Busy: Დაკავებული
 Tentative: სავარაუდო
-Schedule an appointment for XXX.: დანიშნეთ შეხვედრა დანიშვნისთვის XXX: YYY.
+Schedule an appointment for XXX.: დანიშნეთ შეხვედრა დანიშვნისთვის XXX.
 date_select: __dd__ __ თვე__ __yyyy__
 Event approved: ღონისძიება დამტკიცებულია
 Journal approved: ჟურნალი დამტკიცებულია

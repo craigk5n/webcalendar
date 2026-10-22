@@ -129,18 +129,9 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   echo '
       </tr>';
 
-  for ( $date = $startdate; $date <= $enddate; $date += 86400 ) {
-    $d = $date;
-    //date should always be 00 hours entering DST turns this into 01 (end of March)
-    //leaving DST turns into 23 (end of October)
-    $DSTtest = date("H",$d);
-    if ($DSTtest == "23") {
-      $d = $date + 3600;
-    }
-    if ($DSTtest == "01" ) {
-      $d = $date - 3600;
-    }
-    $dateYmd = date ( 'Ymd', $d );
+  $dim = date ( 't', $startdate ); // days in month
+  for ( $daynum = 1; $daynum <= $dim; $daynum++ ) {
+    $d = mktime ( 0, 0, 0, $thismonth, $daynum, $thisyear );
     $dateYmd = date ( 'Ymd', $d );
     $todayYmd = date ( 'Ymd', $today );
     $is_weekend = is_weekend ( $d );

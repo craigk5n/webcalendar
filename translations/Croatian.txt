@@ -1410,7 +1410,7 @@ on: na
 All Attendees: Svi polaznici
 Busy: Zaposlen
 Tentative: Okvirno
-Schedule an appointment for XXX.: Zakažite sastanak za XXX: GGG.
+Schedule an appointment for XXX.: Zakažite sastanak za XXX.
 date_select: __dd__ __mjesec__ __yyy____
 Event approved: Događaj odobren
 Journal approved: Časopis odobren

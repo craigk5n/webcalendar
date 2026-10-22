@@ -1410,7 +1410,7 @@ on: ivuliwe
 All Attendees: Bonke abezileyo
 Busy: Ndixakekile
 Tentative: Okwexeshana
-Schedule an appointment for XXX.: Cwangcisa idinga le-XXX: YYY.
+Schedule an appointment for XXX.: Cwangcisa idinga le-XXX.
 date_select: =
 Event approved: Umcimbi uvunyiwe
 Journal approved: Ijenali yamkelwe

@@ -4,10 +4,10 @@
  * sets up some needed variables.
  *
  * The settings.php file is created during installation using the web-based db
- * setup page (install/index.php).
+ * setup page (wizard/index.php).
  *
  * To update the WebCalendar version (in order to make a new release or to
- * mark a db change), see the comments in install/index.php.
+ * mark a db change), see bump.sh.
  *
  * @author Craig Knudsen <craig@k5n.us>
  * @copyright Craig Knudsen, <craig@k5n.us>, https://k5n.us/
@@ -34,6 +34,7 @@ $config_possible_settings = [
   'db_type'          => 'string',
   'readonly'         => 'string', # "Y" or "N"
   'single_user'      => 'string', # "Y" or "N"
+  'single_user_login' => 'string', # login name when single_user is "Y"
   'use_http_auth'    => 'boolean',
   'user_inc'         => 'string',
   'config_inc'       => 'string',
@@ -42,13 +43,13 @@ $config_possible_settings = [
 
 /**
  * Prints a fatal error message to the user along with a link to the
- * Troubleshooting section of the WebCalendar System Administrator's Guide.
+ * Troubleshooting section of the WebCalendar Administrator Guide.
  *
  * Execution is aborted.
  *
  * @param string  $error  The error message to display
- * @param string  $anchor The section in WebCalendar-SysAdmin.html to
- *		display (should be marked with <a name="XXX">
+ * @param string  $anchor The section anchor in docs/troubleshooting.md to
+ *		display (appended to $TROUBLE_URL as "#anchor")
  * @internal We don't normally put functions in this file. But, since this
  *           file is included before some of the others, this function either
  *           goes here or we repeat this code in multiple files.
@@ -187,20 +188,21 @@ function do_config($callingFromInstall=false)
   // Define possible app settings and their types
   $possible_settings = $config_possible_settings;
 
-  // When changing PROGRAM VERSION, also change it in install/default_config.php
-  $PROGRAM_VERSION = 'v1.9.12';
+  // When changing PROGRAM VERSION, also change it in includes/default_config.php
+  $PROGRAM_VERSION = 'v1.9.25';
   // Update PROGRAM_DATE with official release data
-  $PROGRAM_DATE = '03 Nov 2023';
+  $PROGRAM_DATE = '05 Oct 2026';
 
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://k5n.us/wp/webcalendar/';
-  $TROUBLE_URL = 'docs/WebCalendar-SysAdmin.html#trouble';
+  $TROUBLE_URL = 'docs/troubleshooting.md';
 
   $settings = [];
 
   // Decide the source based on the WEBCALENDAR_USE_ENV env variable
   $use_env = getenv('WEBCALENDAR_USE_ENV');
   if ($use_env && strtolower($use_env) === "true") {
+    $settings['WEBCALENDAR_USE_ENV'] = 'true';
     // Load from environment variables
     foreach ($possible_settings as $key => $type) {
       $env_key = 'WEBCALENDAR_' . strtoupper($key);
@@ -216,8 +218,8 @@ function do_config($callingFromInstall=false)
     }
   } else if (!file_exists(__DIR__ . '/settings.php') && !$callingFromInstall) {
     // Redirect to installer
-    if (file_exists(__DIR__ . '/../install/index.php')) {
-      header('Location: install/index.php');
+    if (file_exists(__DIR__ . '/../wizard/index.php')) {
+      header('Location: wizard/index.php');
       exit;
     } else {
       die_miserable_death(translate('Could not find settings.php file...'));
@@ -231,8 +233,8 @@ function do_config($callingFromInstall=false)
       }
       // There is no settings.php file.
       // Redirect user to install page if it exists.
-      if (file_exists('install/index.php')) {
-        header('Location: install/index.php');
+      if (file_exists('wizard/index.php')) {
+        header('Location: wizard/index.php');
         exit;
       } else {
         die_miserable_death(translate('Could not find settings.php file...'));
@@ -265,12 +267,10 @@ function do_config($callingFromInstall=false)
   $db_password = $settings['db_password'] ?? '';
   $db_persistent = (preg_match(
     '/(1|yes|true|on)/i',
-    $settings['db_persistent']
-  ) ? true : false );
+    $settings['db_persistent'] ) );
   $db_debug = (preg_match(
     '/(1|yes|true|on)/i',
-    $settings['db_debug']
-  ) ? true : false);
+    $settings['db_debug'] ) );
   $db_type = $settings['db_type'] ?? '';
 
   // If no db settings, then user has likely started install but not yet
@@ -279,8 +279,8 @@ function do_config($callingFromInstall=false)
     if ($callingFromInstall) {
       return; // not an error during install
     }
-    if (file_exists('install/index.php')) {
-      header('Location: install/index.php');
+    if (file_exists('wizard/index.php')) {
+      header('Location: wizard/index.php');
       exit;
     } else
       die_miserable_death(translate('Incomplete settings.php file...'));
@@ -302,7 +302,11 @@ function do_config($callingFromInstall=false)
     dbi_set_debug(true);
 
   if (!$callingFromInstall) {
-    foreach ( ['db_type', 'db_host', 'db_login'] as $s) {
+    // SQLite/SQLite3 don't require db_host or db_login
+    $required = ($db_type == 'sqlite' || $db_type == 'sqlite3')
+      ? ['db_type']
+      : ['db_type', 'db_host', 'db_login'];
+    foreach ($required as $s) {
       if (empty($settings[$s]))
         die_miserable_death(str_replace(
           'XXX',
@@ -319,7 +323,7 @@ function do_config($callingFromInstall=false)
     ? '' : $db_password);
 
   $readonly = $settings['readonly'] = (!empty($settings['readonly'])
-    && preg_match('/(1|true|yes|enable|on)/i', $settings['readonly'])) ? 'Y' : 'N';
+    && preg_match('/^(1|y|yes|true|enable|on)$/i', trim($settings['readonly']))) ? 'Y' : 'N';
 
   if (empty($settings['mode']))
     $settings['mode'] = 'prod';
@@ -327,9 +331,9 @@ function do_config($callingFromInstall=false)
   $run_mode = (preg_match('/(dev)/i', $settings['mode']) ? 'dev' : 'prod');
   $phpdbiVerbose = ($run_mode == 'dev');
   $single_user = $settings['single_user'] = (!empty($settings['single_user'])
-    && preg_match('/(1|true|yes|enable|on)/i', $settings['single_user'])) ? 'Y' : 'N';
+    && preg_match('/^(1|y|yes|true|enable|on)$/i', trim($settings['single_user']))) ? 'Y' : 'N';
   if (isset($single_user) && $single_user == 'Y') {
-    $single_user_login = $settings['single_user_login'];
+    $single_user_login = $settings['single_user_login'] ?? '';
     if (!$callingFromInstall) {
       if (empty($single_user_login))
         die_miserable_death(str_replace(
@@ -344,7 +348,7 @@ function do_config($callingFromInstall=false)
   }
 
   // Type of user authentication.
-  $user_inc = $settings['user_inc'];
+  $user_inc = $settings['user_inc'] ?? 'user.php';
 
   // If SQLite, the db file is in the includes directory.
   if ($db_type == 'sqlite' || $db_type == 'sqlite3') {
@@ -352,7 +356,7 @@ function do_config($callingFromInstall=false)
       $db_database = get_full_include_path($db_database);
   }
 
-  $locateStr = 'Location: install/index.php';
+  $locateStr = 'Location: wizard/index.php';
 
   // Check the current installation version.
   // Redirect user to install page if it is different from stored value.
@@ -361,13 +365,30 @@ function do_config($callingFromInstall=false)
   $c = @dbi_connect($db_host, $db_login, $db_password, $db_database, false);
 
   if ($c && !$callingFromInstall) {
-    $rows = dbi_get_cached_rows('SELECT cal_value FROM webcal_config
+    // IMPORTANT: read WEBCAL_PROGRAM_VERSION without the query cache.
+    // dbi_get_cached_rows() persists SELECT results to {db_cachedir}/*.dat
+    // and the wizard's updateVersionInDb() writes via native mysqli, which
+    // never triggers dbi4php's cache-invalidation path.  A stale cache
+    // file would pin the old version forever and loop the user back to
+    // the wizard on every request (issue #639).
+    $rows = [];
+    $res = dbi_execute('SELECT cal_value FROM webcal_config
       WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'');
+    if ($res) {
+      while ($row = dbi_fetch_row($res)) {
+        $rows[] = $row;
+      }
+      dbi_free_result($res);
+    }
 
-    //echo "<pre>"; print_r($rows); echo "</pre>"; exit;
     if (!$rows || empty($rows) || empty($rows[0])) {
-      header($locateStr);
-      exit;
+      if (file_exists('wizard/index.php')) {
+        header($locateStr);
+        exit;
+      } else {
+        die_miserable_death(
+          'Database version not found. Please re-install the wizard/ directory and run the upgrade.');
+      }
     } else {
       $versionInDb = $rows[0][0];
       if ($versionInDb != $PROGRAM_VERSION) {
@@ -376,8 +397,15 @@ function do_config($callingFromInstall=false)
         // (only an option when there are no database schema changes between
         // the version and the new version.)
         if (upgrade_requires_db_changes($db_type, $versionInDb, $PROGRAM_VERSION)) {
-          header($locateStr);
-          exit;
+          if (file_exists('wizard/index.php')) {
+            header($locateStr);
+            exit;
+          } else {
+            die_miserable_death(
+              'Database upgrade required (version ' . htmlspecialchars($versionInDb)
+              . ' → ' . htmlspecialchars($PROGRAM_VERSION)
+              . '). Please re-install the wizard/ directory and run the upgrade.');
+          }
         } else {
           // We can just update the version in the database and move on.
           if (!update_webcalendar_version_in_db($versionInDb, $PROGRAM_VERSION)) {
@@ -390,8 +418,13 @@ function do_config($callingFromInstall=false)
   } else {
     if (!$callingFromInstall) {
       // Must mean we don't have a settings.php file or env variables.
-      header($locateStr);
-      exit;
+      if (file_exists('wizard/index.php')) {
+        header($locateStr);
+        exit;
+      } else {
+        die_miserable_death(
+          'Could not connect to database. Please check includes/settings.php.');
+      }
     }
   }
 

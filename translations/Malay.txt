@@ -1410,7 +1410,7 @@ on: pada
 All Attendees: Semua Hadirin
 Busy: Sibuk
 Tentative: Tentatif
-Schedule an appointment for XXX.: Jadualkan janji temu untuk XXX: YYY.
+Schedule an appointment for XXX.: Jadualkan janji temu untuk XXX.
 date_select: __dd__ __bulan__ __yyyy__
 Event approved: Acara diluluskan
 Journal approved: Jurnal diluluskan

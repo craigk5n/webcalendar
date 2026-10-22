@@ -1410,7 +1410,7 @@ on: дээр
 All Attendees: Бүх оролцогчид
 Busy: Завгүй
 Tentative: Урьдчилсан
-Schedule an appointment for XXX.: XXX: YYY цаг товлоорой.
+Schedule an appointment for XXX.: XXX цаг товлоорой.
 date_select: __dd__ __ сар __ __yyyy__
 Event approved: Арга хэмжээг батлав
 Journal approved: Сэтгүүл батлав

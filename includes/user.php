@@ -59,12 +59,32 @@ function user_valid_login ( $login, $password, $silent=false ) {
         $rehash = password_needs_rehash ( $expected_hash, PASSWORD_DEFAULT );
       }
       // Upgrade insecurely stored passwords
-      if ( $okay && $rehash ){
+      if ( $okay && $rehash ) {
         $new_hash = password_hash ( $password, PASSWORD_DEFAULT );
         $sql = 'UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?';
-        dbi_execute ( $sql, [$new_hash, $login] );
+        // Non-fatal: if cal_passwd is too narrow for the 60-char bcrypt hash,
+        // strict-mode MySQL/MariaDB rejects this write with an error. Letting
+        // dbi_execute() fatal here would abort the login with a bare "Error
+        // executing query." Instead we swallow the failure and fall through to
+        // the verify/revert path below so the user can still log in (their
+        // password simply stays in the old format until the column is widened).
+        dbi_execute ( $sql, [$new_hash, $login], false, false );
+        // Verify the hash was stored correctly (column may be too narrow, or
+        // the write above may have been rejected/truncated).
+        $res2 = dbi_execute (
+          'SELECT cal_passwd FROM webcal_user WHERE cal_login = ?', [$login] );
+        if ( $res2 ) {
+          $row2 = dbi_fetch_row ( $res2 );
+          dbi_free_result ( $res2 );
+          if ( ! $row2 || $row2[0] !== $new_hash ) {
+            // New hash was not stored (rejected or truncated); restore the old
+            // hash to avoid lockout. Also non-fatal for the same reason.
+            dbi_execute ( 'UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?',
+              [$expected_hash, $login], false, false );
+          }
+        }
       }
-      $enabled = ( $row[1] == 'Y' ? true : false );
+      $enabled = ( $row[1] === 'Y' );
       // MySQL seems to do case insensitive matching, so double-check the login.
       if ( $okay && $row[0] == $login )
         $ret = true; // found login/password
@@ -119,26 +139,36 @@ function user_valid_crypt ( $login, $crypt_password ) {
   global $error;
   $ret = false;
 
-  $sql = 'SELECT cal_login, cal_passwd FROM webcal_user WHERE cal_login = ?';
-  $res = dbi_execute ( $sql, [$login] );
+  // Only token-based remember-me cookies (tok:<random_hex>) are accepted.
+  //
+  // The token is generated with random_bytes() at login (see login.php) and
+  // ONLY its SHA-256 hash is stored server-side. The previous legacy formats
+  // compared the cookie value against the stored cal_passwd hash (or a weak
+  // crypt() self-comparison), which allowed "pass-the-hash": anyone who
+  // obtained the stored password hash (DB read, backup, user_get_users())
+  // could forge a valid login cookie. Those formats have been removed; cookies
+  // issued by old versions simply require one fresh login.
+  if ( strpos ( $crypt_password, 'tok:' ) !== 0 ) {
+    $error = 'Invalid login';
+    return false;
+  }
+
+  $token = substr ( $crypt_password, 4 );
+  $token_hash = hash ( 'sha256', $token );
+  $pref_name = 'REMEMBER_TOKEN_' . substr ( $token_hash, 0, 8 );
+  $sql = 'SELECT cal_value FROM webcal_user_pref'
+    . ' WHERE cal_login = ? AND cal_setting = ?';
+  $res = dbi_execute ( $sql, [$login, $pref_name] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row && $row[0] != '' ) {
-      // MySQL seems to do case insensitive matching, so double-check
-      // the login.
-      // also check if password matches
-      if ( ($row[0] == $login) && ( (crypt($row[1], $crypt_password) == $crypt_password) ) )
-        $ret = true; // found login/password
-      else
-        $error = 'Invalid login';
-    } else {
+    if ( $row && hash_equals ( $row[0], $token_hash ) )
+      $ret = true;
+    else
       $error = 'Invalid login';
-    }
     dbi_free_result ( $res );
   } else {
     $error = 'Database error: ' . dbi_error();
   }
-
   return $ret;
 }
 

@@ -1,0 +1,45 @@
+# Production-style stack: MariaDB plus WebCalendar built from this checkout.
+# Run from the top-level WebCalendar directory:
+#
+#   docker compose -f docker/docker-compose-prod.yml up -d --build
+#
+# Then finish the install at http://localhost:8080 (the wizard), or run
+# wizard/headless.php as shown in docs/installation.md. The MYSQL_USER below
+# already has full rights on MYSQL_DATABASE, so no manual GRANT is needed.
+# Change both passwords before exposing this to a network.
+#
+#   If you need shell access on the webserver container running WebCalendar, you can use
+#   the following command:
+#     docker compose -f docker/docker-compose-prod.yml exec webcalendar /bin/sh
+
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb:11.4
+    container_name: webcalendar-db
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - MYSQL_ROOT_PASSWORD=Webcalendar.1
+      - MYSQL_PASSWORD=Webcalendar.1
+      - MYSQL_DATABASE=webcalendar_php8
+      - MYSQL_USER=webcalendar
+    restart: unless-stopped
+
+  webcalendar:
+    # Built from this checkout. Or use the published image instead:
+    #   image: craigk5n/webcalendar:latest
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile-prod
+    image: webcalendar
+    depends_on:
+      - db
+    ports:
+      - 8080:80
+
+volumes:
+  mysql-data:

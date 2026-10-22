@@ -1410,7 +1410,7 @@ on: боюнча
 All Attendees: Бардык катышуучулар
 Busy: Алек
 Tentative: Болжолдуу
-Schedule an appointment for XXX.: XXX: YYY үчүн жолугушууну пландаштырыңыз.
+Schedule an appointment for XXX.: XXX үчүн жолугушууну пландаштырыңыз.
 date_select: __dd__ __ month__ __yyyy__
 Event approved: Иш-чара жактырылды
 Journal approved: Журнал жактырылды

@@ -235,7 +235,7 @@ function print_header_timebar() {
             <tr class="yardstick">';
   for ( $i = 0; $i < ( $totalSlots ); $i++ ) {
     $ret .= '
-              <td width="' . $yardWidth . '%">&nbsp;</td>';
+              <td style="inline-size: ' . $yardWidth . '%">&nbsp;</td>';
   }
   // We'll close the table later.
   return $ret . '
@@ -255,7 +255,7 @@ if ($view_type == 'S') {
   $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
   $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
   $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
-  $wkend = $wkstart + 518400;
+  $wkend = end_of_day ( $wkstart, 6 );
   $val_boucle = 7;
 } else {
   $next = mktime ( 0, 0, 0, $thismonth + 1, $thisday, $thisyear );

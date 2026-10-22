@@ -1309,7 +1309,7 @@ on: 在
 All Attendees: 所有參會者
 Busy: 忙
 Tentative: 暫定的
-Schedule an appointment for XXX.: 安排XXX：YYY的約會。
+Schedule an appointment for XXX.: 安排XXX的約會。
 Event approved: 活動已獲批准
 Journal approved: 期刊批准
 Task approved: 任務已批准

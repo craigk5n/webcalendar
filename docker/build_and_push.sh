@@ -43,17 +43,17 @@ echo "Version: $version"
 cd ..
 tagBranchParam=""
 if [ "$doTagBranch" == "1" ]; then
-  tagBranchParam="k5nus/webcalendar:$tagBranch"
+  tagBranchParam="-t craigk5n/webcalendar:$tagBranch"
   echo "Tagging and pushing '$tagBranch' tag"
 fi
-echo docker build $tagBranchParam -t k5nus/webcalendar:$version -f docker/Dockerfile-php8 .
-docker build $tagBranchParam -t k5nus/webcalendar:$version -f docker/Dockerfile-php8 .
+echo docker build $tagBranchParam -t craigk5n/webcalendar:$version -f docker/Dockerfile-prod .
+docker build $tagBranchParam -t craigk5n/webcalendar:$version -f docker/Dockerfile-prod .
 if [ "$doTagBranch" == "1" ]; then
   echo "Pushing $tagBranch"
-  docker push k5nus/webcalendar:$tagBranch
+  docker push craigk5n/webcalendar:$tagBranch
 fi
 echo "Pushing $version"
-docker push k5nus/webcalendar:$version
+docker push craigk5n/webcalendar:$version
 
 exit 0
 

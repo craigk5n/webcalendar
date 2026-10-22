@@ -1410,7 +1410,7 @@ on: a kan
 All Attendees: Duk Mahalarta
 Busy: Aiki
 Tentative: Mai tsayi
-Schedule an appointment for XXX.: Tsara alƙawari don XXX: YYY
+Schedule an appointment for XXX.: Tsara alƙawari don XXX
 date_select: __dd__ __mon____ __yyyyyy__
 Event approved: An yarda da taron
 Journal approved: An amince da mujallar

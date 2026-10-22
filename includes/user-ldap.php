@@ -34,11 +34,11 @@ $ldap_admin_group_type = strtolower($ldap_admin_group_type);
 //   $dn - complete dn for the user
 //   TRUE if the user is found, FALSE in other case
 function user_search_dn ( $login ) {
-  global $ds, $error, $ldap_base_dn, $ldap_login_attr,
+  global $error, $ldap_base_dn, $ldap_login_attr,
   $ldap_user_attr, $ldap_user_filter;
 
   $ret = false;
-  if ($r = connect_and_bind ()) {
+  if ($ds = connect_and_bind ()) {
     $sr = @ldap_search ( $ds, $ldap_base_dn,
       "(&($ldap_login_attr=$login)$ldap_user_filter )", $ldap_user_attr );
     if (!$sr) {
@@ -82,6 +82,7 @@ function user_valid_login ( $login, $password ) {
     if ($ldap_start_tls) {
       if (!ldap_start_tls($ds)) {
         $error = 'Could not start TLS for LDAP connection';
+        @ldap_close ( $ds );
         return $ret;
       }
     }
@@ -121,7 +122,7 @@ function user_valid_crypt ( $login, $crypt_password ) {
 //   $user - user login
 //   $prefix - variable prefix to use
 function user_load_variables ( $login, $prefix ) {
-  global $cached_user_var, $ds, $error, $ldap_base_dn, $ldap_login_attr,
+  global $cached_user_var, $error, $ldap_base_dn, $ldap_login_attr,
   $ldap_user_attr, $ldap_user_filter, $NONUSER_PREFIX, $PUBLIC_ACCESS_FULLNAME;
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )
@@ -145,7 +146,7 @@ function user_load_variables ( $login, $prefix ) {
   }
 
   $ret = false;
-  if ($r = connect_and_bind ()) {
+  if ($ds = connect_and_bind ()) {
     $sr = @ldap_search ( $ds, $ldap_base_dn,
       "(&($ldap_login_attr=$login)$ldap_user_filter )", $ldap_user_attr );
 
@@ -347,8 +348,8 @@ function user_delete_user ( $user ) {
 // Get a list of users and return info in an array.
 // returns: array of users
 function user_get_users ( $publicOnly=false ) {
-  global $ds, $error, $ldap_base_dn, $ldap_user_attr,
-  $ldap_user_filter, $PUBLIC_ACCESS_FULLNAM, $PUBLIC_ACCESS;
+  global $error, $ldap_base_dn, $ldap_user_attr,
+  $ldap_user_filter, $PUBLIC_ACCESS_FULLNAME, $PUBLIC_ACCESS;
 
   $Admins = get_admins ();
   $count = 0;
@@ -363,12 +364,12 @@ function user_get_users ( $publicOnly=false ) {
        'cal_password' => '',
        'cal_fullname' => $PUBLIC_ACCESS_FULLNAME];
   if ( $publicOnly ) return $ret;
-  if ($r = connect_and_bind ()) {
+  if ($ds = connect_and_bind ()) {
     $sr = @ldap_search ( $ds, $ldap_base_dn, $ldap_user_filter, $ldap_user_attr );
     if (!$sr) {
       $error = 'Error searching LDAP server: ' . ldap_error( $ds );
     } else {
-      if ( (float)substr (PHP_VERSION,0,3) >= 4.2 ) ldap_sort ( $ds, $sr, $ldap_user_attr[3]);
+      // ldap_sort() was removed in PHP 8.0; results are sorted by usort() below.
       $info = @ldap_get_entries( $ds, $sr );
       for ( $i = 0; $i < $info['count']; $i++ ) {
         $ret[$count++] = [
@@ -406,13 +407,13 @@ function user_is_admin ($values,$Admins) {
 // Do this search only once per request.
 // returns: array of admins
 function get_admins () {
-  global $cached_admins, $ds, $error, $ldap_admin_group_attr,
+  global $cached_admins, $error, $ldap_admin_group_attr,
   $ldap_admin_group_name, $ldap_admin_group_type;
 
   if ( ! empty ( $cached_admins ) ) return $cached_admins;
   $cached_admins = [];
 
-  if ($r = connect_and_bind ()) {
+  if ($ds = connect_and_bind ()) {
     $search_filter = "($ldap_admin_group_attr=*)";
     $sr = @ldap_search ( $ds, $ldap_admin_group_name, $search_filter, [$ldap_admin_group_attr] );
     if (!$sr) {
@@ -447,44 +448,52 @@ function stripdn( $dn ) {
 
 // Connects and binds to the LDAP server
 // Tries to connect as $ldap_admin_dn if we set it.
-//  returns: bind result or false
+//
+// The connection is returned rather than stored in a global. Sharing one
+// global link between functions let a nested call (get_admins()) overwrite
+// and close its caller's link; on PHP 8 the caller's later ldap_close() then
+// throws "LDAP connection has already been closed", which is fatal. Each
+// caller must keep the link it is given in a local variable and close that.
+//
+//  returns: LDAP connection on success, false on failure
 function connect_and_bind () {
-  global $ds, $error, $ldap_admin_dn, $ldap_admin_pwd, $ldap_port,
+  global $error, $ldap_admin_dn, $ldap_admin_pwd, $ldap_port,
   $ldap_server, $ldap_start_tls, $ldap_version, $set_ldap_version;
 
   if ( ! function_exists ( 'ldap_connect' ) ) {
     die_miserable_death ( 'Your installation of PHP does not support LDAP' );
   }
 
-  $ret = false;
   $ds = @ldap_connect ( $ldap_server, $ldap_port );
-  if ( $ds ) {
-    if ($set_ldap_version || $ldap_start_tls)
-      ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, $ldap_version);
-
-    if ($ldap_start_tls) {
-      if (!ldap_start_tls($ds)) {
-        $error = 'Could not start TLS for LDAP connection';
-        return $ret;
-      }
-    }
-
-    if ( $ldap_admin_dn != '') {
-      $r = @ldap_bind ( $ds, $ldap_admin_dn, $ldap_admin_pwd );
-    } else {
-      $r = @ldap_bind ( $ds );
-    }
-
-    if (!$r) {
-      $error = 'Invalid Admin login for LDAP Server';
-    } else {
-      $ret = $r;
-    }
-  } else {
+  if ( ! $ds ) {
     $error = 'Error connecting to LDAP server';
-    $ret = false;
+    return false;
   }
-  return $ret;
+
+  if ($set_ldap_version || $ldap_start_tls)
+    ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, $ldap_version);
+
+  if ($ldap_start_tls) {
+    if (!ldap_start_tls($ds)) {
+      $error = 'Could not start TLS for LDAP connection';
+      @ldap_close ( $ds );
+      return false;
+    }
+  }
+
+  if ( $ldap_admin_dn != '') {
+    $r = @ldap_bind ( $ds, $ldap_admin_dn, $ldap_admin_pwd );
+  } else {
+    $r = @ldap_bind ( $ds );
+  }
+
+  if (!$r) {
+    $error = 'Invalid Admin login for LDAP Server';
+    @ldap_close ( $ds );
+    return false;
+  }
+
+  return $ds;
 }
 
 ?>
