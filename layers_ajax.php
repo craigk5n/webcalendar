@@ -81,7 +81,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
   if ( $ALLOW_VIEW_OTHER != 'Y' ) {
     $error = print_not_auth (7);
   } else {
-    save_layer ( getPostValue('layeruser'),
+    save_layer ( $layer_user,
       getPostValue('source'), getPostValue('color'),
       getPostValue('dups') == 'Y' ? 'Y' : 'N',
       getPostValue('id') );
@@ -100,7 +100,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
     if ( $id <= 0 ) {
       $error = translate('Invalid entry id.');
     } else {
-      delete_layer ( getPostValue('layeruser'), $id );
+      delete_layer ( $layer_user, $id );
     }
   }
   if ( $error == '' )
