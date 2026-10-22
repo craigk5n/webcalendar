@@ -12,6 +12,9 @@
 // available to every page that loads functions.php, including those that do
 // not go through init.php (e.g. upcoming.php).
 require_once __DIR__ . '/htmlsanitize.php';
+// These runtime helpers also ship in release archives, without Composer.
+require_once __DIR__ . '/../app/Helpers/ConfigService.php';
+require_once __DIR__ . '/../app/Helpers/DateDisplay.php';
 
 /* Functions start here. All non-function code should be above this.
  *
@@ -6766,21 +6769,8 @@ function validate_mcp_token($token) {
     }
   }
 
-  // Transparent migration: older versions stored the raw token. If a row still
-  // matches the plaintext, accept it once and upgrade it to a hash in place
-  // (same pattern as the md5 -> bcrypt password upgrade).
-  $res = dbi_execute(
-    'SELECT cal_login FROM webcal_user WHERE cal_api_token = ? AND cal_enabled = \'Y\'',
-    [$actualToken]);
-  if ($res) {
-    $row = dbi_fetch_row($res);
-    dbi_free_result($res);
-    if (!empty($row[0])) {
-      dbi_execute('UPDATE webcal_user SET cal_api_token = ? WHERE cal_login = ?',
-        [$tokenHash, $row[0]]);
-      return $row[0];
-    }
-  }
+  // Legacy plaintext tokens must be regenerated in Preferences. A fallback
+  // comparing the credential directly to this column would also accept hashes.
   return null;
 }
 

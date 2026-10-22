@@ -6,6 +6,8 @@ adminhome.php
 admin.php
 ajax.php
 approve_entry.php
+app/Helpers/ConfigService.php
+app/Helpers/DateDisplay.php
 assistant_edit_handler.php
 assistant_edit.php
 AUTHORS

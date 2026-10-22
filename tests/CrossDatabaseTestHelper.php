@@ -210,7 +210,7 @@ class SQLiteTestHelper extends CrossDatabaseTestHelper {
         $stmt = $this->db->prepare(
             'UPDATE webcal_user SET cal_api_token = :token WHERE cal_login = :login'
         );
-        $stmt->bindValue(':token', $token, SQLITE3_TEXT);
+        $stmt->bindValue(':token', hash('sha256', $token), SQLITE3_TEXT);
         $stmt->bindValue(':login', $userLogin, SQLITE3_TEXT);
         $stmt->execute();
         return $this->db->changes() > 0;
@@ -338,7 +338,8 @@ class MySQLTestHelper extends CrossDatabaseTestHelper {
         $stmt = $this->db->prepare(
             'UPDATE webcal_user SET cal_api_token = ? WHERE cal_login = ?'
         );
-        $stmt->bind_param('ss', $token, $userLogin);
+        $tokenHash = hash('sha256', $token);
+        $stmt->bind_param('ss', $tokenHash, $userLogin);
         $stmt->execute();
         return $stmt->affected_rows > 0;
     }
@@ -464,7 +465,7 @@ class PostgreSQLTestHelper extends CrossDatabaseTestHelper {
         $stmt = pg_prepare($this->db, 'update_api_token', 
             'UPDATE webcal_user SET cal_api_token = $1 WHERE cal_login = $2'
         );
-        pg_execute($this->db, 'update_api_token', [$token, $userLogin]);
+        pg_execute($this->db, 'update_api_token', [hash('sha256', $token), $userLogin]);
         return pg_affected_rows($this->db) > 0;
     }
     

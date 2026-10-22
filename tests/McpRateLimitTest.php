@@ -119,7 +119,7 @@ final class McpRateLimitTest extends TestCase
         $db->exec("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('MCP_RATE_LIMIT', '2');"); // Very low limit for testing
 
         // Set API token for admin user
-        $db->exec(sprintf("UPDATE webcal_user SET cal_api_token = '%s' WHERE cal_login = 'admin';", self::$api_token));
+        $db->exec(sprintf("UPDATE webcal_user SET cal_api_token = '%s' WHERE cal_login = 'admin';", hash('sha256', self::$api_token)));
 
         $db->close();
     }
@@ -220,9 +220,10 @@ final class McpRateLimitTest extends TestCase
 
         // Ensure the second user exists.
         $token = bin2hex(random_bytes(32));
+        $tokenHash = hash('sha256', $token);
         $db->exec("INSERT OR IGNORE INTO webcal_user
                      (cal_login, cal_firstname, cal_lastname, cal_email, cal_enabled, cal_api_token)
-                   VALUES ('testuser', 'Test', 'User', 'test@example.com', 'Y', '$token')");
+                   VALUES ('testuser', 'Test', 'User', 'test@example.com', 'Y', '$tokenHash')");
 
         $now = time();
         $d = (int)gmdate('Ymd', $now);

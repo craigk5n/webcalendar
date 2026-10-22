@@ -419,6 +419,11 @@ class WizardDatabase
       return false;
     }
 
+    if ($this->getAdminUserCount() > 0) {
+      $this->error = 'An administrator already exists';
+      return false;
+    }
+
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     $sql = "INSERT INTO webcal_user "

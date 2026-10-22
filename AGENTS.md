@@ -3,12 +3,14 @@
 ## Execution model
 - This is a procedural PHP app: root PHP files are HTTP endpoints, and the
   repository root is the web document root (`pub/` contains browser assets).
-- Most endpoints bootstrap through `includes/init.php`: Composer autoload,
+- Most endpoints bootstrap through `includes/init.php`: optional Composer autoload,
   `WebCalendar` first-phase initialization, the configured `includes/$user_inc`
   authentication backend, then second-phase initialization. Inspect that flow
   before changing authentication or request setup.
 - `App\` autoloads from `app/`, but most shared logic remains in
   `includes/functions.php` and `includes/classes/`.
+  Runtime helpers are also required directly by `includes/functions.php` so
+  release archives work without `vendor/` or Composer.
 - Database access uses the multi-backend `dbi_*` API in `includes/dbi4php.php`.
   Schema upgrades live in `wizard/shared/upgrade-sql.php` (default SQL plus
   backend-specific overrides), replacing the older `upgrade-*.sql` files;
@@ -40,11 +42,14 @@ Run these from the repository root unless specified otherwise:
 - After changing `includes/functions.php`, regenerate the committed function
   index with `php tools/build-codemap.php`.
 - Run PHPUnit as a non-root user: the unreadable-file test fails under root.
+  Use the host checkout owner's UID/GID so Git can inspect the bind-mounted
+  checkout without unsafe-ownership errors. The dev image includes Git;
+  release-classification tests must not silently skip in a Git checkout.
   The LDAP lifecycle TLS test requires the LDAP extension for the
   `LDAP_OPT_PROTOCOL_VERSION` constant. The development Dockerfile installs
   `libldap2-dev` and builds `ldap`; rebuild older images before running the suite.
 - PHP is not installed on the host in this environment. Run the suite with
-  `docker compose -f docker/docker-compose-dev.yml exec -T -u www-data webcalendar php vendor/bin/phpunit -c tests/phpunit.xml`.
+  `docker compose -f docker/docker-compose-dev.yml exec -T -u "$(id -u):$(id -g)" webcalendar php vendor/bin/phpunit -c tests/phpunit.xml`.
   Other PHP commands can use the same container via `exec -T webcalendar php`.
 - Full syntax helper: run `bash compile_test.sh` with `tests/` as the working
   directory. Both it and `tests/run_unit_tests.sh` always exit 0, even on
@@ -80,3 +85,14 @@ Run these from the repository root unless specified otherwise:
   `docs/WebCalendar-DeveloperGuide.html` for translation conventions.
 - Release archives copy only paths listed in `release-files`; update that
   manifest when adding files needed in a distributed installation.
+  Classify development-only files in `release-files-excluded`.
+
+## Authentication boundaries
+- Wizard API actions are default-deny; only explicit public setup/auth actions
+  may run anonymously. Initial password creation requires an unconfigured
+  installation, checked against settings/environment before session overrides.
+  Existing installations must authenticate with their configured password;
+  wizard administrator creation is limited to the first administrator.
+- MCP authentication compares only the SHA-256 hash of the presented token.
+  Do not restore a plaintext fallback: stored hashes must never authenticate.
+  Legacy plaintext tokens require regeneration in Preferences.

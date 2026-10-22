@@ -131,11 +131,12 @@ echo "WebCalendar installed successfully"
 # Enable MCP and generate API token
 echo "Configuring MCP settings..."
 API_TOKEN=$(php -r 'echo bin2hex(random_bytes(32));')
+API_TOKEN_HASH=$(php -r 'echo hash("sha256", $argv[1]);' "$API_TOKEN")
 
 sqlite3 "$DB_FILE" "INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('MCP_SERVER_ENABLED', 'Y');"
 sqlite3 "$DB_FILE" "INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('MCP_WRITE_ACCESS', 'Y');"
 sqlite3 "$DB_FILE" "INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('MCP_RATE_LIMIT', '100');"
-sqlite3 "$DB_FILE" "UPDATE webcal_user SET cal_api_token = '$API_TOKEN' WHERE cal_login = 'admin';"
+sqlite3 "$DB_FILE" "UPDATE webcal_user SET cal_api_token = '$API_TOKEN_HASH' WHERE cal_login = 'admin';"
 
 echo "MCP enabled, API token generated"
 

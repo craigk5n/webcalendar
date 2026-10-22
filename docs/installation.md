@@ -62,6 +62,12 @@ The wizard is a Bootstrap 5 single-page application with 10 steps:
 
 On completion the wizard writes `includes/settings.php`.
 
+Initial password creation is available only before configuration exists.
+Once `includes/settings.php` or environment-backed configuration is present,
+the wizard requires the configured installation password. The setup form
+cannot replace it. The wizard creates an administrator only when none exists;
+additional administrators are managed through the installed application.
+
 ### Headless CLI
 
 For automated or Docker deployments, use the CLI installer:
@@ -167,6 +173,11 @@ and provide the following variables:
 | `WEBCALENDAR_INSTALL_PASSWORD` | MD5 hash of password |
 | `WEBCALENDAR_USER_INC` | `user.php` |
 | `WEBCALENDAR_MODE` | `dev` or `prod` |
+
+Set `WEBCALENDAR_INSTALL_PASSWORD` before opening the web wizard in
+environment-backed mode. If an existing configuration has no installation
+password, an operator must configure one directly; anonymous web requests
+cannot claim the installation by creating a password.
 
 Generate the install password hash:
 

@@ -81,7 +81,7 @@ class McpTestHelper {
         $stmt = $this->db->prepare(
             'UPDATE webcal_user SET cal_api_token = :token WHERE cal_login = :login'
         );
-        $stmt->bindValue(':token', $token, SQLITE3_TEXT);
+        $stmt->bindValue(':token', hash('sha256', $token), SQLITE3_TEXT);
         $stmt->bindValue(':login', $userLogin, SQLITE3_TEXT);
         $stmt->execute();
         return $this->db->changes() > 0;

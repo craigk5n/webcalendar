@@ -60,8 +60,8 @@ final class ReleaseFilesConsistencyTest extends TestCase
 
   /**
    * @return array<string, true>|null  keys are tracked relpaths. Null
-   * means `git ls-files` is unavailable (e.g. running from a tarball
-   * without a .git dir); in that case we fall back to existence-only.
+   * means this is a release tree without a .git dir; in that case we fall
+   * back to existence-only. Git failures in a checkout must fail the test.
    */
   private function gitTrackedFiles(): ?array
   {
@@ -72,9 +72,9 @@ final class ReleaseFilesConsistencyTest extends TestCase
     $output = [];
     $status = 0;
     @exec($cmd . ' 2>/dev/null', $output, $status);
-    if ($status !== 0) {
-      return null;
-    }
+    self::assertSame(0, $status,
+      'git ls-files failed in a checkout. Install Git and run as the checkout '
+      . 'owner so release classification checks cannot silently skip.');
     $out = [];
     foreach ($output as $line) {
       if ($line !== '') {

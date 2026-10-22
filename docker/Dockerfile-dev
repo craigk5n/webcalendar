@@ -10,6 +10,7 @@ LABEL vendor="k5n.us"
 # `bin/webcal.php db dump` hands the work to mysqldump and sqlite3 rather than
 # writing SQL itself, so without them that command has nothing to call.
 RUN apt-get update && apt-get install -y \
+    git \
     mariadb-client \
     sqlite3 \
     libmariadb-dev-compat libmariadb-dev \
