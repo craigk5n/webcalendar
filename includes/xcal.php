@@ -1367,10 +1367,14 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
     // NOTE:(cek) commented out 'publish'. Will not work if event
     // was originally created from importing.
     if ( ! empty( $Entry['UID'] ) ) {
+      // Only an active participant (accepted or waiting) may match an
+      // existing event for update; a declined or removed participant must not
+      // be able to rewrite another user's event via an import UID match.
       $res = dbi_execute( 'SELECT wid.cal_id
         FROM webcal_import_data wid, webcal_entry_user weu WHERE '
         // . "cal_import_type = 'publish' AND "
         . 'wid.cal_id = weu.cal_id AND weu.cal_login = ?
+    AND weu.cal_status IN ( \'A\', \'W\' )
     AND cal_external_id = ?', [$login, $Entry['UID']] );
       if ( $res ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
