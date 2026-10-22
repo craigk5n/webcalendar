@@ -7830,6 +7830,30 @@ function pref_resolve_target ( $requestedUser, $login, $isAdmin,
 }
 
 /**
+ * Resolve the (cal_login, cal_other_user) pair for an access.php grant.
+ *
+ * webcal_access_user keys permissions as cal_login (the accessor) dot
+ * cal_other_user (the calendar owner). An admin may name both. A non-admin
+ * may only change access TO THEIR OWN calendar, so the owner is forced to
+ * $login and only the grantee ('otheruser') is taken from the request;
+ * access.php previously took both from POST, letting an attacker forge a row
+ * granting themselves access to any victim's calendar.
+ *
+ * @param bool   $isAdmin
+ * @param string $guser     the 'guser' POST value (accessor, admin only)
+ * @param string $otheruser the 'otheruser' POST value (the grantee)
+ * @param string $login     the acting user
+ *
+ * @return array [cal_login, cal_other_user]
+ */
+function access_grant_pair ( $isAdmin, $guser, $otheruser, $login ) {
+  if ( $isAdmin )
+    return [$guser, $otheruser];
+
+  return [$otheruser, $login];
+}
+
+/**
  * Whether $login may edit the custom template (header/script/trailer) owned
  * by $user.
  *

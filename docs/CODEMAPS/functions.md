@@ -14,10 +14,11 @@ dozen globals. Half the functions indexed here declare at least one.
 
 ## `includes/functions.php`
 
-167 functions.
+168 functions.
 
 | Function | Line | Purpose | Globals |
 |---|---:|---|---|
+| `access_grant_pair()` | 7849 | Resolve the (cal_login, cal_other_user) pair for an access | — |
 | `activate_urls()` | 58 | Looks for URLs in the given text, and makes them into links | — |
 | `activity_log()` | 100 | Adds something to the activity log for an event | — |
 | `add_dstfree_time()` | 163 | Get the corrected timestamp after adding or subtracting ONE_HOUR to compensate for DST | — |
@@ -168,8 +169,8 @@ dozen globals. Half the functions indexed here declare at least one.
 | `sort_events()` | 5892 | Sorts the combined event arrays by timestamp then name | — |
 | `sort_events_insensitive()` | 5913 | Sorts the combined event arrays by timestamp then name (case insensitive) | — |
 | `sort_users()` | 5931 | Sort user array based on $USER_SORT_ORDER | `$USER_SORT_ORDER` |
-| `template_edit_allowed()` | 7850 | Whether $login may edit the custom template (header/script/trailer) owned by $user | — |
-| `template_external_file()` | 7871 | Resolve an ALLOW_EXTERNAL_HEADER template file to a safe path, or false | — |
+| `template_edit_allowed()` | 7874 | Whether $login may edit the custom template (header/script/trailer) owned by $user | — |
+| `template_external_file()` | 7895 | Resolve an ALLOW_EXTERNAL_HEADER template file to a safe path, or false | — |
 | `time_to_minutes()` | 5954 | Converts a time format HHMMSS (like 130000 for 1PM) into number of minutes past midnight | — |
 | `times_overlap()` | 5968 | Checks to see if two events overlap | — |
 | `update_import_check_date()` | 2994 | _(undocumented)_ | — |
