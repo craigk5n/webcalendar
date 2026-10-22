@@ -33,6 +33,10 @@ optional, local, and ignored by Git. Keep shared instructions here; a local
   restoring the removed procedural `getShortTime()` for imported upstream tests.
 
 ## Dependencies and generated assets
+- GitHub Actions runners are pinned to `ubuntu-24.04`. Docker Hub publishing
+  is opt-in: set repository Actions variable `PUBLISH_DOCKER_IMAGES` to `true`
+  and configure secrets `DOCKER_HUB_USERNAME` and `DOCKER_HUB_ACCESS_TOKEN`.
+  Both development and release publishing jobs skip when the variable is unset.
 - Run `composer install` from the root using `composer.lock` (as CI does);
   the test README's `composer update` would change dependency resolution.
 - After dependency/asset changes, run `make` on Linux. It copies selected

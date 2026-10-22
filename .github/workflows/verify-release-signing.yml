@@ -22,7 +22,7 @@ on:
 
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     # Scoping to the `release` environment is what actually enforces
     # AC3: secrets defined on this environment are NEVER passed to
     # workflows triggered by pull_request from forks.

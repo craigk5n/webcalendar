@@ -33,7 +33,7 @@ jobs:
   # on the oldest thing still supported.
   mcp_unit_tests:
     name: MCP Unit Tests (no bootstrap)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
 
@@ -50,7 +50,7 @@ jobs:
 
   mcp_integration_test:
     name: MCP Integration Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
 
