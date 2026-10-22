@@ -7802,6 +7802,34 @@ function remote_calendar_edit_allowed ( $isAdmin, $calAdmin, $login ) {
 }
 
 /**
+ * Resolve whose preferences pref.php will edit, enforcing that the
+ * authorization subject equals the write subject.
+ *
+ * pref.php set $prefuser from GET 'user' but authorized with a global
+ * $is_nonuser_admin that init computed from a POST-preferred 'user', so a
+ * nonuser-admin of one calendar could edit (and mint the MCP token of) an
+ * unrelated account. The caller must pass $isNonuserAdminOfRequested computed
+ * against $requestedUser itself.
+ *
+ * @param string $requestedUser             the GET 'user' value
+ * @param string $login                     the acting user
+ * @param bool   $isAdmin
+ * @param bool   $isNonuserAdminOfRequested  user_is_nonuser_admin($login,$requestedUser)
+ *
+ * @return string|bool login whose prefs to edit, or false if unauthorized
+ */
+function pref_resolve_target ( $requestedUser, $login, $isAdmin,
+  $isNonuserAdminOfRequested ) {
+  if ( empty ( $requestedUser ) || $requestedUser == $login )
+    return $login;
+
+  if ( $isAdmin || $isNonuserAdminOfRequested )
+    return $requestedUser;
+
+  return false;
+}
+
+/**
  * Whether $login may edit the custom template (header/script/trailer) owned
  * by $user.
  *

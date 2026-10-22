@@ -74,13 +74,23 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $updating_public = true;
   load_user_preferences ( '__public__' );
   $prefuser = '__public__';
-} elseif ( ! empty ( $user ) && $user != $login && ($is_admin || $is_nonuser_admin)) {
-  $prefuser = $user;
-    load_user_preferences ( $user );
 } else {
-  $prefuser = $login;
-  // Reload preferences so any css changes will take effect
-  load_user_preferences();
+  // Resolve the target once and authorize against that exact account. The
+  // nonuser-admin check is bound to the requested $user, not the init-set
+  // global $is_nonuser_admin (which was derived from a POST-preferred
+  // 'user'), so the authorization subject == the write subject.
+  $prefuser = pref_resolve_target ( $user, $login, $is_admin,
+    ( ! empty ( $user ) && user_is_nonuser_admin ( $login, $user ) ) );
+  if ( $prefuser === false )
+    die_miserable_death ( translate ( 'Not authorized' ) );
+  // Keep the flag consistent with the resolved target for the display logic
+  // further down (it previously trusted the same POST-derived global).
+  $is_nonuser_admin = ( $prefuser != $login
+    && user_is_nonuser_admin ( $login, $prefuser ) );
+  if ( $prefuser == $login )
+    load_user_preferences();
+  else
+    load_user_preferences ( $prefuser );
 }
 
 if ( ! empty ( $_POST ) && empty ( $error )) {

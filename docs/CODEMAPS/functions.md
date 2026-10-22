@@ -14,7 +14,7 @@ dozen globals. Half the functions indexed here declare at least one.
 
 ## `includes/functions.php`
 
-166 functions.
+167 functions.
 
 | Function | Line | Purpose | Globals |
 |---|---:|---|---|
@@ -134,6 +134,7 @@ dozen globals. Half the functions indexed here declare at least one.
 | `mcp_validate_rrule()` | 7285 | Validate a client-supplied RRULE against the subset WebCalendar can store and correctly expand (see the sched… | — |
 | `month_name()` | 4544 | Returns the either the full name or the abbreviation of the specified month | `$lang` |
 | `nonuser_load_variables()` | 4606 | Loads nonuser variables (login, firstname, etc | `$error, $nuloadtmp_email` |
+| `pref_resolve_target()` | 7821 | Resolve whose preferences pref | — |
 | `print_category_menu()` | 4643 | Prints dropdown HTML for categories | `$CATEGORIES_ENABLED, $categories, $login, $user` |
 | `print_checkbox()` | 4693 | Generates HTML for checkbox form controls | `$prefarray, $s, $SCRIPT` |
 | `print_color_input_html()` | 4741 | Generates color input type, now supported in HTML | `$prefarray, $s, $SCRIPT` |
@@ -167,8 +168,8 @@ dozen globals. Half the functions indexed here declare at least one.
 | `sort_events()` | 5892 | Sorts the combined event arrays by timestamp then name | — |
 | `sort_events_insensitive()` | 5913 | Sorts the combined event arrays by timestamp then name (case insensitive) | — |
 | `sort_users()` | 5931 | Sort user array based on $USER_SORT_ORDER | `$USER_SORT_ORDER` |
-| `template_edit_allowed()` | 7822 | Whether $login may edit the custom template (header/script/trailer) owned by $user | — |
-| `template_external_file()` | 7843 | Resolve an ALLOW_EXTERNAL_HEADER template file to a safe path, or false | — |
+| `template_edit_allowed()` | 7850 | Whether $login may edit the custom template (header/script/trailer) owned by $user | — |
+| `template_external_file()` | 7871 | Resolve an ALLOW_EXTERNAL_HEADER template file to a safe path, or false | — |
 | `time_to_minutes()` | 5954 | Converts a time format HHMMSS (like 130000 for 1PM) into number of minutes past midnight | — |
 | `times_overlap()` | 5968 | Checks to see if two events overlap | — |
 | `update_import_check_date()` | 2994 | _(undocumented)_ | — |
