@@ -6774,21 +6774,11 @@ function validate_mcp_token($token) {
     }
   }
 
-  // Transparent migration: older versions stored the raw token. If a row still
-  // matches the plaintext, accept it once and upgrade it to a hash in place
-  // (same pattern as the md5 -> bcrypt password upgrade).
-  $res = dbi_execute(
-    'SELECT cal_login FROM webcal_user WHERE cal_api_token = ? AND cal_enabled = \'Y\'',
-    [$actualToken]);
-  if ($res) {
-    $row = dbi_fetch_row($res);
-    dbi_free_result($res);
-    if (!empty($row[0])) {
-      dbi_execute('UPDATE webcal_user SET cal_api_token = ? WHERE cal_login = ?',
-        [$tokenHash, $row[0]]);
-      return $row[0];
-    }
-  }
+  // No runtime plaintext fallback: tokens are stored as SHA-256 hashes, and a
+  // fallback that matched cal_api_token against the presented value verbatim
+  // would accept the stored hash itself as a valid bearer credential (anyone
+  // with DB read access could authenticate). Any legacy plaintext token must
+  // be migrated by a one-time, version-gated upgrade step, not here.
   return null;
 }
 

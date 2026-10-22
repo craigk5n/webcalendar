@@ -30,7 +30,7 @@ class WebCalMailer {
    */
   function __construct() {
     global $EMAIL_MAILER, $mailerError, $SMTP_AUTH,
-    $SMTP_HOST, $SMTP_PORT, $SMTP_PASSWORD, $SMTP_USERNAME;
+    $SMTP_HOST, $SMTP_PORT, $SMTP_PASSWORD, $SMTP_USERNAME, $SMTP_STARTTLS;
 
     $this->mail = new PHPMailer\PHPMailer(false);
     $mailerError = '';

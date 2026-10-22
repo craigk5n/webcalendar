@@ -355,6 +355,10 @@ function user_update_user_password ( $user, $password ) {
     $error = db_error();
     return false;
   }
+  // Revoke every remember-me token for this account so a stolen or stale
+  // persistent-login cookie cannot outlive a password change or reset.
+  dbi_execute ( 'DELETE FROM webcal_user_pref
+    WHERE cal_login = ? AND cal_setting LIKE \'REMEMBER_TOKEN_%\'', [$user] );
   return true;
 }
 

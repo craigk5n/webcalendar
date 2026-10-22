@@ -55,6 +55,14 @@ $message = '';
 // Handle "Reset Preferences" button
 $action = getValue('action');
 if ($action == "reset" && empty($error)) {
+  // This reset is a GET link, so it is not covered by the POST CSRF check in
+  // preventHacking(); verify the token explicitly (the link carries it).
+  if ( ( empty($CSRF_PROTECTION) || $CSRF_PROTECTION != 'N' )
+      && ( empty($_REQUEST['csrf_form_key'])
+        || empty($_SESSION['csrf_form_key'])
+        || $_REQUEST['csrf_form_key'] !== $_SESSION['csrf_form_key'] ) )
+    die_miserable_death ( translate('Fatal Error') . ': '
+      . translate('Invalid form request') );
   $user = getValue('user');
   if ($user != $login && ! $is_admin) {
     // Make sure this person is either an admin or the owner/admin of the nonuser cal.

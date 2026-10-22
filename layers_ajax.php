@@ -43,6 +43,13 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 }
 
 if ( $action == 'enable' || $action == 'disable' ) {
+  // State change: require POST so it goes through the CSRF token check in
+  // preventHacking() (the UI posts it). A GET could otherwise toggle the
+  // layer status cross-site with no token.
+  if ( $_SERVER['REQUEST_METHOD'] !== 'POST' ) {
+    ajax_send_error ( translate ( 'Invalid form request' ) );
+    exit;
+  }
   // Toggle LAYER_STATUS in the user's preferences between N and Y.
   dbi_execute( 'DELETE FROM webcal_user_pref WHERE cal_login = ?
     AND cal_setting = "LAYERS_STATUS"',  [$layer_user] );
