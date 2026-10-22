@@ -250,9 +250,16 @@ function user_load_variables ( $login, $prefix ) {
  */
 function user_add_user ( $user, $password, $firstname,
   $lastname, $email, $admin, $enabled='Y' ) {
-  global $error;
+  global $error, $NONUSER_PREFIX;
 
-  if ( $user == '__public__' ) {
+  // Reject reserved and nonuser (resource-calendar) logins centrally, so
+  // neither self-registration nor admin creation can take over a nonuser
+  // calendar or a pseudo-login. Covers __public__, __system__, the nonuser
+  // prefix, and any login already present in webcal_nonuser_cals.
+  if ( $user == '__public__' || $user == '__system__'
+    || ( ! empty ( $NONUSER_PREFIX )
+      && strncmp ( $user, $NONUSER_PREFIX, strlen ( $NONUSER_PREFIX ) ) === 0 )
+    || nonuser_load_variables ( $user, 'nuchk_' ) ) {
     $error = translate ( 'Invalid user login', true);
     return false;
   }
@@ -417,6 +424,14 @@ function user_delete_user ( $user ) {
   // Delete user participation from events
   dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?',
     [$user] );
+  // Clear references that would otherwise point at a login that no longer
+  // exists: a nonuser (resource) calendar this user administered would keep a
+  // stale cal_admin (reused if the login is recreated), and surviving shared
+  // events would keep a stale cal_create_by.
+  dbi_execute ( 'UPDATE webcal_nonuser_cals SET cal_admin = \'\'
+    WHERE cal_admin = ?', [$user] );
+  dbi_execute ( 'UPDATE webcal_entry SET cal_create_by = \'\'
+    WHERE cal_create_by = ?', [$user] );
   // Delete preferences
   dbi_execute ( 'DELETE FROM webcal_user_pref WHERE cal_login = ?',
     [$user] );

@@ -7939,4 +7939,30 @@ function is_system_only_setting ( $name ) {
 
   return isset ( $systemOnly[$name] );
 }
+
+/**
+ * Constrain a return_path to a safe, same-origin relative page reference.
+ *
+ * nulogin.php put return_path straight into a Location header, so an external
+ * value produced an open redirect. Only a relative local page name (with an
+ * optional query string) is allowed; anything with a scheme, a
+ * protocol-relative or backslash prefix, a leading slash, or a CR/LF/null
+ * falls back to index.php.
+ *
+ * @param string $path the requested return_path
+ *
+ * @return string a safe relative path, or 'index.php'
+ */
+function safe_return_path ( $path ) {
+  $path = (string) $path;
+
+  if ( $path === ''
+    || preg_match ( '#[\r\n\0]#', $path )
+    || preg_match ( '#^[a-zA-Z][a-zA-Z0-9+.-]*:#', $path ) // scheme:
+    || $path[0] === '/'                                    // /, //, /\
+    || $path[0] === '\\' )
+    return 'index.php';
+
+  return $path;
+}
 ?>
