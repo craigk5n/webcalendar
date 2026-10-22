@@ -15,17 +15,7 @@ $arinc = explode( '/', $inc );
 if( $arinc[0] != 'js' && $arinc[0] != 'htmlarea' )
   return false;
 
-if( is_dir( 'includes' ) )
-  $newinc = 'includes';
-elseif( is_dir( '../includes' ) )
-  $newinc = '../includes';
-
-// Get list of files in the js directory.
-$myDirectory = opendir( "$newinc/$arinc[0]" );
-while( $fileName = readdir( $myDirectory ) ) {
-  $fileList[] = $fileName;
-}
-closedir( $myDirectory );
+$base = ( is_dir( 'includes' ) ? 'includes' : '../includes' );
 
 require_once 'includes/translate.php';
 require_once 'includes/config.php';
@@ -54,14 +44,10 @@ $login = ( empty( $_SESSION['webcal_login'] )
 
 load_user_preferences();
 
-foreach( $arinc as $a ) {
-  if( $a == 'true' || $a == 'false' )
-    break;
-
-  $newinc .= '/' . $a;
-}
-
-if( is_file( $newinc ) && in_array( $arinc[1], $fileList ) )
+// Resolve the requested asset safely: only a regular file inside
+// includes/js or includes/htmlarea may be included (see js_cacher_safe_path).
+$newinc = js_cacher_safe_path( $inc, $base );
+if( $newinc !== false )
   include_once $newinc;
 
 ?>

@@ -14,7 +14,7 @@ dozen globals. Half the functions indexed here declare at least one.
 
 ## `includes/functions.php`
 
-161 functions.
+162 functions.
 
 | Function | Line | Purpose | Globals |
 |---|---:|---|---|
@@ -109,6 +109,7 @@ dozen globals. Half the functions indexed here declare at least one.
 | `is_weekend()` | 4008 | Determine if date is a weekend | `$WEEKEND_START` |
 | `isLeapYear()` | 4038 | Is this a leap year? | — |
 | `isSecure()` | 6609 | Is the current connection using HTTPS rather than HTTP? | — |
+| `js_cacher_safe_path()` | 7714 | Resolve a js_cacher | — |
 | `load_global_settings()` | 4109 | Loads default system settings (which can be updated via admin | `$_SERVER, $APPLICATION_NAME, $FONTS, $HTTP_HOST, $LANGUAGE, $REQUEST_URI, $SERVER_PORT, $SERVER_URL` |
 | `load_nonuser_preferences()` | 4215 | Loads nonuser preferences from the webcal_user_pref table if on a nonuser admin page | `$DATE_FORMAT, $DATE_FORMAT_MD, $DATE_FORMAT_MY, $prefarray` |
 | `load_remote_calendar()` | 3013 | Load or reload a remote calendar if and only if it has been modified since the last time it was imported | `$calUser, $count_suc, $error_num, $errormsg, $importMd5, $login, $numDeleted` |
