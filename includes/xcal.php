@@ -743,6 +743,16 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
     }
     $sql .= ' ) ';
   } //end if $id=all
+
+  // When a non-admin exports another user's calendar (permitted only via a
+  // UAC view grant, enforced in export_handler.php), return only that user's
+  // public events plus events the requester already participates in -- never
+  // the target's private or confidential items.
+  if ( ! empty ( $user ) && $user != $login && empty ( $GLOBALS['is_admin'] ) ) {
+    $sql .= " AND ( weu.cal_login = ? OR we.cal_access = 'P' )";
+    $sql_params[] = $login;
+  }
+
   // Which participation statuses the export accepts. del_entry.php deletes an
   // event by setting cal_status to 'D' rather than removing the row, so the
   // Export page's "Include deleted entries" checkbox is a question about this
