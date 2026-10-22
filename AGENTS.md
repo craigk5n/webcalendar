@@ -1,4 +1,8 @@
-# WebCalendar agent notes
+# WebCalendar agent notes (v1.9.25)
+
+`AGENTS.md` is the canonical project guidance. A root-level `CLAUDE.md` is
+optional, local, and ignored by Git. Keep shared instructions here; a local
+`CLAUDE.md` may import them with `@AGENTS.md`.
 
 ## Execution model
 - This is a procedural PHP app: root PHP files are HTTP endpoints, and the
@@ -7,7 +11,7 @@
   `WebCalendar` first-phase initialization, the configured `includes/$user_inc`
   authentication backend, then second-phase initialization. Inspect that flow
   before changing authentication or request setup.
-- `App\` autoloads from `app/`, but most shared logic remains in
+- `WebCalendar\` autoloads from `app/`, but most shared logic remains in
   `includes/functions.php` and `includes/classes/`.
   Runtime helpers are also required directly by `includes/functions.php` so
   release archives work without `vendor/` or Composer.
@@ -20,7 +24,11 @@
 - The long-term goal is an object-oriented codebase, ideally using Laravel.
   Extract behavior incrementally into application classes with direct behavioral
   tests, preserving working release archives throughout the transition.
-- Time formatting uses `App\Helpers\DateDisplay::getShortTime()` and database
+- Project-owned classes use `WebCalendar\` namespaces, such as
+  `WebCalendar\Models\` and `WebCalendar\Services\`. Reserve `WebCalendar\Core\`
+  for the upstream core library. The namespace expresses ownership; classes
+  using Laravel components still depend on those components.
+- Time formatting uses `WebCalendar\Helpers\DateDisplay::getShortTime()` and database
   configuration through `ConfigService`. Test the helper directly rather than
   restoring the removed procedural `getShortTime()` for imported upstream tests.
 

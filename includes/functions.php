@@ -29,7 +29,7 @@ require_once __DIR__ . '/../app/Helpers/DateDisplay.php';
  *    Retrieve preferences from the webcal_user_pref table.
  */
 
-use App\Helpers\DateDisplay;
+use WebCalendar\Helpers\DateDisplay;
 
 $tzInitSet = false;
 

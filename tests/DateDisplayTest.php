@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Helpers\DateDisplay;
+use WebCalendar\Helpers\DateDisplay;
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/../includes/dbi4php.php';

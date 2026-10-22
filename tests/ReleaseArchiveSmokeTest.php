@@ -113,8 +113,8 @@ PHP;
     $script = <<<'PHP'
 <?php
 require 'includes/functions.php';
-if (!class_exists(App\Helpers\DateDisplay::class)
-    || !class_exists(App\Helpers\ConfigService::class)) {
+if (!class_exists(WebCalendar\Helpers\DateDisplay::class)
+    || !class_exists(WebCalendar\Helpers\ConfigService::class)) {
   exit(1);
 }
 echo 'HELPERS_LOADED';

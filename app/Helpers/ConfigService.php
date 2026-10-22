@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers;
+namespace WebCalendar\Helpers;
 
 use function dbi_execute;
 use function dbi_fetch_row;

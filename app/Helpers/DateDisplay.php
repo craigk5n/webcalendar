@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers;
+namespace WebCalendar\Helpers;
 
 use function preg_replace;
 

@@ -34,7 +34,7 @@
 
 require_once 'includes/init.php';
 
-use App\Helpers\DateDisplay;
+use WebCalendar\Helpers\DateDisplay;
 
 /**
  * Replaces all site_extras placeholders in a template with the actual data.
