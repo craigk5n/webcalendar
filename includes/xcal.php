@@ -2050,6 +2050,19 @@ function webcal_validate_remote_url($url, &$err = '') {
     return false;
   }
   foreach ($ips as $ip) {
+    // Normalize IPv4-mapped/compatible (::ffff:0:0/96, ::/96) and NAT64
+    // (64:ff9b::/96) IPv6 forms to the embedded IPv4, so that a value like
+    // ::ffff:127.0.0.1 is range-checked as 127.0.0.1 rather than slipping
+    // through as a "public" IPv6 address (SSRF bypass).
+    $packed = @inet_pton($ip);
+    if ($packed !== false && strlen($packed) === 16) {
+      $pfx = substr($packed, 0, 12);
+      if ($pfx === str_repeat("\0", 10) . "\xff\xff"
+          || $pfx === str_repeat("\0", 12)
+          || $pfx === "\x00\x64\xff\x9b" . str_repeat("\0", 8)) {
+        $ip = inet_ntop(substr($packed, 12));
+      }
+    }
     if (!filter_var(
       $ip,
       FILTER_VALIDATE_IP,
