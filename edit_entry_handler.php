@@ -1005,9 +1005,7 @@ if( empty( $error ) ) {
             // DON'T change & to &amp; here. Email will handle it.
             $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
 
-            if( $htmlmail == 'Y' )
-              $url = activate_urls( $url );
-
+            // WebCalMailer::Body() linkifies URLs for HTML mail; pass plain text.
             $msg .= $url . "\n\n";
           }
           $mail->WC_Send( $login_fullname, $tempemail,
@@ -1133,9 +1131,7 @@ if( empty( $error ) ) {
             // DON'T change & to &amp; here. Email will handle it.
             $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
 
-            if( $htmlmail == 'Y' )
-              $url = activate_urls( $url );
-
+            // WebCalMailer::Body() linkifies URLs for HTML mail; pass plain text.
             $msg .= "\n\n" . $url;
           }
           // Use WebCalMailer class.

@@ -124,9 +124,10 @@ if ( empty ( $error ) && $id > 0 ) {
       if ( ! empty ( $SERVER_URL ) ) {
         // DON'T change & to &amp; here. Email will handle it.
         $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
+        // WebCalMailer::Body() linkifies URLs for HTML mail; pass plain text.
         $msg .= '
 
-' . ( $htmlmail == 'Y' ? activate_urls ( $url ) : $url );
+' . $url;
       }
       if ( strlen ( $comments ) )
         $msg .= '

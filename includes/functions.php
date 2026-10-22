@@ -1501,8 +1501,8 @@ function display_small_tasks ( $cat_id ) {
         <td colspan="2">' . $link . ' title="' . $priorityStr . '">'
      . $E->getPriority() . '</a></td>
         <td class="name" colspan="2" style="inline-size: 50%">&nbsp;' . $link . ' title="'
-     . translate( 'Task Name' ) . ': ' . $E->getName() . '">'
-     . substr( $E->getName(), 0, 15 )
+     . translate( 'Task Name' ) . ': ' . htmlspecialchars( $E->getName(), ENT_QUOTES ) . '">'
+     . htmlspecialchars( substr( $E->getName(), 0, 15 ), ENT_QUOTES )
      . ( strlen( $E->getName() ) > 15 ? '...' : '' ) . '</a></td>
         <td colspan="2">' . $link . ' title="' . translate ( 'Task Due Date' )
      . '">'

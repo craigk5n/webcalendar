@@ -249,7 +249,9 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
           }
           $ret .= $i . '?' . filemtime( $i );
         } else {
-          $ret .= 'js_cacher.php?inc=' . $inc;
+          // Escape the request-derived include path before it lands inside
+          // the src="..." attribute (reflected XSS).
+          $ret .= htmlspecialchars( 'js_cacher.php?inc=' . $inc, ENT_QUOTES );
         }
         $ret .= '" defer></script>';
       }
