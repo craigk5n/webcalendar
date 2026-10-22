@@ -1,3 +1,3 @@
-CREATE DATABASE IF NOT EXISTS webcalendar_php81;
-GRANT ALL PRIVILEGES ON webcalendar_php81.* TO 'webcalendar'@'%' IDENTIFIED BY 'Webcalendar.1' WITH GRANT OPTION;
+CREATE DATABASE IF NOT EXISTS webcalendar_php8;
+GRANT ALL PRIVILEGES ON webcalendar_php8.* TO 'webcalendar'@'%' IDENTIFIED BY 'Webcalendar.1' WITH GRANT OPTION;
 FLUSH PRIVILEGES;

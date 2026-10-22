@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     libmariadb-dev-compat libmariadb-dev \
     libsqlite3-dev \
     libpq-dev \
+    libldap2-dev \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev
@@ -24,7 +25,7 @@ RUN apt-get update && apt-get install -y \
 # three. gd is here because the wizard image build has always carried it.
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j"$(nproc)" \
-      pdo pdo_sqlite pdo_pgsql mysqli pgsql gd
+      pdo pdo_sqlite pdo_pgsql mysqli pgsql gd ldap
 
 WORKDIR /var/www/html
 
