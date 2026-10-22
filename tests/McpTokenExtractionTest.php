@@ -157,7 +157,7 @@ final class McpTokenExtractionTest extends TestCase
         
         $response = curl_exec($ch);
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+        unset($ch);
         
         if ($http_code !== 200) {
             throw new RuntimeException("HTTP $http_code: $response");
@@ -226,7 +226,7 @@ final class McpTokenExtractionTest extends TestCase
         ]);
         
         $response2 = curl_exec($ch);
-        curl_close($ch);
+        unset($ch);
         
         $data2 = json_decode($response2, true);
         $this->assertArrayHasKey('result', $data2);
@@ -419,7 +419,7 @@ PHP;
         ]);
         
         $response = curl_exec($ch);
-        curl_close($ch);
+        unset($ch);
         
         $data = json_decode($response, true);
         $this->assertArrayHasKey('result', $data);

@@ -265,7 +265,7 @@ class captcha {
          $quality = $quality * ($maxsize/$size) * 0.93 - 1.7;  // -($quality/7.222)*
       }
       while (($size > $maxsize) && ($quality >= 16));
-      imagedestroy($img);
+      unset($img);
       return($jpeg);
    }
 

@@ -238,7 +238,7 @@ final class McpIntegrationTest extends TestCase
         
         $response = curl_exec($ch);
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+        unset($ch);
         
         if ($http_code !== 200) {
             throw new RuntimeException("HTTP $http_code: $response");
@@ -321,7 +321,7 @@ final class McpIntegrationTest extends TestCase
         ]);
         
         $response = curl_exec($ch);
-        curl_close($ch);
+        unset($ch);
         
         $data = json_decode($response, true);
         $this->assertMcpError($data, -32600, 'API token required');
@@ -475,7 +475,7 @@ final class McpIntegrationTest extends TestCase
         ]);
         
         $response = curl_exec($ch);
-        curl_close($ch);
+        unset($ch);
         
         $data = json_decode($response, true);
         $this->assertMcpError($data, -32700, 'Invalid JSON');
@@ -522,7 +522,7 @@ final class McpIntegrationTest extends TestCase
         ]);
         
         $response = curl_exec($ch);
-        curl_close($ch);
+        unset($ch);
         
         $data = json_decode($response, true);
         $this->assertMcpSuccess($data);
@@ -552,7 +552,7 @@ final class McpIntegrationTest extends TestCase
         ]);
 
         $response = curl_exec($ch);
-        curl_close($ch);
+        unset($ch);
 
         $data = json_decode($response, true);
         $this->assertMcpError($data, -32600, 'API token required');

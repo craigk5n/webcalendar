@@ -165,7 +165,6 @@ final class UpgradeSqlTest extends TestCase
   {
     $ref = new ReflectionClass(WizardDatabase::class);
     $method = $ref->getMethod('isIgnorableSchemaError');
-    $method->setAccessible(true);
 
     $state = new WizardState();
     $db = new WizardDatabase($state);
@@ -184,7 +183,6 @@ final class UpgradeSqlTest extends TestCase
   {
     $ref = new ReflectionClass(WizardDatabase::class);
     $method = $ref->getMethod('isIgnorableSchemaError');
-    $method->setAccessible(true);
 
     $state = new WizardState();
     $db = new WizardDatabase($state);
@@ -203,7 +201,6 @@ final class UpgradeSqlTest extends TestCase
   {
     $ref = new ReflectionClass(WizardDatabase::class);
     $method = $ref->getMethod('formatCommandError');
-    $method->setAccessible(true);
 
     $state = new WizardState();
     $db = new WizardDatabase($state);
@@ -222,7 +219,6 @@ final class UpgradeSqlTest extends TestCase
   {
     $ref = new ReflectionClass(WizardDatabase::class);
     $method = $ref->getMethod('formatCommandError');
-    $method->setAccessible(true);
 
     $state = new WizardState();
     $db = new WizardDatabase($state);
@@ -242,7 +238,6 @@ final class UpgradeSqlTest extends TestCase
   {
     $ref = new ReflectionClass(WizardDatabase::class);
     $method = $ref->getMethod('reconcileDbVersion');
-    $method->setAccessible(true);
 
     $db = new WizardDatabase(new WizardState());
     $this->assertSame('v1.9.12', $method->invoke($db, 'v1.3.0', 'v1.9.12'));
@@ -253,7 +248,6 @@ final class UpgradeSqlTest extends TestCase
   {
     $ref = new ReflectionClass(WizardDatabase::class);
     $method = $ref->getMethod('reconcileDbVersion');
-    $method->setAccessible(true);
 
     $db = new WizardDatabase(new WizardState());
     // Unusual -- shouldn't normally happen -- but don't downgrade.
@@ -264,7 +258,6 @@ final class UpgradeSqlTest extends TestCase
   {
     $ref = new ReflectionClass(WizardDatabase::class);
     $method = $ref->getMethod('reconcileDbVersion');
-    $method->setAccessible(true);
 
     $db = new WizardDatabase(new WizardState());
     $this->assertSame('v1.3.0', $method->invoke($db, 'v1.3.0', 'Unknown'));
@@ -300,7 +293,6 @@ final class UpgradeSqlTest extends TestCase
 
       $db = new WizardDatabase($state);
       $cRef = new ReflectionProperty(WizardDatabase::class, 'connection');
-      $cRef->setAccessible(true);
       $cRef->setValue($db, $sqlite);
 
       $this->assertTrue($db->executeUpgrade());
@@ -318,7 +310,6 @@ final class UpgradeSqlTest extends TestCase
   {
     $ref = new ReflectionClass(WizardDatabase::class);
     $method = $ref->getMethod('clearQueryCache');
-    $method->setAccessible(true);
 
     $state = new WizardState();
     $state->dbCacheDir = null;
@@ -349,11 +340,9 @@ final class UpgradeSqlTest extends TestCase
 
     // Inject the connection via reflection (constructor doesn't take one).
     $cRef = new ReflectionProperty(WizardDatabase::class, 'connection');
-    $cRef->setAccessible(true);
     $cRef->setValue($db, $sqlite);
 
     $mRef = new ReflectionMethod(WizardDatabase::class, 'updateVersionInDb');
-    $mRef->setAccessible(true);
 
     try {
       $result = $mRef->invoke($db);

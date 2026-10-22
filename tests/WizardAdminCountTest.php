@@ -52,7 +52,6 @@ final class WizardAdminCountTest extends TestCase
     $this->state->dbType = 'sqlite3';
     $this->database = new WizardDatabase($this->state);
     $connection = new ReflectionProperty(WizardDatabase::class, 'connection');
-    $connection->setAccessible(true);
     $connection->setValue($this->database, $this->sqlite);
   }
 

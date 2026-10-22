@@ -266,7 +266,7 @@ final class McpAddEventRaceConditionTest extends TestCase
                 $results[] = $data['result']['event_id'];
             }
             curl_multi_remove_handle($multi_handle, $ch);
-            curl_close($ch);
+            unset($ch);
         }
         curl_multi_close($multi_handle);
 
@@ -315,7 +315,7 @@ final class McpAddEventRaceConditionTest extends TestCase
         ]);
 
         $response = curl_exec($ch);
-        curl_close($ch);
+        unset($ch);
 
         return json_decode($response, true) ?? [];
     }

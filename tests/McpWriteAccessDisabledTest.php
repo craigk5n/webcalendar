@@ -104,7 +104,7 @@ final class McpWriteAccessDisabledTest extends TestCase
             CURLOPT_TIMEOUT => 10,
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+        unset($ch);
         return json_decode($response, true) ?? [];
     }
 
