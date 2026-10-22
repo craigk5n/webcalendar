@@ -14,7 +14,7 @@ dozen globals. Half the functions indexed here declare at least one.
 
 ## `includes/functions.php`
 
-165 functions.
+166 functions.
 
 | Function | Line | Purpose | Globals |
 |---|---:|---|---|
@@ -154,6 +154,7 @@ dozen globals. Half the functions indexed here declare at least one.
 | `remember_this_view()` | 5710 | Generates a cookie that saves the last calendar view | `$REQUEST_URI` |
 | `reminder_web_trigger_allowed()` | 6852 | Decides whether an HTTP request may run the reminder script | — |
 | `reminder_web_trigger_presented_token()` | 6829 | Reads the reminder web-trigger token presented with an HTTP request | — |
+| `remote_calendar_edit_allowed()` | 7797 | Whether $login may edit/delete/repoint a remote (nonuser) calendar | — |
 | `rgb2html()` | 6589 | _(undocumented)_ | — |
 | `send_doctype()` | 5732 | This just sends the DOCTYPE used in a lot of places in the code | `$charset, $lang, $LANGUAGE` |
 | `send_http_login()` | 5756 | Sends an HTTP login request to the browser and stops execution | `$lang_file` |
@@ -166,8 +167,8 @@ dozen globals. Half the functions indexed here declare at least one.
 | `sort_events()` | 5892 | Sorts the combined event arrays by timestamp then name | — |
 | `sort_events_insensitive()` | 5913 | Sorts the combined event arrays by timestamp then name (case insensitive) | — |
 | `sort_users()` | 5931 | Sort user array based on $USER_SORT_ORDER | `$USER_SORT_ORDER` |
-| `template_edit_allowed()` | 7802 | Whether $login may edit the custom template (header/script/trailer) owned by $user | — |
-| `template_external_file()` | 7823 | Resolve an ALLOW_EXTERNAL_HEADER template file to a safe path, or false | — |
+| `template_edit_allowed()` | 7822 | Whether $login may edit the custom template (header/script/trailer) owned by $user | — |
+| `template_external_file()` | 7843 | Resolve an ALLOW_EXTERNAL_HEADER template file to a safe path, or false | — |
 | `time_to_minutes()` | 5954 | Converts a time format HHMMSS (like 130000 for 1PM) into number of minutes past midnight | — |
 | `times_overlap()` | 5968 | Checks to see if two events overlap | — |
 | `update_import_check_date()` | 2994 | _(undocumented)_ | — |

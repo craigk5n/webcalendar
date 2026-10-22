@@ -7782,6 +7782,26 @@ function category_icon_safe_path ( $urlname, $iconDir ) {
 }
 
 /**
+ * Whether $login may edit/delete/repoint a remote (nonuser) calendar.
+ *
+ * Only an admin, or the calendar's own cal_admin, may touch an existing
+ * nonuser calendar. edit_remotes_handler.php and users_ajax.php's
+ * save_remote_calendar() previously acted on any calendar id with no owner
+ * check. $calAdmin is the loaded cal_admin (null/'' when the calendar does
+ * not exist, which is never allowed for a non-admin).
+ *
+ * @param bool        $isAdmin
+ * @param string|null $calAdmin the calendar's cal_admin, or null if absent
+ * @param string      $login    the acting user
+ */
+function remote_calendar_edit_allowed ( $isAdmin, $calAdmin, $login ) {
+  if ( $isAdmin )
+    return true;
+
+  return ! empty ( $calAdmin ) && $calAdmin == $login;
+}
+
+/**
  * Whether $login may edit the custom template (header/script/trailer) owned
  * by $user.
  *

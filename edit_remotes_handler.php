@@ -22,6 +22,18 @@ $reload = getPostValue ( 'reload' );
 $nlayer = getPostValue ( 'nlayer' );
 $nlayercolor = getPostValue ( 'layercolor' );
 
+// Authorization: every operation except creating a brand-new calendar (Add)
+// acts on an existing nonuser calendar, so the caller must be an admin or
+// that calendar's cal_admin. A non-admin may only ever set themselves as the
+// calendar admin, so they cannot self-grant nonuser-admin on another id.
+if ( empty ( $add ) ) {
+  $nucAdmin = nonuser_load_variables ( $nid, 'nuc_' ) ? $GLOBALS['nuc_admin'] : null;
+  if ( ! remote_calendar_edit_allowed ( $is_admin, $nucAdmin, $login ) )
+    die_miserable_death ( print_not_auth() );
+}
+if ( ! $is_admin )
+  $nadmin = $login;
+
 if ( ! empty ( $delete ) ) {
   // Delete events from this remote calendar.
   delete_events ( $nid );
