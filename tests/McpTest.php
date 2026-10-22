@@ -810,7 +810,7 @@ final class McpTest extends TestCase
   }
 
   /**
-   * Test that malformed token handling is robust and secure.
+   * Reject unmatched tokens containing binary bytes, encoded data, or punctuation.
    */
   public function testMalformedTokenHandling() {
     $malformedTokens = [

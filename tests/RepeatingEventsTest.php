@@ -1,6 +1,7 @@
 <?php
 /**
- * Comprehensive unit tests for repeating event functions in includes/functions.php
+ * Recurrence dates, RRULE filters, exceptions, and termination for the
+ * repeating-event functions in includes/functions.php.
  *
  * Tests cover:
  * - get_all_dates() - main repeat date generation
@@ -1979,7 +1980,7 @@ final class RepeatingEventsTest extends TestCase
   }
 
   // ===========================================================================
-  // COMPREHENSIVE CONCERNS DOCUMENTATION FOR REFACTORING
+  // DOCUMENTED RECURRENCE EDGE CASES FOR REFACTORING
   // ===========================================================================
 
   /**

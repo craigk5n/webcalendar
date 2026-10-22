@@ -3549,20 +3549,6 @@ translate ( 'minutes' )
 }
 
 /**
- * Remove :00 from times based on $DISPLAY_MINUTES value.
- *
- * @param string $timestr  time value to shorten
- *
- * @global string (Y/N)  Display 00 if on the hour
- */
-function getShortTime ( $timestr ) {
-  global $DISPLAY_MINUTES;
-
-  return ( empty ( $DISPLAY_MINUTES ) || $DISPLAY_MINUTES == 'N'
-    ? preg_replace ( '/(:00)/', '', $timestr ) : $timestr );
-}
-
-/**
  * Converts from Gregorian Year-Month-Day to ISO YearNumber-WeekNumber-WeekDay.
  *
  * @internal JGH borrowed gregorianToISO from PEAR Date_Calc Class and added

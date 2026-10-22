@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Regression guard for issue #666 (bug #2).
+ * ai-signals:allow -- preserves the exact config.php diagnostic quoted below.
  *
  * includes/config.php parses settings.php by looping over the
  * $config_possible_settings whitelist (do_config(), the `foreach

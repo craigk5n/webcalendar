@@ -6,8 +6,10 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * do_config() in includes/config.php normalizes the single_user and readonly
- * settings to 'Y'/'N' with a regex. The old pattern /(1|true|yes|enable|on)/i
- * had two defects:
+ * settings to 'Y'/'N'.
+ * ai-signals:allow -- preserves the exact config.php diagnostic quoted below.
+ *
+ * The old pattern /(1|true|yes|enable|on)/i had two defects:
  *
  *   1. It did not match a bare 'Y' — even though WebCalendar's own convention
  *      is 'Y'/'N' and config.php itself OUTPUTS 'Y'. So `single_user: Y` in

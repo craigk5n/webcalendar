@@ -16,6 +16,14 @@
   backend-specific overrides), replacing the older `upgrade-*.sql` files;
   fresh-install schemas are the `wizard/shared/tables-*` files.
 
+## Modernization direction
+- The long-term goal is an object-oriented codebase, ideally using Laravel.
+  Extract behavior incrementally into application classes with direct behavioral
+  tests, preserving working release archives throughout the transition.
+- Time formatting uses `App\Helpers\DateDisplay::getShortTime()` and database
+  configuration through `ConfigService`. Test the helper directly rather than
+  restoring the removed procedural `getShortTime()` for imported upstream tests.
+
 ## Dependencies and generated assets
 - Run `composer install` from the root using `composer.lock` (as CI does);
   the test README's `composer update` would change dependency resolution.
@@ -39,6 +47,14 @@ Run these from the repository root unless specified otherwise:
 - Single file: `vendor/bin/phpunit tests/functionsTest.php`; single method:
   `vendor/bin/phpunit tests/functionsTest.php --filter test_add_duration`.
 - Focused PHP syntax check: `php -l path/to/changed.php`.
+- Comment-style CI checks the complete PR diff. Run
+  `php tools/check-ai-signals.php --since=origin/master --strict` in the
+  development container, using the checkout owner's UID/GID as for PHPUnit.
+  Use the PR base commit when it differs from `origin/master`; `--since=HEAD`
+  compares HEAD with itself and checks no added lines. Before committing comment
+  edits, also run the check in whole-tree advisory mode to verify those edits;
+  `--since` inspects committed changes only. Preserve quoted diagnostics and
+  operator instructions with a justified `ai-signals:allow` in that comment.
 - After changing `includes/functions.php`, regenerate the committed function
   index with `php tools/build-codemap.php`.
 - Run PHPUnit as a non-root user: the unreadable-file test fails under root.
@@ -82,7 +98,7 @@ Run these from the repository root unless specified otherwise:
 ## UI and packaging conventions
 - Route displayed text through `translate()` / `etranslate()` and update
   `translations/English-US.txt` when adding translation keys; see
-  `docs/WebCalendar-DeveloperGuide.html` for translation conventions.
+  `docs/developer-guide.md#translations` for translation conventions.
 - Release archives copy only paths listed in `release-files`; update that
   manifest when adding files needed in a distributed installation.
   Classify development-only files in `release-files-excluded`.
@@ -92,7 +108,8 @@ Run these from the repository root unless specified otherwise:
   may run anonymously. Initial password creation requires an unconfigured
   installation, checked against settings/environment before session overrides.
   Existing installations must authenticate with their configured password;
-  wizard administrator creation is limited to the first administrator.
+  wizard administrator creation requires a successfully verified zero
+  administrator count. Query failures must never be treated as zero.
 - MCP authentication compares only the SHA-256 hash of the presented token.
   Do not restore a plaintext fallback: stored hashes must never authenticate.
   Legacy plaintext tokens require regeneration in Preferences.

@@ -14,7 +14,7 @@ dozen globals. Half the functions indexed here declare at least one.
 
 ## `includes/functions.php`
 
-161 functions.
+160 functions.
 
 | Function | Line | Purpose | Globals |
 |---|---:|---|---|
@@ -22,14 +22,14 @@ dozen globals. Half the functions indexed here declare at least one.
 | `activity_log()` | 105 | Adds something to the activity log for an event | — |
 | `add_dstfree_time()` | 168 | Get the corrected timestamp after adding or subtracting ONE_HOUR to compensate for DST | — |
 | `add_duration()` | 192 | Return the time in HHMMSS format of input time + duration | — |
-| `boss_must_approve_event()` | 6212 | Checks the boss user preferences to see if the boss must approve events added to their calendar | — |
-| `boss_must_be_notified()` | 6228 | Checks the boss user preferences to see if the boss wants to be notified via email on changes to their calend… | — |
+| `boss_must_approve_event()` | 6198 | Checks the boss user preferences to see if the boss must approve events added to their calendar | — |
+| `boss_must_be_notified()` | 6214 | Checks the boss user preferences to see if the boss wants to be notified via email on changes to their calend… | — |
 | `build_entry_label()` | 232 | Builds the HTML for the event label | `$eventinfo, $login, $SUMMARY_LENGTH, $UAC_ENABLED, $user` |
-| `build_entry_popup()` | 6325 | Builds the HTML for the entry popup | `$ALLOW_HTML_DESCRIPTION, $DISABLE_POPUPS, $login, $PARTICIPANTS_IN_POPUP, $popup_fullnames, $popuptemp_fullname, $PUBLIC_ACCESS_VIEW_PART, $SUMMARY_LENGTH, $tempfullname` |
+| `build_entry_popup()` | 6311 | Builds the HTML for the entry popup | `$ALLOW_HTML_DESCRIPTION, $DISABLE_POPUPS, $login, $PARTICIPANTS_IN_POPUP, $popup_fullnames, $popuptemp_fullname, $PUBLIC_ACCESS_VIEW_PART, $SUMMARY_LENGTH, $tempfullname` |
 | `bump_local_timestamp()` | 217 | Bump UNIX local timestamp with the given duration | — |
 | `calc_time_slot()` | 306 | Calculates which row/slot this time represents | `$TIME_SLOTS` |
 | `check_for_conflicts()` | 344 | Checks for conflicts | `$is_assistant, $is_nonuser_admin, $jumpdate, $LIMIT_APPTS_NUMBER, $LIMIT_APPTS, $repeated_events, $single_user_login, $single_user` |
-| `check_mcp_rate_limit()` | 6880 | Checks if a user has exceeded the MCP rate limit | — |
+| `check_mcp_rate_limit()` | 6866 | Checks if a user has exceeded the MCP rate limit | — |
 | `clean_html()` | 506 | Replaces unsafe characters with HTML encoded equivalents | — |
 | `clean_int()` | 521 | Removes non-digits from the specified text | — |
 | `clean_whitespace()` | 532 | Removes whitespace from the specified text | — |
@@ -41,7 +41,7 @@ dozen globals. Half the functions indexed here declare at least one.
 | `date_to_str()` | 897 | Converts a date in YYYYMMDD format into "Friday, December 31, 1999", "Friday, 12-31-1999" or whatever format … | `$DATE_FORMAT` |
 | `datesel_Print()` | 801 | Date selection via DHTML | — |
 | `decode_string()` | 955 | Extracts a user's name from a session id | `$offsets` |
-| `determineServerUrl()` | 4077 | _(undocumented)_ | — |
+| `determineServerUrl()` | 4063 | _(undocumented)_ | — |
 | `display_activity_log()` | 977 | Display a text for a single activity log entry | — |
 | `display_admin_link()` | 1024 | Display the <<Admin link on pages if menus are not enabled | `$MENU_ENABLED` |
 | `display_month()` | 1040 | Generate HTML to create a month display | `$DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_LONG_DAYS, $DISPLAY_WEEKNUMBER, $is_admin, $is_nonuser, $login, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD, $readonly, $today, $user, $WEEKENDBG, $WEEK_START` |
@@ -57,7 +57,7 @@ dozen globals. Half the functions indexed here declare at least one.
 | `error_check()` | 1799 | Check for errors and return required HTML for display | `$error` |
 | `event_get_external_users()` | 1831 | Gets the list of external users for an event from the webcal_entry_ext_user table in HTML format | — |
 | `fake_mail()` | 1864 | Fakes an email for testing purposes | — |
-| `format_site_extras()` | 6439 | Formats site_extras for display according to their type | `$site_extras` |
+| `format_site_extras()` | 6425 | Formats site_extras for display according to their type | `$site_extras` |
 | `full_url()` | 1709 | Get the full URL of the current request | — |
 | `generate_activity_log()` | 1880 | Generate activity log | `$GENERAL_USE_GMT, $nextpage, $PAGE_SIZE` |
 | `generate_application_name()` | 1969 | Generate Application Name | `$APPLICATION_NAME, $fullname` |
@@ -67,13 +67,13 @@ dozen globals. Half the functions indexed here declare at least one.
 | `get_byday()` | 2393 | Get the dates the correspond to the byday values | `$byday_values` |
 | `get_bymonthday()` | 2485 | Get the dates the correspond to the bymonthday values | — |
 | `get_categories_by_id()` | 2521 | Get categories for a given event id Global categories are changed to negative numbers | `$login` |
-| `get_category_icon_url()` | 4991 | Get the HTML for the category icons | `$categories` |
+| `get_category_icon_url()` | 4977 | Get the HTML for the category icons | `$categories` |
 | `get_entries()` | 2556 | Gets all the events for a specific date | `$events` |
 | `get_event_count_for_user()` | 2945 | _(undocumented)_ | — |
 | `get_groups()` | 2582 | Gets all the groups a user is authorized to see | `$GROUPS_ENABLED, $is_admin, $is_assistant, $is_nonuser_admin, $login, $NONUSER_PREFIX, $PUBLIC_ACCESS_FULLNAME, $USER_SEES_ONLY_HIS_GROUPS` |
 | `get_last_view()` | 2662 | Gets the last page stored using {@link remember_this_view()} | — |
-| `get_mcp_rate_limit()` | 6860 | _(undocumented)_ | — |
-| `get_mcp_tool_schema()` | 7175 | Returns the inputSchema for a single MCP tool | — |
+| `get_mcp_rate_limit()` | 6846 | _(undocumented)_ | — |
+| `get_mcp_tool_schema()` | 7161 | Returns the inputSchema for a single MCP tool | — |
 | `get_my_nonusers()` | 2692 | Gets a list of nonusers | `$GROUPS_ENABLED, $is_admin, $is_nonuser, $is_nonuser_admin, $login, $my_nonuser_array, $my_user_array, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $USER_SEES_ONLY_HIS_GROUPS, $USER_SORT_ORDER` |
 | `get_my_users()` | 2800 | Gets a list of users | `$GROUPS_ENABLED, $is_admin, $is_nonuser, $is_nonuser_admin, $login, $my_user_array, $USER_SEES_ONLY_HIS_GROUPS, $USER_SORT_ORDER` |
 | `get_nonuser_cals()` | 2893 | Gets a list of nonuser calendars and return info in an array | `$is_admin, $USER_SORT_ORDER` |
@@ -84,8 +84,8 @@ dozen globals. Half the functions indexed here declare at least one.
 | `get_remote_calendar_last_md5()` | 2984 | _(undocumented)_ | — |
 | `get_remote_calendar_last_update()` | 2960 | _(undocumented)_ | — |
 | `get_repeating_entries()` | 3216 | Gets all the repeating events for the specified date | `$repeated_events` |
-| `get_site_extra_fields()` | 6490 | Gets any site-specific fields for an entry that are stored in the database in the webcal_site_extras table | — |
-| `get_site_extras_names()` | 6517 | Extract the names of all site_extras | `$site_extras` |
+| `get_site_extra_fields()` | 6476 | Gets any site-specific fields for an entry that are stored in the database in the webcal_site_extras table | — |
+| `get_site_extras_names()` | 6503 | Extract the names of all site_extras | `$site_extras` |
 | `get_tasks()` | 3242 | Gets all the tasks for a specific date | `$tasks` |
 | `get_user_plugin_list()` | 3274 | Get plugins available to the current user | — |
 | `get_users_event_ids()` | 3289 | Get event ids for all events this user is a participant | — |
@@ -94,91 +94,90 @@ dozen globals. Half the functions indexed here declare at least one.
 | `getMoonPhases()` | 3391 | Get the moonphases for a given year and month | `$DISPLAY_MOON_PHASES` |
 | `getOverLap()` | 3424 | Calculate event rollover to next day and add partial event as needed | `$DISABLE_CROSSDAY_EVENTS, $result` |
 | `getReminders()` | 3488 | Get the reminder data for a given entry id | — |
-| `getServerUrl()` | 4059 | _(undocumented)_ | `$SERVER_URL, $HTTP_HOST, $REQUEST_URI` |
-| `getShortTime()` | 3558 | Remove :00 from times based on $DISPLAY_MINUTES value | `$DISPLAY_MINUTES` |
-| `gregorianToISO()` | 3580 | Converts from Gregorian Year-Month-Day to ISO YearNumber-WeekNumber-WeekDay | `$WEEK_START` |
-| `harden_php_session()` | 6645 | Apply secure parameters to the PHP session cookie before session_start() | — |
-| `hextoint()` | 3649 | Converts a hexadecimal digit to an integer | — |
-| `html2rgb()` | 6574 | _(undocumented)_ | — |
-| `html_for_event_day_at_a_glance()` | 3684 | Generates the HTML for an event to be viewed in the day-at-glance (day | `$ALLOW_HTML_DESCRIPTION, $categories, $DISPLAY_DESC_PRINT_DAY, $DISPLAY_END_TIMES, $first_slot, $hour_arr, $last_slot, $layers, $login, $PHP_SELF, $rowspan, $rowspan_arr` |
-| `html_for_event_week_at_a_glance()` | 3838 | Generates the HTML for an event to be viewed in the week-at-glance (week | `$categories, $DISPLAY_ICONS, $DISPLAY_TZ, $eventinfo, $first_slot, $hour_arr, $is_assistant, $is_nonuser_admin, $last_slot, $layers, $login, $PHP_SELF, $rowspan, $rowspan_arr, $TIME_SPACER, $user` |
-| `html_to_8bits()` | 4000 | Converts HTML entities in 8bit | — |
-| `is_mcp_available()` | 6870 | Checks if MCP SDK dependencies are available | — |
-| `is_mcp_enabled()` | 6807 | _(undocumented)_ | — |
-| `is_mcp_write_enabled()` | 6855 | Check if MCP write access is enabled | — |
-| `is_weekend()` | 4013 | Determine if date is a weekend | `$WEEKEND_START` |
-| `isLeapYear()` | 4043 | Is this a leap year? | — |
-| `isSecure()` | 6614 | Is the current connection using HTTPS rather than HTTP? | — |
-| `load_global_settings()` | 4114 | Loads default system settings (which can be updated via admin | `$_SERVER, $APPLICATION_NAME, $FONTS, $HTTP_HOST, $LANGUAGE, $REQUEST_URI, $SERVER_PORT, $SERVER_URL` |
-| `load_nonuser_preferences()` | 4220 | Loads nonuser preferences from the webcal_user_pref table if on a nonuser admin page | `$DATE_FORMAT, $DATE_FORMAT_MD, $DATE_FORMAT_MY, $prefarray` |
+| `getServerUrl()` | 4045 | _(undocumented)_ | `$SERVER_URL, $HTTP_HOST, $REQUEST_URI` |
+| `gregorianToISO()` | 3566 | Converts from Gregorian Year-Month-Day to ISO YearNumber-WeekNumber-WeekDay | `$WEEK_START` |
+| `harden_php_session()` | 6631 | Apply secure parameters to the PHP session cookie before session_start() | — |
+| `hextoint()` | 3635 | Converts a hexadecimal digit to an integer | — |
+| `html2rgb()` | 6560 | _(undocumented)_ | — |
+| `html_for_event_day_at_a_glance()` | 3670 | Generates the HTML for an event to be viewed in the day-at-glance (day | `$ALLOW_HTML_DESCRIPTION, $categories, $DISPLAY_DESC_PRINT_DAY, $DISPLAY_END_TIMES, $first_slot, $hour_arr, $last_slot, $layers, $login, $PHP_SELF, $rowspan, $rowspan_arr` |
+| `html_for_event_week_at_a_glance()` | 3824 | Generates the HTML for an event to be viewed in the week-at-glance (week | `$categories, $DISPLAY_ICONS, $DISPLAY_TZ, $eventinfo, $first_slot, $hour_arr, $is_assistant, $is_nonuser_admin, $last_slot, $layers, $login, $PHP_SELF, $rowspan, $rowspan_arr, $TIME_SPACER, $user` |
+| `html_to_8bits()` | 3986 | Converts HTML entities in 8bit | — |
+| `is_mcp_available()` | 6856 | Checks if MCP SDK dependencies are available | — |
+| `is_mcp_enabled()` | 6793 | _(undocumented)_ | — |
+| `is_mcp_write_enabled()` | 6841 | Check if MCP write access is enabled | — |
+| `is_weekend()` | 3999 | Determine if date is a weekend | `$WEEKEND_START` |
+| `isLeapYear()` | 4029 | Is this a leap year? | — |
+| `isSecure()` | 6600 | Is the current connection using HTTPS rather than HTTP? | — |
+| `load_global_settings()` | 4100 | Loads default system settings (which can be updated via admin | `$_SERVER, $APPLICATION_NAME, $FONTS, $HTTP_HOST, $LANGUAGE, $REQUEST_URI, $SERVER_PORT, $SERVER_URL` |
+| `load_nonuser_preferences()` | 4206 | Loads nonuser preferences from the webcal_user_pref table if on a nonuser admin page | `$DATE_FORMAT, $DATE_FORMAT_MD, $DATE_FORMAT_MY, $prefarray` |
 | `load_remote_calendar()` | 3018 | Load or reload a remote calendar if and only if it has been modified since the last time it was imported | `$calUser, $count_suc, $error_num, $errormsg, $importMd5, $login, $numDeleted` |
-| `load_settings()` | 6790 | Load system settings into an array | — |
-| `load_template()` | 4264 | Returns a custom header, stylesheet or trailer | `$ALLOW_EXTERNAL_HEADER, $ALLOW_USER_HEADER` |
-| `load_user_categories()` | 4330 | Loads current user's category info and stuff it into category global variable | `$categories, $CATEGORIES_ENABLED, $is_admin, $is_assistant, $login, $user` |
-| `load_user_layers()` | 4372 | Loads current user's layer info into layer global variable | `$ALLOW_VIEW_OTHER, $layers, $LAYERS_STATUS, $login` |
-| `load_user_preferences()` | 4413 | Loads the current user's preferences as global variables from the webcal_user_pref table | `$ALLOW_COLOR_CUSTOMIZATION, $browser, $DATE_FORMAT, $DATE_FORMAT_MD, $DATE_FORMAT_MY, $DATE_FORMAT_TASK, $has_boss, $is_assistant, $is_nonuser, $is_nonuser_admin, $lang_file, $LANGUAGE, $login, $prefarray, $user, $views` |
+| `load_settings()` | 6776 | Load system settings into an array | — |
+| `load_template()` | 4250 | Returns a custom header, stylesheet or trailer | `$ALLOW_EXTERNAL_HEADER, $ALLOW_USER_HEADER` |
+| `load_user_categories()` | 4316 | Loads current user's category info and stuff it into category global variable | `$categories, $CATEGORIES_ENABLED, $is_admin, $is_assistant, $login, $user` |
+| `load_user_layers()` | 4358 | Loads current user's layer info into layer global variable | `$ALLOW_VIEW_OTHER, $layers, $LAYERS_STATUS, $login` |
+| `load_user_preferences()` | 4399 | Loads the current user's preferences as global variables from the webcal_user_pref table | `$ALLOW_COLOR_CUSTOMIZATION, $browser, $DATE_FORMAT, $DATE_FORMAT_MD, $DATE_FORMAT_MY, $DATE_FORMAT_TASK, $has_boss, $is_assistant, $is_nonuser, $is_nonuser_admin, $lang_file, $LANGUAGE, $login, $prefarray, $user, $views` |
 | `login_recent_failure_count()` | 144 | Count recent failed login attempts for a given login name | — |
-| `mcp_datetime_to_min()` | 7447 | Convert a GMT date/time to an absolute minute count, for interval math in the availability/conflict tools | — |
-| `mcp_dispatch_request()` | 7521 | Dispatch a decoded JSON-RPC request to the appropriate MCP method and build the JSON-RPC response array | — |
-| `mcp_find_conflicts()` | 7474 | Return the subset of $events that overlaps the proposed [start,end) interval | — |
-| `mcp_gmt_to_local()` | 7211 | Convert a stored event date/time to a viewing user's local timezone | — |
-| `mcp_initialize_result()` | 6922 | Returns the MCP "initialize" result payload (protocol version, server capabilities and server info) | — |
-| `mcp_intervals_overlap()` | 7462 | Whether two half-open intervals [s1,e1) and [s2,e2) overlap | — |
-| `mcp_list_tools()` | 6944 | Returns the MCP tool definitions (name, description, inputSchema) advertised by the server's tools/list respo… | — |
-| `mcp_merge_intervals()` | 7490 | Merge a list of [start,end] intervals into sorted, non-overlapping busy blocks | — |
-| `mcp_rrule_to_repeat_columns()` | 7403 | Map validated RRULE parts to webcal_entry_repeats column values, matching how xcal | — |
-| `mcp_run_stdio_loop()` | 7650 | Runs the MCP STDIO transport loop | — |
-| `mcp_shift_date()` | 7247 | Shift a YYYYMMDD date string by a whole number of days | — |
-| `mcp_validate_rrule()` | 7276 | Validate a client-supplied RRULE against the subset WebCalendar can store and correctly expand (see the sched… | — |
-| `month_name()` | 4548 | Returns the either the full name or the abbreviation of the specified month | `$lang` |
-| `nonuser_load_variables()` | 4610 | Loads nonuser variables (login, firstname, etc | `$error, $nuloadtmp_email` |
-| `print_category_menu()` | 4647 | Prints dropdown HTML for categories | `$CATEGORIES_ENABLED, $categories, $login, $user` |
-| `print_checkbox()` | 4697 | Generates HTML for checkbox form controls | `$prefarray, $s, $SCRIPT` |
-| `print_color_input_html()` | 4745 | Generates color input type, now supported in HTML | `$prefarray, $s, $SCRIPT` |
-| `print_date_entries()` | 4786 | Prints all the calendar entries for the specified user for the specified date | `$cat_id, $DISPLAY_TASKS_IN_GRID, $DISPLAY_UNAPPROVED, $events, $is_admin, $is_nonuser, $login, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD, $readonly, $tasks, $WEEK_START` |
-| `print_day_at_a_glance()` | 4869 | Prints all the calendar entries for the specified user for the specified date in day-at-a-glance format | `$CELLBG, $DISPLAY_TASKS_IN_GRID, $DISPLAY_UNAPPROVED, $first_slot, $hour_arr, $last_slot, $rowspan, $rowspan_arr, $TABLEBG, $THBG, $THFG, $TIME_SLOTS, $today, $TODAYCELLBG, $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR` |
-| `print_entry()` | 5010 | Prints the HTML for one event in the month view | `$categories, $DISPLAY_END_TIMES, $DISPLAY_LOCATION, $DISPLAY_TASKS_IN_GRID, $eventinfo, $is_assistant, $is_nonuser_admin, $layers, $login, $PHP_SELF, $TIME_SPACER, $user` |
-| `print_error()` | 5153 | Generate standardized error message | — |
-| `print_error_box()` | 6562 | _(undocumented)_ | — |
-| `print_error_header()` | 5162 | An h2 header error message | — |
-| `print_not_auth()` | 5176 | Generate standardized Not Authorized message | — |
-| `print_radio()` | 5194 | Generates HTML for radio buttons | `$prefarray, $s, $SCRIPT` |
-| `print_success()` | 5238 | Generate standardized Success message | — |
-| `print_timezone_select_html()` | 5255 | Prints Timezone select for use on forms | — |
-| `query_events()` | 5336 | Reads events visible to a user | `$db_connection_info, $jumpdate, $layers, $login, $max_until, $OVERRIDE_PUBLIC_TEXT, $OVERRIDE_PUBLIC, $PUBLIC_ACCESS_DEFAULT_VISIBLE, $result, $thismonth, $thisyear` |
-| `read_events()` | 5625 | Reads all the events for a user for the specified range of dates | `$login` |
-| `read_repeated_events()` | 5664 | Reads all the repeated events for a user | `$jumpdate, $login, $max_until` |
-| `read_tasks()` | 5695 | Reads all the tasks for a user with due date within the specified date range | — |
-| `remember_this_view()` | 5714 | Generates a cookie that saves the last calendar view | `$REQUEST_URI` |
-| `reminder_web_trigger_allowed()` | 6843 | Decides whether an HTTP request may run the reminder script | — |
-| `reminder_web_trigger_presented_token()` | 6820 | Reads the reminder web-trigger token presented with an HTTP request | — |
-| `rgb2html()` | 6593 | _(undocumented)_ | — |
-| `send_doctype()` | 5736 | This just sends the DOCTYPE used in a lot of places in the code | `$charset, $lang, $LANGUAGE` |
-| `send_http_login()` | 5760 | Sends an HTTP login request to the browser and stops execution | `$lang_file` |
-| `send_no_cache_header()` | 5793 | Sends HTTP headers that tell the browser not to cache this page | — |
-| `send_to_preferred_view()` | 5811 | Sends a redirect to the user's preferred view | — |
-| `sendCookie()` | 6620 | _(undocumented)_ | — |
-| `set_env()` | 5823 | Set an environment variable if system allows it | `$tzInitSet, $tzOffset` |
-| `set_today()` | 5872 | Determines what the day is and sets it globally | `$day, $month, $thisdate, $thisday, $thismonth, $thisyear, $today, $year` |
-| `site_extras_for_popup()` | 6542 | Generates the HTML used in an event popup for the site_extras fields | `$SITE_EXTRAS_IN_POPUP` |
-| `sort_events()` | 5896 | Sorts the combined event arrays by timestamp then name | — |
-| `sort_events_insensitive()` | 5917 | Sorts the combined event arrays by timestamp then name (case insensitive) | — |
-| `sort_users()` | 5935 | Sort user array based on $USER_SORT_ORDER | `$USER_SORT_ORDER` |
-| `time_to_minutes()` | 5958 | Converts a time format HHMMSS (like 130000 for 1PM) into number of minutes past midnight | — |
-| `times_overlap()` | 5972 | Checks to see if two events overlap | — |
+| `mcp_datetime_to_min()` | 7433 | Convert a GMT date/time to an absolute minute count, for interval math in the availability/conflict tools | — |
+| `mcp_dispatch_request()` | 7507 | Dispatch a decoded JSON-RPC request to the appropriate MCP method and build the JSON-RPC response array | — |
+| `mcp_find_conflicts()` | 7460 | Return the subset of $events that overlaps the proposed [start,end) interval | — |
+| `mcp_gmt_to_local()` | 7197 | Convert a stored event date/time to a viewing user's local timezone | — |
+| `mcp_initialize_result()` | 6908 | Returns the MCP "initialize" result payload (protocol version, server capabilities and server info) | — |
+| `mcp_intervals_overlap()` | 7448 | Whether two half-open intervals [s1,e1) and [s2,e2) overlap | — |
+| `mcp_list_tools()` | 6930 | Returns the MCP tool definitions (name, description, inputSchema) advertised by the server's tools/list respo… | — |
+| `mcp_merge_intervals()` | 7476 | Merge a list of [start,end] intervals into sorted, non-overlapping busy blocks | — |
+| `mcp_rrule_to_repeat_columns()` | 7389 | Map validated RRULE parts to webcal_entry_repeats column values, matching how xcal | — |
+| `mcp_run_stdio_loop()` | 7636 | Runs the MCP STDIO transport loop | — |
+| `mcp_shift_date()` | 7233 | Shift a YYYYMMDD date string by a whole number of days | — |
+| `mcp_validate_rrule()` | 7262 | Validate a client-supplied RRULE against the subset WebCalendar can store and correctly expand (see the sched… | — |
+| `month_name()` | 4534 | Returns the either the full name or the abbreviation of the specified month | `$lang` |
+| `nonuser_load_variables()` | 4596 | Loads nonuser variables (login, firstname, etc | `$error, $nuloadtmp_email` |
+| `print_category_menu()` | 4633 | Prints dropdown HTML for categories | `$CATEGORIES_ENABLED, $categories, $login, $user` |
+| `print_checkbox()` | 4683 | Generates HTML for checkbox form controls | `$prefarray, $s, $SCRIPT` |
+| `print_color_input_html()` | 4731 | Generates color input type, now supported in HTML | `$prefarray, $s, $SCRIPT` |
+| `print_date_entries()` | 4772 | Prints all the calendar entries for the specified user for the specified date | `$cat_id, $DISPLAY_TASKS_IN_GRID, $DISPLAY_UNAPPROVED, $events, $is_admin, $is_nonuser, $login, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD, $readonly, $tasks, $WEEK_START` |
+| `print_day_at_a_glance()` | 4855 | Prints all the calendar entries for the specified user for the specified date in day-at-a-glance format | `$CELLBG, $DISPLAY_TASKS_IN_GRID, $DISPLAY_UNAPPROVED, $first_slot, $hour_arr, $last_slot, $rowspan, $rowspan_arr, $TABLEBG, $THBG, $THFG, $TIME_SLOTS, $today, $TODAYCELLBG, $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR` |
+| `print_entry()` | 4996 | Prints the HTML for one event in the month view | `$categories, $DISPLAY_END_TIMES, $DISPLAY_LOCATION, $DISPLAY_TASKS_IN_GRID, $eventinfo, $is_assistant, $is_nonuser_admin, $layers, $login, $PHP_SELF, $TIME_SPACER, $user` |
+| `print_error()` | 5139 | Generate standardized error message | — |
+| `print_error_box()` | 6548 | _(undocumented)_ | — |
+| `print_error_header()` | 5148 | An h2 header error message | — |
+| `print_not_auth()` | 5162 | Generate standardized Not Authorized message | — |
+| `print_radio()` | 5180 | Generates HTML for radio buttons | `$prefarray, $s, $SCRIPT` |
+| `print_success()` | 5224 | Generate standardized Success message | — |
+| `print_timezone_select_html()` | 5241 | Prints Timezone select for use on forms | — |
+| `query_events()` | 5322 | Reads events visible to a user | `$db_connection_info, $jumpdate, $layers, $login, $max_until, $OVERRIDE_PUBLIC_TEXT, $OVERRIDE_PUBLIC, $PUBLIC_ACCESS_DEFAULT_VISIBLE, $result, $thismonth, $thisyear` |
+| `read_events()` | 5611 | Reads all the events for a user for the specified range of dates | `$login` |
+| `read_repeated_events()` | 5650 | Reads all the repeated events for a user | `$jumpdate, $login, $max_until` |
+| `read_tasks()` | 5681 | Reads all the tasks for a user with due date within the specified date range | — |
+| `remember_this_view()` | 5700 | Generates a cookie that saves the last calendar view | `$REQUEST_URI` |
+| `reminder_web_trigger_allowed()` | 6829 | Decides whether an HTTP request may run the reminder script | — |
+| `reminder_web_trigger_presented_token()` | 6806 | Reads the reminder web-trigger token presented with an HTTP request | — |
+| `rgb2html()` | 6579 | _(undocumented)_ | — |
+| `send_doctype()` | 5722 | This just sends the DOCTYPE used in a lot of places in the code | `$charset, $lang, $LANGUAGE` |
+| `send_http_login()` | 5746 | Sends an HTTP login request to the browser and stops execution | `$lang_file` |
+| `send_no_cache_header()` | 5779 | Sends HTTP headers that tell the browser not to cache this page | — |
+| `send_to_preferred_view()` | 5797 | Sends a redirect to the user's preferred view | — |
+| `sendCookie()` | 6606 | _(undocumented)_ | — |
+| `set_env()` | 5809 | Set an environment variable if system allows it | `$tzInitSet, $tzOffset` |
+| `set_today()` | 5858 | Determines what the day is and sets it globally | `$day, $month, $thisdate, $thisday, $thismonth, $thisyear, $today, $year` |
+| `site_extras_for_popup()` | 6528 | Generates the HTML used in an event popup for the site_extras fields | `$SITE_EXTRAS_IN_POPUP` |
+| `sort_events()` | 5882 | Sorts the combined event arrays by timestamp then name | — |
+| `sort_events_insensitive()` | 5903 | Sorts the combined event arrays by timestamp then name (case insensitive) | — |
+| `sort_users()` | 5921 | Sort user array based on $USER_SORT_ORDER | `$USER_SORT_ORDER` |
+| `time_to_minutes()` | 5944 | Converts a time format HHMMSS (like 130000 for 1PM) into number of minutes past midnight | — |
+| `times_overlap()` | 5958 | Checks to see if two events overlap | — |
 | `update_import_check_date()` | 2999 | _(undocumented)_ | — |
-| `update_status()` | 6005 | Updates event status and logs activity | `$error, $login` |
-| `update_webcalendar_version_in_db()` | 6722 | Updates the WebCalendar version in the database and logs the update activity | `$user` |
-| `upgrade_requires_db_changes()` | 6671 | Determines if a software upgrade requires database changes based on the database type and version range | `$updates` |
+| `update_status()` | 5991 | Updates event status and logs activity | `$error, $login` |
+| `update_webcalendar_version_in_db()` | 6708 | Updates the WebCalendar version in the database and logs the update activity | `$user` |
+| `upgrade_requires_db_changes()` | 6657 | Determines if a software upgrade requires database changes based on the database type and version range | `$updates` |
 | `url_origin()` | 1694 | Get the request origin | — |
-| `user_get_boss_list()` | 6270 | Gets a list of an assistant's boss from the webcal_asst table | `$bosstemp_fullname` |
-| `user_has_boss()` | 6297 | Is this user an assistant? | — |
-| `user_is_assistant()` | 6243 | Is this user an assistant of this boss? | — |
-| `user_is_nonuser_admin()` | 6052 | Checks the webcal_nonuser_cals table to determine if the user is the administrator for the nonuser calendar | — |
-| `user_is_participant()` | 6066 | Determine if the specified user is a participant in the event | — |
-| `validate_domain()` | 6094 | Checks to see if user's IP in in the IP Domain specified by the /includes/blacklist | `$SELF_REGISTRATION_BLACKLIST` |
-| `validate_mcp_token()` | 6742 | Validates an MCP API token and returns the associated user login | — |
-| `weekday_name()` | 6156 | Returns either the full name or the abbreviation of the day | `$lang` |
+| `user_get_boss_list()` | 6256 | Gets a list of an assistant's boss from the webcal_asst table | `$bosstemp_fullname` |
+| `user_has_boss()` | 6283 | Is this user an assistant? | — |
+| `user_is_assistant()` | 6229 | Is this user an assistant of this boss? | — |
+| `user_is_nonuser_admin()` | 6038 | Checks the webcal_nonuser_cals table to determine if the user is the administrator for the nonuser calendar | — |
+| `user_is_participant()` | 6052 | Determine if the specified user is a participant in the event | — |
+| `validate_domain()` | 6080 | Checks to see if user's IP in in the IP Domain specified by the /includes/blacklist | `$SELF_REGISTRATION_BLACKLIST` |
+| `validate_mcp_token()` | 6728 | Validates an MCP API token and returns the associated user login | — |
+| `weekday_name()` | 6142 | Returns either the full name or the abbreviation of the day | `$lang` |
 
 ## `includes/dbi4php.php`
 

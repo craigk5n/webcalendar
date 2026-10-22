@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use function dbi_execute;
 use function dbi_fetch_row;
+use function dbi_free_result;
 
 class ConfigService
 {
@@ -18,12 +19,14 @@ WHERE   cal_setting = ?
 SQL, [$key], false, false );
         if ($res) {
             $row = dbi_fetch_row($res);
-            return $row[0] == self::YES;
-        } else {
-            return match($key) {
-                'DISPLAY_MINUTES' => self::DEFAULT_DISPLAY_MINUTES,
-                default => null,
-            };
+            dbi_free_result($res);
+            if ($row) {
+                return $row[0] == self::YES;
+            }
         }
+        return match($key) {
+            'DISPLAY_MINUTES' => self::DEFAULT_DISPLAY_MINUTES,
+            default => null,
+        };
     }
 }
