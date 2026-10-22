@@ -24,7 +24,7 @@ jobs:
 
   build:
     needs: [php-lint, phpunit, test-install, test-web-wizard, phpstan]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     # Scope RELEASE_SIGNING_KEY to this job only. Environment-scoped
     # secrets are not passed to workflows triggered from forked PRs —
     # see Story 1.3 of the signed-manifest feature (issue #233).

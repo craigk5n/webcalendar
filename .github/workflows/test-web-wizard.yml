@@ -20,7 +20,7 @@ concurrency:
 jobs:
   test_web_wizard_install:
     name: Test WebCalendar wizard fresh installation
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         php-version: ['8.2', '8.5']
@@ -53,7 +53,7 @@ jobs:
 
   test_web_wizard_upgrade:
     name: Test WebCalendar wizard upgrade from v1.3.0
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         php-version: ['8.2', '8.5']
@@ -87,7 +87,7 @@ jobs:
 
   test_web_wizard_mysql:
     name: Test WebCalendar wizard MySQL (Selenium)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out the repo
         uses: actions/checkout@v7
@@ -133,7 +133,7 @@ jobs:
 
   test_web_wizard_postgresql:
     name: Test WebCalendar wizard PostgreSQL (Selenium)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out the repo
         uses: actions/checkout@v7
@@ -179,7 +179,7 @@ jobs:
 
   test_web_wizard_sqlite:
     name: Test WebCalendar wizard SQLite (Selenium)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out the repo
         uses: actions/checkout@v7
