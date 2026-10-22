@@ -483,7 +483,6 @@ class WebCalendarMcpTools
         return ['events' => $events, 'total' => count($events)];
     }
 
-    #[McpTool(description: 'Add a new basic event (no repeating), timed or untimed')]
     /**
      * Shared gate for every write tool: write access must be enabled, the
      * site must not be read-only, and (when UAC is on) the user must hold the
@@ -506,6 +505,7 @@ class WebCalendarMcpTools
         return null;
     }
 
+    #[McpTool(description: 'Add a new basic event (no repeating), timed or untimed')]
     public function add_event(string $name, string $date, string $time = '-1', string $description = '', string $location = '', int $duration = 0): array
     {
         // Check write access, read-only mode and UAC edit permission.
