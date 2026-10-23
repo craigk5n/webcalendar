@@ -157,6 +157,7 @@ if ($is_mcp_http_request || php_sapi_name() === 'cli') {
         'dbi4php',
         'functions',
         'translate',
+        'access',
       ] as $i ) {
       require_once 'includes/' . $i . '.php';
     }
@@ -483,12 +484,34 @@ class WebCalendarMcpTools
         return ['events' => $events, 'total' => count($events)];
     }
 
+    /**
+     * Shared gate for every write tool: write access must be enabled, the
+     * site must not be read-only, and (when UAC is on) the user must hold the
+     * Edit Event function permission -- the same checks the web UI applies.
+     * Returns an error array to return to the caller, or null when allowed.
+     */
+    private function writeDenied(): ?array
+    {
+        global $readonly;
+        if (!is_mcp_write_enabled()) {
+            return ['error' => 'MCP write access is not enabled'];
+        }
+        if (($readonly ?? 'N') === 'Y') {
+            return ['error' => 'Calendar is read-only'];
+        }
+        if (function_exists('access_is_enabled') && access_is_enabled()
+            && !access_can_access_function(ACCESS_EVENT_EDIT, $this->userLogin)) {
+            return ['error' => 'Not authorized to edit events'];
+        }
+        return null;
+    }
+
     #[McpTool(description: 'Add a new basic event (no repeating), timed or untimed')]
     public function add_event(string $name, string $date, string $time = '-1', string $description = '', string $location = '', int $duration = 0): array
     {
-        // Check if write access is enabled
-        if (!is_mcp_write_enabled()) {
-            return ['error' => 'MCP write access is not enabled'];
+        // Check write access, read-only mode and UAC edit permission.
+        if ($denied = $this->writeDenied()) {
+            return $denied;
         }
 
         // Validate date
@@ -642,8 +665,8 @@ class WebCalendarMcpTools
         string $description = '',
         string $location = ''
     ): array {
-        if (!is_mcp_write_enabled()) {
-            return ['error' => 'MCP write access is not enabled'];
+        if ($denied = $this->writeDenied()) {
+            return $denied;
         }
         if (empty($name)) {
             return ['error' => 'Event name is required'];
@@ -718,8 +741,8 @@ class WebCalendarMcpTools
         ?string $description = null,
         ?string $location = null
     ): array {
-        if (!is_mcp_write_enabled()) {
-            return ['error' => 'MCP write access is not enabled'];
+        if ($denied = $this->writeDenied()) {
+            return $denied;
         }
         if ($event_id <= 0) {
             return ['error' => 'A valid event_id is required'];
@@ -792,8 +815,8 @@ class WebCalendarMcpTools
     #[McpTool(description: 'Delete an event the user created')]
     public function delete_event(int $event_id): array
     {
-        if (!is_mcp_write_enabled()) {
-            return ['error' => 'MCP write access is not enabled'];
+        if ($denied = $this->writeDenied()) {
+            return $denied;
         }
         if ($event_id <= 0) {
             return ['error' => 'A valid event_id is required'];

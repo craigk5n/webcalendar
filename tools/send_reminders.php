@@ -422,12 +422,10 @@ function send_reminder ( $id, $event_date ) {
 
     // Don't include link for External users.
     if ( ! $isExt ) {
-      $eventURL = getServerUrl() 
+      $eventURL = getServerUrl()
        . 'view_entry.php?id=' . $id . '&em=1';
 
-      if ( $useHtml == 'Y' )
-        $eventURL = activate_urls ( $eventURL );
-
+      // WebCalMailer::Body() linkifies URLs for HTML mail; pass plain text.
       $body .= $eventURL . "\n\n";
     }
     $body .= strtoupper ( $name ) . "\n\n" . translate ( 'Description' )

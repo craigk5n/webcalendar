@@ -55,12 +55,6 @@ parameters:
 			path: includes/classes/WebCalMailer.php
 
 		-
-			message: '#^Undefined variable\: \$SMTP_STARTTLS$#'
-			identifier: variable.undefined
-			count: 1
-			path: includes/classes/WebCalMailer.php
-
-		-
 			message: '#^Method WebCalendar\:\:_getPhases\(\) should return array but return statement is missing\.$#'
 			identifier: return.missing
 			count: 1
