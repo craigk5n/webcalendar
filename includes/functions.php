@@ -1501,8 +1501,8 @@ function display_small_tasks ( $cat_id ) {
         <td colspan="2">' . $link . ' title="' . $priorityStr . '">'
      . $E->getPriority() . '</a></td>
         <td class="name" colspan="2" style="inline-size: 50%">&nbsp;' . $link . ' title="'
-     . translate( 'Task Name' ) . ': ' . $E->getName() . '">'
-     . substr( $E->getName(), 0, 15 )
+     . translate( 'Task Name' ) . ': ' . htmlspecialchars( $E->getName(), ENT_QUOTES ) . '">'
+     . htmlspecialchars( substr( $E->getName(), 0, 15 ), ENT_QUOTES )
      . ( strlen( $E->getName() ) > 15 ? '...' : '' ) . '</a></td>
         <td colspan="2">' . $link . ' title="' . translate ( 'Task Due Date' )
      . '">'
@@ -4164,21 +4164,19 @@ function load_global_settings() {
 
   if ( empty ( $SERVER_URL ) &&
       ( ! empty ( $HTTP_HOST ) && ! empty ( $REQUEST_URI ) ) ) {
+    // Never derive-and-persist SERVER_URL from the request: the Host header
+    // and URI are unauthenticated client input, and persisting them lets one
+    // request poison the URL used in everyone's emails, feeds and redirects.
+    // Use a per-request fallback only, from a host validated as a bare
+    // hostname[:port], and do not write it to webcal_config (the admin sets
+    // SERVER_URL in the wizard / Admin > Settings).
     $ptr = strrpos ( $REQUEST_URI, '/' );
-    if ( $ptr > 0 ) {
+    if ( $ptr > 0
+        && preg_match ( '/^[A-Za-z0-9.-]+(:[0-9]{1,5})?$/', $HTTP_HOST ) ) {
       $SERVER_URL = 'http://' . $HTTP_HOST
        . ( ! empty ( $SERVER_PORT ) && $SERVER_PORT != 80
         ? ':' . $SERVER_PORT : '' )
        . substr ( $REQUEST_URI, 0, $ptr + 1 );
-
-      // Clear any existing row first. cal_setting is the primary key, so a
-      // bare INSERT silently fails when the row is present but empty, which
-      // is reachable now that admin.php stores a cleared field as '' rather
-      // than deleting the row (#734).
-      dbi_execute ( 'DELETE FROM webcal_config WHERE cal_setting = ?',
-        ['SERVER_URL'] );
-      dbi_execute ( 'INSERT INTO webcal_config ( cal_setting, cal_value )
-        VALUES ( ?, ? )', ['SERVER_URL', $SERVER_URL] );
     }
   }
 
@@ -4223,6 +4221,10 @@ function load_nonuser_preferences ( $nonuser ) {
       $row = $rows[$i];
       $setting = $row[0];
       $value = $row[1];
+      // A stored preference must never override a security-relevant system
+      // setting for the session.
+      if ( is_system_only_setting ( $setting ) )
+        continue;
       // $sys_setting = 'sys_' . $setting;
       // save system defaults
       // ** Don't override ones set by load_user_prefs.
@@ -4304,14 +4306,15 @@ function load_template ( $login, $type ) {
   $file = preg_replace ('/^\s*/', '', $ret);
   $file = preg_replace ('/\s*$/', '', $file);
 
-  if ( $found &&
-    ( ! empty ( $ALLOW_EXTERNAL_HEADER ) && $ALLOW_EXTERNAL_HEADER == 'Y' ) &&
-      file_exists ( $file ) ) {
-// Craig. Why not just do $ret = file_get_contents ( $file ) here?
-    ob_start();
-    include "$file";
-    $ret = ob_get_contents();
-    ob_end_clean();
+  // Optional external header/script/trailer file. The template text is NOT
+  // included as PHP (that executed a DB-stored, potentially attacker-named
+  // path, reachable even unauthenticated): confine it to the templates/
+  // directory and read it.
+  if ( $found
+    && ( ! empty ( $ALLOW_EXTERNAL_HEADER ) && $ALLOW_EXTERNAL_HEADER == 'Y' ) ) {
+    $safe = template_external_file ( $file, __DIR__ . '/../templates' );
+    if ( $safe !== false )
+      $ret = file_get_contents ( $safe );
   }
 
   return $ret;
@@ -4448,6 +4451,13 @@ function load_user_preferences ( $guest = '' ) {
 
       if ( $ALLOW_COLOR_CUSTOMIZATION == 'N' &&
         isset ( $colors[$setting] ) )
+        continue;
+
+      // A user preference must never override a security-relevant system
+      // setting (UAC_ENABLED, ALLOW_VIEW_OTHER, ...) for the session. Skipping
+      // it here also neutralizes any such row already written to
+      // webcal_user_pref.
+      if ( is_system_only_setting ( $setting ) )
         continue;
 
       // $sys_setting = 'sys_' . $setting;
@@ -6764,21 +6774,11 @@ function validate_mcp_token($token) {
     }
   }
 
-  // Transparent migration: older versions stored the raw token. If a row still
-  // matches the plaintext, accept it once and upgrade it to a hash in place
-  // (same pattern as the md5 -> bcrypt password upgrade).
-  $res = dbi_execute(
-    'SELECT cal_login FROM webcal_user WHERE cal_api_token = ? AND cal_enabled = \'Y\'',
-    [$actualToken]);
-  if ($res) {
-    $row = dbi_fetch_row($res);
-    dbi_free_result($res);
-    if (!empty($row[0])) {
-      dbi_execute('UPDATE webcal_user SET cal_api_token = ? WHERE cal_login = ?',
-        [$tokenHash, $row[0]]);
-      return $row[0];
-    }
-  }
+  // No runtime plaintext fallback: tokens are stored as SHA-256 hashes, and a
+  // fallback that matched cal_api_token against the presented value verbatim
+  // would accept the stored hash itself as a valid bearer credential (anyone
+  // with DB read access could authenticate). Any legacy plaintext token must
+  // be migrated by a one-time, version-gated upgrade step, not here.
   return null;
 }
 
@@ -7693,5 +7693,224 @@ function mcp_run_stdio_loop($in, $out, $tools) {
       fwrite($out, json_encode($response) . "\n");
     }
   }
+}
+
+/**
+ * Resolve a category icon request to a safe file inside the icon directory.
+ *
+ * category_handler.php copied file_get_contents( 'wc-icons/' . $urlname )
+ * with $urlname an unfiltered POST field, so '../includes/settings.php' read
+ * a file outside wc-icons/ into the category blob. Reduce the name to its
+ * basename (so no directory component survives), require a .gif/.png
+ * extension, and confirm the realpath sits inside the icon directory.
+ *
+ * @param string $urlname request value (any path component is discarded)
+ * @param string $iconDir the wc-icons directory (relative or absolute)
+ *
+ * @return string|bool absolute real path to the icon, or false if unsafe
+ */
+function category_icon_safe_path ( $urlname, $iconDir ) {
+  $name = basename ( (string) $urlname );
+
+  if ( $name === '' || strpos ( $name, "\0" ) !== false
+    || ! preg_match ( '/\.(gif|png)$/i', $name ) )
+    return false;
+
+  $base = realpath ( $iconDir );
+  $real = realpath ( rtrim ( $iconDir, '/' ) . '/' . $name );
+
+  if ( $base === false || $real === false || ! is_file ( $real ) )
+    return false;
+
+  if ( strpos ( $real, $base . DIRECTORY_SEPARATOR ) !== 0 )
+    return false;
+
+  return $real;
+}
+
+/**
+ * Whether $login may edit/delete/repoint a remote (nonuser) calendar.
+ *
+ * Only an admin, or the calendar's own cal_admin, may touch an existing
+ * nonuser calendar. edit_remotes_handler.php and users_ajax.php's
+ * save_remote_calendar() previously acted on any calendar id with no owner
+ * check. $calAdmin is the loaded cal_admin (null/'' when the calendar does
+ * not exist, which is never allowed for a non-admin).
+ *
+ * @param bool        $isAdmin
+ * @param string|null $calAdmin the calendar's cal_admin, or null if absent
+ * @param string      $login    the acting user
+ */
+function remote_calendar_edit_allowed ( $isAdmin, $calAdmin, $login ) {
+  if ( $isAdmin )
+    return true;
+
+  return ! empty ( $calAdmin ) && $calAdmin == $login;
+}
+
+/**
+ * Resolve whose preferences pref.php will edit, enforcing that the
+ * authorization subject equals the write subject.
+ *
+ * pref.php set $prefuser from GET 'user' but authorized with a global
+ * $is_nonuser_admin that init computed from a POST-preferred 'user', so a
+ * nonuser-admin of one calendar could edit (and mint the MCP token of) an
+ * unrelated account. The caller must pass $isNonuserAdminOfRequested computed
+ * against $requestedUser itself.
+ *
+ * @param string $requestedUser             the GET 'user' value
+ * @param string $login                     the acting user
+ * @param bool   $isAdmin
+ * @param bool   $isNonuserAdminOfRequested  user_is_nonuser_admin($login,$requestedUser)
+ *
+ * @return string|bool login whose prefs to edit, or false if unauthorized
+ */
+function pref_resolve_target ( $requestedUser, $login, $isAdmin,
+  $isNonuserAdminOfRequested ) {
+  if ( empty ( $requestedUser ) || $requestedUser == $login )
+    return $login;
+
+  if ( $isAdmin || $isNonuserAdminOfRequested )
+    return $requestedUser;
+
+  return false;
+}
+
+/**
+ * Resolve the (cal_login, cal_other_user) pair for an access.php grant.
+ *
+ * webcal_access_user keys permissions as cal_login (the accessor) dot
+ * cal_other_user (the calendar owner). An admin may name both. A non-admin
+ * may only change access TO THEIR OWN calendar, so the owner is forced to
+ * $login and only the grantee ('otheruser') is taken from the request;
+ * access.php previously took both from POST, letting an attacker forge a row
+ * granting themselves access to any victim's calendar.
+ *
+ * @param bool   $isAdmin
+ * @param string $guser     the 'guser' POST value (accessor, admin only)
+ * @param string $otheruser the 'otheruser' POST value (the grantee)
+ * @param string $login     the acting user
+ *
+ * @return array [cal_login, cal_other_user]
+ */
+function access_grant_pair ( $isAdmin, $guser, $otheruser, $login ) {
+  if ( $isAdmin )
+    return [$guser, $otheruser];
+
+  return [$otheruser, $login];
+}
+
+/**
+ * Whether $login may edit the custom template (header/script/trailer) owned
+ * by $user.
+ *
+ * The caller supplies the UAC facts so this stays a pure decision: the
+ * __system__ template needs admin (UAC off) or the SYSTEM_SETTINGS function
+ * (UAC on); a per-user template may be edited by its owner, an admin, or a
+ * nonuser-admin of that user. edit_template.php previously gated __system__
+ * with assert() (a no-op in production) and left per-user templates with no
+ * owner check at all.
+ *
+ * @param string $user             template owner ('__system__' or a login)
+ * @param string $login            the acting user
+ * @param bool   $isAdmin
+ * @param bool   $uacEnabled        access_is_enabled()
+ * @param bool   $hasSystemSettings access_can_access_function(ACCESS_SYSTEM_SETTINGS)
+ * @param bool   $isNonuserAdmin    user_is_nonuser_admin($login, $user)
+ */
+function template_edit_allowed ( $user, $login, $isAdmin, $uacEnabled,
+  $hasSystemSettings, $isNonuserAdmin ) {
+  if ( $user == '__system__' )
+    return $uacEnabled ? (bool) $hasSystemSettings : (bool) $isAdmin;
+
+  return $user == $login || (bool) $isAdmin || (bool) $isNonuserAdmin;
+}
+
+/**
+ * Resolve an ALLOW_EXTERNAL_HEADER template file to a safe path, or false.
+ *
+ * load_template() used to include() this DB-stored path as PHP, which is a
+ * local file read and code-execution primitive reachable even from the
+ * unauthenticated login page. The file must now be a regular file confined to
+ * $baseDir (a fixed templates directory) and is read, never executed.
+ *
+ * @param string $file    candidate path from the template text
+ * @param string $baseDir the permitted templates directory
+ *
+ * @return string|bool absolute real path to read, or false if unsafe
+ */
+function template_external_file ( $file, $baseDir ) {
+  $file = (string) $file;
+
+  if ( $file === '' || strpos ( $file, "\0" ) !== false )
+    return false;
+
+  $base = realpath ( $baseDir );
+  $real = realpath ( $file );
+
+  if ( $base === false || $real === false || ! is_file ( $real ) )
+    return false;
+
+  if ( strpos ( $real, $base . DIRECTORY_SEPARATOR ) !== 0 )
+    return false;
+
+  return $real;
+}
+
+/**
+ * Whether a setting name is an administrator-only system setting that a user
+ * preference (webcal_user_pref) must never override for the session.
+ *
+ * pref.php wrote any pref_<NAME> into webcal_user_pref, and the preference
+ * loaders assigned every row to its global, so a user could set, for example,
+ * pref_ALLOW_VIEW_OTHER=Y or pref_UAC_ENABLED=N and change access decisions
+ * for their own session. These security-relevant settings live in
+ * webcal_config and are not user-overridable.
+ *
+ * @param string $name the setting name
+ */
+function is_system_only_setting ( $name ) {
+  static $systemOnly = null;
+  if ( $systemOnly === null )
+    $systemOnly = array_flip ( [
+      'UAC_ENABLED', 'ALLOW_VIEW_OTHER', 'USER_SEES_ONLY_HIS_GROUPS',
+      'GROUPS_ENABLED', 'PUBLIC_ACCESS', 'PUBLIC_ACCESS_CAN_ADD',
+      'PUBLIC_ACCESS_OTHERS', 'PUBLIC_ACCESS_VIEW_PART',
+      'PUBLIC_ACCESS_ADD_NEEDS_APPROVAL', 'PUBLIC_ACCESS_DEFAULT_VISIBLE',
+      'PUBLIC_ACCESS_FULLNAME', 'REQUIRE_APPROVALS', 'ALLOW_EXTERNAL_HEADER',
+      'ALLOW_USER_HEADER', 'ALLOW_HTML_DESCRIPTION', 'READONLY', 'readonly',
+      'SINGLE_USER', 'SINGLE_USER_LOGIN', 'SELF_REGISTRATION',
+      'SELF_REGISTRATION_FULL', 'REMOTES_ENABLED', 'ENABLE_CAPTCHA',
+      'MCP_SERVER_ENABLED', 'MCP_WRITE_ACCESS', 'MCP_RATE_LIMIT',
+      'SERVER_URL', 'mode',
+    ] );
+
+  return isset ( $systemOnly[$name] );
+}
+
+/**
+ * Constrain a return_path to a safe, same-origin relative page reference.
+ *
+ * nulogin.php put return_path straight into a Location header, so an external
+ * value produced an open redirect. Only a relative local page name (with an
+ * optional query string) is allowed; anything with a scheme, a
+ * protocol-relative or backslash prefix, a leading slash, or a CR/LF/null
+ * falls back to index.php.
+ *
+ * @param string $path the requested return_path
+ *
+ * @return string a safe relative path, or 'index.php'
+ */
+function safe_return_path ( $path ) {
+  $path = (string) $path;
+
+  if ( $path === ''
+    || preg_match ( '#[\r\n\0]#', $path )
+    || preg_match ( '#^[a-zA-Z][a-zA-Z0-9+.-]*:#', $path ) // scheme:
+    || $path[0] === '/'                                    // /, //, /\
+    || $path[0] === '\\' )
+    return 'index.php';
+
+  return $path;
 }
 ?>

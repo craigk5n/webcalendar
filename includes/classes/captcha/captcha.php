@@ -42,18 +42,24 @@ class captcha {
       verify input, @returns boolean
    */
    public static  function check () {
-      $to = (int)(time ()/1000000);
-      if ( ! empty ( $_COOKIE[CAPTCHA_COOKIE] ) && $_COOKIE[CAPTCHA_COOKIE] == $to) {
-         return(true);
+      // Already solved in this session (server-side flag, not a client cookie).
+      if ( ! empty ( $_SESSION['captcha_solved'] ) ) {
+         return true;
       }
-      if (($hash = $_REQUEST['captcha_hash'])
-      and ($pw = trim($_REQUEST['captcha_input']))) {
-         $r = (captcha::hash($pw)==$hash) || (captcha::hash($pw,-1)==$hash);
-         if ($r) {
-            setcookie(CAPTCHA_COOKIE, $to, time ()+1000000);
-         }
-         return($r);
+      // The expected answer is held server-side. Consume it whether or not it
+      // matches, so a captcha answer cannot be replayed, and compare with
+      // hash_equals. (The old check trusted a forgeable 'captcha_solved'
+      // cookie and a secret-less, reusable hash from the request.)
+      $expected = $_SESSION['captcha_pw'] ?? '';
+      $input = isset ( $_REQUEST['captcha_input'] )
+         ? trim ( $_REQUEST['captcha_input'] ) : '';
+      unset ( $_SESSION['captcha_pw'] );
+      if ( $expected !== '' && $input !== ''
+         && hash_equals ( (string) $expected, (string) $input ) ) {
+         $_SESSION['captcha_solved'] = true;
+         return true;
       }
+      return false;
    }
 
 
@@ -62,9 +68,8 @@ class captcha {
    */
    public static function form ($save=true) {
 
-      #-- stop if user already verified
-      if ( $save && ! empty ( $_COOKIE[CAPTCHA_COOKIE] ) &&
-        $_COOKIE[CAPTCHA_COOKIE] == (int)(time ()/1000000)) {
+      #-- stop if user already verified (server-side flag, not a client cookie)
+      if ( $save && ! empty ( $_SESSION['captcha_solved'] ) ) {
          return "";
       }
 
@@ -72,8 +77,10 @@ class captcha {
 
       $more = translate ( 'Enter the correct letters and numbers...' );
 
-      #-- prepare image text
+      #-- prepare image text; hold the expected answer server-side (single use)
       $pw = captcha::mkpass ();
+      if ( $save )
+         $_SESSION['captcha_pw'] = $pw;
       $hash = captcha::hash($pw);
       //$alt = htmlentities(captcha::textual_riddle($pw));
       $alt = $title;

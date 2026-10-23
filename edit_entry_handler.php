@@ -68,8 +68,23 @@ $name     = getPostValue( 'name', '', 'XSS' );
 $priority = getPostValue( 'priority' );
 $user     = getPostValue( 'user' );
 
-// Remember previous cal_group_id if present.
+// Remember previous cal_group_id if present. Only accept the parent that is
+// actually the stored group id of the event being edited; a client-chosen
+// 'parent' would otherwise write repeats_not exclusions onto another user's
+// repeating event.
 $parent = getPostValue( 'parent' );
+if( ! empty( $parent ) ) {
+  $parent = '';
+  if( ! empty( $id ) ) {
+    $res = dbi_execute( 'SELECT cal_group_id FROM webcal_entry WHERE cal_id = ?',
+      [$id] );
+    if( $res ) {
+      if( ( $row = dbi_fetch_row( $res ) ) && ! empty( $row[0] ) )
+        $parent = $row[0];
+      dbi_free_result( $res );
+    }
+  }
+}
 $old_id = ( empty( $parent ) ? $old_id : $parent );
 
 $participants = getPostValue( 'selectedPart' );
@@ -990,9 +1005,7 @@ if( empty( $error ) ) {
             // DON'T change & to &amp; here. Email will handle it.
             $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
 
-            if( $htmlmail == 'Y' )
-              $url = activate_urls( $url );
-
+            // WebCalMailer::Body() linkifies URLs for HTML mail; pass plain text.
             $msg .= $url . "\n\n";
           }
           $mail->WC_Send( $login_fullname, $tempemail,
@@ -1118,9 +1131,7 @@ if( empty( $error ) ) {
             // DON'T change & to &amp; here. Email will handle it.
             $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
 
-            if( $htmlmail == 'Y' )
-              $url = activate_urls( $url );
-
+            // WebCalMailer::Body() linkifies URLs for HTML mail; pass plain text.
             $msg .= "\n\n" . $url;
           }
           // Use WebCalMailer class.

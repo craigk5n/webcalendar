@@ -329,6 +329,21 @@ AND cal_id = ?', [$login, $id] );
 //  }
 //}
 
+// RSS-feed view bypasses can_view, so it may only reveal what the feed itself
+// would: an approved event whose access class rssuser's USER_REMOTE_ACCESS
+// permits, and only for rssuser's own calendar. Otherwise fall back to normal
+// authorization.
+if ( $rss_view ) {
+  $allowed = ['P'];
+  if ( $user_remote_access > 0 )
+    $allowed[] = 'C';
+  if ( $user_remote_access == 2 )
+    $allowed[] = 'R';
+  if ( ! in_array ( $cal_access, $allowed ) || $user != $rssuser
+    || $event_status != 'A' )
+    $rss_view = false;
+}
+
 // If we have no event status yet, it must have been deleted.
 if ( ( empty ( $event_status ) && ! $is_admin ) ||
 ( ! $can_view && empty ( $rss_view ) ) ) {
@@ -384,10 +399,13 @@ access_is_enabled() ) {
   $is_confidential = true;
   $description = $name = '[' . translate ( 'Confidential' ) . ']';
 }
+// A masked event must not leak its other content fields either.
+if ( $is_private || $is_confidential )
+  $location = $url = $category = '';
 $event_date = ( $event_repeats && ! empty ( $date ) ? $date : $orig_date );
 
-// Get category Info
-if ( $CATEGORIES_ENABLED == 'Y' ) {
+// Get category Info (not for a masked private/confidential event).
+if ( $CATEGORIES_ENABLED == 'Y' && ! $is_private && ! $is_confidential ) {
   $categories = get_categories_by_id ( $id,
     ( ( ! empty ( $user ) && strlen ( $user ) ) && ( $is_assistant || $is_admin )
     ? $user : $login ), true );
@@ -592,7 +610,7 @@ if (!empty($reminder)) {
 
 // load any site-specific fields and display them
 $extras = get_site_extra_fields($id);
-$site_extracnt = count($site_extras);
+$site_extracnt = ( $is_private || $is_confidential ) ? 0 : count($site_extras);
 for ($i = 0; $i < $site_extracnt; $i++) {
   if ($site_extras[$i] == 'FIELDSET') continue;
   $extra_name = $site_extras[$i][0];
@@ -816,7 +834,8 @@ if ( $eType == 'task' ) {
   }
 }
 
-if ( Doc::attachmentsEnabled() && $rss_view == false ) {
+if ( Doc::attachmentsEnabled() && $rss_view == false
+  && ! $is_private && ! $is_confidential ) {
   echo '<div class="row"><div class="col-3">' . translate('Attachments') . "</div>\n";
   echo '<div class="col-9">';
   $attList = new AttachmentList( $id );
@@ -857,7 +876,7 @@ if ( Doc::attachmentsEnabled() && $rss_view == false ) {
   echo '</div><div class="w-100"></div></div>' . "\n";
 }
 
-if ( Doc::commentsEnabled() ) {
+if ( Doc::commentsEnabled() && ! $is_private && ! $is_confidential ) {
   echo '<div class="row"><div class="col-3">' . translate('Comments') . "</div>\n";
   echo '<div class="col-9">';
 

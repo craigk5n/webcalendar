@@ -44,17 +44,19 @@ $WebCalendar->setLanguage();
 
 load_user_layers();
 
-$debug = getValue ( 'debug' );
-$debug = ! empty ( $debug );
+// Debug output (print_r of raw Event objects) is restricted to admins; it
+// otherwise disclosed other users' private/confidential event fields.
+$debug = ( $is_admin && ! empty ( getValue ( 'debug' ) ) );
 $action = getValue ( 'action' );
 if ( empty ( $action ) )
   $action = 'get';
 $user    = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]*', true );
-if ( ! empty ( $user ) ) {
-  // Make sure this user has permission to view the other user's calendar
-  if ( ! access_user_calendar( 'view', $user ) ) {
-     // Not allowed.
-     $user = $login;
+if ( ! empty ( $user ) && $user != $login ) {
+  // Make sure this user may view the other user's calendar.
+  // access_user_calendar() returns the string 'N' (truthy) when UAC is off,
+  // so test for an explicit allow value rather than for truthiness.
+  $acc = access_user_calendar( 'view', $user );
+  if ( ! ( $is_admin || $acc === 'Y' || ( is_int( $acc ) && $acc > 0 ) ) ) {
      ajax_send_error ( translate('Not authorized') );
      exit;
   }
@@ -92,9 +94,10 @@ if ( $readonly == 'Y' || $is_nonuser ) {
 } else if ( $is_admin ) {
   $can_edit = true;
 } else if ( $login == '__public__' ) {
-  // Is public allowed to add events?
-  if ( $PUBLIC_ACCESS_CAN_ADD == 'Y' )
-    $can_edit = true;
+  // Public submissions must go through edit_entry_handler.php, which enforces
+  // the CAPTCHA and the PUBLIC_ACCESS_ADD_NEEDS_APPROVAL moderation queue;
+  // this endpoint would otherwise write an approved event directly.
+  $can_edit = false;
 }
 // Allow user access control to override permissions
 if ( $can_edit && access_is_enabled () ) {
@@ -187,8 +190,38 @@ if ( $action == 'get' ) {
   }
   ajax_send_objects ( $objects, $sendPlainText );
 } else if ( $action == 'eventinfo' ) {
-  // TODO: enforce user access control here...
   $id = getIntValue ( 'id' );
+  // Authorize: only an admin, the creator, a participant, or someone with UAC
+  // view access to the creator's calendar may read an event's participants,
+  // comments and attachments.
+  $evinfo = dbi_execute ( 'SELECT cal_create_by, cal_type, cal_access
+    FROM webcal_entry WHERE cal_id = ?', [$id] );
+  $ev_create_by = $ev_type = $ev_access = '';
+  if ( $evinfo ) {
+    if ( $r = dbi_fetch_row ( $evinfo ) ) {
+      $ev_create_by = $r[0];
+      $ev_type = $r[1];
+      $ev_access = $r[2];
+    }
+    dbi_free_result ( $evinfo );
+  }
+  $ev_allowed = ( $is_admin || ( ! empty ( $ev_create_by ) && $ev_create_by == $login ) );
+  if ( ! $ev_allowed ) {
+    $pr = dbi_execute ( 'SELECT 1 FROM webcal_entry_user
+      WHERE cal_id = ? AND cal_login = ?', [$id, $login] );
+    if ( $pr ) {
+      if ( dbi_fetch_row ( $pr ) )
+        $ev_allowed = true;
+      dbi_free_result ( $pr );
+    }
+  }
+  if ( ! $ev_allowed && ! empty ( $ev_create_by ) )
+    $ev_allowed = (bool) access_user_calendar ( 'view', $ev_create_by, $login,
+      $ev_type, $ev_access );
+  if ( ! $ev_allowed ) {
+    ajax_send_error ( translate('Not authorized') );
+    exit;
+  }
   $res = dbi_execute ( 'SELECT cal_login, cal_status
   FROM webcal_entry_user
   WHERE cal_id = ?', [$id] );
