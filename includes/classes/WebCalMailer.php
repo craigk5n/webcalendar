@@ -30,7 +30,7 @@ class WebCalMailer {
    */
   function __construct() {
     global $EMAIL_MAILER, $mailerError, $SMTP_AUTH,
-    $SMTP_HOST, $SMTP_PORT, $SMTP_PASSWORD, $SMTP_USERNAME;
+    $SMTP_HOST, $SMTP_PORT, $SMTP_PASSWORD, $SMTP_USERNAME, $SMTP_STARTTLS;
 
     $this->mail = new PHPMailer\PHPMailer(false);
     $mailerError = '';
@@ -133,8 +133,13 @@ class WebCalMailer {
    */
   function Body( $msg ) {
     $msg = stripslashes( $msg );
+    // In HTML mode treat the assembled message as plain text: decode the
+    // translation entities, HTML-escape it (so user-controlled event fields
+    // cannot inject markup), then linkify URLs and add line breaks.
     $this->mail->Body = ( $this->mail->ContentType == 'text/html'
-      ? nl2br( $msg ) : unhtmlentities( $msg ) );
+      ? nl2br( activate_urls( htmlspecialchars( unhtmlentities( $msg ),
+          ENT_QUOTES, $this->mail->CharSet ) ) )
+      : unhtmlentities( $msg ) );
   }
 
   /**

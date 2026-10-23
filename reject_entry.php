@@ -56,6 +56,12 @@ if ( access_is_enabled() && ! empty ( $user ) && $user != $login ) {
     $app_user = $user;
 }
 
+// The resolved user must actually be a participant of this event; otherwise a
+// caller could email every accepted participant a bogus rejection notice (with
+// the caller's comments) for an event they have nothing to do with.
+if ( empty ( $error ) && $id > 0 && ! user_is_participant ( $id, $app_user ) )
+  $error = print_not_auth();
+
 if ( empty ( $error ) && $id > 0 ) {
   update_status ( 'R', $app_user, $id, getGetValue ( 'type' ) );
 
@@ -124,9 +130,10 @@ if ( empty ( $error ) && $id > 0 ) {
       if ( ! empty ( $SERVER_URL ) ) {
         // DON'T change & to &amp; here. Email will handle it.
         $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
+        // WebCalMailer::Body() linkifies URLs for HTML mail; pass plain text.
         $msg .= '
 
-' . ( $htmlmail == 'Y' ? activate_urls ( $url ) : $url );
+' . $url;
       }
       if ( strlen ( $comments ) )
         $msg .= '

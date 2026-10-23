@@ -743,6 +743,16 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
     }
     $sql .= ' ) ';
   } //end if $id=all
+
+  // When a non-admin exports another user's calendar (permitted only via a
+  // UAC view grant, enforced in export_handler.php), return only that user's
+  // public events plus events the requester already participates in -- never
+  // the target's private or confidential items.
+  if ( ! empty ( $user ) && $user != $login && empty ( $GLOBALS['is_admin'] ) ) {
+    $sql .= " AND ( weu.cal_login = ? OR we.cal_access = 'P' )";
+    $sql_params[] = $login;
+  }
+
   // Which participation statuses the export accepts. del_entry.php deletes an
   // event by setting cal_status to 'D' rather than removing the row, so the
   // Export page's "Include deleted entries" checkbox is a question about this
@@ -1357,10 +1367,14 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
     // NOTE:(cek) commented out 'publish'. Will not work if event
     // was originally created from importing.
     if ( ! empty( $Entry['UID'] ) ) {
+      // Only an active participant (accepted or waiting) may match an
+      // existing event for update; a declined or removed participant must not
+      // be able to rewrite another user's event via an import UID match.
       $res = dbi_execute( 'SELECT wid.cal_id
         FROM webcal_import_data wid, webcal_entry_user weu WHERE '
         // . "cal_import_type = 'publish' AND "
         . 'wid.cal_id = weu.cal_id AND weu.cal_login = ?
+    AND weu.cal_status IN ( \'A\', \'W\' )
     AND cal_external_id = ?', [$login, $Entry['UID']] );
       if ( $res ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
@@ -2036,6 +2050,19 @@ function webcal_validate_remote_url($url, &$err = '') {
     return false;
   }
   foreach ($ips as $ip) {
+    // Normalize IPv4-mapped/compatible (::ffff:0:0/96, ::/96) and NAT64
+    // (64:ff9b::/96) IPv6 forms to the embedded IPv4, so that a value like
+    // ::ffff:127.0.0.1 is range-checked as 127.0.0.1 rather than slipping
+    // through as a "public" IPv6 address (SSRF bypass).
+    $packed = @inet_pton($ip);
+    if ($packed !== false && strlen($packed) === 16) {
+      $pfx = substr($packed, 0, 12);
+      if ($pfx === str_repeat("\0", 10) . "\xff\xff"
+          || $pfx === str_repeat("\0", 12)
+          || $pfx === "\x00\x64\xff\x9b" . str_repeat("\0", 8)) {
+        $ip = inet_ntop(substr($packed, 12));
+      }
+    }
     if (!filter_var(
       $ip,
       FILTER_VALIDATE_IP,

@@ -40,12 +40,11 @@ if ($login != addslashes($login) || $login != htmlentities(trim($login)))
 $login = htmlentities(trim($login));
 
 $date = getValue ( 'date' );
-$return_path = getValue ( 'return_path' );
-// Was a return path set?
-$url = ( ! empty ( $return_path )
-  ? clean_whitespace ( $return_path
-     . ( ! empty ( $date ) ? '?date=' . $date : '' ) )
-  : 'index.php' );
+// Constrain return_path to a same-origin relative page (open-redirect guard);
+// safe_return_path() falls back to index.php for empty or external values.
+$return_path = safe_return_path ( getValue ( 'return_path' ) );
+$url = clean_whitespace ( $return_path
+   . ( ! empty ( $date ) ? '?date=' . $date : '' ) );
 
 if ( $login == '__public__' )
   do_redirect ( $url );

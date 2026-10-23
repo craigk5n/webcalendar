@@ -16,8 +16,15 @@ require_once 'includes/init.php';
 require_once 'includes/xcal.php';
 
 $user = getPostValue ( 'user' );
-if ( empty ( $user ) || $user == $login )
+if ( ! empty ( $user ) && $user != $login ) {
+  // Exporting another user's calendar requires admin or a UAC view grant;
+  // otherwise this leaks that user's events, including private ones.
+  if ( ! $is_admin && ! access_user_calendar ( 'view', $user ) )
+    die_miserable_death ( print_not_auth () );
+} else {
+  $user = '';
   load_user_layers();
+}
 
 // Convert time in ("hhmmss") format, plus duration (as a number of minutes),
 // to end time ($hour = number of hours, $min = number of minutes).

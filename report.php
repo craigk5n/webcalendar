@@ -68,7 +68,8 @@ function replace_site_extras_in_template ( $template, $extras ) {
  * @return string HTML for this event based on report template.
  */
 function event_to_text ( $event, $date ) {
-  global $ALLOW_HTML_DESCRIPTION, $event_template, $login, $report_id, $user;
+  global $ALLOW_HTML_DESCRIPTION, $event_template, $login, $report_id, $user,
+    $is_assistant;
 
   $allDayStr = translate ( 'All day event' );
   $confStr = translate ( 'This event is confidential.' );
@@ -110,13 +111,24 @@ function event_to_text ( $event, $date ) {
   } else
     $id = $event->getID();
 
+  // One masked decision covering both private ('R') and confidential ('C'),
+  // honoring the UAC PRIVATE_WT / CONF_WT weights (as build_entry_label does).
+  // The owner is never masked; assistants may see confidential events.
+  $not_mine = ( ( $login != $user && strlen ( $user ) ) ||
+    ( $login != $tempLog && strlen ( $tempLog ) ) );
+  $can_access = ( access_is_enabled()
+    ? access_user_calendar ( 'view', $tempLog, '', $event->getCalType(), $tempAcc )
+    : 0 );
+  $masked = $not_mine && (
+    ( $tempAcc == 'R' && ! ( $can_access & PRIVATE_WT ) )
+    || ( $tempAcc == 'C' && empty ( $is_assistant ) && ! ( $can_access & CONF_WT ) ) );
+
   $name_str = $description_str = '';
-  if ( $tempAcc == 'R' ) {
-    if ( ( $login != $user && strlen ( $user ) ) ||
-        ( $login != $tempLog && strlen ( $tempLog ) ) ) {
-      $description_str = $confStr;
-      $name_str = $privStr;
-    }
+  if ( $masked ) {
+    $name_str = ( $tempAcc == 'R' ? $privStr
+      : '(' . translate ( 'Confidential' ) . ')' );
+    $description_str = ( $tempAcc == 'R'
+      ? translate ( 'This event is private.' ) : $confStr );
   } else {
     $name_str = htmlspecialchars ( $name );
     if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
@@ -125,7 +137,8 @@ function event_to_text ( $event, $date ) {
       $str = preg_replace( "/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", $str );
       $description_str = str_replace ( '&amp;amp;', '&amp;', $str );
       if ( strstr ( $description_str, '<' ) && strstr ( $description_str, '>' ) ) {
-        // Found some HTML.
+        // Found some HTML -- sanitize it to prevent stored XSS.
+        $description_str = sanitize_html ( $description_str );
       } else
         // No HTML found. Add line breaks.
         $description_str = nl2br ( $description_str );
@@ -158,8 +171,10 @@ function event_to_text ( $event, $date ) {
   else
     $status_str = translate ( 'Unknown' );
 
-  $location = $event->getLocation();
-  $url = $event->getUrl();
+  // Escape (and blank for masked events) the free-text fields that are
+  // str_replace'd into the HTML template below.
+  $location = ( $masked ? '' : htmlspecialchars ( $event->getLocation() ) );
+  $url = ( $masked ? '' : htmlspecialchars ( $event->getUrl() ) );
   $href_str = 'view_entry.php?id=' . $id;
 
   // Get user's fullname.
@@ -177,7 +192,8 @@ function event_to_text ( $event, $date ) {
       $report_id, $start_time_str, $time_str, $url, $tempLog],
     $event_template );
   $text = replace_site_extras_in_template ( $text,
-    format_site_extras ( get_site_extra_fields ( $id ), EXTRA_DISPLAY_REPORT ) );
+    ( $masked ? []
+      : format_site_extras ( get_site_extra_fields ( $id ), EXTRA_DISPLAY_REPORT ) ) );
 
   return $text;
 }
@@ -187,8 +203,13 @@ $u_url = '';
 
 if ( ! empty ( $user ) && $user != $login &&
     ( ( ! empty ( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' ) || $is_admin ) ) {
-  $report_user = $user;
-  $u_url = '&amp;user=' . $user;
+  // Honor per-calendar UAC view permission, as month.php does.
+  if ( ! $is_admin && ! access_user_calendar ( 'view', $user ) )
+    $error = print_not_auth();
+  else {
+    $report_user = $user;
+    $u_url = '&amp;user=' . $user;
+  }
 }
 
 if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' )
