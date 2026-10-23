@@ -32,6 +32,7 @@ function webcal_config_defaults() {
     'ALLOW_CONFLICTS' => 'N',
     'ALLOW_CONFLICT_OVERRIDE' => 'Y',
     'ALLOW_EXTERNAL_HEADER' => 'N',
+    'ALLOW_EXTERNAL_HEADER_PHP' => 'N',
     'ALLOW_EXTERNAL_USERS' => 'N',
     'ALLOW_HTML_DESCRIPTION' => 'Y',
     'ALLOW_SELF_REGISTRATION' => 'N',
