@@ -26,9 +26,15 @@ if ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' ) {
     $user = '__system__';
 }
 
-if ( $user == '__system__' )
-  assert ( ($is_admin && ! access_is_enabled() ) ||
-    access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) );
+// Enforce authorization before any read, write or delete. The __system__
+// template needs admin (UAC off) or ACCESS_SYSTEM_SETTINGS (UAC on); a
+// per-user template may be edited only by its owner, an admin, or a
+// nonuser-admin of that user.
+if ( ! template_edit_allowed ( $user, $login, $is_admin,
+  access_is_enabled(),
+  access_can_access_function ( ACCESS_SYSTEM_SETTINGS ),
+  ( $user != '__system__' && user_is_nonuser_admin ( $login, $user ) ) ) )
+  die_miserable_death ( print_not_auth() );
 
 // Get existing value.
 $res = dbi_execute ( 'SELECT cal_template_text FROM webcal_user_template

@@ -59,3 +59,8 @@ debug.txt
 *.bak
 *.tar.gz
 
+# Ad-hoc phpMailer SMTP test script. It hardcodes live SMTP credentials
+# (host, username, password) and must never be committed. The copy that
+# shipped on the old former-cvs-head branch leaked a password for years.
+includes/classes/phpmailer/test.php
+
