@@ -114,7 +114,12 @@ function user_valid_login ( $login, $password ) {
 //   $crypt_password - crypted user password
 // returns: true or false
 function user_valid_crypt ( $login, $crypt_password ) {
-  return true;
+  // Fail closed. This backend authenticates against the LDAP server and keeps
+  // no local password to verify a remember-me credential against, so it
+  // cannot validate the crypted cookie. Returning true accepted ANY
+  // remember-me cookie as a valid login; LDAP users must re-authenticate
+  // instead of being auto-logged-in from an unverifiable cookie.
+  return false;
 }
 
 // Load info about a user (first name, last name, admin) and set globally.
