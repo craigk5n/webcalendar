@@ -150,37 +150,18 @@ function user_valid_login ( $login, $password ) {
  * @param string $login          User login
  * @param string $crypt_password Encrypted user password
  *
- * @return bool True on success
- *
- * @global string Error message
+ * @return bool Always false; this backend cannot verify a remember-me cookie.
  */
 function user_valid_crypt ( $login, $crypt_password ) {
-  global $error;
-  $ret = false;
-
-  $sql = 'SELECT cal_login, cal_passwd FROM webcal_user WHERE cal_login = ?';
-  $res = dbi_execute ( $sql, [$login] );
-  if ( $res ) {
-    $row = dbi_fetch_row ( $res );
-    if ( $row && $row[0] != '' ) {
-      // MySQL seems to do case insensitive matching, so double-check
-      // the login.
-      // also check if password matches
-      if ( ($row[0] == $login) && ( (crypt($row[1], $crypt_password) == $crypt_password) ) )
-        $ret = true; // found login/password
-      else
-        //$error = translate ( 'Invalid login' );
-        $error = 'Invalid login';
-    } else {
-      //$error = translate ( 'Invalid login' );
-      $error = 'Invalid login';
-    }
-    dbi_free_result ( $res );
-  } else {
-    $error = 'Database error: ' . dbi_error ();
-  }
-
-  return $ret;
+  // Fail closed. IMAP authenticates against the mail server, which is the
+  // source of truth for this account; webcal_user.cal_passwd holds no
+  // verifiable secret (it is empty or a placeholder for IMAP users). The old
+  // code compared the remember-me cookie to that stored value with the legacy
+  // crypt() self-comparison -- the AUTH-1 pass-the-hash pattern, and trivially
+  // forgeable when cal_passwd is empty (crypt('', C) == C is solvable by the
+  // attacker). IMAP users must re-authenticate instead of being auto-logged-in
+  // from an unverifiable cookie.
+  return false;
 }
 
 /**
