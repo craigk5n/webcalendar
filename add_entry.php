@@ -2,6 +2,12 @@
 require_once 'includes/init.php';
 
 $error = '';
+// Public, nonuser (resource) and read-only sessions may not add events to a
+// personal calendar.
+if ( $login == '__public__' || $is_nonuser || $readonly == 'Y' ) {
+  echo print_not_auth();
+  exit;
+}
 // Only proceed if id was passed.
 if ( $id > 0 ) {
   // Double check to make sure user doesn't already have the event.
@@ -21,7 +27,7 @@ if ( $id > 0 ) {
     dbi_free_result ( $res );
   }
   // Now lets make sure the user is allowed to add the event (not private).
-  $res = dbi_execute ( 'SELECT cal_access
+  $res = dbi_execute ( 'SELECT cal_access, cal_create_by
   FROM webcal_entry
   WHERE cal_id = ?', [$id] );
   if ( ! $res ) {
@@ -42,6 +48,15 @@ if ( $id > 0 ) {
     if ( $row[0] == 'R' ) {
       $is_private = true;
       echo str_replace ( 'XXX', translate ( 'private' ), $mayNotAddStr );
+      exit;
+    }
+    // A public event on another user's calendar still requires view
+    // authorization; adding yourself as a participant would otherwise bypass
+    // the ALLOW_VIEW_OTHER/group checks. access_user_calendar() returns the
+    // string 'N' (truthy) under UAC-off, so test for an explicit allow value.
+    $acc = access_user_calendar ( 'view', $row[1] );
+    if ( ! ( $is_admin || $acc === 'Y' || ( is_int ( $acc ) && $acc > 0 ) ) ) {
+      echo print_not_auth();
       exit;
     }
   }

@@ -55,8 +55,24 @@ if ( empty ( $id ) )
   $can_view = true; // not associated with an event
 
 if ( ! empty ( $id ) && empty ( $error ) ) {
-  if ( $is_admin || $is_nonuser_admin || $is_assistant )
+  // An assistant / nonuser-admin may view the blob only when the delegation
+  // actually covers the blob's event: $user (the account being acted for)
+  // must be the event's creator or a participant. Previously the delegation
+  // flags alone granted access, so naming yourself your own assistant exposed
+  // any event's attachments and comments.
+  if ( $is_admin )
     $can_view = true;
+  else if ( ( $is_nonuser_admin || $is_assistant ) && ! empty ( $user ) ) {
+    $res = dbi_execute ( 'SELECT we.cal_id FROM webcal_entry we
+      LEFT JOIN webcal_entry_user weu ON we.cal_id = weu.cal_id
+      WHERE we.cal_id = ? AND ( we.cal_create_by = ? OR weu.cal_login = ? )',
+      [$id, $user, $user] );
+    if ( $res ) {
+      if ( dbi_fetch_row ( $res ) )
+        $can_view = true;
+      dbi_free_result ( $res );
+    }
+  }
 
   if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) )
     $error = str_replace ( 'XXX', $id, $invalidIDStr );

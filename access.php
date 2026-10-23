@@ -46,7 +46,10 @@ $saved = '';
 // If so, do that, then redirect.
 // Handle function access first.
 $action = getPostValue('action');
-if (getPostValue('auser') != '' && $action == "save") {
+// Rewriting a login's function permissions (UAC) is administrator-only;
+// without this gate any logged-in user could grant themselves user
+// management and take over the admin role.
+if ($is_admin && getPostValue('auser') != '' && $action == "save") {
   $auser = getPostValue( 'auser' );
   $perm = '';
   for( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ) {
@@ -73,11 +76,11 @@ if (getPostValue('otheruser') != '' && $action == 'save') {
   $pouser = getPostValue( 'otheruser' );
 
   if( $allow_view_other ) {
-    // Handle access to other users' calendars.
-    // If user is not admin,
-    // reverse values so they are granting access to their own calendar.
-    if( ! $is_admin )
-      list( $puser, $pouser ) = [$pouser, $puser];
+    // Handle access to other users' calendars. A non-admin may only change
+    // access TO THEIR OWN calendar: the owner (cal_other_user) is forced to
+    // $login, never taken from the request, so the grant cannot target a
+    // victim's calendar.
+    list( $puser, $pouser ) = access_grant_pair( $is_admin, $puser, $pouser, $login );
 
     dbi_execute( 'DELETE FROM webcal_access_user WHERE cal_login = ?
     AND cal_other_user = ?', [$puser, $pouser] );

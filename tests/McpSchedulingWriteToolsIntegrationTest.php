@@ -51,7 +51,7 @@ final class McpSchedulingWriteToolsIntegrationTest extends TestCase
         $db->exec("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('MCP_SERVER_ENABLED', 'Y');");
         $db->exec("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('MCP_WRITE_ACCESS', 'Y');");
         $db->exec("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('MCP_RATE_LIMIT', '1000');");
-        $db->exec(sprintf("UPDATE webcal_user SET cal_api_token = '%s' WHERE cal_login = 'admin';", self::$api_token));
+        $db->exec(sprintf("UPDATE webcal_user SET cal_api_token = '%s' WHERE cal_login = 'admin';", hash('sha256', self::$api_token)));
 
         // A second, non-admin user to exercise the ownership check on
         // update_event / delete_event.
@@ -59,7 +59,7 @@ final class McpSchedulingWriteToolsIntegrationTest extends TestCase
         $db->exec(sprintf(
             "INSERT INTO webcal_user (cal_login, cal_firstname, cal_lastname, cal_is_admin, cal_api_token) "
             . "VALUES ('bob', 'Bob', 'Tester', 'N', '%s');",
-            self::$bob_token
+            hash('sha256', self::$bob_token)
         ));
         $db->close();
 

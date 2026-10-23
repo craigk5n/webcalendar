@@ -45,16 +45,28 @@ else {
   }
   # update user list
   if ( $error == '' ) {
-    dbi_execute ( 'DELETE FROM webcal_view_user WHERE cal_view_id = ?',
-      [$id] );
-    // If selected "All", then just put "__all__" in for username.
-    if ( getPostValue ( 'viewuserall' ) == 'Y' )
-      $users = ['__all__'];
+    // Only the view's owner may change its user list. The UPDATE above is
+    // owner-scoped, but this rewrite used $id directly, so an attacker could
+    // repoint another user's view. Verify ownership first.
+    $ownRes = dbi_execute ( 'SELECT cal_view_id FROM webcal_view
+      WHERE cal_view_id = ? AND cal_owner = ?', [$id, $login] );
+    $owns = ( $ownRes && dbi_fetch_row ( $ownRes ) );
+    if ( $ownRes )
+      dbi_free_result ( $ownRes );
+    if ( ! $owns ) {
+      $error = print_not_auth ();
+    } else {
+      dbi_execute ( 'DELETE FROM webcal_view_user WHERE cal_view_id = ?',
+        [$id] );
+      // If selected "All", then just put "__all__" in for username.
+      if ( getPostValue ( 'viewuserall' ) == 'Y' )
+        $users = ['__all__'];
 
-    $cnt = empty($users) ? 0 : count($users);
-    for ($i = 0; $i < $cnt; $i++ ) {
-      dbi_execute ( 'INSERT INTO webcal_view_user ( cal_view_id, cal_login )
-        VALUES ( ?, ? )', [$id, $users[$i]] );
+      $cnt = empty($users) ? 0 : count($users);
+      for ($i = 0; $i < $cnt; $i++ ) {
+        dbi_execute ( 'INSERT INTO webcal_view_user ( cal_view_id, cal_login )
+          VALUES ( ?, ? )', [$id, $users[$i]] );
+      }
     }
   }
 }

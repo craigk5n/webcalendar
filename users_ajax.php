@@ -487,7 +487,7 @@ function save_resource_calendar($isAdd, $username, $lastname, $firstname, $ispub
 // Add or update a remote calendar.
 function save_remote_calendar($isAdd, $username, $lastname, $firstname, $url, $ispublic, $owner='')
 {
-  global $login, $PUBLIC_ACCESS;
+  global $login, $PUBLIC_ACCESS, $is_admin, $notAuthStr;
   $error = '';
 
   // This calendar cannot be used as a public calendar if Public Access is
@@ -505,6 +505,13 @@ function save_remote_calendar($isAdd, $username, $lastname, $firstname, $url, $i
 
   // Might want to move this into user.php instead of having SQL here...
   if (empty($error) && !$isAdd) {
+    // Only an admin, or the calendar's own cal_admin, may update it; a cron
+    // then wipes and re-imports whatever URL is stored here.
+    $calAdmin = nonuser_load_variables($username, 'nucedit_')
+      ? $GLOBALS['nucedit_admin'] : null;
+    if (!remote_calendar_edit_allowed($is_admin, $calAdmin, $login)) {
+      return $notAuthStr;
+    }
     // Updating
     $query_params = [];
     $sql = 'UPDATE webcal_nonuser_cals SET cal_lastname = ?';

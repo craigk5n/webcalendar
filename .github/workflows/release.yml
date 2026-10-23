@@ -45,7 +45,11 @@ jobs:
       uses: actions/checkout@v7
 
     - name: Set up PHP (ext-sodium required for manifest signing)
-      uses: shivammathur/setup-php@v2
+      # Pin this third-party action to a full commit SHA: it runs in the same
+      # job as RELEASE_SIGNING_KEY and the OIDC signing identity, so a mutable
+      # tag would let an upstream tag move run unreviewed code next to the key.
+      # Dependabot keeps the SHA current (as with cosign-installer below).
+      uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # v2.40.0
       with:
         php-version: '8.4'
         extensions: sodium
