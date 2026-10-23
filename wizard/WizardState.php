@@ -438,4 +438,53 @@ class WizardState
     // bcrypt / password_hash format
     return password_verify($password, $this->installPassword);
   }
+
+  /**
+   * Whether a wizard POST API action may run given the current auth state.
+   *
+   * Only bootstrap actions -- password validation, authentication and
+   * welcome-page navigation -- are permitted before the user authenticates.
+   * Everything that mutates state (create admin, write settings.php, run
+   * upgrades, ...) requires isValidUser. This is the POST-side counterpart
+   * of the GET guard in index.php, which previously had no POST equivalent.
+   */
+  public function apiActionAllowed(string $action): bool
+  {
+    if ($this->isValidUser) {
+      return true;
+    }
+
+    $bootstrap = [
+      'validate-field', 'login', 'save-install-password',
+      'welcome-continue', 'welcome-quick-upgrade', 'logout',
+    ];
+
+    return in_array($action, $bootstrap, true);
+  }
+
+  /**
+   * Whether a new install password may be set.
+   *
+   * Only on a genuinely fresh instance: once an install password exists, or
+   * the instance is already initialized (settings.php or env config present),
+   * authentication must go through login/verifyInstallPassword so that
+   * save-install-password cannot be used to seize an installed calendar.
+   */
+  public function canSetInstallPassword(): bool
+  {
+    return empty($this->installPassword) && !$this->isInitialized;
+  }
+
+  /**
+   * Whether a value is safe to write into settings.php.
+   *
+   * settings.php stores values as "key: value" lines inside a /* ... *\/
+   * comment block. A value containing the comment terminator, a PHP open/close
+   * tag, or a newline could break out of that block and inject executable PHP,
+   * so such values are rejected rather than silently stripped.
+   */
+  public static function isSafeSettingValue($value): bool
+  {
+    return !preg_match('/\*\/|<\?|\?>|[\r\n]/', (string) $value);
+  }
 }

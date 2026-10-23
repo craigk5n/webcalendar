@@ -127,13 +127,15 @@ if (empty($error) && !empty($delete)) {
                 . $file['type'];
         }
     }
-    // Copy icon if local file specified.
-    $urlname = getPostvalue('urlname');
-    if (!empty($urlname) && file_exists($icon_path . $urlname)) {
+    // Copy icon if local file specified. Confine it to wc-icons/: the name
+    // is reduced to its basename and the resolved path must stay inside the
+    // icon directory, so a traversal cannot read arbitrary local files.
+    $iconFile = category_icon_safe_path(getPostValue('urlname'), $icon_path);
+    if ($iconFile !== false) {
         // Get binary data of the icon.
-        $iconData = file_get_contents($icon_path . $urlname);
+        $iconData = file_get_contents($iconFile);
         // Determine the MIME type based on the file extension.
-        $iconMimeType = (preg_match('/.(gif|GIF)$/', $urlname)) ? 'image/gif' : 'image/png';
+        $iconMimeType = (preg_match('/\.gif$/i', $iconFile)) ? 'image/gif' : 'image/png';
         // Update the icon data and MIME type in the database.
         updateIconBlob($id, $iconData, $iconMimeType);
     }
