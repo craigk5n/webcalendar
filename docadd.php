@@ -87,9 +87,20 @@ if ( $type == 'A' ) {
   else if ( $ALLOW_COMMENTS_ANY == 'Y' )
     $can_add = true;
 }
-//check UAC
-if ( access_is_enabled() ) {
-  $can_add = $can_add || access_user_calendar ( 'edit', $user );
+// Check UAC against the event's actual owner, never a request-supplied user
+// (which let a caller name themselves and bypass the participant-only policy).
+if ( access_is_enabled() && ! empty ( $id ) ) {
+  $event_owner = '';
+  $owner_res = dbi_execute ( 'SELECT cal_create_by FROM webcal_entry
+    WHERE cal_id = ?', [$id] );
+  if ( $owner_res ) {
+    if ( $orow = dbi_fetch_row ( $owner_res ) )
+      $event_owner = $orow[0];
+    dbi_free_result ( $owner_res );
+  }
+  if ( ! empty ( $event_owner ) )
+    $can_add = $can_add
+      || access_user_calendar ( 'edit', $event_owner ) == CAN_DOALL;
 }
 
 if ( ! $can_add )

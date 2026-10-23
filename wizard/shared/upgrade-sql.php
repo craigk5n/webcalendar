@@ -724,4 +724,8 @@ SQL
     'version' => 'v1.9.25',
     'default-sql' => ''
   ],
+  [
+    'version' => 'v1.9.26',
+    'default-sql' => ''
+  ],
 ];

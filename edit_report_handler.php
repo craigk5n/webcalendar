@@ -62,12 +62,14 @@ if ( ! $is_admin )
 
 $adding_report = ( empty ( $report_id ) || $report_id <= 0 );
 
-// Check permissions.
-// Can only edit/delete if you created the event or you are an admin.
-if ( empty ( $error ) && $single_user != 'N' && !
-    empty ( $report_id ) && $report_id > 0 && ! $is_admin ) {
-  $res = dbi_execute ( 'SELECT cal_login FROM webcal_report WHERE report_id = ?',
-    [$report_id] );
+// Check permissions. Can only edit/delete a report you created, or as admin.
+// This must apply in every mode -- it was previously gated on
+// $single_user != 'N', so in multi-user mode a non-admin could edit or delete
+// any report by id -- and it must query the real column (cal_report_id).
+if ( empty ( $error ) &&
+    ! empty ( $report_id ) && $report_id > 0 && ! $is_admin ) {
+  $res = dbi_execute ( 'SELECT cal_login FROM webcal_report
+    WHERE cal_report_id = ?', [$report_id] );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] != $login )

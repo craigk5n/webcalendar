@@ -113,9 +113,8 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
     if ( ! empty ( $SERVER_URL ) ) {
       // DON'T change & to &amp; here. email will handle it
       $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
-      if ( $htmlmail == 'Y' )
-        $url = activate_urls ( $url );
-
+      // WebCalMailer::Body() linkifies URLs for HTML mail, so pass the URL as
+      // plain text rather than pre-wrapping it in an anchor.
       $msg .= "\n" . $url;
     }
     if ( ! empty ( $comments ) )

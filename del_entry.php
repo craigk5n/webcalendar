@@ -8,8 +8,10 @@ $other_user = '';
 
 // First, check to see if this user should be able to delete this event.
 if ( $id > 0 ) {
-  // Then see who has access to edit this entry.
-  $can_edit = ( $is_admin || $readonly != 'Y' );
+  // Start from no access; the checks below grant it to the creator, a
+  // participant, an assistant/nonuser-admin, an admin, or a UAC edit grant.
+  // (Was ( $is_admin || $readonly != 'Y' ), i.e. true for every writer.)
+  $can_edit = false;
 
   // If assistant is doing this, then we need to switch login to user in the SQL.
   $query_params = [];
@@ -89,6 +91,12 @@ if ( $res ) {
 $override_repeat = false;
 if ( ! empty ( $date ) && $event_repeats && ! empty ( $override ) )
   $override_repeat = true;
+
+// Excluding a single occurrence (webcal_entry_repeats_not) changes the event
+// for every participant, so it needs owner-level authority; a mere
+// participant may only set their own status.
+if ( $override_repeat && ! ( $is_admin || $my_event ) )
+  $error = print_not_auth();
 
 if ( $id > 0 && empty ( $error ) ) {
   if ( ! empty ( $date ) )
