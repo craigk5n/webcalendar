@@ -7913,4 +7913,20 @@ function safe_return_path ( $path ) {
 
   return $path;
 }
+
+/**
+ * Make a string safe to place inside an XML CDATA section.
+ *
+ * The one sequence that cannot appear in CDATA is the terminator ']]>'. A
+ * value containing it (e.g. an event name or description in an RSS feed)
+ * would otherwise close the CDATA early and let the rest be parsed as markup.
+ * Split the terminator across two CDATA sections so the text is preserved.
+ *
+ * @param string $text the raw value
+ *
+ * @return string value safe to embed between <![CDATA[ and ]]>
+ */
+function cdata_escape ( $text ) {
+  return str_replace ( ']]>', ']]]]><![CDATA[>', (string) $text );
+}
 ?>

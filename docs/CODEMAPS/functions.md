@@ -14,7 +14,7 @@ dozen globals. Half the functions indexed here declare at least one.
 
 ## `includes/functions.php`
 
-169 functions.
+170 functions.
 
 | Function | Line | Purpose | Globals |
 |---|---:|---|---|
@@ -30,6 +30,7 @@ dozen globals. Half the functions indexed here declare at least one.
 | `bump_local_timestamp()` | 212 | Bump UNIX local timestamp with the given duration | — |
 | `calc_time_slot()` | 301 | Calculates which row/slot this time represents | `$TIME_SLOTS` |
 | `category_icon_safe_path()` | 7712 | Resolve a category icon request to a safe file inside the icon directory | — |
+| `cdata_escape()` | 7929 | Make a string safe to place inside an XML CDATA section | — |
 | `check_for_conflicts()` | 339 | Checks for conflicts | `$is_assistant, $is_nonuser_admin, $jumpdate, $LIMIT_APPTS_NUMBER, $LIMIT_APPTS, $repeated_events, $single_user_login, $single_user` |
 | `check_mcp_rate_limit()` | 6888 | Checks if a user has exceeded the MCP rate limit | — |
 | `clean_html()` | 501 | Replaces unsafe characters with HTML encoded equivalents | — |
