@@ -14,11 +14,11 @@ dozen globals. Half the functions indexed here declare at least one.
 
 ## `includes/functions.php`
 
-170 functions.
+169 functions.
 
 | Function | Line | Purpose | Globals |
 |---|---:|---|---|
-| `access_grant_pair()` | 7848 | Resolve the (cal_login, cal_other_user) pair for an access | — |
+| `access_grant_pair()` | 7796 | Resolve the (cal_login, cal_other_user) pair for an access | — |
 | `activate_urls()` | 58 | Looks for URLs in the given text, and makes them into links | — |
 | `activity_log()` | 100 | Adds something to the activity log for an event | — |
 | `add_dstfree_time()` | 163 | Get the corrected timestamp after adding or subtracting ONE_HOUR to compensate for DST | — |
@@ -29,7 +29,7 @@ dozen globals. Half the functions indexed here declare at least one.
 | `build_entry_popup()` | 6330 | Builds the HTML for the entry popup | `$ALLOW_HTML_DESCRIPTION, $DISABLE_POPUPS, $login, $PARTICIPANTS_IN_POPUP, $popup_fullnames, $popuptemp_fullname, $PUBLIC_ACCESS_VIEW_PART, $SUMMARY_LENGTH, $tempfullname` |
 | `bump_local_timestamp()` | 212 | Bump UNIX local timestamp with the given duration | — |
 | `calc_time_slot()` | 301 | Calculates which row/slot this time represents | `$TIME_SLOTS` |
-| `category_icon_safe_path()` | 7764 | Resolve a category icon request to a safe file inside the icon directory | — |
+| `category_icon_safe_path()` | 7712 | Resolve a category icon request to a safe file inside the icon directory | — |
 | `check_for_conflicts()` | 339 | Checks for conflicts | `$is_assistant, $is_nonuser_admin, $jumpdate, $LIMIT_APPTS_NUMBER, $LIMIT_APPTS, $repeated_events, $single_user_login, $single_user` |
 | `check_mcp_rate_limit()` | 6888 | Checks if a user has exceeded the MCP rate limit | — |
 | `clean_html()` | 501 | Replaces unsafe characters with HTML encoded equivalents | — |
@@ -108,11 +108,10 @@ dozen globals. Half the functions indexed here declare at least one.
 | `is_mcp_available()` | 6878 | Checks if MCP SDK dependencies are available | — |
 | `is_mcp_enabled()` | 6815 | _(undocumented)_ | — |
 | `is_mcp_write_enabled()` | 6863 | Check if MCP write access is enabled | — |
-| `is_system_only_setting()` | 7924 | Whether a setting name is an administrator-only system setting that a user preference (webcal_user_pref) must… | — |
+| `is_system_only_setting()` | 7872 | Whether a setting name is an administrator-only system setting that a user preference (webcal_user_pref) must… | — |
 | `is_weekend()` | 4008 | Determine if date is a weekend | `$WEEKEND_START` |
 | `isLeapYear()` | 4038 | Is this a leap year? | — |
 | `isSecure()` | 6619 | Is the current connection using HTTPS rather than HTTP? | — |
-| `js_cacher_safe_path()` | 7714 | Resolve a js_cacher | — |
 | `load_global_settings()` | 4109 | Loads default system settings (which can be updated via admin | `$_SERVER, $APPLICATION_NAME, $FONTS, $HTTP_HOST, $LANGUAGE, $REQUEST_URI, $SERVER_PORT, $SERVER_URL` |
 | `load_nonuser_preferences()` | 4213 | Loads nonuser preferences from the webcal_user_pref table if on a nonuser admin page | `$DATE_FORMAT, $DATE_FORMAT_MD, $DATE_FORMAT_MY, $prefarray` |
 | `load_remote_calendar()` | 3013 | Load or reload a remote calendar if and only if it has been modified since the last time it was imported | `$calUser, $count_suc, $error_num, $errormsg, $importMd5, $login, $numDeleted` |
@@ -136,7 +135,7 @@ dozen globals. Half the functions indexed here declare at least one.
 | `mcp_validate_rrule()` | 7284 | Validate a client-supplied RRULE against the subset WebCalendar can store and correctly expand (see the sched… | — |
 | `month_name()` | 4553 | Returns the either the full name or the abbreviation of the specified month | `$lang` |
 | `nonuser_load_variables()` | 4615 | Loads nonuser variables (login, firstname, etc | `$error, $nuloadtmp_email` |
-| `pref_resolve_target()` | 7820 | Resolve whose preferences pref | — |
+| `pref_resolve_target()` | 7768 | Resolve whose preferences pref | — |
 | `print_category_menu()` | 4652 | Prints dropdown HTML for categories | `$CATEGORIES_ENABLED, $categories, $login, $user` |
 | `print_checkbox()` | 4702 | Generates HTML for checkbox form controls | `$prefarray, $s, $SCRIPT` |
 | `print_color_input_html()` | 4750 | Generates color input type, now supported in HTML | `$prefarray, $s, $SCRIPT` |
@@ -157,9 +156,9 @@ dozen globals. Half the functions indexed here declare at least one.
 | `remember_this_view()` | 5719 | Generates a cookie that saves the last calendar view | `$REQUEST_URI` |
 | `reminder_web_trigger_allowed()` | 6851 | Decides whether an HTTP request may run the reminder script | — |
 | `reminder_web_trigger_presented_token()` | 6828 | Reads the reminder web-trigger token presented with an HTTP request | — |
-| `remote_calendar_edit_allowed()` | 7796 | Whether $login may edit/delete/repoint a remote (nonuser) calendar | — |
+| `remote_calendar_edit_allowed()` | 7744 | Whether $login may edit/delete/repoint a remote (nonuser) calendar | — |
 | `rgb2html()` | 6598 | _(undocumented)_ | — |
-| `safe_return_path()` | 7956 | Constrain a return_path to a safe, same-origin relative page reference | — |
+| `safe_return_path()` | 7904 | Constrain a return_path to a safe, same-origin relative page reference | — |
 | `send_doctype()` | 5741 | This just sends the DOCTYPE used in a lot of places in the code | `$charset, $lang, $LANGUAGE` |
 | `send_http_login()` | 5765 | Sends an HTTP login request to the browser and stops execution | `$lang_file` |
 | `send_no_cache_header()` | 5798 | Sends HTTP headers that tell the browser not to cache this page | — |
@@ -171,8 +170,8 @@ dozen globals. Half the functions indexed here declare at least one.
 | `sort_events()` | 5901 | Sorts the combined event arrays by timestamp then name | — |
 | `sort_events_insensitive()` | 5922 | Sorts the combined event arrays by timestamp then name (case insensitive) | — |
 | `sort_users()` | 5940 | Sort user array based on $USER_SORT_ORDER | `$USER_SORT_ORDER` |
-| `template_edit_allowed()` | 7873 | Whether $login may edit the custom template (header/script/trailer) owned by $user | — |
-| `template_external_file()` | 7894 | Resolve an ALLOW_EXTERNAL_HEADER template file to a safe path, or false | — |
+| `template_edit_allowed()` | 7821 | Whether $login may edit the custom template (header/script/trailer) owned by $user | — |
+| `template_external_file()` | 7842 | Resolve an ALLOW_EXTERNAL_HEADER template file to a safe path, or false | — |
 | `time_to_minutes()` | 5963 | Converts a time format HHMMSS (like 130000 for 1PM) into number of minutes past midnight | — |
 | `times_overlap()` | 5977 | Checks to see if two events overlap | — |
 | `update_import_check_date()` | 2994 | _(undocumented)_ | — |

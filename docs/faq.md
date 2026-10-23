@@ -24,8 +24,9 @@ distribute it freely under the terms of this license.
 
 ### What PHP version do I need?
 
-PHP 8.0 or later. PHP 8.2+ is recommended. WebCalendar is tested against
-PHP 8.2, 8.3, and 8.4 in CI.
+PHP 8.2 or later. WebCalendar is tested against PHP 8.2, 8.3, and 8.4 in
+CI. PHP 8.1 reached end of life on 31 December 2025 and is no longer
+supported.
 
 ### Which database should I use?
 

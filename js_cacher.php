@@ -11,11 +11,20 @@ if( empty( $inc ) && ! empty( $_REQUEST['inc'] ) )
 
 $arinc = explode( '/', $inc );
 
-// We only allow includes if they exist in our js or HTMLarea directories.
-if( $arinc[0] != 'js' && $arinc[0] != 'htmlarea' )
+// Only a file directly inside includes/js may be included. Segments after
+// the file name are arguments some of those files read, never path parts.
+// "." and ".." are listed by readdir(), so they are excluded explicitly.
+if( count( $arinc ) < 2 || $arinc[0] !== 'js'
+    || $arinc[1] === '.' || $arinc[1] === '..' )
   return false;
 
-$base = ( is_dir( 'includes' ) ? 'includes' : '../includes' );
+$newinc = is_dir( 'includes' ) ? 'includes/js' : '../includes/js';
+
+if( ! in_array( $arinc[1], scandir( $newinc ), true )
+    || ! is_file( "$newinc/$arinc[1]" ) )
+  return false;
+
+$newinc .= '/' . $arinc[1];
 
 require_once 'includes/translate.php';
 require_once 'includes/config.php';
@@ -44,10 +53,6 @@ $login = ( empty( $_SESSION['webcal_login'] )
 
 load_user_preferences();
 
-// Resolve the requested asset safely: only a regular file inside
-// includes/js or includes/htmlarea may be included (see js_cacher_safe_path).
-$newinc = js_cacher_safe_path( $inc, $base );
-if( $newinc !== false )
-  include_once $newinc;
+include_once $newinc;
 
 ?>

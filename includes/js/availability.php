@@ -1,13 +1,12 @@
 <?php
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
-// These come from the request-controlled js_cacher 'inc' path and are
-// emitted raw into JavaScript below, so constrain them: the date parts are
-// integers and the form name is a bare identifier.
+// All four come from the request and are written into script.
 $month = (int) ( $arinc[3] ?? 0 );
 $day = (int) ( $arinc[4] ?? 0 );
 $year = (int) ( $arinc[5] ?? 0 );
-$parent_form = preg_replace ( '/[^A-Za-z0-9_]/', '', $arinc[6] ?? '' );
+$parent_form = preg_match( '/^[A-Za-z_]\w*$/', $arinc[6] ?? '' )
+  ? $arinc[6] : '';
 ?>
 
 function schedule_event(hours, minutes) {

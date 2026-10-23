@@ -7696,58 +7696,6 @@ function mcp_run_stdio_loop($in, $out, $tools) {
 }
 
 /**
- * Resolve a js_cacher.php 'inc' request to a safe file path, or false.
- *
- * Only a regular file inside includes/js or includes/htmlarea may be
- * returned. Any '.', '..' or null-byte segment, or a path that resolves
- * outside the base directory, is rejected -- this replaces the old readdir()
- * listing (which contained '..') being used as the allowlist, the bug that
- * allowed unauthenticated local file inclusion. The 'true'/'false' trailing
- * marker, and anything after it, is a flag for the included script and is not
- * part of the file path.
- *
- * @param string $inc  request value, e.g. 'js/availability.php/false/'
- * @param string $base includes directory (relative or absolute)
- *
- * @return string|bool absolute real path to include, or false if unsafe
- */
-function js_cacher_safe_path ( $inc, $base ) {
-  $arinc = explode ( '/', (string) $inc );
-
-  if ( $arinc[0] != 'js' && $arinc[0] != 'htmlarea' )
-    return false;
-
-  $rel = [];
-  foreach ( $arinc as $seg ) {
-    if ( $seg === 'true' || $seg === 'false' )
-      break;
-    if ( $seg === '' )
-      continue;
-    if ( $seg === '.' || $seg === '..' || strpos ( $seg, "\0" ) !== false )
-      return false;
-
-    $rel[] = $seg;
-  }
-
-  // Need the js/htmlarea directory plus at least one file segment.
-  if ( count ( $rel ) < 2 )
-    return false;
-
-  $rootReal = realpath ( $base . '/' . $arinc[0] );
-  $real = realpath ( $base . '/' . implode ( '/', $rel ) );
-
-  if ( $rootReal === false || $real === false || ! is_file ( $real ) )
-    return false;
-
-  // Confirm the resolved file sits inside the js/htmlarea directory.
-  if ( $real !== $rootReal
-    && strpos ( $real, $rootReal . DIRECTORY_SEPARATOR ) !== 0 )
-    return false;
-
-  return $real;
-}
-
-/**
  * Resolve a category icon request to a safe file inside the icon directory.
  *
  * category_handler.php copied file_get_contents( 'wc-icons/' . $urlname )

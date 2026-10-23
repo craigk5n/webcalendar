@@ -13,6 +13,7 @@ parameters:
     - docs
     - docker
     - includes/classes/phpmailer
+    - includes/classes/mcp-sdk
     - includes/classes/captcha
     - install (?)
     - contrib (?)

@@ -45,7 +45,8 @@ final class ActivityLogConstantsTest extends TestCase
 
     $names = [];
     foreach ($files as $relative) {
-      if (str_starts_with($relative, 'includes/classes/phpmailer/')) {
+      if (str_starts_with($relative, 'includes/classes/phpmailer/')
+        || str_starts_with($relative, 'includes/classes/mcp-sdk/')) {
         continue;
       }
       $source = @file_get_contents(self::ROOT . '/' . $relative);

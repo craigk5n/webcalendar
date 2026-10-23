@@ -24,7 +24,15 @@ TINYMCE_VENDOR_DIR = vendor/tinymce
 SHA384SUM = /usr/bin/sha384sum
 
 _DEFAULT: _phpmailer includes/load_assets.php \
-	_ICONS pub/tinymce/CHANGELOG.md
+	_ICONS pub/tinymce/CHANGELOG.md mcp-sdk
+
+# The MCP SDK and its dependencies ship in includes/classes/mcp-sdk/ so the
+# release zip and the Docker image can run the MCP server without Composer.
+# Rerun after `composer update mcp/sdk`; tests/McpSdkBundleTest.php fails
+# until the committed bundle matches composer.lock and vendor/.
+.PHONY: mcp-sdk
+mcp-sdk:
+	php tools/build-mcp-sdk.php
 
 _phpmailer: $(PHPMAILER_DIR)/PHPMailer.php \
 	$(PHPMAILER_DIR)/Exception.php \

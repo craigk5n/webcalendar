@@ -105,8 +105,30 @@ directory, not from the `docker/` subdirectory.
 **Production** (MariaDB, port 8080):
 
 ```bash
-docker compose -f docker/docker-compose-prod.yml up
+docker compose -f docker/docker-compose-prod.yml up -d --build
 ```
+
+This builds the image from your checkout. On first start every page
+redirects to the install wizard; complete it in the browser at
+`http://localhost:8080`, or from a shell (the database values match the
+defaults in `docker-compose-prod.yml`; `--force` is needed because the
+image ships an empty `settings.php`):
+
+```bash
+docker compose -f docker/docker-compose-prod.yml exec webcalendar \
+  php wizard/headless.php --force --db-type=mysqli --db-host=db \
+  --db-login=webcalendar --db-password=Webcalendar.1 \
+  --db-database=webcalendar_php8 --admin-login=admin \
+  --admin-password='choose-a-password'
+```
+
+No default `admin`/`admin` account exists; the administrator is whichever
+account the wizard creates. Change the database passwords in
+`docker-compose-prod.yml` before exposing the site.
+
+To run the published image rather than building one, use
+`craigk5n/webcalendar` from Docker Hub (for example
+`craigk5n/webcalendar:1.9.24`).
 
 **Development** (MariaDB on 8080, PostgreSQL on 8081):
 
@@ -124,7 +146,7 @@ Shell access into a running container:
 
 ```bash
 docker compose -f docker/docker-compose-prod.yml \
-  exec webcalendar-php8 /bin/sh
+  exec webcalendar /bin/sh
 ```
 
 ### Environment Variables
@@ -253,7 +275,9 @@ make              # copies vendor assets to pub/
 
 The `make` target requires `sha384sum` (Linux). It copies
 Bootstrap, jQuery, and other front-end assets from `vendor/` into
-`pub/` where the application loads them.
+`pub/` where the application loads them. `make mcp-sdk` runs on any
+OS and refreshes the MCP SDK copy in `includes/classes/mcp-sdk/`,
+which is how the MCP server works in releases without Composer.
 
 ## Upgrading
 

@@ -7,7 +7,7 @@
 class WebCalendarWizard {
   constructor(options) {
     this.currentStep = options.currentStep || 'welcome';
-    this.programVersion = options.programVersion || 'v1.9.24';
+    this.programVersion = options.programVersion || 'v1.9.25';
     this.isUpgrade = options.isUpgrade || false;
     this.usingEnv = options.usingEnv || false;
     

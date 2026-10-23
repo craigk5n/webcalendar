@@ -720,4 +720,8 @@ SQL,
 UPDATE webcal_entry SET cal_type = 'M' WHERE cal_type = 'E' AND cal_id IN ( SELECT cal_id FROM webcal_entry_repeats );
 SQL
   ],
+  [
+    'version' => 'v1.9.25',
+    'default-sql' => ''
+  ],
 ];
