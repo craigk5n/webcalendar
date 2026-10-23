@@ -20,6 +20,14 @@ require_once __DIR__ . "/SourceText.php";
  *     by mutable tag alongside RELEASE_SIGNING_KEY.
  *   - The LDAP backend's user_valid_crypt() returned true for any input, so a
  *     remember-me cookie was accepted without verification.
+ *   - The IMAP and NIS backends' user_valid_crypt() still used the legacy
+ *     crypt() self-comparison against the stored cal_passwd hash. For an
+ *     external-auth user whose cal_passwd is empty that comparison is
+ *     trivially forgeable (crypt('', C) == C has a solution the attacker
+ *     controls), and more generally it is the AUTH-1 pass-the-hash pattern.
+ *     login.php mints the remember-me token for every backend, but the
+ *     directory (not webcal_user) is the source of truth for these backends,
+ *     so they fail closed and require a fresh login.
  *
  * @covers ::cdata_escape
  */
@@ -84,5 +92,34 @@ final class AuditLeftoversTest extends TestCase
     self::assertStringContainsString('return false', $body,
       'LDAP user_valid_crypt must not accept an unverifiable cookie.');
     self::assertStringNotContainsString('return true', $body);
+  }
+
+  public function test_imap_remember_me_fails_closed(): void
+  {
+    $body = SourceText::phpFunction(
+      file_get_contents(__DIR__ . '/../includes/user-imap.php'),
+      'user_valid_crypt'
+    );
+    self::assertNotNull($body);
+    self::assertStringContainsString('return false', $body,
+      'IMAP user_valid_crypt must fail closed, not accept a remember-me cookie.');
+    self::assertStringNotContainsString('return true', $body);
+    // The forgeable legacy crypt() self-comparison must be gone.
+    self::assertStringNotContainsString('crypt(', $body,
+      'IMAP user_valid_crypt must not use the legacy crypt() self-comparison.');
+  }
+
+  public function test_nis_remember_me_fails_closed(): void
+  {
+    $body = SourceText::phpFunction(
+      file_get_contents(__DIR__ . '/../includes/user-nis.php'),
+      'user_valid_crypt'
+    );
+    self::assertNotNull($body);
+    self::assertStringContainsString('return false', $body,
+      'NIS user_valid_crypt must fail closed, not accept a remember-me cookie.');
+    self::assertStringNotContainsString('return true', $body);
+    self::assertStringNotContainsString('crypt(', $body,
+      'NIS user_valid_crypt must not use the legacy crypt() self-comparison.');
   }
 }
