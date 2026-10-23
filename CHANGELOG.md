@@ -15,6 +15,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+## [v1.9.26] - 2026-10-23
+
+Security release resolving the findings of a comprehensive security audit:
+55 confirmed vulnerabilities (2 critical, 12 high, 25 medium, 16 low) plus 6
+validated leads. All users are strongly encouraged to upgrade. No database
+schema changes.
+
+### Security
+
+- Access control: enforced per-object ownership and authorization across event
+  create/edit/delete, AJAX endpoints, export, reports, preferences, remote
+  (nonuser) calendars, custom templates, document/blob delegation, the wizard
+  POST API, and MCP write tools; fixed privilege escalation and cross-account
+  (IDOR) access (#801, #802).
+- Authentication/session: replaced the pass-the-hash remember-me cookie with a
+  random token stored only as a server-side hash, across the DB, LDAP, IMAP and
+  NIS backends; added session-id rotation on login, SameSite/strict-mode
+  session and cookie hardening, a login brute-force throttle, and
+  account-lifecycle, registration and open-redirect hardening (#801, #803).
+- Cross-site scripting: escaped reflected/stored output in ajax.php, task
+  names, include-src, iCal JS, HTML mail, upcoming.php and report.php; fixed an
+  rss.php CDATA breakout (#801, #802).
+- SQL escaping: DB2/ODBC parameter escaping now uses ANSI quote-doubling
+  instead of addslashes (#803).
+- SSRF: closed an IPv4-mapped IPv6 bypass in the remote-URL guard (#801).
+- Local file inclusion/path traversal: fixed unauthenticated LFI via
+  js_cacher.php, confined category-icon copying to wc-icons/, and locked down
+  the custom-template subsystem (#801).
+- Information disclosure: fixed private/confidential event leaks in
+  view_entry.php, upcoming.php and report.php (#801).
+- Configuration integrity: stopped request-derived SERVER_URL persistence and
+  blocked non-admin override of system settings (#801).
+- Email: enforce STARTTLS for SMTP notification mail (#801).
+- iCalendar import: require active participation before matching by UID (#801).
+- Supply chain: pinned the release-signing GitHub Action to a commit SHA (#802).
+
 ## [v1.9.25] - 2026-10-05
 
 ### Changed
