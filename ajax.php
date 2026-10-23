@@ -71,7 +71,9 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
    . ( $name > 3 ? ' ASC' : ' DESC' );
   echo display_small_tasks ( $cat_id );
 } else {
-  echo "Invalid page: $page \n";
+  // Escape the reflected request value: ajax.php emits text/html with no CSP,
+  // and the input filter is only a tag denylist (reflected XSS otherwise).
+  echo 'Invalid page: ' . htmlspecialchars ( $page, ENT_QUOTES ) . " \n";
 }
 
 ?>

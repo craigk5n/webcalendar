@@ -205,20 +205,22 @@ function print_upcoming_event ( $e, $date ) {
   }
 
   //added for hCalendar
-  if ( $hcalendar_output ) {
+  // Only emit hCalendar details for events the viewer may fully see, and
+  // HTML-escape the free-text fields.
+  if ( $hcalendar_output && ! $private && ! $confidential ) {
     echo '<abbr class="dtstart" title="'. export_ts_utc_date ($e->getDateTimeTS() )
       .'">' . $e->getDateTime() . "</abbr>\n";
     echo '<abbr class="dtend" title="'. export_ts_utc_date ($e->getEndDateTimeTS() )
       . '">' . $e->getEndDateTimeTS() . "</abbr>\n";
-    echo '<span class="description">' . $e->getDescription() . "</span>\n";
+    echo '<span class="description">' . htmlspecialchars ( $e->getDescription() ) . "</span>\n";
     if ( strlen ( $e->getLocation() ) > 0 )
-    echo '<span class="location">' . $e->getLocation() . "</span>\n";
+    echo '<span class="location">' . htmlspecialchars ( $e->getLocation() ) . "</span>\n";
     $categories = get_categories_by_id ( $e->getId(), $username );
     $category = implode ( ', ', $categories);
     if ( strlen( $category ) > 0 )
       echo '<span class="categories">' . htmlentities ( $category ) . "</span>\n";
     if ( strlen ( $e->getUrl() ) > 0 )
-      echo '<span class="url">' . $e->getUrl() . "</span>\n";
+      echo '<span class="url">' . htmlspecialchars ( $e->getUrl() ) . "</span>\n";
     $rrule = export_recurrence_ical( $e->getId() );
     if ( strlen ( $rrule ) > 6 )
       echo '<span class="rrule">' . substr ( $rrule, 6 ) . "</span>\n";
@@ -277,10 +279,13 @@ $showTime = ( ! empty ( $showTime ) && $showTime !== false );
 //go to a different URL you can specify that here.
 $title_more_url=$SERVER_URL;
 
-//set default upcoming title but allow it to be overridden
-$upcoming_title = getValue ( 'upcoming_title' );
-if (empty ($upcoming_title)) $upcoming_title= '<a href="'.
-   $title_more_url . '">Upcoming Events</a>';
+// Default title is trusted markup (a link); a request-supplied title is
+// untrusted and must be HTML-escaped on output (reflected XSS).
+$req_title = getValue ( 'upcoming_title' );
+$upcoming_title = ( empty ( $req_title )
+  ? '<a href="' . htmlspecialchars ( $title_more_url ) . '">'
+    . translate ( 'Upcoming Events' ) . '</a>'
+  : htmlspecialchars ( stripslashes ( $req_title ), ENT_QUOTES, 'UTF-8' ) );
 
 //echo "$numDays $showTitle $maxEvents <p>";
 
@@ -371,10 +376,8 @@ if ( $error == '' ) {
     }
   }
 
-    $x = getGetValue ( 'upcoming_title', true );
-    if ( ! empty ( $x ) ) {
-      $upcoming_title = $x;
-    }
+    // (Removed: a second getGetValue('upcoming_title', true) override that
+    // bypassed chkXSS. The title is resolved and escaped once, above.)
 
     $x = getGetValue ( 'showMore', true );
     if ( strlen( $x ) > 0 ) {
@@ -547,7 +550,7 @@ if ( ! empty ( $error ) ) {
   exit;
 }
 
-if ($showTitle) echo '<h3 class="cal_upcoming_title">'. translate ($upcoming_title) . '</h3>';
+if ($showTitle) echo '<h3 class="cal_upcoming_title">'. $upcoming_title . '</h3>';
 ?> <div class="vcalendar"><?php
 echo "<dl>\n";
 

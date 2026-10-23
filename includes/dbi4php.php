@@ -749,9 +749,6 @@ function dbi_escape_string( $string ) {
   global $db_connection_info;
   $string = stripslashes( $string );
   switch( $GLOBALS['db_type'] ) {
-    case 'ibase':
-    case 'oracle':
-      return str_replace( "'", "''", $string );
     case 'mysqli':
       return ( empty( $db_connection_info['connected'] )
         ? addslashes( $string )
@@ -762,10 +759,18 @@ function dbi_escape_string( $string ) {
       return sqlite_escape_string( $string );
     case 'sqlite3':
       return SQLite3::escapeString ( $string );
+    case 'ibase':
+    case 'oracle':
     case 'ibm_db2':
     case 'odbc':
     default:
-      return addslashes( $string );
+      // ANSI SQL neutralizes a single quote by doubling it; backslash is NOT
+      // an escape character in these engines. The ibm_db2/odbc/default cases
+      // previously used addslashes() (MySQL-style), which turns ' into \' --
+      // a backslash followed by a live, string-terminating quote on DB2/ODBC,
+      // so a crafted value could break out of the interpolated string literal.
+      // Quote-doubling is the standard-conforming, injection-safe default.
+      return str_replace( "'", "''", $string );
   }
 }
 

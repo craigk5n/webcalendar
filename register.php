@@ -130,7 +130,12 @@ if (empty($valid_ip))
   $error = $notauth;
 
 // We could make $control a unique value if necessary.
+// Ignore the client-chosen registration mode and use the server policy:
+// otherwise, with SELF_REGISTRATION_FULL=Y, posting control=full would skip
+// the email round-trip and let the attacker set their own password directly.
 $control = getPostValue('control');
+if (!empty($control))
+  $control = $form_control;
 $illegalCharStr = translate('Illegal characters in login XXX.');
 
 if (empty($error) && !empty($control)) {

@@ -43,6 +43,13 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 }
 
 if ( $action == 'enable' || $action == 'disable' ) {
+  // State change: require POST so it goes through the CSRF token check in
+  // preventHacking() (the UI posts it). A GET could otherwise toggle the
+  // layer status cross-site with no token.
+  if ( $_SERVER['REQUEST_METHOD'] !== 'POST' ) {
+    ajax_send_error ( translate ( 'Invalid form request' ) );
+    exit;
+  }
   // Toggle LAYER_STATUS in the user's preferences between N and Y.
   dbi_execute( 'DELETE FROM webcal_user_pref WHERE cal_login = ?
     AND cal_setting = "LAYERS_STATUS"',  [$layer_user] );
@@ -74,7 +81,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
   if ( $ALLOW_VIEW_OTHER != 'Y' ) {
     $error = print_not_auth (7);
   } else {
-    save_layer ( getPostValue('layeruser'),
+    save_layer ( $layer_user,
       getPostValue('source'), getPostValue('color'),
       getPostValue('dups') == 'Y' ? 'Y' : 'N',
       getPostValue('id') );
@@ -93,7 +100,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
     if ( $id <= 0 ) {
       $error = translate('Invalid entry id.');
     } else {
-      delete_layer ( getPostValue('layeruser'), $id );
+      delete_layer ( $layer_user, $id );
     }
   }
   if ( $error == '' )

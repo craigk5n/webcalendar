@@ -284,12 +284,12 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
 
         echo '
     <item>
-      <title><![CDATA[' . $dateinfo . $entries[$j]->getName() . ']]></title>
+      <title><![CDATA[' . $dateinfo . cdata_escape ( $entries[$j]->getName() ) . ']]></title>
       <link>' . getServerUrl() . 'view_entry.php?id=' . $entries[$j]->getID()
          . '&amp;friendly=1&amp;rssuser=' . $login . '&amp;date=' . $d . '</link>
-      <description><![CDATA[' . $entries[$j]->getDescription() . ']]></description>'
+      <description><![CDATA[' . cdata_escape ( $entries[$j]->getDescription() ) . ']]></description>'
          . ( empty ( $category ) ? '' : '
-      <category><![CDATA[' . $category . ']]></category>' )
+      <category><![CDATA[' . cdata_escape ( $category ) . ']]></category>' )
         // . '<creator><![CDATA[' . $creator . ']]></creator>'
         /* RSS 2.0 date format Wed, 02 Oct 2002 13:00:00 GMT */. '
       <pubDate>' . gmdate ( 'D, d M Y H:i:s', $unixtime ) . ' GMT</pubDate>
@@ -333,12 +333,12 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
           : '' );
 
         echo '
-      <title><![CDATA[' . $dateinfo . $rentries[$j]->getName() . ']]></title>
+      <title><![CDATA[' . $dateinfo . cdata_escape ( $rentries[$j]->getName() ) . ']]></title>
       <link>' . getServerUrl() . "view_entry.php?id=" . $rentries[$j]->getID()
          . '&amp;friendly=1&amp;rssuser=' . $login . '&amp;date=' . $d . '</link>
-      <description><![CDATA[' . $rentries[$j]->getDescription() . ']]></description>'
+      <description><![CDATA[' . cdata_escape ( $rentries[$j]->getDescription() ) . ']]></description>'
          . ( empty ( $category ) ? '' : '
-      <category><![CDATA[' . $category . ']]></category>' )
+      <category><![CDATA[' . cdata_escape ( $category ) . ']]></category>' )
         // . '<creator><![CDATA[' . $creator . ']]></creator>'
         . '
       <pubDate>' . gmdate ( 'D, d M Y H:i:s', $unixtime ) . ' GMT</pubDate>
