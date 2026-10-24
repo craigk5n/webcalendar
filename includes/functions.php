@@ -594,7 +594,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $participant_pct = '20%'; //Use percentage.
 
   $tentative = translate ( 'Tentative' );
-  $titleStr = ' title="' . translate ( 'Schedule an appointment for XXX.' ) . '">';
+  $titleStr  = ' title="' . tooltip ( 'Schedule an appointment for XXX.' ) . '">';
   $viewMsg = translate ( 'View this entry' );
 
   $hours = $last_hour - $first_hour;
@@ -1060,7 +1060,7 @@ function display_month( $thismonth, $thisyear, $demo = false,
   // Add mouse-over help for table.
   if ( $can_add ) {
     $help = 'title="' .
-      translate ( 'Double-click on empty cell to add new entry' ) . '"';
+      tooltip ( 'Double-click on empty cell to add new entry' ) . '"';
   } else {
     $help = '';
   }
@@ -1079,7 +1079,7 @@ function display_month( $thismonth, $thisyear, $demo = false,
   $ret .= '
       </tr>';
   $charset = translate ( 'charset' );
-  $weekStr = translate ( 'Week' );
+  $weekStr = tooltip ( 'Week' );
   $WKStr = translate ( 'WK' );
 
   $wkstart = get_weekday_before ( $thisyear, $thismonth );
@@ -1262,7 +1262,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   $prevStr = translate ( 'Previous' );
   $u_url = ( $user != $login && ! empty ( $user )
     ? 'user=' . $user . '&amp;' : '' );
-  $weekStr = translate ( 'Week' );
+  $weekStr = tooltip ( 'Week' );
 
   // Start the minical table for each month.
   $ret = '
@@ -1454,7 +1454,7 @@ function display_small_tasks ( $cat_id ) {
         <td></td>' );
   }
 
-  $priorityStr = translate ( 'Priority' );
+  $priorityStr = tooltip ( 'Priority' );
   $dateFormatStr = $DATE_FORMAT_TASK;
   $task_list = query_events ( $task_user, false,
     ( empty ( $task_filter ) ? '' : $task_filter ), $cat_id, true );
@@ -1479,6 +1479,15 @@ function display_small_tasks ( $cat_id ) {
       </tr>
       <tr class="header">' . $ajax[4] . $ajax[5] . $ajax[6] . $ajax[7] . '
       </tr>';
+
+  $due_date_str     = translate ( 'Due Date' );
+  $due_time         = translate ( 'Due Time' );
+  $percent_complete = translate ( 'Percent Complete' );
+
+  $task_due_date  = tooltip ( 'Task Due Date' );
+  $task_completed = tooltip ( 'Completed' );
+  $task_name      = tooltip ( 'Task Name' );
+
   foreach ( $task_list as $E ) {
     // Check UAC.
     $task_owner = $E->getLogin();
@@ -1501,27 +1510,27 @@ function display_small_tasks ( $cat_id ) {
         <td colspan="2">' . $link . ' title="' . $priorityStr . '">'
      . $E->getPriority() . '</a></td>
         <td class="name" colspan="2" style="inline-size: 50%">&nbsp;' . $link . ' title="'
-     . translate( 'Task Name' ) . ': ' . htmlspecialchars( $E->getName(), ENT_QUOTES ) . '">'
+     . tooltip( 'Task Name' ) . ': ' . htmlspecialchars( $E->getName(), ENT_QUOTES ) . '">'
      . htmlspecialchars( substr( $E->getName(), 0, 15 ), ENT_QUOTES )
      . ( strlen( $E->getName() ) > 15 ? '...' : '' ) . '</a></td>
-        <td colspan="2">' . $link . ' title="' . translate ( 'Task Due Date' )
+        <td colspan="2">' . $link . ' title="' . $task_due_date
      . '">'
      . date_to_str( $E->getDueDate(), $dateFormatStr, false, false ) . '</a>'
      . '</td>
         <td class="pct" colspan="2">' . $link . ' title="% '
-     . translate( 'Completed' ) . '">' . $E->getPercent() . '</a></td>
+      . $task_completed . '">' . $E->getPercent() . '</a></td>
       </tr>';
     $row_cnt++;
     // Build special string to pass to popup.
     // TODO: Move this logic into build_entry_popup().
     $eventinfo .= build_entry_popup( 'eventinfo-' . $linkid, $E->getLogin(),
-      $E->getDescription(), translate( 'Due Time' ) . ':'
+      $E->getDescription(), $due_time . ':'
        . display_time( '', 0, $E->getDueDateTimeTS() ) . '</dd><dd>'
-       . translate ( 'Due Date' ) . ':'
+        . $due_date_str . ':'
        . date_to_str( $E->getDueDate(), '', false )
        . "</dd>\n<dt>" . $priorityStr . ":</dt>\n<dd>" . $E->getPriority()
        . '-' . $pri[ceil( $E->getPriority() / 3 )] . "</dd>\n<dt>"
-       . translate( 'Percent Complete' ) . ":</dt>\n<dd>" . $E->getPercent()
+        . $percent_complete . ":</dt>\n<dd>" . $E->getPercent()
        . '%', '', $E->getLocation(), $E->getName(), $cal_id );
   }
   for ( $i = 7; $i > $row_cnt; $i-- ) {
@@ -2003,7 +2012,7 @@ function generate_printer_friendly ( $hrefin = '' ) {
 
   $href = str_replace ( '&', '&amp;', $href );
   $displayStr = translate ( 'Printer Friendly' );
-  $statusStr = translate ( 'Generate printer-friendly version' );
+  $statusStr = tooltip ( 'Generate printer-friendly version' );
 
   return <<<EOT
     <a title="{$statusStr}" class="printer" href="{$href}"
@@ -3697,7 +3706,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   $name = $event->getName();
   $time = $event->getTime();
   $time_only = 'N';
-  $view_text = translate ( 'View this event' );
+  $view_text = tooltip ( 'View this event' );
 
   $catIcon = get_category_icon_url($getCat);
   $key++;
@@ -3744,7 +3753,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
 
   if ( $getCalTypeName == 'task' ) {
     $hour_arr[$ind] .= '<img src="images/bootstrap-icons/circle-fill.svg" class="bullet" alt="*"> ';
-    $view_text = translate ( 'View this task' );
+    $view_text = tooltip ( 'View this task' );
   }
 
   $hour_arr[$ind] .= '<a title="' . $view_text . '" class="' . $class . '" id="'
@@ -3908,12 +3917,12 @@ function html_for_event_week_at_a_glance ( $event, $date,
     if ( $getCalTypeName == 'task' ) {
       $hour_arr[$ind] .= '<img src="images/bootstrap-icons/circle-fill.svg" class="bullet" alt="*"> ';
 
-      $title .= translate ( 'View this task' );
+      $title .= tooltip ( 'View this task' );
     } else { // Must be event.
       if ( $isAllDay || $isUntime && $catAlt == '' )
         $hour_arr[$ind] .= '<img src="images/bootstrap-icons/circle-fill.svg" class="bullet" alt="*"> ';
 
-      $title .= translate ( 'View this event' );
+      $title .= tooltip ( 'View this event' );
     }
   }
 
@@ -5034,8 +5043,8 @@ function print_entry ( $event, $date ) {
   static $viewEventStr, $viewTaskStr;
 
   if ( empty ( $viewEventStr ) ) {
-    $viewEventStr = translate ( 'View this event' );
-    $viewTaskStr = translate ( 'View this task' );
+    $viewEventStr = tooltip ( 'View this event' );
+    $viewTaskStr  = tooltip ( 'View this task' );
   }
 
   $catIcon = $in_span = $padding = $popup_timestr = $ret = $timestr = '';
@@ -5780,7 +5789,7 @@ function send_http_login() {
 
   if ( strlen ( $lang_file ) ) {
     $not_authorized = print_not_auth();
-    $title = translate ( 'Title' );
+    $title = tooltip ( 'Title' );
     $unauthorized = translate ( 'Unauthorized' );
   } else {
     $not_authorized = 'You are not authorized';
@@ -6714,7 +6723,7 @@ function upgrade_requires_db_changes($db_type, $old_version, $new_version) {
     // Stop after new_version
     if (version_compare($ver, $normalizedNew, '>'))
       break;
-    
+
     // Always return true if we find a version > old_version.
     // This ensures the wizard is triggered for every version bump
     // to update the WEBCAL_PROGRAM_VERSION in the database.
