@@ -16,23 +16,23 @@
  * @todo Organize initialization steps more logically.
  */
 class WebCalendar {
-  /**
-   * Filename of the page the user is viewing.
+  /**#@+
    *
    * @var string
    *
    * @access private
    */
-  var $_filename;
 
   /**
    * WebCalendar install directory.
-   *
-   * @var string
-   *
-   * @access private
    */
   var $_directory;
+
+  /**
+   * Filename of the page the user is viewing.
+   */
+  var $_filename;
+  /**#@-*/
 
   /**
    * A map from filenames to initialization phases.
@@ -116,20 +116,20 @@ class WebCalendar {
     $PHP_SELF, $SCRIPT, $self, $special, $user_inc;
 
     // Make sure another app in the same domain doesn't have a 'user' cookie.
-    if ( empty ( $HTTP_GET_VARS ) )
-      $HTTP_GET_VARS = $_GET;
-
-    if ( empty ( $HTTP_POST_VARS ) )
-      $HTTP_POST_VARS = $_POST;
+    $HTTP_GET_VARS = $HTTP_GET_VARS
+      ?: $_GET
+      ?: $_POST
+      ?: '';
 
     if ( ! empty ( $HTTP_GET_VARS ) && empty ( $HTTP_GET_VARS['user'] ) && ! empty ( $HTTP_POST_VARS ) && empty ( $HTTP_POST_VARS['user'] ) &&
         isset ( $GLOBALS['user'] ) )
       unset ( $GLOBALS['user'] );
 
     // Get script name.
-    $self = htmlspecialchars($_SERVER['PHP_SELF']);
-    if ( empty ( $self ) )
-      $self = htmlspecialchars($PHP_SELF);
+    $self = $self
+      ?: htmlspecialchars($_SERVER['PHP_SELF'])
+      ?: htmlspecialchars($PHP_SELF)
+      ?: ' ';
 
     preg_match ( '/\/(\w+\.php)/', $self, $match );
     $SCRIPT = $match[1];
@@ -193,8 +193,7 @@ class WebCalendar {
     $month   = getValue ( 'month', '[0-9]+' );
     $year    = getValue ( 'year', '[0-9]+' );
 
-    if ( empty ( $PUBLIC_ACCESS ) )
-      $PUBLIC_ACCESS = 'N';
+    $PUBLIC_ACCESS = $PUBLIC_ACCESS ?: 'N';
 
     // Initialize access settings ($user_access string)
     // and make sure user is allowed to view the current page.
@@ -276,7 +275,7 @@ class WebCalendar {
       } else
         $cat_id = '';
 
-      $caturl = ( empty ( $cat_id ) ? '' : '&amp;cat_id=' . $cat_id );
+      $caturl = ( empty ( $cat_id ) ? '' : "&amp;cat_id=$cat_id" );
     }
   }
 
@@ -387,11 +386,9 @@ class WebCalendar {
 
     // Don't allow a user to put "login=XXX" in the URL
     // if they are not coming from the login.php page.
-    if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER['PHP_SELF'] ) )
-      $PHP_SELF = $_SERVER['PHP_SELF']; // Backward compatibility.
-
-    if ( empty ( $PHP_SELF ) )
-      $PHP_SELF = ''; // This happens when running send_reminders.php from CL.
+    $PHP_SELF = $PHP_SELF
+      ?: $_SERVER['PHP_SELF'] // Backward compatibility.
+      ?: ''; // This happens when running "send_reminders.php" from CL.
 
     if ( ! strstr ( $PHP_SELF, 'login.php' ) && ! empty ( $GLOBALS['login'] ) )
       $GLOBALS['login'] = '';
@@ -400,11 +397,10 @@ class WebCalendar {
     // We define a unique key to scramble the cookie we generate.
     // We use the admin install password that the user set to make
     // the salt unique for each WebCalendar install.
-    $salt = ( ! empty ( $settings ) && ! empty ( $settings['install_password'] )
-      ? $settings['install_password'] : md5 ( $db_login ) );
+    $salt = $settings['install_password'] ?: md5 ( $db_login );
     $salt_len = strlen ( $salt );
 
-    $salt2 = md5( empty( $db_password ) ? 'oogabooga' : $db_password );
+    $salt2 = md5( $db_password ?: 'oogabooga' );
     $salt2_len = strlen ( $salt2 );
 
     $offsets = [];
@@ -455,13 +451,8 @@ class WebCalendar {
      * create its own http auth since an iCal client cannot login via a
      * web-based login. Publish.php does need to validate if not http_auth.
      */
-    if ( ! $use_http_auth &&
-      ( $this->_filename == 'css_cacher.php' ||
-        $this->_filename == 'icalclient.php' ||
-        $this->_filename == 'rss_unapproved.php' ||
-        $this->_filename == 'rss_activity_log.php' ||
-        $this->_filename == 'js_cacher.php' ||
-        $this->_filename == 'publish.php' ) ) {
+    if ( ! $use_http_auth && str_contains ( 'css_cacher.phpcss_cacher.phpicalclient.phpjs_cacher.phpublish.phprss_activity_log.phprss_unapproved.php',
+        $this->_filename ) {
       return;
     }
 
@@ -469,37 +460,18 @@ class WebCalendar {
 
     // Catch-all for getting the username when using HTTP-authentication.
     if ( $use_http_auth ) {
-      if ( empty ( $PHP_AUTH_USER ) ) {
-        if ( ! empty ( $_SERVER ) && isset ( $_SERVER['PHP_AUTH_USER'] ) )
-          $PHP_AUTH_USER = $_SERVER['PHP_AUTH_USER'];
-        else
-        if ( ! empty ( $HTTP_SERVER_VARS ) &&
-            isset ( $HTTP_SERVER_VARS['PHP_AUTH_USER'] ) )
-          $PHP_AUTH_USER = $HTTP_SERVER_VARS['PHP_AUTH_USER'];
-        else
-        if ( isset ( $REMOTE_USER ) )
-          $PHP_AUTH_USER = $REMOTE_USER;
-        else
-        if ( ! empty ( $_ENV ) && isset ( $_ENV['REMOTE_USER'] ) )
-          $PHP_AUTH_USER = $_ENV['REMOTE_USER'];
-        else
-        if ( ! empty ( $HTTP_ENV_VARS ) && isset ( $HTTP_ENV_VARS['REMOTE_USER'] ) )
-          $PHP_AUTH_USER = $HTTP_ENV_VARS['REMOTE_USER'];
-        else
-        if ( @getenv ( 'REMOTE_USER' ) )
-          $PHP_AUTH_USER = getenv ( 'REMOTE_USER' );
-        else
-        if ( isset ( $AUTH_USER ) )
-          $PHP_AUTH_USER = $AUTH_USER;
-        else
-        if ( ! empty ( $_ENV ) && isset ( $_ENV['AUTH_USER'] ) )
-          $PHP_AUTH_USER = $_ENV['AUTH_USER'];
-        else
-        if ( ! empty ( $HTTP_ENV_VARS ) && isset ( $HTTP_ENV_VARS['AUTH_USER'] ) )
-          $PHP_AUTH_USER = $HTTP_ENV_VARS['AUTH_USER'];
-        else
-        if ( @getenv ( 'AUTH_USER' ) )
-          $PHP_AUTH_USER = getenv ( 'AUTH_USER' );
+      $PHP_AUTH_USER = $PHP_AUTH_USER
+        ?: $_SERVER['PHP_AUTH_USER']
+        ?: $HTTP_SERVER_VARS['PHP_AUTH_USER']
+        ?: $REMOTE_USER
+        ?: $_ENV['REMOTE_USER']
+        ?: $HTTP_ENV_VARS['REMOTE_USER']
+        ?: getenv ( 'REMOTE_USER' )
+        ?: $AUTH_USER
+        ?: $_ENV['AUTH_USER']
+        ?: $HTTP_ENV_VARS['AUTH_USER']
+        ?: getenv ( 'AUTH_USER' )
+        ?: '';
       }
     }
 
@@ -702,11 +674,12 @@ class WebCalendar {
         $PUBLIC_ACCESS_CAN_ADD = $row[0];
     }
 
-    if ( empty ( $PHP_SELF ) )
-      $PHP_SELF = $_SERVER['PHP_SELF'];
+    $PHP_SELF = $PHP_SELF
+      ?: $_SERVER['PHP_SELF']
+      ?: '';
 
-    if ( empty ( $login_url ) )
-      $login_url = 'login.php';
+    $login_url = $login_url
+      ?: 'login.php';
 
     $login_url .= ( strstr ( $login_url, '?' ) ? '&amp;' : '?' )
      . ( empty ( $login_return_path ) ? '' : 'return_path='
@@ -787,76 +760,23 @@ class WebCalendar {
     // If they are accessing using the public login,
     // Restrict them from using certain pages.
     $not_auth = false;
-    if ( ! empty ( $login ) && $login == '__public__' || $is_nonuser ) {
-      if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
-        strstr ( $PHP_SELF, 'admin.php' ) ||
-        strstr ( $PHP_SELF, 'admin_handler.php' ) ||
-        strstr ( $PHP_SELF, 'adminhome.php' ) ||
-        strstr ( $PHP_SELF, 'approve_entry.php' ) ||
-        strstr ( $PHP_SELF, 'category.php' ) ||
-        strstr ( $PHP_SELF, 'category_handler.php' ) ||
-        strstr ( $PHP_SELF, 'del_entry.php' ) ||
-        strstr ( $PHP_SELF, 'edit_remotes.php' ) ||
-        strstr ( $PHP_SELF, 'edit_remotes_handler.php' ) ||
-        strstr ( $PHP_SELF, 'edit_template.php' ) ||
-        strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
-        strstr ( $PHP_SELF, 'groups.php' ) ||
-        strstr ( $PHP_SELF, 'import.php' ) ||
-        strstr ( $PHP_SELF, 'import_handler.php' ) ||
-        strstr ( $PHP_SELF, 'layer_toggle.php' ) ||
-        strstr ( $PHP_SELF, 'layers.php' ) ||
-        strstr ( $PHP_SELF, 'list_unapproved.php' ) ||
-        strstr ( $PHP_SELF, 'pref.php' ) ||
-        strstr ( $PHP_SELF, 'pref_handler.php' ) ||
-        strstr ( $PHP_SELF, 'reject_entry.php' ) ||
-        strstr ( $PHP_SELF, 'set_entry_cat.php' ) ||
-        strstr ( $PHP_SELF, 'views.php' ) ||
-        strstr ( $PHP_SELF, 'views_edit_handler.php' ) )
-        $not_auth = true;
+    if ( ! empty ( $login ) && $login === '__public__' || $is_nonuser ) {
+      $not_auth = str_contains ( 'activity_log.phpadmin_handler.phpadmin.phpadminhome.phpapprove_entry.phpcategory_handler.phpcategory.phpdel_entry.phpedit_remotes_handler.phpedit_remotes.phpedit_template.phpgroup_edit_handler.phpgroups.phpimport_handler.phpimport.phplayer_toggle.phplayers.phplist_unapproved.phpref_handler.phpref.phpreject_entry.phpset_entry_cat.phpviews_edit_handler.phpviews.php',
+        $PHP_SELF );
     }
 
     if ( empty ( $is_admin ) || ! $is_admin ) {
       //if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
-      if ( strstr ( $PHP_SELF, 'admin.php' ) ||
-        strstr ( $PHP_SELF, 'admin_handler.php' ) ||
-        strstr ( $PHP_SELF, 'group_edit.php' ) ||
-        strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
-        strstr ( $PHP_SELF, 'groups.php' ) ) {
-        $not_auth = true;
+      $not_auth = str_contains ( 'admin.phpadmin_handler.phpgroup_edit.phpgroup_edit_handler.phpgroups.php',
+        $PHP_SELF )
       }
     }
 
     // Restrict access if calendar is read-only.
     if ( $readonly == 'Y' ) {
-      if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
-        strstr ( $PHP_SELF, 'admin.php' ) ||
-        strstr ( $PHP_SELF, 'adminhome.php' ) ||
-        strstr ( $PHP_SELF, 'approve_entry.php' ) ||
-        strstr ( $PHP_SELF, 'category.php' ) ||
-        strstr ( $PHP_SELF, 'category_handler.php' ) ||
-        strstr ( $PHP_SELF, 'del_entry.php' ) ||
-        strstr ( $PHP_SELF, 'edit_report.php' ) ||
-        strstr ( $PHP_SELF, 'edit_report_handler.php' ) ||
-        strstr ( $PHP_SELF, 'edit_template.php' ) ||
-        strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
-        strstr ( $PHP_SELF, 'groups.php' ) ||
-        strstr ( $PHP_SELF, 'import.php' ) ||
-        strstr ( $PHP_SELF, 'import_handler.php' ) ||
-        strstr ( $PHP_SELF, 'import_handler.php' ) ||
-        strstr ( $PHP_SELF, 'layer_toggle.php' ) ||
-        strstr ( $PHP_SELF, 'layers.php' ) ||
-        strstr ( $PHP_SELF, 'list_unapproved.php' ) ||
-        strstr ( $PHP_SELF, 'pref.php' ) ||
-        strstr ( $PHP_SELF, 'pref_handler.php' ) ||
-        strstr ( $PHP_SELF, 'pref_handler.php' ) ||
-        strstr ( $PHP_SELF, 'purge.php' ) ||
-        strstr ( $PHP_SELF, 'register.php' ) ||
-        strstr ( $PHP_SELF, 'reject_entry.php' ) ||
-        strstr ( $PHP_SELF, 'set_entry_cat.php' ) ||
-        strstr ( $PHP_SELF, 'users.php' ) ||
-        strstr ( $PHP_SELF, 'views.php' ) ||
-        strstr ( $PHP_SELF, 'views_edit_handler.php' ) )
-        $not_auth = true;
+      $not_auth = str_contains (
+'activity_log.phpadmin.phpadminhome.phpapprove_entry.phpcategory_handler.phpcategory.phpdel_entry.phpedit_report_handler.phpedit_report.phpedit_template.phpgroup_edit_handler.phpgroups.phpimport_handler.phpimport.phplayer_toggle.phplayers.phplist_unapproved.phpref_handler.phpref.phpurge.phpregister.phpreject_entry.phpset_entry_cat.phpusers.phpviews_edit_handler.phpviews.php',
+        $PHP_SELF )
     }
 
     // An attempt will be made to translate
@@ -901,8 +821,7 @@ class WebCalendar {
     global $enable_mbstring, $lang_file, $lang,
     $LANGUAGE, $PUBLIC_ACCESS_FULLNAME, $translation_loaded;
 
-    if ( empty ( $LANGUAGE ) )
-      $LANGUAGE = 'English-US'; // Default
+    $LANGUAGE = $LANGUAGE ?: 'English-US'; // Default
 
     // If set to use browser settings,
     // use the user's language preferences from their browser.
@@ -921,12 +840,9 @@ class WebCalendar {
       $mb_lang = strtok($lang, '-');
       // Check the language against the map, default to 'neutral' if not found
       $mapped_lang = $this->mb_language_map[$mb_lang] ?? 'neutral';
-      if (@mb_language($mapped_lang) && mb_internal_encoding(translate('charset'))) {
-          $enable_mbstring = true;
-      } else {
-          $enable_mbstring = false;
-      }
-  }
+      $enable_mbstring =
+        (@mb_language($mapped_lang) && mb_internal_encoding(translate('charset')));
+    }
 
     $translation_loaded = false;
 
