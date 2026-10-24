@@ -15,6 +15,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+## [v1.9.27] - 2026-10-23
+
+### Added
+
+- `ALLOW_EXTERNAL_HEADER_PHP` admin setting (default off): execute the external
+  header/stylesheet/trailer file as PHP. External files are read by default;
+  enable this only if the file needs to run PHP. (#807)
+
+### Fixed
+
+- Restore the admin-configured site-wide external header, stylesheet and
+  trailer. The v1.9.26 LFI hardening confined external template files to
+  `templates/` and read them instead of including them, so an admin file at
+  the webroot was not loaded and its path was printed on every page. Only the
+  admin `__system__` template may now name an external file; per-user
+  templates stay literal content, so the finding #22 LFI stays closed. (#807)
+
 ## [v1.9.26] - 2026-10-23
 
 Security release resolving the findings of a comprehensive security audit:

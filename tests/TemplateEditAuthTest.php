@@ -3,6 +3,7 @@
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . "/../includes/functions.php";
+require_once __DIR__ . "/../includes/default_config.php";
 require_once __DIR__ . "/SourceText.php";
 
 /**
@@ -14,9 +15,11 @@ require_once __DIR__ . "/SourceText.php";
  *    or any victim's template (stored XSS). Authorization is now decided by
  *    template_edit_allowed().
  *  - load_template() include()d a DB-stored path as PHP when
- *    ALLOW_EXTERNAL_HEADER=Y (reachable unauthenticated via login.php),
- *    giving local file read and code execution. It now resolves the path
- *    through template_external_file() and reads it, never includes it.
+ *    ALLOW_EXTERNAL_HEADER=Y, with the path controllable by a non-admin (via
+ *    a per-user template, or the __system__ template whose write-guard was a
+ *    no-op assert()), reachable unauthenticated via login.php. Now only the
+ *    admin-authored __system__ template may name an external file, decided by
+ *    template_external_file(); per-user templates are never file-included.
  *
  * Covers security-audit run-1:
  *   edit_template.php:system-template-authz-predicate-always-true (high)
@@ -65,7 +68,7 @@ final class TemplateEditAuthTest extends TestCase
     $this->assertTrue(template_edit_allowed('alice', 'bob', false, false, false, true));
   }
 
-  // ---- template_external_file: confinement ----
+  // ---- template_external_file: admin-only external include ----
 
   private string $tmp = '';
 
@@ -73,32 +76,55 @@ final class TemplateEditAuthTest extends TestCase
   {
     $this->tmp = sys_get_temp_dir() . '/wc_tpl_' . uniqid();
     mkdir($this->tmp);
-    file_put_contents($this->tmp . '/header.html', '<b>hi</b>');
+    file_put_contents($this->tmp . '/header.php', '<b>hi</b>');
   }
 
   protected function tearDown(): void
   {
-    @unlink($this->tmp . '/header.html');
+    @unlink($this->tmp . '/header.php');
     @rmdir($this->tmp);
   }
 
-  public function test_external_file_accepts_contained_file(): void
+  public function test_external_file_allows_system_template_when_enabled(): void
   {
-    $got = template_external_file($this->tmp . '/header.html', $this->tmp);
-    $this->assertSame(realpath($this->tmp . '/header.html'), $got);
+    // Admin-authored __system__ template, ALLOW_EXTERNAL_HEADER on, real file.
+    $this->assertSame(
+      realpath($this->tmp . '/header.php'),
+      template_external_file($this->tmp . '/header.php', true, 'Y')
+    );
   }
 
-  public function test_external_file_rejects_outside_base(): void
+  public function test_external_file_never_resolves_per_user_template(): void
   {
-    $this->assertFalse(template_external_file('/etc/passwd', $this->tmp));
-    $this->assertFalse(template_external_file($this->tmp . '/../header.html', $this->tmp));
+    // The finding #22 boundary: a per-user (non-system) template path must
+    // never resolve to an includable file, even for a real file with
+    // ALLOW_EXTERNAL_HEADER on. Per-user template text stays literal content.
+    $this->assertFalse(
+      template_external_file($this->tmp . '/header.php', false, 'Y'),
+      'per-user templates must never be included as a file'
+    );
+  }
+
+  public function test_external_file_requires_allow_external_header(): void
+  {
+    $this->assertFalse(template_external_file($this->tmp . '/header.php', true, 'N'));
+    $this->assertFalse(template_external_file($this->tmp . '/header.php', true, ''));
   }
 
   public function test_external_file_rejects_empty_null_and_missing(): void
   {
-    $this->assertFalse(template_external_file('', $this->tmp));
-    $this->assertFalse(template_external_file("x\0.html", $this->tmp));
-    $this->assertFalse(template_external_file($this->tmp . '/nope.html', $this->tmp));
+    $this->assertFalse(template_external_file('', true, 'Y'));
+    $this->assertFalse(template_external_file("x\0.php", true, 'Y'));
+    $this->assertFalse(template_external_file($this->tmp . '/nope.php', true, 'Y'));
+  }
+
+  public function test_allow_external_header_php_is_off_by_default_and_system_only(): void
+  {
+    $defaults = webcal_config_defaults();
+    $this->assertSame('N', $defaults['ALLOW_EXTERNAL_HEADER_PHP'] ?? null,
+      'PHP execution in external templates must default to off');
+    $this->assertTrue(is_system_only_setting('ALLOW_EXTERNAL_HEADER_PHP'),
+      'ALLOW_EXTERNAL_HEADER_PHP must not be overridable by a user preference');
   }
 
   // ---- source structure: the dangerous idioms are gone ----
@@ -114,18 +140,21 @@ final class TemplateEditAuthTest extends TestCase
     );
   }
 
-  public function test_load_template_does_not_include_db_path(): void
+  public function test_load_template_gates_external_include_on_system_template(): void
   {
     $body = SourceText::phpFunction(
       file_get_contents(__DIR__ . '/../includes/functions.php'),
       'load_template'
     );
     $this->assertNotNull($body);
+    // The external-file decision goes through the helper, which enforces
+    // __system__-only + ALLOW_EXTERNAL_HEADER. load_template must pass the
+    // system-template flag so a per-user template can never be included.
     $this->assertStringContainsString('template_external_file', $body);
-    $this->assertStringNotContainsString(
-      'include "$file"',
+    $this->assertMatchesRegularExpression(
+      '/template_external_file\s*\(\s*\$file\s*,\s*\$fromSystem\s*,/',
       $body,
-      'load_template() must never include a DB-stored path as PHP'
+      'load_template must gate external inclusion on the __system__ flag'
     );
   }
 }
