@@ -4268,9 +4268,10 @@ function load_nonuser_preferences ( $nonuser ) {
  *                       ('H' = header, 'S' = stylesheet, 'T' = trailer)
  */
 function load_template ( $login, $type ) {
-  global $ALLOW_EXTERNAL_HEADER, $ALLOW_USER_HEADER;
+  global $ALLOW_EXTERNAL_HEADER, $ALLOW_USER_HEADER, $ALLOW_EXTERNAL_HEADER_PHP;
 
   $found = false;
+  $fromSystem = false;
   $ret = '';
 
   // First, check for a user-specific template.
@@ -4282,6 +4283,7 @@ function load_template ( $login, $type ) {
       $row = $rows[0];
       $ret .= $row[0];
       $found = true;
+      // A per-user template is user-controlled; it is never treated as a file.
     }
   }
 
@@ -4292,6 +4294,7 @@ function load_template ( $login, $type ) {
       $row = $rows[0];
       $ret .= $row[0];
       $found = true;
+      $fromSystem = true;
     }
   }
 
@@ -4306,6 +4309,7 @@ function load_template ( $login, $type ) {
       if ( ! empty ( $row ) ) {
         $ret .= $row[0];
         $found = true;
+        $fromSystem = true;
       }
     }
   }
@@ -4315,15 +4319,24 @@ function load_template ( $login, $type ) {
   $file = preg_replace ('/^\s*/', '', $ret);
   $file = preg_replace ('/\s*$/', '', $file);
 
-  // Optional external header/script/trailer file. The template text is NOT
-  // included as PHP (that executed a DB-stored, potentially attacker-named
-  // path, reachable even unauthenticated): confine it to the templates/
-  // directory and read it.
-  if ( $found
-    && ( ! empty ( $ALLOW_EXTERNAL_HEADER ) && $ALLOW_EXTERNAL_HEADER == 'Y' ) ) {
-    $safe = template_external_file ( $file, __DIR__ . '/../templates' );
-    if ( $safe !== false )
-      $ret = file_get_contents ( $safe );
+  // Optional external header/script/trailer file. Only the admin-authored
+  // __system__ template may name an external file -- template_external_file()
+  // enforces that, which closes the finding #22 user-controlled include; a
+  // per-user template stays literal content. The file is READ by default, and
+  // executed as PHP (include) only when the admin has also turned on the
+  // separate ALLOW_EXTERNAL_HEADER_PHP setting.
+  if ( $found ) {
+    $safe = template_external_file ( $file, $fromSystem, $ALLOW_EXTERNAL_HEADER );
+    if ( $safe !== false ) {
+      if ( ! empty ( $ALLOW_EXTERNAL_HEADER_PHP ) && $ALLOW_EXTERNAL_HEADER_PHP == 'Y' ) {
+        ob_start();
+        include $safe;
+        $ret = ob_get_contents();
+        ob_end_clean();
+      } else {
+        $ret = file_get_contents ( $safe );
+      }
+    }
   }
 
   return $ret;
@@ -7836,31 +7849,40 @@ function template_edit_allowed ( $user, $login, $isAdmin, $uacEnabled,
 }
 
 /**
- * Resolve an ALLOW_EXTERNAL_HEADER template file to a safe path, or false.
+ * Resolve an external header/trailer/stylesheet file to a real path, or false.
  *
- * load_template() used to include() this DB-stored path as PHP, which is a
- * local file read and code-execution primitive reachable even from the
- * unauthenticated login page. The file must now be a regular file confined to
- * $baseDir (a fixed templates directory) and is read, never executed.
+ * The finding #22 LFI/RCE was that load_template() include()d a DB-stored path
+ * a non-admin could control -- a per-user template, or the __system__ template
+ * whose write-guard was a no-op assert() -- reachable even from the
+ * unauthenticated login page. Two independent boundaries fix that:
+ * edit_template.php now restricts who may set the __system__ template
+ * (template_edit_allowed()), and this resolver returns a path only for the
+ * admin-authored __system__ template ($fromSystem) and only when
+ * ALLOW_EXTERNAL_HEADER is on. A per-user template path never resolves, so its
+ * text always stays literal content.
  *
- * @param string $file    candidate path from the template text
- * @param string $baseDir the permitted templates directory
+ * Whether the returned file is then read or executed as PHP is the caller's
+ * decision, gated by the separate ALLOW_EXTERNAL_HEADER_PHP admin setting.
  *
- * @return string|bool absolute real path to read, or false if unsafe
+ * @param string $file                candidate path from the template text
+ * @param bool   $fromSystem          text came from the __system__ template
+ * @param string $allowExternalHeader the ALLOW_EXTERNAL_HEADER setting
+ *
+ * @return string|bool absolute real path, or false if not an allowed file
  */
-function template_external_file ( $file, $baseDir ) {
-  $file = (string) $file;
+function template_external_file ( $file, $fromSystem, $allowExternalHeader ) {
+  // Only the admin-authored site-wide template may name an external file.
+  if ( ! $fromSystem )
+    return false;
+  if ( empty ( $allowExternalHeader ) || $allowExternalHeader != 'Y' )
+    return false;
 
+  $file = trim ( (string) $file );
   if ( $file === '' || strpos ( $file, "\0" ) !== false )
     return false;
 
-  $base = realpath ( $baseDir );
   $real = realpath ( $file );
-
-  if ( $base === false || $real === false || ! is_file ( $real ) )
-    return false;
-
-  if ( strpos ( $real, $base . DIRECTORY_SEPARATOR ) !== 0 )
+  if ( $real === false || ! is_file ( $real ) )
     return false;
 
   return $real;
@@ -7887,6 +7909,7 @@ function is_system_only_setting ( $name ) {
       'PUBLIC_ACCESS_OTHERS', 'PUBLIC_ACCESS_VIEW_PART',
       'PUBLIC_ACCESS_ADD_NEEDS_APPROVAL', 'PUBLIC_ACCESS_DEFAULT_VISIBLE',
       'PUBLIC_ACCESS_FULLNAME', 'REQUIRE_APPROVALS', 'ALLOW_EXTERNAL_HEADER',
+      'ALLOW_EXTERNAL_HEADER_PHP',
       'ALLOW_USER_HEADER', 'ALLOW_HTML_DESCRIPTION', 'READONLY', 'readonly',
       'SINGLE_USER', 'SINGLE_USER_LOGIN', 'SELF_REGISTRATION',
       'SELF_REGISTRATION_FULL', 'REMOTES_ENABLED', 'ENABLE_CAPTCHA',

@@ -383,7 +383,7 @@ CREATE TABLE webcal_config (
   PRIMARY KEY ( cal_setting )
 );
 
-INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( 'WEBCAL_PROGRAM_VERSION', 'v1.9.26' );
+INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( 'WEBCAL_PROGRAM_VERSION', 'v1.9.27' );
 
 /**
  * Activity log for an event.

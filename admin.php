@@ -345,6 +345,9 @@ if ( ! $error ) {
     <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'enable-external-header-help' ) . '">'
    . translate ( 'Allow external file for header/script/trailer' ) . ':</label>'
    . print_radio ( 'ALLOW_EXTERNAL_HEADER' ) . '</div>
+   <div class="form-inline mt-1 mb-2"><label>'
+   . translate ( 'Execute PHP in external header/script/trailer file' ) . ':</label>'
+   . print_radio ( 'ALLOW_EXTERNAL_HEADER_PHP' ) . '</div>
    <div class="form-inline mt-1 mb-2"><label>' . translate ( 'Allow user to override header/trailer' )
    . ':</label>' . print_radio ( 'ALLOW_USER_HEADER' ) . '</div>
           </fieldset>
