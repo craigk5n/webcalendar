@@ -608,8 +608,8 @@ hour ahead of you: гадзіну наперадзе
 hour behind you: гадзіна ззаду цябе
 hours ahead of you: гадзіны наперадзе вас
 hours behind you: гадзін ззаду вас
-XXX is in a different timezone (ahead): (XXX знаходзіцца ў іншым часавым поясе; ГГГ наперадзе вас.<br>&nbsp;ZZZ)
-XXX is in a different timezone (behind): (XXX знаходзіцца ў іншым часавым поясе; ГГГ ззаду вас.<br>&nbsp;ZZZ)
+XXX is in a different timezone (ahead): (XXX знаходзіцца ў іншым часавым поясе; YYY наперадзе вас.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX знаходзіцца ў іншым часавым поясе; YYY ззаду вас.<br>&nbsp;ZZZ)
 Time entered here is based on your Timezone.: Уведзены час заснаваны на вашым гадзіннікавым поясе.
 Edit Entry: Рэдагаваць запіс
 Details: Падрабязнасці
@@ -1073,7 +1073,7 @@ cookies-note: Заўвага: Гэта прыкладанне патрабуе �
 #
 Illegal characters in login XXX.: Недапушчальныя сімвалы ў лагіне XXX.
 Invalid login: Няправільны ўваход
-Activity login failure: Імя карыстальніка: "XXX", IP: "ГГГ".
+Activity login failure: Імя карыстальніка: "XXX", IP: "YYY".
 Error XXX: Памылка: "XXX".
 You have been logged out.: Вы выйшлі з сістэмы.
 Access public calendar: Доступ да агульнадаступнага календара
@@ -1387,11 +1387,11 @@ db_type not defined.: db_type не вызначаны.
 invalid db_type XXX: няправільны db_type "" XXX ".
 Cache cleared from previous SQL!: Кэш ачышчаны ад папярэдняга SQL!
 Error executing query.: Памылка пры выкананні запыту.
-Unfortunately, XXX is not implemented for YYY: На жаль, "XXX" не выкарыстоўваецца для (ГГГ).
+Unfortunately, XXX is not implemented for YYY: На жаль, "XXX" не выкарыстоўваецца для (YYY).
 Unknown ODBC error.: Невядомая памылка ODBC.
 Error opening cache dir XXX.: Памылка адкрыцця дырэктывы кэша "XXX".
 delete: выдаліць
-Cache error Could not XXX file YYY.: Памылка кэша: Не ўдалося XXX файл "ГГГ".
+Cache error Could not XXX file YYY.: Памылка кэша: Не ўдалося XXX файл "YYY".
 
 ########################################
 # Page: includes/formvars.php
@@ -1410,8 +1410,8 @@ on: далей
 All Attendees: Усе прысутныя
 Busy: Заняты
 Tentative: Папярэдні
-Schedule an appointment for XXX.: Заплануйце сустрэчу на XXX.
-date_select: __dd__ __месяц__ __гггг__
+Schedule an appointment for XXX.: Заплануйце сустрэчу на XXX: YYY.
+date_select: __dd__ __мm__ __yyyy__
 Event approved: Мерапрыемства зацверджана
 Journal approved: Часопіс зацверджаны
 Task approved: Заданне зацверджана
@@ -1439,7 +1439,7 @@ Task_Title: Загаловак
 Due: З-за
 Task Name: Назва задання
 Task Due Date: Тэрмін выканання задання
-You have XXX unapproved entries: У вас ёсць XXX незацверджаных запісаў 
+You have XXX unapproved entries: У вас ёсць XXX незацверджаных запісаў
 Changes successfully saved: Змены паспяхова захаваны
 Event: Падзея
 Action: Дзеянне
@@ -1624,7 +1624,7 @@ Chibcha: Чыбча
 Chichewa: Чычэва
 Chinese (Hong Kong): Кітайская (Ганконг)
 Chinese (PRC): Кітайская (КНР)
-Chinese (Simplified/GB2312): Кітайская (спрошчаная / GB2312) 
+Chinese (Simplified/GB2312): Кітайская (спрошчаная / GB2312)
 Chinese (Singapore): Кітайская (Сінгапур)
 Chinese (Taiwan): Кітайская (Тайвань)
 Chinese (Traditional/Big5): Кітайская (традыцыйная / вялікая5)
@@ -2265,7 +2265,7 @@ Server: Сервер
 Connection Persistence: Устойлівасць сувязі
 All your database tables appear to be up...: Здаецца, усе вашы табліцы базы дадзеных абноўлены. Вы можаце перайсці на наступную старонку і завяршыць наладку WebCalendar.
 This appears to be a new installation...: Здаецца, гэта новая ўстаноўка. Калі гэта няправільна, вярніцеся на папярэднюю старонку і адкарэктуйце свае налады.
-This appears to be an upgrade...: Здаецца, гэта пераход з версіі&nbsp;XXX&nbsp;да&nbsp;ГГГ.
+This appears to be an upgrade...: Здаецца, гэта пераход з версіі&nbsp;XXX&nbsp;да&nbsp;YYY.
 The database requires some data input...: Для завяршэння абнаўлення база дадзеных патрабуе некаторага ўводу дадзеных. Націсніце кнопку Абнавіць базу дадзеных.
 In this section we will perform...: У гэтым раздзеле мы ўнясем змены, каб давесці вашу базу да патрэбнага ўзроўню. Калі вы выкарыстоўваеце цалкам падтрымоўваную базу дадзеных, гэты крок будзе выкананы для вас аўтаматычна. У адваротным выпадку патрэбны SQL можа быць адлюстраваны, і вы зможаце выразаць і ўставіць яго ў акно запыту сервера базы дадзеных.
 No database actions are required.: Ніякіх дзеянняў з базай дадзеных не патрабуецца.
@@ -2301,8 +2301,8 @@ Launch WebCalendar: Запусціце WebCalendar
 ########################################
 # Page: install/install_functions.php
 #
-Error updating table XXX: Памылка абнаўлення табліцы "XXX": ГГГ.
-Conversion Successful: Пераўтварэнне паспяхова 
+Error updating table XXX: Памылка абнаўлення табліцы "XXX": YYY.
+Conversion Successful: Пераўтварэнне паспяхова
 Perl script required: Ваша папярэдняя версія WebCalendar патрабуе запуску сцэнарыя PERL для пераўтварэння вашых дадзеных. Запусціце /tools/upgrade_to_0.9.7.pl, а потым вярніцеся на гэтую старонку, каб працягнуць.
 previous version requires updating several tables: Ваша папярэдняя версія WebCalendar патрабуе абнаўлення некалькіх табліц баз дадзеных.
 
@@ -2343,9 +2343,9 @@ Not authorized (not admin).: Не ўпаўнаважаны (не адмініс�
 ########################################
 # Page: ws/get_events.php
 #
-Checking for events for XXX from date YYY to date ZZZ.: Праверка падзей на ХХХ з даты ГГГ па сённяшні дзень ZZZ.
+Checking for events for XXX from date YYY to date ZZZ.: Праверка падзей на ХХХ з даты YYY па сённяшні дзень ZZZ.
 Found XXX events in time range.: Знойдзена XXX падзей у часовым дыяпазоне.
-Event id=XXX YYY at ZZZ on AAA.: Ідэнтыфікатар падзеі = XXX "ГГГ" на ZZZ на AAA.
+Event id=XXX YYY at ZZZ on AAA.: Ідэнтыфікатар падзеі = XXX "YYY" на ZZZ на AAA.
 
 ########################################
 # Page: ws/get_reminders.php
@@ -2357,13 +2357,13 @@ Reminder set for event.: Напамін усталяваны для падзеі
 Mins Before XXX.: Хвілін да: XXX.
 Event time is XXX.: Час мерапрыемства: XXX.
 Remind time is XXX.: Час напамінку: XXX.
-Reminders for user XXX, login YYY.: Напамін для карыстальніка "XXX", увайдзіце "ГГГ".
+Reminders for user XXX, login YYY.: Напамін для карыстальніка "XXX", увайдзіце "YYY".
 
 ########################################
 # Page: ws/get_unapproved.php
 #
 Getting unapproved for user XXX.: Атрыманне несанкцыянаванага для карыстальніка "XXX".
-Event id=XXX YYY already sent.: Ідэнтыфікатар падзеі = XXX "ГГГ" ужо адпраўлены.
+Event id=XXX YYY already sent.: Ідэнтыфікатар падзеі = XXX "YYY" ужо адпраўлены.
 
 ########################################
 # Page: ws/login.php
