@@ -225,7 +225,7 @@ function export_get_attendee( $id, $export ) {
           . mb_convert_encoding($user['cal_lastname'], 'UTF-8', mb_detect_encoding($user['cal_lastname']))) . '"';
         if (!empty($user['cal_email'])) {
           $attendee[$count] .= ':MAILTO:' . $user['cal_email'];
-        } else if (strpos('@', $EMAIL_FALLBACK_FROM) > 0) {
+        } else if (strpos($EMAIL_FALLBACK_FROM, '@') !== false) {
           $attendee[$count] .= ':MAILTO:' . $EMAIL_FALLBACK_FROM;
         }
       }
@@ -1116,7 +1116,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     $name = preg_replace( "/\r/", ' ', $name );
     // escape,;  \ in octal ascii
     $name = addcslashes ( $name, "\54\73\134" );
-    $description = preg_replace( "/\r/", ' ', $description );
+    $description = preg_replace( "/\r/", ' ', $description ?? '' );
     $description = addcslashes ( $description, "\54\73\134" );
     $description = str_replace ( chr( 10 ), chr( 92 ) . chr( 110 ), $description );
 
