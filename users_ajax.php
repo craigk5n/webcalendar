@@ -58,12 +58,20 @@ $error = '';
 if ($action == 'userlist') {
   // The full user list (logins, names, emails, admin flags) is administrative
   // data; only a user administrator may retrieve it.
-  if (!users_ajax_can_manage_users()) {
+  // A non-administrator with the Account right only gets their own record
+  // (used by the My Profile page).
+  $selfOnly = !users_ajax_can_manage_users();
+  if ($selfOnly && (empty($login) || $login == '__public__' ||
+      (access_is_enabled() && !access_can_access_function(ACCESS_ACCOUNT_INFO)))) {
     ajax_send_error($notAuthStr);
     exit;
   }
   // Use JSON to encode our list of users.
   $userlist = user_get_users();
+  if ($selfOnly) {
+    $userlist = array_values(array_filter($userlist,
+      function ($u) use ($login) { return $u['cal_login'] === $login; }));
+  }
   $ret_users = [];
   foreach ($userlist as $user) {
     // Skip public user
