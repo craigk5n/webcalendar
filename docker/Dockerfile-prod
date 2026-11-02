@@ -4,7 +4,10 @@ LABEL maintainer="craig@k5n.us"
 LABEL vendor="k5n.us"
 
 # Install mysqli extension
-RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install mysqli pdo_mysql
+
+COPY docker/apache-api.conf /etc/apache2/conf-available/webcalendar-api.conf
+RUN a2enconf webcalendar-api
 
 # Copy all files except those in .dockerignore
 COPY . /var/www/html/

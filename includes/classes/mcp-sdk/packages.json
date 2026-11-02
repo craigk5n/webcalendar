@@ -18,7 +18,7 @@
     "psr/http-server-handler": "1.0.2",
     "psr/http-server-middleware": "1.0.2",
     "psr/log": "3.0.2",
-    "symfony/polyfill-uuid": "v1.37.0",
-    "symfony/uid": "v7.4.9",
-    "webmozart/assert": "2.4.1"
+    "symfony/polyfill-uuid": "v1.43.0",
+    "symfony/uid": "v7.4.21",
+    "webmozart/assert": "2.5.0"
 }

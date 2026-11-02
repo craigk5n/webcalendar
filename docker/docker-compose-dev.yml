@@ -49,6 +49,7 @@ services:
       - WEBCALENDAR_DB_PERSISTENT=true
       - WEBCALENDAR_USER_INC=user.php
       - WEBCALENDAR_MODE=dev
+      - WEBCALENDAR_API_ENABLED=${WEBCALENDAR_API_ENABLED:-false}
 
   #selenium-chrome:
   #  image: selenium/standalone-chrome:latest

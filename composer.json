@@ -36,6 +36,8 @@
   "require": {
     "php": "^8.2",
     "components/jquery": "3.5.*",
+    "laravel/framework": "^12.0",
+    "laravel/sanctum": "^4.0",
     "mcp/sdk": "^0.7.1",
     "phpmailer/phpmailer": "7.0.*",
     "tinymce/tinymce": "^7.9.3",

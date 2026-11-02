@@ -162,13 +162,13 @@ function mcp_sdk_bundle_files(string $repoRoot): array
 }
 
 /**
- * The PSR-4 map and "files" list the bundled packages need, from their
+ * The PSR-4 map and eager files the bundled packages need, from their
  * composer.lock autoload sections. Prefixes are ordered longest first so
  * that Psr\Http\Server\ is tried before Psr\Http\.
  *
  * @param array<string, array<string, mixed>> $packages
  * @param string[] $names
- * @return array{psr4: array<string, string[]>, files: string[]}
+ * @return array{psr4: array<string, string[]>, files: array<string, string>}
  */
 function mcp_sdk_autoload_map(array $packages, array $names): array
 {
@@ -183,7 +183,7 @@ function mcp_sdk_autoload_map(array $packages, array $names): array
       }
     }
     foreach ($autoload['files'] ?? [] as $file) {
-      $files[] = $name . '/' . $file;
+      $files[md5($name . ':' . $file)] = $name . '/' . $file;
     }
     foreach (['psr-0', 'classmap'] as $unsupported) {
       if (!empty($autoload[$unsupported])) {
@@ -192,14 +192,14 @@ function mcp_sdk_autoload_map(array $packages, array $names): array
     }
   }
   uksort($psr4, static fn(string $a, string $b): int => strlen($b) <=> strlen($a) ?: strcmp($a, $b));
-  sort($files);
+  asort($files);
   return ['psr4' => $psr4, 'files' => $files];
 }
 
 /**
  * Source of includes/classes/mcp-sdk/autoload.php.
  *
- * @param array{psr4: array<string, string[]>, files: string[]} $map
+ * @param array{psr4: array<string, string[]>, files: array<string, string>} $map
  */
 function mcp_sdk_autoloader_source(array $map): string
 {
@@ -213,8 +213,13 @@ function mcp_sdk_autoloader_source(array $map): string
   }
   $psr4Body = implode("\n", $lines);
   $fileLines = '';
-  foreach ($map['files'] as $file) {
-    $fileLines .= "require_once __DIR__ . '/" . $file . "';\n";
+  foreach ($map['files'] as $identifier => $file) {
+    // Composer keys eager files by package and relative path, independent of install location.
+    $registry = "\$GLOBALS['__composer_autoload_files']['" . $identifier . "']";
+    $fileLines .= "if (empty($registry)) {\n"
+      . "  $registry = true;\n"
+      . "  require_once __DIR__ . '/" . $file . "';\n"
+      . "}\n";
   }
   return <<<PHP
 <?php

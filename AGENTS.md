@@ -138,3 +138,51 @@ Run these from the repository root unless specified otherwise:
 - MCP authentication compares only the SHA-256 hash of the presented token.
   Do not restore a plaintext fallback: stored hashes must never authenticate.
   Legacy plaintext tokens require regeneration in Preferences.
+
+## Mobile API
+- The opt-in Laravel/Sanctum API is served by `api.php/v1/*`; enable it with
+  `WEBCALENDAR_API_ENABLED=true`. `app/Api/` contains its bootstrap, config,
+  routes, controllers, requests, and token models. `app/Services/CalendarIdentity.php`
+  and `CalendarEvents.php` adapt the procedural authentication/event functions.
+- API dependencies require Composer; the legacy UI still supports archives
+  without `vendor/`. Run `php bin/api.php migrate --force` as the web-server
+  user to install optional API tables. API migrations are separate from the
+  wizard's versioned schema upgrades. PDO drivers are required alongside DBI
+  extensions; the Docker images include `pdo_mysql` for this reason.
+- API identities contain no passwords and support database/LDAP authentication.
+  Recheck the configured backend and current user on every token-authenticated
+  request. Disable DBI's persistent query cache in the API so account and
+  permission changes are visible immediately. Keep Sanctum and MCP tokens separate.
+- Initial event reads are own-calendar only: no layers/public overlay or
+  delegation. Recurrence dates are local but stored event times are UTC;
+  preserve that distinction across DST. Date bounds are inclusive and limited
+  to 93 days. `tests/ApiIntegrationTest.php` installs a disposable SQLite calendar
+  and tests real HTTP requests without modifying the development database.
+- API storage belongs outside the document root. CLI and HTTP must share its
+  owner/path (`WEBCALENDAR_API_STORAGE`); the default is installation-specific
+  temp storage. Laravel must not load the repository `.env` or cache the adapted
+  legacy configuration. See `docs/api.md` for setup and client contracts.
+- Apache must forward bearer authorization to PHP. Both Dockerfiles install
+  `docker/apache-api.conf`, which scopes `CGIPassAuth On` to `api.php`. A missing
+  directive reproduced token issuance (201) followed by profile rejection (401).
+  `sh tests/run-api-apache-tests.sh` covers this using a unique Compose project,
+  a read-only checkout, and disposable tmpfs SQLite storage; no development DB
+  or credentials are used. Rebuild the web image when changing Apache config.
+- Composer and the bundled MCP loader share eager dependencies. The bundle
+  generator uses Composer's package/file identifiers and
+  `__composer_autoload_files` registry to run each eager bootstrap once in either
+  loader order. Keep that behavior in `tools/build-mcp-sdk.php`, regenerate with
+  `make mcp-sdk`, and test both loader orders plus Composer-free releases.
+  Requiring both physical UUID bootstrap copies caused duplicate-constant
+  warnings on PHP 8.5 and broke browser headers/cookies.
+- The combined local verification ran 1,058 PHPUnit tests on PHP 8.5: the two
+  failures were the documentation/release Git-tracking checks for the still
+  untracked mobile-API files. One optional-database case was skipped. Keep
+  those checks intact; they require the API work to be intentionally tracked
+  before a release, rather than a runtime workaround.
+- The browser and API both call `initialize_recurrence_globals()` from
+  `includes/recurrence-globals.php`. Weekday-based weekly/monthly recurrence
+  requires both BYDAY lookup arrays; the API previously omitted them and returned
+  500 on real calendars. Keep recurrence initialization free of browser session
+  setup. Tests cover weekday rules, exceptions, COUNT limits, and DST; the Apache
+  smoke fixture seeds weekly and monthly events and asserts occurrence dates.

@@ -321,7 +321,7 @@ class WebCalendar {
    * @access private
    */
   function _initFunctions() {
-    global $byday_names, $byday_values, $days_per_month,
+    global $days_per_month,
     $db_login, $db_password, $ldays_per_month,
     $offsets, $PHP_SELF, $settings, $weekday_names;
 
@@ -354,12 +354,8 @@ class WebCalendar {
      */
     $weekday_names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-    /**
-     * Array containing the BYDAY names for the days of the week.
-     *
-     * @global array $byday_name
-     */
-    $byday_names = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
+    require_once __DIR__ . '/../recurrence-globals.php';
+    initialize_recurrence_globals();
 
     /**
      * Array containing the number value of the days of the week.
@@ -367,13 +363,6 @@ class WebCalendar {
      * @global array $days_per_week
      */
     $days_of_week = array_flip ( $weekday_names );
-
-    /**
-     * Array containing the number value of the ical ByDay abbreviations.
-     *
-     * @global array $byday_values
-     */
-    $byday_values = array_flip ( $byday_names );
 
     /* Pull out cookies and place them in global variables */
     if ( ! empty ( $_COOKIE['webcalendar_session'] ) )

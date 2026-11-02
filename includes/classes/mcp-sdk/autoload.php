@@ -42,4 +42,7 @@ spl_autoload_register(static function (string $class): void {
   }
 });
 
-require_once __DIR__ . '/symfony/polyfill-uuid/bootstrap.php';
+if (empty($GLOBALS['__composer_autoload_files']['09f6b20656683369174dd6fa83b7e5fb'])) {
+  $GLOBALS['__composer_autoload_files']['09f6b20656683369174dd6fa83b7e5fb'] = true;
+  require_once __DIR__ . '/symfony/polyfill-uuid/bootstrap.php';
+}

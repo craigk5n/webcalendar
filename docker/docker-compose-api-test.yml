@@ -1,0 +1,23 @@
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile-dev
+    volumes:
+      - ..:/var/www/html:ro
+    tmpfs:
+      - /tmp/webcalendar-api-smoke:mode=1777
+    environment:
+      WEBCALENDAR_USE_ENV: "true"
+      WEBCALENDAR_DB_TYPE: sqlite3
+      WEBCALENDAR_DB_DATABASE: /tmp/webcalendar-api-smoke/calendar.sqlite
+      WEBCALENDAR_USER_INC: user.php
+      WEBCALENDAR_API_ENABLED: "true"
+      WEBCALENDAR_API_STORAGE: /tmp/webcalendar-api-smoke/storage
+    command: ["sh", "tests/fixtures/api-apache-entrypoint.sh"]
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(@fsockopen('127.0.0.1', 80) ? 0 : 1);"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+      start_period: 10s
