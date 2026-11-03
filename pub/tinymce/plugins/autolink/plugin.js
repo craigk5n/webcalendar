@@ -1,5 +1,5 @@
 /**
- * TinyMCE version 7.9.3 (2026-05-19)
+ * TinyMCE version 8.9.3 (2026-10-06)
  */
 
 (function () {
@@ -9,13 +9,12 @@
 
     /* eslint-disable @typescript-eslint/no-wrapper-object-types */
     const hasProto = (v, constructor, predicate) => {
-        var _a;
         if (predicate(v, constructor.prototype)) {
             return true;
         }
         else {
             // String-based fallback time
-            return ((_a = v.constructor) === null || _a === void 0 ? void 0 : _a.name) === constructor.name;
+            return v.constructor?.name === constructor.name;
         }
     };
     const typeOf = (x) => {
@@ -42,7 +41,6 @@
 
     const not = (f) => (t) => !f(t);
 
-    // eslint-disable-next-line @typescript-eslint/unbound-method
     const hasOwnProperty = Object.hasOwnProperty;
     const has = (obj, key) => hasOwnProperty.call(obj, key);
 
@@ -183,7 +181,6 @@
     };
 
     const parseCurrentLine = (editor, offset) => {
-        var _a;
         const voidElements = editor.schema.getVoidElements();
         const autoLinkPattern = getAutoLinkPattern(editor);
         const { dom, selection } = editor;
@@ -198,7 +195,7 @@
         // Descend down the end container to find the text node
         const { container: endContainer, offset: endOffset } = freefallRtl(rng.endContainer, rng.endOffset);
         // Find the root container to use when walking
-        const root = (_a = dom.getParent(endContainer, dom.isBlock)) !== null && _a !== void 0 ? _a : dom.getRoot();
+        const root = dom.getParent(endContainer, dom.isBlock) ?? dom.getRoot();
         // Move the selection backwards to the start of the potential URL to account for the pressed character
         // while also excluding the last full stop from a word like "www.site.com."
         const endSpot = textSeeker.backwards(endContainer, endOffset + offset, (node, offset) => {
@@ -301,10 +298,14 @@
         });
     };
 
+    const PLUGIN_CODE = 'autolink';
     var Plugin = () => {
-        global$1.add('autolink', (editor) => {
+        global$1.add(PLUGIN_CODE, (editor) => {
             register(editor);
             setup(editor);
+            return {
+                getMetadata: () => ({ name: 'Autolink', type: 'opensource', slug: PLUGIN_CODE })
+            };
         });
     };
 

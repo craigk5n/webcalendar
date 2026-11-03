@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "48a3d949beabe280839a6794c980ed3c",
+    "content-hash": "32cb27f34e6f559cd649044fa587201e",
     "packages": [
         {
             "name": "brick/math",
@@ -6683,16 +6683,16 @@
         },
         {
             "name": "tinymce/tinymce",
-            "version": "7.9.3",
+            "version": "8.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tinymce/tinymce-dist.git",
-                "reference": "4e5c520b2b6d52a6251316ab2e4af383c5e753bd"
+                "reference": "a85d8cad504d6bbf6affa63e98615e8f0a42ad28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/4e5c520b2b6d52a6251316ab2e4af383c5e753bd",
-                "reference": "4e5c520b2b6d52a6251316ab2e4af383c5e753bd",
+                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/a85d8cad504d6bbf6affa63e98615e8f0a42ad28",
+                "reference": "a85d8cad504d6bbf6affa63e98615e8f0a42ad28",
                 "shasum": ""
             },
             "type": "component",
@@ -6717,7 +6717,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-2.0-or-later"
+                "SEE LICENSE IN license.md"
             ],
             "description": "Web based JavaScript HTML WYSIWYG editor control.",
             "homepage": "https://www.tiny.cloud/",
@@ -6736,9 +6736,9 @@
                 "wysiwyg"
             ],
             "support": {
-                "source": "https://github.com/tinymce/tinymce-dist/tree/7.9.3"
+                "source": "https://github.com/tinymce/tinymce-dist/tree/8.9.3"
             },
-            "time": "2026-05-19T23:38:56+00:00"
+            "time": "2026-10-06T03:49:45+00:00"
         },
         {
             "name": "twbs/bootstrap",
