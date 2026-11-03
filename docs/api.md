@@ -35,7 +35,8 @@ reading events on that user's calendar.
    to the existing database. The identity table stores usernames, the
    authentication backend, and a hashed subject binding; it does not duplicate
    passwords. These optional tables are managed by API migrations rather than
-   the web installer.
+   the web installer. A single initial migration creates the identity table
+   with subject bindings and the device-token table together.
 
 For the development Docker stack, the existing server-environment configuration
 continues to work:
@@ -234,11 +235,10 @@ Database-account deletion revokes tokens at the deletion boundary, including
 when no API request occurs before the username is recreated. Tokens are also
 bound to the current database password hash; password changes or password-hash
 upgrades require fresh sign-in on other devices. LDAP tokens use the immutable
-directory-entry binding instead. Run the API migrations when upgrading an
-existing API installation: tokens issued before subject binding was introduced
-require fresh sign-in. Revocation runs without Composer and is skipped only
-when neither optional API credential table exists. An incomplete schema or a
-revocation failure prevents account deletion.
+directory-entry binding instead. Tokens without a valid subject binding are
+rejected and require fresh sign-in. Revocation runs without Composer and is
+skipped only when neither optional API credential table exists. An incomplete
+schema or a revocation failure prevents account deletion.
 
 To remove expired token records periodically, run as the web-server user:
 

@@ -107,6 +107,29 @@ final class ApiIntegrationTest extends TestCase
     self::assertArrayNotHasKey('subject_id', $body['data']);
   }
 
+  public function testInitialMigrationCreatesTheCompleteSchemaAndCanBeReapplied(): void
+  {
+    $database = self::$directory . '/initial-migration.sqlite';
+    copy(self::$environment['WEBCALENDAR_DB_DATABASE'], $database);
+    $db = new PDO('sqlite:' . $database);
+    foreach (['webcal_api_tokens', 'webcal_api_users', 'webcal_api_migrations'] as $table) {
+      $db->exec('DROP TABLE ' . $table);
+    }
+    $migration = 'app/Api/database/migrations/2026_11_02_000001_create_api_tables.php';
+    $environment = ['WEBCALENDAR_DB_DATABASE' => $database];
+    for ($cycle = 0; $cycle < 2; $cycle++) {
+      self::command([PHP_BINARY, 'bin/api.php', 'migrate', '--force', '--path=' . $migration], $environment);
+      $columns = array_column($db->query('PRAGMA table_info(webcal_api_users)')->fetchAll(PDO::FETCH_ASSOC), 'name');
+      self::assertContains('subject_id', $columns);
+      self::assertSame(['2026_11_02_000001_create_api_tables'],
+        $db->query('SELECT migration FROM webcal_api_migrations')->fetchAll(PDO::FETCH_COLUMN));
+      self::assertSame(1, (int) $db->query("SELECT COUNT(*) FROM sqlite_master WHERE name = 'webcal_api_tokens'")->fetchColumn());
+      self::command([PHP_BINARY, 'bin/api.php', 'migrate:rollback', '--force', '--path=' . $migration], $environment);
+      self::assertSame(0, (int) $db->query("SELECT COUNT(*) FROM sqlite_master WHERE name IN ('webcal_api_users', 'webcal_api_tokens')")->fetchColumn());
+      self::assertSame(1, (int) $db->query("SELECT COUNT(*) FROM webcal_user WHERE cal_login = 'alice'")->fetchColumn());
+    }
+  }
+
   public function testInvalidCredentialsAndDisabledAccountsCannotIssueTokens(): void
   {
     foreach ([['alice', 'wrong'], ['missing', 'wrong'], ['__public__', 'secret']] as [$username, $password]) {

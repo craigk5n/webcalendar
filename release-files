@@ -22,7 +22,6 @@ app/Api/Controllers/EventController.php
 app/Api/Controllers/TokenController.php
 app/Api/Controllers/UserController.php
 app/Api/database/migrations/2026_11_02_000001_create_api_tables.php
-app/Api/database/migrations/2026_11_03_000001_bind_api_subjects.php
 app/Api/Middleware/AuthenticateIdentity.php
 app/Api/Models/ApiToken.php
 app/Api/Models/ApiUser.php

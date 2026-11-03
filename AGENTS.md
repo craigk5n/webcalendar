@@ -204,8 +204,10 @@ Run these from the repository root unless specified otherwise:
   one slash-escaping layer from parameters, including tokenable class names.
 - API subject bindings invalidate old tokens on database credential changes or
   LDAP entry replacement. LDAP API lookups require `entryUUID` or `objectGUID`;
-  names and DNs are not immutable. Apply the subject-binding migration to existing
-  API installations; unbound tokens require fresh sign-in.
+  names and DNs are not immutable. The single initial API migration includes
+  subject bindings with the identity/token tables; unbound tokens require fresh
+  sign-in. This schema was consolidated before first production deployment;
+  subsequent deployed-schema changes require separate migration files.
 - Composer archive timestamps can be older than bundled assets. After a TinyMCE
   update, force `make -B pub/tinymce/CHANGELOG.md` as well as `make`, and run
   `TinyMceBundleTest` to check that shipped scripts match the audited dependency.

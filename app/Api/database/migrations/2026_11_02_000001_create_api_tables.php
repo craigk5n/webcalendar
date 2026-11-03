@@ -12,6 +12,7 @@ return new class extends Migration {
     Schema::create('webcal_api_users', function (Blueprint $table): void {
       $table->string('username', 100)->primary();
       $table->string('auth_backend');
+      $table->string('subject_id', 64)->nullable();
     });
     Schema::create('webcal_api_tokens', function (Blueprint $table): void {
       $table->id();
