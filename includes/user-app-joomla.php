@@ -374,6 +374,8 @@ function user_is_admin ($uid,$Admins) {
 // params:
 //   $user - user to delete
 function user_delete_user ( $user ) {
+  require_once __DIR__ . '/../app/Services/ApiCredentialLifecycle.php';
+  \WebCalendar\Services\ApiCredentialLifecycle::revoke($user);
   // Get event ids for all events this user is a participant
   $events = get_users_event_ids ( $user );
 

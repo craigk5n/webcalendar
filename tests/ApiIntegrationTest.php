@@ -104,6 +104,7 @@ final class ApiIntegrationTest extends TestCase
     self::assertSame('Alice Example', $body['data']['name']);
     self::assertArrayNotHasKey('password', $body['data']);
     self::assertArrayNotHasKey('token', $body['data']);
+    self::assertArrayNotHasKey('subject_id', $body['data']);
   }
 
   public function testInvalidCredentialsAndDisabledAccountsCannotIssueTokens(): void
@@ -176,6 +177,108 @@ final class ApiIntegrationTest extends TestCase
     } finally {
       self::$db->exec("UPDATE webcal_user SET cal_login = 'alice' WHERE cal_login = 'alice_removed'");
     }
+  }
+
+  public function testDeletingAndRecreatingAUsernameRevokesAllOriginalDeviceTokens(): void
+  {
+    $first = $this->token();
+    $second = $this->token();
+    [$status, $other] = $this->request('POST', '/v1/tokens', ['username' => 'admin', 'password' => 'admin', 'device_name' => 'Unaffected account']);
+    self::assertSame(201, $status);
+    try {
+      self::command([PHP_BINARY, '-r', $this->legacyScript(
+        'user_delete_user("alice"); user_add_user("alice", "replacement", "New", "Owner", "", "N", "Y");'
+      )]);
+      foreach ([$first, $second] as $token) {
+        [$status] = $this->request('GET', '/v1/users/current', [], $token);
+        self::assertSame(401, $status);
+      }
+      self::assertSame(1, (int) self::$db->query('SELECT COUNT(*) FROM webcal_api_tokens')->fetchColumn());
+      self::assertSame(1, (int) self::$db->query('SELECT COUNT(*) FROM webcal_api_users')->fetchColumn());
+      [$status] = $this->request('GET', '/v1/users/current', [], $other['data']['token']);
+      self::assertSame(200, $status);
+      [$status] = $this->request('POST', '/v1/tokens', ['username' => 'alice', 'password' => 'replacement', 'device_name' => 'Replacement']);
+      self::assertSame(201, $status);
+    } finally {
+      self::sql('UPDATE webcal_user SET cal_passwd = ?, cal_firstname = ?, cal_lastname = ? WHERE cal_login = ?',
+        [password_hash('secret', PASSWORD_DEFAULT), 'Alice', 'Example', 'alice']);
+    }
+  }
+
+  public function testAccountCredentialReplacementCannotReuseAnOldToken(): void
+  {
+    $token = $this->token();
+    try {
+      self::sql('UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?', [password_hash('replacement', PASSWORD_DEFAULT), 'alice']);
+      [$status] = $this->request('GET', '/v1/users/current', [], $token);
+      self::assertSame(401, $status);
+    } finally {
+      self::sql('UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?', [password_hash('secret', PASSWORD_DEFAULT), 'alice']);
+    }
+  }
+
+  public function testLdapCalendarCleanupAlsoRevokesApiCredentialsWithoutComposer(): void
+  {
+    $this->token();
+    try {
+      self::command([PHP_BINARY, '-r', $this->legacyScript('user_delete_user("alice");')], ['WEBCALENDAR_USER_INC' => 'user-ldap.php']);
+      self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_api_tokens')->fetchColumn());
+      self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_api_users')->fetchColumn());
+    } finally {
+      self::sql('INSERT OR REPLACE INTO webcal_user (cal_login, cal_passwd, cal_firstname, cal_lastname, cal_is_admin, cal_enabled) VALUES (?, ?, ?, ?, ?, ?)',
+        ['alice', password_hash('secret', PASSWORD_DEFAULT), 'Alice', 'Example', 'N', 'Y']);
+    }
+  }
+
+  public function testUnboundTokensRequireFreshSignIn(): void
+  {
+    $token = $this->token();
+    self::$db->exec('UPDATE webcal_api_users SET subject_id = NULL');
+    [$status] = $this->request('GET', '/v1/users/current', [], $token);
+    self::assertSame(401, $status);
+    self::assertNotSame($token, $this->token());
+  }
+
+  public function testDeletionWithoutOptionalTablesNeedsNoComposer(): void
+  {
+    $database = self::$directory . '/without-api.sqlite';
+    copy(self::$environment['WEBCALENDAR_DB_DATABASE'], $database);
+    $db = new PDO('sqlite:' . $database);
+    $db->exec('DROP TABLE webcal_api_tokens');
+    $db->exec('DROP TABLE webcal_api_users');
+    self::command([PHP_BINARY, '-r', $this->legacyScript(
+      'if (class_exists("Illuminate\\Foundation\\Application", false)) { exit(1); } user_delete_user("alice");'
+    )], ['WEBCALENDAR_DB_DATABASE' => $database]);
+    self::assertSame(0, (int) $db->query("SELECT COUNT(*) FROM webcal_user WHERE cal_login = 'alice'")->fetchColumn());
+  }
+
+  public function testFailedRevocationPreventsAccountDeletion(): void
+  {
+    $this->token();
+    self::$db->exec("CREATE TRIGGER deny_revocation BEFORE DELETE ON webcal_api_tokens BEGIN SELECT RAISE(ABORT, 'fixture revocation failure'); END");
+    try {
+      self::command([PHP_BINARY, '-r', $this->legacyScript('user_delete_user("alice");')], [], 255);
+      self::assertSame(1, (int) self::$db->query("SELECT COUNT(*) FROM webcal_user WHERE cal_login = 'alice'")->fetchColumn());
+      self::assertSame(1, (int) self::$db->query('SELECT COUNT(*) FROM webcal_api_tokens')->fetchColumn());
+    } finally {
+      self::$db->exec('DROP TRIGGER deny_revocation');
+    }
+  }
+
+  public function testIncompleteApiSchemaCannotSilentlySkipRevocation(): void
+  {
+    $database = self::$directory . '/incomplete-api.sqlite';
+    copy(self::$environment['WEBCALENDAR_DB_DATABASE'], $database);
+    $db = new PDO('sqlite:' . $database);
+    $db->exec('DROP TABLE webcal_api_tokens');
+    self::command([PHP_BINARY, '-r', $this->legacyScript('user_delete_user("alice");')], ['WEBCALENDAR_DB_DATABASE' => $database], 255);
+    self::assertSame(1, (int) $db->query("SELECT COUNT(*) FROM webcal_user WHERE cal_login = 'alice'")->fetchColumn());
+  }
+
+  private function legacyScript(string $body): string
+  {
+    return 'define("WEBCALENDAR_API_BOOTSTRAP", true); require '
+      . var_export(dirname(__DIR__) . '/includes/api-bootstrap.php', true) . '; ' . $body;
   }
 
   public function testEventViewPermissionsStillApplyWithAValidToken(): void
@@ -317,7 +420,7 @@ final class ApiIntegrationTest extends TestCase
 
   public function testRuntimeStorageCannotBeInsideTheDocumentRoot(): void
   {
-    $storage = __DIR__ . '/.api-storage-test';
+    $storage = __DIR__ . '/.api-storage-test-' . bin2hex(random_bytes(5));
     try {
       self::command([PHP_BINARY, 'bin/api.php', 'list'], [
         'WEBCALENDAR_API_STORAGE' => $storage,
@@ -325,6 +428,50 @@ final class ApiIntegrationTest extends TestCase
     } finally {
       (new Filesystem())->remove($storage);
     }
+  }
+
+  public static function httpAuthConfigurations(): array
+  {
+    return ['environment' => [true], 'settings file' => [false]];
+  }
+
+  /** @dataProvider httpAuthConfigurations */
+  public function testHttpAuthInstallationsCannotIssueTokens(bool $useEnvironment): void
+  {
+    $fixture = self::$directory . '/http-auth-' . (int) $useEnvironment;
+    $filesystem = new Filesystem();
+    $filesystem->mkdir($fixture . '/includes');
+    foreach (glob(dirname(__DIR__) . '/includes/*') as $path) {
+      $name = basename($path);
+      if ($name !== 'config.php' && $name !== 'api-bootstrap.php' && !str_starts_with($name, 'settings.php')) {
+        $filesystem->symlink($path, $fixture . '/includes/' . $name);
+      }
+    }
+    foreach (['api.php', 'includes/config.php', 'includes/api-bootstrap.php'] as $path) {
+      $filesystem->copy(dirname(__DIR__) . '/' . $path, $fixture . '/' . $path);
+    }
+    foreach (['app', 'vendor'] as $path) {
+      $filesystem->symlink(dirname(__DIR__) . '/' . $path, $fixture . '/' . $path);
+    }
+    file_put_contents($fixture . '/includes/settings.php', "<?php /*\n"
+      . "db_type: sqlite3\ndb_database: " . self::$environment['WEBCALENDAR_DB_DATABASE']
+      . "\ndb_debug: false\ndb_persistent: false\nuser_inc: user.php\nuse_http_auth: true\n*/");
+    $script = <<<'PHP'
+      $_SERVER = array_merge($_SERVER, ['REQUEST_METHOD' => 'POST', 'REQUEST_URI' => '/api.php/v1/tokens',
+        'SCRIPT_NAME' => '/api.php', 'PHP_SELF' => '/api.php/v1/tokens',
+        'SCRIPT_FILENAME' => $argv[1],
+        'HTTP_HOST' => 'localhost', 'SERVER_PORT' => '80', 'SERVER_PROTOCOL' => 'HTTP/1.1']);
+      $_POST = ['username' => 'alice', 'password' => 'secret', 'device_name' => 'Forbidden device'];
+      register_shutdown_function(static function () { fwrite(STDERR, 'HTTP_STATUS=' . http_response_code()); });
+      require $argv[1];
+      PHP;
+    $output = self::command([PHP_BINARY, '-r', $script, $fixture . '/api.php'], [
+      'WEBCALENDAR_USE_ENV' => $useEnvironment ? 'true' : 'false',
+      'WEBCALENDAR_USE_HTTP_AUTH' => 'true',
+    ]);
+    self::assertStringContainsString('HTTP_STATUS=503', $output);
+    self::assertStringNotContainsString('"token":', $output);
+    self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_api_tokens')->fetchColumn());
   }
 
   private function token(): string
@@ -348,8 +495,11 @@ final class ApiIntegrationTest extends TestCase
       'header' => "Content-Type: application/json\r\n" . ($token ? "Authorization: Bearer $token\r\n" : ''),
       'content' => $data ? json_encode($data) : '',
     ]]);
-    $raw = file_get_contents('http://127.0.0.1:' . self::$port . '/api.php' . $path, false, $context);
-    $headers = function_exists('http_get_last_response_headers') ? http_get_last_response_headers() : get_defined_vars()['http_response_header'];
+    $stream = fopen('http://127.0.0.1:' . self::$port . '/api.php' . $path, 'rb', false, $context);
+    self::assertIsResource($stream);
+    $headers = stream_get_meta_data($stream)['wrapper_data'];
+    $raw = stream_get_contents($stream);
+    fclose($stream);
     preg_match('/\s(\d{3})\s/', $headers[0], $matches);
     $body = json_decode($raw, true);
     self::assertIsArray($body, $raw . "\n" . file_get_contents(self::$directory . '/server.log'));
@@ -361,7 +511,7 @@ final class ApiIntegrationTest extends TestCase
     self::$db->prepare($sql)->execute($parameters);
   }
 
-  private static function command(array $command, array $environment = [], int $expectedExit = 0): void
+  private static function command(array $command, array $environment = [], int $expectedExit = 0): string
   {
     $process = proc_open($command, [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes, dirname(__DIR__), array_merge(self::$environment, $environment));
     fclose($pipes[0]);
@@ -369,5 +519,6 @@ final class ApiIntegrationTest extends TestCase
     fclose($pipes[1]);
     fclose($pipes[2]);
     self::assertSame($expectedExit, proc_close($process), $output);
+    return $output;
   }
 }

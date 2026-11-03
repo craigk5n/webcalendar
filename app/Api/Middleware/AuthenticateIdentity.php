@@ -17,10 +17,12 @@ final class AuthenticateIdentity
     $user = $request->user();
     $identity = new CalendarIdentity();
     $profile = $identity->find($user->username);
-    if (!$profile || $user->auth_backend !== $GLOBALS['user_inc']) {
+    if (!$profile || $user->auth_backend !== $GLOBALS['user_inc']
+        || !$user->subject_id || !hash_equals($user->subject_id, $profile['subject_id'])) {
       $user->tokens()->delete();
       throw new AuthenticationException();
     }
+    unset($profile['subject_id']);
     $request->attributes->set('calendar_profile', $profile);
     return $next($request);
   }

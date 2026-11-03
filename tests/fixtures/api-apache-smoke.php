@@ -33,9 +33,13 @@ function api_smoke_request(string $method, string $path, ?string $token = null, 
     'method' => $method, 'header' => $headers, 'ignore_errors' => true,
     'timeout' => 15, 'content' => $body === null ? '' : json_encode($body),
   ]]);
-  $raw = file_get_contents('http://127.0.0.1/api.php/v1' . $path, false, $context);
-  $responseHeaders = function_exists('http_get_last_response_headers')
-    ? http_get_last_response_headers() : get_defined_vars()['http_response_header'];
+  $stream = fopen('http://127.0.0.1/api.php/v1' . $path, 'rb', false, $context);
+  if ($stream === false) {
+    throw new RuntimeException("$method $path could not connect");
+  }
+  $responseHeaders = stream_get_meta_data($stream)['wrapper_data'];
+  $raw = stream_get_contents($stream);
+  fclose($stream);
   preg_match('/\s(\d{3})\s/', $responseHeaders[0], $matches);
   $decoded = json_decode((string) $raw, true);
   if (!is_array($decoded)) {

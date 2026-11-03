@@ -27,9 +27,10 @@ reading events on that user's calendar.
    ```
 
    This adds `webcal_api_users`, `webcal_api_tokens`, and `webcal_api_migrations`
-   to the existing database. The identity table stores usernames and the
-   authentication backend; it does not duplicate passwords. These optional
-   tables are managed by API migrations rather than the web installer.
+   to the existing database. The identity table stores usernames, the
+   authentication backend, and a hashed subject binding; it does not duplicate
+   passwords. These optional tables are managed by API migrations rather than
+   the web installer.
 
 4. Set `WEBCALENDAR_API_ENABLED=true` in the PHP web-server environment.
    Restart the web service after changing its environment.
@@ -60,6 +61,13 @@ adapter. LDAP requires the existing LDAP configuration and extension; password
 verification and user lookup are delegated to that backend. The integration
 suite exercises database-password authentication with a disposable SQLite
 installation.
+
+LDAP API access additionally requires the directory reader to return the user's
+immutable `entryUUID` (OpenLDAP) or `objectGUID` (Active Directory). These
+attributes are requested explicitly. A username or DN alone is not accepted as
+an account identity; an unreadable/missing immutable identifier returns 503.
+The binding includes the configured directory server, port, and base DN.
+Replacing a directory entry under the same username invalidates its old tokens.
 
 ### Apache authorization forwarding
 
@@ -135,6 +143,16 @@ Revoking one token leaves other devices signed in. On sign-out, call
 `DELETE /tokens/current`, then remove the token from Keychain. Disabling or
 deleting a database-backed user denies their next request and revokes their
 tokens. Changing authentication backends also invalidates existing tokens.
+
+Database-account deletion revokes tokens at the deletion boundary, including
+when no API request occurs before the username is recreated. Tokens are also
+bound to the current database password hash; password changes or password-hash
+upgrades require fresh sign-in on other devices. LDAP tokens use the immutable
+directory-entry binding instead. Run the API migrations when upgrading an
+existing API installation: tokens issued before subject binding was introduced
+require fresh sign-in. Revocation runs without Composer and is skipped only
+when neither optional API credential table exists. An incomplete schema or a
+revocation failure prevents account deletion.
 
 To remove expired token records periodically, run as the web-server user:
 

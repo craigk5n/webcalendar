@@ -79,10 +79,12 @@ Run these from the repository root unless specified otherwise:
 - PHP is not installed on the host in this environment. Run the suite with
   `docker compose -f docker/docker-compose-dev.yml exec -T -u "$(id -u):$(id -g)" webcalendar php vendor/bin/phpunit -c tests/phpunit.xml`.
   Other PHP commands can use the same container via `exec -T webcalendar php`.
-- Full syntax helper: run `bash compile_test.sh` with `tests/` as the working
-  directory. Both it and `tests/run_unit_tests.sh` always exit 0, even on
-  failures; inspect the syntax summary and invoke PHPUnit directly for a
-  reliable test exit status.
+- Syntax checks use `php tools/lint-php.php` in CI and through
+  `tests/compile_test.sh`. The exact bundled UUID `bootstrap85.php` path is
+  skipped only below PHP 8.5 and is linted on 8.5; do not exclude the whole SDK.
+  Run the complete PHPUnit and lint matrix on PHP 8.2–8.5 for API changes.
+  `tests/run_unit_tests.sh` is not a reliable test-exit-status wrapper; invoke
+  PHPUnit directly.
 - HTTP tests require an installed app at `http://localhost:8080`, `admin/admin`,
   and Python packages `pytest`, `httpx`, `lxml`. Invoke explicitly with
   `python -m pytest tests/ui-tests.py` (its filename is not default pytest
@@ -175,11 +177,21 @@ Run these from the repository root unless specified otherwise:
   `make mcp-sdk`, and test both loader orders plus Composer-free releases.
   Requiring both physical UUID bootstrap copies caused duplicate-constant
   warnings on PHP 8.5 and broke browser headers/cookies.
-- The combined local verification ran 1,058 PHPUnit tests on PHP 8.5: the two
-  failures were the documentation/release Git-tracking checks for the still
-  untracked mobile-API files. One optional-database case was skipped. Keep
-  those checks intact; they require the API work to be intentionally tracked
-  before a release, rather than a runtime workaround.
+- API startup must check parsed `$settings['use_http_auth']`, not the unassigned
+  legacy `$use_http_auth` global. Tests cover environment and isolated file-backed
+  configuration. HTTP test fixtures use stream metadata for response headers;
+  indirect `get_defined_vars()` lookup fails on PHP 8.2/8.3.
+- User-deletion backends call the Composer-independent `ApiCredentialLifecycle`
+  helper before deleting account data. It checks optional tables without DBI's
+  persistent cache and aborts on partial schemas or revocation errors. DBI strips
+  one slash-escaping layer from parameters, including tokenable class names.
+- API subject bindings invalidate old tokens on database credential changes or
+  LDAP entry replacement. LDAP API lookups require `entryUUID` or `objectGUID`;
+  names and DNs are not immutable. Apply the subject-binding migration to existing
+  API installations; unbound tokens require fresh sign-in.
+- Composer archive timestamps can be older than bundled assets. After a TinyMCE
+  update, force `make -B pub/tinymce/CHANGELOG.md` as well as `make`, and run
+  `TinyMceBundleTest` to check that shipped scripts match the audited dependency.
 - The browser and API both call `initialize_recurrence_globals()` from
   `includes/recurrence-globals.php`. Weekday-based weekly/monthly recurrence
   requires both BYDAY lookup arrays; the API previously omitted them and returned

@@ -53,6 +53,8 @@ final class FakeLdap
   public static $bindSucceeds = true;
   public static $tlsSucceeds = true;
   public static $adminMembers = [];
+  public static $entryUuid = 'fixture-original-uuid';
+  public static $requestedAttributes = [];
 
   public static function reset()
   {
@@ -61,6 +63,8 @@ final class FakeLdap
     self::$bindSucceeds = true;
     self::$tlsSucceeds = true;
     self::$adminMembers = ['jdoe'];
+    self::$entryUuid = 'fixture-original-uuid';
+    self::$requestedAttributes = [];
   }
 
   public static function leakedLinks()
@@ -140,6 +144,7 @@ function ldap_free_result($result)
 function ldap_search($link, $base, $filter, $attributes = [])
 {
   require_open($link);
+  FakeLdap::$requestedAttributes[] = $attributes;
   return ['filter' => $filter];
 }
 
@@ -163,6 +168,7 @@ function ldap_get_entries($link, $result)
     'givenname' => [0 => 'John'],
     'cn' => [0 => 'John Doe'],
     'mail' => [0 => 'jdoe@example.org'],
+    'entryuuid' => ['count' => 1, 0 => FakeLdap::$entryUuid],
   ]];
 }
 
@@ -275,6 +281,29 @@ final class LdapConnectionLifecycleTest extends TestCase
 
     self::assertTrue(user_load_variables('jdoe', 'i703b'));
     self::assertSame('N', $GLOBALS['i703bis_admin']);
+    $this->assertLinksBalanced();
+  }
+
+  public function testApiLookupBindsTheImmutableEntryRatherThanTheReusedLogin(): void
+  {
+    self::assertTrue(user_load_variables('jdoe', 'api_'));
+    $original = $GLOBALS['api_subject_id'];
+    self::assertNotNull($original);
+    self::assertContains('entryUUID', FakeLdap::$requestedAttributes[0]);
+    self::assertContains('objectGUID', FakeLdap::$requestedAttributes[0]);
+    FakeLdap::$entryUuid = 'fixture-replacement-uuid';
+    $GLOBALS['cached_user_var'] = [];
+    self::assertTrue(user_load_variables('jdoe', 'api_'));
+    self::assertNotSame($original, $GLOBALS['api_subject_id']);
+    self::assertSame('jdoe', $GLOBALS['api_login']);
+    $this->assertLinksBalanced();
+  }
+
+  public function testApiLookupDoesNotSubstituteTheDnForAMissingImmutableId(): void
+  {
+    FakeLdap::$entryUuid = '';
+    self::assertTrue(user_load_variables('jdoe', 'api_'));
+    self::assertNull($GLOBALS['api_subject_id']);
     $this->assertLinksBalanced();
   }
 

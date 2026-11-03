@@ -147,8 +147,12 @@ function user_load_variables ( $login, $prefix ) {
 
   $ret = false;
   if ($ds = connect_and_bind ()) {
+    $attributes = $ldap_user_attr;
+    if ($prefix === 'api_') {
+      $attributes = array_merge($attributes, ['entryUUID', 'objectGUID']);
+    }
     $sr = @ldap_search ( $ds, $ldap_base_dn,
-      "(&($ldap_login_attr=$login)$ldap_user_filter )", $ldap_user_attr );
+      "(&($ldap_login_attr=$login)$ldap_user_filter )", $attributes );
 
     if (!$sr) {
       $error = 'Error searching LDAP server: ' . ldap_error( $ds );
@@ -163,6 +167,11 @@ function user_load_variables ( $login, $prefix ) {
         $GLOBALS[$prefix . 'email'] = $info[0][$ldap_user_attr[4]][0];
         $GLOBALS[$prefix . 'fullname'] = $info[0][$ldap_user_attr[3]][0];
         $GLOBALS[$prefix . 'is_admin'] = user_is_admin ($login,get_admins ());
+        if ($prefix === 'api_') {
+          require_once __DIR__ . '/../app/Services/DirectorySubject.php';
+          $authority = json_encode([$GLOBALS['ldap_server'], $GLOBALS['ldap_port'], $ldap_base_dn]);
+          $GLOBALS[$prefix . 'subject_id'] = \WebCalendar\Services\DirectorySubject::fromEntry($info[0], $authority);
+        }
         $ret = true;
       }
       @ldap_free_result ( $sr );
@@ -226,6 +235,8 @@ function user_update_user_password ( $user, $password ) {
  * @param string $user User to delete
  */
 function user_delete_user ( $user ) {
+  require_once __DIR__ . '/../app/Services/ApiCredentialLifecycle.php';
+  \WebCalendar\Services\ApiCredentialLifecycle::revoke($user);
   // Get event ids for all events this user is a participant
   $events = get_users_event_ids ( $user );
 

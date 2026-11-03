@@ -12,14 +12,15 @@ final class DeviceTokenService
 {
   public function issue(string $username, string $password, string $deviceName): array
   {
-    if (!(new CalendarIdentity())->authenticate($username, $password)) {
+    $profile = (new CalendarIdentity())->authenticate($username, $password);
+    if (!$profile) {
       throw new AuthenticationException('Invalid credentials.');
     }
-    return DB::transaction(function () use ($username, $deviceName): array {
-      $user = ApiUser::firstOrCreate(['username' => $username], ['auth_backend' => $GLOBALS['user_inc']]);
-      if ($user->auth_backend !== $GLOBALS['user_inc']) {
+    return DB::transaction(function () use ($username, $deviceName, $profile): array {
+      $user = ApiUser::firstOrCreate(['username' => $username], ['auth_backend' => $GLOBALS['user_inc'], 'subject_id' => $profile['subject_id']]);
+      if ($user->auth_backend !== $GLOBALS['user_inc'] || $user->subject_id !== $profile['subject_id']) {
         $user->tokens()->delete();
-        $user->update(['auth_backend' => $GLOBALS['user_inc']]);
+        $user->update(['auth_backend' => $GLOBALS['user_inc'], 'subject_id' => $profile['subject_id']]);
       }
       $expires = now()->addDays(config('webcalendar.token_lifetime_days'));
       $token = $user->createToken($deviceName, ['events:read'], $expires);
