@@ -8,7 +8,7 @@ cleanup() {
   status=$?
   trap - EXIT
   if [ "$status" -ne 0 ]; then
-    docker compose -p "$project" -f "$compose_file" logs api api-private || true
+    docker compose -p "$project" -f "$compose_file" logs || true
   fi
   docker compose -p "$project" -f "$compose_file" down --volumes --remove-orphans
   exit "$status"
@@ -21,4 +21,8 @@ docker compose -p "$project" -f "$compose_file" up --build -d --wait
 for service in api api-private; do
   docker compose -p "$project" -f "$compose_file" exec -T -u www-data "$service" \
     php tests/fixtures/api-apache-smoke.php
+done
+for service in api-storage-alias api-configuration-alias; do
+  docker compose -p "$project" -f "$compose_file" exec -T -u www-data "$service" \
+    php tests/fixtures/api-apache-paths.php
 done

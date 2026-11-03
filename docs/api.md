@@ -102,6 +102,21 @@ layout so the convention resolves outside the public tree. HTTP startup rejects
 configuration or storage that resolves inside the installation or the current
 document root, including symlinks into those directories.
 
+Path validation checks both the normalized access path and its canonical
+target. Public-facing symlinks pointing outward to private targets are also
+rejected, along with intermediate aliases that enter the public tree. Storage
+and its runtime subdirectories are validated before creation and checked again
+afterward. Storage overrides must be absolute filesystem paths.
+
+A supplied HTTP document-root boundary must itself be a resolvable directory.
+If `open_basedir` permits child directories but prevents resolving their public
+parent, startup fails cleanly rather than skipping that boundary. CLI commands
+have no authoritative broader HTTP document root; they always protect the
+installation boundary, but the deployment must still place configuration and
+storage outside every site's public tree. These checks do not discover unrelated
+web-server aliases or block direct HTTP access through aliases an administrator
+has configured elsewhere. Remove public aliases to private configuration/storage.
+
 The public installation's `.env` is deliberately ignored. Private file values
 are kept in an API-only configuration repository; they do not replace
 WebCalendar's existing `includes/settings.php`, enable `WEBCALENDAR_USE_ENV`, or
@@ -315,6 +330,11 @@ profile/events reads, revocation, missing/invalid/revoked token rejection, and
 shared private storage for CLI and HTTP. The fixture containers and data are
 removed on exit; it uses neither the development database nor its accounts.
 CI runs this check alongside PHPUnit.
+Two additional Apache fixtures deliberately enable symlink following and serve
+harmless configuration/storage canaries through outward public aliases. They
+verify that those aliases are actually web-reachable, then require API startup
+to reject them with clean JSON and no newly created runtime files. The fixtures
+contain no deployment secrets or real calendar data.
 The events fixture contains weekly and monthly weekday rules and asserts the
 returned occurrence dates, rather than checking only an empty collection. API
 integration tests additionally cover weekly exceptions, COUNT-limited series,

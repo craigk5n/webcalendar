@@ -17,18 +17,20 @@ use RuntimeException;
 final class Environment
 {
   private bool $fileLoaded = false;
+  private PrivatePathPolicy $paths;
 
   private function __construct(
     private string $installation,
     private string $privateDirectory,
-    private ?string $documentRoot,
+    ?string $documentRoot,
     private RepositoryInterface $repository
   ) {
+    $this->paths = new PrivatePathPolicy($installation, $documentRoot);
   }
 
   public static function directory(string $installation): string
   {
-    $root = realpath($installation);
+    $root = @realpath($installation);
     if ($root === false) {
       throw new RuntimeException('Cannot locate the WebCalendar installation.');
     }
@@ -50,12 +52,12 @@ final class Environment
       throw new RuntimeException('Cannot read the private API configuration directory.');
     }
     if (@file_exists($file) || @is_link($file)) {
-      $environment->assertOutsideDocumentRoot($file);
-      if (!is_file($file) || !is_readable($file)) {
+      $resolved = $environment->resolvePrivatePath($file);
+      if (!@is_file($resolved) || !@is_readable($resolved)) {
         throw new RuntimeException('Cannot read the private API environment file.');
       }
       try {
-        Dotenv::create($repository, $directory)->load();
+        Dotenv::create($repository, dirname($resolved), basename($resolved))->load();
       } catch (ExceptionInterface $exception) {
         throw new RuntimeException('Cannot load the private API environment file. Check its syntax and permissions.');
       }
@@ -86,16 +88,11 @@ final class Environment
 
   public function assertOutsideDocumentRoot(string $path): void
   {
-    $resolved = @realpath($path);
-    if ($resolved === false) {
-      throw new RuntimeException('Cannot resolve the API configuration or storage path.');
-    }
-    foreach ([$this->installation, $this->documentRoot] as $root) {
-      $root = $root === null ? false : realpath($root);
-      if ($root !== false && ($resolved === $root
-          || str_starts_with($resolved, rtrim($root, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR))) {
-        throw new RuntimeException('API configuration and storage must be outside the document root.');
-      }
-    }
+    $this->paths->resolve($path);
+  }
+
+  public function resolvePrivatePath(string $path, bool $allowMissing = false): string
+  {
+    return $this->paths->resolve($path, $allowMissing);
   }
 }

@@ -239,6 +239,127 @@ final class ApiEnvironmentTest extends TestCase
     self::assertDirectoryDoesNotExist($this->private . '/storage');
   }
 
+  public function testSuppliedButUnresolvableDocumentRootIsRejectedWithoutDiagnostics(): void
+  {
+    file_put_contents($this->private . '/.env', "WEBCALENDAR_API_ENABLED=true\n");
+    $allowed = $this->installation . PATH_SEPARATOR . $this->private . PATH_SEPARATOR . dirname(__DIR__);
+    $script = <<<'PHP'
+      require $argv[1] . '/vendor/autoload.php';
+      try {
+        WebCalendar\Api\Environment::load($argv[1], $argv[2]);
+        echo json_encode(['rejected' => false]);
+      } catch (RuntimeException $exception) {
+        echo json_encode(['rejected' => true]);
+      }
+      PHP;
+    [$status, $output] = $this->command([PHP_BINARY, '-d', 'open_basedir=' . $allowed,
+      '-d', 'display_errors=stderr', '-r', $script, $this->installation, $this->home]);
+    self::assertSame(0, $status, $output);
+    self::assertSame('{"rejected":true}', $output);
+    self::assertDirectoryDoesNotExist($this->private . '/storage');
+  }
+
+  public function testPublicConfigurationAliasPointingOutsideIsRejected(): void
+  {
+    $secure = McpServerFixture::tempPath('api-secure-configuration', '');
+    $this->extraStorage[] = $secure;
+    $fs = new Filesystem();
+    $fs->rename($this->private, $secure);
+    $fs->symlink($secure, $this->private);
+    file_put_contents($secure . '/.env', "WEBCALENDAR_API_ENABLED=true\n");
+    $this->startServer([], $this->home);
+    [$status] = $this->request('GET', '/v1/users/current');
+    self::assertSame(503, $status);
+    self::assertDirectoryDoesNotExist($secure . '/storage');
+  }
+
+  public static function publicStorageSuffixes(): array
+  {
+    return ['existing directory' => [''], 'missing child directories' => ['/new/nested']];
+  }
+
+  /** @dataProvider publicStorageSuffixes */
+  public function testPublicStorageAliasPointingOutsideIsRejectedBeforeCreatingFiles(string $suffix): void
+  {
+    $secure = $this->home . '/secure-storage';
+    mkdir($secure);
+    $alias = $this->installation . '/public-storage';
+    (new Filesystem())->symlink($secure, $alias);
+    file_put_contents($this->private . '/.env', "WEBCALENDAR_API_ENABLED=true\nWEBCALENDAR_API_STORAGE=\"$alias$suffix\"\n");
+    $this->startServer();
+    [$status] = $this->request('GET', '/v1/users/current');
+    self::assertSame(503, $status);
+    self::assertSame(['.', '..'], scandir($secure));
+  }
+
+  public function testStorageAliasUnderBroaderDocumentRootIsRejected(): void
+  {
+    $secure = McpServerFixture::tempPath('api-secure-storage', '');
+    $this->extraStorage[] = $secure;
+    mkdir($secure);
+    $alias = $this->home . '/public-storage';
+    (new Filesystem())->symlink($secure, $alias);
+    $this->startServer(['WEBCALENDAR_API_ENABLED' => 'true', 'WEBCALENDAR_API_STORAGE' => $alias], $this->home);
+    [$status] = $this->request('GET', '/v1/users/current');
+    self::assertSame(503, $status);
+    self::assertSame(['.', '..'], scandir($secure));
+  }
+
+  public function testPublicStorageDirectoriesAreRejectedBeforeMkdir(): void
+  {
+    $storage = $this->installation . '/new-public-storage/nested';
+    file_put_contents($this->private . '/.env', "WEBCALENDAR_API_ENABLED=true\nWEBCALENDAR_API_STORAGE=\"$storage\"\n");
+    $this->startServer();
+    [$status] = $this->request('GET', '/v1/users/current');
+    self::assertSame(503, $status);
+    self::assertDirectoryDoesNotExist($this->installation . '/new-public-storage');
+  }
+
+  public function testRuntimeCacheAliasesAreValidatedBeforeCreatingTheirChildren(): void
+  {
+    $public = $this->installation . '/public-cache';
+    $storage = $this->private . '/storage';
+    $fs = new Filesystem();
+    $fs->mkdir([$public, $storage]);
+    $fs->symlink($public, $storage . '/bootstrap');
+    file_put_contents($this->private . '/.env', "WEBCALENDAR_API_ENABLED=true\n");
+    $this->startServer();
+    [$status] = $this->request('GET', '/v1/users/current');
+    self::assertSame(503, $status);
+    self::assertSame(['.', '..'], scandir($public));
+  }
+
+  public static function documentRootAccessForms(): array
+  {
+    return ['public alias' => [true], 'canonical root' => [false]];
+  }
+
+  /** @dataProvider documentRootAccessForms */
+  public function testSymlinkedDocumentRootsProtectBothAccessForms(bool $useAlias): void
+  {
+    $public = $this->home . '/public';
+    $alias = $this->home . '/public-alias';
+    $secure = $this->home . '/secure-storage';
+    $fs = new Filesystem();
+    $fs->mkdir([$public, $secure]);
+    $fs->symlink($public, $alias);
+    $fs->symlink($secure, $public . '/outward');
+    $path = ($useAlias ? $alias : $public) . '/outward';
+    $script = <<<'PHP'
+      require $argv[1] . '/vendor/autoload.php';
+      $environment = WebCalendar\Api\Environment::load($argv[1], $argv[2]);
+      try {
+        $environment->assertOutsideDocumentRoot($argv[3]);
+        echo json_encode(['rejected' => false]);
+      } catch (RuntimeException $exception) {
+        echo json_encode(['rejected' => true]);
+      }
+      PHP;
+    [$status, $output] = $this->command([PHP_BINARY, '-r', $script, $this->installation, $alias, $path]);
+    self::assertSame(0, $status, $output);
+    self::assertSame('{"rejected":true}', $output);
+  }
+
   public function testEnvironmentSymlinksIntoThePublicDirectoryAreRejected(): void
   {
     file_put_contents($this->installation . '/.env', "WEBCALENDAR_API_ENABLED=true\n");
@@ -246,6 +367,19 @@ final class ApiEnvironmentTest extends TestCase
     $this->startServer();
     [$status] = $this->request('GET', '/v1/users/current');
     self::assertSame(503, $status);
+  }
+
+  public function testPrivateEnvironmentSymlinkCanUseADifferentTargetFilename(): void
+  {
+    $target = $this->home . '/alternate-api-settings';
+    file_put_contents($target, "WEBCALENDAR_API_ENABLED=true\n");
+    (new Filesystem())->symlink($target, $this->private . '/.env');
+    [$status, $output] = $this->command([PHP_BINARY, $this->installation . '/bin/api.php', 'migrate', '--force']);
+    self::assertSame(0, $status, $output);
+    self::assertDirectoryExists($this->private . '/storage/bootstrap/cache');
+    $this->startServer();
+    [$status] = $this->request('GET', '/v1/users/current');
+    self::assertSame(401, $status);
   }
 
   public function testStorageSymlinksIntoThePublicDirectoryAreRejected(): void

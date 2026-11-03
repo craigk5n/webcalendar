@@ -9,6 +9,7 @@ approve_entry.php
 api.php
 app/Api/ApiServiceProvider.php
 app/Api/Environment.php
+app/Api/PrivatePathPolicy.php
 app/Api/bootstrap.php
 app/Api/config/app.php
 app/Api/config/auth.php

@@ -174,6 +174,13 @@ Run these from the repository root unless specified otherwise:
   configuration. See `docs/api.md` and `docs/api.env.example` for deployment.
   Optional private-directory probes must not emit `open_basedir` warnings on
   server-only or Composer-free installations.
+- `PrivatePathPolicy` validates normalized access paths, canonical targets, and
+  intermediate aliases against both access/canonical public-root forms. A supplied
+  document root must resolve; do not silently skip an inaccessible boundary.
+  Validate storage before `mkdir()` or discarding its original alias, then
+  revalidate created runtime directories. CLI lacks a broader HTTP document root.
+  Apache path-policy fixtures use public canaries to prove outward aliases are
+  reachable before checking that the API rejects them without writing files.
 - Apache must forward bearer authorization to PHP. Both Dockerfiles install
   `docker/apache-api.conf`, which scopes `CGIPassAuth On` to `api.php`. A missing
   directive reproduced token issuance (201) followed by profile rejection (401).

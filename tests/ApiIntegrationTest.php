@@ -460,6 +460,7 @@ final class ApiIntegrationTest extends TestCase
       $_SERVER = array_merge($_SERVER, ['REQUEST_METHOD' => 'POST', 'REQUEST_URI' => '/api.php/v1/tokens',
         'SCRIPT_NAME' => '/api.php', 'PHP_SELF' => '/api.php/v1/tokens',
         'SCRIPT_FILENAME' => $argv[1],
+        'DOCUMENT_ROOT' => dirname($argv[1]),
         'HTTP_HOST' => 'localhost', 'SERVER_PORT' => '80', 'SERVER_PROTOCOL' => 'HTTP/1.1']);
       $_POST = ['username' => 'alice', 'password' => 'secret', 'device_name' => 'Forbidden device'];
       register_shutdown_function(static function () { fwrite(STDERR, 'HTTP_STATUS=' . http_response_code()); });

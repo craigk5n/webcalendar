@@ -12,5 +12,12 @@ if [ "${API_SMOKE_PRIVATE_ENV:-false}" = "true" ]; then
     chmod($directory . "/.env", 0600);
   '
 fi
-runuser -u www-data -- php bin/api.php migrate --force
+if [ -n "${API_SMOKE_PUBLIC_ALIAS:-}" ]; then
+  runuser -u www-data -- php tests/fixtures/api-apache-paths.php setup
+  cp tests/fixtures/apache-api-public-alias.conf /etc/apache2/sites-available/000-default.conf
+  runuser -u www-data -- env WEBCALENDAR_API_STORAGE=/tmp/webcalendar-api-smoke/secure/migrations \
+    php bin/api.php migrate --force
+else
+  runuser -u www-data -- php bin/api.php migrate --force
+fi
 exec apache2-foreground
