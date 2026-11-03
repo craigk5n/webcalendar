@@ -8,6 +8,7 @@ ajax.php
 approve_entry.php
 api.php
 app/Api/ApiServiceProvider.php
+app/Api/Environment.php
 app/Api/bootstrap.php
 app/Api/config/app.php
 app/Api/config/auth.php
@@ -55,6 +56,7 @@ docdel.php
 doc.php
 docs/admin-guide.md
 docs/api.md
+docs/api.env.example
 docs/cli.md
 docs/configuration.md
 docs/faq.md

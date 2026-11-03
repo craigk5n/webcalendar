@@ -7,5 +7,5 @@ return [
   'env' => 'production',
   'debug' => false,
   'timezone' => 'UTC',
-  'key' => getenv('WEBCALENDAR_API_KEY') ?: null,
+  'key' => app(WebCalendar\Api\Environment::class)->get('WEBCALENDAR_API_KEY'),
 ];

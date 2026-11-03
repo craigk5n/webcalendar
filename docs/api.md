@@ -19,8 +19,13 @@ reading events on that user's calendar.
    existing database extension. Release archives include the API source, but
    Laravel and Sanctum must be installed with Composer to enable it.
 
-3. Run the API migrations **as the PHP web-server user**, with the same
-   `WEBCALENDAR_*` environment/settings as the web application:
+3. Configure the API using the [private environment file](#private-environment-file-shared-hosting-and-plesk)
+   or the PHP web-server environment. Set `WEBCALENDAR_API_ENABLED=true` to
+   enable API requests. File changes are read on the next request; changes to
+   server environment settings require reloading the corresponding service.
+
+4. Run the API migrations **as the PHP web-server user**, with the same
+   configuration as the web application:
 
    ```sh
    php bin/api.php migrate --force
@@ -32,28 +37,94 @@ reading events on that user's calendar.
    passwords. These optional tables are managed by API migrations rather than
    the web installer.
 
-4. Set `WEBCALENDAR_API_ENABLED=true` in the PHP web-server environment.
-   Restart the web service after changing its environment.
-
-For the development Docker stack:
+For the development Docker stack, the existing server-environment configuration
+continues to work:
 
 ```sh
 WEBCALENDAR_API_ENABLED=true docker compose -f docker/docker-compose-dev.yml up -d --build webcalendar
 docker compose -f docker/docker-compose-dev.yml exec -T -u www-data webcalendar php bin/api.php migrate --force
 ```
 
-The API reads the existing `includes/settings.php` or `WEBCALENDAR_USE_ENV`
-configuration. Laravel does not load the repository's `.env` file; pass settings
-through the server environment. The supplied Compose file reads
-`WEBCALENDAR_API_ENABLED` from the host environment or Compose `.env` file.
+The supplied Compose file reads `WEBCALENDAR_API_ENABLED` from the host
+environment or Compose `.env` file and forwards it into PHP. Explicit server
+environment values take precedence over the private file, including an explicit
+`false` value. Docker Compose interpolation and the API's private file loader
+are independent mechanisms.
 
-Runtime storage defaults to an installation-specific directory under PHP's temp
-directory. For persistent deployments, set `WEBCALENDAR_API_STORAGE` to an
-absolute path outside the web document root, writable by the web-server user.
-Use the same path and user for API CLI commands. With multiple web servers,
-share this storage so rate limits are enforced across instances. Do not run
-Laravel's configuration or route cache commands: the API adapts the current
-WebCalendar configuration on startup.
+### Private environment file (shared hosting and Plesk)
+
+Both `api.php` and `bin/api.php` automatically look for:
+
+```text
+../private/<installation-directory>/.env
+```
+
+The location is relative to the physical WebCalendar installation directory,
+not the current shell directory or the incoming hostname. The file is parsed
+using Laravel's DotEnv dependency before the API enable flag and storage path
+are evaluated. No PHP-FPM environment override is required.
+
+For a Plesk site whose document root is `calendar.example.com` under its home
+directory, create this layout using File Manager:
+
+```text
+Home directory/
+├── private/
+│   └── calendar.example.com/
+│       ├── .env
+│       └── storage/                 (created automatically when writable)
+└── calendar.example.com/             (public document root)
+    ├── api.php
+    ├── app/
+    ├── bin/
+    └── includes/
+```
+
+Copy `docs/api.env.example` to the private `.env`, or create it with:
+
+```dotenv
+WEBCALENDAR_API_ENABLED=true
+```
+
+Runtime storage then defaults to `storage/` beside that `.env`. PHP must be able
+to read the private file and create/write the storage directory; use the
+domain's system user for both deployment and migration commands. On Plesk with
+PHP 8.3, run this from the WebCalendar installation directory:
+
+```sh
+/opt/plesk/php/8.3/bin/php bin/api.php migrate --force
+```
+
+The private directory must be outside **every public document root**. If the
+application is installed in a subdirectory of a larger public directory, do not
+assume its sibling `private/` directory is protected: adjust the deployment
+layout so the convention resolves outside the public tree. HTTP startup rejects
+configuration or storage that resolves inside the installation or the current
+document root, including symlinks into those directories.
+
+The public installation's `.env` is deliberately ignored. Private file values
+are kept in an API-only configuration repository; they do not replace
+WebCalendar's existing `includes/settings.php`, enable `WEBCALENDAR_USE_ENV`, or
+change database credentials. Existing real environment-based database settings
+continue to work. The supported API file settings are
+`WEBCALENDAR_API_ENABLED`, `WEBCALENDAR_API_STORAGE`, and the optional
+`WEBCALENDAR_API_KEY`; no encryption key is required for bearer-token sign-in.
+
+If `WEBCALENDAR_API_STORAGE` is supplied in the private file or server
+environment, it overrides the storage default. Use an absolute path. If there
+is no private file and no explicit storage setting, the existing
+installation-specific temporary storage default is retained. CLI and HTTP must
+use the same owner and configuration. With multiple web servers, share the
+storage so rate limits are enforced across instances.
+
+Missing private files are optional. Files PHP can locate but cannot read, or
+files with malformed syntax, fail startup without returning their contents.
+PHP filesystem restrictions such as `open_basedir` must permit the private
+directory for file-based configuration; server-only configuration does not
+require access to that optional directory. A deployment with a private configuration
+file still requires Composer dependencies. Do not run Laravel's configuration
+or route cache commands: the API adapts the current WebCalendar configuration
+on startup.
 
 Database-password and LDAP-password authentication are supported. HTTP-auth,
 single-user, and other external authentication modes need a separate sign-in
@@ -237,11 +308,13 @@ from the repository root to cover bearer-header forwarding:
 sh tests/run-api-apache-tests.sh
 ```
 
-The Apache check creates a unique Compose project, mounts the checkout read-only,
-and installs a synthetic account into a tmpfs SQLite database. It verifies token
-issuance, profile/events reads, revocation, and missing/invalid/revoked token
-rejection. The fixture container and data are removed on exit; it uses neither
-the development database nor its accounts. CI runs this check alongside PHPUnit.
+The Apache check creates a unique Compose project with separate server-environment
+and private-`.env` fixtures, mounts the checkout read-only, and installs synthetic
+accounts into isolated tmpfs SQLite databases. It verifies token issuance,
+profile/events reads, revocation, missing/invalid/revoked token rejection, and
+shared private storage for CLI and HTTP. The fixture containers and data are
+removed on exit; it uses neither the development database nor its accounts.
+CI runs this check alongside PHPUnit.
 The events fixture contains weekly and monthly weekday rules and asserts the
 returned occurrence dates, rather than checking only an empty collection. API
 integration tests additionally cover weekly exceptions, COUNT-limited series,

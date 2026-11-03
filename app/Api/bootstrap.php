@@ -7,16 +7,16 @@ use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
 use WebCalendar\Api\ApiServiceProvider;
+use WebCalendar\Api\Environment;
 
 $root = dirname(__DIR__, 2);
-$storage = getenv('WEBCALENDAR_API_STORAGE') ?: sys_get_temp_dir() . '/webcalendar-api-' . substr(hash('sha256', $root), 0, 16);
+$apiEnvironment ??= Environment::load($root, $_SERVER['DOCUMENT_ROOT'] ?? null);
+$storage = $apiEnvironment->storagePath();
 if (!is_dir($storage) && !mkdir($storage, 0700, true) && !is_dir($storage)) {
   throw new RuntimeException('Cannot create API storage directory.');
 }
 $storage = realpath($storage);
-if ($storage === realpath($root) || str_starts_with($storage, realpath($root) . DIRECTORY_SEPARATOR)) {
-  throw new RuntimeException('API storage must be outside the document root.');
-}
+$apiEnvironment->assertOutsideDocumentRoot($storage);
 if (!is_writable($storage)) {
   throw new RuntimeException('API storage is not writable by this user.');
 }
@@ -51,4 +51,5 @@ $app->useDatabasePath(__DIR__ . '/database');
 $app->useStoragePath($storage);
 $app->useBootstrapPath($storage . '/bootstrap');
 $app->useEnvironmentPath($storage . '/environment');
+$app->instance(Environment::class, $apiEnvironment);
 return $app;

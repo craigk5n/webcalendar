@@ -1,5 +1,10 @@
 .git
 .gitignore
+.env
+.env.*
+**/.env
+**/.env.*
+private
 .github
 bump_version.sh
 docker/*

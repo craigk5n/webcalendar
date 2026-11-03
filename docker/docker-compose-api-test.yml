@@ -1,5 +1,5 @@
 services:
-  api:
+  api: &api
     build:
       context: ..
       dockerfile: docker/Dockerfile-dev
@@ -7,6 +7,7 @@ services:
       - ..:/var/www/html:ro
     tmpfs:
       - /tmp/webcalendar-api-smoke:mode=1777
+      - /var/www/private:mode=1777
     environment:
       WEBCALENDAR_USE_ENV: "true"
       WEBCALENDAR_DB_TYPE: sqlite3
@@ -21,3 +22,12 @@ services:
       timeout: 2s
       retries: 30
       start_period: 10s
+
+  api-private:
+    <<: *api
+    environment:
+      WEBCALENDAR_USE_ENV: "true"
+      WEBCALENDAR_DB_TYPE: sqlite3
+      WEBCALENDAR_DB_DATABASE: /tmp/webcalendar-api-smoke/calendar.sqlite
+      WEBCALENDAR_USER_INC: user.php
+      API_SMOKE_PRIVATE_ENV: "true"

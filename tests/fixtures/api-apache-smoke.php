@@ -79,4 +79,14 @@ if ($revocation[1]['data']['revoked'] !== true) {
   throw new RuntimeException('Revocation was not confirmed');
 }
 api_smoke_expect_status(401, api_smoke_request('GET', '/users/current', $token), 'Revoked token');
-echo "Apache API smoke passed: token issuance, profile, weekly/monthly recurrence, revocation, and missing/invalid/revoked token rejection.\n";
+$mode = 'server environment';
+if (getenv('API_SMOKE_PRIVATE_ENV') === 'true') {
+  $mode = 'private .env';
+  if (getenv('WEBCALENDAR_API_ENABLED') !== false || getenv('WEBCALENDAR_API_STORAGE') !== false) {
+    throw new RuntimeException('The private-file fixture must not rely on API server environment settings');
+  }
+  if (!glob('/var/www/private/html/storage/framework/cache/data/*/*/*')) {
+    throw new RuntimeException('HTTP did not use the storage configured by the private file');
+  }
+}
+echo "Apache API smoke passed ($mode): token issuance, profile, weekly/monthly recurrence, revocation, and missing/invalid/revoked token rejection.\n";

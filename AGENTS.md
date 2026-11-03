@@ -79,6 +79,8 @@ Run these from the repository root unless specified otherwise:
 - PHP is not installed on the host in this environment. Run the suite with
   `docker compose -f docker/docker-compose-dev.yml exec -T -u "$(id -u):$(id -g)" webcalendar php vendor/bin/phpunit -c tests/phpunit.xml`.
   Other PHP commands can use the same container via `exec -T webcalendar php`.
+- Use `--init` for standalone Docker test containers so PHP is not PID 1 and
+  spawned fixture processes are reaped when the test run exits.
 - Syntax checks use `php tools/lint-php.php` in CI and through
   `tests/compile_test.sh`. The exact bundled UUID `bootstrap85.php` path is
   skipped only below PHP 8.5 and is linted on 8.5; do not exclude the whole SDK.
@@ -161,9 +163,17 @@ Run these from the repository root unless specified otherwise:
   to 93 days. `tests/ApiIntegrationTest.php` installs a disposable SQLite calendar
   and tests real HTTP requests without modifying the development database.
 - API storage belongs outside the document root. CLI and HTTP must share its
-  owner/path (`WEBCALENDAR_API_STORAGE`); the default is installation-specific
-  temp storage. Laravel must not load the repository `.env` or cache the adapted
-  legacy configuration. See `docs/api.md` for setup and client contracts.
+  owner/path (`WEBCALENDAR_API_STORAGE`). `WebCalendar\Api\Environment` loads
+  `../private/<physical-installation-directory>/.env` before either entry point
+  initializes legacy code. With that file, storage defaults to its adjacent
+  `storage/`; otherwise the installation-specific temporary default remains.
+  Server environment values override file values. DotEnv writes only to an
+  isolated API repository: do not inject file values into legacy `getenv()` or
+  load the public repository `.env`. Configuration/storage symlinks into the
+  installation or HTTP document root are rejected. Do not cache adapted legacy
+  configuration. See `docs/api.md` and `docs/api.env.example` for deployment.
+  Optional private-directory probes must not emit `open_basedir` warnings on
+  server-only or Composer-free installations.
 - Apache must forward bearer authorization to PHP. Both Dockerfiles install
   `docker/apache-api.conf`, which scopes `CGIPassAuth On` to `api.php`. A missing
   directive reproduced token issuance (201) followed by profile rejection (401).
