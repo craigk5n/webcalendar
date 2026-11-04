@@ -1,0 +1,3 @@
+<Files "api.php">
+    CGIPassAuth On
+</Files>

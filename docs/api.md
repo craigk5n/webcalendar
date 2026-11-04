@@ -188,6 +188,30 @@ use the equivalent configuration for its installation directory:
 ```
 
 Validate Apache's configuration and reload the service after making this change.
+
+For shared hosting, including Plesk with **FPM application served by Apache**,
+the supplied `.htaccess.example` provides the same forwarding directive:
+
+```apache
+<Files "api.php">
+    CGIPassAuth On
+</Files>
+```
+
+Copy `.htaccess.example` to `.htaccess` in the installation directory beside
+the root `api.php`. If `.htaccess` already exists, merge the block into it rather
+than replacing existing settings. The `bin/api.php` file is a CLI tool; placing
+`.htaccess` in `bin/` does not configure the HTTP endpoint. The active `.htaccess`
+is installation-specific and ignored by Git; the example ships in release archives.
+
+In Plesk, use File Manager to edit this file when the additional Apache directives
+fields are unavailable. Apache normally reads `.htaccess` on each request, so
+no reload is needed. The host must permit the `AuthConfig` override (or explicitly
+allow `CGIPassAuth`). If adding the block causes HTTP 500, remove it and inspect
+the domain's Apache error log. A `CGIPassAuth not allowed here` diagnostic requires
+the hosting provider to permit the override or configure forwarding for `api.php`.
+With a fresh token, `GET /api.php/v1/users/current` should return 200.
+
 Reverse proxies and FastCGI configurations must also preserve `Authorization`;
 forward the original header rather than placing tokens in URLs. No rewrite
 rules are required for the canonical `api.php/v1` path.
@@ -348,6 +372,9 @@ harmless configuration/storage canaries through outward public aliases. They
 verify that those aliases are actually web-reachable, then require API startup
 to reject them with clean JSON and no newly created runtime files. The fixtures
 contain no deployment secrets or real calendar data.
+A separate fixture disables the Docker forwarding configuration and installs
+`.htaccess.example` as the root `.htaccess` with `AllowOverride AuthConfig`, then
+checks token issuance, authenticated reads, and revocation through Apache.
 Three private-starting chain variants cover configuration, existing storage,
 and missing storage children: the configured private link points through the
 web-reachable public alias before reaching its private final target.
