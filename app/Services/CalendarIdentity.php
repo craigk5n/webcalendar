@@ -48,6 +48,12 @@ final class CalendarIdentity
     access_init();
   }
 
+  public function weekStart(string $username): int
+  {
+    $this->activate($username);
+    return (int) $GLOBALS['WEEK_START'];
+  }
+
   private function isUser(string $username): bool
   {
     return !in_array($username, ['__public__', '__default__'], true)

@@ -283,6 +283,33 @@ To remove expired token records periodically, run as the web-server user:
 php bin/api.php sanctum:prune-expired --hours=24
 ```
 
+### Read the current user
+
+`GET /users/current` returns the authenticated profile and its effective
+first-weekday preference:
+
+```json
+{
+  "data": {
+    "username": "alice",
+    "name": "Alice Example",
+    "email": "",
+    "week_start": 0
+  }
+}
+```
+
+`week_start` is an integer from 0 (Sunday) through 6 (Saturday), matching
+WebCalendar's **Preferences → Week starts on** setting. It uses the user's
+override when present, otherwise the installation default (built-in: Sunday).
+The effective value is resolved on every profile request, so clients can pick up
+web preference changes when revalidating a session. This is a read-only field;
+change the preference in the web application. It does not specify the minimum
+days in the first week or a week-numbering convention.
+
+Older API deployments omit `week_start`; clients should retain a local fallback
+for those installations. This addition requires no database migration.
+
 ### Read events
 
 Both dates are required, inclusive, and interpreted in the user's configured
