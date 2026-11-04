@@ -162,6 +162,13 @@ Run these from the repository root unless specified otherwise:
   preserve that distinction across DST. Date bounds are inclusive and limited
   to 93 days. `tests/ApiIntegrationTest.php` installs a disposable SQLite calendar
   and tests real HTTP requests without modifying the development database.
+- `GET /users/current` includes integer `week_start` (0 = Sunday, 6 = Saturday).
+  CalendarIdentity.weekStart() uses the existing activation/preference resolver
+  so user overrides, including string '0', take precedence over installation
+  defaults. Resolve it on every profile read; no migration is needed. Isolated
+  API installation fixtures must include translations for preference loading.
+  Clients may fall back to regional defaults when older servers omit this field;
+  it does not define minimum-days-in-first-week or a week-numbering convention.
 - API storage belongs outside the document root. CLI and HTTP must share its
   owner/path (`WEBCALENDAR_API_STORAGE`). `WebCalendar\Api\Environment` loads
   `../private/<physical-installation-directory>/.env` before either entry point

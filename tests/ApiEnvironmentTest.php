@@ -38,7 +38,7 @@ final class ApiEnvironmentTest extends TestCase
     foreach (['api.php', 'bin/api.php', 'includes/config.php', 'includes/api-bootstrap.php'] as $path) {
       $fs->copy($root . '/' . $path, $this->installation . '/' . $path);
     }
-    foreach (['app', 'vendor'] as $name) {
+    foreach (['app', 'vendor', 'translations'] as $name) {
       $fs->symlink($root . '/' . $name, $this->installation . '/' . $name);
     }
     $this->environment = getenv();
@@ -83,6 +83,7 @@ final class ApiEnvironmentTest extends TestCase
     [$status, $body] = $this->request('GET', '/v1/users/current', [], $body['data']['token']);
     self::assertSame(200, $status, json_encode($body));
     self::assertSame('env-user', $body['data']['username']);
+    self::assertSame(0, $body['data']['week_start']);
     self::assertNotEmpty(glob($this->private . '/storage/framework/cache/data/*/*/*'));
     [$status] = $this->request('GET', '/v1/users/current', [], null, 'untrusted.example.test');
     self::assertSame(401, $status);

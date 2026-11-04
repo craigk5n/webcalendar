@@ -130,6 +130,39 @@ final class ApiIntegrationTest extends TestCase
     }
   }
 
+  public function testProfileUsesEffectiveWeekStartAndRefreshesPreferences(): void
+  {
+    $token = $this->token();
+    $original = self::$db->query("SELECT cal_value FROM webcal_config WHERE cal_setting = 'WEEK_START'")->fetchColumn();
+    try {
+      self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('WEEK_START', '1')");
+      [$status, $body] = $this->request('GET', '/v1/users/current', [], $token);
+      self::assertSame(200, $status, json_encode($body));
+      self::assertSame(1, $body['data']['week_start'] ?? null);
+      foreach (range(0, 6) as $weekday) {
+        self::sql('INSERT OR REPLACE INTO webcal_user_pref (cal_login, cal_setting, cal_value) VALUES (?, ?, ?)',
+          ['alice', 'WEEK_START', (string) $weekday]);
+        [$status, $body] = $this->request('GET', '/v1/users/current', [], $token);
+        self::assertSame(200, $status, json_encode($body));
+        self::assertSame($weekday, $body['data']['week_start']);
+      }
+      self::$db->exec('DELETE FROM webcal_user_pref');
+      self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('WEEK_START', '0')");
+      [$status, $body] = $this->request('GET', '/v1/users/current', [], $token);
+      self::assertSame(200, $status, json_encode($body));
+      self::assertSame(0, $body['data']['week_start']);
+      self::$db->exec("DELETE FROM webcal_config WHERE cal_setting = 'WEEK_START'");
+      [$status, $body] = $this->request('GET', '/v1/users/current', [], $token);
+      self::assertSame(200, $status, json_encode($body));
+      self::assertSame(0, $body['data']['week_start']);
+    } finally {
+      self::$db->exec("DELETE FROM webcal_config WHERE cal_setting = 'WEEK_START'");
+      if ($original !== false) {
+        self::sql('INSERT INTO webcal_config (cal_setting, cal_value) VALUES (?, ?)', ['WEEK_START', $original]);
+      }
+    }
+  }
+
   public function testInvalidCredentialsAndDisabledAccountsCannotIssueTokens(): void
   {
     foreach ([['alice', 'wrong'], ['missing', 'wrong'], ['__public__', 'secret']] as [$username, $password]) {
