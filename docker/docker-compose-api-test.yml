@@ -1,0 +1,69 @@
+services:
+  api: &api
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile-dev
+    volumes:
+      - ..:/var/www/html:ro
+    tmpfs:
+      - /tmp/webcalendar-api-smoke:mode=1777
+      - /var/www/private:mode=1777
+    environment: &api-environment
+      WEBCALENDAR_USE_ENV: "true"
+      WEBCALENDAR_DB_TYPE: sqlite3
+      WEBCALENDAR_DB_DATABASE: /tmp/webcalendar-api-smoke/calendar.sqlite
+      WEBCALENDAR_USER_INC: user.php
+      WEBCALENDAR_API_ENABLED: "true"
+      WEBCALENDAR_API_STORAGE: /tmp/webcalendar-api-smoke/storage
+    command: ["sh", "tests/fixtures/api-apache-entrypoint.sh"]
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(@fsockopen('127.0.0.1', 80) ? 0 : 1);"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+      start_period: 10s
+
+  api-private:
+    <<: *api
+    environment:
+      WEBCALENDAR_USE_ENV: "true"
+      WEBCALENDAR_DB_TYPE: sqlite3
+      WEBCALENDAR_DB_DATABASE: /tmp/webcalendar-api-smoke/calendar.sqlite
+      WEBCALENDAR_USER_INC: user.php
+      API_SMOKE_PRIVATE_ENV: "true"
+
+  api-storage-alias:
+    <<: *api
+    environment:
+      <<: *api-environment
+      API_SMOKE_PUBLIC_ALIAS: storage
+      WEBCALENDAR_API_STORAGE: /tmp/webcalendar-api-smoke/public/public-storage
+
+  api-configuration-alias:
+    <<: *api
+    environment:
+      <<: *api-environment
+      API_SMOKE_PUBLIC_ALIAS: configuration
+      WEBCALENDAR_API_STORAGE: /tmp/webcalendar-api-smoke/secure/storage
+
+  api-storage-chain:
+    <<: *api
+    environment: &storage-chain-environment
+      <<: *api-environment
+      API_SMOKE_PUBLIC_ALIAS: storage
+      API_SMOKE_CHAINED_ALIAS: "true"
+      WEBCALENDAR_API_STORAGE: /tmp/webcalendar-api-smoke/secure/storage-chain
+
+  api-storage-chain-missing:
+    <<: *api
+    environment:
+      <<: *storage-chain-environment
+      WEBCALENDAR_API_STORAGE: /tmp/webcalendar-api-smoke/secure/storage-chain/new/nested
+
+  api-configuration-chain:
+    <<: *api
+    environment:
+      <<: *api-environment
+      API_SMOKE_PUBLIC_ALIAS: configuration
+      API_SMOKE_CHAINED_ALIAS: "true"
+      WEBCALENDAR_API_STORAGE: /tmp/webcalendar-api-smoke/secure/storage

@@ -125,6 +125,50 @@ PHP;
     self::assertStringContainsString('HELPERS_LOADED', $output);
   }
 
+  public function testBundledSdkBootsWithoutComposerOrWarnings(): void
+  {
+    $script = <<<'PHP'
+<?php
+set_error_handler(static function ($severity, $message, $file, $line) {
+  throw new ErrorException($message, 0, $severity, $file, $line);
+});
+require 'includes/mcp-loader.php';
+if (!Mcp\Server::builder() instanceof Mcp\Server\Builder
+    || strlen((string) Symfony\Component\Uid\Uuid::v4()) !== 36) {
+  exit(1);
+}
+echo 'SDK_LOADED';
+PHP;
+    file_put_contents(self::$stage . '/__smoke_sdk.php', $script);
+    [$output, $status] = self::runPhp('__smoke_sdk.php', self::$stage);
+    self::assertSame(0, $status, $output);
+    self::assertSame('SDK_LOADED', $output);
+  }
+
+  public function testBrowserInitializationSupportsWeekdayRecurrenceWithoutComposer(): void
+  {
+    $script = <<<'PHP'
+<?php
+set_error_handler(static function ($severity, $message, $file, $line) {
+  throw new ErrorException($message, 0, $severity, $file, $line);
+});
+date_default_timezone_set('UTC');
+$db_login = $db_password = 'fixture';
+$PHP_SELF = '/month.php';
+require 'includes/classes/WebCalendar.php';
+$calendar = new WebCalendar('month.php');
+$calendar->_initFunctions();
+require 'includes/functions.php';
+echo json_encode(get_all_dates(strtotime('2026-11-02'), 'weekly', 1,
+  '', '', '', '', 'MO,WE,FR', '', 999, strtotime('2026-11-08 23:59:59'),
+  'MO', [], [], strtotime('2026-11-02')));
+PHP;
+    file_put_contents(self::$stage . '/__smoke_recurrence.php', $script);
+    [$output, $status] = self::runPhp('__smoke_recurrence.php', self::$stage);
+    self::assertSame(0, $status, $output);
+    self::assertSame(['20261102', '20261104', '20261106'], json_decode($output, true), $output);
+  }
+
   /**
    * (b) Every static require/include in shipped code must itself be shipped.
    *

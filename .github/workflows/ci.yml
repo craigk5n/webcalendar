@@ -41,3 +41,17 @@ jobs:
       - name: Wizard validation race guard (#728)
         if: matrix.php-version == '8.4'
         run: node tests/wizard-validation-race.js
+
+  apache-api:
+    runs-on: ubuntu-24.04
+    name: Apache bearer-token smoke test
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Test API through Apache with disposable SQLite storage
+        run: sh tests/run-api-apache-tests.sh

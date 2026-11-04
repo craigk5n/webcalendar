@@ -2,6 +2,8 @@
 .DS_Store
 # Local environment overrides -- may hold credentials, never commit.
 .env
+.env.*
+/private/
 # Local agent instructions; shared project guidance lives in AGENTS.md.
 /CLAUDE.md
 .htaccess

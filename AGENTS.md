@@ -79,10 +79,14 @@ Run these from the repository root unless specified otherwise:
 - PHP is not installed on the host in this environment. Run the suite with
   `docker compose -f docker/docker-compose-dev.yml exec -T -u "$(id -u):$(id -g)" webcalendar php vendor/bin/phpunit -c tests/phpunit.xml`.
   Other PHP commands can use the same container via `exec -T webcalendar php`.
-- Full syntax helper: run `bash compile_test.sh` with `tests/` as the working
-  directory. Both it and `tests/run_unit_tests.sh` always exit 0, even on
-  failures; inspect the syntax summary and invoke PHPUnit directly for a
-  reliable test exit status.
+- Use `--init` for standalone Docker test containers so PHP is not PID 1 and
+  spawned fixture processes are reaped when the test run exits.
+- Syntax checks use `php tools/lint-php.php` in CI and through
+  `tests/compile_test.sh`. The exact bundled UUID `bootstrap85.php` path is
+  skipped only below PHP 8.5 and is linted on 8.5; do not exclude the whole SDK.
+  Run the complete PHPUnit and lint matrix on PHP 8.2–8.5 for API changes.
+  `tests/run_unit_tests.sh` is not a reliable test-exit-status wrapper; invoke
+  PHPUnit directly.
 - HTTP tests require an installed app at `http://localhost:8080`, `admin/admin`,
   and Python packages `pytest`, `httpx`, `lxml`. Invoke explicitly with
   `python -m pytest tests/ui-tests.py` (its filename is not default pytest
@@ -138,3 +142,83 @@ Run these from the repository root unless specified otherwise:
 - MCP authentication compares only the SHA-256 hash of the presented token.
   Do not restore a plaintext fallback: stored hashes must never authenticate.
   Legacy plaintext tokens require regeneration in Preferences.
+
+## Mobile API
+- The opt-in Laravel/Sanctum API is served by `api.php/v1/*`; enable it with
+  `WEBCALENDAR_API_ENABLED=true`. `app/Api/` contains its bootstrap, config,
+  routes, controllers, requests, and token models. `app/Services/CalendarIdentity.php`
+  and `CalendarEvents.php` adapt the procedural authentication/event functions.
+- API dependencies require Composer; the legacy UI still supports archives
+  without `vendor/`. Run `php bin/api.php migrate --force` as the web-server
+  user to install optional API tables. API migrations are separate from the
+  wizard's versioned schema upgrades. PDO drivers are required alongside DBI
+  extensions; the Docker images include `pdo_mysql` for this reason.
+- API identities contain no passwords and support database/LDAP authentication.
+  Recheck the configured backend and current user on every token-authenticated
+  request. Disable DBI's persistent query cache in the API so account and
+  permission changes are visible immediately. Keep Sanctum and MCP tokens separate.
+- Initial event reads are own-calendar only: no layers/public overlay or
+  delegation. Recurrence dates are local but stored event times are UTC;
+  preserve that distinction across DST. Date bounds are inclusive and limited
+  to 93 days. `tests/ApiIntegrationTest.php` installs a disposable SQLite calendar
+  and tests real HTTP requests without modifying the development database.
+- API storage belongs outside the document root. CLI and HTTP must share its
+  owner/path (`WEBCALENDAR_API_STORAGE`). `WebCalendar\Api\Environment` loads
+  `../private/<physical-installation-directory>/.env` before either entry point
+  initializes legacy code. With that file, storage defaults to its adjacent
+  `storage/`; otherwise the installation-specific temporary default remains.
+  Server environment values override file values. DotEnv writes only to an
+  isolated API repository: do not inject file values into legacy `getenv()` or
+  load the public repository `.env`. Configuration/storage symlinks into the
+  installation or HTTP document root are rejected. Do not cache adapted legacy
+  configuration. See `docs/api.md` and `docs/api.env.example` for deployment.
+  Optional private-directory probes must not emit `open_basedir` warnings on
+  server-only or Composer-free installations.
+- `PrivatePathPolicy` validates normalized access paths, canonical targets, and
+  intermediate aliases against both access/canonical public-root forms. A supplied
+  document root must resolve; do not silently skip an inaccessible boundary.
+  Validate storage before `mkdir()` or discarding its original alias, then
+  revalidate created runtime directories. CLI lacks a broader HTTP document root.
+  Apache path-policy fixtures use public canaries to prove outward aliases are
+  reachable before checking that the API rejects them without writing files.
+  Inspect each `readlink()` destination, including relative targets; a final
+  `realpath()` result loses chained public hops. Process dot segments after
+  preceding links, reject uninspectable required components, and bound traversal
+  with cycle-state checks. Canonical boundary ancestors are the only metadata
+  shortcut; missing children require an inspectable parent and existing link targets.
+- Apache must forward bearer authorization to PHP. Both Dockerfiles install
+  `docker/apache-api.conf`, which scopes `CGIPassAuth On` to `api.php`. A missing
+  directive reproduced token issuance (201) followed by profile rejection (401).
+  `sh tests/run-api-apache-tests.sh` covers this using a unique Compose project,
+  a read-only checkout, and disposable tmpfs SQLite storage; no development DB
+  or credentials are used. Rebuild the web image when changing Apache config.
+- Composer and the bundled MCP loader share eager dependencies. The bundle
+  generator uses Composer's package/file identifiers and
+  `__composer_autoload_files` registry to run each eager bootstrap once in either
+  loader order. Keep that behavior in `tools/build-mcp-sdk.php`, regenerate with
+  `make mcp-sdk`, and test both loader orders plus Composer-free releases.
+  Requiring both physical UUID bootstrap copies caused duplicate-constant
+  warnings on PHP 8.5 and broke browser headers/cookies.
+- API startup must check parsed `$settings['use_http_auth']`, not the unassigned
+  legacy `$use_http_auth` global. Tests cover environment and isolated file-backed
+  configuration. HTTP test fixtures use stream metadata for response headers;
+  indirect `get_defined_vars()` lookup fails on PHP 8.2/8.3.
+- User-deletion backends call the Composer-independent `ApiCredentialLifecycle`
+  helper before deleting account data. It checks optional tables without DBI's
+  persistent cache and aborts on partial schemas or revocation errors. DBI strips
+  one slash-escaping layer from parameters, including tokenable class names.
+- API subject bindings invalidate old tokens on database credential changes or
+  LDAP entry replacement. LDAP API lookups require `entryUUID` or `objectGUID`;
+  names and DNs are not immutable. The single initial API migration includes
+  subject bindings with the identity/token tables; unbound tokens require fresh
+  sign-in. This schema was consolidated before first production deployment;
+  subsequent deployed-schema changes require separate migration files.
+- Composer archive timestamps can be older than bundled assets. After a TinyMCE
+  update, force `make -B pub/tinymce/CHANGELOG.md` as well as `make`, and run
+  `TinyMceBundleTest` to check that shipped scripts match the audited dependency.
+- The browser and API both call `initialize_recurrence_globals()` from
+  `includes/recurrence-globals.php`. Weekday-based weekly/monthly recurrence
+  requires both BYDAY lookup arrays; the API previously omitted them and returned
+  500 on real calendars. Keep recurrence initialization free of browser session
+  setup. Tests cover weekday rules, exceptions, COUNT limits, and DST; the Apache
+  smoke fixture seeds weekly and monthly events and asserts occurrence dates.

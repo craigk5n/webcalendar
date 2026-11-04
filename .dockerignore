@@ -1,8 +1,14 @@
 .git
 .gitignore
+.env
+.env.*
+**/.env
+**/.env.*
+private
 .github
 bump_version.sh
-docker
+docker/*
+!docker/apache-api.conf
 composer.json
 composer.lock
 # ignore all docs/

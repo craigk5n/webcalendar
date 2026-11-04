@@ -44,6 +44,7 @@ final class NoSensitiveFilesTrackedTest extends TestCase
     return [
       'a live configuration copy' =>
         '#(^|/)settings\.php($|\.)|(^|/)config\.php\.#',
+      'an environment or private deployment file' => '#(^|/)\.env($|\.)|^private/#',
       'a database' => '#\.(db|sqlite|sqlite3)$#i',
       'terraform state' => '#\.tfstate(\.|$)#',
       'a private key' =>
@@ -116,7 +117,7 @@ final class NoSensitiveFilesTrackedTest extends TestCase
     $ignore = file_get_contents(self::ROOT . '/.gitignore');
     self::assertIsString($ignore);
 
-    foreach (['includes/settings.php.*', '*.sqlite3', '*.db', '.terraform/']
+    foreach (['includes/settings.php.*', '*.sqlite3', '*.db', '.terraform/', '.env.*', '/private/']
       as $rule) {
       self::assertStringContainsString($rule, $ignore,
         ".gitignore must carry the $rule rule");

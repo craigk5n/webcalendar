@@ -169,4 +169,96 @@ class McpSdkBundleTest extends TestCase
     $this->assertStringNotContainsString('file_exists', $source);
     $this->assertStringNotContainsString('is_file', $source);
   }
+
+  /** @dataProvider loaderOrders */
+  public function testComposerAndBundleExecuteSharedBootstrapsOnce(bool $composerFirst): void
+  {
+    $loaders = [self::ROOT . '/vendor/autoload.php', self::ROOT . '/includes/mcp-loader.php'];
+    if (!$composerFirst) {
+      $loaders = array_reverse($loaders);
+    }
+    $script = <<<'PHP'
+      set_error_handler(static function ($severity, $message, $file, $line) {
+        throw new ErrorException($message, 0, $severity, $file, $line);
+      });
+      require $argv[1];
+      require $argv[2];
+      $bootstraps = array_values(array_filter(get_included_files(), static fn ($file) =>
+        str_ends_with($file, '/symfony/polyfill-uuid/bootstrap.php')));
+      echo json_encode([
+        'bootstraps' => $bootstraps,
+        'registered' => !empty($GLOBALS['__composer_autoload_files'][md5('symfony/polyfill-uuid:bootstrap.php')]),
+        'uuid' => (string) Symfony\Component\Uid\Uuid::v4(),
+        'builder' => Mcp\Server::builder() instanceof Mcp\Server\Builder,
+      ]);
+      PHP;
+    $result = $this->runChild($script, $loaders);
+    self::assertCount(1, $result['bootstraps']);
+    self::assertStringContainsString($composerFirst ? '/vendor/' : '/includes/classes/mcp-sdk/', $result['bootstraps'][0]);
+    self::assertTrue($result['registered']);
+    self::assertMatchesRegularExpression('/^[0-9a-f-]{36}$/', $result['uuid']);
+    self::assertTrue($result['builder']);
+  }
+
+  public static function loaderOrders(): array
+  {
+    return ['composer first' => [true], 'bundle first' => [false]];
+  }
+
+  public function testGeneratedFilesHonorComposerRegistryAndLoadIndependently(): void
+  {
+    $directory = sys_get_temp_dir() . '/mcp-loader-' . bin2hex(random_bytes(8));
+    mkdir($directory . '/fixture/bootstrap', 0700, true);
+    try {
+      $packages = ['fixture/bootstrap' => ['autoload' => ['files' => ['one.php', 'two.php']]]];
+      file_put_contents($directory . '/fixture/bootstrap/one.php', '<?php $GLOBALS["runs"][] = "one";');
+      file_put_contents($directory . '/fixture/bootstrap/two.php', '<?php $GLOBALS["runs"][] = "two";');
+      file_put_contents($directory . '/autoload.php', mcp_sdk_autoloader_source(mcp_sdk_autoload_map($packages, array_keys($packages))));
+      $script = <<<'PHP'
+        $GLOBALS['runs'] = [];
+        if ($argv[2] === 'preloaded') {
+          $GLOBALS['__composer_autoload_files'][md5('fixture/bootstrap:one.php')] = true;
+        }
+        require $argv[1];
+        require $argv[1];
+        echo json_encode([
+          'runs' => $GLOBALS['runs'],
+          'registered' => !empty($GLOBALS['__composer_autoload_files'][md5('fixture/bootstrap:two.php')]),
+        ]);
+        PHP;
+      self::assertSame(['runs' => ['two'], 'registered' => true], $this->runChild($script, [$directory . '/autoload.php', 'preloaded']));
+      self::assertSame(['runs' => ['one', 'two'], 'registered' => true], $this->runChild($script, [$directory . '/autoload.php', 'empty']));
+    } finally {
+      mcp_sdk_remove_dir($directory);
+    }
+  }
+
+  public function testGeneratedLoaderMatchesGeneratorAndComposerFileIdentifiers(): void
+  {
+    $packages = mcp_sdk_lock_packages(self::ROOT . '/composer.lock');
+    $map = mcp_sdk_autoload_map($packages, mcp_sdk_closure($packages));
+    self::assertSame(mcp_sdk_autoloader_source($map), file_get_contents(self::BUNDLE . '/autoload.php'));
+    $composerFiles = require self::ROOT . '/vendor/composer/autoload_files.php';
+    foreach ($map['files'] as $identifier => $relative) {
+      self::assertArrayHasKey($identifier, $composerFiles);
+      self::assertSame(realpath(self::ROOT . '/vendor/' . $relative), realpath($composerFiles[$identifier]));
+    }
+  }
+
+  private function runChild(string $script, array $arguments): array
+  {
+    $process = proc_open([PHP_BINARY, '-d', 'display_errors=stderr', '-r', $script, ...$arguments],
+      [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes);
+    self::assertIsResource($process);
+    fclose($pipes[0]);
+    $output = stream_get_contents($pipes[1]);
+    $errors = stream_get_contents($pipes[2]);
+    fclose($pipes[1]);
+    fclose($pipes[2]);
+    self::assertSame(0, proc_close($process), $errors);
+    self::assertSame('', $errors);
+    $result = json_decode($output, true);
+    self::assertIsArray($result, $output);
+    return $result;
+  }
 }
