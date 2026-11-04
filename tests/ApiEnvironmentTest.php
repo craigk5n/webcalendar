@@ -273,6 +273,52 @@ final class ApiEnvironmentTest extends TestCase
     self::assertDirectoryDoesNotExist($secure . '/storage');
   }
 
+  public static function linkDestinationForms(): array
+  {
+    return ['absolute' => [false], 'relative' => [true]];
+  }
+
+  /** @dataProvider linkDestinationForms */
+  public function testPrivateConfigurationChainThroughPublicLinkIsRejected(bool $relative): void
+  {
+    $secure = $this->home . '/secure-configuration';
+    $outward = $this->installation . '/outward-configuration';
+    (new Filesystem())->rename($this->private, $secure);
+    symlink($relative ? '../secure-configuration' : $secure, $outward);
+    symlink($relative ? '../webcal.example.test/outward-configuration' : $outward, $this->private);
+    file_put_contents($secure . '/.env', "WEBCALENDAR_API_ENABLED=true\n");
+    $this->startServer();
+    [$status] = $this->request('GET', '/v1/users/current');
+    self::assertSame(503, $status);
+    self::assertDirectoryDoesNotExist($secure . '/storage');
+  }
+
+  public static function privateStorageChains(): array
+  {
+    return [
+      'absolute existing' => [false, ''],
+      'relative existing' => [true, ''],
+      'absolute missing children' => [false, '/new/nested'],
+      'relative missing children' => [true, '/new/nested'],
+    ];
+  }
+
+  /** @dataProvider privateStorageChains */
+  public function testPrivateStorageChainThroughPublicLinkIsRejectedBeforeWrites(bool $relative, string $suffix): void
+  {
+    $secure = $this->home . '/secure-storage';
+    mkdir($secure);
+    $outward = $this->installation . '/outward-storage';
+    $start = $this->private . '/storage-chain';
+    symlink($relative ? '../secure-storage' : $secure, $outward);
+    symlink($relative ? '../../webcal.example.test/outward-storage' : $outward, $start);
+    file_put_contents($this->private . '/.env', "WEBCALENDAR_API_ENABLED=true\nWEBCALENDAR_API_STORAGE=\"$start$suffix\"\n");
+    $this->startServer();
+    [$status] = $this->request('GET', '/v1/users/current');
+    self::assertSame(503, $status);
+    self::assertSame(['.', '..'], scandir($secure));
+  }
+
   public static function publicStorageSuffixes(): array
   {
     return ['existing directory' => [''], 'missing child directories' => ['/new/nested']];

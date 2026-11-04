@@ -80,6 +80,123 @@ final class PrivatePathPolicyTest extends TestCase
     $this->policy->resolve($this->root . '/secure/public-link/outward');
   }
 
+  public static function chainedDestinations(): array
+  {
+    return [
+      'absolute existing' => [false, ''],
+      'relative existing' => [true, ''],
+      'absolute missing children' => [false, '/new/nested'],
+      'relative missing children' => [true, '/new/nested'],
+    ];
+  }
+
+  /** @dataProvider chainedDestinations */
+  public function testTwoLinkChainCannotHideAPublicDestination(bool $relative, string $suffix): void
+  {
+    symlink($relative ? '../secure/target' : $this->root . '/secure/target', $this->root . '/public/outward');
+    symlink($relative ? '../public/outward' : $this->root . '/public/outward', $this->root . '/secure/start');
+    $this->expectException(RuntimeException::class);
+    $this->policy->resolve($this->root . '/secure/start' . $suffix, $suffix !== '');
+  }
+
+  public function testLeafFileChainCannotHideAPublicDestination(): void
+  {
+    file_put_contents($this->root . '/secure/target/settings', 'synthetic-private-settings');
+    symlink($this->root . '/secure/target/settings', $this->root . '/public/outward-file');
+    symlink($this->root . '/public/outward-file', $this->root . '/secure/start-file');
+    $this->expectException(RuntimeException::class);
+    $this->policy->resolve($this->root . '/secure/start-file');
+  }
+
+  public function testWhollyPrivateChainsRemainSupported(): void
+  {
+    symlink('target', $this->root . '/secure/second');
+    symlink('second', $this->root . '/secure/first');
+    self::assertSame($this->root . '/secure/target', $this->policy->resolve($this->root . '/secure/first'));
+  }
+
+  public function testFiniteRepeatedLinkIsNotMistakenForACycle(): void
+  {
+    symlink('.', $this->root . '/secure/repeat');
+    self::assertSame($this->root . '/secure/target', $this->policy->resolve($this->root . '/secure/repeat/repeat/target'));
+  }
+
+  public function testDotDotIsAppliedAfterThePrecedingLinkIsExpanded(): void
+  {
+    (new Filesystem())->mkdir([$this->root . '/other/nested', $this->root . '/other/target']);
+    symlink($this->root . '/other/nested', $this->root . '/secure/jump');
+    self::assertSame($this->root . '/other/target', $this->policy->resolve($this->root . '/secure/jump/../target'));
+  }
+
+  public function testDotDotInLinkTargetCannotEraseAPublicHop(): void
+  {
+    symlink($this->root . '/secure/unused', $this->root . '/public/outward');
+    symlink($this->root . '/public/outward', $this->root . '/secure/middle');
+    symlink('middle/../target', $this->root . '/secure/start');
+    $this->expectException(RuntimeException::class);
+    $this->policy->resolve($this->root . '/secure/start');
+  }
+
+  public function testMissingProjectionResumesInspectionAfterDotDot(): void
+  {
+    symlink($this->root . '/secure/target', $this->root . '/public/outward');
+    symlink($this->root . '/public/outward', $this->root . '/secure/start');
+    $this->expectException(RuntimeException::class);
+    $this->policy->resolve($this->root . '/secure/missing/../start/new', true);
+  }
+
+  public static function cyclicDestinations(): array
+  {
+    return ['self' => ['self'], 'two nodes' => ['pair'], 'growing suffix' => ['growing']];
+  }
+
+  /** @dataProvider cyclicDestinations */
+  public function testSymlinkCyclesFailCleanly(string $kind): void
+  {
+    $first = $this->root . '/secure/cycle';
+    if ($kind === 'pair') {
+      symlink('cycle-two', $first);
+      symlink('cycle', $this->root . '/secure/cycle-two');
+    } else {
+      symlink($kind === 'self' ? 'cycle' : 'cycle/child', $first);
+    }
+    $this->expectException(RuntimeException::class);
+    $this->policy->resolve($first, true);
+  }
+
+  public static function inspectionModes(): array
+  {
+    return ['existing path' => [false], 'missing children permitted' => [true]];
+  }
+
+  /** @dataProvider inspectionModes */
+  public function testUninspectableChainIsNotAcceptedUsingItsFinalTarget(bool $allowMissing): void
+  {
+    symlink($this->root . '/secure/target', $this->root . '/public/outward');
+    symlink($this->root . '/public/outward', $this->root . '/secure/start');
+    $allowed = $this->root . '/public' . PATH_SEPARATOR . $this->root . '/secure/target'
+      . PATH_SEPARATOR . dirname(__DIR__);
+    $script = <<<'PHP'
+      require $argv[1] . '/vendor/autoload.php';
+      $policy = new WebCalendar\Api\PrivatePathPolicy($argv[2] . '/public/calendar', $argv[2] . '/public');
+      try {
+        $policy->resolve($argv[2] . '/secure/start', $argv[3] === '1');
+        echo json_encode(['rejected' => false]);
+      } catch (RuntimeException $exception) {
+        echo json_encode(['rejected' => true]);
+      }
+      PHP;
+    $process = proc_open([PHP_BINARY, '-d', 'open_basedir=' . $allowed, '-d', 'display_errors=stderr',
+      '-r', $script, dirname(__DIR__), $this->root, $allowMissing ? '1' : '0'],
+      [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes);
+    fclose($pipes[0]);
+    $output = stream_get_contents($pipes[1]) . stream_get_contents($pipes[2]);
+    fclose($pipes[1]);
+    fclose($pipes[2]);
+    self::assertSame(0, proc_close($process), $output);
+    self::assertSame('{"rejected":true}', $output);
+  }
+
   public function testBrokenSymlinkIsNotTreatedAsAnOrdinaryMissingDirectory(): void
   {
     (new Filesystem())->symlink($this->root . '/missing-target', $this->root . '/secure/broken');

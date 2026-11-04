@@ -109,6 +109,19 @@ rejected, along with intermediate aliases that enter the public tree. Storage
 and its runtime subdirectories are validated before creation and checked again
 afterward. Storage overrides must be absolute filesystem paths.
 
+Symlinks are expanded one hop at a time, including relative destinations based
+on the link's containing directory. Each traversed destination is checked before
+following another link, so a private link pointing to a public link that points
+back outside is rejected. Dot segments are processed in filesystem traversal
+order. Repeated resolution states and a bounded expansion count reject cycles;
+broken links are not treated as missing directories to create.
+
+Required components must be inspectable. Canonical boundary paths prove their
+own non-symlink ancestors, allowing restricted parent metadata access where that
+proof is available. Other inaccessible components fail closed. Missing storage
+children are permitted only when absence can be established in an inspectable
+private parent, and only after existing symlink destinations have been resolved.
+
 A supplied HTTP document-root boundary must itself be a resolvable directory.
 If `open_basedir` permits child directories but prevents resolving their public
 parent, startup fails cleanly rather than skipping that boundary. CLI commands
@@ -335,6 +348,9 @@ harmless configuration/storage canaries through outward public aliases. They
 verify that those aliases are actually web-reachable, then require API startup
 to reject them with clean JSON and no newly created runtime files. The fixtures
 contain no deployment secrets or real calendar data.
+Three private-starting chain variants cover configuration, existing storage,
+and missing storage children: the configured private link points through the
+web-reachable public alias before reaching its private final target.
 The events fixture contains weekly and monthly weekday rules and asserts the
 returned occurrence dates, rather than checking only an empty collection. API
 integration tests additionally cover weekly exceptions, COUNT-limited series,

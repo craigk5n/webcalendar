@@ -22,7 +22,7 @@ for service in api api-private; do
   docker compose -p "$project" -f "$compose_file" exec -T -u www-data "$service" \
     php tests/fixtures/api-apache-smoke.php
 done
-for service in api-storage-alias api-configuration-alias; do
+for service in api-storage-alias api-configuration-alias api-storage-chain api-storage-chain-missing api-configuration-chain; do
   docker compose -p "$project" -f "$compose_file" exec -T -u www-data "$service" \
     php tests/fixtures/api-apache-paths.php
 done

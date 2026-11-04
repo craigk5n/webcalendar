@@ -181,6 +181,11 @@ Run these from the repository root unless specified otherwise:
   revalidate created runtime directories. CLI lacks a broader HTTP document root.
   Apache path-policy fixtures use public canaries to prove outward aliases are
   reachable before checking that the API rejects them without writing files.
+  Inspect each `readlink()` destination, including relative targets; a final
+  `realpath()` result loses chained public hops. Process dot segments after
+  preceding links, reject uninspectable required components, and bound traversal
+  with cycle-state checks. Canonical boundary ancestors are the only metadata
+  shortcut; missing children require an inspectable parent and existing link targets.
 - Apache must forward bearer authorization to PHP. Both Dockerfiles install
   `docker/apache-api.conf`, which scopes `CGIPassAuth On` to `api.php`. A missing
   directive reproduced token issuance (201) followed by profile rejection (401).

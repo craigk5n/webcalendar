@@ -8,6 +8,7 @@ if (PHP_SAPI !== 'cli') {
 
 $base = '/tmp/webcalendar-api-smoke';
 $mode = getenv('API_SMOKE_PUBLIC_ALIAS');
+$chained = getenv('API_SMOKE_CHAINED_ALIAS') === 'true';
 if (getenv('WEBCALENDAR_DB_TYPE') !== 'sqlite3'
     || getenv('WEBCALENDAR_DB_DATABASE') !== $base . '/calendar.sqlite'
     || !in_array($mode, ['storage', 'configuration'], true)) {
@@ -15,18 +16,27 @@ if (getenv('WEBCALENDAR_DB_TYPE') !== 'sqlite3'
 }
 
 if (($argv[1] ?? '') === 'setup') {
-  foreach (['public/calendar', 'public/private', 'secure/configuration', 'secure/storage'] as $directory) {
+  foreach (['public/calendar', 'public/private', 'private', 'secure/configuration', 'secure/storage'] as $directory) {
     mkdir($base . '/' . $directory, 0700, true);
   }
   $source = dirname(__DIR__, 2);
-  copy($source . '/api.php', $base . '/public/calendar/api.php');
+  $installation = $chained ? $base . '/public' : $base . '/public/calendar';
+  copy($source . '/api.php', $installation . '/api.php');
   foreach (['app', 'vendor', 'includes'] as $directory) {
-    symlink($source . '/' . $directory, $base . '/public/calendar/' . $directory);
+    symlink($source . '/' . $directory, $installation . '/' . $directory);
   }
   symlink($base . '/secure/storage', $base . '/public/public-storage');
+  if ($chained) {
+    symlink('../public/public-storage', $base . '/secure/storage-chain');
+  }
   file_put_contents($base . '/secure/storage/probe.txt', 'synthetic-storage-alias-canary');
   if ($mode === 'configuration') {
-    symlink($base . '/secure/configuration', $base . '/public/private/calendar');
+    if ($chained) {
+      symlink('../secure/configuration', $base . '/public/outward-configuration');
+      symlink('../public/outward-configuration', $base . '/private/public');
+    } else {
+      symlink($base . '/secure/configuration', $base . '/public/private/calendar');
+    }
     file_put_contents($base . '/secure/configuration/.env', "WEBCALENDAR_API_ENABLED=true\n# synthetic-config-alias-canary\n");
   }
   exit;
@@ -52,12 +62,12 @@ if ($storageProbe !== [200, 'synthetic-storage-alias-canary']) {
   throw new RuntimeException('The fixture must demonstrate that Apache follows the public storage alias.');
 }
 if ($mode === 'configuration') {
-  [$status, $body] = path_probe('/private/calendar/.env');
+  [$status, $body] = path_probe($chained ? '/outward-configuration/.env' : '/private/calendar/.env');
   if ($status !== 200 || !str_contains($body, 'synthetic-config-alias-canary')) {
     throw new RuntimeException('The fixture must demonstrate that Apache serves the outward configuration alias.');
   }
 }
-[$status, $body] = path_probe('/calendar/api.php/v1/users/current');
+[$status, $body] = path_probe(($chained ? '' : '/calendar') . '/api.php/v1/users/current');
 if ($status !== 503 || json_decode($body, true) !== [
   'message' => 'API is unavailable. Check the installation and API configuration.',
 ]) {
@@ -66,4 +76,5 @@ if ($status !== 503 || json_decode($body, true) !== [
 if (scandir($base . '/secure/storage') !== ['.', '..', 'probe.txt']) {
   throw new RuntimeException('Rejected storage must not contain newly created cache or runtime files.');
 }
-echo "Apache path-policy smoke passed ($mode): public alias is reachable, API startup rejects it without creating runtime files.\n";
+$shape = $chained ? 'private-starting chain' : 'public alias';
+echo "Apache path-policy smoke passed ($mode, $shape): public alias is reachable, API startup rejects it without creating runtime files.\n";

@@ -8,12 +8,26 @@ use RuntimeException;
 
 final class PrivatePathPolicy
 {
+  private const FILE_TYPE_MASK = 0170000;
+  private const DIRECTORY_TYPE = 0040000;
+  private const SYMLINK_TYPE = 0120000;
+  private const MAX_SYMLINK_EXPANSIONS = 40;
+
   private array $publicRoots = [];
+  private array $canonicalRoots = [];
+  private array $boundaries;
 
   public function __construct(string $installation, ?string $documentRoot = null)
   {
+    $this->boundaries = [$installation, $documentRoot];
+    $this->refreshRoots();
+  }
+
+  private function refreshRoots(): void
+  {
     clearstatcache(true);
-    foreach ([$installation, $documentRoot] as $root) {
+    $this->publicRoots = $this->canonicalRoots = [];
+    foreach ($this->boundaries as $root) {
       if ($root === null) {
         continue;
       }
@@ -23,60 +37,154 @@ final class PrivatePathPolicy
         throw new RuntimeException('Cannot resolve a supplied API public-directory boundary.');
       }
       $this->publicRoots[] = $access;
-      $this->publicRoots[] = $this->normalize($resolved);
+      $this->publicRoots[] = $this->canonicalRoots[] = $this->normalize($resolved);
     }
     $this->publicRoots = array_unique($this->publicRoots);
   }
 
   public function resolve(string $path, bool $allowMissing = false): string
   {
-    clearstatcache(true);
+    $this->refreshRoots();
     $this->assertPrivate($this->normalize($path));
-    $ancestor = $path;
-    $suffix = [];
-    $resolved = @realpath($ancestor);
-    while ($resolved === false) {
-      if (!$allowMissing || @is_link($ancestor) || @file_exists($ancestor)) {
-        throw new RuntimeException('Cannot resolve the API configuration or storage path.');
+    [$current, $pending] = $this->splitAbsolute($path);
+    $expansions = $missingDepth = 0;
+    $targetDepth = 0;
+    $projected = false;
+    $visited = [];
+    while ($pending !== []) {
+      $component = array_shift($pending);
+      if ($component === null) {
+        $targetDepth--;
+        continue;
       }
-      $parent = dirname($ancestor);
-      if ($parent === $ancestor) {
-        throw new RuntimeException('Cannot resolve an existing parent for API storage.');
+      if ($component === '' || $component === '.') {
+        continue;
       }
-      array_unshift($suffix, basename($ancestor));
-      $ancestor = $parent;
-      $resolved = @realpath($ancestor);
+      if ($component === '..') {
+        $current = $this->normalize($current . '/..');
+        $missingDepth = max(0, $missingDepth - 1);
+        $this->assertPrivate($current);
+        continue;
+      }
+      $next = $this->normalize($current . '/' . $component);
+      $this->assertPrivate($next);
+      if ($missingDepth > 0) {
+        $current = $next;
+        $missingDepth++;
+        continue;
+      }
+      $metadata = $this->inspectComponent($next);
+      if ($metadata === false) {
+        if (!$allowMissing || $targetDepth !== 0 || !$this->isAbsentChild($current, $component)) {
+          throw new RuntimeException('Cannot inspect an API configuration or storage path component.');
+        }
+        $current = $next;
+        $missingDepth = 1;
+        $projected = true;
+        continue;
+      }
+      $type = $metadata['mode'] & self::FILE_TYPE_MASK;
+      if ($type === self::SYMLINK_TYPE) {
+        $target = @readlink($next);
+        if ($target === false || $target === '' || str_contains($target, "\0")) {
+          throw new RuntimeException('Cannot inspect an API path symlink destination.');
+        }
+        $destination = $this->linkDestination($current, $target);
+        $this->assertPrivate($this->normalize($destination));
+        [$current, $targetComponents] = $this->splitAbsolute($destination);
+        // The marker ends an existing link target before optional missing children.
+        $pending = array_merge($targetComponents, [null], $pending);
+        $targetDepth++;
+        $remainingPath = array_values(array_filter($pending, static fn ($part): bool => $part !== null));
+        $state = $this->comparison(serialize([$current, $remainingPath]));
+        if (isset($visited[$state]) || ++$expansions > self::MAX_SYMLINK_EXPANSIONS) {
+          throw new RuntimeException('API path symlink expansion contains a loop or exceeds the traversal limit.');
+        }
+        $visited[$state] = true;
+        continue;
+      }
+      $remainingPath = array_filter($pending, static fn ($part): bool => $part !== null);
+      if ($remainingPath !== [] && $type !== self::DIRECTORY_TYPE) {
+        throw new RuntimeException('An API path component is not a directory.');
+      }
+      $current = $next;
     }
-    if ($suffix !== [] && !@is_dir($resolved)) {
-      throw new RuntimeException('The existing parent of API storage is not a directory.');
+    $this->assertPrivate($current);
+    if (!$projected) {
+      $resolved = @realpath($path);
+      if ($resolved === false || $this->comparison($this->normalize($resolved)) !== $this->comparison($current)) {
+        throw new RuntimeException('The API path could not be verified after symlink expansion.');
+      }
+      return $this->normalize($resolved);
     }
-    $result = $this->normalize($resolved . ($suffix === [] ? '' : '/' . implode('/', $suffix)));
-    $this->assertPrivate($result);
+    return $current;
+  }
 
-    // Intermediate aliases can enter the public tree and then point outward again.
-    for ($prefix = $path; ; $prefix = dirname($prefix)) {
-      $access = $this->normalize($prefix);
-      $this->assertPrivate($access);
-      $target = @realpath($prefix);
-      if ($target !== false) {
-        $this->assertPrivate($this->normalize($target));
-      } elseif (@is_link($prefix)) {
-        throw new RuntimeException('Cannot resolve an API path symlink.');
-      }
-      if (str_ends_with($access, '/') || dirname($prefix) === $prefix) {
-        break;
+  private function inspectComponent(string $path): array|false
+  {
+    $metadata = @lstat($path);
+    if ($metadata !== false) {
+      return $metadata;
+    }
+    if ($this->isCanonicalAncestor($path)) {
+      // A canonical boundary proves its own ancestors are non-symlink directories.
+      return ['mode' => self::DIRECTORY_TYPE];
+    }
+    return false;
+  }
+
+  private function isCanonicalAncestor(string $path): bool
+  {
+    $path = $this->comparison($path);
+    foreach ($this->canonicalRoots as $root) {
+      $root = $this->comparison($root);
+      if ($root === $path || str_starts_with($root, rtrim($path, '/') . '/')) {
+        return true;
       }
     }
-    return $result;
+    return false;
+  }
+
+  private function isAbsentChild(string $parent, string $name): bool
+  {
+    $entries = @scandir($parent);
+    if ($entries === false) {
+      return false;
+    }
+    foreach ($entries as $entry) {
+      if ($this->comparison($entry) === $this->comparison($name)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private function linkDestination(string $parent, string $target): string
+  {
+    if (DIRECTORY_SEPARATOR === '\\') {
+      $target = str_replace('\\', '/', $target);
+      if (preg_match('~^[A-Za-z]:/~', $target) || str_starts_with($target, '//')) {
+        return $target;
+      }
+      if (str_starts_with($target, '/') || preg_match('~^[A-Za-z]:~', $target)) {
+        throw new RuntimeException('An API symlink target must be relative or fully qualified.');
+      }
+    } elseif (str_starts_with($target, '/')) {
+      return $target;
+    }
+    return rtrim($parent, '/') . '/' . $target;
+  }
+
+  private function comparison(string $path): string
+  {
+    return DIRECTORY_SEPARATOR === '\\' ? strtolower($path) : $path;
   }
 
   private function assertPrivate(string $path): void
   {
-    if (DIRECTORY_SEPARATOR === '\\') {
-      $path = strtolower($path);
-    }
+    $path = $this->comparison($path);
     foreach ($this->publicRoots as $root) {
-      $root = DIRECTORY_SEPARATOR === '\\' ? strtolower($root) : $root;
+      $root = $this->comparison($root);
       if ($path === $root || str_starts_with($path, rtrim($root, '/') . '/')) {
         throw new RuntimeException('API configuration and storage must be outside public directories.');
       }
@@ -84,6 +192,23 @@ final class PrivatePathPolicy
   }
 
   private function normalize(string $path): string
+  {
+    [$prefix, $components] = $this->splitAbsolute($path);
+    $segments = [];
+    foreach ($components as $segment) {
+      if ($segment === '' || $segment === '.') {
+        continue;
+      }
+      if ($segment === '..') {
+        array_pop($segments);
+      } else {
+        $segments[] = $segment;
+      }
+    }
+    return $prefix . implode('/', $segments);
+  }
+
+  private function splitAbsolute(string $path): array
   {
     if ($path === '' || str_contains($path, "\0")) {
       throw new RuntimeException('API paths must be absolute filesystem paths.');
@@ -103,17 +228,6 @@ final class PrivatePathPolicy
     } else {
       throw new RuntimeException('API paths must be absolute filesystem paths.');
     }
-    $segments = [];
-    foreach (explode('/', $remainder) as $segment) {
-      if ($segment === '' || $segment === '.') {
-        continue;
-      }
-      if ($segment === '..') {
-        array_pop($segments);
-      } else {
-        $segments[] = $segment;
-      }
-    }
-    return $prefix . implode('/', $segments);
+    return [$prefix, explode('/', $remainder)];
   }
 }

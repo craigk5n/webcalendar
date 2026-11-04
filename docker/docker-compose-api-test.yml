@@ -45,3 +45,25 @@ services:
       <<: *api-environment
       API_SMOKE_PUBLIC_ALIAS: configuration
       WEBCALENDAR_API_STORAGE: /tmp/webcalendar-api-smoke/secure/storage
+
+  api-storage-chain:
+    <<: *api
+    environment: &storage-chain-environment
+      <<: *api-environment
+      API_SMOKE_PUBLIC_ALIAS: storage
+      API_SMOKE_CHAINED_ALIAS: "true"
+      WEBCALENDAR_API_STORAGE: /tmp/webcalendar-api-smoke/secure/storage-chain
+
+  api-storage-chain-missing:
+    <<: *api
+    environment:
+      <<: *storage-chain-environment
+      WEBCALENDAR_API_STORAGE: /tmp/webcalendar-api-smoke/secure/storage-chain/new/nested
+
+  api-configuration-chain:
+    <<: *api
+    environment:
+      <<: *api-environment
+      API_SMOKE_PUBLIC_ALIAS: configuration
+      API_SMOKE_CHAINED_ALIAS: "true"
+      WEBCALENDAR_API_STORAGE: /tmp/webcalendar-api-smoke/secure/storage
