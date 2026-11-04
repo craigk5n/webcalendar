@@ -192,6 +192,10 @@ Run these from the repository root unless specified otherwise:
   `sh tests/run-api-apache-tests.sh` covers this using a unique Compose project,
   a read-only checkout, and disposable tmpfs SQLite storage; no development DB
   or credentials are used. Rebuild the web image when changing Apache config.
+  Shared Apache/Plesk hosts can merge `.htaccess.example` into `.htaccess` beside
+  the root `api.php`, with `AuthConfig` overrides permitted. A file in `bin/`
+  affects only the CLI directory. The Apache smoke suite tests the example with
+  the Docker forwarding configuration disabled; active `.htaccess` stays local.
 - Composer and the bundled MCP loader share eager dependencies. The bundle
   generator uses Composer's package/file identifiers and
   `__composer_autoload_files` registry to run each eager bootstrap once in either

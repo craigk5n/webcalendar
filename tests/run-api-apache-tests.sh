@@ -18,7 +18,7 @@ trap 'exit 130' INT
 trap 'exit 143' TERM
 
 docker compose -p "$project" -f "$compose_file" up --build -d --wait
-for service in api api-private; do
+for service in api api-private api-htaccess; do
   docker compose -p "$project" -f "$compose_file" exec -T -u www-data "$service" \
     php tests/fixtures/api-apache-smoke.php
 done

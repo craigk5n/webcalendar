@@ -23,6 +23,20 @@ services:
       retries: 30
       start_period: 10s
 
+  api-htaccess:
+    <<: *api
+    volumes:
+      - ..:/var/www/source:ro
+      - ../tests/fixtures/apache-api-htaccess.conf:/etc/apache2/conf-enabled/api-htaccess.conf:ro
+    tmpfs:
+      - /var/www/html:mode=1777
+      - /tmp/webcalendar-api-smoke:mode=1777
+      - /var/www/private:mode=1777
+    command: ["sh", "-c", "cp -a /var/www/source/. /var/www/html/ && cp .htaccess.example .htaccess && exec sh tests/fixtures/api-apache-entrypoint.sh"]
+    environment:
+      <<: *api-environment
+      API_SMOKE_HTACCESS: "true"
+
   api-private:
     <<: *api
     environment:
