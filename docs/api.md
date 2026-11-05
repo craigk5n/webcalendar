@@ -1,8 +1,8 @@
 # Mobile API
 
-WebCalendar's opt-in JSON API uses Laravel and Sanctum device tokens. The initial
-API supports signing in, signing out, reading the current user's profile, and
-reading events on that user's calendar.
+WebCalendar's opt-in JSON API uses Laravel and Sanctum device tokens. It supports
+signing in, signing out, reading the current user's profile and events, and
+creating/editing personal, non-recurring events on that user's calendar.
 
 ## Installation
 
@@ -234,6 +234,8 @@ Send `Content-Type: application/json` for sign-in. Protected endpoints require
 | GET | `/users/current` | Read the signed-in user's profile |
 | DELETE | `/tokens/current` | Revoke the token used for this request |
 | GET | `/events?start_date=2026-11-01&end_date=2026-11-30` | Read event occurrences |
+| POST | `/events` | Create a personal, non-recurring event |
+| PATCH | `/events/{event}` | Update a supported personal event by its integer ID |
 
 ### Sign in
 
@@ -261,8 +263,11 @@ the device name matches a previous sign-in. Only the SHA-256 hash is stored in
 the database. Tokens expire after 30 days; this version requires signing in
 again after expiration and has no refresh-token endpoint.
 
-Tokens receive only the `events:read` ability; clients cannot request additional
-abilities. Profile reads and current-token revocation require a valid token.
+New tokens receive `events:read` and `events:write`; clients cannot request
+additional abilities. Existing read-only tokens are not upgraded: sign out and
+sign in again to obtain a write-capable token. A token ability never overrides
+WebCalendar's current permissions or read-only installation setting, which are
+checked on each write. Profile reads and current-token revocation require a valid token.
 Revoking one token leaves other devices signed in. On sign-out, call
 `DELETE /tokens/current`, then remove the token from Keychain. Disabling or
 deleting a database-backed user denies their next request and revokes their
@@ -294,7 +299,8 @@ first-weekday preference:
     "username": "alice",
     "name": "Alice Example",
     "email": "",
-    "week_start": 0
+    "week_start": 0,
+    "timezone": "Europe/London"
   }
 }
 ```
@@ -309,6 +315,12 @@ days in the first week or a week-numbering convention.
 
 Older API deployments omit `week_start`; clients should retain a local fallback
 for those installations. This addition requires no database migration.
+
+`timezone` is the account's effective timezone, resolved using the installation
+default and user preferences. Use it to initialize an event editor and determine
+the calendar date corresponding to a timed event. Older read-only API deployments
+omit this field. This is the account timezone, not a separately stored timezone
+per event.
 
 ### Read events
 
@@ -333,7 +345,8 @@ entries are omitted. Task and journal records are not included.
       "untimed": false,
       "status": "A",
       "access": "P",
-      "timezone": "UTC"
+      "timezone": "UTC",
+      "can_edit": true
     }
   ]
 }
@@ -351,6 +364,146 @@ included. WebCalendar's event-view permission still applies. Calendar selector
 parameters (`user`, `username`, `calendar`) are rejected. The bounded collection
 is returned without pagination; clients can request smaller date windows.
 
+`can_edit` is an effective capability for the current token/account. It is false
+for read-only tokens/installations, insufficient view/edit permissions, other
+creators' events, invitations, shared events, and recurring or detached records.
+The write endpoint rechecks eligibility; clients must handle a rejection even
+when a previously fetched occurrence had `can_edit: true`.
+
+For a non-recurring event spanning midnight, its starting-day occurrence retains
+the complete stored start time and duration. Later days contain read-only display
+continuations, including when the requested range starts after the event began.
+Their time/duration describe the portion on that day; edit the starting-day event,
+not a continuation fragment.
+
+### Create an event
+
+`POST /events` requires an `events:write` token. It creates a one-off event with
+the authenticated account as its creator and sole accepted participant.
+
+```http
+POST /api.php/v1/events
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "title": "Appointment",
+  "description": "Bring notes",
+  "location": "Office",
+  "date": "2026-11-04",
+  "all_day": false,
+  "untimed": false,
+  "starts_at": "2026-11-04T09:00:00+00:00",
+  "duration_minutes": 37
+}
+```
+
+A successful response has status **201** and contains the canonical saved event
+inside `data`, with the same fields as a `GET /events` occurrence. The server
+chooses the ID. The event can immediately be read through the agenda endpoint.
+
+| Field | Contract |
+| --- | --- |
+| `title` | Required nonblank text, at most 80 characters; HTML tags are not accepted |
+| `date` | Required `YYYY-MM-DD` account calendar date |
+| `all_day`, `untimed` | Required booleans; both cannot be true |
+| `starts_at` | Required for timed events; null or omitted for all-day/untimed events |
+| `duration_minutes` | Timed: positive integer, at most 133,920 minutes (93 days by default); all-day: 1440; untimed: 0. Can be omitted for non-timed events |
+| `description` | Optional stored description; null clears it to an empty string. Safe HTML is retained through the existing sanitizer when rich descriptions are enabled; dangerous markup is removed. The stored UTF-8 value must fit 65,535 bytes |
+| `location` | Optional text, at most 100 characters, or null; HTML tags are not accepted |
+| `access` | Optional `P` (public), `R` (private), or `C` (confidential). Defaults to the account's effective `DEFAULT_VISIBILITY` |
+
+With both timing flags false, the event is timed. The timestamp must include
+seconds equal to `00` and an explicit offset (`Z` or `+/-HH:MM`), without
+fractional seconds. Offsets from `-14:00` through `+14:00` are accepted; the
+timestamp identifies the exact instant, and its calendar date in the
+**account timezone** must equal `date`.
+The server stores timed values in UTC and returns them in the account timezone.
+Both the account calendar date and the stored UTC date must remain within years
+0001 through 9999.
+Clients resolve daylight-saving wall times before submitting the explicit
+instant, including the intended offset during a repeated autumn hour. Naive
+timestamps are rejected rather than guessed. Minute values need not be multiples
+of five.
+
+All-day and untimed events use floating calendar dates, without UTC conversion:
+
+```json
+{"title":"Day off","date":"2026-11-04","all_day":true,"untimed":false}
+```
+
+```json
+{"title":"Read proposal","date":"2026-11-04","all_day":false,"untimed":true}
+```
+
+WebCalendar represents all-day events as time `000000` and duration 1440. A timed
+event starting at UTC midnight with exactly that duration cannot be distinguished
+from all-day storage, so that timed combination is rejected with 422.
+
+Unsupported/unknown fields are rejected, including calendar selectors,
+participants, recurrence rules, creator, IDs and status. Text fields reject NUL
+bytes for compatibility across supported databases. Each successful POST
+creates a new event; do not automatically retry after an uncertain network result.
+
+### Edit a personal event
+
+`PATCH /events/{event}` requires `events:write`, current view/edit permission,
+and a writable installation. The record must be an accepted, non-recurring
+event created by the authenticated user, with that user as its only participant
+and no external guests. Recurring series, recurrence exceptions/detached records,
+tasks, journals, shared events and invitations are not editable through this API.
+Legacy cross-day extension records and their parents are also excluded, since
+editing those safely requires maintaining the linked records together.
+
+```http
+PATCH /api.php/v1/events/42
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{"title":"Updated appointment","location":null}
+```
+
+A successful response has status **200** and returns the complete saved event in
+`data`. Supply at least one supported field. Omitted fields remain unchanged;
+only `description` and `location` can be cleared with null. Privacy, priority,
+URL, participants, categories, reminders, attachments and site extras are retained
+unless an explicitly supported field is changed. The API updates the original
+record instead of deleting/recreating its satellite rows.
+
+Timing edits are merged with the current stored schedule and validated as a
+whole. Moving a timed event to a different `date` requires an explicit
+`starts_at`; changing the date alone does not guess a new wall time or DST offset.
+To convert a timed event to all-day, send `all_day: true`, `untimed: false`,
+`starts_at: null`, and `duration_minutes: 1440`. To make it untimed, send
+`all_day: false`, `untimed: true`, `starts_at: null`, and `duration_minutes: 0`.
+
+Unknown/unavailable event IDs return 404. A visible event created by somebody
+else returns 403. Unsupported owned events return 422 with
+`code: "unsupported_event"`. Rejected writes do not change the event.
+
+### Write policies and storage
+
+When scheduling conflicts are disabled, writes enforce overlaps and the
+configured daily appointment limit, including existing recurring events,
+overnight spans and account-local all-day dates. Conflict responses use 409 with
+`code: "schedule_conflict"`; they contain no HTML conflict list. There is no
+conflict-override parameter in this version. `DISABLE_CROSSDAY_EVENTS` is also
+respected. Title/description/location-only patches do not reschedule the event
+or fail because of a pre-existing scheduling conflict.
+
+The duration limit is configured in `app/Api/config/webcalendar.php`. Conflict
+checking expands existing recurrence rules in bounded windows. If an existing
+recurring event exceeds the supported duration limit, scheduling writes return
+409 with `code: "unsupported_schedule"` instead of omitting possible overlaps.
+
+Event insertion/update, owner participation and activity logging use one database
+transaction. ID allocation retries key collisions by rolling back and retrying
+the complete transaction. MySQL/MariaDB installations must use **InnoDB** for
+`webcal_entry`, `webcal_entry_user`, and `webcal_entry_log`. Non-transactional
+legacy tables return 503 with `code: "transactional_storage_required"`; convert
+those tables through the installation's normal database-maintenance process.
+These endpoints require no new API migration beyond the existing API tables.
+
 ## Errors and limits
 
 | Status | Meaning |
@@ -358,7 +511,8 @@ is returned without pagination; clients can request smaller date windows.
 | 401 | Missing/invalid/expired token, invalid credentials, or unavailable user |
 | 403 | Missing token ability or WebCalendar event-view permission |
 | 404 | Unknown endpoint or API disabled |
-| 422 | Validation failed; field errors are in `errors` |
+| 409 | Scheduling conflict or unsupported conflict-checking range; inspect `code` |
+| 422 | Invalid input (`errors`) or unsupported event editing (`code`) |
 | 429 | Rate limit exceeded; honor `Retry-After` |
 | 503 | API dependencies or WebCalendar startup configuration are unavailable |
 
@@ -369,8 +523,8 @@ The API does not trust forwarded client-IP headers by default; configure trusted
 proxies deliberately before using client-IP rate limits behind a reverse proxy.
 
 This version uses bearer tokens only. Existing browser/MCP credentials do not
-authenticate API requests. Browser session/CSRF integration, event writes, and
-OAuth authorization flows are separate future additions.
+authenticate API requests. Recurrence writes, participant actions, delegated
+calendars, browser session/CSRF integration and OAuth flows are future additions.
 
 ## Tests
 
@@ -379,6 +533,14 @@ Run the API integration tests with the locked Composer development dependencies:
 ```sh
 php vendor/bin/phpunit tests/ApiIntegrationTest.php
 ```
+
+The suite covers personal-event create/edit/read round-trips, read-only tokens
+and installations, account permissions and ownership, unsupported event types,
+metadata preservation, exact-minute durations, DST, floating dates in positive
+and negative offset timezones, full overnight schedules/read-only continuations,
+scheduling limits, out-of-range IDs/UTC years, transaction rollback, and both
+event/activity ID collision retries. Fixtures use disposable
+databases and synthetic accounts.
 
 Those tests use PHP's built-in server. Run the separate Apache deployment check
 from the repository root to cover bearer-header forwarding:

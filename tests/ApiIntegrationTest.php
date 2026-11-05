@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\Response;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/McpServerFixture.php';
@@ -76,11 +77,18 @@ final class ApiIntegrationTest extends TestCase
     self::$db->exec('DELETE FROM webcal_entry_repeats_not');
     self::$db->exec('DELETE FROM webcal_entry_repeats');
     self::$db->exec('DELETE FROM webcal_entry_user');
+    foreach (['webcal_entry_ext_user', 'webcal_entry_categories', 'webcal_reminders', 'webcal_site_extras', 'webcal_entry_log'] as $table) {
+      self::$db->exec('DELETE FROM ' . $table);
+    }
     self::$db->exec('DELETE FROM webcal_entry');
     self::$db->exec('DELETE FROM webcal_user_pref');
     self::$db->exec("UPDATE webcal_user SET cal_enabled = 'Y'");
     self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('TIMEZONE', 'UTC')");
     self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('UAC_ENABLED', 'N')");
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('ALLOW_CONFLICTS', 'Y')");
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('DEFAULT_VISIBILITY', 'P')");
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('DISABLE_CROSSDAY_EVENTS', 'N')");
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('LIMIT_APPTS', 'N')");
     (new Filesystem())->remove(self::$directory . '/storage/framework/cache');
   }
 
@@ -97,7 +105,7 @@ final class ApiIntegrationTest extends TestCase
     $row = self::$db->query('SELECT * FROM webcal_api_tokens')->fetch(PDO::FETCH_ASSOC);
     self::assertSame(hash('sha256', explode('|', $token, 2)[1]), $row['token']);
     self::assertSame('My iPhone', $row['name']);
-    self::assertSame(['events:read'], json_decode($row['abilities'], true));
+    self::assertSame(['events:read', 'events:write'], json_decode($row['abilities'], true));
     [$status, $body] = $this->request('GET', '/v1/users/current', [], $token);
     self::assertSame(200, $status, json_encode($body));
     self::assertSame('alice', $body['data']['username']);
@@ -529,6 +537,468 @@ final class ApiIntegrationTest extends TestCase
     self::assertStringContainsString('HTTP_STATUS=503', $output);
     self::assertStringNotContainsString('"token":', $output);
     self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_api_tokens')->fetchColumn());
+  }
+
+  public function testPersonalEventsCanBeCreatedAndReadBack(): void
+  {
+    $token = $this->token();
+    foreach ([
+      ['date' => '2026-11-10'],
+      ['date' => '2026-11-11', 'all_day' => true, 'untimed' => false, 'duration_minutes' => 1440],
+      ['date' => '2026-11-12', 'untimed' => false, 'starts_at' => '2026-11-12T09:00:00+00:00', 'duration_minutes' => 37],
+    ] as $changes) {
+      [$status, $body] = $this->request('POST', '/v1/events', $this->draft($changes), $token);
+      self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+      $saved = $body['data'];
+      self::assertSame($changes['date'], $saved['date']);
+      self::assertSame(true, $saved['can_edit']);
+      self::assertSame('A', $saved['status']);
+      self::assertSame('Bring notes', $saved['description']);
+      [$status, $read] = $this->request('GET', '/v1/events?start_date=' . $saved['date'] . '&end_date=' . $saved['date'], [], $token);
+      self::assertSame(Response::HTTP_OK, $status);
+      self::assertSame([$saved], $read['data']);
+    }
+    self::assertSame(3, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry_user')->fetchColumn());
+    self::assertSame(3, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry_log')->fetchColumn());
+    $rows = self::$db->query('SELECT cal_time, cal_duration FROM webcal_entry ORDER BY cal_id')->fetchAll(PDO::FETCH_NUM);
+    self::assertEquals([[-1, 0], [0, 1440], [90000, 37]], $rows);
+  }
+
+  public function testPartialUpdatesPreserveMetadataAndClearOptionalFields(): void
+  {
+    $this->event(1, 'Private appointment', 'alice', 'R');
+    self::sql("UPDATE webcal_entry SET cal_priority = 2, cal_url = 'https://example.com' WHERE cal_id = 1");
+    self::sql("INSERT INTO webcal_entry_categories (cal_id, cat_id, cat_owner) VALUES (1, 42, 'alice')");
+    self::sql("INSERT INTO webcal_reminders (cal_id, cal_date) VALUES (1, 20261101)");
+    self::sql("INSERT INTO webcal_site_extras (cal_id, cal_name, cal_type, cal_data) VALUES (1, 'note', 1, 'preserve')");
+    $token = $this->token();
+    [$status, $body] = $this->request('PATCH', '/v1/events/1', ['title' => "Alice's appointment", 'description' => null, 'location' => null], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    self::assertSame("Alice's appointment", $body['data']['title']);
+    self::assertSame('R', $body['data']['access']);
+    self::assertSame('', $body['data']['description']);
+    self::assertNull($body['data']['location']);
+    self::assertSame('2026-11-02T10:00:00+00:00', $body['data']['starts_at']);
+    $row = self::$db->query('SELECT * FROM webcal_entry WHERE cal_id = 1')->fetch(PDO::FETCH_ASSOC);
+    self::assertSame('alice', $row['cal_create_by']);
+    self::assertSame(2, (int) $row['cal_priority']);
+    self::assertSame('https://example.com', $row['cal_url']);
+    foreach (['webcal_entry_categories', 'webcal_reminders', 'webcal_site_extras'] as $table) {
+      self::assertSame(1, (int) self::$db->query('SELECT COUNT(*) FROM ' . $table . ' WHERE cal_id = 1')->fetchColumn());
+    }
+    [$status] = $this->request('PATCH', '/v1/events/1', ['title' => ''], $token);
+    self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status);
+  }
+
+  public function testWritesRequireAbilityPermissionAndPersonalOwnership(): void
+  {
+    $this->event(1, 'Personal', 'alice');
+    $this->event(2, 'Other calendar', 'admin');
+    [$status] = $this->request('POST', '/v1/events', $this->draft());
+    self::assertSame(Response::HTTP_UNAUTHORIZED, $status);
+    $token = $this->token();
+    foreach (['0', '2147483648', '99999999999999999999999'] as $id) {
+      [$status] = $this->request('PATCH', '/v1/events/' . $id, ['title' => 'Missing'], $token);
+      self::assertSame(Response::HTTP_NOT_FOUND, $status);
+    }
+    self::$db->exec("UPDATE webcal_api_tokens SET abilities = '[\"events:read\"]'");
+    foreach ([['POST', '/v1/events', $this->draft()], ['PATCH', '/v1/events/1', ['title' => 'Changed']]] as [$method, $path, $data]) {
+      [$status] = $this->request($method, $path, $data, $token);
+      self::assertSame(Response::HTTP_FORBIDDEN, $status);
+    }
+    [$status, $body] = $this->request('GET', '/v1/events?start_date=2026-11-02&end_date=2026-11-02', [], $token);
+    self::assertFalse($body['data'][0]['can_edit']);
+    self::$db->exec("UPDATE webcal_api_tokens SET abilities = '[\"events:read\",\"events:write\"]'");
+    [$status] = $this->request('PATCH', '/v1/events/2', ['title' => 'Forbidden'], $token);
+    self::assertSame(Response::HTTP_NOT_FOUND, $status);
+    self::sql("INSERT INTO webcal_entry_user (cal_id, cal_login, cal_status) VALUES (2, 'alice', 'A')");
+    [$status] = $this->request('PATCH', '/v1/events/2', ['title' => 'Forbidden'], $token);
+    self::assertSame(Response::HTTP_FORBIDDEN, $status);
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('UAC_ENABLED', 'Y')");
+    self::sql('INSERT OR REPLACE INTO webcal_access_function (cal_login, cal_permissions) VALUES (?, ?)', ['alice', str_repeat('N', 28)]);
+    [$status] = $this->request('POST', '/v1/events', $this->draft(), $token);
+    self::assertSame(Response::HTTP_FORBIDDEN, $status);
+    [$status] = $this->request('PATCH', '/v1/events/1', ['title' => 'Forbidden'], $token);
+    self::assertSame(Response::HTTP_FORBIDDEN, $status);
+    self::assertSame('Personal', self::$db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetchColumn());
+  }
+
+  public function testSharedRecurringAndDetachedEventsCannotBeEdited(): void
+  {
+    $token = $this->token();
+    foreach ([1, 2, 3, 4, 5, 6, 7] as $id) { $this->event($id, 'Unsupported', 'alice'); }
+    self::sql("UPDATE webcal_entry SET cal_type = 'M' WHERE cal_id = 1");
+    self::sql("INSERT INTO webcal_entry_repeats (cal_id, cal_type) VALUES (1, 'daily')");
+    self::sql("INSERT INTO webcal_entry_user (cal_id, cal_login, cal_status) VALUES (2, 'admin', 'A')");
+    self::sql("INSERT INTO webcal_entry_ext_user (cal_id, cal_fullname, cal_email) VALUES (3, 'Guest', 'guest@example.com')");
+    self::sql('UPDATE webcal_entry SET cal_group_id = 1 WHERE cal_id = 4');
+    self::sql("UPDATE webcal_entry_user SET cal_status = 'W' WHERE cal_id = 5");
+    self::sql('UPDATE webcal_entry SET cal_ext_for_id = 6 WHERE cal_id = 7');
+    foreach ([1, 2, 3, 4, 5, 6, 7] as $id) {
+      [$status, $body] = $this->request('PATCH', '/v1/events/' . $id, ['title' => 'Not saved'], $token);
+      self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status, json_encode($body));
+      self::assertSame('unsupported_event', $body['code']);
+    }
+    self::assertSame(0, (int) self::$db->query("SELECT COUNT(*) FROM webcal_entry WHERE cal_name = 'Not saved'")->fetchColumn());
+    [$status, $body] = $this->request('GET', '/v1/events?start_date=2026-11-02&end_date=2026-11-02', [], $token);
+    self::assertSame(Response::HTTP_OK, $status);
+    self::assertNotEmpty($body['data']);
+    self::assertNotContains(true, array_column($body['data'], 'can_edit'));
+  }
+
+  public function testInvalidWritePayloadsDoNotCreateEvents(): void
+  {
+    $token = $this->token();
+    foreach ([
+      ['title' => ''], ['title' => str_repeat('x', 81)], ['location' => str_repeat('x', 101)],
+      ['date' => '2026-02-30'], ['all_day' => true, 'untimed' => true],
+      ['username' => 'admin'], ['participants' => ['admin']], ['recurrence' => ['frequency' => 'daily']],
+      ['starts_at' => '2026-11-10T09:00:00+00:00'],
+      ['untimed' => false, 'starts_at' => '2026-11-10T09:00:00', 'duration_minutes' => 60],
+      ['untimed' => false, 'starts_at' => '2026-11-10T09:00:01Z', 'duration_minutes' => 60],
+      ['untimed' => false, 'starts_at' => '2026-11-10T09:00:00Z', 'duration_minutes' => 0],
+      ['untimed' => false, 'starts_at' => '2026-11-11T09:00:00Z', 'duration_minutes' => 60],
+      ['untimed' => false, 'starts_at' => '2026-11-10T00:00:00Z', 'duration_minutes' => 1440],
+      ['title' => '<img src=x onerror=alert(1)>'],
+      ['title' => '<img src=x onerror=alert(1)'], ['location' => '<svg/onload=alert(1)'],
+      ['title' => "Bad\0title"], ['location' => "Bad\0location"], ['description' => "Bad\0description"],
+    ] as $changes) {
+      [$status, $body] = $this->request('POST', '/v1/events', $this->draft($changes), $token);
+      self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status, json_encode([$changes, $body]));
+      self::assertArrayHasKey('errors', $body);
+    }
+    self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry')->fetchColumn());
+  }
+
+  public function testTimedWritesUseAccountDatesAndExplicitDstInstants(): void
+  {
+    self::sql("INSERT INTO webcal_user_pref (cal_login, cal_setting, cal_value) VALUES ('alice', 'TIMEZONE', 'America/New_York')");
+    $token = $this->token();
+    [$status, $profile] = $this->request('GET', '/v1/users/current', [], $token);
+    self::assertSame('America/New_York', $profile['data']['timezone']);
+    foreach (['2026-11-01T01:30:00-04:00' => 53000, '2026-11-01T01:30:00-05:00' => 63000] as $start => $utcTime) {
+      [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+        'date' => '2026-11-01', 'untimed' => false, 'starts_at' => $start, 'duration_minutes' => 37,
+      ]), $token);
+      self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+      self::assertSame($start, $body['data']['starts_at']);
+      self::assertSame($utcTime, (int) self::$db->query('SELECT cal_time FROM webcal_entry WHERE cal_id = ' . $body['data']['id'])->fetchColumn());
+    }
+    self::sql("UPDATE webcal_user_pref SET cal_value = 'Pacific/Kiritimati' WHERE cal_login = 'alice' AND cal_setting = 'TIMEZONE'");
+    [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+      'date' => '2026-11-02', 'untimed' => false, 'starts_at' => '2026-11-02T09:00:00+14:00', 'duration_minutes' => 60,
+    ]), $token);
+    self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+    $row = self::$db->query('SELECT cal_date, cal_time FROM webcal_entry WHERE cal_id = ' . $body['data']['id'])->fetch(PDO::FETCH_NUM);
+    self::assertEquals([20261101, 190000], $row);
+    [$status, $body] = $this->request('PATCH', '/v1/events/' . $body['data']['id'], ['title' => 'Moved title only'], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    self::assertSame('2026-11-02T09:00:00+14:00', $body['data']['starts_at']);
+  }
+
+  public function testFloatingDatesRoundTripInPositiveAndNegativeOffsetZones(): void
+  {
+    $token = $this->token();
+    $day = 10;
+    foreach (['America/New_York', 'Pacific/Kiritimati'] as $timezone) {
+      self::sql("INSERT OR REPLACE INTO webcal_user_pref (cal_login, cal_setting, cal_value) VALUES ('alice', 'TIMEZONE', ?)", [$timezone]);
+      foreach ([false, true] as $allDay) {
+        $date = sprintf('2026-11-%02d', $day++);
+        [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+          'date' => $date, 'all_day' => $allDay, 'untimed' => !$allDay, 'duration_minutes' => $allDay ? 1440 : 0,
+        ]), $token);
+        self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+        [$status, $read] = $this->request('GET', '/v1/events?start_date=' . $date . '&end_date=' . $date, [], $token);
+        self::assertSame(Response::HTTP_OK, $status);
+        self::assertSame([$body['data']], $read['data'], $timezone);
+      }
+    }
+  }
+
+  public function testOvernightWritesRetainTheFullScheduleAndReadOnlyContinuations(): void
+  {
+    $token = $this->token();
+    [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+      'untimed' => false, 'starts_at' => '2026-11-10T23:30:00Z', 'duration_minutes' => 120,
+    ]), $token);
+    self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+    $saved = $body['data'];
+    [$status, $body] = $this->request('GET', '/v1/events?start_date=2026-11-10&end_date=2026-11-11', [], $token);
+    self::assertSame([$saved], array_values(array_filter($body['data'], fn ($event) => $event['date'] === '2026-11-10')));
+    $continuation = array_values(array_filter($body['data'], fn ($event) => $event['date'] === '2026-11-11'));
+    self::assertCount(1, $continuation);
+    self::assertSame(90, $continuation[0]['duration_minutes']);
+    self::assertSame('2026-11-11T00:00:00+00:00', $continuation[0]['starts_at']);
+    self::assertFalse($continuation[0]['can_edit']);
+    [$status, $body] = $this->request('GET', '/v1/events?start_date=2026-11-11&end_date=2026-11-11', [], $token);
+    self::assertSame($continuation, $body['data']);
+    [$status, $body] = $this->request('PATCH', '/v1/events/' . $saved['id'], ['title' => 'Updated overnight'], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    self::assertSame(120, $body['data']['duration_minutes']);
+    self::assertSame('2026-11-10T23:30:00+00:00', $body['data']['starts_at']);
+    [$status, $body] = $this->request('PATCH', '/v1/events/' . $saved['id'], [
+      'date' => '2026-11-08', 'starts_at' => '2026-11-08T22:00:00Z', 'duration_minutes' => 4000,
+    ], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    [$status, $body] = $this->request('GET', '/v1/events?start_date=2026-11-09&end_date=2026-11-09', [], $token);
+    self::assertSame(1440, $body['data'][0]['duration_minutes']);
+    self::assertFalse($body['data'][0]['all_day']);
+    self::assertFalse($body['data'][0]['can_edit']);
+    [$status, $body] = $this->request('GET', '/v1/events?start_date=2026-11-11&end_date=2026-11-11', [], $token);
+    self::assertSame(1000, $body['data'][0]['duration_minutes']);
+    self::assertFalse($body['data'][0]['can_edit']);
+  }
+
+  public function testOvernightContinuationsUseElapsedMinutesAcrossDst(): void
+  {
+    self::sql("INSERT INTO webcal_user_pref (cal_login, cal_setting, cal_value) VALUES ('alice', 'TIMEZONE', 'America/New_York')");
+    $token = $this->token();
+    foreach ([
+      ['2026-03-07', '2026-03-07T23:30:00-05:00', '2026-03-08', '2026-03-08T00:00:00-05:00'],
+      ['2026-10-31', '2026-10-31T23:30:00-04:00', '2026-11-01', '2026-11-01T00:00:00-04:00'],
+    ] as [$date, $start, $nextDate, $midnight]) {
+      [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+        'date' => $date, 'untimed' => false, 'starts_at' => $start, 'duration_minutes' => 180,
+      ]), $token);
+      self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+      [$status, $body] = $this->request('GET', '/v1/events?start_date=' . $nextDate . '&end_date=' . $nextDate, [], $token);
+      self::assertSame(Response::HTTP_OK, $status);
+      self::assertCount(1, $body['data']);
+      self::assertSame($midnight, $body['data'][0]['starts_at']);
+      self::assertSame(150, $body['data'][0]['duration_minutes']);
+      self::assertFalse($body['data'][0]['can_edit']);
+    }
+    self::sql("UPDATE webcal_user_pref SET cal_value = 'America/Sao_Paulo' WHERE cal_login = 'alice' AND cal_setting = 'TIMEZONE'");
+    [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+      'date' => '2018-11-03', 'untimed' => false, 'starts_at' => '2018-11-03T23:30:00-03:00', 'duration_minutes' => 2880,
+    ]), $token);
+    self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+    [$status, $body] = $this->request('GET', '/v1/events?start_date=2018-11-04&end_date=2018-11-05', [], $token);
+    self::assertSame([1380, 1440], array_column($body['data'], 'duration_minutes'));
+    self::assertSame(['2018-11-04T01:00:00-02:00', '2018-11-05T00:00:00-02:00'], array_column($body['data'], 'starts_at'));
+    [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+      'date' => '2017-10-15', 'all_day' => true, 'untimed' => false, 'duration_minutes' => 1440,
+    ]), $token);
+    self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('ALLOW_CONFLICTS', 'N')");
+    [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+      'date' => '2017-10-16', 'untimed' => false, 'starts_at' => '2017-10-16T00:30:00-02:00', 'duration_minutes' => 15,
+    ]), $token);
+    self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+  }
+
+  public function testTimedWritesRejectUtcYearOverflowBeforeMutation(): void
+  {
+    $token = $this->token();
+    foreach ([
+      ['America/New_York', '9999-12-31', '9999-12-31T23:30:00-05:00'],
+      ['Etc/GMT-14', '0001-01-01', '0001-01-01T00:30:00+14:00'],
+    ] as [$timezone, $date, $start]) {
+      self::sql("INSERT OR REPLACE INTO webcal_user_pref (cal_login, cal_setting, cal_value) VALUES ('alice', 'TIMEZONE', ?)", [$timezone]);
+      [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+        'date' => $date, 'untimed' => false, 'starts_at' => $start, 'duration_minutes' => 15,
+      ]), $token);
+      self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status, json_encode($body));
+      self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry')->fetchColumn());
+    }
+  }
+
+  public function testFailedWritesRollBackEntryParticipationAndLog(): void
+  {
+    $token = $this->token();
+    foreach (['webcal_entry_user', 'webcal_entry_log'] as $table) {
+      self::$db->exec("CREATE TRIGGER fail_api_write BEFORE INSERT ON $table BEGIN SELECT RAISE(ABORT, 'fixture failure'); END");
+      try {
+        [$status] = $this->request('POST', '/v1/events', $this->draft(), $token);
+        self::assertSame(Response::HTTP_INTERNAL_SERVER_ERROR, $status);
+        foreach (['webcal_entry', 'webcal_entry_user', 'webcal_entry_log'] as $check) {
+          self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM ' . $check)->fetchColumn(), $check);
+        }
+      } finally { self::$db->exec('DROP TRIGGER fail_api_write'); }
+    }
+    $this->event(1, 'Original', 'alice');
+    self::$db->exec("CREATE TRIGGER fail_api_log BEFORE INSERT ON webcal_entry_log BEGIN SELECT RAISE(ABORT, 'fixture failure'); END");
+    try {
+      [$status] = $this->request('PATCH', '/v1/events/1', ['title' => 'Not saved'], $token);
+      self::assertSame(Response::HTTP_INTERNAL_SERVER_ERROR, $status);
+      self::assertSame('Original', self::$db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetchColumn());
+    } finally { self::$db->exec('DROP TRIGGER fail_api_log'); }
+  }
+
+  public function testConfiguredConflictsRejectWritesIncludingRecurringAppointments(): void
+  {
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('ALLOW_CONFLICTS', 'N')");
+    $this->event(1, 'Busy', 'alice');
+    $token = $this->token();
+    $draft = $this->draft(['date' => '2026-11-02', 'untimed' => false, 'starts_at' => '2026-11-02T10:30:00Z', 'duration_minutes' => 37]);
+    [$status, $body] = $this->request('POST', '/v1/events', $draft, $token);
+    self::assertSame(Response::HTTP_CONFLICT, $status, json_encode($body));
+    self::assertSame('schedule_conflict', $body['code']);
+    self::sql("UPDATE webcal_entry SET cal_type = 'M' WHERE cal_id = 1");
+    self::sql("INSERT INTO webcal_entry_repeats (cal_id, cal_type, cal_frequency) VALUES (1, 'daily', 1)");
+    $draft['date'] = '2026-11-03';
+    $draft['starts_at'] = '2026-11-03T10:30:00Z';
+    [$status] = $this->request('POST', '/v1/events', $draft, $token);
+    self::assertSame(Response::HTTP_CONFLICT, $status);
+    self::assertSame(1, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry')->fetchColumn());
+  }
+
+  public function testScheduleChangesAreValidatedAndConvertTimingModes(): void
+  {
+    $this->event(1, 'Appointment', 'alice');
+    $token = $this->token();
+    [$status] = $this->request('PATCH', '/v1/events/1', ['date' => '2026-11-03'], $token);
+    self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status);
+    [$status, $body] = $this->request('PATCH', '/v1/events/1', [
+      'date' => '2026-11-03', 'starts_at' => '2026-11-03T11:35:00Z', 'duration_minutes' => 17,
+    ], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    self::assertSame(17, $body['data']['duration_minutes']);
+    [$status, $body] = $this->request('PATCH', '/v1/events/1', [
+      'all_day' => true, 'untimed' => false, 'starts_at' => null, 'duration_minutes' => 1440,
+    ], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    self::assertTrue($body['data']['all_day']);
+    self::assertNull($body['data']['starts_at']);
+    [$status, $body] = $this->request('PATCH', '/v1/events/1', [
+      'all_day' => false, 'untimed' => true, 'starts_at' => null, 'duration_minutes' => 0,
+    ], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    self::assertTrue($body['data']['untimed']);
+    self::assertSame('2026-11-03', $body['data']['date']);
+    [$status] = $this->request('PATCH', '/v1/events/1', [], $token);
+    self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status);
+  }
+
+  public function testReadOnlyInstallationsDenyWritesAndAdvertiseReadOnlyEvents(): void
+  {
+    $this->event(1, 'Read only', 'alice');
+    $token = $this->token();
+    $body = <<<'PHP'
+      $app = require 'app/Api/bootstrap.php';
+      $request = Illuminate\Http\Request::create($argv[1], $argv[2], [], [], [],
+        ['CONTENT_TYPE' => 'application/json', 'HTTP_AUTHORIZATION' => 'Bearer ' . $argv[3]], $argv[4]);
+      $response = $app->handle($request);
+      echo json_encode([$response->getStatusCode(), json_decode($response->getContent(), true)]);
+      PHP;
+    $script = "require 'vendor/autoload.php'; " . $this->legacyScript($body);
+    foreach ([['POST', '/v1/events', $this->draft()], ['PATCH', '/v1/events/1', ['title' => 'Denied']]] as [$method, $path, $data]) {
+      $result = json_decode(self::command([PHP_BINARY, '-r', $script, $path, $method, $token, json_encode($data)],
+        ['WEBCALENDAR_READONLY' => 'true']), true);
+      self::assertSame(Response::HTTP_FORBIDDEN, $result[0]);
+    }
+    $result = json_decode(self::command([PHP_BINARY, '-r', $script,
+      '/v1/events?start_date=2026-11-02&end_date=2026-11-02', 'GET', $token, '{}'], ['WEBCALENDAR_READONLY' => 'true']), true);
+    self::assertSame(Response::HTTP_OK, $result[0]);
+    self::assertFalse($result[1]['data'][0]['can_edit']);
+  }
+
+  public function testConflictsIncludeOvernightEventsAndTouchingEventsAreAllowed(): void
+  {
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('ALLOW_CONFLICTS', 'N')");
+    $this->event(1, 'Overnight', 'alice');
+    self::sql('UPDATE webcal_entry SET cal_time = 233000, cal_duration = 120 WHERE cal_id = 1');
+    $token = $this->token();
+    [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+      'date' => '2026-11-03', 'untimed' => false, 'starts_at' => '2026-11-03T00:30:00Z', 'duration_minutes' => 15,
+    ]), $token);
+    self::assertSame(Response::HTTP_CONFLICT, $status, json_encode($body));
+    [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+      'date' => '2026-11-03', 'untimed' => false, 'starts_at' => '2026-11-03T01:30:00Z', 'duration_minutes' => 15,
+    ]), $token);
+    self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+    self::sql("UPDATE webcal_entry SET cal_type = 'M' WHERE cal_id = 1");
+    self::sql("INSERT INTO webcal_entry_repeats (cal_id, cal_type, cal_frequency) VALUES (1, 'daily', 1)");
+    [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+      'date' => '2026-11-04', 'untimed' => false, 'starts_at' => '2026-11-04T00:30:00Z', 'duration_minutes' => 15,
+    ]), $token);
+    self::assertSame(Response::HTTP_CONFLICT, $status, json_encode($body));
+  }
+
+  public function testConflictCheckingUsesFloatingAllDayDatesAndDailyLimits(): void
+  {
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('ALLOW_CONFLICTS', 'N')");
+    self::sql("INSERT INTO webcal_user_pref (cal_login, cal_setting, cal_value) VALUES ('alice', 'TIMEZONE', 'America/New_York')");
+    $this->event(1, 'All day', 'alice');
+    self::sql('UPDATE webcal_entry SET cal_time = 0, cal_duration = 1440 WHERE cal_id = 1');
+    $token = $this->token();
+    [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+      'date' => '2026-11-01', 'untimed' => false, 'starts_at' => '2026-11-01T23:00:00-05:00', 'duration_minutes' => 30,
+    ]), $token);
+    self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+    [$status] = $this->request('POST', '/v1/events', $this->draft([
+      'date' => '2026-11-02', 'untimed' => false, 'starts_at' => '2026-11-02T00:30:00-05:00', 'duration_minutes' => 30,
+    ]), $token);
+    self::assertSame(Response::HTTP_CONFLICT, $status);
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('LIMIT_APPTS', 'Y')");
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('LIMIT_APPTS_NUMBER', '1')");
+    [$status] = $this->request('POST', '/v1/events', $this->draft([
+      'date' => '2026-11-01', 'untimed' => false, 'starts_at' => '2026-11-01T12:00:00-05:00', 'duration_minutes' => 30,
+    ]), $token);
+    self::assertSame(Response::HTTP_CONFLICT, $status);
+  }
+
+  public function testCrossDayPolicyAndSafeDescriptionHandling(): void
+  {
+    $token = $this->token();
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('DISABLE_CROSSDAY_EVENTS', 'Y')");
+    [$status] = $this->request('POST', '/v1/events', $this->draft([
+      'untimed' => false, 'starts_at' => '2026-11-10T23:30:00Z', 'duration_minutes' => 60,
+    ]), $token);
+    self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status);
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('DEFAULT_VISIBILITY', 'R')");
+    [$status, $body] = $this->request('POST', '/v1/events', $this->draft([
+      'description' => '<b>Keep notes</b><script>alert(1)</script><img src=x onerror=alert(1)>',
+    ]), $token);
+    self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+    self::assertSame('R', $body['data']['access']);
+    self::assertStringContainsString('<b>Keep notes</b>', $body['data']['description']);
+    self::assertStringNotContainsString('script', $body['data']['description']);
+    self::assertStringNotContainsString('onerror', $body['data']['description']);
+    [$status] = $this->request('POST', '/v1/events', $this->draft(['description' => str_repeat('🙂', 17000)]), $token);
+    self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status);
+  }
+
+  /** @dataProvider collidingTables */
+  public function testIdCollisionRetriesTheWholeTransaction(string $table): void
+  {
+    $body = <<<'PHP'
+      Illuminate\Database\Connection::resolverFor('sqlite', function ($pdo, $database, $prefix, $config) {
+        return new class($pdo, $database, $prefix, $config) extends Illuminate\Database\SQLiteConnection {
+          public int $collisions = 0;
+          public function insert($query, $bindings = []) {
+            if (str_contains($query, 'insert into "TARGET_TABLE"') && $this->collisions++ === 0) {
+              $cause = new PDOException('UNIQUE constraint failed: TARGET_TABLE');
+              $cause->errorInfo = ['23000', 19, $cause->getMessage()];
+              throw new Illuminate\Database\QueryException('webcalendar', $query, $bindings, $cause);
+            }
+            return parent::insert($query, $bindings);
+          }
+        };
+      });
+      $app = require 'app/Api/bootstrap.php';
+      $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+      $saved = $app->make(WebCalendar\Services\CalendarEventWriter::class)->create('alice', json_decode($argv[1], true));
+      echo json_encode([$saved, Illuminate\Support\Facades\DB::connection()->collisions]);
+      PHP;
+    $script = "require 'vendor/autoload.php'; " . $this->legacyScript(str_replace('TARGET_TABLE', $table, $body));
+    $result = json_decode(self::command([PHP_BINARY, '-r', $script, json_encode($this->draft())]), true);
+    self::assertSame('Appointment', $result[0]['title']);
+    self::assertSame(2, $result[1]);
+    foreach (['webcal_entry', 'webcal_entry_user', 'webcal_entry_log'] as $table) {
+      self::assertSame(1, (int) self::$db->query('SELECT COUNT(*) FROM ' . $table)->fetchColumn(), $table);
+    }
+  }
+
+  public static function collidingTables(): array
+  {
+    return [['webcal_entry'], ['webcal_entry_log']];
+  }
+
+  private function draft(array $changes = []): array
+  {
+    return array_replace(['title' => 'Appointment', 'description' => 'Bring notes', 'location' => 'Office',
+      'date' => '2026-11-10', 'all_day' => false, 'untimed' => true, 'starts_at' => null, 'duration_minutes' => 0], $changes);
   }
 
   private function token(): string

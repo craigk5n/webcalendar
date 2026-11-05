@@ -162,6 +162,51 @@ Run these from the repository root unless specified otherwise:
   preserve that distinction across DST. Date bounds are inclusive and limited
   to 93 days. `tests/ApiIntegrationTest.php` installs a disposable SQLite calendar
   and tests real HTTP requests without modifying the development database.
+- `POST /events` and `PATCH /events/{event}` support personal, accepted,
+  non-recurring events created by the requesting account. New tokens include
+  `events:write`; old tokens stay read-only until a fresh sign-in. Recheck view/
+  edit permissions and the installation's readonly flag on every write. Return
+  effective `can_edit` on occurrences and effective `timezone` on the profile.
+  Shared/external-guest records, recurring/detached records, legacy cross-day
+  extensions and their parents are not editable. Membership is not ownership.
+- `EventWriteRequest` and its store/update subclasses own structural and merged
+  schedule validation; controllers return EventResource responses. Timed writes
+  require explicit-offset, minute-precision timestamps and an account-local date;
+  untimed/all-day dates remain floating. WebCalendar cannot distinguish a timed
+  UTC-midnight/1440-minute event from all-day storage, so reject that combination.
+  See docs/api.md for patch/null semantics, limits and error codes.
+- CalendarEventWriter uses one Laravel/PDO transaction for the entry,
+  participation and activity log. Do not wrap DBI writes in a Laravel transaction:
+  they use a different connection. Retry whole transactions for manual-ID key
+  collisions, including activity-log IDs. MySQL write tables must be InnoDB;
+  non-transactional tables return 503 before mutation. The API bootstrap explicitly
+  loads activity-log-constants.php for LOG_CREATE/LOG_UPDATE.
+- CalendarEventConflicts compares absolute intervals and floating all-day dates,
+  using the existing recurrence engine in bounded windows. It honors ALLOW_CONFLICTS,
+  daily appointment limits and overnight overlaps. Keep conflict messages JSON,
+  without the browser helper's HTML. Schedule checks are not run for metadata-only
+  patches. Related-record eligibility is batched, without per-occurrence queries.
+- CalendarEventData provides the canonical PDO-row representation for writes and
+  ordinary reads. CalendarEvents keeps full start/duration on the starting day and
+  builds bounded, read-only display continuations for later days, even when the
+  event starts before the requested range. Do not use the browser's clipped
+  getOverLap fragments to prefill an editable event: they shorten a two-hour
+  overnight event to 29 minutes. Conflict checks exclude continuation fragments
+  and use full recurring durations from the database. Recurrence expansion remains
+  in the existing engine. Floating all-day/untimed dates use Gregorian UTC backing;
+  account-local timestamps determine timed grouping. read_events' timestamp bounds
+  alone omit all-day events in negative-offset zones; round-trip coverage includes
+  both offset directions, later-day-only windows, multi-day and DST spans. Normalize
+  each civil-day boundary after advancing: a midnight DST jump to 01:00 must not
+  carry that clock time into following days. Tests cover Sao Paulo midnight jumps
+  as well as New York's spring/fall transitions.
+- Event-write verification includes 49 API integration tests on PHP 8.2–8.5,
+  Apache server/private-file/.htaccess paths, and disposable MariaDB 13/PostgreSQL
+  17 HTTP checks for create/edit/read, DST and rollback. Full suites pass on each
+  PHP version: 1,158 passed, one optional external-DB test skipped, zero failures.
+  The release manifest includes all new runtime files; its tracking check passes
+  once those files are added to Git. Existing legacy deprecation output is
+  unrelated to these API changes.
 - `GET /users/current` includes integer `week_start` (0 = Sunday, 6 = Saturday).
   CalendarIdentity.weekStart() uses the existing activation/preference resolver
   so user overrides, including string '0', take precedence over installation

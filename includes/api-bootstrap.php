@@ -11,6 +11,7 @@ set_include_path(dirname(__DIR__) . PATH_SEPARATOR . __DIR__ . PATH_SEPARATOR . 
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/dbi4php.php';
 require_once __DIR__ . '/functions.php';
+require_once __DIR__ . '/activity-log-constants.php';
 require_once __DIR__ . '/translate.php';
 require_once __DIR__ . '/classes/Event.php';
 require_once __DIR__ . '/classes/RptEvent.php';

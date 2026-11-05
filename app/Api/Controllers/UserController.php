@@ -14,6 +14,7 @@ final class UserController
   {
     $profile = $request->attributes->get('calendar_profile');
     $profile['week_start'] = $identity->weekStart($request->user()->username);
+    $profile['timezone'] = $GLOBALS['TIMEZONE'];
     return new JsonResource($profile);
   }
 }

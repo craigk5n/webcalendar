@@ -42,6 +42,9 @@ $app = Application::configure(basePath: $root)
   ->withExceptions(function (Exceptions $exceptions): void {
     $exceptions->shouldRenderJsonWhen(fn (Request $request, Throwable $exception): bool => true);
     $exceptions->dontFlash(['password', 'token']);
+    $exceptions->render(function (WebCalendar\Api\Exceptions\EventWriteException $exception) {
+      return response()->json(['message' => $exception->getMessage(), 'code' => $exception->errorCode], $exception->getStatusCode());
+    });
   })
   ->create();
 

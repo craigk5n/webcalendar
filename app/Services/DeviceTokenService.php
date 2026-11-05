@@ -23,7 +23,7 @@ final class DeviceTokenService
         $user->update(['auth_backend' => $GLOBALS['user_inc'], 'subject_id' => $profile['subject_id']]);
       }
       $expires = now()->addDays(config('webcalendar.token_lifetime_days'));
-      $token = $user->createToken($deviceName, ['events:read'], $expires);
+      $token = $user->createToken($deviceName, ['events:read', 'events:write'], $expires);
       return ['token' => $token->plainTextToken, 'token_type' => 'Bearer', 'expires_at' => $expires->toIso8601String()];
     });
   }

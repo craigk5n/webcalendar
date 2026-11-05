@@ -73,6 +73,29 @@ $occurrences = array_map(static fn (array $event): array => [$event['id'], $even
 if ($occurrences !== [[1, '2026-11-02'], [2, '2026-11-02'], [1, '2026-11-04'], [1, '2026-11-06']]) {
   throw new RuntimeException('Weekly/monthly recurrence returned unexpected fixture occurrences');
 }
+$created = api_smoke_request('POST', '/events', $token, [
+  'title' => 'Personal smoke fixture', 'date' => '2026-11-10', 'all_day' => false, 'untimed' => true,
+]);
+api_smoke_expect_status(201, $created, 'Create a personal untimed event');
+$id = $created[1]['data']['id'];
+if ($created[1]['data']['can_edit'] !== true || $profile[1]['data']['timezone'] !== 'UTC') {
+  throw new RuntimeException('Write metadata or account timezone is incorrect');
+}
+$updated = api_smoke_request('PATCH', '/events/' . $id, $token, [
+  'title' => 'Updated smoke fixture', 'untimed' => false,
+  'starts_at' => '2026-11-10T10:15:00Z', 'duration_minutes' => 37,
+]);
+api_smoke_expect_status(200, $updated, 'Edit a personal event');
+$read = api_smoke_request('GET', '/events?start_date=2026-11-10&end_date=2026-11-10', $token);
+api_smoke_expect_status(200, $read, 'Read the edited event');
+if ($read[1]['data'] !== [$updated[1]['data']]) {
+  throw new RuntimeException('Saved event does not round-trip through the agenda');
+}
+$statement = $db->prepare('UPDATE webcal_api_tokens SET abilities = ?');
+$statement->execute(['["events:read"]']);
+api_smoke_expect_status(403, api_smoke_request('PATCH', '/events/' . $id, $token, ['title' => 'Denied']), 'Read-only token');
+$statement->execute(['["events:read","events:write"]']);
+api_smoke_expect_status(422, api_smoke_request('PATCH', '/events/1', $token, ['title' => 'Denied']), 'Recurring event edit');
 $revocation = api_smoke_request('DELETE', '/tokens/current', $token);
 api_smoke_expect_status(200, $revocation, 'Revocation');
 if ($revocation[1]['data']['revoked'] !== true) {
@@ -89,4 +112,4 @@ if (getenv('API_SMOKE_PRIVATE_ENV') === 'true') {
     throw new RuntimeException('HTTP did not use the storage configured by the private file');
   }
 }
-echo "Apache API smoke passed ($mode): token issuance, profile, weekly/monthly recurrence, revocation, and missing/invalid/revoked token rejection.\n";
+echo "Apache API smoke passed ($mode): token issuance, profile, recurrence, personal-event create/edit/read, write restrictions, and revocation.\n";
