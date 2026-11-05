@@ -470,6 +470,14 @@ URL, participants, categories, reminders, attachments and site extras are retain
 unless an explicitly supported field is changed. The API updates the original
 record instead of deleting/recreating its satellite rows.
 
+Reminder configuration is preserved. Rescheduling resets `cal_times_sent` and
+`cal_last_sent` for a relative reminder only when its effective trigger instant
+changes: start-relative alarms follow the start, while end-relative alarms also
+follow duration changes. Metadata-only edits, equivalent timestamps, and edits
+that preserve the relevant anchor instant retain delivery state. Absolute alarms
+retain both their timestamp and delivery state, avoiding a duplicate delivery of
+an already-sent alarm. Reminder re-arming commits or rolls back with the event.
+
 Timing edits are merged with the current stored schedule and validated as a
 whole. Moving a timed event to a different `date` requires an explicit
 `starts_at`; changing the date alone does not guess a new wall time or DST offset.
@@ -497,9 +505,27 @@ recurring event exceeds the supported duration limit, scheduling writes return
 409 with `code: "unsupported_schedule"` instead of omitting possible overlaps.
 
 Event insertion/update, owner participation and activity logging use one database
-transaction. ID allocation retries key collisions by rolling back and retrying
-the complete transaction. MySQL/MariaDB installations must use **InnoDB** for
-`webcal_entry`, `webcal_entry_user`, and `webcal_entry_log`. Non-transactional
+transaction. API writes lock the authenticated account's `webcal_api_users` row
+before reading schedules, including on an empty calendar, and hold that lock
+through commit. Edits acquire the calendar lock before the event lock. This
+serializes competing API creates/edits for that account; browser and MCP writers
+do not participate in this calendar-lock protocol. SQLite obtains database-wide
+write intent before snapshot reads using an early managed update, including on
+PHP 8.2/8.3, rather than relying on a version-dependent `IMMEDIATE` setting.
+
+Recognized SQLite busy/locked errors, MySQL lock timeouts/deadlocks, PostgreSQL
+serialization/deadlock/lock-unavailable errors, and event/activity ID collisions
+retry the complete transaction only after successful rollback. Every attempt
+reacquires protection, reloads the edited record, and reruns schedule checks.
+There are at most five attempts with 20/40/80/160 ms backoff; SQLite's per-operation
+busy timeout is 250 ms. Exhaustion returns 503 with `code: "calendar_busy"`.
+Unrelated SQL errors, failed rollbacks, and indeterminate connection/commit
+failures are not retried. A lost response can still follow a committed write;
+clients must check the calendar rather than blindly repeat a creation request.
+
+MySQL/MariaDB installations must use **InnoDB** for `webcal_api_users`,
+`webcal_entry`, `webcal_entry_user`, and `webcal_entry_log`. Re-arming a reminder
+also requires InnoDB for `webcal_reminders`. Non-transactional
 legacy tables return 503 with `code: "transactional_storage_required"`; convert
 those tables through the installation's normal database-maintenance process.
 These endpoints require no new API migration beyond the existing API tables.
@@ -514,7 +540,7 @@ These endpoints require no new API migration beyond the existing API tables.
 | 409 | Scheduling conflict or unsupported conflict-checking range; inspect `code` |
 | 422 | Invalid input (`errors`) or unsupported event editing (`code`) |
 | 429 | Rate limit exceeded; honor `Retry-After` |
-| 503 | API dependencies or WebCalendar startup configuration are unavailable |
+| 503 | API dependencies/configuration/storage are unavailable, or write contention exhausted retries; inspect `code` |
 
 Sign-in is limited to 10 requests per minute per client IP. The API as a whole
 is limited to 120 requests per minute per client IP. Limits, token lifetime,
@@ -539,8 +565,12 @@ and installations, account permissions and ownership, unsupported event types,
 metadata preservation, exact-minute durations, DST, floating dates in positive
 and negative offset timezones, full overnight schedules/read-only continuations,
 scheduling limits, out-of-range IDs/UTC years, transaction rollback, and both
-event/activity ID collision retries. Fixtures use disposable
-databases and synthetic accounts.
+event/activity ID collision retries. Independent-process/connection tests use
+explicit pipe barriers for competing creates, edits to different events, daily
+limits, SQLite contention/retry exhaustion, and fresh-state revalidation. Reminder
+tests cover relative/absolute delivery state, no-op schedules and rollback;
+failure-injection tests cover commit uncertainty and failed rollbacks. Fixtures
+use disposable databases and synthetic accounts.
 
 Those tests use PHP's built-in server. Run the separate Apache deployment check
 from the repository root to cover bearer-header forwarding:

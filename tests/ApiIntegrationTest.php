@@ -590,6 +590,51 @@ final class ApiIntegrationTest extends TestCase
     self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status);
   }
 
+  /** @dataProvider reminderScheduleChanges */
+  public function testReminderDeliveryStateTracksTheEffectiveTrigger(string $related, int $absolute, array $patch, bool $reset): void
+  {
+    $this->event(1, 'Reminder appointment', 'alice');
+    self::sql('INSERT INTO webcal_reminders (cal_id, cal_date, cal_offset, cal_related, cal_before, cal_repeats, cal_duration, cal_action, cal_last_sent, cal_times_sent) VALUES (1, ?, 15, ?, ?, 2, 10, ?, 1793610000, 3)',
+      [$absolute, $related, 'Y', 'EMAIL']);
+    $before = self::$db->query('SELECT * FROM webcal_reminders WHERE cal_id = 1')->fetch(PDO::FETCH_ASSOC);
+    [$status, $body] = $this->request('PATCH', '/v1/events/1', $patch, $this->token());
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    $after = self::$db->query('SELECT * FROM webcal_reminders WHERE cal_id = 1')->fetch(PDO::FETCH_ASSOC);
+    if ($reset) { $before['cal_last_sent'] = 0; $before['cal_times_sent'] = 0; }
+    self::assertEquals($before, $after);
+  }
+
+  public static function reminderScheduleChanges(): array
+  {
+    return [
+      'start moved' => ['S', 0, ['starts_at' => '2026-11-02T11:00:00Z'], true],
+      'end moved' => ['E', 0, ['duration_minutes' => 90], true],
+      'start ignores duration' => ['S', 0, ['duration_minutes' => 90], false],
+      'same end instant' => ['E', 0, ['starts_at' => '2026-11-02T10:30:00Z', 'duration_minutes' => 30], false],
+      'absolute alarm' => ['S', 1793610000, ['starts_at' => '2026-11-02T11:00:00Z'], false],
+      'metadata' => ['S', 0, ['title' => 'Renamed'], false],
+      'same schedule' => ['E', 0, ['duration_minutes' => 60], false],
+      'equivalent offset' => ['S', 0, ['starts_at' => '2026-11-02T11:00:00+01:00'], false],
+      'timed to untimed' => ['S', 0, ['untimed' => true, 'starts_at' => null, 'duration_minutes' => 0], true],
+      'timed to all day' => ['E', 0, ['all_day' => true, 'starts_at' => null, 'duration_minutes' => 1440], true],
+    ];
+  }
+
+  public function testReminderRearmingRollsBackWithAFailedActivityLog(): void
+  {
+    $this->event(1, 'Original', 'alice');
+    self::sql("INSERT INTO webcal_reminders (cal_id, cal_date, cal_related, cal_times_sent, cal_last_sent) VALUES (1, 0, 'S', 1, 1793610000)");
+    $token = $this->token();
+    self::$db->exec("CREATE TRIGGER fail_reminder_log BEFORE INSERT ON webcal_entry_log BEGIN SELECT RAISE(ABORT, 'fixture failure'); END");
+    try {
+      [$status] = $this->request('PATCH', '/v1/events/1', ['starts_at' => '2026-11-02T11:00:00Z'], $token);
+      self::assertSame(Response::HTTP_INTERNAL_SERVER_ERROR, $status);
+      self::assertSame(100000, (int) self::$db->query('SELECT cal_time FROM webcal_entry WHERE cal_id = 1')->fetchColumn());
+      self::assertSame(1, (int) self::$db->query('SELECT cal_times_sent FROM webcal_reminders WHERE cal_id = 1')->fetchColumn());
+      self::assertSame(1793610000, (int) self::$db->query('SELECT cal_last_sent FROM webcal_reminders WHERE cal_id = 1')->fetchColumn());
+    } finally { self::$db->exec('DROP TRIGGER fail_reminder_log'); }
+  }
+
   public function testWritesRequireAbilityPermissionAndPersonalOwnership(): void
   {
     $this->event(1, 'Personal', 'alice');
@@ -962,6 +1007,7 @@ final class ApiIntegrationTest extends TestCase
   /** @dataProvider collidingTables */
   public function testIdCollisionRetriesTheWholeTransaction(string $table): void
   {
+    $this->token();
     $body = <<<'PHP'
       Illuminate\Database\Connection::resolverFor('sqlite', function ($pdo, $database, $prefix, $config) {
         return new class($pdo, $database, $prefix, $config) extends Illuminate\Database\SQLiteConnection {
@@ -993,6 +1039,259 @@ final class ApiIntegrationTest extends TestCase
   public static function collidingTables(): array
   {
     return [['webcal_entry'], ['webcal_entry_log']];
+  }
+
+  /** @dataProvider concurrentCreatePolicies */
+  public function testCreateRechecksTheScheduleAfterAnotherConnectionCommits(bool $dailyLimit): void
+  {
+    $this->token();
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('ALLOW_CONFLICTS', 'N')");
+    if ($dailyLimit) {
+      self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('LIMIT_APPTS', 'Y')");
+      self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('LIMIT_APPTS_NUMBER', '1')");
+    }
+    $body = <<<'PHP'
+      Illuminate\Database\Connection::resolverFor('sqlite', function ($pdo, $database, $prefix, $config) {
+        return new class($pdo, $database, $prefix, $config) extends Illuminate\Database\SQLiteConnection {
+          public function beginTransaction() {
+            if (getenv('PAUSE_BEFORE_TRANSACTION') === '1') {
+              fwrite(STDOUT, "ready\n"); fflush(STDOUT);
+              if (trim(fgets(STDIN)) !== 'continue') { throw new RuntimeException('Missing release barrier'); }
+            }
+            return parent::beginTransaction();
+          }
+        };
+      });
+      $app = require 'app/Api/bootstrap.php';
+      $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+      try {
+        $saved = $app->make(WebCalendar\Services\CalendarEventWriter::class)->create('alice', json_decode($argv[1], true));
+        echo json_encode([201, $saved]);
+      } catch (WebCalendar\Api\Exceptions\EventWriteException $e) {
+        echo json_encode([$e->getStatusCode()]);
+      }
+      PHP;
+    $script = "require 'vendor/autoload.php'; " . $this->legacyScript($body);
+    $draft = $this->draft(['untimed' => false, 'starts_at' => '2026-11-10T09:00:00Z', 'duration_minutes' => 60]);
+    $process = proc_open([PHP_BINARY, '-r', $script, json_encode($draft)],
+      [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes, dirname(__DIR__),
+      array_merge(self::$environment, ['PAUSE_BEFORE_TRANSACTION' => '1']));
+    try {
+      stream_set_timeout($pipes[1], 10);
+      self::assertSame("ready\n", fgets($pipes[1]));
+      $secondDraft = $dailyLimit ? array_replace($draft, ['starts_at' => '2026-11-10T11:00:00Z']) : $draft;
+      $second = json_decode(self::command([PHP_BINARY, '-r', $script, json_encode($secondDraft)]), true);
+      self::assertSame(Response::HTTP_CREATED, $second[0]);
+      fwrite($pipes[0], "continue\n"); fclose($pipes[0]);
+      $output = stream_get_contents($pipes[1]);
+      $errors = stream_get_contents($pipes[2]);
+      self::assertSame([Response::HTTP_CONFLICT], json_decode($output, true), $output . $errors);
+    } finally {
+      foreach ($pipes as $pipe) { if (is_resource($pipe)) { fclose($pipe); } }
+      proc_terminate($process);
+      proc_close($process);
+    }
+    self::assertSame(1, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry')->fetchColumn());
+    self::assertSame(1, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry_log')->fetchColumn());
+  }
+
+  public static function concurrentCreatePolicies(): array
+  {
+    return ['overlap on empty calendar' => [false], 'last daily slot' => [true]];
+  }
+
+  /** @dataProvider contendedWrites */
+  public function testSqliteContentionRetriesWithFreshState(string $operation, bool $exhaust): void
+  {
+    $this->token();
+    if ($operation === 'update') { $this->event(1, 'Original', 'alice'); }
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('ALLOW_CONFLICTS', 'N')");
+    $body = <<<'PHP'
+      Illuminate\Database\Connection::resolverFor('sqlite', function ($pdo, $database, $prefix, $config) {
+        return new class($pdo, $database, $prefix, $config) extends Illuminate\Database\SQLiteConnection {
+          private bool $signaled = false;
+          public function rollBack($toLevel = null) {
+            parent::rollBack($toLevel);
+            if (!$this->signaled) {
+              $this->signaled = true;
+              fwrite(STDOUT, "rolled back\n"); fflush(STDOUT);
+              if (trim(fgets(STDIN)) !== 'continue') { throw new RuntimeException('Missing retry barrier'); }
+            }
+          }
+        };
+      });
+      $app = require 'app/Api/bootstrap.php';
+      $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+      Illuminate\Support\Facades\DB::statement('PRAGMA busy_timeout = 0');
+      (new WebCalendar\Services\CalendarIdentity())->activate('alice');
+      fwrite(STDOUT, "bootstrapped\n"); fflush(STDOUT);
+      if (trim(fgets(STDIN)) !== 'start') { throw new RuntimeException('Missing start barrier'); }
+      try {
+        $writer = $app->make(WebCalendar\Services\CalendarEventWriter::class);
+        $saved = $argv[1] === 'update' ? $writer->update('alice', 1, ['title' => 'Renamed'])
+          : $writer->create('alice', json_decode($argv[2], true));
+        echo json_encode([200, $saved]);
+      } catch (WebCalendar\Api\Exceptions\EventWriteException $e) {
+        echo json_encode([$e->getStatusCode()]);
+      } catch (Illuminate\Database\QueryException $e) {
+        echo json_encode([500]);
+      }
+      PHP;
+    $script = "require 'vendor/autoload.php'; " . $this->legacyScript($body);
+    $draft = $this->draft(['date' => '2026-11-02', 'untimed' => false, 'starts_at' => '2026-11-02T10:00:00Z', 'duration_minutes' => 60]);
+    $process = proc_open([PHP_BINARY, '-r', $script, $operation, json_encode($draft)],
+      [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes, dirname(__DIR__), self::$environment);
+    try {
+      stream_set_timeout($pipes[1], 10);
+      self::assertSame("bootstrapped\n", fgets($pipes[1]));
+      self::$db->beginTransaction();
+      self::$db->exec("UPDATE webcal_api_users SET auth_backend = auth_backend WHERE username = 'alice'");
+      fwrite($pipes[0], "start\n");
+      $barrier = fgets($pipes[1]);
+      self::assertSame("rolled back\n", $barrier, $barrier === false ? stream_get_contents($pipes[2]) : '');
+      if (!$exhaust) {
+        if ($operation === 'create') { $this->event(1, 'Concurrent appointment', 'alice'); }
+        else { self::$db->exec("UPDATE webcal_entry SET cal_location = 'Concurrent location' WHERE cal_id = 1"); }
+        self::$db->commit();
+      }
+      fwrite($pipes[0], "continue\n"); fclose($pipes[0]);
+      $output = stream_get_contents($pipes[1]);
+      $errors = stream_get_contents($pipes[2]);
+      $result = json_decode($output, true);
+      self::assertSame($exhaust ? Response::HTTP_SERVICE_UNAVAILABLE : ($operation === 'create' ? Response::HTTP_CONFLICT : Response::HTTP_OK), $result[0] ?? null, $output . $errors);
+      if (!$exhaust && $operation === 'update') { self::assertSame('Concurrent location', $result[1]['location']); }
+    } finally {
+      if (self::$db->inTransaction()) { self::$db->rollBack(); }
+      foreach ($pipes as $pipe) { if (is_resource($pipe)) { fclose($pipe); } }
+      proc_terminate($process); proc_close($process);
+    }
+    self::assertSame($operation === 'update' && !$exhaust ? 1 : 0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry_log')->fetchColumn());
+  }
+
+  public static function contendedWrites(): array
+  {
+    return ['create revalidates conflicts' => ['create', false], 'patch reloads state' => ['update', false],
+      'create retry exhaustion' => ['create', true], 'patch retry exhaustion' => ['update', true]];
+  }
+
+  public function testDifferentEventPatchesSerializeBeforeReadingTheCalendar(): void
+  {
+    $this->token();
+    $this->event(1, 'First', 'alice');
+    $this->event(2, 'Second', 'alice');
+    self::sql('UPDATE webcal_entry SET cal_time = 120000 WHERE cal_id = 2');
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('ALLOW_CONFLICTS', 'N')");
+    $body = <<<'PHP'
+      Illuminate\Database\Connection::resolverFor('sqlite', function ($pdo, $database, $prefix, $config) {
+        return new class($pdo, $database, $prefix, $config) extends Illuminate\Database\SQLiteConnection {
+          private bool $paused = false;
+          public function update($query, $bindings = []) {
+            $target = $GLOBALS['worker_id'] === 1 ? 'update "webcal_entry"' : 'update "webcal_';
+            if (!$this->paused && str_starts_with($query, $target)) {
+              $this->paused = true;
+              fwrite(STDOUT, "writing\n"); fflush(STDOUT);
+              if (trim(fgets(STDIN)) !== 'continue') { throw new RuntimeException('Missing write barrier'); }
+            }
+            return parent::update($query, $bindings);
+          }
+        };
+      });
+      $GLOBALS['worker_id'] = (int) $argv[1];
+      $app = require 'app/Api/bootstrap.php';
+      $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+      (new WebCalendar\Services\CalendarIdentity())->activate('alice');
+      Illuminate\Support\Facades\DB::statement('PRAGMA busy_timeout = 100');
+      fwrite(STDOUT, "ready\n"); fflush(STDOUT);
+      if (trim(fgets(STDIN)) !== 'start') { throw new RuntimeException('Missing start barrier'); }
+      try {
+        $saved = $app->make(WebCalendar\Services\CalendarEventWriter::class)->update('alice', $GLOBALS['worker_id'],
+          ['date' => '2026-11-10', 'starts_at' => '2026-11-10T09:00:00Z']);
+        echo json_encode([200, $saved]);
+      } catch (WebCalendar\Api\Exceptions\EventWriteException $e) { echo json_encode([$e->getStatusCode()]); }
+      catch (Illuminate\Database\QueryException $e) { echo json_encode([500]); }
+      PHP;
+    $script = "require 'vendor/autoload.php'; " . $this->legacyScript($body);
+    $workers = [];
+    try {
+      foreach ([1, 2] as $id) {
+        $process = proc_open([PHP_BINARY, '-r', $script, (string) $id],
+          [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes, dirname(__DIR__), self::$environment);
+        $workers[$id] = [$process, $pipes];
+        stream_set_timeout($pipes[1], 10);
+        self::assertSame("ready\n", fgets($pipes[1]));
+      }
+      foreach ([1, 2] as $id) {
+        fwrite($workers[$id][1][0], "start\n");
+        self::assertSame("writing\n", fgets($workers[$id][1][1]));
+      }
+      foreach ([1, 2] as $id) { fwrite($workers[$id][1][0], "continue\n"); }
+      foreach ([1 => Response::HTTP_OK, 2 => Response::HTTP_CONFLICT] as $id => $expected) {
+        $output = stream_get_contents($workers[$id][1][1]);
+        $errors = stream_get_contents($workers[$id][1][2]);
+        self::assertSame($expected, json_decode($output, true)[0] ?? null, $output . $errors);
+      }
+    } finally {
+      foreach ($workers as [$process, $pipes]) {
+        foreach ($pipes as $pipe) { if (is_resource($pipe)) { fclose($pipe); } }
+        proc_terminate($process); proc_close($process);
+      }
+    }
+    self::assertSame(1, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry WHERE cal_date = 20261110')->fetchColumn());
+    self::assertSame(1, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry_log')->fetchColumn());
+  }
+
+  /** @dataProvider transactionFailureModes */
+  public function testRetriesRequireAKnownFailureAndSuccessfulRollback(string $mode, int $attempts, bool $saved, int $committed): void
+  {
+    $this->token();
+    $body = <<<'PHP'
+      Illuminate\Database\Connection::resolverFor('sqlite', function ($pdo, $database, $prefix, $config) {
+        return new class($pdo, $database, $prefix, $config) extends Illuminate\Database\SQLiteConnection {
+          public int $attempts = 0;
+          public function beginTransaction() { $this->attempts++; return parent::beginTransaction(); }
+          private function failure(string $state, int $code): PDOException {
+            $e = new PDOException('fixture transaction failure');
+            $e->errorInfo = [$state, $code, $e->getMessage()];
+            return $e;
+          }
+          public function insert($query, $bindings = []) {
+            if (in_array($GLOBALS['failure_mode'], ['rollback-fails', 'nontransient'], true)) {
+              throw new Illuminate\Database\QueryException('webcalendar', $query, $bindings,
+                $this->failure('HY000', $GLOBALS['failure_mode'] === 'rollback-fails' ? 5 : 1));
+            }
+            return parent::insert($query, $bindings);
+          }
+          public function commit() {
+            if ($GLOBALS['failure_mode'] === 'busy-commit' && $this->attempts === 1) { throw $this->failure('HY000', 5); }
+            parent::commit();
+            if ($GLOBALS['failure_mode'] === 'lost-commit') { throw $this->failure('08006', 0); }
+          }
+          public function rollBack($toLevel = null) {
+            if ($GLOBALS['failure_mode'] === 'rollback-fails') { throw new RuntimeException('fixture rollback failure'); }
+            return parent::rollBack($toLevel);
+          }
+        };
+      });
+      $GLOBALS['failure_mode'] = $argv[1];
+      $app = require 'app/Api/bootstrap.php';
+      $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+      $saved = false;
+      try { $app->make(WebCalendar\Services\CalendarEventWriter::class)->create('alice', json_decode($argv[2], true)); $saved = true; }
+      catch (Throwable $e) {}
+      echo json_encode([Illuminate\Support\Facades\DB::connection()->attempts, $saved]);
+      PHP;
+    $script = "require 'vendor/autoload.php'; " . $this->legacyScript($body);
+    $result = json_decode(self::command([PHP_BINARY, '-r', $script, $mode, json_encode($this->draft())]), true);
+    self::assertSame([$attempts, $saved], $result);
+    foreach (['webcal_entry', 'webcal_entry_user', 'webcal_entry_log'] as $table) {
+      self::assertSame($committed, (int) self::$db->query('SELECT COUNT(*) FROM ' . $table)->fetchColumn(), $table);
+    }
+  }
+
+  public static function transactionFailureModes(): array
+  {
+    return [['busy-commit', 2, true, 1], ['lost-commit', 1, false, 1],
+      ['rollback-fails', 1, false, 0], ['nontransient', 1, false, 0]];
   }
 
   private function draft(array $changes = []): array

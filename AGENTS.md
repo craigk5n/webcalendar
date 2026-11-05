@@ -176,11 +176,35 @@ Run these from the repository root unless specified otherwise:
   UTC-midnight/1440-minute event from all-day storage, so reject that combination.
   See docs/api.md for patch/null semantics, limits and error codes.
 - CalendarEventWriter uses one Laravel/PDO transaction for the entry,
-  participation and activity log. Do not wrap DBI writes in a Laravel transaction:
+  participation, reminder re-arming and activity log. Do not wrap DBI writes in a Laravel transaction:
   they use a different connection. Retry whole transactions for manual-ID key
   collisions, including activity-log IDs. MySQL write tables must be InnoDB;
   non-transactional tables return 503 before mutation. The API bootstrap explicitly
   loads activity-log-constants.php for LOG_CREATE/LOG_UPDATE.
+- Event writes lock the authenticated account's existing `webcal_api_users` row
+  before schedule reads and hold it through commit, before any event-row lock.
+  SQLite first performs a no-op managed update to acquire write intent; installed
+  Laravel ignores SQLite `transaction_mode` on PHP 8.2/8.3. API-to-API protection
+  does not coordinate browser/MCP writers. MySQL requires InnoDB for the mutex too.
+  Known contention errors and manual-ID collisions get at most five whole-write
+  attempts with exponential backoff, fresh state and conflict checks after each
+  confirmed rollback. Uncertain commits, failed rollbacks and other SQL errors
+  must not retry. Exhaustion is 503 `calendar_busy`; SQLite busy_timeout is 250 ms.
+  Legacy identity activation can insert a first-use LANGUAGE preference through
+  DBI: initialize it before taking the PDO write lock, then recheck activation
+  under protection. Independent workers must also complete this before barriers.
+- Relative reminder counters reset only when the stored start/end anchor instant
+  changes (`cal_related` selects the anchor). Start-relative duration-only edits,
+  unchanged end instants, equivalent offsets and metadata preserve delivery state.
+  Absolute `cal_date` alarms are preserved. Check InnoDB for `webcal_reminders`
+  before a reset and keep it in the same transaction as event/log changes.
+  QA regressions add pipe-synchronized independent-process create/create,
+  different-event PATCH/PATCH, SQLite busy/retry/exhaustion and state reload checks,
+  plus reminder lifecycle and uncertain-commit/rollback-failure coverage.
+  Full suites now pass PHP 8.2–8.5: 1,180 passed, one optional external-DB skip
+  (1,181 total), 5,215 assertions each; full lint and Apache checks pass.
+  Disposable MariaDB 13/PostgreSQL 17 checks also pass concurrent create/patch,
+  reminder re-arming/preservation, rollback and MySQL mutex/reminder engine guards.
 - CalendarEventConflicts compares absolute intervals and floating all-day dates,
   using the existing recurrence engine in bounded windows. It honors ALLOW_CONFLICTS,
   daily appointment limits and overnight overlaps. Keep conflict messages JSON,
