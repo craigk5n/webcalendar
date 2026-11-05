@@ -23,6 +23,7 @@ return [
     'collation' => 'utf8mb4_bin',
     'prefix' => '',
     'foreign_key_constraints' => true,
+    'busy_timeout' => 250,
   ]],
   'migrations' => ['table' => 'webcal_api_migrations', 'update_date_on_publish' => true],
 ];

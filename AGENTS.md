@@ -51,6 +51,21 @@ optional, local, and ignored by Git. Keep shared instructions here; a local
   Generated timestamps use `%a %d %b %Y %I:%M:%S %p %Z` and inherit the build
   environment's timezone (`TZ` when set, otherwise the system timezone);
   do not hardcode a timezone in the Makefile.
+- Symfony November 2026 advisories are patched by locking filesystem,
+  http-foundation, http-kernel and routing to 7.4.23. This targeted update changes
+  only those four packages; PHP's 8.2 platform floor and composer.json stay intact.
+  Both installed and locked Composer audits pass, including dev dependencies.
+  Filesystem is dev-only; none of the four packages is in the MCP bundle closure.
+  `make` completed with no generated bundle/assets/manifest diff. Clear/rebuild
+  deployed compiled route caches after installing the new lock file: the routing
+  fix changes the generated matcher. See docs/api.md for deployment commands.
+  Six integration cases first reproduced `/api.phpv1/...` and encoded aliases
+  reaching an authenticated handler; the patched dependency rejects them with
+  404 while preserving valid subdirectory URLs. HEAD auth/abilities and forwarded
+  IP/host/scheme/port/prefix checks also pass. Apache smoke verifies real HEAD
+  authorization and malformed path rejection. Combined full suites pass on
+  PHP 8.2–8.5: 1,208 passed, one optional external-DB skip, 5,484 assertions each;
+  full lint, bundle/release checks, Apache and disposable database checks pass.
 
 ## Verification
 Run these from the repository root unless specified otherwise:
@@ -162,6 +177,94 @@ Run these from the repository root unless specified otherwise:
   preserve that distinction across DST. Date bounds are inclusive and limited
   to 93 days. `tests/ApiIntegrationTest.php` installs a disposable SQLite calendar
   and tests real HTTP requests without modifying the development database.
+- `POST /events` and `PATCH /events/{event}` support personal, accepted,
+  non-recurring events created by the requesting account. New tokens include
+  `events:write`; old tokens stay read-only until a fresh sign-in. Recheck view/
+  edit permissions and the installation's readonly flag on every write. Return
+  effective `can_edit` on occurrences and effective `timezone` on the profile.
+  Shared/external-guest records, recurring/detached records, legacy cross-day
+  extensions and their parents are not editable. Membership is not ownership.
+- `EventWriteRequest` and its store/update subclasses own structural and merged
+  schedule validation; controllers return EventResource responses. Timed writes
+  require explicit-offset, minute-precision timestamps and an account-local date;
+  untimed/all-day dates remain floating. WebCalendar cannot distinguish a timed
+  UTC-midnight/1440-minute event from all-day storage, so reject that combination.
+  See docs/api.md for patch/null semantics, limits and error codes.
+- CalendarEventWriter uses one Laravel/PDO transaction for the entry,
+  participation, reminder re-arming and activity log. Do not wrap DBI writes in a Laravel transaction:
+  they use a different connection. Retry whole transactions for manual-ID key
+  collisions, including activity-log IDs. MySQL write tables must be InnoDB;
+  non-transactional tables return 503 before mutation. The API bootstrap explicitly
+  loads activity-log-constants.php for LOG_CREATE/LOG_UPDATE.
+- Event writes lock the authenticated account's existing `webcal_api_users` row
+  before schedule reads and hold it through commit, before any event-row lock.
+  SQLite first performs a no-op managed update to acquire write intent; installed
+  Laravel ignores SQLite `transaction_mode` on PHP 8.2/8.3. API-to-API protection
+  does not coordinate browser/MCP writers. MySQL requires InnoDB for the mutex too.
+  Known contention errors and manual-ID collisions get at most five whole-write
+  attempts with exponential backoff, fresh state and conflict checks after each
+  confirmed rollback. Uncertain commits, failed rollbacks and other SQL errors
+  must not retry. Exhaustion is 503 `calendar_busy`; SQLite busy_timeout is 250 ms.
+  Legacy identity activation can insert a first-use LANGUAGE preference through
+  DBI: initialize it before taking the PDO write lock, then recheck activation
+  under protection. Independent workers must also complete this before barriers.
+- Relative reminder counters reset only when the sender's start/end anchor instant
+  changes (`cal_related` selects the anchor). Start-relative duration-only edits,
+  unchanged end instants, equivalent offsets and metadata preserve delivery state.
+  Absolute `cal_date` alarms are preserved. Check InnoDB for `webcal_reminders`
+  before a reset and keep it in the same transaction as event/log changes.
+  Match Event::getDateTimeTS: timed starts are UTC but floating starts use local
+  mktime in the reminder runtime's installation timezone. Event::getEndDateTimeTS
+  separately uses UTC plus duration, even for floating events. API bootstrap
+  captures `api_reminder_timezone` before account preferences; temporarily scoped
+  floating-anchor calculations restore the prior PHP default timezone. Tests
+  compare with real Event methods across non-UTC forward/reverse conversions,
+  DST and differing account/runtime zones. Do not localize the end calculation.
+  QA regressions add pipe-synchronized independent-process create/create,
+  different-event PATCH/PATCH, SQLite busy/retry/exhaustion and state reload checks,
+  plus reminder lifecycle and uncertain-commit/rollback-failure coverage.
+  Full suites now pass PHP 8.2–8.5: 1,180 passed, one optional external-DB skip
+  (1,181 total), 5,215 assertions each; full lint and Apache checks pass.
+  Disposable MariaDB 13/PostgreSQL 17 checks also pass concurrent create/patch,
+  reminder re-arming/preservation, rollback and MySQL mutex/reminder engine guards.
+- PostgreSQL COMMIT SQLSTATE 40001/40P01 is a confirmed abort even when PDO is no
+  longer in a transaction. Clean up Laravel transaction state and permit a fresh
+  whole-write attempt on the same connection. Other no-active-transaction commit
+  errors remain uncertain and must not replay. The checked-in disposable fixture
+  `tests/fixtures/api-postgres-commit-abort.php` uses real SERIALIZABLE dependency
+  cycles to verify commit-time 40001 with PDO inactive and Laravel level 1,
+  recovery, schedule revalidation, five-attempt exhaustion and no partial/duplicate
+  rows. It requires the installed/migrated api_smoke_db and token-initialized
+  api-smoke account; see docs/api.md. It ran successfully on PostgreSQL 17.
+  After these residual QA fixes, full PHP 8.2–8.5 suites each pass 1,199 tests,
+  with one optional external-DB skip (1,200 total), 5,409 assertions. Full syntax,
+  Apache smoke and disposable MariaDB 13/PostgreSQL 17 checks pass.
+- CalendarEventConflicts compares absolute intervals and floating all-day dates,
+  using the existing recurrence engine in bounded windows. It honors ALLOW_CONFLICTS,
+  daily appointment limits and overnight overlaps. Keep conflict messages JSON,
+  without the browser helper's HTML. Schedule checks are not run for metadata-only
+  patches. Related-record eligibility is batched, without per-occurrence queries.
+- CalendarEventData provides the canonical PDO-row representation for writes and
+  ordinary reads. CalendarEvents keeps full start/duration on the starting day and
+  builds bounded, read-only display continuations for later days, even when the
+  event starts before the requested range. Do not use the browser's clipped
+  getOverLap fragments to prefill an editable event: they shorten a two-hour
+  overnight event to 29 minutes. Conflict checks exclude continuation fragments
+  and use full recurring durations from the database. Recurrence expansion remains
+  in the existing engine. Floating all-day/untimed dates use Gregorian UTC backing;
+  account-local timestamps determine timed grouping. read_events' timestamp bounds
+  alone omit all-day events in negative-offset zones; round-trip coverage includes
+  both offset directions, later-day-only windows, multi-day and DST spans. Normalize
+  each civil-day boundary after advancing: a midnight DST jump to 01:00 must not
+  carry that clock time into following days. Tests cover Sao Paulo midnight jumps
+  as well as New York's spring/fall transitions.
+- Event-write verification includes 49 API integration tests on PHP 8.2–8.5,
+  Apache server/private-file/.htaccess paths, and disposable MariaDB 13/PostgreSQL
+  17 HTTP checks for create/edit/read, DST and rollback. Full suites pass on each
+  PHP version: 1,158 passed, one optional external-DB test skipped, zero failures.
+  The release manifest includes all new runtime files; its tracking check passes
+  once those files are added to Git. Existing legacy deprecation output is
+  unrelated to these API changes.
 - `GET /users/current` includes integer `week_start` (0 = Sunday, 6 = Saturday).
   CalendarIdentity.weekStart() uses the existing activation/preference resolver
   so user overrides, including string '0', take precedence over installation

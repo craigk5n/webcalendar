@@ -11,6 +11,7 @@ set_include_path(dirname(__DIR__) . PATH_SEPARATOR . __DIR__ . PATH_SEPARATOR . 
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/dbi4php.php';
 require_once __DIR__ . '/functions.php';
+require_once __DIR__ . '/activity-log-constants.php';
 require_once __DIR__ . '/translate.php';
 require_once __DIR__ . '/classes/Event.php';
 require_once __DIR__ . '/classes/RptEvent.php';
@@ -36,6 +37,7 @@ if (!$version || $version[0][0] !== $PROGRAM_VERSION) {
 }
 
 load_global_settings();
+$GLOBALS['api_reminder_timezone'] = date_default_timezone_get();
 if (!in_array($user_inc, ['user.php', 'user-ldap.php'], true) || !empty($settings['use_http_auth']) || $single_user === 'Y') {
   throw new RuntimeException('API sign-in requires database or LDAP password authentication.');
 }
