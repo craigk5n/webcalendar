@@ -23,11 +23,11 @@ final class CalendarEventWriter
   private const DEFAULT_PRIORITY = 5;
   private const UNTIMED_TIME = -1;
   private const ALL_DAY_TIME = 0;
-  private const SECONDS_PER_MINUTE = 60;
   private const SQLITE_PRIMARY_CODE_MASK = 0xff;
   private const SQLITE_CONTENTION_CODES = [5, 6];
   private const MYSQL_CONTENTION_CODES = [1205, 1213];
-  private const POSTGRES_CONTENTION_STATES = ['40001', '40P01', '55P03'];
+  private const POSTGRES_ABORT_STATES = ['40001', '40P01'];
+  private const POSTGRES_CONTENTION_STATES = [...self::POSTGRES_ABORT_STATES, '55P03'];
 
   public function __construct(private readonly CalendarEventAccess $access, private readonly CalendarEventConflicts $conflicts) {}
 
@@ -108,9 +108,11 @@ final class CalendarEventWriter
         $connection->commit();
         return $saved;
       } catch (Throwable $exception) {
-        $canRetryCommit = !$committing || $pdo->inTransaction();
+        $confirmedAbort = $connection->getDriverName() === 'pgsql' && $exception instanceof \PDOException
+          && in_array($exception->errorInfo[0] ?? null, self::POSTGRES_ABORT_STATES, true);
+        $canRetryCommit = !$committing || $pdo->inTransaction() || $confirmedAbort;
         $connection->rollBack();
-        if (!$canRetryCommit || $pdo->inTransaction() || $connection->getPdo() !== $pdo) { throw $exception; }
+        if (!$canRetryCommit || $pdo->inTransaction() || $connection->transactionLevel() !== 0 || $connection->getPdo() !== $pdo) { throw $exception; }
         $collision = $exception instanceof QueryException && $this->isCollision($exception);
         $transient = $this->isTransient($exception, $connection->getDriverName());
         if (!$collision && !$transient) { throw $exception; }
@@ -168,9 +170,23 @@ final class CalendarEventWriter
 
   private function reminderAnchor(array $row, bool $endRelative): int
   {
-    $start = DateTimeImmutable::createFromFormat('!YmdHis',
-      sprintf('%08d%06d', $row['cal_date'], max(0, (int) $row['cal_time'])), new DateTimeZone('UTC'));
-    return $start->getTimestamp() + ($endRelative ? (int) $row['cal_duration'] * self::SECONDS_PER_MINUTE : 0);
+    $date = sprintf('%08d', $row['cal_date']);
+    $year = (int) substr($date, 0, 4);
+    $month = (int) substr($date, 4, 2);
+    $day = (int) substr($date, 6, 2);
+    $time = max(0, (int) $row['cal_time']);
+    $hour = intdiv($time, 10000);
+    $minute = intdiv($time, 100) % 100;
+    $duration = max(0, (int) $row['cal_duration']);
+    // Event::getEndDateTimeTS uses UTC even for floating events.
+    if ($endRelative) { return gmmktime($hour, $minute + $duration, 0, $month, $day, $year); }
+    $floating = (int) $row['cal_time'] < 0 || ($time === self::ALL_DAY_TIME && $duration === EventWriteRequest::MINUTES_PER_DAY);
+    if (!$floating) { return gmmktime($hour, $minute, 0, $month, $day, $year); }
+    $timezone = date_default_timezone_get();
+    try {
+      date_default_timezone_set($GLOBALS['api_reminder_timezone']);
+      return mktime(0, 0, 0, $month, $day, $year);
+    } finally { date_default_timezone_set($timezone); }
   }
 
   private function columns(array $fields): array

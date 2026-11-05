@@ -213,6 +213,82 @@ final class ApiIntegrationTest extends TestCase
     self::assertSame(200, $status);
   }
 
+  public function testHeadRequestsRetainAuthenticationAndReadAbilities(): void
+  {
+    foreach (['/api.php/v1/users/current', '/api.php/v1/events'] as $uri) {
+      foreach ([null, 'synthetic-invalid-token'] as $token) {
+        self::assertSame(Response::HTTP_UNAUTHORIZED, $this->dispatchRequest('HEAD', $uri, $token)[0]);
+      }
+    }
+    $token = $this->token();
+    self::assertSame(Response::HTTP_OK, $this->dispatchRequest('HEAD', '/api.php/v1/users/current', $token)[0]);
+    self::$db->exec("UPDATE webcal_api_tokens SET abilities = '[]'");
+    self::assertSame(Response::HTTP_FORBIDDEN, $this->dispatchRequest('HEAD', '/api.php/v1/events', $token)[0]);
+  }
+
+  /** @dataProvider joinedScriptPaths */
+  public function testScriptNamePrefixesCannotAliasProtectedApiRoutes(string $script, string $uri): void
+  {
+    $result = $this->dispatchRequest('GET', $uri, $this->token(), ['SCRIPT_NAME' => $script, 'PHP_SELF' => $script]);
+    self::assertSame(Response::HTTP_NOT_FOUND, $result[0], json_encode($result));
+    self::assertStringNotContainsString('"username":"alice"', $result[1]);
+  }
+
+  public static function joinedScriptPaths(): array
+  {
+    return [
+      ['/api.php', '/api.phpv1/users/current'],
+      ['/api.php', '/api%2Ephpv1/users/current'],
+      ['/api.php', '/%61pi.phpv1/users/current'],
+      ['/calendar/api.php', '/calendar/api.phpv1/users/current'],
+      ['/calendar/api.php', '/calendar/api%2Ephpv1/users/current'],
+      ['/calendar/api.php', '/calendar/%61pi.phpv1/users/current'],
+    ];
+  }
+
+  public function testValidSubdirectoryScriptPathStillReachesTheApi(): void
+  {
+    $result = $this->dispatchRequest('GET', '/calendar/api.php/v1/users/current', $this->token(),
+      ['SCRIPT_NAME' => '/calendar/api.php', 'PHP_SELF' => '/calendar/api.php']);
+    self::assertSame(Response::HTTP_OK, $result[0]);
+    self::assertSame('alice', json_decode($result[1], true)['data']['username']);
+  }
+
+  public function testUntrustedForwardedHeadersCannotChangeApiOriginOrRateLimitIdentity(): void
+  {
+    $token = $this->token();
+    foreach (['::ffff:203.0.113.7', '2002:cb00:7107::1', '64:ff9b::cb00:7107'] as $address) {
+      $result = $this->dispatchRequest('GET', '/api.php/v1/users/current', $token, [
+        'REMOTE_ADDR' => $address, 'HTTP_X_FORWARDED_FOR' => '10.0.0.9', 'HTTP_X_FORWARDED_HOST' => 'attacker.example',
+        'HTTP_X_FORWARDED_PROTO' => 'https', 'HTTP_X_FORWARDED_PORT' => '8443', 'HTTP_X_FORWARDED_PREFIX' => '/spoofed',
+        'HTTP_FORWARDED' => 'for=10.0.0.9;host=attacker.example;proto=https',
+      ]);
+      self::assertSame(Response::HTTP_OK, $result[0]);
+      self::assertSame($address, $result[2]);
+      self::assertSame('http://calendar.example.test', $result[3]);
+      self::assertSame('/api.php', $result[4]);
+    }
+  }
+
+  private function dispatchRequest(string $method, string $uri, ?string $token = null, array $server = []): array
+  {
+    $body = <<<'PHP'
+      $app = require 'app/Api/bootstrap.php';
+      [$method, $uri, $token, $server] = json_decode($argv[1], true);
+      $server = array_replace(['REQUEST_METHOD' => $method, 'REQUEST_URI' => $uri,
+        'SCRIPT_NAME' => '/api.php', 'PHP_SELF' => '/api.php', 'SCRIPT_FILENAME' => getcwd() . '/api.php',
+        'HTTP_HOST' => 'calendar.example.test', 'SERVER_NAME' => 'calendar.example.test',
+        'SERVER_PORT' => '80', 'REMOTE_ADDR' => '203.0.113.7', 'HTTP_ACCEPT' => 'application/json'], $server);
+      if ($token !== null) { $server['HTTP_AUTHORIZATION'] = 'Bearer ' . $token; }
+      $request = new Illuminate\Http\Request([], [], [], [], [], $server);
+      $response = $app->handle($request);
+      echo json_encode([$response->getStatusCode(), $response->getContent(), $request->ip(),
+        $request->getSchemeAndHttpHost(), $request->getBaseUrl()]);
+      PHP;
+    return json_decode(self::command([PHP_BINARY, '-r', "require 'vendor/autoload.php'; " . $this->legacyScript($body),
+      json_encode([$method, $uri, $token, $server])]), true);
+  }
+
   public function testExpiredTokensDisabledUsersAndBackendChangesAreRejected(): void
   {
     $token = $this->token();
@@ -633,6 +709,64 @@ final class ApiIntegrationTest extends TestCase
       self::assertSame(1, (int) self::$db->query('SELECT cal_times_sent FROM webcal_reminders WHERE cal_id = 1')->fetchColumn());
       self::assertSame(1793610000, (int) self::$db->query('SELECT cal_last_sent FROM webcal_reminders WHERE cal_id = 1')->fetchColumn());
     } finally { self::$db->exec('DROP TRIGGER fail_reminder_log'); }
+  }
+
+  /** @dataProvider floatingReminderConversions */
+  public function testFloatingReminderConversionsFollowTheSender(string $runtimeZone, string $accountZone, array $before, array $patch, string $related, bool $reset): void
+  {
+    self::sql("UPDATE webcal_config SET cal_value = ? WHERE cal_setting = 'TIMEZONE'", [$runtimeZone]);
+    self::sql("INSERT INTO webcal_user_pref (cal_login, cal_setting, cal_value) VALUES ('alice', 'TIMEZONE', ?)", [$accountZone]);
+    $this->event(1, 'Floating reminder', 'alice');
+    self::sql('UPDATE webcal_entry SET cal_date = ?, cal_time = ?, cal_duration = ? WHERE cal_id = 1', $before);
+    self::sql('INSERT INTO webcal_reminders (cal_id, cal_date, cal_related, cal_times_sent, cal_last_sent) VALUES (1, 0, ?, 1, 1793610000)', [$related]);
+    $oldRow = self::$db->query('SELECT * FROM webcal_entry WHERE cal_id = 1')->fetch(PDO::FETCH_ASSOC);
+    [$status, $body] = $this->request('PATCH', '/v1/events/1', $patch, $this->token());
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    $newRow = self::$db->query('SELECT * FROM webcal_entry WHERE cal_id = 1')->fetch(PDO::FETCH_ASSOC);
+    self::assertSame($reset, $this->senderAnchor($oldRow, $runtimeZone, $related) !== $this->senderAnchor($newRow, $runtimeZone, $related));
+    $reminder = self::$db->query('SELECT * FROM webcal_reminders WHERE cal_id = 1')->fetch(PDO::FETCH_ASSOC);
+    self::assertSame($reset ? 0 : 1, (int) $reminder['cal_times_sent']);
+    self::assertSame($reset ? 0 : 1793610000, (int) $reminder['cal_last_sent']);
+  }
+
+  public static function floatingReminderConversions(): array
+  {
+    $cases = [];
+    foreach (['all-day' => [0, 1440], 'untimed' => [-1, 0]] as $name => [$time, $duration]) {
+      $floating = ['date' => '2026-11-02', 'starts_at' => null, 'all_day' => $time === 0, 'untimed' => $time < 0, 'duration_minutes' => $duration];
+      foreach ([50000 => false, 0 => true] as $timedTime => $reset) {
+        $start = $timedTime === 0 ? '2026-11-02T00:00:00Z' : '2026-11-02T00:00:00-05:00';
+        $date = $timedTime === 0 ? '2026-11-01' : '2026-11-02';
+        $timed = ['date' => $date, 'starts_at' => $start, 'all_day' => false, 'untimed' => false, 'duration_minutes' => 60];
+        $cases[$name . ' to timed ' . $timedTime] = ['America/New_York', 'America/New_York', [20261102, $time, $duration], $timed, 'S', $reset];
+        $cases['timed ' . $timedTime . ' to ' . $name] = ['America/New_York', 'America/New_York', [20261102, $timedTime, 60], $floating, 'S', $reset];
+      }
+      $endStart = $time === 0 ? '2026-11-02T23:00:00Z' : '2026-11-01T23:00:00Z';
+      $endDate = $time === 0 ? '2026-11-02' : '2026-11-01';
+      $cases[$name . ' unchanged UTC end'] = ['America/New_York', 'America/New_York', [20261102, $time, $duration],
+        ['date' => $endDate, 'starts_at' => $endStart, 'all_day' => false, 'untimed' => false, 'duration_minutes' => 60], 'E', false];
+      $cases[$name . ' DST midnight'] = ['America/New_York', 'America/New_York', [20261101, $time, $duration],
+        ['date' => '2026-11-01', 'starts_at' => '2026-11-01T00:00:00-04:00', 'all_day' => false, 'untimed' => false, 'duration_minutes' => 60], 'S', false];
+    }
+    $cases['runtime differs from account'] = ['America/New_York', 'Europe/Paris', [20261102, 0, 1440],
+      ['date' => '2026-11-02', 'starts_at' => '2026-11-02T06:00:00+01:00', 'all_day' => false, 'untimed' => false, 'duration_minutes' => 60], 'S', false];
+    $cases['positive-offset runtime'] = ['Europe/Paris', 'America/New_York', [20261102, -1, 0],
+      ['date' => '2026-11-01', 'starts_at' => '2026-11-01T18:00:00-05:00', 'all_day' => false, 'untimed' => false, 'duration_minutes' => 60], 'S', false];
+    return $cases;
+  }
+
+  private function senderAnchor(array $row, string $timezone, string $related): int
+  {
+    $script = <<<'PHP'
+      require 'includes/classes/Event.php';
+      $GLOBALS['login'] = 'alice';
+      date_default_timezone_set($argv[1]);
+      $row = json_decode($argv[2], true);
+      $event = new Event('Fixture', '', (string) $row['cal_date'], (string) $row['cal_time'], 1, null, 5, 'P',
+        (int) $row['cal_duration'], 'A', 'alice', '', 'alice', 'E', null, '', '', 0, 0, '', '');
+      echo $argv[3] === 'S' ? $event->getDateTimeTS() : $event->getEndDateTimeTS();
+      PHP;
+    return (int) self::command([PHP_BINARY, '-r', $script, $timezone, json_encode($row), $related]);
   }
 
   public function testWritesRequireAbilityPermissionAndPersonalOwnership(): void
@@ -1241,13 +1375,16 @@ final class ApiIntegrationTest extends TestCase
   }
 
   /** @dataProvider transactionFailureModes */
-  public function testRetriesRequireAKnownFailureAndSuccessfulRollback(string $mode, int $attempts, bool $saved, int $committed): void
+  public function testRetriesRequireAKnownFailureAndSuccessfulRollback(string $mode, int $attempts, bool $saved, int $committed, ?int $status = null): void
   {
     $this->token();
     $body = <<<'PHP'
       Illuminate\Database\Connection::resolverFor('sqlite', function ($pdo, $database, $prefix, $config) {
         return new class($pdo, $database, $prefix, $config) extends Illuminate\Database\SQLiteConnection {
           public int $attempts = 0;
+          public function getDriverName() {
+            return str_starts_with($GLOBALS['failure_mode'], 'postgres-') ? 'pgsql' : parent::getDriverName();
+          }
           public function beginTransaction() { $this->attempts++; return parent::beginTransaction(); }
           private function failure(string $state, int $code): PDOException {
             $e = new PDOException('fixture transaction failure');
@@ -1263,6 +1400,13 @@ final class ApiIntegrationTest extends TestCase
           }
           public function commit() {
             if ($GLOBALS['failure_mode'] === 'busy-commit' && $this->attempts === 1) { throw $this->failure('HY000', 5); }
+            if (str_starts_with($GLOBALS['failure_mode'], 'postgres-') && ($this->attempts === 1 || $GLOBALS['failure_mode'] === 'postgres-exhaust')) {
+              $this->getPdo()->rollBack();
+              $state = match ($GLOBALS['failure_mode']) {
+                'postgres-unknown' => 'XX000', 'postgres-lost' => '08006', 'postgres-deadlock' => '40P01', default => '40001',
+              };
+              throw $this->failure($state, 0);
+            }
             parent::commit();
             if ($GLOBALS['failure_mode'] === 'lost-commit') { throw $this->failure('08006', 0); }
           }
@@ -1276,13 +1420,15 @@ final class ApiIntegrationTest extends TestCase
       $app = require 'app/Api/bootstrap.php';
       $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
       $saved = false;
+      $status = null;
       try { $app->make(WebCalendar\Services\CalendarEventWriter::class)->create('alice', json_decode($argv[2], true)); $saved = true; }
+      catch (WebCalendar\Api\Exceptions\EventWriteException $e) { $status = $e->getStatusCode(); }
       catch (Throwable $e) {}
-      echo json_encode([Illuminate\Support\Facades\DB::connection()->attempts, $saved]);
+      echo json_encode([Illuminate\Support\Facades\DB::connection()->attempts, $saved, $status]);
       PHP;
     $script = "require 'vendor/autoload.php'; " . $this->legacyScript($body);
     $result = json_decode(self::command([PHP_BINARY, '-r', $script, $mode, json_encode($this->draft())]), true);
-    self::assertSame([$attempts, $saved], $result);
+    self::assertSame([$attempts, $saved, $status], $result);
     foreach (['webcal_entry', 'webcal_entry_user', 'webcal_entry_log'] as $table) {
       self::assertSame($committed, (int) self::$db->query('SELECT COUNT(*) FROM ' . $table)->fetchColumn(), $table);
     }
@@ -1291,7 +1437,10 @@ final class ApiIntegrationTest extends TestCase
   public static function transactionFailureModes(): array
   {
     return [['busy-commit', 2, true, 1], ['lost-commit', 1, false, 1],
-      ['rollback-fails', 1, false, 0], ['nontransient', 1, false, 0]];
+      ['rollback-fails', 1, false, 0], ['nontransient', 1, false, 0],
+      ['postgres-abort', 2, true, 1], ['postgres-deadlock', 2, true, 1],
+      ['postgres-exhaust', 5, false, 0, Response::HTTP_SERVICE_UNAVAILABLE],
+      ['postgres-unknown', 1, false, 0], ['postgres-lost', 1, false, 0]];
   }
 
   private function draft(array $changes = []): array

@@ -51,6 +51,21 @@ optional, local, and ignored by Git. Keep shared instructions here; a local
   Generated timestamps use `%a %d %b %Y %I:%M:%S %p %Z` and inherit the build
   environment's timezone (`TZ` when set, otherwise the system timezone);
   do not hardcode a timezone in the Makefile.
+- Symfony November 2026 advisories are patched by locking filesystem,
+  http-foundation, http-kernel and routing to 7.4.23. This targeted update changes
+  only those four packages; PHP's 8.2 platform floor and composer.json stay intact.
+  Both installed and locked Composer audits pass, including dev dependencies.
+  Filesystem is dev-only; none of the four packages is in the MCP bundle closure.
+  `make` completed with no generated bundle/assets/manifest diff. Clear/rebuild
+  deployed compiled route caches after installing the new lock file: the routing
+  fix changes the generated matcher. See docs/api.md for deployment commands.
+  Six integration cases first reproduced `/api.phpv1/...` and encoded aliases
+  reaching an authenticated handler; the patched dependency rejects them with
+  404 while preserving valid subdirectory URLs. HEAD auth/abilities and forwarded
+  IP/host/scheme/port/prefix checks also pass. Apache smoke verifies real HEAD
+  authorization and malformed path rejection. Combined full suites pass on
+  PHP 8.2–8.5: 1,208 passed, one optional external-DB skip, 5,484 assertions each;
+  full lint, bundle/release checks, Apache and disposable database checks pass.
 
 ## Verification
 Run these from the repository root unless specified otherwise:
@@ -193,11 +208,18 @@ Run these from the repository root unless specified otherwise:
   Legacy identity activation can insert a first-use LANGUAGE preference through
   DBI: initialize it before taking the PDO write lock, then recheck activation
   under protection. Independent workers must also complete this before barriers.
-- Relative reminder counters reset only when the stored start/end anchor instant
+- Relative reminder counters reset only when the sender's start/end anchor instant
   changes (`cal_related` selects the anchor). Start-relative duration-only edits,
   unchanged end instants, equivalent offsets and metadata preserve delivery state.
   Absolute `cal_date` alarms are preserved. Check InnoDB for `webcal_reminders`
   before a reset and keep it in the same transaction as event/log changes.
+  Match Event::getDateTimeTS: timed starts are UTC but floating starts use local
+  mktime in the reminder runtime's installation timezone. Event::getEndDateTimeTS
+  separately uses UTC plus duration, even for floating events. API bootstrap
+  captures `api_reminder_timezone` before account preferences; temporarily scoped
+  floating-anchor calculations restore the prior PHP default timezone. Tests
+  compare with real Event methods across non-UTC forward/reverse conversions,
+  DST and differing account/runtime zones. Do not localize the end calculation.
   QA regressions add pipe-synchronized independent-process create/create,
   different-event PATCH/PATCH, SQLite busy/retry/exhaustion and state reload checks,
   plus reminder lifecycle and uncertain-commit/rollback-failure coverage.
@@ -205,6 +227,18 @@ Run these from the repository root unless specified otherwise:
   (1,181 total), 5,215 assertions each; full lint and Apache checks pass.
   Disposable MariaDB 13/PostgreSQL 17 checks also pass concurrent create/patch,
   reminder re-arming/preservation, rollback and MySQL mutex/reminder engine guards.
+- PostgreSQL COMMIT SQLSTATE 40001/40P01 is a confirmed abort even when PDO is no
+  longer in a transaction. Clean up Laravel transaction state and permit a fresh
+  whole-write attempt on the same connection. Other no-active-transaction commit
+  errors remain uncertain and must not replay. The checked-in disposable fixture
+  `tests/fixtures/api-postgres-commit-abort.php` uses real SERIALIZABLE dependency
+  cycles to verify commit-time 40001 with PDO inactive and Laravel level 1,
+  recovery, schedule revalidation, five-attempt exhaustion and no partial/duplicate
+  rows. It requires the installed/migrated api_smoke_db and token-initialized
+  api-smoke account; see docs/api.md. It ran successfully on PostgreSQL 17.
+  After these residual QA fixes, full PHP 8.2–8.5 suites each pass 1,199 tests,
+  with one optional external-DB skip (1,200 total), 5,409 assertions. Full syntax,
+  Apache smoke and disposable MariaDB 13/PostgreSQL 17 checks pass.
 - CalendarEventConflicts compares absolute intervals and floating all-day dates,
   using the existing recurrence engine in bounded windows. It honors ALLOW_CONFLICTS,
   daily appointment limits and overnight overlaps. Keep conflict messages JSON,

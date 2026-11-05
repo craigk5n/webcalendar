@@ -23,7 +23,7 @@ foreach ([1 => 20261026, 2 => 20261005] as $id => $date) {
   $statement->execute([$id, $id === 1 ? 'weekly' : 'monthlyByDay', $id === 1 ? 'MO,WE,FR' : '1MO']);
 }
 
-function api_smoke_request(string $method, string $path, ?string $token = null, ?array $body = null): array
+function api_smoke_request(string $method, string $path, ?string $token = null, ?array $body = null, string $apiBase = '/api.php/v1'): array
 {
   $headers = "Accept: application/json\r\nContent-Type: application/json\r\n";
   if ($token !== null) {
@@ -33,7 +33,7 @@ function api_smoke_request(string $method, string $path, ?string $token = null, 
     'method' => $method, 'header' => $headers, 'ignore_errors' => true,
     'timeout' => 15, 'content' => $body === null ? '' : json_encode($body),
   ]]);
-  $stream = fopen('http://127.0.0.1/api.php/v1' . $path, 'rb', false, $context);
+  $stream = fopen('http://127.0.0.1' . $apiBase . $path, 'rb', false, $context);
   if ($stream === false) {
     throw new RuntimeException("$method $path could not connect");
   }
@@ -41,6 +41,11 @@ function api_smoke_request(string $method, string $path, ?string $token = null, 
   $raw = stream_get_contents($stream);
   fclose($stream);
   preg_match('/\s(\d{3})\s/', $responseHeaders[0], $matches);
+  if ($method === 'HEAD') {
+    if ($raw !== '') { throw new RuntimeException('HEAD response must not contain a body'); }
+    return [(int) $matches[1], []];
+  }
+  if ($apiBase !== '/api.php/v1' && (int) $matches[1] === 404) { return [404, []]; }
   $decoded = json_decode((string) $raw, true);
   if (!is_array($decoded)) {
     throw new RuntimeException("$method $path did not return JSON");
@@ -56,12 +61,21 @@ function api_smoke_expect_status(int $expected, array $response, string $operati
 }
 
 api_smoke_expect_status(401, api_smoke_request('GET', '/users/current'), 'Missing token');
+api_smoke_expect_status(401, api_smoke_request('HEAD', '/users/current'), 'HEAD missing token');
+api_smoke_expect_status(401, api_smoke_request('HEAD', '/events', 'synthetic-invalid-token'), 'HEAD invalid token');
 api_smoke_expect_status(401, api_smoke_request('GET', '/users/current', 'synthetic-invalid-token'), 'Invalid token');
 $signIn = api_smoke_request('POST', '/tokens', null, [
   'username' => 'api-smoke', 'password' => 'api-smoke-password', 'device_name' => 'Apache smoke fixture',
 ]);
 api_smoke_expect_status(201, $signIn, 'Sign-in');
 $token = $signIn[1]['data']['token'];
+api_smoke_expect_status(200, api_smoke_request('HEAD', '/users/current', $token), 'Authenticated HEAD');
+foreach (['/api.phpv1', '/api%2Ephpv1', '/%61pi.phpv1'] as $base) {
+  api_smoke_expect_status(404, api_smoke_request('GET', '/users/current', $token, null, $base), 'Joined script path');
+}
+$db->exec("UPDATE webcal_api_tokens SET abilities = '[]'");
+api_smoke_expect_status(403, api_smoke_request('HEAD', '/events', $token), 'HEAD without read ability');
+$db->exec("UPDATE webcal_api_tokens SET abilities = '[\"events:read\",\"events:write\"]'");
 $profile = api_smoke_request('GET', '/users/current', $token);
 api_smoke_expect_status(200, $profile, 'Profile with newly issued bearer token');
 if ($profile[1]['data']['username'] !== 'api-smoke') {
@@ -112,4 +126,4 @@ if (getenv('API_SMOKE_PRIVATE_ENV') === 'true') {
     throw new RuntimeException('HTTP did not use the storage configured by the private file');
   }
 }
-echo "Apache API smoke passed ($mode): token issuance, profile, recurrence, personal-event create/edit/read, write restrictions, and revocation.\n";
+echo "Apache API smoke passed ($mode): token issuance, profile, HEAD authorization, path boundaries, recurrence, personal-event create/edit/read, write restrictions, and revocation.\n";

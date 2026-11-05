@@ -52,6 +52,32 @@ environment values take precedence over the private file, including an explicit
 `false` value. Docker Compose interpolation and the API's private file loader
 are independent mechanisms.
 
+### Dependency security updates
+
+The November 2026 security update locks `symfony/http-foundation`,
+`symfony/http-kernel`, `symfony/routing` and the development-only
+`symfony/filesystem` to 7.4.23. It resolves seven upstream advisories, including
+CVE-2026-118514, CVE-2026-118516 and the joined-script-path parsing issue
+GHSA-3h27-hjv7-fqjx. Install from the updated lock file on each API host:
+
+```sh
+composer install --no-dev --optimize-autoloader
+composer audit --locked --no-dev
+php bin/api.php route:clear
+```
+
+Run the API command as the PHP web-server user with the same private environment
+configuration. If the deployment uses a compiled route cache, rebuild it after
+clearing it: the routing fix changes generated matchers. Follow the host's normal
+PHP worker/OPcache reload procedure when deploying dependency updates. CI also
+audits development dependencies; do not suppress the advisory gate.
+
+Regression tests cover HEAD authentication/read abilities, malformed script-name
+prefixes (literal and encoded), valid subdirectory installations, and untrusted
+forwarded headers. Apache smoke tests check HEAD authorization and rejection of
+joined script paths through the actual server. The canonical API URL remains
+`/api.php/v1`; `/api.phpv1` is not an alternative endpoint.
+
 ### Private environment file (shared hosting and Plesk)
 
 Both `api.php` and `bin/api.php` automatically look for:
@@ -477,6 +503,11 @@ follow duration changes. Metadata-only edits, equivalent timestamps, and edits
 that preserve the relevant anchor instant retain delivery state. Absolute alarms
 retain both their timestamp and delivery state, avoiding a duplicate delivery of
 an already-sent alarm. Reminder re-arming commits or rolls back with the event.
+Anchor comparisons follow the existing reminder sender: timed starts use UTC,
+all-day/untimed starts use midnight in the installation's reminder-runtime
+timezone, and event ends use the sender's separate UTC calculation plus duration.
+The API captures that installation timezone before loading account preferences;
+an account timezone override does not redefine floating reminder triggers.
 
 Timing edits are merged with the current stored schedule and validated as a
 whole. Moving a timed event to a different `date` requires an explicit
@@ -519,6 +550,9 @@ retry the complete transaction only after successful rollback. Every attempt
 reacquires protection, reloads the edited record, and reruns schedule checks.
 There are at most five attempts with 20/40/80/160 ms backoff; SQLite's per-operation
 busy timeout is 250 ms. Exhaustion returns 503 with `code: "calendar_busy"`.
+Explicit PostgreSQL serialization/deadlock aborts (`40001`/`40P01`) at COMMIT
+remain retryable after transaction-state cleanup even if PDO already reports no
+active transaction: these are confirmed server aborts, not uncertain commits.
 Unrelated SQL errors, failed rollbacks, and indeterminate connection/commit
 failures are not retried. A lost response can still follow a committed write;
 clients must check the calendar rather than blindly repeat a creation request.
@@ -571,6 +605,16 @@ limits, SQLite contention/retry exhaustion, and fresh-state revalidation. Remind
 tests cover relative/absolute delivery state, no-op schedules and rollback;
 failure-injection tests cover commit uncertainty and failed rollbacks. Fixtures
 use disposable databases and synthetic accounts.
+
+`tests/fixtures/api-postgres-commit-abort.php` separately exercises actual
+PostgreSQL SERIALIZABLE commit failures through two synchronized connections,
+including successful retry, a newly committed scheduling conflict, exhaustion,
+managed/PDO cleanup and atomic entry/log persistence. Run it with
+`php tests/fixtures/api-postgres-commit-abort.php` inside a disposable environment
+configured through `WEBCALENDAR_*`: driver `postgresql`, database `api_smoke_db`,
+API enabled/migrated, and an `api-smoke` account with an issued API token (the
+HTTP database smoke setup supplies this). It inserts synthetic appointments and
+updates fixture scheduling settings; it is not part of the SQLite PHPUnit run.
 
 Those tests use PHP's built-in server. Run the separate Apache deployment check
 from the repository root to cover bearer-header forwarding:
