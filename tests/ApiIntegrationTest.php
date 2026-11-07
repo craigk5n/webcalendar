@@ -89,6 +89,7 @@ final class ApiIntegrationTest extends TestCase
     self::$db->exec("UPDATE webcal_user SET cal_enabled = 'Y'");
     self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('TIMEZONE', 'UTC')");
     self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('UAC_ENABLED', 'N')");
+    self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('ADMIN_OVERRIDE_UAC', 'N')");
     self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('ALLOW_CONFLICTS', 'Y')");
     self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('DEFAULT_VISIBILITY', 'P')");
     self::sql("INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES ('DISABLE_CROSSDAY_EVENTS', 'N')");
@@ -1692,6 +1693,7 @@ final class ApiIntegrationTest extends TestCase
   {
     self::sql("INSERT INTO webcal_asst VALUES ('admin', 'alice')");
     self::sql("INSERT OR REPLACE INTO webcal_config VALUES ('UAC_ENABLED', 'Y')");
+    self::sql("INSERT OR REPLACE INTO webcal_config VALUES ('ADMIN_OVERRIDE_UAC', 'Y')");
     self::sql('INSERT OR REPLACE INTO webcal_access_function VALUES (?, ?)', ['alice', str_repeat('Y', 28)]);
     self::sql('INSERT INTO webcal_access_user (cal_login, cal_other_user, cal_can_view, cal_can_edit, cal_see_time_only) VALUES (?, ?, 511, 511, ?)',
       ['alice', $defaultPolicy ? '__default__' : 'admin', 'Y']);
@@ -1764,6 +1766,46 @@ final class ApiIntegrationTest extends TestCase
     self::assertTrue($body['data'][0]['can_edit']);
     self::assertSame(Response::HTTP_OK, $this->request('PATCH', '/v1/calendars/admin/events/' . $id, ['title' => 'Editable'], $token)[0]);
     self::assertSame(Response::HTTP_FORBIDDEN, $this->request('PATCH', '/v1/calendars/admin/events/' . $id, ['access' => 'R'], $token)[0]);
+  }
+
+  public function testAdministratorDetailOverrideStillRequiresAssistantMembership(): void
+  {
+    self::sql("INSERT OR REPLACE INTO webcal_config VALUES ('UAC_ENABLED', 'Y')");
+    self::sql("INSERT OR REPLACE INTO webcal_config VALUES ('ADMIN_OVERRIDE_UAC', 'Y')");
+    self::sql("INSERT INTO webcal_asst VALUES ('alice', 'admin')");
+    self::sql("INSERT INTO webcal_access_user (cal_login, cal_other_user, cal_can_view, cal_can_edit, cal_see_time_only) VALUES ('admin', 'alice', 511, 511, 'Y')");
+    $this->event(1, 'Delegated private appointment', 'alice', 'R');
+    [$status, $body] = $this->request('POST', '/v1/tokens', ['username' => 'admin', 'password' => 'admin', 'device_name' => 'Administrator test']);
+    self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+    $token = $body['data']['token'];
+    [$status, $body] = $this->request('GET', '/v1/calendars', [], $token);
+    self::assertSame(Response::HTTP_OK, $status);
+    self::assertTrue(array_column($body['data'], null, 'id')['alice']['can_write']);
+    [$status, $body] = $this->request('GET', '/v1/calendars/alice/events?start_date=2026-11-02&end_date=2026-11-02', [], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    self::assertSame('Delegated private appointment', $body['data'][0]['title']);
+    self::assertTrue($body['data'][0]['can_edit']);
+    [$status, $body] = $this->request('POST', '/v1/calendars/alice/events', $this->draft(['access' => 'R']), $token);
+    self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+    self::assertTrue($body['data']['can_edit']);
+    self::assertSame(Response::HTTP_OK, $this->request('PATCH', '/v1/calendars/alice/events/1', ['title' => 'Administrator edit'], $token)[0]);
+
+    self::sql("INSERT OR REPLACE INTO webcal_config VALUES ('ADMIN_OVERRIDE_UAC', 'N')");
+    [$status, $body] = $this->request('GET', '/v1/calendars', [], $token);
+    self::assertFalse(array_column($body['data'], null, 'id')['alice']['can_write']);
+    foreach ([['GET', '?start_date=2026-11-02&end_date=2026-11-02', []], ['POST', '', $this->draft()], ['PATCH', '/1', ['title' => 'Denied']]] as [$method, $suffix, $data]) {
+      self::assertSame(Response::HTTP_FORBIDDEN, $this->request($method, '/v1/calendars/alice/events' . $suffix, $data, $token)[0]);
+    }
+    self::sql("INSERT OR REPLACE INTO webcal_config VALUES ('ADMIN_OVERRIDE_UAC', 'Y')");
+    self::$db->exec('DELETE FROM webcal_asst');
+    [$status, $body] = $this->request('GET', '/v1/calendars', [], $token);
+    self::assertSame(['admin'], array_column($body['data'], 'id'));
+    foreach ([['GET', '?start_date=2026-11-02&end_date=2026-11-02', []], ['POST', '', $this->draft()], ['PATCH', '/1', ['title' => 'Denied']]] as [$method, $suffix, $data]) {
+      self::assertSame(Response::HTTP_FORBIDDEN, $this->request($method, '/v1/calendars/alice/events' . $suffix, $data, $token)[0]);
+    }
+    self::assertSame(2, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry')->fetchColumn());
+    self::assertSame(2, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry_log')->fetchColumn());
+    self::assertSame('Administrator edit', self::$db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetchColumn());
   }
 
   private function token(): string

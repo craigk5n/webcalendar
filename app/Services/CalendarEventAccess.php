@@ -35,6 +35,7 @@ final class CalendarEventAccess
   public function canViewDetails(string $calendar): bool
   {
     if (!access_is_enabled() || $calendar === $GLOBALS['login']) { return true; }
+    if (($GLOBALS['is_admin'] ?? false) === true && ($GLOBALS['ADMIN_OVERRIDE_UAC'] ?? 'N') === 'Y') { return true; }
     return access_user_calendar('time', $calendar, $GLOBALS['login']) === 'N';
   }
 

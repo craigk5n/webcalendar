@@ -57,6 +57,9 @@ and recurring events. Calendar discovery reports `can_write: false`; POST/PATCH
 are denied too, since their responses contain event details. Internal conflict
 checks still include hidden busy intervals. Personal-calendar access and the
 configured UAC administrator override retain their established behavior.
+The detail-access policy explicitly permits the authenticated administrator when
+ADMIN_OVERRIDE_UAC is enabled; it does not infer this from a numeric time-permission
+result. Explicit assistant membership is still required for every other calendar.
 
 Creation requires both view and edit permission for the effective visibility,
 including DEFAULT_VISIBILITY when `access` is omitted. A public-only view mask
