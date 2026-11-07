@@ -16,9 +16,13 @@ final class CalendarEvents
 {
   private const SECONDS_PER_MINUTE = 60;
 
-  public function between(string $username, string $startDate, string $endDate, bool $includeContinuations = true): array
+  public function between(string $username, string $startDate, string $endDate, bool $includeContinuations = true, ?string $actor = null): array
   {
-    (new CalendarIdentity())->activate($username);
+    if ($actor !== null) { (new CalendarSelection())->activate($actor, $username); }
+    else { (new CalendarIdentity())->activate($username); }
+    if ($includeContinuations && !(new CalendarEventAccess())->canViewDetails($username)) {
+      throw new AuthorizationException();
+    }
     if (!access_can_access_function(ACCESS_EVENT_VIEW)) {
       throw new AuthorizationException();
     }
@@ -60,6 +64,11 @@ final class CalendarEvents
           'is_continuation' => (bool) $event->getClone(),
         ];
       }
+    }
+    // Internal schedule checks need all busy intervals, even for hidden occurrences.
+    if ($includeContinuations && $actor !== null && $actor !== $username) {
+      $access = new CalendarEventAccess();
+      $result = array_filter($result, fn (array $event) => $access->calendarPermission('view', $username, 'E', $event['access']));
     }
     usort($result, fn ($left, $right) => [$left['date'], $left['starts_at'] ?? '', $left['id']] <=> [$right['date'], $right['starts_at'] ?? '', $right['id']]);
     return array_values($result);

@@ -37,6 +37,7 @@ if (!$version || $version[0][0] !== $PROGRAM_VERSION) {
 }
 
 load_global_settings();
+$GLOBALS['api_installation_timezone'] = $GLOBALS['TIMEZONE'];
 $GLOBALS['api_reminder_timezone'] = date_default_timezone_get();
 if (!in_array($user_inc, ['user.php', 'user-ldap.php'], true) || !empty($settings['use_http_auth']) || $single_user === 'Y') {
   throw new RuntimeException('API sign-in requires database or LDAP password authentication.');

@@ -31,40 +31,49 @@ final class CalendarEventWriter
 
   public function __construct(private readonly CalendarEventAccess $access, private readonly CalendarEventConflicts $conflicts) {}
 
-  public function create(string $username, array $input): array
+  public function create(string $username, array $input, ?string $calendar = null): array
   {
-    $this->activate($username);
-    return $this->transaction($username, function () use ($username, $input): array {
-      $timezone = $this->activate($username);
+    $calendar ??= $username;
+    $this->activate($username, $calendar);
+    return $this->transaction($username, function () use ($username, $calendar, $input): array {
+      $selected = $this->activate($username, $calendar);
+      $timezone = new DateTimeZone($selected['timezone']);
       $fields = EventWriteRequest::validateSchedule($input, $timezone);
-      $this->conflicts->check($username, $fields, $timezone);
       $id = $this->nextId('webcal_entry', 'cal_id');
       $row = array_merge($this->columns($fields), [
-        'cal_id' => $id, 'cal_create_by' => $username, 'cal_type' => 'E',
+        'cal_id' => $id, 'cal_create_by' => $calendar, 'cal_type' => 'E',
         'cal_access' => $fields['access'] ?? $GLOBALS['DEFAULT_VISIBILITY'], 'cal_priority' => self::DEFAULT_PRIORITY,
         'cal_name' => $fields['title'], 'cal_description' => EventWriteRequest::description($fields['description'] ?? ''),
         'cal_location' => $fields['location'] ?? null,
       ]);
+      if (!$this->access->canEditEvent($calendar, $row)) { throw new AuthorizationException(); }
+      $this->conflicts->check($calendar, $fields, $timezone, 0, $username);
       DB::table('webcal_entry')->insert($row);
-      DB::table('webcal_entry_user')->insert(['cal_id' => $id, 'cal_login' => $username, 'cal_status' => 'A', 'cal_percent' => 0]);
-      $this->log($id, $username, LOG_CREATE);
-      return $this->representation($row, $timezone);
+      DB::table('webcal_entry_user')->insert(['cal_id' => $id, 'cal_login' => $calendar, 'cal_status' => 'A', 'cal_percent' => 0]);
+      $this->log($id, $username, LOG_CREATE, $calendar);
+      return $this->representation($row, $timezone) + ['calendar_id' => $calendar, 'calendar_name' => $selected['name']];
     });
   }
 
-  public function update(string $username, int $id, array $input): array
+  public function update(string $username, int $id, array $input, ?string $calendar = null): array
   {
-    $this->activate($username);
+    $calendar ??= $username;
+    $this->activate($username, $calendar);
     if ($id < 1 || $id > self::MAX_EVENT_ID) { throw new NotFoundHttpException(); }
-    return $this->transaction($username, function () use ($username, $id, $input): array {
-      $timezone = $this->activate($username);
+    return $this->transaction($username, function () use ($username, $calendar, $id, $input): array {
+      $selected = $this->activate($username, $calendar);
+      $timezone = new DateTimeZone($selected['timezone']);
       $found = DB::table('webcal_entry as e')->join('webcal_entry_user as u', 'u.cal_id', '=', 'e.cal_id')
-        ->where('e.cal_id', $id)->where('u.cal_login', $username)->whereIn('u.cal_status', ['A', 'W'])
+        ->where('e.cal_id', $id)->where('u.cal_login', $calendar)->whereIn('u.cal_status', ['A', 'W'])
         ->select('e.*')->lockForUpdate()->first();
       if (!$found) { throw new NotFoundHttpException(); }
       $row = (array) $found;
-      if ($row['cal_create_by'] !== $username) { throw new AuthorizationException(); }
-      if (!isset($this->access->editableIds($username, [$id])[$id])) {
+      if (!$this->access->canEditEvent($calendar, $row)) { throw new AuthorizationException(); }
+      if (isset($input['access']) && !$this->access->canEditEvent($calendar, array_replace($row, ['cal_access' => $input['access']]))) {
+        throw new AuthorizationException();
+      }
+      if ($calendar === $username && $row['cal_create_by'] !== $username) { throw new AuthorizationException(); }
+      if (!isset($this->access->editableIds($calendar, [$id], $calendar !== $username)[$id])) {
         throw new EventWriteException(Response::HTTP_UNPROCESSABLE_ENTITY, 'unsupported_event',
           'Only your own accepted, unshared, non-recurring events can be edited.');
       }
@@ -72,7 +81,7 @@ final class CalendarEventWriter
       if (array_intersect(array_keys($input), EventWriteRequest::SCHEDULE_FIELDS)) {
         $fields = array_replace($this->representation($row, $timezone), $input);
         $fields = EventWriteRequest::validateSchedule($fields, $timezone, isset($input['date']) && !array_key_exists('starts_at', $input));
-        $this->conflicts->check($username, $fields, $timezone, $id);
+        $this->conflicts->check($calendar, $fields, $timezone, $id, $username);
         $changes = $this->columns($fields);
       }
       foreach (['title' => 'cal_name', 'location' => 'cal_location', 'access' => 'cal_access'] as $field => $column) {
@@ -82,8 +91,8 @@ final class CalendarEventWriter
       $changes = array_merge($changes, $this->modified());
       $this->rearmReminder($id, $row, array_merge($row, $changes));
       DB::table('webcal_entry')->where('cal_id', $id)->update($changes);
-      $this->log($id, $username, LOG_UPDATE);
-      return $this->representation(array_merge($row, $changes), $timezone);
+      $this->log($id, $username, LOG_UPDATE, $calendar);
+      return $this->representation(array_merge($row, $changes), $timezone) + ['calendar_id' => $calendar, 'calendar_name' => $selected['name']];
     });
   }
 
@@ -99,6 +108,10 @@ final class CalendarEventWriter
         if ($connection->getDriverName() === 'sqlite') {
           // Acquire write intent before any snapshot reads, including on PHP 8.2/8.3.
           DB::table('webcal_api_users')->where('username', $username)->update(['username' => $username]);
+        }
+        // Shared across actors and nonuser calendars; acquire before account/event locks.
+        if (!DB::table('webcal_config')->where('cal_setting', 'WEBCAL_PROGRAM_VERSION')->lockForUpdate()->first()) {
+          throw new \RuntimeException('The installation version setting is required for event writes.');
         }
         if (!DB::table('webcal_api_users')->where('username', $username)->lockForUpdate()->first()) {
           throw new AuthorizationException();
@@ -139,15 +152,15 @@ final class CalendarEventWriter
     };
   }
 
-  private function activate(string $username): DateTimeZone
+  private function activate(string $username, string $calendar): array
   {
-    (new CalendarIdentity())->activate($username);
+    $selected = (new CalendarSelection())->activate($username, $calendar);
     if (!$this->access->canWrite()) { throw new AuthorizationException(); }
     $this->assertTransactionalStorage();
-    return new DateTimeZone($GLOBALS['TIMEZONE']);
+    return $selected;
   }
 
-  private function assertTransactionalStorage(array $required = ['webcal_api_users', 'webcal_entry', 'webcal_entry_user', 'webcal_entry_log']): void
+  private function assertTransactionalStorage(array $required = ['webcal_config', 'webcal_api_users', 'webcal_entry', 'webcal_entry_user', 'webcal_entry_log']): void
   {
     if (DB::connection()->getDriverName() !== 'mysql') { return; }
     $tables = DB::table('information_schema.TABLES')->where('TABLE_SCHEMA', DB::connection()->getDatabaseName())
@@ -209,7 +222,9 @@ final class CalendarEventWriter
 
   private function representation(array $row, DateTimeZone $timezone): array
   {
-    return array_merge(CalendarEventData::fromRow($row, $timezone), ['can_edit' => true]);
+    return array_merge(CalendarEventData::fromRow($row, $timezone), [
+      'can_edit' => $this->access->canWrite() && $this->access->canEditEvent($GLOBALS['user'], $row),
+    ]);
   }
 
   private function nextId(string $table, string $column): int
@@ -219,10 +234,10 @@ final class CalendarEventWriter
     return $id;
   }
 
-  private function log(int $id, string $username, string $type): void
+  private function log(int $id, string $username, string $type, string $calendar): void
   {
     DB::table('webcal_entry_log')->insert(['cal_log_id' => $this->nextId('webcal_entry_log', 'cal_log_id'),
-      'cal_entry_id' => $id, 'cal_login' => $username, 'cal_user_cal' => $username,
+      'cal_entry_id' => $id, 'cal_login' => $username, 'cal_user_cal' => $calendar,
       'cal_type' => $type, 'cal_date' => (int) gmdate('Ymd'), 'cal_time' => (int) gmdate('His'), 'cal_text' => 'Mobile API']);
   }
 

@@ -159,6 +159,49 @@ Run these from the repository root unless specified otherwise:
   Legacy plaintext tokens require regeneration in Preferences.
 
 ## Mobile API
+- Assistant calendar selection uses `GET /calendars` and
+  `/calendars/{calendar}/events` GET/POST/PATCH routes (PATCH adds `{event}`).
+  Calendar IDs are existing login primary keys. CalendarSelection keeps the actor's
+  permissions while resolving target timezone/week-start from preferences and
+  installation defaults. Explicit webcal_asst membership is required for other
+  calendars, including nonusers; admin status alone does not grant API delegation.
+  Recheck before reads and within each write attempt. Entry ownership/participation
+  belongs to the target, while logs retain the actor. Calendar-scoped reads/writes
+  return calendar_id/name. Existing personal routes remain supported.
+  Writes now lock the required WEBCAL_PROGRAM_VERSION config row before account/event locks
+  (SQLite still obtains write intent first). This coarse mutex serializes different
+  assistants without target API identities or a migration; webcal_config must also
+  be InnoDB. No coordination with browser/MCP writes is implied.
+  Regression coverage includes revocation, disabled targets, actor UAC/token
+  permissions, private recurrence/timezones, nonuser defaults, and independent
+  assistants competing for overlapping events/daily limits. PHP 8.2–8.5 verification
+  covers 1,226 tests, one optional external-DB skip, 5,858 assertions; release
+  classification requires new runtime files present in Git's index. Full lint and
+  existing Apache smoke checks pass.
+  CalendarEventAccess applies calendar-level UAC and event/visibility masks to
+  delegated capabilities and writes (selected calendar plus event creator).
+  Selection refreshes the legacy permission cache per activation/write attempt;
+  retry regressions revoke edit access after rollback on an independent connection.
+  Delegated reads filter by calendar view masks; internal conflict checks retain
+  hidden busy intervals. API bootstrap captures api_installation_timezone before
+  account preferences, preserving SERVER_TIMEZONE/PHP fallback without leaking an
+  assistant timezone. Missing TIMEZONE regressions cover reads, create, metadata
+  PATCH, and competing assistants. No mutex initialization/migration is needed.
+  CalendarEventAccess.canViewDetails checks the effective time permission as the
+  string 'N' (casting 'Y'/'N' to bool is incorrect). Time-only delegated detail
+  reads and POST/PATCH return 403, and discovery reports can_write false. Internal
+  schedule checks still see hidden ordinary/recurring busy intervals. Creation
+  now uses canEditEvent, requiring view and edit masks for explicit/default
+  visibility before inserts; response can_edit is computed from the same policy.
+  Regression coverage includes ordinary/recurring time-only access, inherited
+  default policies, restored detail access, internal conflicts, rejected private
+  creation and allowed public create/read/PATCH under public-only view masks.
+  The time action's administrator override returns CAN_DOALL, not 'N'.
+  canViewDetails explicitly honors the activated actor's Boolean is_admin with
+  ADMIN_OVERRIDE_UAC='Y', retaining the strict 'N' check for other delegates.
+  HTTP regressions cover administrator discovery/read/private create/PATCH,
+  disabling the override, revoking assistant membership, and non-administrator
+  ordinary/recurring time-only denial with the installation override enabled.
 - The opt-in Laravel/Sanctum API is served by `api.php/v1/*`; enable it with
   `WEBCALENDAR_API_ENABLED=true`. `app/Api/` contains its bootstrap, config,
   routes, controllers, requests, and token models. `app/Services/CalendarIdentity.php`

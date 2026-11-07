@@ -2,7 +2,79 @@
 
 WebCalendar's opt-in JSON API uses Laravel and Sanctum device tokens. It supports
 signing in, signing out, reading the current user's profile and events, and
-creating/editing personal, non-recurring events on that user's calendar.
+creating/editing supported non-recurring events on personal and assistant calendars.
+
+## Selecting a calendar
+
+`GET /api.php/v1/calendars` returns the authenticated user's calendar followed by
+calendars for which that user is explicitly listed as an assistant. Nonuser
+calendars are supported without a corresponding API identity. Administrator or
+nonuser-administrator status alone does not add calendars to this list; assign
+the account as an assistant in the browser's Assistants screen.
+
+Each item in `data` contains `id` (the calendar login/primary key), `name`,
+`timezone`, integer `week_start`, and Boolean `can_write`. Calendar preferences
+override installation defaults for timezone and week start, including for nonuser
+calendars. The signed-in account's function permissions still apply; choosing an
+administrator's calendar does not confer administrator privileges.
+If TIMEZONE is absent or empty, selection preserves the established installation
+fallback (SERVER_TIMEZONE, then PHP's initial default timezone) before applying
+the selected calendar's preference. The assistant's personal timezone is not an
+installation default.
+
+Use the selected ID as a URL-encoded path segment:
+
+| Method | Path relative to `/api.php/v1` | Behavior |
+| --- | --- | --- |
+| GET | `/calendars/{calendar}/events` | Read occurrences with `start_date` and `end_date` |
+| POST | `/calendars/{calendar}/events` | Create on the selected calendar |
+| PATCH | `/calendars/{calendar}/events/{event}` | Edit a supported selected-calendar event |
+
+These endpoints use the existing event payloads, token abilities, and date-window
+limits. Bounds, floating dates, and timed-write date validation use the selected
+calendar's timezone. Event responses include `calendar_id` and `calendar_name`.
+`GET /users/current` continues to describe the authenticated person.
+
+Assistant access and calendar existence/enabled status are rechecked on each
+request and inside each write attempt. Unauthorized selections return 403.
+When UAC is enabled, delegated reads require calendar-level view authorization
+and filter occurrences by the event/visibility permission mask. Delegated writes
+also require calendar-level edit authorization; editing checks both the selected
+calendar and the event creator, including the existing and requested visibility.
+The same edit policy controls can_edit, and calendar discovery reflects calendar
+edit denial in can_write. Permission snapshots are refreshed on every activation,
+including retry attempts. Private and confidential events are available only
+within the applicable permission masks. Assistants may
+edit supported events created by other people on that calendar; accepted status,
+single-calendar participation, and the existing non-recurring/unlinked restrictions
+still apply. New entries belong to the selected calendar; activity logs identify
+the signed-in assistant separately from the target calendar.
+
+The independent UAC **see time only** restriction is also enforced. This API
+returns detail-bearing events rather than a busy-only representation, so delegated
+event reads return 403 when effective time-only access applies, for both ordinary
+and recurring events. Calendar discovery reports `can_write: false`; POST/PATCH
+are denied too, since their responses contain event details. Internal conflict
+checks still include hidden busy intervals. Personal-calendar access and the
+configured UAC administrator override retain their established behavior.
+The detail-access policy explicitly permits the authenticated administrator when
+ADMIN_OVERRIDE_UAC is enabled; it does not infer this from a numeric time-permission
+result. Explicit assistant membership is still required for every other calendar.
+
+Creation requires both view and edit permission for the effective visibility,
+including DEFAULT_VISIBILITY when `access` is omitted. A public-only view mask
+therefore cannot create a private event even with a full edit mask. Rejection
+occurs before entry/participation/activity inserts. Successful create and update
+responses calculate `can_edit` using the shared mutation policy.
+
+The iOS app remembers one active calendar per server/account on the device. All
+event browsing and saving uses that calendar and its timezone. Switching invalidates
+cached views and open drafts. If access is removed, the app asks for a new selection
+instead of silently switching writes to the personal calendar. Older servers that
+return 404 for calendar discovery retain personal-calendar access.
+
+No new migration is required. Deploy the updated API before the updated client;
+clear/rebuild compiled route caches when deploying the new routes.
 
 ## Installation
 
@@ -385,8 +457,9 @@ HTML when rich descriptions are enabled; render it appropriately for the client.
 
 The events endpoint is restricted to the authenticated user's calendar,
 including their private events. Calendar layers, the automatic public-calendar
-overlay, other users' calendars, and administrator/assistant delegation are not
-included. WebCalendar's event-view permission still applies. Calendar selector
+overlay and other users' calendars are not included by this personal endpoint.
+Use the calendar-scoped routes above for assistant delegation.
+WebCalendar's event-view permission still applies. Calendar selector
 parameters (`user`, `username`, `calendar`) are rejected. The bounded collection
 is returned without pagination; clients can request smaller date windows.
 
@@ -536,10 +609,14 @@ recurring event exceeds the supported duration limit, scheduling writes return
 409 with `code: "unsupported_schedule"` instead of omitting possible overlaps.
 
 Event insertion/update, owner participation and activity logging use one database
-transaction. API writes lock the authenticated account's `webcal_api_users` row
-before reading schedules, including on an empty calendar, and hold that lock
-through commit. Edits acquire the calendar lock before the event lock. This
-serializes competing API creates/edits for that account; browser and MCP writers
+transaction. API writes first lock the installation's `webcal_config` WEBCAL_PROGRAM_VERSION
+row, then the authenticated account's `webcal_api_users` row, before reading
+schedules, and hold protection through commit. Edits acquire these locks before
+the event lock. This deliberately serializes all API event writes, including
+different assistants using a nonuser calendar, without a new mutex table or
+requiring a target-calendar API identity. API bootstrap already requires the
+version row for every supported installation; a physical TIMEZONE row is optional.
+Browser and MCP writers
 do not participate in this calendar-lock protocol. SQLite obtains database-wide
 write intent before snapshot reads using an early managed update, including on
 PHP 8.2/8.3, rather than relying on a version-dependent `IMMEDIATE` setting.
@@ -557,7 +634,7 @@ Unrelated SQL errors, failed rollbacks, and indeterminate connection/commit
 failures are not retried. A lost response can still follow a committed write;
 clients must check the calendar rather than blindly repeat a creation request.
 
-MySQL/MariaDB installations must use **InnoDB** for `webcal_api_users`,
+MySQL/MariaDB installations must use **InnoDB** for `webcal_config`, `webcal_api_users`,
 `webcal_entry`, `webcal_entry_user`, and `webcal_entry_log`. Re-arming a reminder
 also requires InnoDB for `webcal_reminders`. Non-transactional
 legacy tables return 503 with `code: "transactional_storage_required"`; convert
