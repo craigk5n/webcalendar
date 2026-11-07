@@ -159,6 +159,25 @@ Run these from the repository root unless specified otherwise:
   Legacy plaintext tokens require regeneration in Preferences.
 
 ## Mobile API
+- Assistant calendar selection uses `GET /calendars` and
+  `/calendars/{calendar}/events` GET/POST/PATCH routes (PATCH adds `{event}`).
+  Calendar IDs are existing login primary keys. CalendarSelection keeps the actor's
+  permissions while resolving target timezone/week-start from preferences and
+  installation defaults. Explicit webcal_asst membership is required for other
+  calendars, including nonusers; admin status alone does not grant API delegation.
+  Recheck before reads and within each write attempt. Entry ownership/participation
+  belongs to the target, while logs retain the actor. Calendar-scoped reads/writes
+  return calendar_id/name. Existing personal routes remain supported.
+  Writes now lock the installation TIMEZONE config row before account/event locks
+  (SQLite still obtains write intent first). This coarse mutex serializes different
+  assistants without target API identities or a migration; webcal_config must also
+  be InnoDB. No coordination with browser/MCP writes is implied.
+  Regression coverage includes revocation, disabled targets, actor UAC/token
+  permissions, private recurrence/timezones, nonuser defaults, and independent
+  assistants competing for overlapping events/daily limits. PHP 8.2–8.5 verification
+  covers 1,215 tests, one optional external-DB skip, 5,592 assertions; release
+  classification requires new runtime files present in Git's index. Full lint and
+  existing Apache smoke checks pass.
 - The opt-in Laravel/Sanctum API is served by `api.php/v1/*`; enable it with
   `WEBCALENDAR_API_ENABLED=true`. `app/Api/` contains its bootstrap, config,
   routes, controllers, requests, and token models. `app/Services/CalendarIdentity.php`

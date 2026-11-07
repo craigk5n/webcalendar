@@ -14,7 +14,7 @@ use WebCalendar\Api\Requests\EventWriteRequest;
 
 final class CalendarEventConflicts
 {
-  public function check(string $username, array $fields, DateTimeZone $timezone, int $excludedId = 0): void
+  public function check(string $username, array $fields, DateTimeZone $timezone, int $excludedId = 0, ?string $actor = null): void
   {
     if (($GLOBALS['ALLOW_CONFLICTS'] ?? 'N') === 'Y' || $fields['untimed']) { return; }
     $start = $fields['all_day'] ? new DateTimeImmutable($fields['date'], $timezone) : new DateTimeImmutable($fields['starts_at']);
@@ -67,7 +67,7 @@ final class CalendarEventConflicts
       $events = new CalendarEvents();
       while ($cursor <= $lastDay) {
         $windowEnd = min($cursor->modify('+' . ($windowDays - 1) . ' days')->setTime(0, 0), $lastDay);
-        foreach ($events->between($username, $cursor->format('Y-m-d'), $windowEnd->format('Y-m-d'), false) as $event) {
+        foreach ($events->between($username, $cursor->format('Y-m-d'), $windowEnd->format('Y-m-d'), false, $actor) as $event) {
           if (!isset($recurring[$event['id']]) || $event['id'] === $excludedId || $event['untimed'] || !empty($event['is_continuation'])) { continue; }
           $otherStart = $event['all_day'] ? new DateTimeImmutable($event['date'], $timezone) : new DateTimeImmutable($event['starts_at']);
           $otherEnd = $event['all_day'] ? $otherStart->modify('+1 day')->setTime(0, 0) : $otherStart->modify('+' . $event['duration_minutes'] . ' minutes');

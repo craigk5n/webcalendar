@@ -20,6 +20,7 @@ app/Api/config/logging.php
 app/Api/config/sanctum.php
 app/Api/config/webcalendar.php
 app/Api/Controllers/EventController.php
+app/Api/Controllers/CalendarController.php
 app/Api/Controllers/TokenController.php
 app/Api/Controllers/UserController.php
 app/Api/Exceptions/EventWriteException.php
@@ -33,6 +34,7 @@ app/Api/Requests/StoreEventRequest.php
 app/Api/Requests/UpdateEventRequest.php
 app/Api/Requests/TokenRequest.php
 app/Api/Resources/EventResource.php
+app/Api/Resources/CalendarResource.php
 app/Api/routes.php
 app/Helpers/ConfigService.php
 app/Helpers/DateDisplay.php
@@ -44,6 +46,7 @@ app/Services/CalendarEventWriter.php
 app/Services/ApiCredentialLifecycle.php
 app/Services/DirectorySubject.php
 app/Services/CalendarIdentity.php
+app/Services/CalendarSelection.php
 app/Services/DeviceTokenService.php
 assistant_edit_handler.php
 assistant_edit.php

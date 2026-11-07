@@ -16,9 +16,10 @@ final class CalendarEvents
 {
   private const SECONDS_PER_MINUTE = 60;
 
-  public function between(string $username, string $startDate, string $endDate, bool $includeContinuations = true): array
+  public function between(string $username, string $startDate, string $endDate, bool $includeContinuations = true, ?string $actor = null): array
   {
-    (new CalendarIdentity())->activate($username);
+    if ($actor !== null) { (new CalendarSelection())->activate($actor, $username); }
+    else { (new CalendarIdentity())->activate($username); }
     if (!access_can_access_function(ACCESS_EVENT_VIEW)) {
       throw new AuthorizationException();
     }

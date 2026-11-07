@@ -13,7 +13,7 @@ final class EventResource extends JsonResource
   {
     return array_intersect_key($this->resource, array_flip([
       'id', 'date', 'title', 'description', 'location', 'starts_at', 'duration_minutes',
-      'all_day', 'untimed', 'status', 'access', 'timezone', 'can_edit',
+      'all_day', 'untimed', 'status', 'access', 'timezone', 'can_edit', 'calendar_id', 'calendar_name',
     ]));
   }
 }

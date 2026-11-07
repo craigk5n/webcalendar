@@ -18,7 +18,7 @@ final class CalendarEventAccess
   }
 
   /** @return array<int, bool> */
-  public function editableIds(string $username, array $ids): array
+  public function editableIds(string $username, array $ids, bool $delegated = false): array
   {
     if (!$ids || !$this->canWrite()) {
       return [];
@@ -35,7 +35,7 @@ final class CalendarEventAccess
     $query = DB::table('webcal_entry as e')
       ->join('webcal_entry_user as own', 'own.cal_id', '=', 'e.cal_id')
       ->whereIntegerInRaw('e.cal_id', $ids)
-      ->where('e.cal_create_by', $username)->where('e.cal_type', 'E')
+      ->when(!$delegated, fn (Builder $q) => $q->where('e.cal_create_by', $username))->where('e.cal_type', 'E')
       ->where('own.cal_login', $username)->where('own.cal_status', 'A');
     foreach (['cal_group_id', 'cal_ext_for_id'] as $column) {
       $query->where(fn (Builder $q) => $q->whereNull('e.' . $column)->orWhere('e.' . $column, 0));
