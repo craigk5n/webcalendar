@@ -20,6 +20,9 @@ final class CalendarEvents
   {
     if ($actor !== null) { (new CalendarSelection())->activate($actor, $username); }
     else { (new CalendarIdentity())->activate($username); }
+    if ($includeContinuations && !(new CalendarEventAccess())->canViewDetails($username)) {
+      throw new AuthorizationException();
+    }
     if (!access_can_access_function(ACCESS_EVENT_VIEW)) {
       throw new AuthorizationException();
     }

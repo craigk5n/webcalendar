@@ -15,6 +15,7 @@ final class CalendarEventAccess
     return ($GLOBALS['readonly'] ?? 'N') !== 'Y'
       && access_can_access_function(ACCESS_EVENT_EDIT)
       && access_can_access_function(ACCESS_EVENT_VIEW)
+      && $this->canViewDetails($GLOBALS['user'] ?? $GLOBALS['login'])
       && $this->calendarPermission('edit', $GLOBALS['user'] ?? $GLOBALS['login']);
   }
 
@@ -31,9 +32,21 @@ final class CalendarEventAccess
     if (access_is_enabled()) { access_load_user_permissions(false); }
   }
 
+  public function canViewDetails(string $calendar): bool
+  {
+    if (!access_is_enabled() || $calendar === $GLOBALS['login']) { return true; }
+    return access_user_calendar('time', $calendar, $GLOBALS['login']) === 'N';
+  }
+
+  public function canViewEvent(string $calendar, array $row): bool
+  {
+    return $this->canViewDetails($calendar)
+      && $this->calendarPermission('view', $calendar, $row['cal_type'], $row['cal_access']);
+  }
+
   public function canEditEvent(string $calendar, array $row): bool
   {
-    return $this->calendarPermission('view', $calendar, $row['cal_type'], $row['cal_access'])
+    return $this->canViewEvent($calendar, $row)
       && $this->calendarPermission('edit', $calendar, $row['cal_type'], $row['cal_access'])
       && $this->calendarPermission('edit', $row['cal_create_by'], $row['cal_type'], $row['cal_access']);
   }

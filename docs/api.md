@@ -50,6 +50,20 @@ single-calendar participation, and the existing non-recurring/unlinked restricti
 still apply. New entries belong to the selected calendar; activity logs identify
 the signed-in assistant separately from the target calendar.
 
+The independent UAC **see time only** restriction is also enforced. This API
+returns detail-bearing events rather than a busy-only representation, so delegated
+event reads return 403 when effective time-only access applies, for both ordinary
+and recurring events. Calendar discovery reports `can_write: false`; POST/PATCH
+are denied too, since their responses contain event details. Internal conflict
+checks still include hidden busy intervals. Personal-calendar access and the
+configured UAC administrator override retain their established behavior.
+
+Creation requires both view and edit permission for the effective visibility,
+including DEFAULT_VISIBILITY when `access` is omitted. A public-only view mask
+therefore cannot create a private event even with a full edit mask. Rejection
+occurs before entry/participation/activity inserts. Successful create and update
+responses calculate `can_edit` using the shared mutation policy.
+
 The iOS app remembers one active calendar per server/account on the device. All
 event browsing and saving uses that calendar and its timezone. Switching invalidates
 cached views and open drafts. If access is removed, the app asks for a new selection

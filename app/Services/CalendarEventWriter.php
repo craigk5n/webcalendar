@@ -39,10 +39,6 @@ final class CalendarEventWriter
       $selected = $this->activate($username, $calendar);
       $timezone = new DateTimeZone($selected['timezone']);
       $fields = EventWriteRequest::validateSchedule($input, $timezone);
-      if (!$this->access->calendarPermission('edit', $calendar, 'E', $fields['access'] ?? $GLOBALS['DEFAULT_VISIBILITY'])) {
-        throw new AuthorizationException();
-      }
-      $this->conflicts->check($calendar, $fields, $timezone, 0, $username);
       $id = $this->nextId('webcal_entry', 'cal_id');
       $row = array_merge($this->columns($fields), [
         'cal_id' => $id, 'cal_create_by' => $calendar, 'cal_type' => 'E',
@@ -50,6 +46,8 @@ final class CalendarEventWriter
         'cal_name' => $fields['title'], 'cal_description' => EventWriteRequest::description($fields['description'] ?? ''),
         'cal_location' => $fields['location'] ?? null,
       ]);
+      if (!$this->access->canEditEvent($calendar, $row)) { throw new AuthorizationException(); }
+      $this->conflicts->check($calendar, $fields, $timezone, 0, $username);
       DB::table('webcal_entry')->insert($row);
       DB::table('webcal_entry_user')->insert(['cal_id' => $id, 'cal_login' => $calendar, 'cal_status' => 'A', 'cal_percent' => 0]);
       $this->log($id, $username, LOG_CREATE, $calendar);
@@ -224,7 +222,9 @@ final class CalendarEventWriter
 
   private function representation(array $row, DateTimeZone $timezone): array
   {
-    return array_merge(CalendarEventData::fromRow($row, $timezone), ['can_edit' => true]);
+    return array_merge(CalendarEventData::fromRow($row, $timezone), [
+      'can_edit' => $this->access->canWrite() && $this->access->canEditEvent($GLOBALS['user'], $row),
+    ]);
   }
 
   private function nextId(string $table, string $column): int

@@ -175,7 +175,7 @@ Run these from the repository root unless specified otherwise:
   Regression coverage includes revocation, disabled targets, actor UAC/token
   permissions, private recurrence/timezones, nonuser defaults, and independent
   assistants competing for overlapping events/daily limits. PHP 8.2–8.5 verification
-  covers 1,220 tests, one optional external-DB skip, 5,675 assertions; release
+  covers 1,225 tests, one optional external-DB skip, 5,812 assertions; release
   classification requires new runtime files present in Git's index. Full lint and
   existing Apache smoke checks pass.
   CalendarEventAccess applies calendar-level UAC and event/visibility masks to
@@ -187,6 +187,15 @@ Run these from the repository root unless specified otherwise:
   account preferences, preserving SERVER_TIMEZONE/PHP fallback without leaking an
   assistant timezone. Missing TIMEZONE regressions cover reads, create, metadata
   PATCH, and competing assistants. No mutex initialization/migration is needed.
+  CalendarEventAccess.canViewDetails checks the effective time permission as the
+  string 'N' (casting 'Y'/'N' to bool is incorrect). Time-only delegated detail
+  reads and POST/PATCH return 403, and discovery reports can_write false. Internal
+  schedule checks still see hidden ordinary/recurring busy intervals. Creation
+  now uses canEditEvent, requiring view and edit masks for explicit/default
+  visibility before inserts; response can_edit is computed from the same policy.
+  Regression coverage includes ordinary/recurring time-only access, inherited
+  default policies, restored detail access, internal conflicts, rejected private
+  creation and allowed public create/read/PATCH under public-only view masks.
 - The opt-in Laravel/Sanctum API is served by `api.php/v1/*`; enable it with
   `WEBCALENDAR_API_ENABLED=true`. `app/Api/` contains its bootstrap, config,
   routes, controllers, requests, and token models. `app/Services/CalendarIdentity.php`

@@ -1687,6 +1687,85 @@ final class ApiIntegrationTest extends TestCase
     self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry_log')->fetchColumn());
   }
 
+  /** @dataProvider delegatedTimeOnlyEvents */
+  public function testDelegatedTimeOnlyAccessRejectsDetailsAndMutations(bool $recurring, bool $defaultPolicy): void
+  {
+    self::sql("INSERT INTO webcal_asst VALUES ('admin', 'alice')");
+    self::sql("INSERT OR REPLACE INTO webcal_config VALUES ('UAC_ENABLED', 'Y')");
+    self::sql('INSERT OR REPLACE INTO webcal_access_function VALUES (?, ?)', ['alice', str_repeat('Y', 28)]);
+    self::sql('INSERT INTO webcal_access_user (cal_login, cal_other_user, cal_can_view, cal_can_edit, cal_see_time_only) VALUES (?, ?, 511, 511, ?)',
+      ['alice', $defaultPolicy ? '__default__' : 'admin', 'Y']);
+    $this->event(1, 'Secret title', 'admin', 'R');
+    if ($recurring) {
+      self::sql("UPDATE webcal_entry SET cal_type = 'M' WHERE cal_id = 1");
+      self::sql("INSERT INTO webcal_entry_repeats (cal_id, cal_type, cal_frequency, cal_end) VALUES (1, 'daily', 1, 20261110)");
+    }
+    $token = $this->token();
+    [$status, $body] = $this->request('GET', '/v1/calendars/admin/events?start_date=2026-11-02&end_date=2026-11-02', [], $token);
+    self::assertSame(Response::HTTP_FORBIDDEN, $status, json_encode($body));
+    self::assertArrayNotHasKey('data', $body);
+    self::assertStringNotContainsString('Secret title', json_encode($body));
+    [$status, $body] = $this->request('GET', '/v1/calendars', [], $token);
+    self::assertSame(Response::HTTP_OK, $status);
+    self::assertFalse(array_column($body['data'], null, 'id')['admin']['can_write']);
+    self::assertSame(Response::HTTP_FORBIDDEN, $this->request('POST', '/v1/calendars/admin/events', $this->draft(), $token)[0]);
+    self::assertSame(Response::HTTP_FORBIDDEN, $this->request('PATCH', '/v1/calendars/admin/events/1', ['title' => 'Denied'], $token)[0]);
+    self::assertSame(1, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry')->fetchColumn());
+    self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry_log')->fetchColumn());
+    self::sql("INSERT OR REPLACE INTO webcal_config VALUES ('ALLOW_CONFLICTS', 'N')");
+    $script = "require 'vendor/autoload.php'; " . $this->legacyScript(<<<'PHP'
+      $app = require 'app/Api/bootstrap.php';
+      $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+      (new WebCalendar\Services\CalendarSelection())->activate('alice', 'admin');
+      try {
+        (new WebCalendar\Services\CalendarEventConflicts())->check('admin', json_decode($argv[1], true), new DateTimeZone('UTC'), 0, 'alice');
+        echo 'missed';
+      } catch (WebCalendar\Api\Exceptions\EventWriteException $e) { echo $e->getStatusCode(); }
+      PHP);
+    self::assertSame((string) Response::HTTP_CONFLICT, self::command([PHP_BINARY, '-r', $script, json_encode($this->draft([
+      'date' => '2026-11-02', 'untimed' => false, 'starts_at' => '2026-11-02T10:00:00Z', 'duration_minutes' => 30,
+    ]))]));
+    self::sql("UPDATE webcal_access_user SET cal_see_time_only = 'N'");
+    [$status, $body] = $this->request('GET', '/v1/calendars/admin/events?start_date=2026-11-02&end_date=2026-11-02', [], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    self::assertSame('Secret title', $body['data'][0]['title']);
+    self::assertSame('Description', $body['data'][0]['description']);
+  }
+
+  public static function delegatedTimeOnlyEvents(): array
+  {
+    return ['ordinary' => [false, false], 'recurring' => [true, false],
+      'ordinary default policy' => [false, true], 'recurring default policy' => [true, true]];
+  }
+
+  public function testDelegatedCreationRequiresViewAndEditForEffectiveVisibility(): void
+  {
+    self::sql("INSERT INTO webcal_asst VALUES ('admin', 'alice')");
+    self::sql("INSERT OR REPLACE INTO webcal_config VALUES ('UAC_ENABLED', 'Y')");
+    self::sql('INSERT OR REPLACE INTO webcal_access_function VALUES (?, ?)', ['alice', str_repeat('Y', 28)]);
+    self::sql("INSERT INTO webcal_access_user (cal_login, cal_other_user, cal_can_view, cal_can_edit) VALUES ('alice', 'admin', 1, 511)");
+    $token = $this->token();
+    foreach ([['access' => 'R'], []] as $changes) {
+      self::sql("INSERT OR REPLACE INTO webcal_config VALUES ('DEFAULT_VISIBILITY', 'R')");
+      [$status, $body] = $this->request('POST', '/v1/calendars/admin/events', $this->draft($changes), $token);
+      self::assertSame(Response::HTTP_FORBIDDEN, $status, json_encode($body));
+      self::assertArrayNotHasKey('data', $body);
+    }
+    foreach (['webcal_entry', 'webcal_entry_user', 'webcal_entry_log'] as $table) {
+      self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM ' . $table)->fetchColumn());
+    }
+    [$status, $body] = $this->request('POST', '/v1/calendars/admin/events', $this->draft(['access' => 'P']), $token);
+    self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+    self::assertTrue($body['data']['can_edit']);
+    $id = $body['data']['id'];
+    [$status, $body] = $this->request('GET', '/v1/calendars/admin/events?start_date=2026-11-10&end_date=2026-11-10', [], $token);
+    self::assertSame(Response::HTTP_OK, $status);
+    self::assertSame([$id], array_column($body['data'], 'id'));
+    self::assertTrue($body['data'][0]['can_edit']);
+    self::assertSame(Response::HTTP_OK, $this->request('PATCH', '/v1/calendars/admin/events/' . $id, ['title' => 'Editable'], $token)[0]);
+    self::assertSame(Response::HTTP_FORBIDDEN, $this->request('PATCH', '/v1/calendars/admin/events/' . $id, ['access' => 'R'], $token)[0]);
+  }
+
   private function token(): string
   {
     [$status, $body] = $this->request('POST', '/v1/tokens', ['username' => 'alice', 'password' => 'secret', 'device_name' => 'iPhone']);
