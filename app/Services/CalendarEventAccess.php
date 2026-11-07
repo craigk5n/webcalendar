@@ -14,7 +14,28 @@ final class CalendarEventAccess
   {
     return ($GLOBALS['readonly'] ?? 'N') !== 'Y'
       && access_can_access_function(ACCESS_EVENT_EDIT)
-      && access_can_access_function(ACCESS_EVENT_VIEW);
+      && access_can_access_function(ACCESS_EVENT_VIEW)
+      && $this->calendarPermission('edit', $GLOBALS['user'] ?? $GLOBALS['login']);
+  }
+
+  public function calendarPermission(string $action, string $calendar, string $type = '', string $access = ''): bool
+  {
+    if (!access_is_enabled() || $calendar === $GLOBALS['login']) { return true; }
+    return (bool) access_user_calendar($action, $calendar, $GLOBALS['login'], $type, $access);
+  }
+
+  public function refreshPermissions(): void
+  {
+    // Load once per activation, including each write attempt, rather than per event.
+    $GLOBALS['access_other_cals'] = [];
+    if (access_is_enabled()) { access_load_user_permissions(false); }
+  }
+
+  public function canEditEvent(string $calendar, array $row): bool
+  {
+    return $this->calendarPermission('view', $calendar, $row['cal_type'], $row['cal_access'])
+      && $this->calendarPermission('edit', $calendar, $row['cal_type'], $row['cal_access'])
+      && $this->calendarPermission('edit', $row['cal_create_by'], $row['cal_type'], $row['cal_access']);
   }
 
   /** @return array<int, bool> */
@@ -46,6 +67,10 @@ final class CalendarEventAccess
       $query->whereNotExists(fn (Builder $q) => $q->selectRaw('1')->from($table . ' as related')->whereColumn('related.cal_id', 'e.cal_id'));
     }
     if ($parents) { $query->whereIntegerNotInRaw('e.cal_id', array_unique($parents)); }
-    return array_fill_keys($query->pluck('e.cal_id')->all(), true);
+    $editable = [];
+    foreach ($query->get(['e.cal_id', 'e.cal_create_by', 'e.cal_type', 'e.cal_access']) as $row) {
+      if ($this->canEditEvent($username, (array) $row)) { $editable[(int) $row->cal_id] = true; }
+    }
+    return $editable;
   }
 }

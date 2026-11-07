@@ -62,6 +62,11 @@ final class CalendarEvents
         ];
       }
     }
+    // Internal schedule checks need all busy intervals, even for hidden occurrences.
+    if ($includeContinuations && $actor !== null && $actor !== $username) {
+      $access = new CalendarEventAccess();
+      $result = array_filter($result, fn (array $event) => $access->calendarPermission('view', $username, 'E', $event['access']));
+    }
     usort($result, fn ($left, $right) => [$left['date'], $left['starts_at'] ?? '', $left['id']] <=> [$right['date'], $right['starts_at'] ?? '', $right['id']]);
     return array_values($result);
   }

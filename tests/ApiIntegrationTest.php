@@ -72,6 +72,8 @@ final class ApiIntegrationTest extends TestCase
 
   protected function setUp(): void
   {
+    self::$db->exec('DELETE FROM webcal_access_user');
+    self::$db->exec("DELETE FROM webcal_config WHERE cal_setting = 'SERVER_TIMEZONE'");
     self::$db->exec('DELETE FROM webcal_asst');
     self::$db->exec('DELETE FROM webcal_nonuser_cals');
     self::$db->exec('DELETE FROM webcal_api_tokens');
@@ -1182,6 +1184,7 @@ final class ApiIntegrationTest extends TestCase
   {
     $this->token();
     if ($delegated) {
+      self::sql("DELETE FROM webcal_config WHERE cal_setting = 'TIMEZONE'");
       self::sql("INSERT INTO webcal_nonuser_cals (cal_login, cal_firstname, cal_lastname, cal_admin) VALUES ('__nu_team', 'Team', 'Calendar', 'admin')");
       self::sql("INSERT INTO webcal_asst VALUES ('__nu_team', 'alice')");
       self::sql("INSERT INTO webcal_asst VALUES ('__nu_team', 'admin')");
@@ -1555,6 +1558,133 @@ final class ApiIntegrationTest extends TestCase
     self::assertSame(409, $this->request('POST', '/v1/calendars/admin/events', $this->draft([
       'date' => '2026-11-03', 'untimed' => false, 'starts_at' => '2026-11-03T09:00:00-05:00', 'duration_minutes' => 30,
     ]), $token)[0]);
+  }
+
+  public function testDelegatedCalendarUacDenialControlsCapabilitiesAndMutations(): void
+  {
+    self::sql("INSERT INTO webcal_asst VALUES ('admin', 'alice')");
+    self::sql("INSERT OR REPLACE INTO webcal_config VALUES ('UAC_ENABLED', 'Y')");
+    self::sql('INSERT OR REPLACE INTO webcal_access_function VALUES (?, ?)', ['alice', str_repeat('Y', 28)]);
+    self::sql("INSERT INTO webcal_access_user (cal_login, cal_other_user, cal_can_view, cal_can_edit) VALUES ('alice', 'admin', 511, 0)");
+    $this->event(1, 'Protected event', 'admin', 'R');
+    $token = $this->token();
+    [$status, $body] = $this->request('GET', '/v1/calendars', [], $token);
+    self::assertSame(200, $status);
+    self::assertFalse(array_column($body['data'], null, 'id')['admin']['can_write']);
+    [$status, $body] = $this->request('GET', '/v1/calendars/admin/events?start_date=2026-11-02&end_date=2026-11-02', [], $token);
+    self::assertSame(200, $status);
+    self::assertFalse($body['data'][0]['can_edit']);
+    self::assertSame(403, $this->request('PATCH', '/v1/calendars/admin/events/1', ['title' => 'Denied'], $token)[0]);
+    self::assertSame(403, $this->request('POST', '/v1/calendars/admin/events', $this->draft(), $token)[0]);
+    self::assertSame('Protected event', self::$db->query('SELECT cal_name FROM webcal_entry')->fetchColumn());
+    self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry_log')->fetchColumn());
+    self::sql("UPDATE webcal_access_user SET cal_can_edit = 1 WHERE cal_login = 'alice'");
+    self::assertSame(403, $this->request('PATCH', '/v1/calendars/admin/events/1', ['title' => 'Private denied'], $token)[0]);
+    self::assertSame(403, $this->request('POST', '/v1/calendars/admin/events', $this->draft(['access' => 'R']), $token)[0]);
+    self::assertSame(201, $this->request('POST', '/v1/calendars/admin/events', $this->draft(['access' => 'P']), $token)[0]);
+    self::sql("UPDATE webcal_access_user SET cal_can_edit = 511 WHERE cal_login = 'alice'");
+    self::assertSame(200, $this->request('PATCH', '/v1/calendars/admin/events/1', ['title' => 'Allowed'], $token)[0]);
+    self::sql("UPDATE webcal_access_user SET cal_can_view = 1 WHERE cal_login = 'alice'");
+    [$status, $body] = $this->request('GET', '/v1/calendars/admin/events?start_date=2026-11-02&end_date=2026-11-02', [], $token);
+    self::assertSame(200, $status);
+    self::assertSame([], $body['data']);
+    self::sql("UPDATE webcal_access_user SET cal_can_view = 0 WHERE cal_login = 'alice'");
+    self::assertSame(403, $this->request('GET', '/v1/calendars/admin/events?start_date=2026-11-02&end_date=2026-11-02', [], $token)[0]);
+  }
+
+  public function testMissingInstallationTimezonePreservesFallbackAndAllowsWrites(): void
+  {
+    self::sql("DELETE FROM webcal_config WHERE cal_setting = 'TIMEZONE'");
+    self::sql("INSERT INTO webcal_config VALUES ('SERVER_TIMEZONE', 'America/New_York')");
+    self::sql("INSERT INTO webcal_asst VALUES ('admin', 'alice')");
+    self::sql("INSERT INTO webcal_user_pref VALUES ('alice', 'TIMEZONE', 'Asia/Tokyo')");
+    $token = $this->token();
+    [$status, $body] = $this->request('GET', '/v1/calendars', [], $token);
+    self::assertSame(200, $status);
+    self::assertSame('America/New_York', array_column($body['data'], null, 'id')['admin']['timezone']);
+    [$status, $body] = $this->request('POST', '/v1/calendars/admin/events', $this->draft([
+      'date' => '2026-11-02', 'untimed' => false, 'starts_at' => '2026-11-03T02:00:00Z', 'duration_minutes' => 30,
+    ]), $token);
+    self::assertSame(201, $status, json_encode($body));
+    $id = $body['data']['id'];
+    self::assertSame('2026-11-02', $body['data']['date']);
+    [$readStatus, $read] = $this->request('GET', '/v1/calendars/admin/events?start_date=2026-11-02&end_date=2026-11-02', [], $token);
+    self::assertSame(200, $readStatus);
+    self::assertSame([$id], array_column($read['data'], 'id'));
+    self::assertSame(200, $this->request('PATCH', '/v1/calendars/admin/events/' . $id, ['title' => 'Metadata edit'], $token)[0]);
+    self::sql("DELETE FROM webcal_user_pref WHERE cal_login = 'alice' AND cal_setting = 'TIMEZONE'");
+    [$status, $body] = $this->request('GET', '/v1/calendars', [], $token);
+    self::assertSame('America/New_York', $body['data'][0]['timezone']);
+    [$status, $body] = $this->request('POST', '/v1/events', $this->draft(), $token);
+    self::assertSame(201, $status, json_encode($body));
+    self::assertSame(200, $this->request('PATCH', '/v1/events/' . $body['data']['id'], ['title' => 'Personal edit'], $token)[0]);
+  }
+
+  public function testCalendarSelectionUsesPhpTimezoneWithoutInstallationTimezoneSettings(): void
+  {
+    self::sql("DELETE FROM webcal_config WHERE cal_setting IN ('TIMEZONE', 'SERVER_TIMEZONE')");
+    self::sql("INSERT INTO webcal_user_pref VALUES ('alice', 'TIMEZONE', 'Asia/Tokyo')");
+    self::sql("INSERT INTO webcal_asst VALUES ('admin', 'alice')");
+    $body = <<<'PHP'
+      $app = require 'app/Api/bootstrap.php';
+      $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+      $selection = new WebCalendar\Services\CalendarSelection();
+      $selection->activate('alice', 'alice');
+      echo json_encode($selection->activate('alice', 'admin'));
+      PHP;
+    $script = "require 'vendor/autoload.php'; " . $this->legacyScript($body);
+    $result = json_decode(self::command([PHP_BINARY, '-d', 'date.timezone=America/New_York', '-r', $script]), true);
+    self::assertSame('America/New_York', $result['timezone']);
+  }
+
+  public function testPersonalWritesDoNotRequireAPhysicalTimezoneSetting(): void
+  {
+    self::sql("DELETE FROM webcal_config WHERE cal_setting = 'TIMEZONE'");
+    self::sql("INSERT INTO webcal_user_pref VALUES ('alice', 'TIMEZONE', 'America/New_York')");
+    $token = $this->token();
+    [$status, $body] = $this->request('POST', '/v1/events', $this->draft(), $token);
+    self::assertSame(201, $status, json_encode($body));
+    self::assertSame(200, $this->request('PATCH', '/v1/events/' . $body['data']['id'], ['title' => 'Metadata edit'], $token)[0]);
+  }
+
+  public function testDelegatedWriteRetryReloadsCalendarPermissions(): void
+  {
+    $this->token();
+    self::sql("INSERT INTO webcal_asst VALUES ('admin', 'alice')");
+    self::sql("INSERT OR REPLACE INTO webcal_config VALUES ('UAC_ENABLED', 'Y')");
+    self::sql('INSERT OR REPLACE INTO webcal_access_function VALUES (?, ?)', ['alice', str_repeat('Y', 28)]);
+    self::sql("INSERT INTO webcal_access_user (cal_login, cal_other_user, cal_can_view, cal_can_edit) VALUES ('alice', 'admin', 511, 511)");
+    $body = <<<'PHP'
+      Illuminate\Database\Connection::resolverFor('sqlite', function ($pdo, $database, $prefix, $config) {
+        return new class($pdo, $database, $prefix, $config) extends Illuminate\Database\SQLiteConnection {
+          private bool $collided = false;
+          public function insert($query, $bindings = []) {
+            if (!$this->collided && str_contains($query, 'insert into "webcal_entry"')) {
+              $this->collided = true;
+              $cause = new PDOException('UNIQUE constraint failed: webcal_entry');
+              $cause->errorInfo = ['23000', 19, $cause->getMessage()];
+              throw new Illuminate\Database\QueryException('webcalendar', $query, $bindings, $cause);
+            }
+            return parent::insert($query, $bindings);
+          }
+          public function rollBack($toLevel = null) {
+            parent::rollBack($toLevel);
+            $other = new PDO('sqlite:' . $this->getDatabaseName());
+            $other->exec("UPDATE webcal_access_user SET cal_can_edit = 0 WHERE cal_login = 'alice'");
+          }
+        };
+      });
+      $app = require 'app/Api/bootstrap.php';
+      $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+      try {
+        $app->make(WebCalendar\Services\CalendarEventWriter::class)->create('alice', json_decode($argv[1], true), 'admin');
+        echo 'saved';
+      } catch (Illuminate\Auth\Access\AuthorizationException $e) { echo 'denied'; }
+      PHP;
+    $script = "require 'vendor/autoload.php'; " . $this->legacyScript($body);
+    self::assertSame('denied', self::command([PHP_BINARY, '-r', $script, json_encode($this->draft())]));
+    self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry')->fetchColumn());
+    self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_entry_log')->fetchColumn());
   }
 
   private function token(): string

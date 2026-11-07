@@ -39,6 +39,9 @@ final class CalendarEventWriter
       $selected = $this->activate($username, $calendar);
       $timezone = new DateTimeZone($selected['timezone']);
       $fields = EventWriteRequest::validateSchedule($input, $timezone);
+      if (!$this->access->calendarPermission('edit', $calendar, 'E', $fields['access'] ?? $GLOBALS['DEFAULT_VISIBILITY'])) {
+        throw new AuthorizationException();
+      }
       $this->conflicts->check($calendar, $fields, $timezone, 0, $username);
       $id = $this->nextId('webcal_entry', 'cal_id');
       $row = array_merge($this->columns($fields), [
@@ -67,6 +70,10 @@ final class CalendarEventWriter
         ->select('e.*')->lockForUpdate()->first();
       if (!$found) { throw new NotFoundHttpException(); }
       $row = (array) $found;
+      if (!$this->access->canEditEvent($calendar, $row)) { throw new AuthorizationException(); }
+      if (isset($input['access']) && !$this->access->canEditEvent($calendar, array_replace($row, ['cal_access' => $input['access']]))) {
+        throw new AuthorizationException();
+      }
       if ($calendar === $username && $row['cal_create_by'] !== $username) { throw new AuthorizationException(); }
       if (!isset($this->access->editableIds($calendar, [$id], $calendar !== $username)[$id])) {
         throw new EventWriteException(Response::HTTP_UNPROCESSABLE_ENTITY, 'unsupported_event',
@@ -105,8 +112,8 @@ final class CalendarEventWriter
           DB::table('webcal_api_users')->where('username', $username)->update(['username' => $username]);
         }
         // Shared across actors and nonuser calendars; acquire before account/event locks.
-        if (!DB::table('webcal_config')->where('cal_setting', 'TIMEZONE')->lockForUpdate()->first()) {
-          throw new \RuntimeException('The installation timezone setting is required for event writes.');
+        if (!DB::table('webcal_config')->where('cal_setting', 'WEBCAL_PROGRAM_VERSION')->lockForUpdate()->first()) {
+          throw new \RuntimeException('The installation version setting is required for event writes.');
         }
         if (!DB::table('webcal_api_users')->where('username', $username)->lockForUpdate()->first()) {
           throw new AuthorizationException();

@@ -168,16 +168,25 @@ Run these from the repository root unless specified otherwise:
   Recheck before reads and within each write attempt. Entry ownership/participation
   belongs to the target, while logs retain the actor. Calendar-scoped reads/writes
   return calendar_id/name. Existing personal routes remain supported.
-  Writes now lock the installation TIMEZONE config row before account/event locks
+  Writes now lock the required WEBCAL_PROGRAM_VERSION config row before account/event locks
   (SQLite still obtains write intent first). This coarse mutex serializes different
   assistants without target API identities or a migration; webcal_config must also
   be InnoDB. No coordination with browser/MCP writes is implied.
   Regression coverage includes revocation, disabled targets, actor UAC/token
   permissions, private recurrence/timezones, nonuser defaults, and independent
   assistants competing for overlapping events/daily limits. PHP 8.2–8.5 verification
-  covers 1,215 tests, one optional external-DB skip, 5,592 assertions; release
+  covers 1,220 tests, one optional external-DB skip, 5,675 assertions; release
   classification requires new runtime files present in Git's index. Full lint and
   existing Apache smoke checks pass.
+  CalendarEventAccess applies calendar-level UAC and event/visibility masks to
+  delegated capabilities and writes (selected calendar plus event creator).
+  Selection refreshes the legacy permission cache per activation/write attempt;
+  retry regressions revoke edit access after rollback on an independent connection.
+  Delegated reads filter by calendar view masks; internal conflict checks retain
+  hidden busy intervals. API bootstrap captures api_installation_timezone before
+  account preferences, preserving SERVER_TIMEZONE/PHP fallback without leaking an
+  assistant timezone. Missing TIMEZONE regressions cover reads, create, metadata
+  PATCH, and competing assistants. No mutex initialization/migration is needed.
 - The opt-in Laravel/Sanctum API is served by `api.php/v1/*`; enable it with
   `WEBCALENDAR_API_ENABLED=true`. `app/Api/` contains its bootstrap, config,
   routes, controllers, requests, and token models. `app/Services/CalendarIdentity.php`

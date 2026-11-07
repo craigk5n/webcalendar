@@ -24,7 +24,10 @@ final class CalendarSelection
   public function activate(string $actor, string $calendar): array
   {
     (new CalendarIdentity())->activate($actor);
+    $access = new CalendarEventAccess();
+    $access->refreshPermissions();
     if (!access_can_access_function(ACCESS_EVENT_VIEW)
+        || !$access->calendarPermission('view', $calendar)
         || ($calendar !== $actor && !DB::table('webcal_asst')->where('cal_assistant', $actor)->where('cal_boss', $calendar)->exists())) {
       throw new AuthorizationException();
     }
@@ -44,7 +47,7 @@ final class CalendarSelection
     $preferences = DB::table('webcal_user_pref')->where('cal_login', $calendar)
       ->whereIn('cal_setting', ['TIMEZONE', 'WEEK_START'])->pluck('cal_value', 'cal_setting')->all();
     $settings = array_replace($settings, $preferences);
-    $GLOBALS['TIMEZONE'] = $settings['TIMEZONE'] ?? 'UTC';
+    $GLOBALS['TIMEZONE'] = !empty($settings['TIMEZONE']) ? $settings['TIMEZONE'] : $GLOBALS['api_installation_timezone'];
     date_default_timezone_set($GLOBALS['TIMEZONE']);
     set_env('TZ', $GLOBALS['TIMEZONE']);
     $GLOBALS['WEEK_START'] = (int) ($settings['WEEK_START'] ?? 0);

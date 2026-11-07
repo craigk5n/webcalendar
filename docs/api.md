@@ -17,6 +17,10 @@ Each item in `data` contains `id` (the calendar login/primary key), `name`,
 override installation defaults for timezone and week start, including for nonuser
 calendars. The signed-in account's function permissions still apply; choosing an
 administrator's calendar does not confer administrator privileges.
+If TIMEZONE is absent or empty, selection preserves the established installation
+fallback (SERVER_TIMEZONE, then PHP's initial default timezone) before applying
+the selected calendar's preference. The assistant's personal timezone is not an
+installation default.
 
 Use the selected ID as a URL-encoded path segment:
 
@@ -32,8 +36,15 @@ calendar's timezone. Event responses include `calendar_id` and `calendar_name`.
 `GET /users/current` continues to describe the authenticated person.
 
 Assistant access and calendar existence/enabled status are rechecked on each
-request and inside each write attempt. Unauthorized selections return 403. Private
-and confidential events are available to the calendar's assistants. Assistants may
+request and inside each write attempt. Unauthorized selections return 403.
+When UAC is enabled, delegated reads require calendar-level view authorization
+and filter occurrences by the event/visibility permission mask. Delegated writes
+also require calendar-level edit authorization; editing checks both the selected
+calendar and the event creator, including the existing and requested visibility.
+The same edit policy controls can_edit, and calendar discovery reflects calendar
+edit denial in can_write. Permission snapshots are refreshed on every activation,
+including retry attempts. Private and confidential events are available only
+within the applicable permission masks. Assistants may
 edit supported events created by other people on that calendar; accepted status,
 single-calendar participation, and the existing non-recurring/unlinked restrictions
 still apply. New entries belong to the selected calendar; activity logs identify
@@ -581,12 +592,14 @@ recurring event exceeds the supported duration limit, scheduling writes return
 409 with `code: "unsupported_schedule"` instead of omitting possible overlaps.
 
 Event insertion/update, owner participation and activity logging use one database
-transaction. API writes first lock the installation's `webcal_config` TIMEZONE
+transaction. API writes first lock the installation's `webcal_config` WEBCAL_PROGRAM_VERSION
 row, then the authenticated account's `webcal_api_users` row, before reading
 schedules, and hold protection through commit. Edits acquire these locks before
 the event lock. This deliberately serializes all API event writes, including
 different assistants using a nonuser calendar, without a new mutex table or
-requiring a target-calendar API identity. Browser and MCP writers
+requiring a target-calendar API identity. API bootstrap already requires the
+version row for every supported installation; a physical TIMEZONE row is optional.
+Browser and MCP writers
 do not participate in this calendar-lock protocol. SQLite obtains database-wide
 write intent before snapshot reads using an early managed update, including on
 PHP 8.2/8.3, rather than relying on a version-dependent `IMMEDIATE` setting.
