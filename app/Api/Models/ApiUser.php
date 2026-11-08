@@ -16,5 +16,5 @@ final class ApiUser extends User
   protected $keyType = 'string';
   public $incrementing = false;
   public $timestamps = false;
-  protected $fillable = ['username', 'auth_backend', 'subject_id'];
+  protected $fillable = ['username', 'auth_backend', 'subject_id', 'credential_generation'];
 }

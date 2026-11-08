@@ -159,6 +159,35 @@ Run these from the repository root unless specified otherwise:
   Legacy plaintext tokens require regeneration in Preferences.
 
 ## Mobile API
+- Credential lifecycle QA fixes: ApiCredentialGuard serializes issuance, renewal,
+  revocation and subject changes on the existing WEBCAL_PROGRAM_VERSION config
+  row before credential rows, matching the event-writer lock order. DBI account
+  deletion acquires the same mutex and holds its transaction through removal of
+  the legacy account, with shutdown rollback for fatal DBI failures. MySQL config
+  and API tables must be InnoDB; deletion also requires InnoDB webcal_user.
+  The 2026_11_08_000002 migration backfills credential_generation on users/tokens;
+  password/backend invalidation rotates it, recreation creates a new generation,
+  and stale/orphan credentials never inherit the replacement account binding.
+  Middleware rechecks generation before account-wide revocation so a stale failed
+  request cannot delete newer credentials. Issuance rechecks its password-derived
+  subject proof after acquiring the lock. TokenRequest retains Laravel's accepted
+  boolean representations; TokenController normalizes with Request.boolean().
+  PostgreSQL regression tests use WEBCALENDAR_API_TEST_POSTGRES_HOST with a
+  dedicated api_credential_test database, credential_test user and the synthetic
+  password specified in ApiCredentialConcurrencyTest. The fixture resets that
+  database's public schema. CI provisions a disposable PostgreSQL 17 service for
+  every PHP matrix entry; it must not silently skip those six tests. Real lock
+  waits are observed through pg_stat_activity, not inferred from sleeps. Tests
+  reproduce both original escaping-token races, both lock orderings, orphan-row
+  replay, stale password proofs and stale authentication failures.
+  Authentication reloads the API-user generation rather than trusting the guard's
+  cached tokenable relation, including identical-hash recreation during a request.
+  Final verification: PHP 8.2.34/8.3.36/8.4.27/8.5.12 each passed 1,252 tests,
+  6,107 assertions and only the existing optional external-DB skip, with all six
+  PostgreSQL regression cases executed in each version.
+  Full syntax matrix, actionlint and release-file classification passed. The
+  older local PHP 8.2 fixture image needed pgsql/pdo_pgsql installed for these
+  checks; CI explicitly enables both extensions.
 - Renewable sessions opt in via POST /tokens renewable=true. The additional
   2026_11_08 migration adds nullable metadata to the existing token table, keeping
   account-deletion/password/backend invalidation through tokens()->delete/DBI

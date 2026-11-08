@@ -23,6 +23,20 @@ concurrency:
 jobs:
   build-test:
     runs-on: ubuntu-24.04
+    services:
+      credential-postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: api_credential_test
+          POSTGRES_USER: credential_test
+          POSTGRES_PASSWORD: synthetic-test-password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U credential_test -d api_credential_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      WEBCALENDAR_API_TEST_POSTGRES_HOST: 127.0.0.1
     strategy:
       matrix:
         php-version: ['8.2', '8.3', '8.4', '8.5']
@@ -34,6 +48,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
+          extensions: pdo_pgsql, pgsql
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
       - name: PHPUnit Tests

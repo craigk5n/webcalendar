@@ -16,7 +16,7 @@ final class TokenController
   public function store(TokenRequest $request, DeviceTokenService $tokens): JsonResponse
   {
     $data = $request->validated();
-    return (new JsonResource($tokens->issue($data['username'], $data['password'], $data['device_name'], $data['renewable'] ?? false)))
+    return (new JsonResource($tokens->issue($data['username'], $data['password'], $data['device_name'], $request->boolean('renewable'))))
       ->response()->setStatusCode(Response::HTTP_CREATED);
   }
 

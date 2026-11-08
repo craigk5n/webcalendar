@@ -370,8 +370,29 @@ commands above before updating clients. The additional migration adds nullable
 session metadata to `webcal_api_tokens`; legacy tokens remain valid. MySQL/MariaDB
 requires both API tables to use InnoDB for atomic rotation and revocation.
 
+Run the API migrations during maintenance before serving the updated code. The
+credential-generation migration backfills existing users and tokens without
+changing their credential hashes. Every issued token retains that generation;
+authentication and renewal reject mismatched or missing generation bindings.
+Password/backend invalidation rotates the generation, and deleting/recreating a
+username establishes a distinct generation even if its stored password hash is
+identical. Restoring an orphaned token row cannot attach it to the replacement
+identity.
+
+Issuance, renewal, device/account revocation and legacy account deletion serialize
+on the existing `WEBCAL_PROGRAM_VERSION` configuration row before locking credential
+rows. The account-deletion transaction holds this lock through deletion of the
+legacy account record, and rolls back credentials if account removal fails. The
+row must exist. On MySQL/MariaDB, `webcal_config` and both API tables must be InnoDB;
+account deletion also requires `webcal_user` to use InnoDB. Missing mutex or
+nontransactional storage fails closed. Password sign-in rechecks the subject
+binding after acquiring the lock; stale authentication failures cannot revoke a
+replacement generation.
+
 Clients opt in by adding JSON `"renewable": true` to password sign-in. The 201
 `data` then additionally contains `refresh_token` and `refresh_expires_at` (ISO 8601).
+The optional field accepts JSON booleans, `0`/`1`, and `"0"`/`"1"`; omission is
+false. Other values return 422 without issuing credentials.
 `token` is an access token valid for 60 minutes by default. The refresh credential
 expires after 90 days without renewal; every successful rotation extends that
 deadline. There is no fixed maximum session age. Server administrators can adjust
@@ -737,6 +758,24 @@ limits, SQLite contention/retry exhaustion, and fresh-state revalidation. Remind
 tests cover relative/absolute delivery state, no-op schedules and rollback;
 failure-injection tests cover commit uncertainty and failed rollbacks. Fixtures
 use disposable databases and synthetic accounts.
+
+Credential-invalidation races run against PostgreSQL READ COMMITTED in
+`tests/ApiCredentialConcurrencyTest.php`. Provision an isolated PostgreSQL server
+with database `api_credential_test`, user `credential_test`, and the synthetic
+password `synthetic-test-password`, then run:
+
+```sh
+WEBCALENDAR_API_TEST_POSTGRES_HOST=127.0.0.1 php vendor/bin/phpunit -c tests/phpunit.xml --filter ApiCredentialConcurrencyTest
+```
+
+This fixture **resets the dedicated database's public schema** and installs
+synthetic accounts. It observes actual database lock waits between independent
+workers, covering renewal versus password invalidation and deletion/recreation,
+both acquisition orders, orphan token generations and stale authentication.
+CI supplies the disposable PostgreSQL service on PHP 8.2–8.5; without the explicit
+host variable these six cases are skipped locally. The ordinary SQLite HTTP
+suite additionally covers boolean normalization/422s, generation-migration
+backfill and credential rollback when account removal fails.
 
 `tests/fixtures/api-postgres-commit-abort.php` separately exercises actual
 PostgreSQL SERIALIZABLE commit failures through two synchronized connections,

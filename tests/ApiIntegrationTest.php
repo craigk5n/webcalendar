@@ -146,6 +146,70 @@ final class ApiIntegrationTest extends TestCase
     ])[0]);
   }
 
+  /** @dataProvider renewableBooleanValues */
+  public function testRenewableBooleanValuesAreNormalized(array $option, bool $renewable): void
+  {
+    [$status, $body] = $this->request('POST', '/v1/tokens', $option + [
+      'username' => 'alice', 'password' => 'secret', 'device_name' => 'Boolean fixture',
+    ]);
+    self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+    self::assertSame($renewable, isset($body['data']['refresh_token']));
+  }
+
+  public static function renewableBooleanValues(): array
+  {
+    return [
+      'omitted' => [[], false], 'true' => [['renewable' => true], true],
+      'false' => [['renewable' => false], false], 'one' => [['renewable' => 1], true],
+      'zero' => [['renewable' => 0], false], 'string one' => [['renewable' => '1'], true],
+      'string zero' => [['renewable' => '0'], false],
+    ];
+  }
+
+  /** @dataProvider invalidRenewableValues */
+  public function testInvalidRenewableValuesDoNotIssueCredentials(mixed $value): void
+  {
+    [$status] = $this->request('POST', '/v1/tokens', [
+      'username' => 'alice', 'password' => 'secret', 'device_name' => 'Boolean fixture', 'renewable' => $value,
+    ]);
+    self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status);
+    self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_api_tokens')->fetchColumn());
+  }
+
+  public static function invalidRenewableValues(): array
+  {
+    return [[null], ['true'], ['false'], [2], [-1], [[]]];
+  }
+
+  public function testGenerationMigrationPreservesExistingCredentials(): void
+  {
+    $token = $this->token();
+    $database = self::$directory . '/generation-migration.sqlite';
+    copy(self::$environment['WEBCALENDAR_DB_DATABASE'], $database);
+    $db = new PDO('sqlite:' . $database);
+    $path = 'app/Api/database/migrations/2026_11_08_000002_bind_credential_generations.php';
+    $environment = ['WEBCALENDAR_DB_DATABASE' => $database];
+    self::command([PHP_BINARY, 'bin/api.php', 'migrate:rollback', '--force', '--path=' . $path], $environment);
+    self::assertNotContains('credential_generation', array_column($db->query('PRAGMA table_info(webcal_api_users)')->fetchAll(PDO::FETCH_ASSOC), 'name'));
+    self::command([PHP_BINARY, 'bin/api.php', 'migrate', '--force', '--path=' . $path], $environment);
+    $user = $db->query("SELECT credential_generation FROM webcal_api_users WHERE username = 'alice'")->fetchColumn();
+    $row = $db->query('SELECT token, credential_generation FROM webcal_api_tokens WHERE id = ' . (int) $token)->fetch(PDO::FETCH_ASSOC);
+    self::assertNotEmpty($user);
+    self::assertSame($user, $row['credential_generation']);
+    self::assertSame(hash('sha256', explode('|', $token, 2)[1]), $row['token']);
+  }
+
+  public function testFailedAccountRemovalRollsBackCredentialDeletion(): void
+  {
+    $token = $this->token();
+    self::$db->exec("CREATE TRIGGER fail_account_removal BEFORE DELETE ON webcal_user BEGIN SELECT RAISE(ABORT, 'account removal fixture'); END");
+    try {
+      self::command([PHP_BINARY, '-r', $this->legacyScript('user_delete_user("alice");')], [], 1);
+      self::assertSame(1, (int) self::$db->query("SELECT COUNT(*) FROM webcal_api_users WHERE username = 'alice'")->fetchColumn());
+      self::assertSame(Response::HTTP_OK, $this->request('GET', '/v1/users/current', [], $token)[0]);
+    } finally { self::$db->exec('DROP TRIGGER fail_account_removal'); }
+  }
+
   public function testRefreshInactivityAndReplayInvalidateDeviceSession(): void
   {
     foreach (['expired', 'replay', 'disabled'] as $scenario) {
@@ -212,14 +276,13 @@ final class ApiIntegrationTest extends TestCase
       Illuminate\Database\Connection::resolverFor('sqlite', function ($pdo, $database, $prefix, $config) {
         return new class($pdo, $database, $prefix, $config) extends Illuminate\Database\SQLiteConnection {
           private bool $paused = false;
-          public function select($query, $bindings = [], $useReadPdo = true, array $fetchUsing = []) {
-            $rows = parent::select($query, $bindings, $useReadPdo, $fetchUsing);
-            if (!$this->paused && str_contains($query, 'webcal_api_tokens')) {
+          public function beginTransaction() {
+            if (!$this->paused) {
               $this->paused = true;
               fwrite(STDOUT, "ready\n"); fflush(STDOUT);
               if (trim(fgets(STDIN)) !== 'continue') { throw new RuntimeException('Missing renewal barrier'); }
             }
-            return $rows;
+            return parent::beginTransaction();
           }
         };
       });

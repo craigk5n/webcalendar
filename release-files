@@ -27,6 +27,7 @@ app/Api/Controllers/UserController.php
 app/Api/Exceptions/EventWriteException.php
 app/Api/database/migrations/2026_11_02_000001_create_api_tables.php
 app/Api/database/migrations/2026_11_08_000001_add_renewable_sessions.php
+app/Api/database/migrations/2026_11_08_000002_bind_credential_generations.php
 app/Api/Middleware/AuthenticateIdentity.php
 app/Api/Models/ApiToken.php
 app/Api/Models/ApiUser.php
@@ -47,6 +48,7 @@ app/Services/CalendarEventConflicts.php
 app/Services/CalendarEventData.php
 app/Services/CalendarEventWriter.php
 app/Services/ApiCredentialLifecycle.php
+app/Services/ApiCredentialGuard.php
 app/Services/DirectorySubject.php
 app/Services/CalendarIdentity.php
 app/Services/CalendarSelection.php

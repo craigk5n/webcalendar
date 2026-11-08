@@ -369,7 +369,7 @@ function user_update_user_password ( $user, $password ) {
  */
 function user_delete_user ( $user ) {
   require_once __DIR__ . '/../app/Services/ApiCredentialLifecycle.php';
-  \WebCalendar\Services\ApiCredentialLifecycle::revoke($user);
+  \WebCalendar\Services\ApiCredentialLifecycle::deleting($user, function () use ($user): void {
   // Get event ids for all events this user is a participant
   $events = get_users_event_ids ( $user );
 
@@ -491,6 +491,7 @@ function user_delete_user ( $user ) {
   // Delete user templates
   dbi_execute ( 'DELETE FROM webcal_user_template WHERE cal_login = ?',
     [$user] );
+  });
 }
 
 /**
