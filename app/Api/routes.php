@@ -9,6 +9,8 @@ use WebCalendar\Api\Controllers\TokenController;
 use WebCalendar\Api\Controllers\UserController;
 
 Route::post('/tokens', [TokenController::class, 'store'])->middleware('throttle:api-login');
+Route::post('/token-renewals', [\WebCalendar\Api\Controllers\RenewalController::class, 'store']);
+Route::delete('/sessions/current', [\WebCalendar\Api\Controllers\RenewalController::class, 'destroy']);
 Route::middleware(['auth:sanctum', 'api.identity'])->group(function (): void {
   Route::get('/users/current', [UserController::class, 'show']);
   Route::delete('/tokens/current', [TokenController::class, 'destroy']);

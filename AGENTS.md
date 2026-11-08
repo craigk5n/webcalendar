@@ -159,6 +159,78 @@ Run these from the repository root unless specified otherwise:
   Legacy plaintext tokens require regeneration in Preferences.
 
 ## Mobile API
+- Password-proof follow-up: database user_valid_login retains its boolean return
+  and accepts an optional fourth by-reference credential_proof output. Native
+  DatabasePasswordAuthentication returns a fingerprint tied to the exact verified
+  stored hash, or to its confirmed own rehash. CalendarIdentity compares that
+  proof to the profile reload before DeviceTokenService checks it under the mutex.
+  Never derive password proof from a post-verification find(). LDAP keeps its
+  separate directory-subject flow. Rehash writes compare-and-swap the old hash;
+  MySQL uses BINARY equality and checks column capacity before a potentially
+  truncating write. There is no unconditional revert. Unknown/replaced readback
+  hashes reject authentication; a rejected write can retain only the original
+  verified hash. The native helper ships in release-files and supports login
+  without Composer. PostgreSQL has eleven barrier-driven lifecycle/proof cases;
+  new barriers cover successful verification before profile reload and both sides
+  of a rehash write. CI also runs a native MySQL/MariaDB proof fixture against an
+  isolated database, covering non-strict narrow columns and case-insensitive CAS.
+  Verification: PHP 8.2.34/8.3.36/8.4.27/8.5.12 each passed 1,260 tests and
+  6,200 assertions, with all eleven PostgreSQL cases executed and only the
+  existing optional external-DB skip. Full syntax matrix, workflow actionlint,
+  and release classification passed. The Composer-free MySQL fixture passed on
+  PHP 8.5.12 / MariaDB 13.0.2. No additional migration is needed for this follow-up.
+- Credential lifecycle QA fixes: ApiCredentialGuard serializes issuance, renewal,
+  revocation and subject changes on the existing WEBCAL_PROGRAM_VERSION config
+  row before credential rows, matching the event-writer lock order. DBI account
+  deletion acquires the same mutex and holds its transaction through removal of
+  the legacy account, with shutdown rollback for fatal DBI failures. MySQL config
+  and API tables must be InnoDB; deletion also requires InnoDB webcal_user.
+  The 2026_11_08_000002 migration backfills credential_generation on users/tokens;
+  password/backend invalidation rotates it, recreation creates a new generation,
+  and stale/orphan credentials never inherit the replacement account binding.
+  Middleware rechecks generation before account-wide revocation so a stale failed
+  request cannot delete newer credentials. Issuance rechecks its password-derived
+  subject proof after acquiring the lock. TokenRequest retains Laravel's accepted
+  boolean representations; TokenController normalizes with Request.boolean().
+  PostgreSQL regression tests use WEBCALENDAR_API_TEST_POSTGRES_HOST with a
+  dedicated api_credential_test database, credential_test user and the synthetic
+  password specified in ApiCredentialConcurrencyTest. The fixture resets that
+  database's public schema. CI provisions a disposable PostgreSQL 17 service for
+  every PHP matrix entry; it must not silently skip those six tests. Real lock
+  waits are observed through pg_stat_activity, not inferred from sleeps. Tests
+  reproduce both original escaping-token races, both lock orderings, orphan-row
+  replay, stale password proofs and stale authentication failures.
+  Authentication reloads the API-user generation rather than trusting the guard's
+  cached tokenable relation, including identical-hash recreation during a request.
+  Final verification: PHP 8.2.34/8.3.36/8.4.27/8.5.12 each passed 1,252 tests,
+  6,107 assertions and only the existing optional external-DB skip, with all six
+  PostgreSQL regression cases executed in each version.
+  Full syntax matrix, actionlint and release-file classification passed. The
+  older local PHP 8.2 fixture image needed pgsql/pdo_pgsql installed for these
+  checks; CI explicitly enables both extensions.
+- Renewable sessions opt in via POST /tokens renewable=true. The additional
+  2026_11_08 migration adds nullable metadata to the existing token table, keeping
+  account-deletion/password/backend invalidation through tokens()->delete/DBI
+  effective for both access and refresh credentials. Refresh parents carry
+  session:refresh plus allowed event grants; api.identity explicitly rejects
+  refresh/consumed credentials as bearer access. POST /token-renewals and DELETE
+  /sessions/current accept refresh_token and a persisted 64-hex rotation_secret.
+  Defaults: 60-minute access, sliding 90-day inactivity, 120-second exact retry
+  recovery, no fixed maximum age. Only hashes persist; replacements derive from
+  domain-separated HMAC-SHA256 using the old secret and client rotation entropy.
+  Renewal locks the parent and retries transactional conflicts; recognized replay
+  commits revocation before returning 401. Keep old access valid until expiry for
+  in-flight readers. MySQL requires InnoDB API tables. Migration plus route-cache
+  rebuild precedes client rollout; legacy sessions need fresh password sign-in.
+  The full PHP 8.2.34/8.3.36/8.4.27/8.5.12 matrix passes 1,231 tests with 5,953
+  assertions and one optional external-DB skip each. Full syntax matrix passed;
+  changed runtime files were re-linted after the final grant-preservation check.
+  Tests include HTTP rotation/recovery/replay/inactivity/revocation, reduced grants,
+  and a two-connection WAL conflict/recovery regression. Release classification
+  was checked using a temporary Git index, leaving the user's index unchanged.
+  The local Compose runtime was blocked by its host timezone mount, so tests ran
+  in disposable PHP containers against synthetic SQLite databases; no live
+  database migration or hosted deployment was performed.
 - Assistant calendar selection uses `GET /calendars` and
   `/calendars/{calendar}/events` GET/POST/PATCH routes (PATCH adds `{event}`).
   Calendar IDs are existing login primary keys. CalendarSelection keeps the actor's

@@ -329,6 +329,8 @@ Send `Content-Type: application/json` for sign-in. Protected endpoints require
 | Method | Path | Purpose |
 | --- | --- | --- |
 | POST | `/tokens` | Verify credentials and issue a device token |
+| POST | `/token-renewals` | Rotate a renewable device session using its refresh credential |
+| DELETE | `/sessions/current` | Revoke a device session using its refresh credential, including after access expiration |
 | GET | `/users/current` | Read the signed-in user's profile |
 | DELETE | `/tokens/current` | Revoke the token used for this request |
 | GET | `/events?start_date=2026-11-01&end_date=2026-11-30` | Read event occurrences |
@@ -358,8 +360,95 @@ A successful response has HTTP status `201`:
 
 Store the token in iOS Keychain. Each sign-in creates a separate token, even if
 the device name matches a previous sign-in. Only the SHA-256 hash is stored in
-the database. Tokens expire after 30 days; this version requires signing in
-again after expiration and has no refresh-token endpoint.
+the database. Legacy tokens expire after 30 days and require password sign-in again.
+
+### Renewable device sessions
+
+Deploy the code, install Composer dependencies, run `php bin/api.php migrate --force`
+as the web-server user, and clear/rebuild compiled route caches using the installation
+commands above before updating clients. The additional migration adds nullable
+session metadata to `webcal_api_tokens`; legacy tokens remain valid. MySQL/MariaDB
+requires both API tables to use InnoDB for atomic rotation and revocation.
+
+Run the API migrations during maintenance before serving the updated code. The
+credential-generation migration backfills existing users and tokens without
+changing their credential hashes. Every issued token retains that generation;
+authentication and renewal reject mismatched or missing generation bindings.
+Password/backend invalidation rotates the generation, and deleting/recreating a
+username establishes a distinct generation even if its stored password hash is
+identical. Restoring an orphaned token row cannot attach it to the replacement
+identity.
+
+Issuance, renewal, device/account revocation and legacy account deletion serialize
+on the existing `WEBCAL_PROGRAM_VERSION` configuration row before locking credential
+rows. The account-deletion transaction holds this lock through deletion of the
+legacy account record, and rolls back credentials if account removal fails. The
+row must exist. On MySQL/MariaDB, `webcal_config` and both API tables must be InnoDB;
+account deletion also requires `webcal_user` to use InnoDB. Missing mutex or
+nontransactional storage fails closed. Password sign-in rechecks the subject
+binding after acquiring the lock; stale authentication failures cannot revoke a
+replacement generation.
+
+Database password authentication returns a per-call fingerprint of the exact
+credential verified. API authentication compares that proof with the subsequent
+profile lookup and again with current state under the credential mutex; a profile
+reload is never treated as password proof. Legitimate MD5 or outdated-cost upgrades
+use an exact-hash compare-and-swap and adopt only the verified original hash or
+the successfully stored upgrade. An intervening replacement rejects authentication
+without overwriting or restoring another request's credential. MySQL comparisons
+are binary even on case-insensitive columns; rehashing is skipped when column
+capacity cannot safely hold the new hash. Rejected writes retain the old proof
+only if the stored hash is still exactly the verified value. The legacy browser
+login function retains its boolean interface, and LDAP retains its separate
+directory-subject contract.
+
+Clients opt in by adding JSON `"renewable": true` to password sign-in. The 201
+`data` then additionally contains `refresh_token` and `refresh_expires_at` (ISO 8601).
+The optional field accepts JSON booleans, `0`/`1`, and `"0"`/`"1"`; omission is
+false. Other values return 422 without issuing credentials.
+`token` is an access token valid for 60 minutes by default. The refresh credential
+expires after 90 days without renewal; every successful rotation extends that
+deadline. There is no fixed maximum session age. Server administrators can adjust
+`access_lifetime_minutes`, `refresh_inactivity_days`, and `rotation_recovery_seconds`
+in `app/Api/config/webcalendar.php`. Face ID is a client-side unlock mechanism,
+not a server credential and not an extension to a revoked session.
+
+Refresh with JSON, without a bearer header:
+
+```http
+POST /api.php/v1/token-renewals
+Content-Type: application/json
+
+{"refresh_token":"1|<64-lowercase-hex-secret>","rotation_secret":"<64-lowercase-hex-random-value>"}
+```
+
+Generate `rotation_secret` from 32 cryptographically random bytes and save it
+together with the current credential in Keychain **before** sending. A 200 `data`
+returns the same five fields as renewable sign-in. Atomically replace the access/
+refresh pair and discard the saved rotation secret only after secure persistence.
+Never send the refresh credential to ordinary profile/event routes; they reject it.
+Serialize renewals on each device. An exact retry using the old refresh credential
+and the same rotation secret recovers the same committed response for 120 seconds
+by default, provided another rotation has not occurred. The server derives the
+replacement secrets with domain-separated HMAC-SHA256; only hashes are persisted.
+Recognized reuse outside that recovery window or with a different rotation secret
+revokes the device family and returns 401. A lost response that cannot be recovered
+requires password sign-in again. Network/503/429 failures do not prove revocation;
+retain credentials and respect Retry-After. Do not retry event-creation POSTs as
+part of renewal recovery.
+
+Renewal rechecks the enabled account, authentication backend and subject binding,
+and preserves the family's permitted event abilities. It cannot increase grants.
+Existing valid access tokens remain usable until expiration, allowing in-flight
+readers to finish. Revocation removes the parent, issued access tokens and consumed
+refresh hashes for that device together. `DELETE /tokens/current` with an access
+token revokes its entire family. To sign out with expired access, send the same
+JSON shape to `DELETE /sessions/current`; a matching current or recognized consumed
+refresh credential can revoke the family without issuing another token.
+
+Clients talking to older servers may receive only the legacy three sign-in fields.
+Continue to support those sessions; obtain refresh credentials through a new password
+sign-in after the server upgrade. Do not save the user's password to enable renewal.
 
 New tokens receive `events:read` and `events:write`; clients cannot request
 additional abilities. Existing read-only tokens are not upgraded: sign out and
@@ -682,6 +771,35 @@ limits, SQLite contention/retry exhaustion, and fresh-state revalidation. Remind
 tests cover relative/absolute delivery state, no-op schedules and rollback;
 failure-injection tests cover commit uncertainty and failed rollbacks. Fixtures
 use disposable databases and synthetic accounts.
+
+Credential-invalidation races run against PostgreSQL READ COMMITTED in
+`tests/ApiCredentialConcurrencyTest.php`. Provision an isolated PostgreSQL server
+with database `api_credential_test`, user `credential_test`, and the synthetic
+password `synthetic-test-password`, then run:
+
+```sh
+WEBCALENDAR_API_TEST_POSTGRES_HOST=127.0.0.1 php vendor/bin/phpunit -c tests/phpunit.xml --filter ApiCredentialConcurrencyTest
+```
+
+This fixture **resets the dedicated database's public schema** and installs
+synthetic accounts. It observes actual database lock waits between independent
+workers, covering renewal versus password invalidation and deletion/recreation,
+both acquisition orders, orphan token generations and stale authentication.
+CI supplies the disposable PostgreSQL service on PHP 8.2–8.5; without the explicit
+host variable these eleven cases are skipped locally. These include barriers after
+old-password verification but before profile reload, and before/after rehash writes;
+replacement access and refresh credentials must remain usable. The ordinary SQLite HTTP
+suite additionally covers boolean normalization/422s, generation-migration
+backfill, credential rollback when account removal fails, successful MD5/bcrypt
+upgrades, and rejection of missing stored passwords.
+
+The MySQL password-proof CI job runs `tests/fixtures/mysql-password-compatibility.php`
+without Composer against an isolated `password_compatibility_test` database (user
+`password_test`, synthetic password `synthetic-test-password`). Set
+`WEBCALENDAR_PASSWORD_TEST_MYSQL_HOST` to that server's host. The fixture resets
+its `webcal_user` table and covers narrow non-strict columns, upgrades after
+widening, binary compare-and-swap on case-insensitive columns, and preservation
+of a concurrent replacement.
 
 `tests/fixtures/api-postgres-commit-abort.php` separately exercises actual
 PostgreSQL SERIALIZABLE commit failures through two synchronized connections,

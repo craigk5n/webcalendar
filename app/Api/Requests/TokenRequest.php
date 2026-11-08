@@ -20,6 +20,7 @@ final class TokenRequest extends FormRequest
       'password' => ['required', 'string', 'max:4096'],
       'device_name' => ['required', 'string', 'max:100'],
       'abilities' => ['prohibited'],
+      'renewable' => ['sometimes', 'boolean'],
     ];
   }
 }

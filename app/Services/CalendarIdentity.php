@@ -11,10 +11,14 @@ final class CalendarIdentity
   public function authenticate(string $username, string $password): ?array
   {
     $GLOBALS['error'] = '';
-    if (!$this->isUser($username) || !user_valid_login($username, $password)) {
-      return null;
-    }
-    return $this->find($username);
+    if (!$this->isUser($username)) { return null; }
+    $database = $GLOBALS['user_inc'] === 'user.php';
+    $proof = null;
+    $valid = $database ? user_valid_login($username, $password, false, $proof) : user_valid_login($username, $password);
+    if (!$valid) { return null; }
+    $profile = $this->find($username);
+    if ($database && (!$profile || !$proof || !hash_equals($proof, $profile['subject_id']))) { return null; }
+    return $profile;
   }
 
   public function find(string $username): ?array
@@ -25,7 +29,7 @@ final class CalendarIdentity
       return null;
     }
     $subject = $GLOBALS['user_inc'] === 'user.php'
-      ? hash('sha256', 'database:' . $GLOBALS['api_password'])
+      ? DatabasePasswordAuthentication::subject((string) $GLOBALS['api_password'])
       : ($GLOBALS['api_subject_id'] ?? null);
     if ($subject === null) {
       throw new ServiceUnavailableHttpException(null, 'LDAP API authentication requires a readable entryUUID or objectGUID.');
