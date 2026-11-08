@@ -159,6 +159,29 @@ Run these from the repository root unless specified otherwise:
   Legacy plaintext tokens require regeneration in Preferences.
 
 ## Mobile API
+- Renewable sessions opt in via POST /tokens renewable=true. The additional
+  2026_11_08 migration adds nullable metadata to the existing token table, keeping
+  account-deletion/password/backend invalidation through tokens()->delete/DBI
+  effective for both access and refresh credentials. Refresh parents carry
+  session:refresh plus allowed event grants; api.identity explicitly rejects
+  refresh/consumed credentials as bearer access. POST /token-renewals and DELETE
+  /sessions/current accept refresh_token and a persisted 64-hex rotation_secret.
+  Defaults: 60-minute access, sliding 90-day inactivity, 120-second exact retry
+  recovery, no fixed maximum age. Only hashes persist; replacements derive from
+  domain-separated HMAC-SHA256 using the old secret and client rotation entropy.
+  Renewal locks the parent and retries transactional conflicts; recognized replay
+  commits revocation before returning 401. Keep old access valid until expiry for
+  in-flight readers. MySQL requires InnoDB API tables. Migration plus route-cache
+  rebuild precedes client rollout; legacy sessions need fresh password sign-in.
+  The full PHP 8.2.34/8.3.36/8.4.27/8.5.12 matrix passes 1,231 tests with 5,953
+  assertions and one optional external-DB skip each. Full syntax matrix passed;
+  changed runtime files were re-linted after the final grant-preservation check.
+  Tests include HTTP rotation/recovery/replay/inactivity/revocation, reduced grants,
+  and a two-connection WAL conflict/recovery regression. Release classification
+  was checked using a temporary Git index, leaving the user's index unchanged.
+  The local Compose runtime was blocked by its host timezone mount, so tests ran
+  in disposable PHP containers against synthetic SQLite databases; no live
+  database migration or hosted deployment was performed.
 - Assistant calendar selection uses `GET /calendars` and
   `/calendars/{calendar}/events` GET/POST/PATCH routes (PATCH adds `{event}`).
   Calendar IDs are existing login primary keys. CalendarSelection keeps the actor's

@@ -16,13 +16,13 @@ final class TokenController
   public function store(TokenRequest $request, DeviceTokenService $tokens): JsonResponse
   {
     $data = $request->validated();
-    return (new JsonResource($tokens->issue($data['username'], $data['password'], $data['device_name'])))
+    return (new JsonResource($tokens->issue($data['username'], $data['password'], $data['device_name'], $data['renewable'] ?? false)))
       ->response()->setStatusCode(Response::HTTP_CREATED);
   }
 
   public function destroy(Request $request): JsonResource
   {
-    $request->user()->currentAccessToken()->delete();
+    \WebCalendar\Services\RenewableSessionService::revoke($request->user()->currentAccessToken());
     return new JsonResource(['revoked' => true]);
   }
 }

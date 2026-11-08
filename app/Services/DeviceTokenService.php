@@ -10,17 +10,20 @@ use WebCalendar\Api\Models\ApiUser;
 
 final class DeviceTokenService
 {
-  public function issue(string $username, string $password, string $deviceName): array
+  public function issue(string $username, string $password, string $deviceName, bool $renewable = false): array
   {
     $profile = (new CalendarIdentity())->authenticate($username, $password);
     if (!$profile) {
       throw new AuthenticationException('Invalid credentials.');
     }
-    return DB::transaction(function () use ($username, $deviceName, $profile): array {
+    return DB::transaction(function () use ($username, $deviceName, $profile, $renewable): array {
       $user = ApiUser::firstOrCreate(['username' => $username], ['auth_backend' => $GLOBALS['user_inc'], 'subject_id' => $profile['subject_id']]);
       if ($user->auth_backend !== $GLOBALS['user_inc'] || $user->subject_id !== $profile['subject_id']) {
         $user->tokens()->delete();
         $user->update(['auth_backend' => $GLOBALS['user_inc'], 'subject_id' => $profile['subject_id']]);
+      }
+      if ($renewable) {
+        return (new RenewableSessionService())->issue($user, $deviceName);
       }
       $expires = now()->addDays(config('webcalendar.token_lifetime_days'));
       $token = $user->createToken($deviceName, ['events:read', 'events:write'], $expires);

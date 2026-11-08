@@ -329,6 +329,8 @@ Send `Content-Type: application/json` for sign-in. Protected endpoints require
 | Method | Path | Purpose |
 | --- | --- | --- |
 | POST | `/tokens` | Verify credentials and issue a device token |
+| POST | `/token-renewals` | Rotate a renewable device session using its refresh credential |
+| DELETE | `/sessions/current` | Revoke a device session using its refresh credential, including after access expiration |
 | GET | `/users/current` | Read the signed-in user's profile |
 | DELETE | `/tokens/current` | Revoke the token used for this request |
 | GET | `/events?start_date=2026-11-01&end_date=2026-11-30` | Read event occurrences |
@@ -358,8 +360,61 @@ A successful response has HTTP status `201`:
 
 Store the token in iOS Keychain. Each sign-in creates a separate token, even if
 the device name matches a previous sign-in. Only the SHA-256 hash is stored in
-the database. Tokens expire after 30 days; this version requires signing in
-again after expiration and has no refresh-token endpoint.
+the database. Legacy tokens expire after 30 days and require password sign-in again.
+
+### Renewable device sessions
+
+Deploy the code, install Composer dependencies, run `php bin/api.php migrate --force`
+as the web-server user, and clear/rebuild compiled route caches using the installation
+commands above before updating clients. The additional migration adds nullable
+session metadata to `webcal_api_tokens`; legacy tokens remain valid. MySQL/MariaDB
+requires both API tables to use InnoDB for atomic rotation and revocation.
+
+Clients opt in by adding JSON `"renewable": true` to password sign-in. The 201
+`data` then additionally contains `refresh_token` and `refresh_expires_at` (ISO 8601).
+`token` is an access token valid for 60 minutes by default. The refresh credential
+expires after 90 days without renewal; every successful rotation extends that
+deadline. There is no fixed maximum session age. Server administrators can adjust
+`access_lifetime_minutes`, `refresh_inactivity_days`, and `rotation_recovery_seconds`
+in `app/Api/config/webcalendar.php`. Face ID is a client-side unlock mechanism,
+not a server credential and not an extension to a revoked session.
+
+Refresh with JSON, without a bearer header:
+
+```http
+POST /api.php/v1/token-renewals
+Content-Type: application/json
+
+{"refresh_token":"1|<64-lowercase-hex-secret>","rotation_secret":"<64-lowercase-hex-random-value>"}
+```
+
+Generate `rotation_secret` from 32 cryptographically random bytes and save it
+together with the current credential in Keychain **before** sending. A 200 `data`
+returns the same five fields as renewable sign-in. Atomically replace the access/
+refresh pair and discard the saved rotation secret only after secure persistence.
+Never send the refresh credential to ordinary profile/event routes; they reject it.
+Serialize renewals on each device. An exact retry using the old refresh credential
+and the same rotation secret recovers the same committed response for 120 seconds
+by default, provided another rotation has not occurred. The server derives the
+replacement secrets with domain-separated HMAC-SHA256; only hashes are persisted.
+Recognized reuse outside that recovery window or with a different rotation secret
+revokes the device family and returns 401. A lost response that cannot be recovered
+requires password sign-in again. Network/503/429 failures do not prove revocation;
+retain credentials and respect Retry-After. Do not retry event-creation POSTs as
+part of renewal recovery.
+
+Renewal rechecks the enabled account, authentication backend and subject binding,
+and preserves the family's permitted event abilities. It cannot increase grants.
+Existing valid access tokens remain usable until expiration, allowing in-flight
+readers to finish. Revocation removes the parent, issued access tokens and consumed
+refresh hashes for that device together. `DELETE /tokens/current` with an access
+token revokes its entire family. To sign out with expired access, send the same
+JSON shape to `DELETE /sessions/current`; a matching current or recognized consumed
+refresh credential can revoke the family without issuing another token.
+
+Clients talking to older servers may receive only the legacy three sign-in fields.
+Continue to support those sessions; obtain refresh credentials through a new password
+sign-in after the server upgrade. Do not save the user's password to enable renewal.
 
 New tokens receive `events:read` and `events:write`; clients cannot request
 additional abilities. Existing read-only tokens are not upgraded: sign out and

@@ -120,6 +120,150 @@ final class ApiIntegrationTest extends TestCase
     self::assertArrayNotHasKey('subject_id', $body['data']);
   }
 
+  public function testRenewableSessionRotatesRecoversLostResponseAndRevokesFamily(): void
+  {
+    [$status, $body] = $this->request('POST', '/v1/tokens', [
+      'username' => 'alice', 'password' => 'secret', 'device_name' => 'iPhone', 'renewable' => true,
+    ]);
+    self::assertSame(201, $status);
+    $first = $body['data'];
+    self::assertArrayHasKey('refresh_token', $first);
+    self::assertLessThan(time() + 3700, strtotime($first['expires_at']));
+    self::assertSame(403, $this->request('GET', '/v1/users/current', [], $first['refresh_token'])[0]);
+    self::$db->exec("UPDATE webcal_api_tokens SET expires_at = '2000-01-01 00:00:00' WHERE id = " . (int) $first['token']);
+    $request = ['refresh_token' => $first['refresh_token'], 'rotation_secret' => str_repeat('a', 64)];
+    [$status, $body] = $this->request('POST', '/v1/token-renewals', $request);
+    self::assertSame(200, $status, json_encode($body));
+    $next = $body['data'];
+    self::assertNotSame($first['refresh_token'], $next['refresh_token']);
+    self::assertSame(200, $this->request('GET', '/v1/users/current', [], $next['token'])[0]);
+    [$status, $body] = $this->request('POST', '/v1/token-renewals', $request);
+    self::assertSame(200, $status);
+    self::assertSame($next, $body['data']);
+    self::assertSame(200, $this->request('DELETE', '/v1/tokens/current', [], $next['token'])[0]);
+    self::assertSame(401, $this->request('POST', '/v1/token-renewals', [
+      'refresh_token' => $next['refresh_token'], 'rotation_secret' => str_repeat('b', 64),
+    ])[0]);
+  }
+
+  public function testRefreshInactivityAndReplayInvalidateDeviceSession(): void
+  {
+    foreach (['expired', 'replay', 'disabled'] as $scenario) {
+      [$status, $body] = $this->request('POST', '/v1/tokens', [
+        'username' => 'alice', 'password' => 'secret', 'device_name' => 'iPhone', 'renewable' => true,
+      ]);
+      self::assertSame(201, $status);
+      $first = $body['data'];
+      if ($scenario === 'expired') {
+        self::$db->exec("UPDATE webcal_api_tokens SET expires_at = '2000-01-01 00:00:00'");
+      } elseif ($scenario === 'disabled') {
+        self::$db->exec("UPDATE webcal_user SET cal_enabled = 'N' WHERE cal_login = 'alice'");
+      } else {
+        self::assertSame(200, $this->request('POST', '/v1/token-renewals', [
+          'refresh_token' => $first['refresh_token'], 'rotation_secret' => str_repeat('a', 64),
+        ])[0]);
+      }
+      self::assertSame(401, $this->request('POST', '/v1/token-renewals', [
+        'refresh_token' => $first['refresh_token'], 'rotation_secret' => str_repeat('b', 64),
+      ])[0]);
+      self::assertSame(401, $this->request('GET', '/v1/users/current', [], $first['token'])[0]);
+      self::$db->exec("UPDATE webcal_user SET cal_enabled = 'Y' WHERE cal_login = 'alice'");
+    }
+  }
+
+  public function testRefreshRecoveryWindowValidationAndExpiredAccessSignOut(): void
+  {
+    [$status, $body] = $this->request('POST', '/v1/tokens', [
+      'username' => 'alice', 'password' => 'secret', 'device_name' => 'iPhone', 'renewable' => true,
+    ]);
+    self::assertSame(201, $status);
+    $first = $body['data'];
+    $request = ['refresh_token' => $first['refresh_token'], 'rotation_secret' => str_repeat('c', 64)];
+    self::assertSame(422, $this->request('POST', '/v1/token-renewals', array_merge($request, ['rotation_secret' => 'weak']))[0]);
+    [$status, $body] = $this->request('POST', '/v1/token-renewals', $request);
+    self::assertSame(200, $status);
+    $next = $body['data'];
+    self::$db->exec("UPDATE webcal_api_tokens SET rotated_at = '2000-01-01 00:00:00' WHERE rotated_at IS NOT NULL");
+    self::assertSame(401, $this->request('POST', '/v1/token-renewals', $request)[0]);
+    self::assertSame(401, $this->request('GET', '/v1/users/current', [], $next['token'])[0]);
+
+    [$status, $body] = $this->request('POST', '/v1/tokens', [
+      'username' => 'alice', 'password' => 'secret', 'device_name' => 'iPhone', 'renewable' => true,
+    ]);
+    self::assertSame(201, $status);
+    $first = $body['data'];
+    self::$db->exec("UPDATE webcal_api_tokens SET expires_at = '2000-01-01 00:00:00' WHERE id = " . (int) $first['token']);
+    self::assertSame(200, $this->request('DELETE', '/v1/sessions/current', [
+      'refresh_token' => $first['refresh_token'], 'rotation_secret' => str_repeat('d', 64),
+    ])[0]);
+    self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_api_tokens')->fetchColumn());
+  }
+
+  public function testConcurrentRenewalRecoversTheCommittedRotation(): void
+  {
+    self::$db->exec('PRAGMA journal_mode=WAL');
+    [$status, $body] = $this->request('POST', '/v1/tokens', [
+      'username' => 'alice', 'password' => 'secret', 'device_name' => 'iPhone', 'renewable' => true,
+    ]);
+    self::assertSame(201, $status);
+    $refresh = $body['data']['refresh_token'];
+    $rotation = str_repeat('e', 64);
+    $body = <<<'PHP'
+      Illuminate\Database\Connection::resolverFor('sqlite', function ($pdo, $database, $prefix, $config) {
+        return new class($pdo, $database, $prefix, $config) extends Illuminate\Database\SQLiteConnection {
+          private bool $paused = false;
+          public function select($query, $bindings = [], $useReadPdo = true, array $fetchUsing = []) {
+            $rows = parent::select($query, $bindings, $useReadPdo, $fetchUsing);
+            if (!$this->paused && str_contains($query, 'webcal_api_tokens')) {
+              $this->paused = true;
+              fwrite(STDOUT, "ready\n"); fflush(STDOUT);
+              if (trim(fgets(STDIN)) !== 'continue') { throw new RuntimeException('Missing renewal barrier'); }
+            }
+            return $rows;
+          }
+        };
+      });
+      $app = require 'app/Api/bootstrap.php';
+      $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+      echo json_encode($app->make(WebCalendar\Services\RenewableSessionService::class)->renew($argv[1], $argv[2]));
+      PHP;
+    $script = "require 'vendor/autoload.php'; " . $this->legacyScript($body);
+    $process = proc_open([PHP_BINARY, '-r', $script, $refresh, $rotation],
+      [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes, dirname(__DIR__), self::$environment);
+    try {
+      stream_set_timeout($pipes[1], 10);
+      self::assertSame("ready\n", fgets($pipes[1]));
+      [$status, $body] = $this->request('POST', '/v1/token-renewals', ['refresh_token' => $refresh, 'rotation_secret' => $rotation]);
+      self::assertSame(200, $status);
+      fwrite($pipes[0], "continue\n"); fclose($pipes[0]);
+      $output = stream_get_contents($pipes[1]);
+      $errors = stream_get_contents($pipes[2]);
+      self::assertSame($body['data'], json_decode($output, true), $output . $errors);
+    } finally {
+      foreach ($pipes as $pipe) { if (is_resource($pipe)) { fclose($pipe); } }
+      proc_terminate($process);
+      proc_close($process);
+    }
+    self::$db->exec('PRAGMA journal_mode=DELETE');
+  }
+
+  public function testRenewalPreservesReducedSessionAbilities(): void
+  {
+    [$status, $body] = $this->request('POST', '/v1/tokens', [
+      'username' => 'alice', 'password' => 'secret', 'device_name' => 'iPhone', 'renewable' => true,
+    ]);
+    self::assertSame(201, $status);
+    $refresh = $body['data']['refresh_token'];
+    self::sql('UPDATE webcal_api_tokens SET abilities = ? WHERE id = ?',
+      [json_encode(['session:refresh', 'events:read']), (int) $refresh]);
+    [$status, $body] = $this->request('POST', '/v1/token-renewals', [
+      'refresh_token' => $refresh, 'rotation_secret' => str_repeat('f', 64),
+    ]);
+    self::assertSame(200, $status);
+    self::assertSame(['events:read'], json_decode(self::$db->query('SELECT abilities FROM webcal_api_tokens WHERE id = ' . (int) $body['data']['token'])->fetchColumn(), true));
+    self::assertSame(403, $this->request('GET', '/v1/users/current', [], $body['data']['refresh_token'])[0]);
+  }
+
   public function testInitialMigrationCreatesTheCompleteSchemaAndCanBeReapplied(): void
   {
     $database = self::$directory . '/initial-migration.sqlite';

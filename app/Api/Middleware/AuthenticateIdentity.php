@@ -15,6 +15,10 @@ final class AuthenticateIdentity
   public function handle(Request $request, Closure $next): Response
   {
     $user = $request->user();
+    $abilities = $user->currentAccessToken()->abilities ?? [];
+    if (in_array('session:refresh', $abilities, true) || in_array('session:consumed', $abilities, true)) {
+      abort(Response::HTTP_FORBIDDEN);
+    }
     $identity = new CalendarIdentity();
     $profile = $identity->find($user->username);
     if (!$profile || $user->auth_backend !== $GLOBALS['user_inc']

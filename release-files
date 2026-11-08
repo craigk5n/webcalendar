@@ -22,9 +22,11 @@ app/Api/config/webcalendar.php
 app/Api/Controllers/EventController.php
 app/Api/Controllers/CalendarController.php
 app/Api/Controllers/TokenController.php
+app/Api/Controllers/RenewalController.php
 app/Api/Controllers/UserController.php
 app/Api/Exceptions/EventWriteException.php
 app/Api/database/migrations/2026_11_02_000001_create_api_tables.php
+app/Api/database/migrations/2026_11_08_000001_add_renewable_sessions.php
 app/Api/Middleware/AuthenticateIdentity.php
 app/Api/Models/ApiToken.php
 app/Api/Models/ApiUser.php
@@ -33,6 +35,7 @@ app/Api/Requests/EventWriteRequest.php
 app/Api/Requests/StoreEventRequest.php
 app/Api/Requests/UpdateEventRequest.php
 app/Api/Requests/TokenRequest.php
+app/Api/Requests/RenewalRequest.php
 app/Api/Resources/EventResource.php
 app/Api/Resources/CalendarResource.php
 app/Api/routes.php
@@ -48,6 +51,7 @@ app/Services/DirectorySubject.php
 app/Services/CalendarIdentity.php
 app/Services/CalendarSelection.php
 app/Services/DeviceTokenService.php
+app/Services/RenewableSessionService.php
 assistant_edit_handler.php
 assistant_edit.php
 AUTHORS
