@@ -53,6 +53,7 @@ app/Services/DirectorySubject.php
 app/Services/CalendarIdentity.php
 app/Services/CalendarSelection.php
 app/Services/DeviceTokenService.php
+app/Services/DatabasePasswordAuthentication.php
 app/Services/RenewableSessionService.php
 assistant_edit_handler.php
 assistant_edit.php

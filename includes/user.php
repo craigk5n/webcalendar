@@ -32,13 +32,15 @@ $admin_can_disable_user = true;
  * @param string $login    User login
  * @param string $password User password
  * @param bool $#silent  if true do not return any $error
+ * @param string|null $credential_proof Receives the verified credential fingerprint.
  *
  * @return bool True on success
  *
  * @global string Error message
  */
-function user_valid_login ( $login, $password, $silent=false ) {
+function user_valid_login ( $login, $password, $silent=false, &$credential_proof=null ) {
   global $error;
+  $credential_proof = null;
   $ret = $enabled = false;
 
   $sql = 'SELECT cal_login, cal_enabled, cal_passwd FROM webcal_user WHERE cal_login = ?';
@@ -46,44 +48,9 @@ function user_valid_login ( $login, $password, $silent=false ) {
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row && $row[0] != '' ) {
-      // Check the password
-      $expected_hash = $row[2];
-      if ( strlen ( $expected_hash ) == 32 && ctype_xdigit ( $expected_hash ) ) {
-        // Old-Style MD5 password
-        $supplied_hash = md5 ( $password );
-        $okay = hash_equals ( $supplied_hash, $expected_hash );
-        $rehash = true;
-      } else {
-        // New-Style Secure Password
-        $okay = password_verify ( $password, $expected_hash );
-        $rehash = password_needs_rehash ( $expected_hash, PASSWORD_DEFAULT );
-      }
-      // Upgrade insecurely stored passwords
-      if ( $okay && $rehash ) {
-        $new_hash = password_hash ( $password, PASSWORD_DEFAULT );
-        $sql = 'UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?';
-        // Non-fatal: if cal_passwd is too narrow for the 60-char bcrypt hash,
-        // strict-mode MySQL/MariaDB rejects this write with an error. Letting
-        // dbi_execute() fatal here would abort the login with a bare "Error
-        // executing query." Instead we swallow the failure and fall through to
-        // the verify/revert path below so the user can still log in (their
-        // password simply stays in the old format until the column is widened).
-        dbi_execute ( $sql, [$new_hash, $login], false, false );
-        // Verify the hash was stored correctly (column may be too narrow, or
-        // the write above may have been rejected/truncated).
-        $res2 = dbi_execute (
-          'SELECT cal_passwd FROM webcal_user WHERE cal_login = ?', [$login] );
-        if ( $res2 ) {
-          $row2 = dbi_fetch_row ( $res2 );
-          dbi_free_result ( $res2 );
-          if ( ! $row2 || $row2[0] !== $new_hash ) {
-            // New hash was not stored (rejected or truncated); restore the old
-            // hash to avoid lockout. Also non-fatal for the same reason.
-            dbi_execute ( 'UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?',
-              [$expected_hash, $login], false, false );
-          }
-        }
-      }
+      require_once __DIR__ . '/../app/Services/DatabasePasswordAuthentication.php';
+      $proof = \WebCalendar\Services\DatabasePasswordAuthentication::authenticate((string) $login, (string) $password, (string) $row[2]);
+      $okay = $proof !== null;
       $enabled = ( $row[1] === 'Y' );
       // MySQL seems to do case insensitive matching, so double-check the login.
       if ( $okay && $row[0] == $login )
@@ -120,6 +87,7 @@ function user_valid_login ( $login, $password, $silent=false ) {
     $error = db_error();
   }
 
+  if ( $ret ) { $credential_proof = $proof; }
   return $ret;
 }
 

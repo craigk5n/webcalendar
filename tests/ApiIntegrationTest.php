@@ -120,6 +120,45 @@ final class ApiIntegrationTest extends TestCase
     self::assertArrayNotHasKey('subject_id', $body['data']);
   }
 
+  /** @dataProvider outdatedPasswordHashes */
+  public function testPasswordRehashBindsCredentialsToTheVerifiedUpgrade(string $hash): void
+  {
+    self::sql('UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?', [$hash, 'alice']);
+    [$status, $body] = $this->request('POST', '/v1/tokens', [
+      'username' => 'alice', 'password' => 'secret', 'device_name' => 'Rehash fixture', 'renewable' => true,
+    ]);
+    self::assertSame(Response::HTTP_CREATED, $status, json_encode($body));
+    $stored = self::$db->query("SELECT cal_passwd FROM webcal_user WHERE cal_login = 'alice'")->fetchColumn();
+    self::assertNotSame($hash, $stored);
+    self::assertTrue(password_verify('secret', $stored));
+    self::assertFalse(password_needs_rehash($stored, PASSWORD_DEFAULT));
+    self::assertSame(hash('sha256', 'database:' . $stored), self::$db->query("SELECT subject_id FROM webcal_api_users WHERE username = 'alice'")->fetchColumn());
+    self::assertSame(Response::HTTP_OK, $this->request('GET', '/v1/users/current', [], $body['data']['token'])[0]);
+    self::assertSame(Response::HTTP_OK, $this->request('POST', '/v1/token-renewals', [
+      'refresh_token' => $body['data']['refresh_token'], 'rotation_secret' => str_repeat('c', 64),
+    ])[0]);
+    self::sql('UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?', [password_hash('secret', PASSWORD_DEFAULT), 'alice']);
+  }
+
+  public static function outdatedPasswordHashes(): array
+  {
+    return ['legacy MD5' => [md5('secret')], 'outdated bcrypt cost' => [password_hash('secret', PASSWORD_BCRYPT, ['cost' => 4])]];
+  }
+
+  public function testMissingStoredPasswordIsRejectedWithoutIssuingCredentials(): void
+  {
+    $token = $this->token();
+    self::sql('UPDATE webcal_user SET cal_passwd = NULL WHERE cal_login = ?', ['alice']);
+    try {
+      self::assertSame(Response::HTTP_UNAUTHORIZED, $this->request('GET', '/v1/users/current', [], $token)[0]);
+      [$status] = $this->request('POST', '/v1/tokens', [
+        'username' => 'alice', 'password' => 'secret', 'device_name' => 'Missing password fixture', 'renewable' => true,
+      ]);
+      self::assertSame(Response::HTTP_UNAUTHORIZED, $status);
+      self::assertSame(0, (int) self::$db->query('SELECT COUNT(*) FROM webcal_api_tokens')->fetchColumn());
+    } finally { self::sql('UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?', [password_hash('secret', PASSWORD_DEFAULT), 'alice']); }
+  }
+
   public function testRenewableSessionRotatesRecoversLostResponseAndRevokesFamily(): void
   {
     [$status, $body] = $this->request('POST', '/v1/tokens', [

@@ -389,6 +389,19 @@ nontransactional storage fails closed. Password sign-in rechecks the subject
 binding after acquiring the lock; stale authentication failures cannot revoke a
 replacement generation.
 
+Database password authentication returns a per-call fingerprint of the exact
+credential verified. API authentication compares that proof with the subsequent
+profile lookup and again with current state under the credential mutex; a profile
+reload is never treated as password proof. Legitimate MD5 or outdated-cost upgrades
+use an exact-hash compare-and-swap and adopt only the verified original hash or
+the successfully stored upgrade. An intervening replacement rejects authentication
+without overwriting or restoring another request's credential. MySQL comparisons
+are binary even on case-insensitive columns; rehashing is skipped when column
+capacity cannot safely hold the new hash. Rejected writes retain the old proof
+only if the stored hash is still exactly the verified value. The legacy browser
+login function retains its boolean interface, and LDAP retains its separate
+directory-subject contract.
+
 Clients opt in by adding JSON `"renewable": true` to password sign-in. The 201
 `data` then additionally contains `refresh_token` and `refresh_expires_at` (ISO 8601).
 The optional field accepts JSON booleans, `0`/`1`, and `"0"`/`"1"`; omission is
@@ -773,9 +786,20 @@ synthetic accounts. It observes actual database lock waits between independent
 workers, covering renewal versus password invalidation and deletion/recreation,
 both acquisition orders, orphan token generations and stale authentication.
 CI supplies the disposable PostgreSQL service on PHP 8.2–8.5; without the explicit
-host variable these six cases are skipped locally. The ordinary SQLite HTTP
+host variable these eleven cases are skipped locally. These include barriers after
+old-password verification but before profile reload, and before/after rehash writes;
+replacement access and refresh credentials must remain usable. The ordinary SQLite HTTP
 suite additionally covers boolean normalization/422s, generation-migration
-backfill and credential rollback when account removal fails.
+backfill, credential rollback when account removal fails, successful MD5/bcrypt
+upgrades, and rejection of missing stored passwords.
+
+The MySQL password-proof CI job runs `tests/fixtures/mysql-password-compatibility.php`
+without Composer against an isolated `password_compatibility_test` database (user
+`password_test`, synthetic password `synthetic-test-password`). Set
+`WEBCALENDAR_PASSWORD_TEST_MYSQL_HOST` to that server's host. The fixture resets
+its `webcal_user` table and covers narrow non-strict columns, upgrades after
+widening, binary compare-and-swap on case-insensitive columns, and preservation
+of a concurrent replacement.
 
 `tests/fixtures/api-postgres-commit-abort.php` separately exercises actual
 PostgreSQL SERIALIZABLE commit failures through two synchronized connections,

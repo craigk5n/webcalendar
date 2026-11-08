@@ -149,6 +149,57 @@ final class ApiCredentialConcurrencyTest extends TestCase
     ];
   }
 
+  /** @dataProvider passwordProofWindows */
+  public function testVerifiedPasswordCannotAdoptAConcurrentReplacement(string $mode, bool $legacyHash): void
+  {
+    if ($legacyHash) {
+      self::$db->prepare('UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?')->execute([md5('original'), 'race-user']);
+    }
+    [$worker, $pipes] = self::worker($mode);
+    try {
+      self::assertNotNull(json_decode(fgets($pipes[1]), true)['pid'] ?? null, 'The worker must pause at the password-proof boundary.');
+      $hash = password_hash('replacement', PASSWORD_DEFAULT);
+      self::$db->prepare('UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?')->execute([$hash, 'race-user']);
+      [$login, $loginPipes] = self::worker('sign-in');
+      fgets($loginPipes[1]);
+      try { $replacement = self::finish($login, $loginPipes); }
+      finally { self::stop($login, $loginPipes); }
+      $generation = self::$db->query("SELECT credential_generation FROM webcal_api_users WHERE username = 'race-user'")->fetchColumn();
+      $count = (int) self::$db->query('SELECT COUNT(*) FROM webcal_api_tokens')->fetchColumn();
+      fwrite($pipes[0], "continue\n");
+      self::assertSame(Response::HTTP_UNAUTHORIZED, self::finish($worker, $pipes)['status'], 'An old password must not issue replacement-generation credentials.');
+      self::assertSame($hash, self::$db->query("SELECT cal_passwd FROM webcal_user WHERE cal_login = 'race-user'")->fetchColumn());
+      self::assertSame($generation, self::$db->query("SELECT credential_generation FROM webcal_api_users WHERE username = 'race-user'")->fetchColumn());
+      self::assertSame($count, (int) self::$db->query('SELECT COUNT(*) FROM webcal_api_tokens')->fetchColumn());
+      $response = json_decode(self::command(['tests/fixtures/api-credential-worker.php', 'authenticate', $replacement['token']]), true);
+      self::assertSame(Response::HTTP_OK, $response['status']);
+      $response = json_decode(self::command(['tests/fixtures/api-credential-worker.php', 'refresh', $replacement['refresh_token']]), true);
+      self::assertSame(Response::HTTP_OK, $response['status']);
+    } finally { self::stop($worker, $pipes); }
+  }
+
+  public static function passwordProofWindows(): array
+  {
+    return [
+      'verified password before profile reload, renewable' => ['verified-issue', false],
+      'verified password before profile reload, legacy token' => ['verified-issue-legacy', false],
+      'legacy rehash before conditional write' => ['rehash-before', true],
+      'rehash committed before readback' => ['rehash-after', true],
+    ];
+  }
+
+  public function testRejectedRehashOnNarrowStorageKeepsTheVerifiedCredential(): void
+  {
+    self::$db->exec("UPDATE webcal_user SET cal_passwd = '" . md5('original') . "'");
+    self::$db->exec('ALTER TABLE webcal_user ALTER COLUMN cal_passwd TYPE VARCHAR(32)');
+    try {
+      $issued = json_decode(self::command(['tests/fixtures/api-credential-worker.php', 'issue']), true);
+      self::assertSame(md5('original'), self::$db->query("SELECT cal_passwd FROM webcal_user WHERE cal_login = 'race-user'")->fetchColumn());
+      $response = json_decode(self::command(['tests/fixtures/api-credential-worker.php', 'authenticate', $issued['token']]), true);
+      self::assertSame(Response::HTTP_OK, $response['status']);
+    } finally { self::$db->exec('ALTER TABLE webcal_user ALTER COLUMN cal_passwd TYPE VARCHAR(255)'); }
+  }
+
   private static function waitForLock(int $pid): void
   {
     $deadline = microtime(true) + 10;

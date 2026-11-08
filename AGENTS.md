@@ -159,6 +159,26 @@ Run these from the repository root unless specified otherwise:
   Legacy plaintext tokens require regeneration in Preferences.
 
 ## Mobile API
+- Password-proof follow-up: database user_valid_login retains its boolean return
+  and accepts an optional fourth by-reference credential_proof output. Native
+  DatabasePasswordAuthentication returns a fingerprint tied to the exact verified
+  stored hash, or to its confirmed own rehash. CalendarIdentity compares that
+  proof to the profile reload before DeviceTokenService checks it under the mutex.
+  Never derive password proof from a post-verification find(). LDAP keeps its
+  separate directory-subject flow. Rehash writes compare-and-swap the old hash;
+  MySQL uses BINARY equality and checks column capacity before a potentially
+  truncating write. There is no unconditional revert. Unknown/replaced readback
+  hashes reject authentication; a rejected write can retain only the original
+  verified hash. The native helper ships in release-files and supports login
+  without Composer. PostgreSQL has eleven barrier-driven lifecycle/proof cases;
+  new barriers cover successful verification before profile reload and both sides
+  of a rehash write. CI also runs a native MySQL/MariaDB proof fixture against an
+  isolated database, covering non-strict narrow columns and case-insensitive CAS.
+  Verification: PHP 8.2.34/8.3.36/8.4.27/8.5.12 each passed 1,260 tests and
+  6,200 assertions, with all eleven PostgreSQL cases executed and only the
+  existing optional external-DB skip. Full syntax matrix, workflow actionlint,
+  and release classification passed. The Composer-free MySQL fixture passed on
+  PHP 8.5.12 / MariaDB 13.0.2. No additional migration is needed for this follow-up.
 - Credential lifecycle QA fixes: ApiCredentialGuard serializes issuance, renewal,
   revocation and subject changes on the existing WEBCAL_PROGRAM_VERSION config
   row before credential rows, matching the event-writer lock order. DBI account

@@ -70,3 +70,30 @@ jobs:
         run: composer install --no-interaction --prefer-dist --no-progress
       - name: Test API through Apache with disposable SQLite storage
         run: sh tests/run-api-apache-tests.sh
+
+  mysql-password-proof:
+    runs-on: ubuntu-24.04
+    name: MySQL password-proof compatibility
+    services:
+      mysql:
+        image: mariadb:13.0.2
+        env:
+          MARIADB_DATABASE: password_compatibility_test
+          MARIADB_USER: password_test
+          MARIADB_PASSWORD: synthetic-test-password
+          MARIADB_ROOT_PASSWORD: synthetic-root-password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "healthcheck.sh --connect --innodb_initialized"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: mysqli, pdo_mysql
+      - name: Verify narrow non-strict storage and concurrent hash replacement
+        env:
+          WEBCALENDAR_PASSWORD_TEST_MYSQL_HOST: 127.0.0.1
+        run: php tests/fixtures/mysql-password-compatibility.php

@@ -32,7 +32,14 @@ function barrier(): void
 }
 
 $mode = $argv[1];
-if ($mode === 'sign-in-paused') {
+if (str_starts_with($mode, 'verified-issue') || str_starts_with($mode, 'rehash-')) {
+  $GLOBALS['password_barrier_mode'] = $mode;
+  require __DIR__ . '/api-password-barriers.php';
+  try {
+    $issued = (new DeviceTokenService())->issue('race-user', 'original', 'Verification fixture', $mode !== 'verified-issue-legacy');
+    $result = ['status' => Response::HTTP_OK, 'credentials' => $issued];
+  } catch (AuthenticationException $exception) { $result = ['status' => Response::HTTP_UNAUTHORIZED]; }
+} elseif ($mode === 'sign-in-paused') {
   $paused = false;
   ApiUser::updated(function () use (&$paused): void {
     if (!$paused) { $paused = true; barrier(); }
