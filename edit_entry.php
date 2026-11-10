@@ -709,7 +709,9 @@ $tabI = 0;
         <?php } /* end tasks only */ ?>
 
         <?php if ($DISABLE_LOCATION_FIELD != 'Y') { ?>
-          <label for="location" data-toggle="tooltip" data-placement="top" title="<?php etooltip('location-help'); ?>">
+
+<label for="entry_location" data-placement="top" data-toggle="tooltip" title="<?php
+ etooltip('location-help'); ?>">
             <?php etranslate('Location'); ?>:</label>
           <input class="form-control" type="text" name="location" id="entry_location" size="55" value="<?php echo htmlspecialchars($location); ?>">
         <?php } ?>
