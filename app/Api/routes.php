@@ -15,6 +15,8 @@ Route::middleware(['auth:sanctum', 'api.identity'])->group(function (): void {
   Route::get('/users/current', [UserController::class, 'show']);
   Route::delete('/tokens/current', [TokenController::class, 'destroy']);
   Route::get('/events', [EventController::class, 'index'])->middleware('abilities:events:read');
+  Route::get('/search-results', [\WebCalendar\Api\Controllers\SearchController::class, 'index'])->middleware('abilities:events:read');
+  Route::get('/calendars/{calendar}/search-results', [\WebCalendar\Api\Controllers\SearchController::class, 'index'])->middleware('abilities:events:read');
   Route::get('/calendars', [CalendarController::class, 'index'])->middleware('abilities:events:read');
   Route::get('/calendars/{calendar}/events', [EventController::class, 'index'])->middleware('abilities:events:read');
   Route::post('/calendars/{calendar}/events', [EventController::class, 'store'])->middleware('abilities:events:write');

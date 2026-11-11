@@ -159,6 +159,33 @@ Run these from the repository root unless specified otherwise:
   Legacy plaintext tokens require regeneration in Preferences.
 
 ## Mobile API
+- Full-history search uses authenticated `GET /search-results` and
+  `/calendars/{calendar}/search-results` with events:read. SearchRequest validates
+  literal q (1–200), limit (1–100, default 50) and descending-ID cursor; selectors
+  are prohibited. CalendarSearch activates/rechecks selection and filters effective
+  visibility in SQL before paging, including the next-page hint; time-only access
+  is denied. SearchPageResource wraps results/cursor and EventResource restricts
+  nested fields. Four new runtime files are classified in release-files. Deploy
+  source and rebuild route caches; there is no migration. See docs/api.md.
+- Search returns one stored repeating-series summary, never unbounded occurrence
+  expansion. Its nested event is seed metadata and can_edit is false; the seed
+  may itself be excluded. Clients browse actual occurrences through bounded event
+  reads, filtering by ID. Detached stored records remain separate IDs. Search
+  literal matching escapes !/%/_ with SQL ESCAPE '!'; LOWER uses backend Unicode
+  behavior (SQLite defaults to ASCII). Results order by descending ID rather than
+  event dates, so old and future events are equally eligible.
+- Search verification (November 11, 2026): four new API integration tests pass
+  with 103 assertions on PHP 8.2.34/8.3.36/8.4.27/8.5.12. The final complete
+  PHP 8.5 suite ran 1,264 tests and 6,162 assertions with zero failures and six
+  optional disposable-PostgreSQL/external-DB skips, including the 143-case API
+  suite and release classification with the new runtime files staged normally.
+  Earlier full matrix runs on 8.2–8.5 had the same skips; the initial untracked-file
+  packaging failure was resolved by staging those files (8.3/8.4 had excluded that
+  one assertion and validated packaging separately). Full PHP lint passes on
+  8.2–8.5 (1,207/1,208 files). Normal Compose startup was blocked by the host
+  /etc/localtime timezone mount; isolated containers ran these checks without
+  connecting to the development database. No hosted deployment was performed.
+
 - Password-proof follow-up: database user_valid_login retains its boolean return
   and accepts an optional fourth by-reference credential_proof output. Native
   DatabasePasswordAuthentication returns a fingerprint tied to the exact verified

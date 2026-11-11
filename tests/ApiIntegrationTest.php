@@ -2054,6 +2054,93 @@ final class ApiIntegrationTest extends TestCase
     self::assertSame('Administrator edit', self::$db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetchColumn());
   }
 
+  public function testSearchFindsHistoryFutureAndLiteralTextWithStablePages(): void
+  {
+    $this->event(1, 'Studio past', 'alice');
+    $this->event(2, 'Other title', 'alice');
+    $this->event(3, 'Future STUDIO', 'alice', 'R', 'W');
+    $this->event(4, 'Studio deleted', 'alice', 'P', 'D');
+    $this->event(5, 'Studio task', 'alice');
+    $this->event(6, 'Studio other calendar', 'admin');
+    $this->event(7, '100%_! literal', 'alice');
+    self::sql("UPDATE webcal_entry SET cal_date = 19900101 WHERE cal_id = 1");
+    self::sql("UPDATE webcal_entry SET cal_date = 20400101 WHERE cal_id = 3");
+    self::sql("UPDATE webcal_entry SET cal_location = 'Studio' WHERE cal_id = 2");
+    self::sql("UPDATE webcal_entry SET cal_type = 'T' WHERE cal_id = 5");
+    $token = $this->token();
+    [$status, $body] = $this->request('GET', '/v1/search-results?q=studio&limit=2', [], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    self::assertSame([3, 2], array_column(array_column($body['data']['results'], 'event'), 'id'));
+    self::assertSame('3', (string) $body['data']['results'][0]['id']);
+    self::assertFalse($body['data']['results'][0]['is_recurring']);
+    self::assertSame('2040-01-01', $body['data']['results'][0]['event']['date']);
+    self::assertFalse($body['data']['results'][0]['event']['can_edit']);
+    self::assertTrue($body['data']['results'][1]['event']['can_edit']);
+    self::assertSame('2', $body['data']['next_cursor']);
+    [$status, $page] = $this->request('GET', '/v1/search-results?q=studio&limit=2&cursor=2', [], $token);
+    self::assertSame([1], array_column(array_column($page['data']['results'], 'event'), 'id'));
+    self::assertNull($page['data']['next_cursor']);
+    foreach (['100%_!', '%', '_', '!'] as $query) {
+      [$status, $page] = $this->request('GET', '/v1/search-results?q=' . rawurlencode($query), [], $token);
+      self::assertSame(Response::HTTP_OK, $status, json_encode($page));
+      self::assertSame([7], array_column(array_column($page['data']['results'], 'event'), 'id'));
+    }
+    self::sql("UPDATE webcal_entry SET cal_description = 'Needle in description' WHERE cal_id = 2");
+    [, $page] = $this->request('GET', '/v1/search-results?q=needle', [], $token);
+    self::assertSame([2], array_column(array_column($page['data']['results'], 'event'), 'id'));
+  }
+
+  public function testSearchReturnsOneSeriesSummaryRatherThanInventedOccurrences(): void
+  {
+    $this->event(1, 'Daily studio', 'alice');
+    self::sql("UPDATE webcal_entry SET cal_type = 'M' WHERE cal_id = 1");
+    self::sql("INSERT INTO webcal_entry_repeats (cal_id, cal_type, cal_frequency) VALUES (1, 'daily', 1)");
+    self::sql("INSERT INTO webcal_entry_repeats_not (cal_id, cal_date, cal_exdate) VALUES (1, 20261102, 1)");
+    $token = $this->token();
+    [$status, $body] = $this->request('GET', '/v1/search-results?q=studio', [], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    self::assertCount(1, $body['data']['results']);
+    self::assertTrue($body['data']['results'][0]['is_recurring']);
+    self::assertFalse($body['data']['results'][0]['event']['can_edit']);
+    self::assertSame('2026-11-02', $body['data']['results'][0]['event']['date'], 'Series seed is metadata, even when excluded as an occurrence.');
+    [, $excluded] = $this->request('GET', '/v1/events?start_date=2026-11-02&end_date=2026-11-02', [], $token);
+    self::assertSame([], $excluded['data']);
+    [, $occurrence] = $this->request('GET', '/v1/events?start_date=2026-11-03&end_date=2026-11-03', [], $token);
+    self::assertSame([1], array_column($occurrence['data'], 'id'));
+  }
+
+  public function testSearchRequiresAuthenticationAndValidBoundedInputs(): void
+  {
+    self::assertSame(Response::HTTP_UNAUTHORIZED, $this->request('GET', '/v1/search-results?q=test')[0]);
+    $token = $this->token();
+    foreach (['', '?q=', '?q=%20%20', '?q=x&limit=101', '?q=x&limit=0', '?q=x&cursor=bad', '?q=x&calendar=admin', '?q=' . str_repeat('a', 201)] as $query) {
+      self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $this->request('GET', '/v1/search-results' . $query, [], $token)[0], $query);
+    }
+    self::$db->exec("UPDATE webcal_api_tokens SET abilities = '[\"events:write\"]'");
+    self::assertSame(Response::HTTP_FORBIDDEN, $this->request('GET', '/v1/search-results?q=test', [], $token)[0]);
+  }
+
+  public function testSearchRechecksDelegationVisibilityAndTimeOnlyRestriction(): void
+  {
+    $this->event(1, 'Studio public', 'admin');
+    $this->event(2, 'Studio private', 'admin', 'R');
+    $token = $this->token();
+    self::assertSame(Response::HTTP_FORBIDDEN, $this->request('GET', '/v1/calendars/admin/search-results?q=studio', [], $token)[0]);
+    self::sql("INSERT INTO webcal_asst VALUES ('admin', 'alice')");
+    self::sql("INSERT OR REPLACE INTO webcal_config VALUES ('UAC_ENABLED', 'Y')");
+    self::sql('INSERT OR REPLACE INTO webcal_access_function VALUES (?, ?)', ['alice', str_repeat('Y', 28)]);
+    self::sql("INSERT INTO webcal_access_user (cal_login, cal_other_user, cal_can_view, cal_can_edit) VALUES ('alice', 'admin', 1, 0)");
+    [$status, $body] = $this->request('GET', '/v1/calendars/admin/search-results?q=studio&limit=1', [], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    self::assertSame([1], array_column(array_column($body['data']['results'], 'event'), 'id'));
+    self::assertNull($body['data']['next_cursor'], 'Hidden matches must not create pagination hints.');
+    self::assertSame('admin', $body['data']['results'][0]['event']['calendar_id']);
+    self::sql("UPDATE webcal_access_user SET cal_see_time_only = 'Y'");
+    self::assertSame(Response::HTTP_FORBIDDEN, $this->request('GET', '/v1/calendars/admin/search-results?q=studio', [], $token)[0]);
+    self::$db->exec('DELETE FROM webcal_asst');
+    self::assertSame(Response::HTTP_FORBIDDEN, $this->request('GET', '/v1/calendars/admin/search-results?q=studio', [], $token)[0]);
+  }
+
   private function token(): string
   {
     [$status, $body] = $this->request('POST', '/v1/tokens', ['username' => 'alice', 'password' => 'secret', 'device_name' => 'iPhone']);

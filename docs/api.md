@@ -564,6 +564,56 @@ continuations, including when the requested range starts after the event began.
 Their time/duration describe the portion on that day; edit the starting-day event,
 not a continuation fragment.
 
+### Search events across all dates
+
+`GET /api.php/v1/search-results?q=studio` searches the authenticated user's
+calendar. `GET /api.php/v1/calendars/{calendar}/search-results?q=studio` searches
+one explicitly delegated calendar using the same selection/visibility policy as
+event reads. Both require bearer authentication and `events:read`.
+
+- `q` is required, trimmed, and 1–200 characters. It matches a literal substring
+  in title, stored description or location. `%`, `_` and `!` are literal characters,
+  not search operators. Case folding uses the database's `LOWER` behavior (SQLite
+  only folds ASCII by default); HTML descriptions are searched as stored text.
+- No date bounds are required. Past and future records are eligible, including
+  accepted events and pending invitations. Tasks, journals and rejected/deleted
+  participation records are excluded.
+- `limit` is optional, defaults to 50 and is bounded to 1–100. Results are ordered
+  by descending event ID (most recently added first), independently of event date.
+- Pass the returned `next_cursor` as `cursor` with the same query/calendar to read
+  the next page. Null means there is no next page. IDs make paging stable against
+  newer insertions; this is not a snapshot across edits/deletions. Permission
+  filtering happens before pagination, including the next-page hint.
+- Each result has a string `id`, Boolean `is_recurring` and nested `event` with
+  the usual event fields, calendar metadata and effective `can_edit`. Each stored
+  repeating series appears once; it is not expanded into an unlimited sequence.
+  For a series, `event.date`/`starts_at` describe its stored seed, **not** a promised
+  next/actual occurrence; the seed date may be excluded. `can_edit` is false.
+  Use bounded `/events` reads and filter by event ID to browse actual occurrences,
+  preserving recurrence exclusions and timezone semantics. Separately stored
+  detached/linked entries retain their own record IDs and editing restrictions.
+
+Response shape (event shown abbreviated):
+
+```json
+{
+  "data": {
+    "results": [
+      {"id": "42", "is_recurring": true, "event": {"id": 42, "date": "1990-01-01", "title": "Studio", "can_edit": false}}
+    ],
+    "next_cursor": "42"
+  }
+}
+```
+
+The next cursor is present only when more authorized matching records exist.
+Query selectors `user`, `username` and `calendar` are prohibited; select via the
+route. Undelegated, disabled or time-only calendars return 403. Standard API
+validation (422), authentication (401) and rate-limit (429/Retry-After) rules apply.
+Search requires no new migration. Deploy these source files (included in
+`release-files`) and clear/rebuild route caches. Older servers return 404; the iOS
+app explains that a server update is needed and retains the session.
+
 ### Create an event
 
 `POST /events` requires an `events:write` token. It creates a one-off event with
