@@ -159,6 +159,34 @@ Run these from the repository root unless specified otherwise:
   Legacy plaintext tokens require regeneration in Preferences.
 
 ## Mobile API
+- Full-history search uses authenticated `GET /search-results` and
+  `/calendars/{calendar}/search-results` with events:read. SearchRequest validates
+  literal q (1–200), limit (1–100, default 50) and descending-ID cursor; selectors
+  are prohibited. CalendarSearch activates/rechecks selection and filters effective
+  visibility in SQL before paging, including the next-page hint; time-only access
+  is denied. SearchPageResource wraps results/cursor and EventResource restricts
+  nested fields. Four new runtime files are classified in release-files. Deploy
+  source and rebuild route caches; there is no migration. See docs/api.md.
+- Search returns one stored repeating-series summary, never unbounded occurrence
+  expansion. Its nested event is seed metadata and can_edit is false; the seed
+  may itself be excluded. Clients browse actual occurrences through bounded event
+  reads, filtering by ID. Detached stored records remain separate IDs. Search
+  literal matching escapes !/%/_ with SQL ESCAPE '!'; apply database LOWER to
+  both the column and bound pattern, without PHP case folding. Mixing mb_strtolower
+  with SQLite's ASCII-only LOWER makes even identical non-ASCII queries miss.
+  Unicode folding remains database-dependent. Results order by descending ID rather than
+  event dates, so old and future events are equally eligible.
+- Search verification (November 11, 2026): three SQLite regressions reproduced
+  exact ÉCOLE queries missing title/description/location before the normalization
+  fix. All seven search cases now pass (136 assertions), retaining ASCII casing
+  and literal !/%/_ checks. Complete suites on PHP 8.2.34/8.3.36/8.4.27/8.5.12
+  each ran 1,267 tests and 6,195 assertions with zero failures and six optional
+  disposable-PostgreSQL/external-DB skips, including the 146-case API suite and
+  release classification. Full PHP lint passes on 8.2–8.5 (1,207/1,208 files).
+  Normal Compose startup was blocked by the host /etc/localtime timezone mount;
+  isolated containers ran these checks without connecting to the development
+  database. No hosted deployment was performed.
+
 - Password-proof follow-up: database user_valid_login retains its boolean return
   and accepts an optional fourth by-reference credential_proof output. Native
   DatabasePasswordAuthentication returns a fingerprint tied to the exact verified
