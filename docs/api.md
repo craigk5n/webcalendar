@@ -573,8 +573,10 @@ event reads. Both require bearer authentication and `events:read`.
 
 - `q` is required, trimmed, and 1–200 characters. It matches a literal substring
   in title, stored description or location. `%`, `_` and `!` are literal characters,
-  not search operators. Case folding uses the database's `LOWER` behavior (SQLite
-  only folds ASCII by default); HTML descriptions are searched as stored text.
+  not search operators. Both stored text and the query use the same database
+  `LOWER` normalization, so identical non-ASCII text matches. SQLite only folds
+  ASCII by default, so different non-ASCII letter cases may still not match.
+  HTML descriptions are searched as stored text.
 - No date bounds are required. Past and future records are eligible, including
   accepted events and pending invitations. Tasks, journals and rejected/deleted
   participation records are excluded.

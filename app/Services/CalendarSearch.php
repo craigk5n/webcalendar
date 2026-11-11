@@ -19,7 +19,7 @@ final class CalendarSearch
     $access = new CalendarEventAccess();
     if (!$access->canViewDetails($calendar)) { throw new AuthorizationException(); }
     $visibility = array_values(array_filter(['P', 'R', 'C'], fn ($value) => $access->calendarPermission('view', $calendar, 'E', $value)));
-    $pattern = '%' . str_replace(['!', '%', '_'], ['!!', '!%', '!_'], mb_strtolower($input['q'])) . '%';
+    $pattern = '%' . str_replace(['!', '%', '_'], ['!!', '!%', '!_'], $input['q']) . '%';
     $limit = (int) ($input['limit'] ?? self::DEFAULT_PAGE_SIZE);
     $rows = DB::table('webcal_entry as e')
       ->join('webcal_entry_user as u', 'u.cal_id', '=', 'e.cal_id')
@@ -27,7 +27,7 @@ final class CalendarSearch
       ->whereIn('e.cal_type', ['E', 'M'])->whereIn('e.cal_access', $visibility)
       ->where(function (Builder $query) use ($pattern): void {
         foreach (['cal_name', 'cal_description', 'cal_location'] as $column) {
-          $query->orWhereRaw("LOWER(e.$column) LIKE ? ESCAPE '!'", [$pattern]);
+          $query->orWhereRaw("LOWER(e.$column) LIKE LOWER(?) ESCAPE '!'", [$pattern]);
         }
       })
       ->when(isset($input['cursor']), fn (Builder $query) => $query->where('e.cal_id', '<', (int) $input['cursor']))

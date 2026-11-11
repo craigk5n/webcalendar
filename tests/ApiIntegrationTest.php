@@ -2090,6 +2090,24 @@ final class ApiIntegrationTest extends TestCase
     self::assertSame([2], array_column(array_column($page['data']['results'], 'event'), 'id'));
   }
 
+  /** @dataProvider searchTextColumns */
+  public function testSearchMatchesIdenticalNonAsciiTextWithDatabaseNormalization(string $column): void
+  {
+    $this->event(1, 'Unrelated appointment', 'alice');
+    self::sql("UPDATE webcal_entry SET $column = ? WHERE cal_id = 1", ['ÉCOLE']);
+    $token = $this->token();
+    foreach (['ÉCOLE', 'École'] as $query) {
+      [$status, $body] = $this->request('GET', '/v1/search-results?q=' . rawurlencode($query), [], $token);
+      self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+      self::assertSame([1], array_column(array_column($body['data']['results'], 'event'), 'id'), $column . ': ' . $query);
+    }
+  }
+
+  public static function searchTextColumns(): array
+  {
+    return ['title' => ['cal_name'], 'description' => ['cal_description'], 'location' => ['cal_location']];
+  }
+
   public function testSearchReturnsOneSeriesSummaryRatherThanInventedOccurrences(): void
   {
     $this->event(1, 'Daily studio', 'alice');
