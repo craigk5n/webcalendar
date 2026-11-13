@@ -248,17 +248,17 @@ $formaction = preg_replace('/action=reset/', 'action=save', $formaction);
 <?php
 print_form_key();
 if ($user)
-  echo "<input type=\"hidden\" name=\"user\" value=\"$user\">\n";
+  echo "<input type=\"hidden\" name=\"user\" value=\"" . htmlspecialchars($user) . "\">\n";
 
 echo display_admin_link();
 $resetConfirm = translate('Are you sure you want to reset preferences for XXX?');
-$resetConfirm = str_replace("XXX", $user, $resetConfirm);
+$resetConfirm = str_replace("XXX", htmlspecialchars($user, ENT_QUOTES), $resetConfirm);
 ?>
 <div class="form-row">
   <button class="btn btn-primary mr-2" name="" type="submit"><?php
 etranslate ( 'Save Preferences' )?></button>
 <input type="hidden" name="action" value="save">
-<a class="btn btn-secondary mr-2" href="pref.php?action=reset&user=<?php echo $user;?>&csrf_form_key=<?php echo getFormKey();?>"
+<a class="btn btn-secondary mr-2" href="pref.php?action=reset&user=<?php echo urlencode($user);?>&csrf_form_key=<?php echo getFormKey();?>"
   onclick="return confirm('<?php echo $resetConfirm;?>')"><?php etranslate("Reset Preferences");?></a>
 
 <?php if ( $updating_public ) { ?>
