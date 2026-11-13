@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+### Fixed
+
+### Removed
+
+## [v1.9.29] - 2026-11-13
+
+### Changed
+
 - Bumped `symfony/filesystem` to 7.4.23 to clear security advisory
   GHSA-6prc-h956-hxjq. Dev-only dependency (via php-cs-fixer), not shipped in
   releases. (#817)
@@ -18,10 +26,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   advisory GHSA-mf2p-h6hf-fcwm (CVE-2026-116675 — XSS in the media plugin).
   The file set is unchanged; only the `pub/tinymce/` contents were rebuilt.
   (#818)
-
-### Fixed
-
-### Removed
 
 ## [v1.9.28] - 2026-11-13
 
