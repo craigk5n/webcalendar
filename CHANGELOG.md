@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Bumped `symfony/filesystem` to 7.4.23 to clear security advisory
+  GHSA-6prc-h956-hxjq. Dev-only dependency (via php-cs-fixer), not shipped in
+  releases. (#817)
+
 ### Fixed
 
 ### Removed
