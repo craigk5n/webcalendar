@@ -15,6 +15,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+## [v1.9.28] - 2026-11-13
+
+### Fixed
+
+- Security: escaped the reflected `user` parameter in `pref.php`, fixing a
+  reflected cross-site scripting (XSS) issue that could execute in an admin's
+  or nonuser-admin's browser via a crafted link. The value is now escaped at
+  every reflection point: the hidden form field, the reset link and its
+  confirm dialog, and the publish/RSS/FreeBusy subscription URLs. (#815, #816)
+  Thanks to Peter Wilfahrt ([@p-w](https://github.com/p-w)) for the report.
+
 ## [v1.9.27] - 2026-10-23
 
 ### Added
