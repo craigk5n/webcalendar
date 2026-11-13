@@ -66,7 +66,7 @@ class WizardState
     }
 
     if (empty($this->programVersion)) {
-      $this->programVersion = 'v1.9.28'; // Fallback
+      $this->programVersion = 'v1.9.29'; // Fallback
     }
   }
   

@@ -189,7 +189,7 @@ function do_config($callingFromInstall=false)
   $possible_settings = $config_possible_settings;
 
   // When changing PROGRAM VERSION, also change it in includes/default_config.php
-  $PROGRAM_VERSION = 'v1.9.28';
+  $PROGRAM_VERSION = 'v1.9.29';
   // Update PROGRAM_DATE with official release data
   $PROGRAM_DATE = '13 Nov 2026';
 
