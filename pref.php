@@ -816,10 +816,10 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
   <td>
   <?php
     echo htmlspecialchars ( getServerUrl() ) .
-      'publish.php/' . ( $updating_public ? '__public__' : $user ) . '.ics';
+      'publish.php/' . ( $updating_public ? '__public__' : htmlspecialchars ( $user ) ) . '.ics';
     echo "<br>\n";
     echo htmlspecialchars ( getServerUrl() ) .
-      'publish.php?user=' . ( $updating_public ? '__public__' : $user );
+      'publish.php?user=' . ( $updating_public ? '__public__' : htmlspecialchars ( $user ) );
   ?></td></tr>
   <tr><td style="block-size: 0.5em"><!-- small vertical spacing --><span style="font-size: 25%">&nbsp;</span></td></tr>
 
@@ -851,7 +851,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
   <td>
   <?php
     echo htmlspecialchars ( getServerUrl() ) .
-      'rss.php?user=' . ( $updating_public ? '__public__' : $user );
+      'rss.php?user=' . ( $updating_public ? '__public__' : htmlspecialchars ( $user ) );
   ?></td></tr>
   <tr><td style="block-size: 0.5em"><!-- small vertical spacing --><span style="font-size: 25%">&nbsp;</span></td></tr>
 <?php
@@ -867,10 +867,10 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
   <td>
   <?php
     echo htmlspecialchars ( getServerUrl() ) .
-      'freebusy.php/' . ( $updating_public ? '__public__' : $user ) . '.ifb';
+      'freebusy.php/' . ( $updating_public ? '__public__' : htmlspecialchars ( $user ) ) . '.ifb';
     echo "<br>\n";
     echo htmlspecialchars ( getServerUrl() ) .
-      'freebusy.php?user=' . ( $updating_public ? '__public__' : $user );
+      'freebusy.php?user=' . ( $updating_public ? '__public__' : htmlspecialchars ( $user ) );
   ?></td></tr>
   <tr><td style="block-size: 0.5em"><!-- small vertical spacing --><span style="font-size: 25%">&nbsp;</span></td></tr>
 </table>
