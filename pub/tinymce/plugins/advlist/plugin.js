@@ -1,5 +1,5 @@
 /**
- * TinyMCE version 7.9.3 (2026-05-19)
+ * TinyMCE version 8.10.2 (2026-11-11)
  */
 
 (function () {
@@ -56,6 +56,11 @@
      * strict-null-checks
      */
     class Optional {
+        tag;
+        value;
+        // Sneaky optimisation: every instance of Optional.none is identical, so just
+        // reuse the same object
+        static singletonNone = new Optional(false);
         // The internal representation has a `tag` and a `value`, but both are
         // private: able to be console.logged, but not able to be accessed by code
         constructor(tag, value) {
@@ -223,7 +228,7 @@
          */
         getOrDie(message) {
             if (!this.tag) {
-                throw new Error(message !== null && message !== void 0 ? message : 'Called getOrDie on None');
+                throw new Error(message ?? 'Called getOrDie on None');
             }
             else {
                 return this.value;
@@ -287,12 +292,8 @@
             return this.tag ? `some(${this.value})` : 'none()';
         }
     }
-    // Sneaky optimisation: every instance of Optional.none is identical, so just
-    // reuse the same object
-    Optional.singletonNone = new Optional(false);
 
     const nativeIndexOf = Array.prototype.indexOf;
-    /* eslint-enable */
     const rawIndexOf = (ts, t) => nativeIndexOf.call(ts, t);
     const contains = (xs, x) => rawIndexOf(xs, x) > -1;
     const findUntil = (xs, pred, until) => {
@@ -348,9 +349,20 @@
     const inList = (editor, parents, nodeName) => findUntil(parents, (parent) => isListNode(parent) && !isCustomList(parent), isTableCellNode)
         .exists((list) => list.nodeName === nodeName && isChildOfBody(editor, list));
     const getSelectedStyleType = (editor) => {
-        const listElm = editor.dom.getParent(editor.selection.getNode(), 'ol,ul');
-        const style = editor.dom.getStyle(listElm, 'listStyleType');
-        return Optional.from(style);
+        const dom = editor.dom;
+        const node = editor.selection.getNode();
+        const listElm = dom.getParent(node, 'ol,ul');
+        if (isNullable(listElm)) {
+            return Optional.none();
+        }
+        // A `list-style-type` on the item wins over the one on the list, so the item has to be checked
+        // first for the toolbar to reflect the correct style
+        const listItemElm = dom.getParent(node, 'li', listElm);
+        const itemStyleType = Optional.from(listItemElm)
+            .bind((listItemElm) => Optional.from(dom.getStyle(listItemElm, 'listStyleType')))
+            // `none` marks the items that only wrap a nested list
+            .filter((styleType) => styleType !== '' && styleType !== 'none');
+        return itemStyleType.orThunk(() => Optional.from(dom.getStyle(listElm, 'listStyleType')));
     };
     // Lists/core/Util.ts - Duplicated in Lists plugin
     const isWithinNonEditable = (editor, element) => element !== null && !editor.dom.isEditable(element);
@@ -395,6 +407,7 @@
         const stylesContainsAliasMap = map(listStyleTypeAliases, (alias) => contains(styles, alias));
         editor.ui.registry.addSplitButton(id, {
             tooltip,
+            chevronTooltip: tooltip,
             icon: nodeName === "OL" /* ListType.OrderedList */ ? 'ordered-list' : 'unordered-list',
             presets: 'listpreview',
             columns: nodeName === "OL" /* ListType.OrderedList */ ? 3 : 4,
@@ -447,8 +460,9 @@
         addControl(editor, 'bullist', 'Bullet list', 'InsertUnorderedList', "UL" /* ListType.UnorderedList */, getBulletStyles(editor));
     };
 
+    const PLUGIN_CODE = 'advlist';
     var Plugin = () => {
-        global$1.add('advlist', (editor) => {
+        global$1.add(PLUGIN_CODE, (editor) => {
             if (editor.hasPlugin('lists')) {
                 register$1(editor);
                 register(editor);
@@ -458,6 +472,9 @@
                 // eslint-disable-next-line no-console
                 console.error('Please use the Lists plugin together with the List Styles plugin.');
             }
+            return {
+                getMetadata: () => ({ name: 'List Styles', type: 'opensource', slug: PLUGIN_CODE })
+            };
         });
     };
 
