@@ -274,6 +274,12 @@ def _post_install_smoke_test(driver):
     driver.get(f"{BASE_URL}/edit_entry.php")
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "entry_brief")))
     assert "Fatal" not in driver.page_source, "edit_entry.php has fatal error"
+    # TinyMCE (v8) must initialise on the description textarea; it replaces the
+    # textarea with a .tox-tinymce container. A broken or incompatible
+    # pub/tinymce bundle would leave the plain textarea and fail this wait.
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, ".tox-tinymce")))
+    print("SUCCESS: TinyMCE editor initialised on edit_entry.php")
     driver.find_element(By.ID, "entry_brief").send_keys("Smoke Test Event")
     click_and_wait(driver, driver.find_element(
         By.CSS_SELECTOR, "button[onclick*='validate_and_submit']"))
