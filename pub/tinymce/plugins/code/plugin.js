@@ -1,5 +1,5 @@
 /**
- * TinyMCE version 7.9.3 (2026-05-19)
+ * TinyMCE version 8.10.2 (2026-11-11)
  */
 
 (function () {
@@ -32,7 +32,8 @@
                 items: [
                     {
                         type: 'textarea',
-                        name: 'code'
+                        name: 'code',
+                        spellcheck: false,
                     }
                 ]
             },
@@ -79,11 +80,14 @@
         });
     };
 
+    const PLUGIN_CODE = 'code';
     var Plugin = () => {
-        global.add('code', (editor) => {
+        global.add(PLUGIN_CODE, (editor) => {
             register$1(editor);
             register(editor);
-            return {};
+            return {
+                getMetadata: () => ({ name: 'Code', type: 'opensource', slug: PLUGIN_CODE })
+            };
         });
     };
 

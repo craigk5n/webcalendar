@@ -15,6 +15,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+## [v1.9.29] - 2026-11-13
+
+### Changed
+
+- Bumped `symfony/filesystem` to 7.4.23 to clear security advisory
+  GHSA-6prc-h956-hxjq. Dev-only dependency (via php-cs-fixer), not shipped in
+  releases. (#817)
+- Updated the bundled TinyMCE editor from 7.9.3 to 8.10.2, clearing security
+  advisory GHSA-mf2p-h6hf-fcwm (CVE-2026-116675 — XSS in the media plugin).
+  The file set is unchanged; only the `pub/tinymce/` contents were rebuilt.
+  (#818)
+
+## [v1.9.28] - 2026-11-13
+
+### Fixed
+
+- Security: escaped the reflected `user` parameter in `pref.php`, fixing a
+  reflected cross-site scripting (XSS) issue that could execute in an admin's
+  or nonuser-admin's browser via a crafted link. The value is now escaped at
+  every reflection point: the hidden form field, the reset link and its
+  confirm dialog, and the publish/RSS/FreeBusy subscription URLs. (#815, #816)
+  Thanks to Peter Wilfahrt ([@p-w](https://github.com/p-w)) for the report.
+
 ## [v1.9.27] - 2026-10-23
 
 ### Added
