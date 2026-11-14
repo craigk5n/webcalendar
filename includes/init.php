@@ -273,7 +273,8 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
     }
   }
 
-  $tmp   = '" rel="alternate" title="' . $appStr . ' - Unapproved Events - ';
+  $tmp   = '" rel="alternate" title="' . "$appStr - "
+    . tooltip ( 'Unapproved Events' ) . ' - ';
   $tmp_f = 'rss_unapproved.php';
   $tmp_l = '
     <link type="application/rss+xml" href="';
@@ -300,7 +301,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   if( $is_admin ) {
     $tmp_f = 'rss_activity_log.php';
     $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . '" rel="alternate"'
-     . ' title="' . $appStr . ' - ' . translate('Activity Log') . '">';
+     . ' title="' . "$appStr - " . tooltip ( 'Activity Log' ) . '">';
   }
   if( ! $disableStyle ) {
     // Check the CSS version for cache clearing if needed.
@@ -334,7 +335,8 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
     $tmp_l . 'rss.php?' . filemtime( 'rss.php' )
       /* TODO: single-user mode, etc. */
      . ( $login != '__public__' ? '&user=' . $login : '' )
-     . '" rel="alternate" title="' . $appStr . ' [RSS 2.0]">' : '' )
+      . '" rel="alternate" title="' . "$appStr " . tooltip ( '[RSS 2.0]' )
+      . '">' : '' )
   // Do we need anything else inside the header tag?
   // $HeadX moved here because linked CSS may override standard styles.
    . "

@@ -55,7 +55,7 @@ foreach ( $help_list as $key => $val ) {
   $page++;
   $helpListStr .= '
       <a' . ( $page == $thispage ? ' class="current"' : '' ) . ' title="'
-   . translate ( $key ) . '" href="' . $val . '?thispage=' . $page . '">'
+   . tooltip ( $key ) . '" href="' . $val . '?thispage=' . $page . '">'
    . $page . '</a>';
 }
 $helpListStr .= '

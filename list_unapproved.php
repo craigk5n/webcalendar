@@ -102,15 +102,15 @@ function list_unapproved ( $user ) {
   $rows = dbi_get_cached_rows ( $sql, [$user] );
   if ( $rows ) {
     $allDayStr = translate ( 'All day event' );
-    $appConStr = translate ( 'Approve/Confirm' );
-    $appSelStr = translate ( 'Approve Selected' );
+    $appConStr = tooltip ( 'Approve/Confirm' );
+    $appSelStr = tooltip ( 'Approve Selected' );
     $checkAllStr = translate ( 'Check All' );
-    $deleteStr = translate ( 'Delete' );
+    $deleteStr = tooltip ( 'Delete' );
     $emailStr = translate ( 'Emails Will Not Be Sent' );
-    $rejectSelStr = translate ( 'Reject Selected' );
-    $rejectStr = translate ( 'Reject' );
+    $rejectSelStr = tooltip ( 'Reject Selected' );
+    $rejectStr = tooltip ( 'Reject' );
     $uncheckAllStr = translate ( 'Uncheck All' );
-    $viewStr = translate ( 'View this entry' );
+    $viewStr = tooltip ( 'View this entry' );
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
       $key++;

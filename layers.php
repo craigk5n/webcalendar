@@ -168,18 +168,18 @@ if ($single_user == 'N') {
             <input type="hidden" name="editLayerDelete" id="editLayerDelete" value="0">
             <table class="table table-borderless table-responsive">
               <tr>
-                <td data-toggle="tooltip" data-placement="top" title="<?php etranslate('Specifies the user that you would like to see displayed in your calendar.'); ?>"><label><?php echo $sourceStr; ?>:</label></td>
+                <td data-toggle="tooltip" data-placement="top" title="<?php etooltip('Specifies the user that you would like to see displayed in your calendar.'); ?>"><label><?php echo $sourceStr; ?>:</label></td>
                 <td><select class="form-control" id="editLayerSource" name="editLayerSource">
                     <?php echo $users; ?>
                 </td>
               </tr>
               <tr>
-                <td data-toggle="tooltip" data-placement="top" title="<?php etranslate('The text color of the new layer that will be displayed in your calendar.'); ?>"><label><?php echo $colorStr; ?>:</label></td>
+                <td data-toggle="tooltip" data-placement="top" title="<?php etooltip('The text color of the new layer that will be displayed in your calendar.'); ?>"><label><?php echo $colorStr; ?>:</label></td>
                 <td><?php echo print_color_input_html('editLayerColor', '', '#000000'); ?>
                 </td>
               </tr>
               <tr>
-                <td data-toggle="tooltip" data-placement="top" title="<?php etranslate('If checked, events that are duplicates of your events will be shown.'); ?>"><label><?php echo $duplicatesStr; ?>:</label></td>
+                <td data-toggle="tooltip" data-placement="top" title="<?php etooltip('If checked, events that are duplicates of your events will be shown.'); ?>"><label><?php echo $duplicatesStr; ?>:</label></td>
                 <td><input class="form-control" type="checkbox" name="editLayerDups" id="editLayerDups">
                 </td>
               </tr>

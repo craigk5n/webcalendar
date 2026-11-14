@@ -34,7 +34,7 @@ function save_pref ( $prefs, $src ) {
       } else if ( ! preg_match ( '/admin_[A-Za-z0-9_]+$/', $key ) ) {
         die_miserable_death ( str_replace ( 'XXX', $key,
             translate ( 'Invalid setting name XXX.' ) ) );
-     }
+      }
     } else {
       $prefix = 'admin_';
       $setting = $key;
@@ -314,11 +314,14 @@ if ( ! $error ) {
     . '<option value="same"' . ($csp == 'same' ? ' selected' : '') . '>' . translate('The same site can frame the content')
     . '<option value="any"' . ($csp == 'any' ? ' selected' : '') . '>' . translate('Any site can frame the content')
     . '</select>';
-  echo '<a class="ml-2" style="cursor: help" title="' . translate('View explanation at OWASP') . '" href="https://owasp.org/www-community/controls/Content_Security_Policy" target="_blank"><img src="images/bootstrap-icons/info-circle-fill.svg"></a></div>';
+
+  $OWASP = ' class="ml-2" style="cursor: help" target="_blank" title="' . tooltip ( 'View explanation at OWASP' );
+
+  echo '<a href="https://owasp.org/www-community/controls/Content_Security_Policy"' . $OWASP . '"><img src="images/bootstrap-icons/info-circle-fill.svg"></a></div>';
   echo '<div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'enable-external-header-help' ) . '">'
     . translate ( 'Use Cross-Site Request Forgery Protection' ) . ':</label>'
     . print_radio ( 'CSRF_PROTECTION' );
-  echo '<a class="ml-2" style="cursor: help" title="' . translate('View explanation at OWASP') . '" href="https://owasp.org/www-community/attacks/csrf" target="_blank"><img src="images/bootstrap-icons/info-circle-fill.svg"></a></div>';
+  echo '<a href="https://owasp.org/www-community/attacks/csrf"' . $OWASP . '"><img src="images/bootstrap-icons/info-circle-fill.svg"></a></div>';
   echo "</fieldset>\n";
 
   echo '<fieldset class="border p-2">
@@ -765,7 +768,7 @@ if ( ! $error ) {
    <fieldset class="border p-2 mt-2"><legend>'
    . translate ( 'Security Audit' ) . '</legend>
      <div class="form-inline mt-1 mb-2"><label title="'
-   . translate ( 'Severity threshold for the security-audit file-integrity section' ) . '">'
+   . tooltip ( 'Severity threshold for the security-audit file-integrity section' ) . '">'
    . translate ( 'File integrity noise filter' ) . ':</label>
        <select name="admin_SECURITY_AUDIT_NOISE_FILTER">
          <option value="all"' . ( ( $s['SECURITY_AUDIT_NOISE_FILTER'] ?? 'all' ) == 'all' ? $selected : '' ) . '>'
@@ -777,7 +780,7 @@ if ( ! $error ) {
        </select>
      </div>
      <div class="form-inline mt-1 mb-2 align-items-start"><label title="'
-   . translate ( 'Extra exclude patterns applied to the file-integrity scan' ) . '">'
+   . tooltip ( 'Extra exclude patterns applied to the file-integrity scan' ) . '">'
    . translate ( 'Extra exclusion patterns' ) . ':</label>
        <textarea name="admin_SECURITY_AUDIT_EXTRA_EXCLUDES" rows="4" cols="40">'
    . htmlspecialchars ( (string) ( $s['SECURITY_AUDIT_EXTRA_EXCLUDES'] ?? '' ), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8' )

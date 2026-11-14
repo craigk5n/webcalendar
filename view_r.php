@@ -259,7 +259,7 @@ $last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
 
 <?php
 $help = ( $can_add ? 'title="' .
-    translate ( 'Double-click on empty cell to add new entry' ) . '"' : '' );
+    tooltip ( 'Double-click on empty cell to add new entry' ) . '"' : '' );
 
 if ( ! $fit_to_window ) { ?>
 <table <?php echo $help;?> class="main" style="inline-size: <?php

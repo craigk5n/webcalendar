@@ -106,7 +106,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     <table class="main" style="padding: 1px;"';
   if ( $can_add )
     echo 'title="' .
-      translate ( 'Double-click on empty cell to add new entry' ) . '"';
+      tooltip ( 'Double-click on empty cell to add new entry' ) . '"';
   echo '>
       <tr>
         <th class="empty">&nbsp;</th>';

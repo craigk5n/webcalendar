@@ -65,7 +65,7 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
 
 if ( $can_add ) {
   $help = ' title="' .
-    translate ( 'Double-click on empty cell to add new entry' ) . '"';
+    tooltip ( 'Double-click on empty cell to add new entry' ) . '"';
 } else {
   $help = '';
 }

@@ -43,19 +43,19 @@ print_header ( [], '', 'onload="load_users();"' );
     <thead>
         <tr>
             <th scope="col">
-                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Unique Calendar ID for resource calendar') ?>"><?php etranslate('Calendar ID') ?></div>
+                <div data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Unique Calendar ID for resource calendar') ?>"><?php etranslate('Calendar ID') ?></div>
             </th>
             <th scope="col"><?php etranslate('Name') ?></th>
             <th scope="col">
-                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Admin of this resource calendar') ?>"><?php etranslate('Admin') ?></div>
+                <div data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Admin of this resource calendar') ?>"><?php etranslate('Admin') ?></div>
             </th>
             <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
                 <th scope="col">
-                    <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Enabling allows this resource calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?></div>
+                    <div data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Enabling allows this resource calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?></div>
                 </th>
             <?php } ?>
             <th scope="col">
-                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Number of events currently in the resource calendar') ?>"><?php etranslate('Events') ?></div>
+                <div data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Number of events currently in the resource calendar') ?>"><?php etranslate('Events') ?></div>
             </th>
             <th scope="col">
                 <!-- dropdown menu -->
@@ -91,8 +91,8 @@ print_header ( [], '', 'onload="load_users();"' );
                 <form class="needs-validation" novalidate name="editUserForm" id="editUserForm">
                     <input type="hidden" name="editUserAdd" id="editUserAdd" value="0">
                     <div class="form-inline" id="divEditUsername">
-                        <label class="col-5" for="editUsername" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Unique Calendar ID for resource calendar') ?>"><?php etranslate('Calendar ID') ?>: </label>
-                        <input required type="text" pattern="[A-Za-z0-9_]+" title="<?php etranslate('word characters only'); ?>" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New ID') . ' (' . translate('required') . ')'; ?>">
+                        <label class="col-5" for="editUsername" data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Unique Calendar ID for resource calendar') ?>"><?php etranslate('Calendar ID') ?>: </label>
+                        <input required type="text" pattern="[A-Za-z0-9_]+" title="<?php etooltip('word characters only'); ?>" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New ID') . ' (' . translate('required') . ')'; ?>">
                         <div id="invalid-id-error" class="invalid-feedback text-right">
                             <?php echo $invalidIDError; ?>
                         </div>
@@ -120,7 +120,7 @@ print_header ( [], '', 'onload="load_users();"' );
                     </div>
                     <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
                         <div class="form-inline mt-1" id="div-editPublic">
-                            <label class="col-5" for="editPublic" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Enabling allows this resource calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?>: </label>
+                            <label class="col-5" for="editPublic" data-toggle="tooltip" data-placement="bottom" title="<?php etooltip('Enabling allows this resource calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?>: </label>
                             <?php echo print_radio('editPublic'); ?>
                         </div>
                     <?php } ?>
