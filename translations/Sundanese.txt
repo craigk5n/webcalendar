@@ -1410,7 +1410,7 @@ on: asup
 All Attendees: Sadayana Hadirin
 Busy: Sibuk
 Tentative: Tentatif
-Schedule an appointment for XXX.: Jadwalkeun janji pikeun XXX.
+Schedule an appointment for XXX.: Jadwalkeun janji pikeun XXX: YYY.
 date_select: =
 Event approved: Acara disatujuan
 Journal approved: Jurnal disatujuan

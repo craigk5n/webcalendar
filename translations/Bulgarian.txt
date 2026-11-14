@@ -22,7 +22,7 @@ charset: iso-8859-1
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: 
+direction:
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
@@ -32,10 +32,10 @@ direction:
 #  ex)2008-10-13
 #     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
-__mm__/__dd__/__yyyy__: 
-__month__ __dd__: 
-__month__ __dd__, __yyyy__: 
-__month__ __yyyy__: 
+__mm__/__dd__/__yyyy__:
+__month__ __dd__:
+__month__ __dd__, __yyyy__:
+__month__ __yyyy__:
 
 ################################################################################
 ################################################################################
@@ -86,8 +86,8 @@ hour ahead of you: час пред вас
 hour behind you: час зад вас
 hours ahead of you: часове пред вас
 hours behind you: часове след вас
-XXX is in a different timezone (ahead): (XXX е в различна часова зона; ГГГ пред вас. <br> & nbsp; ZZZ)
-XXX is in a different timezone (behind): (XXX е в различна часова зона; ГГГ зад вас. <br> & nbsp; ZZZ)
+XXX is in a different timezone (ahead): (XXX е в различна часова зона; YYY пред вас. <br> & nbsp; ZZZ)
+XXX is in a different timezone (behind): (XXX е в различна часова зона; YYY зад вас. <br> & nbsp; ZZZ)
 Time entered here is based on your Timezone.: Въведеното тук време се базира на <b> вашата </b> часова зона.
 Edit Entry: Редактиране на запис
 Add Entry: Добавяне на запис
@@ -1361,7 +1361,7 @@ on: На
 All Attendees: Всички присъстващи
 Busy: Зает
 Tentative: Експериментален
-Schedule an appointment for XXX.: Насрочете среща за XXX.
+Schedule an appointment for XXX.: Насрочете среща за XXX: YYYГ.
 Event approved: Събитието е одобрено
 Journal approved: Вестникът е одобрен
 Task approved: Задачата е одобрена
