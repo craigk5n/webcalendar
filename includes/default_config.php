@@ -1,25 +1,46 @@
 <?php
 /**
- * The file contains a listing of all the current WebCalendar config settings
- * and their default values.
+ * List all the current WebCalendar config settings and their default values.
  *
- * This lives in includes/ rather than wizard/ because admin.php needs
+ * In "includes/" rather than "wizard/" because "admin.php" needs
  * db_load_config() at runtime, and the security audit tells administrators
- * they may delete or chmod 000 the wizard/ directory after installing.
+ * they may delete or chmod 000 the "wizard/" directory after installing.
  */
 
 /**
  * Returns the documented default for every WebCalendar config setting.
  *
- * Use this function rather than the $webcalConfig variable whenever the
- * scope this file was required from is not guaranteed. `require` inside a
- * function makes $webcalConfig a local of that function, so a caller in a
- * different scope would not see it. A function is global either way.
+ * Use this function rather than the $webcalConfig variable
+ * whenever the scope this file was required from is not guaranteed.
+ * `require` inside a function makes $webcalConfig a local of that function,
+ * so a caller in a different scope would not see it.
+ * A function is global either way.
  *
  * @return array setting name => default value
  */
 function webcal_config_defaults() {
   return [
+    /* version changes most often */
+    'WEBCAL_PROGRAM_VERSION' => 'v1.9.29',
+
+    /* followed by the colors */
+    'BGCOLOR'      => '#ffffff',
+    'CAPTIONS'     => '#b04040',
+    'CELLBG'       => '#c0c0c0',
+    'H2COLOR'      => '#000000',
+    'HASEVENTSBG'  => '#ffff30',
+    'MYEVENTS'     => '#006000',
+    'OTHERMONTHBG' => '#d0d0d0',
+    'POPUP_BG'     => '#ffffff',
+    'POPUP_FG'     => '#000000',
+    'TABLEBG'      => '#000000',
+    'TEXTCOLOR'    => '#000000',
+    'THBG'         => '#ffffff',
+    'THFG'         => '#000000',
+    'TODAYCELLBG'  => '#ffff30',
+    'WEEKENDBG'    => '#d0d0d0',
+    'WEEKNUMBER'   => '#f06030',
+
     'ADD_LINK_IN_VIEWS' => 'N',
     'ADMIN_OVERRIDE_UAC' => 'Y',
     'ALLOW_ATTACH' => 'N',
@@ -43,13 +64,10 @@ function webcal_config_defaults() {
     'APPROVE_ASSISTANT_EVENT' => 'Y',
     'AUTO_REFRESH' => 'N',
     'AUTO_REFRESH_TIME' => '0',
-    'BGCOLOR' => '#ffffff',
     'BGIMAGE' => '',
     'BGREPEAT' => 'repeat fixed center',
     'BOLD_DAYS_IN_YEAR' => 'Y',
-    'CAPTIONS' => '#b04040',
     'CATEGORIES_ENABLED' => 'Y',
-    'CELLBG' => '#c0c0c0',
     'CONFLICT_REPEAT_MONTHS' => '6',
     'CSP' => 'none',
     'CSRF_PROTECTION' => 'Y',
@@ -105,8 +123,6 @@ function webcal_config_defaults() {
     'FREEBUSY_ENABLED' => 'N',
     'GENERAL_USE_GMT' => 'Y',
     'GROUPS_ENABLED' => 'N',
-    'H2COLOR' => '#000000',
-    'HASEVENTSBG' => '#ffff30',
     'HOME_LINK' => '',
     'IMPORT_CATEGORIES' => 'Y',
     'LANGUAGE' => 'none',
@@ -121,16 +137,12 @@ function webcal_config_defaults() {
     'MENU_DATE_TOP' => 'Y',
     'MENU_ENABLED' => 'Y',
     'MENU_THEME' => 'default',
-    'MYEVENTS' => '#006000',
     'NONUSER_AT_TOP' => 'Y',
     'NONUSER_ENABLED' => 'Y',
-    'OTHERMONTHBG' => '#d0d0d0',
     'OVERRIDE_PUBLIC' => 'N',
     'OVERRIDE_PUBLIC_TEXT' => 'Not available',
     'PARTICIPANTS_IN_POPUP' => 'N',
     'PLUGINS_ENABLED' => 'N',
-    'POPUP_BG' => '#ffffff',
-    'POPUP_FG' => '#000000',
     'PUBLIC_ACCESS' => 'N',
     'PUBLIC_ACCESS_ADD_NEEDS_APPROVAL' => 'N',
     'PUBLIC_ACCESS_CAN_ADD' => 'N',
@@ -154,7 +166,7 @@ function webcal_config_defaults() {
     'SELF_REGISTRATION_BLACKLIST' => 'N',
     'SELF_REGISTRATION_FULL' => 'Y',
     'SEND_EMAIL' => 'N',
-    'SERVER_TIMEZONE' => 'America/New_York',
+    'SERVER_TIMEZONE' => 'America/New_York', // default is usually UTC
     'SITE_EXTRAS_IN_POPUP' => 'N',
     'SMTP_AUTH' => 'N',
     'SMTP_HOST' => 'localhost',
@@ -164,43 +176,36 @@ function webcal_config_defaults() {
     'SMTP_USERNAME' => '',
     'STARTVIEW' => 'month.php',
     'SUMMARY_LENGTH' => '80',
-    'TABLEBG' => '#000000',
-    'TEXTCOLOR' => '#000000',
-    'THBG' => '#ffffff',
-    'THFG' => '#000000',
     'TIMED_EVT_LEN' => 'D',
     'TIMEZONE' => 'America/New_York',
     'TIME_FORMAT' => '12',
     'TIME_SLOTS' => '24',
     'TIME_SPACER' => '&raquo;&nbsp;',
-    'TODAYCELLBG' => '#ffff30',
     'UAC_ENABLED' => 'N',
     'USER_PUBLISH_ENABLED' => 'Y',
     'USER_PUBLISH_RW_ENABLED' => 'Y',
     'USER_RSS_ENABLED' => 'N',
     'USER_SEES_ONLY_HIS_GROUPS' => 'Y',
     'USER_SORT_ORDER' => 'cal_lastname, cal_firstname',
-    'WEBCAL_PROGRAM_VERSION' => 'v1.9.29',
-    'WEEKENDBG' => '#d0d0d0',
     'WEEKEND_START' => '6',
-    'WEEKNUMBER' => '#f06030',
     'WEEK_START' => '0',
     'WORK_DAY_END_HOUR' => '17',
-    'WORK_DAY_START_HOUR' => '8'
+    'WORK_DAY_START_HOUR' => '8',
+    'YR_ROWS => 3' // from 'year.php'
   ];
 }
 
-// Retained for callers that require this file at global scope and read the
-// variable directly (wizard/WizardDatabase.php, tests/WizardRemovableTest.php).
+// Retained for callers that require this file at global scope
+// and read the variable directly
+// ("wizard/WizardDatabase.php", "tests/WizardRemovableTest.php").
 $webcalConfig = webcal_config_defaults();
-
 
 /**
  * db_load_config
  *
- * This function is defined here because admin.php calls it during startup.
- * Load default configuration values into the webcal_config table but only
- * if values are not already there.
+ * This function is defined here because "admin.php" calls it during startup.
+ * Load default configuration values into the webcal_config table,
+ * but only if values are not already there.
  */
 function db_load_config() {
   $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( ?, ? )';
