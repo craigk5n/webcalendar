@@ -347,6 +347,8 @@ supported when the calendar is the signed-in user's own. Success returns HTTP
 200 with `{"data":{"id":42,"deleted":true}}`. The event is marked deleted and
 logged in the same transaction; it no longer appears in event reads or search.
 Deleting an already-deleted event returns 404.
+The browser editor rejects a stale save if the event was deleted before the
+save acquired the write lock.
 
 Event reads, search results, and successful writes expose `can_delete`. It is
 true only for accepted, owned, non-recurring events on the user's own calendar

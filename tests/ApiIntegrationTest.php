@@ -911,6 +911,156 @@ final class ApiIntegrationTest extends TestCase
     self::assertSame(Response::HTTP_NOT_FOUND, $this->request('DELETE', "/v1/events/$id", [], $token)[0]);
   }
 
+  public function testBrowserSaveCannotRestoreAnApiDeletedEvent(): void
+  {
+    $this->event(1, 'Original appointment', 'alice');
+    $token = $this->token();
+    [$fields, $cookie] = $this->browserEditForm();
+    self::assertSame(Response::HTTP_OK, $this->request('DELETE', '/v1/events/1', [], $token)[0]);
+    [$status, $body] = $this->browserRequest('/edit_entry_handler.php', $fields, $cookie);
+    self::assertSame(Response::HTTP_CONFLICT, $status, strip_tags($body));
+    self::assertStringContainsString('This event is no longer available to edit.', $body);
+    self::assertSame('D', self::$db->query('SELECT cal_status FROM webcal_entry_user WHERE cal_id = 1')->fetchColumn());
+    self::assertSame('Original appointment', self::$db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetchColumn());
+  }
+
+  /** @dataProvider browserSaveOrderings */
+  public function testBrowserSaveAndApiDeletionAreSerialized(bool $browserFirst): void
+  {
+    $this->event(1, 'Original appointment', 'alice');
+    $token = $this->token();
+    [$fields, $cookie] = $this->browserEditForm();
+    // Let the API commit while the browser prepares its first event read.
+    self::assertSame('wal', self::$db->query('PRAGMA journal_mode = WAL')->fetchColumn());
+    $router = self::$directory . '/browser-edit-router.php';
+    $ready = $router . '.ready';
+    $release = $router . '.release';
+    file_put_contents($router, <<<'PHP'
+      <?php
+      require 'includes/init.php';
+      $sqlite3_c->setAuthorizer(static function ($action, $subject, $column) {
+        $pause = getenv('BROWSER_SAVES_FIRST') === '1'
+          ? $action === SQLite3::INSERT && $subject === 'webcal_entry_user'
+          : $action === SQLite3::READ && $subject === 'webcal_entry' && $column === 'cal_create_by';
+        if ($pause && !is_file(__FILE__ . '.ready')) {
+          touch(__FILE__ . '.ready');
+          $deadline = microtime(true) + 8;
+          while (!is_file(__FILE__ . '.release') && microtime(true) < $deadline) { usleep(10000); }
+        }
+        return SQLite3::OK;
+      });
+      require 'edit_entry_handler.php';
+      PHP);
+    $port = McpServerFixture::freePort();
+    $server = proc_open([PHP_BINARY, '-S', "127.0.0.1:$port", $router],
+      [0 => ['pipe', 'r'], 1 => ['file', self::$directory . '/browser.log', 'a'], 2 => ['file', self::$directory . '/browser.log', 'a']],
+      $serverPipes, dirname(__DIR__), self::$environment + ['BROWSER_SAVES_FIRST' => $browserFirst ? '1' : '0']);
+    self::assertIsResource($server);
+    fclose($serverPipes[0]);
+    $client = null;
+    $pipes = [];
+    try {
+      for ($attempt = 0; $attempt < 100; $attempt++) {
+        if ($socket = @fsockopen('127.0.0.1', $port)) { fclose($socket); break; }
+        usleep(10000);
+      }
+      $script = <<<'PHP'
+        $context = stream_context_create(['http' => [
+          'method' => 'POST', 'content' => $argv[3],
+          'header' => ['Cookie: ' . $argv[2], 'Content-Type: application/x-www-form-urlencoded'],
+          'ignore_errors' => true, 'follow_location' => 0, 'timeout' => 12,
+        ]]);
+        file_get_contents($argv[1], false, $context);
+        echo $http_response_header[0] ?? '';
+        PHP;
+      $client = proc_open([PHP_BINARY, '-r', $script, "http://127.0.0.1:$port/edit_entry_handler.php", $cookie, http_build_query($fields)],
+        [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes);
+      self::assertIsResource($client);
+      for ($attempt = 0; $attempt < 400 && !is_file($ready); $attempt++) { usleep(10000); }
+      self::assertFileExists($ready, file_get_contents(self::$directory . '/browser.log'));
+      if ($browserFirst) {
+        // Test the writer lock separately from Sanctum's token timestamp write.
+        $script = "require 'vendor/autoload.php'; " . $this->legacyScript(<<<'PHP'
+          $app = require 'app/Api/bootstrap.php';
+          $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+          try {
+            $app->make(WebCalendar\Services\CalendarEventWriter::class)->delete('alice', 1);
+          } catch (WebCalendar\Api\Exceptions\EventWriteException $error) {
+            echo $error->getStatusCode();
+          }
+          PHP);
+        self::assertSame((string) Response::HTTP_SERVICE_UNAVAILABLE, trim(self::command([PHP_BINARY, '-r', $script])));
+      } else {
+        [$status, $body] = $this->request('DELETE', '/v1/events/1', [], $token);
+        self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+      }
+      touch($release);
+      self::assertStringContainsString($browserFirst ? '302' : '409', stream_get_contents($pipes[1]),
+        file_get_contents(self::$directory . '/browser.log'));
+      if ($browserFirst) {
+        self::assertSame('Edited in the browser', self::$db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetchColumn());
+        self::assertSame(Response::HTTP_OK, $this->request('DELETE', '/v1/events/1', [], $token)[0]);
+      }
+      self::assertSame('D', self::$db->query('SELECT cal_status FROM webcal_entry_user WHERE cal_id = 1')->fetchColumn());
+      self::assertSame(1, (int) self::$db->query("SELECT COUNT(*) FROM webcal_entry_log WHERE cal_type = 'D'")->fetchColumn());
+    } finally {
+      touch($release);
+      foreach ($pipes as $pipe) { fclose($pipe); }
+      if (is_resource($client)) { proc_terminate($client); proc_close($client); }
+      proc_terminate($server);
+      proc_close($server);
+      unlink($router);
+      if (is_file($ready)) { unlink($ready); }
+      unlink($release);
+      self::$db->query('PRAGMA journal_mode = DELETE')->closeCursor();
+    }
+  }
+
+  public static function browserSaveOrderings(): array
+  {
+    return ['API deletes before browser write lock' => [false], 'browser holds write lock before API delete' => [true]];
+  }
+
+  private function browserEditForm(): array
+  {
+    [$status, , $headers] = $this->browserRequest('/login.php', ['login' => 'alice', 'password' => 'secret']);
+    self::assertSame(Response::HTTP_FOUND, $status);
+    $cookie = self::browserCookies($headers);
+    [$status, $form, $formHeaders] = $this->browserRequest('/edit_entry.php?id=1', null, $cookie);
+    $cookie = self::browserCookies([...$headers, ...$formHeaders]);
+    self::assertSame(Response::HTTP_OK, $status);
+    self::assertMatchesRegularExpression('/name="csrf_form_key" value="([^"]+)"/', $form);
+    preg_match('/name="csrf_form_key" value="([^"]+)"/', $form, $match);
+    return [['csrf_form_key' => $match[1], 'cal_id' => '1', '_YMD' => '20261102',
+      'name' => 'Edited in the browser', 'timetype' => 'U'], $cookie];
+  }
+
+  private static function browserCookies(array $headers): string
+  {
+    $cookies = [];
+    foreach ($headers as $header) {
+      if (preg_match('/^Set-Cookie: ([^=]+)=([^;]*)/i', $header, $match)) { $cookies[$match[1]] = "$match[1]=$match[2]"; }
+    }
+    return implode('; ', array_filter($cookies));
+  }
+
+  private function browserRequest(string $path, ?array $fields = null, string $cookie = ''): array
+  {
+    $context = stream_context_create(['http' => [
+      'method' => $fields === null ? 'GET' : 'POST',
+      'content' => $fields === null ? '' : http_build_query($fields),
+      'header' => ["Cookie: $cookie", 'Content-Type: application/x-www-form-urlencoded'],
+      'ignore_errors' => true, 'follow_location' => 0, 'timeout' => 10,
+    ]]);
+    $stream = fopen('http://127.0.0.1:' . self::$port . $path, 'r', false, $context);
+    self::assertIsResource($stream);
+    $headers = stream_get_meta_data($stream)['wrapper_data'];
+    $body = stream_get_contents($stream);
+    fclose($stream);
+    preg_match('/\s(\d{3})\s/', $headers[0], $match);
+    return [(int) $match[1], $body, $headers];
+  }
+
   public function testEventDeletionRejectsSharedAndOtherCalendars(): void
   {
     $this->event(1, 'Shared appointment', 'alice');

@@ -4,6 +4,8 @@ ob_start();
 require_once 'includes/classes/WebCalMailer.php';
 $mail = new WebCalMailer;
 
+const EVENT_EDIT_LOCK_WAIT_MS = 5000;
+
 load_user_categories();
 
 $do_override = false;
@@ -593,6 +595,49 @@ if( empty( $error ) && ! empty( $conflicts ) )
    . ': <ul>$conflicts</ul>';
 
 $msg = '';
+
+$edit_transaction = false;
+if( empty( $error ) && ! empty( $id )
+    && in_array( $db_type, ['mysqli', 'postgresql', 'sqlite3'], true ) ) {
+  // Match CalendarEventWriter's lock order before reading participant status.
+  // The entry row itself is not stable: the browser replaces it during a save.
+  if( $db_type === 'sqlite3' )
+    $sqlite3_c->busyTimeout( EVENT_EDIT_LOCK_WAIT_MS );
+  $begin = match( $db_type ) {
+    'sqlite3' => 'BEGIN IMMEDIATE',
+    'postgresql' => 'BEGIN ISOLATION LEVEL READ COMMITTED',
+    default => 'START TRANSACTION',
+  };
+  $edit_transaction = $db_type === 'sqlite3'
+    ? @$sqlite3_c->exec( $begin ) : (bool) dbi_query( $begin, false, false );
+  $locked = $edit_transaction;
+  if( $locked && $db_type !== 'sqlite3' ) {
+    $res = dbi_execute( 'SELECT cal_setting FROM webcal_config
+      WHERE cal_setting = ? FOR UPDATE', ['WEBCAL_PROGRAM_VERSION'], false, false );
+    $locked = $res && dbi_fetch_row( $res );
+    if( $res )
+      dbi_free_result( $res );
+  }
+  $res = $locked ? dbi_execute( 'SELECT e.cal_create_by, u.cal_status
+    FROM webcal_entry e LEFT JOIN webcal_entry_user u
+      ON u.cal_id = e.cal_id AND u.cal_login = e.cal_create_by
+    WHERE e.cal_id = ?', [$id], false, false ) : false;
+  if( ! $res ) {
+    header( 'HTTP/1.1 503 Service Unavailable' );
+    $error = translate( 'The calendar is busy. Please try again.' );
+  } else {
+    $entry = dbi_fetch_row( $res );
+    dbi_free_result( $res );
+    if( ! $entry || $entry[0] !== ( $old_create_by ?? null ) || $entry[1] === 'D' ) {
+      header( 'HTTP/1.1 409 Conflict' );
+      $error = translate( 'This event is no longer available to edit.' );
+    }
+  }
+  if( $edit_transaction && ! empty( $error ) ) {
+    dbi_query( 'ROLLBACK', false, false );
+    $edit_transaction = false;
+  }
+}
 
 if( empty( $error ) ) {
   $newevent = true;
@@ -1237,6 +1282,16 @@ if( empty( $error ) ) {
     }
   } //end external mail
 } //end empty error
+
+if( $edit_transaction ) {
+  if( ! empty( $error ) )
+    dbi_query( 'ROLLBACK', false, false );
+  elseif( ! dbi_query( 'COMMIT', false, false ) ) {
+    dbi_query( 'ROLLBACK', false, false );
+    header( 'HTTP/1.1 503 Service Unavailable' );
+    $error = translate( 'The calendar is busy. Please try again.' );
+  }
+}
 
 // If we were editing this event,
 // then go back to the last view (day, month, week).
