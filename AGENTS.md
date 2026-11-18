@@ -68,6 +68,12 @@ optional, local, and ignored by Git. Keep shared instructions here; a local
   full lint, bundle/release checks, Apache and disposable database checks pass.
 
 ## Verification
+
+- Mobile event deletion is a transactional soft delete: it marks the sole
+  accepted owner participant as deleted and logs the action. Keep `can_delete`
+  distinct from `can_edit`: delegated calendars, recurring/linked records, and
+  shared events are out of scope. No new migration is required.
+
 Run these from the repository root unless specified otherwise:
 - CI dependency check: `composer validate`.
 - PHPUnit 9.6 suite: `vendor/bin/phpunit -c tests/phpunit.xml`.

@@ -891,6 +891,39 @@ final class ApiIntegrationTest extends TestCase
     self::assertEquals([[-1, 0], [0, 1440], [90000, 37]], $rows);
   }
 
+  public function testPersonalEventDeletionIsLoggedAndRemovesItFromReadsAndSearch(): void
+  {
+    $token = $this->token();
+    [, $created] = $this->request('POST', '/v1/events', $this->draft(['title' => 'Delete this appointment']), $token);
+    $id = $created['data']['id'];
+    $range = '/v1/events?start_date=' . $created['data']['date'] . '&end_date=' . $created['data']['date'];
+    $search = '/v1/search-results?q=Delete';
+    self::assertTrue($created['data']['can_delete'] ?? false);
+    self::assertTrue($this->request('GET', $range, [], $token)[1]['data'][0]['can_delete'] ?? false);
+    self::assertTrue($this->request('GET', $search, [], $token)[1]['data']['results'][0]['event']['can_delete'] ?? false);
+    [$status, $body] = $this->request('DELETE', "/v1/calendars/alice/events/$id", [], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    self::assertSame(['id' => $id, 'deleted' => true], $body['data']);
+    self::assertSame('D', self::$db->query('SELECT cal_status FROM webcal_entry_user')->fetchColumn());
+    self::assertSame(1, (int) self::$db->query("SELECT COUNT(*) FROM webcal_entry_log WHERE cal_type = 'D'")->fetchColumn());
+    self::assertSame([], $this->request('GET', $range, [], $token)[1]['data']);
+    self::assertSame([], $this->request('GET', $search, [], $token)[1]['data']['results']);
+    self::assertSame(Response::HTTP_NOT_FOUND, $this->request('DELETE', "/v1/events/$id", [], $token)[0]);
+  }
+
+  public function testEventDeletionRejectsSharedAndOtherCalendars(): void
+  {
+    $this->event(1, 'Shared appointment', 'alice');
+    self::sql("INSERT INTO webcal_entry_user (cal_id, cal_login, cal_status) VALUES (1, 'admin', 'A')");
+    $token = $this->token();
+    $path = '/v1/events/1';
+    self::assertSame(Response::HTTP_UNAUTHORIZED, $this->request('DELETE', $path)[0]);
+    self::assertSame(Response::HTTP_FORBIDDEN, $this->request('DELETE', '/v1/calendars/admin/events/1', [], $token)[0]);
+    self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $this->request('DELETE', $path, [], $token)[0]);
+    self::assertFalse($this->request('GET', '/v1/search-results?q=Shared', [], $token)[1]['data']['results'][0]['event']['can_delete']);
+    self::assertSame(2, (int) self::$db->query("SELECT COUNT(*) FROM webcal_entry_user WHERE cal_status = 'A'")->fetchColumn());
+  }
+
   public function testPartialUpdatesPreserveMetadataAndClearOptionalFields(): void
   {
     $this->event(1, 'Private appointment', 'alice', 'R');
@@ -1032,12 +1065,13 @@ final class ApiIntegrationTest extends TestCase
       self::assertSame(Response::HTTP_NOT_FOUND, $status);
     }
     self::$db->exec("UPDATE webcal_api_tokens SET abilities = '[\"events:read\"]'");
-    foreach ([['POST', '/v1/events', $this->draft()], ['PATCH', '/v1/events/1', ['title' => 'Changed']]] as [$method, $path, $data]) {
+    foreach ([['POST', '/v1/events', $this->draft()], ['PATCH', '/v1/events/1', ['title' => 'Changed']], ['DELETE', '/v1/events/1', []]] as [$method, $path, $data]) {
       [$status] = $this->request($method, $path, $data, $token);
       self::assertSame(Response::HTTP_FORBIDDEN, $status);
     }
     [$status, $body] = $this->request('GET', '/v1/events?start_date=2026-11-02&end_date=2026-11-02', [], $token);
     self::assertFalse($body['data'][0]['can_edit']);
+    self::assertFalse($body['data'][0]['can_delete']);
     self::$db->exec("UPDATE webcal_api_tokens SET abilities = '[\"events:read\",\"events:write\"]'");
     [$status] = $this->request('PATCH', '/v1/events/2', ['title' => 'Forbidden'], $token);
     self::assertSame(Response::HTTP_NOT_FOUND, $status);
@@ -1068,12 +1102,16 @@ final class ApiIntegrationTest extends TestCase
       [$status, $body] = $this->request('PATCH', '/v1/events/' . $id, ['title' => 'Not saved'], $token);
       self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status, json_encode($body));
       self::assertSame('unsupported_event', $body['code']);
+      [$status, $body] = $this->request('DELETE', '/v1/events/' . $id, [], $token);
+      self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status, json_encode($body));
+      self::assertSame('unsupported_event', $body['code']);
     }
     self::assertSame(0, (int) self::$db->query("SELECT COUNT(*) FROM webcal_entry WHERE cal_name = 'Not saved'")->fetchColumn());
     [$status, $body] = $this->request('GET', '/v1/events?start_date=2026-11-02&end_date=2026-11-02', [], $token);
     self::assertSame(Response::HTTP_OK, $status);
     self::assertNotEmpty($body['data']);
     self::assertNotContains(true, array_column($body['data'], 'can_edit'));
+    self::assertNotContains(true, array_column($body['data'], 'can_delete'));
   }
 
   public function testInvalidWritePayloadsDoNotCreateEvents(): void
@@ -1252,6 +1290,8 @@ final class ApiIntegrationTest extends TestCase
       [$status] = $this->request('PATCH', '/v1/events/1', ['title' => 'Not saved'], $token);
       self::assertSame(Response::HTTP_INTERNAL_SERVER_ERROR, $status);
       self::assertSame('Original', self::$db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetchColumn());
+      self::assertSame(Response::HTTP_INTERNAL_SERVER_ERROR, $this->request('DELETE', '/v1/events/1', [], $token)[0]);
+      self::assertSame('A', self::$db->query('SELECT cal_status FROM webcal_entry_user WHERE cal_id = 1')->fetchColumn());
     } finally { self::$db->exec('DROP TRIGGER fail_api_log'); }
   }
 

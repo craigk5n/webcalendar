@@ -51,7 +51,7 @@ final class CalendarEventWriter
       DB::table('webcal_entry')->insert($row);
       DB::table('webcal_entry_user')->insert(['cal_id' => $id, 'cal_login' => $calendar, 'cal_status' => 'A', 'cal_percent' => 0]);
       $this->log($id, $username, LOG_CREATE, $calendar);
-      return $this->representation($row, $timezone) + ['calendar_id' => $calendar, 'calendar_name' => $selected['name']];
+      return $this->representation($row, $timezone) + ['can_delete' => $calendar === $username, 'calendar_id' => $calendar, 'calendar_name' => $selected['name']];
     });
   }
 
@@ -63,11 +63,7 @@ final class CalendarEventWriter
     return $this->transaction($username, function () use ($username, $calendar, $id, $input): array {
       $selected = $this->activate($username, $calendar);
       $timezone = new DateTimeZone($selected['timezone']);
-      $found = DB::table('webcal_entry as e')->join('webcal_entry_user as u', 'u.cal_id', '=', 'e.cal_id')
-        ->where('e.cal_id', $id)->where('u.cal_login', $calendar)->whereIn('u.cal_status', ['A', 'W'])
-        ->select('e.*')->lockForUpdate()->first();
-      if (!$found) { throw new NotFoundHttpException(); }
-      $row = (array) $found;
+      $row = $this->lockEvent($calendar, $id);
       if (!$this->access->canEditEvent($calendar, $row)) { throw new AuthorizationException(); }
       if (isset($input['access']) && !$this->access->canEditEvent($calendar, array_replace($row, ['cal_access' => $input['access']]))) {
         throw new AuthorizationException();
@@ -92,8 +88,39 @@ final class CalendarEventWriter
       $this->rearmReminder($id, $row, array_merge($row, $changes));
       DB::table('webcal_entry')->where('cal_id', $id)->update($changes);
       $this->log($id, $username, LOG_UPDATE, $calendar);
-      return $this->representation(array_merge($row, $changes), $timezone) + ['calendar_id' => $calendar, 'calendar_name' => $selected['name']];
+      return $this->representation(array_merge($row, $changes), $timezone) + ['can_delete' => $calendar === $username, 'calendar_id' => $calendar, 'calendar_name' => $selected['name']];
     });
+  }
+
+  public function delete(string $username, int $id, ?string $calendar = null): array
+  {
+    if ($calendar !== null && $calendar !== $username) { throw new AuthorizationException(); }
+    $this->activate($username, $username);
+    if ($id < 1 || $id > self::MAX_EVENT_ID) { throw new NotFoundHttpException(); }
+    return $this->transaction($username, function () use ($username, $id): array {
+      $this->activate($username, $username);
+      $row = $this->lockEvent($username, $id);
+      if ($row['cal_create_by'] !== $username || !$this->access->canEditEvent($username, $row)) {
+        throw new AuthorizationException();
+      }
+      if (!isset($this->access->editableIds($username, [$id])[$id])) {
+        throw new EventWriteException(Response::HTTP_UNPROCESSABLE_ENTITY, 'unsupported_event',
+          'Only your own accepted, unshared, non-recurring events can be deleted.');
+      }
+      DB::table('webcal_entry_user')->where('cal_id', $id)->where('cal_login', $username)
+        ->where('cal_status', 'A')->update(['cal_status' => 'D']);
+      $this->log($id, $username, LOG_DELETE, $username);
+      return ['id' => $id, 'deleted' => true];
+    });
+  }
+
+  private function lockEvent(string $calendar, int $id): array
+  {
+    $found = DB::table('webcal_entry as e')->join('webcal_entry_user as u', 'u.cal_id', '=', 'e.cal_id')
+      ->where('e.cal_id', $id)->where('u.cal_login', $calendar)->whereIn('u.cal_status', ['A', 'W'])
+      ->select('e.*')->lockForUpdate()->first();
+    if (!$found) { throw new NotFoundHttpException(); }
+    return (array) $found;
   }
 
   private function transaction(string $username, \Closure $write): array

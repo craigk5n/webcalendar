@@ -29,6 +29,7 @@ Use the selected ID as a URL-encoded path segment:
 | GET | `/calendars/{calendar}/events` | Read occurrences with `start_date` and `end_date` |
 | POST | `/calendars/{calendar}/events` | Create on the selected calendar |
 | PATCH | `/calendars/{calendar}/events/{event}` | Edit a supported selected-calendar event |
+| DELETE | `/calendars/{calendar}/events/{event}` | Delete a supported event on the signed-in user's own calendar |
 
 These endpoints use the existing event payloads, token abilities, and date-window
 limits. Bounds, floating dates, and timed-write date validation use the selected
@@ -336,6 +337,23 @@ Send `Content-Type: application/json` for sign-in. Protected endpoints require
 | GET | `/events?start_date=2026-11-01&end_date=2026-11-30` | Read event occurrences |
 | POST | `/events` | Create a personal, non-recurring event |
 | PATCH | `/events/{event}` | Update a supported personal event by its integer ID |
+| DELETE | `/events/{event}` | Delete a supported personal event by its integer ID |
+
+### Delete an event
+
+Send `DELETE /api.php/v1/events/{event}` with an `events:write` bearer token and
+no request body. `/api.php/v1/calendars/{calendar}/events/{event}` is also
+supported when the calendar is the signed-in user's own. Success returns HTTP
+200 with `{"data":{"id":42,"deleted":true}}`. The event is marked deleted and
+logged in the same transaction; it no longer appears in event reads or search.
+Deleting an already-deleted event returns 404.
+
+Event reads, search results, and successful writes expose `can_delete`. It is
+true only for accepted, owned, non-recurring events on the user's own calendar
+without other participants, recurrence exceptions, or linked records. The
+server checks permission and eligibility again during deletion. Do not infer
+delete permission from `can_edit` or from an omitted `can_delete` field.
+No new database migration is required.
 
 ### Sign in
 
