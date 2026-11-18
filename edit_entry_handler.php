@@ -5,6 +5,30 @@ require_once 'includes/classes/WebCalMailer.php';
 $mail = new WebCalMailer;
 
 const EVENT_EDIT_LOCK_WAIT_MS = 5000;
+const EVENT_EDIT_MYSQL_TABLES = [
+  'webcal_config', 'webcal_entry', 'webcal_entry_categories', 'webcal_entry_ext_user',
+  'webcal_entry_log', 'webcal_entry_repeats', 'webcal_entry_repeats_not',
+  'webcal_entry_user', 'webcal_reminders', 'webcal_site_extras',
+];
+
+function event_edit_has_transactional_mysql_storage(): bool {
+  // Keep metadata locks until commit so an engine cannot change after validation.
+  foreach( EVENT_EDIT_MYSQL_TABLES as $table ) {
+    $res = dbi_query( "SELECT 1 FROM $table LIMIT 0", false, false );
+    if( ! $res )
+      return false;
+    dbi_free_result( $res );
+  }
+  $params = implode( ',', array_fill( 0, count( EVENT_EDIT_MYSQL_TABLES ), '?' ) );
+  $res = dbi_execute( 'SELECT COUNT(*) FROM information_schema.TABLES
+    WHERE TABLE_SCHEMA = DATABASE() AND ENGINE = \'InnoDB\'
+      AND TABLE_NAME IN (' . $params . ')', EVENT_EDIT_MYSQL_TABLES, false, false );
+  if( ! $res )
+    return false;
+  $row = dbi_fetch_row( $res );
+  dbi_free_result( $res );
+  return $row && (int) $row[0] === count( EVENT_EDIT_MYSQL_TABLES );
+}
 
 load_user_categories();
 
@@ -633,11 +657,27 @@ if( empty( $error ) && ! empty( $id )
       $error = translate( 'This event is no longer available to edit.' );
     }
   }
+  if( empty( $error ) && $db_type === 'mysqli' && ! event_edit_has_transactional_mysql_storage() ) {
+    header( 'HTTP/1.1 503 Service Unavailable' );
+    $error = translate( 'Editing events requires InnoDB for the calendar tables. Contact your administrator.' );
+  }
   if( $edit_transaction && ! empty( $error ) ) {
     dbi_query( 'ROLLBACK', false, false );
     $edit_transaction = false;
   }
 }
+
+$pending_notifications = [];
+$notify = static function ( array $message, ?array $log = null )
+    use ( $edit_transaction, $mail, &$pending_notifications ): void {
+  if( $edit_transaction ) {
+    $pending_notifications[] = [$mail->prepareNotification( ...$message ), $log];
+  } else {
+    $mail->WC_Send( ...$message );
+    if( $log !== null )
+      activity_log( ...$log );
+  }
+};
 
 if( empty( $error ) ) {
   $newevent = true;
@@ -1040,12 +1080,12 @@ if( empty( $error ) ) {
 
             $msg .= $url . "\n\n";
           }
-          $mail->WC_Send( $login_fullname, $tempemail,
+          $notify( [$login_fullname, $tempemail,
             $tempfullname, $name, $msg, $htmlmail, $from,
             ( get_pref_setting( $old_participant,
-              'EMAIL_ATTACH_ICS', 'N' ) == 'Y' ? $id : '' ) );
-          activity_log( $id, $login, $old_participant, LOG_NOTIFICATION,
-            translate( 'User removed from participants list.' ) );
+              'EMAIL_ATTACH_ICS', 'N' ) == 'Y' ? $id : '' )],
+            [$id, $login, $old_participant, LOG_NOTIFICATION,
+              translate( 'User removed from participants list.' )] );
         }
       }
     }
@@ -1169,11 +1209,10 @@ if( empty( $error ) ) {
             $msg .= "\n\n" . $url;
           }
           // Use WebCalMailer class.
-          $mail->WC_Send( $login_fullname, $tempemail,
+          $notify( [$login_fullname, $tempemail,
             $tempfullname, $name, $msg, $htmlmail, $from,
             ( get_pref_setting( $i, 'EMAIL_ATTACH_ICS', 'N' ) == 'Y'
-              ? $id : '' ) );
-          activity_log( $id, $login, $i, LOG_NOTIFICATION, '' );
+              ? $id : '' )], [$id, $login, $i, LOG_NOTIFICATION, ''] );
         }
       }
     }
@@ -1274,8 +1313,8 @@ if( empty( $error ) ) {
             . $extra_email_data;
             // Don't send HTML to external addresses.
             // Always attach iCalendar file to external users
-            $mail->WC_Send( $login_fullname, $ext_emails[$i],
-              $ext_names[$i], $name, $msg, 'N', $from, $id );
+            $notify( [$login_fullname, $ext_emails[$i],
+              $ext_names[$i], $name, $msg, 'N', $from, $id] );
           }
         }
       }
@@ -1290,6 +1329,12 @@ if( $edit_transaction ) {
     dbi_query( 'ROLLBACK', false, false );
     header( 'HTTP/1.1 503 Service Unavailable' );
     $error = translate( 'The calendar is busy. Please try again.' );
+  } else {
+    foreach( $pending_notifications as [$send, $log] ) {
+      $send();
+      if( $log !== null )
+        activity_log( ...$log );
+    }
   }
 }
 

@@ -1596,6 +1596,7 @@ Task created: Task created
 Event deleted: Event deleted
 This event is no longer available to edit.: This event is no longer available to edit.
 The calendar is busy. Please try again.: The calendar is busy. Please try again.
+Editing events requires InnoDB for the calendar tables. Contact your administrator.: Editing events requires InnoDB for the calendar tables. Contact your administrator.
 Journal deleted: Journal deleted
 Task deleted: Task deleted
 New user via email (self registration): New user via email (self registration)

@@ -77,6 +77,9 @@ optional, local, and ignored by Git. Keep shared instructions here; a local
   (or acquire SQLite write intent) across the owner-status recheck and the
   participant rewrite. The browser replaces the event row itself, so do not use
   that row as the sole synchronization point. A stale save returns HTTP 409.
+  Check every table in the browser save's MySQL write set for InnoDB before
+  mutation. Prepare localized mail and iCalendar attachments during the save,
+  but do not deliver notifications until commit succeeds and releases the lock.
 
 Run these from the repository root unless specified otherwise:
 - CI dependency check: `composer validate`.

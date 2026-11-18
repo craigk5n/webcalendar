@@ -349,6 +349,10 @@ logged in the same transaction; it no longer appears in event reads or search.
 Deleting an already-deleted event returns 404.
 The browser editor rejects a stale save if the event was deleted before the
 save acquired the write lock.
+On MySQL/MariaDB, editing an existing event requires InnoDB for all tables
+the save may write, including reminders, categories, and site extras. If the
+browser refuses a save because of table engines, back up the database and
+have an administrator convert the affected tables before retrying.
 
 Event reads, search results, and successful writes expose `can_delete`. It is
 true only for accepted, owned, non-recurring events on the user's own calendar

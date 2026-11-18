@@ -60,7 +60,23 @@ class WebCalMailer {
    */
   function WC_Send($from_name, $to_email,
     $to_name, $subject, $msg, $html = 'N', $from_email = '', $id = '' ) {
+    $this->prepareMessage( $from_name, $to_email, $to_name, $subject, $msg, $html, $from_email, $id );
+    $sent = $this->mail->Send();
+    $this->ClearAll();
+    return $sent;
+  }
 
+  public function prepareNotification($from_name, $to_email,
+    $to_name, $subject, $msg, $html, $from_email, $id): Closure {
+    $this->prepareMessage( $from_name, $to_email, $to_name, $subject, $msg, $html, $from_email, $id );
+    // Freeze the localized subject and calendar attachment before the event changes again.
+    $message = clone $this->mail;
+    $this->ClearAll();
+    return static fn (): bool => $message->Send();
+  }
+
+  private function prepareMessage($from_name, $to_email,
+    $to_name, $subject, $msg, $html, $from_email, $id): void {
     if( strlen( $from_email ) ) {
       $this->mail->SetFrom ( $from_email, $from_name );
       #$this->mail->From = $from_email;
@@ -77,16 +93,6 @@ class WebCalMailer {
 
     if( ! empty( $id ) )
       $this->IcsAttach( $id );
-
-    $ret = true;
-    if ( ! $this->mail->Send() ) {
-      # TODO: log this...
-      #echo "Mail Error:\n" . $this->mail->ErrorInfo . "\n";
-      #print_r ( $this->mail );
-      $ret = false;
-    }
-    $this->ClearAll();
-    return $ret;
   }
 
   /**

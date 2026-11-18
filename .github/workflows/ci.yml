@@ -97,3 +97,15 @@ jobs:
         env:
           WEBCALENDAR_PASSWORD_TEST_MYSQL_HOST: 127.0.0.1
         run: php tests/fixtures/mysql-password-compatibility.php
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Verify browser event save engine checks and rollback
+        env:
+          MYSQL_CONTAINER: ${{ job.services.mysql.id }}
+          WEBCALENDAR_BROWSER_TEST_MYSQL_HOST: 127.0.0.1
+        run: |
+          docker exec "$MYSQL_CONTAINER" mariadb -uroot -psynthetic-root-password -e "
+            CREATE DATABASE browser_edit_test;
+            CREATE USER 'browser_edit_test'@'%' IDENTIFIED BY 'synthetic-browser-edit-test';
+            GRANT ALL ON browser_edit_test.* TO 'browser_edit_test'@'%';"
+          vendor/bin/phpunit -c tests/phpunit.xml tests/ApiIntegrationTest.php --filter testMysqlBrowserEdit
