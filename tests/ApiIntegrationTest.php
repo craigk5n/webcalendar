@@ -942,7 +942,7 @@ final class ApiIntegrationTest extends TestCase
   }
 
   /** @dataProvider browserNotificationOutcomes */
-  public function testBrowserSendsNotificationsOnlyAfterCommit(bool $commit): void
+  public function testBrowserSendsNotificationsOnlyAfterCommit(bool $commit, ?string $logFailure = null): void
   {
     $this->event(1, 'Original appointment', 'alice');
     $log = self::$directory . '/mail-probe.log';
@@ -958,22 +958,54 @@ final class ApiIntegrationTest extends TestCase
       self::sql('INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES (?, ?)', [$name, $value]);
     }
     self::sql("UPDATE webcal_user SET cal_email = 'alice@example.test' WHERE cal_login = 'alice'");
+    $adminEmail = self::$db->query("SELECT cal_email FROM webcal_user WHERE cal_login = 'admin'")->fetchColumn();
+    if ($logFailure !== null) {
+      self::sql("UPDATE webcal_user SET cal_email = 'admin@example.test' WHERE cal_login = 'admin'");
+      self::sql("INSERT INTO webcal_user_pref (cal_login, cal_setting, cal_value) VALUES ('admin', 'EMAIL_EVENT_DELETED', 'Y')");
+      self::sql("INSERT INTO webcal_entry_user (cal_id, cal_login, cal_status) VALUES (1, 'admin', 'A')");
+      if ($logFailure === 'once') {
+        self::sql('CREATE TABLE notification_log_probe (attempted INTEGER)');
+        self::sql("CREATE TRIGGER reject_notification_log BEFORE INSERT ON webcal_entry_log
+          WHEN NEW.cal_type = 'N' AND NOT EXISTS (SELECT 1 FROM notification_log_probe)
+          BEGIN
+            INSERT INTO notification_log_probe VALUES (1);
+            SELECT RAISE(FAIL, 'fixture notification log failure');
+          END");
+      } else {
+        self::sql("CREATE TRIGGER reject_notification_log BEFORE INSERT ON webcal_entry_log
+          WHEN NEW.cal_type = 'N' BEGIN SELECT RAISE(ABORT, 'fixture notification log failure'); END");
+      }
+    }
     if (!$commit) {
       self::sql("CREATE TRIGGER reject_second_guest BEFORE INSERT ON webcal_entry_ext_user
         WHEN NEW.cal_email = 'second@example.test' BEGIN SELECT RAISE(ABORT, 'fixture failure'); END");
     }
     try {
-      [$status] = $this->browserRequest('/edit_entry_handler.php',
+      [$status, $body] = $this->browserRequest('/edit_entry_handler.php',
         $fields + ['externalparticipants' => "First first@example.test\nSecond second@example.test"], $cookie);
       if ($commit) {
-        self::assertSame(Response::HTTP_FOUND, $status);
+        self::assertSame(Response::HTTP_FOUND, $status, strip_tags($body));
         self::assertFileExists($log);
         $messages = array_map(fn ($line) => json_decode($line, true, flags: JSON_THROW_ON_ERROR), file($log));
-        self::assertCount(2, $messages);
-        foreach ($messages as $message) {
+        self::assertCount($logFailure !== null ? 3 : 2, $messages);
+        if ($logFailure !== null) {
+          foreach (['admin', 'first', 'second'] as $index => $recipient) {
+            self::assertStringContainsString("$recipient@example.test", $messages[$index]['message']);
+          }
+          self::assertSame($logFailure === 'once' ? 1 : 0,
+            (int) self::$db->query("SELECT COUNT(*) FROM webcal_entry_log WHERE cal_type = 'N'")->fetchColumn());
+          self::assertSame(1, (int) self::$db->query("SELECT COUNT(*) FROM webcal_entry_log WHERE cal_type = 'U'")->fetchColumn());
+          if ($logFailure === 'always') {
+            self::assertStringContainsString('Unable to record a post-commit notification for event 1',
+              file_get_contents(self::$directory . '/server.log'));
+          }
+        }
+        foreach ($messages as $index => $message) {
           self::assertTrue($message['writable'], 'Another connection must be able to write during delivery');
           self::assertSame('Edited in the browser', $message['title']);
-          self::assertStringContainsString('WebCalendar.ics', $message['message']);
+          if ($index !== 0 || $logFailure === null) {
+            self::assertStringContainsString('WebCalendar.ics', $message['message']);
+          }
         }
       } else {
         self::assertNotSame(Response::HTTP_FOUND, $status);
@@ -982,6 +1014,11 @@ final class ApiIntegrationTest extends TestCase
       }
     } finally {
       self::sql('DROP TRIGGER IF EXISTS reject_second_guest');
+      if ($logFailure !== null) {
+        self::sql('DROP TRIGGER IF EXISTS reject_notification_log');
+        self::sql('DROP TABLE IF EXISTS notification_log_probe');
+        self::sql("UPDATE webcal_user SET cal_email = ? WHERE cal_login = 'admin'", [$adminEmail]);
+      }
       self::sql("UPDATE webcal_user SET cal_email = NULL WHERE cal_login = 'alice'");
       foreach ($original as $name => $value) {
         self::sql('DELETE FROM webcal_config WHERE cal_setting = ?', [$name]);
@@ -993,7 +1030,8 @@ final class ApiIntegrationTest extends TestCase
 
   public static function browserNotificationOutcomes(): array
   {
-    return ['commit' => [true], 'rollback' => [false]];
+    return ['commit' => [true], 'rollback' => [false],
+      'retry succeeds without resending' => [true, 'once'], 'notification log failure' => [true, 'always']];
   }
 
   public function testMysqlBrowserEditRejectsMixedEnginesAndRollsBackLateFailure(): void

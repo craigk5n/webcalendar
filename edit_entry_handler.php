@@ -5,6 +5,9 @@ require_once 'includes/classes/WebCalMailer.php';
 $mail = new WebCalMailer;
 
 const EVENT_EDIT_LOCK_WAIT_MS = 5000;
+const EVENT_NOTIFICATION_LOG_ATTEMPTS = 3;
+const EVENT_NOTIFICATION_LOG_RETRY_DELAY_US = 10000;
+const EVENT_NOTIFICATION_LOG_SQLITE_WAIT_MS = 100;
 const EVENT_EDIT_MYSQL_TABLES = [
   'webcal_config', 'webcal_entry', 'webcal_entry_categories', 'webcal_entry_ext_user',
   'webcal_entry_log', 'webcal_entry_repeats', 'webcal_entry_repeats_not',
@@ -1330,10 +1333,21 @@ if( $edit_transaction ) {
     header( 'HTTP/1.1 503 Service Unavailable' );
     $error = translate( 'The calendar is busy. Please try again.' );
   } else {
+    if( $db_type === 'sqlite3' && $pending_notifications )
+      $sqlite3_c->busyTimeout( EVENT_NOTIFICATION_LOG_SQLITE_WAIT_MS );
     foreach( $pending_notifications as [$send, $log] ) {
       $send();
-      if( $log !== null )
-        activity_log( ...$log );
+      if( $log !== null ) {
+        // Reallocate the log ID on retry; never repeat delivery.
+        for( $attempt = 1; $attempt <= EVENT_NOTIFICATION_LOG_ATTEMPTS; $attempt++ ) {
+          if( activity_log( ...$log, fatal: false ) )
+            break;
+          if( $attempt === EVENT_NOTIFICATION_LOG_ATTEMPTS )
+            error_log( 'Unable to record a post-commit notification for event ' . (int) $id );
+          else
+            usleep( EVENT_NOTIFICATION_LOG_RETRY_DELAY_US );
+        }
+      }
     }
   }
 }

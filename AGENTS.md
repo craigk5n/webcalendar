@@ -80,6 +80,8 @@ optional, local, and ignored by Git. Keep shared instructions here; a local
   Check every table in the browser save's MySQL write set for InnoDB before
   mutation. Prepare localized mail and iCalendar attachments during the save,
   but do not deliver notifications until commit succeeds and releases the lock.
+  Post-commit notification audit writes are nonfatal and may retry briefly;
+  they must not repeat delivery or turn a committed browser save into an error.
 
 Run these from the repository root unless specified otherwise:
 - CI dependency check: `composer validate`.
