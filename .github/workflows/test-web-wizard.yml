@@ -96,7 +96,7 @@ jobs:
       # all three build, which is what happens today, and a warm one means
       # none of them do.
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Build the web image with a layer cache
         uses: docker/build-push-action@v6
@@ -142,7 +142,7 @@ jobs:
       # all three build, which is what happens today, and a warm one means
       # none of them do.
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Build the web image with a layer cache
         uses: docker/build-push-action@v6
@@ -188,7 +188,7 @@ jobs:
       # all three build, which is what happens today, and a warm one means
       # none of them do.
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Build the web image with a layer cache
         uses: docker/build-push-action@v6
