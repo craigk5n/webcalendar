@@ -781,10 +781,12 @@ the event lock. This deliberately serializes all API event writes, including
 different assistants using a nonuser calendar, without a new mutex table or
 requiring a target-calendar API identity. API bootstrap already requires the
 version row for every supported installation; a physical TIMEZONE row is optional.
-Browser and MCP writers
-do not participate in this calendar-lock protocol. SQLite obtains database-wide
-write intent before snapshot reads using an early managed update, including on
-PHP 8.2/8.3, rather than relying on a version-dependent `IMMEDIATE` setting.
+Saves to existing events through the browser editor coordinate with API deletion:
+they lock the same installation row on MySQL/MariaDB and PostgreSQL, or acquire
+SQLite write intent with `BEGIN IMMEDIATE`, before rechecking the deletion
+marker. MCP and other browser write paths are not covered by this change.
+For API writes on SQLite, an early managed update obtains database-wide write
+intent before snapshot reads, including on PHP 8.2/8.3.
 
 Recognized SQLite busy/locked errors, MySQL lock timeouts/deadlocks, PostgreSQL
 serialization/deadlock/lock-unavailable errors, and event/activity ID collisions

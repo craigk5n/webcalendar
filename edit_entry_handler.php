@@ -1338,12 +1338,13 @@ if( $edit_transaction ) {
     foreach( $pending_notifications as [$send, $log] ) {
       $send();
       if( $log !== null ) {
+        [$event_id, $actor, $calendar, $type, $text] = $log;
         // Reallocate the log ID on retry; never repeat delivery.
         for( $attempt = 1; $attempt <= EVENT_NOTIFICATION_LOG_ATTEMPTS; $attempt++ ) {
-          if( activity_log( ...$log, fatal: false ) )
+          if( activity_log( $event_id, $actor, $calendar, $type, $text, fatal: false ) )
             break;
           if( $attempt === EVENT_NOTIFICATION_LOG_ATTEMPTS )
-            error_log( 'Unable to record a post-commit notification for event ' . (int) $id );
+            error_log( 'Unable to record a post-commit notification for event ' . (int) $event_id );
           else
             usleep( EVENT_NOTIFICATION_LOG_RETRY_DELAY_US );
         }
