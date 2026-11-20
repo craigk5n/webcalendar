@@ -101,30 +101,36 @@ function activate_urls( $text ) {
  *   - SECURITY_VIOLATION
  *   - LOG_SYSTEM
  * @param string $text     Text comment to add with activity log entry
+ * @param bool $fatal      Abort on database errors unless the caller can recover
+ * @return bool Whether the entry was logged
  */
-function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
-  $next_id = 1;
-
+function activity_log ( $event_id, $user, $user_cal, $type, $text, $fatal = true ) {
   if ( empty ( $type ) ) {
-    echo translate ( 'Error Type not set for activity log!' );
+    if ( $fatal )
+      echo translate ( 'Error Type not set for activity log!' );
     // But don't exit since we may be in mid-transaction.
-    return;
+    return false;
   }
 
-  $res = dbi_execute ( 'SELECT MAX( cal_log_id ) FROM webcal_entry_log' );
-  if ( $res ) {
-    if ( $row = dbi_fetch_row ( $res ) )
-      $next_id = $row[0] + 1;
-
-    dbi_free_result ( $res );
-  }
+  $res = dbi_execute ( 'SELECT MAX( cal_log_id ) FROM webcal_entry_log', [], $fatal, $fatal );
+  if ( ! $res )
+    return false;
+  $row = dbi_fetch_row ( $res );
+  dbi_free_result ( $res );
+  if ( ! $row )
+    return false;
+  $next_id = (int) $row[0] + 1;
   $sql = 'INSERT INTO webcal_entry_log ( cal_log_id, cal_entry_id, cal_login,
     cal_user_cal, cal_type, cal_date, cal_time, cal_text )
     VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, [$next_id, $event_id, $user,
         ( empty ( $user_cal ) ? null : $user_cal ), $type, gmdate ( 'Ymd' ),
-          gmdate ( 'Gis' ), ( empty ( $text ) ? null : $text )] ) )
-    db_error ( true, $sql );
+          gmdate ( 'Gis' ), ( empty ( $text ) ? null : $text )], $fatal, $fatal ) ) {
+    if ( $fatal )
+      db_error ( true, $sql );
+    return false;
+  }
+  return true;
 }
 
 /**

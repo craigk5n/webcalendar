@@ -41,8 +41,25 @@ final class ApiIntegrationTest extends TestCase
     self::sql("INSERT INTO webcal_user (cal_login, cal_passwd, cal_firstname, cal_lastname, cal_is_admin, cal_enabled) VALUES (?, ?, ?, ?, ?, ?)",
       ['alice', password_hash('secret', PASSWORD_DEFAULT), 'Alice', 'Example', 'N', 'Y']);
     self::$port = McpServerFixture::freePort();
+    $mailProbe = self::$directory . '/mail-probe.php';
+    file_put_contents($mailProbe, <<<'PHP'
+      <?php
+      $message = stream_get_contents(STDIN);
+      $db = new PDO('sqlite:' . __DIR__ . '/calendar.sqlite');
+      $db->exec('PRAGMA busy_timeout = 50');
+      try {
+        $db->exec('BEGIN IMMEDIATE');
+        $record = ['writable' => true, 'title' => $db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetchColumn()];
+        $db->exec('ROLLBACK');
+      } catch (PDOException) {
+        $record = ['writable' => false];
+      }
+      $record['message'] = $message;
+      file_put_contents(__DIR__ . '/mail-probe.log', json_encode($record) . "\n", FILE_APPEND | LOCK_EX);
+      PHP);
     self::$server = proc_open(
-      [PHP_BINARY, '-S', '127.0.0.1:' . self::$port, '-t', dirname(__DIR__)],
+      [PHP_BINARY, '-d', 'sendmail_path=' . escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($mailProbe),
+        '-S', '127.0.0.1:' . self::$port, '-t', dirname(__DIR__)],
       [0 => ['pipe', 'r'], 1 => ['file', self::$directory . '/server.log', 'a'],
         2 => ['file', self::$directory . '/server.log', 'a']],
       $pipes, dirname(__DIR__), self::$environment
@@ -891,6 +908,339 @@ final class ApiIntegrationTest extends TestCase
     self::assertEquals([[-1, 0], [0, 1440], [90000, 37]], $rows);
   }
 
+  public function testPersonalEventDeletionIsLoggedAndRemovesItFromReadsAndSearch(): void
+  {
+    $token = $this->token();
+    [, $created] = $this->request('POST', '/v1/events', $this->draft(['title' => 'Delete this appointment']), $token);
+    $id = $created['data']['id'];
+    $range = '/v1/events?start_date=' . $created['data']['date'] . '&end_date=' . $created['data']['date'];
+    $search = '/v1/search-results?q=Delete';
+    self::assertTrue($created['data']['can_delete'] ?? false);
+    self::assertTrue($this->request('GET', $range, [], $token)[1]['data'][0]['can_delete'] ?? false);
+    self::assertTrue($this->request('GET', $search, [], $token)[1]['data']['results'][0]['event']['can_delete'] ?? false);
+    [$status, $body] = $this->request('DELETE', "/v1/calendars/alice/events/$id", [], $token);
+    self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+    self::assertSame(['id' => $id, 'deleted' => true], $body['data']);
+    self::assertSame('D', self::$db->query('SELECT cal_status FROM webcal_entry_user')->fetchColumn());
+    self::assertSame(1, (int) self::$db->query("SELECT COUNT(*) FROM webcal_entry_log WHERE cal_type = 'D'")->fetchColumn());
+    self::assertSame([], $this->request('GET', $range, [], $token)[1]['data']);
+    self::assertSame([], $this->request('GET', $search, [], $token)[1]['data']['results']);
+    self::assertSame(Response::HTTP_NOT_FOUND, $this->request('DELETE', "/v1/events/$id", [], $token)[0]);
+  }
+
+  public function testBrowserSaveCannotRestoreAnApiDeletedEvent(): void
+  {
+    $this->event(1, 'Original appointment', 'alice');
+    $token = $this->token();
+    [$fields, $cookie] = $this->browserEditForm();
+    self::assertSame(Response::HTTP_OK, $this->request('DELETE', '/v1/events/1', [], $token)[0]);
+    [$status, $body] = $this->browserRequest('/edit_entry_handler.php', $fields, $cookie);
+    self::assertSame(Response::HTTP_CONFLICT, $status, strip_tags($body));
+    self::assertStringContainsString('This event is no longer available to edit.', $body);
+    self::assertSame('D', self::$db->query('SELECT cal_status FROM webcal_entry_user WHERE cal_id = 1')->fetchColumn());
+    self::assertSame('Original appointment', self::$db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetchColumn());
+  }
+
+  /** @dataProvider browserNotificationOutcomes */
+  public function testBrowserSendsNotificationsOnlyAfterCommit(bool $commit, ?string $logFailure = null): void
+  {
+    $this->event(1, 'Original appointment', 'alice');
+    $log = self::$directory . '/mail-probe.log';
+    [$fields, $cookie] = $this->browserEditForm();
+    $settings = ['ALLOW_EXTERNAL_USERS' => 'Y', 'EXTERNAL_NOTIFICATIONS' => 'Y',
+      'EXTERNAL_UPDATES' => 'Y', 'SEND_EMAIL' => 'Y', 'EMAIL_MAILER' => 'mail', 'EMAIL_FALLBACK_FROM' => 'alice@example.test'];
+    $original = [];
+    foreach ($settings as $name => $value) {
+      $query = self::$db->prepare('SELECT cal_value FROM webcal_config WHERE cal_setting = ?');
+      $query->execute([$name]);
+      $original[$name] = $query->fetchColumn();
+      $query->closeCursor();
+      self::sql('INSERT OR REPLACE INTO webcal_config (cal_setting, cal_value) VALUES (?, ?)', [$name, $value]);
+    }
+    self::sql("UPDATE webcal_user SET cal_email = 'alice@example.test' WHERE cal_login = 'alice'");
+    $adminEmail = self::$db->query("SELECT cal_email FROM webcal_user WHERE cal_login = 'admin'")->fetchColumn();
+    if ($logFailure !== null) {
+      self::sql("UPDATE webcal_user SET cal_email = 'admin@example.test' WHERE cal_login = 'admin'");
+      self::sql("INSERT INTO webcal_user_pref (cal_login, cal_setting, cal_value) VALUES ('admin', 'EMAIL_EVENT_DELETED', 'Y')");
+      self::sql("INSERT INTO webcal_entry_user (cal_id, cal_login, cal_status) VALUES (1, 'admin', 'A')");
+      if ($logFailure === 'once') {
+        self::sql('CREATE TABLE notification_log_probe (attempted INTEGER)');
+        self::sql("CREATE TRIGGER reject_notification_log BEFORE INSERT ON webcal_entry_log
+          WHEN NEW.cal_type = 'N' AND NOT EXISTS (SELECT 1 FROM notification_log_probe)
+          BEGIN
+            INSERT INTO notification_log_probe VALUES (1);
+            SELECT RAISE(FAIL, 'fixture notification log failure');
+          END");
+      } else {
+        self::sql("CREATE TRIGGER reject_notification_log BEFORE INSERT ON webcal_entry_log
+          WHEN NEW.cal_type = 'N' BEGIN SELECT RAISE(ABORT, 'fixture notification log failure'); END");
+      }
+    }
+    if (!$commit) {
+      self::sql("CREATE TRIGGER reject_second_guest BEFORE INSERT ON webcal_entry_ext_user
+        WHEN NEW.cal_email = 'second@example.test' BEGIN SELECT RAISE(ABORT, 'fixture failure'); END");
+    }
+    try {
+      [$status, $body] = $this->browserRequest('/edit_entry_handler.php',
+        $fields + ['externalparticipants' => "First first@example.test\nSecond second@example.test"], $cookie);
+      if ($commit) {
+        self::assertSame(Response::HTTP_FOUND, $status, strip_tags($body));
+        self::assertFileExists($log);
+        $messages = array_map(fn ($line) => json_decode($line, true, flags: JSON_THROW_ON_ERROR), file($log));
+        self::assertCount($logFailure !== null ? 3 : 2, $messages);
+        if ($logFailure !== null) {
+          foreach (['admin', 'first', 'second'] as $index => $recipient) {
+            self::assertStringContainsString("$recipient@example.test", $messages[$index]['message']);
+          }
+          self::assertSame($logFailure === 'once' ? 1 : 0,
+            (int) self::$db->query("SELECT COUNT(*) FROM webcal_entry_log WHERE cal_type = 'N'")->fetchColumn());
+          self::assertSame(1, (int) self::$db->query("SELECT COUNT(*) FROM webcal_entry_log WHERE cal_type = 'U'")->fetchColumn());
+          if ($logFailure === 'always') {
+            self::assertStringContainsString('Unable to record a post-commit notification for event 1',
+              file_get_contents(self::$directory . '/server.log'));
+          }
+        }
+        foreach ($messages as $index => $message) {
+          self::assertTrue($message['writable'], 'Another connection must be able to write during delivery');
+          self::assertSame('Edited in the browser', $message['title']);
+          if ($index !== 0 || $logFailure === null) {
+            self::assertStringContainsString('WebCalendar.ics', $message['message']);
+          }
+        }
+      } else {
+        self::assertNotSame(Response::HTTP_FOUND, $status);
+        self::assertSame('Original appointment', self::$db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetchColumn());
+        self::assertFileDoesNotExist($log);
+      }
+    } finally {
+      self::sql('DROP TRIGGER IF EXISTS reject_second_guest');
+      if ($logFailure !== null) {
+        self::sql('DROP TRIGGER IF EXISTS reject_notification_log');
+        self::sql('DROP TABLE IF EXISTS notification_log_probe');
+        self::sql("UPDATE webcal_user SET cal_email = ? WHERE cal_login = 'admin'", [$adminEmail]);
+      }
+      self::sql("UPDATE webcal_user SET cal_email = NULL WHERE cal_login = 'alice'");
+      foreach ($original as $name => $value) {
+        self::sql('DELETE FROM webcal_config WHERE cal_setting = ?', [$name]);
+        if ($value !== false) { self::sql('INSERT INTO webcal_config (cal_setting, cal_value) VALUES (?, ?)', [$name, $value]); }
+      }
+      if (is_file($log)) { unlink($log); }
+    }
+  }
+
+  public static function browserNotificationOutcomes(): array
+  {
+    return ['commit' => [true], 'rollback' => [false],
+      'retry succeeds without resending' => [true, 'once'], 'notification log failure' => [true, 'always']];
+  }
+
+  public function testMysqlBrowserEditRejectsMixedEnginesAndRollsBackLateFailure(): void
+  {
+    $host = getenv('WEBCALENDAR_BROWSER_TEST_MYSQL_HOST');
+    if (!$host) { self::markTestSkipped('Requires the disposable browser_edit_test MariaDB database.'); }
+    $login = 'browser_edit_test';
+    $password = 'synthetic-browser-edit-test';
+    $db = new mysqli($host, $login, $password, $login);
+    self::assertSame(0, $db->query('SHOW TABLES')->num_rows, 'Use an empty disposable test database.');
+    $environment = ['WEBCALENDAR_DB_TYPE' => 'mysqli', 'WEBCALENDAR_DB_DATABASE' => $login,
+      'WEBCALENDAR_DB_HOST' => $host, 'WEBCALENDAR_DB_LOGIN' => $login, 'WEBCALENDAR_DB_PASSWORD' => $password,
+      'WEBCALENDAR_API_ENABLED' => 'false'];
+    self::command([PHP_BINARY, 'wizard/headless.php', '--use-env', '--db-type=mysqli', "--db-host=$host",
+      "--db-login=$login", "--db-password=$password", "--db-database=$login", '--admin-login=alice',
+      '--admin-password=secret', '--install-password=test', '--force'], $environment);
+    $db->query("INSERT INTO webcal_entry (cal_id, cal_create_by, cal_date, cal_time, cal_mod_date, cal_mod_time,
+      cal_duration, cal_priority, cal_type, cal_access, cal_name) VALUES (1, 'alice', 20261102, -1, 20261102, 0, 0, 5, 'E', 'P', 'Original appointment')");
+    $db->query("INSERT INTO webcal_entry_user (cal_id, cal_login, cal_status) VALUES (1, 'alice', 'A')");
+    $db->query('INSERT INTO webcal_reminders (cal_id, cal_date) VALUES (1, 20261102)');
+    $port = McpServerFixture::freePort();
+    $server = proc_open([PHP_BINARY, '-S', "127.0.0.1:$port", '-t', dirname(__DIR__)],
+      [0 => ['pipe', 'r'], 1 => ['file', self::$directory . '/mysql-browser.log', 'a'], 2 => ['file', self::$directory . '/mysql-browser.log', 'a']],
+      $pipes, dirname(__DIR__), array_replace(self::$environment, $environment));
+    self::assertIsResource($server);
+    fclose($pipes[0]);
+    try {
+      for ($attempt = 0; $attempt < 100; $attempt++) {
+        if ($socket = @fsockopen('127.0.0.1', $port)) { fclose($socket); break; }
+        usleep(10000);
+      }
+      [$fields, $cookie] = $this->browserEditForm($port);
+      foreach (['MyISAM', 'InnoDB'] as $engine) {
+        $db->query("ALTER TABLE webcal_reminders ENGINE = $engine");
+        if ($engine === 'InnoDB') {
+          $db->query("CREATE TRIGGER browser_late_failure BEFORE INSERT ON webcal_entry_user
+            FOR EACH ROW SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'fixture failure'");
+        }
+        [$status, $body] = $this->browserRequest('/edit_entry_handler.php', $fields, $cookie, $port);
+        if ($engine === 'MyISAM') {
+          self::assertSame(Response::HTTP_SERVICE_UNAVAILABLE, $status, strip_tags($body));
+          self::assertStringContainsString('InnoDB', $body);
+        } else {
+          self::assertNotSame(Response::HTTP_FOUND, $status);
+        }
+        self::assertSame('Original appointment', $db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetch_column());
+        self::assertSame('A', $db->query('SELECT cal_status FROM webcal_entry_user WHERE cal_id = 1')->fetch_column());
+        self::assertSame(20261102, (int) $db->query('SELECT cal_date FROM webcal_reminders WHERE cal_id = 1')->fetch_column());
+      }
+      $db->query('DROP TRIGGER browser_late_failure');
+      [$status, $body] = $this->browserRequest('/edit_entry_handler.php', $fields, $cookie, $port);
+      self::assertSame(Response::HTTP_FOUND, $status, strip_tags($body));
+      self::assertSame('Edited in the browser', $db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetch_column());
+    } finally {
+      proc_terminate($server);
+      proc_close($server);
+    }
+  }
+
+  /** @dataProvider browserSaveOrderings */
+  public function testBrowserSaveAndApiDeletionAreSerialized(bool $browserFirst): void
+  {
+    $this->event(1, 'Original appointment', 'alice');
+    $token = $this->token();
+    [$fields, $cookie] = $this->browserEditForm();
+    // Let the API commit while the browser prepares its first event read.
+    self::assertSame('wal', self::$db->query('PRAGMA journal_mode = WAL')->fetchColumn());
+    $router = self::$directory . '/browser-edit-router.php';
+    $ready = $router . '.ready';
+    $release = $router . '.release';
+    file_put_contents($router, <<<'PHP'
+      <?php
+      require 'includes/init.php';
+      $sqlite3_c->setAuthorizer(static function ($action, $subject, $column) {
+        $pause = getenv('BROWSER_SAVES_FIRST') === '1'
+          ? $action === SQLite3::INSERT && $subject === 'webcal_entry_user'
+          : $action === SQLite3::READ && $subject === 'webcal_entry' && $column === 'cal_create_by';
+        if ($pause && !is_file(__FILE__ . '.ready')) {
+          touch(__FILE__ . '.ready');
+          $deadline = microtime(true) + 8;
+          while (!is_file(__FILE__ . '.release') && microtime(true) < $deadline) { usleep(10000); }
+        }
+        return SQLite3::OK;
+      });
+      require 'edit_entry_handler.php';
+      PHP);
+    $port = McpServerFixture::freePort();
+    $server = proc_open([PHP_BINARY, '-S', "127.0.0.1:$port", $router],
+      [0 => ['pipe', 'r'], 1 => ['file', self::$directory . '/browser.log', 'a'], 2 => ['file', self::$directory . '/browser.log', 'a']],
+      $serverPipes, dirname(__DIR__), self::$environment + ['BROWSER_SAVES_FIRST' => $browserFirst ? '1' : '0']);
+    self::assertIsResource($server);
+    fclose($serverPipes[0]);
+    $client = null;
+    $pipes = [];
+    try {
+      for ($attempt = 0; $attempt < 100; $attempt++) {
+        if ($socket = @fsockopen('127.0.0.1', $port)) { fclose($socket); break; }
+        usleep(10000);
+      }
+      $script = <<<'PHP'
+        $context = stream_context_create(['http' => [
+          'method' => 'POST', 'content' => $argv[3],
+          'header' => ['Cookie: ' . $argv[2], 'Content-Type: application/x-www-form-urlencoded'],
+          'ignore_errors' => true, 'follow_location' => 0, 'timeout' => 12,
+        ]]);
+        file_get_contents($argv[1], false, $context);
+        echo $http_response_header[0] ?? '';
+        PHP;
+      $client = proc_open([PHP_BINARY, '-r', $script, "http://127.0.0.1:$port/edit_entry_handler.php", $cookie, http_build_query($fields)],
+        [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes);
+      self::assertIsResource($client);
+      for ($attempt = 0; $attempt < 400 && !is_file($ready); $attempt++) { usleep(10000); }
+      self::assertFileExists($ready, file_get_contents(self::$directory . '/browser.log'));
+      if ($browserFirst) {
+        // Test the writer lock separately from Sanctum's token timestamp write.
+        $script = "require 'vendor/autoload.php'; " . $this->legacyScript(<<<'PHP'
+          $app = require 'app/Api/bootstrap.php';
+          $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+          try {
+            $app->make(WebCalendar\Services\CalendarEventWriter::class)->delete('alice', 1);
+          } catch (WebCalendar\Api\Exceptions\EventWriteException $error) {
+            echo $error->getStatusCode();
+          }
+          PHP);
+        self::assertSame((string) Response::HTTP_SERVICE_UNAVAILABLE, trim(self::command([PHP_BINARY, '-r', $script])));
+      } else {
+        [$status, $body] = $this->request('DELETE', '/v1/events/1', [], $token);
+        self::assertSame(Response::HTTP_OK, $status, json_encode($body));
+      }
+      touch($release);
+      self::assertStringContainsString($browserFirst ? '302' : '409', stream_get_contents($pipes[1]),
+        file_get_contents(self::$directory . '/browser.log'));
+      if ($browserFirst) {
+        self::assertSame('Edited in the browser', self::$db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetchColumn());
+        self::assertSame(Response::HTTP_OK, $this->request('DELETE', '/v1/events/1', [], $token)[0]);
+      }
+      self::assertSame('D', self::$db->query('SELECT cal_status FROM webcal_entry_user WHERE cal_id = 1')->fetchColumn());
+      self::assertSame(1, (int) self::$db->query("SELECT COUNT(*) FROM webcal_entry_log WHERE cal_type = 'D'")->fetchColumn());
+    } finally {
+      touch($release);
+      foreach ($pipes as $pipe) { fclose($pipe); }
+      if (is_resource($client)) { proc_terminate($client); proc_close($client); }
+      proc_terminate($server);
+      proc_close($server);
+      unlink($router);
+      if (is_file($ready)) { unlink($ready); }
+      unlink($release);
+      self::$db->query('PRAGMA journal_mode = DELETE')->closeCursor();
+    }
+  }
+
+  public static function browserSaveOrderings(): array
+  {
+    return ['API deletes before browser write lock' => [false], 'browser holds write lock before API delete' => [true]];
+  }
+
+  private function browserEditForm(?int $port = null): array
+  {
+    [$status, $loginBody, $headers] = $this->browserRequest('/login.php', ['login' => 'alice', 'password' => 'secret'], port: $port);
+    self::assertSame(Response::HTTP_FOUND, $status, strip_tags($loginBody));
+    $cookie = self::browserCookies($headers);
+    [$status, $form, $formHeaders] = $this->browserRequest('/edit_entry.php?id=1', null, $cookie, $port);
+    $cookie = self::browserCookies([...$headers, ...$formHeaders]);
+    self::assertSame(Response::HTTP_OK, $status);
+    self::assertMatchesRegularExpression('/name="csrf_form_key" value="([^"]+)"/', $form);
+    preg_match('/name="csrf_form_key" value="([^"]+)"/', $form, $match);
+    return [['csrf_form_key' => $match[1], 'cal_id' => '1', '_YMD' => '20261102',
+      'name' => 'Edited in the browser', 'timetype' => 'U'], $cookie];
+  }
+
+  private static function browserCookies(array $headers): string
+  {
+    $cookies = [];
+    foreach ($headers as $header) {
+      if (preg_match('/^Set-Cookie: ([^=]+)=([^;]*)/i', $header, $match)) { $cookies[$match[1]] = "$match[1]=$match[2]"; }
+    }
+    return implode('; ', array_filter($cookies));
+  }
+
+  private function browserRequest(string $path, ?array $fields = null, string $cookie = '', ?int $port = null): array
+  {
+    $context = stream_context_create(['http' => [
+      'method' => $fields === null ? 'GET' : 'POST',
+      'content' => $fields === null ? '' : http_build_query($fields),
+      'header' => ["Cookie: $cookie", 'Content-Type: application/x-www-form-urlencoded'],
+      'ignore_errors' => true, 'follow_location' => 0, 'timeout' => 10,
+    ]]);
+    $stream = fopen('http://127.0.0.1:' . ($port ?? self::$port) . $path, 'r', false, $context);
+    self::assertIsResource($stream);
+    $headers = stream_get_meta_data($stream)['wrapper_data'];
+    $body = stream_get_contents($stream);
+    fclose($stream);
+    preg_match('/\s(\d{3})\s/', $headers[0], $match);
+    return [(int) $match[1], $body, $headers];
+  }
+
+  public function testEventDeletionRejectsSharedAndOtherCalendars(): void
+  {
+    $this->event(1, 'Shared appointment', 'alice');
+    self::sql("INSERT INTO webcal_entry_user (cal_id, cal_login, cal_status) VALUES (1, 'admin', 'A')");
+    $token = $this->token();
+    $path = '/v1/events/1';
+    self::assertSame(Response::HTTP_UNAUTHORIZED, $this->request('DELETE', $path)[0]);
+    self::assertSame(Response::HTTP_FORBIDDEN, $this->request('DELETE', '/v1/calendars/admin/events/1', [], $token)[0]);
+    self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $this->request('DELETE', $path, [], $token)[0]);
+    self::assertFalse($this->request('GET', '/v1/search-results?q=Shared', [], $token)[1]['data']['results'][0]['event']['can_delete']);
+    self::assertSame(2, (int) self::$db->query("SELECT COUNT(*) FROM webcal_entry_user WHERE cal_status = 'A'")->fetchColumn());
+  }
+
   public function testPartialUpdatesPreserveMetadataAndClearOptionalFields(): void
   {
     $this->event(1, 'Private appointment', 'alice', 'R');
@@ -1032,12 +1382,13 @@ final class ApiIntegrationTest extends TestCase
       self::assertSame(Response::HTTP_NOT_FOUND, $status);
     }
     self::$db->exec("UPDATE webcal_api_tokens SET abilities = '[\"events:read\"]'");
-    foreach ([['POST', '/v1/events', $this->draft()], ['PATCH', '/v1/events/1', ['title' => 'Changed']]] as [$method, $path, $data]) {
+    foreach ([['POST', '/v1/events', $this->draft()], ['PATCH', '/v1/events/1', ['title' => 'Changed']], ['DELETE', '/v1/events/1', []]] as [$method, $path, $data]) {
       [$status] = $this->request($method, $path, $data, $token);
       self::assertSame(Response::HTTP_FORBIDDEN, $status);
     }
     [$status, $body] = $this->request('GET', '/v1/events?start_date=2026-11-02&end_date=2026-11-02', [], $token);
     self::assertFalse($body['data'][0]['can_edit']);
+    self::assertFalse($body['data'][0]['can_delete']);
     self::$db->exec("UPDATE webcal_api_tokens SET abilities = '[\"events:read\",\"events:write\"]'");
     [$status] = $this->request('PATCH', '/v1/events/2', ['title' => 'Forbidden'], $token);
     self::assertSame(Response::HTTP_NOT_FOUND, $status);
@@ -1068,12 +1419,16 @@ final class ApiIntegrationTest extends TestCase
       [$status, $body] = $this->request('PATCH', '/v1/events/' . $id, ['title' => 'Not saved'], $token);
       self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status, json_encode($body));
       self::assertSame('unsupported_event', $body['code']);
+      [$status, $body] = $this->request('DELETE', '/v1/events/' . $id, [], $token);
+      self::assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $status, json_encode($body));
+      self::assertSame('unsupported_event', $body['code']);
     }
     self::assertSame(0, (int) self::$db->query("SELECT COUNT(*) FROM webcal_entry WHERE cal_name = 'Not saved'")->fetchColumn());
     [$status, $body] = $this->request('GET', '/v1/events?start_date=2026-11-02&end_date=2026-11-02', [], $token);
     self::assertSame(Response::HTTP_OK, $status);
     self::assertNotEmpty($body['data']);
     self::assertNotContains(true, array_column($body['data'], 'can_edit'));
+    self::assertNotContains(true, array_column($body['data'], 'can_delete'));
   }
 
   public function testInvalidWritePayloadsDoNotCreateEvents(): void
@@ -1252,6 +1607,8 @@ final class ApiIntegrationTest extends TestCase
       [$status] = $this->request('PATCH', '/v1/events/1', ['title' => 'Not saved'], $token);
       self::assertSame(Response::HTTP_INTERNAL_SERVER_ERROR, $status);
       self::assertSame('Original', self::$db->query('SELECT cal_name FROM webcal_entry WHERE cal_id = 1')->fetchColumn());
+      self::assertSame(Response::HTTP_INTERNAL_SERVER_ERROR, $this->request('DELETE', '/v1/events/1', [], $token)[0]);
+      self::assertSame('A', self::$db->query('SELECT cal_status FROM webcal_entry_user WHERE cal_id = 1')->fetchColumn());
     } finally { self::$db->exec('DROP TRIGGER fail_api_log'); }
   }
 

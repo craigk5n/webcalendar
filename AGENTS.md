@@ -68,6 +68,21 @@ optional, local, and ignored by Git. Keep shared instructions here; a local
   full lint, bundle/release checks, Apache and disposable database checks pass.
 
 ## Verification
+
+- Mobile event deletion is a transactional soft delete: it marks the sole
+  accepted owner participant as deleted and logs the action. Keep `can_delete`
+  distinct from `can_edit`: delegated calendars, recurring/linked records, and
+  shared events are out of scope. No new migration is required.
+  Existing browser edits must hold the same installation lock on MySQL/Postgres
+  (or acquire SQLite write intent) across the owner-status recheck and the
+  participant rewrite. The browser replaces the event row itself, so do not use
+  that row as the sole synchronization point. A stale save returns HTTP 409.
+  Check every table in the browser save's MySQL write set for InnoDB before
+  mutation. Prepare localized mail and iCalendar attachments during the save,
+  but do not deliver notifications until commit succeeds and releases the lock.
+  Post-commit notification audit writes are nonfatal and may retry briefly;
+  they must not repeat delivery or turn a committed browser save into an error.
+
 Run these from the repository root unless specified otherwise:
 - CI dependency check: `composer validate`.
 - PHPUnit 9.6 suite: `vendor/bin/phpunit -c tests/phpunit.xml`.

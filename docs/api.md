@@ -29,6 +29,7 @@ Use the selected ID as a URL-encoded path segment:
 | GET | `/calendars/{calendar}/events` | Read occurrences with `start_date` and `end_date` |
 | POST | `/calendars/{calendar}/events` | Create on the selected calendar |
 | PATCH | `/calendars/{calendar}/events/{event}` | Edit a supported selected-calendar event |
+| DELETE | `/calendars/{calendar}/events/{event}` | Delete a supported event on the signed-in user's own calendar |
 
 These endpoints use the existing event payloads, token abilities, and date-window
 limits. Bounds, floating dates, and timed-write date validation use the selected
@@ -336,6 +337,29 @@ Send `Content-Type: application/json` for sign-in. Protected endpoints require
 | GET | `/events?start_date=2026-11-01&end_date=2026-11-30` | Read event occurrences |
 | POST | `/events` | Create a personal, non-recurring event |
 | PATCH | `/events/{event}` | Update a supported personal event by its integer ID |
+| DELETE | `/events/{event}` | Delete a supported personal event by its integer ID |
+
+### Delete an event
+
+Send `DELETE /api.php/v1/events/{event}` with an `events:write` bearer token and
+no request body. `/api.php/v1/calendars/{calendar}/events/{event}` is also
+supported when the calendar is the signed-in user's own. Success returns HTTP
+200 with `{"data":{"id":42,"deleted":true}}`. The event is marked deleted and
+logged in the same transaction; it no longer appears in event reads or search.
+Deleting an already-deleted event returns 404.
+The browser editor rejects a stale save if the event was deleted before the
+save acquired the write lock.
+On MySQL/MariaDB, editing an existing event requires InnoDB for all tables
+the save may write, including reminders, categories, and site extras. If the
+browser refuses a save because of table engines, back up the database and
+have an administrator convert the affected tables before retrying.
+
+Event reads, search results, and successful writes expose `can_delete`. It is
+true only for accepted, owned, non-recurring events on the user's own calendar
+without other participants, recurrence exceptions, or linked records. The
+server checks permission and eligibility again during deletion. Do not infer
+delete permission from `can_edit` or from an omitted `can_delete` field.
+No new database migration is required.
 
 ### Sign in
 
@@ -757,10 +781,12 @@ the event lock. This deliberately serializes all API event writes, including
 different assistants using a nonuser calendar, without a new mutex table or
 requiring a target-calendar API identity. API bootstrap already requires the
 version row for every supported installation; a physical TIMEZONE row is optional.
-Browser and MCP writers
-do not participate in this calendar-lock protocol. SQLite obtains database-wide
-write intent before snapshot reads using an early managed update, including on
-PHP 8.2/8.3, rather than relying on a version-dependent `IMMEDIATE` setting.
+Saves to existing events through the browser editor coordinate with API deletion:
+they lock the same installation row on MySQL/MariaDB and PostgreSQL, or acquire
+SQLite write intent with `BEGIN IMMEDIATE`, before rechecking the deletion
+marker. MCP and other browser write paths are not covered by this change.
+For API writes on SQLite, an early managed update obtains database-wide write
+intent before snapshot reads, including on PHP 8.2/8.3.
 
 Recognized SQLite busy/locked errors, MySQL lock timeouts/deadlocks, PostgreSQL
 serialization/deadlock/lock-unavailable errors, and event/activity ID collisions

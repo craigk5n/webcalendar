@@ -41,6 +41,7 @@ final class CalendarSearch
       $recurring = $row->cal_type === 'M' || in_array($row->cal_id, $repeatIds);
       $event = CalendarEventData::fromRow((array) $row, new DateTimeZone($selected['timezone']));
       $event['can_edit'] = !$recurring && isset($editable[$event['id']]);
+      $event['can_delete'] = $actor === $calendar && $event['can_edit'];
       $event['calendar_id'] = $calendar;
       $event['calendar_name'] = $selected['name'];
       $results[] = ['event' => $event, 'is_recurring' => $recurring];

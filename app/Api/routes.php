@@ -21,6 +21,8 @@ Route::middleware(['auth:sanctum', 'api.identity'])->group(function (): void {
   Route::get('/calendars/{calendar}/events', [EventController::class, 'index'])->middleware('abilities:events:read');
   Route::post('/calendars/{calendar}/events', [EventController::class, 'store'])->middleware('abilities:events:write');
   Route::patch('/calendars/{calendar}/events/{event}', [EventController::class, 'update'])->whereNumber('event')->middleware('abilities:events:write');
+  Route::delete('/calendars/{calendar}/events/{event}', [EventController::class, 'destroy'])->whereNumber('event')->middleware('abilities:events:write');
   Route::post('/events', [EventController::class, 'store'])->middleware('abilities:events:write');
   Route::patch('/events/{event}', [EventController::class, 'update'])->whereNumber('event')->middleware('abilities:events:write');
+  Route::delete('/events/{event}', [EventController::class, 'destroy'])->whereNumber('event')->middleware('abilities:events:write');
 });

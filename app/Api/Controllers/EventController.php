@@ -6,11 +6,13 @@ namespace WebCalendar\Api\Controllers;
 
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use WebCalendar\Api\Requests\EventRequest;
 use WebCalendar\Api\Requests\StoreEventRequest;
 use WebCalendar\Api\Requests\UpdateEventRequest;
 use WebCalendar\Api\Resources\EventResource;
+use WebCalendar\Api\Resources\EventDeletionResource;
 use WebCalendar\Services\CalendarEventAccess;
 use WebCalendar\Services\CalendarEventWriter;
 use WebCalendar\Services\CalendarEvents;
@@ -29,6 +31,7 @@ final class EventController
       ? $access->editableIds($calendar, array_column($occurrences, 'id'), $actor !== $calendar) : [];
     foreach ($occurrences as &$occurrence) {
       $occurrence['can_edit'] = empty($occurrence['is_continuation']) && isset($editable[$occurrence['id']]);
+      $occurrence['can_delete'] = $actor === $calendar && $occurrence['can_edit'];
       $occurrence['calendar_id'] = $calendar;
       $occurrence['calendar_name'] = $selected['name'];
     }
@@ -45,5 +48,10 @@ final class EventController
   public function update(UpdateEventRequest $request, CalendarEventWriter $writer): EventResource
   {
     return new EventResource($writer->update($request->user()->username, (int) $request->route('event'), $request->validated(), $request->route('calendar')));
+  }
+
+  public function destroy(Request $request, CalendarEventWriter $writer): EventDeletionResource
+  {
+    return new EventDeletionResource($writer->delete($request->user()->username, (int) $request->route('event'), $request->route('calendar')));
   }
 }

@@ -4,6 +4,35 @@ ob_start();
 require_once 'includes/classes/WebCalMailer.php';
 $mail = new WebCalMailer;
 
+const EVENT_EDIT_LOCK_WAIT_MS = 5000;
+const EVENT_NOTIFICATION_LOG_ATTEMPTS = 3;
+const EVENT_NOTIFICATION_LOG_RETRY_DELAY_US = 10000;
+const EVENT_NOTIFICATION_LOG_SQLITE_WAIT_MS = 100;
+const EVENT_EDIT_MYSQL_TABLES = [
+  'webcal_config', 'webcal_entry', 'webcal_entry_categories', 'webcal_entry_ext_user',
+  'webcal_entry_log', 'webcal_entry_repeats', 'webcal_entry_repeats_not',
+  'webcal_entry_user', 'webcal_reminders', 'webcal_site_extras',
+];
+
+function event_edit_has_transactional_mysql_storage(): bool {
+  // Keep metadata locks until commit so an engine cannot change after validation.
+  foreach( EVENT_EDIT_MYSQL_TABLES as $table ) {
+    $res = dbi_query( "SELECT 1 FROM $table LIMIT 0", false, false );
+    if( ! $res )
+      return false;
+    dbi_free_result( $res );
+  }
+  $params = implode( ',', array_fill( 0, count( EVENT_EDIT_MYSQL_TABLES ), '?' ) );
+  $res = dbi_execute( 'SELECT COUNT(*) FROM information_schema.TABLES
+    WHERE TABLE_SCHEMA = DATABASE() AND ENGINE = \'InnoDB\'
+      AND TABLE_NAME IN (' . $params . ')', EVENT_EDIT_MYSQL_TABLES, false, false );
+  if( ! $res )
+    return false;
+  $row = dbi_fetch_row( $res );
+  dbi_free_result( $res );
+  return $row && (int) $row[0] === count( EVENT_EDIT_MYSQL_TABLES );
+}
+
 load_user_categories();
 
 $do_override = false;
@@ -594,6 +623,65 @@ if( empty( $error ) && ! empty( $conflicts ) )
 
 $msg = '';
 
+$edit_transaction = false;
+if( empty( $error ) && ! empty( $id )
+    && in_array( $db_type, ['mysqli', 'postgresql', 'sqlite3'], true ) ) {
+  // Match CalendarEventWriter's lock order before reading participant status.
+  // The entry row itself is not stable: the browser replaces it during a save.
+  if( $db_type === 'sqlite3' )
+    $sqlite3_c->busyTimeout( EVENT_EDIT_LOCK_WAIT_MS );
+  $begin = match( $db_type ) {
+    'sqlite3' => 'BEGIN IMMEDIATE',
+    'postgresql' => 'BEGIN ISOLATION LEVEL READ COMMITTED',
+    default => 'START TRANSACTION',
+  };
+  $edit_transaction = $db_type === 'sqlite3'
+    ? @$sqlite3_c->exec( $begin ) : (bool) dbi_query( $begin, false, false );
+  $locked = $edit_transaction;
+  if( $locked && $db_type !== 'sqlite3' ) {
+    $res = dbi_execute( 'SELECT cal_setting FROM webcal_config
+      WHERE cal_setting = ? FOR UPDATE', ['WEBCAL_PROGRAM_VERSION'], false, false );
+    $locked = $res && dbi_fetch_row( $res );
+    if( $res )
+      dbi_free_result( $res );
+  }
+  $res = $locked ? dbi_execute( 'SELECT e.cal_create_by, u.cal_status
+    FROM webcal_entry e LEFT JOIN webcal_entry_user u
+      ON u.cal_id = e.cal_id AND u.cal_login = e.cal_create_by
+    WHERE e.cal_id = ?', [$id], false, false ) : false;
+  if( ! $res ) {
+    header( 'HTTP/1.1 503 Service Unavailable' );
+    $error = translate( 'The calendar is busy. Please try again.' );
+  } else {
+    $entry = dbi_fetch_row( $res );
+    dbi_free_result( $res );
+    if( ! $entry || $entry[0] !== ( $old_create_by ?? null ) || $entry[1] === 'D' ) {
+      header( 'HTTP/1.1 409 Conflict' );
+      $error = translate( 'This event is no longer available to edit.' );
+    }
+  }
+  if( empty( $error ) && $db_type === 'mysqli' && ! event_edit_has_transactional_mysql_storage() ) {
+    header( 'HTTP/1.1 503 Service Unavailable' );
+    $error = translate( 'Editing events requires InnoDB for the calendar tables. Contact your administrator.' );
+  }
+  if( $edit_transaction && ! empty( $error ) ) {
+    dbi_query( 'ROLLBACK', false, false );
+    $edit_transaction = false;
+  }
+}
+
+$pending_notifications = [];
+$notify = static function ( array $message, ?array $log = null )
+    use ( $edit_transaction, $mail, &$pending_notifications ): void {
+  if( $edit_transaction ) {
+    $pending_notifications[] = [$mail->prepareNotification( ...$message ), $log];
+  } else {
+    $mail->WC_Send( ...$message );
+    if( $log !== null )
+      activity_log( ...$log );
+  }
+};
+
 if( empty( $error ) ) {
   $newevent = true;
 
@@ -995,12 +1083,12 @@ if( empty( $error ) ) {
 
             $msg .= $url . "\n\n";
           }
-          $mail->WC_Send( $login_fullname, $tempemail,
+          $notify( [$login_fullname, $tempemail,
             $tempfullname, $name, $msg, $htmlmail, $from,
             ( get_pref_setting( $old_participant,
-              'EMAIL_ATTACH_ICS', 'N' ) == 'Y' ? $id : '' ) );
-          activity_log( $id, $login, $old_participant, LOG_NOTIFICATION,
-            translate( 'User removed from participants list.' ) );
+              'EMAIL_ATTACH_ICS', 'N' ) == 'Y' ? $id : '' )],
+            [$id, $login, $old_participant, LOG_NOTIFICATION,
+              translate( 'User removed from participants list.' )] );
         }
       }
     }
@@ -1124,11 +1212,10 @@ if( empty( $error ) ) {
             $msg .= "\n\n" . $url;
           }
           // Use WebCalMailer class.
-          $mail->WC_Send( $login_fullname, $tempemail,
+          $notify( [$login_fullname, $tempemail,
             $tempfullname, $name, $msg, $htmlmail, $from,
             ( get_pref_setting( $i, 'EMAIL_ATTACH_ICS', 'N' ) == 'Y'
-              ? $id : '' ) );
-          activity_log( $id, $login, $i, LOG_NOTIFICATION, '' );
+              ? $id : '' )], [$id, $login, $i, LOG_NOTIFICATION, ''] );
         }
       }
     }
@@ -1229,14 +1316,42 @@ if( empty( $error ) ) {
             . $extra_email_data;
             // Don't send HTML to external addresses.
             // Always attach iCalendar file to external users
-            $mail->WC_Send( $login_fullname, $ext_emails[$i],
-              $ext_names[$i], $name, $msg, 'N', $from, $id );
+            $notify( [$login_fullname, $ext_emails[$i],
+              $ext_names[$i], $name, $msg, 'N', $from, $id] );
           }
         }
       }
     }
   } //end external mail
 } //end empty error
+
+if( $edit_transaction ) {
+  if( ! empty( $error ) )
+    dbi_query( 'ROLLBACK', false, false );
+  elseif( ! dbi_query( 'COMMIT', false, false ) ) {
+    dbi_query( 'ROLLBACK', false, false );
+    header( 'HTTP/1.1 503 Service Unavailable' );
+    $error = translate( 'The calendar is busy. Please try again.' );
+  } else {
+    if( $db_type === 'sqlite3' && $pending_notifications )
+      $sqlite3_c->busyTimeout( EVENT_NOTIFICATION_LOG_SQLITE_WAIT_MS );
+    foreach( $pending_notifications as [$send, $log] ) {
+      $send();
+      if( $log !== null ) {
+        [$event_id, $actor, $calendar, $type, $text] = $log;
+        // Reallocate the log ID on retry; never repeat delivery.
+        for( $attempt = 1; $attempt <= EVENT_NOTIFICATION_LOG_ATTEMPTS; $attempt++ ) {
+          if( activity_log( $event_id, $actor, $calendar, $type, $text, fatal: false ) )
+            break;
+          if( $attempt === EVENT_NOTIFICATION_LOG_ATTEMPTS )
+            error_log( 'Unable to record a post-commit notification for event ' . (int) $event_id );
+          else
+            usleep( EVENT_NOTIFICATION_LOG_RETRY_DELAY_US );
+        }
+      }
+    }
+  }
+}
 
 // If we were editing this event,
 // then go back to the last view (day, month, week).

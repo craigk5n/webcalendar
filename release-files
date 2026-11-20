@@ -39,6 +39,7 @@ app/Api/Requests/StoreEventRequest.php
 app/Api/Requests/UpdateEventRequest.php
 app/Api/Requests/TokenRequest.php
 app/Api/Requests/RenewalRequest.php
+app/Api/Resources/EventDeletionResource.php
 app/Api/Resources/EventResource.php
 app/Api/Resources/SearchPageResource.php
 app/Api/Resources/CalendarResource.php
